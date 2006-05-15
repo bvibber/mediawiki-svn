@@ -36,7 +36,6 @@ parent class in order maintain consistency across languages.
 'tog-highlightbroken' => 'Format broken links <a href="" class="new">like this</a> (alternative: like this<a href="" class="internal">?</a>).',
 'tog-justify'	=> 'Justify paragraphs',
 'tog-hideminor' => 'Hide minor edits in recent changes',
-'tog-extendwatchlist' => 'Expand watchlist to show all applicable changes',
 'tog-usenewrc' => 'Enhanced recent changes (JavaScript)',
 'tog-numberheadings' => 'Auto-number headings',
 'tog-showtoolbar'		=> 'Show edit toolbar (JavaScript)',
@@ -64,8 +63,6 @@ parent class in order maintain consistency across languages.
 'tog-uselivepreview' => 'Use live preview (JavaScript) (Experimental)',
 'tog-autopatrol' => 'Mark edits I make as patrolled',
 'tog-forceeditsummary' => 'Prompt me when entering a blank edit summary',
-'tog-watchlisthideown' => 'Hide my edits from the watchlist',
-'tog-watchlisthidebots' => 'Hide bot edits from the watchlist',
 
 'underline-always' => 'Always',
 'underline-never' => 'Never',
@@ -107,7 +104,8 @@ parent class in order maintain consistency across languages.
 'dec' => 'Dec',
 # Bits of text used by many pages:
 #
-'categories' => '{{PLURAL:$1|Category|Categories}}',
+'categories1' => 'Category',
+'categories' => 'Categories',
 'category' => 'category',
 'category_header' => 'Articles in category "$1"',
 'subcategories' => 'Subcategories',
@@ -117,7 +115,7 @@ parent class in order maintain consistency across languages.
 'linkprefix'		=> '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD',
 'mainpage'		=> 'Main Page',
 'mainpagetext'	=> "<big>'''MediaWiki has been successfully installed.'''</big>",
-'mainpagedocfooter' => "Consult the [http://meta.wikipedia.org/wiki/Help:Contents User's Guide] for information on using the wiki software.
+'mainpagedocfooter' => "Consult the [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide User's Guide] for information on using the wiki software.
 
 == Getting started ==
 
@@ -157,7 +155,8 @@ parent class in order maintain consistency across languages.
 'navigation' => 'Navigation',
 
 # Metadata in edit box
-'metadata_help' => 'Metadata (see [[{{ns:project}}:Metadata]] for an explanation):',
+'metadata' => '<b>Metadata</b> (for an explanation see <a href="$1">here</a>)',
+'metadata_page' => 'Wikipedia:Metadata',
 
 'currentevents' => 'Current events',
 'currentevents-url' => 'Current events',
@@ -209,10 +208,12 @@ parent class in order maintain consistency across languages.
 'redirectedfrom' => '(Redirected from $1)',
 'redirectpagesub' => 'Redirect page',
 'lastmodified'	=> 'This page was last modified $1.',
-'viewcount'		=> 'This page has been accessed {{plural:$1|one time|$1 times}}.',
+'viewcount'		=> 'This page has been accessed $1 times.',
 'copyright'	=> 'Content is available under $1.',
+'poweredby'	=> '{{SITENAME}} is powered by [http://www.mediawiki.org/ MediaWiki], an open source wiki engine.',
+'printsubtitle' => '(From {{SERVER}})',
 'protectedpage' => 'Protected page',
-'administrators' => '{{ns:project}}:Administrators',
+'administrators' => 'Project:Administrators',
 'jumpto' => 'Jump to:',
 'jumptonavigation' => 'navigation',
 'jumptosearch' => 'search',
@@ -234,6 +235,9 @@ See $1.',
 'versionrequired' => 'Version $1 of MediaWiki required',
 'versionrequiredtext' => 'Version $1 of MediaWiki is required to use this page. See [[Special:Version]]',
 
+'nbytes'		=> '$1 bytes',
+'ncategories'		=> '$1 categories',
+'nrevisions'		=> '$1 revisions',
 'widthheight'		=> '$1x$2',
 'ok'			=> 'OK',
 'sitetitle'		=> '{{SITENAME}}',
@@ -250,7 +254,8 @@ See $1.',
 'hidetoc' => 'hide',
 'thisisdeleted' => 'View or restore $1?',
 'viewdeleted' => 'View $1?',
-'restorelink' => '{{PLURAL:$1|one deleted edit|$1 deleted edits}}',
+'restorelink1' => 'one deleted edit',
+'restorelink' => '$1 deleted edits',
 'feedlinks' => 'Feed:',
 'sitenotice'	=> '-', # the equivalent to wgSiteNotice
 'anonnotice' => '-',
@@ -266,6 +271,7 @@ See $1.',
 'nstab-template' => 'Template',
 'nstab-help' => 'Help',
 'nstab-category' => 'Category',
+'nstab-selectlanguage' => 'Select a language', #added by gkpr
 
 # Main script and global functions
 #
@@ -322,20 +328,16 @@ Please report this to an administrator, making note of the URL.',
 'badtitletext' => 'The requested page title was invalid, empty, or an incorrectly linked inter-language or inter-wiki title. It may contain one more characters which cannot be used in titles.',
 'perfdisabled' => 'Sorry! This feature has been temporarily disabled because it slows the database down to the point that no one can use the wiki.',
 'perfdisabledsub' => 'Here is a saved copy from $1:', # obsolete?
-'perfcached' => 'The following data is cached and may not be up to date.',
-'perfcachedts' => 'The following data is cached, and was last updated $1.',
+'perfcached' => 'The following data is cached and may not be completely up to date:',
 'wrong_wfQuery_params' => 'Incorrect parameters to wfQuery()<br />
 Function: $1<br />
 Query: $2',
 'viewsource' => 'View source',
-'viewsourcefor' => 'for $1',
 'protectedtext' => 'This page has been locked to prevent editing; there are
 a number of reasons why this may be so, please see
 [[Project:Protected page]].
 
 You can view and copy the source of this page:',
-'protectedinterface' => 'This page provides interface text for the software, and is locked to prevent abuse.',
-'editinginterface' => "'''Warning:''' You are editing a page which is used to provide interface text for the software. Changes to this page will affect the appearance of the user interface for other users.",
 'sqlhidden' => '(SQL query hidden)',
 
 # Login and logout pages
@@ -355,6 +357,7 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'yourname'		=> 'Username',
 'yourpassword'	=> 'Password',
 'yourpasswordagain' => 'Retype password',
+'newusersonly'	=> ' (new users only)',
 'remembermypassword' => 'Remember me',
 'yourdomainname'       => 'Your domain',
 'externaldberror'      => 'There was either an external authentication database error or you are not allowed to update your external account.',
@@ -380,6 +383,7 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'uid'			=> 'User ID:',
 'yourrealname'		=> 'Real name *',
 'yourlanguage'	=> 'Language:',
+'yourlanguages'	=> '<div style="width:45em; margin: 2px">Enter the language codes of the languages you speak in the form bellow, separated by commas, whitespace or newlines (e.g. "de,en,fr"). Optionally, you can specify a level of proficiency from 1 (basic) to 4 (native speaker), e.g. "de:4","en:1". See a <a href="/index.php/Special:Languages" title="need to create the special page">list of languages supported</a> by this wiki.</div>',
 'yourvariant'  => 'Variant',
 'yournick'		=> 'Nickname:',
 'badsig'		=> 'Invalid raw signature; check HTML tags.',
@@ -388,7 +392,7 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'prefs-help-email-enotif' => 'This address is also used to send you e-mail notifications if you enabled the options.',
 'prefs-help-realname' 	=> '* Real name (optional): if you choose to provide it this will be used for giving you attribution for your work.',
 'loginerror'	=> 'Login error',
-'prefs-help-email'      => '* E-mail (optional): Enables others to contact you through your user or user_talk page without needing to reveal your identity.',
+'prefs-help-email'      => '* E-mail (optional): Enables others to contact you through your user or user_talk page without the need of revealing your identity.',
 'nocookiesnew'	=> 'The user account was created, but you are not logged in. {{SITENAME}} uses cookies to log in users. You have cookies disabled. Please enable them, then log in with your new username and password.',
 'nocookieslogin'	=> '{{SITENAME}} uses cookies to log in users. You have cookies disabled. Please enable them and try again.',
 'noname'		=> 'You have not specified a valid user name.',
@@ -426,8 +430,6 @@ will be sent for any of the following features.',
 'emailconfirmlink' => 'Confirm your e-mail address',
 'invalidemailaddress'	=> 'The e-mail address cannot be accepted as it appears to have an invalid
 format. Please enter a well-formatted address or empty that field.',
-'accountcreated' => 'Account created',
-'accountcreatedtext' => 'The user account for $1 has been created.',
 
 # Edit page toolbar
 'bold_sample'=>'Bold text',
@@ -462,7 +464,7 @@ format. Please enter a well-formatted address or empty that field.',
 'showpreview'	=> 'Show preview',
 'showlivepreview'	=> 'Live preview',
 'showdiff'	=> 'Show changes',
-'anoneditwarning' => "'''Warning:''' You are not logged in. Your IP address will be recorded in this page's edit history.",
+'anoneditwarning' => 'You are not logged in. Your IP address will be recorded in this page\'s edit history.',
 'missingsummary' => "'''Reminder:''' You have not provided an edit summary. If you click Save again, your edit will be saved without one.",
 'missingcommenttext' => 'Please enter a comment below.',
 'blockedtitle'	=> 'User is blocked',
@@ -474,7 +476,7 @@ Note that you may not use the "e-mail this user" feature unless you have a valid
 
 Your IP address is $3. Please include this address in any queries you make.',
 'whitelistedittitle' => 'Login required to edit',
-'whitelistedittext' => 'You have to $1 to edit pages.',
+'whitelistedittext' => 'You have to [[Special:Userlogin|login]] to edit pages.',
 'whitelistreadtitle' => 'Login required to read',
 'whitelistreadtext' => 'You have to [[Special:Userlogin|login]] to read pages.',
 'whitelistacctitle' => 'You are not allowed to create an account',
@@ -482,7 +484,7 @@ Your IP address is $3. Please include this address in any queries you make.',
 'confirmedittitle' => 'E-mail confirmation required to edit',
 'confirmedittext' => 'You must confirm your e-mail address before editing pages. Please set and validate your e-mail address through your [[Special:Preferences|user preferences]].',
 'loginreqtitle'	=> 'Login Required',
-'loginreqlink' => 'log in',
+'loginreqlink' => 'login',
 'loginreqpagetext'	=> 'You must $1 to view other pages.',
 'accmailtitle' => 'Password sent.',
 'accmailtext' => 'The password for "$1" has been sent to $2.',
@@ -632,7 +634,7 @@ example "fish and and scales".
 Please try another query.',
 'matchtotals'	=> "The query \"$1\" matched $2 page titles
 and the text of $3 pages.",
-'nogomatch' => "'''There is no page titled \"$1\".''' You can [[$1|create this page]].",
+'nogomatch' => "'''There is no page titled \"$1\".''' You can [[$2|create this page]].",
 'titlematches'	=> 'Article title matches',
 'notitlematches' => 'No page title matches',
 'textmatches'	=> 'Page text matches',
@@ -693,9 +695,6 @@ $2 List redirects &nbsp; Search for $3 $9",
 'math_notexvc'	=> 'Missing texvc executable; please see math/README to configure.',
 'prefs-personal' => 'User profile',
 'prefs-rc' => 'Recent changes',
-'prefs-watchlist' => 'Watchlist',
-'prefs-watchlist-days' => 'Number of days to show in watchlist:',
-'prefs-watchlist-edits' => 'Number of edits to show in expanded watchlist:',
 'prefs-misc' => 'Misc',
 'saveprefs'		=> 'Save',
 'resetprefs'	=> 'Reset',
@@ -723,11 +722,38 @@ $2 List redirects &nbsp; Search for $3 $9",
 'default'		=> 'default',
 'files'			=> 'Files',
 
-# User rights
+# User levels special page
+#
+
+# switching pan
+'groups-lookup-group' => 'Manage group rights',
+'groups-group-edit' => 'Existing groups:',
+'editgroup' => 'Edit Group',
+'addgroup' => 'Add Group',
+
 'userrights-lookup-user' => 'Manage user groups',
 'userrights-user-editname' => 'Enter a username:',
 'editusergroup' => 'Edit User Groups',
 
+# group editing
+'groups-editgroup'          => 'Edit group',
+'groups-addgroup'           => 'Add group',
+'groups-editgroup-preamble' => 'If the name or description starts with a colon, the
+remainder will be treated as a message name, and hence the text will be localised
+using the MediaWiki namespace',
+'groups-editgroup-name'     => 'Group name:',
+'groups-editgroup-description' => 'Group description (max 255 characters):<br />',
+'savegroup'                 => 'Save Group',
+'groups-tableheader'        => 'ID || Name || Description || Rights',
+'groups-existing'           => 'Existing groups',
+'groups-noname'             => 'Please specify a valid group name',
+'groups-already-exists'     => 'A group of that name already exists',
+'addgrouplogentry'          => 'Added group $2',
+'changegrouplogentry'       => 'Changed group $2',
+'renamegrouplogentry'       => 'Renamed group $2 to $3',
+
+# user groups editing
+#
 'userrights-editusergroup' => 'Edit user groups',
 'saveusergroups' => 'Save User Groups',
 'userrights-groupsmember' => 'Member of:',
@@ -736,22 +762,19 @@ $2 List redirects &nbsp; Search for $3 $9",
 Unselected groups will not be changed. You can deselect a group with CTRL + Left Click',
 'userrights-logcomment' => 'Changed group membership from $1 to $2',
 
-# Groups
-'group'                   => 'Group:',
-'group-bot'               => 'Bots',
-'group-sysop'             => 'Sysops',
-'group-bureaucrat'        => 'Bureaucrats',
-'group-steward'           => 'Stewards',
-'group-all'               => '(all)',
+# Default group names and descriptions
+#
+'group-anon-name'       => 'Anonymous',
+'group-anon-desc'       => 'Anonymous users',
+'group-loggedin-name'   => 'User',
+'group-loggedin-desc'   => 'General logged in users',
+'group-admin-name'      => 'Administrator',
+'group-admin-desc'      => 'Trusted users able to block users and delete articles',
+'group-bureaucrat-name' => 'Bureaucrat',
+'group-bureaucrat-desc' => 'The bureaucrat group is able to make sysops',
+'group-steward-name'    => 'Steward',
+'group-steward-desc'    => 'Full access',
 
-'group-bot-member'        => 'Bot',
-'group-sysop-member'      => 'Sysop',
-'group-bureaucrat-member' => 'Bureaucrat',
-'group-steward-member'    => 'Steward',
-
-'grouppage-bot' => 'Project:Bots',
-'grouppage-sysop' => 'Project:Administrators',
-'grouppage-bureaucrat' => 'Project:Bureaucrats',
 
 # Recent changes
 #
@@ -759,20 +782,21 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'recentchanges' => 'Recent changes',
 'recentchanges-url' => 'Special:Recentchanges',
 'recentchangestext' => 'Track the most recent changes to the wiki on this page.',
-'rcnote'		=> "Below are the last <strong>$1</strong> changes in the last <strong>$2</strong> days, as of $3.",
+'rcloaderr'		=> 'Loading recent changes',
+'rcnote'		=> "Below are the last <strong>$1</strong> changes in last <strong>$2</strong> days.",
 'rcnotefrom'	=> "Below are the changes since <b>$2</b> (up to <b>$1</b> shown).",
 'rclistfrom'	=> "Show new changes starting from $1",
-'rcshowhideminor' => '$1 minor edits',
-'rcshowhidebots' => '$1 bots',
-'rcshowhideliu' => '$1 logged-in users',
-'rcshowhideanons' => '$1 anonymous users',
-'rcshowhidepatr' => '$1 patrolled edits',
-'rcshowhidemine' => '$1 my edits',
+'showhideminor' => "$1 minor edits | $2 bots | $3 logged in users | $6 anonymous users | $4 patrolled edits | $5 my edits",
 'rclinks'		=> "Show last $1 changes in last $2 days<br />$3",
+'rchide'		=> "in $4 form; $1 minor edits; $2 secondary namespaces; $3 multiple edits.",
+'rcliu'			=> "; $1 edits from logged in users",
 'diff'			=> 'diff',
 'hist'			=> 'hist',
 'hide'			=> 'Hide',
 'show'			=> 'Show',
+'tableform'		=> 'table',
+'listform'		=> 'list',
+'nchanges'		=> "$1 changes",
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
 'sectionlink' => '→',
@@ -785,6 +809,7 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 #
 'upload'		=> 'Upload file',
 'uploadbtn'		=> 'Upload file',
+'uploadlink'	=> 'Upload images',
 'reupload'		=> 'Re-upload',
 'reuploaddesc'	=> 'Return to the upload form.',
 'uploadnologin' => 'Not logged in',
@@ -836,7 +861,6 @@ created and by whom, and anything else you may know about it. If this is an imag
 'uploadvirus' => 'The file contains a virus! Details: $1',
 'sourcefilename' => 'Source filename',
 'destfilename' => 'Destination filename',
-'filewasdeleted' => 'A file of this name has been previously uploaded and subsequently deleted. You should check the $1 before proceeding to upload it again.',
 
 'license' => 'Licensing',
 'nolicense' => 'None selected',
@@ -844,11 +868,11 @@ created and by whom, and anything else you may know about it. If this is an imag
 # Image list
 #
 'imagelist'		=> 'File list',
-'imagelisttext'	=> 'Below is a list of <strong>$1</strong> files sorted <strong>$2</strong>.',
+'imagelisttext'	=> "Below is a list of $1 files sorted $2.",
 'imagelistforuser' => "This shows only images uploaded by $1.",
 'getimagelist'	=> 'fetching file list',
 'ilsubmit'		=> 'Search',
-'showlast'		=> 'Show last $1 files sorted $2.',
+'showlast'		=> "Show last $1 files sorted $2.",
 'byname'		=> 'by name',
 'bydate'		=> 'by date',
 'bysize'		=> 'by size',
@@ -886,14 +910,6 @@ this old version, (rev) = revert to this old version.
 # List redirects
 'listredirects' => 'List redirects',
 
-# Unused templates
-'unusedtemplates' => 'Unused templates',
-'unusedtemplatestext' => 'This page lists all pages in the template namespace which are not included in another page. Remember to check for other links to the templates before deleting them.',
-'unusedtemplateswlh' => 'other links',
-
-# Random redirect
-'randomredirect' => 'Random redirect',
-
 # Statistics
 #
 'statistics'	=> 'Statistics',
@@ -921,6 +937,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 
 'doubleredirects'	=> 'Double redirects',
 'doubleredirectstext'	=> "Each row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the \"real\" target page, which the first redirect should point to.",
+'doubleredirectsarrow'	=> '→',
 
 'brokenredirects'	=> 'Broken redirects',
 'brokenredirectstext'	=> 'The following redirects link to non-existent pages:',
@@ -928,19 +945,14 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 
 # Miscellaneous special pages
 #
-'nbytes'		=> '$1 {{PLURAL:$1|byte|bytes}}',
-'ncategories'		=> '$1 {{PLURAL:$1|category|categories}}',
-'nlinks'		=> '$1 {{PLURAL:$1|link|links}}',
-'nmembers'		=> '$1 {{PLURAL:$1|member|members}}',
-'nrevisions'		=> '$1 {{PLURAL:$1|revision|revisions}}',
-'nviews'		=> '$1 {{PLURAL:$1|view|views}}',
-
+'orphans'		=> 'Orphaned pages',
 'lonelypages'	=> 'Orphaned pages',
 'uncategorizedpages'	=> 'Uncategorized pages',
 'uncategorizedcategories'	=> 'Uncategorized categories',
 'unusedcategories' => 'Unused categories',
 'unusedimages'	=> 'Unused files',
 'popularpages'	=> 'Popular pages',
+'nviews'		=> '$1 views',
 'wantedcategories' => 'Wanted categories',
 'wantedpages'	=> 'Wanted pages',
 'mostlinked'	=> 'Most linked to pages',
@@ -948,6 +960,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'mostcategories' => 'Articles with the most categories',
 'mostimages'	=> 'Most linked to images',
 'mostrevisions' => 'Articles with the most revisions',
+'nlinks'		=> '$1 links',
 'allpages'		=> 'All pages',
 'prefixindex'   => 'Prefix index',
 'randompage'	=> 'Random page',
@@ -959,8 +972,10 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'specialpages'	=> 'Special pages',
 'spheading'		=> 'Special pages for all users',
 'restrictedpheading'	=> 'Restricted special pages',
+'protectpage'	=> 'Protect page',
 'recentchangeslinked' => 'Related changes',
 'rclsub'		=> "(to pages linked from \"$1\")",
+'debug'			=> 'Debug',
 'newpages'		=> 'New pages',
 'ancientpages'		=> 'Oldest pages',
 'intl'		=> 'Interlanguage links',
@@ -1034,11 +1049,6 @@ or has chosen not to receive e-mail from other users.',
 'watchlist'			=> 'My watchlist',
 'watchlistsub'		=> "(for user \"$1\")",
 'nowatchlist'		=> 'You have no items on your watchlist.',
-'watchlistcount' 	=> "'''You have $1 items on your watchlist, including talk pages.'''",
-'clearwatchlist' 	=> 'Clear watchlist',
-'watchlistcleartext' => 'Are you sure you wish to remove them?',
-'watchlistclearbutton' => 'Clear watchlist',
-'watchlistcleardone' => 'Your watchlist has been cleared. $1 items were removed.',
 'watchnologin'		=> 'Not logged in',
 'watchnologintext'	=> 'You must be [[Special:Userlogin|logged in]] to modify your watchlist.',
 'addedwatch'		=> 'Added to watchlist',
@@ -1047,7 +1057,7 @@ Future changes to this page and its associated Talk page will be listed there,
 and the page will appear '''bolded''' in the [[Special:Recentchanges|list of recent changes]] to
 make it easier to pick out.
 
-If you want to remove the page from your watchlist later, click \"Unwatch\" in the sidebar.",
+<p>If you want to remove the page from your watchlist later, click \"Unwatch\" in the sidebar.",
 'removedwatch'		=> 'Removed from watchlist',
 'removedwatchtext' 	=> "The page \"[[:$1]]\" has been removed from your watchlist.",
 'watch' => 'Watch',
@@ -1057,8 +1067,7 @@ If you want to remove the page from your watchlist later, click \"Unwatch\" in t
 'notanarticle'		=> 'Not a content page',
 'watchnochange' 	=> 'None of your watched items was edited in the time period displayed.',
 'watchdetails'		=> '* $1 pages watched not counting talk pages
-* [[Special:Watchlist/edit|Show and edit complete watchlist]]
-* [[Special:Watchlist/clear|Remove all pages]]',
+* [[Special:Watchlist/edit|Show and edit complete watchlist]]',
 'wlheader-enotif' 		=> "* E-mail notification is enabled.",
 'wlheader-showupdated'   => "* Pages which have been changed since you last visited them are shown in '''bold'''",
 'watchmethod-recent'=> 'checking recent edits for watched pages',
@@ -1074,8 +1083,10 @@ at the bottom of the screen (deleting a content page also deletes the accompanyi
 'wlnote' 		=> 'Below are the last $1 changes in the last <b>$2</b> hours.',
 'wlshowlast' 		=> 'Show last $1 hours $2 days $3',
 'wlsaved'		=> 'This is a saved version of your watchlist.',
-'wlhideshowown'   	=> '$1 my edits',
-'wlhideshowbots'   	=> '$1 bot edits',
+'wlhideshowown'   	=> '$1 my edits.',
+'wlhideshowbots'   	=> '$1 bot edits.',
+'wlshow'		=> 'Show',
+'wlhide'		=> 'Hide',
 
 'enotif_mailer' 		=> '{{SITENAME}} Notification Mailer',
 'enotif_reset'			=> 'Mark all pages visited',
@@ -1144,7 +1155,7 @@ by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled bac
 Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]).",
 #   only shown if there is an edit comment
 'editcomment' => "The edit comment was: \"<i>$1</i>\".",
-'revertpage'	=> "Reverted edits by [[Special:Contributions/$2|$2]] ([[User_talk:$2|Talk]]); changed back to last version by [[User:$1|$1]]",
+'revertpage'	=> "Reverted edit of $2, changed back to last version by $1",
 'sessionfailure' => 'There seems to be a problem with your login session;
 this action has been canceled as a precaution against session hijacking.
 Please hit "back" and reload the page you came from, then try again.',
@@ -1182,10 +1193,6 @@ page protection levels. Here are the current settings for the page <strong>$1</s
 'viewdeletedpage' => 'View deleted pages',
 'undeletepagetext' => 'The following pages have been deleted but are still in the archive and
 can be restored. The archive may be periodically cleaned out.',
-'undeleteextrahelp' => "To restore the entire page, leave all checkboxes deselected and
-click '''''Restore'''''. To perform a selective restoration, check the boxes corresponding to the
-revisions to be restored, and click '''''Restore'''''. Clicking '''''Reset''''' will clear the
-comment field and all checkboxes.",
 'undeletearticle' => 'Restore deleted page',
 'undeleterevisions' => "$1 revisions archived",
 'undeletehistory' => 'If you restore the page, all revisions will be restored to the history.
@@ -1196,9 +1203,7 @@ will not be automatically replaced.',
 shown in the summary below, along with details of the users who had edited this page
 before deletion. The actual text of these deleted revisions is only available to administrators.',
 'undeleterevision' => "Deleted revision as of $1",
-'undeletebtn' => 'Restore',
-'undeletereset' => 'Reset',
-'undeletecomment' => 'Comment:',
+'undeletebtn' => 'Restore!',
 'undeletedarticle' => "restored \"[[$1]]\"",
 'undeletedrevisions' => "$1 revisions restored",
 'undeletedtext'   => "[[:$1|$1]] has been successfully restored.
@@ -1218,13 +1223,7 @@ See [[Special:Log/delete]] for a record of recent deletions and restorations.",
 'uclinks'       => "View the last $1 changes; view the last $2 days.",
 'uctop'         => ' (top)' ,
 'newbies'       => 'newbies',
-
-'sp-contributions-newest' => 'Newest',
-'sp-contributions-oldest' => 'Oldest',
-'sp-contributions-newer'  => 'Newer $1',
-'sp-contributions-older'  => 'Older $1',
-'sp-contributions-newbies-sub' => 'For newbies',
-
+'contribs-showhideminor' => '$1 minor edits',
 
 # What links here
 #
@@ -1324,9 +1323,9 @@ Type the name of the user in the box and press the button to make the user an ad
 'makesysopfail'		=> "<b>User \"$1\" could not be made into a sysop. (Did you enter the name correctly?)</b>",
 'setbureaucratflag' => 'Set bureaucrat flag',
 'setstewardflag'    => 'Set steward flag',
-'rightslog'		=> 'User rights log',
+'bureaucratlog'		=> 'Bureaucrat_log',
 'rightslogtext'		=> 'This is a log of changes to user rights.',
-'rightslogentry'	=> 'changed group membership for $1 from $2 to $3',
+'bureaucratlogentry'	=> "Changed group membership for $1 from $2 to $3",
 'rights'			=> 'Rights:',
 'set_user_rights'	=> 'Set user rights',
 'user_rights_set'	=> "<b>User rights for \"$1\" updated</b>",
@@ -1335,7 +1334,6 @@ Type the name of the user in the box and press the button to make the user an ad
 'already_sysop'     => 'This user is already an administrator',
 'already_bureaucrat' => 'This user is already a bureaucrat',
 'already_steward'   => 'This user is already a steward',
-'rightsnone' 		=> '(none)',
 
 # Move page
 #
@@ -1418,9 +1416,9 @@ In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{Media
 'allmessagesname' => 'Name',
 'allmessagesdefault' => 'Default text',
 'allmessagescurrent' => 'Current text',
-'allmessagestext'	=> 'This is a list of system messages available in the MediaWiki namespace.',
-'allmessagesnotsupportedUI' => 'Your current interface language <b>$1</b> is not supported by Special:Allmessages at this site.',
-'allmessagesnotsupportedDB' => '\'\'\'Special:Allmessages\'\'\' cannot be used because \'\'\'$wgUseDatabaseMessages\'\'\' is switched off.',
+'allmessagestext'	=> 'This is a list of system messages available in the MediaWiki: namespace.',
+'allmessagesnotsupportedUI' => 'Your current interface language <b>$1</b> is not supported by Special:AllMessages at this site.',
+'allmessagesnotsupportedDB' => 'Special:AllMessages not supported because wgUseDatabaseMessages is off.',
 'allmessagesfilter' => 'Message name filter:',
 'allmessagesmodified' => 'Show only modified',
 
@@ -1451,14 +1449,13 @@ In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{Media
 'accesskey-preview' => 'p',
 'accesskey-diff' => 'v',
 'accesskey-compareselectedversions' => 'v',
-'accesskey-watch' => 'w',
 
 # tooltip help for some actions, most are in Monobook.js
 'tooltip-search' => 'Search {{SITENAME}} [alt-f]',
 'tooltip-minoredit' => 'Mark this as a minor edit [alt-i]',
 'tooltip-save' => 'Save your changes [alt-s]',
 'tooltip-preview' => 'Preview your changes, please use this before saving! [alt-p]',
-'tooltip-diff' => 'Show which changes you made to the text. [alt-v]',
+'tooltip-diff' => 'Show which changes you made to the text. [alt-d]',
 'tooltip-compareselectedversions' => 'See the differences between the two selected versions of this page. [alt-v]',
 'tooltip-watch' => 'Add this page to your watchlist [alt-w]',
 
@@ -1488,8 +1485,11 @@ In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{Media
 'spamprotectiontitle' => 'Spam protection filter',
 'spamprotectiontext' => 'The page you wanted to save was blocked by the spam filter. This is probably caused by a link to an external site.',
 'spamprotectionmatch' => 'The following text is what triggered our spam filter: $1',
-'subcategorycount' => "There {{PLURAL:$1|is one subcategory|are $1 subcategories}} to this category.",
-'categoryarticlecount' => "There {{PLURAL:$1|is one article|are $1 articles}} in this category.",
+'subcategorycount' => "There are $1 subcategories to this category.",
+'subcategorycount1' => "There is $1 subcategory to this category.",
+'categoryarticlecount' => "There are $1 articles in this category.",
+'categoryarticlecount1' => "There is $1 article in this category.",
+'usenewcategorypage' => "1\n\nSet first character to \"0\" to disable the new category page layout.",
 'listingcontinuesabbrev' => " cont.",
 'spambot_username' => 'MediaWiki spam cleanup',
 'spam_reverting' => 'Reverting to last version not containing links to $1',
@@ -1668,7 +1668,7 @@ is collapsed. Others will be hidden by default.
 'exif-componentsconfiguration' =>'Meaning of each component',
 'exif-compressedbitsperpixel' =>'Image compression mode',
 'exif-pixelydimension' =>'Valid image width',
-'exif-pixelxdimension' =>'Valid image height',
+'exif-pixelxdimension' =>'Valind image height',
 'exif-makernote' =>'Manufacturer notes',
 'exif-usercomment' =>'User comments',
 'exif-relatedsoundfile' =>'Related audio file',
@@ -1932,7 +1932,6 @@ link in your browser to confirm that your e-mail address is valid.",
 'confirmemail_sent' => 'Confirmation e-mail sent.',
 'confirmemail_sendfailed' => 'Could not send confirmation mail. Check address for invalid characters.',
 'confirmemail_invalid' => 'Invalid confirmation code. The code may have expired.',
-'confirmemail_needlogin' => 'You need to $1 to confirm your email address.',
 'confirmemail_success' => 'Your e-mail address has been confirmed. You may now log in and enjoy the wiki.',
 'confirmemail_loggedin' => 'Your e-mail address has now been confirmed.',
 'confirmemail_error' => 'Something went wrong saving your confirmation.',
@@ -1995,13 +1994,6 @@ Please confirm that really want to recreate this article.',
 'searchnamed' => "Search for articles named ''$1''.",
 'articletitles' => "Articles starting with ''$1''",
 'hideresults' => 'Hide results',
-
-# DISPLAYTITLE
-'displaytitle' => '(Link to this page as [[$1]])',
-
-# Separator for categories in page lists
-# Please don't localise this
-'catseparator' => '|',
 
 );
 

@@ -27,7 +27,8 @@ class PreferencesForm {
 	var $mUserLanguage, $mUserVariant;
 	var $mSearch, $mRecent, $mHourDiff, $mSearchLines, $mSearchChars, $mAction;
 	var $mReset, $mPosted, $mToggles, $mSearchNs, $mRealName, $mImageSize;
-	var $mUnderline, $mWatchlistEdits;
+	var $mUnderline;
+	var $mUserLanguages; //added by gkpr
 
 	/**
 	 * Constructor
@@ -64,8 +65,7 @@ class PreferencesForm {
 		$this->mReset = $request->getCheck( 'wpReset' );
 		$this->mPosted = $request->wasPosted();
 		$this->mSuccess = $request->getCheck( 'success' );
-		$this->mWatchlistDays = $request->getVal( 'wpWatchlistDays' );
-		$this->mWatchlistEdits = $request->getVal( 'wpWatchlistEdits' );
+		$this->mUserLanguages = $request->getVal( 'wpUserLanguages' );
 
 		$this->mSaveprefs = $request->getCheck( 'wpSaveprefs' ) &&
 			$this->mPosted &&
@@ -134,16 +134,6 @@ class PreferencesForm {
 	/**
 	 * @access private
 	 */
-	function validateFloat( &$val, $min, $max=0x7fffffff ) {
-		$val = floatval( $val );
-		$val = min( $val, $max );
-		$val = max( $val, $min );
-		return( $val );
-	}
-
-	/**
-	 * @access private
-	 */
 	function validateIntOrNull( &$val, $min=0, $max=0x7fffffff ) {
 		$val = trim($val);
 		if($val === '') {
@@ -204,7 +194,6 @@ class PreferencesForm {
 		global $wgEmailAuthentication, $wgMinimalPasswordLength;
 		global $wgAuth;
 
-
 		if ( '' != $this->mNewpass ) {
 			if ( $this->mNewpass != $this->mRetypePass ) {
 				$this->mainPrefsForm( 'error', wfMsg( 'badretype' ) );
@@ -229,6 +218,7 @@ class PreferencesForm {
 
 		}
 		$wgUser->setRealName( $this->mRealName );
+		$this->explodeUserLanguages(&$langsToDelete, &$langsToUpdate, &$langsToInsert); //added by gkpr
 
 		if( $wgUser->getOption( 'language' ) !== $this->mUserLanguage ) {
 			$needRedirect = true;
@@ -259,7 +249,6 @@ class PreferencesForm {
 		$wgUser->setOption( 'contextlines', $this->validateIntOrNull( $this->mSearchLines ) );
 		$wgUser->setOption( 'contextchars', $this->validateIntOrNull( $this->mSearchChars ) );
 		$wgUser->setOption( 'rclimit', $this->validateIntOrNull( $this->mRecent ) );
-		$wgUser->setOption( 'wllimit', $this->validateIntOrNull( $this->mWatchlistEdits, 0, 1000 ) );
 		$wgUser->setOption( 'rows', $this->validateInt( $this->mRows, 4, 1000 ) );
 		$wgUser->setOption( 'cols', $this->validateInt( $this->mCols, 4, 1000 ) );
 		$wgUser->setOption( 'stubthreshold', $this->validateIntOrNull( $this->mStubs ) );
@@ -267,7 +256,6 @@ class PreferencesForm {
 		$wgUser->setOption( 'imagesize', $this->mImageSize );
 		$wgUser->setOption( 'thumbsize', $this->mThumbSize );
 		$wgUser->setOption( 'underline', $this->validateInt($this->mUnderline, 0, 2) );
-		$wgUser->setOption( 'watchlistdays', $this->validateFloat( $this->mWatchlistDays, 0, 7 ) );
 
 		# Set search namespace options
 		foreach( $this->mSearchNs as $i => $value ) {
@@ -287,7 +275,7 @@ class PreferencesForm {
 			return;
 		}
 		$wgUser->setCookies();
-		$wgUser->saveSettings();
+		$wgUser->saveSettings($langsToDelete, $langsToUpdate, $langsToInsert);
 
 		$error = false;
 		if( $wgEnableEmail ) {
@@ -364,9 +352,7 @@ class PreferencesForm {
 		$this->mImageSize = $wgUser->getOption( 'imagesize' );
 		$this->mThumbSize = $wgUser->getOption( 'thumbsize' );
 		$this->mRecent = $wgUser->getOption( 'rclimit' );
-		$this->mWatchlistEdits = $wgUser->getOption( 'wllimit' );
 		$this->mUnderline = $wgUser->getOption( 'underline' );
-		$this->mWatchlistDays = $wgUser->getOption( 'watchlistdays' );
 
 		$togs = $wgLang->getUserToggles();
 		foreach ( $togs as $tname ) {
@@ -380,6 +366,11 @@ class PreferencesForm {
 				$this->mSearchNs[$i] = $wgUser->getOption( 'searchNs'.$i );
 			}
 		}
+		//added by gkpr
+		/*
+		$this->explodeUserLanguages(&$langsToDelete, &$langsToUpdate, &$langsToInsert); //added by gkpr
+		$wgUser->saveSettings($langsToDelete, $langsToUpdate, $langsToInsert);
+		*/
 	}
 
 	/**
@@ -605,6 +596,7 @@ class PreferencesForm {
 		 */
 		$selectedLang = isset( $languages[$this->mUserLanguage] ) ? $this->mUserLanguage : $wgContLanguageCode;
 		$selbox = null;
+		$dbr =& wfGetDB( DB_SLAVE ); 
 		foreach($languages as $code => $name) {
 			global $IP;
 			/* only add languages that have a file */
@@ -647,7 +639,22 @@ class PreferencesForm {
 			}
 		}
 		$wgOut->addHTML('</table>');
+		//lines added by gkpr
+		if ( $dbr->tableExists('language') && $dbr->tableExists('user_languages')) {
+			$wgOut->addHTML('</table>');
 
+			# Languages
+			$text = $this->implodeUserLanguages();
+			$wgOut->addHTML( "<br />");
+			$wgOut->addHTML( "<div class='prefsectionlang'>");
+			$wgOut->addHTML( wfMsg( 'yourlanguages') );
+			$wgOut->addHTML(
+				$this->addRow( "<textarea name='wpUserLanguages' cols='10'>$text</textarea>", "")
+			);
+			$wgOut->addHTML ( "</div>");
+		}//endif tableexists
+		//end lines added by gkpr
+		
 		# Password
 		$this->mOldpass = htmlspecialchars( $this->mOldpass );
 		$this->mNewpass = htmlspecialchars( $this->mNewpass );
@@ -713,7 +720,7 @@ class PreferencesForm {
 		} else {
 			# Need to output a hidden option even if the relevant skin is not in use,
 			# otherwise the preference will get reset to 0 on submit
-			$wgOut->addHtml( wfHidden( 'wpQuickbar', $this->mQuickbar ) );
+			$wgOut->addHTML( "<input type='hidden' name='wpQuickbar' value='{$this->mQuickbar}' />" );
 		}
 
 		# Skin
@@ -781,7 +788,7 @@ class PreferencesForm {
 		if ($dateopts) {
 			$wgOut->addHTML( "<fieldset>\n<legend>" . wfMsg( 'dateformat' ) . "</legend>\n" );
 			$idCnt = 0;
-			$epoch = '20010408091234';
+			$epoch = '20010115161234';
 			foreach($dateopts as $key => $option) {
 				if( $key == MW_DATE_DEFAULT ) {
 					$formatted = wfMsgHtml( 'datedefault' );
@@ -816,11 +823,10 @@ class PreferencesForm {
 		#
 		global $wgLivePreview, $wgUseRCPatrol;
 		$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'textboxsize' ) . '</legend>
-			<div>' .
-				wfInputLabel( wfMsg( 'rows' ), 'wpRows', 'wpRows', 3, $this->mRows ) .
-				' ' .
-				wfInputLabel( wfMsg( 'columns' ), 'wpCols', 'wpCols', 3, $this->mCols ) .
-			"</div>" .
+			<div>
+				<label for="wpRows">' . wfMsg( 'rows' ) . "</label> <input type='text' name='wpRows' id='wpRows' value=\"{$this->mRows}\" size='3' />
+				<label for='wpCols'>" . wfMsg( 'columns' ) . "</label> <input type='text' name='wpCols' id='wpCols' value=\"{$this->mCols}\" size='3' />
+			</div>" .
 			$this->getToggles( array(
 				'editsection',
 				'editsectiononrightclick',
@@ -842,8 +848,8 @@ class PreferencesForm {
 		$this->mUsedToggles['autopatrol'] = true; # Don't show this up for users who can't; the handler below is dumb and doesn't know it
 
 		$wgOut->addHTML( '<fieldset><legend>' . htmlspecialchars(wfMsg('prefs-rc')) . '</legend>' .
-					wfInputLabel( wfMsg( 'recentchangescount' ),
-						'wpRecent', 'wpRecent', 3, $this->mRecent ) .
+					'<label for="wpRecent">' . wfMsg ( 'recentchangescount' ) .
+					"</label> <input type='text' name='wpRecent' id='wpRecent' value=\"$this->mRecent\" size='3' />" .
 			$this->getToggles( array(
 				'hideminor',
 				$wgRCShowWatchingUsers ? 'shownumberswatching' : false,
@@ -851,39 +857,28 @@ class PreferencesForm {
 			) . '</fieldset>'
 		);
 
-		# Watchlist
-		$wgOut->addHTML( '<fieldset><legend>' . wfMsgHtml( 'prefs-watchlist' ) . '</legend>' );
-
-		$wgOut->addHTML( wfInputLabel( wfMsg( 'prefs-watchlist-days' ),
-			'wpWatchlistDays', 'wpWatchlistDays', 3, $this->mWatchlistDays ) );
-		$wgOut->addHTML( '<br /><br />' ); # Spacing
-		$wgOut->addHTML( $this->getToggles( array( 'watchlisthideown', 'watchlisthidebots', 'extendwatchlist' ) ) );
-		$wgOut->addHTML( wfInputLabel( wfMsg( 'prefs-watchlist-edits' ),
-			'wpWatchlistEdits', 'wpWatchlistEdits', 3, $this->mWatchlistEdits ) );
-
-		$wgOut->addHTML( '</fieldset>' );
-
-		# Search
 		$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'searchresultshead' ) . '</legend><table>' .
 			$this->addRow(
-				wfLabel( wfMsg( 'resultsperpage' ), 'wpSearch' ),
-				wfInput( 'wpSearch', 4, $this->mSearch, array( 'id' => 'wpSearch' ) )
+				'<label for="wpSearch">' . wfMsg( 'resultsperpage' ) . '</label>',
+				"<input type='text' name='wpSearch' id='wpSearch' value=\"$this->mSearch\" size='4' />"
 			) .
 			$this->addRow(
-				wfLabel( wfMsg( 'contextlines' ), 'wpSearchLines' ),
-				wfInput( 'wpSearchLines', 4, $this->mSearchLines, array( 'id' => 'wpSearchLines' ) )
+				'<label for="wpSearchLines">' . wfMsg( 'contextlines' ) . '</label>',
+				"<input type='text' name='wpSearchLines' id='wpSearchLines' value=\"$this->mSearchLines\" size='4' />"
 			) .
 			$this->addRow(
-				wfLabel( wfMsg( 'contextchars' ), 'wpSearchChars' ),
-				wfInput( 'wpSearchChars', 4, $this->mSearchChars, array( 'id' => 'wpSearchChars' ) )
+				'<label for="wpSearchChars">' . wfMsg( 'contextchars' ) . '</label>',
+				"<input type='text' name='wpSearchChars' id='wpSearchChars' value=\"$this->mSearchChars\" size='4' />"
 			) .
 		"</table><fieldset><legend>" . wfMsg( 'defaultns' ) . "</legend>$ps</fieldset></fieldset>" );
 
 		# Misc
 		#
 		$wgOut->addHTML('<fieldset><legend>' . wfMsg('prefs-misc') . '</legend>');
-		$wgOut->addHTML( wfInputLabel( wfMsg( 'stubthreshold' ),
-			'wpStubs', 'wpStubs', 6, $this->mStubs ) );
+		$wgOut->addHTML(
+			'<label for="wpStubs">' . htmlspecialchars ( wfMsg ( 'stubthreshold' ) ) . '</label>' .
+			" <input type='text' name='wpStubs' id='wpStubs' value=\"$this->mStubs\" size='6' />"
+		);
 		$msgUnderline = htmlspecialchars( wfMsg ( 'tog-underline' ) );
 		$msgUnderlinenever = htmlspecialchars( wfMsg ( 'underline-never' ) );
 		$msgUnderlinealways = htmlspecialchars( wfMsg ( 'underline-always' ) );
@@ -925,5 +920,33 @@ class PreferencesForm {
 		$wgOut->addWikiText( '<div class="prefcache">' . wfMsg('clearyourcache') . '</div>' );
 
 	}
+
+	//lines added by gkpr
+	function implodeUserLanguages() {
+		global $wgUser;
+		$langs = '';
+		foreach($wgUser->mLanguages as $l) {
+			$language[] = "{$l['wikimedia_key']}:{$l['level']}";
+		}
+		$langs = implode(',', $language);
+		return $langs;
+	}
+
+	function explodeUserLanguages($langsToDelete, $langsToUpdate, &$langsToInsert) {
+		global $wgUser;
+		$langs = preg_split("/[\s,]+/", $this->mUserLanguages);
+		foreach ( $wgUser->mLanguages as $l) {
+			$currentlangs[$l['wikimedia_key']] = $l['level'];
+		}
+		foreach ( $langs as $l) {
+			list($wikimedia_key, $level) = preg_split('([:]+)', $l);
+			$newlangs[$wikimedia_key] = $this->validateInt($level, 1, 4);
+		}
+		$newlangs[$this->mUserLanguage] = !array_key_exists($this->mUserLanguage, $newlangs) ? 4 : $newlangs[$this->mUserLanguage];
+		$langsToDelete = array_diff_key($currentlangs, $newlangs);
+		$langsToUpdate = array_intersect_key($newlangs, $currentlangs);
+		$langsToInsert = empty($currentlangs) ? $newlangs : array_diff_key($newlangs, $currentlangs);
+	}
+	//end lines added by gkpr
 }
 ?>

@@ -21,35 +21,25 @@ define( 'MW_USER_VERSION', 3 );
  * @package MediaWiki
  */
 class User {
-	/*
-	 * When adding a new private variable, dont forget to add it to __sleep()
+	/**#@+
+	 * @access private
 	 */
-	/**@{{
-	 * @private
-	 */
-	var $mBlockedby;	//!<
-	var $mBlockreason;	//!<
-	var $mDataLoaded;	//!<
-	var $mEmail;		//!<
-	var $mEmailAuthenticated; //!<
-	var $mGroups;		//!<
-	var $mHash;			//!<
-	var $mId;			//!<
-	var $mName;			//!<
-	var $mNewpassword;	//!<
-	var $mNewtalk;		//!<
-	var $mOptions;		//!<
-	var $mPassword;		//!<
-	var $mRealName;		//!<
-	var $mRegistration;	//!<
-	var $mRights;		//!<
-	var $mSkin;			//!<
-	var $mToken;		//!<
-	var $mTouched;		//!<
-	var $mVersion;		//!< serialized version
-	/**@}} */
+	var $mId, $mName, $mPassword, $mEmail, $mNewtalk;
+	var $mEmailAuthenticated;
+	var $mRights, $mOptions;
+	var $mDataLoaded, $mNewpassword;
+	var $mSkin;
+	var $mBlockedby, $mBlockreason;
+	var $mTouched;
+	var $mToken;
+	var $mRealName;
+	var $mHash;
+	var $mGroups;
+	var $mVersion; // serialized version
+	var $mRegistration;
+	var $mLanguages; //added by gkpr
 
-	/** Constructor using User:loadDefaults() */
+	/** Construct using User:loadDefaults() */
 	function User()	{
 		$this->loadDefaults();
 		$this->mVersion = MW_USER_VERSION;
@@ -113,31 +103,13 @@ class User {
 
 	/**
 	 * Serialze sleep function, for better cache efficiency and avoidance of
-	 * silly "incomplete type" errors when skins are cached. The array should
-	 * contain names of private variables (see at top of User.php).
+	 * silly "incomplete type" errors when skins are cached
 	 */
 	function __sleep() {
-		return array(
-'mBlockedby',
-'mBlockreason',
-'mDataLoaded',
-'mEmail',
-'mEmailAuthenticated',
-'mGroups',
-'mHash',
-'mId',
-'mName',
-'mNewpassword',
-'mNewtalk',
-'mOptions',
-'mPassword',
-'mRealName',
-'mRegistration',
-'mRights',
-'mToken',
-'mTouched',
-'mVersion',
-);
+		return array( 'mId', 'mName', 'mPassword', 'mEmail', 'mNewtalk',
+			'mEmailAuthenticated', 'mRights', 'mOptions', 'mDataLoaded',
+			'mNewpassword', 'mBlockedby', 'mBlockreason', 'mTouched',
+			'mToken', 'mRealName', 'mHash', 'mGroups', 'mRegistration', 'mLanguages' );
 	}
 
 	/**
@@ -376,7 +348,7 @@ class User {
 	 *
 	 * @return array
 	 * @static
-	 * @private
+	 * @access private
 	 */
 	function getDefaultOptions() {
 		/**
@@ -401,7 +373,7 @@ class User {
 	 * @param string $opt
 	 * @return string
 	 * @static
-	 * @public
+	 * @access public
 	 */
 	function getDefaultOption( $opt ) {
 		$defOpts = User::getDefaultOptions();
@@ -414,7 +386,7 @@ class User {
 
 	/**
 	 * Get blocking information
-	 * @private
+	 * @access private
 	 * @param bool $bFromSlave Specify whether to check slave or master. To improve performance,
 	 *  non-critical checks are done against slaves. Check when actually saving should be done against
 	 *  master.
@@ -449,8 +421,7 @@ class User {
 		}
 
 		# Proxy blocking
-		# FIXME ? proxyunbannable is to deprecate the old isSysop()
-		if ( !$this->isAllowed('proxyunbannable') && !in_array( $ip, $wgProxyWhitelist ) ) {
+		if ( !$this->isSysop() && !in_array( $ip, $wgProxyWhitelist ) ) {
 
 			# Local list
 			if ( wfIsLocallyBlockedProxy( $ip ) ) {
@@ -522,20 +493,18 @@ class User {
 	 * last-hit counters will be shared across wikis.
 	 *
 	 * @return bool true if a rate limiter was tripped
-	 * @public
+	 * @access public
 	 */
 	function pingLimiter( $action='edit' ) {
-		global $wgRateLimits, $wgRateLimitsExcludedGroups;
+		global $wgRateLimits;
 		if( !isset( $wgRateLimits[$action] ) ) {
 			return false;
 		}
-		
-		# Some groups shouldn't trigger the ping limiter, ever
-		foreach( $this->getGroups() as $group ) {
-			if( array_search( $group, $wgRateLimitsExcludedGroups ) !== false )
-				return false;
+		if( $this->isAllowed( 'delete' ) ) {
+			// goddam cabal
+			return false;
 		}
-		
+
 		global $wgMemc, $wgDBname, $wgRateLimitLog;
 		$fname = 'User::pingLimiter';
 		wfProfileIn( $fname );
@@ -781,6 +750,30 @@ class User {
 
 			$effectiveGroups = array_merge( $implicitGroups, $this->mGroups );
 			$this->mRights = $this->getGroupPermissions( $effectiveGroups );
+		
+			//lines added by gkpr
+			if ($dbr->tableExists('language') && $dbr->tableExists('user_languages') ) {
+				$res = $dbr->select( 'user_languages', array( 'language_id', 'attribute', 'level'), array( 'user_id' => $this->mId), $fname);
+				//$this->mLanguages = array();
+				$i = 0;
+				while ( $row = $dbr->fetchObject( $res ) ) {
+					$s2 = $dbr->selectRow( 'language', array( 'language_id', 'english_name', 'native_name', 'iso639_2',
+					'iso639_3', 'wikimedia_key', 'dialect_of_lid', 'is_enabled'), array('language_id' => $row->language_id), $fname);
+					if ( !empty($s2->language_id)) {
+						$this->mLanguages[$i]['language_id'] = $s2->language_id;
+						$this->mLanguages[$i]['english_name'] = $s2->english_name;
+						$this->mLanguages[$i]['native_name'] = $s2->native_name;
+						$this->mLanguages[$i]['iso639_2'] = $s2->iso639_2;
+						$this->mLanguages[$i]['iso639_3'] = $s2->iso639_3;
+						$this->mLanguages[$i]['wikimedia_key'] = $s2->wikimedia_key;
+						$this->mLanguages[$i]['dialect_of_lid'] = $s2->dialect_of_lid;
+						$this->mLanguages[$i]['is_enabled'] = $s2->is_enabled;
+						$this->mLanguages[$i]['level'] = $row->level;
+						$this->mLanguages[$i++]['attribute'] = $row->attribute;
+					}
+				}
+			}
+			//end lines added by gkpr
 		}
 
 		$this->mDataLoaded = true;
@@ -809,7 +802,7 @@ class User {
 	/**
 	 * Return the title dbkey form of the name, for eg user pages.
 	 * @return string
-	 * @public
+	 * @access public
 	 */
 	function getTitleKey() {
 		return str_replace( ' ', '_', $this->getName() );
@@ -867,7 +860,7 @@ class User {
 	 * @param string $field
 	 * @param mixed $id
 	 * @return bool
-	 * @private
+	 * @access private
 	 */
 	function checkNewtalk( $field, $id ) {
 		$fname = 'User::checkNewtalk';
@@ -881,7 +874,7 @@ class User {
 	 * Add or update the
 	 * @param string $field
 	 * @param mixed $id
-	 * @private
+	 * @access private
 	 */
 	function updateNewtalk( $field, $id ) {
 		$fname = 'User::updateNewtalk';
@@ -902,7 +895,7 @@ class User {
 	 * Clear the new messages flag for the given user
 	 * @param string $field
 	 * @param mixed $id
-	 * @private
+	 * @access private
 	 */
 	function deleteNewtalk( $field, $id ) {
 		$fname = 'User::deleteNewtalk';
@@ -1069,20 +1062,6 @@ class User {
 	function getBoolOption( $oname ) {
 		return (bool)$this->getOption( $oname );
 	}
-	
-	/**
-	 * Get an option as an integer value from the source string.
-	 * @param string $oname The option to check
-	 * @param int $default Optional value to return if option is unset/blank.
-	 * @return int
-	 */
-	function getIntOption( $oname, $default=0 ) {
-		$val = $this->getOption( $oname );
-		if( $val == '' ) {
-			$val = $default;
-		}
-		return intval( $val );
-	}
 
 	function setOption( $oname, $val ) {
 		$this->loadFromDatabase();
@@ -1090,11 +1069,6 @@ class User {
 			# Clear cached skin, so the new one displays immediately in Special:Preferences
 			unset( $this->mSkin );
 		}
-		// Filter out any newlines that may have passed through input validation.
-		// Newlines are used to separate items in the options blob.
-		$val = str_replace( "\r\n", "\n", $val );
-		$val = str_replace( "\r", "\n", $val );
-		$val = str_replace( "\n", " ", $val );
 		$this->mOptions[$oname] = $val;
 		$this->invalidateCache();
 	}
@@ -1193,30 +1167,21 @@ class User {
 	}
 
 	/**
-	 * Deprecated in 1.6, die in 1.7, to be removed in 1.8
+	 * Check if a user is sysop
 	 * @deprecated
 	 */
 	function isSysop() {
-		wfDebugDieBacktrace( "Call to deprecated (v1.7) User::isSysop() method\n" );
-		#return $this->isAllowed( 'protect' );
+		return $this->isAllowed( 'protect' );
 	}
 
-	/**
-	 * Deprecated in 1.6, die in 1.7, to be removed in 1.8
-	 * @deprecated
-	 */
+	/** @deprecated */
 	function isDeveloper() {
-		wfDebugDieBacktrace( "Call to deprecated (v1.7) User::isDeveloper() method\n" );
-		#return $this->isAllowed( 'siteadmin' );
+		return $this->isAllowed( 'siteadmin' );
 	}
 
-	/**
-	 * Deprecated in 1.6, die in 1.7, to be removed in 1.8
-	 * @deprecated
-	 */
+	/** @deprecated */
 	function isBureaucrat() {
-		wfDebugDieBacktrace( "Call to deprecated (v1.7) User::isBureaucrat() method\n" );
-		#return $this->isAllowed( 'makesysop' );
+		return $this->isAllowed( 'makesysop' );
 	}
 
 	/**
@@ -1356,7 +1321,7 @@ class User {
 	 * the next change of any watched page.
 	 *
 	 * @param int $currentUser user ID number
-	 * @public
+	 * @access public
 	 */
 	function clearAllNotifications( $currentUser ) {
 		global $wgUseEnotif;
@@ -1381,7 +1346,7 @@ class User {
 	}
 
 	/**
-	 * @private
+	 * @access private
 	 * @return string Encoding options
 	 */
 	function encodeOptions() {
@@ -1394,7 +1359,7 @@ class User {
 	}
 
 	/**
-	 * @private
+	 * @access private
 	 */
 	function decodeOptions( $str ) {
 		$a = explode( "\n", $str );
@@ -1446,7 +1411,7 @@ class User {
 	/**
 	 * Save object settings into database
 	 */
-	function saveSettings() {
+	function saveSettings($langsToDelete, $langsToUpdate, $langsToInsert) {
 		global $wgMemc, $wgDBname;
 		$fname = 'User::saveSettings';
 
@@ -1469,6 +1434,22 @@ class User {
 				'user_id' => $this->mId
 			), $fname
 		);
+
+		//lines added by gkpr
+		$dbr =& wfGetDB( DB_SLAVE);
+		if ( $dbr->tableExists('language') && $dbr->tableExists('user_languages') ) {
+			if (!empty($langsToDelete)) {
+				$this->removeUserLanguages($langsToDelete);
+			}
+			if (!empty($langsToInsert)) {
+				$this->addUserLanguages($langsToInsert);
+			}
+			if (!empty($langsToUpdate)) {
+				$this->setUserLanguages($langsToUpdate);
+			}
+		}
+		//end lines added by gkpr
+		
 		$wgMemc->delete( "$wgDBname:user:id:$this->mId" );
 	}
 
@@ -1622,7 +1603,7 @@ class User {
 	 * Get this user's personal page title.
 	 *
 	 * @return Title
-	 * @public
+	 * @access public
 	 */
 	function getUserPage() {
 		return Title::makeTitle( NS_USER, $this->getName() );
@@ -1632,7 +1613,7 @@ class User {
 	 * Get this user's talk page title.
 	 *
 	 * @return Title
-	 * @public
+	 * @access public
 	 */
 	function getTalkPage() {
 		$title = $this->getUserPage();
@@ -1711,7 +1692,7 @@ class User {
 	 * @param mixed $salt - Optional function-specific data for hash.
 	 *                      Use a string or an array of strings.
 	 * @return string
-	 * @public
+	 * @access public
 	 */
 	function editToken( $salt = '' ) {
 		if( !isset( $_SESSION['wsEditToken'] ) ) {
@@ -1745,13 +1726,23 @@ class User {
 	 * @param string $val - the input value to compare
 	 * @param string $salt - Optional function-specific data for hash
 	 * @return bool
-	 * @public
+	 * @access public
 	 */
 	function matchEditToken( $val, $salt = '' ) {
 		global $wgMemc;
 		$sessionToken = $this->editToken( $salt );
 		if ( $val != $sessionToken ) {
-			wfDebug( "User::matchEditToken: broken session data\n" );
+			$logfile = '/home/wikipedia/logs/session_debug/session.log';
+			$mckey = memsess_key( session_id() );
+			$uname = @posix_uname();
+			$msg = date('r') . "\nEdit token mismatch, expected $sessionToken got $val\n" .
+			'apache server=' . $uname['nodename'] . "\n" .
+			'session_id = ' . session_id() . "\n" .
+			'$_SESSION=' . var_export( $_SESSION, true ) . "\n" .
+			'$_COOKIE=' . var_export( $_COOKIE, true ) . "\n" .
+			"mc get($mckey) = " . var_export( $wgMemc->get( $mckey ), true ) . "\n\n\n";
+
+			@error_log( $msg, 3, $logfile );
 		}
 		return $val == $sessionToken;
 	}
@@ -1805,7 +1796,7 @@ class User {
 	 * A hash (unsalted since it's used as a key) is stored.
 	 * @param &$expiration mixed output: accepts the expiration time
 	 * @return string
-	 * @private
+	 * @access private
 	 */
 	function confirmationToken( &$expiration ) {
 		$fname = 'User::confirmationToken';
@@ -1832,7 +1823,7 @@ class User {
 	 * the URL the user can use to confirm.
 	 * @param &$expiration mixed output: accepts the expiration time
 	 * @return string
-	 * @private
+	 * @access private
 	 */
 	function confirmationTokenUrl( &$expiration ) {
 		$token = $this->confirmationToken( $expiration );
@@ -1881,18 +1872,13 @@ class User {
 	function isEmailConfirmed() {
 		global $wgEmailAuthentication;
 		$this->loadFromDatabase();
-		$confirmed = true;
-		if( wfRunHooks( 'EmailConfirmed', array( &$this, &$confirmed ) ) ) {
-			if( $this->isAnon() )
-				return false;
-			if( !$this->isValidEmailAddr( $this->mEmail ) )
-				return false;
-			if( $wgEmailAuthentication && !$this->getEmailAuthenticationTimestamp() )
-				return false;
-			return true;
-		} else {
-			return $confirmed;
-		}
+		if( $this->isAnon() )
+			return false;
+		if( !$this->isValidEmailAddr( $this->mEmail ) )
+			return false;
+		if( $wgEmailAuthentication && !$this->getEmailAuthenticationTimestamp() )
+			return false;
+		return true;
 	}
 
 	/**
@@ -1914,11 +1900,11 @@ class User {
 
 	/**
 	 * @param string $group key name
-	 * @return string localized descriptive name for group, if provided
+	 * @return string localized descriptive name, if provided
 	 * @static
 	 */
 	function getGroupName( $group ) {
-		$key = "group-$group";
+		$key = "group-$group-name";
 		$name = wfMsg( $key );
 		if( $name == '' || $name == "&lt;$key&gt;" ) {
 			return $group;
@@ -1926,22 +1912,6 @@ class User {
 			return $name;
 		}
 	}
-
-	/**
-	 * @param string $group key name
-	 * @return string localized descriptive name for member of a group, if provided
-	 * @static
-	 */
-	function getGroupMember( $group ) {
-		$key = "group-$group-member";
-		$name = wfMsg( $key );
-		if( $name == '' || $name == "&lt;$key&gt;" ) {
-			return $group;
-		} else {
-			return $name;
-		}
-	}
-
 
 	/**
 	 * Return the set of defined explicit groups.
@@ -1955,24 +1925,70 @@ class User {
 			array_keys( $wgGroupPermissions ),
 			array( '*', 'user', 'autoconfirmed' ) );
 	}
-	
-	/**
-	 * Get the title of a page describing a particular group
-	 *
-	 * @param $group Name of the group
-	 * @return mixed
-	 */
-	function getGroupPage( $group ) {
-		$page = wfMsgForContent( 'grouppage-' . $group );
-		if( !wfEmptyMsg( 'grouppage-' . $group, $page ) ) {
-			$title = Title::newFromText( $page );
-			if( is_object( $title ) )
-				return $title;
+
+	//lines added by gkpr
+	function addUserLanguages($langsToInsert) {
+		//global $wgUser;
+		$fname = 'User::addUserLanguages';
+		$dbw =& wfGetDB( DB_MASTER );
+		$dbr =& wfGetDB( DB_SLAVE );
+		foreach ( $langsToInsert as $key => $level) {
+			$language_id = $dbr->selectField ( 'language', 'language_id', array('wikimedia_key' => $key), 'IGNORE' ); 
+			if (!empty($language_id)) {
+				$error = $dbw->insert ( 'user_languages', array( 'user_id' => $this->mId, 'language_id' => $language_id, 'attribute' => 'communicate', 'level' => $level), $fname);
+				array_push($this->mLanguages, array('language_id' => $language_id, 'english_name' => '', 'native_name' => '', 'iso639_2' => '', 'iso639_3' => '', 'wikimedia_key' => $key, 'dialect_of_lid' => '', 'is_enabled' => '', 'level' => $level, 'attribute' => 'communicate'));
+			}
 		}
-		return false;
 	}
-	
-	
+
+	function removeUserLanguages($langsToDelete) {
+		//global $wgUser;
+		$fname = 'User::removeUserLanguages';
+		$dbw =& wfGetDB( DB_MASTER );
+		$dbr =& wfGetDB( DB_SLAVE );
+		foreach ( $langsToDelete as $key => $level) {
+			$language_id = $dbr->selectField ( 'language', 'language_id', array('wikimedia_key' => $key), 'IGNORE' ); 
+			if (!empty($language_id)) {
+				$dbw->delete ( 'user_languages', array('user_id' => $this->mId, 'language_id' => $language_id), $fname );
+				foreach ($this->mLanguages as $i => $l) {
+					if ($l['wikimedia_key'] == $key) {
+						$languagesDeleted[$i] = $l;
+					}
+				}
+			}
+		}
+		$wgUser->mLanguages = array_diff_key($wgUser->mLanguages, $languagesDeleted);
+	}
+
+	function setUserLanguages($langsToUpdate) {
+		//global $wgUser;
+		$fname = 'User::setUserLanguages';
+		$dbw =& wfGetDB( DB_MASTER );
+		$dbr =& wfGetDB( DB_SLAVE );
+		foreach ( $langsToUpdate as $key => $level) {
+			$language_id = $dbr->selectField ( 'language', 'language_id', array('wikimedia_key' => $key), 'IGNORE' ); 
+			if (!empty($language_id)) {
+				$success = $dbw->update ( 'user_languages', array('level' => $level),
+					array('user_id' => $this->mId, 'language_id' => $language_id), $fname
+					);
+				foreach ($this->mLanguages as $i => $l) {
+					if ($l['wikimedia_key'] == $key) {
+						$this->mLanguages[$i]['level'] = $level;
+					}
+				}
+			}
+		}
+	}
+
+	function getBestLanguage() {
+		$fname = 'User::getBestLanguage';
+		$dbr =& wfGetDB( DB_SLAVE);
+		if ($this->mId) {
+			$language = $dbr->selectField(array('user_languages', 'language'), 'wikimedia_key', array('user_languages.language_id' =>'language.language_id', $this->mId => 'user_id'), $fname, array('ORDER BY' => 'level desc')); 
+		} else {
+		}
+	}
+	//end lines added by gkpr
 }
 
 ?>

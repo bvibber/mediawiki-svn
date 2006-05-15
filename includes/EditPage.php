@@ -30,7 +30,7 @@ class EditPage {
 	var $missingSummary = false;
 	var $allowBlankSummary = false;
 	var $autoSumm = '';
-	var $hookError = '';
+	var $mLanguageId; //added by gkpr
 
 	# Form values
 	var $save = false, $preview = false, $diff = false;
@@ -314,7 +314,7 @@ class EditPage {
 	 * Return true if this page should be previewed when the edit form
 	 * is initially opened.
 	 * @return bool
-	 * @private
+	 * @access private
 	 */
 	function previewOnOpen() {
 		global $wgUser;
@@ -326,10 +326,9 @@ class EditPage {
 
 	/**
 	 * @todo document
-	 * @param $request
 	 */
 	function importFormData( &$request ) {
-		global $wgLang, $wgUser;
+		global $wgLang ;
 		$fname = 'EditPage::importFormData';
 		wfProfileIn( $fname );
 
@@ -340,6 +339,7 @@ class EditPage {
 			$this->textbox1 = $this->safeUnicodeInput( $request, 'wpTextbox1' );
 			$this->textbox2 = $this->safeUnicodeInput( $request, 'wpTextbox2' );
 			$this->mMetaData = rtrim( $request->getText( 'metadata'   ) );
+			$this->mLanguageId = $request->getVal('wpLanguageId'); //gkpr
 			# Truncate for whole multibyte characters. +5 bytes for ellipsis
 			$this->summary   = $wgLang->truncate( $request->getText( 'wpSummary'  ), 250 );
 
@@ -386,14 +386,7 @@ class EditPage {
 
 			$this->minoredit = $request->getCheck( 'wpMinoredit' );
 			$this->watchthis = $request->getCheck( 'wpWatchthis' );
-
-			# Don't force edit summaries when a user is editing their own user or talk page
-			if( ( $this->mTitle->mNamespace == NS_USER || $this->mTitle->mNamespace == NS_USER_TALK ) && $this->mTitle->getText() == $wgUser->getName() ) {
-				$this->allowBlankSummary = true;
-			} else {
-				$this->allowBlankSummary = $request->getBool( 'wpIgnoreBlankSummary' );
-			}
-	
+			$this->allowBlankSummary = $request->getBool( 'wpIgnoreBlankSummary' );
 			$this->autoSumm = $request->getText( 'wpAutoSummary' );			
 		} else {
 			# Not a posted form? Start with nothing.
@@ -416,6 +409,7 @@ class EditPage {
 
 		# Section edit can come from either the form or a link
 		$this->section = $request->getVal( 'wpSection', $request->getVal( 'section' ) );
+		//	var_dump($request->getSelection( 'wpLanguageId')); echo "el langid q no se como tomar"; //gkpr
 
 		$this->live = $request->getCheck( 'live' );
 		$this->editintro = $request->getText( 'editintro' );
@@ -426,9 +420,9 @@ class EditPage {
 	/**
 	 * Make sure the form isn't faking a user's credentials.
 	 *
-	 * @param $request WebRequest
+	 * @param WebRequest $request
 	 * @return bool
-	 * @private
+	 * @access private
 	 */
 	function tokenOk( &$request ) {
 		global $wgUser;
@@ -442,7 +436,6 @@ class EditPage {
 		return $this->mTokenOk;
 	}
 
-	/** */
 	function showIntro() {
 		global $wgOut, $wgUser;
 		$addstandardintro=true;
@@ -493,16 +486,11 @@ class EditPage {
 			wfProfileOut( "$fname-checks" );
 			return false;
 		}
-		if ( !wfRunHooks( 'EditFilter', array( $this, $this->textbox1, $this->section, &$this->hookError ) ) ) {
-			# Error messages etc. could be handled within the hook...
+		if ( !wfRunHooks( 'EditFilter', array( &$this, $this->textbox1, $this->section ) ) ) {
+			# Error messages or other handling should be performed by the filter function
 			wfProfileOut( $fname );
 			wfProfileOut( "$fname-checks" );
 			return false;
-		} elseif( $this->hookError != '' ) {
-			# ...or the hook could be expecting us to produce an error
-			wfProfileOut( "$fname-checks " );
-			wfProfileOut( $fname );
-			return true;
 		}
 		if ( $wgUser->isBlockedFrom( $this->mTitle, false ) ) {
 			# Check block state against master, thus 'false'.
@@ -577,8 +565,9 @@ class EditPage {
 			}
 
 			$isComment=($this->section=='new');
+			//gkpr
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
-				$this->minoredit, $this->watchthis, false, $isComment);
+				$this->minoredit, $this->watchthis, false, $isComment, $this->mLanguageId);
 
 			wfProfileOut( $fname );
 			return false;
@@ -767,6 +756,12 @@ class EditPage {
 				}
 			} else {
 				$s = wfMsg( 'editing', $this->mTitle->getPrefixedText() );
+				//added by gkpr
+				global $wgLanguageNames;
+				$dbr =& wfGetDB( DB_SLAVE );
+				$wikimedia_key = $dbr->selectField ( 'language', 'wikimedia_key', array('language_id' => $this->mArticle->mLanguageId), 'IGNORE' );
+				$wgOut->setSubtitle( wfMsg('yourlanguage') . " {$wgLanguageNames[$wikimedia_key]}" );
+				//end added by gkpr
 			}
 			$wgOut->setPageTitle( $s );
 
@@ -776,10 +771,6 @@ class EditPage {
 			
 			if( $this->missingSummary ) {
 				$wgOut->addWikiText( wfMsg( 'missingsummary' ) );
-			}
-			
-			if( !$this->hookError == '' ) {
-				$wgOut->addWikiText( $this->hookError );
 			}
 
 			if ( !$this->checkUnicodeCompliantBrowser() ) {
@@ -809,18 +800,12 @@ class EditPage {
 		}
 			
 		if( $this->mTitle->isProtected( 'edit' ) ) {
-			# Is the protection due to the namespace, e.g. interface text?
-			if( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
-				# Yes; remind the user
-				$notice = wfMsg( 'editinginterface' );
-			} elseif( $this->mTitle->isSemiProtected() ) {
-				# No; semi protected
+			if( $this->mTitle->isSemiProtected() ) {
 				$notice = wfMsg( 'semiprotectedpagewarning' );
 				if( wfEmptyMsg( 'semiprotectedpagewarning', $notice ) || $notice == '-' ) {
 					$notice = '';
 				}
 			} else {
-				# No; regular protection
 				$notice = wfMsg( 'protectedpagewarning' );
 			}
 			$wgOut->addWikiText( $notice );
@@ -835,8 +820,8 @@ class EditPage {
 			$wgOut->addWikiText( wfMsg( 'longpagewarning', $wgLang->formatNum( $this->kblength ) ) );
 		}
 
-		$rows = $wgUser->getIntOption( 'rows' );
-		$cols = $wgUser->getIntOption( 'cols' );
+		$rows = $wgUser->getOption( 'rows' );
+		$cols = $wgUser->getOption( 'cols' );
 
 		$ew = $wgUser->getOption( 'editwidth' );
 		if ( $ew ) $ew = " style=\"width:100%\"";
@@ -853,7 +838,7 @@ class EditPage {
 
 		$cancel = $sk->makeKnownLink( $this->mTitle->getPrefixedText(),
 				wfMsg('cancel') );
-		$edithelpurl = $sk->makeInternalOrExternalUrl( wfMsgForContent( 'edithelppage' ));
+		$edithelpurl = $sk->makeInternalOrExternalUrl( wfMsg( 'edithelppage' ));
 		$edithelp = '<a target="helpwindow" href="'.$edithelpurl.'">'.
 			htmlspecialchars( wfMsg( 'edithelp' ) ).'</a> '.
 			htmlspecialchars( wfMsg( 'newwindow' ) );
@@ -944,7 +929,8 @@ class EditPage {
 		if ( $wgUseMetadataEdit ) {
 			$metadata = $this->mMetaData ;
 			$metadata = htmlspecialchars( $wgContLang->recodeForEdit( $metadata ) ) ;
-			$top = wfMsgWikiHtml( 'metadata_help' );
+			$helppage = Title::newFromText( wfMsg( "metadata_page" ) ) ;
+			$top = wfMsg( 'metadata', $helppage->getLocalURL() );
 			$metadata = $top . "<textarea name='metadata' rows='3' cols='{$cols}'{$ew}>{$metadata}</textarea>" ;
 		}
 		else $metadata = "" ;
@@ -1035,6 +1021,9 @@ class EditPage {
 enctype="multipart/form-data">
 END
 );
+		if ( $this->mArticle->getID() == 0) {
+			$this->showLanguages();//added by gkpr
+		}
 
 		if( is_callable( $formCallback ) ) {
 			call_user_func_array( $formCallback, array( &$wgOut ) );
@@ -1143,7 +1132,7 @@ END
 	/**
 	 * Append preview output to $wgOut.
 	 * Includes category rendering if this is a category page.
-	 * @private
+	 * @access private
 	 */
 	function showPreview() {
 		global $wgOut;
@@ -1311,7 +1300,7 @@ END
 	}
 
 	/**
-	 * Call the stock "user is blocked" page
+	 * @todo document
 	 */
 	function blockedIPpage() {
 		global $wgOut;
@@ -1319,21 +1308,17 @@ END
 	}
 
 	/**
-	 * Produce the stock "please login to edit pages" page
+	 * @todo document
 	 */
 	function userNotLoggedInPage() {
-		global $wgUser, $wgOut;
-		$skin = $wgUser->getSkin();
-		
-		$loginTitle = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
-		$loginLink = $skin->makeKnownLinkObj( $loginTitle, wfMsgHtml( 'loginreqlink' ), 'returnto=' . $this->mTitle->getPrefixedUrl() );
-	
+		global $wgOut;
+
 		$wgOut->setPageTitle( wfMsg( 'whitelistedittitle' ) );
-		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
-		
-		$wgOut->addHtml( wfMsgWikiHtml( 'whitelistedittext', $loginLink ) );
-		$wgOut->returnToMain( false, $this->mTitle->getPrefixedUrl() );
+
+		$wgOut->addWikiText( wfMsg( 'whitelistedittext' ) );
+		$wgOut->returnToMain( false );
 	}
 
 	/**
@@ -1342,37 +1327,35 @@ END
 	 * allowed to edit.
 	 */
 	function userNotConfirmedPage() {
+
 		global $wgOut;
 
 		$wgOut->setPageTitle( wfMsg( 'confirmedittitle' ) );
-		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
-		
 		$wgOut->addWikiText( wfMsg( 'confirmedittext' ) );
 		$wgOut->returnToMain( false );
 	}
 
 	/**
-	 * Produce the stock "your edit contains spam" page
-	 *
-	 * @param $match Text which triggered one or more filters
+	 * @todo document
 	 */
-	function spamPage( $match = false ) {
+	function spamPage ( $match = false )
+	{
 		global $wgOut;
-
 		$wgOut->setPageTitle( wfMsg( 'spamprotectiontitle' ) );
-		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 
 		$wgOut->addWikiText( wfMsg( 'spamprotectiontext' ) );
-		if ( $match )
+		if ( $match ) {
 			$wgOut->addWikiText( wfMsg( 'spamprotectionmatch', "<nowiki>{$match}</nowiki>" ) );
-			
+		}
 		$wgOut->returnToMain( false );
 	}
 
 	/**
-	 * @private
+	 * @access private
 	 * @todo document
 	 */
 	function mergeChangesInto( &$editText ){
@@ -1414,7 +1397,7 @@ END
 	 * mangle UTF-8 data on form submission. Returns true if Unicode
 	 * should make it through, false if it's known to be a problem.
 	 * @return bool
-	 * @private
+	 * @access private
 	 */
 	function checkUnicodeCompliantBrowser() {
 		global $wgBrowserBlackList;
@@ -1435,7 +1418,7 @@ END
 	 * Format an anchor fragment as it would appear for a given section name
 	 * @param string $text
 	 * @return string
-	 * @private
+	 * @access private
 	 */
 	function sectionAnchor( $text ) {
 		$headline = Sanitizer::decodeCharReferences( $text );
@@ -1551,9 +1534,9 @@ END
 					'key'	=>	'R'
 				)
 		);
-		$toolbar = "<div id='toolbar'>\n";
-		$toolbar.="<script type='$wgJsMimeType'>\n/*<![CDATA[*/\n";
+		$toolbar ="<script type='$wgJsMimeType'>\n/*<![CDATA[*/\n";
 
+		$toolbar.="document.writeln(\"<div id='toolbar'>\");\n";
 		foreach($toolarray as $tool) {
 
 			$image=$wgStylePath.'/common/images/'.$tool['image'];
@@ -1572,8 +1555,8 @@ END
 			$toolbar.="addButton('$image','$tip','$open','$close','$sample');\n";
 		}
 
+		$toolbar.="document.writeln(\"</div>\");\n";
 		$toolbar.="/*]]>*/\n</script>";
-		$toolbar.="\n</div>";
 		return $toolbar;
 	}
 
@@ -1635,7 +1618,7 @@ END
 	 * @param WebRequest $request
 	 * @param string $field
 	 * @return string
-	 * @private
+	 * @access private
 	 */
 	function safeUnicodeInput( $request, $field ) {
 		$text = rtrim( $request->getText( $field ) );
@@ -1650,7 +1633,7 @@ END
 	 *
 	 * @param string $text
 	 * @return string
-	 * @private
+	 * @access private
 	 */
 	function safeUnicodeOutput( $text ) {
 		global $wgContLang;
@@ -1671,7 +1654,7 @@ END
 	 *
 	 * @param string $invalue
 	 * @return string
-	 * @private
+	 * @access private
 	 */
 	function makesafe( $invalue ) {
 		// Armor existing references for reversability.
@@ -1713,7 +1696,7 @@ END
 	 *
 	 * @param string $invalue
 	 * @return string
-	 * @private
+	 * @access private
 	 */
 	function unmakesafe( $invalue ) {
 		$result = "";
@@ -1748,6 +1731,46 @@ END
 		$wgOut->setPageTitle( wfMsg( 'nocreatetitle' ) );
 		$wgOut->addWikiText( wfMsg( 'nocreatetext' ) );
 	}
+	
+	//lines added by gkpr
+	function showLanguages() {
+		$fname = 'EditPage::showLanguages';
+		global $wgOut, $wgUser, $wgLanguageCode, $wgLanguageNames, $wgArticleLanguage;
+		$text = '';
+		
+		$dbr =& wfGetDB( DB_SLAVE);
+		if ( $dbr->tableExists('language') && $dbr->tableExists('user_languages') ) {
+			$res = $dbr->select('language', array('language_id', 'english_name', 'wikimedia_key'), array('is_enabled' => '1'), $fname);
+			$wgOut->addWikiText( wfMsg( 'yourlanguage' ) );
+			$text = "<select name='wpLanguageId'>";
+			$text .= "<option value='0'>" . wfMsg('nstab-selectlanguage') . "</option>";
+			if ( $wgUser->isLoggedIn() ) {
+				if ($wgUser->mLanguages) {
+					foreach ($wgUser->mLanguages as $row) {
+						$languages[$row['language_id']] = $row['wikimedia_key'];
+						$res = $dbr->select( 'language_defaults', 'default_language_id', array( 'language_id' => $row['language_id']), $fname);
+						while ( $row1 = $dbr->fetchObject( $res ) ) {
+							 $languages[$row1->default_language_id] = $dbr->selectField( 'language', 'wikimedia_key', array('language_id' => $row1->default_language_id), $fname);
+						}
+					}	
+				}
+				$language_default = $dbr->selectField('language', 'language_id', array('wikimedia_key' => $wgLanguageCode), $fname);
+				$languages[$language_default] = $wgLanguageCode;
+			} else {
+				while ($row = $dbr->fetchObject($res)) {
+					$languages[$row->language_id] = $row->wikimedia_key;
+				}
+			}
+			asort($languages);
+			foreach ($languages as $key => $wikimedia_key) {
+				$selected = !empty($wgArticleLanguage) ? $wikimedia_key == $wgArticleLanguage? "selected='selected'" : '' : $wikimedia_key == $wgLanguageCode ? "selected='selected'" : '';
+				$text .= "<option value='$key' $selected?>$wikimedia_key - {$wgLanguageNames[$wikimedia_key]}</option>";
+			}
+			$text .= "</select>";
+			$wgOut->addHTML( $text);
+		}
+	}
+	//end lines added by gkpr
 
 }
 

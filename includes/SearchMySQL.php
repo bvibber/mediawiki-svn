@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 # http://www.gnu.org/copyleft/gpl.html
 
 /**
@@ -136,12 +136,21 @@ class SearchMySQL extends SearchEngine {
 	 * @access private
 	 */
 	function queryMain( $filteredTerm, $fulltext ) {
+		global $wgArticleLanguage;//added by gkpr
 		$match = $this->parseQuery( $filteredTerm, $fulltext );
 		$page        = $this->db->tableName( 'page' );
+		$language = $this->db->tableExists('language')? $this->db->tableName( 'language' ) : '';
 		$searchindex = $this->db->tableName( 'searchindex' );
-		return 'SELECT page_id, page_namespace, page_title ' .
-			"FROM $page,$searchindex " .
-			'WHERE page_id=si_page AND ' . $match;
+		if (!empty($language)) {
+			$qry = !empty($wgArticleLanguage) ? " AND  " . $page . ".language_id=$language.language_id AND $language.wikimedia_key='$wgArticleLanguage'" : '';//gkpr
+			return 'SELECT page_id, page_namespace, page_title ' .
+				"FROM $page,$searchindex,$language" .
+				'WHERE page_id=si_page AND ' . $match . $qry;
+		} else {
+			return 'SELECT page_id, page_namespace, page_title ' .
+				"FROM $page,$searchindex " .
+				'WHERE page_id=si_page AND ' . $match;
+		}
 	}
 
 	/**

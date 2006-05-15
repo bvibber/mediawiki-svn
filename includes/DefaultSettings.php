@@ -1,7 +1,7 @@
 <?php
 /**
  *
- *                 NEVER EDIT THIS FILE
+ *                 DO NOT EVER EDIT THIS FILE!
  *
  *
  * To customize your installation, edit "LocalSettings.php". If you make
@@ -32,7 +32,7 @@ require_once( 'includes/SiteConfiguration.php' );
 $wgConf = new SiteConfiguration;
 
 /** MediaWiki version number */
-$wgVersion			= '1.7alpha';
+$wgVersion			= '1.6alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -620,7 +620,7 @@ $wgTranslateNumerals = true;
 # Translation using MediaWiki: namespace
 # This will increase load times by 25-60% unless memcached is installed
 # Interface messages will be loaded from the database.
-$wgUseDatabaseMessages = true;
+$wgUseDatabaseMessages = false; //true;
 $wgMsgCacheExpiry	= 86400;
 
 # Whether to enable language variant conversion.
@@ -646,7 +646,7 @@ $wgMetaNamespaceTalk = false;
 #
 
 $wgLocalInterwiki   = 'w';
-$wgInterwikiExpiry = 10800; # Expiry time for cache of interwiki table
+$wgInterwikiExpiry = 60; //10800; # Expiry time for cache of interwiki table
 
 /** Interwiki caching settings.
 	$wgInterwikiCache specifies path to constant database file
@@ -728,13 +728,6 @@ $wgDebugLogGroups       = array();
 $wgShowSQLErrors        = false;
 
 /**
- * If true, some error messages will be colorized when running scripts on the
- * command line; this can aid picking important things out when debugging.
- * Ignored when running on Windows or when output is redirected to a file.
- */
-$wgColorErrors          = true;
-
-/**
  * disable experimental dmoz-like category browsing. Output things like:
  * Encyclopedia > Music > Style of Music > Jazz
  */
@@ -749,17 +742,6 @@ $wgUseCategoryBrowser   = false;
  * so you probably want to keep it on.
  */
 $wgEnableParserCache = true;
-
-/**
- * If on, the sidebar navigation links are cached for users with the
- * current language set. This can save a touch of load on a busy site
- * by shaving off extra message lookups.
- *
- * However it is also fragile: changing the site configuration, or
- * having a variable $wgArticlePath, can produce broken links that
- * don't update as expected.
- */
-$wgEnableSidebarCache = false;
 
 /**
  * Under which condition should a page in the main namespace be counted
@@ -857,9 +839,7 @@ $wgGroupPermissions['sysop']['importupload']    = true;
 $wgGroupPermissions['sysop']['move']            = true;
 $wgGroupPermissions['sysop']['patrol']          = true;
 $wgGroupPermissions['sysop']['protect']         = true;
-$wgGroupPermissions['sysop']['proxyunbannable'] = true;
 $wgGroupPermissions['sysop']['rollback']        = true;
-$wgGroupPermissions['sysop']['trackback']       = true;
 $wgGroupPermissions['sysop']['upload']          = true;
 $wgGroupPermissions['sysop']['reupload']        = true;
 $wgGroupPermissions['sysop']['reupload-shared'] = true;
@@ -945,7 +925,7 @@ $wgAccountCreationThrottle = 0;
 # Client-side caching:
 
 /** Allow client-side caching of pages */
-$wgCachePages       = true;
+$wgCachePages       = false; //true;
 
 /**
  * Set this to current time to invalidate all prior cached pages. Affects both
@@ -953,7 +933,7 @@ $wgCachePages       = true;
  * You can get the current date on your server by using the command:
  *   date +%Y%m%d%H%M%S
  */
-$wgCacheEpoch = '20030516000000';
+$wgCacheEpoch = '20060430202500';
 
 
 # Server-side caching:
@@ -1101,8 +1081,6 @@ $wgTexvc = './math/texvc';
 #
 # Profiling / debugging
 #
-# You have to create a 'profiling' table in your database before using
-# profiling see maintenance/archives/patch-profiling.sql .
 
 /** Enable for more detailed by-function times in debug log */
 $wgProfiling = false;
@@ -1612,20 +1590,7 @@ $wgCategoryPagingLimit = 200;
  * Contains a list of regexps : "/regexp/"  matching problematic browsers
  */
 $wgBrowserBlackList = array(
-	/**
-	 * Netscape 2-4 detection
-	 * The minor version may contain strings such as "Gold" or "SGoldC-SGI"
-	 * Lots of non-netscape user agents have "compatible", so it's useful to check for that
-	 * with a negative assertion. The [UIN] identifier specifies the level of security 
-	 * in a Netscape/Mozilla browser, checking for it rules out a number of fakers. 
-	 * The language string is unreliable, it is missing on NS4 Mac.
-	 * 
-	 * Reference: http://www.psychedelix.com/agents/index.shtml
-	 */
-	'/^Mozilla\/2\.[^ ]+ .*?\((?!compatible).*; [UIN]/',
-	'/^Mozilla\/3\.[^ ]+ .*?\((?!compatible).*; [UIN]/',
-	'/^Mozilla\/4\.[^ ]+ .*?\((?!compatible).*; [UIN]/',
-	
+	"/Mozilla\/4\.78 \[en\] \(X11; U; Linux/",
 	/**
 	 * MSIE on Mac OS 9 is teh sux0r, converts þ to <thorn>, ð to <eth>, Þ to <THORN> and Ð to <ETH>
 	 *
@@ -1638,7 +1603,7 @@ $wgBrowserBlackList = array(
 	 * @link http://en.wikipedia.org/w/index.php?title=User%3A%C6var_Arnfj%F6r%F0_Bjarmason%2Ftestme&diff=12356041&oldid=12355864
 	 * @link http://en.wikipedia.org/wiki/Template%3AOS9
 	 */
-	'/^Mozilla\/4\.0 \(compatible; MSIE \d+\.\d+; Mac_PowerPC\)/'
+	"/Mozilla\/4\.0 \(compatible; MSIE \d+\.\d+; Mac_PowerPC\)/"
 );
 
 /**
@@ -1656,21 +1621,21 @@ $wgBrowserBlackList = array(
 $wgLocaltimezone = null;
 
 /**
- * Set an offset from UTC in minutes to use for the default timezone setting
+ * Set an offset from UTC in hours to use for the default timezone setting
  * for anonymous users and new user accounts.
  *
  * This setting is used for most date/time displays in the software, and is
  * overrideable in user preferences. It is *not* used for signature timestamps.
  *
  * You can set it to match the configured server timezone like this:
- *   $wgLocalTZoffset = date("Z") / 60;
+ *   $wgLocalTZoffset = date("Z") / 3600;
  *
  * If your server is not configured for the timezone you want, you can set
  * this in conjunction with the signature timezone and override the TZ
  * environment variable like so:
  *   $wgLocaltimezone="Europe/Berlin";
  *   putenv("TZ=$wgLocaltimezone");
- *   $wgLocalTZoffset = date("Z") / 60;
+ *   $wgLocalTZoffset = date("Z") / 3600;
  *
  * Leave at NULL to show times in universal time (UTC/GMT).
  */
@@ -1823,20 +1788,12 @@ $wgRateLimits = array(
 		'ip'     => null,
 		'subnet' => null,
 		),
-	'mailpassword' => array(
-		'anon' => NULL,
-		),
 	);
 
 /**
  * Set to a filename to log rate limiter hits.
  */
 $wgRateLimitLog = null;
-
-/**
- * Array of groups which should never trigger the rate limiter
- */
-$wgRateLimitsExcludedGroups = array( 'sysop', 'bureaucrat' );
 
 /**
  * On Special:Unusedimages, consider images "used", if they are put
@@ -1923,6 +1880,12 @@ $wgTranscludeCacheExpiry = 3600;
 $wgUseTrackbacks = false;
 
 /**
+ * Enable filtering of robots in Special:Watchlist
+ */
+
+$wgFilterRobotsWL = false;
+
+/**
  * Enable filtering of categories in Recentchanges
  */
 $wgAllowCategorizedRecentChanges = false ;
@@ -1950,24 +1913,8 @@ $wgUseAjax = false;
  */
 $wgAjaxExportList = array( 'wfSajaxSearch' );
 
-/**
- * Allow DISPLAYTITLE to change title display
- */
-$wgAllowDisplayTitle = false ;
-
-/**
- * Array of usernames which may not be registered or logged in from
- * Maintenance scripts can still use these
- */
-$wgReservedUsernames = array( 'MediaWiki default', 'Conversion script' );
-
-/**
- * MediaWiki will reject HTMLesque tags in uploaded files due to idiotic browsers which can't
- * perform basic stuff like MIME detection and which are vulnerable to further idiots uploading
- * crap files as images. When this directive is on, <title> will be allowed in files with
- * an "image/svg" MIME type. You should leave this disabled if your web server is misconfigured
- * and doesn't send appropriate MIME types for SVG images.
- */
-$wgAllowTitlesInSVG = false;
+//added by gkpr
+$wgDefaultLanguage = 'en';
+//end added by gkpr
 
 ?>

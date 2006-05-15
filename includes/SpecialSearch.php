@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 # http://www.gnu.org/copyleft/gpl.html
 
 /**
@@ -30,12 +30,13 @@ require_once( 'Revision.php' );
 /**
  * Entry point
  *
- * @param $par String: (default '')
+ * @param string $par (default '')
  */
 function wfSpecialSearch( $par = '' ) {
 	global $wgRequest, $wgUser;
 
-	$search = $wgRequest->getText( 'search', $par );
+	$search = $wgRequest->getText( 'search', $par );//added by gkpr
+	$search = in_string(':', $search)  && strpos($search, ':') == 2 ? substr($search, strpos($search, ':') + 1) : $search;
 	$searchPage = new SpecialSearch( $wgRequest, $wgUser );
 	if( $wgRequest->getVal( 'fulltext' ) ||
 		!is_null( $wgRequest->getVal( 'offset' ) ) ||
@@ -59,7 +60,7 @@ class SpecialSearch {
 	 *
 	 * @param WebRequest $request
 	 * @param User $user
-	 * @public
+	 * @access public
 	 */
 	function SpecialSearch( &$request, &$user ) {
 		list( $this->limit, $this->offset ) = $request->getLimitOffset( 20, 'searchlimit' );
@@ -76,11 +77,13 @@ class SpecialSearch {
 	/**
 	 * If an exact title match can be found, jump straight ahead to
 	 * @param string $term
-	 * @public
+	 * @access public
 	 */
 	function goResult( $term ) {
 		global $wgOut;
 		global $wgGoToEdit;
+		global $wgArticleLanguage;//gkpr
+		$search = !empty($wgArticleLanguage) ? "$wgArticleLanguage:$term" : $term;//gkpr
 
 		$this->setupPage( $term );
 
@@ -114,14 +117,15 @@ class SpecialSearch {
 				$editurl = $t->escapeLocalURL( 'action=edit' );
 			}
 		}
-		$wgOut->addWikiText( wfMsg('nogomatch', ":$term" ) );
+		$wgOut->addWikiText( wfMsg('nogomatch', ":$term", $search ) );
+		//previous line modified by gkpr
 
 		return $this->showResults( $term );
 	}
 
 	/**
 	 * @param string $term
-	 * @public
+	 * @access public
 	 */
 	function showResults( $term ) {
 		$fname = 'SpecialSearch::showResults';
@@ -224,7 +228,9 @@ class SpecialSearch {
 	 */
 	function setupPage( $term ) {
 		global $wgOut;
+		global $wgArticleLanguage;
 		$wgOut->setPageTitle( wfMsg( 'searchresults' ) );
+		$term = $wgArticleLanguage . ":" . $term; //added by gkpr
 		$wgOut->setSubtitle( htmlspecialchars( wfMsg( 'searchquery', $term ) ) );
 		$wgOut->setArticleRelated( false );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
@@ -236,7 +242,7 @@ class SpecialSearch {
 	 *
 	 * @param User $user
 	 * @return array
-	 * @private
+	 * @access private
 	 */
 	function userNamespaces( &$user ) {
 		$arr = array();
@@ -254,7 +260,7 @@ class SpecialSearch {
 	 *
 	 * @param WebRequest $request
 	 * @return array
-	 * @private
+	 * @access private
 	 */
 	function powerSearch( &$request ) {
 		$arr = array();
@@ -269,7 +275,7 @@ class SpecialSearch {
 	/**
 	 * Reconstruct the 'power search' options for links
 	 * @return array
-	 * @private
+	 * @access private
 	 */
 	function powerSearchOptions() {
 		$opt = array();
@@ -316,9 +322,16 @@ class SpecialSearch {
 	function showHit( $result, $terms ) {
 		$fname = 'SpecialSearch::showHit';
 		wfProfileIn( $fname );
-		global $wgUser, $wgContLang, $wgLang;
+		global $wgUser, $wgContLang;
 
 		$t = $result->getTitle();
+		//gkpr
+		$dbr =& wfGetDB( DB_SLAVE);
+	        if ( $dbr->tableExists('language') && $dbr->tableExists('user_languages') ) {
+			$language = $dbr->selectField ( 'language', 'native_name', array('language_id' => $dbr->selectField ( 'page', 'language_id', array('page_title' => $t->mUrlform))), 'IGNORE' );
+		}
+		//end gkpr
+		
 		if( is_null( $t ) ) {
 			wfProfileOut( $fname );
 			return "<!-- Broken link in search result -->\n";
@@ -333,8 +346,7 @@ class SpecialSearch {
 		$link = $sk->makeKnownLinkObj( $t );
 		$revision = Revision::newFromTitle( $t );
 		$text = $revision->getText();
-		$size = wfMsgExt( 'nbytes', array( 'parsemag', 'escape'),
-			$wgLang->formatNum( strlen( $text ) ) );
+		$size = wfMsg( 'nbytes', strlen( $text ) ) . " - " . wfMsg( 'yourlanguage' ) . $language;
 
 		$lines = explode( "\n", $text );
 

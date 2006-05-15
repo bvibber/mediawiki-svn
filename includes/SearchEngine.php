@@ -328,6 +328,7 @@ class SearchResult {
 	function getScore() {
 		return null;
 	}
+
 }
 
 /**

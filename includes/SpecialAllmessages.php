@@ -12,9 +12,8 @@ function wfSpecialAllmessages() {
 	global $wgOut, $wgAllMessagesEn, $wgRequest, $wgMessageCache, $wgTitle;
 	global $wgUseDatabaseMessages;
 
-	# The page isn't much use if the MediaWiki namespace is not being used
-	if( !$wgUseDatabaseMessages ) {
-		$wgOut->addWikiText( wfMsg( 'allmessagesnotsupportedDB' ) );
+	if(!$wgUseDatabaseMessages) {
+		$wgOut->addHTML(wfMsg('allmessagesnotsupportedDB'));
 		return;
 	}
 
@@ -169,7 +168,7 @@ function makeHTMLText( $messages ) {
 			$talkLink = $sk->makeBrokenLinkObj( $talkPage, htmlspecialchars( $talk ) );
 		}
 		
-		$anchor = 'msg_' . htmlspecialchars( strtolower( $title ) );
+		$anchor = htmlspecialchars( strtolower( $title ) );
 		$anchor = "<a id=\"$anchor\" name=\"$anchor\"></a>";
 
 		if($changed) {
@@ -206,5 +205,6 @@ $mw
 	wfProfileOut( $fname );
 	return $txt;
 }
+
 
 ?>
