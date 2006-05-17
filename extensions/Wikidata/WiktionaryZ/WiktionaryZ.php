@@ -286,7 +286,7 @@ class WiktionaryZ {
 					$translatedContents = $this->getTranslatedContents($definedMeaningTexts[$definedMeaningId]);
 					
 					foreach($translatedContents as $languageId => $textId) {
-						$definition = $wgRequest->getText('definition-'.$textId);
+						$definition = trim($wgRequest->getText('definition-'.$textId));
 						   	 
 						if ($definition != '')
 							$this->setText($textId, $definition);
@@ -538,7 +538,7 @@ class WiktionaryZ {
 	
 		if (array_key_exists('language-'. $postFix, $_POST)) {
 			$languageId = $wgRequest->getInt('language-'. $postFix);
-			$spelling = $wgRequest->getText('spelling-'. $postFix);
+			$spelling = trim($wgRequest->getText('spelling-'. $postFix));
 			$endemicMeaning = $wgRequest->getCheck('endemic-meaning-'.$postFix);
 			
 			if ($spelling != '')
@@ -574,7 +574,7 @@ class WiktionaryZ {
 			$wgRequest;	
 		
 		$languageId = $wgRequest->getInt('translated-definition-language-'.$definedMeaningId);
-		$definition = $wgRequest->getText('translated-definition-'.$definedMeaningId);
+		$definition = trim($wgRequest->getText('translated-definition-'.$definedMeaningId));
 
 		if ($definition != '' && !in_array($languageId, $languageIdsToExclude)) 
 			$this->addTranslatedDefinition($setId, $languageId, $definition, $revisionId);		
