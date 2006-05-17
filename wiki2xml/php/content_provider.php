@@ -73,11 +73,11 @@ class ContentProvider {
 		$parts2 = explode ( ".wikibooks.org/" , $site ) ;
 
 		$image = utf8_encode ( $name ) ;
-		$image2 = ucfirst ( str_replace ( " " , "_" , $image ) ) ;
-		$m = md5( $name ) ;
+		$image2 = ucfirst ( str_replace ( " " , "_" , $name ) ) ;
+		$m = md5( $image2 ) ;
 		$m1 = substr ( $m , 0 , 1 ) ;
 		$m2 = substr ( $m , 0 , 2 ) ;
-		$i = "{$m1}/{$m2}/" . $this->myurlencode ( $name ) ;
+		$i = "{$m1}/{$m2}/" . $this->myurlencode ( ucfirst ( $name ) ) ;
 
 
 		if ( count ($parts ) > 1 ) {
@@ -97,6 +97,7 @@ class ContentProvider {
 		} else {
 			$url = "http://{$site}/images/{$i}" ;
 		}
+#		print "<a href='{$url}'>{$url}</a><br/>" ;
 		return $url ;
 	}
 	
