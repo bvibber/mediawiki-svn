@@ -46,8 +46,9 @@ class XML2ODT {
 	function get_footnote_id ( $name , &$text ) {
 		$name = trim ( strtolower ( $name ) ) ;
 		if ( $name != "" && isset ( $this->footnote_index[$name] ) ) {
+			$this->footnote_counter++ ;
 			if ( trim ( $text ) == "" ) $text = $this->footnote_text[$name] ;
-			return $this->footnote_index[$name] ;
+			return $this->footnote_counter ;
 		} else {
 			$this->footnote_counter++ ;
 			if ( $name != "" ) {

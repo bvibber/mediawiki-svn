@@ -59,16 +59,27 @@ class ContentProvider {
 		return $fname ;
 	}
 
+	function myurlencode ( $t ) {
+		$t = str_replace ( " " , "_" , $t ) ;
+		$t = urlencode ( $t ) ;
+		return $t ;
+	}
+	
+
 	function get_image_url ( $name ) {
 		global $xmlg ;
-		$name = ucfirst ( $name ) ;
 		$site = $xmlg['site_base_url'] ;
 		$parts = explode ( ".wikipedia.org/" , $site ) ;
 		$parts2 = explode ( ".wikibooks.org/" , $site ) ;
-		$i = utf8_encode ( $name ) ;
-		$i = str_replace ( " " , "_" , $i ) ;
-		$m = md5 ( $i ) ;
-		$i = substr ( $m , 0 , 1 ) . "/" . substr ( $m , 0 , 2 ) . "/" . urlencode ( $i ) ;
+
+		$image = utf8_encode ( $name ) ;
+		$image2 = ucfirst ( str_replace ( " " , "_" , $image ) ) ;
+		$m = md5( $name ) ;
+		$m1 = substr ( $m , 0 , 1 ) ;
+		$m2 = substr ( $m , 0 , 2 ) ;
+		$i = "{$m1}/{$m2}/" . $this->myurlencode ( $name ) ;
+
+
 		if ( count ($parts ) > 1 ) {
 			$lang = array_shift ( $parts ) ;
 			$url = "http://upload.wikimedia.org/wikipedia/{$lang}/{$i}" ;
