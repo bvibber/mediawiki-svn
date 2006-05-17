@@ -20,6 +20,7 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efSort';
+	$wgExtensionCredits['parserhook'][] = array( 'name' => 'Sort', 'author' => 'Rob Church' );
 	
 	function efSort() {
 		global $wgParser;
