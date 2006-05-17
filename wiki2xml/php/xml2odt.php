@@ -27,6 +27,8 @@ class XML2ODT {
 	var $row_counter = array () ;
 	var $footnote_counter = 0 ;
 	var $article_counter = 0 ;
+	var $footnote_index = array () ;
+	var $footnote_text = array () ;
 	
 	function XML2ODT () {
 		$this->textstyle_current = new TextStyle ;
@@ -41,9 +43,19 @@ class XML2ODT {
 		return $url ;
 	}
 	
-	function get_footnote_id () {
-		$this->footnote_counter++ ;
-		return $this->footnote_counter ;
+	function get_footnote_id ( $name , &$text ) {
+		$name = trim ( strtolower ( $name ) ) ;
+		if ( $name != "" && isset ( $this->footnote_index[$name] ) ) {
+			if ( trim ( $text ) == "" ) $text = $this->footnote_text[$name] ;
+			return $this->footnote_index[$name] ;
+		} else {
+			$this->footnote_counter++ ;
+			if ( $name != "" ) {
+				$this->footnote_index[$name] = $this->footnote_counter ;
+				$this->footnote_text[$name] = $text ;
+			}
+			return $this->footnote_counter ;
+		}
 	}
 	
 	function get_image_frames () {
@@ -494,38 +506,29 @@ class element {
 	}
 
 	function handle_extensions ( &$tree ) {
-		global $content_provider , $xml2odt ;
+		global $content_provider , $xml2odt , $xmlg ;
 		$ret = "" ;
 		$name = strtolower ( $this->attrs['EXTENSION_NAME'] ) ;
-#		$ot = $tree->opentags ;
-#		$tree->opentags = array () ;
 		$sub = $this->sub_parse ( $tree ) ;
 		
 		if ( $name == "ref" ) {
-			$id = $xml2odt->get_footnote_id () ;
+			if ( isset ( $this->attrs['NAME'] ) ) $fname = $this->attrs['NAME'] ;
+			else $fname = "" ;
+			$note_class = strtolower ( trim ( $xmlg["odt_footnote"] ) ) ;
+			$note_style = ucfirst ( $note_class ) ;
+			$id = $xml2odt->get_footnote_id ( $fname , $sub ) ;
 			$ret .= '<text:note text:id="ftn' . $id .
-					'" text:note-class="footnote"><text:note-citation>' . 
+					'" text:note-class="' . $note_class . '"><text:note-citation>' . 
 					$id . 
-					'</text:note-citation><text:note-body><text:p text:style-name="Footnote">' .
-					$sub . 
-					'</text:p></text:note-body></text:note>' ;
+					'</text:note-citation>' ;
+			$ret .= '<text:note-body><text:p text:style-name="' . $note_style . '">' .
+				$sub . 
+				'</text:p></text:note-body>' ;
+			$ret .= '</text:note>' ;
 		} else { # Unhandeled extension
 			$ret = $sub ;
 		}
 
-/*
-		if ( $name == 'ref' )
-			$sub .= $this->ensure_new ( 'para' , $tree ) ;
-		$sub .= $this->sub_parse ( $tree ) ;
-		while ( count ( $tree->opentags ) > 0 )
-			$sub .= "</" . array_pop ( $tree->opentags ) . ">\n" ;
-		$tree->opentags = $ot ;
-		if ( $name == 'ref' ) {
-			$ret = '<footnote>' . $sub . '</footnote>' ;
-		} else {
-			$ret = $sub ;
-		}
-*/
 		return $ret ;
 	}
 

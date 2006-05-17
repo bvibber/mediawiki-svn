@@ -30,7 +30,8 @@ function get_form ( $as_extension = false ) {
 	}
 	if ( isset ( $xmlg['zip_odt'] ) ) {
 		$optional[] = "<INPUT type='radio' name='output_format' value='odt_xml'>OpenOffice XML" ;
-		$optional[] = "<INPUT type='radio' name='output_format' value='odt'>OpenOffice ODT" ;
+		$optional[] = "<INPUT type='radio' name='output_format' value='odt'>OpenOffice ODT" .
+			"<input type='checkbox' name='odt_footnote' value='1'>References as endnotes (instead of footnotes)" ;
 	}
 	$optional = "<br/>" . implode ( "<br/>" , $optional ) ;
 	
@@ -320,6 +321,7 @@ if ( get_param('doit',false) ) { # Process
 #		header("Content-type: application/xhtml+xml");
 		echo $converter->articles2xhtml ( $xml , $xmlg ) ;
 	} else if ( $format == "odt" || $format == "odt_xml" ) {
+		if ( isset ( $_REQUEST['odt_footnote'] ) ) $xmlg["odt_footnote"] = 'endnote' ;
 		if ( $xmlg['sourcedir'] == '.' ) $cwd = getcwd() ;
 		else $cwd = $xmlg['sourcedir'] ;
 		$template_file = $cwd . '/template.odt' ;

@@ -8,7 +8,7 @@ $xmlg["temp_dir"] = "/tmp" ;
 $xmlg['is_windows'] = false ;
 $xmlg['allow_get'] = false ;
 $xmlg["use_toolserver_url"] = false ;
-
+$xmlg["odt_footnote"] = 'footnote' ;
 $xmlg["allow_xml_temp_files"] = true ;
 $xmlg["use_xml_temp_files"] = false ;
 
