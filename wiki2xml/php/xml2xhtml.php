@@ -2,31 +2,32 @@
 
 # Setting allowed XHTML construct list
 global $xhtml_allowed ;
-$xhtml_inline = "a,b,br,cite,code,em,i,img,small,strong,span,sub,sup,tt,var,";
+$xhtml_inline = "a,b,br,cite,code,em,font,i,img,small,strong,span,sub,sup,tt,var,";
 $xhtml_block = "blockquote,div,dl,h1,h2,h3,h4,h5,h6,hr,ol,p,pre,table,ul,";
 $xhtml_allowed = array ( # A => B means B allowed in A
-	'' => $xhtml_block, # COMPLETE
-	'p' => $xhtml_inline."table", # COMPLETE
-	'table' => 'caption,col,colgroup,thead,tfoot,tbody,tr', # COMPLETE
-	'tbody' => 'tr', # COMPLETE
-	'tr' => 'td,th', # COMPLETE
-	'td' => $xhtml_inline.$xhtml_block, # COMPLETE
-	'th' => $xhtml_inline.$xhtml_block, # COMPLETE
-	'caption' => $xhtml_inline, # COMPLETE
-	'ul' => 'li', # COMPLETE
-	'ol' => 'li', # COMPLETE
-	'dl' => 'dt,dd', # COMPLETE
-	'li' => $xhtml_inline.$xhtml_block, # COMPLETE
-	'dt' => $xhtml_inline, # COMPLETE
-	'dd' => $xhtml_inline.$xhtml_block, # COMPLETE
-	'h1' => $xhtml_inline, # COMPLETE
-	'h2' => $xhtml_inline, # COMPLETE
-	'h3' => $xhtml_inline, # COMPLETE
-	'h4' => $xhtml_inline, # COMPLETE
-	'h5' => $xhtml_inline, # COMPLETE
-	'h6' => $xhtml_inline, # COMPLETE
-	'div' => $xhtml_inline.$xhtml_block, # COMPLETE
-	'blockquote' => $xhtml_block, # COMPLETE
+	'' => $xhtml_block,
+	'p' => $xhtml_inline."table",
+	'table' => 'caption,col,colgroup,thead,tfoot,tbody,tr',
+	'tbody' => 'tr',
+	'tr' => 'td,th',
+	'td' => $xhtml_inline.$xhtml_block,
+	'th' => $xhtml_inline.$xhtml_block,
+	'caption' => $xhtml_inline,
+	'ul' => 'li',
+	'ol' => 'li',
+	'dl' => 'dt,dd',
+	'li' => $xhtml_inline.$xhtml_block,
+	'dt' => $xhtml_inline,
+	'dd' => $xhtml_inline.$xhtml_block,
+	'h1' => $xhtml_inline,
+	'h2' => $xhtml_inline,
+	'h3' => $xhtml_inline,
+	'h4' => $xhtml_inline,
+	'h5' => $xhtml_inline,
+	'h6' => $xhtml_inline,
+	'font' => $xhtml_inline,
+	'div' => $xhtml_inline.$xhtml_block,
+	'blockquote' => $xhtml_block,
 ) ;
 
 $xhtml_allowed['caption'] .= $xhtml_allowed['p'] ;
@@ -195,6 +196,11 @@ class XML2XHTML {
 	function tag_xhtml_dd ( $open , &$attrs ) { $this->simple_tag ( $open , "dd" ) ; }
 	
 	# MISC
+	function tag_xhtml_font ( $open , &$attrs ) {
+		if ( $open ) $this->add_tag ( "font" , $attrs ) ;
+		else $this->close_tag ( "font" ) ;
+	}
+	
 	function tag_list ( $open , &$attrs ) {
 		if ( !$open ) {
 			$o = $this->top_tag () ;
