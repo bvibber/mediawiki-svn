@@ -1,0 +1,65 @@
+== bzip2 stream format ==
+
+NOTA BENE: bzip2 is a ''bitstream'' format, not a ''bytestream'' format.
+Some stream components are not an integral number of bytes, and those
+that are may not be aligned on byte coundaries.
+
+This somewhat complicates processing in typical byte-oriented I/O and
+array systems.
+
+Multi-bit integers are written big-endian.
+
+    BYTE             = BIT*8       ; Big-endian
+    UINT24           = BIT*24      ; Big-endian
+    UINT32           = BIT*32      ; Big-endian
+
+    stream           = stream-header block*N stream-trailer
+
+    stream-header    = header-signature header-blocksize
+    header-signature = BYTE*3("BZh")
+    header-blocksize = BYTE(DIGIT) ; 0 - 9
+    
+    block            = block-header block-data
+    
+    
+    block-header     = block-signature block-crc block-random block-origptr
+    
+    block-signature  = BYTE*6(%x31 %x41 %x59 %x26 %x53 %x59)
+    block-crc        = UINT32    ; CRC32 of this block
+    block-random     = BIT(0)    ; Always 0 in current versions of bzip2
+    block-origptr    = UINT24    ; Block sort index for reversing BWT
+    
+    block-data       = BYTE*N
+
+
+    stream-trailer   = trail-signature trail-crc
+    
+    trail-signature  = BYTE*6(%x17 %x72 %x45 %x38 %x50 %x90)
+    trail-crc        = UINT32    ; Combined CRC32 of whole stream
+
+
+== Internal notes ==
+
+BZ2_bzCompressInit:
+   n       = 100000 * blockSize100k;
+   s->arr1 = BZALLOC( n                  * sizeof(UInt32) );
+   s->arr2 = BZALLOC( (n+BZ_N_OVERSHOOT) * sizeof(UInt32) );
+   s->ftab = BZALLOC( 65537              * sizeof(UInt32) );
+
+   s->nblockMAX         = 100000 * blockSize100k - 19;
+
+
+
+
+
+BZ2_blockSort : performs BWT. sorted row headers in arr1, start index in origPtr
+-> how many chunks in the block? s->arr1[0..s->nblock - 1]
+
+generateMTFValues : 'move to front' stream transformation
+
+mapping tables
+- 
+selectors
+coding tables
+block data
+
