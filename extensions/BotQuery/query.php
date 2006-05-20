@@ -149,6 +149,16 @@ class BotQueryProcessor {
 			"apnamespaces - limits which namespace to enumerate. Default 0 (Main)",
 			"Example: query.php?what=allpages&aplimit=50",
 			)),
+		'nolanglinks'    => array( "genMetaNoLangLinksPages", true,
+			array( 'nllimit', 'nlfromid' ),
+			array( 50, 0 ),
+			array(
+			"Enumerates pages without language links to the output list.",
+			"Parameters supported:",
+			"nllimit      - how many total pages to return",
+			"nlfromid     - the page id to start enumerating from. Default is 0",
+			"Example: query.php?what=nolanglinks&nllimit=50",
+			)),
 		'users'          => array( "genUserPages", true,
 			array( 'usfrom', 'uslimit' ),
 			array( null, 50 ),
@@ -691,6 +701,47 @@ class BotQueryProcessor {
 		$this->db->freeResult( $res );
 	}
 
+	//
+	// TODO: This is very inefficient - we can get the actual page information, instead we make two identical query.
+	//
+	function genMetaNoLangLinksPages(&$prop, &$genInfo) {
+		global $wgContLang;
+		extract( $this->getParams( $prop, $genInfo ));
+
+		extract( $this->db->tableNames( 'page', 'langlinks' ) );
+
+		//
+		// Find all pages without any rows in the langlinks table
+		//
+		$sql = 'SELECT'
+			. ' page_id'
+			. " FROM $page LEFT JOIN $langlinks ON page_id = ll_from"
+			. ' WHERE'
+			. ' ll_from IS NULL AND page_id >= ' . intval($nlfromid)
+			. ' ORDER BY page_id'
+			. ' LIMIT ' . intval($nllimit+1);
+
+		$this->startProfiling();
+		$res = $this->db->query( $sql, $this->classname . '::genMetaNoLangLinksPages' );
+		$this->endProfiling($prop);
+
+		// Add found page ids to the list of requested titles - they will be auto-populated later
+		$count = 0;
+		while ( $row = $this->db->fetchObject( $res ) ) {
+			if( ++$count >= $nllimit ) {
+				// We've reached the one extra which shows that there are
+				// additional pages to be had. Stop here...
+				break;
+			}
+			$this->addRaw( 'pageids', $row->page_id );
+		}
+		if( $count < $nllimit || !$row ) {
+			$this->addStatusMessage( $prop, array('next' => 0) );
+		} else {
+			$this->addStatusMessage( $prop, array('next' => $row->page_id) );
+		}
+		$this->db->freeResult( $res );
+	}
 	//
 	// ************************************* PAGE INFO GENERATORS *************************************
 	//
