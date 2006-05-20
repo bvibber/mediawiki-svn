@@ -1096,9 +1096,9 @@ class BotQueryProcessor {
 		$this->validateLimit( 'co_querytoobig', count($this->existingPageIds), 50, 200 );
 		$this->startProfiling();
 		$res = $this->db->select(
-			array('page', 'text'),
+			array('page', 'revision', 'text'),
 			array('page_id', 'old_id', 'old_text', 'old_flags'),
-			array('page_latest = old_id', 'page_id' => $this->existingPageIds),
+			array('page_id=rev_page', 'page_latest=rev_id', 'rev_text_id=old_id', 'page_id' => $this->existingPageIds),
 			$this->classname . '::genPageContent'
 			);
 		$this->endProfiling($prop);
