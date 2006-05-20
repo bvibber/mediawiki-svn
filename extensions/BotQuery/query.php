@@ -695,6 +695,8 @@ class BotQueryProcessor {
 		
 		extract( $this->getParams( $prop, $genInfo ));
 
+		$this->validateLimit( 'uslimit', $uslimit, 50, 1000 );
+
 		$this->startProfiling();
 		$res = $this->db->select(
 			'user',
@@ -724,6 +726,8 @@ class BotQueryProcessor {
 		//
 		global $wgContLang;
 		extract( $this->getParams( $prop, $genInfo ));
+
+		$this->validateLimit( 'aplimit', $aplimit, 50, 1000 );
 
 		$ns = $wgContLang->getNsText($apnamespace);
 		if( $ns === false ) {
@@ -763,7 +767,7 @@ class BotQueryProcessor {
 		//
 		global $wgContLang;
 		extract( $this->getParams( $prop, $genInfo ));
-
+		$this->validateLimit( 'nllimit', $nllimit, 50, 1000 );
 		extract( $this->db->tableNames( 'page', 'langlinks' ) );
 
 		//
@@ -905,6 +909,7 @@ class BotQueryProcessor {
 		$parameters = $this->getParams( $prop, $genInfo );		
 		$contFrom = $parameters["{$code}contfrom"];
 		$limit  = intval($parameters["{$code}limit"]);
+		$this->validateLimit( "{$code}limit", $limit, 50, 1000 );
 		$filter = $parameters["{$code}filter"];
 		if( count($filter) != 1 ) {
 			$this->dieUsage( "{$code}filter must either be 'all', 'existing', or 'nonredirects'", "{$code}_badmultifilter" );
@@ -1055,9 +1060,7 @@ class BotQueryProcessor {
 		if( $rvoffset !== 0 ) {
 			$options['OFFSET'] = $rvoffset;
 		}
-		if( $rvlimit * count($this->existingPageIds) > 20000 ) {
-			$this->dieUsage( "rvlimit multiplied by number of requested titles must be less than 20000", 'rv_querytoobig' );
-		}
+		$this->validateLimit( 'rvlimit * pages', $rvlimit * count($this->existingPageIds), 200, 2000 );
 
 		$this->startProfiling();
 		foreach( $this->existingPageIds as $pageId ) {
@@ -1090,10 +1093,11 @@ class BotQueryProcessor {
 		if( empty( $this->existingPageIds ) ) {
 			return;
 		}
+		$this->validateLimit( 'co_querytoobig', count($this->existingPageIds), 50, 200 );
 		$this->startProfiling();
 		$res = $this->db->select(
 			array('page', 'text'),
-			array('page_id', 'old_text'),
+			array('page_id', 'old_id', 'old_text', 'old_flags'),
 			array('page_latest = old_id', 'page_id' => $this->existingPageIds),
 			$this->classname . '::genPageContent'
 			);
@@ -1101,7 +1105,7 @@ class BotQueryProcessor {
 
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			$this->addPageSubElement( $row->page_id, $prop, 'xml:space', 'preserve', false);
-			$this->addPageSubElement( $row->page_id, $prop, '*', $row->old_text, false);
+			$this->addPageSubElement( $row->page_id, $prop, '*', Revision::getRevisionText( $row ), false);
 		}
 		$this->db->freeResult( $res );
 	}
@@ -1395,20 +1399,20 @@ class BotQueryProcessor {
 	/**
 	* Validate the value against the minimum and user/bot maximum limits. Prints usage info on failure.
 	*/
-	function validateLimit( $varname, &$value, $max, $botMax = false, $min = 1 ) {
+	function validateLimit( $varname, $value, $max, $botMax = false, $min = 1 ) {
 		global $wgUser;
-		if( !$botMax ) $botMax = $max;
+		if( $botMax === false ) $botMax = $max;
 		
 		if ( $value < $min ) {
-			$this->dieUsage( "Minimum cannot be less than $min", $varname );
+			$this->dieUsage( "$value entries is less than $min", $varname );
 		}
 		if( $wgUser->isBot() ) {
 			if ( $value > $botMax ) {
-				$this->dieUsage( "Bots may not request over $botMax pages", $varname );
+				$this->dieUsage( "Bots requested $value pages, which is over $botMax pages allowed", $varname );
 			}
 		} else {
-			if( $this->requestsize > $max ) {
-				$this->dieUsage( "Users may not request over $max pages", $varname );
+			if( $value > $max ) {
+				$this->dieUsage( "Users requested $value pages, which is over $max pages allowed", $varname );
 			}
 		}
 	}
