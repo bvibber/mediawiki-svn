@@ -563,30 +563,6 @@ class BotQueryProcessor {
 		// When normalized title differs from what was given, append the given title(s)
 		//
 		foreach( $this->normalizedTitles as $givenTitle => &$title ) {
-
-		
-		
-		
-		
-		
-		
-		
-		
-echo "RAW:  $givenTitle => " . $title->getPrefixedText() . "\n<br>";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			$pageId = $this->pageIdByText[$title->getPrefixedText()];
 			$data = &$this->data['pages'][$pageId]['rawTitles'];
 			$data['_element'] = 'title';
