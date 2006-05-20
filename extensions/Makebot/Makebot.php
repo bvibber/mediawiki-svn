@@ -142,7 +142,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 									$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_REVOKE ) );
 								} else {
 									# Not a bot; show the grant form
-									# Not a bot; check other privs
 									$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_GRANT ) );
 								}
 							} elseif( $wgRequest->getCheck( 'grant' ) ) {
