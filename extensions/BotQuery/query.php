@@ -85,19 +85,23 @@ class BotQueryProcessor {
 			"Example: query.php?what=info&format=html",
 			)),
 		'txt' => array( 'printHumanReadable', 'application/x-wiki-botquery-print_r', null, null, array(
-			"Human-readable format using print_r() (http://www.php.net/print_r)",
+			"Human-readable format using print_r()",
+			"Details: http://www.php.net/print_r",
 			"Example: query.php?what=info&format=txt",
 			)),
 		'json'=> array( 'printJSON', 'application/json', null, null, array(
-			"JSON format (http://en.wikipedia.org/wiki/JSON)",
+			"JSON format",
+			"Details: http://en.wikipedia.org/wiki/JSON",
 			"Example: query.php?what=info&format=json",
 			)),
 		'php' => array( 'printPHP', 'application/vnd.php.serialized', null, null, array(
-			"PHP serialized format using serialize() (http://www.php.net/serialize)",
+			"PHP serialized format using serialize()",
+			"Details: http://www.php.net/serialize",
 			"Example: query.php?what=info&format=php",
 			)),
-		'dbg' => array( 'printParsableCode', 'application/x-wiki-botquery-var_export', null, null, array(
-			"PHP source code format using var_export() (http://www.php.net/var_export)",
+		'dbg' => array( 'printDebugCode', 'application/x-wiki-botquery-var_export', null, null, array(
+			"PHP source code format using var_export()",
+			"Details: http://www.php.net/var_export",
 			"Example: query.php?what=info&format=dbg",
 			)),
 	);
@@ -113,19 +117,24 @@ class BotQueryProcessor {
 	var $propGenerators = array(
 
 		// Site-wide Generators
-		'info'           => array( "genMetaSiteInfo", true, null, null, array(
+		'info'           => array( 'genMetaSiteInfo', true, null, null, array(
 			"General site information",
 			"Example: query.php?what=info",
 			)),
-		'namespaces'     => array( "genMetaNamespaceInfo", true, null, null, array(
+		'namespaces'     => array( 'genMetaNamespaceInfo', true, null, null, array(
 			"List of localized namespace names",
 			"Example: query.php?what=namespaces",
 			)),
-		'userinfo'       => array( "genMetaUserInfo", true, null, null, array(
+		'userinfo'       => array( 'genMetaUserInfo', true, 
+			array( 'uiextended' ),
+			array( false ),
+			array(
 			"Information about current user",
-			"Example: query.php?what=userinfo",
+			"Parameters supported:",
+			"uiextended - If present, includes additional information such as rights and groups.",
+			"Example: query.php?what=userinfo&uiextended",
 			)),
-		'recentchanges'  => array( "genMetaRecentChanges", true,
+		'recentchanges'  => array( 'genMetaRecentChanges', true,
 			array( 'rcfrom', 'rclimit', 'rchide' ),
 			array( null, 50, array(null, 'minor', 'bots', 'anons', 'liu') ),
 			array(
@@ -138,7 +147,7 @@ class BotQueryProcessor {
 			"             Cannot specify both anons and liu.",
 			"Example: query.php?what=recentchanges&rchide=liu|bots",
 			)),
-		'allpages'       => array( "genMetaAllPages", true,
+		'allpages'       => array( 'genMetaAllPages', true,
 			array( 'aplimit', 'apfrom', 'apnamespace' ),
 			array( 50, '!', 0 ),
 			array(
@@ -149,17 +158,18 @@ class BotQueryProcessor {
 			"apnamespaces - limits which namespace to enumerate. Default 0 (Main)",
 			"Example: query.php?what=allpages&aplimit=50",
 			)),
-		'nolanglinks'    => array( "genMetaNoLangLinksPages", true,
-			array( 'nllimit', 'nlfromid' ),
-			array( 50, 0 ),
+		'nolanglinks'    => array( 'genMetaNoLangLinksPages', true,
+			array( 'nllimit', 'nlfrom', 'nlnamespace' ),
+			array( 50, '!', 0 ),
 			array(
 			"Enumerates pages without language links to the output list.",
 			"Parameters supported:",
 			"nllimit      - how many total pages to return",
-			"nlfromid     - the page id to start enumerating from. Default is 0",
+			"nlfrom       - the page title to start enumerating from. Default is '!'",
+			"nlnamespaces - limits which namespace to enumerate. Default 0 (Main)",
 			"Example: query.php?what=nolanglinks&nllimit=50",
 			)),
-		'users'          => array( "genUserPages", true,
+		'users'          => array( 'genUserPages', true,
 			array( 'usfrom', 'uslimit' ),
 			array( null, 50 ),
 			array(
@@ -173,24 +183,24 @@ class BotQueryProcessor {
 		//
 		// Page-specific Generators
 		//
-		'redirects'      => array( "genRedirectInfo", false, null, null, array(
+		'redirects'      => array( 'genRedirectInfo', false, null, null, array(
 			"For all given redirects, provides additional information such as pageIds and double-redirection",
 			"Example: query.php?what=redirects&titles=Main_page",
 			"         query.php?what=recentchanges|redirects  (Which of the recent changes are redirects?)",
 			)),
-		'links'          => array( "genPageLinksHelper", false, null, null, array(
+		'links'          => array( 'genPageLinksHelper', false, null, null, array(
 			"List of regular page links",
 			"Example: query.php?what=links&titles=MediaWiki|Wikipedia",
 			)),
-		'langlinks'      => array( "genPageLinksHelper", false, null, null, array(
+		'langlinks'      => array( 'genPageLinksHelper', false, null, null, array(
 			"Inter-language links",
 			"Example: query.php?what=langlinks&titles=MediaWiki|Wikipedia",
 			)),
-		'templates'      => array( "genPageLinksHelper", false, null, null, array(
+		'templates'      => array( 'genPageLinksHelper', false, null, null, array(
 			"List of used templates",
 			"Example: query.php?what=templates&titles=Main_Page",
 			)),
-		'backlinks'      => array( "genPageBackLinksHelper", false,
+		'backlinks'      => array( 'genPageBackLinksHelper', false,
 			array( 'blfilter', 'bllimit', 'blcontfrom' ),
 			array( array('existing', 'nonredirects', 'all'), 50, null ),
 			array(
@@ -202,7 +212,7 @@ class BotQueryProcessor {
 			"blcontfrom - from which point to continue. Use the 'next' value from previous queries.",
 			"Example: query.php?what=backlinks&titles=Main%20Page&bllimit=10",
 			)),
-		'embeddedin'     => array( "genPageBackLinksHelper", false, 
+		'embeddedin'     => array( 'genPageBackLinksHelper', false, 
 			array( 'eifilter', 'eilimit', 'eicontfrom' ), 
 			array( array('existing', 'nonredirects', 'all'), 50, null ),
 			array(
@@ -214,7 +224,7 @@ class BotQueryProcessor {
 			"eicontfrom - from which point to continue. Use the 'next' value from previous queries.",
 			"Example: query.php?what=embeddedin&titles=Template:Stub&eilimit=10",
 			)),
-		'imagelinks'     => array( "genPageBackLinksHelper", false, 
+		'imagelinks'     => array( 'genPageBackLinksHelper', false, 
 			array( 'ilfilter', 'illimit', 'ilcontfrom' ),
 			array( array('existing', 'nonredirects', 'all'), 50, null ),
 			array(
@@ -225,7 +235,7 @@ class BotQueryProcessor {
 			"ilcontfrom - from which point to continue. Use the 'next' value from previous queries.",
 			"Example: query.php?what=imagelinks&titles=image:test.jpg&illimit=10",
 			)),
-		'revisions'      => array( "genPageHistory", false,
+		'revisions'      => array( 'genPageHistory', false,
 			array( 'rvcomments', 'rvlimit', 'rvoffset', 'rvstart', 'rvend' ),
 			array( false, 50, 0, null, null ),
 			array(
@@ -237,6 +247,10 @@ class BotQueryProcessor {
 			"rvstart    - timestamp of the earliest entry",
 			"rvend      - timestamp of the latest entry",
 			"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments",
+			)),
+		'content'        => array( 'genPageContent', false, null, null, array(
+			"Raw page content",
+			"Example: query.php?what=content&titles=Main%20Page",
 			)),
 	);
 
@@ -269,6 +283,9 @@ class BotQueryProcessor {
 		$this->normalizedTitles = array();
 	}
 
+	/**
+	* The core function - executes meta generators, populates basic page info, and then fills in the required additional data for all pages
+	*/
 	function execute() {
 	
 		// Process metadata generators
@@ -286,6 +303,9 @@ class BotQueryProcessor {
 		}
 	}
 
+	/**
+	* Helper method to call generators (either meta or non-meta)
+	*/
 	function callGenerators( $callMetaGenerators ) {
 		foreach( $this->propGenerators as $property => &$generator ) {
 			if( $generator[GEN_ISMETA] === $callMetaGenerators && in_array( $property, $this->properties )) {
@@ -294,6 +314,9 @@ class BotQueryProcessor {
 		}
 	}
 
+	/**
+	* Output the result to the user
+	*/
 	function output($isError = false) {
 		global $wgRequest, $wgUser;
 
@@ -352,6 +375,9 @@ class BotQueryProcessor {
 		}
 	}
 	
+	/**
+	* Return an array of values that were given in a "a|b|c" notation, after it validates them against the list allowed values.
+	*/
 	function parseMultiValue( $valueName, $allowedValues ) {
 		global $wgRequest;
 
@@ -366,9 +392,16 @@ class BotQueryProcessor {
 		return $valuesList;
 	}
 
+	
 	//
 	// ************************************* GENERATORS *************************************
 	//
+
+	
+	/**
+	* Creates lists of pages to work on. User parameters 'titles' and 'pageids' will be added to the list, and information from page table will be provided.
+	* As the result of this method, $this->redirectPageIds and existingPageIds (arrays) will be available for other generators.
+	*/
 	function genPageInfo() {
 		global $wgUser, $wgRequest;
 		
@@ -394,7 +427,7 @@ class BotQueryProcessor {
 				// Make sure we remember the original title that was given to us
 				// This way the caller can correlate new titles with the originally requested if they change namespaces, etc
 				if( $titleString !== $titleObj->getPrefixedText() ) {
-					$this->normalizedTitles[$titleString] = &$titleObj;
+					$this->normalizedTitles[$titleString] = $titleObj;
 				}
 			}
 			if ( $linkBatch->isEmpty() ) {
@@ -530,6 +563,30 @@ class BotQueryProcessor {
 		// When normalized title differs from what was given, append the given title(s)
 		//
 		foreach( $this->normalizedTitles as $givenTitle => &$title ) {
+
+		
+		
+		
+		
+		
+		
+		
+		
+echo "RAW:  $givenTitle => " . $title->getPrefixedText() . "\n<br>";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			$pageId = $this->pageIdByText[$title->getPrefixedText()];
 			$data = &$this->data['pages'][$pageId]['rawTitles'];
 			$data['_element'] = 'title';
@@ -539,9 +596,15 @@ class BotQueryProcessor {
 		return true; // success
 	}
 
+	
 	//
 	// ************************************* META GENERATORS *************************************
 	//
+	
+	
+	/**
+	* Get general site information
+	*/
 	function genMetaSiteInfo(&$prop, &$genInfo) {
 		global $wgSitename, $wgVersion, $wgCapitalLinks;
 		$meta = array();
@@ -556,6 +619,9 @@ class BotQueryProcessor {
 		$this->data['meta']['site'] = $meta;
 	}
 
+	/**
+	* Get the list of localized namespaces
+	*/
 	function genMetaNamespaceInfo(&$prop, &$genInfo) {
 		global $wgContLang;
 		$meta = array();
@@ -566,21 +632,30 @@ class BotQueryProcessor {
 		$this->data['meta']['namespaces'] = $meta;
 	}
 
+	/**
+	* Get current user's status information
+	*/
 	function genMetaUserInfo(&$prop, &$genInfo) {
 		global $wgUser;
 		
+		extract( $this->getParams( $prop, $genInfo ));		
 		$meta = array();
 		$meta['name'] = $wgUser->getName();
 		if( $wgUser->isAnon() ) $meta['anonymous'] = '';
 		if( $wgUser->isBot() ) $meta['bot'] = '';
 		if( $wgUser->isBlocked() ) $meta[' blocked'] = '';
-		$meta['groups'] = $wgUser->getGroups();
-		$meta['groups']['_element'] = 'g';
-		$meta['rights'] = $wgUser->getRights();
-		$meta['rights']['_element'] = 'r';
+		if( $uiextended ) {
+			$meta['groups'] = $wgUser->getGroups();
+			$meta['groups']['_element'] = 'g';
+			$meta['rights'] = $wgUser->getRights();
+			$meta['rights']['_element'] = 'r';
+		}
 		$this->data['meta']['user'] = $meta;
 	}
 
+	/**
+	* Add pagids of the most recently modified pages to the output
+	*/
 	function genMetaRecentChanges(&$prop, &$genInfo) {
 		
 		extract( $this->getParams( $prop, $genInfo ));		
@@ -636,6 +711,9 @@ class BotQueryProcessor {
 		$this->db->freeResult( $res );
 	}
 	
+	/**
+	* Add user pages to the list of titles to output (the actual user pages might not exist)
+	*/
 	function genUserPages(&$prop, &$genInfo) {
 		global $wgContLang;
 		
@@ -661,50 +739,52 @@ class BotQueryProcessor {
 		$this->db->freeResult( $res );
 	}
 
-	//
-	// TODO: This is very inefficient - we can get the actual page information, instead we make two identical query.
-	//
+	/**
+	* Add all pages by a given namespace to the output
+	*/
 	function genMetaAllPages(&$prop, &$genInfo) {
+		//
+		// TODO: This is very inefficient - we can get the actual page information, instead we make two identical query.
+		//
 		global $wgContLang;
 		extract( $this->getParams( $prop, $genInfo ));
 
 		$ns = $wgContLang->getNsText($apnamespace);
 		if( $ns === false ) {
 			$this->dieUsage( "Unknown namespace $ns", 'ap_badnamespace' );
+		} else if( strlen($ns) > 0 ) {
+			$ns .= ':';
 		}
-		$ns .= ':';
 
 		$this->startProfiling();
 		$res = $this->db->select(
 			'page',
 			'page_title',
-			array( 'page_namespace=' . $this->db->addQuotes($apnamespace) . ' AND page_title>=' . $this->db->addQuotes($apfrom) ),
+			array( 'page_namespace' => intval($apnamespace), 'page_title>=' . $this->db->addQuotes($apfrom) ),
 			$this->classname . '::genMetaAllPages',
-			array( 'FORCE INDEX' => 'name_title', 'LIMIT' => $aplimit+1, 'ORDER BY' => 'page_title' ));
+			array( 'FORCE INDEX' => 'name_title', 'LIMIT' => $aplimit+1, 'ORDER BY' => 'page_namespace, page_title' ));
 		$this->endProfiling($prop);
 
 		// Add found page ids to the list of requested titles - they will be auto-populated later
 		$count = 0;
 		while ( $row = $this->db->fetchObject( $res ) ) {
-			if( ++$count >= $aplimit ) {
-				// We've reached the one extra which shows that there are
-				// additional pages to be had. Stop here...
+			if( ++$count > $aplimit ) {
+				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
+				$this->addStatusMessage( $prop, array('next' => $row->page_title) );
 				break;
 			}
 			$this->addRaw( 'titles', $ns . $row->page_title );
 		}
-		if( $count < $aplimit || !$row ) {
-			$this->addStatusMessage( $prop, array('next' => 0) );
-		} else {
-			$this->addStatusMessage( $prop, array('next' => $row->page_title) );
-		}
 		$this->db->freeResult( $res );
 	}
 
-	//
-	// TODO: This is very inefficient - we can get the actual page information, instead we make two identical query.
-	//
+	/**
+	* Add pages by the namespace without language links to the output
+	*/
 	function genMetaNoLangLinksPages(&$prop, &$genInfo) {
+		//
+		// TODO: This is very inefficient - we can get the actual page information, instead we make two identical query.
+		//
 		global $wgContLang;
 		extract( $this->getParams( $prop, $genInfo ));
 
@@ -714,11 +794,11 @@ class BotQueryProcessor {
 		// Find all pages without any rows in the langlinks table
 		//
 		$sql = 'SELECT'
-			. ' page_id'
+			. ' page_id, page_title'
 			. " FROM $page LEFT JOIN $langlinks ON page_id = ll_from"
 			. ' WHERE'
-			. ' ll_from IS NULL AND page_id >= ' . intval($nlfromid)
-			. ' ORDER BY page_id'
+			. ' ll_from IS NULL AND page_namespace=' . intval($nlnamespace) . ' AND page_title>=' . $this->db->addQuotes($nlfrom)
+			. ' ORDER BY page_namespace, page_title'
 			. ' LIMIT ' . intval($nllimit+1);
 
 		$this->startProfiling();
@@ -728,20 +808,17 @@ class BotQueryProcessor {
 		// Add found page ids to the list of requested titles - they will be auto-populated later
 		$count = 0;
 		while ( $row = $this->db->fetchObject( $res ) ) {
-			if( ++$count >= $nllimit ) {
-				// We've reached the one extra which shows that there are
-				// additional pages to be had. Stop here...
+			if( ++$count > $nllimit ) {
+				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
+				$this->addStatusMessage( $prop, array('next' => $row->page_title) );
 				break;
 			}
 			$this->addRaw( 'pageids', $row->page_id );
 		}
-		if( $count < $nllimit || !$row ) {
-			$this->addStatusMessage( $prop, array('next' => 0) );
-		} else {
-			$this->addStatusMessage( $prop, array('next' => $row->page_id) );
-		}
 		$this->db->freeResult( $res );
 	}
+	
+	
 	//
 	// ************************************* PAGE INFO GENERATORS *************************************
 	//
@@ -851,7 +928,7 @@ class BotQueryProcessor {
 		//
 		$parameters = $this->getParams( $prop, $genInfo );		
 		$contFrom = $parameters["{$code}contfrom"];
-		$limit  = intval($parameters["{$code}limit"]) + 1;
+		$limit  = intval($parameters["{$code}limit"]);
 		$filter = $parameters["{$code}filter"];
 		if( count($filter) != 1 ) {
 			$this->dieUsage( "{$code}filter must either be 'all', 'existing', or 'nonredirects'", "{$code}_badmultifilter" );
@@ -947,7 +1024,7 @@ class BotQueryProcessor {
 									."{$prefix}_from >= " . intval($fromPageId) . "))))"; 
 			}
 		}
-		$options = array( 'ORDER BY' => $orderBy, 'LIMIT' => $limit );
+		$options = array( 'ORDER BY' => $orderBy, 'LIMIT' => $limit+1 );
 		//
 		// Execute
 		//
@@ -962,24 +1039,22 @@ class BotQueryProcessor {
 
 		$count = 0;
 		while ( $row = $this->db->fetchObject( $res ) ) {
-			if( ++$count >= $limit ) {
-				// We've reached the one extra which shows that there are
-				// additional pages to be had. Stop here...
+			if( ++$count > $limit ) {
+				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
+				$this->addStatusMessage( $prop, 
+					array('next' => ($isImage ? NS_IMAGE : $row->to_namespace) ."|{$row->to_title}|{$row->from_id}") );
 				break;
 			}
 			$pageId = $this->lookupPageIdByTitle( ($isImage ? NS_IMAGE : $row->to_namespace), $row->to_title );
 			$values = $this->getLinkInfo( $row->from_namespace, $row->from_title, $row->from_id );
 			$this->addPageSubElement( $pageId, $prop, $code, $values );
 		}
-		if( $count < $limit || !$row ) {
-			$this->addStatusMessage( $prop, array('next' => 0) );
-		} else {
-			$this->addStatusMessage( $prop, 
-				array('next' => ($isImage ? NS_IMAGE : $row->to_namespace) ."|{$row->to_title}|{$row->from_id}") );
-		}
 		$this->db->freeResult( $res );
 	}
 	
+	/**
+	* Add a list of revisions to the page history
+	*/
 	function genPageHistory(&$prop, &$genInfo) {
 		if( empty( $this->existingPageIds ) ) {
 			return;
@@ -1031,6 +1106,30 @@ class BotQueryProcessor {
 		}
 		$this->endProfiling($prop);
 	}
+
+	/**
+	* Add the raw content of the pages
+	*/
+	function genPageContent(&$prop, &$genInfo) {
+		if( empty( $this->existingPageIds ) ) {
+			return;
+		}
+		$this->startProfiling();
+		$res = $this->db->select(
+			array('page', 'text'),
+			array('page_id', 'old_text'),
+			array('page_latest = old_id', 'page_id' => $this->existingPageIds),
+			$this->classname . '::genPageContent'
+			);
+		$this->endProfiling($prop);
+
+		while ( $row = $this->db->fetchObject( $res ) ) {
+			$this->addPageSubElement( $row->page_id, $prop, 'xml:space', 'preserve', false);
+			$this->addPageSubElement( $row->page_id, $prop, '*', $row->old_text, false);
+		}
+		$this->db->freeResult( $res );
+	}
+
 
 	//
 	// ************************************* UTILITIES *************************************
@@ -1102,6 +1201,9 @@ class BotQueryProcessor {
 		return $val;
 	}
 	
+	/**
+	* Creates an array describing the properties of a given link
+	*/
 	function getLinkInfo( $ns, $title, $id = -1, $isRedirect = false ) {
 		return $this->getTitleInfo( Title::makeTitle( $ns, $title ), $id, $isRedirect );
 	}
@@ -1132,6 +1234,23 @@ class BotQueryProcessor {
 		return $data;
 	}
 
+	/**
+	* Adds a sub element to the page by its id. 
+	* Example for $multiItems = true (useful when there are many subelements with the same name, like langlinks or backlinks)
+	* 'pages' => array (
+	*    $pageId => array (
+	*      $mainElem => array (
+	*        '_element' => $itemElem,
+	*        0 => $params
+	*        1 => $params
+	*        .....
+	* Example for $multiItems = false (useful when there are few elements with unique names)
+	* 'pages' => array (
+	*    $pageId => array (
+	*      $mainElem => array (
+	*        $itemElem => $params
+	*        .....
+	*/
 	function addPageSubElement( $pageId, $mainElem, $itemElem, $params, $multiItems = true ) {
 		$data = & $this->data['pages'][$pageId][$mainElem];
 		if( $multiItems ) {
@@ -1145,6 +1264,9 @@ class BotQueryProcessor {
 		}
 	}
 
+	/**
+	* Validate the proper format of the timestamp string (14 digits), and add quotes to it.
+	*/
 	function prepareTimestamp( $value ) {
 		if ( preg_match( '/^[0-9]{14}$/', $value ) ) {
 			return $this->db->addQuotes( $value );
@@ -1166,25 +1288,25 @@ class BotQueryProcessor {
 				
 			$indentSize = 12;
 			$indstr = str_repeat(" ", $indentSize+7);
+			$formatString = "  %-{$indentSize}s - %s\n\n";
 			
 			$formats = "";
 			foreach( $this->outputGenerators as $format => &$generator ) {
-				$formats .= sprintf( "  %-{$indentSize}s - %s\n", 
-					$format,
+				$formats .= sprintf( $formatString, $format,
 					mergeDescriptionStrings($generator[GEN_DESC], $indstr));
 			}
 
 			$props = "\n  *These properties apply to the entire site*\n";
 			foreach( $this->propGenerators as $property => &$generator ) {
 				if( $generator[GEN_ISMETA] ) {
-					$props .= sprintf( "  %-{$indentSize}s - %s\n", $property, 
+					$props .= sprintf( $formatString, $property, 
 								mergeDescriptionStrings($generator[GEN_DESC], $indstr));
 				}
 			}
 			$props .= "\n  *These properties apply to the specified pages*\n";
 			foreach( $this->propGenerators as $property => &$generator ) {
 				if( !$generator[GEN_ISMETA] ) {
-					$props .= sprintf( "  %-{$indentSize}s - %s\n", $property, 
+					$props .= sprintf( $formatString, $property, 
 								mergeDescriptionStrings($generator[GEN_DESC], $indstr));
 				}
 			}
@@ -1195,49 +1317,50 @@ class BotQueryProcessor {
 				"",
 				"*------ Error: $message ($errorcode) ------*",
 				"",
-				"Summary:",
+				"*Summary*",
 				"  This API provides a way for your applications to query data directly from the MediaWiki servers.",
 				"  One or more pieces of information about the site and/or a given list of pages can be retrieved.",
 				"  Information may be returned in either a machine (xml, json, php) or a human readable (html, dbg) format.",
 				"",
-				"Usage:",
+				"*Usage*",
 				"  query.php ? format=... & what=...|...|... & titles=...|...|... & ...",
 				"",
-				"Common parameters:",
+				"*Common parameters*",
 				"    format     - How should the output be formatted. See formats section.",
 				"    what       - What information the server should return. See properties section.",
 				"    titles     - A list of titles, separated by the pipe '|' symbol.",
 				"    pageids    - A list of page ids, separated by the pipe '|' symbol.",
 				"    noprofile  - When present, each sql query execution time will be hidden. (Optional)",
 				"",
-				"Examples:",
+				"*Examples*",
 				"    query.php?format=xml&what=links|templates&titles=User:Yurik",
 				"  This query will return a list of all links and templates used on the User:Yurik",
 				"",
 				"    query.php?format=xml&what=revisions&titles=Main_Page&rvlimit=100&rvstart=20060401000000&rvcomments",
 				"  Get a list of 100 last revisions of the main page with comments, but only if it happened after midnight April 1st 2006",
 				"",
-				"Supported Formats:",
+				"",
+				"*Supported Formats*",
 				$formats,
 				"",
-				"Supported Properties:",
+				"*Supported Properties*",
 				$props,
 				"",
-				"Notes:",
+				"*Notes*",
 				"  Some properties may add status information to the 'query' element.",
 				"",
-				"Credits:",
+				"*Credits*",
+				"  This feature is maintained by Yuri Astrakhan (FirstnameLastname@gmail.com)",
+				"  You can also leave your comments and suggestions at http://en.wikipedia.org/wiki/User_talk:Yurik",
+				"",
 				"  This extension came as the result of IRC discussion between Yuri Astrakhan (en:Yurik), Tim Starling (en:Tim Starling), and Daniel Kinzler(de:Duesentrieb)",
 				"  The extension was first implemented by Tim to provide interlanguage links and history.",
 				"  It was later completelly rewritten by Yuri to allow for modular properties, meta information, and various formatting options.",
 				"",
-				"  The code is maintained by Yuri Astrakhan (FirstnameLastname@gmail.com)",
-				"  You can also leave your comments and suggestions at http://en.wikipedia.org/wiki/User_talk:Yurik",
-				"",
-				"User Status:",
+				"*User Status*",
 				"  You are " . ($wgUser->isAnon() ? "an anonymous" : "a logged-in") . " " . ($wgUser->isBot() ? "bot" : "user") . " " . $wgUser->getName(),
 				"",
-				"Version:",
+				"*Version*",
 				'  $Id$',
 				"",
 				);
@@ -1248,6 +1371,9 @@ class BotQueryProcessor {
 		die(0);
 	}
 	
+	/**
+	* Adds a status message into the <query> element, for a given module.
+	*/
 	function addStatusMessage( $module, $value, $preserveXmlSpacing = false ) {
 		if( !array_key_exists( 'query', $this->data )) {
 			$this->data['query'] = array();
@@ -1274,15 +1400,25 @@ class BotQueryProcessor {
 		}
 	}
 	
+	/**
+	* Records the time of the call to this method
+	*/
 	function startProfiling() {
 		$this->startTime = wfTime();
 	}
+	
+	/**
+	* Records the running time of the given module since last startProfiling() call.
+	*/
 	function endProfiling( $module ) {
 		$timeDelta = wfTime() - $this->startTime;
 		unset($this->startTime);
 		$this->addStatusMessage( $module, array( 'time' => sprintf( "%1.2fms", $timeDelta * 1000.0 ) ));
 	}
 	
+	/**
+	* Validate the value against the minimum and user/bot maximum limits. Prints usage info on failure.
+	*/
 	function validateLimit( $varname, &$value, $max, $botMax = false, $min = 1 ) {
 		global $wgUser;
 		if( !$botMax ) $botMax = $max;
@@ -1302,9 +1438,14 @@ class BotQueryProcessor {
 	}
 }
 
+
 //
 // ************************************* Print Methods *************************************
 //
+
+/**
+* Prints data in html format. Escapes all unsafe characters. Adds an HTML warning in the begining.
+*/
 function printHTML( &$data ) {
 	global $wgRequest;
 ?>
@@ -1330,6 +1471,10 @@ function printHTML( &$data ) {
 </body>
 <?php
 }
+
+/**
+* Prety-print various elements in HTML format, such as xml tags and URLs. This method also replaces any "<" with &lt;
+*/
 function htmlprinter( $text ) {
 	// encode all tags as safe blue strings
 	$text = ereg_replace( '\<([^>]+)\>', '<font color=blue>&lt;\1&gt;</font>', $text );
@@ -1342,26 +1487,48 @@ function htmlprinter( $text ) {
 	echo $text;
 }
 
+/**
+* Output data in XML format
+*/
 function printXML( &$data ) {
 	global $wgRequest;
 	echo '<?xml version="1.0" encoding="utf-8"?>';
 	recXmlPrint( 'echoprinter', 'yurik', $data, $wgRequest->getCheck('xmlindent') ? -2 : null );
 }
+/**
+* Pass-through printer.
+*/
 function echoprinter( $text ) {
 	echo $text;
 }
+
+/**
+* Sanitizes the data and prints it with the print_r()
+*/
 function printHumanReadable( &$data ) {
 	sanitizeOutputData($data);
 	print_r($data);
 }
-function printParsableCode( &$data ) {
-	sanitizeOutputData($data);
+
+/**
+* Prints the data as is, using var_export().
+* This format exposes all internals of the data object unescaped, thus it must never be outputed with meta set to text/*
+*/
+function printDebugCode( &$data ) {
 	var_export($data);
 }
+
+/**
+* Sanitizes the data and serialize() it so that other php scripts can easily consume the data
+*/
 function printPHP( &$data ) {
 	sanitizeOutputData($data);
 	echo serialize($data);
 }
+
+/**
+* Sanitizes the data and serializes it in JSON format
+*/
 function printJSON( &$data ) {
 	sanitizeOutputData($data);
 	if ( !function_exists( 'json_encode' ) ) {
@@ -1446,6 +1613,9 @@ function recXmlPrint( $printer, $elemName, &$elemValue, $indent = -2 ) {
 	}
 }
 
+/**
+* Helper method that merges an array of strings and prepends each line with an indentation string
+*/
 function mergeDescriptionStrings( &$value, $indstr ) {
 	if( is_array($value) ) {
 		$value = implode( "\n", $value );
@@ -1453,6 +1623,9 @@ function mergeDescriptionStrings( &$value, $indstr ) {
 	return str_replace("\n", "\n$indstr", $value);
 }
 
+/**
+* Merge all known generator parameters into one array of values. Used for logging.
+*/
 function mergeParameters( &$generators ) {
 	$params = array();
 	foreach( $generators as $property => &$generator ) {
