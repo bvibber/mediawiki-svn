@@ -217,7 +217,7 @@ class BotQueryProcessor {
 			)),
 		'revisions'      => array( "genPageHistory", false,
 			array( 'rvcomments', 'rvlimit', 'rvoffset', 'rvstart', 'rvend' ),
-			array( null, 50, 0, null, null ),
+			array( false, 50, 0, null, null ),
 			array(
 			"Revision history - Lists edits performed to the given pages",
 			"Parameters supported:",
@@ -1007,6 +1007,10 @@ class BotQueryProcessor {
 					break;
 				case 'integer':
 					$result = $wgRequest->getInt( $param, $dflt );
+					break;
+				case 'boolean':
+					// Having a default value of 'true' is pointless
+					$result = $wgRequest->getCheck( $param );
 					break;
 				case 'array':
 					$result = $this->parseMultiValue( $param, $dflt );
