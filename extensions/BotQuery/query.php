@@ -1101,13 +1101,12 @@ class BotQueryProcessor {
 			array('page_id=rev_page', 'page_latest=rev_id', 'rev_text_id=old_id', 'page_id' => $this->existingPageIds),
 			$this->classname . '::genPageContent'
 			);
-		$this->endProfiling($prop);
-
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			$this->addPageSubElement( $row->page_id, $prop, 'xml:space', 'preserve', false);
 			$this->addPageSubElement( $row->page_id, $prop, '*', Revision::getRevisionText( $row ), false);
 		}
 		$this->db->freeResult( $res );
+		$this->endProfiling($prop);	// getRevisionText is also a database call
 	}
 
 
