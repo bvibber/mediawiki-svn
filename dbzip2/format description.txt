@@ -63,3 +63,57 @@ selectors
 coding tables
 block data
 
+
+== Block size ==
+
+The size of uncompressed blocks is *not* exactly [0-9]00k bytes as one might
+naively expect. On my French Wikipedia dump test file I see block sizes
+varying from 899603 to 1216072 bytes, not counting the smaller trailing
+block.
+
+According to the docs, bzip2 does some RLE compression on raw input in the
+hopes of reducing slow sorting cases. It looks like the block chunking comes
+*after* the RLE, so the uncompressed portion can be somewhat smaller or larger.
+
+This somewhat breaks my dream of naively chopping up the file and extracting
+the chunks from individually compressed streams; while it *should* still work
+if you're careful about input size, producing bit-identical results to normal
+bzip2 will probably require moving the RLE stage out to the input thread,
+as bzip2-smp does. How much library hacking this will take, we'll see.
+
+
+== CRC ==
+
+Combined CRC seems to simply be build from each block's CRC. This
+should be relatively simple to handle.
+
+bzlib.c:   s->combinedCRC       = 0;
+      BZ_FINALISE_CRC ( s->blockCRC );
+      s->combinedCRC = (s->combinedCRC << 1) | (s->combinedCRC >> 31);
+      s->combinedCRC ^= s->blockCRC;
+
+
+== Order of operations ==
+
+Something like:
+
+1) RLE on input data
+2) Chunk RLE'd data into blocks
+3) Perform BWT block sort on block
+4) Write block header
+5) MTF (Move To Front) encoding
+6) Huffman coding
+7) Dump compressed bits to output
+
+bzip2-smp hacks the bzip2 library to interrupt things somwhere between steps
+2 and 3. Step 3, the Burrows-Wheeler Transform, is the most CPU-intense part
+of the task, and is offloaded to multiple background threads. Sorted blocks
+then get further processing and are written out for steps 4-7 on yet another
+thread.
+
+It feels pretty hackish, with saves and restores of various bits of scary
+data structures and no obvious protocol by which data could be transferred.
+The docs for it say doing it cleaner would require rewriting parts of the
+library... well, that may just be necessary. :)
+
+
