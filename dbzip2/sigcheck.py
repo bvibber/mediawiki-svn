@@ -12,11 +12,15 @@ def findBzTrail(data):
 	stream's CRC32."""
 
 	# Stream trailer is 80 bits, but may not be byte-aligned.
-	trail = data[-11:]
-	assert len(trail) == 11
+	assert len(data) > 11
 	
 	for offset in range(0, 8):
-		(overflow, shifted) = bitShift(trail, offset)
+		if offset:
+			trail = data[-11:]
+			(overflow, shifted) = bitShift(data[-11:], offset)
+		else:
+			overflow = 0
+			shifted = data[-10:]
 		if shifted[0:6] == "\x17\x72\x45\x38\x50\x90":
 			# BBBttttt t....$
 			# \./ <- 'offset' is the count, 'overflow' contains the bits
