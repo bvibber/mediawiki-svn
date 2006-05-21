@@ -467,7 +467,7 @@ class BotQueryProcessor {
 		//
 		// User restrictions
 		//
-		$this->validateLimit( 'pi_botquerytoobig', $this->requestsize, 50, 1000 );
+		$this->validateLimit( 'pi_botquerytoobig', $this->requestsize, 500, 20000 );
 		
 		//
 		// Make sure that this->data['pages'] is empty
@@ -639,7 +639,7 @@ class BotQueryProcessor {
 		if( in_array('anons', $rchide) && in_array('liu', $rchide) ) {
 			$this->dieUsage( "Both 'anons' and 'liu' cannot be given for 'rchide' parameter", 'rc_badrchide' );
 		}
-		$this->validateLimit( 'rc_badrclimit', $rclimit, 100, 5000 );
+		$this->validateLimit( 'rc_badrclimit', $rclimit, 500, 5000 );
 
 		$conds = array();		
 		if ( $rcfrom != '' ) {
