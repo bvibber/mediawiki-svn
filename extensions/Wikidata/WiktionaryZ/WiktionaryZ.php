@@ -44,8 +44,7 @@ class WiktionaryZ {
 		$userlang=$wgUser->getOption('language');
 
 		# $w is the variable used to store generated wikitext
-		$w='';
-		$w="Your user interface language preference: '''".$userlang."''' - [[Special:Preferences|set your preferences]]";
+		$wgOut->addWikiText("Your user interface language preference: '''".$userlang."''' - [[Special:Preferences|set your preferences]]");
 
 		# Get language names, preferably in UI language
 		$langdefs=$this->getLangNames($userlang);
@@ -62,7 +61,7 @@ class WiktionaryZ {
 			$oids=array();
 			$rels=array();
 
-			$w.="\n== ''Spelling: ''" . $row->spelling . " - ''Language:'' ".$langdefs[$row->language_id]." ==\n";
+			$wgOut->addWikiText("\n== ''Spelling: ''" . $row->spelling . " - ''Language:'' ".$langdefs[$row->language_id]." ==\n");
 
 			# Get meanings via Expression ID
 			$st_res=$dbr->query("SELECT defined_meaning_id from uw_syntrans WHERE expression_id=".$row->expression_id);
@@ -128,7 +127,7 @@ class WiktionaryZ {
 
 			foreach($dms as $mid) {
 				$oids=array();
-				$w.="\n\n===Definition===\n";
+				$wgOut->addWikiText("\n\n===Definition===\n");
 				foreach($tcids[$mid] as $tc) {
 					$tc_res=$dbr->query("SELECT * from translated_content where set_id=".$tc);
 					while($tc_row=$dbr->fetchObject($tc_res)) {
@@ -138,53 +137,51 @@ class WiktionaryZ {
 
 				foreach($oids as $lang=>$oid) {
 					foreach($oid as $oid_d) {
-						$w.="\n\n'''''$langdefs[$lang]'''''\n\n";
+						$wgOut->addWikiText("\n\n'''''$langdefs[$lang]'''''\n");
 						$t_res=$dbr->query("SELECT * from text where old_id=".$oid_d);
 						while($t_row=$dbr->fetchObject($t_res)) {
-							$w.=$t_row->old_text;
+							$wgOut->addHTML(htmlspecialchars($t_row->old_text));
 						}
 					}
 				}
 				# Get spellings of translations and synonyms
-				$w.="<table border='0' cellpadding='5'><tr valign='top'><td width='20%'>\n'''Translations and Synonyms'''\n";
+				$wgOut->addHTML("<table border='0' cellpadding='5'><tr valign='top'><td width='20%'>");
+				$wgOut->addWikiText("\n'''Translations and Synonyms'''\n");
 				foreach($translmid[$mid] as $lang=>$splist) {
 					foreach($splist as $spl) {
 						if(!empty($spl)) {
-							$w.="* ''".$langdefs[$lang]."'': [[WiktionaryZ:$spl|$spl]]\n";
+							$wgOut->addWikiText("* ''".$langdefs[$lang]."'': [[WiktionaryZ:$spl|$spl]]\n");
 						}
 					}
 				}
 	
 				# Relations
-				$w.="</td><td>";
-				
-				$w.="\n\n'''Relations:'''\n";
+				$wgOut->addHTML("</td><td>");
+				$wgOut->addWikiText("\n'''Relations:'''\n");
+
 				$rels=$meaning_rels[$mid];
 				foreach($rels as $type=>$rellist) {
-					$w.="\n$typenames[$type]:\n";
+					$wgOut->addWikiText("\n$typenames[$type]:\n");
 					foreach($rellist as $rel) {
 						$rs_res=$dbr->query("SELECT expression_id from uw_defined_meaning where defined_meaning_id=".$rel." LIMIT 1");
 						$rs_row=$dbr->fetchObject($rs_res);
 						if($rs_row->expression_id) {
 							$li_res=$dbr->query("SELECT spelling from uw_expression_ns where expression_id=".$rs_row->expression_id);
 							$li_row=$dbr->fetchObject($li_res);
-							$w.="* [[WiktionaryZ:".$li_row->spelling."|"."$li_row->spelling]]\n";
+							$wgOut->addWikiText("* [[WiktionaryZ:".$li_row->spelling."|"."$li_row->spelling]]\n");
 						}
 					}
 				}
-				$w.="\n\n'''Attributes:'''\n";
+				$wgOut->addWikiText("\n\n'''Attributes:'''\n");
 				$atts=$attrib_rels[$mid];
 				foreach($atts as $att) {
-					$w.="* [[WiktionaryZ:".$attnames[$att]."|".$attnames[$att]."]]\n";
+					$wgOut->addWikiText("* [[WiktionaryZ:".$attnames[$att]."|".$attnames[$att]."]]\n");
 				}
 				
-				$w.="</td></tr></table>";
-
+				$wgOut->addHTML("</td></tr></table>");
 			}
-	
-
 		}
-		$wgOut->addWikiText($w);
+
 		# We may later want to disable the regular page component
 		# $wgOut->setPageTitleArray($this->mTitle->getTitleArray());
 	}
