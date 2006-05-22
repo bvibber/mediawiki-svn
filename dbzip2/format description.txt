@@ -138,8 +138,15 @@ make the smallest possible block something like 720,000 with the 900k
 blocksize.
 
 In fact, such a file ends up with a 719,988-byte block. That would RLE out
-to 899,985 bytes, 15 bytes short of the declared block size. Why 15? Not
-quite sure yet.
+to 899,985 bytes, 15 bytes short of the declared block size.
+
+On compression, RLE and CRC are done in add_pair_to_block / ADD_CHAR_TO_BLOCK
+called from copy_input_until_stop. This checks if we've gone up to or beyond
+nblockMAX (set to block size - 19 bytes) before each RLE run.
+
+This would have brought us up to 899,980 (blocksize-20) before the last run;
+the final run would then bring it up to 899,985, tripping the condition and
+cutting off the block.
 
 
 == Simplifications ==
