@@ -1,6 +1,7 @@
 <?php
 
 require_once('Expression.php');
+require_once('forms.php');
 
 /**
  * Renders a content page from WiktionaryZ based on the GEMET database.
@@ -39,7 +40,6 @@ class WiktionaryZ {
 	}
 	
 	function view() {
-
 		global $wgOut, $wgTitle, $wgUser;
 		$userlang=$wgUser->getOption('language');
 
@@ -218,6 +218,18 @@ class WiktionaryZ {
 		return $langs;
 	}
 
+	function getRelationTypeSuggest($definedMeaningId) {
+		return getSuggest("new-relation-type-$definedMeaningId", 
+                          "relation-type", 
+                          "member_mid", "spelling");		
+	}
+	
+	function getDefinedMeaningSuggest($definedMeaningId) {
+		return getSuggest("new-relation-other-meaning-$definedMeaningId", 
+                          "defined-meaning", 
+                          "member_mid", "spelling");		
+	}
+	
 	function getRelationTypes() {
 		$relationtypes=array();
 		$reltypecollections=$this->getReltypeCollections();
@@ -294,6 +306,7 @@ class WiktionaryZ {
 	
 					$this->addTranslatedDefinitionFromRequest($definedMeaningId, $definedMeaningTexts[$definedMeaningId], getRevisionForExpressionId($expressionId), array_keys($translatedContents));
 					$this->addSynonymsOrTranslationsFromRequest($definedMeaningId);
+					$this->addRelationFromRequest($definedMeaningId);
 				}				
 			}
 		}
@@ -314,7 +327,7 @@ class WiktionaryZ {
 
 		# $w is the variable used to store generated wikitext
 		$wgOut->addWikiText("Your user interface language preference: '''$userlang''' - [[Special:Preferences|set your preferences]]");
-		$wgOut->addHTML('<form method="post">');
+		$wgOut->addHTML('<form method="post" action="">');
 
 		# Get language names, preferably in UI language
 		$langdefs=$this->getLangNames($userlang);
@@ -337,7 +350,7 @@ class WiktionaryZ {
 
 			foreach ($definedMeaningRelations as $definedMeaningId => $relations) {
 				if ($this->addSection(2)) {
-					$wgOut->addHTML('<table border="0" cellpadding="5""><tr valign="top""><td width="20%"">'); 
+					$wgOut->addHTML('<table border="0" cellpadding="5"><tr valign="top"><td width="20%">'); 
 					$wgOut->addHTML('<b>Translations and synonyms</b>');
 						
 					foreach($spellingsPerDefinedMeaningAndLanguage[$definedMeaningId] as $languageId => $spellings) {
@@ -355,18 +368,20 @@ class WiktionaryZ {
 	
 					foreach($translatedContents as $languageId => $textId) {
 						$wgOut->addHTML("<div><i>$langdefs[$languageId]</i></div>".
-										'<textarea name="definition-'. $textId .'" rows="5">'.htmlspecialchars($this->getText($textId)).'</textarea>');
+						                getTextArea("definition-$textId", $this->getText($textId)));
 					}
 					
-					$wgOut->addHTML('<div><i>Translate into</i>: <select name="translated-definition-language-'. $definedMeaningId .'">'. $this->getLanguageOptions(array_keys($translatedContents)) .'</select></div>'.
-					                '<textarea name="translated-definition-'.$definedMeaningId.'" rows="5"></textarea>');
+					$wgOut->addHTML('<div><i>Translate into</i>: '.
+									$this->getLanguageSelect("translated-definition-language-$definedMeaningId", array_keys($translatedContents)).'</div>'.
+					                getTextArea("translated-definition-$definedMeaningId"));
 	
 					$wgOut->addHTML('</td></tr></table>'. $this->getAddTranslationsAndSynonymsFormFields($definedMeaningId));
+					$wgOut->addHTML($this->getAddRelationsFormFields($definedMeaningId));
 				}
 			}
 		}
 
-		$wgOut->addHTML('<input type="submit" name="save" value="Save"/>');
+		$wgOut->addHTML(getSubmitButton("save", "Save"));
 		$wgOut->addHTML('</form>');
 	}
 	
@@ -459,15 +474,23 @@ class WiktionaryZ {
 	}
 	
 	function getAddTranslationsAndSynonymsFormFields($definedMeaningId) {
-		return '<div><b>Add translation/synonym</b></div>
+		return '<h3>Add translation/synonym</h3>
 				<table>
 				<tr><th>Language</th><th>Spelling</th><th>Identical meaning?</th><th>Input rows</th></tr>
 				<tr id="add-translation-synonym-'. $definedMeaningId .'" class="repeat">
-					<td><select name="language-'. $definedMeaningId .'">'. $this->getLanguageOptions() .'</select></td>
-					<td><input type="text" name="spelling-'. $definedMeaningId .'" maxlength="255"/></td>
-				    <td><input type="checkbox" name="endemic-meaning-'. $definedMeaningId .'" checked="checked"/>
+					<td>'.$this->getLanguageSelect("language-$definedMeaningId").'</td>
+					<td>'.getTextBox("spelling-$definedMeaningId") .'</td>
+				    <td>'.getCheckBox("endemic-meaning-$definedMeaningId", true). '</td>
 				    <td></td>		
 				</tr>
+				</table>';
+	}
+	
+	function getAddRelationsFormFields($definedMeaningId) {
+		return '<h3>Add relation</h3>
+				<table>
+					<tr><th>Relation type</th><th>Other defined meaning</th></tr>
+					<tr><td>' .	$this->getRelationTypeSuggest($definedMeaningId) . '</td><td>' . $this->getDefinedMeaningSuggest($definedMeaningId) . '</td></tr>
 				</table>';
 	}
 	
@@ -481,24 +504,25 @@ class WiktionaryZ {
 			$wgUser;
 			
 		$userLanguage = $wgUser->getOption('language');
-		$userLanguageId = $this->getLanguageIdForCode($userLanguage);
 		$idNameIndex = $this->getLangNames($userLanguage);
-		asort($idNameIndex);
-
-		$result = '';
 		
-		foreach($idNameIndex as $id => $name) {
-			if (!in_array($id, $languageIdsToExclude)) {
-				if ($id == $userLanguageId)
-					$selected = ' selected="selected"';
-				else
-					$selected = '';
-				
-				$result .= '<option value="'. $id .'"'. $selected .'>'. $name . '</option>';
-			}
-		}	
+		$result = array();
+		
+		foreach($idNameIndex as $id => $name) 
+			if (!in_array($id, $languageIdsToExclude)) 
+				$result[$id] = $name;
 		
 		return $result;
+	}
+	
+	function getLanguageSelect($name, $languageIdsToExclude = array()) {
+		global 
+			$wgUser;
+			
+		$userLanguage = $wgUser->getOption('language');
+		$userLanguageId = $this->getLanguageIdForCode($userLanguage);
+
+		return getSelect($name, $this->getLanguageOptions($languageIdsToExclude), $userLanguageId);
 	}
 	
 	function getText($textId) {
@@ -617,6 +641,50 @@ class WiktionaryZ {
 		#return $sql;
 	}
 
+	function addRelationFromRequest($definedMeaningId) {
+		global
+			$wgRequest;
+		
+		$relationTypeId = $wgRequest->getInt("new-relation-type-$definedMeaningId");
+		$otherDefinedMeaningId = $wgRequest->getInt("new-relation-other-meaning-$definedMeaningId");
+		  
+		if ($relationTypeId != 0 && $otherDefinedMeaningId != 0)
+			$this->addRelation($definedMeaningId, $relationTypeId, $otherDefinedMeaningId);
+	}
+	
+	function getSetIdForDefinedMeaningRelations($definedMeaningId) {
+		$dbr =& wfGetDB(DB_SLAVE);
+		$sql = "SELECT set_id from uw_meaning_relations where meaning1_mid=$definedMeaningId and is_latest_set=1 limit 1";
+		$queryResult = $dbr->query($sql);
+				
+		$setId = $dbr->fetchObject($queryResult)->set_id;
+		
+		if (!$setId) {
+			$sql = "SELECT max(set_id) as max_id from uw_meaning_relations";
+			$queryResult = $dbr->query($sql);
+			$setId = $dbr->fetchObject($queryResult)->max_id + 1;
+		}
+		
+		return $setId;		
+	}
+	
+	function getLatestRevisionForDefinedMeaning($definedMeaningId) {
+		$dbr =& wfGetDB(DB_SLAVE);
+		$sql = "SELECT revision_id from uw_defined_meaning where defined_meaning_id=$definedMeaningId and is_latest_ver=1 limit 1";
+		$queryResult = $dbr->query($sql);
+		
+		return $dbr->fetchObject($queryResult)->revision_id;
+	}
+	
+	function addRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
+		$setId = $this->getSetIdForDefinedMeaningRelations($definedMeaning1Id);
+		$revisionId = $this->getLatestRevisionForDefinedMeaning($definedMeaning1Id);
+		
+		$dbr =& wfGetDB(DB_MASTER);
+		$sql = "insert into uw_meaning_relations(set_id, meaning1_mid, meaning2_mid, relationtype_mid, is_latest_set, first_set, revision_id) " .
+				"values($setId, $definedMeaning1Id, $definedMeaning2Id, $relationTypeId, 1, $setId, $revisionId)";
+		$dbr->query($sql);
+	}
 }
 
 ?>

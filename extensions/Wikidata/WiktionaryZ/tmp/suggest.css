@@ -1,0 +1,35 @@
+/*
+      Should be copied into the appropriate stylesheets like 
+          skins/monobook/main.css
+          skins/common/common.css
+*/
+
+/* Suggestion control */
+
+.suggestion-row {
+	padding: 0px;
+	margin: 0px;
+}
+
+.suggestion-row.active {
+	background-color: #DDDDDD;
+	cursor: pointer;
+}
+
+.suggestion-row.inactive {
+	background-color: #FFFFFF;
+}
+
+.suggestion-row td {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 4px;
+	padding-right: 4px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	white-space: nowrap;
+}
+
+.suggest-loading {
+	background-color: #DDDDDD;
+}
