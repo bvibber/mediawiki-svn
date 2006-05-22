@@ -120,19 +120,8 @@ library... well, that may just be necessary. :)
 == RLE ==
 
 On decompression, un-RLE and CRC check are done together in
-unRLE_obuf_to_output_FAST. This also has the case to handle randomization
-(no longer used in current versions of the compressor).
-
-Comparing to "k0"... is this the previous char read?
-
-one byte, then boundary:
-	was single byte, write it out.
-two same bytes, then boundary:
-	was two bytes, write them out.
-three same bytes, then boundary:
-	was three bytes, write them out.
-four bytes in a row the same?
-	fifth byte is a count of the remaining run length. (full run is N + 4).
+unRLE_obuf_to_output_(FAST|SMALL). This also has the case to handle
+randomization (no longer used in current versions of the compressor).
 
   rle-run       = BYTE                 ; followed by a different value
                 / 2*BYTE               ; two same
@@ -147,6 +136,10 @@ The worst case for the RLE encoder would be a series of 4-byte character
 sequences, resulting in a 20% decrease in capacity per block. This should
 make the smallest possible block something like 720,000 with the 900k
 blocksize.
+
+In fact, such a file ends up with a 719,988-byte block. That would RLE out
+to 899,985 bytes, 15 bytes short of the declared block size. Why 15? Not
+quite sure yet.
 
 
 == Simplifications ==
