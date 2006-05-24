@@ -799,7 +799,7 @@ $wgMessageCache->addMessages(array(
 	'searchnumber'          => "<strong>Results $1-$2 of $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prev</span>",
 	'searchnext'            => "<span style='font-size: small'>Next</span> &#x00BB;",
-	'searchscore'           => "Relevancy: $1",
+	'searchscore'           => "Relevance: $1",
 	'searchsize'            => "$1KB ($2 words)",
 	'searchdidyoumean'      => "Did you mean: \"<a href=\"$1\">$2</a>\"?",
 	'searchnoresults'       => "Sorry, there were no exact matches to your query.",
