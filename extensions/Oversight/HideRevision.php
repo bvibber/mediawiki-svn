@@ -51,6 +51,7 @@ function hrSetup() {
 			'hiderevision' => 'Permanently hide revisions',
 			
 			// Empty form
+			'hiderevision-empty' => 'No revisions specified.',
 			'hiderevision-prompt' => 'Revision number to remove:',
 			'hiderevision-continue' => 'Continue',
 			
@@ -150,7 +151,7 @@ function hrShowEmpty( $reason='' ) {
 	global $wgOut, $wgUser;
 	$special = Title::makeTitle( NS_SPECIAL, 'HideRevision' );
 	
-	$wgOut->addWikiText( "No revisions specified." );
+	$wgOut->addWikiText( wfMsg( 'hiderevision-empty' ) );
 	$wgOut->addHtml(
 		wfOpenElement( 'form', array(
 			'action' => $special->getLocalUrl(),
@@ -235,7 +236,7 @@ function hrRevisionFields( $revisions ) {
  */
 function hrSubmitForm( $revisions, $reason ) {
 	global $wgOut;
-	if( count( $revisions ) ) {
+	if( empty( $revisions ) ) {
 		$wgOut->addWikiText( wfMsg( 'hiderevision-norevisions' ) );
 		hrShowForm( $revisions, $reason );
 	} elseif( empty( $reason ) ) {
