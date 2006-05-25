@@ -37,21 +37,23 @@ $wgExtensionFunctions[] = 'hrSetup';
  * Adds the special page for the action form.
  */
 function hrSetup() {
-	global $wgMessageCache, $wgHooks, $wgContLang;
-	
 	require_once 'SpecialPage.php';
 	SpecialPage::addPage( new SpecialPage( 'HideRevision', 'oversight',
 		/*listed*/ true, /*function*/ false, /*file*/ false ) );
 	
-	$wgHooks['ArticleViewHeader'][] = 'hrArticleViewHeaderHook';
-	$wgHooks['DiffViewHeader'][] = 'hrDiffViewHeaderHook';
+	$GLOBALS['wgHooks']['ArticleViewHeader'][] = 'hrArticleViewHeaderHook';
+	$GLOBALS['wgHooks']['DiffViewHeader'][] = 'hrDiffViewHeaderHook';
 	
-	$wgMessageCache->addMessages(
+	$GLOBALS['wgLogTypes'][] = 'oversight';
+	$GLOBALS['wgLogNames']['oversight'] = 'oversight-log-name';
+	$GLOBALS['wgLogHeaders']['oversight'] = 'oversight-log-text';
+	$GLOBALS['wgLogActions']['oversight/hiderev'] = 'oversight-log-hiderev';
+	
+	$GLOBALS['wgMessageCache']->addMessages(
 		array(
 			'hiderevision' => 'Permanently hide revisions',
 			
 			// Empty form
-			'hiderevision-empty' => 'No revisions specified.',
 			'hiderevision-prompt' => 'Revision number to remove:',
 			'hiderevision-continue' => 'Continue',
 			
@@ -66,7 +68,7 @@ function hrSetup() {
 Removed items will not be visible to anyone through the web site,
 but the deletions are logged and can be restored manually by a
 database administrator if you make a mistake.",
-			'hiderevision-reason' => 'Reason:',
+			'hiderevision-reason' => 'Reason (will be logged publicly):',
 			'hiderevision-submit' => 'Hide this data permanently',
 			
 			// Tab displayed to allowed users on old revision display
@@ -81,6 +83,11 @@ database administrator if you make a mistake.",
 			'hiderevision-error-missing' => 'Not found in database.',
 			'hiderevision-error-current' => 'Cannot delete the latest edit to a page. Revert this change first.',
 			'hiderevision-error-delete' => 'Could not archive; was it previously deleted?',
+			
+			// Logging
+			'oversight-log-name' => 'Oversight log',
+			'oversight-log-text' => 'Special administrative actions.',
+			'oversight-log-hiderev' => 'removed an edit from $1',
 		) );
 }
 
@@ -151,7 +158,6 @@ function hrShowEmpty( $reason='' ) {
 	global $wgOut, $wgUser;
 	$special = Title::makeTitle( NS_SPECIAL, 'HideRevision' );
 	
-	$wgOut->addWikiText( wfMsg( 'hiderevision-empty' ) );
 	$wgOut->addHtml(
 		wfOpenElement( 'form', array(
 			'action' => $special->getLocalUrl(),
@@ -161,6 +167,7 @@ function hrShowEmpty( $reason='' ) {
 		wfInputLabel( wfMsg( 'hiderevision-prompt' ), 'revision[]', 'wpRevision', 10 ) .
 		"<br />" .
 		wfInputLabel( wfMsg( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60 ) .
+		"<br />" .
 		wfSubmitButton( wfMsg( 'hiderevision-continue' ) ) .
 		
 		wfCloseElement( 'form' ) );
@@ -182,7 +189,9 @@ function hrShowForm( $revisions, $reason='' ) {
 			'method' => 'post' ) ) .
 		
 		// Visible fields
+		"<br />" .
 		wfInputLabel( wfMsg( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60, $reason ) .
+		"<br />" .
 		wfSubmitButton( wfMsg( 'hiderevision-submit' ) ) .
 		
 		// Hidden fields
@@ -328,6 +337,10 @@ function hrHideRevision( $dbw, $id, $reason ) {
 	
 	// Invalidate cache of page history
 	$title->invalidateCache();
+	
+	// Log it!
+	$log = new LogPage( 'oversight' );
+	$log->addEntry( 'hiderev', $title, $reason );
 	
 	// Done with all database pieces; commit!
 	$dbw->immediateCommit();
