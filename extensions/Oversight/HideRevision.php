@@ -338,7 +338,7 @@ function hrHideRevision( $dbw, $id, $reason ) {
 	global $wgUseSquid;
 	if ( $wgUseSquid ) {
 		// Send purge
-		$update = SquidUpdate::newSimplePurge( $this->mTitle );
+		$update = SquidUpdate::newSimplePurge( $title );
 		$update->doUpdate();
 	}
 	
