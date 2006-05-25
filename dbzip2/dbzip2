@@ -35,7 +35,7 @@ import time
 from thread import start_new_thread
 
 import DistBits
-from BitWriter import BitWriter
+from dbzutil import Bitstream
 from sigcheck import findBzTrail
 
 class Compressor(object):
@@ -132,7 +132,7 @@ class Compressor(object):
 		self.debug(2, "readerThread: done; read %d blocks" % self.blocksRead)
 	
 	def nextBlock(self):
-		buffer = self.inputStream.read(self.blockSize - 1000) # some headroom for RLE?
+		buffer = self.inputStream.read(self.blockSize - 1000) # some headroom for RLE fail
 		self.bytesRead += len(buffer)
 		self.debug(3, "nextBlock: %d" % len(buffer))
 		return buffer
@@ -175,7 +175,7 @@ class Compressor(object):
 		self.debug(2, "writerThread: starting")
 		startTime = time.time()
 		
-		self.bitStream = BitWriter(self.outputStream)
+		self.bitStream = Bitstream(self.outputStream)
 		self.writeHeader()
 		
 		while not (self.done and self.blocksWritten == self.blocksRead):
@@ -216,13 +216,13 @@ class Compressor(object):
 		(offset, overflow, crc) = findBzTrail(buffer.output)
 		self.debug(2, "writeBuffer: block stream crc %08x, offset %d bits" %
 			(crc, offset))
+		
+		# Write out the block, with the head and tail cropped off
+		nbits = (len(buffer.output) - 14) * 8
 		if offset:
-			# Block end is not byte-aligned
-			self.bitStream.writeBytes(buffer.output[4:-11])
-			self.bitStream.writeBits(overflow, offset)
-		else:
-			# By amazing chance the block is an integral number of bytes
-			self.bitStream.writeBytes(buffer.output[4:-10])
+			# Adjust for non-aligned footer
+			nbits = nbits - 8 + offset
+		self.bitStream.write(buffer.output[4:-10], nbits)
 		
 		# Assuming there's only one output block per input block
 		# This had better hold :D
@@ -232,14 +232,14 @@ class Compressor(object):
 	def writeHeader(self):
 		self.debug(4, "writing file header")
 		# hardcoded 900k blocksize
-		self.bitStream.writeBytes("BZh9")
+		self.bitStream.write("BZh9")
 	
 	def writeTrailer(self):
 		self.debug(4, "writing file trailer, combined CRC %08x" % self.crc)
 		# Stream-end magic number:
-		self.bitStream.writeBytes("\x17\x72\x45\x38\x50\x90")
+		self.bitStream.write("\x17\x72\x45\x38\x50\x90")
 		# 32-bit combined CRC
-		self.bitStream.writeBytes(struct.pack(">L", self.crc))
+		self.bitStream.write(struct.pack(">L", self.crc))
 	
 	def compressorThread(self, compressor):
 		"""Worker thread: send a block to a foreign server and receive data."""

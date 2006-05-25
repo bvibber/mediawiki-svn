@@ -126,8 +126,8 @@ randomization (no longer used in current versions of the compressor).
   rle-run       = BYTE                 ; followed by a different value
                 / 2*BYTE               ; two same
                 / 3*BYTE               ; three same
-                / 4*BYTE rle-run-count ; four same bytes
-  rle-run-count = BYTE                 ; length of remaining run minus four
+                / 4*BYTE rle-run-count ; four same bytes, plus the...
+  rle-run-count = BYTE                 ; ...length of run minus four
 
 This will turn 4-byte sequences into 5-byte sequences (4x plus a null byte),
 but will be the same or smaller for all other sequence lengths.
