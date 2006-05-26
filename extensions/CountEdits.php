@@ -15,7 +15,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	require_once( 'SpecialPage.php' );
 	$wgExtensionFunctions[] = 'efCountEdits';
 	$wgExtensionCredits['other'][] = array( 'name' => 'Count Edits', 'author' => 'Rob Church' );
-	$wgCountEditsTopTen = true;
+	$wgCountEditsMostActive = true;
 
 	function efCountEdits() {
 		global $wgMessageCache;
@@ -30,10 +30,10 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgMessageCache->addMessage( 'countedits-userpage', 'User page' );
 		$wgMessageCache->addMessage( 'countedits-usertalk', 'Talk page' );
 		$wgMessageCache->addMessage( 'countedits-contribs', 'Contributions' );
-		$wgMessageCache->addMessage( 'countedits-mostactive', 'Top ten contributors' );
+		$wgMessageCache->addMessage( 'countedits-mostactive', 'Most active contributors' );
 		
 		SpecialPage::addPage( new CountEdits() );
-		return( true );
+		return true;
 	}
 	
 	class CountEdits extends SpecialPage {
@@ -63,7 +63,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 				}
 			}
 			$this->showTopTen( $wgOut );
-			return( true );
+			return true;
 		}
 		
 		function loadRequest( $params ) {
@@ -83,7 +83,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$form .= '<input type="text" name="target" size="25" value="' . htmlspecialchars( $this->target ) . '" /> ';
 			$form .= '<input type="submit" name="countedits" value="' . wfMsgHtml( 'countedits-ok' ) . '" />';
 			$form .= '</p></form>';
-			return( $form );
+			return $form;
 		}
 		
 		function countEditsReal( $id, $text = false ) {
@@ -92,7 +92,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$dbr =& wfGetDB( DB_SLAVE );
 			$res = $dbr->select( 'revision', 'COUNT(rev_id) AS count', $conds, 'CountEdits::countEditsReal' );
 			$row = $dbr->fetchObject( $res );
-			return( $row->count );
+			return $row->count;
 		}
 		
 		function makeUserLinks( $user ) {
@@ -101,7 +101,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$page = $skin->makeLinkObj( Title::makeTitle( NS_USER, $user ), wfMsgHtml( 'countedits-userpage' ) );
 			$talk = $skin->makeLinkObj( Title::makeTitle( NS_USER_TALK, $user ), wfMsgHtml( 'countedits-usertalk' ) );
 			$cont = $skin->makeKnownLinkObj( Title::makeTitle( NS_SPECIAL, 'Contributions' ), wfMsgHtml( 'countedits-contribs' ), 'target=' . $user );
-			return( array( 'page' => $page, 'talk' => $talk, 'cont' => $cont ) );
+			return array( 'page' => $page, 'talk' => $talk, 'cont' => $cont );
 		}
 		
 		function showResults( $count ) {
@@ -115,14 +115,14 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 		
 		function showTopTen( &$out ) {
-			global $wgCountEditsTopTen;
-			if( $wgCountEditsTopTen ) {
+			global $wgCountEditsMostActive;
+			if( $wgCountEditsMostActive ) {
 				$out->addHTML( '<h2>' . wfMsgHtml( 'countedits-mostactive' ) . '</h2>' );
-				$out->addHTML( $this->getTopTen() );
+				$out->addHTML( $this->getMostActive() );
 			}
 		}
 		
-		function getTopTen() {
+		function getMostActive() {
 			global $wgUser, $wgLang;
 			$skin = $wgUser->getSkin();
 			$out  = '<ul>';
@@ -143,13 +143,14 @@ if( defined( 'MEDIAWIKI' ) ) {
 				}
 			}
 			$out .= '</ul>';
-			return( $out == '<ul></ul>' ? '' : $out );
+			return $out == '<ul></ul>' ? '' : $out;
 		}
 
 	}
 
 } else {
-	die( 'This file is an extension to the MediaWiki package, and cannot be executed separately.' );
+	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
+	die( -1 );
 }
 
 ?>
