@@ -10,13 +10,11 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0
  */
 
-global $IP;
-require_once( $IP . '/includes/SpecialPage.php' );
-
 if( defined( 'MEDIAWIKI' ) ) {
 
+	require_once( 'SpecialPage.php' );
 	$wgExtensionFunctions[] = 'efCountEdits';
-	$wgExtensionCredits['other'][] = array( 'name' => 'Count edits', 'description' => 'a simple special page to count user edits', 'author' => 'Rob Church' );
+	$wgExtensionCredits['other'][] = array( 'name' => 'Count Edits', 'author' => 'Rob Church' );
 	$wgCountEditsTopTen = true;
 
 	function efCountEdits() {
