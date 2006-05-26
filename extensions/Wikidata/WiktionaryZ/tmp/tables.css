@@ -1,0 +1,44 @@
+/*
+      Should be copied into the appropriate stylesheets like 
+          skins/monobook/main.css
+          skins/common/common.css
+*/
+
+/* Wikidata tables */
+
+.wiki-data-table td, .wiki-data-table th {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 2px;
+	padding-right: 2px;
+	margin: 0px;
+	border: none;
+}
+
+.wiki-data-table th {
+	background-color: #EEEEEE;
+}
+
+.wiki-data-table td.column-odd {
+	background-color: #F6F6F6;
+}
+
+.boolean {
+	text-align: center;
+}
+
+.text {
+	text-align: left;
+}
+
+.spelling {
+	text-align: left;
+}
+
+.language {
+	text-align: left;
+}
+
+td.language {
+	font-style: italic;
+}

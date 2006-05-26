@@ -2,6 +2,9 @@
 
 require_once('Expression.php');
 require_once('forms.php');
+require_once('table.php');
+require_once('type.php');
+require_once('languages.php');
 
 /**
  * Renders a content page from WiktionaryZ based on the GEMET database.
@@ -40,14 +43,11 @@ class WiktionaryZ {
 	}
 	
 	function view() {
-		global $wgOut, $wgTitle, $wgUser;
+		global $wgOut, $wgTitle, $wgUser, $wgLanguageNames;
 		$userlang=$wgUser->getOption('language');
 
 		# $w is the variable used to store generated wikitext
 		$wgOut->addWikiText("Your user interface language preference: '''".$userlang."''' - [[Special:Preferences|set your preferences]]");
-
-		# Get language names, preferably in UI language
-		$langdefs=$this->getLangNames($userlang);
 
 		$dbr =& wfGetDB( DB_MASTER );
 
@@ -55,51 +55,36 @@ class WiktionaryZ {
 		$res=$dbr->query("SELECT * from uw_expression_ns WHERE spelling=BINARY ".$dbr->addQuotes($wgTitle->getText()));
 
 		while($row=$dbr->fetchObject($res)) {
-			$tcids=array();
-			$dms=array();
-			$syntrans=array();
-			$oids=array();
-			$rels=array();
-			
 			$expressionId = $row->expression_id;
 			$definedMeaningIds = $this->getDefinedMeaningsForExpression($expressionId);
-			$synonymsAndTranslationIds = $this->getSynonymAndTranslationIds($definedMeaningIds, $expressionId);
-			$spellingsPerDefinedMeaningAndLanguage = $this->getSpellingsPerDefinedMeaningAndLanguage($definedMeaningIds, $synonymsAndTranslationIds);
+			$synonymAndTranslationTables = $this->getSynonymAndTranslationTables($definedMeaningIds, $expressionId);
 			$definedMeaningTexts = $this->getDefinedMeaningTexts($definedMeaningIds);
 			$alternativeMeaningTexts = $this->getAlternativeMeaningTexts($definedMeaningIds);
 			$definedMeaningRelations = $this->getDefinedMeaningRelations($definedMeaningIds);
 
-			$wgOut->addWikiText("\n== ''Spelling: ''" . $row->spelling . " - ''Language:'' ".$langdefs[$row->language_id]." ==\n");
+			$wgOut->addWikiText("\n== ''Spelling: ''" . $row->spelling . " - ''Language:'' ".$wgLanguageNames[$row->language_id]." ==\n");
 
 			$attributesPerDefinedMeaning = $this->getDefinedMeaningAttributes($definedMeaningIds);			
 			$typenames=$this->getRelationTypes();
 			$attnames=$this->getAttributeValues();
 
 			foreach($definedMeaningIds as $definedMeaningId) {
-				$wgOut->addWikiText("\n\n===Definition===\n");
-				$this->viewTranslatedContent($definedMeaningTexts[$definedMeaningId], $langdefs);
+				$wgOut->addWikiText("\n===Definition===\n");
+				$this->viewTranslatedContent($definedMeaningTexts[$definedMeaningId]);
 				
  				if ($alternativeMeaningTexts[$definedMeaningId]) {
-					$wgOut->addWikiText("\n\n===Alternative definition===\n");
+					$wgOut->addWikiText("\n===Alternative definition===\n");
 					
 					foreach($alternativeMeaningTexts[$definedMeaningId] as $alternativeMeaningTextId) { 
-						$this->viewTranslatedContent($alternativeMeaningTextId, $langdefs);	
+						$this->viewTranslatedContent($alternativeMeaningTextId);	
 					}
  				}
-								
-				# Get spellings of translations and synonyms
-				$wgOut->addHTML("<table border='0' cellpadding='5'><tr valign='top'><td width='20%'>");
+ 				
+ 				# Get spellings of translations and synonyms
+				$wgOut->addHTML("<table border='0' cellpadding='5'><tr valign='top'><td>");
 				$wgOut->addWikiText("\n'''Translations and Synonyms'''\n");
-				foreach($spellingsPerDefinedMeaningAndLanguage[$definedMeaningId] as $language => $spellings) {
-					$languageName = $langdefs[$language];
-					
-					foreach($spellings as $spelling) {
-						if(!empty($spelling)) {
-							$wgOut->addWikiText("* ''".$languageName."'': [[WiktionaryZ:$spelling|$spelling]]\n");
-						}
-					}
-				}
-	
+				$wgOut->addHTML(getTableAsHTML($synonymAndTranslationTables[$definedMeaningId]));
+				
 				# Relations
 				$wgOut->addHTML("</td><td>");
 				$wgOut->addWikiText("\n'''Relations:'''\n");
@@ -133,45 +118,16 @@ class WiktionaryZ {
 		# $wgOut->setPageTitleArray($this->mTitle->getTitleArray());
 	}
 	
-	function viewTranslatedContent($setId, $langdefs) {
+	function viewTranslatedContent($setId) {
 		global
-			$wgOut;
+			$wgOut, $wgLanguageNames;
 		
 		$translatedContents = $this->getTranslatedContents($setId);
 
 		foreach($translatedContents as $language => $textId) {
-			$wgOut->addWikiText("\n'''''$langdefs[$language]'''''\n");
+			$wgOut->addWikiText("\n'''''$wgLanguageNames[$language]'''''\n");
 			$wgOut->addHTML(htmlspecialchars($this->getText($textId)));
 		}
-	}
-
-	# Falls back to English if no language name translations available for chosen languages
-	function getLangNames($code) {
-		$id=$this->getLanguageIdForCode($code);
-		if(!$id) $id=$this->getLanguageIdForCode('en');
-		$names=$this->getLanguageNamesForId($id);
-		if(empty($names)) {
-			$id=$this->getLanguageIdForCode('en');
-			$names=$this->getLanguageNamesForId($id);
-		}
-		return $names;
-	}
-	
-	function getLanguageIdForCode($code) {
-		$dbr =& wfGetDB( DB_SLAVE );
-		$id_res=$dbr->query("select language_id from language where wikimedia_key='".$code."'");
-		$id_row=$dbr->fetchObject($id_res);
-		return $id_row->language_id;
-	}
-	
-	function getLanguageNamesForId($id) {
-		$dbr =& wfGetDB( DB_SLAVE );
-		$langs=array();
-		$lang_res=$dbr->query("select language_names.language_id,language_names.language_name,language.wikimedia_key from language,language_names where language_names.name_language_id=".$id." and language.language_id=language_names.name_language_id");
-		while($lang_row=$dbr->fetchObject($lang_res)) {
-			$langs[$lang_row->language_id]=$lang_row->language_name;
-		}
-		return $langs;
 	}
 
 	function getRelationTypeSuggest($definedMeaningId) {
@@ -224,13 +180,8 @@ class WiktionaryZ {
 	
 	function saveForm() {
 		global 
-			$wgTitle, $wgUser, $wgRequest, $wgOut;
+			$wgTitle, $wgRequest;
 		
-		$userlang = $wgUser->getOption('language');
-
-		# Get language names, preferably in UI language
-		$langdefs=$this->getLangNames($userlang);
-
 		$this->initializeSections($wgRequest->getInt('section'));
 		$dbr =& wfGetDB( DB_MASTER );
 
@@ -268,7 +219,7 @@ class WiktionaryZ {
 
 	function edit() {
 		global 
-			$wgOut, $wgTitle, $wgUser, $wgRequest;
+			$wgOut, $wgTitle, $wgUser, $wgRequest, $wgLanguageNames;
 		
 		if ($wgRequest->getText('save') != '')
 			$this->saveForm();
@@ -281,9 +232,6 @@ class WiktionaryZ {
 		$wgOut->addWikiText("Your user interface language preference: '''$userlang''' - [[Special:Preferences|set your preferences]]");
 		$wgOut->addHTML('<form method="post" action="">');
 
-		# Get language names, preferably in UI language
-		$langdefs=$this->getLangNames($userlang);
-
 		$dbr =& wfGetDB(DB_MASTER);
 
 		# Get entry record from GEMET namespace
@@ -291,12 +239,11 @@ class WiktionaryZ {
 		
 		while($row = $dbr->fetchObject($queryResult)) {
 			if ($this->addSection(1))
-				$wgOut->addHTML("<h2> <i>Spelling: </i>" . $row->spelling . " - <i>Language:</i> ".$langdefs[$row->language_id]." </h2>");
+				$wgOut->addHTML("<h2> <i>Spelling: </i>" . $row->spelling . " - <i>Language:</i> ".$wgLanguageNames[$row->language_id]." </h2>");
 
 			$expressionId = $row->expression_id;
 			$definedMeaningIds = $this->getDefinedMeaningsForExpression($expressionId);
-			$synonymsAndTranslationIds = $this->getSynonymAndTranslationIds($definedMeaningIds, $expressionId);
-			$spellingsPerDefinedMeaningAndLanguage = $this->getSpellingsPerDefinedMeaningAndLanguage($definedMeaningIds, $synonymsAndTranslationIds);
+			$synonymAndTranslationTables = $this->getSynonymAndTranslationTables($definedMeaningIds, $expressionId);
 			$definedMeaningTexts = $this->getDefinedMeaningTexts($definedMeaningIds);
 			$definedMeaningRelations = $this->getDefinedMeaningRelations($definedMeaningIds);
 
@@ -304,14 +251,7 @@ class WiktionaryZ {
 				if ($this->addSection(2)) {
 					$wgOut->addHTML('<table border="0" cellpadding="5"><tr valign="top"><td width="20%">'); 
 					$wgOut->addHTML('<b>Translations and synonyms</b>');
-						
-					foreach($spellingsPerDefinedMeaningAndLanguage[$definedMeaningId] as $languageId => $spellings) {
-						$languageName = $langdefs[$languageId];
-						
-						foreach($spellings as $spelling) 
-							if(!empty($spelling)) 
-								$wgOut->addWikiText("* ''$languageName'': [[WiktionaryZ:$spelling|$spelling]]\n");
-					}
+					$wgOut->addHTML(getTableAsHTML($synonymAndTranslationTables[$definedMeaningId]));
 		
 					$wgOut->addHTML('</td><td>');
 	
@@ -319,7 +259,7 @@ class WiktionaryZ {
 					$translatedContents = $this->getTranslatedContents($definedMeaningTexts[$definedMeaningId]);
 	
 					foreach($translatedContents as $languageId => $textId) {
-						$wgOut->addHTML("<div><i>$langdefs[$languageId]</i></div>".
+						$wgOut->addHTML("<div><i>$wgLanguageNames[$languageId]</i></div>".
 					    	            getTextArea("definition-$textId", $this->getText($textId)));
 					}
 					
@@ -377,7 +317,7 @@ class WiktionaryZ {
 	}
 	
 	function getSpellingsPerDefinedMeaningAndLanguage($definedMeaningIds, $synonymsAndTranslationIds) {
-		$dbr =& wfGetDB(DB_SLAVE);
+//		$dbr =& wfGetDB(DB_SLAVE);
 		$spellingsPerDefinedMeaningAndLanguage = array();	
 	
 		foreach($definedMeaningIds as $definedMeaningId) {
@@ -385,16 +325,31 @@ class WiktionaryZ {
 			
 			if (array_key_exists($definedMeaningId, $synonymsAndTranslationIds)) 
 				foreach($synonymsAndTranslationIds[$definedMeaningId] as $synonymOrTranslation) {
-					$queryResult = $dbr->query("SELECT * from uw_expression_ns WHERE expression_id=$synonymOrTranslation");
+//					$queryResult = $dbr->query("SELECT * from uw_expression_ns WHERE expression_id=$synonymOrTranslation");
 					
-					while($expression = $dbr->fetchObject($queryResult)) 
-						$spellingsPerLanguage[$expression->language_id][] = $expression->spelling;					
+//					while($expression = $dbr->fetchObject($queryResult))
+//						$spellingsPerLanguage[$expression->language_id][] = $expression->spelling;					
+					$spellingAndLanguage = $this->getSpellingAndLanguageForExpression($synonymOrTranslation);
+					
+					foreach($spellingAndLanguage as $language => $spelling) 
+						$spellingsPerLanguage[$language][] = $spelling;					
 				}
 			
 			$spellingsPerDefinedMeaningAndLanguage[$definedMeaningId] = $spellingsPerLanguage;
 		}
 		
 		return $spellingsPerDefinedMeaningAndLanguage;
+	}
+	
+	function getSpellingAndLanguageForExpression($expressionId) {
+		$dbr =& wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query("SELECT language_id, spelling from uw_expression_ns WHERE expression_id=$expressionId");
+		$spellingAndLanguage = array();
+		
+		while($expression = $dbr->fetchObject($queryResult)) 
+			$spellingAndLanguage[$expression->language_id] = $expression->spelling;					
+		
+		return $spellingAndLanguage;
 	}
 	
 	function getSynonymAndTranslationIds($definedMeaningIds, $skippedExpressionId) {
@@ -409,6 +364,28 @@ class WiktionaryZ {
 		}
 			
 		return $synonymAndTranslationIds;
+	}
+	
+	function getSynonymAndTranslationTables($definedMeaningIds, $skippedExpressionId) {
+		$dbr =& wfGetDB(DB_SLAVE);
+		$result = array();
+		$attributes = array(new Attribute("Language", "language"), new Attribute("Spelling", "spelling"), new Attribute("Identical meaning?", "boolean"));
+		
+		foreach($definedMeaningIds as $definedMeaningId) {
+			$table = new ArrayTable($attributes);
+			$queryResult = $dbr->query("SELECT expression_id, endemic_meaning from uw_syntrans where defined_meaning_id=$definedMeaningId and expression_id!=$skippedExpressionId");
+		
+			while($synonymOrTranslation = $dbr->fetchObject($queryResult)) {
+				$spellingAndLanguage = $this->getSpellingAndLanguageForExpression($synonymOrTranslation->expression_id);
+				
+				foreach($spellingAndLanguage as $languageId => $spelling) 
+					$table->addRow(array($languageId, $spelling, $synonymOrTranslation->endemic_meaning));
+			}	
+			
+			$result[$definedMeaningId] = $table;
+		}
+			
+		return $result;
 	}
 	
 	function getDefinedMeaningRelations($definedMeaningIds) {
@@ -488,7 +465,7 @@ class WiktionaryZ {
 			$wgUser;
 			
 		$userLanguage = $wgUser->getOption('language');
-		$idNameIndex = $this->getLangNames($userLanguage);
+		$idNameIndex = getLangNames($userLanguage);
 		
 		$result = array();
 		
@@ -504,7 +481,7 @@ class WiktionaryZ {
 			$wgUser;
 			
 		$userLanguage = $wgUser->getOption('language');
-		$userLanguageId = $this->getLanguageIdForCode($userLanguage);
+		$userLanguageId = getLanguageIdForCode($userLanguage);
 
 		return getSelect($name, $this->getLanguageOptions($languageIdsToExclude), $userLanguageId);
 	}
@@ -660,14 +637,23 @@ class WiktionaryZ {
 		return $dbr->fetchObject($queryResult)->revision_id;
 	}
 	
+	function relationExists($setId, $definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
+		$dbr =& wfGetDB(DB_MASTER);
+		$queryResult = $dbr->query("SELECT * FROM uw_meaning_relations WHERE set_id=$setId AND meaning1_mid=$definedMeaning1Id AND meaning2_mid=$definedMeaning2Id AND relationtype_mid=$relationTypeId AND is_latest_set=1");
+		
+		return $dbr->numRows($queryResult) > 0;
+	}
+	
 	function addRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
 		$setId = $this->getSetIdForDefinedMeaningRelations($definedMeaning1Id);
 		$revisionId = $this->getLatestRevisionForDefinedMeaning($definedMeaning1Id);
 		
-		$dbr =& wfGetDB(DB_MASTER);
-		$sql = "insert into uw_meaning_relations(set_id, meaning1_mid, meaning2_mid, relationtype_mid, is_latest_set, first_set, revision_id) " .
-				"values($setId, $definedMeaning1Id, $definedMeaning2Id, $relationTypeId, 1, $setId, $revisionId)";
-		$dbr->query($sql);
+		if (!$this->relationExists($setId, $definedMeaning1Id, $relationTypeId, $definedMeaning2Id)) {
+			$dbr =& wfGetDB(DB_MASTER);
+			$sql = "insert into uw_meaning_relations(set_id, meaning1_mid, meaning2_mid, relationtype_mid, is_latest_set, first_set, revision_id) " .
+					"values($setId, $definedMeaning1Id, $definedMeaning2Id, $relationTypeId, 1, $setId, $revisionId)";
+			$dbr->query($sql);
+		}
 	}
 }
 
