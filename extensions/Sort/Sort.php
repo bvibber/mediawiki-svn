@@ -15,6 +15,10 @@
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church
  * @licence GNU General Public Licence 2.0
+ *
+ * @todo Profile this to see how it copes with larger lists; might need to
+ * 			re-think a sizeable portion of the main sort function so we don't
+ *			flood the application server(s) with multiple parse operations
  */
  
 if( defined( 'MEDIAWIKI' ) ) {
@@ -59,23 +63,21 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$raw = explode( "\n", $text );
 			$lines = array();
 			foreach( $raw as $line ) {
-				if( trim( $line ) != '' ) {
+				if( trim( $line ) != '' ) {	
 					$html = $this->parse( $line );
-					$lines[ $this->stripHtml( $html ) ] = $html;
+					$lines[ $html ] = $this->stripHtml( $html );
 				}
 			}
-			if( $this->order == 'desc' ) {
-				krsort( $lines );
-			} else {
-				ksort( $lines );
-			}
+			natsort( $lines );
+			if( $this->order == 'desc' )
+				$lines = array_reverse( $lines, true );
 			return $lines;
 		}
 		
 		function makeList( $sorted ) {
 			$tag = $this->class == 'ol' ? 'ol' : 'ul';
-			foreach( $sorted as $item )
-				$list[] = wfOpenElement( 'li' ) . $item . wfCloseElement( 'li' );
+			foreach( $sorted as $html => $text )
+				$list[] = wfOpenElement( 'li' ) . $html . wfCloseElement( 'li' );
 			return wfOpenElement( $tag ) . implode( "\n", $list ) . wfCloseElement( $tag );
 		}
 		
