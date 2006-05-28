@@ -192,8 +192,15 @@ dbzutil_bitstream_init(BitstreamObject *self, PyObject *args, PyObject *kwds) {
 	bsInitWrite(self);
 	
 	return 0;
-	// fixme: need a destructor function
 }
+
+static void
+dbzutil_bitstream_dealloc(BitstreamObject *self) {
+	Py_DECREF(self->stream);
+	free(self->zbits);
+	self->ob_type->tp_free(self);
+}
+
 
 static PyObject*
 dbzutil_bitstream_write(BitstreamObject *self, PyObject *args) {
@@ -290,7 +297,8 @@ static PyTypeObject dbzutil_bitstream_type = {
 	.tp_doc = "Bitstream writer.",
 	.tp_methods = dbzutil_bitstream_methods,
 	.tp_new = PyType_GenericNew,
-	.tp_init = (initproc)dbzutil_bitstream_init
+	.tp_init = (initproc)dbzutil_bitstream_init,
+	.tp_dealloc = (destructor)dbzutil_bitstream_dealloc
 };
 
 // python c module tutorial reference so i don't forget:
