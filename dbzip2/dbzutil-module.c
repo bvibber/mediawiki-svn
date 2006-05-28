@@ -62,6 +62,11 @@
 
 //#define DBZ_DEBUG 1
 
+#ifdef DBZ_DEBUG
+#define dbz_debug(...) fprintf(stderr, __VA_ARGS__)
+#else
+#define dbz_debug(...) {}
+#endif
 
 /*---------------------------------------------------*/
 /*--- Bit stream I/O                              ---*/
@@ -151,9 +156,7 @@ void bsPutUChar ( BitstreamObject* s, unsigned char c )
  */
 static PyObject*
 bsPythonWrite(BitstreamObject *self) {
-#ifdef DBZ_DEBUG
-	fprintf(stderr, "dbzutil.Bitstream: sending to output stream...\n");
-#endif
+	dbz_debug("dbzutil.Bitstream: sending to output stream...\n");
 
 	// Write the completed bytes out...
 	PyObject *buffer = PyBuffer_FromMemory(self->zbits, self->numZ);
@@ -212,15 +215,11 @@ dbzutil_bitstream_write(BitstreamObject *self, PyObject *args) {
 		return NULL;
 	}
 	
-#ifdef DBZ_DEBUG
-	fprintf(stderr, "dbzutil.Bitstream: writing: ");
-#endif
+	dbz_debug("dbzutil.Bitstream: writing: ");
 	// Go through all the full bytes...
 	int i;
 	for (i = 0; i < nbytes; i++) {
-#ifdef DBZ_DEBUG
-		fprintf(stderr, "#");
-#endif
+		dbz_debug("#");
 		bsPutUChar(self, inbytes[i]);
 		if (self->numZ >= self->bufferSize)
 			if (!bsPythonWrite(self))
@@ -229,18 +228,14 @@ dbzutil_bitstream_write(BitstreamObject *self, PyObject *args) {
 	
 	// And any leftover bits...
 	if (remainder) {
-#ifdef DBZ_DEBUG
-		fprintf(stderr, "+%d bits", remainder);
-#endif
+		dbz_debug("+%d bits", remainder);
 		bsW(self, remainder, (u_int32_t)inbytes[nbytes] >> (8 - remainder));
 		if (self->numZ >= self->bufferSize)
 			if (!bsPythonWrite(self))
 				return NULL;
 	}
 	
-#ifdef DBZ_DEBUG
-	fprintf(stderr, "\n");
-#endif
+	dbz_debug("\n");
 
 	// Flush buffer to output
 	if (!bsPythonWrite(self))
@@ -255,9 +250,7 @@ dbzutil_bitstream_flush(BitstreamObject *self, PyObject *args) {
 	bsFinishWrite(self);
 	
 	if (self->numZ > 0) {
-#ifdef DBZ_DEBUG
-		fprintf(stderr, "dbzutil.Bitstream: flushing %d bits\n", self->numZ);
-#endif
+		dbz_debug("dbzutil.Bitstream: flushing %d bits\n", self->numZ);
 		if (!bsPythonWrite(self))
 			return NULL;
 		if (!PyEval_CallMethod(self->stream, "flush", "()"))
