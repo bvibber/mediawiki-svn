@@ -42,7 +42,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		var $parser;
 		var $order;
 		var $class;
-		
+				
 		function Sorter( &$parser ) {
 			$this->parser =& $parser;
 			$this->order = 'asc';
@@ -63,8 +63,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 			wfProfileIn( 'Sorter::sortToHtml' );
 			$lines = $this->internalSort( $text );
 			$list = $this->makeList( $lines );
+			$html = $this->parse( $list );
 			wfProfileOut( 'Sorter::sortToHtml' );
-			return $this->parse( $list );
+			return $html;
 		}
 		
 		function internalSort( $text ) {
@@ -80,30 +81,35 @@ if( defined( 'MEDIAWIKI' ) ) {
 			return array_keys( $inter );
 		}
 		
+		/** Pull selected wiki text tokens from the text */
 		function stripWikiTokens( $text ) {
 			$find = array( '[', '{', '\'', '}', ']' );
-			$resl = str_replace( $find, '', $text );
-			return $resl;
+			return str_replace( $find, '', $text );
 		}
 		
 		function makeList( $lines ) {
 			wfProfileIn( 'Sorter::makeList' );
 			$token = $this->class == 'ul' ? '*' : '#';
-			foreach( $lines as $line ) {
+			foreach( $lines as $line )
 				if( strlen( $line ) > 0 )
-					$list[] = $token . trim( $line );
-			}			
+					$list[] = "{$token} {$line}";
 			wfProfileOut( 'Sorter::makeList' );
-			return implode( "\n", $list );
+			return trim( implode( "\n", $list ) );
 		}
 		
+		/** Pass text through the parser */
 		function parse( $text ) {
 			wfProfileIn( 'Sorter::parse' );
 			$title =& $this->parser->mTitle;
 			$options =& $this->parser->mOptions;
-			$output = $this->parser->parse( $text, $title, $options, false, false );
+			$output = $this->parser->parse( $text, $title, $options, true, false );
 			wfProfileOut( 'Sorter::parse' );
 			return $output->getText();
+		}
+		
+		/** Remove crap coming from the sanitiser */
+		function cleanup( $text ) {
+			return str_replace( "<p><br />\n</p>", '', $text );
 		}
 	
 	}
