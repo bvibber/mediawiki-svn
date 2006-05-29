@@ -59,40 +59,44 @@ if( defined( 'MEDIAWIKI' ) ) {
 			}
 		}
 		
+		function sortToHtml( $text ) {
+			wfProfileIn( 'Sorter::sortToHtml' );
+			$lines = $this->internalSort( $text );
+			$list = $this->makeList( $lines );
+			wfProfileOut( 'Sorter::sortToHtml' );
+			return $this->parse( $list );
+		}
+		
 		function internalSort( $text ) {
 			wfProfileIn( 'Sorter::internalSort' );
-			$raw = explode( "\n", $text );
-			$lines = array();
-			foreach( $raw as $line ) {
-				if( trim( $line ) != '' ) {	
-					$html = $this->parse( $line );
-					$lines[ $html ] = $this->stripHtml( $html );
-				}
-			}
-			natsort( $lines );
+			$lines = explode( "\n", $text );
+			$inter = array();
+			foreach( $lines as $line )
+				$inter[ $line ] = $this->stripWikiTokens( $line );
+			natsort( $inter );
 			if( $this->order == 'desc' )
-				$lines = array_reverse( $lines, true );
-			wfProfileIn( 'Sorter::internalSort' );
-			return $lines;
+				$inter = array_reverse( $inter, true );
+			wfProfileOut( 'Sorter::internalSort' );
+			return array_keys( $inter );
 		}
 		
-		function makeList( $sorted ) {
+		function stripWikiTokens( $text ) {
+			$find = array( '[', '{', '\'', '}', ']' );
+			$resl = str_replace( $find, '', $text );
+			return $resl;
+		}
+		
+		function makeList( $lines ) {
 			wfProfileIn( 'Sorter::makeList' );
-			$tag = $this->class == 'ol' ? 'ol' : 'ul';
-			foreach( $sorted as $html => $text )
-				$list[] = wfOpenElement( 'li' ) . $html . wfCloseElement( 'li' );
+			$token = $this->class == 'ul' ? '*' : '#';
+			foreach( $lines as $line ) {
+				if( strlen( $line ) > 0 )
+					$list[] = $token . trim( $line );
+			}			
 			wfProfileOut( 'Sorter::makeList' );
-			return wfOpenElement( $tag ) . implode( "\n", $list ) . wfCloseElement( $tag );
+			return implode( "\n", $list );
 		}
 		
-		function sortToHtml( $text ) {
-			return $this->makeList( $this->internalSort( $text ) );
-		}
-		
-		function stripHtml( $text ) {
-			return preg_replace( '@<[\/\!]*?[^<>]*?>@si', '', $text );
-		}
-	
 		function parse( $text ) {
 			wfProfileIn( 'Sorter::parse' );
 			$title =& $this->parser->mTitle;
