@@ -107,11 +107,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 			return $output->getText();
 		}
 		
-		/** Remove crap coming from the sanitiser */
-		function cleanup( $text ) {
-			return str_replace( "<p><br />\n</p>", '', $text );
-		}
-	
 	}
 
 } else {
