@@ -95,6 +95,9 @@ Title : <input type='text' name='document_title' value='' size=40/><br/>
 <br/><INPUT type='radio' name='output_format' value='translated_text'>Plain text, google-translated to
  <select name='translated_text_target_language'>{$tttlo}</select> (works only for wikipedia/wikibooks)
 <br/><INPUT type='radio' name='output_format' value='xhtml'>XHTML 
+ <input type='checkbox' name='xhtml_justify' value='1' checked>Align paragraphs as 'justify'</input>
+ <input type='checkbox' name='xhtml_logical_markup' value='1' checked>Use logical markup (e.g., 'strong' instead of 'b')</input>
+ <input type='checkbox' name='xhtml_source' value='1'>Return source XHTML</input>
 <br/><INPUT type='radio' name='output_format' value='docbook_xml'>DocBook XML 
 {$optional}
 </tr></table>
@@ -293,6 +296,7 @@ if ( get_param('doit',false) ) { # Process
 		$out = str_replace ( "\n" , "<br/>" , $out ) ;
 		header('Content-type: text/html; charset=utf-8');
 		print $out ;
+
 	} else if ( $format == "translated_text" ) {
 		$xmlg['plaintext_markup'] = false ;
 		$xmlg['plaintext_prelink'] = false ;
@@ -309,17 +313,28 @@ if ( get_param('doit',false) ) { # Process
 		$url = "http://www.google.com/translate_t?langpair={$langpair}&text=" . urlencode ( utf8_decode ( $out ) ) ;
 		echo file_get_contents ( $url ) ;
 
-
-
 	} else if ( $format == "xhtml" ) {
-		# Header hack for IE
-		if ( stristr($_SERVER["HTTP_ACCEPT"],"application/xhtml+xml") ) {
-		  header("Content-type: application/xhtml+xml");
+		$xmlg['xhtml_justify'] = get_param ( 'xhtml_justify' , false ) ;
+		$xmlg['xhtml_logical_markup'] = get_param ( 'xhtml_logical_markup' , false ) ;
+		$xmlg['xhtml_source'] = get_param ( 'xhtml_source' , false ) ;
+
+		if ( $xmlg['xhtml_source'] ) {
+			header('Content-type: text/html; charset=utf-8');
+			$s = $converter->articles2xhtml ( $xml , $xmlg ) ;
+			$s = str_replace ( '>' , ">\n" , $s ) ;
+			$s = str_replace ( '<' , "\n<" , $s ) ;
+			$s = str_replace ( "\n\n" , "\n" , $s ) ;
+			echo trim ( str_replace ( "\n" , '<br/>' , htmlentities ( $s ) ) ) ;
 		} else {
-		  header("Content-type: text/html");
+			# Header hack for IE
+			if ( stristr($_SERVER["HTTP_ACCEPT"],"application/xhtml+xml") ) {
+			  header("Content-type: application/xhtml+xml");
+			} else {
+			  header("Content-type: text/html");
+			}
+			echo $converter->articles2xhtml ( $xml , $xmlg ) ;
 		}
-#		header("Content-type: application/xhtml+xml");
-		echo $converter->articles2xhtml ( $xml , $xmlg ) ;
+
 	} else if ( $format == "odt" || $format == "odt_xml" ) {
 		if ( isset ( $_REQUEST['odt_footnote'] ) ) $xmlg["odt_footnote"] = 'endnote' ;
 		if ( $xmlg['sourcedir'] == '.' ) $cwd = getcwd() ;

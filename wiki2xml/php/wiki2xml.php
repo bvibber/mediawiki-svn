@@ -34,6 +34,7 @@ class wiki2xml
 		"th" => "xhtml:th",
 		"td" => "xhtml:td",
 		"pre" => "xhtml:pre",
+		"code" => "xhtml:code",
 		"caption" => "xhtml:caption",
 		"cite" => "xhtml:cite",
 		"ul" => "xhtml:ul",

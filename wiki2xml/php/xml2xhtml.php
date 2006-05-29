@@ -166,7 +166,8 @@ class XML2XHTML {
 	
 	
 	function tag_paragraph ( $open , &$attrs ) {
-		if ( !isset ( $attrs['align'] ) ) $attrs['align'] = 'justify' ;
+		global $xmlg ;
+		if ( !isset ( $attrs['align'] ) AND $xmlg['xhtml_justify'] ) $attrs['align'] = 'justify' ;
 		if ( $open ) $this->add_tag ( "p" , $attrs ) ;
 		else $this->close_tag ( "p" ) ;
 	}
@@ -182,10 +183,10 @@ class XML2XHTML {
 		else $this->close_tag ( $tag ) ;
 	}
 	
-	function tag_bold ( $open , &$attrs ) { $this->simple_tag ( $open , "b" ) ; }
+	function tag_bold ( $open , &$attrs ) { global $xmlg ; $this->simple_tag ( $open , $xmlg['xhtml_logical_markup'] ? "strong" : "b" ) ; }
 	function tag_xhtml_b ( $open , &$attrs ) { $this->simple_tag ( $open , "b" ) ; }
 	function tag_xhtml_strong ( $open , &$attrs ) { $this->simple_tag ( $open , "strong" ) ;}
-	function tag_italics ( $open , &$attrs ) { $this->simple_tag ( $open , "i" ) ; }
+	function tag_italics ( $open , &$attrs ) { global $xmlg ; $this->simple_tag ( $open , $xmlg['xhtml_logical_markup'] ? "em" : "i" ) ; }
 	function tag_xhtml_i ( $open , &$attrs ) { $this->simple_tag ( $open , "i" ) ; }
 	function tag_xhtml_em ( $open , &$attrs ) { $this->simple_tag ( $open , "em" ) ; }
 	function tag_xhtml_ol ( $open , &$attrs ) { $this->simple_tag ( $open , "ol" ) ; }
@@ -194,6 +195,7 @@ class XML2XHTML {
 	function tag_xhtml_li ( $open , &$attrs ) { $this->simple_tag ( $open , "li" ) ; }
 	function tag_xhtml_dt ( $open , &$attrs ) { $this->simple_tag ( $open , "dt" ) ; }
 	function tag_xhtml_dd ( $open , &$attrs ) { $this->simple_tag ( $open , "dd" ) ; }
+	function tag_xhtml_code ( $open , &$attrs ) { $this->simple_tag ( $open , "code" ) ; }
 	
 	# MISC
 	function tag_xhtml_font ( $open , &$attrs ) {
