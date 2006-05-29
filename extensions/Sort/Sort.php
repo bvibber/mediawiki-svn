@@ -60,6 +60,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 		
 		function internalSort( $text ) {
+			wfProfileIn( 'Sorter::internalSort' );
 			$raw = explode( "\n", $text );
 			$lines = array();
 			foreach( $raw as $line ) {
@@ -71,13 +72,16 @@ if( defined( 'MEDIAWIKI' ) ) {
 			natsort( $lines );
 			if( $this->order == 'desc' )
 				$lines = array_reverse( $lines, true );
+			wfProfileIn( 'Sorter::internalSort' );
 			return $lines;
 		}
 		
 		function makeList( $sorted ) {
+			wfProfileIn( 'Sorter::makeList' );
 			$tag = $this->class == 'ol' ? 'ol' : 'ul';
 			foreach( $sorted as $html => $text )
 				$list[] = wfOpenElement( 'li' ) . $html . wfCloseElement( 'li' );
+			wfProfileOut( 'Sorter::makeList' );
 			return wfOpenElement( $tag ) . implode( "\n", $list ) . wfCloseElement( $tag );
 		}
 		
@@ -90,9 +94,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 	
 		function parse( $text ) {
+			wfProfileIn( 'Sorter::parse' );
 			$title =& $this->parser->mTitle;
 			$options =& $this->parser->mOptions;
 			$output = $this->parser->parse( $text, $title, $options, false, false );
+			wfProfileOut( 'Sorter::parse' );
 			return $output->getText();
 		}
 	
