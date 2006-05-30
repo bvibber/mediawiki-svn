@@ -99,7 +99,9 @@ class MediaWikiConverter {
 		$ret = "" ;
 		$ret .= '<?xml version="1.0" encoding="UTF-8" ?>' ;
 		$ret .= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//' . $lang . '" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' ;
-		$ret .= '<html xmlns="http://www.w3.org/1999/xhtml">' ;
+		if ( !$params['xhtml_source'] )
+			$ret .= '<html xmlns="http://www.w3.org/1999/xhtml">' ;
+		else $ret .= '<html>' ;
 		$ret .= '<head>' ;
 		#$ret .= '<link rel="stylesheet" type="text/css" media="screen,projection" href="http://de.wikipedia.org/skins-1.5/monobook/main.css" />' ;
 		#$ret .= '<link rel="stylesheet" type="text/css" media="print" href="http://en.wikipedia.org/skins-1.5/common/commonPrint.css" />' ;
@@ -109,6 +111,7 @@ class MediaWikiConverter {
 		#$ret .= $params["site_base_url"] . 'index.php?title=MediaWiki:Monobook.css&amp;action=raw" />' ;
 		$ret .= '<title>' ;
 		if ( isset ( $params['page_title'] ) ) $ret .= $params['page_title'] ;
+		else $ret .= $params["book_title"] ;
 		$ret .= '</title>' ;
 		$ret .= '</head>' ;
 		$ret .= '<body>' ;

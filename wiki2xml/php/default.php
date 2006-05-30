@@ -11,6 +11,9 @@ $xmlg["use_toolserver_url"] = false ;
 $xmlg["odt_footnote"] = 'footnote' ;
 $xmlg["allow_xml_temp_files"] = true ;
 $xmlg["use_xml_temp_files"] = false ;
+$xmlg["xhtml_source"] = false ;
+$xmlg['xhtml_justify'] = false ;
+$xmlg['xhtml_logical_markup'] = false ;
 
 @include ( "local.php" ) ;
 

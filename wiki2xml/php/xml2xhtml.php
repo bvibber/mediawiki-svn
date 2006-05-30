@@ -196,6 +196,8 @@ class XML2XHTML {
 	function tag_xhtml_dt ( $open , &$attrs ) { $this->simple_tag ( $open , "dt" ) ; }
 	function tag_xhtml_dd ( $open , &$attrs ) { $this->simple_tag ( $open , "dd" ) ; }
 	function tag_xhtml_code ( $open , &$attrs ) { $this->simple_tag ( $open , "code" ) ; }
+	function tag_preblock ( $open , &$attrs ) { $this->simple_tag ( $open , "pre" ) ; }
+	function tag_preline ( $open , &$attrs ) { if ( !$open ) $this->add ( "\n" ) ; }
 	
 	# MISC
 	function tag_xhtml_font ( $open , &$attrs ) {

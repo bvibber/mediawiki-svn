@@ -319,12 +319,14 @@ if ( get_param('doit',false) ) { # Process
 		$xmlg['xhtml_source'] = get_param ( 'xhtml_source' , false ) ;
 
 		if ( $xmlg['xhtml_source'] ) {
-			header('Content-type: text/html; charset=utf-8');
+			header('Content-type: text/xml; charset=utf-8');
+			#header('Content-type: text/html; charset=utf-8');
 			$s = $converter->articles2xhtml ( $xml , $xmlg ) ;
 			$s = str_replace ( '>' , ">\n" , $s ) ;
 			$s = str_replace ( '<' , "\n<" , $s ) ;
 			$s = str_replace ( "\n\n" , "\n" , $s ) ;
-			echo trim ( str_replace ( "\n" , '<br/>' , htmlentities ( $s ) ) ) ;
+			echo trim ( $s ) ;
+			#echo str_replace ( "\n" , '<br/>' , htmlentities ( trim ( $s ) ) ) ;
 		} else {
 			# Header hack for IE
 			if ( stristr($_SERVER["HTTP_ACCEPT"],"application/xhtml+xml") ) {

@@ -607,8 +607,8 @@ class wiki2xml
 		if ( $a >= $this->wl ) return false ; # Already at the end of the text
 		if ( $this->w[$a]!= ' ' ) return false ; # Not a preline
 
+		$a++ ;
 		$this->bold_italics = "" ;
-		$this->skipblanks ( $a ) ;
 		$x = "" ;
 		$ret = $this->once ( $a , $x , "restofline" ) ;
 		if ( $ret ) {
@@ -1371,11 +1371,20 @@ class wiki2xml
 		if ( !$this->p_article ( $a , $xml ) ) return $this->errormessage ;
 
 		# XML cleanup
-		do {
-			$lxml = $xml ;
+		$ol = -1 ;
+		while ( $ol != strlen ( $xml ) ) {
+			$ol = strlen ( $xml ) ;
+			$xml = str_replace ( "<preline> " , "<preline><space/>" , $xml ) ;
+			$xml = str_replace ( "<space/> " , "<space/><space/>" , $xml ) ;
+		}
+		$ol = -1 ;
+		while ( $ol != strlen ( $xml ) ) {
+			$ol = strlen ( $xml ) ;
 			$xml = str_replace ( "  " , " " , $xml ) ;
-			} while ( $lxml != $xml ) ;
-		if ( $this->use_space_tag ) {
+			}
+		$ol = -1 ;
+		while ( $this->use_space_tag && $ol != strlen ( $xml ) ) {
+			$ol = strlen ( $xml ) ;
 			$xml = str_replace ( "> " , "><space/>" , $xml ) ;
 			$xml = str_replace ( " <" , "<space/><" , $xml ) ;
 		}
