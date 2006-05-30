@@ -1,7 +1,10 @@
 #!/usr/bin/python
 
+# Not to be confused with dbzip3d...
+
 import bz2
 import getopt
+import os
 import struct
 import sys
 import thread
@@ -10,14 +13,23 @@ import time
 import DistBits
 from SocketServer import BaseRequestHandler, ForkingTCPServer
 
+listen = ""
+port = 16986 # "BZ"
+daemonize = False
+user = None
+verbosity = 0
+pidFileName = None
+
 class CompressorHandler(BaseRequestHandler):
 	def debug(self, level, text):
-		print text
+		if verbosity >= level:
+			sys.stderr.write(text + "\n")
 	
 	def setup(self):
 		self.connection = DistBits.Connection(self.request)
 		self.version = None
 		self.algo = None
+		self.blockSize100k = None
 	
 	def handle(self):
 		self.debug(2, "Opened connection")
@@ -25,17 +37,18 @@ class CompressorHandler(BaseRequestHandler):
 		handlers = {
 			"COMP": self.handleComp,
 			"ALGO": self.handleAlgo,
+			"BLOK": self.handleBlok,
 			"HUGE": self.handleHuge,
 			"CLOS": self.handleClos }
-		(atom, data) = self.connection.receive()
-		while atom:
-			if atom:
-				self.debug(3, "Received %s atom, %d bytes." % (atom, len(data)))
-				assert atom in handlers
-				handlers[atom](data)
+		while True:
+			if self.connection.isOpen():
+				(atom, data) = self.connection.receive()
 			else:
 				self.debug(3, "End of connection.")
-			(atom, data) = self.connection.receive()
+				break
+			self.debug(3, "Received %s atom, %d bytes." % (atom, len(data)))
+			assert atom in handlers
+			handlers[atom](data)
 	
 	def handleComp(self, data):
 		assert self.version is None
@@ -47,6 +60,14 @@ class CompressorHandler(BaseRequestHandler):
 		assert self.version is not None
 		assert data == "bzip2"
 		self.algo = data
+		self.blockSize100k = 9
+	
+	def handleBlok(self, data):
+		assert self.version is not None
+		assert self.algo == "bzip2"
+		assert len(data) == 1
+		assert data >= "1" and data <= "9"
+		self.blockSize100k = int(data)
 	
 	def handleHuge(self, data):
 		assert self.version is not None
@@ -57,9 +78,47 @@ class CompressorHandler(BaseRequestHandler):
 	
 	def compress(self, data):
 		assert self.algo == "bzip2"
-		return bz2.compress(data)
+		assert self.blockSize100k >= 1 and self.blockSize100k <= 9
+		return bz2.compress(data, self.blockSize100k)
 
 if __name__ == "__main__":
-	port = 12345
-	server = ForkingTCPServer(("", port), CompressorHandler)
+	
+	(options, remainder) = getopt.getopt(sys.argv[1:], "dl:p:u:v", ["pid-file="])
+	for (opt, val) in options:
+		if opt == "-d":
+			daemonize = True
+		elif opt == "-l":
+			listen = val
+		elif opt == "-p":
+			port = int(val)
+		elif opt == "-u":
+			user = val
+		elif opt == "-v":
+			verbosity += 1
+		elif opt == "--pid-file":
+			pidFileName = val
+	
+	if daemonize:
+		if os.fork(): sys.exit(0)
+		os.setsid()
+		if os.fork(): sys.exit(0)
+		
+		# Fixme: work this crap out
+		#os.chdir("/")
+		#os.umask(0)
+		#os.close(sys.stdin.fileno())
+		#sys.stdin = open("/dev/null", "r")
+		#os.close(sys.stdout.fileno())
+		#sys.stdout = open("/dev/null", "a")
+		#os.close(sys.stderr.fileno())
+		#sys.stderr = open("/dev/null", "a")
+	
+	if pidFileName:
+		if os.path.exists(pidFileName):
+			os.path.unlink(pidFileName)
+		pidFile = file(pidFileName, "w")
+		pidFile.write(str(os.getpid()))
+		pidFile.close()
+	
+	server = ForkingTCPServer((listen, port), CompressorHandler)
 	server.serve_forever()

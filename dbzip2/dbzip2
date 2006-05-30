@@ -8,7 +8,6 @@
 # 2006-05-12
 
 # TODO:
-# Selectable block size
 # Handle remote failures gracefully
 # Accept file input/output, behavior like bzip2
 
@@ -36,6 +35,7 @@ class Compressor(object):
 		self.threads = 1 # Number of local threads to start.
 		self.remotes = []
 		self.verbosity = 0
+		self.blockSize100k = 9
 		
 		self.crc = 0L
 		
@@ -55,21 +55,23 @@ class Compressor(object):
 		self.processArgs(args)
 	
 	def processArgs(self, args):
-		(options, remainder) = getopt.getopt(args, "vp:r:")
+		(options, remainder) = getopt.getopt(args, "123456789p:r:v")
 		for (opt, val) in options:
-			if opt == "-v":
-				self.verbosity += 1
-			elif opt == "-p":
-				self.threads = int(val)
+			if opt >= "-1" and opt <= "-9":
+				self.blockSize100k = int(opt[1])
 			elif opt == "-r":
 				self.remotes.append(self.splitHost(val))
+			elif opt == "-p":
+				self.threads = int(val)
+			elif opt == "-v":
+				self.verbosity += 1
 	
 	def splitHost(self, val):
 		if ":" in val:
 			(host, port) = val.split(":")
 			return (host, int(port))
 		else:
-			return (val, 12345)
+			return (val, 16986)
 	
 	def debug(self, level, text):
 		if self.verbosity >= level:
@@ -78,9 +80,9 @@ class Compressor(object):
 	def run(self):
 		"""Start up the threads and goooo!"""
 		for i in range(0, self.threads):
-			self.compressors.append(LocalCompressor())
+			self.compressors.append(LocalCompressor(self.blockSize100k))
 		for addr in self.remotes:
-			self.compressors.append(RemoteCompressor(addr))
+			self.compressors.append(RemoteCompressor(addr, self.blockSize100k))
 		assert len(self.compressors) >= 1
 		
 		start_new_thread(self.readerThread, ())
@@ -104,7 +106,7 @@ class Compressor(object):
 	def readerThread(self):
 		"""Producer thread: run through the file handing out blocks."""
 		self.debug(2, "readerThread: starting!")
-		dbzutil.readblock(self.inputStream, self.dispatch)
+		dbzutil.readblock(self.inputStream, self.dispatch, self.blockSize100k)
 		self.done = True
 		self.debug(2, "readerThread: done; read %d blocks" % self.blocksRead)
 	
@@ -199,7 +201,6 @@ class Compressor(object):
 		
 		assert buffer.output is not None
 		assert buffer.index == self.blocksWritten
-		#self.outputStream.write(buffer.output)
 		
 		(offset, overflow, crc) = findBzTrail(buffer.output)
 		self.debug(2, "writeBuffer: block stream crc %08x, offset %d bits" %
@@ -220,7 +221,7 @@ class Compressor(object):
 	def writeHeader(self):
 		self.debug(4, "writing file header")
 		# hardcoded 900k blocksize
-		self.bitStream.write("BZh9")
+		self.bitStream.write("BZh" + str(self.blockSize100k))
 	
 	def writeTrailer(self):
 		self.debug(4, "writing file trailer, combined CRC %08x" % self.crc)
@@ -289,13 +290,13 @@ class QueuedBuffer(object):
 
 
 class LocalCompressor(object):
-	"""For initial testing, we just compress locally."""
+	"""Compression tasks to run on a local thread."""
 	
-	def algo(self, algo):
-		assert algo == "bzip2"
+	def __init__(self, blockSize100k):
+		self.blockSize100k = blockSize100k
 	
 	def compress(self, block):
-		return bz2.compress(block)
+		return bz2.compress(block, self.blockSize100k)
 	
 	def close(self):
 		pass
@@ -304,14 +305,18 @@ class LocalCompressor(object):
 		return "local thread"
 
 class RemoteCompressor(object):
-	def __init__(self, address):
+	def __init__(self, address, blockSize100k):
 		"""Address is a (host, port) tuple."""
 		self.address = address
+		self.blockSize100k = blockSize100k
+		
 		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.socket.connect(address)
+		
 		self.connection = DistBits.Connection(self.socket)
 		self.connection.send("COMP", struct.pack(">l", 1))
 		self.connection.send("ALGO", "bzip2")
+		self.connection.send("BLOK", str(blockSize100k))
 	
 	def compress(self, data):
 		self.connection.send("HUGE", data)

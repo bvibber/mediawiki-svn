@@ -13,11 +13,16 @@ import struct
 #   should be 1. Unsupported version on the server should drop or return
 #   error.
 # ALGO <algorithm>
-#   "bzip2": Create a full bzip2 stream. Use data size as block size.
+#   "bzip2": Create a full bzip2 stream. Default block size is 900k.
+# BLOK <size in 100k>
+#   Optional; "1" through "9" to select bzip2 block size.
 # HUGE <data>
-#   Uncompressed input data; always the last packet. After this, wait
-#   for response. You may issue multiple such requests as long as the
-#   connection remains open.
+#   Uncompressed input data. For each HUGE atom sent by the client, the
+#   server will return a SMAL atom containing compressed data. You may
+#   issue multiple such requests as long as the connection remains open;
+#   the last set ALGO and BLOK settings continue to apply.
+#   Multiple requests may be pipelined if the sides support it, but this
+#   is not required; both clients and servers may block on each request.
 # CLOS <no data>
 #   Close the connection. (Optional?)
 #
