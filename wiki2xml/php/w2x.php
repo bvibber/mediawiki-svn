@@ -456,7 +456,7 @@ if ( get_param('doit',false) ) { # Process
 		print "
 <html><head></head><body>
 <h1>Magnus' magic MediaWiki-to-XML-to-stuff converter</h1>
-<p>All written in PHP - so portable, <s>so incredibly slow...</s> <i>about as fast as the original MediaWiki parser!</i></p>" ;
+<p>All written in PHP - so portable, <s>so incredibly slow...</s> <i>about as fast as the original MediaWiki parser!</i> <small>(For the source, see <a href='http://www.mediawiki.org/wiki/Subversion'>here</a>, trunk 'wiki2xml', directory 'php')</small></p>" ;
 		print get_form () ;
 		print "</body></html>" ;
 	} else { # MediaWiki extension
