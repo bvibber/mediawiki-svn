@@ -21,16 +21,26 @@ function microtime_float()
 
 function get_form ( $as_extension = false ) {
 	global $xmlg ;
+
+	$_wt = get_param ( 'whatsthis' , 'articlelist' ) ;
+	$wt['wikitext'] = $wt['articlelist'] = $wt['listpagename'] = "" ;
+	$wt[$_wt] = 'checked' ;
+	
+	$_out = get_param ( 'output_format' , 'xml' ) ;
+	$out['xml'] = $out['text'] = $out['translated_text'] = $out['xhtml'] = $out['docbook_xml'] = $out['docbook_pdf'] = $out['docbook_html'] = 
+	$out['odt_xml'] = $out['odt'] = '' ;
+	$out[$_out] = 'checked' ;
+	
 	$optional = array () ;
 	if ( isset ( $xmlg['docbook']['command_pdf'] ) ) {
-		$optional[] = "<INPUT type='radio' name='output_format' value='docbook_pdf'>DocBook PDF" ;
+		$optional[] = "<INPUT {$out['docbook_pdf']} type='radio' name='output_format' value='docbook_pdf'>DocBook PDF" ;
 	}
 	if ( isset ( $xmlg['docbook']['command_html'] ) ) {
-		$optional[] = "<INPUT type='radio' name='output_format' value='docbook_html'>DocBook HTML" ;
+		$optional[] = "<INPUT {$out['docbook_html']} type='radio' name='output_format' value='docbook_html'>DocBook HTML" ;
 	}
 	if ( isset ( $xmlg['zip_odt'] ) ) {
-		$optional[] = "<INPUT type='radio' name='output_format' value='odt_xml'>OpenOffice XML" ;
-		$optional[] = "<INPUT type='radio' name='output_format' value='odt'>OpenOffice ODT" .
+		$optional[] = "<INPUT {$out['odt_xml']} type='radio' name='output_format' value='odt_xml'>OpenOffice XML" ;
+		$optional[] = "<INPUT {$out['odt']} type='radio' name='output_format' value='odt'>OpenOffice ODT" .
 			"<input type='checkbox' name='odt_footnote' value='1'>References as endnotes (instead of footnotes)" ;
 	}
 	$optional = "<br/>" . implode ( "<br/>" , $optional ) ;
@@ -65,7 +75,9 @@ function get_form ( $as_extension = false ) {
 return "<form method='post'>
 <h2>Paste article list or wikitext here</h2>
 <table border='0' width='100%'><tr>
-<td valign='top'><textarea rows='20' cols='80' style='width:100%' name='text'></textarea></td>
+<td valign='top'><textarea rows='20' cols='80' style='width:100%' name='text'>" . 
+get_param ( 'text' , '' ) . 
+"</textarea></td>
 <td width='200px' valign='top' nowrap>
 <INPUT checked type='radio' name='use_templates' value='all'>Use all templates<br/>
 <INPUT type='radio' name='use_templates' value='none'>Do not use templates<br/>
@@ -76,9 +88,9 @@ return "<form method='post'>
 <table border='0'><tr>
 <td valign='top'>
 This is<br/>
-<INPUT type='radio' name='whatsthis' value='wikitext'>raw wikitext <br/>
-<INPUT checked type='radio' name='whatsthis' value='articlelist'>a list of articles<br/>
-<INPUT type='radio' name='whatsthis' value='listpagename'>the name of an article with a list of pages<br/>
+<INPUT {$wt['wikitext']} type='radio' name='whatsthis' value='wikitext'>raw wikitext <br/>
+<INPUT {$wt['articlelist']} type='radio' name='whatsthis' value='articlelist'>a list of articles<br/>
+<INPUT {$wt['listpagename']} type='radio' name='whatsthis' value='listpagename'>the name of an article with a list of pages<br/>
 
 {$site}
 Title : <input type='text' name='document_title' value='' size=40/><br/>
@@ -88,17 +100,17 @@ Title : <input type='text' name='document_title' value='' size=40/><br/>
 <input type='submit' name='doit' value='Convert'/>
 </td><td valign='top' style='border-left:1px black solid'>
 <b>Output</b>
-<br/><INPUT checked type='radio' name='output_format' value='xml'>XML 
-<br/><INPUT type='radio' name='output_format' value='text'>Plain text 
+<br/><INPUT {$out['xml']} type='radio' name='output_format' value='xml'>XML 
+<br/><INPUT {$out['text']} type='radio' name='output_format' value='text'>Plain text 
  <input type='checkbox' name='plaintext_markup' value='1' checked>Use *_/ markup</input>
  <input type='checkbox' name='plaintext_prelink' value='1' checked>Put &rarr; before internal links</input>
-<br/><INPUT type='radio' name='output_format' value='translated_text'>Plain text, google-translated to
+<br/><INPUT {$out['translated_text']} type='radio' name='output_format' value='translated_text'>Plain text, google-translated to
  <select name='translated_text_target_language'>{$tttlo}</select> (works only for wikipedia/wikibooks)
-<br/><INPUT type='radio' name='output_format' value='xhtml'>XHTML 
+<br/><INPUT {$out['xhtml']} type='radio' name='output_format' value='xhtml'>XHTML 
  <input type='checkbox' name='xhtml_justify' value='1' checked>Align paragraphs as 'justify'</input>
  <input type='checkbox' name='xhtml_logical_markup' value='1' checked>Use logical markup (e.g., 'strong' instead of 'b')</input>
  <input type='checkbox' name='xhtml_source' value='1'>Return source XHTML</input>
-<br/><INPUT type='radio' name='output_format' value='docbook_xml'>DocBook XML 
+<br/><INPUT {$out['docbook_xml']} type='radio' name='output_format' value='docbook_xml'>DocBook XML 
 {$optional}
 </tr></table>
 </form>
