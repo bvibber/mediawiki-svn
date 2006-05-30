@@ -4,23 +4,12 @@
 # Breaks incoming data stream into blocks, sends them out for separate
 # compression on multiple threads.
 #
-# Currently running bzip2 chunks in local threads, will try moving to
-# remotable network daemons distcc-style. It might or might not be worth
-# it depending on the overhead of slinging around all the data.
-#
-# Like pbzip2 the output files will work with the regular 'bzip2' tool
-# but may not work with other programs because each chunk is its own
-# separate stream. Other tools tend to end at the first stream's end.
-# it might be possible to combine the streams in some way, should
-# investigate.
-#
 # Brion Vibber <brion@pobox.com>
 # 2006-05-12
 
 # TODO:
 # Selectable block size
 # Handle remote failures gracefully
-# Merge blocks to single, more compatible stream
 # Accept file input/output, behavior like bzip2
 
 import bz2
@@ -34,8 +23,8 @@ import time
 
 from thread import start_new_thread
 
+import dbzutil
 import DistBits
-from dbzutil import Bitstream
 from sigcheck import findBzTrail
 
 class Compressor(object):
@@ -115,19 +104,7 @@ class Compressor(object):
 	def readerThread(self):
 		"""Producer thread: run through the file handing out blocks."""
 		self.debug(2, "readerThread: starting!")
-		block = self.nextBlock()
-		while block:
-			while not self.ready():
-				self.debug(4, "readerThread: full at %d; waiting" % len(self.inputQueue))
-				self.sleep()
-			
-			self.lock()
-			self.blocksRead += 1
-			self.debug(2, "readerThread: dispatching block %d" % self.blocksRead)
-			self.dispatch(block)
-			self.unlock()
-			
-			block = self.nextBlock()
+		dbzutil.readblock(self.inputStream, self.dispatch)
 		self.done = True
 		self.debug(2, "readerThread: done; read %d blocks" % self.blocksRead)
 	
@@ -146,10 +123,21 @@ class Compressor(object):
 
 	def dispatch(self, block):
 		"""Queue a block of data for remote compression."""
-		assert self.threadLock.locked()
+		while not self.ready():
+			self.debug(4, "readerThread: full at %d; waiting" % len(self.inputQueue))
+			self.sleep()
+		
+		self.lock()
+		
+		self.blocksRead += 1
+		self.bytesRead += len(block)
+		self.debug(2, "readerThread: dispatching block %d" % self.blocksRead)
+		
 		buffer = QueuedBuffer(self.blocksRead, block)
 		self.inputQueue.append(buffer) # To the compressor threads
 		self.outputQueue.append(buffer) # To the writer thread, in order!
+		
+		self.unlock()
 	
 	def dequeueInput(self):
 		"""Fetch the next available block for compression."""
@@ -175,7 +163,7 @@ class Compressor(object):
 		self.debug(2, "writerThread: starting")
 		startTime = time.time()
 		
-		self.bitStream = Bitstream(self.outputStream)
+		self.bitStream = dbzutil.Bitstream(self.outputStream)
 		self.writeHeader()
 		
 		while not (self.done and self.blocksWritten == self.blocksRead):

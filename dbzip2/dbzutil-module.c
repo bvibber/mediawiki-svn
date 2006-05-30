@@ -168,9 +168,152 @@ bsPythonWrite(BitstreamObject *self) {
 	return ret;
 }
 
+/**
+ * Read a file stream to its end, breaking it into blocks and passing them
+ * to a callback function.
+ *
+ * To match bzip2's behavior, we have to count run lengths, but we're going
+ * to return the raw input so bzip2 can have its way with it again.
+ */
 static PyObject*
 dbzutil_readblock_func(PyObject *self, PyObject *args)
 {
+	PyObject *stream;
+	PyObject *callback;
+	int blockSize100k = 9;
+	if (!PyArg_ParseTuple(args, "OO|i:readblock", &stream, &callback, &blockSize100k))
+		return NULL;
+	
+	if (!PyCallable_Check(callback)) {
+		PyErr_SetString(PyExc_TypeError, "parameter must be callable");
+		return NULL;
+	}
+	
+	// Trigger size of RLE-compressed block edge
+	int maxBlockSize = 100000 * blockSize100k - 19;
+	
+	// size of our buffer; may grow because this holds uncompressed data
+	int outSize = maxBlockSize + 4;
+	char *outBytes = malloc(outSize);
+	int outPosition = 0;
+	
+	if (outBytes == NULL) {
+		// shit!
+		return NULL;
+	}
+	
+	// Size of current byte run for the RLE encoding.
+	int runLength = 0;
+	
+	// Working position in our hypothetical RLE-compressed output buffer.
+	// We don't actually store such a buffer, but we need its size to
+	// know where we should split the blocks.
+	int runPosition = 0;
+	
+	int bufferSize = 65536;
+	PyObject *buffer = NULL;
+	char *readBytes;
+	int readSize = 0;
+	int readPosition = 0;
+	
+	char previous;
+	char current = 0;
+	
+	while (1) {
+		if (readPosition == readSize) {
+			// Grab next chunk of input...
+			if (buffer) {
+				Py_DECREF(buffer);
+			}
+			buffer = PyEval_CallMethod(stream, "read", "(i)", bufferSize);
+			if (!buffer)
+				break;
+			if (-1 == PyString_AsStringAndSize(buffer, &readBytes, &readSize))
+				break;
+			
+			if (readSize == 0) {
+				// Nothing left in input stream; fire off final block and exit.
+				if (outSize > 0) {
+					dbz_debug("readblock: final callback, %d bytes\n", outPosition);
+					PyObject *args = Py_BuildValue("(s#)", outBytes, outPosition);
+					if (!args)
+						break;
+					PyObject *ret = PyEval_CallObject(callback, args);
+					Py_DECREF(args);
+					if (!ret)
+						break;
+				} else {
+					dbz_debug("readblock: at end, no output left.\n");
+				}
+				Py_DECREF(buffer);
+				free(outBytes);
+				return Py_None;
+			}
+			
+			if (runLength == 0) {
+				current = readBytes[readPosition++];
+				outBytes[outPosition++] = current;
+				runLength = 1;
+			} else {
+				readPosition = 0;
+			}
+		}
+		previous = current;
+		current = readBytes[readPosition++];
+		
+		if (outPosition == outSize) {
+			// A big block, add more memory. :(
+			dbz_debug("readblock: reallocing from %d to %d\n", outSize, 2*outSize);
+			outSize *= 2;
+			char *newBytes = realloc(outBytes, outSize);
+			if (newBytes == NULL)
+				break;
+			else
+				outBytes = newBytes;
+		}
+	
+		if (current != previous) {
+			if (runLength < 4) {
+				// Very short runs have no marker, so they don't expand.
+				runPosition += runLength;
+			} else if (runLength >= 4) {
+				// Runs of 4 throguh 259 bytes are stored as the first four
+				// raw bytes plus a one-byte run counter for the remaining
+				// length (ie, the count is 0 for a 4-byte run).
+				runPosition += 5;
+			}
+			runLength = 1;
+		} else {
+			runLength++;
+			if (runLength == 255) {
+				runPosition += 5;
+				runLength = 1;
+			}
+		}
+		if (runPosition >= maxBlockSize) {
+			// chunk out the input
+			dbz_debug("readblock: callback %d bytes\n", outPosition);
+			PyObject *args = Py_BuildValue("(s#)", outBytes, outPosition);
+			if (!args)
+				break;
+			PyObject *ret = PyEval_CallObject(callback, args);
+			Py_DECREF(args);
+			if (!ret)
+				break;
+			
+			// Reset state for a new output block
+			outPosition = 0;
+			runPosition = 0;
+		}
+		
+		outBytes[outPosition++] = current;
+	}
+
+	// Exception cleanup
+	if (buffer) {
+		Py_DECREF(buffer);
+	}
+	free(outBytes);
 	return NULL;
 }
 
@@ -269,9 +412,10 @@ dbzutil_bitstream_flush(BitstreamObject *self, PyObject *args) {
 
 static PyMethodDef dbzutil_methods[] = {
 	{"readblock", dbzutil_readblock_func, METH_VARARGS,
-	"readblock(stream, blocksize)\n"
+	"readblock(stream, callback, blocksize=9)\n"
 	"\n"
-	"Return a tuple of an RLE-compressed data block and its CRC."},
+	"Read through a file stream, breaking it into blocks of the size "
+	"bzip2 would use. The chunks are sent to a callback function."},
 	{NULL}
 };
 
