@@ -89,6 +89,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		
 		function makeList( $lines ) {
 			wfProfileIn( 'Sorter::makeList' );
+			$list = array();
 			$token = $this->class == 'ul' ? '*' : '#';
 			foreach( $lines as $line )
 				if( strlen( $line ) > 0 )
