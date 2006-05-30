@@ -41,7 +41,7 @@ function get_form ( $as_extension = false ) {
 	if ( isset ( $xmlg['zip_odt'] ) ) {
 		$optional[] = "<INPUT {$out['odt_xml']} type='radio' name='output_format' value='odt_xml'>OpenOffice XML" ;
 		$optional[] = "<INPUT {$out['odt']} type='radio' name='output_format' value='odt'>OpenOffice ODT" .
-			"<input type='checkbox' name='odt_footnote' value='1'>References as endnotes (instead of footnotes)" ;
+			"<input type='checkbox' name='odt_footnote' value='1' ".(get_param('odt_footnote',false)?'checked':'').">References as endnotes (instead of footnotes)" ;
 	}
 	$optional = "<br/>" . implode ( "<br/>" , $optional ) ;
 	
@@ -102,14 +102,14 @@ Title : <input type='text' name='document_title' value='' size=40/><br/>
 <b>Output</b>
 <br/><INPUT {$out['xml']} type='radio' name='output_format' value='xml'>XML 
 <br/><INPUT {$out['text']} type='radio' name='output_format' value='text'>Plain text 
- <input type='checkbox' name='plaintext_markup' value='1' checked>Use *_/ markup</input>
- <input type='checkbox' name='plaintext_prelink' value='1' checked>Put &rarr; before internal links</input>
+ <input type='checkbox' name='plaintext_markup' value='1' ".(get_param('plaintext_markup',true)?'checked':'').">Use *_/ markup</input>
+ <input type='checkbox' name='plaintext_prelink' value='1' ".(get_param('plaintext_prelink',true)?'checked':'').">Put &rarr; before internal links</input>
 <br/><INPUT {$out['translated_text']} type='radio' name='output_format' value='translated_text'>Plain text, google-translated to
  <select name='translated_text_target_language'>{$tttlo}</select> (works only for wikipedia/wikibooks)
 <br/><INPUT {$out['xhtml']} type='radio' name='output_format' value='xhtml'>XHTML 
- <input type='checkbox' name='xhtml_justify' value='1' checked>Align paragraphs as 'justify'</input>
- <input type='checkbox' name='xhtml_logical_markup' value='1' checked>Use logical markup (e.g., 'strong' instead of 'b')</input>
- <input type='checkbox' name='xhtml_source' value='1'>Return source XHTML</input>
+ <input type='checkbox' name='xhtml_justify' value='1' ".(get_param('xhtml_justify',true)?'checked':'').">Align paragraphs as 'justify'</input>
+ <input type='checkbox' name='xhtml_logical_markup' value='1' ".(get_param('xhtml_logical_markup',true)?'checked':'').">Use logical markup (e.g., 'strong' instead of 'b')</input>
+ <input type='checkbox' name='xhtml_source' value='1' ".(get_param('xhtml_source',false)?'checked':'').">Return source XHTML</input>
 <br/><INPUT {$out['docbook_xml']} type='radio' name='output_format' value='docbook_xml'>DocBook XML 
 {$optional}
 </tr></table>
