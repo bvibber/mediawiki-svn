@@ -1,0 +1,42 @@
+#!/bin/sh
+
+SERVICE_NAME="dbzip2d"
+SERVICE_LOCK="/var/run/dbzip2d.pid"
+
+RUN_SCRIPT="/usr/bin/dbzip2d"
+
+export PATH=$PATH:/usr/local/bin
+
+case "$1" in
+	start)
+		echo -n "Starting $SERVICE_NAME... "
+		if [ -f $SERVICE_LOCK ]; then
+			echo "Already running on" `cat $SERVICE_LOCK`
+		else
+			($RUN_SCRIPT -d --pid-file="$SERVICE_LOCK" && echo "Done") || rm -f "$SERVICE_LOCK"
+		fi
+		;;
+	stop)
+		echo -n "Shutting down $SERVICE_NAME... "
+		if [ -f $SERVICE_LOCK ]; then
+			kill `cat $SERVICE_LOCK` && sleep 1 && echo "Done"
+			rm -f "$SERVICE_LOCK"
+		else
+			echo "Not running."
+		fi
+		;;
+	restart)
+		"$0" stop
+		sleep 1
+		"$0" start
+		;;
+	status)
+		echo -n "Checking for $SERVICE_NAME... "
+		test -f $SERVICE_LOCK && echo Running on `cat $SERVICE_LOCK` || echo
+		"Not running."
+		;;
+	*)
+		echo "Usage: $0 {start|stop|status|restart}"
+		exit 1
+		;;
+esac
