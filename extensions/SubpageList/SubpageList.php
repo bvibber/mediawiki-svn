@@ -12,53 +12,107 @@
  
 if( defined( 'MEDIAWIKI' ) ) {
 
-	$wgExtensionFunctions[] = 'efSubpageListSetup';
+	$wgExtensionFunctions[] = 'efSubpageList';
 	$wgExtensionCredits['parserhook'][] = array( 'name' => 'Subpage List', 'author' => 'Rob Church' );
 
-	function efSubpageListSetup() {
+	function efSubpageList() {
 		global $wgParser;
-		$wgParser->setHook( 'subpages', 'efSubpageList' );
+		$wgParser->setHook( 'subpages', 'efRenderSubpageList' );
 	}
 	
-	function efSubpageList( $input, $args, &$parser ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+	function efRenderSubpageList( $input, $args, &$parser ) {
+		$list = new SubpageList( $parser );
+		$list->options( $args );
+		return $list->render();
+	}
+	
+	class SubpageList {
+	
+		var $parser;
+		var $title;
 		
-		# Use the skin and title provided by the parser
-		$skin = $parser->mOptions->getSkin();
-		$self = $parser->mTitle;
+		var $token = '*';
 		
-		# Prepare to run the SQL queries
-		$page = $dbr->tableName( 'page' );
-		$ns = (int)$self->getNamespace();
-		$like = $dbr->addQuotes( $self->getDBkey() . '/%' );
-		
-		# Execute the SQL and retrieve a list of pages		
-		$sql = "SELECT page_title FROM $page WHERE page_namespace = {$ns} AND page_title LIKE {$like}";
-		$res = $dbr->query( $sql, 'efSubpageList' );
-		
-		# Prepare a bunch of links to the pages
-		while( $row = $dbr->fetchObject( $res ) ) {
-			$title = Title::makeTitleSafe( $ns, $row->page_title );
-			if( is_object( $title ) )
-				$links[] = '<li>' . $skin->makeKnownLinkObj( $title, efSubpageListGetText( $title ) ) . '</li>';
+		function SubpageList( &$parser ) {
+			$this->parser =& $parser;
+			$this->title =& $parser->mTitle;
 		}
-		$dbr->freeResult( $res );
 		
-		# Dump out the HTML
-		return count( $links ) ? "<ul>" . implode( "\n", $links ) . "</ul>" : '';
+		function options( $options ) {
+			if( isset( $options['type'] ) ) {
+				$type = strtolower( $options['type'] );
+				if( $type == 'ol' || $type == '#' )
+					$this->token = '#';
+			}
+		}
+		
+		function render() {
+			wfProfileIn( 'SubpageList::render' );
+			$pages = $this->getTitles();
+			if( count( $pages ) > 0 ) {
+				$list = $this->makeList( $pages );
+				$html = $this->parse( $list );
+			} else {
+				$html = '';
+			}
+			wfProfileOut( 'SubpageList::render' );
+			return "<div class=\"subpagelist\">{$html}</div>";
+		}
+		
+		function getTitles() {
+			wfProfileIn( 'SubpageList::getTitles' );
+			
+			$dbr =& wfGetDB( DB_SLAVE );
+			$page = $dbr->tableName( 'page' );
+			
+			$ns = $this->title->getNamespace();
+			$like = $dbr->addQuotes( $this->title->getDBkey() . '/%' );
+			$sql = "SELECT page_title FROM {$page} WHERE page_namespace = {$ns} AND page_title LIKE {$like}";
+			$res = $dbr->query( $sql, 'SubpageList::getTitles' );
+			
+			$titles = array();
+			while( $row = $dbr->fetchObject( $res ) ) {
+				$title = Title::makeTitleSafe( $ns, $row->page_title );
+				if( is_object( $title ) )
+					$titles[] = $title;
+			}
+			
+			$dbr->freeResult( $res );
+			wfProfileOut( 'SubpageList::getTitles' );
+			return $titles;
+		}
+		
+		function makeList( $titles ) {
+			wfProfileIn( 'SubpageList::makeList' );
+			$list = array();
+			foreach( $titles as $title )
+				$list[] = $this->token . $this->makeListItem( $title );
+			wfProfileOut( 'SubpageList::makeList' );
+			return implode( "\n", $list );
+		}
+		
+		function makeListItem( $title ) {
+			$link = ' [[' . $title->getPrefixedText() . '|';
+			
+			$chop = count( explode( '/', $this->title->getText() ) );
+			$parts = explode( '/', $title->getText() );
+			for( $i = 0; $i < $chop; $i++ )
+				array_shift( $parts );
+			
+			$link .= implode( '/', $parts ) . ']]';
+			return $link;
+		}
+		
+		function parse( $text ) {
+			wfProfileIn( 'SubpageList::parse' );
+			$options =& $this->parser->mOptions;
+			$output = $this->parser->parse( $text, $this->title, $options, true, false );
+			wfProfileOut( 'SubpageList::parse' );
+			return $output->getText();
+		}
+	
 	}
 	
-	/**
-	 * Given a title, e.g. Foo/Bar, return the rightmost segment
-	 * Foo/Bar => Bar
-	 * Dog/Cat/Mouse => Cat/Mouse
-	 */
-	function efSubpageListGetText( &$title ) {
-		$parts = explode( '/', $title->getText() );
-		array_shift( $parts );
-		return implode( '/', $parts );
-	}
-
 } else {
 	echo( "This is an extension to the MediaWiki package and cannot be run standalone.\n" );
 	die( -1 );
