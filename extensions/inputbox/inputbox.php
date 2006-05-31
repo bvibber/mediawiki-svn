@@ -9,10 +9,12 @@
  * This extension requires MediaWiki 1.5 or higher.
  *
  * @author Erik Moeller <moeller@scireview.de>
+ *  namespaces search improvements partially by
+ *  Leonardo Pimenta <leo.lns@gmail.com> 
  * @copyright Public domain
  * @license Public domain
  * @package MediaWikiExtensions
- * @version 0.1
+ * @version 0.1.1
  */
  
 /**
@@ -36,6 +38,8 @@ function registerInputboxExtension()
 }
 
 
+
+
 /**
  * Renders an inputbox based on information provided by $input.
  */
@@ -50,11 +54,12 @@ function renderInputbox($input, $params, &$parser)
 	getBoxOption($inputbox->bgcolor,$input,'bgcolor');
 	getBoxOption($inputbox->buttonlabel,$input,'buttonlabel');	
 	getBoxOption($inputbox->searchbuttonlabel,$input,'searchbuttonlabel');		
+	getBoxOption($inputbox->namespaces,$input,'namespaces');		
 	getBoxOption($inputbox->id,$input,'id');	
 	getBoxOption($inputbox->labeltext,$input,'labeltext');
-	getBoxOption( $inputbox->br, $input, 'break' );
+	getBoxOption($inputbox->br, $input, 'break');
 	$inputbox->lineBreak();
-	$inputbox->checkWidth();
+	$inputbox->checkWidth();	
 	
 	$boxhtml=$inputbox->render();
 	# Maybe support other useful magic words here
@@ -94,7 +99,7 @@ class Inputbox {
 		}	
 	}
 	function getSearchForm() {
-		global $wgUser;
+		global $wgUser, $wgContLang;
 		
 		$sk=$wgUser->getSkin();
 		$searchpath = $sk->escapeSearchLink();		
@@ -104,25 +109,61 @@ class Inputbox {
 		if(!$this->searchbuttonlabel) {
 			$this->searchbuttonlabel = wfMsgHtml( 'searchfulltext' );
 		}
-		
+
+
 		$searchform=<<<ENDFORM
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-<tr>
-<td align="center" bgcolor="{$this->bgcolor}">
-<form name="searchbox" action="$searchpath" class="searchbox">
-	<input class="searchboxInput" name="search" type="text"
-	value="{$this->defaulttext}" size="{$this->width}"/>{$this->br}	
-	<input type='submit' name="go" class="searchboxGoButton"
-	value="{$this->buttonlabel}"
-	/>&nbsp;<input type='submit' name="fulltext"
-	class="searchboxSearchButton"
-	value="{$this->searchbuttonlabel}" />
-</form>
-</td>
-</tr>
-</table>
+		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+		<td align="center" bgcolor="{$this->bgcolor}">
+		<form name="searchbox" action="$searchpath" class="searchbox">
+		<input class="searchboxInput" name="search" type="text"
+		value="{$this->defaulttext}" size="{$this->width}"/>{$this->br}
 ENDFORM;
-		return $searchform;
+
+		// disabled when namespace filter active
+		$gobutton=<<<ENDGO
+<input type='submit' name="go" class="searchboxGoButton" value="{$this->buttonlabel}" />&nbsp;
+ENDGO;
+		// Determine namespace checkboxes
+		$namespaces = $wgContLang->getNamespaces();
+		$namespacesarray = explode(",",$this->namespaces);
+
+		// Test if namespaces requested by user really exist
+		if ($this->namespaces) {
+			foreach ($namespacesarray as $usernamespace) {
+				$checked = '';
+				// Namespace needs to be checked if flagged with "**" or if it's the only one
+				if (strstr($usernamespace,'**') || count($namespacesarray)==1) {
+                                        $usernamespace = str_replace("**","",$usernamespace);
+                                        $checked =" checked";
+                                }
+				foreach ( $namespaces as $i => $name ) {
+					if ($i < 0){
+						continue;
+					}elseif($i==0) {
+						$name='Main';
+					}
+					if ($usernamespace == $name) {
+                                                $searchform2 .= "<input type=checkbox name=\"ns{$i}\" value=\"1\"{$checked}>{$usernamespace}";
+					}
+				}
+			}
+			//Line feed 
+			$searchform2 .= $this->br;		
+			//If namespaces are defined remove the go button 
+			//because go button doesn't accept namespaces parameters 
+			$gobutton='';
+		} 
+		$searchform3=<<<ENDFORM2
+		{$gobutton}
+		<input type='submit' name="searchx" class="searchboxSearchButton" value="{$this->searchbuttonlabel}" />
+		</form>
+		</td>
+		</tr>
+		</table>
+ENDFORM2;
+		//Return form values
+		return $searchform . $searchform2 . $searchform3;
 	}
 
 	function getSearchForm2() {
@@ -192,14 +233,13 @@ ENDFORM;
 		$cond = ( strtolower( $this->br ) == "no" );
 		$this->br = $cond ? '' : '<br />';
 	}
-	
+
 	/**
 	 * If the width is not supplied, set it to 50
 	 */
 	function checkWidth() {
 		if( !$this->width || trim( $this->width ) == '' )
 			$this->width = 50;
-	}
-	
+	}	
 }
 ?>
