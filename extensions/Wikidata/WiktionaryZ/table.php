@@ -74,6 +74,29 @@ function parityClass($value) {
 		return "odd";
 }
 
+function convertValuesToHTML($attributes, $values) {
+	$result = array();
+	$i = 0;
+	
+	foreach ($values as $value) 
+		$result[] = convertToHTML($value, $attributes[$i++]->type);		
+	
+	return $result;
+}
+
+function getTableCellsAsHTML($attributes, $values) {
+	$result = '';
+	$i = 0;
+	
+	foreach($values as $value) {
+		$type = $attributes[$i]->type;			
+		$result .= '<td class="'. $type .' column-'. parityClass($i) . '">'. $value . '</td>';
+		$i++;
+	}
+	
+	return $result;
+}
+
 function getTableAsHTML($tableModel) {
 	$result = '<table class="wiki-data-table"><tr>';	
 	$attributes = $tableModel->getAttributes();
@@ -81,22 +104,64 @@ function getTableAsHTML($tableModel) {
 	foreach($attributes as $attribute)
 		$result .= '<th class="'. $attribute->type .'">' . $attribute->name . '</th>';
 		
-	$result .= '<tr>';
+	$result .= '</tr>';
 	
 	for($i = 0; $i < $tableModel->getRowCount(); $i++) {
-		$result .= '<tr>';
-		$j = 0;
+//		$result .= '<tr>';
+//		$j = 0;
+//		
+//		foreach($tableModel->getRow($i) as $cell) {
+//			$type = $attributes[$j]->type;			
+//			$result .= '<td class="'. $type .' column-'. parityClass($j) . '">'. convertToHTML($cell, $type) . '</td>';
+//			$j++;
+//		}
+//		
+//		$result .= '</tr>';
+		$result .= '<tr>' . getTableCellsAsHTML($attributes, convertValuesToHTML($attributes, $tableModel->getRow($i))) .'</tr>';
+	}
+	
+	$result .= '</table>';
+
+	return $result;
+}
+
+function getInputRowAsHTML($rowId, $attributes, $values, $repeatInput) {
+	if ($repeatInput)
+		$rowClass = 'repeat';
+	else 
+		$rowClass = '';
 		
-		foreach($tableModel->getRow($i) as $cell) {
-			$type = $attributes[$j]->type;			
-			$result .= '<td class="'. $type .' column-'. parityClass($j) . '">'. convertToHTML($cell, $type) . '</td>';
-			$j++;
-		}
+	$result = '<tr id="'. $rowId. '" class="' . $rowClass . '">' . 
+				getTableCellsAsHTML($attributes, $values);
+				
+	if ($repeatInput)
+		$result .= '<td/>';
+		
+	return $result . '</tr>'; 
+}
+
+function getTableAsEditHTML($tableModel, $inputRowId, $inputRowFields, $repeatInput) {
+	$result = '<table class="wiki-data-table"><tr>';	
+	$attributes = $tableModel->getAttributes();
+	
+	foreach($attributes as $attribute)
+		$result .= '<th class="'. $attribute->type .'">' . $attribute->name . '</th>';
+
+	if ($repeatInput)		
+		$result .= '<th>Input rows</th>';
+		
+	$result .= '</tr>';
+	
+	for($i = 0; $i < $tableModel->getRowCount(); $i++) {
+		$result .= '<tr>' . getTableCellsAsHTML($attributes, convertValuesToHTML($attributes, $tableModel->getRow($i)));
+		
+		if ($repeatInput)
+			$result .= '<td/>';
 		
 		$result .= '</tr>';
 	}
 	
-	$result .= '</table>';
+	$result .= getInputRowAsHTML($inputRowId, $attributes, $inputRowFields, $repeatInput) . '</table>';
 
 	return $result;
 }

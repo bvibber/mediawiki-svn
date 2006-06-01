@@ -56,15 +56,14 @@ class WiktionaryZ {
 					}
  				}
  				
- 				# Get spellings of translations and synonyms
-				$wgOut->addHTML("<table border='0' cellpadding='5'><tr valign='top'><td>");
-				$wgOut->addHTML("<h4>Translations and Synonyms:</h4>");
+ 				$wgOut->addHTML('<div class="wiki-data-blocks">');
+			 	$wgOut->addHTML('<div class="wiki-data-block">');
+				$wgOut->addHTML('<h4>Translations and synonyms</h4>');
 				$wgOut->addHTML(getTableAsHTML($synonymAndTranslationTables[$definedMeaningId]));
-				
-				# Relations
-				$wgOut->addHTML("</td><td>");
-				$wgOut->addHTML("<h4>Relations:</h4>");
-
+				$wgOut->addHTML('</div>');
+		
+			 	$wgOut->addHTML('<div class="wiki-data-block">');
+				$wgOut->addHTML('<h4>Relations</h4>');
 				$relations = $definedMeaningRelations[$definedMeaningId];
 				foreach($relations as $type => $rellist) {
 					$wgOut->addHTML("<p>$typenames[$type]:</p>");
@@ -80,15 +79,25 @@ class WiktionaryZ {
 					}
 					$wgOut->addHTML("</ul>");
 				}
-				$wgOut->addHTML("<h4>Attributes:</h4><ul>");
-				$attributes = $attributesPerDefinedMeaning[$definedMeaningId];
+				$wgOut->addHTML('</div>');
 
-				foreach($attributes as $attribute) {
-					$attributeName = $attnames[$attribute];
-					$wgOut->addHTML("<li>". $skin->makeLink("WiktionaryZ:".$attributeName, $attributeName) ."</li>");
-				}
+			 	$wgOut->addHTML('<div class="wiki-data-block">');
+				$wgOut->addHTML('<h4>Attributes</h4>');
+				$attributes = $attributesPerDefinedMeaning[$definedMeaningId];
 				
-				$wgOut->addHTML("</ul></td></tr></table></li>");
+				if (count($attributes) > 0) {
+					$wgOut->addHTML('<ul>');
+					foreach($attributes as $attribute) {
+						$attributeName = $attnames[$attribute];
+						$wgOut->addHTML("<li>". $skin->makeLink("WiktionaryZ:".$attributeName, $attributeName) ."</li>");
+					}
+					$wgOut->addHTML('</ul>');
+				}
+
+				$wgOut->addHTML('</div>');
+				$wgOut->addHTML('</div>');
+				$wgOut->addHTML('<div class="clear-float"/>');
+				$wgOut->addHTML('</li>');
 			}
 			$wgOut->addHTML('</ul>');
 		}
@@ -168,35 +177,7 @@ class WiktionaryZ {
 			$definedMeaningIds = $this->getDefinedMeaningIdsForSectionArguments($sectionArguments);
 			$this->saveExpressionForm($expressionId, $definedMeaningIds);
 		}
-		
-//		$dbr =& wfGetDB( DB_MASTER );
-//
-//		# Get entry record from GEMET namespace
-//		$res=$dbr->query("SELECT * from uw_expression_ns WHERE spelling=BINARY ".$dbr->addQuotes($wgTitle->getText()));
-//
-//		while($row=$dbr->fetchObject($res)) {
-//			$expressionId = $row->expression_id;
-//			$definedMeaningIds = $this->getDefinedMeaningsForExpression($expressionId);
-//			$synonymsAndTranslationIds = $this->getSynonymAndTranslationIds($definedMeaningIds, $expressionId);
-//			$definedMeaningTexts = $this->getDefinedMeaningTexts($definedMeaningIds);
-//			$definedMeaningRelations = $this->getDefinedMeaningRelations($definedMeaningIds);
-//
-//			foreach($definedMeaningIds as $definedMeaningId) {
-//				$translatedContents = $this->getTranslatedContents($definedMeaningTexts[$definedMeaningId]);
-//				
-//				foreach($translatedContents as $languageId => $textId) {
-//					$definition = trim($wgRequest->getText('definition-'.$textId));
-//					   	 
-//					if ($definition != '')
-//						$this->setText($textId, $definition);
-//				}
-//
-//				$this->addTranslatedDefinitionFromRequest($definedMeaningId, $definedMeaningTexts[$definedMeaningId], getRevisionForExpressionId($expressionId), array_keys($translatedContents));
-//				$this->addSynonymsOrTranslationsFromRequest($definedMeaningId);
-//				$this->addRelationFromRequest($definedMeaningId);
-//			}
-//		}
-		
+
 		Title::touchArray(array($wgTitle));
 	}
 
@@ -333,16 +314,17 @@ class WiktionaryZ {
 						$this->getLanguageSelect("translated-definition-language-$definedMeaningId", array_keys($translatedContents)).'</div>'.
 		                getTextArea("translated-definition-$definedMeaningId"));
 
-		$wgOut->addHTML('<table border="0" cellpadding="5"><tr valign="top"><td>'); 
+	 	$wgOut->addHTML('<div class="wiki-data-blocks">');
+	 	$wgOut->addHTML('<div class="wiki-data-block">');
 		$wgOut->addHTML('<h4>Translations and synonyms</h4>');
-		$wgOut->addHTML(getTableAsHTML($synonymAndTranslationTable));
-		$wgOut->addHTML($this->getAddTranslationsAndSynonymsFormFields($definedMeaningId));
+		$wgOut->addHTML(getTableAsEditHTML($synonymAndTranslationTable, "add-translation-synonym-$definedMeaningId", $this->getAddTranslationsAndSynonymsRowFields($definedMeaningId), true));
+		$wgOut->addHTML('</div>');
 
-		$wgOut->addHTML('</td><td>');
-
+	 	$wgOut->addHTML('<div class="wiki-data-block">');
 		$wgOut->addHTML($this->getAddRelationsFormFields($definedMeaningId));
-
-		$wgOut->addHTML('</td></tr></table>');
+		$wgOut->addHTML('</div>');
+		$wgOut->addHTML('</div>');
+		$wgOut->addHTML('<div class="clear-float"/>');
 	}
 	
 	function getDefinedMeaningsForExpression($expressionId) {
@@ -497,17 +479,8 @@ class WiktionaryZ {
 		return $translatedContents;
 	}
 	
-	function getAddTranslationsAndSynonymsFormFields($definedMeaningId) {
-		return '<h4>Add translation/synonym</h4>
-				<table>
-				<tr><th>Language</th><th>Spelling</th><th>Identical meaning?</th><th>Input rows</th></tr>
-				<tr id="add-translation-synonym-'. $definedMeaningId .'" class="repeat">
-					<td>'.$this->getLanguageSelect("language-$definedMeaningId").'</td>
-					<td>'.getTextBox("spelling-$definedMeaningId") .'</td>
-				    <td>'.getCheckBox("endemic-meaning-$definedMeaningId", true). '</td>
-				    <td></td>		
-				</tr>
-				</table>';
+	function getAddTranslationsAndSynonymsRowFields($definedMeaningId) {
+		return array($this->getLanguageSelect("language-$definedMeaningId"), getTextBox("spelling-$definedMeaningId"), getCheckBox("endemic-meaning-$definedMeaningId", true));
 	}
 	
 	function getAddRelationsFormFields($definedMeaningId) {

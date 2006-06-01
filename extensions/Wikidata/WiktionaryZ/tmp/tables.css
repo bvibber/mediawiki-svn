@@ -4,6 +4,18 @@
           skins/common/common.css
 */
 
+/* Wikidata blocks */
+
+.clear-float {
+	clear: both;
+}
+
+.wiki-data-blocks .wiki-data-block {
+	display: inline;
+	float: left;
+	margin: 4px;
+}
+
 /* Wikidata tables */
 
 .wiki-data-table td, .wiki-data-table th {

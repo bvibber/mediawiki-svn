@@ -9,6 +9,13 @@ function booleanAsText($value) {
 		return "No";		
 }
 
+function booleanAsHTML($value) {
+	if ($value)
+		return '<input type="checkbox" checked="checked" disabled="disabled"/>';
+	else
+		return '<input type="checkbox" disabled="disabled"/>';
+}
+
 function spellingAsLink($value) {
 	global
 		$wgUser;
@@ -25,7 +32,7 @@ function languageIdAsText($languageId) {
 
 function convertToHTML($value, $type) {
 	switch($type) {
-		case "boolean": return booleanAsText($value);
+		case "boolean": return booleanAsHTML($value);
 		case "spelling": return spellingAsLink($value);
 		case "language": return languageIdAsText($value);
 		default: return $value;
