@@ -7,8 +7,8 @@ class ContentProvider {
 	var $authors = array () ;
 	var $block_file_download = false ;
 	
-	function get_wiki_text ( $title , $do_cache = false ) {} # dummy
-	function get_template_text ( $title ) {} # dummy
+	function get_wiki_text ( $title , $do_cache = false ) { return "" ; } # dummy
+	function get_template_text ( $title ) { return "" ; } # dummy
 	
 	function add_article ( $title ) {
 		$this->article_list[] = urlencode ( trim ( $title ) ) ;

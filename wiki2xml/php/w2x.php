@@ -200,10 +200,6 @@ function xml_cleanup ( &$xml ) {
 	$xml = array () ;
 }
 
-function xml_articles_header() {
-	global $xmlg ;
-	return $xmlg['xml_articles_header'] ;
-}
 
 ## MAIN PROGRAM
 

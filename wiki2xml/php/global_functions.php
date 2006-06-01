@@ -34,4 +34,10 @@ function get_file_location_global ( $basedir , $ns , $title , $make_dirs = false
 }
 
 
+function xml_articles_header() {
+	global $xmlg ;
+#	if ( !isset ( $xmlg['xml_articles_header'] ) ) return "" ;
+	return $xmlg['xml_articles_header'] ;
+}
+
 ?>
