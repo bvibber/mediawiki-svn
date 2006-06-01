@@ -751,7 +751,7 @@ class User {
 			$effectiveGroups = array_merge( $implicitGroups, $this->mGroups );
 			$this->mRights = $this->getGroupPermissions( $effectiveGroups );
 		
-			//lines added by gkpr
+			//lines added by dom & gkpr
 			if ($dbr->tableExists('language') && $dbr->tableExists('user_languages') ) {
 				$res = $dbr->select( 'user_languages', array( 'language_id', 'attribute', 'level'), array( 'user_id' => $this->mId), $fname);
 				//$this->mLanguages = array();
@@ -773,7 +773,7 @@ class User {
 					}
 				}
 			}
-			//end lines added by gkpr
+			//end lines added by dom & gkpr
 		}
 
 		$this->mDataLoaded = true;
@@ -1435,7 +1435,7 @@ class User {
 			), $fname
 		);
 
-		//lines added by gkpr
+		//lines added by dom & gkpr
 		$dbr =& wfGetDB( DB_SLAVE);
 		if ( $dbr->tableExists('language') && $dbr->tableExists('user_languages') ) {
 			if (!empty($langsToDelete)) {
@@ -1448,7 +1448,7 @@ class User {
 				$this->setUserLanguages($langsToUpdate);
 			}
 		}
-		//end lines added by gkpr
+		//end lines added by dom & gkpr
 		
 		$wgMemc->delete( "$wgDBname:user:id:$this->mId" );
 	}
@@ -1926,7 +1926,7 @@ class User {
 			array( '*', 'user', 'autoconfirmed' ) );
 	}
 
-	//lines added by gkpr
+	//lines added by dom & gkpr
 	function addUserLanguages($langsToInsert) {
 		//global $wgUser;
 		$fname = 'User::addUserLanguages';
@@ -1988,7 +1988,7 @@ class User {
 		} else {
 		}
 	}
-	//end lines added by gkpr
+	//end lines added by dom & gkpr
 }
 
 ?>

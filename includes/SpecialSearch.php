@@ -230,7 +230,7 @@ class SpecialSearch {
 		global $wgOut;
 		global $wgArticleLanguage;
 		$wgOut->setPageTitle( wfMsg( 'searchresults' ) );
-		$term = $wgArticleLanguage . ":" . $term; //added by gkpr
+		$term = empty($wgArticleLanguage) ? $term : $wgArticleLanguage . ":" . $term; //added by gkpr -- for mlmw
 		$wgOut->setSubtitle( htmlspecialchars( wfMsg( 'searchquery', $term ) ) );
 		$wgOut->setArticleRelated( false );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
@@ -325,12 +325,12 @@ class SpecialSearch {
 		global $wgUser, $wgContLang;
 
 		$t = $result->getTitle();
-		//gkpr
+		//for multilingual -- gkpr
 		$dbr =& wfGetDB( DB_SLAVE);
-	        if ( $dbr->tableExists('language') && $dbr->tableExists('user_languages') ) {
+	        if ( $dbr->tableExists('language') && $dbr->tableExists('user_languages') && $dbr->fieldExists('page', 'language_id')) {
 			$language = $dbr->selectField ( 'language', 'native_name', array('language_id' => $dbr->selectField ( 'page', 'language_id', array('page_title' => $t->mUrlform))), 'IGNORE' );
 		}
-		//end gkpr
+		//endfor multilingual -- gkpr
 		
 		if( is_null( $t ) ) {
 			wfProfileOut( $fname );
@@ -346,7 +346,8 @@ class SpecialSearch {
 		$link = $sk->makeKnownLinkObj( $t );
 		$revision = Revision::newFromTitle( $t );
 		$text = $revision->getText();
-		$size = wfMsg( 'nbytes', strlen( $text ) ) . " - " . wfMsg( 'yourlanguage' ) . $language;
+		//line modified for multilingual
+		$size = $language ? wfMsg( 'nbytes', strlen( $text ) ) . " - " . wfMsg( 'yourlanguage' ) . $language : wfMsg( 'nbytes', strlen( $text ) );
 
 		$lines = explode( "\n", $text );
 

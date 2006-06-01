@@ -139,7 +139,7 @@ class SearchMySQL extends SearchEngine {
 		global $wgArticleLanguage;//added by gkpr
 		$match = $this->parseQuery( $filteredTerm, $fulltext );
 		$page        = $this->db->tableName( 'page' );
-		$language = $this->db->tableExists('language')? $this->db->tableName( 'language' ) : '';
+		$language = $this->db->tableExists('language') && $this->db->fieldExists('page', 'language_id') ? $this->db->tableName( 'language' ) : '';
 		$searchindex = $this->db->tableName( 'searchindex' );
 		if (!empty($language)) {
 			$qry = !empty($wgArticleLanguage) ? " AND  " . $page . ".language_id=$language.language_id AND $language.wikimedia_key='$wgArticleLanguage'" : '';//gkpr

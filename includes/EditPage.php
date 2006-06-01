@@ -756,12 +756,16 @@ class EditPage {
 				}
 			} else {
 				$s = wfMsg( 'editing', $this->mTitle->getPrefixedText() );
-				//added by gkpr
-				global $wgLanguageNames;
+				//for multilingual -- added by dom & gkpr
+				//global $wgLanguageNames;
 				$dbr =& wfGetDB( DB_SLAVE );
-				$wikimedia_key = $dbr->selectField ( 'language', 'wikimedia_key', array('language_id' => $this->mArticle->mLanguageId), 'IGNORE' );
-				$wgOut->setSubtitle( wfMsg('yourlanguage') . " {$wgLanguageNames[$wikimedia_key]}" );
-				//end added by gkpr
+				if ($dbr->tableExists('language') && wfFieldExists('page', 'language_id')) {
+					$wikimedia_key = $dbr->selectField ( 'language', 'wikimedia_key', array('language_id' => $this->mArticle->mLanguageId), 'IGNORE' );
+					$language = $dbr->selectField ( 'language', 'english_name', array('language_id' => $this->mArticle->mLanguageId), 'IGNORE' );
+					//$wgOut->setSubtitle( wfMsg('yourlanguage') . " {$wgLanguageNames[$wikimedia_key]}" );
+					$wgOut->setSubtitle( wfMsg('yourlanguage') . " $language" );
+				}
+				//end for multilingual
 			}
 			$wgOut->setPageTitle( $s );
 
@@ -1732,19 +1736,24 @@ END
 		$wgOut->addWikiText( wfMsg( 'nocreatetext' ) );
 	}
 	
-	//lines added by gkpr
+	//lines for multilingual --- added by dom & gkpr
 	function showLanguages() {
 		$fname = 'EditPage::showLanguages';
 		global $wgOut, $wgUser, $wgLanguageCode, $wgLanguageNames, $wgArticleLanguage;
 		$text = '';
 		
 		$dbr =& wfGetDB( DB_SLAVE);
-		if ( $dbr->tableExists('language') && $dbr->tableExists('user_languages') ) {
-			$res = $dbr->select('language', array('language_id', 'english_name', 'wikimedia_key'), array('is_enabled' => '1'), $fname);
+		if ( $dbr->tableExists('language') && $dbr->tableExists('user_languages') && wfFieldExists('page', 'language_id') && $dbr->tableExists('language_defaults') ) {
+			$res = $dbr->select('language', array('language_id', 'english_name', 'native_name', 'wikimedia_key'), array('is_enabled' => '1'), $fname);
+			while ($row = $dbr->fetchObject($res)) {
+				$languagesSupported[$row->wikimedia_key] = ucfirst(strtolower($row->native_name));
+				$languages[$row->language_id] = $row->wikimedia_key;
+			}
 			$wgOut->addWikiText( wfMsg( 'yourlanguage' ) );
 			$text = "<select name='wpLanguageId'>";
 			$text .= "<option value='0'>" . wfMsg('nstab-selectlanguage') . "</option>";
 			if ( $wgUser->isLoggedIn() ) {
+				$languages = NULL;
 				if ($wgUser->mLanguages) {
 					foreach ($wgUser->mLanguages as $row) {
 						$languages[$row['language_id']] = $row['wikimedia_key'];
@@ -1756,21 +1765,18 @@ END
 				}
 				$language_default = $dbr->selectField('language', 'language_id', array('wikimedia_key' => $wgLanguageCode), $fname);
 				$languages[$language_default] = $wgLanguageCode;
-			} else {
-				while ($row = $dbr->fetchObject($res)) {
-					$languages[$row->language_id] = $row->wikimedia_key;
-				}
 			}
 			asort($languages);
 			foreach ($languages as $key => $wikimedia_key) {
 				$selected = !empty($wgArticleLanguage) ? $wikimedia_key == $wgArticleLanguage? "selected='selected'" : '' : $wikimedia_key == $wgLanguageCode ? "selected='selected'" : '';
-				$text .= "<option value='$key' $selected?>$wikimedia_key - {$wgLanguageNames[$wikimedia_key]}</option>";
+				/*$text .= "<option value='$key' $selected?>$wikimedia_key - {$wgLanguageNames[$wikimedia_key]}</option>";*/
+				$text .= "<option value='$key' $selected?>$wikimedia_key - {$languagesSupported[$wikimedia_key]}</option>";
 			}
 			$text .= "</select>";
 			$wgOut->addHTML( $text);
 		}
 	}
-	//end lines added by gkpr
+	//end lines for multilingual -- added by dom & gkpr
 
 }
 

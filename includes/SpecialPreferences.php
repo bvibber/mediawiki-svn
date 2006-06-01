@@ -218,7 +218,11 @@ class PreferencesForm {
 
 		}
 		$wgUser->setRealName( $this->mRealName );
-		$this->explodeUserLanguages(&$langsToDelete, &$langsToUpdate, &$langsToInsert); //added by gkpr
+		//just check if the variable is empty or not to call the function,
+		//it is empty when the form doesn't support multilingual
+		if (!empty($this->mUserLanguages)) {
+			$this->explodeUserLanguages(&$langsToDelete, &$langsToUpdate, &$langsToInsert); //added by dom &  gkpr
+		}
 
 		if( $wgUser->getOption( 'language' ) !== $this->mUserLanguage ) {
 			$needRedirect = true;
@@ -303,7 +307,8 @@ class PreferencesForm {
 			} else {
 				$wgUser->setEmail( $this->mUserEmail );
 				$wgUser->setCookies();
-				$wgUser->saveSettings();
+				//line modified for multilingual
+				$wgUser->saveSettings($langsToDelete, $langsToUpdate, $langsToInsert);
 			}
 		}
 
@@ -366,10 +371,8 @@ class PreferencesForm {
 				$this->mSearchNs[$i] = $wgUser->getOption( 'searchNs'.$i );
 			}
 		}
-		//added by gkpr
 		/*
-		$this->explodeUserLanguages(&$langsToDelete, &$langsToUpdate, &$langsToInsert); //added by gkpr
-		$wgUser->saveSettings($langsToDelete, $langsToUpdate, $langsToInsert);
+		multilingual --- not sure if we need to add some code for wpUserLanguages
 		*/
 	}
 
@@ -639,7 +642,7 @@ class PreferencesForm {
 			}
 		}
 		$wgOut->addHTML('</table>');
-		//lines added by gkpr
+		//lines added by dom & gkpr
 		if ( $dbr->tableExists('language') && $dbr->tableExists('user_languages')) {
 			$wgOut->addHTML('</table>');
 
@@ -653,7 +656,7 @@ class PreferencesForm {
 			);
 			$wgOut->addHTML ( "</div>");
 		}//endif tableexists
-		//end lines added by gkpr
+		//end lines added by dom & gkpr
 		
 		# Password
 		$this->mOldpass = htmlspecialchars( $this->mOldpass );
@@ -921,7 +924,7 @@ class PreferencesForm {
 
 	}
 
-	//lines added by gkpr
+	//lines added by dom & gkpr
 	function implodeUserLanguages() {
 		global $wgUser;
 		$langs = '';
@@ -932,7 +935,7 @@ class PreferencesForm {
 		return $langs;
 	}
 
-	function explodeUserLanguages($langsToDelete, $langsToUpdate, &$langsToInsert) {
+	function explodeUserLanguages($langsToDelete, $langsToUpdate, $langsToInsert) {
 		global $wgUser;
 		$langs = preg_split("/[\s,]+/", $this->mUserLanguages);
 		foreach ( $wgUser->mLanguages as $l) {
@@ -947,6 +950,6 @@ class PreferencesForm {
 		$langsToUpdate = array_intersect_key($newlangs, $currentlangs);
 		$langsToInsert = empty($currentlangs) ? $newlangs : array_diff_key($newlangs, $currentlangs);
 	}
-	//end lines added by gkpr
+	//end lines added by dom & gkpr
 }
 ?>

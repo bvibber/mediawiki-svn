@@ -416,7 +416,7 @@ class MediaWiki {
 	
 	}
 
-	//lines by gkpr
+	//lines for multilingual
 	function checkArticleLanguage($input, $chartofind = ':') {
 		global $wgLanguageCode;
 		//wikimedia_key is 2 chars long
@@ -426,11 +426,13 @@ class MediaWiki {
 		}
 		if ($language) {
 			$dbr =& wfGetDB( DB_SLAVE );
-			$language = $dbr->selectField('language', 'language_id', array('wikimedia_key' => $language), 'IGNORE') ? $language : $wgLanguageCode;
+			if ($dbr->tableExists('language')) {
+				$language = $dbr->selectField('language', 'language_id', array('wikimedia_key' => $language), 'IGNORE') ? $language : $wgLanguageCode;
+			}
 		}
 		return $language;
 	}
-	//end lines gkpr
+	//end lines for multilingual --- dom & gkpr
 
 }; /* End of class MediaWiki */
 

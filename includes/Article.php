@@ -38,7 +38,7 @@ class Article {
 	var $mRevision;
 	var $mRedirectUrl;
 	var $mLatest;
-	var $mLanguage, $mLanguageId; //added by gkpr
+	var $mLanguage, $mLanguageId; //added by dom & gkpr
 	/**#@-*/
 
 	/**
@@ -378,7 +378,9 @@ class Article {
 	 * @access private
 	 */
 	function pageData( &$dbr, $conditions ) {
-		$fields = array(
+		//$fields modified to support multilingual -- by dom & gkpr
+		if (wfFieldExists('page', 'language_id')) {
+			$fields = array(
 				'page_id',
 				'page_namespace',
 				'page_title',
@@ -390,7 +392,21 @@ class Article {
 				'page_touched',
 				'page_latest',
 				'page_len',
-				'language_id') ; //gkpr
+				'language_id') ;
+		} else {
+			$fields = array(
+				'page_id',
+				'page_namespace',
+				'page_title',
+				'page_restrictions',
+				'page_counter',
+				'page_is_redirect',
+				'page_is_new',
+				'page_random',
+				'page_touched',
+				'page_latest',
+				'page_len');
+		}
 		wfRunHooks( 'ArticlePageDataBefore', array( &$this , &$fields ) )	;
 		$row = $dbr->selectRow( 'page',
 			$fields,
@@ -443,7 +459,11 @@ class Article {
 			$this->mTouched     = wfTimestamp( TS_MW, $data->page_touched );
 			$this->mIsRedirect  = $data->page_is_redirect;
 			$this->mLatest      = $data->page_latest;
-			$this->mLanguageId	= $data->language_id; //gkpr
+			//for multilingual
+			if (wfFieldExists('page', 'language_id')) {
+				$this->mLanguageId	= $data->language_id;
+			}
+			//end for multilingual
 		} else {
 			if ( is_object( $this->mTitle ) ) {
 				$lc->addBadLinkObj( $this->mTitle );
@@ -930,10 +950,13 @@ class Article {
 		$t = $wgOut->getPageTitle();
 		if( empty( $t ) ) {
 			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
-			global $wgArticle, $wgLanguageNames;//added by gkpr
+			//to support multilingual
 			$dbr =& wfGetDB( DB_SLAVE );
-			$wikimedia_key = $dbr->selectField ( 'language', 'wikimedia_key', array('language_id' => $this->mLanguageId), 'IGNORE' );
-			$wgOut->setSubtitle( wfMsg('yourlanguage') . " {$wgLanguageNames[$wikimedia_key]}" );//added by gkpr;
+			if (wfFieldExists('page', 'language_id') && $dbr->tableExists('language')) {
+				global $wgArticle, $wgLanguageNames;
+				$wikimedia_key = $dbr->selectField ( 'language', 'wikimedia_key', array('language_id' => $this->mLanguageId), 'IGNORE' );
+				$wgOut->setSubtitle( wfMsg('yourlanguage') . " {$wgLanguageNames[$wikimedia_key]}" );
+			}
 		}
 
 		# If we have been passed an &rcid= parameter, we want to give the user a
@@ -1080,20 +1103,36 @@ class Article {
 		wfProfileIn( $fname );
 
 		$page_id = $dbw->nextSequenceValue( 'page_page_id_seq' );
-		$dbw->insert( 'page', array(
-			'page_id'           => $page_id,
-			'page_namespace'    => $this->mTitle->getNamespace(),
-			'page_title'        => $this->mTitle->getDBkey(),
-			'page_counter'      => 0,
-			'page_restrictions' => $restrictions,
-			'page_is_redirect'  => 0, # Will set this shortly...
-			'page_is_new'       => 1,
-			'page_random'       => wfRandom(),
-			'page_touched'      => $dbw->timestamp(),
-			'page_latest'       => 0, # Fill this in shortly...
-			'page_len'          => 0, # Fill this in shortly...
-			'language_id'		=> $this->mLanguageId, //added by gkpr
-		), $fname );
+		//for multilingual
+		$fields = wfFieldExists('page', 'language_id') ?
+					array(
+					'page_id'           => $page_id,
+					'page_namespace'    => $this->mTitle->getNamespace(),
+					'page_title'        => $this->mTitle->getDBkey(),
+					'page_counter'      => 0,
+					'page_restrictions' => $restrictions,
+					'page_is_redirect'  => 0, # Will set this shortly...
+					'page_is_new'       => 1,
+					'page_random'       => wfRandom(),
+					'page_touched'      => $dbw->timestamp(),
+					'page_latest'       => 0, # Fill this in shortly...
+					'page_len'          => 0, # Fill this in shortly...
+					'language_id'           => $this->mLanguageId, //added by gkpr
+					) :
+					array( 
+					'page_id'           => $page_id,
+					'page_namespace'    => $this->mTitle->getNamespace(),
+					'page_title'        => $this->mTitle->getDBkey(),
+					'page_counter'      => 0,
+					'page_restrictions' => $restrictions,
+					'page_is_redirect'  => 0, # Will set this shortly... 
+					'page_is_new'       => 1,
+					'page_random'       => wfRandom(),
+					'page_touched'      => $dbw->timestamp(),
+					'page_latest'       => 0, # Fill this in shortly...  
+					'page_len'          => 0, # Fill this in shortly... 
+					);
+		$dbw->insert( 'page', $fields, $fname );
 		$newid = $dbw->insertId();
 
 		$this->mTitle->resetArticleId( $newid );
