@@ -138,11 +138,16 @@ class wiki2xml
 		$b = $a ;
 		$x = "" ;
 		if ( $b >= $this->wl ) return false ;
+		$bi = $this->bold_italics ;
+		$this->bold_italics = '' ;
 		$closeit1 = $closeit[0] ;
 		while ( 1 )
 			{
 			$c = $this->w[$b] ;
-			if ( $closeit != "}}" && $c == "\n" ) return false ;
+			if ( $closeit != "}}" && $c == "\n" ) {
+				$this->bold_italics = $bi ;
+				return false ;
+			}
 			if ( $c == "|" ) break ;
 			if ( $c == $closeit1 && $this->nextis ( $b , $closeit , false ) ) break ;
 			if ( !$istarget ) {
@@ -161,12 +166,16 @@ class wiki2xml
 			}
 			$x .= htmlspecialchars ( $c ) ;
 			$b++ ;
-			if ( $b >= $this->wl ) return false ;
+			if ( $b >= $this->wl ) {
+				$this->bold_italics = $bi ;
+				return false ;
+			}
 			}
 		
 		if ( $closeit == "}}" && !$istarget ) {
 			$xml .= substr ( $this->w , $a , $b - $a ) ;
 			$a = $b ;
+			$this->bold_italics = $bi ;
 			return true ;
 		}
 		
@@ -179,6 +188,7 @@ class wiki2xml
 			}
 		else $xml .= $x ;
 		$a = $b ;
+		$this->bold_italics = $bi ;
 		return true ;
 		}
 
@@ -491,7 +501,8 @@ class wiki2xml
 		$url = "" ;
 		$c = $b ;
 		$x = "" ;
-		while ( $this->w[$c] == "{" && $this->once ( $c , $x , "template" ) ) $c = $b ;
+		while ( $c < $this->wl && $this->w[$c] == "{" && $this->once ( $c , $x , "template" ) ) $c = $b ;
+		if ( $c >= $this->wl ) return false ;
 		$x = "" ;
 		if ( !$this->p_external_freelink ( $b , $url , false ) ) return false ;
 		$this->skipblanks ( $b ) ;
