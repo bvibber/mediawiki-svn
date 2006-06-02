@@ -127,7 +127,10 @@ class wiki2xml
 		
 	function p_internal_link_text2 ( &$a , &$xml , $closeit )
 		{
-		return $this->p_internal_link_text ( $a , $xml , false , $closeit , false ) ;
+		$bi = $this->bold_italics ;
+		$ret = $this->p_internal_link_text ( $a , $xml , false , $closeit , false ) ;
+		if ( $closeit == ']]' && '' != $this->bold_italics ) $ret = false ; # Dirty hack to ensure good XML; FIXME!!!
+		return $ret ;
 		}
 	
 	function p_internal_link_text ( &$a , &$xml , $istarget = false , $closeit = "]]" , $mark = true )
