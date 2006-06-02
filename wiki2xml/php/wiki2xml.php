@@ -143,6 +143,10 @@ class wiki2xml
 		$closeit1 = $closeit[0] ;
 		while ( 1 )
 			{
+			if ( $b >= $this->wl ) {
+				$this->bold_italics = $bi ;
+				return false ;
+			}
 			$c = $this->w[$b] ;
 			if ( $closeit != "}}" && $c == "\n" ) {
 				$this->bold_italics = $bi ;
@@ -166,11 +170,11 @@ class wiki2xml
 			}
 			$x .= htmlspecialchars ( $c ) ;
 			$b++ ;
-			if ( $b >= $this->wl ) {
+/*			if ( $b >= $this->wl ) {
 				$this->bold_italics = $bi ;
 				return false ;
-			}
-			}
+			}*/
+		}
 		
 		if ( $closeit == "}}" && !$istarget ) {
 			$xml .= substr ( $this->w , $a , $b - $a ) ;
