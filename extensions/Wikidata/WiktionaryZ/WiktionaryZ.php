@@ -158,14 +158,6 @@ class WiktionaryZ {
 	
 	}
 	
-	function getExpressionForMeaningId($mid, $langcode) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$sql="SELECT spelling from uw_syntrans,uw_expression_ns where defined_meaning_id=".$mid." and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=".$langcode." limit 1";
-		$sp_res=$dbr->query($sql);
-		$sp_row=$dbr->fetchObject($sp_res);
-		return $sp_row->spelling;
-	}
-	
 	function saveForm($sectionArguments) {
 		global 
 			$wgTitle;
@@ -485,7 +477,7 @@ class WiktionaryZ {
 	
 	function getAddRelationsFormFields($definedMeaningId) {
 		return '<h4>Add relation</h4>
-				<table>
+				<table class="wiki-data-table">
 					<tr><th>Relation type</th><th>Other defined meaning</th></tr>
 					<tr><td>' .	$this->getRelationTypeSuggest($definedMeaningId) . '</td><td>' . $this->getDefinedMeaningSuggest($definedMeaningId) . '</td></tr>
 				</table>';
@@ -609,7 +601,7 @@ class WiktionaryZ {
 			$att_res=$dbr->query("select member_mid from uw_collection_contents where collection_id=$cid and is_latest_set=1");
 			while($att_row=$dbr->fetchObject($att_res)) {
 				# fixme hardcoded English
-				$att_name=$this->getExpressionForMid($att_row->member_mid, 85);
+				$att_name=$this->getExpressionForMeaningId($att_row->member_mid, 85);
 				$atts[$att_row->member_mid]=$att_name;
 			}
 		}
@@ -622,22 +614,21 @@ class WiktionaryZ {
 		$col_res=$dbr->query("select collection_id,collection_mid from uw_collection_ns where collection_type=".$dbr->addQuotes($type)." and is_latest=1");
 		while($col_row=$dbr->fetchObject($col_res)) {
 			# fixme hardcoded English
-			$collection_name=$this->getExpressionForMid($col_row->collection_mid,85);
+			$collection_name=$this->getExpressionForMeaningId($col_row->collection_mid,85);
 			$typecollections[$collection_name]=$col_row->collection_id;
 		}
 		return $typecollections;
 	
 	}
 
-	function getExpressionForMid($mid,$langcode) {
+	function getExpressionForMeaningId($mid, $langcode) {
 		$dbr =& wfGetDB(DB_SLAVE);
 		$sql="SELECT spelling from uw_syntrans,uw_expression_ns where defined_meaning_id=".$mid." and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=".$langcode." limit 1";
 		$sp_res=$dbr->query($sql);
 		$sp_row=$dbr->fetchObject($sp_res);
 		return $sp_row->spelling;
-		#return $sql;
 	}
-
+	
 	function addRelationFromRequest($definedMeaningId) {
 		global
 			$wgRequest;

@@ -6,6 +6,26 @@
 
 /* Suggestion control */
 
+.wiki-data-table td .suggest-link {
+	display: block;
+}
+
+.suggest-link {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #7F9DB9;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 1px;
+	padding-bottom: 0px;
+}
+
+.suggest-link, .suggest-link:hover, .suggest-link:active, .suggest-link:visited {
+	color: #000000;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
 .suggestion-row {
 	padding: 0px;
 	margin: 0px;
