@@ -475,7 +475,8 @@ class wiki2xml
 			$b-- ;
 			}
 		$a = $b ;
-		if ( $mark ) $xml .= "<link type='external' href='{$x}'/>" ;
+		$x = htmlspecialchars ( $x , ENT_QUOTES ) ;
+		if ( $mark ) $xml .= "<link type='external' href='$x'/>" ;
 		else $xml .= $x ;
 		return true ;
 		}
@@ -901,7 +902,7 @@ class wiki2xml
 		# Parsing attributes
 		$ob = $b ;
 		$q = "" ;
-		while ( $q != "" || ( $b < $this->wl && $this->w[$b] != '>' && $this->w[$b] != '/' ) ) {
+		while ( $b < $this->wl && ( $q != "" || ( $this->w[$b] != '>' && $this->w[$b] != '/' ) ) ) {
 			if ( $this->w[$b] == '"' || $this->w[$b] == "'" ) {
 				if ( $q == "" ) $q = $this->w[$b] ;
 				else if ( $this->w[$b] == $q ) $q = "" ;
