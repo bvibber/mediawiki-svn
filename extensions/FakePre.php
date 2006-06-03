@@ -36,7 +36,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function efRenderFakePre( $input, $args, &$parser ) {
 		$text = str_replace( "\n", '<br />', $input );
 		$output = $parser->parse( $text, $parser->mTitle, $parser->mOptions, false, false );
-		return $output->getText();
+		return '<div class="fakepre">' . $output->getText() . '</div>';
 	}
 
 } else {
