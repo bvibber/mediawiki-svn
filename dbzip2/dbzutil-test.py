@@ -41,5 +41,37 @@ class ReadblockTest(unittest.TestCase):
 			self.assertEqual(blockSizes, chunkSizes)
 			self.assertEqual(blocks, chunks)
 
+class ExtractStreamBlockTest(unittest.TestCase):
+	def testExtractStreamBlock(self):
+		headSig = "BZh9"
+		blockSig = "\x31\x41\x59\x26\x53\x59"
+		tailSig = "\x17\x72\x45\x38\x50\x90"
+		cases = [
+			[("abcdef", -1)],
+			[("abcdef", -1), ("ghijkl", -1)],
+			[("abcdef", -1), ("ghijk`", 6*8-4)],
+			[("abcde`", 6*8-4), ("ghijkl", -1)],
+			[("abcde`", 6*8-4), ("ghijk`", 6*8-4)]
+			]
+		for blocks in cases:
+			# Generate a fake bitstream
+			stream = StringIO.StringIO(input)
+			bitstream = dbzutil.Bitstream(stream)
+			bitstream.write(headSig)
+			for (bits, length) in blocks:
+				bitstream.write(blockSig)
+				bitstream.write(bits, length)
+			bitstream.write(tailSig)
+			bitstream.write("\x01\x23\x45\x67") # fake CRC
+			bitstream.flush()
+			
+			stream.seek(0)
+			blockNumber = 0
+			def callback(chunk):
+				self.assertEqual(chunk, blockSig + blocks[blockNumber][0])
+			crc = dbzutil.extractStreamBlocks(stream, callback)
+			
+			self.assertEqual(crc, 0x01234567)
+
 if __name__ == "__main__":
 	unittest.main()
