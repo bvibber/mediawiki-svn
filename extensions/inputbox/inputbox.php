@@ -45,7 +45,7 @@ function registerInputboxExtension()
  */
 function renderInputbox($input, $params, &$parser)
 {
-	$inputbox=new Inputbox();
+	$inputbox=new Inputbox( $parser );
 	getBoxOption($inputbox->type,$input,'type');
 	getBoxOption($inputbox->width,$input,'width',true);	
 	getBoxOption($inputbox->preload,$input,'preload');
@@ -86,6 +86,10 @@ function getBoxOption(&$value,&$input,$name,$isNumber=false) {
 class Inputbox {
 	var $type,$width,$preload,$editintro, $br;
 	var $defaulttext,$bgcolor,$buttonlabel,$searchbuttonlabel;
+	
+	function InputBox( &$parser ) {
+		$this->parser =& $parser;
+	}
 	
 	function render() {
 		if($this->type=='create' || $this->type=='comment') {
@@ -167,7 +171,7 @@ ENDFORM2;
 	}
 
 	function getSearchForm2() {
-		global $wgUser, $wgOut;
+		global $wgUser;
 		
 		$sk=$wgUser->getSkin();
 		$searchpath = $sk->escapeSearchLink();		
@@ -175,7 +179,9 @@ ENDFORM2;
 			$this->buttonlabel = wfMsgHtml( 'tryexact' );
 		}
 
-		$this->labeltext = $wgOut->parse( $this->labeltext, false );
+		$output = $this->parser->parse( $this->labeltext,
+			$this->parser->mTitle, $this->parser->mOptions, false, false );
+		$this->labeltext = $output->getText();
 		$this->labeltext = str_replace('<p>', '', $this->labeltext);
 		$this->labeltext = str_replace('</p>', '', $this->labeltext);
 		
@@ -183,7 +189,7 @@ ENDFORM2;
 <form action="$searchpath" class="bodySearch" id="bodySearch{$this->id}"><div class="bodySearchWrap"><label for="bodySearchIput{$this->id}">{$this->labeltext}</label><input type="text" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$this->id}" /><input type="submit" name="go" value="{$this->buttonlabel}" class="bodySearchBtnGo" />
 ENDFORM;
 
-		if ( $this->fulltextbtn )
+		if ( !empty( $this->fulltextbtn ) ) // this is wrong...
 			$searchform .= '<input type="submit" name="fulltext" class="bodySearchBtnSearch" value="{$this->searchbuttonlabel}" />';
 
 		$searchform .= '</div></form>';
