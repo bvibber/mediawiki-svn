@@ -39,6 +39,7 @@ class CompressorHandler(BaseRequestHandler):
 			"ALGO": self.handleAlgo,
 			"BLOK": self.handleBlok,
 			"HUGE": self.handleHuge,
+			"SMAL": self.handleSmal,
 			"CLOS": self.handleClos }
 		while True:
 			if self.connection.isOpen():
@@ -54,7 +55,8 @@ class CompressorHandler(BaseRequestHandler):
 		assert self.version is None
 		assert len(data) == 4
 		self.version = struct.unpack(">l", data)[0]
-		assert self.version == 1
+		if self.version != 2:
+			self.connection.close()
 	
 	def handleAlgo(self, data):
 		assert self.version is not None
@@ -73,6 +75,10 @@ class CompressorHandler(BaseRequestHandler):
 		assert self.version is not None
 		self.connection.send("SMAL", self.compress(data))
 	
+	def handleSmal(self, data):
+		assert self.version is not None
+		self.connection.send("HUGE", self.decompress(data))
+	
 	def handleClos(self, data):
 		self.connection.close()
 	
@@ -80,6 +86,10 @@ class CompressorHandler(BaseRequestHandler):
 		assert self.algo == "bzip2"
 		assert self.blockSize100k >= 1 and self.blockSize100k <= 9
 		return bz2.compress(data, self.blockSize100k)
+	
+	def decompress(self, data):
+		assert self.algo == "bzip2"
+		return bz2.decompress(data)
 
 if __name__ == "__main__":
 	

@@ -36,6 +36,7 @@ class Compressor(object):
 		self.remotes = []
 		self.verbosity = 0
 		self.blockSize100k = 9
+		self.compressing = True
 		
 		self.crc = 0L
 		
@@ -55,10 +56,12 @@ class Compressor(object):
 		self.processArgs(args)
 	
 	def processArgs(self, args):
-		(options, remainder) = getopt.getopt(args, "123456789p:r:v")
+		(options, remainder) = getopt.getopt(args, "123456789dp:r:v")
 		for (opt, val) in options:
 			if opt >= "-1" and opt <= "-9":
 				self.blockSize100k = int(opt[1])
+			elif opt == "-d":
+				self.compressing = False
 			elif opt == "-r":
 				self.remotes.append(self.splitHost(val))
 			elif opt == "-p":
@@ -106,7 +109,13 @@ class Compressor(object):
 	def readerThread(self):
 		"""Producer thread: run through the file handing out blocks."""
 		self.debug(2, "readerThread: starting!")
-		dbzutil.readblock(self.inputStream, self.dispatch, self.blockSize100k)
+		if self.compressing:
+			dbzutil.readblock(self.inputStream, self.dispatch, self.blockSize100k)
+		else:
+			# hack hack hack!
+			# should work on single-block files :)
+			inchunk = self.inputStream.read(1000000)
+			self.dispatch(inchunk)
 		self.done = True
 		self.debug(2, "readerThread: done; read %d blocks" % self.blocksRead)
 	
@@ -135,7 +144,7 @@ class Compressor(object):
 		self.bytesRead += len(block)
 		self.debug(2, "readerThread: dispatching block %d" % self.blocksRead)
 		
-		buffer = QueuedBuffer(self.blocksRead, block)
+		buffer = QueuedBuffer(self.blocksRead, block, self.compressing)
 		self.inputQueue.append(buffer) # To the compressor threads
 		self.outputQueue.append(buffer) # To the writer thread, in order!
 		
@@ -165,8 +174,9 @@ class Compressor(object):
 		self.debug(2, "writerThread: starting")
 		startTime = time.time()
 		
-		self.bitStream = dbzutil.Bitstream(self.outputStream)
-		self.writeHeader()
+		if self.compressing:
+			self.bitStream = dbzutil.Bitstream(self.outputStream)
+			self.writeHeader()
 		
 		while not (self.done and self.blocksWritten == self.blocksRead):
 			self.lock()
@@ -180,8 +190,9 @@ class Compressor(object):
 				self.debug(4, "writerThread: sleeping")
 				self.sleep()
 		
-		self.writeTrailer()
-		self.bitStream.flush()
+		if self.compressing:
+			self.writeTrailer()
+			self.bitStream.flush()
 		
 		delta = time.time() - startTime
 		megabyte = 1024.0 * 1024.0
@@ -202,21 +213,24 @@ class Compressor(object):
 		assert buffer.output is not None
 		assert buffer.index == self.blocksWritten
 		
-		(offset, overflow, crc) = findBzTrail(buffer.output)
-		self.debug(2, "writeBuffer: block stream crc %08x, offset %d bits" %
-			(crc, offset))
-		
-		# Write out the block, with the head and tail cropped off
-		nbits = (len(buffer.output) - 14) * 8
-		if offset:
-			# Adjust for non-aligned footer
-			nbits = nbits - 8 + offset
-		self.bitStream.write(buffer.output[4:-10], nbits)
-		
-		# Assuming there's only one output block per input block
-		# This had better hold :D
-		blockCrc = struct.unpack(">L", buffer.output[10:14])[0]
-		self.crc = ((self.crc << 1) & 0xffffffffL | self.crc >> 31) ^ blockCrc
+		if self.compressing:
+			(offset, overflow, crc) = findBzTrail(buffer.output)
+			self.debug(2, "writeBuffer: block stream crc %08x, offset %d bits" %
+				(crc, offset))
+			
+			# Write out the block, with the head and tail cropped off
+			nbits = (len(buffer.output) - 14) * 8
+			if offset:
+				# Adjust for non-aligned footer
+				nbits = nbits - 8 + offset
+			self.bitStream.write(buffer.output[4:-10], nbits)
+			
+			# Assuming there's only one output block per input block
+			# This had better hold :D
+			blockCrc = struct.unpack(">L", buffer.output[10:14])[0]
+			self.crc = ((self.crc << 1) & 0xffffffffL | self.crc >> 31) ^ blockCrc
+		else:
+			self.outputStream.write(buffer.output)
 	
 	def writeHeader(self):
 		self.debug(4, "writing file header")
@@ -244,7 +258,10 @@ class Compressor(object):
 			self.unlock()
 			if buffer:
 				self.debug(4, "compressorThread: compressing")
-				data = compressor.compress(buffer.input)
+				if buffer.compressing:
+					data = compressor.compress(buffer.input)
+				else:
+					data = compressor.decompress(buffer.input)
 				
 				self.lock()
 				buffer.set(data)
@@ -273,11 +290,12 @@ class Compressor(object):
 class QueuedBuffer(object):
 	"""Placeholder for received compressed buffer items."""
 	
-	def __init__(self, index, input):
+	def __init__(self, index, input, compressing):
 		"""Initialize an empty placeholder, no data yet."""
 		self.index = index
 		self.input = input
 		self.output = None
+		self.compressing = compressing
 	
 	def ready(self):
 		return self.output is not None
@@ -298,6 +316,9 @@ class LocalCompressor(object):
 	def compress(self, block):
 		return bz2.compress(block, self.blockSize100k)
 	
+	def decompress(self, block):
+		return bz2.decompress(block)
+	
 	def close(self):
 		pass
 	
@@ -314,7 +335,7 @@ class RemoteCompressor(object):
 		self.socket.connect(address)
 		
 		self.connection = DistBits.Connection(self.socket)
-		self.connection.send("COMP", struct.pack(">l", 1))
+		self.connection.send("COMP", struct.pack(">l", 2))
 		self.connection.send("ALGO", "bzip2")
 		self.connection.send("BLOK", str(blockSize100k))
 	
@@ -324,6 +345,16 @@ class RemoteCompressor(object):
 		if atom == "SMAL":
 			return retdata
 		elif atom == "EROR":
+			raise Exception(data)
+		else:
+			raise Exception("Unknown return atom type")
+	
+	def decompress(self, data):
+		self.connection.send("SMAL", data)
+		(atom, retdata) = self.connection.receive()
+		if atom == "HUGE":
+			return retdata
+		elif atom == "ERROR":
 			raise Exception(data)
 		else:
 			raise Exception("Unknown return atom type")
