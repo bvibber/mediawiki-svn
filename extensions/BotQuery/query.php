@@ -111,7 +111,7 @@ class BotQueryProcessor {
 	*     0) Function to call
 	*     1) true/false - does this property work on individual pages?  (false for site's metadata)
 	*     2) array of accepted parameters
-	*     3) array of default parameter values
+	*     3) array of default parameter values. If the default value is an array itself, only the listed values are allowed, and the 1st value is taken as default.
 	*     4) Format description
 	*/
 	var $propGenerators = array(
@@ -209,7 +209,7 @@ class BotQueryProcessor {
 			"blfilter   - Of all given pages, which should be queried:",
 			"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
 			"bllimit    - how many total links to return",
-			"blcontfrom - from which point to continue. Use the 'next' value from previous queries.",
+			"blcontfrom - from which point to continue. Use the 'next' value from the previous queries.",
 			"Example: query.php?what=backlinks&titles=Main%20Page&bllimit=10",
 			)),
 		'embeddedin'     => array( 'genPageBackLinksHelper', false, 
@@ -221,35 +221,40 @@ class BotQueryProcessor {
 			"eifilter   - Of all given pages, which should be queried:",
 			"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
 			"eilimit    - how many total links to return",
-			"eicontfrom - from which point to continue. Use the 'next' value from previous queries.",
+			"eicontfrom - from which point to continue. Use the 'next' value from the previous queries.",
 			"Example: query.php?what=embeddedin&titles=Template:Stub&eilimit=10",
 			)),
 		'imagelinks'     => array( 'genPageBackLinksHelper', false, 
 			array( 'ilfilter', 'illimit', 'ilcontfrom' ),
-			array( array('existing', 'nonredirects', 'all'), 50, null ),
+			array( array('all', 'existing', 'nonredirects'), 50, null ),
 			array(
 			"What pages use this image(s)",
 			"ilfilter   - Of all given images, which should be queried:",
-			"  'nonredirects', 'existing' (default), or 'all' (including non-existant)",
+			"  'nonredirects', 'existing', or 'all' (default, includes non-existant or those stored on Wikimedia Commons)",
 			"illimit    - how many total links to return",
-			"ilcontfrom - from which point to continue. Use the 'next' value from previous queries.",
-			"Example: query.php?what=imagelinks&titles=image:test.jpg&illimit=10",
+			"ilcontfrom - from which point to continue. Use the 'next' value from the previous queries.",
+			"Example: query.php?what=imagelinks&titles=Image:HermitageAcrossNeva.jpg&illimit=10",
 			)),
 		'revisions'      => array( 'genPageHistory', false,
-			array( 'rvcomments', 'rvlimit', 'rvoffset', 'rvstart', 'rvend' ),
-			array( false, 50, 0, null, null ),
+			array( 'rvcomments', 'rvcontent', 'rvlimit', 'rvoffset', 'rvstart', 'rvend' ),
+			array( false, false, 50, 0, null, null ),
 			array(
 			"Revision history - Lists edits performed to the given pages",
 			"Parameters supported:",
 			"rvcomments - if specified, the result will include summary strings",
+			"rvcontent  - if specified, the result will include raw wiki text.",
+			"             This parameter is *very slow*, use only when needed.",
 			"rvlimit    - how many links to return *for each title*",
 			"rvoffset   - when too many results are found, use this to page",
 			"rvstart    - timestamp of the earliest entry",
 			"rvend      - timestamp of the latest entry",
 			"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments",
 			)),
-		'content'        => array( 'genPageContent', false, null, null, array(
-			"Raw page content",
+		'content'        => array( 'genPageContent', false, null, null,
+			array(
+			"Raw page content - Retrieves raw wiki markup for each page.",
+			"This query is *very slow*! Please optimize content requests to reduce load on the servers.",
+			"Duplicate results may be obtained through revisions+rvcontent request",
 			"Example: query.php?what=content&titles=Main%20Page",
 			)),
 	);
@@ -320,9 +325,7 @@ class BotQueryProcessor {
 	function output($isError = false) {
 		global $wgRequest, $wgUser;
 
-		// hack: pretend that profiling was started at the begining of the class execution.
-		$this->startTime = $this->totalStartTime;
-		$this->endProfiling( 'total' );
+		$this->recordProfiling( 'total', 'time', $this->totalStartTime );
 		
 		$printer = $this->outputGenerators[$this->format][GEN_FUNCTION];
 		$mime = $this->outputGenerators[$this->format][GEN_MIME];
@@ -404,7 +407,7 @@ class BotQueryProcessor {
 	*/
 	function genPageInfo() {
 		global $wgUser, $wgRequest;
-		
+		$this->startProfiling();
 		$where = array();
 		
 		//
@@ -414,8 +417,8 @@ class BotQueryProcessor {
 		if( $titles !== null ) {
 			$titles = explode( '|', $titles );
 			$linkBatch = new LinkBatch;
-			foreach ( $titles as $titleString ) {
-				$titleObj = Title::newFromText( $titleString );
+			foreach ( $titles as &$titleString ) {
+				$titleObj = &Title::newFromText( $titleString );
 				if ( !$titleObj ) {
 					$this->dieUsage( "bad title $titleString", 'pi_invalidtitle' );
 				}
@@ -442,7 +445,6 @@ class BotQueryProcessor {
 		} else {
 			$nonexistentPages = array();	// empty data to keep unset() happy
 		}
-		
 		//
 		// List of Page IDs
 		//
@@ -458,9 +460,10 @@ class BotQueryProcessor {
 			$where['page_id'] = $pageids;
 			$this->requestsize += count($pageids);
 		}
-
+		
 		// Do we have anything to do?
 		if( $this->requestsize == 0 ) {
+			// Do not end profiling here, as it will introduce an element to the data object, and the usage screen may not be shown.
 			return false;	// Nothing to do for any of the page generators
 		}
 		
@@ -481,12 +484,12 @@ class BotQueryProcessor {
 		// Query page information with the given lists of titles & pageIDs
 		//
 		$this->redirectPageIds = array();
-		$this->startProfiling();
+		$this->startDbProfiling();
 		$res = $this->db->select( 'page',
 			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_touched', 'page_latest' ),
 			$this->db->makeList( $where, LIST_OR ),
 			$this->classname . '::genPageInfo' );
-		$this->endProfiling('pageInfo');
+		$this->endDbProfiling('pageInfo');
 		while( $row = $this->db->fetchObject( $res ) ) {
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 			if ( !$title->userCanRead() ) {
@@ -568,7 +571,7 @@ class BotQueryProcessor {
 			$data['_element'] = 'title';
 			$data[] = $givenTitle;
 		}
-		
+		$this->endProfiling('pageInfo');
 		return true; // success
 	}
 
@@ -583,6 +586,7 @@ class BotQueryProcessor {
 	*/
 	function genMetaSiteInfo(&$prop, &$genInfo) {
 		global $wgSitename, $wgVersion, $wgCapitalLinks;
+		$this->startProfiling();
 		$meta = array();
 		$mainPage = Title::newFromText( wfMsgForContent( 'mainpage' ) );
 
@@ -593,6 +597,7 @@ class BotQueryProcessor {
 		$meta['case']     = $wgCapitalLinks ? 'first-letter' : 'case-sensitive'; // "case-insensitive" option is reserved for future
 
 		$this->data['meta']['site'] = $meta;
+		$this->endProfiling($prop);
 	}
 
 	/**
@@ -600,12 +605,14 @@ class BotQueryProcessor {
 	*/
 	function genMetaNamespaceInfo(&$prop, &$genInfo) {
 		global $wgContLang;
+		$this->startProfiling();
 		$meta = array();
 		$meta['_element'] = 'ns';
 		foreach( $wgContLang->getFormattedNamespaces() as $ns => $title ) {
 			$meta[$ns] = array( "id"=>$ns, "*" => $title );
 		}
 		$this->data['meta']['namespaces'] = $meta;
+		$this->endProfiling($prop);
 	}
 
 	/**
@@ -613,7 +620,7 @@ class BotQueryProcessor {
 	*/
 	function genMetaUserInfo(&$prop, &$genInfo) {
 		global $wgUser;
-		
+		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));		
 		$meta = array();
 		$meta['name'] = $wgUser->getName();
@@ -627,13 +634,14 @@ class BotQueryProcessor {
 			$meta['rights']['_element'] = 'r';
 		}
 		$this->data['meta']['user'] = $meta;
+		$this->endProfiling($prop);
 	}
 
 	/**
 	* Add pagids of the most recently modified pages to the output
 	*/
 	function genMetaRecentChanges(&$prop, &$genInfo) {
-		
+		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));		
 		# It makes no sense to hide both anons and logged-in users
 		if( in_array('anons', $rchide) && in_array('liu', $rchide) ) {
@@ -670,7 +678,7 @@ class BotQueryProcessor {
 		$options = array( 'USE INDEX' => 'rc_timestamp', 'LIMIT' => $rclimit );
 		$options['ORDER BY'] = 'rc_timestamp' . ( $rcfrom != '' ? '' : ' DESC' );
 
-		$this->startProfiling();
+		$this->startDbProfiling();
 		$res = $this->db->select(
 			'recentchanges',
 			'rc_cur_id',
@@ -678,13 +686,14 @@ class BotQueryProcessor {
 			$this->classname . '::genMetaRecentChanges',
 			$options
 			);
-		$this->endProfiling($prop);
+		$this->endDbProfiling($prop);
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			if( $row->rc_cur_id != 0 ) {
 				$this->addRaw( 'pageids', $row->rc_cur_id );
 			}
 		}
 		$this->db->freeResult( $res );
+		$this->endProfiling($prop);
 	}
 	
 	/**
@@ -692,12 +701,12 @@ class BotQueryProcessor {
 	*/
 	function genUserPages(&$prop, &$genInfo) {
 		global $wgContLang;
-		
+		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
 
 		$this->validateLimit( 'uslimit', $uslimit, 50, 1000 );
 
-		$this->startProfiling();
+		$this->startDbProfiling();
 		$res = $this->db->select(
 			'user',
 			'user_name',
@@ -705,7 +714,7 @@ class BotQueryProcessor {
 			$this->classname . '::genUserPages',
 			array( 'ORDER BY' => 'user_name', 'LIMIT' => $uslimit )
 			);
-		$this->endProfiling($prop);
+		$this->endDbProfiling($prop);
 		
 		$userNS = $wgContLang->getNsText(NS_USER);
 		if( !$userNS ) $userNS = 'User';
@@ -715,6 +724,7 @@ class BotQueryProcessor {
 			$this->addRaw( 'titles', $userNS . $row->user_name );
 		}
 		$this->db->freeResult( $res );
+		$this->endProfiling($prop);
 	}
 
 	/**
@@ -725,6 +735,7 @@ class BotQueryProcessor {
 		// TODO: This is very inefficient - we can get the actual page information, instead we make two identical query.
 		//
 		global $wgContLang;
+		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
 
 		$this->validateLimit( 'aplimit', $aplimit, 50, 1000 );
@@ -736,14 +747,14 @@ class BotQueryProcessor {
 			$ns .= ':';
 		}
 
-		$this->startProfiling();
+		$this->startDbProfiling();
 		$res = $this->db->select(
 			'page',
 			'page_title',
 			array( 'page_namespace' => intval($apnamespace), 'page_title>=' . $this->db->addQuotes($apfrom) ),
 			$this->classname . '::genMetaAllPages',
-			array( 'FORCE INDEX' => 'name_title', 'LIMIT' => $aplimit+1, 'ORDER BY' => 'page_namespace, page_title' ));
-		$this->endProfiling($prop);
+			array( 'USE INDEX' => 'name_title', 'LIMIT' => $aplimit+1, 'ORDER BY' => 'page_namespace, page_title' ));
+		$this->endDbProfiling($prop);
 
 		// Add found page ids to the list of requested titles - they will be auto-populated later
 		$count = 0;
@@ -756,6 +767,7 @@ class BotQueryProcessor {
 			$this->addRaw( 'titles', $ns . $row->page_title );
 		}
 		$this->db->freeResult( $res );
+		$this->endProfiling($prop);
 	}
 
 	/**
@@ -766,6 +778,7 @@ class BotQueryProcessor {
 		// TODO: This is very inefficient - we can get the actual page information, instead we make two identical query.
 		//
 		global $wgContLang;
+		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
 		$this->validateLimit( 'nllimit', $nllimit, 50, 1000 );
 		extract( $this->db->tableNames( 'page', 'langlinks' ) );
@@ -781,9 +794,9 @@ class BotQueryProcessor {
 			. ' ORDER BY page_namespace, page_title'
 			. ' LIMIT ' . intval($nllimit+1);
 
-		$this->startProfiling();
+		$this->startDbProfiling();
 		$res = $this->db->query( $sql, $this->classname . '::genMetaNoLangLinksPages' );
-		$this->endProfiling($prop);
+		$this->endDbProfiling($prop);
 
 		// Add found page ids to the list of requested titles - they will be auto-populated later
 		$count = 0;
@@ -796,6 +809,7 @@ class BotQueryProcessor {
 			$this->addRaw( 'pageids', $row->page_id );
 		}
 		$this->db->freeResult( $res );
+		$this->endProfiling($prop);
 	}
 	
 	
@@ -812,6 +826,7 @@ class BotQueryProcessor {
 		if( empty( $this->redirectPageIds ) ) {
 			return;
 		}
+		$this->startProfiling();
 		extract( $this->db->tableNames( 'page', 'pagelinks' ) );
 
 		//
@@ -843,9 +858,9 @@ class BotQueryProcessor {
 				"pb.page_is_redirect IS NULL OR pb.page_is_redirect = '1'"
 				), LIST_AND );
 
-		$this->startProfiling();
+		$this->startDbProfiling();
 		$res = $this->db->query( $sql, $this->classname . '::genRedirectInfo' );
-		$this->endProfiling('redirects');
+		$this->endDbProfiling('redirects');
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			$this->addPageSubElement( $row->a_id, 'redirect', 'to', $this->getLinkInfo( $row->b_namespace, $row->b_title, $row->b_id, $row->b_is_redirect ), false);
 			if( $row->b_is_redirect ) {
@@ -853,6 +868,7 @@ class BotQueryProcessor {
 			}
 		}
 		$this->db->freeResult( $res );
+		$this->endProfiling($prop);
 	}
 
 	var $genPageLinksSettings = array(	// database column name prefix, output element name
@@ -867,9 +883,10 @@ class BotQueryProcessor {
 		if( empty($this->nonRedirPageIds) ) {
 			return;
 		}
+		$this->startProfiling();
 		extract( $this->genPageLinksSettings[$prop] );
 		
-		$this->startProfiling();
+		$this->startDbProfiling();
 		$res = $this->db->select(
 			$linktbl,
 			array( 	"{$prefix}_from from_id",
@@ -877,7 +894,7 @@ class BotQueryProcessor {
 					"{$prefix}_title to_title" ),
 			array( "{$prefix}_from" => $this->nonRedirPageIds ),
 			$this->classname . "::genPageLinks_{$code}" );
-		$this->endProfiling($prop);
+		$this->endDbProfiling($prop);
 
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			if( $langlinks ) {
@@ -888,6 +905,7 @@ class BotQueryProcessor {
 			$this->addPageSubElement( $row->from_id, $prop, $code, $values);
 		}
 		$this->db->freeResult( $res );
+		$this->endProfiling($prop);
 	}
 	
 	var $genPageBackLinksSettings = array(	// database column name prefix, output element name
@@ -900,7 +918,7 @@ class BotQueryProcessor {
 	* $type - either 'template' or 'page'
 	*/
 	function genPageBackLinksHelper(&$prop, &$genInfo) {
-
+		$this->startProfiling();
 		extract( $this->genPageBackLinksSettings[$prop] );
 		
 		//
@@ -1009,14 +1027,14 @@ class BotQueryProcessor {
 		//
 		// Execute
 		//
-		$this->startProfiling();
+		$this->startDbProfiling();
 		$res = $this->db->select(
 			array( $linktbl, 'page' ),
 			$columns,
 			$where,
 			$this->classname . "::genPageBackLinks_{$code}",
 			$options );
-		$this->endProfiling($prop);
+		$this->endDbProfiling($prop);
 
 		$count = 0;
 		while ( $row = $this->db->fetchObject( $res ) ) {
@@ -1031,6 +1049,7 @@ class BotQueryProcessor {
 			$this->addPageSubElement( $pageId, $prop, $code, $values );
 		}
 		$this->db->freeResult( $res );
+		$this->endProfiling($prop);
 	}
 	
 	/**
@@ -1040,10 +1059,12 @@ class BotQueryProcessor {
 		if( empty( $this->existingPageIds ) ) {
 			return;
 		}
+		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
 
-		$fields = array('rev_id', 'rev_timestamp', 'rev_user', 'rev_user_text', 'rev_minor_edit');
-		if( isset($rvcomments) ) {
+		$tables = array('revision');
+		$fields = array('rev_id', 'rev_text_id', 'rev_timestamp', 'rev_user', 'rev_user_text', 'rev_minor_edit');
+		if( $rvcomments ) {
 			$fields[] = 'rev_comment';
 		}
 		$conds = array( 'rev_deleted' => 0 );
@@ -1060,15 +1081,30 @@ class BotQueryProcessor {
 		if( $rvoffset !== 0 ) {
 			$options['OFFSET'] = $rvoffset;
 		}
-		$this->validateLimit( 'rvlimit * pages', $rvlimit * count($this->existingPageIds), 200, 2000 );
-
-		$this->startProfiling();
+		if( $rvcontent ) {
+			$this->validateLimit( 'content + rvlimit * pages', $rvlimit * count($this->existingPageIds), 50, 200 );
+			$tables[] = 'text';
+			$fields[] = 'old_id';
+			$fields[] = 'old_text';
+			$fields[] = 'old_flags';
+			$conds[] = 'rev_text_id=old_id';
+		} else {
+			$this->validateLimit( 'rvlimit * pages', $rvlimit * count($this->existingPageIds), 200, 2000 );
+		}
+		
+		$this->startDbProfiling();
 		foreach( $this->existingPageIds as $pageId ) {
 			$conds['rev_page'] = $pageId;
-			$res = $this->db->select( 'revision', $fields, $conds, $this->classname . '::genPageHistory', $options );
+			$res = $this->db->select(
+				$tables,
+				$fields,
+				$conds,
+				$this->classname . '::genPageHistory',
+				$options );
 			while ( $row = $this->db->fetchObject( $res ) ) {
 				$vals = array(
 					'revid' => $row->rev_id,
+					'oldid' => $row->rev_text_id,
 					'timestamp' => wfTimestamp( TS_ISO_8601, $row->rev_timestamp ),
 					'user' => $row->rev_user_text,
 					);
@@ -1078,11 +1114,18 @@ class BotQueryProcessor {
 				if( $row->rev_minor_edit ) {
 					$vals['minor'] = '';
 				}
-				$vals['*'] = $rvcomments ? $row->rev_comment : '';
+				if( $rvcomments ) {
+					$vals['comment'] = $row->rev_comment;
+				}
+				if( $rvcontent ) {
+					$vals['xml:space'] = 'preserve';
+					$vals['*'] = Revision::getRevisionText( $row );
+				}
 				$this->addPageSubElement( $pageId, 'revisions', 'rv', $vals);
 			}
 			$this->db->freeResult( $res );
 		}
+		$this->endDbProfiling($prop);
 		$this->endProfiling($prop);
 	}
 
@@ -1093,22 +1136,32 @@ class BotQueryProcessor {
 		if( empty( $this->existingPageIds ) ) {
 			return;
 		}
-		$this->validateLimit( 'co_querytoobig', count($this->existingPageIds), 50, 200 );
 		$this->startProfiling();
+
+		// Generate the WHERE clause for pageIds+RevisionIds
+		$ids = array();
+		foreach( $this->data['pages'] as $pageId => &$page ) {
+			if( $pageId > 0 ) {
+				$ids[] = "(rev_page=$pageId AND rev_id={$page['revid']})";
+			}
+		}
+		$this->validateLimit( 'co_querytoobig', count($ids), 50, 200 );		
+		
+		$this->startDbProfiling();
 		$res = $this->db->select(
-			array('page', 'revision', 'text'),
-			array('page_id', 'old_id', 'old_text', 'old_flags'),
-			array('page_id=rev_page', 'page_latest=rev_id', 'rev_text_id=old_id', 'page_id' => $this->existingPageIds),
+			array('revision', 'text'),
+			array('rev_page', 'old_id', 'old_text', 'old_flags'),
+			array('rev_text_id=old_id', implode('OR', $ids)),
 			$this->classname . '::genPageContent'
 			);
 		while ( $row = $this->db->fetchObject( $res ) ) {
-			$this->addPageSubElement( $row->page_id, $prop, 'xml:space', 'preserve', false);
-			$this->addPageSubElement( $row->page_id, $prop, '*', Revision::getRevisionText( $row ), false);
+			$this->addPageSubElement( $row->rev_page, $prop, 'xml:space', 'preserve', false);
+			$this->addPageSubElement( $row->rev_page, $prop, '*', Revision::getRevisionText( $row ), false);
 		}
 		$this->db->freeResult( $res );
-		$this->endProfiling($prop);	// getRevisionText is also a database call
+		$this->endDbProfiling($prop);	// Revision::getRevisionText is also a database call, so we include them in this scope
+		$this->endProfiling($prop);
 	}
-
 
 	//
 	// ************************************* UTILITIES *************************************
@@ -1385,14 +1438,32 @@ class BotQueryProcessor {
 	function startProfiling() {
 		$this->startTime = wfTime();
 	}
+	/**
+	* Same as startProfiling, but used for DB access only
+	*/
+	function startDbProfiling() {
+		$this->startDbTime = wfTime();
+	}
 	
 	/**
-	* Records the running time of the given module since last startProfiling() call.
+	* Records the running time of the given module since last startDbProfiling() call.
 	*/
 	function endProfiling( $module ) {
-		$timeDelta = wfTime() - $this->startTime;
-		unset($this->startTime);
-		$this->addStatusMessage( $module, array( 'time' => sprintf( "%1.2fms", $timeDelta * 1000.0 ) ));
+		$this->recordProfiling( $module, 'time', $this->startTime );
+	}
+	/**
+	* Same as endProfiling, but used for DB access only
+	*/
+	function endDbProfiling( $module ) {
+		$this->recordProfiling( $module, 'dbtime', $this->startDbTime );
+	}
+	/**
+	* Helper profiling function
+	*/
+	function recordProfiling( $module, $type, &$start ) {
+		$timeDelta = wfTime() - $start;
+		unset($start);
+		$this->addStatusMessage( $module, array( $type => sprintf( "%1.2fms", $timeDelta * 1000.0 ) ));
 	}
 	
 	/**
