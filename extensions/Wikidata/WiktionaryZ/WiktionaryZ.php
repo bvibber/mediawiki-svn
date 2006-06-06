@@ -39,10 +39,6 @@ class WiktionaryZ {
 			$wgOut->addHTML($skin->editSectionLink($wgTitle, $expressionId));
 			$wgOut->addHTML("<h2><i>Spelling</i>: $row->spelling - <i>Language:</i> ".$wgLanguageNames[$row->language_id]. "</h2>");
 
-			$attributesPerDefinedMeaning = $this->getDefinedMeaningAttributes($definedMeaningIds);			
-			$typenames=$this->getRelationTypes();
-			$attnames=$this->getAttributeValues();
-
 			$wgOut->addHTML('<ul>');
 			foreach($definedMeaningIds as $definedMeaningId) {
 				$wgOut->addHTML($skin->editSectionLink($wgTitle, "$expressionId-$definedMeaningId"));
@@ -57,11 +53,11 @@ class WiktionaryZ {
  				}
  				
  				$wgOut->addHTML('<div class="wiki-data-blocks">');
- 				addWikiDataBlock("Translations and synonyms", getRelationAsHTML($synonymAndTranslationRelations[$definedMeaningId]));
- 				addWikiDataBlock("Relations", getRelationAsHTML($this->getDefinedMeaningRelationsRelation($definedMeaningId)));
- 				addWikiDataBlock("Attributes", getRelationAsHTML($this->getDefinedMeaningAttributesRelation($definedMeaningId)));
-
+	 				addWikiDataBlock("Translations and synonyms", getRelationAsHTML($synonymAndTranslationRelations[$definedMeaningId]));
+ 					addWikiDataBlock("Relations", getRelationAsHTML($this->getDefinedMeaningRelationsRelation($definedMeaningId)));
+ 					addWikiDataBlock("Attributes", getRelationAsHTML($this->getDefinedMeaningAttributesRelation($definedMeaningId)));
 				$wgOut->addHTML('</div>');
+
 				$wgOut->addHTML('<div class="clear-float"/>');
 				$wgOut->addHTML('</li>');
 			}
@@ -153,7 +149,6 @@ class WiktionaryZ {
 	function saveExpressionForm($expressionId, $definedMeaningIds) {
 		$synonymsAndTranslationIds = $this->getSynonymAndTranslationIds($definedMeaningIds, $expressionId);
 		$definedMeaningTexts = $this->getDefinedMeaningTexts($definedMeaningIds);
-		$definedMeaningRelations = $this->getDefinedMeaningRelations($definedMeaningIds);
 
 		foreach($definedMeaningIds as $definedMeaningId) 
 			$this->saveDefinedMeaningForm($expressionId, $definedMeaningId, $definedMeaningTexts[$definedMeaningId]);
@@ -248,7 +243,6 @@ class WiktionaryZ {
 
 		$synonymAndTranslationRelations = $this->getSynonymAndTranslationRelations($definedMeaningIds, $expressionId);
 		$definedMeaningTexts = $this->getDefinedMeaningTexts($definedMeaningIds);
-		$definedMeaningRelations = $this->getDefinedMeaningRelations($definedMeaningIds);
 
 		$wgOut->addHTML('<ul>');
 		foreach ($definedMeaningIds as $definedMeaningId) {
