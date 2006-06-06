@@ -1,5 +1,5 @@
 <?php
-# Copyright (C) 2004 Brion Vibber <brion@pobox.com>
+# Copyright (C) 2004,2006 Brion Vibber <brion@pobox.com>
 # http://www.mediawiki.org/
 # 
 # This program is free software; you can redistribute it and/or modify
@@ -51,11 +51,25 @@ function charInsert( $data ) {
 function charInsertLine( $data ) {
 	return implode( "\n",
 		array_map( 'charInsertItem',
-			preg_split( '/\\s+/', $data ) ) );
+			preg_split( '/\\s+/', charInsertArmor( $data ) ) ) );
+}
+
+function charInsertArmor( $data ) {
+	return preg_replace_callback(
+		'!<nowiki>(.*?)</nowiki>!i',
+		'charInsertNowiki',
+		$data );
+}
+
+function charInsertNowiki( $matches ) {
+	return str_replace(
+		array( '\t', '\r', ' ' ),
+		array( '&#9;', '&#12;', '&#32;' ),
+		$matches[1] );
 }
 
 function charInsertItem( $data ) {
-	$chars = array_map( 'charInsertCleanChar', explode( '+', $data ) );
+	$chars = explode( '+', $data );
 	if( count( $chars ) > 1 ) {
 		return charInsertChar( $chars[0], $chars[1], 'Click the character while selecting a text' );
 	} elseif( count( $chars ) == 1 ) {
@@ -65,21 +79,9 @@ function charInsertItem( $data ) {
 	}
 }
 
-function charInsertCleanChar( $data ) {
-	if( preg_match( '/^&#\d+;$/', $data ) ) {
-		return $data;
-	} elseif( preg_match( '/^&#x[0-9a-f]+;$/i', $data ) ) {
-		return $data;
-	} elseif( preg_match( '/^&[0-9a-z]+;$/i', $data ) ) {
-		return $data;
-	} else {
-		return htmlspecialchars( $data, ENT_QUOTES );
-	}
-}
-
 function charInsertChar( $start, $end = '', $title = null ) {
-	$estart = htmlspecialchars( charInsertJsString( $start ) );
-	$eend   = htmlspecialchars( charInsertJsString( $end   ) );
+	$estart = charInsertJsString( $start );
+	$eend   = charInsertJsString( $end   );
 	if( $eend == '' ) {
 		$inline = charInsertDisplay( $start );
 	} else {
@@ -90,12 +92,16 @@ function charInsertChar( $start, $end = '', $title = null ) {
 	} else {
 		$extra = '';
 	}
-	return "<a href=\"javascript:insertTags('$estart','$eend','')\">$inline</a>";
+	return wfElement( 'a',
+		array(
+			'onclick' => "insertTags('$estart','$eend','');return false",
+			'href'    => '#' ),
+		$inline );
 }
 
 function charInsertJsString( $text ) {
 	return strtr(
-		$text,
+		charInsertDisplay( $text ),
 		array(
 			"\\"   => "\\\\",
 			"\""   => "\\\"",
@@ -109,7 +115,8 @@ function charInsertJsString( $text ) {
 function charInsertDisplay( $text ) {
 	static $invisibles = array(     '&nbsp;',     '&#160;' );
 	static $visibles   = array( '&amp;nbsp;', '&amp;#160;' );
-	return str_replace( $invisibles, $visibles, $text );
+	return Sanitizer::decodeCharReferences(
+			str_replace( $invisibles, $visibles, $text ) );
 }
 
 ?>
