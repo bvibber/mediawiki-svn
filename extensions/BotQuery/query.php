@@ -235,7 +235,7 @@ class BotQueryProcessor {
 			"ilcontfrom - from which point to continue. Use the 'next' value from the previous queries.",
 			"Example: query.php?what=imagelinks&titles=Image:HermitageAcrossNeva.jpg&illimit=10",
 			)),
-		'revisions'      => array( 'genPageHistory', false,
+		'revisions'      => array( 'genPageRevisions', false,
 			array( 'rvcomments', 'rvcontent', 'rvlimit', 'rvoffset', 'rvstart', 'rvend' ),
 			array( false, false, 50, 0, null, null ),
 			array(
@@ -274,7 +274,7 @@ class BotQueryProcessor {
 
 		$this->enableProfiling = !$wgRequest->getCheck('noprofile');
 		
-		$this->format = 'html'; // set it here because if parseFormat fails, the usage output rilies on this variable
+		$this->format = 'html'; // set it here because if parseFormat fails, the usage output relies on this setting
 		$this->format = $this->parseFormat( $wgRequest->getVal('format', 'html') );
 
 		$allProperties = array_merge(array(null), array_keys( $this->propGenerators ));
@@ -339,7 +339,7 @@ class BotQueryProcessor {
 		//
 		// Log request - userid (non-identifiable), status, what is asked, request size, additional parameters
 		//
-		$userIdentity = md5( $wgUser->getName() ) . "-" . ($wgUser->isAnon() ? "anon" : ($wgUser->isBot() ? "bot" : "usr"));
+		$userIdentity = md5( $wgUser->getName() ) . "\t" . ($wgUser->isAnon() ? "anon" : ($wgUser->isBot() ? "bot" : "usr"));
 		$what = $wgRequest->getVal('what');
 		$format = $wgRequest->getVal('format');
 		$params = mergeParameters( $this->propGenerators );
@@ -409,6 +409,46 @@ class BotQueryProcessor {
 		global $wgUser, $wgRequest;
 		$this->startProfiling();
 		$where = array();
+		
+		//
+		// Pages in a category
+		//
+		$categoryName = $wgRequest->getVal('category');
+		if( $categoryName !== null ) {
+			$categoryObj = &Title::newFromText( $categoryName );
+			if(    !$categoryObj ||
+				   ($categoryObj->getNamespace() !== NS_MAIN && $categoryObj->getNamespace() !== NS_CATEGORY) ||
+				   $categoryObj->isExternal() ) {
+				$this->dieUsage( "bad category name $categoryName", 'pi_invalidcategory' );
+			}
+			// TODO: Should we check if the user has the rights to view this category?
+			
+			$conds = array( 'cl_to' => $categoryObj->getDBkey() );
+			$cpfrom = $wgRequest->getVal('cpfrom');
+			if ( $cpfrom != '' ) {
+				$conds[] = 'cl_sortkey >= ' . $this->db->addQuotes($cpfrom);
+			}
+			$cplimit = $wgRequest->getInt( 'cplimit', 200 );
+			$this->validateLimit( 'pi_badcplimit', $cplimit, 500, 5000 );
+
+			$this->startDbProfiling();
+			$res = $this->db->select( 'categorylinks',
+				array( 'cl_from', 'cl_sortkey' ),
+				$conds,
+				$this->classname . '::genPageInfoCategories',
+				array( 'ORDER BY' => 'cl_sortkey', 'LIMIT' => $cplimit+1 ));
+			$this->endDbProfiling('pageInfoCat');
+			$count = 0;
+			while ( $row = $this->db->fetchObject( $res ) ) {
+				if( ++$count > $cplimit ) {
+					// We've reached the one extra which shows that there are additional pages to be had. Stop here...
+					$this->addStatusMessage( 'category', array('next' => $row->cl_sortkey) );
+					break;
+				}
+				$this->addRaw( 'pageids', $row->cl_from );
+			}
+			$this->db->freeResult( $res );
+		}
 		
 		//
 		// List of titles
@@ -1055,7 +1095,7 @@ class BotQueryProcessor {
 	/**
 	* Add a list of revisions to the page history
 	*/
-	function genPageHistory(&$prop, &$genInfo) {
+	function genPageRevisions(&$prop, &$genInfo) {
 		if( empty( $this->existingPageIds ) ) {
 			return;
 		}
@@ -1099,7 +1139,7 @@ class BotQueryProcessor {
 				$tables,
 				$fields,
 				$conds,
-				$this->classname . '::genPageHistory',
+				$this->classname . '::genPageRevisions',
 				$options );
 			while ( $row = $this->db->fetchObject( $res ) ) {
 				$vals = array(
@@ -1362,7 +1402,11 @@ class BotQueryProcessor {
 				"    what       - What information the server should return. See properties section.",
 				"    titles     - A list of titles, separated by the pipe '|' symbol.",
 				"    pageids    - A list of page ids, separated by the pipe '|' symbol.",
-				"    noprofile  - When present, each sql query execution time will be hidden. (Optional)",
+				"    category   - A category name, either with or without the 'Category:' prefix.",
+				"                 When present, all pages in the given category will be included in the output.",
+				"    cplimit    - How many total pages (in category) to return",
+				"    cpfrom     - The category sort key to continue paging. Starts at the begining by default",
+				"    noprofile  - When present, each sql query execution time will be hidden. (not implemented)",
 				"",
 				"*Examples*",
 				"    query.php?format=xml&what=links|templates&titles=User:Yurik",
@@ -1370,6 +1414,9 @@ class BotQueryProcessor {
 				"",
 				"    query.php?format=xml&what=revisions&titles=Main_Page&rvlimit=100&rvstart=20060401000000&rvcomments",
 				"  Get a list of 100 last revisions of the main page with comments, but only if it happened after midnight April 1st 2006",
+				"",
+				"    query.php?format=xml&category=Days",
+				"  Get a list of pages that belong to the category Days",
 				"",
 				"",
 				"*Supported Formats*",
