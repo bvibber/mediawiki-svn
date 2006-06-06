@@ -34,6 +34,7 @@ function convertToHTML($value, $type) {
 	switch($type) {
 		case "boolean": return booleanAsHTML($value);
 		case "spelling": return spellingAsLink($value);
+		case "defined-meaning": return spellingAsLink($value);
 		case "language": return languageIdAsText($value);
 		default: return $value;
 	}

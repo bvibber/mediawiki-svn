@@ -1,5 +1,6 @@
 <?php
 
+require_once('wikidata.php');
 require_once('Expression.php');
 require_once('forms.php');
 require_once('table.php');
@@ -34,7 +35,6 @@ class WiktionaryZ {
 			$synonymAndTranslationTables = $this->getSynonymAndTranslationTables($definedMeaningIds, $expressionId);
 			$definedMeaningTexts = $this->getDefinedMeaningTexts($definedMeaningIds);
 			$alternativeMeaningTexts = $this->getAlternativeMeaningTexts($definedMeaningIds);
-			$definedMeaningRelations = $this->getDefinedMeaningRelations($definedMeaningIds);
 
 			$wgOut->addHTML($skin->editSectionLink($wgTitle, $expressionId));
 			$wgOut->addHTML("<h2><i>Spelling</i>: $row->spelling - <i>Language:</i> ".$wgLanguageNames[$row->language_id]. "</h2>");
@@ -57,44 +57,10 @@ class WiktionaryZ {
  				}
  				
  				$wgOut->addHTML('<div class="wiki-data-blocks">');
-			 	$wgOut->addHTML('<div class="wiki-data-block">');
-				$wgOut->addHTML('<h4>Translations and synonyms</h4>');
-				$wgOut->addHTML(getTableAsHTML($synonymAndTranslationTables[$definedMeaningId]));
-				$wgOut->addHTML('</div>');
-		
-			 	$wgOut->addHTML('<div class="wiki-data-block">');
-				$wgOut->addHTML('<h4>Relations</h4>');
-				$relations = $definedMeaningRelations[$definedMeaningId];
-				foreach($relations as $type => $rellist) {
-					$wgOut->addHTML("<p>$typenames[$type]:</p>");
-					$wgOut->addHTML("<ul>");
-					foreach($rellist as $rel) {
-						$rs_res=$dbr->query("SELECT expression_id from uw_defined_meaning where defined_meaning_id=".$rel." LIMIT 1");
-						$rs_row=$dbr->fetchObject($rs_res);
-						if($rs_row->expression_id) {
-							$li_res=$dbr->query("SELECT spelling from uw_expression_ns where expression_id=".$rs_row->expression_id);
-							$li_row=$dbr->fetchObject($li_res);
-							$wgOut->addHTML("<li>". $skin->makeLink("WiktionaryZ:".$li_row->spelling, $li_row->spelling) ."</li>");
-						}
-					}
-					$wgOut->addHTML("</ul>");
-				}
-				$wgOut->addHTML('</div>');
+ 				addWikiDataBlock("Translations and synonyms", getTableAsHTML($synonymAndTranslationTables[$definedMeaningId]));
+ 				addWikiDataBlock("Relations", getTableAsHTML($this->getDefinedMeaningRelationsTable($definedMeaningId)));
+ 				addWikiDataBlock("Attributes", getTableAsHTML($this->getDefinedMeaningAttributesTable($definedMeaningId)));
 
-			 	$wgOut->addHTML('<div class="wiki-data-block">');
-				$wgOut->addHTML('<h4>Attributes</h4>');
-				$attributes = $attributesPerDefinedMeaning[$definedMeaningId];
-				
-				if (count($attributes) > 0) {
-					$wgOut->addHTML('<ul>');
-					foreach($attributes as $attribute) {
-						$attributeName = $attnames[$attribute];
-						$wgOut->addHTML("<li>". $skin->makeLink("WiktionaryZ:".$attributeName, $attributeName) ."</li>");
-					}
-					$wgOut->addHTML('</ul>');
-				}
-
-				$wgOut->addHTML('</div>');
 				$wgOut->addHTML('</div>');
 				$wgOut->addHTML('<div class="clear-float"/>');
 				$wgOut->addHTML('</li>');
@@ -119,15 +85,15 @@ class WiktionaryZ {
 	}
 
 	function getRelationTypeSuggest($definedMeaningId) {
-		return getSuggest("new-relation-type-$definedMeaningId", 
-                          "relation-type", 
-                          "member_mid", "spelling");		
+		return getSuggest("new-relation-type-$definedMeaningId", "relation-type");		
+	}
+	
+	function getAttributeSuggest($definedMeaningId) {
+		return getSuggest("new-attribute-$definedMeaningId", "attribute");
 	}
 	
 	function getDefinedMeaningSuggest($definedMeaningId) {
-		return getSuggest("new-relation-other-meaning-$definedMeaningId", 
-                          "defined-meaning", 
-                          "member_mid", "spelling");		
+		return getSuggest("new-relation-other-meaning-$definedMeaningId", "defined-meaning");		
 	}
 	
 	function getRelationTypes() {
@@ -206,9 +172,12 @@ class WiktionaryZ {
 				$this->setText($textId, $definition);
 		}
 
-		$this->addTranslatedDefinitionFromRequest($definedMeaningId, $definedMeaningTextId, getRevisionForExpressionId($expressionId), array_keys($translatedContents));
+		if (count($translatedContents))
+			$this->addTranslatedDefinitionFromRequest($definedMeaningId, $definedMeaningTextId, getRevisionForExpressionId($expressionId), array_keys($translatedContents));
+			
 		$this->addSynonymsOrTranslationsFromRequest($definedMeaningId);
 		$this->addRelationFromRequest($definedMeaningId);
+		$this->addAttributeFromRequest($definedMeaningId);
 	}
 
 	function edit() {
@@ -302,20 +271,18 @@ class WiktionaryZ {
 		    	            getTextArea("definition-$textId", $this->getText($textId)));
 		}
 
-		$wgOut->addHTML('<div><i>Translate into</i>: '.
-						$this->getLanguageSelect("translated-definition-language-$definedMeaningId", array_keys($translatedContents)).'</div>'.
-		                getTextArea("translated-definition-$definedMeaningId"));
+		if (count($translatedContents) > 0) {
+			$wgOut->addHTML('<div><i>Translate into</i>: '.
+							$this->getLanguageSelect("translated-definition-language-$definedMeaningId", array_keys($translatedContents)).'</div>'.
+		        	        getTextArea("translated-definition-$definedMeaningId"));
+		}
 
 	 	$wgOut->addHTML('<div class="wiki-data-blocks">');
-	 	$wgOut->addHTML('<div class="wiki-data-block">');
-		$wgOut->addHTML('<h4>Translations and synonyms</h4>');
-		$wgOut->addHTML(getTableAsEditHTML($synonymAndTranslationTable, "add-translation-synonym-$definedMeaningId", $this->getAddTranslationsAndSynonymsRowFields($definedMeaningId), true));
+			addWikiDataBlock("Translations and synonyms", getTableAsEditHTML($synonymAndTranslationTable, "add-translation-synonym-$definedMeaningId", $this->getAddTranslationsAndSynonymsRowFields($definedMeaningId), true));
+			addWikiDataBlock("Relations", getTableAsEditHTML($this->getDefinedMeaningRelationsTable($definedMeaningId), "", array($this->getRelationTypeSuggest($definedMeaningId), $this->getDefinedMeaningSuggest($definedMeaningId)), false));
+			addWikiDataBlock("Attributes", getTableAsEditHTML($this->getDefinedMeaningAttributesTable($definedMeaningId), "", array($this->getAttributeSuggest($definedMeaningId)), false));
 		$wgOut->addHTML('</div>');
-
-	 	$wgOut->addHTML('<div class="wiki-data-block">');
-		$wgOut->addHTML($this->getAddRelationsFormFields($definedMeaningId));
-		$wgOut->addHTML('</div>');
-		$wgOut->addHTML('</div>');
+		
 		$wgOut->addHTML('<div class="clear-float"/>');
 	}
 	
@@ -425,6 +392,33 @@ class WiktionaryZ {
 		return $result;
 	}
 	
+	function getDefinedMeaningRelationsTable($definedMeaningId) {
+		$attributes = array(new Attribute("Relation type", "defined-meaning"), new Attribute("Other defined meaning", "defined-meaning"));
+		$table = new ArrayTable($attributes);
+		
+		$dbr =& wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid!=0 and is_latest_set=1 ORDER BY relationtype_mid");
+			
+		while($definedMeaningRelation = $dbr->fetchObject($queryResult))
+			$table->addRow(array($this->getExpressionForMeaningId($definedMeaningRelation->relationtype_mid, 85), 
+									$this->getExpressionForMeaningId($definedMeaningRelation->meaning2_mid, 85))); 
+		
+		return $table;
+	}
+	
+	function getDefinedMeaningAttributesTable($definedMeaningId) {
+		$attributes = array(new Attribute("Attribute", "defined-meaning"));
+		$table = new ArrayTable($attributes);
+		
+		$dbr =& wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid=0 and is_latest_set=1");
+			
+		while($attribute = $dbr->fetchObject($queryResult))
+			$table->addRow(array($this->getExpressionForMeaningId($attribute->meaning2_mid, 85))); 
+		
+		return $table;
+	}
+	
 	function getDefinedMeaningRelations($definedMeaningIds) {
 		$dbr =& wfGetDB(DB_SLAVE);
 	    $definedMeaningRelations = array();
@@ -473,14 +467,6 @@ class WiktionaryZ {
 	
 	function getAddTranslationsAndSynonymsRowFields($definedMeaningId) {
 		return array($this->getLanguageSelect("language-$definedMeaningId"), getTextBox("spelling-$definedMeaningId"), getCheckBox("endemic-meaning-$definedMeaningId", true));
-	}
-	
-	function getAddRelationsFormFields($definedMeaningId) {
-		return '<h4>Add relation</h4>
-				<table class="wiki-data-table">
-					<tr><th>Relation type</th><th>Other defined meaning</th></tr>
-					<tr><td>' .	$this->getRelationTypeSuggest($definedMeaningId) . '</td><td>' . $this->getDefinedMeaningSuggest($definedMeaningId) . '</td></tr>
-				</table>';
 	}
 	
 	function getTranslationIdsForDefinedMeaning($definedMeaningId) {
@@ -622,11 +608,26 @@ class WiktionaryZ {
 	}
 
 	function getExpressionForMeaningId($mid, $langcode) {
+//		$dbr =& wfGetDB(DB_SLAVE);
+//		$sql="SELECT spelling from uw_syntrans,uw_expression_ns where defined_meaning_id=".$mid." and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=".$langcode." limit 1";
+//		$sp_res=$dbr->query($sql);
+//		$sp_row=$dbr->fetchObject($sp_res);
+//		return $sp_row->spelling;
+		$expressions = $this->getExpressionsForDefinedMeaningIds(array($mid)); 
+		return $expressions[$mid];
+	}
+	
+	# Fixme, the following function only returns English expressions
+	# Should be expressions in the language of preference, with an appropriate fallback scheme
+	function getExpressionsForDefinedMeaningIds($definedMeaningIds) {
 		$dbr =& wfGetDB(DB_SLAVE);
-		$sql="SELECT spelling from uw_syntrans,uw_expression_ns where defined_meaning_id=".$mid." and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=".$langcode." limit 1";
-		$sp_res=$dbr->query($sql);
-		$sp_row=$dbr->fetchObject($sp_res);
-		return $sp_row->spelling;
+		$queryResult = $dbr->query("SELECT defined_meaning_id, spelling from uw_syntrans, uw_expression_ns where defined_meaning_id in (". implode(",", $definedMeaningIds) . ") and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=85");
+		$expressions = array();
+		
+		while ($expression = $dbr->fetchObject($queryResult))
+			$expressions[$expression->defined_meaning_id] = $expression->spelling;
+		
+		return $expressions;
 	}
 	
 	function addRelationFromRequest($definedMeaningId) {
@@ -638,6 +639,16 @@ class WiktionaryZ {
 		  
 		if ($relationTypeId != 0 && $otherDefinedMeaningId != 0)
 			$this->addRelation($definedMeaningId, $relationTypeId, $otherDefinedMeaningId);
+	}
+	
+	function addAttributeFromRequest($definedMeaningId) {
+		global
+			$wgRequest;
+		
+		$attributeId = $wgRequest->getInt("new-attribute-$definedMeaningId");
+		  
+		if ($attributeId != 0)
+			$this->addRelation($definedMeaningId, 0, $attributeId);
 	}
 	
 	function getSetIdForDefinedMeaningRelations($definedMeaningId) {

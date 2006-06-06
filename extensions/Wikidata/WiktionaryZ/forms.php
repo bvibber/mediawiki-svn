@@ -1,35 +1,28 @@
 <?php
-/*
- * Created on May 5, 2006
- *
- * To change the template for this generated file go to
- * Window - Preferences - PHPeclipse - PHP - Code Templates
- */
+function getTextBox($name, $maximumLength = 255, $value = "") {
+	return '<input type="text" name="'. $name .'" value="'. $value .'" maxlength="'. $maximumLength .'"/>';
+}
  
- function getTextBox($name, $maximumLength = 255, $value = "") {
- 	return '<input type="text" name="'. $name .'" value="'. $value .'" maxlength="'. $maximumLength .'"/>';
- }
+function getTextArea($name, $text = "", $rows = 5, $columns = 80) {
+	return '<textarea name="'.$name. '" rows="'. $rows . '" cols="'. $columns . '">' . htmlspecialchars($text) . '</textarea>';	
+}
  
- function getTextArea($name, $text = "", $rows = 5, $columns = 80) {
- 	return '<textarea name="'.$name. '" rows="'. $rows . '" cols="'. $columns . '">' . htmlspecialchars($text) . '</textarea>';	
- }
+function getCheckBox($name, $isChecked) {
+	if ($isChecked)
+		$checked = ' checked="checked"';
+	else
+		$checked = '';	
  
- function getCheckBox($name, $isChecked) {
- 	if ($isChecked)
- 		$checked = ' checked="checked"';
- 	else
- 		$checked = '';	
- 
- 	return '<input type="checkbox" name="'. $name .'"'. $checked . '/>';
- }
+	return '<input type="checkbox" name="'. $name .'"'. $checked . '/>';
+}
   
- # $options is an array of [value => text] pairs
- function getSelect($name, $options, $selectedValue="") {
- 	$result = '<select name="'. $name . '">';	  
+# $options is an array of [value => text] pairs
+function getSelect($name, $options, $selectedValue="") {
+	$result = '<select name="'. $name . '">';	  
  
- 	asort($options);
- 
- 	foreach($options as $value => $text) {
+	asort($options);
+
+	foreach($options as $value => $text) {
 		if ($value == $selectedValue)
 			$selected = ' selected="selected"';
 		else
@@ -37,11 +30,11 @@
 			
 		$result .= '<option value="'. $value .'"'. $selected .'>'. htmlspecialchars($text) . '</option>';
 	}	
-	
+
 	return $result . '</select>';
 }
 
-function getSuggest($name, $query, $idField, $labelField) {
+function getSuggest($name, $query) {
 	global
 		$dbr;
 

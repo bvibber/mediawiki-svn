@@ -106,19 +106,8 @@ function getTableAsHTML($tableModel) {
 		
 	$result .= '</tr>';
 	
-	for($i = 0; $i < $tableModel->getRowCount(); $i++) {
-//		$result .= '<tr>';
-//		$j = 0;
-//		
-//		foreach($tableModel->getRow($i) as $cell) {
-//			$type = $attributes[$j]->type;			
-//			$result .= '<td class="'. $type .' column-'. parityClass($j) . '">'. convertToHTML($cell, $type) . '</td>';
-//			$j++;
-//		}
-//		
-//		$result .= '</tr>';
+	for($i = 0; $i < $tableModel->getRowCount(); $i++) 
 		$result .= '<tr>' . getTableCellsAsHTML($attributes, convertValuesToHTML($attributes, $tableModel->getRow($i))) .'</tr>';
-	}
 	
 	$result .= '</table>';
 

@@ -29,6 +29,7 @@
 
 .wiki-data-table th {
 	background-color: #EEEEEE;
+	text-align: left;
 }
 
 .wiki-data-table td.column-odd {
@@ -37,18 +38,6 @@
 
 .boolean {
 	text-align: center;
-}
-
-.text {
-	text-align: left;
-}
-
-.spelling {
-	text-align: left;
-}
-
-.language {
-	text-align: left;
 }
 
 td.language {
