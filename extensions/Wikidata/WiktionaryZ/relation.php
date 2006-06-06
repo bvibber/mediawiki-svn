@@ -10,13 +10,13 @@ class Attribute {
 	}
 }
 
-interface TableModel {
+interface RelationModel {
 	public function getAttributes();
-	public function getRowCount();
-	public function getRow($row);
+	public function getTupleCount();
+	public function getTuple($tuple);
 }
 
-class ArrayTable implements TableModel {
+class ArrayRelation implements RelationModel {
 	protected $attributes = array();
 	protected $cells = array();
 	
@@ -24,24 +24,24 @@ class ArrayTable implements TableModel {
 		$this->attributes = $attributes;
 	}
 	
-	public function addRow($row) {
-		$this->cells[] = $row;
+	public function addTuple($tuple) {
+		$this->cells[] = $tuple;
 	}
 	
 	public function getAttributes() {
 		return $this->attributes;
 	}
 	
-	public function getRowCount() {
+	public function getTupleCount() {
 		return count($this->cells);
 	}
 	
-	public function getRow($row) {
-		return $this->cells[$row];
+	public function getTuple($tuple) {
+		return $this->cells[$tuple];
 	}
 }
 
-function getQueryAsTable($sql) {
+function getQueryAsRelation($sql) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query($sql);
 
@@ -51,15 +51,15 @@ function getQueryAsTable($sql) {
 	for ($i = 0; $i < $fieldCount; $i++)
 		$attributes[] = new Attribute($dbr->fieldName($queryResult, $i), "Text");
 		
-	$result = new ArrayTable($attributes);
+	$result = new ArrayRelation($attributes);
 	
 	while ($row = $dbr->fetchRow($queryResult)) {
-		$tableRow = array();
+		$tuple = array();
 		
 		for ($i = 0; $i < $fieldCount; $i++)
-			$tableRow[] = $row[$i];
+			$tuple[] = $row[$i];
 			
-		$result->addRow($tableRow);
+		$result->addTuple($tuple);
 	}
 
 	$dbr->freeResult($queryResult);
@@ -97,17 +97,17 @@ function getTableCellsAsHTML($attributes, $values) {
 	return $result;
 }
 
-function getTableAsHTML($tableModel) {
+function getRelationAsHTML($relationModel) {
 	$result = '<table class="wiki-data-table"><tr>';	
-	$attributes = $tableModel->getAttributes();
+	$attributes = $relationModel->getAttributes();
 	
 	foreach($attributes as $attribute)
 		$result .= '<th class="'. $attribute->type .'">' . $attribute->name . '</th>';
 		
 	$result .= '</tr>';
 	
-	for($i = 0; $i < $tableModel->getRowCount(); $i++) 
-		$result .= '<tr>' . getTableCellsAsHTML($attributes, convertValuesToHTML($attributes, $tableModel->getRow($i))) .'</tr>';
+	for($i = 0; $i < $relationModel->getTupleCount(); $i++) 
+		$result .= '<tr>' . getTableCellsAsHTML($attributes, convertValuesToHTML($attributes, $relationModel->getTuple($i))) .'</tr>';
 	
 	$result .= '</table>';
 
@@ -129,9 +129,9 @@ function getInputRowAsHTML($rowId, $attributes, $values, $repeatInput) {
 	return $result . '</tr>'; 
 }
 
-function getTableAsEditHTML($tableModel, $inputRowId, $inputRowFields, $repeatInput) {
+function getRelationAsEditHTML($relationModel, $inputRowId, $inputRowFields, $repeatInput) {
 	$result = '<table class="wiki-data-table"><tr>';	
-	$attributes = $tableModel->getAttributes();
+	$attributes = $relationModel->getAttributes();
 	
 	foreach($attributes as $attribute)
 		$result .= '<th class="'. $attribute->type .'">' . $attribute->name . '</th>';
@@ -141,8 +141,8 @@ function getTableAsEditHTML($tableModel, $inputRowId, $inputRowFields, $repeatIn
 		
 	$result .= '</tr>';
 	
-	for($i = 0; $i < $tableModel->getRowCount(); $i++) {
-		$result .= '<tr>' . getTableCellsAsHTML($attributes, convertValuesToHTML($attributes, $tableModel->getRow($i)));
+	for($i = 0; $i < $relationModel->getTupleCount(); $i++) {
+		$result .= '<tr>' . getTableCellsAsHTML($attributes, convertValuesToHTML($attributes, $relationModel->getTuple($i)));
 		
 		if ($repeatInput)
 			$result .= '<td/>';
