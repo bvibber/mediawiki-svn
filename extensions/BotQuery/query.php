@@ -126,13 +126,16 @@ class BotQueryProcessor {
 			"Example: query.php?what=namespaces",
 			)),
 		'userinfo'       => array( 'genMetaUserInfo', true, 
-			array( 'uiextended' ),
-			array( false ),
+			array( 'uiisblocked', 'uihasmsg', 'uiextended' ),
+			array( false, false, false ),
 			array(
-			"Information about current user",
+			"Information about current user.",
+			"The information will always include 'name' element, and optionally 'anonymous' or 'bot' flags.",
 			"Parameters supported:",
+			"uiisblocked- If present, and current user or ip is blocked, a 'blocked' flag will be added.",
+			"uihasmsg   - If present, and current user or ip has messages waiting, a 'messages' flag will be added.",
 			"uiextended - If present, includes additional information such as rights and groups.",
-			"Example: query.php?what=userinfo&uiextended",
+			"Example: query.php?what=userinfo&uiisblocked&uihasmsg&uiextended",
 			)),
 		'recentchanges'  => array( 'genMetaRecentChanges', true,
 			array( 'rcfrom', 'rclimit', 'rchide' ),
@@ -666,13 +669,15 @@ class BotQueryProcessor {
 		$meta['name'] = $wgUser->getName();
 		if( $wgUser->isAnon() ) $meta['anonymous'] = '';
 		if( $wgUser->isBot() ) $meta['bot'] = '';
-		if( $wgUser->isBlocked() ) $meta[' blocked'] = '';
+		if( $uiisblocked && $wgUser->isBlocked() ) $meta['blocked'] = '';
+		if( $uihasmsg && $wgUser->getNewtalk() ) $meta['messages'] = '';
 		if( $uiextended ) {
 			$meta['groups'] = $wgUser->getGroups();
 			$meta['groups']['_element'] = 'g';
 			$meta['rights'] = $wgUser->getRights();
 			$meta['rights']['_element'] = 'r';
 		}
+
 		$this->data['meta']['user'] = $meta;
 		$this->endProfiling($prop);
 	}
