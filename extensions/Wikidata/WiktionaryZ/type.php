@@ -1,6 +1,7 @@
 <?php
 
 require_once('languages.php');
+require_once('forms.php');
 
 function booleanAsText($value) {
 	if ($value)
@@ -35,9 +36,37 @@ function convertToHTML($value, $type) {
 		case "boolean": return booleanAsHTML($value);
 		case "spelling": return spellingAsLink($value);
 		case "defined-meaning": return spellingAsLink($value);
+		case "relation-type": return spellingAsLink($value);
+		case "attribute": return spellingAsLink($value);
 		case "language": return languageIdAsText($value);
 		default: return $value;
 	}
 }
+
+function getInputFieldForType($name, $type, $value) {
+	switch($type) {
+		case "language": return getLanguageSelect($name);
+		case "spelling": return getTextBox($name);
+		case "boolean": return getCheckBox($name, true);
+		case "defined-meaning": return getSuggest($name, "defined-meaning");
+		case "relation-type": return getSuggest($name, "relation-type");
+		case "attribute": return getSuggest($name, "attribute");
+	}	
+}
+
+function getFieldValueForType($name, $type) {
+	global
+		$wgRequest;
+		
+	switch($type) {
+		case "language": return $wgRequest->getInt($name);
+		case "spelling": return trim($wgRequest->getText($name));
+		case "boolean": return $wgRequest->getCheck($name);
+		case "defined-meaning": return $wgRequest->getInt($name);
+		case "relation-type": return $wgRequest->getInt($name);
+		case "attribute": return $wgRequest->getInt($name);
+	}
+}
+
 
 ?>

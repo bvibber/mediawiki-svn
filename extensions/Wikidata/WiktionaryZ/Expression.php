@@ -190,6 +190,11 @@ function createSynonymOrTranslation($setId, $definedMeaningId, $expressionId, $r
 	$queryResult = $dbr->query($sql);
 }
 
+function addSynonymOrTranslation($spelling, $languageId, $definedMeaningId, $endemicMeaning) {
+	$expression = findOrCreateExpression($spelling, $languageId);
+	$expression->assureIsBoundToDefinedMeaning($definedMeaningId, $endemicMeaning);
+}
+	
 function getMaximum($field, $table) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$sql = "select max($field) as maximum from $table";

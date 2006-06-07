@@ -1,4 +1,7 @@
 <?php
+
+require_once('languages.php');
+
 function getTextBox($name, $maximumLength = 255, $value = "") {
 	return '<input type="text" name="'. $name .'" value="'. $value .'" maxlength="'. $maximumLength .'"/>';
 }
@@ -45,6 +48,32 @@ function getSuggest($name, $query) {
                '</div></div>';
 	
 	return $result;
+}
+
+function getLanguageOptions($languageIdsToExclude = array()) {
+	global 
+		$wgUser;
+		
+	$userLanguage = $wgUser->getOption('language');
+	$idNameIndex = getLangNames($userLanguage);
+	
+	$result = array();
+	
+	foreach($idNameIndex as $id => $name) 
+		if (!in_array($id, $languageIdsToExclude)) 
+			$result[$id] = $name;
+	
+	return $result;
+}
+	
+function getLanguageSelect($name, $languageIdsToExclude = array()) {
+	global 
+		$wgUser;
+		
+	$userLanguage = $wgUser->getOption('language');
+	$userLanguageId = getLanguageIdForCode($userLanguage);
+
+	return getSelect($name, getLanguageOptions($languageIdsToExclude), $userLanguageId);
 }
 
 function getSubmitButton($name, $value) {
