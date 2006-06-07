@@ -547,7 +547,7 @@ class WiktionaryZ {
 			
 		while($definedMeaningRelation = $dbr->fetchObject($queryResult))
 			$relation->addTuple(array($this->getExpressionForMeaningId($definedMeaningRelation->relationtype_mid, 85), 
-										$this->getExpressionForMeaningId($definedMeaningRelation->meaning2_mid, 85))); 
+										$this->getDefiningExpressionForDefinedMeaningId($definedMeaningRelation->meaning2_mid))); 
 		
 		return $relation;
 	}
@@ -692,6 +692,16 @@ class WiktionaryZ {
 		}
 		return $typecollections;
 	
+	}
+
+	function getDefiningExpressionForDefinedMeaningId($definedMeaningId) {
+		$dbr =& wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query("SELECT spelling from uw_defined_meaning, uw_expression_ns where uw_defined_meaning.defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_defined_meaning.expression_id and uw_defined_meaning.is_latest_ver=1 and uw_expression_ns.is_latest=1");
+		
+		while ($spelling = $dbr->fetchObject($queryResult))
+			$result = $spelling->spelling; 
+			
+		return $result;
 	}
 
 	function getExpressionForMeaningId($mid, $langcode) {
