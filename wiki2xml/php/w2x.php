@@ -2,14 +2,14 @@
 # Copyright by Magnus Manske (2005 - 2006)
 # Released under GPL
 
+@set_time_limit ( 0 ) ; # No time limit
+ini_set('user_agent','MSIE 4\.0b2;'); # Fake user agent
+
 if( !defined( 'MEDIAWIKI' ) ) { # Stand-alone
 	include_once ( "default.php" ) ; # Which will include local.php, if available
 }
 
 require_once ( "mediawiki_converter.php" ) ;
-
-@set_time_limit ( 0 ) ; # No time limit
-ini_set('user_agent','MSIE 4\.0b2;'); # Fake user agent
 
 ## TIMER FUNCTION
 
