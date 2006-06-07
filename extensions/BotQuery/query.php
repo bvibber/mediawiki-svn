@@ -1160,7 +1160,10 @@ class BotQueryProcessor {
 				if( $rvcontent ) {
 					$vals['xml:space'] = 'preserve';
 					$vals['*'] = Revision::getRevisionText( $row );
+				} else {
+					$vals['*'] = '';	// Force all elements to be attributes
 				}
+				
 				$this->addPageSubElement( $pageId, 'revisions', 'rv', $vals);
 			}
 			$this->db->freeResult( $res );
