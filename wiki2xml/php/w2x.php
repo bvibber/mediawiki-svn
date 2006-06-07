@@ -26,6 +26,7 @@ function get_form ( $as_extension = false ) {
 	$wt['wikitext'] = $wt['articlelist'] = $wt['listpagename'] = "" ;
 	$wt[$_wt] = 'checked' ;
 	
+	$xmlg["site_base_url"] = get_param('site',$xmlg["site_base_url"]) ;
 	$_out = get_param ( 'output_format' , 'xml' ) ;
 	$out['xml'] = $out['text'] = $out['translated_text'] = $out['xhtml'] = $out['docbook_xml'] = $out['docbook_pdf'] = $out['docbook_html'] = 
 	$out['odt_xml'] = $out['odt'] = '' ;
