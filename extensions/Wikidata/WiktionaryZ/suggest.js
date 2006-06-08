@@ -62,7 +62,7 @@ function suggestTextChanged(suggestText) {
 	suggestionTimeOut = setTimeout("updateSuggestions(\"" + suggestPrefix + "\", \"" + suggestText.id + "\", \"" + suggestQuery + "\")", 600);
 }
 
-function suggestLinkClicked(suggestLink) {
+function suggestLinkClicked(event, suggestLink) {
 	var suggestLinkId = suggestLink.id;
 	var suggestPrefix = suggestLinkId.substr(0, suggestLinkId.length - 4);
 
@@ -70,6 +70,11 @@ function suggestLinkClicked(suggestLink) {
 	var suggestField = document.getElementById(suggestPrefix + "text");
 	suggestDiv.style.display = 'block';
 	suggestField.focus();
+	
+	if (event.preventDefault)
+		event.preventDefault();
+	else
+		event.returnValue = false;
 }
 
 function suggestCloseClicked(suggestClose) {
