@@ -31,13 +31,40 @@ function languageIdAsText($languageId) {
 	return $wgLanguageNames[$languageId];
 }
 
+function definingExpression($definedMeaningId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT spelling from uw_defined_meaning, uw_expression_ns where uw_defined_meaning.defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_defined_meaning.expression_id and uw_defined_meaning.is_latest_ver=1 and uw_expression_ns.is_latest=1");
+	
+	while ($spelling = $dbr->fetchObject($queryResult))
+		$result = $spelling->spelling; 
+		
+	return $result;
+}
+
+function definedMeaningExpression($definedMeaningId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT spelling from uw_syntrans, uw_expression_ns where defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=85 limit 1");
+	$expression = $dbr->fetchObject($queryResult);
+	
+	return $expression->spelling;
+}
+
+function definingExpressionAsLink($definedMeaningId) {
+	return spellingAsLink(definingExpression($definedMeaningId));
+}
+
+function definedMeaningAsLink($definedMeaningId) {
+	return spellingAsLink(definedMeaningExpression($definedMeaningId));
+}
+
 function convertToHTML($value, $type) {
 	switch($type) {
 		case "boolean": return booleanAsHTML($value);
 		case "spelling": return spellingAsLink($value);
-		case "defined-meaning": return spellingAsLink($value);
-		case "relation-type": return spellingAsLink($value);
-		case "attribute": return spellingAsLink($value);
+		case "defined-meaning": return definedMeaningAsLink($value);
+		case "defining-expression": return definingExpressionAsLink($value);
+		case "relation-type": return definedMeaningAsLink($value);
+		case "attribute": return definedMeaningAsLink($value);
 		case "language": return languageIdAsText($value);
 		default: return $value;
 	}
@@ -48,7 +75,9 @@ function getInputFieldForType($name, $type, $value) {
 		case "language": return getLanguageSelect($name);
 		case "spelling": return getTextBox($name);
 		case "boolean": return getCheckBox($name, true);
-		case "defined-meaning": return getSuggest($name, "defined-meaning");
+		case "defined-meaning":
+		case "defining-expression": 
+			return getSuggest($name, "defined-meaning");
 		case "relation-type": return getSuggest($name, "relation-type");
 		case "attribute": return getSuggest($name, "attribute");
 	}	

@@ -1,5 +1,7 @@
 <?php
 
+require_once('forms.php');
+
 class Attribute {
 	public $id = "";	
 	public $name = "";
@@ -12,34 +14,54 @@ class Attribute {
 	}
 }
 
+class Heading {
+	public $attributes;
+	
+	public function __construct($attributes) {
+		$this->attributes = $attributes;
+	}
+}
+
 interface RelationModel {
-	public function getAttributes();
+	public function getHeading();
+	public function getKey();
 	public function getTupleCount();
 	public function getTuple($tuple);
 }
 
 class ArrayRelation implements RelationModel {
-	protected $attributes = array();
-	protected $cells = array();
+	protected $heading;
+	protected $key;
+	protected $tuples = array();
 	
-	public function __construct($attributes) {
-		$this->attributes = $attributes;
+	public function __construct($heading, $key) {
+		$this->heading = $heading;
+		$this->key = $key;
 	}
 	
-	public function addTuple($tuple) {
-		$this->cells[] = $tuple;
+	public function addTuple($values) {
+		$tuple = array();
+		
+		for ($i = 0; $i < count($this->heading->attributes); $i++)
+			$tuple[$this->heading->attributes[$i]->id] = $values[$i];
+			
+		$this->tuples[] = $tuple;				
 	}
 	
-	public function getAttributes() {
-		return $this->attributes;
+	public function getHeading() {
+		return $this->heading;
+	}
+	
+	public function getKey() {
+		return $this->key;	
 	}
 	
 	public function getTupleCount() {
-		return count($this->cells);
+		return count($this->tuples);
 	}
 	
 	public function getTuple($tuple) {
-		return $this->cells[$tuple];
+		return $this->tuples[$tuple];
 	}
 }
 
@@ -53,7 +75,8 @@ function getQueryAsRelation($sql) {
 	for ($i = 0; $i < $fieldCount; $i++)
 		$attributes[] = new Attribute($dbr->fieldName($queryResult, $i), "Text");
 		
-	$result = new ArrayRelation($attributes);
+	$heading = new Heading($attributes);	
+	$result = new ArrayRelation($heading);
 	
 	while ($row = $dbr->fetchRow($queryResult)) {
 		$tuple = array();
@@ -101,7 +124,7 @@ function getTableCellsAsHTML($attributes, $values) {
 
 function getRelationAsHTML($relationModel) {
 	$result = '<table class="wiki-data-table"><tr>';	
-	$attributes = $relationModel->getAttributes();
+	$attributes = $relationModel->getHeading()->attributes;
 	
 	foreach($attributes as $attribute)
 		$result .= '<th class="'. $attribute->type .'">' . $attribute->name . '</th>';
@@ -116,35 +139,58 @@ function getRelationAsHTML($relationModel) {
 	return $result;
 }
 
-function getInputRowAsHTML($rowId, $attributes, $values, $repeatInput) {
+function getInputRowAsHTML($rowId, $attributes, $values, $repeatInput, $allowRemove) {
 	if ($repeatInput)
 		$rowClass = 'repeat';
 	else 
 		$rowClass = '';
 		
-	$result = '<tr id="'. $rowId. '" class="' . $rowClass . '">' . 
-				getTableCellsAsHTML($attributes, $values);
+	$result = '<tr id="'. $rowId. '" class="' . $rowClass . '">';
+	
+	if ($allowRemove)
+		$result .= '<td/>';
+	
+	$result .= getTableCellsAsHTML($attributes, $values);
 				
 	if ($repeatInput)
-		$result .= '<td/>';
+		$result .= '<td class="add"/>';
 		
 	return $result . '</tr>'; 
 }
 
-function getRelationAsEditHTML($relationModel, $inputRowId, $inputRowFields, $repeatInput) {
+function removeCheckBoxName($tuple, $key, $removeId) {
+	$ids = array();
+	
+	foreach($key->attributes as $attribute)
+		$ids[] = $tuple[$attribute->id];
+	
+	return $removeId . implode("-", $ids);
+}
+
+function getRelationAsEditHTML($relationModel, $inputRowId, $removeId, $inputRowFields, $repeatInput, $allowRemove) {
 	$result = '<table class="wiki-data-table"><tr>';	
-	$attributes = $relationModel->getAttributes();
+	$attributes = $relationModel->getHeading()->attributes;
+	$key = $relationModel->getKey();
+	
+	if ($allowRemove)
+		$result .= '<th class="remove">Remove</th>';
 	
 	foreach($attributes as $attribute)
 		$result .= '<th class="'. $attribute->type .'">' . $attribute->name . '</th>';
 
 	if ($repeatInput)		
-		$result .= '<th>Input rows</th>';
+		$result .= '<th class="add">Input rows</th>';
 		
 	$result .= '</tr>';
 	
-	for($i = 0; $i < $relationModel->getTupleCount(); $i++) {
-		$result .= '<tr>' . getTableCellsAsHTML($attributes, convertValuesToHTML($attributes, $relationModel->getTuple($i)));
+	for ($i = 0; $i < $relationModel->getTupleCount(); $i++) {
+		$result .= '<tr>';
+		$tuple = $relationModel->getTuple($i);
+		
+		if ($allowRemove)
+			$result .= '<td class="remove">' . getCheckBox(removeCheckBoxName($tuple, $key, $removeId), false) . '</td>';
+		
+		$result .= getTableCellsAsHTML($attributes, convertValuesToHTML($attributes, $tuple));
 		
 		if ($repeatInput)
 			$result .= '<td/>';
@@ -152,7 +198,7 @@ function getRelationAsEditHTML($relationModel, $inputRowId, $inputRowFields, $re
 		$result .= '</tr>';
 	}
 	
-	$result .= getInputRowAsHTML($inputRowId, $attributes, $inputRowFields, $repeatInput) . '</table>';
+	$result .= getInputRowAsHTML($inputRowId, $attributes, $inputRowFields, $repeatInput, $allowRemove) . '</table>';
 
 	return $result;
 }

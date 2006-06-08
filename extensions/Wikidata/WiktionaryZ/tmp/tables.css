@@ -43,3 +43,14 @@
 td.language {
 	font-style: italic;
 }
+
+.wiki-data-table td.remove {
+	text-align: center;
+	background-color: #EEEEEE;
+}
+
+.wiki-data-table th.remove, .wiki-data-table th.add {
+	font-weight: normal;
+	padding-left: 4px;
+	padding-right: 4px;
+}

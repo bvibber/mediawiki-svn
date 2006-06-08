@@ -20,6 +20,7 @@ interface PageElement {
 
 interface PageElementController {
 	public function add($values);
+	public function remove($tuple);
 }
 
 class DefaultPageElement implements PageElement {
