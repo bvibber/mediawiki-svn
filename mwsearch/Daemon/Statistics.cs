@@ -53,6 +53,7 @@ namespace MediaWiki.Search.Daemon {
 		
 		/** For Ganglia callouts */
 		public int GangliaPort = 0;
+		public string GangliaInterface = "";
 		
 		object locker = new object();
 		
@@ -162,9 +163,12 @@ namespace MediaWiki.Search.Daemon {
 			string portOverride = "";
 			if (GangliaPort > 0)
 				portOverride = string.Format("--mcast_port {0}", GangliaPort);
+			string ifOverride = "";
+			if (GangliaInterface.Length > 0)
+				ifOverride = string.Format("--mcast_if {0}", GangliaInterface);
 			string command = string.Format(
-					"gmetric --name '{0}' --value={1:F3} --type double --units '{2}' --dmax {3} {4}",
-					name, value, units, maxDelta / 1000L, portOverride);
+					"gmetric --name '{0}' --value={1:F3} --type double --units '{2}' --dmax {3} {4} {5}",
+					name, value, units, maxDelta / 1000L, portOverride, ifOverride);
 			Process.Start(command);
 		}
 	}

@@ -24,6 +24,14 @@ titledb=/usr/local/var/mwsearch/title/{0}
 port=8123
 verbose=true
 
+[Ganglia]
+; Turn this on to broadcast status to a Ganglia reporting system.
+; Requires that 'gmetric' be in the PATH and runnable. You can
+; override the default UDP broadcast port and interface if required.
+;report=true
+;port=8649
+;interface=eth0
+
 [Updater]
 ; Override to have updates made to a separate copy of the index.
 ; This can be useful to do updates independtly from a running
