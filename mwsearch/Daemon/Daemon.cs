@@ -121,7 +121,7 @@ namespace MediaWiki.Search.Daemon {
 				
 				int threadCount = Worker.OpenCount;
 				if (threadCount > maxWorkers) {
-					stats.Add(false, DateTime.UtcNow, 0, threadCount);
+					stats.Add(false, 0, threadCount);
 					log.Error("too many connections, skipping a request");
 				} else {
 					Worker worker = new Worker(client.GetStream(), config);

@@ -358,7 +358,7 @@ namespace MediaWiki.Search.Daemon {
 		
 		void LogRequest(String searchterm, Query query, int numhits, DateTime start) {
 			TimeSpan delta = DateTime.UtcNow - start;
-			Daemon.stats.Add(true, start, delta.Milliseconds, OpenCount);
+			Daemon.stats.Add(true, delta.Milliseconds, OpenCount);
 			log.InfoFormat("{0} {1}: query=[{2}] parsed=[{3}] hit=[{4}] in {5}ms",
 				what, dbname, searchterm, query.ToString(), numhits, delta.Milliseconds);
 		}

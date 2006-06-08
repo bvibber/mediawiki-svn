@@ -74,7 +74,7 @@ namespace MediaWiki.Search.Daemon {
 			return time.Ticks / 10000L;
 		}
 		
-		public void Add(bool status, DateTime time, long delta, int threads) {
+		public void Add(bool status, long delta, int threads) {
 			lock (locker) {
 				end++;
 				if (end == maxItems)
@@ -87,7 +87,7 @@ namespace MediaWiki.Search.Daemon {
 					usedItems++;
 				}
 				handled[end] = status;
-				times[end] = millis(time);
+				times[end] = millis(DateTime.UtcNow);
 				deltas[end] = delta;
 				activeThreads[end] = threads;
 			}
