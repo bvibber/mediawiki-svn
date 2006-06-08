@@ -41,6 +41,9 @@
 $wgLuceneDisableSuggestions = false;
 $wgLuceneDisableTitleMatches = false;
 
+/** Number of seconds to cache query results */
+$wgLuceneCacheExpiry = 60 * 15;
+
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (!defined('MEDIAWIKI')) {
 	die( "This file is part of MediaWiki, it is not a valid entry point\n" );
@@ -648,7 +651,7 @@ class LuceneSearchSet {
 		// Cache results for fifteen minutes; they'll be read again
 		// on reloads and paging.
 		$key = $wgDBname.':lucene:' . md5( $searchPath );
-		$expiry = 60 * 15;
+		
 		$resultSet = $wgMemc->get( $key );
 		if( is_object( $resultSet ) ) {
 			wfDebug( "$fname: got cached lucene results for key $key\n" );
@@ -716,7 +719,8 @@ class LuceneSearchSet {
 		$resultSet = new LuceneSearchSet( $resultLines, $totalHits, $suggestion );
 
 		wfDebug( $fname.": caching lucene results for key $key\n" );
-		$wgMemc->add( $key, $resultSet, $expiry );
+		global $wgLuceneCacheExpiry;
+		$wgMemc->add( $key, $resultSet, $wgLuceneCacheExpiry );
 
 		wfProfileOut( $fname );
 		return $resultSet;
