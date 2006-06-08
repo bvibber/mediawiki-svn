@@ -51,6 +51,9 @@ namespace MediaWiki.Search.Daemon {
 		/** Number of active threads at the time this request hit the wire */
 		int[] activeThreads;
 		
+		/** For Ganglia callouts */
+		public int GangliaPort = 0;
+		
 		object locker = new object();
 		
 		public Statistics(int maxItems, long maxDelta) {
@@ -156,42 +159,13 @@ namespace MediaWiki.Search.Daemon {
 		}
 		
 		private void SendGanglia(string name, double value, string units) {
+			string portOverride = "";
+			if (GangliaPort > 0)
+				portOverride = string.Format("--mcast_port {0}", GangliaPort);
 			string command = string.Format(
-					"gmetric --name '{0}' --value={1:F3} --type double --units '{2}' --dmax {3}",
-					name, value, units, maxDelta / 1000L);
+					"gmetric --name '{0}' --value={1:F3} --type double --units '{2}' --dmax {3} {4}",
+					name, value, units, maxDelta / 1000L, portOverride);
 			Process.Start(command);
 		}
-		
-		/**
-		 * Test/demo method
-		 * @param args
-		 */
-		/*
-		public static void main(String[] args) {
-			// Report data from last 20 seconds, up to 50 items
-			Statistics stats = new Statistics(50, 20000L);
-			Random rand = new Random();
-			
-			while (true) {
-				if (rand.nextBoolean()) {
-					boolean success = (rand.nextDouble() < 0.95);
-					long timestamp = System.currentTimeMillis();
-					long delta = (long)(rand.nextDouble() * 500.0);
-					int threads = 1 + rand.nextInt(3);
-					System.out.printf("bump: %b %d %d %d\n", success, timestamp, delta, threads);
-					stats.add(success, timestamp, delta, threads);
-							
-				}
-				System.out.println(stats.state());
-				System.out.println(stats.summarize());
-				try {
-					Thread.sleep(rand.nextInt(1500));
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		*/
 	}
 }

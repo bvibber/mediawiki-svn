@@ -99,6 +99,9 @@ namespace MediaWiki.Search.Daemon {
 			if (config.GetBoolean("Daemon", "update-ganglia")) {
 				// Run a background thread to push our runtime stats to Ganglia
 				statsThread = new Thread(StatisticsThread);
+				string gangliaPort = config.GetString("Daemon", "ganglia-port");
+				if (gangliaPort != null)
+					stats.GangliaPort = Int32.Parse(gangliaPort);
 				statsThread.Start();
 			}
 			
