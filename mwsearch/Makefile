@@ -132,6 +132,7 @@ DAEMON_SOURCES=\
   Daemon/HttpHandler.cs \
   Daemon/NamespaceFilter.cs \
   Daemon/QueryStringMap.cs \
+  Daemon/Statistics.cs \
   Daemon/Worker.cs
 
 build/MWDaemon.exe : build/MWSearch.dll build/MWPrefix.dll $(DAEMON_SOURCES)

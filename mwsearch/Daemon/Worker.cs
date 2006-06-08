@@ -81,6 +81,10 @@ namespace MediaWiki.Search.Daemon {
 				RobotsTxt();
 				return;
 			}
+			if (uri.AbsolutePath == "/stats") {
+				ShowStats();
+				return;
+			}
 			
 			string[] paths = uri.AbsolutePath.Split( new char[] { '/' }, 4);
 			if (paths.Length != 4) {
@@ -133,6 +137,12 @@ namespace MediaWiki.Search.Daemon {
 			SendOutputLine("Disallow: /");
 		}
 		
+		private void ShowStats() {
+			contentType = "text/plain";
+			SendHeaders(200, "OK");
+			SendOutputLine(Daemon.stats.Summarize());
+		}
+		
 		private void DoNormalSearch(int offset, int limit, NamespaceFilter namespaces) {
 			string encsearchterm = String.Format("title:({0})^4 OR ({1})", searchterm, searchterm);
 			
@@ -167,8 +177,7 @@ namespace MediaWiki.Search.Daemon {
 			SendHeaders(200, "OK");
 						
 			int numhits = hits.Length();
-			TimeSpan delta = DateTime.UtcNow - now;
-			LogRequest(searchterm, query, numhits, delta);
+			LogRequest(searchterm, query, numhits, now);
 			
 			SendOutputLine(numhits.ToString());
 			
@@ -227,8 +236,7 @@ namespace MediaWiki.Search.Daemon {
 				Hits hits = state.Searcher.Search(query);
 				
 				int numhits = hits.Length();
-				TimeSpan delta = DateTime.UtcNow - now;
-				LogRequest(searchterm, query, numhits, delta);
+				LogRequest(searchterm, query, numhits, now);
 				
 				SendHeaders(200, "OK");
 				for (int i = 0; i < numhits && i < 10; i++) {
@@ -249,8 +257,7 @@ namespace MediaWiki.Search.Daemon {
 			Hits hits = state.Searcher.Search(query);
 			
 			int numhits = hits.Length();
-			TimeSpan delta = DateTime.UtcNow - now;
-			LogRequest("(raw)", query, numhits, delta);
+			LogRequest("(raw)", query, numhits, now);
 			
 			SendHeaders(200, "OK");
 			for (int i = 0; i < numhits && i < 10; i++) {
@@ -348,8 +355,10 @@ namespace MediaWiki.Search.Daemon {
 	        // we got the result!
 	        return d[n,m];
 	    }
-	
-		void LogRequest(String searchterm, Query query, int numhits, TimeSpan delta) {
+		
+		void LogRequest(String searchterm, Query query, int numhits, DateTime start) {
+			TimeSpan delta = DateTime.UtcNow - start;
+			Daemon.stats.Add(true, start, delta.Milliseconds, OpenCount);
 			log.InfoFormat("{0} {1}: query=[{2}] parsed=[{3}] hit=[{4}] in {5}ms",
 				what, dbname, searchterm, query.ToString(), numhits, delta.Milliseconds);
 		}

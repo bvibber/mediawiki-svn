@@ -43,6 +43,11 @@ namespace MediaWiki.Search.Daemon {
 		public static TcpListener sock;
 		private static Configuration config;
 		
+		public static Statistics stats;
+		// milliseconds running average & ganglia period
+		private static int statsPeriod = 60000;
+		private static Thread statsThread;
+		
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 		
@@ -89,6 +94,14 @@ namespace MediaWiki.Search.Daemon {
 			log.Fatal("Blah blah fatal");
 			*/
 			
+			// Initialise statistics
+			stats = new Statistics(1000, statsPeriod);
+			if (config.GetBoolean("Daemon", "update-ganglia")) {
+				// Run a background thread to push our runtime stats to Ganglia
+				statsThread = new Thread(StatisticsThread);
+				statsThread.Start();
+			}
+			
 			// go!
 			for (;;) {
 				TcpClient client;
@@ -100,7 +113,9 @@ namespace MediaWiki.Search.Daemon {
 					continue;
 				}
 				
-				if (Worker.OpenCount > maxWorkers) {
+				int threadCount = Worker.OpenCount;
+				if (threadCount > maxWorkers) {
+					stats.Add(false, DateTime.UtcNow, 0, threadCount);
 					log.Error("too many connections, skipping a request");
 				} else {
 					Worker worker = new Worker(client.GetStream(), config);
@@ -134,6 +149,13 @@ namespace MediaWiki.Search.Daemon {
 				pidOut.Write(pid);
 				pidOut.Close();
 				log.InfoFormat("Saved pid {0} to {1}", pid, lockfile);
+			}
+		}
+		
+		static void StatisticsThread() {
+			for(;;) {
+				Thread.Sleep(statsPeriod);
+				stats.UpdateGanglia();
 			}
 		}
 		
