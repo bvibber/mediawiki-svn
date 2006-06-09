@@ -22,7 +22,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionCredits['specialpage'][] = array( 'name' => 'Patrol', 'author' => 'Rob Church' );
 	
 	$wgAvailableRights[] = 'patroller';
-	$wgGroupPermissions['*']['patroller'] = true;
+	$wgGroupPermissions['sysop']['patroller'] = true;
 	
 	function efPatroller() {
 		global $wgMessageCache, $wgHooks;
