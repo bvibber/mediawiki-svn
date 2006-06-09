@@ -43,6 +43,7 @@ namespace MediaWiki.Search.Daemon {
 		public HttpHandler(Stream stream) {
 			istrm = new StreamReader(stream);
 			ostrm = new StreamWriter(stream);
+			ostrm.NewLine = "\r\n";
 		}
 		
 		private static int _openCount = 0;
