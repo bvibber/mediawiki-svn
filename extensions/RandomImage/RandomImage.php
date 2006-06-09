@@ -14,7 +14,7 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efRandomImage';
-	$wgExtensionCredits['parserhook'][] = array( 'name' => 'RandomImage', 'author' => 'Rob Church' );
+	$wgExtensionCredits['parserhook'][] = array( 'name' => 'RandomImage', 'author' => 'Rob Church', 'url' => 'http://meta.wikimedia.org/wiki/RandomImage' );
 	
 	function efRandomImage() {
 		global $wgParser;
