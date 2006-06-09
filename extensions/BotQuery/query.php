@@ -172,6 +172,17 @@ class BotQueryProcessor {
 			"nlnamespaces - limits which namespace to enumerate. Default 0 (Main)",
 			"Example: query.php?what=nolanglinks&nllimit=50",
 			)),
+		'category'       => array( 'genPagesInCategory', true,
+			array( 'cptitle', 'cplimit', 'cpfrom' ),
+			array( null, 200, '' ),
+			array(
+			"Adds pages in a given category to the output list.",
+			"Parameters supported:",
+			"cptitle    - A category name, either with or without the 'Category:' prefix.",
+			"cplimit    - How many total pages (in category) to return.",
+			"cpfrom     - The category sort key to continue paging. Starts at the begining by default.",
+			"Example: query.php?what=category&cptitle=Days",
+			)),
 		'users'          => array( 'genUserPages', true,
 			array( 'usfrom', 'uslimit' ),
 			array( null, 50 ),
@@ -271,6 +282,7 @@ class BotQueryProcessor {
 		$this->totalStartTime = wfTime();
 
 		$this->data = array();
+		
 		$this->pageIdByText = array();	// reverse page ID lookup
 		$this->requestsize = 0;
 		$this->db = $db;
@@ -289,25 +301,32 @@ class BotQueryProcessor {
 		$this->titles = null;
 		$this->pageids = null;
 		$this->normalizedTitles = array();
+
+		// These fields contain ids useful for other generators (redirectPageIds + nonRedirPageIds == existingPageIds)
+		$this->existingPageIds = array();	// all existsing pages
+		$this->redirectPageIds = array();	// all redirect pages
+		$this->nonRedirPageIds = array();	// all regular, non-redirect pages
 	}
 
 	/**
 	* The core function - executes meta generators, populates basic page info, and then fills in the required additional data for all pages
 	*/
 	function execute() {
-	
 		// Process metadata generators
 		$this->callGenerators( true );
-
-		// Query page table and initialize page ids.
-		if( $this->genPageInfo() ) {
-			// Process page-related generators
-			$this->callGenerators( false );
-		}
+		// Process 'titles' and 'pageids' parameters, and any other pages assembled by meta generators
+		$this->genPageInfo();
+		// Process page-related generators
+		$this->callGenerators( false );
 		
-		// Report empty query
-		if( !$this->data ) {
+		// Report empty query - if pages and meta elements have no subelements
+		if( ( !array_key_exists('pages', $this->data) || count($this->data['pages']) === 0 ) &&
+			( !array_key_exists('meta', $this->data) || count($this->data['meta']) === 0 ) ) {
 			$this->dieUsage( 'Nothing to do', 'emptyresult' );
+		}
+		// All items under 'pages' will be presented as 'page' xml elements
+		if( array_key_exists('pages', $this->data) && count($this->data['pages']) > 0 ) {
+			$this->data['pages']['_element'] = 'page';
 		}
 	}
 
@@ -409,213 +428,75 @@ class BotQueryProcessor {
 	* As the result of this method, $this->redirectPageIds and existingPageIds (arrays) will be available for other generators.
 	*/
 	function genPageInfo() {
-		global $wgUser, $wgRequest;
 		$this->startProfiling();
 		$where = array();
-		
-		//
-		// Pages in a category
-		//
-		$categoryName = $wgRequest->getVal('category');
-		if( $categoryName !== null ) {
-			$categoryObj = &Title::newFromText( $categoryName );
-			if(    !$categoryObj ||
-				   ($categoryObj->getNamespace() !== NS_MAIN && $categoryObj->getNamespace() !== NS_CATEGORY) ||
-				   $categoryObj->isExternal() ) {
-				$this->dieUsage( "bad category name $categoryName", 'pi_invalidcategory' );
-			}
-			// TODO: Should we check if the user has the rights to view this category?
-			
-			$conds = array( 'cl_to' => $categoryObj->getDBkey() );
-			$cpfrom = $wgRequest->getVal('cpfrom');
-			if ( $cpfrom != '' ) {
-				$conds[] = 'cl_sortkey >= ' . $this->db->addQuotes($cpfrom);
-			}
-			$cplimit = $wgRequest->getInt( 'cplimit', 200 );
-			$this->validateLimit( 'pi_badcplimit', $cplimit, 500, 5000 );
+				
+		// Assemble a list of titles to process. This method will modify $where and $this->requestsize
+		$nonexistentPages = &$this->parseTitles( $where );
 
+		// Assemble a list of pageids to process. This method will modify $where and $this->requestsize
+		$pageids = &$this->parsePageIds( $where );
+
+		// Have anything to do?
+		if( $this->requestsize > 0 ) {
+			// Validate limits
+			$this->validateLimit( 'pi_botquerytoobig', $this->requestsize, 500, 20000 );
+			
+			// Query page information with the given lists of titles & pageIDs
 			$this->startDbProfiling();
-			$res = $this->db->select( 'categorylinks',
-				array( 'cl_from', 'cl_sortkey' ),
-				$conds,
-				$this->classname . '::genPageInfoCategories',
-				array( 'ORDER BY' => 'cl_sortkey', 'LIMIT' => $cplimit+1 ));
-			$this->endDbProfiling('pageInfoCat');
-			$count = 0;
-			while ( $row = $this->db->fetchObject( $res ) ) {
-				if( ++$count > $cplimit ) {
-					// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-					$this->addStatusMessage( 'category', array('next' => $row->cl_sortkey) );
-					break;
+			$res = $this->db->select( 
+				'page',
+				array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_touched', 'page_latest' ),
+				$this->db->makeList( $where, LIST_OR ),
+				$this->classname . '::genPageInfo' );
+			$this->endDbProfiling('pageInfo');
+			
+			while( $row = $this->db->fetchObject( $res ) ) {
+				$this->storePageInfo( $row );
+				if( $nonexistentPages !== null ) {
+					unset( $nonexistentPages[$row->page_namespace][$row->page_title] );	// Strike out link
 				}
-				$this->addRaw( 'pageids', $row->cl_from );
 			}
 			$this->db->freeResult( $res );
-		}
-		
-		//
-		// List of titles
-		//
-		$titles = $this->addRaw( 'titles', $wgRequest->getVal('titles') );
-		if( $titles !== null ) {
-			$titles = explode( '|', $titles );
-			$linkBatch = new LinkBatch;
-			foreach ( $titles as &$titleString ) {
-				$titleObj = &Title::newFromText( $titleString );
-				if ( !$titleObj ) {
-					$this->dieUsage( "bad title $titleString", 'pi_invalidtitle' );
-				}
-				if ( !$titleObj->userCanRead() ) {
-					$this->dieUsage( "No read permission for $titleString", 'pi_titleaccessdenied' );
-				}
-				$linkBatch->addObj( $titleObj );
-				
-				// Make sure we remember the original title that was given to us
-				// This way the caller can correlate new titles with the originally requested if they change namespaces, etc
-				if( $titleString !== $titleObj->getPrefixedText() ) {
-					$this->normalizedTitles[$titleString] = $titleObj;
-				}
-			}
-			if ( $linkBatch->isEmpty() ) {
-				$this->dieUsage( "no titles could be found", 'pi_novalidtitles' );
-			}
-			// Create a list of pages to query
-			$where[] = $linkBatch->constructSet( 'page', $this->db );
-			$this->requestsize += $linkBatch->getSize();
-			
-			// we don't need the batch any more, data can be destroyed
-			$nonexistentPages = &$linkBatch->data;
-		} else {
-			$nonexistentPages = array();	// empty data to keep unset() happy
-		}
-		//
-		// List of Page IDs
-		//
-		$pageids = $this->addRaw( 'pageids', $wgRequest->getVal('pageids') );
-		if ( $pageids !== null ) {
-			$pageids = explode( '|', $pageids );
-			$pageids = array_map( 'intval', $pageids );
-			$pageids = array_unique($pageids);
-			sort( $pageids, SORT_NUMERIC );
-			if( $pageids[0] <= 0 ) {
-				$this->dieUsage( "pageids contains a bad id", 'pi_badpageid' );
-			}
-			$where['page_id'] = $pageids;
-			$this->requestsize += count($pageids);
-		}
-		
-		// Do we have anything to do?
-		if( $this->requestsize == 0 ) {
-			// Do not end profiling here, as it will introduce an element to the data object, and the usage screen may not be shown.
-			return false;	// Nothing to do for any of the page generators
-		}
-		
-		//
-		// User restrictions
-		//
-		$this->validateLimit( 'pi_botquerytoobig', $this->requestsize, 500, 20000 );
-		
-		//
-		// Make sure that this->data['pages'] is empty
-		//
-		if( array_key_exists('pages', $this->data) ) {
-			die( "internal error - 'pages' should not yet exist" );
-		}
-		$this->data['pages'] = array();
 
-		//
-		// Query page information with the given lists of titles & pageIDs
-		//
-		$this->redirectPageIds = array();
-		$this->startDbProfiling();
-		$res = $this->db->select( 'page',
-			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_touched', 'page_latest' ),
-			$this->db->makeList( $where, LIST_OR ),
-			$this->classname . '::genPageInfo' );
-		$this->endDbProfiling('pageInfo');
-		while( $row = $this->db->fetchObject( $res ) ) {
-			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
-			if ( !$title->userCanRead() ) {
-				$this->db->freeResult( $res );
-				$this->dieUsage( "No read permission for $titleString", 'pi_pageidaccessdenied' );
-			}
-			$data = &$this->data['pages'][$row->page_id];
-			$this->pageIdByText[$title->getPrefixedText()] = $row->page_id;
-			$data['_obj']    = $title;
-			$data['ns']      = $title->getNamespace();
-			$data['title']   = $title->getPrefixedText();
-			$data['id']      = $row->page_id;
-			$data['touched'] = $row->page_touched;
-			$data['revid']   = $row->page_latest;
-			if ( $row->page_is_redirect ) {
-				$data['redirect'] = '';
-				$this->redirectPageIds[] = $row->page_id;
+			// Create records for non-existent page IDs
+			if( $pageids !== null ) {
+				foreach( array_diff_key($pageids, $this->existingPageIds) as $pageid ) {
+					$data = &$this->data['pages'][$pageid];
+					$data['id'] = 0;
+					$data['badId'] = $pageid;
+				}
 			}
 			
-			// Strike out link
-			unset( $nonexistentPages[$row->page_namespace][$row->page_title] );
-		}
-		$this->db->freeResult( $res );
-		
-		//
-		// At this point we assume that this->data['pages'] contains ONLY valid existing entries.
-		// Create lists that can later be used to filter other tables by page Id or other useful query strings
-		//
-		$this->existingPageIds = array_keys( $this->data['pages'] );
-		$this->nonRedirPageIds = array_diff($this->existingPageIds, $this->redirectPageIds);
-		
-		//
-		// Create records for non-existent page IDs
-		//
-		if( $pageids !== null ) {
-			foreach( array_diff_key($pageids, $this->existingPageIds) as $pageid ) {
-				$data = &$this->data['pages'][$pageid];
-				$data['id'] = 0;
-				$data['bad_id'] = $pageid;
-			}
-		}
-		
-		$this->data['pages']['_element'] = 'page';
-
-		//
-		// Add entries for non-existent page titles
-		//
-		$i = -1;
-		foreach( $nonexistentPages as $namespace => &$stuff ) {
-			foreach( $stuff as $dbk => &$arbitrary ) {
-				$title = Title::makeTitle( $namespace, $dbk );
-				// Must do this check even for non-existent pages, as some generators can give related information
-				if ( !$title->userCanRead() ) {
-					$this->dieUsage( "No read permission for $titleString", 'pi_nopageaccessdenied' );
+			// Add entries for non-existent page titles
+			$i = -1;
+			if( $nonexistentPages !== null ) {
+				foreach( $nonexistentPages as $namespace => &$stuff ) {
+					foreach( $stuff as $dbk => &$arbitrary ) {
+						$title = Title::makeTitle( $namespace, $dbk );
+						// Must do this check even for non-existent pages, as some generators can give related information
+						if ( !$title->userCanRead() ) {
+							$this->dieUsage( "No read permission for $titleString", 'pi_nopageaccessdenied' );
+						}
+						$data = &$this->data['pages'][$i];
+						$this->pageIdByText[$title->getPrefixedText()] = $i;
+						$data['_obj']    = $title;
+						$data['title']   = $title->getPrefixedText();
+						$data['ns']      = $title->getNamespace();
+						$data['id']      = 0;
+						$i--;
+					}
 				}
-				$data = &$this->data['pages'][$i];
-				$this->pageIdByText[$title->getPrefixedText()] = $i;
-				$data['_obj']    = $title;
-				$data['title']   = $title->getPrefixedText();
-				$data['ns']      = $title->getNamespace();
-				$data['id']      = 0;
-				$i--;
 			}
-		}
-		
-		//
-		// Mark redirects as such. More information can be given with  'redirects' property
-		//
-		foreach( $this->redirectPageIds as $pageid ) {
-			$this->data['pages'][$pageid]['redirect'] = '';
-		}
 
-		//
-		// When normalized title differs from what was given, append the given title(s)
-		//
-		foreach( $this->normalizedTitles as $givenTitle => &$title ) {
-			$pageId = $this->pageIdByText[$title->getPrefixedText()];
-			$data = &$this->data['pages'][$pageId]['rawTitles'];
-			$data['_element'] = 'title';
-			$data[] = $givenTitle;
+			// When normalized title differs from what was given, append the given title(s)
+			foreach( $this->normalizedTitles as $givenTitle => &$title ) {
+				$data = &$this->data['pages'][$i--];
+				$data['title'] = $givenTitle;
+				$data['normalizedTitle'] = $title->getPrefixedText();
+			}
 		}
 		$this->endProfiling('pageInfo');
-		return true; // success
 	}
 
 	
@@ -640,7 +521,7 @@ class BotQueryProcessor {
 		$meta['case']     = $wgCapitalLinks ? 'first-letter' : 'case-sensitive'; // "case-insensitive" option is reserved for future
 
 		$this->data['meta']['site'] = $meta;
-		$this->endProfiling($prop);
+		$this->endProfiling( $prop );
 	}
 
 	/**
@@ -655,7 +536,7 @@ class BotQueryProcessor {
 			$meta[$ns] = array( "id"=>$ns, "*" => $title );
 		}
 		$this->data['meta']['namespaces'] = $meta;
-		$this->endProfiling($prop);
+		$this->endProfiling( $prop );
 	}
 
 	/**
@@ -679,7 +560,7 @@ class BotQueryProcessor {
 		}
 
 		$this->data['meta']['user'] = $meta;
-		$this->endProfiling($prop);
+		$this->endProfiling( $prop );
 	}
 
 	/**
@@ -731,14 +612,14 @@ class BotQueryProcessor {
 			$this->classname . '::genMetaRecentChanges',
 			$options
 			);
-		$this->endDbProfiling($prop);
+		$this->endDbProfiling( $prop );
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			if( $row->rc_cur_id != 0 ) {
 				$this->addRaw( 'pageids', $row->rc_cur_id );
 			}
 		}
 		$this->db->freeResult( $res );
-		$this->endProfiling($prop);
+		$this->endProfiling( $prop );
 	}
 	
 	/**
@@ -759,7 +640,7 @@ class BotQueryProcessor {
 			$this->classname . '::genUserPages',
 			array( 'ORDER BY' => 'user_name', 'LIMIT' => $uslimit )
 			);
-		$this->endDbProfiling($prop);
+		$this->endDbProfiling( $prop );
 		
 		$userNS = $wgContLang->getNsText(NS_USER);
 		if( !$userNS ) $userNS = 'User';
@@ -769,7 +650,7 @@ class BotQueryProcessor {
 			$this->addRaw( 'titles', $userNS . $row->user_name );
 		}
 		$this->db->freeResult( $res );
-		$this->endProfiling($prop);
+		$this->endProfiling( $prop );
 	}
 
 	/**
@@ -782,7 +663,6 @@ class BotQueryProcessor {
 		global $wgContLang;
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
-
 		$this->validateLimit( 'aplimit', $aplimit, 50, 1000 );
 
 		$ns = $wgContLang->getNsText($apnamespace);
@@ -795,11 +675,11 @@ class BotQueryProcessor {
 		$this->startDbProfiling();
 		$res = $this->db->select(
 			'page',
-			'page_title',
+			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_touched', 'page_latest' ),
 			array( 'page_namespace' => intval($apnamespace), 'page_title>=' . $this->db->addQuotes($apfrom) ),
 			$this->classname . '::genMetaAllPages',
 			array( 'USE INDEX' => 'name_title', 'LIMIT' => $aplimit+1, 'ORDER BY' => 'page_namespace, page_title' ));
-		$this->endDbProfiling($prop);
+		$this->endDbProfiling( $prop );
 
 		// Add found page ids to the list of requested titles - they will be auto-populated later
 		$count = 0;
@@ -809,19 +689,16 @@ class BotQueryProcessor {
 				$this->addStatusMessage( $prop, array('next' => $row->page_title) );
 				break;
 			}
-			$this->addRaw( 'titles', $ns . $row->page_title );
+			$this->storePageInfo( $row );
 		}
 		$this->db->freeResult( $res );
-		$this->endProfiling($prop);
+		$this->endProfiling( $prop );
 	}
 
 	/**
 	* Add pages by the namespace without language links to the output
 	*/
 	function genMetaNoLangLinksPages(&$prop, &$genInfo) {
-		//
-		// TODO: This is very inefficient - we can get the actual page information, instead we make two identical query.
-		//
 		global $wgContLang;
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
@@ -832,7 +709,7 @@ class BotQueryProcessor {
 		// Find all pages without any rows in the langlinks table
 		//
 		$sql = 'SELECT'
-			. ' page_id, page_title'
+			. ' page_id, page_namespace, page_title, page_is_redirect, page_touched, page_latest'
 			. " FROM $page LEFT JOIN $langlinks ON page_id = ll_from"
 			. ' WHERE'
 			. ' ll_from IS NULL AND page_namespace=' . intval($nlnamespace) . ' AND page_title>=' . $this->db->addQuotes($nlfrom)
@@ -841,7 +718,7 @@ class BotQueryProcessor {
 
 		$this->startDbProfiling();
 		$res = $this->db->query( $sql, $this->classname . '::genMetaNoLangLinksPages' );
-		$this->endDbProfiling($prop);
+		$this->endDbProfiling( $prop );
 
 		// Add found page ids to the list of requested titles - they will be auto-populated later
 		$count = 0;
@@ -851,12 +728,56 @@ class BotQueryProcessor {
 				$this->addStatusMessage( $prop, array('next' => $row->page_title) );
 				break;
 			}
-			$this->addRaw( 'pageids', $row->page_id );
+			$this->storePageInfo( $row );
 		}
 		$this->db->freeResult( $res );
-		$this->endProfiling($prop);
+		$this->endProfiling( $prop );
 	}
 	
+	/**
+	* Add pages in a category
+	*/
+	function genPagesInCategory(&$prop, &$genInfo) {
+		$this->startProfiling();
+		extract( $this->getParams( $prop, $genInfo ));
+
+		// Validate parameters
+		if( $cptitle === null ) {
+			$this->dieUsage( "Missing category title parameter cptitle", 'cp_missingcptitle' );
+		}	
+		$categoryObj = &Title::newFromText( $cptitle );
+		if(    !$categoryObj ||
+			   ($categoryObj->getNamespace() !== NS_MAIN && $categoryObj->getNamespace() !== NS_CATEGORY) ||
+			   $categoryObj->isExternal() ) {
+			$this->dieUsage( "bad category name $cptitle", 'cp_invalidcategory' );
+		}
+		$conds = array( 'cl_to' => $categoryObj->getDBkey() );
+		if ( $cpfrom != '' ) {
+			$conds[] = 'cl_sortkey >= ' . $this->db->addQuotes($cpfrom);
+		}
+		$this->validateLimit( 'cplimit', $cplimit, 500, 5000 );
+		
+		$this->startDbProfiling();
+		$res = $this->db->select(
+			'categorylinks',
+			array( 'cl_from', 'cl_sortkey' ),
+			$conds,
+			$this->classname . '::genPagesInCategory',
+			array( 'ORDER BY' => 'cl_sortkey', 'LIMIT' => $cplimit+1 ));
+		$this->endDbProfiling( $prop );
+		
+		$count = 0;
+		while ( $row = $this->db->fetchObject( $res ) ) {
+			if( ++$count > $cplimit ) {
+				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
+				$this->addStatusMessage( 'category', array('next' => $row->cl_sortkey) );
+				break;
+			}
+			$this->addRaw( 'pageids', $row->cl_from );
+		}
+		$this->db->freeResult( $res );
+		$this->endProfiling( $prop );
+	}
 	
 	//
 	// ************************************* PAGE INFO GENERATORS *************************************
@@ -905,7 +826,8 @@ class BotQueryProcessor {
 
 		$this->startDbProfiling();
 		$res = $this->db->query( $sql, $this->classname . '::genRedirectInfo' );
-		$this->endDbProfiling('redirects');
+		$this->endDbProfiling( $prop );
+		
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			$this->addPageSubElement( $row->a_id, 'redirect', 'to', $this->getLinkInfo( $row->b_namespace, $row->b_title, $row->b_id, $row->b_is_redirect ), false);
 			if( $row->b_is_redirect ) {
@@ -913,7 +835,7 @@ class BotQueryProcessor {
 			}
 		}
 		$this->db->freeResult( $res );
-		$this->endProfiling($prop);
+		$this->endProfiling( $prop );
 	}
 
 	var $genPageLinksSettings = array(	// database column name prefix, output element name
@@ -939,7 +861,7 @@ class BotQueryProcessor {
 					"{$prefix}_title to_title" ),
 			array( "{$prefix}_from" => $this->nonRedirPageIds ),
 			$this->classname . "::genPageLinks_{$code}" );
-		$this->endDbProfiling($prop);
+		$this->endDbProfiling( $prop );
 
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			if( $langlinks ) {
@@ -950,7 +872,7 @@ class BotQueryProcessor {
 			$this->addPageSubElement( $row->from_id, $prop, $code, $values);
 		}
 		$this->db->freeResult( $res );
-		$this->endProfiling($prop);
+		$this->endProfiling( $prop );
 	}
 	
 	var $genPageBackLinksSettings = array(	// database column name prefix, output element name
@@ -1079,7 +1001,7 @@ class BotQueryProcessor {
 			$where,
 			$this->classname . "::genPageBackLinks_{$code}",
 			$options );
-		$this->endDbProfiling($prop);
+		$this->endDbProfiling( $prop );
 
 		$count = 0;
 		while ( $row = $this->db->fetchObject( $res ) ) {
@@ -1094,7 +1016,7 @@ class BotQueryProcessor {
 			$this->addPageSubElement( $pageId, $prop, $code, $values );
 		}
 		$this->db->freeResult( $res );
-		$this->endProfiling($prop);
+		$this->endProfiling( $prop );
 	}
 	
 	/**
@@ -1173,8 +1095,8 @@ class BotQueryProcessor {
 			}
 			$this->db->freeResult( $res );
 		}
-		$this->endDbProfiling($prop);
-		$this->endProfiling($prop);
+		$this->endDbProfiling( $prop );
+		$this->endProfiling( $prop );
 	}
 
 	/**
@@ -1207,13 +1129,100 @@ class BotQueryProcessor {
 			$this->addPageSubElement( $row->rev_page, $prop, '*', Revision::getRevisionText( $row ), false);
 		}
 		$this->db->freeResult( $res );
-		$this->endDbProfiling($prop);	// Revision::getRevisionText is also a database call, so we include them in this scope
-		$this->endProfiling($prop);
+		$this->endDbProfiling( $prop );	// Revision::getRevisionText is also a database call, so include it in this scope
+		$this->endProfiling( $prop );
 	}
 
 	//
 	// ************************************* UTILITIES *************************************
 	//
+	
+	/**
+	* Take $row with fields from 'page' table and create needed page entries in $this->data
+	*/
+	function storePageInfo( &$row ) {
+		$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+		if ( !$title->userCanRead() ) {
+			$this->db->freeResult( $res );
+			$this->dieUsage( "No read permission for $titleString", 'pi_pageidaccessdenied' );
+		}
+		$pageid = $row->page_id;
+		$data = &$this->data['pages'][$pageid];
+		$this->pageIdByText[$title->getPrefixedText()] = $pageid;
+		$data['_obj']    = $title;
+		$data['ns']      = $title->getNamespace();
+		$data['title']   = $title->getPrefixedText();
+		$data['id']      = $pageid;
+		$data['touched'] = $row->page_touched;
+		$data['revid']   = $row->page_latest;
+		
+		$this->existingPageIds[] = $pageid;
+		if ( $row->page_is_redirect ) {
+			$data['redirect'] = '';
+			$this->redirectPageIds[] = $pageid;
+		} else {
+			$this->nonRedirPageIds[] = $pageid;
+		}
+	}
+
+	/**
+	* Process the list of given titles, update $where and $this->requestsize, and return the data of the LinkBatch object
+	*/
+	function parseTitles( &$where ) {
+		global $wgRequest;
+		$titles = $this->addRaw( 'titles', $wgRequest->getVal('titles') );
+		if( $titles !== null ) {
+			$titles = explode( '|', $titles );
+			$linkBatch = new LinkBatch;
+			foreach ( $titles as &$titleString ) {
+				$titleObj = &Title::newFromText( $titleString );
+				if ( !$titleObj ) {
+					$this->dieUsage( "bad title $titleString", 'pi_invalidtitle' );
+				}
+				if ( !$titleObj->userCanRead() ) {
+					$this->dieUsage( "No read permission for $titleString", 'pi_titleaccessdenied' );
+				}
+				$linkBatch->addObj( $titleObj );
+				
+				// Make sure we remember the original title that was given to us
+				// This way the caller can correlate new titles with the originally requested if they change namespaces, etc
+				if( $titleString !== $titleObj->getPrefixedText() ) {
+					$this->normalizedTitles[$titleString] = $titleObj;
+				}
+			}
+			if ( $linkBatch->isEmpty() ) {
+				$this->dieUsage( "no valid titles were given", 'pi_novalidtitles' );
+			}
+			// Create a list of pages to query
+			$where[] = $linkBatch->constructSet( 'page', $this->db );
+			$this->requestsize += $linkBatch->getSize();
+			
+			// we don't need the batch any more, data can be destroyed
+			return $linkBatch->data;
+		} else {
+			return null;
+		}
+	}
+	
+	/**
+	* Process the list of given titles, update $where and $this->requestsize, and return the data of the LinkBatch object
+	*/
+	function parsePageIds( &$where ) {
+		global $wgRequest;
+		$pageids = $this->addRaw( 'pageids', $wgRequest->getVal('pageids') );
+		if ( $pageids !== null ) {
+			$pageids = explode( '|', $pageids );
+			$pageids = array_map( 'intval', $pageids );
+			$pageids = array_unique($pageids);
+			sort( $pageids, SORT_NUMERIC );
+			if( $pageids[0] <= 0 ) {
+				$this->dieUsage( "'pageids' contains a bad id", 'pi_badpageid' );
+			}
+			$where['page_id'] = $pageids;
+			$this->requestsize += count($pageids);
+		}
+		return $pageids;
+	}
 	
 	/**
 	* From two parameter arrays, makes an array of the values provided by the user.
@@ -1410,10 +1419,6 @@ class BotQueryProcessor {
 				"    what       - What information the server should return. See properties section.",
 				"    titles     - A list of titles, separated by the pipe '|' symbol.",
 				"    pageids    - A list of page ids, separated by the pipe '|' symbol.",
-				"    category   - A category name, either with or without the 'Category:' prefix.",
-				"                 When present, all pages in the given category will be included in the output.",
-				"    cplimit    - How many total pages (in category) to return",
-				"    cpfrom     - The category sort key to continue paging. Starts at the begining by default",
 				"    noprofile  - When present, each sql query execution time will be hidden. (not implemented)",
 				"",
 				"*Examples*",
@@ -1422,9 +1427,6 @@ class BotQueryProcessor {
 				"",
 				"    query.php?format=xml&what=revisions&titles=Main_Page&rvlimit=100&rvstart=20060401000000&rvcomments",
 				"  Get a list of 100 last revisions of the main page with comments, but only if it happened after midnight April 1st 2006",
-				"",
-				"    query.php?format=xml&category=Days",
-				"  Get a list of pages that belong to the category Days",
 				"",
 				"",
 				"*Supported Formats*",
@@ -1438,11 +1440,11 @@ class BotQueryProcessor {
 				"",
 				"*Credits*",
 				"  This feature is maintained by Yuri Astrakhan (FirstnameLastname@gmail.com)",
-				"  You can also leave your comments and suggestions at http://en.wikipedia.org/wiki/User_talk:Yurik",
+				"  Please leave your comments and suggestions at http://en.wikipedia.org/wiki/User_talk:Yurik",
 				"",
 				"  This extension came as the result of IRC discussion between Yuri Astrakhan (en:Yurik), Tim Starling (en:Tim Starling), and Daniel Kinzler(de:Duesentrieb)",
-				"  The extension was first implemented by Tim to provide interlanguage links and history.",
-				"  It was later completelly rewritten by Yuri to allow for modular properties, meta information, and various formatting options.",
+				"  The extension was first implemented by Tim to provide interlanguage links and history summary.",
+				"  It was later completelly rewritten by Yuri, introducing the rest of properties, meta information, and various formatting options.",
 				"",
 				"*User Status*",
 				"  You are " . ($wgUser->isAnon() ? "an anonymous" : "a logged-in") . " " . ($wgUser->isBot() ? "bot" : "user") . " " . $wgUser->getName(),
@@ -1552,7 +1554,6 @@ class BotQueryProcessor {
 * Prints data in html format. Escapes all unsafe characters. Adds an HTML warning in the begining.
 */
 function printHTML( &$data ) {
-	global $wgRequest;
 ?>
 <html>
 <head>
