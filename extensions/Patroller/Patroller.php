@@ -61,20 +61,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 					# Attempt to assign it
 					if( $this->assignChange( $edit ) ) {
 						$haveEdit = true;
-						# Show a stub changes list giving all the usual tools links
-						# For the purposes of formatting, pretend that the change is patrolled		
-						$edit->counter = 1;
-						$edit->mAttribs['rc_patrolled'] = 1;
-						$list = ChangesList::newFromUser( $wgUser );
-						$html = $list->beginRecentChangesList();
-						$html .= $list->recentChangesLine( $edit );
-						$html .= $list->endRecentChangesList();
-						$wgOut->addHtml( $html );
-						# Now produce a diff. and show that
-						$title = $edit->getTitle();
-						$diff = new DifferenceEngine( $title, $edit->mAttribs['rc_last_oldid'], $edit->mAttribs['rc_this_oldid'] );
+						$this->showDiffDetails( $edit );
 						$wgOut->addHtml( '<br /><hr />' );
-						$diff->showDiff( '', '' );
+						$this->showDiff( $edit );
+						#$wgOut->addHtml( '<br /><hr />' );
+						$this->showControls( $edit );
 					}
 				} else {
 					# Can't find a suitable edit
@@ -83,6 +74,34 @@ if( defined( 'MEDIAWIKI' ) ) {
 				}
 			}
 			
+		}
+		
+		/**
+		 * Produce a stub recent changes listing for a single diff.
+		 *
+		 * @param $edit Diff. to show the listing for
+		 */
+		function showDiffDetails( &$edit ) {
+			global $wgUser, $wgOut;
+			$edit->counter = 1;
+			$edit->mAttribs['rc_patrolled'] = 1;
+			$list = ChangesList::newFromUser( $wgUser );
+			$wgOut->addHtml( $list->beginRecentChangesList() .
+							 $list->recentChangesLine( $edit ) .
+							 $list->endRecentChangesList() );
+		}
+		
+		/**
+		 * Produce a diff. of a specific change
+		 *
+		 * @param $edit Recent change to produce a diff. for
+		 */
+		function showDiff( &$edit ) {
+			$diff = new DifferenceEngine( $edit->getTitle(), $edit->mAttribs['rc_last_oldid'], $edit->mAttribs['rc_this_oldid'] );
+			$diff->showDiff( '', '' );
+		}
+		
+		function showControls( &$edit ) {
 		}
 		
 		/**
