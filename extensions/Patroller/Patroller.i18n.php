@@ -22,6 +22,7 @@ function efPatrollerAddMessages( &$cache ) {
 					'patrol-endorsed-ok' => 'The edit was marked patrolled.',
 					'patrol-reverted-ok' => 'The edit was reverted.',
 					'patrol-skipped-ok' => 'Ignoring edit.',
+					'patrol-reasons' => "* Simple vandalism\n* Newbie test\n* See talk page",
 				);
 	$cache->addMessages( $messages );
 }

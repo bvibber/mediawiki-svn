@@ -133,7 +133,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$form .= '<td>' . wfSubmitButton( wfMsg( 'patrol-skip' ), array( 'name' => 'wpPatrolSkip' ) ) . '</td>';
 			$form .= wfHidden( 'wpRcId', $edit->mAttribs['rc_id'] );
 			$form .= wfHidden( 'wpToken', $wgUser->editToken() );
-			$form .= '</tr></table>';
+			$form .= '</tr></table></form>';
 			$wgOut->addHtml( $form );
 		}
 		
@@ -221,6 +221,28 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$dbw->commit();
 			# Mark the edit patrolled so it doesn't bother us again
 			RecentChange::markPatrolled( $edit->mAttribs['rc_id'] );
+		}
+		
+		function revertReasonsDropdown() {
+			$msg = wfMsgForContent( 'patrol-revert-reasons' );
+			if( $msg == '-' || $msg == '&lt;patrol-revert-reasons&gt;' ) {
+				return '';
+			} else {
+				$reasons = array();
+				$lines = explode( "\n", $msg );
+				foreach( $lines as $line ) {
+					if( substr( $line, 0, 1 ) == '*' )
+						$reasons[] = trim( $line, '* ' );
+				}
+				if( count( $reasons ) > 0 ) {
+					$box = wfOpenElement( 'select', array( 'name' => 'wpPatrolRevertReasonCommon' ) );
+					foreach( $reasons as $reason )
+						$box .= wfElement( 'option', array( 'value' => $reason ), $reason );
+					$box .= wfCloseElement( 'select' );
+				} else {
+					return '';
+				}
+			}
 		}
 		
 	}
