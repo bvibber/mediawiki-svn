@@ -52,6 +52,24 @@ if( defined( 'MEDIAWIKI' ) ) {
 				$wgOut->permissionRequired( 'patroller' );
 				return;
 			}
+			
+			# See if something needs to be done
+			if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'wpToken' ) ) ) {
+				if( $rcid = $wgRequest->getIntOrNull( 'wpRcId' ) ) {
+					if( $wgRequest->getCheck( 'wpPatrolEndorse' ) ) {
+						# Mark the change patrolled
+						RecentChange::markPatrolled( $rcid );
+						wfDebugLog( 'patroller', 'Endorsed ' . $rcid );
+					} elseif( $wgRequest->getCheck( 'wpPatrolRevert' ) ) {
+						# Revert the change
+						$edit = $this->loadChange( $rcid );
+						$this->revert( $edit, $wgRequest->getText( 'wpPatrolRevertReason', '' ) );
+						wfDebugLog( 'patroller', 'Reverted ' . $rcid );
+					} elseif( $wgRequest->getCheck( 'wpPatrolSkip' ) ) {
+						# Do bugger all, for now
+					}
+				}
+			}
 
 			# Pop an edit off recentchanges
 			$haveEdit = false;
@@ -102,7 +120,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 		
 		function showControls( &$edit ) {
-			global $wgOut;
+			global $wgUser, $wgOut;
 			$self = Title::makeTitle( NS_SPECIAL, 'Patrol' );
 			$form = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
 			$form .= '<table><tr>';
@@ -111,6 +129,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$form .= '&nbsp;' . wfInputLabel( wfMsg( 'patrol-revert-reason' ), 'wpPatrolRevertReason', 'reason' ) . '</td><td></td>';
 			$form .= '<td>' . wfSubmitButton( wfMsg( 'patrol-skip' ), array( 'name' => 'wpPatrolSkip' ) ) . '</td>';
 			$form .= wfHidden( 'wpRcId', $edit->mAttribs['rc_id'] );
+			$form .= wfHidden( 'wpToken', $wgUser->editToken() );
 			$form .= '</tr></table>';
 			$wgOut->addHtml( $form );
 		}
@@ -140,6 +159,17 @@ if( defined( 'MEDIAWIKI' ) ) {
 			}
 		}
 		
+		function loadChange( $rcid ) {
+			$dbr =& wfGetDB( DB_SLAVE );
+			$res = $dbr->select( 'recentchanges', '*', array( 'rc_id' => $rcid ), 'Patroller::loadChange' );
+			if( $dbr->numRows( $res ) > 0 ) {
+				$row = $dbr->fetchObject( $res );
+				return RecentChange::newFromRow( $row );
+			} else {
+				return false;
+			}
+		}
+		
 		/**
 		 * Assign the patrolling of a particular change, so
 		 * other users don't pull it up, duplicating effort
@@ -154,6 +184,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 			return (bool)$dbw->affectedRows();
 		}
 		
+		function unassignChange( $rcid ) {
+			$dbw =& wfGetDB( DB_MASTER );
+			$dbw->delete( 'patrollers', array( 'ptr_change' => $rcid ), 'Patroller::unassignChange' );		
+		}
+
 		/**
 		 * Prune old assignments from the table so edits aren't
 		 * hidden forever because a user wandered off, and to
@@ -163,7 +198,28 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$dbw =& wfGetDB( DB_MASTER );
 			$dbw->delete( 'patrollers', array( 'ptr_timestamp < ' . $dbw->timestamp( time() - 120 ) ), 'Patroller::pruneAssignments' );
 		}
-				
+		
+		function revert( &$edit, $comment = '' ) {
+			global $wgOut;
+			$dbw =& wfGetDB( DB_MASTER );
+			$dbw->begin();
+			$title = $edit->getTitle();
+			# Prepare the comment
+			$comment = wfMsgForContent( 'patrol-reverting' ) . ( $comment ? ' (' . $comment . ')' : '' );
+			# Find the old revision
+			$old = $edit->mAttribs['rc_last_oldid'];
+			$oldRev = Revision::newFromId( $old );
+			wfDebugLog( 'patroller', "Reverting " . $title->getPrefixedText() . " to r" . $oldRev->getId() );
+			# Revert the edit; mark the reversion with a bot flag
+			$article = new Article( $title );
+			$article->updateArticle( $oldRev->getText(), $comment, 1, $title->userIsWatching(), 1 );
+			$wgOut->mRedirect = ''; # HACK: Someone needs to fix Article::updateArticle
+			Article::onArticleEdit( $title );
+			$dbw->commit();
+			# Mark the edit patrolled so it doesn't bother us again
+			RecentChange::markPatrolled( $edit->mAttribs['rc_id'] );
+		}
+		
 	}
 
 } else {
