@@ -302,7 +302,8 @@ class BotQueryProcessor {
 	/**
 	* Object Constructor, uses a database connection as a parameter
 	*/
-	function BotQueryProcessor( $db ) {
+	function BotQueryProcessor( $db )
+	{
 		global $wgRequest, $wgUser;
 
 		$this->totalStartTime = wfTime();
@@ -339,7 +340,8 @@ class BotQueryProcessor {
 	/**
 	* The core function - executes meta generators, populates basic page info, and then fills in the required additional data for all pages
 	*/
-	function execute() {
+	function execute()
+	{
 		// Process metadata generators
 		$this->callGenerators( true );
 		// Process 'titles' and 'pageids' parameters, and any other pages assembled by meta generators
@@ -361,7 +363,8 @@ class BotQueryProcessor {
 	/**
 	* Helper method to call generators (either meta or non-meta)
 	*/
-	function callGenerators( $callMetaGenerators ) {
+	function callGenerators( $callMetaGenerators )
+	{
 		foreach( $this->propGenerators as $property => &$generator ) {
 			if( $generator[GEN_ISMETA] === $callMetaGenerators && in_array( $property, $this->properties )) {
 				$this->{$generator[GEN_FUNCTION]}($property, $generator);
@@ -372,7 +375,8 @@ class BotQueryProcessor {
 	/**
 	* Output the result to the user
 	*/
-	function output($isError = false) {
+	function output($isError = false)
+	{
 		global $wgRequest, $wgUser;
 
 		$this->recordProfiling( 'total', 'time', $this->totalStartTime );
@@ -420,7 +424,8 @@ class BotQueryProcessor {
 	//
 	// ************************************* INPUT PARSERS *************************************
 	//
-	function parseFormat( $format ) {
+	function parseFormat( $format )
+	{
 		if( array_key_exists($format, $this->outputGenerators) ) {
 			return $format;
 		} else {
@@ -431,7 +436,8 @@ class BotQueryProcessor {
 	/**
 	* Return an array of values that were given in a "a|b|c" notation, after it validates them against the list allowed values.
 	*/
-	function parseMultiValue( $valueName, $allowedValues ) {
+	function parseMultiValue( $valueName, $allowedValues )
+	{
 		global $wgRequest;
 
 		$values = $wgRequest->getVal($valueName, $allowedValues[0]);		
@@ -455,7 +461,8 @@ class BotQueryProcessor {
 	* Creates lists of pages to work on. User parameters 'titles' and 'pageids' will be added to the list, and information from page table will be provided.
 	* As the result of this method, $this->redirectPageIds and existingPageIds (arrays) will be available for other generators.
 	*/
-	function genPageInfo() {
+	function genPageInfo()
+	{
 		$this->startProfiling();
 		$where = array();
 				
@@ -536,7 +543,8 @@ class BotQueryProcessor {
 	/**
 	* Get general site information
 	*/
-	function genMetaSiteInfo(&$prop, &$genInfo) {
+	function genMetaSiteInfo(&$prop, &$genInfo)
+	{
 		global $wgSitename, $wgVersion, $wgCapitalLinks;
 		$this->startProfiling();
 		$meta = array();
@@ -555,7 +563,8 @@ class BotQueryProcessor {
 	/**
 	* Get the list of localized namespaces
 	*/
-	function genMetaNamespaceInfo(&$prop, &$genInfo) {
+	function genMetaNamespaceInfo(&$prop, &$genInfo)
+	{
 		global $wgContLang;
 		$this->startProfiling();
 		$meta = array();
@@ -570,7 +579,8 @@ class BotQueryProcessor {
 	/**
 	* Get current user's status information
 	*/
-	function genMetaUserInfo(&$prop, &$genInfo) {
+	function genMetaUserInfo(&$prop, &$genInfo)
+	{
 		global $wgUser;
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));		
@@ -594,7 +604,8 @@ class BotQueryProcessor {
 	/**
 	* Add pagids of the most recently modified pages to the output
 	*/
-	function genMetaRecentChanges(&$prop, &$genInfo) {
+	function genMetaRecentChanges(&$prop, &$genInfo)
+	{
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));		
 		# It makes no sense to hide both anons and logged-in users
@@ -653,7 +664,8 @@ class BotQueryProcessor {
 	/**
 	* Add user pages to the list of titles to output (the actual user pages might not exist)
 	*/
-	function genUserPages(&$prop, &$genInfo) {
+	function genUserPages(&$prop, &$genInfo)
+	{
 		global $wgContLang;
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
@@ -684,7 +696,8 @@ class BotQueryProcessor {
 	/**
 	* Add all pages by a given namespace to the output
 	*/
-	function genMetaAllPages(&$prop, &$genInfo) {
+	function genMetaAllPages(&$prop, &$genInfo)
+	{
 		//
 		// TODO: This is very inefficient - we can get the actual page information, instead we make two identical query.
 		//
@@ -726,7 +739,8 @@ class BotQueryProcessor {
 	/**
 	* Add pages by the namespace without language links to the output
 	*/
-	function genMetaNoLangLinksPages(&$prop, &$genInfo) {
+	function genMetaNoLangLinksPages(&$prop, &$genInfo)
+	{
 		global $wgContLang;
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
@@ -765,7 +779,8 @@ class BotQueryProcessor {
 	/**
 	* Add pages in a category
 	*/
-	function genPagesInCategory(&$prop, &$genInfo) {
+	function genPagesInCategory(&$prop, &$genInfo)
+	{
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
 
@@ -816,7 +831,8 @@ class BotQueryProcessor {
 	*     Redir to nonexisting, Existing page, or Existing redirect.
 	*     Existing redirect may point to yet another nonexisting or existing page( which in turn may also be a redirect)
 	*/
-	function genRedirectInfo(&$prop, &$genInfo) {
+	function genRedirectInfo(&$prop, &$genInfo)
+	{
 		if( empty( $this->redirectPageIds ) ) {
 			return;
 		}
@@ -869,7 +885,8 @@ class BotQueryProcessor {
 	/**
 	* Checks which pages the user has the rights to edit and move.
 	*/
-	function genPermissionsInfo(&$prop, &$genInfo) {
+	function genPermissionsInfo(&$prop, &$genInfo)
+	{
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
 		
@@ -921,7 +938,8 @@ class BotQueryProcessor {
 	/**
 	* Generates list of links/langlinks/templates for all non-redirect pages.
 	*/
-	function genPageLinksHelper(&$prop, &$genInfo) {
+	function genPageLinksHelper(&$prop, &$genInfo)
+	{
 		if( empty($this->nonRedirPageIds) ) {
 			return;
 		}
@@ -959,7 +977,8 @@ class BotQueryProcessor {
 	* Generate backlinks for either links, templates, or both
 	* $type - either 'template' or 'page'
 	*/
-	function genPageBackLinksHelper(&$prop, &$genInfo) {
+	function genPageBackLinksHelper(&$prop, &$genInfo)
+	{
 		$this->startProfiling();
 		extract( $this->genPageBackLinksSettings[$prop] );
 		
@@ -1097,13 +1116,17 @@ class BotQueryProcessor {
 	/**
 	* Add a list of revisions to the page history
 	*/
-	function genPageRevisions(&$prop, &$genInfo) {
+	function genPageRevisions(&$prop, &$genInfo)
+	{
 		if( empty( $this->existingPageIds ) ) {
 			return;
 		}
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
 		
+		//
+		// Prepare query parameters
+		//
 		$tables = array('revision');
 		$fields = array('rev_id', 'rev_text_id', 'rev_timestamp', 'rev_user', 'rev_user_text', 'rev_minor_edit');
 		if( $rvcomments ) {
@@ -1112,9 +1135,18 @@ class BotQueryProcessor {
 		$conds = array( 'rev_deleted' => 0 );
 		if( isset($rvstart) )  $conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($rvstart);
 		if( isset($rvend) )    $conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($rvend);
-		$options = array( 'LIMIT' => $rvlimit, 'ORDER BY' => 'rev_timestamp DESC, rev_id DESC' );
-		if( $rvuniqusr ) $options['GROUP BY'] = 'rev_user_text';
+		$orderBy = 'rev_timestamp DESC';	// common sort order
+		$options = array( 'LIMIT' => $rvlimit, 'ORDER BY' => $orderBy );
 		if( $rvoffset !== 0 )  $options['OFFSET'] = $rvoffset;
+		$queryname = $this->classname . '::genPageRevisions';		
+		
+		if( $rvuniqusr ) {
+			$fields[] = 'rev_page';	// needed to find the originating page
+			$options['GROUP BY'] = 'rev_user_text'; // used in the first queries
+			$latestRevIds = array(); // all found revids will be stored here to get data in the last query
+			$conds2 = array(); // conditions used for the last query
+			$queryname .= '_grp';
+		}
 		
 		if( $rvcontent ) {
 			$this->validateLimit( 'content + rvlimit * pages', $rvlimit * count($this->existingPageIds), 50, 200 );
@@ -1122,51 +1154,81 @@ class BotQueryProcessor {
 			$fields[] = 'old_id';
 			$fields[] = 'old_text';
 			$fields[] = 'old_flags';
-			$conds[] = 'rev_text_id=old_id';
+			if( $rvuniqusr ) {
+				$conds2[] = 'rev_text_id=old_id';
+			} else {
+				$conds[] = 'rev_text_id=old_id';
+			}
 		} else {
 			$this->validateLimit( 'rvlimit * pages', $rvlimit * count($this->existingPageIds), 200, 2000 );
 		}
-		$queryname = $this->classname . '::genPageRevisions';
 		
+		//
+		// Execute queries for each page (not very efficient, until agregate queries with subqueries become available)
+		//
 		$this->startDbProfiling();
 		foreach( $this->existingPageIds as $pageId ) {
 			$conds['rev_page'] = $pageId;
-			$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
-			while ( $row = $this->db->fetchObject( $res ) ) {
-				$vals = array(
-					'revid' => $row->rev_id,
-					'oldid' => $row->rev_text_id,
-					'timestamp' => wfTimestamp( TS_ISO_8601, $row->rev_timestamp ),
-					'user' => $row->rev_user_text,
-					);
-				if( !$row->rev_user ) {
-					$vals['anon'] = '';
+			if( $rvuniqusr ) {
+				// Query just for rev_id of last modifications by unique users
+				$res = $this->db->select( 'revision', 'MAX(rev_id) rev_id_latest', $conds, $queryname, $options );
+				while ( $row = $this->db->fetchObject( $res ) ) {
+					$latestRevIds[] = $row->rev_id_latest;
 				}
-				if( $row->rev_minor_edit ) {
-					$vals['minor'] = '';
+			} else {
+				// Query all revision information
+				$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
+				while ( $row = $this->db->fetchObject( $res ) ) {
+					$this->addRevisionSubElement( $row, $pageId, $rvcontent );
 				}
-				if( $rvcomments ) {
-					$vals['comment'] = $row->rev_comment;
-				}
-				if( $rvcontent ) {
-					$vals['xml:space'] = 'preserve';
-					$vals['*'] = Revision::getRevisionText( $row );
-				} else {
-					$vals['*'] = '';	// Force all elements to be attributes
-				}
-				
-				$this->addPageSubElement( $pageId, 'revisions', 'rv', $vals);
 			}
 			$this->db->freeResult( $res );
+		}
+
+		// For unique user modifications, perform an additional query to populate data object
+		if( $rvuniqusr && !empty($latestRevIds) ) {
+			$conds2['rev_id'] = $latestRevIds;
+			$res = $this->db->select( $tables, $fields, $conds2, $queryname . '2', array( 'ORDER BY' => $orderBy ) );
+			while ( $row = $this->db->fetchObject( $res ) ) {
+				$this->addRevisionSubElement( $row, $row->rev_page, $rvcontent );
+			}
 		}
 		$this->endDbProfiling( $prop );
 		$this->endProfiling( $prop );
 	}
 
+	function addRevisionSubElement( $row, $pageId, $rvcontent )
+	{
+		$vals = array(
+			'revid' => $row->rev_id,
+			'oldid' => $row->rev_text_id,
+			'timestamp' => wfTimestamp( TS_ISO_8601, $row->rev_timestamp ),
+			'user' => $row->rev_user_text,
+			);
+		if( !$row->rev_user ) {
+			$vals['anon'] = '';
+		}
+		if( $row->rev_minor_edit ) {
+			$vals['minor'] = '';
+		}
+		if( isset( $row->rev_comment )) {
+			$vals['comment'] = $row->rev_comment;
+		}
+		if( $rvcontent ) {
+			$vals['xml:space'] = 'preserve';
+			$vals['*'] = Revision::getRevisionText( $row );
+		} else {
+			$vals['*'] = '';	// Force all elements to be attributes
+		}
+		
+		$this->addPageSubElement( $pageId, 'revisions', 'rv', $vals);
+	}
+	
 	/**
 	* Add user contributions to the user pages
 	*/
-	function genUserContributions(&$prop, &$genInfo) {
+	function genUserContributions(&$prop, &$genInfo)
+	{
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
 
@@ -1220,7 +1282,8 @@ class BotQueryProcessor {
 	/**
 	* Add the raw content of the pages
 	*/
-	function genPageContent(&$prop, &$genInfo) {
+	function genPageContent(&$prop, &$genInfo)
+	{
 		if( empty( $this->existingPageIds ) ) {
 			return;
 		}
@@ -1258,7 +1321,8 @@ class BotQueryProcessor {
 	/**
 	* Take $row with fields from 'page' table and create needed page entries in $this->data
 	*/
-	function storePageInfo( &$row ) {
+	function storePageInfo( &$row )
+	{
 		$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 		if ( !$title->userCanRead() ) {
 			$this->db->freeResult( $res );
@@ -1286,7 +1350,8 @@ class BotQueryProcessor {
 	/**
 	* Process the list of given titles, update $where and $this->requestsize, and return the data of the LinkBatch object
 	*/
-	function parseTitles( &$where ) {
+	function parseTitles( &$where )
+	{
 		global $wgRequest;
 		$titles = $this->addRaw( 'titles', $wgRequest->getVal('titles') );
 		if( $titles !== null ) {
@@ -1325,7 +1390,8 @@ class BotQueryProcessor {
 	/**
 	* Process the list of given titles, update $where and $this->requestsize, and return the data of the LinkBatch object
 	*/
-	function parsePageIds( &$where ) {
+	function parsePageIds( &$where )
+	{
 		global $wgRequest;
 		$pageids = $this->addRaw( 'pageids', $wgRequest->getVal('pageids') );
 		if ( $pageids !== null ) {
@@ -1345,7 +1411,8 @@ class BotQueryProcessor {
 	/**
 	* From two parameter arrays, makes an array of the values provided by the user.
 	*/
-	function getParams( &$property, &$generator ) {
+	function getParams( &$property, &$generator )
+	{
 		global $wgRequest;
 		
 		$paramNames = &$generator[GEN_PARAMS];
@@ -1383,7 +1450,8 @@ class BotQueryProcessor {
 	/**
 	* Lookup of the page id by ns:title in the data array, and will die if no such title is found
 	*/
-	function lookupPageIdByTitle( $ns, &$dbkey ) {
+	function lookupPageIdByTitle( $ns, &$dbkey )
+	{
 		$prefixedText = Title::makeTitle( $ns, $dbkey )->getPrefixedText();
 		if( array_key_exists( $prefixedText, $this->pageIdByText )) {
 			return $this->pageIdByText[$prefixedText];
@@ -1394,7 +1462,8 @@ class BotQueryProcessor {
 	/**
 	* Use this method to add 'titles' or 'pageids' during meta generation in addition to any supplied by the user.
 	*/
-	function addRaw( $type, $elements ) {
+	function addRaw( $type, $elements )
+	{
 		$val = & $this->{$type};
 		if( $elements !== null && $elements !== '' ) {
 			if( is_array( $elements )) {
@@ -1411,7 +1480,8 @@ class BotQueryProcessor {
 	/**
 	* Creates an array describing the properties of a given link
 	*/
-	function getLinkInfo( $ns, $title, $id = -1, $isRedirect = false ) {
+	function getLinkInfo( $ns, $title, $id = -1, $isRedirect = false )
+	{
 		return $this->getTitleInfo( Title::makeTitle( $ns, $title ), $id, $isRedirect );
 	}
 
@@ -1419,7 +1489,8 @@ class BotQueryProcessor {
 	* Creates an element    <$title ns='xx' iw='xx' id='xx'>Prefixed Title</$title>
 	* All attributes are optional.
 	*/
-	function getTitleInfo( $title, $id = -1, $isRedirect = false ) {
+	function getTitleInfo( $title, $id = -1, $isRedirect = false )
+	{
 		$data = array();
 		if( $title->getNamespace() != NS_MAIN ) {
 			$data['ns'] = $title->getNamespace();
@@ -1458,7 +1529,8 @@ class BotQueryProcessor {
 	*        $itemElem => $params
 	*        .....
 	*/
-	function addPageSubElement( $pageId, $mainElem, $itemElem, $params, $multiItems = true ) {
+	function addPageSubElement( $pageId, $mainElem, $itemElem, $params, $multiItems = true )
+	{
 		$data = & $this->data['pages'][$pageId][$mainElem];
 		if( $multiItems ) {
 			$data['_element'] = $itemElem;
@@ -1474,7 +1546,8 @@ class BotQueryProcessor {
 	/**
 	* Validate the proper format of the timestamp string (14 digits), and add quotes to it.
 	*/
-	function prepareTimestamp( $value ) {
+	function prepareTimestamp( $value )
+	{
 		if ( preg_match( '/^[0-9]{14}$/', $value ) ) {
 			return $this->db->addQuotes( $value );
 		} else {
@@ -1486,7 +1559,8 @@ class BotQueryProcessor {
 	* NOTE: This function must not be called after calling header()
 	* Creates a human-readable usage information message
 	*/
-	function dieUsage( $message, $errorcode ) {
+	function dieUsage( $message, $errorcode )
+	{
 		global $wgUser, $wgRequest;
 
 		$this->addStatusMessage( 'error', $errorcode );
@@ -1582,7 +1656,8 @@ class BotQueryProcessor {
 	/**
 	* Adds a status message into the <query> element, for a given module.
 	*/
-	function addStatusMessage( $module, $value, $preserveXmlSpacing = false ) {
+	function addStatusMessage( $module, $value, $preserveXmlSpacing = false )
+	{
 		if( !array_key_exists( 'query', $this->data )) {
 			$this->data['query'] = array();
 		}
@@ -1611,32 +1686,37 @@ class BotQueryProcessor {
 	/**
 	* Records the time of the call to this method
 	*/
-	function startProfiling() {
+	function startProfiling()
+	{
 		$this->startTime = wfTime();
 	}
 	/**
 	* Same as startProfiling, but used for DB access only
 	*/
-	function startDbProfiling() {
+	function startDbProfiling()
+	{
 		$this->startDbTime = wfTime();
 	}
 	
 	/**
 	* Records the running time of the given module since last startDbProfiling() call.
 	*/
-	function endProfiling( $module ) {
+	function endProfiling( $module )
+	{
 		$this->recordProfiling( $module, 'time', $this->startTime );
 	}
 	/**
 	* Same as endProfiling, but used for DB access only
 	*/
-	function endDbProfiling( $module ) {
+	function endDbProfiling( $module )
+	{
 		$this->recordProfiling( $module, 'dbtime', $this->startDbTime );
 	}
 	/**
 	* Helper profiling function
 	*/
-	function recordProfiling( $module, $type, &$start ) {
+	function recordProfiling( $module, $type, &$start )
+	{
 		$timeDelta = wfTime() - $start;
 		unset($start);
 		$this->addStatusMessage( $module, array( $type => sprintf( "%1.2fms", $timeDelta * 1000.0 ) ));
@@ -1645,7 +1725,8 @@ class BotQueryProcessor {
 	/**
 	* Validate the value against the minimum and user/bot maximum limits. Prints usage info on failure.
 	*/
-	function validateLimit( $varname, $value, $max, $botMax = false, $min = 1 ) {
+	function validateLimit( $varname, $value, $max, $botMax = false, $min = 1 )
+	{
 		global $wgUser;
 		if( $botMax === false ) $botMax = $max;
 		
@@ -1672,7 +1753,8 @@ class BotQueryProcessor {
 /**
 * Prints data in html format. Escapes all unsafe characters. Adds an HTML warning in the begining.
 */
-function printHTML( &$data ) {
+function printHTML( &$data )
+{
 ?>
 <html>
 <head>
@@ -1700,7 +1782,8 @@ function printHTML( &$data ) {
 /**
 * Prety-print various elements in HTML format, such as xml tags and URLs. This method also replaces any "<" with &lt;
 */
-function htmlprinter( $text ) {
+function htmlprinter( $text )
+{
 	// encode all tags as safe blue strings
 	$text = ereg_replace( '\<([^>]+)\>', '<font color=blue>&lt;\1&gt;</font>', $text );
 	// identify URLs
@@ -1715,7 +1798,8 @@ function htmlprinter( $text ) {
 /**
 * Output data in XML format
 */
-function printXML( &$data ) {
+function printXML( &$data )
+{
 	global $wgRequest;
 	echo '<?xml version="1.0" encoding="utf-8"?>';
 	recXmlPrint( 'echoprinter', 'yurik', $data, $wgRequest->getCheck('xmlindent') ? -2 : null );
@@ -1723,14 +1807,16 @@ function printXML( &$data ) {
 /**
 * Pass-through printer.
 */
-function echoprinter( $text ) {
+function echoprinter( $text )
+{
 	echo $text;
 }
 
 /**
 * Sanitizes the data and prints it with the print_r()
 */
-function printHumanReadable( &$data ) {
+function printHumanReadable( &$data )
+{
 	sanitizeOutputData($data);
 	print_r($data);
 }
@@ -1739,14 +1825,16 @@ function printHumanReadable( &$data ) {
 * Prints the data as is, using var_export().
 * This format exposes all internals of the data object unescaped, thus it must never be outputed with meta set to text/*
 */
-function printDebugCode( &$data ) {
+function printDebugCode( &$data )
+{
 	var_export($data);
 }
 
 /**
 * Sanitizes the data and serialize() it so that other php scripts can easily consume the data
 */
-function printPHP( &$data ) {
+function printPHP( &$data )
+{
 	sanitizeOutputData($data);
 	echo serialize($data);
 }
@@ -1755,7 +1843,8 @@ function printPHP( &$data ) {
 * Sanitizes the data and serialize it in WDDX format.
 * If PHP was compiled with WDDX support, use it (faster)
 */
-function printWDDX( &$data ) {
+function printWDDX( &$data )
+{
 	sanitizeOutputData($data);
 	if ( function_exists( 'wddx_serialize_value' ) ) {
 		echo wddx_serialize_value($data);
@@ -1770,7 +1859,8 @@ function printWDDX( &$data ) {
 /**
 * Recursivelly go through the object and output its data in WDDX format.
 */
-function slowWddxPrinter( &$elemValue ) {
+function slowWddxPrinter( &$elemValue )
+{
 	switch( gettype($elemValue) ) {
 		case 'array':
 			echo '<struct>';
@@ -1796,7 +1886,8 @@ function slowWddxPrinter( &$elemValue ) {
 /**
 * Sanitizes the data and serializes it in JSON format
 */
-function printJSON( &$data ) {
+function printJSON( &$data )
+{
 	sanitizeOutputData($data);
 	if ( !function_exists( 'json_encode' ) ) {
 		require_once 'json.php';
@@ -1812,7 +1903,8 @@ function printJSON( &$data ) {
 * The content element '*' is the only special element that is left.
 * Use this method when the entire data object gets sent to the user.
 */
-function sanitizeOutputData( &$data ) {
+function sanitizeOutputData( &$data )
+{
 	foreach( $data as $key => &$value ) {
 		if( $key[0] === '_' ) {
 			unset( $data[$key] );
@@ -1837,7 +1929,8 @@ function sanitizeOutputData( &$data ) {
 * If neither key is found, all keys become element names, and values become element content.
 * The method is recursive, so the same rules apply to any sub-arrays.
 */
-function recXmlPrint( $printer, $elemName, &$elemValue, $indent ) {
+function recXmlPrint( $printer, $elemName, &$elemValue, $indent )
+{
 	$indstr = "";
 	if( !is_null($indent) ) {
 		$indent += 2;
@@ -1885,7 +1978,8 @@ function recXmlPrint( $printer, $elemName, &$elemValue, $indent ) {
 /**
 * Helper method that merges an array of strings and prepends each line with an indentation string
 */
-function mergeDescriptionStrings( &$value, $indstr ) {
+function mergeDescriptionStrings( &$value, $indstr )
+{
 	if( is_array($value) ) {
 		$value = implode( "\n", $value );
 	}
@@ -1895,7 +1989,8 @@ function mergeDescriptionStrings( &$value, $indstr ) {
 /**
 * Merge all known generator parameters into one array of values. Used for logging.
 */
-function mergeParameters( &$generators ) {
+function mergeParameters( &$generators )
+{
 	$params = array();
 	foreach( $generators as $property => &$generator ) {
 		$value = &$generator[GEN_PARAMS];
