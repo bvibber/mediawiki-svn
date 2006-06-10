@@ -278,6 +278,16 @@ class BotQueryProcessor {
 			"rvend      - timestamp of the latest entry",
 			"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments",
 			)),
+		'usercontribs'   => array( 'genUserContributions', false,
+			array( 'uccomments', 'uclimit' ),
+			array( false, 50 ),
+			array(
+			"Revision history - Lists last edits performed by the given user(s)",
+			"Parameters supported:",
+			"uccomments - if specified, the result will include summary strings",
+			"uclimit    - how many links to return *for each user*",
+			"Example: query.php?what=usercontribs&titles=User:YurikBot&uclimit=20&uccomments",
+			)),
 		'content'        => array( 'genPageContent', false, null, null,
 			array(
 			"Raw page content - Retrieves raw wiki markup for each page.",
@@ -291,7 +301,7 @@ class BotQueryProcessor {
 	* Object Constructor, uses a database connection as a parameter
 	*/
 	function BotQueryProcessor( $db ) {
-		global $wgRequest;
+		global $wgRequest, $wgUser;
 
 		$this->totalStartTime = wfTime();
 
@@ -300,6 +310,8 @@ class BotQueryProcessor {
 		$this->pageIdByText = array();	// reverse page ID lookup
 		$this->requestsize = 0;
 		$this->db = $db;
+
+		$this->isBot = $wgUser->isBot();
 
 		$this->enableProfiling = !$wgRequest->getCheck('noprofile');
 		
@@ -375,7 +387,7 @@ class BotQueryProcessor {
 		//
 		// Log request - userid (non-identifiable), status, what is asked, request size, additional parameters
 		//
-		$userIdentity = md5( $wgUser->getName() ) . "\t" . ($wgUser->isAnon() ? "anon" : ($wgUser->isBot() ? "bot" : "usr"));
+		$userIdentity = md5( $wgUser->getName() ) . "\t" . ($wgUser->isAnon() ? "anon" : ($this->isBot ? "bot" : "usr"));
 		$what = $wgRequest->getVal('what');
 		$format = $wgRequest->getVal('format');
 		$params = mergeParameters( $this->propGenerators );
@@ -563,7 +575,7 @@ class BotQueryProcessor {
 		$meta = array();
 		$meta['name'] = $wgUser->getName();
 		if( $wgUser->isAnon() ) $meta['anonymous'] = '';
-		if( $wgUser->isBot() ) $meta['bot'] = '';
+		if( $this->isBot ) $meta['bot'] = '';
 		if( $uiisblocked && $wgUser->isBlocked() ) $meta['blocked'] = '';
 		if( $uihasmsg && $wgUser->getNewtalk() ) $meta['messages'] = '';
 		if( $uiextended ) {
@@ -1119,16 +1131,12 @@ class BotQueryProcessor {
 		} else {
 			$this->validateLimit( 'rvlimit * pages', $rvlimit * count($this->existingPageIds), 200, 2000 );
 		}
+		$queryname = $this->classname . '::genPageRevisions';
 		
 		$this->startDbProfiling();
 		foreach( $this->existingPageIds as $pageId ) {
 			$conds['rev_page'] = $pageId;
-			$res = $this->db->select(
-				$tables,
-				$fields,
-				$conds,
-				$this->classname . '::genPageRevisions',
-				$options );
+			$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
 			while ( $row = $this->db->fetchObject( $res ) ) {
 				$vals = array(
 					'revid' => $row->rev_id,
@@ -1155,6 +1163,61 @@ class BotQueryProcessor {
 				$this->addPageSubElement( $pageId, 'revisions', 'rv', $vals);
 			}
 			$this->db->freeResult( $res );
+		}
+		$this->endDbProfiling( $prop );
+		$this->endProfiling( $prop );
+	}
+
+	/**
+	* Add user contributions to the user pages
+	*/
+	function genUserContributions(&$prop, &$genInfo) {
+		$this->startProfiling();
+		extract( $this->getParams( $prop, $genInfo ));
+
+		// Make query parameters
+		$tables = array('page', 'revision');
+		$fields = array('page_namespace', 'page_title', 'page_is_new', 'rev_id', 'rev_text_id', 'rev_timestamp', 'rev_minor_edit');
+		if( $uccomments ) {
+			$fields[] = 'rev_comment';
+		}
+		$currentUser = ''; // This variable will take different users in turn
+		$conds = array( 'page_id=rev_page', 'rev_user_text' => &$currentUser ); // Notice the dereferencing
+		$queryname = $this->classname . '::genUserContributions';
+		$options = array( 'LIMIT' => $uclimit, 'ORDER BY' => 'rev_timestamp DESC', 'FORCE INDEX' => 'usertext_timestamp' );
+		
+		$count = 0;
+		$maxallowed = ($this->isBot ? 500 : 2000);
+		
+		$this->startDbProfiling(); // DB code is intermixed here, so the result is not very accurate
+		// For all valid pages in User namespace query history. Note that the page might not exist.
+		foreach( $this->data['pages'] as $key => &$page ) {
+			if( array_key_exists('_obj', $page) ) {
+				$title =& $page['_obj'];
+				if( $title->getNamespace() == NS_USER && !$title->isExternal() ) {
+					if( (++$count * $uclimit) > $maxallowed ) {
+						$this->dieUsage( "Too many user contributions requested, only $maxallowed allowed", 'uclimit * users');
+					}
+					
+					$currentUser = $title->getText();	// this updates $conds filter
+					$data = &$page['contributions'];
+					
+					$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
+					while ( $row = $this->db->fetchObject( $res ) ) {
+						$vals = $this->getLinkInfo( $row->page_namespace, $row->page_title );
+						$vals['revid'] = $row->rev_id;
+						$vals['oldid'] = $row->rev_text_id;
+						$vals['timestamp'] = wfTimestamp( TS_ISO_8601, $row->rev_timestamp );
+						if( $row->rev_minor_edit ) $vals['minor'] = '';
+						if( $row->page_is_new ) $vals['new'] = '';
+						if( $uccomments ) $vals['comment'] = $row->rev_comment;
+
+						$data[] = $vals;
+					}
+					$this->db->freeResult( $res );
+					$data['_element'] = 'uc';
+				}
+			}
 		}
 		$this->endDbProfiling( $prop );
 		$this->endProfiling( $prop );
@@ -1508,7 +1571,8 @@ class BotQueryProcessor {
 				"  It was later completelly rewritten by Yuri, introducing the rest of properties, meta information, and various formatting options.",
 				"",
 				"*User Status*",
-				"  You are " . ($wgUser->isAnon() ? "an anonymous" : "a logged-in") . " " . ($wgUser->isBot() ? "bot" : "user") . " " . $wgUser->getName(),
+				"  You are " . ($wgUser->isAnon() ? "an anonymous" : "a logged-in") . " " . ($this->isBot ? "bot" : "user") . " " . $wgUser->getName() .
+					($wgUser->getNewtalk() ? ', and you have unread messages.' : '.'),
 				"",
 				"*Version*",
 				'  $Id$',
@@ -1594,13 +1658,13 @@ class BotQueryProcessor {
 		if ( $value < $min ) {
 			$this->dieUsage( "$value entries is less than $min", $varname );
 		}
-		if( $wgUser->isBot() ) {
+		if( $this->isBot ) {
 			if ( $value > $botMax ) {
-				$this->dieUsage( "Bots requested $value pages, which is over $botMax pages allowed", $varname );
+				$this->dieUsage( "Bot requested $value pages, which is over $botMax pages allowed", $varname );
 			}
 		} else {
 			if( $value > $max ) {
-				$this->dieUsage( "Users requested $value pages, which is over $max pages allowed", $varname );
+				$this->dieUsage( "User requested $value pages, which is over $max pages allowed", $varname );
 			}
 		}
 	}
