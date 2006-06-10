@@ -13,7 +13,13 @@
 function efPatrollerAddMessages( &$cache ) {
 	$messages = array(
 					'patrol' => 'Patrol edits',
-					'patrol-instructions' => 'Use this page to do evil patrolling stuff.',
+					
+					'patrol-endorse' => 'Endorse',
+					'patrol-revert' => 'Revert',
+					'patrol-revert-reason' => 'Reason:',
+					'patrol-skip' => 'Skip',
+					
+					'patrol-instructions' => 'THE POWER OF THE CABAL COMPELS YOU! THE POWER OF THE CABAL COMPELS YOU!',
 				);
 	$cache->addMessages( $messages );
 }

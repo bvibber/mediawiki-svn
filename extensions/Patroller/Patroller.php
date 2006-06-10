@@ -64,7 +64,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 						$this->showDiffDetails( $edit );
 						$wgOut->addHtml( '<br /><hr />' );
 						$this->showDiff( $edit );
-						#$wgOut->addHtml( '<br /><hr />' );
+						$wgOut->addHtml( '<br /><hr />' );
 						$this->showControls( $edit );
 					}
 				} else {
@@ -102,6 +102,17 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 		
 		function showControls( &$edit ) {
+			global $wgOut;
+			$self = Title::makeTitle( NS_SPECIAL, 'Patrol' );
+			$form = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+			$form .= '<table><tr>';
+			$form .= '<td>' . wfSubmitButton( wfMsg( 'patrol-endorse' ), array( 'name' => 'wpPatrolEndorse' ) ) . '</td>';
+			$form .= '<td>' . wfSubmitButton( wfMsg( 'patrol-revert' ), array( 'name' => 'wpPatrolRevert' ) );
+			$form .= '&nbsp;' . wfInputLabel( wfMsg( 'patrol-revert-reason' ), 'wpPatrolRevertReason', 'reason' ) . '</td><td></td>';
+			$form .= '<td>' . wfSubmitButton( wfMsg( 'patrol-skip' ), array( 'name' => 'wpPatrolSkip' ) ) . '</td>';
+			$form .= wfHidden( 'wpRcId', $edit->mAttribs['rc_id'] );
+			$form .= '</tr></table>';
+			$wgOut->addHtml( $form );
 		}
 		
 		/**
