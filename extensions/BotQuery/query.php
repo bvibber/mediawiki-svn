@@ -99,6 +99,11 @@ class BotQueryProcessor {
 			"Details: http://www.php.net/serialize",
 			"Example: query.php?what=info&format=php",
 			)),
+		'wddx' => array( 'printWDDX', 'text/xml', null, null, array(
+			"WDDX - Web Distributed Data eXchange format",
+			"Details: http://www.openwddx.org",
+			"Example: query.php?what=info&format=wddx",
+			)),
 		'dbg' => array( 'printDebugCode', 'application/x-wiki-botquery-var_export', null, null, array(
 			"PHP source code format using var_export()",
 			"Details: http://www.php.net/var_export",
@@ -1372,8 +1377,8 @@ class BotQueryProcessor {
 		global $wgUser, $wgRequest;
 
 		$this->addStatusMessage( 'error', $errorcode );
-		if( !$wgRequest->getCheck('nousage') && 
-				($this->format === 'xml' || $this->format === 'html' )) {
+		if( !$wgRequest->getCheck( 'nousage' ) && 
+			( $this->format === 'xml' || $this->format === 'html' )) {
 				
 			$indentSize = 12;
 			$indstr = str_repeat(" ", $indentSize+7);
@@ -1633,6 +1638,48 @@ function printPHP( &$data ) {
 }
 
 /**
+* Sanitizes the data and serialize it in WDDX format.
+* If PHP was compiled with WDDX support, use it (faster)
+*/
+function printWDDX( &$data ) {
+	sanitizeOutputData($data);
+	if ( function_exists( 'wddx_serialize_value' ) ) {
+		echo wddx_serialize_value($data);
+	} else {
+		echo '<?xml version="1.0" encoding="utf-8"?>';
+		echo '<wddxPacket version="1.0"><header/><data>';
+		slowWddxPrinter( $data );
+		echo '</data></wddxPacket>';
+	}
+}
+
+/**
+* Recursivelly go through the object and output its data in WDDX format.
+*/
+function slowWddxPrinter( &$elemValue ) {
+	switch( gettype($elemValue) ) {
+		case 'array':
+			echo '<struct>';
+			foreach( $elemValue as $subElemName => &$subElemValue ) {
+				echo wfElement( 'var', array('name' => $subElemName), null );
+				slowWddxPrinter( $subElemValue );
+				echo '</var>';
+			}
+			echo '</struct>';
+			break;
+		case 'integer':
+		case 'double':
+			echo wfElement( 'number', null, $elemValue );
+			break;
+		case 'string':
+			echo wfElement( 'string', null, $elemValue );
+			break;
+		default:
+			die( 'Unknown type ' . gettype($elemValue) );
+	}
+}
+
+/**
 * Sanitizes the data and serializes it in JSON format
 */
 function printJSON( &$data ) {
@@ -1655,7 +1702,9 @@ function sanitizeOutputData( &$data ) {
 	foreach( $data as $key => &$value ) {
 		if( $key[0] === '_' ) {
 			unset( $data[$key] );
-		} elseif ( is_array( $value )) {
+		} elseif( $key === '*' && $value === '' ) {
+			unset( $data[$key] );
+		} elseif( is_array( $value )) {
 			sanitizeOutputData( $value );
 		}
 	}
@@ -1674,7 +1723,7 @@ function sanitizeOutputData( &$data ) {
 * If neither key is found, all keys become element names, and values become element content.
 * The method is recursive, so the same rules apply to any sub-arrays.
 */
-function recXmlPrint( $printer, $elemName, &$elemValue, $indent = -2 ) {
+function recXmlPrint( $printer, $elemName, &$elemValue, $indent ) {
 	$indstr = "";
 	if( !is_null($indent) ) {
 		$indent += 2;
