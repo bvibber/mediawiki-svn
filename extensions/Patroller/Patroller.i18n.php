@@ -19,6 +19,9 @@ function efPatrollerAddMessages( &$cache ) {
 					'patrol-skip' => 'Skip',
 					'patrol-reverting' => 'Reverting',	
 					'patrol-nonefound' => 'No suitable edits could be found for patrolling.',
+					'patrol-endorsed-ok' => 'The edit was marked patrolled.',
+					'patrol-reverted-ok' => 'The edit was reverted.',
+					'patrol-skipped-ok' => 'Ignoring edit.',
 				);
 	$cache->addMessages( $messages );
 }

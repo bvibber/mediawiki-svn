@@ -59,14 +59,17 @@ if( defined( 'MEDIAWIKI' ) ) {
 					if( $wgRequest->getCheck( 'wpPatrolEndorse' ) ) {
 						# Mark the change patrolled
 						RecentChange::markPatrolled( $rcid );
+						$wgOut->setSubtitle( wfMsgHtml( 'patrol-endorsed-ok' ) );
 						wfDebugLog( 'patroller', 'Endorsed ' . $rcid );
 					} elseif( $wgRequest->getCheck( 'wpPatrolRevert' ) ) {
 						# Revert the change
 						$edit = $this->loadChange( $rcid );
 						$this->revert( $edit, $wgRequest->getText( 'wpPatrolRevertReason', '' ) );
+						$wgOut->setSubtitle( wfMsgHtml( 'patrol-reverted-ok' ) );
 						wfDebugLog( 'patroller', 'Reverted ' . $rcid );
 					} elseif( $wgRequest->getCheck( 'wpPatrolSkip' ) ) {
 						# Do bugger all, for now
+						$wgOut->setSubtitle( wfMsgHtml( 'patrol-skipped-ok' ) );
 					}
 				}
 			}
