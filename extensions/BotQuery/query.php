@@ -264,11 +264,12 @@ class BotQueryProcessor {
 			"Example: query.php?what=imagelinks&titles=Image:HermitageAcrossNeva.jpg&illimit=10",
 			)),
 		'revisions'      => array( 'genPageRevisions', false,
-			array( 'rvcomments', 'rvcontent', 'rvlimit', 'rvoffset', 'rvstart', 'rvend' ),
-			array( false, false, 50, 0, null, null ),
+			array( 'rvuniqusr', 'rvcomments', 'rvcontent', 'rvlimit', 'rvoffset', 'rvstart', 'rvend' ),
+			array( false, false, false, 10, 0, null, null ),
 			array(
 			"Revision history - Lists edits performed to the given pages",
 			"Parameters supported:",
+			"rvuniqusr  - if specified, the result will include only the last revision by each unique user.",
 			"rvcomments - if specified, the result will include summary strings",
 			"rvcontent  - if specified, the result will include raw wiki text.",
 			"             This parameter is *very slow*, use only when needed.",
@@ -277,6 +278,7 @@ class BotQueryProcessor {
 			"rvstart    - timestamp of the earliest entry",
 			"rvend      - timestamp of the latest entry",
 			"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments",
+			"         query.php?what=revisions&titles=Main%20Page&rvuniqusr&rvlimit=3&rvcomments",
 			)),
 		'usercontribs'   => array( 'genUserContributions', false,
 			array( 'uccomments', 'uclimit' ),
@@ -1101,26 +1103,19 @@ class BotQueryProcessor {
 		}
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
-
+		
 		$tables = array('revision');
 		$fields = array('rev_id', 'rev_text_id', 'rev_timestamp', 'rev_user', 'rev_user_text', 'rev_minor_edit');
 		if( $rvcomments ) {
 			$fields[] = 'rev_comment';
 		}
 		$conds = array( 'rev_deleted' => 0 );
-		if ( isset($rvstart) ) {
-			$conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($rvstart);
-		}
-		if ( isset($rvend) ) {
-			$conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($rvend);
-		}
-		$options = array(
-			'LIMIT' => $rvlimit,
-			'ORDER BY' => 'rev_timestamp DESC'
-		);
-		if( $rvoffset !== 0 ) {
-			$options['OFFSET'] = $rvoffset;
-		}
+		if( isset($rvstart) )  $conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($rvstart);
+		if( isset($rvend) )    $conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($rvend);
+		$options = array( 'LIMIT' => $rvlimit, 'ORDER BY' => 'rev_timestamp DESC, rev_id DESC' );
+		if( isset($rvuniqusr) ) $options['GROUP BY'] = 'rev_user_text';
+		if( $rvoffset !== 0 )  $options['OFFSET'] = $rvoffset;
+		
 		if( $rvcontent ) {
 			$this->validateLimit( 'content + rvlimit * pages', $rvlimit * count($this->existingPageIds), 50, 200 );
 			$tables[] = 'text';
@@ -1181,8 +1176,7 @@ class BotQueryProcessor {
 		if( $uccomments ) {
 			$fields[] = 'rev_comment';
 		}
-		$currentUser = ''; // This variable will take different users in turn
-		$conds = array( 'page_id=rev_page', 'rev_user_text' => &$currentUser ); // Notice the dereferencing
+		$conds = array( 'page_id=rev_page' );
 		$queryname = $this->classname . '::genUserContributions';
 		$options = array( 'LIMIT' => $uclimit, 'ORDER BY' => 'rev_timestamp DESC', 'FORCE INDEX' => 'usertext_timestamp' );
 		
@@ -1199,7 +1193,7 @@ class BotQueryProcessor {
 						$this->dieUsage( "Too many user contributions requested, only $maxallowed allowed", 'uclimit * users');
 					}
 					
-					$currentUser = $title->getText();	// this updates $conds filter
+					$conds['rev_user_text'] = $title->getText();
 					$data = &$page['contributions'];
 					
 					$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
