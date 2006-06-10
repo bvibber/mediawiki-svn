@@ -28,13 +28,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 		global $wgMessageCache, $wgHooks;
 		efPatrollerAddMessages( $wgMessageCache );
 		SpecialPage::addPage( new Patroller() );
-		efPatrollerPrune();
-	}
-	
-	function efPatrollerPrune() {
-		wfSeedRandom();
-		if( 0 == mt_rand( 0, 499 ) )
-			Patroller::pruneAssignments();
 	}
 	
 	class Patroller extends SpecialPage {
@@ -53,6 +46,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 				return;
 			}
 			
+			# Prune old assignments if needed
+			wfSeedRandom();
+			if( 0 == mt_rand( 0, 499 ) )
+				$this->pruneAssignments();
+			
 			# See if something needs to be done
 			if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'wpToken' ) ) ) {
 				if( $rcid = $wgRequest->getIntOrNull( 'wpRcId' ) ) {
@@ -64,7 +62,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 					} elseif( $wgRequest->getCheck( 'wpPatrolRevert' ) ) {
 						# Revert the change
 						$edit = $this->loadChange( $rcid );
-						$this->revert( $edit, $wgRequest->getText( 'wpPatrolRevertReason', '' ) );
+						$this->revert( $edit, $this->revertReason( $wgRequest ) );
 						$wgOut->setSubtitle( wfMsgHtml( 'patrol-reverted-ok' ) );
 						wfDebugLog( 'patroller', 'Reverted ' . $rcid );
 					} elseif( $wgRequest->getCheck( 'wpPatrolSkip' ) ) {
@@ -126,14 +124,15 @@ if( defined( 'MEDIAWIKI' ) ) {
 			global $wgUser, $wgOut;
 			$self = Title::makeTitle( NS_SPECIAL, 'Patrol' );
 			$form = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
-			$form .= '<table><tr>';
-			$form .= '<td>' . wfSubmitButton( wfMsg( 'patrol-endorse' ), array( 'name' => 'wpPatrolEndorse' ) ) . '</td>';
-			$form .= '<td>' . wfSubmitButton( wfMsg( 'patrol-revert' ), array( 'name' => 'wpPatrolRevert' ) );
-			$form .= '&nbsp;' . wfInputLabel( wfMsg( 'patrol-revert-reason' ), 'wpPatrolRevertReason', 'reason' ) . '</td><td></td>';
-			$form .= '<td>' . wfSubmitButton( wfMsg( 'patrol-skip' ), array( 'name' => 'wpPatrolSkip' ) ) . '</td>';
+			$form .= '<table>';
+			$form .= '<tr><td align="right">' . wfSubmitButton( wfMsg( 'patrol-endorse' ), array( 'name' => 'wpPatrolEndorse' ) ) . '</td><td></td></tr>';
+			$form .= '<tr><td align="right">' . wfSubmitButton( wfMsg( 'patrol-revert' ), array( 'name' => 'wpPatrolRevert' ) ) . '</td>';
+			$form .= '<td>' . wfLabel( wfMsg( 'patrol-revert-reason' ), 'reason' ) . '&nbsp;';
+			$form .= $this->revertReasonsDropdown() . ' / ' . wfInput( 'wpPatrolRevertReason' ) . '</td></tr>';
+			$form .= '<tr><td align="right">' . wfSubmitButton( wfMsg( 'patrol-skip' ), array( 'name' => 'wpPatrolSkip' ) ) . '</td></tr></table>';
 			$form .= wfHidden( 'wpRcId', $edit->mAttribs['rc_id'] );
 			$form .= wfHidden( 'wpToken', $wgUser->editToken() );
-			$form .= '</tr></table></form>';
+			$form .= '</form>';
 			$wgOut->addHtml( $form );
 		}
 		
@@ -224,8 +223,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 		
 		function revertReasonsDropdown() {
-			$msg = wfMsgForContent( 'patrol-revert-reasons' );
-			if( $msg == '-' || $msg == '&lt;patrol-revert-reasons&gt;' ) {
+			$msg = wfMsgForContent( 'patrol-reasons' );
+			if( $msg == '-' || $msg == '&lt;patrol-reasons&gt;' ) {
 				return '';
 			} else {
 				$reasons = array();
@@ -239,10 +238,18 @@ if( defined( 'MEDIAWIKI' ) ) {
 					foreach( $reasons as $reason )
 						$box .= wfElement( 'option', array( 'value' => $reason ), $reason );
 					$box .= wfCloseElement( 'select' );
+					return $box;
 				} else {
 					return '';
 				}
 			}
+		}
+		
+		function revertReason( &$request ) {
+			$custom = $request->getText( 'wpPatrolRevertReason' );
+			return trim( $custom ) != ''
+					? $custom
+					: $request->getText( 'wpPatrolRevertReasonCommon' );
 		}
 		
 	}
