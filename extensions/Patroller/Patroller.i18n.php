@@ -13,13 +13,12 @@
 function efPatrollerAddMessages( &$cache ) {
 	$messages = array(
 					'patrol' => 'Patrol edits',
-					
 					'patrol-endorse' => 'Endorse',
 					'patrol-revert' => 'Revert',
 					'patrol-revert-reason' => 'Reason:',
 					'patrol-skip' => 'Skip',
-					
-					'patrol-instructions' => 'THE POWER OF THE CABAL COMPELS YOU! THE POWER OF THE CABAL COMPELS YOU!',
+					'patrol-reverting' => 'Reverting',	
+					'patrol-nonefound' => 'No suitable edits could be found for patrolling.',
 				);
 	$cache->addMessages( $messages );
 }
