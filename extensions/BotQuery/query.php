@@ -207,6 +207,15 @@ class BotQueryProcessor {
 			"Example: query.php?what=redirects&titles=Main_page",
 			"         query.php?what=recentchanges|redirects  (Which of the recent changes are redirects?)",
 			)),
+		'permissions'    => array( 'genPermissionsInfo', false,
+			array( 'prcanmove' ),
+			array( false ),
+			array(
+			"For all found pages, check if the user can edit them.",
+			"Parameters supported:",
+			"prcanmove  - If specified, also check if the page can be moved.",
+			"Example: query.php?what=permissions&titles=Main_page|User%20Talk:Yurik",
+			)),
 		'links'          => array( 'genPageLinksHelper', false, null, null, array(
 			"List of regular page links",
 			"Example: query.php?what=links&titles=MediaWiki|Wikipedia",
@@ -325,12 +334,12 @@ class BotQueryProcessor {
 		$this->callGenerators( false );
 		
 		// Report empty query - if pages and meta elements have no subelements
-		if( ( !array_key_exists('pages', $this->data) || count($this->data['pages']) === 0 ) &&
-			( !array_key_exists('meta', $this->data) || count($this->data['meta']) === 0 ) ) {
+		if( ( !array_key_exists('pages', $this->data) || empty($this->data['pages']) ) &&
+			( !array_key_exists('meta', $this->data) || empty($this->data['meta']) )) {
 			$this->dieUsage( 'Nothing to do', 'emptyresult' );
 		}
 		// All items under 'pages' will be presented as 'page' xml elements
-		if( array_key_exists('pages', $this->data) && count($this->data['pages']) > 0 ) {
+		if( array_key_exists('pages', $this->data) && !empty($this->data['pages']) ) {
 			$this->data['pages']['_element'] = 'page';
 		}
 	}
@@ -843,6 +852,53 @@ class BotQueryProcessor {
 		$this->endProfiling( $prop );
 	}
 
+	/**
+	* Checks which pages the user has the rights to edit and move.
+	*/
+	function genPermissionsInfo(&$prop, &$genInfo) {
+		$this->startProfiling();
+		extract( $this->getParams( $prop, $genInfo ));
+		
+		$pages =& $this->data['pages'];
+		$titles = array();
+		foreach( $pages as $key => &$page ) {
+			if( array_key_exists('_obj', $page) ) {
+				$titles[$key] =& $page['_obj'];
+			}
+		}
+		if( !empty($titles) ) {
+			// populate cache
+			$batch = new LinkBatch( $titles );
+			
+			$this->startDbProfiling();
+			$batch->execute();
+			if( empty( $this->existingPageIds ) ) {
+				$this->endDbProfiling( $prop );
+			} else {
+				$res = $this->db->select(
+					'page',
+					array('page_id', 'page_restrictions'),
+					array('page_id' => $this->existingPageIds),
+					$this->classname . "::genPermissionsInfo" );
+				$this->endDbProfiling( $prop );
+
+				while ( $row = $this->db->fetchObject( $res ) ) {
+					$titles[ $row->page_id ]->loadRestrictions( $row->page_restrictions );
+				}
+				$this->db->freeResult( $res );
+			}
+			
+			foreach( $titles as $key => &$title ) {
+				$page =& $pages[$key];
+				$page['canEdit'] = $title->userCanEdit() ? 'true' : 'false';
+				if( $prcanmove ) {
+					$page['canMove'] = $title->userCanMove() ? 'true' : 'false';
+				}
+			}
+		}
+		$this->endProfiling( $prop );
+	}
+	
 	var $genPageLinksSettings = array(	// database column name prefix, output element name
 		'links' 	=> array( 'prefix' => 'pl', 'code' => 'l',  'linktbl' => 'pagelinks', 'langlinks' => false ),
 		'langlinks' => array( 'prefix' => 'll', 'code' => 'll', 'linktbl' => 'langlinks', 'langlinks' => true ),
@@ -915,7 +971,7 @@ class BotQueryProcessor {
 			if( $contFromValid ) {
 				$fromNs = intval($contFromList[0]);
 				$fromTitle = $contFromList[1];
-				$contFromValid = (($fromNs !== 0 || $contFromList[0] === '0') && count($fromTitle) > 0);
+				$contFromValid = ( ($fromNs !== 0 || $contFromList[0] === '0') && !empty($fromTitle) );
 			}
 			if( $contFromValid ) {
 				$fromPageId = intval($contFromList[2]);
@@ -954,7 +1010,7 @@ class BotQueryProcessor {
 			&&
 				( !$isImage || $page['ns'] == NS_IMAGE )	// when doing image links search, only allow NS_IMAGE
 			) {
-				$title = $page['_obj'];
+				$title = &$page['_obj'];
 				// remove any items already processed by previous queries
 				if( $contFrom ) {
 					if( $title->getNamespace() < $fromNs ||
