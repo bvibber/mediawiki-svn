@@ -1113,7 +1113,7 @@ class BotQueryProcessor {
 		if( isset($rvstart) )  $conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($rvstart);
 		if( isset($rvend) )    $conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($rvend);
 		$options = array( 'LIMIT' => $rvlimit, 'ORDER BY' => 'rev_timestamp DESC, rev_id DESC' );
-		if( isset($rvuniqusr) ) $options['GROUP BY'] = 'rev_user_text';
+		if( $rvuniqusr ) $options['GROUP BY'] = 'rev_user_text';
 		if( $rvoffset !== 0 )  $options['OFFSET'] = $rvoffset;
 		
 		if( $rvcontent ) {
