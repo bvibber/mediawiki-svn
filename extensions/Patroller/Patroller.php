@@ -33,7 +33,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	
 	function efPatrollerPrune() {
 		wfSeedRandom();
-		if( 0 == mt_rand( 0, 499 ) ) # Might need to bump this
+		if( 0 == mt_rand( 0, 499 ) )
 			Patroller::pruneAssignments();
 	}
 	
@@ -131,7 +131,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 */
 		function pruneAssignments() {
 			$dbw =& wfGetDB( DB_MASTER );
-			$dbw->delete( 'patrollers', array( 'ptr_timestamp > ' . $dbw->timestamp( time() - 120 ) ), 'Patroller::pruneAssignments' );
+			$dbw->delete( 'patrollers', array( 'ptr_timestamp < ' . $dbw->timestamp( time() - 120 ) ), 'Patroller::pruneAssignments' );
 		}
 				
 	}
