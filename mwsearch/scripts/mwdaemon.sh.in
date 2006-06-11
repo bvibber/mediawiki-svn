@@ -11,6 +11,7 @@ case "$1" in
 		if [ -f $SERVICE_LOCK ]; then
 			echo "Already running on" `cat $SERVICE_LOCK`
 		else
+			ulimit -n 8192
 			nohup $RUN_SCRIPT >/dev/null &
 			sleep 1
 			echo "Done"
