@@ -65,10 +65,18 @@ namespace MediaWiki.Search {
 
 		private Configuration() {
 			if (configfile == null) {
-				string [] paths = {
-					Path.Combine(System.Environment.GetEnvironmentVariable("HOME"), ".mwsearch.conf"),
-					Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "mwsearch.conf"),
-					"/etc/mwsearch.conf" };
+				string home = System.Environment.GetEnvironmentVariable("HOME");
+				string [] paths;
+				if (home == null) {
+					paths = new string[] {
+						Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "mwsearch.conf"),
+						"/etc/mwsearch.conf" };
+				} else {	
+					paths = new string[] {
+						Path.Combine(home, ".mwsearch.conf"),
+						Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "mwsearch.conf"),
+						"/etc/mwsearch.conf" };
+				}
 				OpenProps(paths);
 			} else {
 				props = new IniConfigSource(configfile);
