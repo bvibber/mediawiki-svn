@@ -150,7 +150,7 @@ class BotQueryProcessor {
 			"Adds recently changed articles to the output list.",
 			"Parameters supported:",
 			"rcfrom     - Timestamp of the first entry to start from. The list order reverses.",
-			"rclimit    - how many total links to return.",
+			"rclimit    - How many total links to return.",
 			"             Smaller size is possible if pages changes multiple times.",
 			"rchide     - Which entries to ignore 'minor', 'bots', 'anons', 'liu' (loged-in users).",
 			"             Cannot specify both anons and liu.",
@@ -162,9 +162,9 @@ class BotQueryProcessor {
 			array(
 			"Enumerates all available pages to the output list.",
 			"Parameters supported:",
-			"aplimit      - how many total pages to return",
-			"apfrom       - the page title to start enumerating from. Default is '!'",
-			"apnamespaces - limits which namespace to enumerate. Default 0 (Main)",
+			"aplimit      - How many total pages to return",
+			"apfrom       - The page title to start enumerating from. Default is '!'",
+			"apnamespaces - Limits which namespace to enumerate. Default 0 (Main)",
 			"Example: query.php?what=allpages&aplimit=50",
 			)),
 		'nolanglinks'    => array( 'genMetaNoLangLinksPages', true,
@@ -173,9 +173,9 @@ class BotQueryProcessor {
 			array(
 			"Enumerates pages without language links to the output list.",
 			"Parameters supported:",
-			"nllimit      - how many total pages to return",
-			"nlfrom       - the page title to start enumerating from. Default is '!'",
-			"nlnamespaces - limits which namespace to enumerate. Default 0 (Main)",
+			"nllimit      - How many total pages to return",
+			"nlfrom       - The page title to start enumerating from. Default is '!'",
+			"nlnamespaces - Limits which namespace to enumerate. Default 0 (Main)",
 			"Example: query.php?what=nolanglinks&nllimit=50",
 			)),
 		'category'       => array( 'genPagesInCategory', true,
@@ -196,7 +196,7 @@ class BotQueryProcessor {
 			"Adds user pages to the output list.",
 			"Parameters supported:",
 			"usfrom     - Start user listing from...",
-			"uslimit    - how many total links to return.",
+			"uslimit    - How many total links to return.",
 			"Example: query.php?what=users&usfrom=Y",
 			)),
 
@@ -214,7 +214,7 @@ class BotQueryProcessor {
 			array(
 			"For all found pages, check if the user can edit them.",
 			"Parameters supported:",
-			"prcanmove  - If specified, also check if the page can be moved.",
+			"prcanmove  - Also check if the page can be moved.",
 			"Example: query.php?what=permissions&titles=Main_page|User%20Talk:Yurik",
 			)),
 		'links'          => array( 'genPageLinksHelper', false, null, null, array(
@@ -237,8 +237,8 @@ class BotQueryProcessor {
 			"Parameters supported:",
 			"blfilter   - Of all given pages, which should be queried:",
 			"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
-			"bllimit    - how many total links to return",
-			"blcontfrom - from which point to continue. Use the 'next' value from the previous queries.",
+			"bllimit    - How many total links to return",
+			"blcontfrom - From which point to continue. Use the 'next' value from the previous queries.",
 			"Example: query.php?what=backlinks&titles=Main%20Page&bllimit=10",
 			)),
 		'embeddedin'     => array( 'genPageBackLinksHelper', false, 
@@ -249,8 +249,8 @@ class BotQueryProcessor {
 			"Parameters supported:",
 			"eifilter   - Of all given pages, which should be queried:",
 			"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
-			"eilimit    - how many total links to return",
-			"eicontfrom - from which point to continue. Use the 'next' value from the previous queries.",
+			"eilimit    - How many total links to return",
+			"eicontfrom - From which point to continue. Use the 'next' value from the previous queries.",
 			"Example: query.php?what=embeddedin&titles=Template:Stub&eilimit=10",
 			)),
 		'imagelinks'     => array( 'genPageBackLinksHelper', false, 
@@ -260,8 +260,8 @@ class BotQueryProcessor {
 			"What pages use this image(s)",
 			"ilfilter   - Of all given images, which should be queried:",
 			"  'nonredirects', 'existing', or 'all' (default, includes non-existent or those stored on Wikimedia Commons)",
-			"illimit    - how many total links to return",
-			"ilcontfrom - from which point to continue. Use the 'next' value from the previous queries.",
+			"illimit    - How many total links to return",
+			"ilcontfrom - From which point to continue. Use the 'next' value from the previous queries.",
 			"Example: query.php?what=imagelinks&titles=Image:HermitageAcrossNeva.jpg&illimit=10",
 			)),
 		'revisions'      => array( 'genPageRevisions', false,
@@ -270,14 +270,13 @@ class BotQueryProcessor {
 			array(
 			"Revision history - Lists edits performed to the given pages",
 			"Parameters supported:",
-			"rvuniqusr  - if specified, the result will include only the last revision by each unique user.",
-			"rvcomments - if specified, the result will include summary strings",
-			"rvcontent  - if specified, the result will include raw wiki text.",
-			"             This parameter is *very slow*, use only when needed.",
-			"rvlimit    - how many links to return *for each title*. Defaults to 10, or 0 if revids=... was specified.",
-			"rvoffset   - when too many results are found, use this to page",
-			"rvstart    - timestamp of the earliest entry",
-			"rvend      - timestamp of the latest entry",
+			"rvuniqusr  - Get last #rvlimit revisions by unique authors.",
+			"rvcomments - Include summary strings.",
+			"rvcontent  - Include raw wiki text. This parameter is *very slow*, please optimize its use.",
+			"rvlimit    - How many links to return *for each title*. Defaults to 10, or 0 if revids=... was specified.",
+			"rvoffset   - When too many results are found, use this to page",
+			"rvstart    - Timestamp of the earliest entry",
+			"rvend      - Timestamp of the latest entry",
 			"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments  -- last 10 revisions of the Main Page",
 			"         query.php?what=revisions&titles=Main%20Page&rvuniqusr&rvlimit=3&rvcomments  -- 3 last unique users with their last revisions.",
 			)),
@@ -287,13 +286,13 @@ class BotQueryProcessor {
 			array(
 			"Revision history - Lists last edits performed by the given user(s)",
 			"Parameters supported:",
-			"uccomments - if specified, the result will include summary strings",
-			"uclimit    - how many links to return *for each user*",
+			"uccomments - If specified, the result will include summary strings",
+			"uclimit    - How many links to return *for each user*",
 			"Example: query.php?what=usercontribs&titles=User:YurikBot&uclimit=20&uccomments",
 			)),
 		'content'        => array( 'genPageContent', false, null, null,
 			array(
-			"Raw page content - Retrieves raw wiki markup for each page.",
+			"Raw page content - Retrieves raw wiki markup for all found pages.",
 			"This query is *very slow*! Please optimize content requests to reduce load on the servers.",
 			"Duplicate results may be obtained through revisions+rvcontent request",
 			"Example: query.php?what=content&titles=Main%20Page",
@@ -1168,7 +1167,7 @@ class BotQueryProcessor {
 			$options = array( 'LIMIT' => $rvlimit );
 			if( $rvoffset !== 0 )  $options['OFFSET'] = $rvoffset;
 			if( $rvuniqusr ) {
-				$options['ORDER BY'] = 'MAX(rev_timestamp) DESC';
+				$options['ORDER BY'] = 'MAX_rev_timestamp DESC';	// FIXME: MYSQL4 requires MAX() to be present in the fields
 				$options['GROUP BY'] = 'rev_user_text';
 				$queryname .= '_grp';
 			} else {
@@ -1183,7 +1182,7 @@ class BotQueryProcessor {
 				$conds['rev_page'] = $pageId;
 				if( $rvuniqusr ) {
 					// Query just for rev_id of last modifications by unique users
-					$res = $this->db->select( 'revision', 'MAX(rev_id) rev_id_latest', $conds, $queryname, $options );
+					$res = $this->db->select( 'revision', 'MAX(rev_id) rev_id_latest, MAX(rev_timestamp) MAX_rev_timestamp', $conds, $queryname, $options );
 					while ( $row = $this->db->fetchObject( $res ) ) {
 						$this->revIdsArray[] = $row->rev_id_latest;
 					}
