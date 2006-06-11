@@ -1142,7 +1142,6 @@ class BotQueryProcessor {
 		if( $rvcomments ) $fields[] = 'rev_comment';
 		$conds = array( 'rev_deleted' => 0 );// WHERE clause for normal & aggregated query
 		$conds2 = array();					 // WHERE clause for query by revids
-		$orderBy = 'rev_timestamp DESC';	 // common sort order
 
 		// When content is needed, table 'text' must be joined in.
 		if( $rvcontent ) {
@@ -1166,11 +1165,14 @@ class BotQueryProcessor {
 		if( $rvlimit > 0 ) {
 			if( isset($rvstart) )  $conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($rvstart);
 			if( isset($rvend) )    $conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($rvend);
-			$options = array( 'LIMIT' => $rvlimit, 'ORDER BY' => $orderBy );
+			$options = array( 'LIMIT' => $rvlimit );
 			if( $rvoffset !== 0 )  $options['OFFSET'] = $rvoffset;
 			if( $rvuniqusr ) {
-				$options['GROUP BY'] = 'rev_user_text'; // used in the first queries
+				$options['ORDER BY'] = 'MAX(rev_timestamp) DESC';
+				$options['GROUP BY'] = 'rev_user_text';
 				$queryname .= '_grp';
+			} else {
+				$options['ORDER BY'] = 'rev_timestamp DESC';
 			}
 				
 			//
@@ -1204,7 +1206,7 @@ class BotQueryProcessor {
 			$fields[] = 'rev_page';	// needed to find the originating page
 			$conds2['rev_id'] = $this->revIdsArray;
 			if( $rvlimit === 0 ) $this->startDbProfiling();	// db timer was not started yet
-			$res = $this->db->select( $tables, $fields, $conds2, $queryname . '2', array( 'ORDER BY' => $orderBy ) );
+			$res = $this->db->select( $tables, $fields, $conds2, $queryname . '2', array( 'ORDER BY' => 'rev_timestamp DESC' ));
 			while ( $row = $this->db->fetchObject( $res ) ) {
 				$this->addRevisionSubElement( $row, $row->rev_page, $rvcontent );
 			}
