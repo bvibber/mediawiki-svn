@@ -21,6 +21,7 @@
 * http://www.gnu.org/copyleft/gpl.html
 */
 
+$startTime = microtime(true);
 
 define( 'MEDIAWIKI', true );
 unset( $IP );
@@ -46,7 +47,7 @@ define( 'GEN_DEFAULTS', 3 );
 define( 'GEN_DESC',     4 );
 
 $db =& wfGetDB( DB_SLAVE );
-$bqp = new BotQueryProcessor( $db );
+$bqp = new BotQueryProcessor( $db, $startTime );
 $bqp->execute();
 $bqp->output();
 	
@@ -72,7 +73,7 @@ class BotQueryProcessor {
 			"Optional indentation can be enabled by supplying 'xmlindent' parameter.",
 			"Errors will return this usage screen, unless 'nousage' parameter is given.",
 			"Internet Explorer is known to have many issues with text/xml output.",
-			"Please use other browsers or switch to html format while debuging.",
+			"Please use other browsers or switch to html format while debugging.",
 			"Example: query.php?what=info&format=xml",
 			)),
 		'html'=> array( 'printHTML', 'text/html',
@@ -84,7 +85,7 @@ class BotQueryProcessor {
 			"Errors will return this usage screen, unless 'nousage' parameter is given.",
 			"Example: query.php?what=info&format=html",
 			)),
-		'txt' => array( 'printHumanReadable', 'application/x-wiki-botquery-print_r', null, null, array(
+		'txt' => array( 'printHumanReadable', 'application/x-wiki-queryapi-print_r', null, null, array(
 			"Human-readable format using print_r()",
 			"Details: http://www.php.net/print_r",
 			"Example: query.php?what=info&format=txt",
@@ -101,7 +102,7 @@ class BotQueryProcessor {
 			)),
 		'wddx' => array( 'printWDDX', 'text/xml', null, null, array(
 			"WDDX - Web Distributed Data eXchange format",
-			"Details: http://www.openwddx.org",
+			"Details: http://en.wikipedia.org/wiki/WDDX",
 			"Example: query.php?what=info&format=wddx",
 			)),
 		'dbg' => array( 'printDebugCode', 'application/x-wiki-botquery-var_export', null, null, array(
@@ -137,8 +138,8 @@ class BotQueryProcessor {
 			"Information about current user.",
 			"The information will always include 'name' element, and optionally 'anonymous' or 'bot' flags.",
 			"Parameters supported:",
-			"uiisblocked- If present, and current user or ip is blocked, a 'blocked' flag will be added.",
-			"uihasmsg   - If present, and current user or ip has messages waiting, a 'messages' flag will be added.",
+			"uiisblocked- If present, and current user or IP is blocked, a 'blocked' flag will be added.",
+			"uihasmsg   - If present, and current user or IP has messages waiting, a 'messages' flag will be added.",
 			"uiextended - If present, includes additional information such as rights and groups.",
 			"Example: query.php?what=userinfo&uiisblocked&uihasmsg&uiextended",
 			)),
@@ -185,7 +186,7 @@ class BotQueryProcessor {
 			"Parameters supported:",
 			"cptitle    - A category name, either with or without the 'Category:' prefix.",
 			"cplimit    - How many total pages (in category) to return.",
-			"cpfrom     - The category sort key to continue paging. Starts at the begining by default.",
+			"cpfrom     - The category sort key to continue paging. Starts at the beginning by default.",
 			"Example: query.php?what=category&cptitle=Days",
 			)),
 		'users'          => array( 'genUserPages', true,
@@ -203,7 +204,7 @@ class BotQueryProcessor {
 		// Page-specific Generators
 		//
 		'redirects'      => array( 'genRedirectInfo', false, null, null, array(
-			"For all given redirects, provides additional information such as pageIds and double-redirection",
+			"For all given redirects, provides additional information such as page IDs and double-redirection",
 			"Example: query.php?what=redirects&titles=Main_page",
 			"         query.php?what=recentchanges|redirects  (Which of the recent changes are redirects?)",
 			)),
@@ -258,7 +259,7 @@ class BotQueryProcessor {
 			array(
 			"What pages use this image(s)",
 			"ilfilter   - Of all given images, which should be queried:",
-			"  'nonredirects', 'existing', or 'all' (default, includes non-existant or those stored on Wikimedia Commons)",
+			"  'nonredirects', 'existing', or 'all' (default, includes non-existent or those stored on Wikimedia Commons)",
 			"illimit    - how many total links to return",
 			"ilcontfrom - from which point to continue. Use the 'next' value from the previous queries.",
 			"Example: query.php?what=imagelinks&titles=Image:HermitageAcrossNeva.jpg&illimit=10",
@@ -273,12 +274,12 @@ class BotQueryProcessor {
 			"rvcomments - if specified, the result will include summary strings",
 			"rvcontent  - if specified, the result will include raw wiki text.",
 			"             This parameter is *very slow*, use only when needed.",
-			"rvlimit    - how many links to return *for each title*",
+			"rvlimit    - how many links to return *for each title*. Defaults to 10, or 0 if revids=... was specified.",
 			"rvoffset   - when too many results are found, use this to page",
 			"rvstart    - timestamp of the earliest entry",
 			"rvend      - timestamp of the latest entry",
-			"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments",
-			"         query.php?what=revisions&titles=Main%20Page&rvuniqusr&rvlimit=3&rvcomments",
+			"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments  -- last 10 revisions of the Main Page",
+			"         query.php?what=revisions&titles=Main%20Page&rvuniqusr&rvlimit=3&rvcomments  -- 3 last unique users with their last revisions.",
 			)),
 		'usercontribs'   => array( 'genUserContributions', false,
 			array( 'uccomments', 'uclimit' ),
@@ -302,12 +303,13 @@ class BotQueryProcessor {
 	/**
 	* Object Constructor, uses a database connection as a parameter
 	*/
-	function BotQueryProcessor( $db )
+	function BotQueryProcessor( $db, $startTime )
 	{
 		global $wgRequest, $wgUser;
 
-		$this->totalStartTime = wfTime();
-
+		$this->startTime = $startTime;
+		$this->totalDbTime = 0;
+		
 		$this->data = array();
 		
 		$this->pageIdByText = array();	// reverse page ID lookup
@@ -329,12 +331,15 @@ class BotQueryProcessor {
 		// Do not modify this values directly - use the AddRaw() method
 		$this->titles = null;
 		$this->pageids = null;
+		$this->revids = null;
 		$this->normalizedTitles = array();
 
 		// These fields contain ids useful for other generators (redirectPageIds + nonRedirPageIds == existingPageIds)
 		$this->existingPageIds = array();	// all existsing pages
 		$this->redirectPageIds = array();	// all redirect pages
 		$this->nonRedirPageIds = array();	// all regular, non-redirect pages
+
+		$this->revIdsArray     = array();	// all explicitly requested revision ids
 	}
 
 	/**
@@ -379,15 +384,16 @@ class BotQueryProcessor {
 	{
 		global $wgRequest, $wgUser;
 
-		$this->recordProfiling( 'total', 'time', $this->totalStartTime );
+		$this->addStatusMessage( 'total', array( 'dbtime' => formatTimeInMs($this->totalDbTime) ));
+		$this->recordProfiling( 'total', 'time', $this->startTime );
 		
 		$printer = $this->outputGenerators[$this->format][GEN_FUNCTION];
 		$mime = $this->outputGenerators[$this->format][GEN_MIME];
 		header( "Content-Type: $mime; charset=utf-8;" );
 		if( !$isError ) {
-			$printer( $this->data );
+			$this->{$printer}( $this->data );
 		} else {
-			$printer( $this->data['query'] );
+			$this->{$printer}( $this->data['query'] );
 		}
 		
 		//
@@ -1122,34 +1128,26 @@ class BotQueryProcessor {
 			return;
 		}
 		$this->startProfiling();
+		
+		// Before extracting values, change the default rvlimit to 0 if revIdsArray has any elements
+		if( !empty($this->revIdsArray) ) {
+			$genInfo[GEN_DEFAULTS][ array_search( 'rvlimit', $genInfo[GEN_PARAMS] )] = 0;
+		}
 		extract( $this->getParams( $prop, $genInfo ));
 		
-		//
 		// Prepare query parameters
-		//
+		$queryname = $this->classname . '::genPageRevisions';
 		$tables = array('revision');
 		$fields = array('rev_id', 'rev_text_id', 'rev_timestamp', 'rev_user', 'rev_user_text', 'rev_minor_edit');
-		if( $rvcomments ) {
-			$fields[] = 'rev_comment';
-		}
-		$conds = array( 'rev_deleted' => 0 );
-		if( isset($rvstart) )  $conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($rvstart);
-		if( isset($rvend) )    $conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($rvend);
-		$orderBy = 'rev_timestamp DESC';	// common sort order
-		$options = array( 'LIMIT' => $rvlimit, 'ORDER BY' => $orderBy );
-		if( $rvoffset !== 0 )  $options['OFFSET'] = $rvoffset;
-		$queryname = $this->classname . '::genPageRevisions';		
-		
-		if( $rvuniqusr ) {
-			$fields[] = 'rev_page';	// needed to find the originating page
-			$options['GROUP BY'] = 'rev_user_text'; // used in the first queries
-			$latestRevIds = array(); // all found revids will be stored here to get data in the last query
-			$conds2 = array(); // conditions used for the last query
-			$queryname .= '_grp';
-		}
-		
+		if( $rvcomments ) $fields[] = 'rev_comment';
+		$conds = array( 'rev_deleted' => 0 );// WHERE clause for normal & aggregated query
+		$conds2 = array();					 // WHERE clause for query by revids
+		$orderBy = 'rev_timestamp DESC';	 // common sort order
+
+		// When content is needed, table 'text' must be joined in.
 		if( $rvcontent ) {
-			$this->validateLimit( 'content + rvlimit * pages', $rvlimit * count($this->existingPageIds), 50, 200 );
+			$this->validateLimit( 'content: (rvlimit*pages)+revids', 
+								  $rvlimit * count($this->existingPageIds) + count($this->revIdsArray), 50, 200 );
 			$tables[] = 'text';
 			$fields[] = 'old_id';
 			$fields[] = 'old_text';
@@ -1160,34 +1158,52 @@ class BotQueryProcessor {
 				$conds[] = 'rev_text_id=old_id';
 			}
 		} else {
-			$this->validateLimit( 'rvlimit * pages', $rvlimit * count($this->existingPageIds), 200, 2000 );
-		}
-		
-		//
-		// Execute queries for each page (not very efficient, until agregate queries with subqueries become available)
-		//
-		$this->startDbProfiling();
-		foreach( $this->existingPageIds as $pageId ) {
-			$conds['rev_page'] = $pageId;
-			if( $rvuniqusr ) {
-				// Query just for rev_id of last modifications by unique users
-				$res = $this->db->select( 'revision', 'MAX(rev_id) rev_id_latest', $conds, $queryname, $options );
-				while ( $row = $this->db->fetchObject( $res ) ) {
-					$latestRevIds[] = $row->rev_id_latest;
-				}
-			} else {
-				// Query all revision information
-				$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
-				while ( $row = $this->db->fetchObject( $res ) ) {
-					$this->addRevisionSubElement( $row, $pageId, $rvcontent );
-				}
-			}
-			$this->db->freeResult( $res );
+			$this->validateLimit( 'rvlimit * pages + revids',
+								  $rvlimit * count($this->existingPageIds) + count($this->revIdsArray), 200, 2000 );
 		}
 
+		// Optimize - when rvlimit is set to 0 (automatically when user gives revids= parameter)
+		if( $rvlimit > 0 ) {
+			if( isset($rvstart) )  $conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($rvstart);
+			if( isset($rvend) )    $conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($rvend);
+			$options = array( 'LIMIT' => $rvlimit, 'ORDER BY' => $orderBy );
+			if( $rvoffset !== 0 )  $options['OFFSET'] = $rvoffset;
+			if( $rvuniqusr ) {
+				$options['GROUP BY'] = 'rev_user_text'; // used in the first queries
+				$queryname .= '_grp';
+			}
+				
+			//
+			// Execute queries for each page (not very efficient, until agregate queries with subqueries become available)
+			//
+			$this->startDbProfiling();
+			foreach( $this->existingPageIds as $pageId ) {
+				$conds['rev_page'] = $pageId;
+				if( $rvuniqusr ) {
+					// Query just for rev_id of last modifications by unique users
+					$res = $this->db->select( 'revision', 'MAX(rev_id) rev_id_latest', $conds, $queryname, $options );
+					while ( $row = $this->db->fetchObject( $res ) ) {
+						$this->revIdsArray[] = $row->rev_id_latest;
+					}
+				} else {
+					// Query all revision information
+					$doneRevIds = array();
+					$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
+					while ( $row = $this->db->fetchObject( $res ) ) {
+						$this->addRevisionSubElement( $row, $pageId, $rvcontent );
+						$doneRevIds[] = $row->rev_id;
+					}
+					$this->revIdsArray = array_diff( $this->revIdsArray, $doneRevIds );	// remove everything already done
+				}
+				$this->db->freeResult( $res );
+			}
+		}
+		
 		// For unique user modifications, perform an additional query to populate data object
-		if( $rvuniqusr && !empty($latestRevIds) ) {
-			$conds2['rev_id'] = $latestRevIds;
+		if( !empty($this->revIdsArray) ) {
+			$fields[] = 'rev_page';	// needed to find the originating page
+			$conds2['rev_id'] = $this->revIdsArray;
+			if( $rvlimit === 0 ) $this->startDbProfiling();	// db timer was not started yet
 			$res = $this->db->select( $tables, $fields, $conds2, $queryname . '2', array( 'ORDER BY' => $orderBy ) );
 			while ( $row = $this->db->fetchObject( $res ) ) {
 				$this->addRevisionSubElement( $row, $row->rev_page, $rvcontent );
@@ -1197,6 +1213,9 @@ class BotQueryProcessor {
 		$this->endProfiling( $prop );
 	}
 
+	/**
+	* Revision generator helper - adds a $row from revision table to the output
+	*/
 	function addRevisionSubElement( $row, $pageId, $rvcontent )
 	{
 		$vals = array(
@@ -1394,18 +1413,46 @@ class BotQueryProcessor {
 	{
 		global $wgRequest;
 		$pageids = $this->addRaw( 'pageids', $wgRequest->getVal('pageids') );
-		if ( $pageids !== null ) {
-			$pageids = explode( '|', $pageids );
-			$pageids = array_map( 'intval', $pageids );
-			$pageids = array_unique($pageids);
-			sort( $pageids, SORT_NUMERIC );
-			if( $pageids[0] <= 0 ) {
-				$this->dieUsage( "'pageids' contains a bad id", 'pi_badpageid' );
+		if( $pageids !== null ) {
+			$this->processIds( $pageids, 'pageids' );
+		}
+		
+		$revids = $this->addRaw( 'revids', $wgRequest->getVal('revids') );
+		if( $revids !== null ) {
+			$this->processIds( $revids, 'revids' );
+			if( $pageids === null ) $pageids = array();
+			
+			$res = $this->db->select( 'revision', 'DISTINCT rev_page',
+									  array( 'rev_deleted' => 0, 'rev_id' => $revids ),
+									  $this->classname . '::parseRevIds' );
+			while ( $row = $this->db->fetchObject( $res ) ) {
+				$pageids[] = $row->rev_page;
 			}
+			$this->db->freeResult( $res );
+			$pageids = array_unique($pageids);
+			$this->validateLimit( 'pi_botquerytoobig2', count($pageids), 500, 20000 );
+			$this->revIdsArray = &$revids;
+		}
+		
+		if( !empty($pageids) ) {
 			$where['page_id'] = $pageids;
 			$this->requestsize += count($pageids);
+		} else {
+			$pageids = null;
 		}
+		
 		return $pageids;
+	}
+	
+	function processIds( &$ids, $name )
+	{
+		$ids = explode( '|', $ids );
+		$ids = array_map( 'intval', $ids );
+		$ids = array_unique($ids);
+		sort( $ids, SORT_NUMERIC );
+		if( $ids[0] <= 0 ) {
+			$this->dieUsage( "'$name' contains a bad id", "pi_bad{$name}" );
+		}
 	}
 	
 	/**
@@ -1601,17 +1648,19 @@ class BotQueryProcessor {
 				"*Summary*",
 				"  This API provides a way for your applications to query data directly from the MediaWiki servers.",
 				"  One or more pieces of information about the site and/or a given list of pages can be retrieved.",
-				"  Information may be returned in either a machine (xml, json, php) or a human readable (html, dbg) format.",
+				"  Information may be returned in either a machine (xml, json, php, wddx) or a human readable format.",
+				"  Most of the information can be requested with a single query.",
 				"",
 				"*Usage*",
 				"  query.php ? format=... & what=...|...|... & titles=...|...|... & ...",
 				"",
 				"*Common parameters*",
-				"    format     - How should the output be formatted. See formats section.",
-				"    what       - What information the server should return. See properties section.",
+				"    format     - How should the output be formatted. See formats section below.",
+				"    what       - What information the server should return. See properties section below.",
 				"    titles     - A list of titles, separated by the pipe '|' symbol.",
 				"    pageids    - A list of page ids, separated by the pipe '|' symbol.",
-				"    noprofile  - When present, each sql query execution time will be hidden. (not implemented)",
+				"    revids     - List of revision ids, separated by '|' symbol. See 'revisions' property for additional information.",
+				// "    noprofile  - When present, each sql query execution time will be hidden.",
 				"",
 				"*Examples*",
 				"    query.php?format=xml&what=links|templates&titles=User:Yurik",
@@ -1620,6 +1669,14 @@ class BotQueryProcessor {
 				"    query.php?format=xml&what=revisions&titles=Main_Page&rvlimit=100&rvstart=20060401000000&rvcomments",
 				"  Get a list of 100 last revisions of the main page with comments, but only if it happened after midnight April 1st 2006",
 				"",
+				"    query.php?format=xml&what=revisions&revids=1&rvcomments",
+				"  Get revision 1 with some of its properties",
+				"",
+				"*Notes*",
+				"  Some properties may add status information to the <query> element.",
+				"  For example, query.php?what=allpages&aplimit=3 will set an element <query>/<allpages next='B'> to the next available value.",
+				"  For the next request, set '__from' to that value to continue paging: query.php?what=allpages&aplimit=3&apfrom=B",
+				"  In addition, <query> element has performance time (in ms) for both database and total processing to allow request optimization.",
 				"",
 				"*Supported Formats*",
 				$formats,
@@ -1627,20 +1684,20 @@ class BotQueryProcessor {
 				"*Supported Properties*",
 				$props,
 				"",
-				"*Notes*",
-				"  Some properties may add status information to the 'query' element.",
+				"*Source Code and Revision History*",
+				// This line uses %2E instead of '.' because otherwise html printer will try to make a link to "query.php?..."
+				"  Changelog and source is available at http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/BotQuery/query%2Ephp?view=log",
 				"",
 				"*Credits*",
-				"  This feature is maintained by Yuri Astrakhan (FirstnameLastname@gmail.com)",
+				"  This feature was written and is being maintained by Yuri Astrakhan (FirstnameLastname@gmail.com)",
 				"  Please leave your comments and suggestions at http://en.wikipedia.org/wiki/User_talk:Yurik",
 				"",
 				"  This extension came as the result of IRC discussion between Yuri Astrakhan (en:Yurik), Tim Starling (en:Tim Starling), and Daniel Kinzler(de:Duesentrieb)",
 				"  The extension was first implemented by Tim to provide interlanguage links and history summary.",
-				"  It was later completelly rewritten by Yuri, introducing the rest of properties, meta information, and various formatting options.",
+				"  It was later completely rewritten by Yuri, introducing the rest of properties, meta information, and various formatting options.",
 				"",
 				"*User Status*",
-				"  You are " . ($wgUser->isAnon() ? "an anonymous" : "a logged-in") . " " . ($this->isBot ? "bot" : "user") . " " . $wgUser->getName() .
-					($wgUser->getNewtalk() ? ', and you have unread messages.' : '.'),
+				"  You are " . ($wgUser->isAnon() ? "an anonymous" : "a logged-in") . " " . ($this->isBot ? "bot" : "user") . " " . $wgUser->getName(),
 				"",
 				"*Version*",
 				'  $Id$',
@@ -1688,14 +1745,14 @@ class BotQueryProcessor {
 	*/
 	function startProfiling()
 	{
-		$this->startTime = wfTime();
+		$this->moduleStartTime = wfTime();
 	}
 	/**
 	* Same as startProfiling, but used for DB access only
 	*/
 	function startDbProfiling()
 	{
-		$this->startDbTime = wfTime();
+		$this->moduleDbStartTime = wfTime();
 	}
 	
 	/**
@@ -1703,14 +1760,14 @@ class BotQueryProcessor {
 	*/
 	function endProfiling( $module )
 	{
-		$this->recordProfiling( $module, 'time', $this->startTime );
+		$this->recordProfiling( $module, 'time', $this->moduleStartTime );
 	}
 	/**
 	* Same as endProfiling, but used for DB access only
 	*/
 	function endDbProfiling( $module )
 	{
-		$this->recordProfiling( $module, 'dbtime', $this->startDbTime );
+		$this->totalDbTime += $this->recordProfiling( $module, 'dbtime', $this->moduleDbStartTime );
 	}
 	/**
 	* Helper profiling function
@@ -1718,14 +1775,19 @@ class BotQueryProcessor {
 	function recordProfiling( $module, $type, &$start )
 	{
 		$timeDelta = wfTime() - $start;
-		unset($start);
-		$this->addStatusMessage( $module, array( $type => sprintf( "%1.2fms", $timeDelta * 1000.0 ) ));
+		$this->addStatusMessage( $module, array( $type => formatTimeInMs($timeDelta) ));
+		return $timeDelta;
+	}
+	
+	function formatTimeFromStart()
+	{
+		return 'Total execution time: ' . formatTimeInMs(wfTime() - $this->startTime) . ' ms';
 	}
 	
 	/**
 	* Validate the value against the minimum and user/bot maximum limits. Prints usage info on failure.
 	*/
-	function validateLimit( $varname, $value, $max, $botMax = false, $min = 1 )
+	function validateLimit( $varname, $value, $max, $botMax = false, $min = 0 )
 	{
 		global $wgUser;
 		if( $botMax === false ) $botMax = $max;
@@ -1743,46 +1805,119 @@ class BotQueryProcessor {
 			}
 		}
 	}
-}
 
+	//
+	// ************************************* Print Methods *************************************
+	//
 
-//
-// ************************************* Print Methods *************************************
-//
-
-/**
-* Prints data in html format. Escapes all unsafe characters. Adds an HTML warning in the begining.
-*/
-function printHTML( &$data )
-{
-?>
-<html>
-<head>
-	<title>MediaWiki Query Interface</title>
-</head>
-<body>
-	<br/>
-<?php
-	if( !array_key_exists('usage', $data) ) {
-?>
-	<small>
-	This page is being rendered in HTML format, which might not be suitable for your application.<br/>
-	See <a href="query.php">query.php</a> for more information.<br/>
-	</small>
-<?php
+	/**
+	* Prints data in html format. Escapes all unsafe characters. Adds an HTML warning in the beginning.
+	*/
+	function printHTML( &$data )
+	{
+	?>
+	<html>
+	<head>
+		<title>MediaWiki Query Interface</title>
+	</head>
+	<body>
+		<br/>
+	<?php
+		if( !array_key_exists('usage', $data) ) {
+	?>
+		<small>
+		This page is being rendered in HTML format, which might not be suitable for your application.<br/>
+		See <a href="query.php">query.php</a> for more information.<br/>
+		</small>
+	<?php
+		}
+	?>
+	<pre><?php
+		recXmlPrint( 'htmlPrinter', 'yurik', $data, -2 );
+		htmlPrinter( "\n\n*{$this->formatTimeFromStart()}*" );
+	?></pre>
+	</body>
+	<?php
 	}
-?>
-<pre><?php
-	recXmlPrint( 'htmlprinter', 'yurik', $data, -2 );
-?></pre>
-</body>
-<?php
+
+	/**
+	* Output data in XML format
+	*/
+	function printXML( &$data )
+	{
+		global $wgRequest;
+		echo '<?xml version="1.0" encoding="utf-8"?>';
+		recXmlPrint( 'echoPrinter', 'yurik', $data, $wgRequest->getCheck('xmlindent') ? -2 : null );
+		echoPrinter( "\n<!--{$this->formatTimeFromStart()}-->" );
+	}
+
+	/**
+	* Sanitizes the data and prints it with the print_r()
+	*/
+	function printHumanReadable( &$data )
+	{
+		sanitizeOutputData($data);
+		print_r($data);
+		echo "\n\n{$this->formatTimeFromStart()}";
+	}
+
+	/**
+	* Prints the data as is, using var_export().
+	* This format exposes all internals of the data object unescaped, thus it must never be outputed with meta set to text/*
+	*/
+	function printDebugCode( &$data )
+	{
+		var_export($data);
+		echo "\n\n{$this->formatTimeFromStart()}";
+	}
+
+	/**
+	* Sanitizes the data and serialize() it so that other php scripts can easily consume the data
+	*/
+	function printPHP( &$data )
+	{
+		sanitizeOutputData($data);
+		echo serialize($data);
+	}
+
+	/**
+	* Sanitizes the data and serialize it in WDDX format.
+	* If PHP was compiled with WDDX support, use it (faster)
+	*/
+	function printWDDX( &$data )
+	{
+		sanitizeOutputData($data);
+		if ( function_exists( 'wddx_serialize_value' ) ) {
+			echo wddx_serialize_value($data);
+		} else {
+			echo '<?xml version="1.0" encoding="utf-8"?>';
+			echo '<wddxPacket version="1.0"><header/><data>';
+			slowWddxPrinter( $data );
+			echo '</data></wddxPacket>';
+		}
+		echo "\n<!--{$this->formatTimeFromStart()}-->";
+	}
+
+	/**
+	* Sanitizes the data and serializes it in JSON format
+	*/
+	function printJSON( &$data )
+	{
+		sanitizeOutputData($data);
+		if ( !function_exists( 'json_encode' ) ) {
+			require_once 'json.php';
+			$json = new Services_JSON();
+			echo $json->encode( $data );
+		} else {
+			echo json_encode( $data );
+		}
+	}
 }
 
 /**
 * Prety-print various elements in HTML format, such as xml tags and URLs. This method also replaces any "<" with &lt;
 */
-function htmlprinter( $text )
+function htmlPrinter( $text )
 {
 	// encode all tags as safe blue strings
 	$text = ereg_replace( '\<([^>]+)\>', '<font color=blue>&lt;\1&gt;</font>', $text );
@@ -1796,64 +1931,11 @@ function htmlprinter( $text )
 }
 
 /**
-* Output data in XML format
-*/
-function printXML( &$data )
-{
-	global $wgRequest;
-	echo '<?xml version="1.0" encoding="utf-8"?>';
-	recXmlPrint( 'echoprinter', 'yurik', $data, $wgRequest->getCheck('xmlindent') ? -2 : null );
-}
-/**
 * Pass-through printer.
 */
-function echoprinter( $text )
+function echoPrinter( $text )
 {
 	echo $text;
-}
-
-/**
-* Sanitizes the data and prints it with the print_r()
-*/
-function printHumanReadable( &$data )
-{
-	sanitizeOutputData($data);
-	print_r($data);
-}
-
-/**
-* Prints the data as is, using var_export().
-* This format exposes all internals of the data object unescaped, thus it must never be outputed with meta set to text/*
-*/
-function printDebugCode( &$data )
-{
-	var_export($data);
-}
-
-/**
-* Sanitizes the data and serialize() it so that other php scripts can easily consume the data
-*/
-function printPHP( &$data )
-{
-	sanitizeOutputData($data);
-	echo serialize($data);
-}
-
-/**
-* Sanitizes the data and serialize it in WDDX format.
-* If PHP was compiled with WDDX support, use it (faster)
-*/
-function printWDDX( &$data )
-{
-	sanitizeOutputData($data);
-	if ( function_exists( 'wddx_serialize_value' ) ) {
-		echo wddx_serialize_value($data);
-	} else {
-		echo '<?xml version="1.0" encoding="utf-8"?>';
-		echo '<wddxPacket version="1.0"><header/><data>';
-		slowWddxPrinter( $data );
-		echo '</data></wddxPacket>';
-	}
 }
 
 /**
@@ -1880,21 +1962,6 @@ function slowWddxPrinter( &$elemValue )
 			break;
 		default:
 			die( 'Unknown type ' . gettype($elemValue) );
-	}
-}
-
-/**
-* Sanitizes the data and serializes it in JSON format
-*/
-function printJSON( &$data )
-{
-	sanitizeOutputData($data);
-	if ( !function_exists( 'json_encode' ) ) {
-		require_once 'json.php';
-		$json = new Services_JSON();
-		echo $json->encode( $data );
-	} else {
-		echo json_encode( $data );
 	}
 }
 
@@ -2004,5 +2071,11 @@ function mergeParameters( &$generators )
 	}
 	return $params;
 }
+
+function formatTimeInMs($timeDelta)
+{
+	return sprintf( "%1.2f", $timeDelta * 1000.0 );
+}
+
 
 ?>
