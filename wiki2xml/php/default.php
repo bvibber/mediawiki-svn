@@ -14,6 +14,8 @@ $xmlg["use_xml_temp_files"] = false ;
 $xmlg["xhtml_source"] = false ;
 $xmlg['xhtml_justify'] = false ;
 $xmlg['xhtml_logical_markup'] = false ;
+$xmlg['text_hide_images'] = false ;
+$xmlg['text_hide_tables'] = false ;
 
 @include ( "local.php" ) ;
 

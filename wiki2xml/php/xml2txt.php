@@ -48,7 +48,7 @@ class element {
 	 * Parse the tag
 	 */
 	function parse ( &$tree ) {
-		global $content_provider , $wiki2xml_authors ;
+		global $content_provider , $wiki2xml_authors , $xmlg ;
 		$ret = '';
 		$tag = $this->name ;
 		$is_root = ( $tree->iter == 1 ) ;
@@ -83,10 +83,13 @@ class element {
 				
 				
 				if ( $ns == 6 ) { # Surround image text with newlines
-					$nstext = explode ( ":" , $this->link_target , 2 ) ;
-					$nstext = "" ;
-#					array_shift ( $nstext ) ;
-					$link = "\m(" . $nstext . ":" . $link . ")\n" ;
+					if ( $xmlg['text_hide_images'] ) $link = '' ;
+					else {
+						$nstext = explode ( ":" , $this->link_target , 2 ) ;
+						$nstext = "" ;
+#						array_shift ( $nstext ) ;
+						$link = "\m(" . $nstext . ":" . $link . ")\n" ;
+					}
 				} else if ( $ns == -9 ) { # Adding newline to interlanguage link
 					$link = "\m" . $link ;
 				} else if ( $ns == -8 ) { # Adding newline to category link
@@ -128,11 +131,20 @@ class element {
 			if ( $tag == "ARTICLE" && isset ( $this->attrs["TITLE"] ) ) {
 				$ret .= strtoupper ( urldecode ( $this->attrs["TITLE"] ) ) . "\n" ;
 			}
-			$ret .= $this->sub_parse ( $tree ) ;
-			if ( $tag == "TABLEHEAD" || $tag == "XHTML:B" || $tag == "XHTML:STRONG" || $tag == "BOLD" ) $ret = $tree->bold . $ret . $tree->bold ;
-			else if ( $tag == "XHTML:I" || $tag == "XHTML:EM" || $tag == "ITALICS" ) $ret = $tree->italics . $ret . $tree->italics ;
-			else if ( $tag == "XHTML:U" ) $ret = $tree->underline . $ret . $tree->underline ;
-			if ( $tag == "TABLEHEAD" ) $ret = "\n" . $ret ;
+			if ( $xmlg['text_hide_tables'] && ( substr ( $tag , 0 , 5 ) == 'TABLE' || 
+				$tag == 'XHTML:TABLE' || 
+				$tag == 'XHTML:TH' || 
+				$tag == 'XHTML:CAPTION' || 
+				$tag == 'XHTML:TD' || 
+				$tag == 'XHTML:TR' ) ) {
+				$ret = '' ;
+			} else {
+				$ret .= $this->sub_parse ( $tree ) ;
+				if ( $tag == "TABLEHEAD" || $tag == "XHTML:B" || $tag == "XHTML:STRONG" || $tag == "BOLD" ) $ret = $tree->bold . $ret . $tree->bold ;
+				else if ( $tag == "XHTML:I" || $tag == "XHTML:EM" || $tag == "ITALICS" ) $ret = $tree->italics . $ret . $tree->italics ;
+				else if ( $tag == "XHTML:U" ) $ret = $tree->underline . $ret . $tree->underline ;
+				if ( $tag == "TABLEHEAD" ) $ret = "\n" . $ret ;
+			}
 		}
 
 		$tree->iter-- ; # Unnecessary, since not really used
