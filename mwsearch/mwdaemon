@@ -1,0 +1,8 @@
+#!/bin/bash
+# Startup script for mwdaemon when installed in the default locations
+# Increase FD limit
+ulimit -n 8192
+# Preempt silly broken pid check
+rm -f /tmp/MWDaemon.pid
+# Run the program
+daemonize -p /var/run/mwdaemon.pid /usr/bin/mono /usr/local/lib/mwsearch/MWDaemon.exe

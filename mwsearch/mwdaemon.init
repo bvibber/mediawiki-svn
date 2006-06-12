@@ -1,0 +1,45 @@
+#!/bin/sh
+# chkconfig: 84 16
+# vim: autoindent
+
+SERVICE_NAME="MWDaemon"
+
+RUN_SCRIPT="/usr/local/bin/mwdaemon"
+
+. /etc/init.d/functions
+
+case "$1" in
+	start)
+		pid=`pidfileofproc mwdaemon`
+		if [ ! -z $pid ] && checkpid $pid; then
+			echo "$SERVICE_NAME already running."
+			exit 1
+		fi
+
+		echo -n "Starting $SERVICE_NAME: "
+		daemon $RUN_SCRIPT
+		echo
+		;;
+	stop)
+		echo -n "Stopping $SERVICE_NAME: "
+		killproc $RUN_SCRIPT
+		echo
+		;;
+	restart)
+		$0 stop
+		$0 start
+		;;
+	status)
+		pid=`pidfileofproc mwdaemon`
+		if [ ! -z $pid ] && checkpid $pid; then
+			echo "$SERVICE_NAME is running"
+		else
+			echo "$SERVICE_NAME is not running"
+		fi
+		;;
+	*)
+		echo "Usage: $0 {start|stop|status|restart}"
+		exit 1
+		;;
+esac
+
