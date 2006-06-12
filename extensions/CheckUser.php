@@ -25,7 +25,7 @@ class CheckUser extends UnlistedSpecialPage
 		
 		if ( !in_array( 'checkuser', $wgUser->getRights() ) ) {
 			$wgOut->setArticleRelated( false );
-			$wgOut->setRobotpolicy( 'noindex,follow' );
+			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 			$wgOut->errorpage( 'nosuchspecialpage', 'nospecialpagetext' );
 			return;
 		}
