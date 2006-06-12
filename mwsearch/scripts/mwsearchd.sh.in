@@ -3,27 +3,32 @@
 # description: MediaWiki search backend HTTP server
 # vim: autoindent
 
-SERVICE_NAME="MWDaemon"
-
-RUN_SCRIPT="/usr/local/bin/mwdaemon"
-
+SERVICE_NAME="MediaWiki search server"
+BINDIR=/usr/local/bin
 . /etc/init.d/functions
 
 case "$1" in
 	start)
-		pid=`pidfileofproc mwdaemon`
+		# Check if it is running
+		pid=`pidfileofproc mwsearchd`
 		if [ ! -z $pid ] && checkpid $pid; then
 			echo "$SERVICE_NAME already running."
 			exit 1
 		fi
 
 		echo -n "Starting $SERVICE_NAME: "
-		daemon $RUN_SCRIPT
+
+		# Increase FD limit
+		ulimit -n 8192
+		# Run the daemon
+		# Needs daemonize from http://www.clapper.org/software/daemonize/
+		daemonize -p /var/run/mwsearchd.pid $BINDIR/mwsearchd
+		[ "$?" -eq 0 ] && success $SERVICE_NAME || failure $SERVICE_NAME
 		echo
 		;;
 	stop)
 		echo -n "Stopping $SERVICE_NAME: "
-		killproc $RUN_SCRIPT
+		killproc mwsearchd
 		echo
 		;;
 	restart)
@@ -31,7 +36,7 @@ case "$1" in
 		$0 start
 		;;
 	status)
-		pid=`pidfileofproc mwdaemon`
+		pid=`pidfileofproc mwsearchd`
 		if [ ! -z $pid ] && checkpid $pid; then
 			echo "$SERVICE_NAME is running"
 		else

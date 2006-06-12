@@ -33,7 +33,7 @@ SCRIPTS=\
   build/MWSearchTool.sh
 
 INITSCRIPTS=\
-  build/mwdaemon.sh
+  build/mwsearchd.sh
 
 CONFIG=\
   build/MWUpdateDaemon.exe.config
@@ -49,11 +49,12 @@ install: all
 	install -d $(INSTALL_ASSEMBLYDIR)
 	install $(ASSEMBLIES) $(CONFIG) $(INSTALL_ASSEMBLYDIR)
 	install $(LIBS) $(INSTALL_ASSEMBLYDIR)
-	install -m 0755 build/MWDaemon.sh $(INSTALL_BINDIR)/MWBenchmark
+	install -m 0755 build/MWBenchmark.sh $(INSTALL_BINDIR)/MWBenchmark
 	install -m 0755 build/MWDaemon.sh $(INSTALL_BINDIR)/MWDaemon
 	install -m 0755 build/MWUpdateDaemon.sh $(INSTALL_BINDIR)/MWUpdateDaemon
 	install -m 0755 build/MWSearchTool.sh $(INSTALL_BINDIR)/MWSearchTool
-	install -m 0755 build/mwdaemon.sh $(INSTALL_INITDIR)/mwdaemon
+	install -m 0755 build/mwsearchd $(INSTALL_BINDIR)/mwsearchd
+	install -m 0755 build/mwsearchd.sh $(INSTALL_INITDIR)/mwsearchd
 	echo "Don't forget to set up /etc/mwsearch.conf"
 
 uninstall :
@@ -61,6 +62,7 @@ uninstall :
 	rm -f $(INSTALL_BINDIR)/MWDaemon
 	rm -f $(INSTALL_BINDIR)/MWUpdateDaemon
 	rm -f $(INSTALL_BINDIR)/MWSearchTool
+	rm -f $(INSTALL_BINDIR)/mwsearchd
 	rm -f $(INSTALL_ASSEMBLYDIR)/*.dll
 	rm -f $(INSTALL_ASSEMBLYDIR)/*.exe
 	rmdir $(INSTALL_ASSEMBLYDIR) || true
@@ -148,6 +150,18 @@ build/MWDaemon.sh :
 	echo "mono $(INSTALL_ASSEMBLYDIR)/MWDaemon.exe \$$@" >> build/MWDaemon.sh
 	echo "rm -f /tmp/MWDaemon.pid" >> build/MWDaemon.sh
 
+# mwsearchd bundled executable
+
+DAEMON_BUNDLE=\
+	build/MWDaemon.exe \
+	build/MWSearch.dll \
+	build/log4net.dll \
+	build/Nini.dll \
+	build/Lucene.Net.dll \
+	build/MWPrefix.dll
+
+build/mwsearchd : $(DAEMON_BUNDLE)
+	mkbundle -o build/mwsearchd $(DAEMON_BUNDLE)
 
 # MWUpdateDaemon.exe: database refresher, daemon version
 UPDATEDAEMON_SOURCES=\
@@ -234,5 +248,5 @@ build/mwdumper.dll : libs/mwdumper.jar
 	$(MONO) libs/ikvmc.exe -out:$@ -target:library -exclude:libs/mwdumper-no-ikvm.txt libs/mwdumper.jar
 
 
-build/mwdaemon.sh : scripts/mwdaemon.sh.in
-	sed -e "s|/usr/local/bin|$(INSTALL_BINDIR)|" < scripts/mwdaemon.sh.in > $@
+build/mwsearchd.sh : scripts/mwsearchd.sh.in
+	sed -e "s|/usr/local/bin|$(INSTALL_BINDIR)|" < scripts/mwsearchd.sh.in > $@
