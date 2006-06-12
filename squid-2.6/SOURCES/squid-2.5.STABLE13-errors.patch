@@ -1,0 +1,12 @@
+--- errors/Makefile.am.orig	2006-04-29 19:05:46.000000000 +0000
++++ errors/Makefile.am	2006-04-29 19:06:06.000000000 +0000
+@@ -41,7 +41,8 @@
+ 		Spanish \
+ 		Swedish \
+ 		Traditional_Chinese \
+-		Turkish
++		Turkish \
++		Wikimedia
+ 
+ install-data-local:
+ 	@for l in $(INSTALL_LANGUAGES); do \

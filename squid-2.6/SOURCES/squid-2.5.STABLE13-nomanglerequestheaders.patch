@@ -1,0 +1,13 @@
+--- src/http.c.orig	2006-04-29 15:51:43.000000000 +0000
++++ src/http.c	2006-04-29 15:52:18.000000000 +0000
+@@ -1030,8 +1030,10 @@
+ 	    httpHeaderPutStr(hdr_out, HDR_CONNECTION, "keep-alive");
+ 	}
+     }
++#if 0
+     /* Now mangle the headers. */
+     httpHdrMangleList(hdr_out, orig_request);
++#endif
+     stringClean(&strConnection);
+ }
+ 

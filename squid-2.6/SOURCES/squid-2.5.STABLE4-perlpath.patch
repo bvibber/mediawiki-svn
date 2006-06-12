@@ -1,0 +1,8 @@
+--- squid-2.5.STABLE4/contrib/#url-normalizer.pl~	2004-02-06 14:08:29.000000000 -0500
++++ squid-2.5.STABLE4/contrib/url-normalizer.pl	2004-02-06 14:08:29.000000000 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl -Tw
++#!/usr/bin/perl -Tw
+ 
+ # From:    Markus Gyger <mgyger@itr.ch>
+ #

@@ -1,0 +1,115 @@
+--- squid-2.5.STABLE11/src/cf.data.pre.config	2005-09-13 15:44:35.000000000 +0200
++++ squid-2.5.STABLE11/src/cf.data.pre	2005-09-23 11:13:06.000000000 +0200
+@@ -2210,6 +2210,7 @@
+ #http_access allow our_networks
+ 
+ # And finally deny all other access to this proxy
++http_access allow localhost
+ http_access deny all
+ NOCOMMENT_END
+ DOC_END
+@@ -2436,11 +2437,11 @@
+ 
+ NAME: cache_mgr
+ TYPE: string
+-DEFAULT: webmaster
++DEFAULT: root
+ LOC: Config.adminEmail
+ DOC_START
+ 	Email-address of local cache manager who will receive
+-	mail if the cache dies. The default is "webmaster".
++	mail if the cache dies. The default is "root".
+ DOC_END
+ 
+ 
+@@ -2471,22 +2472,23 @@
+ 
+ NAME: cache_effective_user
+ TYPE: string
+-DEFAULT: nobody
++DEFAULT: squid
+ LOC: Config.effectiveUser
+ DOC_START
+ 	If you start Squid as root, it will change its effective/real
+ 	UID/GID to the user specified below.  The default is to change
+-	to UID to nobody.  If you define cache_effective_user, but not
++	to UID to "squid".  If you define cache_effective_user, but not
+ 	cache_effective_group, Squid sets the GID to the effective
+ 	user's default group ID (taken from the password file) and
+ 	supplementary group list from the from groups membership of
+ 	cache_effective_user.
++cache_effective_user squid
+ DOC_END
+ 
+ 
+ NAME: cache_effective_group
+ TYPE: string
+-DEFAULT: none
++DEFAULT: squid 
+ LOC: Config.effectiveGroup
+ DOC_START
+ 	If you want Squid to run with a specific GID regardless of
+@@ -2496,6 +2498,7 @@
+ 	and only this GID is effective. If Squid is not started as
+ 	root the user starting Squid must be member of the specified
+ 	group.
++cache_effective_group squid
+ DOC_END
+ 
+ 
+@@ -2723,7 +2726,7 @@
+ 
+ NAME: logfile_rotate
+ TYPE: int
+-DEFAULT: 10
++DEFAULT: 0
+ LOC: Config.Log.rotateNumber
+ DOC_START
+ 	Specifies the number of logfile rotations to make when you
+@@ -2739,6 +2742,8 @@
+ 	purposes, so -k rotate uses another signal.  It is best to get
+ 	in the habit of using 'squid -k rotate' instead of 'kill -USR1
+ 	<pid>'.
++	
++logfile_rotate 0
+ DOC_END
+ 
+ 
+@@ -3296,10 +3301,18 @@
+ LOC: Config.errorDirectory
+ DEFAULT: @DEFAULT_ERROR_DIR@
+ DOC_START
+-	If you wish to create your own versions of the default
+-	(English) error files, either to customize them to suit your
+-	language or company copy the template English files to another
++	Directory where the error files are read from.
++	/usr/lib/squid/errors contains sets of error files
++	in different languages. The default error directory
++	is /etc/squid/errors, which is a link to one of these
++	error sets.
++
++	If you wish to create your own versions of the error files,
++	either to customize them to suit your language or company,
++	copy the template English files to another
+ 	directory and point this tag at them.
++	
++error_directory @DEFAULT_ERROR_DIR@
+ DOC_END
+ 
+ NAME: maximum_single_addr_tries
+@@ -3333,12 +3346,12 @@
+ NAME: snmp_port
+ TYPE: ushort
+ LOC: Config.Port.snmp
+-DEFAULT: 3401
++DEFAULT: 0
+ IFDEF: SQUID_SNMP
+ DOC_START
+ 	Squid can now serve statistics and status information via SNMP.
+-	By default it listens to port 3401 on the machine. If you don't
+-	wish to use SNMP, set this to "0".
++	A value of "0" disables SNMP support. If you wish to use SNMP,
++	set this to "3401" to use the normal SNMP support.
+ DOC_END
+ 
+ NAME: snmp_access

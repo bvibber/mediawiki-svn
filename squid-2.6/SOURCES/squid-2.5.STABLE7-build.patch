@@ -1,0 +1,118 @@
+--- squid-2.5.STABLE3/errors/Makefile.in.build	2003-02-11 21:02:09.000000000 -0500
++++ squid-2.5.STABLE3/errors/Makefile.in	2003-06-30 11:21:03.000000000 -0400
+@@ -116,9 +116,9 @@
+ install_sh = @install_sh@
+ makesnmplib = @makesnmplib@
+ 
+-errordir = $(datadir)/errors
++errordir = $(pkgdatadir)/errors
+ 
+-DEFAULT_ERROR_DIR = $(errordir)
++DEFAULT_ERROR_DIR = $(sysconfdir)/errors
+ 
+ INSTALL_LANGUAGES = @ERR_LANGUAGES@
+ LANGUAGES = \
+@@ -272,17 +272,17 @@
+ 
+ install-data-local: 
+ 	@for l in $(INSTALL_LANGUAGES); do \
+-		$(mkinstalldirs) $(DESTDIR)$(DEFAULT_ERROR_DIR)/$$l && \
++		$(mkinstalldirs) $(DESTDIR)$(errordir)/$$l && \
+ 		for f in $(srcdir)/$$l/ERR_*; do \
+-			echo "$(INSTALL_DATA) $$f $(DESTDIR)$(DEFAULT_ERROR_DIR)/$$l"; \
+-			$(INSTALL_DATA) $$f $(DESTDIR)$(DEFAULT_ERROR_DIR)/$$l; \
++			echo "$(INSTALL_DATA) $$f $(DESTDIR)$(errordir)/$$l"; \
++			$(INSTALL_DATA) $$f $(DESTDIR)$(errordir)/$$l; \
+ 		done \
+ 	done
+ 
+ uninstall-local:
+ 	@for l in $(INSTALL_LANGUAGES); do \
+ 		for f in $(srcdir)/$$l/ERR_*; do \
+-	        	rm -f $(DESTDIR)$(DEFAULT_ERROR_DIR)/$$l/`basename $$f`; \
++	        	rm -f $(DESTDIR)$(errordir)/$$l/`basename $$f`; \
+ 		done \
+ 	done
+ 
+@@ -295,13 +295,13 @@
+ #
+ addlang: all
+ 	-@if test -d $(srcdir)/$(ADDLANG); then \
+-	if test -d $(DEFAULT_ERROR_DIR)/$(DESTLANG); then \
++	if test -d $(errordir)/$(DESTLANG); then \
+ 	cd $(srcdir)/$(ADDLANG)/ ; \
+ 	for f in ERR_*; do \
+-		if test -f $(DEFAULT_ERROR_DIR)/$(DESTLANG)/$$f ; then \
++		if test -f $(errordir)/$(DESTLANG)/$$f ; then \
+ 			echo "appending $(ADDLANG)/$$f"; \
+-			echo "<HR>" >> $(DEFAULT_ERROR_DIR)/$(DESTLANG)/$$f ; \
+-			cat $$f >> $(DEFAULT_ERROR_DIR)/$(DESTLANG)/$$f; \
++			echo "<HR>" >> $(errordir)/$(DESTLANG)/$$f ; \
++			cat $$f >> $(errordir)/$(DESTLANG)/$$f; \
+ 		fi; \
+ 	done; \
+ 	fi \
+--- squid-2.5.STABLE3/icons/Makefile.in.build	2003-05-21 20:15:40.000000000 -0400
++++ squid-2.5.STABLE3/icons/Makefile.in	2003-06-30 11:18:12.000000000 -0400
+@@ -144,7 +144,7 @@
+ 		anthony-xpm.gif
+ 
+ 
+-icondir = $(datadir)/icons
++icondir = $(pkgdatadir)/icons
+ icon_DATA = $(ICON1) $(ICON2)
+ EXTRA_DIST = $(ICON1) $(ICON2) icons.shar
+ DISTCLEANFILES = 
+--- squid-2.5.STABLE7/src/Makefile.in.build	2004-09-25 17:37:59.000000000 -0400
++++ squid-2.5.STABLE7/src/Makefile.in	2004-10-25 11:41:39.000000000 -0400
+@@ -376,18 +376,18 @@
+ DEFAULT_CONFIG_FILE = $(sysconfdir)/squid.conf
+ DEFAULT_MIME_TABLE = $(sysconfdir)/mime.conf
+ DEFAULT_DNSSERVER = $(libexecdir)/`echo dnsserver | sed '$(transform);s/$$/$(EXEEXT)/'`
+-DEFAULT_LOG_PREFIX = $(localstatedir)/logs
++DEFAULT_LOG_PREFIX = $(localstatedir)/log/squid
+ DEFAULT_CACHE_LOG = $(DEFAULT_LOG_PREFIX)/cache.log
+ DEFAULT_ACCESS_LOG = $(DEFAULT_LOG_PREFIX)/access.log
+ DEFAULT_STORE_LOG = $(DEFAULT_LOG_PREFIX)/store.log
+-DEFAULT_PID_FILE = $(DEFAULT_LOG_PREFIX)/squid.pid
+-DEFAULT_SWAP_DIR = $(localstatedir)/cache
++DEFAULT_PID_FILE = $(localstatedir)/run/squid.pid
++DEFAULT_SWAP_DIR = $(localstatedir)/spool/squid
+ DEFAULT_PINGER = $(libexecdir)/`echo pinger | sed '$(transform);s/$$/$(EXEEXT)/'`
+ DEFAULT_UNLINKD = $(libexecdir)/`echo unlinkd | sed '$(transform);s/$$/$(EXEEXT)/'`
+ DEFAULT_DISKD = $(libexecdir)/`echo diskd | sed '$(transform);s/$$/$(EXEEXT)/'`
+-DEFAULT_ICON_DIR = $(datadir)/icons
+-DEFAULT_ERROR_DIR = $(datadir)/errors/@ERR_DEFAULT_LANGUAGE@
+-DEFAULT_MIB_PATH = $(datadir)/mib.txt
++DEFAULT_ICON_DIR = $(pkgdatadir)/icons
++DEFAULT_ERROR_DIR = $(pkgdatadir)/errors/@ERR_DEFAULT_LANGUAGE@
++DEFAULT_MIB_PATH = $(sysconfdir)/mib.txt
+ 
+ DEFS = @DEFS@ -DDEFAULT_CONFIG_FILE=\"$(DEFAULT_CONFIG_FILE)\"
+ 
+@@ -838,20 +838,20 @@
+ uninstall-info-am:
+ install-dataDATA: $(data_DATA)
+ 	@$(NORMAL_INSTALL)
+-	$(mkinstalldirs) $(DESTDIR)$(datadir)
++	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/squid
+ 	@list='$(data_DATA)'; for p in $$list; do \
+ 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+ 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+-	  echo " $(INSTALL_DATA) $$d$$p $(DESTDIR)$(datadir)/$$f"; \
+-	  $(INSTALL_DATA) $$d$$p $(DESTDIR)$(datadir)/$$f; \
++	  echo " $(INSTALL_DATA) $$d$$p $(DESTDIR)$(sysconfdir)/$$f"; \
++	  $(INSTALL_DATA) $$d$$p $(DESTDIR)$(sysconfdir)/$$f; \
+ 	done
+ 
+ uninstall-dataDATA:
+ 	@$(NORMAL_UNINSTALL)
+ 	@list='$(data_DATA)'; for p in $$list; do \
+ 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+-	  echo " rm -f $(DESTDIR)$(datadir)/$$f"; \
+-	  rm -f $(DESTDIR)$(datadir)/$$f; \
++	  echo " rm -f $(DESTDIR)$(sysconfdir)$$f"; \
++	  rm -f $(DESTDIR)$(sysconfdir)/$$f; \
+ 	done
+ install-sysconfDATA: $(sysconf_DATA)
+ 	@$(NORMAL_INSTALL)

@@ -1,0 +1,11 @@
+# default squid options
+# -D disables initial dns checks. If you most likely will not to have an
+#    internet connection when you start squid, uncomment this
+SQUID_OPTS="-D"
+
+# Time to wait for Squid to shut down when asked. Should not be necessary
+# most of the time.
+SQUID_SHUTDOWN_TIMEOUT=100
+
+# Max file descriptor count
+SQUID_FDS=8192

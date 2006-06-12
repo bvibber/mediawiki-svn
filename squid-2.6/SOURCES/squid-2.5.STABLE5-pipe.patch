@@ -1,0 +1,11 @@
+--- squid-2.5.STABLE5/include/samba/nsswitch/winbindd_nss.h.pipe	2004-04-05 13:34:42.000000000 -0400
++++ squid-2.5.STABLE5/include/samba/nsswitch/winbindd_nss.h	2004-04-05 13:34:46.000000000 -0400
+@@ -29,7 +29,7 @@
+ #define _WINBINDD_NTDOM_H
+ 
+ #define WINBINDD_SOCKET_NAME "pipe"            /* Name of PF_UNIX socket */
+-#define WINBINDD_SOCKET_DIR  "/tmp/.winbindd"  /* Name of PF_UNIX dir */
++#define WINBINDD_SOCKET_DIR  "/var/run/winbindd/pipe"  /* Name of PF_UNIX dir */
+ 
+ #define WINBINDD_DOMAIN_ENV  "WINBINDD_DOMAIN" /* Environment variables */
+ #define WINBINDD_DONT_ENV    "_NO_WINBINDD"
