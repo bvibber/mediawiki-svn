@@ -11,7 +11,7 @@
  DEFAULT_STORE_LOG = $(DEFAULT_LOG_PREFIX)/store.log
 -DEFAULT_PID_FILE = $(DEFAULT_LOG_PREFIX)/squid.pid
 -DEFAULT_SWAP_DIR = $(localstatedir)/cache
-+DEFAULT_PID_FILE = $(DEFAULT_LOG_PREFIX)/run/squid.pid
++DEFAULT_PID_FILE = $(localstatedir)/run/squid.pid
 +DEFAULT_SWAP_DIR = $(localstatedir)/spool/squid
  DEFAULT_PINGER = $(libexecdir)/`echo pinger | sed '$(transform);s/$$/$(EXEEXT)/'`
  DEFAULT_UNLINKD = $(libexecdir)/`echo unlinkd | sed '$(transform);s/$$/$(EXEEXT)/'`
