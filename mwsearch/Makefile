@@ -26,6 +26,9 @@ ASSEMBLIES=\
   build/MWUpdateDaemon.exe \
   build/MWSearchTool.exe
 
+BUNDLES=\
+  build/mwsearchd
+
 SCRIPTS=\
   build/MWDaemon.sh \
   build/MWBenchmark.sh \
@@ -38,7 +41,7 @@ INITSCRIPTS=\
 CONFIG=\
   build/MWUpdateDaemon.exe.config
 
-all: $(ASSEMBLIES) $(SCRIPTS) $(INITSCRIPTS) $(CONFIG)
+all: $(ASSEMBLIES) $(BUNDLES) $(SCRIPTS) $(INITSCRIPTS) $(CONFIG)
 
 clean :
 	rm -f build/*.dll build/*.exe build/*.sh build/*.config
