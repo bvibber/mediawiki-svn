@@ -270,13 +270,13 @@ class BotQueryProcessor {
 			array(
 			"Revision history - Lists edits performed to the given pages",
 			"Parameters supported:",
-			"rvuniqusr  - Get last #rvlimit revisions by unique authors.",
+			"rvuniqusr  - Get last #rvlimit revisions by unique authors. *slow query*",
 			"rvcomments - Include summary strings.",
-			"rvcontent  - Include raw wiki text. This parameter is *very slow*, please optimize its use.",
+			"rvcontent  - Include raw wiki text. *slow query*",
 			"rvlimit    - How many links to return *for each title*. Defaults to 10, or 0 if revids=... was specified.",
-			"rvoffset   - When too many results are found, use this to page",
-			"rvstart    - Timestamp of the earliest entry",
-			"rvend      - Timestamp of the latest entry",
+			"rvoffset   - When too many results are found, use this to page. *obsolete* This option is likely to disappear soon.",
+			"rvstart    - Timestamp of the earliest entry.",
+			"rvend      - Timestamp of the latest entry.",
 			"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments  -- last 10 revisions of the Main Page",
 			"         query.php?what=revisions&titles=Main%20Page&rvuniqusr&rvlimit=3&rvcomments  -- 3 last unique users with their last revisions.",
 			)),
@@ -284,16 +284,16 @@ class BotQueryProcessor {
 			array( 'uccomments', 'uclimit' ),
 			array( false, 50 ),
 			array(
-			"Revision history - Lists last edits performed by the given user(s)",
+			"User contribution history - Lists last edits performed by the given user(s)",
 			"Parameters supported:",
-			"uccomments - If specified, the result will include summary strings",
-			"uclimit    - How many links to return *for each user*",
+			"uccomments - If specified, the result will include summary strings.",
+			"uclimit    - How many links to return *for each user*.",
 			"Example: query.php?what=usercontribs&titles=User:YurikBot&uclimit=20&uccomments",
 			)),
 		'content'        => array( 'genPageContent', false, null, null,
 			array(
 			"Raw page content - Retrieves raw wiki markup for all found pages.",
-			"This query is *very slow*! Please optimize content requests to reduce load on the servers.",
+			"*slow query* Please optimize content requests to reduce load on the servers.",
 			"Duplicate results may be obtained through revisions+rvcontent request",
 			"Example: query.php?what=content&titles=Main%20Page",
 			)),
@@ -408,20 +408,25 @@ class BotQueryProcessor {
 		foreach( $params as $param ) {
 			$val = $wgRequest->getVal($param);
 			if( $val !== null ) {
-				$paramVals[] = "$param=$val";
+				if( strpos( 'from', $param ) === false ) {
+					$paramVals[] = "$param=$val";
+				} else {
+					$paramVals[] = $param;	// ignore the value
+				}
 			}
 		}
 		$paramStr = implode( '&', $paramVals );
 		$perfVals = array();
 		if( array_key_exists('query', $this->data) ) {
 			foreach( $this->data['query'] as $module => $values ) {
-				if( is_array( $values ) && array_key_exists('time', $values) ) {
-					$perfVals[] = "$module={$values['time']}";
+				if( is_array( $values )) {
+					if( array_key_exists( 'time', $values )) $perfVals[] = "$module={$values['time']}";
+					if( array_key_exists( 'dbtime', $values )) $perfVals[] = "{$module}_db={$values['dbtime']}";
 				}
 			}
 		}
 		$perfStr = implode( '&', $perfVals );
-		$msg = "$userIdentity\t$format\t$what\t{$this->requestsize}\t$paramStr\t$perfStr";
+		$msg = "$userIdentity\t$format\t$what\t{$this->requestsize}\t$paramStr\t$perfStr#";
 		wfDebugLog( 'query', $msg );
 	}
 
@@ -1674,6 +1679,7 @@ class BotQueryProcessor {
 				"  Get revision 1 with some of its properties",
 				"",
 				"*Notes*",
+				"  Some queries marked with *slow query* are known to be database intensive. Please optimize their use.",
 				"  Some properties may add status information to the <query> element.",
 				"  For example, query.php?what=allpages&aplimit=3 will set an element <query>/<allpages next='B'> to the next available value.",
 				"  For the next request, set '__from' to that value to continue paging: query.php?what=allpages&aplimit=3&apfrom=B",
@@ -1685,10 +1691,11 @@ class BotQueryProcessor {
 				"*Supported Properties*",
 				$props,
 				"",
-				"*Source Code and Revision History*",
+				"*References*",
+				"  Query API Home Page: http://en.wikipedia.org/wiki/User:Yurik/Query_API",
 				// This line uses %2E instead of '.' because otherwise html printer will try to make a link to "query.php?..."
-				"  Changelog and source is available at http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/BotQuery/query%2Ephp?view=log",
-				"",
+				"  Changelog and Source Code: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/BotQuery/query%2Ephp?view=log",
+				"  Feature Suggestions: http://en.wikipedia.org/wiki/User_talk:Yurik/Query_API",
 				"*Credits*",
 				"  This feature was written and is being maintained by Yuri Astrakhan (FirstnameLastname@gmail.com)",
 				"  Please leave your comments and suggestions at http://en.wikipedia.org/wiki/User_talk:Yurik",
