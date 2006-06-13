@@ -2090,7 +2090,7 @@ function mergeParameters( &$generators )
 
 function formatTimeInMs($timeDelta)
 {
-	return sprintf( "%1.2f", $timeDelta * 1000.0 );
+	return round( $timeDelta * 1000.0, 2 );
 }
 
 
