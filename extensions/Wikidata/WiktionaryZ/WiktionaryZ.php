@@ -309,7 +309,7 @@ class WiktionaryZ {
 	
 	function saveForm($sectionArguments) {
 		global 
-			$wgTitle;
+			$wgTitle, $wgUser;
 		
 		if (count($sectionArguments) == 0)
 			$this->saveSpellingForm($wgTitle->getText());
@@ -320,6 +320,10 @@ class WiktionaryZ {
 		}
 
 		Title::touchArray(array($wgTitle));
+		$now = wfTimestampNow();
+		RecentChange::notifyEdit( $now, $wgTitle, false, $wgUser, 'Edited translations, synonyms, definition, or relations',
+			0, $now, false, '', 0, 0, 0 );
+
 	}
 
 	function saveSpellingForm($spelling) {
