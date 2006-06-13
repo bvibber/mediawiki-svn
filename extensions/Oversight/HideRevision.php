@@ -25,10 +25,15 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+// The 'hiderevision' permission allows use of revision hiding.
+$wgGroupPermissions['*']['hiderevision'] = false;
+
+// 'oversight' permission is required to view a previously-hidden revision.
 $wgGroupPermissions['*']['oversight'] = false;
 
 // You could add a group like this:
-// $wgGroupPermissions['censor']['oversight'] = true;
+// $wgGroupPermissions['censor']['hiderevision'] = true;
+// $wgGroupPermissions['quiscustodiet']['oversight'] = true;
 
 $wgExtensionFunctions[] = 'hrSetup';
 
@@ -38,7 +43,10 @@ $wgExtensionFunctions[] = 'hrSetup';
  */
 function hrSetup() {
 	require_once 'SpecialPage.php';
-	SpecialPage::addPage( new SpecialPage( 'HideRevision', 'oversight',
+	SpecialPage::addPage( new SpecialPage( 'HideRevision', 'hiderevision',
+		/*listed*/ true, /*function*/ false, /*file*/ false ) );
+	
+	SpecialPage::addPage( new SpecialPage( 'Oversight', 'oversight',
 		/*listed*/ true, /*function*/ false, /*file*/ false ) );
 	
 	$GLOBALS['wgHooks']['ArticleViewHeader'][] = 'hrArticleViewHeaderHook';
@@ -88,6 +96,10 @@ database administrator if you make a mistake.",
 			'oversight-log-name' => 'Oversight log',
 			'oversight-log-text' => 'Special administrative actions.',
 			'oversight-log-hiderev' => 'removed an edit from $1',
+			
+			// Oversight review page
+			'oversight' => 'Oversight',
+			'oversight-view' => 'details',
 		) );
 }
 
@@ -120,7 +132,7 @@ function hrDiffViewHeaderHook( $diff, $oldRev, $newRev ) {
  */
 function hrInstallTab( $id ) {
 	global $wgUser;
-	if( $wgUser->isAllowed( 'oversight' ) ) {
+	if( $wgUser->isAllowed( 'hiderevision' ) ) {
 		global $wgHooks;
 		$wgHooks['SkinTemplateTabs'][] = create_function(
 			'$skin, &$content_actions',
@@ -356,6 +368,129 @@ function hrHideRevision( $dbw, $id, $reason ) {
 	}
 	
 	return 'hiderevision-success';
+}
+
+
+/**
+ * Special page handler function for Special:Oversight
+ */
+function wfSpecialOversight( $par=null ) {
+	global $wgRequest, $wgUser;
+	$revision = $wgRequest->getIntOrNull( 'revision' );
+	if( is_null( $revision ) ) {
+		sosShowList();
+	} else {
+		sosShowRevision( $revision );
+	}
+}
+
+function sosShowList( $from=null ) {
+	$dbr = wfGetDB( DB_SLAVE );
+	
+	$fromTime = $dbr->timestamp( $from );
+	$result = sosGetRevisions( $dbr,
+		array( 'hidden_on_timestamp < ' . $dbr->addQuotes( $fromTime ) ) );
+	
+	global $wgOut;
+	while( $row = $dbr->fetchObject( $result ) ) {
+		$wgOut->addHtml( sosListRow( $row ) );
+	}
+	$dbr->freeResult( $result );
+}
+
+function sosGetRevisions( $db, $condition ) {
+	return $db->select(
+		array( 'hidden', 'user' ),
+		array(
+			'hidden_page as page_id',
+			'hidden_namespace as page_namespace',
+			'hidden_title as page_title',
+			
+			'hidden_page as rev_page',
+			'hidden_comment as rev_comment',
+			'hidden_user as rev_user',
+			'hidden_user_text as rev_user_text',
+			'hidden_timestamp as rev_timestamp',
+			'hidden_minor_edit as rev_minor_edit',
+			'hidden_deleted as rev_deleted',
+			'hidden_rev_id as rev_id',
+			'hidden_text_id as rev_text_id',
+			
+			'hidden_by_user',
+			'hidden_on_timestamp',
+			'hidden_reason',
+			
+			'user_name',
+			
+			'0 as page_is_new',
+			'0 as rc_id',
+			'1 as rc_patrolled' ),
+		array_merge(
+			$condition,
+			array( 'hidden_by_user=user_id' ) ),
+		__FUNCTION__,
+		array(
+			'ORDER BY' => 'hidden_on_timestamp DESC' ) );
+}
+
+function sosListRow( $row ) {
+	global $wgUser, $wgLang;
+	$skin = $wgUser->getSkin();
+	$self = Title::makeTitle( NS_SPECIAL, 'Oversight' );
+	$userPage = Title::makeTitle( NS_USER, $row->user_name );
+	$victim = Title::makeTitle( $row->page_namespace, $row->page_title );
+	return "<li>(" .
+		$skin->makeLinkObj( $self, wfMsgHtml( 'oversight-view' ),
+			'revision=' . $row->rev_id ) .
+		") " .
+		$wgLang->timeanddate( $row->hidden_on_timestamp ) .
+		" " .
+		$skin->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) ) .
+		" " .
+		wfMsgHtml( 'oversight-log-hiderev', $skin->makeLinkObj( $victim ) ) .
+		" " .
+		$skin->commentBlock( $row->hidden_reason ) .
+		"</li>\n";
+}
+
+function sosShowRevision( $revision ) {
+	global $wgOut;
+	
+	$dbr = wfGetDB( DB_SLAVE );
+	$result = sosGetRevisions( $dbr, array( 'hidden_rev_id' => $revision ) );
+	
+	while( $row = $dbr->fetchObject( $result ) ) {
+		$info = sosListRow( $row );
+		$list = sosRevisionInfo( $row );
+		$rev = new Revision( $row );
+		
+		$wgOut->addHtml(
+			"<ul>" .
+			$info .
+			"</ul>\n" .
+			$list .
+			"<div>" .
+			wfElement( 'textarea',
+				array(
+					'cols' => 80,
+					'rows' => 25,
+					'wrap' => 'virtual',
+					'readonly' => 'readonly' ),
+				strval( $rev->getText() ) ) .
+			"</div>\n" );
+	}
+	$dbr->freeResult( $result );
+}
+
+function sosRevisionInfo( $row ) {
+	global $wgUser;
+	$changes = ChangesList::newFromUser( $wgUser );
+	$out = $changes->beginRecentChangesList();
+	$rc = RecentChange::newFromCurRow( $row );
+	$rc->counter = 0; // ???
+	$out .= $changes->recentChangesLine( $rc );
+	$out .= $changes->endRecentChangesList();
+	return $out;
 }
 
 ?>
