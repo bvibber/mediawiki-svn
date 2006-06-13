@@ -56,6 +56,12 @@ function removeRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id)
 				"relationtype_mid=$relationTypeId AND is_latest_set=1 LIMIT 1");
 }
 
+function removeSynonymOrTranslation($definedMeaningId, $expressionId) {
+	$dbr =& wfGetDB(DB_MASTER);
+	$dbr->query("delete from uw_syntrans where defined_meaning_id=$definedMeaningId and expression_id=$expressionId and ".
+				"is_latest_set=1 LIMIT 1");
+}
+
 class SynonymTranslationController implements PageElementController {
 	protected $definedMeaningId;
 	
@@ -75,7 +81,9 @@ class SynonymTranslationController implements PageElementController {
 	}
 	
 	public function remove($tuple) {
-		
+		$expressionId = $tuple['expression'];
+		$endemicMeaning = $tuple['endemic_meaning'];
+		removeSynonymOrTranslation($this->definedMeaningId, $expressionId);		
 	}
 }
 
@@ -188,7 +196,7 @@ class WiktionaryZ {
 		$removeId = "remove-".$pageElement->getId()."-";
 		
 		foreach($pageElement->getRelationModel()->getHeading()->attributes as $attribute) 
-			$inputRow[] = getInputFieldForType($addId . "-" . $attribute->id, $attribute->type, "");
+			$inputRow = array_merge($inputRow, getInputFieldsForAttribute($addId . "-", $attribute, ""));
 		
 		addWikiDataBlock($pageElement->getCaption(), getRelationAsEditHTML($pageElement->getRelationModel(), $addId, $removeId,
 														$inputRow, $pageElement->repeatInput(), $pageElement->allowRemove()));
@@ -198,14 +206,14 @@ class WiktionaryZ {
 		$addId = "add-".$pageElement->getId();
 		$attributes = $pageElement->getRelationModel()->getHeading()->attributes;
 		
-		if (array_key_exists($addId . "-" . $attributes[0]->id . $postFix, $_POST)) {
+		//if (array_key_exists($addId . "-" . $attributes[0]->id . $postFix, $_POST)) {
 			$values = array();
 			
 			foreach($attributes as $attribute)
-				$values[] = getFieldValueForType($addId . "-". $attribute->id . $postFix, $attribute->type);
+				$values = array_merge($values, getFieldValuesForAttribute($addId . "-", $attribute, $postFix));
 			
 			$pageElement->getController()->add($values);
-		}
+		//}
 	}
 	
 	function savePageElement($pageElement) {
@@ -240,7 +248,7 @@ class WiktionaryZ {
 	function getSynonymsAndTranslationsPageElement($definedMeaningId, $expressionId) {
 		return new DefaultPageElement("synonym-translation-$definedMeaningId", "Translations and synonyms", 
 										$this->getSynonymAndTranslationRelation($definedMeaningId, $expressionId), 
-										false, 
+										true, 
 										true,
 										new SynonymTranslationController($definedMeaningId));
 	}
@@ -559,17 +567,21 @@ class WiktionaryZ {
 	
 	function getSynonymAndTranslationRelation($definedMeaningId, $skippedExpressionId) {
 		$dbr =& wfGetDB(DB_SLAVE);
-		$heading = new Heading(array(new Attribute("language", "Language", "language"), 
-										new Attribute("spelling", "Spelling", "spelling"), 
+//		$heading = new Heading(array(new Attribute("language", "Language", "language"), 
+//										new Attribute("spelling", "Spelling", "spelling"), 
+//										new Attribute("endemic_meaning", "Identical meaning?", "boolean")));
+		$heading = new Heading(array(new Attribute("expression", "Expression", "expression"), 
 										new Attribute("endemic_meaning", "Identical meaning?", "boolean")));
+
 		$relation = new ArrayRelation($heading, $heading);
 		$queryResult = $dbr->query("SELECT expression_id, endemic_meaning FROM uw_syntrans WHERE defined_meaning_id=$definedMeaningId AND expression_id!=$skippedExpressionId");
 	
 		while($synonymOrTranslation = $dbr->fetchObject($queryResult)) {
-			$spellingAndLanguage = $this->getSpellingAndLanguageForExpression($synonymOrTranslation->expression_id);
-			
-			foreach($spellingAndLanguage as $languageId => $spelling) 
-				$relation->addTuple(array($languageId, $spelling, $synonymOrTranslation->endemic_meaning));
+//			$spellingAndLanguage = $this->getSpellingAndLanguageForExpression($synonymOrTranslation->expression_id);
+//			
+//			foreach($spellingAndLanguage as $languageId => $spelling) 
+//				$relation->addTuple(array($languageId, $spelling, $synonymOrTranslation->endemic_meaning));
+				$relation->addTuple(array($synonymOrTranslation->expression_id, $synonymOrTranslation->endemic_meaning));
 		}	
 		
 		return $relation;

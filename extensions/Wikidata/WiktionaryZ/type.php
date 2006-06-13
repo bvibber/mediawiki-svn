@@ -70,30 +70,35 @@ function convertToHTML($value, $type) {
 	}
 }
 
-function getInputFieldForType($name, $type, $value) {
-	switch($type) {
-		case "language": return getLanguageSelect($name);
-		case "spelling": return getTextBox($name);
-		case "boolean": return getCheckBox($name, true);
+function getInputFieldsForAttribute($namePrefix, $attribute, $value) {
+	switch($attribute->type) {
+		case "language": return array(getLanguageSelect($namePrefix . $attribute->id));
+		case "spelling": return array(getTextBox($namePrefix . $attribute->id));
+		case "boolean": return array(getCheckBox($namePrefix . $attribute->id, true));
+		case "expression": return array(getLanguageSelect($namePrefix . "language"), getTextBox($namePrefix . "spelling"));
 		case "defined-meaning":
-		case "defining-expression": 
-			return getSuggest($name, "defined-meaning");
-		case "relation-type": return getSuggest($name, "relation-type");
-		case "attribute": return getSuggest($name, "attribute");
+		case "defining-expression":
+			return array(getSuggest($namePrefix . $attribute->id, "defined-meaning"));
+		case "relation-type": return array(getSuggest($namePrefix . $attribute->id, "relation-type"));
+		case "attribute": return array(getSuggest($namePrefix . $attribute->id, "attribute"));
+		default: return array();
 	}	
 }
 
-function getFieldValueForType($name, $type) {
+function getFieldValuesForAttribute($namePrefix, $attribute, $namePostFix) {
 	global
 		$wgRequest;
 		
-	switch($type) {
-		case "language": return $wgRequest->getInt($name);
-		case "spelling": return trim($wgRequest->getText($name));
-		case "boolean": return $wgRequest->getCheck($name);
-		case "defined-meaning": return $wgRequest->getInt($name);
-		case "relation-type": return $wgRequest->getInt($name);
-		case "attribute": return $wgRequest->getInt($name);
+	switch($attribute->type) {
+		case "language": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
+		case "spelling": return array(trim($wgRequest->getText($namePrefix . $attribute->id . $namePostFix)));
+		case "boolean": return array($wgRequest->getCheck($namePrefix . $attribute->id . $namePostFix));
+		case "expression": return array($wgRequest->getInt($namePrefix . "language" . $namePostFix), trim($wgRequest->getText($namePrefix . "spelling" . $namePostFix)));
+		case "defined-meaning": 
+		case "defining-expression":
+			return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
+		case "relation-type": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
+		case "attribute": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
 	}
 }
 

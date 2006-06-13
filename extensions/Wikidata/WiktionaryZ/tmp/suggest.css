@@ -21,7 +21,7 @@
 	padding-bottom: 1px;
 }
 
-.suggest-link,.suggest-link:hover,.suggest-link:active,.suggest-link:visited {
+.suggest-link, .suggest-link:hover, .suggest-link:active, .suggest-link:visited {
 	color: #000000;
 	text-decoration: none;
 	white-space: nowrap;
@@ -32,12 +32,12 @@
 	margin: 0px;
 }
 
-.suggestion-row .active {
+.suggestion-row.active {
 	background-color: #DDDDDD;
 	cursor: pointer;
 }
 
-.suggestion-row .inactive {
+.suggestion-row.inactive {
 	background-color: #FFFFFF;
 }
 
