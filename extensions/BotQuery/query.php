@@ -158,7 +158,7 @@ class BotQueryProcessor {
 			)),
 		'allpages'       => array( 'genMetaAllPages', true,
 			array( 'aplimit', 'apfrom', 'apnamespace' ),
-			array( 50, '!', 0 ),
+			array( 50, '', 0 ),
 			array(
 			"Enumerates all available pages to the output list.",
 			"Parameters supported:",
@@ -169,9 +169,9 @@ class BotQueryProcessor {
 			)),
 		'nolanglinks'    => array( 'genMetaNoLangLinksPages', true,
 			array( 'nllimit', 'nlfrom', 'nlnamespace' ),
-			array( 50, '!', 0 ),
+			array( 50, '', 0 ),
 			array(
-			"Enumerates pages without language links to the output list.",
+			"Enumerates pages without language links to the output list (automatically filters out redirects).",
 			"Parameters supported:",
 			"nllimit      - How many total pages to return",
 			"nlfrom       - The page title to start enumerating from. Default is '!'",
@@ -716,18 +716,18 @@ class BotQueryProcessor {
 		extract( $this->getParams( $prop, $genInfo ));
 		$this->validateLimit( 'aplimit', $aplimit, 50, 1000 );
 
-		$ns = $wgContLang->getNsText($apnamespace);
-		if( $ns === false ) {
-			$this->dieUsage( "Unknown namespace $ns", 'ap_badnamespace' );
-		} else if( strlen($ns) > 0 ) {
-			$ns .= ':';
+		if( $wgContLang->getNsText($apnamespace) === false ) {
+			$this->dieUsage( "Unknown namespace $apnamespace", 'ap_badnamespace' );
 		}
+
+		$where = array( 'page_namespace' => intval($apnamespace) );
+		if( $apfrom !== '' ) $where[] = 'page_title>=' . $this->db->addQuotes($apfrom);
 
 		$this->startDbProfiling();
 		$res = $this->db->select(
 			'page',
 			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_touched', 'page_latest' ),
-			array( 'page_namespace' => intval($apnamespace), 'page_title>=' . $this->db->addQuotes($apfrom) ),
+			$where,
 			$this->classname . '::genMetaAllPages',
 			array( 'USE INDEX' => 'name_title', 'LIMIT' => $aplimit+1, 'ORDER BY' => 'page_namespace, page_title' ));
 		$this->endDbProfiling( $prop );
@@ -751,10 +751,16 @@ class BotQueryProcessor {
 	*/
 	function genMetaNoLangLinksPages(&$prop, &$genInfo)
 	{
+		//
+		// FIXME: MERGE THIS with genMetaAllPages()
+		//
 		global $wgContLang;
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
 		$this->validateLimit( 'nllimit', $nllimit, 50, 1000 );
+		if( $wgContLang->getNsText($nlnamespace) === false ) {
+			$this->dieUsage( "Unknown namespace $nlnamespace", 'nl_badnamespace' );
+		}
 		extract( $this->db->tableNames( 'page', 'langlinks' ) );
 
 		//
@@ -764,7 +770,8 @@ class BotQueryProcessor {
 			. ' page_id, page_namespace, page_title, page_is_redirect, page_touched, page_latest'
 			. " FROM $page LEFT JOIN $langlinks ON page_id = ll_from"
 			. ' WHERE'
-			. ' ll_from IS NULL AND page_namespace=' . intval($nlnamespace) . ' AND page_title>=' . $this->db->addQuotes($nlfrom)
+			. ' ll_from IS NULL AND page_is_redirect = 0 AND page_namespace=' . intval($nlnamespace)
+			. ( $nlfrom === '' ? '' : ' AND page_title>=' . $this->db->addQuotes($nlfrom) )
 			. ' ORDER BY page_namespace, page_title'
 			. ' LIMIT ' . intval($nllimit+1);
 
@@ -1696,6 +1703,7 @@ class BotQueryProcessor {
 				// This line uses %2E instead of '.' because otherwise html printer will try to make a link to "query.php?..."
 				"  Changelog and Source Code: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/BotQuery/query%2Ephp?view=log",
 				"  Feature Suggestions: http://en.wikipedia.org/wiki/User_talk:Yurik/Query_API",
+				"",
 				"*Credits*",
 				"  This feature was written and is being maintained by Yuri Astrakhan (FirstnameLastname@gmail.com)",
 				"  Please leave your comments and suggestions at http://en.wikipedia.org/wiki/User_talk:Yurik",
