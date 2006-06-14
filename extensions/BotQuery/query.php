@@ -163,8 +163,8 @@ class BotQueryProcessor {
 			"Enumerates all available pages to the output list.",
 			"Parameters supported:",
 			"aplimit      - How many total pages to return",
-			"apfrom       - The page title to start enumerating from. Default is '!'",
-			"apnamespaces - Limits which namespace to enumerate. Default 0 (Main)",
+			"apfrom       - The page title to start enumerating from.",
+			"apnamespace  - Limits which namespace to enumerate. Default 0 (Main)",
 			"Example: query.php?what=allpages&aplimit=50",
 			)),
 		'nolanglinks'    => array( 'genMetaNoLangLinksPages', true,
@@ -174,8 +174,8 @@ class BotQueryProcessor {
 			"Enumerates pages without language links to the output list (automatically filters out redirects).",
 			"Parameters supported:",
 			"nllimit      - How many total pages to return",
-			"nlfrom       - The page title to start enumerating from. Default is '!'",
-			"nlnamespaces - Limits which namespace to enumerate. Default 0 (Main)",
+			"nlfrom       - The page title to start enumerating from.",
+			"nlnamespace  - Limits which namespace to enumerate. Default 0 (Main)",
 			"Example: query.php?what=nolanglinks&nllimit=50",
 			)),
 		'category'       => array( 'genPagesInCategory', true,
@@ -290,6 +290,16 @@ class BotQueryProcessor {
 			"uclimit    - How many links to return *for each user*.",
 			"Example: query.php?what=usercontribs&titles=User:YurikBot&uclimit=20&uccomments",
 			)),
+		'imageinfo'      => array( 'genImageInfo', false,
+			array( 'iihistory', 'iiurl' ),
+			array( false, false ),
+			array(
+			"Image information",
+			"Parameters supported:",
+			"iiurl      - Add image URLs.",
+			"iihistory  - Include all past revisions of the image.",
+			"Example: query.php?what=imageinfo|allpages&aplimit=10&apnamespace=6&iiurl  -- show first 10 images with URLs",
+			)),
 		'content'        => array( 'genPageContent', false, null, null,
 			array(
 			"Raw page content - Retrieves raw wiki markup for all found pages.",
@@ -346,6 +356,7 @@ class BotQueryProcessor {
 	*/
 	function execute()
 	{
+		$this->recordProfiling( 'total', 'startup', $this->startTime );
 		// Process metadata generators
 		$this->callGenerators( true );
 		// Process 'titles' and 'pageids' parameters, and any other pages assembled by meta generators
@@ -418,15 +429,18 @@ class BotQueryProcessor {
 		$paramStr = implode( '&', $paramVals );
 		$perfVals = array();
 		if( array_key_exists('query', $this->data) ) {
-			foreach( $this->data['query'] as $module => $values ) {
+			$queryElem =& $this->data['query'];
+			foreach( $queryElem as $module => $values ) {
 				if( is_array( $values )) {
 					if( array_key_exists( 'time', $values )) $perfVals[] = "$module={$values['time']}";
 					if( array_key_exists( 'dbtime', $values )) $perfVals[] = "{$module}_db={$values['dbtime']}";
 				}
 			}
+			$perfVals[] = "startup={$queryElem['total']['startup']}";
 		}
 		$perfStr = implode( '&', $perfVals );
-		$msg = "$userIdentity\t$format\t$what\t{$this->requestsize}\t$paramStr\t$perfStr#";
+		$msg = "$userIdentity\t$format\t$what\t{$this->requestsize}\t$paramStr\t$perfStr&grandTotal="
+				. formatTimeInMs(wfTime() - $this->startTime) . '#';
 		wfDebugLog( 'query', $msg );
 	}
 
@@ -850,9 +864,7 @@ class BotQueryProcessor {
 	*/
 	function genRedirectInfo(&$prop, &$genInfo)
 	{
-		if( empty( $this->redirectPageIds ) ) {
-			return;
-		}
+		if( empty( $this->redirectPageIds )) return;
 		$this->startProfiling();
 		extract( $this->db->tableNames( 'page', 'pagelinks' ) );
 
@@ -948,20 +960,20 @@ class BotQueryProcessor {
 	}
 	
 	var $genPageLinksSettings = array(	// database column name prefix, output element name
-		'links' 	=> array( 'prefix' => 'pl', 'code' => 'l',  'linktbl' => 'pagelinks', 'langlinks' => false ),
-		'langlinks' => array( 'prefix' => 'll', 'code' => 'll', 'linktbl' => 'langlinks', 'langlinks' => true ),
-		'templates' => array( 'prefix' => 'tl', 'code' => 'tl', 'linktbl' => 'templatelinks', 'langlinks' => false ));
+		'links' 	=> array( 'prefix' => 'pl', 'code' => 'l',  'linktbl' => 'pagelinks' ),
+		'langlinks' => array( 'prefix' => 'll', 'code' => 'll', 'linktbl' => 'langlinks' ),
+		'templates' => array( 'prefix' => 'tl', 'code' => 'tl', 'linktbl' => 'templatelinks' ));
 
 	/**
 	* Generates list of links/langlinks/templates for all non-redirect pages.
 	*/
 	function genPageLinksHelper(&$prop, &$genInfo)
 	{
-		if( empty($this->nonRedirPageIds) ) {
-			return;
-		}
+		if( empty( $this->nonRedirPageIds )) return;
 		$this->startProfiling();
+		
 		extract( $this->genPageLinksSettings[$prop] );
+		$langlinks = $prop === 'langlinks';
 		
 		$this->startDbProfiling();
 		$res = $this->db->select(
@@ -985,10 +997,90 @@ class BotQueryProcessor {
 		$this->endProfiling( $prop );
 	}
 	
+	/**
+	* Generates list of links/langlinks/templates for all non-redirect pages.
+	*/
+	function genImageInfo(&$prop, &$genInfo)
+	{
+		if( empty( $this->nonRedirPageIds )) return;
+		$this->startProfiling();
+		extract( $this->getParams( $prop, $genInfo ));
+		
+		// Find the image pages to process
+		$imageDbKeys = array();
+		foreach( $this->data['pages'] as $key => &$page ) {
+			if( $key > 0 && $page['ns'] == NS_IMAGE ) {
+				$obj = &$page['_obj'];
+				$imageDbKeys[$obj->getDBkey()] = $key;
+			}
+		}
+		if( !empty( $imageDbKeys )) {
+			$dbTime = $this->ImageInfoHelper( true, $imageDbKeys, $iiurl );
+			if( $iihistory ) {
+				$dbTime += $this->ImageInfoHelper( false, $imageDbKeys, $iiurl );
+			}
+			$this->totalDbTime += $dbTime;
+			$this->addStatusMessage( $prop, array( 'dbtime' => formatTimeInMs($dbTime) ));
+		}
+		$this->endProfiling( $prop );
+	}
+
+	/**
+	* Generates list of image history entries, either from image or from oldimage table
+	*/
+	function ImageInfoHelper($isCur, &$imageDbKeys, $includeUrl)
+	{
+		$table  = $isCur ? 'image' : 'oldimage';
+		$fld    = $isCur ? 'img'   : 'oi';
+		$fields = array( "{$fld}_name name", "{$fld}_size size", "{$fld}_width width", "{$fld}_height height", "{$fld}_bits bits",
+						 "{$fld}_description description", "{$fld}_user_text user_text", "{$fld}_timestamp timestamp" );
+		if( $isCur ) {
+			$fields[] = "img_media_type";
+			$fields[] = "img_major_mime";
+			$fields[] = "img_minor_mime";
+		} else {
+			$fields[] = 'oi_archive_name';
+		}
+
+		$dbStart = wfTime();
+		$res = $this->db->select(
+			$table,
+			$fields,
+			array( "{$fld}_name" => array_keys( $imageDbKeys )),
+			$this->classname . "::genImageInfo_{$fld}" );
+		$dbTime = wfTime() - $dbStart;
+
+		while ( $row = $this->db->fetchObject( $res ) ) {
+			$name = $row->name;
+			$values = array(
+				'size' => $row->size,
+				'width' => $row->width,
+				'height' => $row->height,
+				'bits' => $row->bits,
+				'user' => $row->user_text,
+				'timestamp' => wfTimestamp( TS_ISO_8601, $row->timestamp ),
+				'comment' => $row->description,
+				'*' => '');	// force all to be attributes
+			if( $isCur ) {
+				$values['media'] = $row->img_media_type;
+				$values['mime']  = "{$row->img_major_mime}/{$row->img_minor_mime}";
+				if( $includeUrl ) $values['url'] = Image::imageUrl( $name );
+				$this->data['pages'][ $imageDbKeys[$name] ]['image'] = $values;
+			} else {
+				if( $includeUrl ) $values['url'] = htmlspecialchars( wfImageArchiveUrl( $name ));
+				$this->addPageSubElement( $imageDbKeys[$name], 'imghistory', 'ih', $values );
+			}
+		}
+
+		$this->db->freeResult( $res );
+		return $dbTime;
+	}
+
+	
 	var $genPageBackLinksSettings = array(	// database column name prefix, output element name
-		'embeddedin' => array( 'prefix' => 'tl', 'code' => 'ei', 'linktbl' => 'templatelinks', 'isImage' => false ),
-		'backlinks' => array( 'prefix' => 'pl', 'code' => 'bl', 'linktbl' => 'pagelinks', 'isImage' => false ),
-		'imagelinks' => array( 'prefix' => 'il', 'code' => 'il', 'linktbl' => 'imagelinks', 'isImage' => true ));
+		'embeddedin' => array( 'prefix' => 'tl', 'code' => 'ei', 'linktbl' => 'templatelinks' ),
+		'backlinks'  => array( 'prefix' => 'pl', 'code' => 'bl', 'linktbl' => 'pagelinks' ),
+		'imagelinks' => array( 'prefix' => 'il', 'code' => 'il', 'linktbl' => 'imagelinks' ));
 
 	/**
 	* Generate backlinks for either links, templates, or both
@@ -998,11 +1090,12 @@ class BotQueryProcessor {
 	{
 		$this->startProfiling();
 		extract( $this->genPageBackLinksSettings[$prop] );
+		$isImage = $prop === 'imagelinks';
 		
 		//
 		// Parse and validate parameters
 		//
-		$parameters = $this->getParams( $prop, $genInfo );		
+		$parameters = $this->getParams( $prop, $genInfo );
 		$contFrom = $parameters["{$code}contfrom"];
 		$limit  = intval($parameters["{$code}limit"]);
 		$this->validateLimit( "{$code}limit", $limit, 50, 1000 );
@@ -1013,7 +1106,7 @@ class BotQueryProcessor {
 			$filter = $filter[0];
 		}
 		//
-		// Prase contFrom - will be in the format    ns|db_key|page_id - determine how to continue
+		// Parse contFrom - will be in the format    ns|db_key|page_id - determine how to continue
 		//
 		if( $contFrom ) {
 			$contFromList = explode( '|', $contFrom );
@@ -1135,9 +1228,7 @@ class BotQueryProcessor {
 	*/
 	function genPageRevisions(&$prop, &$genInfo)
 	{
-		if( empty( $this->existingPageIds ) ) {
-			return;
-		}
+		if( empty( $this->existingPageIds )) return;
 		$this->startProfiling();
 		
 		// Before extracting values, change the default rvlimit to 0 if revIdsArray has any elements
@@ -1316,9 +1407,7 @@ class BotQueryProcessor {
 	*/
 	function genPageContent(&$prop, &$genInfo)
 	{
-		if( empty( $this->existingPageIds ) ) {
-			return;
-		}
+		if( empty( $this->existingPageIds )) return;
 		$this->startProfiling();
 
 		// Generate the WHERE clause for pageIds+RevisionIds
@@ -1676,13 +1765,13 @@ class BotQueryProcessor {
 				// "    noprofile  - When present, each sql query execution time will be hidden.",
 				"",
 				"*Examples*",
-				"    query.php?format=xml&what=links|templates&titles=User:Yurik",
+				"    query.php?what=links|templates&titles=User:Yurik",
 				"  This query will return a list of all links and templates used on the User:Yurik",
 				"",
-				"    query.php?format=xml&what=revisions&titles=Main_Page&rvlimit=100&rvstart=20060401000000&rvcomments",
+				"    query.php?what=revisions&titles=Main_Page&rvlimit=100&rvstart=20060401000000&rvcomments",
 				"  Get a list of 100 last revisions of the main page with comments, but only if it happened after midnight April 1st 2006",
 				"",
-				"    query.php?format=xml&what=revisions&revids=1&rvcomments",
+				"    query.php?what=revisions&revids=1&rvcomments",
 				"  Get revision 1 with some of its properties",
 				"",
 				"*Notes*",
@@ -1692,11 +1781,11 @@ class BotQueryProcessor {
 				"  For the next request, set '__from' to that value to continue paging: query.php?what=allpages&aplimit=3&apfrom=B",
 				"  In addition, <query> element has performance time (in ms) for both database and total processing to allow request optimization.",
 				"",
-				"*Supported Formats*",
-				$formats,
-				"",
 				"*Supported Properties*",
 				$props,
+				"",
+				"*Supported Formats*",
+				$formats,
 				"",
 				"*References*",
 				"  Query API Home Page: http://en.wikipedia.org/wiki/User:Yurik/Query_API",
@@ -2090,7 +2179,7 @@ function mergeParameters( &$generators )
 
 function formatTimeInMs($timeDelta)
 {
-	return round( $timeDelta * 1000.0, 2 );
+	return round( $timeDelta * 1000.0, 1 );
 }
 
 
