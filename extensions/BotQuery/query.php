@@ -1067,7 +1067,7 @@ class BotQueryProcessor {
 				if( $includeUrl ) $values['url'] = Image::imageUrl( $name );
 				$this->data['pages'][ $imageDbKeys[$name] ]['image'] = $values;
 			} else {
-				if( $includeUrl ) $values['url'] = htmlspecialchars( wfImageArchiveUrl( $name ));
+				if( $includeUrl ) $values['url'] = htmlspecialchars( wfImageArchiveUrl( $row->oi_archive_name ));
 				$this->addPageSubElement( $imageDbKeys[$name], 'imghistory', 'ih', $values );
 			}
 		}
