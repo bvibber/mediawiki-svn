@@ -190,7 +190,7 @@ class LuceneSearch extends SpecialPage
 					$wgOut->redirect($t->getFullURL('action=edit'));
 					return;
 				}
-                		$wgOut->addWikiText( wfMsg('nogomatch', ':' . $t->getPrefixedText(), $t->getPrefixedText() ) );
+                		$wgOut->addWikiText( wfMsg( 'noexactmatch', $t->getPrefixedText() ) );
 			}
 
 			global $wgDisableTextSearch;
