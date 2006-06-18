@@ -65,6 +65,7 @@
             // thumbnails
             // 
             this.thumbnails.AutoScroll = true;
+            this.thumbnails.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.thumbnails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.thumbnails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.thumbnails.Location = new System.Drawing.Point(239, 0);
@@ -73,6 +74,7 @@
             this.thumbnails.TabIndex = 3;
             this.thumbnails.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.thumbnails_MouseDoubleClick);
             this.thumbnails.Paint += new System.Windows.Forms.PaintEventHandler(this.my_paint);
+            this.thumbnails.SizeChanged += new System.EventHandler(this.thumbnails_SizeChanged);
             // 
             // progressBar1
             // 
@@ -92,7 +94,7 @@
             this.Controls.Add(this.categoryTree);
             this.Controls.Add(this.splitter2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "CommonsBrowser";
             this.ResumeLayout(false);
             this.PerformLayout();
 

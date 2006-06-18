@@ -156,6 +156,7 @@ namespace CommonsBrowser
         {
             Graphics g = e.Graphics;
             RectangleF rec = g.ClipBounds;
+            g.Clear(Color.White);
             int w = 140 , h = 150 ;
 
             Rectangle r = new Rectangle(0, 0, w-1, h-1);
@@ -175,7 +176,12 @@ namespace CommonsBrowser
 
         private void LoadThumbnails(String category)
         {
-            if (last_cat_read == category) return;
+            if (last_cat_read == category) 
+            {
+                this.Refresh();
+                return; 
+            }
+
             last_cat_read = category;
 
             Cursor.Current = Cursors.WaitCursor;
@@ -267,6 +273,11 @@ namespace CommonsBrowser
         private void progressBar1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void thumbnails_SizeChanged(object sender, EventArgs e)
+        {
+            this.Refresh();
         }
 
     }
