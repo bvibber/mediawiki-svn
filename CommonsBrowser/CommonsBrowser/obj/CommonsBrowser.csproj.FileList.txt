@@ -1,0 +1,8 @@
+bin\Debug\CommonsBrowser.exe
+bin\Debug\CommonsBrowser.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\CommonsBrowser.Properties.Resources.resources
+obj\Debug\CommonsBrowser.csproj.GenerateResource.Cache
+obj\Debug\CommonsBrowser.exe
+obj\Debug\CommonsBrowser.pdb
+obj\Debug\CommonsBrowser.Form1.resources
