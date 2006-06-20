@@ -367,8 +367,8 @@ class Sanitizer {
 			$tabletags = array();
 		}
 
-		$htmlsingle = array_merge( $tabletags, $htmlsingle );
-		$htmlelements = array_merge( $htmlsingle, $htmlpairs );
+		$htmlsingleallowed = array_merge( $htmlsingle, $tabletags );
+		$htmlelements = array_merge( $htmlsingle, $htmlpairs, $htmlnest );
 
 		# Remove HTML comments
 		$text = Sanitizer::removeHTMLcomments( $text );
@@ -391,17 +391,35 @@ class Sanitizer {
 						if( in_array( $t, $htmlsingleonly ) ) {
 							$badtag = 1;
 						} elseif ( ( $ot = @array_pop( $tagstack ) ) != $t ) {
-							@array_push( $tagstack, $ot );
-							# <li> can be nested in <ul> or <ol>, skip those cases:
-							if(!(in_array($ot, $htmllist) && in_array($t, $listtags) )) {
-								$badtag = 1;
+							if ( in_array($ot, $htmlsingleallowed) ) {
+								# Pop all elements with an optional close tag
+								# and see if we find a match below them
+								$optstack = array();
+								array_push ($optstack, $ot);
+								while ( ( ( $ot = @array_pop( $tagstack ) ) != $t ) &&
+												in_array($ot, $htmlsingleallowed) ) {
+									array_push ($optstack, $ot);
+								}
+								if ( $t != $ot ) {
+									# No match. Push the optinal elements back again
+									$badtag = 1;
+									while ( $ot = @array_pop( $optstack ) ) {
+										array_push( $tagstack, $ot );
+									}
+								}
+							} else {
+								@array_push( $tagstack, $ot );
+								# <li> can be nested in <ul> or <ol>, skip those cases:
+								if(!(in_array($ot, $htmllist) && in_array($t, $listtags) )) {
+									$badtag = 1;
+								}
 							}
 						} else {
 							if ( $t == 'table' ) {
 								$tagstack = array_pop( $tablestack );
 							}
-							$newparams = '';
 						}
+						$newparams = '';
 					} else {
 						# Keep track for later
 						if ( in_array( $t, $tabletags ) &&
@@ -520,53 +538,26 @@ class Sanitizer {
 	}
 
 	/**
-	 * Take a tag soup fragment listing an HTML element's attributes
-	 * and normalize it to well-formed XML, discarding unwanted attributes.
+	 * Take an array of attribute names and values and normalize or discard
+	 * illegal values for the given element type.
 	 *
-	 * - Normalizes attribute names to lowercase
 	 * - Discards attributes not on a whitelist for the given element
-	 * - Turns broken or invalid entities into plaintext
-	 * - Double-quotes all attribute values
-	 * - Attributes without values are given the name as attribute
-	 * - Double attributes are discarded
 	 * - Unsafe style attributes are discarded
-	 * - Prepends space if there are attributes.
 	 *
-	 * @param string $text
+	 * @param array $attribs
 	 * @param string $element
-	 * @return string
+	 * @return array
 	 *
 	 * @todo Check for legal values where the DTD limits things.
 	 * @todo Check for unique id attribute :P
 	 */
-	function fixTagAttributes( $text, $element ) {
-		if( trim( $text ) == '' ) {
-			return '';
-		}
-
-		# Unquoted attribute
-		# Since we quote this later, this can be anything distinguishable
-		# from the end of the attribute
-		$pairs = array();
-		if( !preg_match_all(
-			MW_ATTRIBS_REGEX,
-			$text,
-			$pairs,
-			PREG_SET_ORDER ) ) {
-			return '';
-		}
-
+	function validateTagAttributes( $attribs, $element ) {
 		$whitelist = array_flip( Sanitizer::attributeWhitelist( $element ) );
-		$attribs = array();
-		foreach( $pairs as $set ) {
-			$attribute = strtolower( $set[1] );
+		$out = array();
+		foreach( $attribs as $attribute => $value ) {
 			if( !isset( $whitelist[$attribute] ) ) {
 				continue;
 			}
-
-			$raw   = Sanitizer::getTagAttributeCallback( $set );
-			$value = Sanitizer::normalizeAttributeValue( $raw );
-
 			# Strip javascript "expression" from stylesheets.
 			# http://msdn.microsoft.com/workshop/author/dhtml/overview/recalc.asp
 			if( $attribute == 'style' ) {
@@ -574,7 +565,7 @@ class Sanitizer {
 
 				// Remove any comments; IE gets token splitting wrong
 				$stripped = preg_replace( '!/\\*.*?\\*/!S', ' ', $stripped );
-				$value = htmlspecialchars( $stripped );
+				$value = $stripped;
 
 				// ... and continue checks
 				$stripped = preg_replace( '!\\\\([0-9A-Fa-f]{1,6})[ \\n\\r\\t\\f]?!e',
@@ -590,34 +581,101 @@ class Sanitizer {
 			if ( $attribute === 'id' )
 				$value = Sanitizer::escapeId( $value );
 
-			# Templates and links may be expanded in later parsing,
-			# creating invalid or dangerous output. Suppress this.
-			$value = strtr( $value, array(
-				'<'    => '&lt;',   // This should never happen,
-				'>'    => '&gt;',   // we've received invalid input
-				'"'    => '&quot;', // which should have been escaped.
-				'{'    => '&#123;',
-				'['    => '&#91;',
-				"''"   => '&#39;&#39;',
-				'ISBN' => '&#73;SBN',
-				'RFC'  => '&#82;FC',
-				'PMID' => '&#80;MID',
-				'|'    => '&#124;',
-				'__'   => '&#95;_',
-			) );
-
-			# Stupid hack
-			$value = preg_replace_callback(
-				'/(' . wfUrlProtocols() . ')/',
-				array( 'Sanitizer', 'armorLinksCallback' ),
-				$value );
-
 			// If this attribute was previously set, override it.
 			// Output should only have one attribute of each name.
-			$attribs[$attribute] = "$attribute=\"$value\"";
+			$out[$attribute] = $value;
 		}
+		return $out;
+	}
 
+	/**
+	 * Take a tag soup fragment listing an HTML element's attributes
+	 * and normalize it to well-formed XML, discarding unwanted attributes.
+	 * Output is safe for further wikitext processing, with escaping of
+	 * values that could trigger problems.
+	 *
+	 * - Normalizes attribute names to lowercase
+	 * - Discards attributes not on a whitelist for the given element
+	 * - Turns broken or invalid entities into plaintext
+	 * - Double-quotes all attribute values
+	 * - Attributes without values are given the name as attribute
+	 * - Double attributes are discarded
+	 * - Unsafe style attributes are discarded
+	 * - Prepends space if there are attributes.
+	 *
+	 * @param string $text
+	 * @param string $element
+	 * @return string
+	 */
+	function fixTagAttributes( $text, $element ) {
+		if( trim( $text ) == '' ) {
+			return '';
+		}
+		
+		$stripped = Sanitizer::validateTagAttributes(
+			Sanitizer::decodeTagAttributes( $text ), $element );
+		
+		$attribs = array();
+		foreach( $stripped as $attribute => $value ) {
+			$encAttribute = htmlspecialchars( $attribute );
+			$encValue = Sanitizer::safeEncodeAttribute( $value );
+			
+			$attribs[] = "$encAttribute=\"$encValue\"";
+		}
 		return count( $attribs ) ? ' ' . implode( ' ', $attribs ) : '';
+	}
+
+	/**
+	 * Encode an attribute value for HTML output.
+	 * @param $text
+	 * @return HTML-encoded text fragment
+	 */
+	function encodeAttribute( $text ) {
+		$encValue = htmlspecialchars( $text );
+		
+		// Whitespace is normalized during attribute decoding,
+		// so if we've been passed non-spaces we must encode them
+		// ahead of time or they won't be preserved.
+		$encValue = strtr( $encValue, array(
+			"\n" => '&#10;',
+			"\r" => '&#13;',
+			"\t" => '&#9;',
+		) );
+		
+		return $encValue;
+	}
+	
+	/**
+	 * Encode an attribute value for HTML tags, with extra armoring
+	 * against further wiki processing.
+	 * @param $text
+	 * @return HTML-encoded text fragment
+	 */
+	function safeEncodeAttribute( $text ) {
+		$encValue = Sanitizer::encodeAttribute( $text );
+		
+		# Templates and links may be expanded in later parsing,
+		# creating invalid or dangerous output. Suppress this.
+		$encValue = strtr( $encValue, array(
+			'<'    => '&lt;',   // This should never happen,
+			'>'    => '&gt;',   // we've received invalid input
+			'"'    => '&quot;', // which should have been escaped.
+			'{'    => '&#123;',
+			'['    => '&#91;',
+			"''"   => '&#39;&#39;',
+			'ISBN' => '&#73;SBN',
+			'RFC'  => '&#82;FC',
+			'PMID' => '&#80;MID',
+			'|'    => '&#124;',
+			'__'   => '&#95;_',
+		) );
+
+		# Stupid hack
+		$encValue = preg_replace_callback(
+			'/(' . wfUrlProtocols() . ')/',
+			array( 'Sanitizer', 'armorLinksCallback' ),
+			$encValue );
+		return $encValue;
 	}
 
 	/**
@@ -684,6 +742,12 @@ class Sanitizer {
 		foreach( $pairs as $set ) {
 			$attribute = strtolower( $set[1] );
 			$value = Sanitizer::getTagAttributeCallback( $set );
+			
+			// Normalize whitespace
+			$value = preg_replace( '/[\t\r\n ]+/', ' ', $value );
+			$value = trim( $value );
+			
+			// Decode character references
 			$attribs[$attribute] = Sanitizer::decodeCharReferences( $value );
 		}
 		return $attribs;
@@ -715,7 +779,7 @@ class Sanitizer {
 			# For 'reduced' form, return explicitly the attribute name here.
 			return $set[1];
 		} else {
-			wfDebugDieBacktrace( "Tag conditions not met. This should never happen and is a bug." );
+			throw new MWException( "Tag conditions not met. This should never happen and is a bug." );
 		}
 	}
 

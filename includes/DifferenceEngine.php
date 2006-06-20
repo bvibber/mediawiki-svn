@@ -6,8 +6,6 @@
  */
 
 /** */
-require_once( 'Revision.php' );
-
 define( 'MAX_DIFF_LINE', 10000 );
 define( 'MAX_DIFF_XREF_LENGTH', 10000 );
 
@@ -140,7 +138,7 @@ CONTROL;
 			$wgOut->setPageTitle( $oldTitle . ', ' . $newTitle );
 		}
 		$wgOut->setSubtitle( wfMsg( 'difference' ) );
-		$wgOut->setRobotpolicy( 'noindex,follow' );
+		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
 		if ( !( $this->mOldPage->userCanRead() && $this->mNewPage->userCanRead() ) ) {
 			$wgOut->loginToUse();
@@ -171,7 +169,7 @@ CONTROL;
 		$prevlink = $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'previousdiff' ),
 			'diff=prev&oldid='.$this->mOldid, '', '', 'id="differences-prevlink"' );
 		if ( $this->mNewRev->isCurrent() ) {
-			$nextlink = '';
+			$nextlink = '&nbsp;';
 		} else {
 			$nextlink = $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'nextdiff' ),
 				'diff=next&oldid='.$this->mNewid, '', '', 'id="differences-nextlink"' );
@@ -488,17 +486,23 @@ CONTROL;
 		}
 
 		// Set assorted variables
+		$timestamp = $wgLang->timeanddate( $this->mNewRev->getTimestamp(), true );
+		$this->mNewPage = $this->mNewRev->getTitle();
 		if( $this->mNewRev->isCurrent() ) {
-			$this->mPagetitle = htmlspecialchars( wfMsg( 'currentrev' ) );
-			$this->mNewPage = $this->mTitle;
 			$newLink = $this->mNewPage->escapeLocalUrl();
-			$this->mNewtitle = "<a href='$newLink'>{$this->mPagetitle}</a>";
+			$this->mPagetitle = htmlspecialchars( wfMsg( 'currentrev' ) );
+			$newEdit = $this->mNewPage->escapeLocalUrl( 'action=edit' );
+			
+			$this->mNewtitle = "<strong><a href='$newLink'>{$this->mPagetitle}</a> ($timestamp)</strong>"
+				. " (<a href='$newEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)";
+
 		} else {
-			$this->mNewPage = $this->mNewRev->getTitle();
-			$newLink = $this->mNewPage->escapeLocalUrl ('oldid=' . $this->mNewid );
-			$t = $wgLang->timeanddate( $this->mNewRev->getTimestamp(), true );
-			$this->mPagetitle = htmlspecialchars( wfMsg( 'revisionasof', $t ) );
-			$this->mNewtitle = "<a href='$newLink'>{$this->mPagetitle}</a>";
+			$newLink = $this->mNewPage->escapeLocalUrl( 'oldid=' . $this->mNewid );
+			$newEdit = $this->mNewPage->escapeLocalUrl( 'action=edit&oldid=' . $this->mNewid );
+			$this->mPagetitle = htmlspecialchars( wfMsg( 'revisionasof', $timestamp ) );
+			
+			$this->mNewtitle = "<strong><a href='$newLink'>{$this->mPagetitle}</a></strong>"
+				. " (<a href='$newEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)";
 		}
 
 		// Load the old revision object
@@ -526,7 +530,9 @@ CONTROL;
 
 			$t = $wgLang->timeanddate( $this->mOldRev->getTimestamp(), true );
 			$oldLink = $this->mOldPage->escapeLocalUrl( 'oldid=' . $this->mOldid );
-			$this->mOldtitle = "<a href='$oldLink'>" . htmlspecialchars( wfMsg( 'revisionasof', $t ) ) . '</a>';
+			$oldEdit = $this->mOldPage->escapeLocalUrl( 'action=edit&oldid=' . $this->mOldid );
+			$this->mOldtitle = "<strong><a href='$oldLink'>" . htmlspecialchars( wfMsg( 'revisionasof', $t ) )
+				. "</a></strong> (<a href='$oldEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)";
 		}
 
 		return true;

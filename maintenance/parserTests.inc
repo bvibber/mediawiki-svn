@@ -92,6 +92,8 @@ class ParserTest {
 			# Matches anything
 			$this->regex = '';
 		}
+		
+		$this->hooks = array();
 	}
 
 	/**
@@ -142,6 +144,20 @@ class ParserTest {
 						wfDie( "'endarticle' without 'article' at line $n\n" );
 					}
 					$this->addArticle($this->chomp($data['article']), $this->chomp($data['text']), $n);
+					$data = array();
+					$section = null;
+					continue;
+				}
+				if( $section == 'endhooks' ) {
+					if( !isset( $data['hooks'] ) ) {
+						wfDie( "'endhooks' without 'hooks' at line $n\n" );
+					}
+					foreach( explode( "\n", $data['hooks'] ) as $line ) {
+						$line = trim( $line );
+						if( $line ) {
+							$this->requireHook( $line );
+						}
+					}
 					$data = array();
 					$section = null;
 					continue;
@@ -227,8 +243,6 @@ class ParserTest {
 
 		if (preg_match('/\\bmath\\b/i', $opts)) {
 			# XXX this should probably be done by the ParserOptions
-			require_once('Math.php');
-
 			$options->setUseTex(true);
 		}
 
@@ -242,6 +256,9 @@ class ParserTest {
 		$noxml = (bool)preg_match( '~\\b noxml \\b~x', $opts );
 
 		$parser =& new Parser();
+		foreach( $this->hooks as $tag => $callback ) {
+			$parser->setHook( $tag, $callback );
+		}
 		wfRunHooks( 'ParserTestParser', array( &$parser ) );
 		
 		$title =& Title::makeTitle( NS_MAIN, $titleText );
@@ -250,6 +267,13 @@ class ParserTest {
 			$out = $parser->preSaveTransform( $input, $title, $user, $options );
 		} elseif (preg_match('/\\bmsg\\b/i', $opts)) {
 			$out = $parser->transformMsg( $input, $options );
+		} elseif( preg_match( '/\\bsection=(\d+)\b/i', $opts, $matches ) ) {
+			$section = intval( $matches[1] );
+			$out = $parser->getSection( $input, $section );
+		} elseif( preg_match( '/\\breplace=(\d+),"(.*?)"/i', $opts, $matches ) ) {
+			$section = intval( $matches[1] );
+			$replace = $matches[2];
+			$out = $parser->replaceSection( $input, $section, $replace );
 		} else {
 			$output = $parser->parse( $input, $title, $options, true, true, 1337 );
 			$out = $output->getText();
@@ -296,8 +320,6 @@ class ParserTest {
 		} else {
 			$lang = 'en';
 		}
-		$langClass = 'Language' . str_replace( '-', '_', ucfirst( $lang ) );
-		$langObj = setupLangObj( $langClass );
 
 		$settings = array(
 			'wgServer' => 'http://localhost',
@@ -315,8 +337,8 @@ class ParserTest {
 			'wgDBprefix' => 'parsertest_',
 			'wgDefaultUserOptions' => array(),
 
-			'wgLang' => $langObj,
-			'wgContLang' => $langObj,
+			'wgLang' => null,
+			'wgContLang' => null,
 			'wgNamespacesWithSubpages' => array( 0 => preg_match('/\\bsubpage\\b/i', $opts)),
 			'wgMaxTocLevel' => 999,
 			'wgCapitalLinks' => true,
@@ -331,6 +353,11 @@ class ParserTest {
 			$this->savedGlobals[$var] = $GLOBALS[$var];
 			$GLOBALS[$var] = $val;
 		}
+		$langClass = 'Language' . str_replace( '-', '_', ucfirst( $lang ) );
+		$langObj = setupLangObj( $langClass );
+		$GLOBALS['wgLang'] = $langObj;
+		$GLOBALS['wgContLang'] = $langObj;
+
 		$GLOBALS['wgLoadBalancer']->loadMasterPos();
 		$GLOBALS['wgMessageCache']->initialise( new BagOStuff(), false, 0, $GLOBALS['wgDBname'] );
 		$this->setupDatabase();
@@ -520,7 +547,7 @@ class ParserTest {
 		@rmdir( "$dir/thumb/3/39" ); # wtf?
 		@rmdir( "$dir/thumb/3" );
 		@rmdir( "$dir/thumb" );
-		rmdir( "$dir" );
+		@rmdir( "$dir" );
 	}
 
 	/**
@@ -659,7 +686,6 @@ class ParserTest {
 	 * @param string $name the title, including any prefix
 	 * @param string $text the article text
 	 * @param int $line the input line number, for reporting errors
-	 * @static
 	 * @private
 	 */
 	function addArticle($name, $text, $line) {
@@ -677,6 +703,21 @@ class ParserTest {
 		$art = new Article($title);
 		$art->insertNewArticle($text, '', false, false );
 		$this->teardownGlobals();
+	}
+	
+	/**
+	 * Steal a callback function from the primary parser, save it for
+	 * application to our scary parser. If the hook is not installed,
+	 * die a painful dead to warn the others.
+	 * @param string $name
+	 */
+	private function requireHook( $name ) {
+		global $wgParser;
+		if( isset( $wgParser->mTagHooks[$name] ) ) {
+			$this->hooks[$name] = $wgParser->mTagHooks[$name];
+		} else {
+			wfDie( "This test suite requires the '$name' hook extension.\n" );
+		}
 	}
 
 	/*

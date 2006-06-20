@@ -6,9 +6,6 @@
  * @package MediaWiki
  */
 
-define('DIR_PREV', 0);
-define('DIR_NEXT', 1);
-
 /**
  * This class handles printing the history page for an article.  In order to
  * be efficient, it uses timestamps rather than offsets for paging, to avoid
@@ -21,6 +18,9 @@ define('DIR_NEXT', 1);
  */
 
 class PageHistory {
+	const DIR_PREV = 0;
+	const DIR_NEXT = 1;
+	
 	var $mArticle, $mTitle, $mSkin;
 	var $lastdate;
 	var $linesonpage;
@@ -71,6 +71,13 @@ class PageHistory {
 		$wgOut->setArticleFlag( false );
 		$wgOut->setArticleRelated( true );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setSyndicated( true );
+
+		$feedType = $wgRequest->getVal( 'feed' );
+		if( $feedType ) {
+			wfProfileOut( $fname );
+			return $this->feed( $feedType );
+		}
 
 		/*
 		 * Fail if article doesn't exist.
@@ -99,6 +106,7 @@ class PageHistory {
 		 * "go=last" means to jump to the last history page.
 		 */
 		if (($gowhere = $wgRequest->getText("go")) !== NULL) {
+			$gourl = null;
 			switch ($gowhere) {
 			case "first":
 				if (($lastid = $this->getLastOffsetForPaging($this->mTitle->getArticleID(), $limit)) === NULL)
@@ -106,8 +114,6 @@ class PageHistory {
 				$gourl = $wgTitle->getLocalURL("action=history&limit={$limit}&offset=".
 						wfTimestamp(TS_MW, $lastid));
 				break;
-			default:
-				$gourl = NULL;
 			}
 
 			if (!is_null($gourl)) {
@@ -139,7 +145,7 @@ class PageHistory {
 			$this->linesonpage = count($revisions) - 1;
 
 		/* Un-reverse revisions */
-		if ($direction == DIR_PREV)
+		if ($direction == PageHistory::DIR_PREV)
 			$revisions = array_reverse($revisions);
 
 		/*
@@ -222,6 +228,7 @@ class PageHistory {
 	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false, $firstInList = false ) {
 		global $wgUser;
 		$rev = new Revision( $row );
+		$rev->setTitle( $this->mTitle );
 
 		$s = '<li>';
 		$curlink = $this->curLink( $rev, $latest );
@@ -256,7 +263,7 @@ class PageHistory {
 		if ($notificationtimestamp && ($row->rev_timestamp >= $notificationtimestamp)) {
 			$s .= ' <span class="updatedmarker">' .  wfMsgHtml( 'updatedmarker' ) . '</span>';
 		}
-		if( $row->rev_deleted & MW_REV_DELETED_TEXT ) {
+		if( $row->rev_deleted & Revision::MW_REV_DELETED_TEXT ) {
 			$s .= ' ' . wfMsgHtml( 'deletedrev' );
 		}
 		$s .= "</li>\n";
@@ -268,13 +275,13 @@ class PageHistory {
 	function revLink( $rev ) {
 		global $wgLang;
 		$date = $wgLang->timeanddate( wfTimestamp(TS_MW, $rev->getTimestamp()), true );
-		if( $rev->userCan( MW_REV_DELETED_TEXT ) ) {
+		if( $rev->userCan( Revision::MW_REV_DELETED_TEXT ) ) {
 			$link = $this->mSkin->makeKnownLinkObj(
 				$this->mTitle, $date, "oldid=" . $rev->getId() );
 		} else {
 			$link = $date;
 		}
-		if( $rev->isDeleted( MW_REV_DELETED_TEXT ) ) {
+		if( $rev->isDeleted( Revision::MW_REV_DELETED_TEXT ) ) {
 			return '<span class="history-deleted">' . $link . '</span>';
 		}
 		return $link;
@@ -283,7 +290,7 @@ class PageHistory {
 	/** @todo document */
 	function curLink( $rev, $latest ) {
 		$cur = wfMsgExt( 'cur', array( 'escape') );
-		if( $latest || !$rev->userCan( MW_REV_DELETED_TEXT ) ) {
+		if( $latest || !$rev->userCan( Revision::MW_REV_DELETED_TEXT ) ) {
 			return $cur;
 		} else {
 			return $this->mSkin->makeKnownLinkObj(
@@ -306,7 +313,7 @@ class PageHistory {
 					$last,
 					"diff=" . $rev->getId() . "&oldid=prev" );
 			}
-		} elseif( !$rev->userCan( MW_REV_DELETED_TEXT ) ) {
+		} elseif( !$rev->userCan( Revision::MW_REV_DELETED_TEXT ) ) {
 			return $last;
 		} else {
 			return $this->mSkin->makeKnownLinkObj(
@@ -330,7 +337,7 @@ class PageHistory {
 #				'title' => wfMsgHtml( 'selectolderversionfordiff' )
 			);
 
-			if( !$rev->userCan( MW_REV_DELETED_TEXT ) ) {
+			if( !$rev->userCan( Revision::MW_REV_DELETED_TEXT ) ) {
 				$radio['disabled'] = 'disabled';
 			}
 
@@ -425,9 +432,9 @@ class PageHistory {
 	function getDirection() {
 		global $wgRequest;
 		if ($wgRequest->getText("dir") == "prev")
-			return DIR_PREV;
+			return PageHistory::DIR_PREV;
 		else
-			return DIR_NEXT;
+			return PageHistory::DIR_NEXT;
 	}
 
 	/** @todo document */
@@ -436,9 +443,9 @@ class PageHistory {
 
 		$dbr =& wfGetDB( DB_SLAVE );
 
-		if ($direction == DIR_PREV)
+		if ($direction == PageHistory::DIR_PREV)
 			list($dirs, $oper) = array("ASC", ">=");
-		else /* $direction == DIR_NEXT */
+		else /* $direction == PageHistory::DIR_NEXT */
 			list($dirs, $oper) = array("DESC", "<=");
 
 		if ($offset)
@@ -486,6 +493,11 @@ class PageHistory {
 				'wl_user' => $wgUser->getID()
 			),
 			$fname);
+		
+		// Don't use the special value reserved for telling whether the field is filled
+		if ( is_null( $this->mNotificationTimestamp ) ) {
+			$this->mNotificationTimestamp = false;
+		}
 
 		return $this->mNotificationTimestamp;
 	}
@@ -503,7 +515,7 @@ class PageHistory {
 		 * When we're displaying previous revisions, we need to reverse
 		 * the array, because it's queried in reverse order.
 		 */
-		if ($direction == DIR_PREV)
+		if ($direction == PageHistory::DIR_PREV)
 			$revisions = array_reverse($revisions);
 
 		/*
@@ -516,6 +528,9 @@ class PageHistory {
 		if( count( $revisions ) ) {
 			$latestShown = wfTimestamp(TS_MW, $revisions[0]->rev_timestamp);
 			$earliestShown = wfTimestamp(TS_MW, $revisions[count($revisions) - 1]->rev_timestamp);
+		} else {
+			$latestShown = null;
+			$earliestShown = null;
 		}
 
 		/* Don't announce the limit everywhere if it's the default */
@@ -561,6 +576,92 @@ class PageHistory {
 		return $this->mSkin->makeKnownLinkObj(
 				$this->mTitle, $text,
 				wfArrayToCGI( $query, array( 'action' => 'history' )));
+	}
+	
+	
+	/**
+	 * Output a subscription feed listing recent edits to this page.
+	 * @param string $type
+	 */
+	function feed( $type ) {
+		require_once 'SpecialRecentchanges.php';
+		
+		global $wgFeedClasses;
+		if( !isset( $wgFeedClasses[$type] ) ) {
+			global $wgOut;
+			$wgOut->addWikiText( wfMsg( 'feed-invalid' ) );
+			return;
+		}
+		
+		$feed = new $wgFeedClasses[$type](
+			$this->mTitle->getPrefixedText() . ' - ' .
+				wfMsgForContent( 'history-feed-title' ),
+			wfMsgForContent( 'history-feed-description' ),
+			$this->mTitle->getFullUrl( 'action=history' ) );
+
+		$items = $this->fetchRevisions(10, 0, PageHistory::DIR_NEXT);
+		$feed->outHeader();
+		if( $items ) {
+			foreach( $items as $row ) {
+				$feed->outItem( $this->feedItem( $row ) );
+			}
+		} else {
+			$feed->outItem( $this->feedEmpty() );
+		}
+		$feed->outFooter();
+	}
+	
+	function feedEmpty() {
+		global $wgOut;
+		return new FeedItem(
+			wfMsgForContent( 'nohistory' ),
+			$wgOut->parse( wfMsgForContent( 'history-feed-empty' ) ),
+			$this->mTitle->getFullUrl(),
+			wfTimestamp( TS_MW ),
+			'',
+			$this->mTitle->getTalkPage()->getFullUrl() );
+	}
+	
+	/**
+	 * Generate a FeedItem object from a given revision table row
+	 * Borrows Recent Changes' feed generation functions for formatting;
+	 * includes a diff to the previous revision (if any).
+	 *
+	 * @param $row
+	 * @return FeedItem
+	 */
+	function feedItem( $row ) {
+		$rev = new Revision( $row );
+		$rev->setTitle( $this->mTitle );
+		$text = rcFormatDiffRow( $this->mTitle,
+			$this->mTitle->getPreviousRevisionID( $rev->getId() ),
+			$rev->getId(),
+			$rev->getTimestamp(),
+			$rev->getComment() );
+		
+		if( $rev->getComment() == '' ) {
+			global $wgContLang;
+			$title = wfMsgForContent( 'history-feed-item-nocomment',
+				$rev->getUserText(),
+				$wgContLang->timeanddate( $rev->getTimestamp() ) );
+		} else {
+			$title = $rev->getUserText() . ": " . $this->stripComment( $rev->getComment() );
+		}
+
+		return new FeedItem(
+			$title,
+			$text,
+			$this->mTitle->getFullUrl( 'diff=' . $rev->getId() . '&oldid=prev' ),
+			$rev->getTimestamp(),
+			$rev->getUserText(),
+			$this->mTitle->getTalkPage()->getFullUrl() );
+	}
+	
+	/**
+	 * Quickie hack... strip out wikilinks to more legible form from the comment.
+	 */
+	function stripComment( $text ) {
+		return preg_replace( '/\[\[([^]]*\|)?([^]]+)\]\]/', '\2', $text );
 	}
 
 

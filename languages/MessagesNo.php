@@ -133,6 +133,7 @@ Se $1.",
 "retrievedfrom" => "Hentet fra \"$1\"",
 "newmessageslink" => "nye meldinger",
 "editsection"=>"rediger",
+"editold"=>"rediger",
 "toc" => "Innholdsfortegnelse",
 "showtoc" => "vis",
 "hidetoc" => "skjul",
@@ -339,7 +340,7 @@ Det kan også være du har skrevet feil.
 Prøv igjen.",
 "matchtotals"	=> "Forespørselen \"$1\" ga treff på $2 artikkeltitler
 og på teksten i $3 artikler.",
-"nogomatch" => "Ingen sider med akkurat denne tittelen eksisterer, prøver
+"noexactmatch" => "Ingen sider med akkurat denne tittelen eksisterer, prøver
 fulltekstsøking i stedet. ",
 "titlematches"	=> "Artikkeltitler med treff på forespørselen",
 "notitlematches" => "Ingen artikkeltitler hadde treff på forespørselen",

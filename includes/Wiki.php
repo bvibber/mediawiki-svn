@@ -25,7 +25,7 @@ class MediaWiki {
 	}
 	
 	/**
-	 * Retieves key/value pairs to circumvent global variables
+	 * Retrieves key/value pairs to circumvent global variables
 	 * Note that keys are case-insensitive!
 	 */
 	function getVal( $key, $default = '' ) {
@@ -51,7 +51,7 @@ class MediaWiki {
 			} elseif( is_string( $article ) ) {
 				$output->redirect( $article );
 			} else {
-				wfDebugDieBacktrace( "Shouldn't happen: MediaWiki::initializeArticle() returned neither an object nor a URL" );
+				throw new MWException( "Shouldn't happen: MediaWiki::initializeArticle() returned neither an object nor a URL" );
 			}
 		}
 		wfProfileOut( 'MediaWiki::initialize' );
@@ -129,7 +129,8 @@ class MediaWiki {
 			wfSpecialSearch();
 		} else if( !$title or $title->getDBkey() == '' ) {
 			$title = Title::newFromText( wfMsgForContent( 'badtitle' ) );
-			$output->errorpage( 'badtitle', 'badtitletext' );
+			# Die now before we mess up $wgArticle and the skin stops working
+			throw new ErrorPageError( 'badtitle', 'badtitletext' );
 		} else if ( $title->getInterwiki() != '' ) {
 			if( $rdfrom = $request->getVal( 'rdfrom' ) ) {
 				$url = $title->getFullURL( 'rdfrom=' . urlencode( $rdfrom ) );
@@ -141,7 +142,7 @@ class MediaWiki {
 				$output->redirect( $url );
 			} else {
 				$title = Title::newFromText( wfMsgForContent( 'badtitle' ) );
-				$output->errorpage( 'badtitle', 'badtitletext' );
+				throw new ErrorPageError( 'badtitle', 'badtitletext' );
 			}
 		} else if ( ( $action == 'view' ) &&
 			(!isset( $this->GET['title'] ) || $title->getPrefixedDBKey() != $this->GET['title'] ) &&
@@ -176,10 +177,8 @@ class MediaWiki {
 	
 		switch( $title->getNamespace() ) {
 		case NS_IMAGE:
-			require_once( 'includes/ImagePage.php' );
 			return new ImagePage( $title );
 		case NS_CATEGORY:
-			require_once( 'includes/CategoryPage.php' );
 			return new CategoryPage( $title );
 		default:
 			return new Article( $title );
@@ -284,8 +283,6 @@ class MediaWiki {
 			$n = intval( $wgJobRunRate );
 		}
 
-		require_once( 'JobQueue.php' );
-
 		while ( $n-- && false != ($job = Job::pop())) {
 			$output = $job->toString() . "\n";
 			if ( !$job->run() ) {
@@ -334,7 +331,6 @@ class MediaWiki {
 			case 'unprotect':
 			case 'info':
 			case 'markpatrolled':
-			case 'validate':
 			case 'render':
 			case 'deletetrackback':
 			case 'purge':
@@ -376,11 +372,9 @@ class MediaWiki {
 				$oldid = $request->getVal( 'oldid' );
 				if( !$this->getVal( 'UseExternalEditor' ) || $action=='submit' || $internal ||
 				   $section || $oldid || ( !$user->getOption( 'externaleditor' ) && !$external ) ) {
-					require_once( 'includes/EditPage.php' );
 					$editor = new EditPage( $article );
 					$editor->submit();
 				} elseif( $this->getVal( 'UseExternalEditor' ) && ( $external || $user->getOption( 'externaleditor' ) ) ) {
-					require_once( 'includes/ExternalEdit.php' );
 					$mode = $request->getVal( 'mode' );
 					$extedit = new ExternalEdit( $article, $mode );
 					$extedit->edit();
@@ -390,18 +384,16 @@ class MediaWiki {
 				if( $_SERVER['REQUEST_URI'] == $title->getInternalURL( 'action=history' ) ) {
 					$output->setSquidMaxage( $this->getVal( 'SquidMaxage' ) );
 				}
-				require_once( 'includes/PageHistory.php' );
 				$history = new PageHistory( $article );
 				$history->history();
 				break;
 			case 'raw':
-				require_once( 'includes/RawPage.php' );
 				$raw = new RawPage( $article );
 				$raw->view();
 				break;
 			default:
 				if( wfRunHooks( 'UnknownAction', array( $action, $article ) ) ) {
-					$output->errorpage( 'nosuchaction', 'nosuchactiontext' );
+					$output->showErrorPage( 'nosuchaction', 'nosuchactiontext' );
 				}
 		}
 		wfProfileOut( 'MediaWiki::performAction' );

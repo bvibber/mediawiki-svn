@@ -16,6 +16,21 @@ does not.</p>
 
 	header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s', $stat['mtime'] ) . ' GMT' );
 
+	// Cancel output buffering and gzipping if set
+	while( $status = ob_get_status() ) {
+		ob_end_clean();
+		if( $status['name'] == 'ob_gzhandler' ) {
+			header( 'Content-Encoding:' );
+		}
+	}
+	
+	$type = wfGetType( $fname );
+	if ( $type and $type!="unknown/unknown") {
+		header("Content-type: $type");
+	} else {
+		header('Content-type: application/x-wiki');
+	}
+
 	if ( !empty( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) ) {
 		$modsince = preg_replace( '/;.*$/', '', $_SERVER['HTTP_IF_MODIFIED_SINCE'] );
 		$sinceTime = strtotime( $modsince );
@@ -26,13 +41,6 @@ does not.</p>
 	}
 
 	header( 'Content-Length: ' . $stat['size'] );
-
-	$type = wfGetType( $fname );
-	if ( $type and $type!="unknown/unknown") {
-		header("Content-type: $type");
-	} else {
-		header('Content-type: application/x-wiki');
-	}
 
 	readfile( $fname );
 }

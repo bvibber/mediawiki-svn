@@ -30,7 +30,7 @@ class Linker {
 	function getExternalLinkAttributes( $link, $text, $class='' ) {
 		$link = htmlspecialchars( $link );
 
-		$r = ($class != '') ? " class='$class'" : " class='external'";
+		$r = ($class != '') ? " class=\"$class\"" : " class=\"external\"";
 
 		$r .= " title=\"{$link}\"";
 		return $r;
@@ -45,7 +45,7 @@ class Linker {
 		$link = preg_replace( '/[\\x00-\\x1f]/', ' ', $link );
 		$link = htmlspecialchars( $link );
 
-		$r = ($class != '') ? " class='$class'" : " class='external'";
+		$r = ($class != '') ? " class=\"$class\"" : " class=\"external\"";
 
 		$r .= " title=\"{$link}\"";
 		return $r;
@@ -194,7 +194,7 @@ class Linker {
 
 		# Fail gracefully
 		if ( ! is_object($nt) ) {
-			# wfDebugDieBacktrace();
+			# throw new MWException();
 			wfProfileOut( $fname );
 			return "<!-- ERROR -->{$prefix}{$text}{$trail}";
 		}
@@ -343,7 +343,7 @@ class Linker {
 	function makeBrokenLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
 		# Fail gracefully
 		if ( ! isset($nt) ) {
-			# wfDebugDieBacktrace();
+			# throw new MWException();
 			return "<!-- ERROR -->{$prefix}{$text}{$trail}";
 		}
 
@@ -426,7 +426,7 @@ class Linker {
 			$text = htmlspecialchars( $nt->getPrefixedText() );
 		}
 		list( $inside, $trail ) = Linker::splitTrail( $trail );
-		return "<strong>{$prefix}{$text}{$inside}</strong>{$trail}";
+		return "<strong class=\"selflink\">{$prefix}{$text}{$inside}</strong>{$trail}";
 	}
 
 	/** @todo document */
@@ -603,15 +603,17 @@ class Linker {
 		if ( $manual_thumb != '' ) # Use manually specified thumbnail
 		{
 			$manual_title = Title::makeTitleSafe( NS_IMAGE, $manual_thumb ); #new Title ( $manual_thumb ) ;
-			$manual_img = new Image( $manual_title );
-			$thumbUrl = $manual_img->getViewURL();
-			if ( $manual_img->exists() )
-			{
-				$width  = $manual_img->getWidth();
-				$height = $manual_img->getHeight();
-				$boxwidth = $width ;
-				$boxheight = $height ;
-				$oboxwidth = $boxwidth + 2 ;
+			if( $manual_title ) {
+				$manual_img = new Image( $manual_title );
+				$thumbUrl = $manual_img->getViewURL();
+				if ( $manual_img->exists() )
+				{
+					$width  = $manual_img->getWidth();
+					$height = $manual_img->getHeight();
+					$boxwidth = $width ;
+					$boxheight = $height ;
+					$oboxwidth = $boxwidth + 2 ;
+				}
 			}
 		}
 
@@ -646,7 +648,7 @@ class Linker {
 					'width="15" height="11" alt="'.$more.'" /></a></div>';
 			}
 		}
-		$s .= '  <div class="thumbcaption" '.$textalign.'>'.$zoomicon.$label."</div></div></div>";
+		$s .= '  <div class="thumbcaption"'.$textalign.'>'.$zoomicon.$label."</div></div></div>";
 		return str_replace("\n", ' ', $s);
 	}
 
@@ -656,7 +658,7 @@ class Linker {
 	function makeBrokenImageLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
 		# Fail gracefully
 		if ( ! isset($nt) ) {
-			# wfDebugDieBacktrace();
+			# throw new MWException();
 			return "<!-- ERROR -->{$prefix}{$text}{$trail}";
 		}
 
@@ -719,7 +721,7 @@ class Linker {
 				$text = $alt;
 			}
 			$u = htmlspecialchars( $url );
-			return "<a href=\"{$u}\" class='$class' title=\"{$alt}\">{$text}</a>";
+			return "<a href=\"{$u}\" class=\"$class\" title=\"{$alt}\">{$text}</a>";
 		}
 	}
 
@@ -831,12 +833,12 @@ class Linker {
 	 * @return string HTML
 	 */
 	function revUserLink( $rev ) {
-		if( $rev->userCan( MW_REV_DELETED_USER ) ) {
+		if( $rev->userCan( Revision::MW_REV_DELETED_USER ) ) {
 			$link = $this->userLink( $rev->getRawUser(), $rev->getRawUserText() );
 		} else {
 			$link = wfMsgHtml( 'rev-deleted-user' );
 		}
-		if( $rev->isDeleted( MW_REV_DELETED_USER ) ) {
+		if( $rev->isDeleted( Revision::MW_REV_DELETED_USER ) ) {
 			return '<span class="history-deleted">' . $link . '</span>';
 		}
 		return $link;
@@ -848,14 +850,14 @@ class Linker {
 	 * @return string HTML
 	 */
 	function revUserTools( $rev ) {
-		if( $rev->userCan( MW_REV_DELETED_USER ) ) {
+		if( $rev->userCan( Revision::MW_REV_DELETED_USER ) ) {
 			$link = $this->userLink( $rev->getRawUser(), $rev->getRawUserText() ) .
 				' ' .
 				$this->userToolLinks( $rev->getRawUser(), $rev->getRawUserText() );
 		} else {
 			$link = wfMsgHtml( 'rev-deleted-user' );
 		}
-		if( $rev->isDeleted( MW_REV_DELETED_USER ) ) {
+		if( $rev->isDeleted( Revision::MW_REV_DELETED_USER ) ) {
 			return '<span class="history-deleted">' . $link . '</span>';
 		}
 		return $link;
@@ -895,7 +897,12 @@ class Linker {
 			if( $title ) {
 				$section = $auto;
 
-				# This is hackish but should work in most cases.
+				# Generate a valid anchor name from the section title.
+				# Hackish, but should generally work - we strip wiki
+				# syntax, including the magic [[: that is used to
+				# "link rather than show" in case of images and
+				# interlanguage links.
+				$section = str_replace( '[[:', '', $section );
 				$section = str_replace( '[[', '', $section );
 				$section = str_replace( ']]', '', $section );
 				$sectionTitle = wfClone( $title );
@@ -959,7 +966,7 @@ class Linker {
 			return '';
 		} else {
 			$formatted = $this->formatComment( $comment, $title );
-			return " <span class='comment'>($formatted)</span>";
+			return " <span class=\"comment\">($formatted)</span>";
 		}
 	}
 	
@@ -970,14 +977,14 @@ class Linker {
 	 * @return string HTML
 	 */
 	function revComment( $rev ) {
-		if( $rev->userCan( MW_REV_DELETED_COMMENT ) ) {
+		if( $rev->userCan( Revision::MW_REV_DELETED_COMMENT ) ) {
 			$block = $this->commentBlock( $rev->getRawComment(), $rev->getTitle() );
 		} else {
-			$block = " <span class='comment'>" .
+			$block = " <span class=\"comment\">" .
 				wfMsgHtml( 'rev-deleted-comment' ) . "</span>";
 		}
-		if( $rev->isDeleted( MW_REV_DELETED_COMMENT ) ) {
-			return " <span class='history-deleted'>$block</span>";
+		if( $rev->isDeleted( Revision::MW_REV_DELETED_COMMENT ) ) {
+			return " <span class=\"history-deleted\">$block</span>";
 		}
 		return $block;
 	}
@@ -996,7 +1003,7 @@ class Linker {
 	 * parameter level defines if we are on an indentation level
 	 */
 	function tocLine( $anchor, $tocline, $tocnumber, $level ) {
-		return "\n<li class='toclevel-$level'><a href=\"#" .
+		return "\n<li class=\"toclevel-$level\"><a href=\"#" .
 			$anchor . '"><span class="tocnumber">' .
 			$tocnumber . '</span> <span class="toctext">' .
 			$tocline . '</span></a>';

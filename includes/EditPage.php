@@ -23,7 +23,8 @@ class EditPage {
 	var $formtype;
 	var $firsttime;
 	var $lastDelete;
-	var $mTokenOk = true;
+	var $mTokenOk = false;
+	var $mTriedSave = false;
 	var $tooBig = false;
 	var $kblength = false;
 	var $missingComment = false;
@@ -303,6 +304,8 @@ class EditPage {
 		# checking, etc.
 		if ( 'initial' == $this->formtype || $this->firsttime ) {
 			$this->initialiseForm();
+			if( !$this->mTitle->getArticleId() ) 
+				wfRunHooks( 'EditFormPreloadText', array( &$this->textbox1, &$this->mTitle ) );
 		}
 
 		$this->showEditForm();
@@ -358,19 +361,21 @@ class EditPage {
 				$this->preview = $request->getCheck( 'wpPreview' ) || $request->getCheck( 'wpLivePreview' );
 				$this->diff = $request->getCheck( 'wpDiff' );
 
-				if( !$this->preview ) {
-					if ( $this->tokenOk( $request ) ) {
-						# Some browsers will not report any submit button
-						# if the user hits enter in the comment box.
-						# The unmarked state will be assumed to be a save,
-						# if the form seems otherwise complete.
-						wfDebug( "$fname: Passed token check.\n" );
-					} else {
-						# Page might be a hack attempt posted from
-						# an external site. Preview instead of saving.
-						wfDebug( "$fname: Failed token check; forcing preview\n" );
-						$this->preview = true;
-					}
+				// Remember whether a save was requested, so we can indicate
+				// if we forced preview due to session failure.
+				$this->mTriedSave = !$this->preview;
+				
+				if ( $this->tokenOk( $request ) ) {
+					# Some browsers will not report any submit button
+					# if the user hits enter in the comment box.
+					# The unmarked state will be assumed to be a save,
+					# if the form seems otherwise complete.
+					wfDebug( "$fname: Passed token check.\n" );
+				} else {
+					# Page might be a hack attempt posted from
+					# an external site. Preview instead of saving.
+					wfDebug( "$fname: Failed token check; forcing preview\n" );
+					$this->preview = true;
 				}
 			}
 			$this->save    = ! ( $this->preview OR $this->diff );
@@ -576,6 +581,14 @@ class EditPage {
 					return false;
 			}
 
+			# If no edit comment was given when creating a new page, and what's being
+			# created is a redirect, be smart and fill in a neat auto-comment
+			if( $this->summary == '' ) {
+				$rt = Title::newFromRedirect( $this->textbox1 );
+				if( is_object( $rt ) )
+					$this->summary = wfMsgForContent( 'autoredircomment', $rt->getPrefixedText() );
+			}
+
 			$isComment=($this->section=='new');
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
 				$this->minoredit, $this->watchthis, false, $isComment);
@@ -645,6 +658,14 @@ class EditPage {
 		if ( $this->isConflict ) {
 			wfProfileOut( $fname );
 			return true;
+		}
+
+		# If no edit comment was given when turning a page into a redirect, be smart
+		# and fill in a neat auto-comment
+		if( $this->summary == '' ) {
+			$rt = Title::newFromRedirect( $this->textbox1 );
+			if( is_object( $rt ) )
+				$this->summary = wfMsgForContent( 'autoredircomment', $rt->getPrefixedText() );
 		}
 
 		# Handle the user preference to force summaries here
@@ -1107,7 +1128,7 @@ END
 		# For a bit more sophisticated detection of blank summaries, hash the
 		# automatic one and pass that in a hidden field.
 		$autosumm = $this->autoSumm ? $this->autoSumm : md5( $this->summary );
-		$wgOut->addHTML( "<input type=\"hidden\" name=\"wpAutoSummary\" value=\"$autosumm\" />\n" );
+		$wgOut->addHtml( wfHidden( 'wpAutoSummary', $autosumm ) );
 
 		if ( $this->isConflict ) {
 			require_once( "DifferenceEngine.php" );
@@ -1254,10 +1275,10 @@ END
 		$fname = 'EditPage::getPreviewText';
 		wfProfileIn( $fname );
 
-		if ( $this->mTokenOk ) {
-			$msg = 'previewnote';
-		} else {
+		if ( $this->mTriedSave && !$this->mTokenOk ) {
 			$msg = 'session_fail_preview';
+		} else {
+			$msg = 'previewnote';
 		}
 		$previewhead = '<h2>' . htmlspecialchars( wfMsg( 'preview' ) ) . "</h2>\n" .
 			"<div class='previewnote'>" . $wgOut->parse( wfMsg( $msg ) ) . "</div>\n";
@@ -1268,9 +1289,17 @@ END
 		$parserOptions = ParserOptions::newFromUser( $wgUser );
 		$parserOptions->setEditSection( false );
 
+		global $wgRawHtml;
+		if( $wgRawHtml && !$this->mTokenOk ) {
+			// Could be an offsite preview attempt. This is very unsafe if
+			// HTML is enabled, as it could be an attack.
+			return $wgOut->parse( "<div class='previewnote'>" .
+				wfMsg( 'session_fail_preview_html' ) . "</div>" );
+		}
+
 		# don't parse user css/js, show message about preview
 		# XXX: stupid php bug won't let us use $wgTitle->isCssJsSubpage() here
-
+		
 		if ( $this->isCssJsSubpage ) {
 			if(preg_match("/\\.css$/", $wgTitle->getText() ) ) {
 				$previewtext = wfMsg('usercsspreview');
@@ -1522,15 +1551,15 @@ END
 					'key'	=>	'M'
 				),
 			array(	'image'	=>'button_math.png',
-					'open'	=>	"\\<math\\>",
-					'close'	=>	"\\</math\\>",
+					'open'	=>	"<math>",
+					'close'	=>	"<\\/math>",
 					'sample'=>	wfMsg('math_sample'),
 					'tip'	=>	wfMsg('math_tip'),
 					'key'	=>	'C'
 				),
 			array(	'image'	=>'button_nowiki.png',
-					'open'	=>	"\\<nowiki\\>",
-					'close'	=>	"\\</nowiki\\>",
+					'open'	=>	"<nowiki>",
+					'close'	=>	"<\\/nowiki>",
 					'sample'=>	wfMsg('nowiki_sample'),
 					'tip'	=>	wfMsg('nowiki_tip'),
 					'key'	=>	'N'
@@ -1614,6 +1643,7 @@ END
 		$oldtext = $this->mArticle->fetchContent();
 		$newtext = $this->mArticle->replaceSection(
 			$this->section, $this->textbox1, $this->summary, $this->edittime );
+		$newtext = $this->mArticle->preSaveTransform( $newtext );
 		$oldtitle = wfMsgExt( 'currentrev', array('parseinline') );
 		$newtitle = wfMsgExt( 'yourtext', array('parseinline') );
 		if ( $oldtext !== false  || $newtext != '' ) {

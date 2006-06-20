@@ -48,7 +48,7 @@ class SearchEngine {
 	 * @static
 	 * @param string $term
 	 * @return Title
-	 * @access private
+	 * @private
 	 */
 	function getNearMatch( $term ) {
 		# Exact match? No need to look further.
@@ -187,7 +187,7 @@ class SearchEngine {
 	 * active database backend, and return a configured instance.
 	 *
 	 * @return SearchEngine
-	 * @access private
+	 * @private
 	 */
 	function create() {
 		global $wgDBtype, $wgSearchType;
@@ -195,10 +195,8 @@ class SearchEngine {
 			$class = $wgSearchType;
 		} elseif( $wgDBtype == 'mysql' ) {
 			$class = 'SearchMySQL4';
-			require_once( 'SearchMySQL4.php' );
 		} else if ( $wgDBtype == 'PostgreSQL' ) {
 			$class = 'SearchTsearch2';
-			require_once( 'SearchTsearch2.php' );
 		} else {
 			$class = 'SearchEngineDummy';
 		}

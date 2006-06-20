@@ -163,6 +163,7 @@ global $wgRightsText;
 'retrievedfrom'			=>	"Преземено од \"$1\"",
 'newmessageslink'		=>	'нови пораки',
 'editsection' 			=>	'промени',
+'editold' 			=>	'промени',
 'toc'				=>	'Содржина',
 'showtoc'			=>	'прикажи',
 'hidetoc'			=>	'скриј',
@@ -364,7 +365,7 @@ global $wgRightsText;
 'compareselectedversions'	=>	'Споредете ги избраните верзии',
 
 "searchresults"			=>	"Резултати од пребарувањето",
-"nogomatch"			=>	"Не постои страница со тој наслов, пробувам целосно барање на текстови.",
+"noexactmatch"			=>	"Не постои страница со тој наслов, пробувам целосно барање на текстови.",
 "titlematches"			=>	"Соодветни наслови на статии",
 "notitlematches"		=>	"Нема соодветни наслови на статии",
 "textmatches"			=>	"Соодветни текстови во статии",
@@ -531,7 +532,7 @@ global $wgRightsText;
 'shareduploadwiki-linktext'		=>	'описот на датотеката',
 'noimage'			=>	'Не постои датотека со тоа име, можете $1',
 'noimage-linktext'			=>	'да го подигнете',
-'uploadnewversion'		=>	'[$1 Подигни нова верзија на оваа датотека]',
+'uploadnewversion-linktext' => 'Подигни нова верзија на оваа датотека',
 
 "statistics"			=>	"Статистики",
 "sitestats"			=>	"Статистики за сајтот",

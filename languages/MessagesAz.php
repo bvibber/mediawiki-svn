@@ -1,6 +1,7 @@
 <?php
 
-/* private */ $wgAllMessagesAz = array(
+global $wgAllMessagesAz;
+$wgAllMessagesAz = array(
 
 # User preference toggles  # Kullanıcı seçenekleri
 'tog-fancysig' => 'Xam imza (daxili bağlantı yaratmaz)',
@@ -128,6 +129,7 @@
 'youhavenewmessages' => 'Hal-hazırda $1 var. ($2)',
 'newmessageslink' => 'yeni mesajlar!',
 'editsection' => 'redaktə',
+'editold' => 'redaktə',
 'toc' => 'Mündəricat',
 'showtoc' => 'göstər',
 'hidetoc' => 'gizlə',

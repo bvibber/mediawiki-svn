@@ -8,7 +8,8 @@
 # hyphen (-). If you need more characters, you may be able to change
 # the regex in MagicWord::initRegex
 
-/* private */ $wgAllMessagesEn = array(
+global $wgAllMessagesEn;
+$wgAllMessagesEn = array(
 /*
 The sidebar for MonoBook is generated from this message, lines that do not
 begin with * or ** are discarded, furthermore lines that do begin with ** and
@@ -52,7 +53,7 @@ parent class in order maintain consistency across languages.
 'tog-previewontop' => 'Show preview before edit box',
 'tog-previewonfirst' => 'Show preview on first edit',
 'tog-nocache' => 'Disable page caching',
-'tog-enotifwatchlistpages' 	=> 'E-mail me on page changes',
+'tog-enotifwatchlistpages' 	=> 'E-mail me when a page I\'m watching is changed',
 'tog-enotifusertalkpages' 	=> 'E-mail me when my user talk page is changed',
 'tog-enotifminoredits' 		=> 'E-mail me also for minor edits of pages',
 'tog-enotifrevealaddr' 		=> 'Reveal my e-mail address in notification mails',
@@ -126,19 +127,19 @@ parent class in order maintain consistency across languages.
 * [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
 
 'portal'		=> 'Community portal',
-'portal-url'		=> '{{ns:project}}:Community Portal',
+'portal-url'		=> 'Project:Community Portal',
 'about'			=> 'About',
 'aboutsite'		=> 'About {{SITENAME}}',
-'aboutpage'		=> '{{ns:project}}:About',
+'aboutpage'		=> 'Project:About',
 'article'		=> 'Content page',
 'help'			=> 'Help',
 'helppage'		=> 'Help:Contents',
 'bugreports'	=> 'Bug reports',
-'bugreportspage' => '{{ns:project}}:Bug_reports',
+'bugreportspage' => 'Project:Bug_reports',
 'sitesupport'   => 'Donations',
-'sitesupport-url' => '{{ns:project}}:Site support',
+'sitesupport-url' => 'Project:Site support',
 'faq'			=> 'FAQ',
-'faqpage'		=> '{{ns:project}}:FAQ',
+'faqpage'		=> 'Project:FAQ',
 'edithelp'		=> 'Editing help',
 'newwindow'		=> '(opens in new window)',
 'edithelppage'	=> 'Help:Editing',
@@ -163,9 +164,9 @@ parent class in order maintain consistency across languages.
 'currentevents-url' => 'Current events',
 
 'disclaimers' => 'Disclaimers',
-'disclaimerpage' => '{{ns:project}}:General_disclaimer',
+'disclaimerpage' => 'Project:General_disclaimer',
 'privacy' => 'Privacy policy',
-'privacypage' => '{{ns:project}}:Privacy_policy',
+'privacypage' => 'Project:Privacy_policy',
 'errorpagetitle' => 'Error',
 'returnto'		=> 'Return to $1.',
 'tagline'      	=> 'From {{SITENAME}}',
@@ -206,6 +207,7 @@ parent class in order maintain consistency across languages.
 'viewtalkpage' => 'View discussion',
 'otherlanguages' => 'In other languages',
 'redirectedfrom' => '(Redirected from $1)',
+'autoredircomment' => 'Redirecting to [[$1]]',
 'redirectpagesub' => 'Redirect page',
 'lastmodified'	=> 'This page was last modified $1.',
 'viewcount'		=> 'This page has been accessed {{plural:$1|one time|$1 times}}.',
@@ -243,6 +245,7 @@ See $1.',
 'newmessageslink' => 'new messages',
 'newmessagesdifflink' => 'diff to penultimate revision',
 'editsection'=>'edit',
+'editold'=>'edit',
 'editsectionhint' => 'Edit section: $1',
 'toc' => 'Contents',
 'showtoc' => 'show',
@@ -251,6 +254,7 @@ See $1.',
 'viewdeleted' => 'View $1?',
 'restorelink' => '{{PLURAL:$1|one deleted edit|$1 deleted edits}}',
 'feedlinks' => 'Feed:',
+'feed-invalid' => 'Invalid subscription feed type.',
 'sitenotice'	=> '-', # the equivalent to wgSiteNotice
 'anonnotice' => '-',
 
@@ -369,7 +373,7 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'nologin'	=> 'Don\'t have a login? $1.',
 'nologinlink'	=> 'Create an account',
 'createaccount'	=> 'Create account',
-'gotaccount'	=> 'Already got an account? $1.',
+'gotaccount'	=> 'Already have an account? $1.',
 'gotaccountlink'	=> 'Log in',
 'createaccountmail'	=> 'by e-mail',
 'badretype'		=> 'The passwords you entered do not match.',
@@ -507,8 +511,12 @@ If you are here by mistake, just click your browser's '''back''' button.",
 'previewnote' => '<strong>This is only a preview; changes have not yet been saved!</strong>',
 'session_fail_preview' => '<strong>Sorry! We could not process your edit due to a loss of session data.
 Please try again. If it still doesn\'t work, try logging out and logging back in.</strong>',
-'previewconflict' => 'This preview reflects the text in the upper
-text editing area as it will appear if you choose to save.',
+'previewconflict' => 'This preview reflects the text in the upper text editing area as it will appear if you choose to save.',
+'session_fail_preview_html' => '<strong>Sorry! We could not process your edit due to a loss of session data.</strong>
+
+\'\'Because this wiki has raw HTML enabled, the preview is hidden as a precaution against JavaScript attacks.\'\'
+
+<strong>If this is a legitimate edit attempt, please try again. If it still doesn\'t work, try logging out and logging back in.</strong>',
 'importing' => 'Importing $1',
 'editing' => 'Editing $1',
 'editingsection' => 'Editing $1 (section)',
@@ -589,6 +597,13 @@ there may be details in the [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} d
 #'rev-delundel' => 'del/undel',
 'rev-delundel' => 'show/hide',
 
+'history-feed-title' => 'Revision history',
+'history-feed-description'	=> 'Revision history for this page on the wiki',
+'history-feed-item-nocomment' => '$1 at $2', # user at time
+'history-feed-empty' => 'The requested page doesn\'t exist.
+It may have been deleted from the wiki, or renamed.
+Try [[Special:Search|searching on the wiki]] for relevant new pages.',
+
 # Revision deletion
 #
 'revisiondelete' => 'Delete/undelete revisions',
@@ -632,7 +647,7 @@ example "fish and and scales".
 Please try another query.',
 'matchtotals'	=> "The query \"$1\" matched $2 page titles
 and the text of $3 pages.",
-'nogomatch' => "'''There is no page titled \"$1\".''' You can [[$1|create this page]].",
+'noexactmatch' => "'''There is no page titled \"$1\".''' You can [[:$1|create this page]].",
 'titlematches'	=> 'Article title matches',
 'notitlematches' => 'No page title matches',
 'textmatches'	=> 'Page text matches',
@@ -772,6 +787,7 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'show'			=> 'Show',
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
+'boteditletter' => 'b',
 'sectionlink' => '→',
 'number_of_watching_users_RCview' 	=> '[$1]',
 'number_of_watching_users_pageview' 	=> '[$1 watching user/s]',
@@ -803,7 +819,7 @@ To include the image in a page, use a link in the form
 'fileuploadsummary' => 'Summary:',
 'filestatus' => 'Copyright status',
 'filesource' => 'Source',
-'copyrightpage' => "{{ns:project}}:Copyrights",
+'copyrightpage' => "Project:Copyrights",
 'copyrightpagename' => "{{SITENAME}} copyright",
 'uploadedfiles'	=> 'Uploaded files',
 'ignorewarning'        => 'Ignore warning and save file anyway.',
@@ -869,7 +885,7 @@ this old version, (rev) = revert to this old version.
 'shareddescriptionfollows' => '-',
 'noimage'       => 'No file by this name exists, you can $1.',
 'noimage-linktext'       => 'upload it',
-'uploadnewversion' => 'Upload a new version of this file',
+'uploadnewversion-linktext' => 'Upload a new version of this file',
 
 # Mime search
 #
@@ -936,6 +952,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'lonelypages'	=> 'Orphaned pages',
 'uncategorizedpages'	=> 'Uncategorized pages',
 'uncategorizedcategories'	=> 'Uncategorized categories',
+'uncategorizedimages' => 'Uncategorized images',
 'unusedcategories' => 'Unused categories',
 'unusedimages'	=> 'Unused files',
 'popularpages'	=> 'Popular pages',
@@ -1200,8 +1217,12 @@ before deletion. The actual text of these deleted revisions is only available to
 'undeletecomment' => 'Comment:',
 'undeletedarticle' => "restored \"[[$1]]\"",
 'undeletedrevisions' => "$1 revisions restored",
-'undeletedtext'   => "[[:$1|$1]] has been successfully restored.
-See [[Special:Log/delete]] for a record of recent deletions and restorations.",
+'undeletedrevisions-files' => "$1 revisions and $2 file(s) restored",
+'undeletedfiles' => "$1 file(s) restored",
+'cannotundelete' => 'Undelete failed; someone else may have undeleted the page first.',
+'undeletedpage' => "<big>'''$1 has been restored'''</big>
+
+Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions and restorations.",
 
 # Namespace form on various pages
 'namespace' => 'Namespace:',
@@ -1217,6 +1238,8 @@ See [[Special:Log/delete]] for a record of recent deletions and restorations.",
 'uclinks'       => "View the last $1 changes; view the last $2 days.",
 'uctop'         => ' (top)' ,
 'newbies'       => 'newbies',
+
+'sp-newimages-showfrom' => 'Show new images starting from $1',
 
 'sp-contributions-newest' => 'Newest',
 'sp-contributions-oldest' => 'Oldest',
@@ -1972,11 +1995,11 @@ $1
 # delete conflict
 
 'deletedwhileediting' => 'Warning: This page has been deleted after you started editing!',
-'confirmrecreate' => 'User [[User:$1|$1]] ([[User talk:$1|talk]]) deleted this article after you started editing with reason:
+'confirmrecreate' => 'User [[User:$1|$1]] ([[User talk:$1|talk]]) deleted this page after you started editing with reason:
 : \'\'$2\'\'
-Please confirm that really want to recreate this article.',
+Please confirm that really want to recreate this page.',
 'recreate' => 'Recreate',
-'tooltip-recreate' => '',
+'tooltip-recreate' => 'Recreate the page despite it has been deleted',
 
 'unit-pixel' => 'px',
 

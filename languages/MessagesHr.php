@@ -203,6 +203,7 @@ Pogledajte $1.',
 'newmessageslink' => 'nove poruke',
 'newmessagesdifflink' => 'zadnja promjena na stranici za razgovor',
 "editsection"		=>"uredi",
+"editold"		=>"uredi",
 'editsectionhint' => "Uređivanje odlomka: $1",
 "toc" => "Sadržaj",
 "showtoc" => "prikaži",
@@ -577,7 +578,7 @@ Razlog je vjerojatno u tome što ste pokušali tražiti riječ kraću od tri
 slova, što još nije moguće.
 Možda ste pogriješili pri upisu pretrage. Pokušajte ponovo.",
 "matchtotals"	        => "Upitu \"$1\" odgovara $2 naslova stranica i $3 tekstova stranica.",
-"nogomatch"             => "Ne postoji stranica s točno takvim naslovom, pokušava se pretraga cijelog sadržaja.",
+"noexactmatch"             => "Ne postoji stranica s točno takvim naslovom, pokušava se pretraga cijelog sadržaja.",
 "titlematches"	        => "Pronađene stranice prema naslovu",
 "notitlematches"        => "Nema pronađenih stranica prema naslovu",
 "textmatches"	        => "Pronađene stranice prema tekstu članka",
@@ -826,7 +827,7 @@ zadnju inačicu, (vra) = vrati sliku na prethodnu inačicu.
 'shareduploadwiki-linktext' => 'stranica s opisom datoteke',
 'noimage'       => 'Ne postoji datoteka s ovim imenom. Možete ju $1.',
 'noimage-linktext'       => 'postaviti',
-'uploadnewversion' => '[$1 Postavi novu inačicu datoteke]',
+'uploadnewversion-linktext' => 'Postavi novu inačicu datoteke',
 
 # Mime search
 #

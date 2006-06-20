@@ -18,6 +18,21 @@ will be made on the development trunk and appear in the next quarterly release.
 Those wishing to use the latest code instead of a branch release can obtain
 it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
+== Configuration changes ==
+
+Some default configuration options have changed:
+* $wgAllowExternalImages now defaults to off for increased security.
+
+== Major new features ==
+
+* Deleted files can now be archived and undeleted, if you set up
+  an appropriate non-web-accessible directory.
+  Set $wgSaveDeletedFiles on and an appropriate directory path in
+  $wgFileStore['deleted']['directory']
+
+
+
+
 == Changes since 1.6 ==
 
 * (bug 5458) Fix double-URL encoding in block log link in contribs and contribs
@@ -336,14 +351,184 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Added $wgGrammarForms global
 * Fixed hardcoded 'done.' when removing watchlist entries.
 * (bug 5962) Update for Italian language (it)
+* (bug 6086) Remove vestigial attempt to call Article::validate()
+* wfHostname() function for consistent server hostname use in debug messages
+* Send thumbnailing error messages to 'thumbnail' log group
+* wfShellexec() now accepts an optional parameter to receive the exit code
+* Failed, but not zero-length, thumbnail renderings are now removed.
+  Should help clean up when rsvg fails in weird ways.
+* (bug 6081) Change description for Turkmen language
+* Increase robustness of parser placeholders; fixes some glitches when
+  adjacent to identifier-ish constructs such as URLs.
+* Shut up the parser test whining about files in a temp directory.
+* (bug 6098) Add Aragonese language support (an)
+* (bug 6101) Update for Russian language (ru)
+* Add $wgIgnoreImageErrors to suppress error messages for thumbnail rendering
+  problems. If errors are transitory, this should reduce annoying messages
+  making it into cached display.
+* (bug 6103) Wrap self-links in a CSS class ("selflink")
+* (bug 6102) For consistency with other markup, normalize all HTML-encoded
+  character entities in URLs, not just ampersands. This allows use of eg
+  &#61; when making URLs for template parameters.
+* Markup anality: escape </ as <\/ in toolbar javascript for pure correctness
+  under HTML-compatible browsers.
+* (bug 5077) Added hook 'BeforePageDisplay' to SkinTemplate::outputPage
+* Replace fatally changed 'uploadnewversion' with 'uploadnewversion-linktext'
+* (bug 472) Syndication feeds for the last few edits of page history
+* Format edit comments in Recent Changes feed
+* Switch incorrectly ordered column headers on Recent Changes feed diffs
+* (bug 6117) Use message for history feed description, add German localization
+* (bug 1017) fixed thumbnails of animated gifs.
+* Add APC as object caching option
+* Update to Albanian localization (sq)
+* (bug 6099) Introduce {{DIRECTIONMARK}} magic word (with {{DIRMARK}} as an alias)
+* Use optimized php5-only microtime()
+* Add possibility to store local message cache as PHP executable script
+* Fix profiling table definition
+* (bug 6040) Run pre-save transform before calculating the diff. when doing a
+  "show changes" operation in the editor
+* (bug 4033) Respect $wgStyleDirectory when checking available skins
+* Remove hideous backslashes from MessagesBr.php
+* Fix APC object cache issues, add functionality to installer
+* (bug 6133) Update strip state as we work. This mostly fixes extensions
+  used in Cite.php <ref> tags when Tidy is on.
+* (bug 6139) Workaround for transclusion oddities in Vietnamese upload text
+* (bug 6136) Update to Catalan language (ca)
+* Update to Japanese localization (ja)
+* Add /usr/local/bin to the diff3 search paths in the installer
+* (bug 6106) Update to Indonesian localisation (id) #17
+* (bug 6125) Add links to edit old versions to diff views
+* (bug 5127) Auto edit summary when creating/editing redirect page
+* (bug 3926) Introduce {{#language:}} magic word
+* Fix section links from edit comments for [[:Image:Bla.jpg]] in section titles
+* (bug 6126) Allow fallback to customized primary language when user language
+  message contains '-'; fixes licenses selector on Commons configuration after
+  recent addition of the message to Messages.php
+* (bug 5527) Batch up job queue insertions for, hopefully, better survivability
+  of lock contention etc. Duplicates are now removed at pop time instead of
+  at insert time.
+* When showing the "blah has been undeleted" page, make sure it's a blue link
+* parserTests.php accepts a --file parameter to run an alternate test sutie
+* parser tests can now test extensions using !!hooks sections
+* Fix oddity with open tag parameters getting stuck on </li>
+* (bug 5384) Fix <!-- comments --> in <ref> extension
+* Nesting of different tag extensions and comments should now work more
+  consistently and more safely. A cleaner, one-pass tag strip lets the
+  'outer' tag either take source (<nowiki>-style) or pass it down to
+  further parsing (<ref>-style). There should no longer be surprise
+  expansion of foreign extensions inside HTML output, or differences
+  in behavior based on the order tags are loaded.
+* (bug 885) Pre-save transform no longer silently appends close tags
+* Pre-save transform no longer changes the case of close tags
+* (bug 6164) Fix regression with <gallery> resetting <ref> state
+* Hackaround for IE 7 wrapping bug in MonoBook footer
+* New message sp-newimages-showfrom replaces rclistfrom on special:newimages
+* Improve handling of ;: definition list construct with overlapping or
+  nested HTML tags
+* (bug 6171) Fix sanitizing of HTML-elements with an optional closing
+  tag. The sanitizer still needs to learn how to make well-formed XML
+  in this case.
+* Fix fatal error when specifying illegal name for manual thumbnail
+* (bug 6184) Use shinier Linker::userLink() to make user links in
+  Special:Undelete
+* (bug 6170) Update for Kashubian translation (csb)
+* (bug 6191) Update to Indonesian translation (id) #18
+* (bug 6114) Update to Walloon localization (wa)
+* Added $wgNamespaceRobotPolicies to allow customisation of robot policies on a 
+  per-namespace basis.
+* Add <ol> to the list of block elements for doBlockLevels; avoids <p>s being
+  interspersed into your ordered lists.
+* (bug 5021) Transcluding the same special page twice now works
+* Add 'SiteNoticeBefore' and 'SiteNoticeAfter' hooks
+* (bug 6182) Date passed in "sp-newimages-showfrom" not adjusted to user time
+  preferences
+* (bug 2587) Fix for section editing with comment prefix
+* (bug 2607) Fix for section editing with mix of wiki and HTML headings
+* (bug 3342) Fix for section editing with headings wrapped in <noinclude>
+* (bug 3476) Fix for section editing with faux headings in extensions
+* (bug 5272) Fix for section editing with HTML-heading subsections
+* Fix for bogus wiki headings improperly detected with following text
+* Fix for HTML headings improperly not detected with preceding/following text
+* Section extraction and replacement functions merged into one implementation
+  on the Parser object, so they can't get out of sync with each other.
+* Edit security precautions in raw HTML mode, etc
+* (bug 6197) Update to Indonesian translation (id) #19
+* (bug 6175) Improvement to German translation (de)
+* Redirect Special:Logs to Special:Log
+* (bug 6206) Linktrail for Swedish localization (se)
+* (bug 3202) Attributes now allowed on <pre> tags
+* Sanitizer::validateTagAttributes now available to discard illegal/unsafe
+  attribute values from an array.
+* (bug 3837) Leave <center> as is instead of doing an unsafe text replacement
+  to <div class="center">. <center> is perfectly valid in the target doctype
+  (XHTML 1.0 Transitional), while the replacement didn't catch all cases and
+  could even result in invalid output from valid input. 
+* (bug 4280) Use 'noindex,nofollow' instead of 'noindex,follow' for default
+  meta robots tag on diff view and special pages. Should reduce impact of
+  robots on scrolling special pages, diffs etc on sites where robots.txt
+  doesn't forbid access.
+* Regression fix: suppress warning about session failure when clicking to
+  edit with 'preview on first edit' enabled.
+* (bug 6230) Regression fix: <nowiki> in [URL link text]
+* Added AutoLoader.php, which loads classes without need of require_once()
+* (bug 5981) Add plural function Slovenian (sl)
+* (bug 5945) Introduce {{CONTENTLANGUAGE}} magic word
+* {{PLURAL}} can now take up to five forms
+* (bug 6243) Fix email for usernames containing dots when using PEAR::Mail
+* Remove a number of needless {{ns:project}}-type transforms from messages files. These
+  usages already have separate label text. Such transforms are wasteful on each page view.
+* Update to Yiddish localization (yi)
+* (bug 6254) Update to Indonesian translation (id) #20
+* (bug 6255) Fix transclusions starting with "#" or "*" in HTML attributes
+* Whitespace now normalized more or less properly in HTML attributes
+* Fix regression(?) in behavior of initial-whitespace-pre in <center>
+* (bug 6260) Update to Interlingua localization (ia)
+* Update to Vlax Romany localization (rmy)
+* Update to Latin translation (la)
+* Update to Dutch translation (nl)
+* Avoid some notices in page history with bad input
+* Use double quoted consistently on attributes in linker output; preparing
+  for new normalization code when tidy not in use
+* Replace "nogomatch" with "noexactmatch" and place the magic colon in the messages
+  themselves. Some minor tweaks to the actual message content.
+* Introduce $wgContentNamespaces which allows for articles to exist in namespaces other
+  than the main namespace, and still be counted as valid content in the site statistics.
+* (bug 5932) Introduce {{PAGESINNAMESPACE}} magic word
+* Disable $wgAllowExternalImages by default.
+* (bug 2700) Nice things like link completion and signatures now work in <gallery> tags.
+* Cancel output buffering in StreamFile; when used inside gzip buffering this
+  could cause funny timeout behavior as the Content-Length was wrong.
+* Return correct content-type header with 304 responses for StreamFile;
+  it confuses Safari if you let it return "text/html".
+* (bug 6280) Correct GRAMMAR for Slovenian localisation (sl)
+* (bug 6162) Change date format for Dutch Low Saxon (nds-nl)
+* (bug 6296) Update to Indonesian localisation (id) #21
+* Introduce EditFormPreloadText hook, see docs/hooks.txt for more information
+* (bug 6095) Introduce RunUnknownJob hook, see docs/hooks.txt for more information
+* (bug 4054) Add "boteditletter" to recent changes flags
+* Update to Catalan localization (ca)
+* (bug 2099) Deleted image files can now be archived and undeleted.
+  Set $wgSaveDeletedFiles on and an appropriate directory path in
+  $wgFileStore['deleted']['directory']
+* (bug 6324) Fix regression in enhanced RC alignment
+* Introduce {{NUMBEROFADMINS}} magic word
+* Update to Slovak translation (sk)
+* Update to Alemannic localization (gsw)
+* (bug 6300) Bug fixes for sr: variants
+* namespaceDupes.php can now accept an arbitrary prefix, for checking rogue
+  interwikis and such. Not yet fully automated.
+* (bug 6344) Add Special:Uncategorizedimages page
+* (bug 6357) Update to Russian translation (ru)
+* Workaround possible bug in Firefox nightlies by properly removing the
+  Content-Encoding header instead of sending explicit 'identity' value
+  in StreamFile
+* (bug 6304) Show timestamp for current revision in diff pages
+* Vertically align current version with old version header in diff display
+
 
 == Compatibility ==
 
-Older PHP 4.2 and 4.1 releases are no longer supported; PHP 4 users must
-upgrade to 4.3 or later.
-
-MediaWiki 1.6 is the last major version to support PHP 4; future versions
-will require PHP 5.
+MediaWiki 1.7 requires PHP 5 (5.1 recommended). PHP 4 is no longer supported.
 
 MySQL 3.23.x is no longer supported; some older hosts may need to upgrade.
 At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.

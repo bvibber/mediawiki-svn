@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'MEDIAWIKI' ) )
-	die( -1 );
+	die( 1 );
 
 /**
  *
@@ -12,12 +12,12 @@ if ( ! defined( 'MEDIAWIKI' ) )
 require_once( 'Linker.php' );
 require_once( 'Image.php' );
 
-# Get a list of all skins available in /skins/
+# Get a list of available skins
 # Build using the regular expression '^(.*).php$'
 # Array keys are all lower case, array value keep the case used by filename
 #
 
-$skinDir = dir($IP.'/skins');
+$skinDir = dir( $wgStyleDirectory );
 
 # while code from www.php.net
 while (false !== ($file = $skinDir->read())) {
@@ -106,19 +106,19 @@ class Skin extends Linker {
 	 * @static
 	 */
 	function &newFromKey( $key ) {
+		global $wgStyleDirectory;
+		
 		$key = Skin::normalizeKey( $key );
 
 		$skinNames = Skin::getSkinNames();
 		$skinName = $skinNames[$key];
 
-		global $IP;
-
 		# Grab the skin class and initialise it.
 		wfSuppressWarnings();
 		// Preload base classes to work around APC/PHP5 bug
-		include_once( $IP.'/skins/'.$skinName.'.deps.php' );
+		include_once( "{$wgStyleDirectory}/{$skinName}.deps.php" );
 		wfRestoreWarnings();
-		require_once( $IP.'/skins/'.$skinName.'.php' );
+		require_once( "{$wgStyleDirectory}/{$skinName}.php" );
 
 		# Check if we got if not failback to default skin
 		$className = 'Skin'.$skinName;
@@ -129,7 +129,7 @@ class Skin extends Linker {
 			# is no longer valid.
 			wfDebug( "Skin class does not exist: $className\n" );
 			$className = 'SkinStandard';
-			require_once( $IP.'/skins/Standard.php' );
+			require_once( "{$wgStyleDirectory}/Standard.php" );
 		}
 		$skin =& new $className;
 		return $skin;
@@ -330,7 +330,6 @@ class Skin extends Linker {
 
 	/**
 	 * Some styles that are set by user through the user settings interface.
-	 * @todo undefined variables (bug #4940)
 	 */
 	function doGetUserStyles() {
 		global $wgUser, $wgUser, $wgRequest, $wgTitle, $wgAllowUserCss;
@@ -338,8 +337,7 @@ class Skin extends Linker {
 		$s = '';
 
 		if( $wgAllowUserCss && $wgUser->isLoggedIn() ) { # logged in
-			# FIXME: $action undefined, bug #4940
-			if($wgTitle->isCssSubpage() && $this->userCanPreview( $action ) ) {
+			if($wgTitle->isCssSubpage() && $this->userCanPreview( $wgRequest->getText( 'action' ) ) ) {
 				$s .= $wgRequest->getText('wpTextbox1');
 			} else {
 				$userpage = $wgUser->getUserPage();

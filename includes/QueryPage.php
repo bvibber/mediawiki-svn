@@ -5,11 +5,6 @@
  */
 
 /**
- *
- */
-require_once 'Feed.php';
-
-/**
  * List of query page classes and their associated special pages, for periodic update purposes
  */
 global $wgQueryPages; // not redundant
@@ -35,6 +30,7 @@ $wgQueryPages = array(
 	array( 'ShortPagesPage',		'Shortpages'			),
 	array( 'UncategorizedCategoriesPage',	'Uncategorizedcategories'	),
 	array( 'UncategorizedPagesPage',	'Uncategorizedpages'		),
+	array( 'UncategorizedImagesPage', 'Uncategorizedimages' ),
 	array( 'UnusedCategoriesPage',		'Unusedcategories'		),
 	array( 'UnusedimagesPage',		'Unusedimages'			),
 	array( 'WantedCategoriesPage',		'Wantedcategories'		),

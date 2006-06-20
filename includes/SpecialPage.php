@@ -39,6 +39,7 @@ $wgSpecialPages = array(
 	'Lonelypages'       => new SpecialPage( 'Lonelypages' ),
 	'Uncategorizedpages'=> new SpecialPage( 'Uncategorizedpages' ),
 	'Uncategorizedcategories'=> new SpecialPage( 'Uncategorizedcategories' ),
+	'Uncategorizedimages' => new SpecialPage( 'Uncategorizedimages' ),
 	'Unusedcategories'	=> new SpecialPage( 'Unusedcategories' ),
 	'Unusedimages'      => new SpecialPage( 'Unusedimages' ),
 	'Wantedpages'	=> new IncludableSpecialPage( 'Wantedpages' ),
@@ -146,7 +147,7 @@ class SpecialPage
 	 * Use this for a special page extension
 	 * @static
 	 */
-	function addPage( &$obj ) {
+	static function addPage( &$obj ) {
 		global $wgSpecialPages;
 		$wgSpecialPages[$obj->mName] = $obj;
 	}
@@ -156,7 +157,7 @@ class SpecialPage
 	 * Occasionally used to disable expensive or dangerous special pages
 	 * @static
 	 */
-	function removePage( $name ) {
+	static function removePage( $name ) {
 		global $wgSpecialPages;
 		unset( $wgSpecialPages[$name] );
 	}
@@ -166,7 +167,7 @@ class SpecialPage
 	 * @static
 	 * @param string $name
 	 */
-	function getPage( $name ) {
+	static function getPage( $name ) {
 		global $wgSpecialPages;
 		if ( array_key_exists( $name, $wgSpecialPages ) ) {
 			return $wgSpecialPages[$name];
@@ -180,7 +181,7 @@ class SpecialPage
 	 * @param string $name
 	 * @return mixed Title object if the redirect exists, otherwise NULL
 	 */
-	function getRedirect( $name ) {
+	static function getRedirect( $name ) {
 		global $wgUser;
 
 		$redirects = array(
@@ -188,6 +189,7 @@ class SpecialPage
 			'Mytalk' => Title::makeTitle( NS_USER_TALK, $wgUser->getName() ),
 			'Mycontributions' => Title::makeTitle( NS_SPECIAL, 'Contributions/' . $wgUser->getName() ),
 			'Listadmins' => Title::makeTitle( NS_SPECIAL, 'Listusers/sysop' ), # @bug 2832
+			'Logs' => Title::makeTitle( NS_SPECIAL, 'Log' ),
 			'Randompage' => Title::makeTitle( NS_SPECIAL, 'Random' ),
 			'Userlist' => Title::makeTitle( NS_SPECIAL, 'Listusers' )
 		);
@@ -228,7 +230,7 @@ class SpecialPage
 	 * Returns a 2d array where the first index is the restriction name
 	 * @static
 	 */
-	function getPages() {
+	static function getPages() {
 		global $wgSpecialPages;
 		$pages = array(
 		  '' => array(),
@@ -290,9 +292,9 @@ class SpecialPage
 					$retVal = $redir;
 				} else {
 					$wgOut->setArticleRelated( false );
-					$wgOut->setRobotpolicy( 'noindex,follow' );
+					$wgOut->setRobotpolicy( 'noindex,nofollow' );
 					$wgOut->setStatusCode( 404 );
-					$wgOut->errorpage( 'nosuchspecialpage', 'nospecialpagetext' );
+					$wgOut->showErrorPage( 'nosuchspecialpage', 'nospecialpagetext' );
 					$retVal = false;
 				}
 			}
@@ -325,7 +327,7 @@ class SpecialPage
 	 * a redirect.
 	 * @static
 	 */
-	function capturePath( &$title ) {
+	static function capturePath( &$title ) {
 		global $wgOut, $wgTitle;
 
 		$oldTitle = $wgTitle;
@@ -427,7 +429,7 @@ class SpecialPage
 	function setHeaders() {
 		global $wgOut;
 		$wgOut->setArticleRelated( false );
-		$wgOut->setRobotPolicy( "noindex,follow" );
+		$wgOut->setRobotPolicy( "noindex,nofollow" );
 		$wgOut->setPageTitle( $this->getDescription() );
 	}
 

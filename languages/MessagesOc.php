@@ -134,6 +134,7 @@ Voir $1.",
 "retrievedfrom" => "Récupérée de \"$1\"",
 "newmessageslink" => "nouveaux messages",
 "editsection"	=> "modifier",
+"editold"	=> "modifier",
 "toc"		=> "Sommaire",			// Looxix "Table"
 "showtoc"	=> "montrer",			// Looxix
 "hidetoc"	=> "cacher",			// Looxix
@@ -314,7 +315,7 @@ et écailles\".
 Veuillez essayer une autre requête.",
 "matchtotals" => "La requête \"$1\" correspond à $2 titre(s)
 d'article et au texte de $3 article(s).",
-"nogomatch" => "Aucune page avec ce titre n'existe, essai avec la recherche complète.", // Looxix
+"noexactmatch" => "Aucune page avec ce titre n'existe, essai avec la recherche complète.", // Looxix
 "titlematches" => "Correspondances dans les titres",
 "notitlematches" => "Aucun titre d'article ne contient le(s) mot(s) demandé(s)",
 "textmatches" => "Correspondances dans les textes",

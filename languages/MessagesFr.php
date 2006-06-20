@@ -195,6 +195,7 @@ Voir $1',
 'newmessageslink' => 'des nouveaux messages',
 'newmessagesdifflink' => 'diff vers l\'avant-dernière révision',
 'editsection'	=> 'modifier',
+'editold'	=> 'modifier',
 'editsectionhint' => 'Éditer la section : $1',
 'toc'		=> 'Sommaire',
 'showtoc'	=> 'afficher',
@@ -504,7 +505,7 @@ D\'autres administrateurs sur ce wiki pourront toujours accèder au contenu cach
 'badquery'  => 'Requête mal formulée',
 'badquerytext' => 'Nous n\'avons pas pu traiter votre requête. Vous avez probablement recherché un mot d\'une longueur inférieure à trois lettres, ce qui n\'est pas encore possible. Vous avez aussi pu faire une erreur de syntaxe, telle que « poisson et et écailles ». Veuillez essayer une autre requête.',
 'matchtotals' => 'La requête « $1 » correspond à $2 titre(s) d\'article et au texte de $3 article(s).',
-'nogomatch' => 'Aucune page avec ce titre n\'existe. Voulez-vous [[$1|créer cet article]] ?',
+'noexactmatch' => 'Aucune page avec ce titre n\'existe. Voulez-vous [[:$1|créer cet article]] ?',
 'titlematches' => 'Correspondances dans les titres',
 'notitlematches' => 'Aucun titre d\'article ne contient le(s) mot(s) demandé(s)',
 'textmatches' => 'Correspondances dans les textes',
@@ -717,7 +718,7 @@ cette ancienne version, (rétab) = rétablir cette ancienne version.
 'shareduploadwiki-linktext' => 'Page de description du fichier',
 'noimage'       => 'Aucun fichier possèdant ce nom n\'existe, vous pouvez $1.',
 'noimage-linktext'       => 'le copier',
-'uploadnewversion' => '[$1 Copier une nouvelle version de ce fichier]',
+'uploadnewversion-linktext' => 'Copier une nouvelle version de ce fichier',
 
 # Mime search
 #

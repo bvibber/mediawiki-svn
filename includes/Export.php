@@ -23,7 +23,6 @@
  */
 
 /** */
-require_once( 'Revision.php' );
 
 define( 'MW_EXPORT_FULL',     0 );
 define( 'MW_EXPORT_CURRENT',  1 );
@@ -396,7 +395,7 @@ class XmlDumpWriter {
 		$ts = wfTimestamp( TS_ISO_8601, $row->rev_timestamp );
 		$out .= "      " . wfElement( 'timestamp', null, $ts ) . "\n";
 
-		if( $row->rev_deleted & MW_REV_DELETED_USER ) {
+		if( $row->rev_deleted & Revision::MW_REV_DELETED_USER ) {
 			$out .= "      " . wfElement( 'contributor', array( 'deleted' => 'deleted' ) ) . "\n";
 		} else {
 			$out .= "      <contributor>\n";
@@ -412,13 +411,13 @@ class XmlDumpWriter {
 		if( $row->rev_minor_edit ) {
 			$out .=  "      <minor/>\n";
 		}
-		if( $row->rev_deleted & MW_REV_DELETED_COMMENT ) {
+		if( $row->rev_deleted & Revision::MW_REV_DELETED_COMMENT ) {
 			$out .= "      " . wfElement( 'comment', array( 'deleted' => 'deleted' ) ) . "\n";
 		} elseif( $row->rev_comment != '' ) {
 			$out .= "      " . wfElementClean( 'comment', null, strval( $row->rev_comment ) ) . "\n";
 		}
 
-		if( $row->rev_deleted & MW_REV_DELETED_TEXT ) {
+		if( $row->rev_deleted & Revision::MW_REV_DELETED_TEXT ) {
 			$out .= "      " . wfElement( 'text', array( 'deleted' => 'deleted' ) ) . "\n";
 		} elseif( isset( $row->old_text ) ) {
 			// Raw text from the database may have invalid chars
@@ -635,7 +634,7 @@ class DumpNamespaceFilter extends DumpFilter {
 				$ns = intval( $key );
 				$this->namespaces[$ns] = true;
 			} else {
-				wfDie( "Unrecognized namespace key '$key'\n" );
+				throw new MWException( "Unrecognized namespace key '$key'\n" );
 			}
 		}
 	}

@@ -7,12 +7,7 @@
  */
 
 if( !defined( 'MEDIAWIKI' ) )
-	die( -1 );
-
-global $wgCategoryMagicGallery;
-if( $wgCategoryMagicGallery )
-	/** */
-	require_once('ImageGallery.php');
+	die( 1 );
 
 /**
  * @package MediaWiki
@@ -45,6 +40,7 @@ class CategoryPage extends Article {
 		global $wgOut, $wgRequest;
 		$from = $wgRequest->getVal( 'from' );
 		$until = $wgRequest->getVal( 'until' );
+		
 		$wgOut->addHTML( $this->doCategoryMagic( $from, $until ) );
 	}
 
@@ -57,6 +53,7 @@ class CategoryPage extends Article {
 	 * @private
 	 */
 	function doCategoryMagic( $from = '', $until = '' ) {
+		global $wgOut;
 		global $wgContLang,$wgUser, $wgCategoryMagicGallery, $wgCategoryPagingLimit;
 		$fname = 'CategoryPage::doCategoryMagic';
 		wfProfileIn( $fname );
@@ -65,7 +62,9 @@ class CategoryPage extends Article {
 		$articles_start_char = array();
 		$children = array();
 		$children_start_char = array();
-		if( $wgCategoryMagicGallery ) {
+		
+		$showGallery = $wgCategoryMagicGallery && !$wgOut->mNoGallery;
+		if( $showGallery ) {
 			$ig = new ImageGallery();
 		}
 
@@ -122,7 +121,7 @@ class CategoryPage extends Article {
 					$sortkey=$wgContLang->firstChar( $x->cl_sortkey );
 				}
 				array_push( $children_start_char, $wgContLang->convert( $sortkey ) ) ;
-			} elseif( $wgCategoryMagicGallery && $title->getNamespace() == NS_IMAGE ) {
+			} elseif( $showGallery && $title->getNamespace() == NS_IMAGE ) {
 				// Show thumbnails of categorized images, in a separate chunk
 				if( $flip ) {
 					$ig->insert( Image::newFromTitle( $title ) );
@@ -164,7 +163,7 @@ class CategoryPage extends Article {
 		$r .= wfMsgExt( 'categoryarticlecount', array( 'parse' ), count( $articles) );
 		$r .= $this->formatList( $articles, $articles_start_char );
 
-		if( $wgCategoryMagicGallery && ! $ig->isEmpty() ) {
+		if( $showGallery && ! $ig->isEmpty() ) {
 			$r.= $ig->toHTML();
 		}
 

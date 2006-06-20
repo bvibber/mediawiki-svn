@@ -213,6 +213,7 @@ $wgLanguageNamesEn =& $wgLanguageNames;
 #   ID                                 CASE  SYNONYMS
 	MAG_REDIRECT             => array( 0,    '#REDIRECT'              ),
 	MAG_NOTOC                => array( 0,    '__NOTOC__'              ),
+	MAG_NOGALLERY			 => array( 0,    '__NOGALLERY__'          ),
 	MAG_FORCETOC             => array( 0,    '__FORCETOC__'           ),
 	MAG_TOC                  => array( 0,    '__TOC__'                ),
 	MAG_NOEDITSECTION        => array( 0,    '__NOEDITSECTION__'      ),
@@ -226,28 +227,28 @@ $wgLanguageNamesEn =& $wgLanguageNames;
 	MAG_CURRENTDAYNAME       => array( 1,    'CURRENTDAYNAME'         ),
 	MAG_CURRENTYEAR          => array( 1,    'CURRENTYEAR'            ),
 	MAG_CURRENTTIME          => array( 1,    'CURRENTTIME'            ),
-	MAG_NUMBEROFPAGES		 => array( 1,	 'NUMBEROFPAGES'		  ),
+	MAG_NUMBEROFPAGES        => array( 1,    'NUMBEROFPAGES'          ),
 	MAG_NUMBEROFARTICLES     => array( 1,    'NUMBEROFARTICLES'       ),
 	MAG_NUMBEROFFILES        => array( 1,    'NUMBEROFFILES'          ),
-	MAG_NUMBEROFUSERS		 => array( 1, 	 'NUMBEROFUSERS'		  ),
+	MAG_NUMBEROFUSERS        => array( 1,    'NUMBEROFUSERS'          ),
 	MAG_PAGENAME             => array( 1,    'PAGENAME'               ),
 	MAG_PAGENAMEE            => array( 1,    'PAGENAMEE'              ),
 	MAG_NAMESPACE            => array( 1,    'NAMESPACE'              ),
 	MAG_NAMESPACEE           => array( 1,    'NAMESPACEE'             ),
-	MAG_TALKSPACE			 => array( 1, 	 'TALKSPACE'			  ),
-	MAG_TALKSPACEE			 => array( 1,	 'TALKSPACEE'			  ),
-	MAG_SUBJECTSPACE		 => array( 1, 	 'SUBJECTSPACE', 'ARTICLESPACE' ),
-	MAG_SUBJECTSPACEE		 => array( 1,	 'SUBJECTSPACEE', 'ARTICLESPACEE' ),
+	MAG_TALKSPACE            => array( 1,    'TALKSPACE'              ),
+	MAG_TALKSPACEE           => array( 1,    'TALKSPACEE'              ),
+	MAG_SUBJECTSPACE         => array( 1,    'SUBJECTSPACE', 'ARTICLESPACE' ),
+	MAG_SUBJECTSPACEE        => array( 1,    'SUBJECTSPACEE', 'ARTICLESPACEE' ),
 	MAG_FULLPAGENAME         => array( 1,    'FULLPAGENAME'           ),
 	MAG_FULLPAGENAMEE        => array( 1,    'FULLPAGENAMEE'          ),
-	MAG_SUBPAGENAME	         => array( 1,	 'SUBPAGENAME'		  	  ),
-	MAG_SUBPAGENAMEE		 => array( 1, 	 'SUBPAGENAMEE'			  ),
-	MAG_BASEPAGENAME		 => array( 1,	 'BASEPAGENAME'			  ),
-	MAG_BASEPAGENAMEE		 => array( 1,	 'BASEPAGENAMEE'		  ),
-	MAG_TALKPAGENAME		 => array( 1, 	 'TALKPAGENAME'			  ),
-	MAG_TALKPAGENAMEE		 => array( 1,	 'TALKPAGENAMEE'		  ),
-	MAG_SUBJECTPAGENAME		 => array( 1, 	 'SUBJECTPAGENAME', 'ARTICLEPAGENAME' ),
-	MAG_SUBJECTPAGENAMEE	 => array( 1, 	 'SUBJECTPAGENAMEE', 'ARTICLEPAGENAMEE' ),
+	MAG_SUBPAGENAME          => array( 1,    'SUBPAGENAME'            ),
+	MAG_SUBPAGENAMEE         => array( 1,    'SUBPAGENAMEE'           ),
+	MAG_BASEPAGENAME         => array( 1,    'BASEPAGENAME'           ),
+	MAG_BASEPAGENAMEE        => array( 1,    'BASEPAGENAMEE'          ),
+	MAG_TALKPAGENAME         => array( 1,    'TALKPAGENAME'           ),
+	MAG_TALKPAGENAMEE        => array( 1,    'TALKPAGENAMEE'          ),
+	MAG_SUBJECTPAGENAME      => array( 1,    'SUBJECTPAGENAME', 'ARTICLEPAGENAME' ),
+	MAG_SUBJECTPAGENAMEE     => array( 1,    'SUBJECTPAGENAMEE', 'ARTICLEPAGENAMEE' ),
 	MAG_MSG                  => array( 0,    'MSG:'                   ),
 	MAG_SUBST                => array( 0,    'SUBST:'                 ),
 	MAG_MSGNW                => array( 0,    'MSGNW:'                 ),
@@ -283,11 +284,16 @@ $wgLanguageNamesEn =& $wgLanguageNames;
 	MAG_UC                   => array( 0,    'UC:'                    ),
 	MAG_RAW                  => array( 0,    'RAW:'                   ),
 	MAG_DISPLAYTITLE         => array( 1,    'DISPLAYTITLE'           ),
-	MAG_RAWSUFFIX			 => array( 1,	 'R'					  ),
-	MAG_NEWSECTIONLINK		 => array( 1,	 '__NEWSECTIONLINK__'	  ),
-	MAG_CURRENTVERSION		 => array( 1, 	 'CURRENTVERSION'		  ),
-	MAG_URLENCODE			 => array( 0,	 'URLENCODE:'			  ),
-	MAG_CURRENTTIMESTAMP	 => array( 1,	 'CURRENTTIMESTAMP'		  ),
+	MAG_RAWSUFFIX            => array( 1,    'R'                      ),
+	MAG_NEWSECTIONLINK       => array( 1,    '__NEWSECTIONLINK__'     ),
+	MAG_CURRENTVERSION       => array( 1,    'CURRENTVERSION'         ),
+	MAG_URLENCODE            => array( 0,    'URLENCODE:'             ),
+	MAG_CURRENTTIMESTAMP     => array( 1,    'CURRENTTIMESTAMP'       ),
+	MAG_DIRECTIONMARK        => array( 1,    'DIRECTIONMARK', 'DIRMARK' ),
+	MAG_LANGUAGE			 => array( 0,	 '#LANGUAGE:' ),
+	MAG_CONTENTLANGUAGE		 => array( 1,	 'CONTENTLANGUAGE', 'CONTENTLANG' ),
+	MAG_PAGESINNAMESPACE	 => array( 1,	 'PAGESINNAMESPACE:', 'PAGESINNS:' ),
+	MAG_NUMBEROFADMINS		 => array( 1,	 'NUMBEROFADMINS' ),
 );
 
 if (!$wgCachedMessageArrays) {
@@ -317,24 +323,6 @@ class fakeConverter {
 class Language {
 	var $mConverter;
 	function Language() {
-
-		# Copies any missing values in the specified arrays from En to the current language
-		$fillin = array( 'wgSysopSpecialPages', 'wgValidSpecialPages', 'wgDeveloperSpecialPages' );
-		$name = get_class( $this );
-
-		if( strpos( $name, 'language' ) == 0){
-			$lang = ucfirst( substr( $name, 8 ) );
-			foreach( $fillin as $arrname ){
-				$langver = "{$arrname}{$lang}";
-				$enver = "{$arrname}En";
-				if( ! isset( $GLOBALS[$langver] ) || ! isset( $GLOBALS[$enver] ))
-					continue;
-				foreach($GLOBALS[$enver] as $spage => $text){
-					if( ! isset( $GLOBALS[$langver][$spage] ) )
-						$GLOBALS[$langver][$spage] = $text;
-				}
-			}
-		}
 		$this->mConverter = new fakeConverter($this);
 	}
 

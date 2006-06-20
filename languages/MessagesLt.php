@@ -309,6 +309,7 @@ iš funkcijos: "$2". Klaida: "$3: $4".',
 Jei išsaugosite savo keitimus, prieš tai daryti pakeitimai pradings.</strong>',
 'editingsection' => 'Taisomas straipsnis - $1 (skyrius)',
 'editsection' => 'taisyti',
+'editold' => 'taisyti',
 'editthispage' => 'Taisyti straipsnį',
 'editusergroup' => 'Redaguoti naudotojo gruoes',
 'email' => 'El. paštas',
@@ -597,7 +598,7 @@ Jei patekote čia per klaidą, paprasčiausiai spustelkite  naršyklės mygtuką
 * \'\'\'Jei sukūrėte šį straipsnį prieš keletą minučių ir matote šį pranešimą, tai gali būti dėl techninių trukdžių atnaujinant duomenų bazes.\'\'\' Prašome palaukti ir vėl patikrinti prieš bandant iš naujo kurti straipsnį.
 * Jei anksčiau esate sukūręs straipsnį šiuo pavadinimu, jis gali būti ištrintas dėl įvairių priežasčių.
 </div>',
-'nogomatch' => '<span style="font-size: 135%; font-weight: bold; margin-left: .6em">Straipsnis tiksliu įvestu pavadinimu neegzistuoja.</span>
+'noexactmatch' => '<span style="font-size: 135%; font-weight: bold; margin-left: .6em">Straipsnis tiksliu įvestu pavadinimu neegzistuoja.</span>
 
 <span style="display: block; margin: 1.5em 2em">
 Galite \'\'\'[[:<nowiki>$1</nowiki>|sukurti straipsnį šiuo pavadinimu]]\'\'\'.
@@ -866,7 +867,7 @@ archyve, todėl jie gali būti atstatyti. Archyvas gali būti periodiškai valom
 'uploadlog' => 'įkėlimų sąrašas',
 'uploadlogpage' => 'Įkėlimų_sąrašas',
 'uploadlogpagetext' => 'Žemiau pateikiamas naujausių failų įkėlimų sąrašas.',
-'uploadnewversion' => '[$1 Įkelti naują failo versiją]',
+'uploadnewversion-linktext' => 'Įkelti naują failo versiją',
 'uploadnologin' => 'Reikia prisijungti',
 'uploadnologintext' => 'Norėdami įkelti failą, turite būti [[Special:Userlogin|prisijungęs]].',
 'uploadtext' => '<div style="border: 1px solid grey; background: #ddf; padding: 5px; margin: 0 auto;">

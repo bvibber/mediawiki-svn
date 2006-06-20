@@ -27,7 +27,6 @@ $wgTotalEdits = -1;
 
 
 require_once( 'DatabaseFunctions.php' );
-require_once( 'UpdateClasses.php' );
 require_once( 'LogPage.php' );
 require_once( 'normal/UtfNormalUtil.php' );
 require_once( 'XmlFunctions.php' );
@@ -249,11 +248,9 @@ function logProfilingData() {
 	global $wgProfiling, $wgUser;
 	$now = wfTime();
 
-	list( $usec, $sec ) = explode( ' ', $wgRequestTime );
-	$start = (float)$sec + (float)$usec;
-	$elapsed = $now - $start;
+	$elapsed = $now - $wgRequestTime;
 	if ( $wgProfiling ) {
-		$prof = wfGetProfilingOutput( $start, $elapsed );
+		$prof = wfGetProfilingOutput( $wgRequestTime, $elapsed );
 		$forward = '';
 		if( !empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) )
 			$forward = ' forwarded for ' . $_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -406,7 +403,7 @@ function wfMsgNoDBForContent( $key ) {
  * @return $useDB Boolean
  * @return String: the requested message.
  */
-function wfMsgReal( $key, $args, $useDB, $forContent=false, $transform = true ) {
+function wfMsgReal( $key, $args, $useDB = true, $forContent=false, $transform = true ) {
 	$fname = 'wfMsgReal';
 
 	$message = wfMsgGetKey( $key, $useDB, $forContent, $transform );
@@ -602,6 +599,8 @@ function wfMsgExt( $key, $options ) {
 /**
  * Just like exit() but makes a note of it.
  * Commits open transactions except if the error parameter is set
+ *
+ * @obsolete Please return control to the caller or throw an exception
  */
 function wfAbruptExit( $error = false ){
 	global $wgLoadBalancer;
@@ -632,7 +631,7 @@ function wfAbruptExit( $error = false ){
 }
 
 /**
- * @todo document
+ * @obsolete Please return control the caller or throw an exception
  */
 function wfErrorExit() {
 	wfAbruptExit( true );
@@ -645,30 +644,38 @@ function wfErrorExit() {
  */
 function wfDie( $msg='' ) {
 	echo $msg;
-	die( -1 );
+	die( 1 );
 }
 
 /**
- * Die with a backtrace
- * This is meant as a debugging aid to track down where bad data comes from.
- * Shouldn't be used in production code except maybe in "shouldn't happen" areas.
+ * Throw a debugging exception. This function previously once exited the process, 
+ * but now throws an exception instead, with similar results.
  *
  * @param string $msg Message shown when dieing.
  */
 function wfDebugDieBacktrace( $msg = '' ) {
-	global $wgCommandLineMode;
+	throw new MWException( $msg );
+}
 
-	$backtrace = wfBacktrace();
-	if ( $backtrace !== false ) {
-		if ( $wgCommandLineMode ) {
-			$msg .= "\nBacktrace:\n$backtrace";
-		} else {
-			$msg .= "\n<p>Backtrace:</p>\n$backtrace";
-		}
+/**
+ * Fetch server name for use in error reporting etc.
+ * Use real server name if available, so we know which machine
+ * in a server farm generated the current page.
+ * @return string
+ */
+function wfHostname() {
+	if ( function_exists( 'posix_uname' ) ) {
+		// This function not present on Windows
+		$uname = @posix_uname();
+	} else {
+		$uname = false;
 	}
-	echo $msg;
-	echo wfReportTime()."\n";
-	die( -1 );
+	if( is_array( $uname ) && isset( $uname['nodename'] ) ) {
+		return $uname['nodename'];
+	} else {
+		# This may be a virtual server.
+		return $_SERVER['SERVER_NAME'];
+	}
 }
 
 	/**
@@ -680,25 +687,10 @@ function wfDebugDieBacktrace( $msg = '' ) {
 		global $wgRequestTime;
 
 		$now = wfTime();
-		list( $usec, $sec ) = explode( ' ', $wgRequestTime );
-		$start = (float)$sec + (float)$usec;
-		$elapsed = $now - $start;
+		$elapsed = $now - $wgRequestTime;
 
-		# Use real server name if available, so we know which machine
-		# in a server farm generated the current page.
-		if ( function_exists( 'posix_uname' ) ) {
-			$uname = @posix_uname();
-		} else {
-			$uname = false;
-		}
-		if( is_array( $uname ) && isset( $uname['nodename'] ) ) {
-			$hostname = $uname['nodename'];
-		} else {
-			# This may be a virtual server.
-			$hostname = $_SERVER['SERVER_NAME'];
-		}
 		$com = sprintf( "<!-- Served by %s in %01.3f secs. -->",
-		  $hostname, $elapsed );
+		  wfHostname(), $elapsed );
 		return $com;
 	}
 
@@ -908,8 +900,7 @@ function wfQuotedPrintable( $string, $charset = '' ) {
  * @return float
  */
 function wfTime() {
-	$st = explode( ' ', microtime() );
-	return (float)$st[0] + (float)$st[1];
+	return microtime(true);
 }
 
 /**
@@ -1362,7 +1353,7 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 		case TS_ORACLE:
 			return gmdate( 'd-M-y h.i.s A', $uts) . ' +00:00';
 		default:
-			wfDebugDieBacktrace( 'wfTimestamp() called with illegal output type.');
+			throw new MWException( 'wfTimestamp() called with illegal output type.');
 	}
 }
 
@@ -1467,22 +1458,26 @@ function wfGetSiteNotice() {
 	global $wgUser, $wgSiteNotice;
 	$fname = 'wfGetSiteNotice';
 	wfProfileIn( $fname );
+	$siteNotice = '';	
 	
-	if( is_object( $wgUser ) && $wgUser->isLoggedIn() ) {
-		$siteNotice = wfGetCachedNotice( 'sitenotice' );
-		$siteNotice = !$siteNotice ? $wgSiteNotice : $siteNotice;
-	} else {
-		$anonNotice = wfGetCachedNotice( 'anonnotice' );
-		if( !$anonNotice ) {
+	if( wfRunHooks( 'SiteNoticeBefore', array( &$siteNotice ) ) ) {
+		if( is_object( $wgUser ) && $wgUser->isLoggedIn() ) {
 			$siteNotice = wfGetCachedNotice( 'sitenotice' );
 			$siteNotice = !$siteNotice ? $wgSiteNotice : $siteNotice;
 		} else {
-			$siteNotice = $anonNotice;
+			$anonNotice = wfGetCachedNotice( 'anonnotice' );
+			if( !$anonNotice ) {
+				$siteNotice = wfGetCachedNotice( 'sitenotice' );
+				$siteNotice = !$siteNotice ? $wgSiteNotice : $siteNotice;
+			} else {
+				$siteNotice = $anonNotice;
+			}
 		}
 	}
 
+	wfRunHooks( 'SiteNoticeAfter', array( &$siteNotice ) );
 	wfProfileOut( $fname );
-	return( $siteNotice );
+	return $siteNotice;
 }
 
 /** Global singleton instance of MimeMagic. This is initialized on demand,
@@ -1599,7 +1594,7 @@ function wfEncryptPassword( $userid, $password ) {
  */
 function wfAppendToArrayIfNotDefault( $key, $value, $default, &$changed ) {
 	if ( is_null( $changed ) ) {
-		wfDebugDieBacktrace('GlobalFunctions::wfAppendToArrayIfNotDefault got null');
+		throw new MWException('GlobalFunctions::wfAppendToArrayIfNotDefault got null');
 	}
 	if ( $default[$key] !== $value ) {
 		$changed[$key] = $value;
@@ -1658,24 +1653,30 @@ function wfUrlProtocols() {
 }
 
 /**
- * shell_exec() with time and memory limits mirrored from the PHP configuration,
- * if supported.
+ * Execute a shell command, with time and memory limits mirrored from the PHP
+ * configuration if supported.
+ * @param $cmd Command line, properly escaped for shell.
+ * @param &$retval optional, will receive the program's exit code.
+ *                 (non-zero is usually failure)
+ * @return collected stdout as a string (trailing newlines stripped)
  */
-function wfShellExec( $cmd )
-{
-	global $IP;
+function wfShellExec( $cmd, &$retval=null ) {
+	global $IP, $wgMaxShellMemory;
+	
+	if( ini_get( 'safe_mode' ) ) {
+		wfDebug( "wfShellExec can't run in safe_mode, PHP's exec functions are too broken.\n" );
+		$retval = 1;
+		return "Unable to run external programs in safe mode.";
+	}
 
 	if ( php_uname( 's' ) == 'Linux' ) {
 		$time = ini_get( 'max_execution_time' );
-		$mem = ini_get( 'memory_limit' );
-		if( preg_match( '/^([0-9]+)[Mm]$/', trim( $mem ), $m ) ) {
-			$mem = intval( $m[1] * (1024*1024) );
-		}
+		$mem = intval( $wgMaxShellMemory );
+
 		if ( $time > 0 && $mem > 0 ) {
 			$script = "$IP/bin/ulimit.sh";
 			if ( is_executable( $script ) ) {
-				$memKB = intval( $mem / 1024 );
-				$cmd = escapeshellarg( $script ) . " $time $memKB $cmd";
+				$cmd = escapeshellarg( $script ) . " $time $mem $cmd";
 			}
 		}
 	} elseif ( php_uname( 's' ) == 'Windows NT' ) {
@@ -1684,7 +1685,12 @@ function wfShellExec( $cmd )
 		$cmd = '"' . $cmd . '"';
 	}
 	wfDebug( "wfShellExec: $cmd\n" );
-	return shell_exec( $cmd );
+	
+	$output = array();
+	$retval = 1; // error by default?
+	$lastline = exec( $cmd, $output, $retval );
+	return implode( "\n", $output );
+	
 }
 
 /**
@@ -1706,7 +1712,7 @@ function wfUsePHP( $req_ver ) {
 	$php_ver = PHP_VERSION;
 
 	if ( version_compare( $php_ver, (string)$req_ver, '<' ) )
-		 wfDebugDieBacktrace( "PHP $req_ver required--this is only $php_ver" );
+		 throw new MWException( "PHP $req_ver required--this is only $php_ver" );
 }
 
 /**
@@ -1726,7 +1732,7 @@ function wfUseMW( $req_ver ) {
 	global $wgVersion;
 
 	if ( version_compare( $wgVersion, (string)$req_ver, '<' ) )
-		wfDebugDieBacktrace( "MediaWiki $req_ver required--this is only $wgVersion" );
+		throw new MWException( "MediaWiki $req_ver required--this is only $wgVersion" );
 }
 
 /**
@@ -1842,6 +1848,93 @@ class ReplacerCallback {
 	function go( $matches ) {
 		return str_replace( $this->from, $this->to, $matches[1] );
 	}
+}
+
+
+/**
+ * Convert an arbitrarily-long digit string from one numeric base
+ * to another, optionally zero-padding to a minimum column width.
+ *
+ * Supports base 2 through 36; digit values 10-36 are represented
+ * as lowercase letters a-z. Input is case-insensitive.
+ *
+ * @param $input string of digits
+ * @param $sourceBase int 2-36
+ * @param $destBase int 2-36
+ * @param $pad int 1 or greater
+ * @return string or false on invalid input
+ */
+function wfBaseConvert( $input, $sourceBase, $destBase, $pad=1 ) {
+	if( $sourceBase < 2 ||
+		$sourceBase > 36 ||
+		$destBase < 2 ||
+		$destBase > 36 ||
+		$pad < 1 ||
+		$sourceBase != intval( $sourceBase ) ||
+		$destBase != intval( $destBase ) ||
+		$pad != intval( $pad ) ||
+		!is_string( $input ) ||
+		$input == '' ) {
+		return false;
+	}
+	
+	$digitChars = '0123456789abcdefghijklmnopqrstuvwxyz';
+	$inDigits = array();
+	$outChars = '';
+	
+	// Decode and validate input string
+	$input = strtolower( $input );
+	for( $i = 0; $i < strlen( $input ); $i++ ) {
+		$n = strpos( $digitChars, $input{$i} );
+		if( $n === false || $n > $sourceBase ) {
+			return false;
+		}
+		$inDigits[] = $n;
+	}
+	
+	// Iterate over the input, modulo-ing out an output digit
+	// at a time until input is gone.
+	while( count( $inDigits ) ) {
+		$work = 0;
+		$workDigits = array();
+		
+		// Long division...
+		foreach( $inDigits as $digit ) {
+			$work *= $sourceBase;
+			$work += $digit;
+			
+			if( $work < $destBase ) {
+				// Gonna need to pull another digit.
+				if( count( $workDigits ) ) {
+					// Avoid zero-padding; this lets us find
+					// the end of the input very easily when
+					// length drops to zero.
+					$workDigits[] = 0;
+				}
+			} else {
+				// Finally! Actual division!
+				$workDigits[] = intval( $work / $destBase );
+				
+				// Isn't it annoying that most programming languages
+				// don't have a single divide-and-remainder operator,
+				// even though the CPU implements it that way?
+				$work = $work % $destBase;
+			}
+		}
+		
+		// All that division leaves us with a remainder,
+		// which is conveniently our next output digit.
+		$outChars .= $digitChars[$work];
+		
+		// And we continue!
+		$inDigits = $workDigits;
+	}
+	
+	while( strlen( $outChars ) < $pad ) {
+		$outChars .= '0';
+	}
+	
+	return strrev( $outChars );
 }
 
 ?>

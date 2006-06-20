@@ -19,16 +19,17 @@ if( defined( 'MEDIAWIKI' ) ) {
 // Check to see if we are at the file scope
 if ( !isset( $wgVersion ) ) {
 	echo "Error, Setup.php must be included from the file scope, after DefaultSettings.php\n";
-	die( -1 );
+	die( 1 );
 }
 
 if( !isset( $wgProfiling ) )
 	$wgProfiling = false;
 
+require_once( 'AutoLoader.php' );
+
 if ( function_exists( 'wfProfileIn' ) ) {
 	/* nada, everything should be done already */
 } elseif ( $wgProfiling and (0 == rand() % $wgProfileSampleRate ) ) {
-	require_once( 'Profiling.php' );
 	$wgProfiling = true;
 	if ($wgProfilerType == "") {
 		$wgProfiler = new Profiler();
@@ -43,6 +44,12 @@ if ( function_exists( 'wfProfileIn' ) ) {
 
 $fname = 'Setup.php';
 wfProfileIn( $fname );
+
+wfProfileIn( $fname.'-exception' );
+require_once( 'Exception.php' );
+wfInstallExceptionHandler();
+wfProfileOut( $fname.'-exception' );
+
 wfProfileIn( $fname.'-includes' );
 
 require_once( 'GlobalFunctions.php' );
@@ -51,21 +58,14 @@ require_once( 'Namespace.php' );
 require_once( 'User.php' );
 require_once( 'Skin.php' );
 require_once( 'OutputPage.php' );
-require_once( 'LinkCache.php' );
-require_once( 'LinkBatch.php' );
-require_once( 'Title.php' );
-require_once( 'Article.php' );
 require_once( 'MagicWord.php' );
 require_once( 'Block.php' );
 require_once( 'MessageCache.php' );
 require_once( 'Parser.php' );
-require_once( 'ParserCache.php' );
-require_once( 'WebRequest.php' );
 require_once( 'LoadBalancer.php' );
 require_once( 'HistoryBlob.php' );
 require_once( 'ProxyTools.php' );
 require_once( 'ObjectCache.php' );
-require_once( 'WikiError.php' );
 require_once( 'SpecialPage.php' );
 
 if ( $wgUseDynamicDates ) {

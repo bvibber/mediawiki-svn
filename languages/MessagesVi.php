@@ -166,6 +166,7 @@
 'retrievedfrom' => 'Lấy từ « $1 »',
 'newmessageslink' => 'tin nhắn mới',
 'editsection'	=> 'Sửa',
+'editold'	=> 'Sửa',
 'toc'		=> 'Mục lục',
 'showtoc'	=> 'xem',
 'hidetoc'	=> 'giấu',
@@ -417,7 +418,7 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 'badquery'  => 'Truy vấn sai',
 'badquerytext' => "Truy vấn sai: ngắn hơn 3 chữ cái, hoặc sai chính tả ví dụ như \"mèo và và chuột\". Xin mời thử lại.",
 'matchtotals' => "Truy vấn \"$1\" phù hợp với $2 tên bài và câu chữ trong $3 bài.",
-'nogomatch' => "Không có trang tên như này, xin thử công cụ tìm.",
+'noexactmatch' => "Không có trang tên như này, xin thử công cụ tìm.",
 'titlematches' => "Đề mục tương tự",
 'notitlematches' => "Không có tên bài nào có nội dung tương tự",
 'textmatches' => "Câu chữ tương tự",
@@ -522,7 +523,7 @@ $2 gồm cả trang đổi hướng &nbsp; Tìm $3 $9",
 *Kiểm tra hình ảnh đã tải lên trước đây tại [[Đặc_biệt:Imagelist|danh sách những hình đã tải lên]].
 Khi truyền hình lên:
 *Tuân thủ [[{{ns:4}}:Quy định về hình ảnh|quy định về sử dụng hình ảnh]].
-*Ghi rõ thẻ quyền. Ví dụ <nowiki>{{PD}}</nowiki> hay <nowiki>{{GFDL}}</nowiki>,... Xem thêm [[{{ns:4}}:Thẻ quyền cho hình ảnh|thẻ quyền cho hình ảnh]].
+*Ghi rõ thẻ quyền. Ví dụ {{<nowiki>PD</nowiki>}} hay {{<nowiki>GFDL</nowiki>}},... Xem thêm [[{{ns:4}}:Thẻ quyền cho hình ảnh|thẻ quyền cho hình ảnh]].
 *Dùng định dạng JPEG cho ảnh chụp, PNG cho hình vẽ, và OGG cho âm thanh hay video.
 *Ghi tóm lược về hình ảnh giúp người khác có thể dùng lại hình của bạn.
 Sau khi truyền hình lên:
@@ -1282,7 +1283,7 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'yourdomainname' => 'Tên miền của bạn',
 'yourvariant' => 'Ngôn ngữ địa phương',
 'sitesupport-url' => '{{ns:4}}:Quyên_góp',
-'uploadnewversion' => '[$1 Tải lên phiên bản mới]',
+'uploadnewversion-linktext' => 'Tải lên phiên bản mới',
 'selfmove' => 'Tên mới giống tên cũ; không đổi tên được.',
 'ipadressorusername' => 'Địa chỉ IP hay tên thành viên',
 'fileinfo' => ' $1Ko, kiểu MIME: <tt>$2</tt>',

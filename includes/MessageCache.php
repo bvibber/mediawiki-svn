@@ -5,9 +5,6 @@
  * @subpackage Cache
  */
 
-/** */
-require_once( 'Revision.php' );
-
 /**
  *
  */
@@ -113,6 +110,56 @@ class MessageCache {
 		@chmod( $filename, 0666 );
 	}
 
+	function loadFromScript( $hash ) {
+		global $wgLocalMessageCache, $wgDBname;
+		if ( $wgLocalMessageCache === false ) {
+			return;
+		}
+		
+		$filename = "$wgLocalMessageCache/messages-$wgDBname";
+		
+		wfSuppressWarnings();
+		$file = fopen( $filename, 'r' );
+		wfRestoreWarnings();
+		if ( !$file ) {
+			return;
+		}
+		$localHash=substr(fread($file,40),8);
+		fclose($file);
+		if ($hash!=$localHash) {
+			return;
+		}
+		require("$wgLocalMessageCache/messages-$wgDBname");
+	}
+	
+	function saveToScript($array, $hash) {
+		global $wgLocalMessageCache, $wgDBname;
+		if ( $wgLocalMessageCache === false ) {
+			return;
+		}
+
+		$filename = "$wgLocalMessageCache/messages-$wgDBname";
+		$oldUmask = umask( 0 );
+		wfMkdirParents( $wgLocalMessageCache, 0777 );
+		umask( $oldUmask );
+		$file = fopen( $filename.'.tmp', 'w');
+		fwrite($file,"<?php\n//$hash\n\n \$this->mCache = array(");
+		
+		foreach ($array as $key => $message) {
+			fwrite($file, "'". $this->escapeForScript($key).
+				"' => '" . $this->escapeForScript($message). 
+				"',\n");
+		}
+		fwrite($file,");\n?>");
+		fclose($file);
+		rename($filename.'.tmp',$filename);
+	}
+
+	function escapeForScript($string) {
+		$string = str_replace( '\\', '\\\\', $string );
+		$string = str_replace( '\'', '\\\'', $string );
+		return $string;
+	}
 
 	/**
 	 * Loads messages either from memcached or the database, if not disabled
@@ -120,7 +167,7 @@ class MessageCache {
 	 * Returns false for a reportable error, true otherwise
 	 */
 	function load() {
-		global $wgLocalMessageCache;
+		global $wgLocalMessageCache, $wgLocalMessageCacheSerialized;
 
 		if ( $this->mDisable ) {
 			static $shownDisabled = false;
@@ -141,7 +188,11 @@ class MessageCache {
 			wfProfileIn( $fname.'-fromlocal' );
 			$hash = $this->mMemc->get( "{$this->mMemcKey}-hash" );
 			if ( $hash ) {
-				$this->loadFromLocal( $hash );
+				if ($wgLocalMessageCacheSerialized) {
+					$this->loadFromLocal( $hash );
+				} else {
+					$this->loadFromScript( $hash );
+				}
 			}
 			wfProfileOut( $fname.'-fromlocal' );
 
@@ -157,7 +208,11 @@ class MessageCache {
 						$hash = md5( $serialized );
 						$this->mMemc->set( "{$this->mMemcKey}-hash", $hash, $this->mExpiry );
 					}
-					$this->saveToLocal( $serialized, $hash );
+					if ($wgLocalMessageCacheSerialized) {
+						$this->saveToLocal( $serialized,$hash );
+					} else {
+						$this->saveToScript( $this->mCache, $hash );
+					}
 				}
 				wfProfileOut( $fname.'-fromcache' );
 			}
@@ -188,7 +243,11 @@ class MessageCache {
 						$serialized = serialize( $this->mCache );
 						$hash = md5( $serialized );
 						$this->mMemc->set( "{$this->mMemcKey}-hash", $hash, $this->mExpiry );
-						$this->saveToLocal( $serialized, $hash );
+						if ($wgLocalMessageCacheSerialized) {
+							$this->saveToLocal( $serialized,$hash );
+						} else {
+							$this->saveToScript( $this->mCache, $hash );
+						}
 					}
 
 					wfProfileOut( $fname.'-save' );
@@ -232,7 +291,7 @@ class MessageCache {
 		$fname = 'MessageCache::loadFromDB';
 		$dbr =& wfGetDB( DB_SLAVE );
 		if ( !$dbr ) {
-			wfDebugDieBacktrace( 'Invalid database object' );
+			throw new MWException( 'Invalid database object' );
 		}
 		$conditions = array( 'page_is_redirect' => 0,
 					'page_namespace' => NS_MEDIAWIKI);
@@ -289,7 +348,7 @@ class MessageCache {
 	}
 
 	function replace( $title, $text ) {
-		global $wgLocalMessageCache, $parserMemc, $wgDBname;
+		global $wgLocalMessageCache, $wgLocalMessageCacheSerialized, $parserMemc, $wgDBname;
 
 		$this->lock();
 		$this->load();
@@ -303,7 +362,11 @@ class MessageCache {
 				$serialized = serialize( $this->mCache );
 				$hash = md5( $serialized );
 				$this->mMemc->set( "{$this->mMemcKey}-hash", $hash, $this->mExpiry );
-				$this->saveToLocal( $serialized, $hash );
+				if ($wgLocalMessageCacheSerialized) {
+					$this->saveToLocal( $serialized,$hash );
+				} else {
+					$this->saveToScript( $this->mCache, $hash );
+				}
 			}
 
 
@@ -391,7 +454,7 @@ class MessageCache {
 		}
 
 		# Is this a custom message? Try the default language in the db...
-		if( $message === false &&
+		if( ($message === false || $message === '-' ) &&
 			!$this->mDisable && $useDB &&
 			!$isfullkey && ($langcode != $wgContLanguageCode) ) {
 			$message = $this->getFromCache( $lang->ucfirst( $key ) );

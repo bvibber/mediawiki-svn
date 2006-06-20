@@ -43,13 +43,13 @@ class WhatLinksHerePage {
 		$targetString = isset($this->par) ? $this->par : $this->request->getVal( 'target' );
 
 		if (is_null($targetString)) {
-			$wgOut->errorpage( 'notargettitle', 'notargettext' );
+			$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
 			return;
 		}
 
 		$this->target = Title::newFromURL( $targetString );
 		if( !$this->target ) {
-			$wgOut->errorpage( 'notargettitle', 'notargettext' );
+			$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
 			return;
 		}
 		$this->selfTitle = Title::makeTitleSafe( NS_SPECIAL,
@@ -70,7 +70,7 @@ class WhatLinksHerePage {
 	 * @param int       $limit      Number of entries to display
 	 * @param Title     $from       Display from this article ID
 	 * @param string    $dir        'next' or 'prev', whether $fromTitle is the start or end of the list
-	 * @access private
+	 * @private
 	 */
 	function showIndirectLinks( $level, $target, $limit, $from = 0, $dir = 'next' ) {
 		global $wgOut;

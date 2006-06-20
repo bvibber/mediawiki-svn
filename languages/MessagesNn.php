@@ -185,6 +185,7 @@
 'retrievedfrom'           => 'Henta frå «$1»',
 'newmessageslink'         => 'nye meldingar',
 'editsection'             => 'endre',
+'editold'             => 'endre',
 'toc'                     => 'Innhaldsliste',
 'showtoc'                 => 'vis',
 'hidetoc'                 => 'gøym',
@@ -451,8 +452,8 @@ Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompati
 'badquery'		  => 'Feil utforma førespurnad',
 'badquerytext'	          => 'Vi kunne ikkje svara på denne førespurnaden &mdash; Truleg fordi du prøvde å søkje etter eit ord med færre enn tre bokstavar, noko som ikkje er mogleg enno. Det kan òg vera du skreiv feil... Prøv om att.',
 'matchtotals'	          => 'Førespurnaden «$1» gav treff på $2 sidetitlar og på teksten på $3 sider.',
-'nogomatch'               => '* \'\'\'{{SITENAME}} har ikkje noka side med [[$1|dette namnet]].\'\'\'
-* <big>\'\'\'Du kan [[$1|opprette ho no]]\'\'\'</big>.<br />
+'noexactmatch'               => '* \'\'\'{{SITENAME}} har ikkje noka side med [[:$1|dette namnet]].\'\'\'
+* <big>\'\'\'Du kan [[:$1|opprette ho no]]\'\'\'</big>.<br />
 (Men du bør søkje etter andre namnevariasjonar først, slik at du ikkje lagar ei side som allereie finst under eit anna namn!)',
 'titlematches'	          => 'Sidetitlar med treff på førespurnaden',
 'notitlematches'          => 'Ingen sidetitlar hadde treff på førespurnaden',
@@ -670,7 +671,7 @@ For å laste opp ei fil bruker du «Bla gjennom...» eller «Browse...»-knappen
 'shareduploadwiki-linktext' => 'filskildringssida',
 'noimage'               => 'Det finst ikkje noka fil med dette namnet, men du kan $1',
 'noimage-linktext'      => 'laste ho opp',
-'uploadnewversion'      => '[$1 Last opp ny versjon av denne fila]',
+'uploadnewversion-linktext' => 'Last opp ny versjon av denne fila',
 
 # Statistics
 #

@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'MEDIAWIKI' ) )
-	die( -1 );
+	die( 1 );
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -144,6 +144,10 @@ class SkinTemplate extends Skin {
 
 		$fname = 'SkinTemplate::outputPage';
 		wfProfileIn( $fname );
+
+		// Hook that allows last minute changes to the output page, e.g.
+		// adding of CSS or Javascript by extensions.
+		wfRunHooks( 'BeforePageDisplay', array( &$out ) );
 
 		extract( $wgRequest->getValues( 'oldid', 'diff' ) );
 

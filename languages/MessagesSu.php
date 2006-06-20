@@ -1,6 +1,6 @@
 <?php
 
-
+global $wgAllMessagesSu;
 $wgAllMessagesSu = array(
 
 # dates
@@ -238,7 +238,7 @@ mangga pastikeun yén anjeun rék nyieun deui artikel ieu.',
 'contribslink' => 'sumbang',
 'contribsub' => 'Pikeun $1',
 'contributions' => 'Kontribusi pamaké',
-'copyright' => 'Sadaya kandungan ieu loka aya dina panangtayungan <a class=\'internal\' href="{{localurle:{{ns:project}}:Téks_Lisénsi Dokumén Bébas GNU}}">Lisénsi Dokumén Bébas GNU</a> (tingal <b><a class=\'internal\' href="{{localurle:{{ns:project}}:Hak cipta}}">Hak cipta</a></b> sangkan leuwih jéntré).<br />',
+/*'copyright' => 'Sadaya kandungan ieu loka aya dina panangtayungan <a class=\'internal\' href="{{localurle:{{ns:project}}:Téks_Lisénsi Dokumén Bébas GNU}}">Lisénsi Dokumén Bébas GNU</a> (tingal <b><a class=\'internal\' href="{{localurle:{{ns:project}}:Hak cipta}}">Hak cipta</a></b> sangkan leuwih jéntré).<br />',*/
 'copyrightpage' => '{{ns:project}}:Hak cipta',
 'copyrightpagename' => 'Hak cipta {{SITENAME}}',
 /*'copyrightwarning' => 'Parobahan jieunan anjeun bakal geuwat katémbong.
@@ -330,6 +330,7 @@ Artikel nu dituju "[[$1]]" geus aya. Badé dihapus baé sangkan bisa mindahkeun?
 'editingold' => '<strong>PERHATOSAN: Anjeun ngédit révisi kadaluwarsa kaca ieu. Mun ku anjeun disimpen, sagala parobahan nu dijieun sanggeus révisi ieu bakal leungit.</strong>',
 'editingsection' => 'Ngédit $1 (bagian)',
 'editsection' => 'édit',
+'editold' => 'édit',
 'editthispage' => 'Édit kaca ieu',
 'editusergroup' => 'Édit Golongan Pamaké',
 'email' => 'Surélék',
@@ -427,7 +428,7 @@ Asupan jeung bantuan salajengna:
 'hist' => 'juj',
 'histfirst' => 'Pangheubeulna',
 'histlast' => 'Pangahirna',
-'histlegend' => 'Pilihan béda: tandaan wadah buleud vérsina pikeun ngabandingkeun sarta pencét énter atawa tombol di handap.<br/>
+'histlegend' => 'Pilihan béda: tandaan wadah buleud vérsina pikeun ngabandingkeun sarta pencét énter atawa tombol di handap.<br />
 Katerangan: (kiw) = bédana jeung vérsi kiwari,
 (ahir) = bédana jeung vérsi nu harita, m = éditan minor.',
 'history' => 'Jujutan kaca',
@@ -644,7 +645,7 @@ Mun anjeun ka dieu teu ngahaja, klik baé tombol \'\'\'back\'\'\' na panyungsi a
 'noemailprefs' => '<strong>Teu aya alamat surélék</strong>, fitur di handap moal bisa jalan.',
 'noemailtext' => 'Pamaké ieu teu méré alamat surélék nu sah atawa milih teu narima surélék ti pamaké séjén.',
 'noemailtitle' => 'Teu aya alamat surélék',
-'nogomatch' => '<span style="font-size: 135%; font-weight: bold; margin-left: .6em">Teu aya kaca nu judulna kitu</span>
+'noexactmatch' => '<span style="font-size: 135%; font-weight: bold; margin-left: .6em">Teu aya kaca nu judulna kitu</span>
 
 <span style="display: block; margin: 1.5em 2em">
 Coba saksrak na téks lengkep, atawa \'\'\'[[<nowiki>$1</nowiki>|nyieun artikel nu judulna kitu]]\'\'\' atawa [[{{ns:project}}:Artikel pamundut|mundut dijieunna éta artikel]].
@@ -908,7 +909,7 @@ jumlah-jamléh geus aya \'\'\'$3\'\'\' kaca ulasan sarta \'\'\'$4\'\'\' éditan 
 'tog-previewontop' => 'Témbongkeun sawangan méméh kotak édit (lain sanggeusna)',
 'tog-rememberpassword' => 'Inget sandi liwat sési',
 'tog-shownumberswatching' => 'Témbongkeun jumlah nu ngawaskeun',
-'tog-showtoc' => 'Témbongkeun daptar eusi<br/>(pikeun kaca nu leuwih ti tilu subjudul)',
+'tog-showtoc' => 'Témbongkeun daptar eusi<br />(pikeun kaca nu leuwih ti tilu subjudul)',
 'tog-showtoolbar' => 'Témbongkeun \'\'toolbar\'\' édit (JavaScript)',
 'tog-underline' => 'Garis-handapan tumbu',
 'tog-watchdefault' => 'Tambahkeun kaca nu diédit ku anjeun kana awaskeuneun anjeun',
@@ -974,7 +975,7 @@ jumlah-jamléh geus aya \'\'\'$3\'\'\' kaca ulasan sarta \'\'\'$4\'\'\' éditan 
 'uploadlogpagetext' => 'Di handap mangrupa daptar muatan koropak nu panganyarna. Titimangsa nu katémbong dumasar titimangsa server (UTC).
 <ul>
 </ul>',
-'uploadnewversion' => '[$1 ngamuatkeun vérsi anyar koropak ieu]',
+'uploadnewversion-linktext' => 'ngamuatkeun vérsi anyar koropak ieu',
 'uploadnologin' => 'Can asup log',
 'uploadnologintext' => 'Anjeun kudu [[Special:Userlogin|asup log]] pikeun ngamuat koropak.',
 'uploadscripted' => 'Koropak ieu ngandung kode HTML atawa skrip nu bisa dibaca ngaco ku panyungsi ramat (\'\'web browser\'\').',

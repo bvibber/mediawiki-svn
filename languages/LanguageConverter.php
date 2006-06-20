@@ -64,7 +64,7 @@ class LanguageConverter {
 	 *
 	 * @param string $v the language code of the variant
 	 * @return string the code of the fallback language or false if there is no fallback
-     * @access private
+     * @private
 	*/
 	function getVariantFallback($v) {
 		return $this->mVariantFallbacks[$v];
@@ -120,7 +120,7 @@ class LanguageConverter {
      * @param string $text the text to be converted
      * @param string $toVariant the target language code
      * @return string the converted text
-     * @access private
+     * @private
      */
 	function autoConvert($text, $toVariant=false) {
 		$fname="LanguageConverter::autoConvert";
@@ -145,7 +145,12 @@ class LanguageConverter {
 			$marker = '|' . $wgParser->UniqPrefix() . '[\-a-zA-Z0-9]+';
 		else
 			$marker = "";
-		$reg = '/<[^>]+>|&[a-z#][a-z0-9]+;' . $marker . '/';
+
+		// this one is needed when the text is inside an html markup
+		$htmlfix = '|<[^>]+=\"[^(>=)]*$|^[^(<>=\")]*\"[^>]*>';
+
+		$reg = '/<[^>]+>|&[a-z#][a-z0-9]+;' . $marker . $htmlfix . '/';
+	
 		$matches = preg_split($reg, $text, -1, PREG_SPLIT_OFFSET_CAPTURE);
 
 
@@ -166,7 +171,7 @@ class LanguageConverter {
      *
      * @param string $text the text to be converted
      * @return array of string
-     * @access private
+     * @private
      */
 	function autoConvertToAllVariants($text) {
 		$fname="LanguageConverter::autoConvertToAllVariants";
@@ -256,7 +261,12 @@ class LanguageConverter {
 			return $text;
 
 		$plang = $this->getPreferredVariant();
-		$fallback = $this->mVariantFallbacks[$plang];
+		if( isset( $this->mVariantFallbacks[$plang] ) ) {
+			$fallback = $this->mVariantFallbacks[$plang];
+		} else {
+			// This sounds... bad?
+			$fallback = '';
+		}
 
 		$tarray = explode($this->mMarkup['begin'], $text);
 		$tfirst = array_shift($tarray);
@@ -337,7 +347,7 @@ class LanguageConverter {
 	 * parse the manually marked conversion rule
 	 * @param string $rule the text of the rule
 	 * @return array of the translation in each variant
-	 * @access private
+	 * @private
 	 */
 	function parseManualRule($rules, $flags=array()) {
 
@@ -388,7 +398,7 @@ class LanguageConverter {
 			if(isset($cache[$v]))
 				continue;
 			$cache[$v] = 1;
-			$varnt = Title::newFromText( $v );
+			$varnt = Title::newFromText( $v, $ns );
 			if( $varnt && $varnt->getArticleID() > 0 ) {
 				$nt = $varnt;
 				if( !$wgDisableLangConversion )
@@ -420,7 +430,7 @@ class LanguageConverter {
 	/**
      * a write lock to the cache
      *
-     * @access private
+     * @private
      */
 	function lockCache() {
 		global $wgMemc;
@@ -436,7 +446,7 @@ class LanguageConverter {
 	/**
      * unlock cache
      *
-     * @access private
+     * @private
      */
 	function unlockCache() {
 		global $wgMemc;
@@ -448,7 +458,7 @@ class LanguageConverter {
      * Load default conversion tables
      * This method must be implemented in derived class
      *
-     * @access private
+     * @private
      */
 	function loadDefaultTables() {
 		$name = get_class($this);
@@ -457,7 +467,7 @@ class LanguageConverter {
 
 	/**
      * load conversion tables either from the cache or the disk
-     * @access private
+     * @private
      */
 	function loadTables($fromcache=true) {
 		global $wgMemc;
@@ -496,7 +506,7 @@ class LanguageConverter {
     /**
      * Reload the conversion tables
      *
-     * @access private
+     * @private
      */
 	function reloadTables() {
 		if($this->mTables)
@@ -520,7 +530,7 @@ class LanguageConverter {
      *	to make the tables more manageable, subpages are allowed
      *	and will be parsed recursively if $recursive=true
      *
-     * @access private
+     * @private
 	 */
 	function parseCachedTable($code, $subpage='', $recursive=true) {
 		global $wgMessageCache;
@@ -624,7 +634,7 @@ class LanguageConverter {
 	/**
      * hook to refresh the cache of conversion tables when
      * MediaWiki:conversiontable* is updated
-     * @access private
+     * @private
 	*/
 	function OnArticleSaveComplete($article, $user, $text, $summary, $isminor, $iswatch, $section) {
 		$titleobj = $article->getTitle();

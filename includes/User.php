@@ -5,11 +5,6 @@
  * @package MediaWiki
  */
 
-/**
- *
- */
-require_once( 'WatchedItem.php' );
-
 # Number of characters in user_token field
 define( 'USER_TOKEN_LENGTH', 32 );
 
@@ -188,9 +183,14 @@ class User {
 	}
 
 	/**
-	 * does the string match an anonymous IPv4 address?
+	 * Does the string match an anonymous IPv4 address?
 	 *
-	 * Note: We match \d{1,3}\.\d{1,3}\.\d{1,3}\.xxx as an anonymous IP
+	 * This function exists for username validation, in order to reject
+	 * usernames which are similar in form to IP addresses. Strings such
+	 * as 300.300.300.300 will return true because it looks like an IP 
+	 * address, despite not being strictly valid.
+	 * 
+	 * We match \d{1,3}\.\d{1,3}\.\d{1,3}\.xxx as an anonymous IP
 	 * address because the usemod software would "cloak" anonymous IP
 	 * addresses like this, if we allowed accounts like this to be created
 	 * new users could get the old edits of these anonymous users.
@@ -1192,7 +1192,7 @@ class User {
 	 * @deprecated
 	 */
 	function isSysop() {
-		wfDebugDieBacktrace( "Call to deprecated (v1.7) User::isSysop() method\n" );
+		throw new MWException( "Call to deprecated (v1.7) User::isSysop() method\n" );
 		#return $this->isAllowed( 'protect' );
 	}
 
@@ -1201,7 +1201,7 @@ class User {
 	 * @deprecated
 	 */
 	function isDeveloper() {
-		wfDebugDieBacktrace( "Call to deprecated (v1.7) User::isDeveloper() method\n" );
+		throw new MWException( "Call to deprecated (v1.7) User::isDeveloper() method\n" );
 		#return $this->isAllowed( 'siteadmin' );
 	}
 
@@ -1210,7 +1210,7 @@ class User {
 	 * @deprecated
 	 */
 	function isBureaucrat() {
-		wfDebugDieBacktrace( "Call to deprecated (v1.7) User::isBureaucrat() method\n" );
+		throw new MWException( "Call to deprecated (v1.7) User::isBureaucrat() method\n" );
 		#return $this->isAllowed( 'makesysop' );
 	}
 

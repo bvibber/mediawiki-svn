@@ -62,8 +62,7 @@ class LanguageSl extends LanguageUtf8 {
 		global $wgNamespaceNamesSl, $wgMetaNamespace;
 		LanguageUtf8::LanguageUtf8();
 		$wgNamespaceNamesSl[NS_PROJECT_TALK] = 'Pogovor_' .
-			str_replace( ' ', '_',
-				$this->convertGrammar( $wgMetaNamespace, 'orodnik' ) );
+			str_replace( ' ', '_', $this->convertGrammar( $wgMetaNamespace, 'mestnik' ) );
 	}
 
 	function getNamespaces() {
@@ -99,6 +98,9 @@ class LanguageSl extends LanguageUtf8 {
 
 	# Convert from the nominative form of a noun to some other case
 	# Invoked with {{GRAMMAR:case|word}}
+	/**
+	 * Cases: rodilnik, dajalnik, tožilnik, mestnik, orodnik
+	 */
 	function convertGrammar( $word, $case ) {
 		global $wgGrammarForms;
 		if ( isset($wgGrammarForms['sl'][$case][$word]) ) {
@@ -153,23 +155,6 @@ class LanguageSl extends LanguageUtf8 {
 			break;
 			case 'mestnik': # locative
 				if ( $word == 'Wikipedija' ) {
-					$word = 'z Wikipedijo';
-				} elseif ( $word == 'Wikiknjige' ) {
-					$word = 'z Wikiknjigami';
-				} elseif ( $word == 'Wikinovice' ) {
-					$word = 'z Wikinovicami';
-				} elseif ( $word == 'Wikinavedek' ) {
-					$word = 'z Wikinavedkom';
-				} elseif ( $word == 'Wikivir' ) {
-					$word = 'z Wikivirom';
-				} elseif ( $word == 'Wikislovar' ) {
-					$word = 'z Wikislovarjem';
-				} else {
-					$word = 'z ' . $word;
-				}
-			break;
-			case 'orodnik': # instrumental
-				if ( $word == 'Wikipedija' ) {
 					$word = 'o Wikipediji';
 				} elseif ( $word == 'Wikiknjige' ) {
 					$word = 'o Wikiknjigah';
@@ -185,10 +170,45 @@ class LanguageSl extends LanguageUtf8 {
 					$word = 'o ' . $word;
 				}
 			break;
+			case 'orodnik': # instrumental
+				if ( $word == 'Wikipedija' ) {
+					$word = 'z Wikipedijo';
+				} elseif ( $word == 'Wikiknjige' ) {
+					$word = 'z Wikiknjigami';
+				} elseif ( $word == 'Wikinovice' ) {
+					$word = 'z Wikinovicami';
+				} elseif ( $word == 'Wikinavedek' ) {
+					$word = 'z Wikinavedkom';
+				} elseif ( $word == 'Wikivir' ) {
+					$word = 'z Wikivirom';
+				} elseif ( $word == 'Wikislovar' ) {
+					$word = 'z Wikislovarjem';
+				} else {
+					$word = 'z ' . $word;
+				}
+			break;
 		}
 
 		return $word; # this will return the original value for 'imenovalnik' (nominativ) and all undefined case values
 	}
+
+	function convertPlural( $count, $w1, $w2, $w3, $w4, $w5) {
+		$count = str_replace ('.', '', $count);
+		$forms = array( $w1, $w2, $w3, $w4, $w5 );
+		if ( $count % 100 === 1 ) {
+			$index = 0;
+		} elseif ( $count % 100 === 2 ) {
+			$index = 1;
+		} elseif ( $count%100==3 || $count%100==4 ) {
+			$index = 2;
+		} elseif ( $count != 0 ) {
+			$index = 3;
+		} else {
+			$index = 4;
+		}
+		return $forms[$index];
+	}
+
 
 }
 ?>

@@ -181,6 +181,7 @@ See $1.',
 "retrievedfrom" => "Hentet fra \"$1\"",
 "newmessageslink" => "nye beskeder",
 "editsection"=>"redigér",
+"editold"=>"redigér",
 "toc" => "Indholdsfortegnelse",
 "showtoc" => "vis",
 "hidetoc" => "skjul",
@@ -496,7 +497,7 @@ eksempel \"fisk og og skaldyr\".
 Prøv en anden forespørgsel.",
 "matchtotals"	=> "Forespørgslen \"$1\" opfyldte $2 artikeltitler
 og teksten i $3 artikler.",
-"nogomatch" => "{{SITENAME}} har ingen artikel med dette navn. Du kan [[$1|oprette en artikel med dette navn]] eller [[{{ns:4}}:Efterspurgte_artikler|efterspørge den]]. For at undgå flere artikler om samme emne, bedes du inden oprettelsen søge efter artiklen under alternative navne og stavemåder.",
+"noexactmatch" => "{{SITENAME}} har ingen artikel med dette navn. Du kan [[:$1|oprette en artikel med dette navn]] eller [[{{ns:4}}:Efterspurgte_artikler|efterspørge den]]. For at undgå flere artikler om samme emne, bedes du inden oprettelsen søge efter artiklen under alternative navne og stavemåder.",
 "titlematches"	=> "Artikeltitler der opfyldte forespørgslen",
 "notitlematches" => "Ingen artikeltitler opfyldte forespørgslen",
 "textmatches"	=> "Artikeltekster der opfyldte forespørgslen",
@@ -752,7 +753,7 @@ og af hvem, og andre ting du ved om filen.",
 'shareduploadwiki-linktext' => 'siden med billedbeskrivelsen',
 'noimage'       => 'Der eksisterer ingen fil med dette navn, du kan $1',
 'noimage-linktext' => 'lægge den op',
-'uploadnewversion' => '[$1 Læg en ny version af denne fil op]',
+'uploadnewversion-linktext' => 'Læg en ny version af denne fil op',
 
 # Statistics
 #

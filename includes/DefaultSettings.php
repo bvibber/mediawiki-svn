@@ -21,7 +21,7 @@
 # This is not a valid entry point, perform no further processing unless MEDIAWIKI is defined
 if( !defined( 'MEDIAWIKI' ) ) {
 	echo "This file is part of MediaWiki and is not a valid entry point\n";
-	die( -1 );
+	die( 1 );
 }
 
 /**
@@ -62,6 +62,7 @@ $wgProto = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : '
 $wgServer = $wgProto.'://' . $wgServerName;
 # If the port is a non-standard one, add it to the URL
 if(    isset( $_SERVER['SERVER_PORT'] )
+	&& !strpos( $wgServerName, ':' )
     && (    ( $wgProto == 'http' && $_SERVER['SERVER_PORT'] != 80 )
 	 || ( $wgProto == 'https' && $_SERVER['SERVER_PORT'] != 443 ) ) ) {
 
@@ -124,6 +125,29 @@ $wgMathDirectory    = "{$wgUploadDirectory}/math";
 $wgTmpDirectory     = "{$wgUploadDirectory}/tmp";
 $wgUploadBaseUrl    = "";
 /**#@-*/
+
+
+/**
+ * By default deleted files are simply discarded; to save them and
+ * make it possible to undelete images, create a directory which
+ * is writable to the web server but is not exposed to the internet.
+ *
+ * Set $wgSaveDeletedFiles to true and set up the save path in
+ * $wgFileStore['deleted']['directory'].
+ */
+$wgSaveDeletedFiles = false;
+
+/**
+ * New file storage paths; currently used only for deleted files.
+ * Set it like this:
+ *
+ *   $wgFileStore['deleted']['directory'] = '/var/wiki/private/deleted';
+ *
+ */
+$wgFileStore = array();
+$wgFileStore['deleted']['directory'] = null; // Don't forget to set this.
+$wgFileStore['deleted']['url'] = null;       // Private
+$wgFileStore['deleted']['hash'] = 3;         // 3-level subdirectory split
 
 /**
  * Allowed title characters -- regex character class
@@ -547,6 +571,12 @@ $wgMemCachedPersistent = false;
  * Directory for local copy of message cache, for use in addition to memcached
  */
 $wgLocalMessageCache = false;
+/**
+ * Defines format of local cache
+ * true - Serialized object
+ * false - PHP source file (Warning - security risk)
+ */
+$wgLocalMessageCacheSerialized = true;
 
 /**
  * Directory for compiled constant message array databases
@@ -1073,7 +1103,7 @@ $wgCookieSecure = ($wgProto == 'https');
 $wgDisableCookieCheck = false;
 
 /**  Whether to allow inline image pointing to other websites */
-$wgAllowExternalImages = true;
+$wgAllowExternalImages = false;
 
 /** If the above is false, you can specify an exception here. Image URLs
   * that start with this string are then rendered, while all others are not.
@@ -1125,6 +1155,8 @@ $wgProfileSampleRate = 1;
 $wgProfileCallTree = false;
 /** If not empty, specifies profiler type to load */
 $wgProfilerType = '';
+/** Should application server host be put into profiling table */
+$wgProfilePerHost = false;
 
 /** Settings for UDP profiler */
 $wgUDPProfilerHost = '127.0.0.1';
@@ -1326,6 +1358,18 @@ $wgMaxImageArea = 1.25e7;
  */
 $wgThumbnailEpoch = '20030516000000';
 
+/**
+ * If set, inline scaled images will still produce <img> tags ready for
+ * output instead of showing an error message.
+ *
+ * This may be useful if errors are transitory, especially if the site
+ * is configured to automatically render thumbnails on request.
+ *
+ * On the other hand, it may obscure error conditions from debugging.
+ * Enable the debug log or the 'thumbnail' log group to make sure errors
+ * are logged to a file for review.
+ */
+$wgIgnoreImageErrors = false;
 
 
 /** Set $wgCommandLineMode if it's not set already, to avoid notices */
@@ -1824,6 +1868,12 @@ $wgNoFollowLinks = true;
 $wgNoFollowNsExceptions = array();
 
 /**
+ * Robot policies for namespaces
+ * e.g. $wgNamespaceRobotPolicies = array( NS_TALK => 'noindex' );
+ */
+$wgNamespaceRobotPolicies = array();
+
+/**
  * Specifies the minimal length of a user password. If set to
  * 0, empty passwords are allowed.
  */
@@ -2012,6 +2062,16 @@ $wgJobRunRate = 1;
 $wgJobLogFile = false;
 
 /**
+ * Number of rows to update per job
+ */
+$wgUpdateRowsPerJob = 500;
+
+/**
+ * Number of rows to update per query
+ */
+$wgUpdateRowsPerQuery = 10;
+
+/**
  * Enable use of AJAX features, currently auto suggestion for the search bar
  */
 $wgUseAjax = false;
@@ -2040,5 +2100,18 @@ $wgReservedUsernames = array( 'MediaWiki default', 'Conversion script' );
  * and doesn't send appropriate MIME types for SVG images.
  */
 $wgAllowTitlesInSVG = false;
+
+/**
+ * Array of namespaces which can be deemed to contain valid "content", as far
+ * as the site statistics are concerned. Useful if additional namespaces also
+ * contain "content" which should be considered when generating a count of the
+ * number of articles in the wiki.
+ */
+$wgContentNamespaces = array( NS_MAIN );
+
+/**
+ * Maximum amount of virtual memory available to shell processes under linux, in KB. 
+ */
+$wgMaxShellMemory = 102400;
 
 ?>

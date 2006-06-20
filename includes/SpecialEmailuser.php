@@ -14,13 +14,13 @@ function wfSpecialEmailuser( $par ) {
 	global $wgUser, $wgOut, $wgRequest, $wgEnableEmail, $wgEnableUserEmail;
 
 	if( !( $wgEnableEmail && $wgEnableUserEmail ) ) {
-		$wgOut->errorpage( "nosuchspecialpage", "nospecialpagetext" );
+		$wgOut->showErrorPage( "nosuchspecialpage", "nospecialpagetext" );
 		return;
 	}
 
 	if( !$wgUser->canSendEmail() ) {
 		wfDebug( "User can't send.\n" );
-		$wgOut->errorpage( "mailnologin", "mailnologintext" );
+		$wgOut->showErrorPage( "mailnologin", "mailnologintext" );
 		return;
 	}
 
@@ -28,21 +28,21 @@ function wfSpecialEmailuser( $par ) {
 	$target = isset($par) ? $par : $wgRequest->getVal( 'target' );
 	if ( "" == $target ) {
 		wfDebug( "Target is empty.\n" );
-		$wgOut->errorpage( "notargettitle", "notargettext" );
+		$wgOut->showErrorPage( "notargettitle", "notargettext" );
 		return;
 	}
 
 	$nt = Title::newFromURL( $target );
 	if ( is_null( $nt ) ) {
 		wfDebug( "Target is invalid title.\n" );
-		$wgOut->errorpage( "notargettitle", "notargettext" );
+		$wgOut->showErrorPage( "notargettitle", "notargettext" );
 		return;
 	}
 
 	$nu = User::newFromName( $nt->getText() );
 	if( is_null( $nu ) || !$nu->canReceiveEmail() ) {
 		wfDebug( "Target is invalid user or can't receive.\n" );
-		$wgOut->errorpage( "noemailtitle", "noemailtext" );
+		$wgOut->showErrorPage( "noemailtitle", "noemailtext" );
 		return;
 	}
 
@@ -117,7 +117,7 @@ class EmailUserForm {
 </td>
 </tr>
 </table>
-<span id='wpTextLabel'><label for=\"wpText\">{$emm}:</label><br></span>
+<span id='wpTextLabel'><label for=\"wpText\">{$emm}:</label><br /></span>
 <textarea name=\"wpText\" rows='20' cols='80' wrap='virtual' style=\"width: 100%;\">" . htmlspecialchars( $this->text ) .
 "</textarea>
 <input type='submit' name=\"wpSend\" value=\"{$ems}\" />

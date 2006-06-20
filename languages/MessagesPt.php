@@ -212,6 +212,7 @@ executada por utilizadores com direitos de "desenvolvedor".<br />Veja $1.',
 'newmessageslink' => 'novas mensagens',
 'newmessagesdifflink' => 'comparar com a penúltima revisão',
 'editsection'=>'editar',
+'editold'=>'editar',
 'editsectionhint' => 'Editar secção: $1',
 'toc' => 'Tabela de conteúdo',
 'showtoc' => 'mostrar',
@@ -489,7 +490,7 @@ Você terá que mesclar suas modificações no texto existente.
 'editingold'    => "<strong>CUIDADO: Encontra-se a editar uma revisão desactualizada deste artigo.
 Se salvá-lo, todas as mudanças feitas a partir desta revisão serão perdidas.</strong>",
 'yourdiff'              => 'Diferenças',
-/*'copyrightwarning' => "Por favor note que todas as contribuições para a {{SITENAME}} são imediatamente colocadas sob a <b>GNU Free Documentation License</b> (consulte $1 para detalhes). Se você não quer que seu texto esteja sujeito a estes termos, então não o envie.<br/>
+/*'copyrightwarning' => "Por favor note que todas as contribuições para a {{SITENAME}} são imediatamente colocadas sob a <b>GNU Free Documentation License</b> (consulte $1 para detalhes). Se você não quer que seu texto esteja sujeito a estes termos, então não o envie.<br />
 Você também garante que está nos enviando um artigo escrito por você mesmo, ou extraído de uma fonte em domínio público.
 <strong>Não ENVIE </strong>",*/
 'copyrightwarning2' => "Tenha em consideração que todas as contribuições para o projecto {{SITENAME}}
@@ -558,7 +559,7 @@ exemplo "peixes <strong>e e</strong> escalas".
 Por favor realize outro pedido de pesquisa.',
 'matchtotals'   => "A pesquisa \"$1\" resultou $2 títulos de artigos
 e $3 artigos com o texto procurado.",
-'nogomatch' => 'Não existe uma página com o título \"$1\". Pode criar [[$1|esta página]].',
+'noexactmatch' => 'Não existe uma página com o título \"$1\". Pode criar [[:$1|esta página]].',
 'titlematches'  => 'Resultados nos títulos dos artigos',
 'notitlematches' => 'Nenhum título de página coincide',
 'textmatches'   => 'Resultados dos textos dos artigos',
@@ -785,7 +786,7 @@ Por favor siga este endereço: $2 para a página de descrição e preencha a inf
 #'shareddescriptionfollows' => '-', # ignore list
 'noimage'       => 'Nenhum ficheiro com este nome existe, se desejar pode $1',
 'noimage-linktext'       => 'carrega-lo',
-'uploadnewversion' => '[$1 Carregar uma nova versão deste ficheiro]',
+'uploadnewversion-linktext' => 'Carregar uma nova versão deste ficheiro',
 
 # Unwatchedpages
 #
@@ -1722,7 +1723,7 @@ irá expirar a $4.",
 
 # Trackbacks
 'trackbackbox' => "<div id='mw_trackbacks'>
-Trackbacks for this article:<br/>
+Trackbacks for this article:<br />
 $1
 </div>",
 'trackback' => "; $4$5 : [$2 $1]",

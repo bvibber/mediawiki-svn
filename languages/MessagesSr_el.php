@@ -331,6 +331,7 @@ reviziju ove stranice.
 Ako je snimite, sve promene učinjene od ove revizije biće izgubljene.</strong>',
 'editingsection' => 'Menjate $1 (deo)',
 'editsection' => 'uredi',
+'editold' => 'uredi',
 'editthispage' => 'Uredi ovu stranicu',
 'editusergroup' => 'Menjaj grupe korisnika',
 'email' => 'E-pošta',
@@ -967,9 +968,9 @@ neće raditi.',
 'noemailtext' => 'Ovaj korisnik nije naveo ispravnu adresu e-pošte,
 ili je izabrao da ne prima e-poštu od drugih korisnika.',
 'noemailtitle' => 'Nema adrese e-pošte',
-'nogomatch' => 'Ne postoji stranica sa ovakvim naslovom.
+'noexactmatch' => 'Ne postoji stranica sa ovakvim naslovom.
 
-Možete [[$1|napisati članak]] sa ovim naslovom.
+Možete [[:$1|napisati članak]] sa ovim naslovom.
 
 Molimo Vas pretražite Vikipediju, pre kreiranja članka da bismo izbegli dupliranje već postojećeg.',
 'nohistory' => 'Ne postoji istorija izmena za ovu stranicu.',
@@ -1311,7 +1312,7 @@ razlikuje od serverskog vremena (UTC).',
 'tooltip-save' => 'Snimite Vaše izmene [alt-s]',
 'tooltip-search' => 'Pretražite Viki',
 'tooltip-watch' => 'Dodajte ovu stranicu na Vaš spisak nadgledanja [alt-w]',
-'trackback' => '<div id=\'mw_trackbacks\'> Vraćanja za ovaj članak:<br/> $1 </div>',
+'trackback' => '<div id=\'mw_trackbacks\'> Vraćanja za ovaj članak:<br /> $1 </div>',
 'trackbackbox' => '; $4$5 : [$2 $1]',
 'trackbackdeleteok' => 'Vraćanje je uspešno obrisano.',
 'trackbackexcerpt' => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>',
@@ -1392,7 +1393,7 @@ aktivnoj upotrebi.',
 Sva vremena su serverska vremena (UTC).
 <ul>
 </ul>',
-'uploadnewversion' => '[$1 Pošaljite noviju verziju ove datoteke]',
+'uploadnewversion-linktext' => 'Pošaljite noviju verziju ove datoteke',
 'uploadnologin' => 'Niste prijavljeni',
 'uploadnologintext' => 'Morate biti [[{{ns:-1}}:Userlogin|prijavljeni]]
 da biste slali fajlove.',

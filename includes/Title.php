@@ -8,9 +8,6 @@
 /** */
 require_once( 'normal/UtfNormal.php' );
 
-$wgTitleInterwikiCache = array();
-$wgTitleCache = array();
-
 define ( 'GAID_FOR_UPDATE', 1 );
 
 # Title::newFromTitle maintains a cache to avoid
@@ -29,12 +26,19 @@ define( 'MW_TITLECACHE_MAX', 1000 );
  */
 class Title {
 	/**
+	 * Static cache variables
+	 */
+	static private $titleCache=array();
+	static private $interwikiCache=array();
+	
+	
+	/**
 	 * All member variables should be considered private
 	 * Please use the accessor functions
 	 */
 
 	 /**#@+
-	 * @access private
+	 * @private
 	 */
 
 	var $mTextform;           # Text form (spaces not underscores) of the main part
@@ -57,7 +61,7 @@ class Title {
 
 	/**
 	 * Constructor
-	 * @access private
+	 * @private
 	 */
 	/* private */ function Title() {
 		$this->mInterwiki = $this->mUrlform =
@@ -105,11 +109,10 @@ class Title {
 	 * @access public
 	 */
 	function newFromText( $text, $defaultNamespace = NS_MAIN ) {
-		global $wgTitleCache;
 		$fname = 'Title::newFromText';
 
 		if( is_object( $text ) ) {
-			wfDebugDieBacktrace( 'Title::newFromText given an object' );
+			throw new MWException( 'Title::newFromText given an object' );
 		}
 
 		/**
@@ -120,8 +123,8 @@ class Title {
 		 *
 		 * In theory these are value objects and won't get changed...
 		 */
-		if( $defaultNamespace == NS_MAIN && isset( $wgTitleCache[$text] ) ) {
-			return $wgTitleCache[$text];
+		if( $defaultNamespace == NS_MAIN && isset( Title::$titleCache[$text] ) ) {
+			return Title::$titleCache[$text];
 		}
 
 		/**
@@ -138,11 +141,11 @@ class Title {
 			if( $defaultNamespace == NS_MAIN ) {
 				if( $cachedcount >= MW_TITLECACHE_MAX ) {
 					# Avoid memory leaks on mass operations...
-					$wgTitleCache = array();
+					Title::$titleCache = array();
 					$cachedcount=0;
 				}
 				$cachedcount++;
-				$wgTitleCache[$text] =& $t;
+				Title::$titleCache[$text] =& $t;
 			}
 			return $t;
 		} else {
@@ -200,6 +203,21 @@ class Title {
 			$title = NULL;
 		}
 		return $title;
+	}
+
+	/**
+	 * Make an array of titles from an array of IDs 
+	 */
+	function newFromIDs( $ids ) {
+		$dbr =& wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'page', array( 'page_namespace', 'page_title' ),
+			'page_id IN (' . $dbr->makeList( $ids ) . ')', __METHOD__ );
+
+		$titles = array();
+		while ( $row = $dbr->fetchObject( $res ) ) {
+			$titles[] = Title::makeTitle( $row->page_namespace, $row->page_title );
+		}
+		return $titles;
 	}
 
 	/**
@@ -334,7 +352,6 @@ class Title {
 	 */
 	/* static */ function indexTitle( $ns, $title ) {
 		global $wgContLang;
-		require_once( 'SearchEngine.php' );
 
 		$lc = SearchEngine::legalSearchChars() . '&#;';
 		$t = $wgContLang->stripForSearch( $title );
@@ -375,15 +392,15 @@ class Title {
 	 * @access public
 	 */
 	function getInterwikiLink( $key )  {
-		global $wgMemc, $wgDBname, $wgInterwikiExpiry, $wgTitleInterwikiCache;
+		global $wgMemc, $wgDBname, $wgInterwikiExpiry;
 		global $wgInterwikiCache;
 		$fname = 'Title::getInterwikiLink';
 
 		$key = strtolower( $key );
 
 		$k = $wgDBname.':interwiki:'.$key;
-		if( array_key_exists( $k, $wgTitleInterwikiCache ) ) {
-			return $wgTitleInterwikiCache[$k]->iw_url;
+		if( array_key_exists( $k, Title::$interwikiCache ) ) {
+			return Title::$interwikiCache[$k]->iw_url;
 		}
 
 		if ($wgInterwikiCache) {
@@ -393,7 +410,7 @@ class Title {
 		$s = $wgMemc->get( $k );
 		# Ignore old keys with no iw_local
 		if( $s && isset( $s->iw_local ) && isset($s->iw_trans)) {
-			$wgTitleInterwikiCache[$k] = $s;
+			Title::$interwikiCache[$k] = $s;
 			return $s->iw_url;
 		}
 
@@ -414,7 +431,7 @@ class Title {
 			$s->iw_trans = 0;
 		}
 		$wgMemc->set( $k, $s, $wgInterwikiExpiry );
-		$wgTitleInterwikiCache[$k] = $s;
+		Title::$interwikiCache[$k] = $s;
 
 		return $s->iw_url;
 	}
@@ -429,7 +446,6 @@ class Title {
 	 */
 	function getInterwikiCached( $key ) {
 		global $wgDBname, $wgInterwikiCache, $wgInterwikiScopes, $wgInterwikiFallbackSite;
-		global $wgTitleInterwikiCache;
 		static $db, $site;
 
 		if (!$db)
@@ -460,7 +476,7 @@ class Title {
 			$s->iw_url=$url;
 			$s->iw_local=(int)$local;
 		}
-		$wgTitleInterwikiCache[$wgDBname.':interwiki:'.$key] = $s;
+		Title::$interwikiCache[$wgDBname.':interwiki:'.$key] = $s;
 		return $s->iw_url;
 	}
 	/**
@@ -472,13 +488,13 @@ class Title {
 	 * @access public
 	 */
 	function isLocal() {
-		global $wgTitleInterwikiCache, $wgDBname;
+		global $wgDBname;
 
 		if ( $this->mInterwiki != '' ) {
 			# Make sure key is loaded into cache
 			$this->getInterwikiLink( $this->mInterwiki );
 			$k = $wgDBname.':interwiki:' . $this->mInterwiki;
-			return (bool)($wgTitleInterwikiCache[$k]->iw_local);
+			return (bool)(Title::$interwikiCache[$k]->iw_local);
 		} else {
 			return true;
 		}
@@ -492,14 +508,14 @@ class Title {
 	 * @access public
 	 */
 	function isTrans() {
-		global $wgTitleInterwikiCache, $wgDBname;
+		global $wgDBname;
 
 		if ($this->mInterwiki == '')
 			return false;
 		# Make sure key is loaded into cache
 		$this->getInterwikiLink( $this->mInterwiki );
 		$k = $wgDBname.':interwiki:' . $this->mInterwiki;
-		return (bool)($wgTitleInterwikiCache[$k]->iw_trans);
+		return (bool)(Title::$interwikiCache[$k]->iw_trans);
 	}
 
 	/**
@@ -995,7 +1011,7 @@ class Title {
 	 * Can $wgUser perform $action this page?
 	 * @param string $action action that permission needs to be checked for
 	 * @return boolean
-	 * @access private
+	 * @private
  	 */
 	function userCan($action) {
 		$fname = 'Title::userCan';
@@ -1255,6 +1271,10 @@ class Title {
 			$dbr =& wfGetDB( DB_SLAVE );
 			$n = $dbr->selectField( 'archive', 'COUNT(*)', array( 'ar_namespace' => $this->getNamespace(),
 				'ar_title' => $this->getDBkey() ), $fname );
+			if( $this->getNamespace() == NS_IMAGE ) {
+				$n += $dbr->selectField( 'filearchive', 'COUNT(*)',
+					array( 'fa_name' => $this->getDBkey() ), $fname );
+			}
 		}
 		return (int)$n;
 	}
@@ -1349,7 +1369,7 @@ class Title {
 	 *
 	 * @param string $name the text
 	 * @return string the prefixed text
-	 * @access private
+	 * @private
 	 */
 	/* private */ function prefix( $name ) {
 		global $wgContLang;
@@ -1373,7 +1393,7 @@ class Title {
 	 * namespace prefixes, sets the other forms, and canonicalizes
 	 * everything.
 	 * @return bool true on success
-	 * @access private
+	 * @private
 	 */
 	/* private */ function secureAndSplit() {
 		global $wgContLang, $wgLocalInterwiki, $wgCapitalLinks;
@@ -1567,6 +1587,9 @@ class Title {
 	 * Get an array of Title objects linking to this Title
 	 * Also stores the IDs in the link cache.
 	 *
+	 * WARNING: do not use this function on arbitrary user-supplied titles!
+	 * On heavily-used templates it will max out the memory.
+	 *
 	 * @param string $options may be FOR UPDATE
 	 * @return array the Title objects linking here
 	 * @access public
@@ -1606,6 +1629,9 @@ class Title {
 	/**
 	 * Get an array of Title objects using this Title as a template
 	 * Also stores the IDs in the link cache.
+	 *
+	 * WARNING: do not use this function on arbitrary user-supplied titles!
+	 * On heavily-used templates it will max out the memory.
 	 *
 	 * @param string $options may be FOR UPDATE
 	 * @return array the Title objects linking here
@@ -1666,6 +1692,15 @@ class Title {
 			$this->getInternalURL(),
 			$this->getInternalURL( 'action=history' )
 		);
+	}
+
+	function purgeSquid() {
+		global $wgUseSquid;
+		if ( $wgUseSquid ) {
+			$urls = $this->getSquidURLs();
+			$u = new SquidUpdate( $urls );
+			$u->doUpdate();
+		}
 	}
 
 	/**
@@ -1807,7 +1842,7 @@ class Title {
 	 *
 	 * @param Title &$nt the page to move to, which should currently
 	 * 	be a redirect
-	 * @access private
+	 * @private
 	 */
 	function moveOverExistingRedirect( &$nt, $reason = '' ) {
 		global $wgUseSquid, $wgMwRedir;
@@ -1885,7 +1920,7 @@ class Title {
 	/**
 	 * Move page to non-existing title.
 	 * @param Title &$nt the new Title
-	 * @access private
+	 * @private
 	 */
 	function moveToNewTitle( &$nt, $reason = '' ) {
 		global $wgUseSquid;
@@ -1948,21 +1983,9 @@ class Title {
 				'pl_title'     => $nt->getDBkey() ),
 			$fname );
 
-		# Non-existent target may have had broken links to it; these must
-		# now be touched to update link coloring.
-		$nt->touchLinks();
-
 		# Purge old title from squid
 		# The new title, and links to the new title, are purged in Article::onArticleCreate()
-		$titles = $nt->getLinksTo();
-		if ( $wgUseSquid ) {
-			$urls = $this->getSquidURLs();
-			foreach ( $titles as $linkTitle ) {
-				$urls[] = $linkTitle->getInternalURL();
-			}
-			$u = new SquidUpdate( $urls );
-			$u->doUpdate();
-		}
+		$this->purgeSquid();
 	}
 
 	/**
@@ -2185,44 +2208,18 @@ class Title {
 	}
 
 	/**
-	 * Update page_touched timestamps on pages linking to this title.
-	 * In principal, this could be backgrounded and could also do squid
-	 * purging.
+	 * Update page_touched timestamps and send squid purge messages for
+	 * pages linking to this title.	May be sent to the job queue depending 
+	 * on the number of links. Typically called on create and delete.
 	 */
 	function touchLinks() {
-		$fname = 'Title::touchLinks';
+		$u = new HTMLCacheUpdate( $this, 'pagelinks' );
+		$u->doUpdate();
 
-		$dbw =& wfGetDB( DB_MASTER );
-
-		$res = $dbw->select( 'pagelinks',
-			array( 'pl_from' ),
-			array(
-				'pl_namespace' => $this->getNamespace(),
-				'pl_title'     => $this->getDbKey() ),
-			$fname );
-
-		$toucharr = array();
-		while( $row = $dbw->fetchObject( $res ) ) {
-			$toucharr[] = $row->pl_from;
+		if ( $this->getNamespace() == NS_CATEGORY ) {
+			$u = new HTMLCacheUpdate( $this, 'categorylinks' );
+			$u->doUpdate();
 		}
-		$dbw->freeResult( $res );
-
-		if( $this->getNamespace() == NS_CATEGORY ) {
-			// Categories show up in a separate set of links as well
-			$res = $dbw->select( 'categorylinks',
-				array( 'cl_from' ),
-				array( 'cl_to' => $this->getDbKey() ),
-				$fname );
-			while( $row = $dbw->fetchObject( $res ) ) {
-				$toucharr[] = $row->cl_from;
-			}
-			$dbw->freeResult( $res );
-		}
-
-		if (!count($toucharr))
-			return;
-		$dbw->update( 'page', /* SET */ array( 'page_touched' => $dbw->timestamp() ),
-							/* WHERE */ array( 'page_id' => $toucharr ),$fname);
 	}
 
 	function trackbackURL() {

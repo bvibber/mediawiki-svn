@@ -23,10 +23,6 @@
  * @subpackage SpecialPage
  */
 
-/** */
-require_once( 'SearchEngine.php' );
-require_once( 'Revision.php' );
-
 /**
  * Entry point
  *
@@ -114,7 +110,7 @@ class SpecialSearch {
 				$editurl = $t->escapeLocalURL( 'action=edit' );
 			}
 		}
-		$wgOut->addWikiText( wfMsg('nogomatch', ":$term" ) );
+		$wgOut->addWikiText( wfMsg( 'noexactmatch', $term ) );
 
 		return $this->showResults( $term );
 	}

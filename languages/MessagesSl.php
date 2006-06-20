@@ -114,6 +114,7 @@
 "retrievedfrom"         => "Vzpostavljeno iz \"$1\"",
 "newmessageslink"       => "novih sporočil",
 "editsection"=>"spremeni",
+"editold"=>"spremeni",
 "toc" => "Vsebina",
 "showtoc" => "prikaži",
 "hidetoc" => "skrij",
@@ -279,7 +280,7 @@ To je verjetno zaradi tega, ker ste hoteli iskati besedo, dolgo manj kot tri čr
 Lahko ste tudi narobe vnesli izraz, na primer \"Ribi in in Tehntnica\".
 Prosimo poskusite z drugim povpraševanjem.",
 "matchtotals"	        => "Povpraševanje \"$1\" se ujema z $2 naslovi člankov in z besedilom $3 člankov.",
-"nogomatch"             => "Ne obstaja stran z natančno tem naslovom, poskušam z iskanjem celotnega besedila. ",
+"noexactmatch"             => "Ne obstaja stran z natančno tem naslovom, poskušam z iskanjem celotnega besedila. ",
 "titlematches"	        => "Ujemanje z naslovom članka",
 "notitlematches"        => "Noben naslov članka se ne ujema",
 "textmatches"	        => "Ujemanje z besedilom članka",

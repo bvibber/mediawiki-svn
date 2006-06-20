@@ -179,6 +179,7 @@
 'retrievedfrom' => 'Взето от „$1“.',
 'newmessageslink' => 'нови съобщения',
 'editsection' => 'редактиране',
+'editold' => 'редактиране',
 'toc' => 'Съдържание',
 'showtoc' => 'показване',
 'hidetoc' => 'скриване',
@@ -470,7 +471,7 @@ Before any other mail is sent to the account, you will have to follow the instru
 'next'            => 'след',
 'last'            => 'посл',
 'orig'            => 'ориг',
-'histlegend'      => '<i>Разлики:</i> Изберете версиите, които желаете да сравните, чрез превключвателите срещу тях и натиснете &lt;Enter&gt; или бутона за сравнение.<br/>
+'histlegend'      => '<i>Разлики:</i> Изберете версиите, които желаете да сравните, чрез превключвателите срещу тях и натиснете &lt;Enter&gt; или бутона за сравнение.<br />
 <i>Легенда:</i> (<b>тек</b>) = разлика с текущата версия, (<b>посл</b>) = разлика с предишната версия, <b>м</b>&nbsp;=&nbsp;малка промяна',
 'history_copyright' => '-',
 'deletedrev' => '[изтрита]',
@@ -497,7 +498,7 @@ Before any other mail is sent to the account, you will have to follow the instru
 Възможно е и да сте сгрешили в изписването на израза, например: „риба и и везни“.
 Моля, опитайте с нова заявка.',
 'matchtotals'  => 'Заявката „$1“ отговаря на $2 заглавия на страници и на текста на $3 страници.',
-'nogomatch' => 'В {{SITENAME}} не съществува страница с това заглавие. Можете да я \'\'\'[[$1|създадете]]\'\'\'.',
+'noexactmatch' => 'В {{SITENAME}} не съществува страница с това заглавие. Можете да я \'\'\'[[:$1|създадете]]\'\'\'.',
 'titlematches'  => 'Съответствия в заглавията на страници',
 'notitlematches' => 'Няма съответствия в заглавията на страници',
 'textmatches'  => 'Съответствия в текста на страници',
@@ -744,7 +745,7 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'shareddescriptionfollows' => '-',
 'noimage'       => 'Не съществува файл с това име, можете $1.',
 'noimage-linktext' => 'да го качите',
-'uploadnewversion' => '[$1 Качване на нова версия на файла]',
+'uploadnewversion-linktext' => 'Качване на нова версия на файла',
 
 # Statistics
 #
@@ -1378,7 +1379,7 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 
 # Trackbacks
 'trackbackbox' => '<div id="mw_trackbacks">
-Trackbacks for this article:<br/>
+Trackbacks for this article:<br />
 $1
 </div>',
 'trackback' => '; $4$5 : [$2 $1]',

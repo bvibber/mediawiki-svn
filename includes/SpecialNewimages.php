@@ -5,9 +5,6 @@
  * @subpackage SpecialPage
  */
 
-/** */
-require_once( 'ImageGallery.php' );
-
 /**
  *
  */
@@ -178,8 +175,8 @@ function wfSpecialNewimages( $par, $specialPage ) {
 		$botpar='';
 	}
 	$now = wfTimestampNow();
-	$date = $wgLang->timeanddate( $now );
-	$dateLink = $sk->makeKnownLinkObj( $titleObj, wfMsg( 'rclistfrom', $date ), 'from='.$now.$botpar.$searchpar );
+	$date = $wgLang->timeanddate( $now, true );
+	$dateLink = $sk->makeKnownLinkObj( $titleObj, wfMsg( 'sp-newimages-showfrom', $date ), 'from='.$now.$botpar.$searchpar );
 
 	$botLink = $sk->makeKnownLinkObj($titleObj, wfMsg( 'showhidebots', ($hidebots ? wfMsg('show') : wfMsg('hide'))),'hidebots='.($hidebots ? '0' : '1').$searchpar);
 

@@ -90,6 +90,12 @@ $magicWords = array(
 	'MAG_BASEPAGENAMEE',
 	'MAG_URLENCODE',
 	'MAG_CURRENTTIMESTAMP',
+	'MAG_DIRECTIONMARK',
+	'MAG_LANGUAGE',
+	'MAG_CONTENTLANGUAGE',
+	'MAG_PAGESINNAMESPACE',
+	'MAG_NOGALLERY',
+	'MAG_NUMBEROFADMINS',
 );
 if ( ! defined( 'MEDIAWIKI_INSTALL' ) )
 	wfRunHooks( 'MagicWordMagicWords', array( &$magicWords ) );
@@ -142,6 +148,11 @@ $wgVariableIDs = array(
 	MAG_BASEPAGENAMEE,
 	MAG_URLENCODE,
 	MAG_CURRENTTIMESTAMP,
+	MAG_DIRECTIONMARK,
+	MAG_LANGUAGE,
+	MAG_CONTENTLANGUAGE,
+	MAG_PAGESINNAMESPACE,
+	MAG_NUMBEROFADMINS,
 );
 if ( ! defined( 'MEDIAWIKI_INSTALL' ) )
 	wfRunHooks( 'MagicWordwgVariableIDs', array( &$wgVariableIDs ) );
@@ -162,7 +173,7 @@ if ( ! defined( 'MEDIAWIKI_INSTALL' ) )
  */
 class MagicWord {
 	/**#@+
-	 * @access private
+	 * @private
 	 */
 	var $mId, $mSynonyms, $mCaseSensitive, $mRegex;
 	var $mRegexStart, $mBaseRegex, $mVariableRegex;
@@ -188,7 +199,7 @@ class MagicWord {
 		global $wgMagicWords;
 
 		if ( !is_array( $wgMagicWords ) ) {
-			wfDebugDieBacktrace( "Incorrect initialisation order, \$wgMagicWords does not exist\n" );
+			throw new MWException( "Incorrect initialisation order, \$wgMagicWords does not exist\n" );
 		}
 		if (!array_key_exists( $id, $wgMagicWords ) ) {
 			$mw = new MagicWord();
@@ -207,7 +218,7 @@ class MagicWord {
 
 	/**
 	 * Preliminary initialisation
-	 * @access private
+	 * @private
 	 */
 	function initRegex() {
 		#$variableClass = Title::legalChars();
@@ -416,7 +427,7 @@ class MagicWord {
 
 /**
  * Used in matchAndRemove()
- * @access private
+ * @private
  **/
 function pregRemoveAndRecord( $match ) {
 	global $wgMagicFound;

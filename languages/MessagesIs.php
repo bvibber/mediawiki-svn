@@ -192,6 +192,7 @@ the list of currently operational bans and blocks.",
 'editingold' => "<strong>ATH: Þú ert að breyta gamalli útgáfu þessarar síðu og munu allar breytingar sem gerðar hafa verið á henni frá þeirri útgáfu vera fjarlægðar ef þú vistar.</strong>",
 'editingsection' => "Breyti $1 (hluta)",
 'editsection' => "breyta",
+'editold' => "breyta",
 'editthispage' => "Breyta þessari síðu",
 'emailforlost' => "Ekki er nauðsynlegt að gefa upp netfang. Ef þú gefur upp netfang getur fólk sent þér tölvupóst í gegnum {{SITENAME}} án þess að sjá netfangið þitt og þú getur fengið nýtt lykilorð sent ef það gleymist. Einnig er mögulegt fyrir nýja notendur að skrá sig með því að fylla bara út í reiti fyrir notendanafn og tölvupóst og smella svo á „með netfangi“ takkan, þá verður lykilorð sent á viðkomandi netfang.",
 'emailfrom' => "Frá",
@@ -572,12 +573,12 @@ in active use.",
 'uploadnologin' => "Óinnskráð(ur)",
 'uploadnologintext' => "You must be [[Special:Userlogin|logged in]]
 to upload files.",
-'uploadtext' => "'''Áður en skrá er hlaðið inn''':
+/*'uploadtext' => "'''Áður en skrá er hlaðið inn''':
 * Notaðu [[JPEG]] skráarsniðið fyrir ljósmyndir, [[GIF]] fyrir hreyfimyndir, [[PNG]] fyrir aðrar myndir og [[Ogg Vorbis]] fyrir hljóðskrár.
 
 '''Eftir að skrá er hlaðið inn''':
 * Veittu nákvæmar upplýsingar um skránna á skráarsíðunni, t.d. um myndina (hvenær hún er tekin, hvar o.s.f.)
-* Gefðu upplýsingar um leyfið sem hún er undir, <code><nowiki>{{</nowiki>GFDL<nowiki>}}</nowiki></code> fyrir [[commons:Commons:Copyright tags#GNU Licenses|GNU FDL]] og <code><nowiki>{{</nowiki>Óhöfundaréttvarið<nowiki>}}</nowiki></code> ef hún er óvernduð af alþjóða höfundarlögum.",
+* Gefðu upplýsingar um leyfið sem hún er undir, <code><nowiki>{{</nowiki>GFDL<nowiki>}}</nowiki></code> fyrir [[commons:Commons:Copyright tags#GNU Licenses|GNU FDL]] og <code><nowiki>{{</nowiki>Óhöfundaréttvarið<nowiki>}}</nowiki></code> ef hún er óvernduð af alþjóða höfundarlögum.",*/
 'uploadwarning' => "Aðvörun",
 'usercssjsyoucanpreview' => "<strong>Ath:</strong> Hægt er að nota „Forskoða“ hnappinn til að prófa CSS og JavaScript kóða áður en hann er vistaður.",
 'userlogin' => "Innskrá",

@@ -24,7 +24,7 @@ header( "Content-type: text/html; charset=utf-8" );
 @ini_set( "display_errors", true );
 
 # In case of errors, let output be clean.
-$wgRequestTime = microtime();
+$wgRequestTime = microtime( true );
 
 # Attempt to set up the include path, to fix problems with relative includes
 $IP = dirname( dirname( __FILE__ ) );
@@ -326,18 +326,26 @@ $conf->turck = function_exists( 'mmcache_get' );
 if ( $conf->turck ) {
 	print "<li><a href=\"http://turck-mmcache.sourceforge.net/\">Turck MMCache</a> installed</li>\n";
 }
+
+$conf->apc = function_exists('apc_fetch');
+if ($conf->apc ) {
+	print '<li><a href="http://www.php.net/apc">APC</a> installed</li>\n';
+}
+
 $conf->eaccel = function_exists( 'eaccelerator_get' );
 if ( $conf->eaccel ) {
     $conf->turck = 'eaccelerator';
     print "<li><a href=\"http://eaccelerator.sourceforge.net/\">eAccelerator</a> installed</li>\n";
 }
-if (!$conf->turck && !$conf->eaccel) {
-	print "<li>Neither <a href=\"http://turck-mmcache.sourceforge.net/\">Turck MMCache</a> nor <a href=\"http://eaccelerator.sourceforge.net/\">eAccelerator</a> are installed, " .
-	  "can't use object caching functions</li>\n";
+if (!$conf->turck && !$conf->eaccel && !$conf->apc) {
+	print "<li>Neither <a href=\"http://turck-mmcache.sourceforge.net/\">Turck MMCache</a> nor ".
+		"<a href=\"http://eaccelerator.sourceforge.net/\">eAccelerator</a> nor ".
+		"<a href=\"http://www.php.net/apc\">APC</a> are installed, " .
+		"can't use object caching functions</li>\n";
 }
 
 $conf->diff3 = false;
-$diff3locations = array("/usr/bin", "/opt/csw/bin", "/usr/gnu/bin", "/usr/sfw/bin") + explode($sep, getenv("PATH"));
+$diff3locations = array("/usr/bin", "/usr/local/bin", "/opt/csw/bin", "/usr/gnu/bin", "/usr/sfw/bin") + explode($sep, getenv("PATH"));
 $diff3names = array("gdiff3", "diff3", "diff3.exe");
 
 $diff3versioninfo = array('$1 --version 2>&1', 'diff3 (GNU diffutils)');
@@ -492,7 +500,6 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		}
 		print "<li>Database type: {$conf->DBtype}</li>\n";
 		$dbclass = 'Database'.ucfirst($conf->DBtype);
-		require_once("$dbclass.php");
 		$wgDBtype = $conf->DBtype;
 		$wgDBadminuser = "root";
 		$wgDBadminpassword = $conf->RootPW;
@@ -542,7 +549,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				$wgDBadminpassword = $db_pass;
 				echo( "success.</li>\n" );
 				$wgDatabase->ignoreErrors( true );
-				$myver = mysql_get_server_info( $wgDatabase->mConn );
+				$myver = $wgDatabase->getServerVersion();
 			} else {
 				# There were errors, report them and back out
 				$ok = false;
@@ -612,7 +619,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			}
 			print "</li>\n";
 
-			@$sel = mysql_select_db( $wgDBname, $wgDatabase->mConn );
+			@$sel = $wgDatabase->selectDB( $wgDBname );
 			if( $sel ) {
 				print "<li>Database <tt>" . htmlspecialchars( $wgDBname ) . "</tt> exists</li>\n";
 			} else {
@@ -883,8 +890,11 @@ if( count( $errs ) ) {
 				aField( $conf, "Shm", "Turck MMCache", "radio", "turck" );
 				echo "</li>";
 			}
-		?>
-		<?php
+			if ( $conf->apc ) {
+				echo "<li>";
+				aField( $conf, "Shm", "APC", "radio", "apc" );
+				echo "</li>";
+			}
 			if ( $conf->eaccel ) {
 				echo "<li>";
 				aField( $conf, "Shm", "eAccelerator", "radio", "eaccel" );
@@ -896,8 +906,8 @@ if( count( $errs ) ) {
 		<div style="clear:left"><?php aField( $conf, "MCServers", "Memcached servers:", "text" ) ?></div>
 	</div>
 	<p class="config-desc">
-		Using a shared memory system such as Turck MMCache, eAccelerator, or Memcached will speed
-		up MediaWiki significantly. Memcached is the best solution but needs to be
+		Using a shared memory system such as Turck MMCache, APC, eAccelerator, or Memcached 
+		will speed up MediaWiki significantly. Memcached is the best solution but needs to be
 		installed. Specify the server addresses and ports in a comma-separted list. Only
 		use Turck shared memory if the wiki will be running on a single Apache server.
 	</p>
@@ -1111,6 +1121,7 @@ function writeLocalSettings( $conf ) {
 			$mcservers = var_export( $conf->MCServerArray, true );
 			break;
 		case 'turck':
+		case 'apc':
 		case 'eaccel':
 			$cacheType = 'CACHE_ACCEL';
 			$mcservers = 'array()';
@@ -1410,15 +1421,6 @@ function locate_executable($loc, $names, $versioninfo = false) {
 		}
 	}
 	return false;
-}
-
-function get_db_version() {
-	global $wgDatabase, $conf;
-	if ($conf->DBtype == 'mysql')
-		return mysql_get_server_info( $wgDatabase->mConn );
-	else if ($conf->DBtype == 'oracle')
-		return oci_server_version($wgDatabase->mConn);
-	else return 'unknown';
 }
 
 # Test a memcached server

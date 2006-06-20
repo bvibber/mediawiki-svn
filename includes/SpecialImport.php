@@ -23,9 +23,6 @@
  * @subpackage SpecialPage
  */
 
-/** */
-require_once( 'WikiError.php' );
-
 /**
  * Constructor
  */
@@ -331,7 +328,7 @@ class WikiImporter {
 	/**
 	 * Default per-revision callback, performs the import.
 	 * @param WikiRevision $revision
-	 * @access private
+	 * @private
 	 */
 	function importRevision( &$revision ) {
 		$dbw =& wfGetDB( DB_MASTER );
@@ -341,7 +338,7 @@ class WikiImporter {
 	/**
 	 * Alternate per-revision callback, for debugging.
 	 * @param WikiRevision $revision
-	 * @access private
+	 * @private
 	 */
 	function debugRevisionHandler( &$revision ) {
 		$this->debug( "Got revision:" );
@@ -359,7 +356,7 @@ class WikiImporter {
 	/**
 	 * Notify the callback function when a new <page> is reached.
 	 * @param Title $title
-	 * @access private
+	 * @private
 	 */
 	function pageCallback( $title ) {
 		if( is_callable( $this->mPageCallback ) ) {

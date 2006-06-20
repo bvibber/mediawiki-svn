@@ -1,5 +1,7 @@
 <?php
-/* private */ $wgAllMessagesIt = array(
+
+global $wgAllMessagesIt;
+$wgAllMessagesIt = array(
 
 # User preference toggles
 "tog-underline" => "Sottolinea i collegamenti",
@@ -86,14 +88,14 @@
 
 "mainpage"		=> "Pagina principale",
 "mainpagetext"	=> "<big>'''Installazione di MediaWiki completata correttamente.'''</big>",
-"mainpagedocfooter" => "Consultare la [http://meta.wikipedia.org/wiki/Aiuto:Sommario Guida utente] per maggiori informazioni sull'uso di questo software wiki.
+"mainpagedocfooter" => "Consultare la [http://meta.wikimedia.org/wiki/Aiuto:Sommario Guida utente] per maggiori informazioni sull'uso di questo software wiki.
 
 == Per iniziare ==
 I seguenti collegamenti sono in lingua inglese:
 
 * [http://www.mediawiki.org/wiki/Help:Configuration_settings Impostazioni di configurazione]
 * [http://www.mediawiki.org/wiki/Help:FAQ Domande frequenti su MediaWiki]
-* [http://mail.wikipedia.org/mailman/listinfo/mediawiki-announce Mailing list annunci MediaWiki]",
+* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce Mailing list annunci MediaWiki]",
 
 "portal"		=> "Portale comunità",
 "portal-url"		=> "Project:Portale comunità",
@@ -119,6 +121,8 @@ I seguenti collegamenti sono in lingua inglese:
 "qbpageoptions"		=> "Opzioni pagina",
 "qbpageinfo"		=> "Informazioni sulla pagina",
 "qbmyoptions"		=> "Le mie pagine",
+"qbspecialpages"	=> "Pagine speciali",
+"moredotdotdot"		=> "Altro...",
 "mypage"		=> "La mia pagina",
 "mytalk"		=> "Le mie discussioni",
 "anontalk"		=> "Discussioni per questo IP",
@@ -173,8 +177,9 @@ I seguenti collegamenti sono in lingua inglese:
 "imagepage" => 	"Vedi la pagina di descrizione dell'immagine",
 "viewtalkpage" => "Vedi la pagina di discussione",
 "otherlanguages" => "Altre lingue",
-"redirectedfrom" => "(Rinvio da $1)",
-"redirectpagesub" => "Pagina di rinvio",
+"redirectedfrom" => "(Redirect da $1)",
+"autoredircomment" => "Redirect alla pagina [[$1]]",
+"redirectpagesub" => "Pagina di redirect",
 "lastmodified"	=> "Ultima modifica per la pagina: $1.",
 "viewcount"		=> "Questa pagina è stata letta {{plural:$1|una volta|$1 volte}}.",
 "copyright"	=> "Contenuti soggetti a licenza d'uso $1.",
@@ -207,6 +212,7 @@ Vedi $1.",
 "newmessageslink" => "nuovi messaggi",
 "newmessagesdifflink" => "differenza con la revisione precedente",
 "editsection"	=> "modifica",
+"editold"	=> "modifica",
 "editsectionhint" => "Modifica la sezione $1",
 "toc" => "Indice",
 "showtoc" => "mostra",
@@ -215,6 +221,7 @@ Vedi $1.",
 "viewdeleted" => "Vedi $1?",
 "restorelink" => "{{PLURAL:$1|una modifica cancellata|$1 modifiche cancellate}}",
 "feedlinks" => "Feed:",
+"feed-invalid" => "Modalità di sottoscrizione del feed non valida.",
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main' => 'Voce',
@@ -245,7 +252,7 @@ L\'ultima query inviata al database è stata:
 <blockquote><tt>$1</tt></blockquote>
 richiamata dalla funzione "<tt>$2</tt>".
 MySQL ha restituito il seguente errore "<tt>$3: $4</tt>".',
-"dberrortextc1"	=> 'Errore di sintassi nella richiesta inoltrata al database.
+"dberrortextcl"	=> 'Errore di sintassi nella richiesta inoltrata al database.
 L\'ultima query inviata al database è stata:
 "$1"
 richiamata dalla funzione "$2".
@@ -256,7 +263,7 @@ MySQL ha restituito il seguente errore "$3: $4".',
 "laggedslavemode"   => "Attenzione: La pagina potrebbe non riportare gli aggiornamenti più recenti.",
 "readonly"		=> "Database bloccato",
 "enterlockreason" => "Indica il motivo del blocco, specificando il momento in cui è presumibile che venga rimosso.",
-"readonlytext"	=> "In questo momento il database è bloccato e non sono possibili aggunte o modifiche alle pagine. Il blocco è di solito legato a operazioni di manutenzione ordinaria, al termine delle quali il database è di nuovo accessibile.
+"readonlytext"	=> "In questo momento il database è bloccato e non sono possibili aggiunte o modifiche alle pagine. Il blocco è di solito legato a operazioni di manutenzione ordinaria, al termine delle quali il database è di nuovo accessibile.
 
 L'amministratore di sistema che ha imposto il blocco ha fornito questa spiegazione: $1",
 "missingarticle" => "Il database non ha trovato il testo della pagina dal titolo \"$1\", che avrebbe dovuto essere presente.
@@ -348,12 +355,15 @@ L'account è stato creato correttamente. Non dimenticare di personalizzare le pr
 "loginsuccesstitle" => "Accesso effettuato",
 "loginsuccess"	=> "'''Il collegamento al server di {{SITENAME}} con il nome utente \"$1\" è attivo.'''",
 "nosuchuser"	=> "Non è registrato alcun utente di nome \"$1\". Verificare il nome inserito o creare un nuovo accesso.",
+"nosuchusershort"	=> "Non è registrato alcun utente di nome \"$1\". Verificare il nome inserito.",
+"nouserspecified"	=> "È necessario specificare un nome utente.",
 "wrongpassword"	=> "La password inserita non è corretta. Riprovare.",
-"wrongpasswordentry"	=> "La password inserita è vuota. Riprovare.",
+"wrongpasswordempty"	=> "La password inserita è vuota. Riprovare.",
 "mailmypassword" => "Invia password via e-mail",
 "passwordremindertitle" => "Servizio Password Reminder di {{SITENAME}}",
-"passwordremindertext" => "Qualcuno (probabilmente tu, con indirizzo IP $1) ha richiesto l'invio di una nuova password di accesso a {{SITENAME}}.
-La password per l'utente \"$2\" è stata impostata a \"$3\". È opportuno che tu esegua un accesso quanto prima e cambi la password immediatamente.
+"passwordremindertext" => "Qualcuno (probabilmente tu, con indirizzo IP $1) ha richiesto l'invio di una nuova password di accesso a {{SITENAME}} ($4).
+La password per l'utente \"$2\" è stata impostata a \"$3\". 
+È opportuno eseguire un accesso quanto prima e cambiare la password immediatamente.
 
 Se non sei stato tu a fare la richiesta, oppure hai ritrovato la password e non desideri più cambiarla, puoi ignorare questo messaggio e continuare a usare la vecchia password.",
 "noemail"		=> "Nessun indirizzo e-mail registrato per l'utente \"$1\".",
@@ -459,9 +469,9 @@ Premendo il pulsante 'Salva la pagina', verrà salvato <b>solo</b> il testo cont
 "editingold"	=> "<strong>Attenzione: si sta modificando una versione non aggiornata della pagina.<br />
 Se si sceglie di salvarla, tutti i cambiamenti apportati dopo questa revisione andranno perduti.</strong>",
 "yourdiff"		=> "Differenze",
-/*"copyrightwarning" => "Nota: tutti i contributi a {{SITENAME}} si considerano rilasciati nei termini della licenza d'uso $2 (vedi $1 per maggiori dettagli). Se non desideri che i tuoi testi possano essere modificati e ridistribuiti da chiunque senza alcuna limitazione, non inviarli a {{SITENAME}}.<br />
+"copyrightwarning" => "Nota: tutti i contributi a {{SITENAME}} si considerano rilasciati nei termini della licenza d'uso $2 (vedi $1 per maggiori dettagli). Se non desideri che i tuoi testi possano essere modificati e ridistribuiti da chiunque senza alcuna limitazione, non inviarli a {{SITENAME}}.<br />
 Con l'invio del testo dichiari inoltre, sotto la tua responsabilità, che il testo è stato scritto da te personalmente oppure che è stato copiato da una fonte di pubblico dominio o analogamente libera.
-<strong>NON INVIARE MATERIALE COPERTO DA DIRITTO DI AUTORE SENZA AUTORIZZAZIONE!</strong>",*/
+<strong>NON INVIARE MATERIALE COPERTO DA DIRITTO DI AUTORE SENZA AUTORIZZAZIONE!</strong>",
 "copyrightwarning2" => "Nota: tutti i contributi inviati a {{SITENAME}} possono essere modificati, stravolti o cancellati da parte degli altri partecipanti. Se non desideri che i tuoi testi possano essere modificati senza alcun riguardo, non inviarli a questo sito.<br />
 Con l'invio del testo dichiari inoltre, sotto la tua responsabilità, che il testo è stato scritto da te personalmente oppure che è stato copiato da una fonte di pubblico dominio o analogamente libera. (vedi $1 per maggiori dettagli)
 <strong>NON INVIARE MATERIALE COPERTO DA DIRITTO DI AUTORE SENZA AUTORIZZAZIONE!</strong>",
@@ -471,7 +481,7 @@ Con l'invio del testo dichiari inoltre, sotto la tua responsabilità, che il tes
 "protectedpagewarning" => "<strong>ATTENZIONE: Questa pagina è stata bloccata in modo che solo gli utenti con privilegi di amministratore possano modificarla. Si prega di seguire le [[{{ns:project}}:Linee guida sulla protezione delle pagine|linee guida sulla protezione delle pagine]].</strong>",
 "semiprotectedpagewarning" => "'''Nota:''' Questa pagina è stata bloccata in modo che solo gli utenti registrati possano modificarla.",
 "templatesused"	=> "Template utilizzati da questa pagina:",
-"edittools" => "<!-- Testo che appare al di sotto del modulo di modifica e di upload. -->",
+#"edittools"	=> "<!-- Testo che appare al di sotto del modulo di modifica e di upload. -->"
 "nocreatetitle" => "Creazione delle pagine limitata",
 "nocreatetext" => "Questo sito ha limitato la possibilità di creare nuove pagine ai soli utenti registrati. È possibile tornare indietro e modificare una pagina esistente, oppure [[Speciale:Userlogin|entrare o creare un nuovo accesso]].",
 
@@ -503,14 +513,19 @@ Legenda: (corr) = differenze con la versione corrente, (prec) = differenze con l
 "rev-deleted-user" => "(nome utente rimosso)",
 "rev-deleted-text-permission" => '<div class="mw-warning plainlinks">
 Questa versione della pagina è stata rimossa dagli archivi visibili al pubblico.
-Si veda il [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.
+Consultare il [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.
 </div>',
 "rev-deleted-text-view" => '<div class="mw-warning plainlinks">
 Questa versione della pagina è stata rimossa dagli archivi visibili al pubblico.
 Il testo può essere visualizzato soltanto dagli amministratori del sito.
-Si veda il [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.
+Consultare il [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.
 </div>',
 "rev-delundel" => "mostra/nascondi",
+
+"history-feed-title" => "Cronologia",
+"history-feed-description"	=> "Cronologia della pagina su questo sito",
+"history-feed-item-nocomment" => "$1 il $2", # user at time
+"history-feed-empty" => "La pagina richiesta non esiste; potrebbe essere stata cancellata dal sito o rinominata. Verificare con la [[Special:Search|pagina di ricerca]] se vi sono nuove pagine.",
 
 # Revision deletion
 #
@@ -546,6 +561,7 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 "badquery"		=> "Richiesta mal posta",
 "badquerytext"	=> "Impossibile elaborare la richiesta. Questo potrebbe dipendere dall'aver cercato una parola più corta di 4 caratteri, il che al momento è impossibile, oppure da una errore nella forma della richiesta, ad esempio \"pesce and and azzurro\". Per favore, riprova.",
 "matchtotals"	=> "La ricerca di \"$1\" ha trovato $2 riscontri nel titolo e $3 riscontri nel testo.",
+"noexactmatch" => "'''La pagina \"$1\" non esiste.''' È possibile [[:$1|crearla ora]].",
 "titlematches"	=> "Corrispondenze nel titolo delle pagine",
 "notitlematches" => "Nessuna corrispondenza nei titoli delle pagine",
 "textmatches"	=> "Corrispondenze nel testo delle pagine",
@@ -647,400 +663,1131 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 
 # Recent changes
 #
-"recentchanges" => "Ultime Modifiche",
-"rcloaderr"		=> "Caricamento modifiche recenti",
+"changes" => "modifiche",
+"recentchanges" => "Ultime modifiche",
+"recentchangestext"	=> "Questa pagina presenta le ultime modifiche apportate ai contenuti del sito.",
 "rcnote"		=> "Di seguito sono elencate le <strong>$1</strong> modifiche più recenti apportate negli ultimi <strong>$2</strong> giorni, aggiornate a $3.",
-"rcnotefrom"	=> " Qui di seguito sono elencate le modifiche da <b>$2</b> (fino a <b>$1</b>).",
-"rclistfrom"	=> "Mostra modifiche a partire da $1",
+"rcnotefrom"	=> "Di seguito sono elencate le modifiche apportate a partire da <b>$2</b> (fino a <b>$1</b>).",
+"rclistfrom"	=> "Mostra le modifiche apportate a partire da $1",
+"rcshowhideminor"	=> "$1 le modifiche minori",
+"rcshowhidebots"	=> "$1 i bot",
+"rcshowhideliu"	=> "$1 gli utenti registrati",
+"rcshowhideanons"	=> "$1 gli utenti anonimi",
+"rcshowhidepatr"	=> "$1 le modifiche controllate",
+"rcshowhidemine"	=> "$1 le mie modifiche",
 "rclinks"		=> "Mostra le $1 modifiche più recenti apportate negli ultimi $2 giorni<br />$3",
-"rchide"		=> "in $4 form; $1 modifiche minori; $2 namespaces secondari; $3 modifiche multiple.",
 "diff"			=> "diff",
 "hist"			=> "cron",
 "hide"			=> "nascondi",
 "show"			=> "mostra",
-"tableform"		=> "tabella",
-"listform"		=> "elenco",
-"nchanges"		=> "$1 modifiche",
 "minoreditletter" => "m",
 "newpageletter" => "N",
+"sectionlink" => "→",
+"number_of_watching_users_RCview" 	=> "[$1]",
+"number_of_watching_users_pageview" 	=> "[osservata da $1 utenti]",
+"rc_categories"	=> "Limita alle categorie (separate da \"|\")",
+"rc_categories_any"	=> "Qualsiasi",
 
 # Upload
 #
-"upload"		=> "Upload",
-"uploadbtn"		=> "Upload",
-"reupload"		=> "Ri-upload",
-"reuploaddesc"	=> "Torna al modulo per lo upload.",
-"uploadnologin" => "Devi fare il login per eseguire questa operazione.",
-"uploadnologintext"	=> "Devi eseguire [[Special:Userlogin|il login]]
-per fare lo upload di files.",
-"uploaderror"	=> "Errore di Upload",
-"uploadtext"	=> "'''FERMA!''' Prima di effettuare un upload su {{SITENAME}}, accertati di avere ben letto e soprattutto compreso
-[[Project:Image_use_policy|le regole di {{SITENAME}} sull'uso delle immagini]].
+"upload"		=> "Carica un file",
+"uploadbtn"		=> "Carica",
+"reupload"		=> "Carica di nuovo",
+"reuploaddesc"	=> "Torna al modulo per il caricamento.",
+"uploadnologin" => "Accesso non effettuato",
+"uploadnologintext"	=> "Il caricamento dei file è consentito solo agli utenti registrati che hanno eseguito [[Special:Userlogin|l'accesso]] al sito.",
+"upload_directory_read_only" => "Il server web non è in grado di scrivere nella directory di upload ($1).",
+"uploaderror"	=> "Errore nel caricamento",
+"uploadtext"	=> "Usare il modulo sottostante per caricare nuovi file. Per visualizzare o ricercare i file già caricati, consultare il [[Special:Imagelist|log dei file caricati]]. Caricamenti e cancellazioni di file sono registrati nel [[Special:Log/upload|log degli upload]].
 
-Per visualizzare o cercare immagini precedentemente caricate su {{SITENAME}}, vai alla [[Special:Imagelistlista delle immagini già caricate]].
-Uploads e cancellazioni delle immagini sono registrati nello
-[[Project:Upload_log|upload log]].
-
-Usa il modulo sottostante per caricare nuovi files immagine da utilizzare per arricchire ed illustrare i tuoi articoli.
-Sulla maggior parte dei browsers, dovresti vedere un bottone con la scritta \"Browse...\" (oppure \"Sfoglia...\", che aprirà una comune finestra di dialogo.<br />
-Scegliendo uno dei files sul tuo PC, il nome di questo file verrà scritto in automatico nella casella di testo a fianco al bottone.<p>
-'''Devi anche selezionare la casellina nella quale affermi che con questo upload non stai violando nessun copyright.'''
-
-Premi poi il bottone \"Upload\" per completare il caricamento.
-Il caricamento può richiedere qualche minuto se hai una connessione ad Internet lenta, o se l'immagine è eccessivamente pesante (sconsigliato).
-
-I formati immagine preferibili sono il JPEG per immagini fotografiche, il PNG
-per disegni ed altre immagini iconiche o simboliche, l' OGG per i suoni.
-Per cortesia, rinomina i tuoi files, prima di caricarli, usando un nome il più possibile descrittivo del contenuto, così da evitare confusioni.
-Per inserire poi la nuova immagine in un articolo, usa semplicemente un link nella forma
-'''<nowiki>[[image:file.jpg]]</nowiki>''' o
-'''<nowiki>[[image:file.png|alt text, testo alternativo]]</nowiki>''' o
-'''<nowiki>[[media:file.ogg]]</nowiki>''' per i suoni.
-
-Tieni presente che, come per tutte le pagine di {{SITENAME}}, chiunque può modificare o sostituire o cancellare i tuoi files ove ritenga che ciò sia negli interessi della nostra enciclopedia. Tieni anche presente che, in caso di abuso, o di sovraccarico sul sistema, potresti essere bloccato (oltre ad essere perseguito per le connesse responsabilità).",
-"uploadlogpagetext" => "Qui di seguito la lista degli ultimi files caricati sul server di {{SITENAME}}.
-Tutti i tempi indicati sono calcolati sul fuso orario del server (UTC).
-<ul>
-</ul>",
-'filename'		=> 'Nome del file',
-'filedesc'		=> 'Oggetto',
-'copyrightpage' => '{{ns:project}}:Copyrights',
-'copyrightpagename' => '{{SITENAME}} copyright',
-'uploadedfiles'	=> 'Files Caricati in {{SITENAME}}',
-"minlength"		=> "I nomi dei file immagine debbono essere lunghi almeno tre caratteri, ma è preferibile usare nomi lumghi, purché descrittìvi.",
-"badfilename"	=> "Il nome del file immagine è stato convertito in \"$1\".",
-"badfiletype"	=> "\".$1\" non è un tipo di file raccomandato per le immagini, almeno ai nostri fini.",
-"largefile"		=> "Si raccomanda di non superare le dimensioni di $1 byte per ciascuna immagine; questa immagine è grande $2 byte.",
+Per inserire un'immagine in una pagina, fare un collegamento di questo tipo:
+'''<nowiki>[[{{ns:6}}:file.jpg]]</nowiki>''' o
+'''<nowiki>[[{{ns:6}}:file.png|testo alternativo]]</nowiki>'''; usare invece
+'''<nowiki>[[{{ns:-2}}:file.ogg]]</nowiki>''' per collegare direttamente gli altri tipi di file.",
+"uploadlog" => "File caricati",
+"uploadlogpage" => "Log dei file caricati",
+"uploadlogpagetext" => "Elenco degli ultimi file caricati sul server di {{SITENAME}}.",
+"filename"		=> "Nome del file",
+"filedesc"		=> "Dettagli",
+"fileuploadsummary" => "Dettagli del file:",
+"filestatus" => "Informazioni sul copyright",
+"filesource" => "Fonte",
+"copyrightpage" => "{{ns:project}}:Copyright",
+"copyrightpagename" => "Il copyright su {{SITENAME}}",
+"uploadedfiles"	=> "Elenco dei file caricati",
+"ignorewarning"	=> "Ignora l'avvertimento e salva comunque il file.",
+"ignorewarnings"	=> "Ignora i messaggi di avvertimento del sistema",
+"minlength"		=> "I nomi dei file devono essere lunghi almeno tre caratteri.",
+"illegalfilename"	=> "Il nome \"$1\" contiene dei caratteri non ammessi nei titoli delle pagine. Dare al file un nome diverso e provare a caricarlo di nuovo.",
+"badfilename"	=> "Il nome del file è stato convertito in \"$1\".",
+"badfiletype"	=> "\".$1\" non è tra i tipi di file raccomandati per le immagini.",
+"largefile"		=> "Si raccomanda di non superare le dimensioni di $1 byte per ciascun file; questo file è grande $2 byte.",
+"largefileserver"	=> "Il file supera le dimensioni consentite dalla configurazione del server.",
+"emptyfile"	=> "Il file appena caricato sembra essere vuoto. Ciò potrebbe essere dovuto ad un errore nel nome del file. Verificare che si intenda realmente caricare questo file.",
+"fileexists"	=> "Un file con questo nome esiste già. Verificare prima $1 se non si è sicuri di volerlo sovrascrivere.",
+"fileexists-forbidden"	=> "Un file con questo nome esiste già. Tornare indietro e modificare il nome con il quale caricare il file. [[Image:$1|thumb|center|$1]]",
+"fileexists-shared-forbidden"	=> "Un file con questo nome esiste già nell'archivio di risorse multimediali condivise. Tornare indietro e modificare il nome con il quale caricare il file. [[Image:$1|thumb|center|$1]]",
 "successfulupload" => "Caricamento completato",
-"fileuploaded"	=> "File \"$1\" correttamente caricato sul server.
-Segui questo link: ($2) per modificare la pagina di descrizione del file che hai appena caricato, e immetti subito le informazioni che ritieni opportune (cosa rappresenta, dove lo hai trovato, chi lo ha creato e quando, etc) oltre ad una nota circa la situazione di copyright sul file.<br />Non omettere la nota sul copyright, o il file verrebbe cancellato molto presto.",
+"fileuploaded"	=> "Il file \"$1\" è stato caricato correttamente sul server.
+Seguire il collegamento: $2 per modificare la pagina di descrizione del file appena caricato, indicandone la fonte, l'autore, la data di creazione e ogni altra informazione di cui si sia in possesso. Se si tratta di un'immagine, la si può inserire nelle pagine con il comando: <tt><nowiki>[[{{ns:Image}}:$1|thumb|Descrizione]]</nowiki></tt>.",
 "uploadwarning" => "Avviso di Upload",
 "savefile"		=> "Salva file",
-"uploadedimage" => "caricato \"[[$1]]\"",
+"uploadedimage" => "ha caricato \"[[$1]]\"",
+"uploaddisabled" => "Upload non attivo",
+"uploaddisabledtext" => "Il caricamento dei file non è attivo su questo sito.",
+"uploadscripted" => "Questo file contiene codice HTML o di script, che potrebbe essere interpretato erroneamente da un browser web.",
+"uploadcorrupt" => "Il file è corrotto o ha un'estensione non corretta. Controllare il file e provare di nuovo il caricamento.",
+"uploadvirus" => "Questo file contiene un virus! Dettagli: $1",
+"sourcefilename" => "Nome del file di origine",
+"destfilename" => "Nome del file di destinazione",
+"filewasdeleted" => "Un file con questo nome è stato già caricato e cancellato in passato. Verificare $1 prima di caricarlo di nuovo.",
+
+"license" => "Licenza d'uso",
+"nolicense" => "Nessuna licenza indicata",
 
 # Image list
 #
-"imagelist"		=> "Lista delle immagini",
-"imagelisttext"	=> "Qui di seguito una lista di $1 immagini, ordinate per $2.",
-"getimagelist"	=> "ricerca nella lista delle immagini",
-"ilsubmit"		=> "Cerca",
-"showlast"		=> "Lista di $1, fra le ultime immagini, ordinate per $2.",
+"imagelist"		=> "Elenco dei file",
+"imagelisttext"	=> "Di seguito viene presentata una lista di <strong>$1</strong> file ordinati per <strong>$2</strong>.",
+"imagelistforuser" => "L'elenco mostra solo i file caricati da $1.",
+"getimagelist"	=> "caricamento elenco file",
+"ilsubmit"		=> "Ricerca",
+"showlast"		=> "Mostra gli ultimi $1 file ordinati per $2.",
 "byname"		=> "nome",
 "bydate"		=> "data",
-"bysize"		=> "peso",
+"bysize"		=> "dimensione",
 "imgdelete"		=> "canc",
 "imgdesc"		=> "desc",
-"imglegend"		=> "Legenda: (desc) = mostra/modifica descrizione immagine.",
-"imghistory"	=> "Storia di questa immagine",
+"imglegend"		=> "Legenda: (desc) = visualizza e modifica la descrizione del file.",
+"imghistory"	=> "Cronologia del file",
 "revertimg"		=> "ripr",
 "deleteimg"		=> "canc",
 "deleteimgcompletely"		=> "canc",
 "imghistlegend" => "Legenda: (cur) = immagine corrente, (canc) = cancella questa vecchia versione, (ripr) = ripristina questa vecchia versione come versione attuale.
-<br /><i>Clicca su una data per vedere tutte le immagini che sono state caricate in quella data </i>.",
-"imagelinks"	=> "Link alle immagini",
-"linkstoimage"	=> "Le pagine seguenti linkano questa immagine:",
-"nolinkstoimage" => "Nessuna pagina linka questa immagine.",
+<br /><i>Fare clic su una data per vedere tutte le immagini che sono state caricate in quella data </i>.",
+"imagelinks"	=> "Collegamenti all'immagine",
+"linkstoimage"	=> "Pagine che contengono collegamenti all'immagine:",
+"nolinkstoimage" => "Nessuna pagina contiene collegamenti all'immagine.",
+"sharedupload" => "Questo file è un upload condiviso; può essere quindi utilizzato da più progetti wiki.",
+"shareduploadwiki" => "Si veda $1 per ulteriori informazioni.",
+"shareduploadwiki-linktext" => "la relativa pagina di descrizione",
+"noimage"       => "Un file con questo nome non esiste; $1?",
+"noimage-linktext"       => "caricarlo ora",
+"uploadnewversion-linktext" => "Carica una nuova versione di questo file",
 
 # Mime search
 #
+"mimesearch" => "Ricerca in base al tipo MIME",
+"mimetype" => "Tipo MIME:",
+"download" => "download",
 
 # Unwatchedpages
 #
+"unwatchedpages" => "Pagine non osservate",
 
 # List redirects
+"listredirects" => "Elenco dei redirect",
 
 # Unused templates
+"unusedtemplates" => "Template non utilizzati",
+"unusedtemplatestext" => "In questa pagina vengono elencati tutti i template (pagine del namespace Template) che non sono inclusi in nessuna pagina. Prima di cancellarli è opportuno verificare che i singoli template non abbiano altri collegamenti entranti.",
+'unusedtemplateswlh' => "altri collegamenti",
 
 # Random redirect
+"randomredirect" => "Un redirect a caso",
 
 # Statistics
 #
 "statistics"	=> "Statistiche",
-"sitestats"		=> "Statistiche del sito",
-"userstats"		=> "Statistiche del {{SITENAME}}",
-"sitestatstext" => "Il database contiene '''$1''' pagine.
-Questa cifra comprende le pagine di discussione, quelle di servizio di {{SITENAME}}, le voci più esigue (\"stub\"), i redirect e altre pagine che probabilmente non vanno considerate tra i contenuti del sito. Escludendo le pagine sopra descritte, ve ne sono '''$2''' di contenuti veri e propri.
+"sitestats"		=> "Statistiche relative a {{SITENAME}}",
+"userstats"	=> "Statistiche relative agli utenti",
+"sitestatstext" => "Il database contiene complessivamente '''$1''' pagine.
+Questa cifra comprende anche le pagine di discussione, quelle di servizio di {{SITENAME}}, le voci più esigue (\"stub\"), i redirect e altre pagine che probabilmente non vanno considerate tra i contenuti del sito. Escludendo le pagine sopra descritte, ve ne sono '''$2''' di contenuti veri e propri.
 
 Sono stati inoltre caricati '''$8''' file.
 
-Dall'installazione del sito sino a questo momento sono state richieste '''$3''' pagine ed eseguite '''$4''' modifiche, pari a una media di '''$5''' modifiche per pagina e '''$6''' richieste di lettura per ciascuna modifica.
+Dall'installazione del sito sino a questo momento sono state visitate '''$3''' pagine ed eseguite '''$4''' modifiche, pari a una media di '''$5''' modifiche per pagina e '''$6''' richieste di lettura per ciascuna modifica.
 
 La [http://meta.wikimedia.org/wiki/Help:Job_queue coda] contiene '''$7''' processi.",
 "userstatstext" => "In questo momento vi sono '''$1''' utenti registrati, dei quali '''$2''' (pari al '''$4%''') sono amministratori (vedi $3).",
 
-"doubleredirects"	=> "Doppi Redirects",
-"doubleredirectstext"	=> "<b>Attenzione:</b> Questa lista può talvolta contenere dei risultati non corretti. Ciò potrebbe magari accadere perchè vi sono del testo aggiuntivo o dei link dopo il tag #REDIRECT.<br />\nOgni riga contiene i link al primo ed al secondo redirect, oltre alla prima riga di testo del secondo redirect che di solito contiene il \"reale\" articolo di destinazione, quello al quale anche il primo redirect dovrebbe puntare.",
-"brokenredirects"	=> "Redirects errati",
-"brokenredirectstext"	=> "I seguenti redirects puntano ad articoli non ancora creati.",
+"disambiguations"	=> "Pagine di disambigua",
+"disambiguationspage"	=> "Template:Disambigua",
+"disambiguationstext"	=> "Le pagine nella lista che segue contengono dei collegamenti a <i>pagine di disambigua</i> piuttosto che all'argomento corretto cui fanno riferimento.<br />Sono considerate pagine di disambigua tutte quelle che contengono collegamenti al $1.<br />I collegamenti da altri namespace <i>non</i> sono considerati nella lista che segue.",
+
+"doubleredirects"	=> "Redirect doppi",
+"doubleredirectstext"	=> "<b>Attenzione:</b> Questa lista può contenere risultati errati, ed esempio nel caso in cui il comando #REDIRECT sia seguito da altro testo o collegamenti.<br />\nCiascuna riga contiene i collegamenti al primo ed al secondo redirect, oltre alla prima riga di testo del secondo redirect che di solito contiene la pagina di destinazione\"corretta\" alla quale dovrebbe puntare anche il primo redirect.",
+"brokenredirects"	=> "Redirect errati",
+"brokenredirectstext"	=> "I seguenti redirect puntano a pagine inesistenti.",
 
 # Miscellaneous special pages
 #
-'nviews'		=> '$1 visite',
+"nbytes"		=> "$1 byte",
+"ncategories"		=> "$1 {{PLURAL:$1|categoria|categorie}}",
+"nlinks"		=> "$1 {{PLURAL:$1|collegamento|collegamenti}}",
+"nmembers"		=> "$1 {{PLURAL:$1|elemento|elementi}}",
+"nrevisions"		=> "$1 {{PLURAL:$1|revisione|revisioni}}",
+"nviews"		=> "$1 {{PLURAL:$1|visita|visite}}",
 
-'lonelypages'	=> 'Pagine solitarie',
-'unusedimages'	=> 'Immagini non utilizzate',
-'popularpages'	=> 'Pagine più viste',
-'wantedpages'	=> 'Articoli più richiesti',
-'allpages'		=> 'Tutte le pagine',
-'randompage'	=> 'Una pagina a caso',
-'shortpages'	=> 'Pagine corte',
-'longpages'		=> 'Pagine lunghe',
-'listusers'		=> 'Elenco degli Utenti',
-'specialpages'	=> 'Pagine speciali',
-'spheading'		=> 'Pagine speciali',
-'recentchangeslinked' => 'Modifiche correlate',
-"rclsub"		=> "(alle pagine linkate da \"$1\")",
-"newpages"		=> "Pagine nuove",
+"lonelypages"	=> "Pagine orfane",
+"uncategorizedpages"	=> "Pagine prive di categorie",
+"uncategorizedcategories"	=> "Categorie prive di categorie",
+"unusedcategories" => "Categorie non utilizzate",
+"unusedimages"	=> "File non utilizzati",
+"popularpages"	=> "Pagine più visitate",
+"wantedcategories" => "Categorie richieste",
+"wantedpages"	=> "Pagine più richieste",
+"mostlinked"	=> "Pagine più richiamate",
+"mostlinkedcategories" => "Categorie più richiamate",
+"mostcategories" => "Voci con più categorie",
+"mostimages"	=> "Immagini più richiamate",
+"allpages"		=> "Tutte le pagine",
+"mostrevisions" => "Voci con più revisioni",
+"prefixindex"   => "Indice delle voci per lettere iniziali",
+"randompage"	=> "Una pagina a caso",
+"shortpages"	=> "Pagine più corte",
+"longpages"		=> "Pagine più lunghe",
+"deadendpages"  => "Pagine senza uscita",
+"listusers"		=> "Elenco degli utenti",
+"specialpages"	=> "Pagine speciali",
+"spheading"		=> "Pagine speciali non riservate",
+"restrictedpheading"	=> "Pagine speciali riservate",
+"recentchangeslinked" => "Modifiche correlate",
+"rclsub"		=> "(alle pagine collegate a \"$1\")",
+"newpages"		=> "Pagine più recenti",
+"ancientpages"		=> "Pagine meno recenti",
+"intl"		=> "Collegamenti tra lingue diverse",
+"move"	=> "Sposta",
 "movethispage"	=> "Sposta questa pagina",
-"unusedimagestext" => "<p>Nota che altri siti web, come la {{SITENAME}} internazionale, potrebbero aver messo un link ad una immagine per mezzo di una URL diretta, perciò le immagini potrebbero essere listate qui, essendo inutilizzate in questa versione di {{SITENAME}}, anche essendo magari in uso altrove.",
+"unusedimagestext" => "<p>Si noti che è possibile realizzare collegamenti ai file da altri siti, usando direttamente la URL; questi potrebbero quindi essere utilizzati anche se compaiono nell'elenco.",
+"unusedcategoriestext" => "Le pagine delle categorie indicate di seguito sono state create ma non contengono nessuna pagina né sottocategoria.",
+
+"booksources"	=> "Fonti librarie",
+"categoriespagetext" => "Elenco completo delle categorie presenti sul sito.",
+"data"	=> "Dati",
+"userrights" => "Gestione dei permessi relativi agli utenti",
+"groups" => "Gruppi di utenti",
+
+"booksourcetext" => "Di seguito viene presentata una lista di siti che vendono libri nuovi e usati, attraverso i quali è possibile ottenere maggiori informazioni sul libro che si sta cercando.",
+"isbn"	=> 'ISBN',
+"alphaindexline" => "da $1 a $2",
+"version"		=> "Versione",
+"log"		=> "Log",
+"alllogstext"	=> "Presentazione unificata dei log relativi alle operazioni di caricamento, cancellazione, protezione, blocco e amministrazione del sito. Riempiendo gli appositi campi si può limitare la visualizzazione a uno specifico log, nome utente o pagina.",
+"logempty" => "Il log non contiene elementi corrispondenti alla ricerca.",
 
 # Special:Allpages
+"nextpage"	=> "Pagina successiva ($1)",
+"allpagesfrom"	=> "Mostra le pagine a partire da:",
+"allarticles"	=> "Tutte le voci",
+"allnonarticles"	=> "Tutte le pagine tranne le voci",
+"allinnamespace"	=> "Tutte le pagine del namespace $1",
+"allnotinnamespace"	=> "Tutte le pagine, escluso il namespace $1",
+"allpagesprev"	=> "Precedenti",
+"allpagesnext"	=> "Successive",
+"allpagessubmit"	=> "Vai",
+"allpagesprefix"	=> "Mostra le pagine che iniziano con:",
 
 # Email this user
 #
-"mailnologintext" => "Devi fare il  [[Special:Userlogin|login]]
-ed aver registrato una valida casella e-mail nelle tue [[Special:Preferences|preferenze]] per mandare posta elettronica ad altri Utenti.",
-"emailuser"		=> "Manda una E-mail a questo Utente",
-"emailpagetext"	=> "Se questo Utente ha registrato una valida casella e-mail, il modulo qui sotto ti consentirà di scrivergli un solo messaggio.
-La e-mail che hai indicato nelle tue preferenze apparirà nel campo \"From\" della mail, così che il destinatario possa, solo se lo desidera però, risponderti.",
+"mailnologin"	=> "Nessun indirizzo cui inviare il messaggio",
+"mailnologintext" => "Per inviare messaggi e-mail ad altri utenti è necessario [[Special:Userlogin|accedere al sito]] e aver registrato un indirizzo valido nelle proprie [[Special:Preferences|preferenze]].",
+"emailuser"	=> "Scrivi all'utente",
+"emailpage"	=> "Invia un messaggio e-mail all'utente",
+"emailpagetext"	=> "Se l'utente ha registrato un indirizzo e-mail valido nelle proprie preferenze, il modulo qui sotto consente di scrivere allo stesso un solo messaggio. L'indirizzo indicato nelle preferenze del mittente apparirà nel campo \"Da:\" del messaggio per consentire al destinatario l'eventuale risposta.",
+"usermailererror"	=> "L'oggetto mail ha restituito l'errore:",
+"defemailsubject"	=> "Messaggio da {{SITENAME}}",
 "noemailtitle"	=> "Nessun indirizzo e-mail",
-"noemailtext"	=> "Questo Utente non ha registrato alcuna casella e-mail, oppure ha scelto di non ricevere posta elettronica dagli altri Utenti.",
+"noemailtext"	=> "Questo utente non ha indicato un indirizzo e-mail valido, oppure ha scelto di non ricevere messaggi di posta elettronica dagli altri utenti.",
 "emailfrom"		=> "Da",
 "emailto"		=> "A",
 "emailsubject"	=> "Oggetto",
 "emailmessage"	=> "Messaggio",
 "emailsend"		=> "Invia",
-"emailsent"		=> "E-mail inviata",
-"emailsenttext" => "La tua e-mail è stata inviata.",
+"emailsent"		=> "Messaggio inviato",
+"emailsenttext" => "Il messaggio e-mail è stato inviato.",
 
 # Watchlist
 #
-"watchlist"		=> "Osservati Speciali",
-"watchlistsub"	=> "(per l'Utente \"$1\")",
-"nowatchlist"	=> "Non hai indicato articoli da tenere d'occhio.",
-"watchnologin"	=> "Manca il login",
-"watchnologintext"	=> "Devi prima fare il [[Special:Userlogin|login]]
-per modificare la tua lista di osservati speciali.",
-"addedwatch"	=> "Aggiunto ai tuoi Osservati Speciali",
-"addedwatchtext" => " La pagina  \"$1\" è stata aggiunta alla tua <a href=\"" .
-  "{{localurle:Special:Watchlist}}\"> lista di osservati speciali </a>.
-Le future modifiche a questa pagina ed alla relativa pagina di discussione saranno elencate qui, e la pagina apparirà in <b>grassetto</b> nella pagina delle <a href=\"" .
-  "{{localurle:Special:Recentchanges}}\">modifiche recenti</a> per essere più facile da tener d'occhio.</p>
+"watchlist"		=> "Osservati speciali",
+"watchlistsub"	=> "(per l'utente \"$1\")",
+"nowatchlist"	=> "La lista degli osservati speciali è vuota.",
+"watchlistcount"	=> "'''La lista degli osservati speciali contiene $1 elementi (comprese le pagine di discussione).'''",
+"clearwatchlist" 	=> "Svuota la lista degli osservati speciali",
+"watchlistcleartext" => "Conferma la rimozione di tutti gli elementi.",
+"watchlistclearbutton" => "Svuota la lista",
+"watchlistcleardone" => "La lista degli osservati speciali è stata svuotata. Sono stati eliminati $1 elementi.",
+"watchnologin"	=> "Accesso non effettuato",
+"watchnologintext"	=> "Per modificare la lista degli osservati speciali è necessario prima eseguire l' [[Special:Userlogin|accesso al sito]].",
+"addedwatch"	=> "Pagina aggiunta alla lista degli osservati speciali",
+"addedwatchtext" => "La pagina  \"[[:$1]]\" è stata aggiunta alla propria [[Special:Watchlist|lista degli osservati speciali]]. D'ora in poi, le modifiche apportate alla pagina e alla sua discussione verranno elencate in quella sede; il titolo della pagina apparirà in '''grassetto''' nella pagina delle [[Special:Recentchanges|ultime modifiche]] per renderlo più visibile.
 
-<p>Se in seguito vorrai togliere questo articolo dalla tua lista di Osservati Speciali, clicca \" Smetti di seguire \" nella barra dei menu.",
-"removedwatch"	=> "Rimosso dalla lista degli Osservati Speciali",
-"removedwatchtext" => "La pagina  \"$1\" è stata rimossa dalla lista dei tuoi Osservati Speciali.",
-"watchthispage"	=> "Segui questo articolo",
+Se in un secondo tempo si desidera eliminare la pagina dalla lista degli osservati speciali, fare clic su \"non seguire\" nella barra in alto.",
+"removedwatch"	=> "Pagina eliminata dalla lista degli osservati speciali",
+"removedwatchtext" => "La pagina  \"[[:$1]]\" è stata eliminata dalla lista degli osservati speciali.",
+"watch" => "Segui",
+"watchthispage"	=> "Segui questa pagina",
+"unwatch" => "Non seguire",
 "unwatchthispage" => "Smetti di seguire",
-"notanarticle"	=> "Non è un articolo",
+"notanarticle"	=> "Questa pagina non è una voce",
+"watchnochange"	=> "Nessuna delle pagine osservate è stata modificata nel periodo considerato.",
+"watchdetails"	=> "* Nella lista degli osservati speciali ci sono $1 pagine (e le rispettive pagine di discussione).
+* [[Special:Watchlist/edit|Mostra e modifica la lista completa]] delle pagine osservate.
+* [[Special:Watchlist/clear|Svuota la lista]] delle pagine osservate.",
+"wlheader-enotif"	=> "* La notifica via e-mail è attiva.",
+"wlheader-showupdated"	=> "* Le pagine che sono state modificate dopo l'ultima visita sono evidenziate in '''grassetto'''",
+"watchmethod-recent"	=> "controllo delle modifiche recenti per gli osservati speciali",
+"watchmethod-list"	=> "controllo degli osservati speciali per modifiche recenti",
+"removechecked"	=> "Elimina elementi selezionati dalla lista",
+"watchlistcontains"	=> "La lista degli osservati speciali contiene $1 pagine.",
+"watcheditlist"	=> "Di seguito sono elencate tutte le pagine osservate, in ordine alfabetico. Selezionare le caselle relative alle pagine che si desidera eliminare dalla lista e fare clic sul pulsante 'Elimina elementi selezionati dalla lista' in fondo all'elenco per rimuoverle. Quando viene eliminata una pagina dalla lista, anche la corrispondente pagina di discussione cessa di essere osservata (e viceversa).",
+"removingchecked"	=> "Eliminazione degli elementi richiesti dalla lista degli osservati speciali...",
+"couldntremove"	=> "Non è possibile rimuovere la pagina '$1'...",
+"iteminvalidname"	=> "Problemi con la pagina '$1', nome non valido...",
+"wlnote"	=> "Di seguito sono elencate le ultime $1 modifiche, apportate nelle ultime <b>$2</b> ore.",
+"wlshowlast"	=> "Mostra le ultime $1 ore $2 giorni $3",
+"wlsaved"	=> "Questa è una versione salvata della lista personale delle pagine osservate.",
+"wlhideshowown"	=> "$1 le mie modifiche",
+"wlhideshowbots"	=> "$1 modifiche dei bot",
+
+"enotif_mailer"	=> "Sistema di notifica via e-mail di {{SITENAME}}",
+"enotif_reset"	=> "Segna tutte le pagine come già visitate",
+"enotif_newpagetext"	=> "Questa è una nuova pagina.",
+"changed"	=> "modificata",
+"created"	=> "creata",
+"enotif_subject"	=> 'La pagina $PAGETITLE di {{SITENAME}} è stata $CHANGEDORCREATED da $PAGEEDITOR',
+"enotif_lastvisited"	=> "Consulta $1 per vedere tutte le modifiche dalla tua ultima visita.",
+"enotif_body"	=> 'Gentile $WATCHINGUSERNAME,
+
+la pagina $PAGETITLE di {{SITENAME}} è stata $CHANGEDORCREATED in data $PAGEEDITDATE da $PAGEEDITOR; la versione attuale si trova all\'indirizzo $PAGETITLE_URL.
+
+$NEWPAGE
+
+Riassunto della modifica, inserito dall\'autore: $PAGESUMMARY $PAGEMINOREDIT
+
+Contatta l\'autore della modifica:
+via e-mail: $PAGEEDITOR_EMAIL
+sul sito: $PAGEEDITOR_WIKI
+
+Non verranno inviate altre notifiche in caso di ulteriori cambiamenti, a meno che tu non visiti la pagina. Inoltre, è possibile reimpostare l\'avviso di notifica per tutte le pagine nella lista degli osservati speciali.
+
+             Il sistema di notifica di {{SITENAME}}, al tuo servizio
+
+--
+Per modificare le impostazioni della lista degli osservati speciali, visita
+{{SERVER}}{{localurl:Special:Watchlist/edit}}
+
+Per dare il tuo feedback e ricevere ulteriore assistenza:
+{{SERVER}}{{localurl:Aiuto:Aiuto}}',
 
 # Delete/protect/revert
 #
 "deletepage"	=> "Cancella pagina",
 "confirm"		=> "Conferma",
+"excontent"	=> "il contenuto era: '$1'",
+"excontentauthor"	=> "il contenuto era: '$1' (e l'unico contributore era '$2')",
+"exbeforeblank"	=> "Il contenuto prima dello svuotamento era: '$1'",
+"exblank"	=> "la pagina era vuota",
 "confirmdelete" => "Conferma cancellazione",
 "deletesub"		=> "(Cancellazione di \"$1\")",
-"confirmdeletetext" => "Stai per cancellare permanentemente dal database una pagina o una immagine, insieme a tutta la sua cronologia.<p>
-Per cortesia, conferma che è tua intenzione procedere a tale cancellazione, conferma che hai piena consapevolezza delle conseguenze della tua azione, e conferma che la tua azione è pienamente ottemperante alle regole stabilite nella
-[[{{ns:project}}:Policy]].",
+"historywarning"	=> "Attenzione: La pagina che si sta per cancellare ha una cronologia:",
+"confirmdeletetext" => "Stai per cancellare permanentemente dal database una pagina o una immagine, insieme a tutta la sua cronologia. Per cortesia, conferma che è tua intenzione procedere a tale cancellazione, che hai piena consapevolezza delle conseguenze della tua azione e che essa è conforme alle linee guida stabilite in [[{{ns:project}}:Policy]].",
 "actioncomplete" => "Azione completata",
-"deletedtext"	=> "La pagina \"$1\" è stata cancellata.
-Vedi $2 per un elenco delle pagine cancellate di recente.",
-"deletedarticle" => "Cancellata \"$1\"",
-"dellogpagetext" => "Qui di seguito, un elenco delle pagine cancellate di recente.
-Tutti i tempi sono in ora del server (UTC).
-<ul>
-</ul>",
-"reverted"		=> "Ripristinata versione precedente",
-"deletecomment"	=> "Motivazione della cancellazione",
-"imagereverted" => "Versione precedente correttamente ripristinata.",
-"rollback"		=> "Usa una revisione precedente",
-"cantrollback"	=> "Impossibile tornare ad una versione precedente: l'ultima modifica è stata apportata dall'unico utente che abbia lavorato a questo articolo.",
-"revertpage"	=> "Annullate le modifiche di [[Special:Contributions/$2|$2]] ([[User_talk:$2|discussione]]), riportata alla revisione precedente di [[User:$1|$1]]",
+"deletedtext"	=> "La pagina \"$1\" è stata cancellata. Consultare il $2 per un elenco delle pagine cancellate di recente.",
+"deletedarticle" => "ha cancellato \"[[$1]]\"",
+"dellogpage"	=> "Cancellazioni",
+"dellogpagetext" => "Di seguito sono elencate le pagine cancellate di recente.",
+"deletionlog"	=> "Log delle cancellazioni",
+"reverted"		=> "Ripristinata la versione precedente",
+"deletecomment"	=> "Motivo della cancellazione",
+"imagereverted" => "Versione precedente ripristinata correttamente.",
+"rollback"		=> "Annulla le modifiche",
+"rollback_short"		=> "Rollback",
+"rollbacklink"		=> "rollback",
+"rollbackfailed"	=> "Rollback non riuscito",
+"cantrollback"	=> "Impossibile annullare le modifiche; l'utente che le ha effettuate è l'unico ad aver contribuito alla pagina.",
+"alreadyrolled"	=> "Non è possibile annullare le modifiche apportate alla pagina [[$1]] da parte di [[{{ns:User}}:$2|$2]] ([[{{ns:User talk}}:$2|discussione]]); un altro utente ha già modificato la pagina oppure ha effettuato il rollback. 
+
+La modifica più recente alla pagina è stata apportata da [[{{ns:User}}:$3|$3]] ([[{{ns:User talk}}:$3|discussione]]).",
+"editcomment"	=> "Il commento alla modifica era: \"<i>$1</i>\".",
+"revertpage"	=> "Annullate le modifiche di [[Special:Contributions/$2|$2]] ([[{{ns:User talk}}:$2|discussione]]), riportata alla versione precedente di [[{{ns:User}}:$1|$1]]",
+"sessionfailure"	=> "Si è verificato un problema nella sessione che identifica l'accesso; il sistema non ha eseguito il comando impartito per precauzione. Tornare alla pagina precedente con il tasto 'Indietro' del proprio browser, ricaricare la pagina e riprovare.",
+"protectlogpage"	=> "Protezioni",
+"protectlogtext"	=> "Di seguito sono elencate le azioni di protezione e sblocco delle pagine. Si veda [[{{ns:Project}}:Pagina protetta]] per maggiori informazioni.",
+"protectedarticle"	=> "ha protetto \"[[$1]]\"",
+"unprotectedarticle"	=> "ha sbloccato \"[[$1]]\"",
+"protectsub"	=> "(Protezione di \"$1\")",
+"confirmprotecttext"	=> "Proteggere questa pagina?",
+"confirmprotect"	=> "Conferma la protezione",
+"protectmoveonly"	=> "Proteggi solo dallo spostamento",
+"protectcomment"	=> "Motivo della protezione",
+"unprotectsub"	=> "(Sblocco di \"$1\")",
+"confirmunprotecttext"	=> "Sbloccare questa pagina?",
+"confirmunprotect"	=> "Conferma lo sblocco",
+"unprotectcomment"	=> "Motivo dello sblocco",
+"protect-unchain"	=> "Scollega i permessi di spostamento",
+"protect-text"	=> "Questo modulo consente di vedere e modificare il livello di protezione per la pagina <strong>$1</strong>. Si invita a seguire le [[{{ns:project}}:Politica di protezione delle pagine|linee guida per la protezione delle pagine]].",
+"protect-viewtext"	=> "Questo account non ha le autorizzazioni necessarie per modificare il livello di protezione della pagina. Le impostazioni attuali per la pagina <strong>$1</strong> sono:",
+"protect-default"	=> "(predefinito)",
+"protect-level-autoconfirmed"	=> "Solo utenti registrati",
+"protect-level-sysop"	=> "Solo amministratori",
 
 # restrictions (nouns)
+"restriction-edit"	=> "Modifica",
+"restriction-move"	=> "Spostamento",
 
 # Undelete
-"undelete" => "Recupera una pagina cancellata",
-"undeletepage" => "Vedi e recupera pagine cancellate",
-"undeletepagetext" => "Le pagine qui di seguito indicate sono state cancellate, ma sono ancora in archivio e pertanto possono essere recuperate. L'archivio viene svuotato periodicamente.",
-"undeletearticle" => "Recupera un articolo cancellato",
+"undelete" => "Visualizza pagine cancellate",
+"undeletepage" => "Visualizza e recupera le pagine cancellate",
+"viewdeletedpage" => "Visualizza le pagine cancellate",
+"undeletepagetext" => "Le pagine indicate di seguito sono state cancellate, ma sono ancora in archivio e pertanto possono essere recuperate. L'archivio può essere svuotato periodicamente.",
+"undeleteextrahelp" => "Per recuperare l'intera pagina, lasciare tutte le caselle deselezionate e fare clic su '''''Ripristina'''''. Per effettuare un ripristino selettivo, selezionare le caselle corrispondenti alle revisioni da ripristinare e fare clic su '''''Ripristina'''''. Facendo clic su '''''Reset''''' verranno deselezionate tutte le caselle e svuotato lo spazio per il commento.",
+"undeletearticle" => "Recupera una pagina cancellata",
 "undeleterevisions" => "$1 revisioni in archivio",
-"undeletehistory" => "Se recuperi questo articolo, tutte le sue revisioni verranno recuperate nella relativa cronologia.<br />
-Se una nuova pagina è stata creata con questo stesso nome dopo la cancellazione, le revisioni recuperate saranno inserite nella cronologia e la versione attualmente online della pagina non verrà modificata.",
-"undeleterevision" => "Cancellata revisione $1",
-"undeletebtn" => "RIPRISTINA!",
-"undeletedarticle" => "Recuperata \"$1\"",
-"undeletedtext"   => "La pagina [[:$1|$1]] è stata recuperata.
-Vedi [[{{ns:project}}:Deletion_log]] per un elenco delle pagine cancellate e recuperate di recente.",
+"undeletehistory" => "Recuperando questa pagina, tutte le sue revisioni verranno inserite di nuovo nella relativa cronologia. Se dopo la cancellazione è stata creata una nuova pagina con lo stesso titolo, le revisioni recuperate saranno inserite nella cronologia e la versione attualmente online della pagina non verrà modificata.",
+"undeletehistorynoadmin"	=> "La pagina è stata cancellata. Il motivo della cancellazione è indicato di seguito, assieme ai dati degli utenti che avevano modificato la pagina prima della cancellazione. Il testo contenuto nelle revisioni cancellate è disponibile solo agli amministratori.",
+"undeleterevision" => "Revisione cancellata, inserita il $1",
+"undeletebtn" => "Ripristina",
+"undeletereset" => "Reset",
+"undeletecomment"	=> "Commento:",
+"undeletedarticle"	=> "ha recuperato \"[[$1]]\"",
+"undeletedrevisions" => "$1 revisioni recuperate",
+"undeletedpage" => "<big>'''$1 è stata recuperata'''</big>
+
+Consultare il [[Special:Log/delete|log delle cancellazioni]] per vedere le cancellazioni e i recuperi più recenti.",
 
 # Namespace form on various pages
+"namespace" => "Namespace:",
+"invert"	=> "inverti la selezione",
 
 # Contributions
 #
-"contributions"	=> "Contributi di questo Utente",
+"contributions"	=> "Contributi utente",
+"mycontris"	=> "Miei contributi",
 "contribsub"	=> "Per $1",
-"nocontribs"	=> "Nessuna modifica trovata conformemente a questi criteri.",
-"ucnote"		=> "Qui sotto troverai le ultime <b>$1</b> modifiche effettuate da questo Utente negli ultimi <b>$2</b> giorni.",
-"uclinks"		=> "Vedi le ultime $1 modifiche; vedi gli ultimi $2 giorni.",
+"nocontribs"	=> "Non sono state trovate modifiche che soddisfino i criteri di ricerca.",
+"ucnote"		=> "Di seguito sono elencate le <b>$1</b> modifiche più recenti effettuate dall'utente negli ultimi <b>$2</b> giorni.",
+"uclinks"		=> "Mostra le ultime $1 modifiche; mostra gli ultimi $2 giorni.",
 "uctop"		=> " (ultima per la pagina)" ,
+"newbies"       => "nuovi utenti",
+
+"sp-newimages-showfrom"	=> "Mostra le immagini più recenti a partire da $1",
+
+"sp-contributions-newest"	=> "Ultimi",
+"sp-contributions-oldest"	=> "Primi",
+"sp-contributions-newer"	=> "$1 più recenti",
+"sp-contributions-older"	=> "$1 meno recenti",
+"sp-contributions-newbies-sub"	=> "Per i nuovi utenti",
 
 # What links here
 #
-"whatlinkshere"	=> "Pagine che linkano questa",
+"whatlinkshere"	=> "Puntano qui",
 "notargettitle" => "Dati mancanti",
-"notargettext"	=> "Non hai specificato una pagina o un Utente in relazione al quale eseguire l'operazione richiesta.",
-"linklistsub"	=> "(Lista di links)",
-"linkshere"		=> "Le seguenti pagine contengono link che puntano qui:",
-"nolinkshere"	=> "Nessuna pagina contiene links che puntano a questa.",
+"notargettext"	=> "Non è stata indicata una pagina o un utente in relazione al quale eseguire l'operazione richiesta.",
+"linklistsub"	=> "(Lista dei collegamenti)",
+"linkshere"		=> "Le seguenti pagine contengono dei collegamenti a questa:",
+"nolinkshere"	=> "Nessuna pagina contiene collegamenti che puntano a questa.",
 "isredirect"	=> "redirect",
+"istemplate"	=> "inclusione",
 
 # Block/unblock IP
 #
-"blockip"		=> "Blocca indirizzo IP",
-"blockiptext"	=> "Usa il modulo sottostante per bloccare l'accesso con diritto di scrittura da uno specifico indirizzo IP.<br />
-Questo blocco deve essere operato SOLO per prevenire atti di vandalismo, ed in stretta osservanza dei principi tutti della [[{{ns:project}}:Policy|policy di {{SITENAME}}]].<br />Il blocco non può in nessun caso essere applicato per motivi ideologici.<p>
-Scrivi un motivo specifico per il quale questo indirizzo IP dovrebbe a tuo avviso essere bloccato (per esempio, cita i titoli di pagine eventualmente già oggetto di vandalismo editoriale).",
-"ipaddress"		=> "Indirizzo IP (IP Address)",
-"ipbreason"		=> "Motivazione",
-"ipbsubmit"		=> "Blocca questo indirizzo IP",
-"badipaddress"	=> "L'indirizzo IP indicato non è corretto.",
+"blockip"		=> "Blocco utente",
+"blockiptext"	=> "Usare il modulo sottostante per bloccare l'accesso in scrittura ad uno specifico utente o indirizzo IP. Il blocco dev'essere operato per prevenire atti di vandalismo e in stretta osservanza della [[{{ns:project}}:Policy|policy di {{SITENAME}}]]. Specificare in dettaglio il motivo del blocco nel campo seguente (ad es. indicando i titoli delle pagine oggetto di vandalismo).",
+"ipaddress"		=> "Indirizzo IP",
+"ipadressorusername"	=> "Indirizzo IP o nome utente",
+"ipbexpiry"		=> "Scadenza del blocco",
+"ipbreason"		=> "Motivo del blocco",
+"ipbsubmit"		=> "Blocca l'utente",
+"ipbother"	=> "Durata non in elenco",
+"ipboptions"	=> "2 ore:2 hours,1 giorno:1 day,3 giorni:3 days,1 settimana:1 week,2 settimane:2 weeks,1 mese:1 month,3 mesi:3 months,6 mesi:6 months,1 anno:1 year,infinito:infinite",
+"ipbotheroption"	=> "altro",
+"badipaddress"	=> "Indirizzo IP non valido.",
 "blockipsuccesssub" => "Blocco eseguito",
-"blockipsuccesstext" => " L'indirizzo IP \"$1\" è stato bloccato.
-<br />Vedi [[Special:Ipblocklist|lista IP bloccati]].",
-"unblockip"		=> " Sblocca indirizzo IP",
-"unblockiptext"	=> "Usa il modulo sottostante per restituire il diritto di scrittura ad un indirizzo IP precedentemente bloccato.",
-"ipusubmit"		=> "Sblocca questo indirizzo IP",
-"ipusuccess"	=> "Indirizzo IP \"$1\" sbloccato",
-"ipblocklist"	=> "Lista degli indirizzi IP bloccati",
+"blockipsuccesstext" => "[[{{ns:Special}}:Contributions/$1|$1]] è stato bloccato.
+<br />Consultare la [[Special:Ipblocklist|lista degli IP bloccati]] per vedere i blocchi attivi.",
+"unblockip"		=> " Sblocca utente",
+"unblockiptext"	=> "Usare il modulo sottostante per restituire l'accesso in scrittura ad un utente o indirizzo IP bloccato.",
+"ipusubmit"		=> "Sblocca l'utente",
+"ipusuccess"	=> "\"[[$1]]\" è stato sbloccato",
+"ipblocklist"	=> "Lista degli utenti e indirizzi IP bloccati",
 "blocklistline"	=> "$1, $2 ha bloccato $3 ($4)",
+"infiniteblock" => "senza scadenza",
+"expiringblock" => "fino al $1",
+"ipblocklistempty"	=> "La lista dei blocchi è vuota.",
 "blocklink"		=> "blocca",
 "unblocklink"	=> "sblocca",
 "contribslink"	=> "contributi",
+"autoblocker"	=> "Bloccato automaticamente perché l'indirizzo IP è condiviso con l'utente \"[[{{ns:User}}:$1|$1]]\". Il blocco dell'utente $1 è stato imposto per il seguente motivo: \"'''$2'''\".",
+"blocklogpage"	=> "Blocchi",
+"blocklogentry"	=> "ha bloccato \"[[$1]]\" per un periodo di $2",
+"blocklogtext"	=> "Questo è l'elenco delle azioni di blocco e sblocco utenti. Gli indirizzi IP bloccati automaticamente non sono elencati. Consultare l'[[Speciale:Ipblocklist|elenco IP bloccati]] per l'elenco degli indirizzi e nomi utente il cui blocco è operativo.",
+"unblocklogentry"	=> "ha sbloccato $1",
+"range_block_disabled"	=> "La possibilità di bloccare intervalli di indirizzi IP non è attiva al momento.",
+"ipb_expiry_invalid"	=> "Durata o scadenza del blocco non valida.",
+"ip_range_invalid"	=> "Intervallo di indirizzi IP non valido.",
+"proxyblocker"	=> "Blocco dei proxy aperti",
+"proxyblockreason"	=> "Questo indirizzo IP è stato bloccato perché è risulta essere un proxy aperto. Si prega di contattare il proprio fornitore di accesso a Internet o il supporto tecnico e informarli di questo grave problema di sicurezza.",
+"proxyblocksuccess"	=> "Blocco eseguito.",
+"sorbs"	=> "SORBS DNSBL",
+"sorbsreason"	=> "Questo indirizzo IP è elencato come proxy aperto nella blacklist DNSBL di [http://www.sorbs.net SORBS].",
+"sorbs_create_account_reason"	=> "Non è possibile creare nuovi accessi da questo indirizzo IP perché è elencato come proxy aperto nella blacklist DNSBL di [http://www.sorbs.net SORBS].",
 
 # Developer tools
 #
 "lockdb"		=> "Blocca il database",
 "unlockdb"		=> "Sblocca il database",
-"lockdbtext"	=> "Bloccare il database sospenderà la possibilità per tutti gli Utenti di modificare le pagine o di crearne di nuove, di cambiare le loro preferenze, di modificare le loro liste di Osservati Speciali, ed in genere non consentirà a nessuno di eseguire operazioni che richiedano modifiche del database.<br /><br />
-Per cortesia, conferma che questo è effettivamente quanto tu intendi ora effettuare e, soprattutto, che il prima possibile sbloccherai nuovamente il database, ripristinandone la corretta funzionalità, non appena avrai terminato le tue manutenzioni.",
-"unlockdbtext"	=> "Sbloccare il database ripristinerà la possibilità per tutti gli Utenti di modificare le pagine o di crearne di nuove, di cambiare le loro preferenze, di modificare le loro liste di Osservati Speciali, ed in genere di eseguire operazioni che richiedano modifiche del database.
-Per cortesia, conferma che questo è effettivamente quanto tu intendi ora effettuare.",
-"lockconfirm"	=> "Sì, effettivamente intendo, sotto la mia responsabilità, bloccare il database.",
-"unlockconfirm"	=> " Sì, effettivamente intendo, sotto la mia responsabilità, sbloccare il database.",
+"lockdbtext"	=> "Il blocco del database comporta l'interruzione, per tutti gli utenti, della possibilità di modificare le pagine o di crearne di nuove, di cambiare le preferenze e modificare le liste degli osservati speciali, e in generale di tutte le operazioni che richiedono modifiche al database. Per cortesia, conferma che ciò corrisponde effettivamente all'azione da te richiesta e che al termine della manutenzione provvederai allo sblocco del database.",
+"unlockdbtext"	=> "Lo sblocco del database consente di nuovo a tutti gli utenti di modificare le pagine o di crearne di nuove, di cambiare le preferenze e modificare le liste degli osservati speciali, e in generale di compiere tutte le operazioni che richiedono modifiche al database. Per cortesia, conferma che ciò corrisponde effettivamente all'azione da te richiesta.",
+"lockconfirm"	=> "Sì, intendo effettivamente bloccare il database.",
+"unlockconfirm"	=> "Sì, intendo effettivamente sbloccare il database.",
 "lockbtn"		=> "Blocca il database",
 "unlockbtn"		=> "Sblocca il database",
-"locknoconfirm" => "Non hai spuntato la casellina di conferma.",
+"locknoconfirm" => "Non è stata spuntata la casellina di conferma.",
 "lockdbsuccesssub" => "Blocco del database eseguito",
-"unlockdbsuccesssub" => "Sblocco del database eseguito, rimosso blocco",
-"lockdbsuccesstext" => "Il database di {{SITENAME}} è stato bloccato.
-<br />Ricordati di rimuovere il blocco non appena avrai terminatoi le tue manutenzioni.",
-"unlockdbsuccesstext" => " Il database di {{SITENAME}} è stato sbloccato.",
+"unlockdbsuccesssub" => "Sblocco del database eseguito",
+"lockdbsuccesstext" => "Il database è stato bloccato.
+<br />Ricorda di rimuovere il blocco dopo aver terminato le operazioni di manutenzione.",
+"unlockdbsuccesstext" => " Il database è stato sbloccato.",
 
 # Make sysop
+"makesysoptitle"	=> "Rendi amministratore un utente",
+"makesysoptext"	=> "Questo form può essere usato dai burocrati per far diventare amministratori gli utenti che non lo sono. Scrivere il nome dell'utente nella casella e premere il pulsante per farlo diventare amministratore.",
+"makesysopname"	=> "Nome dell'utente:",
+"makesysopsubmit"	=> "Rendi l'utente amministratore",
+"makesysopok"	=> "<b>L'utente \"$1\" è ora amministratore</b>",
+"makesysopfail"	=> "<b>Impossibile far diventare amministratore l'utente \"$1\". Verificare che il nome utente sia stato scritto correttamente.</b>",
+"setbureaucratflag"	=> "Assegna i diritti di burocrate",
+"setstewardflag"	=> "Assegna i diritti di steward",
+"rightslog"	=> "Diritti degli utenti",
+"rightslogtext"	=> "Questo è il log delle modifiche ai diritti assegnati agli utenti.",
+"rightslogentry"	=> "ha modificato l'appartenenza di $1 dal gruppo $2 al gruppo $3",
+"rights"	=> "Diritti:",
+"set_user_rights"	=> "Imposta diritti utente",
+"user_rights_set"	=> "<b>I diritti utente per \"$1\" sono stati aggiornati</b>",
+"set_rights_fail"	=> "<b>Impossibile aggiornare i diritti utente per \"$1\". Verificare che il nome utente sia stato scritto correttamente.</b>",
+"makesysop"	=> "Rendi l'utente amministratore",
+"already_sysop"	=> "Questo utente è già amministratore",
+"already_bureaucrat"	=> "Questo utente è già burocrate",
+"already_steward"	=> "Questo utente è già steward",
+"rightsnone"	=> "(nessuno)",
 
 # Move page
 #
-"movepage"		=> "Spostamento di pagina",
-"movepagetext"	=> "Con il modulo sottostante puoi rinominare una pagina, spostando anche tutta la sua cronologia al nuovo nome.
-Il vecchio titolo diverrà automaticamente un redirect che punta al nuovo titolo.
-I link alla vecchia pagina non saranno aggiornati (e punteranno quindi al redirect); accertati di [[Special:Manutenzioni|controllare con cura]] che non si creino doppi redirects o redirects interrotti.
-Resta nella tua responsabilità di accertarti che i link continuino a puntare verso dove devono dirigersi.
+"movepage"	=> "Spostamento di pagina",
+"movepagetext"	=> "Questo modulo consente di rinominare una pagina, spostando tutta la sua cronologia al nuovo nome. La pagina attuale diverrà automaticamente un redirect al nuovo titolo. I collegamenti esistenti non saranno aggiornati; verificare che lo spostamento non abbia creato doppi redirect o redirect errati. L'onere di garantire che i collegamenti alla pagina restino corretti spetta a chi la sposta.
 
-Nota bene: la pagina '''non''' sarà spostata se vi fosse già un articolo con il nuovo nome, a meno che non sia una pagina vuota o un redirect, e sempre che non abbia cronologia. Questo significa che, se commetti un errore, puoi nuovamente rinominare una pagina col vecchio titolo, ma non puoi sovrascrivere una pagina già esistente.
+Si noti che la pagina '''non''' sarà spostata se ne esiste già una con il nuovo nome, a meno che non sia vuota o costituita solo da un redirect alla vecchia e sia priva di versioni precedenti. In caso di spostamento errato si può quindi tornare subito al vecchio titolo, e non è possibile sovrascrivere per errore una pagina già esistente.
 
-<b>ATTENZIONE!</b>
-Questo cambiamento drastico potrebbe creare inattesi contrattempi, specialmente se si tratta di una pagina molto visitata. Accertati di aver ben valutato le conseguenze dello spostamento, prima di procedere. Nel dubbio, contatta un Amministratore.",
-"movepagetalktext" => "La corrispondente pagina di discussione, se esiste, sarà spostata automaticamente insieme all'articolo, '''tranne che nei seguenti casi:'''
-*Spostamento della pagina fra i namespaces,
-*Una pagina di discussione (non vuota) già esiste per il nuovo nome, oppure
-*Hai deselezionato la casellina qui sotto.
-In questi casi, se lo ritieni opportuno, dovrai spostare o aggiungere manualmente la pagina di discussione.",
-"movearticle"	=> "Rinomina articolo",
-"movenologin"	=> "Non hai effettuato il login",
-"movenologintext" => "Devi essere un Utente registrato ed aver effettuato il [[Special:Userlogin|login]]
-per poter spostare una pagina.",
-"newtitle"		=> "Al nuovo titolo di",
-"movepagebtn"	=> "Sposta questa pagina",
+<b>ATTENZIONE:</b>
+Un cambiamento così drastico può creare contrattempi e problemi, soprattutto per le pagine più visitate. Accertarsi di aver valutato le conseguenze dello spostamento prima di procedere.",
+"movepagetalktext"	=> "La corrispondente pagina di discussione, se esiste, sarà spostata automaticamente insieme alla pagina principale, '''tranne che nei seguenti casi:'''
+* Lo spostamento della pagina è tra namespace diversi
+* In corrispondenza del nuovo titolo esiste già una pagina di discussione (non vuota)
+* La casella qui sotto è stata deselezionata.
+
+In questi casi, se lo si ritiene opportuno, occorre spostare o aggiungere manualmente le informazioni contenute nella pagina di discussione.",
+"movearticle"	=> "Sposta la pagina",
+"movenologin"	=> "Accesso non effettuato",
+"movenologintext"	=> "Lo spostamento delle pagine è consentito solo agli utenti registrati che hanno eseguito l'[[Special:Userlogin|accesso]] al sito.",
+"newtitle"	=> "Nuovo titolo:",
+"movepagebtn"	=> "Sposta la pagina",
 "pagemovedsub"	=> "Spostamento effettuato con successo",
-"pagemovedtext" => "Pagina \"[[$1]]\" rinominata in \"[[$2]]\".",
-"articleexists" => "Una pagina con questo nome esiste già, oppure il nome che hai scelto non è valido.<br />
-Scegli, per cortesia, un titolo diverso per l'articolo.",
-"talkexists"	=> "La pagina è stata spostata correttamente, ma non si è potuto spostare la pagina di discussione perché ne esiste già un'altra con il nuovo titolo. Per favore, modifica manualmente i contenuti delle due pagine discussione, così da mantenerle entrambe per non perdere potenzialmente interessanti riflessioni.",
-"movedto"		=> "spostata a",
-"movetalk"		=> "Sposta anche la corrispondente pagina \"discussione\", se possibile.",
-"talkpagemoved" => "Anche la corrispondente pagina di discussione è stata spostata.",
-"talkpagenotmoved" => "La corrispondente pagina di discussione <strong>non è stata spostata</strong>."
+"pagemovedtext"	=> "La pagina \"[[$1]]\" è stata spostata al titolo \"[[$2]]\".",
+"articleexists"	=> "Una pagina con questo nome esiste già, oppure il nome scelto non è valido. Scegliere un altro titolo.",
+"talkexists"	=> "'''La pagina è stata spostata correttamente, ma non è stato possibile spostare la pagina di discussione perché ne esiste già un'altra con il nuovo titolo. Integrare manualmente i contenuti delle due pagine.'''",
+"movedto"	=> "spostata a",
+"movetalk"	=> "Sposta anche la pagina di discussione.",
+"talkpagemoved"	=> "Anche la rispettiva pagina di discussione è stata spostata.",
+"talkpagenotmoved"	=> "La rispettiva pagina di discussione <strong>non</strong> è stata spostata.",
+"1movedto2"	=> "ha spostato [[$1]] a [[$2]]",
+"1movedto2_redir"	=> "[[$1]] spostata a [[$2]] tramite redirect",
+"movelogpage"	=> "Spostamenti",
+"movelogpagetext"	=> "Questo è l'elenco delle pagine spostate.",
+"movereason"	=> "Motivo",
+"revertmove"	=> "ripristina",
+"delete_and_move"	=> "Cancella e sposta",
+"delete_and_move_text"	=> "==Richiesta di cancellazione==
+
+La pagina di destinazione [[$1]] esiste già. Si desidera cancellarla per rendere possibile lo spostamento?",
+"delete_and_move_confirm"	=> "Sì, sovrascrivi la pagina esistente",
+"delete_and_move_reason"	=> "Cancellata per rendere possibile lo spostamento",
+"selfmove"	=> "Il nuovo titolo è uguale al vecchio; impossibile spostare la pagina su se stessa.",
+"immobile_namespace"	=> "Il nuovo titolo corrisponde a una pagina speciale; impossibile spostare pagine in quel namespace.",
 
 # Export
+"export"	=> "Esporta pagine",
+"exporttext"	=> "È possibile esportare il testo e la cronologia delle modifiche di una pagina o di un gruppo di pagine in formato XML per importarle in altri siti che utilizzano il software MediaWiki, attraverso la pagina Special:Import.
+
+Per esportare le pagine indicare i titoli nella casella di testo sottostante, uno per riga, e specificare se si desidera ottenere la versione corrente e tutte le versioni precedenti, con i dati della cronologia della pagina, oppure soltanto l'ultima versione e i dati corrispondenti all'ultima modifica.
+
+In quest'ultimo caso si può anche utilizzare un collegamento, ad esempio [[{{ns:Special}}:Export/{{Mediawiki:mainpage}}]] per esportare {{Mediawiki:mainpage}}.",
+"exportcuronly"	=> "Includi solo la revisione attuale, non l'intera cronologia",
+"exportnohistory"	=> "----
+'''Nota:''' l'esportazione dell'intera cronologia delle pagine attraverso questa interfaccia è stata disattivata per motivi legati alle prestazioni del sistema.",
 
 # Namespace 8 related
 
+"allmessages"	=> "Messaggi di sistema",
+"allmessagesname"	=> "Nome",
+"allmessagesdefault"	=> "Testo predefinito",
+"allmessagescurrent"	=> "Testo attuale",
+"allmessagestext"	=> "Questa è la lista di tutti i messaggi di sistema disponibili nel namespace MediaWiki:",
+"allmessagesnotsupportedUI"	=> "La lingua selezionata per l'interfaccia, <b>$1</b>, non è supportata da Special:Allmessages su questo sito.",
+"allmessagesnotsupportedDB"	=> "'''Special:AllMessages''' non è supportato perché il flag '''\$wgUseDatabaseMessages''' non è attivo.",
+"allmessagesfilter"	=> "Filtro sui messaggi:",
+"allmessagesmodified"	=> "Mostra solo quelli modificati",
+
+
 # Thumbnails
 
+"thumbnail-more"	=> "Ingrandisci",
+"missingimage"	=> "<b>Immagine mancante</b><br /><i>$1</i>",
+"filemissing"	=> "File mancante",
+"thumbnail_error"	=> "Errore nella creazione della miniatura: $1",
+
 # Special:Import
+"import"	=> "Importa pagine",
+"importinterwiki"	=> "Importazione transwiki",
+"importtext"	=> "Si prega di esportare il file dal sito wiki di origine con la funzione Special:Export, salvarlo sul proprio disco e poi caricarlo qui.",
+"importfailed"	=> "Importazione non riuscita: $1",
+"importnotext"	=> "Testo vuoto o mancante",
+"importsuccess"	=> "Importazione riuscita.",
+"importhistoryconflict"	=> "La cronologia contiene delle versioni in conflitto (questa pagina potrebbe essere già stata importata)",
+"importnosources"	=> "Non è stata definita una fonte per l'importazione transwiki; l'importazione diretta della cronologia non è attiva.",
+"importnofile"	=> "Non è stato caricato nessun file per l'importazione,",
+"importuploaderror"	=> "Importazione del file per l'importazione non riuscita; è possibile che il file sia di dimensioni superiori a quelle ammesse per gli upload.",
 
 # Keyboard access keys for power users
+"accesskey-search"	=> "f",
+"accesskey-minoredit"	=> "i",
+"accesskey-save"	=> "s",
+"accesskey-preview"	=> "p",
+"accesskey-diff"	=> "d",
+"accesskey-compareselectedversions"	=> "v",
+"accesskey-watch"	=> "w",
 
 # tooltip help for some actions, most are in Monobook.js
+"tooltip-search"	=> "Cerca in {{SITENAME}} [alt-f]",
+"tooltip-minoredit"	=> "Segnala come modifica minore [alt-i]",
+"tooltip-save"	=> "Salva le modifiche [alt-s]",
+"tooltip-preview"	=> "Anteprima delle modifiche (consigliata, prima di salvare!) [alt-p]",
+"tooltip-diff"	=> "Guarda le modifiche apportate al testo. [alt-d]",
+"tooltip-compareselectedversions"	=> "Guarda le differenze tra le due versioni selezionate di questa pagina. [alt-v]",
+"tooltip-watch"	=> "Aggiungi questa pagina alla lista degli osservati speciali [alt-w]",
 
 # stylesheets
+"Monobook.css" => "/* modificare questo file per personalizzare l'aspetto della skin MonoBook per l'intero sito */",
 
 # Metadata
+"nodublincore"	=> "Metadati Dublin Core RDF non attivi su questo server.",
+"nocreativecommons"	=> "Metadati Commons RDF non attivi su questo server.",
+"notacceptable"	=> "Il server wiki non è in grado di fornire i dati in un formato leggibile dal client utilizzato.",
 
 # Attribution
+"anonymous"	=> "uno o più utenti anonimi di {{SITENAME}}",
+"siteuser"	=> "$1, utente di {{SITENAME}}",
+"lastmodifiedby"	=> "Questa pagina è stata modificata per l'ultima volta il $1 da $2.",
+"and"	=> "e",
+"othercontribs"	=> "Il testo attuale è basato su contributi di $1.",
+"others"	=> "altri",
+"siteusers"	=> "$1, utenti di {{SITENAME}}",
+"creditspage"	=> "Autori della pagina",
+"nocredits"	=> "Nessuna informazione sugli autori disponibile per questa pagina.",
 
 # Spam protection
+"spamprotectiontitle"	=> "Filtro anti-spam",
+"spamprotectiontext"	=> "La pagina che si è tentato di salvare è stata bloccata dal filtro anti-spam. Ciò è probabilmente dovuto alla presenza di un collegamento a un sito esterno bloccato.",
+"spamprotectionmatch"	=> "Il filtro anti-spam è stato attivato dal seguente testo: $1",
+"subcategorycount"	=> "Questa categoria contiene {{PLURAL:$1|una sottocategoria| $1 sottocategorie}}.",
+"categoryarticlecount"	=> "Questa categoria contiene {{PLURAL:$1|una pagina|$1 pagine}}.",
+"listingcontinuesabbrev"	=> " cont.",
+"spambot_username"	=> "MediaWiki - sistema di rimozione spam",
+"spam_reverting"	=> "Ripristinata l'ultima versione priva di collegamenti a $1",
+"spam_blanking"	=> "Pagina svuotata, tutte le versioni contenevano collegamenti a $1",
 
 # Info page
+"infosubtitle"	=> "Informazioni per la pagina",
+"numedits"	=> "Numero di modifiche (pagina): $1",
+"numtalkedits"	=> "Numero di modifiche (pagina di discussione): $1",
+"numwatchers"	=> "Numero di osservatori: $1",
+"numauthors"	=> "Numero di autori distinti (pagina): $1",
+"numtalkauthors"	=> "Numero di autori distinti (pagina di discussione): $1",
 
 # Math options
+"mw_math_png"	=> "Mostra sempre in PNG",
+"mw_math_simple"	=> "HTML se molto semplice, altrimenti PNG",
+"mw_math_html"	=> "HTML se possibile, altrimenti PNG",
+"mw_math_source"	=> "Lascia in formato TeX (per browser testuali)",
+"mw_math_modern"	=> "Formato consigliato per i browser moderni",
+"mw_math_mathml"	=> "Usa MathML se possibile (sperimentale)",
 
 # Patrolling
+"markaspatrolleddiff"	=> "Segna la modifica come verificata",
+"markaspatrolledlink"	=> "[$1]",
+"markaspatrolledtext"	=> "Segna questa voce come verificata",
+"markedaspatrolled"	=> "Segnato come verificato",
+"markedaspatrolledtext"	=> "La revisione selezionata è stata segnata come verificata.",
+"rcpatroldisabled"	=> "La verifica delle ultime modifiche è disattivata",
+"rcpatroldisabledtext"	=> "La funzione di verifica delle ultime modifiche al momento non è attiva.",
+"markedaspatrollederror"	=> "Impossibile contrassegnare la voce come verificata",
+"markedaspatrollederrortext"	=> "Occorre specificare una revisione da contrassegnare come verificata.",
 
 # Monobook.js: tooltips and access keys for monobook
+'Monobook.js' => '/* tooltips and access keys */
+ta = new Object();
+ta[\'pt-userpage\'] = new Array(\'.\',\'La tua pagina utente\'); 
+ta[\'pt-anonuserpage\'] = new Array(\'.\',\'La pagina utente di questo indirizzo IP\'); 
+ta[\'pt-mytalk\'] = new Array(\'n\',\'La tua pagina di discussione\'); 
+ta[\'pt-anontalk\'] = new Array(\'n\',\'Discussioni sulle modifiche fatte da questo indirizzo IP\'); 
+ta[\'pt-preferences\'] = new Array(\'\',\'Le tue preferenze\'); 
+ta[\'pt-watchlist\'] = new Array(\'l\',\'La lista delle pagine che stai tenendo sotto osservazione\'); 
+ta[\'pt-mycontris\'] = new Array(\'y\',\'L\\\'elenco dei tuoi contributi\'); 
+ta[\'pt-login\'] = new Array(\'o\',\'La registrazione è consigliata, anche se non obbligatoria\'); 
+ta[\'pt-anonlogin\'] = new Array(\'o\',\'La registrazione è consigliata, anche se non obbligatoria\'); 
+ta[\'pt-logout\'] = new Array(\'o\',\'Uscita (logout)\'); 
+ta[\'ca-talk\'] = new Array(\'t\',\'Vedi le discussioni relative a questa pagina\'); 
+ta[\'ca-edit\'] = new Array(\'e\',\'Puoi modificare questa pagina. Per favore usa il pulsante di anteprima prima di salvare\'); 
+ta[\'ca-addsection\'] = new Array(\'+\',\'Aggiungi un commento a questa discussione\'); 
+ta[\'ca-viewsource\'] = new Array(\'e\',\'Questa pagina è protetta, ma puoi vedere il suo codice sorgente\'); 
+ta[\'ca-history\'] = new Array(\'h\',\'Versioni precedenti di questa pagina\'); 
+ta[\'ca-protect\'] = new Array(\'=\',\'Proteggi questa pagina\');
+ta[\'ca-unprotect\'] = new Array(\'=\',\'Sblocca questa pagina\');
+ta[\'ca-delete\'] = new Array(\'d\',\'Cancella questa pagina\'); 
+ta[\'ca-undelete\'] = new Array(\'d\',\'Ripristina la pagina com\\\'era prima della cancellazione\'); 
+ta[\'ca-move\'] = new Array(\'m\',\'Sposta questa pagina (cambia titolo)\'); 
+ta[\'ca-watch\'] = new Array(\'w\',\'Aggiungi questa pagina alla tua lista di osservati speciali\'); 
+ta[\'ca-unwatch\'] = new Array(\'w\',\'Elimina questa pagina dalla tua lista di osservati speciali\'); 
+ta[\'search\'] = new Array(\'f\',\'Cerca all\\\'interno del sito\'); 
+ta[\'p-logo\'] = new Array(\'\',\'Pagina principale\'); 
+ta[\'n-mainpage\'] = new Array(\'z\',\'Visita la pagina principale\'); 
+ta[\'n-portal\'] = new Array(\'\',\'Descrizione del progetto, cosa puoi fare, dove trovare le cose\'); 
+ta[\'n-currentevents\'] = new Array(\'\',\'Informazioni sugli eventi di attualità\'); 
+ta[\'n-recentchanges\'] = new Array(\'r\',\'Elenco delle ultime modifiche del sito\'); 
+ta[\'n-randompage\'] = new Array(\'x\',\'Mostra una pagina a caso\'); 
+ta[\'n-help\'] = new Array(\'a\',\'Pagine di aiuto\');
+ta[\'n-sitesupport\'] = new Array(\'\',\'Aiutaci\'); 
+ta[\'t-whatlinkshere\'] = new Array(\'j\',\'Elenco di tutte le pagine che sono collegate a questa\'); 
+ta[\'t-recentchangeslinked\'] = new Array(\'k\',\'Elenco delle ultime modifiche alle pagine collegate a questa\'); 
+ta[\'feed-rss\'] = new Array(\'\',\'Feed RSS per questa pagina\'); 
+ta[\'feed-atom\'] = new Array(\'\',\'Feed Atom per questa pagina\'); 
+ta[\'t-contributions\'] = new Array(\'\',\'Lista dei contributi di questo utente\'); 
+ta[\'t-emailuser\'] = new Array(\'\',\'Invia un messaggio e-mail a questo utente\'); 
+ta[\'t-upload\'] = new Array(\'u\',\'Carica immagini o file multimediali\'); 
+ta[\'t-specialpages\'] = new Array(\'q\',\'Lista di tutte le pagine speciali\'); 
+ta[\'ca-nstab-main\'] = new Array(\'c\',\'Vedi la voce\'); 
+ta[\'ca-nstab-user\'] = new Array(\'c\',\'Vedi la pagina utente\'); 
+ta[\'ca-nstab-media\'] = new Array(\'c\',\'Vedi la pagina del file multimediale\'); 
+ta[\'ca-nstab-special\'] = new Array(\'\',\'Questa è una pagina speciale, non può essere modificata\'); 
+ta[\'ca-nstab-wp\'] = new Array(\'c\',\'Vedi la pagina di servizio\'); 
+ta[\'ca-nstab-image\'] = new Array(\'c\',\'Vedi la pagina dell\\\'immagine\'); 
+ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Vedi il messaggio di sistema\'); 
+ta[\'ca-nstab-template\'] = new Array(\'c\',\'Vedi il template\'); 
+ta[\'ca-nstab-help\'] = new Array(\'c\',\'Vedi la pagina di aiuto\'); 
+ta[\'ca-nstab-category\'] = new Array(\'c\',\'Vedi la pagina della categoria\');',
 
 # image deletion
+"deletedrevision"	=> "Revisione precedente, cancellata: $1.",
 
 # browsing diffs
+"previousdiff"	=> "← Differenza precedente",
+"nextdiff"		=> "Differenza successiva →",
+
+"imagemaxsize"	=> "Dimensione massima delle immagini sulle relative pagine di discussione:",
+"thumbsize"	=> "Grandezza delle miniature:",
+"showbigimage"	=> "Scarica la versione ad alta risoluzione ($1x$2, $3 KB)",
+
+"newimages"	=> "Galleria dei nuovi file",
+"showhidebots"	=> "($1 i bot)",
+"noimages"	=> "Non c'è nulla da vedere.",
 
 # short names for language variants used for language conversion links.
 # to disable showing a particular link, set it to 'disable', e.g.
 # 'variantname-zh-sg' => 'disable',
 
+# Not translated
+
 # variants for Serbian language
 
+# Not translated
+
 # labels for User: and Title: on Special:Log pages
+"specialloguserlabel"	=> "Utente:",
+"speciallogtitlelabel"	=> "Titolo:",
+
+"passwordtooshort"	=> "La password inserita è troppo breve. Deve contenere almeno $1 caratteri.",
 
 # Media Warning
+"mediawarning"	=> "'''Attenzione''': Questo file può contenere codice maligno; la sua esecuzione può danneggiare il proprio sistema informatico.
+
+<hr>",
+
+"fileinfo"	=> "Dimensioni: $1 KB, Tipo MIME: <code>$2</code>",
 
 # Metadata
+"metadata"	=> "Metadati",
+"metadata-help"	=> "Questo file contiene informazioni aggiuntive, probabilmente aggiunte dalla fotocamera o dallo scanner usati per crearla o digitalizzarla. Se il file è stato modificato, alcuni dettagli potrebbero non corrispondere alle modifiche apportate.",
+"metadata-expand"	=> "Mostra dettagli",
+"metadata-collapse"	=> "Nascondi dettagli",
+"metadata-fields"	=> "I campi relativi ai metadati EXIF elencati in questo messaggio verranno mostrati sulla pagina dell'immagine quando la tabella dei metadati è presentata nella forma breve. Per impostazione predefinita, gli altri campi verranno nascosti.
+* make
+* model
+* datetimeoriginal
+* exposuretime
+* fnumber
+* focallength",
 
 # Exif tags
+"exif-imagewidth"	=> "Larghezza",
+"exif-imagelength"	=> "Altezza",
+"exif-bitspersample"	=> "Bit per campione",
+"exif-compression"	=> "Meccanismo di compressione",
+"exif-photometricinterpretation"	=> "Struttura dei pixel",
+"exif-orientation"	=> "Orientamento",
+"exif-samplesperpixel"	=> "Numero delle componenti",
+"exif-planarconfiguration"	=> "Disposizione dei dati",
+"exif-ycbcrsubsampling"	=> "Rapporto di campionamento Y / C",
+"exif-ycbcrpositioning"	=> "Posizionamento componenti Y e C",
+"exif-xresolution"	=> "Risoluzione orizzontale",
+"exif-yresolution"	=> "Risoluzione verticale",
+"exif-resolutionunit"	=> "Unità di misura risoluzione X e Y",
+"exif-stripoffsets"	=> "Posizione dei dati immagine",
+"exif-rowsperstrip"	=> "Numero righe per striscia",
+"exif-stripbytecounts"	=> "Numero di byte per striscia compressa",
+"exif-jpeginterchangeformat"	=> "Posizione byte SOI JPEG",
+"exif-jpeginterchangeformatlength"	=> "Numero di byte di dati JPEG",
+"exif-transferfunction"	=> "Funzione di trasferimento",
+"exif-whitepoint"	=> "Coordinate cromatiche del punto di bianco",
+"exif-primarychromaticities"	=> "Coordinate cromatiche dei colori primari",
+"exif-ycbcrcoefficients"	=> "Coefficienti matrice di trasformazione spazi dei colori",
+"exif-referenceblackwhite"	=> "Coppia di valori di riferimento (nero e bianco)",
+"exif-datetime"	=> "Data e ora di modifica del file",
+"exif-imagedescription"	=> "Descrizione dell'immagine",
+"exif-make"	=> "Produttore fotocamera",
+"exif-model"	=> "Modello fotocamera",
+"exif-software"	=> "Software",
+"exif-artist"	=> "Autore",
+"exif-copyright"	=> "Informazioni sul copyright",
+"exif-exifversion"	=> "Versione del formato Exif",
+"exif-flashpixversion"	=> "Versione Flashpix supportata",
+"exif-colorspace"	=> "Spazio dei colori",
+"exif-componentsconfiguration"	=> "Significato di ciascuna componente",
+"exif-compressedbitsperpixel"	=> "Modalità di compressione immagine",
+"exif-pixelydimension"	=> "Larghezza effettiva immagine",
+"exif-pixelxdimension"	=> "Altezza effettiva immagine",
+"exif-makernote"	=> "Note del produttore",
+"exif-usercomment"	=> "Note dell'utente",
+"exif-relatedsoundfile"	=> "File audio collegato",
+"exif-datetimeoriginal"	=> "Data e ora di creazione dei dati",
+"exif-datetimedigitized"	=> "Data e ora di digitalizzazione",
+"exif-subsectime"	=> "Data e ora, frazioni di secondo",
+"exif-subsectimeoriginal"	=> "Data e ora di creazione, frazioni di secondo",
+"exif-subsectimedigitized"	=> "Data e ora di digitalizzazione, frazioni di secondo",
+"exif-exposuretime"	=> "Tempo di esposizione",
+"exif-exposuretime-format"	=> "$1 s ($2)",
+"exif-fnumber"	=> "Rapporto focale",
+"exif-fnumber-format"	=> "f/$1",
+"exif-exposureprogram"	=> "Programma di esposizione",
+"exif-spectralsensitivity"	=> "Sensibilità spettrale",
+"exif-isospeedratings"	=> "Sensibilità ISO",
+"exif-oecf"	=> "Fattore di conversione optoelettronica",
+"exif-shutterspeedvalue"	=> "Tempo di esposizione",
+"exif-aperturevalue"	=> "Apertura",
+"exif-brightnessvalue"	=> "Luminosità",
+"exif-exposurebiasvalue"	=> "Correzione esposizione",
+"exif-maxaperturevalue"	=> "Apertura massima",
+"exif-subjectdistance"	=> "Distanza del soggetto",
+"exif-meteringmode"	=> "Metodo di misurazione",
+"exif-lightsource"	=> "Sorgente luminosa",
+"exif-flash"	=> "Caratteristiche e stato del flash",
+"exif-focallength"	=> "Distanza focale obiettivo",
+"exif-focallength-format"	=> "$1 mm",
+"exif-subjectarea"	=> "Area inquadrante il soggetto",
+"exif-flashenergy"	=> "Potenza del flash",
+"exif-spatialfrequencyresponse"	=> "Risposta in frequenza spaziale",
+"exif-focalplanexresolution"	=> "Risoluzione X sul piano focale",
+"exif-focalplaneyresolution"	=> "Risoluzione Y sul piano focale",
+"exif-focalplaneresolutionunit"	=> "Unità di misura risoluzione sul piano focale",
+"exif-subjectlocation"	=> "Posizione del soggetto",
+"exif-exposureindex"	=> "Sensibilità impostata",
+"exif-sensingmethod"	=> "Metodo di rilevazione",
+"exif-filesource"	=> "Origine del file",
+"exif-scenetype"	=> "Tipo di inquadratura",
+"exif-cfapattern"	=> "Disposizione filtro colore",
+"exif-customrendered"	=> "Elaborazione personalizzata",
+"exif-exposuremode"	=> "Modalità di esposizione",
+"exif-whitebalance"	=> "Bilanciamento del bianco",
+"exif-digitalzoomratio"	=> "Rapporto zoom digitale",
+"exif-focallengthin35mmfilm"	=> "Focale equivalente su 35 mm",
+"exif-scenecapturetype"	=> "Tipo di acquisizione",
+"exif-gaincontrol"	=> "Controllo inquadratura",
+"exif-contrast"	=> "Controllo contrasto",
+"exif-saturation"	=> "Controllo saturazione",
+"exif-sharpness"	=> "Controllo nitidezza",
+"exif-devicesettingdescription"	=> "Descrizione impostazioni dispositivo",
+"exif-subjectdistancerange"	=> "Scala distanza soggetto",
+"exif-imageuniqueid"	=> "ID univoco immagine",
+"exif-gpsversionid"	=> "Versione dei tag GPS",
+"exif-gpslatituderef"	=> "Latitudine Nord/Sud",
+"exif-gpslatitude"	=> "Latitudine",
+"exif-gpslongituderef"	=> "Longitudine Est/Ovest",
+"exif-gpslongitude"	=> "Longitudine",
+"exif-gpsaltituderef"	=> "Riferimento per l'altitudine",
+"exif-gpsaltitude"	=> "Altitudine",
+"exif-gpstimestamp"	=> "Ora GPS (orologio atomico)",
+"exif-gpssatellites"	=> "Satelliti usati per la misurazione",
+"exif-gpsstatus"	=> "Stato del ricevitore",
+"exif-gpsmeasuremode"	=> "Modalità di misurazione",
+"exif-gpsdop"	=> "Precisione della misurazione",
+"exif-gpsspeedref"	=> "Unità di misura della velocità",
+"exif-gpsspeed"	=> "Velocità del ricevitore GPS",
+"exif-gpstrackref"	=> "Riferimento per la direzione movimento",
+"exif-gpstrack"	=> "Direzione del movimento",
+"exif-gpsimgdirectionref"	=> "Riferimento per la direzione dell'immagine",
+"exif-gpsimgdirection"	=> "Direzione dell'immagine",
+"exif-gpsmapdatum"	=> "Rilevamento geodetico usato",
+"exif-gpsdestlatituderef"	=> "Riferimento per la latitudine della destinazione",
+"exif-gpsdestlatitude"	=> "Latitudine della destinazione",
+"exif-gpsdestlongituderef"	=> "Riferimento per la longitudine della destinazione",
+"exif-gpsdestlongitude"	=> "Longitudine della destinazione",
+"exif-gpsdestbearingref"	=> "Riferimento per la direzione della destinazione",
+"exif-gpsdestbearing"	=> "Direzione della destinazione",
+"exif-gpsdestdistanceref"	=> "Riferimento per la distanza della destinazione",
+"exif-gpsdestdistance"	=> "Distanza della destinazione",
+"exif-gpsprocessingmethod"	=> "Nome del metodo di elaborazione GPS",
+"exif-gpsareainformation"	=> "Nome della zona GPS",
+"exif-gpsdatestamp"	=> "Data GPS",
+"exif-gpsdifferential"	=> "Correzione differenziale GPS",
 
 # Make & model, can be wikified in order to link to the camera and model name
 
+"exif-make-value"	=> "$1",
+"exif-model-value"	=> "$1",
+"exif-software-value"	=> "$1",
+
 # Exif attributes
 
+"exif-compression-1"	=> "Nessuno",
+"exif-compression-6"	=> "JPEG",
+
+"exif-photometricinterpretation-2"	=> "RGB",
+"exif-photometricinterpretation-6"	=> "YCbCr",
+
+"exif-orientation-1"	=> "Normale",
+"exif-orientation-2"	=> "Capovolto orizzontalmente",
+"exif-orientation-3"	=> "Ruotato di 180°",
+"exif-orientation-4"	=> "Capovolto verticalmente",
+"exif-orientation-5"	=> "Ruotato 90° in senso antiorario e capovolto verticalmente",
+"exif-orientation-6"	=> "Ruotato 90° in senso orario",
+"exif-orientation-7"	=> "Ruotato 90° in senso orario e capovolto verticalmente",
+"exif-orientation-8"	=> "Ruotato 90° in senso antiorario",
+
+"exif-planarconfiguration-1"	=> "a blocchi (chunky)",
+"exif-planarconfiguration-2"	=> "lineare (planar)",
+
+"exif-xyresolution-i"	=> "$1 punti per pollice (dpi)",
+"exif-xyresolution-c"	=> "$1 punti per centimetro (dpc)",
+
+"exif-colorspace-1"	=> "sRGB",
+"exif-colorspace-ffff.h"	=> "Non calibrato",
+
+"exif-componentsconfiguration-0"	=> "assente",
+"exif-componentsconfiguration-1"	=> "Y",
+"exif-componentsconfiguration-2"	=> "Cb",
+"exif-componentsconfiguration-3"	=> "Cr",
+"exif-componentsconfiguration-4"	=> "R",
+"exif-componentsconfiguration-5"	=> "G",
+"exif-componentsconfiguration-6"	=> "B",
+
+
+"exif-exposureprogram-0"	=> "Non definito",
+"exif-exposureprogram-1"	=> "Manuale",
+"exif-exposureprogram-2"	=> "Standard",
+"exif-exposureprogram-3"	=> "Priorità al diaframma",
+"exif-exposureprogram-4"	=> "Priorità all'esposizione",
+"exif-exposureprogram-5"	=> "Artistico (orientato alla profondità di campo)",
+"exif-exposureprogram-6"	=> "Sportivo (orientato alla velocità di ripresa)",
+"exif-exposureprogram-7"	=> "Ritratto (soggetti vicini con sfondo fuori fuoco)",
+"exif-exposureprogram-8"	=> "Panorama (soggetti lontani con sfondo a fuoco)",
+
+"exif-subjectdistance-value"	=> "$1 metri",
+
+"exif-meteringmode-0"	=> "Sconosciuto",
+"exif-meteringmode-1"	=> "Media",
+"exif-meteringmode-2"	=> "Media pesata centrata",
+"exif-meteringmode-3"	=> "Spot",
+"exif-meteringmode-4"	=> "MultiSpot",
+"exif-meteringmode-5"	=> "Pattern",
+"exif-meteringmode-6"	=> "Parziale",
+"exif-meteringmode-255"	=> "Altro",
+
+"exif-lightsource-0"	=> "Sconosciuta",
+"exif-lightsource-1"	=> "Luce diurna",
+"exif-lightsource-2"	=> "Lampada a fluorescenza",
+"exif-lightsource-3"	=> "Lampada al tungsteno (a incandescenza)",
+"exif-lightsource-4"	=> "Flash",
+"exif-lightsource-9"	=> "Bel tempo",
+"exif-lightsource-10"	=> "Nuvoloso",
+"exif-lightsource-11"	=> "In ombra",
+"exif-lightsource-12"	=> "Daylight fluorescent (D 5700 â€“ 7100K)",
+"exif-lightsource-13"	=> "Day white fluorescent (N 4600 â€“ 5400K)",
+"exif-lightsource-14"	=> "Cool white fluorescent (W 3900 â€“ 4500K)",
+"exif-lightsource-15"	=> "White fluorescent (WW 3200 â€“ 3700K)", 
+"exif-lightsource-17"	=> "Luce standard A",
+"exif-lightsource-18"	=> "Luce standard B",
+"exif-lightsource-19"	=> "Luce standard C",
+"exif-lightsource-20"	=> "Illuminante D55",
+"exif-lightsource-21"	=> "Illuminante D65",
+"exif-lightsource-22"	=> "Illuminante D75",
+"exif-lightsource-23"	=> "Illuminante D50",
+"exif-lightsource-24"	=> "Lampada da studio ISO al tungsteno",
+"exif-lightsource-255"	=> "Altra sorgente luminosa",
+
+"exif-focalplaneresolutionunit-2"	=> "pollici",
+
+"exif-sensingmethod-1"	=> "Non definito",
+"exif-sensingmethod-2"	=> "Sensore area colore a 1 chip",
+"exif-sensingmethod-3"	=> "Sensore area colore a 2 chip",
+"exif-sensingmethod-4"	=> "Sensore area colore a 3 chip",
+"exif-sensingmethod-5"	=> "Sensore area colore sequenziale",
+"exif-sensingmethod-7"	=> "Sensore trilineare",
+"exif-sensingmethod-8"	=> "Sensore lineare colore sequenziale",
+
+"exif-filesource-3"	=> "DSC",
+
+"exif-scenetype-1"	=> "Fotografia diretta",
+
+"exif-customrendered-0"	=> "Processo normale",
+"exif-customrendered-1"	=> "Processo personalizzato",
+
+"exif-exposuremode-0"	=> "Esposizione automatica",
+"exif-exposuremode-1"	=> "Esposizione manuale",
+"exif-exposuremode-2"	=> "Bracketing automatico",
+
+"exif-whitebalance-0"	=> "Bilanciamento del bianco automatico",
+"exif-whitebalance-1"	=> "Bilanciamento del bianco manuale",
+
+"exif-scenecapturetype-0"	=> "Standard",
+"exif-scenecapturetype-1"	=> "Panorama",
+"exif-scenecapturetype-2"	=> "Ritratto",
+"exif-scenecapturetype-3"	=> "Notturna",
+
+"exif-gaincontrol-0"	=> "Nessuno",
+"exif-gaincontrol-1"	=> "Enfasi per basso guadagno",
+"exif-gaincontrol-2"	=> "Enfasi per alto guadagno",
+"exif-gaincontrol-3"	=> "Deenfasi per basso guadagno",
+"exif-gaincontrol-4"	=> "Deenfasi per alto guadagno",
+
+"exif-contrast-0"	=> "Normale",
+"exif-contrast-1"	=> "Alto contrasto",
+"exif-contrast-2"	=> "Basso contrasto",
+
+"exif-saturation-0"	=> "Normale",
+"exif-saturation-1"	=> "Bassa saturazione",
+"exif-saturation-2"	=> "Alta saturazione",
+
+"exif-sharpness-0"	=> "Normale",
+"exif-sharpness-1"	=> "Minore nitidezza",
+"exif-sharpness-2"	=> "Maggiore nitidezza",
+
+"exif-subjectdistancerange-0"	=> "Sconosciuta",
+"exif-subjectdistancerange-1"	=> "Macro",
+"exif-subjectdistancerange-2"	=> "Soggetto vicino",
+"exif-subjectdistancerange-3"	=> "Soggetto lontano",
+
+"exif-gpslatitude-n"	=> "Latitudine Nord",
+"exif-gpslatitude-s"	=> "Latitudine Sud",
+
+"exif-gpslongitude-e"	=> "Longitudine Est",
+"exif-gpslongitude-w"	=> "Longitudine Ovest",
+
+"exif-gpsstatus-a"	=> "Misurazione in corso", #rivedere
+"exif-gpsstatus-v"	=> "Misurazione interoperabile", #rivedere
+
+"exif-gpsmeasuremode-2"	=> "Misurazione bidimensionale",
+"exif-gpsmeasuremode-3"	=> "Misurazione tridimensionale",
+
+"exif-gpsspeed-k"	=> "Chilometri orari",
+"exif-gpsspeed-m"	=> "Miglia orarie",
+"exif-gpsspeed-n"	=> "Nodi",
+
+"exif-gpsdirection-t"	=> "Direzione reale",
+"exif-gpsdirection-m"	=> "Direzione magnetica",
+
 # external editor support
+"edit-externally"	=> "Modifica questo file usando un programma esterno",
+"edit-externally-help"	=> "Per maggiori informazioni consultare le [http://meta.wikimedia.org/wiki/Help:External_editors istruzioni] (in inglese)",
 
 # 'all' in various places, this might be different for inflected languages
+"recentchangesall"	=> "tutte",
+"imagelistall"	=> "tutte",
+"watchlistall1"	=> "tutte",
+"watchlistall2"	=> "tutte",
+"namespacesall"	=> "Tutti",
 
 # E-mail address confirmation
+"confirmemail"	=> "Conferma indirizzo e-mail",
+"confirmemail_text"	=> "Questo sito richiede la verifica dell'indirizzo e-mail prima di poter usare le funzioni connesse all'email. Premere il pulsante qui sotto per inviare una richiesta di conferma al proprio indirizzo; nel messaggio è presente un collegamento che contiene un codice. Visitare il collegamento con il proprio browser per confermare che l'indirizzo e-mail è valido.",
+"confirmemail_send"	=> "Invia un codice di conferma via e-mail.",
+"confirmemail_sent"	=> "Messaggio e-mail di conferma inviato.",
+"confirmemail_sendfailed"	=> "Impossibile inviare il messaggio e-mail di conferma. Verificare che l'indirizzo non contenga caratteri non validi.",
+"confirmemail_invalid"	=> "Codice di conferma non valido. Il codice potrebbe essere scaduto.",
+"confirmemail_needlogin"	=> "È necessario $1 per confermare il proprio indirizzo e-mail.",
+"confirmemail_success"	=> "L'indirizzo e-mail è confermato. Ora è possibile eseguire l'accesso e fare pieno uso del sito.",
+"confirmemail_loggedin"	=> "L'indirizzo e-mail è stato confermato.",
+"confirmemail_error"	=> "Errore nel salvataggio della conferma.",
+
+"confirmemail_subject"	=> "{{SITENAME}}: richiesta di conferma dell'indirizzo",
+"confirmemail_body"	=> "Qualcuno, probabilmente tu stesso dall'indirizzo IP $1, ha registrato l'account \"$2\" su {{SITENAME}} indicando questo indirizzo e-mail.
+
+Per confermare che l'account ti appartiene e attivare le funzioni relative all'invio di e-mail su {{SITENAME}}, apri il collegamento seguente con il tuo browser:
+
+$3
+
+Se l'account *non* ti appartiene, non seguire il collegamento. Questo codice di conferma scadrà automaticamente alle $4.",
 
 # Inputbox extension, may be useful in other contexts as well
+"tryexact"	=> "Cerca corrispondenza esatta",
+"searchfulltext"	=> "Ricerca nel testo",
+"createarticle"	=> "Crea voce",
 
 # Scary transclusion
+"scarytranscludedisabled"	=> "[L'inclusione di pagine tra siti wiki non è attiva]",
+"scarytranscludefailed"	=> "[Errore: Impossibile ottenere il template $1]",
+"scarytranscludetoolong"	=> "[Errore: URL troppo lunga]",
 
 # Trackbacks
+"trackbackbox"	=> "<div id=\"mw_trackbacks\">
+Informazioni di trackback per questa voce:<br />
+$1
+</div>",
+"trackback" => "; $4$5 : [$2 $1]",
+"trackbackexcerpt"	=> "; $4$5 : [$2 $1]: <nowiki>$3</nowiki>",
+"trackbackremove"	=> " ([$1 Elimina])",
+"trackbacklink"	=> "Trackback",
+"trackbackdeleteok"	=> "Informazioni di trackback eliminate correttamente.",
 
 # delete conflict
+"deletedwhileediting"	=> "Attenzione: Questa pagina è stata cancellata dopo che hai iniziato a modificarla.",
+"confirmrecreate"	=> "L'utente [[Utente:$1|$1]] ([[Discussioni utente:$1|discussioni]]) ha cancellato questa voce dopo che hai iniziato a modificarla, per il seguente motivo: ''$2''
+Per favore, conferma che desideri veramente ricreare questa voce.",
+"recreate"	=> "Ricrea",
 
 # HTML dump
+"redirectingto"	=> "Reindirizzamento a [[$1]]...",
 
 # action=purge
+"confirm_purge"	=> "Si desidera pulire la cache di questa pagina?\n\n$1",
+"confirm_purge_button"	=> "Conferma",
+
+"youhavenewmessagesmulti"	=> "Hai nuovi messaggi su $1",
+"searchcontaining"	=> "Ricerca delle voci che contengono ''$1''.",
+"searchnamed"	=> "Ricerca delle voci con titolo ''$1''.",
+"articletitles"	=> "Ricerca delle voci che iniziano con ''$1''",
+"hideresults"	=> "Nascondi i risultati",
 
 # DISPLAYTITLE
+"displaytitle"	=> "(Per i collegamenti a questa pagina, usare [[$1]])",
 
 );
 

@@ -436,7 +436,7 @@ class LoadBalancer {
 	 */
 	function reallyOpenConnection( &$server ) {
 		if( !is_array( $server ) ) {
-			wfDebugDieBacktrace( 'You must update your load-balancing configuration. See DefaultSettings.php entry for $wgDBservers.' );
+			throw new MWException( 'You must update your load-balancing configuration. See DefaultSettings.php entry for $wgDBservers.' );
 		}
 
 		extract( $server );
@@ -469,7 +469,7 @@ class LoadBalancer {
 					$conn->reportConnectionError( $this->mLastError );
 				} else {
 					// If all servers were busy, mLastError will contain something sensible
-					wfEmergencyAbort( $conn, $this->mLastError );
+					throw new DBConnectionError( $conn, $this->mLastError );
 				}
 			} else {
 				if ( $this->mFailFunction ) {
@@ -477,26 +477,40 @@ class LoadBalancer {
 				} else {
 					$conn->failFunction( false );
 				}
-				$conn->reportConnectionError( "{$this->mLastError} ({$conn->mServer})" );
+				$server = $conn->getProperty( 'mServer' );
+				$conn->reportConnectionError( "{$this->mLastError} ({$server})" );
 			}
 			$reporting = false;
 		}
 		wfProfileOut( $fname );
 	}
 
-	function getWriterIndex()
-	{
+	function getWriterIndex() {
 		return 0;
 	}
 
-	function force( $i )
-	{
+	/**
+	 * Force subsequent calls to getConnection(DB_SLAVE) to return the 
+	 * given index. Set to -1 to restore the original load balancing
+	 * behaviour. I thought this was a good idea when I originally 
+	 * wrote this class, but it has never been used.
+	 */
+	function force( $i ) {
 		$this->mForce = $i;
 	}
 
-	function haveIndex( $i )
-	{
+	/**
+	 * Returns true if the specified index is a valid server index
+	 */
+	function haveIndex( $i ) {
 		return array_key_exists( $i, $this->mServers );
+	}
+
+	/**
+	 * Returns true if the specified index is valid and has non-zero load
+	 */
+	function isNonZeroLoad( $i ) {
+		return array_key_exists( $i, $this->mServers ) && $this->mLoads[$i] != 0;
 	}
 
 	/**
