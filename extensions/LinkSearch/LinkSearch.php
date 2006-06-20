@@ -61,7 +61,7 @@ function wfLinkSearchSetup() {
 					el_to AS url
 				FROM
 					$page,
-					$externallinks
+					$externallinks FORCE INDEX (el_index)
 				WHERE
 					page_id=el_from
 					AND el_index LIKE $encSearch";
@@ -90,6 +90,16 @@ function wfLinkSearchSetup() {
 				$wgOut->addHtml( "\n<!-- " . htmlspecialchars( $this->mMungedQuery ) . " -->\n" );
 				parent::doQuery( $offset, $limit );
 			}
+		}
+		
+		/**
+		 * Override to squash the ORDER BY.
+		 * We do a truncated index search, so the optimizer won't trust
+		 * it as good enough for optimizing sort. The implicit ordering
+		 * from the scan will usually do well enough for our needs.
+		 */
+		function getOrder() {
+			return '';
 		}
 	
 	}
