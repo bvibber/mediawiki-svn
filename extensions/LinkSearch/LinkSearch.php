@@ -51,7 +51,7 @@ function wfLinkSearchSetup() {
 			$page = $dbr->tableName( 'page' );
 			$externallinks = $dbr->tableName( 'externallinks' );
 			
-			$encSearch = $dbr->addQuotes( $this->mQuery );
+			$encSearch = $dbr->addQuotes( self::mungeQuery( $this->mQuery ) );
 			
 			return
 				"SELECT
@@ -76,6 +76,21 @@ function wfLinkSearchSetup() {
 			
 			return wfMsgHtml( 'linksearch-line', $urlLink, $pageLink );
 		}
+		
+		/**
+		 * Override to check query validity.
+		 */
+		function doQuery( $offset, $limit ) {
+			global $wgOut;
+			$this->mMungedQuery = LinkSearchPage::mungeQuery( $this->mQuery );
+			if( $this->mMungedQuery === false ) {
+				$wgOut->addWikiText( wfMsg( 'linksearch-error' ) );
+			} else {
+				// For debugging
+				$wgOut->addHtml( "\n<!-- " . htmlspecialchars( $this->mMungedQuery ) . " -->\n" );
+				parent::doQuery( $offset, $limit );
+			}
+		}
 	
 	}
 	
@@ -96,16 +111,8 @@ function wfLinkSearchSetup() {
 			wfCloseElement( 'form' ) );
 
 		if( $target != '' ) {
-			// For debugging
-			$search = LinkSearchPage::mungeQuery( $target );
-			if( $search === false ) {
-				$wgOut->addWikiText( wfMsg( 'linksearch-error' ) );
-			} else {
-				$wgOut->addHtml( "\n<!-- " . htmlspecialchars( $search ) . " -->\n" );
-				
-				$searcher = new LinkSearchPage( $search );
-				$searcher->doQuery( $offset, $limit );
-			}
+			$searcher = new LinkSearchPage( $target );
+			$searcher->doQuery( $offset, $limit );
 		}
 	}
 }
