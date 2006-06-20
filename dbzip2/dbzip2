@@ -258,10 +258,19 @@ class Compressor(object):
 			self.unlock()
 			if buffer:
 				self.debug(4, "compressorThread: compressing")
-				if buffer.compressing:
-					data = compressor.compress(buffer.input)
-				else:
-					data = compressor.decompress(buffer.input)
+				try:
+					if buffer.compressing:
+						data = compressor.compress(buffer.input)
+					else:
+						data = compressor.decompress(buffer.input)
+				except:
+					self.debug(1, "Aborting compressor thread '%s'" % compressor)
+					# Return the buffer to the queue so another thread
+					# can pick it up, or we'll be stuck forever.
+					self.lock()
+					self.inputQueue.append(buffer)
+					self.unlock()
+					break
 				
 				self.lock()
 				buffer.set(data)
