@@ -14,6 +14,7 @@ function wfLinkSearchSetup() {
 			'linksearch' => 'Search web links',
 			'linksearch-text' => 'Wildcards such as "*.wikipedia.org" may be used.',
 			'linksearch-line' => '$1 linked from $2',
+			'linksearch-error' => 'Wildcards may appear only at the start of the hostname.'
 		)
 	);
 	
@@ -50,8 +51,7 @@ function wfLinkSearchSetup() {
 			$page = $dbr->tableName( 'page' );
 			$externallinks = $dbr->tableName( 'externallinks' );
 			
-			$search = self::mungeQuery( $this->mQuery );
-			$encSearch = $dbr->addQuotes( $search );
+			$encSearch = $dbr->addQuotes( $this->mQuery );
 			
 			return
 				"SELECT
@@ -90,7 +90,7 @@ function wfLinkSearchSetup() {
 		$wgOut->addHtml(
 			wfOpenElement( 'form',
 				array( 'method' => 'get', 'action' => $GLOBALS['wgScript'] ) ) .
-			wfHidden( 'title', $self->getPrefixedUrl() ) .
+			wfHidden( 'title', $self->getPrefixedDbKey() ) .
 			wfInput( 'target', 50, $target ) .
 			wfSubmitButton( wfMsg( 'search' ) ) .
 			wfCloseElement( 'form' ) );
@@ -98,10 +98,14 @@ function wfLinkSearchSetup() {
 		if( $target != '' ) {
 			// For debugging
 			$search = LinkSearchPage::mungeQuery( $target );
-			$wgOut->addHtml( "\n<!-- " . htmlspecialchars( $search ) . " -->\n" );
-			
-			$searcher = new LinkSearchPage( $target );
-			$searcher->doQuery( $offset, $limit );
+			if( $search === false ) {
+				$wgOut->addWikiText( wfMsg( 'linksearch-error' ) );
+			} else {
+				$wgOut->addHtml( "\n<!-- " . htmlspecialchars( $search ) . " -->\n" );
+				
+				$searcher = new LinkSearchPage( $search );
+				$searcher->doQuery( $offset, $limit );
+			}
 		}
 	}
 }
