@@ -52,10 +52,6 @@ function wfSetupMakesysop() {
 			'makesysopok'           => "<b>User \"$1\" is now a sysop</b>",
 			'makesysopfail'         => "<b>User \"$1\" could not be made into a sysop. (Did you enter the name correctly?)</b>",
 			'setbureaucratflag' => 'Set bureaucrat flag',
-			'setstewardflag'    => 'Set steward flag',
-			'bureaucratlog'         => 'Bureaucrat_log',
-			'rightslogtext'         => 'This is a log of changes to user rights.',
-			'bureaucratlogentry'    => "Changed group membership for $1 from $2 to $3",
 			'rights'                        => 'Rights:',
 			'set_user_rights'       => 'Set user rights',
 			'user_rights_set'       => "<b>User rights for \"$1\" updated</b>",
@@ -63,8 +59,10 @@ function wfSetupMakesysop() {
 			'makesysop'         => 'Make a user into a sysop',
 			'already_sysop'     => 'This user is already an administrator',
 			'already_bureaucrat' => 'This user is already a bureaucrat',
-			'already_steward'   => 'This user is already a steward',
 			'makesysop-nodatabase' => 'Bad interwiki username: $1',
+			'group-steward' => 'Stewards',
+			'group-steward-member' => 'Steward',
+			'grouppage-steward' => 'Project:Stewards',
 		)
 	);
 	
