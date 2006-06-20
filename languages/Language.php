@@ -855,7 +855,13 @@ class Language {
 	 * @return bool
 	 */
 	function isRTL() { return false; }
-	function getDirMark() { return $this->isRTL() ? '&rlm;' : '&lrm;'; }
+
+	/**
+	 * A hidden direction mark (LRM or RLM), depending on the language direction
+	 *
+	 * @return string
+	 */
+	function getDirMark() { return $this->isRTL() ? "\xE2\x80\x8F" : "\xE2\x80\x8E"; }
 
 	/**
 	 * To allow "foo[[bar]]" to extend the link over the whole word "foobar"
@@ -863,7 +869,6 @@ class Language {
 	 * @return bool
 	 */
 	function linkPrefixExtension() { return false; }
-
 
 	function &getMagicWords() {
 		global $wgMagicWordsEn;
