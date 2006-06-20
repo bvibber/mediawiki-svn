@@ -42,10 +42,13 @@ function wfNewuserlog() {
 	);
 
 	# Add a new log type
-	$wgHooks['LogPageValidTypes'][] = 'wfNewuserlogAddLogType';
-	$wgHooks['LogPageLogName'][] = 'wfNewuserlogAddLogName';
-	$wgHooks['LogPageLogHeader'][] = 'wfNewuserlogAddLogHeader';
-	$wgHooks['LogPageActionText'][] = 'wfNewuserlogAddActionText';
+	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
+	$wgLogTypes[]                      = 'newusers';
+	$wgLogNames['newusers']            = 'newuserlogpage';
+	$wgLogHeaders['newusers']          = 'newuserlogpagetext';
+	$wgLogActions['newusers/newusers'] = 'newuserlogentry';
+	$wgLogActions['newusers/create']   = 'newuserlog-create-entry';
+	$wgLogActions['newusers/create2']  = 'newuserlog-create2-entry';
 	
 	# Run this hook on new account creation
 	$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
@@ -74,29 +77,6 @@ function wfNewuserlogHook( $user=null ) {
 	$log = new LogPage( 'newusers' );
 	$log->addEntry( $action, $user->getUserPage(), $message );
 	
-	return true;
-}
-
-function wfNewuserlogAddLogType( &$types ) {
-	if ( !in_array( 'newusers', $types ) )
-		$types[] = 'newusers';
-	return true;
-}
-
-function wfNewuserlogAddLogName( &$names ) {
-	$names['newusers'] = 'newuserlogpage';
-	return true;
-}
-
-function wfNewuserlogAddLogHeader( &$headers ) {
-	$headers['newusers'] = 'newuserlogpagetext';
-	return true;
-}
-
-function wfNewuserlogAddActionText( &$actions ) {
-	$actions['newusers/newusers'] = 'newuserlogentry';
-	$actions['newusers/create']   = 'newuserlog-create-entry';
-	$actions['newusers/create2']  = 'newuserlog-create2-entry';
 	return true;
 }
 ?>
