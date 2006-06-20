@@ -176,7 +176,7 @@ class BotQueryProcessor {
 			"nllimit      - How many total pages to return",
 			"nlfrom       - The page title to start enumerating from.",
 			"nlnamespace  - Limits which namespace to enumerate. Default 0 (Main)",
-			"Example: query.php?what=nolanglinks&nllimit=50",
+			"Example: query.php?what=nolanglinks&nllimit=10&nlfrom=A",
 			)),
 		'category'       => array( 'genPagesInCategory', true,
 			array( 'cptitle', 'cplimit', 'cpfrom' ),
@@ -394,14 +394,21 @@ class BotQueryProcessor {
 	{
 		global $wgRequest, $wgUser;
 
-		$this->addStatusMessage( 'total', array( 'dbtime' => formatTimeInMs($this->totalDbTime) ));
+		$this->addPerfMessage( 'total', array( 'dbtime' => formatTimeInMs($this->totalDbTime) ));
 		$this->recordProfiling( 'total', 'time', $this->startTime );
 		
 		$printer = $this->outputGenerators[$this->format][GEN_FUNCTION];
 		$mime = $this->outputGenerators[$this->format][GEN_MIME];
 		header( "Content-Type: $mime; charset=utf-8;" );
 		if( !$isError ) {
-			$this->{$printer}( $this->data );
+			if( !$this->enableProfiling && array_key_exists( 'perf', $this->data )) {
+				$perf =& $this->data['perf'];
+				unset( $this->data['perf'] );
+				$this->{$printer}( $this->data );
+				$this->data['perf'] =& $perf;
+			} else {
+				$this->{$printer}( $this->data );
+			}
 		} else {
 			$this->{$printer}( $this->data['query'] );
 		}
@@ -428,8 +435,8 @@ class BotQueryProcessor {
 		}
 		$paramStr = implode( '&', $paramVals );
 		$perfVals = array();
-		if( array_key_exists('query', $this->data) ) {
-			$queryElem =& $this->data['query'];
+		if( array_key_exists('perf', $this->data) ) {
+			$queryElem =& $this->data['perf'];
 			foreach( $queryElem as $module => $values ) {
 				if( is_array( $values )) {
 					if( array_key_exists( 'time', $values )) $perfVals[] = "$module={$values['time']}";
@@ -902,6 +909,7 @@ class BotQueryProcessor {
 		$this->endDbProfiling( $prop );
 		
 		while ( $row = $this->db->fetchObject( $res ) ) {
+			// FIXME!!!!!!!!!!  param count?
 			$this->addPageSubElement( $row->a_id, 'redirect', 'to', $this->getLinkInfo( $row->b_namespace, $row->b_title, $row->b_id, $row->b_is_redirect ), false);
 			if( $row->b_is_redirect ) {
 				$this->addPageSubElement( $row->a_id, 'redirect', 'dblredirectto', $this->getLinkInfo( $row->c_namespace, $row->c_title, $row->c_id, $row->c_is_redirect ), false);
@@ -921,9 +929,9 @@ class BotQueryProcessor {
 		
 		$pages =& $this->data['pages'];
 		$titles = array();
-		foreach( $pages as $key => &$page ) {
+		foreach( $pages as $pageId => &$page ) {
 			if( array_key_exists('_obj', $page) ) {
-				$titles[$key] =& $page['_obj'];
+				$titles[$pageId] =& $page['_obj'];
 			}
 		}
 		if( !empty($titles) ) {
@@ -943,7 +951,7 @@ class BotQueryProcessor {
 				$this->endDbProfiling( $prop );
 
 				while ( $row = $this->db->fetchObject( $res ) ) {
-					$titles[ $row->page_id ]->loadRestrictions( $row->page_restrictions );
+					$titles[ intval($row->page_id) ]->loadRestrictions( $row->page_restrictions );
 				}
 				$this->db->freeResult( $res );
 			}
@@ -1008,10 +1016,10 @@ class BotQueryProcessor {
 		
 		// Find the image pages to process
 		$imageDbKeys = array();
-		foreach( $this->data['pages'] as $key => &$page ) {
-			if( $key > 0 && $page['ns'] == NS_IMAGE ) {
+		foreach( $this->data['pages'] as $pageId => &$page ) {
+			if( $pageId > 0 && $page['ns'] == NS_IMAGE ) {
 				$obj = &$page['_obj'];
-				$imageDbKeys[$obj->getDBkey()] = $key;
+				$imageDbKeys[$obj->getDBkey()] = $pageId;
 			}
 		}
 		if( !empty( $imageDbKeys )) {
@@ -1020,7 +1028,7 @@ class BotQueryProcessor {
 				$dbTime += $this->ImageInfoHelper( false, $imageDbKeys, $iiurl );
 			}
 			$this->totalDbTime += $dbTime;
-			$this->addStatusMessage( $prop, array( 'dbtime' => formatTimeInMs($dbTime) ));
+			$this->addPerfMessage( $prop, array( 'dbtime' => formatTimeInMs($dbTime) ));
 		}
 		$this->endProfiling( $prop );
 	}
@@ -1145,10 +1153,10 @@ class BotQueryProcessor {
 		// Make a list of pages to query
 		//
 		$linkBatch = new LinkBatch;
-		foreach( $this->data['pages'] as $key => &$page ) {
+		foreach( $this->data['pages'] as $pageId => &$page ) {
 			if( (
-				( $key < 0 && $all && array_key_exists('_obj', $page) ) ||
-				( $key > 0 && ($existing || ($nonredir && !array_key_exists('redirect', $page))) )
+				( $pageId < 0 && $all && array_key_exists('_obj', $page) ) ||
+				( $pageId > 0 && ($existing || ($nonredir && !array_key_exists('redirect', $page))) )
 				)
 			&&
 				( !$isImage || $page['ns'] == NS_IMAGE )	// when doing image links search, only allow NS_IMAGE
@@ -1287,7 +1295,7 @@ class BotQueryProcessor {
 					// Query just for rev_id of last modifications by unique users
 					$res = $this->db->select( 'revision', 'MAX(rev_id) rev_id_latest, MAX(rev_timestamp) MAX_rev_timestamp', $conds, $queryname, $options );
 					while ( $row = $this->db->fetchObject( $res ) ) {
-						$this->revIdsArray[] = $row->rev_id_latest;
+						$this->revIdsArray[] = intval($row->rev_id_latest);
 					}
 				} else {
 					// Query all revision information
@@ -1295,7 +1303,7 @@ class BotQueryProcessor {
 					$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
 					while ( $row = $this->db->fetchObject( $res ) ) {
 						$this->addRevisionSubElement( $row, $pageId, $rvcontent );
-						$doneRevIds[] = $row->rev_id;
+						$doneRevIds[] = intval($row->rev_id);
 					}
 					$this->revIdsArray = array_diff( $this->revIdsArray, $doneRevIds );	// remove everything already done
 				}
@@ -1323,8 +1331,8 @@ class BotQueryProcessor {
 	function addRevisionSubElement( $row, $pageId, $rvcontent )
 	{
 		$vals = array(
-			'revid' => $row->rev_id,
-			'oldid' => $row->rev_text_id,
+			'revid' => intval($row->rev_id),
+			'oldid' => intval($row->rev_text_id),
 			'timestamp' => wfTimestamp( TS_ISO_8601, $row->rev_timestamp ),
 			'user' => $row->rev_user_text,
 			);
@@ -1370,7 +1378,7 @@ class BotQueryProcessor {
 		
 		$this->startDbProfiling(); // DB code is intermixed here, so the result is not very accurate
 		// For all valid pages in User namespace query history. Note that the page might not exist.
-		foreach( $this->data['pages'] as $key => &$page ) {
+		foreach( $this->data['pages'] as $pageId => &$page ) {
 			if( array_key_exists('_obj', $page) ) {
 				$title =& $page['_obj'];
 				if( $title->getNamespace() == NS_USER && !$title->isExternal() ) {
@@ -1384,7 +1392,7 @@ class BotQueryProcessor {
 					$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
 					while ( $row = $this->db->fetchObject( $res ) ) {
 						$vals = $this->getLinkInfo( $row->page_namespace, $row->page_title );
-						$vals['revid'] = $row->rev_id;
+						$vals['revid'] = intval($row->rev_id);
 						$vals['oldid'] = $row->rev_text_id;
 						$vals['timestamp'] = wfTimestamp( TS_ISO_8601, $row->rev_timestamp );
 						if( $row->rev_minor_edit ) $vals['minor'] = '';
@@ -1449,7 +1457,7 @@ class BotQueryProcessor {
 			$this->db->freeResult( $res );
 			$this->dieUsage( "No read permission for $titleString", 'pi_pageidaccessdenied' );
 		}
-		$pageid = $row->page_id;
+		$pageid = intval($row->page_id);
 		$data = &$this->data['pages'][$pageid];
 		$this->pageIdByText[$title->getPrefixedText()] = $pageid;
 		$data['_obj']    = $title;
@@ -1457,7 +1465,7 @@ class BotQueryProcessor {
 		$data['title']   = $title->getPrefixedText();
 		$data['id']      = $pageid;
 		$data['touched'] = $row->page_touched;
-		$data['revid']   = $row->page_latest;
+		$data['revid']   = intval($row->page_latest);
 		
 		$this->existingPageIds[] = $pageid;
 		if ( $row->page_is_redirect ) {
@@ -1651,7 +1659,7 @@ class BotQueryProcessor {
 			$id = 0;
 		}
 		if( $id >= 0 ) {
-			$data['id'] = $id;
+			$data['id'] = intval($id);
 		}
 		if( $isRedirect ) {
 			$data['redirect'] = 'true';
@@ -1680,7 +1688,7 @@ class BotQueryProcessor {
 	*/
 	function addPageSubElement( $pageId, $mainElem, $itemElem, $params, $multiItems = true )
 	{
-		$data = & $this->data['pages'][$pageId][$mainElem];
+		$data = & $this->data['pages'][intval($pageId)][$mainElem];
 		if( $multiItems ) {
 			$data['_element'] = $itemElem;
 			$data[] = $params;
@@ -1762,7 +1770,7 @@ class BotQueryProcessor {
 				"    titles     - A list of titles, separated by the pipe '|' symbol.",
 				"    pageids    - A list of page ids, separated by the pipe '|' symbol.",
 				"    revids     - List of revision ids, separated by '|' symbol. See 'revisions' property for additional information.",
-				// "    noprofile  - When present, each sql query execution time will be hidden.",
+				"    noprofile  - When present, each sql query execution time will be hidden.",
 				"",
 				"*Examples*",
 				"    query.php?what=links|templates&titles=User:Yurik",
@@ -1787,11 +1795,10 @@ class BotQueryProcessor {
 				"*Supported Formats*",
 				$formats,
 				"",
-				"*References*",
-				"  Query API Home Page: http://en.wikipedia.org/wiki/User:Yurik/Query_API",
-				// This line uses %2E instead of '.' because otherwise html printer will try to make a link to "query.php?..."
-				"  Changelog and Source Code: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/BotQuery/query%2Ephp?view=log",
-				"  Feature Suggestions: http://en.wikipedia.org/wiki/User_talk:Yurik/Query_API",
+				"*Links*",
+				"  Home Page:            http://en.wikipedia.org/wiki/User:Yurik/Query_API",
+				"  Suggestions:          http://en.wikipedia.org/wiki/User_talk:Yurik/Query_API",
+				"  Changelog and Source: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/BotQuery/query%2Ephp?view=log",
 				"",
 				"*Credits*",
 				"  This feature was written and is being maintained by Yuri Astrakhan (FirstnameLastname@gmail.com)",
@@ -1820,14 +1827,27 @@ class BotQueryProcessor {
 	*/
 	function addStatusMessage( $module, $value, $preserveXmlSpacing = false )
 	{
-		if( !array_key_exists( 'query', $this->data )) {
-			$this->data['query'] = array();
+		$this->addTopMessage( 'query', $module, $value, $preserveXmlSpacing );
+	}
+	
+	/**
+	* Adds a status message into the <query> element, for a given module.
+	*/
+	function addPerfMessage( $module, $value, $preserveXmlSpacing = false )
+	{
+		$this->addTopMessage( 'perf', $module, $value, $preserveXmlSpacing );
+	}
+
+	function addTopMessage( $main, $module, $value, $preserveXmlSpacing )
+	{
+		if( !array_key_exists( $main, $this->data )) {
+			$this->data[$main] = array();
 		}
-		if( !array_key_exists( $module, $this->data['query'] )) {
-			$this->data['query'][$module] = array();
+		if( !array_key_exists( $module, $this->data[$main] )) {
+			$this->data[$main][$module] = array();
 		}
 		
-		$element = &$this->data['query'][$module];
+		$element = &$this->data[$main][$module];
 		if( is_array($value) ) {
 			$element = array_merge( $element, $value );
 			if( !array_key_exists( '*', $element )) {
@@ -1880,7 +1900,7 @@ class BotQueryProcessor {
 	function recordProfiling( $module, $type, &$start )
 	{
 		$timeDelta = wfTime() - $start;
-		$this->addStatusMessage( $module, array( $type => formatTimeInMs($timeDelta) ));
+		$this->addPerfMessage( $module, array( $type => formatTimeInMs($timeDelta) ));
 		return $timeDelta;
 	}
 	
@@ -1939,7 +1959,7 @@ class BotQueryProcessor {
 	?>
 	<pre><?php
 		recXmlPrint( 'htmlPrinter', 'yurik', $data, -2 );
-		htmlPrinter( "\n\n*{$this->formatTimeFromStart()}*" );
+		if( $this->enableProfiling ) htmlPrinter( "\n\n*{$this->formatTimeFromStart()}*" );
 	?></pre>
 	</body>
 	<?php
@@ -1953,7 +1973,7 @@ class BotQueryProcessor {
 		global $wgRequest;
 		echo '<?xml version="1.0" encoding="utf-8"?>';
 		recXmlPrint( 'echoPrinter', 'yurik', $data, $wgRequest->getCheck('xmlindent') ? -2 : null );
-		echoPrinter( "\n<!--{$this->formatTimeFromStart()}-->" );
+		if( $this->enableProfiling ) echoPrinter( "\n<!--{$this->formatTimeFromStart()}-->" );
 	}
 
 	/**
@@ -1963,7 +1983,7 @@ class BotQueryProcessor {
 	{
 		sanitizeOutputData($data);
 		print_r($data);
-		echo "\n\n{$this->formatTimeFromStart()}";
+		if( $this->enableProfiling ) echo "\n\n{$this->formatTimeFromStart()}";
 	}
 
 	/**
@@ -1973,7 +1993,7 @@ class BotQueryProcessor {
 	function printDebugCode( &$data )
 	{
 		var_export($data);
-		echo "\n\n{$this->formatTimeFromStart()}";
+		if( $this->enableProfiling ) echo "\n\n{$this->formatTimeFromStart()}";
 	}
 
 	/**
@@ -2000,7 +2020,7 @@ class BotQueryProcessor {
 			slowWddxPrinter( $data );
 			echo '</data></wddxPacket>';
 		}
-		echo "\n<!--{$this->formatTimeFromStart()}-->";
+		if( $this->enableProfiling ) echo "\n<!--{$this->formatTimeFromStart()}-->";
 	}
 
 	/**
