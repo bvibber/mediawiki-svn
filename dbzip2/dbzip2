@@ -46,6 +46,7 @@ class Compressor(object):
 		self.bytesRead = 0L
 		self.bytesWritten = 0L
 		
+		self.runningThreads = 0
 		self.compressors = []
 		self.inputQueue = [] # blocks to be compressed
 		self.outputQueue = [] # buffers to be written
@@ -92,6 +93,13 @@ class Compressor(object):
 		
 		for compressor in self.compressors:
 			start_new_thread(self.compressorThread, (compressor,))
+
+		if self.threads == 0:
+			# If we're only using remote threads, we risk hanging if all
+			# remote servers go offline. Prepare a local thread to run
+			# on an emergency basis.
+			start_new_thread(self.compressorThread,
+				(LocalCompressor(self.blockSize100k), True))
 		
 		self.writerThread()
 	
@@ -194,6 +202,10 @@ class Compressor(object):
 			self.writeTrailer()
 			self.bitStream.flush()
 		
+		# Wait for all compressor threads to complete out.
+		while self.runningThreads > 0:
+			self.sleep()
+		
 		delta = time.time() - startTime
 		megabyte = 1024.0 * 1024.0
 		rateIn = (float(self.bytesRead) / megabyte) / delta
@@ -244,7 +256,7 @@ class Compressor(object):
 		# 32-bit combined CRC
 		self.bitStream.write(struct.pack(">L", self.crc))
 	
-	def compressorThread(self, compressor):
+	def compressorThread(self, compressor, emergency=False):
 		"""Worker thread: send a block to a foreign server and receive data."""
 		self.debug(3, "compressorThread: Started")
 		blocksCompressed = 0
@@ -252,7 +264,17 @@ class Compressor(object):
 		bytesWritten = 0L
 		startTime = time.time()
 		
+		self.lock()
+		self.runningThreads += 1
+		self.unlock()
+		
 		while not (self.done and self.blocksCompressed == self.blocksRead):
+			if emergency and self.runningThreads > 1:
+				# This is a backup thread for when all remote servers
+				# are down and no regular local threads are scheduled.
+				self.sleep()
+				continue
+			
 			self.lock()
 			buffer = self.dequeueInput()
 			self.unlock()
@@ -293,6 +315,10 @@ class Compressor(object):
 		rateOut = (float(bytesWritten) / megabyte) / delta
 		self.debug(1, "%s: processed %d blocks in %0.1f seconds (%0.3f MB/s in, %0.3f MB/s out)" % (
 			compressor, blocksCompressed, delta, rateIn, rateOut))
+		
+		self.lock()
+		self.runningThreads -= 1
+		self.unlock()
 	
 
 
