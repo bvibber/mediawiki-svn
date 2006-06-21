@@ -335,6 +335,12 @@ $from: address of sending user
 $subject: subject of the mail
 $text: text of the mail
 
+'FetchChangesList': When fetching the ChangesList derivative for a particular user
+&$user: User the list is being fetched for
+&$skin: Skin object to be used with the list
+&$list: List object (defaults to NULL, change it to an object instance and return
+false override the list derivative used)
+
 'GetInternalURL': modify fully-qualified URLs used for squid cache purging
 $title: Title object of page
 $url: string value as output (out parameter, can modify)
@@ -389,14 +395,6 @@ my talk page, my contributions" etc).
 
 &$personal_urls: Array of link specifiers (see SkinTemplate.php)
 &$title: Title object representing the current page
-
-'RunUnknownJob': Handle additional, unknown job queue commands
-&$job: Job object to be handled
-&$retval: Return value indicating whether or not the operation was successful
-
-Return true to continue with processing the job through other hooks and code,
-or false if the job has been completed. Alter $retval to indicate success or
-failure when performing the actual steps to "process" the job.
 
 'SiteNoticeBefore': Before the sitenotice/anonnotice is composed
 &$siteNotice: HTML returned as the sitenotice
