@@ -10,11 +10,12 @@ full text and terms of the license.
 == Overview ==
 
 	1. Introduction
-	2. Installing the extension
-	3. Editing the notification email
-	4. Further configuration
-	5. Notes
-	6. Thanks
+	2. Installation requirements
+	3. Installing the extension
+	4. Editing the notification email
+	5. Further configuration
+	6. Change log
+	7. Feedback
 	
 == 1. Introduction ==
 
@@ -23,7 +24,11 @@ means to send email messages to one or more registered users upon the creation
 of a user account. The behaviour of the extension can be controlled using
 configuration options within the LocalSettings.php file for MediaWiki.
 
-== 2. Installing the extension ==
+== 2. Installation requirements ==
+
+This extension requires MediaWiki 1.5.0 or later.
+
+== 3. Installing the extension ==
 
 To install the new user email notification extension, first upload/copy the
 extension file NewUserNotif.php into your MediaWiki extensions directory. Then
@@ -33,7 +38,7 @@ edit your LocalSettings.php file and add the following line:
 
 Save the file (uploading if applicable) to complete the installation.
 
-== 3. Editing the notification email ==
+== 4. Editing the notification email ==
 
 When preparing the email message to be sent to each recipient, the extension
 relies upon two system messages. You will need to create these if you wish
@@ -50,7 +55,7 @@ MediaWiki:Newusernotifbody
 	$3 is replaced with the wiki site name from $wgSitename;
 	$4 is replaced with the time and date of the account's creation.
 
-== 4. Further configuration ==
+== 5. Further configuration ==
 
 The behaviour of the extension can be tweaked using three configuration
 variables. To override the defaults for these, set them in LocalSettings.php
@@ -62,7 +67,9 @@ $wgNewUserNotifSender
 
 $wgNewUserNotifTargets
 	Array containing the usernames or identifiers of those who should receive
-	a notification email
+	a notification email. Email will not be sent unless the recipient's
+	email address has been validated, where this is required in the site
+	configuration.
 	
 	Defaults to the first user (usually the wiki's primary administrator)
 	
@@ -70,22 +77,7 @@ $wgNewUserNotifEmailTargets
 	Array containing email addresses to which a notification should also be sent
 	Defaults to no additional addresses
 
-== 5. Notes ==
-
-* On wikis where email address authentication is present and active(1), then
-  no email is sent unless the recipient's email address is validated.
-
-(1) => MediaWiki 1.6 and later
-
-== 6. Thanks... ==
-
-	* Aculver from #mediawiki, who requested the extension in the first place
-	* Avar, for providing an invaluable tip regarding formatting timestamps
-	* RedACE from #mediawiki, who requested the external email addresses feature
-
-	All feedback welcome via <robchur@gmail.com>.
-	
-== 7. Change Log ==
+== 6. Change log ==
 
 Version 1.1
 17/02/2006
@@ -101,3 +93,7 @@ Version 1.3
 	Rewrite for performance and code cleanliness
 	Fix backwards-compatibility with MediaWiki 1.5
 	Support usernames as values for $wgNewUserNotifTargets
+
+== 7. Feedback ==
+
+All feedback, bug reports, etc. welcome via <robchur@gmail.com>.

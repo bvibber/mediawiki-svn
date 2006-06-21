@@ -15,7 +15,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	require_once( 'UserMailer.php' );
 
 	$wgExtensionFunctions[] = 'efNewUserNotifSetup';
-	$wgExtensionCredits['other'][] = array( 'name' => 'New User Email Notification', 'author' => 'Rob Church', 'url' => 'http://meta.wikimedia.org/wiki/New_User_Email_Notification' );
+	$wgExtensionCredits['other'][] = array( 'name' => 'New User Email Notification', 'author' => 'Rob Church', 'url' => 'http://www.mediawiki.org/wiki/New_User_Email_Notification' );
 
 	$wgNewUserNotifSender = $wgPasswordSender;
 	$wgNewUserNotifTargets[] = 1;
@@ -153,8 +153,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	}
 
 } else {
-	echo( "This is an extension to the MediaWiki package and cannot be run standalone.\n" );
-	die( -1 );
+	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
+	die( 1 );
 }
 
 
