@@ -23,7 +23,7 @@ function wfSpecialFilepath() {
 	$wgMessageCache->addMessages(
 		array(
 			'filepath' => 'File path',
-			'filepath_page' => 'File: ',
+			'filepath_page' => 'File:',
 			'filepath_submit' => 'Path',
 		)
 	);
@@ -40,9 +40,8 @@ function wfSpecialFilepath() {
 			$file = isset( $par ) ? $par : $wgRequest->getText( 'file' );
 			
 			$title = Title::makeTitleSafe( NS_IMAGE, $file );
-			$article = new Article( $title );
 			
-			if ( ! is_null( $title ) && ! $article->exists() ) {
+			if ( ! is_null( $title ) && ! $title->exists() ) {
 				$wgOut->setStatusCode( 404 );
 				$this->setHeaders();
 				$this->outputHeader();
@@ -81,6 +80,7 @@ function wfSpecialFilepath() {
 				) .
 					wfOpenElement( 'label' ) .
 						wfMsgHtml( 'filepath_page' ) .
+						' ' .
 						wfElement( 'input',
 							array(
 								'type' => 'text',
