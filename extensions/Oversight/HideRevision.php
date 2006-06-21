@@ -52,11 +52,6 @@ function hrSetup() {
 	$GLOBALS['wgHooks']['ArticleViewHeader'][] = 'hrArticleViewHeaderHook';
 	$GLOBALS['wgHooks']['DiffViewHeader'][] = 'hrDiffViewHeaderHook';
 	
-	$GLOBALS['wgLogTypes'][] = 'oversight';
-	$GLOBALS['wgLogNames']['oversight'] = 'oversight-log-name';
-	$GLOBALS['wgLogHeaders']['oversight'] = 'oversight-log-text';
-	$GLOBALS['wgLogActions']['oversight/hiderev'] = 'oversight-log-hiderev';
-	
 	$GLOBALS['wgMessageCache']->addMessages(
 		array(
 			'hiderevision' => 'Permanently hide revisions',
@@ -76,7 +71,7 @@ function hrSetup() {
 Removed items will not be visible to anyone through the web site,
 but the deletions are logged and can be restored manually by a
 database administrator if you make a mistake.",
-			'hiderevision-reason' => 'Reason (will be logged publicly):',
+			'hiderevision-reason' => 'Reason (will be logged privately):',
 			'hiderevision-submit' => 'Hide this data permanently',
 			
 			// Tab displayed to allowed users on old revision display
@@ -93,8 +88,6 @@ database administrator if you make a mistake.",
 			'hiderevision-error-delete' => 'Could not archive; was it previously deleted?',
 			
 			// Logging
-			'oversight-log-name' => 'Oversight log',
-			'oversight-log-text' => 'Special administrative actions.',
 			'oversight-log-hiderev' => 'removed an edit from $1',
 			
 			// Oversight review page
@@ -349,10 +342,6 @@ function hrHideRevision( $dbw, $id, $reason ) {
 	
 	// Invalidate cache of page history
 	$title->invalidateCache();
-	
-	// Log it!
-	$log = new LogPage( 'oversight' );
-	$log->addEntry( 'hiderev', $title, $reason );
 	
 	// Done with all database pieces; commit!
 	$dbw->immediateCommit();
