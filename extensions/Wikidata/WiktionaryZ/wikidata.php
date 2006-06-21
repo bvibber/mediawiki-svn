@@ -13,6 +13,7 @@ interface PageElement {
 	public function getId();
 	public function getCaption();
 	public function getRelationModel();
+	public function allowAdd();
 	public function allowRemove();
 	public function repeatInput();
 	public function getController();
@@ -21,22 +22,27 @@ interface PageElement {
 interface PageElementController {
 	public function add($values);
 	public function remove($tuple);
+	public function update($tuple, $updatedValues);
 }
 
 class DefaultPageElement implements PageElement {
-	public $id;
-	public $caption;
-	public $relationModel;
-	public $allowRemove;
-	public $inputRow;
-	public $repeatInput;
-	public $controller;
+	protected $id;
+	protected $caption;
+	protected $relationModel;
+	protected $allowAdd;
+	protected $allowRemove;
+	protected $updatableHeading;
+	protected $inputRow;
+	protected $repeatInput;
+	protected $controller;
 	
-	public function __construct($id, $caption, $relationModel, $allowRemove, $repeatInput, $controller) {
+	public function __construct($id, $caption, $relationModel, $allowAdd, $allowRemove, $updatableHeading, $repeatInput, $controller) {
 		$this->id = $id;
 		$this->caption = $caption;
 		$this->relationModel = $relationModel;
+		$this->allowAdd = $allowAdd;
 		$this->allowRemove = $allowRemove;
+		$this->updatableHeading = $updatableHeading;
 		$this->repeatInput = $repeatInput;
 		$this->controller = $controller;
 	}
@@ -53,8 +59,16 @@ class DefaultPageElement implements PageElement {
 		return $this->relationModel;
 	}
 	
+	public function allowAdd() {
+		return $this->allowAdd;
+	}
+	
 	public function allowRemove() {
 		return $this->allowRemove;
+	}
+	
+	public function updatableHeading() {
+		return $this->updatableHeading;	
 	}
 	
 	public function repeatInput() {

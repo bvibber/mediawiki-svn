@@ -1,26 +1,8 @@
 <?php
 
 require_once('forms.php');
-
-class Attribute {
-	public $id = "";	
-	public $name = "";
-	public $type = "";
-	
-	public function __construct($id, $name, $type) {
-		$this->id = $id;	
-		$this->name = $name;
-		$this->type = $type;
-	}
-}
-
-class Heading {
-	public $attributes;
-	
-	public function __construct($attributes) {
-		$this->attributes = $attributes;
-	}
-}
+require_once('converter.php');
+require_once('attribute.php');
 
 interface RelationModel {
 	public function getHeading();
@@ -65,64 +47,13 @@ class ArrayRelation implements RelationModel {
 	}
 }
 
-interface Converter {
-	public function convert($value);
-	public function getAttributes();
-}
-
-class DefaultConverter implements Converter {
-	protected $attribute;
-	
-	public function __construct($attribute) {
-		$this->attribute = $attribute;
-	}
-	
-	public function convert($tuple) {
-		return array(convertToHTML($tuple[$this->attribute->id], $this->attribute->type));
-	}
-	
-	public function getAttributes() {
-		return array($this->attribute);
-	}
-}
-
-class DefiningExpressionConverter extends DefaultConverter {
-	public function convert($tuple) {
-		return array(definingExpressionAsLink($tuple[$this->attribute->id]));
-	}
-}
-
-class ExpressionConverter extends DefaultConverter {
-	protected $attributes = array();
-	
-	public function __construct($attribute) {
-		parent::__construct($attribute);
-		$this->attributes[] = new Attribute("language", "Language", "language"); 
-		$this->attributes[] = new Attribute("spelling", "Spelling", "spelling");
-	}
-	
-	public function getAttributes() {
-		return $this->attributes;
-	}
-	
-	public function convert($tuple) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$expressionId = $tuple[$this->attribute->id];
-		$queryResult = $dbr->query("SELECT language_id, spelling from uw_expression_ns WHERE expression_id=$expressionId");
-		$expression = $dbr->fetchObject($queryResult); 
-	
-		return array(languageIdAsText($expression->language_id), spellingAsLink($expression->spelling));
-	}
-}
-
 class HTMLRelation implements RelationModel {
 	protected $relationModel;
 	protected $converters = array();
-	protected $heading;	
 	
-	public function __construct($relationModel) {
+	public function __construct($relationModel, $updatableHeading) {
 		$this->relationModel = $relationModel;
-		$this->configureConverters();
+		$this->configureConverters($updatableHeading);
 	}
 
 	public function getHeading() {
@@ -147,14 +78,19 @@ class HTMLRelation implements RelationModel {
 		return $result;
 	}
 	
-	protected function configureConverters() {
+	protected function configureConverters($updatableHeading) {
 		$attributes = array();
+		$updatableAttributes = $updatableHeading->attributes;
 		
 		foreach($this->relationModel->getHeading()->attributes as $attribute) {
-			switch($attribute->type) {
-				case "expression": $converter = new ExpressionConverter($attribute); break;				
-				case "defining-expression": $converter = new DefiningExpressionConverter($attribute); break;
-				default: $converter = new DefaultConverter($attribute); break;
+			if (in_array($attribute, $updatableAttributes))
+				$converter = new IdentityConverter($attribute);
+			else {
+				switch($attribute->type) {
+					case "expression": $converter = new ExpressionConverter($attribute); break;				
+					case "defining-expression": $converter = new DefiningExpressionConverter($attribute); break;
+					default: $converter = new DefaultConverter($attribute); break;
+				}
 			}
 			
 			$this->converters[] = $converter;
@@ -232,8 +168,28 @@ function getTableCellsAsHTML($attributes, $values) {
 	return $result;
 }
 
-function getRelationAsHTML($relationModel) {
-	$relationModel = new HTMLRelation($relationModel);
+function getTableCellsAsEditHTML($attributes, $values, $updateId, $updatableHeading) {
+	$result = '';
+	$i = 0;
+	
+	foreach($values as $value) {
+		$type = $attributes[$i]->type;
+				
+		if (in_array($attributes[$i], $updatableHeading->attributes)) {
+			$inputFields = getInputFieldsForAttribute($updateId, $attributes[$i], $value);
+			$result .= '<td class="'. $type .' column-'. parityClass($i) . '">'. $inputFields[0] . '</td>';
+		}
+		else			
+			$result .= '<td class="'. $type .' column-'. parityClass($i) . '">'. $value . '</td>';
+			
+		$i++;
+	}
+	
+	return $result;
+}
+
+function getRelationAsHTMLTable($relationModel) {
+	$relationModel = new HTMLRelation($relationModel, new Heading(array()));
 	$result = '<table class="wiki-data-table"><tr>';	
 	$attributes = $relationModel->getHeading()->attributes;
 	
@@ -250,7 +206,7 @@ function getRelationAsHTML($relationModel) {
 	return $result;
 }
 
-function getInputRowAsHTML($rowId, $attributes, $values, $repeatInput, $allowRemove) {
+function getAddRowAsHTML($rowId, $attributes, $values, $repeatInput, $allowRemove) {
 	if ($repeatInput)
 		$rowClass = 'repeat';
 	else 
@@ -269,17 +225,17 @@ function getInputRowAsHTML($rowId, $attributes, $values, $repeatInput, $allowRem
 	return $result . '</tr>'; 
 }
 
-function removeCheckBoxName($tuple, $key, $removeId) {
+function getTupleKeyName($tuple, $key) {
 	$ids = array();
 	
 	foreach($key->attributes as $attribute)
 		$ids[] = $tuple[$attribute->id];
 	
-	return $removeId . implode("-", $ids);
+	return implode("-", $ids);
 }
 
-function getRelationAsEditHTML($relationModel, $inputRowId, $removeId, $inputRowFields, $repeatInput, $allowRemove) {
-	$htmlRelation = new HTMLRelation($relationModel);
+function getRelationAsEditHTML($relationModel, $addRowId, $removeId, $updateId, $addRowFields, $repeatInput, $allowAdd, $allowRemove, $updatableHeading) {
+	$htmlRelation = new HTMLRelation($relationModel, $updatableHeading);
 	
 	$result = '<table class="wiki-data-table"><tr>';	
 	$attributes = $htmlRelation->getHeading()->attributes;
@@ -298,11 +254,12 @@ function getRelationAsEditHTML($relationModel, $inputRowId, $removeId, $inputRow
 	
 	for ($i = 0; $i < $relationModel->getTupleCount(); $i++) {
 		$result .= '<tr>';
+		$tupleKeyName = getTupleKeyName($relationModel->getTuple($i), $key);
 		
 		if ($allowRemove)
-			$result .= '<td class="remove">' . getCheckBox(removeCheckBoxName($relationModel->getTuple($i), $key, $removeId), false) . '</td>';
+			$result .= '<td class="remove">' . getRemoveCheckBox($removeId . $tupleKeyName) . '</td>';
 		
-		$result .= getTableCellsAsHTML($attributes, $htmlRelation->getTuple($i));
+		$result .= getTableCellsAsEditHTML($attributes, $htmlRelation->getTuple($i), $updateId . $tupleKeyName . '-', $updatableHeading);
 		
 		if ($repeatInput)
 			$result .= '<td/>';
@@ -310,7 +267,10 @@ function getRelationAsEditHTML($relationModel, $inputRowId, $removeId, $inputRow
 		$result .= '</tr>';
 	}
 	
-	$result .= getInputRowAsHTML($inputRowId, $attributes, $inputRowFields, $repeatInput, $allowRemove) . '</table>';
+	if ($allowAdd)
+		$result .= getAddRowAsHTML($addRowId, $attributes, $addRowFields, $repeatInput, $allowRemove);
+	
+	$result .= '</table>';
 
 	return $result;
 }

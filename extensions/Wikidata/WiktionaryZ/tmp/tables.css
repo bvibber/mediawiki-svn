@@ -10,6 +10,12 @@
 	clear: both;
 }
 
+.wiki-data-blocks {
+	padding: 0px;
+	margin: 0px;
+	width: 99%;
+}
+
 .wiki-data-blocks .wiki-data-block {
 	display: inline;
 	float: left;
@@ -44,9 +50,21 @@ td.language {
 	font-style: italic;
 }
 
+.wiki-data-table td {
+	vertical-align: top;
+}
+
 .wiki-data-table td.remove {
 	text-align: center;
 	background-color: #EEEEEE;
+}
+
+.wiki-data-table tr.to-be-removed td.column-odd, .wiki-data-table tr.to-be-removed td.remove {
+	background: #FFD8C0;
+}
+
+.wiki-data-table tr.to-be-removed td.column-even {
+	background: #FFE8D0;
 }
 
 .wiki-data-table th.remove, .wiki-data-table th.add {

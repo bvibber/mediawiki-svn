@@ -103,3 +103,12 @@ function mouseOverRow(row) {
 function mouseOutRow(row) {
 	row.className = "suggestion-row inactive";
 }
+
+function removeClicked(checkBox) {
+	var container = checkBox.parentNode.parentNode;
+	
+	if (checkBox.checked)
+		container.className = "to-be-removed";
+	else
+		container.className = "";
+}

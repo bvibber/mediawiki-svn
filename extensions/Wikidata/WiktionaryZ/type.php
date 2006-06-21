@@ -49,6 +49,13 @@ function definedMeaningExpression($definedMeaningId) {
 	return $expression->spelling;
 }
 
+function getTextValue($textId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT old_text from text where old_id=$textId");
+
+	return $dbr->fetchObject($queryResult)->old_text; 
+}
+
 function definingExpressionAsLink($definedMeaningId) {
 	return spellingAsLink(definingExpression($definedMeaningId));
 }
@@ -66,7 +73,8 @@ function convertToHTML($value, $type) {
 		case "relation-type": return definedMeaningAsLink($value);
 		case "attribute": return definedMeaningAsLink($value);
 		case "language": return languageIdAsText($value);
-		default: return $value;
+		case "text": return htmlspecialchars($value);
+		default: return htmlspecialchars($value);
 	}
 }
 
@@ -74,13 +82,14 @@ function getInputFieldsForAttribute($namePrefix, $attribute, $value) {
 	switch($attribute->type) {
 		case "language": return array(getLanguageSelect($namePrefix . $attribute->id));
 		case "spelling": return array(getTextBox($namePrefix . $attribute->id));
-		case "boolean": return array(getCheckBox($namePrefix . $attribute->id, true));
+		case "boolean": return array(getCheckBox($namePrefix . $attribute->id, $value));
 		case "expression": return array(getLanguageSelect($namePrefix . "language"), getTextBox($namePrefix . "spelling"));
 		case "defined-meaning":
 		case "defining-expression":
 			return array(getSuggest($namePrefix . $attribute->id, "defined-meaning"));
 		case "relation-type": return array(getSuggest($namePrefix . $attribute->id, "relation-type"));
 		case "attribute": return array(getSuggest($namePrefix . $attribute->id, "attribute"));
+		case "text": return array(getTextArea($namePrefix . $attribute->id, $value));
 		default: return array();
 	}	
 }
@@ -99,6 +108,7 @@ function getFieldValuesForAttribute($namePrefix, $attribute, $namePostFix) {
 			return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
 		case "relation-type": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
 		case "attribute": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
+		case "text": return array($wgRequest->getText($namePrefix . $attribute->id . $namePostFix));
 	}
 }
 

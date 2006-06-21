@@ -7,6 +7,14 @@ require_once('relation.php');
 require_once('type.php');
 require_once('languages.php');
 
+global
+	$languageAttribute, $textAttribute, $identicalMeaningAttribute;
+
+$languageAttribute = new Attribute("language", "Language", "language");
+$textAttribute = new Attribute("text", "Text", "text");
+
+$identicalMeaningAttribute = new Attribute("endemic-meaning", "Identical meaning?", "boolean"); 
+
 function getLatestRevisionForDefinedMeaning($definedMeaningId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$sql = "SELECT revision_id from uw_defined_meaning where defined_meaning_id=$definedMeaningId and is_latest_ver=1 limit 1";
@@ -62,6 +70,121 @@ function removeSynonymOrTranslation($definedMeaningId, $expressionId) {
 				"is_latest_set=1 LIMIT 1");
 }
 
+function updateSynonymOrTranslation($definedMeaningId, $expressionId, $identicalMeaning) {
+	$dbr =& wfGetDB(DB_MASTER);
+	$identicalMeaningInteger = (int) $identicalMeaning;
+	$dbr->query("UPDATE uw_syntrans SET endemic_meaning=$identicalMeaningInteger WHERE defined_meaning_id=$definedMeaningId and expression_id=$expressionId and ".
+				"is_latest_set=1 LIMIT 1");	
+}
+
+function updateDefinedMeaningDefinition($definedMeaningId, $languageId, $text) {
+	$dbr =& wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE uw_defined_meaning dm, translated_content tc, text t SET old_text=". $dbr->addQuotes($text) ." WHERE dm.defined_meaning_id=$definedMeaningId AND dm.is_latest_ver=1 ".
+									"AND tc.set_id=dm.meaning_text_tcid AND tc.language_id=$languageId AND tc.text_id=t.old_id AND tc.is_latest_set=1");	
+}
+
+function createText($text) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$text = $dbr->addQuotes($text);
+	$sql = "insert into text(old_text) values($text)";	
+	$dbr->query($sql);
+	
+	return $dbr->insertId();
+}
+
+function createTranslatedContent($setId, $languageId, $textId, $revisionId) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$sql = "insert into translated_content(set_id,language_id,text_id,first_set,revision_id,is_latest_set) values($setId, $languageId, $textId, $setId, $revisionId, 1)";	
+	$dbr->query($sql);
+	
+	return $dbr->insertId();
+}
+
+function translatedDefinitionExists($definitionId, $languageId) {
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT * FROM translated_content WHERE set_id=$definitionId AND language_id=$languageId AND is_latest_set=1");
+
+	return $dbr->numRows($queryResult) > 0;	
+}
+
+function addTranslatedDefinition($definitionId, $languageId, $definition, $revisionId) {
+	if (!translatedDefinitionExists($definitionId, $languageId, $revisionId)) {	
+		$textId = createText($definition);
+		createTranslatedContent($definitionId, $languageId, $textId, $revisionId);
+	}
+}
+
+function getDefinedMeaningDefinitionId($definedMeaningId) {
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT meaning_text_tcid FROM uw_defined_meaning WHERE defined_meaning_id=$definedMeaningId AND is_latest_ver=1");
+
+	return $dbr->fetchObject($queryResult)->meaning_text_tcid;
+}
+
+function updateDefinedMeaningDefinitionId($definedMeaningId, $definitionId) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE uw_defined_meaning SET meaning_text_tcid=$definitionId WHERE defined_meaning_id=$definedMeaningId AND is_latest_ver=1");
+}
+
+function newTranslatedContentId() {
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT max(set_id) as max_id FROM translated_content");
+	
+	return $dbr->fetchObject($queryResult)->max_id + 1;
+}
+
+function addDefinedMeaningDefinition($definedMeaningId, $expressionId, $languageId, $text) {
+	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
+	$revisionId = getRevisionForExpressionId($expressionId);
+	
+	if ($definitionId == 0) {
+		$definitionId = newTranslatedContentId();		
+		addTranslatedDefinition($definitionId, $languageId, $text, $revisionId);
+		updateDefinedMeaningDefinitionId($definedMeaningId, $definitionId);
+	}
+	else 
+		addTranslatedDefinition($definitionId, $languageId, $text, $revisionId);
+}
+
+function removeTranslatedDefinition($definitionId, $languageId) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("DELETE FROM translated_content WHERE set_id=$definitionId AND language_id=$languageId AND is_latest_set=1");
+}
+
+function removeDefinedMeaningDefinition($definedMeaningId, $languageId) {
+	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
+	
+	if ($definitionId != 0)
+		removeTranslatedDefinition($definitionId, $languageId);
+}
+
+class DefinedMeaningDefinitionController implements PageElementController {
+	protected $definedMeaningId;
+	protected $expressionId;
+	
+	public function __construct($definedMeaningId, $expressionId) {
+		$this->definedMeaningId = $definedMeaningId;
+		$this->expressionId = $expressionId;
+	}
+
+	public function add($values) {
+		$languageId = $values[0];
+		$text = $values[1];
+		
+		if ($text != "") 
+			addDefinedMeaningDefinition($this->definedMeaningId, $this->expressionId, $languageId, $text);
+	}
+	
+	public function remove($tuple) {
+		$languageId = $tuple['language'];
+		removeDefinedMeaningDefinition($this->definedMeaningId, $languageId);
+	}
+	
+	public function update($tuple, $updatedValues) {
+		updateDefinedMeaningDefinition($this->definedMeaningId, $tuple['language'], $updatedValues['text']);
+	}
+}
+
 class SynonymTranslationController implements PageElementController {
 	protected $definedMeaningId;
 	
@@ -82,8 +205,14 @@ class SynonymTranslationController implements PageElementController {
 	
 	public function remove($tuple) {
 		$expressionId = $tuple['expression'];
-		$endemicMeaning = $tuple['endemic_meaning'];
+		$endemicMeaning = $tuple['endemic-meaning'];
 		removeSynonymOrTranslation($this->definedMeaningId, $expressionId);		
+	}
+	
+	public function update($tuple, $updatedValues) {
+		$expressionId = $tuple['expression'];
+		$identicalMeaning = $updatedValues['endemic-meaning'];
+		updateSynonymOrTranslation($this->definedMeaningId, $expressionId, $identicalMeaning);
 	}
 }
 
@@ -105,6 +234,10 @@ class DefinedMeaningRelationController implements PageElementController {
 	public function remove($tuple) {
 		removeRelation($this->definedMeaningId, $tuple['relation-type'], $tuple['other-defined-meaning']);
 	}
+	
+	public function update($tuple, $updatedValues) {
+		
+	}
 }
 
 class DefinedMeaningAttributeController implements PageElementController {
@@ -123,6 +256,9 @@ class DefinedMeaningAttributeController implements PageElementController {
 
 	public function remove($tuple) {
 		removeRelation($this->definedMeaningId, 0, $tuple['attribute']);
+	}
+	
+	public function update($tuple, $updatedValues) {
 	}
 }
 
@@ -159,24 +295,24 @@ class WiktionaryZ {
 			$wgOut->addHTML('<ul>');
 			foreach($definedMeaningIds as $definedMeaningId) {
 				$wgOut->addHTML($skin->editSectionLink($wgTitle, "$expressionId-$definedMeaningId"));
-				$wgOut->addHTML("<li><h3>Definition</h3>");
-				$this->viewTranslatedContent($definedMeaningTexts[$definedMeaningId]);
+				$wgOut->addHTML("<li><h3>Defined meaning</h3>");
 				
- 				if ($alternativeMeaningTexts[$definedMeaningId]) {
-					foreach($alternativeMeaningTexts[$definedMeaningId] as $alternativeMeaningTextId) { 
-						$wgOut->addHTML("<h3>Alternative definition</h3>");
-						$this->viewTranslatedContent($alternativeMeaningTextId);	
-					}
- 				}
- 				
  				$wgOut->addHTML('<div class="wiki-data-blocks">');
  					$pageElements = $this->getDefinedMeaningPageElements($definedMeaningId, $expressionId);
  					
- 					foreach($pageElements as $pageElement)
+ 					foreach($pageElements as $pageElement) 
  						$this->displayPageElement($pageElement);
 				$wgOut->addHTML('</div>');
 
 				$wgOut->addHTML('<div class="clear-float"/>');
+
+				if ($alternativeMeaningTexts[$definedMeaningId]) {
+					foreach($alternativeMeaningTexts[$definedMeaningId] as $alternativeMeaningTextId) { 
+						$wgOut->addHTML("<h3>Alternative definition</h3>");
+						$this->viewTranslatedContent($alternativeMeaningTextId);	
+					}
+				}
+
 				$wgOut->addHTML('</li>');
 			}
 			$wgOut->addHTML('</ul>');
@@ -187,33 +323,45 @@ class WiktionaryZ {
 	}
 	
 	function displayPageElement($pageElement) {
-		addWikiDataBlock($pageElement->getCaption(), getRelationAsHTML($pageElement->getRelationModel()));
+		addWikiDataBlock($pageElement->getCaption(), getRelationAsHTMLTable($pageElement->getRelationModel()));
 	}
 	
 	function editPageElement($pageElement) {
-		$inputRow = array();
+		global
+			$identicalMeaningAttribute;	
+	
 		$addId = "add-".$pageElement->getId();
 		$removeId = "remove-".$pageElement->getId()."-";
+		$updateId = "update-".$pageElement->getId()."-";
 		
-		foreach($pageElement->getRelationModel()->getHeading()->attributes as $attribute) 
-			$inputRow = array_merge($inputRow, getInputFieldsForAttribute($addId . "-", $attribute, ""));
+		$addRow = array();
 		
-		addWikiDataBlock($pageElement->getCaption(), getRelationAsEditHTML($pageElement->getRelationModel(), $addId, $removeId,
-														$inputRow, $pageElement->repeatInput(), $pageElement->allowRemove()));
+		if ($pageElement->allowAdd()) {
+			foreach($pageElement->getRelationModel()->getHeading()->attributes as $attribute) {
+				if ($attribute == $identicalMeaningAttribute)
+					$value = true;
+				else
+					$value = "";
+					
+				$addRow = array_merge($addRow, getInputFieldsForAttribute($addId . "-", $attribute, $value));
+			}
+		}
+		
+		addWikiDataBlock($pageElement->getCaption(), getRelationAsEditHTML($pageElement->getRelationModel(), $addId, $removeId, $updateId,
+														$addRow, $pageElement->repeatInput(), 
+														$pageElement->allowAdd(), $pageElement->allowRemove(), $pageElement->updatableHeading()));
 	}
 	
 	function addRowForPageElement($pageElement, $postFix) {
 		$addId = "add-".$pageElement->getId();
 		$attributes = $pageElement->getRelationModel()->getHeading()->attributes;
 		
-		//if (array_key_exists($addId . "-" . $attributes[0]->id . $postFix, $_POST)) {
-			$values = array();
-			
-			foreach($attributes as $attribute)
-				$values = array_merge($values, getFieldValuesForAttribute($addId . "-", $attribute, $postFix));
-			
-			$pageElement->getController()->add($values);
-		//}
+		$values = array();
+		
+		foreach($attributes as $attribute)
+			$values = array_merge($values, getFieldValuesForAttribute($addId . "-", $attribute, $postFix));
+		
+		$pageElement->getController()->add($values);
 	}
 	
 	function savePageElement($pageElement) {
@@ -223,32 +371,73 @@ class WiktionaryZ {
 		$controller = $pageElement->getController();
 
 		if ($controller) {
-			$addId = "add-" . $pageElement->getId();
-			$inputRow = array();
-			$rowCount = $wgRequest->getInt($addId . '-RC');
-		
-			$this->addRowForPageElement($pageElement, "");
+			if ($pageElement->allowAdd()) {
+				$addId = "add-" . $pageElement->getId();
+				$rowCount = $wgRequest->getInt($addId . '-RC');
+			
+				$this->addRowForPageElement($pageElement, "");
+					
+				for ($i = 2; $i <= $rowCount; $i++) 
+					$this->addRowForPageElement($pageElement, '-' . $i);
+			}
 				
-			for ($i = 2; $i <= $rowCount; $i++) 
-				$this->addRowForPageElement($pageElement, '-' . $i);
-				
-			$removeId = "remove-".$pageElement->getId()."-";
 			$relationModel = $pageElement->getRelationModel();
 			$key = $relationModel->getKey();
-			
-			for ($i = 0; $i < $relationModel->getTupleCount(); $i++) {
-				$tuple = $relationModel->getTuple($i);
+
+			if ($pageElement->allowRemove()) {
+				$removeId = "remove-".$pageElement->getId()."-";
 				
-				if ($wgRequest->getCheck(removeCheckBoxName($tuple, $key, $removeId)))
-					$controller->remove($tuple);				
+				for ($i = 0; $i < $relationModel->getTupleCount(); $i++) {
+					$tuple = $relationModel->getTuple($i);
+					
+					if ($wgRequest->getCheck($removeId . getTupleKeyName($tuple, $key)))
+						$controller->remove($tuple);				
+				}
+			}
+			
+			$updatableAttributes = $pageElement->updatableHeading()->attributes;
+			
+			if (count($updatableAttributes) > 0) {
+				$updateId = "update-".$pageElement->getId()."-";	
+			
+				for ($i = 0; $i < $relationModel->getTupleCount(); $i++) {
+					$tuple = $relationModel->getTuple($i);
+					$tupleKeyName = getTupleKeyName($tuple, $key);
+					$updatedValues = array();
+					
+					foreach($updatableAttributes as $attribute) {
+						$values = getFieldValuesForAttribute($updateId . $tupleKeyName . '-', $attribute, "");
+						$value = $values[0];
+						
+						if ($value != $tuple[$attribute->id])
+							$updatedValues[$attribute->id] = $value;
+					}
+					
+					if (count($updatedValues) > 0)
+						$controller->update($tuple, $updatedValues);
+				}
 			}
 		}				
 	}
 	
+	function getDefinedMeaningDefinitionPageElement($definedMeaningId, $expressionId) {
+		global
+			$textAttribute;
+		
+		return new DefaultPageElement("definition-$definedMeaningId", "Definition", 
+										$this->getDefinedMeaningDefinitionRelation($definedMeaningId), 
+										true, true, new Heading(array($textAttribute)),
+										false,
+										new DefinedMeaningDefinitionController($definedMeaningId, $expressionId));
+	}
+	
 	function getSynonymsAndTranslationsPageElement($definedMeaningId, $expressionId) {
+		global
+			$identicalMeaningAttribute;
+		
 		return new DefaultPageElement("synonym-translation-$definedMeaningId", "Translations and synonyms", 
 										$this->getSynonymAndTranslationRelation($definedMeaningId, $expressionId), 
-										true, 
+										true, true, new Heading(array($identicalMeaningAttribute)), 
 										true,
 										new SynonymTranslationController($definedMeaningId));
 	}
@@ -256,7 +445,7 @@ class WiktionaryZ {
 	function getDefinedMeaningRelationsPageElement($definedMeaningId) {
 		return new DefaultPageElement("defined-meaning-relation-$definedMeaningId", "Relations", 
 										$this->getDefinedMeaningRelationsRelation($definedMeaningId), 
-										true, 
+										true, true, new Heading(array()),
 										false,
 										new DefinedMeaningRelationController($definedMeaningId));
 	}
@@ -264,13 +453,14 @@ class WiktionaryZ {
 	function getDefinedMeaningAttributesPageElement($definedMeaningId) {
 		return new DefaultPageElement("defined-meaning-attribute-$definedMeaningId", "Attributes", 
 										$this->getDefinedMeaningAttributesRelation($definedMeaningId), 
-										true, 
+										true, true, new Heading(array()),
 										false,
 										new DefinedMeaningAttributeController($definedMeaningId));
 	}
 	
 	function getDefinedMeaningPageElements($definedMeaningId, $expressionId) {
-		return array($this->getSynonymsAndTranslationsPageElement($definedMeaningId, $expressionId), 
+		return array($this->getDefinedMeaningDefinitionPageElement($definedMeaningId, $expressionId),
+						$this->getSynonymsAndTranslationsPageElement($definedMeaningId, $expressionId), 
 						$this->getDefinedMeaningRelationsPageElement($definedMeaningId),
 						$this->getDefinedMeaningAttributesPageElement($definedMeaningId));
 	}
@@ -354,21 +544,6 @@ class WiktionaryZ {
 	}
 	
 	function saveDefinedMeaningForm($expressionId, $definedMeaningId, $definedMeaningTextId) {
-		global
-			$wgRequest;
-		
-		$translatedContents = $this->getTranslatedContents($definedMeaningTextId);
-		
-		foreach($translatedContents as $languageId => $textId) {
-			$definition = trim($wgRequest->getText('definition-'.$textId));
-			   	 
-			if ($definition != '')
-				$this->setText($textId, $definition);
-		}
-
-		if (count($translatedContents))
-			$this->addTranslatedDefinitionFromRequest($definedMeaningId, $definedMeaningTextId, getRevisionForExpressionId($expressionId), array_keys($translatedContents));
-			
 		$pageElements = $this->getDefinedMeaningPageElements($definedMeaningId, $expressionId);
 		
 		foreach($pageElements as $pageElement)
@@ -456,20 +631,7 @@ class WiktionaryZ {
 		global
 			$wgOut, $wgLanguageNames;
 		
-		$wgOut->addHTML("<h3>Definition</h3>");
-		$translatedContents = $this->getTranslatedContents($definedMeaningTextId);
-
-		foreach($translatedContents as $languageId => $textId) {
-			$wgOut->addHTML("<div><i>$wgLanguageNames[$languageId]</i></div>".
-		    	            getTextArea("definition-$textId", $this->getText($textId)));
-		}
-
-		if (count($translatedContents) > 0) {
-			$wgOut->addHTML('<div><i>Translate into</i>: '.
-							getLanguageSelect("translated-definition-language-$definedMeaningId", array_keys($translatedContents)).'</div>'.
-		        	        getTextArea("translated-definition-$definedMeaningId"));
-		}
-
+		$wgOut->addHTML("<h3>Defined meaning</h3>");
 	 	$wgOut->addHTML('<div class="wiki-data-blocks">');
 	 	$pageElements = $this->getDefinedMeaningPageElements($definedMeaningId, $expressionId);	
 	 	
@@ -477,7 +639,6 @@ class WiktionaryZ {
 	 		$this->editPageElement($pageElement);
 	 	
 		$wgOut->addHTML('</div>');
-		
 		$wgOut->addHTML('<div class="clear-float"/>');
 	}
 	
@@ -564,25 +725,38 @@ class WiktionaryZ {
 			
 		return $synonymAndTranslationIds;
 	}
+
+	function getDefinedMeaningDefinitionRelation($definedMeaningId) {
+		global
+			$languageAttribute, $textAttribute;
+		
+		$dbr =& wfGetDB(DB_SLAVE);
+
+		$relation = new ArrayRelation(new Heading(array($languageAttribute, $textAttribute)), 
+										new Heading(array($languageAttribute)));
+										
+		$queryResult = $dbr->query("SELECT language_id, old_text FROM uw_defined_meaning df, translated_content tc, text t WHERE df.defined_meaning_id=$definedMeaningId AND df.is_latest_ver=1 ".
+									"AND tc.set_id=df.meaning_text_tcid AND tc.text_id=t.old_id AND tc.is_latest_set=1");
+									
+		while ($translatedDefinition = $dbr->fetchObject($queryResult)) 
+			$relation->addTuple(array($translatedDefinition->language_id, $translatedDefinition->old_text));
+		
+		return $relation;
+	}
 	
 	function getSynonymAndTranslationRelation($definedMeaningId, $skippedExpressionId) {
+		global
+			$identicalMeaningAttribute;
+		
 		$dbr =& wfGetDB(DB_SLAVE);
-//		$heading = new Heading(array(new Attribute("language", "Language", "language"), 
-//										new Attribute("spelling", "Spelling", "spelling"), 
-//										new Attribute("endemic_meaning", "Identical meaning?", "boolean")));
 		$heading = new Heading(array(new Attribute("expression", "Expression", "expression"), 
-										new Attribute("endemic_meaning", "Identical meaning?", "boolean")));
+										$identicalMeaningAttribute));
 
 		$relation = new ArrayRelation($heading, $heading);
 		$queryResult = $dbr->query("SELECT expression_id, endemic_meaning FROM uw_syntrans WHERE defined_meaning_id=$definedMeaningId AND expression_id!=$skippedExpressionId");
 	
-		while($synonymOrTranslation = $dbr->fetchObject($queryResult)) {
-//			$spellingAndLanguage = $this->getSpellingAndLanguageForExpression($synonymOrTranslation->expression_id);
-//			
-//			foreach($spellingAndLanguage as $languageId => $spelling) 
-//				$relation->addTuple(array($languageId, $spelling, $synonymOrTranslation->endemic_meaning));
-				$relation->addTuple(array($synonymOrTranslation->expression_id, $synonymOrTranslation->endemic_meaning));
-		}	
+		while($synonymOrTranslation = $dbr->fetchObject($queryResult)) 
+			$relation->addTuple(array($synonymOrTranslation->expression_id, $synonymOrTranslation->endemic_meaning));
 		
 		return $relation;
 	}
@@ -681,39 +855,6 @@ class WiktionaryZ {
 		$dbr->query($sql);
 	}
 	
-	function createText($text) {
-		$dbr = &wfGetDB(DB_MASTER);
-		$text = $dbr->addQuotes($text);
-		$sql = "insert into text(old_text) values($text)";	
-		$dbr->query($sql);
-		
-		return $dbr->insertId();
-	}
-	
-	function createTranslatedContent($setId, $languageId, $textId, $revisionId) {
-		$dbr = &wfGetDB(DB_MASTER);
-		$sql = "insert into translated_content(set_id,language_id,text_id,first_set,revision_id) values($setId, $languageId, $textId, $setId, $revisionId)";	
-		$dbr->query($sql);
-		
-		return $dbr->insertId();
-	}
-	
-	function addTranslatedDefinition($setId, $languageId, $definition, $revisionId) {
-		$textId = $this->createText($definition);
-		$this->createTranslatedContent($setId, $languageId, $textId, $revisionId);
-	}
-	
-	function addTranslatedDefinitionFromRequest($definedMeaningId, $setId, $revisionId, $languageIdsToExclude) {
-		global
-			$wgRequest;	
-		
-		$languageId = $wgRequest->getInt('translated-definition-language-'.$definedMeaningId);
-		$definition = trim($wgRequest->getText('translated-definition-'.$definedMeaningId));
-
-		if ($definition != '' && !in_array($languageId, $languageIdsToExclude)) 
-			$this->addTranslatedDefinition($setId, $languageId, $definition, $revisionId);		
-	}
-
 	function getAttributeValues(){
 		$atts=array();
 		$attcollections=$this->getCollectionsByType('ATTR');
