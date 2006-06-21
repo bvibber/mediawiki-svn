@@ -728,7 +728,7 @@ sub addExpression {
 		$row=$getset->fetchrow_hashref();
 		my $setid=$row->{set_id} || $self->getMaxId('set_id','uw_syntrans');
 		# Add syntrans record
-		$maketrans=$self->{dbt}->prepare('insert into uw_syntrans(set_id,defined_meaning_id,expression_id,first_set,revision_id,is_latest_set) values(?,?,?,?,?,1)');
+		$maketrans=$self->{dbt}->prepare('insert into uw_syntrans(set_id,defined_meaning_id,expression_id,first_set,revision_id,is_latest_set,endemic_meaning) values(?,?,?,?,?,1,1)');
 		$maketrans->execute($setid,$translation_of,$liid,$setid,$rid);
 		$rv{setid}=$setid;
 		$rv{mid}=$translation_of;
