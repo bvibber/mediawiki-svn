@@ -9,6 +9,10 @@
 ** All you guys rock :)
 */
 
+.lqt_post { border: solid 1px #aaa;; margin-top: 0.1in; }
+
+.lqt_begin_replies { margin-left: 0.5in; }
+
 #column-content {
 	width: 100%;
 	float: right;

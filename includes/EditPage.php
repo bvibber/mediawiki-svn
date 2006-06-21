@@ -46,8 +46,7 @@ class EditPage {
 	 */
 	function EditPage( $article ) {
 		$this->mArticle =& $article;
-		global $wgTitle;
-		$this->mTitle =& $wgTitle;
+                $this->mTitle =& $this->mArticle->mTitle;
 	}
 
 	/**
@@ -469,6 +468,27 @@ class EditPage {
 		}
 	}
 
+
+        /** Set an article's watch field in accordance with the checkbox. @private */
+        function watchUnwatch() {
+                $dbw =& wfGetDB( DB_MASTER );
+                if ($this->watchthis) {
+                        if (!$this->mTitle->userIsWatching()) {
+                                $dbw->begin();
+                                $this->mArticle->doWatch();
+                                $dbw->commit();
+                        }
+                } else {
+                        if ( $this->mTitle->userIsWatching() ) {
+                                $dbw->begin();
+                                $this->mArticle->doUnwatch();
+                                $dbw->commit();
+                        }
+                }                
+        }
+
+        
+        
 	/**
 	 * Attempt submission
 	 * @return bool false if output is done, true if the rest of the form should be displayed
@@ -589,9 +609,18 @@ class EditPage {
 					$this->summary = wfMsgForContent( 'autoredircomment', $rt->getPrefixedText() );
 			}
 
-			$isComment=($this->section=='new');
-			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
-				$this->minoredit, $this->watchthis, false, $isComment);
+                        # If this is a comment, add the summary as headline
+                        $isComment=($this->section=='new');
+                        if ( $isComment && $this->summary != "" ) {
+                                $this->textbox1 = "== {$this->summary} ==\n\n".$this->textbox1;
+                        }
+
+                        # Actually insert the new article:
+                        $flags = EDIT_NEW | EDIT_DEFER_UPDATES |
+                                ( $this->minoredit ? EDIT_MINOR : 0 );
+                        $this->mArticle->doEdit( $this->textbox1, $this->summary, $flags );
+                        $this->watchUnwatch();
+                        $this->mArticle->doRedirect( $this->mArticle->isRedirect( $this->textbox1 ) );
 
 			wfProfileOut( $fname );
 			return false;
@@ -717,16 +746,21 @@ class EditPage {
 		}
 
 		# update the article here
-		if( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
-			$this->watchthis, '', $sectionanchor ) ) {
+		$flags = EDIT_UPDATE | EDIT_DEFER_UPDATES |
+			( $this->minoredit ? EDIT_MINOR : 0 );
+                if ( $this->mArticle->doEdit( $text, $this->summary, $flags ) ) {
+                        $this->watchUnwatch();
+			$this->mArticle->doRedirect( $this->mArticle->isRedirect( $text ), $sectionanchor );
+
 			wfProfileOut( $fname );
 			return false;
-		} else {
-			$this->isConflict = true;
-		}
-		wfProfileOut( $fname );
-		return true;
-	}
+                } else {
+                        $this->isConflict = true;
+                }
+                wfProfileOut( $fname );
+                return true;
+        }
+
 
 	/**
 	 * Initialise form fields in the object
@@ -743,11 +777,18 @@ class EditPage {
 
 	/**
 	 * Send the edit form and related headers to $wgOut
+         *
 	 * @param $formCallback Optional callable that takes an OutputPage
 	 *                      parameter; will be called during form output
 	 *                      near the top, for captchas and the like.
+         *
+         * @param $action       URL that the form shall submit to.
+         *                      Defaults to ordinary self-submitting.
+         *
+         * @param $cancelURL    URL that the 'cancel' link shall point to.
+         *                      Defaults to viewing the article. FIXME this is ignored.
 	 */
-	function showEditForm( $formCallback=null ) {
+        function showEditForm( $formCallback=null,  $action=null, $cancelUrl=null) {
 		global $wgOut, $wgUser, $wgLang, $wgContLang, $wgMaxArticleSize;
 
 		$fname = 'EditPage::showEditForm';
@@ -863,10 +904,12 @@ class EditPage {
 		if ( $ew ) $ew = " style=\"width:100%\"";
 		else $ew = '';
 
-		$q = 'action=submit';
-		#if ( "no" == $redirect ) { $q .= "&redirect=no"; }
-		$action = $this->mTitle->escapeLocalURL( $q );
-
+                if (!$action) {
+                        $q = 'action=submit';
+                        #if ( "no" == $redirect ) { $q .= "&redirect=no"; }
+                        $action = $this->mTitle->escapeLocalURL( $q );
+                }
+                        
 		$summary = wfMsg('summary');
 		$subject = wfMsg('subject');
 		$minor   = wfMsgExt('minoredit', array('parseinline'));
