@@ -47,6 +47,7 @@ class Compressor(object):
 		self.bytesWritten = 0L
 		
 		self.runningThreads = 0
+		self.workingThreads = 0
 		self.compressors = []
 		self.inputQueue = [] # blocks to be compressed
 		self.outputQueue = [] # buffers to be written
@@ -265,15 +266,31 @@ class Compressor(object):
 		startTime = time.time()
 		
 		self.lock()
+		online = True
 		self.runningThreads += 1
+		self.workingThreads += 1
 		self.unlock()
 		
 		while not (self.done and self.blocksCompressed == self.blocksRead):
-			if emergency and self.runningThreads > 1:
+			if emergency and self.workingThreads > 1:
 				# This is a backup thread for when all remote servers
 				# are down and no regular local threads are scheduled.
 				self.sleep()
 				continue
+			
+			if not online:
+				try:
+					# Wait a bit, then try reconnecting
+					time.sleep(5)
+					self.debug(0, "Trying reconnect on '%s'" % compressor)
+					compressor.reopen()
+				except:
+					continue
+				self.debug(0, "Reconnected on '%s'" % compressor)
+				self.lock()
+				online = True
+				self.workingThreads += 1
+				self.unlock()
 			
 			self.lock()
 			buffer = self.dequeueInput()
@@ -286,13 +303,16 @@ class Compressor(object):
 					else:
 						data = compressor.decompress(buffer.input)
 				except:
-					self.debug(1, "Aborting compressor thread '%s'" % compressor)
+					self.debug(0, "Connection error on '%s'" % compressor)
 					# Return the buffer to the queue so another thread
 					# can pick it up, or we'll be stuck forever.
 					self.lock()
+					online = False
+					self.workingThreads -= 1
 					self.inputQueue.append(buffer)
 					self.unlock()
-					break
+					
+					continue
 				
 				self.lock()
 				buffer.set(data)
@@ -307,7 +327,13 @@ class Compressor(object):
 			else:
 				self.debug(4, "compressorThread: no input, sleeping")
 				self.sleep()
-		compressor.close()
+		
+		if online:
+			try:
+				compressor.close()
+			except:
+				self.debug(0, "Error closing remote connection on compressor thread '%s'" % compressor)
+				pass
 		
 		delta = time.time() - startTime
 		megabyte = 1024.0 * 1024.0
@@ -357,6 +383,9 @@ class LocalCompressor(object):
 	def close(self):
 		pass
 	
+	def reopen(self):
+		pass
+	
 	def __str__(self):
 		return "local thread"
 
@@ -365,14 +394,16 @@ class RemoteCompressor(object):
 		"""Address is a (host, port) tuple."""
 		self.address = address
 		self.blockSize100k = blockSize100k
-		
+		self.open()
+	
+	def open(self):
 		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		self.socket.connect(address)
+		self.socket.connect(self.address)
 		
 		self.connection = DistBits.Connection(self.socket)
 		self.connection.send("COMP", struct.pack(">l", 2))
 		self.connection.send("ALGO", "bzip2")
-		self.connection.send("BLOK", str(blockSize100k))
+		self.connection.send("BLOK", str(self.blockSize100k))
 	
 	def compress(self, data):
 		self.connection.send("HUGE", data)
@@ -393,6 +424,13 @@ class RemoteCompressor(object):
 			raise Exception(data)
 		else:
 			raise Exception("Unknown return atom type")
+	
+	def reopen(self):
+		try:
+			self.close()
+		except:
+			pass
+		self.open()
 	
 	def close(self):
 		self.connection.send("CLOS")
