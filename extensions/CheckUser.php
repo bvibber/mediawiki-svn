@@ -183,13 +183,20 @@ EOT
 			return;
 		} else {
 			global $wgRequest, $wgOut;
+			
 			if( $wgRequest->getVal( 'log' ) == 1 ) {
 				# Show the log
-				$log = file( $wgCheckUserLog );
+				list( $limit, $offset ) = wfCheckLimits();
+				$log = $this->tail( $wgCheckUserLog, $limit, $offset );
 				if( !!$log ) {
-					$log = array_reverse( $log );
+
+					$scroller = wfViewPrevNext( $offset, $limit,
+						Title::makeTitle( NS_SPECIAL, 'CheckUser' ),
+						'log=1',
+						count( $log ) < $limit );
+					
 					$output = implode( "\n", $log );
-					$wgOut->addHTML( "<ul>$output</ul>" );
+					$wgOut->addHTML( "$scroller\n<ul>$output</ul>\n$scroller\n" );
 				} else {
 					$wgOut->addHTML( "<p>The log contains no items.</p>" );
 				}
@@ -201,6 +208,68 @@ EOT
 				$wgOut->addHTML( "<p>$link</p>" );
 			}
 		}
+	}
+	
+	function tail( $filename, $limit, $offset ) {
+		//wfSuppressWarnings();
+		$file = fopen( $filename, "rt" );
+		//wfRestoreWarnings();
+		
+		if( $file === false ) {
+			return false;
+		}
+		
+		$filePosition = filesize( $filename );
+		if( $filePosition == 0 ) {
+			return array();
+		}
+		
+		$lines = array();
+		$bufSize = 1024;
+		$lineCount = 0;
+		$total = $offset + $limit;
+		$leftover = '';
+		do {
+			if( $filePosition < $bufSize ) {
+				$bufSize = $filePosition;
+			}
+			$filePosition -= $bufSize;
+			fseek( $file, $filePosition );
+			$buffer = fread( $file, $bufSize );
+			
+			$parts = explode( "\n", $buffer );
+			$num = count( $parts );
+			
+			if( $num > 0 ) {
+				if( $lineCount++ > $offset ) {
+					$lines[] = $parts[$num - 1] . $leftover;
+					if( $lineCount > $total ) {
+						return $lines;
+					}
+				}
+			}
+			for( $i = $num - 2; $i > 0; $i-- ) {
+				if( $lineCount++ > $offset ) {
+					$lines[] = $parts[$i];
+					if( $lineCount > $total ) {
+						fclose( $file );
+						return $lines;
+					}
+				}
+			}
+			if( $num > 1 ) {
+				$leftover = $parts[0];
+			} else {
+				$leftover = '';
+				break;
+			}
+		} while( $filePosition > 0 );
+		
+		if( $lineCount++ > $offset ) {
+			$lines[] = $leftover;
+		}
+		fclose( $file );
+		return $lines;
 	}
 
 	function addLogEntry( $entry ) {
