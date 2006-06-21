@@ -8,7 +8,6 @@
 # 2006-05-12
 
 # TODO:
-# Handle remote failures gracefully
 # Accept file input/output, behavior like bzip2
 
 import bz2
@@ -37,6 +36,9 @@ class Compressor(object):
 		self.verbosity = 0
 		self.blockSize100k = 9
 		self.compressing = True
+		
+		self.timeoutMin = 1  # Initial timeout
+		self.timeoutMax = 64 # Exponential backoff up to X seconds
 		
 		self.crc = 0L
 		
@@ -82,6 +84,9 @@ class Compressor(object):
 		if self.verbosity >= level:
 			sys.stderr.write(text + "\n")
 	
+	def error(self, text):
+		self.debug(0, text)
+	
 	def run(self):
 		"""Start up the threads and goooo!"""
 		for i in range(0, self.threads):
@@ -114,6 +119,16 @@ class Compressor(object):
 	
 	def unlock(self):
 		self.threadLock.release()
+	
+	def incRunning(self, amount=1):
+		self.lock()
+		self.runningThreads += amount
+		self.unlock()
+	
+	def incWorking(self, amount=1):
+		self.lock()
+		self.workingThreads += amount
+		self.unlock()
 	
 	def readerThread(self):
 		"""Producer thread: run through the file handing out blocks."""
@@ -259,17 +274,25 @@ class Compressor(object):
 	
 	def compressorThread(self, compressor, emergency=False):
 		"""Worker thread: send a block to a foreign server and receive data."""
-		self.debug(3, "compressorThread: Started")
 		blocksCompressed = 0
 		bytesRead = 0L
 		bytesWritten = 0L
-		startTime = time.time()
+		timeout = self.timeoutMin
+		online = False
 		
-		self.lock()
-		online = True
-		self.runningThreads += 1
-		self.workingThreads += 1
-		self.unlock()
+		self.incRunning(1)
+		
+		startTime = time.time()
+		self.debug(3, "compressorThread: Started")
+		
+		try:
+			compressor.open()
+			online = True
+			self.incWorking(1)
+		except:
+			self.error("%s failed to connect; retry in %d secs" % \
+				(compressor, timeout))
+			time.sleep(timeout)
 		
 		while not (self.done and self.blocksCompressed == self.blocksRead):
 			if emergency and self.workingThreads > 1:
@@ -280,17 +303,18 @@ class Compressor(object):
 			
 			if not online:
 				try:
-					# Wait a bit, then try reconnecting
-					time.sleep(5)
-					self.debug(0, "Trying reconnect on '%s'" % compressor)
 					compressor.reopen()
 				except:
+					if timeout < self.timeoutMax:
+						timeout *= 2
+					self.error("%s failed to reconnect; retry in %d secs" %\
+						(compressor, timeout))
+					time.sleep(timeout)
 					continue
-				self.debug(0, "Reconnected on '%s'" % compressor)
-				self.lock()
+				
 				online = True
-				self.workingThreads += 1
-				self.unlock()
+				self.error("%s reconnected" % compressor)
+				self.incWorking(1)
 			
 			self.lock()
 			buffer = self.dequeueInput()
@@ -303,15 +327,19 @@ class Compressor(object):
 					else:
 						data = compressor.decompress(buffer.input)
 				except:
-					self.debug(0, "Connection error on '%s'" % compressor)
+					online = False
+					timeout = self.timeoutMin
+					self.error("%s dropped connection; retry in %d secs" % \
+						(compressor, timeout))
+					
 					# Return the buffer to the queue so another thread
 					# can pick it up, or we'll be stuck forever.
 					self.lock()
-					online = False
 					self.workingThreads -= 1
 					self.inputQueue.append(buffer)
 					self.unlock()
 					
+					time.sleep(timeout)
 					continue
 				
 				self.lock()
@@ -322,7 +350,8 @@ class Compressor(object):
 				bytesRead += len(buffer.input)
 				bytesWritten += len(buffer.output)
 				
-				self.debug(4, "compressorThread: compressed %d blocks" % self.blocksCompressed)
+				self.debug(4, "compressorThread: compressed %d blocks" % \
+					self.blocksCompressed)
 				self.unlock()
 			else:
 				self.debug(4, "compressorThread: no input, sleeping")
@@ -332,7 +361,7 @@ class Compressor(object):
 			try:
 				compressor.close()
 			except:
-				self.debug(0, "Error closing remote connection on compressor thread '%s'" % compressor)
+				self.error("Error closing %s" % compressor)
 				pass
 		
 		delta = time.time() - startTime
@@ -342,9 +371,7 @@ class Compressor(object):
 		self.debug(1, "%s: processed %d blocks in %0.1f seconds (%0.3f MB/s in, %0.3f MB/s out)" % (
 			compressor, blocksCompressed, delta, rateIn, rateOut))
 		
-		self.lock()
-		self.runningThreads -= 1
-		self.unlock()
+		self.incRunning(-1)
 	
 
 
@@ -380,6 +407,9 @@ class LocalCompressor(object):
 	def decompress(self, block):
 		return bz2.decompress(block)
 	
+	def open(self):
+		pass
+	
 	def close(self):
 		pass
 	
@@ -394,7 +424,6 @@ class RemoteCompressor(object):
 		"""Address is a (host, port) tuple."""
 		self.address = address
 		self.blockSize100k = blockSize100k
-		self.open()
 	
 	def open(self):
 		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
