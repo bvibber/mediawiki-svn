@@ -4,12 +4,16 @@ import getopt
 import sys
 import time
 
-def report(nbytes, interval):
+def rate(nbytes, interval):
 	if interval == 0.0:
 		rate = 0.0
 	else:
 		rate = (float(nbytes) / 1048576.0) / interval
-	sys.stderr.write("%0.3f MB/sec\n" % rate)
+	return "%0.3f MB/sec" % rate
+
+def report(nbytes, interval, totalBytes, longTerm):
+	sys.stderr.write("%s now, %s average\n" % \
+		(rate(nbytes, interval), rate(totalBytes, longTerm)))
 
 bufferSize = 8192 # bytes to read at a time
 reportingInterval = 1.0 # reporting interval
@@ -23,18 +27,21 @@ if remainder:
 
 
 bytesRead = 0L
+bytesTotal = 0L
 startTime = time.time()
+lastTime = startTime
 now = startTime
 
 buffer = sys.stdin.read(bufferSize)
 while buffer:
 	sys.stdout.write(buffer)
 	bytesRead += len(buffer)
+	bytesTotal += len(buffer)
 	now = time.time()
-	if now - startTime >= reportingInterval:
-		report(bytesRead, now - startTime)
-		startTime = now
+	if now - lastTime >= reportingInterval:
+		report(bytesRead, now - lastTime, bytesTotal, now - startTime)
+		lastTime = now
 		bytesRead = 0L
 	buffer = sys.stdin.read(bufferSize)
 
-report(now - startTime, bytesRead)
+report(bytesRead, now - lastTime, bytesTotal, now - startTime)
