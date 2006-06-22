@@ -113,19 +113,21 @@ function getFieldValuesForAttribute($namePrefix, $attribute, $namePostFix) {
 	global
 		$wgRequest;
 		
+	$attributeId = $namePrefix . $attribute->id . $namePostFix;
+		
 	switch($attribute->type) {
-		case "language": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
-		case "spelling": return array(trim($wgRequest->getText($namePrefix . $attribute->id . $namePostFix)));
-		case "boolean": return array($wgRequest->getCheck($namePrefix . $attribute->id . $namePostFix));
+		case "language": return array($wgRequest->getInt($attributeId));
+		case "spelling": return array(trim($wgRequest->getText($attributeId)));
+		case "boolean": return array($wgRequest->getCheck($attributeId));
 		case "expression": return array($wgRequest->getInt($namePrefix . "language" . $namePostFix), trim($wgRequest->getText($namePrefix . "spelling" . $namePostFix)));
 		case "defined-meaning": 
 		case "defining-expression":
-			return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
-		case "relation-type": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
-		case "attribute": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
-		case "collection": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
+			return array($wgRequest->getInt($attributeId));
+		case "relation-type": return array($wgRequest->getInt($attributeId));
+		case "attribute": return array($wgRequest->getInt($attributeId));
+		case "collection": return array($wgRequest->getInt($attributeId));
 		case "short-text":
-		case "text": return array(trim($wgRequest->getText($namePrefix . $attribute->id . $namePostFix)));
+		case "text": return array(trim($wgRequest->getText($attributeId)));
 	}
 }
 

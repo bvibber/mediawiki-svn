@@ -603,33 +603,6 @@ class WiktionaryZ {
 		return $result;
 	}
 	
-	function getRelationTypes() {
-		$relationtypes=array();
-		$reltypecollections=$this->getReltypeCollections();
-		$dbr =& wfGetDB( DB_SLAVE );	
-		foreach($reltypecollections as $cname=>$cid) {
-			$rel_res=$dbr->query("select member_mid from uw_collection_contents where collection_id=$cid and is_latest_set=1");
-			while($rel_row=$dbr->fetchObject($rel_res)) {
-				# fixme hardcoded English
-				$rel_name=$this->getExpressionForMeaningId($rel_row->member_mid, 85);
-				$relationtypes[$rel_row->member_mid]=$rel_name;
-			}
-		}
-		return $relationtypes;
-	}
-	
-	function getReltypeCollections() {
-		$reltypecollections=array();
-		$dbr =& wfGetDB ( DB_SLAVE );
-		$col_res=$dbr->query("select collection_id,collection_mid from uw_collection_ns where collection_type='RELT' and is_latest=1");
-		while($col_row=$dbr->fetchObject($col_res)) {
-			# fixme hardcoded English
-			$collection_name=$this->getExpressionForMeaningId($col_row->collection_mid,85);
-			$reltypecollections[$collection_name]=$col_row->collection_id;
-		}
-		return $reltypecollections;
-	}
-	
 	function getAlternativeDefinitions($definedMeaningId) {
 		$result = array();
 		$dbr =& wfGetDB(DB_SLAVE);	
@@ -778,57 +751,12 @@ class WiktionaryZ {
 	function getDefinedMeaningsForExpression($expressionId) {
 		$dbr =& wfGetDB(DB_SLAVE);
 		$definedMeanings = array();
-		$queryResult = $dbr->query("SELECT defined_meaning_id from uw_syntrans WHERE expression_id=$expressionId");
+		$queryResult = $dbr->query("SELECT defined_meaning_id FROM uw_syntrans WHERE expression_id=$expressionId");
 		
 		while($definedMeaning = $dbr->fetchObject($queryResult)) 
 			$definedMeanings[] = $definedMeaning->defined_meaning_id;
 			
 		return $definedMeanings;
-	}
-	
-	function getAlternativeMeaningTexts($definedMeaningIds) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$alternativeMeaningTexts = array();
-	
-		foreach($definedMeaningIds as $definedMeaningId) {
-			$queryResult = $dbr->query("select meaning_text_tcid from uw_alt_meaningtexts where meaning_mid=$definedMeaningId and is_latest_set=1");
-			
-			while($alternativeMeaning = $dbr->fetchObject($queryResult)) 
-				$alternativeMeaningTexts[$definedMeaningId][] = $alternativeMeaning->meaning_text_tcid;
-		}
-		
-		return $alternativeMeaningTexts;
-	}
-	
-	function getSpellingsPerDefinedMeaningAndLanguage($definedMeaningIds, $synonymsAndTranslationIds) {
-		$spellingsPerDefinedMeaningAndLanguage = array();	
-	
-		foreach($definedMeaningIds as $definedMeaningId) {
-			$spellingsPerLanguage = array();
-			
-			if (array_key_exists($definedMeaningId, $synonymsAndTranslationIds)) 
-				foreach($synonymsAndTranslationIds[$definedMeaningId] as $synonymOrTranslation) {
-					$spellingAndLanguage = $this->getSpellingAndLanguageForExpression($synonymOrTranslation);
-					
-					foreach($spellingAndLanguage as $language => $spelling) 
-						$spellingsPerLanguage[$language][] = $spelling;					
-				}
-			
-			$spellingsPerDefinedMeaningAndLanguage[$definedMeaningId] = $spellingsPerLanguage;
-		}
-		
-		return $spellingsPerDefinedMeaningAndLanguage;
-	}
-	
-	function getSpellingAndLanguageForExpression($expressionId) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT language_id, spelling from uw_expression_ns WHERE expression_id=$expressionId");
-		$spellingAndLanguage = array();
-		
-		while($expression = $dbr->fetchObject($queryResult)) 
-			$spellingAndLanguage[$expression->language_id] = $expression->spelling;					
-		
-		return $spellingAndLanguage;
 	}
 	
 	function getSynonymAndTranslationIds($definedMeaningIds, $skippedExpressionId) {
@@ -975,66 +903,6 @@ class WiktionaryZ {
 		return $definedMeaningAttributes;	
 	}
 	
-	function getTranslationIdsForDefinedMeaning($definedMeaningId) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT * from text where old_id=$textId");
-	}
-	
-	function getText($textId) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT old_text from text where old_id=$textId");
-
-		if($text = $dbr->fetchObject($queryResult)) 
-			return $text->old_text;
-		else
-			return "";
-	}
-	
-	function setText($textId, $text) {
-		$dbr = &wfGetDB(DB_MASTER);
-		$text = $dbr->addQuotes($text);
-		$sql = "UPDATE text SET old_text=$text WHERE old_id=$textId";	
-		$dbr->query($sql);
-	}
-	
-	function getAttributeValues(){
-		$atts=array();
-		$attcollections=$this->getCollectionsByType('ATTR');
-		$dbr =& wfGetDB( DB_SLAVE );	
-		foreach($attcollections as $cname=>$cid) {
-			$att_res=$dbr->query("select member_mid from uw_collection_contents where collection_id=$cid and is_latest_set=1");
-			while($att_row=$dbr->fetchObject($att_res)) {
-				# fixme hardcoded English
-				$att_name=$this->getExpressionForMeaningId($att_row->member_mid, 85);
-				$atts[$att_row->member_mid]=$att_name;
-			}
-		}
-		return $atts;
-	}
-
-	function getCollectionsByType($type) {
-		$typecollections=array();
-		$dbr =& wfGetDB ( DB_SLAVE );
-		$col_res=$dbr->query("select collection_id,collection_mid from uw_collection_ns where collection_type=".$dbr->addQuotes($type)." and is_latest=1");
-		while($col_row=$dbr->fetchObject($col_res)) {
-			# fixme hardcoded English
-			$collection_name=$this->getExpressionForMeaningId($col_row->collection_mid,85);
-			$typecollections[$collection_name]=$col_row->collection_id;
-		}
-		return $typecollections;
-	
-	}
-
-	function getDefiningExpressionForDefinedMeaningId($definedMeaningId) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT spelling from uw_defined_meaning, uw_expression_ns where uw_defined_meaning.defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_defined_meaning.expression_id and uw_defined_meaning.is_latest_ver=1 and uw_expression_ns.is_latest=1");
-		
-		while ($spelling = $dbr->fetchObject($queryResult))
-			$result = $spelling->spelling; 
-			
-		return $result;
-	}
-
 	function getExpressionForMeaningId($mid, $langcode) {
 //		$dbr =& wfGetDB(DB_SLAVE);
 //		$sql="SELECT spelling from uw_syntrans,uw_expression_ns where defined_meaning_id=".$mid." and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=".$langcode." limit 1";

@@ -27,11 +27,12 @@ function getSuggestPrefix(node, postFix) {
 	return stripSuffix(nodeId, postFix);
 }
 
-function updateSuggestions(suggestPrefix, suggestTextId, suggestQuery) {
+function updateSuggestions(suggestPrefix) {
 	var http = getHTTPObject();
 	var table = document.getElementById(suggestPrefix + "table");
-	
-	suggestText = document.getElementById(suggestTextId);
+	var suggestQuery = document.getElementById(suggestPrefix + "query").value;
+		
+	suggestText = document.getElementById(suggestPrefix + "text");
 	suggestText.className = "suggest-loading";
 	
 	http.open('GET', 'extensions/Wikidata/WiktionaryZ/Suggest.php?search=' + encodeURI(suggestText.value) + '&prefix=' + encodeURI(suggestPrefix) + '&query=' + encodeURI(suggestQuery), true);
@@ -53,13 +54,15 @@ function updateSuggestions(suggestPrefix, suggestTextId, suggestQuery) {
 
 var suggestionTimeOut = null;
 
-function suggestTextChanged(suggestText) {
+function scheduleUpdateSuggestions(suggestPrefix) {
 	if (suggestionTimeOut != null)
 		clearTimeout(suggestionTimeOut);
 
-	var suggestPrefix = getSuggestPrefix(suggestText, "text");		
-	var suggestQuery = document.getElementById(suggestPrefix + "query").value;
-	suggestionTimeOut = setTimeout("updateSuggestions(\"" + suggestPrefix + "\", \"" + suggestText.id + "\", \"" + suggestQuery + "\")", 600);
+	suggestionTimeOut = setTimeout("updateSuggestions(\"" + suggestPrefix + "\")", 600);
+}
+
+function suggestTextChanged(suggestText) {
+	scheduleUpdateSuggestions(getSuggestPrefix(suggestText, "text"));
 }
 
 function suggestLinkClicked(event, suggestLink) {
@@ -71,10 +74,28 @@ function suggestLinkClicked(event, suggestLink) {
 	suggestDiv.style.display = 'block';
 	suggestField.focus();
 	
+	updateSuggestions(suggestPrefix);
+
 	if (event.preventDefault)
 		event.preventDefault();
 	else
 		event.returnValue = false;
+}
+
+function updateSuggestValue(suggestPrefix, value, displayValue) {
+	var suggestLink = document.getElementById(suggestPrefix + "link");
+	var suggestDiv = document.getElementById(suggestPrefix + "div");
+	var suggestField = document.getElementById(stripSuffix(suggestPrefix, "-suggest-"));
+	
+	suggestField.value = value;
+	
+	suggestLink.innerHTML = displayValue;
+	suggestDiv.style.display = 'none';
+	suggestLink.focus();
+}
+
+function suggestClearClicked(suggestClear) {
+	updateSuggestValue(getSuggestPrefix(suggestClear, 'clear'), "", "No selection");
 }
 
 function suggestCloseClicked(suggestClose) {
@@ -84,7 +105,9 @@ function suggestCloseClicked(suggestClose) {
 }
 
 function suggestRowClicked(suggestRow) {
-	var suggestPrefix = getSuggestPrefix(suggestRow.parentNode.parentNode.parentNode.parentNode, "div");
+	updateSuggestValue(getSuggestPrefix(suggestRow.parentNode.parentNode.parentNode.parentNode, "div"),
+						suggestRow.id, suggestRow.getElementsByTagName('td')[0].innerHTML);
+/*	var suggestPrefix = getSuggestPrefix(suggestRow.parentNode.parentNode.parentNode.parentNode, "div");
 	var suggestLink = document.getElementById(suggestPrefix + "link");
 	var suggestDiv = document.getElementById(suggestPrefix + "div");
 	var suggestField = document.getElementById(stripSuffix(suggestPrefix, "-suggest-"));
@@ -93,7 +116,7 @@ function suggestRowClicked(suggestRow) {
 	
 	suggestLink.innerHTML = suggestRow.getElementsByTagName('td')[0].innerHTML;
 	suggestDiv.style.display = 'none';
-	suggestLink.focus();
+	suggestLink.focus();*/
 }
 
 function mouseOverRow(row) {
