@@ -1,5 +1,8 @@
 /*
-      Should be copied into the appropriate stylesheets like 
+      Copy 
+          @import url("../../extensions/Wikidata/WiktionaryZ/tmp/tables.css");
+          
+      into the appropriate stylesheets like 
           skins/monobook/main.css
           skins/common/common.css
 */

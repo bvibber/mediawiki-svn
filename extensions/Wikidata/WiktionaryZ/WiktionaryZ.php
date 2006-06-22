@@ -8,12 +8,13 @@ require_once('type.php');
 require_once('languages.php');
 
 global
-	$languageAttribute, $textAttribute, $identicalMeaningAttribute, $internalIdAttribute;
+	$languageAttribute, $textAttribute, $identicalMeaningAttribute, $internalIdAttribute, $collectionAttribute;
 
 $languageAttribute = new Attribute("language", "Language", "language");
 $textAttribute = new Attribute("text", "Text", "text");
 
 $identicalMeaningAttribute = new Attribute("endemic-meaning", "Identical meaning?", "boolean");
+$collectionAttribute = new Attribute("collection", "Collection", "collection");
 $internalIdAttribute = new Attribute("internal-id", "Internal ID", "short-text"); 
 
 function getLatestRevisionForDefinedMeaning($definedMeaningId) {
@@ -841,11 +842,10 @@ class WiktionaryZ {
 	
 	function getDefinedMeaningCollectionsRelation($definedMeaningId) {
 		global
-			$internalIdAttribute;
+			$collectionAttribute, $internalIdAttribute;
 			
-		$heading = new Heading(array(new Attribute("collection", "Collection", "collection"),
-										$internalIdAttribute));
-		$relation = new ArrayRelation($heading, $heading);
+		$heading = new Heading(array($collectionAttribute, $internalIdAttribute));
+		$relation = new ArrayRelation($heading, new Heading(array($collectionAttribute)));
 		
 		$dbr =& wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT collection_id, internal_member_id FROM uw_collection_contents WHERE member_mid=$definedMeaningId AND is_latest_set=1");
