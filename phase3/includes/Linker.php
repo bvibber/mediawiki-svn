@@ -683,7 +683,7 @@ class Linker {
 		return $s;
 	}
 
-	/** @todo document */
+	/** @todo document */	
 	function makeMediaLink( $name, /* wtf?! */ $url, $alt = '' ) {
 		$nt = Title::makeTitleSafe( NS_IMAGE, $name );
 		return $this->makeMediaLinkObj( $nt, $alt );
@@ -700,6 +700,7 @@ class Linker {
 	 *
 	 * @public
 	 * @todo Handle invalid or missing images better.
+	 
 	 */
 	function makeMediaLinkObj( $title, $text = '' ) {
 		if( is_null( $title ) ) {
@@ -721,7 +722,36 @@ class Linker {
 				$text = $alt;
 			}
 			$u = htmlspecialchars( $url );
-			return "<a href=\"{$u}\" class=\"$class\" title=\"{$alt}\">{$text}</a>";
+			//return "<a href=\"{$u}\" class=\"$class\" title=\"{$alt}\">{$text}</a>";			
+			/*@@TODO extend mediaLink Object into seperate class like image:
+			1) check media type: if ogg theora, grab thumbnail 
+			2) return javascript code to detect client type
+			2) set
+			*/
+			$_GET['javaDemo']=(isset($_GET['javaDemo']))?$_GET['javaDemo']:'';
+			if($_GET['javaDemo']=='true'){
+				return '<applet code="com.fluendo.player.Cortado.class" archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar" width="320" height="240">
+						  <param name="url" value="http://metavid.ucsc.edu'.$u.'" title="'.$alt.'" />
+						  <param name="autoplay" value="false" />
+						  <param name="local" value="false"/>
+						  <param name="keepaspect" value="true" />
+						  <param name="video" value="true" />
+						  <param name="audio" value="true" />
+						  <param name="seekable" value="true" />
+						  <param name="duration" value="00455" />
+						  <param name="bufferSize" value="200" />
+						</applet>';
+			}else{
+				return '<embed type="application/x-annodex-vlc-viewer-plugin" id="video1" autoplay="no" loop="no" height="240" width="320"> <br>			
+						<script language="JavaScript">			
+							document.video1.stop();
+							document.video1.clear_playlist();
+							name=\'http://metavid.ucsc.edu'. $u.'\';
+							document.video1.add_item( name );
+							document.video1.play();
+						</script>	
+						<a href="javascript:;" onclick="document.video1.play()">Play</a> <a href="javascript:;" onclick="document.video1.pause()">Pause</a> <a href="javascript:;" onclick="document.video1.stop()">Stop</a> <a href="javascript:;" onclick="document.video1.fullscreen()">Fullscreen</a> <a href="'.$u.'">Download</a>';
+			}
 		}
 	}
 

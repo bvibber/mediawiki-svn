@@ -470,7 +470,7 @@ class MimeMagic {
 			$m= `$wgMimeDetectorCommand $fn`;
 		}
 		else if (function_exists("finfo_open") && function_exists("finfo_file")) {
-
+			
 			# This required the fileinfo extension by PECL,
 			# see http://pecl.php.net/package/fileinfo
 			# This must be compiled into PHP
@@ -488,10 +488,10 @@ class MimeMagic {
 
 				finfo_close($mime_magic_resource);
 			}
-			else wfDebug("$fname: finfo_open failed on ".FILEINFO_MIME."!\n");
+			else wfDebug("$fname: finfo_open failed on ".FILEINFO_MIME."!\n");				
 		}
 		else if (function_exists("mime_content_type")) {
-
+		
 			# NOTE: this function is available since PHP 4.3.0, but only if
 			# PHP was compiled with --with-mime-magic or, before 4.3.2, with --enable-mime-magic.
 			#
@@ -502,6 +502,21 @@ class MimeMagic {
 			# see http://www.php.net/manual/en/ref.mime-magic.php for details.
 
 			$m= mime_content_type($file);
+			
+			//sometimes fails on ogg vorbis audio video do  manual test (hack) 
+			//(should work ok with the non-deprecated mine_content_type)
+			if($m=='text/plain'){
+				$f = fopen( $file, "rt" );
+				if( !$f ) return MEDIATYPE_UNKNOWN;
+				$head = fread( $f, 256 );
+				fclose( $f );
+	
+				$head= strtolower( $head );
+				if(strpos($head, 'ogg')!==false){
+					$m='application/ogg';
+				}			
+			}
+			
 		}
 		else wfDebug("$fname: no magic mime detector found!\n");
 
@@ -517,7 +532,7 @@ class MimeMagic {
 				return $m;
 			}
 		}
-
+ 
 		#if still not known, use getimagesize to find out the type of image
 		#TODO: skip things that do not have a well-known image extension? Would that be safe?
 		wfSuppressWarnings();
@@ -600,7 +615,7 @@ class MimeMagic {
 		#special code for ogg - detect if it's video (theora),
 		#else label it as sound.
 		if( $mime=="application/ogg" && file_exists($path) ) {
-
+								
 			// Read a chunk of the file
 			$f = fopen( $path, "rt" );
 			if( !$f ) return MEDIATYPE_UNKNOWN;

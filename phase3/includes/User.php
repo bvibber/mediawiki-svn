@@ -251,7 +251,7 @@ class User {
 			'\x{3000}' .          # ideographic space
 			'\x{e000}-\x{f8ff}' . # private use
 			']/u';
-		if( preg_match( $unicodeBlacklist, $name ) ) {
+		if( @preg_match( $unicodeBlacklist, $name ) ) {
 			return false;
 		}
 		
