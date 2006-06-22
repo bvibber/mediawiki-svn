@@ -140,16 +140,20 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 *   - hasn't been patrolled
 		 *   - isn't assigned to a user
 		 *
-		 * FIXME: This SQL needs improving; in particular, the change that is pulled
-		 * has *got* to be one which is still "current", i.e. rc_this_oldid = page.page_latest
 		 */
 		function fetchChange( &$user ) {
 			$dbr =& wfGetDB( DB_SLAVE );
 			$uid = $user->getId();
-			extract( $dbr->tableNames( 'recentchanges', 'patrollers' ) );
-			$sql = "SELECT * FROM $recentchanges LEFT JOIN $patrollers ON rc_id = ptr_change
+			extract( $dbr->tableNames( 'recentchanges', 'patrollers', 'page' ) );
+			$sql = "SELECT * FROM $page, $recentchanges LEFT JOIN $patrollers ON rc_id = ptr_change
+					WHERE rc_namespace = page_namespace AND rc_title = page_title
+					AND rc_this_oldid = page_latest AND rc_bot = 0 AND rc_patrolled = 0 AND rc_type = 0
+					AND rc_user != $uid AND ptr_timestamp IS NULL LIMIT 0,1";
+			
+			/*$sql = "SELECT * FROM $recentchanges LEFT JOIN $patrollers ON rc_id = ptr_change
 					WHERE rc_bot = 0 AND rc_patrolled = 0 AND rc_type = 0 AND rc_user != $uid
-					AND ptr_timestamp IS NULL LIMIT 0,1";
+					AND ptr_timestamp IS NULL LIMIT 0,1";*/
+					
 			$res = $dbr->query( $sql, 'Patroller::fetchChange' );
 			if( $dbr->numRows( $res ) > 0 ) {
 				$row = $dbr->fetchObject( $res );
