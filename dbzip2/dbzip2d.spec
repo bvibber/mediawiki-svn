@@ -45,6 +45,8 @@ rm -rf $RPM_BUILD_ROOT
 /usr/lib/dbzip2d/DistBits.py
 
 %changelog
+* Wed Jun 21 2006 Brion Vibber <brion@pobox.com>
+- 0.0.2; daemonizing hopefully better; error log.
 * Tue May 30 2006 Brion Vibber <brion@pobox.com>
 - Initial packaging.
 * Wed Jun 21 2006 Brion Vibber <brion@pobox.com>
