@@ -21,7 +21,7 @@ function spellingAsLink($value) {
 	global
 		$wgUser;
 		
-	return $wgUser->getSkin()->makeLink("WiktionaryZ:$value", $value);
+	return $wgUser->getSkin()->makeLink("WiktionaryZ:$value", htmlspecialchars($value));
 } 
 
 function languageIdAsText($languageId) {
@@ -108,7 +108,7 @@ function getFieldValuesForAttribute($namePrefix, $attribute, $namePostFix) {
 			return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
 		case "relation-type": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
 		case "attribute": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
-		case "text": return array($wgRequest->getText($namePrefix . $attribute->id . $namePostFix));
+		case "text": return array(trim($wgRequest->getText($namePrefix . $attribute->id . $namePostFix)));
 	}
 }
 

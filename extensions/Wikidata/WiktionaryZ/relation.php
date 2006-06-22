@@ -242,7 +242,7 @@ function getRelationAsEditHTML($relationModel, $addRowId, $removeId, $updateId, 
 	$key = $relationModel->getKey();
 	
 	if ($allowRemove)
-		$result .= '<th class="remove">Remove</th>';
+		$result .= '<th class="remove"><img src="skins/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>';
 	
 	foreach($attributes as $attribute)
 		$result .= '<th class="'. $attribute->type .'">' . $attribute->name . '</th>';

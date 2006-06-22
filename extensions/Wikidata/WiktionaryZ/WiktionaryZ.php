@@ -83,6 +83,12 @@ function updateDefinedMeaningDefinition($definedMeaningId, $languageId, $text) {
 									"AND tc.set_id=dm.meaning_text_tcid AND tc.language_id=$languageId AND tc.text_id=t.old_id AND tc.is_latest_set=1");	
 }
 
+function updateDefinedMeaningAlternativeDefinition($alternativeDefinitionId, $languageId, $text) {
+	$dbr =& wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE translated_content tc, text t SET old_text=". $dbr->addQuotes($text) ." WHERE ".
+									"tc.set_id=$alternativeDefinitionId AND tc.language_id=$languageId AND tc.text_id=t.old_id AND tc.is_latest_set=1");	
+}
+ 
 function createText($text) {
 	$dbr = &wfGetDB(DB_MASTER);
 	$text = $dbr->addQuotes($text);
@@ -146,9 +152,13 @@ function addDefinedMeaningDefinition($definedMeaningId, $expressionId, $language
 		addTranslatedDefinition($definitionId, $languageId, $text, $revisionId);
 }
 
+function addDefinedMeaningAlternativeDefinition($alternativeDefinitionId, $expressionId, $languageId, $text) {
+	addTranslatedDefinition($alternativeDefinitionId, $languageId, $text, getRevisionForExpressionId($expressionId));
+}
+
 function removeTranslatedDefinition($definitionId, $languageId) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("DELETE FROM translated_content WHERE set_id=$definitionId AND language_id=$languageId AND is_latest_set=1");
+	$dbr->query("DELETE tc, t FROM translated_content AS tc, text AS t WHERE tc.set_id=$definitionId AND tc.language_id=$languageId AND tc.is_latest_set=1 AND tc.text_id=t.old_id");
 }
 
 function removeDefinedMeaningDefinition($definedMeaningId, $languageId) {
@@ -182,6 +192,33 @@ class DefinedMeaningDefinitionController implements PageElementController {
 	
 	public function update($tuple, $updatedValues) {
 		updateDefinedMeaningDefinition($this->definedMeaningId, $tuple['language'], $updatedValues['text']);
+	}
+}
+
+class DefinedMeaningAlternativeDefinitionController implements PageElementController {
+	protected $alternativeDefinitionId;
+	protected $expressionId;
+	
+	public function __construct($alternativeDefinitionId, $expressionId) {
+		$this->alternativeDefinitionId = $alternativeDefinitionId;
+		$this->expressionId = $expressionId;
+	}
+
+	public function add($values) {
+		$languageId = $values[0];
+		$text = $values[1];
+		
+		if ($text != "") 
+			addDefinedMeaningAlternativeDefinition($this->alternativeDefinitionId, $this->expressionId, $languageId, $text);
+	}
+	
+	public function remove($tuple) {
+		$languageId = $tuple['language'];
+		removeTranslatedDefinition($this->alternativeDefinitionId, $languageId);
+	}
+	
+	public function update($tuple, $updatedValues) {
+		updateDefinedMeaningAlternativeDefinition($this->alternativeDefinitionId, $tuple['language'], $updatedValues['text']);
 	}
 }
 
@@ -286,8 +323,6 @@ class WiktionaryZ {
 		while($row=$dbr->fetchObject($res)) {
 			$expressionId = $row->expression_id;
 			$definedMeaningIds = $this->getDefinedMeaningsForExpression($expressionId);
-			$definedMeaningTexts = $this->getDefinedMeaningTexts($definedMeaningIds);
-			$alternativeMeaningTexts = $this->getAlternativeMeaningTexts($definedMeaningIds);
 
 			$wgOut->addHTML($skin->editSectionLink($wgTitle, $expressionId));
 			$wgOut->addHTML("<h2><i>Spelling</i>: $row->spelling - <i>Language:</i> ".$wgLanguageNames[$row->language_id]. "</h2>");
@@ -305,13 +340,6 @@ class WiktionaryZ {
 				$wgOut->addHTML('</div>');
 
 				$wgOut->addHTML('<div class="clear-float"/>');
-
-				if ($alternativeMeaningTexts[$definedMeaningId]) {
-					foreach($alternativeMeaningTexts[$definedMeaningId] as $alternativeMeaningTextId) { 
-						$wgOut->addHTML("<h3>Alternative definition</h3>");
-						$this->viewTranslatedContent($alternativeMeaningTextId);	
-					}
-				}
 
 				$wgOut->addHTML('</li>');
 			}
@@ -431,6 +459,29 @@ class WiktionaryZ {
 										new DefinedMeaningDefinitionController($definedMeaningId, $expressionId));
 	}
 	
+	function getDefinedMeaningAlternativeDefinitionPageElement($alternativeDefinitionId, $expressionId) {
+		global
+			$textAttribute;
+		
+		return new DefaultPageElement("alternative-definition-$alternativeDefinitionId", "Alternative definition", 
+										$this->getDefinedMeaningAlternativeDefinitionRelation($alternativeDefinitionId), 
+										true, true, new Heading(array($textAttribute)),
+										false,
+										new DefinedMeaningAlternativeDefinitionController($alternativeDefinitionId, $expressionId));
+	}
+	
+	function getDefinedMeaningAlternativeDefinitionsPageElements($definedMeaningId, $expressionId) {
+		global	
+			$textAttribute;
+			
+		$result = array();
+		
+		foreach($this->getAlternativeDefinitions($definedMeaningId) as $alternativeDefinitionId)
+			$result[] = $this->getDefinedMeaningAlternativeDefinitionPageElement($alternativeDefinitionId, $expressionId);
+		
+		return $result;
+	}
+	
 	function getSynonymsAndTranslationsPageElement($definedMeaningId, $expressionId) {
 		global
 			$identicalMeaningAttribute;
@@ -459,24 +510,16 @@ class WiktionaryZ {
 	}
 	
 	function getDefinedMeaningPageElements($definedMeaningId, $expressionId) {
-		return array($this->getDefinedMeaningDefinitionPageElement($definedMeaningId, $expressionId),
-						$this->getSynonymsAndTranslationsPageElement($definedMeaningId, $expressionId), 
-						$this->getDefinedMeaningRelationsPageElement($definedMeaningId),
-						$this->getDefinedMeaningAttributesPageElement($definedMeaningId));
+		$result = array();
+		$result[] = $this->getDefinedMeaningDefinitionPageElement($definedMeaningId, $expressionId);
+		$result = array_merge($result, $this->getDefinedMeaningAlternativeDefinitionsPageElements($definedMeaningId, $expressionId));
+		$result[] = $this->getSynonymsAndTranslationsPageElement($definedMeaningId, $expressionId);
+		$result[] = $this->getDefinedMeaningRelationsPageElement($definedMeaningId);
+		$result[] = $this->getDefinedMeaningAttributesPageElement($definedMeaningId);
+		
+		return $result;
 	}
 	
-	function viewTranslatedContent($setId) {
-		global
-			$wgOut, $wgLanguageNames;
-		
-		$translatedContents = $this->getTranslatedContents($setId);
-
-		foreach($translatedContents as $language => $textId) {
-			$wgOut->addHTML("<p><b><i>$wgLanguageNames[$language]</i></b></p>");
-			$wgOut->addHTML(htmlspecialchars($this->getText($textId)));
-		}
-	}
-
 	function getRelationTypes() {
 		$relationtypes=array();
 		$reltypecollections=$this->getReltypeCollections();
@@ -502,7 +545,17 @@ class WiktionaryZ {
 			$reltypecollections[$collection_name]=$col_row->collection_id;
 		}
 		return $reltypecollections;
+	}
 	
+	function getAlternativeDefinitions($definedMeaningId) {
+		$result = array();
+		$dbr =& wfGetDB(DB_SLAVE);	
+		$queryResult = $dbr->query("SELECT meaning_text_tcid FROM uw_alt_meaningtexts WHERE meaning_mid=$definedMeaningId AND is_latest_set=1");
+		
+		while ($definitionId = $dbr->fetchObject($queryResult))
+			$result[] = $definitionId->meaning_text_tcid;
+			
+		return $result;
 	}
 	
 	function saveForm($sectionArguments) {
@@ -537,13 +590,12 @@ class WiktionaryZ {
 	
 	function saveExpressionForm($expressionId, $definedMeaningIds) {
 		$synonymsAndTranslationIds = $this->getSynonymAndTranslationIds($definedMeaningIds, $expressionId);
-		$definedMeaningTexts = $this->getDefinedMeaningTexts($definedMeaningIds);
 
 		foreach($definedMeaningIds as $definedMeaningId) 
-			$this->saveDefinedMeaningForm($expressionId, $definedMeaningId, $definedMeaningTexts[$definedMeaningId]);
+			$this->saveDefinedMeaningForm($expressionId, $definedMeaningId);
 	}
 	
-	function saveDefinedMeaningForm($expressionId, $definedMeaningId, $definedMeaningTextId) {
+	function saveDefinedMeaningForm($expressionId, $definedMeaningId) {
 		$pageElements = $this->getDefinedMeaningPageElements($definedMeaningId, $expressionId);
 		
 		foreach($pageElements as $pageElement)
@@ -616,18 +668,16 @@ class WiktionaryZ {
 		
 		$wgOut->addHTML("<h2><i>Spelling:</i>" . $spelling . " - <i>Language:</i> ".$wgLanguageNames[$languageId]."</h2>");
 
-		$definedMeaningTexts = $this->getDefinedMeaningTexts($definedMeaningIds);
-
 		$wgOut->addHTML('<ul>');
 		foreach ($definedMeaningIds as $definedMeaningId) {
 			$wgOut->addHTML('<li>');			
-			$this->displayDefinedMeaningEditForm($definedMeaningId, $expressionId, $this->getSynonymAndTranslationRelation($definedMeaningId, $expressionId), $definedMeaningTexts[$definedMeaningId]);
+			$this->displayDefinedMeaningEditForm($definedMeaningId, $expressionId, $this->getSynonymAndTranslationRelation($definedMeaningId, $expressionId));
 			$wgOut->addHTML('</li>');
 		}
 		$wgOut->addHTML('</ul>');
 	}
 	
-	function displayDefinedMeaningEditForm($definedMeaningId, $expressionId, $synonymAndTranslationTable, $definedMeaningTextId) {
+	function displayDefinedMeaningEditForm($definedMeaningId, $expressionId, $synonymAndTranslationTable) {
 		global
 			$wgOut, $wgLanguageNames;
 		
@@ -651,20 +701,6 @@ class WiktionaryZ {
 			$definedMeanings[] = $definedMeaning->defined_meaning_id;
 			
 		return $definedMeanings;
-	}
-	
-	function getDefinedMeaningTexts($definedMeaningIds) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$definedMeaningTexts = array();
-	
-		foreach($definedMeaningIds as $definedMeaningId) {
-			$queryResult = $dbr->query("SELECT meaning_text_tcid from uw_defined_meaning WHERE defined_meaning_id=$definedMeaningId and is_latest_ver=1");
-			
-			while($dm_row=$dbr->fetchObject($queryResult)) 
-				$definedMeaningTexts[$definedMeaningId] = $dm_row->meaning_text_tcid;
-		}
-		
-		return $definedMeaningTexts;
 	}
 	
 	function getAlternativeMeaningTexts($definedMeaningIds) {
@@ -737,6 +773,24 @@ class WiktionaryZ {
 										
 		$queryResult = $dbr->query("SELECT language_id, old_text FROM uw_defined_meaning df, translated_content tc, text t WHERE df.defined_meaning_id=$definedMeaningId AND df.is_latest_ver=1 ".
 									"AND tc.set_id=df.meaning_text_tcid AND tc.text_id=t.old_id AND tc.is_latest_set=1");
+									
+		while ($translatedDefinition = $dbr->fetchObject($queryResult)) 
+			$relation->addTuple(array($translatedDefinition->language_id, $translatedDefinition->old_text));
+		
+		return $relation;
+	}
+	
+	function getDefinedMeaningAlternativeDefinitionRelation($alternativeDefinitionId) {
+		global
+			$languageAttribute, $textAttribute;
+		
+		$dbr =& wfGetDB(DB_SLAVE);
+
+		$relation = new ArrayRelation(new Heading(array($languageAttribute, $textAttribute)), 
+										new Heading(array($languageAttribute)));
+										
+		$queryResult = $dbr->query("SELECT language_id, old_text FROM translated_content tc, text t WHERE ".
+									"tc.set_id=$alternativeDefinitionId AND tc.text_id=t.old_id AND tc.is_latest_set=1");
 									
 		while ($translatedDefinition = $dbr->fetchObject($queryResult)) 
 			$relation->addTuple(array($translatedDefinition->language_id, $translatedDefinition->old_text));
@@ -819,18 +873,6 @@ class WiktionaryZ {
 		}
 
 		return $definedMeaningAttributes;	
-	}
-	
-	function getTranslatedContents($setId) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$translatedContents = array();
-
-		$queryResult = $dbr->query("SELECT * from translated_content where set_id=$setId");
-	
-		while($translatedContent = $dbr->fetchObject($queryResult)) 
-			$translatedContents[$translatedContent->language_id] = $translatedContent->text_id;
-		
-		return $translatedContents;
 	}
 	
 	function getTranslationIdsForDefinedMeaning($definedMeaningId) {
