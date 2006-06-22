@@ -2,7 +2,7 @@
 
 require_once('languages.php');
 
-function getTextBox($name, $maximumLength = 255, $value = "") {
+function getTextBox($name, $value = "", $maximumLength = 255) {
 	return '<input type="text" name="'. $name .'" value="'. $value .'" maxlength="'. $maximumLength .'"/>';
 }
  
@@ -53,7 +53,7 @@ function getSuggest($name, $query) {
 
 	$result = '<div class="suggest"><input type="hidden" id="'. $name .'-suggest-query" value="'. $query .'"/><input type="hidden" id="'. $name .'" name="'. $name .'" value=""/><a id="'. $name .'-suggest-link" class="suggest-link" href="#'. $name .'-suggest-div" onclick="suggestLinkClicked(event, this);" title="Click to change selection">No selection</a></div>'.
                '<div style="position: relative"><div id="'. $name .'-suggest-div" style="position: absolute; left: 0px; top: 0px; border: 1px solid #000000; display: none; background-color: white; padding: 4px">' .
-               '<div><table><tr><td><input type="text" id="'. $name .'-suggest-text" autocomplete="off" onkeyup="suggestTextChanged(this)" style="width: 300px"></input></td><td><a id="'. $name .'-suggest-close" href="#'. $name . 'suggest-link" onclick="suggestCloseClicked(this)">[X]</a></td></tr></table></div>' .
+               '<div><table><tr><td><input type="text" id="'. $name .'-suggest-text" autocomplete="off" onkeyup="suggestTextChanged(this)" style="width: 300px"></input></td><td><a id="'. $name .'-suggest-close" href="#'. $name . '-suggest-link" onclick="suggestCloseClicked(this)">[X]</a></td></tr></table></div>' .
                '<div><table id="'. $name .'-suggest-table"><tr><td></td></tr></table></div>'.
                '</div></div>';
 	

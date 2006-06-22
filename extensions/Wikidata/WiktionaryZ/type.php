@@ -56,6 +56,13 @@ function getTextValue($textId) {
 	return $dbr->fetchObject($queryResult)->old_text; 
 }
 
+function getCollectionMeaningId($collectionId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT collection_mid FROM uw_collection_ns WHERE collection_id=$collectionId AND is_latest=1");
+	
+	return $dbr->fetchObject($queryResult)->collection_mid;	
+}
+
 function definingExpressionAsLink($definedMeaningId) {
 	return spellingAsLink(definingExpression($definedMeaningId));
 }
@@ -64,15 +71,21 @@ function definedMeaningAsLink($definedMeaningId) {
 	return spellingAsLink(definedMeaningExpression($definedMeaningId));
 }
 
+function collectionAsLink($collectionId) {
+	return definedMeaningAsLink(getCollectionMeaningId($collectionId));
+}
+
 function convertToHTML($value, $type) {
 	switch($type) {
 		case "boolean": return booleanAsHTML($value);
 		case "spelling": return spellingAsLink($value);
+		case "collection": return collectionAsLink($value);
 		case "defined-meaning": return definedMeaningAsLink($value);
 		case "defining-expression": return definingExpressionAsLink($value);
 		case "relation-type": return definedMeaningAsLink($value);
 		case "attribute": return definedMeaningAsLink($value);
 		case "language": return languageIdAsText($value);
+		case "short-text":
 		case "text": return htmlspecialchars($value);
 		default: return htmlspecialchars($value);
 	}
@@ -81,14 +94,16 @@ function convertToHTML($value, $type) {
 function getInputFieldsForAttribute($namePrefix, $attribute, $value) {
 	switch($attribute->type) {
 		case "language": return array(getLanguageSelect($namePrefix . $attribute->id));
-		case "spelling": return array(getTextBox($namePrefix . $attribute->id));
+		case "spelling": return array(getTextBox($namePrefix . $attribute->id, $value));
 		case "boolean": return array(getCheckBox($namePrefix . $attribute->id, $value));
-		case "expression": return array(getLanguageSelect($namePrefix . "language"), getTextBox($namePrefix . "spelling"));
+		case "expression": return array(getLanguageSelect($namePrefix . "language"), getTextBox($namePrefix . "spelling", $value));
 		case "defined-meaning":
 		case "defining-expression":
 			return array(getSuggest($namePrefix . $attribute->id, "defined-meaning"));
 		case "relation-type": return array(getSuggest($namePrefix . $attribute->id, "relation-type"));
 		case "attribute": return array(getSuggest($namePrefix . $attribute->id, "attribute"));
+		case "collection": return array(getSuggest($namePrefix . $attribute->id, "collection"));
+		case "short-text": return array(getTextBox($namePrefix . $attribute->id, $value));
 		case "text": return array(getTextArea($namePrefix . $attribute->id, $value));
 		default: return array();
 	}	
@@ -108,6 +123,8 @@ function getFieldValuesForAttribute($namePrefix, $attribute, $namePostFix) {
 			return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
 		case "relation-type": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
 		case "attribute": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
+		case "collection": return array($wgRequest->getInt($namePrefix . $attribute->id . $namePostFix));
+		case "short-text":
 		case "text": return array(trim($wgRequest->getText($namePrefix . $attribute->id . $namePostFix)));
 	}
 }

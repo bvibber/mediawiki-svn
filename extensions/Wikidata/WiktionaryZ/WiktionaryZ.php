@@ -8,12 +8,13 @@ require_once('type.php');
 require_once('languages.php');
 
 global
-	$languageAttribute, $textAttribute, $identicalMeaningAttribute;
+	$languageAttribute, $textAttribute, $identicalMeaningAttribute, $internalIdAttribute;
 
 $languageAttribute = new Attribute("language", "Language", "language");
 $textAttribute = new Attribute("text", "Text", "text");
 
-$identicalMeaningAttribute = new Attribute("endemic-meaning", "Identical meaning?", "boolean"); 
+$identicalMeaningAttribute = new Attribute("endemic-meaning", "Identical meaning?", "boolean");
+$internalIdAttribute = new Attribute("internal-id", "Internal ID", "short-text"); 
 
 function getLatestRevisionForDefinedMeaning($definedMeaningId) {
 	$dbr =& wfGetDB(DB_SLAVE);
@@ -139,9 +140,8 @@ function newTranslatedContentId() {
 	return $dbr->fetchObject($queryResult)->max_id + 1;
 }
 
-function addDefinedMeaningDefinition($definedMeaningId, $expressionId, $languageId, $text) {
+function addDefinedMeaningDefinition($definedMeaningId, $revisionId, $languageId, $text) {
 	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
-	$revisionId = getRevisionForExpressionId($expressionId);
 	
 	if ($definitionId == 0) {
 		$definitionId = newTranslatedContentId();		
@@ -152,8 +152,8 @@ function addDefinedMeaningDefinition($definedMeaningId, $expressionId, $language
 		addTranslatedDefinition($definitionId, $languageId, $text, $revisionId);
 }
 
-function addDefinedMeaningAlternativeDefinition($alternativeDefinitionId, $expressionId, $languageId, $text) {
-	addTranslatedDefinition($alternativeDefinitionId, $languageId, $text, getRevisionForExpressionId($expressionId));
+function addDefinedMeaningAlternativeDefinition($alternativeDefinitionId, $revisionId, $languageId, $text) {
+	addTranslatedDefinition($alternativeDefinitionId, $languageId, $text, $revisionId);
 }
 
 function removeTranslatedDefinition($definitionId, $languageId) {
@@ -168,13 +168,53 @@ function removeDefinedMeaningDefinition($definedMeaningId, $languageId) {
 		removeTranslatedDefinition($definitionId, $languageId);
 }
 
+function definedMeaningInCollection($definedMeaningId, $collectionId) {
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT * FROM uw_collection_contents WHERE collection_id=$collectionId AND member_mid=$definedMeaningId AND is_latest_set=1");
+	
+	return $dbr->numRows($queryResult) > 0;
+}
+
+function getCollectionSetId($collectionId) {
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT set_id FROM uw_collection_contents WHERE collection_id=$collectionId AND is_latest_set=1 LIMIT 1");
+	$result = $dbr->fetchObject($queryResult)->set_id;
+	
+	if ($result == 0) {
+		$queryResult = $dbr->query("SELECT max(set_id) as max_set_id FROM uw_collection_contents");
+		$result = fetchObject($queryResult)->max_set_id;
+	}
+	
+	return $result;
+}
+
+function addDefinedMeaningToCollection($definedMeaningId, $collectionId, $internalId, $revisionId) {
+	if (!definedMeaningInCollection($definedMeaningId, $collectionId)) {
+		$setId = getCollectionSetId($collectionId);		
+		$dbr = &wfGetDB(DB_MASTER);
+		$dbr->query("INSERT INTO uw_collection_contents(set_id, collection_id, member_mid, is_latest_set, first_set, revision_id, internal_member_id) " .
+						"VALUES ($setId, $collectionId, $definedMeaningId, 1, $setId, $revisionId, ". $dbr->addQuotes($internalId) .")");
+	}
+}
+
+function removeDefinedMeaningFromCollection($definedMeaningId, $collectionId) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("DELETE FROM uw_collection_contents WHERE collection_id=$collectionId AND member_mid=$definedMeaningId AND is_latest_set=1");	
+}
+
+function updateDefinedMeaningInCollection($definedMeaningId, $collectionId, $internalId) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE uw_collection_contents SET internal_member_id=".$dbr->addQuotes($internalId) . 
+				" WHERE collection_id=$collectionId AND member_mid=$definedMeaningId AND is_latest_set=1");	
+}
+
 class DefinedMeaningDefinitionController implements PageElementController {
 	protected $definedMeaningId;
-	protected $expressionId;
+	protected $revisionId;
 	
-	public function __construct($definedMeaningId, $expressionId) {
+	public function __construct($definedMeaningId, $revisionId) {
 		$this->definedMeaningId = $definedMeaningId;
-		$this->expressionId = $expressionId;
+		$this->revisionId = $revisionId;
 	}
 
 	public function add($values) {
@@ -182,7 +222,7 @@ class DefinedMeaningDefinitionController implements PageElementController {
 		$text = $values[1];
 		
 		if ($text != "") 
-			addDefinedMeaningDefinition($this->definedMeaningId, $this->expressionId, $languageId, $text);
+			addDefinedMeaningDefinition($this->definedMeaningId, $this->revisionId, $languageId, $text);
 	}
 	
 	public function remove($tuple) {
@@ -197,11 +237,11 @@ class DefinedMeaningDefinitionController implements PageElementController {
 
 class DefinedMeaningAlternativeDefinitionController implements PageElementController {
 	protected $alternativeDefinitionId;
-	protected $expressionId;
+	protected $revisionId;
 	
-	public function __construct($alternativeDefinitionId, $expressionId) {
+	public function __construct($alternativeDefinitionId, $revisionId) {
 		$this->alternativeDefinitionId = $alternativeDefinitionId;
-		$this->expressionId = $expressionId;
+		$this->revisionId = $revisionId;
 	}
 
 	public function add($values) {
@@ -209,7 +249,7 @@ class DefinedMeaningAlternativeDefinitionController implements PageElementContro
 		$text = $values[1];
 		
 		if ($text != "") 
-			addDefinedMeaningAlternativeDefinition($this->alternativeDefinitionId, $this->expressionId, $languageId, $text);
+			addDefinedMeaningAlternativeDefinition($this->alternativeDefinitionId, $this->revisionId, $languageId, $text);
 	}
 	
 	public function remove($tuple) {
@@ -273,7 +313,6 @@ class DefinedMeaningRelationController implements PageElementController {
 	}
 	
 	public function update($tuple, $updatedValues) {
-		
 	}
 }
 
@@ -296,6 +335,36 @@ class DefinedMeaningAttributeController implements PageElementController {
 	}
 	
 	public function update($tuple, $updatedValues) {
+	}
+}
+
+class DefinedMeaningCollectionController implements PageElementController {
+	protected $definedMeaningId;
+	protected $revisionId;
+	
+	public function __construct($definedMeaningId, $revisionId) {
+		$this->definedMeaningId = $definedMeaningId;
+		$this->revisionId = $revisionId;
+	}
+	
+	public function add($values) {
+		$collectionId = $values[0];
+		$internalId = $values[1];
+		
+		if ($internalId != "")
+			addDefinedMeaningToCollection($this->definedMeaningId, $collectionId, $internalId, $this->revisionId);
+	}	
+
+	public function remove($tuple) {
+		removeDefinedMeaningFromCollection($this->definedMeaningId, $tuple['collection']);
+	}
+	
+	public function update($tuple, $updatedValues) {
+		$collectionId = $tuple["collection"];
+		$internalId = $updatedValues["internal-id"];
+		
+		if ($internalId != "")
+			updateDefinedMeaningInCollection($this->definedMeaningId, $collectionId, $internalId);
 	}
 }
 
@@ -448,7 +517,7 @@ class WiktionaryZ {
 		}				
 	}
 	
-	function getDefinedMeaningDefinitionPageElement($definedMeaningId, $expressionId) {
+	function getDefinedMeaningDefinitionPageElement($definedMeaningId, $revisionId) {
 		global
 			$textAttribute;
 		
@@ -456,10 +525,10 @@ class WiktionaryZ {
 										$this->getDefinedMeaningDefinitionRelation($definedMeaningId), 
 										true, true, new Heading(array($textAttribute)),
 										false,
-										new DefinedMeaningDefinitionController($definedMeaningId, $expressionId));
+										new DefinedMeaningDefinitionController($definedMeaningId, $revisionId));
 	}
 	
-	function getDefinedMeaningAlternativeDefinitionPageElement($alternativeDefinitionId, $expressionId) {
+	function getDefinedMeaningAlternativeDefinitionPageElement($alternativeDefinitionId, $revisionId) {
 		global
 			$textAttribute;
 		
@@ -467,17 +536,17 @@ class WiktionaryZ {
 										$this->getDefinedMeaningAlternativeDefinitionRelation($alternativeDefinitionId), 
 										true, true, new Heading(array($textAttribute)),
 										false,
-										new DefinedMeaningAlternativeDefinitionController($alternativeDefinitionId, $expressionId));
+										new DefinedMeaningAlternativeDefinitionController($alternativeDefinitionId, $revisionId));
 	}
 	
-	function getDefinedMeaningAlternativeDefinitionsPageElements($definedMeaningId, $expressionId) {
+	function getDefinedMeaningAlternativeDefinitionsPageElements($definedMeaningId, $revisionId) {
 		global	
 			$textAttribute;
 			
 		$result = array();
 		
 		foreach($this->getAlternativeDefinitions($definedMeaningId) as $alternativeDefinitionId)
-			$result[] = $this->getDefinedMeaningAlternativeDefinitionPageElement($alternativeDefinitionId, $expressionId);
+			$result[] = $this->getDefinedMeaningAlternativeDefinitionPageElement($alternativeDefinitionId, $revisionId);
 		
 		return $result;
 	}
@@ -509,13 +578,27 @@ class WiktionaryZ {
 										new DefinedMeaningAttributeController($definedMeaningId));
 	}
 	
+	function getDefinedMeaningCollectionsPageElement($definedMeaningId, $revisionId) {
+		global
+			$internalIdAttribute;
+		
+		return new DefaultPageElement("defined-meaning-collection-$definedMeaningId", "Collection membership", 
+										$this->getDefinedMeaningCollectionsRelation($definedMeaningId), 
+										true, true, new Heading(array($internalIdAttribute)),
+										false,
+										new DefinedMeaningCollectionController($definedMeaningId, $revisionId));
+	}
+	
 	function getDefinedMeaningPageElements($definedMeaningId, $expressionId) {
+		$revisionId = getRevisionForExpressionId($expressionId);
+		
 		$result = array();
-		$result[] = $this->getDefinedMeaningDefinitionPageElement($definedMeaningId, $expressionId);
-		$result = array_merge($result, $this->getDefinedMeaningAlternativeDefinitionsPageElements($definedMeaningId, $expressionId));
+		$result[] = $this->getDefinedMeaningDefinitionPageElement($definedMeaningId, $revisionId);
+		$result = array_merge($result, $this->getDefinedMeaningAlternativeDefinitionsPageElements($definedMeaningId, $revisionId));
 		$result[] = $this->getSynonymsAndTranslationsPageElement($definedMeaningId, $expressionId);
 		$result[] = $this->getDefinedMeaningRelationsPageElement($definedMeaningId);
 		$result[] = $this->getDefinedMeaningAttributesPageElement($definedMeaningId);
+		$result[] = $this->getDefinedMeaningCollectionsPageElement($definedMeaningId, $revisionId);
 		
 		return $result;
 	}
@@ -824,6 +907,23 @@ class WiktionaryZ {
 			
 		while($definedMeaningRelation = $dbr->fetchObject($queryResult))
 			$relation->addTuple(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid)); 
+		
+		return $relation;
+	}
+	
+	function getDefinedMeaningCollectionsRelation($definedMeaningId) {
+		global
+			$internalIdAttribute;
+			
+		$heading = new Heading(array(new Attribute("collection", "Collection", "collection"),
+										$internalIdAttribute));
+		$relation = new ArrayRelation($heading, $heading);
+		
+		$dbr =& wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query("SELECT collection_id, internal_member_id FROM uw_collection_contents WHERE member_mid=$definedMeaningId AND is_latest_set=1");
+			
+		while($collection = $dbr->fetchObject($queryResult))
+			$relation->addTuple(array($collection->collection_id, $collection->internal_member_id)); 
 		
 		return $relation;
 	}

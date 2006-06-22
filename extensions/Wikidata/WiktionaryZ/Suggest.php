@@ -17,31 +17,29 @@
 	$dbr =& wfGetDB( DB_SLAVE );
 	
 	if ($search != '')
-    	$searchCondition = "and expression1.spelling like " . $dbr->addQuotes("$search%");
+    	$searchCondition = "AND expression1.spelling LIKE " . $dbr->addQuotes("$search%");
 	else
 		$searchCondition = "";
 	
-	if ($query == 'relation-type') 
-//		$sql = "select member_mid as row_id, expression1.spelling as relation, expression2.spelling as collection " .
-//	            "from uw_collection_contents, uw_collection_ns, uw_syntrans syntrans1, uw_expression_ns expression1, uw_syntrans syntrans2, uw_expression_ns expression2 " .
-//	            "where uw_collection_contents.collection_id=uw_collection_ns.collection_id and uw_collection_ns.collection_type='RELT' " .
-//	            
-//	            "and syntrans1.defined_meaning_id=uw_collection_contents.member_mid " .
-//	            "and expression1.expression_id=syntrans1.expression_id and expression1.language_id=85 " .
-//	            
-//	            "and syntrans2.defined_meaning_id=uw_collection_ns.collection_mid " .
-//	            "and expression2.expression_id=syntrans2.expression_id and expression2.language_id=85 " .
-//	
-//				"and uw_collection_contents.is_latest_set=1 ";
-		$sql = getSQLForCollectionOfType('RELT');
-	else if ($query == 'attribute')
-		$sql = getSQLForCollectionOfType('ATTR');
-	else if ($query == 'defined-meaning')
-		$sql = "select syntrans1.defined_meaning_id as row_id, expression1.spelling as relation ".
-				"from uw_expression_ns expression1, uw_syntrans syntrans1 ".
-				
-				//"syntrans1.defined_meaning_id = uw_defined_meaning.defined_meaning_id " .
-	            "where expression1.expression_id=syntrans1.expression_id ";//and expression1.language_id=85 ";
+	switch ($query) {
+		case 'relation-type':
+			$sql = getSQLForCollectionOfType('RELT');
+			break;
+		case 'attribute':
+			$sql = getSQLForCollectionOfType('ATTR');
+			break;
+		case 'defined-meaning':
+			$sql = "SELECT syntrans1.defined_meaning_id AS row_id, expression1.spelling AS relation ".
+					"FROM uw_expression_ns expression1, uw_syntrans syntrans1 ".
+	            	"WHERE expression1.expression_id=syntrans1.expression_id ";
+	        break;	
+	    case 'collection':
+	    	$sql = "SELECT collection.collection_id AS row_id, expression1.spelling AS relation ".
+	    			"FROM uw_expression_ns expression1, uw_collection_ns collection, uw_syntrans syntrans ".
+	    			"WHERE expression1.expression_id=syntrans.expression_id AND syntrans.defined_meaning_id=collection.collection_mid ".
+	    			"AND collection.is_latest=1 AND syntrans.is_latest_set=1 AND expression1.is_latest=1 ";
+	    	break;
+	}
 	                          
 	$sql .= $searchCondition . " ORDER BY expression1.spelling LIMIT 10";
 	$queryResult = $dbr->query($sql);
@@ -54,16 +52,16 @@
 	echo('</table>');
 	
 	function getSQLForCollectionOfType($collectionType) {
-		return "select member_mid as row_id, expression1.spelling as relation, expression2.spelling as collection " .
-	            "from uw_collection_contents, uw_collection_ns, uw_syntrans syntrans1, uw_expression_ns expression1, uw_syntrans syntrans2, uw_expression_ns expression2 " .
-	            "where uw_collection_contents.collection_id=uw_collection_ns.collection_id and uw_collection_ns.collection_type='$collectionType' " .
+		return "SELECT member_mid AS row_id, expression1.spelling AS relation, expression2.spelling AS collection " .
+	            "FROM uw_collection_contents, uw_collection_ns, uw_syntrans syntrans1, uw_expression_ns expression1, uw_syntrans syntrans2, uw_expression_ns expression2 " .
+	            "WHERE uw_collection_contents.collection_id=uw_collection_ns.collection_id and uw_collection_ns.collection_type='$collectionType' " .
 	            
-	            "and syntrans1.defined_meaning_id=uw_collection_contents.member_mid " .
-	            "and expression1.expression_id=syntrans1.expression_id and expression1.language_id=85 " .
+	            "AND syntrans1.defined_meaning_id=uw_collection_contents.member_mid " .
+	            "AND expression1.expression_id=syntrans1.expression_id and expression1.language_id=85 " .
 	            
-	            "and syntrans2.defined_meaning_id=uw_collection_ns.collection_mid " .
-	            "and expression2.expression_id=syntrans2.expression_id and expression2.language_id=85 " .
+	            "AND syntrans2.defined_meaning_id=uw_collection_ns.collection_mid " .
+	            "AND expression2.expression_id=syntrans2.expression_id and expression2.language_id=85 " .
 	
-				"and uw_collection_contents.is_latest_set=1 ";
+				"AND uw_collection_contents.is_latest_set=1 ";
 	}
 ?>
