@@ -108,7 +108,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 		
 		/**
-		 * Produce a diff. of a specific change
+		 * Output a trimmed down diff view corresponding to a particular change
 		 *
 		 * @param $edit Recent change to produce a diff. for
 		 */
@@ -117,6 +117,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$diff->showDiff( '', '' );
 		}
 		
+		/**
+		 * Output a bunch of controls to let the user endorse, revert and skip changes
+		 *
+		 * @param $edit RecentChange being dealt with
+		 */
 		function showControls( &$edit ) {
 			global $wgUser, $wgOut;
 			$self = Title::makeTitle( NS_SPECIAL, 'Patrol' );
@@ -140,6 +145,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 *   - hasn't been patrolled
 		 *   - isn't assigned to a user
 		 *
+		 * @param $user User to suppress edits for
+		 * @return RecentChange
 		 */
 		function fetchChange( &$user ) {
 			$dbr =& wfGetDB( DB_SLAVE );
@@ -149,11 +156,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 					WHERE rc_namespace = page_namespace AND rc_title = page_title
 					AND rc_this_oldid = page_latest AND rc_bot = 0 AND rc_patrolled = 0 AND rc_type = 0
 					AND rc_user != $uid AND ptr_timestamp IS NULL LIMIT 0,1";
-			
-			/*$sql = "SELECT * FROM $recentchanges LEFT JOIN $patrollers ON rc_id = ptr_change
-					WHERE rc_bot = 0 AND rc_patrolled = 0 AND rc_type = 0 AND rc_user != $uid
-					AND ptr_timestamp IS NULL LIMIT 0,1";*/
-					
 			$res = $dbr->query( $sql, 'Patroller::fetchChange' );
 			if( $dbr->numRows( $res ) > 0 ) {
 				$row = $dbr->fetchObject( $res );
@@ -165,6 +167,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 			}
 		}
 		
+		/**
+		 * Fetch a particular recent change given the rc_id value
+		 *
+		 * @param $rcid rc_id value of the row to fetch
+		 * @return RecentChange
+		 */
 		function loadChange( $rcid ) {
 			$dbr =& wfGetDB( DB_SLAVE );
 			$res = $dbr->select( 'recentchanges', '*', array( 'rc_id' => $rcid ), 'Patroller::loadChange' );
@@ -190,6 +198,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 			return (bool)$dbw->affectedRows();
 		}
 		
+		/**
+		 * Remove the assignment for a particular change, to let another user handle it
+		 *
+		 * @todo Use it or lose it
+		 * @param $rcid rc_id value
+		 */
 		function unassignChange( $rcid ) {
 			$dbw =& wfGetDB( DB_MASTER );
 			$dbw->delete( 'patrollers', array( 'ptr_change' => $rcid ), 'Patroller::unassignChange' );		
@@ -205,6 +219,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$dbw->delete( 'patrollers', array( 'ptr_timestamp < ' . $dbw->timestamp( time() - 120 ) ), 'Patroller::pruneAssignments' );
 		}
 		
+		/**
+		 * Revert a change, setting the page back to the "old" version
+		 *
+		 * @param $edit RecentChange to revert
+		 * @param $comment Comment to use when reverting
+		 */
 		function revert( &$edit, $comment = '' ) {
 			global $wgOut;
 			$dbw =& wfGetDB( DB_MASTER );
@@ -216,16 +236,25 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$old = $edit->mAttribs['rc_last_oldid'];
 			$oldRev = Revision::newFromId( $old );
 			wfDebugLog( 'patroller', "Reverting " . $title->getPrefixedText() . " to r" . $oldRev->getId() );
-			# Revert the edit; mark the reversion with a bot flag
-			$article = new Article( $title );
-			$article->updateArticle( $oldRev->getText(), $comment, 1, $title->userIsWatching(), 1 );
-			$wgOut->mRedirect = ''; # HACK: Someone needs to fix Article::updateArticle
-			Article::onArticleEdit( $title );
+			# Be certain we're not overwriting a more recent change
+			# If we would, ignore it, and silently consider this change patrolled
+			$latest = $dbw->selectField( 'page', 'page_latest', array( 'page_id' => $title->getArticleId() ), __METHOD__ );
+			if( $old == $latest ) {
+				# Revert the edit; keep the reversion itself out of recent changes
+				$article = new Article( $title );
+				$article->doEdit( $oldRev->getText(), $comment, EDIT_UPDATE & EDIT_MINOR & EDIT_SUPPRESS_RC );
+			}
 			$dbw->commit();
 			# Mark the edit patrolled so it doesn't bother us again
 			RecentChange::markPatrolled( $edit->mAttribs['rc_id'] );
 		}
 		
+		/**
+		 * Make a nice little drop-down box containing all the pre-defined revert
+		 * reasons for simplified selection
+		 *
+		 * @return string
+		 */
 		function revertReasonsDropdown() {
 			$msg = wfMsgForContent( 'patrol-reasons' );
 			if( $msg == '-' || $msg == '&lt;patrol-reasons&gt;' ) {
@@ -249,6 +278,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 			}
 		}
 		
+		/**
+		 * Determine which of the two "revert reason" form fields to use;
+		 * the pre-defined reasons, or the nice custom text box
+		 *
+		 * @param $request WebRequest object to test
+		 * @return string
+		 */
 		function revertReason( &$request ) {
 			$custom = $request->getText( 'wpPatrolRevertReason' );
 			return trim( $custom ) != ''
