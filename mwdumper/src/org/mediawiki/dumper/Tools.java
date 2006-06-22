@@ -19,6 +19,8 @@ public class Tools {
 	private static final int OUT_BUF_SZ = 1024 * 1024;
 
 	public static InputStream openInputFile(String arg) throws IOException {
+		if (arg.equals("-"))
+			return openStandardInput();
 		InputStream infile = new BufferedInputStream(new FileInputStream(arg), IN_BUF_SZ);
 		if (arg.endsWith(".gz"))
 			return new GZIPInputStream(infile);
