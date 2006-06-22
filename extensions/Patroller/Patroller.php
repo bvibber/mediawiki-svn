@@ -16,7 +16,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	require_once( 'Patroller.i18n.php' );
 
 	$wgExtensionFunctions[] = 'efPatroller';
-	$wgExtensionCredits['specialpage'][] = array( 'name' => 'Patrol', 'author' => 'Rob Church' );
+	$wgExtensionCredits['specialpage'][] = array( 'name' => 'Patroller', 'author' => 'Rob Church', 'url' => 'http://www.mediawiki.org/wiki/Patroller' );
 	
 	$wgAvailableRights[] = 'patroller';
 	$wgGroupPermissions['sysop']['patroller'] = true;
