@@ -2,6 +2,7 @@
 
 SERVICE_NAME="dbzip2d"
 SERVICE_LOCK="/var/run/dbzip2d.pid"
+SERVICE_LOG="/var/log/dbzip2d.log"
 
 RUN_SCRIPT="/usr/bin/dbzip2d"
 
@@ -13,7 +14,8 @@ case "$1" in
 		if [ -f $SERVICE_LOCK ]; then
 			echo "Already running on" `cat $SERVICE_LOCK`
 		else
-			($RUN_SCRIPT -d --pid-file="$SERVICE_LOCK" && echo "Done") || rm -f "$SERVICE_LOCK"
+			($RUN_SCRIPT -d --pid-file="$SERVICE_LOCK" --log-file="$SERVICE_LOG" && \
+				echo "Done") || rm -f "$SERVICE_LOCK"
 		fi
 		;;
 	stop)

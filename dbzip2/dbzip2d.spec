@@ -1,6 +1,6 @@
 Summary: Distributed bzip2 file compression daemon.
 Name: dbzip2d
-Version: 0.0.1
+Version: 0.0.2
 Release: 1
 Copyright: BSD
 Group: Applications/File
@@ -47,3 +47,5 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Tue May 30 2006 Brion Vibber <brion@pobox.com>
 - Initial packaging.
+* Wed Jun 21 2006 Brion Vibber <brion@pobox.com>
+- 0.0.2; daemonizing hopefully better; error log.

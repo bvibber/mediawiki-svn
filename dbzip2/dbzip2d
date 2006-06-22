@@ -11,7 +11,7 @@ import thread
 import time
 
 import DistBits
-from SocketServer import BaseRequestHandler, ForkingTCPServer
+from SocketServer import BaseRequestHandler, ThreadingTCPServer
 
 listen = ""
 port = 16986 # "BZ"
@@ -19,6 +19,7 @@ daemonize = False
 user = None
 verbosity = 0
 pidFileName = None
+logFileName = None
 
 class CompressorHandler(BaseRequestHandler):
 	def debug(self, level, text):
@@ -93,7 +94,8 @@ class CompressorHandler(BaseRequestHandler):
 
 if __name__ == "__main__":
 	
-	(options, remainder) = getopt.getopt(sys.argv[1:], "dl:p:u:v", ["pid-file="])
+	(options, remainder) = getopt.getopt(sys.argv[1:], "dl:p:u:v",
+		["pid-file=", "log-file="])
 	for (opt, val) in options:
 		if opt == "-d":
 			daemonize = True
@@ -107,28 +109,42 @@ if __name__ == "__main__":
 			verbosity += 1
 		elif opt == "--pid-file":
 			pidFileName = val
+		elif opt == "--log-file":
+			logFileName = val
+	
+	if pidFileName:
+		if os.path.exists(pidFileName):
+			print "Already running or stale pid file at %s" % pidFileName
+			sys.exit(1)
 	
 	if daemonize:
 		if os.fork(): sys.exit(0)
 		os.setsid()
 		if os.fork(): sys.exit(0)
 		
-		# Fixme: work this crap out
-		#os.chdir("/")
-		#os.umask(0)
-		#os.close(sys.stdin.fileno())
-		#sys.stdin = open("/dev/null", "r")
-		#os.close(sys.stdout.fileno())
-		#sys.stdout = open("/dev/null", "a")
-		#os.close(sys.stderr.fileno())
-		#sys.stderr = open("/dev/null", "a")
+		if pidFileName:
+			if os.path.exists(pidFileName):
+				os.remove(pidFileName)
+			pidFile = file(pidFileName, "w")
+			pidFile.write(str(os.getpid()))
+			pidFile.close()
+		
+		# Close open file descriptors, so we can reopen null crap
+		for fd in range(0, 256):
+			try:
+				os.close(fd)
+			except OSError:
+				pass
+		
+		os.chdir("/")
+		os.umask(0)
+		os.open("/dev/null", os.O_RDONLY)
+		os.open("/dev/null", os.O_WRONLY)
+		
+		if logFileName:
+			os.open(logFileName, os.O_WRONLY, os.O_APPEND)
+		else:
+			os.open("/dev/null", os.O_WRONLY)
 	
-	if pidFileName:
-		if os.path.exists(pidFileName):
-			os.path.unlink(pidFileName)
-		pidFile = file(pidFileName, "w")
-		pidFile.write(str(os.getpid()))
-		pidFile.close()
-	
-	server = ForkingTCPServer((listen, port), CompressorHandler)
+	server = ThreadingTCPServer((listen, port), CompressorHandler)
 	server.serve_forever()
