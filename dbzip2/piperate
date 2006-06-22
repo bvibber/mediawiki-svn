@@ -1,0 +1,40 @@
+#!/usr/bin/python
+
+import getopt
+import sys
+import time
+
+def report(nbytes, interval):
+	if interval == 0.0:
+		rate = 0.0
+	else:
+		rate = (float(nbytes) / 1048576.0) / interval
+	sys.stderr.write("%0.3f MB/sec\n" % rate)
+
+bufferSize = 8192 # bytes to read at a time
+reportingInterval = 1.0 # reporting interval
+
+(options, remainder) = getopt.getopt(sys.argv[1:], "b:")
+for (opt, val) in options:
+	if opt == "-b":
+		bufferSize = int(val)
+if remainder:
+	reportingInterval = float(remainder[0])
+
+
+bytesRead = 0L
+startTime = time.time()
+now = startTime
+
+buffer = sys.stdin.read(bufferSize)
+while buffer:
+	sys.stdout.write(buffer)
+	bytesRead += len(buffer)
+	now = time.time()
+	if now - startTime >= reportingInterval:
+		report(bytesRead, now - startTime)
+		startTime = now
+		bytesRead = 0L
+	buffer = sys.stdin.read(bufferSize)
+
+report(now - startTime, bytesRead)
