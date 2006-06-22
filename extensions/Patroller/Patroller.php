@@ -3,9 +3,6 @@
 /**
  * Extension adds improved patrolling interface
  *
- * THIS IS INCOMPLETE AT THE PRESENT TIME, SO DON'T GO OFF INSTALLING
- * IT AND THEN WHINING BECAUSE IT DOESN'T WORK
- *
  * @package MediaWiki
  * @subpackage Extensions
  * @author Rob Church <robchur@gmail.com>
@@ -142,6 +139,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 *   - wasn't due to a bot
 		 *   - hasn't been patrolled
 		 *   - isn't assigned to a user
+		 *
+		 * FIXME: This SQL needs improving; in particular, the change that is pulled
+		 * has *got* to be one which is still "current", i.e. rc_this_oldid = page.page_latest
 		 */
 		function fetchChange( &$user ) {
 			$dbr =& wfGetDB( DB_SLAVE );
