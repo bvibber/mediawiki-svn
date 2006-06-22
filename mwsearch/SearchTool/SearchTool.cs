@@ -30,6 +30,7 @@ namespace MediaWiki.Search.SearchTool {
 	
 	using java.io;
 	using org.apache.commons.compress.bzip2;
+	using org.mediawiki.dumper;
 	using org.mediawiki.importer;
 	
 	public class SearchTool {
@@ -91,30 +92,18 @@ namespace MediaWiki.Search.SearchTool {
 		}
 		
 		static void ImportDump(string dumpfile, string database) {
-			InputStream input = GetImportStream(dumpfile);
+			InputStream input = Tools.openInputFile(dumpfile);
 
 			SearchWriter state = new SearchWriter(database);
 			state.InitializeIndex();
 			
-			XmlDumpReader reader = new XmlDumpReader(input, new SearchImporter(state));
+			XmlDumpReader reader = new XmlDumpReader(input,
+				new ProgressFilter(new SearchImporter(state), 100));
 			reader.readDump();
 			
 			state.Close();
 			Console.WriteLine("Optimizing...");
 			state.Optimize();
-		}
-		
-		static InputStream GetImportStream(string filename) {
-			InputStream stream = new BufferedInputStream(new FileInputStream(filename));
-			if (filename.EndsWith(".bz2")) {
-				int first = stream.read();
-				int second = stream.read();
-				if (first != 'B' || second != 'Z')
-					throw new IOException("Didn't find BZ file signature in .bz2 file");
-				return new CBZip2InputStream(stream);
-			} else {
-				return stream;
-			}
 		}
 	}
 }

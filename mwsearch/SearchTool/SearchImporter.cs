@@ -35,7 +35,6 @@ namespace MediaWiki.Search.SearchTool {
 		int _pages = 0;
 		Page _page = null;
 		Revision _revision = null;
-		const int _interval = 100;
 		
 		public SearchImporter(SearchWriter writer) {
 			_writer = writer;
@@ -60,9 +59,6 @@ namespace MediaWiki.Search.SearchTool {
 		public void writeStartPage(Page page) {
 			_page = page;
 			_pages++;
-			if (_pages % _interval == 0) {
-				Console.Error.WriteLine("{0}: {1} pages... [[{2}]]", _writer.DatabaseName, _pages, page.Title);
-			}
 		}
 		
 		public void writeEndPage() {
