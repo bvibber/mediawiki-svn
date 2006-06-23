@@ -3,19 +3,11 @@
 require_once('wikidata.php');
 require_once('Expression.php');
 require_once('forms.php');
+require_once('attribute.php');
+require_once('tuple.php');
 require_once('relation.php');
 require_once('type.php');
 require_once('languages.php');
-
-global
-	$languageAttribute, $textAttribute, $identicalMeaningAttribute, $internalIdAttribute, $collectionAttribute;
-
-$languageAttribute = new Attribute("language", "Language", "language");
-$textAttribute = new Attribute("text", "Text", "text");
-
-$identicalMeaningAttribute = new Attribute("endemic-meaning", "Identical meaning?", "boolean");
-$collectionAttribute = new Attribute("collection", "Collection", "collection");
-$internalIdAttribute = new Attribute("internal-id", "Internal ID", "short-text"); 
 
 function getLatestRevisionForDefinedMeaning($definedMeaningId) {
 	$dbr =& wfGetDB(DB_SLAVE);
@@ -227,12 +219,18 @@ class DefinedMeaningDefinitionController implements PageElementController {
 	}
 	
 	public function remove($tuple) {
-		$languageId = $tuple['language'];
+		global
+			$languageAttribute;
+			
+		$languageId = $tuple->getAttributeValue($languageAttribute);
 		removeDefinedMeaningDefinition($this->definedMeaningId, $languageId);
 	}
 	
 	public function update($tuple, $updatedValues) {
-		updateDefinedMeaningDefinition($this->definedMeaningId, $tuple['language'], $updatedValues['text']);
+		global
+			$languageAttribute;
+			
+		updateDefinedMeaningDefinition($this->definedMeaningId, $tuple->getAttributeValue($languageAttribute), $updatedValues['text']);
 	}
 }
 
@@ -254,12 +252,18 @@ class DefinedMeaningAlternativeDefinitionController implements PageElementContro
 	}
 	
 	public function remove($tuple) {
-		$languageId = $tuple['language'];
+		global
+			$languageAttribute;
+			
+		$languageId = $tuple->getAttributeValue($languageAttribute);
 		removeTranslatedDefinition($this->alternativeDefinitionId, $languageId);
 	}
 	
 	public function update($tuple, $updatedValues) {
-		updateDefinedMeaningAlternativeDefinition($this->alternativeDefinitionId, $tuple['language'], $updatedValues['text']);
+		global
+			$languageAttribute;
+			
+		updateDefinedMeaningAlternativeDefinition($this->alternativeDefinitionId, $tuple->getAttributeValue($languageAttribute), $updatedValues['text']);
 	}
 }
 
@@ -282,13 +286,18 @@ class SynonymTranslationController implements PageElementController {
 	}
 	
 	public function remove($tuple) {
-		$expressionId = $tuple['expression'];
-		$endemicMeaning = $tuple['endemic-meaning'];
+		global
+			$expressionAttribute;
+		
+		$expressionId = $tuple->getAttributeValue($expressionAttribute);
 		removeSynonymOrTranslation($this->definedMeaningId, $expressionId);		
 	}
 	
 	public function update($tuple, $updatedValues) {
-		$expressionId = $tuple['expression'];
+		global
+			$expressionAttribute;
+			
+		$expressionId = $tuple->getAttributeValue($expressionAttribute);
 		$identicalMeaning = $updatedValues['endemic-meaning'];
 		updateSynonymOrTranslation($this->definedMeaningId, $expressionId, $identicalMeaning);
 	}
@@ -310,7 +319,10 @@ class DefinedMeaningRelationController implements PageElementController {
 	}	
 
 	public function remove($tuple) {
-		removeRelation($this->definedMeaningId, $tuple['relation-type'], $tuple['other-defined-meaning']);
+		global
+			$relationTypeAttribute, $otherDefinedMeaningAttribute;
+			
+		removeRelation($this->definedMeaningId, $tuple->getAttributeValue($relationTypeAttribute), $tuple->getAttributeValue($otherDefinedMeaningAttribute));
 	}
 	
 	public function update($tuple, $updatedValues) {
@@ -332,7 +344,10 @@ class DefinedMeaningAttributeController implements PageElementController {
 	}	
 
 	public function remove($tuple) {
-		removeRelation($this->definedMeaningId, 0, $tuple['attribute']);
+		global
+			$attributeAttribute;
+			
+		removeRelation($this->definedMeaningId, 0, $tuple->getAttributeValue($attributeAttribute));
 	}
 	
 	public function update($tuple, $updatedValues) {
@@ -357,11 +372,17 @@ class DefinedMeaningCollectionController implements PageElementController {
 	}	
 
 	public function remove($tuple) {
-		removeDefinedMeaningFromCollection($this->definedMeaningId, $tuple['collection']);
+		global
+			$collectionAttribute;
+			
+		removeDefinedMeaningFromCollection($this->definedMeaningId, $tuple->getAttributeValue($collectionAttribute));
 	}
 	
 	public function update($tuple, $updatedValues) {
-		$collectionId = $tuple["collection"];
+		global
+			$collectionAttribute;
+		
+		$collectionId = $tuple->getAttributeValue($collectionAttribute);
 		$internalId = $updatedValues["internal-id"];
 		
 		if ($internalId != "")
@@ -507,7 +528,7 @@ class WiktionaryZ {
 						$values = getFieldValuesForAttribute($updateId . $tupleKeyName . '-', $attribute, "");
 						$value = $values[0];
 						
-						if ($value != $tuple[$attribute->id])
+						if ($value != $tuple->getAttributeValue($attribute)) 
 							$updatedValues[$attribute->id] = $value;
 					}
 					
@@ -812,11 +833,10 @@ class WiktionaryZ {
 	
 	function getSynonymAndTranslationRelation($definedMeaningId, $skippedExpressionId) {
 		global
-			$identicalMeaningAttribute;
+			$expressionAttribute, $identicalMeaningAttribute;
 		
 		$dbr =& wfGetDB(DB_SLAVE);
-		$heading = new Heading(array(new Attribute("expression", "Expression", "expression"), 
-										$identicalMeaningAttribute));
+		$heading = new Heading(array($expressionAttribute, $identicalMeaningAttribute));
 
 		$relation = new ArrayRelation($heading, $heading);
 		$queryResult = $dbr->query("SELECT expression_id, endemic_meaning FROM uw_syntrans WHERE defined_meaning_id=$definedMeaningId AND expression_id!=$skippedExpressionId");
@@ -828,7 +848,10 @@ class WiktionaryZ {
 	}
 	
 	function getDefinedMeaningRelationsRelation($definedMeaningId) {
-		$heading = new Heading(array(new Attribute("relation-type", "Relation type", "relation-type"), new Attribute("other-defined-meaning", "Other defined meaning", "defining-expression")));
+		global
+			$relationTypeAttribute, $otherDefinedMeaningAttribute;
+			
+		$heading = new Heading(array($relationTypeAttribute, $otherDefinedMeaningAttribute));
 		$relation = new ArrayRelation($heading, $heading);
 		
 		$dbr =& wfGetDB(DB_SLAVE);
@@ -857,7 +880,10 @@ class WiktionaryZ {
 	}
 	
 	function getDefinedMeaningAttributesRelation($definedMeaningId) {
-		$heading = new Heading(array(new Attribute("attribute", "Attribute", "attribute")));
+		global
+			$attributeAttribute;
+			
+		$heading = new Heading(array($attributeAttribute));
 		$relation = new ArrayRelation($heading, $heading);
 		
 		$dbr =& wfGetDB(DB_SLAVE);

@@ -3,6 +3,7 @@
 require_once('forms.php');
 require_once('converter.php');
 require_once('attribute.php');
+require_once('tuple.php');
 
 interface RelationModel {
 	public function getHeading();
@@ -22,11 +23,9 @@ class ArrayRelation implements RelationModel {
 	}
 	
 	public function addTuple($values) {
-		$tuple = array();
-		
-		for ($i = 0; $i < count($this->heading->attributes); $i++)
-			$tuple[$this->heading->attributes[$i]->id] = $values[$i];
-			
+		$tuple = new ArrayTuple($this->heading);
+		$tuple->setAttributeValuesByOrder($values);
+
 		$this->tuples[] = $tuple;				
 	}
 	
@@ -50,6 +49,7 @@ class ArrayRelation implements RelationModel {
 class HTMLRelation implements RelationModel {
 	protected $relationModel;
 	protected $converters = array();
+	protected $heading;
 	
 	public function __construct($relationModel, $updatableHeading) {
 		$this->relationModel = $relationModel;
@@ -70,10 +70,10 @@ class HTMLRelation implements RelationModel {
 	
 	public function getTuple($index) {
 		$tuple = $this->relationModel->getTuple($index);
-		$result = array();
+		$result = new ArrayTuple($this->heading);
 		
 		foreach ($this->converters as $converter) 
-			$result = array_merge($result, $converter->convert($tuple));
+			$result->setSubTuple($converter->convert($tuple));
 			
 		return $result;
 	}
@@ -94,7 +94,7 @@ class HTMLRelation implements RelationModel {
 			}
 			
 			$this->converters[] = $converter;
-			$attributes = array_merge($attributes, $converter->getAttributes());
+			$attributes = array_merge($attributes, $converter->getHeading()->attributes);
 		}
 		
 		$this->heading = new Heading($attributes);
@@ -105,7 +105,7 @@ class HTMLRelation implements RelationModel {
 		$attributes = $this->relationModel->getHeading()->attributes;
 		
 		foreach ($attributes as $attribute)  
-			$result[$attribute->id] = convertToHTML($tuple[$attribute->id], $attribute->type);
+			$result[$attribute->id] = convertToHTML($tuple->getAttributeValue($attribute), $attribute->type);
 				
 		return $result;
 	}
@@ -198,8 +198,15 @@ function getRelationAsHTMLTable($relationModel) {
 		
 	$result .= '</tr>';
 	
-	for($i = 0; $i < $relationModel->getTupleCount(); $i++) 
-		$result .= '<tr>' . getTableCellsAsHTML($attributes, $relationModel->getTuple($i)) .'</tr>';
+	for($i = 0; $i < $relationModel->getTupleCount(); $i++) {
+		$tuple = $relationModel->getTuple($i);
+		$values = array();
+		
+		foreach($attributes as $attribute)
+			$values[] = $tuple->getAttributeValue($attribute);
+		
+		$result .= '<tr>' . getTableCellsAsHTML($attributes, $values) .'</tr>';
+	}
 	
 	$result .= '</table>';
 
@@ -229,7 +236,7 @@ function getTupleKeyName($tuple, $key) {
 	$ids = array();
 	
 	foreach($key->attributes as $attribute)
-		$ids[] = $tuple[$attribute->id];
+		$ids[] = $tuple->getAttributeValue($attribute);
 	
 	return implode("-", $ids);
 }
@@ -259,7 +266,13 @@ function getRelationAsEditHTML($relationModel, $addRowId, $removeId, $updateId, 
 		if ($allowRemove)
 			$result .= '<td class="remove">' . getRemoveCheckBox($removeId . $tupleKeyName) . '</td>';
 		
-		$result .= getTableCellsAsEditHTML($attributes, $htmlRelation->getTuple($i), $updateId . $tupleKeyName . '-', $updatableHeading);
+		$htmlTuple = $htmlRelation->getTuple($i);
+		$values = array();
+		
+		foreach($attributes as $attribute)
+			$values[] = $htmlTuple->getAttributeValue($attribute);
+		
+		$result .= getTableCellsAsEditHTML($attributes, $values, $updateId . $tupleKeyName . '-', $updatableHeading);
 		
 		if ($repeatInput)
 			$result .= '<td/>';
