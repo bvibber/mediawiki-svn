@@ -33,8 +33,8 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 		$text,
 		$parser->mTitle,
 		$parser->mOptions,
-		// Avoid whitespace buildup
-		false,
+		// We begin at line start
+		true,
 		// Important, otherwise $this->clearState()
 		// would get run every time <ref> or
 		// <references> is called, fucking the whole
@@ -59,10 +59,9 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 	}
 	
 	return wfOpenElement( 'div', $attribs ) .
+		"\n" .
 		$ret->getText() .
-		'</div>';
-	
-	return ;
+		"\n</div>";
 }
 
 ?>
