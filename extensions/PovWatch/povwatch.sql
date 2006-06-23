@@ -19,11 +19,11 @@ CREATE TABLE /*$wgDBprefix*/povwatch_log (
 
   PRIMARY KEY (pwl_id),
   INDEX (pwl_timestamp)
-) ENGINE=InnoDB;
+) TYPE=InnoDB;
 
 -- List of subscribers
 CREATE TABLE /*$wgDBprefix*/povwatch_subscribers (
   -- Link to user_id
   pws_user INT NOT NULL,
   PRIMARY KEY (pws_user)
-) ENGINE=InnoDB;
+) TYPE=InnoDB;
