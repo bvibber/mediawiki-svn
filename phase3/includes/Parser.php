@@ -1493,7 +1493,7 @@ class Parser
 
 			# Link not escaped by : , create the various objects
 			if( $noforce ) {
-
+				wfDebug("nofroce called: \n");
 				# Interwikis
 				if( $iw && $this->mOptions->getInterwikiMagic() && $nottalk && $wgContLang->getLanguageName( $iw ) ) {
 					$this->mOutput->addLanguageLink( $nt->getFullText() );
@@ -1521,7 +1521,27 @@ class Parser
 					wfProfileOut( "$fname-image" );
 
 				}
+				
+				if ( $ns == NS_MEDIA ) {
+					wfDebug("USES my_NSmedia \n");
+					wfProfileIn( "$fname-media" );			
+						# recursively parse links inside the media caption
+						# actually, this will parse them in any other parameters, too,
+						# but it might be hard to fix that, and it doesn't matter ATM
+						$text = $this->replaceExternalLinks($text);
+						$text = $this->replaceInternalLinks($text);
 
+						# cloak any absolute URLs inside the media markup, so replaceExternalLinks() won't touch them
+						$link =  $sk->makeMediaLinkObj( $nt, $text );
+						$s .= $prefix . $this->armorLinks( $link ) . $trail;
+						$this->mOutput->addImage( $nt->getDBkey() );
+
+						wfProfileOut( "$fname-media" );
+					
+					wfProfileOut( "$fname-media" );
+					continue;
+				}
+					
 				if ( $ns == NS_CATEGORY ) {
 					wfProfileIn( "$fname-category" );
 					$s = rtrim($s . "\n"); # bug 87
@@ -1558,13 +1578,7 @@ class Parser
 			}
 
 			# Special and Media are pseudo-namespaces; no pages actually exist in them
-			if( $ns == NS_MEDIA ) {
-				$link = $sk->makeMediaLinkObj( $nt, $text );
-				# Cloak with NOPARSE to avoid replacement in replaceExternalLinks
-				$s .= $prefix . $this->armorLinks( $link ) . $trail;
-				$this->mOutput->addImage( $nt->getDBkey() );
-				continue;
-			} elseif( $ns == NS_SPECIAL ) {
+			if( $ns == NS_SPECIAL ) {
 				$s .= $this->makeKnownLinkHolder( $nt, $text, '', $trail, $prefix );
 				continue;
 			} elseif( $ns == NS_IMAGE ) {
@@ -4140,7 +4154,9 @@ class Parser
 		}
 		return $ig->toHTML();
 	}
-
+	function makeMedia( &$nt, $options){
+	
+	}
 	/**
 	 * Parse image options text and use it to make an image
 	 */
