@@ -16,13 +16,14 @@ if( defined( 'MEDIAWIKI' ) ) {
 	require_once( 'SpecialPage.php' );
 	require_once( 'LogPage.php' );
 	require_once( 'SpecialLog.php' );
+	require_once( 'Makebot.i18n.php' );
 	
 	define( 'MW_MAKEBOT_GRANT', 1 );
 	define( 'MW_MAKEBOT_REVOKE', 2 );
 	
 	$wgExtensionFunctions[] = 'efMakeBot';
 	$wgAvailableRights[] = 'makebot';
-	$wgExtensionCredits['specialpage'][] = array( 'name' => 'MakeBot', 'url' => 'http://meta.wikimedia.org/wiki/MakeBot', 'author' => 'Rob Church' );
+	$wgExtensionCredits['specialpage'][] = array( 'name' => 'MakeBot', 'author' => 'Rob Church', 'url' => 'http://meta.wikimedia.org/wiki/MakeBot' );
 	
 	/**
 	 * Determines who can use the extension; as a default, bureaucrats are permitted
@@ -35,39 +36,18 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgMakeBotPrivileged = false;
 	
 	/**
-	 * Populate the message cache and register the special page
+	 * Populate the message cache, set up the auditing and register the special page
 	 */
 	function efMakeBot() {
-		# Add a new log type
-		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
-		$wgLogTypes[]                   = 'makebot';
-		$wgLogNames['makebot']          = 'makebot-logpage';
-		$wgLogHeaders['makebot']        = 'makebot-logpagetext';
+		global $wgMessageCache, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
+		$wgMessageCache->addMessages( efMakeBotMessages() );
+	
+		$wgLogTypes[] = 'makebot';
+		$wgLogNames['makebot'] = 'makebot-logpage';
+		$wgLogHeaders['makebot'] = 'makebot-logpagetext';
 		$wgLogActions['makebot/grant']  = 'makebot-logentrygrant';
 		$wgLogActions['makebot/revoke'] = 'makebot-logentryrevoke';
 		
-		# Basic messages
-		global $wgMessageCache;
-		$wgMessageCache->addMessage( 'makebot', 'Grant or revoke bot status' );
-		$wgMessageCache->addMessage( 'makebot-header', "'''A local bureaucrat can use this page to grant or revoke [[Help:Bot|bot status]] to another user account.'''<br />Bot status hides a user's edits from [[Special:Recentchanges|recent changes]] and similar lists, and is useful for flagging users who make automated edits. This should be done in accordance with applicable policies." );
-		$wgMessageCache->addMessage( 'makebot-username', 'Username:' );
-		$wgMessageCache->addMessage( 'makebot-search', 'Go' );
-		$wgMessageCache->addMessage( 'makebot-isbot', '[[User:$1|$1]] has bot status.' );
-		$wgMessageCache->addMessage( 'makebot-notbot', '[[User:$1|$1]] does not have bot status.' );
-		$wgMessageCache->addMessage( 'makebot-privileged', '[[User:$1|$1]] has [[Special:Listadmins|administrator or bureaucrat privileges]], and cannot be granted bot status.' );
-		$wgMessageCache->addMessage( 'makebot-change', 'Change status:' );
-		$wgMessageCache->addMessage( 'makebot-grant', 'Grant' );
-		$wgMessageCache->addMessage( 'makebot-revoke', 'Revoke' );
-		$wgMessageCache->addMessage( 'makebot-comment', 'Comment:' );
-		$wgMessageCache->addMessage( 'makebot-granted', '[[User:$1|$1]] now has bot status.' );
-		$wgMessageCache->addMessage( 'makebot-revoked', '[[User:$1|$1]] no longer has bot status.' );
-		# Audit trail messages
-		$wgMessageCache->addMessage( 'makebot-logpage', 'Bot status log' );
-		$wgMessageCache->addMessage( 'makebot-logpagetext', 'This is a log of changes to users\' [[Help:Bot|bot]] status.' );
-		$wgMessageCache->addMessage( 'makebot-logentrygrant', 'granted bot status to [[$1]]' );
-		$wgMessageCache->addMessage( 'makebot-logentryrevoke', 'removed bot status from [[$1]]' );
-		
-		# Register page
 		SpecialPage::addPage( new MakeBot() );
 	}
 	
