@@ -38,13 +38,16 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 * Populate the message cache and register the special page
 	 */
 	function efMakeBot() {
-		global $wgHooks, $wgMessageCache;
-		# Hooks for auditing
-		$wgHooks['LogPageValidTypes'][] = 'efMakeBotAddLogType';
-		$wgHooks['LogPageLogName'][] = 'efMakeBotAddLogName';
-		$wgHooks['LogPageLogHeader'][] = 'efMakeBotAddLogHeader';
-		$wgHooks['LogPageActionText'][] = 'efMakeBotAddActionText';
+		# Add a new log type
+		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
+		$wgLogTypes[]                   = 'makebot';
+		$wgLogNames['makebot']          = 'makebot-logpage';
+		$wgLogHeaders['makebot']        = 'makebot-logpagetext';
+		$wgLogActions['makebot/grant']  = 'makebot-logentrygrant';
+		$wgLogActions['makebot/revoke'] = 'makebot-logentryrevoke';
+		
 		# Basic messages
+		global $wgMessageCache;
 		$wgMessageCache->addMessage( 'makebot', 'Grant or revoke bot status' );
 		$wgMessageCache->addMessage( 'makebot-header', "'''A local bureaucrat can use this page to grant or revoke [[Help:Bot|bot status]] to another user account.'''<br />Bot status hides a user's edits from [[Special:Recentchanges|recent changes]] and similar lists, and is useful for flagging users who make automated edits. This should be done in accordance with applicable policies." );
 		$wgMessageCache->addMessage( 'makebot-username', 'Username:' );
@@ -63,34 +66,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgMessageCache->addMessage( 'makebot-logpagetext', 'This is a log of changes to users\' [[Help:Bot|bot]] status.' );
 		$wgMessageCache->addMessage( 'makebot-logentrygrant', 'granted bot status to [[$1]]' );
 		$wgMessageCache->addMessage( 'makebot-logentryrevoke', 'removed bot status from [[$1]]' );
-		# Register page		
+		
+		# Register page
 		SpecialPage::addPage( new MakeBot() );
-	}
-	
-	/**
-	 * Audit trail functions
-	 */
-	
-	function efMakeBotAddLogType( &$types ) {
-		if ( !in_array( 'makebot', $types ) )
-			$types[] = 'makebot';
-		return true;
-	}
-	
-	function efMakeBotAddLogName( &$names ) {
-		$names['makebot'] = 'makebot-logpage';
-		return true;
-	}
-	
-	function efMakeBotAddLogHeader( &$headers ) {
-		$headers['makebot'] = 'makebot-logpagetext';
-		return true;
-	}
-	
-	function efMakeBotAddActionText( &$actions ) {
-		$actions['makebot/grant'] = 'makebot-logentrygrant';
-		$actions['makebot/revoke'] = 'makebot-logentryrevoke';
-		return true;
 	}
 	
 	class MakeBot extends SpecialPage {
@@ -279,3 +257,4 @@ if( defined( 'MEDIAWIKI' ) ) {
 	die( -1 );
 
 }
+?>

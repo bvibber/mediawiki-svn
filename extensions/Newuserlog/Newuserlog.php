@@ -20,8 +20,7 @@ $wgExtensionCredits['other'][] = array(
 );
 
 function wfNewuserlog() {
-	global $wgMessageCache, $wgHooks, $wgContLang;
-	
+	global $wgMessageCache;
 	$wgMessageCache->addMessages(
 		array(
 			'newuserlogpage' => 'User creation log',
@@ -51,6 +50,7 @@ function wfNewuserlog() {
 	$wgLogActions['newusers/create2']  = 'newuserlog-create2-entry';
 	
 	# Run this hook on new account creation
+	global $wgHooks;
 	$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
 }
 
