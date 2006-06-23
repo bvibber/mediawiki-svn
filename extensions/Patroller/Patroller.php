@@ -63,7 +63,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 							RecentChange::markPatrolled( $rcid );
 							$wgOut->setSubtitle( wfMsgHtml( 'patrol-endorsed-ok' ) );
 						} else {
-							$wgOut->setSubtitle( wfMsgHtml( 'patrol-reverted-failed' ) );
+							$wgOut->setSubtitle( wfMsgHtml( 'patrol-endorsed-failed' ) );
 						}
 					} elseif( $wgRequest->getCheck( 'wpPatrolRevert' ) ) {
 						# Revert the change
