@@ -454,7 +454,18 @@ class Linker {
 		return $s;
 	}
 
-	/** @todo document */
+	/** takes parsed image paramaters
+	*   and generates image tag 
+	*
+		@param $label String: the caption for the thumbnail
+		@param $alt  String:	the alt image text
+		@param $align String: 'left', 'right', 'center' or 'none' the image alignment 
+		@param $width Boolean/Integer: image width
+		@param $height Boolean/Integer: image height
+		@param $framed Boolean draw frame around image
+		@param $thumb Boolean thumbnail
+		@param $manual_thumb String
+	*/
 	function makeImageLinkObj( $nt, $label, $alt, $align = '', $width = false, $height = false, $framed = false,
 	  $thumb = false, $manual_thumb = '' )
 	{
@@ -513,6 +524,7 @@ class Linker {
 				$height = -1;
 			if ( $manual_thumb == '') {
 				$thumb = $img->getThumbnail( $width, $height );
+				
 				if ( $thumb ) {
 					// In most cases, $width = $thumb->width or $height = $thumb->height.
 					// If not, we're scaling the image larger than it can be scaled,
@@ -589,6 +601,7 @@ class Linker {
 				$boxheight = -1;
 			if ( '' == $manual_thumb ) {
 				$thumb = $img->getThumbnail( $boxwidth, $boxheight );
+				wfDebug("thum-url: " . $thumb->getUrl() . "\n");
 				if ( $thumb ) {
 					$thumbUrl = $thumb->getUrl();
 					$boxwidth = $thumb->width;
@@ -688,7 +701,80 @@ class Linker {
 		$nt = Title::makeTitleSafe( NS_IMAGE, $name );
 		return $this->makeMediaLinkObj( $nt, $alt );
 	}
+	
+	
+	
+	/*
+	
+		1) check media type: if ogg theora, grab thumbnail 
+		2) return javascript code to detect client type
+		2) set
+	*/
+	function makeEmbedMediaLinkObj($title, $options){	
+		if( is_null( $title ) ) {
+			### HOTFIX. Instead of breaking, return empty string.
+			return $text;
+		}else{
+			$img = new Image($title);
+			$thumb = $img->renderMovieFrame();
+			
+			//display the video thumbnail: 
+			
+						
+			//for now just render a thumbnail hack style: 
+			//shortly will integrate multiple ways of grabbing thumnail. 
+			//and caching thumbnail size etc.
+			
+			return '<a href="#" onClick="javascript:alert(\'load::plugin-detect && \n\'+
+			\'play video:'.$img->getUrl().'\')"><img src="'.$img->movieFrameUrl().'"></a>';
 
+			//also frame grab should be done at time of uplaod (if we allow dymaic thumnails)
+			
+			//evaluate options
+			
+			//Get user-plugin  (for now in a seesion) but in the future store in user options in db..
+			
+			//make new media get server side type info (video or audio) (ogg theora encoded)
+			
+			//check users-plugin info for details
+			
+			//make thumbnail image (default to frame 30 or requested frame)  (link to media info page)
+			//render thumbnail at requested size and send plug-in detection javascript. 
+			//render video controls. (play, stop, fullscreen (if annodex on PC) ) link to media info page
+			
+		}	
+		/*
+			if($_GET['javaDemo']=='true'){
+			return '<applet code="com.fluendo.player.Cortado.class" archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar" width="320" height="240">
+					  <param name="url" value="http://metavid.ucsc.edu'.$u.'" title="'.$alt.'" />
+					  <param name="autoplay" value="false" />
+					  <param name="local" value="false"/>
+					  <param name="keepaspect" value="true" />
+					  <param name="video" value="true" />
+					  <param name="audio" value="true" />
+					  <param name="seekable" value="true" />
+					  <param name="duration" value="00455" />
+					  <param name="bufferSize" value="200" />
+					</applet>';
+		}else{
+			return '<embed type="application/x-annodex-vlc-viewer-plugin" id="video1" autoplay="no" loop="no" height="240" width="320"> <br>			
+					<script language="JavaScript">			
+						document.video1.stop();
+						document.video1.clear_playlist();
+						name=\'http://metavid.ucsc.edu'. $u.'\';
+						document.video1.add_item( name );
+						document.video1.play();
+					</script>	
+					<a href="javascript:;" onclick="document.video1.play()">Play</a> <a href="javascript:;" onclick="document.video1.pause()">Pause</a> <a href="javascript:;" onclick="document.video1.stop()">Stop</a> <a href="javascript:;" onclick="document.video1.fullscreen()">Fullscreen</a> <a href="'.$u.'">Download</a>';
+		}
+		*/
+		
+		
+	}
+
+
+
+	
 	/**
 	 * Create a direct link to a given uploaded file.
 	 *
@@ -701,8 +787,10 @@ class Linker {
 	 * @public
 	 * @todo Handle invalid or missing images better.
 	 
+	 	makeImageLinkObj( $nt, $label, $alt, $align = '', $width = false, $height = false, $framed = false,
+		  $thumb = false, $manual_thumb = '' )
 	 */
-	function makeMediaLinkObj( $title, $text = '' ) {
+	function makeMediaLinkObj( $title, $text ) {
 		if( is_null( $title ) ) {
 			### HOTFIX. Instead of breaking, return empty string.
 			return $text;
@@ -722,36 +810,9 @@ class Linker {
 				$text = $alt;
 			}
 			$u = htmlspecialchars( $url );
-			//return "<a href=\"{$u}\" class=\"$class\" title=\"{$alt}\">{$text}</a>";			
-			/*@@TODO extend mediaLink Object into seperate class like image:
-			1) check media type: if ogg theora, grab thumbnail 
-			2) return javascript code to detect client type
-			2) set
-			*/
-			$_GET['javaDemo']=(isset($_GET['javaDemo']))?$_GET['javaDemo']:'';
-			if($_GET['javaDemo']=='true'){
-				return '<applet code="com.fluendo.player.Cortado.class" archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar" width="320" height="240">
-						  <param name="url" value="http://metavid.ucsc.edu'.$u.'" title="'.$alt.'" />
-						  <param name="autoplay" value="false" />
-						  <param name="local" value="false"/>
-						  <param name="keepaspect" value="true" />
-						  <param name="video" value="true" />
-						  <param name="audio" value="true" />
-						  <param name="seekable" value="true" />
-						  <param name="duration" value="00455" />
-						  <param name="bufferSize" value="200" />
-						</applet>';
-			}else{
-				return '<embed type="application/x-annodex-vlc-viewer-plugin" id="video1" autoplay="no" loop="no" height="240" width="320"> <br>			
-						<script language="JavaScript">			
-							document.video1.stop();
-							document.video1.clear_playlist();
-							name=\'http://metavid.ucsc.edu'. $u.'\';
-							document.video1.add_item( name );
-							document.video1.play();
-						</script>	
-						<a href="javascript:;" onclick="document.video1.play()">Play</a> <a href="javascript:;" onclick="document.video1.pause()">Pause</a> <a href="javascript:;" onclick="document.video1.stop()">Stop</a> <a href="javascript:;" onclick="document.video1.fullscreen()">Fullscreen</a> <a href="'.$u.'">Download</a>';
-			}
+			//return 'test';
+			
+			return "<a href=\"{$u}\" class=\"$class\" title=\"{$alt}\">{$text}</a>";			
 		}
 	}
 

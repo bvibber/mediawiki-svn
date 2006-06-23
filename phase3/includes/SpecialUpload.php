@@ -215,7 +215,7 @@ class UploadForm {
 		$this->mUploadSaveName = $nt->getDBkey();
 
 		/**
-		 * If the image is protected, non-sysop users won't be able
+		 * If the media is protected, non-sysop users won't be able
 		 * to modify it by uploading a new revision.
 		 */
 		if( !$nt->userCanEdit() ) {

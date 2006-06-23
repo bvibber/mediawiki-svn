@@ -787,7 +787,37 @@ class Image
 		$this->load();
 		return $this->fileExists;
 	}
-
+	/*
+	* returns the movieFrameURL 
+	* more or less idential to thumbUrl
+	*/
+	function movieFrameUrl($frameTime=1, $subdir='thumb'){
+		global $wgUploadPath, $wgUploadBaseUrl, $wgSharedUploadPath;
+		global $wgSharedThumbnailScriptPath, $wgThumbnailScriptPath;
+		// Generate thumb.php URL if possible
+		$script = false;
+		$url = false;
+		
+		$name = $this->videoFrameName( $frameTime );
+		if($this->fromSharedDirectory) {
+			$base = '';
+			$path = $wgSharedUploadPath;
+		} else {
+			$base = $wgUploadBaseUrl;
+			$path = $wgUploadPath;
+		}
+		if ( Image::isHashed( $this->fromSharedDirectory ) ) {
+			$url = "{$base}{$path}/{$subdir}" .
+			wfGetHashPath($this->name, $this->fromSharedDirectory)
+			. $this->name.'/'.$name;
+			$url = wfUrlencode( $url );
+		} else {
+			$url = "{$base}{$path}/{$subdir}/{$name}";
+		}
+	
+		//return array( $script !== false, $url );
+		return $url;
+	}
 	/**
 	 * @todo document
 	 * @private
@@ -834,7 +864,9 @@ class Image
 		}
 		return array( $script !== false, $url );
 	}
-
+	function videoFrameName($frameTime=1){
+		return 'ft-'. $frameTime .'-'. $this->name .'.jpg';
+	}
 	/**
 	 * Return the file name of a thumbnail of the specified width
 	 *
@@ -923,7 +955,79 @@ class Image
 		}
 		return null;
 	}
+	/*
+	*	Renders a video frame
+	* put it in images/video_name.ogg/frame.jpg
+	* or images/video_name.ogg/time-in-seconds.jpg
+	* if we allow dynamic key frame generation. 
+	*
+	* @param $frameTime Integer (for now we hardcode the frame time)
+	*/
+	function renderMovieFrame($frameTime=1){
+		$fname = 'Image::renderMovieFrame';
+		wfProfileIn( $fname );
+		$this->load();
+		if ( ! $this->exists() )
+		{
+			# check for (Media) existing
+			wfProfileOut( $fname );
+			return null;
+		}
+		
+		//$frameName = $this->thumbName( $frameTime, $this->fromSharedDirectory );
+		//@todo should call something similar to $this->thumbName() to build frameName
+		$frameName = $this->videoFrameName($frameTime);
+		$frameDirPath= wfImageThumbDir( $this->name, $this->fromSharedDirectory ).'/';
+		$framePath = $frameDirPath .$frameName;		
+		
+		wfDebug("Media path: " . $this->imagePath. "\n");
+		if ( !file_exists( $framePath )){
+			$this->reallyRenderMovieFrame( $this->imagePath,$frameDirPath ,$frameName);
+		}
+		
+		$thumb = new ThumbnailImage( $this->getURL(), $this->getWidth(), $this->getHeight() );			
+		
+	
+				
+		# Purge squid
+		# This has to be done after the image is updated and present for all machines on NFS,
+		# or else the old version might be stored into the squid again
+		/*if ( $wgUseSquid ) {
+			$urlArr = array( $url );
+			wfPurgeSquidServers($urlArr);
+		}*/			
+		wfProfileOut( $fname );
+		return $thumb;
+	}
 
+
+	function reallyRenderMovieFrame($sourceMoviePath, $frameDirPath,$frameName, $frameSec=1){
+		//go a directory below frame path: 
+		if(is_dir($frameDirPath)){
+			//change to the working dir
+			$prewd = getcwd(); 
+			chdir($frameDirPath); 
+			#@todo load shell command from configuration: 
+			$getFrameCmd = 'mplayer -vo jpeg:quality=90,optimize=100 -ao null -ss ';
+			$getFrameCmd.= escapeshellarg($frameSec) . ' -frames 1 ' . escapeshellarg($sourceMoviePath);
+			$getFrameCmd.= '>/dev/null 2>&1'; #pipe debug info into nothing.
+			shell_exec($getFrameCmd);
+			//check for the default file output from mplayer:
+			if(is_file('00000002.jpg')){			
+				rename('00000002.jpg', $frameDirPath.$frameName);			
+			}else{
+				//die a horrible death the video thumb can't be created. 			
+			}
+		
+			chdir($prewd); 
+		}else{
+			//wfDebug("error not a dir: $frameDirPath \n");
+		}
+		wfDebug("output to: " . $frameDirPath . $frameName."\n");
+		//run the shell command to render the frame
+		
+		//rename it from 000002.jpg to frame path name
+	}
 	/**
 	 * Create a thumbnail of the image having the specified width.
 	 * The thumbnail will not be created if the width is larger than the
@@ -992,7 +1096,7 @@ class Image
 
 		$thumbName = $this->thumbName( $width, $this->fromSharedDirectory );
 		$thumbPath = wfImageThumbDir( $this->name, $this->fromSharedDirectory ).'/'.$thumbName;
-
+		
 		if ( is_dir( $thumbPath ) ) {
 			// Directory where file should be
 			// This happened occasionally due to broken migration code in 1.5
@@ -1059,7 +1163,7 @@ class Image
 			$thumb = new ThumbnailImage( $url, $width, $height, $thumbPath );
 		} else {
 			$thumb = null;
-		}
+		}		
 		wfProfileOut( $fname );
 		return $thumb;
 	} // END OF function renderThumb
