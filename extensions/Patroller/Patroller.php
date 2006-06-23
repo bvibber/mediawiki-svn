@@ -43,6 +43,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 				return;
 			}
 			
+			# Keep out blocked users
+			if( $wgUser->isBlocked() ) {
+				$wgOut->blockedPage();
+				return;
+			}
+			
 			# Prune old assignments if needed
 			wfSeedRandom();
 			if( 0 == mt_rand( 0, 499 ) )
@@ -53,15 +59,17 @@ if( defined( 'MEDIAWIKI' ) ) {
 				if( $rcid = $wgRequest->getIntOrNull( 'wpRcId' ) ) {
 					if( $wgRequest->getCheck( 'wpPatrolEndorse' ) ) {
 						# Mark the change patrolled
-						RecentChange::markPatrolled( $rcid );
-						$wgOut->setSubtitle( wfMsgHtml( 'patrol-endorsed-ok' ) );
-						wfDebugLog( 'patroller', 'Endorsed ' . $rcid );
+						if( !$wgUser->isBlocked( false ) ) {
+							RecentChange::markPatrolled( $rcid );
+							$wgOut->setSubtitle( wfMsgHtml( 'patrol-endorsed-ok' ) );
+						} else {
+							$wgOut->setSubtitle( wfMsgHtml( 'patrol-reverted-failed' ) );
+						}
 					} elseif( $wgRequest->getCheck( 'wpPatrolRevert' ) ) {
 						# Revert the change
 						$edit = $this->loadChange( $rcid );
-						$this->revert( $edit, $this->revertReason( $wgRequest ) );
-						$wgOut->setSubtitle( wfMsgHtml( 'patrol-reverted-ok' ) );
-						wfDebugLog( 'patroller', 'Reverted ' . $rcid );
+						$msg = $this->revert( $edit, $this->revertReason( $wgRequest ) ) ? 'ok' : 'failed';
+						$wgOut->setSubtitle( wfMsgHtml( 'patrol-reverted-' . $msg ) );
 					} elseif( $wgRequest->getCheck( 'wpPatrolSkip' ) ) {
 						# Do bugger all, for now
 						$wgOut->setSubtitle( wfMsgHtml( 'patrol-skipped-ok' ) );
@@ -226,27 +234,32 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 * @param $comment Comment to use when reverting
 		 */
 		function revert( &$edit, $comment = '' ) {
-			global $wgOut;
-			$dbw =& wfGetDB( DB_MASTER );
-			$dbw->begin();
-			$title = $edit->getTitle();
-			# Prepare the comment
-			$comment = wfMsgForContent( 'patrol-reverting' ) . ( $comment ? ' (' . $comment . ')' : '' );
-			# Find the old revision
-			$old = $edit->mAttribs['rc_last_oldid'];
-			$oldRev = Revision::newFromId( $old );
-			wfDebugLog( 'patroller', "Reverting " . $title->getPrefixedText() . " to r" . $oldRev->getId() );
-			# Be certain we're not overwriting a more recent change
-			# If we would, ignore it, and silently consider this change patrolled
-			$latest = $dbw->selectField( 'page', 'page_latest', array( 'page_id' => $title->getArticleId() ), __METHOD__ );
-			if( $old == $latest ) {
-				# Revert the edit; keep the reversion itself out of recent changes
-				$article = new Article( $title );
-				$article->doEdit( $oldRev->getText(), $comment, EDIT_UPDATE & EDIT_MINOR & EDIT_SUPPRESS_RC );
+			global $wgUser;
+			if( !$wgUser->isBlocked( false ) ) { # Check block against master
+				$dbw =& wfGetDB( DB_MASTER );
+				$dbw->begin();
+				$title = $edit->getTitle();
+				# Prepare the comment
+				$comment = wfMsgForContent( 'patrol-reverting' ) . ( $comment ? ' (' . $comment . ')' : '' );
+				# Find the old revision
+				$old = $edit->mAttribs['rc_last_oldid'];
+				$oldRev = Revision::newFromId( $old );
+				wfDebugLog( 'patroller', "Reverting " . $title->getPrefixedText() . " to r" . $oldRev->getId() );
+				# Be certain we're not overwriting a more recent change
+				# If we would, ignore it, and silently consider this change patrolled
+				$latest = $dbw->selectField( 'page', 'page_latest', array( 'page_id' => $title->getArticleId() ), __METHOD__ );
+				if( $old == $latest ) {
+					# Revert the edit; keep the reversion itself out of recent changes
+					$article = new Article( $title );
+					$article->doEdit( $oldRev->getText(), $comment, EDIT_UPDATE & EDIT_MINOR & EDIT_SUPPRESS_RC );
+				}
+				$dbw->commit();
+				# Mark the edit patrolled so it doesn't bother us again
+				RecentChange::markPatrolled( $edit->mAttribs['rc_id'] );
+				return true;
+			} else {
+				return false;
 			}
-			$dbw->commit();
-			# Mark the edit patrolled so it doesn't bother us again
-			RecentChange::markPatrolled( $edit->mAttribs['rc_id'] );
 		}
 		
 		/**
