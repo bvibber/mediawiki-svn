@@ -210,9 +210,12 @@ class DefinedMeaningDefinitionController implements PageElementController {
 		$this->revisionId = $revisionId;
 	}
 
-	public function add($values) {
-		$languageId = $values[0];
-		$text = $values[1];
+	public function add($tuple) {
+		global
+			$languageAttribute, $textAttribute;
+		
+		$languageId = $tuple->getAttributeValue($languageAttribute);
+		$text = $tuple->getAttributeValue($textAttribute);
 		
 		if ($text != "") 
 			addDefinedMeaningDefinition($this->definedMeaningId, $this->revisionId, $languageId, $text);
@@ -226,11 +229,11 @@ class DefinedMeaningDefinitionController implements PageElementController {
 		removeDefinedMeaningDefinition($this->definedMeaningId, $languageId);
 	}
 	
-	public function update($tuple, $updatedValues) {
+	public function update($tuple, $tupleUpdate) {
 		global
-			$languageAttribute;
+			$languageAttribute, $textAttribute;
 			
-		updateDefinedMeaningDefinition($this->definedMeaningId, $tuple->getAttributeValue($languageAttribute), $updatedValues['text']);
+		updateDefinedMeaningDefinition($this->definedMeaningId, $tuple->getAttributeValue($languageAttribute), $tupleUpdate->getAttributeValue($textAttribute));
 	}
 }
 
@@ -243,9 +246,12 @@ class DefinedMeaningAlternativeDefinitionController implements PageElementContro
 		$this->revisionId = $revisionId;
 	}
 
-	public function add($values) {
-		$languageId = $values[0];
-		$text = $values[1];
+	public function add($tuple) {
+		global
+			$languageAttribute, $textAttribute;
+		
+		$languageId = $tuple->getAttributeValue($languageAttribute);
+		$text = $tuple->getAttributeValue($textAttribute);
 		
 		if ($text != "") 
 			addDefinedMeaningAlternativeDefinition($this->alternativeDefinitionId, $this->revisionId, $languageId, $text);
@@ -259,11 +265,13 @@ class DefinedMeaningAlternativeDefinitionController implements PageElementContro
 		removeTranslatedDefinition($this->alternativeDefinitionId, $languageId);
 	}
 	
-	public function update($tuple, $updatedValues) {
+	public function update($tuple, $tupleUpdate) {
 		global
-			$languageAttribute;
+			$languageAttribute, $textAttribute;
 			
-		updateDefinedMeaningAlternativeDefinition($this->alternativeDefinitionId, $tuple->getAttributeValue($languageAttribute), $updatedValues['text']);
+		updateDefinedMeaningAlternativeDefinition($this->alternativeDefinitionId, 
+					$tuple->getAttributeValue($languageAttribute), 
+					$tupleUpdate->getAttributeValue($textAttribute));
 	}
 }
 
@@ -274,14 +282,17 @@ class SynonymTranslationController implements PageElementController {
 		$this->definedMeaningId = $definedMeaningId;
 	}
 	
-	public function add($values) {
-		$languageId = $values[0];		
-		$spelling = $values[1];
-		$endemicMeaning = $values[2];
+	public function add($tuple) {
+		global
+			$languageAttribute, $spellingAttribute, $identicalMeaningAttribute;
+		
+		$languageId = $tuple->getAttributeValue($languageAttribute);		
+		$spelling = $tuple->getAttributeValue($spellingAttribute);
+		$identicalMeaning = $tuple->getAttributeValue($identicalMeaningAttribute);
 		
 		if ($spelling != '') {
 			$expression = findOrCreateExpression($spelling, $languageId);
-			$expression->assureIsBoundToDefinedMeaning($this->definedMeaningId, $endemicMeaning);
+			$expression->assureIsBoundToDefinedMeaning($this->definedMeaningId, $identicalMeaning);
 		}
 	}
 	
@@ -293,12 +304,12 @@ class SynonymTranslationController implements PageElementController {
 		removeSynonymOrTranslation($this->definedMeaningId, $expressionId);		
 	}
 	
-	public function update($tuple, $updatedValues) {
+	public function update($tuple, $tupleUpdate) {
 		global
-			$expressionAttribute;
+			$expressionAttribute, $identicalMeaningAttribute;
 			
 		$expressionId = $tuple->getAttributeValue($expressionAttribute);
-		$identicalMeaning = $updatedValues['endemic-meaning'];
+		$identicalMeaning = $tupleUpdate->getAttributeValue($identicalMeaningAttribute);
 		updateSynonymOrTranslation($this->definedMeaningId, $expressionId, $identicalMeaning);
 	}
 }
@@ -310,9 +321,12 @@ class DefinedMeaningRelationController implements PageElementController {
 		$this->definedMeaningId = $definedMeaningId;
 	}
 	
-	public function add($values) {
-		$relationTypeId = $values[0];
-		$otherDefinedMeaningId = $values[1];
+	public function add($tuple) {
+		global
+			$relationTypeAttribute, $otherDefinedMeaningAttribute;
+		
+		$relationTypeId = $tuple->getAttributeValue($relationTypeAttribute);
+		$otherDefinedMeaningId = $tuple->getAttributeValue($otherDefinedMeaningAttribute);
 		  
 		if ($relationTypeId != 0 && $otherDefinedMeaningId != 0)
 			addRelation($this->definedMeaningId, $relationTypeId, $otherDefinedMeaningId);
@@ -325,7 +339,7 @@ class DefinedMeaningRelationController implements PageElementController {
 		removeRelation($this->definedMeaningId, $tuple->getAttributeValue($relationTypeAttribute), $tuple->getAttributeValue($otherDefinedMeaningAttribute));
 	}
 	
-	public function update($tuple, $updatedValues) {
+	public function update($tuple, $tupleUpdate) {
 	}
 }
 
@@ -336,8 +350,11 @@ class DefinedMeaningAttributeController implements PageElementController {
 		$this->definedMeaningId = $definedMeaningId;
 	}
 	
-	public function add($values) {
-		$attributeId = $values[0];
+	public function add($tuple) {
+		global
+			$attributeAttribute;
+		
+		$attributeId = $tuple->getAttributeValue($attributeAttribute);
 		  
 		if ($attributeId != 0)
 			addRelation($this->definedMeaningId, 0, $attributeId);
@@ -350,7 +367,7 @@ class DefinedMeaningAttributeController implements PageElementController {
 		removeRelation($this->definedMeaningId, 0, $tuple->getAttributeValue($attributeAttribute));
 	}
 	
-	public function update($tuple, $updatedValues) {
+	public function update($tuple, $tupleUpdate) {
 	}
 }
 
@@ -363,9 +380,12 @@ class DefinedMeaningCollectionController implements PageElementController {
 		$this->revisionId = $revisionId;
 	}
 	
-	public function add($values) {
-		$collectionId = $values[0];
-		$internalId = $values[1];
+	public function add($tuple) {
+		global
+			$collectionAttribute, $internalIdAttribute;
+		
+		$collectionId = $tuple->getAttributeValue($collectionAttribute);
+		$internalId = $tuple->getAttributeValue($internalIdAttribute);
 		
 		if ($internalId != "")
 			addDefinedMeaningToCollection($this->definedMeaningId, $collectionId, $internalId, $this->revisionId);
@@ -378,12 +398,12 @@ class DefinedMeaningCollectionController implements PageElementController {
 		removeDefinedMeaningFromCollection($this->definedMeaningId, $tuple->getAttributeValue($collectionAttribute));
 	}
 	
-	public function update($tuple, $updatedValues) {
+	public function update($tuple, $tupleUpdate) {
 		global
-			$collectionAttribute;
+			$collectionAttribute, $internalIdAttribute;
 		
 		$collectionId = $tuple->getAttributeValue($collectionAttribute);
-		$internalId = $updatedValues["internal-id"];
+		$internalId = $tupleUpdate->getAttributeValue($internalIdAttribute);
 		
 		if ($internalId != "")
 			updateDefinedMeaningInCollection($this->definedMeaningId, $collectionId, $internalId);
@@ -476,11 +496,21 @@ class WiktionaryZ {
 		$attributes = $pageElement->getRelationModel()->getHeading()->attributes;
 		
 		$values = array();
+		$addAttributes = array();
 		
-		foreach($attributes as $attribute)
-			$values = array_merge($values, getFieldValuesForAttribute($addId . "-", $attribute, $postFix));
+		foreach($attributes as $attribute) {
+			$tuple = getFieldValuesForAttribute($addId . "-", $attribute, $postFix);
+			$tupleAttributes = $tuple->getHeading()->attributes;
+			$addAttributes = array_merge($addAttributes, $tupleAttributes);
+			
+			foreach($tupleAttributes as $tupleAttribute) 
+				$values[] = $tuple->getAttributeValue($tupleAttribute);
+		}
+
+		$addTuple = new ArrayTuple(new Heading($addAttributes));
+		$addTuple->setAttributeValuesByOrder($values);
 		
-		$pageElement->getController()->add($values);
+		$pageElement->getController()->add($addTuple);
 	}
 	
 	function savePageElement($pageElement) {
@@ -523,17 +553,28 @@ class WiktionaryZ {
 					$tuple = $relationModel->getTuple($i);
 					$tupleKeyName = getTupleKeyName($tuple, $key);
 					$updatedValues = array();
+					$updatedAttributes = array();
 					
-					foreach($updatableAttributes as $attribute) {
-						$values = getFieldValuesForAttribute($updateId . $tupleKeyName . '-', $attribute, "");
-						$value = $values[0];
+					foreach($updatableAttributes as $updatableAttribute) {
+						$fieldTuple = getFieldValuesForAttribute($updateId . $tupleKeyName . '-', $updatableAttribute, "");
+						$fieldAttributes = $fieldTuple->getHeading()->attributes;
 						
-						if ($value != $tuple->getAttributeValue($attribute)) 
-							$updatedValues[$attribute->id] = $value;
+						foreach($fieldAttributes as $fieldAttribute) {
+							$value = $fieldTuple->getAttributeValue($fieldAttribute);
+							
+							if ($value != $tuple->getAttributeValue($updatableAttribute)) {
+								$updatedValues[] = $value;
+								$updatedAttributes[] = $fieldAttribute;								
+							}
+						}
 					}
 					
-					if (count($updatedValues) > 0)
-						$controller->update($tuple, $updatedValues);
+					if (count($updatedValues) > 0) {
+						$updatedTuple = new ArrayTuple(new Heading($updatedAttributes));
+						$updatedTuple->setAttributeValuesByOrder($updatedValues);
+						
+						$controller->update($tuple, $updatedTuple);
+					}
 				}
 			}
 		}				

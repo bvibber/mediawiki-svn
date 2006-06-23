@@ -242,10 +242,10 @@ function getTupleKeyName($tuple, $key) {
 }
 
 function getRelationAsEditHTML($relationModel, $addRowId, $removeId, $updateId, $addRowFields, $repeatInput, $allowAdd, $allowRemove, $updatableHeading) {
-	$htmlRelation = new HTMLRelation($relationModel, $updatableHeading);
+	$editRelation = new HTMLRelation($relationModel, $updatableHeading);
 	
 	$result = '<table class="wiki-data-table"><tr>';	
-	$attributes = $htmlRelation->getHeading()->attributes;
+	$attributes = $editRelation->getHeading()->attributes;
 	$key = $relationModel->getKey();
 	
 	if ($allowRemove)
@@ -266,7 +266,7 @@ function getRelationAsEditHTML($relationModel, $addRowId, $removeId, $updateId, 
 		if ($allowRemove)
 			$result .= '<td class="remove">' . getRemoveCheckBox($removeId . $tupleKeyName) . '</td>';
 		
-		$htmlTuple = $htmlRelation->getTuple($i);
+		$htmlTuple = $editRelation->getTuple($i);
 		$values = array();
 		
 		foreach($attributes as $attribute)

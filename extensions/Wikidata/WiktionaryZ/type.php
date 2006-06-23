@@ -2,6 +2,8 @@
 
 require_once('languages.php');
 require_once('forms.php');
+require_once('attribute.php');
+require_once('tuple.php');
 
 function booleanAsText($value) {
 	if ($value)
@@ -109,6 +111,24 @@ function getInputFieldsForAttribute($namePrefix, $attribute, $value) {
 	}	
 }
 
+function getAttributeTuple($attribute, $value) {
+	$result = new ArrayTuple(new Heading(array($attribute)));
+	$result->setAttributeValue($attribute, $value);
+	
+	return $result;
+}
+
+function getExpressionTuple($language, $spelling) {
+	global
+		$languageAttribute, $spellingAttribute;
+	
+	$result = new ArrayTuple(new Heading(array($languageAttribute, $spellingAttribute)));
+	$result->setAttributeValue($languageAttribute, $language);
+	$result->setAttributeValue($spellingAttribute, $spelling);
+	
+	return $result;
+}
+
 function getFieldValuesForAttribute($namePrefix, $attribute, $namePostFix) {
 	global
 		$wgRequest;
@@ -116,18 +136,18 @@ function getFieldValuesForAttribute($namePrefix, $attribute, $namePostFix) {
 	$attributeId = $namePrefix . $attribute->id . $namePostFix;
 		
 	switch($attribute->type) {
-		case "language": return array($wgRequest->getInt($attributeId));
-		case "spelling": return array(trim($wgRequest->getText($attributeId)));
-		case "boolean": return array($wgRequest->getCheck($attributeId));
-		case "expression": return array($wgRequest->getInt($namePrefix . "language" . $namePostFix), trim($wgRequest->getText($namePrefix . "spelling" . $namePostFix)));
+		case "language": return getAttributeTuple($attribute, $wgRequest->getInt($attributeId));
+		case "spelling": return getAttributeTuple($attribute, trim($wgRequest->getText($attributeId)));
+		case "boolean": return getAttributeTuple($attribute, $wgRequest->getCheck($attributeId));
+		case "expression": return getExpressionTuple($wgRequest->getInt($namePrefix . "language" . $namePostFix), trim($wgRequest->getText($namePrefix . "spelling" . $namePostFix)));
 		case "defined-meaning": 
 		case "defining-expression":
-			return array($wgRequest->getInt($attributeId));
-		case "relation-type": return array($wgRequest->getInt($attributeId));
-		case "attribute": return array($wgRequest->getInt($attributeId));
-		case "collection": return array($wgRequest->getInt($attributeId));
+			return getAttributeTuple($attribute, $wgRequest->getInt($attributeId));
+		case "relation-type": return getAttributeTuple($attribute, $wgRequest->getInt($attributeId));
+		case "attribute": return getAttributeTuple($attribute, $wgRequest->getInt($attributeId));
+		case "collection": return getAttributeTuple($attribute, $wgRequest->getInt($attributeId));
 		case "short-text":
-		case "text": return array(trim($wgRequest->getText($attributeId)));
+		case "text": return getAttributeTuple($attribute, trim($wgRequest->getText($attributeId)));
 	}
 }
 
