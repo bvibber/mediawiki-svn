@@ -1493,7 +1493,6 @@ class Parser
 
 			# Link not escaped by : , create the various objects
 			if( $noforce ) {
-				wfDebug("nofroce called: \n");
 				# Interwikis
 				if( $iw && $this->mOptions->getInterwikiMagic() && $nottalk && $wgContLang->getLanguageName( $iw ) ) {
 					$this->mOutput->addLanguageLink( $nt->getFullText() );
@@ -1503,7 +1502,7 @@ class Parser
 				}
 
 				if ( $ns == NS_IMAGE ) {
-					wfProfileIn( "$fname-image" );
+					wfProfileIn( "$fname-image" );	
 					if ( !wfIsBadImage( $nt->getDBkey() ) ) {
 						# recursively parse links inside the image caption
 						# actually, this will parse them in any other parameters, too,
@@ -1521,25 +1520,23 @@ class Parser
 					wfProfileOut( "$fname-image" );
 
 				}
-				
-				if ( $ns == NS_MEDIA ) {
-					wfDebug("USES my_NSmedia \n");
-					wfProfileIn( "$fname-media" );			
-						# recursively parse links inside the media caption
-						# actually, this will parse them in any other parameters, too,
-						# but it might be hard to fix that, and it doesn't matter ATM
+				//enable or disable embed media: 
+				//@todo add in proper wfConfig boolean 
+				if(true){
+					if ( $ns == NS_MEDIA ) {		
+						wfProfileIn( "$fname-media" );			
+							# recursively parse links inside the media caption
 						$text = $this->replaceExternalLinks($text);
 						$text = $this->replaceInternalLinks($text);
-
+	
 						# cloak any absolute URLs inside the media markup, so replaceExternalLinks() won't touch them
-						$link =  $sk->makeMediaLinkObj( $nt, $text );
+						$link =  $this->makeMedia( $nt, $text );
 						$s .= $prefix . $this->armorLinks( $link ) . $trail;
-						$this->mOutput->addImage( $nt->getDBkey() );
-
-						wfProfileOut( "$fname-media" );
+						$this->mOutput->addImage( $nt->getDBkey() );			
 					
-					wfProfileOut( "$fname-media" );
-					continue;
+						wfProfileOut( "$fname-media" );
+						continue;
+					}
 				}
 					
 				if ( $ns == NS_CATEGORY ) {
@@ -1578,7 +1575,14 @@ class Parser
 			}
 
 			# Special and Media are pseudo-namespaces; no pages actually exist in them
-			if( $ns == NS_SPECIAL ) {
+			if( $ns == NS_MEDIA ) {			 						
+				$link = $sk->makeMediaLinkObj( $nt, $text );
+								
+				# Cloak with NOPARSE to avoid replacement in replaceExternalLinks
+				$s .= $prefix . $this->armorLinks( $link ) . $trail;
+				$this->mOutput->addImage( $nt->getDBkey() );
+				continue;
+			} elseif( $ns == NS_SPECIAL ) {
 				$s .= $this->makeKnownLinkHolder( $nt, $text, '', $trail, $prefix );
 				continue;
 			} elseif( $ns == NS_IMAGE ) {
@@ -4154,8 +4158,87 @@ class Parser
 		}
 		return $ig->toHTML();
 	}
+	/**
+	* Parse media options 
+	* @todo make these options extendable 
+	* @todo maybe make Image an extention of Media?
+	* (temporaraly more or less idential to image) 
+	*/	
 	function makeMedia( &$nt, $options){
+		global $wgUseImageResize;
+		
+		//init the media options
+		$mwMediaOptions=array();
+		
+		$align = '';
+		# Check if the options text is of the form "options|alt text"
+		# Options are:
+		#  * thumbnail       	make a thumbnail with enlarge-icon and caption, alignment depends on lang
+		#  * left		no resizing, just left align. label is used for alt= only
+		#  * right		same, but right aligned
+		#  * none		same, but not aligned
+		#  * ___px		scale to ___ pixels width, no aligning. e.g. use in taxobox
+		#  * center		center the image
+		#  * framed		Keep original image size, no magnify-button.
+
+		$part = explode( '|', $options);
+
+		$mwThumb  =& MagicWord::get( MAG_IMG_THUMBNAIL );
+		$mwManualThumb =& MagicWord::get( MAG_IMG_MANUALTHUMB );
+		$mwLeft   =& MagicWord::get( MAG_IMG_LEFT );
+		$mwRight  =& MagicWord::get( MAG_IMG_RIGHT );
+		$mwNone   =& MagicWord::get( MAG_IMG_NONE );
+		$mwWidth  =& MagicWord::get( MAG_IMG_WIDTH );
+		$mwCenter =& MagicWord::get( MAG_IMG_CENTER );
+		$mwFramed =& MagicWord::get( MAG_IMG_FRAMED );
+		$caption = '';
 	
+		$mwMediaOptions['manual_thumb'] = '';
+
+		foreach( $part as $key => $val ) {
+			if ( $wgUseImageResize && ! is_null( $mwThumb->matchVariableStartToEnd($val) ) ) {
+				$mwMediaOptions['thumb']=true;
+			} elseif ( ! is_null( $match = $mwManualThumb->matchVariableStartToEnd($val) ) ) {
+				# use manually specified thumbnail
+				$mwMediaOptions['thumb']=true;
+				$mwMediaOptions['manual_thumb'] = $match;
+			} elseif ( ! is_null( $mwRight->matchVariableStartToEnd($val) ) ) {
+				$mwMediaOptions['align']='right';
+			} elseif ( ! is_null( $mwLeft->matchVariableStartToEnd($val) ) ) {
+				$mwMediaOptions['align']='left';
+			} elseif ( ! is_null( $mwCenter->matchVariableStartToEnd($val) ) ) {
+				# remember to set an alignment, don't render immediately
+				$mwMediaOptions['align'] = 'center';
+			} elseif ( ! is_null( $mwNone->matchVariableStartToEnd($val) ) ) {
+				# remember to set an alignment, don't render immediately
+				$mwMediaOptions['align'] = 'none';
+			} elseif ( $wgUseImageResize && ! is_null( $match = $mwWidth->matchVariableStartToEnd($val) ) ) {
+				wfDebug( "MAG_IMG_WIDTH match: $match\n" );
+				# $match is the image width in pixels
+				if ( preg_match( '/^([0-9]*)x([0-9]*)$/', $match, $m ) ) {
+					$mwMediaOptions['width'] = intval( $m[1] );
+					$mwMediaOptions['height'] = intval( $m[2] );
+				} else {
+					$mwMediaOptions['width'] = intval($match);
+				}
+			} elseif ( ! is_null( $mwFramed->matchVariableStartToEnd($val) ) ) {
+				$mwMediaOptions['framed']=true;
+			} else {
+				$mwMediaOptions['caption'] = $val;
+			}
+		}
+		# Strip bad stuff out of the alt text
+		$mwMediaOptions['alt'] = $this->replaceLinkHoldersText( $caption );
+
+		# make sure there are no placeholders in thumbnail attributes
+		# that are later expanded to html- so expand them now and
+		# remove the tags
+		$mwMediaOptions['alt'] = $this->unstrip($mwMediaOptions['alt'], $this->mStripState); 
+		$mwMediaOptions['alt'] = Sanitizer::stripAllTags( $mwMediaOptions['alt'] );
+
+		# Linker does the rest
+		$sk =& $this->mOptions->getSkin();
+		return $sk->makeEmbedMediaLinkObj( $nt, $mwMediaOptions );
 	}
 	/**
 	 * Parse image options text and use it to make an image
