@@ -51,6 +51,10 @@ define( 'GN_ENUM_DFLT',     0 );
 define( 'GN_ENUM_ISMULTI',  1 );
 define( 'GN_ENUM_CHOICES',  2 );
 
+// Use this constant to avoid filtering by namespace
+define( 'NS_ALL_NAMESPACES', -10123 );
+
+
 $db =& wfGetDB( DB_SLAVE );
 $bqp = new BotQueryProcessor( $db, $startTime );
 $bqp->execute();
@@ -313,16 +317,17 @@ class BotQueryProcessor {
 		'backlinks'      => array(
 			GN_FUNC => 'genPageBackLinksHelper',
 			GN_ISMETA => false,
-			GN_PARAMS => array( 'bllimit', 'blcontfrom', 'blfilter' ),
-			GN_DFLT => array( 50, null,
+			GN_PARAMS => array( 'bllimit', 'blcontfrom', 'blnamespace', 'blfilter' ),
+			GN_DFLT => array( 50, null, NS_ALL_NAMESPACES,
 				array( GN_ENUM_DFLT => 'existing',
 					   GN_ENUM_ISMULTI => false,
-					   GN_ENUM_CHOICES => array('existing', 'nonredirects', 'all') )),
+					   GN_ENUM_CHOICES => array('redirects', 'nonredirects', 'existing', 'all') )),
 			GN_DESC => array(
 				"What pages link to this page(s)",
 				"Parameters supported:",
 				"blfilter   - Of all given pages, which should be queried:",
-				"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
+				"  'redirects', 'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
+				"blnamespace- Optional namespace id: limits the namespace of the originating pages",
 				"bllimit    - How many total links to return",
 				"blcontfrom - From which point to continue. Use the 'next' value from the previous queries.",
 				"Example: query.php?what=backlinks&titles=Main%20Page&bllimit=10",
@@ -330,16 +335,17 @@ class BotQueryProcessor {
 		'embeddedin'     => array(
 			GN_FUNC => 'genPageBackLinksHelper',
 			GN_ISMETA => false,
-			GN_PARAMS => array( 'eilimit', 'eicontfrom', 'eifilter' ),
-			GN_DFLT => array( 50, null,
+			GN_PARAMS => array( 'eilimit', 'eicontfrom', 'einamespace', 'eifilter' ),
+			GN_DFLT => array( 50, null, NS_ALL_NAMESPACES,
 				array( GN_ENUM_DFLT => 'existing',
 					   GN_ENUM_ISMULTI => false,
-					   GN_ENUM_CHOICES => array('existing', 'nonredirects', 'all') )),
+					   GN_ENUM_CHOICES => array('redirects', 'nonredirects', 'existing', 'all') )),
 			GN_DESC => array(
 				"What pages include this page(s) as template(s)",
 				"Parameters supported:",
 				"eifilter   - Of all given pages, which should be queried:",
-				"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
+				"  'redirects', 'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
+				"einamespace- Optional namespace id: limits the namespace of the originating pages",
 				"eilimit    - How many total links to return",
 				"eicontfrom - From which point to continue. Use the 'next' value from the previous queries.",
 				"Example: query.php?what=embeddedin&titles=Template:Stub&eilimit=10",
@@ -347,15 +353,16 @@ class BotQueryProcessor {
 		'imagelinks'     => array(
 			GN_FUNC => 'genPageBackLinksHelper',
 			GN_ISMETA => false,
-			GN_PARAMS => array( 'illimit', 'ilcontfrom', 'ilfilter' ),
-			GN_DFLT => array( 50, null,
+			GN_PARAMS => array( 'illimit', 'ilcontfrom', 'ilnamespace', 'ilfilter' ),
+			GN_DFLT => array( 50, null, NS_ALL_NAMESPACES,
 				array( GN_ENUM_DFLT => 'all',
 					   GN_ENUM_ISMULTI => false,
-					   GN_ENUM_CHOICES => array('existing', 'nonredirects', 'all') )),
+					   GN_ENUM_CHOICES => array('existing', 'all') )),
 			GN_DESC => array(
 				"What pages use this image(s)",
 				"ilfilter   - Of all given images, which should be queried:",
-				"  'nonredirects', 'existing', or 'all' (default, includes non-existent or those stored on Wikimedia Commons)",
+				"  'existing', 'all' (default, includes non-existent or those stored on Wikimedia Commons)",
+				"ilnamespace- Optional namespace id: limits the namespace of the originating pages",
 				"illimit    - How many total links to return",
 				"ilcontfrom - From which point to continue. Use the 'next' value from the previous queries.",
 				"Example: query.php?what=imagelinks&titles=Image:HermitageAcrossNeva.jpg&illimit=10",
@@ -849,7 +856,7 @@ class BotQueryProcessor {
 		global $wgContLang;
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
-		$this->validateLimit( 'aplimit', $aplimit, 50, 1000 );
+		$this->validateLimit( 'aplimit', $aplimit, 500, 1000 );
 
 		if( $wgContLang->getNsText($apnamespace) === false ) {
 			$this->dieUsage( "Unknown namespace $apnamespace", 'ap_badnamespace' );
@@ -1210,6 +1217,7 @@ class BotQueryProcessor {
 	*/
 	function genPageBackLinksHelper(&$prop, &$genInfo)
 	{
+		global $wgContLang;
 		$this->startProfiling();
 		extract( $this->genPageBackLinksSettings[$prop] );
 		$isImage = $prop === 'imagelinks';
@@ -1218,13 +1226,16 @@ class BotQueryProcessor {
 		// Parse and validate parameters
 		//
 		$parameters = $this->getParams( $prop, $genInfo );
-		$contFrom = $parameters["{$code}contfrom"];
 		$limit  = intval($parameters["{$code}limit"]);
 		$this->validateLimit( "{$code}limit", $limit, 5000, 10000 );
-		$filter = $parameters["{$code}filter"];
+		$namespace = $parameters["{$code}namespace"];
+		if( $namespace !== NS_ALL_NAMESPACES && $wgContLang->getNsText($namespace) === false )
+			$this->dieUsage( "{$code}namespace is invalid", "{$code}_badnamespace" );
+
 		//
 		// Parse contFrom - will be in the format    ns|db_key|page_id - determine how to continue
 		//
+		$contFrom = $parameters["{$code}contfrom"];
 		if( $contFrom ) {
 			$contFromList = explode( '|', $contFrom );
 			$contFromValid = count($contFromList) === 3;
@@ -1238,22 +1249,26 @@ class BotQueryProcessor {
 				$contFromValid = ($fromPageId > 0);
 			}
 			if( !$contFromValid ) {
-				$this->dieUsage( "{$code}contfrom is invalid. You should pass the original value retured by the previous query", "{$code}_badcontfrom" );
+				$this->dieUsage( "{$code}contfrom is invalid. You should pass the original value returned by the previous query", "{$code}_badcontfrom" );
 			}
 		}
 		//
 		// Parse page type filtering
 		//
-		$nonredir = $existing = $all = false;
+		$filter = $parameters["{$code}filter"];
+		$existing = $all = false;
 		switch( $filter ) {
 			case 'all' :
 				$all = true;
 				// fallthrough
 			case 'existing' :
 				$existing = true;
-				// fallthrough
+				break;
+			case 'redirects' :
+				$onlyredir = true;
+				break;
 			case 'nonredirects' :
-				$nonredir = true;
+				$onlyredir = false;
 				break;
 			default:
 				$this->dieUsage( "{$code}filter '$filter' is not one of the allowed: 'all', 'existing' [default], and 'nonredirects'", "{$code}_badfilter" );
@@ -1265,7 +1280,8 @@ class BotQueryProcessor {
 		foreach( $this->data['pages'] as $pageId => &$page ) {
 			if( (
 				( $pageId < 0 && $all && array_key_exists('_obj', $page) ) ||
-				( $pageId > 0 && ($existing || ($nonredir && !array_key_exists('redirect', $page))) )
+				( $pageId > 0 && ($existing ||
+					($onlyredir === array_key_exists('redirect', $page))) )
 				)
 			&&
 				( !$isImage || $page['ns'] == NS_IMAGE )	// when doing image links search, only allow NS_IMAGE
@@ -1290,6 +1306,9 @@ class BotQueryProcessor {
 		//
 		$columns = array( "{$prefix}_from from_id", 'page_namespace from_namespace', 'page_title from_title' );
 		$where = array( "{$prefix}_from = page_id" );
+		if( $namespace != NS_ALL_NAMESPACES )
+			$where['page_namespace'] = intval($namespace);
+
 		if( $isImage ) {
 			$columns[] = "{$prefix}_to to_title";
 			$where["{$prefix}_to"] = array_keys($linkBatch->data[NS_IMAGE]);
@@ -2320,6 +2339,5 @@ function formatTimeInMs($timeDelta)
 {
 	return round( $timeDelta * 1000.0, 1 );
 }
-
 
 ?>
