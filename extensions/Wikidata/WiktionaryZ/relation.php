@@ -255,14 +255,33 @@ function getTupleAsEditHTML($tuple, $updateId, $updatableHeading, &$startColumn 
 
 function getRelationAsHTMLTable($relation) {
 	$result = '<table class="wiki-data-table">';	
-	$convertedHeading = $relation->getHeading();
+	$heading = $relation->getHeading();
 	
-	foreach(getHeadingAsTableHeaderRows($convertedHeading) as $headerRow)
+	foreach(getHeadingAsTableHeaderRows($heading) as $headerRow)
 		$result .= '<tr>' . $headerRow . '</tr>';
 	
 	for($i = 0; $i < $relation->getTupleCount(); $i++) {
 		$tuple = $relation->getTuple($i);
-		$result .= '<tr>' . getTupleAsTableCells($convertedHeading, $tuple) .'</tr>';
+		$result .= '<tr>' . getTupleAsTableCells($heading, $tuple) .'</tr>';
+	}
+	
+	$result .= '</table>';
+
+	return $result;
+}
+
+function getRelationAsSuggestionTable($id, $sourceRelation, $displayRelation) {
+	$result = '<table id="' . $id .'" class="wiki-data-table">';	
+	$heading = $displayRelation->getHeading();
+	$key = $sourceRelation->getKey();
+	
+	foreach(getHeadingAsTableHeaderRows($heading) as $headerRow)
+		$result .= '<tr>' . $headerRow . '</tr>';
+	
+	for($i = 0; $i < $displayRelation->getTupleCount(); $i++) {
+		$tuple = $displayRelation->getTuple($i);
+		$id = getTupleKeyName($sourceRelation->getTuple($i), $key);
+		$result .= '<tr id="'. $id .'" class="suggestion-row inactive" onclick="suggestRowClicked(this)" onmouseover="mouseOverRow(this)" onmouseout="mouseOutRow(this)">' . getTupleAsTableCells($heading, $tuple) .'</tr>';
 	}
 	
 	$result .= '</table>';

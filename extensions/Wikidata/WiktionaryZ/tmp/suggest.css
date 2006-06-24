@@ -36,14 +36,14 @@
 	margin: 0px;
 }
 
-.suggestion-row.active {
+.suggestion-row.active td.column-even, .suggestion-row.active td.column-odd {
 	background-color: #DDDDDD;
 	cursor: pointer;
 }
 
-.suggestion-row.inactive {
+/*.suggestion-row.inactive {
 	background-color: #FFFFFF;
-}
+}*/
 
 .suggestion-row td {
 	padding-top: 0px;
