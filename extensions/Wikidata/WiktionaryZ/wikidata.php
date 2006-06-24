@@ -12,7 +12,8 @@ function addWikiDataBlock($title, $content) {
 interface PageElement {
 	public function getId();
 	public function getCaption();
-	public function getRelationModel();
+	public function getRelation();
+	public function getDisplayRelation();
 	public function allowAdd();
 	public function allowRemove();
 	public function repeatInput();
@@ -28,7 +29,8 @@ interface PageElementController {
 class DefaultPageElement implements PageElement {
 	protected $id;
 	protected $caption;
-	protected $relationModel;
+	protected $relation;
+	protected $displayRelation;
 	protected $allowAdd;
 	protected $allowRemove;
 	protected $updatableHeading;
@@ -36,10 +38,11 @@ class DefaultPageElement implements PageElement {
 	protected $repeatInput;
 	protected $controller;
 	
-	public function __construct($id, $caption, $relationModel, $allowAdd, $allowRemove, $updatableHeading, $repeatInput, $controller) {
+	public function __construct($id, $caption, $relation, $displayRelation, $allowAdd, $allowRemove, $updatableHeading, $repeatInput, $controller) {
 		$this->id = $id;
 		$this->caption = $caption;
-		$this->relationModel = $relationModel;
+		$this->relation = $relation;
+		$this->displayRelation = $displayRelation;
 		$this->allowAdd = $allowAdd;
 		$this->allowRemove = $allowRemove;
 		$this->updatableHeading = $updatableHeading;
@@ -55,8 +58,12 @@ class DefaultPageElement implements PageElement {
 		return $this->caption;
 	}
 	
-	public function getRelationModel() {
-		return $this->relationModel;
+	public function getRelation() {
+		return $this->relation;
+	}
+	
+	public function getDisplayRelation() {
+		return $this->displayRelation;
 	}
 	
 	public function allowAdd() {

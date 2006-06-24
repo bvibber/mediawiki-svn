@@ -93,63 +93,38 @@ function convertToHTML($value, $type) {
 	}
 }
 
-function getInputFieldsForAttribute($namePrefix, $attribute, $value) {
-	switch($attribute->type) {
-		case "language": return array(getLanguageSelect($namePrefix . $attribute->id));
-		case "spelling": return array(getTextBox($namePrefix . $attribute->id, $value));
-		case "boolean": return array(getCheckBox($namePrefix . $attribute->id, $value));
-		case "expression": return array(getLanguageSelect($namePrefix . "language"), getTextBox($namePrefix . "spelling", $value));
+function getInputFieldForType($name, $type, $value) {
+	switch($type) {
+		case "language": return getLanguageSelect($name);
+		case "spelling": return getTextBox($name, $value);
+		case "boolean": return getCheckBox($name, $value);
 		case "defined-meaning":
 		case "defining-expression":
-			return array(getSuggest($namePrefix . $attribute->id, "defined-meaning"));
-		case "relation-type": return array(getSuggest($namePrefix . $attribute->id, "relation-type"));
-		case "attribute": return array(getSuggest($namePrefix . $attribute->id, "attribute"));
-		case "collection": return array(getSuggest($namePrefix . $attribute->id, "collection"));
-		case "short-text": return array(getTextBox($namePrefix . $attribute->id, $value));
-		case "text": return array(getTextArea($namePrefix . $attribute->id, $value));
-		default: return array();
+			return getSuggest($name, "defined-meaning");
+		case "relation-type": return getSuggest($name, "relation-type");
+		case "attribute": return getSuggest($name, "attribute");
+		case "collection": return getSuggest($name, "collection");
+		case "short-text": return getTextBox($name, $value);
+		case "text": return getTextArea($name, $value);
 	}	
 }
-
-function getAttributeTuple($attribute, $value) {
-	$result = new ArrayTuple(new Heading(array($attribute)));
-	$result->setAttributeValue($attribute, $value);
-	
-	return $result;
-}
-
-function getExpressionTuple($language, $spelling) {
-	global
-		$languageAttribute, $spellingAttribute;
-	
-	$result = new ArrayTuple(new Heading(array($languageAttribute, $spellingAttribute)));
-	$result->setAttributeValue($languageAttribute, $language);
-	$result->setAttributeValue($spellingAttribute, $spelling);
-	
-	return $result;
-}
-
-function getFieldValuesForAttribute($namePrefix, $attribute, $namePostFix) {
+function getInputFieldValueForType($name, $type) {
 	global
 		$wgRequest;
 		
-	$attributeId = $namePrefix . $attribute->id . $namePostFix;
-		
-	switch($attribute->type) {
-		case "language": return getAttributeTuple($attribute, $wgRequest->getInt($attributeId));
-		case "spelling": return getAttributeTuple($attribute, trim($wgRequest->getText($attributeId)));
-		case "boolean": return getAttributeTuple($attribute, $wgRequest->getCheck($attributeId));
-		case "expression": return getExpressionTuple($wgRequest->getInt($namePrefix . "language" . $namePostFix), trim($wgRequest->getText($namePrefix . "spelling" . $namePostFix)));
+	switch($type) {
+		case "language": return $wgRequest->getInt($name);
+		case "spelling": return trim($wgRequest->getText($name));
+		case "boolean": return $wgRequest->getCheck($name);
 		case "defined-meaning": 
 		case "defining-expression":
-			return getAttributeTuple($attribute, $wgRequest->getInt($attributeId));
-		case "relation-type": return getAttributeTuple($attribute, $wgRequest->getInt($attributeId));
-		case "attribute": return getAttributeTuple($attribute, $wgRequest->getInt($attributeId));
-		case "collection": return getAttributeTuple($attribute, $wgRequest->getInt($attributeId));
+			return $wgRequest->getInt($name);
+		case "relation-type": return $wgRequest->getInt($name);
+		case "attribute": return $wgRequest->getInt($name);
+		case "collection": return $wgRequest->getInt($name);
 		case "short-text":
-		case "text": return getAttributeTuple($attribute, trim($wgRequest->getText($attributeId)));
+		case "text": return trim($wgRequest->getText($name));
 	}
 }
-
 
 ?>

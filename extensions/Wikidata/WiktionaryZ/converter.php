@@ -4,28 +4,28 @@ require_once('type.php');
 require_once('attribute.php');
 
 interface Converter {
-	public function convert($value);
 	public function getHeading();
+	public function convert($tuple);
 }
 
-class IdentityConverter {
-	protected $attribute;
+class ProjectConverter implements Converter {
 	protected $heading;
 	
-	public function __construct($attribute) {
-		$this->attribute = $attribute;
-		$this->heading = new Heading(array($attribute));
+	public function __construct($heading) {
+		$this->heading = $heading;
+	} 
+	
+	public function getHeading() {
+		return $this->heading;
 	}
 	
 	public function convert($tuple) {
 		$result = new ArrayTuple($this->heading);
-		$result->setAttributeValue($this->attribute, $tuple->getAttributeValue($this->attribute));
 		
+		foreach($this->heading->attributes as $attribute)
+			$result->setAttributeValue($attribute, $tuple->getAttributeValue($attribute));
+			
 		return $result;
-	}
-	
-	public function getHeading() {
-		return $this->heading;
 	}
 }
 
@@ -35,7 +35,7 @@ class DefaultConverter implements Converter {
 	
 	public function __construct($attribute) {
 		$this->attribute = $attribute;
-		$this->heading = new Heading(array($attribute));
+		$this->heading = new Heading($attribute);
 	}
 	
 	public function convert($tuple) {
@@ -50,24 +50,15 @@ class DefaultConverter implements Converter {
 	}
 }
 
-class DefiningExpressionConverter extends DefaultConverter {
-	public function convert($tuple) {
-		$result = new ArrayTuple($this->heading);
-		$result->setAttributeValue($this->attribute, definingExpressionAsLink($tuple->getAttributeValue($this->attribute)));
-		
-		return $result;
-	}
-}
-
-class ExpressionConverter extends DefaultConverter {
+class ExpressionIdConverter extends DefaultConverter {
 	protected $attributes = array();
 	
 	public function __construct($attribute) {
 		global 
-			$languageAttribute, $spellingAttribute;
+			$expressionAttribute;
 			
 		parent::__construct($attribute);
-		$this->heading = new Heading(array($languageAttribute, $spellingAttribute));
+		$this->heading = new Heading($expressionAttribute);
 	}
 	
 	public function getHeading() {
@@ -76,16 +67,19 @@ class ExpressionConverter extends DefaultConverter {
 	
 	public function convert($tuple) {
 		global
-			$languageAttribute, $spellingAttribute;
+			$expressionAttribute, $expressionIdAttribute, $languageAttribute, $spellingAttribute;
 		
 		$dbr =& wfGetDB(DB_SLAVE);
 		$expressionId = $tuple->getAttributeValue($this->attribute);
 		$queryResult = $dbr->query("SELECT language_id, spelling from uw_expression_ns WHERE expression_id=$expressionId");
 		$expression = $dbr->fetchObject($queryResult); 
 
+		$expressionTuple = new ArrayTuple(new Heading($languageAttribute, $spellingAttribute));
+		$expressionTuple->setAttributeValue($languageAttribute, $expression->language_id);
+		$expressionTuple->setAttributeValue($spellingAttribute, $expression->spelling);
+
 		$result = new ArrayTuple($this->heading);
-		$result->setAttributeValue($languageAttribute, languageIdAsText($expression->language_id));
-		$result->setAttributeValue($spellingAttribute, spellingAsLink($expression->spelling));
+		$result->setAttributeValue($expressionAttribute, $expressionTuple);
 	
 		return $result;
 	}

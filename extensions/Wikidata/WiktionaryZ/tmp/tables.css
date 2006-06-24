@@ -39,6 +39,7 @@
 .wiki-data-table th {
 	background-color: #EEEEEE;
 	text-align: left;
+	vertical-align: bottom;
 }
 
 .wiki-data-table td.column-odd {

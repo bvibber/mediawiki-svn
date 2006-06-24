@@ -1,5 +1,25 @@
 <?php
 
+class ScalarType {
+	protected $id;
+	
+	public function __construct($id) {
+		$this->id = $id;
+	}
+}
+
+class TupleType {
+	protected $heading;	
+	
+	public function __construct($heading) {
+		$this->heading = $heading;
+	}
+	
+	public function getHeading() {
+		return $this->heading;
+	}
+}
+
 class Attribute {
 	public $id = "";	
 	public $name = "";
@@ -16,20 +36,25 @@ class Heading {
 	public $attributes;
 	
 	public function __construct($attributes) {
-		$this->attributes = $attributes;
+		if (is_array($attributes))
+			$this->attributes = $attributes;
+		else
+			$this->attributes = func_get_args();
 	}
 }
 
 global
 	$languageAttribute, $spellingAttribute, $textAttribute, $identicalMeaningAttribute, $internalIdAttribute, 
-	$collectionAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $expressionAttribute, $attributeAttribute;
+	$collectionAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $expressionIdAttribute, $attributeAttribute,
+	$expressionAttribute, $visibleExpressionAttribute;
 
-$expressionAttribute = new Attribute("expression", "Expression", "expression");
+$expressionIdAttribute = new Attribute("expression-id", "Expression Id", "expression-id");
 $languageAttribute = new Attribute("language", "Language", "language");
 $spellingAttribute = new Attribute("spelling", "Spelling", "spelling");
-$textAttribute = new Attribute("text", "Text", "text");
+$expressionAttribute = new Attribute("expression", "Expression", new TupleType(new Heading($languageAttribute, $spellingAttribute)));
 
-$identicalMeaningAttribute = new Attribute("endemic-meaning", "Identical meaning?", "boolean");
+$textAttribute = new Attribute("text", "Text", "text");
+$identicalMeaningAttribute = new Attribute("indentical-meaning", "Identical meaning?", "boolean");
 $collectionAttribute = new Attribute("collection", "Collection", "collection");
 $internalIdAttribute = new Attribute("internal-id", "Internal ID", "short-text"); 
 

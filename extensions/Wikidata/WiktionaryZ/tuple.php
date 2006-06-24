@@ -47,4 +47,26 @@ class ArrayTuple implements Tuple {
 	}
 }
 
+function equalTuples($heading, $lhs, $rhs) {
+	$result = true;
+	$attributes = $heading->attributes;
+	$i = 0;
+	
+	while($result && $i < count($attributes)) {
+		$attribute = $attributes[$i];
+		$type = $attribute->type;
+		$lhsValue = $lhs->getAttributeValue($attribute);
+		$rhsValue = $rhs->getAttributeValue($attribute);
+		
+		if (is_a($type, TupleType))
+			$result = equalTuples($type->getHeading(), $lhsValue, $rhsValue);
+		else
+			$result = $lhsValue == $rhsValue;
+			
+		$i++;
+	}
+	
+	return $result;
+}
+
 ?>
