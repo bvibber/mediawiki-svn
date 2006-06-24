@@ -39,18 +39,23 @@ require_once( "$IP/includes/Defines.php" );
 require_once( "$IP/LocalSettings.php" );
 require_once( "$IP/includes/Setup.php" );
 
-define( 'GEN_FUNCTION', 0 );
-define( 'GEN_MIME',     1 );
-define( 'GEN_ISMETA',   1 );
-define( 'GEN_PARAMS',   2 );
-define( 'GEN_DEFAULTS', 3 );
-define( 'GEN_DESC',     4 );
+define( 'GN_FUNC', 	   0 );
+define( 'GN_MIME',     1 );
+define( 'GN_ISMETA',   1 );
+define( 'GN_PARAMS',   2 );
+define( 'GN_DFLT', 	   3 );
+define( 'GN_DESC',     4 );
+
+// Multi-valued enums, limit the values user can supply for the parameter
+define( 'GN_ENUM_DFLT',     0 );
+define( 'GN_ENUM_ISMULTI',  1 );
+define( 'GN_ENUM_CHOICES',  2 );
 
 $db =& wfGetDB( DB_SLAVE );
 $bqp = new BotQueryProcessor( $db, $startTime );
 $bqp->execute();
 $bqp->output();
-	
+
 
 
 class BotQueryProcessor {
@@ -59,56 +64,85 @@ class BotQueryProcessor {
 	/**
 	* Output generators - each format name points to an array of the following parameters:
 	*     0) Function to call
-	*     1) mime type 
+	*     1) mime type
 	*     2) array of accepted parameters
 	*     3) array of default parameter values
 	*     4) Format description
 	*/
 	var $outputGenerators = array(
-		'xml' => array( 'printXML', 'text/xml',
-			array('xmlindent', 'nousage'), 
-			array(null, null), 
-			array(
-			"XML format",
-			"Optional indentation can be enabled by supplying 'xmlindent' parameter.",
-			"Errors will return this usage screen, unless 'nousage' parameter is given.",
-			"Internet Explorer is known to have many issues with text/xml output.",
-			"Please use other browsers or switch to html format while debugging.",
-			"Example: query.php?what=info&format=xml",
+		'xml' => array(
+			GN_FUNC => 'printXML',
+			GN_MIME => 'text/xml',
+			GN_PARAMS => array('xmlindent', 'nousage'),
+			GN_DFLT => array(null, null),
+			GN_DESC => array(
+				"XML format",
+				"Optional indentation can be enabled by supplying 'xmlindent' parameter.",
+				"Errors will return this usage screen, unless 'nousage' parameter is given.",
+				"Internet Explorer is known to have many issues with text/xml output.",
+				"Please use other browsers or switch to html format while debugging.",
+				"Example: query.php?what=info&format=xml",
 			)),
-		'html'=> array( 'printHTML', 'text/html',
-			array('nousage'),
-			array(null),
-			array(
-			"HTML format",
-			"The data is presented as an indented syntax-highlighted XML format.",
-			"Errors will return this usage screen, unless 'nousage' parameter is given.",
-			"Example: query.php?what=info&format=html",
+		'html'=> array(
+			GN_FUNC => 'printHTML',
+			GN_MIME => 'text/html',
+			GN_PARAMS => array('nousage'),
+			GN_DFLT => array(null),
+			GN_DESC => array(
+				"HTML format",
+				"The data is presented as an indented syntax-highlighted XML format.",
+				"Errors will return this usage screen, unless 'nousage' parameter is given.",
+				"Example: query.php?what=info&format=html",
 			)),
-		'txt' => array( 'printHumanReadable', 'application/x-wiki-queryapi-print_r', null, null, array(
-			"Human-readable format using print_r()",
-			"Details: http://www.php.net/print_r",
-			"Example: query.php?what=info&format=txt",
+		'txt' => array(
+			GN_FUNC => 'printHumanReadable',
+			GN_MIME => 'application/x-wiki-queryapi-print_r',
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"Human-readable format using print_r()",
+				"Details: http://www.php.net/print_r",
+				"Example: query.php?what=info&format=txt",
 			)),
-		'json'=> array( 'printJSON', 'application/json', null, null, array(
-			"JSON format",
-			"Details: http://en.wikipedia.org/wiki/JSON",
-			"Example: query.php?what=info&format=json",
+		'json'=> array(
+			GN_FUNC => 'printJSON',
+			GN_MIME => 'application/json',
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"JSON format",
+				"Details: http://en.wikipedia.org/wiki/JSON",
+				"Example: query.php?what=info&format=json",
 			)),
-		'php' => array( 'printPHP', 'application/vnd.php.serialized', null, null, array(
-			"PHP serialized format using serialize()",
-			"Details: http://www.php.net/serialize",
-			"Example: query.php?what=info&format=php",
+		'php' => array(
+			GN_FUNC => 'printPHP',
+			GN_MIME => 'application/vnd.php.serialized',
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"PHP serialized format using serialize()",
+				"Details: http://www.php.net/serialize",
+				"Example: query.php?what=info&format=php",
 			)),
-		'wddx' => array( 'printWDDX', 'text/xml', null, null, array(
-			"WDDX - Web Distributed Data eXchange format",
-			"Details: http://en.wikipedia.org/wiki/WDDX",
-			"Example: query.php?what=info&format=wddx",
+		'wddx' => array(
+			GN_FUNC => 'printWDDX',
+			GN_MIME => 'text/xml',
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"WDDX - Web Distributed Data eXchange format",
+				"Details: http://en.wikipedia.org/wiki/WDDX",
+				"Example: query.php?what=info&format=wddx",
 			)),
-		'dbg' => array( 'printDebugCode', 'application/x-wiki-botquery-var_export', null, null, array(
-			"PHP source code format using var_export()",
-			"Details: http://www.php.net/var_export",
-			"Example: query.php?what=info&format=dbg",
+		'dbg' => array(
+			GN_FUNC => 'printDebugCode',
+			GN_MIME => 'application/x-wiki-botquery-var_export',
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"PHP source code format using var_export()",
+				"Details: http://www.php.net/var_export",
+				"Example: query.php?what=info&format=dbg",
 			)),
 	);
 
@@ -123,189 +157,264 @@ class BotQueryProcessor {
 	var $propGenerators = array(
 
 		// Site-wide Generators
-		'info'           => array( 'genMetaSiteInfo', true, null, null, array(
-			"General site information",
-			"Example: query.php?what=info",
+		'info'           => array(
+			GN_FUNC => 'genMetaSiteInfo',
+			GN_ISMETA => true,
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"General site information",
+				"Example: query.php?what=info",
 			)),
-		'namespaces'     => array( 'genMetaNamespaceInfo', true, null, null, array(
-			"List of localized namespace names",
-			"Example: query.php?what=namespaces",
+		'namespaces'     => array(
+			GN_FUNC => 'genMetaNamespaceInfo',
+			GN_ISMETA => true,
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"List of localized namespace names",
+				"Example: query.php?what=namespaces",
 			)),
-		'userinfo'       => array( 'genMetaUserInfo', true, 
-			array( 'uiisblocked', 'uihasmsg', 'uiextended' ),
-			array( false, false, false ),
-			array(
-			"Information about current user.",
-			"The information will always include 'name' element, and optionally 'anonymous' or 'bot' flags.",
-			"Parameters supported:",
-			"uiisblocked- If present, and current user or IP is blocked, a 'blocked' flag will be added.",
-			"uihasmsg   - If present, and current user or IP has messages waiting, a 'messages' flag will be added.",
-			"uiextended - If present, includes additional information such as rights and groups.",
-			"Example: query.php?what=userinfo&uiisblocked&uihasmsg&uiextended",
+		'userinfo'       => array(
+			GN_FUNC => 'genMetaUserInfo',
+			GN_ISMETA => true,
+			GN_PARAMS => array( 'uiisblocked', 'uihasmsg', 'uiextended' ),
+			GN_DFLT => array( false, false, false ),
+			GN_DESC => array(
+				"Information about current user.",
+				"The information will always include 'name' element, and optionally 'anonymous' or 'bot' flags.",
+				"Parameters supported:",
+				"uiisblocked- If present, and current user or IP is blocked, a 'blocked' flag will be added.",
+				"uihasmsg   - If present, and current user or IP has messages waiting, a 'messages' flag will be added.",
+				"uiextended - If present, includes additional information such as rights and groups.",
+				"Example: query.php?what=userinfo&uiisblocked&uihasmsg&uiextended",
 			)),
-		'recentchanges'  => array( 'genMetaRecentChanges', true,
-			array( 'rcfrom', 'rclimit', 'rchide' ),
-			array( null, 50, array(null, 'minor', 'bots', 'anons', 'liu') ),
-			array(
-			"Adds recently changed articles to the output list.",
-			"Parameters supported:",
-			"rcfrom     - Timestamp of the first entry to start from. The list order reverses.",
-			"rclimit    - How many total links to return.",
-			"             Smaller size is possible if pages changes multiple times.",
-			"rchide     - Which entries to ignore 'minor', 'bots', 'anons', 'liu' (loged-in users).",
-			"             Cannot specify both anons and liu.",
-			"Example: query.php?what=recentchanges&rchide=liu|bots",
+		'recentchanges'  => array(
+			GN_FUNC => 'genMetaRecentChanges',
+			GN_ISMETA => true,
+			GN_PARAMS => array( 'rcfrom', 'rclimit', 'rchide' ),
+			GN_DFLT => array( null, 50,
+				array( GN_ENUM_DFLT => null,
+					   GN_ENUM_ISMULTI => true,
+					   GN_ENUM_CHOICES => array(null, 'minor', 'bots', 'anons', 'liu') )),
+			GN_DESC => array(
+				"Adds recently changed articles to the output list.",
+				"Parameters supported:",
+				"rcfrom     - Timestamp of the first entry to start from. The list order reverses.",
+				"rclimit    - How many total links to return.",
+				"             Smaller size is possible if pages changes multiple times.",
+				"rchide     - Which entries to ignore 'minor', 'bots', 'anons', 'liu' (loged-in users).",
+				"             Cannot specify both anons and liu.",
+				"Example: query.php?what=recentchanges&rchide=liu|bots",
 			)),
-		'allpages'       => array( 'genMetaAllPages', true,
-			array( 'aplimit', 'apfrom', 'apnamespace' ),
-			array( 50, '', 0 ),
-			array(
-			"Enumerates all available pages to the output list.",
-			"Parameters supported:",
-			"aplimit      - How many total pages to return",
-			"apfrom       - The page title to start enumerating from.",
-			"apnamespace  - Limits which namespace to enumerate. Default 0 (Main)",
-			"Example: query.php?what=allpages&aplimit=50",
+		'allpages'       => array(
+			GN_FUNC => 'genMetaAllPages',
+			GN_ISMETA => true,
+			GN_PARAMS => array( 'aplimit', 'apfrom', 'apnamespace' ),
+			GN_DFLT => array( 50, '', 0 ),
+			GN_DESC => array(
+				"Enumerates all available pages to the output list.",
+				"Parameters supported:",
+				"aplimit      - How many total pages to return",
+				"apfrom       - The page title to start enumerating from.",
+				"apnamespace  - Limits which namespace to enumerate. Default 0 (Main)",
+				"Example: query.php?what=allpages&aplimit=50",
 			)),
-		'nolanglinks'    => array( 'genMetaNoLangLinksPages', true,
-			array( 'nllimit', 'nlfrom', 'nlnamespace' ),
-			array( 50, '', 0 ),
-			array(
-			"Enumerates pages without language links to the output list (automatically filters out redirects).",
-			"Parameters supported:",
-			"nllimit      - How many total pages to return",
-			"nlfrom       - The page title to start enumerating from.",
-			"nlnamespace  - Limits which namespace to enumerate. Default 0 (Main)",
-			"Example: query.php?what=nolanglinks&nllimit=10&nlfrom=A",
+		'nolanglinks'    => array(
+			GN_FUNC => 'genMetaNoLangLinksPages',
+			GN_ISMETA => true,
+			GN_PARAMS => array( 'nllimit', 'nlfrom', 'nlnamespace' ),
+			GN_DFLT => array( 50, '', 0 ),
+			GN_DESC => array(
+				"Enumerates pages without language links to the output list (automatically filters out redirects).",
+				"Parameters supported:",
+				"nllimit      - How many total pages to return",
+				"nlfrom       - The page title to start enumerating from.",
+				"nlnamespace  - Limits which namespace to enumerate. Default 0 (Main)",
+				"Example: query.php?what=nolanglinks&nllimit=10&nlfrom=A",
 			)),
-		'category'       => array( 'genPagesInCategory', true,
-			array( 'cptitle', 'cplimit', 'cpfrom' ),
-			array( null, 200, '' ),
-			array(
-			"Adds pages in a given category to the output list.",
-			"Parameters supported:",
-			"cptitle    - A category name, either with or without the 'Category:' prefix.",
-			"cplimit    - How many total pages (in category) to return.",
-			"cpfrom     - The category sort key to continue paging. Starts at the beginning by default.",
-			"Example: query.php?what=category&cptitle=Days",
+		'category'       => array(
+			GN_FUNC => 'genPagesInCategory',
+			GN_ISMETA => true,
+			GN_PARAMS => array( 'cptitle', 'cplimit', 'cpfrom' ),
+			GN_DFLT => array( null, 200, '' ),
+			GN_DESC => array(
+				"Adds pages in a given category to the output list.",
+				"Parameters supported:",
+				"cptitle    - A category name, either with or without the 'Category:' prefix.",
+				"cplimit    - How many total pages (in category) to return.",
+				"cpfrom     - The category sort key to continue paging. Starts at the beginning by default.",
+				"Example: query.php?what=category&cptitle=Days",
 			)),
-		'users'          => array( 'genUserPages', true,
-			array( 'usfrom', 'uslimit' ),
-			array( null, 50 ),
-			array(
-			"Adds user pages to the output list.",
-			"Parameters supported:",
-			"usfrom     - Start user listing from...",
-			"uslimit    - How many total links to return.",
-			"Example: query.php?what=users&usfrom=Y",
+		'users'          => array(
+			GN_FUNC => 'genUserPages',
+			GN_ISMETA => true,
+			GN_PARAMS => array( 'usfrom', 'uslimit' ),
+			GN_DFLT => array( null, 50 ),
+			GN_DESC => array(
+				"Adds user pages to the output list.",
+				"Parameters supported:",
+				"usfrom     - Start user listing from...",
+				"uslimit    - How many total links to return.",
+				"Example: query.php?what=users&usfrom=Y",
 			)),
 
 		//
 		// Page-specific Generators
 		//
-		'redirects'      => array( 'genRedirectInfo', false, null, null, array(
-			"For all given redirects, provides additional information such as page IDs and double-redirection",
-			"Example: query.php?what=redirects&titles=Main_page",
-			"         query.php?what=recentchanges|redirects  (Which of the recent changes are redirects?)",
+		'redirects'      => array(
+			GN_FUNC => 'genRedirectInfo',
+			GN_ISMETA => false,
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"For all given redirects, provides additional information such as page IDs and double-redirection",
+				"Example: query.php?what=redirects&titles=Main_page",
+				"         query.php?what=recentchanges|redirects  (Which of the recent changes are redirects?)",
 			)),
-		'permissions'    => array( 'genPermissionsInfo', false,
-			array( 'prcanmove' ),
-			array( false ),
-			array(
-			"For all found pages, check if the user can edit them.",
-			"Parameters supported:",
-			"prcanmove  - Also check if the page can be moved.",
-			"Example: query.php?what=permissions&titles=Main_page|User%20Talk:Yurik",
+		'permissions'    => array(
+			GN_FUNC => 'genPermissionsInfo',
+			GN_ISMETA => false,
+			GN_PARAMS => array( 'prcanmove' ),
+			GN_DFLT => array( false ),
+			GN_DESC => array(
+				"For all found pages, check if the user can edit them.",
+				"Parameters supported:",
+				"prcanmove  - Also check if the page can be moved.",
+				"Example: query.php?what=permissions&titles=Main_page|User%20Talk:Yurik",
 			)),
-		'links'          => array( 'genPageLinksHelper', false, null, null, array(
-			"List of regular page links",
-			"Example: query.php?what=links&titles=MediaWiki|Wikipedia",
+		'links'          => array(
+			GN_FUNC => 'genPageLinksHelper',
+			GN_ISMETA => false,
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"List of regular page links",
+				"Example: query.php?what=links&titles=MediaWiki|Wikipedia",
 			)),
-		'langlinks'      => array( 'genPageLinksHelper', false, null, null, array(
-			"Inter-language links",
-			"Example: query.php?what=langlinks&titles=MediaWiki|Wikipedia",
+		'langlinks'      => array(
+			GN_FUNC => 'genPageLinksHelper',
+			GN_ISMETA => false,
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"Inter-language links",
+				"Example: query.php?what=langlinks&titles=MediaWiki|Wikipedia",
 			)),
-		'templates'      => array( 'genPageLinksHelper', false, null, null, array(
-			"List of used templates",
-			"Example: query.php?what=templates&titles=Main_Page",
+		'templates'      => array(
+			GN_FUNC => 'genPageLinksHelper',
+			GN_ISMETA => false,
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"List of used templates",
+				"Example: query.php?what=templates&titles=Main_Page",
 			)),
-		'backlinks'      => array( 'genPageBackLinksHelper', false,
-			array( 'blfilter', 'bllimit', 'blcontfrom' ),
-			array( array('existing', 'nonredirects', 'all'), 50, null ),
-			array(
-			"What pages link to this page(s)",
-			"Parameters supported:",
-			"blfilter   - Of all given pages, which should be queried:",
-			"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
-			"bllimit    - How many total links to return",
-			"blcontfrom - From which point to continue. Use the 'next' value from the previous queries.",
-			"Example: query.php?what=backlinks&titles=Main%20Page&bllimit=10",
+		'backlinks'      => array(
+			GN_FUNC => 'genPageBackLinksHelper',
+			GN_ISMETA => false,
+			GN_PARAMS => array( 'bllimit', 'blcontfrom', 'blfilter' ),
+			GN_DFLT => array( 50, null,
+				array( GN_ENUM_DFLT => 'existing',
+					   GN_ENUM_ISMULTI => false,
+					   GN_ENUM_CHOICES => array('existing', 'nonredirects', 'all') )),
+			GN_DESC => array(
+				"What pages link to this page(s)",
+				"Parameters supported:",
+				"blfilter   - Of all given pages, which should be queried:",
+				"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
+				"bllimit    - How many total links to return",
+				"blcontfrom - From which point to continue. Use the 'next' value from the previous queries.",
+				"Example: query.php?what=backlinks&titles=Main%20Page&bllimit=10",
 			)),
-		'embeddedin'     => array( 'genPageBackLinksHelper', false, 
-			array( 'eifilter', 'eilimit', 'eicontfrom' ), 
-			array( array('existing', 'nonredirects', 'all'), 50, null ),
-			array(
-			"What pages include this page(s) as template(s)",
-			"Parameters supported:",
-			"eifilter   - Of all given pages, which should be queried:",
-			"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
-			"eilimit    - How many total links to return",
-			"eicontfrom - From which point to continue. Use the 'next' value from the previous queries.",
-			"Example: query.php?what=embeddedin&titles=Template:Stub&eilimit=10",
+		'embeddedin'     => array(
+			GN_FUNC => 'genPageBackLinksHelper',
+			GN_ISMETA => false,
+			GN_PARAMS => array( 'eilimit', 'eicontfrom', 'eifilter' ),
+			GN_DFLT => array( 50, null,
+				array( GN_ENUM_DFLT => 'existing',
+					   GN_ENUM_ISMULTI => false,
+					   GN_ENUM_CHOICES => array('existing', 'nonredirects', 'all') )),
+			GN_DESC => array(
+				"What pages include this page(s) as template(s)",
+				"Parameters supported:",
+				"eifilter   - Of all given pages, which should be queried:",
+				"  'nonredirects', 'existing' (blue links, default), or 'all' (red links)",
+				"eilimit    - How many total links to return",
+				"eicontfrom - From which point to continue. Use the 'next' value from the previous queries.",
+				"Example: query.php?what=embeddedin&titles=Template:Stub&eilimit=10",
 			)),
-		'imagelinks'     => array( 'genPageBackLinksHelper', false, 
-			array( 'ilfilter', 'illimit', 'ilcontfrom' ),
-			array( array('all', 'existing', 'nonredirects'), 50, null ),
-			array(
-			"What pages use this image(s)",
-			"ilfilter   - Of all given images, which should be queried:",
-			"  'nonredirects', 'existing', or 'all' (default, includes non-existent or those stored on Wikimedia Commons)",
-			"illimit    - How many total links to return",
-			"ilcontfrom - From which point to continue. Use the 'next' value from the previous queries.",
-			"Example: query.php?what=imagelinks&titles=Image:HermitageAcrossNeva.jpg&illimit=10",
+		'imagelinks'     => array(
+			GN_FUNC => 'genPageBackLinksHelper',
+			GN_ISMETA => false,
+			GN_PARAMS => array( 'illimit', 'ilcontfrom', 'ilfilter' ),
+			GN_DFLT => array( 50, null,
+				array( GN_ENUM_DFLT => 'all',
+					   GN_ENUM_ISMULTI => false,
+					   GN_ENUM_CHOICES => array('existing', 'nonredirects', 'all') )),
+			GN_DESC => array(
+				"What pages use this image(s)",
+				"ilfilter   - Of all given images, which should be queried:",
+				"  'nonredirects', 'existing', or 'all' (default, includes non-existent or those stored on Wikimedia Commons)",
+				"illimit    - How many total links to return",
+				"ilcontfrom - From which point to continue. Use the 'next' value from the previous queries.",
+				"Example: query.php?what=imagelinks&titles=Image:HermitageAcrossNeva.jpg&illimit=10",
 			)),
-		'revisions'      => array( 'genPageRevisions', false,
-			array( 'rvuniqusr', 'rvcomments', 'rvcontent', 'rvlimit', 'rvoffset', 'rvstart', 'rvend' ),
-			array( false, false, false, 10, 0, null, null ),
-			array(
-			"Revision history - Lists edits performed to the given pages",
-			"Parameters supported:",
-			"rvuniqusr  - Get last #rvlimit revisions by unique authors. *slow query*",
-			"rvcomments - Include summary strings.",
-			"rvcontent  - Include raw wiki text. *slow query*",
-			"rvlimit    - How many links to return *for each title*. Defaults to 10, or 0 if revids=... was specified.",
-			"rvoffset   - When too many results are found, use this to page. *obsolete* This option is likely to disappear soon.",
-			"rvstart    - Timestamp of the earliest entry.",
-			"rvend      - Timestamp of the latest entry.",
-			"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments  -- last 10 revisions of the Main Page",
-			"         query.php?what=revisions&titles=Main%20Page&rvuniqusr&rvlimit=3&rvcomments  -- 3 last unique users with their last revisions.",
+		'revisions'      => array(
+			GN_FUNC => 'genPageRevisions',
+			GN_ISMETA => false,
+			GN_PARAMS => array( 'rvuniqusr', 'rvcomments', 'rvcontent', 'rvlimit', 'rvoffset', 'rvstart', 'rvend' ),
+			GN_DFLT => array( false, false, false, 10, 0, null, null ),
+			GN_DESC => array(
+				"Revision history - Lists edits performed to the given pages",
+				"Parameters supported:",
+				"rvuniqusr  - Get last #rvlimit revisions by unique authors. *slow query*",
+				"rvcomments - Include summary strings.",
+				"rvcontent  - Include raw wiki text. *slow query*",
+				"rvlimit    - How many links to return *for each title*. Defaults to 10, or 0 if revids=... was specified.",
+				"rvoffset   - When too many results are found, use this to page. *obsolete* This option is likely to disappear soon.",
+				"rvstart    - Timestamp of the earliest entry.",
+				"rvend      - Timestamp of the latest entry.",
+				"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments  -- last 10 revisions of the Main Page",
+				"         query.php?what=revisions&titles=Main%20Page&rvuniqusr&rvlimit=3&rvcomments  -- 3 last unique users with their last revisions.",
 			)),
-		'usercontribs'   => array( 'genUserContributions', false,
-			array( 'uccomments', 'uclimit' ),
-			array( false, 50 ),
-			array(
-			"User contribution history - Lists last edits performed by the given user(s)",
-			"Parameters supported:",
-			"uccomments - If specified, the result will include summary strings.",
-			"uclimit    - How many links to return *for each user*.",
-			"Example: query.php?what=usercontribs&titles=User:YurikBot&uclimit=20&uccomments",
+		'usercontribs'   => array(
+			GN_FUNC => 'genUserContributions',
+			GN_ISMETA => false,
+			GN_PARAMS => array( 'uccomments', 'uclimit', 'uctop' ),
+			GN_DFLT => array( false, 50,
+				array( GN_ENUM_DFLT => 'all',
+					   GN_ENUM_ISMULTI => false,
+					   GN_ENUM_CHOICES => array('all','only','exclude') )),
+			GN_DESC => array(
+				"User contribution history - Lists last edits performed by the given user(s)",
+				"Parameters supported:",
+				"uccomments - If specified, the result will include summary strings.",
+				"uclimit    - How many links to return *for each user*.",
+				"uctop      - Filter results by contributions that are still on top:",
+				"  'all' (default), 'only' (only the ones marked as top), 'exclude' (all non-top ones)",
+				"Example: query.php?what=usercontribs&titles=User:YurikBot&uclimit=20&uccomments",
 			)),
-		'imageinfo'      => array( 'genImageInfo', false,
-			array( 'iihistory', 'iiurl' ),
-			array( false, false ),
-			array(
-			"Image information",
-			"Parameters supported:",
-			"iiurl      - Add image URLs.",
-			"iihistory  - Include all past revisions of the image.",
-			"Example: query.php?what=imageinfo|allpages&aplimit=10&apnamespace=6&iiurl  -- show first 10 images with URLs",
+		'imageinfo'      => array(
+			GN_FUNC => 'genImageInfo',
+			GN_ISMETA => false,
+			GN_PARAMS => array( 'iihistory', 'iiurl' ),
+			GN_DFLT => array( false, false ),
+			GN_DESC => array(
+				"Image information",
+				"Parameters supported:",
+				"iiurl      - Add image URLs.",
+				"iihistory  - Include all past revisions of the image.",
+				"Example: query.php?what=imageinfo|allpages&aplimit=10&apnamespace=6&iiurl  -- show first 10 images with URLs",
 			)),
-		'content'        => array( 'genPageContent', false, null, null,
-			array(
-			"Raw page content - Retrieves raw wiki markup for all found pages.",
-			"*slow query* Please optimize content requests to reduce load on the servers.",
-			"Duplicate results may be obtained through revisions+rvcontent request",
-			"Example: query.php?what=content&titles=Main%20Page",
+		'content'        => array(
+			GN_FUNC => 'genPageContent',
+			GN_ISMETA => false, null, null,
+			GN_DESC => array(
+				"Raw page content - Retrieves raw wiki markup for all found pages.",
+				"*slow query* Please optimize content requests to reduce load on the servers.",
+				"Duplicate results may be obtained through revisions+rvcontent request",
+				"Example: query.php?what=content&titles=Main%20Page",
 			)),
 	);
 
@@ -318,9 +427,9 @@ class BotQueryProcessor {
 
 		$this->startTime = $startTime;
 		$this->totalDbTime = 0;
-		
+
 		$this->data = array();
-		
+
 		$this->pageIdByText = array();	// reverse page ID lookup
 		$this->requestsize = 0;
 		$this->db = $db;
@@ -328,12 +437,12 @@ class BotQueryProcessor {
 		$this->isBot = $wgUser->isBot();
 
 		$this->enableProfiling = !$wgRequest->getCheck('noprofile');
-		
+
 		$this->format = 'html'; // set it here because if parseFormat fails, the usage output relies on this setting
 		$this->format = $this->parseFormat( $wgRequest->getVal('format', 'html') );
 
 		$allProperties = array_merge(array(null), array_keys( $this->propGenerators ));
-		$this->properties = $this->parseMultiValue( 'what', $allProperties );
+		$this->properties = $this->parseMultiValue( 'what', null, true, $allProperties );
 
 		// Neither one of these variables is referenced directly!
 		// Meta generators may append titles or pageids to these varibales.
@@ -363,7 +472,7 @@ class BotQueryProcessor {
 		$this->genPageInfo();
 		// Process page-related generators
 		$this->callGenerators( false );
-		
+
 		// Report empty query - if pages and meta elements have no subelements
 		if( ( !array_key_exists('pages', $this->data) || empty($this->data['pages']) ) &&
 			( !array_key_exists('meta', $this->data) || empty($this->data['meta']) )) {
@@ -381,8 +490,8 @@ class BotQueryProcessor {
 	function callGenerators( $callMetaGenerators )
 	{
 		foreach( $this->propGenerators as $property => &$generator ) {
-			if( $generator[GEN_ISMETA] === $callMetaGenerators && in_array( $property, $this->properties )) {
-				$this->{$generator[GEN_FUNCTION]}($property, $generator);
+			if( $generator[GN_ISMETA] === $callMetaGenerators && in_array( $property, $this->properties )) {
+				$this->{$generator[GN_FUNC]}($property, $generator);
 			}
 		}
 	}
@@ -396,9 +505,9 @@ class BotQueryProcessor {
 
 		$this->addPerfMessage( 'total', array( 'dbtime' => formatTimeInMs($this->totalDbTime) ));
 		$this->recordProfiling( 'total', 'time', $this->startTime );
-		
-		$printer = $this->outputGenerators[$this->format][GEN_FUNCTION];
-		$mime = $this->outputGenerators[$this->format][GEN_MIME];
+
+		$printer = $this->outputGenerators[$this->format][GN_FUNC];
+		$mime = $this->outputGenerators[$this->format][GN_MIME];
 		header( "Content-Type: $mime; charset=utf-8;" );
 		if( !$isError ) {
 			if( !$this->enableProfiling && array_key_exists( 'perf', $this->data )) {
@@ -412,7 +521,7 @@ class BotQueryProcessor {
 		} else {
 			$this->{$printer}( $this->data['query'] );
 		}
-		
+
 		//
 		// Log request - userid (non-identifiable), status, what is asked, request size, additional parameters
 		//
@@ -463,31 +572,34 @@ class BotQueryProcessor {
 			$this->dieUsage( "Unrecognised format '$format'", 'badformat' );
 		}
 	}
-	
+
 	/**
 	* Return an array of values that were given in a "a|b|c" notation, after it validates them against the list allowed values.
 	*/
-	function parseMultiValue( $valueName, $allowedValues )
+	function parseMultiValue( $valueName, $defaultValue, $allowMultiple, $allowedValues )
 	{
 		global $wgRequest;
 
-		$values = $wgRequest->getVal($valueName, $allowedValues[0]);		
+		$values = $wgRequest->getVal($valueName, $defaultValue);
 		$valuesList = explode( '|', $values );
+		if( !$allowMultiple && count($valuesList) != 1 )
+			$this->dieUsage("Only one value is allowed: '" . implode("', '", $allowedValues) . "' for parameter '$valueName'",
+							"multival_$valueName" );
 		$unknownValues = array_diff( $valuesList, $allowedValues);
 		if( $unknownValues ) {
 			$this->dieUsage("Unrecognised value" . (count($unknownValues)>1?"s '":" '") . implode("', '", $unknownValues) . "' for parameter '$valueName'",
 							"unknown_$valueName" );
 		}
 
-		return $valuesList;
+		return $allowMultiple ? $valuesList : $valuesList[0];
 	}
 
-	
+
 	//
 	// ************************************* GENERATORS *************************************
 	//
 
-	
+
 	/**
 	* Creates lists of pages to work on. User parameters 'titles' and 'pageids' will be added to the list, and information from page table will be provided.
 	* As the result of this method, $this->redirectPageIds and existingPageIds (arrays) will be available for other generators.
@@ -496,7 +608,7 @@ class BotQueryProcessor {
 	{
 		$this->startProfiling();
 		$where = array();
-				
+
 		// Assemble a list of titles to process. This method will modify $where and $this->requestsize
 		$nonexistentPages = &$this->parseTitles( $where );
 
@@ -507,16 +619,16 @@ class BotQueryProcessor {
 		if( $this->requestsize > 0 ) {
 			// Validate limits
 			$this->validateLimit( 'pi_botquerytoobig', $this->requestsize, 500, 20000 );
-			
+
 			// Query page information with the given lists of titles & pageIDs
 			$this->startDbProfiling();
-			$res = $this->db->select( 
+			$res = $this->db->select(
 				'page',
 				array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_touched', 'page_latest' ),
 				$this->db->makeList( $where, LIST_OR ),
 				$this->classname . '::genPageInfo' );
 			$this->endDbProfiling('pageInfo');
-			
+
 			while( $row = $this->db->fetchObject( $res ) ) {
 				$this->storePageInfo( $row );
 				if( $nonexistentPages !== null ) {
@@ -533,7 +645,7 @@ class BotQueryProcessor {
 					$data['badId'] = $pageid;
 				}
 			}
-			
+
 			// Add entries for non-existent page titles
 			$i = -1;
 			if( $nonexistentPages !== null ) {
@@ -560,17 +672,19 @@ class BotQueryProcessor {
 				$data = &$this->data['pages'][$i--];
 				$data['title'] = $givenTitle;
 				$data['normalizedTitle'] = $title->getPrefixedText();
+				// stored id might be negative, indicating a missing page
+				$data['refid'] = max( 0, $this->lookupPageIdByTitle( $title->getNamespace(), $title->getDBkey() ));
 			}
 		}
 		$this->endProfiling('pageInfo');
 	}
 
-	
+
 	//
 	// ************************************* META GENERATORS *************************************
 	//
-	
-	
+
+
 	/**
 	* Get general site information
 	*/
@@ -614,7 +728,7 @@ class BotQueryProcessor {
 	{
 		global $wgUser;
 		$this->startProfiling();
-		extract( $this->getParams( $prop, $genInfo ));		
+		extract( $this->getParams( $prop, $genInfo ));
 		$meta = array();
 		$meta['name'] = $wgUser->getName();
 		if( $wgUser->isAnon() ) $meta['anonymous'] = '';
@@ -638,14 +752,14 @@ class BotQueryProcessor {
 	function genMetaRecentChanges(&$prop, &$genInfo)
 	{
 		$this->startProfiling();
-		extract( $this->getParams( $prop, $genInfo ));		
+		extract( $this->getParams( $prop, $genInfo ));
 		# It makes no sense to hide both anons and logged-in users
 		if( in_array('anons', $rchide) && in_array('liu', $rchide) ) {
 			$this->dieUsage( "Both 'anons' and 'liu' cannot be given for 'rchide' parameter", 'rc_badrchide' );
 		}
 		$this->validateLimit( 'rc_badrclimit', $rclimit, 500, 5000 );
 
-		$conds = array();		
+		$conds = array();
 		if ( $rcfrom != '' ) {
 			$conds[] = 'rc_timestamp >= ' . $this->prepareTimestamp($rcfrom);
 		}
@@ -667,9 +781,9 @@ class BotQueryProcessor {
 					$conds[] = 'rc_user = 0';
 					break;
 				default:
-					die( "Internal error - Unknown hide param '$elem'" );
+					wfDebugDieBacktrace( "Internal error - Unknown hide param '$elem'" );
 			}
-		}	
+		}
 
 		$options = array( 'USE INDEX' => 'rc_timestamp', 'LIMIT' => $rclimit );
 		$options['ORDER BY'] = 'rc_timestamp' . ( $rcfrom != '' ? '' : ' DESC' );
@@ -691,7 +805,7 @@ class BotQueryProcessor {
 		$this->db->freeResult( $res );
 		$this->endProfiling( $prop );
 	}
-	
+
 	/**
 	* Add user pages to the list of titles to output (the actual user pages might not exist)
 	*/
@@ -712,11 +826,11 @@ class BotQueryProcessor {
 			array( 'ORDER BY' => 'user_name', 'LIMIT' => $uslimit )
 			);
 		$this->endDbProfiling( $prop );
-		
+
 		$userNS = $wgContLang->getNsText(NS_USER);
 		if( !$userNS ) $userNS = 'User';
 		$userNS .= ':';
-		
+
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			$this->addRaw( 'titles', $userNS . $row->user_name );
 		}
@@ -813,7 +927,7 @@ class BotQueryProcessor {
 		$this->db->freeResult( $res );
 		$this->endProfiling( $prop );
 	}
-	
+
 	/**
 	* Add pages in a category
 	*/
@@ -825,7 +939,7 @@ class BotQueryProcessor {
 		// Validate parameters
 		if( $cptitle === null ) {
 			$this->dieUsage( "Missing category title parameter cptitle", 'cp_missingcptitle' );
-		}	
+		}
 		$categoryObj = &Title::newFromText( $cptitle );
 		if(    !$categoryObj ||
 			   ($categoryObj->getNamespace() !== NS_MAIN && $categoryObj->getNamespace() !== NS_CATEGORY) ||
@@ -837,7 +951,7 @@ class BotQueryProcessor {
 			$conds[] = 'cl_sortkey >= ' . $this->db->addQuotes($cpfrom);
 		}
 		$this->validateLimit( 'cplimit', $cplimit, 500, 5000 );
-		
+
 		$this->startDbProfiling();
 		$res = $this->db->select(
 			'categorylinks',
@@ -846,7 +960,7 @@ class BotQueryProcessor {
 			$this->classname . '::genPagesInCategory',
 			array( 'ORDER BY' => 'cl_sortkey', 'LIMIT' => $cplimit+1 ));
 		$this->endDbProfiling( $prop );
-		
+
 		$count = 0;
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			if( ++$count > $cplimit ) {
@@ -859,7 +973,7 @@ class BotQueryProcessor {
 		$this->db->freeResult( $res );
 		$this->endProfiling( $prop );
 	}
-	
+
 	//
 	// ************************************* PAGE INFO GENERATORS *************************************
 	//
@@ -885,7 +999,7 @@ class BotQueryProcessor {
 			. 'la.pl_namespace b_namespace, la.pl_title b_title, pb.page_id b_id, pb.page_is_redirect b_is_redirect, '
 			. 'null c_namespace, null c_title, null c_id, null c_is_redirect '
 			. "FROM $pagelinks AS la, $page AS pb "
-			. ' WHERE ' . $this->db->makeList( array( 
+			. ' WHERE ' . $this->db->makeList( array(
 				'la.pl_from' => $this->redirectPageIds,
 				'la.pl_namespace = pb.page_namespace',
 				'la.pl_title = pb.page_title',
@@ -907,7 +1021,7 @@ class BotQueryProcessor {
 		$this->startDbProfiling();
 		$res = $this->db->query( $sql, $this->classname . '::genRedirectInfo' );
 		$this->endDbProfiling( $prop );
-		
+
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			// FIXME!!!!!!!!!!  param count?
 			$this->addPageSubElement( $row->a_id, 'redirect', 'to', $this->getLinkInfo( $row->b_namespace, $row->b_title, $row->b_id, $row->b_is_redirect ), false);
@@ -926,7 +1040,7 @@ class BotQueryProcessor {
 	{
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
-		
+
 		$pages =& $this->data['pages'];
 		$titles = array();
 		foreach( $pages as $pageId => &$page ) {
@@ -937,7 +1051,7 @@ class BotQueryProcessor {
 		if( !empty($titles) ) {
 			// populate cache
 			$batch = new LinkBatch( $titles );
-			
+
 			$this->startDbProfiling();
 			$batch->execute();
 			if( empty( $this->existingPageIds ) ) {
@@ -955,7 +1069,7 @@ class BotQueryProcessor {
 				}
 				$this->db->freeResult( $res );
 			}
-			
+
 			foreach( $titles as $key => &$title ) {
 				$page =& $pages[$key];
 				$page['canEdit'] = $title->userCanEdit() ? 'true' : 'false';
@@ -966,7 +1080,7 @@ class BotQueryProcessor {
 		}
 		$this->endProfiling( $prop );
 	}
-	
+
 	var $genPageLinksSettings = array(	// database column name prefix, output element name
 		'links' 	=> array( 'prefix' => 'pl', 'code' => 'l',  'linktbl' => 'pagelinks' ),
 		'langlinks' => array( 'prefix' => 'll', 'code' => 'll', 'linktbl' => 'langlinks' ),
@@ -979,10 +1093,10 @@ class BotQueryProcessor {
 	{
 		if( empty( $this->nonRedirPageIds )) return;
 		$this->startProfiling();
-		
+
 		extract( $this->genPageLinksSettings[$prop] );
 		$langlinks = $prop === 'langlinks';
-		
+
 		$this->startDbProfiling();
 		$res = $this->db->select(
 			$linktbl,
@@ -1004,7 +1118,7 @@ class BotQueryProcessor {
 		$this->db->freeResult( $res );
 		$this->endProfiling( $prop );
 	}
-	
+
 	/**
 	* Generates list of links/langlinks/templates for all non-redirect pages.
 	*/
@@ -1013,7 +1127,7 @@ class BotQueryProcessor {
 		if( empty( $this->nonRedirPageIds )) return;
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
-		
+
 		// Find the image pages to process
 		$imageDbKeys = array();
 		foreach( $this->data['pages'] as $pageId => &$page ) {
@@ -1084,7 +1198,7 @@ class BotQueryProcessor {
 		return $dbTime;
 	}
 
-	
+
 	var $genPageBackLinksSettings = array(	// database column name prefix, output element name
 		'embeddedin' => array( 'prefix' => 'tl', 'code' => 'ei', 'linktbl' => 'templatelinks' ),
 		'backlinks'  => array( 'prefix' => 'pl', 'code' => 'bl', 'linktbl' => 'pagelinks' ),
@@ -1099,20 +1213,15 @@ class BotQueryProcessor {
 		$this->startProfiling();
 		extract( $this->genPageBackLinksSettings[$prop] );
 		$isImage = $prop === 'imagelinks';
-		
+
 		//
 		// Parse and validate parameters
 		//
 		$parameters = $this->getParams( $prop, $genInfo );
 		$contFrom = $parameters["{$code}contfrom"];
 		$limit  = intval($parameters["{$code}limit"]);
-		$this->validateLimit( "{$code}limit", $limit, 50, 1000 );
+		$this->validateLimit( "{$code}limit", $limit, 5000, 10000 );
 		$filter = $parameters["{$code}filter"];
-		if( count($filter) != 1 ) {
-			$this->dieUsage( "{$code}filter must either be 'all', 'existing', or 'nonredirects'", "{$code}_badmultifilter" );
-		} else {
-			$filter = $filter[0];
-		}
 		//
 		// Parse contFrom - will be in the format    ns|db_key|page_id - determine how to continue
 		//
@@ -1187,7 +1296,7 @@ class BotQueryProcessor {
 			$orderBy   = "{$prefix}_to, {$prefix}_from";
 			if( $contFrom ) {
 				$where[] = "(({$prefix}_to > " . $this->db->addQuotes( $fromTitle ) ." ) OR "
-						  ."({$prefix}_to = " . $this->db->addQuotes( $fromTitle ) ." AND {$prefix}_from >= " . intval($fromPageId) . "))"; 
+						  ."({$prefix}_to = " . $this->db->addQuotes( $fromTitle ) ." AND {$prefix}_from >= " . intval($fromPageId) . "))";
 			}
 		} else {
 			$columns[] = "{$prefix}_namespace to_namespace";
@@ -1199,7 +1308,7 @@ class BotQueryProcessor {
 							."({$prefix}_namespace = " . intval($fromNs) ." AND "
 								."({$prefix}_title > " . $this->db->addQuotes( $fromTitle ) ." OR "
 								."({$prefix}_title = " . $this->db->addQuotes( $fromTitle ) ." AND "
-									."{$prefix}_from >= " . intval($fromPageId) . "))))"; 
+									."{$prefix}_from >= " . intval($fromPageId) . "))))";
 			}
 		}
 		$options = array( 'ORDER BY' => $orderBy, 'LIMIT' => $limit+1 );
@@ -1219,7 +1328,7 @@ class BotQueryProcessor {
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			if( ++$count > $limit ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$this->addStatusMessage( $prop, 
+				$this->addStatusMessage( $prop,
 					array('next' => ($isImage ? NS_IMAGE : $row->to_namespace) ."|{$row->to_title}|{$row->from_id}") );
 				break;
 			}
@@ -1230,7 +1339,7 @@ class BotQueryProcessor {
 		$this->db->freeResult( $res );
 		$this->endProfiling( $prop );
 	}
-	
+
 	/**
 	* Add a list of revisions to the page history
 	*/
@@ -1238,13 +1347,13 @@ class BotQueryProcessor {
 	{
 		if( empty( $this->existingPageIds )) return;
 		$this->startProfiling();
-		
+
 		// Before extracting values, change the default rvlimit to 0 if revIdsArray has any elements
 		if( !empty($this->revIdsArray) ) {
-			$genInfo[GEN_DEFAULTS][ array_search( 'rvlimit', $genInfo[GEN_PARAMS] )] = 0;
+			$genInfo[GN_DFLT][ array_search( 'rvlimit', $genInfo[GN_PARAMS] )] = 0;
 		}
 		extract( $this->getParams( $prop, $genInfo ));
-		
+
 		// Prepare query parameters
 		$queryname = $this->classname . '::genPageRevisions';
 		$tables = array('revision');
@@ -1255,7 +1364,7 @@ class BotQueryProcessor {
 
 		// When content is needed, table 'text' must be joined in.
 		if( $rvcontent ) {
-			$this->validateLimit( 'content: (rvlimit*pages)+revids', 
+			$this->validateLimit( 'content: (rvlimit*pages)+revids',
 								  $rvlimit * count($this->existingPageIds) + count($this->revIdsArray), 50, 200 );
 			$tables[] = 'text';
 			$fields[] = 'old_id';
@@ -1284,7 +1393,7 @@ class BotQueryProcessor {
 			} else {
 				$options['ORDER BY'] = 'rev_timestamp DESC';
 			}
-				
+
 			//
 			// Execute queries for each page (not very efficient, until agregate queries with subqueries become available)
 			//
@@ -1310,7 +1419,7 @@ class BotQueryProcessor {
 				$this->db->freeResult( $res );
 			}
 		}
-		
+
 		// For unique user modifications, perform an additional query to populate data object
 		if( !empty($this->revIdsArray) ) {
 			$fields[] = 'rev_page';	// needed to find the originating page
@@ -1351,10 +1460,10 @@ class BotQueryProcessor {
 		} else {
 			$vals['*'] = '';	// Force all elements to be attributes
 		}
-		
+
 		$this->addPageSubElement( $pageId, 'revisions', 'rv', $vals);
 	}
-	
+
 	/**
 	* Add user contributions to the user pages
 	*/
@@ -1365,17 +1474,23 @@ class BotQueryProcessor {
 
 		// Make query parameters
 		$tables = array('page', 'revision');
+
 		$fields = array('page_namespace', 'page_title', 'page_is_new', 'rev_id', 'rev_text_id', 'rev_timestamp', 'rev_minor_edit');
-		if( $uccomments ) {
-			$fields[] = 'rev_comment';
-		}
+		if( $uccomments ) $fields[] = 'rev_comment';
+		if( $uctop == 'all' ) $fields[] = 'page_latest';	// no need to include it otherwise, as it will always be constant
+
 		$conds = array( 'page_id=rev_page' );
+		if( $uctop == 'only' )
+			$conds[] = 'page_latest=rev_id';
+		elseif( $uctop == 'exclude' )
+			$conds[] = 'page_latest<>rev_id';
+
 		$queryname = $this->classname . '::genUserContributions';
 		$options = array( 'LIMIT' => $uclimit, 'ORDER BY' => 'rev_timestamp DESC', 'FORCE INDEX' => 'usertext_timestamp' );
-		
+
 		$count = 0;
-		$maxallowed = ($this->isBot ? 500 : 2000);
-		
+		$maxallowed = ($this->isBot ? 2000 : 500);
+
 		$this->startDbProfiling(); // DB code is intermixed here, so the result is not very accurate
 		// For all valid pages in User namespace query history. Note that the page might not exist.
 		foreach( $this->data['pages'] as $pageId => &$page ) {
@@ -1385,10 +1500,10 @@ class BotQueryProcessor {
 					if( (++$count * $uclimit) > $maxallowed ) {
 						$this->dieUsage( "Too many user contributions requested, only $maxallowed allowed", 'uclimit * users');
 					}
-					
+
 					$conds['rev_user_text'] = $title->getText();
 					$data = &$page['contributions'];
-					
+
 					$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
 					while ( $row = $this->db->fetchObject( $res ) ) {
 						$vals = $this->getLinkInfo( $row->page_namespace, $row->page_title );
@@ -1397,6 +1512,8 @@ class BotQueryProcessor {
 						$vals['timestamp'] = wfTimestamp( TS_ISO_8601, $row->rev_timestamp );
 						if( $row->rev_minor_edit ) $vals['minor'] = '';
 						if( $row->page_is_new ) $vals['new'] = '';
+						if( $uctop == 'only' || ($uctop == 'all' && $row->page_latest == $row->rev_id ))
+							$vals['top'] = '';
 						if( $uccomments ) $vals['comment'] = $row->rev_comment;
 
 						$data[] = $vals;
@@ -1425,8 +1542,8 @@ class BotQueryProcessor {
 				$ids[] = "(rev_page=$pageId AND rev_id={$page['revid']})";
 			}
 		}
-		$this->validateLimit( 'co_querytoobig', count($ids), 50, 200 );		
-		
+		$this->validateLimit( 'co_querytoobig', count($ids), 50, 200 );
+
 		$this->startDbProfiling();
 		$res = $this->db->select(
 			array('revision', 'text'),
@@ -1446,7 +1563,7 @@ class BotQueryProcessor {
 	//
 	// ************************************* UTILITIES *************************************
 	//
-	
+
 	/**
 	* Take $row with fields from 'page' table and create needed page entries in $this->data
 	*/
@@ -1466,7 +1583,7 @@ class BotQueryProcessor {
 		$data['id']      = $pageid;
 		$data['touched'] = $row->page_touched;
 		$data['revid']   = intval($row->page_latest);
-		
+
 		$this->existingPageIds[] = $pageid;
 		if ( $row->page_is_redirect ) {
 			$data['redirect'] = '';
@@ -1495,7 +1612,7 @@ class BotQueryProcessor {
 					$this->dieUsage( "No read permission for $titleString", 'pi_titleaccessdenied' );
 				}
 				$linkBatch->addObj( $titleObj );
-				
+
 				// Make sure we remember the original title that was given to us
 				// This way the caller can correlate new titles with the originally requested if they change namespaces, etc
 				if( $titleString !== $titleObj->getPrefixedText() ) {
@@ -1508,14 +1625,14 @@ class BotQueryProcessor {
 			// Create a list of pages to query
 			$where[] = $linkBatch->constructSet( 'page', $this->db );
 			$this->requestsize += $linkBatch->getSize();
-			
+
 			// we don't need the batch any more, data can be destroyed
 			return $linkBatch->data;
 		} else {
 			return null;
 		}
 	}
-	
+
 	/**
 	* Process the list of given titles, update $where and $this->requestsize, and return the data of the LinkBatch object
 	*/
@@ -1526,12 +1643,12 @@ class BotQueryProcessor {
 		if( $pageids !== null ) {
 			$this->processIds( $pageids, 'pageids' );
 		}
-		
+
 		$revids = $this->addRaw( 'revids', $wgRequest->getVal('revids') );
 		if( $revids !== null ) {
 			$this->processIds( $revids, 'revids' );
 			if( $pageids === null ) $pageids = array();
-			
+
 			$res = $this->db->select( 'revision', 'DISTINCT rev_page',
 									  array( 'rev_deleted' => 0, 'rev_id' => $revids ),
 									  $this->classname . '::parseRevIds' );
@@ -1543,17 +1660,17 @@ class BotQueryProcessor {
 			$this->validateLimit( 'pi_botquerytoobig2', count($pageids), 500, 20000 );
 			$this->revIdsArray = &$revids;
 		}
-		
+
 		if( !empty($pageids) ) {
 			$where['page_id'] = $pageids;
 			$this->requestsize += count($pageids);
 		} else {
 			$pageids = null;
 		}
-		
+
 		return $pageids;
 	}
-	
+
 	function processIds( &$ids, $name )
 	{
 		$ids = explode( '|', $ids );
@@ -1564,18 +1681,18 @@ class BotQueryProcessor {
 			$this->dieUsage( "'$name' contains a bad id", "pi_bad{$name}" );
 		}
 	}
-	
+
 	/**
 	* From two parameter arrays, makes an array of the values provided by the user.
 	*/
 	function getParams( &$property, &$generator )
 	{
 		global $wgRequest;
-		
-		$paramNames = &$generator[GEN_PARAMS];
-		$paramDefaults = &$generator[GEN_DEFAULTS];
+
+		$paramNames = &$generator[GN_PARAMS];
+		$paramDefaults = &$generator[GN_DFLT];
 		if( count($paramNames) !== count($paramDefaults) ) {
-			die("Internal error: '$property' param count mismatch");
+			wfDebugDieBacktrace("Internal error: '$property' param count mismatch");
 		}
 		$results = array();
 		for( $i = 0; $i < count($paramNames); $i++ ) {
@@ -1594,28 +1711,30 @@ class BotQueryProcessor {
 					$result = $wgRequest->getCheck( $param );
 					break;
 				case 'array':
-					$result = $this->parseMultiValue( $param, $dflt );
+					if( count($dflt) != 3 )
+						wfDebugDieBacktrace('Internal error: Enum must have 3 parts - default, allowmultiple, and array of values' . gettype($dflt));
+					$result = $this->parseMultiValue( $param, $dflt[GN_ENUM_DFLT], $dflt[GN_ENUM_ISMULTI], $dflt[GN_ENUM_CHOICES] );
 					break;
 				default:
-					die('Internal error: unprocessed type ' . gettype($dflt));
+					wfDebugDieBacktrace('Internal error: unprocessed type ' . gettype($dflt));
 			}
 			$results[$param] = $result;
 		}
 		return $results;
 	}
-	
+
 	/**
 	* Lookup of the page id by ns:title in the data array, and will die if no such title is found
 	*/
-	function lookupPageIdByTitle( $ns, &$dbkey )
+	function lookupPageIdByTitle( $ns, &$dbkey  )
 	{
 		$prefixedText = Title::makeTitle( $ns, $dbkey )->getPrefixedText();
 		if( array_key_exists( $prefixedText, $this->pageIdByText )) {
 			return $this->pageIdByText[$prefixedText];
 		}
-		die( "internal error - '$ns:$dbkey' not found" );
+		wfDebugDieBacktrace( "internal error - '$ns:$dbkey' not found" );
 	}
-	
+
 	/**
 	* Use this method to add 'titles' or 'pageids' during meta generation in addition to any supplied by the user.
 	*/
@@ -1633,7 +1752,7 @@ class BotQueryProcessor {
 		}
 		return $val;
 	}
-	
+
 	/**
 	* Creates an array describing the properties of a given link
 	*/
@@ -1670,7 +1789,7 @@ class BotQueryProcessor {
 	}
 
 	/**
-	* Adds a sub element to the page by its id. 
+	* Adds a sub element to the page by its id.
 	* Example for $multiItems = true (useful when there are many subelements with the same name, like langlinks or backlinks)
 	* 'pages' => array (
 	*    $pageId => array (
@@ -1694,7 +1813,7 @@ class BotQueryProcessor {
 			$data[] = $params;
 		} else {
 			if( !empty($data) && (array_key_exists( $itemElem, $data ) || array_key_exists( '_element', $data ))) {
-				die("Internal error: multiple calls to addPageSubElement($itemElem)");
+				wfDebugDieBacktrace("Internal error: multiple calls to addPageSubElement($itemElem)");
 			}
 			$data[$itemElem] = $params;
 		}
@@ -1711,7 +1830,7 @@ class BotQueryProcessor {
 			$this->dieUsage( 'Incorrect timestamp format', 'badtimestamp' );
 		}
 	}
-	
+
 	/**
 	* NOTE: This function must not be called after calling header()
 	* Creates a human-readable usage information message
@@ -1721,31 +1840,31 @@ class BotQueryProcessor {
 		global $wgUser, $wgRequest;
 
 		$this->addStatusMessage( 'error', $errorcode );
-		if( !$wgRequest->getCheck( 'nousage' ) && 
+		if( !$wgRequest->getCheck( 'nousage' ) &&
 			( $this->format === 'xml' || $this->format === 'html' )) {
-				
+
 			$indentSize = 12;
 			$indstr = str_repeat(" ", $indentSize+7);
 			$formatString = "  %-{$indentSize}s - %s\n\n";
-			
+
 			$formats = "";
 			foreach( $this->outputGenerators as $format => &$generator ) {
 				$formats .= sprintf( $formatString, $format,
-					mergeDescriptionStrings($generator[GEN_DESC], $indstr));
+					mergeDescriptionStrings($generator[GN_DESC], $indstr));
 			}
 
 			$props = "\n  *These properties apply to the entire site*\n";
 			foreach( $this->propGenerators as $property => &$generator ) {
-				if( $generator[GEN_ISMETA] ) {
-					$props .= sprintf( $formatString, $property, 
-								mergeDescriptionStrings($generator[GEN_DESC], $indstr));
+				if( $generator[GN_ISMETA] ) {
+					$props .= sprintf( $formatString, $property,
+								mergeDescriptionStrings($generator[GN_DESC], $indstr));
 				}
 			}
 			$props .= "\n  *These properties apply to the specified pages*\n";
 			foreach( $this->propGenerators as $property => &$generator ) {
-				if( !$generator[GEN_ISMETA] ) {
-					$props .= sprintf( $formatString, $property, 
-								mergeDescriptionStrings($generator[GEN_DESC], $indstr));
+				if( !$generator[GN_ISMETA] ) {
+					$props .= sprintf( $formatString, $property,
+								mergeDescriptionStrings($generator[GN_DESC], $indstr));
 				}
 			}
 
@@ -1815,13 +1934,13 @@ class BotQueryProcessor {
 				'  $Id$',
 				"",
 				);
-		
+
 			$this->addStatusMessage( 'usage', implode("\n", $msg), true );
 		}
 		$this->output(true);
 		die(0);
 	}
-	
+
 	/**
 	* Adds a status message into the <query> element, for a given module.
 	*/
@@ -1829,7 +1948,7 @@ class BotQueryProcessor {
 	{
 		$this->addTopMessage( 'query', $module, $value, $preserveXmlSpacing );
 	}
-	
+
 	/**
 	* Adds a status message into the <query> element, for a given module.
 	*/
@@ -1846,7 +1965,7 @@ class BotQueryProcessor {
 		if( !array_key_exists( $module, $this->data[$main] )) {
 			$this->data[$main][$module] = array();
 		}
-		
+
 		$element = &$this->data[$main][$module];
 		if( is_array($value) ) {
 			$element = array_merge( $element, $value );
@@ -1864,7 +1983,7 @@ class BotQueryProcessor {
 			}
 		}
 	}
-	
+
 	/**
 	* Records the time of the call to this method
 	*/
@@ -1879,7 +1998,7 @@ class BotQueryProcessor {
 	{
 		$this->moduleDbStartTime = wfTime();
 	}
-	
+
 	/**
 	* Records the running time of the given module since last startDbProfiling() call.
 	*/
@@ -1903,12 +2022,12 @@ class BotQueryProcessor {
 		$this->addPerfMessage( $module, array( $type => formatTimeInMs($timeDelta) ));
 		return $timeDelta;
 	}
-	
+
 	function formatTimeFromStart()
 	{
 		return 'Total execution time: ' . formatTimeInMs(wfTime() - $this->startTime) . ' ms';
 	}
-	
+
 	/**
 	* Validate the value against the minimum and user/bot maximum limits. Prints usage info on failure.
 	*/
@@ -1916,7 +2035,7 @@ class BotQueryProcessor {
 	{
 		global $wgUser;
 		if( $botMax === false ) $botMax = $max;
-		
+
 		if ( $value < $min ) {
 			$this->dieUsage( "$value entries is less than $min", $varname );
 		}
@@ -2086,7 +2205,7 @@ function slowWddxPrinter( &$elemValue )
 			echo wfElement( 'string', null, $elemValue );
 			break;
 		default:
-			die( 'Unknown type ' . gettype($elemValue) );
+			wfDebugDieBacktrace( 'Unknown type ' . gettype($elemValue) );
 	}
 }
 
@@ -2185,7 +2304,7 @@ function mergeParameters( &$generators )
 {
 	$params = array();
 	foreach( $generators as $property => &$generator ) {
-		$value = &$generator[GEN_PARAMS];
+		$value = &$generator[GN_PARAMS];
 		if( $value !== null ) {
 			if( is_array($value) ) {
 				$params = array_merge( $params, $value );
