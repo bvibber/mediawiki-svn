@@ -528,6 +528,45 @@ Some default configuration options have changed:
 * (bug 6365) Show user information in the "old revision" navigation links
 * Introduce 'FetchChangesList' hook; see docs/hooks.txt for more information
 * (bug 6345) Update to Indonesian localisation (id) #22
+* (bug 6279) Add genitive month names to Slovenian localisation
+* (bug 6351) Update to German translation (de)
+* Respect language directionality when displaying arrow in Special:Brokenredirects
+* Remove unused "validation" table definitions from the schema files
+* (bug 6398) Work around apparent PCRE bug breaking section editing when
+  massively-indented preformatted text immediately followed a header
+* (bug 6392) Fix misbehaving <br /> in preferences form
+* Add translated magic words to Hebrew localization
+* (bug 6396) Change name for Chuvash language
+* Introduce optional (off by default) language selector bar for user login
+  and registration. Customisable via the "loginlanguagelinks" message, the
+  links will preserve "returnto" values. If the user creates an account while
+  using such a link, then the language in use will be saved as their language
+  preference.
+* Make sure '~~~' '~~~~' '~~~~~' are removed in Nickname preference.
+* Rename "ipusuccess" to "unblocked", change the format (now wiki text)
+* (bug 2316) Add "caption" attribute to <gallery> tag
+* Allow setting the skin object that ImageGallery will use; needed during parse
+  operations (the skin must come from the ParserOptions, not $wgUser)
+* Fix notice in MacBinary detection debug data for files of certain lengths
+* (bug 6131) Add type detection for DjVu files, allowing them to be uploaded
+  with validity checking and size detection. No inline thumbnailing yet,
+  but could be added in the future.
+* (bug 6423) Don't update newtalk flag if page content didn't change (null edits
+  were causing the newtalk flag to trigger inappropriately)
+* Parser functions are now set using magic words.
+* (bug 6428) Incorrect form action URL on Special:Newimages with hidebots = 0 set
+* (bug 4990) Show page source to blocked users on edits, or their modified version
+  if blocked during an edit
+* (bug 5903) When requesting the raw source of a non-existent message page,
+  return blank content (as opposed to the message key)
+* Improve default blank content of MediaWiki:Common.css and MediaWiki:Monobook.css
+* (bug 6434) Allow customisation of submit button text on Special:Export
+* (bug 6314) Add user tool links on page histories
+* Fix display of file-type icons in galleries when $wgIgnoreImageErrors is off
+* (bug 6438) Update to Indonesian translation (id) #23
+* Adding the language code parameter to the hook "LanguageGetMagic", to allow
+  localizble extensions magic words.
+* Update to Romanian translation (ro)
 
 == Compatibility ==
 

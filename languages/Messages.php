@@ -234,7 +234,7 @@ See $1.',
 'versionrequired' => 'Version $1 of MediaWiki required',
 'versionrequiredtext' => 'Version $1 of MediaWiki is required to use this page. See [[Special:Version]]',
 
-'widthheight'		=> '$1x$2',
+'widthheight'		=> '$1×$2',
 'ok'			=> 'OK',
 'sitetitle'		=> '{{SITENAME}}',
 'pagetitle'		=> '$1 - {{SITENAME}}',
@@ -424,7 +424,7 @@ to confirm that the account is actually yours.',
 'emailauthenticated'        => 'Your e-mail address was authenticated on $1.',
 'emailnotauthenticated'     => 'Your e-mail address is <strong>not yet authenticated</strong>. No e-mail
 will be sent for any of the following features.',
-'noemailprefs'              => '<strong>Specify an e-mail address for these features to work.</strong>',
+'noemailprefs'              => 'Specify an e-mail address for these features to work.',
 'emailconfirmlink' => 'Confirm your e-mail address',
 'invalidemailaddress'	=> 'The e-mail address cannot be accepted as it appears to have an invalid
 format. Please enter a well-formatted address or empty that field.',
@@ -475,6 +475,8 @@ The reason given is this:<br />\'\'$2\'\'<br />You may contact $1 or one of the 
 Note that you may not use the "e-mail this user" feature unless you have a valid e-mail address registered in your [[Special:Preferences|user preferences]].
 
 Your IP address is $3. Please include this address in any queries you make.',
+'blockedoriginalsource' => "The source of '''$1''' is shown below:",
+'blockededitsource' => "The text of '''your edits''' to '''$1''' is shown below:",
 'whitelistedittitle' => 'Login required to edit',
 'whitelistedittext' => 'You have to $1 to edit pages.',
 'whitelistreadtitle' => 'Login required to read',
@@ -1283,7 +1285,7 @@ pages that were vandalized).",
 'unblockiptext'	=> 'Use the form below to restore write access
 to a previously blocked IP address or username.',
 'ipusubmit'		=> 'Unblock this address',
-'ipusuccess'	=> "\"[[$1]]\" unblocked",
+'unblocked' => '[[User:$1|$1]] has been unblocked',
 'ipblocklist'	=> 'List of blocked IP addresses and usernames',
 'blocklistline'	=> "$1, $2 blocked $3 ($4)",
 'infiniteblock' => 'infinite',
@@ -1378,8 +1380,7 @@ an existing page.
 This can be a drastic and unexpected change for a popular page;
 please be sure you understand the consequences of this before
 proceeding.',
-'movepagetalktext' => 'The associated talk page, if any, will be automatically moved along with it \'\'\'unless:\'\'\'
-*You are moving the page across namespaces,
+'movepagetalktext' => 'The associated talk page will be automatically moved along with it \'\'\'unless:\'\'\'
 *A non-empty talk page already exists under the new name, or
 *You uncheck the box below.
 
@@ -1430,7 +1431,8 @@ history lines, or just the current version with the info about the last edit.
 In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{int:mainpage}}]] for the page {{int:mainpage}}.',
 'exportcuronly'	=> 'Include only the current revision, not the full history',
 'exportnohistory' => "----
-'''Note:''' exporting the full history of pages through this form has been disabled due to performance reasons.",
+'''Note:''' Exporting the full history of pages through this form has been disabled due to performance reasons.",
+'export-submit' => 'Export',
 
 # Namespace 8 related
 
@@ -1483,8 +1485,8 @@ In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{int:m
 'tooltip-watch' => 'Add this page to your watchlist [alt-w]',
 
 # stylesheets
-'Monobook.css' => '/* edit this file to customize the monobook skin for the entire site */',
-#'Monobook.js' => '/* edit this file to change js things in the monobook skin */',
+'Common.css' => '/** CSS placed here will be applied to all skins */',
+'Monobook.css' => '/* CSS placed here will affect users of the Monobook skin */',
 
 # Metadata
 'nodublincore' => 'Dublin Core RDF metadata disabled for this server.',
@@ -2022,7 +2024,17 @@ Please confirm that really want to recreate this page.',
 # Please don't localise this
 'catseparator' => '|',
 
-);
+'loginlanguagelabel' => 'Language: $1',
 
+# Don't duplicate this in translations; defaults should remain consistent
+'loginlanguagelinks' => "* Deutsch|de
+* English|en
+* Esperanto|eo
+* Français|fr
+* Español|es
+* Italiano|it
+* Nederlands|nl",
+
+);
 
 ?>

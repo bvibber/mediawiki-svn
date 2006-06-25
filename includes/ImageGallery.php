@@ -16,6 +16,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
 class ImageGallery
 {
 	var $mImages, $mShowBytes, $mShowFilename;
+	var $mCaption = false;
+	var $mSkin = false;
 	
 	/**
 	 * Is the gallery on a wiki page (i.e. not a special page)
@@ -37,6 +39,39 @@ class ImageGallery
 	 */
 	function setParsing( $val = true ) {
 		$this->mParsing = $val;
+	}
+	
+	/**
+	 * Set the caption
+	 *
+	 * @param $caption Caption
+	 */
+	function setCaption( $caption ) {
+		$this->mCaption = $caption;
+	}
+
+	/**
+	 * Instruct the class to use a specific skin for rendering
+	 *
+	 * @param $skin Skin object
+	 */
+	function useSkin( &$skin ) {
+		$this->mSkin =& $skin;
+	}
+	
+	/**
+	 * Return the skin that should be used
+	 *
+	 * @return Skin object
+	 */
+	function getSkin() {
+		if( !$this->mSkin ) {
+			global $wgUser;
+			$skin =& $wgUser->getSkin();
+		} else {
+			$skin =& $this->mSkin;
+		}
+		return $skin;
 	}
 
 	/**
@@ -98,11 +133,14 @@ class ImageGallery
 	 *
 	 */
 	function toHTML() {
-		global $wgLang, $wgUser, $wgIgnoreImageErrors;
+		global $wgLang, $wgIgnoreImageErrors;
 
-		$sk = $wgUser->getSkin();
+		$sk =& $this->getSkin();
 
 		$s = '<table class="gallery" cellspacing="0" cellpadding="0">';
+		if( $this->mCaption )
+			$s .= '<td class="galleryheader" colspan="4"><big>' . htmlspecialchars( $this->mCaption ) . '</big></td>';
+		
 		$i = 0;
 		foreach ( $this->mImages as $pair ) {
 			$img =& $pair[0];
@@ -146,9 +184,6 @@ class ImageGallery
 
 			$s .= ($i%4==0) ? '<tr>' : '';
 			$thumb = $img->getThumbnail( 120, 120 );
-			if ( !$thumb && $wgIgnoreImageErrors ) {
-				$thumb = $img->iconThumb();
-			}
 			if ( $thumb ) {
 				$vpad = floor( ( 150 - $thumb->height ) /2 ) - 2;
 				$s .= '<td><div class="gallerybox">' . '<div class="thumb" style="padding: ' . $vpad . 'px 0;">';

@@ -10,7 +10,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @package MediaWiki
  */
 class OutputPage {
-	var $mHeaders, $mMetatags, $mKeywords;
+	var $mMetatags, $mKeywords;
 	var $mLinktags, $mPagetitle, $mBodytext, $mDebugtext;
 	var $mHTMLtitle, $mRobotpolicy, $mIsarticle, $mPrintable;
 	var $mSubtitle, $mRedirect, $mStatusCode;
@@ -35,8 +35,7 @@ class OutputPage {
 	 * Initialise private variables
 	 */
 	function OutputPage() {
-		$this->mHeaders = $this->mMetatags =
-		$this->mKeywords = $this->mLinktags = array();
+		$this->mMetatags = $this->mKeywords = $this->mLinktags = array();
 		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
 		$this->mRedirect = $this->mLastModified =
 		$this->mSubtitle = $this->mDebugtext = $this->mRobotpolicy =
@@ -54,9 +53,13 @@ class OutputPage {
 		$this->mRevisionId = null;
 		$this->mNewSectionLink = false;
 	}
+	
+	function redirect( $url, $responsecode = '302' ) { 
+		# Strip newlines as a paranoia check for header injection in PHP<5.1.2
+		$this->mRedirect = str_replace( "\n", '', $url );
+		$this->mRedirectCode = $responsecode;
+	}
 
-	function addHeader( $name, $val ) { array_push( $this->mHeaders, $name.': '.$val ); }
-	function redirect( $url, $responsecode = '302' ) { $this->mRedirect = $url; $this->mRedirectCode = $responsecode; }
 	function setStatusCode( $statusCode ) { $this->mStatusCode = $statusCode; }
 
 	# To add an http-equiv meta tag, precede the name with "http:"
@@ -641,7 +644,7 @@ class OutputPage {
 	/**
 	 * Produce a "user is blocked" page
 	 */
-	function blockedPage() {
+	function blockedPage( $return = true ) {
 		global $wgUser, $wgContLang, $wgTitle;
 
 		$this->setPageTitle( wfMsg( 'blockedtitle' ) );
@@ -662,8 +665,10 @@ class OutputPage {
 		$this->addWikiText( wfMsg( 'blockedtext', $link, $reason, $ip, $name ) );
 		
 		# Don't auto-return to special pages
-		$return = $wgTitle->getNamespace() > -1 ? $wgTitle->getPrefixedText() : NULL;	
-		$this->returnToMain( false, $return );
+		if( $return ) {
+			$return = $wgTitle->getNamespace() > -1 ? $wgTitle->getPrefixedText() : NULL;
+			$this->returnToMain( false, $return );
+		}
 	}
 
 	/**
@@ -903,21 +908,29 @@ class OutputPage {
 	 */
 	function returnToMain( $auto = true, $returnto = NULL ) {
 		global $wgUser, $wgOut, $wgRequest;
-
+		
 		if ( $returnto == NULL ) {
 			$returnto = $wgRequest->getText( 'returnto' );
 		}
-		$returnto = htmlspecialchars( $returnto );
-
-		$sk = $wgUser->getSkin();
-		if ( '' == $returnto ) {
+		
+		if ( '' === $returnto ) {
 			$returnto = wfMsgForContent( 'mainpage' );
 		}
-		$link = $sk->makeLinkObj( Title::newFromText( $returnto ), '' );
+
+		if ( is_object( $returnto ) ) {
+			$titleObj = $returnto;
+		} else {
+			$titleObj = Title::newFromText( $returnto );
+		}
+		if ( !is_object( $titleObj ) ) {
+			$titleObj = Title::newMainPage();
+		}
+
+		$sk = $wgUser->getSkin();
+		$link = $sk->makeLinkObj( $titleObj, '' );
 
 		$r = wfMsg( 'returnto', $link );
 		if ( $auto ) {
-			$titleObj = Title::newFromText( $returnto );
 			$wgOut->addMeta( 'http:Refresh', '10;url=' . $titleObj->escapeFullURL() );
 		}
 		$wgOut->addHTML( "\n<p>$r</p>\n" );

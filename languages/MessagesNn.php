@@ -159,7 +159,7 @@
 'views'                   => 'Visningar',
 'toolbox'                 => 'Verktøy',
 'userpage'                => 'Vis brukarside',
-'wikipediapage'           => 'Vis prosjektside',
+'projectpage'           => 'Vis prosjektside',
 'imagepage'               => 'Vis filside',
 'viewtalkpage'            => 'Vis diskusjon',
 'otherlanguages'          => 'På andre språk',
@@ -167,8 +167,6 @@
 'lastmodified'	          => 'Sist endra $1.',
 'viewcount'		  => 'Vist $1 gonger.',
 'copyright'	          => 'Innhaldet er utgjeve under $1.',
-'poweredby'	          => '{{SITENAME}} bruker [http://www.mediawiki.org/ MediaWiki] som er fri wikiprogramvare.',
-'printsubtitle'           => '(frå {{SERVER}})',
 'protectedpage'           => 'Verna side',
 'administrators'          => '{{ns:4}}:Administratorar',
 'sysoptitle'	          => 'Administratortilgang trengst',
@@ -201,7 +199,7 @@
 'nstab-user'              => 'Brukarside',
 'nstab-media'             => 'Filside',
 'nstab-special'           => 'Spesial',
-'nstab-wp'                => 'Prosjektside',
+'nstab-project'                => 'Prosjektside',
 'nstab-image'             => 'Fil',
 'nstab-mediawiki'         => 'Systemmelding',
 'nstab-template'          => 'Mal',
@@ -269,7 +267,6 @@ Brukarkontoen din har vorte oppretta. Det er tilrådd at du skriv litt om deg sj
 'yourname'		          => 'Brukarnamn',
 'yourpassword'	          => 'Passord',
 'yourpasswordagain'       => 'Skriv opp att passordet',
-'newusersonly'	          => ' (berre nye brukarar)',
 'remembermypassword'      => 'Hugs passordet.',
 'yourdomainname'          => 'Domenet ditt',
 'externaldberror'         => 'Det var anten ein ekstern databasefeil i tilgjengekontrollen, eller du har ikkje løyve til å oppdatere den eksterne kontoen din.',
@@ -1214,7 +1211,7 @@ ta[\'ca-nstab-main\']           = new Array(\'c\',\'Vis innhaldssida\');
 ta[\'ca-nstab-user\']           = new Array(\'c\',\'Vis brukarsida\');
 ta[\'ca-nstab-media\']          = new Array(\'c\',\'Direktelenkje (filpeikar) til fil\');
 ta[\'ca-nstab-special\']        = new Array(\'\',\'Dette er ei spesialside, du kan ikkje endre ho.\');
-ta[\'ca-nstab-wp\']             = new Array(\'c\',\'Vis prosjektside\');
+ta[\'ca-nstab-project\']             = new Array(\'c\',\'Vis prosjektside\');
 ta[\'ca-nstab-image\']          = new Array(\'c\',\'Vis filside\');
 ta[\'ca-nstab-mediawiki\']      = new Array(\'c\',\'Vis systemmelding\');
 ta[\'ca-nstab-template\']       = new Array(\'c\',\'Vis mal\');

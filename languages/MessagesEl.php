@@ -1,6 +1,6 @@
 <?php
 
-
+global $wgAllMessagesEl;
 $wgAllMessagesEl = array(
 
 # User preference toggles
@@ -167,7 +167,7 @@ $wgAllMessagesEl = array(
 'views' => 'Εμφανίσεις',
 'toolbox' => 'Εργαλεία',
 'userpage' => 'Εμφάνιση σελίδας χρήστη',
-'wikipediapage' => 'Εμφάνιση σελίδας βοήθειας',
+'projectpage' => 'Εμφάνιση σελίδας βοήθειας',
 'imagepage' => 'Εμφάνιση σελίδας εικόνων',
 'viewtalkpage' => 'Εμφάνιση συζήτησης',
 'otherlanguages' => 'Άλλες γλώσσες',
@@ -175,8 +175,6 @@ $wgAllMessagesEl = array(
 'lastmodified' => 'Η σελίδα αυτή τροποποιήθηκε τελευταία φορά στις $1.',
 'viewcount' => 'Αυτή η σελίδα έχει προσπελαστεί $1 φορές.',
 'copyright' => 'Το περιεχόμενο είναι διαθέσιμο σύμφωνα με την $1.',
-'poweredby' => 'Το {{SITENAME}} χρησιμοποιεί [http://www.mediawiki.org/|MediaWiki] -μια μηχανή Wiki ανοιχτού λογισμικού.',
-'printsubtitle' => '(Προέλευση {{SERVER}})',
 'protectedpage' => 'Κλειδωμένη σελίδα',
 'administrators' => '{{ns:4}}:Διαχειριστές',
 
@@ -215,7 +213,7 @@ $wgAllMessagesEl = array(
 'nstab-user' => 'Σελίδα χρήστη',
 'nstab-media' => 'Ηλεκτρονικά μέσα',
 'nstab-special' => 'Σελίδα λειτουργιών',
-'nstab-wp' => 'Σχετικά με',
+'nstab-project' => 'Σχετικά με',
 'nstab-image' => 'Εικόνα',
 'nstab-mediawiki' => 'Μήνυμα',
 'nstab-template' => 'Πρότυπο',
@@ -298,7 +296,6 @@ $1',
 'yourname' => 'Όνομα χρήστη',
 'yourpassword' => 'Κωδικός',
 'yourpasswordagain' => 'Πληκτρολογήστε ξανά τον κωδικό',
-'newusersonly' => '(μόνον νέοι χρήστες)',
 'remembermypassword' => 'Διατήρηση του κωδικού πρόσβασης σε αυτόν τον υπολογιστή',
 #'yourdomainname' => 'Your domain',
 'externaldberror' => 'Συνέβη εξωτερικό σφάλμα πιστοποίησης στη βάση δεδομένων ή δεν σας έχει επιτραπεί να ενημερώσετε τον εξωτερικό σας λογαριασμό.',
@@ -1459,7 +1456,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Άρθρο\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Δείτε τη σελίδα του χρήστη\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Δείτε τη σελίδα πολυμέσων\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Αυτή είναι ειδική σελίδα και δεν μπορείτε να την επεξεργαστείτε.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Δείτε τη σελίδα του συστήματος\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Δείτε τη σελίδα του συστήματος\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Δείτε την εικόνα\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Δείτε το μήνυμα του συστήματος\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Δείτε το πρότυπο\');

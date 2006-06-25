@@ -473,7 +473,7 @@ class Parser
 					$output = MathRenderer::renderMath( $content );
 					break;
 				case 'gallery':
-					$output = $this->renderImageGallery( $content );
+					$output = $this->renderImageGallery( $content, $params );
 					break;
 				default:
 					if( isset( $this->mTagHooks[$tagName] ) ) {
@@ -1145,6 +1145,9 @@ class Parser
 			# Normalize any HTML entities in input. They will be
 			# re-escaped by makeExternalLink().
 			$url = Sanitizer::decodeCharReferences( $url );
+			
+			# Escape any control characters introduced by the above step
+			$url = preg_replace( '/[\][<>"\\x00-\\x20\\x7F]/e', "urlencode('\\0')", $url );
 
 			# Process the trail (i.e. everything after this link up until start of the next link),
 			# replacing any non-bracketed links
@@ -1228,6 +1231,9 @@ class Parser
 				# Normalize any HTML entities in input. They will be
 				# re-escaped by makeExternalLink() or maybeMakeExternalImage()
 				$url = Sanitizer::decodeCharReferences( $url );
+				
+				# Escape any control characters introduced by the above step
+				$url = preg_replace( '/[\][<>"\\x00-\\x20\\x7F]/e', "urlencode('\\0')", $url );
 
 				# Is this an external image?
 				$text = $this->maybeMakeExternalImage( $url );
@@ -1536,6 +1542,7 @@ class Parser
 						$sortkey = $text;
 					}
 					$sortkey = Sanitizer::decodeCharReferences( $sortkey );
+					$sortkey = str_replace( "\n", '', $sortkey );
 					$sortkey = $wgContLang->convertCategoryKey( $sortkey );
 					$this->mOutput->addCategory( $nt->getDBkey(), $sortkey );
 
@@ -2409,7 +2416,7 @@ class Parser
 										 'text' => substr($text, $pieceStart, $pieceEnd - $pieceStart),
 										 'title' => trim($openingBraceStack[$lastOpeningBrace]['title']),
 										 'parts' => $openingBraceStack[$lastOpeningBrace]['parts'],
-										 'lineStart' => (($pieceStart > 0) && ($text[$pieceStart-1] == '\n')),
+										 'lineStart' => (($pieceStart > 0) && ($text[$pieceStart-1] == "\n")),
 										 );
 						# finally we can call a user callback and replace piece of text
 						$replaceWith = call_user_func( $matchingCallback, $cbArgs );
@@ -2838,6 +2845,17 @@ class Parser
 			$colonPos = strpos( $part1, ':' );
 			if ( $colonPos !== false ) {
 				$function = strtolower( substr( $part1, 1, $colonPos - 1 ) );
+				if ( !isset( $this->mFunctionHooks[$function] ) ) {
+					foreach ($this->mFunctionHooks as $key => $value) {
+						if( is_int( $key ) ) {
+							$mwExtension =& MagicWord::get( $key );
+							if( $mwExtension->matchVariableStartToEnd( $function ) ) {
+								$function = $key;
+								break;
+							}
+						}
+					}
+				}
 				if ( isset( $this->mFunctionHooks[$function] ) ) {
 					$funcArgs = array_map( 'trim', $args );
 					$funcArgs = array_merge( array( &$this, trim( substr( $part1, $colonPos + 1 ) ) ), $funcArgs );
@@ -3737,7 +3755,7 @@ class Parser
 	/**
 	 * Clean up signature text
 	 *
-	 * 1) Strip ~~~, ~~~~ and ~~~~~ out of signatures
+	 * 1) Strip ~~~, ~~~~ and ~~~~~ out of signatures @see User::cleanSigInSig
 	 * 2) Substitute all transclusions
 	 *
          * @private
@@ -3750,6 +3768,16 @@ class Parser
                 return User::cleanSig($text,$parsing);
 	}
                                                          
+	/**
+	 * Strip ~~~, ~~~~ and ~~~~~ out of signatures
+	 * @param string $text
+	 * @return string Signature text with /~{3,5}/ removed
+         * @deprecated use User::cleanSigInSig().
+	 */
+	function cleanSigInSig( $text ) {
+                return User::cleanSigInSig($text);
+	}
+
                                                          
 	/**
 	 * Set up some variables which are usually set up in parse()
@@ -3838,15 +3866,17 @@ class Parser
 	 *
 	 * @public
 	 *
-	 * @param string $name The function name. Function names are case-insensitive.
+	 * @param mixed $id The magic word ID, or (deprecated) the function name. Function names are case-insensitive.
 	 * @param mixed $callback The callback function (and object) to use
 	 *
 	 * @return The old callback function for this name, if any
 	 */
-	function setFunctionHook( $name, $callback ) {
-		$name = strtolower( $name );
-		$oldVal = @$this->mFunctionHooks[$name];
-		$this->mFunctionHooks[$name] = $callback;
+	function setFunctionHook( $id, $callback ) {
+		if( is_string( $id ) ) {
+			$id = strtolower( $id );
+		}
+		$oldVal = @$this->mFunctionHooks[$id];
+		$this->mFunctionHooks[$id] = $callback;
 		return $oldVal;
 	}
 
@@ -4072,13 +4102,17 @@ class Parser
 	 * labeled 'The number "1"' and
 	 * 'A tree'.
 	 */
-	function renderImageGallery( $text ) {
+	function renderImageGallery( $text, $params ) {
 		$ig = new ImageGallery();
 		$ig->setShowBytes( false );
 		$ig->setShowFilename( false );
 		$ig->setParsing();
-		$lines = explode( "\n", $text );
+		$ig->useSkin( $this->mOptions->getSkin() );
 
+		if( isset( $params['caption'] ) )
+			$ig->setCaption( $params['caption'] );
+		
+		$lines = explode( "\n", $text );
 		foreach ( $lines as $line ) {
 			# match lines like these:
 			# Image:someimage.jpg|This is some image
@@ -4302,7 +4336,7 @@ class Parser
 				(=+) # Should this be limited to 6?
 				.+?  # Section title...
 				\\2  # Ending = count must match start
-				(?:$comment|<\/?noinclude>|\s+)* # Trailing whitespace ok
+				(?:$comment|<\/?noinclude>|[ \\t]+)* # Trailing whitespace ok
 				$
 			|
 				<h([1-6])\b.*?>

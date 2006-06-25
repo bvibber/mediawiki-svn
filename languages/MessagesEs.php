@@ -1,7 +1,7 @@
 <?php
 
-
-/* private */ $wgAllMessagesEs = array(
+global $wgAllMessagesEs;
+$wgAllMessagesEs = array(
 # User Toggles
 
 "tog-underline" => "Subrayar enlaces",
@@ -102,15 +102,13 @@
 "articlepage"   => "Ver artículo",
 "subjectpage"	=> "Artículo",
 "userpage" => "Ver página de usuario",
-"wikipediapage" => "Ver página meta",
+"projectpage" => "Ver página meta",
 "imagepage" => 	"Ver página de imagen",
 "viewtalkpage" => "Ver discusión",
 "otherlanguages" => "Otros idiomas",
 "redirectedfrom" => "(Redirigido desde $1)",
 "lastmodified"	=> "Esta página fue modificada por última vez el $1.",
 "viewcount"		=> "Esta página ha sido visitada $1 veces.",
-'poweredby'	=> '{{SITENAME}} funciona con [http://www.mediawiki.org/ MediaWiki], un motor de wiki de código abierto.',
-"printsubtitle" => "(De {{SERVER}})",
 "protectedpage" => "Página protegida",
 "administrators" => "{{ns:project}}:Administradores",
 "sysoptitle"	=> "Acceso de administrador requerido",
@@ -213,7 +211,6 @@ No olvides personalizar [[Especial:Preferences|tus preferencias]] de {{SITENAME}
 "yourname"		=> "Tu nombre de usuario",
 "yourpassword"	=> "Tu contraseña",
 "yourpasswordagain" => "Repite tu contraseña",
-"newusersonly"	=> " (sólo usuarios nuevos)",
 "remembermypassword" => "Quiero que me recuerden entre sesiones.",
 "loginproblem"	=> "<b>Hubo un problema con tu entrada.</b><br />¡Inténtalo otra vez!",
 "alreadyloggedin" => "<strong>Usuario $1, ¡ya entraste!</strong><br />",
@@ -1005,7 +1002,7 @@ En el último caso puedes usar un enlace, por ejemplo [[{{ns:Special}}:Export/{{
 'nstab-user' => 'Usuario',
 'nstab-media' => 'Media',
 'nstab-special' => 'Especial',
-'nstab-wp' => 'Proyecto',
+'nstab-project' => 'Proyecto',
 'nstab-image' => 'Imagen',
 'nstab-mediawiki' => 'Mensaje',
 'nstab-template' => 'Plantilla',
@@ -1189,7 +1186,7 @@ ta['ca-nstab-main'] = new Array('c','Ver el artículo');
 ta['ca-nstab-user'] = new Array('c','Ver la página de usuario');
 ta['ca-nstab-media'] = new Array('c','Ver la página de multimedia');
 ta['ca-nstab-special'] = new Array('','Esta es una página especial, no se puede editar la página en sí');
-ta['ca-nstab-wp'] = new Array('a','Ver la página de proyecto');
+ta['ca-nstab-project'] = new Array('a','Ver la página de proyecto');
 ta['ca-nstab-image'] = new Array('c','Ver la página de la imagen');
 ta['ca-nstab-mediawiki'] = new Array('c','Ver el mensaje de sistema');
 ta['ca-nstab-template'] = new Array('c','Ver la plantilla');

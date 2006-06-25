@@ -5419,6 +5419,41 @@ extra nasty
 extra nasty
 !! end
 
+
+!! test
+Section extraction, heading followed by pre with 20 spaces (bug 6398)
+!! options
+section=1
+!! input
+==a==
+                    a
+!! result
+==a==
+                    a
+!! end
+
+!! test
+Section extraction, heading followed by pre with 19 spaces (bug 6398 sanity check)
+!! options
+section=1
+!! input
+==a==
+                   a
+!! result
+==a==
+                   a
+!! end
+
+!! test
+Handling of &#x0A; in URLs
+!! input
+**irc://&#x0A;a
+!! result
+<ul><li><ul><li><a href="irc://%0Aa" class="external free" title="irc://%0Aa" rel="nofollow">irc://%0Aa</a>
+</li></ul>
+</li></ul>
+
+!!end
 #
 #
 #

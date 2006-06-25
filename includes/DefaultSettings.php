@@ -663,6 +663,13 @@ $wgMsgCacheExpiry	= 86400;
 # Whether to enable language variant conversion.
 $wgDisableLangConversion = false;
 
+/**
+ * Show a bar of language selection links in the user login and user
+ * registration forms; edit the "loginlanguagelinks" message to
+ * customise these
+ */
+$wgLoginLanguageSelector = false;
+
 # Whether to use zhdaemon to perform Chinese text processing
 # zhdaemon is under developement, so normally you don't want to
 # use it unless for testing
@@ -1528,9 +1535,33 @@ $wgAllowRealName = true;
 /** Use XML parser? */
 $wgUseXMLparser = false ;
 
-/** Extensions */
-$wgSkinExtensionFunctions = array();
+/*****************************************************************************
+ *  Extensions 
+ */
+
+/**
+ * A list of callback functions which are called once MediaWiki is fully initialised
+ */
 $wgExtensionFunctions = array();
+
+/**
+ * Extension functions for initialisation of skins. This is called somewhat earlier 
+ * than $wgExtensionFunctions.
+ */
+$wgSkinExtensionFunctions = array();
+
+
+/**
+ * Special page list.
+ * See the top of SpecialPage.php for documentation.
+ */
+$wgSpecialPages = array(); 
+
+/**
+ * Array mapping class names to filenames, for autoloading.
+ */
+$wgAutoloadClasses = array();
+
 /**
  * An array of extension types and inside that their names, versions, authors
  * and urls, note that the version and url key can be omitted.
@@ -1547,6 +1578,9 @@ $wgExtensionFunctions = array();
  * Where $type is 'specialpage', 'parserhook', or 'other'.
  */
 $wgExtensionCredits = array();
+/*
+ * end extensions
+ ******************************************************************************/
 
 /**
  * Allow user Javascript page?
@@ -2045,7 +2079,7 @@ $wgAllowCategorizedRecentChanges = false ;
 /**
  * Number of jobs to perform per request. May be less than one in which case
  * jobs are performed probabalistically. If this is zero, jobs will not be done
- * during ordinary apache requests. In this case, maintenance/doJobs.php should
+ * during ordinary apache requests. In this case, maintenance/runJobs.php should
  * be run periodically.
  */
 $wgJobRunRate = 1;

@@ -271,39 +271,35 @@ class Image
 			$magic=& wfGetMimeMagic();
 
 			# Height and width
+			wfSuppressWarnings();
 			if( $this->mime == 'image/svg' ) {
-				wfSuppressWarnings();
 				$gis = wfGetSVGsize( $this->imagePath );
-				wfRestoreWarnings();
-			}
-			elseif ( !$magic->isPHPImageType( $this->mime ) ) {
+			} elseif( $this->mime == 'image/vnd.djvu' ) {
+				$deja = new DjVuImage( $this->imagePath );
+				$gis = $deja->getImageSize();
+			} elseif ( !$magic->isPHPImageType( $this->mime ) ) {
 				# Don't try to get the width and height of sound and video files, that's bad for performance
-				$gis[0]= 0; //width
-				$gis[1]= 0; //height
-				$gis[2]= 0; //unknown
-				$gis[3]= ""; //width height string
-			}
-			else {
-				wfSuppressWarnings();
+				$gis = false;
+			} else {
 				$gis = getimagesize( $this->imagePath );
-				wfRestoreWarnings();
 			}
+			wfRestoreWarnings();
 
 			wfDebug("$fname: ".$this->imagePath." loaded, ".$this->size." bytes, ".$this->mime.".\n");
 		}
 		else {
-			$gis[0]= 0; //width
-			$gis[1]= 0; //height
-			$gis[2]= 0; //unknown
-			$gis[3]= ""; //width height string
-
 			$this->mime = NULL;
 			$this->type = MEDIATYPE_UNKNOWN;
 			wfDebug("$fname: ".$this->imagePath." NOT FOUND!\n");
 		}
 
-		$this->width = $gis[0];
-		$this->height = $gis[1];
+		if( $gis ) {
+			$this->width = $gis[0];
+			$this->height = $gis[1];
+		} else {
+			$this->width = 0;
+			$this->height = 0;
+		}
 
 		#NOTE: $gis[2] contains a code for the image type. This is no longer used.
 
@@ -886,6 +882,8 @@ class Image
 	 * provide access to the actual file, the real size of the thumb,
 	 * and can produce a convenient <img> tag for you.
 	 *
+	 * For non-image formats, this may return a filetype-specific icon.
+	 *
 	 * @param integer $width	maximum width of the generated thumbnail
 	 * @param integer $height	maximum height of the image (optional)
 	 * @return ThumbnailImage or null on failure
@@ -900,11 +898,11 @@ class Image
 		if ($this->canRender()) {
 			if ( $width > $this->width * $height / $this->height )
 				$width = wfFitBoxWidth( $this->width, $this->height, $height );
-			$thumb = $this->renderThumb( $width );
+			return $this->renderThumb( $width );
+		} else {
+			// not a bitmap or renderable image, don't try.
+			return $this->iconThumb();
 		}
-		else $thumb= NULL; #not a bitmap or renderable image, don't try.
-
-		return $thumb;
 	}
 
 	/**

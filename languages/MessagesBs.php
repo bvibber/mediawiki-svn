@@ -1,6 +1,6 @@
 <?php
 
-
+global $wgAllMessagesBs;
 $wgAllMessagesBs = array(
 '1movedto2' => 'stranica [[$1]] premještena u stranicu [[$2]]',
 '1movedto2_redir' => 'stranica [[$1]] premještena u stranicu [[$2]] putem preusmjerenja',
@@ -52,7 +52,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Pogledajte sadržaj članka\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Pogledajte korisničku stranicu\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Pogledajte medija fajl\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Ovo je specijalna stranica i zato je ne možete uređivati\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Pogledajte projekat stranicu\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Pogledajte projekat stranicu\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Pogledajte stranicu slike\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Pogledajte sistemsku poruku\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Pogledajte šablon\');
@@ -568,7 +568,6 @@ nastavite.',
 'newpages' => 'Nove stranice',
 'newpassword' => 'Nova lozinka:',
 'newtitle' => 'Novi naslov',
-'newusersonly' => ' (samo novi korisnici)',
 'next' => 'sled',
 'nextn' => 'sledećih $1',
 'nlinks' => '$1 veza',
@@ -634,7 +633,7 @@ na kome bi se izvela ova funkcija.',
 'nstab-special' => 'Posebna',
 'nstab-template' => 'Šablon',
 'nstab-user' => 'Korisnička stranica',
-'nstab-wp' => 'Članak',
+'nstab-project' => 'Članak',
 'nviews' => '$1 puta pogledano',
 'oct' => 'okt',
 'october' => 'oktobar',
@@ -668,7 +667,6 @@ Molimo Vas da se prijavite pošto je primite.',
 'portal' => 'Portal zajednice',
 'portal-url' => '{{ns:4}}:Portal_zajednice',
 'postcomment' => 'Pošaljite komentar',
-'poweredby' => 'Projekat {{SITENAME}} je onemogućen od strane [http://www.mediawiki.org/ MedijaViki], viki mašine slobodnog koda.',
 'powersearch' => 'Traži',
 'powersearchtext' => 'Pretraga u imenskim prostorima :<br />
 $1<br />
@@ -688,7 +686,6 @@ kako će izgledati ako pritisnete "Sačuvaj članak".',
 'prevn' => 'prethodnih $1',
 'print' => 'Štampa',
 'printableversion' => 'Verzija sa štampanje',
-'printsubtitle' => '(Sa {{SERVER}})',
 'protect' => 'Zaštitite',
 'protect-default' => '(standardno)',
 'protect-level-autoconfirmed' => 'Blokiraj neregistrovane korisnike',
@@ -1030,7 +1027,7 @@ Ne zaboravite da prilagodite sebi svoja podešavanja.',
 'whitelistedittitle' => 'Obavezno je prijavljivanje za uređivanje',
 'whitelistreadtext' => 'Morate da se [[{{ns:-1}}:Userlogin|prijavite]] da bi ste čitali članke.',
 'whitelistreadtitle' => 'Obavezno je prijavljivanje za čitanje',
-'wikipediapage' => 'Pogledaj stranu o ovoj strani',
+'projectpage' => 'Pogledaj stranu o ovoj strani',
 'wlheader-enotif' => '* Obavještavanje e-poštom je omogućeno.',
 'wlheader-showupdated' => '* Stranice koje su izmjenjene od kad ste ih poslednji put posjetili su prikazane \'\'\'podebljanim slovima\'\'\'',
 'wlhide' => 'Sakrij',

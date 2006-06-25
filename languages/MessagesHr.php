@@ -159,7 +159,7 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 'talk' => 'Razgovor',
 'views' => 'Pogledi',
 "toolbox" => "Traka s alatima",
-"wikipediapage" => "Vidi stranicu o projektu",
+"projectpage" => "Vidi stranicu o projektu",
 "userpage"              => "Vidi suradnikovu stranicu",
 "imagepage"             => "Vidi stranicu slike",
 "viewtalkpage"          => "Vidi razgovor",
@@ -169,8 +169,6 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 "lastmodified"	        => "Datum zadnje promjene na ovoj stranici: $1",
 "viewcount"		=> "Ova stranica je pogledana $1 puta.",
 "copyright"	=> "Sadržaji se koriste u skladu s $1.",
-"poweredby"	=> "{{SITENAME}} koristi [http://www.mediawiki.org/ MediaWiki], program za wiki sustave s otvorenim izvornim kodom.",
-"printsubtitle"         => "(Izvor: {{SERVER}})",
 "protectedpage"         => "Zaštićena stranica",
 "administrators"        => "Project:Administratori",
 'jumpto' => 'Skoči na:',
@@ -221,7 +219,7 @@ Pogledajte $1.',
 'nstab-image' => 'Slika',
 'nstab-help' => 'Pomoć',
 'nstab-category' => 'Kategorija',
-'nstab-wp' => 'Stranica o projektu',
+'nstab-project' => 'Stranica o projektu',
 'nstab-mediawiki' => 'Poruka',
 'nstab-template' => 'Predložak',
 
@@ -339,7 +337,6 @@ Vaš je suradnički račun otvoren. Ne zaboravite podesiti korisničke postavke.
 'yourvariant'  => 'Varijanta',
 "yourpassword"	        => "Upišite lozinku",
 "yourpasswordagain"     => "Ponovno upišite lozinku",
-"newusersonly"	        => " (samo novi suradnici)",
 "remembermypassword"    => "Trajno zapamti moju lozinku.",
 'yourdomainname'       => 'Vaša domena',
 'externaldberror'      => 'Došlo je do greške s vanjskom autorizacijom ili vam nije dozvoljeno osvježavanje vanjskog suradničkog računa.',
@@ -1470,7 +1467,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Pogledaj sadržaj\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Pogledaj suradničku stranicu\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Pogledaj stranicu s opisom medija\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Ovo je posebna stranica koju nije moguće izravno uređivati.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Pogledaj stranicu o projektu\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Pogledaj stranicu o projektu\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Pogledaj stranicu o slici\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Pogledaj sistemske poruke\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Pogledaj predložak\');

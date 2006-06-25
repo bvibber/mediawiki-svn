@@ -2,6 +2,7 @@
 
 /* Messages for LanguageLt */
 
+global $wgAllMessagesLt;
 $wgAllMessagesLt = array(
 '1movedto2' => 'Straipsnis \'$1\' pervadintas į \'$2\'',
 '1movedto2_redir' => '\'$1\' pervadintas į \'$2\' (anksčiau buvo nukreipiamasis)',
@@ -50,7 +51,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Pereiti į straipsnio turinį\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Rodyti vartotojo puslapį\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Rodyti media puslapį\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Šis puslapis yra specialusis - jo negalima redaguoti.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Rodyti projekto puslapį\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Rodyti projekto puslapį\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Rodyti paveikslėlio puslapį\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Rodyti sisteminį pranešimą\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Rodyti šabloną\');
@@ -578,7 +579,6 @@ Jei patekote čia per klaidą, paprasčiausiai spustelkite  naršyklės mygtuką
 'newpages' => 'Naujausi straipsniai',
 'newpassword' => 'Naujas slaptažodis',
 'newtitle' => 'Naujas pavadinimas',
-'newusersonly' => ' (tik naujiems vartotojams)',
 'newwindow' => '(atsidaro naujame lange)',
 'next' => 'sekantis',
 'nextdiff' => 'Sekantis pakeitimas →',
@@ -622,7 +622,7 @@ Galite \'\'\'[[:<nowiki>$1</nowiki>|sukurti straipsnį šiuo pavadinimu]]\'\'\'.
 'nstab-special' => 'Specialus',
 'nstab-template' => 'Šablonas',
 'nstab-user' => 'Vartotojas',
-'nstab-wp' => 'Apie',
+'nstab-project' => 'Apie',
 'oct' => 'Spa',
 'october' => 'Spalio',
 'oldpassword' => 'Senas slaptažodis',
@@ -651,7 +651,6 @@ Galite \'\'\'[[:<nowiki>$1</nowiki>|sukurti straipsnį šiuo pavadinimu]]\'\'\'.
 'previousrevision' => '←Prieš tai buvusi versija',
 'prevn' => 'ankstesnius $1',
 'printableversion' => 'Versija spausdinimui',
-'printsubtitle' => '(Iš {{SERVER}})',
 'protect' => 'Užrakinti',
 'protectcomment' => 'Rakinimo priežastis',
 'protectedarticle' => 'užrakino $1',

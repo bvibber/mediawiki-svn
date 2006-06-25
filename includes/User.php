@@ -1992,6 +1992,9 @@ class User {
 			}
 		}
 
+                // Make sure nickname doesnt get a sig in a sig
+		$nickname = User::cleanSigInSig( $nickname );
+
 		# If we're still here, make it a link to the user page
 		$userpage = $this->getUserPage();
 		return( '[[' . $userpage->getPrefixedText() . '|' . wfEscapeWikiText( $nickname ) . ']]' );
@@ -2011,7 +2014,7 @@ class User {
 	/**
 	 * Clean up signature text
 	 *
-	 * 1) Strip ~~~, ~~~~ and ~~~~~ out of signatures
+	 * 1) Strip ~~~, ~~~~ and ~~~~~ out of signatures @see cleanSigInSig
 	 * 2) Substitute all transclusions
 	 *
          * @static
@@ -2028,13 +2031,23 @@ class User {
 		$substText = '{{' . $substWord->getSynonym( 0 );
 
 		$text = preg_replace( $substRegex, $substText, $text );
-		$text = preg_replace( '/~{3,5}/', '', $text );
+                $text = User::cleanSigInSig( $text );
 		$text = $wgParser->replaceVariables( $text );
 		
 		$wgParser->clearState();	
 		return $text;
 	}
-	
+
+	/**
+	 * Strip ~~~, ~~~~ and ~~~~~ out of signatures
+         * @static
+	 * @param string $text
+	 * @return string Signature text with /~{3,5}/ removed
+	 */
+	function cleanSigInSig( $text ) {
+		$text = preg_replace( '/~{3,5}/', '', $text );
+		return $text;
+	}
 }
 
 ?>

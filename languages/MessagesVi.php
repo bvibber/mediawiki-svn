@@ -140,7 +140,7 @@
 'talk'		=> 'Thảo luận',
 'toolbox'	=> 'Công cụ',
 'userpage'      => 'Trang thành viên',
-'wikipediapage' => 'Trang Wikipedia',
+'projectpage' => 'Trang Wikipedia',
 'imagepage'     => 'Trang hình',
 'viewtalkpage'  => 'Trang thảo luận',
 'otherlanguages' => 'Ngôn ngữ khác',
@@ -148,7 +148,6 @@
 'lastmodified'  => 'Lần sửa cuối : $1.',
 'viewcount'     => 'Trang này đã được đọc $1 lần.',
 'copyright'	=> 'Bản quyền $1.',
-'printsubtitle' => '(từ {{SERVER}})',
 'protectedpage' => 'Trang bị khóa',
 'administrators' => '{{ns:4}}:Người_quản_lý',
 'sysoptitle'    => 'Dành cho quản lý',
@@ -174,14 +173,13 @@
 'restorelink'	=> 'Phục hồi 1 sửa đổi',
 'feedlinks'	=> 'Nạp:',
 'sitenotice'	=> '-', # the equivalent to wgSiteNotice
-'poweredby'	=> "{{SITENAME}} sử dụng [http://www.mediawiki.org/ MediaWiki], một phần mềm wiki mở.",
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main' => 'Bài',
 'nstab-user' => 'Trang thành viên',
 'nstab-media' => 'Phương tiện',
 'nstab-special' => 'Đặc biệt',
-'nstab-wp' => 'Giới thiệu',
+'nstab-project' => 'Giới thiệu',
 'nstab-image' => 'Hình',
 'nstab-mediawiki' => 'Tin nhắn',
 'nstab-template' => 'Tiêu bản',
@@ -256,7 +254,6 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 'yourname'           => 'Tên',
 'yourpassword'       => 'Mật khẩu',
 'yourpasswordagain'  => 'Vào lại mật khẩu',
-'newusersonly'       => ' (chỉ dành cho thành viên mới)',
 'remembermypassword' => 'Nhớ mật khẩu (cookie)',
 'loginproblem'       => '<b>Trục trặc đăng nhập.</b><br />Mời thử lại!',
 'alreadyloggedin'    => '\'\'\'$1, bạn đã đăng nhập rồi!\'\'\'<br />',
@@ -1111,7 +1108,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Xem trang này\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Xem trang về người này\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Xem trang phương tiện\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Đây là một trang dặc biệt, bạn không thể sửa đổi được nó.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Xem trang dự án\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Xem trang dự án\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Xem trang hình\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Xem thông báo hệ thống\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Xem tiêu bản\');

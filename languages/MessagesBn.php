@@ -1,7 +1,7 @@
 <?php
 
-
-/* private */ $wgAllMessagesBn = array(
+global $wgAllMessagesBn;
+$wgAllMessagesBn = array(
 # Dates
 
 'sunday' => 'রবিবার',
@@ -78,7 +78,7 @@
 'articlepage' => 'নিবন্ধ দেখুন',
 'subjectpage' => 'বিষয় দেখুন', # For compatibility
 'userpage' => 'ব্যাবহারকারীর পাতা দেখুন',
-'wikipediapage' => 'মেটা-পাতা দেখুন',
+'projectpage' => 'মেটা-পাতা দেখুন',
 'imagepage' =>  'ছবির পাতা দেখুন',
 'viewtalkpage' => 'আলোচনা দেখুন',
 'otherlanguages' => 'অন্যান্য ভাষা',
