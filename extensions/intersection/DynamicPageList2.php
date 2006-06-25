@@ -119,6 +119,10 @@ function DynamicPageList2( $input, $params, &$parser ) {
 // ###### PARSE PARAMETERS ######
 
 	$aParams = explode("\n", $input);
+	
+	$parser = new Parser;
+	$poptions = new ParserOptions;
+	
 	foreach($aParams as $sParam) {
 		
 		$aParam = explode("=", $sParam);
@@ -133,7 +137,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				$aParams = explode("|", $sArg);
 				foreach($aParams as $sParam) {
 					$sParam=trim($sParam);
-					$title = Title::newFromText( $sParam );
+					$title = Title::newFromText( $parser->transformMsg($sParam, $poptions) );
 					if( $title != NULL )
 						$aCategories[] = $title;
 				}
@@ -142,7 +146,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				break;
 				
 			case 'notcategory':
-				$title = Title::newFromText( $sArg );
+				$title = Title::newFromText( $parser->transformMsg($sParam, $poptions) );
 				if( $title != NULL )
 					$aExcludeCategories[] = $title; 
 				break;
