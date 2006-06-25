@@ -40,7 +40,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be executed standalone.\n" );
-	die( -1 );
+	die( 1 );
 }
 
 ?>

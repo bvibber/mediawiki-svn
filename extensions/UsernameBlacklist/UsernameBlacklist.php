@@ -118,7 +118,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	}
 	
 } else {
-	die( 'This file is an extension to the MediaWiki package, and cannot be executed separately.' );
+	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
+	die( 1 );
 }
 
 ?>

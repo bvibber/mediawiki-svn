@@ -14,6 +14,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	
 	require_once( 'SpecialPage.php' );
 	$wgExtensionFunctions[] = 'efPurgeCache';
+	$wgExtensionCredits['specialpage'][] = array( 'name' => 'PurgeCache', 'author' => 'Rob Church' );
+	
 	$wgAvailableRights[] = 'purgecache';
 	$wgGroupPermissions['developer']['purgecache'] = true;
 	
@@ -58,7 +60,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-	die( -1 );
+	die( 1 );
 }
 
 ?>
