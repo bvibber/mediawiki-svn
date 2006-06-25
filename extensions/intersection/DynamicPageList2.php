@@ -46,6 +46,13 @@ $wgDPL2AllowUnlimitedCategories = true;			// Allow unlimited categories in the Q
 $wgDPL2AllowUnlimitedResults = true;				// Allow unlimited results to be shown
 
 $wgExtensionFunctions[] = "wfDynamicPageList2";
+$wgExtensionCredits['parserhook'][] = array(
+	'name' => 'DynamicPageList2',
+	'author'=>'[http://en.wikinews.org/wiki/User:IlyaHaykinson IlyaHaykinson], [http://en.wikinews.org/wiki/User:Amgine Amgine], [http://de.wikipedia.org/wiki/Benutzer:Unendlich Unendlich], [http://meta.wikimedia.org/wiki/User:Dangerman Cyril Dangerville]',
+	'url'=>'http://meta.wikimedia.org/wiki/DynamicPageList2',
+	'description'=>'hack of the original [http://meta.wikimedia.org/wiki/DynamicPageList DynamicPageList] extension from DynamicPageList featuring many Improvements',
+  	'version'=>'0.4'
+  );
 
 function wfDynamicPageList2() {
 	global $wgParser, $wgMessageCache;
