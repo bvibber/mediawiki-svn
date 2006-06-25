@@ -1,16 +1,12 @@
 <?php
 
-# This is a simple debugging tool to inspect the contents of the shared cache
-# It is unrestricted and insecure, do not enable it on a public site.
+if (!defined('MEDIAWIKI')) {
+	echo "InspectCache extension";
+	exit(1);
+}
 
-
-# Not a valid entry point, skip unless MEDIAWIKI is defined
-if (defined('MEDIAWIKI')) {
-$wgExtensionFunctions[] = "wfInspectCache";
-
-function wfInspectCache() {
-global $IP;
-require_once( "$IP/includes/SpecialPage.php" );
+global $wgMessageCache;
+$wgMessageCache->addMessage( "inspectcache", "Inspect cache" );
 
 class InspectCache extends SpecialPage
 {
@@ -51,10 +47,4 @@ END
 	}
 }
 
-global $wgMessageCache;
-SpecialPage::addPage( new InspectCache );
-$wgMessageCache->addMessage( "inspectcache", "Inspect cache" );
-
-} # End of extension function
-} # End of invocation guard
 ?>
