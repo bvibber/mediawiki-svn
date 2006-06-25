@@ -70,7 +70,7 @@ class BoardVotePage extends SpecialPage {
 		//}
 
 		global $wgOut;
-		$wgOut->addWikiText( 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2005/En the elections page for results] soon.' );
+		$wgOut->addWikiText( wfMsg( 'boardvote_closed' ) );
 
 		if ( $this->mAction == "list" ) {
 			$this->displayList();
@@ -374,7 +374,7 @@ class BoardVotePage extends SpecialPage {
 				$cellOpen .= "<del>";
 				$cellClose = "</del>$cellClose";
 			}
-			$edits = $row->log_edits == 0x7fffffff ? "many" : $row->log_edits;
+			$edits = $row->log_edits == 0x7fffffff ? wfMsgHtml( 'boardvote_edits_many' ) : $row->log_edits;
 			$s .= "<tr>$cellOpen
 				  $user
 				{$cellClose}{$cellOpen}
@@ -524,6 +524,8 @@ to date. $1 for the encrypted data.</p>",
 "boardvote_unstrike"      => "Unstrike",
 "boardvote_needadmin"     => "Only election administrators can perform this operation.",
 "boardvote_sitenotice"    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:  Vote open until July 12",
+'boardvote_closed' => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2005/En the elections page for results] soon.',
+'boardvote_edits_many' => 'many',
 ));
 /*
 global $wgSiteNotice, $wgUser;
