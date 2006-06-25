@@ -18,7 +18,7 @@ function wfLinkSearchSetup() {
 		)
 	);
 	
-	SpecialPage::addPage( new SpecialPage( 'Linksearch', /* permission */false,
+	SpecialPage::addPage( new SpecialPage( 'Linksearch', /* permission */'',
 		/*listed*/ true, /*function*/ false, /*file*/ false ) );
 	
 	class LinkSearchPage extends QueryPage {
