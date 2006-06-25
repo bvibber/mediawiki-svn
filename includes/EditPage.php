@@ -32,7 +32,12 @@ class EditPage {
 	var $allowBlankSummary = false;
 	var $autoSumm = '';
 	var $hookError = '';
+        var $mAction = null;
 
+        # Status / Diagnostics:
+        var $mDidRedirect = false;
+        var $mDidSave = false;
+        
 	# Form values
 	var $save = false, $preview = false, $diff = false;
 	var $minoredit = false, $watchthis = false, $recreate = false;
@@ -144,6 +149,11 @@ class EditPage {
 		$this->mMetaData = $s ;
 	}
 
+        /** @param $action string URL that the form will submit to. */
+        function setAction($action) {
+                $this->mAction = $action;
+        }
+        
 	function submit() {
 		$this->edit();
 	}
@@ -597,6 +607,7 @@ class EditPage {
 			# Don't save a new article if it's blank.
 			if ( ( '' == $this->textbox1 ) ) {
 					$wgOut->redirect( $this->mTitle->getFullURL() );
+                                        $this->mDidRedirect = true;
 					wfProfileOut( $fname );
 					return false;
 			}
@@ -621,6 +632,9 @@ class EditPage {
                         $this->mArticle->doEdit( $this->textbox1, $this->summary, $flags );
                         $this->watchUnwatch();
                         $this->mArticle->doRedirect( $this->mArticle->isRedirect( $this->textbox1 ) );
+
+                        $this->mDidRedirect = true;
+                        $this->mDidSave = true;
 
 			wfProfileOut( $fname );
 			return false;
@@ -752,6 +766,9 @@ class EditPage {
                         $this->watchUnwatch();
 			$this->mArticle->doRedirect( $this->mArticle->isRedirect( $text ), $sectionanchor );
 
+                        $this->mDidRedirect = true;
+                        $this->mDidSave = true;
+                        
 			wfProfileOut( $fname );
 			return false;
                 } else {
@@ -781,14 +798,8 @@ class EditPage {
 	 * @param $formCallback Optional callable that takes an OutputPage
 	 *                      parameter; will be called during form output
 	 *                      near the top, for captchas and the like.
-         *
-         * @param $action       URL that the form shall submit to.
-         *                      Defaults to ordinary self-submitting.
-         *
-         * @param $cancelURL    URL that the 'cancel' link shall point to.
-         *                      Defaults to viewing the article. FIXME this is ignored.
 	 */
-        function showEditForm( $formCallback=null,  $action=null, $cancelUrl=null) {
+        function showEditForm( $formCallback=null ) {
 		global $wgOut, $wgUser, $wgLang, $wgContLang, $wgMaxArticleSize;
 
 		$fname = 'EditPage::showEditForm';
@@ -904,7 +915,9 @@ class EditPage {
 		if ( $ew ) $ew = " style=\"width:100%\"";
 		else $ew = '';
 
-                if (!$action) {
+                if ($this->mAction) {
+                        $action = $this->mAction;
+                } else {
                         $q = 'action=submit';
                         #if ( "no" == $redirect ) { $q .= "&redirect=no"; }
                         $action = $this->mTitle->escapeLocalURL( $q );

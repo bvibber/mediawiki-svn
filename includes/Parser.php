@@ -3665,7 +3665,7 @@ class Parser
 		$text = $this->strip( $text, $stripState, false, array( 'gallery' ) );
 	
 		# Signatures
-		$sigText = $this->getUserSig( $user );
+                $sigText = $user->getSig();
 		$text = strtr( $text, array(
 			'~~~~~' => $d,
 			'~~~~' => "$sigText $d",
@@ -3717,37 +3717,21 @@ class Parser
 	 * @param User $user
 	 * @return string
 	 * @private
+         * @deprecated use User::getSig().
 	 */
 	function getUserSig( &$user ) {
-		$username = $user->getName();
-		$nickname = $user->getOption( 'nickname' );
-		$nickname = $nickname === '' ? $username : $nickname;
-	
-		if( $user->getBoolOption( 'fancysig' ) !== false ) {
-			# Sig. might contain markup; validate this
-			if( $this->validateSig( $nickname ) !== false ) {
-				# Validated; clean up (if needed) and return it
-				return $this->cleanSig( $nickname, true );
-			} else {
-				# Failed to validate; fall back to the default
-				$nickname = $username;
-				wfDebug( "Parser::getUserSig: $username has bad XML tags in signature.\n" );
-			}
-		}
-
-		# If we're still here, make it a link to the user page
-		$userpage = $user->getUserPage();
-		return( '[[' . $userpage->getPrefixedText() . '|' . wfEscapeWikiText( $nickname ) . ']]' );
+                return $user->getSig();
 	}
-
-	/**
+        /**
 	 * Check that the user's signature contains no bad XML
 	 *
+         * @private
 	 * @param string $text
 	 * @return mixed An expanded string, or false if invalid.
+         * @deprecated use User::validateSig().
 	 */
 	function validateSig( $text ) {
-		return( wfIsWellFormedXmlFragment( $text ) ? $text : false );
+                return User::validateSig($text);
 	}
 	
 	/**
@@ -3756,26 +3740,17 @@ class Parser
 	 * 1) Strip ~~~, ~~~~ and ~~~~~ out of signatures
 	 * 2) Substitute all transclusions
 	 *
+         * @private
 	 * @param string $text
 	 * @param $parsing Whether we're cleaning (preferences save) or parsing
 	 * @return string Signature text
+         * @deprecated use User::cleanSig().
 	 */
 	function cleanSig( $text, $parsing = false ) {
-		global $wgTitle;
-		$this->startExternalParse( $wgTitle, new ParserOptions(), $parsing ? OT_WIKI : OT_MSG );
-	
-		$substWord = MagicWord::get( MAG_SUBST );
-		$substRegex = '/\{\{(?!(?:' . $substWord->getBaseRegex() . '))/x' . $substWord->getRegexCase();
-		$substText = '{{' . $substWord->getSynonym( 0 );
-
-		$text = preg_replace( $substRegex, $substText, $text );
-		$text = preg_replace( '/~{3,5}/', '', $text );
-		$text = $this->replaceVariables( $text );
-		
-		$this->clearState();	
-		return $text;
+                return User::cleanSig($text,$parsing);
 	}
-	
+                                                         
+                                                         
 	/**
 	 * Set up some variables which are usually set up in parse()
 	 * so that an external function can call some class members with confidence

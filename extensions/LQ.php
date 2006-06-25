@@ -8,6 +8,7 @@
  * @licence GPL2
  */
 
+
 # Wiki::articleFromTitle() seems to be your hook for special prefixes.
 
 if( !defined( 'MEDIAWIKI' ) ) {
@@ -49,21 +50,45 @@ class Post extends Article {
 
         /** Cause $this to be $other's nextPost. */
         function insertAfter($other) {
-                $this->setNextPost( $other->nextPost() );
+                if ( $it = $other->nextPost() )
+                        $this->setNextPost( $it );
                 $other->setNextPost( $this );
+        }
+
+        /** @return The last post at this level in the thread, including $this if $this has no nextPost. */
+        function lastSibling() {
+                $y = $x = $this;
+                while( $x = $x->nextPost() ) {
+                        $y = $x;
+                }
+                return $y;
+        }
+
+        /** Insert this as the *last* reply to $other, after any existing replies. */
+        function insertAsReplyTo($other) {
+                if( $first = $other->firstReply() ) {
+                        $first->lastSibling()->setNextPost( $this );;
+                } else {
+                        // $other has no existing replies.
+                        $other->setFirstReply( $this );
+                }
         }
 
         /** @private */
         function createLqtRecord() {
                 $dbr =& wfGetDB( DB_MASTER );
 
-                $sql = "SELECT lqt_id FROM lqt JOIN page ON lqt_this = page_id WHERE page_id = {$this->getID()}";
-                $res = $dbr->query($sql, __METHOD__);
+                $res = $dbr->select( array('lqt', 'page'), 'lqt_id',
+                                     array('lqt_this = page_id',
+                                          'page_id'=>$this->getID()),
+                                     __METHOD__ );
 
-                if (!$dbr->fetchObject($res)) {
+                if ( $dbr->numrows($res) == 0 ) {
                         $dbr->freeResult($res);
-                        $res2 = $dbr->query("INSERT INTO lqt (lqt_this, lqt_next, lqt_first_reply)
-                                             VALUES ({$this->getID()}, NULL, NULL)", __METHOD__);
+                        $res2 = $dbr->insert('lqt', array('lqt_this' => $this->getID(),
+                                                          'lqt_next' => null,
+                                                          'lqt_first_reply' => null),
+                                             __METHOD__);
                         return true;
                 } else {
                         $dbr->freeResult($res);
@@ -84,29 +109,34 @@ class Post extends Article {
 		return null; // FIXME return success/failure.
         }
 
+        function setFirstReply($p) { // TODO these two methods should be combined.
+                $this->createLqtRecord();
+                
+                $dbr =& wfGetDB( DB_MASTER );
+
+                $res = $dbr->update( 'lqt',
+                                     /* SET */   array( 'lqt_first_reply' => $p->getID() ),
+                                     /* WHERE */ array( 'lqt_this' => $this->getID(), ),
+                                     __METHOD__);
+                
+		return null; // FIXME return success/failure.
+        }
+        
         /** @private */
         function followLink( $article, $variable ) {
                 $dbr =& wfGetDB( DB_SLAVE );
                 
-                $sql = "SELECT * FROM lqt
-                            JOIN page ON lqt_this = page_id
-                            WHERE page_id = {$article->getID()}";
+                $line = $dbr->selectRow( array('lqt', 'page'), '*',
+                                         array('lqt_this = page_id',
+                                               'page_id' => $article->getID()),
+                                         __METHOD__);
                 
-                $res = $dbr->query($sql, __METHOD__);
-                
-                if ( $line = $dbr->fetchObject($res) ) { 
-                        if ( $it = $line->$variable ) {
-                                $title = Title::newFromID($it);
-                                $post = new Post($title);
-                        } else {
-                                $post = null;
-                        }
+                if ( $line && $it = $line->$variable ) { 
+                        $title = Title::newFromID($it);
+                        return new Post($title);
                 } else {
-                        $post = NULL;
+                        return null;
                 }
-                
-		$dbr->freeResult($res);
-		return $post;
         }
         
         /**
@@ -133,32 +163,25 @@ class Post extends Article {
         }
                 
         /**
+         * Find the article's original author (the user who created the first revision).
          * @param Article $article
-         * @return string The user_text of the user who created the first
-         *                revision of this article (the original author).
+         * @return User
          */
         function originalAuthor() {
 		$fname = 'LQ::originalAuthor';
                 
 		$dbr =& wfGetDB( DB_SLAVE );
-		$revTable = $dbr->tableName( 'revision' );
-                
-                $sql = "select rev_user_text from $revTable
-                            join page on rev_page=page_id
-                            where page_id = {$this->getID()}
-                            order by rev_timestamp
-                            limit 1;";
-		$res = $dbr->query($sql, $fname);
-                
-		if ( $line = $dbr->fetchObject( $res ) ) {
-                        $result = $line->rev_user_text;
-                } else {
-                        # FIXME die.
-                        $result = NULL;
-                }
-                
-		$dbr->freeResult($res);
-		return $result;
+
+                $line = $dbr->selectRow( array('revision', 'page'), 'rev_user_text',
+                                         array('rev_page = page_id',
+                                               'page_id' => $this->getID()),
+                                         __METHOD__,
+                                         array('ORDER BY'=> 'rev_timestamp',
+                                               'LIMIT'   => '1') );
+		if ( $line )
+                        return User::newFromName($line->rev_user_text, false);
+                else
+                        return null;   # FIXME die.
         }
         
         /** @return boolean True if anyone other than the original author has edited $article. */
@@ -168,16 +191,15 @@ class Post extends Article {
                 $orig = $this->originalAuthor();
                 
 		$dbr =& wfGetDB( DB_SLAVE );
-		$revTable = $dbr->tableName( 'revision' );
 
-                $sql = "select rev_user_text from $revTable
-                            join page on rev_page=page_id
-                            where page_id = {$this->getId()}";
-		$res = $dbr->query($sql, $fname);
-
+                $res = $dbr->select( array('revision', 'page'), 'rev_user_text',
+                                     array('rev_page = page_id',
+                                           'page_id' => $this->getId()) );
+                
                 $result = False;
 		while ( $line = $dbr->fetchObject( $res ) ) {
-                        if ( $line->rev_user_text != $orig ) {
+                        // newFromName normalizes, so we have to make sure both names have gone through it.
+                        if ( User::newFromName($line->rev_user_text, false)->getName() != $orig->getName() ) {
                                 $result = True;
                                 break;
                         }
@@ -187,53 +209,149 @@ class Post extends Article {
 		return $result;
         }
 
-        function render($channel_name, $editing) {
-                global $wgOut;
+        function render($channel_name, $editing, $highlight) {
+                global $wgOut, $wgUser;
                 $this->fetchContent();
 
-                $wgOut->addHTML('<div class="lqt_post">');
-                if ($editing) {
-                        $action_url = baseURL() . $channel_name . "?lqt_do_editing=1&lqt_post_title=" . $this->mTitle->getPartialURL();
-                        $e = new EditPage($this);
-                        $e->initialiseForm();
-                        $e->showEditForm(null, $action_url, $channel_name);
+                $t = $this->mTitle->getPartialURL();
+                
+                $wgOut->addHTML( wfElement('a', array('name'=>"lqt_post_$t"), " " ) );
+                
+                if ($highlight) {
+                        $wgOut->addHTML( wfOpenElement('div', array('class'=>'lqt_post_highlight')) );
                 } else {
-                        $wgOut->addHTML('<div class="lqt_post_body">');
+                        $wgOut->addHTML( wfOpenElement('div', array('class'=>'lqt_post')) );
+                }
+
+                if ($editing) {
+                        $this->showEditingForm("?lqt_editing={$this->getID()}" );
+
+                } else {
+                        $author = $this->originalAuthor();
+                        $sk = $wgUser->getSkin();
+
+                        // Post body:
+                        $wgOut->addHTML( wfOpenElement('div', array('class'=>'lqt_post_body')) );
                         $wgOut->addWikiText($this->mContent);
-                        $wgOut->addHTML('</div><div class="lqt_post_footer">');
-                        $wgOut->addWikiText( $this->originalAuthor() );
-                        $wgOut->addWikiText( $this->isPostModified() ? "Modified" : "Original" );
-                        $wgOut->addWikiText( "[[{$this->mTitle->getPrefixedURL()}|Permalink]]" );
-                        $wgOut->addHTML( "<a href=\"$channel_name?lqt_editing={$this->getID()}\">Edit</a>" );
-                        $wgOut->addHTML('</div>');
-                        $wgOut->addHTML('</div>');
+                        $wgOut->addHTML( wfCloseElement( 'div') );
+
+                        $wgOut->addHTML( wfOpenElement('ul', array('class'=>'lqt_footer')) );
+
+                        // Signature:
+                        $wgOut->addHTML( wfOpenElement( 'li') );
+                        $wgOut->addWikiText( $author->getSig(), false );
+                        $wgOut->addHTML( wfCloseElement( 'li') );
+                        $wgOut->addHTML( wfElement( 'li', null, ($this->isPostModified() ? "Modified" : "Original")) );
+
+                        // Edit and reply links:
+                        $edit_href = "$channel_name?lqt_editing={$this->getID()}#lqt_post_$t";
+                        $wgOut->addHTML( wfOpenElement('li') .
+                                         wfElementClean('a', array('href'=>$edit_href),'Edit') .
+                                         wfCloseElement( 'li') );
+
+                        $reply_href = "$channel_name?lqt_replying_to_id={$this->getID()}#lqt_post_$t";
+                        $wgOut->addHTML( wfOpenElement('li') .
+                                         wfElementClean('a', array('href'=>$reply_href),'Reply') .
+                                         wfCloseElement( 'li') );
+                        
+                        $wgOut->addHTML( wfCloseElement('ul') );
+
+                        
+                }
+                $wgOut->addHTML( wfCloseElement( 'div') );
+        }
+
+
+        
+        function showEditingForm( $query ) {
+                global $wgRequest, $wgOut;
+                $e = new EditPage($this);
+                $e->setAction(  baseURL() . LQ::$titleString . $query );
+                $e->edit();
+                if ($e->mDidRedirect) {
+                        // Override editpage's redirect.
+                        $t = $this->mTitle->getPartialURL();
+                        $wgOut->redirect(baseURL().LQ::$titleString.'?lqt_highlight='.$t.'#lqt_post_'.$t);
+                }
+                // Insert new posts into the threading:
+                if ($e->mDidSave && $wgRequest->getVal("lqt_post_new", false)) {
+                        $channel_title = Title::newFromText(LQ::$titleString);
+                        $this->insertAfter(new Post($channel_title));
+                }
+                // Insert replies into the threading:
+                $replying_to_id = $wgRequest->getVal("lqt_replying_to_id", null);
+                if ($e->mDidSave && $replying_to_id) {
+                        $reply_to_title = Title::newFromID( $replying_to_id );
+                        $this->insertAsReplyTo( new Post($reply_to_title) );
                 }
         }
 
+
+        /**
+         * @param ID of the post that this is a reply to, or else null if it's not a reply.
+         * @static
+         */
+        function newPostEditingForm($reply_to=null) {
+                global $wgRequest;
+                if ( !$it = $wgRequest->getVal("lqt_post_title", false) ) {
+                        $token = md5(uniqid(rand(), true));
+                        $new_title = Title::newFromText( "Post:$token" );
+                } else {
+                        $new_title = $it;
+                }
+
+                $p = new Post($new_title);
+                if ($reply_to) {
+                        $p->showEditingForm("?lqt_replying_to_id=$reply_to&lqt_post_title=${$new_title->getPartialURL}");
+                } else {
+                        $p->showEditingForm("?lqt_post_new=1&lqt_post_title=${$new_title->getPartialURL}");
+                }
+        }
+
+        
 }
 
+
 class LQ extends SpecialPage {
+
+        static $titleString;
         
         function LQ() {
                 SpecialPage::SpecialPage( 'LQ', 'lq' );
         }
         
-
+        
         /**
          * Recursively tells every post in a thread to render itself.
-         * @param The first top-level post in the thread.
+         * Also invokes showEditingForm as appropriate.
+         * TODO get rid of all these lame parameters.
+         * @param $post Post The first top-level post in the thread.
+         * @param $channel_name string Title of the channel/talk page we're on.
+         * @param $editing_id int ID of the post we are editing, if any.
+         * @param $replying_to_id int ID of the post we are replying to, if any.
+         * @param $highlighting_title string Title main part of post to highlight.
          */
-        function renderThreadStartingFrom($post, $channel_name, $editing_id) {
+        function renderThreadStartingFrom($post, $channel_name, $editing_id=-1, $replying_to_id=-1, $highlighting_title=null) {
 
-                $post->render( $channel_name, ($editing_id == $post->getId()) );
+                $post->render( $channel_name, ($editing_id == $post->getId()), ($highlighting_title==$post->mTitle->getPartialURL()) );
 
+                // Show existing replies:
                 if ( $it = $post->firstReply() ) {
                         $this->indent();
-                        $this->renderThreadStartingFrom($it, $channel_name, $editing_id);
+                        $this->renderThreadStartingFrom($it, $channel_name, $editing_id, $replying_to_id, $highlighting_title);
                         $this->unindent();
                 }
+
+                // Show reply editing form if we're rnneplying to this message:
+                if ( $replying_to_id == $post->getID() ) {
+                        $this->indent();
+                        Post::newPostEditingForm($replying_to_id);
+                        $this->unindent();
+                }
+
+                // Show siblings:
                 if ( $it = $post->nextPost() ) {
-                        $this->renderThreadStartingFrom($it, $channel_name, $editing_id);
+                        $this->renderThreadStartingFrom($it, $channel_name, $editing_id, $replying_to_id, $highlighting_title);
                 }
                 
         }
@@ -246,7 +364,8 @@ class LQ extends SpecialPage {
         */
         function indent( ) {
                 global $wgOut;
-		$wgOut->addHTML( '<div class="lqt_begin_replies">' );
+                $wgOut->addHTML( wfOpenElement( 'dl', array('class'=>'lqt_replies') ) );
+                $wgOut->addHTML( wfOpenElement( 'dd') );
         }
 
         /**
@@ -255,70 +374,47 @@ class LQ extends SpecialPage {
         */
         function unindent( ) {
                 global $wgOut;
-                $wgOut->addHTML( '</div>');
+                $wgOut->addHTML( wfCloseElement( 'dd') );
+                $wgOut->addHTML( wfCloseElement( 'dl') );
         }
 
-        // ugliness alert...
-        
         function execute() {
             global $wgUser, $wgRequest, $wgOut, $wgArticle;
+                                         
             $this->setHeaders(); # not sure what this does.
-
             
             # Extract the 'title' part of the path (between slash and query string)
             $tmp1 = split( "LQ/", $wgRequest->getRequestURL() );
             $tmp2 = split('\?', $tmp1[1]);
-            $pageTitle = $tmp2[0];
-            $title = Title::newFromText($pageTitle);
+            LQ::$titleString = $pageTitle = $tmp2[0]; //FIXME
+            $this->title = $title = Title::newFromText($pageTitle); 
             
-            if (!$pageTitle != '') {
+            if ($pageTitle == '') {
                     $wgOut->addWikiText("Try giving me the title of an article.");
                     return;
             }
 
-            if ( $wgRequest->getBool("do_post_new", false) ||
-                    $wgRequest->getBool("lqt_do_editing", false) ) {
-
-                    $new_title = Title::newFromText( "Post:{$wgRequest->getVal('lqt_post_title')}" );
-                    $p = new Post($new_title);
-                    $e = new EditPage($p);
-                    $e->importFormData( $wgRequest );
-                    $e->attemptSave();
-
-                    if ( $wgRequest->getBool("do_post_new", false) )
-                         $p->insertAfter(new Post($title));
-
-                    // Override the redirect made by $e->attemptSave().
-                    // TODO handle errors.
-                    $wgOut->redirect(baseURL().$pageTitle);
-                    
-                    return;
-            }
-
+            $wgOut->addHTML( wfOpenElement('p') .
+                             wfElement('strong', null, $pageTitle) .
+                             wfCloseElement('p'));
             
-            $wgOut->addWikiText($pageTitle);
-            
-            if ( $wgRequest->getBool("post_new", false) ) {
-
-                    $token = md5(uniqid(rand(), true));
-                    $new_title = Title::newFromText( "Post:$token" );
-                    // TODO this should be POST.
-                    $action_url = baseURL() . $pageTitle . "?do_post_new=1&lqt_post_title=" . $new_title->getPartialURL();
-                    
-                    $p = new Post($new_title);
-                    $e = new EditPage($p);
-                    $e->showEditForm(null, $action_url, $wgRequest->getRequestURL());
+            if ( $wgRequest->getBool("lqt_post_new", false) ) {
+                    Post::newPostEditingForm(null);
             } else {
-                    $wgOut->addHTML( "<a href=\"{$pageTitle}?post_new=1\">Post a New Thread</a>" );
+                    $wgOut->addHTML( wfElement('a',
+                                               array('href'=>"{$pageTitle}?lqt_post_new=1"),
+                                               "Post New Thread") );
             }
 
             $editing_id = $wgRequest->getInt("lqt_editing", null);
+            $replying_to_id = $wgRequest->getInt("lqt_replying_to_id", null);
+            $highlighting_title = $wgRequest->getVal("lqt_highlight", null);
             $first_post = Post::firstPostOfArticle(new Article($title));
-            $this->renderThreadStartingFrom( $first_post, $pageTitle, $editing_id );
+            $this->renderThreadStartingFrom( $first_post, $pageTitle, $editing_id, $replying_to_id, $highlighting_title);
         }
 }
 
 }
 
-?>
 
+?>

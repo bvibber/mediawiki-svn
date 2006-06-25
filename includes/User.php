@@ -1966,7 +1966,74 @@ class User {
 		}
 		return false;
 	}
+
+
+        /**
+	 * Fetch the user's signature text, if any, and normalize to
+	 * validated, ready-to-insert wikitext.
+	 *
+	 * @return string
+	 * @private
+	 */
+	function getSig() {
+		$username = $this->getName();
+		$nickname = $this->getOption( 'nickname' );
+		$nickname = $nickname === '' ? $username : $nickname;
 	
+		if( $this->getBoolOption( 'fancysig' ) !== false ) {
+			# Sig. might contain markup; validate this
+			if( User::validateSig( $nickname ) !== false ) {
+				# Validated; clean up (if needed) and return it
+				return User::cleanSig( $nickname, true );
+			} else {
+				# Failed to validate; fall back to the default
+				$nickname = $username;
+				wfDebug( "User::getSig: $username has bad XML tags in signature.\n" );
+			}
+		}
+
+		# If we're still here, make it a link to the user page
+		$userpage = $this->getUserPage();
+		return( '[[' . $userpage->getPrefixedText() . '|' . wfEscapeWikiText( $nickname ) . ']]' );
+	}
+
+	/**
+	 * Check that the user's signature contains no bad XML
+	 *
+         * @static
+	 * @param string $text
+	 * @return mixed An expanded string, or false if invalid.
+	 */
+	function validateSig( $text ) {
+		return( wfIsWellFormedXmlFragment( $text ) ? $text : false );
+	}
+	
+	/**
+	 * Clean up signature text
+	 *
+	 * 1) Strip ~~~, ~~~~ and ~~~~~ out of signatures
+	 * 2) Substitute all transclusions
+	 *
+         * @static
+	 * @param string $text
+	 * @param $parsing Whether we're cleaning (preferences save) or parsing
+	 * @return string Signature text
+	 */
+	function cleanSig( $text, $parsing = false ) {
+		global $wgTitle, $wgParser;
+		$wgParser->startExternalParse( $wgTitle, new ParserOptions(), $parsing ? OT_WIKI : OT_MSG );
+	
+		$substWord = MagicWord::get( MAG_SUBST );
+		$substRegex = '/\{\{(?!(?:' . $substWord->getBaseRegex() . '))/x' . $substWord->getRegexCase();
+		$substText = '{{' . $substWord->getSynonym( 0 );
+
+		$text = preg_replace( $substRegex, $substText, $text );
+		$text = preg_replace( '/~{3,5}/', '', $text );
+		$text = $wgParser->replaceVariables( $text );
+		
+		$wgParser->clearState();	
+		return $text;
+	}
 	
 }
 
