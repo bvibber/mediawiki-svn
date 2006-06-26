@@ -44,18 +44,17 @@ sub setSourceDB {
 	$self->{sourcedriver}=shift || $self->{targetdriver};
 }
 
-sub connectSourceDB() {
+sub connectSourceDB {
 	my $self=shift;
 	my $dsn = 'dbi:'.$self->{sourcedriver}.':'.$self->{sourcedb}.':'.$self->{sourcehost}.':'.$self->{sourceport};
 	$self->{dbs}=DBI->connect($dsn,$self->{sourceuser},$self->{sourcepass});
 }
 
-sub connectTargetDB() {
+sub connectTargetDB {
 	my $self=shift;
 	my $dsn = 'dbi:'.$self->{targetdriver}.':'.$self->{targetdb}.':'.$self->{targethost}.':'.$self->{targetport};
 	$self->{dbt}=DBI->connect($dsn,$self->{targetuser},$self->{targetpass});
 }
-
 
 sub importUMLS {
 	my $self=shift;
@@ -77,7 +76,8 @@ sub importUMLS {
 	if($level<1) {
 		$self->importUMLSterms("CSP",$self->{cid}{'CRISP'});
 		$self->importUMLSterms("ICPC%",$self->{cid}{'ICPC'});
-		#importUMLSterms("MSH",$self->{cid}{'MESH'});
+#		$self->importUMLSterms("SP",$self->{cid}{'SP'});
+		#$self->importUMLSterms("MSH",$self->{cid}{'MESH'});
 	}	
 	if($level<2) {
 		$self->importUMLSrelationtypes('REL');
@@ -90,8 +90,10 @@ sub importUMLS {
 		$self->importUMLSrelations('RELA','CSP');
 		$self->importUMLSrelations('REL','ICPC%');
 		$self->importUMLSrelations('RELA','ICPC%');
-		#importUMLSrelations('REL','MSH');
-		#importUMLSrelations('RELA','MSH');
+#		$self->importUMLSrelations('REL','SP');
+#		$self->importUMLSrelations('RELA','SP');
+		#$self->importUMLSrelations('REL','MSH');
+		#$self->importUMLSrelations('RELA','MSH');
 	}
 	if($level<4) {
 		$self->importSNtypes('STY');
@@ -124,22 +126,19 @@ sub importGEMET {
 	$self->importGemetThemes();
 }
 
-sub importUMLSstypes() {
+sub importUMLSstypes {
 	my $self=shift;
 	my $sab=shift;
 	my $cid=shift;
 	my $getassocs=$self->{dbs}->prepare("select MRSTY.CUI, MRSTY.STY from MRCONSO,MRSTY where MRCONSO.SAB like ? and MRCONSO.CUI=MRSTY.CUI");
 	$getassocs->execute($sab);
 	while(my $row=$getassocs->fetchrow_hashref()) {
-		
 		my %rv=$self->getMidForMember($row->{CUI});
 		my $att=$self->{attribs}{$row->{STY}};
 		#print "$rv{mid} is a $row->{STY} ($att)\n";	
 		$self->addRelation($rv{rid},0,$rv{mid},$att, my $checkfordupes=1);	
 	}
-
 }
-
 
 sub getCollections(){
 	my $self=shift;
@@ -151,6 +150,7 @@ sub getCollections(){
 	$cid{'RELA'}=$self->findCollection($self->findMeaning($self->findItem('UMLS Relation Attributes 2005',$self->{la}{'en'})));
 	$cid{'ICPC'}=$self->findCollection($self->findMeaning($self->findItem('The International Classification of Primary Care (ICPC), 1993',$self->{la}{'en'})));
 	$cid{'MESH'}=$self->findCollection($self->findMeaning($self->findItem('Medical Subject Headings (MeSH), 2005',$self->{la}{'en'})));
+#	$cid{'SP'}=$self->findCollection($self->findMeaning($self->findItem('Swiss-Prot',$self->{la}{'en'})));
 	return %cid;
 }
 
@@ -163,10 +163,56 @@ sub findCollection() {
 	return $row->{collection_id};
 }
 
+sub getCollection {
+	my $self = shift;
+	my $expression = shift;
+	
+	return $self->findCollection($self->findMeaning($self->findExpressionId($expression,$self->{la}{'en'})));
+}
+
+sub bootstrapCollection {
+	my $self = shift;
+	my $expression = shift;
+	my $collectionType = shift;
+	
+	%rv=$self->addExpression($expression,$self->{la}{'en'});
+	return $self->addCollection($rv{mid},$collectionType);
+}
+
+sub getOrCreateCollection {
+	my $self = shift;
+	my $expression = shift;
+
+	my $result = $self->getCollection($expression);
+	
+	if (!$result) {
+		$result = $self->bootstrapCollection($expression, '');
+	}
+	
+	return $result;		
+}
+
+sub getOrCreateCollections {
+	my $self = shift;
+	my %cid;
+	
+	$cid{'CRISP'} = $self->getOrCreateCollection('CRISP Thesaurus, 2005');
+	$cid{'STY'}   = $self->getOrCreateCollection('Semantic Network 2005AC Semantic Types');
+	$cid{'RL'}    = $self->getOrCreateCollection('Semantic Network 2005AC Relation Types');
+	$cid{'REL'}   = $self->getOrCreateCollection('UMLS Relation Types 2005');
+	$cid{'RELA'}  = $self->getOrCreateCollection('UMLS Relation Attributes 2005');
+	$cid{'ICPC'}  = $self->getOrCreateCollection('The International Classification of Primary Care (ICPC), 1993');
+	$cid{'MESH'}  = $self->getOrCreateCollection('Medical Subject Headings (MeSH), 2005');
+	$cid{'SP'}    = $self->getOrCreateCollection('Swiss-Prot');
+	$cid{'TR'}    = $self->getOrCreateCollection('TrEMBL');
+	
+	return %cid;
+}
+
 # SEMTYPEHIER and SEMRELHIER contain only the is_a relationships, whereas
 # srstr contains all others
 # FIXME: only use SRSTR
-sub importSTrelations2() {
+sub importSTrelations2 {
 	my $self=shift;
 	my $getrels=$self->{dbs}->prepare("select * from srstr where rel!='isa'");
 	$getrels->execute();
@@ -347,9 +393,9 @@ sub bootstrapCollections {
 	$cid{'ICPC'}=$self->addCollection($rv{mid},'');	
 	%rv=$self->addExpression('Medical Subject Headings (MeSH), 2005',$self->{la}{'en'});
 	$cid{'MESH'}=$self->addCollection($rv{mid},'');
+#	%rv=$self->addExpression('Swiss-Prot',$self->{la}{'en'});
+#	$cid{'SP'}=$self->addCollection($rv{mid},'');
 	return %cid;
-
-
 }
 
 sub addCollection {
@@ -478,7 +524,7 @@ sub importGemetThemes {
 			if($_) {
 				# Does this theme have a expression?
 				my $t=$_;
-				my %it=$self->findItem($t,$self->{la}{$theme_row->{langcode}},1);
+				my %it=$self->findLatestRevision($t,$self->{la}{$theme_row->{langcode}});
 				if($it{liid}) {
 					# Get the meaning
 					print "NEW THEME: $t - retrieving existing MID for LIID... ".$it{liid};
@@ -496,7 +542,7 @@ sub importGemetThemes {
 						#print "Checking for translations of ".$theme_row->{description}."\n";	
 						$gettheme_set->execute($theme_row->{id_theme});					
 						while((my $tra_row=$gettheme_set->fetchrow_hashref()) && !$tra_mid) {
-						if($tra_lid=$self->findItem($tra_row->{description},$self->{la}{$tra_row->{langcode}})) {
+						if($tra_lid=$self->findExpressionId($tra_row->{description},$self->{la}{$tra_row->{langcode}})) {
 							$tra_mid=$self->findMeaning($tra_lid);
 							
 						}
@@ -540,7 +586,7 @@ sub importGemetThemes {
 	#Split theme into parts
 }
 
-sub findGemetItem() {
+sub findGemetItem {
 	my $self=shift;
 	my $concept_id=shift;	
 	# get a word, language
@@ -549,12 +595,12 @@ sub findGemetItem() {
 	my $wordrow=$getword->fetchrow_hashref();
 	
 	# find an expression + meaning
-	my %rv=$self->findItem($wordrow->{name},$self->{la}{$wordrow->{langcode}},1);
+	my %rv=$self->findLatestRevision($wordrow->{name},$self->{la}{$wordrow->{langcode}});
 	$rv{mid}=$self->findMeaning($rv{liid});
 	return %rv;
 }
 
-sub addRelation() {
+sub addRelation {
 	my $self=shift;
 	my $revid=shift;
 	my $rtid=shift;
@@ -562,10 +608,10 @@ sub addRelation() {
 	my $mid_B=shift;
 	my $checkfordupes=shift;
 	if($checkfordupes) {
-		my $checkdupes=$self->{dbt}->prepare('select 1 as one from uw_meaning_relations where meaning1_mid=? and meaning2_mid=? and relationtype_mid=? and is_latest_set=1 limit 1');
-		$checkdupes->execute($mid_A,$mid_B,$rtid);
+		my $checkRelationDuplicates=$self->{dbt}->prepare('select 1 as one from uw_meaning_relations where meaning1_mid=? and meaning2_mid=? and relationtype_mid=? and is_latest_set=1 limit 1');
+		$checkRelationDuplicates->execute($mid_A,$mid_B,$rtid);
 		#print "Checking dupe $mid_A, $mid_B, relation type $rtid\n";
-		my $dupecheck=$checkdupes->fetchrow_hashref();
+		my $dupecheck=$checkRelationDuplicates->fetchrow_hashref();
 		if($dupecheck->{one}) {
 			print "Duplicate relation, not adding.\n";
 			return false;
@@ -578,7 +624,7 @@ sub addRelation() {
 }
 
 
-sub findMeaning() {
+sub findMeaning {
 	my $self=shift;
 	my $liid=shift;
 	# Search syntrans table
@@ -648,13 +694,13 @@ sub addExpression {
 	my $collection_internal_member_id=shift; # what does the collection use to refer to this member?
 	my %rv;
 	my $isdupe=0;
-	my %firv=$self->findItem($expression,$lid,1);
+	my %firv=$self->findLatestRevision($expression,$lid);
 	if($firv{liid}) { $isdupe=1; }
 
 	if(!$isdupe) {
 	
 		#create page
-		$pt=$self->canonize($expression);
+		my $pt=$self->canonize($expression);
 		$makepage=$self->{dbt}->prepare('insert into page(page_namespace,page_title,page_is_new,page_title_language_id,page_touched) values(?,?,?,?,?)');
 		$makepage->execute(16,$pt,1,$lid,$self->mwtimestamp());
 		$pid=$self->{dbt}->last_insert_id(undef,undef,undef,undef);
@@ -739,33 +785,39 @@ sub addExpression {
 	return %rv;
 	
 }
+
+sub findLatestRevision {
+	my $self = shift;
+	my $expressionSpelling = shift;
+	my $languageId = shift;
+    
+    my $expressionId = $self->findExpressionId($expressionSpelling, $languageId);
+    if ($expressionId != 0) {
+		my $getRevisionId = $self->{dbt}->prepare('select rev_id from revision where rev_data_id=?');
+		$getRevisionId->execute($expressionId);
+		my %revision;
+		$revision{liid} = $expressionId;
+		$revision{rid} = $getRevisionId->fetchrow_hashref->{rev_id};
+		return %revision;
+    } else {
+    	return 0;
+    }
+}
+
+sub findExpressionId {
+	my $self = shift;
+	my $expressionSpelling = shift;
+	my $languageId = shift;
 	
-sub findItem {
-	my $self=shift;
-	my $expression=shift;
-	my $lid=shift;
-	my $returnrid=shift;
-	#print "Searching for $expression in $lid\n";
-	my $getitem=$self->{dbt}->prepare("select expression_id from uw_expression_ns where spelling=binary ? and language_id=? and is_latest=1");
-	$getitem->execute($expression,$lid);
-	my $item_row=$getitem->fetchrow_hashref();
-	if($item_row) {
-		if(!$returnrid) {
-			return $item_row->{expression_id};
-		} else {
-			my $getrev= $self->{dbt}->prepare('select rev_id from revision where rev_data_id=?');
-			$getrev->execute($item_row->{expression_id});
-			my %rv;
-			$rv{liid}=$item_row->{expression_id};
-			$rv{rid}=$getrev->fetchrow_hashref->{rev_id};
-			return %rv;
-		}
+	my $getItem = $self->{dbt}->prepare("select expression_id from uw_expression_ns where spelling=binary ? and language_id=? and is_latest=1");
+	$getItem->execute($expressionSpelling, $languageId);
+	my $itemRow = $getItem->fetchrow_hashref();
+	if ($itemRow) {
+		return $itemRow->{expression_id};
 	} else {
 		return 0;
 	}
-
 }
-
 
 sub getMaxId {
 	my $self=shift;
@@ -937,7 +989,7 @@ sub initRel {
 	}
 }
 
-sub loadLangs() {
+sub loadLangs {
 	my $self=shift;
 	my %la;
 	$getlangs=$self->{dbt}->prepare('select language_id,wikimedia_key from language');
@@ -948,7 +1000,7 @@ sub loadLangs() {
 	return %la;
 }
 
-sub loadLangsIso() {
+sub loadLangsIso {
 	my $self=shift;
 	my %la_iso;
 	$getlangs=$self->{dbt}->prepare('select language_id,iso639_2 from language');
