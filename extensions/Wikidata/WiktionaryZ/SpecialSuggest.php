@@ -1,89 +1,94 @@
 <?php
 
 define( 'MEDIAWIKI', true );
-
-require_once('../../../LocalSettings.php');
+//if (!defined('MEDIAWIKI')) die();
+//
+//global 
+//	$IP;
+//
+//require_once("$IP/includes/SpecialPage.php");
+require_once("../../../LocalSettings.php");
 require_once("Setup.php");
+
 require_once("attribute.php");
 require_once("relation.php");
 
 //$wgExtensionFunctions[] = 'wfSpecialSuggest';
 //
 //function wfSpecialSuggest() {
-//	global 
-//		$IP, $wgMessageCache, $wgContLang, $wgContLanguageCode, $wgOut;
-//
-////	$dir = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
-////	$code = $wgContLang->lc( $wgContLanguageCode );
-////	$file = file_exists( "${dir}cite_text-$code" ) ? "${dir}cite_text-$code" : "${dir}cite_text";
-//	
-//	require_once "$IP/includes/SpecialPage.php";
-//
 //	class SpecialSuggest extends SpecialPage {
 //		function SpecialSuggest() {
 //			SpecialPage::SpecialPage('Suggest');
 //		}
 //		
 //		function execute( $par ) {
-//			echo "Test";
+//			global
+//				$wgOut;
+//				
+//			$wgOut->disable();
+//			echo getSuggestions();
 //		}
 //	}
 //	
 //	SpecialPage::addPage(new SpecialSuggest());
 //}
 
-$search = ltrim($_GET['search']);
-$prefix = $_GET['prefix'];
-$query = $_GET['query'];
+echo getSuggestions();
 
-$dbr =& wfGetDB( DB_SLAVE );
-
-if ($search != '')
-	$searchCondition = "AND expression1.spelling LIKE " . $dbr->addQuotes("$search%");
-else
-	$searchCondition = "";
-
-switch ($query) {
-	case 'relation-type':
-		$sql = getSQLForCollectionOfType('RELT');
-		break;
-	case 'attribute':
-		$sql = getSQLForCollectionOfType('ATTR');
-		break;
-	case 'defined-meaning':
-		$sql = "SELECT syntrans1.defined_meaning_id AS row_id, expression1.spelling AS relation ".
-				"FROM uw_expression_ns expression1, uw_syntrans syntrans1 ".
-            	"WHERE expression1.expression_id=syntrans1.expression_id ";
-        break;	
-    case 'collection':
-    	$sql = "SELECT collection.collection_id AS row_id, expression1.spelling AS relation ".
-    			"FROM uw_expression_ns expression1, uw_collection_ns collection, uw_syntrans syntrans ".
-    			"WHERE expression1.expression_id=syntrans.expression_id AND syntrans.defined_meaning_id=collection.collection_mid ".
-    			"AND collection.is_latest=1 AND syntrans.is_latest_set=1 AND expression1.is_latest=1 ";
-    	break;
+function getSuggestions() {
+	$search = ltrim($_GET['search']);
+	$prefix = $_GET['prefix'];
+	$query = $_GET['query'];
+	
+	$dbr =& wfGetDB( DB_SLAVE );
+	
+	if ($search != '')
+		$searchCondition = "AND expression1.spelling LIKE " . $dbr->addQuotes("$search%");
+	else
+		$searchCondition = "";
+	
+	switch ($query) {
+		case 'relation-type':
+			$sql = getSQLForCollectionOfType('RELT');
+			break;
+		case 'attribute':
+			$sql = getSQLForCollectionOfType('ATTR');
+			break;
+		case 'defined-meaning':
+			$sql = "SELECT syntrans1.defined_meaning_id AS row_id, expression1.spelling AS relation ".
+					"FROM uw_expression_ns expression1, uw_syntrans syntrans1 ".
+	            	"WHERE expression1.expression_id=syntrans1.expression_id ";
+	        break;	
+	    case 'collection':
+	    	$sql = "SELECT collection.collection_id AS row_id, expression1.spelling AS relation ".
+	    			"FROM uw_expression_ns expression1, uw_collection_ns collection, uw_syntrans syntrans ".
+	    			"WHERE expression1.expression_id=syntrans.expression_id AND syntrans.defined_meaning_id=collection.collection_mid ".
+	    			"AND collection.is_latest=1 AND syntrans.is_latest_set=1 AND expression1.is_latest=1 ";
+	    	break;
+	}
+	                          
+	$sql .= $searchCondition . " ORDER BY expression1.spelling LIMIT 10";
+	$queryResult = $dbr->query($sql);
+	$idAttribute = new Attribute("id", "ID", "id");
+	$sourceRelation = new ArrayRelation(new Heading($idAttribute), new Heading($idAttribute));
+	
+	switch($query) {
+		case 'relation-type':
+			$displayRelation = getRelationTypeAsRelation($queryResult, $sourceRelation);
+			break;		
+		case 'attribute':
+			$displayRelation = getAttributeAsRelation($queryResult, $sourceRelation);
+			break;
+		case 'defined-meaning':
+			$displayRelation = getDefinedMeaningAsRelation($queryResult, $sourceRelation);
+			break;	
+		case 'collection':
+			$displayRelation = getCollectionAsRelation($queryResult, $sourceRelation);
+			break;	
+	}
+	
+	return getRelationAsSuggestionTable($prefix .'table', $sourceRelation, $displayRelation);
 }
-                          
-$sql .= $searchCondition . " ORDER BY expression1.spelling LIMIT 10";
-$queryResult = $dbr->query($sql);
-$idAttribute = new Attribute("id", "ID", "id");
-$sourceRelation = new ArrayRelation(new Heading($idAttribute), new Heading($idAttribute));
-
-switch($query) {
-	case 'relation-type':
-		$displayRelation = getRelationTypeAsRelation($queryResult, $sourceRelation);
-		break;		
-	case 'attribute':
-		$displayRelation = getAttributeAsRelation($queryResult, $sourceRelation);
-		break;
-	case 'defined-meaning':
-		$displayRelation = getDefinedMeaningAsRelation($queryResult, $sourceRelation);
-		break;	
-	case 'collection':
-		$displayRelation = getCollectionAsRelation($queryResult, $sourceRelation);
-		break;	
-}
-
-echo(getRelationAsSuggestionTable($prefix .'table', $sourceRelation, $displayRelation));
 
 function getSQLForCollectionOfType($collectionType) {
 	return "SELECT member_mid AS row_id, expression1.spelling AS relation, expression2.spelling AS collection " .
