@@ -14,6 +14,7 @@ import bz2
 import ConfigParser
 import getopt
 import os
+import popen2
 import random
 import socket
 import struct
@@ -27,13 +28,30 @@ import dbzutil
 import DistBits
 from sigcheck import findBzTrail
 
+def processorCount():
+	try:
+		# Works on Linux
+		return os.sysconf("SC_NPROCESSORS_ONLN")
+	except:
+		try:
+			# Works on Mac OS X
+			(outstream, instream) = popen2.popen2("/usr/sbin/sysctl -n hw.ncpu 2>/dev/null")
+			output = outstream.read()
+			instream.close()
+			outstream.close()
+			return int(output)
+		except:
+			# Give up
+			return 1
+		
+
 class Compressor(object):
 	def __init__(self, args):
 		self.inputStream = sys.stdin
 		self.outputStream = sys.stdout
 		
 		self.blockSize = 900000 # 900k default blocksize
-		self.threads = 1 # Number of local threads to start.
+		self.threads = processorCount()
 		self.remotes = []
 		self.verbosity = 0
 		self.blockSize100k = 9

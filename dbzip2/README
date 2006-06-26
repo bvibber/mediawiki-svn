@@ -28,7 +28,10 @@ Options:
     interrupted by, eg, rebooting a server for maintenance.
 
   -p<num>
-    Set the number of local compression threads. The default is 1.
+    Set the number of local compression threads. The default is
+    the number of local CPUs, or 1 if the count cannot be detected.
+    Detection should work on Linux and Mac OS X, may or may not
+    work elsewhere.
     
     There is no benefit to setting this higher than the number of
     local processor cores available; hyperthreading usually will
