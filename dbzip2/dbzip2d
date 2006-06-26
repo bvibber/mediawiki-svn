@@ -142,7 +142,7 @@ if __name__ == "__main__":
 		os.open("/dev/null", os.O_WRONLY)
 		
 		if logFileName:
-			os.open(logFileName, os.O_WRONLY, os.O_APPEND)
+			os.open(logFileName, os.O_CREAT | os.O_APPEND, 0644)
 		else:
 			os.open("/dev/null", os.O_WRONLY)
 	

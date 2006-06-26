@@ -1,6 +1,6 @@
 .PHONY: all clean test rpm
 
-VERSION=0.0.2
+VERSION=0.0.3
 
 DISTFILES=\
 BitShifter.py\
@@ -8,12 +8,14 @@ DistBits.py\
 Makefile\
 README\
 dbzip2\
+dbzip2.conf\
+dbzip2.spec\
 dbzip2d\
 dbzip2d.service\
-dbzip2d.spec\
 dbzutil-module.c\
 dbzutil-setup.py\
 dbzutil-test.py\
+piperate\
 sigcheck.py
 
 all: dbzutil.so
@@ -41,4 +43,4 @@ dbzip2-$(VERSION).tar.gz: $(DISTFILES)
 
 rpm: dist dbzip2d.spec
 	cp -p dbzip2-$(VERSION).tar.gz /usr/src/redhat/SOURCES/
-	rpmbuild -ba dbzip2d.spec
+	rpmbuild -ba dbzip2.spec
