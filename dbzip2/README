@@ -44,6 +44,11 @@ Options:
     At -v you will receive a summary of compression speed; -vv and
     higher levels will add various debugging messages.
 
+Config:
+
+Default option values may be overridden via a config file; see the
+sample dbzip2.conf for details.
+
 
 == Daemon ==
 

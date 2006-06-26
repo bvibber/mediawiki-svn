@@ -11,7 +11,9 @@
 # Accept file input/output, behavior like bzip2
 
 import bz2
+import ConfigParser
 import getopt
+import os
 import random
 import socket
 import struct
@@ -36,6 +38,10 @@ class Compressor(object):
 		self.verbosity = 0
 		self.blockSize100k = 9
 		self.compressing = True
+		self.configFiles = [
+			os.path.join(os.path.dirname(sys.argv[0]), "dbzip2.conf"),
+			"/etc/dbzip2.conf",
+			os.path.join(os.getenv("HOME"), ".dbzip2.conf")]
 		
 		self.timeoutMin = 1  # Initial timeout
 		self.timeoutMax = 64 # Exponential backoff up to X seconds
@@ -57,6 +63,7 @@ class Compressor(object):
 		self.done = False
 		self.threadLock = thread.allocate_lock()
 		
+		self.processConfigFiles()
 		self.processArgs(args)
 	
 	def processArgs(self, args):
@@ -72,6 +79,20 @@ class Compressor(object):
 				self.threads = int(val)
 			elif opt == "-v":
 				self.verbosity += 1
+	
+	def processConfigFiles(self):
+		conf = ConfigParser.SafeConfigParser()
+		conf.read(self.configFiles)
+		
+		if conf.has_option("local", "threads"):
+			self.threads = conf.getint("local", "threads")
+		
+		if conf.has_section("remote"):
+			for (name, val) in conf.items("remote"):
+				self.remotes.append(self.splitHost(val))
+		
+		if conf.has_option("debug", "verbosity"):
+			self.verbosity = conf.getint("debug", "verbosity")
 	
 	def splitHost(self, val):
 		if ":" in val:
