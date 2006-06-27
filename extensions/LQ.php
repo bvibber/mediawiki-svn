@@ -51,8 +51,6 @@ class Post extends Article {
 		$this->mTitle =& $title;
 		$this->mOldId = $oldId;
 		$this->clear();
-
-                $this->previousPost();
 	}
 
         
