@@ -36,6 +36,11 @@ function efLQ() {
 }
 
 class Post extends Article {
+        /** cf. loadLinks() @private */
+        var $mLinksLoaded = false;
+        /** cf. loadBacklinks() @private */
+        var $mBacklinksLoaded = false;
+        
         /**
 	 * Constructor and clear the post. This does exactly the same thing as
          * the Article constructor.
@@ -46,24 +51,30 @@ class Post extends Article {
 		$this->mTitle =& $title;
 		$this->mOldId = $oldId;
 		$this->clear();
+
+                $this->previousPost();
 	}
 
+        
+        /**
+         * Absolve this post from any threading relationships except
+         * this post's replies stay intact. For use when moving posts around.
+         */
+        function deleteLinks() {
+                if ( $parent_post = $this->parentPost() )
+                        $parent_post->setFirstReply($this->nextPost());
+                if ( $previous_post = $this->previousPost() ) {
+                        $previous_post->setNextPost($this->nextPost());
+                }
+                $this->setNextPost(null);
+        }
+        
         /** Cause $this to be $other's nextPost. */
         function insertAfter($other) {
                 if ( $it = $other->nextPost() )
                         $this->setNextPost( $it );
                 $other->setNextPost( $this );
         }
-
-        /** @return The last post at this level in the thread, including $this if $this has no nextPost. */
-        function lastSibling() {
-                $y = $x = $this;
-                while( $x = $x->nextPost() ) {
-                        $y = $x;
-                }
-                return $y;
-        }
-
         /** Insert this as the *last* reply to $other, after any existing replies. */
         function insertAsReplyTo($other) {
                 if( $first = $other->firstReply() ) {
@@ -74,15 +85,33 @@ class Post extends Article {
                 }
         }
 
+        /* Inserts this as the *first* reply to $other, before any existing replies. */
+        function insertAsFirstReplyTo($other) {
+                if ( $it = $other->firstReply() )
+                        $this->setNextPost( $it );
+                $other->setFirstReply( $this );
+        }
+
+        /** @return The last post at this level in the thread, including $this if $this has no nextPost. */
+        function lastSibling() {
+                $y = $x = $this;
+                while( $x = $x->nextPost() ) {
+                        $y = $x;
+                }
+                return $y;
+        }
+        
         /** @private */
         function createLqtRecord() {
                 $dbr =& wfGetDB( DB_MASTER );
 
+                if ( $this->getID() == 0 ) { debug_print_backtrace(); }
+                
                 $res = $dbr->select( array('lqt', 'page'), 'lqt_id',
                                      array('lqt_this = page_id',
-                                          'page_id'=>$this->getID()),
+                                           'page_id'=>$this->getID()),
                                      __METHOD__ );
-
+                
                 if ( $dbr->numrows($res) == 0 ) {
                         $dbr->freeResult($res);
                         $res2 = $dbr->insert('lqt', array('lqt_this' => $this->getID(),
@@ -97,14 +126,19 @@ class Post extends Article {
         }
         
         function setNextPost($p) {
+
                 $this->createLqtRecord();
                 
                 $dbr =& wfGetDB( DB_MASTER );
 
+                $set_to = $p ? $p->getID() : null;
+                
                 $res = $dbr->update( 'lqt',
-                                     /* SET */   array( 'lqt_next' => $p->getID() ),
+                                     /* SET */   array( 'lqt_next' => $set_to ),
                                      /* WHERE */ array( 'lqt_this' => $this->getID(), ),
                                      __METHOD__);
+
+                $this->mNextPost = $p;
                 
 		return null; // FIXME return success/failure.
         }
@@ -114,29 +148,105 @@ class Post extends Article {
                 
                 $dbr =& wfGetDB( DB_MASTER );
 
+                $set_to = $p ? $p->getID() : null;
+                
                 $res = $dbr->update( 'lqt',
-                                     /* SET */   array( 'lqt_first_reply' => $p->getID() ),
+                                     /* SET */   array( 'lqt_first_reply' => $set_to ),
                                      /* WHERE */ array( 'lqt_this' => $this->getID(), ),
                                      __METHOD__);
+
+                $this->mFirstReply = $p;
                 
 		return null; // FIXME return success/failure.
         }
-        
-        /** @private */
-        function followLink( $article, $variable ) {
+
+        /**
+         * Populate $mFirstReply and $mNextPost with the appropriate Post objects.
+         * Hits the database, but only the first time.
+         * @private
+         */
+        function loadLinks() {
                 $dbr =& wfGetDB( DB_SLAVE );
+
+                if ($this->mLinksLoaded) return;
+                $this->mLinksLoaded = true;
                 
-                $line = $dbr->selectRow( array('lqt', 'page'), '*',
+                $line = $dbr->selectRow( array('lqt', 'page'),
+                                         array('lqt_next', 'lqt_first_reply'),
                                          array('lqt_this = page_id',
-                                               'page_id' => $article->getID()),
+                                               'page_id' => $this->getID()),
                                          __METHOD__);
-                
-                if ( $line && $it = $line->$variable ) { 
-                        $title = Title::newFromID($it);
-                        return new Post($title);
+
+                if ( $line->lqt_next ) {
+                        $next_title = Title::newFromID($line->lqt_next);
+                        $this->mNextPost = new Post($next_title);
                 } else {
-                        return null;
+                        $this->mNextPost = null;
                 }
+
+                if ( $line->lqt_first_reply ) {
+                        $reply_title = Title::newFromID($line->lqt_first_reply);
+                        $this->mFirstReply = new Post($reply_title);
+                } else {
+                        $this->mFirstReply = null;
+                }
+        }
+
+        /**
+         * Similar to loadLinks(), above, but finds mPreviousPost and
+         * mParent. This is a separate method because it's a separate query and
+         * it's only needed during moves and deletes.
+         * TODO: find a way to consolidate these queries.
+         * @private
+         */
+        function loadBacklinks() {
+                $dbr =& wfGetDB( DB_SLAVE );
+
+                if ($this->mBacklinksLoaded) return;
+                $this->mBacklinksLoaded = true;
+                
+                $line = $dbr->selectRow( array('lqt', 'page'),
+                                         array('lqt_next', 'page_id'),
+                                         array('lqt_this = page_id',
+                                               'lqt_next' => $this->getID()),
+                                         __METHOD__);
+                if ( $line->page_id ) {
+                        $title = Title::newFromID($line->page_id);
+                        $this->mPreviousPost = new Post($title);
+                } else {
+                        $this->mPreviousPost = null;
+                }
+
+                $line = $dbr->selectRow( array('lqt', 'page'),
+                                         array('lqt_first_reply', 'page_id'),
+                                         array('lqt_this = page_id',
+                                               'lqt_first_reply' => $this->getID()),
+                                         __METHOD__);
+                if ( $line->page_id ) {
+                        $title = Title::newFromID($line->page_id);
+                        $this->mParentPost = new Post($title);
+                } else {
+                        $this->mParentPost = null;
+                }
+
+        }
+
+        /**
+         * Behavior is undefined if more than one post points to $this.
+         * @return The post whose next post is $this.
+         */
+        function previousPost() {
+                $this->loadBacklinks();
+                return $this->mPreviousPost;
+        }
+
+        /**
+         * Behavior is undefined if more than one post points to $this.
+         * @return The post whose first reply is $this.
+         */
+        function parentPost() {
+                $this->loadBacklinks();
+                return $this->mParentPost;
         }
         
         /**
@@ -145,21 +255,24 @@ class Post extends Article {
          * @static
          */
         function firstPostOfArticle($article) {
-                return Post::followLink($article, 'lqt_next');
+                $article->loadLinks();
+                return $article->mNextPost;
         }
         
         /**
          * Returns this post's next sibling in the thread.
          */
         function nextPost() {
-                return Post::followLink($this, 'lqt_next');
+                $this->loadLinks();
+                return $this->mNextPost;
         }
 
         /**
          * Returns the first of this post's replies (children) in the thread.
          */
         function firstReply() {
-                return Post::followLink($this, 'lqt_first_reply');
+                $this->loadLinks();
+                return $this->mFirstReply;
         }
                 
         /**
@@ -214,10 +327,12 @@ class Post extends Article {
                 $this->fetchContent();
 
                 $t = $this->mTitle->getPartialURL();
+
+                $movingThis = ( LQ::$moving == $this->getID() );
                 
                 $wgOut->addHTML( wfElement('a', array('name'=>"lqt_post_$t"), " " ) );
                 
-                if ($highlight) {
+                if ($highlight || $movingThis) {
                         $wgOut->addHTML( wfOpenElement('div', array('class'=>'lqt_post_highlight')) );
                 } else {
                         $wgOut->addHTML( wfOpenElement('div', array('class'=>'lqt_post')) );
@@ -252,6 +367,11 @@ class Post extends Article {
                         $reply_href = "$channel_name?lqt_replying_to_id={$this->getID()}#lqt_post_$t";
                         $wgOut->addHTML( wfOpenElement('li') .
                                          wfElementClean('a', array('href'=>$reply_href),'Reply') .
+                                         wfCloseElement( 'li') );
+
+                        $move_href = "$channel_name?lqt_moving_id={$this->getID()}";
+                        $wgOut->addHTML( wfOpenElement('li') .
+                                         wfElementClean('a', array('href'=>$move_href),'Move') .
                                          wfCloseElement( 'li') );
                         
                         $wgOut->addHTML( wfCloseElement('ul') );
@@ -314,7 +434,9 @@ class Post extends Article {
 
 class LQ extends SpecialPage {
 
+        static $article;
         static $titleString;
+        static $moving;
         
         function LQ() {
                 SpecialPage::SpecialPage( 'LQ', 'lq' );
@@ -335,6 +457,15 @@ class LQ extends SpecialPage {
 
                 $post->render( $channel_name, ($editing_id == $post->getId()), ($highlighting_title==$post->mTitle->getPartialURL()) );
 
+                // Button to move a post to be the first reply of this post:
+                if ( LQ::$moving &&
+                     LQ::$moving != $post->getID() &&
+                     ($post->firstReply() ? LQ::$moving != $post->firstReply()->getID() : true) ) {
+                        $this->indent();
+                        $this->showMoveButton( 'reply', $post->getID() );
+                        $this->unindent();
+                }
+                
                 // Show existing replies:
                 if ( $it = $post->firstReply() ) {
                         $this->indent();
@@ -342,18 +473,36 @@ class LQ extends SpecialPage {
                         $this->unindent();
                 }
 
-                // Show reply editing form if we're rnneplying to this message:
+                // Show reply editing form if we're replying to this post:
                 if ( $replying_to_id == $post->getID() ) {
                         $this->indent();
                         Post::newPostEditingForm($replying_to_id);
                         $this->unindent();
                 }
 
+                // Button to move a post to be the next post of this post:
+                if ( LQ::$moving &&
+                     LQ::$moving != $post->getID() &&
+                     ($post->nextPost() ? LQ::$moving != $post->nextPost()->getID() : true) ) {
+                        $this->showMoveButton( 'next', $post->getID() );
+                }
+
                 // Show siblings:
                 if ( $it = $post->nextPost() ) {
                         $this->renderThreadStartingFrom($it, $channel_name, $editing_id, $replying_to_id, $highlighting_title);
                 }
-                
+        }
+
+        function showMoveButton( $type, $id ) {
+                global $wgOut;
+                $form_action = baseURL() . LQ::$titleString;
+                $wgOut->addHTML(
+                        wfOpenElement('form', array('action' => $form_action,
+                                                    'method' => 'POST')) .
+                        wfHidden("lqt_move_to_$type", "$id") .
+                        wfHidden("lqt_move_post_id", LQ::$moving) .
+                        wfSubmitButton('Move Here') .
+                        wfCloseElement('form') );
         }
 
         // Should these be separate methods?
@@ -388,12 +537,39 @@ class LQ extends SpecialPage {
             $tmp2 = split('\?', $tmp1[1]);
             LQ::$titleString = $pageTitle = $tmp2[0]; //FIXME
             $this->title = $title = Title::newFromText($pageTitle); 
+
+            LQ::$article = new Post($title); // post so we can do firstPostOfArticle() etc.
             
             if ($pageTitle == '') {
                     $wgOut->addWikiText("Try giving me the title of an article.");
                     return;
             }
 
+            $first_post = Post::firstPostOfArticle(LQ::$article);
+
+            // Execute move operations:
+            $post_id     = $wgRequest->getInt( 'lqt_move_post_id',  false );
+            $reply_to_id = $wgRequest->getInt( 'lqt_move_to_reply', false );
+            $next_to_id  = $wgRequest->getInt( 'lqt_move_to_next',  false );
+            $to_id = $reply_to_id ? $reply_to_id : $next_to_id;
+            if ( $post_id && $to_id ) {
+                    $posttitle = Title::newFromID($post_id);
+                    $totitle = Title::newFromID($to_id);
+                    $post = new Post( $posttitle );
+                    $to = new Post( $totitle );
+                    $post->deleteLinks();
+                    if ($reply_to_id)
+                            $post->insertAsFirstReplyTo($to);
+                    elseif ($next_to_id)
+                            $post->insertAfter($to);
+
+                    // Wipe out POST so user doesn't get the "Danger Will
+                    // Robinson there's POST data" message when refreshing the page.
+                    $query = "?lqt_highlight={$posttitle->getPartialURL()}#lqt_post_{$posttitle->getPartialURL()}";
+                    $wgOut->redirect( baseURL() . LQ::$titleString . $query );
+                    return;
+            }
+            
             $wgOut->addHTML( wfOpenElement('p') .
                              wfElement('strong', null, $pageTitle) .
                              wfCloseElement('p'));
@@ -406,10 +582,25 @@ class LQ extends SpecialPage {
                                                "Post New Thread") );
             }
 
+            LQ::$moving = $wgRequest->getInt('lqt_moving_id');
+            if ( LQ::$moving ) {
+                    // we'll add this when we figure out how to make it work:
+                    /*$wgOut->addHTML( wfOpenElement('p') );
+                    $wgOut->addHTML(  wfElement( 'label', array('for'=>'lqt_move_summary'), "Comment for this move:" ) .
+                                      wfInput( 'lqt_move_summary' ) );
+                                      $wgOut->addHTML( wfCloseElement('p') );*/
+
+                    if( LQ::$moving != $first_post->getID() ) {
+                            $wgOut->addHTML( wfOpenElement('p') );
+                            $this->showMoveButton( 'next', LQ::$article->getID() );
+                            $wgOut->addHTML( wfCloseElement('p') );
+                    }
+            }
+            
             $editing_id = $wgRequest->getInt("lqt_editing", null);
             $replying_to_id = $wgRequest->getInt("lqt_replying_to_id", null);
             $highlighting_title = $wgRequest->getVal("lqt_highlight", null);
-            $first_post = Post::firstPostOfArticle(new Article($title));
+
             $this->renderThreadStartingFrom( $first_post, $pageTitle, $editing_id, $replying_to_id, $highlighting_title);
         }
 }
