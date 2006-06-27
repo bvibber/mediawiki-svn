@@ -20,8 +20,8 @@
 }
 
 .wiki-data-blocks .wiki-data-block {
-	display: inline;
-	float: left;
+	/*display: inline;
+	float: left;*/
 	margin: 4px;
 }
 
