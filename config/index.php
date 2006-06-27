@@ -293,6 +293,10 @@ if( $conf->xml ) {
 if( !function_exists( 'session_name' ) )
 	dieout( "PHP's session module is missing. MediaWiki requires session support in order to function." );
 
+# Likewise for PCRE
+if( !function_exists( 'preg_match' ) )
+	dieout( "The PCRE regular expression functions are missing. MediaWiki requires these in order to function." );
+
 $memlimit = ini_get( "memory_limit" );
 $conf->raiseMemory = false;
 if( empty( $memlimit ) || $memlimit == -1 ) {
@@ -329,7 +333,7 @@ if ( $conf->turck ) {
 
 $conf->apc = function_exists('apc_fetch');
 if ($conf->apc ) {
-	print '<li><a href="http://www.php.net/apc">APC</a> installed</li>\n';
+	print "<li><a href=\"http://www.php.net/apc\">APC</a> installed</li>";
 }
 
 $conf->eaccel = function_exists( 'eaccelerator_get' );
@@ -1384,6 +1388,9 @@ function getLanguageList() {
 	$codes = array();
 
 	$d = opendir( "../languages" );
+	/* In case we are called from the root directory */
+	if (!$d)
+		$d = opendir( "languages");
 	while( false !== ($f = readdir( $d ) ) ) {
 		$m = array();
 		if( preg_match( '/Language([A-Z][a-z_]+)\.php$/', $f, $m ) ) {
