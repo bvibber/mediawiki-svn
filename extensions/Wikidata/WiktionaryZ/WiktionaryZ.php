@@ -1,13 +1,14 @@
 <?php
 
-require_once('wikidata.php');
 require_once('Expression.php');
+require_once('wikidata.php');
 require_once('forms.php');
 require_once('attribute.php');
 require_once('tuple.php');
 require_once('relation.php');
 require_once('type.php');
 require_once('languages.php');
+require_once('HTMLtable.php');
 
 function getLatestRevisionForDefinedMeaning($definedMeaningId) {
 	$dbr =& wfGetDB(DB_SLAVE);
@@ -383,10 +384,10 @@ class DefinedMeaningCollectionController implements PageElementController {
 	
 	public function add($tuple) {
 		global
-			$collectionAttribute, $internalIdAttribute;
+			$collectionAttribute, $sourceIdentifierAttribute;
 		
 		$collectionId = $tuple->getAttributeValue($collectionAttribute);
-		$internalId = $tuple->getAttributeValue($internalIdAttribute);
+		$internalId = $tuple->getAttributeValue($sourceIdentifierAttribute);
 		
 		if ($internalId != "")
 			addDefinedMeaningToCollection($this->definedMeaningId, $collectionId, $internalId, $this->revisionId);
@@ -401,10 +402,10 @@ class DefinedMeaningCollectionController implements PageElementController {
 	
 	public function update($tuple, $tupleUpdate) {
 		global
-			$collectionAttribute, $internalIdAttribute;
+			$collectionAttribute, $sourceIdentifierAttribute;
 		
 		$collectionId = $tuple->getAttributeValue($collectionAttribute);
-		$internalId = $tupleUpdate->getAttributeValue($internalIdAttribute);
+		$internalId = $tupleUpdate->getAttributeValue($sourceIdentifierAttribute);
 		
 		if ($internalId != "")
 			updateDefinedMeaningInCollection($this->definedMeaningId, $collectionId, $internalId);
@@ -626,13 +627,13 @@ class WiktionaryZ {
 	
 	function getDefinedMeaningCollectionsPageElement($definedMeaningId, $revisionId) {
 		global
-			$internalIdAttribute;
+			$sourceIdentifierAttribute;
 		
 		$relation = $this->getDefinedMeaningCollectionsRelation($definedMeaningId);
 		
 		return new DefaultPageElement("defined-meaning-collection-$definedMeaningId", "Collection membership", 
 										$relation, $relation,
-										true, true, new Heading($internalIdAttribute),
+										true, true, new Heading($sourceIdentifierAttribute),
 										false,
 										new DefinedMeaningCollectionController($definedMeaningId, $revisionId));
 	}
@@ -890,9 +891,9 @@ class WiktionaryZ {
 	
 	function getDefinedMeaningCollectionsRelation($definedMeaningId) {
 		global
-			$collectionAttribute, $internalIdAttribute;
+			$collectionAttribute, $sourceIdentifierAttribute;
 			
-		$heading = new Heading($collectionAttribute, $internalIdAttribute);
+		$heading = new Heading($collectionAttribute, $sourceIdentifierAttribute);
 		$relation = new ArrayRelation($heading, new Heading($collectionAttribute));
 		
 		$dbr =& wfGetDB(DB_SLAVE);

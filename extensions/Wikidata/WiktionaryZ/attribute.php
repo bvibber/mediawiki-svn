@@ -44,7 +44,7 @@ class Heading {
 }
 
 global
-	$languageAttribute, $spellingAttribute, $textAttribute, $identicalMeaningAttribute, $internalIdAttribute, 
+	$languageAttribute, $spellingAttribute, $textAttribute, $identicalMeaningAttribute, $sourceIdentifierAttribute, 
 	$collectionAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $expressionIdAttribute, $attributeAttribute,
 	$expressionAttribute, $visibleExpressionAttribute;
 
@@ -56,7 +56,7 @@ $expressionAttribute = new Attribute("expression", "Expression", new TupleType(n
 $textAttribute = new Attribute("text", "Text", "text");
 $identicalMeaningAttribute = new Attribute("indentical-meaning", "Identical meaning?", "boolean");
 $collectionAttribute = new Attribute("collection", "Collection", "collection");
-$internalIdAttribute = new Attribute("internal-id", "Internal ID", "short-text"); 
+$sourceIdentifierAttribute = new Attribute("source-identifier", "Source identifier", "short-text"); 
 
 $attributeAttribute = new Attribute("attribute", "Attribute", "attribute");
 $relationTypeAttribute = new Attribute("relation-type", "Relation type", "relation-type"); 
