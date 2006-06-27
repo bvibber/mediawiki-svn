@@ -164,10 +164,10 @@ class Post extends Article {
          * @private
          */
         function loadLinks() {
-                $dbr =& wfGetDB( DB_SLAVE );
-
                 if ($this->mLinksLoaded) return;
                 $this->mLinksLoaded = true;
+
+                $dbr =& wfGetDB( DB_SLAVE );
                 
                 $line = $dbr->selectRow( array('lqt', 'page'),
                                          array('lqt_next', 'lqt_first_reply'),
@@ -198,10 +198,10 @@ class Post extends Article {
          * @private
          */
         function loadBacklinks() {
-                $dbr =& wfGetDB( DB_SLAVE );
-
                 if ($this->mBacklinksLoaded) return;
                 $this->mBacklinksLoaded = true;
+
+                $dbr =& wfGetDB( DB_SLAVE );
                 
                 $line = $dbr->selectRow( array('lqt', 'page'),
                                          array('lqt_next', 'page_id'),
@@ -290,7 +290,8 @@ class Post extends Article {
                                          array('ORDER BY'=> 'rev_timestamp',
                                                'LIMIT'   => '1') );
 		if ( $line )
-                        return User::newFromName($line->rev_user_text, false);
+                        return $line->rev_user_text;
+#                        return User::newFromName($line->rev_user_text, false);
                 else
                         return null;   # FIXME die.
         }
@@ -310,7 +311,8 @@ class Post extends Article {
                 $result = False;
 		while ( $line = $dbr->fetchObject( $res ) ) {
                         // newFromName normalizes, so we have to make sure both names have gone through it.
-                        if ( User::newFromName($line->rev_user_text, false)->getName() != $orig->getName() ) {
+                        //        if ( User::newFromName($line->rev_user_text, false)->getName() != $orig->getName() ) {
+                        if ( $line->rev_user_text != $orig ) {
                                 $result = True;
                                 break;
                         }
@@ -340,7 +342,8 @@ class Post extends Article {
                         $this->showEditingForm("?lqt_editing={$this->getID()}" );
 
                 } else {
-                        $author = $this->originalAuthor();
+                        $author = User::newFromName($this->originalAuthor(), false);
+
                         $sk = $wgUser->getSkin();
 
                         // Post body:
@@ -378,7 +381,6 @@ class Post extends Article {
                 }
                 $wgOut->addHTML( wfCloseElement( 'div') );
         }
-
 
         
         function showEditingForm( $query ) {
