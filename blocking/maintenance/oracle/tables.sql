@@ -154,27 +154,6 @@ CREATE TABLE hitcounter (
 	hc_id	NUMBER NOT NULL
 );
 
---
--- The internet is full of jerks, alas. Sometimes it's handy
--- to block a vandal or troll account.
---
-CREATE SEQUENCE ipblocks_ipb_id_val;
-CREATE TABLE ipblocks (
-	ipb_id		NUMBER(8) NOT NULL,
-	ipb_address	VARCHAR2(40),
-	ipb_user	NUMBER(8),
-	ipb_by		NUMBER(8) NOT NULL
-				REFERENCES "user" (user_id)
-				ON DELETE CASCADE,
-	ipb_reason	CLOB,
-	ipb_timestamp	TIMESTAMP WITH TIME ZONE NOT NULL,
-	ipb_auto	NUMBER(1) DEFAULT 0 NOT NULL,
-	ipb_expiry	TIMESTAMP WITH TIME ZONE,
-	CONSTRAINT ipblocks_pk PRIMARY KEY (ipb_id)
-);
-CREATE INDEX ipb_address ON ipblocks(ipb_address);
-CREATE INDEX ipb_user ON ipblocks(ipb_user);
-
 CREATE TABLE image (
 	img_name	VARCHAR2(255) NOT NULL,
 	img_size	NUMBER(8) NOT NULL,

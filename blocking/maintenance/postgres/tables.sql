@@ -172,24 +172,6 @@ CREATE TABLE hitcounter (
   hc_id  BIGINT NOT NULL
 );
 
-CREATE SEQUENCE ipblocks_ipb_id_val;
-CREATE TABLE ipblocks (
-  ipb_id           INTEGER NOT NULL PRIMARY KEY DEFAULT nextval('ipblocks_ipb_id_val'),
-  ipb_address      TEXT NULL, -- change to CIDR later
-  ipb_user         INTEGER NULL REFERENCES "user"(user_id) ON DELETE SET NULL,
-  ipb_by           INTEGER NOT NULL REFERENCES "user"(user_id) ON DELETE CASCADE,
-  ipb_reason       TEXT NOT NULL,
-  ipb_timestamp    TIMESTAMPTZ NOT NULL,
-  ipb_auto         CHAR NOT NULL DEFAULT '0',
-  ipb_expiry       TIMESTAMPTZ NOT NULL,
-  ipb_range_start  TEXT, -- change to CIDR later
-  ipb_range_end    TEXT  -- change to CIDR later
-);
-CREATE INDEX ipb_address ON ipblocks(ipb_address);
-CREATE INDEX ipb_user ON ipblocks(ipb_user);
-CREATE INDEX ipb_range ON ipblocks(ipb_range_start,ipb_range_end);
-
-
 CREATE TABLE image (
   img_name         TEXT NOT NULL PRIMARY KEY,
   img_size         SMALLINT NOT NULL,
