@@ -1,0 +1,21 @@
+This is Cortado 0.2.0, "Broken Record"
+   
+Changes since 0.1.2:
+
+      * Seeking in on-demand files and streams
+      * Deadlock fixes
+      * Build now uses ant
+      * Shutdown fixes
+      * Autoplugging based on mimetype; makes local file playback work
+      * Autodect audio backend from sun.audio or javax.sound
+
+Bugs fixed since 0.1.2:
+    
+      * 265 : NullPointerException
+      * 142 : JPEG applet's internal buffering produces "lag"
+      * 367 : cortado fails to build on ubuntu dapper
+
+Changes since 0.1.0:
+
+      * multiple instances of cortado now work correctly
+      * various playback and buffering fixes

@@ -706,17 +706,35 @@ class Linker {
 	
 	/*
 	
-		1) check media type: if ogg theora, grab thumbnail 
-		2) return javascript code to detect client type
-		2) set
 	*/
 	function makeEmbedMediaLinkObj($title, $options){	
+		global $wgScriptPath, $wgJsMimeType;
 		if( is_null( $title ) ) {
 			### HOTFIX. Instead of breaking, return empty string.
 			return $text;
 		}else{
 			$img = new Image($title);
-			$thumb = $img->renderMovieFrame();
+			//get the type of media:
+			$thumb = $img->renderMovieFrame();								
+			
+			switch($img->type){
+				case 'AUDIO':       // simple audio file (ogg, mp3, wav, midi, whatever)
+				case 'VIDEO':      // simple video file (ogg, mpg, etc; no not include formats here that may contain executable sections or scripts!)
+					continue;
+				break;
+				//@todo build an attachment header link to force the browser to download media links. 				
+				case 'UNKNOWN':     // unknown format
+				case 'DRAWING':    // some vector drawing (SVG, WMF, PS, ...) or image source (oo-draw, etc). Can scale up.
+				case 'MULTIMEDIA':  // Scriptable Multimedia (flash, advanced video container formats, etc)
+				case 'OFFICE':      // Office Documents, Spreadsheets (office formats possibly containing apples, scripts, etc)
+				case 'TEXT':        // Plain text (possibly containing program code or scripts)
+				case 'EXECUTABLE':  // binary executable
+				case 'ARCHIVE':
+				default:
+					return $this->makeMediaLinkObj($title, $options['caption']);
+				break;
+			}
+			//print "MIME:" . $img->mime;			
 			
 			//display the video thumbnail: 
 			
@@ -724,9 +742,12 @@ class Linker {
 			//for now just render a thumbnail hack style: 
 			//shortly will integrate multiple ways of grabbing thumnail. 
 			//and caching thumbnail size etc.
+			$js_inc = "<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/skins/common/embed_media.js\"></script>";
+			//@todo think how this will work with multiple same titled media elements in a given page		
+			$embed_div_id = 'embed_'.$title->getDBkey();
 			
-			return '<a href="#" onClick="javascript:alert(\'load::plugin-detect && \n\'+
-			\'play video:'.$img->getUrl().'\')"><img src="'.$img->movieFrameUrl().'"></a>';
+			return $js_inc . "<div style=\"width:384px;Height:288px;border-width: 2px; border-style: solid;\" id=\"{$embed_div_id}\" onClick=\"javascript:auto_embed('{$embed_div_id}', '{$img->getUrl()}')\">".
+								"<img src=\"".$img->movieFrameUrl()."\"></div>";
 
 			//also frame grab should be done at time of uplaod (if we allow dymaic thumnails)
 			

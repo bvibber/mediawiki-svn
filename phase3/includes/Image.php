@@ -258,7 +258,6 @@ class Image
 			}
 		}
 
-
 		if ( $this->fileExists ) {
 			$magic=& wfGetMimeMagic();
 
