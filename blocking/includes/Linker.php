@@ -777,7 +777,7 @@ class Linker {
 	function userToolLinks( $userId, $userText ) {
 		global $wgUser, $wgDisableAnonTalk, $wgSysopUserBans;
 		$talkable = !( $wgDisableAnonTalk && 0 == $userId );
-		$blockable = ( $wgSysopUserBans || 0 == $userId );
+		$blockable = false; # FIXME-BLOCK: Temporarily removed concept of blocking
 
 		$items = array();
 		if( $talkable ) {

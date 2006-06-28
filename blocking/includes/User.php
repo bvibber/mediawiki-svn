@@ -435,20 +435,6 @@ class User {
 		$this->mBlockedby = 0;
 		$ip = wfGetIP();
 
-		# User/IP blocking
-		$block = new Block();
-		$block->fromMaster( !$bFromSlave );
-		if ( $block->load( $ip , $this->mId ) ) {
-			wfDebug( "$fname: Found block.\n" );
-			$this->mBlockedby = $block->mBy;
-			$this->mBlockreason = $block->mReason;
-			if ( $this->isLoggedIn() ) {
-				$this->spreadBlock();
-			}
-		} else {
-			wfDebug( "$fname: No block.\n" );
-		}
-
 		# Proxy blocking
 		# FIXME ? proxyunbannable is to deprecate the old isSysop()
 		if ( !$this->isAllowed('proxyunbannable') && !in_array( $ip, $wgProxyWhitelist ) ) {
