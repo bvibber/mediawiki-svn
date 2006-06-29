@@ -15,6 +15,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	class Patroller extends SpecialPage {
 		
 		function Patroller() {
+			global $wgMessageCache;
+			efPatrollerAddMessages( $wgMessageCache );
 			SpecialPage::SpecialPage( 'Patrol', 'patroller' );
 		}
 		

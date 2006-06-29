@@ -22,12 +22,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	
 	$wgAvailableRights[] = 'patroller';
 	$wgGroupPermissions['sysop']['patroller'] = true;
-	
-	function efPatroller() {
-		global $wgMessageCache;
-		efPatrollerAddMessages( $wgMessageCache );
-	}
-	
+		
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );
