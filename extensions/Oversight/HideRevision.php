@@ -383,9 +383,11 @@ function sosShowList( $from=null ) {
 		array( 'hidden_on_timestamp < ' . $dbr->addQuotes( $fromTime ) ) );
 	
 	global $wgOut;
+	$wgOut->addHtml( '<ul>' );
 	while( $row = $dbr->fetchObject( $result ) ) {
 		$wgOut->addHtml( sosListRow( $row ) );
 	}
+	$wgOut->addHtml( '</ul>' );
 	$dbr->freeResult( $result );
 }
 
