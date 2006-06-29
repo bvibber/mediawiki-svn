@@ -1,24 +1,22 @@
 <?php
 
-# This is a simple example of a special page module
-# Given a string in UTF-8, it converts it to HTML entities suitable for 
-# an ISO 8859-1 web page.
+if ( !defined( 'MEDIAWIKI' ) ) {
+	echo "FindSpam extension\n";
+	exit( 1 );
+}
 
-$wgExtensionFunctions[] = "wfFindSpam";
-
-function wfFindSpam() {
-
-require_once( "SpecialPage.php" );
+global $wgMessageCache;
+$wgMessageCache->addMessage( "findspam", "Find spam" );
 
 class FindSpamPage extends SpecialPage
 {
 	function FindSpamPage() {
-		SpecialPage::SpecialPage("FindSpam", "sysop");
+		SpecialPage::SpecialPage("FindSpam", "findspam");
 	}
 
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgTitle, $wgLocalDatabases, $wgUser;
-		global $conf, $wgCanonicalNamespaceNames, $wgLang;
+		global $wgConf, $wgCanonicalNamespaceNames, $wgLang;
 
 		$this->setHeaders();
 		if ( !$this->userCanExecute( $wgUser ) ) {
@@ -47,7 +45,7 @@ class FindSpamPage extends SpecialPage
 				$sql = "SELECT rc_namespace,rc_title,rc_timestamp,rc_user_text,rc_last_oldid FROM $db.recentchanges WHERE rc_ip='" . wfStrencode( $ip ) . 
 				  "' AND rc_this_oldid=0";
 				$res = $dbr->query( $sql, "findspam.php" );
-				list( $site, $lang ) = $conf->siteFromDB( $db );
+				list( $site, $lang ) = $wgConf->siteFromDB( $db );
 				if ( $lang == 'meta' ) {
 					$baseUrl = "http://meta.wikimedia.org";
 				} else {
@@ -88,9 +86,4 @@ class FindSpamPage extends SpecialPage
 	}
 }
 
-global $wgMessageCache;
-SpecialPage::addPage( new FindSpamPage );
-$wgMessageCache->addMessage( "findspam", "Find spam" );
-
-} # End of extension function
 ?>

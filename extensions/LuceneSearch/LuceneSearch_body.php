@@ -20,54 +20,36 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * $Id$
+ * $Id: LuceneSearch.php 14800 2006-06-17 16:53:39Z robchurch $
  */
 
-# To use this, add something like the following to LocalSettings:
-#
-#  $wgLuceneHost = "192.168.0.1";
-#  $wgLucenePort = 8123;
-#
-#  require_once("../extensions/LuceneSearch.php");
-#
-# To load-balance with from multiple servers:
-#
-#  $wgLuceneHost = array( "192.168.0.1", "192.168.0.2" );
-#
-# The MWDaemon search daemon needs to be running on the specified host(s)
-# - it's in the 'lucene-search' module in CVS.
-##########
-
-$wgLuceneDisableSuggestions = false;
-$wgLuceneDisableTitleMatches = false;
-
-/** Number of seconds to cache query results */
-$wgLuceneCacheExpiry = 60 * 15;
-
-# Not a valid entry point, skip unless MEDIAWIKI is defined
 if (!defined('MEDIAWIKI')) {
 	die( "This file is part of MediaWiki, it is not a valid entry point\n" );
 }
-	
-
-$wgExtensionFunctions[] = 'wfLuceneSearch';
-$wgExtensionCredits['specialpage'][] = array(
-	'name' => 'LuceneSearch',
-	'author' => array( 'Brion Vibber' )
-);
-
-if (class_exists('Revision'))
-	$wgLSuseold = false;
-else
-	$wgLSuseold = true;
-
-define('LS_PER_PAGE', 10);
-
-function wfLuceneSearch() {
 
 global $IP;
-require_once( $IP.'/includes/SpecialPage.php');
 require_once($IP.'/includes/SearchEngine.php');
+
+global $wgMessageCache;
+$wgMessageCache->addMessages(array(
+	'searchnumber'          => "<strong>Results $1-$2 of $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prev</span>",
+	'searchnext'            => "<span style='font-size: small'>Next</span> &#x00BB;",
+	'searchscore'           => "Relevance: $1",
+	'searchsize'            => "$1KB ($2 words)",
+	'searchdidyoumean'      => "Did you mean: \"<a href=\"$1\">$2</a>\"?",
+	'searchnoresults'       => "Sorry, there were no exact matches to your query.",
+	'searchnearmatches'     => "<b>These pages have similar titles to your query:</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+Search in namespaces:\n
+$1\n
+Search for $3 $9",
+	'lucenefallback'        =>
+"There was a problem with the wiki search.
+This is probably temporary; try again in a few moments,
+or you can search the wiki through an external search service:\n"
+));
 
 class LuceneSearch extends SpecialPage
 {
@@ -162,7 +144,7 @@ class LuceneSearch extends SpecialPage
 			'rel' => 'stylesheet',
 			'type' => 'text/css',
 			'media' => 'screen,projection',
-			'href' => $wgScriptPath . '/extensions/lucenesearch.css'
+			'href' => $wgScriptPath . '/extensions/LuceneSearch/lucenesearch.css'
 			)
 		);
 
@@ -797,27 +779,4 @@ class LuceneSearchSet {
 	}
 }
 
-global $wgMessageCache;
-SpecialPage::addPage(new LuceneSearch);
-$wgMessageCache->addMessages(array(
-	'searchnumber'          => "<strong>Results $1-$2 of $3</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prev</span>",
-	'searchnext'            => "<span style='font-size: small'>Next</span> &#x00BB;",
-	'searchscore'           => "Relevance: $1",
-	'searchsize'            => "$1KB ($2 words)",
-	'searchdidyoumean'      => "Did you mean: \"<a href=\"$1\">$2</a>\"?",
-	'searchnoresults'       => "Sorry, there were no exact matches to your query.",
-	'searchnearmatches'     => "<b>These pages have similar titles to your query:</b>\n",
-	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-Search in namespaces:\n
-$1\n
-Search for $3 $9",
-	'lucenefallback'        =>
-"There was a problem with the wiki search.
-This is probably temporary; try again in a few moments,
-or you can search the wiki through an external search service:\n"
-));
-
-} # End of extension function
 ?>

@@ -1,14 +1,5 @@
 <?php
 
-# Not a valid entry point, skip unless MEDIAWIKI is defined
-if (defined('MEDIAWIKI')) {
-
-$wgExtensionFunctions[] = "wfListChangedArticles";
-
-function wfListChangedArticles() {
-global $IP;
-require_once( "$IP/includes/SpecialPage.php" );
-
 class ListChangedArticles extends UnlistedSpecialPage
 {
 	function ListChangedArticles() {
@@ -67,11 +58,4 @@ class ListChangedArticles extends UnlistedSpecialPage
 	}
 
 }
-
-SpecialPage::addPage( new ListChangedArticles );
-
-} # End of extension function
-
-} # End of invocation guard
-
 ?>

@@ -1,16 +1,11 @@
 <?php
+if ( !defined( 'MEDIAWIKI' ) ) {
+	echo "UnicodeConverter extension\n";
+	exit( 1 );
+}
 
-# This is a simple example of a special page module
-# Given a string in UTF-8, it converts it to HTML entities suitable for 
-# an ISO 8859-1 web page.
-
-# Not a valid entry point, skip unless MEDIAWIKI is defined
-if (defined('MEDIAWIKI')) {
-$wgExtensionFunctions[] = "wfUnicodeConverter";
-
-function wfUnicodeConverter() {
-global $IP;
-require_once( "$IP/includes/SpecialPage.php" );
+global $wgMessageCache;
+$wgMessageCache->addMessage( "unicodeconverter", "Unicode Converter" );
 
 class UnicodeConverter extends SpecialPage
 {
@@ -43,12 +38,6 @@ END
 		}
 	}
 }
-
-global $wgMessageCache;
-SpecialPage::addPage( new UnicodeConverter );
-$wgMessageCache->addMessage( "unicodeconverter", "Unicode Converter" );
-
-} # End of extension function
 
 # Converts a single UTF-8 character into the corresponding HTML character entity
 function wfUtf8Entity( $matches ) {
@@ -92,5 +81,4 @@ function wfUtf8ToHTML($string) {
 }
 
 
-} # End of invocation guard
 ?>

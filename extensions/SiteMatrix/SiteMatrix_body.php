@@ -1,19 +1,13 @@
 <?php
 
-# Make an HTML table showing all the wikis on the site
+if ( !defined( 'MEDIAWIKI' ) ) {
+    echo "SiteMatrix extension\n";
+    exit( 1 );
+}
 
-# Not a valid entry point, skip unless MEDIAWIKI is defined
-if (defined('MEDIAWIKI')) {
-	
-$wgExtensionFunctions[] = 'wfSiteMatrix';
-$wgExtensionCredits['specialpage'][] = array(
-	'name' => 'SiteMatrix',
-	'description' => 'display a list of wikimedia wikis'
-);
+global $wgMessageCache, $IP;
+$wgMessageCache->addMessage( 'sitematrix', 'List of Wikimedia wikis' );
 
-function wfSiteMatrix() {
-global $IP;
-require_once( $IP.'/includes/SpecialPage.php' );
 require_once( $IP.'/languages/Names.php' );
 
 class SiteMatrixPage extends SpecialPage {
@@ -133,10 +127,4 @@ class SiteMatrixPage extends SpecialPage {
 	}
 }
 
-SpecialPage::addPage( new SiteMatrixPage );
-global $wgMessageCache;
-$wgMessageCache->addMessage( 'sitematrix', 'List of Wikimedia wikis' );
-
-} # End of extension function
-} # End of invocation protection
 ?>

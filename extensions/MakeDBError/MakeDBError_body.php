@@ -1,19 +1,5 @@
 <?php
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( "Not a valid entry point\n" );
-}
-
-$wgExtensionFunctions[] = "wfMakeDBErrorExt";
-$wgExtensionCredits['specialpage'][] = array(
-	'name' => 'MakeDBError',
-	'description' => 'makes a database error with an invalid query'
-);
-
-function wfMakeDBErrorExt() {
-
-require_once( "SpecialPage.php" );
-
 class MakeDBErrorPage extends UnlistedSpecialPage
 {
 	function MakeDBErrorPage() {
@@ -34,11 +20,5 @@ class MakeDBErrorPage extends UnlistedSpecialPage
 		}
 	}
 }
-
-SpecialPage::addPage( new MakeDBErrorPage );
-
-
-
-} # End of extension function
 
 ?>

@@ -1,18 +1,12 @@
 <?php
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+    echo "CheckUser extension\n";
+    exit( 1 );
+}
 
-# Not a valid entry point, skip unless MEDIAWIKI is defined
-if (defined('MEDIAWIKI')) {
-$wgExtensionFunctions[] = 'wfCheckUser';
-
-$wgAvailableRights[] = 'checkuser';
-$wgGroupPermissions['checkuser']['checkuser'] = true;
-
-$wgCheckUserLog = '/home/wikipedia/logs/checkuser.log';
-
-function wfCheckUser() {
-global $IP;
-require_once( $IP.'/includes/SpecialPage.php' );
+global $wgMessageCache;
+$wgMessageCache->addMessage( 'checkuser', 'Check user' );
 
 class CheckUser extends UnlistedSpecialPage
 {
@@ -290,11 +284,4 @@ EOT
 		return true;
 	}
 }
-
-global $wgMessageCache;
-SpecialPage::addPage( new CheckUser );
-$wgMessageCache->addMessage( 'checkuser', 'Check user' );
-
-} # End of extension function
-} # End of invocation guard
 ?>
