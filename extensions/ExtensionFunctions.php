@@ -42,14 +42,20 @@ if ( !defined( 'MW_SPECIALPAGE_VERSION' ) ) {
 		}
 
 		function setup() {
-			require_once( $file );
+			global $IP;
+			require_once( "$IP/includes/SpecialPage.php" );
+			require_once( $this->file );
+			if ( !is_array( $this->params ) ) {
+				$this->params = array( $this->params );
+			}
 			$className = array_shift( $this->params );
-			$obj = extCreateObject( $className, $params );
+			$obj = extCreateObject( $className, $this->params );
 			SpecialPage::addPage( $obj );
 		}
 	}
 
 	function extAddSpecialPage( $file, $name, $params ) {
+		global $wgExtensionFunctions;
 		$setup = new SetupSpecialPage( $file, $name, $params );
 		$wgExtensionFunctions[] = array( &$setup, 'setup' );
 	}
