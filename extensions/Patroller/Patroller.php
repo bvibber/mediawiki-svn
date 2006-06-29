@@ -12,8 +12,6 @@
  
 if( defined( 'MEDIAWIKI' ) ) {
 
-	require_once( 'Patroller.i18n.php' );
-
 	$wgSpecialPages['Patrol'] = 'Patroller';
 	$wgAutoloadClasses['Patroller'] = dirname( __FILE__ ) . '/Patroller.class.php';
 

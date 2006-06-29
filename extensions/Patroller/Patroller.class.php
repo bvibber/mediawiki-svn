@@ -16,6 +16,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		
 		function Patroller() {
 			global $wgMessageCache;
+			require_once( 'Patroller.i18n.php' );
 			efPatrollerAddMessages( $wgMessageCache );
 			SpecialPage::SpecialPage( 'Patrol', 'patroller' );
 		}
