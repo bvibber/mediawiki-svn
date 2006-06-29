@@ -951,3 +951,26 @@ CREATE TABLE /*$wgDBprefix*/querycache_info (
 	UNIQUE KEY ( qci_type )
 
 ) TYPE=InnoDB;
+
+
+-- Details of blocks on user accounts and IP addresses/ranges
+CREATE TABLE /*$wgDBprefix*/blocks (
+  `blk_id` int(11) NOT NULL auto_increment,
+  `blk_blocker` int(10) unsigned NOT NULL,
+  `blk_timestamp` varchar(14) NOT NULL,
+  `blk_expires` varchar(14) NOT NULL,
+  `blk_user` int(10) unsigned NOT NULL,
+  `blk_ip` varchar(40) NOT NULL,
+  `blk_hard` int(1) NOT NULL,
+  `blk_auto` int(1) NOT NULL,
+  `blk_original` int(11) unsigned NOT NULL,
+  `blk_range_start` varchar(32) NOT NULL,
+  `blk_range_end` varchar(32) NOT NULL,
+  `blk_reason` tinyblob NOT NULL,
+  PRIMARY KEY  (`blk_id`),
+  KEY `blk_expires` (`blk_expires`),
+  KEY `blk_user` (`blk_user`),
+  KEY `blk_ip` (`blk_ip`),
+  KEY `blk_original` (`blk_original`),
+  KEY `blk_range_start` (`blk_range_start`,`blk_range_end`)
+) TYPE=InnoDB;
