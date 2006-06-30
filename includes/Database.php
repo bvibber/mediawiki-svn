@@ -267,8 +267,8 @@ class Database {
 	 * Output page, used for reporting errors
 	 * FALSE means discard output
 	 */
-	function &setOutputPage( &$out ) {
-		$this->mOut =& $out;
+	function setOutputPage( $out ) {
+		$this->mOut = $out;
 	}
 
 	/**
@@ -1367,7 +1367,7 @@ class Database {
 	 * @return string slashed string.
 	 */
 	function strencode( $s ) {
-		return addslashes( $s );
+		return mysql_real_escape_string( $s, $this->mConn );
 	}
 
 	/**
@@ -1931,7 +1931,7 @@ class Database {
 		// Ordinary variables
 		foreach ( $varnames as $var ) {
 			if( isset( $GLOBALS[$var] ) ) {
-				$val = addslashes( $GLOBALS[$var] );
+				$val = addslashes( $GLOBALS[$var] ); // FIXME: safety check?
 				$ins = str_replace( '{$' . $var . '}', $val, $ins );
 				$ins = str_replace( '/*$' . $var . '*/`', '`' . $val, $ins );
 				$ins = str_replace( '/*$' . $var . '*/', $val, $ins );

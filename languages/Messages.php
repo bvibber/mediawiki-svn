@@ -331,9 +331,7 @@ Function: $1<br />
 Query: $2',
 'viewsource' => 'View source',
 'viewsourcefor' => 'for $1',
-'protectedtext' => 'This page has been locked to prevent editing; there are
-a number of reasons why this may be so, please see
-[[{{ns:project}}:Protected page]].
+'protectedtext' => 'This page has been locked to prevent editing.
 
 You can view and copy the source of this page:',
 'protectedinterface' => 'This page provides interface text for the software, and is locked to prevent abuse.',
@@ -550,7 +548,7 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'readonlywarning' => '<strong>WARNING: The database has been locked for maintenance,
 so you will not be able to save your edits right now. You may wish to cut-n-paste
 the text into a text file and save it for later.</strong>',
-'protectedpagewarning' => "<strong>WARNING:  This page has been locked so that only users with sysop privileges can edit it. Be sure you are following the [[{{ns:project}}:Protected page guidelines|protected page guidelines]].</strong>",
+'protectedpagewarning' => "<strong>WARNING:  This page has been locked so that only users with sysop privileges can edit it.</strong>",
 'semiprotectedpagewarning' => "'''Note:''' This page has been locked so that only registered users can edit it.",
 'templatesused'	=> 'Templates used on this page:',
 'edittools' => '<!-- Text here will be shown below edit and upload forms. -->',
@@ -858,7 +856,7 @@ created and by whom, and anything else you may know about it. If this is an imag
 # Image list
 #
 'imagelist'		=> 'File list',
-'imagelisttext'	=> 'Below is a list of <strong>$1</strong> files sorted <strong>$2</strong>.',
+'imagelisttext' => "Below is a list of '''$1''' {{plural:$1|file|files}} sorted $2.",
 'imagelistforuser' => "This shows only images uploaded by $1.",
 'getimagelist'	=> 'fetching file list',
 'ilsubmit'		=> 'Search',
@@ -1045,10 +1043,10 @@ or has chosen not to receive e-mail from other users.',
 'emailsenttext' => 'Your e-mail message has been sent.',
 
 # Watchlist
-#
 'watchlist'			=> 'My watchlist',
-'watchlistsub'		=> "(for user \"$1\")",
+'watchlistfor' => "(for '''$1''')",
 'nowatchlist'		=> 'You have no items on your watchlist.',
+'watchlistanontext' => 'Please $1 to view or edit items on your watchlist.',
 'watchlistcount' 	=> "'''You have $1 items on your watchlist, including talk pages.'''",
 'clearwatchlist' 	=> 'Clear watchlist',
 'watchlistcleartext' => 'Are you sure you wish to remove them?',
@@ -1165,8 +1163,7 @@ Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]).",
 this action has been canceled as a precaution against session hijacking.
 Please hit "back" and reload the page you came from, then try again.',
 'protectlogpage' => 'Protection log',
-'protectlogtext' => "Below is a list of page locks/unlocks.
-See [[{{ns:project}}:Protected page]] for more information.",
+'protectlogtext' => "Below is a list of page locks and unlocks.",
 'protectedarticle' => 'protected "[[$1]]"',
 'unprotectedarticle' => 'unprotected "[[$1]]"',
 'protectsub' => '(Protecting "$1")',
@@ -1179,8 +1176,7 @@ See [[{{ns:project}}:Protected page]] for more information.",
 'confirmunprotect' => 'Confirm unprotection',
 'unprotectcomment' => 'Reason for unprotecting',
 'protect-unchain' => 'Unlock move permissions',
-'protect-text' => 'You may view and change the protection level here for the page <strong>$1</strong>.
-Please be sure you are following the [[{{ns:project}}:Protected page|project guidelines]].',
+'protect-text' => 'You may view and change the protection level here for the page <strong>$1</strong>.',
 'protect-viewtext' => 'Your account does not have permission to change
 page protection levels. Here are the current settings for the page <strong>$1</strong>:',
 'protect-default' => '(default)',
@@ -1457,14 +1453,34 @@ In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{int:m
 # Special:Import
 'import'	=> 'Import pages',
 'importinterwiki' => 'Transwiki import',
+'import-interwiki-text' => 'Select a wiki and page title to import.
+Revision dates and editors\' names will be preserved.
+All transwiki import actions are logged at the [[Special:Log/import|import log]].',
+'import-interwiki-history' => 'Copy all history versions for this page',
+'import-interwiki-submit' => 'Import',
 'importtext'	=> 'Please export the file from the source wiki using the Special:Export utility, save it to your disk and upload it here.',
+'importstart'	=> "Importing pages...",
+'import-revision-count' => '$1 revision(s)',
+'importnopages'	=> "No pages to import.",
 'importfailed'	=> "Import failed: $1",
+'importunknownsource'	=> "Unknown import source type",
+'importcantopen'	=> "Couldn't open import file",
+'importbadinterwiki'	=> "Bad interwiki link",
 'importnotext'	=> 'Empty or no text',
 'importsuccess'	=> 'Import succeeded!',
 'importhistoryconflict' => 'Conflicting history revision exists (may have imported this page before)',
 'importnosources' => 'No transwiki import sources have been defined and direct history uploads are disabled.',
 'importnofile' => 'No import file was uploaded.',
 'importuploaderror' => 'Upload of import file failed; perhaps the file is bigger than the allowed upload size.',
+
+# import log
+'importlogpage' => 'Import log',
+'importlogpagetext' => 'Administrative imports of pages with edit history from other wikis.',
+'import-logentry-upload' => 'imported $1 by file upload',
+'import-logentry-upload-detail' => '$1 revision(s)',
+'import-logentry-interwiki' => 'transwikied $1',
+'import-logentry-interwiki-detail' => '$1 revision(s) from $2',
+
 
 # Keyboard access keys for power users
 'accesskey-search' => 'f',

@@ -35,8 +35,12 @@ function wfSpecialImport( $page = '' ) {
 	###
 
 	if( $wgRequest->wasPosted() && $wgRequest->getVal( 'action' ) == 'submit') {
+		$isUpload = false;
+		$interwiki = false;
+		
 		switch( $wgRequest->getVal( "source" ) ) {
 		case "upload":
+			$isUpload = true;
 			if( $wgUser->isAllowed( 'importupload' ) ) {
 				$source = ImportStreamSource::newFromUpload( "xmlimport" );
 			} else {
@@ -44,19 +48,29 @@ function wfSpecialImport( $page = '' ) {
 			}
 			break;
 		case "interwiki":
+			$interwiki = $wgRequest->getVal( 'interwiki' );
+			$history = $wgRequest->getCheck( 'interwikiHistory' );
 			$source = ImportStreamSource::newFromInterwiki(
-				$wgRequest->getVal( "interwiki" ),
-				$wgRequest->getText( "frompage" ) );
+				$interwiki,
+				$wgRequest->getText( "frompage" ),
+				$history );
 			break;
 		default:
-			$source = new WikiError( "Unknown import source type" );
+			$source = new WikiErrorMsg( "importunknownsource" );
 		}
 
 		if( WikiError::isError( $source ) ) {
 			$wgOut->addWikiText( wfEscapeWikiText( $source->getMessage() ) );
 		} else {
+			$wgOut->addWikiText( wfMsg( "importstart" ) );
+			
 			$importer = new WikiImporter( $source );
+			$reporter = new ImportReporter( $importer, $isUpload, $interwiki );
+			
+			$reporter->open();
 			$result = $importer->doImport();
+			$reporter->close();
+			
 			if( WikiError::isError( $result ) ) {
 				$wgOut->addWikiText( wfMsg( "importfailed",
 					wfEscapeWikiText( $result->getMessage() ) ) );
@@ -93,22 +107,103 @@ function wfSpecialImport( $page = '' ) {
 		$wgOut->addHTML( "
 <fieldset>
 	<legend>" . wfMsgHtml('importinterwiki') . "</legend>
-	<form method='post' action=\"$action\">
+	<form method='post' action=\"$action\">" .
+		$wgOut->parse( wfMsg( 'import-interwiki-text' ) ) . "
 		<input type='hidden' name='action' value='submit' />
 		<input type='hidden' name='source' value='interwiki' />
-		<select name='interwiki'>
-" );
+		<table>
+			<tr>
+				<td>
+					<select name='interwiki'>" );
 		foreach( $wgImportSources as $interwiki ) {
 			$iw = htmlspecialchars( $interwiki );
 			$wgOut->addHTML( "<option value=\"$iw\">$iw</option>\n" );
 		}
 		$wgOut->addHTML( "
-		</select>
-		<input name='frompage' />
-		<input type='submit' />
+					</select>
+				</td>
+				<td>" .
+					wfInput( 'frompage', 40 ) .
+				"</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>" .
+					wfCheckLabel( wfMsg( 'import-interwiki-history' ),
+						'interwikiHistory', 'interwikiHistory', true ) .
+				"</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>" .
+					wfSubmitButton( wfMsg( 'import-interwiki-submit' ) ) .
+				"</td>
+			</tr>
+		</table>
 	</form>
 </fieldset>
 " );
+	}
+}
+
+/**
+ * Reporting callback
+ */
+class ImportReporter {
+	function __construct( $importer, $upload, $interwiki ) {
+		$importer->setPageOutCallback( array( $this, 'reportPage' ) );
+		$this->mPageCount = 0;
+		$this->mIsUpload = $upload;
+		$this->mInterwiki = $interwiki;
+	}
+	
+	function open() {
+		global $wgOut;
+		$wgOut->addHtml( "<ul>\n" );
+	}
+	
+	function reportPage( $pageName, $revisionCount ) {
+		global $wgOut, $wgUser, $wgLang, $wgContLang;
+		
+		$skin = $wgUser->getSkin();
+		$title = Title::newFromText( $pageName );
+		
+		$this->mPageCount++;
+		
+		$localCount = $wgLang->formatNum( $revisionCount );
+		$contentCount = $wgContLang->formatNum( $revisionCount );
+		
+		$wgOut->addHtml( "<li>" . $skin->makeKnownLinkObj( $title ) .
+			" " .
+			wfMsgHtml( 'import-revision-count', $localCount ) .
+			"</li>\n" );
+		
+		$log = new LogPage( 'import' );
+		if( $this->mIsUpload ) {
+			$detail = wfMsgForContent( 'import-logentry-upload-detail',
+				$contentCount );
+			$log->addEntry( 'upload', $title, $detail );
+		} else {
+			$interwiki = '[[:' . $this->mInterwiki . ':' .
+				$title->getPrefixedText() . ']]';
+			$detail = wfMsgForContent( 'import-logentry-interwiki-detail',
+				$contentCount, $interwiki );
+			$log->addEntry( 'interwiki', $title, $detail );
+		}
+		
+		$comment = $detail; // quick
+		$dbw = wfGetDB( DB_MASTER );
+		$nullRevision = Revision::newNullRevision(
+			$dbw, $title->getArticleId(), $comment, true );
+		$nullRevId = $nullRevision->insertOn( $dbw );
+	}
+	
+	function close() {
+		global $wgOut;
+		if( $this->mPageCount == 0 ) {
+			$wgOut->addHtml( "<li>" . wfMsgHtml( 'importnopages' ) . "</li>\n" );
+		}
+		$wgOut->addHtml( "</ul>\n" );
 	}
 }
 
@@ -211,6 +306,9 @@ class WikiRevision {
 		if( $pageId == 0 ) {
 			# must create the page...
 			$pageId = $article->insertOn( $dbw );
+			$created = true;
+		} else {
+			$created = false;
 		}
 
 		# FIXME: Check for exact conflicts
@@ -232,8 +330,27 @@ class WikiRevision {
 			'minor_edit' => $this->minor,
 			) );
 		$revId = $revision->insertOn( $dbw );
-		$article->updateIfNewerOn( $dbw, $revision );
+		$changed = $article->updateIfNewerOn( $dbw, $revision );
 
+		if( $created ) {
+			wfDebug( __METHOD__ . ": running onArticleCreate\n" );
+			Article::onArticleCreate( $this->title );
+		} else {
+			if( $changed ) {
+				wfDebug( __METHOD__ . ": running onArticleEdit\n" );
+				Article::onArticleEdit( $this->title );
+			}
+		}
+		if( $created || $changed ) {
+			wfDebug( __METHOD__ . ": running edit updates\n" );
+			$article->editUpdates(
+				$this->getText(),
+				$this->getComment(),
+				$this->minor,
+				$this->timestamp,
+				$revId );
+		}
+		
 		return true;
 	}
 
@@ -247,6 +364,7 @@ class WikiRevision {
 class WikiImporter {
 	var $mSource = null;
 	var $mPageCallback = null;
+	var $mPageOutCallback = null;
 	var $mRevisionCallback = null;
 	var $lastfield;
 
@@ -315,6 +433,18 @@ class WikiImporter {
 	}
 
 	/**
+	 * Sets the action to perform as each page in the stream is completed.
+	 * Callback accepts the page title and a count of revisions.
+	 * @param callable $callback
+	 * @return callable
+	 */
+	function setPageOutCallback( $callback ) {
+		$previous = $this->mPageOutCallback;
+		$this->mPageOutCallback = $callback;
+		return $previous;
+	}
+
+	/**
 	 * Sets the action to perform as each page revision is reached.
 	 * @param callable $callback
 	 * @return callable
@@ -364,6 +494,18 @@ class WikiImporter {
 		}
 	}
 
+	/**
+	 * Notify the callback function when a </page> is closed.
+	 * @param Title $title
+	 * @param int $revisionCount
+	 * @private
+	 */
+	function pageOutCallback( $title, $revisionCount ) {
+		if( is_callable( $this->mPageOutCallback ) ) {
+			call_user_func( $this->mPageOutCallback, $title, $revisionCount );
+		}
+	}
+
 
 	# XML parser callbacks from here out -- beware!
 	function donothing( $parser, $x, $y="" ) {
@@ -383,6 +525,7 @@ class WikiImporter {
 		if( $name == 'siteinfo' ) {
 			xml_set_element_handler( $parser, "in_siteinfo", "out_siteinfo" );
 		} elseif( $name == 'page' ) {
+			$this->workRevisionCount = 0;
 			xml_set_element_handler( $parser, "in_page", "out_page" );
 		} else {
 			return $this->throwXMLerror( "Expected <page>, got <$name>" );
@@ -435,6 +578,7 @@ class WikiImporter {
 		case "revision":
 			$this->workRevision = new WikiRevision;
 			$this->workRevision->setTitle( $this->workTitle );
+			$this->workRevisionCount++;
 			xml_set_element_handler( $parser, "in_revision", "out_revision" );
 			break;
 		default:
@@ -449,8 +593,11 @@ class WikiImporter {
 		}
 		xml_set_element_handler( $parser, "in_mediawiki", "out_mediawiki" );
 
+		$this->pageOutCallback( $this->workTitle, $this->workRevisionCount );
+		
 		$this->workTitle = NULL;
 		$this->workRevision = NULL;
+		$this->workRevisionCount = 0;
 	}
 
 	function in_nothing( $parser, $name, $attribs ) {
@@ -604,7 +751,7 @@ class ImportStreamSource {
 	function newFromFile( $filename ) {
 		$file = @fopen( $filename, 'rt' );
 		if( !$file ) {
-			return new WikiError( "Couldn't open import file" );
+			return new WikiErrorMsg( "importcantopen" );
 		}
 		return new ImportStreamSource( $file );
 	}
@@ -627,6 +774,7 @@ class ImportStreamSource {
 	}
 
 	function newFromURL( $url ) {
+		wfDebug( __METHOD__ . ": opening $url\n" );
 		# fopen-wrappers are normally turned off for security.
 		ini_set( "allow_url_fopen", true );
 		$ret = ImportStreamSource::newFromFile( $url );
@@ -634,13 +782,14 @@ class ImportStreamSource {
 		return $ret;
 	}
 
-	function newFromInterwiki( $interwiki, $page ) {
+	function newFromInterwiki( $interwiki, $page, $history=false ) {
 		$base = Title::getInterwikiLink( $interwiki );
-		if( empty( $base ) ) {
-			return new WikiError( 'Bad interwiki link' );
+		$link = Title::newFromText( "$interwiki:Special:Export/$page" );
+		if( empty( $base ) || empty( $link ) ) {
+			return new WikiErrorMsg( 'importbadinterwiki' );
 		} else {
-			$import = wfUrlencode( "Special:Export/$page" );
-			$url = str_replace( "$1", $import, $base );
+			$params = $history ? 'history=1' : '';
+			$url = $link->getFullUrl( $params );
 			return ImportStreamSource::newFromURL( $url );
 		}
 	}

@@ -7,9 +7,6 @@
  * than MySQL ones, some of them should be moved to parent
  * Database class.
  *
- * STATUS: Working PG implementation of MediaWiki
- * TODO: Installer support
- *
  * @package MediaWiki
  */
 
@@ -18,10 +15,6 @@
  */
 require_once( 'Database.php' );
 
-/**
- *
- * @package MediaWiki
- */
 class DatabasePostgres extends Database {
 	var $mInsertId = NULL;
 	var $mLastResult = NULL;
@@ -29,7 +22,18 @@ class DatabasePostgres extends Database {
 	function DatabasePostgres($server = false, $user = false, $password = false, $dbName = false,
 		$failFunction = false, $flags = 0 )
 	{
-		Database::__construct( $server, $user, $password, $dbName, $failFunction, $flags );
+
+		global $wgOut, $wgDBprefix, $wgCommandLineMode;
+		# Can't get a reference if it hasn't been set yet
+		if ( !isset( $wgOut ) ) {
+			$wgOut = NULL;
+		}
+		$this->mOut =& $wgOut;
+		$this->mFailFunction = $failFunction;
+		$this->mFlags = $flags;
+
+		$this->open( $server, $user, $password, $dbName);
+
 	}
 
 	static function newFromParams( $server = false, $user = false, $password = false, $dbName = false,
@@ -48,34 +52,93 @@ class DatabasePostgres extends Database {
 			throw new DBConnectionError( $this, "PostgreSQL functions missing, have you compiled PHP with the --with-pgsql option?\n" );
 		}
 
-		global $wgDBschema;
+		global $wgDBport;
 
 		$this->close();
 		$this->mServer = $server;
+		$port = $wgDBport;
 		$this->mUser = $user;
 		$this->mPassword = $password;
 		$this->mDBname = $dbName;
-		$this->mSchemas = array($wgDBschema,'public');
 
 		$success = false;
 
-		if ( '' != $dbName ) {
-			# start a database connection
-			$hstring="";
-			if ($server!=false && $server!="") {
-				$hstring="host=$server ";
+		$hstring="";
+		if ($server!=false && $server!="") {
+			$hstring="host=$server ";
+		}
+		if ($port!=false && $port!="") {
+			$hstring .= "port=$port ";
+		}
+
+		error_reporting( E_ALL );
+
+		@$this->mConn = pg_connect("$hstring dbname=$dbName user=$user password=$password");
+
+		if ( $this->mConn == false ) {
+			wfDebug( "DB connection error\n" );
+			wfDebug( "Server: $server, Database: $dbName, User: $user, Password: " . substr( $password, 0, 3 ) . "...\n" );
+			wfDebug( $this->lastError()."\n" );
+			return false;
+		}
+
+		$this->mOpened = true;
+		## If this is the initial connection, setup the schema stuff
+		if (defined('MEDIAWIKI_INSTALL') and !defined('POSTGRES_SEARCHPATH')) {
+			global $wgDBmwschema, $wgDBts2schema;
+
+			## Do we have the basic tsearch2 table?
+			print "<li>Checking for tsearch2 ...";
+			if (! $this->tableExists("pg_ts_dict", $wgDBts2schema)) {
+				print "FAILED. Make sure tsearch2 is installed. See <a href=";
+				print "'http://www.devx.com/opensource/Article/21674/0/page/2'>this article</a>";
+				print " for instructions.</li>\n";
+				dieout("</ul>");
+			}				
+			print "OK</li>\n";
+
+			## Does the schema already exist? Who owns it?
+			$result = $this->schemaExists($wgDBmwschema);
+			if (!$result) {
+				print "<li>Creating schema <b>$wgDBmwschema</b> ...";
+				$result = $this->doQuery("CREATE SCHEMA $wgDBmwschema");
+				if (!$result) {
+					print "FAILED.</li>\n";
+					return false;
+				}
+				print "ok</li>\n";
+			}
+			else if ($result != $user) {
+				print "<li>Schema <b>$wgDBmwschema</b> exists but is not owned by <b>$user</b>. Not ideal.</li>\n";
+			}
+			else {
+				print "<li>Schema <b>$wgDBmwschema</b> exists and is owned by <b>$user ($result)</b>. Excellent.</li>\n";
 			}
 
-			@$this->mConn = pg_connect("$hstring dbname=$dbName user=$user password=$password");
-			if ( $this->mConn == false ) {
-				wfDebug( "DB connection error\n" );
-				wfDebug( "Server: $server, Database: $dbName, User: $user, Password: " . substr( $password, 0, 3 ) . "...\n" );
-				wfDebug( $this->lastError()."\n" );
-			} else {
-				$this->setSchema();
-				$this->mOpened = true;
+			## Fix up the search paths if needed
+			print "<li>Setting the search path for user <b>$user</b> ...";
+			$path = "$wgDBmwschema";
+			if ($wgDBts2schema !== $wgDBmwschema)
+				$path .= ", $wgDBts2schema";
+			if ($wgDBmwschema !== 'public' and $wgDBts2schema !== 'public')
+				$path .= ", public";
+			$SQL = "ALTER USER $user SET search_path = $path";
+			$result = pg_query($this->mConn, $SQL);
+			if (!$result) {
+				print "FAILED.</li>\n";
+				return false;
 			}
+			print "ok</li>\n";
+			## Set for the rest of this session
+			$SQL = "SET search_path = $path";
+			$result = pg_query($this->mConn, $SQL);
+			if (!$result) {
+				print "<li>Failed to set search_path</li>\n";
+				return false;
+			}
+			define( "POSTGRES_SEARCHPATH", $path );
 		}
+
 		return $this->mConn;
 	}
 
@@ -171,7 +234,7 @@ class DatabasePostgres extends Database {
 		}
 
 		while ( $row = $this->fetchObject( $res ) ) {
-			if ( $row->Key_name == $index ) {
+			if ( $row->indexname == $index ) {
 				return $row;
 			}
 		}
@@ -188,22 +251,6 @@ class DatabasePostgres extends Database {
 			return true;
 		return false;
 
-	}
-
-	function fieldInfo( $table, $field ) {
-		throw new DBUnexpectedError($this,  'Database::fieldInfo() error : mysql_fetch_field() not implemented for postgre' );
-		/*
-		$res = $this->query( "SELECT * FROM '$table' LIMIT 1" );
-		$n = pg_num_fields( $res );
-		for( $i = 0; $i < $n; $i++ ) {
-			// FIXME
-			throw new DBUnexpectedError($this,  "Database::fieldInfo() error : mysql_fetch_field() not implemented for postgre" );
-			$meta = mysql_fetch_field( $res, $i );
-			if( $field == $meta->name ) {
-				return $meta;
-			}
-		}
-		return false;*/
 	}
 
 	function insert( $table, $a, $fname = 'Database::insert', $options = array() ) {
@@ -236,9 +283,6 @@ class DatabasePostgres extends Database {
 	}
 
 	function tableName( $name ) {
-		# First run any transformations from the parent object
-		$name = parent::tableName( $name );
-
 		# Replace backticks into double quotes
 		$name = strtr($name,'`','"');
 
@@ -433,12 +477,96 @@ class DatabasePostgres extends Database {
 		return $version;
 	}
 
-	function setSchema($schema=false) {
-		$schemas=$this->mSchemas;
-		if ($schema) { array_unshift($schemas,$schema); }
-		$searchpath=$this->makeList($schemas,LIST_NAMES);
-		$this->query("SET search_path = $searchpath");
+
+	/**
+	 * Query whether a given table exists (in the given schema, or the default mw one if not given)
+	 */
+	function tableExists( $table, $schema = false ) {
+		global $wgDBmwschema;
+		if (! $schema )
+			$schema = $wgDBmwschema;
+		$etable = preg_replace("/'/", "''", $table);
+		$eschema = preg_replace("/'/", "''", $schema);
+		$SQL = "SELECT 1 FROM pg_catalog.pg_class c, pg_catalog.pg_namespace n "
+			. "WHERE c.relnamespace = n.oid AND c.relname = '$etable' AND n.nspname = '$eschema'";
+		$res = $this->query( $SQL );
+		$count = $res ? pg_num_rows($res) : 0;
+		if ($res)
+			$this->freeResult( $res );
+		return $count;
 	}
+
+
+	/**
+	 * Query whether a given schema exists. Returns the name of the owner
+	 */
+	function schemaExists( $schema ) {
+		$eschema = preg_replace("/'/", "''", $schema);
+		$SQL = "SELECT rolname FROM pg_catalog.pg_namespace n, pg_catalog.pg_roles r "
+				."WHERE n.nspowner=r.oid AND n.nspname = '$eschema'";
+		$res = $this->query( $SQL );
+		$owner = $res ? pg_num_rows($res) ? pg_fetch_result($res, 0, 0) : false : false;
+		if ($res)
+			$this->freeResult($res);
+		return $owner;
+	}
+
+	/**
+	 * Query whether a given column exists in the mediawiki schema
+	 */
+	function fieldExists( $table, $field ) {
+		global $wgDBmwschema;
+		$etable = preg_replace("/'/", "''", $table);
+		$eschema = preg_replace("/'/", "''", $wgDBmwschema);
+		$ecol = preg_replace("/'/", "''", $field);
+		$SQL = "SELECT 1 FROM pg_catalog.pg_class c, pg_catalog.pg_namespace n, pg_catalog.pg_attribute a "
+			. "WHERE c.relnamespace = n.oid AND c.relname = '$etable' AND n.nspname = '$eschema' "
+			. "AND a.attrelid = c.oid AND a.attname = '$ecol'";
+		$res = $this->query( $SQL );
+		$count = $res ? pg_num_rows($res) : 0;
+		if ($res)
+			$this->freeResult( $res );
+		return $count;
+	}
+
+	function fieldInfo( $table, $field ) {
+		$res = $this->query( "SELECT $field FROM $table LIMIT 1" );
+		$type = pg_field_type( $res, 0 );
+		return $type;
+	}
+
+	function commit( $fname = 'Database::commit' ) {
+		## XXX
+		return;
+		$this->query( 'COMMIT', $fname );
+		$this->mTrxLevel = 0;
+	}
+
+	/* Not even sure why this is used in the main codebase... */
+	function limitResultForUpdate($sql, $num) {
+		return $sql;
+	}
+
+	function update_interwiki() {
+		## Avoid the non-standard "REPLACE INTO" syntax
+		## Called by config/index.php
+		$f = fopen( "../maintenance/interwiki.sql", 'r' );
+		if ($f == false ) {
+			dieout( "<li>Could not find the interwiki.sql file");
+		}
+		## We simply assume it is already empty as we have just created it
+		$SQL = "INSERT INTO interwiki(iw_prefix,iw_url,iw_local) VALUES ";
+		while ( ! feof( $f ) ) {
+			$line = fgets($f,1024);
+			if (!preg_match("/^\s*(\(.+?),(\d)\)/", $line, $matches)) {
+				continue;
+			}
+			$yesno = $matches[2]; ## ? "'true'" : "'false'";
+			$this->query("$SQL $matches[1],$matches[2])");
+		}
+		print " (table interwiki successfully populated)...\n";
+	}
+
 }
 
 ?>

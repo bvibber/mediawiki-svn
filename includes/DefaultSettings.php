@@ -431,6 +431,8 @@ $wgSMTP				= false;
  */
 /** database host name or ip address */
 $wgDBserver         = 'localhost';
+/** database port number */
+$wgDBport           = '';
 /** name of the database */
 $wgDBname           = 'wikidb';
 /** */
@@ -449,11 +451,6 @@ $wgDBtype           = "mysql";
 $wgSearchType	    = null;
 /** Table name prefix */
 $wgDBprefix         = '';
-/** Database schema
- * on some databases this allows separate
- * logical namespace for application data
- */
-$wgDBschema	    = 'mediawiki';
 /**#@-*/
 
 /** Live high performance sites should disable this - some checks acquire giant mysql locks */
@@ -499,7 +496,7 @@ $wgDBservers		= false;
 /** How long to wait for a slave to catch up to the master */
 $wgMasterWaitTimeout = 10;
 
-/** File to log MySQL errors to */
+/** File to log database errors to */
 $wgDBerrorLog		= false;
 
 /** When to give an error message */
@@ -1470,6 +1467,14 @@ $wgImportSources = array();
  * disabled on Wikimedia's sites.
  */
 $wgExportAllowHistory = true;
+
+/**
+ * If set nonzero, Special:Export requests for history of pages with
+ * more revisions than this will be rejected. On some big sites things
+ * could get bogged down by very very long pages.
+ */
+$wgExportMaxHistory = 0;
+
 $wgExportAllowListContributors = false ;
 
 
@@ -1802,7 +1807,14 @@ $wgHooks = array();
  * an action, which is a specific kind of event that can exist in that
  * log type.
  */
-$wgLogTypes = array( '', 'block', 'protect', 'rights', 'delete', 'upload', 'move' );
+$wgLogTypes = array( '',
+	'block',
+	'protect',
+	'rights',
+	'delete',
+	'upload',
+	'move',
+	'import' );
 
 /**
  * Lists the message key string for each log type. The localized messages
@@ -1817,7 +1829,8 @@ $wgLogNames = array(
 	'rights'  => 'rightslog',
 	'delete'  => 'dellogpage',
 	'upload'  => 'uploadlogpage',
-	'move'    => 'movelogpage' );
+	'move'    => 'movelogpage',
+	'import'  => 'importlogpage' );
 
 /**
  * Lists the message key string for descriptive text to be shown at the
@@ -1832,7 +1845,8 @@ $wgLogHeaders = array(
 	'rights'  => 'rightslogtext',
 	'delete'  => 'dellogpagetext',
 	'upload'  => 'uploadlogpagetext',
-	'move'    => 'movelogpagetext' );
+	'move'    => 'movelogpagetext',
+	'import'  => 'importlogpagetext', );
 
 /**
  * Lists the message key string for formatting individual events of each
@@ -1852,7 +1866,9 @@ $wgLogActions = array(
 	'upload/upload'     => 'uploadedimage',
 	'upload/revert'     => 'uploadedimage',
 	'move/move'         => '1movedto2',
-	'move/move_redir'   => '1movedto2_redir' );
+	'move/move_redir'   => '1movedto2_redir',
+	'import/upload'     => 'import-logentry-upload',
+	'import/interwiki'  => 'import-logentry-interwiki' );
 
 /**
  * Experimental preview feature to fetch rendered text

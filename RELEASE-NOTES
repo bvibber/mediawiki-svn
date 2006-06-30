@@ -573,6 +573,48 @@ Some default configuration options have changed:
 * (bug 672) Add MathAfterTexvc hook
 * Update to Piedmontese localization (pms)
 * dumpBackup can optionally compress via dbzip2
+* (bug 2483) Run link updates on change via XML import
+* (bug 2481) List imported pages during Special:Import
+* (bug 2482) Log and RC entries for Special:Import events
+* Allow fetching all revisions from transwiki Special:Import
+* Allow fetching all revisions from Special:Export GET request
+* Disable output buffering on Special:Export; should help with streaming
+  large numbers of history items.
+* Allow setting a maximum number of revisions for history Special:Export;
+  pages with more than $wgExportMaxHistory revisions are excluded from
+  export when history is requested.
+* Fix transwiki import of pages with space in name
+* Save null edit when importing pages through Special:Import
+* Update to Korean translation (ko)
+* Show a more specific message when an anonymous user tries to access Special:Watchlist
+* (bug 3278) Paging links in Special:Prefixindex
+* Added Latvian localization (lv)
+* (bug 6472) Fix regression in Special:Export with multiple pages
+* Update to Macedonian translation (mk)
+* Allow page moves over historyless self-redirects. Such are usually created
+  as part of namespace rearrangements, and it's easier to clean them up if
+  we can move over them.
+* Show some error results in moveBatch.php
+* (bug 6479) Allow specification of the skin to use during HTML dumps
+* (bug 6461) Link to page histories in Special:Newpages
+* (bug 6484) Don't do message transformations when preloading messages for editing
+* (bug 6201) Treat spaces as underscores in parameters to {{ns:}}
+* (bug 6006) Allow hiding the password change fields using an authentication plugin
+* (bug 6489) Use appropriate link colour on Special:Shortpages
+* Added formatnum magic word
+* Added Javanese localization (jv)
+* (bug 6491) Apply bad image list in category galleries
+* (bug 6488) Show relevant log fragment in Special:Movepage
+* Fix potential PHP notice in Special:Blockme when $wgBlockOpenProxies is true
+* Use mysql_real_escape_string instead of addslashes for string escaping in
+  the MySQL Database class. This may fix some rare breakage with binary fields.
+  Note that MediaWiki does not support the multibyte character sets where a
+  "dumb" byte replacement can be actively dangerous; UTF-8 is always safe
+  in this regard due to the bit patterns which make head and tail bytes
+  distinct.
+* (bug 6497) Use $wgMetaNamespaceTalk for Esperanto if set
+* (bug 6498) Use localized forms for image size in Special:Undelete
+* (bug 6485) Update to Indonesian translation (id) #24
 
 
 == Compatibility ==

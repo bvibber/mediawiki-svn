@@ -2673,7 +2673,8 @@ class Parser
 					$text = $linestart . $wgContLang->getNsText( intval( $part1 ) );
 					$found = true;
 				} else {
-					$index = Namespace::getCanonicalIndex( strtolower( $part1 ) );
+					$param = str_replace( ' ', '_', strtolower( $part1 ) );
+					$index = Namespace::getCanonicalIndex( strtolower( $param ) );
 					if ( !is_null( $index ) ) {
 						$text = $linestart . $wgContLang->getNsText( $index );
 						$found = true;
@@ -2752,6 +2753,15 @@ class Parser
 		}
 
 		$lang = $this->mOptions->getInterfaceMessage() ? $wgLang : $wgContLang;
+		if ( !$found && $argc == 1 ) {
+			$mwGrammar =& MagicWord::get( MAG_FORMATNUM );
+			if ( $mwGrammar->matchStartAndRemove( $part1 ) ) {
+				$text = $linestart . $lang->formatNum( $args[0] );
+				$found = true;
+			}
+		}
+
+
 		# GRAMMAR
 		if ( !$found && $argc == 1 ) {
 			$mwGrammar =& MagicWord::get( MAG_GRAMMAR );

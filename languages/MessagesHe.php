@@ -442,7 +442,7 @@ $wgAllMessagesHe = array(
 "blockedoriginalsource"     => "טקסט המקור של '''$1''' מוצג למטה:",
 "blockededitsource"         => "הטקסט של '''העריכות שלך''' לדף '''$1''' מוצג למטה:",
 "whitelistedittitle"        => "כניסה לחשבון נדרשת לעריכה",
-"whitelistedittext"         => "עליכם לבצע $1 כדי לערוך דפים.",
+"whitelistedittext"         => "עליכם $1 כדי לערוך דפים.",
 "whitelistreadtitle"        => "כניסה לחשבון נדרשת לקריאה",
 "whitelistreadtext"         => "עליכם [[{{ns:special}}:Userlogin|להיכנס לחשבון]] כדי לקרוא דפים.",
 "whitelistacctitle"         => "אינכם מורשים ליצור חשבון",
@@ -450,8 +450,8 @@ $wgAllMessagesHe = array(
 "confirmedittitle"          => 'הנכם חייבים לאמת את כתובת הדוא"ל שלכם כדי לערוך',
 "confirmedittext"           => 'עליכם לאמת את כתובת הדוא"ל שלכם לפני שתוכלו לערוך דפים. אנא הגדירו ואמתו את כתובת הדוא"ל שלכם באמצעות [[{{ns:special}}:Preferences|העדפות המשתמש]] לשכם.',
 "loginreqtitle"             => "כניסה לחשבון נדרשת",
-"loginreqlink"              => "כניסה לחשבון",
-"loginreqpagetext"          => "עליכם לבצע $1 כדי לצפות בדפים אחרים.",
+"loginreqlink"              => "להיכנס לחשבון",
+"loginreqpagetext"          => "עליכם $1 כדי לצפות בדפים אחרים.",
 "accmailtitle"              => "הסיסמה נשלחה",
 "accmailtext"               => 'הסיסמה עבור "$1" נשלחה אל $2.',
 "newarticle"                => "(חדש)",
@@ -769,7 +769,7 @@ $wgAllMessagesHe = array(
 
 # Image list
 "imagelist"                 => "רשימת תמונות",
-"imagelisttext"             => "להלן רשימה של <strong>$1</strong> תמונות, ממוינות <strong>$2</strong>:",
+"imagelisttext"             => "להלן רשימה של {{plural:$1|תמונה אחת|$1 תמונות}}, ממוינות $2:",
 "imagelistforuser"          => "מוצגות רק התמונות שהועלו על־ידי $1.",
 "getimagelist"              => "מושך את רשימת התמונות",
 "ilsubmit"                  => "חיפוש",
@@ -939,8 +939,9 @@ $wgAllMessagesHe = array(
 
 # Watchlist
 "watchlist"            => "רשימת המעקב שלי",
-"watchlistsub"         => '(עבור המשתמש "$1")',
+"watchlistfor"         => "(עבור '''$1''')",
 "nowatchlist"          => "אין לכם דפים ברשימת המעקב.",
+"watchlistanontext"    => "עליכם $1 כדי לצפות או לערוך פריטים ברשימת המעקב שלכם.",
 "watchlistcount"       => "'''יש לכם $1 פריטים ברשימת המעקב, כולל דפי שיחה.'''",
 "clearwatchlist"       => "ניקוי רשימת המעקב",
 "watchlistcleartext"   => "האם אתם בטוחים שברצונכם להסירם?",
@@ -1297,16 +1298,35 @@ $NEWPAGE
 "thumbnail_error" => "שגיאה ביצירת תמונה ממוזערת: $1",
 
 # Special:Import
-"import"                => "ייבוא דפים",
-"importinterwiki"       => "ייבוא בין־אתרי",
-"importtext"            => "אנא ייצאו את הקובץ מאתר המקור תוך שימוש בעזר הייצוא, שמרו אותו לדיסק הקשיח שלכם והעלו אותו לכאן.",
-"importfailed"          => "הייבוא נכשל: $1",
-"importnotext"          => "ריק או חסר טקסט",
-"importsuccess"         => "הייבוא הושלם בהצלחה!",
-"importhistoryconflict" => "ישנה התנגשות עם ההיסטוריה הקיימת של הדף (ייתכן שהדף יובא בעבר)",
-"importnosources"       => "אין מקורות לייבוא בין־אתרי, וייבוא ישיר של דף עם היסטוריה אינו מאופשר כעת.",
-"importnofile"          => "לא הועלה קובץ ייבוא.",
-"importuploaderror"     => "העלאת קובץ ייבוא נכשלה; ייתכן שהקובץ גדול מגודל ההעלאה המותר.",
+"import"                   => "ייבוא דפים",
+"importinterwiki"          => "ייבוא בין־אתרי",
+"import-interwiki-text"    => "אנא בחרו אתר ויקי ואת כותרת הדף לייבוא.
+תאריכי ועורכי הגרסאות יישמרו בעת הייבוא.
+כל פעולות הייבוא הבין־אתרי נשמרות ביומן הייבוא.",
+"import-interwiki-history" => "העתק את כל היסטוריית העריכות של דף זה",
+"import-interwiki-submit"  => "ייבוא",
+"importtext"               => "אנא ייצאו את הקובץ מאתר המקור תוך שימוש בעזר הייצוא, שמרו אותו לדיסק הקשיח שלכם והעלו אותו לכאן.",
+"importstart"              => "מייבא דפים…",
+"import-revision-count"    => "$1 גרסאות",
+"importnopages"            => "אין דפים לייבוא.",
+"importfailed"             => "הייבוא נכשל: $1",
+"importunknownsource"      => "סוג ייבוא בלתי ידוע",
+"importcantopen"           => "פתיחת קובץ הייבוא נכשלה",
+"importbadinterwiki"       => "קישור אינטרוויקי שגוי",
+"importnotext"             => "ריק או חסר טקסט",
+"importsuccess"            => "הייבוא הושלם בהצלחה!",
+"importhistoryconflict"    => "ישנה התנגשות עם ההיסטוריה הקיימת של הדף (ייתכן שהדף יובא בעבר)",
+"importnosources"          => "אין מקורות לייבוא בין־אתרי, וייבוא ישיר של דף עם היסטוריה אינו מאופשר כעת.",
+"importnofile"             => "לא הועלה קובץ ייבוא.",
+"importuploaderror"        => "העלאת קובץ ייבוא נכשלה; ייתכן שהקובץ גדול מגודל ההעלאה המותר.",
+
+# Import log
+"importlogpage"                    => "יומן ייבוא",
+"importlogpagetext"                => "ייבוא מנהלי של דפים כולל היסטוריית העריכות שלהם מאתרי ויקי אחרים.",
+"import-logentry-upload"           => "ייבא את $1 על־ידי העלאת קובץ",
+"import-logentry-upload-detail"    => "$1 גרסאות",
+"import-logentry-interwiki"        => "ייבא את $1 בייבוא בין־אתרי",
+"import-logentry-interwiki-detail" => "$1 גרסאות מהאתר $2",
 
 # Keyboard access keys for power users
 "accesskey-search"                  => "f",

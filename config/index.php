@@ -42,6 +42,19 @@ require_once( "includes/DefaultSettings.php" );
 require_once( "includes/MagicWord.php" );
 require_once( "includes/Namespace.php" );
 
+## Databases we support:
+
+$ourdb = array();
+$ourdb['mysql']['fullname']      = 'MySQL';
+$ourdb['mysql']['havedriver']    = 0;
+$ourdb['mysql']['compile']       = 'mysql';
+$ourdb['mysql']['bgcolor']       = '#ffe5a7';
+
+$ourdb['postgres']['fullname']   = 'PostgreSQL';
+$ourdb['postgres']['havedriver'] = 0;
+$ourdb['postgres']['compile']    = 'pgsql';
+$ourdb['postgres']['bgcolor']    = '#aaccff';
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -126,6 +139,21 @@ require_once( "includes/Namespace.php" );
 		}
 
 	</style>
+	<script type="text/javascript">
+	<!--
+	function hideall() {
+		<?php foreach (array_keys($ourdb) as $db) {
+		echo "document.getElementById('$db').style.display='none';\n";
+		}
+		?>
+	}
+	function togglearea(id) {
+		hideall();
+		var dbarea = document.getElementById(id).style;
+		dbarea.display = dbarea.display = 'none' ? 'block' : 'none';
+  	}
+	// -->
+	</script>
 </head>
 
 <body>
@@ -205,6 +233,42 @@ $conf = new ConfigData;
 install_version_checks();
 
 print "<li>PHP " . phpversion() . " installed</li>\n";
+
+## Temporarily turn off all errors as we try to discover installed databases
+$olderrnum = error_reporting(0);
+
+$phpdatabases = array();
+foreach (array_keys($ourdb) as $db) {
+	$compname = $ourdb[$db]['compile'];
+	if (extension_loaded($compname) or dl($compname . '.' . PHP_SHLIB_SUFFIX)) {
+		array_push($phpdatabases, $db);
+		$ourdb[$db]['havedriver'] = 1;
+	}
+}
+
+error_reporting($olderrornum);
+
+if (!$phpdatabases) {
+	print "Could not find a suitable database driver!<ul>";
+	foreach (array_keys($ourdb) AS $db) {
+		$comp = $ourdb[$db]['compile'];
+		$full = $ourdb[$db]['fullname'];
+		print "<li>For <b>$full</b>, compile PHP using <b>--with-$comp</b>, "
+			."or install the $comp.so module</li>\n";
+	}
+	dieout( "</ul></ul>" );
+}
+
+print "<li>Found database drivers for:";
+foreach (array_keys($ourdb) AS $db) {
+	if ($ourdb[$db]['havedriver']) {
+		$DefaultDBtype = $db;
+		print "  ".$ourdb[$db]['fullname'];
+	}
+}
+print "</li>\n";
+if (count($phpdatabases) != 1)
+	$DefaultDBtype = '';
 
 if( ini_get( "register_globals" ) ) {
 	?>
@@ -406,20 +470,30 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 		? 'root@localhost'
 		: $_SERVER["SERVER_ADMIN"];
 	$conf->EmergencyContact = importPost( "EmergencyContact", $defaultEmail );
-	$conf->DBtype = importPost( "DBtype", "mysql" );
+	$conf->DBtype = importPost( "DBtype", $DefaultDBtype );
+?>
+
+<?php
 	$conf->DBserver = importPost( "DBserver", "localhost" );
 	$conf->DBname = importPost( "DBname", "wikidb" );
 	$conf->DBuser = importPost( "DBuser", "wikiuser" );
 	$conf->DBpassword = importPost( "DBpassword" );
 	$conf->DBpassword2 = importPost( "DBpassword2" );
-	$conf->DBprefix = importPost( "DBprefix" );
-	$conf->DBmysql5 = (importPost( "DBmysql5" ) == "true") ? "true" : "false";
-	$conf->RootUser = importPost( "RootUser", "root" );
-	$conf->RootPW = importPost( "RootPW", "-" );
-	$conf->LanguageCode = importPost( "LanguageCode", "en" );
 	$conf->SysopName = importPost( "SysopName", "WikiSysop" );
 	$conf->SysopPass = importPost( "SysopPass" );
 	$conf->SysopPass2 = importPost( "SysopPass2" );
+
+	## MySQL specific:
+	$conf->DBprefix     =  importPost( "DBprefix" );
+	$conf->DBmysql5     = (importPost( "DBmysql5" ) == "true") ? "true" : "false";
+	$conf->RootUser     =  importPost( "RootUser", "root" );
+	$conf->RootPW       =  importPost( "RootPW", "-" );
+	$conf->LanguageCode =  importPost( "LanguageCode", "en" );
+
+	## Postgres specific:
+	$conf->DBport      = importPost( "DBport",      "5432" );
+	$conf->DBmwschema  = importPost( "DBmwschema",  "mediawiki" );
+	$conf->DBts2schema = importPost( "DBts2schema", "public" );
 
 /* Check for validity */
 $errs = array();
@@ -498,16 +572,29 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		$wgCommandLineMode = false;
 		chdir( ".." );
 		eval($local);
-		if (!in_array($conf->DBtype, array("mysql", "oracle", "postgres"))) {
-			$errs["DBtype"] = "Unknown database type.";
+		$conf->DBtypename = '';
+		foreach (array_keys($ourdb) as $db) {
+			if ($conf->DBtype === $db)
+				$conf->DBtypename = $ourdb[$db]['fullname'];
+		}
+		if (! $conf->DBtypename) {
+			$errs["DBtype"] = "Unknown database type '$conf->DBtype'";
 			continue;
 		}
-		print "<li>Database type: {$conf->DBtype}</li>\n";
+		print "<li>Database type: {$conf->DBtypename}</li>\n";
 		$dbclass = 'Database'.ucfirst($conf->DBtype);
 		$wgDBtype = $conf->DBtype;
 		$wgDBadminuser = "root";
 		$wgDBadminpassword = $conf->RootPW;
+
+		## Mysql specific:
 		$wgDBprefix = $conf->DBprefix;
+
+		## Postgres specific:
+		$wgDBport      = $conf->DBport;
+		$wgDBmwschema  = $conf->DBmwschema;
+		$wgDBts2schema = $conf->DBts2schema;
+
 		$wgCommandLineMode = true;
 		$wgUseDatabaseMessages = false;	/* FIXME: For database failure */
 		require_once( "includes/Setup.php" );
@@ -516,6 +603,8 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		require_once( "maintenance/InitialiseMessages.inc" );
 
 		$wgTitle = Title::newFromText( "Installation script" );
+error_reporting( E_ALL );
+	print "<li>Loading class: $dbclass";
 		$dbc = new $dbclass;
 
 		if( $conf->DBtype == 'mysql' ) {
@@ -544,7 +633,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			# Attempt to connect
 			echo( "<li>Attempting to connect to database server as $db_user..." );
 			$wgDatabase = Database::newFromParams( $wgDBserver, $db_user, $db_pass, '', 1 );
-			
+
 			# Check the connection and respond to errors
 			if( $wgDatabase->isOpen() ) {
 				# Seems OK
@@ -649,8 +738,8 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		if( $wgDatabase->tableExists( "cur" ) || $wgDatabase->tableExists( "revision" ) ) {
 			print "<li>There are already MediaWiki tables in this database. Checking if updates are needed...</li>\n";
 
-			# Create user if required
-			if ( $conf->Root ) {
+			# Create user if required (todo: other databases)
+			if ( $conf->Root && $conf->DBtype == 'mysql') {
 				$conn = $dbc->newFromParams( $wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname, 1 );
 				if ( $conn->isOpen() ) {
 					print "<li>DB user account ok</li>\n";
@@ -664,13 +753,14 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 					dbsource( "../maintenance/users.sql", $wgDatabase );
 				}
 			}
-			print "<pre>\n";
-			chdir( ".." );
-			flush();
-			do_all_updates();
-			chdir( "config" );
-
-			print "</pre>\n";
+			if ( $conf->DBtype == 'mysql') {
+				print "<pre>\n";
+				chdir( ".." );
+				flush();
+				do_all_updates();
+				chdir( "config" );
+				print "</pre>\n";
+			}
 			print "<li>Finished update checks.</li>\n";
 		} else {
 			# FIXME: Check for errors
@@ -687,9 +777,13 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			} else if ($conf->DBtype == 'postgres') {
 				dbsource( "../maintenance/postgres/tables.sql", $wgDatabase );
 				$wgDatabase->update_interwiki();
-			} else {
+			} else if ($conf->DBtype == 'oracle') {
 				dbsource( "../maintenance/oracle/tables.sql", $wgDatabase );
 				dbsource( "../maintenance/oracle/interwiki.sql", $wgDatabase );
+			}
+			else {
+				$errs["DBtype"] = "Do not know how to handle database type '$conf->DBtype'";
+				continue;
 			}
 
 			print " done.</li>\n";
@@ -978,27 +1072,19 @@ if( count( $errs ) ) {
 <div class="config-section">
 <div class="config-input">
 		<label class='column'>Database type:</label>
-		<ul class='plain'>
-			<li><?php aField( $conf, "DBtype", "MySQL", "radio", "mysql"); ?></li>
-			<li><?php aField( $conf, "DBtype", "Oracle (experimental)", "radio", "oracle" ); ?></li>
-			<li><?php aField( $conf, "DBtype", "PostgreSQL", "radio", "postgres" ); ?></li>
-		</ul>
+		<ul class='plain'><?php database_picker($conf) ?></ul>
 	</div>
 
 	<div class="config-input" style="clear:left"><?php
-		aField( $conf, "DBserver", "SQL server host:" );
+		aField( $conf, "DBserver", "Database host:" );
 	?></div>
 	<p class="config-desc">
-		If your database server isn't on your web server, enter the name
-		or IP address here. MySQL and PostgreSQL only. If using a port for PostgreSQL, enter the number here.
+		If your database server isn't on your web server, enter the name or IP address here.
 	</p>
 
 	<div class="config-input"><?php
 		aField( $conf, "DBname", "Database name:" );
 	?></div>
-	<div class="config-desc">
-		If using Oracle, set this to your connection identifier.
-	</div>
 	<div class="config-input"><?php
 		aField( $conf, "DBuser", "DB username:" );
 	?></div>
@@ -1018,6 +1104,7 @@ if( count( $errs ) ) {
 		has SELECT, INSERT, UPDATE and DELETE permissions on the MediaWiki database.
 	</p>
 
+	<?php database_switcher('mysql'); ?>
 	<div class="config-input"><?php
 		aField( $conf, "DBprefix", "Database table prefix:" );
 	?></div>
@@ -1042,6 +1129,23 @@ if( count( $errs ) ) {
 		cause things to break. <b>If upgrading an older installation, leave
 		in backwards-compatible mode.</b>
 	</p>
+	</div>
+
+	<?php database_switcher('postgres'); ?>
+	<div class="config-input"><?php
+		aField( $conf, "DBport", "Database port:" );
+	?></div>
+	<div class="config-input"><?php
+		aField( $conf, "DBmwschema", "Schema for mediawiki:" );
+	?></div>
+	<div class="config-input"><?php
+		aField( $conf, "DBts2schema", "Schema for tsearch2:" );
+	?></div>
+	<div class="config-desc">
+		<p>The username specified above will have it's search path set to the above schemas, 
+           so it is recommended that you create a new user.</p>
+	</div>
+	</div>
 
 	<div class="config-input">
 		<?php
@@ -1066,6 +1170,10 @@ if( count( $errs ) ) {
 	</div>
 
 </div>
+
+<script type="text/javascript">
+window.onload = togglearea('<?php echo $conf->DBtype; ?>');
+</script>
 
 </form>
 
@@ -1253,6 +1361,7 @@ if ( \$wgCommandLineMode ) {
 \$wgDBpassword       = \"{$slconf['DBpassword']}\";
 \$wgDBprefix         = \"{$slconf['DBprefix']}\";
 \$wgDBtype           = \"{$slconf['DBtype']}\";
+\$wgDBport           = \"{$slconf['DBport']}\";
 
 # Experimental charset support for MySQL 4.1/5.0.
 \$wgDBmysql5 = {$conf->DBmysql5};
@@ -1339,7 +1448,7 @@ function importRequest( $name, $default = "" ) {
 
 $radioCount = 0;
 
-function aField( &$conf, $field, $text, $type = "text", $value = "" ) {
+function aField( &$conf, $field, $text, $type = "text", $value = "", $onclick = '' ) {
 	global $radioCount;
 	if( $type != "" ) {
 		$xtype = "type=\"$type\"";
@@ -1364,12 +1473,18 @@ function aField( &$conf, $field, $text, $type = "text", $value = "" ) {
 	} else {
 		$checked = "";
 	}
-	echo "\t\t<input $xtype name=\"$field\" id=\"$id\" class=\"iput-$type\" $checked value=\"";
+	echo "\t\t<input $xtype name=\"$field\" id=\"$id\" class=\"iput-$type\" $checked ";
+	if ($onclick) {
+		echo " onclick='togglearea(\"$value\")' " ;
+	}
+	echo "value=\"";
 	if( $type == "radio" ) {
 		echo htmlspecialchars( $value );
 	} else {
 		echo htmlspecialchars( $conf->$field );
 	}
+
+
 	echo "\" />\n";
 	if( $nolabel ) {
 		echo " $text</label>\n";
@@ -1474,6 +1589,28 @@ function testMemcachedServer( $server ) {
 	}
 	return $errstr;
 }
+
+function database_picker($conf) {
+	global $ourdb;
+	print "\n";
+	foreach(array_keys($ourdb) as $db) {
+		if ($ourdb[$db]['havedriver']) {
+			print "<li>";
+			aField( $conf, "DBtype", $ourdb[$db]['fullname'], 'radio', $db, 'onclick');
+			print "</li>\n";
+		}
+	}
+	print "\n";
+}
+
+function database_switcher($db) {
+	global $ourdb;
+	$color = $ourdb[$db]['bgcolor'];
+	$full = $ourdb[$db]['fullname'];
+	print "<div id='$db' style='display:none; background: $color'>\n";
+	print "<h3>$full specific options:</h3>\n";
+}
+
 ?>
 
 	<div class="license">
