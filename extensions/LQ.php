@@ -322,6 +322,36 @@ class Post extends Article {
 		return $result;
         }
 
+
+        /**
+         * Render the article content, fetching from page cache if possible.
+         * @private
+         */
+        function renderBody()
+        {
+                global $wgOut, $wgUser, $wgEnableParserCache;
+
+                # Should the parser cache be used?
+		$pcache = $wgEnableParserCache &&
+			intval( $wgUser->getOption( 'stubthreshold' ) ) == 0 &&
+			$this->exists() &&
+			empty( $oldid ); // FIXME oldid
+		wfDebug( 'Post::renderBody using parser cache: ' . ($pcache ? 'yes' : 'no' ) . "\n" );
+		if ( $wgUser->getOption( 'stubthreshold' ) ) {
+			wfIncrStats( 'pcache_miss_stub' );
+		}
+
+                $outputDone = false;
+		if ( $pcache ) {
+			$outputDone = $wgOut->tryParserCache( $this, $wgUser );
+		}
+                
+                if (!$outputDone) {
+                        $wgOut->addHTML('<span style="color: orange;">pasrer cache miss</span>');
+                        $wgOut->addWikiText($this->mContent);
+                }
+        }
+        
         function render($channel_name, $editing, $highlight) {
                 global $wgOut, $wgUser;
                 $this->fetchContent();
@@ -348,9 +378,10 @@ class Post extends Article {
 
                         // Post body:
                         $wgOut->addHTML( wfOpenElement('div', array('class'=>'lqt_post_body')) );
-                        $wgOut->addWikiText($this->mContent);
+                        $this->renderBody();
                         $wgOut->addHTML( wfCloseElement( 'div') );
 
+                        // Begin footer:
                         $wgOut->addHTML( wfOpenElement('ul', array('class'=>'lqt_footer')) );
 
                         // Signature:
@@ -374,7 +405,8 @@ class Post extends Article {
                         $wgOut->addHTML( wfOpenElement('li') .
                                          wfElementClean('a', array('href'=>$move_href),'Move') .
                                          wfCloseElement( 'li') );
-                        
+
+                        // End footer:
                         $wgOut->addHTML( wfCloseElement('ul') );
 
                         
