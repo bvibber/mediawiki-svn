@@ -131,9 +131,6 @@ function efBlahtexMathAfterTexvc( &$mathRenderer, &$errmsg ) {
  */
 function efBlahtexParserBeforeTidy( &$parser, &$text ) {
 	global $wgBlahtexMathContent, $wgBlahtexMathTags;
-	wfDebug("efBlahtexParserBeforeTidy start\n");
-	wfDebug($text);
-
 	$mathtags = array();
 	$endtag = "</math>";
 	$stripped = "";
@@ -156,9 +153,6 @@ function efBlahtexParserBeforeTidy( &$parser, &$text ) {
 	}
 	$parser->blahtexMathtags = $mathtags;
 	$text = $stripped . substr( $text, $pos );
-
-	wfDebug("efBlahtexParserBeforeTidy end\n");
-	wfDebug($text);
 }
 
 /**
@@ -168,11 +162,7 @@ function efBlahtexParserBeforeTidy( &$parser, &$text ) {
  */
 function efBlahtexParserAfterTidy( &$parser, &$text ) {
 	global $wgBlahtexMathContent, $wgBlahtexMathTags;
-	wfDebug("efBlahtexParserAfterTidy start\n");
-	wfDebug($text);
 	$text = strtr( $text, $parser->blahtexMathtags );
-	wfDebug("efBlahtexParserAfterTidy end\n");
-	wfDebug($text);
 }
 
 class BlahtexRenderer {
@@ -213,7 +203,9 @@ class BlahtexRenderer {
 			  $output = $parser->parse( $res );
 			  $blahtexErrmsg = $this->processOutput( $output );
 			  if ( $blahtexErrmsg && $this->errmsg )
-					$this->errmsg = $blahtexErrmsg;
+				  $this->errmsg = $blahtexErrmsg;
+			  else
+				  $this->errmsg = '';
 		 }
 	}
 
@@ -288,24 +280,25 @@ class BlahtexRenderer {
 			// There was a syntax error in the input
 			return $this->blahtexError( $results, "blahtex:error" );
 
+		} elseif ( isset( $results["blahtex:png:error:id"] ) ) {
+			// There was an error while generating the PNG
+			return $this->blahtexError( $results, "blahtex:png:error" ); 
+
 		} elseif (isset($results["mathmlMarkup"]) || isset($results["blahtex:png:md5"])) {
 			// We got some results
 			if ( isset( $results["mathmlMarkup"] ) )	 
 				$this->mr->mathml = $results['mathmlMarkup'];
 			if ( isset( $results["blahtex:png:md5"] ) ) {
 				$this->mr->hash = $results["blahtex:png:md5"];
-				$tmp = $this->moveToMathDir( "{$this->mr->hash}.png" );
-				if ( $tmp !== false ) 
-					return $tmp;
 			}
 			return false;
 
+		} elseif ( isset( $results["blahtex:mathml:error:id"] ) )  {
+			// There was an error while generating the MathML
+			return $this->blahtexError( $results, "blahtex:mathml:error" );
+
 		} else {
-			// There is an error somewhere
-			if ( isset( $results["blahtex:mathml:error:id"] ) ) 
-				return $this->blahtexError( $results, "blahtex:mathml:error" );
-			if ( isset( $results["blahtex:png:error:id"] ) )
-				return $this->blahtexError( $results, "blahtex:png:error" );
+			// This should not happen
 			return $this->error( 'math_unknown_error' );
 		}
 	}
@@ -342,34 +335,6 @@ class BlahtexRenderer {
 			// Error message without arguments
 			return $this->error( $id, '', '', '', $fallback );
 		}
-	}
-	
-	/**
-	 * Move a PNG image to its final destination.
-	 * The file is moved from $wgTmpDirectory to a directory under
-	 * $wgMathDirectory. This function assumes that
-	 * $this->mr->hash is set. 
-	 * Based on code in Math.php .
-	 * @param $fname Name of file to be moved (string)
-	 * @return HTML fragment with error message if an error
-	 *    occurred, @c false otherwise (string or boolean)
-	 */
-	function moveToMathDir( $fname ) {
-		global $wgTmpDirectory;
-
-		$hashpath = $this->mr->_getHashPath();
-		if( !file_exists( $hashpath ) ) {
-			if( !@wfMkdirParents( $hashpath, 0755 ) ) {
-				return $this->error( 'math_bad_output' );
-			}
-		} elseif( !is_dir( $hashpath ) || !is_writable( $hashpath ) ) {
-			return $this->error( 'math_bad_output' );
-		}
-		
-		if( !rename( "$wgTmpDirectory/$fname", "$hashpath/$fname" ) ) {
-			return $this->error( 'math_output_error' );
-		}
-		return false;
 	}
 
 	/**
