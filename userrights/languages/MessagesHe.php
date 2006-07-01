@@ -663,6 +663,7 @@ $wgAllMessagesHe = array(
 "editusergroup"              => "ערכו קבוצות משתמשים",
 "userrights-editusergroup"   => "ערכו קבוצות משתמש",
 "saveusergroups"             => "שמור קבוצות משתמש",
+'userrights-noremote'        => "אינכם מורשים לשנות הרשאות למשתמשים באתרים אחרים.",
 "userrights-groupsmember"    => "חבר בקבוצות:",
 "userrights-groupsavailable" => "קבוצות זמינות:",
 "userrights-groupshelp"      => "אנא בחרו קבוצות שברצונכם שהמשתמש יתווסף אליהן או יוסר מהן.

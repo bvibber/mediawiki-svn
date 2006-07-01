@@ -920,8 +920,9 @@ $wgGroupPermissions['sysop']['reupload-shared'] = true;
 $wgGroupPermissions['sysop']['unwatchedpages']	= true;
 $wgGroupPermissions['sysop']['autoconfirmed']   = true;
 
-// Permission to change users' group assignments
+// Permissions to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
+$wgGroupPermissions['bureaucrat']['userrights_remote'] = true;
 
 // Experimental permissions, not ready for production use
 //$wgGroupPermissions['sysop']['deleterevision'] = true;

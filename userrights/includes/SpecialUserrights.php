@@ -78,10 +78,19 @@ class UserrightsForm extends HTMLForm {
 	 * @param string $reason the reason of changing the permissions.
 	 */
 	function saveUserGroups( $username, $removegroup, $addgroup, $reason ) {
-		global $wgOut;
+		global $wgOut, $wgUser;
+		
+		if( !$username ) {
+			$wgOut->addWikiText( wfMsg( 'nouserspecified' ) );
+			return;
+		}
 		
 		$split = $this->splitUsername( $username );
 		list( $database, $name ) = $split;
+		if( $database != '' && !$wgUser->isAllowed( 'userrights_remote' ) ) {
+			$wgOut->addWikiText( wfMsg( 'userrights-noremote', wfEscapeWikiText( $username ) ) );
+			return;
+		}
 		if( $name == '' ) {
 			$wgOut->addWikiText( wfMsg( 'userrights-nodatabase', $database ) );
 			return;
@@ -89,7 +98,8 @@ class UserrightsForm extends HTMLForm {
 		if( $database == '' ) {
 			$this->user = User::newFromName( $name );
 			if( !isset( $this->user ) ) {
-				$wgOut->addWikiText( wfMsg( 'nosuchusershort', wfEscapeWikiText( $username ) ) );
+				$wgOut->addWikiText( wfMsg( 'nouserspecified' ) );
+				return;
 			}
 		} else {
 			$this->db =& $this->getDB( $database );
@@ -162,8 +172,17 @@ class UserrightsForm extends HTMLForm {
 	function editUserGroupsForm($username) {
 		global $wgOut, $wgUser;
 		
+		if( !$username ) {
+			$wgOut->addWikiText( wfMsg( 'nouserspecified' ) );
+			return;
+		}
+		
 		$split = $this->splitUsername( $username );
 		list( $database, $name ) = $split;
+		if( $database != '' && !$wgUser->isAllowed( 'userrights_remote' ) ) {
+			$wgOut->addWikiText( wfMsg( 'userrights-noremote', wfEscapeWikiText( $username ) ) );
+			return;
+		}
 		if( $name == '' ) {
 			$wgOut->addWikiText( wfMsg( 'userrights-nodatabase', $database ) );
 			return;
@@ -171,7 +190,8 @@ class UserrightsForm extends HTMLForm {
 		if( $database == '' ) {
 			$this->user = User::newFromName( $name );
 			if( !isset( $this->user ) ) {
-				$wgOut->addWikiText( wfMsg( 'nosuchusershort', wfEscapeWikiText( $username ) ) );
+				$wgOut->addWikiText( wfMsg( 'nouserspecified' ) );
+				return;
 			}
 		} else {
 			$this->db =& $this->getDB( $database );

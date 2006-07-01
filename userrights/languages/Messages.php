@@ -737,9 +737,9 @@ containing all of the search terms will appear in the result).",
 'userrights-lookup-user' => 'Manage user groups',
 'userrights-user-editname' => 'Enter a username:',
 'editusergroup' => 'Edit User Groups',
-
 'userrights-editusergroup' => 'Edit user groups',
 'saveusergroups' => 'Save User Groups',
+'userrights-noremote' => 'You are not allowed to change permissions of users in other sites.',
 'userrights-groupsmember' => 'Member of:',
 'userrights-groupsavailable' => 'Available groups:',
 'userrights-groupshelp' => 'Select groups you want the user to be removed from or added to.
