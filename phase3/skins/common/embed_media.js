@@ -102,8 +102,28 @@ function run_vlc(media_url){
 	document.video1.add_item( url );
 	document.video1.play();
 }
-function jre_embed(target, media_url){
-	alert('jre_embed');
+function jre_embed(target, media_url, opt){
+	//@todo going to have to load it as an iframe eventualy
+	var eb = document.createElement("applet");
+	eb.code='com.fluendo.player.Cortado.class';
+	eb.archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar";
+	eb.width='320';
+	eb.height='240';
+	eb.innerHTML='  <param name="url" value="http://metavid.ucsc.edu'+media_url+'" />'+
+				 '<param name="autoplay" value="false" />' +
+				  '<param name="local" value="false"/>' + 
+					  '<param name="keepaspect" value="true" />'+
+					  '<param name="video" value="true" />'	+
+					  '<param name="audio" value="true" />'+
+					  '<param name="seekable" value="true" />'+
+					  '<param name="duration" value="00455" />'+
+					  '<param name="bufferSize" value="200" />';
+	document.getElementById(target).innerHTML="";
+	document.getElementById(target).appendChild(eb);		  
+					  
+//	<applet code="com.fluendo.player.Cortado.class" archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar" width="320" height="240">
+					
+	//				</applet>
 }
 
 function detect_client_plugins(){

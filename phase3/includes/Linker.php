@@ -600,8 +600,7 @@ class Linker {
 			if ( $boxheight === false )
 				$boxheight = -1;
 			if ( '' == $manual_thumb ) {
-				$thumb = $img->getThumbnail( $boxwidth, $boxheight );
-				wfDebug("thum-url: " . $thumb->getUrl() . "\n");
+				$thumb = $img->getThumbnail( $boxwidth, $boxheight );				
 				if ( $thumb ) {
 					$thumbUrl = $thumb->getUrl();
 					$boxwidth = $thumb->width;
@@ -731,24 +730,45 @@ class Linker {
 				case 'EXECUTABLE':  // binary executable
 				case 'ARCHIVE':
 				default:
+					//by default output a direct link to the file: 
 					return $this->makeMediaLinkObj($title, $options['caption']);
 				break;
 			}
 			//print "MIME:" . $img->mime;			
 			
-			//display the video thumbnail: 
-			
+			//display the video thumbnail: 			
 						
 			//for now just render a thumbnail hack style: 
 			//shortly will integrate multiple ways of grabbing thumnail. 
 			//and caching thumbnail size etc.
 			$js_inc = "<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/skins/common/embed_media.js\"></script>";
-			//@todo think how this will work with multiple same titled media elements in a given page		
+			//@todo think how this will work with multiple idential titled media elements in a given page (probably not well)	
 			$embed_div_id = 'embed_'.$title->getDBkey();
 			
-			return $js_inc . "<div style=\"width:384px;Height:288px;border-width: 2px; border-style: solid;\" id=\"{$embed_div_id}\" onClick=\"javascript:auto_embed('{$embed_div_id}', '{$img->getUrl()}')\">".
-								"<img src=\"".$img->movieFrameUrl()."\"></div>";
+			$width = (isset($options['width']))?$options['width']:'320';
+			$height = (isset($options['height']))?($options['height']):'240';
+			
+			//@todo integrate with style sheet.  (add to height for vid controls)
+			$div_style = "width:{$width}px;height:".($height+32)."px;border-width:2px;border-style: solid;";	
+			$im_frame_url = $img->movieFrameUrl();
+			
+			//@todo (don't hard code title values put them into the language file)
+			$div_tag =  "<div style=\"{$div_style}\" id=\"{$embed_div_id}\">";
+			$image_tag= "<img width=\"{$width}\" height=\"{$height}\" src=\"{$im_frame_url}\">";
+			$control_play = "<a title=\"play media\" href=\"javascript:auto_embed('{$embed_div_id}', '{$img->getUrl()}')\">";
+				$control_play.="<img style=\"float:right\" src=\"{$wgScriptPath}/skins/common/images/icons/vid_play_sm.png\">";
+			$control_play.="</a>";
 
+			$u = $title->escapeLocalURL();
+			$alt = $options['alt'];
+			
+			$control_info ="<a title=\"{$alt}\" href=\"{$u}\">";
+			$control_info.="<img style=\"float:right\" src=\"{$wgScriptPath}/skins/common/images/icons/vid_info_sm.png\">". "\n";
+			$control_info.='</a>';
+					
+			$close_div=	"</div>". "\n";
+			
+			return $js_inc . $div_tag . $image_tag . $control_play . $control_info . $close_div;
 			//also frame grab should be done at time of uplaod (if we allow dymaic thumnails)
 			
 			//evaluate options
