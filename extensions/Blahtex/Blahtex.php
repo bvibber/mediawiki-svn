@@ -146,7 +146,7 @@ function efBlahtexParserBeforeTidy( &$parser, &$text ) {
 		if ( $pos2 == 0 )
 			break;
 		$stripped .= substr( $text, $pos, $matches[0][1] - $pos );
-		$marker = "$uniq_prefix-blahtex-$rand" . sprintf('%08X', $n++) . '-QINU';
+		$marker = "UNIQ-blahtex-$rand" . sprintf('%08X', $n++) . '-QINU';
 		$stripped .= $marker;
 		$pos = $pos2 + strlen($endtag);
 		$mathtags[$marker] = substr( $text, $matches[0][1], $pos - $matches[0][1] );
