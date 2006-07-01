@@ -56,7 +56,7 @@ class HTMLForm {
 			$value = $this->mRequest->getText( $varname, $value );
 		}
 		$value = htmlspecialchars( $value );
-		return "<div><label>". wfMsg( $this->mName.'-'.$varname ) .
+		return "<div><label>". wfMsg( $this->mName.'-'.$varname ) . ' ' .
 			"<input type='text' name=\"{$varname}\" value=\"{$value}\" size=\"{$size}\" /></label></div>\n";
 	}
 
