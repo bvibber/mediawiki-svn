@@ -102,7 +102,7 @@ function efBlahtex() {
                 'math_UnmatchedRight'                   => 'Encountered "\\right" without matching "\\left"',
                 'math_UnrecognisedCommand'              => 'Unrecognised command "$1"',
                 'math_WrongFontEncoding'                => 'The symbol "$1" may not appear in font encoding "$2"',
-                'math_WrongFontEncodingWithHint'        => 'The symbol "$1" may not appear in font encoding "$2"' .
+                'math_WrongFontEncodingWithHint'        => 'The symbol "$1" may not appear in font encoding "$2" ' .
 		                                           '(try using the "$3{...}" command)', )
 	);
 }
@@ -320,8 +320,8 @@ class BlahtexRenderer {
 				// Error message has two or three arguments
 				$arg1 = $results[$node . ":arg"][0];
 				$arg2 = $results[$node . ":arg"][1];
-				if ( count( $results[$node . ":arg"][1] > 2 ) )
-					$arg3 = $results[$node . ":arg"][1];
+				if ( count( $results[$node . ":arg"] > 2 ) )
+					$arg3 = $results[$node . ":arg"][2];
 				else
 					$arg3 = '';
 				return $this->error( $id, $arg1, $arg2, $arg3, $fallback );
