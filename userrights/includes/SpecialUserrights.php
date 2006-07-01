@@ -1,9 +1,7 @@
 <?php
 /**
  * Provide an administration interface
- * DO NOT USE: INSECURE.
  *
- * TODO : remove everything related to group editing (SpecialGrouplevels.php)
  * @package MediaWiki
  * @subpackage SpecialPage
  */
@@ -36,6 +34,10 @@ class UserrightsForm extends HTMLForm {
 
 		$titleObj = Title::makeTitle( NS_SPECIAL, 'Userrights' );
 		$this->action = $titleObj->escapeLocalURL();
+		
+		$this->db = null;
+		$this->user = null;
+		$this->id = null;
 	}
 
 	/**
@@ -73,46 +75,60 @@ class UserrightsForm extends HTMLForm {
 	 * @param string $username Username to apply changes to.
 	 * @param array $removegroup id of groups to be removed.
 	 * @param array $addgroup id of groups to be added.
-	 *
+	 * @param string $reason the reason of changing the permissions.
 	 */
 	function saveUserGroups( $username, $removegroup, $addgroup, $reason ) {
 		global $wgOut;
-		$u = User::newFromName($username);
+		
+		$split = $this->splitUsername( $username );
+		list( $database, $name ) = $split;
+		if( $name == '' ) {
+			$wgOut->addWikiText( wfMsg( 'userrights-nodatabase', $database ) );
+			return;
+		}
+		if( $database == '' ) {
+			$this->user = User::newFromName( $name );
+			if( !isset( $this->user ) ) {
+				$wgOut->addWikiText( wfMsg( 'nosuchusershort', wfEscapeWikiText( $username ) ) );
+			}
+		} else {
+			$this->db =& $this->getDB( $database );
+		}
+		$this->id = $this->getUserId( $name );
 
-		if(is_null($u)) {
-			$wgOut->addWikiText( wfMsg( 'nosuchusershort', htmlspecialchars( $username ) ) );
+		if( $this->id == 0) {
+			$wgOut->addWikiText( wfMsg( 'nosuchusershort', wfEscapeWikiText( $username ) ) );
 			return;
 		}
 
-		if($u->getID() == 0) {
-			$wgOut->addWikiText( wfMsg( 'nosuchusershort', htmlspecialchars( $username ) ) );
-			return;
-		}
-
-		$oldGroups = $u->getGroups();
+		$oldGroups = $this->getUserGroups();
 		$newGroups = $oldGroups;
-		$logcomment = ' ';
-		// remove then add groups
+		# Remove then add groups
 		if(isset($removegroup)) {
 			$newGroups = array_diff($newGroups, $removegroup);
 			foreach( $removegroup as $group ) {
-				$u->removeGroup( $group );
+				$this->removeUserGroup( $group );
 			}
 		}
 		if(isset($addgroup)) {
 			$newGroups = array_merge($newGroups, $addgroup);
 			foreach( $addgroup as $group ) {
-				$u->addGroup( $group );
+				$this->addUserGroup( $group );
 			}
 		}
 		$newGroups = array_unique( $newGroups );
-
+		
+		// Ensure that caches are cleared
+		if( isset( $this->db ) ) {
+			$this->touchUser( $database, $this->id );
+		}
+		
 		wfDebug( 'oldGroups: ' . print_r( $oldGroups, true ) );
 		wfDebug( 'newGroups: ' . print_r( $newGroups, true ) );
 
 		wfRunHooks( 'UserRights', array( &$u, $addgroup, $removegroup ) );	
 		$log = new LogPage( 'rights' );
-		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $u->getName() ), $reason, array( $this->makeGroupNameList( $oldGroups ),
+		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), $reason, array( $this->makeGroupNameList( $oldGroups ),
 			$this->makeGroupNameList( $newGroups ) ) );
 	}
 
@@ -145,17 +161,29 @@ class UserrightsForm extends HTMLForm {
 	 */
 	function editUserGroupsForm($username) {
 		global $wgOut, $wgUser;
-
-		$user = User::newFromName($username);
-		if( is_null( $user ) ) {
-			$wgOut->addWikiText( wfMsg( 'nouserspecified' ) );
+		
+		$split = $this->splitUsername( $username );
+		list( $database, $name ) = $split;
+		if( $name == '' ) {
+			$wgOut->addWikiText( wfMsg( 'userrights-nodatabase', $database ) );
 			return;
-		} elseif( $user->getID() == 0 ) {
+		}
+		if( $database == '' ) {
+			$this->user = User::newFromName( $name );
+			if( !isset( $this->user ) ) {
+				$wgOut->addWikiText( wfMsg( 'nosuchusershort', wfEscapeWikiText( $username ) ) );
+			}
+		} else {
+			$this->db =& $this->getDB( $database );
+		}
+		$this->id = $this->getUserId( $name );
+
+		if( $this->id == 0) {
 			$wgOut->addWikiText( wfMsg( 'nosuchusershort', wfEscapeWikiText( $username ) ) );
 			return;
 		}
 
-		$groups = $user->getGroups();
+		$groups = $this->getUserGroups();
 
 		$wgOut->addHTML( "<form name=\"editGroup\" action=\"$this->action\" method=\"post\">\n".
 			wfElement( 'input', array(
@@ -181,6 +209,121 @@ class UserrightsForm extends HTMLForm {
 				'value' => wfMsg( 'saveusergroups' ) ) )
 			));
 		$wgOut->addHTML( "</form>\n" );
+	}
+	
+	/**
+	 * Split the user name to database and user name, if applicable.
+	 * @param string $username
+	 * @return array of the database and user name, some parts may be
+	   empty (no database if not specified, no user name if database
+	   is not exist)
+	 */
+	function splitUsername( $username ) {
+		global $wgLocalDatabases;
+		$parts = explode( '@', $username );
+		if( count( $parts ) < 2 ) {
+			return array( '', $username );
+		} elseif( in_array( $parts[1], $wgLocalDatabases ) ) {
+			return array( $parts[1], $parts[0] );
+		} else {
+			return array( $parts[1], '' );
+		}
+	}
+	
+	/**
+	 * Open a database connection to work on for the requested user.
+	 * This may be a new connection to another database for remote users.
+	 * @param string $database
+	 * @return Database
+	 */
+	function &getDB( $database ) {
+		global $wgDBname;
+		if( $database == '' ) {
+			$db = null;
+		} else {
+			global $wgDBuser, $wgDBpassword;
+			$server = $this->getMaster( $database );
+			$db =& new Database( $server, $wgDBuser, $wgDBpassword, $database );
+		}
+		return $db;
+	}
+	
+	/**
+	 * Return the master server to connect to for the requested database.
+	 */
+	function getMaster( $database ) {
+		global $wgDBserver, $wgAlternateMaster;
+		if( isset( $wgAlternateMaster[$database] ) ) {
+			return $wgAlternateMaster[$database];
+		}
+		return $wgDBserver;
+	}
+	
+	function getUserId( $name ) {
+		if( isset( $this->db ) ) {
+			return ( $name{0} == "#" )
+				? IntVal( substr( $name, 1 ) )
+				: IntVal( $this->db->selectField( 'user',
+					'user_id',
+					array( 'user_name' => $name ),
+					'UserrightsForm::getUserId' ) );
+		} else {
+			return $this->user->getID();
+		}
+	}
+	
+	function getUserGroups() {
+		if( isset( $this->db ) ) {
+			$res = $this->db->select( 'user_groups',
+				array( 'ug_group' ),
+				array( 'ug_user' => $this->id ),
+				'UserrightsForm::getUserGroups' );
+			$groups = array();
+			while( $row = $this->db->fetchObject( $res ) ) {
+				$groups[] = $row->ug_group;
+			}
+			return $groups;
+		} else {
+			return $this->user->getGroups();
+		}
+	}
+	
+	function addUserGroup( $group ) {
+		if( isset( $this->db ) ) {
+			$this->db->insert( 'user_groups',
+				array(
+					'ug_user' => $this->id,
+					'ug_group' => $group,
+				),
+				'UserrightsForm::addUserGroup',
+				array( 'IGNORE' ) );
+		} else {
+			return $this->user->addGroup( $group );
+		}
+	}
+	
+	function removeUserGroup( $group ) {
+		if( isset( $this->db ) ) {
+			$this->db->delete( 'user_groups',
+				array(
+					'ug_user' => $this->id,
+					'ug_group' => $group,
+				),
+				'UserrightsForm::addUserGroup' );
+		} else {
+			return $this->user->removeGroup( $group );
+		}
+	}
+	
+	function touchUser( $database, $userid ) {
+		$this->db->update( 'user',
+			array( 'user_touched' => $this->db->timestamp() ),
+			array( 'user_id' => $this->id ),
+			'UserrightsForm::touchUser' );
+		
+		global $wgMemc;
+		$key = "$database:user:id:$userid";
+		$wgMemc->delete( $key );
 	}
 } // end class UserrightsForm
 ?>

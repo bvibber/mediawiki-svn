@@ -667,8 +667,9 @@ $wgAllMessagesHe = array(
 "userrights-groupsavailable" => "קבוצות זמינות:",
 "userrights-groupshelp"      => "אנא בחרו קבוצות שברצונכם שהמשתמש יתווסף אליהן או יוסר מהן.
 קבוצות שלא נבחרו לא ישתנו. באפשרותכם לבטל בחירה של קבוצה באמצעות לחיצה על הכפתור השמאלי של העכבר ועל Ctrl מעליה.",
-'userrights-reason'          => "סיבה לשינוי ההרשאות:",
-"userrights-logcomment"      => 'שינה את ההרשאות מההרשאות $1 להרשאות $2',
+"userrights-reason"          => "סיבה לשינוי ההרשאות:",
+"userrights-nodatabase"      => "מסד הנתונים $1 אינו קיים או אינו מקומי.",
+"userrights-logcomment"      => "שינה את ההרשאות מההרשאות $1 להרשאות $2",
 
 # Groups
 "group"            => "קבוצה:",
