@@ -59,7 +59,7 @@ function auto_embed(target, url, opt){
 }
 
 
-//annodex is treated virtualy the same as vlc: 
+//annodex is virtualy the same as vlc with a slightly diffrent embed_type:
 function anx_embed(target, media_url, opt){
 	alert('anx_embed');
 	opt['embed_type']='application/x-annodex-vlc-viewer-plugin';
@@ -77,22 +77,21 @@ function vlc_embed(target, media_url, opt){
 	var eb = document.createElement("embed");
 	eb.type=opt['embed_type'];
 	eb.id="video1";
-	if(opt['height']==false){
-		eb.autoplay="no";
-	}else{
-		eb.autoplay="yes";
-	}
-	eb.loop="no";
 	eb.height=opt['height'];
 	eb.width=opt['width'];
 	
 	document.getElementById(target).innerHTML="";
 	document.getElementById(target).appendChild(eb);
-	
+	document.getElementById(target).innerHTML+='<a href="javascript:;" onclick="document.video1.play()">Play</a> '+
+						'<a href="javascript:;" onclick="document.video1.pause()">Pause</a> ' + 
+						'<a href="javascript:;" onclick="document.video1.stop()">Stop</a> ' +
+                        '<a href="javascript:;" onclick="document.video1.fullscreen()">Fullscreen</a> ';
 	//need to give the attached element time to load
-	//theoreticaly 
-	//alert("media_url: " + media_url);
 	setTimeout('run_vlc(\''+media_url+'\')', 300);
+}
+function vlc_controls(){
+	
+	
 }
 function run_vlc(media_url){
 	url = 'http://metavid.ucsc.edu' +media_url;
@@ -104,22 +103,25 @@ function run_vlc(media_url){
 }
 function jre_embed(target, media_url, opt){
 	//@todo going to have to load it as an iframe eventualy
-	var eb = document.createElement("applet");
-	eb.code='com.fluendo.player.Cortado.class';
-	eb.archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar";
-	eb.width='320';
-	eb.height='240';
-	eb.innerHTML='  <param name="url" value="http://metavid.ucsc.edu'+media_url+'" />'+
-				 '<param name="autoplay" value="false" />' +
-				  '<param name="local" value="false"/>' + 
-					  '<param name="keepaspect" value="true" />'+
-					  '<param name="video" value="true" />'	+
-					  '<param name="audio" value="true" />'+
-					  '<param name="seekable" value="true" />'+
-					  '<param name="duration" value="00455" />'+
-					  '<param name="bufferSize" value="200" />';
-	document.getElementById(target).innerHTML="";
-	document.getElementById(target).appendChild(eb);		  
+	//var eb = document.createElement("applet");
+	//eb.code='com.fluendo.player.Cortado.class';
+	//eb.archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar";
+	//eb.width='320';
+	//eb.height='240';
+	document.getElementById(target).innerHTML=''+
+			'<applet code="com.fluendo.player.Cortado.class" archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar" width="320" height="240">'+	
+				'<param name="url" value="http://metavid.ucsc.edu'+ media_url + '" />'+
+				'<param name="autoplay" value="false" />' +
+				'<param name="local" value="false"/>' + 
+				'<param name="keepaspect" value="true" />'+
+				'<param name="video" value="true" />'	+
+				'<param name="audio" value="true" />'+
+				'<param name="seekable" value="true" />'+
+				'<param name="duration" value="00455" />'+
+				'<param name="bufferSize" value="200" />'+
+			  '</applet>';
+	//document.getElementById(target).innerHTML="";
+	//document.getElementById(target).appendChild(eb);		  
 					  
 //	<applet code="com.fluendo.player.Cortado.class" archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar" width="320" height="240">
 					
@@ -216,7 +218,7 @@ function detect_applet(){
 					alert('no java plugin installed');	
 				}else{
 					var javaVersion = applet.getJavaVersion();	
-					alert('java jre found version: ' + javaVersion);
+					alert('found java jre version: ' + javaVersion);
 					return 'jre';
 				}
 			} catch(e) {
@@ -230,7 +232,7 @@ function detect_applet(){
 		}
 	}	
 	if (pluginDetected) {
-		return 'java';
+		return 'jre';
 	} else {
 		return null;
 	}
