@@ -55,10 +55,12 @@ class UserrightsForm extends HTMLForm {
 			if( $this->mRequest->getCheck( 'saveusergroups' ) ) {
 				global $wgUser;
 				$username = $this->mRequest->getVal( 'user-editname' );
+				$reason = $this->mRequest->getVal( 'reason' );
 				if( $wgUser->matchEditToken( $this->mRequest->getVal( 'wpEditToken' ), $username ) ) {
 					$this->saveUserGroups( $username,
 						$this->mRequest->getArray( 'member' ),
-						$this->mRequest->getArray( 'available' ) );
+						$this->mRequest->getArray( 'available' ),
+						$reason );
 				}
 			}
 		}
@@ -73,7 +75,7 @@ class UserrightsForm extends HTMLForm {
 	 * @param array $addgroup id of groups to be added.
 	 *
 	 */
-	function saveUserGroups( $username, $removegroup, $addgroup) {
+	function saveUserGroups( $username, $removegroup, $addgroup, $reason ) {
 		global $wgOut;
 		$u = User::newFromName($username);
 
@@ -110,7 +112,7 @@ class UserrightsForm extends HTMLForm {
 
 		wfRunHooks( 'UserRights', array( &$u, $addgroup, $removegroup ) );	
 		$log = new LogPage( 'rights' );
-		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $u->getName() ), '', array( $this->makeGroupNameList( $oldGroups ),
+		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $u->getName() ), $reason, array( $this->makeGroupNameList( $oldGroups ),
 			$this->makeGroupNameList( $newGroups ) ) );
 	}
 
@@ -171,6 +173,7 @@ class UserrightsForm extends HTMLForm {
 			'</td><td>'.
 			HTMLSelectGroups('available', $this->mName.'-groupsavailable', $groups,true,6,true).
 			'</td></tr></table>'."\n".
+			$this->textbox( 'reason', '', 50 ).
 			$wgOut->parse( wfMsg('userrights-groupshelp') ) .
 			wfElement( 'input', array(
 				'type'  => 'submit',
