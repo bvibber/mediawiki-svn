@@ -487,7 +487,7 @@ auto_ptr<MathmlNode> Row::BuildMathmlTree(
     return AdjustMathmlEnvironment(
         outputNode,
         inheritedEnvironment,
-        environments[0]
+        environments.empty() ? inheritedEnvironment : environments[0]
     );
 }
 
