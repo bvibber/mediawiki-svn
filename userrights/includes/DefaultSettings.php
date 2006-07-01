@@ -922,7 +922,10 @@ $wgGroupPermissions['sysop']['autoconfirmed']   = true;
 
 // Permissions to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
+$wgGroupPermissions['bureaucrat']['userrights_full'] = true;
 $wgGroupPermissions['bureaucrat']['userrights_remote'] = true;
+$wgGroupPermissions['bureaucrat']['userrights_grant'] = true;
+$wgGroupPermissions['bureaucrat']['userrights_revoke'] = true;
 
 // Experimental permissions, not ready for production use
 //$wgGroupPermissions['sysop']['deleterevision'] = true;
@@ -2180,5 +2183,16 @@ $wgContentNamespaces = array( NS_MAIN );
  * Maximum amount of virtual memory available to shell processes under linux, in KB. 
  */
 $wgMaxShellMemory = 102400;
+
+/**
+ * Arrays of restrictions of permission granting and revoking. If whitelist is specified,
+ * it is used; else, the blacklist is used. These restrictions apply to the users with
+ * permission "userrights" but not "userrights_full" - the users with "userrights_full"
+ * can grant and reoke any permission, regardless these settings.
+ */
+$wgGrantPermissionsWhitelist = array();
+$wgGrantPermissionsBlacklist = array();
+$wgRevokePermissionsWhitelist = array();
+$wgRevokePermissionsBlacklist = array();
 
 ?>

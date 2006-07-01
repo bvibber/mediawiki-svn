@@ -34,14 +34,16 @@ class HTMLForm {
 	 * @private
 	 * @param $varname String: name of the checkbox.
 	 * @param $checked Boolean: set true to check the box (default False).
+	 * @param $disabled Boolean: set true to disable the box (default False).
+	 * @param $label String: the label, by default a message.
 	 */
-	function checkbox( $varname, $checked=false ) {
+	function checkbox( $varname, $checked=false, $disabled=false, $label='' ) {
 		if ( $this->mRequest->wasPosted() && !is_null( $this->mRequest->getVal( $varname ) ) ) {
 			$checked = $this->mRequest->getCheck( $varname );
 		}
 		return "<div><input type='checkbox' value=\"1\" id=\"{$varname}\" name=\"wpOp{$varname}\"" .
-			( $checked ? ' checked="checked"' : '' ) .
-			" /><label for=\"{$varname}\">". wfMsg( $this->mName.'-'.$varname ) .
+			( $checked ? ' checked="checked"' : '' ) . ( $disabled ? ' disabled="disabled"' : '' ) .
+			" /><label for=\"{$varname}\"> ". ( $label == '' ? wfMsg( $this->mName.'-'.$varname ) : $label ) .
 			"</label></div>\n";
 	}
 
@@ -109,69 +111,4 @@ class HTMLForm {
 	}
 } // end class
 
-
-// functions used by SpecialUserrights.php
-
-/** Build a select with all defined groups
- * @param $selectname String: name of this element. Name of form is automaticly prefixed.
- * @param $selectmsg String: FIXME
- * @param $selected Array: array of element selected when posted. Only multiples will show them.
- * @param $multiple Boolean: A multiple elements select.
- * @param $size Integer: number of elements to be shown ignored for non-multiple (default 6).
- * @param $reverse Boolean: if true, multiple select will hide selected elements (default false).
- * @todo Document $selectmsg
-*/
-function HTMLSelectGroups($selectname, $selectmsg, $selected=array(), $multiple=false, $size=6, $reverse=false) {
-	$groups = User::getAllGroups();
-	$out = htmlspecialchars( wfMsg( $selectmsg ) );
-
-	if( $multiple ) {
-		$attribs = array(
-			'name'    => $selectname . '[]',
-			'multiple'=> 'multiple',
-			'size'    => $size );
-	} else {
-		$attribs = array( 'name' => $selectname );
-	}
-	$out .= wfElement( 'select', $attribs, null );
-
-	foreach( $groups as $group ) {
-		$attribs = array( 'value' => $group );
-		if( $multiple ) {
-			// for multiple will only show the things we want
-			if( !in_array( $group, $selected ) xor $reverse ) {
-				continue;
-			}
-		} else {
-			if( in_array( $group, $selected ) ) {
-				$attribs['selected'] = 'selected';
-			}
-		}
-		$out .= wfElement( 'option', $attribs, User::getGroupName( $group ) ) . "\n";
-	}
-
-	$out .= "</select>\n";
-	return $out;
-}
-
-/** Build a select with all existent rights
- * @param $selected Array: Names(?) of user rights that should be selected.
- * @return string HTML select.
- */
-function HTMLSelectRights($selected='') {
-	global $wgAvailableRights;
-	$out = '<select name="editgroup-getrights[]" multiple="multiple">';
-	$groupRights = explode(',',$selected);
-
-	foreach($wgAvailableRights as $right) {
-
-		// check box when right exist
-		if(in_array($right, $groupRights)) { $selected = 'selected="selected" '; }
-		else { $selected = ''; }
-
-		$out .= '<option value="'.$right.'" '.$selected.'>'.$right."</option>\n";
-	}
-	$out .= "</select>\n";
-	return $out;
-}
 ?>

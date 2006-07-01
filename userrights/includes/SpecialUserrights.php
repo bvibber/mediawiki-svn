@@ -27,7 +27,7 @@ class UserrightsForm extends HTMLForm {
 	var $action;
 
 	/** Constructor*/
-	function UserrightsForm ( &$request ) {
+	function __construct ( &$request ) {
 		$this->mPosted = $request->wasPosted();
 		$this->mRequest =& $request;
 		$this->mName = 'userrights';
@@ -59,10 +59,7 @@ class UserrightsForm extends HTMLForm {
 				$username = $this->mRequest->getVal( 'user-editname' );
 				$reason = $this->mRequest->getVal( 'reason' );
 				if( $wgUser->matchEditToken( $this->mRequest->getVal( 'wpEditToken' ), $username ) ) {
-					$this->saveUserGroups( $username,
-						$this->mRequest->getArray( 'member' ),
-						$this->mRequest->getArray( 'available' ),
-						$reason );
+					$this->saveUserGroups( $username, $reason );
 				}
 			}
 		}
@@ -73,11 +70,9 @@ class UserrightsForm extends HTMLForm {
 	 * Data comes from the editUserGroupsForm() form function
 	 *
 	 * @param string $username Username to apply changes to.
-	 * @param array $removegroup id of groups to be removed.
-	 * @param array $addgroup id of groups to be added.
 	 * @param string $reason the reason of changing the permissions.
 	 */
-	function saveUserGroups( $username, $removegroup, $addgroup, $reason ) {
+	function saveUserGroups( $username, $reason ) {
 		global $wgOut, $wgUser;
 		
 		if( !$username ) {
@@ -111,8 +106,22 @@ class UserrightsForm extends HTMLForm {
 			return;
 		}
 
+		$groups = User::getAllGroups();
 		$oldGroups = $this->getUserGroups();
 		$newGroups = $oldGroups;
+		$addgroup = array();
+		$removegroup = array();
+		foreach( $groups as $group ) {
+			if( !in_array( $group, $oldGroups ) && $this->mRequest->getCheck( "wpOpUsergroup-$group" ) &&
+			$this->isAllowedChangingGroup( $group, 1 ) ) {
+				$addgroup[] = $group;
+			}
+			if( in_array( $group, $oldGroups ) && !$this->mRequest->getCheck( "wpOpUsergroup-$group" ) &&
+			$this->isAllowedChangingGroup( $group, 0 ) ) {
+				$removegroup[] = $group;
+			}
+		}
+		
 		# Remove then add groups
 		if(isset($removegroup)) {
 			$newGroups = array_diff($newGroups, $removegroup);
@@ -203,32 +212,87 @@ class UserrightsForm extends HTMLForm {
 			return;
 		}
 
-		$groups = $this->getUserGroups();
+		$userGroups = $this->getUserGroups();
 
-		$wgOut->addHTML( "<form name=\"editGroup\" action=\"$this->action\" method=\"post\">\n".
-			wfElement( 'input', array(
+		$wgOut->addHTML( "<form name=\"editGroup\" action=\"$this->action\" method=\"post\">\n");
+		$wgOut->addHTML( wfElement( 'input', array(
 				'type'  => 'hidden',
 				'name'  => 'user-editname',
-				'value' => $username ) ) .
-			wfElement( 'input', array(
+				'value' => $username ) ) );
+		$wgOut->addHTML( wfElement( 'input', array(
 				'type'  => 'hidden',
 				'name'  => 'wpEditToken',
-				'value' => $wgUser->editToken( $username ) ) ) .
-			$this->fieldset( 'editusergroup',
-			$wgOut->parse( wfMsg('editing', $username ) ) .
-			'<table border="0" align="center"><tr><td>'.
-			HTMLSelectGroups('member', $this->mName.'-groupsmember', $groups,true,6).
-			'</td><td>'.
-			HTMLSelectGroups('available', $this->mName.'-groupsavailable', $groups,true,6,true).
-			'</td></tr></table>'."\n".
+				'value' => $wgUser->editToken( $username ) ) ) );
+		$wgOut->addHTML( $this->fieldset( 'editusergroup',
+			$wgOut->parse( wfMsg( 'userrights-help', $username ) ) .
+			$this->selectGroups( $userGroups ).
 			$this->textbox( 'reason', '', 50 ).
-			$wgOut->parse( wfMsg('userrights-groupshelp') ) .
 			wfElement( 'input', array(
 				'type'  => 'submit',
 				'name'  => 'saveusergroups',
 				'value' => wfMsg( 'saveusergroups' ) ) )
-			));
+			) );
 		$wgOut->addHTML( "</form>\n" );
+	}
+	
+	/**
+	 * Checkboxes list of the user groups.
+	 * @param array $userGroups All the groups the user belongs to.
+	 * @return The checkboxes list.
+	 */
+	function selectGroups( $userGroups ) {
+		$out = '';
+		$groups = User::getAllGroups();
+		
+		foreach( $groups as $group ) {
+			$checked = in_array( $group, $userGroups );
+			$disabled = !$this->isAllowedChangingGroup( $group, $checked ? 2 : 1 );
+			$label = User::getGroupName( $group ) . ( $disabled ? ' '.wfMsg( 'userrights-groupdisabled' ) : '' );
+			$out .= $this->checkbox( "Usergroup-$group", $checked, $disabled, $label );
+		}
+		return $out;
+	}
+	
+	/**
+	 * Checking if the user is allowed to add or remove users from this group,
+	 * according to the site settings.
+	 * @param string $group The group.
+	 * @param boolean $mode Granting - 1, revoking - 0.
+	 * @return boolean answer.
+	 */
+	function isAllowedChangingGroup( $group, $mode ) {
+		global $wgUser;
+		global $wgGrantPermissionsWhitelist, $wgGrantPermissionsBlacklist;
+		global $wgRevokePermissionsWhitelist, $wgRevokePermissionsBlacklist;
+		
+		# The user who has the full interface can always change the group
+		if( $wgUser->isAllowed( 'userrights_full' ) ) {
+			return true;
+		}
+		
+		# Using the white lists if they are exist, else using the black lists
+		$useGrantWhitelist = count( $wgGrantPermissionsWhitelist ) > 0;
+		$useRevokeWhitelist = count( $wgRevokePermissionsWhitelist ) > 0;
+		
+		if( $mode == 1 ) {
+			if( !$wgUser->isAllowed( 'userrights_grant' ) ||
+			( $useGrantWhitelist && !in_array( $group, $wgGrantPermissionsWhitelist) ) ||
+			( !$useGrantWhitelist && in_array( $group, $wgGrantPermissionsBlacklist) ) ) {
+				# The user is not allowed to grant whatsoever, or the group is not in the
+				# grant whitelist, or the group is in the grant blacklist
+				return false;
+			}
+		} else {
+			if( !$wgUser->isAllowed( 'userrights_revoke' ) ||
+			( $useRevokeWhitelist && !in_array( $group, $wgRevokePermissionsWhitelist) ) ||
+			( !$useRevokeWhitelist && in_array( $group, $wgRevokePermissionsBlacklist) ) ) {
+				# The user is not allowed to revoke whatsoever, or the group is not in the
+				# revoke whitelist, or the group is in the revoke blacklist
+				return false;
+			}
+		}
+		
+		return true;
 	}
 	
 	/**
