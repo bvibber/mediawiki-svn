@@ -12,9 +12,9 @@
 
 class BadImageList {
 
-	function check( &$image ) {
+	function check( $name ) {
 		$dbr =& wfGetDB( DB_SLAVE ); # This might need to be DB_MASTER in future
-		$res = $dbr->selectField( 'bad_images', 'COUNT(*) AS count', array( 'bil_name' => $image->getName() ), __METHOD__ );
+		$res = $dbr->selectField( 'bad_images', 'COUNT(*) AS count', array( 'bil_name' => $name ), __METHOD__ );
 		return $res > 0;
 	}
 
