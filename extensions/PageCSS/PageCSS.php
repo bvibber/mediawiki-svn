@@ -33,10 +33,11 @@ function wfCssHook() {
 			$wgHooks['SkinTemplateSetupPageCss'][] = array( &$this, 'hook' );
 		}
 
-		public function parseHook( $in, array $argv ) {
+		public function parseHook( $in, array $argv, Parser $parser ) {
 			global $wgCssHookCss;
 
 			$this->mCss .= trim( $in );
+			$parser->disableCache(); // workaround for now
 		}
 
 		public function hook( &$css ) {
