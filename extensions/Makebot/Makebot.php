@@ -16,11 +16,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-require_once( 'SpecialPage.php' );
-require_once( 'LogPage.php' );
-require_once( 'SpecialLog.php' );
-require_once( 'Makebot.i18n.php' );
-
 define( 'MW_MAKEBOT_GRANT', 1 );
 define( 'MW_MAKEBOT_REVOKE', 2 );
 
