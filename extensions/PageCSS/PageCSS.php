@@ -36,7 +36,7 @@ function wfCssHook() {
 		public function parseHook( $in, array $argv, Parser $parser ) {
 			global $wgCssHookCss;
 
-			$this->mCss .= trim( $in );
+			$this->mCss .= trim( Sanitizer::checkCss( $in ) );
 			$parser->disableCache(); // workaround for now
 		}
 
