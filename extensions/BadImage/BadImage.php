@@ -12,12 +12,21 @@
 
 if( defined( 'MEDIAWIKI' ) ) {
 
-	global $wgExtensionCredits, $wgAutoloadClasses, $wgHooks;
+	global $wgAutoloadClasses, $wgSpecialPages, $wgHooks;
+	require_once( dirname( __FILE__ ) . '/BadImage.i18n.php' );
 	
-	$wgExtensionCredits['other'][] = array( 'name' => 'Bad Image List', 'author' => 'Rob Church' );
 	$wgAutoloadClasses['BadImageList'] = dirname( __FILE__ ). '/BadImage.class.php';
+	$wgAutoloadClasses['BadImageManipulator'] = dirname( __FILE__ ) . '/BadImage.page.php';
 
-	$wgHooks['BadImage'][] = 'efBadImage';
+	$wgSpecialPages['Badimages'] = 'BadImageManipulator';
+	$wgExtensionCredits['other'][] = array( 'name' => 'Bad Image List', 'author' => 'Rob Church' );
+	$wgExtensionFunctions[] = 'efBadImageSetup';
+	
+	function efBadImageSetup() {
+		global $wgMessageCache, $wgHooks;
+		$wgHooks['BadImage'][] = 'efBadImage';
+		$wgMessageCache->addMessages( efBadImageMessages() );
+	}
 	
 	function efBadImage( $image, &$bad ) {
 		if( BadImageList::check( $image ) ) {
@@ -27,7 +36,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			return true;
 		}
 	}
-
+	
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );
