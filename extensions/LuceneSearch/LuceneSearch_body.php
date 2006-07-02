@@ -195,7 +195,8 @@ class LuceneSearch extends SpecialPage
 				return;
 			}
 
-			$wgOut->setSubtitle( $wgOut->parse( wfMsg( 'searchsubtitle', $q ) ) );
+			$subtitleMsg = is_object( Title::newFromText( $q ) ) ? 'searchsubtitle' : 'searchsubtitleinvalid';
+			$wgOut->setSubtitle( $wgOut->parse( wfMsg( $subtitleMsg, wfEscapeWikiText( $q ) ) ) );
 
 			// If the search returned no results, an alternate fuzzy search
 			// match may be displayed as a suggested search. Link it.
