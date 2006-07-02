@@ -17,9 +17,10 @@ function wfLinkSearchSetup() {
 			'linksearch-error' => 'Wildcards may appear only at the start of the hostname.'
 		)
 	);
-	
-	SpecialPage::addPage( new SpecialPage( 'Linksearch', /* permission */'',
-		/*listed*/ true, /*function*/ false, /*file*/ false ) );
+
+	$GLOBALS['wgSpecialPages']['Linksearch'] = array( /*class*/ 'SpecialPage', 
+		/*name*/ 'Linksearch', /* permission */'', /*listed*/ true, 
+		/*function*/ false, /*file*/ false );
 	
 	class LinkSearchPage extends QueryPage {
 		function __construct( $query ) {
