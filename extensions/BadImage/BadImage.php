@@ -12,7 +12,7 @@
 
 if( defined( 'MEDIAWIKI' ) ) {
 
-	global $wgAutoloadClasses, $wgSpecialPages, $wgHooks;
+	global $wgAutoloadClasses, $wgSpecialPages;
 	require_once( dirname( __FILE__ ) . '/BadImage.i18n.php' );
 	
 	$wgAutoloadClasses['BadImageList'] = dirname( __FILE__ ). '/BadImage.class.php';
@@ -21,6 +21,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgSpecialPages['Badimages'] = 'BadImageManipulator';
 	$wgExtensionCredits['other'][] = array( 'name' => 'Bad Image List', 'author' => 'Rob Church' );
 	$wgExtensionFunctions[] = 'efBadImageSetup';
+	
+	$wgGroupPermissions['sysop']['badimages'] = true;
 	
 	function efBadImageSetup() {
 		global $wgMessageCache, $wgHooks;

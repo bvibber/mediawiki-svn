@@ -15,6 +15,9 @@ function efBadImageMessages() {
 
 'badimages' => 'Bad image list',
 
+'badimages-subheading' => 'Current items',
+'badimages-count' => "There are '''$1''' images on the bad image list.",
+
 	);
 }
 
