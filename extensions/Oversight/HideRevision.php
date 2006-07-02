@@ -39,18 +39,16 @@ $wgGroupPermissions['*']['oversight'] = false;
 
 $wgExtensionFunctions[] = 'hrSetup';
 
+$wgSpecialPages['HideRevision'] = array( 'SpecialPage', 'HideRevision', 'hiderevision',
+		/*listed*/ true, /*function*/ false, /*file*/ false );
+$wgSpecialPages['Oversight'] = array( 'SpecialPage', 'Oversight', 'oversight',
+		/*listed*/ true, /*function*/ false, /*file*/ false );
+
 /**
  * Setup function for HideRevision extension.
  * Adds the special page for the action form.
  */
 function hrSetup() {
-	require_once 'SpecialPage.php';
-	SpecialPage::addPage( new SpecialPage( 'HideRevision', 'hiderevision',
-		/*listed*/ true, /*function*/ false, /*file*/ false ) );
-	
-	SpecialPage::addPage( new SpecialPage( 'Oversight', 'oversight',
-		/*listed*/ true, /*function*/ false, /*file*/ false ) );
-	
 	$GLOBALS['wgHooks']['ArticleViewHeader'][] = 'hrArticleViewHeaderHook';
 	$GLOBALS['wgHooks']['DiffViewHeader'][] = 'hrDiffViewHeaderHook';
 	
