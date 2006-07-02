@@ -13,19 +13,25 @@
 class BadImageList {
 
 	function check( $name ) {
+		wfProfileIn( __METHOD__ );
 		$dbr =& wfGetDB( DB_SLAVE ); # This might need to be DB_MASTER in future
-		$res = $dbr->selectField( 'bad_images', 'COUNT(*) AS count', array( 'bil_name' => $name ), __METHOD__ );
+		$res = $dbr->selectField( 'bad_images', 'COUNT(*)', array( 'bil_name' => $name ), __METHOD__ );
+		wfProfileOut( __METHOD__ );
 		return $res > 0;
 	}
 
 	function add( &$image, &$user, $reason ) {
+		wfProfileIn( __METHOD__ );
 		$dbw =& wfGetDB( DB_MASTER );
 		$dbw->insert( 'bad_images', array( 'bil_name' => $image->getName(), 'bil_user' => $user->getId(), 'bil_reason' => $reason ), __METHOD__, 'IGNORE' );
+		wfProfileOut( __METHOD__ );
 	}
 	
 	function remove( &$image ) {
+		wfProfileIn( __METHOD__ );
 		$dbw =& wfGetDB( DB_MASTER );
 		$dbw->delete( 'bad_images', array( 'bil_name' => $image->getName() ), __METHOD__ );
+		wfProfileOut( __METHOD__ );
 	}
 
 }
