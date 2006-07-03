@@ -5,31 +5,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-global $wgMessageCache;
-$wgMessageCache->addMessages(
-	array(
-		'makesysoptitle'        => 'Make a user into a sysop',
-		'makesysoptext'         => 'This form is used by bureaucrats to turn ordinary users into administrators. Type the name of the user in the box and press the button to make the user an administrator',
-		'makesysopname'         => 'Name of the user:',
-		'makesysopsubmit'       => 'Make this user into a sysop',
-		'makesysopok'           => "<b>User \"$1\" is now a sysop</b>",
-		'makesysopfail'         => "<b>User \"$1\" could not be made into a sysop. (Did you enter the name correctly?)</b>",
-		'setbureaucratflag'     => 'Set bureaucrat flag',
-		'rights'                => 'Rights:',
-		'set_user_rights'       => 'Set user rights',
-		'user_rights_set'       => "<b>User rights for \"$1\" updated</b>",
-		'set_rights_fail'       => "<b>User rights for \"$1\" could not be set. (Did you enter the name correctly?)</b>",
-		'makesysop'             => 'Make a user into a sysop',
-		'already_sysop'         => 'This user is already an administrator',
-		'already_bureaucrat'    => 'This user is already a bureaucrat',
-		'makesysop-nodatabase'  => 'Bad interwiki username: $1',
-		'group-steward'         => 'Stewards',
-		'group-steward-member'  => 'Steward',
-		'grouppage-steward'     => 'Project:Stewards',
-		'bureaucrattitle'       => 'Bureaucrat access required',
-		'bureaucrattext'        => 'The action you have requested can only be performed by sysops with "bureaucrat" status.',
-	)
-);
+# Add messages
+global $wgMessageCache, $wgMakesysopMessages;
+foreach( $wgMakesysopMessages as $key => $value ) {
+	$wgMessageCache->addMessages( $wgMakesysopMessages[$key], $key );
+}
 
 require_once( 'SpecialUserrights.php' );
 require_once( "LinksUpdate.php" );
