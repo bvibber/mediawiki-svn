@@ -19,26 +19,15 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
+# Internationlization file
+require_once( 'Newuserlog.i18n.php' );
+
 function wfNewuserlog() {
-	global $wgMessageCache;
-	$wgMessageCache->addMessages(
-		array(
-			'newuserlogpage' => 'User creation log',
-			'newuserlogpagetext' => 'This is a log of recent user creations',
-			
-			// Compatibility entries.
-			// Old code stored Special:Userlogin as the target, not very helpful.
-			'newuserlogentry' => '',
-			'newuserloglog' => "New user ([[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]])",
-			
-			// Self-login
-			'newuserlog-create-entry' => 'New user',
-			'newuserlog-create-text' => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]",
-			
-			// Created account for someone else with 'by mail' button
-			'newuserlog-create2-entry' => 'created account for $1',
-		)
-	);
+	# Add messages
+	global $wgMessageCache, $wgNewuserlogMessages;
+	foreach( $wgNewuserlogMessages as $key => $value ) {
+		$wgMessageCache->addMessages( $wgNewuserlogMessages[$key], $key );
+	}
 
 	# Add a new log type
 	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
