@@ -12,6 +12,10 @@ $wgCrossNamespaceLinksMessages['en'] = array(
 	'crossnamespacelinks'     => 'Cross-namespace links',
 	'crossnamespacelinkstext' => '$1: $2 links to $3'
 );
+$wgCrossNamespaceLinksMessages['de'] = array(
+	'crossnamespacelinks'     => 'Artikel mit Links in andere Namensräume',
+	'crossnamespacelinkstext' => '$1: $2 verweist auf $3'
+);
 $wgCrossNamespaceLinksMessages['he'] = array(
 	'crossnamespacelinks'     => 'קישורים מדפי תוכן למרחבי שם אחרים',
 	'crossnamespacelinkstext' => '$1: $2 קישורים למרחב $3'
