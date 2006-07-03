@@ -23,9 +23,6 @@ $wgExtensionFunctions[] = 'efMakeBot';
 $wgAvailableRights[] = 'makebot';
 $wgExtensionCredits['specialpage'][] = array( 'name' => 'MakeBot', 'author' => 'Rob Church', 'url' => 'http://meta.wikimedia.org/wiki/MakeBot' );
 
-# Internationlization file
-require_once( 'Makebot.i18n.php' );
-
 /**
  * Determines who can use the extension; as a default, bureaucrats are permitted
  */
@@ -48,11 +45,8 @@ $wgSpecialPages['Makebot'] = 'Makebot';
 function efMakeBot() {
 	global $wgMessageCache, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
 
-	# Add messages
-	global $wgMessageCache, $wgMakebotMessages;
-	foreach( $wgMakebotMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $wgMakebotMessages[$key], $key );
-	}
+	require_once( 'Makebot.i18n.php' );
+	$wgMessageCache->addMessages( efMakeBotMessages() );
 
 	$wgLogTypes[] = 'makebot';
 	$wgLogNames['makebot'] = 'makebot-logpage';
