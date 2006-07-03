@@ -1,4 +1,5 @@
 <?php
+
 require_once( 'LogPage.php' );
 require_once( 'SpecialLog.php' );
 
@@ -167,7 +168,7 @@ class MakeBot extends SpecialPage {
 	}
 
 	/**
-	 * Can the specified user be given a bot flag
+	 * Can the specified user be given a bot flag?
 	 * Check existing privileges and configuration
 	 * @param $user User to check
 	 * @return bool True if permitted
@@ -181,6 +182,5 @@ class MakeBot extends SpecialPage {
 	}
 
 }
-
 
 ?>

@@ -36,10 +36,8 @@ $wgMakeBotPrivileged = false;
 /**
  * Register the special page
  */
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
-extAddSpecialPage( dirname(__FILE__) . '/Makebot_body.php', 'Makebot', 'MakeBot' );
+$wgAutoloadClasses['Makebot'] = dirname( __FILE__ ) . '/Makebot.class.php';
+$wgSpecialPages['Makebot'] = 'Makebot';
 
 /**
  * Populate the message cache and set up the auditing
