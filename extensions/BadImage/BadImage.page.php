@@ -21,13 +21,13 @@ class BadImageManipulator extends SpecialPage {
 		$this->setHeaders();
 		
 		# Check permissions
-		if( !$wgUser->isAllowed( 'badimages' ) ) {
-			$wgOut->permissionRequired( 'badimages' );
-			return;
+		if( $wgUser->isAllowed( 'badimages' ) ) {
+			# Check for actions pending
+			# TODO: *cough...um, duh?*
+
+		} else {
+			$wgOut->addWikiText( wfMsg( 'badimages-unprivileged' ) );
 		}
-		
-		# Check for actions pending
-		# TODO: *cough...um, duh?*
 		
 		# List existing bad images
 		$this->listExisting();
@@ -46,14 +46,18 @@ class BadImageManipulator extends SpecialPage {
 			$skin =& $wgUser->getSkin();
 			$wgOut->addHtml( '<ul>' );
 			while( $row = $dbr->fetchObject( $res ) )
-				$wgOut->addHtml( $this->makeListRow( $row, $skin, $wgLang ) );
+				$wgOut->addHtml( $this->makeListRow( $row, $skin, $wgLang, $wgUser->isAllowed( 'badimages' ) ) );
 			$wgOut->addHtml( '</ul>' );
 		}
 	}
 	
-	function makeListRow( $result, &$skin, &$lang ) {
+	function makeListRow( $result, &$skin, &$lang, $priv ) {
 		$title = Title::makeTitleSafe( NS_IMAGE, $result->bil_name );
-		$ilink = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
+		$ilink = $skin->makeLinkObj( $title, htmlspecialchars( $title->getText() ) );
+		if( $priv ) {
+			$self = Title::makeTitle( NS_SPECIAL, 'Badimages' );
+			$ilink .= ' ' . $skin->makeKnownLinkObj( $self, wfMsgHtml( 'badimages-remove' ), 'action=remove&image=' . $title->getPartialUrl() );
+		}
 		$ulink = $skin->userLink( $result->bil_user, $result->user_name ) . $skin->userToolLinks( $result->bil_user, $result->user_name );
 		$time = $lang->timeAndDate( $result->bil_timestamp, true );
 		$comment = $skin->commentBlock( $result->bil_reason );

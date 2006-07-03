@@ -15,8 +15,11 @@ function efBadImageMessages() {
 
 'badimages' => 'Bad image list',
 
+'badimages-unprivileged' => '(You do not have sufficient permission to alter the list)',
+
 'badimages-subheading' => 'Current items',
 'badimages-count' => "There are '''$1''' images on the bad image list.",
+'badimages-remove' => '(remove)',
 
 	);
 }
