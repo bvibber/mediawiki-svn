@@ -17,6 +17,10 @@ $wgExtensionCredits['specialpage'][] = array(
 	'description' => 'lists links across namespaces that shouldn\'t exist on Wikimedia projects',
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
+
+# Internationlization file
+require_once( 'SpecialCrossNamespaceLinks.i18n.php' );
+
 $wgHooks['wgQueryPages'][] = 'wfSpecialCrossNamespaceLinksHook';
 
 if ( !function_exists( 'extAddSpecialPage' ) ) {
@@ -25,12 +29,18 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 extAddSpecialPage( dirname(__FILE__) . '/SpecialCrossNamespaceLinks_body.php', 'CrossNamespaceLinks', 'CrossNamespaceLinks' );
 
 function wfSpecialCrossNamespaceLinksHook( &$QueryPages ) {
+	# Add messages
+	global $wgMessageCache, $wgCrossNamespaceLinksMessages;
+	foreach( $wgCrossNamespaceLinksMessages as $key => $value ) {
+		$wgMessageCache->addMessages( $wgCrossNamespaceLinksMessages[$key], $key );
+	}
+	
 	$QueryPages[] = array(
 		'CrossNamespaceLinksPage',
 		'CrossNamespaceLinks',
 		// Would probably be slow on large wikis -ævar
 		//false
 	);
-
+	
 	return true;
 }

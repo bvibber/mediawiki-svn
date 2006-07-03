@@ -1,14 +1,7 @@
 <?php
 if (!defined('MEDIAWIKI')) die();
 
-global $wgMessageCache, $wgHooks, $IP;
-
-$wgMessageCache->addMessages(
-	array(
-		'crossnamespacelinks' => 'Cross-namespace links',
-		'crossnamespacelinkstext' => '$1: $2 links to $3'
-	)
-);
+global $wgHooks, $IP;
 
 require_once "$IP/includes/QueryPage.php";
 
