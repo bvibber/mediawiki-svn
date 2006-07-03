@@ -116,6 +116,71 @@ function getQueryAsRelation($sql) {
 	return $result;		
 }
 
+function getRelationAsHTMLList($relation) {
+	$heading = $relation->getHeading();
+
+	$result = getHeadingAsListHeading($heading);
+	$result .= '<ul class="wiki-data-unordered-list">';
+	
+	for($i = 0; $i < $relation->getTupleCount(); $i++) {
+		$tuple = $relation->getTuple($i);
+		$result .= '<li>';
+		$result .= getTupleAsListItem($heading, $tuple);
+		$result .= '</li>';
+	}
+	
+	$result .='</ul>';
+	return $result;
+}
+
+function getHeadingAsListHeading($heading) {
+	$result = '<h5>';
+	
+	foreach($heading->attributes as $attribute) {
+		$result .= getAttributeAsText($attribute);
+		$result .= ' - ';
+	}
+	
+	$result = rtrim($result, ' - ') . '</h5>';
+	return $result;
+}
+
+function getAttributeAsText($attribute){
+	$type = $attribute->type;
+	if (is_a($type, TupleType)) {
+		$heading = $type->getHeading();
+		foreach($heading->attributes as $innerAttribute) {
+			$result .= getAttributeAsText($innerAttribute);
+			$result .= ' - ';
+		}
+		$result = rtrim($result, ' - ');
+	}
+	else {
+		$result = $attribute->name;
+	}
+	return $result;
+}
+
+function getTupleAsListItem($heading, $tuple) {
+	$result = '';
+	
+	foreach($heading->attributes as $attribute) {
+		$type = $attribute->type;
+		$value = $tuple->getAttributeValue($attribute);
+		
+		if (is_a($type, TupleType)) {
+			$result .= getTupleAsListItem($type->getHeading(), $value);	
+		}
+		else {
+			$result .= convertToHTML($value, $type);			
+		}
+		$result .= ' - ';
+	}
+	$result = rtrim($result, ' - ');		
+	
+	return $result;
+}
+
 function getTupleKeyName($tuple, $key) {
 	$ids = array();
 	
