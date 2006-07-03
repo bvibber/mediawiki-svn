@@ -16,6 +16,13 @@ $wgNewuserlogMessages['en'] = array(
 	'newuserlog-create2-entry' => 'created account for $1',
 	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]",
 );
+$wgNewuserlogMessages['de'] = array(
+	'newuserlogpage'           => 'Neuanmeldungs-Logbuch',
+	'newuserlogpagetext'       => 'Dies ist ein Logbuch für neu erstellte Benutzerkonten.',
+	'newuserlog-create-entry'  => 'Neues Benutzerkonto',
+	'newuserlog-create2-entry' => 'Benutzerkonto für $1 erstellt',
+	'newuserlog-create-text'   => "[[{{ns:user_talk}}:$1|$2]] | [[{{ns:special}}:Contributions/$1|$3]] | [[{{ns:special}}:Blockip/$1|$4]]",
+);
 $wgNewuserlogMessages['he'] = array(
 	'newuserlogpage'           => 'יומן הרשמת משתמשים',
 	'newuserlogpagetext'       => 'זהו יומן המכיל הרשמות של משתמשים.',
