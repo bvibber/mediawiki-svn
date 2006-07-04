@@ -22,6 +22,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionCredits['other'][] = array( 'name' => 'Bad Image List', 'author' => 'Rob Church' );
 	$wgExtensionFunctions[] = 'efBadImageSetup';
 	
+	$wgAvailableRights[] = 'badimages';
 	$wgGroupPermissions['sysop']['badimages'] = true;
 	
 	function efBadImageSetup() {
