@@ -23,14 +23,53 @@ class BadImageManipulator extends SpecialPage {
 		# Check permissions
 		if( $wgUser->isAllowed( 'badimages' ) ) {
 			# Check for actions pending
-			# TODO: *cough...um, duh?*
-
+			if( $wgRequest->getText( 'action' ) == 'remove' ) {
+				if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'wpToken' ) ) ) {
+					$this->attemptRemove( $wgRequest );
+				} else {
+					$this->showRemove( $wgRequest->getText( 'image' ) );
+				}
+			} elseif( $wgRequest->getText( 'action' ) == 'add' ) {
+				if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'wpToken' ) ) ) {
+					$this->attemptAdd( $wgRequest, $wgOut, $wgUser );
+				}
+			}
+			$this->showAdd( $wgOut, $wgUser );
 		} else {
 			$wgOut->addWikiText( wfMsg( 'badimages-unprivileged' ) );
 		}
 		
 		# List existing bad images
 		$this->listExisting();
+	}
+	
+	function showAdd( &$output, &$user ) {
+		$self = Title::makeTitle( NS_SPECIAL, 'Badimages' );
+		$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+		$form .= wfHidden( 'action', 'add' ) . wfHidden( 'wpToken', $user->editToken() );
+		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'badimages-name' ) . '</td>';
+		$form .= '<td>' . wfInput( 'wpImage' ) . '</td></tr>';
+		$form .= '<tr><td align="right">' . wfMsgHtml( 'badimages-reason' ) . '</td>';
+		$form .= '<td>' . wfInput( 'wpReason', 40 ) . '</td><tr></tr><td></td><td>';
+		$form .= wfSubmitButton( wfMsg( 'badimages-add' ) ) . '</td></tr></table></form>';
+		$output->addHtml( $form );
+	}
+	
+	function attemptAdd( &$request, &$output, &$user ) {
+		# TODO: Errors should be puked back up, not tucked out of sight
+		# -- the user should be informed when providing dud titles, etc.
+		$title = Title::makeTitleSafe( NS_IMAGE, $request->getText( 'wpImage' ) );
+		if( is_object( $title ) ) {
+			BadImageList::add( $title->getDBkey(), $user->getId(), $request->getText( 'wpReason' ) );
+			# TODO: It might be nice to touch links according to imagelinks, to invalidate
+			# caches so that the change takes immediate effect. Some auditing might be good, too.
+			$skin =& $user->getSkin();
+			$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
+			$output->setSubtitle( wfMsgHtml( 'badimages-added', $link ) );
+		} else {
+			# TODO: Tell the user it was a dud title
+			$output->setSubtitle( wfMsgHtml( 'badimages-not-added' ) );
+		}
 	}
 	
 	function listExisting() {

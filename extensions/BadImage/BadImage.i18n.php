@@ -14,12 +14,16 @@ function efBadImageMessages() {
 	return array(
 
 'badimages' => 'Bad image list',
-
-'badimages-unprivileged' => '(You do not have sufficient permission to alter the list)',
-
-'badimages-subheading' => 'Current items',
+'badimages-add' => 'Add',
+'badimages-added' => '$1 was added to the list.',
 'badimages-count' => "There are '''$1''' images on the bad image list.",
+'badimages-name' => 'Name:',
+'badimages-not-added' => 'The image could not be added.',
+'badimages-reason' => 'Reason:',
 'badimages-remove' => '(remove)',
+'badimages-removed' => "'''$1''' was removed from the list.",
+'badimages-subheading' => 'Current items',
+'badimages-unprivileged' => '(You do not have sufficient permission to alter the list)',
 
 	);
 }

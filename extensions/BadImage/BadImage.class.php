@@ -20,10 +20,10 @@ class BadImageList {
 		return $res > 0;
 	}
 
-	function add( &$image, &$user, $reason ) {
+	function add( $name, $user, $reason ) {
 		wfProfileIn( __METHOD__ );
 		$dbw =& wfGetDB( DB_MASTER );
-		$dbw->insert( 'bad_images', array( 'bil_name' => $image->getName(), 'bil_user' => $user->getId(), 'bil_reason' => $reason ), __METHOD__, 'IGNORE' );
+		$dbw->insert( 'bad_images', array( 'bil_name' => $name, 'bil_user' => $user, 'bil_timestamp' => wfTimestampNow(), 'bil_reason' => $reason ), __METHOD__, 'IGNORE' );
 		wfProfileOut( __METHOD__ );
 	}
 	
