@@ -57,7 +57,7 @@ function syntaxSetup() {
 
 function syntaxHook( $text, $params = array() ) {
 	return isset( $params['lang'] )
-		? syntaxFormat( $text, $params['lang'] )
+		? syntaxFormat( trim( $text ), $params['lang'] )
 		: syntaxHelp();
 }
 
