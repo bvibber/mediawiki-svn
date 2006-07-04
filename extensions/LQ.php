@@ -98,6 +98,30 @@ class Post extends Article {
                 }
                 return $y;
         }
+
+        /**
+         * Move this post in the threading so that it is either the nextpost or firstreply of the post whose ID is given.
+         * @param $to Post to move next to.
+         * @param $slot string either "next" or "reply" as appropriate.
+         */
+        function moveNextTo($to, $slot) {
+
+                // If we've moved down into our own reply thread, we need to
+                // reparent our children at a higher level.
+                if ( $to->isUnderneath($this) ) {
+
+                        
+                        
+                }
+
+                // ok, now actually move us.
+                $this->deleteLinks();
+                if ($slot == "reply")
+                        $this->insertAsFirstReplyTo($to);
+                elseif ($slot == "next")
+                        $this->insertAfter($to);
+
+        }
         
         /** @private */
         function createLqtRecord() {
@@ -226,6 +250,7 @@ class Post extends Article {
                 } else {
                         $this->mParentPost = null;
                 }
+
 
         }
 
@@ -589,11 +614,7 @@ class LQ extends SpecialPage {
                     $totitle = Title::newFromID($to_id);
                     $post = new Post( $posttitle );
                     $to = new Post( $totitle );
-                    $post->deleteLinks();
-                    if ($reply_to_id)
-                            $post->insertAsFirstReplyTo($to);
-                    elseif ($next_to_id)
-                            $post->insertAfter($to);
+                    $post->moveNexTo($to, $reply_to_id ? 'reply' : 'next');
 
                     // Wipe out POST so user doesn't get the "Danger Will
                     // Robinson there's POST data" message when refreshing the page.
