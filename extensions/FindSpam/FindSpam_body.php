@@ -7,35 +7,34 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 global $wgMessageCache;
 $wgMessageCache->addMessage( "findspam", "Find spam" );
+$wgMessageCache->addMessage( 'findspam-ip', 'IP address:' );
 
-class FindSpamPage extends SpecialPage
-{
+class FindSpamPage extends SpecialPage {
+
 	function FindSpamPage() {
-		SpecialPage::SpecialPage("FindSpam", "findspam");
+		SpecialPage::SpecialPage( 'FindSpam', 'findspam' );
 	}
 
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgTitle, $wgLocalDatabases, $wgUser;
 		global $wgConf, $wgCanonicalNamespaceNames, $wgLang;
-
 		$this->setHeaders();
-		if ( !$this->userCanExecute( $wgUser ) ) {
-			$this->displayRestrictionError();
+
+		# Check permissions
+		if( !$wgUser->isAllowed( 'findspam' ) ) {
+			$wgOut->permissionRequired( 'findspam' );
 			return;
 		}
 
-		$ip = trim( $wgRequest->getText( 'ip' ) );
-		$encQ = htmlspecialchars( $ip );
-		$action = $wgTitle->getLocalUrl();
-		$ok = wfMsg( "ok" );
+		$ip = $wgRequest->getText( 'ip' );
 
-		$wgOut->addHTML( "
-<form name=ucf method=post action=\"$action\">
-<label> IP: 
-<input type=text width=50 name=ip value=\"$encQ\" />
-</label>
-<input type=submit name=submit value=\"$ok\"><br /><br />
-</form>" );
+		# Show form
+		$self = Title::makeTitle( NS_SPECIAL, 'Findspam' );
+		$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'findspam-ip' ) . '</td>';
+		$form .= '<td>' . wfInput( 'ip', 50, $ip ) . '</td></tr>';
+		$form .= '<tr><td></td><td>' . wfSubmitButton( wfMsg( 'ok' ) ) . '</td></tr></table></form>';
+		$wgOut->addHtml( $form );
 
 		if ( $ip ) {
 			$dbr =& wfGetDB( DB_READ );
