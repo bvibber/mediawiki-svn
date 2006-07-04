@@ -23,16 +23,15 @@ class BadImageManipulator extends SpecialPage {
 		# Check permissions
 		if( $wgUser->isAllowed( 'badimages' ) ) {
 			# Check for actions pending
-			if( $wgRequest->getText( 'action' ) == 'remove' ) {
-				if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'wpToken' ) ) ) {
-					$this->attemptRemove( $wgRequest, $wgOut, $wgUser );
-				} else {
-					$this->showRemove( $wgOut, $wgRequest->getText( 'image' ), $wgUser );
-				}
-			} elseif( $wgRequest->getText( 'action' ) == 'add' ) {
-				if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'wpToken' ) ) ) {
+			$action = $wgRequest->getText( 'action' );
+			if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'wpToken' ) ) ) {
+				if( $action == 'add' ) {
 					$this->attemptAdd( $wgRequest, $wgOut, $wgUser );
+				} elseif( $action == 'remove' ) {
+					$this->attemptRemove( $wgRequest, $wgOut, $wgUser );
 				}
+			} elseif( $action == 'remove' ) {
+				$this->showRemove( $wgOut, $wgRequest->getText( 'image' ), $wgUser );
 			} else {
 				$this->showAdd( $wgOut, $wgUser );
 			}
@@ -57,6 +56,7 @@ class BadImageManipulator extends SpecialPage {
 	}
 	
 	function attemptAdd( &$request, &$output, &$user ) {
+		wfProfileIn( __METHOD__ );
 		if( $user->isAllowed( 'badimages' ) ) {
 			# TODO: Errors should be puked back up, not tucked out of sight
 			# -- the user should be informed when providing dud titles, etc.
@@ -72,8 +72,9 @@ class BadImageManipulator extends SpecialPage {
 				# TODO: Tell the user it was a dud title
 				$output->setSubtitle( wfMsgHtml( 'badimages-not-added' ) );
 			}
+			$this->showAdd( $output, $user ); # FIXME: This hack sucks a bit
 		}
-		$this->showAdd( $output, $user ); # FIXME: This hack sucks a bit
+		wfProfileOut( __METHOD__ );
 	}
 	
 	function showRemove( &$output, $name, &$user ) {
@@ -93,6 +94,7 @@ class BadImageManipulator extends SpecialPage {
 	}
 
 	function attemptRemove( &$request, &$output, &$user ) {
+		wfProfileIn( __METHOD__ );
 		if( $user->isAllowed( 'badimages' ) ) {
 			$title = Title::makeTitleSafe( NS_IMAGE, $request->getText( 'wpImage' ) );
 			if( is_object( $title ) ) {
@@ -106,8 +108,9 @@ class BadImageManipulator extends SpecialPage {
 				# Shouldn't happen in normal (dumb user) usage
 				$output->setSubtitle( wfMsgHtml( 'badimages-not-removed' ) );
 			}
+			$this->showAdd( $output, $user );
 		}
-		$this->showAdd( $output, $user );
+		wfProfileOut( __METHOD__ );
 	}
 	
 	function log( $action, &$target, $reason ) {
@@ -115,19 +118,16 @@ class BadImageManipulator extends SpecialPage {
 		$log->addEntry( $action, $target, $reason );
 	}
 	
-	/**
-	 * This won't have an effect until the parser is fixed; right now, it doesn't
-	 * update the imagelinks table when it finds a blacklisted image during a parse
-	 * run, so the link update job doesn't encounter it, and it isn't recorded
-	 */
 	function touch( &$title ) {
-		wfDebug( 'BI_TOUCH: ' . $title->getPrefixedText() );
+		wfProfileIn( __METHOD__ );
 		$update = new HTMLCacheUpdate( $title, 'imagelinks' );
 		$update->doUpdate();
+		wfProfileOut( __METHOD__ );
 	}
 
 	function listExisting() {
 		global $wgOut, $wgUser, $wgLang;
+		wfProfileIn( __METHOD__ );
 		$dbr =& wfGetDB( DB_SLAVE );
 		extract( $dbr->tableNames( 'bad_images', 'user' ) );
 		$sql = "SELECT * FROM {$bad_images} LEFT JOIN {$user} ON bil_user = user_id";
@@ -142,6 +142,7 @@ class BadImageManipulator extends SpecialPage {
 				$wgOut->addHtml( $this->makeListRow( $row, $skin, $wgLang, $wgUser->isAllowed( 'badimages' ) ) );
 			$wgOut->addHtml( '</ul>' );
 		}
+		wfProfileOut( __METHOD__ );
 	}
 	
 	function makeListRow( $result, &$skin, &$lang, $priv ) {
