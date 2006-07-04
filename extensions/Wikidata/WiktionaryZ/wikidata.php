@@ -13,41 +13,29 @@ interface PageElement {
 	public function getId();
 	public function getCaption();
 	public function getRelation();
-	public function getDisplayRelation();
-	public function allowAdd();
-	public function allowRemove();
-	public function repeatInput();
-	public function getController();
+	public function getViewer();
+	public function getEditor();
 }
 
 interface PageElementController {
-	public function add($tuple);
-	public function remove($tuple);
-	public function update($tuple, $tupleUpdate);
+	public function add($keyPath, $tuple);
+	public function remove($keyPath);
+	public function update($keyPath, $tuple);
 }
 
 class DefaultPageElement implements PageElement {
 	protected $id;
 	protected $caption;
 	protected $relation;
-	protected $displayRelation;
-	protected $allowAdd;
-	protected $allowRemove;
-	protected $updatableHeading;
-	protected $inputRow;
-	protected $repeatInput;
-	protected $controller;
+	protected $viewer;
+	protected $editor;
 	
-	public function __construct($id, $caption, $relation, $displayRelation, $allowAdd, $allowRemove, $updatableHeading, $repeatInput, $controller) {
+	public function __construct($id, $caption, $relation, $viewer, $editor) {
 		$this->id = $id;
 		$this->caption = $caption;
 		$this->relation = $relation;
-		$this->displayRelation = $displayRelation;
-		$this->allowAdd = $allowAdd;
-		$this->allowRemove = $allowRemove;
-		$this->updatableHeading = $updatableHeading;
-		$this->repeatInput = $repeatInput;
-		$this->controller = $controller;
+		$this->viewer = $viewer;
+		$this->editor = $editor;
 	}
 	
 	public function getId() {
@@ -62,28 +50,12 @@ class DefaultPageElement implements PageElement {
 		return $this->relation;
 	}
 	
-	public function getDisplayRelation() {
-		return $this->displayRelation;
+	public function getViewer() {
+		return $this->viewer;
 	}
 	
-	public function allowAdd() {
-		return $this->allowAdd;
-	}
-	
-	public function allowRemove() {
-		return $this->allowRemove;
-	}
-	
-	public function updatableHeading() {
-		return $this->updatableHeading;	
-	}
-	
-	public function repeatInput() {
-		return $this->repeatInput;
-	}
-	
-	public function getController() {
-		return $this->controller;
+	public function getEditor() {
+		return $this->editor;
 	}
 }
 

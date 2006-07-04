@@ -12,6 +12,8 @@ require_once("Setup.php");
 
 require_once("attribute.php");
 require_once("relation.php");
+require_once("editor.php");
+require_once("HTMLtable.php");
 
 //$wgExtensionFunctions[] = 'wfSpecialSuggest';
 //
@@ -36,6 +38,9 @@ require_once("relation.php");
 echo getSuggestions();
 
 function getSuggestions() {
+	global
+		$idAttribute;
+
 	$search = ltrim($_GET['search']);
 	$prefix = $_GET['prefix'];
 	$query = $_GET['query'];
@@ -70,24 +75,23 @@ function getSuggestions() {
 	$sql .= $searchCondition . " ORDER BY expression1.spelling LIMIT 10";
 	$queryResult = $dbr->query($sql);
 	$idAttribute = new Attribute("id", "ID", "id");
-	$sourceRelation = new ArrayRelation(new Heading($idAttribute), new Heading($idAttribute));
 	
 	switch($query) {
 		case 'relation-type':
-			$displayRelation = getRelationTypeAsRelation($queryResult, $sourceRelation);
+			list($relation, $editor) = getRelationTypeAsRelation($queryResult);
 			break;		
 		case 'attribute':
-			$displayRelation = getAttributeAsRelation($queryResult, $sourceRelation);
+			list($relation, $editor) = getAttributeAsRelation($queryResult);
 			break;
 		case 'defined-meaning':
-			$displayRelation = getDefinedMeaningAsRelation($queryResult, $sourceRelation);
+			list($relation, $editor) = getDefinedMeaningAsRelation($queryResult);
 			break;	
 		case 'collection':
-			$displayRelation = getCollectionAsRelation($queryResult, $sourceRelation);
+			list($relation, $editor) = getCollectionAsRelation($queryResult);
 			break;	
 	}
 	
-	return getRelationAsSuggestionTable($prefix .'table', $sourceRelation, $displayRelation);
+	return getRelationAsSuggestionTable($editor, $prefix .'table', new TupleStack(), $relation);
 }
 
 function getSQLForCollectionOfType($collectionType) {
@@ -104,61 +108,80 @@ function getSQLForCollectionOfType($collectionType) {
 			"AND uw_collection_contents.is_latest_set=1 ";
 }
 
-function getRelationTypeAsRelation($queryResult, $sourceRelation) {
-	$dbr =& wfGetDB( DB_SLAVE );
+function getRelationTypeAsRelation($queryResult) {
+	global
+		$idAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	
 	$relationTypeAttribute = new Attribute("relation-type", "Relation type", "short-text");
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$displayRelation = new ArrayRelation(new Heading($relationTypeAttribute, $collectionAttribute), new Heading($relationTypeAttribute));
+	$relation = new ArrayRelation(new Heading($idAttribute, $relationTypeAttribute, $collectionAttribute), new Heading($idAttribute));
 	
-	while ($row = $dbr->fetchObject($queryResult)) {
-		$sourceRelation->addTuple(array($row->row_id));
-		$displayRelation->addTuple(array($row->relation, $row->collection));			
-	}
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$relation->addTuple(array($row->row_id, $row->relation, $row->collection));			
 
-	return $displayRelation;		
+	$editor = new TableEditor(null, false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($relationTypeAttribute, false, false));
+	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
+	
+	return array($relation, $editor);		
 }
 
-function getAttributeAsRelation($queryResult, $sourceRelation) {
-	$dbr =& wfGetDB( DB_SLAVE );
+function getAttributeAsRelation($queryResult) {
+	global
+		$idAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
 	$attributeAttribute = new Attribute("attribute", "Attribute", "short-text");
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$displayRelation = new ArrayRelation(new Heading($attributeAttribute, $collectionAttribute), new Heading($attributeAttribute));
+	$relation = new ArrayRelation(new Heading($idAttribute, $attributeAttribute, $collectionAttribute), new Heading($idAttribute));
 	
-	while ($row = $dbr->fetchObject($queryResult)) {
-		$sourceRelation->addTuple(array($row->row_id));
-		$displayRelation->addTuple(array($row->relation, $row->collection));			
-	}
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$relation->addTuple(array($row->row_id, $row->relation, $row->collection));			
 
-	return $displayRelation;		
+	$editor = new TableEditor(null, false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($attributeAttribute, false, false));
+	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
+
+	return array($relation, $editor);		
 }
 
-function getDefinedMeaningAsRelation($queryResult, $sourceRelation) {
-	$dbr =& wfGetDB( DB_SLAVE );
+function getDefinedMeaningAsRelation($queryResult) {
+	global
+		$idAttribute;
+
+	$dbr =& wfGetDB(DB_SLAVE);
 	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", "short-text");
 	
-	$displayRelation = new ArrayRelation(new Heading($definedMeaningAttribute), new Heading($definedMeaningAttribute));
+	$relation = new ArrayRelation(new Heading($idAttribute, $definedMeaningAttribute), new Heading($idAttribute));
 	
-	while ($row = $dbr->fetchObject($queryResult)) {
-		$sourceRelation->addTuple(array($row->row_id));
-		$displayRelation->addTuple(array($row->relation));			
-	}
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$relation->addTuple(array($row->row_id, $row->relation));			
 
-	return $displayRelation;		
+	$editor = new TableEditor(null, false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($definedMeaningAttribute, false, false));
+
+	return array($relation, $editor);		
 }
 
-function getCollectionAsRelation($queryResult, $sourceRelation) {
-	$dbr =& wfGetDB( DB_SLAVE );
+function getCollectionAsRelation($queryResult) {
+	global
+		$idAttribute;
+
+	$dbr =& wfGetDB(DB_SLAVE);
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$displayRelation = new ArrayRelation(new Heading($collectionAttribute), new Heading($collectionAttribute));
+	$relation = new ArrayRelation(new Heading($idAttribute, $collectionAttribute), new Heading($idAttribute));
 	
-	while ($row = $dbr->fetchObject($queryResult)) {
-		$sourceRelation->addTuple(array($row->row_id));
-		$displayRelation->addTuple(array($row->relation));			
-	}
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$relation->addTuple(array($row->row_id, $row->relation));			
 
-	return $displayRelation;		
+	$editor = new TableEditor(null, false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
+
+	return array($relation, $editor);		
 }
 ?>

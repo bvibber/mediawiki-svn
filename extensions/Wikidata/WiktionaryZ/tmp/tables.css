@@ -50,6 +50,14 @@
 	text-align: center;
 }
 
+.integer {
+	text-align: right;
+}
+
+.language, .text, .short-text {
+	text-align: left;
+}
+
 .wiki-data-table td.language {
 	font-style: italic;
 }
@@ -73,6 +81,10 @@
 
 .wiki-data-table tr.to-be-removed td.column-even {
 	background: #FFE8D0;
+}
+
+.wiki-data-table tr.to-be-removed th {
+	background: #FFD0B2;
 }
 
 .wiki-data-table th.remove, .wiki-data-table th.add {

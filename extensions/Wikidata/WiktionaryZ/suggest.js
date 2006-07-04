@@ -127,11 +127,25 @@ function mouseOutRow(row) {
 	row.className = "suggestion-row inactive";
 }
 
+function enableChildNodes(node, enabled) {
+	if (enabled)
+		var disabled = "";
+	else
+		var disabled = "disabled";	
+
+	childNodes = node.getElementsByTagName('select');
+
+	for (var i = 0; i < childNodes.length; i++)
+		childNodes[i].disabled = disabled;
+}
+
 function removeClicked(checkBox) {
 	var container = checkBox.parentNode.parentNode;
 	
-	if (checkBox.checked)
+	if (checkBox.checked) 
 		container.className = "to-be-removed";
 	else
 		container.className = "";
+		
+	//enableChildNodes(container, !checkBox.checked);
 }

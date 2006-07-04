@@ -47,6 +47,15 @@ class ArrayTuple implements Tuple {
 	}
 }
 
+function project($tuple, $heading) {
+	$result = new ArrayTuple($heading);
+	
+	foreach ($heading->attributes as $attribute)
+		$result->setAttributeValue($attribute, $tuple->getAttributeValue($attribute));
+		
+	return $result;
+}
+
 function equalTuples($heading, $lhs, $rhs) {
 	$result = true;
 	$attributes = $heading->attributes;
@@ -67,6 +76,22 @@ function equalTuples($heading, $lhs, $rhs) {
 	}
 	
 	return $result;
+}
+
+class TupleStack {
+	protected $stack = array();
+	
+	public function push($tuple) {
+		$this->stack[] = $tuple;
+	}
+	
+	public function pop() {
+		return array_pop($this->stack);
+	}
+	
+	public function peek($level) {
+		return $this->stack[count($this->stack) - $level - 1];
+	}
 }
 
 ?>

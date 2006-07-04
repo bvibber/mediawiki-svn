@@ -20,6 +20,18 @@ class TupleType {
 	}
 }
 
+class RelationType {
+	protected $heading;
+
+	public function __construct($heading) {
+		$this->heading = $heading;
+	}
+	
+	public function getHeading() {
+		return $this->heading;
+	}
+}
+
 class Attribute {
 	public $id = "";	
 	public $name = "";
@@ -46,7 +58,7 @@ class Heading {
 global
 	$languageAttribute, $spellingAttribute, $textAttribute, $identicalMeaningAttribute, $sourceIdentifierAttribute, 
 	$collectionAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $expressionIdAttribute, $attributeAttribute,
-	$expressionAttribute, $visibleExpressionAttribute;
+	$expressionAttribute, $visibleExpressionAttribute, $definitionIdAttribute, $alternativeDefinitionAttribute;
 
 $expressionIdAttribute = new Attribute("expression-id", "Expression Id", "expression-id");
 $languageAttribute = new Attribute("language", "Language", "language");
@@ -61,5 +73,7 @@ $sourceIdentifierAttribute = new Attribute("source-identifier", "Source identifi
 $attributeAttribute = new Attribute("attribute", "Attribute", "attribute");
 $relationTypeAttribute = new Attribute("relation-type", "Relation type", "relation-type"); 
 $otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", "defining-expression");
+$definitionIdAttribute = new Attribute("definition-id", "Definition identifier", "integer");
+$alternativeDefinitionAttribute = new Attribute("alternative-definition", "Alternative definition", new RelationType($alternativeDefinitionHeading));
 
 ?>
