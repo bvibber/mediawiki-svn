@@ -25,9 +25,14 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgGroupPermissions['sysop']['badimages'] = true;
 	
 	function efBadImageSetup() {
-		global $wgMessageCache, $wgHooks;
+		global $wgMessageCache, $wgHooks, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
 		$wgHooks['BadImage'][] = 'efBadImage';
 		$wgMessageCache->addMessages( efBadImageMessages() );
+		$wgLogTypes[] = 'badimage';
+		$wgLogNames['badimage'] = 'badimages-log-name';
+		$wgLogHeaders['badimage'] = 'badimages-log-header';
+		$wgLogActions['badimage/add']  = 'badimages-log-add';
+		$wgLogActions['badimage/remove'] = 'badimages-log-remove';
 	}
 	
 	function efBadImage( $image, &$bad ) {

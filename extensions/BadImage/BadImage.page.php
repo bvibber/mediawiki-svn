@@ -62,8 +62,9 @@ class BadImageManipulator extends SpecialPage {
 		$title = Title::makeTitleSafe( NS_IMAGE, $request->getText( 'wpImage' ) );
 		if( is_object( $title ) ) {
 			BadImageList::add( $title->getDBkey(), $user->getId(), $request->getText( 'wpReason' ) );
+			$this->log( 'add', $title, $request->getText( 'wpReason' ) );
 			# TODO: It might be nice to touch links according to imagelinks, to invalidate
-			# caches so that the change takes immediate effect. Some auditing might be good, too.
+			# caches so that the change takes immediate effect.
 			$skin =& $user->getSkin();
 			$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
 			$output->setSubtitle( wfMsgHtml( 'badimages-added', $link ) );
@@ -94,7 +95,8 @@ class BadImageManipulator extends SpecialPage {
 		$title = Title::makeTitleSafe( NS_IMAGE, $request->getText( 'wpImage' ) );
 		if( is_object( $title ) ) {
 			BadImageList::remove( $title->getDBkey() );
-			# TODO: Caches, auditing, etc.
+			$this->log( 'remove', $title, $request->getText( 'wpReason' ) );
+			# TODO: Caches?
 			$skin =& $user->getSkin();
 			$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
 			$output->setSubtitle( wfMsgHtml( 'badimages-removed', $link ) );
@@ -103,6 +105,11 @@ class BadImageManipulator extends SpecialPage {
 			$output->setSubtitle( wfMsgHtml( 'badimages-not-removed' ) );
 		}
 		$this->showAdd( $output, $user );
+	}
+	
+	function log( $action, &$target, $reason ) {
+		$log = new LogPage( 'badimage' );
+		$log->addEntry( $action, $target, $reason );
 	}
 
 	function listExisting() {
