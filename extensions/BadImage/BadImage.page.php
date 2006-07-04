@@ -111,7 +111,13 @@ class BadImageManipulator extends SpecialPage {
 		$log->addEntry( $action, $target, $reason );
 	}
 	
+	/**
+	 * This won't have an effect until the parser is fixed; right now, it doesn't
+	 * update the imagelinks table when it finds a blacklisted image during a parse
+	 * run, so the link update job doesn't encounter it, and it isn't recorded
+	 */
 	function touch( &$title ) {
+		wfDebug( 'BI_TOUCH: ' . $title->getPrefixedText() );
 		$update = new HTMLCacheUpdate( $title, 'imagelinks' );
 		$update->doUpdate();
 	}
