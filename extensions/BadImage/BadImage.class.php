@@ -14,10 +14,14 @@ class BadImageList {
 
 	function check( $name ) {
 		wfProfileIn( __METHOD__ );
-		$dbr =& wfGetDB( DB_SLAVE ); # This might need to be DB_MASTER in future
-		$res = $dbr->selectField( 'bad_images', 'COUNT(*)', array( 'bil_name' => $name ), __METHOD__ );
+		static $titles = array();
+		if( !isset( $titles[$name] ) ) {
+			$dbr =& wfGetDB( DB_SLAVE ); # This might need to be DB_MASTER in future
+			$res = $dbr->selectField( 'bad_images', 'COUNT(*)', array( 'bil_name' => $name ), __METHOD__ );
+			$titles[$name] = $res > 0;
+		}
 		wfProfileOut( __METHOD__ );
-		return $res > 0;
+		return $titles[$name];
 	}
 
 	function add( $name, $user, $reason ) {
