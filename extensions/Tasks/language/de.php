@@ -34,7 +34,7 @@ $wgMessageCache->addMessages(
 		'tasks_created_by' => "Erstellt von $1",
 		'tasks_discussion_page_link' => "Aufgaben-Diskussionsseite",
 		'tasks_closedby' => "Geschlossen von $1",
-		'tasks_assigned_myself_log' => "Selbstzuweisung von Aufgabe \"$1\"",
+		'tasks_assigned_myself_log' => "Selbstzuweisung von Aufgabe $1",
 		'tasks_discussion_page_for' => "Diese Aufgabe ist für die Seite \"$1\". Die Liste für alle Aufgaben für diese Seite ist $2.",
 		'tasks_sidebar_title' => "Aufgaben öffnen",
 		'tasks_here' => "hier",
