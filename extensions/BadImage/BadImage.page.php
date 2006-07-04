@@ -25,16 +25,17 @@ class BadImageManipulator extends SpecialPage {
 			# Check for actions pending
 			if( $wgRequest->getText( 'action' ) == 'remove' ) {
 				if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'wpToken' ) ) ) {
-					$this->attemptRemove( $wgRequest );
+					$this->attemptRemove( $wgRequest, $wgOut, $wgUser );
 				} else {
-					$this->showRemove( $wgRequest->getText( 'image' ) );
+					$this->showRemove( $wgOut, $wgRequest->getText( 'image' ), $wgUser );
 				}
 			} elseif( $wgRequest->getText( 'action' ) == 'add' ) {
 				if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getText( 'wpToken' ) ) ) {
 					$this->attemptAdd( $wgRequest, $wgOut, $wgUser );
 				}
+			} else {
+				$this->showAdd( $wgOut, $wgUser );
 			}
-			$this->showAdd( $wgOut, $wgUser );
 		} else {
 			$wgOut->addWikiText( wfMsg( 'badimages-unprivileged' ) );
 		}
@@ -51,7 +52,7 @@ class BadImageManipulator extends SpecialPage {
 		$form .= '<td>' . wfInput( 'wpImage' ) . '</td></tr>';
 		$form .= '<tr><td align="right">' . wfMsgHtml( 'badimages-reason' ) . '</td>';
 		$form .= '<td>' . wfInput( 'wpReason', 40 ) . '</td><tr></tr><td></td><td>';
-		$form .= wfSubmitButton( wfMsg( 'badimages-add' ) ) . '</td></tr></table></form>';
+		$form .= wfSubmitButton( wfMsg( 'badimages-add-btn' ) ) . '</td></tr></table></form>';
 		$output->addHtml( $form );
 	}
 	
@@ -70,8 +71,40 @@ class BadImageManipulator extends SpecialPage {
 			# TODO: Tell the user it was a dud title
 			$output->setSubtitle( wfMsgHtml( 'badimages-not-added' ) );
 		}
+		$this->showAdd( $output, $user ); # FIXME: This hack sucks a bit
 	}
 	
+	function showRemove( &$output, $name, &$user ) {
+		$self = Title::makeTitle( NS_SPECIAL, 'Badimages' );
+		$skin =& $user->getSkin();
+		$title = Title::makeTitleSafe( NS_IMAGE, $name );
+		$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
+		$output->addHtml( '<p>' . wfMsgHtml( 'badimages-remove-confirm', $link ) . '</p>' );
+		$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+		$form .= wfHidden( 'action', 'remove' ) . wfHidden( 'wpToken', $user->editToken() );
+		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'badimages-name' ) . '</td>';
+		$form .= '<td>' . wfInput( 'wpImage', false, $name ) . '</td></tr>';
+		$form .= '<tr><td align="right">' . wfMsgHtml( 'badimages-reason' ) . '</td>';
+		$form .= '<td>' . wfInput( 'wpReason', 40 ) . '</td><tr></tr><td></td><td>';
+		$form .= wfSubmitButton( wfMsg( 'badimages-remove-btn' ) ) . '</td></tr></table></form>';
+		$output->addHtml( $form );
+	}
+
+	function attemptRemove( &$request, &$output, &$user ) {
+		$title = Title::makeTitleSafe( NS_IMAGE, $request->getText( 'wpImage' ) );
+		if( is_object( $title ) ) {
+			BadImageList::remove( $title->getDBkey() );
+			# TODO: Caches, auditing, etc.
+			$skin =& $user->getSkin();
+			$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
+			$output->setSubtitle( wfMsgHtml( 'badimages-removed', $link ) );
+		} else {
+			# Shouldn't ever happen
+			$output->setSubtitle( wfMsgHtml( 'badimages-not-removed' ) );
+		}
+		$this->showAdd( $output, $user );
+	}
+
 	function listExisting() {
 		global $wgOut, $wgUser, $wgLang;
 		$dbr =& wfGetDB( DB_SLAVE );

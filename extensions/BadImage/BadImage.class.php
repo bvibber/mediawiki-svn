@@ -27,10 +27,10 @@ class BadImageList {
 		wfProfileOut( __METHOD__ );
 	}
 	
-	function remove( &$image ) {
+	function remove( $name ) {
 		wfProfileIn( __METHOD__ );
 		$dbw =& wfGetDB( DB_MASTER );
-		$dbw->delete( 'bad_images', array( 'bil_name' => $image->getName() ), __METHOD__ );
+		$dbw->delete( 'bad_images', array( 'bil_name' => $name ), __METHOD__ );
 		wfProfileOut( __METHOD__ );
 	}
 
