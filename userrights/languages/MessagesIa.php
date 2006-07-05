@@ -300,7 +300,8 @@ Verifica le URL que tu ha usate pro accessar iste pagina.",
 #
 "searchresults" => "Resultatos del recerca",
 "searchresulttext" => "Pro plus information super le recerca de {{SITENAME}}, vide [[Project:Recerca|Recerca in {{SITENAME}}]].",
-"searchquery"	=> "Pro le consulta \"$1\"",
+"searchsubtitle"	=> "Pro le consulta \"[[:$1]]\"",
+"searchsubtitleinvalid"	=> "Pro le consulta \"$1\"",
 "badquery"		=> "Consulta de recerca mal formate",
 "badquerytext"	=> "Impossibile processar tu consulta.
 Probabilemente tu ha tentate recercar un parola con minus

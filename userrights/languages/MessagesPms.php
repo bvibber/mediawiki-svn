@@ -470,7 +470,7 @@ Che as controla për piasì l\'adrëssa (URL) che a l\'ha dovrà për rivé a st
 'loadhist'              => 'I soma antramentr che i carioma la stòria dë sta pàgina-sì',
 'currentrev'            => 'Versione dël dì d\'ancheuj',
 'revisionasof'          => 'Revision $1',
-'oldrevisionnavigation' => 'Revision al $1; $5<br />$3 | $2 | $4',
+'old-revision-navigation' => 'Revision al $1; $5<br />($6) $3 | $2 | $4 ($7)',
 'previousrevision'      => '←Version pì veja',
 'nextrevision'          => 'Revision pì neuve→',
 'currentrevisionlink'   => 'vardé la version corenta',
@@ -527,7 +527,8 @@ na restrission adissional da j\'operator dël sit.',
 'compareselectedversions'=> 'Paragon-a le version selessionà',
 'searchresults'         => 'Arsultà dl\'arserca',
 'searchresulttext'      => 'Per avej pì d\'anformassion ant sl\'arserca interna ëd {{SITENAME}}, che a varda [[Project:Ricerca|Arserca ant la {{SITENAME}}]].',
-'searchquery'           => 'Domanda "$1"',
+'searchsubtitle'           => 'Domanda "[[:$1]]"',
+'searchsubtitleinvalid'           => 'Domanda "$1"',
 'badquery'              => 'Domanda mal faita',
 'badquerytext'          => 'Soa domanda a l\'é pa podusse processé.
 Sòn a podrìa dipende da lòn che chiel (chila) a l\'ha arsercà na paròla con manch che tre caràter.
@@ -1366,7 +1367,7 @@ Tute le amportassion antra wiki diferente a resto marcà ant ël [[Special:Log/i
 'speciallogtitlelabel'  => 'Tìtol:',
 'passwordtooshort'      => 'Soa ciav a l\'é pa assé longa. A la dev avej almanch $1 caràter.',
 'mediawarning'          => '\'\'\'Atension!\'\'\': st\'archivi-sì a podrìa avej andrinta dël còdes butà-lì da cheidun për fé ëd darmagi, e se parej a fussa, ën fasend-lo travajé ansima a sò calcolador chiel a podrìa porteje ëd dann a sò sistema. 
-<hr>',
+<hr />',
 'fileinfo'              => 'amzura $1[[Kilobyte|KB]], sòrt [[MIME]]: <code>[[$2]]</code>',
 'metadata'              => 'Dat adissionaj',
 'metadata-help'         => 'Costi-sì a son dij dat adissionaj, che a l\'é belfé che a sio stait giontà da la màchina fotogràfica digital ò pura da lë scanner che a l\'é stiat dovrà për creé la figura digital. Se la figura a fussa mai staita modificà da \'nt soa forma original, a podrìa ëdcò riveje che chèich detaj a fussa ancò butà coma ant l\'original, donca sensa pa ten-e cont ëd le modìfiche.',

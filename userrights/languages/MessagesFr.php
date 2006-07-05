@@ -500,7 +500,8 @@ D\'autres administrateurs sur ce wiki pourront toujours accèder au contenu cach
 #
 'searchresults' => 'Résultat de la recherche',
 'searchresulttext' => 'Pour plus d\'informations sur la recherche dans {{SITENAME}}, voir [[Aide:Recherche|Chercher dans {{SITENAME}}]].',
-'searchquery' => 'Pour la requête « $1 »',
+'searchsubtitle' => 'Pour la requête « [[:$1]] »',
+'searchsubtitleinvalid' => 'Pour la requête « $1 »',
 'badquery'  => 'Requête mal formulée',
 'badquerytext' => 'Nous n\'avons pas pu traiter votre requête. Vous avez probablement recherché un mot d\'une longueur inférieure à trois lettres, ce qui n\'est pas encore possible. Vous avez aussi pu faire une erreur de syntaxe, telle que « poisson et et écailles ». Veuillez essayer une autre requête.',
 'matchtotals' => 'La requête « $1 » correspond à $2 titre(s) d\'article et au texte de $3 article(s).',
@@ -1365,7 +1366,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Voir la page de la catégorie\');'
 
 # Media Warning
 'mediawarning' => '\'\'\'Attention\'\'\': Ce fichier peut contenir du code malveillant, votre système pouvant être mis en danger par son exécution.
-<hr>',
+<hr />',
 
 'fileinfo' => '$1KB, type MIME : <code>$2</code>',
 

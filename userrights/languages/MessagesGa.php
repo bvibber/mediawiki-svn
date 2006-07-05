@@ -515,7 +515,8 @@ Eochair: (rth) = difríocht leis an leagan láithreach,
 #
 "searchresults" => "Torthaí an chuardaigh",
 "searchresulttext" => "Féach ar [[{{ns:project}}:Cuardach|Cuardach sa {{SITENAME}}]] chun a thuilleadh eolais a fháil maidir le cuardaigh {{GRAMMAR:genitive|{{SITENAME}}}}.",
-"searchquery"   => "Don iarratas \"$1\"",
+"searchsubtitle"   => "Don iarratas \"[[:$1]]\"",
+"searchsubtitleinvalid"   => "Don iarratas \"$1\"",
 "badquery"      => "Iarratas fiosraithe neamhbhailí",
 "badquerytext"  => "Nior éirigh linn d'iarratas a phróiseáil.
 Is dócha go rinne tú cuardach ar focal le níos lú ná trí litir,
@@ -1447,7 +1448,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Féach ar an leathanach catagóire
 
 # Media Warning
 'mediawarning' => '\'\'\'Aire\'\'\': Tá seans ann go bhfuil cód mailíseach sa comhad seo - b\'fheidir go gcuirfear do chóras i gcontúirt dá rithfeá é.
-<hr>',
+<hr />',
 
 'fileinfo' => '$1KB, saghas MIME: <code>$2</code>',
 

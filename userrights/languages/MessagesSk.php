@@ -532,7 +532,8 @@ nie sú stanovené ďakšie obmedzenia.',
 'compareselectedversions'=> 'Porovnaj označené verzie',
 'searchresults'         => 'Výsledky vyhľadávania',
 'searchresulttext'      => 'Viac informácií o vyhľadávaní vo {{GRAMMAR:lokál|{{SITENAME}}}} je uvedených na $1.',
-'searchquery'           => 'Na vyhľadávací dotaz "$1"',
+'searchsubtitle'           => 'Na vyhľadávací dotaz "[[:$1]]"',
+'searchsubtitleinvalid'           => 'Na vyhľadávací dotaz "$1"',
 'badquery'              => 'Nesprávne formulovaná požiadavka na vyhľadávanie',
 'badquerytext'          => 'Váš text na prehľadávanie sme nemohli spracovať. Dôvodom je pravdepodobne to, že ste hľadali slovo kratšie ako tri písmená, čo zatiaľ {{SITENAME}} neumožňuje. Alebo ste možno výraz zle napísali, napríklad „dom a a záhrada“. Skúste iný text na prehľadávanie.',
 'matchtotals'           => 'Výsledkom dotazu "$1" je $2 nadpisov článkov
@@ -1345,7 +1346,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Pozrieť si stránku s kategóriam
 'speciallogtitlelabel'  => 'Názov:',
 'passwordtooshort'      => 'Vaše heslo je príliš krátke. Musí mať dĺžku aspoň $1 znakov.',
 'mediawarning'          => '\'\'\'Upozornenie\'\'\': Tento súbor môže obsahovať nebezpečný programový kód, po spustení ktorého by bol váš systém kompromitovaný.
-<hr>',
+<hr />',
 'fileinfo'              => '$1KB, MIME : <code>$2</code>',
 'metadata'              => 'Metadáta',
 'metadata-help'         => 'Tento súbor obsahuje ďalšie informácie, pravdepodobne pochádzajúce z digitálneho fotoaparátu či scannera ktorý ho vytvoril alebo digitalizoval. Ak bol súbor zmenený, niektoré podrobnosti sa nemusia plne zhodovať so zmeneným obrázkom.',

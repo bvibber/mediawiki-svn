@@ -2239,14 +2239,20 @@ class Article {
 		$prevlink = $prev
 			? $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'previousrevision' ), 'direction=prev&oldid='.$oldid )
 			: wfMsg( 'previousrevision' );
+		$prevdiff = $prev
+			? $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'diff' ), 'diff=prev&oldid='.$oldid )
+			: wfMsg( 'diff' );
 		$nextlink = $current
 			? wfMsg( 'nextrevision' )
 			: $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'nextrevision' ), 'direction=next&oldid='.$oldid );
+		$nextdiff = $current
+			? wfMsg( 'diff' )
+			: $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'diff' ), 'diff=next&oldid='.$oldid );
 		
 		$userlinks = $sk->userLink( $revision->getUser(), $revision->getUserText() )
 						. $sk->userToolLinks( $revision->getUser(), $revision->getUserText() );
 		
-		$r = wfMsg( 'oldrevisionnavigation', $td, $lnk, $prevlink, $nextlink, $userlinks );
+		$r = wfMsg( 'old-revision-navigation', $td, $lnk, $prevlink, $nextlink, $userlinks, $prevdiff, $nextdiff );
 		$wgOut->setSubtitle( $r );
 	}
 
@@ -2271,7 +2277,7 @@ class Article {
 	function tryFileCache() {
 		static $called = false;
 		if( $called ) {
-			wfDebug( " tryFileCache() -- called twice!?\n" );
+			wfDebug( "Article::tryFileCache(): called twice!?\n" );
 			return;
 		}
 		$called = true;
@@ -2279,15 +2285,15 @@ class Article {
 			$touched = $this->mTouched;
 			$cache = new CacheManager( $this->mTitle );
 			if($cache->isFileCacheGood( $touched )) {
-				wfDebug( " tryFileCache() - about to load\n" );
+				wfDebug( "Article::tryFileCache(): about to load file\n" );
 				$cache->loadFromFileCache();
 				return true;
 			} else {
-				wfDebug( " tryFileCache() - starting buffer\n" );
+				wfDebug( "Article::tryFileCache(): starting buffer\n" );
 				ob_start( array(&$cache, 'saveToFileCache' ) );
 			}
 		} else {
-			wfDebug( " tryFileCache() - not cacheable\n" );
+			wfDebug( "Article::tryFileCache(): not cacheable\n" );
 		}
 	}
 

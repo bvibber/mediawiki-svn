@@ -542,19 +542,6 @@ $wgDBmysql5			= false;
 $wgLocalDatabases   = array();
 
 /**
- * Quick hack for clusters with multiple master servers; if an alternate
- * is listed for the requested database, a connection to it will be opened
- * instead of to the current wiki's regular master server when trying to
- * use it.
- *
- * Requires that the other server be accessible by network, with the same
- * username/password as the primary.
- *
- * eg $wgAlternateMaster['enwiki'] = 'ariel';
- */
-$wgAlternateMaster = array();
-
-/**
  * Object cache settings
  * See Defines.php for types
  */
@@ -921,10 +908,10 @@ $wgGroupPermissions['sysop']['unwatchedpages']	= true;
 $wgGroupPermissions['sysop']['autoconfirmed']   = true;
 
 // Permissions to change users' group assignments
-$wgGroupPermissions['bureaucrat']['userrights'] = true;
-$wgGroupPermissions['bureaucrat']['userrights_full'] = true;
+$wgGroupPermissions['bureaucrat']['userrights']        = true;
+$wgGroupPermissions['bureaucrat']['userrights_full']   = true;
 $wgGroupPermissions['bureaucrat']['userrights_remote'] = true;
-$wgGroupPermissions['bureaucrat']['userrights_grant'] = true;
+$wgGroupPermissions['bureaucrat']['userrights_grant']  = true;
 $wgGroupPermissions['bureaucrat']['userrights_revoke'] = true;
 
 // Experimental permissions, not ready for production use
@@ -1123,6 +1110,9 @@ $wgCookiePath = '/';
 $wgCookieSecure = ($wgProto == 'https');
 $wgDisableCookieCheck = false;
 
+/** Override to customise the session name */
+$wgSessionName = false;
+
 /**  Whether to allow inline image pointing to other websites */
 $wgAllowExternalImages = false;
 
@@ -1145,6 +1135,8 @@ $wgUseWatchlistCache = false;
 $wgWLCacheTimeout = 3600;
 /** Number of links to a page required before it is deemed "wanted" */
 $wgWantedPagesThreshold = 1;
+/** Enable slow parser functions */
+$wgAllowSlowParserFunctions = false;
 
 /**
  * To use inline TeX, you need to compile 'texvc' (in the 'math' subdirectory of
@@ -1392,6 +1384,14 @@ $wgThumbnailEpoch = '20030516000000';
  */
 $wgIgnoreImageErrors = false;
 
+/**
+ * Allow thumbnail rendering on page view. If this is false, a valid 
+ * thumbnail URL is still output, but no file will be created at 
+ * the target location. This may save some time if you have a 
+ * thumb.php or 404 handler set up which is faster than the regular 
+ * webserver(s).  
+ */
+$wgGenerateThumbnailOnParse = true;
 
 /** Set $wgCommandLineMode if it's not set already, to avoid notices */
 if( !isset( $wgCommandLineMode ) ) {
@@ -1581,6 +1581,13 @@ $wgExtensionFunctions = array();
  */
 $wgSkinExtensionFunctions = array();
 
+/**
+ * List of valid skin names.
+ * The key should be the name in all lower case, the value should be a display name.
+ * The default skins will be added later, by Skin::getSkinNames(). Use 
+ * Skin::getSkinNames() as an accessor if you wish to have access to the full list.
+ */
+$wgValidSkinNames = array();
 
 /**
  * Special page list.
@@ -2127,11 +2134,6 @@ $wgAllowCategorizedRecentChanges = false ;
 $wgJobRunRate = 1;
 
 /**
- * Log file for job execution
- */
-$wgJobLogFile = false;
-
-/**
  * Number of rows to update per job
  */
 $wgUpdateRowsPerJob = 500;
@@ -2190,8 +2192,8 @@ $wgMaxShellMemory = 102400;
  * permission "userrights" but not "userrights_full" - the users with "userrights_full"
  * can grant and reoke any permission, regardless these settings.
  */
-$wgGrantPermissionsWhitelist = array();
-$wgGrantPermissionsBlacklist = array();
+$wgGrantPermissionsWhitelist  = array();
+$wgGrantPermissionsBlacklist  = array();
 $wgRevokePermissionsWhitelist = array();
 $wgRevokePermissionsBlacklist = array();
 

@@ -585,7 +585,8 @@ Les ôtes manaedjeus so ç\' wiki ci pôront todi vey li contnou catchî eyet l\
 #
 'searchresults' => 'Rizultats do cweraedje',
 'searchresulttext' => 'Po pus di racsegnes sol manire di fé des cweraedjes so {{SITENAME}}, loukîz [[{{ns:project}}:Cweraedje|Cweraedje so {{SITENAME}}]].',
-'searchquery' => 'Pol cweraedje «$1»',
+'searchsubtitle' => 'Pol cweraedje «[[:$1]]»',
+'searchsubtitleinvalid' => 'Pol cweraedje «$1»',
 'badquery' => 'Halcrosse tchinne di cweraedje',
 'badquerytext' => 'Vosse cweraedje èn s\' a nén polou fé.
 C\' est motoit bén paski vos avoz sayî d\' cweri
@@ -1509,7 +1510,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Vey li pådje di categoreye\');
 'passwordtooshort' => 'Li scret est pår trop court. I doet esse di pol moens $1 caracteres.',
 
 # Media Warning
-'mediawarning' => '\'\'\'Asteme\'\'\': Ci fitchî chal pôreut esse evirussé, si vos l\' enondez vos pôrîz infecter l\' sistinme da vosse.<hr>',
+'mediawarning' => '\'\'\'Asteme\'\'\': Ci fitchî chal pôreut esse evirussé, si vos l\' enondez vos pôrîz infecter l\' sistinme da vosse.<hr />',
 
 'fileinfo' => '$1Ko, sôre MIME: <code>$2</code>',
 

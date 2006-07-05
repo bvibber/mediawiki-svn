@@ -516,13 +516,14 @@ $wgAllMessagesHe = array(
 
 # History pages
 "revhistory"                  => "היסטוריית שינויים",
+"viewpagelogs"                => "הצג יומנים עבור דף זה",
 "nohistory"                   => "אין היסטוריית שינויים עבור דף זה.",
 "revnotfound"                 => "גרסה זו לא נמצאה",
 "revnotfoundtext"             => "הגרסה הישנה של דף זה לא נמצאה. אנא בדקו את כתובת הקישור שהוביל אתכם הנה.",
 "loadhist"                    => "טוען את היסטוריית השינויים של הדף",
 "currentrev"                  => "גרסה נוכחית",
 "revisionasof"                => "גרסה מתאריך $1",
-"oldrevisionnavigation"       => "גרסה מתאריך $1; $5<br />$3 | $2 | $4",
+"old-revision-navigation"     => "גרסה מתאריך $1; $5<br />($6) $3 | $2 | $4 ($7)",
 "previousrevision"            => "→ הגרסה הקודמת",
 "nextrevision"                => "הגרסה הבאה ←",
 "currentrevisionlink"         => "הגרסה הנוכחית",
@@ -580,7 +581,8 @@ $wgAllMessagesHe = array(
 # Search results
 "searchresults"     => "תוצאות החיפוש",
 "searchresulttext"  => "ראו גם [[{{ns:project}}:חיפוש|מידע נוסף על חיפוש ב{{grammar:תחילית|{{SITENAME}}}}]].",
-"searchquery"       => 'לחיפוש "$1"',
+"searchsubtitle"    => "לחיפוש המונח '''[[:$1]]'''",
+"searchsubtitleinvalid"    => "לחיפוש המונח '''$1'''",
 "badquery"          => "שגיאה בניסוח השאילתה.",
 "badquerytext"      => 'לא הצלחנו לבצע את השאילתה, ככל הנראה כיוון שניסיתם לחפש מילה בעלת פחות משלוש אותיות. חיפוש כזה עדיין אינו נתמך במערכת. ייתכן גם ששגיתם בהקלדת השאליתה – לדוגמה, כתבתם "דג וגם וגם משקל".
 
@@ -919,6 +921,7 @@ $wgAllMessagesHe = array(
 "allpagesnext"      => "הבא",
 "allpagessubmit"    => "עבור",
 "allpagesprefix"    => "הדפים ששמם מתחיל ב…:",
+"allpagesbadtitle"  => "כותרת הדף המבוקש הייתה לא־חוקית, ריקה, קישור ויקי פנימי, או פנים שפה שגוי. ייתכן שהיא כוללת תו אחד או יותר האסורים לשימוש בכותרות.",
 
 # Email this user
 "mailnologin"     => "אין כתובת לשליחה",
@@ -1299,27 +1302,28 @@ $NEWPAGE
 "thumbnail_error" => "שגיאה ביצירת תמונה ממוזערת: $1",
 
 # Special:Import
-"import"                   => "ייבוא דפים",
-"importinterwiki"          => "ייבוא בין־אתרי",
-"import-interwiki-text"    => "אנא בחרו אתר ויקי ואת כותרת הדף לייבוא.
+"import"                     => "ייבוא דפים",
+"importinterwiki"            => "ייבוא בין־אתרי",
+"import-interwiki-text"      => "אנא בחרו אתר ויקי ואת כותרת הדף לייבוא.
 תאריכי ועורכי הגרסאות יישמרו בעת הייבוא.
 כל פעולות הייבוא הבין־אתרי נשמרות ביומן הייבוא.",
-"import-interwiki-history" => "העתק את כל היסטוריית העריכות של דף זה",
-"import-interwiki-submit"  => "ייבוא",
-"importtext"               => "אנא ייצאו את הקובץ מאתר המקור תוך שימוש בעזר הייצוא, שמרו אותו לדיסק הקשיח שלכם והעלו אותו לכאן.",
-"importstart"              => "מייבא דפים…",
-"import-revision-count"    => "$1 גרסאות",
-"importnopages"            => "אין דפים לייבוא.",
-"importfailed"             => "הייבוא נכשל: $1",
-"importunknownsource"      => "סוג ייבוא בלתי ידוע",
-"importcantopen"           => "פתיחת קובץ הייבוא נכשלה",
-"importbadinterwiki"       => "קישור אינטרוויקי שגוי",
-"importnotext"             => "ריק או חסר טקסט",
-"importsuccess"            => "הייבוא הושלם בהצלחה!",
-"importhistoryconflict"    => "ישנה התנגשות עם ההיסטוריה הקיימת של הדף (ייתכן שהדף יובא בעבר)",
-"importnosources"          => "אין מקורות לייבוא בין־אתרי, וייבוא ישיר של דף עם היסטוריה אינו מאופשר כעת.",
-"importnofile"             => "לא הועלה קובץ ייבוא.",
-"importuploaderror"        => "העלאת קובץ ייבוא נכשלה; ייתכן שהקובץ גדול מגודל ההעלאה המותר.",
+"import-interwiki-history"   => "העתק את כל היסטוריית העריכות של דף זה",
+"import-interwiki-submit"    => "ייבוא",
+"import-interwiki-namespace" => "העבר את הדפים לתוך מרחב השם:",
+"importtext"                 => "אנא ייצאו את הקובץ מאתר המקור תוך שימוש בעזר הייצוא, שמרו אותו לדיסק הקשיח שלכם והעלו אותו לכאן.",
+"importstart"                => "מייבא דפים…",
+"import-revision-count"      => "$1 גרסאות",
+"importnopages"              => "אין דפים לייבוא.",
+"importfailed"               => "הייבוא נכשל: $1",
+"importunknownsource"        => "סוג ייבוא בלתי ידוע",
+"importcantopen"             => "פתיחת קובץ הייבוא נכשלה",
+"importbadinterwiki"         => "קישור אינטרוויקי שגוי",
+"importnotext"               => "ריק או חסר טקסט",
+"importsuccess"              => "הייבוא הושלם בהצלחה!",
+"importhistoryconflict"      => "ישנה התנגשות עם ההיסטוריה הקיימת של הדף (ייתכן שהדף יובא בעבר)",
+"importnosources"            => "אין מקורות לייבוא בין־אתרי, וייבוא ישיר של דף עם היסטוריה אינו מאופשר כעת.",
+"importnofile"               => "לא הועלה קובץ ייבוא.",
+"importuploaderror"          => "העלאת קובץ ייבוא נכשלה; ייתכן שהקובץ גדול מגודל ההעלאה המותר.",
 
 # Import log
 "importlogpage"                    => "יומן ייבוא",
