@@ -199,14 +199,14 @@ class Post extends Article {
                                                'page_id' => $this->getID()),
                                          __METHOD__);
 
-                if ( $line->lqt_next ) {
+                if ( $line && $line->lqt_next ) {
                         $next_title = Title::newFromID($line->lqt_next);
                         $this->mNextPost = new Post($next_title);
                 } else {
                         $this->mNextPost = null;
                 }
 
-                if ( $line->lqt_first_reply ) {
+                if ( $line && $line->lqt_first_reply ) {
                         $reply_title = Title::newFromID($line->lqt_first_reply);
                         $this->mFirstReply = new Post($reply_title);
                 } else {
@@ -649,13 +649,17 @@ class LQ extends SpecialPage {
                             $wgOut->addHTML( wfCloseElement('p') );
                     }
             }
-            
-            $editing_id = $wgRequest->getInt("lqt_editing", null);
-            $replying_to_id = $wgRequest->getInt("lqt_replying_to_id", null);
-            $highlighting_title = $wgRequest->getVal("lqt_highlight", null);
 
-            $this->renderThreadStartingFrom( $first_post, $pageTitle, $editing_id, $replying_to_id, $highlighting_title);
-        }
+	    if ($first_post) {
+	      $editing_id = $wgRequest->getInt("lqt_editing", null);
+	      $replying_to_id = $wgRequest->getInt("lqt_replying_to_id", null);
+	      $highlighting_title = $wgRequest->getVal("lqt_highlight", null);
+
+	      $this->renderThreadStartingFrom( $first_post, $pageTitle, $editing_id, $replying_to_id, $highlighting_title);
+	    } else {
+	      $wgOut->addWikiText("This talk page is empty.");
+	    }
+	}
 }
 
 }
