@@ -59,7 +59,7 @@ class BadImageManipulator extends SpecialPage {
 		wfProfileIn( __METHOD__ );
 		# TODO: Errors should be puked back up, not tucked out of sight
 		# -- the user should be informed when providing dud titles, etc.
-		$title = Title::makeTitleSafe( NS_IMAGE, $request->getText( 'wpImage' ) );
+		$title = $this->title( $request->getText( 'wpImage' ) );
 		if( is_object( $title ) ) {
 			BadImageList::add( $title->getDBkey(), $user->getId(), $request->getText( 'wpReason' ) );
 			$this->touch( $title );
@@ -93,7 +93,7 @@ class BadImageManipulator extends SpecialPage {
 
 	function attemptRemove( &$request, &$output, &$user ) {
 		wfProfileIn( __METHOD__ );
-		$title = Title::makeTitleSafe( NS_IMAGE, $request->getText( 'wpImage' ) );
+		$title = $this->title( $request->getText( 'wpImage' ) );
 		if( is_object( $title ) ) {
 			BadImageList::remove( $title->getDBkey() );
 			$this->touch( $title );
@@ -107,6 +107,17 @@ class BadImageManipulator extends SpecialPage {
 		}
 		$this->showAdd( $output, $user );
 		wfProfileOut( __METHOD__ );
+	}
+	
+	function title( $name ) {
+		$title = Title::newFromText( $name );
+		if( is_object( $title ) ) {
+			return $title->getNamespace() == NS_IMAGE
+					? $title
+					: Title::makeTitle( NS_IMAGE, $title->getText() );
+		} else {
+			return NULL;
+		}
 	}
 	
 	function log( $action, &$target, $reason ) {
