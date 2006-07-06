@@ -481,7 +481,8 @@ Shiko tek [{{fullurl:{{ns:special}}:Log/delete|page={{PAGENAMEE}}}} regjistri i 
 'compareselectedversions'=> 'Krahasoni versionet e zgjedhura',
 'searchresults'         => 'Përfundimet e kërkimit',
 'searchresulttext'      => '<!--   -->',
-'searchquery'           => 'Kërkim për "$1"',
+'searchsubtitle'           => 'Kërkim për "[[:$1]]"',
+'searchsubtitleinvalid'           => 'Kërkim për "$1"',
 'badquery'              => 'Pyetje kërkese e formuluar gabim',
 'badquerytext'          => 'Nuk munda t\'i përgjigjem pyetjes tuaj. Kjo ka mundësi të ketë ndodhur ngaqë provuat të kërkoni për një fjalë me më pak se tre gërma, gjë që s\'mund të behet akoma. Ka mundësi që edhe të keni shtypur keq pyetjen, për shembull "peshku dhe dhe halat". Provoni një pyetje tjetër.',
 'matchtotals'           => 'Pyetja "$1" u përpuq $2 tituj faqesh
@@ -1259,7 +1260,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Shikoni faqen e kategorisë\');',
 'speciallogtitlelabel'  => 'Titulli:',
 'passwordtooshort'      => 'Fjalëkalimi juaj është shumë i shkurtër. Ai duhet të ketë së paku $1 shkronja.',
 'mediawarning'          => '\'\'\'Warning\'\'\': This file may contain malicious code, by executing it your system may be compromised.
-<hr>',
+<hr />',
 'fileinfo'              => '$1KB, lloji MIME: <code>$2</code>',
 'metadata'              => 'Metadata',
 'metadata-help'         => 'Kjo skedë përmban hollësira të tjera të cilat mund të jenë shtuar nga kamera ose skaneri dizhital që është përdorur për ta krijuar. Në qoftë se skeda është ndryshuar nga gjendja origjinale, disa hollësira mund të mos pasqyrojnë skedën e tanishme.',

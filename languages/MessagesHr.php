@@ -484,7 +484,8 @@ postavili dodatna ograničenja.',
 'compareselectedversions'=> 'Usporedi odabrane inačice',
 'searchresults'         => 'Rezultati pretrage',
 'searchresulttext'      => 'Za više obavijesti o pretraživanju projekta {{SITENAME}} vidi [[Project:Tražilica]].',
-'searchquery'           => 'Za upit "$1"',
+'searchsubtitle'           => 'Za upit "[[:$1]]"',
+'searchsubtitleinvalid'           => 'Za upit "$1"',
 'badquery'              => 'Loše oblikovan upit',
 'badquerytext'          => 'Nismo mogli provesti vašu pretragu.
 Razlog je vjerojatno u tome što ste pokušali tražiti riječ kraću od tri
@@ -1233,7 +1234,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Pogledaj stranicu kategorije\');',
 'speciallogtitlelabel'  => 'Naslov:',
 'passwordtooshort'      => 'Vaša je lozinka prekratka. Lozinke moraju sadržavati najmanje $1 znakova.',
 'mediawarning'          => '\'\'\'Upozorenje\'\'\': Ova datoteka možda sadrži zlonamjerni program čije bi izvršavanje moglo ugroziti vaš računalni sustav.
-<hr>',
+<hr />',
 'fileinfo'              => '$1KB, MIME tip: <code>$2</code>',
 'metadata'              => 'Metapodaci',
 'metadata-help'         => 'Ova datoteka sadržava dodatne podatke koje je vjerojatno dodala digitalna kamera ili skener u procesu snimanja odnosno digitalizacije. Ako je datoteka mijenjana, podatci možda nisu u skladu sa stvarnim stanjem.',

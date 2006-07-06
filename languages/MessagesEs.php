@@ -335,7 +335,8 @@ Por favor revisa el URL que usaste para acceder a esta página.",
 #
 "searchresults" => "Resultados de búsqueda",
 "searchresulttext" => "Para más información acerca de búsquedas en {{SITENAME}}, ve a [[Project:Búsqueda|Buscando en {{SITENAME}}]].",
-"searchquery"	=> "Para consulta \"$1\"",
+"searchsubtitle"	=> "Para consulta \"[[:$1]]\"",
+"searchsubtitleinvalid"	=> "Para consulta \"$1\"",
 
 "badquery"		=> "Consulta de búsqueda formateada en forma incorrecta",
 "badquerytext"	=> "No pudimos procesar tu búsqueda.
@@ -1085,7 +1086,7 @@ En el último caso puedes usar un enlace, por ejemplo [[{{ns:Special}}:Export/{{
 
 # Media Warning
 'mediawarning' => '\'\'\'Aviso\'\'\': Este archivo podría contener código malicioso, ejecutándolo tu sistema podría resultar comprometido.
-<hr>',
+<hr />',
 
 'fileinfo' => '$1KB, tipo MIME: <code>$2</code>',
 

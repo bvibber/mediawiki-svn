@@ -410,7 +410,8 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 #
 'searchresults' => 'Kết quả tìm',
 'searchresulttext' => "Xem thêm [[{{ns:4}}:Tìm_kiếm|hướng dẫn tìm kiếm {{SITENAME}}]].",
-'searchquery' => "Cho truy vấn \"$1\"",
+'searchsubtitle' => "Cho truy vấn \"[[:$1]]\"",
+'searchsubtitleinvalid' => "Cho truy vấn \"$1\"",
 'badquery'  => 'Truy vấn sai',
 'badquerytext' => "Truy vấn sai: ngắn hơn 3 chữ cái, hoặc sai chính tả ví dụ như \"mèo và và chuột\". Xin mời thử lại.",
 'matchtotals' => "Truy vấn \"$1\" phù hợp với $2 tên bài và câu chữ trong $3 bài.",
@@ -1231,7 +1232,7 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'ipbotheroption' => 'khác',
 'log' => 'Nhật trình',
 "mainpagedocfooter" => "Xin đọc [http://meta.wikimedia.org/wiki/MediaWiki_i18n tài liệu hướng dẫn cách tùy biến giao diện] và [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Cẩm nang sử dụng] (bằng tiếng Anh) để biết cách dùng và thiết lập thông số.",
-'mediawarning' => " '''Cảnh báo''': Tệp tin này có thể làm hại máy tính của bạn. <hr>",
+'mediawarning' => " '''Cảnh báo''': Tệp tin này có thể làm hại máy tính của bạn. <hr />",
 'movelogpage' => 'Nhật trình đổi tên',
 'movelogpagetext' => 'Các trang bị đổi tên.',
 'namespace' => 'Không gian:',

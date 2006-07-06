@@ -158,7 +158,6 @@ $wgAllMessagesDe = array(
 "specialpage" => "Spezialseite",
 "personaltools" => "Persönliche Werkzeuge",
 "postcomment" => "Kommentar hinzufügen",
-"addsection"   => "+",
 "articlepage"	=> "Artikel",
 'subjectpage'	=> 'Betreff anzeigen',
 "toolbox" => "Werkzeuge",
@@ -189,7 +188,6 @@ $wgAllMessagesDe = array(
 'nbytes'		=> '$1 {{PLURAL:$1|Byte|Bytes}}',
 'ncategories'		=> '$1 {{PLURAL:$1|Kategorie|Kategorien}}',
 'nrevisions'		=> '{{PLURAL:$1|eine Bearbeitung|$1 Bearbeitungen}}',
-'widthheight'		=> '$1 x $2',
 "go"			=> "Artikel",
 "ok"			=> "Suche",
 'pagetitle'		=> '$1 - {{SITENAME}}',
@@ -207,7 +205,7 @@ $wgAllMessagesDe = array(
 'viewdeleted' => '$1 anzeigen?',
 'restorelink'		=> '{{PLURAL:$1|einer gelöschten Version|$1 gelöschten Versionen}}',
 "feedlinks" => "Feed:",
-'feed-invalid'		=> 'Ungültiger Abonnenement-Typ.',
+'feed-invalid'		=> 'Ungültiger Abonnement-Typ.',
 'permalink'     => 'Permanentlink',
 "listingcontinuesabbrev" => "(Forts.)",
 
@@ -441,11 +439,11 @@ Bitte geben Sie Ihre IP-Adresse ($3) in allen Ihren Anfragen mit an.',
 'session_fail_preview' => '<strong>Ihre Bearbeitung konnte nicht gespeichert werden, da Ihre Sitzungsdaten verloren gegangen sind.
 Bitte versuchen Sie es erneut. Sollte das Problem bestehen bleiben, logge Sie sich kurz aus und wieder ein.</strong>',
 "previewconflict" => "Diese Vorschau gibt den Inhalt des oberen Textfeldes wieder; so wird der Artikel aussehen, wenn Sie jetzt speichern.",
-'session_fail_preview_html'	=> '<strong>Entschuldigung! Wir konnten Ihre Änderung nicht verarbeiten, da Ihre Sitzungsdaten verloren gegangen sind.</strong>
+'session_fail_preview_html'	=> '<strong>Ihre Bearbeitung konnte nicht gespeichert werden, da Ihre Sitzungsdaten verloren gegangen sind.</strong>
 
 \'\'Da in diesem Wiki reines HTML aktiviert ist, wurde die Vorschau ausgeblendet um JavaScript Attacken vorzubeugen.\'\'
 
-<strong>Versuchen Sie es erneut, falls dies ein legitimer Änderungsversuch ist. Falls es weiterhin nicht funktioniert, versuchen Sie sich ab- und wieder anzumelden.</strong>',
+<strong>Bitte versuchen Sie es erneut. Sollte das Problem bestehen bleiben, melden Sie sich kurz ab und wieder an.</strong>',
 'importing'		=> 'importiere $1',
 "editing"		=> "Bearbeiten von $1",
 "editingsection"	=> "Bearbeiten von $1 (Absatz)",
@@ -477,10 +475,8 @@ Sie bestätigen hiermit auch, dass Sie diese Texte selbst geschrieben haben oder
 Seite für Wartungsarbeiten gesperrt, so dass Sie die Seite im Moment nicht
 speichern können. Sichern Sie sich den Text und versuchen Sie die Änderungen
 später einzuspielen.</strong>",
-'protectedpagewarning' => '<strong>ACHTUNG: Diese Seite wurde gesperrt, so dass sie nur
-durch Benutzer mit Admninistratorrechten bearbeitet werden kann. Beachten Sie bitte die
-[[{{ns:project}}:Geschützte Seiten|Regeln für geschützte Seiten]].</strong>',
-'semiprotectedpagewarning'	=> '\'\'\'Halbsperrung:\'\'\' Die Seite wurde so gesperrt, dass neu registrierte oder anonyme Benutzer diese nicht ändern können.',
+'protectedpagewarning'	=> '\'\'\'ACHTUNG: Diese Seite wurde gesperrt, so dass sie nur durch Benutzer mit Admninistratorrechten bearbeitet werden kann.\'\'\'',
+'semiprotectedpagewarning'	=> '\'\'\'Halbsperrung:\'\'\' Die Seite wurde so gesperrt, dass nur registrierte Benutzer diese ändern können.',
 'templatesused'		=> 'Folgende Vorlagen werden von diesem Artikel verwendet:',
 'edittools'		=> '<!-- Dieser Text wird unter dem „Bearbeiten“-Formular sowie dem "Hochladen"-Formular angezeigt. -->',
 'nocreatetitle'		=> 'Die Erstellung neuer Seiten ist eingeschränkt.',
@@ -491,13 +487,14 @@ Sie können bestehende Seiten ändern oder sich [[{{ns:special}}:Userlogin|anmel
 # History pages
 #
 "revhistory"	=> "Frühere Versionen",
+'viewpagelogs'		=> 'Logbücher für diese Seite anzeigen',
 'nohistory'		=> 'Es gibt keine früheren Versionen dieses Artikels.',
 'revnotfound'		=> 'Diese Version wurde nicht gefunden.',
 "revnotfoundtext" => "Die Version dieses Artikels, nach der Sie suchen, konnte nicht gefunden werden. Bitte überprüfen Sie die URL dieser Seite.",
 "loadhist"		=> "Lade Liste mit früheren Versionen",
 "currentrev"	=> "Aktuelle Version",
 "revisionasof"	=> "Version vom $1",
-'oldrevisionnavigation'	=> 'Version vom $1; $5<br />$3 | $2 | $4',
+'old-revision-navigation'	=> 'Version vom $1; $5<br />($6) $3 | $2 | $4 ($7)',
 'nextrevision'		=> 'Nächstjüngere Version →',
 'previousrevision'	=> '← Nächstältere Version',
 'currentrevisionlink'	=> 'Aktuelle Version',
@@ -557,7 +554,8 @@ Administroren können den entfernten Inhalt oder andere entfernte Bestandteile w
 #
 "searchresults" => "Suchergebnisse",
 'searchresulttext'	=> 'Für mehr Informationen zur Suche siehe „[[{{ns:project}}:Suche|{{SITENAME}} durchsuchen]]“.',
-'searchquery'		=> 'Für die Suchanfrage „$1“',
+'searchsubtitle'	=> 'Für Ihre Suchanfrage „[[:$1]]“.',
+'searchsubtitleinvalid'	=> 'Für Ihre Suchanfrage „$1“.',
 "badquery"		=> "Falsche Suchanfrage",
 'badquerytext'		=> 'Wir konnten Ihre Suchanfrage nicht verarbeiten.
 Vermutlich haben Sie versucht, ein Wort zu suchen, das kürzer als vier Buchstaben ist.
@@ -651,7 +649,6 @@ Wenn Sie sich mit dem Thema auskennen, können Sie selbst den Artikel „[[$1]]�
 'newpageletter'		=> 'N',
 'boteditletter'		=> 'B',
 'sectionlink'		=> '→',
-'number_of_watching_users_RCview'	=> '[$1]',
 'number_of_watching_users_pageview'	=> '[$1 beobachtende/r Benutzer]',
 'rc_categories'		=> 'Nur Kategorien (getrennt mit „|“):',
 'rc_categories_any'	=> 'Alle',
@@ -731,7 +728,7 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[{{ns:i
 # Image list
 #
 'imagelist'		=> 'Dateiliste',
-'imagelisttext'		=> 'Hier ist eine Liste von <strong>$1</strong> Dateien, sortiert <strong>$2</strong>.',
+'imagelisttext'		=> 'Hier ist eine Liste von \'\'\'$1\'\'\' {{PLURAL:$1|Datei|Dateien}}, sortiert $2.',
 'imagelistforuser'	=> 'Diese Seite zeigt nur Dateien, die von $1 hochgeladen wurden.',
 'getimagelist'		=> 'Lade Dateiliste',
 "ilsubmit"		=> "Suche",
@@ -858,6 +855,7 @@ Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
 'allpagesprev'	=> 'Vorherige',
 'allpagesnext'	=> 'Nächste',
 'allpagessubmit'	=> 'Zeige',
+'allpagesbadtitle'	=> 'Der eingegebene Seitenname ist ungültig: Er hat entweder ein vorangestelltes Sprach-, ein Interwiki-Kürzel oder enthält ein oder mehrere Zeichen, welche in Seitennamen nicht verwendet werden dürfen.',
 
 # Email this user
 #
@@ -1191,9 +1189,9 @@ Diskussions-Seite nicht, da schon eine mit dem neuen Titel existiert. Bitte glei
 'exporttext'		=> 'Mit dieser Spezialseite können  Sie den Text (und die Bearbeitungs-/Versionsgeschichte) einzelner Seiten nach XML exportieren.
 Das Ergebnis kann in ein anderes Wiki mit MediaWiki-Software eingespielt, bearbeitet oder archiviert werden.
 
-Tragen Sie einfach den oder die entsprechenden Artikeltitel in das folgende Textfeld ein (pro Zeile jeweils nur für einen Artikel).
+Tragen Sie einfach den oder die entsprechenden Seitentitel in das folgende Textfeld ein (pro Zeile jeweils nur für einen Artikel).
 
-Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ möglich, zum Beispiel [[{{ns:special}}:Export/{{Mediawiki:mainpage}}]] für die [[{{Mediawiki:mainpage}}]].',
+Alternativ ist der Export auch mit der Syntax „Spezial:Export/Seitentitel“ möglich, zum Beispiel [[{{ns:special}}:Export/{{Mediawiki:mainpage}}]] für die [[{{Mediawiki:mainpage}}]].',
 "exportcuronly" => "Nur die aktuelle Version der Seite exportieren",
 'exportnohistory' => '----
 \'\'\'Hinweis:\'\'\' Der Export kompletter Versionsgeschichten ist aus Performancegründen bis auf Weiteres nicht möglich.',
@@ -1291,12 +1289,12 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'alllogstext'		=> 'Kombinierte Anzeige der Datei-, Lösch-, Seitenschutz-, Benutzerblockaden- und Rechte-Logbücher.<br />Sie können die Anzeige durch die Auswahl des Logbuchtyps, des Benutzers oder des Seitentitels einschränken.',
 'logempty'		=> 'Keine passenden Einträge.',
 "protectlogpage"	=> "Seitenschutz-Logbuch",
-'protectlogtext'	=> 'Dies ist eine Liste der blockierten Seiten. Siehe [[{{ns:project}}:Geschützte Seiten]] für mehr Informationen.',
-"protectedarticle" => "Artikel [[$1]] geschützt",
-"unprotectedarticle" => "Artikel [[$1]] freigegeben",
+'protectlogtext'	=> 'Dies ist eine Liste der blockierten Seiten.',
+'protectedarticle'	=> '„[[$1]]“ geschützt',
+'unprotectedarticle'	=> '„[[$1]]“ freigegeben',
 'protectsub'		=> '(Sperren von „$1“)',
 "confirmprotecttext" => "Soll diese Seite wirklich geschützt werden?",
-'protect-text'		=> 'Hier können Sie den Schutzstatus für die Seite \'\'\'$1\'\'\' einsehen und ändern. Bitte stellen Sie sicher, dass Sie die [[{{ns:project}}:Geschützte Seiten|Portalrichtlinien]] einhalten.',
+'protect-text'		=> 'Hier können Sie den Schutzstatus für die Seite \'\'\'$1\'\'\' einsehen und ändern.',
 'protect-level-autoconfirmed'	=> 'nicht registrierte Benuter blocken',
 'protect-level-sysop'	=> 'nur Administratoren',
 'restriction-edit'	=> 'bearbeiten',
@@ -1340,10 +1338,11 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'import'		=> 'Seiten importieren',
 'importinterwiki'	=> 'Transwiki Import',
 'import-interwiki-text'	=> 'Wählen Sie ein Wiki und eine Seite zum Importieren aus.
-Das Datum der jeweiligen Versionen und die Authoren bleiben erhalten.
+Das Datum der jeweiligen Versionen und die Autoren bleiben erhalten.
 Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logbuch]] protokolliert.',
 'import-interwiki-history'	=> 'Alle Versionen dieser Seite kopieren',
 'import-interwiki-submit'	=> 'Import',
+'import-interwiki-namespace'	=> 'Importiere Seiten in Namensraum:',
 'importtext'		=> 'Auf dieser Spezialseite können über [[{{ns:special}}:Export]] exportierte Seiten in dieses Wiki importiert werden.',
 'importstart'		=> 'Importiere Seiten...',
 'import-revision-count'	=> '$1 Version(en)',
@@ -1398,7 +1397,6 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 
 # Patrolling
 'markaspatrolleddiff'		=> 'Als geprüft markieren',
-'markaspatrolledlink'		=> '[$1]',
 'markaspatrolledtext'		=> 'Diese Artikeländerung als geprüft markieren',
 'markedaspatrolled'		=> 'Als geprüft markiert',
 'markedaspatrolledtext'		=> 'Die ausgewählte Artikeländerung wurde als geprüft markiert.',
@@ -1513,7 +1511,7 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-gpsdestlatituderef'	=> 'Referenz für die Breite',
 'exif-gpsdestlongitude'		=> 'Länge',
 'exif-gpsdestlongituderef'	=> 'Referenz für die Länge',
-#'exif-gpsdifferential'		=> 'GPS differential correction',
+'exif-gpsdifferential'		=> 'GPS-Differentialkorrektur',
 'exif-gpsdirection-m'		=> 'Magnetische Richtung',
 'exif-gpsdirection-t'		=> 'Tatsächliche Richtung',
 'exif-gpsdop'			=> 'Maßpräzision',
@@ -1531,9 +1529,9 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-gpsmeasuremode'		=> 'Messverfahren',
 'exif-gpsmeasuremode-2'		=> 'zweidimensionale Messung',
 'exif-gpsmeasuremode-3'		=> 'dreidimensionale Messung',
-'exif-gpsprocessingmethod'	=> 'Name des GPS Verfahrens',
+'exif-gpsprocessingmethod'	=> 'Name des GPS-Verfahrens',
 'exif-gpssatellites'		=> 'Für die Messung benutzte Satelliten',
-'exif-gpsspeed'			=> 'Geschwindigkeit des GPS Empfängers',
+'exif-gpsspeed'			=> 'Geschwindigkeit des GPS-Empfängers',
 'exif-gpsspeed-k'		=> 'km/h',
 'exif-gpsspeed-m'		=> 'mph',
 'exif-gpsspeed-n'		=> 'Knoten',
@@ -1544,7 +1542,7 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-gpstimestamp'		=> 'GPS-Zeit',
 'exif-gpstrack'			=> 'Bewegungsrichtung',
 'exif-gpstrackref'		=> 'Referenz für Bewegungsrichtung',
-'exif-gpsversionid'		=> 'GPS Tag-Version',
+'exif-gpsversionid'		=> 'GPS-Tag-Version',
 'exif-imagedescription'		=> 'Bildtitel',
 'exif-imagelength'		=> 'Länge',
 'exif-imageuniqueid'		=> 'Bild-ID',
@@ -1557,10 +1555,10 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-lightsource-1'		=> 'Tageslicht',
 'exif-lightsource-10'		=> 'Bewölkt',
 'exif-lightsource-11'		=> 'Schatten',
-'exif-lightsource-12'		=> 'Tageslicht fluoreszierend (D 5700 – 7100K)',
-'exif-lightsource-13'		=> 'Tagesweiß fluoreszierend (N 4600 – 5400K)',
-'exif-lightsource-14'		=> 'Kaltweiß fluoreszierend (W 3900 – 4500K)',
-'exif-lightsource-15'		=> 'Weiß fluoreszierend (WW 3200 – 3700K)',
+'exif-lightsource-12'		=> 'Tageslicht fluoreszierend (D 5700–7100 K)',
+'exif-lightsource-13'		=> 'Tagesweiß fluoreszierend (N 4600–5400 K)',
+'exif-lightsource-14'		=> 'Kaltweiß fluoreszierend (W 3900–4500 K)',
+'exif-lightsource-15'		=> 'Weiß fluoreszierend (WW 3200–3700 K)',
 'exif-lightsource-17'		=> 'Standardlicht A',
 'exif-lightsource-18'		=> 'Standardlicht B',
 'exif-lightsource-19'		=> 'Standardlicht C',
@@ -1575,7 +1573,6 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-lightsource-4'		=> 'Blitz',
 'exif-lightsource-9'		=> 'Schönes Wetter',
 'exif-make'			=> 'Hersteller',
-'exif-make-value'		=> '[[$1]]',
 'exif-makernote'		=> 'Herstellernotiz',
 'exif-maxaperturevalue'		=> 'Größte Blende',
 'exif-meteringmode'		=> 'Messverfahren',
@@ -1588,7 +1585,6 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-meteringmode-5'		=> 'Muster',
 'exif-meteringmode-6'		=> 'Bildteil',
 'exif-model'			=> 'Modell',
-'exif-model-value'		=> '$1',
 'exif-oecf'			=> 'Optoelektronischer Umrechnungsfaktor',
 'exif-orientation'		=> 'Kameraausrichtung',
 'exif-orientation-1'		=> 'Normal',
@@ -1606,7 +1602,7 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-pixelydimension'		=> 'Gültige Bildbreite',
 'exif-planarconfiguration'	=> 'Datenausrichtung',
 'exif-planarconfiguration-1'	=> 'Grobformat',
-'exif-planarconfiguration-2'	=> 'Planar Format',
+'exif-planarconfiguration-2'	=> 'Planarformat',
 #'exif-primarychromaticities'	=> 'Chromaticities of primarities',
 'exif-referenceblackwhite'	=> 'Schwarz/Weiß-Referenzpunkte',
 'exif-relatedsoundfile'		=> 'Zugehörige Tondatei',
@@ -1638,7 +1634,6 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-sharpness-2'		=> 'Stark',
 'exif-shutterspeedvalue'	=> 'Belichtungszeitwert',
 'exif-software'			=> 'Software',
-'exif-software-value'		=> '$1',
 #'exif-spatialfrequencyresponse'	=> 'Spatial frequency response',
 'exif-spectralsensitivity'	=> 'Spectral Sensitivity',
 #'exif-stripbytecounts'		=> 'Bytes per compressed strip',

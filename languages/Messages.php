@@ -559,6 +559,7 @@ You can go back and edit an existing page, or [[Special:Userlogin|log in or crea
 # History pages
 #
 'revhistory'	=> 'Revision history',
+'viewpagelogs' => 'View logs for this page',
 'nohistory'		=> 'There is no edit history for this page.',
 'revnotfound'	=> 'Revision not found',
 'revnotfoundtext' => "The old revision of the page you asked for could not be found.
@@ -566,7 +567,7 @@ Please check the URL you used to access this page.",
 'loadhist'		=> 'Loading page history',
 'currentrev'	=> 'Current revision',
 'revisionasof'          => 'Revision as of $1',
-'oldrevisionnavigation' => 'Revision as of $1; $5<br />$3 | $2 | $4',
+'old-revision-navigation' => 'Revision as of $1; $5<br />($6) $3 | $2 | $4 ($7)',
 'previousrevision'	=> '←Older revision',
 'nextrevision'		=> 'Newer revision→',
 'currentrevisionlink'   => 'Current revision',
@@ -635,7 +636,8 @@ is placed by the site operators.",
 #
 'searchresults' => 'Search results',
 'searchresulttext' => "For more information about searching {{SITENAME}}, see [[{{ns:project}}:Searching|Searching {{SITENAME}}]].",
-'searchquery'	=> "For query \"$1\"",
+'searchsubtitle' => "You searched for '''[[:$1]]'''",
+'searchsubtitleinvalid' => "You searched for '''$1'''",
 'badquery'		=> 'Badly formed search query',
 'badquerytext'	=> 'We could not process your query.
 This is probably because you have attempted to search for a
@@ -655,7 +657,7 @@ and the text of $3 pages.",
 'viewprevnext'	=> "View ($1) ($2) ($3).",
 'showingresults' => "Showing below up to <b>$1</b> results starting with #<b>$2</b>.",
 'showingresultsnum' => "Showing below <b>$3</b> results starting with #<b>$2</b>.",
-'nonefound'		=> "'''Note''': unsuccessful searches are
+'nonefound'		=> "'''Note''': Unsuccessful searches are
 often caused by searching for common words like \"have\" and \"from\",
 which are not indexed, or by specifying more than one search term (only pages
 containing all of the search terms will appear in the result).",
@@ -1015,6 +1017,7 @@ You can narrow down the view by selecting a log type, the user name, or the affe
 'allpagesnext'		=> 'Next',
 'allpagessubmit'	=> 'Go',
 'allpagesprefix'	=> 'Display pages with prefix:',
+'allpagesbadtitle'	=> 'The given page title was invalid or had an inter-language or inter-wiki prefix. It may contain one more characters which cannot be used in titles.',
 
 # E this user
 #
@@ -1458,6 +1461,7 @@ Revision dates and editors\' names will be preserved.
 All transwiki import actions are logged at the [[Special:Log/import|import log]].',
 'import-interwiki-history' => 'Copy all history versions for this page',
 'import-interwiki-submit' => 'Import',
+'import-interwiki-namespace' => 'Transfer pages into namespace:',
 'importtext'	=> 'Please export the file from the source wiki using the Special:Export utility, save it to your disk and upload it here.',
 'importstart'	=> "Importing pages...",
 'import-revision-count' => '$1 revision(s)',

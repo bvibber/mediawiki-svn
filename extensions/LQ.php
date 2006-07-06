@@ -500,9 +500,7 @@ class Post extends Article {
                 global $wgRequest;
                 if ( !$it = $wgRequest->getVal("lqt_post_title", false) ) {
                         $token = md5(uniqid(rand(), true));
-			var_dump($token);
                         $new_title = Title::newFromText( "Post:$token" );
-			var_dump($new_title);
                 } else {
 		     $new_title = Title::newFromText("Post:$it");
                 }

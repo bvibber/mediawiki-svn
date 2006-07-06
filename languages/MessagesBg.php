@@ -487,7 +487,8 @@ Before any other mail is sent to the account, you will have to follow the instru
 #
 'searchresults' => 'Резултати от търсенето',
 'searchresulttext' => 'За повече информация относно {{SITENAME}}, вижте [[Project:Търсене|Търсене в {{SITENAME}}]].',
-'searchquery'  => 'За заявка „$1“',
+'searchsubtitle'  => 'За заявка „[[:$1]]“',
+'searchsubtitleinvalid'  => 'За заявка „$1“',
 'badquery'    => 'Лошо формулирана заявка за търсене',
 'badquerytext'  => 'Вашата заявка не можа да бъде обработена.
 Вероятно сте се опитали да търсите дума с по-малко от три букви, което все още не се поддържа.
@@ -1338,7 +1339,7 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 # Media Warning
 # TODO Превод
 'mediawarning' => '\'\'\'Внимание\'\'\': This file may contain malicious code, by executing it your system may be compromised.
-<hr>',
+<hr />',
 
 'fileinfo' => '$1 КБ, MIME type: <code>$2</code>',
 

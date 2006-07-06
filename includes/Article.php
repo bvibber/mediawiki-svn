@@ -146,25 +146,9 @@ class Article {
 	function getContent() {
 		global $wgRequest, $wgUser, $wgOut;
 
-		# Get variables from query string :P
-		$action = $wgRequest->getText( 'action', 'view' );
-		$section = $wgRequest->getText( 'section' );
-		$preload = $wgRequest->getText( 'preload' );
-
 		wfProfileIn( __METHOD__ );
 
 		if ( 0 == $this->getID() ) {
-			if ( 'edit' == $action ) {
-				wfProfileOut( __METHOD__ );
-
-				# If requested, preload some text.
-				$text=$this->getPreloadedText($preload);
-
-				# We used to put MediaWiki:Newarticletext here if
-				# $text was empty at this point.
-				# This is now shown above the edit box instead.
-				return $text;
-			}
 			wfProfileOut( __METHOD__ );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
@@ -177,48 +161,8 @@ class Article {
 			return "<div class='noarticletext'>$ret</div>";
 		} else {
 			$this->loadContent();
-			if($action=='edit') {
-				if($section!='') {
-					if($section=='new') {
-						wfProfileOut( __METHOD__ );
-						$text=$this->getPreloadedText($preload);
-						return $text;
-					}
-
-					# strip NOWIKI etc. to avoid confusion (true-parameter causes HTML
-					# comments to be stripped as well)
-					$rv=$this->getSection($this->mContent,$section);
-					wfProfileOut( __METHOD__ );
-					return $rv;
-				}
-			}
 			wfProfileOut( __METHOD__ );
 			return $this->mContent;
-		}
-	}
-
-	/**
-	 * Get the contents of a page from its title and remove includeonly tags
-	 *
-	 * @param $preload String: the title of the page.
-	 * @return string The contents of the page.
-	 */
-	function getPreloadedText($preload) {
-		if ( $preload === '' )
-			return '';
-		else {
-			$preloadTitle = Title::newFromText( $preload );
-			if ( isset( $preloadTitle ) && $preloadTitle->userCanRead() ) {
-				$rev=Revision::newFromTitle($preloadTitle);
-				if ( is_object( $rev ) ) {
-					$text = $rev->getText();
-					// TODO FIXME: AAAAAAAAAAA, this shouldn't be implementing
-					// its own mini-parser! -ævar
-					$text = preg_replace( '~</?includeonly>~', '', $text );
-					return $text;
-				} else
-					return '';
-			}
 		}
 	}
 
@@ -232,6 +176,7 @@ class Article {
 	 * @param $text String: text to look in
 	 * @param $section Integer: section number
 	 * @return string text of the requested section
+	 * @deprecated
 	 */
 	function getSection($text,$section) {
 		global $wgParser;
@@ -278,6 +223,7 @@ class Article {
 			# unused:
 			# $lastid = $oldid;
 		}
+
 		if ( !$oldid ) {
 			$oldid = 0;
 		}
@@ -735,6 +681,7 @@ class Article {
 				return;
 			}
 		}
+
 		# Should the parser cache be used?
 		$pcache = $wgEnableParserCache &&
 			intval( $wgUser->getOption( 'stubthreshold' ) ) == 0 &&
@@ -2239,14 +2186,20 @@ class Article {
 		$prevlink = $prev
 			? $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'previousrevision' ), 'direction=prev&oldid='.$oldid )
 			: wfMsg( 'previousrevision' );
+		$prevdiff = $prev
+			? $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'diff' ), 'diff=prev&oldid='.$oldid )
+			: wfMsg( 'diff' );
 		$nextlink = $current
 			? wfMsg( 'nextrevision' )
 			: $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'nextrevision' ), 'direction=next&oldid='.$oldid );
+		$nextdiff = $current
+			? wfMsg( 'diff' )
+			: $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'diff' ), 'diff=next&oldid='.$oldid );
 		
 		$userlinks = $sk->userLink( $revision->getUser(), $revision->getUserText() )
 						. $sk->userToolLinks( $revision->getUser(), $revision->getUserText() );
 		
-		$r = wfMsg( 'oldrevisionnavigation', $td, $lnk, $prevlink, $nextlink, $userlinks );
+		$r = wfMsg( 'old-revision-navigation', $td, $lnk, $prevlink, $nextlink, $userlinks, $prevdiff, $nextdiff );
 		$wgOut->setSubtitle( $r );
 	}
 
@@ -2271,7 +2224,7 @@ class Article {
 	function tryFileCache() {
 		static $called = false;
 		if( $called ) {
-			wfDebug( " tryFileCache() -- called twice!?\n" );
+			wfDebug( "Article::tryFileCache(): called twice!?\n" );
 			return;
 		}
 		$called = true;
@@ -2279,15 +2232,15 @@ class Article {
 			$touched = $this->mTouched;
 			$cache = new CacheManager( $this->mTitle );
 			if($cache->isFileCacheGood( $touched )) {
-				wfDebug( " tryFileCache() - about to load\n" );
+				wfDebug( "Article::tryFileCache(): about to load file\n" );
 				$cache->loadFromFileCache();
 				return true;
 			} else {
-				wfDebug( " tryFileCache() - starting buffer\n" );
+				wfDebug( "Article::tryFileCache(): starting buffer\n" );
 				ob_start( array(&$cache, 'saveToFileCache' ) );
 			}
 		} else {
-			wfDebug( " tryFileCache() - not cacheable\n" );
+			wfDebug( "Article::tryFileCache(): not cacheable\n" );
 		}
 	}
 

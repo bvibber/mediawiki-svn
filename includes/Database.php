@@ -5,11 +5,6 @@
  * @package MediaWiki
  */
 
-/**
- * Depends on the CacheManager
- */
-require_once( 'CacheManager.php' );
-
 /** See Database::makeList() */
 define( 'LIST_COMMA', 0 );
 define( 'LIST_AND', 1 );
@@ -1856,6 +1851,10 @@ class Database {
 	}
 
 	function encodeBlob($b) {
+		return $b;
+	}
+
+	function decodeBlob($b) {
 		return $b;
 	}
 

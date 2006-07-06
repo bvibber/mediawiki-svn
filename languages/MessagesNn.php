@@ -444,7 +444,8 @@ Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompati
 #
 'searchresults'           => 'Søkjeresultat',
 'searchresulttext'        => 'For meir info om søkjefunksjonen i {{SITENAME}}, sjå [[Help:Søk|Hjelp]].',
-'searchquery'	          => 'Du søkte etter «$1»', // plain text
+'searchsubtitle'	          => 'Du søkte etter «[[:$1]]»', // plain text
+'searchsubtitleinvalid'	          => 'Du søkte etter «$1»', // plain text
 'badquery'		  => 'Feil utforma førespurnad',
 'badquerytext'	          => 'Vi kunne ikkje svara på denne førespurnaden &mdash; Truleg fordi du prøvde å søkje etter eit ord med færre enn tre bokstavar, noko som ikkje er mogleg enno. Det kan òg vera du skreiv feil... Prøv om att.',
 'matchtotals'	          => 'Førespurnaden «$1» gav treff på $2 sidetitlar og på teksten på $3 sider.',
@@ -1242,7 +1243,7 @@ ta[\'ca-nstab-category\']       = new Array(\'c\',\'Vis kategoriside\');
 
 # Media Warning
 'mediawarning'         => '\'\'\'Åtvaring\'\'\': Denne fila kan innehalda skadelege program, ved å opna ho kan systemet ditt ta skade.
-<hr>',
+<hr />',
 
 'fileinfo'             => '$1KB, MIME-type: <code>$2</code>',
 

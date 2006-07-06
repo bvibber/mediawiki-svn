@@ -25,7 +25,7 @@ if ( !isset( $wgVersion ) ) {
 if( !isset( $wgProfiling ) )
 	$wgProfiling = false;
 
-require_once( 'AutoLoader.php' );
+require_once( "$IP/includes/AutoLoader.php" );
 
 if ( function_exists( 'wfProfileIn' ) ) {
 	/* nada, everything should be done already */
@@ -39,36 +39,34 @@ if ( function_exists( 'wfProfileIn' ) ) {
 		$wgProfiler = new $prclass();
 	}
 } else {
-	require_once( 'ProfilerStub.php' );
+	require_once( "$IP/includes/ProfilerStub.php" );
 }
 
 $fname = 'Setup.php';
 wfProfileIn( $fname );
 
 wfProfileIn( $fname.'-exception' );
-require_once( 'Exception.php' );
+require_once( "$IP/includes/Exception.php" );
 wfInstallExceptionHandler();
 wfProfileOut( $fname.'-exception' );
 
 wfProfileIn( $fname.'-includes' );
 
-require_once( 'GlobalFunctions.php' );
-require_once( 'Hooks.php' );
-require_once( 'Namespace.php' );
-require_once( 'User.php' );
-require_once( 'Skin.php' );
-require_once( 'OutputPage.php' );
-require_once( 'MagicWord.php' );
-require_once( 'Block.php' );
-require_once( 'MessageCache.php' );
-require_once( 'Parser.php' );
-require_once( 'LoadBalancer.php' );
-require_once( 'HistoryBlob.php' );
-require_once( 'ProxyTools.php' );
-require_once( 'ObjectCache.php' );
+require_once( "$IP/includes/GlobalFunctions.php" );
+require_once( "$IP/includes/Hooks.php" );
+require_once( "$IP/includes/Namespace.php" );
+require_once( "$IP/includes/User.php" );
+require_once( "$IP/includes/OutputPage.php" );
+require_once( "$IP/includes/MagicWord.php" );
+require_once( "$IP/includes/MessageCache.php" );
+require_once( "$IP/includes/Parser.php" );
+require_once( "$IP/includes/LoadBalancer.php" );
+require_once( "$IP/includes/ProxyTools.php" );
+require_once( "$IP/includes/ObjectCache.php" );
+require_once( "$IP/includes/ImageFunctions.php" );
 
 if ( $wgUseDynamicDates ) {
-	require_once( 'DateFormatter.php' );
+	require_once( "$IP/includes/DateFormatter.php" );
 }
 
 wfProfileOut( $fname.'-includes' );
@@ -128,9 +126,8 @@ if ( $wgDBprefix ) {
 
 # If session.auto_start is there, we can't touch session name
 #
-if (!ini_get('session.auto_start')) {
-	session_name( $wgCookiePrefix . '_session' );
-}
+if( !ini_get( 'session.auto_start' ) )
+	session_name( $wgSessionName ? $wgSessionName : $wgCookiePrefix . '_session' );
 
 if( !$wgCommandLineMode && ( isset( $_COOKIE[session_name()] ) || isset( $_COOKIE[$wgCookiePrefix.'Token'] ) ) ) {
 	wfIncrStats( 'request_with_session' );
@@ -254,8 +251,7 @@ if( $wgLangClass == $wgContLangClass ) {
 wfProfileOut( $fname.'-language2' );
 wfProfileIn( $fname.'-MessageCache' );
 
-$wgMessageCache = new MessageCache;
-$wgMessageCache->initialise( $parserMemc, $wgUseDatabaseMessages, $wgMsgCacheExpiry, $wgDBname);
+$wgMessageCache = new MessageCache( $parserMemc, $wgUseDatabaseMessages, $wgMsgCacheExpiry, $wgDBname);
 
 wfProfileOut( $fname.'-MessageCache' );
 
@@ -292,7 +288,6 @@ $wgDeferredUpdateList = array();
 $wgPostCommitUpdateList = array();
 
 $wgMagicWords = array();
-$wgMwRedir =& MagicWord::get( MAG_REDIRECT );
 
 if ( $wgUseXMLparser ) {
 	require_once( 'ParserXML.php' );

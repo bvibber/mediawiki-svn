@@ -458,13 +458,14 @@ Alamat IP Anda adalah $3. Sertakan alamat IP ini pada setiap pertanyaan yang And
 # History pages
 #
 "revhistory" => "Sejarah revisi",
+'viewpagelogs' => 'Lihat log halaman ini',
 "nohistory" => "Tidak ada sejarah penyuntingan untuk halaman ini",
 "revnotfound" => "Revisi tidak ditemukan",
 "revnotfoundtext" => "Revisi lama halaman yang Anda minta tidak dapat ditemukan. Silakan periksa URL yang digunakan untuk mengakses halaman ini.",
 "loadhist" => "Memuat halaman sejarah",
 "currentrev" => "Revisi sekarang",
 "revisionasof" => "Revisi per $1",
-'oldrevisionnavigation'  => 'Revisi per $1; $5<br />$3 | $2 | $4',
+'old-revision-navigation'  => 'Revisi per $1; $5<br />($6) $3 | $2 | $4 ($7)',
 'previousrevision'      => '← Revisi sebelumnya',
 'nextrevision'          => 'Revisi selanjutnya →',
 'currentrevisionlink'   => 'Revisi sekarang',
@@ -517,7 +518,8 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 #
 "searchresults" => "Hasil pencarian",
 "searchresulttext" => "Untuk informasi lebih lanjut tentang pencarian di {{SITENAME}}, lihat [[{{ns:project}}:Pencarian|Melakukan pencarian di {{SITENAME}}]].",
-"searchquery" => "Untuk kueri \"$1\"",
+"searchsubtitle" => "Untuk kueri \"[[:$1]]\"",
+"searchsubtitleinvalid" => "Untuk kueri \"$1\"",
 "badquery" => "Format kueri pencarian salah",
 "badquerytext" => "Kami tidak dapat memproses kueri Anda. Hal ini mungkin disebabkan karena Anda mencoba mencari kata yang panjangnya kurang dari tiga huruf, yang masih belum didukung oleh sistem ini. Hal ini juga dapat disebabkan oleh kesalahan pengetikan ekspresi, misalnya \"fish and and scales\". Silakan coba kueri yang lain.",
 "matchtotals" => "Kueri \"$1\" cocok dengan $2 judul halaman dan teks dari $3 artikel.",
@@ -853,6 +855,7 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 'allpagesnext'      => 'Selanjutnya',
 'allpagessubmit'    => 'Cari',
 'allpagesprefix'	=> 'Tampilkan halaman dengan awalan:',
+'allpagesbadtitle'	=> 'Judul halaman yang diberikan tidak sah atau memiliki awalan antar-bahasa atau antar-wiki. Judul tersebut mungkin juga mengandung satu atau lebih aksara yang tidak dapat digunakan dalam judul.',
 
 # Email this user
 #
@@ -1187,14 +1190,14 @@ Artikel yang dituju, "[[$1]]", telah mempunyai isi. Apakah Anda hendak menghapus
 # Export
 
 "export" => "Ekspor halaman",
-'exporttext'    => 'Anda dapat mengekspor teks dan sejarah penyuntingan suatu halaman tertentu atau sejumlah halaman terbungkus dalam XML tertentu. Di masa depan, hasil ekspor ini dapat diimpor ke wiki lainnya yang menggunakan perangkat lunak MediaWiki, dengan menggunakan Special:Import page.
+'exporttext'    => 'Anda dapat mengekspor teks dan sejarah penyuntingan suatu halaman tertentu atau suatu set halaman dalam bentuk XML tertentu. Hasil ekspor ini selanjutnya dapat diimpor ke wiki lainnya yang menggunakan perangkat lunak MediaWiki, dengan menggunakan fasilitas [[{{ns:special}}:Import]].
 
-Untuk mengekspor halaman-halaman artikel, masukkan judul-judul dalam kotak teks di bawah ini, satu judul per baris, dan pilih apakah anda ingin mengekspor versi sekarang dengan versi sebelumnya, dengan catatan sejarah halaman, atau hanya versi sekarang dengan catatan penyuntingan terakhir.
+Untuk mengekspor halaman-halaman artikel, masukkan judul-judul dalam kotak teks di bawah ini, satu judul per baris, dan pilih apakah anda ingin mengekspor lengkap dengan versi terdahulunya, atau hanya versi sekarang dengan catatan penyuntingan terakhir.
 
 Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal ini dengan lebih cepat dengan cara menggunakan pranala khusus, sebagai contoh: [[{{ns:special}}:Export/{{int:mainpage}}]] untuk mengekspor artikel {{int:mainpage}}.',
-"exportcuronly" => "Hanya ekspor revisi sekarang, bukan seluruh sejarah",
+"exportcuronly" => "Hanya ekspor revisi sekarang, bukan seluruh versi terdahulu",
 'exportnohistory' => "----
-'''Catatan:''' mengekspor keseluruhan riwayat suntingan halaman melalui isian ini telah dinon-aktifkan karena alasan kinerja.",
+'''Catatan:''' Mengekspor keseluruhan riwayat suntingan halaman melalui isian ini telah dinon-aktifkan karena alasan kinerja.",
 'export-submit' => 'Ekspor',
 
 # Namespace 8 related
@@ -1222,6 +1225,7 @@ Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal in
 'import-interwiki-text' => 'Pilih suatu wiki dan judul halaman yang akan di impor. Tanggal revisi dan nama penyunting akan dipertahankan. Semua aktivitas impor transwiki akan dilog di [[{{ns:special}}:Log/import|log impor]].',
 'import-interwiki-history' => 'Salin semua versi terdahulu dari halaman ini',
 'import-interwiki-submit' => 'Impor',
+'import-interwiki-namespace' => 'Transfer halaman ke dalam namespace:',
 "importtext" => "Silakan ekspor berkas dari wiki asal dengan menggunakan utilitas [[{{ns:special}}:Export]], simpan ke cakram digital, dan muatkan ke sini.",
 'importstart'	=> "Mengimpor halaman...",
 'import-revision-count' => '$1 versi terdahulu',

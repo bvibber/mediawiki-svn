@@ -853,7 +853,7 @@ i tekst $3 članaka.',
 'media_sample' => 'ime_medija_fajla.mp3',
 'media_tip' => 'Putanja ka multimedijalnom fajlu',
 'mediawarning' => '\'\'\'Upozorenje\'\'\': Ovaj fajl sadrži loš kod, njegovim izvršavanjem možete da ugrozite vaš sistem.
-<hr>',
+<hr />',
 'metadata' => 'Metapodaci',
 'metadata_page' => '{{ns:project}}:Metapodaci',
 'mimesearch' => 'MIME pretraga',
@@ -1178,7 +1178,8 @@ Molimo vas da proverite URL koji ste upotrebili da biste pristupili ovoj stranic
 'search' => 'Traži',
 'searchdisabled' => '<p>Izvinjavamo se! Puna pretraga teksta je privremeno onemogućena, zbog bržeg rada Vikipedije. U međuvremenu, možete koristiti Gugl pretragu ispod, koja može biti zastarela.</p>',
 'searchfulltext' => 'Pretraži ceo tekst',
-'searchquery' => 'Tražili ste "<a href="/wiki/$1">$1</a>" <a href="/wiki/Special:Allpages/$1">[Sadržaj]</a>',
+'searchsubtitle' => 'Tražili ste [[:$1]] [[Special:Allpages/$1|&#x5B;Sadržaj&#x5D;]]',
+'searchsubtitleinvalid' => 'Tražili ste $1 ',
 'searchresults' => 'Rezultati pretrage',
 'searchresultshead' => 'Podešavanja rezultata pretrage',
 'searchresulttext' => '<!--
