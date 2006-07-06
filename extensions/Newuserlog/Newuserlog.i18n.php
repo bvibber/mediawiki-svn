@@ -37,4 +37,12 @@ $wgNewuserlogMessages['id'] = array(
 	'newuserlog-create2-entry' => 'membuat akun untuk $1',
 	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]",
 );
+$wgNewuserlogMessages['ja'] = array(
+	'newuserlogpage'           => 'アカウント作成記録',
+	'newuserlogpagetext'       => '以下は最近作成されたアカウントの一覧です。',
+	'newuserlogentry'          => '', # For compatibility, don't translate this
+	'newuserlog-create-entry'  => '新規利用者',
+	'newuserlog-create2-entry' => 'が新規に $1 を作成しました',
+	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]",
+);
 ?>
