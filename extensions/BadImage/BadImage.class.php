@@ -36,6 +36,7 @@ class BadImageList {
 	}
 	
 	function add( $name, $user, $reason ) {
+		global $wgMemc;
 		wfProfileIn( __METHOD__ );
 		$dbw =& wfGetDB( DB_MASTER );
 		$dbw->insert( 'bad_images', array( 'bil_name' => $name, 'bil_user' => $user, 'bil_timestamp' => wfTimestampNow(), 'bil_reason' => $reason ), __METHOD__, 'IGNORE' );
