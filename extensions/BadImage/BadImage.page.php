@@ -82,9 +82,9 @@ class BadImageManipulator extends SpecialPage {
 		$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
 		$output->addHtml( '<p>' . wfMsgHtml( 'badimages-remove-confirm', $link ) . '</p>' );
 		$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
-		$form .= wfHidden( 'action', 'remove' ) . wfHidden( 'wpToken', $user->editToken() );
+		$form .= wfHidden( 'action', 'remove' ) . wfHidden( 'wpToken', $user->editToken() ) . wfHidden( 'wpImage', $name );
 		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'badimages-name' ) . '</td>';
-		$form .= '<td>' . wfInput( 'wpImage', false, $name ) . '</td></tr>';
+		$form .= '<td>' . wfInput( 'wpImage2', false, $name, array( 'readonly' => 'readonly' ) ) . '</td></tr>';
 		$form .= '<tr><td align="right">' . wfMsgHtml( 'badimages-reason' ) . '</td>';
 		$form .= '<td>' . wfInput( 'wpReason', 40 ) . '</td><tr></tr><td></td><td>';
 		$form .= wfSubmitButton( wfMsg( 'badimages-remove-btn' ) ) . '</td></tr></table></form>';
