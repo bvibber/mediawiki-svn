@@ -83,7 +83,7 @@ class Post extends Article {
                 }
         }
 
-        /* Inserts this as the *first* reply to $other, before any existing replies. */
+        /** Inserts this as the *first* reply to $other, before any existing replies. */
         function insertAsFirstReplyTo($other) {
                 if ( $it = $other->firstReply() )
                         $this->setNextPost( $it );
@@ -99,6 +99,15 @@ class Post extends Article {
                 return $y;
         }
 
+	function topLevelReplies() {
+	     $x = $this->firstReply();
+	     $result = array($x);
+	     while( $x = $x->nextPost() ) {
+		  array_push($result, $x);
+	     }
+	     return $result;
+	}
+
         /**
          * Move this post in the threading so that it is either the nextpost or firstreply of the post whose ID is given.
          * @param $to Post to move next to.
@@ -109,10 +118,21 @@ class Post extends Article {
                 // If we've moved down into our own reply thread, we need to
                 // reparent our children at a higher level.
                 if ( $to->isUnderneath($this) ) {
-
-                        
-                        
-                }
+		     $p = $this->previousPost();
+		     foreach( $this->topLevelReplies() as $r ) {
+			  $r->moveNextTo($p);
+			  $p = $r; 
+		     }
+		}
+		     
+		     
+/*		     if ( $this->previousPost() ) {
+			  $this->previousPost()->setNextPost($this->firstReply());
+		     } else {
+			  $this->parentPost()->setFirstReply($this->firstReply());
+		     }
+		     $this->firstReply()->lastSibling()->setNextPost($this->nextPost());
+		     $this->setFirstReply(null);*/
 
                 // ok, now actually move us.
                 $this->deleteLinks();
@@ -122,6 +142,16 @@ class Post extends Article {
                         $this->insertAfter($to);
 
         }
+	
+	/**
+	 @param $p Some Post
+	 @return True if $this lies anywhere in the thread of replies to $p.
+	 */
+	function isUnderneath($p) {
+	     return ( $this->parentPost() && $this->parentPost()->getID() == $p->getID() )    ||
+		    ( $this->parentPost() && $this->parentPost()->isUnderneath($p) )          ||
+ 		    ( $this->previousPost() && $this->previousPost()->isUnderneath($p) );
+	}
         
         /** @private */
         function createLqtRecord() {
@@ -232,7 +262,7 @@ class Post extends Article {
                                          array('lqt_this = page_id',
                                                'lqt_next' => $this->getID()),
                                          __METHOD__);
-                if ( $line->page_id ) {
+                if ( $line && $line->page_id ) {
                         $title = Title::newFromID($line->page_id);
                         $this->mPreviousPost = new Post($title);
                 } else {
@@ -244,7 +274,7 @@ class Post extends Article {
                                          array('lqt_this = page_id',
                                                'lqt_first_reply' => $this->getID()),
                                          __METHOD__);
-                if ( $line->page_id ) {
+                if ( $line && $line->page_id ) {
                         $title = Title::newFromID($line->page_id);
                         $this->mParentPost = new Post($title);
                 } else {
@@ -335,8 +365,6 @@ class Post extends Article {
                 
                 $result = False;
 		while ( $line = $dbr->fetchObject( $res ) ) {
-                        // newFromName normalizes, so we have to make sure both names have gone through it.
-                        //        if ( User::newFromName($line->rev_user_text, false)->getName() != $orig->getName() ) {
                         if ( $line->rev_user_text != $orig ) {
                                 $result = True;
                                 break;
@@ -472,16 +500,18 @@ class Post extends Article {
                 global $wgRequest;
                 if ( !$it = $wgRequest->getVal("lqt_post_title", false) ) {
                         $token = md5(uniqid(rand(), true));
+			var_dump($token);
                         $new_title = Title::newFromText( "Post:$token" );
+			var_dump($new_title);
                 } else {
-                        $new_title = $it;
+		     $new_title = Title::newFromText("Post:$it");
                 }
 
                 $p = new Post($new_title);
                 if ($reply_to) {
-                        $p->showEditingForm("?lqt_replying_to_id=$reply_to&lqt_post_title=${$new_title->getPartialURL}");
+                        $p->showEditingForm("?lqt_replying_to_id=$reply_to&lqt_post_title={$new_title->getPartialURL()}");
                 } else {
-                        $p->showEditingForm("?lqt_post_new=1&lqt_post_title=${$new_title->getPartialURL}");
+                        $p->showEditingForm("?lqt_post_new=1&lqt_post_title={$new_title->getPartialURL()}");
                 }
         }
 
@@ -517,7 +547,7 @@ class LQ extends SpecialPage {
                 // Button to move a post to be the first reply of this post:
                 if ( LQ::$moving &&
                      LQ::$moving != $post->getID() &&
-                     ($post->firstReply() ? LQ::$moving != $post->firstReply()->getID() : true) ) {
+                     ($post->firstReply() ? LQ::$moving != $post->firstReply()->getID() : true ) ) {
                         $this->indent();
                         $this->showMoveButton( 'reply', $post->getID() );
                         $this->unindent();
@@ -540,7 +570,7 @@ class LQ extends SpecialPage {
                 // Button to move a post to be the next post of this post:
                 if ( LQ::$moving &&
                      LQ::$moving != $post->getID() &&
-                     ($post->nextPost() ? LQ::$moving != $post->nextPost()->getID() : true) ) {
+                     ($post->nextPost() ? LQ::$moving != $post->nextPost()->getID() : true ) ) {
                         $this->showMoveButton( 'next', $post->getID() );
                 }
 
@@ -614,7 +644,7 @@ class LQ extends SpecialPage {
                     $totitle = Title::newFromID($to_id);
                     $post = new Post( $posttitle );
                     $to = new Post( $totitle );
-                    $post->moveNexTo($to, $reply_to_id ? 'reply' : 'next');
+                    $post->moveNextTo($to, $reply_to_id ? 'reply' : 'next');
 
                     // Wipe out POST so user doesn't get the "Danger Will
                     // Robinson there's POST data" message when refreshing the page.
