@@ -19,7 +19,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgAutoloadClasses['BadImageManipulator'] = dirname( __FILE__ ) . '/BadImage.page.php';
 
 	$wgSpecialPages['Badimages'] = 'BadImageManipulator';
-	$wgExtensionCredits['other'][] = array( 'name' => 'Bad Image List', 'author' => 'Rob Church' );
+	$wgExtensionCredits['other'][] = array( 'name' => 'Bad Image List', 'author' => 'Rob Church', 'url' => 'http://www.mediawiki.org/wiki/Bad_Image_List' );
 	$wgExtensionFunctions[] = 'efBadImageSetup';
 	
 	$wgAvailableRights[] = 'badimages';
