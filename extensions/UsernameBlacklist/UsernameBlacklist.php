@@ -24,6 +24,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function efUsernameBlacklistSetup() {
 		global $wgMessageCache, $wgHooks;
 		$wgHooks['AbortNewAccount'][] = 'efUsernameBlacklist';
+		$wgHooks['ArticleSave'][] = 'efUsernameBlacklistInvalidate';
 		$wgMessageCache->addMessage( 'blacklistedusername', 'Blacklisted username' );
 		$wgMessageCache->addMessage( 'blacklistedusernametext', 'The username you have chosen matches the [[MediaWiki:Usernameblacklist|list of blacklisted usernames]]. Please choose another.' );
 	}
@@ -46,6 +47,21 @@ if( defined( 'MEDIAWIKI' ) ) {
 			return true;
 		}
 	}
+	
+	/**
+	 * When the blacklist page is edited, invalidate the blacklist cache
+	 *
+	 * @param $article Page that was edited
+	 * @return bool
+	 */
+	function efUsernameBlacklistInvalidate( &$article ) {
+		$title =& $article->mTitle;
+		if( $title->getNamespace() == NS_MEDIAWIKI && $title->getText() == 'Usernameblacklist' ) {
+			$blacklist = UsernameBlacklist::fetch();
+			$blacklist->invalidateCache();
+		}
+		return true;
+	}	
 	
 	class UsernameBlacklist {
 		
@@ -70,11 +86,29 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 		
 		/**
-		 * Return a regular expression representing the blacklist
+		 * Attempt to fetch the blacklist from cache; build it if needs be
+		 *
+		 * @return string
+		 */
+		function fetchBlacklist() {
+			global $wgMemc, $wgDBname;
+			$list = $wgMemc->get( $this->key );
+			if( $list ) {
+				return $list;
+			} else {
+				$list = $this->makeBlacklist();
+				$wgMemc->set( $this->key, $list, 900 );
+				return $list;
+			}
+		}
+		
+		/**
+		 * Build the blacklist from scratch, using the message page
+		 *
 		 * @return string
 		 */
 		function buildBlacklist() {
-			$blacklist = wfMsg( 'usernameblacklist' );
+			$blacklist = wfMsgForContent( 'usernameblacklist' );
 			if( $blacklist != '&lt;usernameblacklist&gt;' ) {
 				$lines = explode( "\n", $blacklist );
 				foreach( $lines as $line ) {
@@ -85,6 +119,14 @@ if( defined( 'MEDIAWIKI' ) ) {
 			} else {
 				return false;
 			}
+		}
+		
+		/**
+		 * Invalidate the blacklist cache
+		 */
+		function invalidateCache() {
+			global $wgMemc;
+			$wgMemc->delete( $this->key );
 		}
 		
 		/**
@@ -101,7 +143,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 * Prepare the regular expression
 		 */
 		function UsernameBlacklist() {
-			$this->regex = $this->buildBlacklist();
+			global $wgDBname;
+			$this->key = "{$wgDBname}:username-blacklist";
+			$this->regex = $this->fetchBlacklist();
 		}
 
 		/**
