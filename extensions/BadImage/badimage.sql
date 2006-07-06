@@ -1,4 +1,4 @@
-CREATE TABLE `/*$wgDBprefix*/bad_images` (
+CREATE TABLE /*$wgDBprefix*/bad_images (
   `bil_name` varbinary(255) NOT NULL,
   `bil_timestamp` varchar(14) NOT NULL,
   `bil_user` int(11) NOT NULL,
