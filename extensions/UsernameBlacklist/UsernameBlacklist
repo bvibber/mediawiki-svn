@@ -1,6 +1,6 @@
 USERNAME BLACKLIST EXTENSION
 
-	Version 1.2
+	Version 1.3
 	© 2006 Rob Church
 
 This is free software licensed under the GNU General Public License. Please
@@ -99,6 +99,8 @@ example above), but I'll provide a couple of useful links:
 	Rewrite code for performance
 	Allow users with the "uboverride" permission to pass the blacklist
 	(manual account creation)
+1.3
+	Support caching the blacklist in shared memory, e.g. memcached, APC etc.
 	
 == 8. Thanks... ==
 
