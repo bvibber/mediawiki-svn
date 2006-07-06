@@ -57,23 +57,21 @@ class BadImageManipulator extends SpecialPage {
 	
 	function attemptAdd( &$request, &$output, &$user ) {
 		wfProfileIn( __METHOD__ );
-		if( $user->isAllowed( 'badimages' ) ) {
-			# TODO: Errors should be puked back up, not tucked out of sight
-			# -- the user should be informed when providing dud titles, etc.
-			$title = Title::makeTitleSafe( NS_IMAGE, $request->getText( 'wpImage' ) );
-			if( is_object( $title ) ) {
-				BadImageList::add( $title->getDBkey(), $user->getId(), $request->getText( 'wpReason' ) );
-				$this->touch( $title );
-				$this->log( 'add', $title, $request->getText( 'wpReason' ) );
-				$skin =& $user->getSkin();
-				$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
-				$output->setSubtitle( wfMsgHtml( 'badimages-added', $link ) );
-			} else {
-				# TODO: Tell the user it was a dud title
-				$output->setSubtitle( wfMsgHtml( 'badimages-not-added' ) );
-			}
-			$this->showAdd( $output, $user ); # FIXME: This hack sucks a bit
+		# TODO: Errors should be puked back up, not tucked out of sight
+		# -- the user should be informed when providing dud titles, etc.
+		$title = Title::makeTitleSafe( NS_IMAGE, $request->getText( 'wpImage' ) );
+		if( is_object( $title ) ) {
+			BadImageList::add( $title->getDBkey(), $user->getId(), $request->getText( 'wpReason' ) );
+			$this->touch( $title );
+			$this->log( 'add', $title, $request->getText( 'wpReason' ) );
+			$skin =& $user->getSkin();
+			$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
+			$output->setSubtitle( wfMsgHtml( 'badimages-added', $link ) );
+		} else {
+			# TODO: Tell the user it was a dud title
+			$output->setSubtitle( wfMsgHtml( 'badimages-not-added' ) );
 		}
+		$this->showAdd( $output, $user ); # FIXME: This hack sucks a bit
 		wfProfileOut( __METHOD__ );
 	}
 	
@@ -95,21 +93,19 @@ class BadImageManipulator extends SpecialPage {
 
 	function attemptRemove( &$request, &$output, &$user ) {
 		wfProfileIn( __METHOD__ );
-		if( $user->isAllowed( 'badimages' ) ) {
-			$title = Title::makeTitleSafe( NS_IMAGE, $request->getText( 'wpImage' ) );
-			if( is_object( $title ) ) {
-				BadImageList::remove( $title->getDBkey() );
-				$this->touch( $title );
-				$this->log( 'remove', $title, $request->getText( 'wpReason' ) );
-				$skin =& $user->getSkin();
-				$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
-				$output->setSubtitle( wfMsgHtml( 'badimages-removed', $link ) );
-			} else {
-				# Shouldn't happen in normal (dumb user) usage
-				$output->setSubtitle( wfMsgHtml( 'badimages-not-removed' ) );
-			}
-			$this->showAdd( $output, $user );
+		$title = Title::makeTitleSafe( NS_IMAGE, $request->getText( 'wpImage' ) );
+		if( is_object( $title ) ) {
+			BadImageList::remove( $title->getDBkey() );
+			$this->touch( $title );
+			$this->log( 'remove', $title, $request->getText( 'wpReason' ) );
+			$skin =& $user->getSkin();
+			$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
+			$output->setSubtitle( wfMsgHtml( 'badimages-removed', $link ) );
+		} else {
+			# Shouldn't happen in normal (dumb user) usage
+			$output->setSubtitle( wfMsgHtml( 'badimages-not-removed' ) );
 		}
+		$this->showAdd( $output, $user );
 		wfProfileOut( __METHOD__ );
 	}
 	
