@@ -183,7 +183,7 @@ class SqlQueryForm {
 			}
 		}
 		$this->showForm( wfMsg( "querysuccessful" ) );
-		$wgOut->addHTML( "<hr>{$r}\n" );
+		$wgOut->addHTML( "<hr />{$r}\n" );
 	}
 
 	function logQuery( $q ) {
