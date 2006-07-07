@@ -161,7 +161,7 @@ function wfDataEdit ( $dt ) # $dt = data type
 		}
 
 	# Preview
-	if ( isset ( $_POST['preview'] ) ) $s .= wfDataPreview ( $t , $dk ) . "\n<hr>\n" ;
+	if ( isset ( $_POST['preview'] ) ) $s .= wfDataPreview ( $t , $dk ) . "\n<hr />\n" ;
 
 	# Editing
 	$t = explode ( '((' , $t ) ;
@@ -239,7 +239,7 @@ function wfSpecialData() {
 	if ( isset ( $_POST['view_data'] ) ) $data_action = "view_data" ;
 	$nsdata = 20 ;
 	
-	$last = "<hr><a href=\"index.php?title=Special:Data\">Back to data</a>" ;
+	$last = "<hr /><a href=\"index.php?title=Special:Data\">Back to data</a>" ;
 	
 	if ( $data_action == '' )
 		{
