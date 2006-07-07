@@ -17,27 +17,31 @@ require_once('ThreadView.php');
 require_once('Post.php');
         
 require_once( 'SpecialPage.php' );
-$wgExtensionFunctions[] = 'efLQ';
+$wgExtensionFunctions[] = 'efThread';
 
 
-function efLQ() {
+
+function efThread() {
         global $wgMessageCache;
         $wgMessageCache->addMessage( 'lq', 'LiquidThreads' );
-        SpecialPage::addPage( new LQ() );
+        SpecialPage::addPage( new Thread() );
 }
 
-class LQ extends SpecialPage {
+class Thread extends SpecialPage {
 
-        function LQ() {
-                SpecialPage::SpecialPage( 'LQ', 'lq' );
+        static $article;
+        static $titleString;
+        static $moving;
+        
+        function Thread() {
+                SpecialPage::SpecialPage( 'Thread', 'thread' );
         }
 
 
 	// FIXME need to find real way to do this.
 	function baseURL() {
-	     return "/wiki/index.php/Special:LQ/";
+	  return "/wiki/index.php/Special:Thread/";
 	}
-
 
         function execute() {
             global $wgUser, $wgRequest, $wgOut, $wgArticle;
@@ -45,19 +49,17 @@ class LQ extends SpecialPage {
             $this->setHeaders(); # not sure what this does.
             
             # Extract the 'title' part of the path (between slash and query string)
-            $tmp1 = split( "LQ/", $wgRequest->getRequestURL() );
+            $tmp1 = split( "Thread/", $wgRequest->getRequestURL() );
             $tmp2 = split('\?', $tmp1[1]);
             $pageTitle = $tmp2[0];
-            $this->title = $title = Title::newFromText($pageTitle); 
+            $this->title = $title = Title::newFromText($pageTitle, 100);  #FIXME don't hardcore namespace.
 
-            $article = new Post($title); // post so we can do firstPostOfArticle() etc.
-            
+            $first_post = new Post($title);
+
             if ($pageTitle == '') {
                     $wgOut->addWikiText("Try giving me the title of an article.");
                     return;
             }
-
-            $first_post = Post::firstPostOfArticle($article);
 
             // Execute move operations:
             $post_id     = $wgRequest->getInt( 'lqt_move_post_id',  false );
@@ -74,44 +76,36 @@ class LQ extends SpecialPage {
                     // Wipe out POST so user doesn't get the "Danger Will
                     // Robinson there's POST data" message when refreshing the page.
                     $query = "?lqt_highlight={$posttitle->getPartialURL()}#lqt_post_{$posttitle->getPartialURL()}";
-                    $wgOut->redirect( LQ::baseURL() . $pageTitle . $query );
+                    $wgOut->redirect( Thread::baseURL() . $pageTitle . $query );
                     return;
             }
 
+	# 'Show in Context' link:
+	     $t = $first_post->getTitle()->getPartialURL();
+	     $context_href = LQ::baseURL() . $first_post->talkPage()->getTitle()->getPartialURL() .
+	     '?lqt_highlight='.$t.'#lqt_post_'.$t;
+	     $wgOut->addHTML(
+		  wfElementClean('a', array('href'=>$context_href),'Show in Context')
+		  );
+	
+
             $moving = $wgRequest->getInt('lqt_moving_id');
-	    
 	    $editing_id = $wgRequest->getInt("lqt_editing", null);
 	    $replying_to_id = $wgRequest->getInt("lqt_replying_to_id", null);
 	    $highlighting_title = $wgRequest->getVal("lqt_highlight", null);
 	      
-	    $view = new ThreadView(LQ::baseURL(), $pageTitle, $editing_id, $replying_to_id, $highlighting_title,
+	    $view = new ThreadView(Thread::baseURL(), $pageTitle, $editing_id, $replying_to_id, $highlighting_title,
 				   $moving);
 
-            
-            if ( $wgRequest->getBool("lqt_post_new", false) ) {
-                    $view->newPostEditingForm(null);
-            } else {
-                    $wgOut->addHTML( wfElement('a',
-                                               array('href'=>"{$pageTitle}?lqt_post_new=1"),
-                                               "Post New Thread") );
-            }
-
-            if ( $moving ) {
-                    if( $moving != $first_post->getID() ) {
-                            $wgOut->addHTML( wfOpenElement('p') );
-                            $view->showMoveButton( 'next', $article->getID() );
-                            $wgOut->addHTML( wfCloseElement('p') );
-                    }
-            }
-
 	    if ($first_post) {
-		 $view->renderThreadStartingFrom( $first_post );
+	      $view->renderThreadStartingFrom( $first_post, false );
 	    } else {
 		 $wgOut->addWikiText("This talk page is empty.");
 	    }
 
-	    $wgOut->setPageTitle('LQ:'.$pageTitle);
+	    $wgOut->setPageTitle('Thread:'.$first_post->getTitle()->getPartialURL());
 	}
+
 }
 
 }
