@@ -92,3 +92,28 @@
 	padding-left: 4px;
 	padding-right: 4px;
 }
+
+.wiki-data-table td .wiki-data-table td textarea {
+	width: auto;
+}
+
+/* Toggle */
+
+table.toggle {
+	padding: 0px;
+	margin: 0px;
+}
+
+table.toggle td {
+	vertical-align: top;
+}
+
+.toggle {
+	cursor: pointer;
+	/*color: #000000;
+	border-width: 1px;
+	border-color: #AAAAAA;
+	border-style: dotted;
+	padding-left: 0px;
+	font-size: 80%;*/
+}

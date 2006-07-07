@@ -531,14 +531,14 @@ class WiktionaryZ {
 	
 	function displayPageElement($pageElement) {
 		//addWikiDataBlock($pageElement->getCaption(), getRelationAsHTMLTable($pageElement->getDisplayRelation()));
-		addWikiDataBlock($pageElement->getCaption(), $pageElement->getViewer()->view($pageElement->getId(), new TupleStack(), $pageElement->getRelation()));
+		addWikiDataBlock($pageElement->getId(), $pageElement->getCaption(), $pageElement->getViewer()->view($pageElement->getId(), new TupleStack(), $pageElement->getRelation()), $pageElement->isExpanded());
 	}
 	
 	function editPageElement($pageElement) {
 		global
 			$identicalMeaningAttribute;	
 
-		addWikiDataBlock($pageElement->getCaption(), $pageElement->getEditor()->edit($pageElement->getId(), new TupleStack(), $pageElement->getRelation())); 
+		addWikiDataBlock($pageElement->getId(), $pageElement->getCaption(), $pageElement->getEditor()->edit($pageElement->getId(), new TupleStack(), $pageElement->getRelation()), $pageElement->isExpanded()); 
 //		getRelationAsEditHTML($pageElement->getRelation(), $pageElement->getDisplayRelation(), 
 //														$pageElement->getId(),
 //														$pageElement->repeatInput(), 
@@ -630,7 +630,7 @@ class WiktionaryZ {
 		
 		return new DefaultPageElement("definition-$definedMeaningId", "Definition", 
 										$relation, 
-										$editor, $editor);
+										$editor, $editor, true);
 	}
 	
 	function getDefinedMeaningAlternativeDefinitionsPageElement($definedMeaningId, $revisionId) {
@@ -648,7 +648,7 @@ class WiktionaryZ {
 		
 		return new DefaultPageElement("alternative-definitions", "Alternative definitions", 
 										$relation, 
-										$editor, $editor);
+										$editor, $editor, false);
 	}
 	
 	function getSynonymsAndTranslationsPageElement($definedMeaningId, $expressionId) {
@@ -667,7 +667,7 @@ class WiktionaryZ {
 		
 		return new DefaultPageElement("synonym-translation-$definedMeaningId", "Translations and synonyms", 
 										$relation, 
-										$tableEditor, $tableEditor);
+										$tableEditor, $tableEditor, true);
 	}
 	
 	function getDefinedMeaningRelationsPageElement($definedMeaningId) {
@@ -682,7 +682,7 @@ class WiktionaryZ {
 		
 		return new DefaultPageElement("defined-meaning-relation-$definedMeaningId", "Relations", 
 										$relation, 
-										$editor, $editor);
+										$editor, $editor, false);
 	}
 	
 	function getDefinedMeaningAttributesPageElement($definedMeaningId) {
@@ -696,7 +696,7 @@ class WiktionaryZ {
 
 		return new DefaultPageElement("defined-meaning-attribute-$definedMeaningId", "Attributes", 
 										$relation, 
-										$editor, $editor);
+										$editor, $editor, false);
 	}
 	
 	function getDefinedMeaningCollectionsPageElement($definedMeaningId, $revisionId) {
@@ -711,7 +711,7 @@ class WiktionaryZ {
 
 		return new DefaultPageElement("defined-meaning-collection-$definedMeaningId", "Collection membership", 
 										$relation, 
-										$editor, $editor);
+										$editor, $editor, false);
 	}
 	
 	function getDefinedMeaningPageElements($definedMeaningId, $expressionId) {

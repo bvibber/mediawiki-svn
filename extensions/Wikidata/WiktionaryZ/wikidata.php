@@ -1,11 +1,20 @@
 <?php
-function addWikiDataBlock($title, $content) {
+function addWikiDataBlock($id, $title, $content, $expanded) {
 	global
 		$wgOut;
 	
- 	$wgOut->addHTML('<div class="wiki-data-block">
-					<h4>'. $title . '</h4>'.
-					$content .
+	if (!$expanded) {
+		$style = ' style="display: none;"';
+		$character = '+';
+	}
+	else {
+		$style = '';
+		$character = '&ndash;';
+	}
+		
+ 	$wgOut->addHTML('<div class="wiki-data-block">'.
+					'<h4 id="collapse-'. $id .'" class="toggle" onclick="toggle(this, event);">'. $character . ' '. $title . '</h4>' .
+					'<div id="collapsable-'. $id . '"'. $style .'>' . $content . '</div>' .
 					'</div>');
 }
 
@@ -15,6 +24,7 @@ interface PageElement {
 	public function getRelation();
 	public function getViewer();
 	public function getEditor();
+	public function isExpanded();
 }
 
 interface PageElementController {
@@ -29,13 +39,15 @@ class DefaultPageElement implements PageElement {
 	protected $relation;
 	protected $viewer;
 	protected $editor;
+	protected $isExpanded;
 	
-	public function __construct($id, $caption, $relation, $viewer, $editor) {
+	public function __construct($id, $caption, $relation, $viewer, $editor, $isExpanded) {
 		$this->id = $id;
 		$this->caption = $caption;
 		$this->relation = $relation;
 		$this->viewer = $viewer;
 		$this->editor = $editor;
+		$this->isExpanded = $isExpanded;
 	}
 	
 	public function getId() {
@@ -56,6 +68,10 @@ class DefaultPageElement implements PageElement {
 	
 	public function getEditor() {
 		return $this->editor;
+	}
+
+	public function isExpanded() {
+		return $this->isExpanded;
 	}
 }
 

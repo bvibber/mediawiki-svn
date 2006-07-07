@@ -65,6 +65,13 @@ function suggestTextChanged(suggestText) {
 	scheduleUpdateSuggestions(getSuggestPrefix(suggestText, "text"));
 }
 
+function stopEventHandling(event) {
+	if (event.preventDefault)
+		event.preventDefault();
+	else
+		event.returnValue = false;
+}
+
 function suggestLinkClicked(event, suggestLink) {
 	var suggestLinkId = suggestLink.id;
 	var suggestPrefix = suggestLinkId.substr(0, suggestLinkId.length - 4);
@@ -75,11 +82,7 @@ function suggestLinkClicked(event, suggestLink) {
 	suggestField.focus();
 	
 	updateSuggestions(suggestPrefix);
-
-	if (event.preventDefault)
-		event.preventDefault();
-	else
-		event.returnValue = false;
+	stopEventHandling(event);
 }
 
 function updateSuggestValue(suggestPrefix, value, displayValue) {
@@ -107,16 +110,6 @@ function suggestCloseClicked(suggestClose) {
 function suggestRowClicked(suggestRow) {
 	updateSuggestValue(getSuggestPrefix(suggestRow.parentNode.parentNode.parentNode.parentNode, "div"),
 						suggestRow.id, suggestRow.getElementsByTagName('td')[0].innerHTML);
-/*	var suggestPrefix = getSuggestPrefix(suggestRow.parentNode.parentNode.parentNode.parentNode, "div");
-	var suggestLink = document.getElementById(suggestPrefix + "link");
-	var suggestDiv = document.getElementById(suggestPrefix + "div");
-	var suggestField = document.getElementById(stripSuffix(suggestPrefix, "-suggest-"));
-	
-	suggestField.value = suggestRow.id;
-	
-	suggestLink.innerHTML = suggestRow.getElementsByTagName('td')[0].innerHTML;
-	suggestDiv.style.display = 'none';
-	suggestLink.focus();*/
 }
 
 function mouseOverRow(row) {
@@ -148,4 +141,22 @@ function removeClicked(checkBox) {
 		container.className = "";
 		
 	//enableChildNodes(container, !checkBox.checked);
+}
+
+function toggle(element, event) {
+	var elementName = element.id.substr(9, element.id.length - 9);
+	var collapsableNode = document.getElementById('collapsable-' + elementName);
+	
+	if (collapsableNode.style.display == 'none') {
+		collapsableNode.style.display = 'block';
+		var newChar = '&ndash;';
+	}
+	else {
+		collapsableNode.style.display = 'none';
+		var newChar = '+';
+	}
+	
+	var html = element.innerHTML;
+	element.innerHTML = newChar +  html.substr(1, html.length - 1);
+	stopEventHandling(event);
 }
