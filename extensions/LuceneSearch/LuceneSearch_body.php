@@ -217,7 +217,7 @@ class LuceneSearch extends SpecialPage
 					$nmtext .= implode( "\n", $titles->iterateResults(
 						array( &$this, 'formatNearMatch' ) ) );
 					$nmtext .= '</ul>';
-					$nmtext .= '<hr/>';
+					$nmtext .= '<hr />';
 				}
 			}
 
@@ -271,10 +271,10 @@ class LuceneSearch extends SpecialPage
 					array( &$this, 'showHit'), $contextWords ) );
 				$out .= '</ul>';
 			}
-			$wgOut->addHTML('<hr/>');
+			$wgOut->addHTML('<hr />');
 			if( isset( $top ) ) $wgOut->addHTML( $top );
 			if( isset( $out ) ) $wgOut->addHTML( $out );
-			if( isset( $prevnext ) ) $wgOut->addHTML('<hr/>' . $prevnext);
+			if( isset( $prevnext ) ) $wgOut->addHTML('<hr />' . $prevnext);
 			$wgOut->addHTML($this->showFullDialog($q));
 		}
 		$wgOut->setRobotpolicy('noindex,nofollow');
@@ -395,7 +395,7 @@ class LuceneSearch extends SpecialPage
 		$percent = sprintf('%2.1f%%', $result->getScore() * 100);
 		$score = wfMsg('searchscore', $percent);
 		//$url = $t->getFullURL();
-		return '<li style="padding-bottom: 1em;">'.$link.$extract.'<br/>'
+		return '<li style="padding-bottom: 1em;">'.$link.$extract.'<br />'
 			.'<span style="color: green; font-size: small;">'
 			."$score - $size - $date</span></li>\n";
 	}
