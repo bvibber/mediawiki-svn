@@ -30,7 +30,7 @@ $wgMessageCache->addMessages(
 		'review_total_statistics' => "Total",
 		'review_statistics_left_corner' => "Revision",
 		'review_version_link' => "Revision #$1",
-		'review_statistic_cell' => "Average: $1 of $2<br/>($4 users, $5 anons)",
+		'review_statistic_cell' => "Average: $1 of $2<br />($4 users, $5 anons)",
 		'review_version_statistic_cell' => "$1 of $2",
 		'review_version_reviews_link' => "<small>(version reviews)</small>",
 		'review_concerns_page' => "This review is about the page \"$1\".",

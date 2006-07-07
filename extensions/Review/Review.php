@@ -370,8 +370,8 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 			<form method='post' id="review_sidebar">
 <?php
 	if ( $did_update_review )
-		print wfMsgForContent ( 'review_has_been_stored' ) . "<br/>" ;
-	print wfMsgForContent ( 'review_your_review' ) . "<br/>" ;
+		print wfMsgForContent ( 'review_has_been_stored' ) . "<br />" ;
+	print wfMsgForContent ( 'review_your_review' ) . "<br />" ;
 	foreach( $wgReviewExtensionTopics as $topic ) {
 ?>
 			<a id="review_sidebar_link" href="
@@ -386,7 +386,7 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 				</a>
 <?php
 	if ( $topic->range > 2 )
-		print "<small> (" . $topic->left . "&rarr;" . $topic->right . ")</small><br/>" ;
+		print "<small> (" . $topic->left . "&rarr;" . $topic->right . ")</small><br />" ;
 	echo "<div id='review_sidebar_range'>" . wfReviewExtensionGetTopicForm ( $topic ) . "</div>" ;
 ?>
 <?php
@@ -405,7 +405,7 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 	if ( count ( $ratings ) > 1 ) {
 		print " " . wfMsgForContent ( 'review_sidebar_you_have_other_reviews_for_this_article' ) ;
 	}
-	print "<br/>" ;
+	print "<br />" ;
 	$stat_title = Title::makeTitleSafe( NS_SPECIAL, "Review" );
 	$link = $skin->makeLinkObj( $stat_title, wfMsgHTML( 'review_page_link' ), "mode=view_page_statistics&page_id=".$wgTitle->getArticleID() );
 	$out = str_replace ( "$1" , $link , wfMsg ( 'review_sidebar_final' ) ) ;
@@ -577,7 +577,7 @@ function wfReviewExtensionFunction () {
 					$user_reviews = "user_id=" . $data[$k]->val_user ;
 				}
 				$ret .= $skin->makeLinkObj ( $user->getUserPage() , $user->getName() ) ;
-				$ret .= "<br/>" ;
+				$ret .= "<br />" ;
 				$ret .= $skin->makeLinkObj ( $wgTitle ,
 							wfMsgForContent('review_user_reviews') ,
 							"mode=view_user_reviews&{$user_reviews}" ) ;
@@ -587,7 +587,7 @@ function wfReviewExtensionFunction () {
 				$version_link = $skin->makeLinkObj ( $title , wfMsgForContent('review_version_link',$revision) , "oldid={$revision}" ) ;
 				$version_review_link = $skin->makeLinkObj ( $wgTitle , wfMsgForContent('review_version_reviews_link') ,
 							"mode=view_version_statistics&page_id={$page_id}&rev_id={$revision}" ) ;
-				$ret .= $version_link . "<br/>" . $version_review_link ;
+				$ret .= $version_link . "<br />" . $version_review_link ;
 			}
 			$ret .= "</th>" ;
 
@@ -619,7 +619,7 @@ function wfReviewExtensionFunction () {
 											sprintf ( "%1.1f" , $average ) ,
 											$data[$type]->max
 							) ;
-							$ret .= "<br/>" . htmlentities ( $data[$type]->comment ) ;
+							$ret .= "<br />" . htmlentities ( $data[$type]->comment ) ;
 						} else {
 							$ret .= wfMsgForContent ( 'review_statistic_cell' ,
 											sprintf ( "%1.1f" , $average ) ,
@@ -711,9 +711,9 @@ function wfReviewExtensionFunction () {
 			$out .= "<form method='post' id='review_page_version'>" ;
 			
 			if ( $did_update_review )
-				$out .= wfMsgForContent ( 'review_has_been_stored' ) . "<br/>" ;
+				$out .= wfMsgForContent ( 'review_has_been_stored' ) . "<br />" ;
 			
-			$out .= wfMsgForContent ( 'review_your_review' ) . "<br/>" ;
+			$out .= wfMsgForContent ( 'review_your_review' ) . "<br />" ;
 			$out .= "<table border='1' width='100%'>" ;
 			$out .= "<tr><th align='left'>" . wfMsgForContent('review_topic') . "</th><th>" . wfMsgForContent('review_no_opinion') ;
 			$out .= "</th><th colspan='3'>" . wfMsg('review_rating') . "</th><th>" ;
