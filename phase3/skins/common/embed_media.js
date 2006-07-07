@@ -41,18 +41,20 @@ function auto_embed(target, url, opt){
 		opt['width']='320';
 		opt['height']='240';
 		opt['autoplay']=false;
+		opt['duration']=30; //default durration of 30 seconds (required for seeking in cortado player)
 	}
+	//force jre:
 	//detect plugin avalibilty
 	var embed_type = detect_client_plugins();
 	//draw given plugin type: 
 	//document.getElementById(target).innerHTML='play with:'+embed_type +' url: ' + url;
-	if(!document.getElementById(target)){
+	if(!document.getElementById("img_" + target) || !document.getElementById("div_" + target)){
 		alert('error can\'t find target: ' + target);
 	}else{
-		if(embed_type){
+		if(embed_type){	
 			eval(embed_type + "_embed(target, url, opt)");
 		}else{
-			document.getElementById(target).innerHTML='no valid ogg theora decoders found for your platform<br>'+
+			document.getElementById("div_" + target).innerHTML='no valid ogg theora decoders found for your platform<br>'+
 				'please visit <a href="#">embed video help page</a> for more details';
 		}
 	}
@@ -61,7 +63,7 @@ function auto_embed(target, url, opt){
 
 //annodex is virtualy the same as vlc with a slightly diffrent embed_type:
 function anx_embed(target, media_url, opt){
-	alert('anx_embed');
+	//alert('anx_embed');
 	opt['embed_type']='application/x-annodex-vlc-viewer-plugin';
 	return vlc_embed(target, media_url, opt);
 }
@@ -76,50 +78,77 @@ function vlc_embed(target, media_url, opt){
 	//<embed type="<?=$embedType?>" id="video1" autoplay="no" loop="no" height="<?=$height?>" width="<?=$width?>"> 
 	var eb = document.createElement("embed");
 	eb.type=opt['embed_type'];
-	eb.id="video1";
+	//eb.id="video_" + target;
+	eb.id="video_" + target;
 	eb.height=opt['height'];
 	eb.width=opt['width'];
 	
-	document.getElementById(target).innerHTML="";
-	document.getElementById(target).appendChild(eb);
-	document.getElementById(target).innerHTML+='<a href="javascript:;" onclick="document.video1.play()">Play</a> '+
-						'<a href="javascript:;" onclick="document.video1.pause()">Pause</a> ' + 
-						'<a href="javascript:;" onclick="document.video1.stop()">Stop</a> ' +
-                        '<a href="javascript:;" onclick="document.video1.fullscreen()">Fullscreen</a> ';
-	//need to give the attached element time to load
-	setTimeout('run_vlc(\''+media_url+'\')', 300);
-}
-function vlc_controls(){
+	//replace the image with the embed: 
+	document.getElementById("div_"+target).innerHTML="";		
+	document.getElementById("div_"+target).appendChild(eb);
 	
+	//hide the auto_embed play button: 
+	document.getElementById("play_"+target).style.display='none';
+	//div_parent.appendChild(div_cnt);
 	
+	//document.getElementById(target).appendChild(eb);
+	document.getElementById("cnt_" + target).style.display='inline';
+	
+	setTimeout('run_vlc(\''+target+'\',\''+media_url+'\')', 200);
 }
-function run_vlc(media_url){
-	url = 'http://metavid.ucsc.edu' +media_url;
-	//alert('run vlc');
-	document.video1.stop();
-	document.video1.clear_playlist();
-	document.video1.add_item( url );
-	document.video1.play();
+	
+function run_vlc(target, media_url){
+	//url = media_url;
+	
+	//alert('target: ' +  target +" media:"+ media_url);
+	eval("document.video_" +target+".stop();");
+	eval("document.video_" +target+".clear_playlist();");
+	eval("document.video_" +target+".add_item(media_url);");
+	eval("document.video_" +target+".play();");
+	
+	/*document.video_Launch_of_Skylab_ogg.stop();
+	document.video_Launch_of_Skylab_ogg.clear_playlist();
+	document.video_Launch_of_Skylab_ogg.add_item(media_url);
+	document.video_Launch_of_Skylab_ogg.play();*/
 }
 function jre_embed(target, media_url, opt){
-	//@todo going to have to load it as an iframe eventualy
+	//alert(target+","+ media_url+","+ opt);
+	
 	//var eb = document.createElement("applet");
 	//eb.code='com.fluendo.player.Cortado.class';
 	//eb.archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar";
 	//eb.width='320';
-	//eb.height='240';
-	document.getElementById(target).innerHTML=''+
-			'<applet code="com.fluendo.player.Cortado.class" archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar" width="320" height="240">'+	
-				'<param name="url" value="http://metavid.ucsc.edu'+ media_url + '" />'+
-				'<param name="autoplay" value="false" />' +
-				'<param name="local" value="false"/>' + 
-				'<param name="keepaspect" value="true" />'+
-				'<param name="video" value="true" />'	+
-				'<param name="audio" value="true" />'+
-				'<param name="seekable" value="true" />'+
-				'<param name="duration" value="00455" />'+
-				'<param name="bufferSize" value="200" />'+
-			  '</applet>';
+	//eb.height='240';	
+	
+	//need to build an iframe include only really deal with java security issues
+	//@todo make sure the embed code is coming from the same server as the media
+	var iframe = document.createElement("iframe");
+	iframe.width=320; //opt['width'];
+	iframe.height=244; //opt['height'];
+	iframe.frameborder=0;
+	iframe.scrolling='no';
+	iframe.MARGINWIDTH=0;
+	iframe.MARGINHEIGHT=0;
+	//@todo get this error msg from the mediaWiki includes
+	//iframe.innerHTML="iframe support is required for java applet based embed video";
+	//@todo load in the path and server url from mediaWiki
+	var cortado_src = 'http://metavid.ucsc.edu/wiki_dev/phase3/embed/cortado_embed.php';
+	cortado_src+= "?media_url=" + media_url;
+	cortado_src+= "&width=" + opt['width'] + "&height=" + opt['height'];
+	
+	
+	iframe.src=cortado_src;
+	
+	//wiki_dev/phase3/embed/cortado_embed.php?media_url=http://metavid.ucsc.edu/wiki_dev/phase3/images/3/38/Launch_of_Skylab.ogg
+	info_div = document.getElementById("info_"+target);
+	
+	document.getElementById("div_" + target).innerHTML="";
+	document.getElementById("div_" + target).appendChild(iframe);
+
+	//document.getElementById("div_" + target).appendChild(info_div);
+	
+ 	//'<span class="thumbcaption" style="float:left;width:30px">(you are using the cortado java player, more <a href="#">decoding options</a> are available)</span>';	
+
 	//document.getElementById(target).innerHTML="";
 	//document.getElementById(target).appendChild(eb);		  
 					  
@@ -154,10 +183,15 @@ function detect_client_plugins(){
 	}	
 }
 
-function detect_applet(){
-	
+function detect_applet(){	
 	var pluginDetected = false;
 	var activeXDisabled = false;
+	
+	//the general method to detect Enabled java: (works well if we don't need version info)
+	if(navigator.javaEnabled() == 1){
+		return 'jre';	
+	}
+	
 	// we can check for plugin existence only when browser is 'is_ie5up' or 'is_nav4up'
 	if(is_nav4up) {
 		// Refresh 'navigator.plugins' to get newly installed plugins.
@@ -188,7 +222,7 @@ function detect_applet(){
 				// Read JRE version from Window Registry
 				try {
 					javaVersion = shell.regRead("HKEY_LOCAL_MACHINE\\Software\\JavaSoft\\Java Runtime Environment\\CurrentVersion");
-					alert('java jre found version: ' + javaVersion);
+					//alert('java jre found version: ' + javaVersion);
 					return 'jre';
 				} catch(e) {
 				
@@ -215,10 +249,10 @@ function detect_applet(){
 				//check for applet:
 				var applet = document.myApplet;
 				if(applet == null){
-					alert('no java plugin installed');	
+					//alert('no java plugin installed');	
 				}else{
 					var javaVersion = applet.getJavaVersion();	
-					alert('found java jre version: ' + javaVersion);
+					//alert('found java jre version: ' + javaVersion);
 					return 'jre';
 				}
 			} catch(e) {

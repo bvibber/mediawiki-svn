@@ -4161,7 +4161,7 @@ class Parser
 	/**
 	* Parse media options 
 	* @todo make these options extendable 
-	* @todo maybe make Image an extention of Media?
+	* @todo make general media class of which Image is an extention. 
 	* (temporaraly more or less idential to image) 
 	*/	
 	function makeMedia( &$nt, $options){
@@ -4228,13 +4228,14 @@ class Parser
 			}
 		}
 		# Strip bad stuff out of the alt text
-		$mwMediaOptions['alt'] = $this->replaceLinkHoldersText( $caption );
+		$mwMediaOptions['alt'] = $this->replaceLinkHoldersText( $mwMediaOptions['caption'] );		
 
 		# make sure there are no placeholders in thumbnail attributes
 		# that are later expanded to html- so expand them now and
 		# remove the tags
 		$mwMediaOptions['alt'] = $this->unstrip($mwMediaOptions['alt'], $this->mStripState); 
 		$mwMediaOptions['alt'] = Sanitizer::stripAllTags( $mwMediaOptions['alt'] );
+			
 
 		# Linker does the rest
 		$sk =& $this->mOptions->getSkin();
@@ -4315,7 +4316,7 @@ class Parser
 		# remove the tags
 		$alt = $this->unstrip($alt, $this->mStripState); 
 		$alt = Sanitizer::stripAllTags( $alt );
-
+	
 		# Linker does the rest
 		$sk =& $this->mOptions->getSkin();
 		return $sk->makeImageLinkObj( $nt, $caption, $alt, $align, $width, $height, $framed, $thumb, $manual_thumb );

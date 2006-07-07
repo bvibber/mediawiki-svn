@@ -549,7 +549,7 @@ class Linker {
 			$height = $img->height;
 		}
 
-		wfDebug( "makeImageLinkObj2: '$width'x'$height'\n" );
+		//wfDebug( "makeImageLinkObj2: $width x $height \n" );
 		$u = $nt->escapeLocalURL();
 		if ( $error ) {
 			$s = $error;
@@ -704,10 +704,12 @@ class Linker {
 	
 	
 	/*
-	
+	makeEmbedMediaLinkObj Takes parsed Media paramaters and makes embed_media html
+	makes a embedMedia image and link to auto_load plugin.
+	very similar to 
 	*/
 	function makeEmbedMediaLinkObj($title, $options){	
-		global $wgScriptPath, $wgJsMimeType;
+		global $wgScriptPath, $wgJsMimeType, $wgContLang;
 		if( is_null( $title ) ) {
 			### HOTFIX. Instead of breaking, return empty string.
 			return $text;
@@ -717,7 +719,7 @@ class Linker {
 			$thumb = $img->renderMovieFrame();								
 			
 			switch($img->type){
-				case 'AUDIO':       // simple audio file (ogg, mp3, wav, midi, whatever)
+				case 'AUDIO':      // simple audio file (ogg, mp3, wav, midi, whatever)
 				case 'VIDEO':      // simple video file (ogg, mpg, etc; no not include formats here that may contain executable sections or scripts!)
 					continue;
 				break;
@@ -733,58 +735,172 @@ class Linker {
 					//by default output a direct link to the file: 
 					return $this->makeMediaLinkObj($title, $options['caption']);
 				break;
+			}			
+				
+			$framed=isset( $options['framed'])? $options['framed']:false;
+			$boxheight=isset( $options['boxheight'])?$options['boxheight']:false;
+			$manual_thumb=isset($options['manual_thumb'])?$options['manual_thumb']:"";
+			$boxwidth=isset($options['boxwidth'])?$options['boxwidth']:0;
+			$align = (isset($options['align']))?$options['align']:'none';
+			$label = (isset($options['caption']))?$options['caption']:'';
+			
+			/*if ( $framed ) {
+				// Use image dimensions, don't scale
+				$boxwidth  = $width;
+				$boxheight = $height;
+				$thumbUrl  = $url;
+			} else {
+				if ( $boxheight === false )
+					$boxheight = -1;
+				if ( $manual_thumb == ''  ) {
+					$thumb = $img->getThumbnail( $boxwidth, $boxheight );				
+					if ( $thumb ) {
+						$thumbUrl = $thumb->getUrl();
+						$boxwidth = $thumb->width;
+						$boxheight = $thumb->height;
+					} else {
+						$error = $img->getLastError();
+					}
+				}
 			}
+			$oboxwidth = $boxwidth + 2;*/
+		
+			$url  = $img->getViewURL();
+			
+			if ( $img->exists() ) {
+				$width  = $img->getWidth();
+				$height = $img->getHeight();
+			}
+			if ( 0 == $width || 0 == $height ) {
+				$width = 320; $height = 240;
+			}
+			//this may be usefull if we want to include a specific alternate image for the movie still.
+			if ( $options['manual_thumb'] != '' ) # Use manually specified thumbnail
+			{
+				$manual_title = Title::makeTitleSafe( NS_IMAGE, $manual_thumb ); #new Title ( $manual_thumb ) ;
+				if( $manual_title ) {
+					$manual_img = new Image( $manual_title );
+					$thumbUrl = $manual_img->getViewURL();
+					if ( $manual_img->exists() )
+					{
+						$width  = $manual_img->getWidth();
+						$height = $manual_img->getHeight();
+						$boxwidth = $width ;
+						$boxheight = $height ;
+						$oboxwidth = $boxwidth + 2 ;
+					}
+				}
+			}
+			
+			
+			$u = $img->getEscapeLocalURL(); 
+	
+			$more = htmlspecialchars( wfMsg( 'thumbnail-more' ) );
+			$magnifyalign = $wgContLang->isRTL() ? 'left' : 'right';
+			$textalign = $wgContLang->isRTL() ? ' style="text-align:right"' : '';
+	
+			//$s = "<div class=\"thumb t{$align}\"><div style=\"width:{$oboxwidth}px;\">";
+			//if( $thumbUrl == '' ) {
+				// Couldn't generate thumbnail? Scale the image client-side.
+			//	$thumbUrl = $url;
+			//}
+		
+			$s = "<div class=\"thumb t{$align}\"><div style=\"width:{$width}px;\">";
+			/*if ( $error ) {			
+				//old output for images that are missing or have errors
+				$s = '  <div class="thumbcaption"'.$textalign.'>'.$zoomicon.$label."</div></div></div>";
+				$s .= htmlspecialchars( $error );
+				$zoomicon = '';
+				$s .= '  <div class="thumbcaption"'.$textalign.'>'.$zoomicon.$label."</div></div></div>";
+				return str_replace("\n", ' ', $s);
+			} else*/
+			
+			if( !$img->exists() ) {
+				//output for images that are missing or have errors
+				$s .= $this->makeBrokenImageLinkObj( $img->getTitle() );
+				$zoomicon = '';
+				$s .= '  <div class="thumbcaption"'.$textalign.'>'.$zoomicon.$label."</div></div></div>";
+				return str_replace("\n", ' ', $s);
+			} else {
+				/*$s .= '<a href="'.$u.'" class="internal" title="'.$alt.'">'.
+					'<img src="'.$thumbUrl.'" alt="'.$alt.'" ' .
+					'width="'.$boxwidth.'" height="'.$boxheight.'" ' .
+					'longdesc="'.$u.'" /></a>';					
+				if ( $framed ) {
+					$zoomicon="";
+				} else {
+					$zoomicon =  '<div class="magnify" style="float:'.$magnifyalign.'">'.
+						'<a href="'.$u.'" class="internal" title="'.$more.'">'.
+						'<img src="'.$wgStylePath.'/common/images/magnify-clip.png" ' .
+						'width="15" height="11" alt="'.$more.'" /></a></div>';
+				}*/
+				
+				$base_unique_name =str_replace('.', '_', $title->getDBkey());	//replace . with _ for DOM id compatibility
+				$width = (isset($options['width']))?$options['width']:'320';
+
+				$oboxwidth=$width+2;
+				
+				$height = (isset($options['height']))?($options['height']):'240';
+				$div_height = $height+32; //32 the current height of the video control icons. 
+				$im_frame_url = $img->movieFrameUrl();
+				$icon_path= $wgScriptPath . '/skins/common/images/icons/';
+				$u = $title->escapeLocalURL();
+				$alt = $options['alt'];
+							
+				//full url path to media 
+				//@todo pull media server location from config. 	
+				$media_url =  "http://metavid.ucsc.edu" . $img->getUrl();					
+				
+				//do output: 			
+				//@todo move embed media js include to <head> 
+				$embed_out ='<script type="'.$wgJsMimeType.'" src="'.$wgScriptPath.'/skins/common/embed_media.js"></script>';
+				//@todo plug-in sensative controls. (right now vlc primaraly supported)
+				//@todo put in language calls			
+				$embed_out.= <<<END_EMBED
+				<div class="thumb t{$align}" style="width:{$oboxwidth}px">					
+					<div id="div_{$base_unique_name}">
+						<a href="$u" class="internal" title="$alt">
+							<img id ="img_{$base_unique_name}" width="{$width}" height="{$height}" src="{$im_frame_url}">	
+						</a>		
+					</div>
+					<div class="thumbcaption" style="float:left;">								
+						<div class="magnify" style="float:{$magnifyalign}">
+							<a id="play_{$base_unique_name}" title="play media" href="javascript:auto_embed('{$base_unique_name}', '{$media_url}')">
+								<img style="float:right" src="{$icon_path}vid_play_sm.png">
+							</a>			
+							<span id="cnt_{$base_unique_name}" style="float:right;display:none;">
+								<a title="play" href="javascript:;" onclick="document.video_{$base_unique_name}.play()">
+									<img src="{$icon_path}vid_play_sm.png" width="27" height="27" /></a> 
+								<a title="pause" href="javascript:;" onclick="document.video_{$base_unique_name}.pause()">
+									<img src="{$icon_path}vid_pause_sm.png" width="27" height="27" /></a> 
+								<a title="stop" href="javascript:;" onclick="document.video_{$base_unique_name}.stop()">
+									<img src="{$icon_path}vid_stop_sm.png" width="27" height="27" /></a> 
+								<a title="fullscreen" href="javascript:;" onclick="document.video_{$base_unique_name}.fullscreen()">
+									<img src="{$icon_path}vid_full_screen_sm.png" width="27" height="27" /></a>
+							</span>										
+							<a id="info_{$base_unique_name}" title="media info" href="{$u}">
+								<img style="float:right" src="{$wgScriptPath}/skins/common/images/icons/vid_info_sm.png">
+							</a>
+						</div>
+						{$label}									
+					</div>
+				</div>
+END_EMBED;
+			}
+							
+						
+						
 			//print "MIME:" . $img->mime;			
 			
 			//display the video thumbnail: 			
-						
-			//for now just render a thumbnail hack style: 
-			//shortly will integrate multiple ways of grabbing thumnail. 
-			//and caching thumbnail size etc.
-			$js_inc = "<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/skins/common/embed_media.js\"></script>";
-			//@todo think how this will work with multiple idential titled media elements in a given page (probably not well)	
-			$embed_div_id = 'embed_'.$title->getDBkey();
+			//set up all our varialbes: 	
 			
-			$width = (isset($options['width']))?$options['width']:'320';
-			$height = (isset($options['height']))?($options['height']):'240';
-			
-			//@todo integrate with style sheet.  (add to height for vid controls)
-			$div_style = "width:{$width}px;height:".($height+32)."px;border-width:2px;border-style: solid;";	
-			$im_frame_url = $img->movieFrameUrl();
-			
-			//@todo (don't hard code title values put them into the language file)
-			$div_tag =  "<div style=\"{$div_style}\" id=\"{$embed_div_id}\">";
-			$image_tag= "<img width=\"{$width}\" height=\"{$height}\" src=\"{$im_frame_url}\">";
-			$control_play = "<a title=\"play media\" href=\"javascript:auto_embed('{$embed_div_id}', '{$img->getUrl()}')\">";
-				$control_play.="<img style=\"float:right\" src=\"{$wgScriptPath}/skins/common/images/icons/vid_play_sm.png\">";
-			$control_play.="</a>";
-
-			$u = $title->escapeLocalURL();
-			$alt = $options['alt'];
-			
-			$control_info ="<a title=\"{$alt}\" href=\"{$u}\">";
-			$control_info.="<img style=\"float:right\" src=\"{$wgScriptPath}/skins/common/images/icons/vid_info_sm.png\">". "\n";
-			$control_info.='</a>';
-					
-			$close_div=	"</div>". "\n";
-			
-			return $js_inc . $div_tag . $image_tag . $control_play . $control_info . $close_div;
-			//also frame grab should be done at time of uplaod (if we allow dymaic thumnails)
-			
-			//evaluate options
-			
-			//Get user-plugin  (for now in a seesion) but in the future store in user options in db..
-			
-			//make new media get server side type info (video or audio) (ogg theora encoded)
-			
-			//check users-plugin info for details
-			
-			//make thumbnail image (default to frame 30 or requested frame)  (link to media info page)
-			//render thumbnail at requested size and send plug-in detection javascript. 
-			//render video controls. (play, stop, fullscreen (if annodex on PC) ) link to media info page
-			
+			//@todo think how this will work with multiple idential titled media elements in a given page
+	
+			return str_replace("\n", ' ', $embed_out);
+			//return $embed_out;			
 		}	
-		/*
+		/*classic embed ... to-be removed 
 			if($_GET['javaDemo']=='true'){
 			return '<applet code="com.fluendo.player.Cortado.class" archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar" width="320" height="240">
 					  <param name="url" value="http://metavid.ucsc.edu'.$u.'" title="'.$alt.'" />
@@ -807,10 +923,7 @@ class Linker {
 						document.video1.play();
 					</script>	
 					<a href="javascript:;" onclick="document.video1.play()">Play</a> <a href="javascript:;" onclick="document.video1.pause()">Pause</a> <a href="javascript:;" onclick="document.video1.stop()">Stop</a> <a href="javascript:;" onclick="document.video1.fullscreen()">Fullscreen</a> <a href="'.$u.'">Download</a>';
-		}
-		*/
-		
-		
+		}*/		
 	}
 
 
