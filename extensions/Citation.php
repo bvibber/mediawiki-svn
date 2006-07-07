@@ -29,7 +29,7 @@ function citation_hooker ( $parser , $text ) {
 		$x = "<li>" . $entry . " <a href='#citeback{$num}'>&uarr;</a></li>\n" ;
 		$ret .= $x ;
 	}
-	$ret = "<hr/><ol>" . $ret . "</ol>" ;
+	$ret = "<hr /><ol>" . $ret . "</ol>" ;
 	
 	$text .= $ret ;
 }
