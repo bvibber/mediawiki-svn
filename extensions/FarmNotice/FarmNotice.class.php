@@ -34,39 +34,50 @@ class FarmNotice {
 	}
 	
 	function fetchNotice() {
-		global $wgOut, $wgContLanguageCode;
-		$msg = wfMsgForContent( 'farmnotice' );
-		if( $msg == '&lt;farmnotice&gt;' || $msg == '-' ) {
-			# If we're the source stop here; there is no message
-			if( $this->isSource ) {
-				return false;
-			} else {
-				# Check cache
-				global $wgMemc;
-				$key = $this->getCacheKey( $wgContLanguageCode );
-				$msg = $wgMemc->get( $key );
-				if( $msg ) {
-					return $msg;
+		global $wgMemc, $wgOut, $wgContLanguageCode;
+		# Attempt the local cache first
+		$lkey = $this->getLocalCacheKey();
+		$msg = $wgMemc->get( $lkey );
+		if( $msg ) {
+			# Hit!
+			return $msg;
+		} else {
+			# No local cache, so check there isn't an uncached local version
+			$msg = wfMsgForContent( 'farmnotice' );
+			if( $msg == '&lt;farmnotice&gt;' || $msg == '-' ) {
+				# No local override
+				# If we're the source, stop here; there is no message
+				if( $this->isSource ) {
+					return false;
 				} else {
-					# Go and fetch it from the source
-					$msg = Http::get( $this->getSourceUrl( $wgContLanguageCode ) );
+					# Check cache
+					global $wgMemc;
+					$key = $this->getGlobalCacheKey( $wgContLanguageCode );
+					$msg = $wgMemc->get( $key );
 					if( $msg ) {
-						# Parse it and cache it
-						$msg = $wgOut->parse( $msg );
-						$wgMemc->set( $key, $msg, 900 );
 						return $msg;
 					} else {
-						# Cache a blank to stop pointless checks
-						$wgMemc->set( $key, '', 900 );
-						return false;
+						# Go and fetch it from the source
+						$msg = Http::get( $this->getSourceUrl( $wgContLanguageCode ) );
+						if( $msg ) {
+							# Parse it and cache it
+							$msg = $wgOut->parse( $msg );
+							$wgMemc->set( $key, $msg, 900 );
+							return $msg;
+						} else {
+							# Cache a blank to stop pointless checks
+							$wgMemc->set( $key, '', 900 );
+							return false;
+						}
 					}
 				}
-			}
-		} else {
-			# Allow local wikis to override
-			# This also handles the case where we're the source
-			return $wgOut->parse( $msg );
-		} 
+			} else {
+				# Cache the local version
+				$msg = $wgOut->parse( $msg );
+				$wgMemc->set( $lkey, $msg, 900 );
+				return $msg;
+			} 
+		}
 	}
 	
 	function invalidateCaches( &$title ) {
@@ -84,8 +95,13 @@ class FarmNotice {
 		return $this->sourceUrl . '?title=' . $msg . '&action=raw';
 	}
 	
-	function getCacheKey( $lang ) {
+	function getGlobalCacheKey( $lang ) {
 		return "all:farmnotice:{$lang}";
+	}
+	
+	function getLocalCacheKey() {
+		global $wgDBname;
+		return "{$wgDBname}:farmnotice";
 	}
 
 }
