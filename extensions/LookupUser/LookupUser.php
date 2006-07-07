@@ -104,7 +104,7 @@ EOT
 				}
 				$optionsString = '';
 				foreach ( $user->mOptions as $name => $value ) {
-					$optionsString .= "$name = $value <br>";
+					$optionsString .= "$name = $value <br />";
 				}
 				$wgOut->addWikiText( wfMsg( 'lookupuser_info', 
 					$user->getName(),
