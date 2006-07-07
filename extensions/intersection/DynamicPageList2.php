@@ -535,7 +535,7 @@ function DPL2OutputListStyle ($aCategories, $aArticles, $aAddDates, $aAddUsers, 
 			$sStartList = '';
 			$sEndList = '';
 			$sStartItem = '';
-			$sEndItem = '<br/>';
+			$sEndItem = '<br />';
 			$bAddLastEndItem = false;
 			break;
 		case 'inline':
@@ -572,7 +572,7 @@ function DPL2OutputListStyle ($aCategories, $aArticles, $aAddDates, $aAddUsers, 
 		if(!empty($aAddCategories[$i])) {
 			if($sOutputMode=='inline' || $sOutputMode=='none')
 				$r .= '<font size=-2> ('.$aAddCategories[$i].')</font>';
-			else $r .= '<font size=-2><br/>'.$aAddCategories[$i].'</font>';
+			else $r .= '<font size=-2><br />'.$aAddCategories[$i].'</font>';
 		}
 		if ($i<count($aArticles)-1 || $bAddLastEndItem==true)
 			$r .= $sEndItem;

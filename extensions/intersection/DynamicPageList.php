@@ -157,7 +157,7 @@ function DynamicPageList( $input ) {
 	  $sStartList = '';
 	  $sEndList = '';
 	  $sStartItem = '';
-	  $sEndItem = '<br/>';
+	  $sEndItem = '<br />';
 	  break;
 	case 'ordered':
 	  $sStartList = '<ol>';
