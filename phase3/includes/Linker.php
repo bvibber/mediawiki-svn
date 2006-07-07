@@ -797,7 +797,7 @@ class Linker {
 	
 			$more = htmlspecialchars( wfMsg( 'thumbnail-more' ) );
 			$magnifyalign = $wgContLang->isRTL() ? 'left' : 'right';
-			$textalign = $wgContLang->isRTL() ? ' style="text-align:right"' : '';
+			$textalign = $wgContLang->isRTL() ? ' style="text-align:right"' : ' style="text-align:left"';
 	
 			//$s = "<div class=\"thumb t{$align}\"><div style=\"width:{$oboxwidth}px;\">";
 			//if( $thumbUrl == '' ) {
@@ -838,7 +838,7 @@ class Linker {
 				$base_unique_name =str_replace('.', '_', $title->getDBkey());	//replace . with _ for DOM id compatibility
 				$width = (isset($options['width']))?$options['width']:'320';
 
-				$oboxwidth=$width+2;
+				$oboxwidth=$width+10;
 				
 				$height = (isset($options['height']))?($options['height']):'240';
 				$div_height = $height+32; //32 the current height of the video control icons. 
@@ -855,34 +855,39 @@ class Linker {
 				//@todo move embed media js include to <head> 
 				$embed_out ='<script type="'.$wgJsMimeType.'" src="'.$wgScriptPath.'/skins/common/embed_media.js"></script>';
 				//@todo plug-in sensative controls. (right now vlc primaraly supported)
-				//@todo put in language calls			
+				//@todo put in language calls		
+				//@todo put in language left-to-right right-to-left styles.	
 				$embed_out.= <<<END_EMBED
-				<div class="thumb t{$align}" style="width:{$oboxwidth}px">					
-					<div id="div_{$base_unique_name}">
+				<div class="thumb t{$align}" style="width:{$oboxwidth}px">									
+					<div id="div_{$base_unique_name}" style="overflow:hidden;" >
 						<a href="$u" class="internal" title="$alt">
 							<img id ="img_{$base_unique_name}" width="{$width}" height="{$height}" src="{$im_frame_url}">	
 						</a>		
 					</div>
-					<div class="thumbcaption" style="float:left;">								
-						<div class="magnify" style="float:{$magnifyalign}">
+					<div class="thumbcaption" {$textalign}>														
+						<div id="magnify_{$base_unique_name}" class="magnify" style="width:54px;float:{$magnifyalign};">
 							<a id="play_{$base_unique_name}" title="play media" href="javascript:auto_embed('{$base_unique_name}', '{$media_url}')">
 								<img style="float:right" src="{$icon_path}vid_play_sm.png">
-							</a>			
-							<span id="cnt_{$base_unique_name}" style="float:right;display:none;">
-								<a title="play" href="javascript:;" onclick="document.video_{$base_unique_name}.play()">
-									<img src="{$icon_path}vid_play_sm.png" width="27" height="27" /></a> 
-								<a title="pause" href="javascript:;" onclick="document.video_{$base_unique_name}.pause()">
-									<img src="{$icon_path}vid_pause_sm.png" width="27" height="27" /></a> 
-								<a title="stop" href="javascript:;" onclick="document.video_{$base_unique_name}.stop()">
-									<img src="{$icon_path}vid_stop_sm.png" width="27" height="27" /></a> 
+							</a>										
+							<span id="cnt_{$base_unique_name}" style="display:none;">
 								<a title="fullscreen" href="javascript:;" onclick="document.video_{$base_unique_name}.fullscreen()">
-									<img src="{$icon_path}vid_full_screen_sm.png" width="27" height="27" /></a>
-							</span>										
+									<img  style="float:right" src="{$icon_path}vid_full_screen_sm.png" width="27" height="27" />
+								</a>
+								<a title="pause" href="javascript:;" onclick="document.video_{$base_unique_name}.pause()">
+									<img  style="float:right"  src="{$icon_path}vid_pause_sm.png" width="27" height="27" />
+								</a> 
+								<a title="stop" href="javascript:;" onclick="document.video_{$base_unique_name}.stop()">
+									<img  style="float:right"  src="{$icon_path}vid_stop_sm.png" width="27" height="27" />
+								</a> 							
+								<a title="play" href="javascript:;" onclick="document.video_{$base_unique_name}.play()">
+									<img style="float:right"  src="{$icon_path}vid_play_sm.png" width="27" height="27" />
+								</a> 								
+							</span>			
 							<a id="info_{$base_unique_name}" title="media info" href="{$u}">
 								<img style="float:right" src="{$wgScriptPath}/skins/common/images/icons/vid_info_sm.png">
-							</a>
+							</a>														
 						</div>
-						{$label}									
+						{$label}
 					</div>
 				</div>
 END_EMBED;

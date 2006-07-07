@@ -87,11 +87,14 @@ function vlc_embed(target, media_url, opt){
 	document.getElementById("div_"+target).innerHTML="";		
 	document.getElementById("div_"+target).appendChild(eb);
 	
+	
 	//hide the auto_embed play button: 
 	document.getElementById("play_"+target).style.display='none';
 	//div_parent.appendChild(div_cnt);
 	
-	//document.getElementById(target).appendChild(eb);
+	//expand the magnified section to give space for the controls: 
+	document.getElementById("magnify_"+target).style.width='145px';
+	//show the controls:	
 	document.getElementById("cnt_" + target).style.display='inline';
 	
 	setTimeout('run_vlc(\''+target+'\',\''+media_url+'\')', 200);

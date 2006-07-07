@@ -1520,18 +1520,16 @@ class Parser
 					wfProfileOut( "$fname-image" );
 
 				}
-				//enable or disable embed media: 
-				//@todo add in proper wfConfig boolean 
-				if(true){
+				//enabled or disable embed media: 
+				if(true){	//@todo add in wfConfig boolean 
 					if ( $ns == NS_MEDIA ) {		
 						wfProfileIn( "$fname-media" );			
-							# recursively parse links inside the media caption
+						# recursively parse links inside the media caption
 						$text = $this->replaceExternalLinks($text);
 						$text = $this->replaceInternalLinks($text);
 	
 						# cloak any absolute URLs inside the media markup, so replaceExternalLinks() won't touch them
-						$link =  $this->makeMedia( $nt, $text );
-						$s .= $prefix . $this->armorLinks( $link ) . $trail;
+						$s .= $prefix . $this->armorLinks( $this->makeMedia( $nt, $text ) ) . $trail;
 						$this->mOutput->addImage( $nt->getDBkey() );			
 					
 						wfProfileOut( "$fname-media" );
