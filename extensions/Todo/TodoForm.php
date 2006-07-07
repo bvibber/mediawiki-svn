@@ -27,7 +27,7 @@ class TodoTemplate extends QuickTemplate {
 	<div class="mwTodoNewForm">
 		<p>
 			<label for="wpSummary">Issue summary:</label>
-			<br/>
+			<br />
 			<input id="wpSummary" name="wpSummary" size="40" />
 		</p>
 		
