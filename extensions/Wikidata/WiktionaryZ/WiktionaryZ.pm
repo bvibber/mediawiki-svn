@@ -2,7 +2,8 @@
 # use WiktionaryZ;
 # my $importer=new WiktionaryZ('wikidatadb','root','MyPass');
 # $importer->setSourceDB('umls');
-# $importer->importUMLS();
+# $importer->initialize;
+# $importer->importCompleteUMLS();
 #
 # NOTE: When importing UMLS, we expect the presence of the semantic network data
 # in the tables SRDEF and the manually created tables SEMRELHIER and SEMTYPEHIER.
@@ -56,57 +57,89 @@ sub connectTargetDB {
 	$self->{dbt}=DBI->connect($dsn,$self->{targetuser},$self->{targetpass});
 }
 
-sub importUMLS {
-	my $self=shift;
-	my $level=shift || 0; # 0= complete; 1=reltypes+; 2=rel+
+sub connectDBs() {
+	my $self = shift;
+	
 	$self->connectSourceDB();
 	$self->connectTargetDB();
+}
+
+sub loadLanguages() {
+	my $self = shift;
+
 	my %la=$self->loadLangs();
 	$self->{la}=\%la;
 	my %la_iso=$self->loadLangsIso();
 	$self->{la_iso}=\%la_iso;
+}
 
-	if(!$level) {
-		my %cid=$self->bootstrapCollections();
-		$self->{cid}=\%cid;
-	} else {
-	 	my %cid=$self->getCollections();
-	 	$self->{cid}=\%cid;
+sub initialize {
+	my $self=shift;
+	$self->connectDBs();
+	$self->loadLanguages();	
+}
+
+sub importCompleteUMLS {
+	my $self=shift;
+	my $level=shift || 0; # 0= complete; 1=reltypes+; 2=rel+
+
+	my %sourceAbbreviations = $self->loadSourceAbbreviations();
+	$self->importUMLS(\%sourceAbbreviations, $level);
+}
+
+sub importUMLS() {
+	my $self=shift;
+	my $sourceAbbreviationsReference = shift;
+	my $level=shift || 0;						# 0= complete; 1=reltypes+; 2=rel+
+	
+	my %sourceAbbreviations = %{$sourceAbbreviationsReference};
+	my %cid=$self->getOrCreateCollections(\%sourceAbbreviations);
+	$self->{cid}=\%cid;
+
+	if ($level<1){
+		while (($sourceAbbreviation, $collectionId) = each %cid) {
+			print "Import UMLS terms for $sourceAbbreviation\n";
+			$self->importUMLSterms($sourceAbbreviation, $collectionId);
+		}
 	}
-	if($level<1) {
-		$self->importUMLSterms("CSP",$self->{cid}{'CRISP'});
-		$self->importUMLSterms("ICPC%",$self->{cid}{'ICPC'});
-#		$self->importUMLSterms("SP",$self->{cid}{'SP'});
-		#$self->importUMLSterms("MSH",$self->{cid}{'MESH'});
-	}	
+	
 	if($level<2) {
+		print "Import UMLS relation types 'REL'\n";
 		$self->importUMLSrelationtypes('REL');
+		print "Import UMLS relation types 'RELA'\n";
 		$self->importUMLSrelationtypes('RELA');
 	}
+
 	if($level<3) {
-		my %rt=$self->loadReltypes();
-		$self->{reltypes}=\%rt;
-		$self->importUMLSrelations('REL','CSP');
-		$self->importUMLSrelations('RELA','CSP');
-		$self->importUMLSrelations('REL','ICPC%');
-		$self->importUMLSrelations('RELA','ICPC%');
-#		$self->importUMLSrelations('REL','SP');
-#		$self->importUMLSrelations('RELA','SP');
-		#$self->importUMLSrelations('REL','MSH');
-		#$self->importUMLSrelations('RELA','MSH');
+		while (($sourceAbbreviation, $collectionId) = each %cid) {
+			my %rt=$self->loadReltypes();
+			$self->{reltypes}=\%rt;
+			print "Import UMLS relations 'REL' for $sourceAbbreviation\n";
+			$self->importUMLSrelations('REL',$sourceAbbreviation);
+			print "Import UMLS relations 'RELA' for $sourceAbbreviation\n";
+			$self->importUMLSrelations('RELA',$sourceAbbreviation);
+		}
 	}
+
 	if($level<4) {
+		print "Import SN types 'STY'\n";
 		$self->importSNtypes('STY');
+		print "Import SN types 'RL'\n";
 		$self->importSNtypes('RL');
+		print "Import ST relations 'STY'\n";
 		$self->importSTrelations('STY');
+		print "Import ST relations 'RL'\n";		
 		$self->importSTrelations('RL');
 	#	$self->importSTrelations2();
 	}
+	
 	if($level<5) {
-		my %attribs=$self->loadAttributes();
-		$self->{attribs}=\%attribs;
-		$self->importUMLSstypes('CSP');
-		$self->importUMLSstypes('ICPC%');
+		while (($sourceAbbreviation, $collectionId) = each %cid) {
+			my %attribs=$self->loadAttributes();
+			$self->{attribs}=\%attribs;
+			print "Import UMLS types for $sourceAbbreviation\n";			
+			$self->importUMLSstypes($sourceAbbreviation);
+		}
 	}
 }
 
@@ -129,14 +162,14 @@ sub importGEMET {
 sub importUMLSstypes {
 	my $self=shift;
 	my $sab=shift;
-	my $cid=shift;
+	
 	my $getassocs=$self->{dbs}->prepare("select MRSTY.CUI, MRSTY.STY from MRCONSO,MRSTY where MRCONSO.SAB like ? and MRCONSO.CUI=MRSTY.CUI");
 	$getassocs->execute($sab);
 	while(my $row=$getassocs->fetchrow_hashref()) {
 		my %rv=$self->getMidForMember($row->{CUI});
 		my $att=$self->{attribs}{$row->{STY}};
-		#print "$rv{mid} is a $row->{STY} ($att)\n";	
-		$self->addRelation($rv{rid},0,$rv{mid},$att, my $checkfordupes=1);	
+		#print "$rv{mid} is a $row->{STY} ($att)\n";
+		$self->addRelation($rv{rid},0,$rv{mid},$att, my $checkfordupes=1);
 	}
 }
 
@@ -194,19 +227,27 @@ sub getOrCreateCollection {
 
 sub getOrCreateCollections {
 	my $self = shift;
+	my $sourceAbbreviationsReference = shift;
+	my %sourceAbbreviations = %{$sourceAbbreviationsReference};
 	my %cid;
 	
-	$cid{'CRISP'} = $self->getOrCreateCollection('CRISP Thesaurus, 2005');
-	$cid{'STY'}   = $self->getOrCreateCollection('Semantic Network 2005AC Semantic Types');
-	$cid{'RL'}    = $self->getOrCreateCollection('Semantic Network 2005AC Relation Types');
-	$cid{'REL'}   = $self->getOrCreateCollection('UMLS Relation Types 2005');
-	$cid{'RELA'}  = $self->getOrCreateCollection('UMLS Relation Attributes 2005');
-	$cid{'ICPC'}  = $self->getOrCreateCollection('The International Classification of Primary Care (ICPC), 1993');
-	$cid{'MESH'}  = $self->getOrCreateCollection('Medical Subject Headings (MeSH), 2005');
-	$cid{'SP'}    = $self->getOrCreateCollection('Swiss-Prot');
-	$cid{'TR'}    = $self->getOrCreateCollection('TrEMBL');
-	
+    while (($key, $value) = each %sourceAbbreviations) {
+		$cid{$key}	= $self->getOrCreateCollection($value);
+    }
+
 	return %cid;
+}
+
+sub loadSourceAbbreviations {
+	my $self = shift;
+	my %sab;
+	
+	my $dataset = $self->{dbs}->prepare("select * from mrsab");
+	$dataset->execute();
+	while (my $row = $dataset->fetchrow_hashref()) {
+		$sab{$row->{RSAB}} = $row->{SON};
+	}
+	return %sab;
 }
 
 # SEMTYPEHIER and SEMRELHIER contain only the is_a relationships, whereas
@@ -430,6 +471,7 @@ sub importUMLSterms {
 	my $self=shift;
 	my $sab=shift; # the source abbreviation which to import
 	my $cid=shift; # which collection to associate the defined meanings with
+
 	$getterm=$self->{dbs}->prepare("select str,cui,lat from MRCONSO where sab like ?");
 	$getterm->execute($sab);
 	my %textmid;
@@ -607,6 +649,7 @@ sub addRelation {
 	my $mid_A=shift;
 	my $mid_B=shift;
 	my $checkfordupes=shift;
+	
 	if($checkfordupes) {
 		my $checkRelationDuplicates=$self->{dbt}->prepare('select 1 as one from uw_meaning_relations where meaning1_mid=? and meaning2_mid=? and relationtype_mid=? and is_latest_set=1 limit 1');
 		$checkRelationDuplicates->execute($mid_A,$mid_B,$rtid);
@@ -616,11 +659,17 @@ sub addRelation {
 			print "Duplicate relation, not adding.\n";
 			return false;
 		}
-	}
-	$newkey= $self->getSetIdWhere('uw_meaning_relations','meaning1_mid',$mid_A) || $self->getMaxId('set_id','uw_meaning_relations');
-	$addrel=$self->{dbt}->prepare('insert into uw_meaning_relations(set_id,meaning1_mid,meaning2_mid,relationtype_mid,is_latest_set,first_set,revision_id) values(?,?,?,?,?,?,?)');
+	}	
+
+	my $newkey= $self->getSetIdWhere('uw_meaning_relations','meaning1_mid',$mid_A) || $self->getMaxId('set_id','uw_meaning_relations');
+	my $addrel=$self->{dbt}->prepare('insert into uw_meaning_relations(set_id,meaning1_mid,meaning2_mid,relationtype_mid,is_latest_set,first_set,revision_id) values(?,?,?,?,?,?,?)');
 	$addrel->execute($newkey,$mid_A,$mid_B,$rtid,1,$newkey,$revid); 
-	#print "New key: $key\n";
+	
+	print "newkey: $newkey\n";
+	print "mid_A: $mid_A\n";
+	print "mid_B: $mid_A\n";
+	print "rtid: $rtid\n";
+	print "revid: $revid\n";
 }
 
 
@@ -743,7 +792,7 @@ sub addExpression {
 		
 	}
 	
-	#create definedmeaning and/or syntrans record
+	#create definedmeaning
 	if(!$translation_of) {
 		$makemean=$self->{dbt}->prepare('insert into uw_defined_meaning(expression_id,revision_id) values(?,?)');
 		$makemean->execute($liid,$rid);
