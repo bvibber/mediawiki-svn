@@ -752,14 +752,14 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			if( $show_page ) {
 				$out .= '<td align="left" valign="top">';
 				$out .= $sk->makeLinkObj( $title );
-				$out .= '<br/>';
+				$out .= '<br />';
 				$out .= $sk->makeLinkObj( $title, wfMsgHTML('tasks_see_page_tasks'), 'action=tasks' );
 				$out .= '</td>';
 			}
 			$out .= '<td valign="top" align="left" nowrap class="tasks_status_bgcol_' . $this->status_types[$status] . '">';
-			$out .= '<b>' . $encType . '</b><br/><i>';
+			$out .= '<b>' . $encType . '</b><br /><i>';
 			$out .= wfMsgForContent( 'tasks_status_' . $this->status_types[$status] );
-			$out .= '</i><br/>' ;
+			$out .= '</i><br />' ;
 			
 			# Additional info
 			$help_title = Title::makeTitleSafe( NS_HELP, wfMsgForContent('tasks_help_page') );
@@ -773,16 +773,16 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out .= '</td>';
 			$out .= '<td align="left" valign="top" nowrap>';
 			$out .= wfMsgHTML( 'tasks_created_by', $sk->makeLinkObj( $cu, htmlspecialchars( $task->task_user_text ) ) );
-			$out .= '<br/>' . $ct ;
+			$out .= '<br />' . $ct ;
 
 			# Closing information
 			if( $task->task_user_close != 0 && $this->is_closed( $status ) ) {
 				$user_close = new User;
 				$user_close->setID( $task->task_user_close );
 				$uct = Title::makeTitleSafe( NS_USER, $user_close->getName() ); # Assigned user title
-				$out .= '<br/>' . wfMsgHTML( 'tasks_closedby', $sk->makeLinkObj( $uct, htmlspecialchars( $user_close->getName() ) ) );
+				$out .= '<br />' . wfMsgHTML( 'tasks_closedby', $sk->makeLinkObj( $uct, htmlspecialchars( $user_close->getName() ) ) );
 				if( $task->task_timestamp_closed != "" ) {
-					$out .= '<br/>' . $wgContLang->timeanddate( $task->task_timestamp_closed ); # Time object from string of digits
+					$out .= '<br />' . $wgContLang->timeanddate( $task->task_timestamp_closed ); # Time object from string of digits
 				}
 			}
 			$out .= '</td>';
@@ -1366,7 +1366,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 						$out .= '<p>' . wfMsgHTML( 'tasks_you_have_no_assignments' ) . '</p>';
 					} else {
 						$out .= '<h2>' . wfMsgHTML( 'tasks_my_assignments' ) . "</h2>\n"
-						      . '<br/><table border="1" cellspacing="1" cellpadding="2">'
+						      . '<br /><table border="1" cellspacing="1" cellpadding="2">'
 						      . '<tr>' . wfTaskExtensionGetTableHeader( true ) . '</tr>'
 						;
 						foreach( $tasks as $task ) {
