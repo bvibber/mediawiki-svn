@@ -23,8 +23,7 @@ class FarmNotice {
 	function initialiseHooks() {
 		global $wgHooks;
 		$wgHooks['SiteNoticeAfter'][] = array( &$this, 'showNotice' );
-		if( $this->isSource )
-			$wgHooks['ArticleSaveComplete'][] = array( &$this, 'invalidateCaches' );
+		$wgHooks['ArticleSaveComplete'][] = array( &$this, 'invalidateCaches' );
 	}
 	
 	function showNotice( &$notice ) {
@@ -34,58 +33,89 @@ class FarmNotice {
 	}
 	
 	function fetchNotice() {
-		global $wgMemc, $wgOut, $wgContLanguageCode;
-		# Attempt the local cache first
-		$lkey = $this->getLocalCacheKey();
-		$msg = $wgMemc->get( $lkey );
+		$msg = $this->fetchLocal();
 		if( $msg ) {
-			# Hit!
+			# We found it in the local cache; stop here
 			return $msg;
 		} else {
-			# No local cache, so check there isn't an uncached local version
-			$msg = wfMsgForContent( 'farmnotice' );
-			if( $msg == '&lt;farmnotice&gt;' || $msg == '-' ) {
-				# No local override
-				# If we're the source, stop here; there is no message
-				if( $this->isSource ) {
-					return false;
-				} else {
-					# Check cache
-					global $wgMemc;
-					$key = $this->getGlobalCacheKey( $wgContLanguageCode );
-					$msg = $wgMemc->get( $key );
-					if( $msg ) {
-						return $msg;
-					} else {
-						# Go and fetch it from the source
-						$msg = Http::get( $this->getSourceUrl( $wgContLanguageCode ) );
-						if( $msg ) {
-							# Parse it and cache it
-							$msg = $wgOut->parse( $msg );
-							$wgMemc->set( $key, $msg, 900 );
-							return $msg;
-						} else {
-							# Cache a blank to stop pointless checks
-							$wgMemc->set( $key, '', 900 );
-							return false;
-						}
-					}
-				}
+			if( !$this->isSource ) {
+				# Check the global cache et al.
+				$msg = $this->fetchGlobal();
+				return $msg ? $msg : false;
 			} else {
-				# Cache the local version
-				$msg = $wgOut->parse( $msg );
-				$wgMemc->set( $lkey, $msg, 900 );
-				return $msg;
-			} 
+				# There's nothing to find
+				return false;
+			}
 		}
 	}
 	
+	/**
+	 * Attempt to fetch the message from the local cache, in case it's overridden;
+	 * if that doesn't work, check for an uncached local override and parse it and cache it
+	 */
+	function fetchLocal() {
+		global $wgMemc;
+		$msg = $wgMemc->get( $this->getLocalCacheKey() );
+		if( $msg ) {
+			# Found a parsed local override in shared RAM cache
+			return $msg;
+		} else {
+			$msg = wfMsgForContent( 'farmnotice' );
+			if( $msg != '&lt;farmnotice&gt;' || $msg == '-' ) {
+				# There's a local override we need to use; cache it
+				global $wgOut;
+				$msg = $wgOut->parse( $msg );
+				$wgMemc->set( $this->getLocalCacheKey(), $msg, 900 );
+				return $msg;
+			} else {
+				# There's no override
+				return false;
+			}
+		}
+	}
+	
+	/**
+	 * Attempt to fetch the message from the global cache for this language
+	 * If it's not there, attempt to fetch it from the source, and parse it and cache
+	 */
+	function fetchGlobal() {
+		global $wgMemc, $wgContLanguageCode;
+		$msg = $wgMemc->get( $this->getGlobalCacheKey( $wgContLanguageCode ) );
+		if( $msg ) {
+			# Cache hit
+			return $msg == '#NONE#' ? '' : $msg; # We store #NONE# 'cause blank strings become false somewhere
+		} else {
+			# Attempt to fetch from remote
+			$msg = Http::get( $this->getSourceUrl( $wgContLanguageCode ) );
+			if( $msg ) {
+				# Parse it and cache it
+				global $wgOut;
+				$msg = $wgOut->parse( $msg );
+				$wgMemc->set( $this->getGlobalCacheKey( $wgContLanguageCode ), $msg, 900 );
+				return $msg;
+			} else {
+				# Nothing, but *cache a blank* to avoid needless HTTP hits
+				$wgMemc->set( $this->getGlobalCacheKey( $wgContLanguageCode ), '#NONE#', 900 );
+			}
+		}
+	}
+	
+	/**
+	 * If a farm notice page is edited, clear the appropriate cache; if we're the source,
+	 * then we need to clear the global cache for the relevant language, otherwise, we need
+	 * to clear the local override cache
+	 *
+	 * @param $title Title of the page that was edited
+	 */
 	function invalidateCaches( &$title ) {
-		if( $this->isSource ) {
-			if( $title->getNamespace() == NS_MEDIAWIKI && preg_match( '/^Farmnotice/?(.*)?/', $title->getText(), $matches ) ) {
-				global $wgMemc;
-				$lang = isset( $matches[1] ) ? $matches[1] : 'en';
-				$wgMemc->delete( $this->getCacheKey( $lang ) );
+		if( $title->getNamespace() == NS_MEDIAWIKI && preg_match( '/^Farmnotice/?(.*)?/', $title->getText(), $matches ) ) {
+			global $wgMemc;
+			if( $this->isSource ) {
+				# Clear the global cache for this language
+				$wgMemc->delete( $this->getCacheKey( isset( $matches[1] ) ? $matches[1] : 'en' ) );
+			} else {
+				# Clear the local override cache
+				$wgMemc->delete( $this->getLocalCacheKey() );
 			}
 		}
 	}
