@@ -48,7 +48,7 @@ function auto_embed(target, url, opt){
 	var embed_type = detect_client_plugins();
 	//draw given plugin type: 
 	//document.getElementById(target).innerHTML='play with:'+embed_type +' url: ' + url;
-	if(!document.getElementById("img_" + target) || !document.getElementById("div_" + target)){
+	if(!document.getElementById("div_" + target)){
 		alert('error can\'t find target: ' + target);
 	}else{
 		if(embed_type){	
@@ -132,14 +132,13 @@ function jre_embed(target, media_url, opt){
 	iframe.scrolling='no';
 	iframe.MARGINWIDTH=0;
 	iframe.MARGINHEIGHT=0;
-	//@todo get this error msg from the mediaWiki includes
-	//iframe.innerHTML="iframe support is required for java applet based embed video";
+
+
 	//@todo load in the path and server url from mediaWiki
 	var cortado_src = 'http://metavid.ucsc.edu/wiki_dev/phase3/embed/cortado_embed.php';
 	cortado_src+= "?media_url=" + media_url;
 	cortado_src+= "&width=" + opt['width'] + "&height=" + opt['height'];
-	
-	
+		
 	iframe.src=cortado_src;
 	
 	//wiki_dev/phase3/embed/cortado_embed.php?media_url=http://metavid.ucsc.edu/wiki_dev/phase3/images/3/38/Launch_of_Skylab.ogg

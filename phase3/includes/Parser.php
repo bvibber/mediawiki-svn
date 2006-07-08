@@ -1451,7 +1451,7 @@ class Parser
 			$iw = $nt->getInterWiki();
 
 			if ($might_be_img) { # if this is actually an invalid link
-				if ($ns == NS_IMAGE && $noforce) { #but might be an image
+				if ( ($ns == NS_IMAGE || $ns == NS_MEDIA ) && $noforce) { #but might be an image
 					$found = false;
 					while (isset ($a[$k+1]) ) {
 						#look at the next 'line' to see if we can close it there
@@ -1516,7 +1516,7 @@ class Parser
 
 						wfProfileOut( "$fname-image" );
 						continue;
-					}
+					} 
 					wfProfileOut( "$fname-image" );
 
 				}

@@ -1015,9 +1015,9 @@ class Image
 			if(is_file('00000002.jpg')){			
 				rename('00000002.jpg', $frameDirPath.$frameName);			
 			}else{
-				//die a horrible death the video thumb can't be created. 			
-			}
-		
+				//error out: video thumb can't be created.
+				wfDebug("can't create thumbnail from video file: {$frameDirPath}{$sourceMoviePath}");
+			}		
 			chdir($prewd); 
 		}else{
 			//wfDebug("error not a dir: $frameDirPath \n");
