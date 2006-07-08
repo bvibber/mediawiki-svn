@@ -12,23 +12,53 @@
  
 if( defined( 'MEDIAWIKI' ) ) {
 
-	require_once( 'SpecialPage.php' );
-	$wgExtensionFunctions[] = 'efDisableSpecialPages';
 	$wgExtensionCredits['other'][] = array( 'name' => 'Disable Special Pages', 'author' => 'Rob Church' );
-
-	# Titles (minus the Special prefix) of special pages to disable
-	# Special:Userlogin, Special:Userlogout and Special:Search can never
-	# be disabled
+	
+	if( version_compare( $wgVersion, '1.7.0' ) ) {
+		# Use the new hooks in 1.7+
+		$wgHooks['SpecialPage_initList'][] = 'efDspHook';
+	} else {
+		# Fall back to the older method
+		require_once( 'SpecialPage.php' );
+		$wgExtensionFunctions[] = 'efDspOldMethod';
+	}
+	
+	/**
+	 * Titles of special pages to disable; Special:Userlogin, Special:Userlogout
+	 * and Special:Search cannot be disabled via this interface
+	 */
 	$wgDisabledSpecialPages = array();
-
-	function efDisableSpecialPages() {
-		global $wgSpecialPages, $wgDisabledSpecialPages;
-		$whitelist = array( 'Search', 'Userlogin', 'Userlogout' );
+	
+	function efDspHook( &$list ) {
+		global $wgDisabledSpecialPages;
 		foreach( $wgDisabledSpecialPages as $page ) {
-			if( !array_search( $page, $whitelist ) && isset( $wgSpecialPages[ $page ] ) ) {
-				SpecialPage::removePage( $page );
-			}
+			$title = efDspMakeTitle( $page );
+			if( $title && !efDspWhitelisted( $title ) && isset( $list[ $title->getText() ] ) )
+				unset( $list[ $title->getText() ] );
 		}
+	}
+
+	function efDspOldMethod() {
+		global $wgDisabledSpecialPages, $wgSpecialPages;
+		foreach( $wgDisabledSpecialPages as $page ) {
+			$title = efDspMakeTitle( $page );
+			if( $title && !efDspWhitelisted( $title ) && isset( $wgSpecialPages[ $title->getText() ] ) )
+				SpecialPage::removePage( $title->getText() );
+		}
+	}
+
+	function efDspMakeTitle( $page ) {
+		$title = Title::newFromText( $page );
+		if( is_object( $title ) ) {
+			return $title->getNamespace() == NS_SPECIAL ? $title : Title::makeTitle( NS_SPECIAL, $title->getText() );
+		} else {
+			return false;
+		}
+	}
+	
+	function efDspWhitelisted( &$title ) {
+		$whitelist = array( 'Search', 'Userlogin', 'Userlogout' );
+		return in_array( $title->getText(), $whitelist );
 	}
 	
 } else {
