@@ -1179,9 +1179,9 @@ class EditPage {
 <form id="editform" name="editform" method="post" action="$action" enctype="multipart/form-data">
 END
 );
-
-		if( is_callable( $formCallback ) ) {
-			call_user_func_array( $formCallback, array( &$wgOut ) );
+		var_dump($this->formCallback);
+		if( is_callable( $this->formCallback ) ) {
+			call_user_func_array( $this->formCallback, array( &$wgOut ) );
 		}
 
 		// Put these up at the top to ensure they aren't lost on early form submission

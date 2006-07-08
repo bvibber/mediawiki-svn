@@ -19,6 +19,9 @@ CREATE TABLE /*$wgDBprefix*/lqt (
   -- If this post has any replies, this points to the first one.
   lqt_first_reply int(8) unsigned NULL,
 
+  -- Top-level posts have topic/subject/headers.
+  lqt_topic varchar(255) NULL,
+
   PRIMARY KEY this_lqt_id (lqt_this, lqt_id),
   UNIQUE INDEX lqt_id (lqt_id),
   UNIQUE INDEX lqt_this (lqt_this)

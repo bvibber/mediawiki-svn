@@ -107,7 +107,7 @@ class Post extends Article {
 			  $r->moveNextTo($p);
 			  $p = $r; 
 		     }
-		}
+		} //MAJOR FIXME XXX this doesn't work at all and I don'tknow why.
 		     
 		     
 /*		     if ( $this->previousPost() ) {
@@ -196,9 +196,33 @@ class Post extends Article {
 		return null; // FIXME return success/failure.
         }
 
+        function setTopic($s) {
+
+                $this->createLqtRecord();
+                
+                $dbr =& wfGetDB( DB_MASTER );
+
+                $res = $dbr->update( 'lqt',
+                                     /* SET */   array( 'lqt_topic' => $s ),
+                                     /* WHERE */ array( 'lqt_this' => $this->getID(), ),
+                                     __METHOD__);
+
+                $this->mTopic = $s;
+                
+		return null; // FIXME return success/failure.
+        }
+
+
+	function getTopic() {
+	     $this->loadLinks();
+	     return $this->mTopic;
+	}
+
+
         /**
          * Populate $mFirstReply and $mNextPost with the appropriate Post objects.
          * Hits the database, but only the first time.
+	 * Also loads $mTopic.
          * @private
          */
         function loadLinks() {
@@ -208,7 +232,7 @@ class Post extends Article {
                 $dbr =& wfGetDB( DB_SLAVE );
                 
                 $line = $dbr->selectRow( array('lqt', 'page'),
-                                         array('lqt_next', 'lqt_first_reply'),
+                                         array('lqt_next', 'lqt_first_reply', 'lqt_topic'),
                                          array('lqt_this = page_id',
                                                'page_id' => $this->getID()),
                                          __METHOD__);
@@ -226,6 +250,12 @@ class Post extends Article {
                 } else {
                         $this->mFirstReply = null;
                 }
+
+		if ( $line && $line->lqt_topic ) {
+		     $this->mTopic = $line->lqt_topic;
+		} else {
+		     $this->mTopic = null;
+		}
         }
 
         /**

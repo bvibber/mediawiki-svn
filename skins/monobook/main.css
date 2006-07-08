@@ -44,6 +44,11 @@ li {
          padding-right: 0.6em;
 }
 
+.lqt_topic_field { 
+         margin-top: 0.5em;
+         margin-bottom: 0.5em;
+ }
+
 .lqt_post .lqt_footer a {
 	color: #5874d1;
 }

@@ -2,12 +2,16 @@
 
 class ThreadView {
 
+     /** hack. see showEditingForm. @private */
+     static $callbackpost;
+     static $callbackeditpage;
+
      function ThreadView( $baseURL, 
 			  $channelName,
 			  $editingId = -1,
 			  $replyingToId = -1,
 			  $highlightingTitle = -1,
-			  $movingId = -1 ) { /* TODO while the hell title/id? */
+			  $movingId = -1 ) { /* TODO why the hell title/id? */
 	  $this->baseURL = $baseURL;
 	  $this->channelName = $channelName;
 	  $this->editingId = $editingId;
@@ -45,13 +49,23 @@ class ThreadView {
 		}
         }
         
-        function render($p) {
+        function render($p, $is_top_level) {
                 global $wgOut, $wgUser;
                 $p->fetchContent();
 
                 $t = $p->mTitle->getPartialURL();
 
                 $movingThis = ( $this->movingId == $p->getID() );
+
+		// Topic header:
+		if ( $is_top_level ) {
+		     if ( $p->getTopic() )
+			  $wgOut->addWikiText( '=='.$p->getTopic().'==' );
+		     else
+			  $wgOut->addWikiText( '----' );
+		}
+
+
                 
                 $wgOut->addHTML( wfElement('a', array('name'=>"lqt_post_$t"), " " ) );
                 
@@ -63,7 +77,7 @@ class ThreadView {
                 }
 
                 if ( $this->editingId == $p->getID() ) {
-		     $this->showEditingForm($p, "?lqt_editing={$p->getID()}" );
+		     $this->showEditingForm($p, "?lqt_editing={$p->getID()}", $is_top_level );
 
                 } else {
                         $author = User::newFromName($p->originalAuthor(), false);
@@ -114,28 +128,76 @@ class ThreadView {
                 $wgOut->addHTML( wfCloseElement( 'div') );
         }
 
+	/* This function is called as a static in the middle of
+	 rendering the form in EditPage::showEditForm.  Since it's
+	 called as static, we pass in the current post with a static
+	 variable.  What this callback actually does is show the
+	 'topic' field. Cf. showEditingForm(), below. */
+	function topicCallback($wgOut) {
+	     global $wgRequest;
+
+	     $p = ThreadView::$callbackpost;
+	     $e = ThreadView::$callbackeditpage;
+	     
+	     // If the request already contains the variable we're
+	     // interested in, this is a preview or somesuch, so we
+	     // should ues that value. Otherwise, grab the existing
+	     // value from the database.
+	     if ( $wgRequest->getVal('lqt_topic') ) {
+		  $fvalue = $wgRequest->getVal('lqt_topic');
+	     } elseif ( $p->exists() ) {
+		  $fvalue = $p->getTopic() ? $p->getTopic() : '';
+	     } else {
+		  $fvalue = '';
+	     }
+
+
+	     // length and maxlength of field are as found in EditPage.
+	     $wgOut->addHTML( wfOpenElement( 'div', array('class'=>'lqt_topic_field') ) .
+			      wfLabel( 'Topic:', 'lqt_topic' ) .
+			      wfInput( 'lqt_topic', 60, $fvalue, array('maxlength'=>'200') ) .
+			      wfCloseElement( 'div' ));
+	     
+	}
         
-        function showEditingForm( $p, $query ) {
+        function showEditingForm( $p, $query, $is_top_level ) {
                 global $wgRequest, $wgOut;
+
                 $e = new EditPage($p);
                 $e->setAction(  $this->baseURL . $this->channelName . $query );
+		
+		if ( $is_top_level ) {
+		     ThreadView::$callbackpost = $p;
+		     ThreadView::$callbackeditpage = $e;
+		     $e->formCallback = array('ThreadView', 'topicCallback');
+		}
+
                 $e->edit();
+
+		// Override editpage's redirect.
                 if ($e->mDidRedirect) {
-		     // Override editpage's redirect.
 		     $t = $p->getTitle()->getPartialURL();
 		     $wgOut->redirect($this->baseURL.$this->channelName.'?lqt_highlight='.$t.'#lqt_post_'.$t);
                 }
+
                 // Insert new posts into the threading:
                 if ($e->mDidSave && $wgRequest->getVal("lqt_post_new", false)) {
 		     $channel_title = Title::newFromText($this->channelName);
 		     $p->insertAfter(new Post($channel_title));
                 }
+
                 // Insert replies into the threading:
                 $replying_to_id = $wgRequest->getVal("lqt_replying_to_id", null);
                 if ($e->mDidSave && $replying_to_id) {
 		     $reply_to_title = Title::newFromID( $replying_to_id );
 		     $p->insertAsReplyTo( new Post($reply_to_title) );
                 }
+
+		// Save new topic line if there is one:
+		if ( $e->mDidSave && $wgRequest->getVal('lqt_topic') ) {
+		     $v = Sanitizer::stripAllTags($wgRequest->getVal('lqt_topic'));
+		     $p->setTopic( $v );
+		}
         }
 
 
@@ -154,9 +216,11 @@ class ThreadView {
 
                 $p = new Post($new_title);
                 if ($reply_to) {
-		     $this->showEditingForm($p, "?lqt_replying_to_id=$reply_to&lqt_post_title={$new_title->getPartialURL()}");
+		     $this->showEditingForm($p, "?lqt_replying_to_id=$reply_to&lqt_post_title={$new_title->getPartialURL()}",
+					    false);
                 } else {
-		     $this->showEditingForm($p, "?lqt_post_new=1&lqt_post_title={$new_title->getPartialURL()}");
+		     $this->showEditingForm($p, "?lqt_post_new=1&lqt_post_title={$new_title->getPartialURL()}",
+					    true);
                 }
         }
         
@@ -167,9 +231,9 @@ class ThreadView {
          * @param $post Post The first top-level post in the thread.
          * @param $show_next bool If true, recursively show siblings; otherwise, only show replies underneath starting post.
          */
-        function renderThreadStartingFrom($post, $show_next = true) {
+        function renderThreadStartingFrom($post, $is_top_level = true, $show_next = true) {
 
-	     $this->render( $post );
+	     $this->render( $post, $is_top_level );
 
                 // Button to move a post to be the first reply of this post:
                 if ( $this->movingId &&
@@ -183,7 +247,7 @@ class ThreadView {
                 // Show existing replies:
                 if (  $post->firstReply() ) {
                         $this->indent();
-                        $this->renderThreadStartingFrom( $post->firstReply() );
+                        $this->renderThreadStartingFrom( $post->firstReply(), false );
                         $this->unindent();
                 }
 
@@ -203,7 +267,7 @@ class ThreadView {
 
                 // Show siblings:
                 if ( $show_next && $post->nextPost() ) {
-                        $this->renderThreadStartingFrom( $post->nextPost() );
+		     $this->renderThreadStartingFrom( $post->nextPost(), $is_top_level );
                 }
         }
 
