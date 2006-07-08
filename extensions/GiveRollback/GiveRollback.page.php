@@ -21,8 +21,6 @@ class GiveRollback extends SpecialPage {
 	 * Constructor
 	 */
 	function GiveRollback() {
-		global $wgMessageCache;
-		$wgMessageCache->addMessages( efGiveRollbackMessages() );	
 		SpecialPage::SpecialPage( 'Giverollback', 'giverollback' );
 	}
 	
