@@ -230,14 +230,14 @@ if( defined( 'MEDIAWIKI' ) ) {
 				# Prepare the comment
 				$comment = wfMsgForContent( 'patrol-reverting' ) . ( $comment ? ' (' . $comment . ')' : '' );
 				# Find the old revision
-				$old = $edit->mAttribs['rc_last_oldid'];
+				$old = (int)$edit->mAttribs['rc_last_oldid'];
 				$oldRev = Revision::newFromId( $old );
-				wfDebugLog( 'patroller', "Reverting " . $title->getPrefixedText() . " to r" . $oldRev->getId() );
 				# Be certain we're not overwriting a more recent change
 				# If we would, ignore it, and silently consider this change patrolled
-				$latest = $dbw->selectField( 'page', 'page_latest', array( 'page_id' => $title->getArticleId() ), __METHOD__ );
+				$latest = (int)$dbw->selectField( 'page', 'page_latest', array( 'page_id' => $title->getArticleId() ), __METHOD__ );
 				if( $old == $latest ) {
 					# Revert the edit; keep the reversion itself out of recent changes
+					wfDebugLog( 'patroller', "Reverting " . $title->getPrefixedText() . " to r" . $oldRev->getId() );
 					$article = new Article( $title );
 					$article->doEdit( $oldRev->getText(), $comment, EDIT_UPDATE & EDIT_MINOR & EDIT_SUPPRESS_RC );
 				}
