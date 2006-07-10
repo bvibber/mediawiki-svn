@@ -20,8 +20,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 			efPatrollerAddMessages( $wgMessageCache );
 			SpecialPage::SpecialPage( 'Patrol', 'patroller' );
 		}
-		
-		function execute() {
+
+		/**
+		 * @param $par Parameters used by SpecialPage. UNUSED.
+		 */
+		function execute( $par ) {
 			global $wgUser, $wgRequest, $wgOut;
 			$this->setHeaders();
 			
