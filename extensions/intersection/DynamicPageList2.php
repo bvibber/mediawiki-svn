@@ -42,7 +42,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'DynamicPageList2',
 	'author'=>'[http://en.wikinews.org/wiki/User:IlyaHaykinson IlyaHaykinson], [http://en.wikinews.org/wiki/User:Amgine Amgine], [http://de.wikipedia.org/wiki/Benutzer:Unendlich Unendlich], [http://meta.wikimedia.org/wiki/User:Dangerman Cyril Dangerville]',
 	'url'=>'http://meta.wikimedia.org/wiki/DynamicPageList2',
-	'description'=>'hack of the original [http://meta.wikimedia.org/wiki/DynamicPageList DynamicPageList] extension from DynamicPageList featuring many Improvements (requires the [http://meta.wikimedia.org/wiki/User:Joncutrer/Extensions/absHTML AbsHTML extension])',
+	'description'=>'hack of the original [http://meta.wikimedia.org/wiki/DynamicPageList DynamicPageList] extension from DynamicPageList featuring many Improvements',
   	'version'=>'0.5'
   );
 
@@ -82,7 +82,6 @@ function wfDynamicPageList2() {
 
 
 // The callback function for converting the input text to HTML output
-// TODO: use the parser and wiki text in the code for the output (instead of HTML)
 function DynamicPageList2( $input, $params, &$parser ) {
 
 	error_reporting(E_ALL);
