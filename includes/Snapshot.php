@@ -1,8 +1,19 @@
 <?php
 
 class Snapshot {
+	/**
+	 * Create an empty snapshot object
+	 */
 	function __construct() {
 		$this->mRevs = array();
+		$this->mRevisionId = 0;
+	}
+	
+	/**
+	 * Get the revision ID for the primary page resources, if stored.
+	 */
+	public function getSnapRevision() {
+		return $this->mRevisionId;
 	}
 	
 	/**
@@ -26,6 +37,19 @@ class Snapshot {
 	}
 	
 	/**
+	 * Store a page title <-> revision relationship in the snapshot
+	 * object. If saved to the database, this can be used in future
+	 * to pull the same versions of resources originally used.
+	 *
+	 * @param Title $title
+	 * @param int $revision
+	 */
+	public function addPage( $title, $revision ) {
+		$key = $title->getPrefixedDbKey();
+		$this->mRevs[$key] = $revision;
+	}
+	
+	/**
 	 * Load a particular snapshot out of the database.
 	 */
 	public static function newFromId( $snapId ) {
@@ -43,40 +67,99 @@ class Snapshot {
 				'snap_page' => $pageId,
 				'snap_tag' => $tag
 			),
-			array( 'ORDER BY' => 'snap_timestamp DESC' ) );
+			array(
+				'ORDER BY' => 'snap_timestamp DESC',
+				'LIMIT' => 1
+			)
+		);
+	}
+	
+	/**
+	 * Tag and save a page snapshot state to the database.
+	 * Returns the snapshot ID number.
+	 * @param int $pageId
+	 * @param string $tag
+	 * @return int
+	 */
+	public function insertTag( $pageId, $revId, $tag ) {
+		global $wgUser;
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin();
+		$dbw->insert( 'snapshot',
+			array(
+				'snap_page'      => $pageId,
+				'snap_rev'       => $revId,
+				'snap_tag'       => $tag,
+				'snap_timestamp' => $dbw->timestamp(),
+				'snap_user'      => $wgUser->getId(),
+			),
+			__METHOD__ );
+		$snapId = $dbw->insertId();
+
+		if( $this->mRevs ) {
+			$data = array();
+			foreach( $this->mRevs as $page => $rev ) {
+				// @fixme: hack
+				$title = Title::newFromText( $page );
+				$data[] = array(
+					'sr_snap'      => $snapId,
+					'sr_namespace' => $title->getNamespace(),
+					'sr_title'     => $title->getDbKey(),
+					'sr_rev'       => $rev
+				);
+			}
+			$dbw->insert( 'snapshot_revs', $data, __METHOD__ );
+		}
+		$dbw->commit();
+		
+		return $snapId;
 	}
 	
 	
 	/**
 	 * Load a Snapshot object from a particluar snapshot ID
+	 * @fixme fallback to master
 	 */
-	private static function fetchBy( $where, $options ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$revs = Snapshot::loadFromId( $dbr, $id );
+	private static function fetchBy( $where, $options=array() ) {
+		$db = wfGetDB( DB_SLAVE );
+		$row = $db->selectRow( 'snapshot',
+			array(
+				'snap_id',
+				'snap_page',
+				'snap_rev',
+				'snap_tag',
+				'snap_timestamp',
+				'snap_user'
+			),
+			$where,
+			__METHOD__,
+			$options );
 		
-		if( !$revs ) {
-			$dbw = wfGetDB( DB_MASTER );
-			$revs = Snapshot::loadFromId( $dbw, $id );
+		if( $row ) {
+			$snap = new Snapshot();
+			$snap->mRevisionId = $row->snap_rev;
+			$snap->linksFromId( $db, $row->snap_id );
+			return $snap;
 		}
-		
-		$this->mRevs = $revs;
 	}
 	
-	private static function loadFromId( $db, $id ) {
+	/**
+	 * Load frozen snapshot version data from database into this object
+	 * @param Database $db
+	 * @param int $id snapshot id
+	 */
+	private function linksFromId( $db, $id ) {
 		$result = $db->select( 'snapshot_revs',
 			array( 'sr_namespace', 'sr_title', 'sr_rev' ),
 			array( 'sr_snap' => $id ),
 			__METHOD__ );
 		
-		$revs = array();
 		while( $row = $db->fetchObject( $result ) ) {
 			$title = Title::makeTitle( $row->sr_namespace, $row->sr_title );
-			$key = $title->getPrefixedDbKey();
-			$revs[$key] = $row->sr_rev;
+			$this->addPage( $title, $row->sr_rev );
 		}
 		
 		$db->freeResult( $result );
-		return $revs;
 	}
 }
 

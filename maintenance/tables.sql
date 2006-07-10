@@ -1018,6 +1018,9 @@ CREATE TABLE /*$wgDBprefix*/snapshot (
   -- Key to page_id of the page being tagged
   snap_page INT,
   
+  -- Key to rev_id of the primary page tagged
+  snap_rev INT,
+  
   -- Tag identifier; machine-readable such as "reviewed"
   -- There may be multiple versions with a given tag on a given page,
   -- for updatable states where the latest with a given tag will be shown.

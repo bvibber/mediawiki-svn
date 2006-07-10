@@ -717,6 +717,26 @@ class Article {
 		}
 		
 		$outputDone = false;
+		
+		// BEGIN FILTHY HACK
+		$tag = $wgRequest->getVal( 'tag' );
+		if( $tag ) {
+			$snap = Snapshot::newFromTag( $this->getId(), $tag );
+			$revId = $snap->getSnapRevision();
+			$rev = Revision::newFromTitle( $this->mTitle, $revId );
+			$text = $rev->getText();
+			
+			$wgOut->setRevisionId( $revId );
+			$wgOut->setSnapshot( $snap );
+			$wgOut->addWikiText( "<div class=\"mw-tag-header\">" .
+				"This is tagged revision $revId</div>" );
+			$wgOut->addPrimaryWikiText( $text, $this, false );
+			
+			$pcache = false;
+			$outputDone = true;
+		}
+		// END FILTHY HACK
+		
 		if ( $pcache ) {
 			if ( $wgOut->tryParserCache( $this, $wgUser ) ) {
 				$outputDone = true;

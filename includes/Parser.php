@@ -271,10 +271,12 @@ class Parser
 		$this->mOptions = $options;
 		$this->mTitle =& $title;
 		
-		if( $revid != null ) {
+		$oldRevisionId = $this->mRevisionId;
+		if( $revid !== null ) {
 			$this->mRevisionId = $revid;
 		}
-		if( $snapshot != null ) {
+		$oldSnapshot = $this->mSnapshot;
+		if( $snapshot !== null ) {
 			$this->mSnapshot = $snapshot;
 		}
 		
@@ -358,6 +360,8 @@ class Parser
 		wfRunHooks( 'ParserAfterTidy', array( &$this, &$text ) );
 
 		$this->mOutput->setText( $text );
+		$this->mSnapshot = $oldSnapshot;
+		$this->mRevisionId = $oldRevisionId;
 		wfProfileOut( $fname );
 
 		return $this->mOutput;

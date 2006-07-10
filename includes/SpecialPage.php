@@ -129,6 +129,7 @@ class SpecialPage
 		'Revisiondelete'    => array( 'SpecialPage', 'Revisiondelete', 'deleterevision' ),
 		'Unusedtemplates'   => array( 'SpecialPage', 'Unusedtemplates' ),
 		'Randomredirect'    => array( 'SpecialPage', 'Randomredirect' ),
+		'Snapshot'          => array( 'SpecialPage', 'Snapshot', 'snapshot' ),
 	);
 
 	static public $mListInitialised = false;

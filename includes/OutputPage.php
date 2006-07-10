@@ -51,6 +51,7 @@ class OutputPage {
 		$this->mScripts = '';
 		$this->mETag = false;
 		$this->mRevisionId = null;
+		$this->mSnapshot = null;
 		$this->mNewSectionLink = false;
 	}
 	
@@ -274,6 +275,16 @@ class OutputPage {
 	}
 
 	/**
+	 * Set the version snapshot which will be seen by the wiki text parser
+	 * for embedded templates and image resources.
+	 * @param mixed $snapshot Snapshot object or null
+	 * @return mixed previous value
+	 */
+	function setSnapshot( $snapshot ) {
+		return wfSetVar( $this->mSnapshot, $snapshot );
+	}
+
+	/**
 	 * Convert wikitext to HTML and add it to the buffer
 	 * Default assumes that the current page title will
 	 * be used.
@@ -322,7 +333,8 @@ class OutputPage {
 
 		$this->mParserOptions->setTidy(true);
 		$parserOutput = $wgParser->parse( $text, $article->mTitle,
-			$this->mParserOptions, true, true, $this->mRevisionId );
+			$this->mParserOptions, true, true, $this->mRevisionId,
+			$this->mSnapshot );
 		$this->mParserOptions->setTidy(false);
 		if ( $cache && $article && $parserOutput->getCacheTime() != -1 ) {
 			$parserCache =& ParserCache::singleton();
