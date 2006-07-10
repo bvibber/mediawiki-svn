@@ -1325,7 +1325,7 @@ class Parser
 	 *        the URL differently; as a workaround, just use the output for
 	 *        statistical records, not for actual linking/output.
 	 */
-	function replaceUnusualEscapes( $url ) {
+	static function replaceUnusualEscapes( $url ) {
 		return preg_replace_callback( '/%[0-9A-Fa-f]{2}/',
 			array( 'Parser', 'replaceUnusualEscapesCallback' ), $url );
 	}
@@ -1336,7 +1336,7 @@ class Parser
 	 * @static
 	 * @private
 	 */
-	function replaceUnusualEscapesCallback( $matches ) {
+	private static function replaceUnusualEscapesCallback( $matches ) {
 		$char = urldecode( $matches[0] );
 		$ord = ord( $char );
 		// Is it an unsafe or HTTP reserved character according to RFC 1738?
@@ -4573,7 +4573,7 @@ class ParserOptions
 	 * Get parser options
 	 * @static
 	 */
-	function newFromUser( &$user ) {
+	static function newFromUser( &$user ) {
 		return new ParserOptions( $user );
 	}
 

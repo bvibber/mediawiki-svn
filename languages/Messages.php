@@ -981,6 +981,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'recentchangeslinked' => 'Related changes',
 'rclsub'		=> "(to pages linked from \"$1\")",
 'newpages'		=> 'New pages',
+'newpages-username' => 'Username:',
 'ancientpages'		=> 'Oldest pages',
 'intl'		=> 'Interlanguage links',
 'move' => 'Move',
@@ -1343,6 +1344,7 @@ Please confirm that this is what you intend to do.',
 'lockdbsuccesstext' => 'The database has been locked.
 <br />Remember to remove the lock after your maintenance is complete.',
 'unlockdbsuccesstext' => 'The database has been unlocked.',
+'lockfilenotwritable' => 'The database lock file is not writable. To lock or unlock the database, this needs to be writable by the web server.',
 
 # Make sysop
 'makesysoptitle'	=> 'Make a user into a sysop',
