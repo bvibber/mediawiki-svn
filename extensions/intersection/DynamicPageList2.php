@@ -1,9 +1,8 @@
 <?php
-
 /*
 
  Version:
-	Hack v0.4 (DynamicPageList2 is based on DynamicPageList)
+	Hack v0.5 (DynamicPageList2 is based on DynamicPageList)
 	
  Purpose:outputs a union of articles residing in a selection 
 				of categories and namespaces using configurable output- and
@@ -33,26 +32,28 @@
 	http://www.gnu.org/copyleft/gpl.html
 
  Installation:
-	To install, add following to LocalSettings.php
-   include("extensions/intersection/DynamicPageList2.php");
+	Add following to LocalSettings.php:
+		include("extensions/intersection/DynamicPageList2.php");
 */
 
-
-$wgDPL2MaxCategoryCount = 4;				// Maximum number of categories allowed in the Query
-$wgDPL2MinCategoryCount = 0;				// Minimum number of categories needed in the Query
-$wgDPL2MaxResultCount = 50;				// Maximum number of results to allow
-$wgDPL2MaxCategoryShortListResultCount = 10; // Maximum number of results to allow for a short list with mode=category, if max exceed, results output in a column list
-$wgDPL2AllowUnlimitedCategories = true;			// Allow unlimited categories in the Query
-$wgDPL2AllowUnlimitedResults = true;				// Allow unlimited results to be shown
 
 $wgExtensionFunctions[] = "wfDynamicPageList2";
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'DynamicPageList2',
 	'author'=>'[http://en.wikinews.org/wiki/User:IlyaHaykinson IlyaHaykinson], [http://en.wikinews.org/wiki/User:Amgine Amgine], [http://de.wikipedia.org/wiki/Benutzer:Unendlich Unendlich], [http://meta.wikimedia.org/wiki/User:Dangerman Cyril Dangerville]',
 	'url'=>'http://meta.wikimedia.org/wiki/DynamicPageList2',
-	'description'=>'hack of the original [http://meta.wikimedia.org/wiki/DynamicPageList DynamicPageList] extension from DynamicPageList featuring many Improvements',
-  	'version'=>'0.4'
+	'description'=>'hack of the original [http://meta.wikimedia.org/wiki/DynamicPageList DynamicPageList] extension from DynamicPageList featuring many Improvements (requires the [http://meta.wikimedia.org/wiki/User:Joncutrer/Extensions/absHTML AbsHTML extension])',
+  	'version'=>'0.5'
   );
+
+$wgDPL2MaxCategoryCount = 4;				// Maximum number of categories allowed in the Query
+$wgDPL2MinCategoryCount = 0;				// Minimum number of categories needed in the Query
+$wgDPL2MaxResultCount = 50;				// Maximum number of results to allow
+$wgDPL2CategoryStyleListCutoff = 6; //Max length to format a list of articles chunked by letter as bullet list, if list bigger, columnar format user (same as cutoff arg for CategoryPage::formatList())
+// Maximum number of results to allow for a short list with mode=category, if max exceed, results output in a column list
+$wgDPL2AllowUnlimitedCategories = true;			// Allow unlimited categories in the Query
+$wgDPL2AllowUnlimitedResults = true;				// Allow unlimited results to be shown
+
 
 function wfDynamicPageList2() {
 	global $wgParser, $wgMessageCache;
@@ -68,12 +69,14 @@ function wfDynamicPageList2() {
 					'dpl2_catoutputwithwrongordermethod'	=> "DynamicPageList2: You have to use 'ordermethod=title' or 'ordermethod=category' when using category-style output!",
 					'dpl2_addpagetoucheddatewithwrongordermethod' => "DynamicPageList2: You cannot use 'addpagetoucheddate=true' with 'ordermethod=firstedit' or 'ordermethod=lastedit' or 'ordermethod=categoryadd'.",
 					'dpl2_addeditdatewithwrongordermethod'	=> "DynamicPageList2: You have to use 'ordermethod=firstedit' or 'ordermethod=lastedit' when using 'addeditdate=true'.",
-					'dpl2_adduserwithwrongordermethod'	=> "DynamicPageList2: You have to use 'ordermethod=firstedit' or 'ordermethod=lastedit' when using 'adduser=true'.\n
-	TODO: allow 'adduser=true' for other order methods. 
-	In fact, a page may be edited by multiple users. Which user(s) should we show? all? the first or the last one?
-	Suggested solution: use values such as 'all', 'first' or 'last' for the adduser parameter."
+					'dpl2_adduserwithwrongordermethod'	=> "DynamicPageList2: You have to use 'ordermethod=firstedit' or 'ordermethod=lastedit' when using 'adduser=true'."
 					)
 				);
+	/*
+	TODO: allow 'adduser=true' for other order methods. 
+	In fact, a page may be edited by multiple users. Which user(s) should we show? all? the first or the last one?
+	Suggested solution: use values such as 'all', 'first' or 'last' for the adduser parameter.
+	*/
 	$wgParser->setHook( "DPL", "DynamicPageList2" );
 }
 
@@ -83,25 +86,19 @@ function wfDynamicPageList2() {
 function DynamicPageList2( $input, $params, &$parser ) {
 
 	error_reporting(E_ALL);
-
+	
+	global $wgUser, $wgContLang, $wgDPL2MaxCategoryCount, $wgDPL2MinCategoryCount, $wgDPL2MaxResultCount, $wgDPL2AllowUnlimitedCategories, $wgDPL2AllowUnlimitedResults;
+	
 	// INVALIDATE CACHE
 	$parser->disableCache();
-	
-	global $wgTitle;
-	global $wgOut;
-	global $wgUser;
-	global $wgLang;
-	global $wgContLang;
-	global $wgDPL2MaxCategoryCount, $wgDPL2MinCategoryCount, $wgDPL2MaxResultCount;
-	global $wgDPL2AllowUnlimitedCategories, $wgDPL2AllowUnlimitedResults;
 
 	$aParams = array();
-	$bCountSet = false;
 	
 	// Default Values
 	$sOrderMethod = 'title';
 	$sOrder = 'descending';	
-	$sOutputMode = 'unordered';	
+	$sPageOutputMode = 'unordered';
+	$sCatOutputMode = 'unordered';	
 	$sRedirects = 'exclude';
 	$sInlSymbol = '-';
 	$bShowNamespace = true;
@@ -111,17 +108,17 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$bAddEditDate = false;
 	$bAddUser = false;
 	$bAddCategories = false;
-	
+	$bCountSet = false;
 	$aaIncludeCategories = array();		// $aaIncludeCategories is a two 2-dimensional array: Memberarrays are linked using 'AND'
 	$aExcludeCategories = array();
 	$aNamespaces = array();
 	
-// ###### PARSE PARAMETERS ######
+	//Local parser created. See http://meta.wikimedia.org/wiki/MediaWiki_extensions_FAQ#How_do_I_render_wikitext_in_my_extension.3F
+	$localParser = new Parser();
+	$poptions = $parser->mOptions;	
 
+// ###### PARSE PARAMETERS ######
 	$aParams = explode("\n", $input);
-	
-	$parser = new Parser;
-	$poptions = new ParserOptions;
 	
 	foreach($aParams as $sParam) {
 		
@@ -137,7 +134,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				$aParams = explode("|", $sArg);
 				foreach($aParams as $sParam) {
 					$sParam=trim($sParam);
-					$title = Title::newFromText( $parser->transformMsg($sParam, $poptions) );
+					$title = Title::newFromText($localParser->transformMsg($sParam, $poptions));
 					if( $title != NULL )
 						$aCategories[] = $title;
 				}
@@ -146,7 +143,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				break;
 				
 			case 'notcategory':
-				$title = Title::newFromText( $parser->transformMsg($sParam, $poptions) );
+				$title = Title::newFromText($localParser->transformMsg($sArg, $poptions));
 				if( $title != NULL )
 					$aExcludeCategories[] = $title; 
 				break;
@@ -158,7 +155,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 					$sNS = $wgContLang->getNsIndex($sParam);
 					if ( $sNS != NULL )
 						$aNamespaces[] = $sNS;
-					elseif (intval($sParam)>=0)
+					elseif (intval($sParam) >= 0)
 						$aNamespaces[] = intval($sParam);
 				}
 				break;
@@ -169,11 +166,19 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				$bCountSet = true;
 				break;
 				
+			//mode for list of pages (possibly within a category if 'ordermethod=category', see 'categorymode' parameter)
 			//TODO: solve the issue: addpagetoucheddate, addeditdate, adduser, addcategories have no effect with 'mode=category'
 			case 'mode':
 				if ( in_array($sArg, array('none','ordered','unordered','category','inline')) )
-					$sOutputMode = $sArg;
+					$sPageOutputMode = $sArg;
 				break;
+				
+			//mode at the category level, used with ordermethod=category only: 
+			//ordered, unordered, definition list, or section, subsection, sub-subsection, etc.
+			case 'categorymode':
+				if ( in_array($sArg, array('ordered','unordered','definition')) || preg_match('/^((sub-)*sub)?section$/', $sArg))
+					$sCatOutputMode = $sArg;
+				break;	
 				
 			case 'inlinesymbol':
 				$sInlSymbol = strip_tags($sArg);
@@ -265,7 +270,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 		return htmlspecialchars( wfMsg( 'dpl2_addmorethanonetypeofdate' ) );
 
 	// category-style output requested but not ordermethod=title!!
-	if ($sOutputMode == 'category' && $sOrderMethod != 'title' && $sOrderMethod != 'category')
+	if ($sPageOutputMode == 'category' && $sOrderMethod != 'title' && $sOrderMethod != 'category')
 		return htmlspecialchars( wfMsg( 'dpl2_catoutputwithwrongordermethod' ) );
 	
 	// addpagetoucheddate=true with unappropriate order methods
@@ -303,12 +308,17 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$sPageTable = $dbr->tableName( 'page' );
 	$sSqlPage_touched = '';
 	$sCategorylinksTable = $dbr->tableName( 'categorylinks' );
-	$sSqlCl_to = ''; $sSqlCats = ''; $sSqlCl_timestamp = '';
-	$sSqlCl1Table = ''; $sSqlCond_page_cl1 = ''; 
-	$sSqlCl2Table = ''; $sSqlCond_page_cl2 = '';	
+	$sSqlCl_to = ''; 
+	$sSqlCats = ''; 
+	$sSqlCl_timestamp = '';
+	$sSqlCl1Table = ''; 
+	$sSqlCond_page_cl1 = ''; 
+	$sSqlCl2Table = ''; 
+	$sSqlCond_page_cl2 = '';	
 	$sRevisionTable = $dbr->tableName( 'revision' );
 	$sSqlRevision = '';
-	$sSqlRev_timestamp = ''; $sSqlRev_user = '';
+	$sSqlRev_timestamp = ''; 
+	$sSqlRev_user = '';
 	$sSqlCond_page_rev = '';
 	
 	switch ($sOrderMethod) {
@@ -331,7 +341,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	
 	if ($bAddFirstCategoryDate)
 		//format cl_timestamp field (type timestamp) to string in same format as rev_timestamp field
-		//to make it compatible with $wgLang->date() function used later to show "firstcategorydate"
+		//to make it compatible with $wgLang->date() function used in function DPL2OutputListStyle() to show "firstcategorydate"
 		$sSqlCl_timestamp = ", DATE_FORMAT( c1.cl_timestamp, '%Y%m%d%H%i%s' ) AS cl_timestamp";	
 	if ($bAddPageTouchedDate)
 		$sSqlPage_touched = ', page_touched';	
@@ -344,10 +354,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	}
 	
 	// SELECT ... FROM
-	if ($iTotalIncludeCatCount == 1) 
-		$sSqlSelectFrom = "SELECT DISTINCT " . $sSqlCl_to . "page_namespace, page_title" . $sSqlPage_touched . $sSqlRev_timestamp . $sSqlRev_user . $sSqlCats . $sSqlCl_timestamp . " FROM " . $sSqlRevision . $sPageTable;
-	else
-		$sSqlSelectFrom = "SELECT DISTINCT " . $sSqlCl_to . "page_namespace, page_title" . $sSqlPage_touched . $sSqlRev_timestamp . $sSqlRev_user . $sSqlCats . " FROM " . $sSqlRevision . $sPageTable;
+	$sSqlSelectFrom = "SELECT DISTINCT " . $sSqlCl_to . "page_namespace, page_title" . $sSqlPage_touched . $sSqlRev_timestamp . $sSqlRev_user . $sSqlCats . $sSqlCl_timestamp . " FROM " . $sSqlRevision . $sPageTable;
 	
 	// JOIN ...	
 	if($bAddCategories || $sOrderMethod=='category') {
@@ -430,11 +437,10 @@ function DynamicPageList2( $input, $params, &$parser ) {
 // ###### PROCESS SQL QUERY ######
 	$output = '';
 	//DEBUG: output SQL query 
-	//$output = 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br />";    
+	//$output .= 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br/>";    
 	//echo 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br />";    	
 
 	$res = $dbr->query($sSqlSelectFrom . $sSqlWhere);
-	$sk =& $wgUser->getSkin();
 	if ($dbr->numRows( $res ) == 0) {
 		if (!$bSuppressErrors)
 			return htmlspecialchars( wfMsg( 'dpl2_noresults' ) );
@@ -442,182 +448,212 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			return '';
 	}
 	
-	// generate link to Special:Contributions (used if adduser=true)
-	$contribsPage =& Title::makeTitle( NS_SPECIAL, 'Contributions' );
-	// generate link to Special:Categories (used if addcategories=true)
-	$catsPage = & Title::makeTitle( NS_SPECIAL, 'Categories' );
-	$catsLink = $sk->makeLinkObj( $catsPage, $catsPage->getText() );
+	$sk =& $wgUser->getSkin();
 	// generate link to Special:Uncategorizedpages (used if ordermethod=category)
-	$uncatPage = & Title::makeTitle( NS_SPECIAL, 'Uncategorizedpages' );
-	$uncatLink = $sk->makeLinkObj( $uncatPage, wfMsg('uncategorizedpages') );
-	$aCategories = array(); //maps index of category start (in page list) to category link/heading (string)
-	$row_idx = 0;
+	$tSpecUncat = & Title::makeTitle( NS_SPECIAL, 'Uncategorizedpages' );
+	$sSpecUncatLnk = $sk->makeKnownLinkObj( $tSpecUncat, wfMsg('uncategorizedpages') );
+	// generate title for Special:Contributions (used if adduser=true)
+	$tSpecContribs =& Title::makeTitle( NS_SPECIAL, 'Contributions' );
 	
+	$aCategories = array();
+	$aArticles = array();
+	$aArticles_start_char =array();
+	$aAddDates = array();
+	$aAddUsers = array();
+	$aAddCategories = array();
 	while( $row = $dbr->fetchObject ( $res ) ) {	
-		//CATEGORY LINKS IN HEADINGS IF ORDER BY CATEGORY
-		if ( ($sOrderMethod=='category') && ( !isset($curCat) || (!empty($row) && ($row->cl_to!=$curCat)) ) ) { //first line (no current category) or new category (or uncategorized) begins -> get category link
-			if(empty($row->cl_to)) { //uncategorized pages 
-				$curCat= '';
-				$catLink = $uncatLink;
+		//CATEGORY LINKED TO (per page) IF ORDER BY CATEGORY
+		if($sOrderMethod == 'category') { 
+			if(empty($row->cl_to)) { //uncategorized page
+				$aCategories[] = $sSpecUncatLnk; 
 			} else {
-				$curCat = $row->cl_to;
-				$catPage = & Title::makeTitle(NS_CATEGORY, $curCat);
-				$catLink = $sk->makeLinkObj( $catPage, $catPage->gettext() );
+				$tCat = & Title::makeTitle(NS_CATEGORY, $row->cl_to);
+				$aCategories[] = $sk->makeKnownLinkObj($tCat, $wgContLang->convertHtml($tCat->getText()));
 			}
-			$aCategories[$row_idx] = "<h2>$catLink</h2>"; // add row index as key where category starts
-		}
+		} else
+			$aCategories[] = '';
 			
-		//NAMESPACE IN ARTICLE LINK
-		$title = Title::makeTitle( $row->page_namespace, $row->page_title);
+		//PAGE LINK
+		$title = & Title::makeTitle($row->page_namespace, $row->page_title);
 		if ($bShowNamespace)
-			$sLink = $sk->makeKnownLinkObj($title);
+			$aArticles[] = $sk->makeKnownLinkObj($title);
 		else
-			$sLink = $sk->makeKnownLinkObj($title, $wgContLang->convertHtml($title->getText()));
-		
-		//ARTICLE LINK
-		$aArticles[] = $sLink;
+			$aArticles[] = $sk->makeKnownLinkObj($title, $wgContLang->convertHtml($title->getText()));
 		//get first char used for category-style output
-		$aArticles_start_char[] = $wgContLang->convert( $wgContLang->firstChar($row->page_title) );
+		$aArticles_start_char[] = $wgContLang->convert($wgContLang->firstChar($row->page_title));
 			
 		//SHOW "PAGE_TOUCHED" DATE, "FIRSTCATEGORYDATE" OR (FIRST/LAST) EDIT DATE
 		if($bAddPageTouchedDate)
-			$aAddDates[] = $wgLang->date($row->page_touched) . ': ';
+			$aAddDates[] = $row->page_touched;
 		elseif ($bAddFirstCategoryDate)
-			$aAddDates[] = $wgLang->date($row->cl_timestamp) . ': ';
+			$aAddDates[] = $row->cl_timestamp;
 		elseif ($bAddEditDate)	
-			$aAddDates[] = $wgLang->date($row->rev_timestamp) . ': ';
+			$aAddDates[] = $row->rev_timestamp;
 		else
 			$aAddDates[] = '';	
 		
 		//USER/AUTHOR
 		if($bAddUser) {
-			if ( 0 == $row->rev_user ) {
-				$aAddUsers[] = ' . . ' . $sk->makeLinkObj( $contribsPage, $row->rev_user_text, 'target=' . $row->rev_user_text );
+			if($row->rev_user == 0) { //anonymous user
+				$aAddUsers[] = $sk->makeKnownLinkObj($tSpecContribs, $row->rev_user_text, 'target=' . $row->rev_user_text);
 			} else {
-				$userPage =& Title::makeTitle( NS_USER, $row->rev_user_text );
-				$aAddUsers[] = ' . . ' . $sk->makeLinkObj( $userPage, htmlspecialchars( $row->rev_user_text ) );
+				$tUser =& Title::makeTitle( NS_USER, $row->rev_user_text );
+				/*
+				The user's page may not exist (->"bad" red link), makeLinkObj() executes a DB query to check that out
+				TODO: optimize with a LinkBatch on the user titles to get good (user page exists) and bad links,
+				then use makeKnownLinkObj() for good links (user page exists), makeBrokenLinkObj() on bad ones
+				*/
+				$aAddUsers[] = $sk->makeLinkObj($tUser, $wgContLang->convertHtml($tUser->getText()));
 			}
 		} else
 			$aAddUsers[] = '';
 		
-		//CATEGORY LINKS PER ARTICLE 
+		//CATEGORY LINKS PER PAGE 
 		if(!$bAddCategories || empty($row->cats)) 
 			$aAddCategories[] = '';
 		else {
 			$artCatNames = explode(' | ', $row->cats);
 			$artCatLinks = array();
-			foreach($artCatNames as $catName) {
-				$catPage = & Title::makeTitle(NS_CATEGORY, $catName);
-				$artCatLinks[] = $sk->makeLinkObj( $catPage, $catPage->getText() );
+			foreach($artCatNames as $artCatName) {
+				$tArtCat = & Title::makeTitle(NS_CATEGORY, $artCatName);
+				/*
+				TODO: see TODO comment for user pages above
+				*/
+				$artCatLinks[] = $sk->makeLinkObj($tArtCat, $wgContLang->convertHtml($tArtCat->getText()));
 			}
-			$aAddCategories[] = $catsLink.': '.implode(' | ', $artCatLinks);
+			$aAddCategories[] = $artCatLinks;
 		}
-		$row_idx++;			
 	}
 	$dbr->freeResult( $res );
 	
 
-// ###### SHOW OUTPUT ######
-//(String concatenation for output in case the lines for debugging SQL query are used.
-//See above for these lines.)
-	if ($sOutputMode == 'category')
-		$output .= DPL2OutputCategoryStyle( $aCategories, $aArticles, $aArticles_start_char );
+// ###### SHOW OUTPUT ######	
+	if($sOrderMethod == 'category') {
+		$catMode = new DPL2OutputMode($sCatOutputMode);
+		$aCatCounts = array_count_values($aCategories); //count articles per category
+		$output .= $catMode->sStartList; 
+		$catStart = 0;
+		foreach($aCatCounts as $cat => $catCount) {
+			$output .= $catMode->sStartItem;
+			$output .= $catMode->sStartHeading . $cat . $catMode->sEndHeading;
+			$output .= '<p>' . DPL2FormatCount($catCount, 'categoryarticlecount') . '</p>';
+			if ($sPageOutputMode == 'category')
+				$output .= DPL2OutputCategoryStyle($aArticles, $aArticles_start_char, $catStart, $catCount);
+			else
+				$output .= DPL2OutputListStyle($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sPageOutputMode, $sInlSymbol, $catStart, $catCount);
+			$output .= $catMode->sEndItem;
+			$catStart += $catCount;
+		}
+		$output .= $catMode->sEndList;
+	} elseif($sPageOutputMode == 'category')
+		$output .= DPL2OutputCategoryStyle($aArticles, $aArticles_start_char, 0, count($aArticles));
 	else
-		$output .= DPL2OutputListStyle( $aCategories, $aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sOutputMode, $sInlSymbol ); 
-		
+		$output .= DPL2OutputListStyle($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sPageOutputMode, $sInlSymbol, 0, count($aArticles));
+
 	return $output;
 }
 
-function DPL2OutputListStyle ($aCategories, $aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sOutputMode, $sInlSymbol ) {
+
+function DPL2OutputListStyle ($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sOutputMode, $sInlSymbol, $iStart, $iCount) {	
+	global $wgUser,  $wgLang;
 	
-	switch ($sOutputMode) {
-		case 'none':
-			$sStartList = '';
-			$sEndList = '';
-			$sStartItem = '';
-			$sEndItem = '<br />';
-			$bAddLastEndItem = false;
-			break;
-		case 'inline':
-			$sStartList = '';
-			$sEndList = '';
-			$sStartItem = '';
-			$sEndItem = ' ' . $sInlSymbol . ' ';
-			$bAddLastEndItem=false;
-			break;
-		case 'ordered':
-			$sStartList = '<ol>';
-			$sEndList = '</ol>';
-			$sStartItem = '<li>';
-			$sEndItem = '</li>';
-			$bAddLastEndItem=true;
-			break;
-		case 'unordered':
-		default:
-			$sStartList = '<ul>';
-			$sEndList = '</ul>';
-			$sStartItem = '<li>';
-			$sEndItem = '</li>';
-			$bAddLastEndItem=true;
-			break;
-	}		
+	$sk = & $wgUser->getSkin();
+	// generate link to Special:Categories (used if addcategories=true)
+	$tSpecCats = & Title::makeTitle( NS_SPECIAL, 'Categories' );
+	$sSpecCatsLnk = $sk->makeKnownLinkObj( $tSpecCats, wfMsg('categories'));
 	
+	$mode = new DPL2OutputMode($sOutputMode, $sInlSymbol);
 	//process results of query, outputing equivalent of <li>[[Article]]</li> for each result,
 	//or something similar if the list uses other startlist/endlist;
-	$r = $sStartList . "\n";
-	for ($i=0; $i<count($aArticles); $i++) {
-		if(isset($aCategories[$i])) //if this is index of category start 
-			$r .= $sEndList."\n".$aCategories[$i]."\n".$sStartList . "\n";
-		$r .= $sStartItem . $aAddDates[$i] . $aArticles[$i] . $aAddUsers[$i];
-		if(!empty($aAddCategories[$i])) {
-			if($sOutputMode=='inline' || $sOutputMode=='none')
-				$r .= '<font size=-2> ('.$aAddCategories[$i].')</font>';
-			else $r .= '<font size=-2><br />'.$aAddCategories[$i].'</font>';
-		}
-		if ($i<count($aArticles)-1 || $bAddLastEndItem==true)
-			$r .= $sEndItem;
-		$r .= "\n";
+	$r = $mode->sStartList;
+	for ($i = $iStart; $i < $iStart+$iCount; $i++) {
+		$r .= $mode->sStartItem;
+		if(!empty($aAddDates[$i]))
+			$r .=  $wgLang->date($aAddDates[$i]) . ': ';
+		$r .= $aArticles[$i];
+		if(!empty($aAddUsers[$i]))
+			$r .= ' . . ' . $aAddUsers[$i];
+		if(!empty($aAddCategories[$i]))
+			$r .= ' . . <small>' . $sSpecCatsLnk . ': ' . implode(' | ', $aAddCategories[$i]) . '</small>';
+		if( (($mode->name != 'inline') && ($mode->name != 'none')) || ($i < $iCount-1)) //no inline symbol (inline mode) at end of list
+			$r .= $mode->sEndItem;
 	}
-	$r .= $sEndList . "\n";
-
+	$r .= $mode->sEndList;	
 	return $r;
 }
 
-function DPL2OutputCategoryStyle($aCategories, $aArticles, $aArticles_start_char) { 
-
-	global $wgDPL2MaxCategoryShortListResultCount;
-	require_once ('CategoryPage.php');
+//slightly different from CategoryPage::formatList() (no need to instantiate a CategoryPage object)
+function DPL2OutputCategoryStyle($aArticles, $aArticles_start_char, $iStart, $iCount) {
+	global $wgDPL2CategoryStyleListCutoff;
 	
-	if(empty($aCategories)) {
-		$ret = count ($aArticles).' article(s) listed.';
-		//You can decide to uncomment the line below and use it instead of the previous one, more generic.
-		//However, this message makes sense only if category parameter is used, and with one category.
-		// $ret = CategoryPage::formatCount( $aArticles, 'categoryarticlecount' );
-		if ( count ($aArticles) > $wgDPL2MaxCategoryShortListResultCount )
-			$ret .= CategoryPage::columnList( $aArticles, $aArticles_start_char );
-		elseif ( count($aArticles) > 0)
-			$ret .= CategoryPage::shortList( $aArticles, $aArticles_start_char );
-	} else {
-		$aCatStarts = array_keys($aCategories);
-		$ret = '';		
-		foreach($aCatStarts as $i => $catStart) {
-			$ret .= $aCategories[$catStart]."\n";
-			if($i==count($aCatStarts)-1) {
-				$aCatArticles = array_slice($aArticles, $catStart);
-				$aCatArticles_start_char = array_slice($aArticles_start_char, $catStart);
-			} else {
-				$aCatArticles = array_slice($aArticles, $catStart, $aCatStarts[$i+1] - $catStart);
-				$aCatArticles_start_char = array_slice($aArticles_start_char, $catStart, $aCatStarts[$i+1] - $catStart);
-			}
-			$ret .= CategoryPage::formatCount( $aCatArticles, 'categoryarticlecount' );
-			if ( count ($aCatArticles) > $wgDPL2MaxCategoryShortListResultCount )
-				$ret .= CategoryPage::columnList( $aCatArticles, $aCatArticles_start_char );
-			elseif ( count($aCatArticles) > 0)
-				$ret .= CategoryPage::shortList( $aCatArticles, $aCatArticles_start_char );
-		}
+	$subaArticles = array_slice($aArticles, $iStart, $iCount);
+	$subaArticles_start_char = array_slice($aArticles_start_char, $iStart, $iCount);
+	require_once ('CategoryPage.php');
+	if ( count ( $subaArticles ) > $wgDPL2CategoryStyleListCutoff ) {
+		return CategoryPage::columnList( $subaArticles, $subaArticles_start_char );
+	} elseif ( count($subaArticles) > 0) {
+		// for short lists of articles in categories.
+		return CategoryPage::shortList( $subaArticles, $subaArticles_start_char );
 	}
-
-	return $ret;
+	return '';
 }
 	
+	
+//slightly different from CategoryPage::formatCount() (first argument is the number not an array)
+function DPL2FormatCount( $numart, $message ) {
+	global $wgContLang;
+	if( $numart == 1 ) {
+		# Slightly different message to avoid silly plural
+		$message .= '1';
+	}
+	return wfMsg( $message, $wgContLang->formatNum( $numart ) );
+}
+	
+	
+class DPL2OutputMode {
+	var $name;
+	var $sStartList = '';
+	var $sEndList = '';
+	var $sStartHeading = '';
+	var $sEndHeading = '';
+	var $sStartItem = '';
+	var $sEndItem = '';
+	
+	function DPL2OutputMode($outputmode, $inlinesymbol = '-') {
+		$this->name = $outputmode;
+		switch ($outputmode) {
+			case 'none':
+				$this->sEndItem = '<br/>';
+				break;
+			case 'inline':
+				$this->sEndItem = ' ' . $inlinesymbol . ' ';
+				break;
+			case 'ordered':
+				$this->sStartList = '<ol>';
+				$this->sEndList = '</ol>';
+				$this->sStartItem = '<li>';
+				$this->sEndItem = '</li>';
+				break;
+			case 'unordered':
+				$this->sStartList = '<ul>';
+				$this->sEndList = '</ul>';
+				$this->sStartItem = '<li>';
+				$this->sEndItem = '</li>';
+				break;
+			case 'definition':
+				$this->sStartList = '<dl>';
+				$this->sEndList = '</dl>';
+				$this->sStartHeading = '<dt>';
+				$this->sEndHeading = '</dt><dd>';
+				$this->sEndItem = '</dd>';
+				break;
+			default:
+				if(preg_match('/^((sub-)*sub)?section$/', $outputmode)) {
+					$level = 2 + preg_match_all('/sub/', $outputmode, $matches);
+					$this->sStartHeading = '<h' . $level . '>';
+					$this->sEndHeading = '</h' . $level . '>';
+				}
+		}
+	}
+}
 ?>
