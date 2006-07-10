@@ -1033,7 +1033,7 @@ CREATE TABLE /*$wgDBprefix*/snapshot (
   KEY (snap_page, snap_tag, snap_timestamp),
   
   -- Allow lookup of tags by a given user
-  KEY (snap_user, snap_timestamp),
+  KEY (snap_user, snap_timestamp)
   
 ) TYPE=InnoDB;
 
