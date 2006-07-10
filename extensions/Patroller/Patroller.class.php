@@ -21,9 +21,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 			SpecialPage::SpecialPage( 'Patrol', 'patroller' );
 		}
 
-		/**
-		 * @param $par Parameters used by SpecialPage. UNUSED.
-		 */
 		function execute( $par ) {
 			global $wgUser, $wgRequest, $wgOut;
 			$this->setHeaders();
