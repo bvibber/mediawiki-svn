@@ -146,6 +146,7 @@ function __autoload($className) {
 		'MediaWiki_I18N' => 'includes/SkinTemplate.php',
 		'SkinTemplate' => 'includes/SkinTemplate.php',
 		'QuickTemplate' => 'includes/SkinTemplate.php',
+		'Snapshot' => 'includes/Snapshot.php',
 		'SpecialAllpages' => 'includes/SpecialAllpages.php',
 		'AncientPagesPage' => 'includes/SpecialAncientpages.php',
 		'IPBlockForm' => 'includes/SpecialBlockip.php',

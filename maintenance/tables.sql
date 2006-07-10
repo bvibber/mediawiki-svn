@@ -1009,4 +1009,56 @@ UNIQUE KEY ( qci_type )
 
 ) TYPE=InnoDB;
 
+-- Information on tagged page revisions
+CREATE TABLE /*$wgDBprefix*/snapshot (
+  -- Unique id of snapshot state
+  snap_id INT auto_increment PRIMARY KEY,
+  
+  -- Key to page_id of the page being tagged
+  snap_page INT,
+  
+  -- Tag identifier; machine-readable such as "reviewed"
+  -- There may be multiple versions with a given tag on a given page,
+  -- for updatable states where the latest with a given tag will be shown.
+  snap_tag VARCHAR(16) BINARY,
+  
+  -- Time at which the thingy was snapped
+  snap_timestamp CHAR(14) BINARY,
+  
+  -- Key to user_id of tagger
+  snap_user INT,
+  
+  -- Allow lookup of the latest given tag
+  KEY (snap_page, snap_tag, snap_timestamp),
+  
+  -- Allow lookup of tags by a given user
+  KEY (snap_user, snap_timestamp),
+  
+) TYPE=InnoDB;
+
+-- Stores the revision number of each resource on a page state snapshot
+-- Includes the primary page and all its included templates.
+-- This allows a stable page snapshot to avoid sucking in vandalized templates.
+-- Currently does not apply to image & media versions; when that's handled more
+-- cleanly another table perhaps will have to be added.
+CREATE TABLE /*$wgDBprefix*/snapshot_revs (
+  -- Key to snap_id
+  sr_snap INT,
+  
+  -- Key to page_namespace, page_title
+  sr_namespace INT,
+  sr_title VARCHAR(255) BINARY,
+  
+  -- Key to rev_id
+  sr_rev INT,
+  
+  -- Main key for grabbing data
+  KEY (sr_snap)
+  
+  -- Allow lookup by page to clear caches on deletion... ?
+  -- Allow lookup by revision to clear caches on deletion... ?
+  
+) TYPE=InnoDB;
+
+
 -- vim: sw=2 sts=2 et

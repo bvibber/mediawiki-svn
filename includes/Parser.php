@@ -11,7 +11,7 @@
  * changes in an incompatible way, so the parser cache
  * can automatically discard old data.
  */
-define( 'MW_PARSER_VERSION', '1.6.1' );
+define( 'MW_PARSER_VERSION', '1.8alpha' );
 
 /**
  * Variable substitution O(N^2) attack
@@ -210,6 +210,7 @@ class Parser
 			'titles' => array()
 		);
 		$this->mRevisionId = null;
+		$this->mSnapshot = new Snapshot();
 		
 		/**
 		 * Prefix for temporary replacement strings for the multipass parser.
@@ -250,9 +251,10 @@ class Parser
 	 * @param boolean $linestart
 	 * @param boolean $clearState
 	 * @param int $revid number to pass in {{REVISIONID}}
+	 * @param Snapshot $snapshot <- this is a damn dirty hack, fix up this interface it's awful
 	 * @return ParserOutput a ParserOutput
 	 */
-	function parse( $text, &$title, $options, $linestart = true, $clearState = true, $revid = null ) {
+	function parse( $text, &$title, $options, $linestart = true, $clearState = true, $revid = null, $snapshot = null ) {
 		/**
 		 * First pass--just handle <nowiki> sections, pass the rest off
 		 * to internalParse() which does all the real work.
@@ -268,7 +270,14 @@ class Parser
 
 		$this->mOptions = $options;
 		$this->mTitle =& $title;
-		$this->mRevisionId = $revid;
+		
+		if( $revid != null ) {
+			$this->mRevisionId = $revid;
+		}
+		if( $snapshot != null ) {
+			$this->mSnapshot = $snapshot;
+		}
+		
 		$this->mOutputType = OT_HTML;
 
 		//$text = $this->strip( $text, $this->mStripState );
@@ -2993,11 +3002,13 @@ class Parser
 		$text = false;
 		// Loop to fetch the article, with up to 1 redirect
 		for ( $i = 0; $i < 2 && is_object( $title ); $i++ ) {
-			$rev = Revision::newFromTitle( $title );
+			$rev = Revision::newFromTitle( $title,
+				$this->mSnapshot->getPageRevision( $title ) );
 			$this->mOutput->addTemplate( $title, $title->getArticleID() );
 			if ( !$rev ) {
 				break;
 			}
+			$this->mOutput->addSnapshotPage( $title, $rev->getId() );
 			$text = $rev->getText();
 			if ( $text === false ) {
 				break;
@@ -4422,6 +4433,7 @@ class ParserOutput
 		$this->mSubtitle = "" ;
 		$this->mNewSection = false;
 		$this->mNoGallery = false;
+		$this->mSnapshot = new Snapshot();
 	}
 
 	function getText()                   { return $this->mText; }
@@ -4435,6 +4447,7 @@ class ParserOutput
 	function &getImages()                { return $this->mImages; }
 	function &getExternalLinks()         { return $this->mExternalLinks; }
 	function getNoGallery()              { return $this->mNoGallery; }
+	function getSnapshot()               { return clone( $this->mSnapshot ); }
 
 	function containsOldMagic()          { return $this->mContainsOldMagic; }
 	function setText( $text )            { return wfSetVar( $this->mText, $text ); }
@@ -4472,6 +4485,10 @@ class ParserOutput
 			$this->mTemplates[$ns] = array();
 		}
 		$this->mTemplates[$ns][$dbk] = $id;
+	}
+	
+	function addSnapshotPage( $title, $rev ) {
+		$this->mSnapshot->addPage( $title, $rev );
 	}
 
 	/**
