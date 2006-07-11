@@ -91,7 +91,7 @@ function getSuggestions() {
 			break;	
 	}
 	
-	return getRelationAsSuggestionTable($editor, $prefix .'table', new TupleStack(), $relation);
+	return getRelationAsSuggestionTable($editor, new IdStack($prefix .'table'), $relation);
 }
 
 function getSQLForCollectionOfType($collectionType) {

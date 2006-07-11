@@ -99,21 +99,27 @@
 
 /* Toggle */
 
-table.toggle {
-	padding: 0px;
-	margin: 0px;
-}
-
-table.toggle td {
-	vertical-align: top;
-}
-
 .toggle {
 	cursor: pointer;
+	text-indent: 0px;
+	margin: 0px;
 	/*color: #000000;
 	border-width: 1px;
 	border-color: #AAAAAA;
 	border-style: dotted;
 	padding-left: 0px;
 	font-size: 80%;*/
+}
+
+/* Attribute list */
+
+ul.collapsable-items {
+	list-style: none;
+	list-style-image: none;
+	list-style-type: none;
+}
+
+.collapsable-items .toggle {
+	margin-left: 0px;
+	text-indent: 0px;
 }

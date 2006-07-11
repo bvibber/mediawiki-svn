@@ -13,7 +13,7 @@ function addWikiDataBlock($id, $title, $content, $expanded) {
 	}
 		
  	$wgOut->addHTML('<div class="wiki-data-block">'.
-					'<h4 id="collapse-'. $id .'" class="toggle" onclick="toggle(this, event);">'. $character . ' '. $title . '</h4>' .
+					'<h3 id="collapse-'. $id .'" class="toggle" onclick="toggle(this, event);">'. $character . ' '. $title . '</h3>' .
 					'<div id="collapsable-'. $id . '"'. $style .'>' . $content . '</div>' .
 					'</div>');
 }

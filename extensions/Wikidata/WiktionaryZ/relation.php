@@ -22,6 +22,10 @@ class ArrayRelation implements Relation {
 		$this->key = $key;
 	}
 	
+	public function add($tuple) {
+		$this->tuples[] = $tuple;
+	}
+
 	public function addTuple($values) {
 		$tuple = new ArrayTuple($this->heading);
 		$tuple->setAttributeValuesByOrder($values);

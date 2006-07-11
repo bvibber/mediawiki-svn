@@ -80,69 +80,79 @@ function getHeadingAsTableHeaderRows($heading) {
 	return $result;
 }
 
-function getTupleAsTableCells($id, $keyPath, $editor, $tuple, &$startColumn = 0) {
+function getTupleAsTableCells($idPath, $editor, $tuple, &$startColumn = 0) {
 	$result = '';
 	
 	foreach($editor->getEditors() as $childEditor) {
 		$attribute = $childEditor->getAttribute();
 		$type = $attribute->type;
 		$value = $tuple->getAttributeValue($attribute);
+		$idPath->pushAttribute($attribute);
+		$attributeId = $idPath->getId();
 		
 		if (is_a($childEditor, TupleTableCellEditor)) 
-			$result .= getTupleAsTableCells($id . '-' . $attribute->id, $keyPath, $childEditor, $value, $startColumn);	
+			$result .= getTupleAsTableCells($idPath, $childEditor, $value, $startColumn);	
 		else {
 			if (is_a($type, RelationType)) 
 				$class = "relation";
 			else 
 				$class = $type;
 			
-			$displayValue = $childEditor->view($id, $keyPath, $value);
+			$displayValue = $childEditor->view($idPath, $value);
 			$result .= '<td class="'. $class .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
 			$startColumn++;
 		}
+		
+		$idPath->popAttribute();
 	}
 	
 	return $result;
 }
 
-function getTupleAsEditTableCells($tuple, $id, $keyPath, $editor, &$startColumn = 0) {
+function getTupleAsEditTableCells($tuple, $idPath, $editor, &$startColumn = 0) {
 	$result = '';
 	
 	foreach($editor->getEditors() as $childEditor) {
 		$attribute = $childEditor->getAttribute();
 		$type = $attribute->type;
 		$value = $tuple->getAttributeValue($attribute);
+		$idPath->pushAttribute($attribute);
 			
 		if (is_a($childEditor, TupleTableCellEditor))			
-			$result .= getTupleAsEditTableCells($value, $id . '-' . $attribute->id, $keyPath, $childEditor, $startColumn); 
+			$result .= getTupleAsEditTableCells($value, $idPath, $childEditor, $startColumn); 
 		else {	
 			if (is_a($type, RelationType))  
 				$class = "relation";
 			else 
 				$class = $type;
 			
-			$displayValue = $childEditor->edit($id, $keyPath, $value);
+			$displayValue = $childEditor->edit($idPath, $value);
 			$result .= '<td class="'. $class .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
 				
 			$startColumn++;
 		}
+		
+		$idPath->popAttribute();
 	}
 	
 	return $result;
 }
 
-function getRelationAsHTMLTable($editor, $id, $keyPath, $relation) {
-	$result = '<table id="'. $id .'" class="wiki-data-table">';	
+function getRelationAsHTMLTable($editor, $idPath, $relation) {
+	$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';	
 	$heading = $relation->getHeading();
+	$key = $relation->getKey();
 	
-	foreach(getHeadingAsTableHeaderRows($editor->getHeading()) as $headerRow)
+	foreach(getHeadingAsTableHeaderRows($editor->getTableHeading($editor)) as $headerRow)
 		$result .= '<tr>' . $headerRow . '</tr>';
 	
 	$tupleCount = $relation->getTupleCount();
 	
 	for($i = 0; $i < $tupleCount; $i++) {
 		$tuple = $relation->getTuple($i);
-		$result .= '<tr>' . getTupleAsTableCells($id, $keyPath, $editor, $tuple) .'</tr>';
+		$idPath->pushKey(project($tuple, $key));
+		$result .= '<tr id="'. $idPath->getId() .'">' . getTupleAsTableCells($idPath, $editor, $tuple) .'</tr>';
+		$idPath->popKey();
 	}
 	
 	$result .= '</table>';
@@ -150,8 +160,8 @@ function getRelationAsHTMLTable($editor, $id, $keyPath, $relation) {
 	return $result;
 }
 
-function getRelationAsSuggestionTable($editor, $id, $keyPath, $relation) {
-	$result = '<table id="' . $id .'" class="wiki-data-table">';	
+function getRelationAsSuggestionTable($editor, $idPath, $relation) {
+	$result = '<table id="' . $idPath->getId() .'" class="wiki-data-table">';	
 	$heading = $editor->getHeading();
 	$key = $relation->getKey();
 	
@@ -162,10 +172,10 @@ function getRelationAsSuggestionTable($editor, $id, $keyPath, $relation) {
 	
 	for($i = 0; $i < $tupleCount; $i++) {
 		$tuple = $relation->getTuple($i);
-		$keyPath->push(project($tuple, $key));
+		$idPath->pushKey(project($tuple, $key));
 		$id = getTupleKeyName($relation->getTuple($i), $key);
-		$result .= '<tr id="'. $id .'" class="suggestion-row inactive" onclick="suggestRowClicked(this)" onmouseover="mouseOverRow(this)" onmouseout="mouseOutRow(this)">' . getTupleAsTableCells($id, $keyPath, $editor, $tuple) .'</tr>';
-		$keyPath->pop();
+		$result .= '<tr id="'. $id .'" class="suggestion-row inactive" onclick="suggestRowClicked(this)" onmouseover="mouseOverRow(this)" onmouseout="mouseOutRow(this)">' . getTupleAsTableCells($idPath, $editor, $tuple) .'</tr>';
+		$idPath->popKey();
 	}
 	
 	$result .= '</table>';
@@ -173,18 +183,18 @@ function getRelationAsSuggestionTable($editor, $id, $keyPath, $relation) {
 	return $result;
 }
 
-function getAddRowAsHTML($id, $keyPath, $editor, $repeatInput, $allowRemove) {
+function getAddRowAsHTML($idPath, $editor, $repeatInput, $allowRemove) {
 	if ($repeatInput)
 		$rowClass = 'repeat';
 	else 
 		$rowClass = '';
 		
-	$result = '<tr id="'. $id. '" class="' . $rowClass . '">';
+	$result = '<tr id="'. $idPath->getId() . '" class="' . $rowClass . '">';
 	
 	if ($allowRemove)
 		$result .= '<td/>';
 	
-	$result .= getHeadingAsAddCells($id, $keyPath, $editor);
+	$result .= getHeadingAsAddCells($idPath, $editor);
 				
 	if ($repeatInput)
 		$result .= '<td class="add"/>';
@@ -192,66 +202,25 @@ function getAddRowAsHTML($id, $keyPath, $editor, $repeatInput, $allowRemove) {
 	return $result . '</tr>'; 
 }
 
-function getHeadingAsAddCells($id, $keyPath, $editor, &$startColumn = 0) {
+function getHeadingAsAddCells($idPath, $editor, &$startColumn = 0) {
 	$result = '';
 	
 	foreach($editor->getEditors() as $childEditor) {
 		$attribute = $childEditor->getAttribute();
 		$type = $attribute->type;
+		$idPath->pushAttribute($attribute);
 		
 		if (is_a($childEditor, TupleTableCellEditor))
-			$result .= getHeadingAsAddCells($id . '-' . $attribute->id, $keyPath, $childEditor, $startColumn);
+			$result .= getHeadingAsAddCells($idPath, $childEditor, $startColumn);
 		else {
-			$result .= '<td class="'. $type .' column-'. parityClass($startColumn) . '">' . $childEditor->add($id, $keyPath) . '</td>';
+			$result .= '<td class="'. $type .' column-'. parityClass($startColumn) . '">' . $childEditor->add($idPath) . '</td>';
 			$startColumn++;
 		}
+		
+		$idPath->popAttribute();
 	}
 	
 	return $result;
 }
-
-function getRelationAsEditHTML($editor, $id, $keyPath, $relation, $allowAdd, $allowRemove, $repeatInput) {
-	$result = '<table id="'. $id .'" class="wiki-data-table">';	
-	$key = $relation->getKey();
-	
-	$headerRows = getHeadingAsTableHeaderRows($editor->getHeading());
-
-	if ($allowRemove)
-		$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="skins/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>' . $headerRows[0];
-		
-	if ($repeatInput)		
-		$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
-		
-	foreach ($headerRows as $headerRow)
-		$result .= '<tr>' . $headerRow . '</tr>';
-	
-	$tupleCount = $relation->getTupleCount();
-	
-	for ($i = 0; $i < $tupleCount; $i++) {
-		$result .= '<tr>';
-		$tuple = $relation->getTuple($i);
-		$keyPath->push(project($tuple, $key));
-		$tupleKeyName = getTupleKeyName($tuple, $key);
-		
-		if ($allowRemove)
-			$result .= '<td class="remove">' . getRemoveCheckBox('remove-'. $id . '-' . $tupleKeyName) . '</td>';
-		
-		$result .= getTupleAsEditTableCells($tuple,  $id . '-' . $tupleKeyName, $keyPath, $editor);
-		$keyPath->pop();		
-		
-		if ($repeatInput)
-			$result .= '<td/>';
-		
-		$result .= '</tr>';
-	}
-	
-	if ($allowAdd) 
-		$result .= getAddRowAsHTML($id, $keyPath, $editor, $repeatInput, $allowRemove);
-	
-	$result .= '</table>';
-
-	return $result;
-}
-
 
 ?>

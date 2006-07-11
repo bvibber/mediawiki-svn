@@ -2,18 +2,77 @@
 
 require_once("HTMLtable.php");
 
+class IdStack {
+	protected $keyStack;
+	protected $idStack = array();
+	protected $currentId;
+	
+	public function __construct($prefix) {
+	 	$this->keyStack = new TupleStack();
+	 	$this->currentId = $prefix;
+	}
+	
+	protected function getKeyIds($tuple) {
+		$ids = array();
+	
+		foreach($tuple->getHeading()->attributes as $attribute)
+			$ids[] = $tuple->getAttributeValue($attribute);
+		
+		return $ids;
+	}
+	
+	protected function pushId($id) {
+		$this->idStack[] = $this->currentId;
+		$this->currentId .= '-' . $id;
+	}
+	
+	protected function popId() {
+		$this->currentId = array_pop($this->idStack);
+	}
+	
+	public function pushKey($tuple) {
+		$this->keyStack->push($tuple);
+		$this->pushId(implode("-", $this->getKeyIds($tuple)));
+	}
+	
+	public function pushAttribute($attribute) {
+		$this->pushId($attribute->id);
+	}
+	
+	public function popKey() {
+		$this->popId();
+		return $this->keyStack->pop();
+	}
+	
+	public function popAttribute() {
+		$this->popId();
+	}
+	
+	public function getId() {
+		return $this->currentId;
+	}
+	
+	public function getKeyStack() {
+		return $this->keyStack;
+	}
+}
+
+interface Viewer {
+	public function view($idPath, $value);
+}
+
 interface Editor {
 	public function getAttribute();
 	public function getUpdateAttribute();
 	public function getAddAttribute();
 	
-	public function view($id, $keyPath, $value);
-	public function edit($id, $keyPath, $value);
-	public function add($id, $keyPath);
-	public function save($id, $keyPath, $value);
+	public function view($idPath, $value);
+	public function edit($idPath, $value);
+	public function add($idPath);
+	public function save($idPath, $value);
 
-	public function getUpdateValue($id, $keyPath);
-	public function getAddValue($id, $keyPath);
+	public function getUpdateValue($idPath);
+	public function getAddValue($idPath);
 	
 	public function getEditors();
 }
@@ -54,12 +113,12 @@ class TableEditor extends DefaultEditor {
 		$this->controller = $controller;
 	}
 	
-	public function view($id, $keyPath, $value) {
-		return getRelationAsHTMLTable($this, $id, $keyPath, $value);
+	public function view($idPath, $value) {
+		return getRelationAsHTMLTable($this, $idPath, $value);
 	}
 	
-	public function edit($id, $keyPath, $value) {
-		$result = '<table id="'. $id .'" class="wiki-data-table">';	
+	public function edit($idPath, $value) {
+		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';	
 		$key = $value->getKey();
 		
 		$headerRows = getHeadingAsTableHeaderRows($this->getHeading());
@@ -78,14 +137,13 @@ class TableEditor extends DefaultEditor {
 		for ($i = 0; $i < $tupleCount; $i++) {
 			$result .= '<tr>';
 			$tuple = $value->getTuple($i);
-			$keyPath->push(project($tuple, $key));
-			$tupleKeyName = getTupleKeyName($tuple, $key);
+			$idPath->pushKey(project($tuple, $key));
 			
 			if ($this->allowRemove)
-				$result .= '<td class="remove">' . getRemoveCheckBox('remove-'. $id . '-' . $tupleKeyName) . '</td>';
+				$result .= '<td class="remove">' . getRemoveCheckBox('remove-'. $idPath->getId()) . '</td>';
 			
-			$result .= getTupleAsEditTableCells($tuple,  $id . '-' . $tupleKeyName, $keyPath, $this);
-			$keyPath->pop();		
+			$result .= getTupleAsEditTableCells($tuple, $idPath, $this);
+			$idPath->popKey();		
 			
 			if ($this->repeatInput)
 				$result .= '<td/>';
@@ -94,16 +152,15 @@ class TableEditor extends DefaultEditor {
 		}
 		
 		if ($this->allowAdd) 
-			$result .= getAddRowAsHTML($id, $keyPath, $this, $this->repeatInput, $this->allowRemove);
+			$result .= getAddRowAsHTML($idPath, $this, $this->repeatInput, $this->allowRemove);
 		
 		$result .= '</table>';
 	
 		return $result;
-		//return getRelationAsEditHTML($this, $id, $keyPath, $value, $this->allowAdd, $this->allowRemove, false);
 	}
 	
-	public function add($id, $keyPath) {
-		$result = '<table id="'. $id .'" class="wiki-data-table">';	
+	public function add($idPath) {
+		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';	
 		$headerRows = getHeadingAsTableHeaderRows($this->getAddHeading());
 	
 //		if ($repeatInput)		
@@ -112,17 +169,17 @@ class TableEditor extends DefaultEditor {
 		foreach ($headerRows as $headerRow)
 			$result .= '<tr>' . $headerRow . '</tr>';
 		
-		$result .= getAddRowAsHTML($id . '-' . $this->attribute->id, $keyPath, $this, false, false);
+		$result .= getAddRowAsHTML($idPath, $this, false, false);
 		$result .= '</table>';
 
 		return $result;
 	}
 	
-	public function getUpdateValue($id, $keyPath) {
+	public function getUpdateValue($idPath) {
 		return null;
 	}
 	
-	public function getAddValue($id, $keyPath) {
+	public function getAddValue($idPath) {
 		$addHeading = $this->getAddHeading();
 		
 		if (count($addHeading->attributes) > 0) {
@@ -130,8 +187,11 @@ class TableEditor extends DefaultEditor {
 			$values = array();
 			
 			foreach($this->editors as $editor) 
-				if ($attribute = $editor->getAddAttribute())  
-					$values[] = $editor->getAddValue($id. '-' . $attribute->id, $keyPath);
+				if ($attribute = $editor->getAddAttribute()) { 
+					$idPath->pushAttribute($attribute);
+					$values[] = $editor->getAddValue($idPath);
+					$idPath->popAttribute();
+				}
 				
 			$relation->addTuple($values);	
 						 
@@ -141,29 +201,31 @@ class TableEditor extends DefaultEditor {
 			return null;	
 	}
 
-	protected function saveTuple($id, $keyPath, $tuple) {
+	protected function saveTuple($idPath, $tuple) {
 		foreach($this->editors as $editor) {
 			$attribute = $editor->getAttribute();
 			$value = $tuple->getAttributeValue($attribute);
-			$editor->save($id, $keyPath, $value);
+			$idPath->pushAttribute($attribute);
+			$editor->save($idPath, $value);
+			$idPath->popAttribute();
 		}
 	}
 	
-	protected function updateTuple($id, $keyPath, $tuple, $heading, $editors) {
+	protected function updateTuple($idPath, $tuple, $heading, $editors) {
 		if (count($editors) > 0) {
-			$updateTuple = $this->getUpdateTuple($id, $keyPath, $heading, $editors);
+			$updateTuple = $this->getUpdateTuple($idPath, $heading, $editors);
 			
 			if (!equalTuples($heading, $tuple, $updateTuple))		
-				$this->controller->update($keyPath, $updateTuple);
+				$this->controller->update($idPath->getKeyStack(), $updateTuple);
 		}
 	}
 	
-	protected function removeTuple($id, $keyPath) {
+	protected function removeTuple($idPath) {
 		global
 			$wgRequest;
 		
-		if ($wgRequest->getCheck('remove-'. $id)) {	
-			$this->controller->remove($keyPath, null);
+		if ($wgRequest->getCheck('remove-'. $idPath->getId())) {	
+			$this->controller->remove($idPath->getKeyStack());
 			return true;
 		}
 		else 
@@ -175,6 +237,23 @@ class TableEditor extends DefaultEditor {
 		
 		foreach($this->editors as $editor) 
 			$attributes[] = $editor->getAttribute();
+			
+		return new Heading($attributes);
+	}
+
+	public function getTableHeading($editor) {
+		$attributes = array();
+		
+		foreach($editor->getEditors() as $childEditor) { 
+			$childAttribute = $childEditor->getAttribute();
+			
+			if (is_a($childEditor, TupleTableCellEditor))
+				$type = new TupleType($this->getTableHeading($childEditor));
+			else
+				$type = 'short-text';
+				
+			$attributes[] = new Attribute($childAttribute->id, $childAttribute->name, $type);;
+		}
 			
 		return new Heading($attributes);
 	}
@@ -219,32 +298,38 @@ class TableEditor extends DefaultEditor {
 		return $addEditors;
 	}
 	
-	public function getAddTuple($id, $keyPath, $heading, $editors) {
+	public function getAddTuple($idPath, $heading, $editors) {
 		$result = new ArrayTuple($heading);
 		
 		foreach($editors as $editor) 
-			if ($attribute = $editor->getAddAttribute())
-				$result->setAttributeValue($attribute, $editor->getAddValue($id . '-' . $attribute->id, $keyPath));
+			if ($attribute = $editor->getAddAttribute()) {
+				$idPath->pushAttribute($attribute);
+				$result->setAttributeValue($attribute, $editor->getAddValue($idPath));
+				$idPath->popAttribute();
+			}
 		
 		return $result;
 	}
 	
-	public function getUpdateTuple($id, $keyPath, $heading, $editors) {
+	public function getUpdateTuple($idPath, $heading, $editors) {
 		$result = new ArrayTuple($heading);
 		
 		foreach($editors as $editor) 
-			if ($attribute = $editor->getUpdateAttribute())
-				$result->setAttributeValue($attribute, $editor->getUpdateValue($id . '-' . $attribute->id, $keyPath));
+			if ($attribute = $editor->getUpdateAttribute()) {
+				$idPath->pushAttribute($attribute);
+				$result->setAttributeValue($attribute, $editor->getUpdateValue($idPath));
+				$idPath->popAttribute();
+			}
 		
 		return $result;
 	}
 	
-	public function save($id, $keyPath, $value) {
+	public function save($idPath, $value) {
 		if ($this->allowAdd) {
 			$addHeading = $this->getAddHeading();
 			$addEditors = $this->getAddEditors();
-			$tuple = $this->getAddTuple($id, $keyPath, $addHeading, $addEditors);
-			$this->controller->add($keyPath, $tuple);
+			$tuple = $this->getAddTuple($idPath, $addHeading, $addEditors);
+			$this->controller->add($idPath->getKeyStack(), $tuple);
 		}
 		
 		$tupleCount = $value->getTupleCount();
@@ -254,16 +339,14 @@ class TableEditor extends DefaultEditor {
 		
 		for ($i = 0; $i < $tupleCount; $i++) {
 			$tuple = $value->getTuple($i);
-			$tupleKeyName = getTupleKeyName($tuple, $key);
-			$keyPath->push(project($tuple, $key));
-			$tupleId = $id . '-' . $tupleKeyName;
+			$idPath->pushKey(project($tuple, $key));
 			
-			if (!$this->allowRemove || !$this->removeTuple($tupleId, $keyPath)) {
-				$this->saveTuple($tupleId, $keyPath, $tuple);
-				$this->updateTuple($tupleId, $keyPath, $tuple, $updateHeading, $updateEditors);
+			if (!$this->allowRemove || !$this->removeTuple($idPath)) {
+				$this->saveTuple($idPath, $tuple);
+				$this->updateTuple($idPath, $tuple, $updateHeading, $updateEditors);
 			}
 			
-			$keyPath->pop();
+			$idPath->popKey();
 		}
 	}
 	
@@ -281,19 +364,7 @@ class TableEditor extends DefaultEditor {
 	}
 }
 
-class TupleTableCellEditor extends DefaultEditor {
-	public function view($id, $keyPath, $value) {
-	}
-
-	public function edit($id, $keyPath, $value) {
-	}
-
-	public function add($id, $keyPath) {
-	}
-	
-	public function save($id, $keyPath, $value) {
-	}
-	
+abstract class TupleEditor extends DefaultEditor {
 	protected function getUpdateHeading() {
 		$attributes = array();
 		
@@ -314,22 +385,28 @@ class TupleTableCellEditor extends DefaultEditor {
 		return new Heading($attributes);
 	}
 	
-	public function getUpdateValue($id, $keyPath) {
+	public function getUpdateValue($idPath) {
 		$result = new ArrayTuple($this->getUpdateHeading());
 		
 		foreach($this->editors as $editor) 
-			if ($attribute = $editor->getUpdateAttribute()) 
-				$result->setAttributeValue($attribute, $editor->getUpdateValue($id . '-' . $attribute->id, $keyPath));
+			if ($attribute = $editor->getUpdateAttribute()) { 
+				$idPath->pushAttribute($attribute);
+				$result->setAttributeValue($attribute, $editor->getUpdateValue($idPath));
+				$idPath->popAttribute();
+			}
 		
 		return $result;
 	}
 	
-	public function getAddValue($id, $keyPath) {
+	public function getAddValue($idPath) {
 		$result = new ArrayTuple($this->getAddHeading());
 		
 		foreach($this->editors as $editor) 
-			if ($attribute = $editor->getAddAttribute()) 
-				$result->setAttributeValue($attribute, $editor->getAddValue($id . '-' . $attribute->id, $keyPath));
+			if ($attribute = $editor->getAddAttribute()) { 
+				$idPath->pushAttribute($attribute);
+				$result->setAttributeValue($attribute, $editor->getAddValue($idPath));
+				$idPath->popAttribute();
+			}
 		
 		return $result;
 	}
@@ -353,6 +430,20 @@ class TupleTableCellEditor extends DefaultEditor {
 	}
 }
 
+class TupleTableCellEditor extends TupleEditor {
+	public function view($idPath, $value) {
+	}
+
+	public function edit($idPath, $value) {
+	}
+
+	public function add($idPath) {
+	}
+	
+	public function save($idPath, $value) {
+	}
+}
+
 abstract class ScalarEditor extends DefaultEditor {
 	protected $allowUpdate;
 	protected $isAddField;
@@ -365,14 +456,14 @@ abstract class ScalarEditor extends DefaultEditor {
 	}
 	
 	protected function addId($id) {
-		return "add-" . $id . '-' . $this->attribute->id;
+		return "add-" . $id;
 	}	
 	
 	protected function updateId($id) {
-		return "update-" . $id . '-' . $this->attribute->id;
+		return "update-" . $id;
 	}
 	
-	public function save($id, $keyPath, $value) {
+	public function save($idPath, $value) {
 	}
 
 	public function getUpdateAttribute() {
@@ -389,61 +480,61 @@ abstract class ScalarEditor extends DefaultEditor {
 			return null;	
 	}
 	
-	public abstract function getInputValue($id, $keyPath);
+	public abstract function getInputValue($id);
 	
-	public function getUpdateValue($id, $keyPath) {
-		return $this->getInputValue("update-" . $id, $keyPath);
+	public function getUpdateValue($idPath) {
+		return $this->getInputValue("update-" . $idPath->getId());
 	}
 	
-	public function getAddValue($id, $keyPath) {
-		return $this->getInputValue("add-" . $id, $keyPath);
+	public function getAddValue($idPath) {
+		return $this->getInputValue("add-" . $idPath->getId());
 	}
 }
 
 class LanguageEditor extends ScalarEditor {
-	public function view($id, $keyPath, $value) {
+	public function view($idPath, $value) {
 		return languageIdAsText($value);
 	}
 	
-	public function edit($id, $keyPath, $value) {
+	public function edit($idPath, $value) {
 		if ($this->allowUpdate)
-			return getLanguageSelect($this->updateId($id));
+			return getLanguageSelect($this->updateId($idPath->getId()));
 		else
 			return languageIdAsText($value);
 	}
 	
-	public function add($id, $keyPath) {
-		return getLanguageSelect($this->addId($id));
+	public function add($idPath) {
+		return getLanguageSelect($this->addId($idPath->getId()));
 	}
 	
-	public function getInputValue($id, $keyPath) {
+	public function getInputValue($id) {
 		global
 			$wgRequest;
 			
-		return $wgRequest->getInt($id);		
+		return $wgRequest->getInt($id);
 	}
 }
 
 class SpellingEditor extends ScalarEditor {
-	public function view($id, $keyPath, $value) {
+	public function view($idPath, $value) {
 		return spellingAsLink($value);
 	}
 	
-	public function edit($id, $keyPath, $value) {
+	public function edit($idPath, $value) {
 		if ($this->allowUpdate)
-			return getTextBox($this->updateId($id));
+			return getTextBox($this->updateId($idPath->getId()));
 		else
 			return spellingAsLink($value);
 	}
 	
-	public function add($id, $keyPath) {
+	public function add($idPath) {
 		if ($this->isAddField)
-			return getTextBox($this->addId($id));
+			return getTextBox($this->addId($idPath->getId()));
 		else
 			return "";
 	}
 
-	public function getInputValue($id, $keyPath) {
+	public function getInputValue($id) {
 		global
 			$wgRequest;
 			
@@ -452,26 +543,26 @@ class SpellingEditor extends ScalarEditor {
 }
 
 class TextEditor extends ScalarEditor {
-	public function view($id, $keyPath, $value) {
+	public function view($idPath, $value) {
 		return htmlspecialchars($value);
 	}
 
-	public function edit($id, $keyPath, $value) {
+	public function edit($idPath, $value) {
 		if ($this->allowUpdate) {
-			return getTextArea($this->updateId($id), $value, 3);
+			return getTextArea($this->updateId($idPath->getId()), $value, 3);
 		}
 		else
 			return htmlspecialchars($value);
 	}
 	
-	public function add($id, $keyPath) {
+	public function add($idPath) {
 		if ($this->isAddField)
-			return getTextArea($this->addId($id), "", 3);
+			return getTextArea($this->addId($idPath->getId()), "", 3);
 		else
 			return "";
 	}
 	
-	public function getInputValue($id, $keyPath) {
+	public function getInputValue($id) {
 		global
 			$wgRequest;
 			
@@ -480,26 +571,25 @@ class TextEditor extends ScalarEditor {
 }
 
 class ShortTextEditor extends ScalarEditor {
-	public function view($id, $keyPath, $value) {
+	public function view($idPath, $value) {
 		return htmlspecialchars($value);
 	}
 
-	public function edit($id, $keyPath, $value) {
-		if ($this->allowUpdate) {
-			return getTextBox($this->updateId($id), $value);
-		}
+	public function edit($idPath, $value) {
+		if ($this->allowUpdate) 
+			return getTextBox($this->updateId($idPath->getId()), $value);
 		else
 			return htmlspecialchars($value);
 	}
 	
-	public function add($id, $keyPath) {
+	public function add($idPath) {
 		if ($this->isAddField)
-			return getTextBox($this->addId($id), "");
+			return getTextBox($this->addId($idPath->getId()), "");
 		else
 			return "";
 	}
 	
-	public function getInputValue($id, $keyPath) {
+	public function getInputValue($id) {
 		global
 			$wgRequest;
 			
@@ -516,25 +606,25 @@ class BooleanEditor extends ScalarEditor {
 		$this->defaultValue = $defaultValue;
 	}
 
-	public function view($id, $keyPath, $value) {
+	public function view($idPath, $value) {
 		return booleanAsHTML($value);
 	}
 
-	public function edit($id, $keyPath, $value) {
+	public function edit($idPath, $value) {
 		if ($this->allowUpdate)
-			return getCheckBox($this->updateId($id), $value);
+			return getCheckBox($this->updateId($idPath->getId()), $value);
 		else
-			return booleanAsHTML($id, $value);
+			return booleanAsHTML($idPath, $value);
 	}
 	
-	public function add($id, $keyPath) {
+	public function add($idPath) {
 		if ($this->isAddField)
-			return getCheckBox($this->addId($id), $this->defaultValue);
+			return getCheckBox($this->addId($idPath->getId()), $this->defaultValue);
 		else
 			return "";
 	}
 	
-	public function getInputValue($id, $keyPath) {
+	public function getInputValue($id) {
 		global
 			$wgRequest;
 			
@@ -543,24 +633,23 @@ class BooleanEditor extends ScalarEditor {
 }
 
 abstract class SuggestEditor extends ScalarEditor {
-	public function add($id, $keyPath) {
+	public function add($idPath) {
 		if ($this->isAddField)
-			return getSuggest($this->addId($id), $this->suggestType());
+			return getSuggest($this->addId($idPath->getId()), $this->suggestType());
 		else
 			return "";
 	}
 	
 	protected abstract function suggestType();
 	
-	public function edit($id, $keyPath, $value) {
-		if ($this->allowUpdate) {
-			return getSuggest($this->updateId($id), $this->suggestType()); 
-		}
+	public function edit($idPath, $value) {
+		if ($this->allowUpdate) 
+			return getSuggest($this->updateId($idPath->getId()), $this->suggestType()); 
 		else
-			return $this->view($id, $keyPath, $value);
+			return $this->view($idPath, $value);
 	}
 
-	public function getInputValue($id, $keyPath) {
+	public function getInputValue($id) {
 		global
 			$wgRequest;
 			
@@ -573,7 +662,7 @@ class RelationTypeEditor extends SuggestEditor {
 		return "relation-type";
 	}
 	
-	public function view($id, $keyPath, $value) {
+	public function view($idPath, $value) {
 		return definedMeaningAsLink($value);
 	}
 
@@ -584,7 +673,7 @@ class DefinedMeaningEditor extends SuggestEditor {
 		return "defined-meaning";
 	}
 	
-	public function view($id, $keyPath, $value) {
+	public function view($idPath, $value) {
 		return definedMeaningAsLink($value);
 	}
 }
@@ -594,7 +683,7 @@ class AttributeEditor extends SuggestEditor {
 		return "attribute";
 	}
 	
-	public function view($id, $keyPath, $value) {
+	public function view($idPath, $value) {
 		return definedMeaningAsLink($value);
 	}
 }
@@ -604,9 +693,269 @@ class CollectionEditor extends SuggestEditor {
 		return "collection";
 	}
 	
-	public function view($id, $keyPath, $value) {
+	public function view($idPath, $value) {
 		return collectionAsLink($value);
 	}
 }
+
+class TupleListEditor extends TupleEditor {
+	protected $expandedEditors = array();
+	
+	public function view($idPath, $value) {
+		$result = '<ul class="collapsable-items">';
+		
+		foreach ($this->editors as $editor) {
+			$attribute = $editor->getAttribute();
+	
+			if (!in_array($editor, $this->expandedEditors)) {
+				$style = ' style="display: none;"';
+				$character = '+';
+			}
+			else {
+				$style = '';
+				$character = '&ndash;';
+			}
+			
+			$idPath->pushAttribute($attribute);
+			$attributeId = $idPath->getId();
+			$result .= '<li>'.
+						'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $attribute->name . '</h4>' .
+						'<div id="collapsable-'. $attributeId . '"'. $style .'>' . $editor->view($idPath, $value->getAttributeValue($attribute)) . '</div>' .
+						'</li>';
+			$idPath->popAttribute();
+		}
+		
+		$result .= '</ul>';
+		
+		return $result;
+	}
+	
+	public function edit($idPath, $value) {
+		$result = '<ul class="collapsable-items">';
+		
+		foreach ($this->editors as $editor) {
+			$attribute = $editor->getAttribute();
+	
+			if (!in_array($editor, $this->expandedEditors)) {
+				$style = ' style="display: none;"';
+				$character = '+';
+			}
+			else {
+				$style = '';
+				$character = '&ndash;';
+			}
+			
+			$idPath->pushAttribute($attribute);
+			$attributeId = $idPath->getId();
+			$result .= '<li>'.
+						'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $attribute->name . '</h4>' .
+						'<div id="collapsable-'. $attributeId . '"'. $style .'>' . $editor->edit($idPath, $value->getAttributeValue($attribute)) . '</div>' .
+						'</li>';
+			$idPath->popAttribute();
+		}
+		
+		$result .= '</ul>';
+		
+		return $result;
+	}
+	
+	public function add($idPath) {
+	}
+	
+	public function save($idPath, $value) {
+		foreach($this->editors as $editor) {
+			$attribute = $editor->getAttribute();
+			$idPath->pushAttribute($attribute);			
+			$editor->save($idPath, $value->getAttributeValue($attribute));
+			$idPath->popAttribute();
+		}
+	}
+	
+	public function expandEditor($editor) {
+		$this->expandedEditors[] = $editor;
+	}
+}
+
+class RelationListEditor implements Editor {
+	protected $headerLevel;
+	protected $attribute;
+	protected $childrenExpanded;
+	protected $captionEditor;
+	protected $valueEditor;
+
+	public function __construct($attribute, $headerLevel) {
+		$this->headerLevel = $headerLevel;
+		$this->attribute = $attribute;
+	}
+
+	public function getAttribute() {
+		return $this->attribute;
+	}
+	
+	public function getUpdateAttribute() {
+		
+	}
+	
+	public function getAddAttribute() {
+		
+	}
+
+	public function setCaptionEditor($editor) {
+		$this->captionEditor = $editor;
+	} 
+
+	public function setValueEditor($editor) {
+		$this->valueEditor = $editor;
+	} 
+	
+	public function view($idPath, $value) {
+		$result = '<ul class="collapsable-items">';
+		$tupleCount = $value->getTupleCount();
+		$key = $value->getKey();
+		$captionAttribute = $this->captionEditor->getAttribute();
+		$valueAttribute = $this->valueEditor->getAttribute();
+				
+		if ($tupleCount > 1) {
+			$style = ' style="display: none;"';
+			$character = '+';
+		}
+		else {
+			$style = '';
+			$character = '&ndash;';
+		}
+
+		for ($i = 0; $i < $tupleCount; $i++) {
+			$tuple = $value->getTuple($i);
+			$idPath->pushKey(project($tuple, $key));
+			
+			$tupleId = $idPath->getId();
+			
+			$result .= '<li>'.
+						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $this->captionEditor->view($idPath, $tuple->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>' .
+						'<div id="collapsable-'. $tupleId . '"'. $style .'>' . $this->valueEditor->view($idPath, $tuple->getAttributeValue($valueAttribute)) . '</div>' .
+						'</li>';
+
+			$idPath->popKey();
+		}
+		
+		$result .= '</ul>';
+		
+		return $result;
+	}
+	
+	public function edit($idPath, $value) {
+		$result = '<ul class="collapsable-items">';
+		$tupleCount = $value->getTupleCount();
+		$key = $value->getKey();
+		$captionAttribute = $this->captionEditor->getAttribute();
+		$valueAttribute = $this->valueEditor->getAttribute();
+				
+		if ($tupleCount > 1) {
+			$style = ' style="display: none;"';
+			$character = '+';
+		}
+		else {
+			$style = '';
+			$character = '&ndash;';
+		}
+
+		for ($i = 0; $i < $tupleCount; $i++) {
+			$tuple = $value->getTuple($i);
+			$idPath->pushKey(project($tuple, $key));
+			
+			$tupleId = $idPath->getId();
+			
+			$result .= '<li>'.
+						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $this->captionEditor->view($idPath, $tuple->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>' .
+						'<div id="collapsable-'. $tupleId . '"'. $style .'>' . $this->valueEditor->edit($idPath, $tuple->getAttributeValue($valueAttribute)) . '</div>' .
+						'</li>';
+
+			$idPath->popKey();
+		}
+		
+		$result .= '</ul>';
+		
+		return $result;
+	}
+	
+	public function add($idPath) {
+		
+	}
+	
+	public function save($idPath, $value) {
+		$tupleCount = $value->getTupleCount();
+		$key = $value->getKey();
+		$valueAttribute = $this->valueEditor->getAttribute();
+				
+		for ($i = 0; $i < $tupleCount; $i++) {
+			$tuple = $value->getTuple($i);
+			$idPath->pushKey(project($tuple, $key));
+			$this->valueEditor->save($idPath, $tuple->getAttributeValue($valueAttribute));
+			$idPath->popKey();
+		}
+	}
+
+	public function getUpdateValue($idPath) {
+		
+	}
+	
+	public function getAddValue($idPath) {
+		
+	}
+	
+	public function getEditors() {
+		return array($this->captionEditor, $this->valueEditor);
+	}
+}
+
+class AttributeLabelViewer implements Viewer {
+	protected $attribute;
+	
+	public function __construct($attribute) {
+		$this->attribute = $attribute;
+	}
+		
+	public function view($idPath, $value) {
+		return $this->attribute->name;
+	}
+	
+	public function getAttribute() {
+		return $this->attribute;
+	}
+}
+
+class TupleSpanEditor implements Viewer {
+	protected $attribute;
+	protected $attributeSeparator;
+	protected $valueSeparator;
+	protected $viewers = array();
+	
+	public function __construct($attribute, $valueSeparator, $attributeSeparator) {
+		$this->attribute = $attribute;
+		$this->attributeSeparator = $attributeSeparator;
+		$this->valueSeparator = $valueSeparator;
+	}
+		
+	public function view($idPath, $value) {
+		$fields = array();
+		
+		foreach($this->viewers as $viewer) {
+			$attribute = $viewer->getAttribute();
+			$idPath->pushAttribute($attribute);
+			$fields[] = $attribute->name . $this->valueSeparator. $viewer->view($idPath, $value->getAttributeValue($attribute));
+			$idPath->popAttribute();
+		}
+		
+		return implode($this->attributeSeparator, $fields);
+	}
+	
+	public function getAttribute() {
+		return $this->attribute;
+	}
+	
+	public function addViewer($viewer) {
+		$this->viewers[] = $viewer;
+	}
+} 
 
 ?>
