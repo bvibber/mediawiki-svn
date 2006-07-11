@@ -31,7 +31,7 @@
 			$definedMeaningId = addDefinedMeaning($expression->id, $expression->revisionId);
 			$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);
 			
-			addDefinedMeaningDefinition($definedMeaningId, $expression->revisionId, $languageId, $descriptions);
+			addDefinedMeaningDefiningDefinition($definedMeaningId, $expression->revisionId, $languageId, $descriptions);
 			addDefinedMeaningToCollection($definedMeaningId, $collectionId, $identifier, $expression->revisionId);
 	}
 	fclose($fileHandle);

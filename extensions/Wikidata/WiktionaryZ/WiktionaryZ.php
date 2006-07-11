@@ -219,7 +219,7 @@ class DefinedMeaningCollectionController implements PageElementController {
 		$internalId = $tuple->getAttributeValue($sourceIdentifierAttribute);
 		
 		if ($internalId != "")
-			addDefinedMeaningToCollection($definedMeaningId, $collectionId, $internalId, $revisionId);
+			addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectionId, $internalId, $revisionId);
 	}	
 
 	public function remove($keyPath) {

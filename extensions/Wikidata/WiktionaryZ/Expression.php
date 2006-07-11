@@ -14,9 +14,7 @@ class Expression {
 	}
 	
 	function getPageTitle() {
-//	Charta: Don't replace spaces / underscores:
-//		return str_replace(' ', '_', $this->spelling);
-		return $this->spelling;
+		return str_replace(' ', '_', $this->spelling);
 	}
 	
 	function updateFromDatabase() {
@@ -308,10 +306,13 @@ function translatedDefinitionExists($definitionId, $languageId) {
 }
 
 function addTranslatedDefinition($definitionId, $languageId, $definition, $revisionId) {
-	if (!translatedDefinitionExists($definitionId, $languageId, $revisionId)) {	
-		$textId = createText($definition);
-		createTranslatedContent($definitionId, $languageId, $textId, $revisionId);
-	}
+	$textId = createText($definition);
+	createTranslatedContent($definitionId, $languageId, $textId, $revisionId);
+}
+
+function addTranslatedDefinitionIfNotPresent($definitionId, $languageId, $definition, $revisionId) {
+	if (!translatedDefinitionExists($definitionId, $languageId, $revisionId)) 	
+		addTranslatedDefinition($definitionId, $languageId, $definition, $revisionId);
 }
 
 function getDefinedMeaningDefinitionId($definedMeaningId) {
@@ -333,20 +334,23 @@ function newTranslatedContentId() {
 	return $dbr->fetchObject($queryResult)->max_id + 1;
 }
 
+function addDefinedMeaningDefiningDefinition($definedMeaningId, $revisionId, $languageId, $text) {
+	$definitionId = newTranslatedContentId();		
+	addTranslatedDefinition($definitionId, $languageId, $text, $revisionId);
+	updateDefinedMeaningDefinitionId($definedMeaningId, $definitionId);
+}
+
 function addDefinedMeaningDefinition($definedMeaningId, $revisionId, $languageId, $text) {
 	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
 	
-	if ($definitionId == 0) {
-		$definitionId = newTranslatedContentId();		
-		addTranslatedDefinition($definitionId, $languageId, $text, $revisionId);
-		updateDefinedMeaningDefinitionId($definedMeaningId, $definitionId);
-	}
+	if ($definitionId == 0)
+		addDefinedMeaningDefiningDefinition($definedMeaningId, $revisionId, $languageId, $text);
 	else 
-		addTranslatedDefinition($definitionId, $languageId, $text, $revisionId);
+		addTranslatedDefinitionIfNotPresent($definitionId, $languageId, $text, $revisionId);
 }
 
 function addDefinedMeaningAlternativeDefinitionTranslation($alternativeDefinitionId, $revisionId, $languageId, $text) {
-	addTranslatedDefinition($alternativeDefinitionId, $languageId, $text, $revisionId);
+	addTranslatedDefinitionIfNotPresent($alternativeDefinitionId, $languageId, $text, $revisionId);
 }
 
 function createDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId, $revisionId) {
@@ -404,12 +408,15 @@ function getCollectionSetId($collectionId) {
 }
 
 function addDefinedMeaningToCollection($definedMeaningId, $collectionId, $internalId, $revisionId) {
-	if (!definedMeaningInCollection($definedMeaningId, $collectionId)) {
-		$setId = getCollectionSetId($collectionId);		
-		$dbr = &wfGetDB(DB_MASTER);
-		$dbr->query("INSERT INTO uw_collection_contents(set_id, collection_id, member_mid, is_latest_set, first_set, revision_id, internal_member_id) " .
-						"VALUES ($setId, $collectionId, $definedMeaningId, 1, $setId, $revisionId, ". $dbr->addQuotes($internalId) .")");
-	}
+	$setId = getCollectionSetId($collectionId);		
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("INSERT INTO uw_collection_contents(set_id, collection_id, member_mid, is_latest_set, first_set, revision_id, internal_member_id) " .
+					"VALUES ($setId, $collectionId, $definedMeaningId, 1, $setId, $revisionId, ". $dbr->addQuotes($internalId) .")");
+}
+
+function addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectionId, $internalId, $revisionId) {
+	if (!definedMeaningInCollection($definedMeaningId, $collectionId))
+		addDefinedMeaningToCollection($definedMeaningId, $collectionId, $internalId, $revisionId);
 }
 
 function removeDefinedMeaningFromCollection($definedMeaningId, $collectionId) {
