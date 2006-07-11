@@ -66,14 +66,6 @@ class Image
 		}
 	}
 
-	/**
-	 * Obsolete factory function, use constructor
-	 * @deprecated
-	 */
-	function newFromTitle( $title ) {
-		return new Image( $title );
-	}
-
 	function Image( $title ) {
 		if( !is_object( $title ) ) {
 			throw new MWException( 'Image constructor given bogus title.' );
@@ -1489,7 +1481,7 @@ class Image
 	 * @return bool
 	 * @static
 	 */
-	function isHashed( $shared ) {
+	public static function isHashed( $shared ) {
 		global $wgHashedUploadDirectory, $wgHashedSharedUploadDirectory;
 		return $shared ? $wgHashedSharedUploadDirectory : $wgHashedUploadDirectory;
 	}

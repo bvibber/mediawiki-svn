@@ -45,7 +45,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 6618) Improve permissions/error detection in Special:Lockdb
 * Quick hack for extension testing: parser test doesn't create new message
   cache object.
-
+* (bug 6299) Maintain parser's revision ID across recursive calls to fix
+  {{REVISIONID}} when Cite extension is used
+* (bug 6622) Removed deprecated function Image::newFromTitle
+* (bug 6627) Fix regression in Special:Ipblocklist with table prefix
+* Removed forced dereferencements (new() returns a reference in PHP5)
+* Note about $wgUploadSizeWarning using byte
+* (bug 6592) Add most viewed pages summary to Special:Statistics
 
 == Languages updated ==
 
@@ -53,6 +59,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Brazilian Portuguese (pt-br)
 * Catalan (ca)
 * English (en)
+* French (fr)
 * German (de)
 * Hebrew (he)
 * Hungarian (hu)
