@@ -10,7 +10,7 @@ $wgCrossNamespaceLinksMessages = array();
 
 $wgCrossNamespaceLinksMessages['en'] = array(
 	'crossnamespacelinks'     => 'Cross-namespace links',
-	'crossnamespacelinkstext' => '$1: $2 links to $3'
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|links}} to $3'
 );
 $wgCrossNamespaceLinksMessages['de'] = array(
 	'crossnamespacelinks'     => 'Artikel mit Links in andere Namensräume',
@@ -18,7 +18,7 @@ $wgCrossNamespaceLinksMessages['de'] = array(
 );
 $wgCrossNamespaceLinksMessages['he'] = array(
 	'crossnamespacelinks'     => 'קישורים מדפי תוכן למרחבי שם אחרים',
-	'crossnamespacelinkstext' => '$1: $2 קישורים למרחב $3'
+	'crossnamespacelinkstext' => '$1: {{plural:$2|קישור אחד|$2 קישורים}} למרחב $3'
 );
 $wgCrossNamespaceLinksMessages['id'] = array(
 	'crossnamespacelinks'     => 'Pranala antar-namespace',
