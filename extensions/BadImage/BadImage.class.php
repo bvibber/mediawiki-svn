@@ -16,9 +16,9 @@ class BadImageList {
 		wfProfileIn( __METHOD__ );
 		static $titles = array();
 		if( !isset( $titles[$name] ) ) {
-			global $wgMemc;
+			global $wgMemc, $wgBadImageCache;
 			$res = $wgMemc->get( BadImageList::key( $name ) );
-			if( $res ) {
+			if( $res && $wgBadImageCache ) {
 				$titles[$name] = $res == 'yes';
 			} else {
 				$titles[$name] = BadImageList::checkReal( $name );

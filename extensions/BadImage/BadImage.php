@@ -25,6 +25,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgAvailableRights[] = 'badimages';
 	$wgGroupPermissions['sysop']['badimages'] = true;
 	
+	/** Set this to false to disable caching results with shared memory caching */
+	$wgBadImageCache = true;
+	
 	function efBadImageSetup() {
 		global $wgMessageCache, $wgHooks, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
 		$wgHooks['BadImage'][] = 'efBadImage';
