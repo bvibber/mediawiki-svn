@@ -1446,3 +1446,32 @@ div#searchTarget ul li:before {
 	content: "\00BB \0020";
 }
 
+
+
+.mw-badge-safe, .mw-badge-maybe, .mw-badge-warning, .mw-badge-unreviewed {
+   border-style: solid;
+   border-width: 1px;
+   padding: 12px;
+   margin: 10px 40px;
+   text-align: center;
+}
+.mw-badge-safe {
+   border-color: #383;
+   background-color: #efe;
+}
+.mw-badge-maybe {
+   border-color: #338;
+   background-color: #eef;
+}
+.mw-badge-warning {
+   border-color: #833;
+   background-color: #fee;
+}
+.mw-badge-unreviewed {
+   border-color: #883;
+   background-color: #ffe;
+}
+.mw-badge-sub {
+   font-size: 90%;
+}
+

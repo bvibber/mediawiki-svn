@@ -2067,6 +2067,34 @@ Please confirm that really want to recreate this page.',
 * Italiano|it
 * Nederlands|nl",
 
+
+# Snapshot review mode tags
+'tag-badge-reviewed' =>
+	"This article has been '''reviewed'''. ([[$1|review log]])",
+
+'tag-badge-checked' =>
+	"This article has been checked for spam, but '''not for accuracy'''.",
+
+'tag-badge-warning' =>
+	"This article '''has not been reviewed''' for accuracy or spam.",
+
+'tag-badge-new' =>
+	"This article was recently created, and '''has not been reviewed''' for accuracy or spam.",
+
+
+'tag-sub-changes' =>
+	"There are [[$1|3 additional changes]] awaiting review. ([[$2|compare to this version]])",
+
+'tag-sub-changes-check' =>
+	"There are [[$1|3 additional changes]] not yet checked. ([[Special:Version|$1]])",
+
+'tag-sub-reviewed' =>
+	"[[$1|A '''reviewed version''']] of this article is also available. ([[$1|compare to this version]])",
+
+'tag-sub-checked' =>
+	"[[$1|A '''previously checked version''']] of this article is also available. ([[$2|compare to this version]])",
+
+
 );
 
 ?>
