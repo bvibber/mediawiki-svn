@@ -1,9 +1,9 @@
 <?php
 
 require_once('Expression.php');
-require_once('wikidata.php');
 require_once('forms.php');
 require_once('attribute.php');
+require_once('WiktionaryZAttributes.php');
 require_once('tuple.php');
 require_once('relation.php');
 require_once('type.php');
@@ -11,7 +11,7 @@ require_once('languages.php');
 require_once('editor.php');
 require_once('HTMLtable.php');
 
-class DefinedMeaningDefinitionController implements PageElementController {
+class DefinedMeaningDefinitionController implements Controller {
 	public function add($keyPath, $tuple) {
 		global
 			$expressionIdAttribute, $definedMeaningIdAttribute, $languageAttribute, $textAttribute;
@@ -79,7 +79,7 @@ class DefinedMeaningAlternativeDefinitionsController {
 	}
 }
 
-class DefinedMeaningAlternativeDefinitionController implements PageElementController {
+class DefinedMeaningAlternativeDefinitionController implements Controller {
 	public function add($keyPath, $tuple) {
 		global
 			$expressionIdAttribute, $definitionIdAttribute, $languageAttribute, $textAttribute;
@@ -116,7 +116,7 @@ class DefinedMeaningAlternativeDefinitionController implements PageElementContro
 	}
 }
 
-class SynonymTranslationController implements PageElementController {
+class SynonymTranslationController implements Controller {
 	public function add($keyPath, $tuple) {
 		global
 			$definedMeaningIdAttribute, $expressionAttribute, $languageAttribute, $spellingAttribute, $identicalMeaningAttribute;
@@ -153,7 +153,7 @@ class SynonymTranslationController implements PageElementController {
 	}
 }
 
-class DefinedMeaningRelationController implements PageElementController {
+class DefinedMeaningRelationController implements Controller {
 	public function add($keyPath, $tuple) {
 		global
 			$definedMeaningIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
@@ -182,7 +182,7 @@ class DefinedMeaningRelationController implements PageElementController {
 	}
 }
 
-class DefinedMeaningAttributeController implements PageElementController {
+class DefinedMeaningAttributeController implements Controller {
 	public function add($keyPath, $tuple) {
 		global
 			$definedMeaningIdAttribute, $attributeAttribute;
@@ -208,7 +208,7 @@ class DefinedMeaningAttributeController implements PageElementController {
 	}
 }
 
-class DefinedMeaningCollectionController implements PageElementController {
+class DefinedMeaningCollectionController implements Controller {
 	public function add($keyPath, $tuple) {
 		global
 			$expressionIdAttribute, $definedMeaningIdAttribute, $collectionAttribute, $sourceIdentifierAttribute;
@@ -245,6 +245,35 @@ class DefinedMeaningCollectionController implements PageElementController {
 	}
 }
 
+class ExpressionMeaningController implements Controller {
+	public function add($keyPath, $tuple) {
+		global
+			$expressionIdAttribute, $definedMeaningAttribute, $definitionAttribute, $languageAttribute, $textAttribute;
+			
+		$definition = $tuple->getAttributeValue($definedMeaningAttribute)->getAttributeValue($definitionAttribute);
+		
+		if ($definition->getTupleCount() > 0) {
+			$definitionTuple = $definition->getTuple(0);
+			
+			$text = $definitionTuple->getAttributeValue($textAttribute);
+			
+			if ($text != "") {	
+				$languageId = $definitionTuple->getAttributeValue($languageAttribute);
+				$expressionId = $keyPath->peek(0)->getAttributeValue($expressionIdAttribute);
+				$revisionId = getRevisionForExpressionId($expressionId);
+
+				createNewDefinedMeaning($expressionId, $revisionId, $languageId, $text);
+			}
+		}
+	}
+
+	public function remove($keyPath) {
+	}
+
+	public function update($keyPath, $tuple) {
+	}
+}
+
 /**
  * Renders a content page from WiktionaryZ based on the GEMET database.
  * @package MediaWiki
@@ -256,69 +285,24 @@ class WiktionaryZ {
 	*/
 	function view() {
 		global 
-			$wgOut, $wgTitle, $wgUser, $wgLanguageNames;
+			$wgOut, $wgTitle, $wgUser;
 
 		$userlang=$wgUser->getOption('language');
 		$skin = $wgUser->getSkin();
 		$dbr =& wfGetDB( DB_MASTER );
 
 		$wgOut->addHTML("Your user interface language preference: <b>$userlang</b> - " . $skin->makeLink("Special:Preferences", "set your preferences"));
-/*		$res=$dbr->query("SELECT * from uw_expression_ns WHERE spelling=BINARY ".$dbr->addQuotes($wgTitle->getText()));
-
-		while($row=$dbr->fetchObject($res)) {
-			$expressionId = $row->expression_id;
-			$definedMeaningIds = $this->getDefinedMeaningsForExpression($expressionId);
-
-			$wgOut->addHTML($skin->editSectionLink($wgTitle, $expressionId));
-			$wgOut->addHTML("<h2><i>Spelling</i>: $row->spelling - <i>Language:</i> ".$wgLanguageNames[$row->language_id]. "</h2>");
-
-//			$wgOut->addHTML('<ul>');
-//			foreach($definedMeaningIds as $definedMeaningId) {
-//				$wgOut->addHTML($skin->editSectionLink($wgTitle, "$expressionId-$definedMeaningId"));
-//				$this->displayPageElement($this->getDefinedMeaningPageElement($definedMeaningId, $expressionId));
-//
-//				$wgOut->addHTML('</li>');
-//			}
-
-			$this->displayPageElement($this->getDefinedMeaningsPageElement($expressionId));
-
-			$wgOut->addHTML('</ul>');
-		}
-*/
-		$this->displayPageElement($this->getExpressionsPageElement($wgTitle->getText()));
+		$wgOut->addHTML($this->getExpressionsEditor()->view(new IdStack("expression"), $this->getExpressionsRelation($wgTitle->getText())));
 		
 		# We may later want to disable the regular page component
 		# $wgOut->setPageTitleArray($this->mTitle->getTitleArray());
-	}
-	
-	function displayPageElement($pageElement) {
-//		addWikiDataBlock($pageElement->getId(), $pageElement->getCaption(), $pageElement->getViewer()->view(new IdStack($pageElement->getId()), $pageElement->getRelation()), false);
-		global
-			$wgOut;
-			
-		$wgOut->addHTML($pageElement->getViewer()->view(new IdStack($pageElement->getId()), $pageElement->getRelation()));
-	}
-	
-	function editPageElement($pageElement) {
-//		addWikiDataBlock($pageElement->getId(), $pageElement->getCaption(), $pageElement->getEditor()->edit(new IdStack($pageElement->getId()), $pageElement->getRelation()), false); 
-		global
-			$wgOut;
-			
-		$wgOut->addHTML($pageElement->getEditor()->edit(new IdStack($pageElement->getId()), $pageElement->getRelation()));
-	}
-
-	function savePageElement($pageElement) {
-		global
-			$wgRequest;
-
-		$pageElement->getEditor()->save(new IdStack($pageElement->getId()), $pageElement->getRelation());		
 	}
 	
 	function getDefinedMeaningDefinitionEditor() {
 		global
 			$definitionAttribute, $languageAttribute, $textAttribute;
 		
-		$editor = new TableEditor($definitionAttribute, true, true, false, new DefinedMeaningDefinitionController());
+		$editor = new RelationTableEditor($definitionAttribute, true, true, true, new DefinedMeaningDefinitionController());
 		$editor->addEditor(new LanguageEditor($languageAttribute, false, true));
 		$editor->addEditor(new TextEditor($textAttribute, true, true));
 		
@@ -329,11 +313,11 @@ class WiktionaryZ {
 		global
 			$alternativeDefinitionsAttribute, $definitionIdAttribute, $alternativeDefinitionAttribute, $languageAttribute, $textAttribute;
 
-		$alternativeDefinitionEditor = new TableEditor($alternativeDefinitionAttribute, true, true, true, new DefinedMeaningAlternativeDefinitionController());
+		$alternativeDefinitionEditor = new RelationTableEditor($alternativeDefinitionAttribute, true, true, true, new DefinedMeaningAlternativeDefinitionController());
 		$alternativeDefinitionEditor->addEditor(new LanguageEditor($languageAttribute, false, true)); 
 		$alternativeDefinitionEditor->addEditor(new TextEditor($textAttribute, true, true)); 
 				
-		$editor = new TableEditor($alternativeDefinitionsAttribute, true, true, false, new DefinedMeaningAlternativeDefinitionsController());
+		$editor = new RelationTableEditor($alternativeDefinitionsAttribute, true, true, false, new DefinedMeaningAlternativeDefinitionsController());
 		$editor->addEditor($alternativeDefinitionEditor);
 		
 		return $editor;
@@ -347,7 +331,7 @@ class WiktionaryZ {
 		$expressionEditor->addEditor(new LanguageEditor($languageAttribute, false, true));
 		$expressionEditor->addEditor(new SpellingEditor($spellingAttribute, false, true));
 			
-		$tableEditor = new TableEditor($synonymsAndTranslationsAttribute, true, true, false, new SynonymTranslationController());
+		$tableEditor = new RelationTableEditor($synonymsAndTranslationsAttribute, true, true, false, new SynonymTranslationController());
 		$tableEditor->addEditor($expressionEditor);
 		$tableEditor->addEditor(new BooleanEditor($identicalMeaningAttribute, true, true, true));
 		
@@ -358,7 +342,7 @@ class WiktionaryZ {
 		global
 			$relationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
 		
-		$editor = new TableEditor($relationsAttribute, true, true, false, new DefinedMeaningRelationController());
+		$editor = new RelationTableEditor($relationsAttribute, true, true, false, new DefinedMeaningRelationController());
 		$editor->addEditor(new RelationTypeEditor($relationTypeAttribute, false, true));
 		$editor->addEditor(new DefinedMeaningEditor($otherDefinedMeaningAttribute, false, true));
 		
@@ -369,7 +353,7 @@ class WiktionaryZ {
 		global
 			$attributesAttribute, $attributeAttribute;
 			
-		$editor = new TableEditor($attributesAttribute, true, true, false, new DefinedMeaningAttributeController());
+		$editor = new RelationTableEditor($attributesAttribute, true, true, false, new DefinedMeaningAttributeController());
 		$editor->addEditor(new AttributeEditor($attributeAttribute, false, true));
 
 		return $editor;
@@ -379,7 +363,7 @@ class WiktionaryZ {
 		global
 			$collectionMembershipAttribute, $collectionAttribute, $sourceIdentifierAttribute;
 		
-		$editor = new TableEditor($collectionMembershipAttribute, true, true, false, new DefinedMeaningCollectionController());
+		$editor = new RelationTableEditor($collectionMembershipAttribute, true, true, false, new DefinedMeaningCollectionController());
 		$editor->addEditor(new CollectionEditor($collectionAttribute, false, true));
 		$editor->addEditor(new ShortTextEditor($sourceIdentifierAttribute, true, true));
 
@@ -437,14 +421,15 @@ class WiktionaryZ {
 		return $result;
 	}
 	
-	function getExpressionsPageElement($spelling) {
+	function getExpressionsEditor() {
 		global
-			$expressionsAttribute, $definedMeaningAttribute, $expressionAttribute, $expressionMeaningsAttribute, $languageAttribute, $spellingAttribute;
+			$expressionsAttribute, $definedMeaningAttribute, $expressionAttribute, $expressionMeaningsAttribute, 
+			$languageAttribute, $spellingAttribute;
 			
 		$definitionEditor = $this->getDefinedMeaningDefinitionEditor();
 		$synonymsAndTranslationsEditor = $this->getSynonymsAndTranslationsEditor(); 
 		
-		$definedMeaningEditor = new TupleListEditor($definedMeaningAttribute, true, true, false, null);
+		$definedMeaningEditor = new TupleListEditor($definedMeaningAttribute, true, false, true, null);
 		$definedMeaningEditor->addEditor($definitionEditor);
 		$definedMeaningEditor->addEditor($this->getAlternativeDefinitionsEditor());
 		$definedMeaningEditor->addEditor($synonymsAndTranslationsEditor);
@@ -455,7 +440,7 @@ class WiktionaryZ {
 		$definedMeaningEditor->expandEditor($definitionEditor);
 		$definedMeaningEditor->expandEditor($synonymsAndTranslationsEditor);
 		
-		$expressionMeaningsEditor = new RelationListEditor($expressionMeaningsAttribute, 3);
+		$expressionMeaningsEditor = new RelationListEditor($expressionMeaningsAttribute, true, false, false, new ExpressionMeaningController(), 3);
 		$expressionMeaningsEditor->setCaptionEditor(new AttributeLabelViewer($definedMeaningAttribute));
 		$expressionMeaningsEditor->setValueEditor($definedMeaningEditor);
 		
@@ -463,13 +448,11 @@ class WiktionaryZ {
 		$expressionEditor->addViewer(new LanguageEditor($languageAttribute, false, false));
 		$expressionEditor->addViewer(new TextEditor($spellingAttribute, false, false)); 
 		
-		$expressionsEditor = new RelationListEditor($expressionsAttribute, 2);
+		$expressionsEditor = new RelationListEditor($expressionsAttribute, false, false, false, null, 2);
 		$expressionsEditor->setCaptionEditor($expressionEditor);
 		$expressionsEditor->setValueEditor($expressionMeaningsEditor);
 		
-		return new DefaultPageElement("expression", "Defined meaning",
-										$this->getExpressionsRelation($spelling),
-										$expressionsEditor, $expressionsEditor, true);
+		return $expressionsEditor;
 	}
 	
 	function getAlternativeDefinitions($definedMeaningId) {
@@ -502,123 +485,29 @@ class WiktionaryZ {
 		global 
 			$wgTitle, $wgUser;
 		
-//		if (count($sectionArguments) == 0)
-//			$this->saveSpellingForm($wgTitle->getText());
-//		else {
-//			$expressionId = $sectionArguments[0];			
-//			$definedMeaningIds = $this->getDefinedMeaningIdsForSectionArguments($sectionArguments);
-//			$this->saveExpressionForm($expressionId, $definedMeaningIds);
-//		}
-		
-		$this->savePageElement($this->getExpressionsPageElement($wgTitle->getText()));
+		$this->getExpressionsEditor()->save(new IdStack("expression"), $this->getExpressionsRelation($wgTitle->getText()));
 
 		Title::touchArray(array($wgTitle));
 		$now = wfTimestampNow();
-		RecentChange::notifyEdit( $now, $wgTitle, false, $wgUser, 'Edited translations, synonyms, definition, or relations',
-			0, $now, false, '', 0, 0, 0 );
+		RecentChange::notifyEdit($now, $wgTitle, false, $wgUser, 'Edited translations, synonyms, definition, or relations',
+			0, $now, false, '', 0, 0, 0);
 
-	}
-
-	function saveSpellingForm($spelling) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT expression_id FROM uw_expression_ns WHERE spelling=BINARY ".$dbr->addQuotes($spelling));
-
-		while ($expression = $dbr->fetchObject($queryResult)) {
-			$expressionId = $expression->expression_id;
-			$definedMeaningIds = $this->getDefinedMeaningsForExpression($expressionId);
-			$this->saveExpressionForm($expressionId, $definedMeaningIds);			
-		}
-	}
-	
-	function saveExpressionForm($expressionId, $definedMeaningIds) {
-		$synonymsAndTranslationIds = $this->getSynonymAndTranslationIds($definedMeaningIds, $expressionId);
-
-		foreach($definedMeaningIds as $definedMeaningId) 
-			$this->saveDefinedMeaningForm($expressionId, $definedMeaningId);
-	}
-	
-	function saveDefinedMeaningForm($expressionId, $definedMeaningId) {
-		$this->savePageElement($this->getDefinedMeaningPageElement($definedMeaningId, $expressionId));	
 	}
 
 	function edit() {
 		global 
 			$wgOut, $wgTitle, $wgUser, $wgRequest;
 		
-//		$sectionToEdit = $wgRequest->getText('section');
-//		
-//		if ($sectionToEdit != "")
-//			$sectionArguments = explode("-", $sectionToEdit);
-//		else
-//			$sectionArguments = array();
-//		
 		if ($wgRequest->getText('save') != '')
 			$this->saveForm();
-//					
-//		$userlang = $wgUser->getOption('language');
+
 		$skin = $wgUser->getSkin();
 
 		$wgOut->addHTML("Your user interface language preference: <b>$userlang</b> - " . $skin->makeLink("Special:Preferences", "set your preferences"));
 		$wgOut->addHTML('<form method="post" action="">');
-
-		$this->editPageElement($this->getExpressionsPageElement($wgTitle->getText()));
-//		if (count($sectionArguments) == 0)
-//			$this->displaySpellingEditForm($wgTitle->getText());
-//		else {
-//			$definedMeaningIds = $this->getDefinedMeaningIdsForSectionArguments($sectionArguments);							
-//			$this->displayPartialEditForm($sectionArguments[0], $definedMeaningIds);
-//		}
-
+		$wgOut->addHTML($this->getExpressionsEditor()->edit(new IdStack("expression"), $this->getExpressionsRelation($wgTitle->getText())));
 		$wgOut->addHTML(getSubmitButton("save", "Save"));
 		$wgOut->addHTML('</form>');
-	}
-	
-	function getDefinedMeaningIdsForSectionArguments($sectionArguments) {
-		if (count($sectionArguments) >= 2) 
-			return array($sectionArguments[1]);
-		else
-			return $this->getDefinedMeaningsForExpression($sectionArguments[0]);
-	}
-	
-	function displaySpellingEditForm($spelling) {
-		global
-			$wgOut;
-		
-		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT expression_id, spelling, language_id FROM uw_expression_ns WHERE spelling=BINARY ".$dbr->addQuotes($spelling));
-
-		while ($expression = $dbr->fetchObject($queryResult)) {
-			$expressionId = $expression->expression_id;
-			$definedMeaningIds = $this->getDefinedMeaningsForExpression($expressionId);
-			$this->displayExpressionEditForm($expression->spelling, $expressionId, $expression->language_id, $definedMeaningIds);			
-		}
-	}
-	
-	function displayPartialEditForm($expressionId, $definedMeaningIds) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT spelling, language_id FROM uw_expression_ns WHERE expression_id=$expressionId");
-		
-		if ($expression = $dbr->fetchObject($queryResult))
-			$this->displayExpressionEditForm($expression->spelling, $expressionId, $expression->language_id, $definedMeaningIds);
-	}
-	
-	function displayExpressionEditForm($spelling, $expressionId, $languageId, $definedMeaningIds) {
-		global
-			$wgOut, $wgLanguageNames;
-		
-		$wgOut->addHTML("<h2><i>Spelling:</i>" . $spelling . " - <i>Language:</i> ".$wgLanguageNames[$languageId]."</h2>");
-
-		$wgOut->addHTML('<ul>');
-		foreach ($definedMeaningIds as $definedMeaningId) {
-			$wgOut->addHTML('<li>');			
-			$this->displayDefinedMeaningEditForm($definedMeaningId, $expressionId);
-			$wgOut->addHTML('</li>');
-		}
-		$wgOut->addHTML('</ul>');
-	}
-	
-	function displayDefinedMeaningEditForm($definedMeaningId, $expressionId) {
-		$this->editPageElement($this->getDefinedMeaningPageElement($definedMeaningId, $expressionId));
 	}
 	
 	function getDefinedMeaningsForExpression($expressionId) {

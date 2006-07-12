@@ -1,5 +1,9 @@
 <?php
 
+/* Copyright (C) 2006 by Charta Software
+ *   http://www.charta.org/
+ */ 
+
 require_once("HTMLtable.php");
 
 class IdStack {
@@ -77,6 +81,12 @@ interface Editor {
 	public function getEditors();
 }
 
+interface Controller {
+	public function add($keyPath, $tuple);
+	public function remove($keyPath);
+	public function update($keyPath, $tuple);
+}
+
 abstract class DefaultEditor implements Editor {
 	protected $editors = array();
 	protected $attribute;
@@ -98,7 +108,7 @@ abstract class DefaultEditor implements Editor {
 	}
 }
 
-class TableEditor extends DefaultEditor {
+abstract class RelationEditor extends DefaultEditor {
 	protected $allowAdd;
 	protected $allowRemove;
 	protected $isAddField;
@@ -111,72 +121,6 @@ class TableEditor extends DefaultEditor {
 		$this->allowRemove = $allowRemove;
 		$this->isAddField = $isAddField;
 		$this->controller = $controller;
-	}
-	
-	public function view($idPath, $value) {
-		return getRelationAsHTMLTable($this, $idPath, $value);
-	}
-	
-	public function edit($idPath, $value) {
-		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';	
-		$key = $value->getKey();
-		
-		$headerRows = getHeadingAsTableHeaderRows($this->getHeading());
-	
-		if ($this->allowRemove)
-			$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="skins/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>' . $headerRows[0];
-			
-		if ($this->repeatInput)		
-			$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
-			
-		foreach ($headerRows as $headerRow)
-			$result .= '<tr>' . $headerRow . '</tr>';
-		
-		$tupleCount = $value->getTupleCount();
-		
-		for ($i = 0; $i < $tupleCount; $i++) {
-			$result .= '<tr>';
-			$tuple = $value->getTuple($i);
-			$idPath->pushKey(project($tuple, $key));
-			
-			if ($this->allowRemove)
-				$result .= '<td class="remove">' . getRemoveCheckBox('remove-'. $idPath->getId()) . '</td>';
-			
-			$result .= getTupleAsEditTableCells($tuple, $idPath, $this);
-			$idPath->popKey();		
-			
-			if ($this->repeatInput)
-				$result .= '<td/>';
-			
-			$result .= '</tr>';
-		}
-		
-		if ($this->allowAdd) 
-			$result .= getAddRowAsHTML($idPath, $this, $this->repeatInput, $this->allowRemove);
-		
-		$result .= '</table>';
-	
-		return $result;
-	}
-	
-	public function add($idPath) {
-		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';	
-		$headerRows = getHeadingAsTableHeaderRows($this->getAddHeading());
-	
-//		if ($repeatInput)		
-//			$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
-			
-		foreach ($headerRows as $headerRow)
-			$result .= '<tr>' . $headerRow . '</tr>';
-		
-		$result .= getAddRowAsHTML($idPath, $this, false, false);
-		$result .= '</table>';
-
-		return $result;
-	}
-	
-	public function getUpdateValue($idPath) {
-		return null;
 	}
 	
 	public function getAddValue($idPath) {
@@ -240,22 +184,9 @@ class TableEditor extends DefaultEditor {
 			
 		return new Heading($attributes);
 	}
-
-	public function getTableHeading($editor) {
-		$attributes = array();
-		
-		foreach($editor->getEditors() as $childEditor) { 
-			$childAttribute = $childEditor->getAttribute();
-			
-			if (is_a($childEditor, TupleTableCellEditor))
-				$type = new TupleType($this->getTableHeading($childEditor));
-			else
-				$type = 'short-text';
-				
-			$attributes[] = new Attribute($childAttribute->id, $childAttribute->name, $type);;
-		}
-			
-		return new Heading($attributes);
+	
+	public function getUpdateValue($idPath) {
+		return null;
 	}
 
 	protected function getUpdateHeading() {
@@ -327,9 +258,12 @@ class TableEditor extends DefaultEditor {
 	public function save($idPath, $value) {
 		if ($this->allowAdd) {
 			$addHeading = $this->getAddHeading();
-			$addEditors = $this->getAddEditors();
-			$tuple = $this->getAddTuple($idPath, $addHeading, $addEditors);
-			$this->controller->add($idPath->getKeyStack(), $tuple);
+			
+			if (count($addHeading->attributes) > 0) {
+				$addEditors = $this->getAddEditors();
+				$tuple = $this->getAddTuple($idPath, $addHeading, $addEditors);
+				$this->controller->add($idPath->getKeyStack(), $tuple);
+			}
 		}
 		
 		$tupleCount = $value->getTupleCount();
@@ -355,12 +289,138 @@ class TableEditor extends DefaultEditor {
 	}
 	
 	public function getAddAttribute() {
-		$addHeading = $this->getAddHeading();
+		$result = null;
 		
-		if (count($addHeading->attributes) > 0)
-			return new Attribute($this->attribute->id, $this->attribute->name, new RelationType($addHeading));
-		else
-			return null;	
+		if ($this->isAddField) {
+			$addHeading = $this->getAddHeading();
+			
+			if (count($addHeading->attributes) > 0)
+				$result = new Attribute($this->attribute->id, $this->attribute->name, new RelationType($addHeading));
+		}
+		
+		return $result;	
+	}
+}
+
+class RelationTableEditor extends RelationEditor {
+	public function view($idPath, $value) {
+		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';	
+		$heading = $value->getHeading();
+		$key = $value->getKey();
+		
+		foreach(getHeadingAsTableHeaderRows($this->getTableHeading($this)) as $headerRow)
+			$result .= '<tr>' . $headerRow . '</tr>';
+		
+		$tupleCount = $value->getTupleCount();
+		
+		for($i = 0; $i < $tupleCount; $i++) {
+			$tuple = $value->getTuple($i);
+			$idPath->pushKey(project($tuple, $key));
+			$result .= '<tr id="'. $idPath->getId() .'">' . getTupleAsTableCells($idPath, $this, $tuple) .'</tr>';
+			$idPath->popKey();
+		}
+		
+		$result .= '</table>';
+	
+		return $result;
+	}
+	
+	public function edit($idPath, $value) {
+		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';	
+		$key = $value->getKey();
+		
+		$headerRows = getHeadingAsTableHeaderRows($this->getHeading());
+	
+		if ($this->allowRemove)
+			$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="skins/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>' . $headerRows[0];
+			
+		if ($this->repeatInput)		
+			$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
+			
+		foreach ($headerRows as $headerRow)
+			$result .= '<tr>' . $headerRow . '</tr>';
+		
+		$tupleCount = $value->getTupleCount();
+		
+		for ($i = 0; $i < $tupleCount; $i++) {
+			$result .= '<tr>';
+			$tuple = $value->getTuple($i);
+			$idPath->pushKey(project($tuple, $key));
+			
+			if ($this->allowRemove)
+				$result .= '<td class="remove">' . getRemoveCheckBox('remove-'. $idPath->getId()) . '</td>';
+			
+			$result .= getTupleAsEditTableCells($tuple, $idPath, $this);
+			$idPath->popKey();		
+			
+			if ($this->repeatInput)
+				$result .= '<td/>';
+			
+			$result .= '</tr>';
+		}
+		
+		if ($this->allowAdd) 
+			$result .= $this->getAddRowAsHTML($idPath, $this->repeatInput, $this->allowRemove);
+		
+		$result .= '</table>';
+	
+		return $result;
+	}
+	
+	public function add($idPath) {
+		if ($this->isAddField) {
+			$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';	
+			$headerRows = getHeadingAsTableHeaderRows($this->getAddHeading());
+		
+	//		if ($repeatInput)		
+	//			$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
+				
+			foreach ($headerRows as $headerRow)
+				$result .= '<tr>' . $headerRow . '</tr>';
+			
+			$result .= $this->getAddRowAsHTML($idPath, false, false);
+			$result .= '</table>';
+	
+			return $result;
+		}
+		else 
+			return "";
+	}
+	
+	function getAddRowAsHTML($idPath, $repeatInput, $allowRemove) {
+		if ($repeatInput)
+			$rowClass = 'repeat';
+		else 
+			$rowClass = '';
+			
+		$result = '<tr id="'. $idPath->getId() . '" class="' . $rowClass . '">';
+		
+		if ($allowRemove)
+			$result .= '<td/>';
+		
+		$result .= getHeadingAsAddCells($idPath, $this);
+					
+		if ($repeatInput)
+			$result .= '<td class="add"/>';
+			
+		return $result . '</tr>'; 
+	}
+	
+	public function getTableHeading($editor) {
+		$attributes = array();
+		
+		foreach($editor->getEditors() as $childEditor) { 
+			$childAttribute = $childEditor->getAttribute();
+			
+			if (is_a($childEditor, TupleTableCellEditor))
+				$type = new TupleType($this->getTableHeading($childEditor));
+			else
+				$type = 'short-text';
+				
+			$attributes[] = new Attribute($childAttribute->id, $childAttribute->name, $type);;
+		}
+			
+		return new Heading($attributes);
 	}
 }
 
@@ -760,6 +820,25 @@ class TupleListEditor extends TupleEditor {
 	}
 	
 	public function add($idPath) {
+		$result = '<ul class="collapsable-items">';
+		
+		foreach($this->editors as $editor) {
+			if ($attribute = $editor->getAddAttribute()) {
+				$attribute = $editor->getAttribute();
+				$idPath->pushAttribute($attribute);			
+				$attributeId = $idPath->getId();
+				$result .= '<li>'.
+							'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">&ndash; ' . $attribute->name . '</h4>' .
+							'<div id="collapsable-'. $attributeId . '">' . $editor->add($idPath) . '</div>' .
+							'</li>';
+				$editor->add($idPath);
+				$idPath->popAttribute();
+			}
+		}
+	
+		$result .= '</ul>';
+
+		return $result;
 	}
 	
 	public function save($idPath, $value) {
@@ -776,28 +855,16 @@ class TupleListEditor extends TupleEditor {
 	}
 }
 
-class RelationListEditor implements Editor {
+class RelationListEditor extends RelationEditor {
 	protected $headerLevel;
-	protected $attribute;
 	protected $childrenExpanded;
 	protected $captionEditor;
 	protected $valueEditor;
 
-	public function __construct($attribute, $headerLevel) {
+	public function __construct($attribute, $allowAdd, $allowRemove, $isAddField, $controller, $headerLevel) {
+		parent::__construct($attribute, $allowAdd, $allowRemove, $isAddField, $controller);
+		
 		$this->headerLevel = $headerLevel;
-		$this->attribute = $attribute;
-	}
-
-	public function getAttribute() {
-		return $this->attribute;
-	}
-	
-	public function getUpdateAttribute() {
-		
-	}
-	
-	public function getAddAttribute() {
-		
 	}
 
 	public function setCaptionEditor($editor) {
@@ -806,6 +873,7 @@ class RelationListEditor implements Editor {
 
 	public function setValueEditor($editor) {
 		$this->valueEditor = $editor;
+		$this->editors[0] = $editor;
 	} 
 	
 	public function view($idPath, $value) {
@@ -827,14 +895,15 @@ class RelationListEditor implements Editor {
 		for ($i = 0; $i < $tupleCount; $i++) {
 			$tuple = $value->getTuple($i);
 			$idPath->pushKey(project($tuple, $key));
-			
 			$tupleId = $idPath->getId();
+			$idPath->pushAttribute($valueAttribute);
 			
 			$result .= '<li>'.
 						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $this->captionEditor->view($idPath, $tuple->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>' .
 						'<div id="collapsable-'. $tupleId . '"'. $style .'>' . $this->valueEditor->view($idPath, $tuple->getAttributeValue($valueAttribute)) . '</div>' .
 						'</li>';
 
+			$idPath->popAttribute();
 			$idPath->popKey();
 		}
 		
@@ -864,13 +933,25 @@ class RelationListEditor implements Editor {
 			$idPath->pushKey(project($tuple, $key));
 			
 			$tupleId = $idPath->getId();
+			$idPath->pushAttribute($valueAttribute);
 			
 			$result .= '<li>'.
 						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $this->captionEditor->view($idPath, $tuple->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>' .
 						'<div id="collapsable-'. $tupleId . '"'. $style .'>' . $this->valueEditor->edit($idPath, $tuple->getAttributeValue($valueAttribute)) . '</div>' .
 						'</li>';
 
+			$idPath->popAttribute();
 			$idPath->popKey();
+		}
+
+		if ($this->allowAdd) {
+			$idPath->pushAttribute($valueAttribute);
+			$tupleId = $idPath->getId();
+			$result .= '<li>'.
+						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">+ ' . $this->captionEditor->add($idPath, $tuple->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>' .
+						'<div id="collapsable-'. $tupleId . '" style="display: none;">' . $this->valueEditor->add($idPath) . '</div>' .
+						'</li>';
+			$idPath->popAttribute();
 		}
 		
 		$result .= '</ul>';
@@ -879,32 +960,7 @@ class RelationListEditor implements Editor {
 	}
 	
 	public function add($idPath) {
-		
-	}
-	
-	public function save($idPath, $value) {
-		$tupleCount = $value->getTupleCount();
-		$key = $value->getKey();
-		$valueAttribute = $this->valueEditor->getAttribute();
-				
-		for ($i = 0; $i < $tupleCount; $i++) {
-			$tuple = $value->getTuple($i);
-			$idPath->pushKey(project($tuple, $key));
-			$this->valueEditor->save($idPath, $tuple->getAttributeValue($valueAttribute));
-			$idPath->popKey();
-		}
-	}
-
-	public function getUpdateValue($idPath) {
-		
-	}
-	
-	public function getAddValue($idPath) {
-		
-	}
-	
-	public function getEditors() {
-		return array($this->captionEditor, $this->valueEditor);
+		return "";
 	}
 }
 
@@ -917,6 +973,10 @@ class AttributeLabelViewer implements Viewer {
 		
 	public function view($idPath, $value) {
 		return $this->attribute->name;
+	}
+	
+	public function add($idPath, $value) {
+		return "New " . strtolower($this->attribute->name);
 	}
 	
 	public function getAttribute() {

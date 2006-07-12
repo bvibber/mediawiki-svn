@@ -173,15 +173,18 @@ function getLatestSetIdForDefinedMeaning($definedMeaningId) {
 		return 0;	
 }
 
+function newSetIdForDefinedMeaning() {
+	return getMaximum('set_id', 'uw_syntrans') + 1;
+}
+
 function determineSetIdForDefinedMeaning($definedMeaningId) {
 	$result = getLatestSetIdForDefinedMeaning($definedMeaningId);
 	
 	if ($result == 0)
-		$result = getMaximum('set_id', 'uw_syntrans') + 1;
+		$result = newSetIdForDefinedMeaning();
 		
 	return $result;
 }
-	
 
 function createSynonymOrTranslation($setId, $definedMeaningId, $expressionId, $revisionId, $endemicMeaning) {
 	$dbr = &wfGetDB(DB_MASTER);
@@ -452,16 +455,26 @@ function addCollection($definedMeaningId) {
 	return $collectionId;	
 }
 
-function addDefinedMeaning($expressionId, $expressionRevisionId){
+function addDefinedMeaning($expressionId, $revisionId){
 	$dbr = &wfGetDB(DB_MASTER);
 
-	$sql = "insert into uw_defined_meaning(expression_id,revision_id,is_latest_ver) values($expressionId,$expressionRevisionId, 1)";
+	$sql = "insert into uw_defined_meaning(expression_id,revision_id,is_latest_ver) values($expressionId,$revisionId, 1)";
 	$queryResult = $dbr->query($sql);
+	$meaningId = $dbr->insertId($queryResult);
 
-	$meaningId = getMaximum("defined_meaning_id", "uw_defined_meaning");
-
-	$sql = "update uw_defined_meaning set first_ver=$meaningId where defined_meaning_id=$meaningId";
+	$sql = "update uw_defined_meaning set first_ver=$meaningId where defined_meaning_id=$meaningId and is_latest_ver=1";
 	$queryResult = $dbr->query($sql);
+	
 	return $meaningId;
 }
+
+function createNewDefinedMeaning($expressionId, $revisionId, $languageId, $text) {
+	$definedMeaningId = addDefinedMeaning($expressionId, $revisionId);
+	$setId = newSetIdForDefinedMeaning();
+	createSynonymOrTranslation($setId, $definedMeaningId, $expressionId, $revisionId, true);
+	addDefinedMeaningDefiningDefinition($definedMeaningId, $revisionId, $languageId, $text);
+	
+	return $definedMeaningId;
+}
+
 ?>

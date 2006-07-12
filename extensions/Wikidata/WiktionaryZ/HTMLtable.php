@@ -1,5 +1,9 @@
 <?php
 
+/* Copyright (C) 2006 by Charta Software
+ *   http://www.charta.org/
+ */ 
+
 require_once("attribute.php");
 require_once("tuple.php");
 require_once("relation.php");
@@ -138,28 +142,6 @@ function getTupleAsEditTableCells($tuple, $idPath, $editor, &$startColumn = 0) {
 	return $result;
 }
 
-function getRelationAsHTMLTable($editor, $idPath, $relation) {
-	$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';	
-	$heading = $relation->getHeading();
-	$key = $relation->getKey();
-	
-	foreach(getHeadingAsTableHeaderRows($editor->getTableHeading($editor)) as $headerRow)
-		$result .= '<tr>' . $headerRow . '</tr>';
-	
-	$tupleCount = $relation->getTupleCount();
-	
-	for($i = 0; $i < $tupleCount; $i++) {
-		$tuple = $relation->getTuple($i);
-		$idPath->pushKey(project($tuple, $key));
-		$result .= '<tr id="'. $idPath->getId() .'">' . getTupleAsTableCells($idPath, $editor, $tuple) .'</tr>';
-		$idPath->popKey();
-	}
-	
-	$result .= '</table>';
-
-	return $result;
-}
-
 function getRelationAsSuggestionTable($editor, $idPath, $relation) {
 	$result = '<table id="' . $idPath->getId() .'" class="wiki-data-table">';	
 	$heading = $editor->getHeading();
@@ -181,25 +163,6 @@ function getRelationAsSuggestionTable($editor, $idPath, $relation) {
 	$result .= '</table>';
 
 	return $result;
-}
-
-function getAddRowAsHTML($idPath, $editor, $repeatInput, $allowRemove) {
-	if ($repeatInput)
-		$rowClass = 'repeat';
-	else 
-		$rowClass = '';
-		
-	$result = '<tr id="'. $idPath->getId() . '" class="' . $rowClass . '">';
-	
-	if ($allowRemove)
-		$result .= '<td/>';
-	
-	$result .= getHeadingAsAddCells($idPath, $editor);
-				
-	if ($repeatInput)
-		$result .= '<td class="add"/>';
-		
-	return $result . '</tr>'; 
 }
 
 function getHeadingAsAddCells($idPath, $editor, &$startColumn = 0) {

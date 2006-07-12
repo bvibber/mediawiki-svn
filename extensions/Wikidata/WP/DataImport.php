@@ -32,10 +32,8 @@ for ($i = 1; $i <= 100; $i++)  {
 		$expression = findExpression($descriptionAttribute->protein->name, $languageId);
 		if (!$expression) {
 			$expression = createExpression($descriptionAttribute->protein->name, $languageId);
-			$definedMeaningId = addDefinedMeaning($expression->id, $expression->revisionId);
-			$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);
-		
-			addDefinedMeaningDefiningDefinition($definedMeaningId, $expression->revisionId, $languageId, $descriptionAttribute->protein->name);
+			$definedMeaningId = createNewDefinedMeaning($expression->id, $expression->revisionId, $languageId, $descriptionAttribute->protein->name);
+
 			addDefinedMeaningToCollection($definedMeaningId, $collectionId, $descriptionAttribute->protein->name, $expression->revisionId);
 		}
 }

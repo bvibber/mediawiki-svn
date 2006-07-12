@@ -1,5 +1,9 @@
 <?php
 
+/* Copyright (C) 2006 by Charta Software
+ *   http://www.charta.org/
+ */ 
+
 require_once('forms.php');
 require_once('converter.php');
 require_once('attribute.php');
@@ -91,33 +95,6 @@ class ConvertingRelation implements Relation {
 			
 		return new Heading($attributes);
 	}
-}
-
-function getQueryAsRelation($sql) {
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query($sql);
-
-	$attributes = array();
-	$fieldCount = $dbr->numFields($queryResult);
-	
-	for ($i = 0; $i < $fieldCount; $i++)
-		$attributes[] = new Attribute($dbr->fieldName($queryResult, $i), "Text");
-		
-	$heading = new Heading($attributes);	
-	$result = new ArrayRelation($heading);
-	
-	while ($row = $dbr->fetchRow($queryResult)) {
-		$tuple = array();
-		
-		for ($i = 0; $i < $fieldCount; $i++)
-			$tuple[] = $row[$i];
-			
-		$result->addTuple($tuple);
-	}
-
-	$dbr->freeResult($queryResult);
-	
-	return $result;		
 }
 
 function getRelationAsHTMLList($relation) {

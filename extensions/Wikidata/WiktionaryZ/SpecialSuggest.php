@@ -122,7 +122,7 @@ function getRelationTypeAsRelation($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$relation->addTuple(array($row->row_id, $row->relation, $row->collection));			
 
-	$editor = new TableEditor(null, false, false, false, null);
+	$editor = new RelationTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($relationTypeAttribute, false, false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
 	
@@ -142,7 +142,7 @@ function getAttributeAsRelation($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$relation->addTuple(array($row->row_id, $row->relation, $row->collection));			
 
-	$editor = new TableEditor(null, false, false, false, null);
+	$editor = new RelationTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($attributeAttribute, false, false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
 
@@ -161,7 +161,7 @@ function getDefinedMeaningAsRelation($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$relation->addTuple(array($row->row_id, $row->relation));			
 
-	$editor = new TableEditor(null, false, false, false, null);
+	$editor = new RelationTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($definedMeaningAttribute, false, false));
 
 	return array($relation, $editor);		
@@ -179,7 +179,7 @@ function getCollectionAsRelation($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$relation->addTuple(array($row->row_id, $row->relation));			
 
-	$editor = new TableEditor(null, false, false, false, null);
+	$editor = new RelationTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
 
 	return array($relation, $editor);		
