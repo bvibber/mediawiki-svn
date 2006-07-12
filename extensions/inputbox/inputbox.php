@@ -58,8 +58,9 @@ function renderInputbox($input, $params, &$parser)
 	getBoxOption($inputbox->id,$input,'id');	
 	getBoxOption($inputbox->labeltext,$input,'labeltext');
 	getBoxOption($inputbox->br, $input, 'break');
+	getBoxOption($inputbox->hidden, $input, 'hidden');
 	$inputbox->lineBreak();
-	$inputbox->checkWidth();	
+	$inputbox->checkWidth();
 	
 	$boxhtml=$inputbox->render();
 	# Maybe support other useful magic words here
@@ -86,6 +87,7 @@ function getBoxOption(&$value,&$input,$name,$isNumber=false) {
 class Inputbox {
 	var $type,$width,$preload,$editintro, $br;
 	var $defaulttext,$bgcolor,$buttonlabel,$searchbuttonlabel;
+	var $hidden;
 	
 	function InputBox( &$parser ) {
 		$this->parser =& $parser;
@@ -115,12 +117,13 @@ class Inputbox {
 		}
 
 
+		$type = $this->hidden ? 'hidden' : 'text';
 		$searchform=<<<ENDFORM
 		<table border="0" width="100%" cellspacing="0" cellpadding="0">
 		<tr>
 		<td align="center" bgcolor="{$this->bgcolor}">
 		<form name="searchbox" action="$searchpath" class="searchbox">
-		<input class="searchboxInput" name="search" type="text"
+		<input class="searchboxInput" name="search" type="{$type}"
 		value="{$this->defaulttext}" size="{$this->width}"/>{$this->br}
 ENDFORM;
 
@@ -186,8 +189,9 @@ ENDFORM2;
 		$this->labeltext = str_replace('<p>', '', $this->labeltext);
 		$this->labeltext = str_replace('</p>', '', $this->labeltext);
 		
+		$type = $this->hidden ? 'hidden' : 'text';
 		$searchform=<<<ENDFORM
-<form action="$searchpath" class="bodySearch" id="bodySearch{$this->id}"><div class="bodySearchWrap"><label for="bodySearchIput{$this->id}">{$this->labeltext}</label><input type="text" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$this->id}" /><input type="submit" name="go" value="{$this->buttonlabel}" class="bodySearchBtnGo" />
+<form action="$searchpath" class="bodySearch" id="bodySearch{$this->id}"><div class="bodySearchWrap"><label for="bodySearchIput{$this->id}">{$this->labeltext}</label><input type="{$type}" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$this->id}" /><input type="submit" name="go" value="{$this->buttonlabel}" class="bodySearchBtnGo" />
 ENDFORM;
 
 		if ( !empty( $this->fulltextbtn ) ) // this is wrong...
@@ -214,6 +218,7 @@ ENDFORM;
 				$this->buttonlabel = wfMsgHtml( "createarticle" );
 			}
 		}		
+		$type = $this->hidden ? 'hidden' : 'text';
 		$createform=<<<ENDFORM
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
 <tr>
@@ -223,7 +228,7 @@ ENDFORM;
 	<input type="hidden" name="preload" value="{$this->preload}" />
 	<input type="hidden" name="editintro" value="{$this->editintro}" />	
 	{$comment}
-	<input class="createboxInput" name="title" type="text"
+	<input class="createboxInput" name="title" type="{$type}"
 	value="{$this->defaulttext}" size="{$this->width}"/>{$this->br}	
 	<input type='submit' name="create" class="createboxButton"
 	value="{$this->buttonlabel}"/>	
