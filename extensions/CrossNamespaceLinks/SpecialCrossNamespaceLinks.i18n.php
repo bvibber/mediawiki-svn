@@ -24,4 +24,8 @@ $wgCrossNamespaceLinksMessages['id'] = array(
 	'crossnamespacelinks'     => 'Pranala antar-namespace',
 	'crossnamespacelinkstext' => '$1: $2 terpaut ke $3'
 );
+$wgCrossNamespaceLinksMessages['nl'] = array(
+	'crossnamespacelinks'     => 'Pagina\'s met verwijzingen naar andere naamruimten',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|verwijzing|verwijzingen}} naar $3'
+);
 ?>
