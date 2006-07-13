@@ -32,4 +32,10 @@ $wgLinkSearchMessages['id'] = array(
 	'linksearch-line'  => '$1 terpaut dari $2',
 	'linksearch-error' => '\'\'Wildcards\'\' hanya dapat digunakan di bagian awal dari nama host.'
 );
+$wgLinkSearchMessages['nl'] = array(
+	'linksearch'       => 'Zoek externe links',
+	'linksearch-text'  => 'Wildcards zoals "*.wikipedia.org" of "*.org" zijn toegestaan.',
+	'linksearch-line'  => '$1 gelinkt vanaf $2',
+	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.'
+);
 ?>
