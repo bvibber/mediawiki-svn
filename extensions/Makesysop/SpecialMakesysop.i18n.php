@@ -96,4 +96,23 @@ $wgMakesysopMessages['ja'] = array(
 	'bureaucrattitle'      => '{{int:group-bureaucrat}}によるアクセスが必要です。',
 	'bureaucrattext'       => '要求した操作には "{{int:group-bureaucrat}}" のステータスを持つ管理者によるアクセスが必要です。',
 );
+$wgMakesysopMessages['nl'] = array(
+	'makesysoptitle'       => 'Maak een gebruiker beheerder',
+	'makesysoptext'        => 'Dit formulier wordt door bureaucraten gebruikt om een gebruiker beheerder te maken. Geef de naam van een gebruiker in het veld in en klik op de knop om de gebruiker beheerder te maken.',
+	'makesysopname'        => 'Gebruikersnaam:',
+	'makesysopsubmit'      => 'Wijzig de gebruikersrechten',
+	'makesysopok'          => "<b>Gebruiker \"$1\" is nu beheerder</b>",
+	'makesysopfail'        => "<b>Gebruiker \"$1\" kon geen beheerder gemaakt worden. Heeft u de juiste naam opgegeven?</b>",
+	'setbureaucratflag'    => 'Maak deze gebruiker ook bureaucraat',
+	'rights'               => 'Rechten:',
+	'set_user_rights'      => 'Gebruikersrechten aanpassen',
+	'user_rights_set'      => "<b>Gebruikersrechten van \"$1\" bijgewerkt</b>",
+	'set_rights_fail'      => "<b>Gebruikersrechten van \"$1\" konden niet worden aangepast. Heeft u de juiste naam opgegeven?</b>",
+	'makesysop'            => 'Maak een gebruiker beheerder',
+	'already_sysop'        => 'Deze gebruiker is al beheerder',
+	'already_bureaucrat'   => 'Deze gebruiker is al bureaucraat',
+	'makesysop-nodatabase' => 'Onjuiste interwikigebruikersnaam: $1',
+	'bureaucrattitle'      => 'Alleen voor bureaucraten ',
+	'bureaucrattext'       => 'Deze functie is alleen beschikbaar voor beheerders met de status "bureaucraat".',
+);
 ?>

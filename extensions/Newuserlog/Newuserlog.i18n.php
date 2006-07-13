@@ -45,4 +45,11 @@ $wgNewuserlogMessages['ja'] = array(
 	'newuserlog-create2-entry' => 'が新規に $1 を作成しました',
 	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]",
 );
+$wgNewuserlogMessages['nl'] = array(
+	'newuserlogpage'           => 'Logboek nieuwe gebruikers',
+	'newuserlogpagetext'       => 'Hieronder staan de nieuw ingeschreven gebruikers',
+	'newuserlog-create-entry'  => 'heeft zich ingeschreven',
+	'newuserlog-create2-entry' => 'heeft gebruiker $1 ingeschreven',
+	'newuserlog-create-text'   => "[[{{ns:user_talk}}:$1|$2]] | [[{{ns:special}}:Contributions/$1|$3]] | [[{{ns:special}}:Blockip/$1|$4]]",
+);
 ?>
