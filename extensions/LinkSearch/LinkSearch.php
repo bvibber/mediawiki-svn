@@ -8,15 +8,15 @@
 
 $wgExtensionFunctions[] = 'wfLinkSearchSetup';
 
+# Internationlisation file
+require_once( 'LinkSearch.i18n.php' );
+
 function wfLinkSearchSetup() {
-	$GLOBALS['wgMessageCache']->addMessages(
-		array(
-			'linksearch' => 'Search web links',
-			'linksearch-text' => 'Wildcards such as "*.wikipedia.org" may be used.',
-			'linksearch-line' => '$1 linked from $2',
-			'linksearch-error' => 'Wildcards may appear only at the start of the hostname.'
-		)
-	);
+	# Add messages
+	global $wgMessageCache, $wgLinkSearchMessages;
+	foreach( $wgLinkSearchMessages as $key => $value ) {
+		$wgMessageCache->addMessages( $wgLinkSearchMessages[$key], $key );
+	}
 
 	$GLOBALS['wgSpecialPages']['Linksearch'] = array( /*class*/ 'SpecialPage', 
 		/*name*/ 'Linksearch', /* permission */'', /*listed*/ true, 
