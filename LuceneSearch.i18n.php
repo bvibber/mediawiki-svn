@@ -26,6 +26,24 @@ Search for $3 $9",
 This is probably temporary; try again in a few moments,
 or you can search the wiki through an external search service:\n"
 );
+$wgLuceneSearchMessages['de'] = array(
+	'searchnumber'		=> "<strong>Ergebnisse $1–$2 von $3</strong>",
+	'searchprev'            => "&larr; <span style='font-size: smaller'>Vorherige</span>",
+	'searchnext'            => "<span style='font-size: smaller'>Nächste</span> &rarr;",
+	'searchscore'           => "Relevanz: $1",
+	'searchsize'            => "$1 kB ($2 Wörter)",
+	'searchdidyoumean'      => "Meinten Sie „<a href=\"$1\">$2</a>“?",
+	'searchnoresults'       => "Es wurden keine passenden Seiten für Ihre Suchanfrage gefunden.",
+	'searchnearmatches'     => "<b>Diese Seiten haben zu der Suchanfrage ähnliche Titel:</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+Suche in Namensräumen:\n
+$1\n
+Suche nach $3 $9",
+	'lucenefallback'        => "Bei der {{SITENAME}}-internen Suche ist ein Problem aufgetreten.
+Dies ist normalerweise ein vorübergehendes Problem. Bitte versuchen Sie es nochmal.
+Alternativ können Sie auch die externen Suchmöglichkeiten nutzen: :\n"
+);	
 $wgLuceneSearchMessages['he'] = array(
 	'searchnumber'          => "<strong>תוצאות $1-$2 מתוך $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prev</span>",
