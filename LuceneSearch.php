@@ -55,6 +55,9 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => array( 'Brion Vibber' )
 );
 
+# Internationlisation file
+require_once( 'LuceneSearch.i18n.php' );
+
 if (class_exists('Revision'))
 	$wgLSuseold = false;
 else

@@ -30,26 +30,11 @@ if (!defined('MEDIAWIKI')) {
 global $IP;
 require_once($IP.'/includes/SearchEngine.php');
 
-global $wgMessageCache;
-$wgMessageCache->addMessages(array(
-	'searchnumber'          => "<strong>Results $1-$2 of $3</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prev</span>",
-	'searchnext'            => "<span style='font-size: small'>Next</span> &#x00BB;",
-	'searchscore'           => "Relevance: $1",
-	'searchsize'            => "$1KB ($2 words)",
-	'searchdidyoumean'      => "Did you mean: \"<a href=\"$1\">$2</a>\"?",
-	'searchnoresults'       => "Sorry, there were no exact matches to your query.",
-	'searchnearmatches'     => "<b>These pages have similar titles to your query:</b>\n",
-	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-Search in namespaces:\n
-$1\n
-Search for $3 $9",
-	'lucenefallback'        =>
-"There was a problem with the wiki search.
-This is probably temporary; try again in a few moments,
-or you can search the wiki through an external search service:\n"
-));
+# Add messages
+global $wgMessageCache, $wgLuceneSearchMessages;
+foreach( $wgLuceneSearchMessages as $key => $value ) {
+	$wgMessageCache->addMessages( $wgLuceneSearchMessages[$key], $key );
+}
 
 class LuceneSearch extends SpecialPage
 {
