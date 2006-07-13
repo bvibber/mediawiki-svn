@@ -14,6 +14,12 @@ $wgLinkSearchMessages['en'] = array(
 	'linksearch-line'  => '$1 linked from $2',
 	'linksearch-error' => 'Wildcards may appear only at the start of the hostname.',
 );
+$wgLinkSearchMessages['de'] = array(
+	'linksearch'       => 'Weblinks suchen',
+	'linksearch-text'  => 'Wildcards wie "*.wikipedia.org" können verwendet werden.',
+	'linksearch-line'  => '$1 linked from $2',
+	'linksearch-error' => 'Wildcards können nur am Anfang der URL verwendet werden.',
+);
 $wgLinkSearchMessages['he'] = array(
 	'linksearch'       => 'חיפוש קישורים חיצוניים',
 	'linksearch-text'  => 'ניתן להשתמש בתווים כללים, לדוגמה "‎*.wikipedia.org".',
