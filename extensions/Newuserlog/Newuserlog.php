@@ -19,7 +19,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
-# Internationlization file
+# Internationlisation file
 require_once( 'Newuserlog.i18n.php' );
 
 function wfNewuserlog() {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalization file for Newuserlog extension.
+ * Internationalisation file for Newuserlog extension.
  *
  * @package MediaWiki
  * @subpackage Extensions

@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalization file for Makesysop extension.
+ * Internationalisation file for Makesysop extension.
  *
  * @package MediaWiki
  * @subpackage Extensions

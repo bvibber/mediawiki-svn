@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalization file for CrossNamespaceLinks extension.
+ * Internationalisation file for CrossNamespaceLinks extension.
  *
  * @package MediaWiki
  * @subpackage Extensions
