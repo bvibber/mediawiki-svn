@@ -13,6 +13,11 @@ $wgFilepathMessages['en'] = array(
 	'filepath_page'   => 'File:',
 	'filepath_submit' => 'Path',
 );
+$wgFilepathMessages['de'] = array(
+	'filepath'        => 'Dateipfad',
+	'filepath_page'   => 'Datei:',
+	'filepath_submit' => 'Pfad',
+);
 $wgFilepathMessages['he'] = array(
 	'filepath'        => 'נתיב לקובץ',
 	'filepath_page'   => 'הקובץ:',
