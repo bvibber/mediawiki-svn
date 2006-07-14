@@ -948,7 +948,7 @@ class RelationListEditor extends RelationEditor {
 			$idPath->pushAttribute($valueAttribute);
 			$tupleId = $idPath->getId();
 			$result .= '<li>'.
-						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">+ ' . $this->captionEditor->add($idPath, $tuple->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>' .
+						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">+ ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>' .
 						'<div id="collapsable-'. $tupleId . '" style="display: none;">' . $this->valueEditor->add($idPath) . '</div>' .
 						'</li>';
 			$idPath->popAttribute();
@@ -975,7 +975,7 @@ class AttributeLabelViewer implements Viewer {
 		return $this->attribute->name;
 	}
 	
-	public function add($idPath, $value) {
+	public function add($idPath) {
 		return "New " . strtolower($this->attribute->name);
 	}
 	
