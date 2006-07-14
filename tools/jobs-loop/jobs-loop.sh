@@ -2,13 +2,17 @@
 
 
 cd `readlink -f /home/wikipedia/common/php/maintenance`
-
-while [ 1 ];do 
-	for x in `</h/w/c/pmtpa.dblist`;do 
-		/usr/local/bin/run-jobs $x | sed -u "s/^/$x:  /" | tee -a /home/wikipedia/logs/jobqueue/$HOSTNAME.$$.log
-		
-		#php runJobs.php $x | sed -u "s/^/$x:  /" | tee -a /home/wikipedia/logs/jobqueue/$HOSTNAME.$$.log
-		#sleep 1
+while [ 1 ];do
+	db=
+	while [ -z $db ];do
+		db=`php -n nextJobDB.php`
+		if [ -z $db ];then
+			# No jobs to do, wait for a while
+			echo "No jobs..."
+			sleep 5
+		fi
 	done
+	echo $db
+	/usr/local/bin/run-jobs $db | sed -u "s/^/$db:  /" | tee -a /home/wikipedia/logs/jobqueue/$HOSTNAME.$$.log
 done
 
