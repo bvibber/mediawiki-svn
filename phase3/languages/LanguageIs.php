@@ -1,5 +1,6 @@
 <?php
-/**
+/** Icelandic (Íslenska)
+ *
  * @package MediaWiki
  * @subpackage Language
  */
@@ -8,101 +9,104 @@
 
 require_once( 'LanguageUtf8.php' );
 
-/* private */ $wgNamespaceNamesIs = array(
-	NS_MEDIA		=> 'Miðill',
-	NS_SPECIAL		=> 'Kerfissíða',
-	NS_MAIN			=> '',
-	NS_TALK			=> 'Spjall',
-	NS_USER			=> 'Notandi',
-	NS_USER_TALK		=> 'Notandaspjall',
-	NS_PROJECT		=> $wgMetaNamespace,
-	NS_PROJECT_TALK		=> $wgMetaNamespace . 'spjall',
-	NS_IMAGE		=> 'Mynd',
-	NS_IMAGE_TALK		=> 'Myndaspjall',
-	NS_MEDIAWIKI		=> 'Melding',
-	NS_MEDIAWIKI_TALK	=> 'Meldingarspjall',
-	NS_TEMPLATE		=> 'Snið',
-	NS_TEMPLATE_TALK	=> 'Sniðaspjall',
-	NS_HELP			=> 'Hjálp',
-	NS_HELP_TALK		=> 'Hjálparspjall',
-	NS_CATEGORY		=> 'Flokkur',
-	NS_CATEGORY_TALK	=> 'Flokkaspjall'
-) + $wgNamespaceNamesEn;
-
-/* private */ $wgQuickbarSettingsIs = array(
-	'Sleppa', 'Fast vinstra megin', 'Fast hægra megin', 'Fljótandi til vinstri'
-);
-
-/* private */ $wgSkinNamesIs = array(
-	'standard'	=> 'Klassískt',
-	'nostalgia'	=> 'Gamaldags',
-	'cologneblue'	=> 'Kölnarblátt',
-	'myskin'	=> 'Mitt þema',
-) + $wgSkinNamesEn;
-
-/* private */ $wgDateFormatsIs = array(
-	'Sjálfgefið',
-	'15. janúar 2001 kl. 16:12',
-	'15. jan. 2001 kl. 16:12',
-	'16:12, 15. janúar 2001',
-	'16:12, 15. jan. 2001',
-	'ISO 8601' => '2001-01-15 16:12:34'
-);
-
-$wgMagicWordsIs = array(
-	MAG_REDIRECT             => array( 0, '#tilvísun', '#TILVÍSUN', '#redirect' ), // MagicWord::initRegex() sucks
-) + $wgMagicWordsEn;
-
 if (!$wgCachedMessageArrays) {
 	require_once('MessagesIs.php');
 }
 
-#--------------------------------------------------------------------------
-# Internationalisation code
-#--------------------------------------------------------------------------
-
 class LanguageIs extends LanguageUtf8 {
+	private $mMessagesIs, $mNamespaceNamesIs = null;
+
+	private $mQuickbarSettingsIs = array(
+		'Sleppa', 'Fast vinstra megin', 'Fast hægra megin', 'Fljótandi til vinstri'
+	);
+	
+	private $mSkinNamesIs = array(
+		'standard'	=> 'Klassískt',
+		'nostalgia'	=> 'Gamaldags',
+		'cologneblue'	=> 'Kölnarblátt',
+		'myskin'	=> 'Mitt þema',
+	);
+	
+	private $mDateFormatsIs = array(
+		'Sjálfgefið',
+		'15. janúar 2001 kl. 16:12',
+		'15. jan. 2001 kl. 16:12',
+		'16:12, 15. janúar 2001',
+		'16:12, 15. jan. 2001',
+		'ISO 8601' => '2001-01-15 16:12:34'
+	);
+
+	private $mMagicWordsIs = array(
+		'redirect'   => array( 0, '#tilvísun', '#TILVÍSUN', '#redirect' ), // MagicWord::initRegex() sucks
+	);
+
+	function __construct() {
+		parent::__construct();
+
+		global $wgAllMessagesIs;
+		$this->mMessagesIs =& $wgAllMessagesIs;
+
+		global $wgMetaNamespace;
+		$this->mNamespaceNamesIs = array(
+			NS_MEDIA          => 'Miðill',
+			NS_SPECIAL        => 'Kerfissíða',
+			NS_MAIN           => '',
+			NS_TALK           => 'Spjall',
+			NS_USER           => 'Notandi',
+			NS_USER_TALK      => 'Notandaspjall',
+			NS_PROJECT        => $wgMetaNamespace,
+			NS_PROJECT_TALK   => $wgMetaNamespace . 'spjall',
+			NS_IMAGE          => 'Mynd',
+			NS_IMAGE_TALK     => 'Myndaspjall',
+			NS_MEDIAWIKI      => 'Melding',
+			NS_MEDIAWIKI_TALK => 'Meldingarspjall',
+			NS_TEMPLATE       => 'Snið',
+			NS_TEMPLATE_TALK  => 'Sniðaspjall',
+			NS_HELP           => 'Hjálp',
+			NS_HELP_TALK      => 'Hjálparspjall',
+			NS_CATEGORY       => 'Flokkur',
+			NS_CATEGORY_TALK  => 'Flokkaspjall'
+		);
+
+	}
 
 	function getNamespaces() {
-		global $wgNamespaceNamesIs;
-		return $wgNamespaceNamesIs;
+		return $this->mNamespaceNamesIs + parent::getNamespaces();
 	}
 
 	function getQuickbarSettings() {
-		global $wgQuickbarSettingsIs;
-		return $wgQuickbarSettingsIs;
+		return $this->mQuickbarSettingsIs;
 	}
 
 	function getSkinNames() {
-		global $wgSkinNamesIs;
-		return $wgSkinNamesIs;
+		return $this->mSkinNamesIs + parent::getSkinNames();
 	}
 
 	function getDateFormats() {
-		global $wgDateFormatsIs;
-		return $wgDateFormatsIs;
+		return $this->mDateFormatsIs;
+	}
+
+	function &getMagicWords()  {
+		$t = $this->mMagicWordsIs + parent::getMagicWords();
+		return $t;
 	}
 
 	function getMessage( $key ) {
-		global $wgAllMessagesIs;
-		if( isset( $wgAllMessagesIs[$key] ) ) {
-			return $wgAllMessagesIs[$key];
+		if( isset( $this->mMessagesIs[$key] ) ) {
+			return $this->mMessagesIs[$key];
 		} else {
 			return parent::getMessage( $key );
 		}
 	}
 
 	function getAllMessages() {
-		global $wgAllMessagesIs;
-		return $wgAllMessagesIs;
+		return $this->mMessagesIs;
 	}
 
-	function getMagicWords() {
-		global $wgMagicWordsIs;
-		return $wgMagicWordsIs;
-	}
-
-	function date( $ts, $adj = false, $format = true) {
+	/**
+	 * $timecorrection is for compatibility with Language::date
+	 */
+	function date( $ts, $adj = false, $format = true, $timecorrection = false ) {
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); } # Adjust based on the timezone setting.
 		$format = $this->dateFormat($format);
 
@@ -122,7 +126,10 @@ class LanguageIs extends LanguageUtf8 {
 
 	}
 
-	function time($ts, $adj = false, $format = true) {
+	/**
+	 * $timecorrection is for compatibility with language::time
+	 */
+	function time($ts, $adj = false, $format = true, $timecorrection = false) {
 		global $wgUser;
 		if ( $adj ) { $ts = $this->userAdjust( $ts ); } # Adjust based on the timezone setting.
 
@@ -136,7 +143,10 @@ class LanguageIs extends LanguageUtf8 {
 
 	}
 
-	function timeanddate( $ts, $adj = false, $format = true) {
+	/**
+	 * $timecorrection is for compatibility with Language::date
+	 */
+	function timeanddate( $ts, $adj = false, $format = true, $timecorrection = false ) {
 		global $wgUser;
 
 		$format = $this->dateFormat($format);
@@ -162,8 +172,14 @@ class LanguageIs extends LanguageUtf8 {
 	}
 
 	function linkPrefixExtension() {
+		// return '/^(.*?)([áÁðÐéÉíÍóÓúÚýÝþÞæÆöÖA-Za-z-–]+)$/sDu';
 		return true;
 	}
+
+	function linkTrail() {
+		return '/^([áðéíóúýþæöa-z-–]+)(.*)$/sDu';
+	}
+
 }
 
 ?>

@@ -109,14 +109,13 @@
 "articlepage" => "Gwyliwch erthygl",
 "subjectpage" => "Gwyliwch pwnc", # For compatibility
 "userpage" => "Gwyliwch tudalen defnyddiwr",
-"wikipediapage" => "Gwyliwch tudalen meta",
+"projectpage" => "Gwyliwch tudalen meta",
 "imagepage" => "Gwyliwch tudalen llun",
 "viewtalkpage" => "Gwyliwch sgwrs",
 "otherlanguages" => "Ieithoed eraill",
 "redirectedfrom" => "(Ail-cyfeiriad oddiwrth $1)",
 "lastmodified" => "Pryd cafodd ei newid diwethaf $1.",
 "viewcount" => "Mae'r tudalen hyn wedi cael ei gweld $1 o weithiau.",
-"printsubtitle" => "(Oddiwrth {{SERVER}})",
 "protectedpage" => "Tudalen amddiffyniol",
 "administrators" => "{{ns:project}}:Gweinyddwyr",
 "sysoptitle" => "Mynediad Sysop yn unig",
@@ -204,7 +203,6 @@ Gallwch chi defnyddio'r {{SITENAME}} yn anhysbys, neu gallwch chi mewngofnodi et
 "yourname" => "Eich enw defnyddwr",
 "yourpassword" => "Eich allweddair",
 "yourpasswordagain" => "Ail-teipiwch allweddair",
-"newusersonly" => " (defnyddwyr newydd yn unig)",
 "remembermypassword" => "Cofiwch fy allweddair dros mwy nag un sesiwn.",
 "loginproblem" => "<b>Mae problem efo'ch mewngofnodi.</b><br />Triwch eto!",
 "alreadyloggedin" => "<strong>Defnyddwr $1, yr ydych eisioes wedi mewngofnodi!</strong><br />",
@@ -343,7 +341,8 @@ gyda braintiau 'sysop' sy'n medru eu olygu. Byddwch yn siwr rydych yn dilyn y
 #
 "searchresults" => "Canlyniadau chwiliad",
 "searchresulttext" => "Am mwy o hysbys amdano chwilio {{SITENAME}}, gwelwch [[{{ns:project}}:Yn chwilio|Yn chwilio {{SITENAME}}]].",
-"searchquery" => "Am gofyniad \"$1\"",
+"searchsubtitle" => "Am gofyniad \"[[:$1]]\"",
+"searchsubtitleinvalid" => "Am gofyniad \"$1\"",
 "badquery" => "Gofyniad chwilio drwg",
 "badquerytext" => "Roedd yn amhosibl i prosesu'ch gofyniad.
 Mae'n tebygol roedd hyn am achos yr ydych wedi trio chwilio a gair gyda llai na tri llythyrau. Hefyd, wyrach rydych wedi cam-teipio'r gofyniad. Triwch gofyniad arall.",

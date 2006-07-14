@@ -8,7 +8,7 @@ $wgAllMessagesSr_el = array(
 */',
 'Monobook.js' => '
 /* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Moja korisnička stranica\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Korisnička strana za IP koju menjate kao\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Moja strana za razgovor\');
@@ -52,7 +52,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Videti sadržaj članka\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Videti korisničku stranicu\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Videti medija fajl\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Ovo je specijalna stranica i zato je ne možete samostalno uređivati.\');
-ta[\'ca-nstab-wp\'] = new Array(\'c\',\'Videti projekat stranicu\');
+ta[\'ca-nstab-project\'] = new Array(\'c\',\'Videti projekat stranicu\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Videti stranicu slike\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Videti sistemsku poruku\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Videti šablon\');
@@ -83,7 +83,6 @@ Buduće promene ove stranice i njoj pridružene stranice za razgovor će biti na
 'allmessagesnotsupportedDB' => '[[{{ns:-1}}:AllMessages|Sistemske poruke]] nisu podržane zato što je <i>wgUseDatabaseMessages</i> isključen.',
 'allmessagesnotsupportedUI' => 'Vaš trenutni jezik interfejsa <b>$1</b> nije podržan u [[{{ns:-1}}:AllMessages|sistemskim porukama]] na ovoj viki.',
 'allmessagestext' => 'Ovo je spisak svih poruka koje su u {{ns:8}}: imenskom prostoru',
-'allnonarticles' => 'Sve stranice koje nisu članci',
 'allnotinnamespace' => 'Sve stranice (koje nisu u $1 imenskom prostoru)',
 'allpages' => 'Sve stranice',
 'allpagesfrom' => 'Prikaži stranice početno sa:',
@@ -853,7 +852,7 @@ i tekst $3 članaka.',
 'media_sample' => 'ime_medija_fajla.mp3',
 'media_tip' => 'Putanja ka multimedijalnom fajlu',
 'mediawarning' => '\'\'\'Upozorenje\'\'\': Ovaj fajl sadrži loš kod, njegovim izvršavanjem možete da ugrozite vaš sistem.
-<hr>',
+<hr />',
 'metadata' => 'Metapodaci',
 'metadata_page' => '{{ns:project}}:Metapodaci',
 'mimesearch' => 'MIME pretraga',
@@ -939,7 +938,6 @@ nastavite.',
 'newpages' => 'Nove stranice',
 'newpassword' => 'Nova šifra',
 'newtitle' => 'Novi naslov',
-'newusersonly' => '(samo za nove korisnike)',
 'newwindow' => '(novi prozor)',
 'next' => 'sled',
 'nextdiff' => 'Sledeća izmena →',
@@ -1016,7 +1014,7 @@ na kome bi se izvela ova funkcija.',
 'nstab-special' => 'Posebna',
 'nstab-template' => 'Šablon',
 'nstab-user' => 'Korisnička strana',
-'nstab-wp' => 'Članak',
+'nstab-project' => 'Članak',
 'numauthors' => 'Broj različitih autora (članak): $1',
 'number_of_watching_users_pageview' => '[$1 korisnik/a koji nadgleda/ju]',
 'numedits' => 'Broj promena (članak): $1',
@@ -1049,7 +1047,6 @@ Molimo vas da se prijavite pošto je primite.',
 'portal' => 'Trg',
 'portal-url' => 'Project:Trg',
 'postcomment' => 'Pošalji komentar',
-'poweredby' => '{{SITENAME}} je omogućena od strane [http://www.mediawiki.org/ MedijaVikija], viki mašine slobodnog koda.',
 'powersearch' => 'Traži',
 'powersearchtext' => 'Pretraga u imenskim prostorima:<br />
 $1<br />
@@ -1075,7 +1072,6 @@ tekstualnom polju izgledati ako se odlučite da ga snimite.',
 'prevn' => 'prethodnih $1',
 'print' => 'Štampa',
 'printableversion' => 'Verzija za štampu',
-'printsubtitle' => '(Sa {{SERVER}})',
 'protect' => 'zaštiti',
 'protectcomment' => 'Razlog zaštite',
 'protectedarticle' => 'zaštićeno $1',
@@ -1181,7 +1177,8 @@ Molimo vas da proverite URL koji ste upotrebili da biste pristupili ovoj stranic
 'search' => 'Traži',
 'searchdisabled' => '<p>Izvinjavamo se! Puna pretraga teksta je privremeno onemogućena, zbog bržeg rada Vikipedije. U međuvremenu, možete koristiti Gugl pretragu ispod, koja može biti zastarela.</p>',
 'searchfulltext' => 'Pretraži ceo tekst',
-'searchquery' => 'Tražili ste "<a href="/wiki/$1">$1</a>" <a href="/wiki/Special:Allpages/$1">[Sadržaj]</a>',
+'searchsubtitle' => 'Tražili ste [[:$1]] [[Special:Allpages/$1|&#x5B;Sadržaj&#x5D;]]',
+'searchsubtitleinvalid' => 'Tražili ste $1 ',
 'searchresults' => 'Rezultati pretrage',
 'searchresultshead' => 'Podešavanja rezultata pretrage',
 'searchresulttext' => '<!--
@@ -1472,7 +1469,7 @@ Ne zaboravite da prilagodite sebi svoja {{ns:4}} podešavanja.',
 'whitelistedittitle' => 'Obavezno je [[{{ns:-1}}:Userlogin|prijavljivanje]] za menjanje',
 'whitelistreadtext' => 'Morate da se [[{{ns:-1}}:Userlogin|prijavite]] da biste čitali članke.',
 'whitelistreadtitle' => 'Obavezno je prijavljivanje za čitanje',
-'wikipediapage' => 'Pogledaj stranu o ovoj strani',
+'projectpage' => 'Pogledaj stranu o ovoj strani',
 'wlheader-enotif' => '* Obaveštavanje e-poštom je omogućeno.',
 'wlheader-showupdated' => '* Strane koje su izmenjene od kada ste ih poslednji put posetili su prikazane \'\'\'masnim slovima\'\'\'',
 'wlhide' => 'Sakrij',

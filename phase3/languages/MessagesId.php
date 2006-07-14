@@ -11,7 +11,7 @@ $wgAllMessagesId = array(
 'tog-extendwatchlist' => 'Tampilkan daftar pantauan yang menunjukkan semua perubahan',
 'tog-usenewrc' => 'Tampilan perubahan terbaru alternatif (JavaScript)',
 'tog-numberheadings' => 'Beri nomor judul secara otomatis',
-'tog-showtoolbar' => "Perlihatkan ''toolbar'' (batang alat) penyuntingan",
+'tog-showtoolbar' => "Perlihatkan <i>toolbar</i> (batang alat) penyuntingan",
 'tog-editondblclick' => 'Sunting halaman dengan klik ganda (JavaScript)',
 'tog-editsection'=> 'Fungsikan penyuntingan sub-bagian melalui pranala [sunting]',
 'tog-editsectiononrightclick' => 'Fungsikan penyuntingan sub-bagian dengan klik-kanan pada judul bagian (JavaScript)',
@@ -114,13 +114,13 @@ $wgAllMessagesId = array(
 "edithelppage" => "{{ns:help}}:Penyuntingan",
 "cancel" => "Batalkan",
 "qbfind" => "Cari",
-"qbbrowse" => "Lihat-lihat",
+"qbbrowse" => "Panduan arah",
 "qbedit" => "Sunting",
-"qbpageoptions" => "Pilihan halaman",
-"qbpageinfo" => "Informasi halaman",
-"qbmyoptions" => "Pilihan saya",
+"qbpageoptions" => "Halaman ini",
+"qbpageinfo" => "Konteks halaman",
+"qbmyoptions" => "Halaman saya",
 "qbspecialpages" => "Halaman istimewa",
-"moredotdotdot" => "Lanjut...",
+"moredotdotdot" => "Lainnya...",
 "mypage" => "Halaman saya",
 "mytalk" => "Pembicaraan saya",
 "anontalk" => "Pembicaraan IP ini",
@@ -152,13 +152,13 @@ $wgAllMessagesId = array(
 'print' => 'Cetak',
 'edit' => 'Sunting',
 "editthispage" => "Sunting halaman ini",
-'delete' => 'hapus',
+'delete' => 'Hapus',
 "deletethispage" => "Hapus halaman ini",
 'undelete_short' => 'Batal hapus {{PLURAL:$1|satu suntingan|$1 suntingan}}',
 'protect' => 'Lindungi',
 "protectthispage" => "Lindungi halaman ini",
 'unprotect' => 'Ubah perlindungan',
-"unprotectthispage" => "Hapus perlindungan halaman ini",
+"unprotectthispage" => "Ubah perlindungan halaman ini",
 "newpage" => "Halaman baru",
 "talkpage" => "Diskusikan halaman ini",
 'specialpage' => 'Halaman istimewa',
@@ -179,7 +179,7 @@ $wgAllMessagesId = array(
 'autoredircomment' => 'Alihkan ke [[$1]]',
 'redirectpagesub' => 'Halaman peralihan',
 "lastmodified" => "Halaman ini terakhir diubah pada $1.",
-"viewcount" => "Halaman ini telah diakses sebanyak $1 kali.",
+"viewcount" => "Halaman ini telah diakses sebanyak $1 kali.<br />",
 "copyright" => "Seluruh teks tersedia dalam naungan $1.",
 "protectedpage" => "Halaman yang dilindungi",
 'administrators' => '{{ns:project}}:Pengurus',
@@ -197,7 +197,7 @@ $wgAllMessagesId = array(
 'versionrequired' => 'Dibutuhkan MediaWiki versi $1',
 'versionrequiredtext' => 'MediaWiki versi $1 dibutuhkan untuk menggunakan halaman ini. Lihat [[{{ns:special}}:Version]]',
 
-'widthheight'		=> '$1x$2',
+'widthheight'		=> '$1×$2',
 "ok" => "OK",
 
 'pagetitle'		=> '$1 - {{SITENAME}}',
@@ -250,7 +250,11 @@ $wgAllMessagesId = array(
 "readonly" => "Basis data dikunci",
 "enterlockreason" => "Masukkan alasan penguncian, termasuk perkiraan kapan kunci akan dibuka",
 "readonlytext" => "Basis data sedang dikunci terhadap masukan baru. Pengurus yang melakukan penguncian memberikan penjelasan sebagai berikut: <p>$1",
-"missingarticle" => "Basis data tidak menemukan teks bagi halaman yang seharusnya mempunyai teks, yaitu halaman \"$1\".\n\n<p>Ini biasanya disebabkan karena diff yang kadaluwarsa atau karena pranala lama kepada halaman telah dihapus.\n\n<p>Jika ini bukan sebabnya, Anda mungkin menemukan bug dalam perangkat lunak. Silakan laporkan hal ini kepada pengurus, dengan mencantumkan URL halaman yang bermasalah tersebut",
+"missingarticle" => "Basis data tidak menemukan teks bagi halaman yang seharusnya mempunyai teks, yaitu halaman \"$1\".
+
+Ini biasanya disebabkan karena diff yang kadaluwarsa atau karena pranala lama kepada halaman telah dihapus.
+
+Jika ini bukan sebabnya, Anda mungkin menemukan bug dalam perangkat lunak. Silakan laporkan hal ini kepada pengurus, dengan mencantumkan URL halaman yang bermasalah tersebut",
 'readonly_lag' => 'Basis data telah dikunci otomatis selagi basis data sekunder melakukan sinkronisasi dengan basis data utama',
 "internalerror" => "Kesalahan internal",
 "filecopyerror" => "Tidak dapat menyalin berkas \"$1\" ke \"$2\".",
@@ -267,13 +271,15 @@ $wgAllMessagesId = array(
 "perfdisabledsub" => "Ini adalah salinan tersimpan dari $1:",
 "perfcached" => "Data berikut ini diambil dari <em>cache</em> dan mungkin bukan data mutakhir:",
 'perfcachedts' => 'Data berikut ini diambil dari <em>cache</em>, dan terakhir diperbarui pada $1.',
-"wrong_wfQuery_params" => "Parameter salah ke wfQuery()<br />Fungsi: $1<br />Kueri: $2",
+"wrong_wfQuery_params" => "Parameter salah ke wfQuery()<br />Fungsi: $1<br />Permintaan: $2",
 "viewsource" => "Lihat sumber",
 'viewsourcefor' => 'dari $1',
-'protectedtext' => 'Halaman ini sedang dikunci dari penyuntingan. Lihat [[{{ns:project}}:Perlindungan]] untuk keterangan lebih lanjut.',
+'protectedtext' => 'Halaman ini telah dikunci untuk menghindari penyuntingan.
+
+Anda dapat melihat atau menyalin sumber halaman ini:',
 'protectedinterface' => 'Halaman ini berisi teks antarmuka untuk digunakan oleh perangkat lunak dan telah dikunci untuk menghindari kesalahan.',
 'editinginterface' => "'''Peringatan:''' Anda menyunting halaman yang digunakan untuk menyediakan teks antarmuka dengan perangkat lunak. Perubahan teks ini akan mempengaruhi tampilan pada pengguna lain.",
-'sqlhidden' => '(Kueri SQL disembunyikan)',
+'sqlhidden' => '(Permintaan SQL disembunyikan)',
 
 # Login and logout pages
 #
@@ -385,7 +391,13 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi {{SITENAME}} Anda.",
 'missingsummary' => "'''Peringatan:''' Anda tidak memasukkan ringkasan penyuntingan. Jika Anda kembali menekan tombol Simpan, suntingan Anda akan disimpan tanpa ringkasan penyuntingan.",
 'missingcommenttext' => 'Harap masukkan komentar di bawah ini.',
 "blockedtitle" => "Pengguna diblokir",
-"blockedtext" => "Nama pengguna atau alamat IP Anda telah diblokir oleh $1. Alasannya karena :<br />$2<p>Anda dapat menghubungi [[{{ns:project}}:Administrators|para pengurus]] untuk membicarakan blokir ini.\n\nPerhatikan bahwa Anda tidak dapat menggunakan fasilitas \"surat-e pengguna ini\" kecuali Anda mempunyai sebuah alamat surat-e yang sah dan alamat surat-e tersebut tercatat di dalam [[{{ns:special}}:Preferences|preferensi Anda]].\n\nAlamat IP Anda adalah $3. Sertakan alamat IP ini pada setiap pertanyaan yang Anda buat",
+"blockedtext" => "Nama pengguna atau alamat IP Anda telah diblokir oleh $1. Alasannya karena :<br />'''$2'''<br />Anda dapat menghubungi $1 atau [[{{ns:project}}:Administrators|pengurus lainnya]] untuk membicarakan hal ini.
+
+Perhatikan bahwa Anda tidak dapat menggunakan fasilitas \"surat-e pengguna ini\" kecuali Anda mempunyai sebuah alamat surat-e yang sah dan alamat surat-e tersebut tercatat di dalam [[{{ns:special}}:Preferences|preferensi Anda]].
+
+Alamat IP Anda adalah $3. Sertakan alamat IP ini pada setiap pertanyaan yang Anda buat",
+'blockedoriginalsource' => "Isi sumber '''$1''' ditunjukkan berikut ini:",
+'blockededitsource' => "Teks '''suntingan Anda''' terhadap '''$1''' ditunjukkan berikut ini:",
 "whitelistedittitle" => "Perlu masuk log untuk menyunting",
 "whitelistedittext" => "Anda harus $1 untuk dapat menyunting artikel.",
 "whitelistreadtitle" => "Perlu masuk log untuk membaca",
@@ -400,11 +412,9 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi {{SITENAME}} Anda.",
 "accmailtitle" => "Kata sandi telah terkirim.",
 "accmailtext" => "Kata sandi untuk '$1' telah dikirimkan ke $2.",
 "newarticle" => "(Baru)",
-"newarticletext" => "Anda mengikuti pranala ke halaman yang belum ada.\nUntuk membuat halaman tersebut, ketiklah isi halaman di kotak di bawah ini\n(lihat [[{{ns:help}}:Isi|halaman bantuan]] untuk informasi lebih lanjut).\nJika Anda tanpa sengaja sampai ke halaman ini, klik tombol '''back''' di penjelajah web anda.",
-
+"newarticletext" => "Anda mengikuti pranala ke halaman yang belum ada. Untuk membuat halaman tersebut, ketiklah isi halaman di kotak di bawah ini (lihat [[{{ns:help}}:Isi|halaman bantuan]] untuk informasi lebih lanjut). Jika Anda tanpa sengaja sampai ke halaman ini, klik tombol '''back''' di penjelajah web anda.",
 
 "anontalkpagetext" => "---- ''Ini adalah halaman diskusi seorang pengguna anonim yang belum membuat akun atau tidak menggunakannya. Karena ia tidak membuat akun, kami terpaksa harus memakai alamat IP-nya untuk mengenalinya. Alamat IP seperti ini dapat dipakai oleh beberapa pengguna yang berbeda. Jika Anda adalah seorang pengguna anonim dan merasa mendapatkan komentar-komentar miring, silakan [[{{ns:special}}:Userlogin|membuat akun atau masuk log]] untuk menghindari kerancuan dengan pengguna anonim lain di lain waktu.''",
-"noarticletext" => "(Tidak ada teks dalam halaman ini)",
 'noarticletext' => 'Saat ini tidak ada teks dalam halaman ini. Anda dapat [[{{ns:special}}:Search/{{PAGENAME}}|melakukan pencarian untuk judul halaman ini]] di halaman-halaman lain atau [{{fullurl:{{FULLPAGENAME}}|action=edit}} sunting halaman ini].',
 
 'clearyourcache' => "'''Catatan:''' Setelah menyimpan preferensi, Anda perlu membersihkan <em>cache</em> penjelajah web Anda untuk melihat perubahan. '''Mozilla / Firefox / Safari:''' tekan ''Ctrl-Shift-R'' (''Cmd-Shift-R'' pada Apple Mac); '''IE:''' tekan ''Ctrl-F5''; '''Konqueror:''': tekan ''F5''; '''Opera''' bersihkan <em>cache</em> melalui menu ''Tools→Preferences''.",
@@ -436,25 +446,29 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi {{SITENAME}} Anda.",
 "copyrightwarning" => "Perhatikan bahwa semua sumbangan terhadap {{SITENAME}} dianggap dilisensikan di bawah lisensi $2 (lihat $1 untuk informasi lebih lanjut). Jika Anda tidak ingin tulisan Anda disunting dan disebarkan ke halaman web yang lain, jangan kirimkan artikel Anda ke sini.<br />Anda juga berjanji bahwa ini adalah hasil karya Anda sendiri, atau disalin dari sumber milik umum atau sumber bebas yang lain. <strong>JANGAN KIRIMKAN KARYA YANG DILINDUNGI HAK CIPTA TANPA IZIN!</strong>",
 'copyrightwarning2' => "Perhatikan bahwa semua sumbangan terhadap {{SITENAME}} dapat disunting, diubah, atau dihapus oleh penyumbang lainnya. Jika Anda tidak ingin tulisan Anda disunting orang lain, jangan kirimkan artikel Anda ke sini.<br />Anda juga berjanji bahwa ini adalah hasil karya Anda sendiri, atau disalin dari sumber milik umum atau sumber bebas yang lain (lihat $1 untuk informasi lebih lanjut). <strong>JANGAN KIRIMKAN KARYA YANG DILINDUNGI HAK CIPTA TANPA IZIN!</strong>",
 "longpagewarning" => "'''PERINGATAN: Halaman ini panjangnya adalah $1 kilobita; beberapa penjelajah web mungkin mengalami masalah dalam menyunting halaman yang panjangnya 32 kb atau lebih. Harap pertimbangkan untuk memecah halaman menjadi beberapa bagian yang lebih kecil.'''",
-'longpageerror' => "<strong>KESALAHAN: Teks yang Anda kirimkan sebesar $1 kilobita\n, yang berarti lebih besar dari jumlah maksimum $2 kilobita. Teks tidak dapat disimpan.</strong>",
+'longpageerror' => "<strong>KESALAHAN: Teks yang Anda kirimkan sebesar $1 kilobita, yang berarti lebih besar dari jumlah maksimum $2 kilobita. Teks tidak dapat disimpan.</strong>",
 "readonlywarning" => "<strong>PERINGATAN: Basis data sedang dikunci karena pemeliharaan, sehingga saat ini Anda tidak akan dapat menyimpan hasil penyuntingan Anda. Anda mungkin perlu memindahkan hasil penyuntingan Anda ini ke tempat lain untuk disimpan belakangan.</strong>",
-"protectedpagewarning" => "<strong>PERINGATAN:  Halaman ini telah dikunci sehingga hanya pemakai dengan status pengurus saja yang dapat menyuntingnya. Pastikan Anda mengikuti [[{{ns:project}}:pedoman halaman yang dilindungi|pedoman halaman yang dilindungi]].</strong>",
+"protectedpagewarning" => "<strong>PERINGATAN:  Halaman ini telah dikunci sehingga hanya pemakai dengan hak akses pengurus saja yang dapat menyuntingnya.</strong>",
 'semiprotectedpagewarning' => "'''Catatan:''' Halaman ini sedang dilindungi, sehingga hanya pengguna terdaftar yang bisa menyuntingnya.",
 'templatesused' => 'Templat yang digunakan di halaman ini:',
 'edittools' => '<!-- Teks di sini akan dimunculkan dibawah isian suntingan dan pemuatan.-->',
 'nocreatetitle' => 'Pembuatan halaman baru dibatasi',
 'nocreatetext' => 'Situs ini membatasi kemampuan membuat halaman baru. Anda dapat kembali dan menyunting halaman yang telah ada, atau silakan [[{{ns:special}}:Userlogin|masuk log atau mendaftar]]',
+'cantcreateaccounttitle' => 'Akun tak dapat dibuat',
+'cantcreateaccounttext' => 'Pembuatan akun dari alamat IP ini (<b>$1</b>) diblokir. 
+Hal ini mungkin disebabkan adanya vandalisme berulang yang berasal dari sekolah atau penyedia jasa Internet Anda.',
 
 # History pages
 #
 "revhistory" => "Sejarah revisi",
+'viewpagelogs' => 'Lihat log halaman ini',
 "nohistory" => "Tidak ada sejarah penyuntingan untuk halaman ini",
 "revnotfound" => "Revisi tidak ditemukan",
 "revnotfoundtext" => "Revisi lama halaman yang Anda minta tidak dapat ditemukan. Silakan periksa URL yang digunakan untuk mengakses halaman ini.",
 "loadhist" => "Memuat halaman sejarah",
 "currentrev" => "Revisi sekarang",
 "revisionasof" => "Revisi per $1",
-'oldrevisionnavigation'  => 'Revisi per $1; $5<br />$3 | $2 | $4',
+'old-revision-navigation'  => 'Revisi per $1; $5<br />($6) $3 | $2 | $4 ($7)',
 'previousrevision'      => '← Revisi sebelumnya',
 'nextrevision'          => 'Revisi selanjutnya →',
 'currentrevisionlink'   => 'Revisi sekarang',
@@ -481,7 +495,9 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi {{SITENAME}} Anda.",
 #
 'revisiondelete' => 'Hapus/batal hapus revisi',
 'revdelete-selected' => 'Revisi terpilih dari [[:$1]]:',
-'revdelete-text' => "Revisi yang telah dihapus akan tetap muncul di halaman versi terdahulu,\ntapi teks isi tidak bisa diakses publik.\n\nAdmin lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapusan melalui antarmuka yang sama, kecuali jika ada pembatasan lain yang dibuat oleh operator situs",
+'revdelete-text' => "Revisi yang telah dihapus akan tetap muncul di halaman versi terdahulu, tapi teks isi tidak bisa diakses publik.
+
+Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapusan melalui antarmuka yang sama, kecuali jika ada pembatasan lain yang dibuat oleh operator situs",
 'revdelete-legend' => 'Atur batasan revisi:',
 'revdelete-hide-text' => 'Sembunyikan teks revisi',
 'revdelete-hide-comment' => 'Tampilkan/sembunyikan ringkasan suntingan',
@@ -505,10 +521,11 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi {{SITENAME}} Anda.",
 #
 "searchresults" => "Hasil pencarian",
 "searchresulttext" => "Untuk informasi lebih lanjut tentang pencarian di {{SITENAME}}, lihat [[{{ns:project}}:Pencarian|Melakukan pencarian di {{SITENAME}}]].",
-"searchquery" => "Untuk kueri \"$1\"",
-"badquery" => "Format kueri pencarian salah",
-"badquerytext" => "Kami tidak dapat memproses kueri Anda. Hal ini mungkin disebabkan karena Anda mencoba mencari kata yang panjangnya kurang dari tiga huruf, yang masih belum didukung oleh sistem ini. Hal ini juga dapat disebabkan oleh kesalahan pengetikan ekspresi, misalnya \"fish and and scales\". Silakan coba kueri yang lain.",
-"matchtotals" => "Kueri \"$1\" cocok dengan $2 judul halaman dan teks dari $3 artikel.",
+'searchsubtitle' => "Anda mencari '''[[:$1]]'''",
+'searchsubtitleinvalid' => "Anda mencari '''$1'''",
+"badquery" => "Format permintaan pencarian salah",
+"badquerytext" => "Kami tidak dapat memproses permintaan Anda. Hal ini mungkin disebabkan karena Anda mencoba mencari kata yang panjangnya kurang dari tiga huruf, yang masih belum didukung oleh sistem ini. Hal ini juga dapat disebabkan oleh kesalahan pengetikan ekspresi, misalnya \"fish and and scales\". Silakan coba permintaan yang lain.",
+"matchtotals" => "Permintaan \"$1\" cocok dengan $2 judul halaman dan teks dari $3 artikel.",
 'noexactmatch' => "'''Tidak ada halaman yang berjudul \"$1\".''' Anda dapat [[:$1|membuat halaman ini]].",
 "titlematches" => "Judul artikel yang sama",
 "notitlematches" => "Tidak ada judul halaman yang cocok",
@@ -590,7 +607,7 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi {{SITENAME}} Anda.",
 'saveusergroups' => 'Simpan kelompok pengguna',
 'userrights-groupsmember' => 'Anggota dari:',
 'userrights-groupsavailable' => 'Grup yang tersedia:',
-'userrights-groupshelp' => "Pilih grup yang Anda ingin hapus dari atau tambahkan pada pengguna\nGrup yang tak dipilih tak akan diganti. Anda dapat membatalkan pilihan dengan menekan tombol CTRL + Klik kiri",
+'userrights-groupshelp' => "Pilih grup yang Anda ingin hapus dari atau tambahkan pada pengguna. Grup yang tak dipilih tak akan diganti. Anda dapat membatalkan pilihan dengan menekan tombol CTRL + Klik kiri",
 'userrights-logcomment' => 'Keanggotaan grup diganti dari $1 ke $2',
 
 # Groups
@@ -649,15 +666,15 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi {{SITENAME}} Anda.",
 "uploadnologintext" => "Anda harus [[{{ns:special}}:Userlogin|masuk log]] untuk dapat memuatkan berkas.",
 'upload_directory_read_only' => 'Direktori pemuatan ($1) tidak dapat ditulis oleh server web.',
 "uploaderror" => "Kesalahan pemuatan",
-'uploadtext'	=> "Gunakan isian di bawah untuk memuat berkas. Untuk menampilkan atau mencari berkas atau gambar yang telah dimuat sebelumnya, gunakan [[{{ns:special}}:Imagelist|daftar gambar]]. Log pemuatan dan penghapusan juga dapat dilihat di [[{{ns:special}}:Log/upload|log pemuatan]].
+'uploadtext'	=> "Gunakan isian di bawah untuk memuat berkas. Gunakan [[{{ns:special}}:Imagelist|daftar berkas]] atau [[{{ns:special}}:Log/upload|log pemuatan]] untuk menampilkan atau mencari berkas atau gambar yang telah dimuat sebelumnya.
 
-Untuk menampilkan gambar atau berkas pada suatu halaman, gunakan pranala dengan format
+Untuk menampilkan atau menyertakan gambar atau berkas pada suatu halaman, gunakan pranala dengan format
 '''<nowiki>[[{{ns:image}}:Berkas.jpg]]</nowiki>''',
 '''<nowiki>[[{{ns:image}}:Berkas.png|teks alternatif]]</nowiki>''' atau
 '''<nowiki>[[{{ns:media}}:Berkas.ogg]]</nowiki>''' untuk langsung menuju berkas yang dimaksud.",
 "uploadlog" => "log pemuatan",
 "uploadlogpage" => "Log pemuatan",
-"uploadlogpagetext" => "Di bawah ini adalah daftar terkini berkas yang dimuat. Semua waktu yang ditunjukkan adalah waktu server (UTC).",
+"uploadlogpagetext" => "Di bawah ini adalah log pemuatan berkas. Semua waktu yang ditunjukkan adalah waktu server (UTC).",
 "filename" => "Nama berkas",
 "filedesc" => "Ringkasan",
 'fileuploadsummary' => 'Ringkasan:',
@@ -697,32 +714,32 @@ Untuk menampilkan gambar atau berkas pada suatu halaman, gunakan pranala dengan 
 
 # Image list
 #
-"imagelist" => "Daftar gambar",
-'imagelisttext' => "Di bawah ini adalah daftar <strong>$1</strong> berkas yang telah diurutkan $2.",
-'imagelistforuser' => "Hanya gambar yang dimuat oleh $1.",
-"getimagelist" => "memperoleh daftar gambar",
-"ilsubmit" => "Cari",
-"showlast" => "Tampilkan $1 gambar terakhir yang telah diurutkan $2.",
-"byname" => "berdasarkan nama",
-"bydate" => "berdasarkan tanggal",
-"bysize" => "berdasarkan ukuran",
-"imgdelete" => "hps",
-"imgdesc" => "desk",
-"imglegend" => "Keterangan: (desk) = lihat/sunting deskripsi gambar.",
-"imghistory" => "Sejarah gambar",
-"revertimg" => "kbl",
-"deleteimg" => "hps",
-'deleteimgcompletely' => 'Hapus semua revisi',
-"imghistlegend" => "Keterangan: (skr) = ini adalah gambar yang sekarang, (hps) = hapus versi lama ini, (kbl) = kembalikan ke versi lama ini. <br /><em>Klik pada tanggal untuk melihat gambar yang dimuat pada tanggal tersebut</em>.",
-"imagelinks" => "Pranala gambar",
-"linkstoimage" => "Halaman-halaman berikut berpaut ke gambar ini:",
-"nolinkstoimage" => "Tidak ada halaman yang berpaut ke gambar ini.",
-"sharedupload" => "Berkas ini adalah pemuatan bersama yang mungkin juga dipakai oleh proyek lain.",
-'shareduploadwiki' => 'Lihat $1 untuk informasi detil.',
+"imagelist"		=> "Daftar berkas",
+'imagelisttext' => "Di bawah ini adalah daftar '''$1''' {{plural:$1|berkas|berkas}} diurutkan $2.",
+'imagelistforuser'	=> "Hanya berkas yang dimuat oleh $1.",
+"getimagelist"	=> "mengambil daftar berkas",
+"ilsubmit"		=> "Cari",
+"showlast"		=> "Tampilkan $1 berkas terakhir diurutkan $2.",
+"byname"		=> "berdasarkan nama",
+"bydate"		=> "berdasarkan tanggal",
+"bysize"		=> "berdasarkan ukuran",
+"imgdelete"		=> "hps",
+"imgdesc"		=> "desk",
+"imglegend"		=> "Keterangan: (desk) = lihat/sunting deskripsi berkas.",
+"imghistory"	=> "Riwayat berkas",
+"revertimg"		=> "kbl",
+"deleteimg"		=> "hps",
+'deleteimgcompletely'	=> 'Hapus semua revisi',
+"imghistlegend"	=> "Keterangan: (skr) = ini adalah berkas yang sekarang, (hps) = hapus versi lama ini, (kbl) = kembalikan ke versi lama ini. <br /><em>Klik pada tanggal untuk melihat berkas yang dimuat pada tanggal tersebut</em>.",
+"imagelinks"	=> "Pautan",
+"linkstoimage"	=> "Halaman-halaman berikut berpaut ke berkas ini:",
+"nolinkstoimage"	=> "Tidak ada halaman yang berpaut ke berkas ini.",
+"sharedupload"	=> "Berkas ini adalah pemuatan bersama yang mungkin juga dipakai oleh proyek lain.",
+'shareduploadwiki'	=> 'Lihat $1 untuk informasi detil.',
 'shareduploadwiki-linktext' => 'halaman deskripsi berkas',
-'noimage'       => 'Tidak ada berkas dengan nama tersebut, Anda dapat $1.',
-'noimage-linktext'       => 'memuat berkas',
-'uploadnewversion-linktext' => 'Muatkan versi yang lebih baru dari berkas ini',
+'noimage'		=> 'Tidak ada berkas dengan nama tersebut, Anda dapat $1.',
+'noimage-linktext'	=> 'memuat berkas',
+'uploadnewversion-linktext'	=> 'Muatkan versi yang lebih baru dari berkas ini',
 
 # Mime search
 #
@@ -763,10 +780,10 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 'disambiguationspage'	=> '{{ns:template}}:Disambig',
 "disambiguationstext" => "Halaman-halaman berikut ini berpaut ke sebuah halaman disambiguasi. Halaman-halaman tersebut seharusnya berpaut ke topik-topik yang tepat.<br />Satu halaman dianggap sebagai disambiguation apabila halaman tersebut disambung dari $1.<br />Pranala dari namespace lain <em>tidak</em> terdaftar di sini.",
 
-"doubleredirects" => "Peralihan halaman ganda",
+"doubleredirects" => "Pengalihan ganda",
 "doubleredirectstext" => "Setiap baris mengandung pranala ke peralihan pertama dan kedua, dan juga baris pertama dari teks peralihan kedua, yang biasanya memberikan artikel tujuan yang \"sesungguhnya\", yang seharusnya ditunjuk oleh peralihan yang pertama.",
 
-"brokenredirects" => "Peralihan halaman rusak",
+"brokenredirects" => "Pengalihan rusak",
 "brokenredirectstext" => "Peralihan halaman berikut berpaut ke halaman yang tidak ada.",
 
 
@@ -807,6 +824,7 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 "recentchangeslinked" => "Perubahan terkait",
 "rclsub" => "(untuk halaman yang berpaut dari \"$1\")",
 "newpages" => "Halaman baru",
+'newpages-username' => 'Nama pengguna:',
 "ancientpages" => "Artikel tertua",
 "intl" => "Pranala antarbahasa",
 'move' => 'Pindahkan',
@@ -826,7 +844,7 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 "alphaindexline" => "$1 ke $2",
 "version" => "Versi",
 'log' => 'Log',
-'alllogstext' => 'Tampilan gabungan log pemblokiran, perlindungan, hak akses pengguna, penghapusan, pemuatan, dan pemindahan. Anda dapat melakukan pembatasan tampilan dengan memilih jenis log, nama pengguna, atau nama halaman yang terpengaruh.',
+'alllogstext' => 'Di bawah ini adalah gabungan log pemblokiran, perlindungan, perubahan hak akses, penghapusan, pemuatan, pemindahan, impor, dll. Anda dapat melakukan pembatasan tampilan dengan memilih jenis log, nama pengguna, atau nama halaman yang terpengaruh.',
 'logempty' => 'Tidak ditemukan entri log yang sesuai.',
 
 
@@ -834,13 +852,13 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 'nextpage'          => 'Halaman berikutnya ($1)',
 'allpagesfrom'		=> 'Tampilkan halaman dimulai dengan:',
 'allarticles'       => 'Semua artikel',
-'allnonarticles'	=> 'Semua yang bukan artikel',
 'allinnamespace'	=> 'Semua halaman (namespace $1)',
 'allnotinnamespace'	=> 'Semua halaman (bukan namespace $1)',
 'allpagesprev'      => 'Sebelumnya',
 'allpagesnext'      => 'Selanjutnya',
 'allpagessubmit'    => 'Cari',
 'allpagesprefix'	=> 'Tampilkan halaman dengan awalan:',
+'allpagesbadtitle'	=> 'Judul halaman yang diberikan tidak sah atau memiliki awalan antar-bahasa atau antar-wiki. Judul tersebut mungkin juga mengandung satu atau lebih aksara yang tidak dapat digunakan dalam judul.',
 
 # Email this user
 #
@@ -866,10 +884,10 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 "emailsenttext" => "Surat-e Anda telah dikirimkan.",
 
 # Watchlist
-#
 "watchlist" => "Daftar pantauan",
-"watchlistsub" => "(untuk pengguna \"$1\")",
+'watchlistfor' => "(untuk '''$1''')",
 "nowatchlist" => "Daftar pantauan Anda kosong.",
+'watchlistanontext' => 'Silakan $1 untuk melihat atau menyunting daftar pantauan Anda.',
 'watchlistcount' 	=> "'''Anda memiliki $1 entri di daftar pantauan Anda, termasuk halaman diskusi/bicara.'''",
 'clearwatchlist' 	=> 'Kosongkan daftar pantauan',
 'watchlistcleartext' => 'Apakah Anda yakin untuk menghapusnya?',
@@ -882,9 +900,9 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 "removedwatch" => "Telah dihapus dari daftar pantauan",
 "removedwatchtext" => "Halaman \"$1\" telah dihapus dari daftar pantauan.",
 'watch' => 'Pantau',
-"watchthispage" => "Tambahkan ke daftar pantauan",
+"watchthispage" => "Pantau halaman ini",
 'unwatch' => 'Batal pantau',
-"unwatchthispage" => "Keluarkan dari daftar pantauan",
+"unwatchthispage" => "Batal pantau halaman ini",
 "notanarticle" => "Bukan sebuah artikel",
 "watchnochange" => "Tak ada halaman pantauan Anda yang telah berubah dalam jangka waktu yang dipilih.",
 'watchdetails'		=> '* $1 halaman dipantau, tidak termasuk halaman bicara
@@ -954,7 +972,7 @@ Masukan dan bantuan lanjutan:
 "deletedtext" => "\"$1\" telah dihapus. Lihat $2 untuk log terkini halaman yang telah dihapus.",
 "deletedarticle" => "menghapus \"[[$1]]\"",
 "dellogpage" => "Log penghapusan",
-"dellogpagetext" => "Di bawah ini adalah daftar terkini halaman yang telah dihapus. Semua waktu yang ditunjukkan adalah waktu server (UTC).",
+"dellogpagetext" => "Di bawah ini adalah log penghapusan halaman. Semua waktu yang ditunjukkan adalah waktu server (UTC).",
 "deletionlog" => "log penghapusan",
 "reverted" => "Dikembalikan ke revisi sebelumnya",
 "deletecomment" => "Alasan penghapusan",
@@ -969,7 +987,7 @@ Masukan dan bantuan lanjutan:
 'revertpage'	=> "Suntingan [[{{ns:special}}:Contributions/$2|$2]] ([[{{ns:user_talk}}:$2|Bicara]]) dikembalikan ke versi terakhir oleh [[{{ns:user}}:$1|$1]]",
 'sessionfailure' => 'Sepertinya ada masalah dengan sesi log anda; log anda telah dibatalkan untuk mencegah pembajakan. Silahkan tekan tombol "back" dan muat kembali halaman sebelum anda masuk, lalu coba lagi.',
 "protectlogpage" => "Log perlindungan",
-"protectlogtext" => "Di bawah ini adalah daftar log perlindungan/penghilangan perlindungan halaman. Lihat [[{{ns:project}}:Halaman yang dilindungi]] untuk informasi lebih lanjut.",
+"protectlogtext" => "Di bawah ini adalah daftar log perlindungan dan penghilangan perlindungan halaman.",
 "protectedarticle" => "melindungi [[$1]]",
 "unprotectedarticle" => "menghilangkan perlindungan [[$1]]",
 "protectsub" =>"(Melindungi \"$1\")",
@@ -982,7 +1000,7 @@ Masukan dan bantuan lanjutan:
 "confirmunprotect" => "Konfirmasi penghilangan perlindungan",
 "unprotectcomment" => "Alasan penghilangan perlindungan",
 'protect-unchain' => 'Buka proteksi pemindahan',
-'protect-text' => 'Anda dapat melihat atau mengganti tingkatan perlindungan untuk halaman <strong>$1</strong> di sini. Yakinkan bahwa Anda telah mengikuti [[{{ns:project}}:Halaman yang dilindungi|pedoman {{SITENAME}}]].',
+'protect-text' => 'Anda dapat melihat atau mengganti tingkatan perlindungan untuk halaman <strong>$1</strong> di sini.',
 'protect-viewtext' => 'Akun Anda tidak memiliki akses untuk mengganti tingkat perlindungan halaman. Berikut adalah konfigurasi saat ini untuk halaman <strong>$1</strong>:',
 'protect-default' => '(baku)',
 'protect-level-autoconfirmed' => 'Hanya pengguna terdaftar',
@@ -1057,6 +1075,8 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 'ipadressorusername' => 'Alamat IP atau nama pengguna',
 "ipbexpiry" => "Kadaluwarsa",
 "ipbreason" => "Alasan",
+'ipbanononly'   => 'Hanya blokir pengguna anonim',
+'ipbcreateaccount' => 'Cegah pembuatan akun',
 "ipbsubmit" => "Kirimkan",
 'ipbother'		=> 'Waktu lain',
 'ipboptions'		=> '2 jam:2 hours,1 hari:1 day,3 hari:3 days,1 minggu:1 week,2 minggu:2 weeks,1 bulan:1 month,3 bulan:3 months,6 bulan:6 months,1 tahun:1 year,selamanya:infinite',
@@ -1067,11 +1087,13 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 "unblockip" => "Hilangkan blokir terhadap alamat IP atau pengguna",
 "unblockiptext" => "Gunakan formulir di bawah untuk mengembalikan kemampuan menulis sebuah alamat IP atau pengguna yang sebelumnya telah diblokir.",
 "ipusubmit" => "Hilangkan blokir terhadap alamat ini",
-"ipusuccess" => "Blokir terhadap alamat IP atau pengguna \"$1\" telah dihilangkan",
+'unblocked' => 'Blokir terhadap [[User:$1|$1]] telah dihilangkan',
 "ipblocklist" => "Daftar alamat IP dan pengguna yang diblokir",
 "blocklistline" => "$1, $2 memblokir $3 ($4)",
 'infiniteblock' => 'tak terbatas',
 'expiringblock' => 'kadaluwarsa $1',
+'anononlyblock' => 'hanya anon',
+'createaccountblock' => 'pembuatan akun diblokir',
 'ipblocklistempty'	=> 'Daftar pemblokiran kosong.',
 "blocklink" => "blokir",
 "unblocklink" => "hilangkan blokir",
@@ -1079,12 +1101,14 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 "autoblocker" => "Diblokir secara otomatis karena Anda berbagi alamat IP dengan \"$1\". Alasan \"$2\".",
 "blocklogpage" => "Log pemblokiran",
 "blocklogentry" => 'memblokir "[[$1]]" dengan waktu kadaluwarsa $2',
-"blocklogtext" => "Ini adalah log tindakan pemblokiran dan penghilangan blokir terhadap pengguna. Alamat IP yang diblokir secara otomatis tidak terdapat di dalam daftar ini. Lihat [[{{ns:special}}:Ipblocklist|daftar alamat IP yang diblokir]] untuk daftar blokir terkini yang efektif.",
+"blocklogtext" => "Di bawah ini adalah log pemblokiran dan penghilangan blokir terhadap pengguna. Alamat IP yang diblokir secara otomatis tidak terdapat di dalam daftar ini. Lihat [[{{ns:special}}:Ipblocklist|daftar alamat IP yang diblokir]] untuk daftar blokir terkini yang efektif.",
 "unblocklogentry" => 'menghilangkan blokir "$1"',
 "range_block_disabled" => "Kemampuan pengurus dalam membuat blokir blok IP dimatikan.",
 "ipb_expiry_invalid" => "Waktu kadaluwarsa tidak sah.",
+'ipb_already_blocked' => '"$1" telah diblokir',
 "ip_range_invalid" => "Blok IP tidak sah.",
 "proxyblocker" => "Pemblokir proxy",
+'ipb_cant_unblock' => 'Kesalahan: Blokir dengan ID $1 tidak ditemukan. Blokir tersebut kemungkinan telah dibuka.',
 "proxyblockreason" => "Alamat IP Anda telah diblokir karena alamat IP Anda adalah proxy terbuka. Silakan hubungi penyedia jasa internet Anda atau dukungan teknis dan beritahukan mereka masalah keamanan serius ini.",
 "proxyblocksuccess" => "Selesai.",
 'sorbs' => 'SORBS DNSBL',
@@ -1100,8 +1124,8 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 "makesysopfail" => "<strong>Pengguna \"$1\" tidak dapat dijadikan pengurus. (Apakah Anda mengetikkan namanya dengan benar?)</strong>",
 "setbureaucratflag" => "Beri tanda birokrat",
 'setstewardflag'    => 'Beri tanda steward',
-'rightslog'		=> 'Log hak akses pengguna',
-'rightslogtext' => 'Ini adalah log perubahan terhadap hak-hak pengguna.',
+'rightslog'		=> 'Log perubahan hak akses',
+'rightslogtext' => 'Di bawah ini adalah log perubahan terhadap hak-hak pengguna.',
 'rightslogentry'	=> 'mengganti keanggotaan group untuk $1 dari $2 menjadi $3',
 "rights" => "Hak-hak:",
 "set_user_rights" => "Atur hak-hak pengguna",
@@ -1128,12 +1152,22 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 "unlockdbsuccesssub" => "Pembukaan kunci basis data berhasil",
 "lockdbsuccesstext" => "Basis data telah dikunci. <br />Pastikan Anda membuka kuncinya setelah pemeliharaan selesai.",
 "unlockdbsuccesstext" => "Kunci basis data telah dibuka.",
+'lockfilenotwritable' => 'Berkas kunci basis data tidak dapat ditulis. Untuk mengunci atau membuka basis data, berkas ini harus dapat ditulis oleh server web.',
 
 # Move page
 #
 "movepage" => "Pindahkan halaman",
-"movepagetext" => "Formulir di bawah ini digunakan untuk mengubah nama suatu halaman dan memindahkan semua data sejarah ke nama baru. Judul yang lama akan menjadi halaman peralihan menuju judul yang baru. Pranala kepada judul lama tidak akan berubah. Pastikan untuk memeriksa terhadap peralihan halaman yang rusak atau berganda setelah pemindahan. Anda bertanggung jawab untuk memastikan bahwa pranala terus menyambung ke halaman yang seharusnya.\n\nPerhatikan bahwa halaman '''tidak''' akan dipindah apabila telah ada halaman di pada judul yang baru, kecuali bila halaman tersebut kosong atau merupakan halaman peralihan dan tidak mempunyai sejarah penyuntingan. Ini berarti Anda dapat mengubah nama halaman kembali seperti semula apabila Anda membuat kesalahan, dan Anda tidak dapat menimpa halaman yang telah ada.\n\n<strong>PERINGATAN!</strong> Ini dapat mengakibatkan perubahan yang tak terduga dan drastis  bagi halaman yang populer. Pastikan Anda mengerti konsekuensi dari perbuatan ini sebelum melanjutkan.",
-"movepagetalktext" => "Halaman pembicaraan yang berkaitan, jika ada, juga akan dipindahkan secara otomatis '''kecuali apabila:'''\n*Anda memindahkan halaman melintasi namespace,\n*Sebuah halaman pembicaraan yang tidak kosong telah ada di bawah judul baru, atau\n*Anda tidak memberi tanda cek pada kotak cek di bawah ini.\n\nDalam kasus tersebut, apabila diinginkan, Anda dapat memindahkan atau menggabungkan halaman secara manual.",
+"movepagetext" => "Formulir di bawah ini digunakan untuk mengubah nama suatu halaman dan memindahkan semua data sejarah ke nama baru. Judul yang lama akan menjadi halaman peralihan menuju judul yang baru. Pranala kepada judul lama tidak akan berubah. Pastikan untuk memeriksa terhadap peralihan halaman yang rusak atau berganda setelah pemindahan. Anda bertanggung jawab untuk memastikan bahwa pranala terus menyambung ke halaman yang seharusnya.
+
+Perhatikan bahwa halaman '''tidak''' akan dipindah apabila telah ada halaman di pada judul yang baru, kecuali bila halaman tersebut kosong atau merupakan halaman peralihan dan tidak mempunyai sejarah penyuntingan. Ini berarti Anda dapat mengubah nama halaman kembali seperti semula apabila Anda membuat kesalahan, dan Anda tidak dapat menimpa halaman yang telah ada.
+
+<strong>PERINGATAN!</strong> Ini dapat mengakibatkan perubahan yang tak terduga dan drastis  bagi halaman yang populer. Pastikan Anda mengerti konsekuensi dari perbuatan ini sebelum melanjutkan.",
+"movepagetalktext" => "Halaman pembicaraan yang berkaitan juga akan dipindahkan secara otomatis '''kecuali apabila:'''
+
+*Sebuah halaman pembicaraan yang tidak kosong telah ada di bawah judul baru, atau
+*Anda tidak memberi tanda cek pada kotak di bawah ini
+
+Dalam kasus tersebut, apabila diinginkan, Anda dapat memindahkan atau menggabungkan halaman secara manual.",
 "movearticle" => "Pindahkan halaman",
 "movenologin" => "Belum masuk log",
 "movenologintext" => "Anda harus menjadi pengguna terdaftar dan telah [[{{ns:special}}:Userlogin|masuk log]] untuk memindahkan halaman.",
@@ -1150,7 +1184,7 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 '1movedto2' => '[[$1]] dipindahkan ke [[$2]]',
 '1movedto2_redir' => '[[$1]] dipindahkan ke [[$2]] melalui peralihan',
 'movelogpage' => 'Log pemindahan',
-'movelogpagetext' => 'Berikut adalah daftar halaman yang dipindahkan.',
+'movelogpagetext' => 'Di bawah ini adalah log pemindahan halaman.',
 'movereason'	=> 'Alasan',
 'revertmove'	=> 'kembalikan',
 'delete_and_move' => 'Hapus dan pindahkan',
@@ -1166,10 +1200,15 @@ Artikel yang dituju, "[[$1]]", telah mempunyai isi. Apakah Anda hendak menghapus
 # Export
 
 "export" => "Ekspor halaman",
-'exporttext'    => 'Anda dapat mengekspor teks dan sejarah penyuntingan suatu halaman tertentu atau sejumlah halaman terbungkus dalam XML tertentu. Di masa depan, hasil ekspor ini dapat diimpor ke wiki lainnya yang menggunakan perangkat lunak MediaWiki, dengan menggunakan Special:Import page.\n\nUntuk mengekspor halaman-halaman artikel, masukkan judul-judul dalam kotak teks di bawah ini, satu judul per baris, dan pilih apakah anda ingin mengekspor versi sekarang dengan versi sebelumnya, dengan catatan sejarah halaman, atau hanya versi sekarang dengan catatan penyuntingan terakhir.\n\nJika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal ini dengan lebih cepat dengan cara menggunakan pranala khusus, sebagai contoh: [[{{ns:special}}:Export/{{int:mainpage}}]] untuk mengekspor artikel {{int:mainpage}}.',
-"exportcuronly" => "Hanya ekspor revisi sekarang, bukan seluruh sejarah",
+'exporttext'    => 'Anda dapat mengekspor teks dan sejarah penyuntingan suatu halaman tertentu atau suatu set halaman dalam bentuk XML tertentu. Hasil ekspor ini selanjutnya dapat diimpor ke wiki lainnya yang menggunakan perangkat lunak MediaWiki, dengan menggunakan fasilitas [[{{ns:special}}:Import]].
+
+Untuk mengekspor halaman-halaman artikel, masukkan judul-judul dalam kotak teks di bawah ini, satu judul per baris, dan pilih apakah anda ingin mengekspor lengkap dengan versi terdahulunya, atau hanya versi sekarang dengan catatan penyuntingan terakhir.
+
+Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal ini dengan lebih cepat dengan cara menggunakan pranala khusus, sebagai contoh: [[{{ns:special}}:Export/{{int:mainpage}}]] untuk mengekspor artikel {{int:mainpage}}.',
+"exportcuronly" => "Hanya ekspor revisi sekarang, bukan seluruh versi terdahulu",
 'exportnohistory' => "----
-'''Catatan:''' mengekspor keseluruhan riwayat suntingan halaman melalui isian ini telah dinon-aktifkan karena alasan kinerja.",
+'''Catatan:''' Mengekspor keseluruhan riwayat suntingan halaman melalui isian ini telah dinon-aktifkan karena alasan kinerja.",
+'export-submit' => 'Ekspor',
 
 # Namespace 8 related
 
@@ -1188,19 +1227,37 @@ Artikel yang dituju, "[[$1]]", telah mempunyai isi. Apakah Anda hendak menghapus
 "thumbnail-more" => "Perbesar",
 "missingimage" => "<strong>Gambar hilang</strong><br /><em>$1</em>",
 'filemissing' => 'Berkas hilang',
-'thumbnail_error'   => 'Kesalahan sewaktu pembuatan gambar kecil (<em>thumbnail</em>): $1',
+'thumbnail_error'   => 'Kesalahan sewaktu pembuatan gambar kecil (thumbnail): $1',
 
 # Special:Import
 "import" => "Impor halaman",
 'importinterwiki' => 'Impor transwiki',
-"importtext" => "Silakan ekspor berkas dari wiki asal menggunakan utilitas {{ns:special}}:Export, simpan ke disk, dan muatkan ke sini.",
+'import-interwiki-text' => 'Pilih suatu wiki dan judul halaman yang akan di impor. Tanggal revisi dan nama penyunting akan dipertahankan. Semua aktivitas impor transwiki akan dilog di [[{{ns:special}}:Log/import|log impor]].',
+'import-interwiki-history' => 'Salin semua versi terdahulu dari halaman ini',
+'import-interwiki-submit' => 'Impor',
+'import-interwiki-namespace' => 'Transfer halaman ke dalam namespace:',
+"importtext" => "Silakan ekspor berkas dari wiki asal dengan menggunakan utilitas [[{{ns:special}}:Export]], simpan ke cakram digital, dan muatkan ke sini.",
+'importstart'	=> "Mengimpor halaman...",
+'import-revision-count' => '$1 versi terdahulu',
+'importnopages'	=> "Tidak ada halaman untuk diimpor.",
 "importfailed" => "Impor gagal: $1",
+'importunknownsource'	=> "Sumber impor tidak dikenali",
+'importcantopen'	=> "Berkas impor tidak dapat dibuka",
+'importbadinterwiki'	=> "Pranala interwiki rusak",
 "importnotext" => "Kosong atau tidak ada teks",
 "importsuccess" => "Impor sukses!",
 "importhistoryconflict" => "Terjadi konflik revisi sejarah (mungkin pernah mengimpor halaman ini sebelumnya)",
 'importnosources' => 'Tidak ada sumber impor transwiki yang telah dibuat dan pemuatan riwayat secara langsung telah di non-aktifkan.',
 'importnofile' => 'Tidak ada berkas sumber impor yang telah dimuat.',
 'importuploaderror' => 'Pemuatan berkas impor gagal; mungkin ukuran berkas lebih besar dari pada yang diizinkan.',
+
+# import log
+'importlogpage' => 'Log impor',
+'importlogpagetext' => 'Di bawah ini adalah log import administratif dari halaman-halaman berikut riwayat suntingannya dari wiki lain.',
+'import-logentry-upload' => 'mengimpor $1 melalui pemuatan berkas',
+'import-logentry-upload-detail' => '$1 versi terdahulu',
+'import-logentry-interwiki' => 'men-transwiki $1',
+'import-logentry-interwiki-detail' => '$1 versi terdahulu dari $2',
 
 # Keyboard access keys for power users
 'accesskey-search' => 'f',
@@ -1222,8 +1279,8 @@ Artikel yang dituju, "[[$1]]", telah mempunyai isi. Apakah Anda hendak menghapus
 
 # stylesheets
 
-'Monobook.css' => '/* sunting berkas ini untuk mengganti kulit monobook untuk keseluruhan situs */',
-#'Monobook.js' => '/* sunting berkas ini untuk mengganti hal-hal js untuk kulit monobook */',
+'Common.css' => '/** CSS yang berada di sini akan diterapkan untuk semua kulit */',
+'Monobook.css' => '/* CSS yang berada di sini akan mempengaruhi semua pengguna yang menggunakan kulit Monobook */',
 
 # Metadata
 "nodublincore" => "Metadata Dublin Core RDF dimatikan di server ini.",
@@ -1245,7 +1302,7 @@ Artikel yang dituju, "[[$1]]", telah mempunyai isi. Apakah Anda hendak menghapus
 # Spam protection
 
 'spamprotectiontitle' => 'Filter pencegah spam',
-'spamprotectiontext' => 'Halaman yang ingin Anda simpan diblokir oleh filter spam. Ini mungkin disebabkan oleh pranala ke situs luar.\n\nAnda dapat memeriksa regular expression berikut terhadap pola-pola yang diblokir:',
+'spamprotectiontext' => 'Halaman yang ingin Anda simpan diblokir oleh filter spam. Ini mungkin disebabkan oleh pranala ke situs luar.',
 'spamprotectionmatch' => 'Teks berikut ini memancing filter spam kami: $1',
 'subcategorycount' => "Ada $1 subkategori dalam kategori ini.",  # no need for plural
 'categoryarticlecount' => "Ada $1 artikel dalam kategori ini.",  # no need for plural
@@ -1283,7 +1340,7 @@ Artikel yang dituju, "[[$1]]", telah mempunyai isi. Apakah Anda hendak menghapus
 
 # Monobook.js: tooltips and access keys for monobook
 'Monobook.js' => '/* bantuan peralatan dan kunci akses */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Halaman pengguna saya\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Halaman pengguna IP Anda\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Halaman pembicaraan saya\');
@@ -1344,9 +1401,9 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Lihat halaman kategori\');',
 'thumbsize'	=> 'Ukuran gambar kecil (<em>thumbnail</em>):',
 'showbigimage' => 'Unduhkan versi resolusi tinggi ($1x$2, $3 KB)',
 
-'newimages' => 'Galeri gambar baru',
-'showhidebots' => '($1 bot)',
-'noimages'  => 'Tidak ada yang dilihat.',
+'newimages'		=> 'Galeri berkas baru',
+'showhidebots'	=> '($1 bot)',
+'noimages'		=> 'Tidak ada yang dilihat.',
 
 # short names for language variants used for language conversion links.
 # to disable showing a particular link, set it to 'disable', e.g.
@@ -1370,7 +1427,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Lihat halaman kategori\');',
 'passwordtooshort' => 'Kata sandi Anda terlalu pendek. Kata sandi minimum terdiri dari $1 karakter.',
 
 # Media Warning
-'mediawarning' => '\'\'\'Peringatan\'\'\': Berkas ini mungkin mengandung kode berbahaya yang jika dijalankan dapat mempengaruhi sistem Anda<hr/>',
+'mediawarning' => '\'\'\'Peringatan\'\'\': Berkas ini mungkin mengandung kode berbahaya yang jika dijalankan dapat mempengaruhi sistem Anda.<hr />',
 
 'fileinfo' => '$1KB, tipe MIME: <code>$2</code>',
 
@@ -1735,7 +1792,9 @@ Silakan konfirmasi jika Anda ingin membuat ulang halaman ini.',
 'redirectingto' => 'Sedang dialihkan ke [[$1]]...',
 
 # action=purge
-'confirm_purge' => "Hapus ''cache'' halaman ini?\n\n$1",
+'confirm_purge' => "Hapus ''cache'' halaman ini?
+
+$1",
 'confirm_purge_button' => 'OK',
 
 'youhavenewmessagesmulti' => "Anda mendapat pesan-pesan baru $1",
@@ -1748,7 +1807,7 @@ Silakan konfirmasi jika Anda ingin membuat ulang halaman ini.',
 # DISPLAYTITLE
 'displaytitle' => '(Pranala ke halaman ini sebagai [[$1]])',
 
-# Separator for categories in page lists
+'loginlanguagelabel' => 'Bahasa: $1',
 
 );
 

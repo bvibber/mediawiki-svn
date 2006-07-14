@@ -17,7 +17,7 @@ $wgAllMessagesIs = array(
 .portlet h5 { text-transform: inherit;}     /* flakk, leit, verkfæri... */
 #p-cactions li a {text-transform: inherit;} /* notandasíða, spjall... */",
 'Monobook.js' => "/* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta['pt-userpage'] = new Array('.','Notendasíðan mín');
 ta['pt-anonuserpage'] = new Array('.','Notendasíðan fyrir IP töluna þína');
 ta['pt-mytalk'] = new Array('n','Spallsíðan mín');
@@ -60,7 +60,7 @@ ta['ca-nstab-main'] = new Array('c','Sýna síðuna');
 ta['ca-nstab-user'] = new Array('c','Sýna notendasíðuna');
 ta['ca-nstab-media'] = new Array('c','Sýna margmiðlunarsíðuna');
 ta['ca-nstab-special'] = new Array('','Þetta er kerfissíða, þér er óhæft að breyta henni.');
-ta['ca-nstab-wp'] = new Array('a','Sýna verkefnasíðuna');
+ta['ca-nstab-project'] = new Array('a','Sýna verkefnasíðuna');
 ta['ca-nstab-image'] = new Array('c','Sýna myndasíðuna');
 ta['ca-nstab-mediawiki'] = new Array('c','Sýna kerfisskilaboðin');
 ta['ca-nstab-template'] = new Array('c','View the template');
@@ -357,7 +357,6 @@ mjög rótækar breytingar á vinsælum síðum og valdið titringi hjá öðrum
 'newpages' => "Nýjar síður",
 'newpassword' => "Nýja lykilorðið",
 'newtitle' => "Yfir á",
-'newusersonly' => " (aðeins fyrir nýja notendur)",
 'newwindow' => "(í nýjum glugga)",
 'nextdiff' => "Næsta breyting →",
 'nextn' => "næstu $1",
@@ -387,7 +386,7 @@ mjög rótækar breytingar á vinsælum síðum og valdið titringi hjá öðrum
 'nstab-mediawiki' => "Skilaboð",
 'nstab-template' => "Forsnið",
 'nstab-user' => "Notandasíða",
-'nstab-wp' => "Um",
+'nstab-project' => "Um",
 'oct' => "okt",
 'october' => "október",
 'oldpassword' => "Gamla lykilorðið",
@@ -416,7 +415,6 @@ to set user preferences.",
 'previousrevision' => "←Fyrri útgáfa",
 'prevn' => "síðustu $1",
 'printableversion' => "Prentvæn útgáfa",
-'printsubtitle' => "(From {{SERVER}})",
 'protect' => "Vernda",
 'protectcomment' => "Ástæða",
 'protectedpagewarning' => "<!-- -->",
@@ -465,7 +463,8 @@ to set user preferences.",
 'savefile' => "Vista",
 'saveprefs' => "Vista stillingar",
 'search' => "Leit",
-'searchquery' => "Fyrir fyrirspurnina „$1“",
+'searchsubtitle' => "Fyrir fyrirspurnina „[[:$1]]“",
+'searchsubtitleinvalid' => "Fyrir fyrirspurnina „$1“",
 'searchresults' => "Leitarniðurstöður",
 'searchresultshead' => "Leit",
 'searchresulttext' => "Fyrir frekari upplýsingar um leit á {{SITENAME}}, sjá $1.",
@@ -616,7 +615,7 @@ Ekki gleyma að breyta {{SITENAME}} stillingunum þínum.",
 'whitelistedittitle' => "Þú verður að skrá þig inn til að geta breytt síðum.",
 'whitelistreadtext' => "Þú verður að [[Special:Userlogin|skrá þig inn]] til að lesa síður.",
 'whitelistreadtitle' => "Notandi verður að skrá sig inn til að geta lesið.",
-'wikipediapage' => "Sýna verkefnissíðu",
+'projectpage' => "Sýna verkefnissíðu",
 'wlnote' => "Að neðan eru síðustu <b>$1</b> breytingar síðustu <b>$2</b> klukkutíma.",
 'wlsaved' => "Þetta er vistuð útgáfa af vaktlistanum þínum.",
 'wlshowlast' => "Sýna síðustu $1 klukkutíma, $2 daga, $3",

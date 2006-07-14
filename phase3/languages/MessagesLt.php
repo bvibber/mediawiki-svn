@@ -7,7 +7,7 @@ $wgAllMessagesLt = array(
 '1movedto2' => 'Straipsnis \'$1\' pervadintas į \'$2\'',
 '1movedto2_redir' => '\'$1\' pervadintas į \'$2\' (anksčiau buvo nukreipiamasis)',
 'Monobook.js' => '/* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Mano vartotojo puslapis\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Vartotojo puslapis jūsų ip ardesui\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Mano aptarimų puslapis\');
@@ -51,7 +51,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Pereiti į straipsnio turinį\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Rodyti vartotojo puslapį\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Rodyti media puslapį\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Šis puslapis yra specialusis - jo negalima redaguoti.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Rodyti projekto puslapį\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Rodyti projekto puslapį\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Rodyti paveikslėlio puslapį\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Rodyti sisteminį pranešimą\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Rodyti šabloną\');
@@ -85,7 +85,6 @@ Galima sumažinti rezultatų patikslinant veiksmo rūšį, vartotoją ar susijus
 'allmessagesnotsupportedDB' => 'Specialus:AllMessages nepalaikoma, nes nustatymas wgUseDatabaseMessages yra išjungtas.',
 'allmessagesnotsupportedUI' => 'Jūsų pasirinkta kalba (<b>$1</b>) nėra palaikoma šiame projekte.',
 'allmessagestext' => 'Čia pateikiami visi sisteminiai tekstai bei pranešimai, esantys MediaWiki: vardų ervėje.',
-'allnonarticles' => 'Visi ne straipsniai',
 'allnotinnamespace' => 'Visi puslapiai (nesantys šioje srityje - $1)',
 'allpages' => 'Visi straipsniai',
 'allpagesfrom' => 'Rodyti puslapius pradedant nuo:',
@@ -579,7 +578,6 @@ Jei patekote čia per klaidą, paprasčiausiai spustelkite  naršyklės mygtuką
 'newpages' => 'Naujausi straipsniai',
 'newpassword' => 'Naujas slaptažodis',
 'newtitle' => 'Naujas pavadinimas',
-'newusersonly' => ' (tik naujiems vartotojams)',
 'newwindow' => '(atsidaro naujame lange)',
 'next' => 'sekantis',
 'nextdiff' => 'Sekantis pakeitimas →',
@@ -623,7 +621,7 @@ Galite \'\'\'[[:<nowiki>$1</nowiki>|sukurti straipsnį šiuo pavadinimu]]\'\'\'.
 'nstab-special' => 'Specialus',
 'nstab-template' => 'Šablonas',
 'nstab-user' => 'Vartotojas',
-'nstab-wp' => 'Apie',
+'nstab-project' => 'Apie',
 'oct' => 'Spa',
 'october' => 'Spalio',
 'oldpassword' => 'Senas slaptažodis',
@@ -652,7 +650,6 @@ Galite \'\'\'[[:<nowiki>$1</nowiki>|sukurti straipsnį šiuo pavadinimu]]\'\'\'.
 'previousrevision' => '←Prieš tai buvusi versija',
 'prevn' => 'ankstesnius $1',
 'printableversion' => 'Versija spausdinimui',
-'printsubtitle' => '(Iš {{SERVER}})',
 'protect' => 'Užrakinti',
 'protectcomment' => 'Rakinimo priežastis',
 'protectedarticle' => 'užrakino $1',
@@ -732,7 +729,8 @@ Patikrinkite adresą (URL), kurio patekote į šį puslapį.',
 'search' => 'Paieška',
 'searchdisabled' => '<p style="margin: 1.5em 2em 1em">Projekto \'{{SITENAME}}\' paieška yra uždrausta dėl techninių kliūčių. Galite mėginti ieškoti Google paieškos sistemoje.
 <span style="font-size: 89%; display: block; margin-left: .2em">Išorinėse paieškos sistemose (kaip Google) Vikipedijos gali būti šiek tiek pasenę duomenys.</span></p>',
-'searchquery' => 'Ieškoma "$1"',
+'searchsubtitle' => 'Ieškoma "[[:$1]]"',
+'searchsubtitleinvalid' => 'Ieškoma "$1"',
 'searchresults' => 'Paieškos rezultatai',
 'searchresultshead' => 'Paieškos nustatymai',
 'searchresulttext' => 'Daugiau informacijos apie paiešką {{SITENAME}} projekte rasite - [[Help:Searching|Paieška projekte]].',

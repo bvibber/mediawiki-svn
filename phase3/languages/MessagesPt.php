@@ -174,7 +174,7 @@
 'views' => 'Vistas',
 'toolbox' => 'Ferramentas',
 'userpage' => 'Ver página de utilizador',
-'wikipediapage' => 'Ver página do projecto',
+'projectpage' => 'Ver página do projecto',
 'imagepage' =>       'Ver página de imagens',
 'viewtalkpage' => 'Ver discussão',
 'otherlanguages' => 'Outras línguas',
@@ -550,7 +550,8 @@ Legenda: (actu) = diferenças da versão actual,
 #
 'searchresults' => 'Resultados de pesquisa',
 'searchresulttext' => "Para mais informações de como pesquisar na {{SITENAME}}, consulte [[{{ns:project}}:Pesquisa|Pesquisando {{SITENAME}}]].",
-'searchquery'   => "Para consulta \"$1\"",
+'searchsubtitle'   => "Para consulta \"[[:$1]]\"",
+'searchsubtitleinvalid'   => "Para consulta \"$1\"",
 'badquery'              => 'Linha de pesquisa inválida',
 'badquerytext'  => 'Não foi possível processar seu pedido de pesquisa.
 Aconteceu provavelmente porque tentou procurar uma palavra com menos de três letras. Isto também pode ter ocorrido porque digitou incorrectamente a expressão, por
@@ -904,7 +905,6 @@ Pode diminuir a lista escolhendo um tipo de registo, um nome de utilizar, ou uma
 'nextpage'          => 'Próxima página ($1)',
 'allpagesfrom'          => 'Mostrar páginas começando em:',
 'allarticles'           => 'Todos artigos',
-'allnonarticles'        => 'Todos não-artigos',
 'allinnamespace'        => 'Todas páginas (domínio $1)',
 'allnotinnamespace'     => 'Todas páginas (não no domínio $1)',
 'allpagesprev'          => 'Anterior',
@@ -1382,7 +1382,7 @@ Se desejar pode utilizar uma ligação, por exemplo [[{{ns:Special}}:Export/{{Me
 
 # Monobook.js: tooltips and access keys for monobook
 'Monobook.js' => '/* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Minha página de utilizador\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'A página de utilizador para o ip que está a utilizar para editar\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Minha página de discussão\');
@@ -1464,7 +1464,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Ver a página da categoria\');',
 
 # Media Warning
 'mediawarning' => '\'\'\'Aviso\'\'\': Este ficheiro pode conter código malicioso, ao executar o seu sistema poderá estar comprometido.
-<hr>',
+<hr />',
 
 'fileinfo' => '$1KB, tipo MIME: <code>$2</code>',
 

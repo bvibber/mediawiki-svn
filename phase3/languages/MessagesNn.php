@@ -159,7 +159,7 @@
 'views'                   => 'Visningar',
 'toolbox'                 => 'Verktøy',
 'userpage'                => 'Vis brukarside',
-'wikipediapage'           => 'Vis prosjektside',
+'projectpage'           => 'Vis prosjektside',
 'imagepage'               => 'Vis filside',
 'viewtalkpage'            => 'Vis diskusjon',
 'otherlanguages'          => 'På andre språk',
@@ -167,8 +167,6 @@
 'lastmodified'	          => 'Sist endra $1.',
 'viewcount'		  => 'Vist $1 gonger.',
 'copyright'	          => 'Innhaldet er utgjeve under $1.',
-'poweredby'	          => '{{SITENAME}} bruker [http://www.mediawiki.org/ MediaWiki] som er fri wikiprogramvare.',
-'printsubtitle'           => '(frå {{SERVER}})',
 'protectedpage'           => 'Verna side',
 'administrators'          => '{{ns:4}}:Administratorar',
 'sysoptitle'	          => 'Administratortilgang trengst',
@@ -201,7 +199,7 @@
 'nstab-user'              => 'Brukarside',
 'nstab-media'             => 'Filside',
 'nstab-special'           => 'Spesial',
-'nstab-wp'                => 'Prosjektside',
+'nstab-project'                => 'Prosjektside',
 'nstab-image'             => 'Fil',
 'nstab-mediawiki'         => 'Systemmelding',
 'nstab-template'          => 'Mal',
@@ -269,7 +267,6 @@ Brukarkontoen din har vorte oppretta. Det er tilrådd at du skriv litt om deg sj
 'yourname'		          => 'Brukarnamn',
 'yourpassword'	          => 'Passord',
 'yourpasswordagain'       => 'Skriv opp att passordet',
-'newusersonly'	          => ' (berre nye brukarar)',
 'remembermypassword'      => 'Hugs passordet.',
 'yourdomainname'          => 'Domenet ditt',
 'externaldberror'         => 'Det var anten ein ekstern databasefeil i tilgjengekontrollen, eller du har ikkje løyve til å oppdatere den eksterne kontoen din.',
@@ -447,7 +444,8 @@ Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompati
 #
 'searchresults'           => 'Søkjeresultat',
 'searchresulttext'        => 'For meir info om søkjefunksjonen i {{SITENAME}}, sjå [[Help:Søk|Hjelp]].',
-'searchquery'	          => 'Du søkte etter «$1»', // plain text
+'searchsubtitle'	          => 'Du søkte etter «[[:$1]]»', // plain text
+'searchsubtitleinvalid'	          => 'Du søkte etter «$1»', // plain text
 'badquery'		  => 'Feil utforma førespurnad',
 'badquerytext'	          => 'Vi kunne ikkje svara på denne førespurnaden &mdash; Truleg fordi du prøvde å søkje etter eit ord med færre enn tre bokstavar, noko som ikkje er mogleg enno. Det kan òg vera du skreiv feil... Prøv om att.',
 'matchtotals'	          => 'Førespurnaden «$1» gav treff på $2 sidetitlar og på teksten på $3 sider.',
@@ -759,7 +757,6 @@ Alle sidene er vortne viste \'\'\'$3\'\'\' gonger og endra \'\'\'$4\'\'\' gonger
 'nextpage'              => 'Neste side ($1)',
 'allpagesfrom'          => 'Vis sider frå:',
 'allarticles'           => 'Alle sider',
-'allnonarticles'        => 'Alle sider som ikkje er innhaldssider',
 'allinnamespace'        => 'Alle sider ($1 namnerom)',
 'allnotinnamespace'     => 'Alle sider (ikkje i $1-namnerommet)',
 'allpagesprev'          => 'Førre',
@@ -1171,7 +1168,7 @@ For å eksportere bruker du [[{{ns:-1}}:Export|eksportsida]] på kjeldewikien; h
 <pre>
 */
 /* verktøytips og snøggtastar */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\']             = new Array(\'.\',\'Brukarsida mi\');
 ta[\'pt-anonuserpage\']         = new Array(\'.\',\'Brukarsida for ip-adressa du endrar under\');
 ta[\'pt-mytalk\']               = new Array(\'n\',\'Diskusjonssida mi\');
@@ -1214,7 +1211,7 @@ ta[\'ca-nstab-main\']           = new Array(\'c\',\'Vis innhaldssida\');
 ta[\'ca-nstab-user\']           = new Array(\'c\',\'Vis brukarsida\');
 ta[\'ca-nstab-media\']          = new Array(\'c\',\'Direktelenkje (filpeikar) til fil\');
 ta[\'ca-nstab-special\']        = new Array(\'\',\'Dette er ei spesialside, du kan ikkje endre ho.\');
-ta[\'ca-nstab-wp\']             = new Array(\'c\',\'Vis prosjektside\');
+ta[\'ca-nstab-project\']             = new Array(\'c\',\'Vis prosjektside\');
 ta[\'ca-nstab-image\']          = new Array(\'c\',\'Vis filside\');
 ta[\'ca-nstab-mediawiki\']      = new Array(\'c\',\'Vis systemmelding\');
 ta[\'ca-nstab-template\']       = new Array(\'c\',\'Vis mal\');
@@ -1245,7 +1242,7 @@ ta[\'ca-nstab-category\']       = new Array(\'c\',\'Vis kategoriside\');
 
 # Media Warning
 'mediawarning'         => '\'\'\'Åtvaring\'\'\': Denne fila kan innehalda skadelege program, ved å opna ho kan systemet ditt ta skade.
-<hr>',
+<hr />',
 
 'fileinfo'             => '$1KB, MIME-type: <code>$2</code>',
 

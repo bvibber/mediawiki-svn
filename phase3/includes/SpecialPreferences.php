@@ -205,7 +205,7 @@ class PreferencesForm {
 		global $wgAuth;
 
 
-		if ( '' != $this->mNewpass ) {
+		if ( '' != $this->mNewpass && $wgAuth->allowPasswordChange() ) {
 			if ( $this->mNewpass != $this->mRetypePass ) {
 				$this->mainPrefsForm( 'error', wfMsg( 'badretype' ) );
 				return;
@@ -447,13 +447,13 @@ class PreferencesForm {
 	 * @access private
 	 */
 	function mainPrefsForm( $status , $message = '' ) {
-		global $wgUser, $wgOut, $wgLang, $wgContLang, $wgValidSkinNames;
+		global $wgUser, $wgOut, $wgLang, $wgContLang;
 		global $wgAllowRealName, $wgImageLimits, $wgThumbLimits;
 		global $wgDisableLangConversion;
 		global $wgEnotifWatchlist, $wgEnotifUserTalk,$wgEnotifMinorEdits;
 		global $wgRCShowWatchingUsers, $wgEnotifRevealEditorAddress;
 		global $wgEnableEmail, $wgEnableUserEmail, $wgEmailAuthentication;
-		global $wgContLanguageCode, $wgDefaultSkin, $wgSkipSkins;
+		global $wgContLanguageCode, $wgDefaultSkin, $wgSkipSkins, $wgAuth;
 
 		$wgOut->setPageTitle( wfMsg( 'preferences' ) );
 		$wgOut->setArticleRelated( false );
@@ -652,26 +652,28 @@ class PreferencesForm {
 		$wgOut->addHTML('</table>');
 
 		# Password
-		$this->mOldpass = htmlspecialchars( $this->mOldpass );
-		$this->mNewpass = htmlspecialchars( $this->mNewpass );
-		$this->mRetypePass = htmlspecialchars( $this->mRetypePass );
-
-		$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'changepassword' ) . '</legend><table>');
-		$wgOut->addHTML(
-			$this->addRow(
-				'<label for="wpOldpass">' . wfMsg( 'oldpassword' ) . '</label>',
-				"<input type='password' name='wpOldpass' id='wpOldpass' value=\"{$this->mOldpass}\" size='20' />"
-			) .
-			$this->addRow(
-				'<label for="wpNewpass">' . wfMsg( 'newpassword' ) . '</label>',
-				"<input type='password' name='wpNewpass' id='wpNewpass' value=\"{$this->mNewpass}\" size='20' />"
-			) .
-			$this->addRow(
-				'<label for="wpRetypePass">' . wfMsg( 'retypenew' ) . '</label>',
-				"<input type='password' name='wpRetypePass' id='wpRetypePass' value=\"{$this->mRetypePass}\" size='20' />"
-			) .
-			"</table>\n" .
-			$this->getToggle( "rememberpassword" ) . "</fieldset>\n\n" );
+		if( $wgAuth->allowPasswordChange() ) {
+			$this->mOldpass = htmlspecialchars( $this->mOldpass );
+			$this->mNewpass = htmlspecialchars( $this->mNewpass );
+			$this->mRetypePass = htmlspecialchars( $this->mRetypePass );
+	
+			$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'changepassword' ) . '</legend><table>');
+			$wgOut->addHTML(
+				$this->addRow(
+					'<label for="wpOldpass">' . wfMsg( 'oldpassword' ) . '</label>',
+					"<input type='password' name='wpOldpass' id='wpOldpass' value=\"{$this->mOldpass}\" size='20' />"
+				) .
+				$this->addRow(
+					'<label for="wpNewpass">' . wfMsg( 'newpassword' ) . '</label>',
+					"<input type='password' name='wpNewpass' id='wpNewpass' value=\"{$this->mNewpass}\" size='20' />"
+				) .
+				$this->addRow(
+					'<label for="wpRetypePass">' . wfMsg( 'retypenew' ) . '</label>',
+					"<input type='password' name='wpRetypePass' id='wpRetypePass' value=\"{$this->mRetypePass}\" size='20' />"
+				) .
+				"</table>\n" .
+				$this->getToggle( "rememberpassword" ) . "</fieldset>\n\n" );
+		}
 
 		# <FIXME>
 		# Enotif
@@ -726,9 +728,10 @@ class PreferencesForm {
 		$wgOut->addHTML( "<fieldset>\n<legend>\n" . wfMsg('skin') . "</legend>\n" );
 		$mptitle = Title::newMainPage();
 		$previewtext = wfMsg('skinpreview');
-		# Only show members of $wgValidSkinNames rather than
+		# Only show members of Skin::getSkinNames() rather than
 		# $skinNames (skins is all skin names from Language.php)
-		foreach ($wgValidSkinNames as $skinkey => $skinname ) {
+		$validSkinNames = Skin::getSkinNames();
+		foreach ($validSkinNames as $skinkey => $skinname ) {
 			if ( in_array( $skinkey, $wgSkipSkins ) ) {
 				continue;
 			}
@@ -739,7 +742,7 @@ class PreferencesForm {
 			$previewlink = "<a target='_blank' href=\"$mplink\">$previewtext</a>";
 			if( $skinkey == $wgDefaultSkin )
 				$sn .= ' (' . wfMsg( 'default' ) . ')';
-			$wgOut->addHTML( "<input type='radio' name='wpSkin' id=\"wpSkin$skinkey\" value=\"$skinkey\"$checked /> <label for=\"wpSkin$skinkey\">{$sn}</label> $previewlink<br/>\n" );
+			$wgOut->addHTML( "<input type='radio' name='wpSkin' id=\"wpSkin$skinkey\" value=\"$skinkey\"$checked /> <label for=\"wpSkin$skinkey\">{$sn}</label> $previewlink<br />\n" );
 		}
 		$wgOut->addHTML( "</fieldset>\n\n" );
 

@@ -172,6 +172,8 @@ class MovePageForm {
 	<input type='hidden' name='wpEditToken' value=\"{$token}\" />
 </form>\n" );
 
+	$this->showLogFragment( $ot, $wgOut );
+
 	}
 
 	function doSubmit() {
@@ -247,8 +249,8 @@ class MovePageForm {
 		$wgOut->setPagetitle( wfMsg( 'movepage' ) );
 		$wgOut->setSubtitle( wfMsg( 'pagemovedsub' ) );
 
-		$oldText = $wgRequest->getVal('oldtitle');
-		$newText = $wgRequest->getVal('newtitle');
+		$oldText = wfEscapeWikiText( $wgRequest->getVal('oldtitle') );
+		$newText = wfEscapeWikiText( $wgRequest->getVal('newtitle') );
 		$talkmoved = $wgRequest->getVal('talkmoved');
 
 		$text = wfMsg( 'pagemovedtext', $oldText, $newText );
@@ -269,5 +271,13 @@ class MovePageForm {
 			}
 		}
 	}
+	
+	function showLogFragment( $title, &$out ) {
+		$out->addHtml( wfElement( 'h2', NULL, LogPage::logName( 'move' ) ) );
+		$request = new FauxRequest( array( 'page' => $title->getPrefixedText(), 'type' => 'move' ) );
+		$viewer = new LogViewer( new LogReader( $request ) );
+		$viewer->showList( $out );
+	}
+	
 }
 ?>

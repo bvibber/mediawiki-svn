@@ -42,6 +42,9 @@ class DumpHTML {
 	# List of raw pages used in the current article
 	var $rawPages;
 
+	# Skin to use
+	var $skin = 'dumphtml';
+
 	function DumpHTML( $settings ) {
 		foreach ( $settings as $var => $value ) {
 			$this->$var = $value;
@@ -262,9 +265,12 @@ class DumpHTML {
 
 		wfMkdirParents( $fullDir, 0755 );
 
+		wfSuppressWarnings();
 		$file = fopen( $fullName, 'w' );
+		wfRestoreWarnings();
+
 		if ( !$file ) {
-			print("Can't open file $fullName for writing\n");
+			die("Can't open file '$fullName' for writing.\nCheck permissions or use another destination (-d).\n");
 			return;
 		}
 
@@ -344,7 +350,7 @@ class DumpHTML {
 		}
 
 		$wgUser = new User;
-		$wgUser->setOption( 'skin', 'htmldump' );
+		$wgUser->setOption( 'skin', $this->skin );
 		$wgUser->setOption( 'editsection', 0 );
 
 		$this->sharedStaticPath = "$wgUploadDirectory/shared";

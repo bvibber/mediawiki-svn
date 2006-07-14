@@ -24,6 +24,7 @@ class User {
 	 */
 	var $mBlockedby;	//!<
 	var $mBlockreason;	//!<
+	var $mBlock;        //!<
 	var $mDataLoaded;	//!<
 	var $mEmail;		//!<
 	var $mEmailAuthenticated; //!<
@@ -114,8 +115,6 @@ class User {
 	 */
 	function __sleep() {
 		return array(
-'mBlockedby',
-'mBlockreason',
 'mDataLoaded',
 'mEmail',
 'mEmailAuthenticated',
@@ -436,16 +435,17 @@ class User {
 		$ip = wfGetIP();
 
 		# User/IP blocking
-		$block = new Block();
-		$block->fromMaster( !$bFromSlave );
-		if ( $block->load( $ip , $this->mId ) ) {
+		$this->mBlock = new Block();
+		$this->mBlock->fromMaster( !$bFromSlave );
+		if ( $this->mBlock->load( $ip , $this->mId ) ) {
 			wfDebug( "$fname: Found block.\n" );
-			$this->mBlockedby = $block->mBy;
-			$this->mBlockreason = $block->mReason;
+			$this->mBlockedby = $this->mBlock->mBy;
+			$this->mBlockreason = $this->mBlock->mReason;
 			if ( $this->isLoggedIn() ) {
 				$this->spreadBlock();
 			}
 		} else {
+			$this->mBlock = null;
 			wfDebug( "$fname: No block.\n" );
 		}
 
@@ -694,6 +694,8 @@ class User {
 			$user->loadFromDatabase();
 		} else {
 			wfDebug( "User::loadFromSession() got from cache!\n" );
+			# Set block status to unloaded, that should be loaded every time
+			$user->mBlockedby = -1;
 		}
 
 		if ( isset( $_SESSION['wsToken'] ) ) {
@@ -772,6 +774,17 @@ class User {
 			$accountAge = time() - wfTimestampOrNull( TS_UNIX, $this->mRegistration );
 			if( $accountAge >= $wgAutoConfirmAge ) {
 				$implicitGroups[] = 'autoconfirmed';
+			}
+			
+			# Implicit group for users whose email addresses are confirmed
+			global $wgEmailAuthentication;
+			if( $this->isValidEmailAddr( $this->mEmail ) ) {
+				if( $wgEmailAuthentication ) {
+					if( $this->mEmailAuthenticated )
+						$implicitGroups[] = 'emailconfirmed';
+				} else {
+					$implicitGroups[] = 'emailconfirmed';
+				}
 			}
 
 			$effectiveGroups = array_merge( $implicitGroups, $this->mGroups );
@@ -1521,13 +1534,13 @@ class User {
 		}
 
 		$userblock = Block::newFromDB( '', $this->mId );
-		if ( !$userblock->isValid() ) {
+		if ( !$userblock ) {
 			return;
 		}
 
 		# Check if this IP address is already blocked
 		$ipblock = Block::newFromDB( wfGetIP() );
-		if ( $ipblock->isValid() ) {
+		if ( $ipblock ) {
 			# If the user is already blocked. Then check if the autoblock would
 			# excede the user block. If it would excede, then do nothing, else
 			# prolong block time
@@ -1538,6 +1551,8 @@ class User {
 			# Just update the timestamp
 			$ipblock->updateTimestamp();
 			return;
+		} else {
+			$ipblock = new Block;
 		}
 
 		# Make a new block object with the desired properties
@@ -1601,8 +1616,13 @@ class User {
 		return $confstr;
 	}
 
+	function isBlockedFromCreateAccount() {
+		$this->getBlockedStatus();
+		return $this->mBlock && $this->mBlock->mCreateAccount;
+	}
+
 	function isAllowedToCreateAccount() {
-		return $this->isAllowed( 'createaccount' ) && !$this->isBlocked();
+		return $this->isAllowed( 'createaccount' ) && !$this->isBlockedFromCreateAccount();
 	}
 
 	/**
@@ -1940,7 +1960,9 @@ class User {
 
 	/**
 	 * Return the set of defined explicit groups.
-	 * The * and 'user' groups are not included.
+	 * The *, 'user', 'autoconfirmed' and 'emailconfirmed'
+	 * groups are not included, as they are defined
+	 * automatically, not in the database.
 	 * @return array
 	 * @static
 	 */
@@ -1948,7 +1970,7 @@ class User {
 		global $wgGroupPermissions;
 		return array_diff(
 			array_keys( $wgGroupPermissions ),
-			array( '*', 'user', 'autoconfirmed' ) );
+			array( '*', 'user', 'autoconfirmed', 'emailconfirmed' ) );
 	}
 	
 	/**

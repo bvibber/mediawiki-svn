@@ -110,7 +110,7 @@ class SpecialSearch {
 				$editurl = $t->escapeLocalURL( 'action=edit' );
 			}
 		}
-		$wgOut->addWikiText( wfMsg( 'noexactmatch', $term ) );
+		$wgOut->addWikiText( wfMsg( 'noexactmatch', wfEscapeWikiText( $term ) ) );
 
 		return $this->showResults( $term );
 	}
@@ -221,7 +221,8 @@ class SpecialSearch {
 	function setupPage( $term ) {
 		global $wgOut;
 		$wgOut->setPageTitle( wfMsg( 'searchresults' ) );
-		$wgOut->setSubtitle( htmlspecialchars( wfMsg( 'searchquery', $term ) ) );
+		$subtitlemsg = ( Title::newFromText($term) ? 'searchsubtitle' : 'searchsubtitleinvalid' );
+		$wgOut->setSubtitle( $wgOut->parse( wfMsg( $subtitlemsg, wfEscapeWikiText($term) ) ) );
 		$wgOut->setArticleRelated( false );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 	}

@@ -161,7 +161,6 @@ $wgAllMessagesHe = array(
 "specialpage"       => "דף מיוחד",
 "personaltools"     => "כלים אישיים",
 "postcomment"       => "הוסף הערה לדף השיחה",
-"addsection"        => "+",
 "articlepage"       => "צפו בדף",
 "subjectpage"       => "צפו בנושא", # For compatibility
 "talk"              => "שיחה",
@@ -199,7 +198,6 @@ $wgAllMessagesHe = array(
 
 למידע נוסף, ראו [[{{ns:special}}:Version]].',
 
-"widthheight"         => "$1x$2",
 "ok"                  => "אישור",
 "pagetitle"           => "$1 – {{SITENAME}}",
 "retrievedfrom"       => '<br /><span style="font-size: smaller;">מקור: $1</span>',
@@ -322,7 +320,7 @@ $wgAllMessagesHe = array(
 
 # Login and logout pages
 "logouttitle"        => "יציאה מהחשבון",
-"logouttext"         => "יצאתם זה עתה מהחשבון. באפשרותכם להמשיך ולעשות שימוש באתר {{SITENAME}} באופן אנונימי, או לשוב ולהיכנס לאתר עם שם משתמש זהה או אחר.",
+"logouttext"         => "יצאתם זה עתה מהחשבון. באפשרותכם להמשיך ולעשות שימוש ב{{grammar:תחילית|{{SITENAME}}}} באופן אנונימי, או לשוב ולהיכנס לאתר עם שם משתמש זהה או אחר.",
 "welcomecreation"    => "== ברוך הבא, $1! ==
 חשבונך נפתח. אל תשכח להתאים את הגדרות המשתמש שלך.",
 "loginpagetitle"     => "כניסת משתמש",
@@ -336,7 +334,7 @@ $wgAllMessagesHe = array(
 "alreadyloggedin"    => "'''$1, כבר ביצעת כניסה לאתר!'''<br />",
 
 "login"                      => "כניסה לחשבון",
-"loginprompt"                => 'לפני הכניסה לחשבון באתר {{SITENAME}}, עליכם לוודא כי ה"עוגיות" (Cookies) מופעלות.',
+"loginprompt"                => 'לפני הכניסה לחשבון ב{{grammar:תחילית|{{SITENAME}}}}, עליכם לוודא כי ה"עוגיות" (Cookies) מופעלות.',
 "userlogin"                  => "כניסה / הרשמה לחשבון",
 "logout"                     => "יציאה מהחשבון",
 "userlogout"                 => "יציאה מהחשבון",
@@ -362,11 +360,11 @@ $wgAllMessagesHe = array(
 "prefs-help-realname"        => "* שם אמיתי (אופציונאלי): אם תבחרו לספק שם זה, הוא ישמש לייחוס עבודתכם אליכם.",
 "loginerror"                 => "שגיאה בכניסה לאתר",
 "prefs-help-email"           => '* דואר אלקטרוני (אופציונאלי): אפשרו לאחרים לשלוח לכם מסר דרך דף המשתמש שלכם ללא צורך לחשוף את כתובתכם.',
-"nocookiesnew"               => "נוצר חשבון המשתמש שלכם, אך לא נכנסתם כמשתמשים רשומים למערכת כיוון שניטרלתם את העוגיות, שהאתר {{SITENAME}} משתמש בהן לצורך כניסה למערכת. אנא הפעילו אותן מחדש, ולאחר מכן תוכלו להיכנס למערכת עם שם המשתמש והסיסמה החדשים שלכם.",
-"nocookieslogin"             => "לא הצלחתם להיכנס למערכת כמשתמשים רשומים כיוון שניטרלתם את העוגיות, שהאתר {{SITENAME}} משתמש בהן לצורך כניסה למערכת. אנא הפעילו אותן מחדש, ולאחר מכן תוכלו להיכנס למערכת עם שם המשתמש והסיסמה שלכם.",
+"nocookiesnew"               => "נוצר חשבון המשתמש שלכם, אך לא נכנסתם כמשתמשים רשומים למערכת כיוון שניטרלתם את העוגיות, ש{{grammar:תחילית|{{SITENAME}}}} משתמש בהן לצורך כניסה למערכת. אנא הפעילו אותן מחדש, ולאחר מכן תוכלו להיכנס למערכת עם שם המשתמש והסיסמה החדשים שלכם.",
+"nocookieslogin"             => "לא הצלחתם להיכנס למערכת כמשתמשים רשומים כיוון שניטרלתם את העוגיות, ש{{grammar:תחילית|{{SITENAME}}}} משתמש בהן לצורך כניסה למערכת. אנא הפעילו אותן מחדש, ולאחר מכן תוכלו להיכנס למערכת עם שם המשתמש והסיסמה שלכם.",
 "noname"                     => "לא הזנתם שם משתמש חוקי",
 "loginsuccesstitle"          => "הכניסה הושלמה בהצלחה",
-"loginsuccess"               => '\'\'\'נכנסתם לאתר {{SITENAME}} בשם "$1".\'\'\'',
+"loginsuccess"               => '\'\'\'נכנסתם ל{{grammar:תחילית|{{SITENAME}}}} בשם "$1".\'\'\'',
 "nosuchuser"                 => 'אין משתמש בשם "$1".
 
 אנא ודאו שהאיות נכון, או השתמשו בטופס שלהלן ליצירת חשבון משתמש חדש.',
@@ -375,8 +373,8 @@ $wgAllMessagesHe = array(
 "wrongpassword"              => "הסיסמה שהקלדתם שגויה, אנא נסו שנית.",
 "wrongpasswordempty"         => "הסיסמה שהקלדתם ריקה. אנא נסו שנית.",
 "mailmypassword"             => "שלחו לי סיסמה חדשה",
-"passwordremindertitle"      => "תזכורת סיסמה מהאתר {{SITENAME}}",
-"passwordremindertext"       => 'מישהו (ככל הנראה אתם, מכתובת ה־IP מספר $1) ביקש שנשלח לכם סיסמה חדשה לכניסה לחשבון באתר {{SITENAME}} ($4). הסיסמה עבור המשתמש "$2" היא עתה "$3". עליכם להיכנס לאתר ולשנות את סיסמתכם בהקדם האפשרי. אם מישהו אחר ביקש סיסמה חדשה זו או אם נזכרתם בסיסמתכם ואינכם רוצים עוד לשנות אותה, באפשרותכם להתעלם מהודעה זו ולהמשיך להשתמש בסיסמתכם הישנה.',
+"passwordremindertitle"      => "תזכורת סיסמה מ{{grammar:תחילית|{{SITENAME}}}}",
+"passwordremindertext"       => 'מישהו (ככל הנראה אתם, מכתובת ה־IP מספר $1) ביקש שנשלח לכם סיסמה חדשה לכניסה לחשבון ב{{grammar:תחילית|{{SITENAME}}}} ($4). הסיסמה עבור המשתמש "$2" היא עתה "$3". עליכם להיכנס לאתר ולשנות את סיסמתכם בהקדם האפשרי. אם מישהו אחר ביקש סיסמה חדשה זו או אם נזכרתם בסיסמתכם ואינכם רוצים עוד לשנות אותה, באפשרותכם להתעלם מהודעה זו ולהמשיך להשתמש בסיסמתכם הישנה.',
 "noemail"                    => 'לא רשומה כתובת דואר אלקטרוני עבור משתמש  "$1".',
 "passwordsent"               => 'סיסמה חדשה נשלחה לכתובת הדואר האלקטרוני הרשומה עבור "$1".
 אנא הכנסו חזרה לאתר אחרי שתקבלו אותה.',
@@ -387,7 +385,7 @@ $wgAllMessagesHe = array(
 "acct_creation_throttle_hit" => "מצטערים, יצרת כבר $1 חשבונות. אינך יכול ליצור חשבונות נוספים.",
 "emailauthenticated"         => 'כתובת הדוא"ל שלך אושרה על־ידי $1.',
 "emailnotauthenticated"      => 'כתובת הדוא"ל שלך <strong>עדיין לא אושרה</strong>. אף דוא"ל לא יישלח מאף אחת מהתכונות הבאות.',
-"noemailprefs"               => '<strong>אנא ציינו כתובת דוא"ל כדי שתכונות אלה יעבדו.</strong>',
+"noemailprefs"               => 'אנא ציינו כתובת דוא"ל כדי שתכונות אלה יעבדו.',
 "emailconfirmlink"           => 'אשר את כתובת הדוא"ל שלך',
 "invalidemailaddress"        => 'כתובת הדוא"ל אינה מתקבלת כיוון שנראה שהיא בפורמט לא נכון. אנא הכנס כתובת נכונה או ותר על השדה הזה.',
 "accountcreated"             => "החשבון נוצר",
@@ -429,20 +427,17 @@ $wgAllMessagesHe = array(
 "missingsummary"            => '\'\'\'תזכורת:\'\'\' לא הזנתם תקציר עריכה. אם תלחצו שוב על "שמור דף", עריכתכם תישמר בלעדיו.',
 "missingcommenttext"        => "אנא הקלידו את ההערה למטה.",
 "blockedtitle"              => "המשתמש חסום",
-"blockedtext"               => 'שם המשתמש או כתובת ה־IP שלכם נחסמו על־ידי $1. הסיבה שניתנה לכך היא:
-:$2
+"blockedtext"               => '<big>\'\'\'שם המשתמש או כתובת ה־IP שלכם נחסמו.\'\'\'</big>
 
-אם לדעתכם חסימתכם הייתה בלתי מוצדקת, ניתן לשלוח דואר אלקטרוני ל$4 או לאחד מ[[{{ns:special}}:Listadmins|מפעילי המערכת האחרים]]:
-*\'\'\'אם אין לכם חשבון באתר:\'\'\'
-** [[{{ns:special}}:Userlogin|צרו חשבון במערכת]] (החסימה לא מונעת זאת).
-** הזינו כתובת דואר אלקטרוני חוקית ב[[{{ns:special}}:Preferences|דף ההעדפות]].
-** בדף המשתמש של $1 או אחד ממפעילי המערכת האחרים, בחרו באפשרות "שלח דואר אלקטרוני למשתמש זה" המופיעה בתיבת הכלים מצד ימין.
-* \'\'\'אם יש לכם חשבון באתר:\'\'\'
-** [[{{ns:special}}:Emailuser/$4|שלחו דואר אלקטרוני ל$4]] או גשו לדף המשתמש של אחד ממפעילי המערכת האחרים ובחרו ב"שלח דואר אלקטרוני למשתמש זה" מתוך תיבת הכלים שבצד ימין.
+החסימה בוצעה על־ידי $1. הסיבה שניתנה לכך היא \'\'\'$2\'\'\'.
 
-כתובת ה-IP שלך כרגע היא \'\'\'$3\'\'\', ויש לציין עובדה זו בכל פנייה למפעילי המערכת.',
+באפשרותכם ליצור קשר עם $1 או עם כל אחד מ[[{{ns:project}}:מפעיל מערכת|מפעילי המערכת]] האחרים כדי לדון על החסימה.
+אינכם יכולים להשתמש בתכונת "שלחו דואר אלקטרוני למשתמש זה" אם לא ציינתם כתובת דוא"ל תקפה ב[[{{ns:special}}:Preferences|העדפות המשתמש שלכם]].
+כתובת ה־IP שלכם היא $3. אנא ציינו עובדה זו בכל פנייה למפעילי המערכת.',
+"blockedoriginalsource"     => "טקסט המקור של '''$1''' מוצג למטה:",
+"blockededitsource"         => "הטקסט של '''העריכות שלך''' לדף '''$1''' מוצג למטה:",
 "whitelistedittitle"        => "כניסה לחשבון נדרשת לעריכה",
-"whitelistedittext"         => "עליכם לבצע $1 כדי לערוך דפים.",
+"whitelistedittext"         => "עליכם $1 כדי לערוך דפים.",
 "whitelistreadtitle"        => "כניסה לחשבון נדרשת לקריאה",
 "whitelistreadtext"         => "עליכם [[{{ns:special}}:Userlogin|להיכנס לחשבון]] כדי לקרוא דפים.",
 "whitelistacctitle"         => "אינכם מורשים ליצור חשבון",
@@ -450,8 +445,8 @@ $wgAllMessagesHe = array(
 "confirmedittitle"          => 'הנכם חייבים לאמת את כתובת הדוא"ל שלכם כדי לערוך',
 "confirmedittext"           => 'עליכם לאמת את כתובת הדוא"ל שלכם לפני שתוכלו לערוך דפים. אנא הגדירו ואמתו את כתובת הדוא"ל שלכם באמצעות [[{{ns:special}}:Preferences|העדפות המשתמש]] לשכם.',
 "loginreqtitle"             => "כניסה לחשבון נדרשת",
-"loginreqlink"              => "כניסה לחשבון",
-"loginreqpagetext"          => "עליכם לבצע $1 כדי לצפות בדפים אחרים.",
+"loginreqlink"              => "להיכנס לחשבון",
+"loginreqpagetext"          => "עליכם $1 כדי לצפות בדפים אחרים.",
 "accmailtitle"              => "הסיסמה נשלחה",
 "accmailtext"               => 'הסיסמה עבור "$1" נשלחה אל $2.',
 "newarticle"                => "(חדש)",
@@ -502,8 +497,8 @@ $wgAllMessagesHe = array(
 
 אם תשמרו את הדף, כל השינויים שנעשו מאז גרסה זו יאבדו.'''",
 "yourdiff"                  => "הבדלים",
-"copyrightwarning"          => '<div id="editing-warn">\'\'\'שימו לב:\'\'\' תרומתכם לאתר {{SITENAME}} תפורסם תחת תנאי הרישיון $2 (ראו $1 לפרטים נוספים). אם אינכם רוצים שעבודתכם תהיה זמינה לעריכה על־ידי אחרים, שתופץ לעיני כל, ושאחרים יוכלו להעתיק ממנה בציון המקור – אל תפרסמו אותה פה. כמו־כן, אתם מבטיחים לנו כי כתבתם את הטקסט הזה בעצמכם, או העתקתם אותו ממקור שאינו מוגן על־ידי זכויות יוצרים. \'\'\'אל תעשו שימוש בחומר המוגן בזכויות יוצרים ללא רשות!\'\'\'</div>',
-"copyrightwarning2"         => '<div id="editing-warn">\'\'\'שימו לב:\'\'\' תורמים אחרים עשויים לערוך או אף להסיר את תרומתכם לאתר {{SITENAME}}. אם אינכם רוצים שעבודתכם תהיה זמינה לעריכה על־ידי אחרים – אל תפרסמו אותה פה. כמו־כן, אתם מבטיחים לנו כי כתבתם את הטקסט הזה בעצמכם, או העתקתם אותו ממקור שאינו מוגן על־ידי זכויות יוצרים (ראו $1 לפרטים נוספים). \'\'\'אל תעשו שימוש בחומר המוגן בזכויות יוצרים ללא רשות!\'\'\'</div>',
+"copyrightwarning"          => '<div id="editing-warn">\'\'\'שימו לב:\'\'\' תרומתכם ל{{grammar:תחילית|{{SITENAME}}}} תפורסם תחת תנאי הרישיון $2 (ראו $1 לפרטים נוספים). אם אינכם רוצים שעבודתכם תהיה זמינה לעריכה על־ידי אחרים, שתופץ לעיני כל, ושאחרים יוכלו להעתיק ממנה בציון המקור – אל תפרסמו אותה פה. כמו־כן, אתם מבטיחים לנו כי כתבתם את הטקסט הזה בעצמכם, או העתקתם אותו ממקור שאינו מוגן על־ידי זכויות יוצרים. \'\'\'אל תעשו שימוש בחומר המוגן בזכויות יוצרים ללא רשות!\'\'\'</div>',
+"copyrightwarning2"         => '<div id="editing-warn">\'\'\'שימו לב:\'\'\' תורמים אחרים עשויים לערוך או אף להסיר את תרומתכם ל{{grammar:תחילית|{{SITENAME}}}}. אם אינכם רוצים שעבודתכם תהיה זמינה לעריכה על־ידי אחרים – אל תפרסמו אותה פה. כמו־כן, אתם מבטיחים לנו כי כתבתם את הטקסט הזה בעצמכם, או העתקתם אותו ממקור שאינו מוגן על־ידי זכויות יוצרים (ראו $1 לפרטים נוספים). \'\'\'אל תעשו שימוש בחומר המוגן בזכויות יוצרים ללא רשות!\'\'\'</div>',
 "longpagewarning"           => "'''אזהרה: גודל דף זה הוא $1 קילובייטים. בדפדפנים מסוימים יהיו בעיות בעריכת דף הגדול מ־32 קילובייטים. אנא שיקלו לחלק דף זה לדפים קטנים יותר. אם זהו דף שיחה, שיקלו לארכב אותו.'''",
 "longpageerror"             => "'''שגיאה: הטקסט ששלחתם הוא באורך $1 קילובייטים, אך אסור לו להיות ארוך יותר מהמקסימום של $2 קילובייטים. לא ניתן לשומרו.'''",
 "readonlywarning"           => "'''אזהרה: בסיס הנתונים ננעל לצורך תחזוקה. בזמן זה אי אפשר לשמור את הטקסט הערוך. בינתיים, עד סיום התחזוקה, אתם יכולים להשתמש בעורך חיצוני. אנו מתנצלים על התקלה.'''",
@@ -513,16 +508,19 @@ $wgAllMessagesHe = array(
 "edittools"                 => "<!-- הטקסט הנכתב כאן יוצג מתחת לטפסי עריכת דפים והעלאת קבצים, ולפיכך ניתן לכתוב להציג בו תווים קשים לכתיבה, קטעים מוכנים של טקסט ועוד. -->",
 "nocreatetitle"             => "יצירת הדפים הוגבלה",
 "nocreatetext"              => "אתר זה מגביל את האפשרות ליצור דפים חדשים. באפשרותכם לחזור אחורה ולערוך דף קיים, או [[{{ns:special}}:Userlogin|להיכנס לחשבון]].",
+"cantcreateaccounttitle"    => "לא ניתן ליצור את החשבון",
+"cantcreateaccounttext"     => "אפשרות יצירת החשבונות מכתובת ה־IP הזו (<b>$1</b>) נחסמה, כנראה עקב השחתות מתמשכות מבית־הספר או ספק האינטרנט שלך.",
 
 # History pages
 "revhistory"                  => "היסטוריית שינויים",
+"viewpagelogs"                => "הצג יומנים עבור דף זה",
 "nohistory"                   => "אין היסטוריית שינויים עבור דף זה.",
 "revnotfound"                 => "גרסה זו לא נמצאה",
 "revnotfoundtext"             => "הגרסה הישנה של דף זה לא נמצאה. אנא בדקו את כתובת הקישור שהוביל אתכם הנה.",
 "loadhist"                    => "טוען את היסטוריית השינויים של הדף",
 "currentrev"                  => "גרסה נוכחית",
 "revisionasof"                => "גרסה מתאריך $1",
-"oldrevisionnavigation"       => "גרסה מתאריך $1; $5<br />$3 | $2 | $4",
+"old-revision-navigation"     => "גרסה מתאריך $1; $5<br />($6) $3 | $2 | $4 ($7)",
 "previousrevision"            => "→ הגרסה הקודמת",
 "nextrevision"                => "הגרסה הבאה ←",
 "currentrevisionlink"         => "הגרסה הנוכחית",
@@ -579,8 +577,9 @@ $wgAllMessagesHe = array(
 
 # Search results
 "searchresults"     => "תוצאות החיפוש",
-"searchresulttext"  => "ראו גם [[{{ns:project}}:חיפוש|מידע נוסף על חיפוש באתר {{SITENAME}}]].",
-"searchquery"       => 'לחיפוש "$1"',
+"searchresulttext"  => "ראו גם [[{{ns:project}}:חיפוש|מידע נוסף על חיפוש ב{{grammar:תחילית|{{SITENAME}}}}]].",
+"searchsubtitle"    => "לחיפוש המונח '''[[:$1]]'''",
+"searchsubtitleinvalid"    => "לחיפוש המונח '''$1'''",
 "badquery"          => "שגיאה בניסוח השאילתה.",
 "badquerytext"      => 'לא הצלחנו לבצע את השאילתה, ככל הנראה כיוון שניסיתם לחפש מילה בעלת פחות משלוש אותיות. חיפוש כזה עדיין אינו נתמך במערכת. ייתכן גם ששגיתם בהקלדת השאליתה – לדוגמה, כתבתם "דג וגם וגם משקל".
 
@@ -708,7 +707,6 @@ $wgAllMessagesHe = array(
 "newpageletter"                     => "ח",
 "boteditletter"                     => "ב",
 "sectionlink"                       => "←",
-"number_of_watching_users_RCview"   => "[$1]",
 "number_of_watching_users_pageview" => "[$1 משתמש/ים צופים]",
 "rc_categories"                     => 'הגבל לקטגוריות (הפרד עם "|")',
 "rc_categories_any"                 => "הכול",
@@ -770,7 +768,7 @@ $wgAllMessagesHe = array(
 
 # Image list
 "imagelist"                 => "רשימת תמונות",
-"imagelisttext"             => "להלן רשימה של <strong>$1</strong> תמונות, ממוינות <strong>$2</strong>:",
+"imagelisttext"             => "להלן רשימה של {{plural:$1|תמונה אחת|$1 תמונות}}, ממוינות $2:",
 "imagelistforuser"          => "מוצגות רק התמונות שהועלו על־ידי $1.",
 "getimagelist"              => "מושך את רשימת התמונות",
 "ilsubmit"                  => "חיפוש",
@@ -817,10 +815,10 @@ $wgAllMessagesHe = array(
 "randomredirect" => "הפניה אקראית",
 
 # Statistics
-"statistics"    => "סטטיסטיקות",
-"sitestats"     => "סטטיסטיקות האתר {{SITENAME}}",
-"userstats"     => "סטטיסטיקות משתמשים",
-"sitestatstext" => 'בבסיס הנתונים יש בסך הכול \'\'\'$1\'\'\' דפים. מספר זה כולל דפים שאינם דפי תוכן, כגון דפי שיחה, דפים אודות {{SITENAME}}, קצרמרים, דפי תוכן ללא קישורים פנימיים, הפניות, וכיוצא בזה. אם לא סופרים את הדפים שאינם דפי תוכן, נשארים \'\'\'$2\'\'\' דפים שהם ככל הנראה דפי תוכן לכל דבר.
+"statistics"             => "סטטיסטיקות",
+"sitestats"              => "סטטיסטיקות {{SITENAME}}",
+"userstats"              => "סטטיסטיקות משתמשים",
+"sitestatstext"          => 'בבסיס הנתונים יש בסך הכול \'\'\'$1\'\'\' דפים. מספר זה כולל דפים שאינם דפי תוכן, כגון דפי שיחה, דפים אודות {{SITENAME}}, קצרמרים, דפי תוכן ללא קישורים פנימיים, הפניות, וכיוצא בזה. אם לא סופרים את הדפים שאינם דפי תוכן, נשארים \'\'\'$2\'\'\' דפים שהם ככל הנראה דפי תוכן לכל דבר.
 
 מאז תחילת פעולתו של האתר, היו באתר \'\'\'$3\'\'\' צפיות בדפים, ובוצעו \'\'\'$4\'\'\' פעולות עריכה.
 
@@ -829,16 +827,17 @@ $wgAllMessagesHe = array(
 אורך [http://meta.wikimedia.org/wiki/Help:Job_queue תור המשימות] הוא \'\'\'$7\'\'\'
 
 \'\'\'$8\'\'\' קבצים הועלו לאתר עד כה.',
-"userstatstext" => "ישנם '''$1''' [[{{ns:special}}:Listusers|משתמשים רשומים]] באתר, '''$2''' (או $4%) מתוכם מפעילי מערכת (ראו $3).",
+"userstatstext"          => "ישנם '''$1''' [[{{ns:special}}:Listusers|משתמשים רשומים]] באתר, '''$2''' (או $4%) מתוכם מפעילי מערכת (ראו $3).",
+"statistics-mostpopular" => "הדפים הנצפים ביותר",
 
 # Disambiguations Page
 "disambiguations"            => "דפי פירושונים",
-"disambiguationspage"        => "{{ns:project}}:דפי פירושונים",
+"disambiguationspage"        => "{{ns:template}}:פירושונים",
 "disambiguationstext"        => "<p>הדפים שלהלן מקשרים אל <b>דפי פירושונים</b>. תפקיד דפים אלה הוא להפנות לדף הנושא הרלוונטי.</p>
 
 <p>אנו מתייחסים לדף כדף פירושונים אם הוא מקושר לדף $1.</p>
 
-<p>קישורים המגיעים לדף ממרחבי שם אחרים '''אינם''' מוצגים כאן.</p>",
+<p>קישורים המגיעים לדף ממרחבי שם אחרים <b>אינם</b> מוצגים כאן.</p>",
 
 # Double redirects page
 "doubleredirects"            => "הפניות כפולות",
@@ -885,6 +884,7 @@ $wgAllMessagesHe = array(
 "recentchangeslinked"     => "שינויים בדפים המקושרים",
 "rclsub"                  => '(לדפים המקושרים מהדף "$1")',
 "newpages"                => "דפים חדשים",
+"newpages-username"       => "שם משתמש:",
 "ancientpages"            => "דפים מוזנחים",
 "intl"                    => "קישורים בינלשוניים",
 "move"                    => "העבר",
@@ -912,13 +912,13 @@ $wgAllMessagesHe = array(
 "nextpage"          => "הדף הבא ($1)",
 "allpagesfrom"      => "הראה דפים החל מ:",
 "allarticles"       => "כל הדפים",
-"allnonarticles"    => "כל הדפים שאינם דפי תוכן",
 "allinnamespace"    => "כל הדפים (מרחב שם $1)",
 "allnotinnamespace" => "כל הדפים (שלא במרחב השם $1)",
 "allpagesprev"      => "הקודם",
 "allpagesnext"      => "הבא",
 "allpagessubmit"    => "עבור",
 "allpagesprefix"    => "הדפים ששמם מתחיל ב…:",
+"allpagesbadtitle"  => "כותרת הדף המבוקש הייתה לא־חוקית, ריקה, קישור ויקי פנימי, או פנים שפה שגוי. ייתכן שהיא כוללת תו אחד או יותר האסורים לשימוש בכותרות.",
 
 # Email this user
 "mailnologin"     => "אין כתובת לשליחה",
@@ -940,8 +940,9 @@ $wgAllMessagesHe = array(
 
 # Watchlist
 "watchlist"            => "רשימת המעקב שלי",
-"watchlistsub"         => '(עבור המשתמש "$1")',
+"watchlistfor"         => "(עבור '''$1''')",
 "nowatchlist"          => "אין לכם דפים ברשימת המעקב.",
+"watchlistanontext"    => "עליכם $1 כדי לצפות או לערוך פריטים ברשימת המעקב שלכם.",
 "watchlistcount"       => "'''יש לכם $1 פריטים ברשימת המעקב, כולל דפי שיחה.'''",
 "clearwatchlist"       => "ניקוי רשימת המעקב",
 "watchlistcleartext"   => "האם אתם בטוחים שברצונכם להסירם?",
@@ -983,16 +984,16 @@ $wgAllMessagesHe = array(
 "wlhideshowbots"       => "$1 בוטים",
 "wldone"               => "בוצע.",
 
-"enotif_mailer"      => "הודעות האתר {{SITENAME}}",
+"enotif_mailer"      => "הודעות {{SITENAME}}",
 "enotif_reset"       => "סמן את כל הדפים כאילו נצפו",
 "enotif_newpagetext" => "זהו דף חדש.",
 "changed"            => "שונה",
 "created"            => "נוצר",
-"enotif_subject"     => 'הדף $PAGETITLE באתר {{SITENAME}} $CHANGEDORCREATED על־ידי $PAGEEDITOR',
+"enotif_subject"     => 'הדף $PAGETITLE ב{{grammar:תחילית|{{SITENAME}}}} $CHANGEDORCREATED על־ידי $PAGEEDITOR',
 "enotif_lastvisited" => "ראו $1 לכל השינויים מאז ביקורכם האחרון.",
 "enotif_body"        => 'לכבוד $WATCHINGUSERNAME,
 
-הדף $PAGETITLE באתר {{SITENAME}} $CHANGEDORCREATED ב־$PAGEEDITDATE על־ידי $PAGEEDITOR, ראו $PAGETITLE_URL לגרסה הנוכחית.
+הדף $PAGETITLE ב{{grammar:תחילית|{{SITENAME}}}} $CHANGEDORCREATED ב־$PAGEEDITDATE על־ידי $PAGEEDITOR, ראו $PAGETITLE_URL לגרסה הנוכחית.
 
 $NEWPAGE
 
@@ -1138,9 +1139,11 @@ $NEWPAGE
 "ipadressorusername"          => "כתובת IP או שם משתמש",
 "ipbexpiry"                   => "פקיעה",
 "ipbreason"                   => "סיבה",
+"ipbanononly"                 => "חסום משתמשים אנונימיים בלבד",
+"ipbcreateaccount"            => "חסום יצירת חשבונות",
 "ipbsubmit"                   => "חסום משתמש זה",
 "ipbother"                    => "זמן אחר",
-"ipboptions"                  => "5 דקות:5 minutes,10 דקות:10 minutes,חצי שעה:30 minutes,שעה:1 hours,שעתיים:2 hours,יום:1 day,שלושה ימים:3 days,שבוע:1 week,שבועיים:2 weeks,חודש:1 month,שלושה חודשים:3 months,חצי שנה:6 months,שנה:1 year,לצמיתות:infinite",
+"ipboptions"                  => "שעתיים:2 hours,יום:1 day,שלושה ימים:3 days,שבוע:1 week,שבועיים:2 weeks,חודש:1 month,שלושה חודשים:3 months,חצי שנה:6 months,שנה:1 year,לצמיתות:infinite",
 "ipbotheroption"              => "אחר",
 "badipaddress"                => "משתמש או כתובת IP שגויים.",
 "blockipsuccesssub"           => "החסימה הושלמה בהצלחה",
@@ -1150,11 +1153,13 @@ $NEWPAGE
 "unblockip"                   => "שחרר משתמש",
 "unblockiptext"               => "השתמשו בטופס שלהלן כדי להחזיר את הרשאות הכתיבה למשתמש או כתובת IP חסומים.",
 "ipusubmit"                   => "שחרר משתמש זה",
-"ipusuccess"                  => 'המשתמש "[[$1]]" שוחרר.',
+"unblocked"                   => 'המשתמש "[[משתמש:$1|$1]]" שוחרר מחסימתו.',
 "ipblocklist"                 => "רשימת משתמשים חסומים",
 "blocklistline"               => '$1 $2 חסם את $3 ($4)',
 "infiniteblock"               => "לצמיתות",
 "expiringblock"               => "פוקע $1",
+"anononlyblock"               => "משתמשים אנונימיים בלבד",
+"createaccountblock"          => "יצירת חשבונות נחסמה",
 "ipblocklistempty"            => "רשימת המשתמשים החסומים ריקה.",
 "blocklink"                   => "חסום",
 "unblocklink"                 => "שחרר חסימה",
@@ -1168,7 +1173,9 @@ $NEWPAGE
 "unblocklogentry"             => "שיחרר את [[$1]]",
 "range_block_disabled"        => "היכולת לחסום טווח כתובות איננה פעילה.",
 "ipb_expiry_invalid"          => "זמן פקיעת חסימה בלתי חוקי",
+"ipb_already_blocked"         => 'המשתמש "$1" כבר נחסם',
 "ip_range_invalid"            => "טווח IP שגוי.",
+"ipb_cant_unblock"            => "שגיאה: חסימה מספר $1 לא נמצאה. ייתכן שהיא כבר שוחררה.",
 "proxyblocker"                => "חוסם פרוקסי",
 "proxyblockreason"            => "כתובת ה־IP שלכם נחסמה משום שהיא כתובת פרוקסי פתוחה. אנא צרו קשר עם ספק האינטרנט שלכם והודיעו לו על בעיית האבטחה החמורה הזו.",
 "proxyblocksuccess"           => "בוצע.",
@@ -1193,8 +1200,10 @@ $NEWPAGE
 "unlockdbsuccesssub"  => "שוחררה הנעילה מבסיס הנתונים",
 "lockdbsuccesstext"   => "בסיס הנתונים ננעל.
 
-זכרו לשחרר את הנעילה לאחר שפעולת התחזוקה הסתיימה.",
+זכרו [[{{ns:special}}:Unlockdb|לשחרר את הנעילה]] לאחר שפעולת התחזוקה הסתיימה.",
 "unlockdbsuccesstext" => "שוחררה הנעילה של בסיס הנתונים",
+"lockfilenotwritable" => "קובץ נעילת מסד הנתונים אינו ניתן לכתיבה. כדי שאפשר יהיה לנעול את מסד הנתונים או לבטל את נעילתו, שרת האינטרנט צריך לקבל הרשאות לכתוב אליו.",
+"databasenotlocked"   => "מסד הנתונים אינו נעול.",
 
 # Make sysop
 "makesysoptitle"     => "הפוך משתמש למפעיל מערכת",
@@ -1274,6 +1283,7 @@ $NEWPAGE
 "exportcuronly"   => "כלול רק את הגרסה הנוכחית, ללא כל ההיסטוריה",
 "exportnohistory" => "----
 '''הערה:''' ייצוא ההיסטוריה המלאה של דפים דרך טופס זה הופסקה עקב בעיות ביצוע.",
+"export-submit"   => "ייצוא",
 
 # Namespace 8 related
 "allmessages"               => "הודעות המערכת",
@@ -1297,16 +1307,36 @@ $NEWPAGE
 "thumbnail_error" => "שגיאה ביצירת תמונה ממוזערת: $1",
 
 # Special:Import
-"import"                => "ייבוא דפים",
-"importinterwiki"       => "ייבוא בין־אתרי",
-"importtext"            => "אנא ייצאו את הקובץ מאתר המקור תוך שימוש בעזר הייצוא, שמרו אותו לדיסק הקשיח שלכם והעלו אותו לכאן.",
-"importfailed"          => "הייבוא נכשל: $1",
-"importnotext"          => "ריק או חסר טקסט",
-"importsuccess"         => "הייבוא הושלם בהצלחה!",
-"importhistoryconflict" => "ישנה התנגשות עם ההיסטוריה הקיימת של הדף (ייתכן שהדף יובא בעבר)",
-"importnosources"       => "אין מקורות לייבוא בין־אתרי, וייבוא ישיר של דף עם היסטוריה אינו מאופשר כעת.",
-"importnofile"          => "לא הועלה קובץ ייבוא.",
-"importuploaderror"     => "העלאת קובץ ייבוא נכשלה; ייתכן שהקובץ גדול מגודל ההעלאה המותר.",
+"import"                     => "ייבוא דפים",
+"importinterwiki"            => "ייבוא בין־אתרי",
+"import-interwiki-text"      => "אנא בחרו אתר ויקי ואת כותרת הדף לייבוא.
+תאריכי ועורכי הגרסאות יישמרו בעת הייבוא.
+כל פעולות הייבוא הבין־אתרי נשמרות ביומן הייבוא.",
+"import-interwiki-history"   => "העתק את כל היסטוריית העריכות של דף זה",
+"import-interwiki-submit"    => "ייבוא",
+"import-interwiki-namespace" => "העבר את הדפים לתוך מרחב השם:",
+"importtext"                 => "אנא ייצאו את הקובץ מאתר המקור תוך שימוש בעזר הייצוא, שמרו אותו לדיסק הקשיח שלכם והעלו אותו לכאן.",
+"importstart"                => "מייבא דפים…",
+"import-revision-count"      => "{{plural:$1|גרסה אחת|$1 גרסאות}}",
+"importnopages"              => "אין דפים לייבוא.",
+"importfailed"               => "הייבוא נכשל: $1",
+"importunknownsource"        => "סוג ייבוא בלתי ידוע",
+"importcantopen"             => "פתיחת קובץ הייבוא נכשלה",
+"importbadinterwiki"         => "קישור אינטרוויקי שגוי",
+"importnotext"               => "ריק או חסר טקסט",
+"importsuccess"              => "הייבוא הושלם בהצלחה!",
+"importhistoryconflict"      => "ישנה התנגשות עם ההיסטוריה הקיימת של הדף (ייתכן שהדף יובא בעבר)",
+"importnosources"            => "אין מקורות לייבוא בין־אתרי, וייבוא ישיר של דף עם היסטוריה אינו מאופשר כעת.",
+"importnofile"               => "לא הועלה קובץ ייבוא.",
+"importuploaderror"          => "העלאת קובץ ייבוא נכשלה; ייתכן שהקובץ גדול מגודל ההעלאה המותר.",
+
+# Import log
+"importlogpage"                    => "יומן ייבוא",
+"importlogpagetext"                => "ייבוא מנהלי של דפים כולל היסטוריית העריכות שלהם מאתרי ויקי אחרים.",
+"import-logentry-upload"           => "ייבא את $1 על־ידי העלאת קובץ",
+"import-logentry-upload-detail"    => "$1 גרסאות",
+"import-logentry-interwiki"        => "ייבא את $1 בייבוא בין־אתרי",
+"import-logentry-interwiki-detail" => "$1 גרסאות מהאתר $2",
 
 # Keyboard access keys for power users
 "accesskey-search"                  => "f",
@@ -1318,7 +1348,7 @@ $NEWPAGE
 "accesskey-watch"                   => "w",
 
 # Tooltip help for some actions, most are in Monobook.js
-"tooltip-search"                  => "חיפוש באתר {{SITENAME}} [Alt+F]",
+"tooltip-search"                  => "חיפוש ב{{grammar:תחילית|{{SITENAME}}}} [Alt+F]",
 "tooltip-minoredit"               => "סימון עריכה זו כמשנית [Alt+I]",
 "tooltip-save"                    => "שמירת את השינויים שביצעתם [Alt+S]",
 "tooltip-preview"                 => "צפו בתצוגה מקדימה, אנא השתמשו באפשרות זו לפני השמירה! [Alt+P]",
@@ -1327,7 +1357,8 @@ $NEWPAGE
 "tooltip-watch"                   => "הוסיפו דף זה לרשימת המעקב שלכם [Alt+W]",
 
 # Stylesheets
-"Monobook.css" => "/* ערכו קובץ זה כדי להתאים את הרקע Monobook באתר כולו */",
+"Common.css"   => '/* הסגנונות הנכתבים כאן ישפיעו על כל הרקעים */',
+"Monobook.css" => '/* הסגנונות הנכתבים כאן ישפיעו על הרקע Monobook בלבד */',
 
 # Metadata
 "nodublincore"      => "Dublin Core RDF metadata מנוטרל בשרת זה.",
@@ -1374,7 +1405,6 @@ $NEWPAGE
 
 # Patrolling
 "markaspatrolleddiff"        => "סמן שינוי כבדוק",
-"markaspatrolledlink"        => "[$1]",
 "markaspatrolledtext"        => "סמן דף זה כבדוק",
 "markedaspatrolled"          => "השינוי נבדק",
 "markedaspatrolledtext"      => "השינוי שנבחר נבדק.",
@@ -1386,7 +1416,7 @@ $NEWPAGE
 # Monobook.js: tooltips and access keys for monobook
 "Monobook.js" => '/* ערכו קובץ זה כדי להריץ סקריפטים ב־JavaScript ברקע Monobook באתר כולו */
 /* חלונות קופצים ומקשים חמים */
-ta = new Object();
+var ta = new Object();
 ta["pt-userpage"]           = [".", "דף המשתמש שלי"];
 ta["pt-anonuserpage"]       = [".", "דף המשתמש של משתמש אנונימי זה"];
 ta["pt-mytalk"]             = ["n", "דף השיחה שלי"];
@@ -1490,6 +1520,280 @@ ta["ca-nstab-category"]     = ["c", "צפו בדף הקטגוריה"];',
 * fnumber
 * focallength",
 
+# Exif tags
+"exif-imagewidth"                  => "רוחב",
+"exif-imagelength"                 => "גובה",
+"exif-bitspersample"               => "ביטים לרכיב",
+"exif-compression"                 => "תבנית דחיסה",
+"exif-photometricinterpretation"   => "הרכב פיקסלים",
+"exif-orientation"                 => "כיווניות",
+"exif-samplesperpixel"             => "מספר רכיבים",
+"exif-planarconfiguration"         => "סידור מידע",
+"exif-ycbcrsubsampling"            => "הפחתת יחס Y ל־C",
+"exif-ycbcrpositioning"            => "מיקום Y ו־C",
+"exif-xresolution"                 => "רזולוציה אופקית",
+"exif-yresolution"                 => "רזולוציה אנכית",
+"exif-resolutionunit"              => "יחידות מידה של רזולוציות X ו־Y",
+"exif-stripoffsets"                => "מיקום מידע התמונה",
+"exif-rowsperstrip"                => "מספר השורות לרצועה",
+"exif-stripbytecounts"             => "בייטים לרצועה דחוסה",
+"exif-jpeginterchangeformat"       => "יחס ל־JPEG SOI",
+"exif-jpeginterchangeformatlength" => "בייטים של מידע JPEG",
+"exif-transferfunction"            => "פונקציית העברה",
+"exif-whitepoint"                  => "נקודה לבנה צבעונית",
+"exif-primarychromaticities"       => "צבעוניות ה־Primarity",
+"exif-ycbcrcoefficients"           => "מקדמי פעולת הטרנספורמציה של מרחב הצבע",
+"exif-referenceblackwhite"         => "זוג ערכי התייחסות לשחור ולבן",
+"exif-datetime"                    => "תאריך ושעת שינוי הקובץ",
+"exif-imagedescription"            => "כותרת התמונה",
+"exif-make"                        => "יצרן המצלמה",
+"exif-model"                       => "דגם המצלמה",
+"exif-software"                    => "תוכנה בשימוש",
+"exif-artist"                      => "מחבר",
+"exif-copyright"                   => "בעל זכויות היוצרים",
+"exif-exifversion"                 => "גרסת Exif",
+"exif-flashpixversion"             => "גרסת Flashpix נתמכת",
+"exif-colorspace"                  => "מרחב הצבע",
+"exif-componentsconfiguration"     => "משמעות כל רכיב",
+"exif-compressedbitsperpixel"      => "שיטת דחיסת התמונה",
+"exif-pixelydimension"             => "רוחב התמונה הנכון",
+"exif-pixelxdimension"             => "גובה התמונה הנכון",
+"exif-makernote"                   => "הערות היצרן",
+"exif-usercomment"                 => "הערות המשתמש",
+"exif-relatedsoundfile"            => "קובץ שמע מקושר",
+"exif-datetimeoriginal"            => "תאריך ושעת יצירת הקובץ",
+"exif-datetimedigitized"           => "תאריך ושעת הפיכת הקובץ לדיגיטלי",
+"exif-subsectime"                  => "תת־השניות של שינוי הקובץ",
+"exif-subsectimeoriginal"          => "תת־השניות של יצירת הקובץ",
+"exif-subsectimedigitized"         => "תת־השניות של הפיכת הקובץ לדיגיטלי",
+"exif-exposuretime"                => "זמן חשיפה",
+"exif-exposuretime-format"         => "$1 שניות ($2)",
+"exif-fnumber"                     => "מספר F",
+"exif-fnumber-format"              => "f/$1",
+"exif-exposureprogram"             => "תוכנת החשיפה",
+"exif-spectralsensitivity"         => "רגישות הספקטרום",
+"exif-isospeedratings"             => "דירוג מהירות ה־ISO",
+"exif-oecf"                        => "מקדם המרה אופטו־אלקטרוני",
+"exif-shutterspeedvalue"           => "מהירות צמצם",
+"exif-aperturevalue"               => "פתח",
+"exif-brightnessvalue"             => "בהירות",
+"exif-exposurebiasvalue"           => "נטיית החשיפה",
+"exif-maxaperturevalue"            => "גודל הפתח המקסימאלי",
+"exif-subjectdistance"             => "נושא המרחק",
+"exif-meteringmode"                => "שיטת מדידה",
+"exif-lightsource"                 => "מקור אור",
+"exif-flash"                       => "פלש",
+"exif-focallength"                 => "אורך מוקדי העדשות",
+"exif-focallength-format"          => '$1 מ"מ',
+"exif-subjectarea"                 => "נושא האזור",
+"exif-flashenergy"                 => "אנרגיית הפלש",
+"exif-spatialfrequencyresponse"    => "תדירות התגובה המרחבית",
+"exif-focalplanexresolution"       => "משטח הפוקוס ברזולוציה האופקית",
+"exif-focalplaneyresolution"       => "משטח הפוקוס ברזולוציה האנכית",
+"exif-focalplaneresolutionunit"    => "יחידת המידה של משטח הפוקוס ברזולוציה",
+"exif-subjectlocation"             => "נושא המיקום",
+"exif-exposureindex"               => "מדד החשיפה",
+"exif-sensingmethod"               => "שיטת חישה",
+"exif-filesource"                  => "מקור הקובץ",
+"exif-scenetype"                   => "סוג הסצנה",
+"exif-cfapattern"                  => "תבנית CFA",
+"exif-customrendered"              => "עיבוד תמונה מותאם",
+"exif-exposuremode"                => "מצב החשיפה",
+"exif-whitebalance"                => "איזון צבע לבן",
+"exif-digitalzoomratio"            => "יחס הזום הדיגיטלי",
+"exif-focallengthin35mmfilm"       => 'אורך מוקדי העדשות בסרט צילום של 35 מ"מ',
+"exif-scenecapturetype"            => "אופן צילום הסצנה",
+"exif-gaincontrol"                 => "בקרת הסצנה",
+"exif-contrast"                    => "ניגוד",
+"exif-saturation"                  => "רוויה",
+"exif-sharpness"                   => "חדות",
+"exif-devicesettingdescription"    => "תיאור הגדרות ההתקן",
+"exif-subjectdistancerange"        => "טווח נושא המרחק",
+"exif-imageuniqueid"               => "מזהה תמונה ייחודי",
+"exif-gpsversionid"                => "גרסת תגי GPS",
+"exif-gpslatituderef"              => "קו־רוחב צפוני או דרומי",
+"exif-gpslatitude"                 => "קו־רוחב",
+"exif-gpslongituderef"             => "קו־אורך מזרחי או מערבי",
+"exif-gpslongitude"                => "קו־אורך",
+"exif-gpsaltituderef"              => "התייחסות גובה",
+"exif-gpsaltitude"                 => "גובה",
+"exif-gpstimestamp"                => "זמן GPS (שעון אטומי)",
+"exif-gpssatellites"               => "לוויינים ששמשו למדידה",
+"exif-gpsstatus"                   => "מעמד המקלט",
+"exif-gpsmeasuremode"              => "מצב מדידה",
+"exif-gpsdop"                      => "דיוק מדידה",
+"exif-gpsspeedref"                 => "יחידת מהירות",
+"exif-gpsspeed"                    => "יחידת מהירות של מקלט GPS",
+"exif-gpstrackref"                 => "התייחסות מהירות התנועה",
+"exif-gpstrack"                    => "מהירות התנועה",
+"exif-gpsimgdirectionref"          => "התייחסות כיוון התמונה",
+"exif-gpsimgdirection"             => "כיוון התמונה",
+"exif-gpsmapdatum"                 => "מידע סקר מדידת הארץ שנעשה בו שימוש",
+"exif-gpsdestlatituderef"          => "התייחסות קו־הרוחב של היעד",
+"exif-gpsdestlatitude"             => "קו־הרוחב של היעד",
+"exif-gpsdestlongituderef"         => "התייחסות קו־האורך של היעד",
+"exif-gpsdestlongitude"            => "קו־האורך של היעד",
+"exif-gpsdestbearingref"           => "התייחסות כיוון היעד",
+"exif-gpsdestbearing"              => "כיוון היעד",
+"exif-gpsdestdistanceref"          => "התייחסות מרחק ליעד",
+"exif-gpsdestdistance"             => "מרחק ליעד",
+"exif-gpsprocessingmethod"         => "שם שיטת העיבוד של ה־GPS",
+"exif-gpsareainformation"          => "שם אזור ה־GPS",
+"exif-gpsdatestamp"                => "תאריך ה־GPS",
+"exif-gpsdifferential"             => "תיקון דיפרנציאלי של ה־GPS",
+
+# Exif attributes
+
+"exif-compression-1" => "לא דחוס",
+"exif-compression-6" => "JPEG",
+
+"exif-photometricinterpretation-2" => "RGB",
+"exif-photometricinterpretation-6" => "YCbCr",
+
+"exif-orientation-1" => "רגילה", # 0th row: top; 0th column: left
+"exif-orientation-2" => "הפוך אופקית", # 0th row: top; 0th column: right
+"exif-orientation-3" => "מסובב 180°", # 0th row: bottom; 0th column: right
+"exif-orientation-4" => "הפוך אנכית", # 0th row: bottom; 0th column: left
+"exif-orientation-5" => "מסובב 90° נגד כיוון השעון והפוך אנכית", # 0th row: left; 0th column: top
+"exif-orientation-6" => "מסובב 90° עם כיוון השעון", # 0th row: right; 0th column: top
+"exif-orientation-7" => "מסובב 90° עם כיוון השעון והפוך אנכית", # 0th row: right; 0th column: bottom
+"exif-orientation-8" => "מסובב 90° נגד כיוון השעון", # 0th row: left; 0th column: bottom
+
+"exif-planarconfiguration-1" => "פורמט חסון",
+"exif-planarconfiguration-2" => "פורמט שטוח",
+
+"exif-xyresolution-i" => "$1 dpi",
+"exif-xyresolution-c" => "$1 dpc",
+
+"exif-colorspace-1"      => "sRGB",
+"exif-colorspace-ffff.h" => "FFFF.H",
+
+"exif-componentsconfiguration-0" => "אינו קיים",
+"exif-componentsconfiguration-1" => "Y",
+"exif-componentsconfiguration-2" => "Cb",
+"exif-componentsconfiguration-3" => "Cr",
+"exif-componentsconfiguration-4" => "R",
+"exif-componentsconfiguration-5" => "G",
+"exif-componentsconfiguration-6" => "B",
+
+"exif-exposureprogram-0" => "לא הוגדרה",
+"exif-exposureprogram-1" => "ידנית",
+"exif-exposureprogram-2" => "תוכנה רגילה",
+"exif-exposureprogram-3" => "עדיפות פתח",
+"exif-exposureprogram-4" => "עדיפות צמצם",
+"exif-exposureprogram-5" => "תוכנה יוצרת (מטה לכיוון עומק השדה)",
+"exif-exposureprogram-6" => "תוכנה פועלת (מטה לכיוון מהירות צמצם גבוהה)",
+"exif-exposureprogram-7" => "מצב דיוקן (לתמונות צילום מקרוב כשהרקע לא בפוקוס)",
+"exif-exposureprogram-8" => "מצב נוף (לתמונות נוף כשהרקע בפוקוס)",
+
+"exif-subjectdistance-value" => "$1 מטרים",
+
+"exif-meteringmode-0"   => "לא ידוע",
+"exif-meteringmode-1"   => "ממוצע",
+"exif-meteringmode-2"   => "מרכז משקל ממוצע",
+"exif-meteringmode-3"   => "נקודה",
+"exif-meteringmode-4"   => "רב־נקודה",
+"exif-meteringmode-5"   => "תבנית",
+"exif-meteringmode-6"   => "חלקי",
+"exif-meteringmode-255" => "אחר",
+
+"exif-lightsource-0"   => "לא ידוע",
+"exif-lightsource-1"   => "אור יום",
+"exif-lightsource-2"   => "פלואורסצנטי",
+"exif-lightsource-3"   => "טונגסטן (אור מתלהט)",
+"exif-lightsource-4"   => "פלש",
+"exif-lightsource-9"   => "מזג אוויר טוב",
+"exif-lightsource-10"  => "מזג אוויר מעונן",
+"exif-lightsource-11"  => "צל",
+"exif-lightsource-12"  => "אור יום פלואורסצנטי (D 5700 – 7100K)",
+"exif-lightsource-13"  => "אור יום לבן פלואורסצנטי (N 4600 – 5400K)",
+"exif-lightsource-14"  => "אור יום קריר לבן פלואורסצנטי (W 3900 – 4500K)",
+"exif-lightsource-15"  => "פלואורסצנטי לבן (WW 3200 – 3700K)",
+"exif-lightsource-17"  => "אור רגיל A",
+"exif-lightsource-18"  => "אור רגיל B",
+"exif-lightsource-19"  => "אור רגיל C",
+"exif-lightsource-20"  => "D55",
+"exif-lightsource-21"  => "D65",
+"exif-lightsource-22"  => "D75",
+"exif-lightsource-23"  => "D50",
+"exif-lightsource-24"  => "טונגסטן אולפן ISO",
+"exif-lightsource-255" => "מקור אור אחר",
+
+"exif-focalplaneresolutionunit-2" => "אינצ'ים",
+
+"exif-sensingmethod-1" => "לא מוגדרת",
+"exif-sensingmethod-2" => "חיישן אזור בצבע עם שבב אחד",
+"exif-sensingmethod-3" => "חיישן אזור בצבע עם שני שבבים",
+"exif-sensingmethod-4" => "חיישן אזור בצבע עם שלושה שבבים",
+"exif-sensingmethod-5" => "חיישן אזור עם צבע רציף",
+"exif-sensingmethod-7" => "חיישן טריליניארי",
+"exif-sensingmethod-8" => "חיישן עם צבע רציף ליניארי",
+
+"exif-filesource-3" => "DSC",
+
+"exif-scenetype-1" => "תמונה שצולמה ישירות",
+
+"exif-customrendered-0" => "תהליך רגיל",
+"exif-customrendered-1" => "תהליך מותאם",
+
+"exif-exposuremode-0" => "חשיפה אוטומטית",
+"exif-exposuremode-1" => "חשיפה ידנית",
+"exif-exposuremode-2" => "מסגרת אוטומטית",
+
+"exif-whitebalance-0" => "איזון צבע לבן אוטומטי",
+"exif-whitebalance-1" => "איזון צבע לבן ידני",
+
+"exif-scenecapturetype-0" => "רגיל",
+"exif-scenecapturetype-1" => "נוף",
+"exif-scenecapturetype-2" => "דיוקן",
+"exif-scenecapturetype-3" => "סצנה לילית",
+
+"exif-gaincontrol-0" => "ללא",
+"exif-gaincontrol-1" => "תוספת נמוכה למעלה",
+"exif-gaincontrol-2" => "תוספת גבוהה למעלה",
+"exif-gaincontrol-3" => "תוספת נמוכה למטה",
+"exif-gaincontrol-4" => "תוספת גבוהה למטה",
+
+"exif-contrast-0" => "רגיל",
+"exif-contrast-1" => "רך",
+"exif-contrast-2" => "קשה",
+
+"exif-saturation-0" => "רגילה",
+"exif-saturation-1" => "רוויה נמוכה",
+"exif-saturation-2" => "רוויה גבוהה",
+
+"exif-sharpness-0" => "רגילה",
+"exif-sharpness-1" => "רכה",
+"exif-sharpness-2" => "קשה",
+
+"exif-subjectdistancerange-0" => "לא ידוע",
+"exif-subjectdistancerange-1" => "מאקרו",
+"exif-subjectdistancerange-2" => "תצוגה קרובה",
+"exif-subjectdistancerange-3" => "תצוגה רחוקה",
+
+# Pseudotags used for GPSLatitudeRef and GPSDestLatitudeRef
+"exif-gpslatitude-n" => "קו־רוחב צפוני",
+"exif-gpslatitude-s" => "קו־רוחב דרומי",
+
+# Pseudotags used for GPSLongitudeRef and GPSDestLongitudeRef
+"exif-gpslongitude-e" => "קו־אורך מזרחי",
+"exif-gpslongitude-w" => "קו־אורך מערבי",
+
+"exif-gpsstatus-a" => "מדידה בתהליך",
+"exif-gpsstatus-v" => "מדידה בו־זמנית",
+
+"exif-gpsmeasuremode-2" => "מדידה בשני ממדים",
+"exif-gpsmeasuremode-3" => "מדידה בשלושה ממדים",
+
+# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+"exif-gpsspeed-k" => "קילומטרים בשעה",
+"exif-gpsspeed-m" => "מיילים בשעה",
+"exif-gpsspeed-n" => "מיילים ימיים בשעה",
+
+# Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
+"exif-gpsdirection-t" => "כיוון אמיתי",
+"exif-gpsdirection-m" => "כיוון מגנטי",
+
 # External editor support
 "edit-externally"      => "ערכו קובץ זה באמצעות יישום חיצוני",
 "edit-externally-help" => "ראו את [http://meta.wikimedia.org/wiki/Help:External_editors הוראות ההתקנה] למידע נוסף.",
@@ -1512,8 +1816,8 @@ ta["ca-nstab-category"]     = ["c", "צפו בדף הקטגוריה"];',
 "confirmemail_success"    => 'כתובת הדוא"ל שלכם אושרה. כעת באפשרותכם להיכנס לחשבון שלכם וליהנות מהאתר.',
 "confirmemail_loggedin"   => 'כתובת הדוא"ל שלכם אושרה כעת.',
 "confirmemail_error"      => "שגיאה בשמירת קוד האישור.",
-"confirmemail_subject"    => 'קוד אישור דוא"ל מהאתר {{SITENAME}}',
-"confirmemail_body"       => 'מישהו, כנראה אתם (מכתובת ה־IP הזו: $1), רשם את החשבון "$2" עם כתובת הדוא"ל הזו באתר {{SITENAME}}.
+"confirmemail_subject"    => 'קוד אישור דוא"ל מ{{grammar:תחילית|{{SITENAME}}}}',
+"confirmemail_body"       => 'מישהו, כנראה אתם (מכתובת ה־IP הזו: $1), רשם את החשבון "$2" עם כתובת הדוא"ל הזו ב{{grammar:תחילית|{{SITENAME}}}}.
 
 כדי לוודא שחשבון זה באמת שייך לכם ולהפעיל את שירותי הדוא"ל באתר, אנא פתחו את הכתובת הבאה בדפדפן שלכם:
 
@@ -1536,8 +1840,6 @@ $3
 טרקבקים לדף זה:<br />
 $1
 </div>',
-"trackback"         => "; $4$5 : [$2 $1]",
-"trackbackexcerpt"  => "; $4$5 : [$2 $1]: <nowiki>$3</nowiki>",
 "trackbackremove"   => " ([$1 מחיקה])",
 "trackbacklink"     => "טרקבק",
 "trackbackdeleteok" => "הטרקבק נמחק בהצלחה.",

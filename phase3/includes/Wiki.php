@@ -128,7 +128,7 @@ class MediaWiki {
 			$title = Title::makeTitle( NS_SPECIAL, 'Search' );
 			wfSpecialSearch();
 		} else if( !$title or $title->getDBkey() == '' ) {
-			$title = Title::newFromText( wfMsgForContent( 'badtitle' ) );
+			$title = Title::makeTitle( NS_SPECIAL, 'Badtitle' );
 			# Die now before we mess up $wgArticle and the skin stops working
 			throw new ErrorPageError( 'badtitle', 'badtitletext' );
 		} else if ( $title->getInterwiki() != '' ) {
@@ -141,7 +141,7 @@ class MediaWiki {
 			if ( !preg_match( '/^' . preg_quote( $this->getVal('Server'), '/' ) . '/', $url ) && $title->isLocal() ) {
 				$output->redirect( $url );
 			} else {
-				$title = Title::newFromText( wfMsgForContent( 'badtitle' ) );
+				$title = Title::makeTitle( NS_SPECIAL, 'Badtitle' );
 				throw new ErrorPageError( 'badtitle', 'badtitletext' );
 			}
 		} else if ( ( $action == 'view' ) &&
@@ -268,7 +268,7 @@ class MediaWiki {
 	 * Do a job from the job queue
 	 */
 	function doJobs() {
-		global $wgJobLogFile, $wgJobRunRate;
+		global $wgJobRunRate;
 		
 		if ( $wgJobRunRate <= 0 ) {
 			return;
@@ -285,12 +285,16 @@ class MediaWiki {
 
 		while ( $n-- && false != ($job = Job::pop())) {
 			$output = $job->toString() . "\n";
-			if ( !$job->run() ) {
-				$output .= "Error: " . $job->getLastError() . "\n";
+			$t = -wfTime();
+			$success = $job->run();
+			$t += wfTime();
+			$t = round( $t*1000 );
+			if ( !$success ) {
+				$output .= "Error: " . $job->getLastError() . ", Time: $t ms\n";
+			} else {
+				$output .= "Success, Time: $t ms\n";
 			}
-			if ( $wgJobLogFile ) {
-				error_log( $output, 3, $wgJobLogFile );
-			}
+			wfDebugLog( 'jobqueue', $output );
 		}
 	}
 	
@@ -298,8 +302,7 @@ class MediaWiki {
 	 * Ends this task peacefully
 	 */
 	function restInPeace ( &$loadBalancer ) {
-		wfProfileClose();
-		logProfilingData();
+		wfLogProfilingData();
 		$loadBalancer->closeAll();
 		wfDebug( "Request ended normally\n" );
 	}

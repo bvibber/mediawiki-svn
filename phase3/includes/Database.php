@@ -5,11 +5,6 @@
  * @package MediaWiki
  */
 
-/**
- * Depends on the CacheManager
- */
-require_once( 'CacheManager.php' );
-
 /** See Database::makeList() */
 define( 'LIST_COMMA', 0 );
 define( 'LIST_AND', 1 );
@@ -267,8 +262,8 @@ class Database {
 	 * Output page, used for reporting errors
 	 * FALSE means discard output
 	 */
-	function &setOutputPage( &$out ) {
-		$this->mOut =& $out;
+	function setOutputPage( $out ) {
+		$this->mOut = $out;
 	}
 
 	/**
@@ -1367,7 +1362,7 @@ class Database {
 	 * @return string slashed string.
 	 */
 	function strencode( $s ) {
-		return addslashes( $s );
+		return mysql_real_escape_string( $s, $this->mConn );
 	}
 
 	/**
@@ -1859,6 +1854,10 @@ class Database {
 		return $b;
 	}
 
+	function decodeBlob($b) {
+		return $b;
+	}
+
 	/**
 	 * Read and execute SQL commands from a file.
 	 * Returns true on success, error string on failure
@@ -1931,7 +1930,7 @@ class Database {
 		// Ordinary variables
 		foreach ( $varnames as $var ) {
 			if( isset( $GLOBALS[$var] ) ) {
-				$val = addslashes( $GLOBALS[$var] );
+				$val = addslashes( $GLOBALS[$var] ); // FIXME: safety check?
 				$ins = str_replace( '{$' . $var . '}', $val, $ins );
 				$ins = str_replace( '/*$' . $var . '*/`', '`' . $val, $ins );
 				$ins = str_replace( '/*$' . $var . '*/', $val, $ins );

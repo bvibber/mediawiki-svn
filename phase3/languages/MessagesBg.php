@@ -151,7 +151,7 @@
 'views' => 'Прегледи',
 'toolbox' => 'Инструменти',
 'userpage' => 'Потребителска страница',
-'wikipediapage' => 'Основна страница',
+'projectpage' => 'Основна страница',
 'imagepage' =>   'Преглед на файл',
 'viewtalkpage' => 'Преглед на беседа',
 'otherlanguages' => 'На други езици',
@@ -159,8 +159,6 @@
 'lastmodified'  => 'Последна промяна на страницата: $1.',
 'viewcount'    => 'Страницата е била преглеждана $1 пъти.',
 'copyright'     => 'Съдържанието е достъпно при условията на $1.',
-'poweredby'     => '{{SITENAME}} се задвижва от [http://www.mediawiki.org/ МедияУики], софтуер за уики с отворен код.',
-'printsubtitle' => '(от {{SERVER}})',
 'protectedpage' => 'Защитена страница',
 'administrators' => 'Project:Администратори',
 'sysoptitle'  => 'Изискване на администраторски права',
@@ -194,7 +192,7 @@
 'nstab-user' => 'Потребител',
 'nstab-media' => 'Медия',
 'nstab-special' => 'Специална страница',
-'nstab-wp' => 'Проект',
+'nstab-project' => 'Проект',
 'nstab-image' => 'Файл',
 'nstab-mediawiki' => 'Съобщение',
 'nstab-template' => 'Шаблон',
@@ -279,7 +277,6 @@ $1',
 'yourname'    => 'Потребителско име',
 'yourpassword'  => 'Парола',
 'yourpasswordagain' => 'Въведете повторно парола',
-'newusersonly'  => ' (само за нови потребители)',
 'remembermypassword' => 'Запомняне на паролата',
 'yourdomainname'       => 'Домейн',
 # TODO
@@ -490,7 +487,8 @@ Before any other mail is sent to the account, you will have to follow the instru
 #
 'searchresults' => 'Резултати от търсенето',
 'searchresulttext' => 'За повече информация относно {{SITENAME}}, вижте [[Project:Търсене|Търсене в {{SITENAME}}]].',
-'searchquery'  => 'За заявка „$1“',
+'searchsubtitle'  => 'За заявка „[[:$1]]“',
+'searchsubtitleinvalid'  => 'За заявка „$1“',
 'badquery'    => 'Лошо формулирана заявка за търсене',
 'badquerytext'  => 'Вашата заявка не можа да бъде обработена.
 Вероятно сте се опитали да търсите дума с по-малко от три букви, което все още не се поддържа.
@@ -835,7 +833,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'nextpage'          => 'Следваща страница ($1)',
 'allpagesfrom'      => 'Показване на страниците, като се започва от:',
 'allarticles'       => 'Всички страници',
-'allnonarticles'    => 'Всички страници (без статии)',
 'allinnamespace'    => 'Всички страници (именно пространство $1)',
 'allnotinnamespace' => 'Всички страници (без именно пространство $1)',
 'allpagesprev'      => 'Предишна',
@@ -1259,7 +1256,7 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'Monobook.js' => '
  /* чрез редактиране на този файл можете да промените някои неща на Javascript за облика Monobook */
  /* tooltips and access keys */
- ta = new Object();
+ var ta = new Object();
  ta[\'pt-userpage\'] = new Array(\'.\',\'Вашата потребителска страница\');
  ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Потребителската страница за адреса, от който редактирате\');
  ta[\'pt-mytalk\'] = new Array(\'n\',\'Вашата дискусионна страница\');
@@ -1302,7 +1299,7 @@ $2 Показване на пренасочвания &nbsp; Търсене на
  ta[\'ca-nstab-user\'] = new Array(\'c\',\'Преглед на потребителската страница\');
  ta[\'ca-nstab-media\'] = new Array(\'c\',\'Преглед на медийната страница\');
  ta[\'ca-nstab-special\'] = new Array(\'\',\'Това е специална страница, която не може да се редактира.\');
- ta[\'ca-nstab-wp\'] = new Array(\'c\',\'Преглед на проектната страница\');
+ ta[\'ca-nstab-project\'] = new Array(\'c\',\'Преглед на проектната страница\');
  ta[\'ca-nstab-image\'] = new Array(\'c\',\'Преглед на страницата на файла\');
  ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Преглед на системното съобщение\');
  ta[\'ca-nstab-template\'] = new Array(\'c\',\'Преглед на шаблона\');
@@ -1341,7 +1338,7 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 # Media Warning
 # TODO Превод
 'mediawarning' => '\'\'\'Внимание\'\'\': This file may contain malicious code, by executing it your system may be compromised.
-<hr>',
+<hr />',
 
 'fileinfo' => '$1 КБ, MIME type: <code>$2</code>',
 

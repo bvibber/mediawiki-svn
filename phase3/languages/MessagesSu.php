@@ -43,7 +43,7 @@ $wgAllMessagesSu = array(
 '1movedto2_redir' => '$1 dipindahkeun ka $2',
 'Monobook.css' => ' /* édit koropak ieu pikeun nyaluyukeun kulit \'\'monobook\'\' pikeun sakabéh situs */',
 'Monobook.js' => '/* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Kaca pamaké kuring\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Kaca pamaké pikeun IP nu ku anjeun keur diédit\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Kaca obrolan kuring\');
@@ -87,7 +87,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Témbongkeun eusi kaca\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Témbongkeun kaca pamaké\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Témbongkeun kaca média\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Ieu kaca husus, anjeun teu bisa ngédit ku sorangan.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Témbongkeun kaca proyék\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Témbongkeun kaca proyék\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Témbongkeun kaca gambar\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Témbongkeun pesen sistim\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Témbongkeun citakan\');
@@ -117,7 +117,6 @@ Jaga, parobahan na kaca ieu katut kaca obrolanana bakal dibéréndélkeun di din
 'allmessagesnotsupportedDB' => 'Special:AllMessages teu dirojong sabab wgUseDatabaseMessages pareum.',
 'allmessagesnotsupportedUI' => 'Basa antarbeungeut anjeun kiwari <b>$1</b> teu dirojong ku Special:AllMessages na loka ieu.',
 'allmessagestext' => 'Ieu mangrupa daptar sadaya pesen sistim nu aya na spasi ngaran MediaWiki:.',
-'allnonarticles' => 'Sadaya nu lain artikel',
 'allnotinnamespace' => 'Sadaya kaca (teu na $1 ngaranspasi)',
 'allowemail' => 'Buka koropak pikeun nampa surélék ti nu séjén',
 'allpages' => 'Sadaya kaca',
@@ -625,7 +624,6 @@ Mun anjeun ka dieu teu ngahaja, klik baé tombol \'\'\'back\'\'\' na panyungsi a
 'newpages' => 'Kaca anyar',
 'newpassword' => 'Sandi anyar',
 'newtitle' => 'Ka judul anyar',
-'newusersonly' => ' (pamaké anyar wungkul)',
 'newwindow' => '(buka na jandéla anyar)',
 'next' => 'salajengna',
 'nextdiff' => 'Ka béda salajengna, jung&rarr;',
@@ -687,7 +685,7 @@ Coba saksrak na téks lengkep, atawa \'\'\'[[<nowiki>$1</nowiki>|nyieun artikel 
 'nstab-special' => 'Husus',
 'nstab-template' => 'Citakan',
 'nstab-user' => 'Kaca pamaké',
-'nstab-wp' => 'Ngeunaan',
+'nstab-project' => 'Ngeunaan',
 'numauthors' => 'Jumlah pangarang nu béda (artikel): $1',
 'number_of_watching_users_pageview' => '[$1 pamaké nu ngawaskeun]',
 'numedits' => 'Jumlah éditan (artikel): $1',
@@ -718,7 +716,6 @@ Coba saksrak na téks lengkep, atawa \'\'\'[[<nowiki>$1</nowiki>|nyieun artikel 
 'portal' => 'Panglawungan',
 'portal-url' => '{{ns:project}}: Panglawungan',
 'postcomment' => 'Kirim koméntar',
-'poweredby' => '{{SITENAME}} dipatéakeun ku [http://www.mediawiki.org/ MédiaWiki], mesin wiki nembrak.',
 'powersearch' => 'Téang',
 'powersearchtext' => 'Téang na spasi-ngaran:<br />
 $1<br />
@@ -741,7 +738,6 @@ $2 Daptarkeun alihan &nbsp; Téang $3 $9',
 'prevn' => '$1 saméméhna',
 'print' => 'Citak',
 'printableversion' => 'Vérsi citakeun',
-'printsubtitle' => '(Ti {{SITENAME}})',
 'privacy' => 'Kawijakan privasi',
 'privacypage' => 'Project:Kawijakan privasi',
 'protect' => 'Konci',
@@ -829,7 +825,8 @@ Please check the URL you used to access this page.',
 'search' => 'Téang',
 'searchdisabled' => '<p style="margin: 1.5em 2em 1em">Punten! Néangan téks lengkep di {{SITENAME}} kanggo samentawis ditumpurkeun pikeun alesan kinerja. Jalaran kitu, saheulaanan anjeun bisa nyungsi di Google di handap ieu.
 <span style="font-size: 89%; display: block; margin-left: .2em">Catet yén indéxna ngeunaan eusi {{SITENAME}} bisa jadi teu mutahir.</span></p>',
-'searchquery' => 'Pikeun pamundut "$1"',
+'searchsubtitle' => 'Pikeun pamundut "[[:$1]]"',
+'searchsubtitleinvalid' => 'Pikeun pamundut "$1"',
 'searchresults' => 'Hasil néangan',
 'searchresultshead' => 'Aturan hasil néang',
 'searchresulttext' => 'Pikeun iber nu leuwih lengkep ngeunaan nyaksrak di {{SITENAME}}, buka [[{{ns:project}}:Nyaksrak|Nyaksrak {{SITENAME}}]].',
@@ -1032,7 +1029,7 @@ jumlah-jamléh geus aya \'\'\'$3\'\'\' kaca ulasan sarta \'\'\'$4\'\'\' éditan 
 'whitelistedittitle' => 'Perlu asup log sangkan bisa ngédit',
 'whitelistreadtext' => 'Anjeun kudu asup \'\'[[Special:Userlogin|log]]\'\' sangkan bisa maca.',
 'whitelistreadtitle' => 'Perlu asup log pikeun maca',
-'wikipediapage' => 'Témbongkeun kaca proyék',
+'projectpage' => 'Témbongkeun kaca proyék',
 'wlheader-enotif' => '* Pangémbar surélék difungsikeun.',
 'wlheader-showupdated' => '* Kaca nu robah ti panungtungan anjeun sindang ditémbongkeun kalawan \'\'\'kandel\'\'\'',
 'wlhide' => 'Sumputkeun',

@@ -243,13 +243,12 @@ function wfLogDBError( $text ) {
 /**
  * @todo document
  */
-function logProfilingData() {
+function wfLogProfilingData() {
 	global $wgRequestTime, $wgDebugLogFile, $wgDebugRawPage, $wgRequest;
 	global $wgProfiling, $wgUser;
-	$now = wfTime();
-
-	$elapsed = $now - $wgRequestTime;
 	if ( $wgProfiling ) {
+		$now = wfTime();
+		$elapsed = $now - $wgRequestTime;
 		$prof = wfGetProfilingOutput( $wgRequestTime, $elapsed );
 		$forward = '';
 		if( !empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) )
@@ -417,11 +416,11 @@ function wfMsgReal( $key, $args, $useDB = true, $forContent=false, $transform = 
  */
 function wfMsgWeirdKey ( $key ) {
 	$subsource = str_replace ( ' ' , '_' , $key ) ;
-	$source = wfMsg ( $subsource ) ;
+	$source = wfMsgForContentNoTrans( $subsource ) ;
 	if ( $source == "&lt;{$subsource}&gt;" ) {
 		# Try again with first char lower case
 		$subsource = strtolower ( substr ( $subsource , 0 , 1 ) ) . substr ( $subsource , 1 ) ;
-		$source = wfMsg ( $subsource ) ;
+		$source = wfMsgForContentNoTrans( $subsource ) ;
 	}
 	if ( $source == "&lt;{$subsource}&gt;" ) {
 		# Didn't work either, return blank text
@@ -621,8 +620,7 @@ function wfAbruptExit( $error = false ){
 		wfDebug('WARNING: Abrupt exit\n');
 	}
 
-	wfProfileClose();
-	logProfilingData();
+	wfLogProfilingData();
 
 	if ( !$error ) {
 		$wgLoadBalancer->closeAll();
@@ -867,8 +865,8 @@ function wfCheckLimits( $deflimit = 50, $optionname = 'rclimit' ) {
  */
 function wfEscapeWikiText( $text ) {
 	$text = str_replace(
-		array( '[',		'|',	  '\'',	   'ISBN '	  , '://'	  , "\n=", '{{' ),
-		array( '&#91;', '&#124;', '&#39;', 'ISBN&#32;', '&#58;//' , "\n&#61;", '&#123;&#123;' ),
+		array( '[',     '|',      '\'',    'ISBN ',     'RFC ',     '://',     "\n=",     '{{' ),
+		array( '&#91;', '&#124;', '&#39;', 'ISBN&#32;', 'RFC&#32;', '&#58;//', "\n&#61;", '&#123;&#123;' ),
 		htmlspecialchars($text) );
 	return $text;
 }
@@ -1306,21 +1304,21 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 	$da = array();
 	if ($ts==0) {
 		$uts=time();
-	} elseif (preg_match("/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)$/",$ts,$da)) {
+	} elseif (preg_match("/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)$/D",$ts,$da)) {
 		# TS_DB
 		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
 			    (int)$da[2],(int)$da[3],(int)$da[1]);
-	} elseif (preg_match("/^(\d{4}):(\d\d):(\d\d) (\d\d):(\d\d):(\d\d)$/",$ts,$da)) {
+	} elseif (preg_match("/^(\d{4}):(\d\d):(\d\d) (\d\d):(\d\d):(\d\d)$/D",$ts,$da)) {
 		# TS_EXIF
 		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
 			(int)$da[2],(int)$da[3],(int)$da[1]);
-	} elseif (preg_match("/^(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)$/",$ts,$da)) {
+	} elseif (preg_match("/^(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)$/D",$ts,$da)) {
 		# TS_MW
 		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
 			    (int)$da[2],(int)$da[3],(int)$da[1]);
-	} elseif (preg_match("/^(\d{1,13})$/",$ts,$datearray)) {
+	} elseif (preg_match("/^(\d{1,13})$/D",$ts,$datearray)) {
 		# TS_UNIX
-		$uts=$ts;
+		$uts = $ts;
 	} elseif (preg_match('/^(\d{1,2})-(...)-(\d\d(\d\d)?) (\d\d)\.(\d\d)\.(\d\d)/', $ts, $da)) {
 		# TS_ORACLE
 		$uts = strtotime(preg_replace('/(\d\d)\.(\d\d)\.(\d\d)(\.(\d+))?/', "$1:$2:$3",
@@ -1535,17 +1533,45 @@ function wfTempDir() {
 /**
  * Make directory, and make all parent directories if they don't exist
  */
-function wfMkdirParents( $fullDir, $mode ) {
-	$parts = explode( '/', $fullDir );
-	$path = '';
+function wfMkdirParents( $fullDir, $mode = 0777 ) {
+	if ( strval( $fullDir ) === '' ) {
+		return true;
+	}
+	
+	# Go back through the paths to find the first directory that exists
+	$currentDir = $fullDir;
+	$createList = array();
+	while ( strval( $currentDir ) !== '' && !file_exists( $currentDir ) ) {	
+		# Strip trailing slashes
+		$currentDir = rtrim( $currentDir, '/\\' );
 
-	foreach ( $parts as $dir ) {
-		$path .= $dir . '/';
-		if ( !is_dir( $path ) ) {
-			if ( !mkdir( $path, $mode ) ) {
-				return false;
-			}
+		# Add to create list
+		$createList[] = $currentDir;
+
+		# Find next delimiter searching from the end
+		$p = max( strrpos( $currentDir, '/' ), strrpos( $currentDir, '\\' ) );
+		if ( $p === false ) {
+			$currentDir = false;
+		} else {
+			$currentDir = substr( $currentDir, 0, $p );
 		}
+	}
+	
+	if ( count( $createList ) == 0 ) {
+		# Directory specified already exists
+		return true;
+	} elseif ( $currentDir === false ) {
+		# Went all the way back to root and it apparently doesn't exist
+		return false;
+	}
+	
+	# Now go forward creating directories
+	$createList = array_reverse( $createList );
+	foreach ( $createList as $dir ) {
+		# use chmod to override the umask, as suggested by the PHP manual
+		if ( !mkdir( $dir, $mode ) || !chmod( $dir, $mode ) ) {
+			return false;
+		} 
 	}
 	return true;
 }
@@ -1935,6 +1961,43 @@ function wfBaseConvert( $input, $sourceBase, $destBase, $pad=1 ) {
 	}
 	
 	return strrev( $outChars );
+}
+
+/**
+ * Create an object with a given name and an array of construct parameters
+ * @param string $name
+ * @param array $p parameters
+ */
+function wfCreateObject( $name, $p ){
+	$p = array_values( $p );
+	switch ( count( $p ) ) {
+		case 0:
+			return new $name;
+		case 1:
+			return new $name( $p[0] );
+		case 2:
+			return new $name( $p[0], $p[1] );
+		case 3:
+			return new $name( $p[0], $p[1], $p[2] );
+		case 4:
+			return new $name( $p[0], $p[1], $p[2], $p[3] );
+		case 5:
+			return new $name( $p[0], $p[1], $p[2], $p[3], $p[4] );
+		case 6:
+			return new $name( $p[0], $p[1], $p[2], $p[3], $p[4], $p[5] );
+		default:
+			throw new MWException( "Too many arguments to construtor in wfCreateObject" );
+	}
+}
+
+/**
+ * Aliases for modularized functions
+ */
+function wfGetHTTP( $url, $timeout = 'default' ) { 
+	return Http::get( $url, $timeout ); 
+}
+function wfIsLocalURL( $url ) { 
+	return Http::isLocalURL( $url ); 
 }
 
 ?>

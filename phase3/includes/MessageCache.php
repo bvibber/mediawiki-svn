@@ -25,9 +25,8 @@ class MessageCache {
 	var $mInitialised = false;
 	var $mDeferred = true;
 
-	function initialise( &$memCached, $useDB, $expiry, $memcPrefix) {
-		$fname = 'MessageCache::initialise';
-		wfProfileIn( $fname );
+	function __construct( &$memCached, $useDB, $expiry, $memcPrefix) {
+		wfProfileIn( __METHOD__ );
 
 		$this->mUseCache = !is_null( $memCached );
 		$this->mMemc = &$memCached;
@@ -38,12 +37,10 @@ class MessageCache {
 		$this->mKeys = false; # initialised on demand
 		$this->mInitialised = true;
 
-		wfProfileIn( $fname.'-parseropt' );
-		$this->mParserOptions = ParserOptions::newFromUser( $u=NULL );
-		wfProfileOut( $fname.'-parseropt' );
-		wfProfileIn( $fname.'-parser' );
-		$this->mParser = new Parser;
-		wfProfileOut( $fname.'-parser' );
+		wfProfileIn( __METHOD__.'-parseropt' );
+		$this->mParserOptions = new ParserOptions( $u=NULL );
+		wfProfileOut( __METHOD__.'-parseropt' );
+		$this->mParser = null;
 
 		# When we first get asked for a message,
 		# then we'll fill up the cache. If we
@@ -51,7 +48,7 @@ class MessageCache {
 		# some extra milliseconds
 		$this->mDeferred = true;
 
-		wfProfileOut( $fname );
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -315,9 +312,15 @@ class MessageCache {
 				$this->mCache[$uckey] = false;
 			}
 		}
+
+		# Make sure all extension messages are available
+		wfLoadAllExtensions();
+
+		# Add them to the cache
 		foreach ( $this->mExtensionMessages as $key => $value ) {
 			$uckey = $wgLang->ucfirst( $key );
-			if ( !array_key_exists( $uckey, $this->mCache ) ) {
+			if ( !array_key_exists( $uckey, $this->mCache ) &&
+			 ( isset( $this->mExtensionMessages[$key][$wgLang->getCode()] ) || isset( $this->mExtensionMessages[$key]['en'] ) )  ) {
 				$this->mCache[$uckey] = false;
 			}
 		}
@@ -430,7 +433,11 @@ class MessageCache {
 		}
 		# Try the extension array
 		if( $message === false && array_key_exists( $key, $this->mExtensionMessages ) ) {
-			$message = $this->mExtensionMessages[$key];
+			if ( isset( $this->mExtensionMessages[$key][$langcode] ) ) {
+				$message = $this->mExtensionMessages[$key][$langcode];
+			} elseif ( isset( $this->mExtensionMessages[$key]['en'] ) ) {
+				$message = $this->mExtensionMessages[$key]['en'];
+			}
 		}
 
 		# Try the array in the language object
@@ -515,7 +522,14 @@ class MessageCache {
 	}
 
 	function transform( $message ) {
-		if( !$this->mDisableTransform ) {
+		global $wgParser;
+		if ( !$this->mParser && isset( $wgParser ) ) {
+			# Do some initialisation so that we don't have to do it twice
+			$wgParser->firstCallInit();
+			# Clone it and store it
+			$this->mParser = clone $wgParser;
+		}
+		if ( !$this->mDisableTransform && $this->mParser ) {
 			if( strpos( $message, '{{' ) !== false ) {
 				$message = $this->mParser->transformMsg( $message, $this->mParserOptions );
 			}
@@ -535,20 +549,24 @@ class MessageCache {
 	 *
 	 * @param mixed $key
 	 * @param mixed $value
+	 * @param string $lang The messages language, English by default
 	 */
-	function addMessage( $key, $value ) {
-		$this->mExtensionMessages[$key] = $value;
+	function addMessage( $key, $value, $lang = 'en' ) {
+		$this->mExtensionMessages[$key][$lang] = $value;
 	}
 
 	/**
 	 * Add an associative array of message to the cache
 	 *
 	 * @param array $messages An associative array of key => values to be added
+	 * @param string $lang The messages language, English by default
 	 */
-	function addMessages( $messages ) {
+	function addMessages( $messages, $lang = 'en' ) {
+		wfProfileIn( __METHOD__ );
 		foreach ( $messages as $key => $value ) {
-			$this->addMessage( $key, $value );
+			$this->addMessage( $key, $value, $lang );
 		}
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**

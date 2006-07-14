@@ -310,7 +310,7 @@ Vosse conte a stî ahivé.
 'remembermypassword' => 'Rimimbrer m\' sicret inte les sessions.',
 'yourdomainname' => 'Vosse dominne',
 'loginproblem' => '<b>Åk n\' a nén stî tot vs elodjant.</b><br />Rissayîz s\' i vs plait!',
-'alreadyloggedin' => '<font color=red><strong>Uzeu $1, vos estoz ddja elodjî!</strong></font><br />',
+'alreadyloggedin' => '<span style="color:#ff0000"><strong>Uzeu $1, vos estoz ddja elodjî!</strong></span><br />',
 
 'login' => 'S\' elodjî',
 'loginprompt' => 'Vos dvoz permete les coûkes po vs elodjî so {{SITENAME}}.',
@@ -585,7 +585,8 @@ Les ôtes manaedjeus so ç\' wiki ci pôront todi vey li contnou catchî eyet l\
 #
 'searchresults' => 'Rizultats do cweraedje',
 'searchresulttext' => 'Po pus di racsegnes sol manire di fé des cweraedjes so {{SITENAME}}, loukîz [[{{ns:project}}:Cweraedje|Cweraedje so {{SITENAME}}]].',
-'searchquery' => 'Pol cweraedje «$1»',
+'searchsubtitle' => 'Pol cweraedje «[[:$1]]»',
+'searchsubtitleinvalid' => 'Pol cweraedje «$1»',
 'badquery' => 'Halcrosse tchinne di cweraedje',
 'badquerytext' => 'Vosse cweraedje èn s\' a nén polou fé.
 C\' est motoit bén paski vos avoz sayî d\' cweri
@@ -954,7 +955,6 @@ Vos ploz limiter l\' håynaedje tot tchoezixhant ene sôre di djournå, on no d\
 'nextpage' => 'Pådje shuvante ($1)',
 'allpagesfrom' => 'Håyner les pådjes a pårti di:',
 'allarticles' => 'Tos les årtikes',
-'allnonarticles' => 'Totes les pådjes ki n\' sont nén des årtikes',
 'allinnamespace' => 'Totes les pådjes (espåce di lomaedje $1)',
 'allnotinnamespace' => 'Totes les pådjes (foû d\' l\' espåce di lomaedje $1)',
 'allpagesprev' => 'Di dvant',
@@ -1421,7 +1421,7 @@ Dins ç\' dierin cas, vos ploz eto eployî ene hårdêye, eg: [[{{ns:special}}:E
 # Monobook.js: tooltips and access keys for monobook
 'Monobook.js' => '/* <pre> <nowiki> */
 /* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Pådje d\\\' uzeu da minne\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Li pådje d\\\' uzeu po l\\\' adresse IP ki vos eployîz pol moumint\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Pådje di copene da minne\');
@@ -1464,7 +1464,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Vey li pådje di contnou\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Vey li pådje di l\\\' uzeu\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Vey li pådje di media\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Çouchal, c\\\' est ene pådje sipeciåle, vos n\\\' poloz nén candjî l\\\' pådje leyminme.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Vey li pådje di pordjet\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Vey li pådje di pordjet\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Vey li pådje d\\\' imådje\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Vey li messaedje ratournåve do sistinme\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Vey li modele\');
@@ -1509,7 +1509,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Vey li pådje di categoreye\');
 'passwordtooshort' => 'Li scret est pår trop court. I doet esse di pol moens $1 caracteres.',
 
 # Media Warning
-'mediawarning' => '\'\'\'Asteme\'\'\': Ci fitchî chal pôreut esse evirussé, si vos l\' enondez vos pôrîz infecter l\' sistinme da vosse.<hr>',
+'mediawarning' => '\'\'\'Asteme\'\'\': Ci fitchî chal pôreut esse evirussé, si vos l\' enondez vos pôrîz infecter l\' sistinme da vosse.<hr />',
 
 'fileinfo' => '$1Ko, sôre MIME: <code>$2</code>',
 
@@ -1765,14 +1765,11 @@ $1',
 #
 ####################
 #
-'poweredby' => '{{SITENAME}} rote avou [http://www.mediawiki.org/ MediaWiki], on moteur wiki e libe programe.',
-'printsubtitle' => '(di {{SERVER}})',
 'searchnearmatches' => '<b>Les pådjes shuvantes ont des tites ki ravizèt çou k\' vos avoz cwerou:</b>',
 'searchnext' => '<span style=\'font-size: small\'>Shuv.</span> →',
 'searchnoresults' => 'Mande escuzes, mins i gn a rén ki corespond.',
 'searchnumber' => '<strong>Rizultats: $1-$2 di $3</strong>',
 'searchprev' => '← <span style=\'font-size: small\'>Div.</span>',
-'newusersonly' => ' (seulmint po les noveas uzeus)',
 'metadata_page' => '{{ns:project}}:Meta-dnêyes',
 'checkuser' => 'Verifyî l\' uzeu',
 
@@ -1934,7 +1931,7 @@ Po pleur vôter vos dvoz aveur contribouwé po pus long ki
 'val_details_th_user' => 'Uzeu $1',
 'val_revision_stats_link' => 'detays',
 'val_total' => 'Totå',
-'wikipediapage' => 'Vey li meta-pådje',
+'projectpage' => 'Vey li meta-pådje',
 'contribs-showhideminor' => '$1 candjmints mineurs',
 'wlshow' => 'Mostrer',
 'wlhide' => 'Catchî',
@@ -1999,7 +1996,7 @@ eyet l\' tecse seré ratourné d\' après l\' espåce di lomaedje MediaWiki',
 'listform' => 'djivêye',
 'nchanges' => '$1 candjmints',
 'uploadlink' => 'Eberweter des imådjes',
-'nstab-wp' => 'Pådje',
+'nstab-project' => 'Pådje',
 'rcloaderr' => 'Tcherdjant les dierins candjmints',
 'showhideminor' => '$1 candjmints mineurs | $2 robots | $3 uzeus eredjîstrés | $4 candjmints rwaitîs',
 'rchide' => 'e $4; $1 candjmints mineurs; $2 nos d\' espåces segondaires; $3 candjmints multipes.',

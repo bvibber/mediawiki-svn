@@ -64,7 +64,7 @@ class FiveUpgrade {
 	function &newConnection() {
 		global $wgDBadminuser, $wgDBadminpassword;
 		global $wgDBserver, $wgDBname;
-		$db =& new Database( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname );
+		$db = new Database( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname );
 		return $db;
 	}
 
@@ -716,7 +716,7 @@ END;
 		# Height and width
 		$gis = false;
 		if( $mime == 'image/svg' ) {
-			$gis = wfGetSVGsize( $this->imagePath );
+			$gis = wfGetSVGsize( $filename );
 		} elseif( $magic->isPHPImageType( $mime ) ) {
 			$gis = getimagesize( $filename );
 		} else {

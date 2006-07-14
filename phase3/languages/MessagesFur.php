@@ -1,6 +1,6 @@
 <?php
 
-
+global $wgAllMessagesFur;
 $wgAllMessagesFur = array(
 '1movedto2'		=> "$1 movût in $2",
 'about' => "Informazions",
@@ -25,7 +25,6 @@ Tu puedis strenzi la viodude sielzint un gjenar di regjistri, un non utent o la 
 'allmessagesmodified' => 'Mostre dome modificâts',
 'allmessagesname' => "Non",
 'allmessagestext'	=> "Cheste e je une liste dai messaçs di sisteme disponibii tal non dal spazi MediaWiki:",
-'allnonarticles'	=> "Dutis lis robis che no son vôs",
 'allnotinnamespace'	=> "Dutis lis pagjinis (no tal non dal spazi $1)",
 'allpages' => "Dutis lis pagjinis",
 'allpagesfrom'		=> "Mostre pagjinis scomençant di:",
@@ -278,7 +277,6 @@ cheste vecje version, (rip) = torne a ripristinâ cheste vecje version.
 'linklistsub' => "(Liste di leams)",
 'linkshere' => "Lis pagjinis ca sot a son leadis a cheste:",
 'linkstoimage' => "Lis pagjinis ca sot a son leadis a cheste figure:",
-'linktrail' => "/^([a-z]+)(.*)$/sD",
 'listingcontinuesabbrev' => " cont.",
 'listredirects' => 'Liste des redirezions',
 'listusers' => "Liste dai utents",
@@ -418,7 +416,7 @@ tu âs di cognossi lis conseguencis prime di lâ indevant.',
 'nstab-special' => "Speciâl",
 'nstab-template' => "Model",
 'nstab-user' => "Pagjine dal utent",
-'nstab-wp' => "Informazions",
+'nstab-project' => "Informazions",
 'numauthors' => 'Numar di autôrs diviers (vôs): $1',
 'numedits' => 'Numar di cambiaments (vôs): $1',
 'numtalkauthors' => 'Numar di autôrs diviers (pagjine di discussion): $1',
@@ -533,7 +531,8 @@ L\'aministradôr ch\'al à metût il bloc al à scrit cheste motivazion: $1',
 'searchdisabled' => 'La ricercje in {{SITENAME}} no je ative. Tu puedis doprâ Google intant. Sta atent che i lôr indis sul contignût di {{SITENAME}} a puedin jessi pôc inzornâts.',
 'searchresults' => "Risultâts de ricercje",
 'searchresulttext' => "Par plui informazions su lis ricercjis in {{SITENAME}}, cjale [[Project:Ricercje|Ricercje in {{SITENAME}}]].",
-'searchquery'	=> "Pal test \"$1\"",
+'searchsubtitle'	=> "Pal test \"[[:$1]]\"",
+'searchsubtitleinvalid'	=> "Pal test \"$1\"",
 'sep' => "Set",
 'september' => "Setembar",
 'servertime'	=> 'Ore servidôr',
@@ -693,7 +692,7 @@ Par includi une figure intune pagjine, dopre un leam inte form
 
 La tô identitât e je stade creade. No stâ dismenteâti di gambiâ lis preferencis di {{SITENAME}}.",
 'whatlinkshere' => "Leams a cheste vôs",
-'wikipediapage' => "Cjale pagjine dal progjet",
+'projectpage' => "Cjale pagjine dal progjet",
 'wlheader-enotif' 		=> "* Notifiche par pueste eletroniche ativade.",
 'wlheader-showupdated'   => "* Lis pagjinis gambiadis de ultime volte che tu lis âs cjaladis a son mostradis in '''gruessut'''",
 'wlnote' 		=> 'Ca sot a son i ultins $1 cambiaments tes ultimis <b>$2</b> oris.',

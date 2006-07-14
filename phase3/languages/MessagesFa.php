@@ -1,11 +1,7 @@
 <?php
 
-
-#-------------------------------------------------------------------
-# Default messages
-#-------------------------------------------------------------------
-
-/* private */ $wgAllMessagesFa = array(
+global $wgAllMessagesFa;
+$wgAllMessagesFa = array(
 # User toggles
 
 'tog-underline' => "زیر پیوندها خط کشیده شود",
@@ -113,14 +109,13 @@
 'articlepage'	=> "نمایش مقاله",
 'subjectpage'	=> "نمایش موضوع", # For compatibility
 'userpage' => "نمایش صفحه‌ی کاربر",
-'wikipediapage' => "نمایش فوق صفحه",
+'projectpage' => "نمایش فوق صفحه",
 'imagepage' => 	"نمایش صفحه‌ی تصویر",
 'viewtalkpage' => "نمایش مباحثات",
 'otherlanguages' => "زبان‌های دیگر",
 'redirectedfrom' => "(تغییر مسیر از $1)",
 'lastmodified'	=> "این صفحه آخرین بار در $1 تغییر کرده است.",
 'viewcount'		=> "این صفحه $1 بار دیده شده است.",
-'printsubtitle' => "(از {{SERVER}})",
 'protectedpage' => "صفحه‌ی محافظت‌شده",
 'administrators' => "{{ns:project}}:مدیران",
 'sysoptitle'	=> "دسترسی اپراتور سیستم لازم است",
@@ -213,7 +208,6 @@ The administrator who locked it offered this explanation:
 'yourname'		=> "نام کاربری شما",
 'yourpassword'	=> "کلمه‌ی عبور شما",
 'yourpasswordagain' => "کلمه‌ی عبور را دوباره وارد کنید",
-'newusersonly'	=> " (فقط کاربران جدید)",
 'remembermypassword' => "کلمه‌ی عبور بین نشست‌ها به خاطر سپرده شود.",
 'loginproblem'	=> "<b>ورود شما به سیستم با مشکلی مواجه شد.</b><br />دوباره تلاش کنید!",
 'alreadyloggedin' => "<strong>کاربر $1, شما از قبل وارد سیستم شده‌اید!</strong><br />",
@@ -388,7 +382,8 @@ cookieها را از کار انداخته‌اید. لطفاً cookieها را 
 #
 'searchresults' => "نتایج جستجو",
 'searchresulttext' => "برای اطلاعات بیشتر درباره‌ی جستجوی {{SITENAME}}، به [[{{ns:project}}:جستجو کردن|جستجوی {{SITENAME}}]] مراجعه کنید.",
-'searchquery'	=> "برای پرس‌وجوی «$1»",
+'searchsubtitle'	=> "برای پرس‌وجوی «[[:$1]]»",
+'searchsubtitleinvalid'	=> "برای پرس‌وجوی «$1»",
 'badquery'		=> "پرس‌وجوی جستجویی بدشکل",
 'badquerytext'	=> "نتوانستیم پرس‌وجوی شما را پردازش کنیم.
 این مشکل احتمالاً به این دلیل است که سعی کرده‌اید به دنبال کلمه‌ای کوتاهتر از سه حرف

@@ -238,7 +238,7 @@ Dikh ando $2 ek patrinipen le palutne butyange khosle.',
 'and'                   => 'thai',
 'others'                => 'aver',
 'Monobook.js'           => '/* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Miri labyarneski pajina\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Miri labyarneski pajina ki akanutni IP adress\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Miri diskuciyaki pajina\');
@@ -282,7 +282,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Dikh o artikolo\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Dikh i labyarengi pajina\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Dikh i pajina media\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Kadaya si ek spechiali pajina, nashti te editisares la.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Dikh i pajina le proyekteski\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Dikh i pajina le proyekteski\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Dikh i imajinyaki pajina\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Dikh o mesajo le sistemesko\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Dikh o formato\');

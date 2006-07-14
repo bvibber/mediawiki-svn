@@ -289,6 +289,13 @@ $section: section #
 'AutoAuthenticate': called to authenticate users on external/environmental means
 $user: writes user object to this parameter
 
+'BadImage': When checking against the bad image list
+$name: Image name being checked
+&$bad: Whether or not the image is "bad"
+
+Change $bad and return false to override. If an image is "bad", it is not
+rendered inline in wiki pages or galleries in category pages.
+
 'BlockIp': before an IP address or user is blocked
 $block: the Block object about to be saved
 $user: the user _doing_ the block (not the one being blocked)
@@ -379,6 +386,11 @@ $rcid: ID of the revision marked as patrolled
 $user: user (object) who marked the edit patrolled
 $wcOnlySysopsCanPatrol: config setting indicating whether the user
  must be a sysop to patrol the edit
+
+'MathAfterTexvc': after texvc is executed when rendering mathematics
+$mathRenderer: instance of MathRenderer
+$errmsg: error message, in HTML (string). Nonempty indicates failure
+ of rendering the formula
 
 'OutputPageBeforeHTML': a page has been processed by the parser and
 the resulting HTML is about to be displayed.  

@@ -250,10 +250,10 @@ Administrátor, ktorý nariadil uzamknutie, uvádza tento dôvod: $1',
 pretože tak spomaľuje databázu, že nikto nemôže používať
 wiki.',
 'perfdisabledsub'       => 'Tu je uložená kópia z $1:',
-'perfcached'            => '<font color=red><strong>Nasledujúce dáta sú z dočasnej pamäte a nemusia byť úplne aktuálne:</strong></font>',
+'perfcached'            => '<span style="color:#ff0000"><strong>Nasledujúce dáta sú z dočasnej pamäte a nemusia byť úplne aktuálne:</strong></span>',
 'perfcachedts'          => 'Nasledujúce údaje pochádzajú z cache a naposledy boli aktualizované $1.',
-'wrong_wfQuery_params'  => 'Nesprávny parameter v wfQuery()<br>
-Funkcia: $1<br>
+'wrong_wfQuery_params'  => 'Nesprávny parameter v wfQuery()<br />
+Funkcia: $1<br />
 Dotaz: $2',
 'viewsource'            => 'Zobraz zdroj',
 'viewsourcefor'         => '$1',
@@ -280,7 +280,7 @@ Nezabudnite si nastaviť vaše redaktorské nastavenia.',
 'remembermypassword'    => 'Pamätať si heslo aj po vypnutí počítača.',
 'yourdomainname'        => 'Vaša doména',
 'externaldberror'       => 'Buď nastala chyba externej autentifikačnej databázy alebo Vám nie je povolené aktualizovať Váš externý účet.',
-'loginproblem'          => '<b>Nastal problém pri vašom prihlasovaní.</b><br>Skúste znova!',
+'loginproblem'          => '<b>Nastal problém pri vašom prihlasovaní.</b><br />Skúste znova!',
 'alreadyloggedin'       => '\'\'\'Užívateľ $1, vy už ste prihlásený!\'\'\'<br />',
 'login'                 => 'Prihlásenie',
 'loginprompt'           => 'Na prihlásenie do {{GRAMMAR:genitív|{{SITENAME}}}} musíte mať zapnuté koláčiky (cookies).',
@@ -378,7 +378,7 @@ nástroje nebudú prístupné.',
 'missingcommenttext'    => 'Prosím, dolu napíšte komentár.',
 'blockedtitle'          => 'Redaktor je zablokovaný',
 'blockedtext'           => 'Vaše redaktorské meno alebo IP adresu zablokoval $1.
-Udáva tento dôvod:<br>\'\'$2\'\'
+Udáva tento dôvod:<br />\'\'$2\'\'
 
 Môžete kontaktovať $1 alebo s jedným z ostatných správcov
 [[Project:Správcovia|správcovia]] a prediskutovať blokovanie.
@@ -444,7 +444,7 @@ stlačíte "Ulož článok".
 'editingold'            => '<div style="background: #FFBDBD; border: 1px solid #BB7979; color: #000000; font-weight: bold; margin: 2em 0 1em; padding: .5em 1em; vertical-align: middle; clear: both;">POZOR: Upravujete starú
 verziu tejto stránky. Ak vašu úpravu uložíte, prepíšete tým všetky úpravy, ktoré nasledovali po tejto starej verzii.</div>',
 'yourdiff'              => 'Rozdiely',
-'copyrightwarning'      => 'Nezabudnite, že všetky príspevky do {{GRAMMAR:genitív|{{SITENAME}}}} sa považujú za príspevky pod licenciou $2 (podrobnosti pozri pod $1). Ak nechcete, aby bolo to, čo ste napísali, neúprosne upravované a ďalej ľubovoľne rozširované, tak sem váš text neumiestňujte.<br>
+'copyrightwarning'      => 'Nezabudnite, že všetky príspevky do {{GRAMMAR:genitív|{{SITENAME}}}} sa považujú za príspevky pod licenciou $2 (podrobnosti pozri pod $1). Ak nechcete, aby bolo to, čo ste napísali, neúprosne upravované a ďalej ľubovoľne rozširované, tak sem váš text neumiestňujte.<br />
 
 Týmto sa právne zaväzujete, že ste tento text buď napísali sám, alebo že je skopírovaný
 z voľného diela (public domain) alebo podobného zdroja neobmedzeného autorskými právami.
@@ -532,7 +532,8 @@ nie sú stanovené ďakšie obmedzenia.',
 'compareselectedversions'=> 'Porovnaj označené verzie',
 'searchresults'         => 'Výsledky vyhľadávania',
 'searchresulttext'      => 'Viac informácií o vyhľadávaní vo {{GRAMMAR:lokál|{{SITENAME}}}} je uvedených na $1.',
-'searchquery'           => 'Na vyhľadávací dotaz "$1"',
+'searchsubtitle'           => 'Na vyhľadávací dotaz "[[:$1]]"',
+'searchsubtitleinvalid'           => 'Na vyhľadávací dotaz "$1"',
 'badquery'              => 'Nesprávne formulovaná požiadavka na vyhľadávanie',
 'badquerytext'          => 'Váš text na prehľadávanie sme nemohli spracovať. Dôvodom je pravdepodobne to, že ste hľadali slovo kratšie ako tri písmená, čo zatiaľ {{SITENAME}} neumožňuje. Alebo ste možno výraz zle napísali, napríklad „dom a a záhrada“. Skúste iný text na prehľadávanie.',
 'matchtotals'           => 'Výsledkom dotazu "$1" je $2 nadpisov článkov
@@ -733,7 +734,7 @@ Nasledujte tento odkaz ($2) na stránku, na ktorej zadáte informácie na opis s
 'deleteimgcompletely'   => 'Vymaž všetky verzie',
 'imghistlegend'         => 'Vysvetlivky: (aktuálna) = toto je aktuálny obrázok, (zmazať) = zmaž
 túto starú verziu, (pôvodná) = vráť sa k tejto starej verzii.
-<br><i>Kliknite na dátum, aby sa zobrazil obrázok nahraný v ten deň</i>.',
+<br /><i>Kliknite na dátum, aby sa zobrazil obrázok nahraný v ten deň</i>.',
 'imagelinks'            => 'Odkazy na obrázok',
 'linkstoimage'          => 'Na tento obrázok odkazujú nasledujúce články:',
 'nolinkstoimage'        => 'Žiadne články neobsahujú odkazy na tento obrázok.',
@@ -768,9 +769,9 @@ Celkovo boli stránky navštívené \'\'\'$3\'\'\'-krát a upravené \'\'\'$4\'\
 z čoho \'\'\'$2\'\'\' (alebo \'\'\'$4%\'\'\') sú administrátormi (pozri $3).',
 'disambiguations'       => 'Stránky na rozlíšenie viacerých významov',
 'disambiguationspage'   => 'Šablóna:Rozlišovacia stránka',
-'disambiguationstext'   => 'Tieto články obsahujú odkazy na <i>stránku na rozlíšenie viacerých významov</i>. Namiesto toho by mali obsahovať odkazy na stránku s príslušnou témou. <br>Stránka sa považuje za stránku na rozlíšenie viacerých významov, ak $1 na ňu obsahuje odkaz.<br>Odkazy z iných menných priestorov tu <i>nie</i> sú uvedené.',
+'disambiguationstext'   => 'Tieto články obsahujú odkazy na <i>stránku na rozlíšenie viacerých významov</i>. Namiesto toho by mali obsahovať odkazy na stránku s príslušnou témou. <br />Stránka sa považuje za stránku na rozlíšenie viacerých významov, ak $1 na ňu obsahuje odkaz.<br />Odkazy z iných menných priestorov tu <i>nie</i> sú uvedené.',
 'doubleredirects'       => 'Dvojité presmerovania',
-'doubleredirectstext'   => '<b>Pozor:</b> Tento zoznam môže byť zavádzajúco spoľahlivý, čo znamená, že pod prvým Presmerovaním sa nachádza ešte ďalší text s ďalšími odkazmi. <br>
+'doubleredirectstext'   => '<b>Pozor:</b> Tento zoznam môže byť zavádzajúco spoľahlivý, čo znamená, že pod prvým Presmerovaním sa nachádza ešte ďalší text s ďalšími odkazmi. <br />
 Každý riadok obsahuje odkaz na prvé a druhé Presmerovanie a tiež prvý riadok z textu na ktorý odkazuje druhé Presmerovanie, ktoré zvyčajne odkazuje na "skutočný" cieľ, na ktorý má odkazovať prvé Presmerovanie.',
 'brokenredirects'       => 'Pokazené presmerovania',
 'brokenredirectstext'   => 'Tieto presmerovania odkazujú na neexistujúci článok.',
@@ -828,7 +829,6 @@ Môžete zmenšiť rozsah, ak zvolíte typ záznamu, meno redaktora alebo dotyč
 'nextpage'              => 'Ďalšia stránka ($1)',
 'allpagesfrom'          => 'Zobraz články od článku:',
 'allarticles'           => 'Všetky články',
-'allnonarticles'        => 'Všetky ne-články',
 'allinnamespace'        => 'Všetky stránky (menný priestor $1)',
 'allnotinnamespace'     => 'Všetky stránky (nie z menného priestoru $1)',
 'allpagesprev'          => 'Predchádzajúci',
@@ -1273,7 +1273,7 @@ V druhom prípade môžete tiež použiť odkaz, napr. [[Special:Export/{{Mediaw
 'markedaspatrollederror'=> 'Nie je možné označiť ako strážený',
 'markedaspatrollederrortext'=> 'Pre označenie ako strážený je potrebné uviesť revíziu, ktorá sa má označiť ako strážená.',
 'Monobook.js'           => '/* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Moja redaktorská stránka\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Stránka redaktora pre ip adresu, ktorú upravujete ako\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Moja diskusná stránka\');
@@ -1345,7 +1345,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Pozrieť si stránku s kategóriam
 'speciallogtitlelabel'  => 'Názov:',
 'passwordtooshort'      => 'Vaše heslo je príliš krátke. Musí mať dĺžku aspoň $1 znakov.',
 'mediawarning'          => '\'\'\'Upozornenie\'\'\': Tento súbor môže obsahovať nebezpečný programový kód, po spustení ktorého by bol váš systém kompromitovaný.
-<hr>',
+<hr />',
 'fileinfo'              => '$1KB, MIME : <code>$2</code>',
 'metadata'              => 'Metadáta',
 'metadata-help'         => 'Tento súbor obsahuje ďalšie informácie, pravdepodobne pochádzajúce z digitálneho fotoaparátu či scannera ktorý ho vytvoril alebo digitalizoval. Ak bol súbor zmenený, niektoré podrobnosti sa nemusia plne zhodovať so zmeneným obrázkom.',

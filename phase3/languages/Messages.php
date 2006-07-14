@@ -234,7 +234,7 @@ See $1.',
 'versionrequired' => 'Version $1 of MediaWiki required',
 'versionrequiredtext' => 'Version $1 of MediaWiki is required to use this page. See [[Special:Version]]',
 
-'widthheight'		=> '$1x$2',
+'widthheight'		=> '$1×$2',
 'ok'			=> 'OK',
 'sitetitle'		=> '{{SITENAME}}',
 'pagetitle'		=> '$1 - {{SITENAME}}',
@@ -331,9 +331,7 @@ Function: $1<br />
 Query: $2',
 'viewsource' => 'View source',
 'viewsourcefor' => 'for $1',
-'protectedtext' => 'This page has been locked to prevent editing; there are
-a number of reasons why this may be so, please see
-[[{{ns:project}}:Protected page]].
+'protectedtext' => 'This page has been locked to prevent editing.
 
 You can view and copy the source of this page:',
 'protectedinterface' => 'This page provides interface text for the software, and is locked to prevent abuse.',
@@ -424,7 +422,7 @@ to confirm that the account is actually yours.',
 'emailauthenticated'        => 'Your e-mail address was authenticated on $1.',
 'emailnotauthenticated'     => 'Your e-mail address is <strong>not yet authenticated</strong>. No e-mail
 will be sent for any of the following features.',
-'noemailprefs'              => '<strong>Specify an e-mail address for these features to work.</strong>',
+'noemailprefs'              => 'Specify an e-mail address for these features to work.',
 'emailconfirmlink' => 'Confirm your e-mail address',
 'invalidemailaddress'	=> 'The e-mail address cannot be accepted as it appears to have an invalid
 format. Please enter a well-formatted address or empty that field.',
@@ -468,13 +466,15 @@ format. Please enter a well-formatted address or empty that field.',
 'missingsummary' => "'''Reminder:''' You have not provided an edit summary. If you click Save again, your edit will be saved without one.",
 'missingcommenttext' => 'Please enter a comment below.',
 'blockedtitle'	=> 'User is blocked',
-'blockedtext'	=> 'Your user name or IP address has been blocked by $1.
-The reason given is this:<br />\'\'$2\'\'<br />You may contact $1 or one of the other
-[[{{ns:project}}:Administrators|administrators]] to discuss the block.
+'blockedtext' => "<big>'''Your user name or IP address has been blocked.'''</big>
 
-Note that you may not use the "e-mail this user" feature unless you have a valid e-mail address registered in your [[Special:Preferences|user preferences]].
+The block was made by $1. The reason given is ''$2''.
 
-Your IP address is $3. Please include this address in any queries you make.',
+You can contact $1 or another [[{{ns:project}}:Administrators|administrator]] to discuss the block.
+You cannot use the 'email this user' feature unless a valid email address is specified in your
+[[Special:Preferences|account preferences]]. Your current IP address is $3. Please include this in any queries.",
+'blockedoriginalsource' => "The source of '''$1''' is shown below:",
+'blockededitsource' => "The text of '''your edits''' to '''$1''' is shown below:",
 'whitelistedittitle' => 'Login required to edit',
 'whitelistedittext' => 'You have to $1 to edit pages.',
 'whitelistreadtitle' => 'Login required to read',
@@ -548,17 +548,22 @@ long, which is longer than the maximum of $2 kilobytes. It cannot be saved.</str
 'readonlywarning' => '<strong>WARNING: The database has been locked for maintenance,
 so you will not be able to save your edits right now. You may wish to cut-n-paste
 the text into a text file and save it for later.</strong>',
-'protectedpagewarning' => "<strong>WARNING:  This page has been locked so that only users with sysop privileges can edit it. Be sure you are following the [[{{ns:project}}:Protected page guidelines|protected page guidelines]].</strong>",
+'protectedpagewarning' => "<strong>WARNING:  This page has been locked so that only users with sysop privileges can edit it.</strong>",
 'semiprotectedpagewarning' => "'''Note:''' This page has been locked so that only registered users can edit it.",
 'templatesused'	=> 'Templates used on this page:',
 'edittools' => '<!-- Text here will be shown below edit and upload forms. -->',
 'nocreatetitle' => 'Page creation limited',
 'nocreatetext' => 'This site has restricted the ability to create new pages.
 You can go back and edit an existing page, or [[Special:Userlogin|log in or create an account]].',
+'cantcreateaccounttitle' => 'Can\'t create account',
+'cantcreateaccounttext' => 'Account creation from this IP address (<b>$1</b>) has been blocked. 
+This is probably due to persistent vandalism from your school or Internet service 
+provider. ',
 
 # History pages
 #
 'revhistory'	=> 'Revision history',
+'viewpagelogs' => 'View logs for this page',
 'nohistory'		=> 'There is no edit history for this page.',
 'revnotfound'	=> 'Revision not found',
 'revnotfoundtext' => "The old revision of the page you asked for could not be found.
@@ -566,7 +571,7 @@ Please check the URL you used to access this page.",
 'loadhist'		=> 'Loading page history',
 'currentrev'	=> 'Current revision',
 'revisionasof'          => 'Revision as of $1',
-'oldrevisionnavigation' => 'Revision as of $1; $5<br />$3 | $2 | $4',
+'old-revision-navigation' => 'Revision as of $1; $5<br />($6) $3 | $2 | $4 ($7)',
 'previousrevision'	=> '←Older revision',
 'nextrevision'		=> 'Newer revision→',
 'currentrevisionlink'   => 'Current revision',
@@ -635,7 +640,8 @@ is placed by the site operators.",
 #
 'searchresults' => 'Search results',
 'searchresulttext' => "For more information about searching {{SITENAME}}, see [[{{ns:project}}:Searching|Searching {{SITENAME}}]].",
-'searchquery'	=> "For query \"$1\"",
+'searchsubtitle' => "You searched for '''[[:$1]]'''",
+'searchsubtitleinvalid' => "You searched for '''$1'''",
 'badquery'		=> 'Badly formed search query',
 'badquerytext'	=> 'We could not process your query.
 This is probably because you have attempted to search for a
@@ -655,7 +661,7 @@ and the text of $3 pages.",
 'viewprevnext'	=> "View ($1) ($2) ($3).",
 'showingresults' => "Showing below up to <b>$1</b> results starting with #<b>$2</b>.",
 'showingresultsnum' => "Showing below <b>$3</b> results starting with #<b>$2</b>.",
-'nonefound'		=> "'''Note''': unsuccessful searches are
+'nonefound'		=> "'''Note''': Unsuccessful searches are
 often caused by searching for common words like \"have\" and \"from\",
 which are not indexed, or by specifying more than one search term (only pages
 containing all of the search terms will appear in the result).",
@@ -856,7 +862,7 @@ created and by whom, and anything else you may know about it. If this is an imag
 # Image list
 #
 'imagelist'		=> 'File list',
-'imagelisttext'	=> 'Below is a list of <strong>$1</strong> files sorted <strong>$2</strong>.',
+'imagelisttext' => "Below is a list of '''$1''' {{plural:$1|file|files}} sorted $2.",
 'imagelistforuser' => "This shows only images uploaded by $1.",
 'getimagelist'	=> 'fetching file list',
 'ilsubmit'		=> 'Search',
@@ -926,6 +932,7 @@ That comes to '''$5''' average edits per page, and '''$6''' views per edit.
 The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''.",
 'userstatstext' => "There are '''$1''' registered users, of which
 '''$2''' (or '''$4%''') are administrators (see $3).",
+'statistics-mostpopular' => 'Most viewed pages',
 
 'disambiguations'	=> 'Disambiguation pages',
 'disambiguationspage'	=> 'Template:disambig',
@@ -975,6 +982,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'recentchangeslinked' => 'Related changes',
 'rclsub'		=> "(to pages linked from \"$1\")",
 'newpages'		=> 'New pages',
+'newpages-username' => 'Username:',
 'ancientpages'		=> 'Oldest pages',
 'intl'		=> 'Interlanguage links',
 'move' => 'Move',
@@ -1008,13 +1016,13 @@ You can narrow down the view by selecting a log type, the user name, or the affe
 'nextpage'          => 'Next page ($1)',
 'allpagesfrom'		=> 'Display pages starting at:',
 'allarticles'		=> 'All articles',
-'allnonarticles'	=> 'All non-articles',
 'allinnamespace'	=> 'All pages ($1 namespace)',
 'allnotinnamespace'	=> 'All pages (not in $1 namespace)',
 'allpagesprev'		=> 'Previous',
 'allpagesnext'		=> 'Next',
 'allpagessubmit'	=> 'Go',
 'allpagesprefix'	=> 'Display pages with prefix:',
+'allpagesbadtitle'	=> 'The given page title was invalid or had an inter-language or inter-wiki prefix. It may contain one more characters which cannot be used in titles.',
 
 # E this user
 #
@@ -1043,10 +1051,10 @@ or has chosen not to receive e-mail from other users.',
 'emailsenttext' => 'Your e-mail message has been sent.',
 
 # Watchlist
-#
 'watchlist'			=> 'My watchlist',
-'watchlistsub'		=> "(for user \"$1\")",
+'watchlistfor' => "(for '''$1''')",
 'nowatchlist'		=> 'You have no items on your watchlist.',
+'watchlistanontext' => 'Please $1 to view or edit items on your watchlist.',
 'watchlistcount' 	=> "'''You have $1 items on your watchlist, including talk pages.'''",
 'clearwatchlist' 	=> 'Clear watchlist',
 'watchlistcleartext' => 'Are you sure you wish to remove them?',
@@ -1163,8 +1171,7 @@ Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]).",
 this action has been canceled as a precaution against session hijacking.
 Please hit "back" and reload the page you came from, then try again.',
 'protectlogpage' => 'Protection log',
-'protectlogtext' => "Below is a list of page locks/unlocks.
-See [[{{ns:project}}:Protected page]] for more information.",
+'protectlogtext' => "Below is a list of page locks and unlocks.",
 'protectedarticle' => 'protected "[[$1]]"',
 'unprotectedarticle' => 'unprotected "[[$1]]"',
 'protectsub' => '(Protecting "$1")',
@@ -1177,8 +1184,7 @@ See [[{{ns:project}}:Protected page]] for more information.",
 'confirmunprotect' => 'Confirm unprotection',
 'unprotectcomment' => 'Reason for unprotecting',
 'protect-unchain' => 'Unlock move permissions',
-'protect-text' => 'You may view and change the protection level here for the page <strong>$1</strong>.
-Please be sure you are following the [[{{ns:project}}:Protected page|project guidelines]].',
+'protect-text' => 'You may view and change the protection level here for the page <strong>$1</strong>.',
 'protect-viewtext' => 'Your account does not have permission to change
 page protection levels. Here are the current settings for the page <strong>$1</strong>:',
 'protect-default' => '(default)',
@@ -1271,6 +1277,8 @@ pages that were vandalized).",
 'ipadressorusername' => 'IP Address or username',
 'ipbexpiry'		=> 'Expiry',
 'ipbreason'		=> 'Reason',
+'ipbanononly'   => 'Block anonymous users only',
+'ipbcreateaccount' => 'Prevent account creation',
 'ipbsubmit'		=> 'Block this user',
 'ipbother'		=> 'Other time',
 'ipboptions'		=> '2 hours:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite',
@@ -1288,6 +1296,8 @@ to a previously blocked IP address or username.',
 'blocklistline'	=> "$1, $2 blocked $3 ($4)",
 'infiniteblock' => 'infinite',
 'expiringblock' => 'expires $1',
+'anononlyblock' => 'anon. only',
+'createaccountblock' => 'account creation blocked',
 'ipblocklistempty'	=> 'The blocklist is empty.',
 'blocklink'		=> 'block',
 'unblocklink'	=> 'unblock',
@@ -1301,8 +1311,10 @@ the list of currently operational bans and blocks.',
 'unblocklogentry'	=> 'unblocked $1',
 'range_block_disabled'	=> 'The sysop ability to create range blocks is disabled.',
 'ipb_expiry_invalid'	=> 'Expiry time invalid.',
+'ipb_already_blocked' => '"$1" is already blocked',
 'ip_range_invalid'	=> 'Invalid IP range.',
 'proxyblocker'	=> 'Proxy blocker',
+'ipb_cant_unblock' => 'Error: Block ID $1 not found. It may have been unblocked already.',
 'proxyblockreason'	=> 'Your IP address has been blocked because it is an open proxy. Please contact your Internet service provider or tech support and inform them of this serious security problem.',
 'proxyblocksuccess'	=> 'Done.',
 'sorbs'         => 'SORBS DNSBL',
@@ -1331,8 +1343,10 @@ Please confirm that this is what you intend to do.',
 'lockdbsuccesssub' => 'Database lock succeeded',
 'unlockdbsuccesssub' => 'Database lock removed',
 'lockdbsuccesstext' => 'The database has been locked.
-<br />Remember to remove the lock after your maintenance is complete.',
+<br />Remember to [[Special:Unlockdb|remove the lock]] after your maintenance is complete.',
 'unlockdbsuccesstext' => 'The database has been unlocked.',
+'lockfilenotwritable' => 'The database lock file is not writable. To lock or unlock the database, this needs to be writable by the web server.',
+'databasenotlocked' => 'The database is not locked.',
 
 # Make sysop
 'makesysoptitle'	=> 'Make a user into a sysop',
@@ -1429,7 +1443,8 @@ history lines, or just the current version with the info about the last edit.
 In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{int:mainpage}}]] for the page {{int:mainpage}}.',
 'exportcuronly'	=> 'Include only the current revision, not the full history',
 'exportnohistory' => "----
-'''Note:''' exporting the full history of pages through this form has been disabled due to performance reasons.",
+'''Note:''' Exporting the full history of pages through this form has been disabled due to performance reasons.",
+'export-submit' => 'Export',
 
 # Namespace 8 related
 
@@ -1454,14 +1469,35 @@ In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{int:m
 # Special:Import
 'import'	=> 'Import pages',
 'importinterwiki' => 'Transwiki import',
+'import-interwiki-text' => 'Select a wiki and page title to import.
+Revision dates and editors\' names will be preserved.
+All transwiki import actions are logged at the [[Special:Log/import|import log]].',
+'import-interwiki-history' => 'Copy all history versions for this page',
+'import-interwiki-submit' => 'Import',
+'import-interwiki-namespace' => 'Transfer pages into namespace:',
 'importtext'	=> 'Please export the file from the source wiki using the Special:Export utility, save it to your disk and upload it here.',
+'importstart'	=> "Importing pages...",
+'import-revision-count' => '$1 {{PLURAL:$1|revision|revisions}}',
+'importnopages'	=> "No pages to import.",
 'importfailed'	=> "Import failed: $1",
+'importunknownsource'	=> "Unknown import source type",
+'importcantopen'	=> "Couldn't open import file",
+'importbadinterwiki'	=> "Bad interwiki link",
 'importnotext'	=> 'Empty or no text',
 'importsuccess'	=> 'Import succeeded!',
 'importhistoryconflict' => 'Conflicting history revision exists (may have imported this page before)',
 'importnosources' => 'No transwiki import sources have been defined and direct history uploads are disabled.',
 'importnofile' => 'No import file was uploaded.',
 'importuploaderror' => 'Upload of import file failed; perhaps the file is bigger than the allowed upload size.',
+
+# import log
+'importlogpage' => 'Import log',
+'importlogpagetext' => 'Administrative imports of pages with edit history from other wikis.',
+'import-logentry-upload' => 'imported $1 by file upload',
+'import-logentry-upload-detail' => '$1 revision(s)',
+'import-logentry-interwiki' => 'transwikied $1',
+'import-logentry-interwiki-detail' => '$1 revision(s) from $2',
+
 
 # Keyboard access keys for power users
 'accesskey-search' => 'f',
@@ -1482,8 +1518,8 @@ In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{int:m
 'tooltip-watch' => 'Add this page to your watchlist [alt-w]',
 
 # stylesheets
-'Monobook.css' => '/* edit this file to customize the monobook skin for the entire site */',
-#'Monobook.js' => '/* edit this file to change js things in the monobook skin */',
+'Common.css' => '/** CSS placed here will be applied to all skins */',
+'Monobook.css' => '/* CSS placed here will affect users of the Monobook skin */',
 
 # Metadata
 'nodublincore' => 'Dublin Core RDF metadata disabled for this server.',
@@ -1543,7 +1579,7 @@ In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{int:m
 
 # Monobook.js: tooltips and access keys for monobook
 'Monobook.js' => '/* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'My user page\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'The user page for the ip you\\\'re editing as\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'My talk page\');

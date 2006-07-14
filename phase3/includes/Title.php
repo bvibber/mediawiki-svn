@@ -108,7 +108,7 @@ class Title {
 	 * @static
 	 * @access public
 	 */
-	function newFromText( $text, $defaultNamespace = NS_MAIN ) {
+	public static function newFromText( $text, $defaultNamespace = NS_MAIN ) {
 		$fname = 'Title::newFromText';
 
 		if( is_object( $text ) ) {
@@ -132,7 +132,7 @@ class Title {
 		 */
 		$filteredText = Sanitizer::decodeCharReferences( $text );
 
-		$t =& new Title();
+		$t = new Title();
 		$t->mDbkeyform = str_replace( ' ', '_', $filteredText );
 		$t->mDefaultNamespace = $defaultNamespace;
 
@@ -233,8 +233,8 @@ class Title {
 	 * @static
 	 * @access public
 	 */
-	function &makeTitle( $ns, $title ) {
-		$t =& new Title();
+	public static function &makeTitle( $ns, $title ) {
+		$t = new Title();
 		$t->mInterwiki = '';
 		$t->mFragment = '';
 		$t->mNamespace = intval( $ns );
@@ -256,7 +256,7 @@ class Title {
 	 * @static
 	 * @access public
 	 */
-	function makeTitleSafe( $ns, $title ) {
+	public static function makeTitleSafe( $ns, $title ) {
 		$t = new Title();
 		$t->mDbkeyform = Title::makeName( $ns, $title );
 		if( $t->secureAndSplit() ) {
@@ -273,7 +273,7 @@ class Title {
 	 * @return Title the new object
 	 * @access public
 	 */
-	function newMainPage() {
+	public static function newMainPage() {
 		return Title::newFromText( wfMsgForContent( 'mainpage' ) );
 	}
 
@@ -285,10 +285,10 @@ class Title {
 	 * @static
 	 * @access public
 	 */
-	function newFromRedirect( $text ) {
-		global $wgMwRedir;
+	public static function newFromRedirect( $text ) {
+		$mwRedir = MagicWord::get( 'redirect' );
 		$rt = NULL;
-		if ( $wgMwRedir->matchStart( $text ) ) {
+		if ( $mwRedir->matchStart( $text ) ) {
 			if ( preg_match( '/\[{2}(.*?)(?:\||\]{2})/', $text, $m ) ) {
 				# categories are escaped using : for example one can enter:
 				# #REDIRECT [[:Category:Music]]. Need to remove it.
@@ -336,7 +336,7 @@ class Title {
 	 * @static
 	 * @access public
 	 */
-	function legalChars() {
+	public static function legalChars() {
 		global $wgLegalTitleChars;
 		return $wgLegalTitleChars;
 	}
@@ -376,7 +376,7 @@ class Title {
 	 * @param string $title the DB key form the title
 	 * @return string the prefixed form of the title
 	 */
-	/* static */ function makeName( $ns, $title ) {
+	public static function makeName( $ns, $title ) {
 		global $wgContLang;
 
 		$n = $wgContLang->getNsText( $ns );
@@ -1093,6 +1093,15 @@ class Title {
 	}
 
 	/**
+	 * Can $wgUser create this page?
+	 * @return boolean
+	 * @access public
+	 */
+	function userCanCreate() {
+		return $this->userCan('create');
+	}
+
+	/**
 	 * Can $wgUser move this page?
 	 * @return boolean
 	 * @access public
@@ -1178,8 +1187,12 @@ class Title {
 	 * Check that the corresponding skin exists
 	 */
 	function isValidCssJsSubpage() {
-		global $wgValidSkinNames;
-		return( $this->isCssJsSubpage() && array_key_exists( $this->getSkinFromCssJsSubpage(), $wgValidSkinNames ) );
+		if ( $this->isCssJsSubpage() ) {
+			$skinNames = Skin::getSkinNames();
+			return array_key_exists( $this->getSkinFromCssJsSubpage(), $skinNames );
+		} else {
+			return false;
+		}
 	}
 	/**
 	 * Trim down a .css or .js subpage title to get the corresponding skin name
@@ -1845,7 +1858,7 @@ class Title {
 	 * @private
 	 */
 	function moveOverExistingRedirect( &$nt, $reason = '' ) {
-		global $wgUseSquid, $wgMwRedir;
+		global $wgUseSquid;
 		$fname = 'Title::moveOverExistingRedirect';
 		$comment = wfMsgForContent( '1movedto2', $this->getPrefixedText(), $nt->getPrefixedText() );
 
@@ -1884,7 +1897,8 @@ class Title {
 		$linkCache->clearLink( $nt->getPrefixedDBkey() );
 
 		# Recreate the redirect, this time in the other direction.
-		$redirectText = $wgMwRedir->getSynonym( 0 ) . ' [[' . $nt->getPrefixedText() . "]]\n";
+		$mwRedir = MagicWord::get( 'redirect' );
+		$redirectText = $mwRedir->getSynonym( 0 ) . ' [[' . $nt->getPrefixedText() . "]]\n";
 		$redirectArticle = new Article( $this );
 		$newid = $redirectArticle->insertOn( $dbw );
 		$redirectRevision = new Revision( array(
@@ -1924,7 +1938,6 @@ class Title {
 	 */
 	function moveToNewTitle( &$nt, $reason = '' ) {
 		global $wgUseSquid;
-		global $wgMwRedir;
 		$fname = 'MovePageForm::moveToNewTitle';
 		$comment = wfMsgForContent( '1movedto2', $this->getPrefixedText(), $nt->getPrefixedText() );
 		if ( $reason ) {
@@ -1957,7 +1970,8 @@ class Title {
 		$linkCache->clearLink( $nt->getPrefixedDBkey() );
 
 		# Insert redirect
-		$redirectText = $wgMwRedir->getSynonym( 0 ) . ' [[' . $nt->getPrefixedText() . "]]\n";
+		$mwRedir = MagicWord::get( 'redirect' );
+		$redirectText = $mwRedir->getSynonym( 0 ) . ' [[' . $nt->getPrefixedText() . "]]\n";
 		$redirectArticle = new Article( $this );
 		$newid = $redirectArticle->insertOn( $dbw );
 		$redirectRevision = new Revision( array(
@@ -2009,19 +2023,24 @@ class Title {
 
 		if ( !$obj || 0 == $obj->page_is_redirect ) {
 			# Not a redirect
+			wfDebug( __METHOD__ . ": not a redirect\n" );
 			return false;
 		}
 		$text = Revision::getRevisionText( $obj );
 
 		# Does the redirect point to the source?
+		# Or is it a broken self-redirect, usually caused by namespace collisions?
 		if ( preg_match( "/\\[\\[\\s*([^\\]\\|]*)]]/", $text, $m ) ) {
 			$redirTitle = Title::newFromText( $m[1] );
 			if( !is_object( $redirTitle ) ||
-				$redirTitle->getPrefixedDBkey() != $this->getPrefixedDBkey() ) {
+				( $redirTitle->getPrefixedDBkey() != $this->getPrefixedDBkey() &&
+				$redirTitle->getPrefixedDBkey() != $nt->getPrefixedDBkey() ) ) {
+				wfDebug( __METHOD__ . ": redirect points to other page\n" );
 				return false;
 			}
 		} else {
 			# Fail safe
+			wfDebug( __METHOD__ . ": failsafe\n" );
 			return false;
 		}
 

@@ -2,14 +2,17 @@
 
 global $wgAllMessagesDe;
 $wgAllMessagesDe = array(
-'Monobook.css' =>
-'/** Do not force \'lowercase\' */
+
+# stylesheets
+'Common.css'		=> '/** CSS an dieser Stelle wirkt sich auf alle Skins aus */',
+'Monobook.css'		=> '/** Kleinschreibung nicht erzwingen */
 .portlet h5,
 .portlet h6,
 #p-personal ul,
 #p-cactions li a {
 	text-transform: none;
 }',
+
 # User preference toggles
 "tog-underline"               => "Verweise unterstreichen:",
 "tog-highlightbroken"         => "Verweise auf leere Artikel hervorheben",
@@ -155,7 +158,6 @@ $wgAllMessagesDe = array(
 "specialpage" => "Spezialseite",
 "personaltools" => "Persönliche Werkzeuge",
 "postcomment" => "Kommentar hinzufügen",
-"addsection"   => "+",
 "articlepage"	=> "Artikel",
 'subjectpage'	=> 'Betreff anzeigen',
 "toolbox" => "Werkzeuge",
@@ -186,7 +188,6 @@ $wgAllMessagesDe = array(
 'nbytes'		=> '$1 {{PLURAL:$1|Byte|Bytes}}',
 'ncategories'		=> '$1 {{PLURAL:$1|Kategorie|Kategorien}}',
 'nrevisions'		=> '{{PLURAL:$1|eine Bearbeitung|$1 Bearbeitungen}}',
-'widthheight'		=> '$1 x $2',
 "go"			=> "Artikel",
 "ok"			=> "Suche",
 'pagetitle'		=> '$1 - {{SITENAME}}',
@@ -204,7 +205,7 @@ $wgAllMessagesDe = array(
 'viewdeleted' => '$1 anzeigen?',
 'restorelink'		=> '{{PLURAL:$1|einer gelöschten Version|$1 gelöschten Versionen}}',
 "feedlinks" => "Feed:",
-'feed-invalid'		=> 'Ungültiger Abonnenement-Typ.',
+'feed-invalid'		=> 'Ungültiger Abonnement-Typ.',
 'permalink'     => 'Permanentlink',
 "listingcontinuesabbrev" => "(Forts.)",
 
@@ -377,11 +378,9 @@ Bevor eine E-Mail von anderen Benutzern über die {{SITENAME}}-Mailfunktion empf
 'acct_creation_throttle_hit' => 'Sie haben schon $1 Benutzerkonten und können jetzt keine weiteren mehr anlegen.',
 'emailconfirmlink' 	=> 'E-Mail-Adresse bestätigen (authentifizieren).',
 'emailauthenticated' 	=> 'Ihre E-Mail-Adresse wurde am $1 authentifiziert.',
-'emailnotauthenticated'	=> 'Ihre E-Mail-Adresse ist <strong>noch nicht authentifiziert</strong> und die erweiterten E-Mailfunktionen sind bis zur Authentifizierung ohne Funktion <strong>(aus)</strong>.<br />
-Für die Authentifizierung melden Sie sich bitte mit dem per E-Mail geschickten temporären Passwort an, oder fordern Sie auf der Anmeldeseite ein neues an.',
+'emailnotauthenticated'	=> 'Ihre E-Mail-Adresse ist <strong>noch nicht authentifiziert</strong>. Es wird Ihnen keine E-Mail für eine der folgenden Funktionen zugesendet.',
 'invalidemailaddress'	=> 'Die E-Mail-Adresse wurde nicht akzeptiert, da sie ein ungültiges Format aufzuweisen scheint. Bitte geben Sie eine Adresse in einem gültigen Format ein, oder leeren Sie das Feld.',
-'noemailprefs'	=> '<strong>Sie haben keine E-Mail-Adresse angegeben</strong>, die folgenden
-Funktionen sind zur Zeit deshalb nicht möglich.',
+'noemailprefs'		=> 'Geben Sie eine E-Mail-Adresse an, damit diese Funktionen zur Verfügung stehen.',
 'wrongpasswordempty'	=> 'Das eingegebene Passwort war leer. Bitte versuchen Sie es erneut.',
 
 # Edit pages
@@ -407,6 +406,8 @@ Folgender Grund wurde angegeben: $2
 Sie können $1 oder die [[{{ns:project}}:Administratoren]] kontaktieren, um über die Blockierung zu diskutieren.
 
 Bitte geben Sie Ihre IP-Adresse ($3) in allen Ihren Anfragen mit an.',
+'blockedoriginalsource'	=> 'Der Quelltext von \'\'\'$1\'\'\' wird hier angezeigt:',
+'blockededitsource'	=> 'Der Text von \'\'\'Ihren Änderungen\'\'\' an \'\'\'$1\'\'\' wird hier angezeigt:',
 "whitelistedittitle" => "Zum Bearbeiten ist es erforderlich, angemeldet zu sein",
 'whitelistedittext'	=> 'Sie müssen sich $1, um Artikel bearbeiten zu können.',
 "whitelistreadtitle" => "Zum Lesen ist es erforderlich, angemeldet zu sein",
@@ -424,10 +425,10 @@ Bitte geben Sie Ihre IP-Adresse ($3) in allen Ihren Anfragen mit an.',
 'newarticletext'	=> 'Hier den Text des neuen Artikels eintragen. Bitte nur in ganzen Sätzen schreiben und keine urheberrechtsgeschützten Texte anderer kopieren.',
 'anontalkpagetext'	=> '---- \'\'Dies ist die Diskussionsseite eines nicht angemeldeten Benutzers. Wir müssen hier die numerische IP-Adresse zur Identifizierung verwenden. Eine solche Adresse kann nacheinander von mehreren Benutzern verwendet werden. Wenn Sie ein anonymer Benutzer sind und denken, dass irrelevante Kommentare an Sie gerichtet wurden, [[{{ns:special}}:Userlogin|melden Sie sich bitte an]], um zukünftige Verwirrung zu vermeiden. \'\'',
 'noarticletext'		=> '(Dieser Artikel enthält momentan noch keinen Text)',
-'usercsspreview'	=> "== Vorschau Ihres Benutzer-CSS ==
-'''Beachten Sie:''' Nach dem Speichern müssen Sie Ihren Browser anweisen, die neue Version zu laden: '''Mozilla:''' ''Strg-Shift-R'', '''IE:''' ''Strg-F5'', '''Safari:''' ''Cmd-Shift-R'', '''Konqueror:''' ''F5''.",
-'userjspreview' => "== Vorschau Ihres Benutzer-JavaScript ==
-'''Beachten Sie:''' Nach dem Speichern müssen Sie Ihren Browser anweisen, die neue Version zu laden: '''Mozilla:''' ''Strg-Shift-R'', '''IE:''' ''Strg-F5'', '''Safari:''' ''Cmd-Shift-R'', '''Konqueror:''' ''F5''.",
+'usercsspreview'	=> '== Vorschau Ihres Benutzer-CSS ==
+\'\'\'Beachten Sie:\'\'\' Nach dem Speichern müssen Sie Ihren Browser anweisen, die neue Version zu laden: \'\'\'Mozilla/Firefox:\'\'\' \'\'Strg-Shift-R\'\', \'\'\'Internet Explorer:\'\'\' \'\'Strg-F5\'\', \'\'\'Opera:\'\'\' \'\'F5\'\', \'\'\'Safari:\'\'\' \'\'Cmd-Shift-R\'\', \'\'\'Konqueror:\'\'\' \'\'F5\'\'.',
+'userjspreview'		=> '== Vorschau Ihres Benutzer-JavaScript ==
+\'\'\'Beachten Sie:\'\'\' Nach dem Speichern müssen Sie Ihren Browser anweisen, die neue Version zu laden: \'\'\'Mozilla/Firefox:\'\'\' \'\'Strg-Shift-R\'\', \'\'\'Internet Explorer:\'\'\' \'\'Strg-F5\'\', \'\'\'Opera:\'\'\' \'\'F5\'\', \'\'\'Safari:\'\'\' \'\'Cmd-Shift-R\'\', \'\'\'Konqueror:\'\'\' \'\'F5\'\'.',
 'userinvalidcssjstitle'	=> '\'\'\'Warnung:\'\'\' Es existiert kein Skin „$1“. Bitte bedenken Sie, dass benutzerspezifische .css- and .js-Seiten mit einem Kleinbuchstaben anfangen müssen, also z.B. Benutzer:Foo/monobook.css an Stelle von Benutzer:Foo/Monobook.css.',
 'clearyourcache'	=> '\'\'\'Beachten Sie:\'\'\' Nach dem Speichern müssen Sie Ihren Browser anweisen, die neue Version zu laden:<br />
 \'\'\'Mozilla/Firefox:\'\'\' \'\'Strg-Shift-R\'\', \'\'\'Internet Explorer:\'\'\' \'\'Strg-F5\'\', \'\'\'Opera:\'\'\' \'\'F5\'\', \'\'\'Safari:\'\'\' \'\'Cmd-Shift-R\'\', \'\'\'Konqueror:\'\'\' \'\'F5\'\'.',
@@ -436,13 +437,13 @@ Bitte geben Sie Ihre IP-Adresse ($3) in allen Ihren Anfragen mit an.',
 "note"			=> "<strong>Hinweis:</strong>",
 "previewnote"	=> "Dies ist nur eine Vorschau, der Artikel wurde noch nicht gespeichert!",
 'session_fail_preview' => '<strong>Ihre Bearbeitung konnte nicht gespeichert werden, da Ihre Sitzungsdaten verloren gegangen sind.
-Bitte versuchen Sie es erneut. Sollte das Problem bestehen bleiben, logge Sie sich kurz aus und wieder ein.</strong>',
+Bitte versuchen Sie es erneut. Sollte das Problem bestehen bleiben, loggen Sie sich kurz aus und wieder ein.</strong>',
 "previewconflict" => "Diese Vorschau gibt den Inhalt des oberen Textfeldes wieder; so wird der Artikel aussehen, wenn Sie jetzt speichern.",
-'session_fail_preview_html'	=> '<strong>Entschuldigung! Wir konnten Ihre Änderung nicht verarbeiten, da Ihre Sitzungsdaten verloren gegangen sind.</strong>
+'session_fail_preview_html'	=> '<strong>Ihre Bearbeitung konnte nicht gespeichert werden, da Ihre Sitzungsdaten verloren gegangen sind.</strong>
 
 \'\'Da in diesem Wiki reines HTML aktiviert ist, wurde die Vorschau ausgeblendet um JavaScript Attacken vorzubeugen.\'\'
 
-<strong>Versuchen Sie es erneut, falls dies ein legitimer Änderungsversuch ist. Falls es weiterhin nicht funktioniert, versuchen Sie sich ab- und wieder anzumelden.</strong>',
+<strong>Bitte versuchen Sie es erneut. Sollte das Problem bestehen bleiben, melden Sie sich kurz ab und wieder an.</strong>',
 'importing'		=> 'importiere $1',
 "editing"		=> "Bearbeiten von $1",
 "editingsection"	=> "Bearbeiten von $1 (Absatz)",
@@ -474,27 +475,29 @@ Sie bestätigen hiermit auch, dass Sie diese Texte selbst geschrieben haben oder
 Seite für Wartungsarbeiten gesperrt, so dass Sie die Seite im Moment nicht
 speichern können. Sichern Sie sich den Text und versuchen Sie die Änderungen
 später einzuspielen.</strong>",
-'protectedpagewarning' => '<strong>ACHTUNG: Diese Seite wurde gesperrt, so dass sie nur
-durch Benutzer mit Admninistratorrechten bearbeitet werden kann. Beachten Sie bitte die
-[[{{ns:project}}:Geschützte Seiten|Regeln für geschützte Seiten]].</strong>',
-'semiprotectedpagewarning'	=> '\'\'\'Halbsperrung:\'\'\' Die Seite wurde so gesperrt, dass neu registrierte oder anonyme Benutzer diese nicht ändern können.',
+'protectedpagewarning'	=> '\'\'\'ACHTUNG: Diese Seite wurde gesperrt, so dass sie nur durch Benutzer mit Admninistratorrechten bearbeitet werden kann.\'\'\'',
+'semiprotectedpagewarning'	=> '\'\'\'Halbsperrung:\'\'\' Die Seite wurde so gesperrt, dass nur registrierte Benutzer diese ändern können.',
 'templatesused'		=> 'Folgende Vorlagen werden von diesem Artikel verwendet:',
 'edittools'		=> '<!-- Dieser Text wird unter dem „Bearbeiten“-Formular sowie dem "Hochladen"-Formular angezeigt. -->',
 'nocreatetitle'		=> 'Die Erstellung neuer Seiten ist eingeschränkt.',
 'nocreatetext'		=> 'Der Server hat das Erstellen neuer Seiten eingeschränkt.
 
 Sie können bestehende Seiten ändern oder sich [[{{ns:special}}:Userlogin|anmelden]].',
+'cantcreateaccounttitle'	=> 'Benutzerkonto kann nicht erstellt werden',
+'cantcreateaccounttext'	=> 'Die Erstellung eines Benutzerkontos von dieser IP-Adresse (<b>$1</b>) wurde gesperrt.
+Dies geschah vermutlich auf Grund von wiederholtem Vandalismus von Ihrer Bildungseinrichtung oder anderen Benutzern Ihres Internet-Service-Provider.',
 
 # History pages
 #
 "revhistory"	=> "Frühere Versionen",
+'viewpagelogs'		=> 'Logbücher für diese Seite anzeigen',
 'nohistory'		=> 'Es gibt keine früheren Versionen dieses Artikels.',
 'revnotfound'		=> 'Diese Version wurde nicht gefunden.',
 "revnotfoundtext" => "Die Version dieses Artikels, nach der Sie suchen, konnte nicht gefunden werden. Bitte überprüfen Sie die URL dieser Seite.",
 "loadhist"		=> "Lade Liste mit früheren Versionen",
 "currentrev"	=> "Aktuelle Version",
 "revisionasof"	=> "Version vom $1",
-'oldrevisionnavigation'	=> 'Version vom $1; $5<br />$3 | $2 | $4',
+'old-revision-navigation'	=> 'Version vom $1; $5<br />($6) $3 | $2 | $4 ($7)',
 'nextrevision'		=> 'Nächstjüngere Version →',
 'previousrevision'	=> '← Nächstältere Version',
 'currentrevisionlink'	=> 'Aktuelle Version',
@@ -512,12 +515,9 @@ Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullu
 Als Administrator können Sie sie weiterhin einsehen.
 Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullurl:Spezial:Log/delete|page={{PAGENAMEE}}}} Lösch-Logbuch].</div>',
 "orig"			=> "Original",
-'histlegend'		=> 'Diff Auswahl: Die Boxen der gewünschten
-Versionen markieren und "Enter" drücken oder den Button unten klicken/alt-v.<br />
-Legende:
-(Aktuell) = Unterschied zur aktuellen Version,
-(Letzte) = Unterschied zur vorherigen Version,
-K = Kleine Änderung',
+'histlegend'		=> 'Zur Anzeige der Änderungen einfach die zu vergleichenden Versionen auswählen und die Schaltfläche „{{int:compareselectedversions}}“ klicken („alt-v“).<br />
+* (Aktuell) = Unterschied zur aktuellen Version, (Vorherige) = Unterschied zur vorherigen Version
+* Uhrzeit/Datum = Artikel zu dieser Zeit, Benutzername/IP-Adresse des Bearbeiters, K = Kleine Änderung',
 
 'revdelete-legend'		=> 'Einschränkungen für die Versionen festlegen:',
 'revdelete-hide-text'		=> 'Verstecke den Text der Version',
@@ -555,7 +555,8 @@ Administroren können den entfernten Inhalt oder andere entfernte Bestandteile w
 #
 "searchresults" => "Suchergebnisse",
 'searchresulttext'	=> 'Für mehr Informationen zur Suche siehe „[[{{ns:project}}:Suche|{{SITENAME}} durchsuchen]]“.',
-'searchquery'		=> 'Für die Suchanfrage „$1“',
+'searchsubtitle'	=> 'Für Ihre Suchanfrage „[[:$1]]“.',
+'searchsubtitleinvalid'	=> 'Für Ihre Suchanfrage „$1“.',
 "badquery"		=> "Falsche Suchanfrage",
 'badquerytext'		=> 'Wir konnten Ihre Suchanfrage nicht verarbeiten.
 Vermutlich haben Sie versucht, ein Wort zu suchen, das kürzer als vier Buchstaben ist.
@@ -649,7 +650,6 @@ Wenn Sie sich mit dem Thema auskennen, können Sie selbst den Artikel „[[$1]]�
 'newpageletter'		=> 'N',
 'boteditletter'		=> 'B',
 'sectionlink'		=> '→',
-'number_of_watching_users_RCview'	=> '[$1]',
 'number_of_watching_users_pageview'	=> '[$1 beobachtende/r Benutzer]',
 'rc_categories'		=> 'Nur Kategorien (getrennt mit „|“):',
 'rc_categories_any'	=> 'Alle',
@@ -729,7 +729,7 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[{{ns:i
 # Image list
 #
 'imagelist'		=> 'Dateiliste',
-'imagelisttext'		=> 'Hier ist eine Liste von <strong>$1</strong> Dateien, sortiert <strong>$2</strong>.',
+'imagelisttext'		=> 'Hier ist eine Liste von \'\'\'$1\'\'\' {{PLURAL:$1|Datei|Dateien}}, sortiert $2.',
 'imagelistforuser'	=> 'Diese Seite zeigt nur Dateien, die von $1 hochgeladen wurden.',
 'getimagelist'		=> 'Lade Dateiliste',
 "ilsubmit"		=> "Suche",
@@ -743,7 +743,7 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[{{ns:i
 'imghistory'		=> 'Dateiversionen',
 "revertimg"		=> "Zurücksetzen",
 "deleteimg"		=> "Löschen",
-"deleteimgcompletely"		=> "Löschen",
+'deleteimgcompletely'	=> 'Alle Versionen dieser Datei löschen',
 'imghistlegend'		=> 'Legende: (Aktuell) = Dies ist die aktuelle Datei, (Löschen) = lösche diese alte Version, (Zurücksetzen) = diese alte Version wiederherstellen.',
 'imagelinks'		=> 'Dateiverweise',
 'linkstoimage'		=> 'Die folgenden Artikel benutzen diese Datei:',
@@ -785,6 +785,7 @@ Daraus ergeben sich \'\'\'$5\'\'\' Bearbeitungen pro Seite und \'\'\'$6\'\'\' Se
 Länge der „Job queue“: \'\'\'$7\'\'\'',
 'userstatstext'		=> 'Es gibt \'\'\'$1\'\'\' registrierte [[{{ns:special}}:Listusers|Benutzer]].
 Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
+'statistics-mostpopular'	=> 'Meist besuchte Seiten',
 
 # Maintenance Page
 #
@@ -820,6 +821,7 @@ Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
 'recentchangeslinked'	=> 'Änderungen an verlinkten Seiten',
 'rclsub'		=> '(auf Artikel von „$1“)',
 "newpages"		=> "Neue Artikel",
+'newpages-username'	=> 'Benutzername:',
 'ancientpages'		=> 'Lange unbearbeitete Artikel',
 "movethispage"	=> "Artikel verschieben",
 'unusedimagestext'	=> '<p>Bitte beachten Sie, dass andere Wikis möglicherweise einige dieser Dateien verwenden.',
@@ -850,12 +852,12 @@ Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
 'allpagesfrom'	=> 'Seiten anzeigen ab:',
 'allpagesprefix'	=> 'Seiten anzeigen mit Präfix:',
 'allarticles'	=> 'Alle Artikel',
-'allnonarticles'	=> 'Alle Nicht-Artikel',
 'allinnamespace'	=> "Alle Seiten im Namensraum: $1",
 'allnotinnamespace'	=> 'Alle Seiten (nicht im $1 Namensraum)',
 'allpagesprev'	=> 'Vorherige',
 'allpagesnext'	=> 'Nächste',
 'allpagessubmit'	=> 'Zeige',
+'allpagesbadtitle'	=> 'Der eingegebene Seitenname ist ungültig: Er hat entweder ein vorangestelltes Sprach-, ein Interwiki-Kürzel oder enthält ein oder mehrere Zeichen, welche in Seitennamen nicht verwendet werden dürfen.',
 
 # Email this user
 #
@@ -880,8 +882,9 @@ Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
 # Beobachtungsliste
 #
 "watchlist"		=> "Beobachtungsliste",
-'watchlistsub'		=> '(für Benutzer „$1“)',
+'watchlistfor'		=> '(für \'\'\'$1\'\'\')',
 "nowatchlist"	=> "Sie haben keine Einträge auf Ihrer Beobachtungsliste.",
+'watchlistanontext'	=> 'Sie müssen sich $1, damit Sie Einträge in Ihrer Beobachtungsliste ansehen oder bearbeiten können.',	// $1 -> 'loginreqlink'
 'watchlistcount'	=> "'''Sie haben $1 Einträge auf Ihrer Beobachtungsliste einschließlich Diskussionsseiten.'''",
 'clearwatchlist'	=> 'Beobachtungsliste löschen',
 'watchlistcleartext'	=> 'Sind Sie sicher, dass Sie diese vollständig löschen wollen?',
@@ -1070,6 +1073,8 @@ Bitte geben Sie den Grund für die Blockade an.',
 "ipaddress"		=> "IP-Adresse",
 'ipadressorusername'	=> 'IP-Adresse oder Benutzername',
 'ipbreason'		=> 'Begründung',
+'ipbanononly'		=> 'Nur anonyme Benutzer sperren',
+'ipbcreateaccount'	=> 'Erstellung von Benutzerkonten verhindern',
 'ipbsubmit'		=> 'Benutzer blockieren',
 'ipbother'		=> 'Andere Dauer',
 'ipboptions'		=> '1 Stunde:1 hour,2 Stunden:2 hours,6 Stunden:6 hours,1 Tag:1 day,3 Tage:3 days,1 Woche:1 week,2 Wochen:2 weeks,1 Monat:1 month,3 Monate:3 months,1 Jahr:1 year,Unbeschränkt:indefinite',
@@ -1082,12 +1087,14 @@ Beachten Sie die [[{{ns:special}}:Ipblocklist|{{int:ipblocklist}}]] für alle ak
 "unblockip"		=> "IP-Adresse freigeben",
 "unblockiptext"	=> "Benutzen Sie das Formular, um eine blockierte IP-Adresse freizugeben.",
 "ipusubmit"		=> "Diese Adresse freigeben",
-'ipusuccess'		=> 'IP-Adresse „$1“ wurde freigegeben',
+'unblocked'		=> '[[{{ns:user}}:$1|$1]] wurde freigegeben',
 "ipblocklist"	=> "Liste blockierter Benutzer/IP-Adressen",
 'ipblocklistempty'	=> 'Die Liste der Benutzersperrungen hat keine Einträge.',
 "blocklistline"	=> "$1, $2 blockierte $3 ($4)",
 'infiniteblock'		=> 'unbegrenzt',
 'expiringblock'		=> 'erlischt $1',
+'anononlyblock'		=> 'nur Anonyme',
+'createaccountblock'	=> 'Erstellung von Benutzerkonten gesperrt',
 "blocklink"		=> "blockieren",
 "unblocklink"	=> "freigeben",
 "contribslink"	=> "Beiträge",
@@ -1106,9 +1113,11 @@ Beachten Sie die [[{{ns:special}}:Ipblocklist|{{int:ipblocklist}}]] für alle ak
 "locknoconfirm" => "Sie haben das Bestätigungsfeld nicht markiert.",
 "lockdbsuccesssub" => "Datenbank wurde erfolgreich gesperrt",
 "unlockdbsuccesssub" => "Datenbank wurde erfolgreich freigegeben",
-"lockdbsuccesstext" => "Die {{SITENAME}}-Datenbank wurde gesperrt.
-<br />Bitte geben Sie die Datenbank wieder frei, sobald die Wartung abgeschlossen ist.",
+'lockdbsuccesstext'	=> 'Die {{SITENAME}}-Datenbank wurde gesperrt.
+<br />Bitte geben Sie die Datenbank [[Special:Unlockdb|wieder frei]], sobald die Wartung abgeschlossen ist.',
 "unlockdbsuccesstext" => "Die {{SITENAME}}-Datenbank wurde freigegeben.",
+'lockfilenotwritable' => 'Die Datenbank-Sperrdatei ist nicht beschreibbar. Zum Sperren oder Freigeben der Datenbank muss diese für den Webserver beschreibbar sein.',
+'databasenotlocked'	=> 'Die Datenbank ist nicht gesperrt.',
 
 # User levels special page
 #
@@ -1188,12 +1197,13 @@ Diskussions-Seite nicht, da schon eine mit dem neuen Titel existiert. Bitte glei
 'exporttext'		=> 'Mit dieser Spezialseite können  Sie den Text (und die Bearbeitungs-/Versionsgeschichte) einzelner Seiten nach XML exportieren.
 Das Ergebnis kann in ein anderes Wiki mit MediaWiki-Software eingespielt, bearbeitet oder archiviert werden.
 
-Tragen Sie einfach den oder die entsprechenden Artikeltitel in das folgende Textfeld ein (pro Zeile jeweils nur für einen Artikel).
+Tragen Sie einfach den oder die entsprechenden Seitentitel in das folgende Textfeld ein (pro Zeile jeweils nur für einen Artikel).
 
-Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ möglich, zum Beispiel [[{{ns:special}}:Export/{{Mediawiki:mainpage}}]] für die [[{{Mediawiki:mainpage}}]].',
+Alternativ ist der Export auch mit der Syntax „Spezial:Export/Seitentitel“ möglich, zum Beispiel [[{{ns:special}}:Export/{{Mediawiki:mainpage}}]] für die [[{{Mediawiki:mainpage}}]].',
 "exportcuronly" => "Nur die aktuelle Version der Seite exportieren",
 'exportnohistory' => '----
 \'\'\'Hinweis:\'\'\' Der Export kompletter Versionsgeschichten ist aus Performancegründen bis auf Weiteres nicht möglich.',
+'export-submit'		=> 'Seiten exportieren',
 "missingimage"          => "<b>Fehlendes Bild</b><br /><i>$1</i>",
 'filemissing' => 'Datei fehlt',
 'thumbnail_error' => 'Fehler beim Erstellen des Vorschaubildes: $1',
@@ -1281,18 +1291,18 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'rcshowhidemine' => 'Eigene Beiträge $1',
 "uploaddisabled"	=> "Entschuldigung, das Hochladen ist deaktiviert.",
 "deadendpages"		=> "Sackgassenartikel",
-"intl"			=> "InterWikiLinks",
+'intl'			=> 'Interwiki Links',
 "version"		=> "Version",
 "log"			=> "Logbücher",
 'alllogstext'		=> 'Kombinierte Anzeige der Datei-, Lösch-, Seitenschutz-, Benutzerblockaden- und Rechte-Logbücher.<br />Sie können die Anzeige durch die Auswahl des Logbuchtyps, des Benutzers oder des Seitentitels einschränken.',
 'logempty'		=> 'Keine passenden Einträge.',
 "protectlogpage"	=> "Seitenschutz-Logbuch",
-'protectlogtext'	=> 'Dies ist eine Liste der blockierten Seiten. Siehe [[{{ns:project}}:Geschützte Seiten]] für mehr Informationen.',
-"protectedarticle" => "Artikel [[$1]] geschützt",
-"unprotectedarticle" => "Artikel [[$1]] freigegeben",
+'protectlogtext'	=> 'Dies ist eine Liste der blockierten Seiten.',
+'protectedarticle'	=> '„[[$1]]“ geschützt',
+'unprotectedarticle'	=> '„[[$1]]“ freigegeben',
 'protectsub'		=> '(Sperren von „$1“)',
 "confirmprotecttext" => "Soll diese Seite wirklich geschützt werden?",
-'protect-text'		=> 'Hier können Sie den Schutzstatus für die Seite \'\'\'$1\'\'\' einsehen und ändern. Bitte stellen Sie sicher, dass Sie die [[{{ns:project}}:Geschützte Seiten|Portalrichtlinien]] einhalten.',
+'protect-text'		=> 'Hier können Sie den Schutzstatus für die Seite \'\'\'$1\'\'\' einsehen und ändern.',
 'protect-level-autoconfirmed'	=> 'nicht registrierte Benuter blocken',
 'protect-level-sysop'	=> 'nur Administratoren',
 'restriction-edit'	=> 'bearbeiten',
@@ -1305,6 +1315,7 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'unblocklogentry'	=> 'Blockade von [[{{ns:user}}:$1]] aufgehoben',
 "range_block_disabled"	=> "Die Möglichkeit, ganze Adressräume zu sperren, ist nicht aktiviert.",
 "ipb_expiry_invalid"	=> "Die angegebeben Ablaufzeit ist ungültig.",
+'ipb_already_blocked'	=> '„$1“ ist bereits gesperrt',
 "ip_range_invalid"	=> "Ungültiger IP-Addressbereich.",
 "confirmprotect" 	=> "Sperrung bestätigen",
 'protectmoveonly'	=> 'Nur vor dem Verschieben schützen',
@@ -1316,6 +1327,7 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'protect-viewtext'	=> 'Sie sind nicht berechtigt, den Seitenschutzstatus zu ändern. Hier ist der aktuelle Schutzstatus der Seite: [[$1]]',
 'protect-default'	=> '(Standard)',
 "proxyblocker"  	=> "Proxyblocker",
+'ipb_cant_unblock'	=> 'Fehler: Block ID $1 nicht gefunden. Die Sperre wurde vermutlich bereits aufgehoben.',
 "proxyblockreason"      => "Ihre IP-Adresse wurde gesperrt, da sie ein offener Proxy ist. Bitte kontaktieren Sie Ihren Provider oder Ihre Systemtechnik und informieren Sie sie über dieses mögliche Sicherheitsproblem.",
 "proxyblocksuccess"     => "Fertig.",
 'sorbs'			=> 'SORBS DNSbl',
@@ -1335,14 +1347,34 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 # Special:Import
 'import'		=> 'Seiten importieren',
 'importinterwiki'	=> 'Transwiki Import',
+'import-interwiki-text'	=> 'Wählen Sie ein Wiki und eine Seite zum Importieren aus.
+Das Datum der jeweiligen Versionen und die Autoren bleiben erhalten.
+Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logbuch]] protokolliert.',
+'import-interwiki-history'	=> 'Alle Versionen dieser Seite kopieren',
+'import-interwiki-submit'	=> 'Import',
+'import-interwiki-namespace'	=> 'Importiere Seiten in Namensraum:',
 'importtext'		=> 'Auf dieser Spezialseite können über [[{{ns:special}}:Export]] exportierte Seiten in dieses Wiki importiert werden.',
+'importstart'		=> 'Importiere Seiten...',
+'import-revision-count'	=> '$1 {{PLURAL:$1|Version|Versionen}}',
+'importnopages'		=> 'Keine Seiten zum Importieren.',
 'importfailed'		=> 'Import fehlgeschlagen: $1',
+'importunknownsource'	=> 'Unbekannte Importquelle',
+'importcantopen'	=> 'Konnte Importdatei nicht öffnen',
+'importbadinterwiki'	=> 'Falscher Interwiki Link',
 'importnotext'		=> 'Leer oder kein Text',
 'importsuccess'		=> 'Import erfolgreich!',
 'importhistoryconflict'	=> 'Es existieren bereits ältere Versionen, die mit diesen kollidieren. (Möglicherweise wurde die Seite bereits vorher importiert)',
 'importnosources'	=> 'Für den Transwiki Import sind keine Quellen definiert. Das direkte Hochladen von Versionen ist blockiert.',
 'importnofile'		=> 'Es ist keine Importdatei ausgewählt worden!',
 'importuploaderror'	=> 'Das Hochladen der Importdatei ist fehlgeschlagen. Vielleicht ist die Datei größer als erlaubt.',
+
+# import log
+'importlogpage'		=> 'Import-Logbuch',
+'importlogpagetext'	=> 'Administrativer Import von Seiten mit Versionsgeschichte von anderen Wikis.',
+'import-logentry-upload'	=> '$1 wurde importiert',
+'import-logentry-upload-detail'	=> '$1 Version(en)',
+'import-logentry-interwiki'	=> '$1 wurde importiert (Transwiki)',
+'import-logentry-interwiki-detail'	=> '$1 Version(en) von $2',
 
 "isbn"			=> "ISBN",
 "siteuser" => "{{SITENAME}}-Benutzer $1",
@@ -1375,7 +1407,6 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 
 # Patrolling
 'markaspatrolleddiff'		=> 'Als geprüft markieren',
-'markaspatrolledlink'		=> '[$1]',
 'markaspatrolledtext'		=> 'Diese Artikeländerung als geprüft markieren',
 'markedaspatrolled'		=> 'Als geprüft markiert',
 'markedaspatrolledtext'		=> 'Die ausgewählte Artikeländerung wurde als geprüft markiert.',
@@ -1490,7 +1521,7 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'exif-gpsdestlatituderef'	=> 'Referenz für die Breite',
 'exif-gpsdestlongitude'		=> 'Länge',
 'exif-gpsdestlongituderef'	=> 'Referenz für die Länge',
-#'exif-gpsdifferential'		=> 'GPS differential correction',
+'exif-gpsdifferential'		=> 'GPS-Differentialkorrektur',
 'exif-gpsdirection-m'		=> 'Magnetische Richtung',
 'exif-gpsdirection-t'		=> 'Tatsächliche Richtung',
 'exif-gpsdop'			=> 'Maßpräzision',
@@ -1508,9 +1539,9 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'exif-gpsmeasuremode'		=> 'Messverfahren',
 'exif-gpsmeasuremode-2'		=> 'zweidimensionale Messung',
 'exif-gpsmeasuremode-3'		=> 'dreidimensionale Messung',
-'exif-gpsprocessingmethod'	=> 'Name des GPS Verfahrens',
+'exif-gpsprocessingmethod'	=> 'Name des GPS-Verfahrens',
 'exif-gpssatellites'		=> 'Für die Messung benutzte Satelliten',
-'exif-gpsspeed'			=> 'Geschwindigkeit des GPS Empfängers',
+'exif-gpsspeed'			=> 'Geschwindigkeit des GPS-Empfängers',
 'exif-gpsspeed-k'		=> 'km/h',
 'exif-gpsspeed-m'		=> 'mph',
 'exif-gpsspeed-n'		=> 'Knoten',
@@ -1521,7 +1552,7 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'exif-gpstimestamp'		=> 'GPS-Zeit',
 'exif-gpstrack'			=> 'Bewegungsrichtung',
 'exif-gpstrackref'		=> 'Referenz für Bewegungsrichtung',
-'exif-gpsversionid'		=> 'GPS Tag-Version',
+'exif-gpsversionid'		=> 'GPS-Tag-Version',
 'exif-imagedescription'		=> 'Bildtitel',
 'exif-imagelength'		=> 'Länge',
 'exif-imageuniqueid'		=> 'Bild-ID',
@@ -1534,10 +1565,10 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'exif-lightsource-1'		=> 'Tageslicht',
 'exif-lightsource-10'		=> 'Bewölkt',
 'exif-lightsource-11'		=> 'Schatten',
-'exif-lightsource-12'		=> 'Tageslicht fluoreszierend (D 5700 – 7100K)',
-'exif-lightsource-13'		=> 'Tagesweiß fluoreszierend (N 4600 – 5400K)',
-'exif-lightsource-14'		=> 'Kaltweiß fluoreszierend (W 3900 – 4500K)',
-'exif-lightsource-15'		=> 'Weiß fluoreszierend (WW 3200 – 3700K)',
+'exif-lightsource-12'		=> 'Tageslicht fluoreszierend (D 5700–7100 K)',
+'exif-lightsource-13'		=> 'Tagesweiß fluoreszierend (N 4600–5400 K)',
+'exif-lightsource-14'		=> 'Kaltweiß fluoreszierend (W 3900–4500 K)',
+'exif-lightsource-15'		=> 'Weiß fluoreszierend (WW 3200–3700 K)',
 'exif-lightsource-17'		=> 'Standardlicht A',
 'exif-lightsource-18'		=> 'Standardlicht B',
 'exif-lightsource-19'		=> 'Standardlicht C',
@@ -1552,7 +1583,6 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'exif-lightsource-4'		=> 'Blitz',
 'exif-lightsource-9'		=> 'Schönes Wetter',
 'exif-make'			=> 'Hersteller',
-'exif-make-value'		=> '[[$1]]',
 'exif-makernote'		=> 'Herstellernotiz',
 'exif-maxaperturevalue'		=> 'Größte Blende',
 'exif-meteringmode'		=> 'Messverfahren',
@@ -1565,7 +1595,6 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'exif-meteringmode-5'		=> 'Muster',
 'exif-meteringmode-6'		=> 'Bildteil',
 'exif-model'			=> 'Modell',
-'exif-model-value'		=> '$1',
 'exif-oecf'			=> 'Optoelektronischer Umrechnungsfaktor',
 'exif-orientation'		=> 'Kameraausrichtung',
 'exif-orientation-1'		=> 'Normal',
@@ -1583,7 +1612,7 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'exif-pixelydimension'		=> 'Gültige Bildbreite',
 'exif-planarconfiguration'	=> 'Datenausrichtung',
 'exif-planarconfiguration-1'	=> 'Grobformat',
-'exif-planarconfiguration-2'	=> 'Planar Format',
+'exif-planarconfiguration-2'	=> 'Planarformat',
 #'exif-primarychromaticities'	=> 'Chromaticities of primarities',
 'exif-referenceblackwhite'	=> 'Schwarz/Weiß-Referenzpunkte',
 'exif-relatedsoundfile'		=> 'Zugehörige Tondatei',
@@ -1615,7 +1644,6 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 'exif-sharpness-2'		=> 'Stark',
 'exif-shutterspeedvalue'	=> 'Belichtungszeitwert',
 'exif-software'			=> 'Software',
-'exif-software-value'		=> '$1',
 #'exif-spatialfrequencyresponse'	=> 'Spatial frequency response',
 'exif-spectralsensitivity'	=> 'Spectral Sensitivity',
 #'exif-stripbytecounts'		=> 'Bytes per compressed strip',
@@ -1655,9 +1683,7 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Artikeltitel“ 
 
 # E-mail address confirmation
 'confirmemail'		=> 'Bestätigung der E-Mail-Adresse (Authentifizierung)',
-'confirmemail_text'	=> 'Dieses Wiki erfordert, dass Sie Ihre E-Mail-Adresse bestätigen (authentifizieren),
-bevor Sie die erweiterten E-Mail-Funktionen benutzen können. Ein Klick auf die Schaltfläche unten sendet eine E-Mail an Sie.
-Diese E-Mail enthält einen Link mit einem Bestätigungs-Code; durch Klicken auf diesen Link wird bestätigt, dass Ihre Adresse gültig ist.',
+'confirmemail_text'	=> 'Dieses Wiki erfordert, dass Sie Ihre E-Mail-Adresse bestätigen (authentifizieren), bevor Sie die erweiterten E-Mail-Funktionen benutzen können. Durch einen Klick auf die Schaltfläche unten wird eine E-Mail an Sie gesendet. Diese E-Mail enthält einen Link mit einem Bestätigungs-Code. Durch Klicken auf diesen Link wird bestätigt, dass Ihre E-Mail-Adresse gültig ist.',
 'confirmemail_send' => 'Anforderung einer E-Mail zur Adressenbestätigung',
 'confirmemail_sent' => 'Es wurde Ihnen eine E-Mail zur Adressenbestätigung gesendet.',
 'confirmemail_sendfailed' => 'Eine Bestätigung konnte auf Grund einer Fehlkonfiguration des Servers oder ungültigen Zeichen in der E-Mail-Adresse nicht verschickt werden.',
@@ -1670,7 +1696,7 @@ Diese E-Mail enthält einen Link mit einem Bestätigungs-Code; durch Klicken auf
 'confirmemail_subject'	=> '[{{SITENAME}}] Bestätigung Ihrer E-Mail-Adresse',
 'confirmemail_body'	=> 'Hallo,
 
-jemand mit der IP-Adresse $1, wahrscheinlich Sie selbst, hat eine Bestätigung dieser E-Mail-Adresse für das Benutzerkonto „$2“ für {{SITENAME}} angefordert.
+jemand mit der IP-Adresse $1, wahrscheinlich Sie selbst, hat eine Bestätigung dieser E-Mail-Adresse für das Benutzerkonto "$2" für {{SITENAME}} angefordert.
 
 Um die E-Mail-Funktion für {{SITENAME}} (wieder) zu aktivieren und um zu bestätigen, dass dieses Benutzerkonto wirklich zu Ihrer E-Mail-Adresse und damit zu Ihnen gehört, öffnen Sie bitte folgenden Link in Ihrem Browser: $3
 
@@ -1687,7 +1713,7 @@ Wenn diese E-Mail-Adresse *nicht* zu dem genannten Benutzerkonto gehört, folgen
 'createarticle' => 'Artikel anlegen',
 
 # Scary transclusion
-'scarytranscludedisabled' => '[Interwiki-Einbindung ist deaktiviert]',
+'scarytranscludedisabled'	=> '[Interwiki Einbindung ist deaktiviert]',
 'scarytranscludefailed' => '[Vorlageneinbindung für $1 ist gescheitert]',
 'scarytranscludetoolong' => '[URL ist zu lang; Entschuldigung]',
 
@@ -1717,7 +1743,7 @@ Bitte bestätigen Sie, dass Sie diese Seite wirklich neu erstellen möchten.',
 
 # Monobook.js: tooltips and access keys for monobook
 'Monobook.js' => '/* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Eigene Benutzerseite\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Benutzerseite der IP-Adresse von der aus Sie Änderungen durchführen\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Eigene Diskussionsseite\');

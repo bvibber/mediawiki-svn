@@ -125,7 +125,7 @@ un dat [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 'articlepage'             => 'Artikel',
 'subjectpage'             => 'Bedrap ankieken',
 'toolbox'               => 'Warktüüch',
-'wikipediapage'         => 'Meta-Text',
+'projectpage'         => 'Meta-Text',
 'userpage'              => 'Brukersiet',
 'imagepage'             => 'Bildsiet',
 'viewtalkpage'          => 'Diskuschoon',
@@ -134,8 +134,6 @@ un dat [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 'lastmodified'           => 'Disse Siet is toletzt üm $1 ännert worrn.',
 'viewcount'                        => 'Disse Siet is $1 Maal opropen worrn.',
 'copyright'             => 'De Inholt is verfögbor ünner de $1.',
-'poweredby'                 => '{{SITENAME}} bruukt [http://www.mediawiki.org/ MediaWiki], en Wiki-Software mit apen Borntext.',
-'printsubtitle'         => '(Vun {{SERVER}})',
 'protectedpage'         => 'Schulte Sieten',
 'administrators'        => '{{ns:4}}:Administratern',
 'sysoptitle'               => 'Sysop-Togang notwennig',
@@ -161,7 +159,7 @@ un dat [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 'nstab-user'            => 'Brukersiet',
 'nstab-media'           => 'Media',
 'nstab-special'         => 'Spezial',
-'nstab-wp'              => 'Över',
+'nstab-project'              => 'Över',
 'nstab-image'           => 'Bild',
 'nstab-mediawiki'       => 'Noricht',
 'nstab-template'        => 'Vörlaag',
@@ -253,7 +251,6 @@ Vergeet nich, dien [[Special:Preferences|Instellen]] antopassen.',
 'yourname'                      => 'Dien Brukernaam',
 'yourpassword'           => 'Dien Password',
 'yourpasswordagain'     => 'Password nochmal ingeven',
-'newusersonly'          => ' (blots för niege Liddmaten)',
 'remembermypassword'    => 'Duersam inloggen',
 'loginproblem'           => '<b>Dor weer en Problem mit dien Anmellen.</b><br />Versöök dat noch eenmal!',
 'alreadyloggedin'       => '<strong>Bruker $1, du büst al anmellt!</strong><br />',
@@ -407,7 +404,8 @@ L = Lütte Ännern',
 #
 'searchresults'     => 'Söökresultaten',
 'searchresulttext'  => 'För mehr Informatschonen över {{SITENAME}}, kiek [[{{ns:4}}:Söök|{{SITENAME}} dörsöken]].',
-'searchquery'         => 'För de Söökanfraag „$1“',
+'searchsubtitle'         => 'För de Söökanfraag „[[:$1]]“',
+'searchsubtitleinvalid'         => 'För de Söökanfraag „$1“',
 'badquery'                      => 'Falsche Söökanfraag',
 'badquerytext'       => 'De Söökanfraag kunn nich verarbeid warrn.
 Sachts hest du versöökt, en Word to söken, dat kötter as twee Bookstaven is.
@@ -998,7 +996,7 @@ Kontakteer dien Provider oder diene Systemtechnik un informeer se över dat mö�
 
 # Monobook.js: tooltips and access keys for monobook
 'Monobook.js'           => '/* Tooltips un Togriepslötel */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Mien Brukersiet\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'De Brukersiet för de IP-Adress ünner de du schriffst\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Mien Diskuschoonssiet\');
@@ -1041,7 +1039,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Siet ankieken\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Brukersiet ankieken\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Mediensiet ankieken\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Dit is en Spezialsiet, du kannst disse Siet nich ännern.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Portalsiet ankieken\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Portalsiet ankieken\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Bildsiet ankieken\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Systemnorichten ankieken\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Vörlaag ankieken\');

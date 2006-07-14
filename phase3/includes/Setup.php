@@ -8,7 +8,10 @@
  * This file is not a valid entry point, perform no further processing unless
  * MEDIAWIKI is defined
  */
-if( defined( 'MEDIAWIKI' ) ) {
+if( !defined( 'MEDIAWIKI' ) ) {
+	echo "This file is part of MediaWiki, it is not a valid entry point.\n";
+	exit( 1 );
+}	
 
 # The main wiki script and things like database
 # conversion and maintenance scripts all share a
@@ -16,61 +19,35 @@ if( defined( 'MEDIAWIKI' ) ) {
 # setting up a few globals.
 #
 
+$fname = 'Setup.php';
+wfProfileIn( $fname );
+
 // Check to see if we are at the file scope
 if ( !isset( $wgVersion ) ) {
 	echo "Error, Setup.php must be included from the file scope, after DefaultSettings.php\n";
 	die( 1 );
 }
 
-if( !isset( $wgProfiling ) )
-	$wgProfiling = false;
-
-require_once( 'AutoLoader.php' );
-
-if ( function_exists( 'wfProfileIn' ) ) {
-	/* nada, everything should be done already */
-} elseif ( $wgProfiling and (0 == rand() % $wgProfileSampleRate ) ) {
-	$wgProfiling = true;
-	if ($wgProfilerType == "") {
-		$wgProfiler = new Profiler();
-	} else {
-		$prclass="Profiler{$wgProfilerType}";
-		require_once( $prclass.".php" );
-		$wgProfiler = new $prclass();
-	}
-} else {
-	require_once( 'ProfilerStub.php' );
-}
-
-$fname = 'Setup.php';
-wfProfileIn( $fname );
+require_once( "$IP/includes/AutoLoader.php" );
 
 wfProfileIn( $fname.'-exception' );
-require_once( 'Exception.php' );
+require_once( "$IP/includes/Exception.php" );
 wfInstallExceptionHandler();
 wfProfileOut( $fname.'-exception' );
 
 wfProfileIn( $fname.'-includes' );
 
-require_once( 'GlobalFunctions.php' );
-require_once( 'Hooks.php' );
-require_once( 'Namespace.php' );
-require_once( 'User.php' );
-require_once( 'Skin.php' );
-require_once( 'OutputPage.php' );
-require_once( 'MagicWord.php' );
-require_once( 'Block.php' );
-require_once( 'MessageCache.php' );
-require_once( 'Parser.php' );
-require_once( 'LoadBalancer.php' );
-require_once( 'HistoryBlob.php' );
-require_once( 'ProxyTools.php' );
-require_once( 'ObjectCache.php' );
-require_once( 'SpecialPage.php' );
-
-if ( $wgUseDynamicDates ) {
-	require_once( 'DateFormatter.php' );
-}
+require_once( "$IP/includes/GlobalFunctions.php" );
+require_once( "$IP/includes/Hooks.php" );
+require_once( "$IP/includes/Namespace.php" );
+require_once( "$IP/includes/User.php" );
+require_once( "$IP/includes/OutputPage.php" );
+require_once( "$IP/includes/MessageCache.php" );
+require_once( "$IP/includes/Parser.php" );
+require_once( "$IP/includes/LoadBalancer.php" );
+require_once( "$IP/includes/ProxyTools.php" );
+require_once( "$IP/includes/ObjectCache.php" );
+require_once( "$IP/includes/ImageFunctions.php" );
 
 wfProfileOut( $fname.'-includes' );
 wfProfileIn( $fname.'-misc1' );
@@ -129,9 +106,8 @@ if ( $wgDBprefix ) {
 
 # If session.auto_start is there, we can't touch session name
 #
-if (!ini_get('session.auto_start')) {
-	session_name( $wgCookiePrefix . '_session' );
-}
+if( !ini_get( 'session.auto_start' ) )
+	session_name( $wgSessionName ? $wgSessionName : $wgCookiePrefix . '_session' );
 
 if( !$wgCommandLineMode && ( isset( $_COOKIE[session_name()] ) || isset( $_COOKIE[$wgCookiePrefix.'Token'] ) ) ) {
 	wfIncrStats( 'request_with_session' );
@@ -255,8 +231,7 @@ if( $wgLangClass == $wgContLangClass ) {
 wfProfileOut( $fname.'-language2' );
 wfProfileIn( $fname.'-MessageCache' );
 
-$wgMessageCache = new MessageCache;
-$wgMessageCache->initialise( $parserMemc, $wgUseDatabaseMessages, $wgMsgCacheExpiry, $wgDBname);
+$wgMessageCache = new MessageCache( $parserMemc, $wgUseDatabaseMessages, $wgMsgCacheExpiry, $wgDBname);
 
 wfProfileOut( $fname.'-MessageCache' );
 
@@ -292,15 +267,8 @@ wfProfileIn( $fname.'-misc2' );
 $wgDeferredUpdateList = array();
 $wgPostCommitUpdateList = array();
 
-$wgMagicWords = array();
-$wgMwRedir =& MagicWord::get( MAG_REDIRECT );
+$wgParser = new Parser();
 
-if ( $wgUseXMLparser ) {
-	require_once( 'ParserXML.php' );
-	$wgParser = new ParserXML();
-} else {
-	$wgParser = new Parser();
-}
 $wgOut->setParserOptions( ParserOptions::newFromUser( $wgUser ) );
 $wgMsgParserOptions = ParserOptions::newFromUser($wgUser);
 wfSeedRandom();
@@ -332,5 +300,4 @@ $wgFullyInitialised = true;
 wfProfileOut( $fname.'-extensions' );
 wfProfileOut( $fname );
 
-}
 ?>

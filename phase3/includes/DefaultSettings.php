@@ -32,7 +32,7 @@ require_once( 'includes/SiteConfiguration.php' );
 $wgConf = new SiteConfiguration;
 
 /** MediaWiki version number */
-$wgVersion			= '1.7alpha';
+$wgVersion			= '1.8alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -115,8 +115,8 @@ $wgStylePath   = "{$wgScriptPath}/skins";
 $wgStyleDirectory = "{$IP}/skins";
 $wgStyleSheetPath = &$wgStylePath;
 $wgArticlePath      = "{$wgScript}?title=$1";
-$wgUploadPath       = "{$wgScriptPath}/upload";
-$wgUploadDirectory	= "{$IP}/upload";
+$wgUploadPath       = "{$wgScriptPath}/images";
+$wgUploadDirectory	= "{$IP}/images";
 $wgHashedUploadDirectory	= true;
 $wgLogo				= "{$wgUploadPath}/wiki.png";
 $wgFavicon			= '/favicon.ico';
@@ -431,6 +431,8 @@ $wgSMTP				= false;
  */
 /** database host name or ip address */
 $wgDBserver         = 'localhost';
+/** database port number */
+$wgDBport           = '';
 /** name of the database */
 $wgDBname           = 'wikidb';
 /** */
@@ -449,11 +451,6 @@ $wgDBtype           = "mysql";
 $wgSearchType	    = null;
 /** Table name prefix */
 $wgDBprefix         = '';
-/** Database schema
- * on some databases this allows separate
- * logical namespace for application data
- */
-$wgDBschema	    = 'mediawiki';
 /**#@-*/
 
 /** Live high performance sites should disable this - some checks acquire giant mysql locks */
@@ -499,7 +496,7 @@ $wgDBservers		= false;
 /** How long to wait for a slave to catch up to the master */
 $wgMasterWaitTimeout = 10;
 
-/** File to log MySQL errors to */
+/** File to log database errors to */
 $wgDBerrorLog		= false;
 
 /** When to give an error message */
@@ -885,6 +882,10 @@ $wgGroupPermissions['user' ]['minoredit']       = true;
 // Implicit group for accounts that pass $wgAutoConfirmAge
 $wgGroupPermissions['autoconfirmed']['autoconfirmed'] = true;
 
+// Implicit group for accounts with confirmed email addresses
+// This has little use when email address confirmation is off
+$wgGroupPermissions['emailconfirmed']['emailconfirmed'] = true;
+
 // Users with bot privilege can have their edits hidden
 // from various log pages by default
 $wgGroupPermissions['bot'  ]['bot']             = true;
@@ -1109,6 +1110,9 @@ $wgCookiePath = '/';
 $wgCookieSecure = ($wgProto == 'https');
 $wgDisableCookieCheck = false;
 
+/** Override to customise the session name */
+$wgSessionName = false;
+
 /**  Whether to allow inline image pointing to other websites */
 $wgAllowExternalImages = false;
 
@@ -1131,6 +1135,8 @@ $wgUseWatchlistCache = false;
 $wgWLCacheTimeout = 3600;
 /** Number of links to a page required before it is deemed "wanted" */
 $wgWantedPagesThreshold = 1;
+/** Enable slow parser functions */
+$wgAllowSlowParserFunctions = false;
 
 /**
  * To use inline TeX, you need to compile 'texvc' (in the 'math' subdirectory of
@@ -1147,21 +1153,17 @@ $wgTexvc = './math/texvc';
 #
 # You have to create a 'profiling' table in your database before using
 # profiling see maintenance/archives/patch-profiling.sql .
+#
+# To enable profiling, edit StartProfiler.php
 
-/** Enable for more detailed by-function times in debug log */
-$wgProfiling = false;
 /** Only record profiling info for pages that took longer than this */
 $wgProfileLimit = 0.0;
 /** Don't put non-profiling info into log file */
 $wgProfileOnly = false;
 /** Log sums from profiling into "profiling" table in db. */
 $wgProfileToDatabase = false;
-/** Only profile every n requests when profiling is turned on */
-$wgProfileSampleRate = 1;
 /** If true, print a raw call tree instead of per-function report */
 $wgProfileCallTree = false;
-/** If not empty, specifies profiler type to load */
-$wgProfilerType = '';
 /** Should application server host be put into profiling table */
 $wgProfilePerHost = false;
 
@@ -1274,7 +1276,7 @@ $wgCheckFileExtensions = true;
  */
 $wgStrictFileExtensions = true;
 
-/** Warn if uploaded files are larger than this */
+/** Warn if uploaded files are larger than this (in bytes)*/
 $wgUploadSizeWarning = 150 * 1024;
 
 /** For compatibility with old installations set to false */
@@ -1378,6 +1380,14 @@ $wgThumbnailEpoch = '20030516000000';
  */
 $wgIgnoreImageErrors = false;
 
+/**
+ * Allow thumbnail rendering on page view. If this is false, a valid 
+ * thumbnail URL is still output, but no file will be created at 
+ * the target location. This may save some time if you have a 
+ * thumb.php or 404 handler set up which is faster than the regular 
+ * webserver(s).  
+ */
+$wgGenerateThumbnailOnParse = true;
 
 /** Set $wgCommandLineMode if it's not set already, to avoid notices */
 if( !isset( $wgCommandLineMode ) ) {
@@ -1465,11 +1475,28 @@ $wgCapitalLinks = true;
 $wgImportSources = array();
 
 /**
+ * Optional default target namespace for interwiki imports.
+ * Can use this to create an incoming "transwiki"-style queue.
+ * Set to numeric key, not the name.
+ *
+ * Users may override this in the Special:Import dialog.
+ */
+$wgImportTargetNamespace = null;
+
+/**
  * If set to false, disables the full-history option on Special:Export.
  * This is currently poorly optimized for long edit histories, so is
  * disabled on Wikimedia's sites.
  */
 $wgExportAllowHistory = true;
+
+/**
+ * If set nonzero, Special:Export requests for history of pages with
+ * more revisions than this will be rejected. On some big sites things
+ * could get bogged down by very very long pages.
+ */
+$wgExportMaxHistory = 0;
+
 $wgExportAllowListContributors = false ;
 
 
@@ -1532,12 +1559,40 @@ $wgDefaultUserOptions = array();
 /** Whether or not to allow and use real name fields. Defaults to true. */
 $wgAllowRealName = true;
 
-/** Use XML parser? */
-$wgUseXMLparser = false ;
+/*****************************************************************************
+ *  Extensions 
+ */
 
-/** Extensions */
-$wgSkinExtensionFunctions = array();
+/**
+ * A list of callback functions which are called once MediaWiki is fully initialised
+ */
 $wgExtensionFunctions = array();
+
+/**
+ * Extension functions for initialisation of skins. This is called somewhat earlier 
+ * than $wgExtensionFunctions.
+ */
+$wgSkinExtensionFunctions = array();
+
+/**
+ * List of valid skin names.
+ * The key should be the name in all lower case, the value should be a display name.
+ * The default skins will be added later, by Skin::getSkinNames(). Use 
+ * Skin::getSkinNames() as an accessor if you wish to have access to the full list.
+ */
+$wgValidSkinNames = array();
+
+/**
+ * Special page list.
+ * See the top of SpecialPage.php for documentation.
+ */
+$wgSpecialPages = array(); 
+
+/**
+ * Array mapping class names to filenames, for autoloading.
+ */
+$wgAutoloadClasses = array();
+
 /**
  * An array of extension types and inside that their names, versions, authors
  * and urls, note that the version and url key can be omitted.
@@ -1554,6 +1609,9 @@ $wgExtensionFunctions = array();
  * Where $type is 'specialpage', 'parserhook', or 'other'.
  */
 $wgExtensionCredits = array();
+/*
+ * end extensions
+ ******************************************************************************/
 
 /**
  * Allow user Javascript page?
@@ -1775,7 +1833,14 @@ $wgHooks = array();
  * an action, which is a specific kind of event that can exist in that
  * log type.
  */
-$wgLogTypes = array( '', 'block', 'protect', 'rights', 'delete', 'upload', 'move' );
+$wgLogTypes = array( '',
+	'block',
+	'protect',
+	'rights',
+	'delete',
+	'upload',
+	'move',
+	'import' );
 
 /**
  * Lists the message key string for each log type. The localized messages
@@ -1790,7 +1855,8 @@ $wgLogNames = array(
 	'rights'  => 'rightslog',
 	'delete'  => 'dellogpage',
 	'upload'  => 'uploadlogpage',
-	'move'    => 'movelogpage' );
+	'move'    => 'movelogpage',
+	'import'  => 'importlogpage' );
 
 /**
  * Lists the message key string for descriptive text to be shown at the
@@ -1805,7 +1871,8 @@ $wgLogHeaders = array(
 	'rights'  => 'rightslogtext',
 	'delete'  => 'dellogpagetext',
 	'upload'  => 'uploadlogpagetext',
-	'move'    => 'movelogpagetext' );
+	'move'    => 'movelogpagetext',
+	'import'  => 'importlogpagetext', );
 
 /**
  * Lists the message key string for formatting individual events of each
@@ -1825,7 +1892,9 @@ $wgLogActions = array(
 	'upload/upload'     => 'uploadedimage',
 	'upload/revert'     => 'uploadedimage',
 	'move/move'         => '1movedto2',
-	'move/move_redir'   => '1movedto2_redir' );
+	'move/move_redir'   => '1movedto2_redir',
+	'import/upload'     => 'import-logentry-upload',
+	'import/interwiki'  => 'import-logentry-interwiki' );
 
 /**
  * Experimental preview feature to fetch rendered text
@@ -2052,15 +2121,10 @@ $wgAllowCategorizedRecentChanges = false ;
 /**
  * Number of jobs to perform per request. May be less than one in which case
  * jobs are performed probabalistically. If this is zero, jobs will not be done
- * during ordinary apache requests. In this case, maintenance/doJobs.php should
+ * during ordinary apache requests. In this case, maintenance/runJobs.php should
  * be run periodically.
  */
 $wgJobRunRate = 1;
-
-/**
- * Log file for job execution
- */
-$wgJobLogFile = false;
 
 /**
  * Number of rows to update per job

@@ -345,8 +345,8 @@ Alli nöiere Versione wärden überschribe, we du uf «Syte spychere» drücksch
 'copyrightwarning2'     => 'Dängge Si dra, dass alli Änderige {{GRAMMAR:dativ {{SITENAME}}}} vo andere Benutzer wiedr gänderet odr glöscht wärde chönne. Wenn Si nit wänn, dass ander Lüt an Ihrem tekscht ummedoktere denn schicke Si ihn jetz nit ab.<br />
 Si verspräche uns usserdäm, dass Si des alles selber gschriebe oder vo nere Quälle kopiert hen, wo Public Domain odr sunscht frei isch (lueg $1 für Details).
 <strong>SETZE SI DO OHNI ERLAUBNIS CHEINI URHEBERRÄCHTLICH GSCHÜTZTI WÄRK INE!</strong>',
-'longpagewarning'       => '<font color="red">WARNIG</font>: Die Syten isch $1KB groß; elteri Browser chönnte Problem ha, Sytene z bearbeite wo gröser sy als 32KB. Überleg bitte, öb du Abschnitte vo dere Syte zu eigete Sytene chönntsch usboue.',
-'protectedpagewarning'  => '<font color="red">WARNIG:</font> Die Syten isch gsperrt worde, so das se nume Benutzer mit Sysop-Rechten chöi verändere. Bitte häb di a d [[Project:Geschützte Seiten|Regle für gschützti Syte]].',
+'longpagewarning'       => '<span style="color:#ff0000">WARNIG:</span> Die Syten isch $1KB groß; elteri Browser chönnte Problem ha, Sytene z bearbeite wo gröser sy als 32KB. Überleg bitte, öb du Abschnitte vo dere Syte zu eigete Sytene chönntsch usboue.',
+'protectedpagewarning'  => '<span style="color:#ff0000">WARNIG:</span> Die Syten isch gsperrt worde, so das se nume Benutzer mit Sysop-Rechten chöi verändere. Bitte häb di a d [[Project:Geschützte Seiten|Regle für gschützti Syte]].',
 'semiprotectedpagewarning'=> '\'\'\'\'\'Halbsperrung\'\'\': Diese Seite kann von angemeldeten Benutzern bearbeitet werden. Für nicht angemeldete oder gerade eben erst angemeldete Benutzer ist der Schreibzugang gesperrt.\'\'',
 'templatesused'         => 'Selli Vorlage wärde in sellem Artikel bruucht:',
 'edittools'             => '<!-- Selle Text wird untr em "ändere"-Formular un bim "Uffelade"-Formular aagzeigt. -->',
@@ -360,7 +360,7 @@ Si verspräche uns usserdäm, dass Si des alles selber gschriebe oder vo nere Qu
 'cur'                   => 'Jetz',
 'next'                  => 'Nächschti',
 'last'                  => 'vorane',
-'histlegend'            => 'Du chasch zwei Versionen uswähle und verglyche.<br/>
+'histlegend'            => 'Du chasch zwei Versionen uswähle und verglyche.<br />
 Erklärig: (aktuell) = Underschid zu jetz,
 (vorane) = Underschid zur alte Version, <strong>K</strong> = chlyni Änderig',
 'histfirst'             => 'Eltischti',
@@ -369,7 +369,8 @@ Erklärig: (aktuell) = Underschid zu jetz,
 'compareselectedversions'=> 'Usgwählti Versione verglyche',
 'searchresults'         => 'Suech-Ergäbnis',
 'searchresulttext'      => 'Für wiiteri Informatione zuem Sueche uff {{SITENAME}} chönne Si mol uff [[Project:Searching|{{SITENAME}} duresueche]] luege.',
-'searchquery'           => 'Für d Suechaafrag «$1»',
+'searchsubtitle'           => 'Für d Suechaafrag «[[:$1]]»',
+'searchsubtitleinvalid'           => 'Für d Suechaafrag «$1»',
 'prevn'                 => 'vorderi $1',
 'nextn'                 => 'nächschti $1',
 'viewprevnext'          => '($1) ($2) aazeige; ($3) uf ds Mal',
@@ -423,7 +424,7 @@ $2 Zeige auch REDIRECTs   Suche nach $3 $9',
 Nicht selektierte Gruppen werden nicht geändert. Eine Selektion kann mit Strg + Linksklick (bzw. Ctrl + Linksklick) entfernt werden.',
 'recentchanges'         => 'Letschti Änderige',
 'recentchangestext'     => 'Uff sellere Syte chönne Si die letschte Änderige in sellem Wiki aaluege.',
-'rcnote'                => 'Anzeig: <b>$1</b> Änderige; <b>$2</b> Täg   (<b>N</b> = nöji Artikel; <b>K</b> = chlyni Änderig; <b><font color="red">!</font></b> = unprüeft)',
+'rcnote'                => 'Anzeig: <b>$1</b> Änderige; <b>$2</b> Täg   (<b>N</b> = nöji Artikel; <b>K</b> = chlyni Änderig; <b><span style="color:#ff0000">!</span></b> = unprüeft)',
 'rcnotefrom'            => 'Dies sind die Änderungen seit <b>$2</b> (bis zu <b>$1</b> gezeigt).',
 'rclistfrom'            => '<small>Nöji Änderige ab $1 aazeige (UTC)</small>',
 'rcshowhideminor'       => 'Chlynigkeite $1',
@@ -522,7 +523,6 @@ Si chönnet d Aazeig iischränke wenn Si e Protokoll, e Benutzername odr e Syten
 'nextpage'              => 'Nächscht Syte ($1)',
 'allpagesfrom'          => 'Syte aazeige vo:',
 'allarticles'           => 'alli Artikel',
-'allnonarticles'        => 'alli Systene wo cheini Artikel sin',
 'allinnamespace'        => 'alli Sytene im Namensruum $1',
 'allnotinnamespace'     => 'alli Sytene wo nit im $1 Namensruum sin',
 'allpagesprev'          => 'Füehrigs',
@@ -594,7 +594,7 @@ Hilf zue de Benutzig gits uff {{fullurl:WikiHelpdesk}}',
 'excontentauthor'       => 'einzigen Inhalt: \'$1\' (bearbeitet worde nume dür \'$2\')',
 'confirmdelete'         => 'Löschig bestätige',
 'deletesub'             => '(«$1» lösche)',
-'historywarning'        => '<font color="red">WARNUNG:</font> Die Seite die Sie zu löschen gedenken hat eine Versionsgeschichte:',
+'historywarning'        => '<span style="color:#ff0000">WARNUNG:</span> Die Seite die Sie zu löschen gedenken hat eine Versionsgeschichte:',
 'confirmdeletetext'     => 'Du bisch drann, en Artikel oder es Bild mitsamt Versionsgschicht permanänt us der Datebank z lösche.
 Bitte bis dir über d Konsequänze bewusst, u bis sicher, das du di a üsi [[Project:Leitlinien|Leitlinien]] haltisch.',
 'actioncomplete'        => 'Uftrag usgfuehrt.',
@@ -687,7 +687,7 @@ I söttigne Fäll müessti d Diskussionssyten allefalls vo Hand kopiert wärde.'
 'markaspatrolleddiff'   => 'Als geprüft markiere',
 'markaspatrolledtext'   => 'Den Artikel als geprüft markiere',
 'markedaspatrolledtext' => 'Die usgwählte Artikeländerung isch als geprüft markiert worre.',
-'Monobook.js'           => ' ta = new Object();
+'Monobook.js'           => ' var ta = new Object();
  ta[\'pt-userpage\'] = new Array(\'.\',\'Myni Benutzersyte\');
  ta[\'pt-mytalk\'] = new Array(\'n\',\'Myni Diskussionssyte\');
  ta[\'pt-preferences\'] = new Array(\'\',\'Myni Ystellige\');

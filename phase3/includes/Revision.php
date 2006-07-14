@@ -25,7 +25,7 @@ class Revision {
 	 * @static
 	 * @access public
 	 */
-	function newFromId( $id ) {
+	public static function newFromId( $id ) {
 		return Revision::newFromConds(
 			array( 'page_id=rev_page',
 			       'rev_id' => intval( $id ) ) );
@@ -42,7 +42,7 @@ class Revision {
 	 * @access public
 	 * @static
 	 */
-	function newFromTitle( &$title, $id = 0 ) {
+	public static function newFromTitle( &$title, $id = 0 ) {
 		if( $id ) {
 			$matchId = intval( $id );
 		} else {
@@ -66,7 +66,7 @@ class Revision {
 	 * @return Revision
 	 * @access public
 	 */
-	function loadFromPageId( &$db, $pageid, $id = 0 ) {
+	public static function loadFromPageId( &$db, $pageid, $id = 0 ) {
 		$conds=array('page_id=rev_page','rev_page'=>intval( $pageid ), 'page_id'=>intval( $pageid ));
 		if( $id ) {
 			$conds['rev_id']=intval($id);
@@ -130,7 +130,7 @@ class Revision {
 	 * @static
 	 * @access private
 	 */
-	function newFromConds( $conditions ) {
+	private static function newFromConds( $conditions ) {
 		$db =& wfGetDB( DB_SLAVE );
 		$row = Revision::loadFromConds( $db, $conditions );
 		if( is_null( $row ) ) {
@@ -150,7 +150,7 @@ class Revision {
 	 * @static
 	 * @access private
 	 */
-	function loadFromConds( &$db, $conditions ) {
+	private static function loadFromConds( &$db, $conditions ) {
 		$res = Revision::fetchFromConds( $db, $conditions );
 		if( $res ) {
 			$row = $res->fetchObject();
@@ -192,7 +192,7 @@ class Revision {
 	 * @static
 	 * @access public
 	 */
-	function fetchRevision( &$title ) {
+	public static function fetchRevision( &$title ) {
 		return Revision::fetchFromConds(
 			wfGetDB( DB_SLAVE ),
 			array( 'rev_id=page_latest',
@@ -212,7 +212,7 @@ class Revision {
 	 * @static
 	 * @access private
 	 */
-	function fetchFromConds( &$db, $conditions ) {
+	private static function fetchFromConds( &$db, $conditions ) {
 		$res = $db->select(
 			array( 'page', 'revision' ),
 			array( 'page_namespace',
@@ -767,6 +767,23 @@ class Revision {
 				array( 'rev_id' => $id ), __METHOD__ );
 		}
 		return $timestamp;
+	}
+	
+	static function countByPageId( $db, $id ) {
+		$row = $db->selectRow( 'revision', 'COUNT(*) AS revCount',
+			array( 'rev_page' => $id ), __METHOD__ );
+		if( $row ) {
+			return $row->revCount;
+		}
+		return 0;
+	}
+	
+	static function countByTitle( $db, $title ) {
+		$id = $title->getArticleId();
+		if( $id ) {
+			return Revision::countByPageId( $db, $id );
+		}
+		return 0;
 	}
 }
 

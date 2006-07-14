@@ -162,7 +162,7 @@ agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar ú
 'views' => 'Tuairimí',
 'toolbox' => 'Bosca uirlisí',
 "userpage"      => "Féach ar lch úsáideora",
-"wikipediapage" => "Féach ar lch thionscadail",
+"projectpage" => "Féach ar lch thionscadail",
 "imagepage"     => "Féach ar lch íomhá",
 "viewtalkpage"  => "Féach ar phlé",
 "otherlanguages"    => "I dteangacha eile",
@@ -170,8 +170,6 @@ agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar ú
 "lastmodified"  => "Athraíodh an leathanach seo ag $1.",
 "viewcount"     => "Rochtainíodh an leathanach seo $1 uair.",
 'copyright'     => "Tá an t-ábhar le fáil faoin $1.",
-'poweredby'     => "Cumhachtaítear {{SITENAME}} ag [http://www.mediawiki.org/ MediaWiki], vicí-inneall le foinse oscailte.",
-"printsubtitle" => "(Ó {{SERVER}})",
 "protectedpage" => "Leathanach glasáilte",
 "administrators"    => "{{ns:4}}:Riarthóirí",
 "sysoptitle"    => "Tá cuntas oibreora córais de dhíth",
@@ -209,7 +207,7 @@ See $1.',
 'nstab-user' => 'Lch úsáideora',
 'nstab-media' => 'Lch meáin',
 'nstab-special' => 'Speisialta',
-'nstab-wp' => 'Lch thionscadail',
+'nstab-project' => 'Lch thionscadail',
 'nstab-image' => 'Comhad',
 'nstab-mediawiki' => 'Teachtaireacht',
 'nstab-template' => 'Teimpléad',
@@ -307,7 +305,6 @@ Cruthaíodh do chuntas. Ná déan dearmad ar do sainroghanna phearsanta {{GRAMMA
 "yourname"      => "D'ainm úsáideora",
 "yourpassword"  => "D'fhocal faire",
 "yourpasswordagain" => "Athiontráil d'fhocal faire",
-"newusersonly"  => " (D'úsáideoirí úrnua amháin)",
 "remembermypassword" => "Cuimhnigh orm",
 "yourdomainname"       => "D'fhearann",
 'externaldberror'      => 'Bhí earráid bhunachair sonraí ann maidir le fíordheimhniú seachtrach, nóThere was either an external authentication database error or you are not allowed to update your external account.',
@@ -518,7 +515,8 @@ Eochair: (rth) = difríocht leis an leagan láithreach,
 #
 "searchresults" => "Torthaí an chuardaigh",
 "searchresulttext" => "Féach ar [[{{ns:project}}:Cuardach|Cuardach sa {{SITENAME}}]] chun a thuilleadh eolais a fháil maidir le cuardaigh {{GRAMMAR:genitive|{{SITENAME}}}}.",
-"searchquery"   => "Don iarratas \"$1\"",
+"searchsubtitle"   => "Don iarratas \"[[:$1]]\"",
+"searchsubtitleinvalid"   => "Don iarratas \"$1\"",
 "badquery"      => "Iarratas fiosraithe neamhbhailí",
 "badquerytext"  => "Nior éirigh linn d'iarratas a phróiseáil.
 Is dócha go rinne tú cuardach ar focal le níos lú ná trí litir,
@@ -1377,7 +1375,7 @@ iarradh sábháil. Is dócha gur nasc chuig suíomh seachtrach ba chúis leis.',
 
 # Monobook.js: tooltips and access keys for monobook
 'Monobook.js' => '/* leideanna uirlisí agus cnaipí rochtana */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Mo leathanach úsáideora\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Leathanach úsáideora don IP ina dhéanann tú do chuid athruithe\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Mo leathanach phlé\');
@@ -1421,7 +1419,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Féach ar an leathanach ábhair\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Féach ar an leathanach úsáideora\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Féach ar an leathanach meáin\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Is leathanach speisialta é seo, ní féidir leat an leathanach é fhéin a athrú.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Féach ar an leathanach thionscadail\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Féach ar an leathanach thionscadail\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Féach ar an leathanach íomhá\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Féach ar an teachtaireacht córais\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Féach ar an teimpléad\');
@@ -1450,7 +1448,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Féach ar an leathanach catagóire
 
 # Media Warning
 'mediawarning' => '\'\'\'Aire\'\'\': Tá seans ann go bhfuil cód mailíseach sa comhad seo - b\'fheidir go gcuirfear do chóras i gcontúirt dá rithfeá é.
-<hr>',
+<hr />',
 
 'fileinfo' => '$1KB, saghas MIME: <code>$2</code>',
 

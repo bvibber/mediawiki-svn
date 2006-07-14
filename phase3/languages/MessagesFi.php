@@ -385,8 +385,8 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'showlivepreview'     => 'Pikaesikatselu',
 'showdiff'            => 'Näytä muutokset',
 'anoneditwarning'     => 'Et ole kirjautunut sisään. IP-osoitteesi kirjataan tämän sivun muokkaushistoriaan.',
-'missingsummary'      => 'Et ole antanut yhteenvetoa. Jos valitset Tallenna uudelleen, niin muokkauksesti tallennetaan ilman yhteenvetoa.',
-'missingcommenttext'  => 'Anna yhteen veto alle.',
+'missingsummary'      => 'Et ole antanut yhteenvetoa. Jos valitset Tallenna uudelleen, niin muokkauksesi tallennetaan ilman yhteenvetoa.',
+'missingcommenttext'  => 'Anna yhteenveto alle.',
 'blockedtitle'        => 'Pääsy estetty',
 'blockedtext'         => 'Yritit muokata sivua tai luoda uuden sivun. $1 on estänyt pääsysi {{GRAMMAR:illative|{{SITENAME}}}} joko käyttäjänimesi tai IP-osoitteesi perusteella. Annettu syy estolle on: <br />\'\'$2\'\'<br />Jos olet sitä mieltä, että sinut on estetty syyttä, voit keskustella asiasta [[{{ns:project}}:Ylläpitäjät|ylläpitäjän]] kanssa. Huomaa, ettet voi lähettää sähköpostia {{GRAMMAR:genitive|{{SITENAME}}}} kautta, ellet ole asettanut olemassaolevaa sähköpostiosoitetta [[{{ns:special}}:Preferences|asetuksissa]]. Jos IP-osoitteesi on dynaaminen, eli se voi toisinaan vaihtua, olet saattanut saada estetyn osoitteen käyttöösi, ja esto vaikuttaa nyt sinuun. Jos tämä ongelma toistuu jatkuvasti, ota yhteyttä Internet-palveluntarjoajaasi tai {{GRAMMAR:genitive|{{SITENAME}}}} ylläpitäjään. Ilmoita IP-osoitteesi, joka on $3.',
 
@@ -503,8 +503,9 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 # Search results
 #
 'searchresults'       => 'Hakutulokset',
-'searchresulttext'    => '',
-'searchquery'         => 'Haku termeillä $1',
+'searchresulttext'    => 'Saadaksesi lisätietoa hakutoiminnoista tällä sivustolla lue [[{{ns:project}}:Hakutoiminnot|sivuston hakuohje]].',
+'searchsubtitle'         => 'Haku termeillä [[:$1]]',
+'searchsubtitleinvalid'         => 'Haku termeillä $1',
 'badquery'            => 'Kelvoton hakumerkkijono',
 'badquerytext'        => 'Tekemäsi kysely ei ole kelvollinen. Tämä johtuu todennäköisesti siitä, että et ole määritellyt hakumerkkijonoa.',
 'matchtotals'         => 'Haulla \'\'\'$1\'\'\' löytyi $2 osumaa sivujen otsikoista ja $3 osumaa sivujen sisällöistä.',
@@ -812,7 +813,7 @@ Ohjelmiston ylläpitotöitä on jonossa \'\'\'$7\'\'\' kappaletta.',
 'isbn'                => 'ISBN',
 'unwatchedpages'      => 'Tarkkailemattomat sivut',
 'listredirects'       => 'Uudelleenohjaukset',
-'randomredirect'      => 'Satunnainen uudelleenohjaust',
+'randomredirect'      => 'Satunnainen uudelleenohjaus',
 
 
 # No reason to overwrite
@@ -827,7 +828,6 @@ Ohjelmiston ylläpitotöitä on jonossa \'\'\'$7\'\'\' kappaletta.',
 'nextpage'            => 'Seuraava sivu ($1)',
 'allpagesfrom'        => 'Näytä sivuja lähtien sivusta:',
 'allarticles'         => 'Kaikki sivut',
-'allnonarticles'      => 'Kaikki sivut, jotka eivät ole oletusnimiavaruudessa',
 'allinnamespace'      => 'Kaikki sivut nimiavaruudessa $1',
 'allnotinnamespace'   => 'Kaikki sivut, jotka eivät ole nimiavaruudessa $1',
 'allpagesprev'        => 'Edellinen',
@@ -1269,7 +1269,7 @@ Näissä tapauksissa sivut täytyy siirtää tai yhdistää käsin.',
 
 # Monobook.js: tooltips and access keys for monobook
 'Monobook.js' => "/* <pre> */
-ta = new Object();
+var ta = new Object();
 ta['pt-userpage'] = new Array('.','Oma käyttäjäsivu');
 ta['pt-anonuserpage'] = new Array('.','IP-osoitteesi käyttäjäsivu');
 ta['pt-mytalk'] = new Array('n','Oma keskustelusivu');
@@ -1344,7 +1344,7 @@ ta['ca-nstab-category'] = new Array('c','Näytä luokkasivu');
 'passwordtooshort'    => 'Salasanasi on liian lyhyt. Salasanan pitää olla vähintään $1 merkkiä pitkä.',
 
 # Media Warning
-'mediawarning'        => '\'\'\'Varoitus\'\'\': Tämä tiedosto saattaa sisältää vahingollista koodia, ja suorittamalla sen järjestelmäsi voi muuttua epäluotettavaksi.<hr>',
+'mediawarning'        => '\'\'\'Varoitus\'\'\': Tämä tiedosto saattaa sisältää vahingollista koodia, ja suorittamalla sen järjestelmäsi voi muuttua epäluotettavaksi.<hr />',
 
 'fileinfo'            => '$1 KiB, MIME-tyyppi: <code>$2</code>',
 

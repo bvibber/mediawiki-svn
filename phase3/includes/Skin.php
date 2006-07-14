@@ -9,26 +9,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
  */
 
 # See skin.txt
-require_once( 'Linker.php' );
-require_once( 'Image.php' );
-
-# Get a list of available skins
-# Build using the regular expression '^(.*).php$'
-# Array keys are all lower case, array value keep the case used by filename
-#
-
-$skinDir = dir( $wgStyleDirectory );
-
-# while code from www.php.net
-while (false !== ($file = $skinDir->read())) {
-	// Skip non-PHP files, hidden files, and '.dep' includes
-	if(preg_match('/^([^.]*)\.php$/',$file, $matches)) {
-		$aSkin = $matches[1];
-		$wgValidSkinNames[strtolower($aSkin)] = $aSkin;
-	}
-}
-$skinDir->close();
-unset($matches);
 
 /**
  * The main skin class that provide methods and properties for all other skins.
@@ -53,8 +33,30 @@ class Skin extends Linker {
 	 * @return array of strings
 	 * @static
 	 */
-	function getSkinNames() {
+	static function &getSkinNames() {
 		global $wgValidSkinNames;
+		static $skinsInitialised = false;
+		if ( !$skinsInitialised ) {
+			# Get a list of available skins
+			# Build using the regular expression '^(.*).php$'
+			# Array keys are all lower case, array value keep the case used by filename
+			#
+			wfProfileIn( __METHOD__ . '-init' );
+			global $wgStyleDirectory;
+			$skinDir = dir( $wgStyleDirectory );
+
+			# while code from www.php.net
+			while (false !== ($file = $skinDir->read())) {
+				// Skip non-PHP files, hidden files, and '.dep' includes
+				if(preg_match('/^([^.]*)\.php$/',$file, $matches)) {
+					$aSkin = $matches[1];
+					$wgValidSkinNames[strtolower($aSkin)] = $aSkin;
+				}
+			}
+			$skinDir->close();
+			$skinsInitialised = true;
+			wfProfileOut( __METHOD__ . '-init' );
+		}
 		return $wgValidSkinNames;
 	}
 
@@ -66,7 +68,7 @@ class Skin extends Linker {
 	 * @return string
 	 * @static
 	 */
-	function normalizeKey( $key ) {
+	static function normalizeKey( $key ) {
 		global $wgDefaultSkin;
 		$skinNames = Skin::getSkinNames();
 
@@ -105,7 +107,7 @@ class Skin extends Linker {
 	 * @return Skin
 	 * @static
 	 */
-	function &newFromKey( $key ) {
+	static function &newFromKey( $key ) {
 		global $wgStyleDirectory;
 		
 		$key = Skin::normalizeKey( $key );
@@ -131,7 +133,7 @@ class Skin extends Linker {
 			$className = 'SkinStandard';
 			require_once( "{$wgStyleDirectory}/Standard.php" );
 		}
-		$skin =& new $className;
+		$skin = new $className;
 		return $skin;
 	}
 

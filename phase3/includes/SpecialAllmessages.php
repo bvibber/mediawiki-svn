@@ -26,6 +26,8 @@ function wfSpecialAllmessages() {
 
 	$navText = wfMsg( 'allmessagestext' );
 
+	# Make sure all extension messages are available
+	wfLoadAllExtensions();
 
 	$first = true;
 	$sortedArray = array_merge( $wgAllMessagesEn, $wgMessageCache->mExtensionMessages );
@@ -33,8 +35,8 @@ function wfSpecialAllmessages() {
 	$messages = array();
 	$wgMessageCache->disableTransform();
 
-	foreach ( $sortedArray as $key => $enMsg ) {
-		$messages[$key]['enmsg'] = $enMsg;
+	foreach ( $sortedArray as $key => $value ) {
+		$messages[$key]['enmsg'] = is_array( $value ) ? $value['en'] : $value;
 		$messages[$key]['statmsg'] = wfMsgNoDb( $key );
 		$messages[$key]['msg'] = wfMsg ( $key );
 	}

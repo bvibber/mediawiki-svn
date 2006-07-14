@@ -140,7 +140,7 @@
 'talk'		=> 'Thảo luận',
 'toolbox'	=> 'Công cụ',
 'userpage'      => 'Trang thành viên',
-'wikipediapage' => 'Trang Wikipedia',
+'projectpage' => 'Trang Wikipedia',
 'imagepage'     => 'Trang hình',
 'viewtalkpage'  => 'Trang thảo luận',
 'otherlanguages' => 'Ngôn ngữ khác',
@@ -148,7 +148,6 @@
 'lastmodified'  => 'Lần sửa cuối : $1.',
 'viewcount'     => 'Trang này đã được đọc $1 lần.',
 'copyright'	=> 'Bản quyền $1.',
-'printsubtitle' => '(từ {{SERVER}})',
 'protectedpage' => 'Trang bị khóa',
 'administrators' => '{{ns:4}}:Người_quản_lý',
 'sysoptitle'    => 'Dành cho quản lý',
@@ -174,14 +173,13 @@
 'restorelink'	=> 'Phục hồi 1 sửa đổi',
 'feedlinks'	=> 'Nạp:',
 'sitenotice'	=> '-', # the equivalent to wgSiteNotice
-'poweredby'	=> "{{SITENAME}} sử dụng [http://www.mediawiki.org/ MediaWiki], một phần mềm wiki mở.",
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main' => 'Bài',
 'nstab-user' => 'Trang thành viên',
 'nstab-media' => 'Phương tiện',
 'nstab-special' => 'Đặc biệt',
-'nstab-wp' => 'Giới thiệu',
+'nstab-project' => 'Giới thiệu',
 'nstab-image' => 'Hình',
 'nstab-mediawiki' => 'Tin nhắn',
 'nstab-template' => 'Tiêu bản',
@@ -256,7 +254,6 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 'yourname'           => 'Tên',
 'yourpassword'       => 'Mật khẩu',
 'yourpasswordagain'  => 'Vào lại mật khẩu',
-'newusersonly'       => ' (chỉ dành cho thành viên mới)',
 'remembermypassword' => 'Nhớ mật khẩu (cookie)',
 'loginproblem'       => '<b>Trục trặc đăng nhập.</b><br />Mời thử lại!',
 'alreadyloggedin'    => '\'\'\'$1, bạn đã đăng nhập rồi!\'\'\'<br />',
@@ -413,7 +410,8 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 #
 'searchresults' => 'Kết quả tìm',
 'searchresulttext' => "Xem thêm [[{{ns:4}}:Tìm_kiếm|hướng dẫn tìm kiếm {{SITENAME}}]].",
-'searchquery' => "Cho truy vấn \"$1\"",
+'searchsubtitle' => "Cho truy vấn \"[[:$1]]\"",
+'searchsubtitleinvalid' => "Cho truy vấn \"$1\"",
 'badquery'  => 'Truy vấn sai',
 'badquerytext' => "Truy vấn sai: ngắn hơn 3 chữ cái, hoặc sai chính tả ví dụ như \"mèo và và chuột\". Xin mời thử lại.",
 'matchtotals' => "Truy vấn \"$1\" phù hợp với $2 tên bài và câu chữ trong $3 bài.",
@@ -1067,7 +1065,7 @@ Nếu không phải bạn, đừng mở địa chỉ này. Mã xác nhận này 
 'Monobook.css' => '/* edit this file to customize the monobook skin for the entire site */',
 # Monobook.js: tooltips and access keys for monobook
 'Monobook.js' => '/* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Trang của tôi\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Trang của IP bạn đang dùng\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Thảo luận với tôi\');
@@ -1111,7 +1109,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Xem trang này\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Xem trang về người này\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Xem trang phương tiện\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Đây là một trang dặc biệt, bạn không thể sửa đổi được nó.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Xem trang dự án\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Xem trang dự án\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Xem trang hình\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Xem thông báo hệ thống\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Xem tiêu bản\');
@@ -1182,7 +1180,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Xem trang thể loại\');',
 
 #Logs
 'alllogstext' => 'Xem nhật trình tải lên, xóa, khóa, cấm, quản lý. Có thể xem theo từng loại, theo tên thành viên, hoặc tên trang.',
-'allnonarticles' =>  'Các trang không phải bài viết',
 'allnotinnamespace' => 'Mọi trang (không trong không gian $1)',
 'allpagesfrom' => 'Xem trang từ:',
 
@@ -1234,7 +1231,7 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'ipbotheroption' => 'khác',
 'log' => 'Nhật trình',
 "mainpagedocfooter" => "Xin đọc [http://meta.wikimedia.org/wiki/MediaWiki_i18n tài liệu hướng dẫn cách tùy biến giao diện] và [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Cẩm nang sử dụng] (bằng tiếng Anh) để biết cách dùng và thiết lập thông số.",
-'mediawarning' => " '''Cảnh báo''': Tệp tin này có thể làm hại máy tính của bạn. <hr>",
+'mediawarning' => " '''Cảnh báo''': Tệp tin này có thể làm hại máy tính của bạn. <hr />",
 'movelogpage' => 'Nhật trình đổi tên',
 'movelogpagetext' => 'Các trang bị đổi tên.',
 'namespace' => 'Không gian:',

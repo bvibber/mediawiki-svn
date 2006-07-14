@@ -8,7 +8,7 @@ $wgAllMessagesSr_ec = array(
 */',
 'Monobook.js' => '
 /* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Моја корисничка страница\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Корисничка страна за ИП коју мењате као\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Моја страна за разговор\');
@@ -52,7 +52,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Видети садржај чланк
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Видети корисничку страницу\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Видети медија фајл\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Ово је специјална страница и зато је не можете самостално уређивати.\');
-ta[\'ca-nstab-wp\'] = new Array(\'c\',\'Видети пројекат страницу\');
+ta[\'ca-nstab-project\'] = new Array(\'c\',\'Видети пројекат страницу\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Видети страницу слике\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Видети системску поруку\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Видети шаблон\');
@@ -83,7 +83,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Видети страницу ка
 'allmessagesnotsupportedDB' => '[[{{ns:-1}}:AllMessages|Системске поруке]] нису подржане зато што је <i>wgUseDatabaseMessages</i> искључен.',
 'allmessagesnotsupportedUI' => 'Ваш тренутни језик интерфејса <b>$1</b> није подржан у [[{{ns:-1}}:AllMessages|системским порукама]] на овој вики.',
 'allmessagestext' => 'Ово је списак свих порука које су у {{ns:8}}: именском простору',
-'allnonarticles' => 'Све странице које нису чланци',
 'allnotinnamespace' => 'Све странице (које нису у $1 именском простору)',
 'allpages' => 'Све странице',
 'allpagesfrom' => 'Прикажи странице почетно са:',
@@ -853,7 +852,7 @@ $NEWPAGE
 'media_sample' => 'име_медија_фајла.mp3',
 'media_tip' => 'Путања ка мултимедијалном фајлу',
 'mediawarning' => '\'\'\'Упозорење\'\'\': Овај фајл садржи лош код, његовим извршавањем можете да угрозите ваш систем.
-<hr>',
+<hr />',
 'metadata' => 'Метаподаци',
 'metadata_page' => '{{ns:project}}:Метаподаци',
 'mimesearch' => 'МИМЕ претрага',
@@ -939,7 +938,6 @@ $NEWPAGE
 'newpages' => 'Нове странице',
 'newpassword' => 'Нова шифра',
 'newtitle' => 'Нови наслов',
-'newusersonly' => '(само за нове кориснике)',
 'newwindow' => '(нови прозор)',
 'next' => 'след',
 'nextdiff' => 'Следећа измена →',
@@ -1016,7 +1014,7 @@ $NEWPAGE
 'nstab-special' => 'Посебна',
 'nstab-template' => 'Шаблон',
 'nstab-user' => 'Корисничка страна',
-'nstab-wp' => 'Чланак',
+'nstab-project' => 'Чланак',
 'numauthors' => 'Број различитих аутора (чланак): $1',
 'number_of_watching_users_pageview' => '[$1 корисник/а који надгледа/ју]',
 'numedits' => 'Број промена (чланак): $1',
@@ -1049,7 +1047,6 @@ $NEWPAGE
 'portal' => 'Трг',
 'portal-url' => 'Project:Трг',
 'postcomment' => 'Пошаљи коментар',
-'poweredby' => '{{SITENAME}} је омогућена од стране [http://www.mediawiki.org/ МедијаВикија], вики машине слободног кода.',
 'powersearch' => 'Тражи',
 'powersearchtext' => 'Претрага у именским просторима:<br />
 $1<br />
@@ -1075,7 +1072,6 @@ $2 Излистај преусмерења &nbsp; Тражи $3 $9',
 'prevn' => 'претходних $1',
 'print' => 'Штампа',
 'printableversion' => 'Верзија за штампу',
-'printsubtitle' => '(Са {{SERVER}})',
 'protect' => 'заштити',
 'protectcomment' => 'Разлог заштите',
 'protectedarticle' => 'заштићено $1',
@@ -1181,7 +1177,8 @@ $2 Излистај преусмерења &nbsp; Тражи $3 $9',
 'search' => 'Тражи',
 'searchdisabled' => '<p>Извињавамо се! Пуна претрага текста је привремено онемогућена, због бржег рада Википедије. У међувремену, можете користити Гугл претрагу испод, која може бити застарела.</p>',
 'searchfulltext' => 'Претражи цео текст',
-'searchquery' => 'Тражили сте "<a href="/wiki/$1">$1</a>" <a href="/wiki/Special:Allpages/$1">[Садржај]</a>',
+'searchsubtitle' => 'Тражили сте [[:$1]] [[Special:Allpages/$1|&#x5B;Садржај&#x5D;]]',
+'searchsubtitleinvalid' => 'Тражили сте $1 ',
 'searchresults' => 'Резултати претраге',
 'searchresultshead' => 'Подешавања резултата претраге',
 'searchresulttext' => '<!--
@@ -1472,7 +1469,7 @@ $3...)<br />
 'whitelistedittitle' => 'Обавезно је [[{{ns:-1}}:Userlogin|пријављивање]] за мењање',
 'whitelistreadtext' => 'Морате да се [[{{ns:-1}}:Userlogin|пријавите]] да бисте читали чланке.',
 'whitelistreadtitle' => 'Обавезно је пријављивање за читање',
-'wikipediapage' => 'Погледај страну о овој страни',
+'projectpage' => 'Погледај страну о овој страни',
 'wlheader-enotif' => '* Обавештавање е-поштом је омогућено.',
 'wlheader-showupdated' => '* Стране које су измењене од када сте их последњи пут посетили су приказане \'\'\'масним словима\'\'\'',
 'wlhide' => 'Сакриј',

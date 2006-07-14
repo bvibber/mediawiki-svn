@@ -534,7 +534,8 @@ pokud to provozovatel serveru nezakázal.',
 #
 'searchresults' => 'Výsledky hledání',
 'searchresulttext' => 'Pro více informací o tom, jak hledat na {{grammar:6sg|{{SITENAME}}}}, se podívejte na [[Nápověda:Hledání]].',
-'searchquery'	=> 'Hledáno „$1“',
+'searchsubtitle'	=> 'Hledáno „[[:$1]]“',
+'searchsubtitleinvalid'	=> 'Hledáno „$1“',
 'badquery'              => 'Špatně vytvořený vyhledávací dotaz',
 'badquerytext'  => 'Nemůžeme zpracovat vaše zadání. Je to pravděpodobně tím, že hledáte slovo kratší než tři písmena, což zatím není podporováno. Může to být také tím, že zadání bylo napsáno nesprávně. Prosím zkuste jiné zadání.',
 'matchtotals'	=> 'Zadanému „$1“ odpovídá $2 názvů stran a text $3 stran.',
@@ -882,7 +883,6 @@ Zobrazení můžete zůžit výběrem typu záznamu, uživatelského jména nebo
 'nextpage'          => 'Další stránka ($1)',
 'allpagesfrom'		=> 'Všechny stránky počínaje od:',
 'allarticles'		=> 'Všechny články',
-'allnonarticles'	=> 'Všechny nečlánky',
 'allinnamespace'	=> 'Všechny stránky (jmenný prostor $1)',
 'allnotinnamespace'	=> 'Všechny stránky (mimo jmenný prostor $1)',
 'allpagesprev'		=> 'Předchozí',
@@ -1338,7 +1338,7 @@ Cílová stránka „[[$1]]“ již existuje. Přejete si ji smazat pro uvolněn
 
 # Monobook.js: tooltips and access keys for monobook
 'Monobook.js' => "/* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta['pt-userpage'] = new Array('.','Moje uživatelská stránka');
 ta['pt-anonuserpage'] = new Array('.','Uživatelská stránka pro IP adresu, ze které editujete');
 ta['pt-mytalk'] = new Array('n','Moje diskusní stránka');

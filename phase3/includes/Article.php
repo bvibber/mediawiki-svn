@@ -146,25 +146,9 @@ class Article {
 	function getContent() {
 		global $wgRequest, $wgUser, $wgOut;
 
-		# Get variables from query string :P
-		$action = $wgRequest->getText( 'action', 'view' );
-		$section = $wgRequest->getText( 'section' );
-		$preload = $wgRequest->getText( 'preload' );
-
 		wfProfileIn( __METHOD__ );
 
 		if ( 0 == $this->getID() ) {
-			if ( 'edit' == $action ) {
-				wfProfileOut( __METHOD__ );
-
-				# If requested, preload some text.
-				$text=$this->getPreloadedText($preload);
-
-				# We used to put MediaWiki:Newarticletext here if
-				# $text was empty at this point.
-				# This is now shown above the edit box instead.
-				return $text;
-			}
 			wfProfileOut( __METHOD__ );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
@@ -177,48 +161,8 @@ class Article {
 			return "<div class='noarticletext'>$ret</div>";
 		} else {
 			$this->loadContent();
-			if($action=='edit') {
-				if($section!='') {
-					if($section=='new') {
-						wfProfileOut( __METHOD__ );
-						$text=$this->getPreloadedText($preload);
-						return $text;
-					}
-
-					# strip NOWIKI etc. to avoid confusion (true-parameter causes HTML
-					# comments to be stripped as well)
-					$rv=$this->getSection($this->mContent,$section);
-					wfProfileOut( __METHOD__ );
-					return $rv;
-				}
-			}
 			wfProfileOut( __METHOD__ );
 			return $this->mContent;
-		}
-	}
-
-	/**
-	 * Get the contents of a page from its title and remove includeonly tags
-	 *
-	 * @param $preload String: the title of the page.
-	 * @return string The contents of the page.
-	 */
-	function getPreloadedText($preload) {
-		if ( $preload === '' )
-			return '';
-		else {
-			$preloadTitle = Title::newFromText( $preload );
-			if ( isset( $preloadTitle ) && $preloadTitle->userCanRead() ) {
-				$rev=Revision::newFromTitle($preloadTitle);
-				if ( is_object( $rev ) ) {
-					$text = $rev->getText();
-					// TODO FIXME: AAAAAAAAAAA, this shouldn't be implementing
-					// its own mini-parser! -ævar
-					$text = preg_replace( '~</?includeonly>~', '', $text );
-					return $text;
-				} else
-					return '';
-			}
 		}
 	}
 
@@ -232,6 +176,7 @@ class Article {
 	 * @param $text String: text to look in
 	 * @param $section Integer: section number
 	 * @return string text of the requested section
+	 * @deprecated
 	 */
 	function getSection($text,$section) {
 		global $wgParser;
@@ -278,6 +223,7 @@ class Article {
 			# unused:
 			# $lastid = $oldid;
 		}
+
 		if ( !$oldid ) {
 			$oldid = 0;
 		}
@@ -735,6 +681,7 @@ class Article {
 				return;
 			}
 		}
+
 		# Should the parser cache be used?
 		$pcache = $wgEnableParserCache &&
 			intval( $wgUser->getOption( 'stubthreshold' ) ) == 0 &&
@@ -1354,7 +1301,8 @@ class Article {
 				Article::onArticleEdit( $this->mTitle );
 				
 				# Update links tables, site stats, etc.
-				$this->editUpdates( $text, $summary, $isminor, $now, $revisionId );
+				$changed = ( strcmp( $oldtext, $text ) != 0 );
+				$this->editUpdates( $text, $summary, $isminor, $now, $revisionId, $changed );
 			}
 		} else {
 			# Create new article
@@ -1396,7 +1344,7 @@ class Article {
 			$dbw->commit();
 
 			# Update links, etc.
-			$this->editUpdates( $text, $summary, $isminor, $now, $revisionId );
+			$this->editUpdates( $text, $summary, $isminor, $now, $revisionId, true );
 
 			# Clear caches
 			Article::onArticleCreate( $this->mTitle );
@@ -1499,7 +1447,7 @@ class Article {
 			$wgOut->setPagetitle( wfMsg( 'addedwatch' ) );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-			$link = $this->mTitle->getPrefixedText();
+			$link = wfEscapeWikiText( $this->mTitle->getPrefixedText() );
 			$text = wfMsg( 'addedwatchtext', $link );
 			$wgOut->addWikiText( $text );
 		}
@@ -1547,7 +1495,7 @@ class Article {
 			$wgOut->setPagetitle( wfMsg( 'removedwatch' ) );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-			$link = $this->mTitle->getPrefixedText();
+			$link = wfEscapeWikiText( $this->mTitle->getPrefixedText() );
 			$text = wfMsg( 'removedwatchtext', $link );
 			$wgOut->addWikiText( $text );
 		}
@@ -1693,7 +1641,7 @@ class Article {
 
 		# Check permissions
 		if( $wgUser->isAllowed( 'delete' ) ) {
-			if( $wgUser->isBlocked() ) {
+			if( $wgUser->isBlocked( !$confirm ) ) {
 				$wgOut->blockedPage();
 				return;
 			}
@@ -1894,7 +1842,7 @@ class Article {
 
 		if (wfRunHooks('ArticleDelete', array(&$this, &$wgUser, &$reason))) {
 			if ( $this->doDeleteArticle( $reason ) ) {
-				$deleted = $this->mTitle->getPrefixedText();
+				$deleted = wfEscapeWikiText( $this->mTitle->getPrefixedText() );
 
 				$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
 				$wgOut->setRobotpolicy( 'noindex,nofollow' );
@@ -2137,9 +2085,14 @@ class Article {
 	 * Every 1000th edit, prune the recent changes table.
 	 * 
 	 * @private
-	 * @param string $text
+	 * @param $text New text of the article
+	 * @param $summary Edit summary
+	 * @param $minoredit Minor edit
+	 * @param $timestamp_of_pagechange Timestamp associated with the page change
+	 * @param $newid rev_id value of the new revision
+	 * @param $changed Whether or not the content actually changed
 	 */
-	function editUpdates( $text, $summary, $minoredit, $timestamp_of_pagechange, $newid) {
+	function editUpdates( $text, $summary, $minoredit, $timestamp_of_pagechange, $newid, $changed = true ) {
 		global $wgDeferredUpdateList, $wgMessageCache, $wgUser, $wgParser;
 
 		wfProfileIn( __METHOD__ );
@@ -2186,8 +2139,9 @@ class Article {
 		array_push( $wgDeferredUpdateList, $u );
 
 		# If this is another user's talk page, update newtalk
-
-		if ($this->mTitle->getNamespace() == NS_USER_TALK && $shortTitle != $wgUser->getName()) {
+		# Don't do this if $changed = false otherwise some idiot can null-edit a
+		# load of user talk pages and piss people off
+		if( $this->mTitle->getNamespace() == NS_USER_TALK && $shortTitle != $wgUser->getName() && $changed ) {
 			if (wfRunHooks('ArticleEditUpdateNewTalk', array(&$this)) ) {
 				$other = User::newFromName( $shortTitle );
 				if( is_null( $other ) && User::isIP( $shortTitle ) ) {
@@ -2232,14 +2186,20 @@ class Article {
 		$prevlink = $prev
 			? $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'previousrevision' ), 'direction=prev&oldid='.$oldid )
 			: wfMsg( 'previousrevision' );
+		$prevdiff = $prev
+			? $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'diff' ), 'diff=prev&oldid='.$oldid )
+			: wfMsg( 'diff' );
 		$nextlink = $current
 			? wfMsg( 'nextrevision' )
 			: $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'nextrevision' ), 'direction=next&oldid='.$oldid );
+		$nextdiff = $current
+			? wfMsg( 'diff' )
+			: $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'diff' ), 'diff=next&oldid='.$oldid );
 		
 		$userlinks = $sk->userLink( $revision->getUser(), $revision->getUserText() )
 						. $sk->userToolLinks( $revision->getUser(), $revision->getUserText() );
 		
-		$r = wfMsg( 'oldrevisionnavigation', $td, $lnk, $prevlink, $nextlink, $userlinks );
+		$r = wfMsg( 'old-revision-navigation', $td, $lnk, $prevlink, $nextlink, $userlinks, $prevdiff, $nextdiff );
 		$wgOut->setSubtitle( $r );
 	}
 
@@ -2264,7 +2224,7 @@ class Article {
 	function tryFileCache() {
 		static $called = false;
 		if( $called ) {
-			wfDebug( " tryFileCache() -- called twice!?\n" );
+			wfDebug( "Article::tryFileCache(): called twice!?\n" );
 			return;
 		}
 		$called = true;
@@ -2272,15 +2232,15 @@ class Article {
 			$touched = $this->mTouched;
 			$cache = new CacheManager( $this->mTitle );
 			if($cache->isFileCacheGood( $touched )) {
-				wfDebug( " tryFileCache() - about to load\n" );
+				wfDebug( "Article::tryFileCache(): about to load file\n" );
 				$cache->loadFromFileCache();
 				return true;
 			} else {
-				wfDebug( " tryFileCache() - starting buffer\n" );
+				wfDebug( "Article::tryFileCache(): starting buffer\n" );
 				ob_start( array(&$cache, 'saveToFileCache' ) );
 			}
 		} else {
-			wfDebug( " tryFileCache() - not cacheable\n" );
+			wfDebug( "Article::tryFileCache(): not cacheable\n" );
 		}
 	}
 

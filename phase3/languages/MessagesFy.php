@@ -1,6 +1,7 @@
 <?php
 
-/* private */ $wgAllMessagesFy = array(
+global $wgAllMessagesFy;
+$wgAllMessagesFy = array(
 # User Toggles
 
 "tog-underline"		=> "Keppelings ûnderstreekje",
@@ -56,7 +57,6 @@
 
 # Bits of text used by many pages:
 #
-"linktrail"		=> "/^([a-zàáèéìíòóùúâêîôûäëïöü]+)(.*)\$/sDu",
 "mainpage"		=> "Haadside",
 "mainpagetext"	=> "Wiki-programma goed installearre.",
 "about"		=> "Ynfo",
@@ -97,14 +97,13 @@
 "articlepage"	=> "Side lêze",
 "subjectpage"	=> "Side lêze", # For compatibility
 "userpage" 		=> "Brûkerside",
-"wikipediapage" 	=> "Metaside",
+"projectpage" 	=> "Metaside",
 "imagepage" 	=> "Ofbyldside",
 "viewtalkpage" 	=> "Oerlisside",
 "otherlanguages" 	=> "Oare talen",
 "redirectedfrom" 	=> "(Trochwiisd fan \"$1\")",
 "lastmodified"	=> "Lêste kear bewurke op $1.",
 "viewcount"		=> "Disse side is $1 kear iepenslein.",
-"printsubtitle" 	=> "(Fan {{SERVER}})",
 "protectedpage" 	=> "Beskerme side",
 "administrators" 	=> "{{ns:project}}:Behear",
 "sysoptitle"	=> "Allinnich foar behearders",
@@ -193,7 +192,6 @@ Ferjit net se oan jo foarkar oan te passen.",
 "yourname"  	=> "Jo brûkersnamme",
 "yourpassword" => "Jo wachtwurd",
 "yourpasswordagain" => "Jo wachtwurd (nochris)",
-"newusersonly" 	=> " (allinnich foar nije brûkers)",
 "remembermypassword" => "Oare kear fansels oanmelde.",
 "loginproblem" 	=> "<b>Der wie wat mis mei jo oanmelden.</b><br />Besykje it nochris, a.j.w.",
 "alreadyloggedin" => "<strong>Brûker $1, jo binne al oanmeld!</strong><br />",
@@ -330,7 +328,8 @@ Gean nei of de keppeling dy jo brûkt hawwe wol goed is.",
 #
 "searchresults" => "Sykresultaat",
 "searchresulttext" => "\"[[Project:Syk-rie|Ynformaasje oer it sykjen|Sykje troch de {{SITENAME}}]]\" troch de {{SITENAME}}.",
-"searchquery"	=> "Foar fraach \"$1\"",
+"searchsubtitle"	=> "Foar fraach \"[[:$1]]\"",
+"searchsubtitleinvalid"	=> "Foar fraach \"$1\"",
 "badquery"		=> "Misfoarme sykfraach",
 "badquerytext"	=> "Jo fraach koe net ferwurke wurde.
 Dit is faaks om't jo besyke hawwe en sykje in word fan ien of twa letters, wat it programma noch net kin.

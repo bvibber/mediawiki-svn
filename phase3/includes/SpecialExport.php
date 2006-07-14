@@ -30,17 +30,18 @@ require_once( 'Export.php' );
  */
 function wfSpecialExport( $page = '' ) {
 	global $wgOut, $wgRequest, $wgExportAllowListContributors;
-	global $wgExportAllowHistory;
+	global $wgExportAllowHistory, $wgExportMaxHistory;
 
+	$curonly = true;
 	if( $wgRequest->getVal( 'action' ) == 'submit') {
 		$page = $wgRequest->getText( 'pages' );
-		if( $wgExportAllowHistory ) {
-			$curonly = $wgRequest->getCheck( 'curonly' );
-		} else {
-			$curonly = true;
-		}
-	} else {
-		# Pre-check the 'current version only' box in the UI
+		$curonly = $wgRequest->getCheck( 'curonly' );
+	}
+	if( $wgRequest->getCheck( 'history' ) ) {
+		$curonly = false;
+	}
+	if( !$wgExportAllowHistory ) {
+		// Override
 		$curonly = true;
 	}
 	
@@ -49,6 +50,15 @@ function wfSpecialExport( $page = '' ) {
 
 	if( $page != '' ) {
 		$wgOut->disable();
+		
+		// Cancel output buffering and gzipping if set
+		// This should provide safer streaming for pages with history
+		while( $status = ob_get_status() ) {
+			ob_end_clean();
+			if( $status['name'] == 'ob_gzhandler' ) {
+				header( 'Content-Encoding:' );
+			}
+		}
 		header( "Content-type: application/xml; charset=utf-8" );
 		$pages = explode( "\n", $page );
 
@@ -57,29 +67,40 @@ function wfSpecialExport( $page = '' ) {
 		$exporter = new WikiExporter( $db, $history );
 		$exporter->list_authors = $list_authors ;
 		$exporter->openStream();
-		$exporter->pagesByName( $pages );
+		
+		foreach( $pages as $page ) {
+			if( $wgExportMaxHistory && !$curonly ) {
+				$title = Title::newFromText( $page );
+				if( $title ) {
+					$count = Revision::countByTitle( $db, $title );
+					if( $count > $wgExportMaxHistory ) {
+						wfDebug( __FUNCTION__ .
+							": Skipped $page, $count revisions too big\n" );
+						continue;
+					}
+				}
+			}
+			$exporter->pageByName( $page );
+		}
+		
 		$exporter->closeStream();
 		return;
 	}
 
 	$wgOut->addWikiText( wfMsg( "exporttext" ) );
 	$titleObj = Title::makeTitle( NS_SPECIAL, "Export" );
-	$action = $titleObj->escapeLocalURL( 'action=submit' );
+	
+	$form = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $titleObj->getLocalUrl() ) );
+	$form .= wfOpenElement( 'textarea', array( 'name' => 'pages', 'cols' => 40, 'rows' => 10 ) ) . '</textarea><br />';
 	if( $wgExportAllowHistory ) {
-		$checkbox = "<label><input type='checkbox' name='curonly' value='true' checked='checked' />
-" . wfMsgHtml( 'exportcuronly' ) . "</label><br />";
+		$form .= wfCheck( 'curonly', true, array( 'value' => 'true', 'id' => 'curonly' ) );
+		$form .= wfLabel( wfMsg( 'exportcuronly' ), 'curonly' ) . '<br />';
 	} else {
-		$checkbox = "";
-		$wgOut->addWikiText( wfMsg( "exportnohistory" ) );
+		$wgOut->addWikiText( wfMsg( 'exportnohistory' ) );
 	}
-	$wgOut->addHTML( "
-<form method='post' action=\"$action\">
-<input type='hidden' name='action' value='submit' />
-<textarea name='pages' cols='40' rows='10'></textarea><br />
-$checkbox
-<input type='submit' />
-</form>
-" );
+	$form .= wfHidden( 'action', 'submit' );
+	$form .= wfSubmitButton( wfMsg( 'export-submit' ) ) . '</form>';
+	$wgOut->addHtml( $form );
 }
 
 ?>

@@ -152,7 +152,7 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 'talk' => 'Diskussion',
 'toolbox' => 'Værktøjer',
 "userpage" => "Se brugersiden",
-"wikipediapage" => "Se metasiden",
+"projectpage" => "Se metasiden",
 "imagepage" => 	"Se billedsiden",
 "viewtalkpage" => "Se diskussion",
 "otherlanguages" => "Andre sprog",
@@ -160,8 +160,6 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 "lastmodified"	=> "Denne side blev senest ændret den $1.",
 "viewcount"		=> "Siden er vist i alt $1 gange.",
 'copyright'	=> 'Indholdet&nbsp;er&nbsp;udgivet&nbsp;under&nbsp;$1.',
-'poweredby'	=> "{{SITENAME}} kører på [http://www.mediawiki.org/ MediaWiki], en open source wiki engine.",
-"printsubtitle" => "(Fra {{SERVER}})",
 "protectedpage" => "Beskyttet side",
 "administrators" => "{{ns:4}}:Administratorer",
 "sysoptitle"	=> "Sysop-adgang påkrævet",
@@ -196,7 +194,7 @@ See $1.',
 'nstab-user' => 'Brugerside',
 'nstab-media' => 'Medie',
 'nstab-special' => 'Speciel',
-'nstab-wp' => 'Om',
+'nstab-project' => 'Om',
 'nstab-image' => 'Billede',
 'nstab-mediawiki' => 'Besked',
 'nstab-template' => 'Skabelon',
@@ -293,7 +291,6 @@ Din konto er blevet oprettet. Glem ikke at personliggøre dine {{SITENAME}}-inds
 "yourname"		=> "Dit brugernavn",
 "yourpassword"	=> "Din adgangskode",
 "yourpasswordagain" => "Gentag adgangskode",
-"newusersonly"	=> " (kun nye brugere)",
 "remembermypassword" => "Husk min adgangskode til næste gang.",
 'yourdomainname'       => 'Your domain',
 'externaldberror'      => 'There was either an external authentication database error or you are not allowed to update your external account.',
@@ -860,7 +857,6 @@ Du kan sortere i visningen ved at vælge type, brugernavn og/eller en udvalgt si
 'nextpage'          => 'Næste side ($1)',
 'allpagesfrom'		=> 'Vis sider startende fra: $1',
 'allarticles'       => 'Alle artikler',
-'allnonarticles'	=> 'Alle ikke-artikler',
 'allinnamespace'	=> 'Alle sider (i $1 navnerummet)',
 'allnotinnamespace'	=> 'Alle sider (ikke i $1 navnerummet)',
 'allpagesprev'      => 'Forrige',
@@ -1310,7 +1306,7 @@ Målartiklen "[[$1]]" eksisterer allerede. Vil du slette den for at lave plads t
 
 # Monobook.js: tooltips and access keys for monobook
 'Monobook.js' => '/* tooltips and access keys */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Min brugerside\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Brugersiden for den ip-adresse du redigerer som\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Min diskussionsside\');
@@ -1353,7 +1349,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Se indholdet\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Se brugersiden\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Se mediasiden\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Dette er en speciel side; man kan ikke redigere sådanne sider.\');
-/*ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Se Wikipediasiden\');*/
+/*ta[\'ca-nstab-project\'] = new Array(\'a\',\'Se Wikipediasiden\');*/
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Se billedsiden\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Se systembeskeden\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Se skabelonen\');
@@ -1383,7 +1379,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Se kategorisiden\');',
 
 # Media Warning
 'mediawarning' => "'''Advarsel''', denne filtype kan muligvis indeholde skadelig kode, du kan beskadige dit system hvis du udfører den.
-<hr>",
+<hr />",
 # external editor support
 'edit-externally' => 'Rediger denne fil med en ekstern editor',
 'edit-externally-help' => 'Se [http://meta.wikimedia.org/wiki/Help:External_editors setup instruktionerne] for mere information.',

@@ -116,7 +116,7 @@ $wgAllMessagesAz = array(
 'talk' => 'Müzakirə',
 'toolbox' => 'Alətlər Sandıqı',
 'userpage' => 'İstifadəçi səhifəsini göstər',
-'wikipediapage' => 'Layihə səhifəsini göstər',
+'projectpage' => 'Layihə səhifəsini göstər',
 'viewtalkpage' => 'View discussion',
 'otherlanguages' => 'Başqa dillərdə',
 'redirectedfrom' => '($1 səhifəsindən istiqamətləndirilmişdir)',
@@ -138,7 +138,7 @@ $wgAllMessagesAz = array(
 'nstab-main' => 'Məqalə',
 'nstab-user' => 'İstifadəçi səhifəsi',
 'nstab-special' => 'Xüsusi',
-'nstab-wp' => 'Layihə səhifəsi',
+'nstab-project' => 'Layihə səhifəsi',
 'nstab-image' => 'Fayl',
 'nstab-mediawiki' => 'Mə\'lumat',
 'nstab-template' => 'Şablon',
@@ -163,7 +163,6 @@ $wgAllMessagesAz = array(
 'yourname' => 'İstifadəçi adı',
 'yourpassword' => 'Parol',
 'yourpasswordagain' => 'Parolu təkrar yazın',
-'newusersonly' => ' (yalnız yeni istifadəçilər)',
 'remembermypassword' => 'Məni xatırla',
 'alreadyloggedin' => '<strong>User $1, Siz onsuz da daxil olmusunuz!</strong><br />',
 
@@ -574,7 +573,7 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: \'
 */
 
 /* qisa yol tuşlari və kömək balunları */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Öz Səhifəm\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'The user page for the ip you\'re editing as\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Danişiq Səhifəm\');
@@ -617,7 +616,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'View the content page\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'View the user page\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'View the media page\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'This is a special page, you can\'t edit the page itself.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'View the project page\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'View the project page\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'View the image page\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'View the system message\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'View the template\');

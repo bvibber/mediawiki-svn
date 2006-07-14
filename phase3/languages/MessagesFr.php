@@ -439,9 +439,11 @@ vous suivez les [[Project:Page_protégée|directives concernant les pages proté
 'edittools' => '<!-- Tout texte entré ici sera affiché sous les boîtes de modification ou d\'import. -->',
 'nocreatetitle' => 'Création de page limitée',
 'nocreatetext' => 'Ce site a restreint la possibilité de créer de nouvelles pages. Vous pouvez retourner en arrière et éditer une page existante ou [[Special:Userlogin|vous connecter ou créer un compte]].',
+'cantcreateaccounttitle' => 'Vous ne pouvez pas créer un compte.',
+'cantcreateaccounttext' => 'La création de compte depuis cette adresse IP (<b>$1</b>) a été bloquée. Ceci est probablement du à du vandalisme répété depuis votre école ou votre fournisseur d\'accès à internet.',
 
-# History pages
-#
+# History pages #
+
 'revhistory'   => 'Versions précédentes',
 'nohistory'    => 'Il n\'existe pas d\'historique pour cette page.',
 'revnotfound'  => 'Version introuvable',
@@ -500,7 +502,8 @@ D\'autres administrateurs sur ce wiki pourront toujours accèder au contenu cach
 #
 'searchresults' => 'Résultat de la recherche',
 'searchresulttext' => 'Pour plus d\'informations sur la recherche dans {{SITENAME}}, voir [[Aide:Recherche|Chercher dans {{SITENAME}}]].',
-'searchquery' => 'Pour la requête « $1 »',
+'searchsubtitle' => 'Pour la requête « [[:$1]] »',
+'searchsubtitleinvalid' => 'Pour la requête « $1 »',
 'badquery'  => 'Requête mal formulée',
 'badquerytext' => 'Nous n\'avons pas pu traiter votre requête. Vous avez probablement recherché un mot d\'une longueur inférieure à trois lettres, ce qui n\'est pas encore possible. Vous avez aussi pu faire une erreur de syntaxe, telle que « poisson et et écailles ». Veuillez essayer une autre requête.',
 'matchtotals' => 'La requête « $1 » correspond à $2 titre(s) d\'article et au texte de $3 article(s).',
@@ -820,7 +823,6 @@ Cela représente une moyenne de <b>$5</b> modifications par page et de <b>$6</b>
 'nextpage'          	=> 'Page suivante ($1)',
 'allpagesfrom'		=> 'Afficher les pages à partir de :',
 'allarticles'		=> 'Tous les articles',
-'allnonarticles'	=> 'Tous les noms articles',
 'allinnamespace' 	=> 'Toutes les pages (espace de nom $1)',
 'allnotinnamespace'	=> 'Toutes les pages (n\’étant pas dans l\'espace de nom $1)',
 'allpagesnext'		=> 'Suivant',
@@ -1040,12 +1042,14 @@ Voir [[{{ns:4}}:Trace des effacements]] pour la liste des suppressions et des re
 'blockip'	=> 'Bloquer une adresse IP ou un utilisateur',
 'blockiptext'	=> 'Utilisez le formulaire ci-dessous pour bloquer l\'accès en écriture à partir d\'une adresse IP donnée ou d\'un nom d\'utilisateur.
 
-Une telle mesure ne doit être prise que pour empêcher le vandalisme et en accord avec les [[Project:Policy|règles internes]].
+Une telle mesure ne doit être prise que pour empêcher le vandalisme et en accord avec les [[{{ns:project}}:Policy|règles internes]].
 Donnez ci-dessous une raison précise (par exemple en indiquant les pages qui ont été vandalisées).',
 'ipaddress'	=> 'Adresse IP',
 'ipadressorusername' => 'Adresse IP ou nom d\'utilisateur',
 'ipbexpiry' => 'Durée du blocage',
 'ipbreason'	=> 'Motif du blocage',
+'ipbanononly'   => 'Bloquer uniquement les utilisateurs anonymes',
+'ipbcreateaccount' => 'Empêcher la création de compte',
 'ipbsubmit'	=> 'Bloquer cet utilisateur',
 'ipbother'	=> 'Autre durée',
 'ipboptions'		=> '2 heures:2 hours,1 jour:1 day,3 jours:3 days,1 semaine:1 week,2 semaines:2 weeks,1 mois:1 month,3 mois:3 months,6 mois:6 months,1 an:1 year,Permanent:infinite',
@@ -1053,15 +1057,17 @@ Donnez ci-dessous une raison précise (par exemple en indiquant les pages qui on
 'badipaddress'	=> 'L\'adresse IP n\'est pas correcte.',
 'blockipsuccesssub' => 'Blocage réussi',
 'blockipsuccesstext' => '[[{{ns:Special}}:Contributions/$1|$1]] a été bloqué.<br />Vous pouvez consulter sur cette [[Special:Ipblocklist|page]] la liste des adresses IP bloquées.',
-'unblockip'	=> "Débloquer une adresse IP",
+'unblockip'	=> "Débloquer un utilisateur",
 'unblockiptext' => 'Utilisez le formulaire ci-dessous pour rétablir l\'accès en écriture
-à partir d\'une adresse IP précédemment bloquée.',
+d\'une adresse IP précédemment bloquée.',
 'ipusubmit'	=> 'Débloquer cette adresse',
 'ipusuccess'	=> 'L\'adresse IP « $1 » débloquée.',
 'ipblocklist'	=> 'Liste des blocages',
 'blocklistline' => '$1, $2 a bloqué $3 ($4)',
 'infiniteblock' => 'permanent',
 'expiringblock' => 'expire le $1',
+'anononlyblock' => 'uniquement anonyme',
+'createaccountblock' => 'la création de compte est bloquée',
 'ipblocklistempty'=> 'La liste de blocage est vide.',
 'blocklink'	=> 'bloquer',
 'unblocklink'	=> 'débloquer',
@@ -1072,6 +1078,7 @@ Donnez ci-dessous une raison précise (par exemple en indiquant les pages qui on
 'blocklogtext'	=> 'Ceci est la trace des blocages et déblocages des utilisateurs. Les adresses IP automatiquement bloquées ne sont pas listées. Consultez la [[Special:Ipblocklist|liste des utilisateurs bloqués]] pour voir qui est actuellement effectivement bloqué.',
 'unblocklogentry'	=> 'déblocage de « $1 »',
 'ipb_expiry_invalid' => 'temps d\'expiration invalide.',
+'ipb_already_blocked' => '"$1" est déjà bloqué',
 'ip_range_invalid' => 'Bloc IP incorrect.',
 'proxyblocker' => 'Bloqueur de proxy',
 'proxyblockreason' => 'Votre ip a été bloquée car il s\'agit d\'un proxy ouvert. Merci de contacter votre fournisseur d\'accès internet ou votre support technique et de l\'informer de ce problème de sécurité.',
@@ -1288,7 +1295,7 @@ Dans ce dernier cas, vous pouvez aussi utiliser un lien, comme [[{{ns:Special}}:
 
 # Monobook.js: tooltips and access keys for monobook
 'Monobook.js' => '/* infobulles et touches d\'accès */
-ta = new Object();
+var ta = new Object();
 ta[\'pt-userpage\'] = new Array(\'.\',\'Ma page utilisateur\');
 ta[\'pt-anonuserpage\'] = new Array(\'.\',\'La page utilisateur de l\\\'IP avec laquelle vous éditez\');
 ta[\'pt-mytalk\'] = new Array(\'n\',\'Ma page de discussion\');
@@ -1331,7 +1338,7 @@ ta[\'ca-nstab-main\'] = new Array(\'c\',\'Voir l\\\'article\');
 ta[\'ca-nstab-user\'] = new Array(\'c\',\'Voir la page utilisateur\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Voir la page du média\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Ceci est une page spéciale, vous ne pouvez l\\\'éditer.\');
-ta[\'ca-nstab-wp\'] = new Array(\'a\',\'Voir la page du projet\');
+ta[\'ca-nstab-project\'] = new Array(\'a\',\'Voir la page du projet\');
 ta[\'ca-nstab-image\'] = new Array(\'c\',\'Voir la page de l\\\'image\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Voir le message système\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Voir le modèle\');
@@ -1365,7 +1372,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Voir la page de la catégorie\');'
 
 # Media Warning
 'mediawarning' => '\'\'\'Attention\'\'\': Ce fichier peut contenir du code malveillant, votre système pouvant être mis en danger par son exécution.
-<hr>',
+<hr />',
 
 'fileinfo' => '$1KB, type MIME : <code>$2</code>',
 

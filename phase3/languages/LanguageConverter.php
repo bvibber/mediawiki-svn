@@ -30,7 +30,7 @@ class LanguageConverter {
 	 * @param array $flags array defining the custom strings that maps to the flags
      * @access public
      */
-	function LanguageConverter($langobj, $maincode,
+	function __construct($langobj, $maincode,
 								$variants=array(),
 								$variantfallbacks=array(),
 								$markup=array(),
@@ -223,17 +223,17 @@ class LanguageConverter {
      * @access public
      */
 	function convert( $text , $isTitle=false) {
-		$mw =& MagicWord::get( MAG_NOTITLECONVERT );
+		$mw =& MagicWord::get( 'notitleconvert'   );
 		if( $mw->matchAndRemove( $text ) )
 			$this->mDoTitleConvert = false;
 
-		$mw =& MagicWord::get( MAG_NOCONTENTCONVERT );
+		$mw =& MagicWord::get( 'nocontentconvert'   );
 		if( $mw->matchAndRemove( $text ) ) {
 			$this->mDoContentConvert = false;
 		}
 
 		// no conversion if redirecting
-		$mw =& MagicWord::get( MAG_REDIRECT );
+		$mw =& MagicWord::get( 'redirect'   );
 		if( $mw->matchStart( $text ))
 			return $text;
 

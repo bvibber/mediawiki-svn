@@ -1,7 +1,7 @@
 <?php
 
-
-/* private */ $wgAllMessagesEt = array(
+global $wgAllMessagesEt;
+$wgAllMessagesEt = array(
 "tog-underline" => "Lingid alla kriipsutada",
 "tog-highlightbroken" => "Vorminda lingirikked<a href=\"\" class=\"new\">nii</a> (alternatiiv: nii<a href=\"\" class=\"internal\">?</a>).",
 "tog-justify" => "Lõikude rööpjoondus",
@@ -127,7 +127,7 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit]."
 'talk' => 'Arutelu',
 'toolbox' => 'Tööriistakast',
 "userpage" => "Kasutajalehekülg",
-"wikipediapage" => "Metalehekülg",
+"projectpage" => "Metalehekülg",
 "imagepage" => 	"Pildilehekülg",
 "viewtalkpage" => "Arutelulehekülg",
 "otherlanguages" => "Teised keeled",
@@ -136,8 +136,6 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit]."
 "viewcount"		=> "Seda lehekülge on külastatud $1 korda.",
 # aegunud, võib vist eemaldada, asendada järgmisega:
 "copyright" => "Kogu tekst on kasutatav litsentsi $1 tingimustel.",
-'poweredby'     => "{{SITENAME}} kasutab avatud koodiga wiki mootorit [http://www.mediawiki.org/ MediaWiki].",
-"printsubtitle" => "(Allikas: {{SERVER}})",
 "protectedpage" => "Kaitstud artikkel",
 "administrators" => "{{ns:4}}:Administraatorid",
 "sysoptitle"	=> "Nõutav süsteemi operaatori staatus",
@@ -164,7 +162,7 @@ Vaata $1.",
 'nstab-user' => 'Kasutaja',
 'nstab-media' => 'Meedia',
 'nstab-special' => 'Eri',
-'nstab-wp' => 'Tiitelandmed', # about
+'nstab-project' => 'Tiitelandmed', # about
 'nstab-image' => 'Pilt',
 'nstab-mediawiki' => 'Sõnum', # Message
 'nstab-template' => 'Mall',
@@ -247,7 +245,6 @@ Võite kasutada süsteemi anonüümselt, aga ka sama või mõne teise kasutajana
 "yourname"		=> "Teie kasutajanimi",
 "yourpassword"	=> "Teie parool",
 "yourpasswordagain" => "Sisestage parool uuesti",
-"newusersonly"	=> " (ainult uued kasutajad)",
 "remembermypassword" => "Parooli meeldejätmine tulevasteks seanssideks.",
 "loginproblem"	=> "<b>Sisselogimine ei õnnestunud.</b><br />Proovige uuesti!",
 "alreadyloggedin" => "<strong>Kasutaja $1, Te olete juba sisse loginud!</strong><br />",
@@ -414,7 +411,8 @@ Legend: (viim) = erinevused võrreldes viimase redaktsiooniga,
 #
 "searchresults" => "Otsingu tulemid",
 "searchresulttext" => "Lisainfot otsimise kohta vaata $1.",
-"searchquery"	=> "Päring \"$1\"",
+"searchsubtitle"	=> "Päring \"[[:$1]]\"",
+"searchsubtitleinvalid"	=> "Päring \"$1\"",
 "badquery"		=> "Vigane päring",
 "badquerytext"	=> "Teie päringut ei saanud menetleda.
 Tõenäoliselt püüdsite otsida vähem kui kolme-tähelist sõna.

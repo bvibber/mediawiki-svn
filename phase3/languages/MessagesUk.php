@@ -110,14 +110,13 @@
 "articlepage"	=> "Переглянути статтю",
 "subjectpage"	=> "Переглянути тему", # For compatibility
 "userpage" => "Переглянути сторінку користувача",
-"wikipediapage" => "Переглянути мета-сторінку",
+"projectpage" => "Переглянути мета-сторінку",
 "imagepage" => 	"Переглянути сторінку зображення",
 "viewtalkpage" => "Переглянути обговорення",
 "otherlanguages" => "Іншими мовами",
 "redirectedfrom" => "(Перенаправлено з $1)",
 "lastmodified"	=> "Остання зміна $1.",
 "viewcount"		=> "Цю статтю переглядали $1 разів.",
-"printsubtitle" => "(Матеріал з {{SERVER}})",
 "protectedpage" => "Захищена стаття",
 "administrators" => "{{ns:project}}:Адміністратори",
 "sysoptitle"	=> "Необхідний рівень доступу Оператор",
@@ -207,7 +206,6 @@ You can view and copy the source of this page:",
 "yourname"		=> "Ваше ім'я",
 "yourpassword"	=> "Ваш пароль",
 "yourpasswordagain" => "Повторний набір пароля",
-"newusersonly"	=> " (тільки для нових користувачів)",
 "remembermypassword" => "Запам'ятовувати ваш пароль між сеансами.",
 "loginproblem"	=> "<b>Проблема при вході в систему.</b><br />попробуйте ще раз!",
 "alreadyloggedin" => "<strong>Користувач $1, ви вже ввійшли в систему!</strong><br />",
@@ -328,7 +326,8 @@ GNU Free Documentation License без незмінюваних секцій
 #
 "searchresults" => "Результати пошуку",
 "searchresulttext" => "Для отримання детальнішої інформації про пошук в {{SITENAME}}, див. [[Project:Пошук|Пошук в {{SITENAME}}]].",
-"searchquery"	=> "На запит \"$1\"",
+"searchsubtitle"	=> "На запит \"[[:$1]]\"",
+"searchsubtitleinvalid"	=> "На запит \"$1\"",
 "badquery"		=> "Невірно зфомульований запит",
 "badquerytext"	=> "Неможливо обробити ваш запит.
 Можливо, причина в тому, що ви намагались знайти слово, яке коротше трьох букв, що поки-що не підтримується.

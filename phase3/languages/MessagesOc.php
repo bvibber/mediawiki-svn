@@ -110,14 +110,13 @@
 "articlepage"	=> "Voir l'article",
 "subjectpage"   => "Page sujet",
 "userpage"      => "Page utilisateur",
-"wikipediapage" => "Page méta",
+"projectpage" => "Page méta",
 "imagepage"     => "Page image",
 "viewtalkpage"  => "Page de discussion",
 "otherlanguages" => "Autres langues",
 "redirectedfrom" => "(Redirigé depuis $1)",
 "lastmodified"  => "Dernière modification de cette page : $1.",
 "viewcount"     => "Cette page a été consultée $1 fois.",
-"printsubtitle" => "(de {{SERVER}})",
 "protectedpage" => "Page protégée",
 "administrators" => "{{ns:project}}:Administrateurs",
 "sysoptitle"    => "Accès administrateur requis",
@@ -198,7 +197,6 @@ N'oubliez pas de personnaliser votre {{SITENAME}} en consultant la page Préfér
 "yourname"           => "Votre nom d'utilisateur",
 "yourpassword"       => "Votre mot de passe",
 "yourpasswordagain"  => "Entrez à nouveau votre mot de passe",
-"newusersonly"       => " (nouveaux utilisateurs uniquement)",
 "remembermypassword" => "Se souvenir de mon mot de passe (cookie)",
 "loginproblem"       => "<b>Problème d'identification.</b><br />Essayez à nouveau !",
 "alreadyloggedin"    => "<strong>Utilisateur $1, vous êtes déjà identifié !</strong><br />",
@@ -304,7 +302,8 @@ vous suivez les [[Project:Page protégée|directives concernant les pages proté
 #
 "searchresults" => "Résultat de la recherche",
 "searchresulttext" => "Pour plus d'informations sur la recherche dans {{SITENAME}}, voir [[Project:Recherche|Chercher dans {{SITENAME}}]].",
-"searchquery" => "Pour la requête \"$1\"",
+"searchsubtitle" => "Pour la requête \"[[:$1]]\"",
+"searchsubtitleinvalid" => "Pour la requête \"$1\"",
 "badquery"  => "Requête mal formulée",
 "badquerytext" => "Nous n'avons pas pu traiter votre requête.
 Vous avez probablement recherché un mot d'une longueur inférieure

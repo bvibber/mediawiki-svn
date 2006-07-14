@@ -1,11 +1,7 @@
 <?php
 
-
-#-------------------------------------------------------------------
-# Default messages
-#-------------------------------------------------------------------
-
-/* private */ $wgAllMessagesPa = array(
+global $wgAllMessagesPa;
+$wgAllMessagesPa = array(
 # Bits of text used by many pages:
 #
 
@@ -118,7 +114,7 @@
 'talk'		=> 'ਚਰਚਾ',
 'toolbox'		=> 'ਔਜ਼ਾਰ-ਡੱਬਾ',
 'userpage'		=> 'ਮੈਂਬਰ ਦਾ ਪੰਨਾ ਵੇਖੋ',
-'wikipediapage'	=> 'ਪਰਿਯੋਜਨਾ (project) ਵਾਲਾ ਪੰਨਾ ਵੇਖੋ',
+'projectpage'	=> 'ਪਰਿਯੋਜਨਾ (project) ਵਾਲਾ ਪੰਨਾ ਵੇਖੋ',
 'imagepage'		=> 'ਤਸਵੀਰ ਵਾਲਾ ਪੰਨਾ ਵੇਖੋ',
 'viewtalkpage'	=> 'ਚਰਚਾ ਵਾਲਾ ਪੰਨਾ ਵੇਖੋ',
 'otherlanguages'	=> 'ਬਾਕੀ ਭਾਸ਼ਾਵਾਂ',
@@ -126,7 +122,6 @@
 'lastmodified'	=> 'ਅਖੀਰਲਾ ਬਦਲਾਵ $1',
 'viewcount'		=> 'ਇਹ ਪੰਨਾ $1 ਵਾਰ ਵੇਖਿਆ ਗਿਆ ਹੈ',
 'copyright'		=> 'ਵਿਸ਼ਾ-ਵਸਤੂ $1 ਤਹਿਤ ਉਪਲੱਬਧ ਹੈ',
-'printsubtitle'	=> '({{SERVER}} ਤੋਂ)',
 'protectedpage'	=> 'ਸੁਰੱਖਿਅਤ ਪੰਨਾ',
 'administrators'	=> 'Project:ਪ੍ਰਸ਼ਾਸਕ',
 'sysoptitle'		=> 'Sysop ਦਰਜਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ',
@@ -153,7 +148,7 @@
 'nstab-user'		=> 'ਮੈਂਬਰ ਦਾ ਪੰਨਾ',
 'nstab-media'		=> 'ਮੀਡੀਆ',
 'nstab-special'	=> 'ਖਾਸ',
-'nstab-wp'		=> 'ਜਾਣਕਾਰੀ',
+'nstab-project'		=> 'ਜਾਣਕਾਰੀ',
 'nstab-image'		=> 'ਤਸਵੀਰ',
 'nstab-mediawiki'	=> 'ਸੰਦੇਸ਼',
 'nstab-template'	=> 'ਨਮੂਨਾ',
@@ -219,7 +214,6 @@ still logged in, until you clear your browser cache\n',
 'yourname'		=> 'ਤੁਹਾਡਾ ਨਾਮ',
 'yourpassword'	=> 'ਤੁਹਾਡਾ ਪਾਸਵਰਡ',
 'yourpasswordagain'	=> 'ਪਾਸਵਰਡ ਦੌਬਾਰਾ ਲਿੱਖੋ',
-'newusersonly'	=> '(ਸਿਰਫ਼ ਨਵੇਂ ਮੈਂਬਰਾਂ ਲਈ)',
 'remembermypassword'	=> 'ਅੱਗੋਂ ਲਈ ਮੇਰਾ ਪਾਸਵਰਡ ਯਾਦ ਰੱਖੋ',
 'loginproblem'	=> '<b>ਤੁਹਾਡੇ ਲਾਗ ਇਨ ਵਿੱਚ ਕੁਝ ਸਮੱਸਿਆ ਹੈ,</b><br />ਦੌਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ!',
 'alreadyloggedin'	=> '<strong>$1, ਤੁਸੀਂ ਪਿਹਲਾਂ ਹੀ ਲਾਗ ਇਨ ਹੋ ਚੁੱਕੇ ਹੋ!</strong><br />\n',

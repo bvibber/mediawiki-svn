@@ -165,7 +165,8 @@ class ImagePage extends Article {
 	}
 
 	function openShowImage() {
-		global $wgOut, $wgUser, $wgImageLimits, $wgRequest, $wgUseImageResize;
+		global $wgOut, $wgUser, $wgImageLimits, $wgRequest;
+		global $wgUseImageResize, $wgGenerateThumbnailOnParse;
 
 		$full_url  = $this->img->getURL();
 		$anchoropen = '';
@@ -213,7 +214,7 @@ class ImagePage extends Article {
 					}
 
 					if( $wgUseImageResize ) {
-						$thumbnail = $this->img->getThumbnail( $width );
+						$thumbnail = $this->img->getThumbnail( $width, -1, $wgGenerateThumbnailOnParse );
 						if ( $thumbnail == null ) {
 							$url = $this->img->getViewURL();
 						} else {
@@ -258,11 +259,13 @@ class ImagePage extends Article {
 					ceil($this->img->getSize()/1024.0),
 					$this->img->getMimeType() );
 
+				global $wgContLang;
+				$dirmark = $wgContLang->getDirMark();
 				if (!$this->img->isSafeFile()) {
 					$warning = wfMsg( 'mediawarning' );
 					$wgOut->addWikiText( <<<END
 <div class="fullMedia">
-<span class="dangerousLink">[[Media:$filename|$filename]]</span>
+<span class="dangerousLink">[[Media:$filename|$filename]]</span>$dirmark
 <span class="fileInfo"> ($info)</span>
 </div>
 
@@ -272,7 +275,7 @@ END
 				} else {
 					$wgOut->addWikiText( <<<END
 <div class="fullMedia">
-[[Media:$filename|$filename]] <span class="fileInfo"> ($info)</span>
+[[Media:$filename|$filename]]$dirmark <span class="fileInfo"> ($info)</span>
 </div>
 END
 						);
@@ -370,7 +373,7 @@ END
 		$line = $this->img->nextHistoryLine();
 
 		if ( $line ) {
-			$list =& new ImageHistoryList( $sk );
+			$list = new ImageHistoryList( $sk );
 			$s = $list->beginImageHistoryList() .
 				$list->imageHistoryLine( true, wfTimestamp(TS_MW, $line->img_timestamp),
 					$this->mTitle->getDBkey(),  $line->img_user,
@@ -432,6 +435,7 @@ END
 		global $wgUser, $wgOut, $wgRequest;
 
 		$confirm = $wgRequest->wasPosted();
+		$reason = $wgRequest->getVal( 'wpReason' );
 		$image = $wgRequest->getVal( 'image' );
 		$oldimage = $wgRequest->getVal( 'oldimage' );
 
@@ -462,7 +466,7 @@ END
 		# Deleting old images doesn't require confirmation
 		if ( !is_null( $oldimage ) || $confirm ) {
 			if( $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ), $oldimage ) ) {
-				$this->doDelete();
+				$this->doDelete( $reason );
 			} else {
 				$wgOut->showFatalError( wfMsg( 'sessionfailure' ) );
 			}
@@ -479,13 +483,16 @@ END
 		return $this->confirmDelete( $q, $wgRequest->getText( 'wpReason' ) );
 	}
 
-	function doDelete()	{
+	/*
+	 * Delete an image.
+	 * @param $reason User provided reason for deletion.
+	 */
+	function doDelete( $reason ) {
 		global $wgOut, $wgRequest, $wgUseSquid;
 		global $wgPostCommitUpdateList;
 
 		$fname = 'ImagePage::doDelete';
 
-		$reason = $wgRequest->getVal( 'wpReason' );
 		$oldimage = $wgRequest->getVal( 'oldimage' );
 
 		$dbw =& wfGetDB( DB_MASTER );
@@ -588,6 +595,9 @@ END
 		$dest = wfImageDir( $name );
 		$archive = wfImageArchiveDir( $name );
 		$curfile = "{$dest}/{$name}";
+
+		if ( !is_dir( $dest ) ) wfMkdirParents( $dest );
+		if ( !is_dir( $archive ) ) wfMkdirParents( $archive );
 
 		if ( ! is_file( $curfile ) ) {
 			$wgOut->showFileNotFoundError( htmlspecialchars( $curfile ) );

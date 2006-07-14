@@ -46,7 +46,7 @@ class OutputPage {
 		$this->mCategoryLinks = array();
 		$this->mDoNothing = false;
 		$this->mContainsOldMagic = $this->mContainsNewMagic = 0;
-		$this->mParserOptions = ParserOptions::newFromUser( $temp = NULL );
+		$this->mParserOptions = ParserOptions::newFromUser( NULL );
 		$this->mSquidMaxage = 0;
 		$this->mScripts = '';
 		$this->mETag = false;
@@ -644,7 +644,7 @@ class OutputPage {
 	/**
 	 * Produce a "user is blocked" page
 	 */
-	function blockedPage() {
+	function blockedPage( $return = true ) {
 		global $wgUser, $wgContLang, $wgTitle;
 
 		$this->setPageTitle( wfMsg( 'blockedtitle' ) );
@@ -665,8 +665,10 @@ class OutputPage {
 		$this->addWikiText( wfMsg( 'blockedtext', $link, $reason, $ip, $name ) );
 		
 		# Don't auto-return to special pages
-		$return = $wgTitle->getNamespace() > -1 ? $wgTitle->getPrefixedText() : NULL;	
-		$this->returnToMain( false, $return );
+		if( $return ) {
+			$return = $wgTitle->getNamespace() > -1 ? $wgTitle->getPrefixedText() : NULL;
+			$this->returnToMain( false, $return );
+		}
 	}
 
 	/**
@@ -826,7 +828,7 @@ class OutputPage {
 				if ( $wgTitle->getNamespace() == NS_MEDIAWIKI ) {
 					$source = wfMsgWeirdKey ( $wgTitle->getText() );
 				} else {
-					$source = wfMsg( $wgUser->isLoggedIn() ? 'noarticletext' : 'noarticletextanon' );
+					$source = '';
 				}
 			}
 			$rows = $wgUser->getIntOption( 'rows' );

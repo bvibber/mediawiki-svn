@@ -91,13 +91,12 @@
 "articlepage"	=> "Leggi articolo",
 "subjectpage"	=> "Vedi articolo ", # For compatibility
 "userpage" => "Vedi pagina Utente",
-"wikipediapage" => "Vedi pagina meta",
+"projectpage" => "Vedi pagina meta",
 "imagepage" => 	"Vedi pagina immagine",
 "otherlanguages" => "Altre lingue",
 "redirectedfrom" => "(Reindirizzamento da $1)",
 "lastmodified"	=> "Ultima modifica il $1.",
 "viewcount"		=> "Questo articolo è stato letto $1 volte.",
-"printsubtitle" => "(Articolo di {{SERVER}})",
 "protectedpage" => "Pagina protetta",
 "administrators" => "{{ns:project}}:Amministratori",
 "sysoptitle"	=> "Riservato Sysop",
@@ -164,7 +163,6 @@ Ora puoi continuare ad usare {{SITENAME}} come utente anonimo (ma il tuo indiriz
 "yourname"		=> "Il tuo  user name",
 "yourpassword"	=> "La tua  password",
 "yourpasswordagain" => "Ripeti la password",
-"newusersonly"	=> " (solo per nuovi Utenti)",
 "remembermypassword" => "Ricorda la mia password per più sessioni (richiede uso dei cookies).",
 "loginproblem"	=> "<b>Si è verificato un errore durante il tuo tentativo di login.</b><br />Riprova, sarai più fortunato!",
 "alreadyloggedin" => "<strong>Ehi, Utente $1, hai già fatto il login, sei già connesso al nostro server!</strong><br />",
@@ -260,7 +258,8 @@ Controlla per favore la URL che hai usato per accedere a questa pagina.",
 #
 "searchresults" => "Risultato della ricerca",
 "searchresulttext" => "Per maggiori informazioni sulla ricerca interna di {{SITENAME}}, vedi [[Project:Ricerca|Ricerca in {{SITENAME}}]].",
-"searchquery"	=> "Richiesta \"$1\"",
+"searchsubtitle"	=> "Richiesta \"[[:$1]]\"",
+"searchsubtitleinvalid"	=> "Richiesta \"$1\"",
 "badquery"		=> "Richiesta mal inoltrata",
 "badquerytext"	=> "La tua richiesta non ha potuto essere processata.
 Questo potrebbe dipendere dall'aver ricercato una parola di meno di tre caratteri.

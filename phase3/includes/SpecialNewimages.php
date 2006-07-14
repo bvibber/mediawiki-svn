@@ -130,7 +130,7 @@ function wfSpecialNewimages( $par, $specialPage ) {
 		$ut = $s->img_user_text;
 
 		$nt = Title::newFromText( $name, NS_IMAGE );
-		$img = Image::newFromTitle( $nt );
+		$img = new Image( $nt );
 		$ul = $sk->makeLinkObj( Title::makeTitle( NS_USER, $ut ), $ut );
 
 		$gallery->add( $img, "$ul<br />\n<i>".$wgLang->timeanddate( $s->img_timestamp, true )."</i><br />\n" );
@@ -145,16 +145,13 @@ function wfSpecialNewimages( $par, $specialPage ) {
 	$bydate = wfMsg( 'bydate' );
 	$lt = $wgLang->formatNum( min( $shownImages, $limit ) );
 	if ($shownav) {
-		$text = wfMsg( 'imagelisttext', $lt, $bydate );
-		$wgOut->addHTML( "<p>{$text}\n</p>" );
+		$text = wfMsgExt( 'imagelisttext', array('parse'), $lt, $bydate );
+		$wgOut->addHTML( $text . "\n" );
 	}
 
 	$sub = wfMsg( 'ilsubmit' );
 	$titleObj = Title::makeTitle( NS_SPECIAL, 'Newimages' );
-	$action = $titleObj->escapeLocalURL();
-	if(!$hidebots) {
-		$action.='&hidebots=0';
-	}
+	$action = $titleObj->escapeLocalURL( $hidebots ? '' : 'hidebots=0' );
 	if ($shownav) {
 		$wgOut->addHTML( "<form id=\"imagesearch\" method=\"post\" action=\"" .
 		  "{$action}\">" .

@@ -66,7 +66,7 @@ class SrConverter extends LanguageConverter {
 	/* rules should be defined as -{ekavian | iyekavian-} -or-
 		-{code:text | code:text | ...}-
 	*/
-	function parseManualRule($rule, $flags) {
+	function parseManualRule($rule, $flags=array()) {
 
 		$echoices = preg_split("/(<[^>]+>)/",$rule,-1,PREG_SPLIT_DELIM_CAPTURE);
 		$choices = array();
@@ -194,7 +194,7 @@ class SrConverter extends LanguageConverter {
 }
 
 class LanguageSr extends LanguageSr_ec {
-	function LanguageSr() {
+	function __construct() {
 		global $wgHooks;
 		$variants = array('sr', 'sr-ec', 'sr-jc', 'sr-el', 'sr-jl');
 		$variantfallbacks = array(
