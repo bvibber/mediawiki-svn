@@ -22,13 +22,28 @@
 */
 
 $startTime = microtime(true);
+
 $IP = dirname( realpath( __FILE__ ) ) . '/../..';
 chdir( $IP );
-define( 'MW_NO_OUTPUT_BUFFER', true );
-$wgNoOutputBuffer = true;
 
-require_once( "$IP/includes/WebStart.php" );
-wfProfileIn( 'query.php' );
+if ( file_exists( "$IP/includes/WebStart.php" ) ) {
+	require_once( "$IP/includes/WebStart.php" );
+	wfProfileIn( 'query.php' );
+} else {
+	define( 'MEDIAWIKI', true );
+	if ( isset( $_REQUEST['GLOBALS'] ) ) {
+		echo '<a href="http://www.hardened-php.net/index.76.html">$GLOBALS overwrite vulnerability</a>';
+		die( -1 );
+	}
+
+	define( 'MW_NO_OUTPUT_BUFFER', true );
+	$wgNoOutputBuffer = true;
+
+	require_once( "$IP/includes/Defines.php" );
+	require_once( "$IP/LocalSettings.php" );
+	require_once( "$IP/includes/Setup.php" );
+	wfProfileIn( 'query.php' );
+}
 
 define( 'GN_FUNC', 	   0 );
 define( 'GN_MIME',     1 );
@@ -52,7 +67,9 @@ $bqp->execute();
 $bqp->output();
 
 wfProfileOut( 'query.php' );
-wfLogProfilingData();
+if ( function_exists( 'wfLogProfilingData' ) ) {
+	wfLogProfilingData();
+}
 
 class BotQueryProcessor {
 	var $classname = 'BotQueryProcessor';
