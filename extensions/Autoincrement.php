@@ -26,32 +26,25 @@ class Autoincrement {
 		
 		$this->mCount = 0;
 		
-		$wgHooks['MagicWordMagicWords'][] = array( $this , 'hookWords' );
 		$wgHooks['MagicWordwgVariableIDs'][] = array( $this, 'wfAutoincrementHookVariables' );
 		$wgHooks['LanguageGetMagic'][] = array( $this, 'wfAutoincrementHookRaw' );
 		$wgHooks['ParserGetVariableValueSwitch'][] = array( $this, 'wfAutoincrementHookSwitch' );
 	}
-
-	function hookWords( &$magicWords ) {
-		$magicWords[] = 'MAG_AUTOINCREMENT';
-	
-		return true;
-	}
 	
 	function wfAutoincrementHookVariables( &$wgVariableIDs ) {
-		$wgVariableIDs[] = MAG_AUTOINCREMENT;
+		$wgVariableIDs[] = 'autoincrement';
 
 		return true;
 	}
 	
 	function wfAutoincrementHookRaw( &$raw ) {
-		$raw[MAG_AUTOINCREMENT] = array( 0, 'AUTOINCREMENT' );;
+		$raw['autoincrement'] = array( 0, 'AUTOINCREMENT' );;
 
 		return true;
 	}
 
 	function wfAutoincrementHookSwitch( &$parser, &$varCache, &$index, &$ret ) {
-		if ( $index === MAG_AUTOINCREMENT )
+		if ( $index === 'autoincrement' )
 			$ret = ++$this->mCount; // No formatNum() just like url autonumbering
 	
 		return true;
