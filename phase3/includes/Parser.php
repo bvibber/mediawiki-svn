@@ -1408,7 +1408,6 @@ class Parser
 		$selflink = $this->mTitle->getPrefixedText();
 		wfProfileOut( $fname.'-setup' );
 
-		$checkVariantLink = sizeof($wgContLang->getVariants())>1;
 		$useSubpages = $this->areSubpagesAllowed();
 
 		# Loop for each link
@@ -1490,13 +1489,6 @@ class Parser
 			if( !$nt ) {
 				$s .= $prefix . '[[' . $line;
 				continue;
-			}
-
-			#check other language variants of the link
-			#if the article does not exist
-			if( $checkVariantLink
-			    && $nt->getArticleID() == 0 ) {
-				$wgContLang->findVariantLink($link, $nt);
 			}
 
 			$ns = $nt->getNamespace();
@@ -3830,6 +3822,7 @@ class Parser
 	function replaceLinkHolders( &$text, $options = 0 ) {
 		global $wgUser;
 		global $wgOutputReplace;
+		global $wgContLang;
 
 		$fname = 'Parser::replaceLinkHolders';
 		wfProfileIn( $fname );
@@ -3919,6 +3912,66 @@ class Parser
 				}
 			}
 			wfProfileOut( $fname.'-check' );
+
+			# Do a second query for links in different language variants (if needed)
+			if(sizeof($wgContLang->getVariants())>1){
+				$linkBatch = new LinkBatch(); // link batch for variants
+
+				foreach ( $this->mLinkHolders['namespaces'] as $key => $ns ) {
+					$title = $this->mLinkHolders['titles'][$key];
+					if ( is_null( $title ) )
+						continue;
+
+					$pdbk = $title->getPrefixedDBkey();
+
+					# Add to query only if the link has not been already processed
+					if ( !$title->isAlwaysKnown() && $linkCache->getGoodLinkID( $pdbk ) == 0 ){
+						# Add all variants of the link to linkbatch
+						$allTextVariants = $wgContLang->convertToAllVariants($title->getText());
+
+						foreach($allTextVariants as $textVariant){
+							$linkBatch->addObj( Title::makeTitleSafe( $ns, $textVariant ) );
+						}
+					}
+				}
+
+				# fetch link variants into cache
+				$linkBatch->execute();
+
+				# check if links are found in some of the variants
+				foreach ( $this->mLinkHolders['namespaces'] as $key => $ns ) {
+					$title = $this->mLinkHolders['titles'][$key];
+					if ( is_null( $title ) ) 
+						continue;
+
+					$pdbk = $title->getPrefixedDBkey();
+
+					if ( !$title->isAlwaysKnown()  && $linkCache->getGoodLinkID( $pdbk ) == 0){
+						$allTextVariants = $wgContLang->convertToAllVariants($title->getText());
+
+						foreach($allTextVariants as $textVariant){
+							$variantTitle=Title::makeTitleSafe( $ns, $textVariant );
+							if(is_null($variantTitle)) continue;
+
+							$pdbk = $variantTitle->getPrefixedDBkey();
+
+							if($linkCache->getGoodLinkID( $pdbk ) != 0){
+								$vtext = $variantTitle->getText();
+
+								# found link in some of the variants, replace the link holder data
+								$this->mLinkHolders['titles'][$key] = $variantTitle;
+								$this->mLinkHolders['dbkeys'][$key] = $variantTitle->getDBkey();
+								$this->mLinkHolders['texts'][$key] = $wgContLang->convert($this->mLinkHolders['texts'][$key]);
+
+								$pdbks[$key] = $varpdbk = $variantTitle->getPrefixedDBkey();
+								$colours[$varpdbk] = 1;
+
+								break;
+							}
+						}	
+					}					
+				}
+			}
 
 			# Construct search and replace arrays
 			wfProfileIn( $fname.'-construct' );
