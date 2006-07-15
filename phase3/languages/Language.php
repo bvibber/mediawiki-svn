@@ -315,7 +315,7 @@ class fakeConverter {
 	function getParsedTitle() {return '';}
 	function markNoConversion($text) {return $text;}
 	function convertCategoryKey( $key ) {return $key; }
-	function autoConvertToAllVariants($text){ return array( $this->mLang->getCode() => $text); }
+	function convertLinkToAllVariants($text){ return array( $this->mLang->getCode() => $text); }
 
 }
 
@@ -1160,8 +1160,8 @@ class Language {
 	 *  'variant' => text in that variant
 	 */
 
-	function convertToAllVariants($text){
-		return $this->mConverter->autoConvertToAllVariants($text);
+	function convertLinkToAllVariants($text){
+		return $this->mConverter->convertLinkToAllVariants($text);
 	}
 
 

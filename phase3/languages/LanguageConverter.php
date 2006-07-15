@@ -197,6 +197,42 @@ class LanguageConverter {
 	}
 
 	/**
+     * convert link text to all supported variants
+     *
+     * @param string $text the text to be converted
+     * @return array of string
+     * @public
+     */
+	function convertLinkToAllVariants($text,$includeFixedVariant=true) {
+		if( !$this->mTablesLoaded )
+			$this->loadTables();
+
+		$ret = array();
+		$tarray = explode($this->mMarkup['begin'], $text);
+		$tfirst = array_shift($tarray);
+
+		foreach($this->mVariants as $variant)
+			$ret[$variant] = strtr($tfirst, $this->mTables[$variant]);
+
+		foreach($tarray as $txt) {
+			$marked = explode($this->mMarkup['end'], $txt, 2);
+
+			foreach($this->mVariants as $variant){
+				$ret[$variant] .= $this->mMarkup['begin'].$marked[0].$this->mMarkup['end'];
+				if(array_key_exists(1, $marked))
+					$ret[$variant] .= strtr($marked[1], $this->mTables[$variant]);
+			}
+			
+		}
+
+		if($includeFixedVariant)
+			$ret[$this->mMainLanguageCode.'-fixed'] = $this->mMarkup['begin'].$text.$this->mMarkup['end'];
+
+		return $ret;
+	}
+
+
+	/**
 	 * Convert text using a parser object for context
 	 */
 	function parserConvert( $text, &$parser ) {

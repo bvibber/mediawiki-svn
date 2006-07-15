@@ -3926,7 +3926,7 @@ class Parser
 					$pdbk = $title->getPrefixedDBkey();
 
 					// generate all variants of the link title text
-					$allTextVariants = $wgContLang->convertToAllVariants($title->getText());
+					$allTextVariants = $wgContLang->convertLinkToAllVariants($title->getText());
 
 					// if link was not found (in first query), add all variants to query
 					if ( !isset($colours[$pdbk]) ){
@@ -3953,7 +3953,7 @@ class Parser
 						continue;
 
 					$pdbk = $title->getPrefixedDBkey();					
-					$allTextVariants = $wgContLang->convertToAllVariants($title->getText());
+					$allTextVariants = $wgContLang->convertLinkToAllVariants($title->getText());
 
 					// If link has already been found, check only fixed variant
 					if(isset($colours[$pdbk]) && $colours[$pdbk] == 1){
