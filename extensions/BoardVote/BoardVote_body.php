@@ -4,82 +4,18 @@ if (!defined('MEDIAWIKI')) {
 	die( "Not a valid entry point\n" );
 }
 
-global $wgMessageCache;
-$wgMessageCache->addMessages( array(
-
-"boardvote"               => "Wikimedia Board of Trustees election",
-"boardvote_entry"         => 
-"<!--* [[Special:Boardvote/vote|Vote]]-->
-* [[Special:Boardvote/list|List votes to date]]
-* [[Special:Boardvote/dump|Dump encrypted election record]]",
-"boardvote_intro"         => "
-<p>Welcome to the second elections for the Wikimedia Board of Trustees. We are
-voting for two people to represent the community of users on the various
-Wikimedia projects. They will help to determine the future direction
-that the Wikimedia projects will take, individually and as a group, and
-represent <em>your</em> interests and concerns to the Board of Trustees. They will
-decide on ways to generate income and the allocation of moneys raised.</p>
-
-<p>Please read the candidates' statements and responses to queries carefully
-before voting. Each of the candidates is a respected user, who has contributed
-considerable time and effort to making these projects a welcoming environment
-committed to the pursuit and free distribution of human knowledge.</p>
-
-<p>You may vote for as many candidates as you want. The
-candidate with the most votes in each position will be declared the winner of that
-position. In the event of a tie, a run-off election will be held.</p>
-
-<p>For more information, see:</p>
-<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2005\" class=\"external\">Election FAQ</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2005\" class=\"external\">Candidates</a></li></ul>
-",
-"boardvote_intro_change"  => "<p>You have voted before. However you may change 
-your vote using the form below. Please check the boxes next to each candidate whom 
-you approve of.</p>",
-"boardvote_footer"        => "&nbsp;",
-"boardvote_entered"       => "Thank you, your vote has been recorded.
-
-If you wish, you may record the following details. Your voting record is:
-
-<pre>$1</pre>
-
-It has been encrypted with the public key of the Election Administrators:
-
-<pre>$2</pre>
-
-The resulting encrypted version follows. It will be displayed publicly on [[Special:Boardvote/dump]]. 
-
-<pre>$3</pre>
-
-[[Special:Boardvote/entry|Back]]",
-"boardvote_notloggedin"   => "You are not logged in. To vote, you must use an account
-with at least $1 contributions before $2.",
-"boardvote_notqualified"  => "Sorry, you made only $1 edits before $2. You 
-need at least $3 to be able to vote.",
-"boardvote_novotes"       => "Nobody has voted yet.",
-"boardvote_time"          => "Time",
-"boardvote_user"          => "User",
-"boardvote_edits"         => "Edits",
-"boardvote_days"          => "Days",
-"boardvote_ip"            => "IP",
-"boardvote_ua"            => "User agent",
-"boardvote_listintro"     => "<p>This is a list of all votes which have been recorded 
-to date. $1 for the encrypted data.</p>",
-"boardvote_dumplink"      => "Click here",
-"boardvote_strike"        => "Strike",
-"boardvote_unstrike"      => "Unstrike",
-"boardvote_needadmin"     => "Only election administrators can perform this operation.",
-"boardvote_sitenotice"    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:  Vote open until July 12",
-'boardvote_closed' => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2005/En the elections page for results] soon.',
-'boardvote_edits_many' => 'many',
-));
+# Add messages
+global $wgMessageCache, $wgBoardVoteMessages;
+foreach( $wgBoardVoteMessages as $key => $value ) {
+	$wgMessageCache->addMessages( $wgBoardVoteMessages[$key], $key );
+}
 
 class BoardVotePage extends SpecialPage {
 	var $mPosted, $mVotedFor, $mDBname, $mUserDays, $mUserEdits;
 	var $mHasVoted, $mAction, $mUserKey, $mId, $mFinished;
 
 	function BoardVotePage() {
-		SpecialPage::SpecialPage( "Boardvote" );
+		SpecialPage::SpecialPage( "BoardVote" );
 	}
 
 	function execute( $par ) {

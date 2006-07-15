@@ -7,6 +7,9 @@ if (!defined('MEDIAWIKI')) {
 	die( "Not a valid entry point\n" );
 }
 
+# Internationlisation file
+require_once( 'BoardVote.i18n.php' );
+
 # Default settings
 $wgBoardVoteDB = "boardvote";
 $wgBoardCandidates = array();
