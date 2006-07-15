@@ -3955,21 +3955,33 @@ class Parser
 					$pdbk = $title->getPrefixedDBkey();					
 					$allTextVariants = $wgContLang->convertToAllVariants($title->getText());
 
-					// process the link if it was not found (in first query)
-					if ( !isset($colours[$pdbk]) ){
-						foreach($allTextVariants as $textVariant){
+					// If link has already been found, check only fixed variant
+					if(isset($colours[$pdbk]) && $colours[$pdbk] == 1){
+						$fixedCode = $wgLanguageCode.'-fixed';
+
+						if( isset($allTextVariants[$fixedCode]) ){
+							$allTextVariants = array($fixedCode => $allTextVariants[$fixedCode]);
+						}
+					}
+
+					// process the link variants
+					if ( !isset($colours[$pdbk]) || $colours[$pdbk] == 1 ){
+						foreach($allTextVariants as $variantCode => $textVariant){
 							$variantTitle=Title::makeTitleSafe( $ns, $textVariant );
 							if(is_null($variantTitle)) continue;
 
 							$varpdbk = $variantTitle->getPrefixedDBkey();
 
 							if($linkCache->getGoodLinkID( $varpdbk ) != 0){
-								$vtext = $this->mLinkHolders['texts'][$key];
 
 								// found link in some of the variants, replace the link holder data
 								$this->mLinkHolders['titles'][$key] = $variantTitle;
 								$this->mLinkHolders['dbkeys'][$key] = $variantTitle->getDBkey();
-								$this->mLinkHolders['texts'][$key] = $wgContLang->convert($vtext);
+
+								if($wgContLang->getPreferredVariant() == $wgLanguageCode)
+									$this->mLinkHolders['texts'][$key] = $this->mLinkHolders['texts'][$key];
+								else
+									$this->mLinkHolders['texts'][$key] = $variantTitle->getText();
 
 								$pdbks[$key] = $varpdbk;
 								$colours[$varpdbk] = 1;
@@ -3977,25 +3989,6 @@ class Parser
 								break;
 							}
 						}	
-					}
-					// if link was found, check for fixed title variant
-					else if($colours[$pdbk] == 1){
-						$fixedCode = $wgLanguageCode.'-fixed';
-
-						if( isset($allTextVariants[$fixedCode]) ){
-							$variantTitle = Title::makeTitleSafe($ns, $allTextVariants[$fixedCode]);
-							if(is_null($variantTitle)) continue;
-
-							$varpdbk = $variantTitle->getPrefixedDBkey();
-							if($linkCache->getGoodLinkID( $varpdbk ) != 0){
-								$this->mLinkHolders['titles'][$key] = $variantTitle;
-								$this->mLinkHolders['dbkeys'][$key] = $variantTitle->getDBkey();
-								$this->mLinkHolders['texts'][$key] = $variantTitle->getText();
-
-								$pdbks[$key] = $varpdbk;
-								$colours[$varpdbk] = 1;
-							}							
-						}
 					}
 				}
 			}
