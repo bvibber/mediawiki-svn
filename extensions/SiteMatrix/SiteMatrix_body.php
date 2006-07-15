@@ -6,10 +6,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 # Add messages
-global $wgMessageCache, $wgSiteMatrixMessages;
-foreach( $wgSiteMatrixMessages as $key => $value ) {
-	$wgMessageCache->addMessages( $wgSiteMatrixMessages[$key], $key );
-}
+global $wgSiteMatrixMessages;
+extAddMessages( $wgSiteMatrixMessages );
 
 global $IP;
 require_once( $IP.'/languages/Names.php' );

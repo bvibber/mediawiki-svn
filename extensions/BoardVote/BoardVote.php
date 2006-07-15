@@ -8,6 +8,9 @@ if (!defined('MEDIAWIKI')) {
 }
 
 # Internationalisation file
+if ( !function_exists( 'extAddMessages' ) ) {
+	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
+}
 require_once( 'BoardVote.i18n.php' );
 
 # Default settings

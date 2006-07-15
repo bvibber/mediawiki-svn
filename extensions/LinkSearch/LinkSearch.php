@@ -9,14 +9,15 @@
 $wgExtensionFunctions[] = 'wfLinkSearchSetup';
 
 # Internationalisation file
+if ( !function_exists( 'extAddMessages' ) ) {
+	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
+}
 require_once( 'LinkSearch.i18n.php' );
 
 function wfLinkSearchSetup() {
 	# Add messages
-	global $wgMessageCache, $wgLinkSearchMessages;
-	foreach( $wgLinkSearchMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $wgLinkSearchMessages[$key], $key );
-	}
+	global $wgLinkSearchMessages;
+	extAddMessages( $wgLinkSearchMessages );
 
 	$GLOBALS['wgSpecialPages']['Linksearch'] = array( /*class*/ 'SpecialPage', 
 		/*name*/ 'Linksearch', /* permission */'', /*listed*/ true, 

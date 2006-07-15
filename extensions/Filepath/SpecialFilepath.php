@@ -17,6 +17,9 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 # Internationalisation file
+if ( !function_exists( 'extAddMessages' ) ) {
+	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
+}
 require_once( 'SpecialFilepath.i18n.php' );
 
 if ( !function_exists( 'extAddSpecialPage' ) ) {

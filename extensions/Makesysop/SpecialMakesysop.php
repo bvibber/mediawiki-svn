@@ -19,6 +19,9 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 # Internationalisation file
+if ( !function_exists( 'extAddMessages' ) ) {
+	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
+}
 require_once( 'SpecialMakesysop.i18n.php' );
 
 // Set groups to the appropriate sysop/bureaucrat structure:
