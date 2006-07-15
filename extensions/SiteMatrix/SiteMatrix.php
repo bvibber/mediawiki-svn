@@ -13,6 +13,9 @@ $wgExtensionCredits['specialpage'][] = array(
 	'description' => 'display a list of wikimedia wikis'
 );
 
+# Internationalisation file
+require_once( 'SiteMatrix.i18n.php' );
+
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }

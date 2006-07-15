@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
-# Internationlisation file
+# Internationalisation file
 require_once( 'SpecialCrossNamespaceLinks.i18n.php' );
 
 $wgHooks['wgQueryPages'][] = 'wfSpecialCrossNamespaceLinksHook';

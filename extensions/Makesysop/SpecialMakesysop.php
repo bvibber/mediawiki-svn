@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'description' => 'gives bureaucrats/stewards the ability to modify user levels'
 );
 
-# Internationlisation file
+# Internationalisation file
 require_once( 'SpecialMakesysop.i18n.php' );
 
 // Set groups to the appropriate sysop/bureaucrat structure:

@@ -5,9 +5,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
     exit( 1 );
 }
 
-global $wgMessageCache, $IP;
-$wgMessageCache->addMessage( 'sitematrix', 'List of Wikimedia wikis' );
+# Add messages
+global $wgMessageCache, $wgSiteMatrixMessages;
+foreach( $wgSiteMatrixMessages as $key => $value ) {
+	$wgMessageCache->addMessages( $wgSiteMatrixMessages[$key], $key );
+}
 
+global $IP;
 require_once( $IP.'/languages/Names.php' );
 
 class SiteMatrixPage extends SpecialPage {

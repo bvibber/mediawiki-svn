@@ -8,7 +8,7 @@
 
 $wgExtensionFunctions[] = 'wfLinkSearchSetup';
 
-# Internationlisation file
+# Internationalisation file
 require_once( 'LinkSearch.i18n.php' );
 
 function wfLinkSearchSetup() {

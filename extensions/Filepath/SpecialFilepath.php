@@ -16,7 +16,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://meta.wikimedia.org/wiki/Filepath'
 );
 
-# Internationlisation file
+# Internationalisation file
 require_once( 'SpecialFilepath.i18n.php' );
 
 if ( !function_exists( 'extAddSpecialPage' ) ) {

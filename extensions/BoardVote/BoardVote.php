@@ -7,7 +7,7 @@ if (!defined('MEDIAWIKI')) {
 	die( "Not a valid entry point\n" );
 }
 
-# Internationlisation file
+# Internationalisation file
 require_once( 'BoardVote.i18n.php' );
 
 # Default settings
