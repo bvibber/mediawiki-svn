@@ -20,14 +20,15 @@ $wgExtensionCredits['other'][] = array(
 );
 
 # Internationalisation file
+if ( !function_exists( 'extAddMessages' ) ) {
+	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
+}
 require_once( 'Newuserlog.i18n.php' );
 
 function wfNewuserlog() {
 	# Add messages
-	global $wgMessageCache, $wgNewuserlogMessages;
-	foreach( $wgNewuserlogMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $wgNewuserlogMessages[$key], $key );
-	}
+	global $wgNewuserlogMessages;
+	extAddMessages( $wgNewuserlogMessages );
 
 	# Add a new log type
 	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
