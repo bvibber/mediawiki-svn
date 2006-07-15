@@ -18,6 +18,11 @@ $wgFilepathMessages['de'] = array(
 	'filepath_page'   => 'Datei:',
 	'filepath_submit' => 'Pfad',
 );
+$wgFilepathMessages['fr'] = array(
+	'filepath'        => 'Chemin complet',
+	'filepath_page'   => 'Fichier:',
+	'filepath_submit' => 'Chemin',
+);
 $wgFilepathMessages['he'] = array(
 	'filepath'        => 'נתיב לקובץ',
 	'filepath_page'   => 'הקובץ:',
