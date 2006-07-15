@@ -73,8 +73,7 @@ class PageHistory {
 		$logPage = Title::makeTitle( NS_SPECIAL, 'Log' );
 		$logLink = $this->mSkin->makeKnownLinkObj( $logPage, wfMsgHtml( 'viewpagelogs' ), 'page=' . $this->mTitle->getPrefixedUrl() );
 
-		$subtitle = wfMsgHtml( 'revhistory' ) . '<br />' . $logLink;
-		$wgOut->setSubtitle( $subtitle );
+		$this->doSubtitle($loglink);
 
 		$feedType = $wgRequest->getVal( 'feed' );
 		if( $feedType ) {
@@ -91,7 +90,7 @@ class PageHistory {
 			return;
 		}
 
-		
+
 		/*
 		 * "go=first" means to jump to the last (earliest) history page.
 		 * This is deprecated, it no longer appears in the user interface
@@ -115,6 +114,12 @@ class PageHistory {
 			$this->endHistoryList()
 		);
 		wfProfileOut( $fname );
+	}
+
+	function doSubtitle( $logLink ) {
+		global $wgOut;
+		$subtitle = wfMsgHtml( 'revhistory' ) . '<br />' . $logLink;
+		$wgOut->setSubtitle( $subtitle );
 	}
 
 	/** @todo document */

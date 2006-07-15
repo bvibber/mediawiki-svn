@@ -89,18 +89,19 @@ class Thread extends SpecialPage {
 		  );
 	
 
-            $moving = $wgRequest->getInt('lqt_moving_id');
+		$moving = $wgRequest->getInt('lqt_moving_id');
+		$history_id = $wgRequest->getInt("lqt_show_history_id", null);
 	    $editing_id = $wgRequest->getInt("lqt_editing", null);
 	    $replying_to_id = $wgRequest->getInt("lqt_replying_to_id", null);
 	    $highlighting_title = $wgRequest->getVal("lqt_highlight", null);
 	      
-	    $view = new ThreadView(Thread::baseURL(), $pageTitle, $editing_id, $replying_to_id, $highlighting_title,
+	    $view = new ThreadView(Thread::baseURL(), $pageTitle, $editing_id, $replying_to_id, $history_id, $highlighting_title,
 				   $moving);
 
 	    if ($first_post) {
-	      $view->renderThreadStartingFrom( $first_post, false );
+	    	$view->renderThreadStartingFrom( $first_post, false, false );
 	    } else {
-		 $wgOut->addWikiText("This talk page is empty.");
+			$wgOut->addWikiText("This talk page is empty.");
 	    }
 
 	    $wgOut->setPageTitle('Thread:'.$first_post->getTitle()->getPartialURL());
