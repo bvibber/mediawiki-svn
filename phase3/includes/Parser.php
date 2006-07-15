@@ -3822,7 +3822,7 @@ class Parser
 	function replaceLinkHolders( &$text, $options = 0 ) {
 		global $wgUser;
 		global $wgOutputReplace;
-		global $wgContLang;
+		global $wgContLang, $wgLanguageCode;
 
 		$fname = 'Parser::replaceLinkHolders';
 		wfProfileIn( $fname );
@@ -3915,8 +3915,9 @@ class Parser
 
 			# Do a second query for links in different language variants (if needed)
 			if(sizeof($wgContLang->getVariants())>1){
-				$linkBatch = new LinkBatch(); // link batch for variants
+				$linkBatch = new LinkBatch(); 
 
+				// Add variants of links to link batch
 				foreach ( $this->mLinkHolders['namespaces'] as $key => $ns ) {
 					$title = $this->mLinkHolders['titles'][$key];
 					if ( is_null( $title ) )
@@ -3924,13 +3925,20 @@ class Parser
 
 					$pdbk = $title->getPrefixedDBkey();
 
-					# Add to query only if the link has not been already processed
-					if ( !$title->isAlwaysKnown() && $linkCache->getGoodLinkID( $pdbk ) == 0 ){
-						# Add all variants of the link to linkbatch
-						$allTextVariants = $wgContLang->convertToAllVariants($title->getText());
+					// generate all variants of the link title text
+					$allTextVariants = $wgContLang->convertToAllVariants($title->getText());
 
+					// if link was not found (in first query), add all variants to query
+					if ( !isset($colours[$pdbk]) ){
 						foreach($allTextVariants as $textVariant){
 							$linkBatch->addObj( Title::makeTitleSafe( $ns, $textVariant ) );
+						}
+					}
+					// if link was found add only variant with fixed title
+					else if($colours[$pdbk] == 1){
+						$fixedCode = $wgLanguageCode.'-fixed';
+						if( isset($allTextVariants[$fixedCode]) ){
+							$linkBatch->addObj( Title::makeTitleSafe( $ns, $allTextVariants[$fixedCode]  ) );
 						}
 					}
 				}
@@ -3944,32 +3952,51 @@ class Parser
 					if ( is_null( $title ) ) 
 						continue;
 
-					$pdbk = $title->getPrefixedDBkey();
+					$pdbk = $title->getPrefixedDBkey();					
+					$allTextVariants = $wgContLang->convertToAllVariants($title->getText());
 
-					if ( !$title->isAlwaysKnown()  && $linkCache->getGoodLinkID( $pdbk ) == 0){
-						$allTextVariants = $wgContLang->convertToAllVariants($title->getText());
-
+					// process the link if it was not found (in first query)
+					if ( !isset($colours[$pdbk]) ){
 						foreach($allTextVariants as $textVariant){
 							$variantTitle=Title::makeTitleSafe( $ns, $textVariant );
 							if(is_null($variantTitle)) continue;
 
-							$pdbk = $variantTitle->getPrefixedDBkey();
+							$varpdbk = $variantTitle->getPrefixedDBkey();
 
-							if($linkCache->getGoodLinkID( $pdbk ) != 0){
-								$vtext = $variantTitle->getText();
+							if($linkCache->getGoodLinkID( $varpdbk ) != 0){
+								$vtext = $this->mLinkHolders['texts'][$key];
 
-								# found link in some of the variants, replace the link holder data
+								// found link in some of the variants, replace the link holder data
 								$this->mLinkHolders['titles'][$key] = $variantTitle;
 								$this->mLinkHolders['dbkeys'][$key] = $variantTitle->getDBkey();
-								$this->mLinkHolders['texts'][$key] = $wgContLang->convert($this->mLinkHolders['texts'][$key]);
+								$this->mLinkHolders['texts'][$key] = $wgContLang->convert($vtext);
 
-								$pdbks[$key] = $varpdbk = $variantTitle->getPrefixedDBkey();
+								$pdbks[$key] = $varpdbk;
 								$colours[$varpdbk] = 1;
 
 								break;
 							}
 						}	
-					}					
+					}
+					// if link was found, check for fixed title variant
+					else if($colours[$pdbk] == 1){
+						$fixedCode = $wgLanguageCode.'-fixed';
+
+						if( isset($allTextVariants[$fixedCode]) ){
+							$variantTitle = Title::makeTitleSafe($ns, $allTextVariants[$fixedCode]);
+							if(is_null($variantTitle)) continue;
+
+							$varpdbk = $variantTitle->getPrefixedDBkey();
+							if($linkCache->getGoodLinkID( $varpdbk ) != 0){
+								$this->mLinkHolders['titles'][$key] = $variantTitle;
+								$this->mLinkHolders['dbkeys'][$key] = $variantTitle->getDBkey();
+								$this->mLinkHolders['texts'][$key] = $variantTitle->getText();
+
+								$pdbks[$key] = $varpdbk;
+								$colours[$varpdbk] = 1;
+							}							
+						}
+					}
 				}
 			}
 
