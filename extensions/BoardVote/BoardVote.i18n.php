@@ -125,4 +125,23 @@ $wgBoardVoteMessages['he'] = array(
 	'boardvote_closed'        => 'ההצבעה סגורה כעת, ראו [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2005/En את הדף על תוצאות הבחירות] בקרוב.',
 	'boardvote_edits_many'    => 'הרבה',
 );
+$wgBoardVoteMessages['id'] = array(
+	'boardvote'               => "Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia",
+	'boardvote_intro_change'  => "<p>Anda sudah pernah memilih. Walaupun demikian, Anda dapat mengganti pilihan Anda dengan menggunakan formulir di bawah. Harap cek kotak di samping tiap kandidat yang Anda setujui.</p>",
+	'boardvote_notloggedin'   => "Anda tidak masuk log. Untuk dapat memilih Anda harus menggunakan akun dengan paling tidak $1 suntingan sebelum $2.",
+	'boardvote_notqualified'  => "Maaf, Anda hanya memiliki $1 suntingan sebelum $2. Anda paling tidak membutuhkan $3 suntingan sebelum dapat memilih.",
+	'boardvote_novotes'       => "Belum ada pemilih.",
+	'boardvote_time'          => "Waktu",
+	'boardvote_user'          => "Pengguna",
+	'boardvote_edits'         => "Suntingan",
+	'boardvote_days'          => "Hari",
+	'boardvote_ip'            => "IP",
+	'boardvote_ua'            => "Agen pengguna",
+	'boardvote_listintro'     => "<p>Berikut adalah daftar semua suara yang telah masuk sampai hari ini. $1 untuk data terenkripsi.</p>",
+	'boardvote_dumplink'      => "Klik di sini",
+	'boardvote_strike'        => "Coret",
+	'boardvote_unstrike'      => "Hapus coretan",
+	'boardvote_needadmin'     => "Hanya pengurus pemilihan yang dapat melakukan tindakan ini.",
+	'boardvote_edits_many'    => 'banyak',
+);
 ?>

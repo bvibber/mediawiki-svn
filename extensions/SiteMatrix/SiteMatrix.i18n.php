@@ -14,4 +14,7 @@ $wgSiteMatrixMessages['en'] = array(
 $wgSiteMatrixMessages['he'] = array(
 	"sitematrix" => "רשימת אתרי ויקי של ויקימדיה",
 );
+$wgSiteMatrixMessages['id'] = array(
+	"sitematrix" => "Daftar wiki Wikimedia",
+);
 ?>
