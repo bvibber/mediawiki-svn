@@ -213,5 +213,8 @@ uitgebracht. $1 voor de versleutelde gegevens.</p>",
 	"boardvote_unstrike"      => "Geldig",
 	"boardvote_needadmin"     => "Alleen leden van de Verkiezingscommissie kunnen deze handeling uitvoeren.",
 	'boardvote_edits_many' => 'veel',
+	'group-boardvote'         => 'Board vote beheerders',
+	'group-boardvote-member'  => 'Board vote beheerder',
+	'grouppage-boardvote'     => '{{ns:project}}:Board vote beheerder',
 );
 ?>
