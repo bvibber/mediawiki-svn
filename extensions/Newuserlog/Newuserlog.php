@@ -44,7 +44,7 @@ function wfNewuserlog() {
 	$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
 }
 
-function wfNewuserlogHook( $user=null ) {
+function wfNewuserlogHook( $user ) {
 	global $wgUser, $wgContLang;
 	
 	if( is_null( $user ) ) {
