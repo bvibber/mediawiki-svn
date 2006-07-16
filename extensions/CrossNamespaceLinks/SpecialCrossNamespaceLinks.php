@@ -19,9 +19,6 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 # Internationalisation file
-if ( !function_exists( 'extAddMessages' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
 require_once( 'SpecialCrossNamespaceLinks.i18n.php' );
 
 $wgHooks['wgQueryPages'][] = 'wfSpecialCrossNamespaceLinksHook';
@@ -33,8 +30,10 @@ extAddSpecialPage( dirname(__FILE__) . '/SpecialCrossNamespaceLinks_body.php', '
 
 function wfSpecialCrossNamespaceLinksHook( &$QueryPages ) {
 	# Add messages
-	global $wgCrossNamespaceLinksMessages;
-	extAddMessages( $wgCrossNamespaceLinksMessages );
+	global $wgMessageCache, $wgCrossNamespaceLinksMessages;
+	foreach( $wgCrossNamespaceLinksMessages as $key => $value ) {
+		$wgMessageCache->addMessages( $wgCrossNamespaceLinksMessages[$key], $key );
+	}
 	
 	$QueryPages[] = array(
 		'CrossNamespaceLinksPage',

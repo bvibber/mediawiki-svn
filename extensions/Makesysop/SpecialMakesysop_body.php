@@ -6,8 +6,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 # Add messages
-global $wgMakesysopMessages;
-extAddMessages( $wgMakesysopMessages );
+global $wgMessageCache, $wgMakesysopMessages;
+foreach( $wgMakesysopMessages as $key => $value ) {
+	$wgMessageCache->addMessages( $wgMakesysopMessages[$key], $key );
+}
 
 require_once( 'SpecialUserrights.php' );
 require_once( "LinksUpdate.php" );

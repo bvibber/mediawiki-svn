@@ -5,8 +5,10 @@ if (!defined('MEDIAWIKI')) {
 }
 
 # Add messages
-global $wgFilepathMessages;
-extAddMessages( $wgFilepathMessages );
+global $wgMessageCache, $wgFilepathMessages;
+foreach( $wgFilepathMessages as $key => $value ) {
+	$wgMessageCache->addMessages( $wgFilepathMessages[$key], $key );
+}
 
 class SpecialFilepath extends SpecialPage {
 	function SpecialFilepath() {

@@ -56,9 +56,6 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 # Internationalisation file
-if ( !function_exists( 'extAddMessages' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
 require_once( 'LuceneSearch.i18n.php' );
 
 if (class_exists('Revision'))
