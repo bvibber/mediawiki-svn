@@ -144,4 +144,68 @@ $wgBoardVoteMessages['id'] = array(
 	'boardvote_needadmin'     => "Hanya pengurus pemilihan yang dapat melakukan tindakan ini.",
 	'boardvote_edits_many'    => 'banyak',
 );
+$wgBoardVoteMessages['nl'] = array(
+	"boardvote"               => "Wikimedia Board of Trustees-verkiezing",
+	"boardvote_entry"         => "<!--* [[Special:Boardvote/vote|Vote]]-->
+* [[Special:Boardvote/list|Toon uitgebrachte stemmen]]
+* [[Special:Boardvote/dump|Dump encrypted election record]]",
+	"boardvote_intro"         => "
+<p>Welkom bij de tweede verkiezingen voor de Wikimedia Board of Trustees. We
+kiezen twee personen die de gebruikersgemeenschap vertegenwoordigen in de
+verschillden Wikimedia-projecten. Ze bepalen mede de toekomstige richting
+van Wikimedia-projecten, individueel en als groep, en behartigen <em>uw</em>
+belangen en zorgen bij de Board of Trustees. Ze beslissen ook over hoe
+inkomsten gemaakt kunnen worden en waar het opgehaalde geld aan wordt
+besteed.</p>
+
+<p>Lees alstublieft de kandidaatstelling en de antwoorden op vragen zorgvuldig
+voordat u stemt. Iedere kandidaat is een gewaardeerde gebruiker die
+aanzielijke hoeveelheden tijd en moeite heeft besteed aan het bouwen van
+uitnodigende omgevingen die toegewijd zijn aan het nastreven en vrij verspreiden
+van menselijke kennis.</p>
+
+<p>U mag voor zoveel kandidaten stemmen als u wilt. De kandidaat met de meeste
+stemmen voor iedere positie wordt tot winnaar uitgeroepen voor de betreffende
+positie. In geval de stemmen staken wordt er een tweede ronde gehouden.</p>
+
+<p>Meer informatie:</p>
+<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2005\" class=\"external\">Bestuursverkiezing FAQ</a></li>
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2005\" class=\"external\">Kandidaten</a></li></ul>
+",
+	"boardvote_intro_change"  => "<p>U heeft al gestemd. U kunt uw stem wijzigen via
+het onderstaande formulier. Vink alstublieft de vakjes naar iedere kandidaat die
+u steunt aan.</p>",
+	"boardvote_entered"       => "Dank u. Uw stem is verwerkt.
+
+Als u wilt kunt u de volgende gegevens bewaren. Uw stem:
+
+<pre>$1</pre>
+
+Deze is versleuteld met de publieke sleutel van de Verkiezingscommissie:
+
+<pre>$2</pre>
+
+Nu volgt de versleutelde versie. Deze is openbaar en na te zien op [[Special:Boardvote/dump]]. 
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Terug]]",
+	"boardvote_notloggedin"   => "U bent niet aangemeld. U kunt stemmen als u voor $2 ten minste
+$1 bewerkingen heeft gemaakt.",
+	"boardvote_notqualified"  => "Sorry, u heeft voor $2 $1 bewerkingen gemaakt. Om te kunnen
+stemmen heeft u er $3 nodig.",
+	"boardvote_novotes"       => "Er is nog niet gestemd.",
+	"boardvote_time"          => "Tijd",
+	"boardvote_user"          => "Gebruiker",
+	"boardvote_edits"         => "Bewerkingen",
+	"boardvote_days"          => "Dagen",
+	"boardvote_ua"            => "User-agent",
+	"boardvote_listintro"     => "<p>Hieronder staan alle stemmen die tot nu toe zijn
+uitgebracht. $1 voor de versleutelde gegevens.</p>",
+	"boardvote_dumplink"      => "Klik hier",
+	"boardvote_strike"        => "Ongeldig",
+	"boardvote_unstrike"      => "Geldig",
+	"boardvote_needadmin"     => "Alleen leden van de Verkiezingscommissie kunnen deze handeling uitvoeren.",
+	'boardvote_edits_many' => 'veel',
+);
 ?>
