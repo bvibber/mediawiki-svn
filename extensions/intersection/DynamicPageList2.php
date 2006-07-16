@@ -2,7 +2,7 @@
 /*
 
  Version:
-	Hack v0.5 (DynamicPageList2 is based on DynamicPageList)
+	Hack v0.5.1 (DynamicPageList2 is based on DynamicPageList)
 	
  Purpose:outputs a union of articles residing in a selection 
 				of categories and namespaces using configurable output- and
@@ -43,14 +43,13 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author'=>'[http://en.wikinews.org/wiki/User:IlyaHaykinson IlyaHaykinson], [http://en.wikinews.org/wiki/User:Amgine Amgine], [http://de.wikipedia.org/wiki/Benutzer:Unendlich Unendlich], [http://meta.wikimedia.org/wiki/User:Dangerman Cyril Dangerville]',
 	'url'=>'http://meta.wikimedia.org/wiki/DynamicPageList2',
 	'description'=>'hack of the original [http://meta.wikimedia.org/wiki/DynamicPageList DynamicPageList] extension from DynamicPageList featuring many Improvements',
-  	'version'=>'0.5'
+  	'version'=>'0.5.1'
   );
 
 $wgDPL2MaxCategoryCount = 4;				// Maximum number of categories allowed in the Query
 $wgDPL2MinCategoryCount = 0;				// Minimum number of categories needed in the Query
 $wgDPL2MaxResultCount = 50;				// Maximum number of results to allow
 $wgDPL2CategoryStyleListCutoff = 6; //Max length to format a list of articles chunked by letter as bullet list, if list bigger, columnar format user (same as cutoff arg for CategoryPage::formatList())
-// Maximum number of results to allow for a short list with mode=category, if max exceed, results output in a column list
 $wgDPL2AllowUnlimitedCategories = true;			// Allow unlimited categories in the Query
 $wgDPL2AllowUnlimitedResults = true;				// Allow unlimited results to be shown
 
@@ -111,6 +110,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$aaIncludeCategories = array();		// $aaIncludeCategories is a two 2-dimensional array: Memberarrays are linked using 'AND'
 	$aExcludeCategories = array();
 	$aNamespaces = array();
+	$aExcludeNamespaces  = array();
 	
 	//Local parser created. See http://meta.wikimedia.org/wiki/MediaWiki_extensions_FAQ#How_do_I_render_wikitext_in_my_extension.3F
 	$localParser = new Parser();
@@ -158,6 +158,15 @@ function DynamicPageList2( $input, $params, &$parser ) {
 						$aNamespaces[] = intval($sParam);
 				}
 				break;
+			
+			case 'notnamespace':
+                $sArg=trim($sArg);
+                $sNS = $wgContLang->getNsIndex($sArg);
+                if ( $sNS != NULL )
+                    $aExcludeNamespaces[] = $sNS;
+                elseif (intval($sArg) >= 0)
+                    $aExcludeNamespaces[] = intval($sArg);
+                break;
 				
 			case 'count':
 				//ensure that $iCount is a number;
@@ -383,11 +392,12 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	// WHERE ...
 	// Namespace IS ...
 	if ( !empty($aNamespaces)) {
-		$sSqlWhere .= ' AND (page_namespace='.$aNamespaces[0];
-		for ($i = 1; $i < count($aNamespaces); $i++)
-			$sSqlWhere .= ' OR page_namespace='.$aNamespaces[$i];
-		$sSqlWhere .= ') ';
+		$sSqlWhere .= ' AND (page_namespace IN (' . implode (',', $aNamespaces) . '))';
 	}
+	// Namespace IS NOT ...
+    if ( !empty($aExcludeNamespaces)) {
+        $sSqlWhere .= ' AND (page_namespace NOT IN (' . implode (',', $aExcludeNamespaces) . '))';
+    }
 	// is_Redirect IS ...	
 	switch ($sRedirects) {
 		case 'only':
@@ -436,8 +446,8 @@ function DynamicPageList2( $input, $params, &$parser ) {
 // ###### PROCESS SQL QUERY ######
 	$output = '';
 	//DEBUG: output SQL query 
-	//$output .= 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br/>";    
-	//echo 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br />";    	
+	//$output .= 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br/>";
+	//echo 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br />";
 
 	$res = $dbr->query($sSqlSelectFrom . $sSqlWhere);
 	if ($dbr->numRows( $res ) == 0) {
