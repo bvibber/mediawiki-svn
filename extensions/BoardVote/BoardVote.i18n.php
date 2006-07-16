@@ -73,6 +73,9 @@ to date. $1 for the encrypted data.</p>",
 	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:  Vote open until July 12",
 	'boardvote_closed'        => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2005/En the elections page for results] soon.',
 	'boardvote_edits_many'    => 'many',
+	'group-boardvote'         => 'Board vote admins',
+	'group-boardvote-member'  => 'Board vote admin',
+	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
 );
 $wgBoardVoteMessages['he'] = array(
 	'boardvote'               => "בחירות לחבר הנאמנים של ויקימדיה",
@@ -124,6 +127,9 @@ $wgBoardVoteMessages['he'] = array(
 	'boardvote_sitenotice'    => "<a href=\"{{localurle:{{ns:special}}:Boardvote/vote}}\">בחירות לחבר הנאמנים של ויקימדיה</a>: ההצבעה פתוחה עד 12 ביולי",
 	'boardvote_closed'        => 'ההצבעה סגורה כעת, ראו [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2005/En את הדף על תוצאות הבחירות] בקרוב.',
 	'boardvote_edits_many'    => 'הרבה',
+	'group-boardvote'         => 'מנהלי הבחירות לחבר המנהלים',
+	'group-boardvote-member'  => 'מנהל הבחירות לחבר המנהלים',
+	'grouppage-boardvote'     => '{{ns:project}}:מנהל הבחירות לחבר המנהלים',
 );
 $wgBoardVoteMessages['id'] = array(
 	'boardvote'               => "Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia",

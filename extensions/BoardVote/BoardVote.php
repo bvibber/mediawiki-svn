@@ -23,9 +23,8 @@ $wgGPGPubKey = "C:\\Program Files\\gpg\\pub.txt";
 $wgBoardVoteEditCount = 400;
 $wgBoardVoteCountDate = '20050530000000';
 
-if ( isset( $wgGroupPermissions ) ) {
-	$wgGroupPermissions['boardvote'] = array( 'boardvote' => true );
-}
+# Vote admins
+$wgGroupPermissions['boardvote']['boardvote'] = true;
 
 # Register special page
 if ( !function_exists( 'extAddSpecialPage' ) ) {
