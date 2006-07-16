@@ -2,7 +2,7 @@
 /*
 
  Version:
-	Hack v0.5.1 (DynamicPageList2 is based on DynamicPageList)
+	Hack v0.5 (DynamicPageList2 is based on DynamicPageList)
 	
  Purpose:outputs a union of articles residing in a selection 
 				of categories and namespaces using configurable output- and
@@ -61,7 +61,7 @@ function wfDynamicPageList2() {
 					'dpl2_toomanycats' 					=> 'DynamicPageList2: Too many categories!',
 					'dpl2_toofewcats' 					=> 'DynamicPageList2: Too few categories!',
 					'dpl2_noresults' 					=> 'DynamicPageList2: No results!',
-					'dpl2_noincludedcatsorns' 			=> 'DynamicPageList2: You need to include at least one category or specify a namespace!',
+					'dpl2_noincludedcatsorns' 			=> 'DynamicPageList2: You need to include/exclude at least one category or include/exclude at least one namespace!',
 					'dpl2_noincludedcatsbutcatdate' 		=> "DynamicPageList2: You need to include at least one category if you want to use 'addfirstcategorydate=true' or 'ordermethod=categoryadd'!",
 					'dpl2_morethanonecatbutcatdate'		=> "DynamicPageList2: If you include more than one category you cannot use 'addfirstcategorydate=true' or 'ordermethod=categoryadd'!",
 					'dpl2_addmorethanonetypeofdate'		=> 'DynamicPageList2: You cannot add more than one type of date at a time.',		
@@ -253,7 +253,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 // ###### CHECKS ON PARAMETERS ######
 	
 	// no included/excluded categories or namespaces!!
-	if ($iTotalCatCount == 0 && empty($aNamespaces) )
+	if ($iTotalCatCount == 0 && empty($aNamespaces) && empty($aExcludeNamespaces))
 		return htmlspecialchars( wfMsg( 'dpl2_noincludedcatsorns' ) );	
 
 	// too many categories!!
