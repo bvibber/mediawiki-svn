@@ -79,26 +79,4 @@ if ( !defined( 'MW_SPECIALPAGE_VERSION' ) ) {
 	}
 }
 
-/**
- * Add system messages.
- *
- * @param array $messages the system messages array
- */
-function extAddMessages( $messages ) {
-	global $wgMessageCache;
-	
-	# Add all the messages in all the languages, except for English
-	foreach( $messages as $key => $value ) {
-		if( $key != 'en' ) {
-			$wgMessageCache->addMessages( $value, $key );
-		}
-	}
-	
-	# Add the English messages as the last ones, to override all the
-	# others in old versions
-	if( isset( $messages['en'] ) ) {
-		$wgMessageCache->addMessages( $messages['en'], 'en' );
-	}
-}
-
 ?>
