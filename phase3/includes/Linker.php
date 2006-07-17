@@ -709,7 +709,15 @@ class Linker {
 	very similar to 
 	*/
 	function makeEmbedMediaLinkObj($title, $options){	
-		global $wgScriptPath, $wgJsMimeType, $wgContLang;
+		global $wgScriptPath, $wgJsMimeType, $wgContLang, $wgEmbedCountId;
+		
+		//keep track of how many embed items we have and use the count as a unique identifier. 
+		if(!isset($wgEmbedCountId)){
+			$wgEmbedCountId=1;
+		}else{
+			$wgEmbedCountId++;
+		}
+		
 		if( is_null( $title ) ) {
 			### HOTFIX. Instead of breaking, return empty string.
 			return $text;
@@ -835,7 +843,8 @@ class Linker {
 						'width="15" height="11" alt="'.$more.'" /></a></div>';
 				}*/
 				
-				$base_unique_name =str_replace('.', '_', $title->getDBkey());	//replace . with _ for DOM id compatibility
+				//$base_unique_name =str_replace('.', '_', $title->getDBkey());	//replace . with _ for DOM id compatibility
+				$base_unique_name = $wgEmbedCountId;
 				$width = (isset($options['width']))?$options['width']:'320';
 
 				$oboxwidth=$width+10;
@@ -868,7 +877,7 @@ class Linker {
 						<div id="magnify_{$base_unique_name}" class="magnify" style="width:54px;float:{$magnifyalign};">
 							<a id="play_{$base_unique_name}" title="play media" href="javascript:auto_embed('{$base_unique_name}', '{$media_url}')">
 								<img style="float:right" src="{$icon_path}vid_play_sm.png">
-							</a>										
+							</a>
 							<span id="cnt_{$base_unique_name}" style="display:none;">
 								<a title="fullscreen" href="javascript:;" onclick="document.video_{$base_unique_name}.fullscreen()">
 									<img  style="float:right" src="{$icon_path}vid_full_screen_sm.png" width="27" height="27" />
