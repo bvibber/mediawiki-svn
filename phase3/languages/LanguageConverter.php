@@ -153,9 +153,12 @@ class LanguageConverter {
 			$marker = "";
 
 		// this one is needed when the text is inside an html markup
-		$htmlfix = '|<[^>]+=\"[^(>=)]*$|^[^(<>=\")]*\"[^>]*>';
+		$htmlfix = '|<[^>]+$|^[^<>]*>';
 
-		$reg = '/<[^>]+>|&[a-z#][a-z0-9]+;' . $marker . $htmlfix . '/';
+		// disable convert to variants between <code></code> tags
+		$codefix = '<code>.+?<\/code>|';
+
+		$reg = '/'.$codefix.'<[^>]+>|&[a-z#][a-z0-9]+;' . $marker . $htmlfix . '/s';
 	
 		$matches = preg_split($reg, $text, -1, PREG_SPLIT_OFFSET_CAPTURE);
 
