@@ -51,6 +51,7 @@ class SearchEngine {
 	 * @private
 	 */
 	function getNearMatch( $term ) {
+		global $wgContLang;
 		# Exact match? No need to look further.
 		$title = Title::newFromText( $term );
 		if (is_null($title))
@@ -62,48 +63,29 @@ class SearchEngine {
 
 		# Now try all lower case (i.e. first letter capitalized)
 		#
-		$title = Title::newFromText( strtolower( $term ) );
+		$title = Title::newFromText( $wgContLang->lc( $term ) );
 		if ( $title->exists() ) {
 			return $title;
 		}
 
 		# Now try capitalized string
 		#
-		$title = Title::newFromText( ucwords( strtolower( $term ) ) );
+		$title = Title::newFromText( $wgContLang->ucwords( $term ) );
 		if ( $title->exists() ) {
 			return $title;
 		}
 
 		# Now try all upper case
 		#
-		$title = Title::newFromText( strtoupper( $term ) );
+		$title = Title::newFromText( $wgContLang->uc( $term ) );
 		if ( $title->exists() ) {
 			return $title;
 		}
 
 		# Now try Word-Caps-Breaking-At-Word-Breaks, for hyphenated names etc
-		$title = Title::newFromText( preg_replace_callback(
-			'/\b([\w\x80-\xff]+)\b/',
-			create_function( '$matches', '
-				global $wgContLang;
-				return $wgContLang->ucfirst($matches[1]);
-				' ),
-			$term ) );
+		$title = Title::newFromText( $wgContLang->ucwordbreaks($term) );
 		if ( $title->exists() ) {
 			return $title;
-		}
-
-		global $wgCapitalLinks, $wgContLang;
-		if( !$wgCapitalLinks ) {
-			// Catch differs-by-first-letter-case-only
-			$title = Title::newFromText( $wgContLang->ucfirst( $term ) );
-			if ( $title->exists() ) {
-				return $title;
-			}
-			$title = Title::newFromText( $wgContLang->lcfirst( $term ) );
-			if ( $title->exists() ) {
-				return $title;
-			}
 		}
 
 		$title = Title::newFromText( $term );
