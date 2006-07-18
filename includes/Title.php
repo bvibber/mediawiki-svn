@@ -108,7 +108,7 @@ class Title {
 	 * @static
 	 * @access public
 	 */
-	function newFromText( $text, $defaultNamespace = NS_MAIN ) {
+	public static function newFromText( $text, $defaultNamespace = NS_MAIN ) {
 		$fname = 'Title::newFromText';
 
 		if( is_object( $text ) ) {
@@ -132,7 +132,7 @@ class Title {
 		 */
 		$filteredText = Sanitizer::decodeCharReferences( $text );
 
-		$t =& new Title();
+		$t = new Title();
 		$t->mDbkeyform = str_replace( ' ', '_', $filteredText );
 		$t->mDefaultNamespace = $defaultNamespace;
 
@@ -233,8 +233,8 @@ class Title {
 	 * @static
 	 * @access public
 	 */
-	function &makeTitle( $ns, $title ) {
-		$t =& new Title();
+	public static function &makeTitle( $ns, $title ) {
+		$t = new Title();
 		$t->mInterwiki = '';
 		$t->mFragment = '';
 		$t->mNamespace = intval( $ns );
@@ -256,7 +256,7 @@ class Title {
 	 * @static
 	 * @access public
 	 */
-	function makeTitleSafe( $ns, $title ) {
+	public static function makeTitleSafe( $ns, $title ) {
 		$t = new Title();
 		$t->mDbkeyform = Title::makeName( $ns, $title );
 		if( $t->secureAndSplit() ) {
@@ -273,7 +273,7 @@ class Title {
 	 * @return Title the new object
 	 * @access public
 	 */
-	function newMainPage() {
+	public static function newMainPage() {
 		return Title::newFromText( wfMsgForContent( 'mainpage' ) );
 	}
 
@@ -285,8 +285,8 @@ class Title {
 	 * @static
 	 * @access public
 	 */
-	function newFromRedirect( $text ) {
-		$mwRedir = MagicWord::get( MAG_REDIRECT );
+	public static function newFromRedirect( $text ) {
+		$mwRedir = MagicWord::get( 'redirect' );
 		$rt = NULL;
 		if ( $mwRedir->matchStart( $text ) ) {
 			if ( preg_match( '/\[{2}(.*?)(?:\||\]{2})/', $text, $m ) ) {
@@ -336,7 +336,7 @@ class Title {
 	 * @static
 	 * @access public
 	 */
-	function legalChars() {
+	public static function legalChars() {
 		global $wgLegalTitleChars;
 		return $wgLegalTitleChars;
 	}
@@ -376,7 +376,7 @@ class Title {
 	 * @param string $title the DB key form the title
 	 * @return string the prefixed form of the title
 	 */
-	/* static */ function makeName( $ns, $title ) {
+	public static function makeName( $ns, $title ) {
 		global $wgContLang;
 
 		$n = $wgContLang->getNsText( $ns );
@@ -1897,7 +1897,7 @@ class Title {
 		$linkCache->clearLink( $nt->getPrefixedDBkey() );
 
 		# Recreate the redirect, this time in the other direction.
-		$mwRedir = MagicWord::get( MAG_REDIRECT );
+		$mwRedir = MagicWord::get( 'redirect' );
 		$redirectText = $mwRedir->getSynonym( 0 ) . ' [[' . $nt->getPrefixedText() . "]]\n";
 		$redirectArticle = new Article( $this );
 		$newid = $redirectArticle->insertOn( $dbw );
@@ -1970,7 +1970,7 @@ class Title {
 		$linkCache->clearLink( $nt->getPrefixedDBkey() );
 
 		# Insert redirect
-		$mwRedir = MagicWord::get( MAG_REDIRECT );
+		$mwRedir = MagicWord::get( 'redirect' );
 		$redirectText = $mwRedir->getSynonym( 0 ) . ' [[' . $nt->getPrefixedText() . "]]\n";
 		$redirectArticle = new Article( $this );
 		$newid = $redirectArticle->insertOn( $dbw );

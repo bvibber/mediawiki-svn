@@ -156,7 +156,6 @@
 'editthispage'  => 'Editar esta página',
 'delete' => 'Eliminar',
 'deletethispage' => 'Eliminar esta página',
-'undelete_short1' => 'Restaurar uma edição',
 'undelete_short' => 'Restaurar $1 edições',
 'protect' => 'Proteger',
 'protectthispage' => 'Proteger esta página',
@@ -167,7 +166,6 @@
 'specialpage' => 'Página Especial',
 'personaltools' => 'Ferramentas pessoais',
 'postcomment'   => 'Envie um comentário',
-'addsection'   => '+',
 'articlepage'   => 'Ver artigo',
 'subjectpage'   => 'Ver assunto', # For compatibility
 'talk' => 'Discussão',
@@ -204,9 +202,7 @@ executada por utilizadores com direitos de "desenvolvedor".<br />Veja $1.',
 'versionrequiredtext' => 'Esta página requer a versão $1 do MediaWiki para ser utilizada. Consulte [[Special:Version]]',
 
 'ok'                    => 'OK',
-'sitetitle'             => "{{SITENAME}}",
 'pagetitle'             => "$1 - {{SITENAME}}",
-'sitesubtitle'  => '',
 'retrievedfrom' => 'Retirado de "$1"',
 'youhavenewmessages' => "Você tem $1 ($2).",
 'newmessageslink' => 'novas mensagens',
@@ -221,7 +217,6 @@ executada por utilizadores com direitos de "desenvolvedor".<br />Veja $1.',
 'viewdeleted' => 'Ver $1?',
 'restorelink' => '{{PLURAL:$1|uma edição eliminada|$1 edições eliminadas}}',
 'feedlinks' => 'Feed:',
-#'sitenotice'    => '-', # the equivalent to wgSiteNotice; ignore list
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main' => 'Artigo',
@@ -380,7 +375,6 @@ Por favor, volte a efectuar a autentificação ao recebê-la.",
 'eauthentsent'             =>  "Um email de confirmação foi enviado para o endereço de correio electrónico nomeado.
 Antes de qualquer outro email seja enviado para a conta, terá seguir as instruções no email,
 de modo a confirmar que a conta é mesmo sua.",
-#'loginend'                          => '', # ignore list
 #'signupend'                         => '{{int:loginend}}', # ignore list
 'mailerror'                 => "Erro a enviar o mail: $1",
 'acct_creation_throttle_hit' => 'Pedimos desculpa, mas já foram criadas $1 contas por si. Não lhe é possível criar mais nenhuma.',
@@ -457,7 +451,6 @@ Note que não poderá utilizar a funcionalidade \"Contactar utilizador\" se não
 "Seguiu um link para um artigo que ainda não existe. Para criá-lo, escreva o seu conteúdo na caixa abaixo, mas se chegou aqui por engano clique no botão '''volta''' (ou ''back'') do seu navegador. Por favor, '''NÃO''' crie páginas apenas para fazer [[Project:Artigos pedidos|pedidos]] ou [[Project:Página de testes|testes]].
 
 (Consulte [[{{ns:project}}:Ajuda|a página de ajuda]] para mais informações)",
-'talkpagetext' => '<!-- MediaWiki:talkpagetext -->',
 'anontalkpagetext' => "----
 ''Esta é a página de discussão para um utilizador anónimo que ainda não criou uma conta ou que não a utiliza. De modo a que temos que utilizar o endereço de IP para identificá-lo(a). Um endereço de IP pode ser partilhado por vários utilizadores. Se é um utilizador anónimo e acha relevante que os comentários sejam direccionados a si, por favor [[{{ns:special}}:Userlogin|crie uma conta ou autentifique-se]] para evitar futuras confusões com outros utilizadores anónimos.''",
 'noarticletext' => 'Não existe actualmente texto nesta página, pode [[{{ns:special}}:Search/{{PAGENAME}}|pesquisar pelo título desta página noutras páginas]] ou [{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} editar esta página].',
@@ -531,7 +524,6 @@ Pode voltar atrás e editar uma página já existente, ou [[Special:Userlogin|au
 'histlegend'    => 'Selecção de diferença: marque as caixas para das versões que deseja comparar e carregue no botão.<br />
 Legenda: (actu) = diferenças da versão actual,
 (ult) = diferença da versão precedente, m = edição minoritária',
-#'history_copyright'    => '-', # ignore list
 'deletedrev' => '[eliminada]',
 'histfirst' => 'Mais antigas',
 'histlast' => 'Mais recentes',
@@ -670,7 +662,6 @@ Grupos não seleccionados, não serão alterados. Pode seleccionar ou remover a 
 #
 'changes' => 'mudanças',
 'recentchanges' => 'Mudanças recentes',
-'recentchanges-url' => 'Special:Recentchanges',
 'recentchangestext' => 'Veja as mais novas mudanças na {{SITENAME}} nesta página.',
 'rcnote'                => "Abaixo estão as últimas <strong>$1</strong> alterações nos últimos <strong>$2</strong> dias, desde $3.",
 'rcnotefrom'    => "Abaixo estão as mudanças desde <b>$2</b> (mostradas até <b>$1</b>).",
@@ -689,7 +680,6 @@ Grupos não seleccionados, não serão alterados. Pode seleccionar ou remover a 
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
 'sectionlink' => '→',
-'number_of_watching_users_RCview'       => '[$1]',
 'number_of_watching_users_pageview'     => '[$1 utilizador/es a vigiar]',
 'rc_categories'	=> 'Limite para categorias (separar com "|")',
 'rc_categories_any'	=> 'Qualquer',
@@ -783,7 +773,6 @@ Por favor siga este endereço: $2 para a página de descrição e preencha a inf
 'sharedupload' => 'Este ficheiro encontra-se partilhado e pode ser utilizado por outros projectos.',
 'shareduploadwiki' => 'Por favor consulte a $1 para mais informação.',
 'shareduploadwiki-linktext' => 'página de descrição',
-#'shareddescriptionfollows' => '-', # ignore list
 'noimage'       => 'Nenhum ficheiro com este nome existe, se desejar pode $1',
 'noimage-linktext'       => 'carrega-lo',
 'uploadnewversion-linktext' => 'Carregar uma nova versão deste ficheiro',
@@ -824,9 +813,6 @@ Destes, '''$2''' (ou '''$4%''') são administradores (consulte $3).",
 
 # Maintenance Page
 #
-'maintenance'           => 'Página de manutenção',
-'maintnancepagetext'    => 'Esta página inclui várias ferramentas úteis para a manutenção. Algumas destas funcionalidades tendem a sobrecarregar a base de dados, por isso modere a sua utilização ;-)',
-'maintenancebacklink'   => 'Voltar para a Página de manutenção',
 'disambiguations'       => 'Página de desambiguações',
 'disambiguationspage'   => 'Template:disambig',
 'disambiguationstext'   => "As seguintes páginas ligam com uma <i>página de desambiguação</i>. Estas páginas deviam ligar com o tópico apropriado.<br />Qualquer página ligada com $1 é considerada página de desambiguação.<br />As ligações de outros domínios não são listadas aqui.",
@@ -867,7 +853,6 @@ Destes, '''$2''' (ou '''$4%''') são administradores (consulte $3).",
 'allpages'              => 'Todas as páginas',
 'prefixindex'   => 'Índice de prefixo',
 'randompage'    => 'Página aleatória',
-#'randompage-url'=> 'Special:Random', # ignore list
 'shortpages'    => 'Páginas curtas',
 'longpages'             => 'Páginas longas',
 'deadendpages'  => 'Páginas sem saída',
@@ -892,8 +877,6 @@ Destes, '''$2''' (ou '''$4%''') são administradores (consulte $3).",
 
 'booksourcetext' => "Abaixo encontra-se uma lista de ligações para outros websites que vendem livros novos ou usados, e poderão ter mais informações sobre os livros que procura.",
 'isbn'  => 'ISBN',
-'rfcurl' =>  'http://www.ietf.org/rfc/rfc$1.txt',
-'pubmedurl' =>  'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1',
 'alphaindexline' => "$1 até $2",
 'version'               => 'Versão',
 'log'           => 'Registos',
@@ -905,7 +888,6 @@ Pode diminuir a lista escolhendo um tipo de registo, um nome de utilizar, ou uma
 'nextpage'          => 'Próxima página ($1)',
 'allpagesfrom'          => 'Mostrar páginas começando em:',
 'allarticles'           => 'Todos artigos',
-'allnonarticles'        => 'Todos não-artigos',
 'allinnamespace'        => 'Todas páginas (domínio $1)',
 'allnotinnamespace'     => 'Todas páginas (não no domínio $1)',
 'allpagesprev'          => 'Anterior',
@@ -1097,8 +1079,6 @@ Se uma nova página foi criada com o mesmo nome desde a eliminação, as revisõ
 'undeletecomment' => 'Comentário:',
 'undeletedarticle' => "restaurado \"[[$1]]\"",
 'undeletedrevisions' => "$1 revisões restauradas",
-'undeletedtext'   => "O artigo [[:$1|$1]] foi restaurado com sucesso.
-É mantido um [[Especial:Log/delete|registo de eliminações]] e restauros recentes.",
 
 # Namespace form on various pages
 'namespace' => 'Domínio:',
@@ -1150,7 +1130,6 @@ Isto só deve ser feito para prevenir vandalismo, e de acordo com a [[{{ns:proje
 'unblockip'             => 'Desbloquear utilizador',
 'unblockiptext' => 'Utilize o formulário a seguir para restaurar o acesso a escrita para um endereço de IP ou nome de utilizador previamente bloqueado.',
 'ipusubmit'             => 'Desbloquear este utilizador',
-'ipusuccess'    => "\"[[$1]]\" foi desbloqueado",
 'ipblocklist'   => 'Lista de IPs bloqueados',
 'blocklistline' => "$1, $2 bloqueou $3 ($4)",
 'ipblocklistempty'      => 'A lista de IPs bloqueados encontra-se vazia.',
@@ -1372,7 +1351,6 @@ Se desejar pode utilizar uma ligação, por exemplo [[{{ns:Special}}:Export/{{Me
 
 # Patrolling
 'markaspatrolleddiff'   => "Marcar como verificado",
-'markaspatrolledlink'   => "[$1]",
 'markaspatrolledtext'   => "Marcar este artigo como verificado",
 'markedaspatrolled'     => "Marcado como verificado",
 'markedaspatrolledtext' => "A revisão seleccionada foi marcada como verificada.",
@@ -1605,12 +1583,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Ver a página da categoria\');',
 'exif-gpsdatestamp' =>'Data do GPS',
 'exif-gpsdifferential' =>'Correcção do diferencial do GPS',
 
-# Make & model, can be wikified in order to link to the camera and model name
-
-'exif-make-value' => '$1',
-'exif-model-value' =>'$1',
-'exif-software-value' => '$1',
-
 # Exif attributes
 
 'exif-compression-1' => 'Descomprimido',
@@ -1726,8 +1698,6 @@ irá expirar a $4.",
 Trackbacks for this article:<br />
 $1
 </div>",
-'trackback' => "; $4$5 : [$2 $1]",
-'trackbackexcerpt' => "; $4$5 : [$2 $1]: $3",
 'trackbackremove' => ' ([$1 Eliminar])',
 'trackbacklink' => 'Trackback',
 'trackbackdeleteok' => 'The trackback was successfully deleted.',

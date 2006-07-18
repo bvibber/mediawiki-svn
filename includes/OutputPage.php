@@ -46,7 +46,7 @@ class OutputPage {
 		$this->mCategoryLinks = array();
 		$this->mDoNothing = false;
 		$this->mContainsOldMagic = $this->mContainsNewMagic = 0;
-		$this->mParserOptions = ParserOptions::newFromUser( $temp = NULL );
+		$this->mParserOptions = ParserOptions::newFromUser( NULL );
 		$this->mSquidMaxage = 0;
 		$this->mScripts = '';
 		$this->mETag = false;
@@ -289,6 +289,7 @@ class OutputPage {
 
 	function addWikiTextTitle($text, &$title, $linestart) {
 		global $wgParser;
+		wfIncrStats('pcache_not_possible');
 		$parserOutput = $wgParser->parse( $text, $title, $this->mParserOptions,
 			$linestart, true, $this->mRevisionId );
 		$this->addParserOutput( $parserOutput );
@@ -828,7 +829,7 @@ class OutputPage {
 				if ( $wgTitle->getNamespace() == NS_MEDIAWIKI ) {
 					$source = wfMsgWeirdKey ( $wgTitle->getText() );
 				} else {
-					$source = wfMsg( $wgUser->isLoggedIn() ? 'noarticletext' : 'noarticletextanon' );
+					$source = '';
 				}
 			}
 			$rows = $wgUser->getIntOption( 'rows' );

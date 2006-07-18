@@ -120,7 +120,6 @@
 'delete' => 'Smazat',
 'deletethispage' => 'Smazat stránku',
 'undelete_short' => 'Obnovit $1 {{plural:$1|verzi|verze|verzí}}',
-'undelete_short1' => 'Obnovit $1 verzi',
 'protect' => 'Zamknout',
 'protectthispage' => 'Zamknout stránku',
 'unprotect' => 'Odemknout',
@@ -130,7 +129,6 @@
 'specialpage' => 'Speciální stránka',
 'personaltools' => 'Osobní nástroje',
 'postcomment'   => 'Přidat komentář',
-'addsection'   => '+',
 'articlepage'   => 'Prohlédnout si článek',
 'subjectpage'   => 'Stránka námětu', #FIXME: ? (zřejmě se vůbec nepoužívá)
 'talk' => 'Diskuse',
@@ -171,7 +169,6 @@
 'nrevisions'		=> '$1 {{plural:$1|revize|revize|revizí}}',
 'nviews'        => '$1 zobrazení',
 
-'widthheight'		=> '$1×$2',
 'ok'              => 'OK',
 'pagetitle'		=> '$1 - {{SITENAME}}',
 'retrievedfrom' => 'Citováno z „$1“', #FIXME: Ukazuje se po tisku strany
@@ -668,7 +665,6 @@ Nezvolené skupiny nebudou změněny. Skupinu můžete vyřadit z vybraných pom
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
 'sectionlink' => '→',
-'number_of_watching_users_RCview' 	=> '[$1]',
 'number_of_watching_users_pageview' 	=> '[$1 {{plural:$1|sledující uživatel|sledující uživatelé|sledujících uživatelů}}]',
 'rc_categories'	=> 'Omezit na kategorie (oddělené „|“)',
 'rc_categories_any'	=> 'Všechny',
@@ -883,7 +879,6 @@ Zobrazení můžete zůžit výběrem typu záznamu, uživatelského jména nebo
 'nextpage'          => 'Další stránka ($1)',
 'allpagesfrom'		=> 'Všechny stránky počínaje od:',
 'allarticles'		=> 'Všechny články',
-'allnonarticles'	=> 'Všechny nečlánky',
 'allinnamespace'	=> 'Všechny stránky (jmenný prostor $1)',
 'allnotinnamespace'	=> 'Všechny stránky (mimo jmenný prostor $1)',
 'allpagesprev'		=> 'Předchozí',
@@ -1112,7 +1107,6 @@ Záznam o posledních mazáních a obnoveních najdete v [[Special:Log/delete|kn
 'unblockip'             => 'Odblokovat IP adresu',
 'unblockiptext' => 'Tímto formulářem je možno obnovit právo blokované IP adresy či uživatele opět přispívat do {{grammar:2sg|{{SITENAME}}}}.',
 'ipusubmit'             => 'Odblokovat',
-'ipusuccess'	=> 'Uživatel „[[$1]]“ byl úspěšně odblokován',
 'ipblocklist'   => 'Seznam blokovaných IP adres',
 'blocklistline' => '$1 $2 zablokoval $3 ($4)',
 'infiniteblock' => 'do odvolání',
@@ -1328,7 +1322,6 @@ Cílová stránka „[[$1]]“ již existuje. Přejete si ji smazat pro uvolněn
 
 # Patrolling
 'markaspatrolleddiff'   => 'Označit jako prověřené',
-'markaspatrolledlink'   => '<div class="patrollink">[$1]</div>',
 'markaspatrolledtext'   => 'Označit tento článek jako prověřený',
 'markedaspatrolled'     => 'Označeno jako prověřené',
 'markedaspatrolledtext' => 'Vybraná verze byla označena jako prověřená.',
@@ -1590,12 +1583,6 @@ ta['ca-nstab-category'] = new Array('c','Zobrazit kategorii.');",
 'exif-gpsdatestamp' =>'Datum podle GPS',
 'exif-gpsdifferential' =>'Diferenciální korekce GPS',
 
-# Make & model, can be wikified in order to link to the camera and model name
-
-'exif-make-value' => '$1',
-'exif-model-value' =>'$1',
-'exif-software-value' => '$1',
-
 # Exif attributes
 
 'exif-compression-1' => 'Nekomprimovaný',
@@ -1801,8 +1788,6 @@ kódu vyprší $4.',
 Zpětné odkazy k tomuto článku:<br />
 $1
 </div>",
-'trackback' => "; $4$5: [$2 $1]",
-'trackbackexcerpt' => "; $4$5: [$2 $1]: <nowiki>$3</nowiki>",
 'trackbackremove' => ' ([$1 Smazat])',
 'trackbacklink' => 'Zpětný odkaz',
 'trackbackdeleteok' => 'Zpětný odkaz byl úspěšně smazán.',

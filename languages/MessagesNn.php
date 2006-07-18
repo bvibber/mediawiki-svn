@@ -141,7 +141,6 @@
 'editthispage'	          => 'Endre sida',
 'delete'                  => 'Slett',
 'deletethispage'          => 'Slett side',
-'undelete_short1'         => 'Attopprett 1 endring',
 'undelete_short'          => 'Attopprett $1 endringar',
 'protect'                 => 'Vern',
 'protectthispage'         => 'Vern denne sida',
@@ -152,7 +151,6 @@
 'specialpage'             => 'Spesialside',
 'personaltools'           => 'Personlege verktøy',
 'postcomment'             => 'Legg til kommentar',
-'addsection'              => '+',
 'articlepage'	          => 'Vis innhaldsside',
 'subjectpage'	          => 'Vis emne', # For compatibility
 'talk'                    => 'Diskusjon',
@@ -179,7 +177,6 @@
 'versionrequiredtext'     => 'For å bruke denne sida trengst MediaWiki versjon $1. Sjå [[{{ns:special}}:Version]]',
 'nbytes'		  => '$1 byte',
 'ok'			  => 'OK',
-'sitesubtitle'	          => '',
 'retrievedfrom'           => 'Henta frå «$1»',
 'newmessageslink'         => 'nye meldingar',
 'editsection'             => 'endre',
@@ -192,7 +189,6 @@
 'restorelink1'            => 'ein sletta versjon',
 'restorelink'             => '$1 sletta versjonar',
 'feedlinks'               => 'Mating:',
-'sitenotice'	          => '-', # the equivalent to wgSiteNotice
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'              => 'Innhaldsside',
@@ -308,7 +304,6 @@ Etter at du har endra innstillingane slik at nettlesaren godtek informasjonskaps
 'noemail'	         	  => 'Det er ikkje registrert noka e-postadresse åt brukaren «$1».',
 'passwordsent'	          => 'Eit nytt passord er sendt åt e-postadressa registrert på brukaren «$1».',
 'eauthentsent'            => 'Ein stadfestings-e-post er sendt til den oppgjevne e-postadressa. For at adressa skal kunna brukast, må du følgje instruksjonane i e-posten for å stadfeste at ho faktisk tilhøyrer deg.',
-'loginend'		  => '&nbsp;',
 'mailerror'               => 'Ein feil oppstod ved sending av e-post: $1',
 'acct_creation_throttle_hit' => 'Beklagar, du har allereie laga $1 brukarkontoar. Du har ikkje høve til å laga fleire.',
 'emailauthenticated'      => 'E-postadressa di vart stadfest $1.',
@@ -372,7 +367,6 @@ IP-adressa di er $3. Legg henne ved eventuelle førespurnader.',
 * Om du er ny her er det tilrådd å sjå på [[Project:Retningsliner|retningsliner]] og [[Help:Innhald|hjelp]] først.
 * Om du lagrar ei testside, vil du ikkje kunne slette ho sjølv. Ver difor venleg og bruk [[Project:Sandkasse|sandkassa]] til å eksperimentere.
 * Dersom du ikkje ønskjer å endre sida, kan du utan risiko klikke på \'\'\'attende\'\'\'-knappen i nettlesaren din.',
-'talkpagetext'            => '<!-- MediaWiki:talkpagetext -->',
 'anontalkpagetext'        => '---- \'\'Dette er ei diskusjonsside for ein anonym brukar som ikkje har logga inn på eigen brukarkonto. Vi er difor nøydde til å bruke den numeriske IP-adressa knytt til internettoppkoplinga åt brukaren. Same IP-adressa kan vera knytt til fleire brukarar. Om du er ein anonym brukar og meiner at du har fått irrelevante kommentarar på ei slik side, [[{{ns:-1}}:Userlogin|logg inn]] slik at vi unngår framtidige forvekslingar med andre anonyme brukarar.\'\'',
 'noarticletext'           => '\'\'\'Sida «{{PAGENAME}}» finst ikkje på {{SITENAME}} enno.\'\'\'
 * Klikk på \'\'\'[{{SERVER}}{{localurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} endre]\'\'\' for å opprette sida.',
@@ -425,7 +419,6 @@ Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompati
 'last'			  => 'førre',
 'orig'			  => 'orig',
 'histlegend'	          => 'Merk av for dei versjonane du vil samanlikne og trykk [Enter] eller klikk på knappen nedst på sida.<br />Forklaring: (no) = skilnad frå den noverande versjonen, (førre) = skilnad frå den førre versjonen, <b>u</b> = uviktig endring',
-'history_copyright'       => '-',
 'deletedrev'              => '[sletta]',
 'histfirst'               => 'Første',
 'histlast'                => 'Siste',
@@ -570,7 +563,6 @@ Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompati
 #
 'changes'               => 'endringar',
 'recentchanges'         => 'Siste endringar',
-'recentchanges-url'     => 'Special:Recentchanges',
 'recentchangestext'     => 'På denne sida ser du dei sist endra sidene i {{SITENAME}}.',
 'rcloaderr'		=> 'Lastar sist endra sider',
 'rcnote'		=> 'Nedanfor er dei siste <strong>$1</strong> endringane gjort dei siste <strong>$2</strong> dagane.',
@@ -590,7 +582,6 @@ Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompati
 'minoreditletter'       => 'u',
 'newpageletter'         => 'n',
 'sectionlink'           => '→',
-'number_of_watching_users_RCview'     => '[$1]',
 'number_of_watching_users_pageview'     => '[$1 brukar(ar) overvakar]',
 
 # Upload
@@ -683,9 +674,6 @@ Alle sidene er vortne viste \'\'\'$3\'\'\' gonger og endra \'\'\'$4\'\'\' gonger
 
 # Maintenance Page
 #
-'maintenance'		=> 'Vedlikehaldsside',
-'maintnancepagetext'	=> 'På denne sida er det ulike verktøy for å halde {{SITENAME}} ved like. Nokre av desse funksjonane er harde for databasen (dei tar lang tid), så lat vera å oppdatere sida kvar gong du har retta ein enkelt ting',
-'maintenancebacklink'	=> 'Attende til vedlikehaldssida',
 'disambiguations'	=> 'Fleirtydingssider',
 'disambiguationspage'	=> 'Template:Fleirtyding',
 'disambiguationstext'	=> 'Dei følgjande artiklane har lenkjer til <i>artiklar med fleirtydige titlar</i>. Dei burde heller lenkje til ein ikkje-fleirtydig  tittel i staden.<br />Ein artikkeltittel blir handsama som fleirtydig om han har lenkjer frå $1.<br />Lenkjer frå andre namnerom er <i>ikkje</i> opprekna her.',
@@ -704,7 +692,6 @@ Alle sidene er vortne viste \'\'\'$3\'\'\' gonger og endra \'\'\'$4\'\'\' gonger
 
 # Miscellaneous special pages
 #
-'orphans'		=> 'Foreldrelause sider',
 'lonelypages'	        => 'Foreldrelause sider',
 'uncategorizedpages'	=> 'Ikkje kategoriserte sider',
 'uncategorizedcategories' => 'Ikkje kategoriserte kategoriar',
@@ -718,7 +705,6 @@ Alle sidene er vortne viste \'\'\'$3\'\'\' gonger og endra \'\'\'$4\'\'\' gonger
 'allpages'		=> 'Alle sider',
 'prefixindex'           => 'Prefiksindeks',
 'randompage'	        => 'Tilfeldig side',
-'randompage-url'        => 'Special:Random',
 'shortpages'	        => 'Korte sider',
 'longpages'		=> 'Lange sider',
 'deadendpages'          => 'Blindvegsider',
@@ -730,7 +716,6 @@ Alle sidene er vortne viste \'\'\'$3\'\'\' gonger og endra \'\'\'$4\'\'\' gonger
 'protectpage'	        => 'Vern side',
 'recentchangeslinked'   => 'Relaterte endringar',
 'rclsub'		=> '(til sider med lenkje frå «$1»)',
-'debug'			=> 'Feilsøk',
 'newpages'		=> 'Nye sider',
 'ancientpages'		=> 'Eldste sider',
 'intl'		        => 'Språklenkjer',
@@ -746,8 +731,6 @@ Alle sidene er vortne viste \'\'\'$3\'\'\' gonger og endra \'\'\'$4\'\'\' gonger
 'groups'                => 'Brukargrupper',
 'booksourcetext'        => 'Her er ei liste over lenkjer til internettsider som låner ut og/eller sel nye og/eller brukte bøker, og som kanskje har meir informasjon om bøker du leitar etter. {{SITENAME}} er ikkje nødvendigvis assosiert med nokon av desse sidene, og lista er <b>ikkje</b> å rekne som ei spesifikk tilråding om å bruke dei.',
 'isbn'	                => 'ISBN',
-'rfcurl'                => 'http://www.ifi.uio.no/doc/rfc/rfc$1.txt',
-'pubmedurl'             => 'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&otool=bibsys&list_uids=$1',
 'alphaindexline'        => '$1 til $2',
 'version'		=> 'Versjon',
 'log'                   => 'Loggar',
@@ -757,7 +740,6 @@ Alle sidene er vortne viste \'\'\'$3\'\'\' gonger og endra \'\'\'$4\'\'\' gonger
 'nextpage'              => 'Neste side ($1)',
 'allpagesfrom'          => 'Vis sider frå:',
 'allarticles'           => 'Alle sider',
-'allnonarticles'        => 'Alle sider som ikkje er innhaldssider',
 'allinnamespace'        => 'Alle sider ($1 namnerom)',
 'allnotinnamespace'     => 'Alle sider (ikkje i $1-namnerommet)',
 'allpagesprev'          => 'Førre',
@@ -817,8 +799,6 @@ Om du seinere vil fjerne sida frå overvakingslista, klikk på «Fjern overvakin
 'wlshowlast' 		    => 'Vis siste $1 timar $2 dagar $3',
 'wlsaved'		        => 'Dette er ein mellomlagra versjon av overvakingslista di.',
 'wlhideshowown'         => '$1 eigne endringar.',
-'wlshow'                => 'Vis',
-'wlhide'                => 'Gøym',
 
 'enotif_mailer'         => '{{SITENAME}}-endringsmeldingssendar',
 'enotif_reset'          => 'Merk alle sider som vitja',
@@ -910,7 +890,6 @@ Den siste endringa vart gjort av [[{{ns:2}}:$3|$3]] ([[{{ns:3}}:$3|brukardiskusj
 'undeletebtn'           => 'Attopprett!',
 'undeletedarticle'      => 'attoppretta «[[$1]]»',
 'undeletedrevisions'    => '$1 versjonar attoppretta',
-'undeletedtext'         => 'Sida [[:$1|$1]] er attoppretta. Sjå [[Special:Log/delete]] for oversyn over nylege slettingar og attopprettingar.',
 
  # Namespace form on various pages
 'namespace'             => 'Namnerom:',
@@ -957,7 +936,6 @@ For informasjon om korleis ein kan blokkere seriar av IP-adresser, sjå [http://
 'unblockip'		=> 'Opphev blokkering',
 'unblockiptext'	        => 'Bruk skjemaet nedanfor for å oppheve blokkeringa av ein tidlegare blokkert brukar.',
 'ipusubmit'		=> 'Opphev blokkering',
-'ipusuccess'	        => '«[[$1]]» har fått oppheva blokkeringa',
 'ipblocklist'	        => 'Blokkerte IP-adresser og brukarnamn',
 'blocklistline'	        => '$1, $2 blokkerte $3 ($4)',
 'infiniteblock'         => 'uendeleg opphørstid',
@@ -1134,9 +1112,7 @@ For å eksportere bruker du [[{{ns:-1}}:Export|eksportsida]] på kjeldewikien; h
 'spamprotectiontext'    => 'Sida du prøvde å lagre vart blokkert av filteret for vern mot reklame (spam). Dette skjedde truleg på grunn av ei ekstern lenkje.',
 'spamprotectionmatch'   => 'Den følgjande teksten utløyste reklamefilteret: $1',
 'subcategorycount'      => 'Det er $1 underkategoriar av denne kategorien.',
-'subcategorycount1'     => 'Det er $1 underkategori av denne kategorien.',
 'categoryarticlecount'  => 'Det er $1 innhaldssider i denne kategorien.',
-'categoryarticlecount1' => 'Det er $1 innhaldsside i denne kategorien.',
 'listingcontinuesabbrev' => ' vidare',
 
 # Info page
@@ -1157,7 +1133,6 @@ For å eksportere bruker du [[{{ns:-1}}:Export|eksportsida]] på kjeldewikien; h
 
 # Patrolling
 'markaspatrolleddiff'   => 'Merk som patruljert',
-'markaspatrolledlink'   => '[$1]',
 'markaspatrolledtext'   => 'Merk denne innhaldssida som patruljert',
 'markedaspatrolled'     => 'Merk som patruljert',
 'markedaspatrolledtext' => 'Den valde versjonen er vorten merkt som patruljert.',
@@ -1515,8 +1490,6 @@ blir forelda $4.',
 Attendelenkjer for denne sida:<br />
 $1
 </div>",
-'trackback' => "; $4$5 : [$2 $1]",
-'trackbackexcerpt' => "; $4$5 : [$2 $1]: <nowiki>$3</nowiki>",
 'trackbackremove'        => ' ([$1 Slett])',
 'trackbacklink'          => 'Attendelenkje',
 'trackbackdeleteok'      => 'Attendelenkja vart sletta.',

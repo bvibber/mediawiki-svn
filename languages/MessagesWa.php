@@ -146,7 +146,6 @@ $wgAllMessagesWa = array(
 'editthispage' => 'Candjî l\' pådje',
 'delete' => 'Disfacer',
 'deletethispage' => 'Disfacer l\' pådje',
-'undelete_short1' => 'Rapexhî on candjmint',
 'undelete_short' => 'Rapexhî $1 candjmints',
 'protect' => 'Protedjî',
 'protectthispage' => 'Protedjî l\' pådje',
@@ -157,7 +156,6 @@ $wgAllMessagesWa = array(
 'specialpage' => 'Pådje sipeciåle',
 'personaltools' => 'Usteyes da vosse',
 'postcomment' => 'Sicrire on comintaire',
-#'addsection'   => '+',
 'articlepage' => 'Vey l\' årtike',
 'subjectpage' => 'Vey li sudjet', # For compatibility
 'talk' => 'Copene',
@@ -199,11 +197,8 @@ Loukîz a $1.',
 'versionrequired' => 'I vs fåt l\' modêye $1 di MediaWiki',
 'versionrequiredtext' => 'I vs fåt l\' modêye $1 di MediaWiki po-z eployî cisse pådje ci. Loukîz a [[Special:Version]]',
 
-'widthheight' => '$1x$2',
 'ok' => '\'l est bon',
-#'sitetitle' => '{{SITENAME}}',
 'pagetitle' => '$1 - {{SITENAME}}',
-#'sitesubtitle'	=> '',
 'retrievedfrom' => 'Prin del pådje «$1»',
 'youhavenewmessages' => 'Vos avoz des $1 ($2).',
 'newmessageslink' => 'noveas messaedjes',
@@ -219,7 +214,6 @@ Loukîz a $1.',
 'restorelink' => '{{PLURAL:$1|on candjmint disfacé|$1 candjmints disfacés}}',
 'feedlinks' => 'Sindicåcion:',
 'feed-invalid' => 'Sôre di sindicåcion nén valide.',
-#'sitenotice' => '-', # the equivalent to wgSiteNotice
 #'anonnotice' => '-',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
@@ -310,7 +304,7 @@ Vosse conte a stî ahivé.
 'remembermypassword' => 'Rimimbrer m\' sicret inte les sessions.',
 'yourdomainname' => 'Vosse dominne',
 'loginproblem' => '<b>Åk n\' a nén stî tot vs elodjant.</b><br />Rissayîz s\' i vs plait!',
-'alreadyloggedin' => '<font color=red><strong>Uzeu $1, vos estoz ddja elodjî!</strong></font><br />',
+'alreadyloggedin' => '<span style="color:#ff0000"><strong>Uzeu $1, vos estoz ddja elodjî!</strong></span><br />',
 
 'login' => 'S\' elodjî',
 'loginprompt' => 'Vos dvoz permete les coûkes po vs elodjî so {{SITENAME}}.',
@@ -363,7 +357,6 @@ racsegneye po l\' uzeu «$1».
 Relodjîz vs avou ç\' noû scret on côp ki vos l\' åroz rçuvou s\' i vs plait.',
 'eauthentsent' => 'Èn emile d\' acertinaedje a stî evoyî a l\' adresse emile tchoezeye.
 Divant d\' poleur evoyî èn ôte emile a ci conte la, vos dvroz shure les instruccions di l\' emile ki vos alez rçure, po-z acertiner ki l\' conte est bén da vosse.',
-#'loginend' => '',
 #'signupend' => '{{int:loginend}}',
 'mailerror' => 'Åk n\' a nén stî tot-z evoyant l\' emile: $1',
 'acct_creation_throttle_hit' => 'Mande escuzes, mins vos avoz ddja ahivé $1 contes. Vos n\' endè ploz nén fé des ôtes.',
@@ -439,7 +432,6 @@ cmincî a taper vosse tecse dins l\' boesse di tecse chal pa dzo
 Si vos n\' voloz nén scrire cisse pådje chal, clitchîz simplumint
 sol boton \'\'\'En erî\'\'\' di vosse betchteu waibe po rivni al pådje di dvant.',
 #'newarticletextanon' => '{{int:newarticletext}}',
-#'talkpagetext' => '<!-- MediaWiki:talkpagetext -->',
 'anontalkpagetext' => '---- \'\'Çouchal, c\' est li pådje di copene po èn uzeu anonime ki n\' a nén (co) fwait on conte por lu s\' elodjî, ou ki n\' l\' eploye nén. Ça fwait k\' on doet eployî si adresse IP limerike po l\' idintifyî. Come ene sifwaite adresse IP pout esse eployeye pa pus d\' èn uzeu, i s\' pout ki vos voeyoz chal des rmåkes et des messaedjes ki n\' sont nén por vos. Loukîz s\' i vs plait po [[{{ns:special}}:Userlogin|fé on novea conte ou s\' elodjî]] po n\' pus aveur d\' ecramiaedje avou des ôtes uzeus anonimes.\'\'',
 'noarticletext' => 'I gn a pol moumint nou tecse e cisse pådje chal, vos ploz [[{{ns:special}}:Search/{{PAGENAME}}|cweri après l\' tite di cisse pådje ci]] dins des ôtès pådjes, oudonbén [{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} ahiver l\' pådje].',
 #'noarticletextanon' => '{{int:noarticletext}}',
@@ -537,7 +529,6 @@ ki vos vloz comparer et s\' tchôkîz sol tape «enter» ou clitchîz sol
 boton do dzo.<br />
 Ledjinde: (ast.) = diferince avou l\' modêye d\' asteure,
 (dif.) = diferince avou l\' modêye di dvant, M = candjmint mineur.',
-#'history_copyright'    => '-',
 'deletedrev' => '[disfacé]',
 'histfirst' => 'Li pus vî',
 'histlast' => 'Li dierin',
@@ -714,7 +705,6 @@ Les groupes nén tchoezis èn seront nén candjîs. Vos ploz distchoezi on group
 #
 'changes' => 'candjmints',
 'recentchanges' => 'Dierins candjmints',
-'recentchanges-url' => '{{ns:special}}:Recentchanges',
 'recentchangestext' => 'Shuvoz chal les dierins candjmints k\' i gn a yeu dsu {{SITENAME}}.',
 'rcnote' => 'Chal pa dzo les <strong>$1</strong> dierins candjmints des dierins <strong>$2</strong> djoûs, å $3.',
 'rcnotefrom' => 'Chal pa dzo les candjmints dispoy li <b>$2</b> (disk\' a <b>$1</b> di mostrés).',
@@ -733,7 +723,6 @@ Les groupes nén tchoezis èn seront nén candjîs. Vos ploz distchoezi on group
 #'minoreditletter' => 'm',
 #'newpageletter' => 'N',
 #'sectionlink' => '→',
-#'number_of_watching_users_RCview' => '[$1]',
 'number_of_watching_users_pageview' => '[shuvou pa $1 uzeu(s)]',
 'rc_categories'	=> 'Limiter åzès categoreyes (separer avou des «|»)',
 'rc_categories_any' => 'Totes',
@@ -833,7 +822,6 @@ cisse viye modêye la, (mod.) = rivni a cisse viye modêye la.
 'sharedupload' => 'Ci fitchî ci est so on ridant pårtaedjî ey i s\' pout k\' i soeye eployî pa ds ôtes pordjets.',
 'shareduploadwiki' => 'Loukîz li $1 po pus di racsegnes.',
 'shareduploadwiki-linktext' => 'pådje di discrijhaedje',
-#'shareddescriptionfollows' => '-',
 'noimage' => 'I n\' a nou fitchî avou ç\' no la, vos l\' poloz $1',
 'noimage-linktext' => 'eberweter',
 'uploadnewversion-linktext' => 'Eberweter ene nouve modêye di ci fitchî ci',
@@ -915,7 +903,6 @@ Les loyéns a pårti d\' ôtes espåces di lomaedje èn sont <i>nén</i> håyné
 'allpages' => 'Totes les pådjes',
 'prefixindex'   => 'Indecse pa betchete',
 'randompage' => 'Årtike a l\' astcheyance',
-'randompage-url' => '{{ns:special}}:Random',
 'shortpages' => 'Coûtès pådjes',
 'longpages' => 'Longowès pådjes',
 'deadendpages' => 'Pådjes sins nou loyén wiki',
@@ -941,9 +928,6 @@ Les loyéns a pårti d\' ôtes espåces di lomaedje èn sont <i>nén</i> håyné
 
 'booksourcetext' => 'Chal pa dzo c\' est ene djivêye di hårdêyes viè des waibes ki vindèt des lives, noûs ou di deujhinme mwin, et ki polèt aveur pus d\' informåcions åd fwait des lives ki vos cweroz après.',
 'isbn' => 'ISBN',
-#'rfcurl' =>  'http://www.ietf.org/rfc/rfc$1.txt',
-'rfcurl' => 'http://www.faqs.org/rfcs/rfc$1.html',
-#'pubmedurl' =>  'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1',
 'alphaindexline' => 'di $1 a $2',
 'version' => 'Modêye des programes',
 'log' => 'Djournås',
@@ -955,7 +939,6 @@ Vos ploz limiter l\' håynaedje tot tchoezixhant ene sôre di djournå, on no d\
 'nextpage' => 'Pådje shuvante ($1)',
 'allpagesfrom' => 'Håyner les pådjes a pårti di:',
 'allarticles' => 'Tos les årtikes',
-'allnonarticles' => 'Totes les pådjes ki n\' sont nén des årtikes',
 'allinnamespace' => 'Totes les pådjes (espåce di lomaedje $1)',
 'allnotinnamespace' => 'Totes les pådjes (foû d\' l\' espåce di lomaedje $1)',
 'allpagesprev' => 'Di dvant',
@@ -1210,7 +1193,6 @@ stî vandalijheyes).',
 'unblockip' => 'Disbloker èn uzeu',
 'unblockiptext' => 'Rimplixhoz les tchamps chal pa dzo po ridner accès e scrijhaedje a èn uzeu ou adresse IP k\' estént blokés.',
 'ipusubmit' => 'Disbloker ciste adresse ci',
-'ipusuccess' => '«[[$1]]» a stî disbloké',
 'ipblocklist' => 'Djivêye d\' adresses IP et di nos d\' uzeus ki sont blokés',
 'blocklistline' => '$1, $2 a bloké $3 ($4)',
 'infiniteblock' => 'po todi',
@@ -1415,8 +1397,6 @@ Dins ç\' dierin cas, vos ploz eto eployî ene hårdêye, eg: [[{{ns:special}}:E
 'mw_math_modern' => 'Ricmandé po les betchteus modienes',
 'mw_math_mathml' => 'Eployî MathML si c\' est possibe (esperimintå)',
 
-# Patrolling
-#'markaspatrolledlink' => '[$1]',
 
 # NOTE: les apostrofes divèt esse escapêyes.
 # Monobook.js: tooltips and access keys for monobook
@@ -1576,11 +1556,6 @@ est raptiti. Les ôtes seront catchîs.
 'exif-gpsdatestamp' => 'Date do GPS',
 'exif-gpsdifferential' => 'Coridjaedje diferenciel do GPS',
 
-# Make & model, can be wikified in order to link to the camera and model name
-'exif-make-value' => '$1',
-'exif-model-value' => '$1',
-'exif-software-value' => '$1',
-
 # Exif attributes
 'exif-compression-6' => 'JPEG',
 
@@ -1724,9 +1699,6 @@ po l\' $4.',
 
 # Scary transclusion
 
-# Trackbacks
-#'trackback' => '; $4$5 : [$2 $1]',
-#'trackbackexcerpt' => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>',
 
 # delete conflict
 'deletedwhileediting' => 'Asteme: Cisse pådje ci a stî disfacêye sol tins ki vos scrijhîz!',
@@ -1755,10 +1727,6 @@ $1',
 'hideresults' => 'Catchî les rzultats',
 
 # DISPLAYTITLE
-
-# Separator for categories in page lists
-# Please don't localise this
-#'catseparator' => '|',
 
 ####################
 #
@@ -1906,8 +1874,6 @@ Po pleur vôter vos dvoz aveur contribouwé po pus long ki
 ###########
 #======================= obsoleted
 ###########
-# replaecî pa undeletedpage
-'undeletedtext' => 'L\' årtike [[:$1|$1]] a stî rapexhî comifåt. Loukîz l\' [[{{ns:special}}:Log/delete|djournå des disfaçaedjes]] po ene djivêye des dierins disfaçaedjes eyet rapexhaedjes.',
 # replaecî pa uploadnewversion-linktext
 'uploadnewversion' => '[$1 Eberweter ene nouve modêye di ci fitchî ci]',
 # replaecî pa protectthispage?
@@ -1934,10 +1900,6 @@ Po pleur vôter vos dvoz aveur contribouwé po pus long ki
 'val_total' => 'Totå',
 'projectpage' => 'Vey li meta-pådje',
 'contribs-showhideminor' => '$1 candjmints mineurs',
-'wlshow' => 'Mostrer',
-'wlhide' => 'Catchî',
-'debug' => 'Disbugaedje',
-'orphans' => 'Pådjes ôrfulinnes',
 'lucenepowersearchtext' => 'Cweraedje dins les espåces di lomaedje: $1 <br />
 Cweraedje di: $3 $9',
 'selflinks' => 'Pådjes avou des loyéns viè zeles minmes',
@@ -1951,13 +1913,6 @@ Cweraedje di: $3 $9',
 
 # Maintenance Page
 #
-'maintenance' => 'Pådje di manaedjmint',
-'maintnancepagetext' => 'Cisse pådje chal a sacwantès ahessåvès usteyes
-po manaedjî les årtikes. Sacwantes di ces fonccions chal polèt esse
-sitrindåves pol båze di dnêyes, do côp on vs dimandrè di n\' nén
-clitchî sol boton «rafrister» di vosse betchteu a tchaeke côp
-ki vos fjhoz on ptit candjmint ;-)',
-'maintenancebacklink' => 'Rivni al pådje di manaedjmint',
 'groups-lookup-group' => 'Manaedjî les droets do groupe',
 'groups-group-edit' => 'Groupes k\' i gn a:',
 'editgroup' => 'Candjî groupe',

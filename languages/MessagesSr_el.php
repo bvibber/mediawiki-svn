@@ -83,7 +83,6 @@ Buduće promene ove stranice i njoj pridružene stranice za razgovor će biti na
 'allmessagesnotsupportedDB' => '[[{{ns:-1}}:AllMessages|Sistemske poruke]] nisu podržane zato što je <i>wgUseDatabaseMessages</i> isključen.',
 'allmessagesnotsupportedUI' => 'Vaš trenutni jezik interfejsa <b>$1</b> nije podržan u [[{{ns:-1}}:AllMessages|sistemskim porukama]] na ovoj viki.',
 'allmessagestext' => 'Ovo je spisak svih poruka koje su u {{ns:8}}: imenskom prostoru',
-'allnonarticles' => 'Sve stranice koje nisu članci',
 'allnotinnamespace' => 'Sve stranice (koje nisu u $1 imenskom prostoru)',
 'allpages' => 'Sve stranice',
 'allpagesfrom' => 'Prikaži stranice početno sa:',
@@ -178,7 +177,6 @@ ovaj spisak ne treba da se shvati kao potvrda njihovog kvaliteta.',
 'category' => 'kategorija',
 'category_header' => 'Članaka u kategoriji: "$1"',
 'categoryarticlecount' => 'U ovoj kategoriji se nalazi $1 članaka.',
-'categoryarticlecount1' => 'U ovoj kategoriji se nalazi $1 članaka.',
 'changed' => 'promenjen',
 'changegrouplogentry' => 'Promenjena grupa $2',
 'changepassword' => 'Promeni lozinku',
@@ -268,7 +266,6 @@ Poslednji pokušani upit je bio:
 iz funkcije "$2".
 MySQL je vratio grešku "$3: $4".',
 'deadendpages' => 'Stranice bez internih veza',
-'debug' => 'Ispravi greške',
 'dec' => 'dec',
 'december' => 'decembar',
 'default' => 'standard',
@@ -735,7 +732,6 @@ ovu staru verziju, (vrt) = vrati na ovu staru verziju.
 'ipbreason' => 'Razlog',
 'ipbsubmit' => 'Obuzdaj ovog korisnika',
 'ipusubmit' => 'Otpusti ovu adresu',
-'ipusuccess' => '"$1" otpušten',
 'isredirect' => 'Preusmerivač',
 'italic_sample' => 'kurzivan tekst',
 'italic_tip' => 'kurzivan tekst',
@@ -779,21 +775,6 @@ otključati bazu kada završite posao oko njenog održavanja.',
 'locknoconfirm' => 'Niste potvrdili svoju nameru.',
 'log' => 'Protokoli',
 'login' => 'Prijavi se',
-'loginend' => '\'\'\'Registrovanje besplatnih naloga vam oduzima samo nekoliko sekundi, i ima mnoge prednosti\'\'\'
-
-*\'\'\'Za registraciju, izaberite korisničko ime i šifru i kliknite "napravi nalog".\'\'\'
-*Izbegavajte korisnička imena koja su neprikladna ili zbunjujuća.
-*Molimo Vas izaberite čitka imena, a ne brojeve.
-*Korisnička imena moraju počinjati velikim slovom.
-*Izbegavajte korisnička imena koja su ime vašeg političkog vođe, partije, slavne ličnosti i drugih.
-</div>
-
-\'\'\'Registrovani korisnici moraju samo popuniti korisničko ime i šifru.\'\'\'
-
-*Morate imati odobrene [[HTTP cookie|kolačiće]] (\'\'\'cookies\'\'\') da bi ste pristupili na projekat {{ns:4}}.
-*[[{{ns:12}}:Kako da se registrujem|Pogledajte više o registraciji]].
-
-Adresa e-pošte nije obavezna. Ukoliko odaberete da unesete adresu e-pošte, to vam omogućva da ostali korisnici mogu da vam šalju poruke bez znanja vaše prave adrese e-pošte, i dozvoljava vam da ukoliko zaboravite lozinku možete da je povratite. \'\'\'Niko ne može da vidi adresu vaše e-pošte.\'\'\'',
 'loginerror' => 'Greška pri prijavljivanju',
 'loginpagetitle' => 'Prijavljivanje',
 'loginproblem' => '<b>Bilo je problema sa vašim prijavljivanjem.</b><br />Probajte ponovo!',
@@ -818,9 +799,6 @@ da biste slali elektronsku poštu drugim korisnicima.',
 'mainpage' => 'Glavna strana',
 'mainpagedocfooter' => 'Molimo vidite [http://meta.wikimedia.org/wiki/MediaWiki_i18n dokumentaciju o podešavanju interfejsa vašim potrebama] i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide korisnički vodič] za korišćenje i pomoć pri konfigurisanju.',
 'mainpagetext' => 'Viki softver je uspešno instaliran.',
-'maintenance' => 'Stranica za održavanje',
-'maintenancebacklink' => 'Nazad na stranicu za održavanje',
-'maintnancepagetext' => 'Ova stranica sadrži nekoliko zgodnih alatki za svakodnevno održavanje. Neke od njih mogu zamoriti bazu, pa vas molimo da ne učitavate ponovo posle svake stavke koju ste sredili ;-)',
 'makesysop' => 'Davanje administratorskih ovlašćenja korisniku',
 'makesysopfail' => '<b>Korisnik "$1" ne može da postane administrator. (Da li ste pravilno uneli ime?)</b>',
 'makesysopname' => 'Ime korisnika:',
@@ -1028,7 +1006,6 @@ na kome bi se izvela ova funkcija.',
 'ok' => 'da',
 'oldpassword' => 'Stara lozinka',
 'orig' => 'orig',
-'orphans' => 'Siročići',
 'othercontribs' => 'Bazirano na radu od strane korisnika $1.',
 'otherlanguages' => 'Ostali jezici',
 'others' => 'ostali',
@@ -1100,7 +1077,6 @@ Pogledajte [[{{ns:4}}:Pravila o zaštiti stranica|pravila o zaštiti stranica]] 
 'qbsettings' => 'Podešavanja brze palete',
 'qbspecialpages' => 'Posebne stranice',
 'randompage' => 'Slučajna stranica',
-'randompage-url' => '{{ns:-1}}:Random',
 'range_block_disabled' => 'Administratorska mogućnost da blokira IP grupe je isključena.',
 'rchide' => 'u $4 obliku; $1 male izmene; $2 sekundarni imenski prostori; $3 višestruke izmene.',
 'rclinks' => 'Pokaži poslednjih $1 promena u poslednjih $2 dana; $3 male izmene',
@@ -1123,7 +1099,6 @@ Administrator koji ju je zaključao ponudio je ovo objašnjenje:
 tako da nećete moći da snimite svoje izmene upravo sada. Možda želite da iskopirate i nalepite
 tekst u tekst editor i snimite ga za kasnije.',
 'recentchanges' => 'Skorašnje izmene',
-'recentchanges-url' => '{{ns:-1}}:Recentchanges',
 'recentchangesall' => 'sve',
 'recentchangescount' => 'Broj naslova u skorašnjim promenama',
 'recentchangeslinked' => 'Srodne promene',
@@ -1220,7 +1195,6 @@ Molimo kliknite "back" i ponovo učitajte stranu odakle ste došli, a onda poku�
 Ovaj broj isključuje redirekte, stranice za razgovor, stranice sa opisom slike, korisničke stranice, šablone, stranice za pomoć, članke bez ijedne poveznice, i stranice o Vikipediji. Uključujući ove, imamo \'\'\'$1\'\'\' stranica.</p>
 
 Korisnici su napravili \'\'\'$4\'\'\' izmena od jula 2002 godine; u proseku \'\'\'$5\'\'\' izmena po stranici.',
-'sitesubtitle' => '',
 'sitesupport' => 'Donacije',
 'sitesupport-url' => 'Project:Fundraising',
 'siteuser' => '{{ns:4}} korisnik $1',
@@ -1244,7 +1218,6 @@ Korisnici su napravili \'\'\'$4\'\'\' izmena od jula 2002 godine; u proseku \'\'
 'stubthreshold' => 'Granica za prikazivanje klica',
 'subcategories' => 'Potkategorije',
 'subcategorycount' => '$1 potkategorija su u ovoj kategoriji.',
-'subcategorycount1' => '$1 potkategorija su u ovoj kategoriji.',
 'subject' => 'Tema/naslov',
 'subjectpage' => 'Pogledaj temu',
 'successfulupload' => 'Uspešno slanje',
@@ -1309,10 +1282,8 @@ razlikuje od serverskog vremena (UTC).',
 'tooltip-save' => 'Snimite Vaše izmene [alt-s]',
 'tooltip-search' => 'Pretražite Viki',
 'tooltip-watch' => 'Dodajte ovu stranicu na Vaš spisak nadgledanja [alt-w]',
-'trackback' => '<div id=\'mw_trackbacks\'> Vraćanja za ovaj članak:<br /> $1 </div>',
 'trackbackbox' => '; $4$5 : [$2 $1]',
 'trackbackdeleteok' => 'Vraćanje je uspešno obrisano.',
-'trackbackexcerpt' => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>',
 'trackbacklink' => 'Vraćanje',
 'trackbackremove' => '([$1 Brisanje])',
 'tryexact' => 'Pokušaj tačno',
@@ -1329,13 +1300,10 @@ ranije obuzdanoj IP adresi ili korisničkom imenu.',
 'uncategorizedpages' => 'Stranice bez kategorije',
 'undelete' => 'Vrati obrisanu stranicu',
 'undelete_short' => 'vrati $1 obrisanih izmena',
-'undelete_short1' => 'Vrati jednu obrisanu izmenu',
 'undeletearticle' => 'Vrati obrisani članak',
 'undeletebtn' => 'Vrati!',
 'undeletedarticle' => 'vraćeno "$1"',
 'undeletedrevisions' => '$1 revizija vraćeno',
-'undeletedtext' => 'Članak [[:$1|$1]] je uspešno vraćen.
-Pogledajte [[{{ns:-1}}:Log/delete]] za zapis o skorašnjim brisanjima i vraćanjima.',
 'undeletehistory' => 'Ako vratite stranicu, sve revizije će biti vraćene njenoj istoriji.
 Ako je nova stranica istog imena napravljena od brisanja, vraćene
 revizije će se pojaviti u ranijoj istoriji, a trenutna revizija sadašnje stranice
@@ -1473,12 +1441,10 @@ Ne zaboravite da prilagodite sebi svoja {{ns:4}} podešavanja.',
 'projectpage' => 'Pogledaj stranu o ovoj strani',
 'wlheader-enotif' => '* Obaveštavanje e-poštom je omogućeno.',
 'wlheader-showupdated' => '* Strane koje su izmenjene od kada ste ih poslednji put posetili su prikazane \'\'\'masnim slovima\'\'\'',
-'wlhide' => 'Sakrij',
 'wlhideshowbots' => '$1 izmena botova.',
 'wlhideshowown' => '$1 moje izmene.',
 'wlnote' => 'Ispod je poslednjih $1 izmena u poslednjih <b>$2</b> sati.',
 'wlsaved' => 'Ovo je sačuvana verzija vašeg spiska nadgledanja.',
-'wlshow' => 'Prikaži',
 'wlshowlast' => 'Prikaži poslednjih $1 sati $2 dana $3',
 'wrong_wfQuery_params' => 'Netačni parametri za wfQuery()<br />
 Funkcija: $1<br />

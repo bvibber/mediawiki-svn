@@ -466,13 +466,13 @@ format. Please enter a well-formatted address or empty that field.',
 'missingsummary' => "'''Reminder:''' You have not provided an edit summary. If you click Save again, your edit will be saved without one.",
 'missingcommenttext' => 'Please enter a comment below.',
 'blockedtitle'	=> 'User is blocked',
-'blockedtext'	=> 'Your user name or IP address has been blocked by $1.
-The reason given is this:<br />\'\'$2\'\'<br />You may contact $1 or one of the other
-[[{{ns:project}}:Administrators|administrators]] to discuss the block.
+'blockedtext' => "<big>'''Your user name or IP address has been blocked.'''</big>
 
-Note that you may not use the "e-mail this user" feature unless you have a valid e-mail address registered in your [[Special:Preferences|user preferences]].
+The block was made by $1. The reason given is ''$2''.
 
-Your IP address is $3. Please include this address in any queries you make.',
+You can contact $1 or another [[{{ns:project}}:Administrators|administrator]] to discuss the block.
+You cannot use the 'email this user' feature unless a valid email address is specified in your
+[[Special:Preferences|account preferences]]. Your current IP address is $3. Please include this in any queries.",
 'blockedoriginalsource' => "The source of '''$1''' is shown below:",
 'blockededitsource' => "The text of '''your edits''' to '''$1''' is shown below:",
 'whitelistedittitle' => 'Login required to edit',
@@ -555,6 +555,10 @@ the text into a text file and save it for later.</strong>',
 'nocreatetitle' => 'Page creation limited',
 'nocreatetext' => 'This site has restricted the ability to create new pages.
 You can go back and edit an existing page, or [[Special:Userlogin|log in or create an account]].',
+'cantcreateaccounttitle' => 'Can\'t create account',
+'cantcreateaccounttext' => 'Account creation from this IP address (<b>$1</b>) has been blocked. 
+This is probably due to persistent vandalism from your school or Internet service 
+provider. ',
 
 # History pages
 #
@@ -928,6 +932,7 @@ That comes to '''$5''' average edits per page, and '''$6''' views per edit.
 The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''.",
 'userstatstext' => "There are '''$1''' registered users, of which
 '''$2''' (or '''$4%''') are administrators (see $3).",
+'statistics-mostpopular' => 'Most viewed pages',
 
 'disambiguations'	=> 'Disambiguation pages',
 'disambiguationspage'	=> 'Template:disambig',
@@ -977,6 +982,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'recentchangeslinked' => 'Related changes',
 'rclsub'		=> "(to pages linked from \"$1\")",
 'newpages'		=> 'New pages',
+'newpages-username' => 'Username:',
 'ancientpages'		=> 'Oldest pages',
 'intl'		=> 'Interlanguage links',
 'move' => 'Move',
@@ -1010,7 +1016,6 @@ You can narrow down the view by selecting a log type, the user name, or the affe
 'nextpage'          => 'Next page ($1)',
 'allpagesfrom'		=> 'Display pages starting at:',
 'allarticles'		=> 'All articles',
-'allnonarticles'	=> 'All non-articles',
 'allinnamespace'	=> 'All pages ($1 namespace)',
 'allnotinnamespace'	=> 'All pages (not in $1 namespace)',
 'allpagesprev'		=> 'Previous',
@@ -1272,6 +1277,8 @@ pages that were vandalized).",
 'ipadressorusername' => 'IP Address or username',
 'ipbexpiry'		=> 'Expiry',
 'ipbreason'		=> 'Reason',
+'ipbanononly'   => 'Block anonymous users only',
+'ipbcreateaccount' => 'Prevent account creation',
 'ipbsubmit'		=> 'Block this user',
 'ipbother'		=> 'Other time',
 'ipboptions'		=> '2 hours:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite',
@@ -1289,6 +1296,8 @@ to a previously blocked IP address or username.',
 'blocklistline'	=> "$1, $2 blocked $3 ($4)",
 'infiniteblock' => 'infinite',
 'expiringblock' => 'expires $1',
+'anononlyblock' => 'anon. only',
+'createaccountblock' => 'account creation blocked',
 'ipblocklistempty'	=> 'The blocklist is empty.',
 'blocklink'		=> 'block',
 'unblocklink'	=> 'unblock',
@@ -1302,8 +1311,10 @@ the list of currently operational bans and blocks.',
 'unblocklogentry'	=> 'unblocked $1',
 'range_block_disabled'	=> 'The sysop ability to create range blocks is disabled.',
 'ipb_expiry_invalid'	=> 'Expiry time invalid.',
+'ipb_already_blocked' => '"$1" is already blocked',
 'ip_range_invalid'	=> 'Invalid IP range.',
 'proxyblocker'	=> 'Proxy blocker',
+'ipb_cant_unblock' => 'Error: Block ID $1 not found. It may have been unblocked already.',
 'proxyblockreason'	=> 'Your IP address has been blocked because it is an open proxy. Please contact your Internet service provider or tech support and inform them of this serious security problem.',
 'proxyblocksuccess'	=> 'Done.',
 'sorbs'         => 'SORBS DNSBL',
@@ -1332,8 +1343,10 @@ Please confirm that this is what you intend to do.',
 'lockdbsuccesssub' => 'Database lock succeeded',
 'unlockdbsuccesssub' => 'Database lock removed',
 'lockdbsuccesstext' => 'The database has been locked.
-<br />Remember to remove the lock after your maintenance is complete.',
+<br />Remember to [[Special:Unlockdb|remove the lock]] after your maintenance is complete.',
 'unlockdbsuccesstext' => 'The database has been unlocked.',
+'lockfilenotwritable' => 'The database lock file is not writable. To lock or unlock the database, this needs to be writable by the web server.',
+'databasenotlocked' => 'The database is not locked.',
 
 # Make sysop
 'makesysoptitle'	=> 'Make a user into a sysop',
@@ -1464,7 +1477,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'import-interwiki-namespace' => 'Transfer pages into namespace:',
 'importtext'	=> 'Please export the file from the source wiki using the Special:Export utility, save it to your disk and upload it here.',
 'importstart'	=> "Importing pages...",
-'import-revision-count' => '$1 revision(s)',
+'import-revision-count' => '$1 {{PLURAL:$1|revision|revisions}}',
 'importnopages'	=> "No pages to import.",
 'importfailed'	=> "Import failed: $1",
 'importunknownsource'	=> "Unknown import source type",

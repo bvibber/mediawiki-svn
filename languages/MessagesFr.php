@@ -145,7 +145,6 @@ $wgAllMessagesFr = array(
 'editthispage'  => 'Modifier cette page',
 'delete'	=> 'Supprimer',
 'deletethispage' => 'Supprimer cette page',
-'undelete_short1' => 'Restaurer une modification',
 'undelete_short' => 'Restaurer $1 modifications',
 'protect' => 'Protéger',
 'protectthispage' => 'Protéger cette page',
@@ -335,7 +334,6 @@ Le mot de passe de l\'utilisateur « $2 » est à présent « $3 ».
 Nous vous conseillons de vous connecter et de modifier ce mot de passe dès que possible. Si vous n\'êtes pas l\'auteur de cette demande, ou si vous vous souvenez à présent de votre ancien mot de passe et que vous ne souhaitez plus en changer, vous pouvez ignorer ce message et continuer à utiliser votre ancien mot de passe.',
 'noemail'  => 'Aucune adresse électronique n\'a été enregistrée pour l\'utilisateur « $1 ».',
 'passwordsent' => 'Un nouveau mot de passe a été envoyé à l\'adresse électronique de l\'utilisateur « $1 ».',
-'loginend'	=> '&nbsp;',
 'mailerror'	=> 'Erreur en envoyant le courriel : $1',
 'acct_creation_throttle_hit' => 'Désolé, vous avez déjà créé $1 comptes. Vous ne pouvez pas en créer de nouveaux.',
 'emailauthenticated'        => 'Votre adresse de courriel a été authentifiée le $1..',
@@ -439,9 +437,11 @@ vous suivez les [[Project:Page_protégée|directives concernant les pages proté
 'edittools' => '<!-- Tout texte entré ici sera affiché sous les boîtes de modification ou d\'import. -->',
 'nocreatetitle' => 'Création de page limitée',
 'nocreatetext' => 'Ce site a restreint la possibilité de créer de nouvelles pages. Vous pouvez retourner en arrière et éditer une page existante ou [[Special:Userlogin|vous connecter ou créer un compte]].',
+'cantcreateaccounttitle' => 'Vous ne pouvez pas créer un compte.',
+'cantcreateaccounttext' => 'La création de compte depuis cette adresse IP (<b>$1</b>) a été bloquée. Ceci est probablement du à du vandalisme répété depuis votre école ou votre fournisseur d\'accès à internet.',
 
-# History pages
-#
+# History pages #
+
 'revhistory'   => 'Versions précédentes',
 'nohistory'    => 'Il n\'existe pas d\'historique pour cette page.',
 'revnotfound'  => 'Version introuvable',
@@ -821,7 +821,6 @@ Cela représente une moyenne de <b>$5</b> modifications par page et de <b>$6</b>
 'nextpage'          	=> 'Page suivante ($1)',
 'allpagesfrom'		=> 'Afficher les pages à partir de :',
 'allarticles'		=> 'Tous les articles',
-'allnonarticles'	=> 'Tous les noms articles',
 'allinnamespace' 	=> 'Toutes les pages (espace de nom $1)',
 'allnotinnamespace'	=> 'Toutes les pages (n\’étant pas dans l\'espace de nom $1)',
 'allpagesnext'		=> 'Suivant',
@@ -1000,9 +999,6 @@ Si une nouvelle page avec le même nom a été créée depuis la suppression, le
 'undeletecomment' => 'Commentaire :',
 'undeletedarticle' => 'a restauré « [[$1]] »',
 'undeletedrevisions' => '$1 versions ont été restaurées',
-'undeletedtext'   => 'L\'article [[$1]] a été restauré avec succès.
-
-Voir [[{{ns:4}}:Trace des effacements]] pour la liste des suppressions et des restaurations récentes.',
 
 # Namespace form on various pages
 'namespace' => 'Espace de nom :',
@@ -1041,12 +1037,14 @@ Voir [[{{ns:4}}:Trace des effacements]] pour la liste des suppressions et des re
 'blockip'	=> 'Bloquer une adresse IP ou un utilisateur',
 'blockiptext'	=> 'Utilisez le formulaire ci-dessous pour bloquer l\'accès en écriture à partir d\'une adresse IP donnée ou d\'un nom d\'utilisateur.
 
-Une telle mesure ne doit être prise que pour empêcher le vandalisme et en accord avec les [[Project:Policy|règles internes]].
+Une telle mesure ne doit être prise que pour empêcher le vandalisme et en accord avec les [[{{ns:project}}:Policy|règles internes]].
 Donnez ci-dessous une raison précise (par exemple en indiquant les pages qui ont été vandalisées).',
 'ipaddress'	=> 'Adresse IP',
 'ipadressorusername' => 'Adresse IP ou nom d\'utilisateur',
 'ipbexpiry' => 'Durée du blocage',
 'ipbreason'	=> 'Motif du blocage',
+'ipbanononly'   => 'Bloquer uniquement les utilisateurs anonymes',
+'ipbcreateaccount' => 'Empêcher la création de compte',
 'ipbsubmit'	=> 'Bloquer cet utilisateur',
 'ipbother'	=> 'Autre durée',
 'ipboptions'		=> '2 heures:2 hours,1 jour:1 day,3 jours:3 days,1 semaine:1 week,2 semaines:2 weeks,1 mois:1 month,3 mois:3 months,6 mois:6 months,1 an:1 year,Permanent:infinite',
@@ -1054,15 +1052,16 @@ Donnez ci-dessous une raison précise (par exemple en indiquant les pages qui on
 'badipaddress'	=> 'L\'adresse IP n\'est pas correcte.',
 'blockipsuccesssub' => 'Blocage réussi',
 'blockipsuccesstext' => '[[{{ns:Special}}:Contributions/$1|$1]] a été bloqué.<br />Vous pouvez consulter sur cette [[Special:Ipblocklist|page]] la liste des adresses IP bloquées.',
-'unblockip'	=> "Débloquer une adresse IP",
+'unblockip'	=> "Débloquer un utilisateur",
 'unblockiptext' => 'Utilisez le formulaire ci-dessous pour rétablir l\'accès en écriture
-à partir d\'une adresse IP précédemment bloquée.',
+d\'une adresse IP précédemment bloquée.',
 'ipusubmit'	=> 'Débloquer cette adresse',
-'ipusuccess'	=> 'L\'adresse IP « $1 » débloquée.',
 'ipblocklist'	=> 'Liste des blocages',
 'blocklistline' => '$1, $2 a bloqué $3 ($4)',
 'infiniteblock' => 'permanent',
 'expiringblock' => 'expire le $1',
+'anononlyblock' => 'uniquement anonyme',
+'createaccountblock' => 'la création de compte est bloquée',
 'ipblocklistempty'=> 'La liste de blocage est vide.',
 'blocklink'	=> 'bloquer',
 'unblocklink'	=> 'débloquer',
@@ -1073,6 +1072,7 @@ Donnez ci-dessous une raison précise (par exemple en indiquant les pages qui on
 'blocklogtext'	=> 'Ceci est la trace des blocages et déblocages des utilisateurs. Les adresses IP automatiquement bloquées ne sont pas listées. Consultez la [[Special:Ipblocklist|liste des utilisateurs bloqués]] pour voir qui est actuellement effectivement bloqué.',
 'unblocklogentry'	=> 'déblocage de « $1 »',
 'ipb_expiry_invalid' => 'temps d\'expiration invalide.',
+'ipb_already_blocked' => '"$1" est déjà bloqué',
 'ip_range_invalid' => 'Bloc IP incorrect.',
 'proxyblocker' => 'Bloqueur de proxy',
 'proxyblockreason' => 'Votre ip a été bloquée car il s\'agit d\'un proxy ouvert. Merci de contacter votre fournisseur d\'accès internet ou votre support technique et de l\'informer de ce problème de sécurité.',

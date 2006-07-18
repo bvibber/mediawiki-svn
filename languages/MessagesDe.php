@@ -437,7 +437,7 @@ Bitte geben Sie Ihre IP-Adresse ($3) in allen Ihren Anfragen mit an.',
 "note"			=> "<strong>Hinweis:</strong>",
 "previewnote"	=> "Dies ist nur eine Vorschau, der Artikel wurde noch nicht gespeichert!",
 'session_fail_preview' => '<strong>Ihre Bearbeitung konnte nicht gespeichert werden, da Ihre Sitzungsdaten verloren gegangen sind.
-Bitte versuchen Sie es erneut. Sollte das Problem bestehen bleiben, logge Sie sich kurz aus und wieder ein.</strong>',
+Bitte versuchen Sie es erneut. Sollte das Problem bestehen bleiben, loggen Sie sich kurz aus und wieder ein.</strong>',
 "previewconflict" => "Diese Vorschau gibt den Inhalt des oberen Textfeldes wieder; so wird der Artikel aussehen, wenn Sie jetzt speichern.",
 'session_fail_preview_html'	=> '<strong>Ihre Bearbeitung konnte nicht gespeichert werden, da Ihre Sitzungsdaten verloren gegangen sind.</strong>
 
@@ -483,6 +483,9 @@ später einzuspielen.</strong>",
 'nocreatetext'		=> 'Der Server hat das Erstellen neuer Seiten eingeschränkt.
 
 Sie können bestehende Seiten ändern oder sich [[{{ns:special}}:Userlogin|anmelden]].',
+'cantcreateaccounttitle'	=> 'Benutzerkonto kann nicht erstellt werden',
+'cantcreateaccounttext'	=> 'Die Erstellung eines Benutzerkontos von dieser IP-Adresse (<b>$1</b>) wurde gesperrt.
+Dies geschah vermutlich auf Grund von wiederholtem Vandalismus von Ihrer Bildungseinrichtung oder anderen Benutzern Ihres Internet-Service-Provider.',
 
 # History pages
 #
@@ -512,11 +515,9 @@ Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullu
 Als Administrator können Sie sie weiterhin einsehen.
 Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullurl:Spezial:Log/delete|page={{PAGENAMEE}}}} Lösch-Logbuch].</div>',
 "orig"			=> "Original",
-'histlegend'		=> 'Diff Auswahl: Die Boxen der gewünschten Versionen markieren und „Enter“ drücken oder den Button unten klicken/alt-v.<br />
-Legende:
-(Aktuell) = Unterschied zur aktuellen Version,
-(Letzte) = Unterschied zur vorherigen Version,
-K = Kleine Änderung',
+'histlegend'		=> 'Zur Anzeige der Änderungen einfach die zu vergleichenden Versionen auswählen und die Schaltfläche „{{int:compareselectedversions}}“ klicken („alt-v“).<br />
+* (Aktuell) = Unterschied zur aktuellen Version, (Vorherige) = Unterschied zur vorherigen Version
+* Uhrzeit/Datum = Artikel zu dieser Zeit, Benutzername/IP-Adresse des Bearbeiters, K = Kleine Änderung',
 
 'revdelete-legend'		=> 'Einschränkungen für die Versionen festlegen:',
 'revdelete-hide-text'		=> 'Verstecke den Text der Version',
@@ -784,6 +785,7 @@ Daraus ergeben sich \'\'\'$5\'\'\' Bearbeitungen pro Seite und \'\'\'$6\'\'\' Se
 Länge der „Job queue“: \'\'\'$7\'\'\'',
 'userstatstext'		=> 'Es gibt \'\'\'$1\'\'\' registrierte [[{{ns:special}}:Listusers|Benutzer]].
 Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
+'statistics-mostpopular'	=> 'Meist besuchte Seiten',
 
 # Maintenance Page
 #
@@ -819,6 +821,7 @@ Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
 'recentchangeslinked'	=> 'Änderungen an verlinkten Seiten',
 'rclsub'		=> '(auf Artikel von „$1“)',
 "newpages"		=> "Neue Artikel",
+'newpages-username'	=> 'Benutzername:',
 'ancientpages'		=> 'Lange unbearbeitete Artikel',
 "movethispage"	=> "Artikel verschieben",
 'unusedimagestext'	=> '<p>Bitte beachten Sie, dass andere Wikis möglicherweise einige dieser Dateien verwenden.',
@@ -849,7 +852,6 @@ Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
 'allpagesfrom'	=> 'Seiten anzeigen ab:',
 'allpagesprefix'	=> 'Seiten anzeigen mit Präfix:',
 'allarticles'	=> 'Alle Artikel',
-'allnonarticles'	=> 'Alle Nicht-Artikel',
 'allinnamespace'	=> "Alle Seiten im Namensraum: $1",
 'allnotinnamespace'	=> 'Alle Seiten (nicht im $1 Namensraum)',
 'allpagesprev'	=> 'Vorherige',
@@ -1071,6 +1073,8 @@ Bitte geben Sie den Grund für die Blockade an.',
 "ipaddress"		=> "IP-Adresse",
 'ipadressorusername'	=> 'IP-Adresse oder Benutzername',
 'ipbreason'		=> 'Begründung',
+'ipbanononly'		=> 'Nur anonyme Benutzer sperren',
+'ipbcreateaccount'	=> 'Erstellung von Benutzerkonten verhindern',
 'ipbsubmit'		=> 'Benutzer blockieren',
 'ipbother'		=> 'Andere Dauer',
 'ipboptions'		=> '1 Stunde:1 hour,2 Stunden:2 hours,6 Stunden:6 hours,1 Tag:1 day,3 Tage:3 days,1 Woche:1 week,2 Wochen:2 weeks,1 Monat:1 month,3 Monate:3 months,1 Jahr:1 year,Unbeschränkt:indefinite',
@@ -1089,6 +1093,8 @@ Beachten Sie die [[{{ns:special}}:Ipblocklist|{{int:ipblocklist}}]] für alle ak
 "blocklistline"	=> "$1, $2 blockierte $3 ($4)",
 'infiniteblock'		=> 'unbegrenzt',
 'expiringblock'		=> 'erlischt $1',
+'anononlyblock'		=> 'nur Anonyme',
+'createaccountblock'	=> 'Erstellung von Benutzerkonten gesperrt',
 "blocklink"		=> "blockieren",
 "unblocklink"	=> "freigeben",
 "contribslink"	=> "Beiträge",
@@ -1107,9 +1113,11 @@ Beachten Sie die [[{{ns:special}}:Ipblocklist|{{int:ipblocklist}}]] für alle ak
 "locknoconfirm" => "Sie haben das Bestätigungsfeld nicht markiert.",
 "lockdbsuccesssub" => "Datenbank wurde erfolgreich gesperrt",
 "unlockdbsuccesssub" => "Datenbank wurde erfolgreich freigegeben",
-"lockdbsuccesstext" => "Die {{SITENAME}}-Datenbank wurde gesperrt.
-<br />Bitte geben Sie die Datenbank wieder frei, sobald die Wartung abgeschlossen ist.",
+'lockdbsuccesstext'	=> 'Die {{SITENAME}}-Datenbank wurde gesperrt.
+<br />Bitte geben Sie die Datenbank [[Special:Unlockdb|wieder frei]], sobald die Wartung abgeschlossen ist.',
 "unlockdbsuccesstext" => "Die {{SITENAME}}-Datenbank wurde freigegeben.",
+'lockfilenotwritable' => 'Die Datenbank-Sperrdatei ist nicht beschreibbar. Zum Sperren oder Freigeben der Datenbank muss diese für den Webserver beschreibbar sein.',
+'databasenotlocked'	=> 'Die Datenbank ist nicht gesperrt.',
 
 # User levels special page
 #
@@ -1307,6 +1315,7 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Seitentitel“ m
 'unblocklogentry'	=> 'Blockade von [[{{ns:user}}:$1]] aufgehoben',
 "range_block_disabled"	=> "Die Möglichkeit, ganze Adressräume zu sperren, ist nicht aktiviert.",
 "ipb_expiry_invalid"	=> "Die angegebeben Ablaufzeit ist ungültig.",
+'ipb_already_blocked'	=> '„$1“ ist bereits gesperrt',
 "ip_range_invalid"	=> "Ungültiger IP-Addressbereich.",
 "confirmprotect" 	=> "Sperrung bestätigen",
 'protectmoveonly'	=> 'Nur vor dem Verschieben schützen',
@@ -1318,6 +1327,7 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Seitentitel“ m
 'protect-viewtext'	=> 'Sie sind nicht berechtigt, den Seitenschutzstatus zu ändern. Hier ist der aktuelle Schutzstatus der Seite: [[$1]]',
 'protect-default'	=> '(Standard)',
 "proxyblocker"  	=> "Proxyblocker",
+'ipb_cant_unblock'	=> 'Fehler: Block ID $1 nicht gefunden. Die Sperre wurde vermutlich bereits aufgehoben.',
 "proxyblockreason"      => "Ihre IP-Adresse wurde gesperrt, da sie ein offener Proxy ist. Bitte kontaktieren Sie Ihren Provider oder Ihre Systemtechnik und informieren Sie sie über dieses mögliche Sicherheitsproblem.",
 "proxyblocksuccess"     => "Fertig.",
 'sorbs'			=> 'SORBS DNSbl',
@@ -1345,7 +1355,7 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'import-interwiki-namespace'	=> 'Importiere Seiten in Namensraum:',
 'importtext'		=> 'Auf dieser Spezialseite können über [[{{ns:special}}:Export]] exportierte Seiten in dieses Wiki importiert werden.',
 'importstart'		=> 'Importiere Seiten...',
-'import-revision-count'	=> '$1 Version(en)',
+'import-revision-count'	=> '$1 {{PLURAL:$1|Version|Versionen}}',
 'importnopages'		=> 'Keine Seiten zum Importieren.',
 'importfailed'		=> 'Import fehlgeschlagen: $1',
 'importunknownsource'	=> 'Unbekannte Importquelle',
@@ -1363,7 +1373,7 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'importlogpagetext'	=> 'Administrativer Import von Seiten mit Versionsgeschichte von anderen Wikis.',
 'import-logentry-upload'	=> '$1 wurde importiert',
 'import-logentry-upload-detail'	=> '$1 Version(en)',
-#'import-logentry-interwiki'	=> 'transwikied $1',
+'import-logentry-interwiki'	=> '$1 wurde importiert (Transwiki)',
 'import-logentry-interwiki-detail'	=> '$1 Version(en) von $2',
 
 "isbn"			=> "ISBN",
@@ -1649,7 +1659,7 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-subjectlocation'		=> 'Motivstandort',
 'exif-subsectime'		=> 'Speicherzeitpunkt (1/100 s)',
 'exif-subsectimedigitized'	=> 'Digitalisierungszeitpunkt (1/100 s)',
-'exif-subsectimeoriginal'	=> 'Erfassungszeitpunkt (1/100 s',
+'exif-subsectimeoriginal'	=> 'Erfassungszeitpunkt (1/100 s)',
 'exif-transferfunction'		=> 'Übertragungsfunktion',
 'exif-usercomment'		=> 'Benutzerkommentare',
 'exif-whitebalance'		=> 'Weißabgleich',

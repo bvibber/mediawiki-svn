@@ -25,14 +25,63 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
 == Major new features ==
 
-* None!
-
-
+* (bug 550) Allow blocks on anonymous users only.
 
 == Changes since 1.7 ==
 
-* None!
+* (bug 6562) Removed unmaintained ParserXml.php for now
+* History paging overlap bug fixed
+* (bug 6586) Regression in "unblocked" subtitle
+* Don't put empty-page message into view-source when page text is blank
+* (bug 6587) Remove redundant "allnonarticles" message
+* Block improvements: Allow blocks on anonymous users only. Optionally allow 
+  or disallow account creation from blocked IP addresses. Prevent duplicate
+  blocks. Fixed the problem of expiry and unblocking erroneously affecting
+  multiple blocks. Fixed confusing lack of error message when a blocked user
+  attempts to create an account. Fixed inefficiency of Special:Ipblocklist in 
+  the presence of large numbers of blocks; added indexes and implemented an 
+  indexed pager.
+* (bug 6448) Allow filtering of Special:Newpages according to username
+* (bug 6618) Improve permissions/error detection in Special:Lockdb
+* Quick hack for extension testing: parser test doesn't create new message
+  cache object.
+* (bug 6299) Maintain parser's revision ID across recursive calls to fix
+  {{REVISIONID}} when Cite extension is used
+* (bug 6622) Removed deprecated function Image::newFromTitle
+* (bug 6627) Fix regression in Special:Ipblocklist with table prefix
+* Removed forced dereferencements (new() returns a reference in PHP5)
+* Note about $wgUploadSizeWarning using byte
+* (bug 6592) Add most viewed pages summary to Special:Statistics
+* Pre-strip characters ignored in IDNs from URLs so they can't be used
+  to break the blacklists for regular URLs
+* Fix regression in blocking of user accounts
+* (bug 6635) Fix regression searching for range blocks on Ipblocklist
+* Fix regression searching Ipblocklist with ugly URLs
+* (bug 6639) Use a consistent default for upload directories
+* Preserve entered reason when reporting unconfirmed lock on Special:Lockdb
+* (bug 6642) Don't offer to unlock the database when it isn't locked
+* cleanupTitles.php changed from --dry-run option to --fix, so default
+  behavior is now a non-invasive check as with namespaceDupes.php
+* (bug 6660) Fix behaviour of EditPage::blockedPage() when the article does
+  not exist; now doesn't show the source box if the user hasn't provided it
+  (blocked mid-edit) and the page doesn't exist
+* Improve default value of "blockedtext"
+* (bug 6680) Added localisation for Dutch bookstore list (nl)
 
+== Languages updated ==
+
+* Albanian (sq)
+* Brazilian Portuguese (pt-br)
+* Catalan (ca)
+* English (en)
+* French (fr)
+* German (de)
+* Hebrew (he)
+* Hungarian (hu)
+* Indonesian (id)
+* Polish (pl)
+* Russian (ru)
+* Telugu (te)
 
 == Compatibility ==
 

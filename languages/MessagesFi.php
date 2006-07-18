@@ -160,7 +160,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'delete'              => 'Poista',
 'deletethispage'      => 'Poista tämä sivu',
 'undelete_short'      => 'Palauta $1 muokkausta',
-'undelete_short1'     => 'Palauta 1 muokkaus',
 'protect'             => 'Suojaa',
 'protectthispage'     => 'Suojaa tämä sivu',
 'unprotect'           => 'Poista suojaus',
@@ -170,7 +169,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'specialpage'         => 'Toimintosivu',
 'personaltools'       => 'Henkilökohtaiset työkalut',
 'postcomment'         => 'Kommentti sivun loppuun',
-'addsection'          => '+',
 'articlepage'         => 'Näytä varsinainen sivu',
 'subjectpage'         => 'Näytä aihe', # For compatibility
 'talk'                => 'Keskustelu',
@@ -204,7 +202,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'versionrequired'     => 'Mediawikistä tarvitaan vähintään versio $1',
 'versionrequiredtext' => 'Mediawikistä tarvitaan vähintään versio $1 tämän sivun käyttämiseen. Katso [[Special:Version|versio]]',
 
-'widthheight'         => '$1×$2',
 'go'                  => 'Siirry',
 'ok'                  => 'OK',
 'pagetitle'           => '$1 — {{SITENAME}}',
@@ -633,7 +630,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'minoreditletter'     => 'p',
 'newpageletter'       => 'U',
 'sectionlink'         => '→',
-'number_of_watching_users_RCview'   => '[$1]',
 'number_of_watching_users_pageview' => '[$1 tarkkailevaa käyttäjää]', // TODO sigplu
 'rc_categories'       => 'Vain luokista (erotin on ”|”)',
 'rc_categories_any'   => 'Mikä tahansa',
@@ -817,7 +813,6 @@ Ohjelmiston ylläpitotöitä on jonossa \'\'\'$7\'\'\' kappaletta.',
 
 
 # No reason to overwrite
-//  'rfcurl'              => 'http://www.faqs.org/rfcs/rfc$1.html',
 'alphaindexline'      => '$1…$2',
 'version'             => 'Versio',
 'log'                 => 'Lokit',
@@ -828,7 +823,6 @@ Ohjelmiston ylläpitotöitä on jonossa \'\'\'$7\'\'\' kappaletta.',
 'nextpage'            => 'Seuraava sivu ($1)',
 'allpagesfrom'        => 'Näytä sivuja lähtien sivusta:',
 'allarticles'         => 'Kaikki sivut',
-'allnonarticles'      => 'Kaikki sivut, jotka eivät ole oletusnimiavaruudessa',
 'allinnamespace'      => 'Kaikki sivut nimiavaruudessa $1',
 'allnotinnamespace'   => 'Kaikki sivut, jotka eivät ole nimiavaruudessa $1',
 'allpagesprev'        => 'Edellinen',
@@ -998,7 +992,6 @@ Palaute ja lisäapu osoitteessa:
 'undeletecomment'     => 'Kommentti:',
 'undeletedarticle'    => 'palautti sivun [[$1]]',
 'undeletedrevisions'  => '$1 versiota palautettiin',
-'undeletedtext'       => 'Sivu [[:$1|$1]] on palautettu onnistuneesti. Lista viimeisimmistä poistoista ja palautuksista on [[Special:Log/delete|poistolokissa]].',
 
 'namespace'           => 'Nimiavaruus',
 'invert'              => 'Käännä nimiavaruusvalinta päinvastaiseksi',
@@ -1049,7 +1042,6 @@ Palaute ja lisäapu osoitteessa:
 'unblockip'           => 'Muokkauseston poisto',
 'unblockiptext'       => 'Tällä lomakkeella voit poistaa käyttäjän tai IP-osoitteen muokkauseston.',
 'ipusubmit'           => 'Poista esto',
-'ipusuccess'          => 'IP-osoitteen tai käyttäjän <b>$1</b> esto poistettu', // TODO NOWIKIMARKUP
 'ipblocklist'         => 'Lista estetyistä IP-osoitteista',
 'ipblocklistempty'    => 'Estolista on tyhjä.',
 'blocklistline'       => '$1 — $2 on estänyt käyttäjän $3 ($4)',
@@ -1256,7 +1248,6 @@ Näissä tapauksissa sivut täytyy siirtää tai yhdistää käsin.',
 
 # Patrolling
 'markaspatrolleddiff'   => 'Merkitse tarkastetuksi',
-'markaspatrolledlink'   => '[$1]',
 'markaspatrolledtext'   => 'Merkitse muokkaus tarkastetuksi',
 'markedaspatrolled'     => 'Tarkastettu',
 'markedaspatrolledtext' => 'Valittu versio on tarkastettu.',
@@ -1479,12 +1470,6 @@ This file contains additional information, probably added from the digital camer
 'exif-gpsdatestamp'       =>'GPS-päivämäärä',
 'exif-gpsdifferential'    =>'GPS-differentiaalikorjaus',
 
-# Make & model, can be wikified in order to link to the camera and model name
-
-'exif-make-value'     => '$1',
-'exif-model-value'    =>'$1',
-'exif-software-value' => '$1',
-
 # Exif attributes
 
 'exif-compression-1'  => 'Pakkaamaton',
@@ -1679,8 +1664,6 @@ Jos tämä tunnus ei ole sinun, ÄLÄ seuraa linkkiä. Varmennuskoodi vanhenee $
 
 # Trackbacks
 'trackbackbox' => '<div id="mw_trackbacks">Artikkelin trackbackit:<br />$1</div>',
-'trackback' => '; $4$5 : [$2 $1]',
-'trackbackexcerpt' => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>',
 'trackbackremove' => ' ([$1 poista])',
 'trackbacklink' => 'Trackback',
 'trackbackdeleteok' => 'Trackback poistettiin.',

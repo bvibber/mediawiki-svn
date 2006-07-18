@@ -238,7 +238,7 @@ class ParserTest {
 
 		$this->setupGlobals($opts);
 
-		$user =& new User();
+		$user = new User();
 		$options = ParserOptions::newFromUser( $user );
 
 		if (preg_match('/\\bmath\\b/i', $opts)) {
@@ -255,7 +255,7 @@ class ParserTest {
 
 		$noxml = (bool)preg_match( '~\\b noxml \\b~x', $opts );
 
-		$parser =& new Parser();
+		$parser = new Parser();
 		foreach( $this->hooks as $tag => $callback ) {
 			$parser->setHook( $tag, $callback );
 		}
@@ -360,7 +360,7 @@ class ParserTest {
 		$GLOBALS['wgContLang'] = $langObj;
 
 		$GLOBALS['wgLoadBalancer']->loadMasterPos();
-		$GLOBALS['wgMessageCache'] = new MessageCache( new BagOStuff(), false, 0, $GLOBALS['wgDBname'] );
+		//$GLOBALS['wgMessageCache'] = new MessageCache( new BagOStuff(), false, 0, $GLOBALS['wgDBname'] );
 		$this->setupDatabase();
 
 		global $wgUser;

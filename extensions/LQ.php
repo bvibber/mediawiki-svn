@@ -7,6 +7,7 @@
 * @licence GPL2
 */
 
+
 if( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( -1 );
@@ -20,15 +21,31 @@ else {
 	$wgExtensionFunctions[] = 'efLQ';
 
 
-	function efLQ() {
-		global $wgMessageCache;
-		$wgMessageCache->addMessage( 'lq', 'LiquidThreads' );
-		SpecialPage::addPage( new LQ() );
+	function lqSpecialCaseHook( &$title, &$output, $request ) {
+		 var_dump($title);
+		 if( $title->getNamespace() === LQT_NS_CHANNEL ) {
+		     $lq = new LQ($title);
+		     $lq->execute();
+		     return true;
+		 }
+		 else {
+		      return false;
+		 }
 	}
+
+	function efLQ() {
+		global $wgMessageCache, $wgHooks, $wgCanonicalNamespaceNames;
+		$wgMessageCache->addMessage( 'lq', 'LiquidThreads' );
+		$wgHooks['SpecialCase'][] = 'lqSpecialCaseHook';
+		SpecialPage::addPage( new LQ(null) );
+	}
+
 
 	class LQ extends SpecialPage {
 
-		function LQ() {
+		function LQ($title) {
+			 $this->title = $title;
+			 echo "hello flom LQ";
 			SpecialPage::SpecialPage( 'LQ', 'lq' );
 		}
 
@@ -43,13 +60,15 @@ else {
 			global $wgUser, $wgRequest, $wgOut, $wgArticle;
 
 			$this->setHeaders(); # not sure what this does.
-
+/*
 			# Extract the 'title' part of the path (between slash and query string)
 			$tmp1 = split( "LQ/", $wgRequest->getRequestURL() );
 			$tmp2 = split('\?', $tmp1[1]);
 			$pageTitle = $tmp2[0];
 			$this->title = $title = Title::newFromText($pageTitle); 
-
+*/
+			$pageTitle = $this->title->getPartialURL();
+	
 			$article = new Post($title); // post so we can do firstPostOfArticle() etc.
 
 			if ($pageTitle == '') {

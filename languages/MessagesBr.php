@@ -70,7 +70,6 @@
 'uncategorizedcategories' => 'Rummadoù hep rummadoù',
 'uncategorizedpages' => 'Pajennoù hep rummad ebet',
 'subcategorycount' => '$1 isrummad zo d\'ar rummad-mañ.',
-'subcategorycount1' => '$1 isrummad zo d\'ar rummad-mañ.',
 
 'allarticles'   => 'An holl bennadoù',
 'linktrail'     => "/^([a-zàâçéèêîôûäëïöüùÇÉÂÊÎÔÛÄËÏÖÜÀÈÙ]+)(.*)$/sDu",
@@ -120,7 +119,6 @@
 'delete'	=> 'Diverkañ',
 'deletethispage' => 'Diverkañ ar bajenn-mañ',
 'undelete_short' => 'Diziverkañ',
-'undelete_short1' => 'Diziverkañ',
 'protect' => 'Gwareziñ',
 'protectthispage' => 'Gwareziñ ar bajenn-mañ',
 'unprotect' => 'Diwareziñ',
@@ -130,7 +128,6 @@
 'specialpage'	=> 'Pajenn zibar',
 'personaltools'	=> 'Ostilhoù personel',
 'postcomment'	=> 'Ouzhpennañ e soñj',
-'addsection'   => '+',
 'articlepage'	=> 'Sellet ouzh ar pennad',
 'subjectpage'   => 'Pajenn danvez',
 'talk'		=> 'Kaozeadenn',
@@ -288,7 +285,6 @@ Erbediñ a reomp deoc'h en em lugañ ha kemmañ ar ger-termen-mañ an abretañ a
 'noemail'  => "N'eus bet enrollet chomlec'h elektronek ebet evit an implijer \"$1\".",
 'passwordsent' => "Kaset ez eus bet ur ger-tremen nevez da chomlec'h elektronek an implijer \"$1\".
 Trugarez deoc'h evit en em zisklêriañ kerkent ha ma vo bet resevet ganeoc'h.",
-'loginend'	=> '&nbsp;',
 'mailerror'	=> 'Fazi en ur gas ar postel : $1',
 'acct_creation_throttle_hit' => 'Ho tigarez, krouet ez eus bet $1 (c\'h)gont ganeoc\'h dija. N\'hallit ket krouiñ unan nevez.',
 
@@ -391,7 +387,6 @@ N'eus nemet an implijerien ganto ar statud a verourien a c'hall degas kemmoù en
 #
 'categoriespagetext' => "War ar wiki emañ ar rummadoù da-heul :",
 'categoryarticlecount' => "$1 pennad zo er rummad-mañ.",
-'categoryarticlecount1' => "N'eus pennad ebet er rummad-mañ.",
 
 
 #  Diffs
@@ -622,9 +617,6 @@ En o zouez, <b>$2</b> zo ganto ar statud merour (sellet ouzh $3).',
 
 # Maintenance Page
 #
-'maintenance'		=> 'Pajenn drezalc\'h',
-'maintnancepagetext'	=> "War ar bajenn-mañ e vo kavet meur a vaveg evit an trezalc'h pemdeziek. Ostilhoù zo zo techet da wallgargañ ar bank roadennoù; na adkargit ket ar bajenn goude pep kemm.",
-'maintenancebacklink'	=> 'Distro d\'ar bajenn drezalc\'h',
 'disambiguations'	=> 'Pajennoù disheñvelaat',
 'disambiguationspage'	=> "{{ns:4}}:Liammoù_ouzh_ar_pajennoù_disheñvelaat",
 'disambiguationstext'	=> "Liammet eo ar pennadoù da-heul ouzh ur <i>bajenn zisheñvelaat</i>. Padal e tlefent bezañ liammet ouzh an danvez anezho.<br />Sellet e vez ouzh ur bajenn evel ouzh ur bajenn zisheñvelaat m'eo liammet adal $1.<br />ne vez ket kemeret e kont al liammoù adal <i>lec'hioù</i> all.",
@@ -646,7 +638,6 @@ En o zouez, <b>$2</b> zo ganto ar statud merour (sellet ouzh $3).',
 
 # Miscellaneous special pages
 #
-'orphans'       => 'Pajennoù en o-unan',
 'lonelypages'   => 'Pajennoù en o-unan',
 'unusedimages'  => 'Skeudennoù en o-unan',
 'popularpages'  => 'Pajennoù sellet ar muiañ',
@@ -663,7 +654,6 @@ En o zouez, <b>$2</b> zo ganto ar statud merour (sellet ouzh $3).',
 'protectpage'   => 'Gwareziñ ar bajenn',
 'recentchangeslinked' => 'Heuliañ al liammoù',
 'rclsub'        => "(eus ar pajennoù liammet ouzh \"$1\")",
-'debug'         => 'Dizreinañ',
 'newpages'      => 'Pajennoù nevez',
 'ancientpages'	=> 'Pennadoù koshañ',
 'move'		=> 'adenvel',
@@ -813,8 +803,6 @@ Ma'z eus bet krouet ur bajenn nevez dezhi an hevelep anv abaoe an diverkadenn, e
 "undeleterevision" => "Stumm diverket ($1)",
 'undeletebtn'	=> 'Diziverkañ!',
 'undeletedarticle' => "Diziverket\"$1\"",
-'undeletedtext'   => "Diziverket eo bet ar pennad [[:$1|$1]] da vat.
-Sellet ouzh [[{{ns:4}}:Aspadennoù an diverkadennoù]] evit kaout roll an diverkadennoù hag an diziverkadennoù diwezhañ.",
 'undeletedrevisions' => "$1 stumm bet diziverket",
 
 # Contributions
@@ -853,7 +841,6 @@ Roit a-is an abeg resis (o verkañ, da skouer, roll ar pajennoù bet graet gaou 
 'unblockip'	=> "Distankañ ur chomlec'h IP",
 'unblockiptext' => 'Grit gant ar furmskrid a-is evit adsevel ar moned skrivañ ouzh ur chomlec\'h IP bet stanket a-gent.',
 'ipusubmit'	=> 'Distankañ ar chomlec\'h-mañ',
-'ipusuccess'	=> 'Chomlec\'h IP « $1 » distanket',
 'ipblocklist'	=> 'Roll ar chomlec\'hioù IP stanket outo',
 'blocklistline' => '$1, $2 en/he deus stanket $3',
 'blocklink'	=> 'stankañ',

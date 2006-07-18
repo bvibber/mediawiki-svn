@@ -216,7 +216,6 @@ Poslednji pokušani upit je bio:
 iz funkcije "$2".
 MySQL je vratio grešku "$3: $4".',
 'deadendpages' => 'Stranice bez internih veza',
-'debug' => 'Ispravite greške',
 'dec' => 'dec',
 'december' => 'decembar',
 'defaultns' => 'Uobičajeno tražite u ovim imenskim prostorima:',
@@ -393,7 +392,6 @@ ovu staru verziju, (vrt) = vrati na ovu staru verziju.
 'ipbreason' => 'Razlog',
 'ipbsubmit' => 'Blokirajte ovog korisnika',
 'ipusubmit' => 'Deblokirajte ovog korisnika',
-'ipusuccess' => '"[[$1]]" deblokiran',
 'isredirect' => 'preusmjerivač',
 'italic_sample' => 'Kurzivan tekst',
 'italic_tip' => 'Kurzivan tekst',
@@ -432,18 +430,6 @@ Molimo Vas da potvrdite da je ovo zaista ono što namjeravate da uradite, i da �
 otkučati bazu kad završite posao oko njenog održavanja.',
 'locknoconfirm' => 'Niste potvrdili svoju namjeru.',
 'login' => 'Prijavi se',
-'loginend' => '\'\'\'Registrovanje besplatnih naloga vam oduzima samo nekoliko sekundi, i ima mnoge prednosti\'\'\'
-
-*\'\'\'Za registranicu, izaberite korisničko ime i lozinku i kliknite "napravi nalog".\'\'\'
-*Izbjegavajte korisnička imena koja su neprikladna ili zbunjujuća.
-*Molimo Vas da izaberete čitka imena, a ne brojeve.
-*Izbjegavajte korisnička imena koja su ime političkog vođe, partije, slavne ličnosti i sličnih.
-
-\'\'\'Registrovani korisnici moraju samo popuniti korisničko ime i lozinku.\'\'\'
-
-*Morate imati odobrene \'\'kolačiće\'\' (\'\'\'cookies\'\'\') da bi ste pristupili na projekat {{SITENAME}}.
-
-Adresa e-pošte nije obavezna.  Ukoliko odaberete da je unesete, omogućeno će biti da vam ostali korisnici mogu slati poruke bez znanja vaše prave adrese e-pošte, i dozvoljava vam da ukoliko zaboravite lozinku možete da je povratite. \'\'\'Niko neći moći vidjeti adresu vaše e-pošte.\'\'\'',
 'loginerror' => 'Greška pri prijavljivanju',
 'loginpagetitle' => 'Prijavljivanje',
 'loginproblem' => '<b>Bilo je problema sa vašim prijavljivanjem.</b><br />Probajte ponovo!',
@@ -640,7 +626,6 @@ na kome bi se izvela ova funkcija.',
 'ok' => 'da',
 'oldpassword' => 'Stara lozinka:',
 'orig' => 'orig',
-'orphans' => 'Siročići',
 'othercontribs' => 'Bazirano na radu od strane korisnika $1.',
 'otherlanguages' => 'Ostali jezici',
 'pagemovedsub' => 'Premještanje uspjelo',
@@ -722,7 +707,6 @@ Pogledajte [[{{ns:4}}:Zaštićena stranica]] za više informacija.',
 'qbsettings' => 'Podešavanja brze palete',
 'qbspecialpages' => 'Posebne stranice',
 'randompage' => 'Slučajna stranica',
-'randompage-url' => '{{ns:-1}}:Random',
 'range_block_disabled' => 'Administratorska mogućnost da blokira grupe je isključena.',
 'rchide' => 'u $4 obliku; $1 male izmjene; $2 sekundarni imenski prostori; $3 višestruke izmjene.',
 'rclinks' => 'Prikaži najskorijih $1 izmjena u poslednjih $2 dana; $3',
@@ -746,7 +730,6 @@ Administrator koji ju je zaključao je ponudio ovo objašnjenje: $1',
 tako da nećete moći da sačuvate svoje izmjene za sada.  Možda želite da kopirate
 i nalijepite tekst u tekst editor i sačuvate ga za kasnije.</strong>',
 'recentchanges' => 'Nedavne izmjene',
-'recentchanges-url' => '{{ns:-1}}:Recentchanges',
 'recentchangesall' => 'sve',
 'recentchangescount' => 'Broj naslova u nedavnim izmjenama:',
 'recentchangeslinked' => 'Srodne izmjene',
@@ -823,10 +806,8 @@ Totalni broj stranica u bazi:  \'\'\'$1\'\'\'.</p>
 Bilo je \'\'\'$3\'\'\' pogleda stranica, i \'\'\'$4\'\'\' izmjena otkad je viki bio instaliran.
 To izađe u prosjeku oko \'\'\'$5\'\'\' izmjena po stranici, i \'\'\'$6\'\'\' pogleda po izmjeni.
 </p>',
-'sitesubtitle' => 'Slobodni Riječnik',
 'sitesupport' => 'Donacije',
 'sitesupport-url' => '{{ns:4}}:Donacije',
-'sitetitle' => '{{SITENAME}}',
 'siteuser' => '{{SITENAME}} korisnik $1',
 'siteusers' => '{{SITENAME}} korisnik (korisnici) $1',
 'skin' => 'Koža',
@@ -845,7 +826,6 @@ To izađe u prosjeku oko \'\'\'$5\'\'\' izmjena po stranici, i \'\'\'$6\'\'\' po
 'stubthreshold' => 'Granica za prikazivanje klica',
 'subcategories' => 'Potkategorije',
 'subcategorycount' => '$1 potkategorija su u ovoj kategoriji.',
-'subcategorycount1' => '$1 potkategorija je u ovoj kategoriji.',
 'subject' => 'Tema/naslov',
 'subjectpage' => 'Pogledajte temu',
 'successfulupload' => 'Uspješno slanje',
@@ -918,13 +898,10 @@ ili korisničkom imenu.',
 'uncategorizedpages' => 'Nekategorisane stranice',
 'undelete' => 'Pogledaj izbrisane stranice',
 'undelete_short' => 'Vrati $1 obrisanih izmjena',
-'undelete_short1' => 'Vrati jednu izbrisanu izmjenu',
 'undeletearticle' => 'Vrati izbrisani članak',
 'undeletebtn' => 'Vrati!',
 'undeletedarticle' => 'vraćeno "$1"',
 'undeletedrevisions' => '$1 revizija vraćeno',
-'undeletedtext' => 'Članak [[:$1|$1]] je uspješno vraćen.
-Pogledajte [[{{ns:-1}}:Log/delete]] za zapis o skorašnjem brisanjima i vraćanjima.',
 'undeletehistory' => 'Ako vratite stranicu, sve revizije će biti vraćene njenoj istoriji.
 Ako je nova stranica istog imena napravljena od brisanja, vraćene
 revizije će se pojaviti u ranijoj istoriji, a trenutna revizija sadašnje stranice
@@ -1031,12 +1008,10 @@ Ne zaboravite da prilagodite sebi svoja podešavanja.',
 'projectpage' => 'Pogledaj stranu o ovoj strani',
 'wlheader-enotif' => '* Obavještavanje e-poštom je omogućeno.',
 'wlheader-showupdated' => '* Stranice koje su izmjenjene od kad ste ih poslednji put posjetili su prikazane \'\'\'podebljanim slovima\'\'\'',
-'wlhide' => 'Sakrij',
 'wlhideshowbots' => '$1 izmjena botova.',
 'wlhideshowown' => '$1 moje izmjene.',
 'wlnote' => 'Ispod je najskorijih $1 izmjena, načinjenih u posljednjih <b>$2</b> sati.',
 'wlsaved' => 'Ovo je sačuvana verzija vašeg spiska praćenih članaka.',
-'wlshow' => 'Prikaži',
 'wlshowlast' => 'Prikaži poslednjih $1 sati $2 dana $3',
 'wrong_wfQuery_params' => 'Netačni parametri za wfQuery()<br />
 Funkcija: $1<br />

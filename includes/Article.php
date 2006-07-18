@@ -1447,7 +1447,7 @@ class Article {
 			$wgOut->setPagetitle( wfMsg( 'addedwatch' ) );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-			$link = $this->mTitle->getPrefixedText();
+			$link = wfEscapeWikiText( $this->mTitle->getPrefixedText() );
 			$text = wfMsg( 'addedwatchtext', $link );
 			$wgOut->addWikiText( $text );
 		}
@@ -1495,7 +1495,7 @@ class Article {
 			$wgOut->setPagetitle( wfMsg( 'removedwatch' ) );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-			$link = $this->mTitle->getPrefixedText();
+			$link = wfEscapeWikiText( $this->mTitle->getPrefixedText() );
 			$text = wfMsg( 'removedwatchtext', $link );
 			$wgOut->addWikiText( $text );
 		}
@@ -1641,7 +1641,7 @@ class Article {
 
 		# Check permissions
 		if( $wgUser->isAllowed( 'delete' ) ) {
-			if( $wgUser->isBlocked() ) {
+			if( $wgUser->isBlocked( !$confirm ) ) {
 				$wgOut->blockedPage();
 				return;
 			}
@@ -1842,7 +1842,7 @@ class Article {
 
 		if (wfRunHooks('ArticleDelete', array(&$this, &$wgUser, &$reason))) {
 			if ( $this->doDeleteArticle( $reason ) ) {
-				$deleted = $this->mTitle->getPrefixedText();
+				$deleted = wfEscapeWikiText( $this->mTitle->getPrefixedText() );
 
 				$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
 				$wgOut->setRobotpolicy( 'noindex,nofollow' );

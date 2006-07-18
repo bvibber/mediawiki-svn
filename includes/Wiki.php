@@ -123,7 +123,13 @@ class MediaWiki {
 		
 		$search = $this->getVal('Search');
 		$action = $this->getVal('Action');
-		if( !$this->getVal('DisableInternalSearch') && !is_null( $search ) && $search !== '' ) {
+		
+		if ( wfRunHooks('SpecialCase', array($title, $output, $request)) ) {
+			# handled by hook; do nothing.
+			wfProfileOut( 'MediaWiki::initializeSpecialCases' );
+			return true;
+		}
+		else if( !$this->getVal('DisableInternalSearch') && !is_null( $search ) && $search !== '' ) {
 			require_once( 'includes/SpecialSearch.php' );
 			$title = Title::makeTitle( NS_SPECIAL, 'Search' );
 			wfSpecialSearch();
@@ -302,8 +308,7 @@ class MediaWiki {
 	 * Ends this task peacefully
 	 */
 	function restInPeace ( &$loadBalancer ) {
-		wfProfileClose();
-		logProfilingData();
+		wfLogProfilingData();
 		$loadBalancer->closeAll();
 		wfDebug( "Request ended normally\n" );
 	}

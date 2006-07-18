@@ -164,7 +164,6 @@ $wgAllMessagesId = array(
 'specialpage' => 'Halaman istimewa',
 'personaltools' => 'Peralatan pribadi',
 "postcomment" => "Kirim komentar",
-"addsection" => "+",
 "articlepage" => "Lihat artikel",
 "subjectpage" => "Halaman subyek",
 'talk' => 'Diskusi',
@@ -197,7 +196,6 @@ $wgAllMessagesId = array(
 'versionrequired' => 'Dibutuhkan MediaWiki versi $1',
 'versionrequiredtext' => 'MediaWiki versi $1 dibutuhkan untuk menggunakan halaman ini. Lihat [[{{ns:special}}:Version]]',
 
-'widthheight'		=> '$1×$2',
 "ok" => "OK",
 
 'pagetitle'		=> '$1 - {{SITENAME}}',
@@ -391,9 +389,13 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi {{SITENAME}} Anda.",
 'missingsummary' => "'''Peringatan:''' Anda tidak memasukkan ringkasan penyuntingan. Jika Anda kembali menekan tombol Simpan, suntingan Anda akan disimpan tanpa ringkasan penyuntingan.",
 'missingcommenttext' => 'Harap masukkan komentar di bawah ini.',
 "blockedtitle" => "Pengguna diblokir",
-"blockedtext" => "Nama pengguna atau alamat IP Anda telah diblokir oleh $1. Alasannya karena :<br />'''$2'''<br />Anda dapat menghubungi $1 atau [[{{ns:project}}:Administrators|pengurus lainnya]] untuk membicarakan hal ini.
+'blockedtext' => "<big>'''Nama pengguna atau alamat IP Anda telah diblokir.'''</big>
 
-Perhatikan bahwa Anda tidak dapat menggunakan fasilitas \"surat-e pengguna ini\" kecuali Anda mempunyai sebuah alamat surat-e yang sah dan alamat surat-e tersebut tercatat di dalam [[{{ns:special}}:Preferences|preferensi Anda]].
+Blokir dilakukan oleh $1. Alasan yang diberikan adalah ''$2''. 
+
+Anda dapat menghubungi $1 atau [[{{ns:project}}:Pengurus|pengurus lainnya]] untuk membicarakan hal ini.
+
+Anda tidak dapat menggunakan fitur 'Kirim surat-e pengguna ini' kecuali Anda telah memasukkan alamat surat-e yang sah di [[{{ns:project}}:Preferences|preferensi]] Anda.
 
 Alamat IP Anda adalah $3. Sertakan alamat IP ini pada setiap pertanyaan yang Anda buat",
 'blockedoriginalsource' => "Isi sumber '''$1''' ditunjukkan berikut ini:",
@@ -454,6 +456,9 @@ Alamat IP Anda adalah $3. Sertakan alamat IP ini pada setiap pertanyaan yang And
 'edittools' => '<!-- Teks di sini akan dimunculkan dibawah isian suntingan dan pemuatan.-->',
 'nocreatetitle' => 'Pembuatan halaman baru dibatasi',
 'nocreatetext' => 'Situs ini membatasi kemampuan membuat halaman baru. Anda dapat kembali dan menyunting halaman yang telah ada, atau silakan [[{{ns:special}}:Userlogin|masuk log atau mendaftar]]',
+'cantcreateaccounttitle' => 'Akun tak dapat dibuat',
+'cantcreateaccounttext' => 'Pembuatan akun dari alamat IP ini (<b>$1</b>) diblokir. 
+Hal ini mungkin disebabkan adanya vandalisme berulang yang berasal dari sekolah atau penyedia jasa Internet Anda.',
 
 # History pages
 #
@@ -648,7 +653,6 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 "newpageletter" => "B",
 'boteditletter' => 'b',
 'sectionlink' => '→',
-'number_of_watching_users_RCview' 	=> '[$1]',
 'number_of_watching_users_pageview' 	=> '[$1 pemantau]',
 'rc_categories'	=> 'Batasi sampai kategori (dipisah dengan "|")',
 'rc_categories_any'	=> 'Apapun',
@@ -772,6 +776,7 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 
 [http://meta.wikimedia.org/wiki/Help:Job_queue Antrian job] adalah sebanyak '''$7'''.",
 "userstatstext" => "Terdapat '''$1''' pengguna terdaftar. '''$2''' (atau '''$4%''') diantaranya adalah pengurus (lihat $3).",
+'statistics-mostpopular' => 'Halaman yang paling banyak ditampilkan',
 
 "disambiguations" => "Halaman disambiguasi",
 'disambiguationspage'	=> '{{ns:template}}:Disambig',
@@ -821,6 +826,7 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 "recentchangeslinked" => "Perubahan terkait",
 "rclsub" => "(untuk halaman yang berpaut dari \"$1\")",
 "newpages" => "Halaman baru",
+'newpages-username' => 'Nama pengguna:',
 "ancientpages" => "Artikel tertua",
 "intl" => "Pranala antarbahasa",
 'move' => 'Pindahkan',
@@ -848,7 +854,6 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 'nextpage'          => 'Halaman berikutnya ($1)',
 'allpagesfrom'		=> 'Tampilkan halaman dimulai dengan:',
 'allarticles'       => 'Semua artikel',
-'allnonarticles'	=> 'Semua yang bukan artikel',
 'allinnamespace'	=> 'Semua halaman (namespace $1)',
 'allnotinnamespace'	=> 'Semua halaman (bukan namespace $1)',
 'allpagesprev'      => 'Sebelumnya',
@@ -1072,6 +1077,8 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 'ipadressorusername' => 'Alamat IP atau nama pengguna',
 "ipbexpiry" => "Kadaluwarsa",
 "ipbreason" => "Alasan",
+'ipbanononly'   => 'Hanya blokir pengguna anonim',
+'ipbcreateaccount' => 'Cegah pembuatan akun',
 "ipbsubmit" => "Kirimkan",
 'ipbother'		=> 'Waktu lain',
 'ipboptions'		=> '2 jam:2 hours,1 hari:1 day,3 hari:3 days,1 minggu:1 week,2 minggu:2 weeks,1 bulan:1 month,3 bulan:3 months,6 bulan:6 months,1 tahun:1 year,selamanya:infinite',
@@ -1087,6 +1094,8 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 "blocklistline" => "$1, $2 memblokir $3 ($4)",
 'infiniteblock' => 'tak terbatas',
 'expiringblock' => 'kadaluwarsa $1',
+'anononlyblock' => 'hanya anon',
+'createaccountblock' => 'pembuatan akun diblokir',
 'ipblocklistempty'	=> 'Daftar pemblokiran kosong.',
 "blocklink" => "blokir",
 "unblocklink" => "hilangkan blokir",
@@ -1098,8 +1107,10 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 "unblocklogentry" => 'menghilangkan blokir "$1"',
 "range_block_disabled" => "Kemampuan pengurus dalam membuat blokir blok IP dimatikan.",
 "ipb_expiry_invalid" => "Waktu kadaluwarsa tidak sah.",
+'ipb_already_blocked' => '"$1" telah diblokir',
 "ip_range_invalid" => "Blok IP tidak sah.",
 "proxyblocker" => "Pemblokir proxy",
+'ipb_cant_unblock' => 'Kesalahan: Blokir dengan ID $1 tidak ditemukan. Blokir tersebut kemungkinan telah dibuka.',
 "proxyblockreason" => "Alamat IP Anda telah diblokir karena alamat IP Anda adalah proxy terbuka. Silakan hubungi penyedia jasa internet Anda atau dukungan teknis dan beritahukan mereka masalah keamanan serius ini.",
 "proxyblocksuccess" => "Selesai.",
 'sorbs' => 'SORBS DNSBL',
@@ -1141,8 +1152,11 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 "locknoconfirm" => "Anda tidak memberikan tanda cek pada kotak konfirmasi.",
 "lockdbsuccesssub" => "Penguncian basis data berhasil",
 "unlockdbsuccesssub" => "Pembukaan kunci basis data berhasil",
-"lockdbsuccesstext" => "Basis data telah dikunci. <br />Pastikan Anda membuka kuncinya setelah pemeliharaan selesai.",
+'lockdbsuccesstext' => 'Basis data telah dikunci.
+<br />Pastikan Anda [[Special:Unlockdb|membuka kuncinya]] setelah pemeliharaan selesai.',
 "unlockdbsuccesstext" => "Kunci basis data telah dibuka.",
+'lockfilenotwritable' => 'Berkas kunci basis data tidak dapat ditulis. Untuk mengunci atau membuka basis data, berkas ini harus dapat ditulis oleh server web.',
+'databasenotlocked' => 'Basis data tidak terkunci.',
 
 # Move page
 #
@@ -1217,7 +1231,7 @@ Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal in
 "thumbnail-more" => "Perbesar",
 "missingimage" => "<strong>Gambar hilang</strong><br /><em>$1</em>",
 'filemissing' => 'Berkas hilang',
-'thumbnail_error'   => 'Kesalahan sewaktu pembuatan gambar kecil (<em>thumbnail</em>): $1',
+'thumbnail_error'   => 'Kesalahan sewaktu pembuatan gambar kecil (thumbnail): $1',
 
 # Special:Import
 "import" => "Impor halaman",
@@ -1319,7 +1333,6 @@ Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal in
 
 # Patrolling
 'markaspatrolleddiff'   => "Tandai telah dipatroli",
-'markaspatrolledlink'   => "[$1]",
 'markaspatrolledtext'   => "Tandai artikel ini telah dipatroli",
 'markedaspatrolled'     => "Ditandai telah dipatroli",
 'markedaspatrolledtext' => "Revisi yang dipilih telah ditandai terpatroli",
@@ -1555,12 +1568,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Lihat halaman kategori\');',
 'exif-gpsdatestamp' =>'Tanggal GPS',
 'exif-gpsdifferential' =>'Koreksi diferensial GPS',
 
-# Make & model, can be wikified in order to link to the camera and model name
-
-'exif-make-value' => '$1',
-'exif-model-value' =>'$1',
-'exif-software-value' => '$1',
-
 # Exif attributes
 
 'exif-compression-1' => 'Tak terkompresi',
@@ -1760,8 +1767,6 @@ Jika Anda merasa *tidak pernah* mendaftar, jangan ikuti pranala di atas. Kode ko
 Pelacakan balik untuk artikel ini:<br />
 $1
 </div>',
-'trackback' => '; $4$5 : [$2 $1]',
-'trackbackexcerpt' => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>',
 'trackbackremove' => ' ([$1 Hapus])',
 'trackbacklink' => 'Lacak balik',
 'trackbackdeleteok' => 'Pelacakan balik berhasil dihapus.',

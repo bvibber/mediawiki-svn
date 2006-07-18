@@ -532,12 +532,6 @@ It tal fan behearders dêrfan is: <b>$2</b>.",
 
 # Maintenance Page
 #
-"maintenance"		=> "Underhâld",
-"maintnancepagetext"	=> "Op dizze side stiet ark foar it deistich ûnderhâld.
-In part fan de funksjes freegje in soad fan de databank, dus freegje net nei
-eltse oanpassing daalks in fernijde side op.",
-
-"maintenancebacklink"	=> "Werom nei Underhâldside",
 "disambiguations"		=> "Trochverwizings",
 "disambiguationspage"	=> "{{ns:project}}:trochferwizing",
 "disambiguationstext"	=> "Dizze siden binne keppele fia in
@@ -567,7 +561,6 @@ Dêr soe ek stean moatte hoe't it (goed skreaun) wurdt.",
 
 # Miscellaneous special pages
 #
-"orphans"		=> "Lossteande siden",
 "lonelypages"	=> "Lossteande siden",
 "unusedimages"	=> "Lossteande ôbylden",
 "popularpages"	=> "Grage siden",
@@ -584,7 +577,6 @@ Dêr soe ek stean moatte hoe't it (goed skreaun) wurdt.",
 "protectpage"	=> "Beskerm side",
 "recentchangeslinked" => "Folgje keppelings",
 "rclsub"		=> "(nei siden dêr't \"$1\" keppelings nei hat)",
-"debug"		=> "Breksykje",
 "newpages"		=> "Nije siden",
 "ancientpages"	=> "Alde siden",
 "movethispage"	=> "Move this side",
@@ -713,8 +705,6 @@ troch de lêste ferzje út dy weromsette skiednis ferfangen.",
 "undeleterevision" => "Wiske side, sa't dy $1 wie.",
 "undeletebtn" 	=> "Weromset!",
 "undeletedarticle" => "\"$1\" weromset",
-"undeletedtext"   => "It weromsette fan side [[:$1|$1]] is slagge.
-(List fan resint [[{{ns:project}}:wisk-loch|wiske of weromsette siden]].",
 
 # Contributions
 #
@@ -753,7 +743,6 @@ Meld de krekte reden! Begelyk, neam de siden dy't oantaaste waarden.",
 "unblockip"		=> "Lit brûker der wer yn",
 "unblockiptext"	=> "Brûk dizze fjilden om in brûker wer skriuwtagong te jaan.",
 "ipusubmit"		=> "Lit dizze brûker der wer yn",
-"ipusuccess"	=> "Brûker \"$1\" ynlitten",
 "ipblocklist"	=> "List fan útsletten Ynternet-adressen en brûkersnammen",
 "blocklistline"	=> '"$3", troch "$2" op $1 ($4)',
 "blocklink"		=> "slut út",

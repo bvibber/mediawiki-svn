@@ -41,6 +41,7 @@ require_once( "includes/Defines.php" );
 require_once( "includes/DefaultSettings.php" );
 require_once( "includes/MagicWord.php" );
 require_once( "includes/Namespace.php" );
+require_once( "includes/ProfilerStub.php" );
 
 ## Databases we support:
 
@@ -405,18 +406,18 @@ if ( $conf->eaccel ) {
     $conf->turck = 'eaccelerator';
     print "<li><a href=\"http://eaccelerator.sourceforge.net/\">eAccelerator</a> installed</li>\n";
 }
-if (!$conf->turck && !$conf->eaccel && !$conf->apc) {
-	print "<li>Neither <a href=\"http://turck-mmcache.sourceforge.net/\">Turck MMCache</a> nor ".
-		"<a href=\"http://eaccelerator.sourceforge.net/\">eAccelerator</a> nor ".
-		"<a href=\"http://www.php.net/apc\">APC</a> are installed, " .
-		"can't use object caching functions</li>\n";
+
+if( !$conf->turck && !$conf->eaccel && !$conf->apc ) {
+	echo( '<li>Couldn\'t find <a href="http://turck-mmcache.sourceforge.net">Turck MMCache</a>,
+		  <a href="http://eaccelerator.sourceforge.net">eAccelerator</a> or
+		   <a href="http://www.php.net/apc">APC</a>. Object caching functions cannot be used.</li>' );
 }
 
 $conf->diff3 = false;
-$diff3locations = array("/usr/bin", "/usr/local/bin", "/opt/csw/bin", "/usr/gnu/bin", "/usr/sfw/bin") + explode($sep, getenv("PATH"));
-$diff3names = array("gdiff3", "diff3", "diff3.exe");
+$diff3locations = array( "/usr/bin", "/usr/local/bin", "/opt/csw/bin", "/usr/gnu/bin", "/usr/sfw/bin" ) + explode( $sep, getenv( "PATH" ) );
+$diff3names = array( "gdiff3", "diff3", "diff3.exe" );
 
-$diff3versioninfo = array('$1 --version 2>&1', 'diff3 (GNU diffutils)');
+$diff3versioninfo = array( '$1 --version 2>&1', 'diff3 (GNU diffutils)' );
 foreach ($diff3locations as $loc) {
 	$exe = locate_executable($loc, $diff3names, $diff3versioninfo);
 	if ($exe !== false) {
@@ -577,6 +578,11 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			if ($conf->DBtype === $db)
 				$conf->DBtypename = $ourdb[$db]['fullname'];
 		}
+		if ( ! strlen($conf->DBtype)) {
+			$errs["DBpicktype"] = "Please choose a database type";
+			continue;
+		}
+
 		if (! $conf->DBtypename) {
 			$errs["DBtype"] = "Unknown database type '$conf->DBtype'";
 			continue;
@@ -1072,6 +1078,7 @@ if( count( $errs ) ) {
 <div class="config-section">
 <div class="config-input">
 		<label class='column'>Database type:</label>
+<?php if (isset($errs['DBpicktype'])) print "<span class='error'>$errs[DBpicktype]</span>\n"; ?>
 		<ul class='plain'><?php database_picker($conf) ?></ul>
 	</div>
 

@@ -121,7 +121,6 @@ un dat [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 'specialpage'           => 'Spezialsiet',
 'personaltools'         => 'Persönliche Warktüüch',
 'postcomment'           => 'Kommentar hentofögen',
-'addsection'            => '+',
 'articlepage'             => 'Artikel',
 'subjectpage'             => 'Bedrap ankieken',
 'toolbox'               => 'Warktüüch',
@@ -288,7 +287,6 @@ Prööv de Schrievwies oder mell di as niegen Bruker an.',
 Dat Password för Bruker „$2“ is nu „$3“. Bitte mell di nu an un änner dien Password.',
 'noemail'                       => 'Bruker „$1“ hett kene E-Mail-Adress angeven.',
 'passwordsent'           => 'En nieg Password is an de E-Mail-Adress vun Bruker „$1“ send worrn. Mell di an, wenn du dat Password kriegt hest.',
-'loginend'                          => '',
 'mailerror'             => 'Fehler bi dat Sennen vun de E-Mail: $1',
 'acct_creation_throttle_hit' => 'Du hest al $1 Brukerkontos anleggt. Du kannst nich noch mehr anleggen.',
 
@@ -595,9 +593,6 @@ Dorvun hebbt <b>$2</b> Administrater-Rechten (kiek $3).',
 
 # Maintenance Page
 #
-'maintenance'                           => 'Pleegsieten',
-'maintnancepagetext'            => 'Disse Siet bargt en Reeg praktische Funktschoonen för de dägliche Pleeg vun {{SITENAME}}. En poor vun disse Funktschonen könen de Datenbank bannig in Anspröök nehmen, also nich no elk Ännern nieg laden ;-)',
-'maintenancebacklink'           => 'Trüch to de Pleegsieten',
 'disambiguations'               => 'Begreepklorensieten',
 'disambiguationspage'        => '{{ns:4}}:Begreepkloren',
 'disambiguationstext'           => 'Disse Sieten wiest no en <i>Begreepklorensiet</i>. Se schallen staats dat no de Siet wiesen, de egentlich meent is.<br />En Siet warrt as Begreepklorensiet ansehn, wenn $1 op se verwiest.<br />Verwiesen ut Naamrüüm sünd hier <i>nich</i> oplist.',
@@ -621,7 +616,6 @@ In Klammern angevene Wöör geven de korrekte Schrievwies weer.',
 
 # Verscheden Spezialsieten
 #
-'orphans'                              => 'Weetsieten',
 'lonelypages'                   => 'Weetsieten',
 'uncategorizedpages'        => 'Unkategoriseerte Sieten',
 'uncategorizedcategories'       => 'Unkategoriseerte Kategorien',
@@ -632,7 +626,6 @@ In Klammern angevene Wöör geven de korrekte Schrievwies weer.',
 'nlinks'                                => '$1 Verwies',
 'allpages'                            => 'Alle Sieten',
 'randompage'                    => 'Tofällige Siet',
-'randompage-url'          => 'Special:Randompage',
 'shortpages'                 => 'Kotte Sieten',
 'longpages'                     => 'Lange Sieten',
 'listusers'                          => 'Brukerlist',
@@ -641,7 +634,6 @@ In Klammern angevene Wöör geven de korrekte Schrievwies weer.',
 'protectpage'               => 'Siet schulen',
 'recentchangeslinked'     => 'Verlinkte Sieten',
 'rclsub'                                => '(op Artikel vun „$1“)',
-'debug'                                 => 'Fehlerkorregeern',
 'newpages'                              => 'Niege Sieten',
 'ancientpages'            => 'Öllste Sieten',
 'move'                    => 'Schuven',
@@ -771,7 +763,6 @@ Naam schreven worrn is, warrt de weerholten Versionen as ole Versionen vun disse
 'undeleterevision'      => 'Löschte Version vun de $1',
 'undeletebtn'           => 'Weerholen!',
 'undeletedarticle'      => '„$1“ weerholt',
-'undeletedtext'         => 'De Siet [[:$1|$1]] is mit Spood weerholt worrn.',
 
 # Bidreeg
 #
@@ -811,7 +802,6 @@ Ok den Grund för dat Blocken indregen.',
 'unblockip'                     => 'IP-Adress freegeven',
 'unblockiptext'              => 'Bruuk dat Formular, üm en blockte IP-Adress freetogeven.',
 'ipusubmit'                     => 'Disse Adress freegeven',
-'ipusuccess'               => 'IP-Adress „$1“ is freegeven',
 'ipblocklist'           => 'List vun blockte IP-Adressen',
 'blocklistline'              => '$1, $2 hett $3 blockt ($4)',
 'blocklink'                     => 'blocken',
@@ -952,7 +942,6 @@ Kontakteer dien Provider oder diene Systemtechnik un informeer se över dat mö�
 'importsuccess'                => 'Import hett Spood!',
 'importhistoryconflict' => 'Dor sünd al öllere Versionen, de mit dissen kollideert. (Mööglicherwies is de Siet al vörher importeert worrn)',
 'isbn'                                  => 'ISBN',
-'rfcurl'                              => 'http://www.faqs.org/rfcs/rfc$1.html',
 'siteuser'              => '{{SITENAME}}-Bruker $1',
 'siteusers'             => '{{SITENAME}}-Bruker $1',
 'watch'                 => 'Oppassen',
@@ -962,9 +951,7 @@ Kontakteer dien Provider oder diene Systemtechnik un informeer se över dat mö�
 'nocookiesnew'          => 'De Brukertogang is anleggt, aver du büst nich inloggt. {{SITENAME}} bruukt för disse Funktschoon Cookies, aktiveer de Cookies un logg di denn mit dien nieg Brukernaam un den Password in.',
 'nocookieslogin'        => '{{SITENAME}} bruukt Cookies för dat Inloggen vun de Bruker. Du hest Cookies deaktiveert, aktiveer de Cookies un versöök dat noch eenmal.',
 'subcategorycount'      => 'Disse Kategorie hett $1 Ünnerkategorien.',
-'subcategorycount1'     => 'To disse Kategorie höört $1 Ünnerkategorie.',
 'categoryarticlecount'  => 'To disse Kategorie höört $1 Sieten.',
-'categoryarticlecount1' => 'To disse Kategorie höört $1 Siet.',
 
 # Math
 'mw_math_png'           => 'Jümmer as PNG dorstellen',
@@ -1096,7 +1083,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Kategoriesiet ankieken\');',
 
 # Patrolleern
 'markaspatrolleddiff'       => 'As patrolleert markeern',
-'markaspatrolledlink'       => '[$1]',
 'markaspatrolledtext'       => 'Disse Siet as patrolleert markeern',
 'markedaspatrolled'         => 'As patrolleert markeert',
 'markedaspatrolledtext'     => 'Disse Revision is as patrolleert markeert.',

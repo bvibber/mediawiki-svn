@@ -133,7 +133,6 @@
 'editthispage'  => 'Редактиране',
 'delete' => 'Изтриване',
 'deletethispage' => 'Изтриване',
-'undelete_short1' => 'Възстановяване на една редакция',
 'undelete_short' => 'Възстановяване на $1 редакции',
 'protect' => 'Защита',
 'protectthispage' => 'Защита',
@@ -144,7 +143,6 @@
 'specialpage' => 'Специална страница',
 'personaltools' => 'Лични инструменти',
 'postcomment'   => 'Оставяне на съобщение',
-'addsection'   => '+',
 'articlepage'  => 'Преглед на страница',
 'subjectpage'  => 'Преглед на тема', # For compatibility
 'talk' => 'Беседа',
@@ -326,9 +324,6 @@ $1',
 # TODO
 'eauthentsent'  =>  'A confirmation email has been sent to the nominated email address.
 Before any other mail is sent to the account, you will have to follow the instructions in the email, to confirm that the account is actually yours.',
-'loginend'   => '<p>За да се регистрирате, просто въведете потребителско име и парола (два пъти) и щракнете върху бутона „<b>Регистриране</b>“.</p>
-<p>
-Следващия път е достатъчно да попълните само първите две полета и да щракнете върху „<b>Влизане</b>“.</p>',
 'mailerror' => 'Грешка при изпращане на писмо: $1',
 'acct_creation_throttle_hit' => 'Съжаляваме, създали сте вече $1 сметки и нямате право на повече.',
 # TODO
@@ -395,7 +390,6 @@ Before any other mail is sent to the account, you will have to follow the instru
 Ако сте дошли тук погрешка, просто натиснете '''бутона за връщане''' на Вашия браузър.
 
 Вашата добавка ще бъде видима '''веднага''' след съхранението, затова ако просто искате да изпробвате как работят нещата, използвайте нашия '''[[Project:Пясъчник|пясъчник]]'''.</div>",
-'talkpagetext' => '<!-- МедияУики:talkpagetext -->',
 'anontalkpagetext' => "----
 ''Това е дискусионната страница на анонимен потребител, който  все още няма сметка или не я използва. Затова се налага да използваме IP-адрес, за да го/я идентифицираме. Такъв адрес може да се споделя от няколко потребители.''
 
@@ -469,7 +463,6 @@ Before any other mail is sent to the account, you will have to follow the instru
 'orig'            => 'ориг',
 'histlegend'      => '<i>Разлики:</i> Изберете версиите, които желаете да сравните, чрез превключвателите срещу тях и натиснете &lt;Enter&gt; или бутона за сравнение.<br />
 <i>Легенда:</i> (<b>тек</b>) = разлика с текущата версия, (<b>посл</b>) = разлика с предишната версия, <b>м</b>&nbsp;=&nbsp;малка промяна',
-'history_copyright' => '-',
 'deletedrev' => '[изтрита]',
 'histfirst' => 'Първи',
 'histlast' => 'Последни',
@@ -635,7 +628,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 #
 'changes' => 'промени',
 'recentchanges' => 'Последни промени',
-'recentchanges-url' => 'Special:Recentchanges',
 'recentchangestext' => 'Проследяване на последните промени в {{SITENAME}}.
 
 Легенда: <b>тек</b> = разлика на текущата версия,
@@ -658,7 +650,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'minoreditletter' => 'м',
 'newpageletter' => 'Н',
 'sectionlink' => '→',
-'number_of_watching_users_RCview'       => '[$1]',
 'number_of_watching_users_pageview'     => '[$1 наблюдаващ(и) потребител(и)]',
 
 # Upload
@@ -739,7 +730,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'sharedupload' => 'Този файл е споделен и може да бъде използван от други проекти.',
 'shareduploadwiki' => 'Моля, разгледайте $1 за по-нататъшна информация.',
 'shareduploadwiki-linktext' => 'описателната страница на файла',
-'shareddescriptionfollows' => '-',
 'noimage'       => 'Не съществува файл с това име, можете $1.',
 'noimage-linktext' => 'да го качите',
 'uploadnewversion-linktext' => 'Качване на нова версия на файла',
@@ -757,9 +747,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 
 # Maintenance Page
 #
-'maintenance'    => 'Страница за поддръжка',
-'maintnancepagetext'  => 'Тази страница съдържа няколко удобни инструмента за всекидневна поддръжка. Някои от тези функции доста натоварват базата от данни, затова, моля, не обновявайте страницата след всяка Ваша операция, ;-)',
-'maintenancebacklink'  => 'Обратно към страницата за поддръжка',
 'disambiguations'  => 'Пояснителни страници',
 'disambiguationspage'  => 'Шаблон:Пояснение',
 'disambiguationstext'  => 'Следните страници сочат към <i>пояснителна страница</i>. Вместо това те би трябвало да сочат към съответната тема.<br /> Страница се определя като „<i>пояснителна</i>“, ако към нея се сочи от $1.<br />Тук <i>не</i> са посочени препратки от други именни пространства.',
@@ -780,7 +767,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 
 # Miscellaneous special pages
 #
-'orphans'    => 'Страници сираци',
 'lonelypages'  => 'Страници сираци',
 'uncategorizedpages' => 'Некатегоризирани страници',
 'uncategorizedcategories' => 'Некатегоризирани категории',
@@ -794,7 +780,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'allpages'    => 'Всички страници',
 'prefixindex'   => 'Азбучен списък на представки',
 'randompage'  => 'Случайна страница',
-'randompage-url'=> 'Special:Random',
 'shortpages'  => 'Кратки страници',
 'longpages'    => 'Дълги страници',
 'deadendpages'  => 'Задънени страници',
@@ -805,7 +790,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'protectpage'  => 'Защитена страница',
 'recentchangeslinked' => 'Свързани промени',
 'rclsub'    => '(на страници, сочени от „$1“)',
-'debug'      => 'Отстраняване на грешки',
 'newpages'    => 'Нови страници',
 'ancientpages'    => 'Стари страници',
 'intl'          => 'Междуезикови препратки',
@@ -821,8 +805,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 
 'booksourcetext' => 'Показани са препратки към други сайтове, които продават нови и използвани книги и могат да имат допълнителна информация за книгите, които търсите.',
 'isbn'  => 'ISBN',
-'rfcurl' =>  'http://www.ietf.org/rfc/rfc$1.txt',
-'pubmedurl' =>  'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1',
 'alphaindexline' => 'от $1 до $2',
 'version'       => 'Версия',
 'log'           => 'Дневници',
@@ -833,7 +815,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'nextpage'          => 'Следваща страница ($1)',
 'allpagesfrom'      => 'Показване на страниците, като се започва от:',
 'allarticles'       => 'Всички страници',
-'allnonarticles'    => 'Всички страници (без статии)',
 'allinnamespace'    => 'Всички страници (именно пространство $1)',
 'allnotinnamespace' => 'Всички страници (без именно пространство $1)',
 'allpagesprev'      => 'Предишна',
@@ -899,8 +880,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'wlsaved' => 'Това е съхранена версия на списъка Ви за наблюдение.',
 'wlhideshowown'         => '$1 на моите редакции.',
 'wlhideshowbots'        => '$1 на редакции на ботове.',
-'wlshow'                => 'Показване',
-'wlhide'                => 'Скриване',
 
 'enotif_mailer'  => '{{SITENAME}} Notification Mailer',
 'enotif_reset'   => 'Отбелязване на всички страници като посетени',
@@ -976,8 +955,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'undeletebtn' => 'Възстановяване!',
 'undeletedarticle' => '„[[$1]]“ беше възстановена',
 'undeletedrevisions' => '$1 версии бяха възстановени',
-'undeletedtext'   => 'Страницата [[:$1|$1]] беше успешно възстановена.
-Вижте [[Special:Log/delete|дневника на изтриванията]] за запис на последните изтривания и възстановявания.',
 
 # Namespace form on various pages
 'namespace' => 'Именно пространство:',
@@ -1030,7 +1007,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'unblockip'    => 'Отблокиране на потребител',
 'unblockiptext'  => 'Използвайте долния формуляр, за да възстановите правото на писане на по-рано блокиран IP-адрес или потребител.',
 'ipusubmit'    => 'Отблокиране на адреса',
-'ipusuccess'  => '„[[$1]]“ беше отблокиран',
 'ipblocklist'  => 'Списък на блокирани IP-адреси и потребители',
 'blocklistline'  => '$1, $2 е блокирал $3 ($4)',
 'infiniteblock' => 'неограничено',
@@ -1222,9 +1198,7 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'spamprotectiontext' => 'Страницата, която искахте да съхраните, беше блокирана от филтъра против спам. Това обикновено е причинено от препратка към външен сайт.',
 'spamprotectionmatch' => 'Следният текст предизвика включването на филтъра: $1',
 'subcategorycount' => 'Тази категория има $1 подкатегории.',
-'subcategorycount1' => 'Тази категория има една подкатегория',
 'categoryarticlecount' => 'Тази категория съдържа $1 страници.',
-'categoryarticlecount1' => 'Тази категория съдържа една страница.',
 'listingcontinuesabbrev' => ' продълж.',
 
 # Info page
@@ -1245,7 +1219,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 
 # Patrolling
 'markaspatrolleddiff'   => 'Отбелязване като проверена версия',//'Mark as patrolled',
-'markaspatrolledlink'   => '[$1]',
 'markaspatrolledtext'   => 'Отбелязване на версията като проверена',//'Mark this article as patrolled',
 'markedaspatrolled'     => 'Проверена версия', //'Marked as patrolled',
 'markedaspatrolledtext' => 'Избраната версия беше отбелязана като проверена.',//'The selected revision has been marked as patrolled.',
@@ -1379,8 +1352,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 Trackbacks for this article:<br />
 $1
 </div>',
-'trackback' => '; $4$5 : [$2 $1]',
-'trackbackexcerpt' => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>',
 'trackbackremove' => ' ([$1 Изтриване])',
 #'trackbacklink' => 'Trackback',
 #'trackbackdeleteok' => 'The trackback was successfully deleted.',

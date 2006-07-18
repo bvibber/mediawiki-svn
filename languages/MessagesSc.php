@@ -108,8 +108,6 @@ Vedi $1.",
 "nbytes"		=> "$1 bytes",
 "go"			=> "Vai",
 "ok"			=> "OK",
-"sitetitle"		=> "{{SITENAME}}",
-"sitesubtitle"	=> '',
 "retrievedfrom" => "Ricavato da  \"$1\"",
 
 # Main script and global functions
@@ -425,9 +423,6 @@ Questa media rivela che ci sono state una media di  <b>$5</b> modifiche per cias
 
 # Maintenance Page
 #
-"maintenance"		=> "Pagina manutenzioni",
-"maintnancepagetext"	=> "In questa pagina sono elencati alcuni utili strumenti per una comoda manutenzione quotidiana della nostra enciclopedia. Alcune delle funzioni tendono a stressare il database, assorbendo molte risorse, perciò non fatene un uso continuo: non aggiornate le pagine (reload, refresh) subito dopo ogni singolo intervento. ;-)",
-"maintenancebacklink"	=> "Torna alla pagina manutenzione",
 "disambiguations"	=> "Disambiguation pages",
 "disambiguationspage"	=> "{{ns:project}}:Links_to_disambiguating_pages",
 "disambiguationstext"	=> "The following articles link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br />A page is treated as dismbiguation if it is linked from $1.<br />Links from other namespaces are <i>not</i> listed here.",
@@ -447,7 +442,6 @@ Questa media rivela che ci sono state una media di  <b>$5</b> modifiche per cias
 
 # Miscellaneous special pages
 #
-"orphans"		=> "Pagine orfane",
 "lonelypages"	=> "Pagine solitarie",
 "unusedimages"	=> "Immagini non utilizzate",
 "popularpages"	=> "Pagine più viste",
@@ -464,7 +458,6 @@ Questa media rivela che ci sono state una media di  <b>$5</b> modifiche per cias
 "protectpage"	=> "Proteggi questa pagina",
 "recentchangeslinked" => "Modifiche correlate",
 "rclsub"		=> "(alle pagine linkate da \"$1\")",
-"debug"			=> "Debug",
 "newpages"		=> "Pagine nuove",
 "movethispage"	=> "Sposta questa pagina",
 "unusedimagestext" => "<p>Nota che altri siti web, come la {{SITENAME}} internazionale, potrebbero aver messo un link ad una immagine per mezzo di una URL diretta, perciò le immagini potrebbero essere listate qui anche essendo magari in uso.",
@@ -548,8 +541,6 @@ Se una nuova pagina è stata creata con questo stesso nome dopo la cancellazione
 "undeleterevision" => "Cancellata revisione $1",
 "undeletebtn" => "RIPRISTINA!",
 "undeletedarticle" => "Recuperata \"$1\"",
-"undeletedtext"   => "La pagina [[:$1|$1]] è stata recuperata.
-Vedi [[{{ns:project}}:Deletion_log]] per un elenco delle pagine cancellate e recuperate di recente.",
 
 # Contributions
 #
@@ -586,7 +577,6 @@ Scrivi un motivo specifico per il quale questo indirizzo IP dovrebbe a tuo avvis
 "unblockip"		=> " Sblocca indirizzo IP",
 "unblockiptext"	=> "Usa il modulo sottostante per restituire il diritto di scrittura ad un indirizzo IP precedentemente bloccato.",
 "ipusubmit"		=> "Sblocca questo indirizzo IP",
-"ipusuccess"	=> "Indirizzo IP \"$1\" sbloccato",
 "ipblocklist"	=> "Lista degli indirizzi IP bloccati",
 "blocklistline"	=> "$1, $2 ha bloccato $3 ($4)",
 "blocklink"		=> "blocca",

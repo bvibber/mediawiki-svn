@@ -32,7 +32,7 @@ require_once( 'includes/SiteConfiguration.php' );
 $wgConf = new SiteConfiguration;
 
 /** MediaWiki version number */
-$wgVersion			= '1.7alpha';
+$wgVersion			= '1.8alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -115,8 +115,8 @@ $wgStylePath   = "{$wgScriptPath}/skins";
 $wgStyleDirectory = "{$IP}/skins";
 $wgStyleSheetPath = &$wgStylePath;
 $wgArticlePath      = "{$wgScript}?title=$1";
-$wgUploadPath       = "{$wgScriptPath}/upload";
-$wgUploadDirectory	= "{$IP}/upload";
+$wgUploadPath       = "{$wgScriptPath}/images";
+$wgUploadDirectory	= "{$IP}/images";
 $wgHashedUploadDirectory	= true;
 $wgLogo				= "{$wgUploadPath}/wiki.png";
 $wgFavicon			= '/favicon.ico';
@@ -1153,21 +1153,17 @@ $wgTexvc = './math/texvc';
 #
 # You have to create a 'profiling' table in your database before using
 # profiling see maintenance/archives/patch-profiling.sql .
+#
+# To enable profiling, edit StartProfiler.php
 
-/** Enable for more detailed by-function times in debug log */
-$wgProfiling = false;
 /** Only record profiling info for pages that took longer than this */
 $wgProfileLimit = 0.0;
 /** Don't put non-profiling info into log file */
 $wgProfileOnly = false;
 /** Log sums from profiling into "profiling" table in db. */
 $wgProfileToDatabase = false;
-/** Only profile every n requests when profiling is turned on */
-$wgProfileSampleRate = 1;
 /** If true, print a raw call tree instead of per-function report */
 $wgProfileCallTree = false;
-/** If not empty, specifies profiler type to load */
-$wgProfilerType = '';
 /** Should application server host be put into profiling table */
 $wgProfilePerHost = false;
 
@@ -1280,7 +1276,7 @@ $wgCheckFileExtensions = true;
  */
 $wgStrictFileExtensions = true;
 
-/** Warn if uploaded files are larger than this */
+/** Warn if uploaded files are larger than this (in bytes)*/
 $wgUploadSizeWarning = 150 * 1024;
 
 /** For compatibility with old installations set to false */
@@ -1562,9 +1558,6 @@ $wgDefaultUserOptions = array();
 
 /** Whether or not to allow and use real name fields. Defaults to true. */
 $wgAllowRealName = true;
-
-/** Use XML parser? */
-$wgUseXMLparser = false ;
 
 /*****************************************************************************
  *  Extensions 

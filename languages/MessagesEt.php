@@ -111,7 +111,6 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit]."
 "delete" => "Kustuta",
 "deletethispage" => "Kustuta see artikkel",
 "undelete_short" => "Taasta $1 muudatust",
-"undelete_short1" => "Taasta 1 muudatust",
 "protect" => "Kaitse",
 "protectthispage" => "Kaitse seda artiklit",
 "unprotect" => "Ära kaitse",
@@ -121,7 +120,6 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit]."
 'specialpage' => 'Erilehekülg',
 'personaltools' => 'Personaalsed tööriistad',
 'postcomment'   => 'Lisa kommentaar',
-'addsection'   => '+',
 "articlepage"	=> "Artiklilehekülg",
 "subjectpage"	=> "Teema", # For compatibility
 'talk' => 'Arutelu',
@@ -282,7 +280,6 @@ Sinu {{SITENAME}}.",
 "noemail"		=> "Kasutaja \"$1\" meiliaadressi meil kahjuks pole.",
 "passwordsent"	=> "Uus parool on saadetud kasutaja \"$1\" registreeritud meiliaadressil.
 Pärast parooli saamist logige palun sisse.",
-'loginend'              => '',
 'mailerror' => "Viga kirja saatmisel: $1",
 'acct_creation_throttle_hit' => 'Vabandame, aga te olete loonud juba $1 kontot. Rohkem te ei saa.',
 
@@ -397,7 +394,6 @@ Palun kontrollige aadressi, millel Te seda lehekülge leida püüdsite.",
 "histlegend"	=> "Märgi versioonid, mida tahad võrrelda ja vajuta võrdlemisnupule.
 Legend: (viim) = erinevused võrreldes viimase redaktsiooniga,
 (eel) = erinevused võrreldes eelmise redaktsiooniga, P = pisimuudatus",
-'history_copyright'    => '-',
 # Diffs
 #
 "difference"	=> "(Erinevused redaktsioonide vahel)",
@@ -603,15 +599,12 @@ Alates uuele programmile üleminekust 18. detsembril 2003 on lehekülgi vaadatud
 Administraatori staatuses kasutajaid: <b>$2</b> (vt $3).",
 # Maintenance Page
 #
-"maintenance"		=> "Hoolduslehekülg",
-"maintenancebacklink"	=> "Tagasi hooldusleheküljele",
 
 "selflinks"		=> "Iseendale viitavad leheküljed",
 "selflinkstext"		=> "Järgmised leheküljed sisaldavad viita iseendale, mis ei ole soovitatav.",
 
 # Miscellaneous special pages
 #
-"orphans"		=> "Üksildased artiklid",
 "lonelypages"	=> "Üksildased artiklid",
 "unusedimages"	=> "Kasutamata pildid",
 "popularpages"	=> "Populaarsed leheküljed",
@@ -628,7 +621,6 @@ Administraatori staatuses kasutajaid: <b>$2</b> (vt $3).",
 "protectpage"	=> "Kaitse lehekülge",
 "recentchangeslinked" => "Seotud muudatused",
 "rclsub"		=> "(lehekülgedel, millele \"$1\" viitab)", #
-"debug"			=> "Silu",
 "newpages"		=> "Uued leheküljed",
 'ancientpages'          => 'Vanimad leheküljed',
 "intl"		=> "Keeltevahelised lingid",
@@ -714,8 +706,6 @@ versioonid varasema ajaloona. Kehtivat versiooni automaatselt välja ei vahetata
 "undeleterevision" => "Kustutatud versioon seisuga $1",
 "undeletebtn" => "Taasta!",
 "undeletedarticle" => "\"$1\" taastatud",
-"undeletedtext"   => "Artikkel [[:$1|$1]] on taastatud.
-Viimaste kustutamiste ja taastamiste logi on esitatud lehel [[{{ns:4}}:Kustutatud_leheküljed]].",
 
 # Contributions
 #
@@ -757,7 +747,6 @@ pages that were vandalized).",
 "unblockiptext"	=> "Use the form below to restore write access
 to a previously blocked IP address.",
 "ipusubmit"		=> "Unblock this address",
-"ipusuccess"	=> "IP address \"$1\" unblocked",
 "ipblocklist"	=> "Blokeeritud IP-aadresside loend",
 "blocklistline"	=> "$1, $2 blocked $3 ($4)",
 "blocklink"		=> "blokeeri",

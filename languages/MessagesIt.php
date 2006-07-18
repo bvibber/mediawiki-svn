@@ -879,7 +879,6 @@ La [http://meta.wikimedia.org/wiki/Help:Job_queue coda] contiene '''$7''' proces
 "nextpage"	=> "Pagina successiva ($1)",
 "allpagesfrom"	=> "Mostra le pagine a partire da:",
 "allarticles"	=> "Tutte le voci",
-"allnonarticles"	=> "Tutte le pagine tranne le voci",
 "allinnamespace"	=> "Tutte le pagine del namespace $1",
 "allnotinnamespace"	=> "Tutte le pagine, escluso il namespace $1",
 "allpagesprev"	=> "Precedenti",
@@ -1112,7 +1111,6 @@ Consultare il [[Special:Log/delete|log delle cancellazioni]] per vedere le cance
 "unblockip"		=> " Sblocca utente",
 "unblockiptext"	=> "Usare il modulo sottostante per restituire l'accesso in scrittura ad un utente o indirizzo IP bloccato.",
 "ipusubmit"		=> "Sblocca l'utente",
-"ipusuccess"	=> "[[User:$1|$1] è stato sbloccato",
 "ipblocklist"	=> "Lista degli utenti e indirizzi IP bloccati",
 "blocklistline"	=> "$1, $2 ha bloccato $3 ($4)",
 "infiniteblock" => "senza scadenza",
@@ -1779,8 +1777,6 @@ Se l'account *non* ti appartiene, non seguire il collegamento. Questo codice di 
 Informazioni di trackback per questa voce:<br />
 $1
 </div>",
-"trackback" => "; $4$5 : [$2 $1]",
-"trackbackexcerpt"	=> "; $4$5 : [$2 $1]: <nowiki>$3</nowiki>",
 "trackbackremove"	=> " ([$1 Elimina])",
 "trackbacklink"	=> "Trackback",
 "trackbackdeleteok"	=> "Informazioni di trackback eliminate correttamente.",

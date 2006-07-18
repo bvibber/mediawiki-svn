@@ -315,7 +315,7 @@ Dersom noen andre gjorde denne forespørselen eller om du kom på passordet og i
 'mailerror'             => 'Feil under sending av e-post: $1',
 'acct_creation_throttle_hit'=> 'Beklager, du har allerede opprettet $1 kontoer. Du kan ikke opprette flere.',
 'emailauthenticated'    => 'Epostadressa di ble bekreftet $1.',
-'emailnotauthenticated' => 'Epostadressa di er \'\'\'ikke bekreftet\'\'\'. Ingen eposter vil bli sendt for følgende tjenester.',
+'emailnotauthenticated' => 'Epostadressa di er <strong>ikke bekreftet</strong>. Ingen eposter vil bli sendt for følgende tjenester.',
 'noemailprefs'          => '<strong>Ingen e-postadresse er oppgitt</strong>, så følgende funksjoner vil ikke fungere.',
 'emailconfirmlink'      => 'Bekreft epostadressa di.',
 'invalidemailaddress'   => 'E-postadressa kan ikke aksepteres, fordi den er ugyldig formatert. Skriv inn en fungerende e-postadresse eller tøm feltet.',
@@ -746,7 +746,6 @@ Det har vært totalt \'\'\'$3\'\'\' sidevisninger, og \'\'\'$4\'\'\' redigeringe
 'nextpage'              => 'Neste side ($1)',
 'allpagesfrom'          => 'Vis sider som starter med:',
 'allarticles'           => 'Alle artikler',
-'allnonarticles'        => 'Alle ikke-artikler',
 'allinnamespace'        => 'Alle sider i $1-navnerommet',
 'allnotinnamespace'     => 'Alle sider (ikke i $1-navnerommet)',
 'allpagesprev'          => 'Forrige',
@@ -1020,7 +1019,7 @@ side og flyttet hele historikken til det nye navnet.
 Den gamle tittelen vil bli en omdirigeringsside til den nye tittelen.
 Lenker til den gamle tittelen vil ikke bli endret. Eventuelle omdirigeringer vil bli brutt.
 
-<font color="red"><b>Det er <u>ditt ansvar</u> å rette alle omdirigeringer (bruk «Lenker hit» for å finne dem) hvis du flytter en side!</b></font>
+<span style="color:#ff0000"><b>Det er <u>ditt ansvar</u> å rette alle omdirigeringer (bruk «Lenker hit» for å finne dem) hvis du flytter en side!</b></span>
 
 Legg merke til at siden \'\'\'ikke\'\'\' kan flyttes hvis det allerede finnes en side 
 med den nye tittelen, med mindre den siden er tom eller er en omdirigering 

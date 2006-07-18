@@ -243,7 +243,6 @@ cookieها را از کار انداخته‌اید. لطفاً cookieها را 
 'noemail'		=> "هیچ نشانی پست الکترونیکی‌ای برای کاربر «$1» ثبت نشده است.",
 'passwordsent'	=> "یک کلمه‌ی عبور جدید به نشانی الکترونیکی ثبت شده برای کاربر «$1» فرستاده شد.
 لطفاٌ پس از دریافت آن دوباره به سیستم وارد شوید.",
-'loginend'		=> "",
 
 # Edit page toolbar
 'bold_sample'=>"متن سیاه",
@@ -592,8 +591,6 @@ you may be blocked from uploading if you abuse the system.",
 
 # Maintenance Page
 #
-'maintenance'		=> "صفحه‌ی نگهداری",
-'maintenancebacklink'	=> "بازگشت به صفحه‌ی نگهداری",
 'disambiguations'	=> "صفحات رفع ابهام",
 'disambiguationspage'	=> "{{ns:project}}:پیوند به صفحات رفع ابهام",
 'disambiguationstext'	=> "مقاله‌های زیر به یک <i>صفحه‌ی رفع ابهام</i> پیوند دارند. به جای این، این صفحات باید به
@@ -613,7 +610,6 @@ They should link to the appropriate topic instead.<br />A page is treated as dis
 
 # Miscellaneous special pages
 #
-'orphans'		=> "صفحات یتیم",
 'lonelypages'	=> "صفحات یتیم",
 'unusedimages'	=> "تصاویر بلااستفاده",
 'popularpages'	=> "صفحات محبوب",
@@ -631,7 +627,6 @@ They should link to the appropriate topic instead.<br />A page is treated as dis
 'protectpage'	=> "محافظت از صفحه",
 'recentchangeslinked' => "تغییرات مرتبط",
 'rclsub'		=> "(به صفحات پیونددار از «$1»)",
-'debug'			=> "اشکال‌زدایی",
 'newpages'		=> "صفحات جدید",
 'ancientpages'		=> "قدیمی‌ترین مقاله‌ها",
 'intl'		=> "پیوندهای بین زبانی",
@@ -759,8 +754,6 @@ by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled bac
 'undeleterevision' => "حذف نسخه‌ی به تاریخ $1",
 'undeletebtn' => "احیا شود!",
 'undeletedarticle' => "«$1» احیا شد",
-'undeletedtext'   => "مقاله‌ی [[:$1|$1]] با موفقیت احیا شد.
-برای سوابق حذف‌ها و احیاهای اخیر به [[{{ns:project}}:سیاهه‌ی_حذف]] مراجعه کنید.",
 
 # Contributions
 #
@@ -801,7 +794,6 @@ by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled bac
 'unblockiptext'	=> "برای باز گرداندن دسترسی نوشتن به یک نشانی IP یا نام کاربری بسته‌شده
 از فرم زیر استفاده کنید.",
 'ipusubmit'		=> "باز کردن این نشانی",
-'ipusuccess'	=> "«$1» باز شد",
 'ipblocklist'	=> "فهرست نشانی‌های IP و نام‌های کاربری بسته‌شده",
 'blocklistline'	=> "$1، $2 بست $3 را ($4)",
 'blocklink'		=> "بسته شود",

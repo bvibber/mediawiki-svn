@@ -85,7 +85,6 @@ Galima sumažinti rezultatų patikslinant veiksmo rūšį, vartotoją ar susijus
 'allmessagesnotsupportedDB' => 'Specialus:AllMessages nepalaikoma, nes nustatymas wgUseDatabaseMessages yra išjungtas.',
 'allmessagesnotsupportedUI' => 'Jūsų pasirinkta kalba (<b>$1</b>) nėra palaikoma šiame projekte.',
 'allmessagestext' => 'Čia pateikiami visi sisteminiai tekstai bei pranešimai, esantys MediaWiki: vardų ervėje.',
-'allnonarticles' => 'Visi ne straipsniai',
 'allnotinnamespace' => 'Visi puslapiai (nesantys šioje srityje - $1)',
 'allpages' => 'Visi straipsniai',
 'allpagesfrom' => 'Rodyti puslapius pradedant nuo:',
@@ -171,7 +170,6 @@ Nurodykite tikslią priežastį apačioje (pavyzdžiui nurodydami sugadintus pus
 'category' => 'kategorija',
 'category_header' => 'Kategorijos "$1" straipsniai',
 'categoryarticlecount' => 'Kategorijoje straipsnių - $1',
-'categoryarticlecount1' => 'Straipsnių kategorijoje - $1.',
 'changed' => 'pakeitė',
 'changegrouplogentry' => 'Pakeitė grupę $2',
 'changepassword' => 'Pakeisti slaptažodį',
@@ -441,7 +439,6 @@ seną versiją, (atst) = atstatyti seną versiją.
 'ipbreason' => 'Priežastis',
 'ipbsubmit' => 'Blokuoti šį naudotoją',
 'ipusubmit' => 'Atblokuoti šį adresą',
-'ipusuccess' => '"[[$1]]" atblokuotas',
 'isbn' => 'ISBN',
 'isredirect' => 'nukreipiamasis',
 'italic_sample' => 'Tekstas kursyvu',
@@ -467,24 +464,6 @@ seną versiją, (atst) = atstatyti seną versiją.
 'localtime' => 'Rodomas vietinis laikas',
 'log' => 'Specialiųjų veiksmų istorija',
 'login' => 'Prisijungti/Registruotis',
-'loginend' => '\'\'\'Vartotojo sukūrimas trunka tik kelias sekundes.\'\'\'
-
-<div style="font-size:88%">
-*\'\'\'Norėdami sukurti vartotoją, pasirinkite vartotojo vardą bei slaptažodį ir spustelkite "Sukurkite vartotoją".\'\'\'
-*Vengite vardų, kurie galėtų būti įžeidžiantys ar nevienareikšmiškai suprantami.
-*Pasirinkite skaitomą vardą, ne skaičių.
-*Vartotojo vardas turi prasidėti iš didžiosios raidės.
-*Vengite įžymybių vardų, taip pat vardų, panašių į įžymybės vardą ar žinomo projekto vartotojo vardą.
-</div>
-
-\'\'\'Jei jau esate susikūrę vartotoją, tereikia įvesti vartotojo vardą ir pasirinktą slaptažodį.\'\'\'
-
-<div style="font-size:88%">
-*Norėdami prisijungti, turite būti įjunge "sausainėlius" (\'\'cookies\'\') savo naršyklėje.
-</div>
-<div style="clear: both; padding-top: 2em;">
-Elektroninio pašto adresas nėra privalomas - patvirtinimo laiškai nėra siunčiami. Tačiau, jei įvestumėte el.pašto adresą, kiti vartotojai galėtų jums siųsti žinutes tuo adresu, nesužinodami pačio adreso. Taip pat el.pašto adresas būtinas, jei pamirštumėte savo slaptažodį. \'\'\'Garantuojame, kad el.pašto adresas nebus niekam atskleistas.\'\'\'
-</div>',
 'loginerror' => 'Prisijungimo klaida',
 'loginpagetitle' => 'Prisijungimas',
 'loginproblem' => '<b>Problemos su jūsų prisijungimu.</b><br />Pabandykite iš naujo!',
@@ -499,7 +478,6 @@ P.S.:  kai kuriuose puslapiuose ir toliau gali rodyti lyg būtumėte prisijungę
 'longpages' => 'Ilgiausi puslapiai',
 'mailmypassword' => 'Siųsti naują slaptažodį paštu',
 'mainpage' => 'Pradžia',
-'maintenance' => 'Įrankių puslapis',
 'makesysop' => 'Padaryti administratoriumi',
 'mar' => 'Kov',
 'march' => 'Kovo',
@@ -755,7 +733,6 @@ Be šių puslapių, tikrų straipsnių yra apie \'\'\'$2\'\'\'.
 Nuo wiki pradžios yra atlikta \'\'\'$4\'\'\' puslapių redagavimų - vidutiniškai kiekvienas puslapis keistas \'\'\'$5\'\'\' kartų.
 
 <!-- peržiūrėta: $3 vidutiniškai puslapiui: $6 -->',
-'sitesubtitle' => '',
 'sitesupport' => 'Parama',
 'skin' => 'Išvaizda',
 'sourcefilename' => 'Įkeliamas failas',
@@ -768,7 +745,6 @@ Nuo wiki pradžios yra atlikta \'\'\'$4\'\'\' puslapių redagavimų - vidutiniš
 'storedversion' => 'Išsaugota versija',
 'subcategories' => 'Subkategorijos',
 'subcategorycount' => 'Kategorijoje esančių kategorijų - $1',
-'subcategorycount1' => 'Šioje kategorijoje esančių kategorijų - $1.',
 'subject' => 'Tema/antraštė',
 'successfulupload' => 'Įkelta sėkmingai',
 'summary' => 'Komentaras',
@@ -819,25 +795,20 @@ Prašome sujungti šiuos puslapius.',
 'tooltip-save' => 'Išsaugoti pakeitimus [alt-s]',
 'tooltip-search' => 'Ieškoti lietuviškame wiki [alt-f]',
 'tooltip-watch' => 'Pridėti šį straipsnį prie stebimų [alt-w]',
-'trackback' => '; $4$5 : [$2 $1]',
 'trackbackbox' => '<div id=\'mw_trackbacks\'>
 Trackbacks for this article:<br />
 $1
 </div>',
-'trackbackexcerpt' => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>',
 'tuesday' => 'Antradienis',
 'uctop' => ' (paskutinis)',
 'uncategorizedcategories' => 'Kategorijos, nepriskirtos jokiai kategorijai',
 'uncategorizedpages' => 'Puslapiai, nepriskirti jokiai kategorijai',
 'undelete' => 'Atstatyti ištrintą puslapį',
 'undelete_short' => 'Atstatyti $1 redagavimus',
-'undelete_short1' => 'Atstatyti vieną redagavimą',
 'undeletearticle' => 'Atstatyti ištrintą straipsnį',
 'undeletebtn' => 'Atstatyti!',
 'undeletedarticle' => 'atstatyta "[[$1]]"',
 'undeletedrevisions' => 'atstatyta $1 revizijų',
-'undeletedtext' => 'Straipsnis [[:$1|$1]] sėkmingai atstatytas.
-[[Special:Log/delete|Ištrinimų sąraše]] galite peržiūrėti nesenų trynimų ir atstatymų sąrašą.',
 'undeletehistory' => 'Jei atstatysite straipsnį, istorijoje bus atstatytos visos versijos.
 Jei po ištrynimo buvo sukurtas straipsnis tokiu pačiu pavadinimu,
 atstatytos versijos atsiras ankstesnėje istorijoje, o dabartinė versija

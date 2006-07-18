@@ -1,8 +1,8 @@
 <?php
 /** Russian (русский язык)
   *
-  * Based on Messages.php 15216 (2006-07-02)
-  * and ru.wikipedia MediaWiki namespace (2006-07-02)
+  * Based on Messages.php 15372 (2006-07-06)
+  * and ru.wikipedia MediaWiki namespace (2006-07-09)
   *
   * You can contact Alexander Sigachov (alexander.sigachov на Googgle Mail)
   *
@@ -172,7 +172,6 @@ $wgAllMessagesRu = array(
 'specialpage' => 'Служебная страница',
 'personaltools' => 'Личные инструменты',
 'postcomment'   => 'Комментировать',
-'addsection'   => '+',
 'articlepage'   => 'Просмотреть статью',
 'subjectpage'   => 'Просмотреть тему', # For compatibility
 'talk' => 'Обсуждение',
@@ -208,11 +207,8 @@ $wgAllMessagesRu = array(
 'versionrequired' => 'Требуется MediaWiki версии $1',
 'versionrequiredtext' => 'Для работы с этой страницей требуется MediaWiki версии $1. См. [[Special:Version]].',
 
-'widthheight'           => '$1 × $2',
 'ok'                    => 'OK',
-'sitetitle'             => '{{SITENAME}}',
 'pagetitle'             => '$1 — {{SITENAME}}',
-'sitesubtitle'  => '',
 'retrievedfrom' => 'Получено с $1',
 'youhavenewmessages' => 'Вы получили $1 ($2).',
 'newmessageslink' => 'новые сообщения',
@@ -380,7 +376,6 @@ $1',
 
 Пожалуйста, представьтесь системе заново после получения пароля.',
 'eauthentsent'          =>  'Временный пароль был отправлен на адрес электронной почты нового участника $1. В письме также описаны действия, которые нужно выполнить, чтобы подтвердить, что этот адрес электронной почты действительно принадлежит вам.',
-'loginend'              => '',
 'mailerror' => 'Ошибка при посылке почты: $1',
 'acct_creation_throttle_hit' => 'К сожалению, вы уже создали $1 учётных записей. Вы не можете создать больше ни одной.',
 'emailauthenticated'    => 'Ваш почтовый адрес был сопоставлен с $1.',
@@ -455,7 +450,6 @@ $1',
 Чтобы создать новую страницу, наберите текст в окне, расположенном ниже
 (см. [[{{ns:help}}:Справка|справочную страницу]] чтобы получить больше информации).
 Если вы оказались здесь по ошибке, просто нажмите кнопку \'\'\'назад\'\'\' вашего браузера.',
-'talkpagetext' => '<!-- MediaWiki:talkpagetext -->',
 'anontalkpagetext' => "----''Эта страница обсуждения принадлежит анонимному участнику, который ещё не зарегистрировался или который не представился регистрированным именем. Для идентификации используется цифровой IP-адрес. Если вы анонимный участник и полагаете, что получили сообщения, адресованные не вам (один IP-адрес может использоваться несколькими пользователями), пожалуйста, [[Служебная:Userlogin|представьтесь системе]], чтобы впредь избежать возможной путаницы с другими участниками.''",
 'noarticletext' => "В настоящий момент текст на данной странице отсутствует. Вы можете [[{{ns:special}}:Search/{{PAGENAME}}|найти упоминание данного названия]] в других статьях или '''[{{fullurl:{{FULLPAGENAME}}|action=edit}} создать страницу с таким названием]'''.",
 'clearyourcache' => "'''Замечание:''' Чтобы после сохранения увидеть сделанные изменения, очистите кэш своего браузера: '''Mozilla / Firefox''': ''Ctrl+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Safari''': ''Cmd+Shift+R'', '''Konqueror''': ''F5'', '''Opera''': через меню ''Tools→Preferences''.",
@@ -512,6 +506,7 @@ $1',
 # History pages
 #
 'revhistory'    => 'Журнал изменений',
+'viewpagelogs' => 'Показать журналы для этой страницы',
 'nohistory'             => 'Для этой страницы журнал изменений отсутствует.',
 'revnotfound'   => 'Версия не найдена',
 'revnotfoundtext' => 'Старая версия страницы не найдена.
@@ -528,7 +523,6 @@ $1',
 'last'                  => 'пред.',
 'orig'                  => 'перв.',
 'histlegend'    => "Пояснения: (текущ.) — отличие от текущей версии; (пред.) — отличие от предшествующей версии; '''м''' — малозначимое изменение",
-'history_copyright'    => '—',
 'deletedrev' => '[удалена]',
 'histfirst' => 'Первый',
 'histlast' => 'Последний',
@@ -726,7 +720,6 @@ $1',
 #
 'changes' => 'изменения',
 'recentchanges' => 'Свежие правки',
-'recentchanges-url' => '{{ns:special}}:Recentchanges',
 'recentchangestext' => 'Ниже в хронологическом порядке перечислены последние изменения на страницах {{grammar:genitive|{{SITENAME}}}}.',
 'rcnote'                => 'Последние <strong>$1</strong> изменений за <strong>$2</strong> дней, на момент времени $3.',
 'rcnotefrom'    => 'Ниже перечислены изменения с <strong>$2</strong> (по <strong>$1</strong>).',
@@ -746,7 +739,6 @@ $1',
 'newpageletter' => 'Н',
 'boteditletter' => 'б',
 'sectionlink' => '→',
-'number_of_watching_users_RCview'       => '[$1]',
 'number_of_watching_users_pageview'     => '[$1 наблюдающих пользователя]',
 'rc_categories' => 'Только из категорий (разделитель «|»)',
 'rc_categories_any'     => 'Любой',
@@ -923,7 +915,6 @@ $1',
 'allpages'              => 'Все страницы',
 'prefixindex'   => 'Указатель по началу слов',
 'randompage'    => 'Случайная статья',
-'randompage-url'=> 'Special:Random',
 'shortpages'    => 'Короткие статьи',
 'longpages'             => 'Длинные страницы',
 'deadendpages'  => 'Тупиковые статьи',
@@ -949,8 +940,6 @@ $1',
 # FIXME: Other sites, of course, may have affiliate relations with the booksellers list
 'booksourcetext' => 'Ниже приведён список ссылок на другие веб-сайты, на которых продаются новые и бывшие в употреблении книги, а также на них может быть информация о книгах, которые вы ищете.',
 'isbn'  => 'ISBN',
-'rfcurl' =>  'http://www.ietf.org/rfc/rfc$1.txt',
-'pubmedurl' =>  'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1',
 'alphaindexline' => 'от $1 до $2',
 'version'               => 'Версия MediaWiki',
 'log'           => 'Журналы',
@@ -962,7 +951,6 @@ $1',
 'nextpage'          => 'Следующая страница ($1)',
 'allpagesfrom'          => 'Вывести страницы, начинающиеся на:',
 'allarticles'       => 'Все статьи',
-'allnonarticles'        => 'Все не-статьи',
 'allinnamespace'        => 'Все страницы (пространства имён «$1»)',
 'allnotinnamespace'     => 'Все страницы (кроме пространства имён «$1»)',
 'allpagesprev'      => 'Предыдущие',
@@ -970,6 +958,7 @@ $1',
 'allinnamespace' => 'Все страницы ($1 пространство имён)',
 'allpagessubmit'    => 'Выполнить',
 'allpagesprefix'        => 'Отобразить страницы с префиксом:',
+'allpagesbadtitle'      => 'Заголовок данной страницы не является допустимым либо содержит интервики или межязыковый префикс. Возможно он содержит символы запрещённые в заголовках.',
 
 # Email this user
 #
@@ -1000,7 +989,7 @@ $1',
 'nowatchlist'           => 'Ваш список наблюдения пуст.',
 'watchlistanontext' => 'Вы должны $1, чтобы просмотреть или отредактировать список наблюдения.',
 'watchlistcount'        => "'''В вашем списке наблюдения $1 страниц, включая страницы обсуждения.'''",
-'clearwatchlist'        => 'Очистка списока наблюдения',
+'clearwatchlist'        => 'Очистка списка наблюдения',
 'watchlistcleartext' => 'Вы уверены, что хотите удалить их?',
 'watchlistclearbutton' => 'Очистить список наблюдения',
 'watchlistcleardone' => 'Ваш список наблюдения очищен. $1 страниц удалено из списка.',
@@ -1219,7 +1208,6 @@ $NEWPAGE
 'unblockiptext' => 'Используйте форму ниже, чтобы восстановить возможность записи с ранее заблокированного
 IP-адреса.',
 'ipusubmit'             => 'Разблокировать этот адрес',
-'ipusuccess'    => '[[User:$1|$1]] разблокирован',
 'ipblocklist'   => 'Список заблокированных IP-адресов и пользователей',
 'blocklistline' => '$1, $2 заблокировал $3 ($4)',
 'infiniteblock' => 'бессрочная блокировка',
@@ -1382,6 +1370,8 @@ IP-адреса.',
 Все операции межвики импорта регистрируются в [[Special:Log/import|соответствующем журнале]].',
 'import-interwiki-history' => 'Копировать всю историю изменений этой страницы',
 'import-interwiki-submit' => 'Импортировать',
+'import-interwiki-namespace' => 'Помещать страницы в пространство имён:',
+
 'importtext'    => 'Пожалуйста, экспортируйте страницу из исходной вики используя инструмент Special:Export, сохраните файл на диск, а затем загрузите его сюда.',
 'importstart'   => "Импортирование страниц...",
 'import-revision-count' => '$1 версий',
@@ -1488,7 +1478,6 @@ The wiki server can\'t provide data in a format your client can read.',
 
 # Patrolling
 'markaspatrolleddiff'   => 'Отметить как проверенную',
-'markaspatrolledlink'   => '[$1]',
 'markaspatrolledtext'   => 'Отметить эту статью как проверенную',
 'markedaspatrolled'     => 'Отмечена как проверенная',
 'markedaspatrolledtext' => 'Выбранная версия отмечена как проверенная.',
@@ -1911,8 +1900,6 @@ $3
 Trackback для этой статьи:<br />
 $1
 </div>',
-'trackback' => '; $4$5 : [$2 $1]\n',
-'trackbackexcerpt' => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>\n',
 'trackbackremove' => ' ([$1 удалить])',
 'trackbacklink' => 'Trackback',
 'trackbackdeleteok' => 'Trackback был удалён.',
@@ -1945,10 +1932,6 @@ $1
 # DISPLAYTITLE
 'displaytitle' => '(Ссылка на эту страницу — $1)',
  
-# Separator for categories in page lists
-# Please don't localise this
-'catseparator' => '|',
-
 'loginlanguagelabel' => 'Язык: $1',
 );
 

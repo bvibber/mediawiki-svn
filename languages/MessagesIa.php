@@ -516,11 +516,6 @@ del quales <b>$2</b> es administratores (vide $3).",
 
 # Maintenance Page
 #
-"maintenance"		=> "Pagina de mantenentia",
-"maintnancepagetext"	=> "Iste pagina include plure utensiles commode pro le mantenentia quotidian del encyclopedia.
-Alcunes del functiones tende a tensionar le base de datos, pro isto per favor
-non preme \"Reload\" post cata item reparate. ;-)",
-"maintenancebacklink"	=> "Retornar al pagina de mantenentia",
 "disambiguations"	=> "Paginas de disambiguation",
 "disambiguationspage"	=> "{{ns:project}}:Ligamines_a_paginas_de_disambiguation",
 "disambiguationstext"	=> "Le articulos sequente se liga a un <i>pagina de disambiguation</i>.
@@ -547,7 +542,6 @@ al qual le prime redirection deberea referer se.",
 
 # Miscellaneous special pages
 #
-"orphans"		=> "Paginas orphanas",
 "lonelypages"	=> "Paginas orphanas",
 "unusedimages"	=> "Imagines non usate",
 "popularpages"	=> "Paginas popular",
@@ -564,7 +558,6 @@ al qual le prime redirection deberea referer se.",
 "protectpage"	=> "Proteger pagina",
 "recentchangeslinked" => "Modificationes correlate",
 "rclsub"		=> "(a paginas ligate a partir de \"$1\")",
-"debug"			=> "Reparar disfunctiones",
 "newpages"		=> "Nove paginas",
 "movethispage"	=> "Mover iste pagina",
 "unusedimagestext" => "<p>Nota que altere sitos del web
@@ -667,8 +660,6 @@ non essera automaticamente substituite.",
 "undeleterevision" => "Revision eliminate in $1",
 "undeletebtn" => "Restautar!",
 "undeletedarticle" => "\"$1\" restaurate",
-"undeletedtext"   => "Le articulo [[:$1|$1]] ha essite restaurate con successo.
-Vide [[{{ns:project}}:Registro_de_eliminationes]] pro un registro de eliminationes e restaurationes recente.",
 
 # Contributions
 #
@@ -711,7 +702,6 @@ specific que ha essite vandalisate).",
 "unblockiptext"	=> "Usa le formulario infra pro restaurar le accesso de scriptura
 a un adresse de IP blocate previemente.",
 "ipusubmit"		=> "Disbloca iste adresse",
-"ipusuccess"	=> "Adresse IP \"$1\" disblocate",
 "ipblocklist"	=> "Lista de adresses IP blocate",
 "blocklistline"	=> "$1, $2 ha blockate $3 ($4)",
 "blocklink"		=> "blocar",

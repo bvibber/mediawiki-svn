@@ -87,7 +87,6 @@ Honaino nahigabe helduz gero, zure arakatzaileko \'\'\'atzera\'\'\' botoia sakat
 'nstab-mediawiki' => 'Oharra',
 'nstab-special' => 'Berezia',
 'nstab-template' => 'Txantiloia',
-'orphans' => 'Orri umezurtzak',
 'otherlanguages' => 'Beste hizkuntzak',
 'pagemovedtext' => '"$1"-ren izenburua "$2"-en truke aldatu da.',
 'passwordremindertext' => 'Norbaitek (zu seguruenik, IP $1 helbidetik) {{SITENAME}}n saio berria hasteko pasahitza bidaltzea eskatu du.
@@ -125,7 +124,6 @@ Horiek baztertzen, <b>$2</b> artikulu dira datu-basean.<p>
 There have been a total of <b>$3</b> page views, and <b>$4</b> page edits
 since the software was upgraded (July 20, 2002).
 That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.',
-'sitesubtitle' => '',
 'sitesupport' => 'Emariak',
 'specialpages' => 'Orri bereziak',
 'statistics' => 'Estatistikak',

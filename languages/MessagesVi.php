@@ -74,7 +74,6 @@
 'category_header' => 'Các bài trong Thể loại "$1"',
 'subcategories'	=> 'Tiểu thể loại',
 'subcategorycount' => 'Thể loại này có $1 tiểu thể loại.',
-'subcategorycount1' => 'Thể loại này có $1 tiểu thể loại.',
 'allarticles'   => 'Mọi bài',
 'linktrail'     =>
 "/^([a-zàâçéèêîôûäëïöüùÇÉÂÊÎÔÛÄËÏÖÜÀÈÙ]+)(.*)$/sD",
@@ -124,7 +123,6 @@
 'delete'	=> 'Xóa',
 'deletethispage' => 'Xóa trang này',
 'undelete_short' => 'Phục hồi',
-'undelete_short1' => 'Phục hồi',
 'protect' => 'Khóa',
 'protectthispage' => 'Khóa trang này',
 'unprotect' => 'Mở',
@@ -134,7 +132,6 @@
 'specialpage'	=> 'Trang đặc biệt',
 'personaltools'	=> 'Công cụ cá nhân',
 'postcomment'	=> 'Thêm bàn luận',
-'addsection'   => '+',
 'articlepage'	=> 'Xem bài',
 'subjectpage'   => 'Trang chủ đề',
 'talk'		=> 'Thảo luận',
@@ -160,8 +157,6 @@
 'pagetitle'	=> '$1 - {{SITENAME}}',
 'history'	=> 'Lịch sử trang',
 'history_short' => 'Lịch sử',
-'sitetitle'     => '{{SITENAME}}',
-'sitesubtitle'  => '',
 'retrievedfrom' => 'Lấy từ « $1 »',
 'newmessageslink' => 'tin nhắn mới',
 'editsection'	=> 'Sửa',
@@ -172,7 +167,6 @@
 'thisisdeleted' => 'Xem hay phục hồi $1 ?',
 'restorelink'	=> 'Phục hồi 1 sửa đổi',
 'feedlinks'	=> 'Nạp:',
-'sitenotice'	=> '-', # the equivalent to wgSiteNotice
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main' => 'Bài',
@@ -288,7 +282,6 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 'passwordremindertext' => "Ai đó (có thể là bạn) có địa chỉ IP $1 đã xin gửi mật khẩu mới tới thư điện tử của bạn. Mật khẩu mới của \"$2\" là \"$3\". Bạn nên đăng nhập và thay đổi mật khẩu này.",
 'noemail'  => "Thành viên \"$1\" không có thư điện tử.",
 'passwordsent' => "Mật khẩu mới đã được gửi tới thư điện tử của thành viên \"$1\". Xin đăng nhập ngay khi nhận được.",
-'loginend'	=> '&nbsp;',
 'mailerror'	=> 'Lỗi gửi thư : $1',
 'acct_creation_throttle_hit' => 'Bạn đã mở $1 tài khoản. Không thể mở thêm được nữa.',
 
@@ -395,7 +388,6 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 #
 'categoriespagetext' => "Các thể loại :",
 'categoryarticlecount' => "Có $1 bài trong thể loại này.",
-'categoryarticlecount1' => "Có $1 bài trong thể loại này.",
 
 
 #  Diffs
@@ -599,9 +591,6 @@ Con số này không bao gồm các trang [[{{ns:4}}:Trang_thảo_luận|thảo 
 
 # Maintenance Page
 #
-'maintenance'		=> 'Trangbảo trì',
-'maintnancepagetext'	=> 'Trang này có một số công cụ hữu ích để thực hiện công tác bảo trì. Một số chức năng tạo tải nặng lên cơ sở dữ liệu, vì vậy nên hạn chế tải lại trang mỗi khi sửa xong một mục nào đó.',
-'maintenancebacklink'	=> 'Quay lại trang bảo trì',
 'disambiguations'	=> 'Trang định hướng',
 'disambiguationspage'	=> "{{ns:4}}:Trang_định_hướng",
 'disambiguationstext'	=> "Những trang sau đây liên kết đến một <i>trang định hướng</i>. Lẽ ra chúng nên liên kết thẳng đến một trang phù hợp.<br />Xin xem thêm [$1 thông tin về trang định hướng].<br />Chú ý, dưới đây <i>không</i> liệt kê liên kết từ các không gian tên khác.",
@@ -626,9 +615,7 @@ Con số này không bao gồm các trang [[{{ns:4}}:Trang_thảo_luận|thảo 
 'unusedimages'  => 'Hình chưa dùng',
 'nlinks'        => '$1 liên kết',
 'allpages'      => 'Tất cả các trang',
-'randompage-url'=> 'Đặc_biệt:Randompage',
 'deadendpages'  => 'Trang đường cùng',
-'orphans'       => 'Trang mồ côi',
 'lonelypages'   => 'Trang mồ côi',
 'popularpages'  => 'Trang nhiều người đọc',
 'nviews'        => '$1 lần xem',
@@ -642,7 +629,6 @@ Con số này không bao gồm các trang [[{{ns:4}}:Trang_thảo_luận|thảo 
 'protectpage'   => 'Khóa trang',
 'recentchangeslinked' => 'Thay đổi liên quan',
 'rclsub'        => "(trang liên kết đến \"$1\")",
-'debug'         => 'Sửa lỗi',
 'newpages'      => 'Các bài mới nhất',
 'ancientpages'	=> 'Các bài cũ nhất',
 'move'		=> 'đổi tên',
@@ -818,7 +804,6 @@ Những sửa đổi đối với trang này và trang thảo luận của nó s
 'undeletebtn' => 'Khôi phục',
 'undeletedarticle' => "đã khôi phục \"$1\"",
 'undeletedrevisions' => "$1 bản được khôi phục",
-'undeletedtext'   => "[[:$1|$1]] đã được khôi phục. Xem danh sách các xóa bỏ và khôi phục tại [[Đặc_biệt:Log/delete]].",
 
 # Contributions
 'contributions' => 'Đóng góp',
@@ -855,7 +840,6 @@ Chức năng này chỉ nên dùng để ngăn những hành vi phá hoại, và
 'unblockip'     => 'Bỏ cấm',
 'unblockiptext' => 'Mẫu sau để khôi phục lại quyền sửa bài đối với một địa chỉ IP hoặc tài khoản đã bị cấm trước đó.',
 'ipusubmit'     => 'Bỏ cấm',
-'ipusuccess'    => "\"$1\" đã hết bị cấm",
 'ipblocklist'   => 'Danh sách cấm',
 'blocklistline' => "$1, $2 đã cấm $3 (thời hạn $4)",
 'blocklink'     => 'cấm',
@@ -922,15 +906,12 @@ Hãy gõ tên của thành viên cần phong quyền quản lý vào ô này và
 'spamprotectionmatch' => 'Nội dung sau đây đã kích hoạt bộ lọc thư rác: $1',
 
 'subcategorycount' => "Có $1 tiểu thể loại trong thể loại này.",
-'subcategorycount1' => "Có $1 tiểu thể loại trong thể loại này.",
 'categoryarticlecount' => "Có $1 bài trong thể loại này.",
-'categoryarticlecount1' => "Có $1 bài trong thể loại này.",
 'listingcontinuesabbrev' => " tiếp",
 
 # Patrolling
 #
 'markaspatrolleddiff'   => "Đánh dấu tuần tra",
-'markaspatrolledlink'   => "<div class='patrollink'>[$1]</div>",
 'markaspatrolledtext'   => "Đánh dấu tuần tra",
 'markedaspatrolled'     => "Đã đánh dấu tuần tra",
 'markedaspatrolledtext' => "Bản được đánh dấu đã tuần tra.",
@@ -1180,7 +1161,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Xem trang thể loại\');',
 
 #Logs
 'alllogstext' => 'Xem nhật trình tải lên, xóa, khóa, cấm, quản lý. Có thể xem theo từng loại, theo tên thành viên, hoặc tên trang.',
-'allnonarticles' =>  'Các trang không phải bài viết',
 'allnotinnamespace' => 'Mọi trang (không trong không gian $1)',
 'allpagesfrom' => 'Xem trang từ:',
 
@@ -1246,7 +1226,6 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'perfcached' => 'Dữ liệu sau lấy từ bộ nhớ đệm và có thể không cập nhật:',
 'prefs-help-email-enotif' => 'Địa chỉ thư này cũng được dùng để gửi bạn thư thông báo nếu bạn lựa chọn chức năng này.',
 'print' => 'In',
-'recentchanges-url' => 'Đặc_biệt:Recentchanges',
 'recentchangesall' => 'tất cả',
 'renamegrouplogentry' => 'Đã đổi tên nhóm $2 đến $3',
 'restrictedpheading' => 'Trang đặc biệt hạn chế',
@@ -1274,9 +1253,7 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'watchlistall2' => 'tất cả',
 'wlheader-enotif' => '* Đã bật thông báo qua thư điện tử.',
 'wlheader-showupdated' => "* Các trang đã thay đổi từ lần cuối bạn xem chúng được in '''đậm'''",
-'wlhide' => 'Giấu',
 'wlhideshowown' => '$1 sửa đổi của tôi',
-'wlshow' => 'Xem',
 'yourdomainname' => 'Tên miền của bạn',
 'yourvariant' => 'Ngôn ngữ địa phương',
 'sitesupport-url' => '{{ns:4}}:Quyên_góp',

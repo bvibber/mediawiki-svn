@@ -243,13 +243,12 @@ function wfLogDBError( $text ) {
 /**
  * @todo document
  */
-function logProfilingData() {
+function wfLogProfilingData() {
 	global $wgRequestTime, $wgDebugLogFile, $wgDebugRawPage, $wgRequest;
 	global $wgProfiling, $wgUser;
-	$now = wfTime();
-
-	$elapsed = $now - $wgRequestTime;
 	if ( $wgProfiling ) {
+		$now = wfTime();
+		$elapsed = $now - $wgRequestTime;
 		$prof = wfGetProfilingOutput( $wgRequestTime, $elapsed );
 		$forward = '';
 		if( !empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) )
@@ -621,8 +620,7 @@ function wfAbruptExit( $error = false ){
 		wfDebug('WARNING: Abrupt exit\n');
 	}
 
-	wfProfileClose();
-	logProfilingData();
+	wfLogProfilingData();
 
 	if ( !$error ) {
 		$wgLoadBalancer->closeAll();
@@ -867,8 +865,8 @@ function wfCheckLimits( $deflimit = 50, $optionname = 'rclimit' ) {
  */
 function wfEscapeWikiText( $text ) {
 	$text = str_replace(
-		array( '[',		'|',	  '\'',	   'ISBN '	  , '://'	  , "\n=", '{{' ),
-		array( '&#91;', '&#124;', '&#39;', 'ISBN&#32;', '&#58;//' , "\n&#61;", '&#123;&#123;' ),
+		array( '[',     '|',      '\'',    'ISBN ',     'RFC ',     '://',     "\n=",     '{{' ),
+		array( '&#91;', '&#124;', '&#39;', 'ISBN&#32;', 'RFC&#32;', '&#58;//', "\n&#61;", '&#123;&#123;' ),
 		htmlspecialchars($text) );
 	return $text;
 }

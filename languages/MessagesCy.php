@@ -127,7 +127,6 @@ Gwelwch $1.",
 "nbytes" => "$1 bytes",
 "go" => "Mynd",
 "ok" => "OK",
-"sitesubtitle" => "",
 "retrievedfrom" => "Wedi dod o \"$1\"",
 "newmessageslink" => "Neges(eueon) newydd",
 "editsection" => "golygu",
@@ -234,7 +233,6 @@ Sicrhau rydych chi wedi sillafu'n iawn, neu creuwch accownt newydd gyda'r ffurfl
 Allweddair defnyddwr \"$2\" rwan yw \"$3\". Ddylwch chi mewngofnodi rwan a newid yr allweddair.",
 "noemail" => "Does dim cyfeiriad e-bost wedi cofrestru dros defnyddwr \"$1\".",
 "passwordsent" => "Mae allweddair newydd wedi gael eu ddanfon at y cyfeiriad e-bost cofrestredig am \"$1\". Mewngofnodwch eto, os gwelwch yn dda, ar ol i chi dderbyn yr allweddair.",
-"loginend" => "",
 
 # Edit page toolbar
 "bold_sample" => "Testun cryf",
@@ -524,7 +522,6 @@ Sef <b>$5</b> golygiadau pob tudalen, ar gyfartaledd, a <b>$6</b> golygon o bob 
 
 # Miscellaneous special pages
 #
-"orphans" => "Erthyglau heb cysylltiadau",
 "lonelypages" => "Erthyglau heb cysylltiadau",
 "unusedimages"	=> "Lluniau di-defnyddio",
 "popularpages"	=> "Erthyglau poblogol",
@@ -542,7 +539,6 @@ Sef <b>$5</b> golygiadau pob tudalen, ar gyfartaledd, a <b>$6</b> golygon o bob 
 "protectpage" => "Sicrhau erthygl",
 "recentchangeslinked" => "Newidiadau perthnasol",
 "rclsub" => "(i erthyglau cysyllt oddiwrth \"$1\")",
-"debug"	=> "Debug",
 "newpages" => "Erthyglau newydd",
 "ancientpages" => "Erthyglau hynach",
 "intl" => "Cysylltiadau rhwng ieithau",
@@ -664,8 +660,6 @@ Gwelwch [[{{ns:project}}:Tudalen amddiffynol]] am mwy o wybodaeth.",
 "undeletebtn" => "Adferiwch!",
 "undeletedarticle" => "wedi adferio \"$1\"",
 
-"undeletedtext" => "Mae'r erthygl [[:$1|$1]] wedi cael eu adferio'n llwyddiannus.
-Gwyliwch [[{{ns:project}}:Log_dileuon]] am record dileuon ac adferion diweddar.",
 
 # Contributions
 #
@@ -704,7 +698,6 @@ Llenwch rheswm am y bloc, isod (e.e. enwch y tudalennau a oedd wedi fandalo).",
 "unblockip" => "Di-blociwch cyfeiriad IP",
 "unblockiptext"	=> "Defnyddwch y ffurflen isod i di-blocio mynedfa ysgrifenol i cyfeiriad IP sydd wedi cael eu blocio'n gynt.",
 "ipusubmit" => "Di-blociwch y cyfeiriad hwn",
-"ipusuccess" => "Cyfeiriad IP \"$1\" wedi di-blocio",
 "ipblocklist" => "Rhestr cyfeiriadau IP wedi blocio",
 "blocklistline"	=> "$1, $2 wedi blocio $3 ($4)",
 "blocklink" => "bloc",
