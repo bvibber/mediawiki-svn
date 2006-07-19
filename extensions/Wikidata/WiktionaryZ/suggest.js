@@ -143,20 +143,36 @@ function removeClicked(checkBox) {
 	//enableChildNodes(container, !checkBox.checked);
 }
 
+function isFormElement(node) {
+	var name = node.nodeName.toLowerCase();
+	
+	return name == 'select' || name == 'option' || name == 'input' || name == 'textarea' || name == 'button';
+}
+
 function toggle(element, event) {
-	var elementName = element.id.substr(9, element.id.length - 9);
-	var collapsableNode = document.getElementById('collapsable-' + elementName);
+	var source = event.target;
 	
-	if (collapsableNode.style.display == 'none') {
-		collapsableNode.style.display = 'block';
-		var newChar = '&ndash;';
-	}
-	else {
-		collapsableNode.style.display = 'none';
-		var newChar = '+';
-	}
+	if (!source)
+		source = event.srcElement;
 	
-	var html = element.innerHTML;
-	element.innerHTML = newChar +  html.substr(1, html.length - 1);
-	stopEventHandling(event);
+	if (!isFormElement(source)) {
+		var elementName = element.id.substr(9, element.id.length - 9);
+		var collapsableNode = document.getElementById('collapsable-' + elementName);
+		
+		if (collapsableNode.style.display == 'none') {
+			collapsableNode.style.display = 'block';
+			//var newChar = '&ndash;';
+			var newChar = '\u2013';
+		}
+		else {
+			collapsableNode.style.display = 'none';
+			var newChar = '+';
+		}
+		
+		var textNode = element.childNodes[0];
+		var text = textNode.nodeValue;
+
+		textNode.nodeValue = newChar +  text.substr(1, text.length - 1);
+		stopEventHandling(event);
+	}
 }

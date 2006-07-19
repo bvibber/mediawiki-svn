@@ -274,6 +274,48 @@ class ExpressionMeaningController implements Controller {
 	}
 }
 
+class ExpressionController implements Controller {
+	protected $spelling;
+
+	public function __construct($spelling) {
+		$this->spelling = $spelling;
+	}
+
+	public function add($keyPath, $tuple) {
+		global
+			$expressionAttribute, $expressionMeaningsAttribute, $definedMeaningAttribute, $definitionAttribute, $languageAttribute, $textAttribute;
+
+		$expressionLanguageId = $tuple->getAttributeValue($expressionAttribute)->getAttributeValue($languageAttribute);
+		$expressionMeanings = $tuple->getAttributeValue($expressionMeaningsAttribute);
+		
+		if ($expressionMeanings->getTupleCount() > 0) {
+			$expressionMeaning = $expressionMeanings->getTuple(0);
+
+			$definition = $expressionMeaning->getAttributeValue($definedMeaningAttribute)->getAttributeValue($definitionAttribute);
+			
+			if ($definition->getTupleCount() > 0) {
+				$definitionTuple = $definition->getTuple(0);
+				
+				$text = $definitionTuple->getAttributeValue($textAttribute);
+				
+				if ($text != "") {	
+					$languageId = $definitionTuple->getAttributeValue($languageAttribute);
+//					$expressionId = $keyPath->peek(0)->getAttributeValue($expressionIdAttribute);
+//					$revisionId = getRevisionForExpressionId($expressionId);
+					$expression = findOrCreateExpression($this->spelling, $expressionLanguageId);
+					createNewDefinedMeaning($expression->id, $expression->revisionId, $languageId, $text);
+				}
+			}
+		}
+	}
+
+	public function remove($keyPath) {
+	}
+
+	public function update($keyPath, $tuple) {
+	}
+}
+
 /**
  * Renders a content page from WiktionaryZ based on the GEMET database.
  * @package MediaWiki
@@ -292,7 +334,9 @@ class WiktionaryZ {
 		$dbr =& wfGetDB( DB_MASTER );
 
 		$wgOut->addHTML("Your user interface language preference: <b>$userlang</b> - " . $skin->makeLink("Special:Preferences", "set your preferences"));
-		$wgOut->addHTML($this->getExpressionsEditor()->view(new IdStack("expression"), $this->getExpressionsRelation($wgTitle->getText())));
+		
+		$spelling = $wgTitle->getText();
+		$wgOut->addHTML($this->getExpressionsEditor($spelling)->view(new IdStack("expression"), $this->getExpressionsRelation($spelling)));
 		
 		# We may later want to disable the regular page component
 		# $wgOut->setPageTitleArray($this->mTitle->getTitleArray());
@@ -403,17 +447,16 @@ class WiktionaryZ {
 	
 	function getExpressionsRelation($spelling) {
 		global
-			$expressionIdAttribute, $expressionAttribute, $languageAttribute, $spellingAttribute, $expressionMeaningsAttribute;
+			$expressionIdAttribute, $expressionAttribute, $languageAttribute, $expressionMeaningsAttribute;
 		
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT expression_id, spelling, language_id from uw_expression_ns WHERE spelling=BINARY " . $dbr->addQuotes($spelling));
+		$queryResult = $dbr->query("SELECT expression_id, language_id from uw_expression_ns WHERE spelling=BINARY " . $dbr->addQuotes($spelling));
 		$result = new ArrayRelation(new Heading($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute), new Heading($expressionIdAttribute));		
-		$expressionHeading = new Heading($languageAttribute, $spellingAttribute);
+		$expressionHeading = new Heading($languageAttribute);
 	
 		while($expression = $dbr->fetchObject($queryResult)) {
 			$expressionTuple = new ArrayTuple($expressionHeading);
 			$expressionTuple->setAttributeValue($languageAttribute, $expression->language_id);
-			$expressionTuple->setAttributeValue($spellingAttribute, $expression->spelling);
 			
 			$result->addTuple(array($expression->expression_id, $expressionTuple, $this->getDefinedMeaningsRelation($expression->expression_id)));
 		}
@@ -421,10 +464,10 @@ class WiktionaryZ {
 		return $result;
 	}
 	
-	function getExpressionsEditor() {
+	function getExpressionsEditor($spelling) {
 		global
 			$expressionsAttribute, $definedMeaningAttribute, $expressionAttribute, $expressionMeaningsAttribute, 
-			$languageAttribute, $spellingAttribute;
+			$languageAttribute;
 			
 		$definitionEditor = $this->getDefinedMeaningDefinitionEditor();
 		$synonymsAndTranslationsEditor = $this->getSynonymsAndTranslationsEditor(); 
@@ -440,15 +483,14 @@ class WiktionaryZ {
 		$definedMeaningEditor->expandEditor($definitionEditor);
 		$definedMeaningEditor->expandEditor($synonymsAndTranslationsEditor);
 		
-		$expressionMeaningsEditor = new RelationListEditor($expressionMeaningsAttribute, true, false, false, new ExpressionMeaningController(), 3);
+		$expressionMeaningsEditor = new RelationListEditor($expressionMeaningsAttribute, true, false, true, new ExpressionMeaningController(), 3);
 		$expressionMeaningsEditor->setCaptionEditor(new AttributeLabelViewer($definedMeaningAttribute));
 		$expressionMeaningsEditor->setValueEditor($definedMeaningEditor);
 		
 		$expressionEditor = new TupleSpanEditor($expressionAttribute, ': ', ' - ');
-		$expressionEditor->addViewer(new LanguageEditor($languageAttribute, false, false));
-		$expressionEditor->addViewer(new TextEditor($spellingAttribute, false, false)); 
+		$expressionEditor->addEditor(new LanguageEditor($languageAttribute, false, true));
 		
-		$expressionsEditor = new RelationListEditor($expressionsAttribute, false, false, false, null, 2);
+		$expressionsEditor = new RelationListEditor($expressionsAttribute, true, false, false, new ExpressionController($spelling), 2);
 		$expressionsEditor->setCaptionEditor($expressionEditor);
 		$expressionsEditor->setValueEditor($expressionMeaningsEditor);
 		
@@ -485,7 +527,8 @@ class WiktionaryZ {
 		global 
 			$wgTitle, $wgUser;
 		
-		$this->getExpressionsEditor()->save(new IdStack("expression"), $this->getExpressionsRelation($wgTitle->getText()));
+		$spelling = $wgTitle->getText();
+		$this->getExpressionsEditor($spelling)->save(new IdStack("expression"), $this->getExpressionsRelation($spelling));
 
 		Title::touchArray(array($wgTitle));
 		$now = wfTimestampNow();
@@ -502,10 +545,11 @@ class WiktionaryZ {
 			$this->saveForm();
 
 		$skin = $wgUser->getSkin();
+		$spelling = $wgTitle->getText();
 
 		$wgOut->addHTML("Your user interface language preference: <b>$userlang</b> - " . $skin->makeLink("Special:Preferences", "set your preferences"));
 		$wgOut->addHTML('<form method="post" action="">');
-		$wgOut->addHTML($this->getExpressionsEditor()->edit(new IdStack("expression"), $this->getExpressionsRelation($wgTitle->getText())));
+		$wgOut->addHTML($this->getExpressionsEditor($spelling)->edit(new IdStack("expression"), $this->getExpressionsRelation($spelling)));
 		$wgOut->addHTML(getSubmitButton("save", "Save"));
 		$wgOut->addHTML('</form>');
 	}

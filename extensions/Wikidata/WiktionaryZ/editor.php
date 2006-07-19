@@ -61,10 +61,6 @@ class IdStack {
 	}
 }
 
-interface Viewer {
-	public function view($idPath, $value);
-}
-
 interface Editor {
 	public function getAttribute();
 	public function getUpdateAttribute();
@@ -105,6 +101,34 @@ abstract class DefaultEditor implements Editor {
 	
 	public function getEditors() {
 		return $this->editors;
+	}
+}
+
+abstract class Viewer extends DefaultEditor {
+	public function getUpdateAttribute() {
+		return null;
+	}
+
+	public function getAddAttribute() {
+		return null;
+	}
+	
+	public function edit($idPath, $value) {
+		return $this->view($idPath, $value);	
+	}
+	
+	public function add($idPath) {
+	}
+	
+	public function save($idPath, $value) {
+	}
+
+	public function getUpdateValue($idPath) {
+		return null;
+	}
+	
+	public function getAddValue($idPath) {
+		return null;
 	}
 }
 
@@ -488,6 +512,15 @@ abstract class TupleEditor extends DefaultEditor {
 		else
 			return null;	
 	}
+	
+	public function save($idPath, $value) {
+		foreach($this->editors as $editor) {
+			$attribute = $editor->getAttribute();
+			$idPath->pushAttribute($attribute);			
+			$editor->save($idPath, $value->getAttributeValue($attribute));
+			$idPath->popAttribute();
+		}
+	}
 }
 
 class TupleTableCellEditor extends TupleEditor {
@@ -841,15 +874,6 @@ class TupleListEditor extends TupleEditor {
 		return $result;
 	}
 	
-	public function save($idPath, $value) {
-		foreach($this->editors as $editor) {
-			$attribute = $editor->getAttribute();
-			$idPath->pushAttribute($attribute);			
-			$editor->save($idPath, $value->getAttributeValue($attribute));
-			$idPath->popAttribute();
-		}
-	}
-	
 	public function expandEditor($editor) {
 		$this->expandedEditors[] = $editor;
 	}
@@ -869,11 +893,12 @@ class RelationListEditor extends RelationEditor {
 
 	public function setCaptionEditor($editor) {
 		$this->captionEditor = $editor;
+		$this->editors[0] = $editor;
 	} 
 
 	public function setValueEditor($editor) {
 		$this->valueEditor = $editor;
-		$this->editors[0] = $editor;
+		$this->editors[1] = $editor;
 	} 
 	
 	public function view($idPath, $value) {
@@ -896,14 +921,17 @@ class RelationListEditor extends RelationEditor {
 			$tuple = $value->getTuple($i);
 			$idPath->pushKey(project($tuple, $key));
 			$tupleId = $idPath->getId();
-			$idPath->pushAttribute($valueAttribute);
 			
+			$idPath->pushAttribute($captionAttribute);
 			$result .= '<li>'.
-						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $this->captionEditor->view($idPath, $tuple->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>' .
-						'<div id="collapsable-'. $tupleId . '"'. $style .'>' . $this->valueEditor->view($idPath, $tuple->getAttributeValue($valueAttribute)) . '</div>' .
-						'</li>';
-
+						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $this->captionEditor->view($idPath, $tuple->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>';
 			$idPath->popAttribute();
+			
+			$idPath->pushAttribute($valueAttribute);
+			$result .= '<div id="collapsable-'. $tupleId . '"'. $style .'>' . $this->valueEditor->view($idPath, $tuple->getAttributeValue($valueAttribute)) . '</div>' .
+						'</li>';
+			$idPath->popAttribute();
+
 			$idPath->popKey();
 		}
 		
@@ -933,23 +961,29 @@ class RelationListEditor extends RelationEditor {
 			$idPath->pushKey(project($tuple, $key));
 			
 			$tupleId = $idPath->getId();
-			$idPath->pushAttribute($valueAttribute);
-			
-			$result .= '<li>'.
-						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $this->captionEditor->view($idPath, $tuple->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>' .
-						'<div id="collapsable-'. $tupleId . '"'. $style .'>' . $this->valueEditor->edit($idPath, $tuple->getAttributeValue($valueAttribute)) . '</div>' .
-						'</li>';
 
+			$idPath->pushAttribute($captionAttribute);
+			$result .= '<li>'.
+						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $this->captionEditor->edit($idPath, $tuple->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>';
 			$idPath->popAttribute();
+
+			$idPath->pushAttribute($valueAttribute);
+			$result .= '<div id="collapsable-'. $tupleId . '"'. $style .'>' . $this->valueEditor->edit($idPath, $tuple->getAttributeValue($valueAttribute)) . '</div>' .
+						'</li>';
+			$idPath->popAttribute();
+
 			$idPath->popKey();
 		}
 
 		if ($this->allowAdd) {
-			$idPath->pushAttribute($valueAttribute);
-			$tupleId = $idPath->getId();
+			$tupleId = 'add-' . $idPath->getId();
+			$idPath->pushAttribute($captionAttribute);
 			$result .= '<li>'.
-						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">+ ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>' .
-						'<div id="collapsable-'. $tupleId . '" style="display: none;">' . $this->valueEditor->add($idPath) . '</div>' .
+						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">+ ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
+			$idPath->popAttribute();
+
+			$idPath->pushAttribute($valueAttribute);
+			$result .= '<div id="collapsable-'. $tupleId . '" style="display: none;">' . $this->valueEditor->add($idPath) . '</div>' .
 						'</li>';
 			$idPath->popAttribute();
 		}
@@ -960,17 +994,29 @@ class RelationListEditor extends RelationEditor {
 	}
 	
 	public function add($idPath) {
-		return "";
+		$result = '<ul class="collapsable-items">';
+		$captionAttribute = $this->captionEditor->getAttribute();
+		$valueAttribute = $this->valueEditor->getAttribute();
+
+		$tupleId = 'add-' . $idPath->getId();
+
+		$idPath->pushAttribute($captionAttribute);
+		$result .= '<li>'.
+					'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">+ ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
+		$idPath->popAttribute();
+
+		$idPath->pushAttribute($valueAttribute);
+		$result .= '<div id="collapsable-'. $tupleId . '" style="display: none;">' . $this->valueEditor->add($idPath) . '</div>' .
+					'</li>';
+		$idPath->popAttribute();
+
+		$result .= '</ul>';
+		
+		return $result;
 	}
 }
 
-class AttributeLabelViewer implements Viewer {
-	protected $attribute;
-	
-	public function __construct($attribute) {
-		$this->attribute = $attribute;
-	}
-		
+class AttributeLabelViewer extends Viewer {
 	public function view($idPath, $value) {
 		return $this->attribute->name;
 	}
@@ -978,20 +1024,17 @@ class AttributeLabelViewer implements Viewer {
 	public function add($idPath) {
 		return "New " . strtolower($this->attribute->name);
 	}
-	
-	public function getAttribute() {
-		return $this->attribute;
-	}
 }
 
-class TupleSpanEditor implements Viewer {
-	protected $attribute;
+class TupleSpanEditor extends TupleEditor {
+//	protected $attribute;
 	protected $attributeSeparator;
 	protected $valueSeparator;
-	protected $viewers = array();
+//	protected $viewers = array();
 	
 	public function __construct($attribute, $valueSeparator, $attributeSeparator) {
-		$this->attribute = $attribute;
+		parent::__construct($attribute);
+
 		$this->attributeSeparator = $attributeSeparator;
 		$this->valueSeparator = $valueSeparator;
 	}
@@ -999,22 +1042,52 @@ class TupleSpanEditor implements Viewer {
 	public function view($idPath, $value) {
 		$fields = array();
 		
-		foreach($this->viewers as $viewer) {
-			$attribute = $viewer->getAttribute();
+		foreach($this->editors as $editor) {
+			$attribute = $editor->getAttribute();
 			$idPath->pushAttribute($attribute);
-			$fields[] = $attribute->name . $this->valueSeparator. $viewer->view($idPath, $value->getAttributeValue($attribute));
+			$fields[] = $attribute->name . $this->valueSeparator. $editor->view($idPath, $value->getAttributeValue($attribute));
 			$idPath->popAttribute();
 		}
 		
 		return implode($this->attributeSeparator, $fields);
 	}
 	
-	public function getAttribute() {
-		return $this->attribute;
+//	public function getAttribute() {
+//		return $this->attribute;
+//	}
+//	
+//	public function addViewer($viewer) {
+//		$this->viewers[] = $viewer;
+//	}
+	
+	public function add($idPath) {
+		$fields = array();
+
+		foreach($this->editors as $editor) {
+			if ($attribute = $editor->getAddAttribute()) {
+				$attribute = $editor->getAttribute();
+				$idPath->pushAttribute($attribute);			
+				$attributeId = $idPath->getId();
+				$fields[] = $attribute->name . $this->valueSeparator. $editor->add($idPath);
+				$editor->add($idPath);
+				$idPath->popAttribute();
+			}
+		}
+
+		return implode($this->attributeSeparator, $fields);
 	}
 	
-	public function addViewer($viewer) {
-		$this->viewers[] = $viewer;
+	public function edit($idPath, $value) {
+		$fields = array();
+		
+		foreach($this->editors as $editor) {
+			$attribute = $editor->getAttribute();
+			$idPath->pushAttribute($attribute);
+			$fields[] = $attribute->name . $this->valueSeparator. $editor->view($idPath, $value->getAttributeValue($attribute));
+			$idPath->popAttribute();
+		}
+		
+		return implode($this->attributeSeparator, $fields);
 	}
 } 
 
