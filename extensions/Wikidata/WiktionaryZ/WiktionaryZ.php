@@ -483,14 +483,14 @@ class WiktionaryZ {
 		$definedMeaningEditor->expandEditor($definitionEditor);
 		$definedMeaningEditor->expandEditor($synonymsAndTranslationsEditor);
 		
-		$expressionMeaningsEditor = new RelationListEditor($expressionMeaningsAttribute, true, false, true, new ExpressionMeaningController(), 3);
+		$expressionMeaningsEditor = new RelationListEditor($expressionMeaningsAttribute, true, false, true, new ExpressionMeaningController(), 3, false);
 		$expressionMeaningsEditor->setCaptionEditor(new AttributeLabelViewer($definedMeaningAttribute));
 		$expressionMeaningsEditor->setValueEditor($definedMeaningEditor);
 		
 		$expressionEditor = new TupleSpanEditor($expressionAttribute, ': ', ' - ');
 		$expressionEditor->addEditor(new LanguageEditor($languageAttribute, false, true));
 		
-		$expressionsEditor = new RelationListEditor($expressionsAttribute, true, false, false, new ExpressionController($spelling), 2);
+		$expressionsEditor = new RelationListEditor($expressionsAttribute, true, false, false, new ExpressionController($spelling), 2, true);
 		$expressionsEditor->setCaptionEditor($expressionEditor);
 		$expressionsEditor->setValueEditor($expressionMeaningsEditor);
 		
