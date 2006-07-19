@@ -857,12 +857,21 @@ class TupleListEditor extends TupleEditor {
 		
 		foreach($this->editors as $editor) {
 			if ($attribute = $editor->getAddAttribute()) {
+				if (!in_array($editor, $this->expandedEditors)) {
+					$style = ' style="display: none;"';
+					$character = '+';
+				}
+				else {
+					$style = '';
+					$character = '&ndash;';
+				}
+
 				$attribute = $editor->getAttribute();
 				$idPath->pushAttribute($attribute);			
 				$attributeId = $idPath->getId();
 				$result .= '<li>'.
-							'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">&ndash; ' . $attribute->name . '</h4>' .
-							'<div id="collapsable-'. $attributeId . '">' . $editor->add($idPath) . '</div>' .
+							'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">'. $character  .' ' . $attribute->name . '</h4>' .
+							'<div id="collapsable-'. $attributeId . '"'. $style .'>' . $editor->add($idPath) . '</div>' .
 							'</li>';
 				$editor->add($idPath);
 				$idPath->popAttribute();
@@ -885,10 +894,11 @@ class RelationListEditor extends RelationEditor {
 	protected $captionEditor;
 	protected $valueEditor;
 
-	public function __construct($attribute, $allowAdd, $allowRemove, $isAddField, $controller, $headerLevel) {
+	public function __construct($attribute, $allowAdd, $allowRemove, $isAddField, $controller, $headerLevel, $childrenExpanded) {
 		parent::__construct($attribute, $allowAdd, $allowRemove, $isAddField, $controller);
 		
 		$this->headerLevel = $headerLevel;
+		$this->childrenExpanded = $childrenExpanded;
 	}
 
 	public function setCaptionEditor($editor) {
@@ -908,7 +918,7 @@ class RelationListEditor extends RelationEditor {
 		$captionAttribute = $this->captionEditor->getAttribute();
 		$valueAttribute = $this->valueEditor->getAttribute();
 				
-		if ($tupleCount > 1) {
+		if (!$this->childrenExpanded) {
 			$style = ' style="display: none;"';
 			$character = '+';
 		}
@@ -947,7 +957,7 @@ class RelationListEditor extends RelationEditor {
 		$captionAttribute = $this->captionEditor->getAttribute();
 		$valueAttribute = $this->valueEditor->getAttribute();
 				
-		if ($tupleCount > 1) {
+		if (!$this->childrenExpanded) {
 			$style = ' style="display: none;"';
 			$character = '+';
 		}
@@ -976,14 +986,23 @@ class RelationListEditor extends RelationEditor {
 		}
 
 		if ($this->allowAdd) {
+			if ($tupleCount > 0) {
+				$style = ' style="display: none;"';
+				$character = '+';
+			}
+			else {
+				$style = '';
+				$character = '&ndash;';
+			}
+			
 			$tupleId = 'add-' . $idPath->getId();
 			$idPath->pushAttribute($captionAttribute);
 			$result .= '<li>'.
-						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">+ ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
+						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">'. $character  . ' ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
 			$idPath->popAttribute();
 
 			$idPath->pushAttribute($valueAttribute);
-			$result .= '<div id="collapsable-'. $tupleId . '" style="display: none;">' . $this->valueEditor->add($idPath) . '</div>' .
+			$result .= '<div id="collapsable-'. $tupleId . '"'. $style .'>' . $this->valueEditor->add($idPath) . '</div>' .
 						'</li>';
 			$idPath->popAttribute();
 		}
@@ -1002,11 +1021,11 @@ class RelationListEditor extends RelationEditor {
 
 		$idPath->pushAttribute($captionAttribute);
 		$result .= '<li>'.
-					'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">+ ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
+					'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">&ndash; ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
 		$idPath->popAttribute();
 
 		$idPath->pushAttribute($valueAttribute);
-		$result .= '<div id="collapsable-'. $tupleId . '" style="display: none;">' . $this->valueEditor->add($idPath) . '</div>' .
+		$result .= '<div id="collapsable-'. $tupleId . '">' . $this->valueEditor->add($idPath) . '</div>' .
 					'</li>';
 		$idPath->popAttribute();
 
