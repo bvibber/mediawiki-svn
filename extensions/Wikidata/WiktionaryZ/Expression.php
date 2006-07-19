@@ -434,17 +434,17 @@ function updateDefinedMeaningInCollection($definedMeaningId, $collectionId, $int
 }
 
 
-function bootstrapCollection($collection, $languageId){
+function bootstrapCollection($collection, $languageId, $collectionType){
 	$expression = findOrCreateExpression($collection, $languageId);
 	$definedMeaningId = addDefinedMeaning($expression->id, $expression->revisionId);
 	$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);
 	addDefinedMeaningDefinition($definedMeaningId, $expression->revisionId, $languageId, $collection);
-	return addCollection($definedMeaningId);
+	return addCollection($definedMeaningId, $collectionType);
 }
 
-function addCollection($definedMeaningId) {
+function addCollection($definedMeaningId, $collectionType) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$sql = "INSERT INTO uw_collection_ns(collection_mid,is_latest) values($definedMeaningId,1)";
+	$sql = "INSERT INTO uw_collection_ns(collection_mid,is_latest,collection_type) values($definedMeaningId,1,'$collectionType')";
 	$queryResult = $dbr->query($sql);
 	
 	$collectionId = getMaximum("collection_id", "uw_collection_ns");
