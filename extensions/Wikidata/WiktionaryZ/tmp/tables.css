@@ -75,7 +75,7 @@
 	padding-right: 4px;
 }
 
-.wiki-data-table td .wiki-data-table td textarea {
+.wiki-data-table td .wiki-data-table td textarea, li .wiki-data-table td textarea {
 	width: auto;
 }
 

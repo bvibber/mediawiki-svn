@@ -60,7 +60,7 @@ function getSuggestions() {
 			$sql = getSQLForCollectionOfType('ATTR');
 			break;
 		case 'defined-meaning':
-			$sql = "SELECT syntrans1.defined_meaning_id AS row_id, expression1.spelling AS relation ".
+			$sql = "SELECT syntrans1.defined_meaning_id AS row_id, expression1.spelling AS relation, expression1.language_id AS language_id ".
 					"FROM uw_expression_ns expression1, uw_syntrans syntrans1 ".
 	            	"WHERE expression1.expression_id=syntrans1.expression_id ";
 	        break;	
@@ -149,20 +149,44 @@ function getAttributeAsRelation($queryResult) {
 	return array($relation, $editor);		
 }
 
+function getDefinedMeaningDefinition($definedMeaningId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT old_text FROM uw_defined_meaning as dm, translated_content as tc, text as t ".
+								"WHERE dm.defined_meaning_id=$definedMeaningId AND " .
+								"      dm.meaning_text_tcid=tc.set_id AND tc.language_id=85 AND tc.is_latest_set=1 AND " .
+								"      t.old_id= tc.text_id");	
+	
+	if ($definition = $dbr->fetchObject($queryResult)) {
+		$result = $definition->old_text;
+		$maxLength = 75;
+		
+		if (strlen($result) > $maxLength)
+			$result = substr($result, 0, $maxLength) . "...";
+		
+		return $result;
+	}
+	else	
+		return "";
+}
+
 function getDefinedMeaningAsRelation($queryResult) {
 	global
 		$idAttribute;
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", "short-text");
+	$languageAttribute = new Attribute("language", "Language", "language");
+	$definitionAttribute = new Attribute("definition", "Definition", "definition");
 	
-	$relation = new ArrayRelation(new Heading($idAttribute, $definedMeaningAttribute), new Heading($idAttribute));
+	$relation = new ArrayRelation(new Heading($idAttribute, $definedMeaningAttribute, $languageAttribute, $definitionAttribute), new Heading($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addTuple(array($row->row_id, $row->relation));			
+		$relation->addTuple(array($row->row_id, $row->relation, $row->language_id, getDefinedMeaningDefinition($row->row_id)));			
 
 	$editor = new RelationTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($definedMeaningAttribute, false, false));
+	$editor->addEditor(new LanguageEditor($languageAttribute, false, false));
+	$editor->addEditor(new TextEditor($definitionAttribute, false, false));
 
 	return array($relation, $editor);		
 }

@@ -1093,7 +1093,7 @@ class TupleSpanEditor extends TupleEditor {
 			}
 		}
 
-		return implode($this->attributeSeparator, $fields);
+		return "<i>Add</i>: " . implode($this->attributeSeparator, $fields);
 	}
 	
 	public function edit($idPath, $value) {

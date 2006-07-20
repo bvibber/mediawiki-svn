@@ -3,39 +3,100 @@
 require_once("attribute.php");
 
 global
-	$languageAttribute, $spellingAttribute, $textAttribute, $identicalMeaningAttribute, $sourceIdentifierAttribute, 
-	$collectionAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $expressionIdAttribute, $attributeAttribute,
-	$expressionAttribute, $visibleExpressionAttribute, $definitionIdAttribute, $alternativeDefinitionAttribute,
-	
-	$definitionAttribute, $definedMeaningIdAttribute, $definedMeaningAttribute, $alternativeDefinitionsAttribute, 
-	$synonymsAndTranslationsAttribute, $relationsAttribute, $attributesAttribute, $collectionMembershipAttribute,
-	$expressionMeaningsAttribute, $expressionsAttribute;
+	$languageAttribute, $spellingAttribute, $textAttribute;
 
-$expressionIdAttribute = new Attribute("expression-id", "Expression Id", "expression-id");
 $languageAttribute = new Attribute("language", "Language", "language");
 $spellingAttribute = new Attribute("spelling", "Spelling", "spelling");
+$textAttribute = new Attribute("text", "Text", "text");
+
+global
+	$expressionIdAttribute, $identicalMeaningAttribute;
+	
+$expressionIdAttribute = new Attribute("expression-id", "Expression Id", "expression-id");
+$identicalMeaningAttribute = new Attribute("indentical-meaning", "Identical meaning?", "boolean");
+
+global
+	$expressionAttribute;
+	
 $expressionAttribute = new Attribute("expression", "Expression", new TupleType(new Heading($languageAttribute, $spellingAttribute)));
 
-$textAttribute = new Attribute("text", "Text", "text");
-$identicalMeaningAttribute = new Attribute("indentical-meaning", "Identical meaning?", "boolean");
+global
+	$collectionAttribute, $sourceIdentifierAttribute;
+
 $collectionAttribute = new Attribute("collection", "Collection", "collection");
 $sourceIdentifierAttribute = new Attribute("source-identifier", "Source identifier", "short-text"); 
 
-$attributeAttribute = new Attribute("attribute", "Class", "attribute");
+global
+	$collectionMembershipAttribute;
+
+$collectionMembershipAttribute = new Attribute("collection-membership", "Collection membership", new RelationType(new Heading($collectionAttribute, $sourceIdentifierAttribute)));
+
+global
+	 $classAttribute;
+	 
+$classAttribute = new Attribute("class", "Class", "class");
+	
+global
+	$classMembershipAttribute;
+
+$classMembershipAttribute = new Attribute("class-membership", "Class membership", new RelationType(new Heading($classAttribute)));
+
+global
+	$relationTypeAttribute, $otherDefinedMeaningAttribute;
+	
 $relationTypeAttribute = new Attribute("relation-type", "Relation type", "relation-type"); 
 $otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", "defining-expression");
+
+global
+	$relationsAttribute, $relationHeading;
+	
+$relationHeading = new Heading($relationTypeAttribute, $otherDefinedMeaningAttribute);	
+$relationsAttribute = new Attribute("relations", "Relations", new RelationType($relationHeading));
+
+global
+	$translatedTextHeading;
+	
+$translatedTextHeading = new Heading($languageAttribute, $textAttribute);	
+
+global
+	$definitionIdAttribute, $alternativeDefinitionAttribute;
+
 $definitionIdAttribute = new Attribute("definition-id", "Definition identifier", "integer");
-$alternativeDefinitionAttribute = new Attribute("alternative-definition", "Alternative definition", new RelationType($alternativeDefinitionHeading));
+$alternativeDefinitionAttribute = new Attribute("alternative-definition", "Alternative definition", new RelationType($translatedTextHeading));
+
+global
+	$alternativeDefinitionsAttribute;
+	
+$alternativeDefinitionsAttribute = new Attribute("alternative-definitions", "Alternative definitions", new RelationType(new Heading($definitionIdAttribute, $alternativeDefinitionAttribute)));
+
+global
+	$definitionAttribute, $synonymsAndTranslationsAttribute;
+	
+$definitionAttribute = new Attribute("definition", "Definition", new RelationType($translatedTextHeading));
+$synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Synonyms and translations", new RelationType(new Heading($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute)));
+
+global
+	$attributeValueIdAttribute, $textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute;
+	
+$attributeValueIdAttribute = new Attribute("attribute-value-id", "Attribute value id", "attribute-value-id");
+$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "text-attribute");
+$textValueAttribute = new Attribute("text-value", "Text value", new RelationType(new Heading($languageAttribute, $textAttribute)));
+$textAttributeValuesAttribute = new Attribute("text-attribute-values", new RelationType(new Heading($attributeValueIdAttribute, $definedMeaningIdAttribute, $textAttributeAttribute, $textValueAttribute)), "text-attribute-values");
+
+global
+	$definedMeaningAttribute;
+		
+$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new TupleType(new Heading($definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute)));
+
+global
+	$definedMeaningIdAttribute, $expressionMeaningsAttribute;
 
 $definedMeaningIdAttribute = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
-$definitionAttribute = new Attribute("definition", "Definition", new RelationType(new Heading($languageAttribute, $textId)));
-$alternativeDefinitionsAttribute = new Attribute("alternative-definitions", "Alternative definitions", new RelationType(new Heading($definitionIdAttribute, $alternativeDefinitionAttribute)));
-$synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Synonyms and translations", new RelationType(new Heading($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute)));
-$relationsAttribute = new Attribute("relations", "Relations", new RelationType(new Heading($relationTypeAttribute, $otherDefinedMeaningAttribute)));
-$attributesAttribute = new Attribute("attributes", "Class membership", new RelationType(new Heading($attributeAttribute)));
-$collectionMembershipAttribute = new Attribute("collection-membership", "Collection membership", new RelationType(new Heading($collectionAttribute, $sourceIdentifierAttribute)));
-$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new TupleType(new Heading($definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute)));
 $expressionMeaningsAttribute = new Attribute("expression-meanings", "Defined meanings", new RelationType(new Heading($definedMeaningIdAttribute, $definedMeaningAttribute)));
+
+global
+	$expressionsAttribute;
+	
 $expressionsAttribute = new Attribute("expressions", "Expressions", new RelationType(new Heading($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute)));
 
 ?>
