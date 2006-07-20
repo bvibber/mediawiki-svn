@@ -243,11 +243,10 @@ class ImagePage extends Article {
 				if ($this->img->isSafeFile()) {
 					$icon= $this->img->iconThumb();
 
-					$wgOut->addHTML( '<div class="fullImageLink" id="file"><a href="' . $full_url . '">' .
+					$wgOut->addHTML( '<div title="download media" class="fullImageLink" id="file"><a href="' . $full_url . '">' .
 					$icon->toHtml() .
 					'</a></div>' );
 				}
-
 				$showLink = true;
 			}
 

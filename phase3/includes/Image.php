@@ -609,10 +609,12 @@ class Image
 	 */
 	function canRender() {
 		global $wgUseImageMagick;
-
+				#if its application/ogg (and we have wgEmbedOggEnabled) then return true:
+	
+		
 		if( $this->getWidth()<=0 || $this->getHeight()<=0 ) return false;
 
-		$mime= $this->getMimeType();
+		$mime= $this->getMimeType();			
 
 		if (!$mime || $mime==='unknown' || $mime==='unknown/unknown') return false;
 
@@ -627,7 +629,9 @@ class Image
 				wfDebug( "Image::canRender: SVG renderer missing\n" );
 			}
 		}
-
+		
+		
+		
 		#image formats available on ALL browsers
 		if (  $mime === 'image/gif'
 		   || $mime === 'image/png'
@@ -943,8 +947,12 @@ class Image
 	 */
 	function iconThumb() {
 		global $wgStylePath, $wgStyleDirectory;
-
-		$try = array( 'fileicon-' . $this->extension . '.png', 'fileicon.png' );
+		//try for file icon (load up custom download image for xiph audio/video media)
+		if($this->type==MEDIATYPE_VIDEO || $this->type==MEDIATYPE_AUDIO){
+			$try = array( 'download_xiph.png', 'fileicon.png' );
+		}else{
+			$try = array( 'fileicon-' . $this->extension . '.png', 'fileicon.png' );
+		}
 		foreach( $try as $icon ) {
 			$path = '/common/images/icons/' . $icon;
 			$filepath = $wgStyleDirectory . $path;
@@ -986,8 +994,7 @@ class Image
 		
 		$thumb = new ThumbnailImage( $this->getURL(), $this->getWidth(), $this->getHeight() );			
 		
-	
-				
+					
 		# Purge squid
 		# This has to be done after the image is updated and present for all machines on NFS,
 		# or else the old version might be stored into the squid again

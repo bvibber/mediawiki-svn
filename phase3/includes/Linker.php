@@ -771,16 +771,22 @@ class Linker {
 					}
 				}
 			}
-			$oboxwidth = $boxwidth + 2;*/
-		
+			$oboxwidth = $boxwidth + 2;*/			
 			$url  = $img->getViewURL();
 			
 			if ( $img->exists() ) {
 				$width  = $img->getWidth();
 				$height = $img->getHeight();
-			}
+			}			
 			if ( 0 == $width || 0 == $height ) {
-				$width = 320; $height = 240;
+				$width = 320; 
+				//deafult to 20 pixle height if audio format: 
+				
+				if($img->type == MEDIATYPE_AUDIO){
+					$height=20;			
+				}else{
+					$height = 240;	
+				}
 			}
 			//this may be usefull if we want to include a specific alternate image for the movie still.
 			if ( $options['manual_thumb'] != '' ) # Use manually specified thumbnail
@@ -806,22 +812,8 @@ class Linker {
 			$more = htmlspecialchars( wfMsg( 'thumbnail-more' ) );
 			$magnifyalign = $wgContLang->isRTL() ? 'left' : 'right';
 			$textalign = $wgContLang->isRTL() ? ' style="text-align:right"' : ' style="text-align:left"';
-	
-			//$s = "<div class=\"thumb t{$align}\"><div style=\"width:{$oboxwidth}px;\">";
-			//if( $thumbUrl == '' ) {
-				// Couldn't generate thumbnail? Scale the image client-side.
-			//	$thumbUrl = $url;
-			//}
 		
 			$s = "<div class=\"thumb t{$align}\"><div style=\"width:{$width}px;\">";
-			/*if ( $error ) {			
-				//old output for images that are missing or have errors
-				$s = '  <div class="thumbcaption"'.$textalign.'>'.$zoomicon.$label."</div></div></div>";
-				$s .= htmlspecialchars( $error );
-				$zoomicon = '';
-				$s .= '  <div class="thumbcaption"'.$textalign.'>'.$zoomicon.$label."</div></div></div>";
-				return str_replace("\n", ' ', $s);
-			} else*/
 			
 			if( !$img->exists() ) {
 				//output for images that are missing or have errors
@@ -845,14 +837,28 @@ class Linker {
 				
 				//$base_unique_name =str_replace('.', '_', $title->getDBkey());	//replace . with _ for DOM id compatibility
 				$base_unique_name = $wgEmbedCountId;
-				$width = (isset($options['width']))?$options['width']:'320';
-
+				//allow user overide: 
+				if(isset($options['width']))$width=$options['width'];				
+				if(isset($options['height']))$height =$options['height'];
+				
 				$oboxwidth=$width+10;
 				
-				$height = (isset($options['height']))?($options['height']):'240';
 				$div_height = $height+32; //32 the current height of the video control icons. 
-				$im_frame_url = $img->movieFrameUrl();
+				
 				$icon_path= $wgScriptPath . '/skins/common/images/icons/';
+				//if audio type build use the xiph image
+				if($img->type == MEDIATYPE_AUDIO){
+					$im_frame_url=$icon_path.'ogg_vorbis_audio_sm.png';
+					//height and width of ogg_vorbis_audio_sm.png is known: 
+					$height='20';
+					$width='200';
+					$stream_type = 'audio';
+				}else{
+					$im_frame_url = $img->movieFrameUrl();
+					$stream_type = 'video';
+				}
+				
+				
 				$u = $title->escapeLocalURL();
 				$alt = $options['alt'];
 							
@@ -861,8 +867,12 @@ class Linker {
 				$media_url =  "http://metavid.ucsc.edu" . $img->getUrl();					
 				
 				//do output: 			
+				$embed_out='';
+				
 				//@todo move embed media js include to <head> 
-				$embed_out ='<script type="'.$wgJsMimeType.'" src="'.$wgScriptPath.'/skins/common/embed_media.js"></script>';
+				if($wgEmbedCountId==1){
+					$embed_out.='<script type="'.$wgJsMimeType.'" src="'.$wgScriptPath.'/skins/common/embed_media.js"></script>';
+				}
 				//@todo plug-in sensative controls. (right now vlc primaraly supported)
 				//@todo put in language calls		
 				//@todo put in language left-to-right right-to-left styles.	
@@ -875,7 +885,7 @@ class Linker {
 					</div>
 					<div class="thumbcaption" {$textalign}>														
 						<div id="magnify_{$base_unique_name}" class="magnify" style="width:54px;float:{$magnifyalign};">
-							<a id="play_{$base_unique_name}" title="play media" href="javascript:auto_embed('{$base_unique_name}', '{$media_url}')">
+							<a id="play_{$base_unique_name}" title="play media" href="javascript:auto_embed({target:'{$base_unique_name}',media_url:'{$media_url}',stream_type:'{$stream_type}'})">
 								<img style="float:right" src="{$icon_path}vid_play_sm.png">
 							</a>
 							<span id="cnt_{$base_unique_name}" style="display:none;">

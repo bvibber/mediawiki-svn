@@ -32,72 +32,80 @@ var is_ie5up = (is_ie && (is_major == 4)
 	EMBED FUNCTIONS: 
 	replace a target with a emebed type and provided url.
 */
-function auto_embed(target, url, opt){
+function auto_embed(opt){
 	//@todo don't be clickable untill document done loading:
 	
 	if(!opt){
-		//set default options if not provided:
 		opt = new Array();
-		opt['width']='320';
-		opt['height']='240';
-		opt['autoplay']=false;
-		opt['duration']=30; //default durration of 30 seconds (required for seeking in cortado player)
 	}
+	//get the width and height from the thumbnail image frame: 
+	img = document.getElementById("img_"+opt['target']);
+	//set default options if not provided:
+	if(!opt['width'])opt['width']=img.getAttribute("width");
+	if(!opt['height'])opt['height']=img.getAttribute("height");
+	if(!opt['duration'])opt['duration']=30; //default durration of 30 seconds (required for seeking in cortado player)
+	
+
 	//force jre:
 	//detect plugin avalibilty
 	var embed_type = detect_client_plugins();
 	//draw given plugin type: 
 	//document.getElementById(target).innerHTML='play with:'+embed_type +' url: ' + url;
-	if(!document.getElementById("div_" + target)){
-		alert('error can\'t find target: ' + target);
+
+	if(!document.getElementById("div_" + opt['target'])){
+		alert('error can\'t find target: ' + opt['target']);
 	}else{
 		if(embed_type){	
-			eval(embed_type + "_embed(target, url, opt)");
+			eval(embed_type + "_embed(opt)");
 		}else{
-			document.getElementById("div_" + target).innerHTML='no valid ogg theora decoders found for your platform<br>'+
-				'please visit <a href="#">embed video help page</a> for more details';
+			//make it large enough for text
+			//document.getElementById("div_" + opt['target']).style.height='320px';
+			//document.getElementById("div_" + opt['target']).style.width='240px';
+			document.getElementById("div_" + opt['target']).innerHTML='<span style="text-align:left">no ogg theora decoders found for your platform<br>'+
+				'please visit <a href="#">embed video help page</a> for more details' +
+				'<BR> you can download this file on the info page:</span>';
 		}
 	}
 }
 
 
 //annodex is virtualy the same as vlc with a slightly diffrent embed_type:
-function anx_embed(target, media_url, opt){
+function anx_embed(opt){
 	//alert('anx_embed');
 	opt['embed_type']='application/x-annodex-vlc-viewer-plugin';
-	return vlc_embed(target, media_url, opt);
+	return vlc_embed(opt);
 }
 //vlc embed: 
-function vlc_embed(target, media_url, opt){	
+function vlc_embed(opt){	
 	//first insert the embed element
 	if(!opt['embed_type']){
 		opt['embed_type']='application/x-vlc-plugin';
 	}	
-	var vid_id = target+"_ebVid";
-	
+	var vid_id = opt['target'] + "_ebVid";
+
 	//<embed type="<?=$embedType?>" id="video1" autoplay="no" loop="no" height="<?=$height?>" width="<?=$width?>"> 
 	var eb = document.createElement("embed");
 	eb.type=opt['embed_type'];
 	//eb.id="video_" + target;
-	eb.id="video_" + target;
+	eb.id="video_" + opt['target'];
 	eb.height=opt['height'];
 	eb.width=opt['width'];
-	
+	//alert('embed: height: ' + eb.height + ' widht: ' + opt['width']);
 	//replace the image with the embed: 
-	document.getElementById("div_"+target).innerHTML="";		
-	document.getElementById("div_"+target).appendChild(eb);
+	document.getElementById("div_"+opt['target']).innerHTML="";		
+	document.getElementById("div_"+opt['target']).appendChild(eb);
 	
 	
 	//hide the auto_embed play button: 
-	document.getElementById("play_"+target).style.display='none';
+	document.getElementById("play_"+opt['target']).style.display='none';
 	//div_parent.appendChild(div_cnt);
 	
 	//expand the magnified section to give space for the controls: 
-	document.getElementById("magnify_"+target).style.width='145px';
+	document.getElementById("magnify_"+opt['target']).style.width='145px';
 	//show the controls:	
-	document.getElementById("cnt_" + target).style.display='inline';
+	document.getElementById("cnt_" + opt['target']).style.display='inline';
 	
-	setTimeout('run_vlc(\''+target+'\',\''+media_url+'\')', 200);
+	setTimeout('run_vlc(\''+opt['target']+'\',\''+opt['media_url']+'\')', 200);
 }
 	
 function run_vlc(target, media_url){
@@ -114,7 +122,7 @@ function run_vlc(target, media_url){
 	document.video_Launch_of_Skylab_ogg.add_item(media_url);
 	document.video_Launch_of_Skylab_ogg.play();*/
 }
-function jre_embed(target, media_url, opt){
+function jre_embed(opt){
 	//alert(target+","+ media_url+","+ opt);
 	
 	//var eb = document.createElement("applet");
@@ -126,26 +134,30 @@ function jre_embed(target, media_url, opt){
 	//need to build an iframe include only really deal with java security issues
 	//@todo make sure the embed code is coming from the same server as the media
 	var iframe = document.createElement("iframe");
-	iframe.width=320; //opt['width'];
-	iframe.height=244; //opt['height'];
+	iframe.width=opt['width'];
+	//add 4 pixles for the iframe controls) 
+	iframe.height=opt['height']+4;
 	iframe.frameborder=0;
 	iframe.scrolling='no';
 	iframe.MARGINWIDTH=0;
 	iframe.MARGINHEIGHT=0;
 
+	if(!opt['stream_type'])opt['stream_type']='video';
 
 	//@todo load in the path and server url from mediaWiki
 	var cortado_src = 'http://metavid.ucsc.edu/wiki_dev/phase3/embed/cortado_embed.php';
-	cortado_src+= "?media_url=" + media_url;
+	cortado_src+= "?media_url=" + opt['media_url'];
+	cortado_src+= "&stream_type=" + opt['stream_type'];
 	cortado_src+= "&width=" + opt['width'] + "&height=" + opt['height'];
-		
+	
+	//document.write(cortado_src);
 	iframe.src=cortado_src;
 	
 	//wiki_dev/phase3/embed/cortado_embed.php?media_url=http://metavid.ucsc.edu/wiki_dev/phase3/images/3/38/Launch_of_Skylab.ogg
-	info_div = document.getElementById("info_"+target);
+	info_div = document.getElementById("info_"+opt['target']);
 	
-	document.getElementById("div_" + target).innerHTML="";
-	document.getElementById("div_" + target).appendChild(iframe);
+	document.getElementById("div_" + opt['target']).innerHTML="";
+	document.getElementById("div_" + opt['target']).appendChild(iframe);
 
 	//document.getElementById("div_" + target).appendChild(info_div);
 	
@@ -192,6 +204,11 @@ function detect_applet(){
 	//the general method to detect Enabled java: (works well if we don't need version info)
 	if(navigator.javaEnabled() == 1){
 		return 'jre';	
+	}else{
+		//navigator.javaEnabled should alwayse work for nav6up so return null
+		if(is_nav6up){
+			return null;	
+		}
 	}
 	
 	// we can check for plugin existence only when browser is 'is_ie5up' or 'is_nav4up'
