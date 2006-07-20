@@ -15,7 +15,7 @@ class BoardVotePage extends SpecialPage {
 	var $mHasVoted, $mAction, $mUserKey, $mId, $mFinished;
 
 	function BoardVotePage() {
-		SpecialPage::SpecialPage( "BoardVote" );
+		SpecialPage::SpecialPage( "Boardvote" );
 	}
 
 	function execute( $par ) {

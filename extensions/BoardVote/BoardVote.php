@@ -27,6 +27,6 @@ $wgGroupPermissions['boardvote']['boardvote'] = true;
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
-extAddSpecialPage( dirname(__FILE__) . '/BoardVote_body.php', 'BoardVote', 'BoardVotePage' );
+extAddSpecialPage( dirname(__FILE__) . '/BoardVote_body.php', 'Boardvote', 'BoardVotePage' );
 
 ?>
