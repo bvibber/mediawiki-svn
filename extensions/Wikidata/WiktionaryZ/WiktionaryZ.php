@@ -218,7 +218,7 @@ class DefinedMeaningCollectionController implements Controller {
 		$collectionId = $tuple->getAttributeValue($collectionAttribute);
 		$internalId = $tuple->getAttributeValue($sourceIdentifierAttribute);
 		
-		if ($internalId != "")
+		if ($collectionId != 0)
 			addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectionId, $internalId, $revisionId);
 	}	
 
@@ -240,7 +240,7 @@ class DefinedMeaningCollectionController implements Controller {
 		$collectionId = $keyPath->peek(0)->getAttributeValue($collectionAttribute);
 		$sourceId = $tuple->getAttributeValue($sourceIdentifierAttribute);
 		
-		if ($sourceId != "")
+//		if ($sourceId != "")
 			updateDefinedMeaningInCollection($definedMeaningId, $collectionId, $sourceId);
 	}
 }
