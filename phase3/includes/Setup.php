@@ -36,15 +36,9 @@ wfInstallExceptionHandler();
 wfProfileOut( $fname.'-exception' );
 
 wfProfileIn( $fname.'-includes' );
-
 require_once( "$IP/includes/GlobalFunctions.php" );
 require_once( "$IP/includes/Hooks.php" );
 require_once( "$IP/includes/Namespace.php" );
-require_once( "$IP/includes/User.php" );
-require_once( "$IP/includes/OutputPage.php" );
-require_once( "$IP/includes/MessageCache.php" );
-require_once( "$IP/includes/Parser.php" );
-require_once( "$IP/includes/LoadBalancer.php" );
 require_once( "$IP/includes/ProxyTools.php" );
 require_once( "$IP/includes/ObjectCache.php" );
 require_once( "$IP/includes/ImageFunctions.php" );
@@ -52,8 +46,127 @@ require_once( "$IP/includes/ImageFunctions.php" );
 wfProfileOut( $fname.'-includes' );
 wfProfileIn( $fname.'-misc1' );
 
+class StubObject {
+	var $mGlobal, $mClass, $mParams;
+	function __construct( $global = null, $class = null, $params = array() ) {
+		$this->mGlobal = $global;
+		$this->mClass = $class;
+		$this->mParams = $params;
+	}
+
+	static function _getCaller( $level ) {
+		$backtrace = debug_backtrace();
+		if ( isset( $backtrace[$level] ) ) {
+			if ( isset( $backtrace[$level]['class'] ) ) {
+				$caller = $backtrace[$level]['class'] . '::' . $backtrace[$level]['function'];
+			} else {
+				$caller = $backtrace[$level]['function'];
+			}
+		} else {
+			$caller = 'unknown';
+		}
+		return $caller;
+	}
+
+	function _call( $name, $args ) {
+		$this->_unstub( $name, 5 );
+		return call_user_func_array( array( $GLOBALS[$this->mGlobal], $name ), $args );
+	}
+
+	function _newObject() {
+		return wfCreateObject( $this->mClass, $this->mParams );
+	}
+	
+	function __call( $name, $args ) {
+		return $this->_call( $name, $args );
+	}
+
+	/**
+	 * This is public, for the convenience of external callers wishing to access 
+	 * properties, e.g. eval.php
+	 */
+	function _unstub( $name = '_unstub', $level = 2 ) {
+		if ( get_class( $GLOBALS[$this->mGlobal] ) != $this->mClass ) {
+			$fname = __METHOD__.'-'.$this->mGlobal;
+			wfProfileIn( $fname );
+			$caller = self::_getCaller( $level );
+			wfDebug( "Unstubbing \${$this->mGlobal} on call of {$this->mGlobal}->$name from $caller\n" );
+			$GLOBALS[$this->mGlobal] = $this->_newObject();
+			wfProfileOut( $fname );
+		}
+	}
+}
+
+class StubContLang extends StubObject {
+	function __construct() {
+		parent::__construct( 'wgContLang' );
+	}
+
+	function __call( $name, $args ) {
+		return StubObject::_call( $name, $args );
+	}
+
+	function _newObject() {
+		global $wgContLanguageCode;
+		$obj = wfNewLangObj( $wgContLanguageCode );
+		$obj->initEncoding();
+		$obj->initContLang();
+		return $obj;
+	}
+}
+class StubUserLang extends StubObject {
+	function __construct() {
+		parent::__construct( 'wgLang' );
+	}
+
+	function __call( $name, $args ) {
+		return $this->_call( $name, $args );
+	}
+
+	function _newObject() {
+		global $wgLanguageCode, $wgContLanguageCode, $wgRequest, $wgUser, $wgContLang;
+		// wgLanguageCode now specifically means the UI language
+		$wgLanguageCode = $wgRequest->getText('uselang', '');
+		if ($wgLanguageCode == '')
+			$wgLanguageCode = $wgUser->getOption('language');
+		# Validate $wgLanguageCode
+		if( empty( $wgLanguageCode ) || !preg_match( '/^[a-z]+(-[a-z]+)?$/', $wgLanguageCode ) ) {
+			$wgLanguageCode = $wgContLanguageCode;
+		}
+
+		if( $wgLanguageCode == $wgContLanguageCode ) {
+			return $wgContLang;
+		} else {
+			$obj = wfNewLangObj( $wgLanguageCode );
+			$obj->initEncoding();
+			return $obj;
+		}
+	}
+}
+class StubUser extends StubObject {
+	function __construct() {
+		parent::__construct( 'wgUser' );
+	}
+
+	function __call( $name, $args ) {
+		return $this->_call( $name, $args );
+	}
+	
+	function _newObject() {
+		global $wgCommandLineMode;
+		if( $wgCommandLineMode ) {
+			$user = new User;
+			$user->setLoaded( true );
+		} else {
+			$user = User::loadFromSession();
+		}
+		return $user;
+	}
+}
+
 $wgIP = false; # Load on demand
-$wgRequest = new WebRequest();
+# Can't stub this one, it sets up $_GET and $_REQUEST in its constructor
+$wgRequest = new WebRequest;
 if ( function_exists( 'posix_uname' ) ) {
 	$wguname = posix_uname();
 	$wgNodeName = $wguname['nodename'];
@@ -63,7 +176,7 @@ if ( function_exists( 'posix_uname' ) ) {
 
 # Useful debug output
 if ( $wgCommandLineMode ) {
-	# wfDebug( '"' . implode( '"  "', $argv ) . '"' );
+	wfDebug( "\n\nStart command line script\n" );
 } elseif ( function_exists( 'getallheaders' ) ) {
 	wfDebug( "\n\nStart request\n" );
 	wfDebug( $_SERVER['REQUEST_METHOD'] . ' ' . $_SERVER['REQUEST_URI'] . "\n" );
@@ -81,6 +194,10 @@ if ( $wgSkipSkin ) {
 }
 
 $wgUseEnotif = $wgEnotifUserTalk || $wgEnotifWatchlist;
+
+if($wgMetaNamespace === FALSE) {
+	$wgMetaNamespace = str_replace( ' ', '_', $wgSitename );
+}
 
 wfProfileOut( $fname.'-misc1' );
 wfProfileIn( $fname.'-memcached' );
@@ -111,7 +228,7 @@ if( !ini_get( 'session.auto_start' ) )
 
 if( !$wgCommandLineMode && ( isset( $_COOKIE[session_name()] ) || isset( $_COOKIE[$wgCookiePrefix.'Token'] ) ) ) {
 	wfIncrStats( 'request_with_session' );
-	User::SetupSession();
+	wfSetupSession();
 	$wgSessionStarted = true;
 } else {
 	wfIncrStats( 'request_without_session' );
@@ -119,7 +236,7 @@ if( !$wgCommandLineMode && ( isset( $_COOKIE[session_name()] ) || isset( $_COOKI
 }
 
 wfProfileOut( $fname.'-SetupSession' );
-wfProfileIn( $fname.'-database' );
+wfProfileIn( $fname.'-globals' );
 
 if ( !$wgDBservers ) {
 	$wgDBservers = array(array(
@@ -132,47 +249,23 @@ if ( !$wgDBservers ) {
 		'flags' => ($wgDebugDumpSql ? DBO_DEBUG : 0) | DBO_DEFAULT
 	));
 }
-$wgLoadBalancer = LoadBalancer::newFromParams( $wgDBservers, false, $wgMasterWaitTimeout );
-$wgLoadBalancer->loadMasterPos();
-
-wfProfileOut( $fname.'-database' );
-wfProfileIn( $fname.'-language1' );
-
-require_once( "$IP/languages/Language.php" );
-
-function setupLangObj($langclass) {
-	global $IP;
-
-	if( ! class_exists( $langclass ) ) {
-		# Default to English/UTF-8
-		$baseclass = 'LanguageUtf8';
-		require_once( "$IP/languages/$baseclass.php" );
-		$lc = strtolower(substr($langclass, 8));
-		$snip = "
-			class $langclass extends $baseclass {
-				function getVariants() {
-					return array(\"$lc\");
-				}
-
-			}";
-		eval($snip);
-	}
-
-	$lang = new $langclass();
-
-	return $lang;
-}
 
 # $wgLanguageCode may be changed later to fit with user preference.
 # The content language will remain fixed as per the configuration,
 # so let's keep it.
 $wgContLanguageCode = $wgLanguageCode;
-$wgContLangClass = 'Language' . str_replace( '-', '_', ucfirst( $wgContLanguageCode ) );
 
-$wgContLang = setupLangObj( $wgContLangClass );
-$wgContLang->initEncoding();
+$wgLoadBalancer = new StubObject( 'wgLoadBalancer', 'LoadBalancer', 
+	array( $wgDBservers, false, $wgMasterWaitTimeout, true ) );
+$wgContLang = new StubContLang;
+$wgUser = new StubUser;
+$wgLang = new StubUserLang;
+$wgOut = new StubObject( 'wgOut', 'OutputPage' );
+$wgParser = new StubObject( 'wgParser', 'Parser' );
+$wgMessageCache = new StubObject( 'wgMessageCache', 'MessageCache', 
+	array( $parserMemc, $wgUseDatabaseMessages, $wgMsgCacheExpiry, $wgDBname) );
 
-wfProfileOut( $fname.'-language1' );
+wfProfileOut( $fname.'-globals' );
 wfProfileIn( $fname.'-User' );
 
 # Skin setup functions
@@ -184,98 +277,20 @@ foreach ( $wgSkinExtensionFunctions as $func ) {
 }
 
 if( !is_object( $wgAuth ) ) {
-	require_once( 'AuthPlugin.php' );
-	$wgAuth = new AuthPlugin();
+	$wgAuth = new StubObject( 'wgAuth', 'AuthPlugin' );
 }
-
-if( $wgCommandLineMode ) {
-	# Used for some maintenance scripts; user session cookies can screw things up
-	# when the database is in an in-between state.
-	$wgUser = new User();
-	# Prevent loading User settings from the DB.
-	$wgUser->setLoaded( true );
-} else {
-	$wgUser = null;
-	wfRunHooks('AutoAuthenticate',array(&$wgUser));
-	if ($wgUser === null) {
-		$wgUser = User::loadFromSession();
-	}
-}
-
 wfProfileOut( $fname.'-User' );
-wfProfileIn( $fname.'-language2' );
 
-// wgLanguageCode now specifically means the UI language
-$wgLanguageCode = $wgRequest->getText('uselang', '');
-if ($wgLanguageCode == '')
-	$wgLanguageCode = $wgUser->getOption('language');
-# Validate $wgLanguageCode, which will soon be sent to an eval()
-if( empty( $wgLanguageCode ) || !preg_match( '/^[a-z]+(-[a-z]+)?$/', $wgLanguageCode ) ) {
-	$wgLanguageCode = $wgContLanguageCode;
-}
-
-$wgLangClass = 'Language'. str_replace( '-', '_', ucfirst( $wgLanguageCode ) );
-
-if( $wgLangClass == $wgContLangClass ) {
-	$wgLang = &$wgContLang;
-} else {
-	wfSuppressWarnings();
-	// Preload base classes to work around APC/PHP5 bug
-	include_once("$IP/languages/$wgLangClass.deps.php");
-	include_once("$IP/languages/$wgLangClass.php");
-	wfRestoreWarnings();
-
-	$wgLang = setupLangObj( $wgLangClass );
-}
-
-wfProfileOut( $fname.'-language2' );
-wfProfileIn( $fname.'-MessageCache' );
-
-$wgMessageCache = new MessageCache( $parserMemc, $wgUseDatabaseMessages, $wgMsgCacheExpiry, $wgDBname);
-
-wfProfileOut( $fname.'-MessageCache' );
-
-#
-# I guess the warning about UI switching might still apply...
-#
-# FIXME: THE ABOVE MIGHT BREAK NAMESPACES, VARIABLES,
-# SEARCH INDEX UPDATES, AND MANY MANY THINGS.
-# DO NOT USE THIS MODE EXCEPT FOR TESTING RIGHT NOW.
-#
-# To disable it, the easiest thing could be to uncomment the
-# following; they should effectively disable the UI switch functionality
-#
-# $wgLangClass = $wgContLangClass;
-# $wgLanguageCode = $wgContLanguageCode;
-# $wgLang = $wgContLang;
-#
-# TODO: Need to change reference to $wgLang to $wgContLang at proper
-#       places, including namespaces, dates in signatures, magic words,
-#       and links
-#
-# TODO: Need to look at the issue of input/output encoding
-#
-
-
-wfProfileIn( $fname.'-OutputPage' );
-
-$wgOut = new OutputPage();
-
-wfProfileOut( $fname.'-OutputPage' );
 wfProfileIn( $fname.'-misc2' );
 
 $wgDeferredUpdateList = array();
 $wgPostCommitUpdateList = array();
 
-$wgParser = new Parser();
-
-$wgOut->setParserOptions( ParserOptions::newFromUser( $wgUser ) );
-$wgMsgParserOptions = ParserOptions::newFromUser($wgUser);
 wfSeedRandom();
 
 # Placeholders in case of DB error
-$wgTitle = Title::makeTitle( NS_SPECIAL, 'Error' );
-$wgArticle = new Article($wgTitle);
+$wgTitle = null;
+$wgArticle = null;
 
 wfProfileOut( $fname.'-misc2' );
 wfProfileIn( $fname.'-extensions' );
@@ -295,7 +310,7 @@ wfRunHooks( 'LogPageLogHeader', array( &$wgLogHeaders ) );
 wfRunHooks( 'LogPageActionText', array( &$wgLogActions ) );
 
 
-wfDebug( "\n" );
+wfDebug( "Fully initialised\n" );
 $wgFullyInitialised = true;
 wfProfileOut( $fname.'-extensions' );
 wfProfileOut( $fname );

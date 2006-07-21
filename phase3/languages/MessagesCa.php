@@ -1,7 +1,45 @@
 <?php
+$quickbarSettings = array(
+	"Cap", "Fixa a la dreta", "Fixa a l'esquerra", "Surant a l'esquerra"
+);
+$skinNames = array(
+	'standard' => "Estàndard",
+	'nostalgia' => "Nostàlgia",
+	'cologneblue' => "Colònia blava",
+);
 
-global $wgAllMessagesCa;
-$wgAllMessagesCa = array(
+$bookstoreList = array(
+	'Catàleg Col·lectiu de les Universitats de Catalunya' => 'http://ccuc.cbuc.es/cgi-bin/vtls.web.gateway?searchtype=control+numcard&searcharg=$1',
+	'Totselsllibres.com' => 'http://www.totselsllibres.com/tel/publi/busquedaAvanzadaLibros.do?ISBN=$1',
+	'inherit' => true,
+);
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Especial',
+	NS_MAIN           => '',
+	NS_TALK           => 'Discussió',
+	NS_USER           => 'Usuari',
+	NS_USER_TALK      => 'Usuari_Discussió',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_Discussió',
+	NS_IMAGE          => 'Imatge',
+	NS_IMAGE_TALK     => 'Imatge_Discussió',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'MediaWiki_Discussió',
+	NS_TEMPLATE       => 'Plantilla',
+	NS_TEMPLATE_TALK  => 'Plantilla_Discussió',
+	NS_HELP           => 'Ajuda',
+	NS_HELP_TALK      => 'Ajuda_Discussió',
+	NS_CATEGORY       => 'Categoria',
+	NS_CATEGORY_TALK  => 'Categoria_Discussió'
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+
+$abbreviateMonth = true;
+$linkTrail = '/^([a-zàèéíòóúç·ïü\']+)(.*)$/sDu';
+
+$messages = array(
 'tog-underline'         => 'Subratlla els enllaços:',
 'tog-highlightbroken'   => 'Formata els enllaços trencats  <a href="" class="new">d\'aquesta manera</a> (altrament, es faria d\'aquesta altra manera<a href="" class="internal">?</a>).',
 'tog-justify'           => 'Alineació justificada dels paràgrafs',

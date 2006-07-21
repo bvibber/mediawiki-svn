@@ -259,7 +259,7 @@ function wfLogProfilingData() {
 			$forward .= ' from ' . $_SERVER['HTTP_FROM'];
 		if( $forward )
 			$forward = "\t(proxied via {$_SERVER['REMOTE_ADDR']}{$forward})";
-		if( is_object($wgUser) && $wgUser->isAnon() )
+		if( is_object($wgUser) && get_class($wgUser) == 'User' && $wgUser->isAnon() )
 			$forward .= ' anon';
 		$log = sprintf( "%s\t%04.3f\t%s\n",
 		  gmdate( 'YmdHis' ), $elapsed,
@@ -438,7 +438,7 @@ function wfMsgWeirdKey ( $key ) {
  * @private
  */
 function wfMsgGetKey( $key, $useDB, $forContent = false, $transform = true ) {
-	global $wgParser, $wgMsgParserOptions, $wgContLang, $wgMessageCache, $wgLang;
+	global $wgParser, $wgContLang, $wgMessageCache, $wgLang;
 
 	if ( is_object( $wgMessageCache ) )
 		$transstat = $wgMessageCache->getTransform();
@@ -465,7 +465,7 @@ function wfMsgGetKey( $key, $useDB, $forContent = false, $transform = true ) {
 		if($message === false)
 			$message = Language::getMessage($key);
 		if ( $transform && strstr( $message, '{{' ) !== false ) {
-			$message = $wgParser->transformMsg($message, $wgMsgParserOptions);
+			$message = $wgParser->transformMsg($message, $wgMessageCache->getParserOptions() );
 		}
 	}
 
@@ -2009,6 +2009,55 @@ function wfGetHTTP( $url, $timeout = 'default' ) {
 }
 function wfIsLocalURL( $url ) { 
 	return Http::isLocalURL( $url ); 
+}
+
+/**
+ * Create a language object for a given language code
+ */
+function wfNewLangObj( $code, $recursionLevel = 0 ) {
+	global $IP;
+	
+	if ( $code == 'en' ) {
+		$class = 'Language';
+	} else {
+		$class = 'Language' . str_replace( '-', '_', ucfirst( $code ) );
+		// Preload base classes to work around APC/PHP5 bug
+		wfSuppressWarnings();
+		include_once("$IP/languages/$class.deps.php");
+		include_once("$IP/languages/$class.php");
+		wfRestoreWarnings();
+	}
+
+	if ( $recursionLevel > 50 ) {
+		throw new MWException( "Language fallback loop detected when creating class $class\n" );
+	}	
+
+	if( ! class_exists( $class ) ) {
+		$fallback = Language::getFallbackFor( $code );
+		$lang = wfNewLangObj( $fallback, $recursionLevel + 1 );
+		$lang->setCode( $code );
+	} else {
+		$lang = new $class;
+	}
+
+	return $lang;
+}
+
+/**
+ * Initialise php session
+ */
+function wfSetupSession() {
+	global $wgSessionsInMemcached, $wgCookiePath, $wgCookieDomain;
+	if( $wgSessionsInMemcached ) {
+		require_once( 'MemcachedSessions.php' );
+	} elseif( 'files' != ini_get( 'session.save_handler' ) ) {
+		# If it's left on 'user' or another setting from another
+		# application, it will end up failing. Try to recover.
+		ini_set ( 'session.save_handler', 'files' );
+	}
+	session_set_cookie_params( 0, $wgCookiePath, $wgCookieDomain );
+	session_cache_limiter( 'private, must-revalidate' );
+	@session_start();
 }
 
 ?>

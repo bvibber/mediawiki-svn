@@ -14,8 +14,6 @@
 require_once( "LanguageConverter.php" );
 require_once( "LanguageSr_ec.php" );
 require_once( "LanguageSr_el.php" );
-require_once( "LanguageSr_jc.php" );
-require_once( "LanguageSr_jl.php" );
 
 class SrConverter extends LanguageConverter {
 	var $mToLatin = array(
@@ -215,10 +213,5 @@ class LanguageSr extends LanguageSr_ec {
 	function getVariantname( $code ) {
 		return wfMsg( "variantname-$code" );
 	}
-
-	function linkTrail() {
-		return "/^([abvgdđežzijklljmnnjoprstćufhcčdžšабвгдђежзијклљмнњопрстћуфхцчџш]+)(.*)$/usD";
-	}
-
 }
 ?>

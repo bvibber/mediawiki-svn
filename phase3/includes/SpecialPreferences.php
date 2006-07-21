@@ -74,7 +74,7 @@ class PreferencesForm {
 		# User toggles  (the big ugly unsorted list of checkboxes)
 		$this->mToggles = array();
 		if ( $this->mPosted ) {
-			$togs = $wgLang->getUserToggles();
+			$togs = User::getToggles();
 			foreach ( $togs as $tname ) {
 				$this->mToggles[$tname] = $request->getCheck( "wpOp$tname" ) ? 1 : 0;
 			}
@@ -371,7 +371,7 @@ class PreferencesForm {
 		$this->mUnderline = $wgUser->getOption( 'underline' );
 		$this->mWatchlistDays = $wgUser->getOption( 'watchlistdays' );
 
-		$togs = $wgLang->getUserToggles();
+		$togs = User::getToggles();
 		foreach ( $togs as $tname ) {
 			$ttext = wfMsg('tog-'.$tname);
 			$this->mToggles[$tname] = $wgUser->getOption( $tname );
@@ -471,7 +471,7 @@ class PreferencesForm {
 		$skinNames = $wgLang->getSkinNames();
 		$mathopts = $wgLang->getMathNames();
 		$dateopts = $wgLang->getDateFormats();
-		$togs = $wgLang->getUserToggles();
+		$togs = User::getToggles();
 
 		$titleObj = Title::makeTitle( NS_SPECIAL, 'Preferences' );
 		$action = $titleObj->escapeLocalURL();
@@ -764,20 +764,20 @@ class PreferencesForm {
 			<legend>" . wfMsg( 'files' ) . "</legend>
 			<div><label for='wpImageSize'>" . wfMsg('imagemaxsize') . "</label> <select id='wpImageSize' name='wpImageSize'>");
 
-			$imageLimitOptions = null;
-			foreach ( $wgImageLimits as $index => $limits ) {
-				$selected = ($index == $this->mImageSize) ? 'selected="selected"' : '';
-				$imageLimitOptions .= "<option value=\"{$index}\" {$selected}>{$limits[0]}×{$limits[1]}". wfMsgHtml('unit-pixel') ."</option>\n";
-			}
+		$imageLimitOptions = null;
+		foreach ( $wgImageLimits as $index => $limits ) {
+			$selected = ($index == $this->mImageSize) ? 'selected="selected"' : '';
+			$imageLimitOptions .= "<option value=\"{$index}\" {$selected}>{$limits[0]}×{$limits[1]}". wfMsgHtml('unit-pixel') ."</option>\n";
+		}
 
-			$imageThumbOptions = null;
-			$wgOut->addHTML( "{$imageLimitOptions}</select></div>
-				<div><label for='wpThumbSize'>" . wfMsg('thumbsize') . "</label> <select name='wpThumbSize' id='wpThumbSize'>");
-			foreach ( $wgThumbLimits as $index => $size ) {
-				$selected = ($index == $this->mThumbSize) ? 'selected="selected"' : '';
-				$imageThumbOptions .= "<option value=\"{$index}\" {$selected}>{$size}". wfMsgHtml('unit-pixel') ."</option>\n";
-			}
-			$wgOut->addHTML( "{$imageThumbOptions}</select></div></fieldset>\n\n");
+		$imageThumbOptions = null;
+		$wgOut->addHTML( "{$imageLimitOptions}</select></div>
+			<div><label for='wpThumbSize'>" . wfMsg('thumbsize') . "</label> <select name='wpThumbSize' id='wpThumbSize'>");
+		foreach ( $wgThumbLimits as $index => $size ) {
+			$selected = ($index == $this->mThumbSize) ? 'selected="selected"' : '';
+			$imageThumbOptions .= "<option value=\"{$index}\" {$selected}>{$size}". wfMsgHtml('unit-pixel') ."</option>\n";
+		}
+		$wgOut->addHTML( "{$imageThumbOptions}</select></div></fieldset>\n\n");
 
 		# Date format
 		#
@@ -790,8 +790,8 @@ class PreferencesForm {
 			$wgOut->addHTML( "<fieldset>\n<legend>" . wfMsg( 'dateformat' ) . "</legend>\n" );
 			$idCnt = 0;
 			$epoch = '20010115161234'; # Wikipedia day
-			foreach($dateopts as $key => $option) {
-				if( $key == MW_DATE_DEFAULT ) {
+			foreach( $dateopts as $key ) {
+				if( $key == 'default' ) {
 					$formatted = wfMsgHtml( 'datedefault' );
 				} else {
 					$formatted = htmlspecialchars( $wgLang->timeanddate( $epoch, false, $key ) );

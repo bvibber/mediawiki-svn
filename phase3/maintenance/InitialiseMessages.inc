@@ -13,7 +13,7 @@
 /** */
 function initialiseMessages( $overwrite = false, $messageArray = false ) {
 	global $wgContLang, $wgContLanguageCode;
-	global $wgContLangClass, $wgAllMessagesEn;
+	global $wgContLangClass;
 	global $wgDisableLangConversion;
 	global $wgForceUIMsgAsContentMsg;
 	global $wgLanguageNames;
@@ -26,7 +26,7 @@ function initialiseMessages( $overwrite = false, $messageArray = false ) {
 	if ( $messageArray ) {
 		$sortedArray = $messageArray;
 	} else {
-		$sortedArray = $wgAllMessagesEn;
+		$sortedArray = Language::getMessagesFor( 'en' );
 	}
 
 	ksort( $sortedArray );
@@ -74,7 +74,7 @@ function initialiseMessages( $overwrite = false, $messageArray = false ) {
 
 /** */
 function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
-	global $wgContLang, $wgScript, $wgServer, $wgAllMessagesEn;
+	global $wgContLang, $wgScript, $wgServer;
 	global $wgOut, $wgArticle, $wgUser;
 	global $wgMessageCache, $wgMemc, $wgDBname, $wgUseMemCached;
 
@@ -108,12 +108,12 @@ function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
 	$timestamp = wfTimestampNow();
 
 	#$sql = "SELECT cur_title,cur_is_new,cur_user_text FROM $cur WHERE cur_namespace=$ns AND cur_title IN(";
-	# Get keys from $wgAllMessagesEn, which is more complete than the local language
+	# Get keys from Language::getMessagesFor( 'en' ), which is more complete than the local language
 	$first = true;
 	if ( $messageArray ) {
 		$sortedArray = $messageArray;
 	} else {
-		$sortedArray = $wgAllMessagesEn;
+		$sortedArray = Language::getMessagesFor( 'en' );
 	}
 
 	ksort( $sortedArray );

@@ -5,9 +5,6 @@
   */
 require_once( "LanguageConverter.php" );
 require_once( "LanguageZh_cn.php");
-require_once( "LanguageZh_tw.php");
-require_once( "LanguageZh_sg.php");
-require_once( "LanguageZh_hk.php");
 
 class ZhConverter extends LanguageConverter {
 	function loadDefaultTables() {

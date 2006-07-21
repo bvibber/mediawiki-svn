@@ -204,7 +204,7 @@ ini_set( 'memory_limit', -1 );
 
 require_once( 'Setup.php' );
 require_once( 'install-utils.inc' );
-$wgTitle = Title::newFromText( 'Command line script' );
+$wgTitle = null; # Much much faster startup than creating a title object
 set_time_limit(0);
 
 // --------------------------------------------------------------------
