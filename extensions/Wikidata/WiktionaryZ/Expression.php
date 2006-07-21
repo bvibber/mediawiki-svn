@@ -278,10 +278,10 @@ function updateDefinedMeaningDefinition($definedMeaningId, $languageId, $text) {
 									"AND tc.set_id=dm.meaning_text_tcid AND tc.language_id=$languageId AND tc.text_id=t.old_id AND tc.is_latest_set=1");	
 }
 
-function updateDefinedMeaningAlternativeDefinition($alternativeDefinitionId, $languageId, $text) {
+function updateTranslatedText($textId, $languageId, $text) {
 	$dbr =& wfGetDB(DB_MASTER);
 	$dbr->query("UPDATE translated_content tc, text t SET old_text=". $dbr->addQuotes($text) ." WHERE ".
-									"tc.set_id=$alternativeDefinitionId AND tc.language_id=$languageId AND tc.text_id=t.old_id AND tc.is_latest_set=1");	
+									"tc.set_id=$textId AND tc.language_id=$languageId AND tc.text_id=t.old_id AND tc.is_latest_set=1");	
 }
  
 function createText($text) {
@@ -369,9 +369,9 @@ function addDefinedMeaningAlternativeDefinition($definedMeaningId, $revisionId, 
 	addTranslatedText($translatedContentId, $languageId, $text, $revisionId);
 }
 
-function removeTranslatedDefinition($definitionId, $languageId) {
+function removeTranslatedText($textId, $languageId) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("DELETE tc, t FROM translated_content AS tc, text AS t WHERE tc.set_id=$definitionId AND tc.language_id=$languageId AND tc.is_latest_set=1 AND tc.text_id=t.old_id");
+	$dbr->query("DELETE tc, t FROM translated_content AS tc, text AS t WHERE tc.set_id=$textId AND tc.language_id=$languageId AND tc.is_latest_set=1 AND tc.text_id=t.old_id");
 }
 
 function removeDefinedMeaningAlternativeDefinition($definedMeaningId, $definitionId) {
@@ -383,7 +383,7 @@ function removeDefinedMeaningDefinition($definedMeaningId, $languageId) {
 	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
 	
 	if ($definitionId != 0)
-		removeTranslatedDefinition($definitionId, $languageId);
+		removeTranslatedText($definitionId, $languageId);
 }
 
 function definedMeaningInCollection($definedMeaningId, $collectionId) {
@@ -484,6 +484,13 @@ function addDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $l
 	
 	createDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $translatedContentId);
 	addTranslatedText($translatedContentId, $languageId, $text, $revisionId);
+}
+
+function removeDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $textId) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("DELETE av, tc, t FROM uw_dm_text_attribute_values AS av, translated_content AS tc, text AS t " .
+				"WHERE av.defined_meaning_id=$definedMeaningId AND av.attribute_mid=$attributeId AND av.value_tcid=tc.set_id AND " .
+				"tc.is_latest_set=1 AND tc.text_id=t.old_id");	
 }
 
 ?>

@@ -85,7 +85,7 @@ global
 	$textValueIdAttribute, $textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute, $textAttributeValuesHeading;
 	
 $textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "text-attribute");
-$textValueIdAttribute = new Attribute("text-value-id-attribute", "Text value identifier", "text-value-id");
+$textValueIdAttribute = new Attribute("text-value-id", "Text value identifier", "text-value-id");
 $textValueAttribute = new Attribute("text-value", "Text value", new RelationType($translatedTextHeading));
 
 $textAttributeValuesHeading = new Heading($textAttributeAttribute, $textValueIdAttribute, $textValueAttribute);

@@ -100,7 +100,7 @@ class DefinedMeaningAlternativeDefinitionController implements Controller {
 		$definitionId = $keyPath->peek(1)->getAttributeValue($definitionIdAttribute);
 		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
 		
-		removeTranslatedDefinition($definitionId, $languageId);
+		removeTranslatedText($definitionId, $languageId);
 	}
 	
 	public function update($keyPath, $tuple) {
@@ -112,7 +112,7 @@ class DefinedMeaningAlternativeDefinitionController implements Controller {
 		$text = $tuple->getAttributeValue($textAttribute);
 
 		if ($text != "")
-			updateDefinedMeaningAlternativeDefinition($definitionId, $languageId, $text);
+			updateTranslatedText($definitionId, $languageId, $text);
 	}
 }
 
@@ -340,17 +340,53 @@ class DefinedMeaningTextAttributeValuesController {
 	
 	public function remove($keyPath) {
 		global
-			$definedMeaningIdAttribute, $textAttributeAttribute;
+			$definedMeaningIdAttribute, $textAttributeAttribute, $textValueIdAttribute;
 
 		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
 		$attributeId = $keyPath->peek(0)->getAttributeValue($textAttributeAttribute);
+		$textId = $keyPath->peek(0)->getAttributeValue($textValueIdAttribute);
 				
-		echo $attributeId;			
-//		$definitionId = $keyPath->peek(0)->getAttributeValue($definitionIdAttribute);
-//		removeDefinedMeaningAlternativeDefinition($definedMeaningId, $definitionId);
+		removeDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $textId);
 	}
 	
 	public function update($keyPath, $tuple) {
+	}
+}
+
+class DefinedMeaningTextAttributeValueController implements Controller {
+	public function add($keyPath, $tuple) {
+		global
+			$expressionIdAttribute, $textValueIdAttribute, $languageAttribute, $textAttribute;
+
+		$revisionId = getRevisionForExpressionId($keyPath->peek(2)->getAttributeValue($expressionIdAttribute));
+		$textId = $keyPath->peek(0)->getAttributeValue($textValueIdAttribute);
+		$languageId = $tuple->getAttributeValue($languageAttribute);
+		$text = $tuple->getAttributeValue($textAttribute);
+
+		if ($text != "")
+			addTranslatedTextIfNotPresent($textId, $languageId, $text, $revisionId);
+	}
+	
+	public function remove($keyPath) {
+		global
+			$textValueIdAttribute, $languageAttribute;
+		
+		$textId = $keyPath->peek(1)->getAttributeValue($textValueIdAttribute);
+		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
+		
+		removeTranslatedText($textId, $languageId);
+	}
+	
+	public function update($keyPath, $tuple) {
+		global
+			$textValueIdAttribute, $languageAttribute, $textAttribute;
+
+		$textId = $keyPath->peek(1)->getAttributeValue($textValueIdAttribute);
+		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
+		$text = $tuple->getAttributeValue($textAttribute);
+
+		if ($text != "")
+			updateTranslatedText($textId, $languageId, $text);
 	}
 }
 
@@ -470,7 +506,7 @@ class WiktionaryZ {
 			
 		$editor = new RelationTableEditor($textAttributeValuesAttribute, true, true, false, new DefinedMeaningTextAttributeValuesController());
 		$editor->addEditor(new TextAttributeEditor($textAttributeAttribute, false, true));
-		$editor->addEditor($this->getTranslatedTextEditor($textValueAttribute, null));
+		$editor->addEditor($this->getTranslatedTextEditor($textValueAttribute, new DefinedMeaningTextAttributeValueController()));
 		
 		return $editor;
 	}
