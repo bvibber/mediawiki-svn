@@ -280,7 +280,7 @@ abstract class RelationEditor extends DefaultEditor {
 	}
 	
 	public function save($idPath, $value) {
-		if ($this->allowAdd) {
+		if ($this->allowAdd && $this->controller != null) {
 			$addHeading = $this->getAddHeading();
 			
 			if (count($addHeading->attributes) > 0) {
@@ -788,6 +788,16 @@ class CollectionEditor extends SuggestEditor {
 	
 	public function view($idPath, $value) {
 		return collectionAsLink($value);
+	}
+}
+
+class TextAttributeEditor extends SuggestEditor {
+	protected function suggestType() {
+		return "text-attribute";
+	}
+	
+	public function view($idPath, $value) {
+		return definedMeaningAsLink($value);
 	}
 }
 

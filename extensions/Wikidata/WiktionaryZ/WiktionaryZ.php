@@ -90,7 +90,7 @@ class DefinedMeaningAlternativeDefinitionController implements Controller {
 		$text = $tuple->getAttributeValue($textAttribute);
 
 		if ($text != "")
-			addDefinedMeaningAlternativeDefinitionTranslation($definitionId, $revisionId, $languageId, $text);
+			addTranslatedTextIfNotPresent($definitionId, $languageId, $text, $revisionId);
 	}
 	
 	public function remove($keyPath) {
@@ -316,6 +316,44 @@ class ExpressionController implements Controller {
 	}
 }
 
+class DefinedMeaningTextAttributeValuesController {
+	public function add($keyPath, $tuple)  {
+		global
+			$expressionIdAttribute, $definedMeaningIdAttribute, $textValueAttribute, $languageAttribute, 
+			$textAttribute, $textAttributeAttribute;
+
+		$revisionId = getRevisionForExpressionId($keyPath->peek(1)->getAttributeValue($expressionIdAttribute));
+		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);		
+		$textValue = $tuple->getAttributeValue($textValueAttribute);
+		$textAttributeId = $tuple->getAttributeValue($textAttributeAttribute);
+		
+		if ($textAttributeId != 0 && $textValue->getTupleCount() > 0) {	
+			$textValueTuple = $textValue->getTuple(0);
+			
+			$languageId = $textValueTuple->getAttributeValue($languageAttribute);
+			$text = $textValueTuple->getAttributeValue($textAttribute);
+			
+			if ($text != '')
+				addDefinedMeaningTextAttributeValue($definedMeaningId, $textAttributeId, $languageId, $text, $revisionId);
+		}
+	}
+	
+	public function remove($keyPath) {
+		global
+			$definedMeaningIdAttribute, $textAttributeAttribute;
+
+		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
+		$attributeId = $keyPath->peek(0)->getAttributeValue($textAttributeAttribute);
+				
+		echo $attributeId;			
+//		$definitionId = $keyPath->peek(0)->getAttributeValue($definitionIdAttribute);
+//		removeDefinedMeaningAlternativeDefinition($definedMeaningId, $definitionId);
+	}
+	
+	public function update($keyPath, $tuple) {
+	}
+}
+
 /**
  * Renders a content page from WiktionaryZ based on the GEMET database.
  * @package MediaWiki
@@ -353,16 +391,28 @@ class WiktionaryZ {
 		return $editor;
 	}
 	
+	function getTranslatedTextEditor($attribute, $controller) {
+		global
+			$languageAttribute, $textAttribute;
+
+		$editor = new RelationTableEditor($attribute, true, true, true, $controller);
+		$editor->addEditor(new LanguageEditor($languageAttribute, false, true)); 
+		$editor->addEditor(new TextEditor($textAttribute, true, true));
+		
+		return $editor; 
+	}
+	
 	function getAlternativeDefinitionsEditor() {
 		global
 			$alternativeDefinitionsAttribute, $definitionIdAttribute, $alternativeDefinitionAttribute, $languageAttribute, $textAttribute;
 
-		$alternativeDefinitionEditor = new RelationTableEditor($alternativeDefinitionAttribute, true, true, true, new DefinedMeaningAlternativeDefinitionController());
-		$alternativeDefinitionEditor->addEditor(new LanguageEditor($languageAttribute, false, true)); 
-		$alternativeDefinitionEditor->addEditor(new TextEditor($textAttribute, true, true)); 
+//		$alternativeDefinitionEditor = new RelationTableEditor($alternativeDefinitionAttribute, true, true, true, new DefinedMeaningAlternativeDefinitionController());
+//		$alternativeDefinitionEditor->addEditor(new LanguageEditor($languageAttribute, false, true)); 
+//		$alternativeDefinitionEditor->addEditor(new TextEditor($textAttribute, true, true)); 
 				
 		$editor = new RelationTableEditor($alternativeDefinitionsAttribute, true, true, false, new DefinedMeaningAlternativeDefinitionsController());
-		$editor->addEditor($alternativeDefinitionEditor);
+		$editor->addEditor($this->getTranslatedTextEditor($alternativeDefinitionAttribute, new DefinedMeaningAlternativeDefinitionController()));
+//		$editor->addEditor($alternativeDefinitionEditor);
 		
 		return $editor;
 	}
@@ -414,6 +464,17 @@ class WiktionaryZ {
 		return $editor;
 	}
 	
+	function getDefinedMeaningTextAttributeValuesEditor() {
+		global
+			$textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute;
+			
+		$editor = new RelationTableEditor($textAttributeValuesAttribute, true, true, false, new DefinedMeaningTextAttributeValuesController());
+		$editor->addEditor(new TextAttributeEditor($textAttributeAttribute, false, true));
+		$editor->addEditor($this->getTranslatedTextEditor($textValueAttribute, null));
+		
+		return $editor;
+	}
+	
 	function getDefinedMeaningTuple($definedMeaningId, $revisionId, $expressionId) {
 		global
 			$definedMeaningAttribute, $definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
@@ -426,7 +487,7 @@ class WiktionaryZ {
 		$tuple->setAttributeValue($relationsAttribute, $this->getDefinedMeaningRelationsRelation($definedMeaningId));
 		$tuple->setAttributeValue($classMembershipAttribute, $this->getDefinedMeaningClassMembershipRelation($definedMeaningId));
 		$tuple->setAttributeValue($collectionMembershipAttribute, $this->getDefinedMeaningCollectionMembershipRelation($definedMeaningId));
-		$tuple->setAttributeValue($textAttributeValuesAttribute, $this->getDefinedMeaningTextAttributeValuesRelation($definedMeaningId));
+//		$tuple->setAttributeValue($textAttributeValuesAttribute, $this->getDefinedMeaningTextAttributeValuesRelation($definedMeaningId));
 		
 		return $tuple;
 	}
@@ -480,6 +541,7 @@ class WiktionaryZ {
 		$definedMeaningEditor->addEditor($this->getDefinedMeaningRelationsEditor());
 		$definedMeaningEditor->addEditor($this->getDefinedMeaningClassMembershipEditor());
 		$definedMeaningEditor->addEditor($this->getDefinedMeaningCollectionMembershipEditor());
+//		$definedMeaningEditor->addEditor($this->getDefinedMeaningTextAttributeValuesEditor());
 		
 		$definedMeaningEditor->expandEditor($definitionEditor);
 		$definedMeaningEditor->expandEditor($synonymsAndTranslationsEditor);
@@ -517,7 +579,7 @@ class WiktionaryZ {
 		$alternativeDefinitions = $this->getAlternativeDefinitions($definedMeaningId);
 		
 		foreach($alternativeDefinitions as $alternativeDefinition)
-			$relation->addTuple(array($alternativeDefinition, $this->getDefinedMeaningAlternativeDefinitionRelation($alternativeDefinition)));
+			$relation->addTuple(array($alternativeDefinition, $this->getTranslatedTextRelation($alternativeDefinition)));
 		
 		return $relation;
 	}
@@ -600,7 +662,7 @@ class WiktionaryZ {
 		return $relation;
 	}
 	
-	function getDefinedMeaningAlternativeDefinitionRelation($alternativeDefinitionId) {
+	function getTranslatedTextRelation($textId) {
 		global
 			$languageAttribute, $textAttribute;
 		
@@ -610,10 +672,10 @@ class WiktionaryZ {
 										new Heading($languageAttribute));
 										
 		$queryResult = $dbr->query("SELECT language_id, old_text FROM translated_content tc, text t WHERE ".
-									"tc.set_id=$alternativeDefinitionId AND tc.text_id=t.old_id AND tc.is_latest_set=1");
+									"tc.set_id=$textId AND tc.text_id=t.old_id AND tc.is_latest_set=1");
 									
-		while ($translatedDefinition = $dbr->fetchObject($queryResult)) 
-			$relation->addTuple(array($translatedDefinition->language_id, $translatedDefinition->old_text));
+		while ($translatedText= $dbr->fetchObject($queryResult)) 
+			$relation->addTuple(array($translatedText->language_id, $translatedText->old_text));
 		
 		return $relation;
 	}
@@ -672,7 +734,18 @@ class WiktionaryZ {
 	}
 	
 	function getDefinedMeaningTextAttributeValuesRelation($definedMeaningId) {
+		global
+			$textAttributeValuesHeading, $textAttributeAttribute, $textValueIdAttribute;
+			
+		$relation = new ArrayRelation($textAttributeValuesHeading, new Heading($textAttributeAttribute, $textValueIdAttribute));
+
+		$dbr =& wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query("SELECT attribute_mid, value_tcid FROM uw_dm_text_attribute_values WHERE defined_meaning_id=$definedMeaningId");
 		
+		while ($attributeValue = $dbr->fetchObject($queryResult))
+			$relation->addTuple(array($attributeValue->attribute_mid, $attributeValue->value_tcid, $this->getTranslatedTextRelation($attributeValue->value_tcid)));
+		
+		return $relation;
 	}
 	
 	function getDefinedMeaningClassMembershipRelation($definedMeaningId) {

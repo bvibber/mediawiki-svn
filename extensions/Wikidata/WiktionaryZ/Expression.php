@@ -301,21 +301,21 @@ function createTranslatedContent($setId, $languageId, $textId, $revisionId) {
 	return $dbr->insertId();
 }
 
-function translatedDefinitionExists($definitionId, $languageId) {
+function translatedTextExists($definitionId, $languageId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT * FROM translated_content WHERE set_id=$definitionId AND language_id=$languageId AND is_latest_set=1");
 
 	return $dbr->numRows($queryResult) > 0;	
 }
 
-function addTranslatedDefinition($definitionId, $languageId, $definition, $revisionId) {
+function addTranslatedText($definitionId, $languageId, $definition, $revisionId) {
 	$textId = createText($definition);
 	createTranslatedContent($definitionId, $languageId, $textId, $revisionId);
 }
 
-function addTranslatedDefinitionIfNotPresent($definitionId, $languageId, $definition, $revisionId) {
-	if (!translatedDefinitionExists($definitionId, $languageId, $revisionId)) 	
-		addTranslatedDefinition($definitionId, $languageId, $definition, $revisionId);
+function addTranslatedTextIfNotPresent($definitionId, $languageId, $definition, $revisionId) {
+	if (!translatedTextExists($definitionId, $languageId, $revisionId)) 	
+		addTranslatedText($definitionId, $languageId, $definition, $revisionId);
 }
 
 function getDefinedMeaningDefinitionId($definedMeaningId) {
@@ -339,7 +339,7 @@ function newTranslatedContentId() {
 
 function addDefinedMeaningDefiningDefinition($definedMeaningId, $revisionId, $languageId, $text) {
 	$definitionId = newTranslatedContentId();		
-	addTranslatedDefinition($definitionId, $languageId, $text, $revisionId);
+	addTranslatedText($definitionId, $languageId, $text, $revisionId);
 	updateDefinedMeaningDefinitionId($definedMeaningId, $definitionId);
 }
 
@@ -349,16 +349,12 @@ function addDefinedMeaningDefinition($definedMeaningId, $revisionId, $languageId
 	if ($definitionId == 0)
 		addDefinedMeaningDefiningDefinition($definedMeaningId, $revisionId, $languageId, $text);
 	else 
-		addTranslatedDefinitionIfNotPresent($definitionId, $languageId, $text, $revisionId);
-}
-
-function addDefinedMeaningAlternativeDefinitionTranslation($alternativeDefinitionId, $revisionId, $languageId, $text) {
-	addTranslatedDefinitionIfNotPresent($alternativeDefinitionId, $languageId, $text, $revisionId);
+		addTranslatedTextIfNotPresent($definitionId, $languageId, $text, $revisionId);
 }
 
 function createDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId, $revisionId) {
 	$dbr = &wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT max(set_id) as max_id FROM translated_content");
+	$queryResult = $dbr->query("SELECT max(set_id) as max_id FROM uw_alt_meaningtexts");
 	$setId = $dbr->fetchObject($queryResult)->max_id + 1;
 	
 	$dbr = &wfGetDB(DB_MASTER);
@@ -370,7 +366,7 @@ function addDefinedMeaningAlternativeDefinition($definedMeaningId, $revisionId, 
 	$translatedContentId = newTranslatedContentId();
 	
 	createDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId, $revisionId);
-	addDefinedMeaningAlternativeDefinitionTranslation($translatedContentId, $revisionId, $languageId, $text);
+	addTranslatedText($translatedContentId, $languageId, $text, $revisionId);
 }
 
 function removeTranslatedDefinition($definitionId, $languageId) {
@@ -475,6 +471,19 @@ function createNewDefinedMeaning($expressionId, $revisionId, $languageId, $text)
 	addDefinedMeaningDefiningDefinition($definedMeaningId, $revisionId, $languageId, $text);
 	
 	return $definedMeaningId;
+}
+
+function createDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $translatedContentId) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("INSERT INTO uw_dm_text_attribute_values (defined_meaning_id, attribute_mid, value_tcid) " .
+			    "VALUES ($definedMeaningId, $attributeId, $translatedContentId)");
+}
+
+function addDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $languageId, $text, $revisionId) {
+	$translatedContentId = newTranslatedContentId();
+	
+	createDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $translatedContentId);
+	addTranslatedText($translatedContentId, $languageId, $text, $revisionId);
 }
 
 ?>

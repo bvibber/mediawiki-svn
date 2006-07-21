@@ -76,23 +76,25 @@ $definitionAttribute = new Attribute("definition", "Definition", new RelationTyp
 $synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Synonyms and translations", new RelationType(new Heading($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute)));
 
 global
-	$attributeValueIdAttribute, $textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute;
+	$definedMeaningIdAttribute, $expressionMeaningsAttribute;
+
+$definedMeaningIdAttribute = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
+$expressionMeaningsAttribute = new Attribute("expression-meanings", "Defined meanings", new RelationType(new Heading($definedMeaningIdAttribute, $definedMeaningAttribute)));
+
+global
+	$textValueIdAttribute, $textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute, $textAttributeValuesHeading;
 	
-$attributeValueIdAttribute = new Attribute("attribute-value-id", "Attribute value id", "attribute-value-id");
 $textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "text-attribute");
-$textValueAttribute = new Attribute("text-value", "Text value", new RelationType(new Heading($languageAttribute, $textAttribute)));
-$textAttributeValuesAttribute = new Attribute("text-attribute-values", new RelationType(new Heading($attributeValueIdAttribute, $definedMeaningIdAttribute, $textAttributeAttribute, $textValueAttribute)), "text-attribute-values");
+$textValueIdAttribute = new Attribute("text-value-id-attribute", "Text value identifier", "text-value-id");
+$textValueAttribute = new Attribute("text-value", "Text value", new RelationType($translatedTextHeading));
+
+$textAttributeValuesHeading = new Heading($textAttributeAttribute, $textValueIdAttribute, $textValueAttribute);
+$textAttributeValuesAttribute = new Attribute("text-attribute-values", "Text attribute values", new RelationType($textAttributeValuesHeading));
 
 global
 	$definedMeaningAttribute;
 		
 $definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new TupleType(new Heading($definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute)));
-
-global
-	$definedMeaningIdAttribute, $expressionMeaningsAttribute;
-
-$definedMeaningIdAttribute = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
-$expressionMeaningsAttribute = new Attribute("expression-meanings", "Defined meanings", new RelationType(new Heading($definedMeaningIdAttribute, $definedMeaningAttribute)));
 
 global
 	$expressionsAttribute;

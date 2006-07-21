@@ -59,6 +59,9 @@ function getSuggestions() {
 		case 'attribute':
 			$sql = getSQLForCollectionOfType('ATTR');
 			break;
+		case 'text-attribute':	
+			$sql = getSQLForCollectionOfType('TATT');
+			break;
 		case 'defined-meaning':
 			$sql = "SELECT syntrans1.defined_meaning_id AS row_id, expression1.spelling AS relation, expression1.language_id AS language_id ".
 					"FROM uw_expression_ns expression1, uw_syntrans syntrans1 ".
@@ -82,6 +85,9 @@ function getSuggestions() {
 			break;		
 		case 'attribute':
 			list($relation, $editor) = getAttributeAsRelation($queryResult);
+			break;
+		case 'text-attribute':
+			list($relation, $editor) = getTextAttributeAsRelation($queryResult);
 			break;
 		case 'defined-meaning':
 			list($relation, $editor) = getDefinedMeaningAsRelation($queryResult);
@@ -144,6 +150,26 @@ function getAttributeAsRelation($queryResult) {
 
 	$editor = new RelationTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($attributeAttribute, false, false));
+	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
+
+	return array($relation, $editor);		
+}
+
+function getTextAttributeAsRelation($queryResult) {
+	global
+		$idAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "short-text");
+	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
+	
+	$relation = new ArrayRelation(new Heading($idAttribute, $textAttributeAttribute, $collectionAttribute), new Heading($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$relation->addTuple(array($row->row_id, $row->relation, $row->collection));			
+
+	$editor = new RelationTableEditor(null, false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($textAttributeAttribute, false, false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
 
 	return array($relation, $editor);		
