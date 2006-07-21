@@ -362,6 +362,7 @@ class Language {
 	 *    xn   Do not translate digits of the next numeric format character
 	 *    xr   Use roman numerals for the next numeric format character
 	 *    xx   Literal x
+	 *    xg   Genitive month name
 	 *
 	 * Characters enclosed in double quotes will be considered literal (with
 	 * the quotes themselves removed). Unmatched quotes will be considered
@@ -397,6 +398,9 @@ class Language {
 					break;
 				case 'xr':
 					$roman = true;
+					break;
+				case 'xg':
+					$s .= $this->getMonthNameGen( substr( $ts, 4, 2 ) );
 					break;
 				case 'd':
 					$num = substr( $ts, 6, 2 );

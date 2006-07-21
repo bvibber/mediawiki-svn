@@ -7,11 +7,5 @@
  * @subpackage Language
  */
 
-class LanguageBpy extends LanguageBn {
-
-	function getFallbackLanguage() {
-		return 'bn';
-	}
-}
-
+$fallback = 'bn';
 ?>

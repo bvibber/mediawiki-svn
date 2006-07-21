@@ -95,6 +95,14 @@ $magicWords = array(
 $separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
 $linkTrail = '/^([a-záčďéěíňóřšťúůýž]+)(.*)$/sDu';
 
+$datePreferences = false;
+$defaultDateFormat = 'dmy';
+
+$dateFormats = array(
+	'dmy time' => 'H:i',
+	'dmy date' => 'j. n. Y',
+	'dmy both' => 'H:i, j. n. Y',
+);
 
 $messages = array(
 

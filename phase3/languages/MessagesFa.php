@@ -51,7 +51,6 @@ $digitTransformTable = array(
 	"." => "٫", // wrong table?
 	"," => "٬"
 );
-	}
 
 $rtl = true;
 $defaultUserOptionOverrides = array(

@@ -22,20 +22,6 @@ class LanguageCs extends Language {
 			$this->namespaceNames[NS_USER], $this->namespaceNames[NS_USER_TALK] );
 	}
 
-	/*
-	function getMonthNameGen( $key ) {
-		#TODO: převést na return $this->convertGrammar( $this->getMonthName( $key ), '2sg' );
-	}
-	 */
-
-	function formatMonth( $month, $format ) {
-		return intval( $month ) . '.';
-	}
-
-	function formatDay( $day, $format ) {
-		return intval( $day ) . '.';
-	}
-
 	# Grammatical transformations, needed for inflected languages
 	# Invoked by putting {{grammar:case|word}} in a message
 	function convertGrammar( $word, $case ) {

@@ -47,6 +47,13 @@ $bookstoreList = array(
 );
 
 $datePreferences = false;
+$defaultDateFormat = 'dmy';
+$dateFormats = array(
+	'dmy time' => 'H:i',
+	'dmy date' => 'j M Y',
+	'dmy both' => 'j M Y "da" H:i',
+);
+
 $separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
 $linkTrail = "/^([a-zàâçéèêîôûäëïöüùÇÉÂÊÎÔÛÄËÏÖÜÀÈÙ]+)(.*)$/sDu";
 

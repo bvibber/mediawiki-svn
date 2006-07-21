@@ -114,13 +114,6 @@ $digitTransformTable = array(
 	',' => '٬'
 );
 
-/* No abbreviations in Arabic */
-$monthAbbreviations = array(
-	'january', 'february', 'march', 'april', 'may_long', 'june',
-	'july', 'august', 'september', 'october', 'november',
-	'december'
-);
-
 $messages = array(
 # Dates
 'sunday' => 'الأحد',
@@ -141,6 +134,17 @@ $messages = array(
 'september' => 'سبتمبر',
 'november' => 'نوفمبر',
 'december' => 'ديسمبر',
+'jan' => 'يناير',
+'feb' => 'فبراير',
+'mar' => 'مارس',
+'apr' => 'ابريل',
+'may' => 'مايو',
+'jun' => 'يونيو',
+'jul' => 'يوليو',
+'aug' => 'أغسطس',
+'sep' => 'سبتمبر',
+'nov' => 'نوفمبر',
+'dec' => 'ديسمبر',
 
 # Bits of text used by many pages:
 #

@@ -36,7 +36,20 @@ $namespaceNames = array(
 
 $separatorTransformTable = array(',' => '.', '.' => ',' );
 
-$abbreviateMonth = true;
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'M j, Y',
+	'mdy both' => 'H:i, M j, Y',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j M Y',
+	'dmy both' => 'H:i, j M Y',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y M j',
+	'ymd both' => 'H:i, Y M j',
+);
+
 $linkTrail = '/^([a-zàèéíòóúç·ïü\']+)(.*)$/sDu';
 
 $messages = array(

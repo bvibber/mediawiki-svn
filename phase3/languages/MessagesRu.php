@@ -117,6 +117,20 @@ $fallback8bitEncoding = 'windows-1251';
 $linkPrefixExtension = true;
 $linkTrail = '/^([a-zабвгдеёжзийклмнопрстуфхцчшщъыьэюя“»]+)(.*)$/sDu';
 
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'xg j, Y',
+	'mdy both' => 'H:i, xg j, Y',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j xg Y',
+	'dmy both' => 'H:i, j xg Y',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y xg j',
+	'ymd both' => 'H:i, Y xg j',
+);
+
 $messages = array(
 
 # User preference toggles

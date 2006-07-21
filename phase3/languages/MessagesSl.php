@@ -22,11 +22,6 @@ $quickbarSettings = array(
 	'Brez', 'Levo nepomično', 'Desno nepomično', 'Levo leteče'
 );
 
-$monthNameGen = array(
-	'januarja', 'februarja', 'marca', 'aprila', 'maja', 'junija',
-	'julija', 'avgusta', 'septembra', 'oktobra', 'novembra', 'decembra'
-);
-
 $namespaceNames = array(
 	NS_MEDIA          => 'Media',
 	NS_SPECIAL        => 'Posebno',
@@ -123,6 +118,18 @@ $messages = array(
 'oct'                   => 'okt.',
 'nov'                   => 'nov.',
 'dec'                   => 'dec.',
+'january-gen'           => 'januarja',  
+'february-gen'          => 'februarja', 
+'march-gen'             => 'marca',  
+'april-gen'             => 'aprila',  
+'may-gen'               => 'maja',  
+'june-gen'              => 'junija',
+'july-gen'              => 'julija',  
+'august-gen'            => 'avgusta',  
+'september-gen'         => 'septembra', 
+'october-gen'           => 'oktobra',  
+'november-gen'          => 'novembra', 
+'december-gen'          => 'decembra',
 'categories'            => '{{plural:$1|Kategorija|Kategoriji|Kategorije|Kategorije|Kategorije}}',
 'category'              => 'Kategorija',
 'category_header'       => 'Strani v kategoriji »$1«',

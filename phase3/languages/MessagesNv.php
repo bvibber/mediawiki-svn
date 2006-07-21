@@ -10,22 +10,6 @@ $skinNames = array(
 	'monobook' => 'NaaltsoosŁáa\'ígíí'
 );
 
-$weekdayNames = array(
-	'Damóogo', 'Damóo biiskání', 'Damóodóó naakiską́o', 'Damóodóó tágí jį́', 'Damóodóó dį́į́\' yiską́o',
-	'Nda\'iiníísh', 'Yiską́ damóo'
-);
-
-$monthNames = array(
-	'Yas Niłt\'ees', 'Atsá Biyáázh', 'Wóózhch\'į́į́d', 'T\'ą́ą́chil', 'T\'ą́ą́tsoh', 'Ya\'iishjááshchilí',
-	'Ya\'iishjáástsoh', 'Bini\'ant\'ą́ą́ts\'ózí', 'Bini\'ant\'ą́ą́tsoh', 'Ghąąjį', 'Níłch\'its\'ósí',
-	'Níłch\'itsoh'
-);
-
-$monthAbbreviations = array(
-	'Ynts', 'Atsb', 'Wozh', 'Tchi', 'Ttso', 'Yjsh', 'Yjts', 'Btsz',
-	'Btsx', 'Ghąj', 'Ntss', 'Ntsx'
-);
-
 $namespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Special',
@@ -48,5 +32,41 @@ $namespaceNames = array(
 );
 
 $datePreferences = false;
+
+$messages = array(
+'sunday'                => 'Damóogo', 
+'monday'                => 'Damóo biiskání', 
+'tuesday'               => 'Damóodóó naakiską́o', 
+'wednesday'             => 'Damóodóó tágí jį́', 
+'thursday'              => 'Damóodóó dį́į́\' yiską́o',
+'friday'                => 'Nda\'iiníísh', 
+'saturday'              => 'Yiską́ damóo',
+
+'january'               => 'Yas Niłt\'ees', 
+'february'              => 'Atsá Biyáázh', 
+'march'                 => 'Wóózhch\'į́į́d', 
+'april'                 => 'T\'ą́ą́chil',
+'may_long'              => 'T\'ą́ą́tsoh', 
+'june'                  => 'Ya\'iishjááshchilí',
+'july'                  => 'Ya\'iishjáástsoh', 
+'august'                => 'Bini\'ant\'ą́ą́ts\'ózí',
+'september'             => 'Bini\'ant\'ą́ą́tsoh', 
+'october'               => 'Ghąąjį', 
+'november'              => 'Níłch\'its\'ósí',
+'december'              => 'Níłch\'itsoh',
+
+'jan'                   => 'Ynts', 
+'feb'                   => 'Atsb', 
+'mar'                   => 'Wozh', 
+'apr'                   => 'Tchi', 
+'may'                   => 'Ttso', 
+'jun'                   => 'Yjsh', 
+'jul'                   => 'Yjts', 
+'aug'                   => 'Btsz', 
+'sep'                   => 'Btsx', 
+'oct'                   => 'Ghąj', 
+'nov'                   => 'Ntss', 
+'dec'                   => 'Ntsx',
+);
 
 ?>
