@@ -4225,6 +4225,7 @@ class Parser
 				$mwMediaOptions['caption'] = $val;
 			}
 		}
+		if(!isset($mwMediaOptions['caption']))$mwMediaOptions['caption']='';
 		# Strip bad stuff out of the alt text
 		$mwMediaOptions['alt'] = $this->replaceLinkHoldersText( $mwMediaOptions['caption'] );		
 

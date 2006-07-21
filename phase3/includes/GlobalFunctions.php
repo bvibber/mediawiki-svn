@@ -688,8 +688,8 @@ function wfHostname() {
 
 		$now = wfTime();
 		$elapsed = $now - $wgRequestTime;
-
-		$com = sprintf( "<!-- Served by %s in %01.3f secs. -->",
+		
+		$com = sprintf( "<b>Served by %s in %01.3f secs.</b>",
 		  wfHostname(), $elapsed );
 		return $com;
 	}

@@ -266,7 +266,6 @@ class MonoBookTemplate extends QuickTemplate {
 	<script type="text/javascript"> if (window.runOnloadHook) runOnloadHook();</script>
 </div>
 <?php $this->html('reporttime') ?>
-
 </body></html>
 <?php
 	wfRestoreWarnings();

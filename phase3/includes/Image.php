@@ -40,6 +40,7 @@ class Image
 		$width,         # \
 		$height,        #  |
 		$bits,          #   --- returned by getimagesize (loadFromXxx)
+		$duration,		#  | -- (for ogg audio and video only)
 		$attr,          # /
 		$type,          # MEDIATYPE_xxx (bitmap, drawing, audio...)
 		$mime,          # MIME type, determined by MimeMagic::guessMimeType
@@ -47,6 +48,7 @@ class Image
 		$metadata,      # Metadata
 		$dataLoaded,    # Whether or not all this has been loaded from the database (loadFromXxx)
 		$lastError;     # Error string associated with a thumbnail display error
+
 
 
 	/**#@-*/
@@ -160,6 +162,7 @@ class Image
 						$this->fileExists = $commonsCachedValues['fileExists'];
 						$this->width = $commonsCachedValues['width'];
 						$this->height = $commonsCachedValues['height'];
+						$this->duration = $commonsCachedValues['duration'];
 						$this->bits = $commonsCachedValues['bits'];
 						$this->type = $commonsCachedValues['type'];
 						$this->mime = $commonsCachedValues['mime'];
@@ -177,6 +180,7 @@ class Image
 				$this->fileExists = $cachedValues['fileExists'];
 				$this->width = $cachedValues['width'];
 				$this->height = $cachedValues['height'];
+				$this->duration = $cachedValues['duration'];
 				$this->bits = $cachedValues['bits'];
 				$this->type = $cachedValues['type'];
 				$this->mime = $cachedValues['mime'];
@@ -216,6 +220,7 @@ class Image
 				'fromShared' => $this->fromSharedDirectory,
 				'width'      => $this->width,
 				'height'     => $this->height,
+				'duration'   => $this->duration,
 				'bits'       => $this->bits,
 				'type'       => $this->type,
 				'mime'       => $this->mime,
@@ -275,6 +280,13 @@ class Image
 				$gis = wfGetSVGsize( $this->imagePath );
 				wfRestoreWarnings();
 			}
+			#get durration if mime = video
+			if( $this->mime == 'application/ogg'){
+				wfSuppressWarnings();
+				$gis = $this->getOggInfo();
+				wfRestoreWarnings();
+			}
+			
 			elseif ( !$magic->isPHPImageType( $this->mime ) ) {
 				# Don't try to get the width and height of sound and video files, that's bad for performance
 				$gis[0]= 0; //width
@@ -300,11 +312,12 @@ class Image
 			$this->type = MEDIATYPE_UNKNOWN;
 			wfDebug("$fname: ".$this->imagePath." NOT FOUND!\n");
 		}
-
+		
 		$this->width = $gis[0];
 		$this->height = $gis[1];
-
+		$this->duration = $gis[2];
 		#NOTE: $gis[2] contains a code for the image type. This is no longer used.
+		# (it is now used to store the duration info) 
 
 		#NOTE: we have to set this flag early to avoid load() to be called
 		# be some of the functions below. This may lead to recursion or other bad things!
@@ -333,7 +346,7 @@ class Image
 		$this->checkDBSchema($dbr);
 
 		$row = $dbr->selectRow( 'image',
-			array( 'img_size', 'img_width', 'img_height', 'img_bits',
+			array( 'img_size', 'img_width', 'img_height', 'img_duration', 'img_bits',
 			       'img_media_type', 'img_major_mime', 'img_minor_mime', 'img_metadata' ),
 			array( 'img_name' => $this->name ), $fname );
 		if ( $row ) {
@@ -416,7 +429,7 @@ class Image
 	 * Load image metadata from cache or DB, unless already loaded
 	 */
 	function load() {
-		global $wgSharedUploadDBname, $wgUseSharedUploads;
+		global $wgSharedUploadDBname, $wgUseSharedUploads;		
 		if ( !$this->dataLoaded ) {
 			if ( !$this->loadFromCache() ) {
 				$this->loadFromDB();
@@ -867,6 +880,9 @@ class Image
 		}
 		return array( $script !== false, $url );
 	}
+	/**
+	* Returns the frame name
+	*/
 	function videoFrameName($frameTime=1){
 		return 'ft-'. $frameTime .'-'. $this->name .'.jpg';
 	}
@@ -1617,6 +1633,7 @@ class Image
 				'img_size'=> $this->size,
 				'img_width' => intval( $this->width ),
 				'img_height' => intval( $this->height ),
+				'img_duration'=> intval( $this->duration ),
 				'img_bits' => $this->bits,
 				'img_media_type' => $this->type,
 				'img_major_mime' => $major,
@@ -1641,6 +1658,7 @@ class Image
 					'oi_size' => 'img_size',
 					'oi_width' => 'img_width',
 					'oi_height' => 'img_height',
+					'oi_duration'=> 'oi_duration', 
 					'oi_bits' => 'img_bits',
 					'oi_timestamp' => 'img_timestamp',
 					'oi_description' => 'img_description',
@@ -2023,6 +2041,8 @@ class Image
 			$fname );
 	}
 
+	
+
 	/**
 	 * Do the dirty work of backing up an image row and its file
 	 * (if $wgSaveDeletedFiles is on) and removing the originals.
@@ -2214,6 +2234,7 @@ class Image
 						'oi_size'         => $row->fa_size,
 						'oi_width'        => $row->fa_width,
 						'oi_height'       => $row->fa_height,
+						'oi_duration'	  => $row->duration,
 						'oi_bits'         => $row->fa_bits,
 						'oi_description'  => $row->fa_description,
 						'oi_user'         => $row->fa_user,
@@ -2273,6 +2294,35 @@ class Image
 		}
 		
 		return $revisions;
+	}
+	
+	
+	/*
+	* returns info on the given ogg file
+	*/
+	function getOggInfo(){
+		//@todo make sure this is available on the system: 
+		$cmd = '/usr/local/bin/oggzinfo ' . $this->imagePath;
+		$ogg_info_str = shell_exec($cmd);
+		//@todo a strict ogg consistency check possible durring upload check for "dirty" ogg files
+		$gis = array();	
+		if($this->type == MEDIATYPE_AUDIO){
+			$gis[0]=0; //width;
+			$gis[1]=0; //height;
+		}else{
+			$pos_width =  strpos($ogg_info_str, 'Video-Width: ')+strlen('Video-Width: ');
+			$width = substr($ogg_info_str, $pos_width, strpos($ogg_info_str,"\n",$pos_width)-$pos_width);
+			
+			$pos_height =  strpos($ogg_info_str, 'Video-Height: ')+strlen('Video-Height: ');
+			$height = substr($ogg_info_str, $pos_height, strpos($ogg_info_str,"\n",$pos_height)-$pos_height);
+			
+			$gis[0]=$width;
+			$gis[1]=$height;
+		}	
+		//set 
+		$duration_str = substr($ogg_info_str, strlen('Content-Duration: '), 8);
+		$gis[2]= duration_str_2seconds($duration_str); //durration
+		return $gis;
 	}
 	
 } //class
@@ -2451,7 +2501,17 @@ function wfScaleSVGUnit( $length ) {
 		return round( floatval( $length ) );
 	}
 }
-
+/*
+* converts string to seconds
+*/
+function duration_str_2seconds($str_time){
+	$time_ary = explode(':', $str_time);	
+	$hours=$min=$sec=0;
+	if(isset($time_ary[0]))$hours=$time_ary[0];
+	if(isset($time_ary[1]))$min=$time_ary[1];
+	if(isset($time_ary[2]))$sec=$time_ary[2];	
+	return ($hours*3600) + ($min*60) + $sec;
+}
 /**
  * Compatible with PHP getimagesize()
  * @todo support gzipped SVGZ

@@ -770,24 +770,40 @@ class Linker {
 						$error = $img->getLastError();
 					}
 				}
-			}
+			}			
 			$oboxwidth = $boxwidth + 2;*/			
-			$url  = $img->getViewURL();
+			//allow user overide: 		
+			$url  = $img->getViewURL();					
 			
 			if ( $img->exists() ) {
 				$width  = $img->getWidth();
-				$height = $img->getHeight();
-			}			
+				$height = $img->getHeight();			
+			}					
 			if ( 0 == $width || 0 == $height ) {
 				$width = 320; 
-				//deafult to 20 pixle height if audio format: 
-				
+				//deafult to 20 pixle height if audio format: 	
 				if($img->type == MEDIATYPE_AUDIO){
-					$height=20;			
+					$height=20;
 				}else{
 					$height = 240;	
+					$ratio = .75;
 				}
+			}else{
+				$ratio = $height/$width;
 			}
+			//only allow scale if video
+			if($img->type == MEDIATYPE_VIDEO){
+				if(isset($options['width']))$width=$options['width'];				
+				if(isset($options['height'])){
+					$height =$options['height'];
+				}else{
+					//use the ratio of grabbed frame to keep scale. 
+					$height = round($width*$ratio);				
+				}
+			}									
+			
+				
+			
 			//this may be usefull if we want to include a specific alternate image for the movie still.
 			if ( $options['manual_thumb'] != '' ) # Use manually specified thumbnail
 			{
@@ -837,10 +853,7 @@ class Linker {
 				
 				//$base_unique_name =str_replace('.', '_', $title->getDBkey());	//replace . with _ for DOM id compatibility
 				$base_unique_name = $wgEmbedCountId;
-				//allow user overide: 
-				if(isset($options['width']))$width=$options['width'];				
-				if(isset($options['height']))$height =$options['height'];
-				
+		
 				$oboxwidth=$width+10;
 				
 				$div_height = $height+32; //32 the current height of the video control icons. 
