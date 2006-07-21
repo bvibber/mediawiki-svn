@@ -45,7 +45,6 @@ $dateFormats = array(
 
 
 $messages = array(
-'tog-altencoding'       => 'Redaktu pure laux UTF-8, sen X-kodo',
 'tog-underline'         => 'Substreku ligilojn',
 'tog-highlightbroken'   => 'Ruĝigu ligilojn al neekzistantaj paĝoj',
 'tog-justify'           => 'Alkadrigu liniojn',

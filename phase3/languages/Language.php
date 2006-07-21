@@ -772,13 +772,6 @@ class Language {
 		# an override to the defaults can be set here on startup.
 	}
 
-	function setAltEncoding() {
-		# Some languages may have an alternate char encoding option
-		# (Esperanto X-coding, Japanese furigana conversion, etc)
-		# If 'altencoding' is checked in user prefs, this gives a
-		# chance to swap out the default encoding settings.
-	}
-
 	function recodeForEdit( $s ) {
 		# For some languages we'll want to explicitly specify
 		# which characters make it into the edit box raw

@@ -627,11 +627,6 @@ class OutputPage {
 
 		$wgInputEncoding = strtolower( $wgInputEncoding );
 
-		if( $wgUser->getOption( 'altencoding' ) ) {
-			$wgContLang->setAltEncoding();
-			return;
-		}
-
 		if ( empty( $_SERVER['HTTP_ACCEPT_CHARSET'] ) ) {
 			$wgOutputEncoding = strtolower( $wgOutputEncoding );
 			return;

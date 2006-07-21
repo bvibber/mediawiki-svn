@@ -71,13 +71,6 @@ class LanguageEo extends Language {
 		$wgOutputEncoding = 'utf-8';
 		$wgEditEncoding = 'x';
 	}
-
-	function setAltEncoding() {
-		global $wgEditEncoding, $wgInputEncoding, $wgOutputEncoding;
-		$wgInputEncoding = 'utf-8';
-		$wgOutputEncoding = 'x';
-		$wgEditEncoding = '';
-	}
 }
 
 ?>
