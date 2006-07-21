@@ -44,6 +44,23 @@ Suche nach $3 $9",
 Dies ist normalerweise ein vorübergehendes Problem. Bitte versuchen Sie es nochmal.
 Alternativ können Sie auch die externen Suchmöglichkeiten nutzen: :\n"
 );	
+$wgLuceneSearchMessages['eo'] = array(
+	'searchnumber'          => "<strong>Rezultoj $1-$2 el $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Antaŭa</span>",
+	'searchnext'            => "<span style='font-size: small'>Sekvanta</span> &#x00BB;",
+	'searchscore'           => "Kongrueco: $1",
+	'searchsize'            => "$1 kB ($2 vortoj)",
+	'searchdidyoumean'      => "Ĉu vi celis : \"<a href=\"$1\">$2</a>\"?",
+	'searchnoresults'       => "Bedaŭrinde ne estas precize kongrua rezulto por via serĉo.",
+	'searchnearmatches'     => "<b>Ĉi tiuj paĝoj havas titolojn similajn al via serĉo:</b>\n",
+	'lucenepowersearchtext' => "
+Serĉo en nomspacoj:\n
+$1\n
+Serĉo de $3 $9",
+	'lucenefallback'        => "Estis problemo kun la serĉilo de ĉi vikio.
+Estas verŝajne nur portempa; bonvolu provi denove post iom da tempo
+aŭ vi povas esplori la vikion per eksteraj serĉservoj.\n"
+);
 $wgLuceneSearchMessages['he'] = array(
 	'searchnumber'          => "<strong>תוצאות $1-$2 מתוך $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prev</span>",
@@ -96,6 +113,23 @@ Zoek naar $3 $9",
 Deze is waarschijnlijk tijdelijk van aard; probeer het over enige tijd opnieuw
 of doorzoek de wiki via een externe zoekmachine:\n"
 );
+$wgLuceneSearchMessages['pl'] = array(
+	'searchnumber'          => "<strong>Wyniki $1-$2 z $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Poprzednia</span>",
+	'searchnext'            => "<span style='font-size: small'>Następna</span> &#x00BB;",
+	'searchscore'           => "Trafność: $1",
+	'searchsize'            => "$1 KB ($2 słów)",
+	'searchdidyoumean'      => "Może chodziło Ci o \"<a href=\"1\">$2</a>\"?",
+	'searchnoresults'       => "Niestety nie znaleziono stron pasujących do podanych kryteriów wyszukiwania.",
+	'searchnearmatches'     => "<b>Strony o podobnych nazwach:</b>\n",
+	'lucenepowersearchtext' => "
+Szukaj w przestrzeniach nazw:\n
+$1\n
+Szukana fraza $3 $9",
+	'lucenefallback'        => "Wystąpił błąd z wyszukiwaniem w wiki.
+Jest to tymczasowe; spróbuj ponownie za parę chwil
+lub przeszukaj wiki za pomocą zewnętrznych wyszukiwarek:\n"
+);
 $wgLuceneSearchMessages['ru'] = array(
 	'searchnumber'          => "<strong>Результаты $1—$2 из $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Пред.</span>",
@@ -113,38 +147,22 @@ $1\n
 Вероятно, эта временная проблема, попробуйте ещё раз чуть позже,
 либо воспользуйтесь поиском во внешних поисковых системах.\n"
 );
-$wgLuceneSearchMessages['eo'] = array(
-	'searchnumber'          => "<strong>Rezultoj $1-$2 el $3</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>Antaŭa</span>",
-	'searchnext'            => "<span style='font-size: small'>Sekvanta</span> &#x00BB;",
-	'searchscore'           => "Kongrueco: $1",
-	'searchsize'            => "$1 kB ($2 vortoj)",
-	'searchdidyoumean'      => "Ĉu vi celis : \"<a href=\"$1\">$2</a>\"?",
-	'searchnoresults'       => "Bedaŭrinde ne estas precize kongrua rezulto por via serĉo.",
-	'searchnearmatches'     => "<b>Ĉi tiuj paĝoj havas titolojn similajn al via serĉo:</b>\n",
+$wgLuceneSearchMessages['sr'] = array(
+	'searchnumber'          => "<strong>Резултати $1-$2 од $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Претходна</span>",
+	'searchnext'            => "<span style='font-size: small'>Следећа</span> &#x00BB;",
+	'searchscore'           => "Сличност: $1",
+	'searchsize'            => "$1 KB ($2 words)",
+	'searchdidyoumean'      => "Да ли сте мислили: \"<a href=\"$1\">$2</a>\"?",
+	'searchnoresults'       => "Извињавамо се, не постоје резултати за ваш упит.",
+	'searchnearmatches'     => "<b>Следеће странице имају сличне називе као што сте тражили:</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
 	'lucenepowersearchtext' => "
-Serĉo en nomspacoj:\n
+Претрага у именским просторима:\n
 $1\n
-Serĉo de $3 $9",
-	'lucenefallback'        => "Estis problemo kun la serĉilo de ĉi vikio.
-Estas verŝajne nur portempa; bonvolu provi denove post iom da tempo
-aŭ vi povas esplori la vikion per eksteraj serĉservoj.\n"
-);
-$wgLuceneSearchMessages['pl'] = array(
-	'searchnumber'          => "<strong>Wyniki $1-$2 z $3</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>Poprzednia</span>",
-	'searchnext'            => "<span style='font-size: small'>Następna</span> &#x00BB;",
-	'searchscore'           => "Trafność: $1",
-	'searchsize'            => "$1 KB ($2 słów)",
-	'searchdidyoumean'      => "Może chodziło Ci o \"<a href=\"1\">$2</a>\"?",
-	'searchnoresults'       => "Niestety nie znaleziono stron pasujących do podanych kryteriów wyszukiwania.",
-	'searchnearmatches'     => "<b>Strony o podobnych nazwach:</b>\n",
-	'lucenepowersearchtext' => "
-Szukaj w przestrzeniach nazw:\n
-$1\n
-Szukana fraza $3 $9",
-	'lucenefallback'        => "Wystąpił błąd z wyszukiwaniem w wiki.
-Jest to tymczasowe; spróbuj ponownie za parę chwil
-lub przeszukaj wiki za pomocą zewnętrznych wyszukiwarek:\n"
+Претрага за $3 $9",
+	'lucenefallback'        => "Дошло је до проблема у вики претрази...
+Ово је вероватно привремено; покушајте поново након неколико момената,
+или претражите вики преко неког од спољних претраживачких сервиса:\n"
 );
 ?>
