@@ -6,6 +6,27 @@
 
 /*
 
+Ye olde milestones:
+
+1) logging in on local DBs
+2) new account creation on local DBs
+3) migration-on-first-login of matching local accounts on local DBs
+4) migration-on-first-login of non-matching local accounts on local DBs
+5) renaming-on-first-login of non-matching local accounts on local DBs
+6) provision for forced rename on local DBs
+7) basic login for remote DBs
+8) new account for remote DBs
+9) migration for remote DBs
+10) profit!
+
+additional goodies:
+11) secure login form
+12) multiple-domain cookies to allow site-hopping
+
+
+
+Ye olde tables:
+
 CREATE TABLE globaluser (
   -- Internal unique ID for the authentication server
   gu_id int auto_increment,
@@ -25,11 +46,14 @@ CREATE TABLE globaluser (
   gu_password char(32),
   
   -- If true, this account cannot be used to log in on any wiki.
-  gu_locked tinyint,
+  gu_locked bool not null default 0,
   
   -- If true, this account should be hidden from most public user lists.
   -- Used for "deleting" accounts without breaking referential integrity.
-  gu_hidden tinyint,
+  gu_hidden bool not null default 0,
+  
+  -- Registration time
+  gu_registration char(14) binary,
   
   primary key (gu_id),
   unique key (gu_name)
@@ -48,11 +72,12 @@ class CentralAuthUser {
 	 * this code is crap
 	 */
 	function exists() {
-		$ok = $this->db->selectField(
+		$dbr = wfGetDB( DB_MASTER, 'centralauth' );
+		$ok = $dbr->selectField(
 			'globaluser',
 			'1',
 			array( 'gu_name' => $this->mName ),
-			__CLASS__ . '::' . __FUNCTION__ );
+			__METHOD__ );
 		return (bool)$ok;
 	}
 	
@@ -62,12 +87,11 @@ class CentralAuthUser {
 	 * @return ("attached", "unattached", "no local user")
 	 */
 	function isAttached( $dbname ) {
-		$fname = __CLASS__ . '::' . __FUNCTION__;
-		
-		$row = $this->db->selectRow( 'localuser',
+		$dbr = wfGetDB( DB_MASTER, 'centralauth' );
+		$row = $dbr->selectRow( 'localuser',
 			array( 'lu_attached' ),
 			array( 'lu_name' => $this->mName, 'lu_database' => $dbname ),
-			$fname );
+			__METHOD__ );
 		
 		if( !$row ) {
 			return "no local user";
@@ -81,23 +105,68 @@ class CentralAuthUser {
 	}
 	
 	/**
+	 * Add a local account record for the given wiki to the central database.
+	 * @param 
+	 */
+	function addLocal( $dbname, $localid ) {
+		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbw->insert( 'localuser',
+			array(
+				'lu_dbname'   => $dbname,
+				'lu_id'       => $localid,
+				'lu_name'     => $this->mName,
+				'lu_attached' => 1 ),
+			__METHOD__ );
+	}
+	
+	/**
+	 * Declare the local account for a given wiki to be attached
+	 * to the global account for the current username.
+	 *
+	 * @return true on success
+	 */
+	public function attach( $dbname ) {
+		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbw->update( 'localuser',
+			array(
+				// Boo-yah!
+				'lu_attached' => 1,
+				
+				// Local information fields become obsolete
+				'lu_email'               => NULL,
+				'lu_email_authenticated' => NULL,
+				'lu_salt'                => NULL,
+				'lu_password'            => NULL ),
+			array(
+				'lu_dbname' => $dbname,
+				'lu_name'   => $this->mName ),
+			__METHOD__ );
+		
+		$rows = $dbw->affectedRows();
+		if( $rows > 0 ) {
+			return true;
+		} else {
+			wfDebug( __METHOD__ . " failed to attach \"{$this->mName}@$dbname\", not in localuser\n" );
+			return false;
+		}
+	}
+	
+	/**
 	 * Attempt to authenticate the global user account with the given password
 	 * @param string $password
 	 * @return ("ok", "no user", "locked", "bad password")
 	 */
 	public function authenticate( $password ) {
-		$fname = __CLASS__ . '::' . __FUNCTION__;
-		
-		$row = $this->db->selectRow( 'globaluser',
-			array( 'gu_salt', 'gu_password', 'gu_disabled' ),
+		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		$row = $dbw->selectRow( 'globaluser',
+			array( 'gu_salt', 'gu_password', 'gu_locked' ),
 			array( 'gu_name' => $this->mName ),
-			$fname );
+			__METHOD__ );
 		
 		if( !$row ) {
 			return "no user";
 		}
 		
-		$isAttached = !is_null( $row->lu_database );
 		$salt = $row->gu_salt;
 		$crypt = $row->gu_password;
 		$locked = $row->gu_locked;
@@ -132,18 +201,26 @@ class CentralAuthUser {
 	 * @return array of database name strings
 	 */
 	function listUnattached() {
-		$res = $this->db->select(
+		$dbr = wfGetDB( DB_MASTER, 'centralauth' );
+		$res = $dbr->select(
 			array( 'globaluser', 'localuser' ),
 			array( 'lu_database' ),
 			array(
 				'lu_name' => $this->mName,
 				'lu_attached' => 0 ) );
 		$list = array();
-		while( $row = $this->db->fetchObject( $res ) ) {
+		while( $row = $db->fetchObject( $res ) ) {
 			$list[] = $row->lu_database;
 		}
-		$this->db->freeResult( $res );
+		$db->freeResult( $res );
 		return $list;
+	}
+	
+	function getEmail() {
+		$dbr = wfGetDB( DB_MASTER, 'centralauth' );
+		return $dbr->selectField( 'globaluser', 'gu_email',
+			array( 'gu_name' => $this->mName ),
+			__METHOD__ );
 	}
 }
 
@@ -162,7 +239,7 @@ class CentralAuth extends AuthPlugin {
 	 * @public
 	 */
 	function userExists( $username ) {
-		$user = CentralAuthUser( $username );
+		$user = new CentralAuthUser( $username );
 		return $user->exists();
 	}
 
@@ -178,7 +255,7 @@ class CentralAuth extends AuthPlugin {
 	 * @public
 	 */
 	function authenticate( $username, $password ) {
-		$user = CentralAuthUser( $username );
+		$user = new CentralAuthUser( $username );
 		return $user->authenticate( $password );
 	}
 
@@ -293,6 +370,7 @@ class CentralAuth extends AuthPlugin {
 	 */
 	function initUser( &$user ) {
 		# Override this to do something.
+		$global = new CentralAuthUser( $user->getName() );
 		$user->setEmail( $global->getEmail() );
 		// etc
 	}
