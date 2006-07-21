@@ -636,23 +636,38 @@ class SpellingEditor extends ScalarEditor {
 }
 
 class TextEditor extends ScalarEditor {
+	protected $truncate;
+	protected $truncateAt;
+	protected $addText = "";
+	
+	public function __construct($attribute, $allowUpdate, $isAddField, $truncate=false, $truncateAt=0) {
+		parent::__construct($attribute, $allowUpdate, $isAddField);
+		
+		$this->truncate = $truncate;
+		$this->truncateAt = $truncateAt;
+	}
+	
 	public function view($idPath, $value) {
-		return htmlspecialchars($value);
+		$escapedValue = htmlspecialchars($value);
+		
+		if (!$this->truncate || strlen($value) < $this->truncateAt) 
+			return $escapedValue;
+		else 
+			return '<span title="'. $escapedValue .'">'. htmlspecialchars(substr($value, 0, $this->truncateAt)) . '...</span>';
 	}
 
 	public function edit($idPath, $value) {
-		if ($this->allowUpdate) {
+		if ($this->allowUpdate) 
 			return getTextArea($this->updateId($idPath->getId()), $value, 3);
-		}
 		else
-			return htmlspecialchars($value);
+			return $this->view($idPath, $value);
 	}
 	
 	public function add($idPath) {
 		if ($this->isAddField)
 			return getTextArea($this->addId($idPath->getId()), "", 3);
 		else
-			return "";
+			return $this->addText;
 	}
 	
 	public function getInputValue($id) {
@@ -660,6 +675,10 @@ class TextEditor extends ScalarEditor {
 			$wgRequest;
 			
 		return trim($wgRequest->getText($id));		
+	}
+	
+	public function setAddText($addText) {
+		$this->addText = $addText;
 	}
 }
 
@@ -1056,10 +1075,8 @@ class AttributeLabelViewer extends Viewer {
 }
 
 class TupleSpanEditor extends TupleEditor {
-//	protected $attribute;
 	protected $attributeSeparator;
 	protected $valueSeparator;
-//	protected $viewers = array();
 	
 	public function __construct($attribute, $valueSeparator, $attributeSeparator) {
 		parent::__construct($attribute);
@@ -1080,14 +1097,6 @@ class TupleSpanEditor extends TupleEditor {
 		
 		return implode($this->attributeSeparator, $fields);
 	}
-	
-//	public function getAttribute() {
-//		return $this->attribute;
-//	}
-//	
-//	public function addViewer($viewer) {
-//		$this->viewers[] = $viewer;
-//	}
 	
 	public function add($idPath) {
 		$fields = array();

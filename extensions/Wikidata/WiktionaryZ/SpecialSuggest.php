@@ -14,6 +14,7 @@ require_once("attribute.php");
 require_once("relation.php");
 require_once("editor.php");
 require_once("HTMLtable.php");
+require_once("Expression.php");
 
 //$wgExtensionFunctions[] = 'wfSpecialSuggest';
 //
@@ -175,26 +176,6 @@ function getTextAttributeAsRelation($queryResult) {
 	return array($relation, $editor);		
 }
 
-function getDefinedMeaningDefinition($definedMeaningId) {
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT old_text FROM uw_defined_meaning as dm, translated_content as tc, text as t ".
-								"WHERE dm.defined_meaning_id=$definedMeaningId AND " .
-								"      dm.meaning_text_tcid=tc.set_id AND tc.language_id=85 AND tc.is_latest_set=1 AND " .
-								"      t.old_id= tc.text_id");	
-	
-	if ($definition = $dbr->fetchObject($queryResult)) {
-		$result = $definition->old_text;
-		$maxLength = 75;
-		
-		if (strlen($result) > $maxLength)
-			$result = substr($result, 0, $maxLength) . "...";
-		
-		return $result;
-	}
-	else	
-		return "";
-}
-
 function getDefinedMeaningAsRelation($queryResult) {
 	global
 		$idAttribute;
@@ -212,7 +193,7 @@ function getDefinedMeaningAsRelation($queryResult) {
 	$editor = new RelationTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($definedMeaningAttribute, false, false));
 	$editor->addEditor(new LanguageEditor($languageAttribute, false, false));
-	$editor->addEditor(new TextEditor($definitionAttribute, false, false));
+	$editor->addEditor(new TextEditor($definitionAttribute, false, false, true, 75));
 
 	return array($relation, $editor);		
 }

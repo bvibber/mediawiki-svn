@@ -493,4 +493,17 @@ function removeDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId,
 				"tc.is_latest_set=1 AND tc.text_id=t.old_id");	
 }
 
+function getDefinedMeaningDefinition($definedMeaningId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT old_text FROM uw_defined_meaning as dm, translated_content as tc, text as t ".
+								"WHERE dm.defined_meaning_id=$definedMeaningId AND " .
+								"      dm.meaning_text_tcid=tc.set_id AND tc.language_id=85 AND tc.is_latest_set=1 AND " .
+								"      t.old_id= tc.text_id");	
+	
+	if ($definition = $dbr->fetchObject($queryResult)) 
+		return $definition->old_text;
+	else	
+		return "";
+}
+
 ?>

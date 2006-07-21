@@ -530,15 +530,15 @@ class WiktionaryZ {
 
 	function getDefinedMeaningsRelation($expressionId) {
 		global
-			$definedMeaningIdAttribute, $definedMeaningAttribute;
+			$definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute;
 
 		$revisionId = getRevisionForExpressionId($expressionId);
-		$relation = new ArrayRelation(new Heading($definedMeaningIdAttribute, $definedMeaningAttribute), new Heading($definedMeaningIdAttribute));		
+		$relation = new ArrayRelation(new Heading($definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute), new Heading($definedMeaningIdAttribute));		
 		
 		$definedMeaningIds = $this->getDefinedMeaningsForExpression($expressionId);
 
 		foreach($definedMeaningIds as $definedMeaningId) 
-			$relation->addTuple(array($definedMeaningId, $this->getDefinedMeaningTuple($definedMeaningId, $revisionId, $expressionId)));
+			$relation->addTuple(array($definedMeaningId, getDefinedMeaningDefinition($definedMeaningId), $this->getDefinedMeaningTuple($definedMeaningId, $revisionId, $expressionId)));
 			
 		return $relation;
 	}
@@ -565,7 +565,7 @@ class WiktionaryZ {
 	function getExpressionsEditor($spelling) {
 		global
 			$expressionsAttribute, $definedMeaningAttribute, $expressionAttribute, $expressionMeaningsAttribute, 
-			$languageAttribute;
+			$languageAttribute, $textAttribute;
 			
 		$definitionEditor = $this->getDefinedMeaningDefinitionEditor();
 		$synonymsAndTranslationsEditor = $this->getSynonymsAndTranslationsEditor(); 
@@ -582,8 +582,11 @@ class WiktionaryZ {
 		$definedMeaningEditor->expandEditor($definitionEditor);
 		$definedMeaningEditor->expandEditor($synonymsAndTranslationsEditor);
 		
+		$definedMeaningCaptionEditor = new TextEditor($textAttribute, false, false, true, 100);
+		$definedMeaningCaptionEditor->setAddText("New defined meaning");
+		
 		$expressionMeaningsEditor = new RelationListEditor($expressionMeaningsAttribute, true, false, true, new ExpressionMeaningController(), 3, false);
-		$expressionMeaningsEditor->setCaptionEditor(new AttributeLabelViewer($definedMeaningAttribute));
+		$expressionMeaningsEditor->setCaptionEditor($definedMeaningCaptionEditor);
 		$expressionMeaningsEditor->setValueEditor($definedMeaningEditor);
 		
 		$expressionEditor = new TupleSpanEditor($expressionAttribute, ': ', ' - ');

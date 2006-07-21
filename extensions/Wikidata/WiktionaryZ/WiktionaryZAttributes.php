@@ -76,10 +76,9 @@ $definitionAttribute = new Attribute("definition", "Definition", new RelationTyp
 $synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Synonyms and translations", new RelationType(new Heading($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute)));
 
 global
-	$definedMeaningIdAttribute, $expressionMeaningsAttribute;
+	$definedMeaningIdAttribute;
 
 $definedMeaningIdAttribute = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
-$expressionMeaningsAttribute = new Attribute("expression-meanings", "Defined meanings", new RelationType(new Heading($definedMeaningIdAttribute, $definedMeaningAttribute)));
 
 global
 	$textValueIdAttribute, $textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute, $textAttributeValuesHeading;
@@ -97,8 +96,9 @@ global
 $definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new TupleType(new Heading($definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute)));
 
 global
-	$expressionsAttribute;
+	$expressionsAttribute, $expressionMeaningsAttribute;
 	
+$expressionMeaningsAttribute = new Attribute("expression-meanings", "Defined meanings", new RelationType(new Heading($definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute)));
 $expressionsAttribute = new Attribute("expressions", "Expressions", new RelationType(new Heading($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute)));
 
 ?>
