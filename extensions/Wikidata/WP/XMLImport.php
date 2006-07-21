@@ -171,7 +171,9 @@ function parserEndElement($parser, $name){
 
 function parserData($parser, $data){
 	global $specificXMLParser;
-	$specificXMLParser->processData($data);	
+	if ($data != NULL){
+		$specificXMLParser->processData($data);	
+	}
 }
 
 function parseXML($fileHandle, $xmlParser) {

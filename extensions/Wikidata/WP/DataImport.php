@@ -10,14 +10,15 @@ require_once('XMLImport.php');
 $beginTime = time();
 
 //$file = "OneEntry.xml";
-$file = "100000lines.xml";
-//$file = "C:\Documents and Settings\Karsten Uil\Mijn documenten\Charta\Clients\KnewCo\WikiProtein\uniprot_sprot.xml\uniprot_sprot.xml";
-//$file = "C:\Documents and Settings\Karsten Uil\Mijn documenten\Charta\Clients\KnewCo\WikiProtein\uniprot_sprot.dat\uniprot_sprot.dat";
+$file = "10000lines.xml";
+//$file = "uniprot_sprot.xml";
+//$file = "uniprot_sprot.dat";
 
 $fileHandle = fopen($file, "r");
 
 $dbr =& wfGetDB(DB_SLAVE);	
 importEntriesFromXMLFile($fileHandle, $dbr);
+
 //echoLines($fileHandle, 100000);
 fclose($fileHandle);
 
@@ -25,11 +26,14 @@ $endTime = time();
 echo "Time elapsed: " . ($endTime - $beginTime); 
 
 function echoLines($fileHandle, $numberOfLines) {
-	for ($i = 1; $i <= $numberOfLines; $i++)  {
-	    $buffer = fgets($fileHandle);
-	    $buffer = rtrim($buffer,"\n");
-	    echo $buffer; 
- 	 }
+	$i = 0;
+	do {
+		$buffer = fgets($fileHandle);
+		$buffer = rtrim($buffer,"\n");
+		echo $buffer;
+		$i += 1;		
+	} while($i < $numberOfLines || strpos($buffer, '</entry>') === false);
+	echo "</uniprot>";
 }
 
 function	importSwissProtEntries($fileHandle) {
