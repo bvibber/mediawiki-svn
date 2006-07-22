@@ -313,10 +313,10 @@ class fakeConverter {
 	function findVariantLink(&$l, &$n) {}
 	function getExtraHashOptions() {return '';}
 	function getParsedTitle() {return '';}
-	function markNoConversion($text) {return $text;}
+	function markNoConversion($text, $noParse=false) {return $text;}
 	function convertCategoryKey( $key ) {return $key; }
 	function convertLinkToAllVariants($text){ return array( $this->mLang->getCode() => $text); }
-
+	function setNoTitleConvert(){}
 }
 
 #--------------------------------------------------------------------------
@@ -1125,6 +1125,17 @@ class Language {
 		return $this->mConverter->parserConvert( $text, $parser );
 	}
 
+	# Tell the converter that it shouldn't convert titles
+	function setNoTitleConvert(){
+		$this->mConverter->setNotitleConvert();
+	}
+
+	# Check if this is a language with variants
+	function hasVariants(){
+		return sizeof($this->getVariants())>1;
+	}
+
+
 	/**
 	 * Perform output conversion on a string, and encode for safe HTML output.
 	 * @param string $text
@@ -1209,8 +1220,8 @@ class Language {
 	 * @param string $text text to be tagged for no conversion
 	 * @return string the tagged text
 	*/
-	function markNoConversion( $text ) {
-		return $this->mConverter->markNoConversion( $text );
+	function markNoConversion( $text, $noParse=false ) {
+		return $this->mConverter->markNoConversion( $text, $noParse );
 	}
 
 	/**

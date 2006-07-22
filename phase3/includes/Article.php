@@ -30,6 +30,8 @@ class Article {
 	var $mGoodAdjustment;	//!<
 	var $mLatest;			//!<
 	var $mMinorEdit;		//!<
+ 	var $mNoTitleConvert;			//!<
+ 	var $mNoTitleConvertParser;			//!<
 	var $mOldId;			//!<
 	var $mRedirectedFrom;	//!<
 	var $mRedirectUrl;		//!<
@@ -130,6 +132,8 @@ class Article {
 		$this->mRevIdFetched = 0;
 		$this->mRedirectUrl = false;
 		$this->mLatest = false;
+		$this->mNoTitleConvert = false;
+		$this->mNoTitleConvertParser = false;
 	}
 
 	/**
@@ -267,7 +271,8 @@ class Article {
 				'page_random',
 				'page_touched',
 				'page_latest',
-				'page_len' ) ;
+				'page_len',
+				'page_no_title_convert') ;
 		wfRunHooks( 'ArticlePageDataBefore', array( &$this , &$fields ) )	;
 		$row = $dbr->selectRow( 'page',
 			$fields,
@@ -303,6 +308,8 @@ class Article {
 	 * @private
 	 */
 	function loadPageData( $data = 'fromdb' ) {
+		global $wgContLang;
+
 		if ( $data === 'fromdb' ) {
 			$dbr =& $this->getDB();
 			$data = $this->pageDataFromId( $dbr, $this->getId() );
@@ -320,6 +327,10 @@ class Article {
 			$this->mTouched     = wfTimestamp( TS_MW, $data->page_touched );
 			$this->mIsRedirect  = $data->page_is_redirect;
 			$this->mLatest      = $data->page_latest;
+			$this->mNoTitleConvert = $data->page_no_title_convert;
+
+			if($this->mNoTitleConvert && sizeof($wgContLang->getVariants())>1)
+				$wgContLang->setNoTitleConvert();
 		} else {
 			if ( is_object( $this->mTitle ) ) {
 				$lc->addBadLinkObj( $this->mTitle );
@@ -981,6 +992,7 @@ class Article {
 			'page_touched'      => $dbw->timestamp(),
 			'page_latest'       => 0, # Fill this in shortly...
 			'page_len'          => 0, # Fill this in shortly...
+			'page_no_title_convert' => 0,
 		), __METHOD__ );
 		$newid = $dbw->insertId();
 
@@ -1020,9 +1032,16 @@ class Article {
 				'page_is_new'      => ($lastRevision === 0) ? 1 : 0,
 				'page_is_redirect' => Article::isRedirect( $text ) ? 1 : 0,
 				'page_len'         => strlen( $text ),
+				'page_no_title_convert' => ($this->mNoTitleConvertParser)? 1 : 0,
 			),
 			$conditions,
 			__METHOD__ );
+
+		// check if no title magic word has been changed
+		if($this->mNoTitleConvert != $this->mNoTitleConvertParser){
+			// Clear caches
+			Article::onArticleCreate( $this->mTitle );
+		}
 
 		wfProfileOut( __METHOD__ );
 		return ( $dbw->affectedRows() != 0 );
@@ -1191,7 +1210,7 @@ class Article {
 	 * @return bool success
 	 */
 	function doEdit( $text, $summary, $flags = 0 ) {
-		global $wgUser, $wgDBtransactions;
+		global $wgUser, $wgDBtransactions, $wgContLang;
 
 		wfProfileIn( __METHOD__ );
 		$good = true;
@@ -1217,6 +1236,15 @@ class Article {
 		# Silently ignore EDIT_MINOR if not allowed
 		$isminor = ( $flags & EDIT_MINOR ) && $wgUser->isAllowed('minoredit');
 		$bot = $wgUser->isBot() || ( $flags & EDIT_FORCE_BOT );
+
+		// process the notitleconvert magic for languages with variants
+		$this->mNoTitleConvertParser = false;
+		if(sizeof($wgContLang->getVariants())>1){
+			$mw =& MagicWord::get( 'notitleconvert' );
+			if( $mw->match( $text ) ){
+				$this->mNoTitleConvertParser = true;
+			}
+		}
 
 		$text = $this->preSaveTransform( $text );
 

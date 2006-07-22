@@ -20,6 +20,7 @@ class LanguageConverter {
 	var $mMarkup;
 	var $mFlags;
 	var $mUcfirst = false;
+	var $mNoTitleConvert = false;
 	/**
      * Constructor
 	 *
@@ -313,6 +314,11 @@ class LanguageConverter {
 			return $text;
 
 		if( $isTitle ) {
+			if($this->mNoTitleConvert){
+				$this->mTitleDisplay = $text;			
+				return $text;
+			}
+
 			if( !$this->mDoTitleConvert ) {
 				$this->mTitleDisplay = $text;
 				return $text;
@@ -682,7 +688,7 @@ class LanguageConverter {
 	 * @param string $text text to be tagged for no conversion
 	 * @return string the tagged text
 	*/
-	function markNoConversion($text) {
+	function markNoConversion($text, $noParse=false) {
 		# don't mark if already marked
 		if(strpos($text, $this->mMarkup['begin']) ||
  		   strpos($text, $this->mMarkup['end']))
@@ -723,6 +729,11 @@ class LanguageConverter {
 		}
 		return true;
 	}
+
+	function setNoTitleConvert(){
+		$this->mNoTitleConvert = true;
+	}
+
 }
 
 ?>

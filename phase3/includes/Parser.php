@@ -3913,9 +3913,10 @@ class Parser
 			}
 			wfProfileOut( $fname.'-check' );
 
-			# Do a second query for links in different language variants (if needed)
-			if(sizeof($wgContLang->getVariants())>1){
+			# Do a second query for different language variants of links (if needed)
+			if($wgContLang->hasVariants()){
 				$linkBatch = new LinkBatch(); 
+				$variantMap = array();
 
 				// Add variants of links to link batch
 				foreach ( $this->mLinkHolders['namespaces'] as $key => $ns ) {
@@ -3925,70 +3926,79 @@ class Parser
 
 					$pdbk = $title->getPrefixedDBkey();
 
+					// add the original text into query to check for notitleconvert pages
+					$variantTitle = Title::makeTitleSafe( $ns, $title->getText() );
+					$linkBatch->addObj( $variantTitle );
+					$variantMap[$variantTitle->getPrefixedDBkey()][] = $key;
+
 					// generate all variants of the link title text
 					$allTextVariants = $wgContLang->convertLinkToAllVariants($title->getText());
 
 					// if link was not found (in first query), add all variants to query
 					if ( !isset($colours[$pdbk]) ){
 						foreach($allTextVariants as $textVariant){
-							$linkBatch->addObj( Title::makeTitleSafe( $ns, $textVariant ) );
-						}
-					}
-					// if link was found add only variant with fixed title
-					else if($colours[$pdbk] == 1){
-						$fixedCode = $wgLanguageCode.'-fixed';
-						if( isset($allTextVariants[$fixedCode]) ){
-							$linkBatch->addObj( Title::makeTitleSafe( $ns, $allTextVariants[$fixedCode]  ) );
+							$variantTitle = Title::makeTitleSafe( $ns, $textVariant );
+							$linkBatch->addObj( $variantTitle );
+							$variantMap[$variantTitle->getPrefixedDBkey()][] = $key;
 						}
 					}
 				}
+				
+				# construct query
+				$titleClause = $linkBatch->constructSet('page', $dbr);
+				$variantQuery =  "SELECT page_id, page_namespace, page_title";
+				if ( $threshold > 0 ) {
+					$variantQuery .= ', page_len, page_is_redirect';
+				}
+				$variantQuery .= ", page_no_title_convert FROM $page WHERE $titleClause";
+				if ( $options & RLH_FOR_UPDATE ) {
+					$query .= ' FOR UPDATE';
+				}
+				
+				$varRes = $dbr->query( $variantQuery, $fname );
+						
+				# for each found variants, figure out link holders and replace
+				while ( $s = $dbr->fetchObject($varRes) ) {
 
-				# fetch link variants into cache
-				$linkBatch->execute();
+					$variantTitle = Title::makeTitle( $s->page_namespace, $s->page_title );
+					$varPdbk = $variantTitle->getPrefixedDBkey();
+					$linkCache->addGoodLinkObj( $s->page_id, $variantTitle );
+					$this->mOutput->addLink( $variantTitle, $s->page_id );
 
-				# check if links are found in some of the variants
-				foreach ( $this->mLinkHolders['namespaces'] as $key => $ns ) {
-					$title = $this->mLinkHolders['titles'][$key];
-					if ( is_null( $title ) ) 
-						continue;
+					$noTitleConvert = $s->page_no_title_convert;
 
-					$pdbk = $title->getPrefixedDBkey();					
-					$allTextVariants = $wgContLang->convertLinkToAllVariants($title->getText());
+					$holderKeys = $variantMap[$varPdbk];
 
-					// If link has already been found, check only fixed variant
-					if(isset($colours[$pdbk]) && $colours[$pdbk] == 1){
-						$fixedCode = $wgLanguageCode.'-fixed';
+					// loop over link holders
+					foreach($holderKeys as $key){						
+						$title = $this->mLinkHolders['titles'][$key];
+						if ( is_null( $title ) ) continue;
 
-						if( isset($allTextVariants[$fixedCode]) ){
-							$allTextVariants = array($fixedCode => $allTextVariants[$fixedCode]);
+						$pdbk = $title->getPrefixedDBkey();
+
+						if(!isset($colours[$pdbk]) || ($noTitleConvert && $colours[$pdbk] == 1)){
+							// found link in some of the variants, replace the link holder data
+							$this->mLinkHolders['titles'][$key] = $variantTitle;
+							$this->mLinkHolders['dbkeys'][$key] = $variantTitle->getDBkey();
+							
+							// prevent link conversion if needed
+							if($noTitleConvert)
+								$this->mLinkHolders['texts'][$key] = $wgContLang->markNoConversion($variantTitle->getText(),true);
+
+							// set pdbk and colour
+							$pdbks[$key] = $varPdbk;
+							if ( $threshold >  0 ) {
+								$size = $s->page_len;
+								if ( $s->page_is_redirect || $s->page_namespace != 0 || $size >= $threshold ) {
+									$colours[$pdbk] = 1;
+								} else {
+									$colours[$pdbk] = 2;
+								}
+							} 
+							else {
+								$colours[$pdbk] = 1;
+							}					
 						}
-					}
-
-					// process the link variants
-					if ( !isset($colours[$pdbk]) || $colours[$pdbk] == 1 ){
-						foreach($allTextVariants as $variantCode => $textVariant){
-							$variantTitle=Title::makeTitleSafe( $ns, $textVariant );
-							if(is_null($variantTitle)) continue;
-
-							$varpdbk = $variantTitle->getPrefixedDBkey();
-
-							if($linkCache->getGoodLinkID( $varpdbk ) != 0){
-
-								// found link in some of the variants, replace the link holder data
-								$this->mLinkHolders['titles'][$key] = $variantTitle;
-								$this->mLinkHolders['dbkeys'][$key] = $variantTitle->getDBkey();
-
-								if($wgContLang->getPreferredVariant() == $wgLanguageCode)
-									$this->mLinkHolders['texts'][$key] = $this->mLinkHolders['texts'][$key];
-								else
-									$this->mLinkHolders['texts'][$key] = $variantTitle->getText();
-
-								$pdbks[$key] = $varpdbk;
-								$colours[$varpdbk] = 1;
-
-								break;
-							}
-						}	
 					}
 				}
 			}

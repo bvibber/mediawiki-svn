@@ -171,8 +171,8 @@ class SrConverter extends LanguageConverter {
 	 * We want our external link captions to be converted in variants,
 	 * so we return the original text instead -{$text}-, except for URLs
 	 */
-	function markNoConversion($text) {
-		if(preg_match("/^https?:\/\/|ftp:\/\/|irc:\/\//",$text))
+	function markNoConversion($text, $noParse=false) {
+		if($noParse || preg_match("/^https?:\/\/|ftp:\/\/|irc:\/\//",$text))
 			return parent::markNoConversion($text);
 		return $text;
 	}
