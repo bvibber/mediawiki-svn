@@ -66,10 +66,13 @@ class Language {
 		'bookstoreList', 'magicWords', 'messages', 'rtl', 'digitTransformTable', 
 		'separatorTransformTable', 'fallback8bitEncoding', 'linkPrefixExtension',
 		'defaultUserOptionOverrides', 'linkTrail', 'namespaceAliases', 
-		'dateFormats', 'datePreferences', 'datePreferenceMigrationMap', 'defaultDateFormat' );
+		'dateFormats', 'datePreferences', 'datePreferenceMigrationMap', 
+		'defaultDateFormat', 'extraUserToggles' );
 
 	static public $mMergeableMapKeys = array( 'messages', 'namespaceNames', 'mathNames', 
 		'dateFormats', 'defaultUserOptionOverrides' );
+
+	static public $mMergeableListKeys = array( 'extraUserToggles' );
 
 	static public $mLocalisationCache = array();
 
@@ -239,6 +242,11 @@ class Language {
 	function getDefaultUserOptionOverrides() {
 		$this->load();
 		return $this->defaultUserOptionOverrides;
+	}
+
+	function getExtraUserToggles() {
+		$this->load();
+		return $this->extraUserToggles;
 	}
 
 	function getUserToggle( $tog ) {
@@ -1187,8 +1195,8 @@ class Language {
 		return $prefix . str_replace( '-', '_', ucfirst( $code ) ) . $suffix;
 	}
 
-	static function getLocalisationArray( $code ) {
-		self::loadLocalisation( $code );
+	static function getLocalisationArray( $code, $disableCache = false ) {
+		self::loadLocalisation( $code, $disableCache );
 		return self::$mLocalisationCache[$code];
 	}
 
@@ -1197,48 +1205,52 @@ class Language {
 	 *
 	 * @return array Dependencies, map of filenames to mtimes
 	 */
-	static function loadLocalisation( $code ) {
+	static function loadLocalisation( $code, $disableCache = false ) {
 		static $recursionGuard = array();
 		global $wgMemc, $wgDBname, $IP;
 
-		# Try the per-process cache
-		if ( isset( self::$mLocalisationCache[$code] ) ) {
-			return self::$mLocalisationCache[$code]['deps'];
-		}
+		if ( !$disableCache ) {
+			# Try the per-process cache
+			if ( isset( self::$mLocalisationCache[$code] ) ) {
+				return self::$mLocalisationCache[$code]['deps'];
+			}
 
-		wfProfileIn( __METHOD__ );
+			wfProfileIn( __METHOD__ );
 
-		# Try the serialized directory
-		$cache = wfGetPrecompiledData( self::getFileName( "Messages", $code, '.ser' ) );
-		if ( $cache ) {
-			self::$mLocalisationCache[$code] = $cache;
-			wfDebug( "Got localisation for $code from precompiled data file\n" );
-			wfProfileOut( __METHOD__ );
-			return self::$mLocalisationCache[$code]['deps'];
-		}
+			# Try the serialized directory
+			$cache = wfGetPrecompiledData( self::getFileName( "Messages", $code, '.ser' ) );
+			if ( $cache ) {
+				self::$mLocalisationCache[$code] = $cache;
+				wfDebug( "Got localisation for $code from precompiled data file\n" );
+				wfProfileOut( __METHOD__ );
+				return self::$mLocalisationCache[$code]['deps'];
+			}
 
-		# Try the global cache
-		$memcKey = "$wgDBname:localisation:$code";
-		$cache = $wgMemc->get( $memcKey );
-		if ( $cache ) {
-			$expired = false;
-			# Check file modification times
-			foreach ( $cache['deps'] as $file => $mtime ) {
-				if ( filemtime( $file ) > $mtime ) {
-					$expired = true;
-					break;
+			# Try the global cache
+			$memcKey = "$wgDBname:localisation:$code";
+			$cache = $wgMemc->get( $memcKey );
+			if ( $cache ) {
+				$expired = false;
+				# Check file modification times
+				foreach ( $cache['deps'] as $file => $mtime ) {
+					if ( filemtime( $file ) > $mtime ) {
+						$expired = true;
+						break;
+					}
+				}
+				if ( $expired ) {
+					$wgMemc->delete( $memcKey );
+					$cache = false;
+					wfDebug( "Localisation cache for $code had expired due to update of $file\n" );
+				} else {
+					self::$mLocalisationCache[$code] = $cache;
+					wfDebug( "Got localisation for $code from cache\n" );
+					wfProfileOut( __METHOD__ );
+					return $cache['deps'];
 				}
 			}
-			if ( $expired ) {
-				$wgMemc->delete( $memcKey );
-				$cache = false;
-				wfDebug( "Localisation cache for $code had expired due to update of $file\n" );
-			} else {
-				self::$mLocalisationCache[$code] = $cache;
-				wfDebug( "Got localisation for $code from cache\n" );
-				wfProfileOut( __METHOD__ );
-				return $cache['deps'];
-			}
+		} else {
+			wfProfileIn( __METHOD__ );
 		}
 
 		if ( $code != 'en' ) {
@@ -1274,8 +1286,12 @@ class Language {
 			# Merge the fallback localisation with the current localisation
 			foreach ( self::$mLocalisationKeys as $key ) {
 				if ( isset( $cache[$key] ) ) {
-					if ( isset( $secondary[$key] ) && in_array( $key, self::$mMergeableMapKeys ) ) {
-						$cache[$key] = $cache[$key] + $secondary[$key];
+					if ( isset( $secondary[$key] ) ) {
+						if ( in_array( $key, self::$mMergeableMapKeys ) ) {
+							$cache[$key] = $cache[$key] + $secondary[$key];
+						} elseif ( in_array( $key, self::$mMergeableListKeys ) ) {
+							$cache[$key] = array_merge( $secondary[$key], $cache[$key] );
+						}
 					}
 				} else {
 					$cache[$key] = $secondary[$key];
@@ -1296,7 +1312,9 @@ class Language {
 
 		# Save to both caches
 		self::$mLocalisationCache[$code] = $cache;
-		$wgMemc->set( $memcKey, $cache );
+		if ( !$disableCache ) {
+			$wgMemc->set( $memcKey, $cache );
+		}
 		wfDebug( "Got localisation for $code from source\n" );
 
 		wfProfileOut( __METHOD__ );

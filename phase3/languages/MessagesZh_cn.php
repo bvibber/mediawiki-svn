@@ -49,7 +49,7 @@ $skinNames = array(
 	'cologneblue' => "科隆香水蓝"
 );
 
-$userToggles = array(
+$extraUserToggles = array(
 	'nolangconversion',
 );
 $datePreferences = false;

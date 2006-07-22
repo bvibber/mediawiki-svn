@@ -33,7 +33,7 @@ $skinNames = array(
  "Obična", "Nostalgija", "Kelnsko plavo", "Pedington", "Monparnas"
 );
 
-$userToggles = array(
+$extraUserToggles = array(
 	'nolangconversion',
 );
 

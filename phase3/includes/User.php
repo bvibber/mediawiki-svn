@@ -69,7 +69,7 @@ class User {
 		'editsectiononrightclick'=> 0,
 		'showtoc'		=> 1,
 		'showtoolbar' 		=> 1,
-		'date' 			=> 0,
+		'date' 			=> 'default',
 		'imagesize' 		=> 2,
 		'thumbsize'		=> 2,
 		'rememberpassword' 	=> 0,
@@ -495,9 +495,10 @@ class User {
 	 * @return array
 	 */
 	static function getToggles() {
+		global $wgContLang;
 		$extraToggles = array();
 		wfRunHooks( 'UserToggles', array( &$extraToggles ) );
-		return array_merge( self::$mToggles, $extraToggles );
+		return array_merge( self::$mToggles, $extraToggles, $wgContLang->getExtraUserToggles() );
 	}
 
 
@@ -1489,8 +1490,8 @@ class User {
 				$name = $m[1];
 				$value = $m[2];
 				# Date format preference migration
-				if ( $name == 'dateformat' ) {
-					$map = $wgLang->getDateFormatMigrationMap();
+				if ( $name == 'date' ) {
+					$map = $wgContLang->getDateFormatMigrationMap();
 					if ( isset( $map[$value] ) ) {
 						$value = $map[$value];
 					}

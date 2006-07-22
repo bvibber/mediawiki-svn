@@ -9,14 +9,16 @@ if ( !isset( $args[0] ) ) {
 	fwrite( $stderr, "No input file specified\n" );
 	exit( 1 );
 }
-$file = $argv[1];
+$file = $args[0];
 $code = str_replace( 'Messages', '', basename( $file ) );
 $code = str_replace( '.php', '', $code );
 $code = strtolower( str_replace( '_', '-', $code ) );
 
-/**
- * Truncate the output file now, so that we don't just load back the same cache
- */
+$localisation = Language::getLocalisationArray( $code, true );
+if ( wfIsWindows() ) {
+	$localisation = unixLineEndings( $localisation );
+}
+
 if ( isset( $options['o'] ) ) {
 	$out = fopen( $options['o'], 'wb' );
 	if ( !$out ) {
@@ -26,12 +28,6 @@ if ( isset( $options['o'] ) ) {
 } else {
 	$out = fopen( 'php://stdout', 'wb' );
 }
-
-$localisation = Language::getLocalisationArray( $code );
-if ( wfIsWindows() ) {
-	$localisation = unixLineEndings( $localisation );
-}
-
 
 fwrite( $out, serialize( $localisation ) );
 

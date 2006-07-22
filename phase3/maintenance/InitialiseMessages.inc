@@ -37,11 +37,7 @@ function initialiseMessages( $overwrite = false, $messageArray = false ) {
 		$variants[]=$wgContLanguageCode;
 
 	foreach ($variants as $v) {
-		$langclass = 'Language'. str_replace( '-', '_', ucfirst( $v ) );
-		if( !class_exists($langclass) ) {
-			wfDie( "class $langclass not defined. perhaps you need to include the file $langclass.php in $wgContLangClass.php?" );
-		}
-		$lang = new $langclass;
+		$lang = wfNewLangObj( $v );
 
 		if($v==$wgContLanguageCode)
 			$suffix='';
@@ -74,7 +70,7 @@ function initialiseMessages( $overwrite = false, $messageArray = false ) {
 
 /** */
 function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
-	global $wgContLang, $wgScript, $wgServer;
+	global $wgContLang, $wgScript, $wgServer, $wgLanguageCode;
 	global $wgOut, $wgArticle, $wgUser;
 	global $wgMessageCache, $wgMemc, $wgDBname, $wgUseMemCached;
 
@@ -97,7 +93,7 @@ function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
 	$username = 'MediaWiki default';
 
 
-	print "Initialising \"MediaWiki\" namespace...\n";
+	print "Initialising \"MediaWiki\" namespace for language code $wgLanguageCode...\n";
 
 
 	$dbr =& wfGetDB( DB_SLAVE );
@@ -171,6 +167,10 @@ function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
 	$talk = $wgContLang->getNsText( NS_TALK );
 	$mwtalk = $wgContLang->getNsText( NS_MEDIAWIKI_TALK );
 
+	$numUpdated = 0;
+	$numKept = 0;
+	$numInserted = 0;
+	
 	# Merge these into a single transaction for speed
 	$dbw->begin();
 
@@ -197,7 +197,12 @@ function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
 				if( is_null( $revision ) || $revision->getText() != $message ) {
 					$article = new Article( $titleObj );
 					$article->quickEdit( $message );
+					++$numUpdated;
+				} else {
+					++$numKept;
 				}
+			} else {
+				++$numKept;
 			}
 		} else {
 			$article = new Article( $titleObj );
@@ -212,14 +217,14 @@ function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
 				) );
 			$revid = $revision->insertOn( $dbw );
 			$article->updateRevisionOn( $dbw, $revision );
+			++$numInserted;
 		}
 	}
 	$dbw->commit();
 
 	# Clear the relevant memcached key
-	print 'Clearing message cache...';
 	$wgMessageCache->clear();
-	print "Done.\n";
+	print "Done. Updated: $numUpdated, inserted: $numInserted, kept: $numKept.\n";
 }
 
 /** */
