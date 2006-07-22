@@ -14,7 +14,7 @@ class LanguageZh_cn extends Language {
 				"' U8' . bin2hex( \"$1\" )",
 				mb_strtolower( $string ) );
 		} else {
-			global $wikiLowerChars;
+			list( , $wikiLowerChars ) = Language::getCaseMaps();
 			return preg_replace(
 				"/([\\xc0-\\xff][\\x80-\\xbf]*)/e",
 				"' U8' . bin2hex( strtr( \"\$1\", \$wikiLowerChars ) )",

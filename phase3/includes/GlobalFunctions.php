@@ -2060,4 +2060,22 @@ function wfSetupSession() {
 	@session_start();
 }
 
+/**
+ * Get an object from the precompiled serialized directory
+ *
+ * @return mixed The variable on success, false on failure
+ */
+function wfGetPrecompiledData( $name ) {
+	global $IP;
+
+	$file = "$IP/serialized/$name";
+	if ( file_exists( $file ) ) {
+		$blob = file_get_contents( $file );
+		if ( $blob ) {
+			return unserialize( $blob );
+		}
+	}
+	return false;
+}
+
 ?>

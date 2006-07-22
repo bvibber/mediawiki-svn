@@ -25,7 +25,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 global $wgLanguageNames;
 require_once( 'Names.php' );
 
-global $wgInputEncoding, $wgOutputEncoding, $wikiUpperChars, $wikiLowerChars;
+global $wgInputEncoding, $wgOutputEncoding;
 global $wgDBname, $wgMemc;
 
 /**
@@ -34,22 +34,8 @@ global $wgDBname, $wgMemc;
 $wgInputEncoding    = "UTF-8";
 $wgOutputEncoding	= "UTF-8";
 
-if ( !defined( 'NOT_REALLY_MEDIAWIKI' ) ) {
 if( function_exists( 'mb_strtoupper' ) ) {
 	mb_internal_encoding('UTF-8');
-} else {
-	# Hack our own case conversion routines
-
-	# Loading serialized arrays is faster than parsing code :P
-	$wikiUpperChars = $wgMemc->get( $key1 = "$wgDBname:utf8:upper" );
-	$wikiLowerChars = $wgMemc->get( $key2 = "$wgDBname:utf8:lower" );
-
-	if(empty( $wikiUpperChars) || empty($wikiLowerChars )) {
-		require_once( "includes/Utf8Case.php" );
-		$wgMemc->set( $key1, $wikiUpperChars );
-		$wgMemc->set( $key2, $wikiLowerChars );
-	}
-}
 }
 
 /* a fake language converter */
@@ -113,7 +99,12 @@ class Language {
 
 	function __construct() {
 		$this->mConverter = new FakeConverter($this);
-		$this->mCode = str_replace( '_', '-', strtolower( substr( get_class( $this ), 8 ) ) );
+		// Set the code to the name of the descendant
+		if ( get_class( $this ) == 'Language' ) {
+			$this->mCode = 'en';
+		} else {
+			$this->mCode = str_replace( '_', '-', strtolower( substr( get_class( $this ), 8 ) ) );
+		}
 	}
 
 	/**
@@ -526,6 +517,7 @@ class Language {
 	 * function timeanddate([...], $format = true) {
 	 * 	$datePreference = $this->dateFormat($format);
 	 * [...]
+	 * }
 	 *</code>
 	 *
 	 * @param mixed $usePrefs: if true, the user's preference is used
@@ -567,6 +559,7 @@ class Language {
 	 * @return string
 	 */
 	function date( $ts, $adj = false, $format = true, $timecorrection = false ) {
+		$this->load();
 		if ( $adj ) { 
 			$ts = $this->userAdjust( $ts, $timecorrection ); 
 		}
@@ -590,6 +583,7 @@ class Language {
 	* @return string
 	*/
 	function time( $ts, $adj = false, $format = true, $timecorrection = false ) {
+		$this->load();
 		if ( $adj ) { 
 			$ts = $this->userAdjust( $ts, $timecorrection ); 
 		}
@@ -615,6 +609,7 @@ class Language {
 	* @return string
 	*/
 	function timeanddate( $ts, $adj = false, $format = true, $timecorrection = false) {
+		$this->load();
 		if ( $adj ) { 
 			$ts = $this->userAdjust( $ts, $timecorrection ); 
 		}
@@ -656,7 +651,7 @@ class Language {
 				return self::isMultibyte( $str ) ? mb_strtoupper( $str ) : strtoupper( $str );
 		else
 			if ( self::isMultibyte( $str ) ) {
-				global $wikiUpperChars;
+				list( $wikiUpperChars ) = $this->getCaseMaps();
 				$x = $first ? '^' : '';
 				return preg_replace(
 					"/$x([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
@@ -682,7 +677,7 @@ class Language {
 				return self::isMultibyte( $str ) ? mb_strtolower( $str ) : strtolower( $str );
 		else
 			if ( self::isMultibyte( $str ) ) {
-				global $wikiLowerChars;
+				list( , $wikiLowerChars ) = self::getCaseMaps();
 				$x = $first ? '^' : '';
 				return preg_replace(
 					"/$x([A-Z]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
@@ -736,7 +731,7 @@ class Language {
 				"'U8' . bin2hex( \"$1\" )",
 				mb_strtolower( $string ) );
 		} else {
-			global $wikiLowerChars;
+			list( , $wikiLowerChars ) = self::getCaseMaps();
 			$out = preg_replace(
 				"/([\\xc0-\\xff][\\x80-\\xbf]*)/e",
 				"'U8' . bin2hex( strtr( \"\$1\", \$wikiLowerChars ) )",
@@ -1192,6 +1187,11 @@ class Language {
 		return $prefix . str_replace( '-', '_', ucfirst( $code ) ) . $suffix;
 	}
 
+	static function getLocalisationArray( $code ) {
+		self::loadLocalisation( $code );
+		return self::$mLocalisationCache[$code];
+	}
+
 	/**
 	 * Load localisation data for a given code into the static cache
 	 *
@@ -1199,7 +1199,7 @@ class Language {
 	 */
 	static function loadLocalisation( $code ) {
 		static $recursionGuard = array();
-		global $wgMemc, $wgDBname;
+		global $wgMemc, $wgDBname, $IP;
 
 		# Try the per-process cache
 		if ( isset( self::$mLocalisationCache[$code] ) ) {
@@ -1207,6 +1207,15 @@ class Language {
 		}
 
 		wfProfileIn( __METHOD__ );
+
+		# Try the serialized directory
+		$cache = wfGetPrecompiledData( self::getFileName( "Messages", $code, '.ser' ) );
+		if ( $cache ) {
+			self::$mLocalisationCache[$code] = $cache;
+			wfDebug( "Got localisation for $code from precompiled data file\n" );
+			wfProfileOut( __METHOD__ );
+			return self::$mLocalisationCache[$code]['deps'];
+		}
 
 		# Try the global cache
 		$memcKey = "$wgDBname:localisation:$code";
@@ -1376,7 +1385,25 @@ class Language {
 			$this->defaultDateFormat = $wgAmericanDates ? 'mdy' : 'dmy';
 		}
 		wfProfileOut( __METHOD__ );
-	}		
+	}
+
+	static function getCaseMaps() {
+		static $wikiUpperChars, $wikiLowerChars;
+		global $IP;
+		if ( isset( $wikiUpperChars ) ) {
+			return array( $wikiUpperChars, $wikiLowerChars );
+		}
+
+		wfProfileIn( __METHOD__ );
+		$arr = wfGetPrecompiledData( 'Utf8Case.ser' );
+		if ( $arr === false ) {
+			throw new MWException( 
+				"Utf8Case.ser is missing, please run \"make\" in the serialized directory\n" );
+		}
+		extract( $arr );
+		wfProfileOut( __METHOD__ );
+		return array( $wikiUpperChars, $wikiLowerChars );
+	}
 }
 
 /** @deprecated */
