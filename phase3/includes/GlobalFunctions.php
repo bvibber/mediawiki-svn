@@ -2012,38 +2012,6 @@ function wfIsLocalURL( $url ) {
 }
 
 /**
- * Create a language object for a given language code
- */
-function wfNewLangObj( $code, $recursionLevel = 0 ) {
-	global $IP;
-	
-	if ( $code == 'en' ) {
-		$class = 'Language';
-	} else {
-		$class = 'Language' . str_replace( '-', '_', ucfirst( $code ) );
-		// Preload base classes to work around APC/PHP5 bug
-		wfSuppressWarnings();
-		include_once("$IP/languages/$class.deps.php");
-		include_once("$IP/languages/$class.php");
-		wfRestoreWarnings();
-	}
-
-	if ( $recursionLevel > 50 ) {
-		throw new MWException( "Language fallback loop detected when creating class $class\n" );
-	}	
-
-	if( ! class_exists( $class ) ) {
-		$fallback = Language::getFallbackFor( $code );
-		$lang = wfNewLangObj( $fallback, $recursionLevel + 1 );
-		$lang->setCode( $code );
-	} else {
-		$lang = new $class;
-	}
-
-	return $lang;
-}
-
-/**
  * Initialise php session
  */
 function wfSetupSession() {

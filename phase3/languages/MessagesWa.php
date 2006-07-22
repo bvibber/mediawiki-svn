@@ -27,6 +27,10 @@ $datePreferenceMigrationMap = array(
 );
 $defaultDateFormat = 'dmy';
 
+$dateFormats = array(
+	'walloon short time' => 'H:i'
+);
+
 $namespaceNames = array(
 	NS_MEDIA          => "Media", /* Media */
 	NS_SPECIAL        => "Sipeciås", /* Special */

@@ -37,7 +37,7 @@ function initialiseMessages( $overwrite = false, $messageArray = false ) {
 		$variants[]=$wgContLanguageCode;
 
 	foreach ($variants as $v) {
-		$lang = wfNewLangObj( $v );
+		$lang = Language::factory( $v );
 
 		if($v==$wgContLanguageCode)
 			$suffix='';
@@ -87,9 +87,9 @@ function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
 
 	$fname = 'initialiseMessages';
 	$ns = NS_MEDIAWIKI;
-	# cur_user_text responsible for the modifications
+	# username responsible for the modifications
 	# Don't change it unless you're prepared to update the DBs accordingly, otherwise the
-	# default messages won't be overwritte
+	# default messages won't be overwritten
 	$username = 'MediaWiki default';
 
 
@@ -103,13 +103,11 @@ function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
 
 	$timestamp = wfTimestampNow();
 
-	#$sql = "SELECT cur_title,cur_is_new,cur_user_text FROM $cur WHERE cur_namespace=$ns AND cur_title IN(";
-	# Get keys from Language::getMessagesFor( 'en' ), which is more complete than the local language
 	$first = true;
 	if ( $messageArray ) {
 		$sortedArray = $messageArray;
 	} else {
-		$sortedArray = Language::getMessagesFor( 'en' );
+		$sortedArray = $wgContLang->getAllMessages();
 	}
 
 	ksort( $sortedArray );
@@ -128,7 +126,7 @@ function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
 	foreach ($chunks as $chunk) {
 		$first = true;
 		$sql = "SELECT page_title,page_is_new,rev_user_text FROM $page, $revision WHERE
-			page_namespace=$ns AND rev_page=page_id AND page_title IN(";
+			page_namespace=$ns AND rev_id=page_latest AND page_title IN(";
 
 		foreach ( $chunk as $key => $enMsg ) {
 			if ( $key == '' ) {

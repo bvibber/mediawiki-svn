@@ -100,6 +100,43 @@ class Language {
 		'sep', 'oct', 'nov', 'dec'
 	);
 
+	/**
+	 * Create a language object for a given language code
+	 */
+	static function factory( $code ) {
+		global $IP;
+		static $recursionLevel = 0;
+
+		if ( $code == 'en' ) {
+			$class = 'Language';
+		} else {
+			$class = 'Language' . str_replace( '-', '_', ucfirst( $code ) );
+			// Preload base classes to work around APC/PHP5 bug
+			if ( file_exists( "$IP/languages/$class.deps.php" ) ) {
+				include_once("$IP/languages/$class.deps.php");
+			}
+			if ( file_exists( "$IP/languages/$class.php" ) ) {
+				include_once("$IP/languages/$class.php");
+			}
+		}
+
+		if ( $recursionLevel > 50 ) {
+			throw new MWException( "Language fallback loop detected when creating class $class\n" );
+		}	
+
+		if( ! class_exists( $class ) ) {
+			$fallback = Language::getFallbackFor( $code );
+			++$recursionLevel;
+			$lang = Language::factory( $fallback );
+			--$recursionLevel;
+			$lang->setCode( $code );
+		} else {
+			$lang = new $class;
+		}
+
+		return $lang;
+	}
+
 	function __construct() {
 		$this->mConverter = new FakeConverter($this);
 		// Set the code to the name of the descendant
@@ -229,6 +266,11 @@ class Language {
 		return $this->mathNames;
 	}
 
+	function getDatePreferences() {
+		$this->load();
+		return $this->datePreferences;
+	}
+	
 	function getDateFormats() {
 		$this->load();
 		return $this->dateFormats;
@@ -1113,8 +1155,8 @@ class Language {
 	}
 
 
-	function getPreferredVariant() {
-		return $this->mConverter->getPreferredVariant();
+	function getPreferredVariant( $fromUser = true ) {
+		return $this->mConverter->getPreferredVariant( $fromUser );
 	}
 
 	/**
@@ -1209,6 +1251,10 @@ class Language {
 		static $recursionGuard = array();
 		global $wgMemc, $wgDBname, $IP;
 
+		if ( !$code ) {
+			throw new MWException( "Invalid language code requested" );
+		}
+
 		if ( !$disableCache ) {
 			# Try the per-process cache
 			if ( isset( self::$mLocalisationCache[$code] ) ) {
@@ -1263,12 +1309,14 @@ class Language {
 		global $IP;
 		$filename = self::getFileName( "$IP/languages/Messages", $code, '.php' );
 		if ( !file_exists( $filename ) ) {
+			wfDebug( "No localisation file for $code, using implicit fallback to en\n" );
 			$cache = array();
 			$deps = array();
 		} else {
 			$deps = array( $filename => filemtime( $filename ) );
 			require( $filename );
 			$cache = compact( self::$mLocalisationKeys );	
+			wfDebug( "Got localisation for $code from source\n" );
 		}
 		
 		if ( !empty( $fallback ) ) {
@@ -1315,7 +1363,6 @@ class Language {
 		if ( !$disableCache ) {
 			$wgMemc->set( $memcKey, $cache );
 		}
-		wfDebug( "Got localisation for $code from source\n" );
 
 		wfProfileOut( __METHOD__ );
 		return $deps;

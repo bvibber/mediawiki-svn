@@ -11,9 +11,9 @@
 	dictionaries: one for Cyrillics and Latin, and one for ekavian and
 	iyekavian.
 */
-require_once( "LanguageConverter.php" );
-require_once( "LanguageSr_ec.php" );
-require_once( "LanguageSr_el.php" );
+require_once( dirname(__FILE__).'/LanguageConverter.php' );
+require_once( dirname(__FILE__).'/LanguageSr_ec.php' );
+require_once( dirname(__FILE__).'/LanguageSr_el.php' );
 
 class SrConverter extends LanguageConverter {
 	var $mToLatin = array(
@@ -194,6 +194,8 @@ class SrConverter extends LanguageConverter {
 class LanguageSr extends LanguageSr_ec {
 	function __construct() {
 		global $wgHooks;
+		parent::__construct();
+
 		$variants = array('sr', 'sr-ec', 'sr-jc', 'sr-el', 'sr-jl');
 		$variantfallbacks = array(
 			'sr'    => 'sr-ec',

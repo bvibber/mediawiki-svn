@@ -466,7 +466,7 @@ class User {
 		/**
 		 * default language setting
 		 */
-		$variant = $wgContLang->getPreferredVariant();
+		$variant = $wgContLang->getPreferredVariant( false );
 		$defOpt['variant'] = $variant;
 		$defOpt['language'] = $variant;
 
