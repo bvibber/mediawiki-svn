@@ -42,7 +42,8 @@ class DefinedMeaningDefinitionController implements Controller {
 		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
 		$text = $tuple->getAttributeValue($textAttribute);
 		
-		updateDefinedMeaningDefinition($definedMeaningId, $languageId, $text);
+		if ($text != "")
+			updateDefinedMeaningDefinition($definedMeaningId, $languageId, $text);
 	}
 }
 
