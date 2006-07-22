@@ -1342,7 +1342,9 @@ class Language {
 		global $wgExtraNamespaces, $wgMetaNamespace, $wgMetaNamespaceTalk, $wgMessageCache, 
 			$wgNamespaceAliases, $wgAmericanDates;
 		wfProfileIn( __METHOD__ );
-		$this->namespaceNames = $wgExtraNamespaces + $this->namespaceNames;
+		if ( $wgExtraNamespaces ) {
+			$this->namespaceNames = $wgExtraNamespaces + $this->namespaceNames;
+		}
 
 		$this->namespaceNames[NS_PROJECT] = $wgMetaNamespace;
 		if ( $wgMetaNamespaceTalk ) {
