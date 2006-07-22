@@ -47,7 +47,7 @@ $namespaceAliases = array(
 );
 
 $separatorTransformTable = array(',' => '.', '.' => ',' );
-$dateFormats = false;
+$datePreferences = false;
 
 $messages = array(
 

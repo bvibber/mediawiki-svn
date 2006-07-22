@@ -43,7 +43,7 @@ $namespaceNames = array(
 	NS_CATEGORY_TALK  => 'Pogovor_o_kategoriji'
 );
 
-$dateFormats = false;
+$datePreferences = false;
 $fallback8bitEncoding = "iso-8859-2";
 $separatorTransformTable = array(',' => '.', '.' => ',' );
 

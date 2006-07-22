@@ -33,7 +33,7 @@ $namespaceNames = array(
 	NS_HELP_TALK      => 'Perbualan_Bantuan' #Help_talk
 );
 
-$dateFormats = false;
+$datePreferences = false;
 
 
 $messages = array(
