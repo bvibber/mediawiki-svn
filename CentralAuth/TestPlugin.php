@@ -82,6 +82,32 @@ class CentralAuthUser {
 	}
 	
 	/**
+	 * this code is crapper
+	 */
+	function register( $password ) {
+		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		list( $salt, $hash ) = $this->saltedPassword( $password );
+		$ok = $dbw->insert(
+			'globaluser',
+			array(
+				'gu_name'  => $this->mName,
+				
+				'gu_email' => null, // FIXME
+				'gu_email_authenticated' => null, // FIXME
+				
+				'gu_salt'     => $salt,
+				'gu_password' => $hash,
+				
+				'gu_locked' => 0,
+				'gu_hidden' => 0,
+				
+				'gu_registration' => $dbw->timestamp(),
+			),
+			__METHOD__ );
+		return $ok;
+	}
+	
+	/**
 	 * Check if the current username is defined and attached on this wiki yet
 	 * @param $dbname Local database key to look up
 	 * @return ("attached", "unattached", "no local user")
@@ -222,6 +248,36 @@ class CentralAuthUser {
 			array( 'gu_name' => $this->mName ),
 			__METHOD__ );
 	}
+
+	function saltedPassword( $password ) {
+		$salt = mt_rand( 0, 1000000 );
+		$hash = wfEncryptPassword( $salt, $password );
+		return array( $salt, $hash );
+	}
+	
+	/**
+	 * Set the account's password
+	 */
+	function setPassword( $password ) {
+		list( $salt, $hash ) = $this->saltedPassword( $password );
+		
+		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		$result = $dbr->update( 'globaluser',
+			array(
+				'gu_salt'     => $salt,
+				'gu_password' => $hash,
+			),
+			array(
+				'gu_name' => $this->mName,
+			),
+			__METHOD__ );
+		
+		$rows = $dbw->numRows( $result );
+		$dbw->freeResult( $result );
+		
+		return $rows > 0;
+	}
+
 }
 
 /**
@@ -256,7 +312,7 @@ class CentralAuth extends AuthPlugin {
 	 */
 	function authenticate( $username, $password ) {
 		$user = new CentralAuthUser( $username );
-		return $user->authenticate( $password );
+		return $user->authenticate( $password ) == "ok";
 	}
 
 	/**
@@ -304,7 +360,8 @@ class CentralAuth extends AuthPlugin {
 	 */
 	function setPassword( $password ) {
 		// Fixme: password changes should happen through central interface.
-		return false;
+		$global = CentralAuthUser( $user->getName() );
+		return $global->setPassword( $password );
 	}
 
 	/**
@@ -340,7 +397,8 @@ class CentralAuth extends AuthPlugin {
 	 * @public
 	 */
 	function addUser( $user, $password ) {
-		throw new UnimplementedError( 'Trying to add a new account' );
+		$global = new CentralAuthUser( $user->getName() );
+		return $global->register( $password );
 	}
 
 
