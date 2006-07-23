@@ -3927,7 +3927,7 @@ class Parser
 					$pdbk = $title->getPrefixedDBkey();
 
 					// add the original text into query to check for notitleconvert pages
-					$variantTitle = Title::makeTitleSafe( $ns, $title->getText() );
+					$variantTitle = Title::makeTitle( $ns, $title->getText() );
 					$linkBatch->addObj( $variantTitle );
 					$variantMap[$variantTitle->getPrefixedDBkey()][] = $key;
 
@@ -3937,7 +3937,8 @@ class Parser
 					// if link was not found (in first query), add all variants to query
 					if ( !isset($colours[$pdbk]) ){
 						foreach($allTextVariants as $textVariant){
-							$variantTitle = Title::makeTitleSafe( $ns, $textVariant );
+							$variantTitle = Title::makeTitle( $ns, $textVariant );
+							if(is_null($variantTitle)) continue;
 							$linkBatch->addObj( $variantTitle );
 							$variantMap[$variantTitle->getPrefixedDBkey()][] = $key;
 						}

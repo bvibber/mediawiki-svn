@@ -49,10 +49,6 @@ class LanguageConverter {
 		$f = array('A'=>'A', 'T'=>'T');
 		$this->mFlags = array_merge($f, $flags);
 
-		// enable escape characters -{ }- in titles
-		if(!preg_match('/\{/',$wgLegalTitleChars)) $wgLegalTitleChars.='\{';
-		if(!preg_match('/\}/',$wgLegalTitleChars)) $wgLegalTitleChars.='\}';
-
 	}
 
 	/**
@@ -210,7 +206,7 @@ class LanguageConverter {
      * @return array of string
      * @public
      */
-	function autoConvertToAllVariants($text, $includeFixedVariant=true) {
+	function autoConvertToAllVariants($text) {
 		$fname="LanguageConverter::autoConvertToAllVariants";
 		wfProfileIn( $fname );
 		if( !$this->mTablesLoaded )
@@ -220,8 +216,6 @@ class LanguageConverter {
 		foreach($this->mVariants as $variant) {
 			$ret[$variant] = $this->translateText($text,$variant);
 		}
-		if($includeFixedVariant)
-			$ret[$this->mMainLanguageCode.'-fixed'] = $this->mMarkup['begin'].$text.$this->mMarkup['end'];
 
 		wfProfileOut( $fname );
 		return $ret;
@@ -234,7 +228,7 @@ class LanguageConverter {
      * @return array of string
      * @public
      */
-	function convertLinkToAllVariants($text,$includeFixedVariant=true) {
+	function convertLinkToAllVariants($text) {
 		if( !$this->mTablesLoaded )
 			$this->loadTables();
 
@@ -255,9 +249,6 @@ class LanguageConverter {
 			}
 			
 		}
-
-		if($includeFixedVariant)
-			$ret[$this->mMainLanguageCode.'-fixed'] = $this->mMarkup['begin'].$text.$this->mMarkup['end'];
 
 		return $ret;
 	}
