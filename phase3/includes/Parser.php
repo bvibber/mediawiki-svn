@@ -3991,13 +3991,13 @@ class Parser
 							if ( $threshold >  0 ) {
 								$size = $s->page_len;
 								if ( $s->page_is_redirect || $s->page_namespace != 0 || $size >= $threshold ) {
-									$colours[$pdbk] = 1;
+									$colours[$varPdbk] = 1;
 								} else {
-									$colours[$pdbk] = 2;
+									$colours[$varPdbk] = 2;
 								}
 							} 
 							else {
-								$colours[$pdbk] = 1;
+								$colours[$varPdbk] = 1;
 							}					
 						}
 					}
