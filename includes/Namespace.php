@@ -26,7 +26,8 @@ $wgCanonicalNamespaceNames = array(
 	NS_HELP_TALK        => 'Help_talk',
 	NS_CATEGORY	        => 'Category',
 	NS_CATEGORY_TALK    => 'Category_talk',
-	LQT_NS_CHANNEL => 'Channel'
+	LQT_NS_CHANNEL => 'Discussion',
+	LQT_NS_THREAD => 'Thread'
 );
 
 if( is_array( $wgExtraNamespaces ) ) {

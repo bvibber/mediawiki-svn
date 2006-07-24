@@ -168,7 +168,8 @@ class SkinTemplate extends Skin {
 		$this->thispage = $this->mTitle->getPrefixedDbKey();
 		$this->thisurl = $this->mTitle->getPrefixedURL();
 		$this->loggedin = $wgUser->isLoggedIn();
-		$this->iscontent = ($this->mTitle->getNamespace() != NS_SPECIAL );
+		$this->iscontent = $wgOut->isArticleRelated();
+#		$this->iscontent = ($this->mTitle->getNamespace() != NS_SPECIAL );
 		$this->iseditable = ($this->iscontent and !($action == 'edit' or $action == 'submit'));
 		$this->username = $wgUser->getName();
 		$userPage = $wgUser->getUserPage();

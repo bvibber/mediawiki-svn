@@ -8,21 +8,25 @@ class ThreadView {
      static $callbackpost;
      static $callbackeditpage;
 
-	function ThreadView( $baseURL, 
-		$channelName,
-		$editingId = -1,
-		$replyingToId = -1,
-		$historyId = -1,
-		$highlightingTitle = -1,
-		$movingId = -1 ) { /* TODO why the hell title/id? */
-			$this->baseURL = $baseURL;
-			$this->channelName = $channelName;
-			$this->editingId = $editingId;
-			$this->historyId = $historyId;
-			$this->replyingToId = $replyingToId;
-			$this->highlightingTitle = $highlightingTitle;
-			$this->movingId = $movingId;
-	}
+/* NNWT	function ThreadView( $baseURL, 
+ $channelName,*/
+     function ThreadView( $talkTitle,
+			  $articleTitle,
+			  $editingId = -1,
+			  $replyingToId = -1,
+			  $historyId = -1,
+			  $highlightingTitle = -1,
+			  $movingId = -1 ) { /* TODO why the hell title/id? */
+// NNWT			$this->baseURL = $baseURL;
+//			$this->channelName = $channelName;
+	  $this->talkTitle = $talkTitle;
+	  $this->articleTitle = $articleTitle;
+	  $this->editingId = $editingId;
+	  $this->historyId = $historyId;
+	  $this->replyingToId = $replyingToId;
+	  $this->highlightingTitle = $highlightingTitle;
+	  $this->movingId = $movingId;
+     }
      
 	/**
 	* Render the article content, fetching from page cache if possible.
@@ -48,8 +52,8 @@ class ThreadView {
 		}
 
 		if (!$outputDone) {
-			$wgOut->addHTML('<span style="color: orange;">pasrer cache miss</span>');
-			$wgOut->addWikiText($p->mContent);               
+		     // Cache miss; parse and output it.
+		     $wgOut->addWikiText($p->mContent);
 		}
 	}
         
@@ -63,10 +67,14 @@ class ThreadView {
 
 			// Topic header:
 			if ( $is_top_level ) {
+			     // Instruct Parser not to include section edit links; only needs to be included once per output page.
+			     $wgOut->mParserOptions->setEditSection(false);
+# I have no idea what I was doing here; think it has to do with preview and probably only worked in thread permalink views.
 				// TODO I don't like that we're using wgRequest here.
-				if ( $wgRequest->getVal('lqt_topic') )
-					$wgOut->addHTML( $wgRequest->getVal('lqt_topic') );
-				elseif ( $p->getTopic() )
+#				if ( $wgRequest->getVal('lqt_topic') )
+#					$wgOut->addHTML( $wgRequest->getVal('lqt_topic') );
+#				elseif ( $p->getTopic() )
+                                if ( $p->getTopic() )
 					$wgOut->addWikiText( '=='.$p->getTopic().'==' );
 				else
 					$wgOut->addWikiText( '----' );
@@ -81,7 +89,7 @@ class ThreadView {
 			}
 
 			if ( $this->editingId == $p->getID() ) {
-				$this->showEditingForm($p, "?lqt_editing={$p->getID()}", $is_top_level );
+				$this->showEditingForm($p, "lqt_editing={$p->getID()}", $is_top_level );
 				
 			} elseif ( $this->historyId == $p->getID() ) {
 				$this->showPostHistory($p);
@@ -106,29 +114,34 @@ class ThreadView {
 				$wgOut->addHTML( wfElement( 'li', null, ($p->isPostModified() ? "Modified" : "Original")) );
 
 				// Edit, reply, move, history, and permalink:
-				$edit_href = "{$this->channelName}?lqt_editing={$p->getID()}#lqt_post_$t";
+				$edit_href = $this->talkTitle->getLocalURL( "lqt_editing={$p->getID()}#lqt_post_$t" );
+//NNWT				$edit_href = "{$this->channelName}?lqt_editing={$p->getID()}#lqt_post_$t";
 				$wgOut->addHTML( wfOpenElement('li') .
 				wfElementClean('a', array('href'=>$edit_href),'Edit') .
 				wfCloseElement( 'li') );
 
-				$reply_href = "{$this->channelName}?lqt_replying_to_id={$p->getID()}#lqt_post_$t";
+				$reply_href = $this->talkTitle->getLocalURL( "lqt_replying_to_id={$p->getID()}#lqt_post_$t" );
+//NNWT				$reply_href = "{$this->channelName}?lqt_replying_to_id={$p->getID()}#lqt_post_$t";
 				$wgOut->addHTML( wfOpenElement('li') .
 				wfElementClean('a', array('href'=>$reply_href),'Reply') .
 				wfCloseElement( 'li') );
 
-				$move_href = "{$this->channelName}?lqt_moving_id={$p->getID()}";
+				$move_href = $this->talkTitle->getLocalURL( "lqt_moving_id={$p->getID()}" );
+//NNWT				$move_href = "{$this->channelName}?lqt_moving_id={$p->getID()}";
 				$wgOut->addHTML( wfOpenElement('li') .
 				wfElementClean('a', array('href'=>$move_href),'Move') .
 				wfCloseElement( 'li') );
-
+/* TODO diking out history for the time being.
 				$history_href = "{$this->channelName}?lqt_show_history_id={$p->getID()}";
 				$history_href = $p->getTitle()->getLocalURL("action=history");
 				$wgOut->addHTML( wfOpenElement('li') .
 				wfElementClean('a', array('href'=>$history_href),'History') .
 				wfCloseElement( 'li') );
-
-				$tmp = Thread::baseURL();
-				$permalink_href = "$tmp{$p->getTitle()->getPartialURL()}";
+*/
+//NNWT				$tmp = Thread::baseURL();
+//NNWT 				$permalink_href = "$tmp{$p->getTitle()->getPartialURL()}";
+				$permalinkTitle = Title::makeTitle( LQT_NS_THREAD, $p->getTitle()->getDBkey() );
+				$permalink_href = $permalinkTitle->getLocalURL();
 				$wgOut->addHTML( wfOpenElement('li') .
 				wfElementClean('a', array('href'=>$permalink_href),'Permalink') .
 				wfCloseElement( 'li') );
@@ -180,13 +193,17 @@ class ThreadView {
 			wfCloseElement( 'div' ));
 
 		}
-        
+
+        /**  EditPage::edit() is self-submitting, and so, so is this. */
         function showEditingForm( $p, $query, $is_top_level ) {
                 global $wgRequest, $wgOut;
 
+		echo $this->talkTitle->getFullURL($query);
+
                 $e = new EditPage($p);
-                $e->setAction(  $this->baseURL . $this->channelName . $query );
-		
+		$e->setAction( $this->talkTitle->getFullURL($query) );
+//NNWT                $e->setAction(  $this->baseURL . $this->channelName . $query );
+
 		if ( $is_top_level ) {
 		     ThreadView::$callbackpost = $p;
 		     ThreadView::$callbackeditpage = $e;
@@ -195,16 +212,21 @@ class ThreadView {
 
                 $e->edit();
 
+		// override what happens in EditPage::showEditForm, called from $e->edit():
+		$wgOut->setArticleRelated( false ); 
+		$wgOut->setArticleFlag( false ); 
+
 		// Override editpage's redirect.
                 if ($e->mDidRedirect) {
 		     $t = $p->getTitle()->getPartialURL();
-		     $wgOut->redirect($this->baseURL.$this->channelName.'?lqt_highlight='.$t.'#lqt_post_'.$t);
+		     $wgOut->redirect( $this->talkTitle->getFullURL( "lqt_highlight=$t#lqt_post_$t" ) );
+#NNWT		     $wgOut->redirect($this->baseURL.$this->channelName.'?lqt_highlight='.$t.'#lqt_post_'.$t);
                 }
-
+	
                 // Insert new posts into the threading:
                 if ($e->mDidSave && $wgRequest->getVal("lqt_post_new", false)) {
-		     $channel_title = Title::newFromText($this->channelName);
-		     $p->insertAfter(new Post($channel_title));
+//		     $channel_title = Title::newFromText($this->channelName);
+		     $p->insertAfter(new Post($this->articleTitle));
                 }
 
                 // Insert replies into the threading:
@@ -228,19 +250,18 @@ class ThreadView {
          */
         function newPostEditingForm($reply_to=null) {
                 global $wgRequest;
-                if ( !$it = $wgRequest->getVal("lqt_post_title", false) ) {
-                        $token = md5(uniqid(rand(), true));
-                        $new_title = Title::newFromText( "Post:$token" );
-                } else {
+                if ( $it = $wgRequest->getVal("lqt_post_title", false) ) {
 		     $new_title = Title::newFromText("Post:$it");
+                } else {
+		     $token = md5(uniqid(rand(), true));
+		     $new_title = Title::newFromText( "Post:$token" );
                 }
-
                 $p = new Post($new_title);
                 if ($reply_to) {
-		     $this->showEditingForm($p, "?lqt_replying_to_id=$reply_to&lqt_post_title={$new_title->getPartialURL()}",
+		     $this->showEditingForm($p, "lqt_replying_to_id=$reply_to&lqt_post_title={$new_title->getPartialURL()}",
 					    false);
                 } else {
-		     $this->showEditingForm($p, "?lqt_post_new=1&lqt_post_title={$new_title->getPartialURL()}",
+		     $this->showEditingForm($p, "lqt_post_new=1&lqt_post_title={$new_title->getPartialURL()}",
 					    true);
                 }
         }
@@ -293,14 +314,15 @@ class ThreadView {
 
         function showMoveButton( $type, $id ) {
                 global $wgOut;
-                $form_action = $this->baseURL . $this->channelName;
+//NNWT                $form_action = $this->baseURL . $this->channelName;
                 $wgOut->addHTML(
-                        wfOpenElement('form', array('action' => $form_action,
-                                                    'method' => 'POST')) .
-                        wfHidden("lqt_move_to_$type", "$id") .
-                        wfHidden("lqt_move_post_id", $this->movingId) .
-                        wfSubmitButton('Move Here') .
-                        wfCloseElement('form') );
+//NNWT                        wfOpenElement('form', array('action' => $form_action,
+		     wfOpenElement('form', array('action' => $this->talkTitle->getFullURL(),
+						 'method' => 'POST')) .
+		     wfHidden("lqt_move_to_$type", "$id") .
+		     wfHidden("lqt_move_post_id", $this->movingId) .
+		     wfSubmitButton('Move Here') .
+		     wfCloseElement('form') );
         }
 
         // Should these be separate methods?

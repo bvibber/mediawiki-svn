@@ -124,7 +124,7 @@ class MediaWiki {
 		$search = $this->getVal('Search');
 		$action = $this->getVal('Action');
 		
-		if ( wfRunHooks('SpecialCase', array($title, $output, $request)) ) {
+		if ( !wfRunHooks('SpecialCase', array($title, $output, $request)) ) {
 			# handled by hook; do nothing.
 			wfProfileOut( 'MediaWiki::initializeSpecialCases' );
 			return true;
