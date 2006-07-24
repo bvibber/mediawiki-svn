@@ -135,6 +135,7 @@ $wgAllMessagesWa = array(
 'returnto' => 'Rivni al pådje «$1».',
 'tagline' => 'Èn årtike di {{SITENAME}}.',
 'search' => 'Cweri',
+'searchbutton' => 'Cweri',
 'go' => 'Potchî',
 'history' => 'Istwere del pådje',
 'history_short' => 'Istwere',
@@ -516,7 +517,6 @@ Verifyîz l\' hårdêye ki vs avoz eployî po-z ariver sol pådje s\' i vs plait
 'loadhist' => 'Tcherdjaedje del pådje di l\' istwere',
 'currentrev' => 'Modêye d\' asteure',
 'revisionasof' => 'Modêye do $1',
-'revisionasofwithlink' => 'Modêye do $1; $2<br />$3 | $4',
 'previousrevision' => '←Modêye di dvant',
 'nextrevision' => 'Modêye shuvante→',
 'currentrevisionlink' => 'vey li modêye d\' asteure',
@@ -974,7 +974,6 @@ Do côp, c\' est nén possibe di lyi evoyî èn emile.',
 # Watchlist
 #
 'watchlist' => 'Pådjes shuvowes',
-'watchlistsub' => '(po l\' uzeu «$1»)',
 'nowatchlist' => 'Vosse djivêye des pådjes a shuve est vude.',
 'watchlistcount' => '\'\'\'Vos avoz $1 cayets dins vosse djivêye des shuvous, tot contant les pådjes di copene.\'\'\'',
 'clearwatchlist' => 'Netyî l\' djivêye des shuvous',
@@ -1739,7 +1738,6 @@ $1',
 'searchnoresults' => 'Mande escuzes, mins i gn a rén ki corespond.',
 'searchnumber' => '<strong>Rizultats: $1-$2 di $3</strong>',
 'searchprev' => '← <span style=\'font-size: small\'>Div.</span>',
-'metadata_page' => '{{ns:project}}:Meta-dnêyes',
 'checkuser' => 'Verifyî l\' uzeu',
 
 #####################
@@ -1871,20 +1869,6 @@ Po pleur vôter vos dvoz aveur contribouwé po pus long ki
 'boardvote_novotes' => 'I gn a co nolu k\' a vôté.',
 'boardvote_time' => 'Date ey eure',
 'boardvote_user' => 'Uzeu',
-###########
-#======================= obsoleted
-###########
-# replaecî pa uploadnewversion-linktext
-'uploadnewversion' => '[$1 Eberweter ene nouve modêye di ci fitchî ci]',
-# replaecî pa protectthispage?
-'protectpage' => 'Protedjî l\' pådje',
-# replaecî pa youhavenewmessages?
-'newmessages' => 'Vos avoz des $1.',
-# replaecî pa rightslog
-'bureaucratlog' => 'Djournå des manaedjeus',
-# replaecî pa rightslogentry
-'bureaucratlogentry' => 'les droets po l\' uzeu «$1» ont stî metous a «$2»',
-'usenewcategorypage' => '1\n\nCandjîz l\' prumî caractere a «0» po dismete li novea epådjnaedje des pådjes di categoreye.',
 
 ###########
 #======================= obsolete?
@@ -1899,64 +1883,11 @@ Po pleur vôter vos dvoz aveur contribouwé po pus long ki
 'val_revision_stats_link' => 'detays',
 'val_total' => 'Totå',
 'projectpage' => 'Vey li meta-pådje',
-'contribs-showhideminor' => '$1 candjmints mineurs',
 'lucenepowersearchtext' => 'Cweraedje dins les espåces di lomaedje: $1 <br />
 Cweraedje di: $3 $9',
-'selflinks' => 'Pådjes avou des loyéns viè zeles minmes',
-'selflinkstext' => 'Les pådjes shuvantes ont on loyén viè zeles minmes, çou ki n\' si dvreut nén fé.',
-'mispeelings' => 'Pådjes avou des flotches',
-'mispeelingstext' => 'Les pådjes shuvantes ont ene ou sacwantès flotches, di cenes metowes so $1. Li scrijhaedje corek pout esse mostré inte åtchetes a costé do mot må scrît.',
-'mispeelingspage' => 'Djivêye des flotches les pus corantes',
-'missinglanguagelinks' => 'Loyéns eterlingaedje ki mankèt',
-'missinglanguagelinksbutton' => 'Trover les loyéns eterlingaedje ki mankèt po',
-'missinglanguagelinkstext' => 'Ces årtikes chal èn loynut <i>nén</i> viè leu-z omologues so «$1». Les redjiblaedjes eyet les dzo-pådjes èn sont <i>nén</i> mostrêyes.',
 
-# Maintenance Page
-#
-'groups-lookup-group' => 'Manaedjî les droets do groupe',
-'groups-group-edit' => 'Groupes k\' i gn a:',
-'editgroup' => 'Candjî groupe',
-'addgroup' => 'Radjouter groupe',
 
-# group editing
-'groups-editgroup' => 'Candjî groupe',
-'groups-addgroup' => 'Radjouter groupe',
-'groups-editgroup-preamble' => 'Si l\' no ou l\' discrijhaedje atake avou on dobe pont (:),
-çou ki shût après serè veyou come on no d\' messaedje,
-eyet l\' tecse seré ratourné d\' après l\' espåce di lomaedje MediaWiki',
-'groups-editgroup-name' => 'No do groupe:',
-'groups-editgroup-description' => 'Discrijhaedje do groupe (255 caracteres å pus):<br />',
-'savegroup' => 'Schaper l\' groupe',
-'groups-tableheader' => 'ID || No || Discrijhaedje || Droets',
-'groups-existing' => 'Groupes k\' i gn a',
-'groups-noname' => 'Dinez on no d\' groupe valide s\' i vs plait',
-'groups-already-exists' => 'I gn a ddja on groupe ki s\' lome insi',
-'addgrouplogentry' => 'Groupe $2 radjouté',
-'changegrouplogentry' => 'Groupe $2 candjî',
-'renamegrouplogentry' => 'Groupe $2 rilomé viè $3',
-
-# Default group names and descriptions
-#
-'group-anon-name' => 'Anonime',
-'group-anon-desc' => 'Uzeus anonimes',
-'group-loggedin-name' => 'Uzeu',
-'group-loggedin-desc' => 'Uzeus eredjîstrés',
-'group-admin-name' => 'Manaedjeu',
-'group-admin-desc' => 'Des uzeus k\' on nd a fiyåte et ki polèt bloker des uzeus ou disfacer des årtikes',
-'group-bureaucrat-name' => 'Mwaisse-manaedjeu',
-'group-bureaucrat-desc' => 'Les mimbes di ç\' groupe ci polèt dner l\' livea manaedjeu a ds ôtès uzeus',
-'group-steward-name' => 'Mwaisse-manaedjeu tot avå',
-'group-steward-desc' => 'Accès a ttafwait',
-
-'tableform' => 'tåvlea',
-'listform' => 'djivêye',
-'nchanges' => '$1 candjmints',
-'uploadlink' => 'Eberweter des imådjes',
 'nstab-project' => 'Pådje',
-'rcloaderr' => 'Tcherdjant les dierins candjmints',
-'showhideminor' => '$1 candjmints mineurs | $2 robots | $3 uzeus eredjîstrés | $4 candjmints rwaitîs',
-'rchide' => 'e $4; $1 candjmints mineurs; $2 nos d\' espåces segondaires; $3 candjmints multipes.',
-'rcliu' => '; $1 candjmints pa des uzeus eredjîstrés',
 ###################
 #
 # eployî pa côps el boesse di naiviaedje di waibes k' i gn a:

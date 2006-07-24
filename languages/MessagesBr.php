@@ -112,6 +112,7 @@
 'whatlinkshere' => 'Daveennoù d\'ar bajenn-mañ',
 'help'          => 'Skoazell',
 'search'        => 'Klask',
+'searchbutton'  => 'Klask',
 'history'       => 'Istor',
 'printableversion' => 'Stumm da voullañ',
 'edit'		=> 'Kemmañ',
@@ -490,21 +491,14 @@ Taolit ur sell war ar pajennoù-mañ&nbsp;: [[{{ns:4}}:FAG|foar ar goulennoù]],
 hag [[{{ns:4}}:Ar fazioù stankañ|ar fazioù stankañ]].
 
 Mar fell deoc'h e rafe berzh {{SITENAME}}, trugarez da chom hep degas ennañ dafar gwarezet gant [[{{ns:4}}:Copyright|gwirioù aozer (copyrights)]]. An atebegezh wiraouel a c'hallfe ober gaou d'ar raktres.",
-'rcloaderr'  => "O kargañ ar c'hemmoù diwezhañ",
 'rcnote'  => "Setu aze an/ar <strong>$1</strong> (g/c'h)kemm diwezhañ bet c'hoarvezet e-pad an/ar <strong>$2</strong> deiz diwezhañ.",
 'rcnotefrom'	=> "Setu aze roll ar c'hemmoù c'hoarvezet abaoe an/ar <strong>$2</strong> (<b>$1</b> d'ar muiañ).",
 'rclistfrom'	=> "Diskouez ar c'hemmoù diwezhañ abaoe an/ar $1.",
-'showhideminor' => "$1 (g/c'h)kemm dister | $2 robot | $3 implijerien enrollet | $4 patrolled edits",
 'rclinks'	=> "Diskouez an/ar $1 (g/c'h)kemm diwezhañ c'hoarvezet e-pad an/ar $2 devezh diwezhañ; $3 kemmoù dister.",	// Looxix
-'rchide'  => "in $4 form; $1 kemmoù dister; $2 esaouennoù a eil renk; $3 kemmoù lies.", // FIXME
-'rcliu'	=> "; $1 kemmoù gant perzhidi luget",
 'diff'            => 'diforc\'h',
 'hist'            => 'ist',
 'hide'            => 'kuzhat',
 'show'            => 'diskouez',
-'tableform'       => 'taolenn',
-'listform'        => 'roll',
-'nchanges'        => '$1 (g/c\'h)kemm',
 'minoreditletter' => 'D',
 'newpageletter'   => 'N',
 
@@ -512,7 +506,6 @@ Mar fell deoc'h e rafe berzh {{SITENAME}}, trugarez da chom hep degas ennañ daf
 #
 'upload'       => 'Eilañ war ar servijer',
 'uploadbtn'    => 'Eilañ ur restr',
-'uploadlink'   => 'Eilañ skeudennoù',
 'reupload'     => 'Eilañ adarre',
 'reuploaddesc' => 'Distreiñ d\'ar furmskrid.',
 
@@ -624,16 +617,6 @@ En o zouez, <b>$2</b> zo ganto ar statud merour (sellet ouzh $3).',
 'doubleredirectstext'	=> "<b>Diwallit:</b> Gallout a ra bezañ \"pozitivoù faos\ er roll-mañ. D'ar mare-se eo moarvat peogwir ez eus testenn war bajenn an #REDIRECT kentañ ivez.<br />War bep linenn emañ al liammoù war-du pajenn an adkas 1{{añ}} hag en eil hag ivez linenn gentañ pajenn an eil adkas zo sañset reiñ ar pal \"gwirion\". War-du ar pal-se e tlefe liammañ an #REDIRECT kentañ.",
 'brokenredirects'	=> 'Adkasoù torret',
 'brokenredirectstext'	=> 'Kas a ra an adkasoù-mañ d\'ur bajenn n\'eus ket anezhi.',
-'selflinks'		=> 'Pajenn enni ul liamm tro',
-'selflinkstext'		=> 'Er pajennoù da-heul ez eus ul liamm war o zu dezho o-unan, ar pezh n\'hall ket bezañ.',
-'mispeelings'           => 'Pajennoù enno fazioù reizhskrivañ',
-'mispeelingstext'               => 'Er pajennoù da-heul ez eus ur fazi reizhskrivañ boas (kavet e vez ar roll anezho war $1). Marteze eo se ar reizhskrivadenn vat.',
-'mispeelingspage'       => 'Roll ar fazioù reizhskrivañ boas',
-
-# ne vez ket implijet an 3 c\'hemennad da-heul ken (pajenn zibar ebet Special:Intl ebet ken)
-'missinglanguagelinks'  => 'Liammoù etreyezhel a vank',
-'missinglanguagelinksbutton'    => 'N\'eus ket bet kavet liamm/yezh ebet evit ar bajenn-mañ',
-'missinglanguagelinkstext'      => "N'eo ket liammet ar pennadoù-se ouzh ar 'pennadoù par' e $1. N'emañ ket war wel an adkasoù hag al liammoù anezho.",
 
 
 # Miscellaneous special pages
@@ -651,7 +634,6 @@ En o zouez, <b>$2</b> zo ganto ar statud merour (sellet ouzh $3).',
 'listusers'     => 'Roll ar berzhidi',
 'specialpages'  => 'Pajennoù dibar',
 'spheading'     => 'Pajennoù dibar',
-'protectpage'   => 'Gwareziñ ar bajenn',
 'recentchangeslinked' => 'Heuliañ al liammoù',
 'rclsub'        => "(eus ar pajennoù liammet ouzh \"$1\")",
 'newpages'      => 'Pajennoù nevez',
@@ -697,7 +679,6 @@ E maezienn \"Kaser\" ho postel e vo merket ar chomlec'h postel resisaet ganeoc'h
 # Watchlist
 #
 'watchlist'	=> 'Rollad evezhiañ',
-'watchlistsub'	=> '(evit an implijer « $1 »)',
 'nowatchlist'	=> "N'eus pennad ebet en ho rollad evezhiañ.",
 'watchnologin'	=> "Diluget",
 'watchnologintext' => "Ret eo deoc'h bezañ [[Special:Userlogin|luget]]
@@ -785,8 +766,6 @@ Ar c'hemm diwezhañ a oa gant [[User:$3|$3]] ([[User talk:$3|Talk]]). ", //Looxi
 
 # Groups
 #
-'addgroup' => 'Ouzhpennañ ur strollad',
-'editgroup' => 'Kemmañ ar strollad',
 'editusergroup' => 'Kemmañ ar strolladoù implijerien',
 
 # Special:Undelete
@@ -880,8 +859,6 @@ Kadarnait, mar plij, eo se hoc'h eus c'hoant da ober.",
 'unlockdbsuccesstext' => 'Dibrennet eo bank roadennoù {{SITENAME}}.',
 
 # Special:Makesysop
-'bureaucratlog'		=> 'Log_Penn-bras',
-'bureaucratlogentry'	=> 'Gwirioù an implijer(ez) « $1 » kaset da « $2 »',
 'makesysoptitle'	=> 'A ro ar gwirioù merañ.',
 'makesysoptext'		=> 'Graet e vez gant ar furmskrid-mañ gant ar Pennoù-bras a-benn reiñ ar gwirioù merañ.
 Lakait anv an implijer er voest ha pouezit war ar bouton evit reiñ ar gwirioù dezhañ/i.',

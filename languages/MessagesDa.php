@@ -114,7 +114,6 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 
 # Metadata in edit box
 'metadata' => '<b>Metadata</b> (for en foklaring se <a href="$1">her</a>)',
-'metadata_page' => '{{ns:4}}:Metadata',
 
 "currentevents" => "Aktuelle begivenheder",
 'currentevents-url' => 'Aktuelle begivenheder',
@@ -126,6 +125,7 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 "whatlinkshere"	=> "Hvad henviser hertil",
 "help"			=> "Hjælp",
 "search"		=> "Søg",
+"searchbutton"	=> "Søg",
 "go"		=> "Gå til",
 "history"		=> "Historik",
 'history_short' => 'Historik',
@@ -444,7 +444,6 @@ ikke findes. Kontrollér den URL du brugte til at få adgang til denne side.",
 "loadhist"		=> "Indlæser sidens historik",
 "currentrev"	=> "Nuværende version",
 "revisionasof"	=> "Versionen fra $1",
-'revisionasofwithlink'  => 'Revision pr. $1; $2<br />$3 | $4',
 'previousrevision'	=> '←Ældre version',
 'nextrevision'		=> 'Nyere version→',
 'currentrevisionlink'   => 'se nuværende version',
@@ -556,31 +555,10 @@ ellers skulle man for eksempel for dansk vintertid, indtaste \"1\"
 #
 
 # switching pan
-'groups-lookup-group' => 'Administrér grupperettigheder',
-'groups-group-edit' => 'Eksisterende grupper:',
-'editgroup' => 'Redigér gruppe',
-'addgroup' => 'Tilføj gruppe',
 
 'userrights-lookup-user' => 'Administrér brugergrupper',
 'userrights-user-editname' => 'Skriv et brugernavn:',
 'editusergroup' => 'Redigér brugergrupper',
-
-# group editing
-'groups-editgroup' => 'Redigér gruppe',
-'groups-addgroup' => 'Tilføj gruppe',
-'groups-editgroup-preamble' => 'Hvis navn eller beskrivelse starter med et kolon, så vil
-resten blive behandlet som et navn på en besked, og derfor vil teksten blive behandlet som
-en besked i MediaWiki navnerummet',
-'groups-editgroup-name' => 'Gruppenavn:',
-'groups-editgroup-description' => 'Gruppebeskrivelse (max 255 tegn):<br />',
-'savegroup' => 'Gem gruppe',
-'groups-tableheader'        => 'ID || Navn || Beskrivelse || Rettigheder',
-'groups-existing'           => 'Eksisterende grupper',
-'groups-noname'             => 'Angiv venligst et lovligt gruppenavn',
-'groups-already-exists'     => 'En gruppe ved et navn eksisterer allerede',
-'addgrouplogentry'          => 'Tilføjet gruppe $2',
-'changegrouplogentry'       => 'Ændret gruppe $2',
-'renamegrouplogentry'       => 'Omdøbt gruppe $2 to $3',
 
 # user groups editing
 #
@@ -592,40 +570,19 @@ en besked i MediaWiki navnerummet',
 Grupper som ikke er valgt, vil ikke blive ændret. Du kan ophæve valget af en gruppe ved hjælp af CTRL-tasten og et venstreklik.',
 'userrights-logcomment' => 'Ændret gruppemedlemskab fra $1 til $2',
 
-# Default group names and descriptions
-#
-'group-anon-name'       => 'Anonym',
-'group-anon-desc'       => 'Anonyme brugere',
-'group-loggedin-name'   => 'Bruger',
-'group-loggedin-desc'   => 'Generel bruger der er logget på',
-'group-admin-name'      => 'Administrator',
-'group-admin-desc'      => 'En bruger der kan blokere andre brugere og slette sider',
-'group-bureaucrat-name' => 'Bureaukrat',
-'group-bureaucrat-desc' => 'Bureaukrater kan udnævne administratorer',
-'group-steward-name'    => 'Steward',
-'group-steward-desc'    => 'Fuld adgang',
-
-
 # Recent changes
 #
 "changes" => "ændringer",
 "recentchanges" => "Seneste ændringer",
-"rcloaderr"		=> "Indlæser seneste ændrede sider",
 "rcnote"		=> "Nedenfor er de seneste <strong>$1</strong> ændringer i de
 sidste <strong>$2</strong> dage.",
 "rcnotefrom"	=> "Nedenfor er ændringerne fra <b>$2</b> indtil <b>$1</b> vist.",
 "rclistfrom"	=> "Vis nye ændringer startende fra $1",
-'showhideminor' => "$1 mindre ændringer | $2 robotter | $3 brugere der er logget på | $4 patruljerede ændringer",
 "rclinks"		=> "Vis seneste $1 ændringer i de sidste $2 dage<br />$3",
-"rchide"		=> "i $4 form; $1 mindre ændringer; $2 andre navnerum; $3 mere end en redigering.",
-"rcliu"			=> "; $1 redigeringer fra brugere der er logget på",
 "diff"			=> "forskel",
 "hist"			=> "historik",
 "hide"			=> "skjul",
 "show"			=> "vis",
-"tableform"		=> "tabel",
-"listform"		=> "liste",
-"nchanges"		=> "$1 ændringer",
 "minoreditletter" => "m",
 "newpageletter" => "N",
 'sectionlink' => '→',
@@ -635,7 +592,6 @@ sidste <strong>$2</strong> dage.",
 #
 "upload"		=> "Læg en fil op",
 "uploadbtn"		=> "Læg en fil op",
-"uploadlink"	=> "Læg en fil op",
 "reupload"		=> "Læg en fil op igen",
 "reuploaddesc"	=> "Tilbage til formularen til at lægge filer op.",
 "uploadnologin" => "Ikke logget på",
@@ -764,19 +720,6 @@ skulle have peget på.",
 "brokenredirects"	=> "Dårlige omdirigeringer",
 "brokenredirectstext"	=> "De følgende omdirigeringer peger på en side der
 ikke eksisterer.",
-"selflinks"		=> "Sider der henviser til sig selv",
-"selflinkstext"		=> "De følgende sider indeholder henvisninger til sig selv,
-men det burde de ikke.",
-"mispeelings"           => "Sider med stavefejl",
-"mispeelingstext"               => "De følgende sider indeholder en af de
-almindelig stavefejl, som er listet på $1. Den korrekte stavemåde kan
-angives i paranteser efter den fejlagtige stavemåde (sådan her).",
-"mispeelingspage"       => "Liste over almindelige stavefejl",
-"missinglanguagelinks"  => "Manglende sproghenvisninger",
-"missinglanguagelinksbutton"    => "Find manglende sproghenvisninger for",
-"missinglanguagelinkstext"      => "Disse artikler har <i>ikke</i> nogen
-henvisning til den samme artikel i $1. Omdirigeringer og underartikler er
-<i>ikke</i> vist.",
 
 
 # Miscellaneous special pages
@@ -798,7 +741,6 @@ henvisning til den samme artikel i $1. Omdirigeringer og underartikler er
 "specialpages"	=> "Specielle sider",
 "spheading"		=> "Specielle sider for alle brugere",
 'restrictedpheading'	=> 'Specielle sider med begrænset adgang',
-"protectpage"	=> "Beskyt side",
 "recentchangeslinked" => "Relaterede ændringer",
 "rclsub"		=> "(til sider henvist fra \"$1\")",
 "newpages"		=> "Nyeste artikler",
@@ -863,7 +805,6 @@ eller har valgt ikke at modtage e-mail fra andre brugere.",
 # Watchlist
 #
 "watchlist"		=> "Overvågningsliste",
-"watchlistsub"	=> "(for bruger \"$1\")",
 "nowatchlist"	=> "Du har ingenting i din overvågningsliste.",
 "watchnologin"	=> "Ikke logget på",
 "watchnologintext"	=> "Du skal være [[Speciel:Userlogin|logget på]] for at kunne ændre din overvågningsliste.",
@@ -1093,9 +1034,7 @@ Indsæt navnet på brugeren i tekstboksen og tryk på knappen for at ændre rett
 'makesysopfail'		=> "<b>Bruger \"$1\" kunne ikke gøres til administrator. (Har du stavet navnet rigtigt?)</b>",
 'setbureaucratflag' => 'Sæt bureaukratflag',
 'setstewardflag'    => 'Sæt steward flag',
-'bureaucratlog'		=> 'Bureaukratlog',
 'rightslogtext'		=> 'Dette er en log over ændringer i brugeres rettigheder.',
-'bureaucratlogentry'	=> "Rettigheder for bruger \"$1\" sat til \"$2\"",
 'rights'			=> 'Rettigheder:',
 'set_user_rights'	=> 'Tildel brugerrettigheder',
 'user_rights_set'	=> "<b>Rettigheder for bruger \"$1\" er opdateret</b>",

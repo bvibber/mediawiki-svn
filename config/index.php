@@ -50,11 +50,13 @@ $ourdb['mysql']['fullname']      = 'MySQL';
 $ourdb['mysql']['havedriver']    = 0;
 $ourdb['mysql']['compile']       = 'mysql';
 $ourdb['mysql']['bgcolor']       = '#ffe5a7';
+$ourdb['mysql']['rootuser']      = 'root';
 
 $ourdb['postgres']['fullname']   = 'PostgreSQL';
 $ourdb['postgres']['havedriver'] = 0;
 $ourdb['postgres']['compile']    = 'pgsql';
 $ourdb['postgres']['bgcolor']    = '#aaccff';
+$ourdb['postgres']['rootuser']   = 'postgres';
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -144,15 +146,22 @@ $ourdb['postgres']['bgcolor']    = '#aaccff';
 	<!--
 	function hideall() {
 		<?php foreach (array_keys($ourdb) as $db) {
-		echo "document.getElementById('$db').style.display='none';\n";
+		echo "\n		document.getElementById('$db').style.display='none';";
 		}
 		?>
+
 	}
-	function togglearea(id) {
+	function toggleDBarea(id) {
 		hideall();
 		var dbarea = document.getElementById(id).style;
-		dbarea.display = dbarea.display = 'none' ? 'block' : 'none';
-  	}
+		dbarea.display = (dbarea.display == 'none') ? 'block' : 'none';
+		var db = document.getElementById('RootUser');
+		<?php foreach (array_keys($ourdb) as $db) {
+		echo "\n		if (id == '$db') { db.value = '".$ourdb[$db]['rootuser']."';}";
+		}
+		?>
+
+	}
 	// -->
 	</script>
 </head>
@@ -483,12 +492,12 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 	$conf->SysopName = importPost( "SysopName", "WikiSysop" );
 	$conf->SysopPass = importPost( "SysopPass" );
 	$conf->SysopPass2 = importPost( "SysopPass2" );
+	$conf->RootUser     =  importPost( "RootUser", "root" );
+	$conf->RootPW       =  importPost( "RootPW", "-" );
 
 	## MySQL specific:
 	$conf->DBprefix     =  importPost( "DBprefix" );
 	$conf->DBmysql5     = (importPost( "DBmysql5" ) == "true") ? "true" : "false";
-	$conf->RootUser     =  importPost( "RootUser", "root" );
-	$conf->RootPW       =  importPost( "RootPW", "-" );
 	$conf->LanguageCode =  importPost( "LanguageCode", "en" );
 
 	## Postgres specific:
@@ -681,12 +690,26 @@ error_reporting( E_ALL );
 			if( !$ok ) { continue; }
 
 		} else /* not mysql */ {
-			echo( "<li>Attempting to connect to database server as $wgDBuser..." );
+			error_reporting( E_ALL );
+			$wgSuperUser = '';
+			## Possible connect as a superuser
+			if( $conf->RootPW != '-' and strlen($conf->RootPW)) {
+				$wgDBsuperuser = $conf->RootUser;
+				echo( "<li>Attempting to connect to database \"postgres\" as superuser \"$wgDBsuperuser\"..." );
+				$wgDatabase = $dbc->newFromParams($wgDBserver, $wgDBsuperuser, $conf->RootPW, "postgres", 1);
+				if (!$wgDatabase->isOpen()) {
+					print " error: " . $wgDatabase->lastError() . "</li>\n";
+					$errs["DBserver"] = "Couldn't connect to database as superuser";
+					$errs["RootUser"] = "Check username";
+					$errs["RootPW"] = "and password";
+					continue;
+				}
+			}
+			echo( "<li>Attempting to connect to database \"$wgDBname\" as \"$wgDBuser\"..." );
 			$wgDatabase = $dbc->newFromParams($wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname, 1);
 			if (!$wgDatabase->isOpen()) {
 				print " error: " . $wgDatabase->lastError() . "</li>\n";
 			} else {
-				$wgDatabase->ignoreErrors(true);
 				$myver = $wgDatabase->getServerVersion();
 			}
 		}
@@ -699,7 +722,7 @@ error_reporting( E_ALL );
 		print "<li>Connected to $myver";
 		if ($conf->DBtype == 'mysql') {
 			if( version_compare( $myver, "4.0.14" ) < 0 ) {
-				die( " -- mysql 4.0.14 or later required. Aborting." );
+				dieout( " -- mysql 4.0.14 or later required. Aborting." );
 			}
 			$mysqlNewAuth   = version_compare( $myver, "4.1.0", "ge" );
 			if( $mysqlNewAuth && $mysqlOldClient ) {
@@ -739,6 +762,11 @@ error_reporting( E_ALL );
 				print "<li>Created database <tt>" . htmlspecialchars( $wgDBname ) . "</tt></li>\n";
 			}
 			$wgDatabase->selectDB( $wgDBname );
+		}
+		else if ($conf->DBtype == 'postgres') {
+			if( version_compare( $myver, "PostgreSQL 8.0" ) < 0 ) {
+				dieout( " <b>Postgres 8.0 or later is required</b>. Aborting.</li></ul>" );
+			}
 		}
 
 		if( $wgDatabase->tableExists( "cur" ) || $wgDatabase->tableExists( "revision" ) ) {
@@ -781,11 +809,7 @@ error_reporting( E_ALL );
 				}
 				dbsource( "../maintenance/interwiki.sql", $wgDatabase );
 			} else if ($conf->DBtype == 'postgres') {
-				dbsource( "../maintenance/postgres/tables.sql", $wgDatabase );
-				$wgDatabase->update_interwiki();
-			} else if ($conf->DBtype == 'oracle') {
-				dbsource( "../maintenance/oracle/tables.sql", $wgDatabase );
-				dbsource( "../maintenance/oracle/interwiki.sql", $wgDatabase );
+				$wgDatabase->setup_database();
 			}
 			else {
 				$errs["DBtype"] = "Do not know how to handle database type '$conf->DBtype'";
@@ -802,7 +826,7 @@ error_reporting( E_ALL );
 				       'ss_good_articles' => 0 ) );
 					   
 			# Set up the "regular user" account *if we can, and if we need to*
-			if( $conf->Root ) {
+			if( $conf->Root and $conf->DBtype == 'mysql') {
 				# See if we need to
 				$wgDatabase2 = $dbc->newFromParams( $wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname, 1 );
 				if( $wgDatabase2->isOpen() ) {
@@ -1179,7 +1203,7 @@ if( count( $errs ) ) {
 </div>
 
 <script type="text/javascript">
-window.onload = togglearea('<?php echo $conf->DBtype; ?>');
+window.onload = toggleDBarea('<?php echo $conf->DBtype; ?>');
 </script>
 
 </form>
@@ -1482,7 +1506,7 @@ function aField( &$conf, $field, $text, $type = "text", $value = "", $onclick = 
 	}
 	echo "\t\t<input $xtype name=\"$field\" id=\"$id\" class=\"iput-$type\" $checked ";
 	if ($onclick) {
-		echo " onclick='togglearea(\"$value\")' " ;
+		echo " onclick='toggleDBarea(\"$value\")' " ;
 	}
 	echo "value=\"";
 	if( $type == "radio" ) {

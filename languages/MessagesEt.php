@@ -100,6 +100,7 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit]."
 "whatlinkshere"	=> "Siia viitavad artiklid",
 "help"			=> "Juhend",
 "search"		=> "Otsi",
+"searchbutton"	=> "Otsi",
 "go"		=> "Mine",
 "history"		=> "Artikli ajalugu",
 'history_short' => 'Ajalugu',
@@ -417,7 +418,6 @@ et päring oli vigane, nt. \"koer and and kass\" ei ole lubatav.
 Palun proovige teistsugust päringut.",
 "matchtotals"	=> "Otsitud sõna \"$1\" leidub $2 artikli pealkirjas
 ning $3 artikli tekstis.",
-"nogomatch" => "Täpselt sellise pealkirjaga lehekülge ei ole, proovime täistekstotsingut.",
 "titlematches"	=> "Tabamused artiklipealkirjades",
 "notitlematches" => "Artiklipealkirjades tabamusi ei ole",
 "textmatches"	=> "Tabamused artiklitekstides",
@@ -479,19 +479,14 @@ sisse logida.",
 "changes" => "muudatused",
 "recentchanges" => "Viimased muudatused",
 "recentchangestext" => "Jälgige sellel leheküljel viimaseid muudatusi.",
-"rcloaderr"		=> "Viimaste muudatuste laadimine",
 "rcnote"		=> "Allpool on esitatud viimased <strong>$1</strong> muudatust viimase <strong>$2</strong> päeva jooksul.",
 "rcnotefrom"	=> "Allpool on esitatud muudatused alates <b>$2</b> (näidatakse kuni <b>$1</b> muudatust).",
 "rclistfrom"	=> "Näita muudatusi alates $1",
 "rclinks"		=> "Näita viimast $1 muudatust viimase $2 päeva jooksul.",
-"rchide"		=> "in $4 form; $1 pisiparandust; $2 sekundaarset nimeruumi; $3 multiple edits.", ##MIS SEE ON?
 "diff"			=> "erin",
 "hist"			=> "ajal",
 "hide"			=> "peida",
 "show"			=> "näita",
-"tableform"		=> "tabel",
-"listform"		=> "list",
-"nchanges"		=> "$1 muudatust",
 "minoreditletter" => "P",
 "newpageletter" => "U",
 
@@ -499,7 +494,6 @@ sisse logida.",
 #
 "upload"		=> "Faili üleslaadimine",
 "uploadbtn"		=> "Üleslaadimine",
-"uploadlink"	=> "Piltide üleslaadimine",
 "reupload"		=> "Uuesti üleslaadimine",
 "reuploaddesc"	=> "Tagasi üleslaadimise vormi juurde.",
 "uploadnologin" => "sisse logimata",
@@ -600,8 +594,6 @@ Administraatori staatuses kasutajaid: <b>$2</b> (vt $3).",
 # Maintenance Page
 #
 
-"selflinks"		=> "Iseendale viitavad leheküljed",
-"selflinkstext"		=> "Järgmised leheküljed sisaldavad viita iseendale, mis ei ole soovitatav.",
 
 # Miscellaneous special pages
 #
@@ -618,7 +610,6 @@ Administraatori staatuses kasutajaid: <b>$2</b> (vt $3).",
 "listusers"		=> "Kasutajad",
 "specialpages"	=> "Erileheküljed",
 "spheading"		=> "Erileheküljed",
-"protectpage"	=> "Kaitse lehekülge",
 "recentchangeslinked" => "Seotud muudatused",
 "rclsub"		=> "(lehekülgedel, millele \"$1\" viitab)", #
 "newpages"		=> "Uued leheküljed",
@@ -648,7 +639,6 @@ ei tohiks konstrueerida reklaami tegemiseks.",
 # Watchlist
 #
 "watchlist"		=> "Minu jälgimisloend",
-"watchlistsub"	=> "(kasutajale nimega \"$1\")",
 "nowatchlist"	=> "Teie jälgimisloend on tühi.",
 "watchnologin"	=> "Ei ole sisse loginud",
 "watchnologintext"	=> "Jälgimisloendi muutmiseks peate [[Special:Userlogin|sisse logima]].",

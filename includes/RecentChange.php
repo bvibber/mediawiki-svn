@@ -113,6 +113,11 @@ class RecentChange
 		$this->mAttribs['rc_cur_time'] = $dbw->timestamp($this->mAttribs['rc_cur_time']);
 		$this->mAttribs['rc_id'] = $dbw->nextSequenceValue( 'rc_rc_id_seq' );
 
+		## If we are using foreign keys, an entry of 0 for the page_id will fail, so use NULL
+		if ( $dbw->cascadingDeletes() and $this->mAttribs['rc_cur_id']==0 ) {
+			unset ( $this->mAttribs['rc_cur_id'] );
+		}
+
 		# Insert new row
 		$dbw->insert( 'recentchanges', $this->mAttribs, $fname );
 
@@ -201,7 +206,7 @@ class RecentChange
 		$newId = 0)
 	{
 		if ( $bot == 'default' ) {
-			$bot = $user->isBot();
+			$bot = $user->isAllowed( 'bot' );
 		}
 
 		if ( !$ip ) {
@@ -260,7 +265,7 @@ class RecentChange
 			}
 		}
 		if ( $bot == 'default' ) {
-			$bot = $user->isBot();
+			$bot = $user->isAllowed( 'bot' );
 		}
 
 		$rc = new RecentChange;
@@ -319,7 +324,7 @@ class RecentChange
 			'rc_comment'	=> $comment,
 			'rc_this_oldid'	=> 0,
 			'rc_last_oldid'	=> 0,
-			'rc_bot'	=> $user->isBot() ? 1 : 0,
+			'rc_bot'	=> $user->isAllowed( 'bot' ) ? 1 : 0,
 			'rc_moved_to_ns'	=> $newTitle->getNamespace(),
 			'rc_moved_to_title'	=> $newTitle->getDBkey(),
 			'rc_ip'		=> $ip,
@@ -369,7 +374,7 @@ class RecentChange
 			'rc_comment'	=> $comment,
 			'rc_this_oldid'	=> 0,
 			'rc_last_oldid'	=> 0,
-			'rc_bot'	=> $user->isBot() ? 1 : 0,
+			'rc_bot'	=> $user->isAllowed( 'bot' ) ? 1 : 0,
 			'rc_moved_to_ns'	=> 0,
 			'rc_moved_to_title'	=> '',
 			'rc_ip'	=> $ip,

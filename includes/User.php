@@ -1206,7 +1206,6 @@ class User {
 	 */
 	function isSysop() {
 		throw new MWException( "Call to deprecated (v1.7) User::isSysop() method\n" );
-		#return $this->isAllowed( 'protect' );
 	}
 
 	/**
@@ -1215,7 +1214,6 @@ class User {
 	 */
 	function isDeveloper() {
 		throw new MWException( "Call to deprecated (v1.7) User::isDeveloper() method\n" );
-		#return $this->isAllowed( 'siteadmin' );
 	}
 
 	/**
@@ -1224,21 +1222,19 @@ class User {
 	 */
 	function isBureaucrat() {
 		throw new MWException( "Call to deprecated (v1.7) User::isBureaucrat() method\n" );
-		#return $this->isAllowed( 'makesysop' );
 	}
 
 	/**
 	 * Whether the user is a bot
-	 * @todo need to be migrated to the new user level management sytem
+	 * @deprecated
 	 */
 	function isBot() {
-		$this->loadFromDatabase();
-		return in_array( 'bot', $this->mRights );
+		return $this->isAllowed( 'bot' );
 	}
 
 	/**
 	 * Check if user is allowed to access a feature / make an action
-	 * @param string $action Action to be checked (see $wgAvailableRights in Defines.php for possible actions).
+	 * @param string $action Action to be checked
 	 * @return boolean True: action is allowed, False: action should not be allowed
 	 */
 	function isAllowed($action='') {

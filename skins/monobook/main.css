@@ -146,7 +146,6 @@ body {
 /* general styles */
 
 table {
-	background: white;
 	font-size: 100%;
 	color: black;
 }
@@ -251,7 +250,6 @@ fieldset {
 	line-height: 1.5em;
 }
 legend {
-	background: white;
 	padding: .5em;
 	font-size: 95%;
 }

@@ -144,6 +144,7 @@
 'tagline'       => 'De {{SITENAME}}',
 'help'                  => 'Ajuda',
 'search'                => 'Pesquisa',
+'searchbutton'          => 'Pesquisa',
 'go'            => 'Ir',
 "history"             => 'Histórico',
 'history_short' => 'História',
@@ -513,7 +514,6 @@ Pode voltar atrás e editar uma página já existente, ou [[Special:Userlogin|au
 'loadhist'              => 'Carregando histórico',
 'currentrev'    => 'Revisão actual',
 'revisionasof'          => 'Revisão de $1',
-'revisionasofwithlink'  => 'Revisão de $1; $2<br />$3 | $4',
 'previousrevision'      => '← Versão anterior',
 'nextrevision'          => 'Versão posterior →',
 'currentrevisionlink'   => 'ver versão actual',
@@ -820,14 +820,6 @@ Destes, '''$2''' (ou '''$4%''') são administradores (consulte $3).",
 'doubleredirectstext'   => "Cada linha contém ligações para o primeiro e segundo redireccionamento, bem como a primeira linha de conteúdo do segundo redireccionamento, geralmente contendo a página destino \"real\", que devia ser o destino do primeiro redireccionamento.",
 'brokenredirects'       => 'Redireccionamentos quebrados',
 'brokenredirectstext'   => 'Os seguintes redireccionamentos ligam para páginas inexistentes:',
-'selflinks'             => 'Páginas que ligam consigo próprias',
-'selflinkstext'             => 'As páginas seguintes ligam consigo próprias:',
-'mispeelings'           => 'Páginas com erros ortográficos',
-'mispeelingstext'               => "As páginas seguintes contém erros ortográficos comuns, alguns deles listados em $1. Lá pode encontrar a grafia correcta (assim).",
-'mispeelingspage'       => 'Lista de erros ortográficos comuns',
-'missinglanguagelinks'  => 'Ligações interlinguísticas não encontradas',
-'missinglanguagelinksbutton'    => 'Procurar ligações interlinguísticas inexistentes para',
-'missinglanguagelinkstext'      => "Estas páginas <i>não</i> estão correctamente ligadas ao artigo relativo ao tema em $1. '''Não''' são incluídos redireccionamentos e subpáginas.",
 
 # Miscellaneous special pages
 #
@@ -922,7 +914,6 @@ para que o destinatário lhe possa responder.',
 # Watchlist
 #
 'watchlist'                     => 'Artigos vigiados',
-'watchlistsub'          => "(do utilizador \"$1\")",
 'nowatchlist'           => 'Não existem itens na sua lista de artigos vigiados.',
 'watchlistcount'     => "'''Tem $1 items na sua lista de artigos vigiados, incluindo páginas de discussão.'''",
 'clearwatchlist'     => 'Limpar lista de artigos vigiados',

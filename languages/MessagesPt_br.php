@@ -91,6 +91,7 @@ $wgAllMessagesPt_br = array(
 "whatlinkshere" => "Páginas que se ligam a essa",
 "help"          => "Ajuda",
 "search"        => "Busca",
+"searchbutton"  => "Busca",
 "go"        => "Vai",
 "history"       => "Histórico",
 "printableversion" => "Versão para impressão",
@@ -407,20 +408,14 @@ e [[{{ns:4}}:Most common {{SITENAME}} faux pas|most common {{SITENAME}} faux pas
 
 Se você quer ver a {{SITENAME}} crescer, é muito importante que você não adicione material restrito por outras [[{{ns:4}}:Copyrights|copyrights]].
 Um problema legal poderia realmente prejudicar o projeto de maneira que pedimos, por avor, não faça isso.",
-"rcloaderr"     => "Carregando alterações recentes",
 "rcnote"        => "Abaixo estão as últimas <strong>$1</strong> alterações nos últimos <strong>$2</strong> dias.",
 "rcnotefrom"    => "Abaixo estão as mudanças desde <b>$2</b> (até <b>$1</b> mostradas).",
 "rclistfrom"    => "Mostrar as novas alterações a partir de $1",
 "rclinks"       => "Mostrar as últimas $1 mudanças nos últimos $2 dias; $3 edições minoritárias",
-"rchide"        => "em $4 formulários; $1 edições minoritárias; $2 namespaces secundários; $3 múltiplas edições.",
-"rcliu"         => "; $1 edições de usuários autenticados",
 "diff"          => "dif",
 "hist"          => "hist",
 "hide"          => "esconde",
 "show"          => "mostra",
-"tableform"     => "tabela",
-"listform"      => "lista",
-"nchanges"      => "$1 mudanças",
 "minoreditletter" => "M",
 "newpageletter" => "N",
 
@@ -428,7 +423,6 @@ Um problema legal poderia realmente prejudicar o projeto de maneira que pedimos,
 #
 "upload"        => "Carregar arquivo",
 "uploadbtn"     => "Carregar arquivo",
-"uploadlink"    => "Carregar imagens",
 "reupload"      => "Re-carregar",
 "reuploaddesc"  => "Retornar ao formulário de Uploads.",
 "uploadnologin" => "Não autenticado",
@@ -529,14 +523,6 @@ Destes, <b>$2</b> são administradores (veja $3).",
 "doubleredirectstext"   => "<b>Atenção:</b> Esta lista pode conter positivos falsos. O que usualmente significa que há texto adicional com links depois do primeiro #REDIRECT.<br />\nCada linha contem links para o primeiro e segundo redirecionamento, bem como a primeira linha do segundo texto redirecionado , geralmente dando o artigo alvo \"real\" , para onde o primeiro redirecionamento deveria apontar.",
 "brokenredirects"   => "Redirecionamentos Quebrados",
 "brokenredirectstext"   => "Os seguintes redirecionamentos apontam para um artigo inexistente.",
-"selflinks"     => "Páginas com links próprios",
-"selflinkstext"     => "As páginas a seguir possuem links para si mesmas, o que não deveria acontecer.",
-"mispeelings"           => "Páginas com erros ortográficos",
-"mispeelingstext"               => "As páginas a seguir contém erros comuns que estão listados em $1. A ortografia correta deve ser dada (como isto).",
-"mispeelingspage"       => "Lista de erros comuns",
-"missinglanguagelinks"  => "Missing Language Links",
-"missinglanguagelinksbutton"    => "Find missing language links for",
-"missinglanguagelinkstext"      => "These articles do <i>not</i> link to their counterpart in $1. Redirects and subpages are <i>not</i> shown.",
 
 
 # Miscellaneous special pages
@@ -554,7 +540,6 @@ Destes, <b>$2</b> são administradores (veja $3).",
 "listusers"     => "Lista de Usuários",
 "specialpages"  => "Páginas especiais",
 "spheading"     => "Páginas especiais para todos os usuários",
-"protectpage"   => "Páginas Protegidas",
 "recentchangeslinked" => "Páginas relacionadas",
 "rclsub"        => "(para páginas linkadas de \"$1\")",
 "newpages"      => "Páginas novas",
@@ -591,7 +576,6 @@ O endereço de e-mail que você disponibilizou em suas preferências aparecerá 
 # Watchlist
 #
 "watchlist"     => "Artigos do meu interesse",
-"watchlistsub"  => "(do usuário \"$1\")",
 "nowatchlist"   => "Você não está monitorando nenhum artigo.",
 "watchnologin"  => "Não está autenticado",
 "watchnologintext"  => "Você deve estar [[Special:Userlogin|autenticado]]

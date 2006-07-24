@@ -86,7 +86,6 @@ $wgAllMessagesAz = array(
 'navigation' => 'Rəhbər',
 
 # Metadata in edit box
-'metadata_page' => '{{ns:4}}:Metadata',
 
 'currentevents' => 'Güncəl hadisələr',
 'currentevents-url' => 'Project:Güncəl Hadisələr',
@@ -95,6 +94,7 @@ $wgAllMessagesAz = array(
 'returnto' => '$1 səhifəsinə qayıt.',
 'go' => 'Gətir',
 'search' => 'Axtar',
+'searchbutton' => 'Axtar',
 'history' => 'Səhifənin tarixçəsi',
 'history_short' => 'Tarixçə',
 'printableversion' => 'Çap variantı',
@@ -243,7 +243,6 @@ $wgAllMessagesAz = array(
 'revhistory' => 'Versiya tarixçəsi',
 'currentrev' => 'Hal-hazırkı versiya',
 'revisionasof' => '$1 versiyası',
-'revisionasofwithlink' => '$1 versiyası; $2<br />$3 | $4',
 'previousrevision' => '←Əvvəlki versiya',
 'nextrevision' => 'Sonrakı versiya→',
 'currentrevisionlink' => 'Hal-hazırkı versiyanı göstər',
@@ -306,7 +305,6 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 #
 
 # switching pan
-'addgroup' => 'Bir qrup əlavə edin.',
 'userrights-lookup-user' => 'İstifadəçi qruplarını idarə et',
 'userrights-user-editname' => 'İstifadəçi adınızı yazın:',
 
@@ -316,7 +314,6 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 'changes' => 'dəyişiklik',
 'recentchanges' => 'Son dəyişikliklər',
 'recentchangestext' => '\'\'\'Ən son dəyişiklikləri bu səhifədən izləyin.\'\'\'',
-'rcloaderr' => 'Loading recent changes',
 'rcnote' => 'Aşağıdakı son <strong>$1</strong> dəyişiklik son <strong>$2</strong> gün ərzində edilmişdir.',
 'rcnotefrom' => 'Below are the changes since <b>$2</b> (up to <b>$1</b> shown).',
 'rclistfrom' => '$1 vaxtından başlayaraq yeni dəyişiklikləri göstər',
@@ -325,9 +322,6 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 'hist' => 'tarixçə',
 'hide' => 'gizlət',
 'show' => 'göstər',
-'tableform' => 'table',
-'listform' => 'siyahı',
-'nchanges' => '$1 dəyişiklik',
 'minoreditletter' => 'k',
 'newpageletter' => 'Y',
 
@@ -335,7 +329,6 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 #
 'upload' => 'Qarşıya yüklə',
 'uploadbtn' => 'Sənəd yüklə',
-'uploadlink' => 'Upload images',
 'reupload' => 'Təkrar yüklə',
 'reuploaddesc' => 'Return to the upload form.',
 'uploaderror' => 'Yükləyiş xətası',
@@ -447,7 +440,6 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: \'
 # Watchlist
 #
 'watchlist' => 'İzlədiyim səhifələr',
-'watchlistsub' => '("$1" istifadəçisi üçün)',
 'watchnologin' => 'Daxil olmamısınız',
 'addedwatch' => 'İzləmə siyahısına əlavə edildi.',
 'addedwatchtext' => '"$1" səhifəsi [[Special:Watchlist|izlədiyiniz səhifələrə]] əlavə edildi. Bu səhifədə və əlaqəli müzakirə səhifəsində olacaq dəyişikliklər orada göstəriləcək və səhifə asanlıqla seçiləbilmək üçün [[Special:Recentchanges|son dəyişikliklər]]-də qalın şriftlərlə görsənəcəkdir. <p> Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə" düyməsinə vurun.',
@@ -525,7 +517,6 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: \'
 #
 
 # Make sysop
-'bureaucratlog' => 'Bureaucrat_log',
 'already_sysop' => 'Bu istifadəçi hazirdə idarəçidir',
 'already_bureaucrat' => 'Bu istifadəçi hazirdə bürokratdı',
 'already_steward' => 'Bu istifadəçi hazirdə steward',

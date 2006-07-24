@@ -289,10 +289,13 @@ class OutputPage {
 
 	function addWikiTextTitle($text, &$title, $linestart) {
 		global $wgParser;
+		$fname = 'OutputPage:addWikiTextTitle';
+		wfProfileIn($fname);
 		wfIncrStats('pcache_not_possible');
 		$parserOutput = $wgParser->parse( $text, $title, $this->mParserOptions,
 			$linestart, true, $this->mRevisionId );
 		$this->addParserOutput( $parserOutput );
+		wfProfileOut($fname);
 	}
 
 	function addParserOutputNoText( &$parserOutput ) {
@@ -305,6 +308,8 @@ class OutputPage {
 		}
 		if ( $parserOutput->mHTMLtitle != "" ) {
 			$this->mPagetitle = $parserOutput->mHTMLtitle ;
+		}
+		if ( $parserOutput->mSubtitle != '' ) {
 			$this->mSubtitle .= $parserOutput->mSubtitle ;
 		}
 	}
@@ -382,18 +387,10 @@ class OutputPage {
 		$parserCache =& ParserCache::singleton();
 		$parserOutput = $parserCache->get( $article, $user );
 		if ( $parserOutput !== false ) {
-			$this->mLanguageLinks += $parserOutput->getLanguageLinks();
-			$this->addCategoryLinks( $parserOutput->getCategories() );
-			$this->addKeywords( $parserOutput );
-			$this->mNewSectionLink = $parserOutput->getNewSection();
-			$this->mNoGallery = $parserOutput->getNoGallery();
+			$this->addParserOutputNoText( $parserOutput );
 			$text = $parserOutput->getText();
 			wfRunHooks( 'OutputPageBeforeHTML', array( &$this, &$text ) );
 			$this->addHTML( $text );
-			$t = $parserOutput->getTitleText();
-			if( !empty( $t ) ) {
-				$this->setPageTitle( $t );
- 			}
 			return true;
 		} else {
 			return false;

@@ -140,6 +140,7 @@ $wgAllMessagesDe = array(
 'tagline'		=> 'Aus {{SITENAME}}',
 "help"			=> "Hilfe",
 "search"		=> "Suche",
+"searchbutton"	=> "Suche",
 "history"		=> "Versionen",
 'info_short'		=> 'Information',
 "history_short" => "Versionen",
@@ -571,8 +572,8 @@ Versuchen Sie es über die Volltextsuche.
 Alternativ können Sie auch den [[{{ns:special}}:Allpages|alphabetischen Index]] nach ähnlichen Begriffen durchsuchen.
 
 Wenn Sie sich mit dem Thema auskennen, können Sie selbst den Artikel „[[$1]]“ verfassen.',
-'titlematches'		=> 'Übereinstimmungen mit Überschriften',
-'notitlematches'	=> 'Keine Übereinstimmungen mit Überschriften',
+'titlematches'		=> 'Übereinstimmungen mit Seitentiteln',
+'notitlematches'	=> 'Keine Übereinstimmungen mit Seitentiteln',
 'textmatches'		=> 'Übereinstimmungen mit Inhalten',
 'notextmatches'		=> 'Keine Übereinstimmungen mit Inhalten',
 "prevn"			=> "vorherige $1",

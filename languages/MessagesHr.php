@@ -112,6 +112,7 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 'returnto'              => 'Vrati se na $1.',
 'tagline'               => 'Izvor: {{SITENAME}}',
 'search'                => 'Traži',
+'searchbutton'          => 'Traži',
 'go'                    => 'Kreni',
 'history'               => 'Stare izmjene',
 'history_short'         => 'Stare izmjene',
@@ -793,7 +794,6 @@ E-mail adresa iz vaših postavki nalazit će se u "From" polju poruke i primatel
 'emailsent'             => 'E-mail poslan',
 'emailsenttext'         => 'Vaša poruka je poslana.',
 'watchlist'             => 'Moj popis praćenja',
-'watchlistsub'          => '(za suradnika "$1")',
 'nowatchlist'           => 'Na vašem popisu praćenja nema nijednog članka.',
 'watchnologin'          => 'Niste prijavljeni',
 'watchnologintext'      => 'Morate biti [[Special:Userlogin|prijavljeni]]

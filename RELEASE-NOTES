@@ -67,18 +67,29 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   (blocked mid-edit) and the page doesn't exist
 * Improve default value of "blockedtext"
 * (bug 6680) Added localisation for Dutch bookstore list (nl)
+* Renamed maintainace script redundanttrans.php to unusedMessages.php - clearer usage
+* Fix regression which allowed some blocked users to create additional accounts
+* (bug 6657) Fix Hungarian linktrail
+* (bug 6751) Fix preview of blanked section with edit on first preview option
+* (bug 5456) Separate MediaWiki:Search into messages for both noun and verb,
+  introduced 'MediaWiki:Searchbutton'
+
 
 == Languages updated ==
 
 * Albanian (sq)
+* Belarusian (be)
+* Bishnupriya (bpy) stub file
 * Brazilian Portuguese (pt-br)
 * Catalan (ca)
+* Dutch (nl)
 * English (en)
 * French (fr)
 * German (de)
 * Hebrew (he)
 * Hungarian (hu)
 * Indonesian (id)
+* Korean (ko)
 * Polish (pl)
 * Russian (ru)
 * Telugu (te)

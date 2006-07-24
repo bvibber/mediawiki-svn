@@ -104,6 +104,7 @@ un dat [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 'whatlinkshere'         => 'Wat wiest hierher',
 'help'                          => 'Hülp',
 'search'                        => 'Söök',
+'searchbutton'                  => 'Söök',
 'history'                            => 'Historie',
 'history_short'         => 'Historie',
 'info_short'               => 'Informatschoon',
@@ -374,7 +375,6 @@ Du bestätigst ok, dat du den Text sülvst schreven hest oder ut en „Public Do
 'loadhist'                      => 'Lade List mit freuhere Versionen',
 'currentrev'              => 'Aktuelle Version',
 'revisionasof'          => 'Version vun\'n $1',
-'revisionasofwithlink'  => 'Version vun\'n $1; $2<br />$3 | $4',
 'nextrevision'          => '←Nächstjüngere Version',
 'previousrevision'      => 'Nächstöllere Version→',
 'cur'                           => 'Aktuell',
@@ -478,7 +478,6 @@ de aver nich jümmer den aktuellsten Stand weerspegelt.<p>',
 'recentchanges'      => 'Letzte Ännern',
 'recentchangestext'  => '
 Disse Siet warrt wiel dat Laden automatsch aktualiseert. Wiest warrn Sieten, de toletzt bearbeid worrn sünd, dorto de Tied un de Naam vun de Autor.',
-'rcloaderr'                     => 'Laad Letzte Ännern',
 'rcnote'                        => 'Hier sünd de letzten <b>$1</b> Ännern vun de letzten <b>$2</b> Daag. (<b>N</b> - Niege Sieten; <b>L</b> - Lütte Ännern)',
 'rcnotefrom'            => 'Dit sünd de Ännern siet <b>$2</b> (bet to <b>$1</b> wiest).',
 'rclistfrom'            => 'Wies niege Ännern siet $1',
@@ -487,9 +486,6 @@ Disse Siet warrt wiel dat Laden automatsch aktualiseert. Wiest warrn Sieten, de 
 'hist'                              => 'Versionen',
 'hide'                          => 'Nich wiesen',
 'show'                          => 'Wiesen',
-'tableform'                     => 'Tabell',
-'listform'                       => 'List',
-'nchanges'                       => '$1 Ännern',
 'minoreditletter'    => 'L',
 'newpageletter'      => 'N',
 
@@ -498,7 +494,6 @@ Disse Siet warrt wiel dat Laden automatsch aktualiseert. Wiest warrn Sieten, de 
 #
 'upload'                        => 'Hoochladen',
 'uploadbtn'                    => 'Datei hoochladen',
-'uploadlink'            => 'Biller hoochladen',
 'reupload'                      => 'Nieg hoochladen',
 'reuploaddesc'          => 'Trüch to de Hoochladen-Siet.',
 'uploadnologin'     => 'Nich anmellt',
@@ -603,15 +598,6 @@ De schallen denn löscht warrn. Elk Reeg wiest de eerste un tweete Wiederleiden 
 to den vun den tweeten Wiederleiden wiest warrt, un to den de eerste Wiederleiden mehrst wiesen schall.',
 'brokenredirects'            => 'Kaputte Wiederleiden',
 'brokenredirectstext'          => 'Disse Wiederleiden wiesen to en Siet, de nich existeert',
-'selflinks'                             => 'Sieten, de op sik sülvst wiesen',
-'selflinkstext'                     => 'Disse Sieten wiesen op sik sülvst, wat se nich schallt.',
-'mispeelings'                => 'Sieten mit falsch schrevene Wöör',
-'mispeelingstext'            => 'Op disse Sieten kümmt falsch schrevene Wöör vör, de op $1 as falsch defineert sünd.
-In Klammern angevene Wöör geven de korrekte Schrievwies weer.',
-'mispeelingspage'            => 'List vun Tippfehlern',
-'missinglanguagelinks'       => 'Fehlende Spraakverwiesen',
-'missinglanguagelinksbutton' => 'Wies fehlende Spraakverwiesen no',
-'missinglanguagelinkstext'   => 'Disse Sieten hebbt <i>kenen</i> Verwies to ehr Gegenpart in $1. Wiederleiden un Ünnersieten warrn <i>nich</i> wiest.',
 
 
 # Verscheden Spezialsieten
@@ -631,7 +617,6 @@ In Klammern angevene Wöör geven de korrekte Schrievwies weer.',
 'listusers'                          => 'Brukerlist',
 'specialpages'                  => 'Spezialsieten',
 'spheading'                             => 'Spezialsieten för alle Bruker',
-'protectpage'               => 'Siet schulen',
 'recentchangeslinked'     => 'Verlinkte Sieten',
 'rclsub'                                => '(op Artikel vun „$1“)',
 'newpages'                              => 'Niege Sieten',
@@ -681,7 +666,6 @@ Du kannst de List kötter maken, wenn du den Logtyp, den Brukernaam oder de de S
 # Oppasslist
 #
 'watchlist'                     => 'Oppasslist',
-'watchlistsub'           => '(för Bruker „$1“)',
 'nowatchlist'           => 'Du hest kene Indreeg op dien Oppasslist.',
 'watchnologin'            => 'Du büst nich anmellt',
 'watchnologintext'      => 'Du muttst [[Spezial:Userlogin|anmellt]] ween, wenn du dien Oppasslist ännern willst.',
@@ -885,8 +869,6 @@ Diskuschoonssiet nich, vun wegen dat dor al en Siet mit dissen Titel existeert. 
 'makesysopfail'         => '<b>Bruker „$1“ kunn nich to en Administrater maakt warrn. (Is de Naam richtig schreven?)</b>',
 'makesysop'             => 'Maak en Bruker to en Administrater',
 'setbureaucratflag'     => 'Bürokraten-Flagg setten',
-'bureaucratlog'         => 'Bürokraten-Logbook',
-'bureaucratlogentry'       => 'Rechten för Bruker „$1“ op „$2“ sett',
 'rights'                        => 'Rechten:',
 'set_user_rights'             => 'Brukerrechten setten',
 'user_rights_set'       => '<b>Brukerrechten för „$1“ aktualiseert</b>',
@@ -896,9 +878,6 @@ Diskuschoonssiet nich, vun wegen dat dor al en Siet mit dissen Titel existeert. 
 'allmessagestext'             => 'Dit is en List vun alle mööglichen Norichten in den MediaWiki-Naamruum.',
 'thumbnail-more'               => 'vergröttern',
 'and'                                   => 'un',
-'rchide'                        => 'in $4 form; $1 lütte Ännern; $2 sekundäre Naamrüüm; $3 mehrfache Ännern.',
-'showhideminor'                 => 'lütte Ännern $1 | $2 bots | $3 logged in users | $4 patrolled edits',
-'rcliu'                               => '$1 Ännern dör inloggte Bruker',
 'uploaddisabled'               => 'Dat Hoochladen is deaktiveert.',
 'deadendpages'                  => 'Sackstraatsieten',
 'intl'                          => 'Interwiki-Links',
@@ -1047,13 +1026,9 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Kategoriesiet ankieken\');',
 
 
 # Schalttafel
-'editgroup'                             => 'Grupp bearbeiden',
-'addgroup'                              => 'Grupp hentofögen',
 
 'editusergroup'                         => 'Brukergruppen bearbeiden',
 
-# Gruppen bearbeiden
-'savegroup'                             => 'Grupp spiekern',
 
 # Brukergruppen bearbeiden
 'saveusergroups'                        => 'Brukergruppen spiekern',

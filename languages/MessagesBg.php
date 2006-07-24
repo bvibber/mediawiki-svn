@@ -109,7 +109,6 @@
 
 # Metadata in edit box
 'metadata' => '<b>Метаданни</b> (<a href="$1">разяснение</a>)',
-'metadata_page' => 'Project:Метаданни',
 
 'currentevents' => 'Текущи събития',
 'currentevents-url' => 'Текущи събития',
@@ -121,6 +120,7 @@
 'whatlinkshere'  => 'Какво сочи насам',
 'help'      => 'Помощ',
 'search'    => 'Търсене',
+'searchbutton'    => 'Търсене',
 'go'    => 'Отваряне',
 'history'    => 'История',
 'history_short' => 'История',
@@ -181,7 +181,6 @@
 'hidetoc' => 'скриване',
 'thisisdeleted' => 'Преглед или възстановяване на $1?',
 'viewdeleted' => 'Преглед на $1?',
-'restorelink1' => 'една изтрита редакция',
 'restorelink' => '$1 изтрити редакции',
 'feedlinks' => 'Feed:',
 
@@ -453,7 +452,6 @@ Before any other mail is sent to the account, you will have to follow the instru
 'loadhist'        => 'Зареждане история на страницата',
 'currentrev'      => 'Текуща версия',
 'revisionasof'    => 'Версия от $1',
-'revisionasofwithlink'  => 'Версия от $1; $2<br />$3 | $4',
 'previousrevision'      => '←По-стара версия',
 'nextrevision'          => 'По-нова версия→',
 'currentrevisionlink'   => 'преглед на текущата версия',
@@ -577,31 +575,9 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 
 # User levels special page
 
-# switching pan
-'groups-lookup-group' => 'Управляване на групови права',#Manage group rights
-'groups-group-edit' => 'Съществуващи групи:',
-'editgroup' => 'Редактиране на група',
-'addgroup' => 'Добавяне на група',
-
 'userrights-lookup-user' => 'Управляване на потребителските групи',#Manage user groups
 'userrights-user-editname' => 'Въведете потребителско име:', #Enter a username:
 'editusergroup' => 'Редактиране на потребителските групи', #Edit User Groups
-
-# group editing
-'groups-editgroup' => 'Редактиране на група',
-'groups-addgroup' => 'Добавяне на група',
-# TODO
-'groups-editgroup-preamble' => 'If the name or description starts with a colon, the remainder will be treated as a message name, and hence the text will be localised using the MediaWiki namespace',
-'groups-editgroup-name' => 'Име на група:',
-'groups-editgroup-description' => 'Определение на група (до 255 знака):<br />',
-'savegroup' => 'Съхранение на група',
-'groups-tableheader'        => 'ID || Име || Описание || Права',
-'groups-existing'           => 'Съществуващи групи',
-'groups-noname'             => 'Please specify a valid group name',
-'groups-already-exists'     => 'A group of that name already exists',
-'addgrouplogentry'          => 'Added group $2',
-'changegrouplogentry'       => 'Changed group $2',
-'renamegrouplogentry'       => 'Renamed group $2 to $3',
 
 # user groups editing
 'userrights-editusergroup' => 'Редактиране на потребителските групи',#Edit user groups
@@ -611,18 +587,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'userrights-groupshelp' => 'Изберете групите, към които искате той да бъде прибавен или от които да бъде премахнат. Неизбраните групи няма да бъдат променени. Можете да отизберете група чрез <CTRL> + ляв бутон на мишката',
 'userrights-logcomment' => 'Смяна на груповата принадлежност от $1 към $2',
 
-# Default group names and descriptions
-#
-'group-anon-name'       => 'Анонимен',
-'group-anon-desc'       => 'Анонимни потребители',
-'group-loggedin-name'   => 'Потребител',
-'group-loggedin-desc'   => 'Обикновени влезли потребители',
-'group-admin-name'      => 'Администратор',
-'group-admin-desc'      => 'Доверените потребители могат да блокират потребители и да трият страници',
-'group-bureaucrat-name' => 'Бюрократ',
-'group-bureaucrat-desc' => 'Бюрократите могат да дават администраторски права',
-'group-steward-name'    => 'Стюард',
-'group-steward-desc'    => 'Неограничен достъп',
 
 # Recent changes
 #
@@ -632,21 +596,14 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 
 Легенда: <b>тек</b> = разлика на текущата версия,
 <b>ист</b> = история на версиите, <b>м</b>&nbsp;=&nbsp;малка промяна, <b class="newpage">Н</b>&nbsp;=&nbsp;новосъздадена страница',
-'rcloaderr'    => 'Зареждане на последни промени',
 'rcnote'    => 'Показани са последните <strong>$1</strong> промени през последните <strong>$2</strong> дни.',
 'rcnotefrom'  => 'Дадени са промените от <b>$2</b> (до <b>$1</b> показани).',
 'rclistfrom'  => 'Показване на промени, като се започва от $1.',
 'rclinks'    => 'Показване на последните $1 промени през последните $2 дни<br />$3',
-'showhideminor' => '$1 на малки промени | $2 на ботове | $3 на влезли потребители | $4 на проверени редакции',
-'rchide'    => '$4; $1 на малки промени; $2 на вторични именни пространства; $3 на многократни редакции.',
-'rcliu'      => '; $1 редакции от влезли потребители',
 'diff'      => 'разл',
 'hist'      => 'ист',
 'hide'      => 'Скриване',
 'show'      => 'Показване',
-'tableform'    => 'таблица',
-'listform'    => 'списък',
-'nchanges'    => '$1 промени',
 'minoreditletter' => 'м',
 'newpageletter' => 'Н',
 'sectionlink' => '→',
@@ -655,7 +612,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 # Upload
 'upload'    => 'Качване',
 'uploadbtn'    => 'Качване',
-'uploadlink'  => 'Качване на файлове',
 'reupload'    => 'Повторно качване',
 'reuploaddesc'  => 'Връщане към формуляра за качване.',
 'uploadnologin' => 'Не сте влезли',
@@ -754,15 +710,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'doubleredirectstext' => 'Всеки ред съдържа препратки към първото и второто пренасочване, както и първия ред на текста на второто пренасочване, който обикновено посочва „<i>истинската</i>“ целева страница, към която първото пренасочване би трябвало да сочи.',
 'brokenredirects'  => 'Невалидни пренасочвания',
 'brokenredirectstext'  => 'Следните пренасочващи страници сочат към несъществуващи страници.',
-'selflinks'    => 'Страници с препратки към себе си',
-'selflinkstext'    => 'Следните страници правят препратки към себе се, което не би трябвало да е така.',
-'mispeelings'           => 'Страници с правописни грешки',
-'mispeelingstext'  => 'Следните страници съдържат основни правописни грешки, които са
-изброени в $1. Правилните форми може да се посочат в скоби: (ето така).',
-'mispeelingspage'       => 'Списък на основни правописни грешки',
-'missinglanguagelinks'  => 'Липсващи езикови препратки',
-'missinglanguagelinksbutton' => 'Търсене на липсващи езикови препратки за',
-'missinglanguagelinkstext'   => 'Тези страници <i>не</i> сочат към техните копия в $1. Пренасочванията и подстраниците <i>не са</i> показани.',
 
 
 # Miscellaneous special pages
@@ -787,7 +734,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'specialpages'  => 'Специални страници',
 'spheading'    => 'Специални страници за всички потребители',
 'restrictedpheading'    => 'Специални страници с ограничен достъп',
-'protectpage'  => 'Защитена страница',
 'recentchangeslinked' => 'Свързани промени',
 'rclsub'    => '(на страници, сочени от „$1“)',
 'newpages'    => 'Нови страници',
@@ -843,7 +789,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 # Watchlist
 #
 'watchlist'    => 'Моят списък за наблюдение',
-'watchlistsub'  => '(за потребител „$1“)',
 'nowatchlist'  => 'Списъкът Ви за наблюдение е празен.',
 'watchnologin'  => 'Не сте влезли',
 'watchnologintext'  => 'Необходимо е да [[Special:Userlogin|влезете]], за да може да променяте списъка си за наблюдение.',
@@ -970,7 +915,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'uclinks'    => 'Показване на последните $1 промени; показване на последните $2 дни.',
 'uctop'    => ' (последна)',
 'newbies'  => 'новаци',
-'contribs-showhideminor' => '$1 малки промени',
 
 # What links here
 #
@@ -1061,9 +1005,7 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'makesysopfail'         => '<b>Потребителят „$1“ не беше направен администратор. (Правилно ли въведохте името?)</b>',
 'setbureaucratflag' => 'Вдигане на флага „бюрократ“',
 'setstewardflag'    => 'Вдигане на флага „стюард“',
-'bureaucratlog'         => 'Дневник на бюрократите',
 'rightslogtext'         => 'Това е дневник на промените на потребителски права.',
-'bureaucratlogentry'    => 'Смяна на груповата принадлежност на $1: от $2 към $3',
 'rights'                => 'Права:',
 'set_user_rights'       => 'Даване на потребителски права',
 'user_rights_set'       => '<b>Потребителските права на „$1“ са променени</b>',

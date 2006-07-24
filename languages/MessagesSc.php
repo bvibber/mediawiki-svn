@@ -81,6 +81,7 @@
 "whatlinkshere"	=> "Pagine che linkano questa",
 "help"			=> "Aiuto",
 "search"		=> "Cerca",
+"searchbutton"	=> "Cerca",
 "history"		=> "Versioni precedenti",
 "printableversion" => "Versione stampabile",
 "editthispage"	=> "Modifica questo articolo",
@@ -312,20 +313,15 @@ per poter personalizzare le tue preferenze.",
 # Recent changes
 #
 "recentchanges" => "Ultime Modifiche",
-"rcloaderr"		=> "Caricamento modifiche recenti",
 "rcnote"		=> "Qui di seguito sono elencate le ultime <strong>$1</strong> pagine modificate negli ultimi <strong>$2</strong> giorni.",
 "rcnotefrom"	=> " Qui di seguito sono elencate le modifiche da <b>$2</b> (fino a <b>$1</b>).",
 "rclistfrom"	=> "Mostra modifiche a partire da $1",
 # "rclinks"		=> "Mostra le ultime $1 modifiche nelle ultime $2 ore / negli ultimi $3 giorni",
 "rclinks"		=> " Mostra le ultime $1 modifiche negli ultimi $2 giorni.",
-"rchide"		=> "in $4 form; $1 modifiche minori; $2 secondary namespaces; $3 modifiche multiple.",
 "diff"			=> "diff",
 "hist"			=> "cron",
 "hide"			=> "nascondi",
 "show"			=> "mostra",
-"tableform"		=> "tabella",
-"listform"		=> "elenco",
-"nchanges"		=> "$1 modifiche",
 "minoreditletter" => "M",
 "newpageletter" => "N",
 
@@ -333,7 +329,6 @@ per poter personalizzare le tue preferenze.",
 #
 "upload"		=> "Upload file",
 "uploadbtn"		=> "Upload file",
-"uploadlink"	=> "Upload immagini",
 "reupload"		=> "Ri-upload",
 "reuploaddesc"	=> "Torna al modulo per lo upload.",
 "uploadnologin" => "Devi fare il login per eseguire questa operazione.",
@@ -430,14 +425,6 @@ Questa media rivela che ci sono state una media di  <b>$5</b> modifiche per cias
 "doubleredirectstext"	=> "<b>Attenzione:</b> Questa lista può talvolta contenere dei risultati non corretti. Ciò potrebbe magari accadere perchè vi sono del testo aggiuntivo o dei link dopo il tag #REDIRECT.<br />\nOgni riga contiene i link al primo ed al secondo redirect, oltre alla prima riga di testo del secondo redirect che di solito contiene il \"reale\" articolo di destinazione, quello al quale anche il primo redirect dovrebbe puntare.",
 "brokenredirects"	=> "Redirects errati",
 "brokenredirectstext"	=> "I seguenti redirects puntano ad articoli non ancora creati.",
-"selflinks"		=> "Pagine con Auto-Links",
-"selflinkstext"		=> "Le pagine seguenti contengono link che puntano a sé stesse, e in questo caso occorre eliminare questi auto-links.",
-"mispeelings"           => "Pagine con errori di ortografia",
-"mispeelingstext"               => "Le pagine che seguono contengono errori comuni di ortografia, che sono elencati alla pagina $1.",
-"mispeelingspage"       => "Lista di comuni errori di ortografia",
-"missinglanguagelinks"  => "Link interlinguistici mancanti",
-"missinglanguagelinksbutton"    => "Trova i Link interlinguistici da aggiungere per",
-"missinglanguagelinkstext"      => "Questi articoli <i>non</i> hanno link verso i corrispondenti articoli in $1. Redirects e sub-pagine <i>non</i> sono elencati.",
 
 
 # Miscellaneous special pages
@@ -455,7 +442,6 @@ Questa media rivela che ci sono state una media di  <b>$5</b> modifiche per cias
 "listusers"		=> "Elenco degli Utenti",
 "specialpages"	=> "Pagine speciali",
 "spheading"		=> "Pagine speciali",
-"protectpage"	=> "Proteggi questa pagina",
 "recentchangeslinked" => "Modifiche correlate",
 "rclsub"		=> "(alle pagine linkate da \"$1\")",
 "newpages"		=> "Pagine nuove",
@@ -485,7 +471,6 @@ oppure ha scelto di non ricevere  posta elettronica dagli altri Utenti.",
 # Watchlist
 #
 "watchlist"		=> "Osservati Speciali",
-"watchlistsub"	=> "(per l'Utente \"$1\")",
 "nowatchlist"	=> "Non hai indicato articoli da tenere d'occhio.",
 "watchnologin"	=> "Manca il login",
 "watchnologintext"	=> "Devi prima fare il [[Special:Userlogin|login]]

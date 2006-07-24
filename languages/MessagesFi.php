@@ -147,6 +147,7 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'whatlinkshere'       => 'Tänne viittaavat sivut',
 'help'                => 'Ohje',
 'search'              => 'Etsi',
+'searchbutton'        => 'Etsi',
 'go'                  => 'Siirry',
 'history'             => 'Historia',
 'history_short'       => 'Historia',
@@ -453,7 +454,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'loadhist'            => 'Ladataan sivuhistoriaa',
 'currentrev'          => 'Nykyinen versio',
 'revisionasof'        => 'Versio $1',
-'revisionasofwithlink'=> 'Versio, joka luotiin $1.<br />$3 | $2 | $4',
 'previousrevision'    => '← Vanhempi versio',
 'nextrevision'        => 'Uudempi versio →',
 'currentrevisionlink' => 'Nykyinen versio',
@@ -852,7 +852,6 @@ Ohjelmiston ylläpitotöitä on jonossa \'\'\'$7\'\'\' kappaletta.',
 # Watchlist
 #
 'watchlist'           => 'Tarkkailulista',
-'watchlistsub'        => 'Käyttäjälle $1',
 'nowatchlist'         => 'Tarkkailulistallasi ei ole sivuja.',
 'watchlistcount'      => 'Tarkkailulistallasi on <b>$1</b> sivua, keskustelusivut mukaanlukien.',
 'clearwatchlist'      => 'Tarkkailulistan tyhjentäminen',

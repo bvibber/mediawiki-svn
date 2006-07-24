@@ -116,6 +116,7 @@
 'whatlinkshere' => 'Liên kết tới đây',
 'help'          => 'Trợ giúp',
 'search'        => 'Tìm kiếm',
+'searchbutton'  => 'Tìm kiếm',
 'history'       => 'Lịch sử',
 'printableversion' => 'Bản để in',
 'edit'		=> 'Sửa',
@@ -479,21 +480,14 @@ $2 gồm cả trang đổi hướng &nbsp; Tìm $3 $9",
 "changes"	=> "sửa đổi",
 "recentchanges" => "Thay đổi gần đây",
 "recentchangestext" => "[[{{ns:4}}:Chào mừng người mới đến|Chào mừng]] bạn! Trang này dùng để theo dõi các thay đổi gần đây trên {{SITENAME}}.",
-'rcloaderr'  => "Đang lấy các thay đổi gần đây",
 'rcnote'  => "<strong>$1</strong> thay đổi của <strong>$2</strong> ngày qua.",
 'rcnotefrom'	=> "Thay đổi từ <strong>$2</strong> (<b>$1</b> tối đa).",
 'rclistfrom'	=> "Xem thay đổi từ $1.",
-'showhideminor' => "$1 sửa nhỏ | $2 robot | $3 thành viên | $4 tuần tra", // Full version
 'rclinks'	=> "Xem $1 thay đổi của $2 ngày qua; $3.",	// Looxix
-'rchide'  => "trong $4 mẫu; $1 sửa nhỏ; $2 không gian phụ; $3 sửa gộp.", // FIXME
-'rcliu'	=> "; $1 sửa của thành viên đăng nhập",
 'diff'            => 'khác',
 'hist'            => 'sử',
 'hide'            => 'giấu',
 'show'            => 'xem',
-'tableform'       => 'bảng',
-'listform'        => 'danh bạ',
-'nchanges'        => '$1 sửa',
 'minoreditletter' => 'n',
 'newpageletter'   => 'M',
 
@@ -501,7 +495,6 @@ $2 gồm cả trang đổi hướng &nbsp; Tìm $3 $9",
 #
 'upload'       => 'Tải lên',
 'uploadbtn'    => 'Tải lên',
-'uploadlink'   => 'Tải hình',
 'reupload'     => 'Tải lại',
 'reuploaddesc' => 'Quay lại.',
 
@@ -598,16 +591,7 @@ Con số này không bao gồm các trang [[{{ns:4}}:Trang_thảo_luận|thảo 
 'doubleredirectstext'	=> "Mỗi hàng có chứa các liên kết đến trang chuyển hướng thứ nhất và thứ hai, cũng như dòng đầu tiên của nội dung trang chuyển hướng thứ hai, thường chỉ tới trang đích \"thực sự\", là nơi mà trang chuyển hướng đầu tiên phải trỏ đến.",
 'brokenredirects'	=> 'Đổi hướng sai',
 'brokenredirectstext'	=> 'Các trang đổi hướng sau đây liên kết đến một trang không tồn tại.',
-'selflinks'		=> 'Trang liên kết đến chính nó',
-'selflinkstext'		=> 'Những trang sau đây chứa một liên kết đến chính nó, điều này là không nên.',
-'mispeelings'           => 'Trang sai chính tả',
-'mispeelingstext'               => 'Những trang sau có lỗi chính tả thường gặp, được liệt kê trong $1. Chính tả đúng phải là.',
-'mispeelingspage'       => 'Lỗi chính tả thường gặp',
 
-
-'missinglanguagelinks'  => 'Liên kết liên ngôn ngữ bị thiếu',
-'missinglanguagelinksbutton'    => 'Tìm liên kết liên ngôn ngữ bị thiếu',
-'missinglanguagelinkstext'      => "Những trang này <i>không</i> liên kết đến các trang tương đương của chúng trong $1. Các trang chuyển hướng hoặc các liên kết đến nó <i>không</i> được hiển thị.",
 
 # Miscellaneous special pages
 'uncategorizedpages'    => 'Trang chưa xếp thể loại',
@@ -626,7 +610,6 @@ Con số này không bao gồm các trang [[{{ns:4}}:Trang_thảo_luận|thảo 
 'listusers'     => 'Danh sách thành viên',
 'specialpages'  => 'Các trang đặc biệt',
 'spheading'     => 'Các trang đặc biệt',
-'protectpage'   => 'Khóa trang',
 'recentchangeslinked' => 'Thay đổi liên quan',
 'rclsub'        => "(trang liên kết đến \"$1\")",
 'newpages'      => 'Các bài mới nhất',
@@ -669,7 +652,6 @@ Con số này không bao gồm các trang [[{{ns:4}}:Trang_thảo_luận|thảo 
 # Watchlist
 #
 'watchlist'	=> 'Trang tôi theo dõi',
-'watchlistsub'	=> '(cho thành viên « $1 »)',
 'nowatchlist'	=> "Chưa có gì.",
 'watchnologin'	=> 'Chưa đăng nhập',
 'watchnologintext' => "Bạn phải [[Đặc_biệt:Userlogin|đăng nhập]] mới sửa đổi được danh sách theo dõi.",
@@ -746,31 +728,11 @@ Những sửa đổi đối với trang này và trang thảo luận của nó s
 'unprotectcomment' => 'Lý do',
 
 # Groups
-'addgroup' => 'Thêm nhóm',
-'editgroup' => 'Sửa nhóm',
 'editusergroup' => 'Sửa các nhóm thành viên',
-'addgrouplogentry' => 'Đã thêm nhóm $2',
 
-'groups-lookup-group' => 'Quản lý quyền hạn các nhóm',
-'groups-group-edit' => 'Các nhóm hiện nay:',
 
 'userrights-lookup-user' => 'Quản lý nhóm thành viên',
 'userrights-user-editname' => 'Nhập tên thành viên:',
-
-# group editing
-'groups-editgroup'          => 'Sửa nhóm',
-'groups-addgroup'           => 'Thêm nhóm',
-'groups-editgroup-preamble' => 'Nếu một tên hoặc một mô tả bắt đầu bằng dấu phẩy, phần còn lại được coi như tên một tin nhắn, do đó nội dung sẽ được địa phương hóa qua không gian MediaWiki',
-'groups-editgroup-name' => 'Tên nhóm:',
-'groups-editgroup-description' => 'Mô tả nhóm (tối đa 255 chữ):<br />',
-'savegroup'                 => 'Lưu nhóm',
-'groups-tableheader'        => 'ID || Tên || Mô tả || Quyền',
-'groups-existing'           => 'Các nhóm hiện nay',
-'groups-noname'             => 'Xin nhập tên nhóm hợp lệ',
-'groups-already-exists'     => 'Một nhóm đã có tên đó',
-'addgrouplogentry'          => 'Nhóm $2 đã được thêm',
-'changegrouplogentry'       => 'Nhóm $2 đã thay đổi',
-'renamegrouplogentry'       => 'Nhóm $2 đã đổi tên thành $3',
 
 # user groups editing
 #
@@ -780,18 +742,6 @@ Những sửa đổi đối với trang này và trang thảo luận của nó s
 'userrights-groupsavailable' => 'Các nhóm hiện nay:',
 'userrights-groupshelp' => 'Chọn nhóm mà bạn muốn thêm hay bớt thành viên. Các nhóm không được chọn sẽ không thay đổi. Có thể chọn nhóm bằng CTRL + Chuột trái',
 'userrights-logcomment' => 'Thành viên nhóm đã đổi từ $1 đến $2',
-
-# Default group names and descriptions
-'group-anon-name'       => 'Vô danh',
-'group-anon-desc'       => 'Các thành viên vô danh',
-'group-loggedin-name'   => 'Thành viên',
-'group-loggedin-desc'   => 'Các thành viên đăng nhập',
-'group-admin-name'      => 'Quản lý',
-'group-admin-desc'      => 'Các thành viên được tín nhiệm để chặn phá hoại hay xóa bài',
-'group-bureaucrat-name' => 'Tổng quản lý',
-'group-bureaucrat-desc' => 'Các thành viên có thể bổ nhiệm quản lý',
-'group-steward-name'    => 'Tiếp viên',
-'group-steward-desc'    => 'Có mọi quyền hạn',
 
 # Special:Undelete
 'undelete' => 'Khôi phục',
@@ -881,8 +831,6 @@ Xin hãy khẳng định đây là điều bạn định làm.',
 'unlockdbsuccesstext' => 'Cơ sở dữ liệu đã được mở khóa.',
 
 # Special:Makesysop
-'bureaucratlog'		=> 'Nhật trình tổng quản lý',
-'bureaucratlogentry'	=> 'Quyền của « $1 » chuyển thành « $2 »',
 'makesysoptitle'    => 'Phong một thành viên làm quản lý',
 'makesysoptext'     => 'Mẫu này được các tổng quản lý dùng để phong các thành viên bình thường thành người quản lý.
 Hãy gõ tên của thành viên cần phong quyền quản lý vào ô này và nhấn nút.',
@@ -891,9 +839,7 @@ Hãy gõ tên của thành viên cần phong quyền quản lý vào ô này và
 'makesysopok'       => "<b>Thành viên \"$1\" đã thành quản lý</b>",
 'makesysopfail'     => "<b>Thành viên \"$1\" không thể trở thành quản lý được. (Liệu bạn có nhập tên đúng không?)</b>",
 'setbureaucratflag' => 'Đặt cờ tổng quản lý',
-'bureaucratlog'     => 'Nhật trình tổng quản lý',
 'rightslogtext'     => 'Đây là nhật trình lưu những thay đổi đối với các quyền hạn thành viên.',
-'bureaucratlogentry'    => "Quyền hạn cho thành viên \"$1\" được xác lập \"$2\"",
 'rights'            => 'Quyền:',
 'set_user_rights'   => 'Đặt quyền hạn cho thành viên',
 'user_rights_set'   => "<b>Quyền hạn thành viên của \"$1\" đã được cập nhật</b>",
@@ -1169,9 +1115,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Xem trang thể loại\');',
 'already_steward' => 'Người này đã là tiếp viên',
 'already_sysop' => 'Người này đã là quản lý',
 'changed' => 'Đã sửa',
-'changegrouplogentry' => 'Đã sửa nhóm $2',
 'compareselectedversions' => 'So sánh các bản đã chọn',
-'contribs-showhideminor' => '$1 sửa nhỏ',
 'createarticle' => 'Viết bài mới',
 'created' => 'đã viết mới',
 'currentevents-url' => 'Thời_sự',
@@ -1227,11 +1171,8 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'prefs-help-email-enotif' => 'Địa chỉ thư này cũng được dùng để gửi bạn thư thông báo nếu bạn lựa chọn chức năng này.',
 'print' => 'In',
 'recentchangesall' => 'tất cả',
-'renamegrouplogentry' => 'Đã đổi tên nhóm $2 đến $3',
 'restrictedpheading' => 'Trang đặc biệt hạn chế',
 'revertmove' => 'lùi lại',
-'revisionasofwithlink' => 'Sửa đổi lúc $1; $2<br />$3 | $4',
-'savegroup' => 'Lưu nhóm',
 'saveusergroups' => 'Lưu nhóm thành viên',
 'scarytranscludedisabled' => 'Liên wiki bị tắt',
 'scarytranscludefailed' => 'Tiêu bản cho $1 bị tắt',

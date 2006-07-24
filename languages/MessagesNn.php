@@ -117,7 +117,6 @@
 
 # Metadata in edit box
 'metadata'                => '<b>Metadata</b> (for forklaring, sjå <a href="$1">her</a>)',
-'metadata_page'           => 'Project:Metadata',
 
 'currentevents'           => 'Aktuelt',
 'currentevents-url'       => 'Aktuelt',
@@ -130,6 +129,7 @@
 'whatlinkshere'	          => 'Sider med lenkjer hit',
 'help'			  => 'Hjelp',
 'search'		  => 'Søk',
+'searchbutton'	  => 'Søk',
 'go'		          => 'Vis',
 'history'		  => 'Sidehistorikk',
 'history_short'           => 'Historikk',
@@ -186,7 +186,6 @@
 'hidetoc'                 => 'gøym',
 'thisisdeleted'           => 'Sjå eller attopprett $1?',
 'viewdeleted'             => 'Sjå historikk for $1?',
-'restorelink1'            => 'ein sletta versjon',
 'restorelink'             => '$1 sletta versjonar',
 'feedlinks'               => 'Mating:',
 
@@ -410,7 +409,6 @@ Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompati
 'loadhist'		  => 'Lastar historikk',
 'currentrev'	          => 'Noverande versjon',
 'revisionasof'	          => 'Versjonen frå $1',
-'revisionasofwithlink'    => 'Versjon frå $1; $2<br />$3 | $4',
 'previousrevision'        => '←Eldre versjon',
 'nextrevision'            => 'Nyare versjon→',
 'currentrevisionlink'     => 'Vis noverande versjon',
@@ -513,29 +511,10 @@ Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompati
 #
 
 # switching pan
-'groups-lookup-group'   => 'Administrer gruppetilgang',
-'groups-group-edit'     => 'Eksisterande grupper:',
-'editgroup'             => 'Endre gruppe',
-'addgroup'              => 'Legg til gruppe',
 
 'userrights-lookup-user' => 'Administrer brukargrupper',
 'userrights-user-editname' => 'Skriv inn brukarnamn:',
 'editusergroup'         => 'Endre brukargrupper',
-
-# group editing
-'groups-editgroup'      => 'Endre gruppe',
-'groups-addgroup'       => 'Legg til gruppe',
-'groups-editgroup-preamble' => 'Dersom namnet eller skildringa byrjar med ein kolon så vil resten bli tolka som eit systemmeldingsnamn og dermed bli omsett gjennom MediaWiki-namnerommet.',
-'groups-editgroup-name' => 'Gruppenamn:',
-'groups-editgroup-description' => 'Gruppeskildring (maks 255 teikn):<br />',
-'savegroup'             => 'Lagre gruppe',
-'groups-tableheader'        => 'ID || Namn || Skildring || Tilgang',
-'groups-existing'           => 'Grupper',
-'groups-noname'             => 'Gje eit gyldig gruppenamn',
-'groups-already-exists'     => 'Det er allereie ei gruppe med det namnet',
-'addgrouplogentry'          => 'La til gruppe $2',
-'changegrouplogentry'       => 'Endra gruppe $2',
-'renamegrouplogentry'       => 'Endra namnet på $2 til $3',
 
 # user groups editing
 #
@@ -546,39 +525,19 @@ Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompati
 'userrights-groupshelp' => 'Vel grupper du vil at brukaren skal fjernast frå eller leggjast til. Grupper som ikkje er valde vil ikkje bli endra. Du kan velja vekk ei gruppe med [CTRL + venstreklikk]',
 'userrights-logcomment' => 'Endra gruppemedlemskap frå $1 til $2',
 
-# Default group names and descriptions
-#
-'group-anon-name'       => 'Anonym',
-'group-anon-desc'       => 'Anonyme brukarar',
-'group-loggedin-name'   => 'Brukar',
-'group-loggedin-desc'   => 'Standard innlogga brukarar',
-'group-admin-name'      => 'Administrator',
-'group-admin-desc'      => 'Truverdige brukarar som kan blokkera brukartilgang og sletta sider',
-'group-bureaucrat-name' => 'Byråkrat',
-'group-bureaucrat-desc' => 'Administratorar som kan gje andre brukarar administratortilgang',
-'group-steward-name'    => 'Stuert',
-'group-steward-desc'    => 'Full tilgang',
-
 # Recent changes
 #
 'changes'               => 'endringar',
 'recentchanges'         => 'Siste endringar',
 'recentchangestext'     => 'På denne sida ser du dei sist endra sidene i {{SITENAME}}.',
-'rcloaderr'		=> 'Lastar sist endra sider',
 'rcnote'		=> 'Nedanfor er dei siste <strong>$1</strong> endringane gjort dei siste <strong>$2</strong> dagane.',
 'rcnotefrom'	        => 'Nedanfor er endringane frå <b>$2</b> inntil <b>$1</b> viste.',
 'rclistfrom'	        => 'Vis nye endringar frå $1',
-'showhideminor'         => '$1 uviktige endringar | $2 bottar | $3 innlogga brukarar | $4 patruljerte endringar',
 'rclinks'		=> 'Vis siste $1 endringar dei siste $2 dagane<br />$3',
-'rchide'		=> 'i $4 form; $1 uviktige endringar; $2 andre namnerom; $3 meir enn éi endring.',
-'rcliu'			=> '; $1 endringar av innlogga brukarar',
 'diff'			=> 'skil',
 'hist'			=> 'hist',
 'hide'			=> 'gøym',
 'show'			=> 'vis',
-'tableform'		=> 'tabell',
-'listform'		=> 'liste',
-'nchanges'		=> '$1 endringar',
 'minoreditletter'       => 'u',
 'newpageletter'         => 'n',
 'sectionlink'           => '→',
@@ -588,7 +547,6 @@ Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompati
 #
 'upload'		=> 'Last opp fil',
 'uploadbtn'		=> 'Last opp fil',
-'uploadlink'	        => 'Last opp fil',
 'reupload'		=> 'Nytt forsøk',
 'reuploaddesc'	        => 'Attende til opplastingsskjemaet.',
 'uploadnologin'         => 'Ikkje innlogga',
@@ -681,14 +639,6 @@ Alle sidene er vortne viste \'\'\'$3\'\'\' gonger og endra \'\'\'$4\'\'\' gonger
 'doubleredirectstext'	=> 'Kvar line inneheld lenkjer til den første og den andre omdirigeringa, og den første lina frå den andre omdirigeringsteksten. Det gjev som regel den «rette» målartikkelen, som den første omdirigeringa skulle ha peikt på.',
 'brokenredirects'	    => 'Blindvegsomdirigeringar',
 'brokenredirectstext'	=> 'Dei følgjande omdirigeringane viser til ei side som ikkje finst.',
-'selflinks'		=> 'Sider som viser til seg sjølve',
-'selflinkstext'		=> 'Dei følgjande sidene inneheld tilvisingar til seg sjølve, og det bør dei ikkje.',
-'mispeelings'           => 'Sider med stavefeil',
-'mispeelingstext'       => 'Dei følgjande sidene inneheld ein av dei vanlege stavefeila som er lista på $1. Den rette stavemåten kan bli attgjeven i parentes etter feilstavinga (slik).',
-'mispeelingspage'       => 'Liste over vanlege stavefeil',
-'missinglanguagelinks'  => 'Manglande språklenkjer',
-'missinglanguagelinksbutton' => 'Finn manglande språklenkjer for',
-'missinglanguagelinkstext' => 'Desse innhaldssidene har <i>ikkje</i> lenkjer til den same sida på $1. Omdirigeringar og undersider er <i>ikkje</i> viste.',
 
 # Miscellaneous special pages
 #
@@ -713,7 +663,6 @@ Alle sidene er vortne viste \'\'\'$3\'\'\' gonger og endra \'\'\'$4\'\'\' gonger
 'spheading'		=> 'Spesialsider for alle brukarar',
 'restrictedpheading'    => 'Spesialsider med avgrensa tilgang',
 
-'protectpage'	        => 'Vern side',
 'recentchangeslinked'   => 'Relaterte endringar',
 'rclsub'		=> '(til sider med lenkje frå «$1»)',
 'newpages'		=> 'Nye sider',
@@ -768,7 +717,6 @@ Alle sidene er vortne viste \'\'\'$3\'\'\' gonger og endra \'\'\'$4\'\'\' gonger
 # Watchlist
 #
 'watchlist'		=> 'Overvakingsliste',
-'watchlistsub'	        => '(for brukar «$1»)',
 'nowatchlist'	        => 'Du har ikkje noko i overvakingslista di.',
 'watchnologin'	        => 'Ikkje innlogga',
 'watchnologintext'	    => 'Du lyt vera [[Special:Userlogin|innlogga]] for å kunna endre overvakingslista.',
@@ -905,7 +853,6 @@ Den siste endringa vart gjort av [[{{ns:2}}:$3|$3]] ([[{{ns:3}}:$3|brukardiskusj
 'uclinks'	        => 'Vis dei siste $1 endringane; vis dei siste $2 dagane.',
 'uctop'		        => ' (øvst)' ,
 'newbies'               => 'ferskingar',
-'contribs-showhideminor' => '$1 uviktige endringar',
 
 # What links here
 #
@@ -987,9 +934,7 @@ Dersom du er feilaktig blokkert kan http://www.sorbs.net/faq/retest.shtml vera t
 'makesysopfail'		=> '<b>Brukaren «$1» kunne ikkje gjerast om til administrator. (Skreiv du brukarnamnet rett?)</b>',
 'setbureaucratflag'     => 'Gje byråkrat-tilgang',
 'setstewardflag'        => 'Gje stuert-tilgang',
-'bureaucratlog'         => 'Tilgangslogg',
 'rightslogtext'         => 'Dette er ein logg over endringar av brukartilgang.',
-'bureaucratlogentry'	=> 'Endra gruppemedlemskap for «[[$1]]» frå «$2» til «$3»',
 'rights'		=> 'Tilgang:',
 'set_user_rights'	=> 'Set brukartilgang',
 'user_rights_set'	=> '<b>Brukartilgang for «$1» er oppdatert</b>',

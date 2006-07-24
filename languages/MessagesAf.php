@@ -82,6 +82,7 @@
 "whatlinkshere"	=> "Bladsye wat hierheen skakel",
 "help"			=> "Hulp",
 "search"		=> "Soek",
+"searchbutton"		=> "Soek",
 "go"		=> "Wys",
 "history"		=> "Ouer weergawes",
 "printableversion" => "Drukbare weergawe",
@@ -338,19 +339,14 @@ om voorkeure te spesifiseer.",
 #
 "changes" => "wysigings",
 "recentchanges" => "Onlangse wysigings",
-"rcloaderr"		=> "Laai onlangse wysigings",
 "rcnote"		=> "Hier onder is die laaste <strong>$1</strong> wysigings gedurende die laaste <strong>$2</strong> dae.",
 "rcnotefrom"	=> "Hier onder is die wysigings sedert <b>$2</b> (tot by <b>$1</b> word gewys).",
 "rclistfrom"	=> "Wys nuwe wysigings en begin by $1",
 "rclinks"		=> "Wys die laaste $1 wysigings in die laaste $2 dae.",
-"rchide"		=> "in $4 vorm; $1 klein veranderinge; $2 sekondêre naamspasies; $3 veelvuldige wysigings.",
 "diff"			=> "verskil",
 "hist"			=> "geskiedenis",
 "hide"			=> "vat weg",
 "show"			=> "wys",
-"tableform"		=> "tabel",
-"listform"		=> "lys",
-"nchanges"		=> "$1 wysigings",
 "minoreditletter" => "K",
 "newpageletter" => "N",
 
@@ -358,7 +354,6 @@ om voorkeure te spesifiseer.",
 #
 "upload"		=> "Laai lêer",
 "uploadbtn"		=> "Laai lêer",
-"uploadlink"	=> "Laai prente",
 "reupload"		=> "Herlaai",
 "reuploaddesc"	=> "Keer terug na die laaivorm.",
 "uploadnologin" => "Nie ingeteken nie",
@@ -454,14 +449,6 @@ Dit werk uit op gemiddeld <b>$5</b> veranderings per bladsy, en bladsye word <b>
 "doubleredirectstext"	=> "<b>Let op:</b> Hierdie lys bevat moontlik false positiewe. Dit beteken gewoonlik dat daar nog teks met skakels onder die eerste #REDIRECT is.<br />\nElke ry bevat skakels na die eerste en die tweede aanstuur, asook die eerste reël van van die tweede aanstuurteks, wat gewoonlik die \"regte\" teikenbladsy gee waarna die eerste aanstuur behoort te wys.",
 "brokenredirects"	=> "Stukkende aansture",
 "brokenredirectstext"	=> "Die volgende aansture skakel na 'n bladsy wat nie bestaan nie.",
-"selflinks"		=> "Bladsye met selfskakels",
-"selflinkstext"		=> "Die volgende bladsy bevat 'n skakel na hulself, en dit behoort nie te gebeur nie.",
-"mispeelings"           => "Bladsye met spelfoute",
-"mispeelingstext"               => "Die volgende bladsye bevat 'n algemene spelfout, soos gelys op $1. Die regte spelling word dalk (so) gegee.",
-"mispeelingspage"       => "Lys van algemene spelfoute",
-"missinglanguagelinks"  => "Weggelate taalskakels",
-"missinglanguagelinksbutton"    => "Het weggelate taalskakels gevind vir",
-"missinglanguagelinkstext"      => "Hierdie artikels skakel <i>nie</i> na hul eweknie in $1. Aansture en subbladsye word <i>nie</i> gewys nie.",
 
 
 # Miscellaneous special pages
@@ -479,7 +466,6 @@ Dit werk uit op gemiddeld <b>$5</b> veranderings per bladsy, en bladsye word <b>
 "listusers"		=> "Gebruikerslys",
 "specialpages"	=> "Spesiale bladsye",
 "spheading"		=> "Spesiale bladsye",
-"protectpage"	=> "Beskerm bladsy",
 "recentchangeslinked" => "Verwante veranderings",
 "rclsub"		=> "(na bladsye waarna \"$1\" skakel)",
 "newpages"		=> "Nuwe bladsye",
@@ -512,7 +498,6 @@ Die e-posadres wat jy in jou gebruikersvoorkeure het sal verkyn as die \"Van\" a
 # Watchlist
 #
 "watchlist"		=> "My dophoulys",
-"watchlistsub"	=> "(vir gebruiker \"$1\")",
 "nowatchlist"	=> "Jy het geen items in jou dophoulys nie.",
 "watchnologin"	=> "Nie ingeteken nie",
 "watchnologintext"	=> "Jy moet [[Special:Userlogin|ingeteken]]

@@ -98,6 +98,7 @@
 "whatlinkshere" => "Références à cette page",
 "help"          => "Aide",
 "search"        => "Rechercher",
+"searchbutton"  => "Rechercher",
 "history"       => "Historique",
 "printableversion" => "Version imprimable",
 "editthispage"  => "Modifier cette page",
@@ -383,21 +384,16 @@ Jetez un coup d'\x{0153}il sur ces pages : [[{{ns:project}}:FAQ|foire aux questi
 et [[{{ns:project}}:Les faux-pas les plus courants|les faux-pas les plus courants]].
 
 Si vous voulez que {{SITENAME}} connaisse le succès, merci de ne pas y inclure pas de matériaux protégés par des [[{{ns:project}}:Copyright|copyrights]]. La responsabilité juridique pourrait en effet compromettre le projet. ",
-"rcloaderr"  => "Chargement des dernières modifications",
 "rcnote"  => "Voici les <strong>$1</strong> dernières modifications effectuées au cours des <strong>$2</strong> derniers jours.",
 "rcnotefrom"	=> "Voici les modifications effectuées depuis le <strong>$2</strong> (<b>$1</b> au maximum).",
 "rclistfrom"	=> "Afficher les nouvelles modifications depuis le $1.",
 # "rclinks"  => "Afficher les $1 dernières modifications effectuées au cours des $2 dernières heures / $3 derniers jours",
 # "rclinks"  => "Afficher les $1 dernières modifications effectuées au cours des $2 derniers jours.",
 "rclinks"	=> "Afficher les $1 dernières modifications effectuées au cours des $2 derniers jours; $3 modifications mineures.",	// Looxix
-"rchide"  => "in $4 form; $1 modifications mineures; $2 espaces secondaires; $3 modifications multiples.", // FIXME
 "diff"            => "diff",
 "hist"            => "hist",
 "hide"            => "cacher",
 "show"            => "montrer",
-"tableform"       => "table",
-"listform"        => "liste",
-"nchanges"        => "$1 modification(s)",
 "minoreditletter" => "M",
 "newpageletter"   => "N",
 
@@ -405,7 +401,6 @@ Si vous voulez que {{SITENAME}} connaisse le succès, merci de ne pas y inclure 
 #
 "upload"       => "Copier sur le serveur",
 "uploadbtn"    => "Copier un fichier",
-"uploadlink"   => "Copier des images",
 "reupload"     => "Copier à nouveau",
 "reuploaddesc" => "Retour au formulaire.",
 
@@ -508,14 +503,6 @@ Parmi ceux-ci, <b>$2</b> ont le statut d'administrateur (voir $3).",
 "doubleredirectstext"	=> "<b>Attention:</b> cette liste peut contenir des \"faux positifs\". Dans ce cas, c'est probablement la page du premier #REDIRECT contient aussi du texte.<br />Chaque ligne contient les liens à la 1re et 2e page de redirection, ainsi que la première ligne de cette dernière, qui donne normalement la \"vraie\" destination. Le premier #REDIRECT devrait lier vers cette destination.",
 "brokenredirects"	=> "Redirections cassées",
 "brokenredirectstext"	=> "Ces redirections mènent a une page qui n'existe pas.",
-"selflinks"		=> "Page avec un lien circulaire",
-"selflinkstext"		=> "Les pages suivantes contiennent un lien vers elles-mêmes, ce qui n'est pas permis.",
-"mispeelings"           => "Pages avec fautes d'orthographe",
-"mispeelingstext"               => "Les pages suivantes contiennent une faute d'orthographe courante (la liste de celles-ci est sur $1). L'orthographe correcte est peut-être (ceci).",
-"mispeelingspage"       => "Liste de fautes d'orthographe courantes",
-"missinglanguagelinks"  => "Liens inter-langues manquants",
-"missinglanguagelinksbutton"    => "Je n'ai pas trouvé de lien/langue pour cette page",
-"missinglanguagelinkstext"      => "Ces articles ne lient pas à leur 'contrepartie' in $1. Les redirections et les liens ne sont pas affichés.",
 
 
 # Miscellaneous special pages
@@ -533,7 +520,6 @@ Parmi ceux-ci, <b>$2</b> ont le statut d'administrateur (voir $3).",
 "listusers"     => "Liste des participants",
 "specialpages"  => "Pages spéciales",
 "spheading"     => "Pages spéciales",
-"protectpage"   => "Protéger la page",
 "recentchangeslinked" => "Suivi des liens",
 "rclsub"        => "(des pages liées à \"$1\")",
 "newpages"      => "Nouvelles pages",
@@ -569,7 +555,6 @@ L'adresse électronique que vous avez indiquée dans vos préférences apparaît
 # Watchlist
 #
 "watchlist"	=> "Liste de suivi",
-"watchlistsub"	=> "(pour l'utilisateur \"$1\")",
 "nowatchlist"	=> "Votre liste de suivi ne contient aucun article.",
 "watchnologin"	=> "Non connecté",
 "watchnologintext" => "Vous devez être [[Special:Userlogin|connecté]]

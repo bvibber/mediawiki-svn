@@ -89,6 +89,7 @@ $wgAllMessagesPa = array(
 'whatlinkshere'	=> 'ਪੰਨੇ ਜੋ ਇੱਥੇ ਜੁੜਦੇ ਹਨ',
 'help'		=> 'ਮਦਦ',
 'search'		=> 'ਖੋਜ',
+'searchbutton'	=> 'ਖੋਜ',
 'go'			=> 'ਜਾਓ',
 'history'		=> 'ਪੁਰਾਣੇ ਆਵਰਤਣ',
 'history_short'	=> 'ਇਤਿਹਾਸ',
@@ -342,8 +343,6 @@ $1 ਜਾਂ ਕਿਸੇ ਵੀ ਹੋਰ [[{{ns:4}}:ਪ੍ਰਸ਼ਾਸਕ]]
 'rclinks'		=> 'ਪਿੱਛਲੇ $2 ਦਿਨਾਂ ਵਿੱਚ ਹੋਏ $1 ਬਦਲਾਵ ਦਿਖਾਓ<br />$3',
 'hide'		=> 'ਛੁਪਾਓ',
 'show'		=> 'ਦਿਖਾਓ',
-'listform'		=> 'ਸੂਚੀ',
-'nchanges'		=> '$1 ਬਦਲਾਵ',
 
 # tooltip help for some actions, most are in Monobook.js
 'tooltip-watch'	=> 'ਇਸ ਪੰਨੇ ਨੂੰ ਆਪਣੀ watchlist ਵਿੱਚ ਜਮਾਂ ਕਰੋ[alt-w]',

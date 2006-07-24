@@ -803,7 +803,7 @@ END;
 		  . '<input type="text" name="search" size="19" value="'
 		  . htmlspecialchars(substr($search,0,256)) . "\" />\n"
 		  . '<input type="submit" name="go" value="' . wfMsg ('go') . '" />&nbsp;'
-		  . '<input type="submit" name="fulltext" value="' . wfMsg ('search') . "\" />\n</form>";
+		  . '<input type="submit" name="fulltext" value="' . wfMsg ('searchbutton') . "\" />\n</form>";
 
 		return $s;
 	}
@@ -1016,7 +1016,7 @@ END;
 	 * @TODO crash bug913. Need to be rewrote completly.
 	 */
 	function specialPagesList() {
-		global $wgUser, $wgContLang, $wgServer, $wgRedirectScript, $wgAvailableRights;
+		global $wgUser, $wgContLang, $wgServer, $wgRedirectScript;
 		require_once('SpecialPage.php');
 		$a = array();
 		$pages = SpecialPage::getPages();
@@ -1027,15 +1027,9 @@ END;
 		}
 
 		// Other special pages that are restricted.
-		// Copied from SpecialSpecialpages.php
-		foreach($wgAvailableRights as $right) {
-			if( $wgUser->isAllowed($right) ) {
-				/** Add all pages for this right */
-				if(isset($pages[$right])) {
-					foreach($pages[$right] as $name => $page) {
-					$a[$name] = $page->getDescription();
-					}
-				}
+		foreach ( $pages['restricted'] as $name => $page ) {
+			if( $wgUser->isAllowed( $page->getRestriction() ) ) {
+				$a[$name] = $page->getDescription();
 			}
 		}
 

@@ -114,6 +114,7 @@ $wgAllMessagesMs = array(
 "whatlinkshere"               => "Halaman yang dipautkan ke sini", #"Pages that link here",
 "help"                        => "Bantuan",
 "search"              => "Cari",
+"searchbutton"        => "Cari",
 "go"                  => "Paparkan",
 "history"             => "Sejarah Halaman",
 "history_short"         => "Sejarah",
@@ -322,7 +323,6 @@ $wgAllMessagesMs = array(
 "loadhist"      => "Muat turun halaman sejarah", #"Loading page history",
 "currentrev"    => "Semakan terkini", #"Current revision",
 "revisionasof"          => "Semakan sejak $1", #"Revision as of $1",
-"revisionasofwithlink" => "Semakan sejak $1; $2<br />$3 | $4",
 "previousrevision"     => "Semakan terdahulu",
 "cur"           => "kini", #"cur",
 "next"                  => "berikut",
@@ -580,7 +580,6 @@ $wgAllMessagesMs = array(
 # Watchlist
 #
 "watchlist"             => "Senarai Pantau",
-"watchlistsub"                  => "(untuk pengguna \"$1\")",   #"(for user \"$1\")",
 "nowatchlist"           => "Tiada sebarang rencana dalam senarai pantau anda.", #"You have no items on your watchlist.",
 "watchnologin"                  => "Belum log masuk", #"Not logged in",
 "watchnologintext"      => "Anda mesti [[{{ns:special}}:Userlogin|log masuk]] untuk mengubahkan senarai pantau.",

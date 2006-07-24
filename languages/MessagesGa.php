@@ -121,7 +121,6 @@ agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar ú
 
 # Metadata in edit box
 'metadata' => '<b>Meiteashonraí</b> (féach ar <a href="$1">here</a> le haghaidh a thuilleadh eolais)',
-'metadata_page' => '{{ns:4}}:Meiteashonraí',
 
 "currentevents" => "Cursaí reatha",
 'currentevents-url' => 'Cursaí reatha',
@@ -134,6 +133,7 @@ agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar ú
 "whatlinkshere" => "Leathanaigh a nascaíonn chuig an leathanach seo",
 "help"      => "Cabhair",
 "search"	=> "Cuardaigh",
+"searchbutton"	=> "Cuardaigh",
 "go"	    => "Téir",
 "history"       => "Stair an lgh seo",
 'history_short' => 'Stair',
@@ -481,7 +481,6 @@ Cinntigh an URL a d'úsáid tú chun an leathanach seo a rochtain.",
 "loadhist"      => "Ag lódáil stáir an leathanaigh",
 "currentrev"    => "Leagan láithreach",
 "revisionasof"  => "Leagan ó $1",
-'revisionasofwithlink'  => 'Leagan ó $1; $2<br />$3 | $4',
 'previousrevision'      => '?Leagan níos sine',
 'nextrevision'	  => 'Leagan níos nuaí?',
 'currentrevisionlink'   => 'féach ar an leagan laithreach',
@@ -598,32 +597,10 @@ den am an freastalaí (UTC).",
 #
 
 # switching pan
-'editgroup' => 'Cuir Grúpa In Eagar',
-'addgroup' => 'Cuir Grúpa Leis',
 'editusergroup' => 'Cuir Grúpái Úsáideoirí In Eagar',
-
-# group editing
-'savegroup' => 'Sábháil an Ghrúpa',
 
 # user groups editing
 'saveusergroups' => 'Sábháil Grúpaí Úsáideoirí',
-
-# group editing
-'groups-editgroup'	  => 'Cuir grúpa in eagar',
-'groups-addgroup'	   => 'Cuir grúpa leis',
-'groups-editgroup-preamble' => 'Má thosaíonn an ainm nó an cur síos le hidirstad,
-measfar go bhfuil ainm teachtaireacha ann sa chuid eile, agus mar sin
-beidh an téacs san ainmspás MediaWiki.',
-'groups-editgroup-name'     => 'Ainm an ghrúpa:',
-'groups-editgroup-description' => 'Cur síos ar an ngrúpa (255 carachtar an uasmhéid):<br />',
-'savegroup'	         => 'Sábháil an Ghrúpa',
-'groups-tableheader'	=> 'ID || Ainm || Cur Síos || Cearta',
-'groups-existing'	   => 'Grúpaí atá ann cheana féin',
-'groups-noname'	     => 'Cuir ainm bailí i leith don ghrúpa',
-'groups-already-exists'     => 'Tá grúpa ann leis an ainm sin cheana féin',
-'addgrouplogentry'	  => 'Cuireadh an ghrúpa $2 leis',
-'changegrouplogentry'       => 'Athraíodh an ghrúpa $2',
-'renamegrouplogentry'       => 'Athainmníodh an ghrúpa $2 mar $3',
 
 # user groups editing
 #
@@ -635,41 +612,22 @@ beidh an téacs san ainmspás MediaWiki.',
 Ní bheidh aon athrú le grúpaí neamhroghnaithe. Is féidir leat grúpa a díroghnú le húsáid CTRL + cléchliceáil',
 'userrights-logcomment' => 'Athraíodh an ballraíocht grúpa ó $1 go $2',
 
-# Default group names and descriptions
-#
-'group-anon-name'       => 'Gan ainm',
-'group-anon-desc'       => 'úsáideoirí gan ainmneacha',
-'group-loggedin-name'   => 'Úsáideoir',
-'group-loggedin-desc'   => 'Gnáth-úsáideoirí atá logáilte isteach',
-'group-admin-name'      => 'Riarthóir',
-'group-admin-desc'      => 'Úsáideoirí iontaofa, atá ar a gcumas úsáideoirí a chosc agus ailt a scriosadh',
-'group-bureaucrat-name' => 'Maorlathach',
-'group-bureaucrat-desc' => 'Is féidir le grúpa na maorlathach oibreoirí córais a dhéanamh',
-'group-steward-name'    => 'Maor',
-'group-steward-desc'    => 'Rochtain iomlán',
 
 # Recent changes
 #
 "changes" => "athruithe",
 "recentchanges" => "Athruithe is déanaí",
 "recentchangestext" => "Déan faire ar na hathruithe is déanaí sa vicí ar an leathanach seo.",
-"rcloaderr"     => "Ag lódáil na athruithe is déanaí",
 "rcnote"	=> "Is iad seo a leanas na <strong>$1</strong> athruithe is déanaí sna <strong>$2</strong> lae seo caite.",
 "rcnotefrom"    => "Is iad seo a leanas na hathruithe ó <b>$2</b> (go dti <b>$1</b> taispeánaithe).",
 "rclistfrom"    => "Taispeáin nua-athruithe dom ó <b>$1</b> anuas)",
-'showhideminor' => "$1 mionathruithe | $2 robait | $3 úsáideoirí atá logáilte isteach | $4 athruithe faoi phatról",
 # "rclinks"     => "Taispeáin na $1 athruithe is déanaí sna $2 uaire seo caite / $3 laethanta seo caite.",
 # "rclinks"     => "Taispeáin na $1 athruithe is déanaí sna $2 laethanta seo caite.",
 "rclinks"       => "Taispeáin na $1 athruithe is déanaí sna $2 laethanta seo caite; $3 mionathruithe",
-"rchide"	=> "san fhoirm $4; $1 mionathruithe; $2 fo-ainmspásanna; $3 athruithe ilchodacha.",
-"rcliu"	 => "; $1 athruithe de úsáideoirí atá logáilte isteach",
 "diff"	  => "difr",
 "hist"	  => "stáir",
 "hide"	  => "Folaigh",
 "show"	  => "taispeán",
-"tableform"     => "tábla",
-"listform"      => "liosta",
-"nchanges"      => "$1 athruithe",
 "minoreditletter" => "m",
 "newpageletter" => "N",
 'sectionlink' => '?',
@@ -679,7 +637,6 @@ Ní bheidh aon athrú le grúpaí neamhroghnaithe. Is féidir leat grúpa a dír
 #
 "upload"	=> "Uaslódáil comhad",
 "uploadbtn"     => "Uaslódáil comhad",
-"uploadlink"    => "Uaslódáil íomhánna",
 "reupload"      => "Athuaslódáil",
 "reuploaddesc"  => "Dul ar ais chuig an fhoirm uaslódála.",
 "uploadnologin" => "Nil tú logáilte isteach",
@@ -815,16 +772,6 @@ gach sraith tá náisc chuig an chéad is an dara athsheoladh, chomh maith le ch
 ghnáth tugann sé sin an sprioc-alt \"fíor\".",
 "brokenredirects"   => "Athsheolaidh Briste",
 "brokenredirectstext"   => "Is iad na athsheolaidh seo a leanas a nascaíonn go ailt nach bhfuil ann fós.",
-"selflinks"     => "Leathanaigh le féin-naisc",
-"selflinkstext"     => "Sna leathanaigh seo a leanas tá naisc a nascaíonn chuig an leathanach céanna é fhéin. Tá an méid seo flúirseach.",
-"mispeelings"	   => "Leathanaigh mílitrithe",
-"mispeelingstext"	       => "Sna leathanaigh seo a leanas tá mílitriú coiteanta, atá san liosta ar $1. Is
-dócha go taispeántar an litriú ceart (mar sin).",
-"mispeelingspage"       => "Liosta mhílitriuithe coitianta",
-"missinglanguagelinks"  => "Naisc Teangacha Ar Iarraidh",
-"missinglanguagelinksbutton"    => "Cuardaigh ar naisc teangacha ar iarraidh do",
-"missinglanguagelinkstext"      => "<i>Ní</i> nascaíonn na hailt seo chuig a macasamhail sa $1. <i>Ní</i>
-taispeántar athsheolaidh nó fo-leathanaigh.",
 
 
 # Miscellaneous special pages
@@ -847,7 +794,6 @@ taispeántar athsheolaidh nó fo-leathanaigh.",
 "specialpages"  => "Leathanaigh speisialta",
 "spheading"     => "Leathanaigh speisialta do gach úsáideoir",
 
-"protectpage"   => "Glasáil leathanach",
 "recentchangeslinked" => "Athruithe gaolmhara",
 "rclsub"	=> "(go leathanaigh nasctha ó \"$1\")",
 "newpages"      => "Leathanaigh nua",
@@ -912,7 +858,6 @@ mian leis ríomhphost a fháil ón úsáideoirí eile.",
 # Watchlist
 #
 "watchlist"     => "Mo liosta faire",
-"watchlistsub"  => "(don úsáideoir \"$1\")",
 "nowatchlist"   => "Níl aon rud i do liosta faire.",
 "watchnologin"  => "Níl tú logáilte isteach",
 "watchnologintext"  => "Ní mór duit <a href=\"" .
@@ -1072,7 +1017,6 @@ seo caite.",
 "uclinks"       => "Féach ar na $1 athruithe is déanaí; féach ar na $2 lae seo caite.",
 "uctop"     => " (barr)" ,
 'newbies'       => 'núíosaigh',
-'contribs-showhideminor' => '$1 mionathruithe',
 
 # What links here
 #
@@ -1168,8 +1112,6 @@ Iontráil ainm an úsáideora sa bosca seo agus brúigh an cnaipe chun riarthói
 'makesysopok'	   => "Is oibreoir córais atá in <b>Úsáideoir \"$1\" anois.</b>",
 'makesysopfail'	 => "<b>Níor rinneadh oibreoir córais den Úsáideoir \"$1\". (Ar iontráil tú an ainm go ceart?)</b>",
 'setbureaucratflag' => 'Athraigh an brat maotharlach',
-'bureaucratlog'	 => 'Liosta_maotharlach',
-'bureaucratlogentry'    => "Tá na cearta don úsáideoir \"$1\" athraithe bheith \"$2\"",
 'rights'	                => 'Cearta:',
 'set_user_rights'       => 'Athraigh na cearta úsáideora',
 'user_rights_set'       => "<b>Leasaíodh na cearta úsáideora do \"$1\"</b>",

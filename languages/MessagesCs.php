@@ -107,6 +107,7 @@
 'tagline' => 'Z {{grammar:2sg|{{SITENAME}}}}',
 'help'                  => 'Nápověda',
 'search'                => 'Hledat',
+'searchbutton'          => 'Hledat',
 'go'            => 'Jít na', #FIXME
 'history'               => 'Historie stránky',
 'history_short' => 'Historie',
@@ -468,7 +469,6 @@ Můžete se vrátit a editovat již existující stránku, nebo [[Special:Userlo
 'loadhist'              => 'Načítá se stránka historie editací', #FIXME Apparently not used
 'currentrev'    => 'Aktuální verze',
 'revisionasof'          => 'Verze z $1',
-'revisionasofwithlink'  => 'Verze z $1; $2<br />$3 | $4',
 'previousrevision' => '← Starší verze',
 'nextrevision'		=> 'Novější verze →',
 'currentrevisionlink'   => 'zobrazit aktuální verzi',
@@ -908,7 +908,6 @@ Zobrazení můžete zůžit výběrem typu záznamu, uživatelského jména nebo
 # Watchlist
 #
 'watchlist'             => 'Sledované stránky',
-'watchlistsub'	=> '(uživatele „$1“)',
 'nowatchlist'   => 'Na svém seznamu sledovaných stránek nemáte žádné položky.',
 'watchlistcount' 	=> "'''Na svém seznamu sledovaných stránek máte $1 {{plural:$1|položku|položky|položek}} včetně diskusí.'''",
 'clearwatchlist' 	=> 'Smazat seznam sledovaných stránek',

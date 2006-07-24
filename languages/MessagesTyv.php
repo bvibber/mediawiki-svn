@@ -87,6 +87,7 @@
 'whatlinkshere'	=> 'Pages that link here', //Pages that link here
 'help'			=> 'Дуза', //Help
 'search'		=> 'Дилээр', //Search
+'searchbutton'	=> 'Дилээр', //Search
 'go'		=> 'Чоруур', //Go
 'history'		=> 'Арынның Төөгүзү', //Page history
 'history_short' => 'Төөгү', //History
@@ -122,7 +123,6 @@
 'toc' => 'Допчу', //Contents
 'showtoc' => 'көргүзер', //show
 'hidetoc' => 'чажырар', //hide
-'restorelink1' => 'бир балаттынганны өскертир', //one deleted edit
 'restorelink' => "$1 балаттынган өскерилгелер", //$1 deleted edits
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
