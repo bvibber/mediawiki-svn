@@ -1305,7 +1305,7 @@ class Language {
 						break;
 					}
 				}
-				if ( $expired ) {
+				if ( self::isLocalisationOutOfDate( $cache ) ) {
 					$wgMemc->delete( $memcKey );
 					$cache = false;
 					wfDebug( "Localisation cache for $code had expired due to update of $file\n" );
@@ -1389,6 +1389,29 @@ class Language {
 		return $deps;
 	}
 
+	/**
+	 * Test if a given localisation cache is out of date with respect to the 
+	 * source Messages files. This is done automatically for the global cache
+	 * in $wgMemc, but is only done on certain occasions for the serialized 
+	 * data file.
+	 *
+	 * @param $cache mixed Either a language code or a cache array
+	 */
+	static function isLocalisationOutOfDate( $cache ) {
+		if ( !is_array( $cache ) ) {
+			self::loadLocalisation( $cache );
+			$cache = self::$mLocalisationCache[$cache];
+		}
+		$expired = false;
+		foreach ( $cache['deps'] as $file => $mtime ) {
+			if ( filemtime( $file ) > $mtime ) {
+				$expired = true;
+				break;
+			}
+		}
+		return $expired;
+	}
+	
 	/**
 	 * Get the fallback for a given language
 	 */

@@ -11,7 +11,7 @@
  */
 
 /** */
-function initialiseMessages( $overwrite = false, $messageArray = false ) {
+function initialiseMessages( $overwrite = false, $messageArray = false, $outputCallback = false ) {
 	global $wgContLang, $wgContLanguageCode;
 	global $wgContLangClass;
 	global $wgDisableLangConversion;
@@ -65,11 +65,11 @@ function initialiseMessages( $overwrite = false, $messageArray = false ) {
 			}
 		}
 	}
-	initialiseMessagesReal( $overwrite, $messages );
+	initialiseMessagesReal( $overwrite, $messages, $outputCallback );
 }
 
 /** */
-function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
+function initialiseMessagesReal( $overwrite = false, $messageArray = false, $outputCallback = false ) {
 	global $wgContLang, $wgScript, $wgServer, $wgLanguageCode;
 	global $wgOut, $wgArticle, $wgUser;
 	global $wgMessageCache, $wgMemc, $wgDBname, $wgUseMemCached;
@@ -92,9 +92,19 @@ function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
 	# default messages won't be overwritten
 	$username = 'MediaWiki default';
 
+	if ( !$outputCallback ) {
+		# Print is not a function, and there doesn't appear to be any built-in 
+		# workalikes, so let's just make our own anonymous function to do the 
+		# same thing. 
+		$outputCallback = create_function( '$s', 'print $s;' );
+	}
 
-	print "Initialising \"MediaWiki\" namespace for language code $wgLanguageCode...\n";
+	$outputCallback( "Initialising \"MediaWiki\" namespace for language code $wgLanguageCode...\n" );
 
+	# Check that the serialized data files are OK
+	if ( Language::isLocalisationOutOfDate( $wgLanguageCode ) ) {
+		$outputCallback( "Warning: serialized data file may be out of date.\n" );
+	}
 
 	$dbr =& wfGetDB( DB_SLAVE );
 	$dbw =& wfGetDB( DB_MASTER );
@@ -173,16 +183,20 @@ function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
 	$dbw->begin();
 
 	# Process each message
-	foreach ( $sortedArray as $key => $enMsg ) {
+	foreach ( $sortedArray as $key => $message ) {
 		if ( $key == '' ) {
 			continue; // Skip odd members
 		}
 		# Get message text
-		if ( $messageArray ) {
-			$message = $enMsg;
-		} else {
+		if ( !$messageArray ) {
 			$message = wfMsgNoDBForContent( $key );
 		}
+		if ( is_null( $message ) ) {
+			# This happens sometimes with out of date serialized data files
+			$outputCallback( "Warning: Skipping null message $key\n" );
+			continue;
+		}
+
 		$titleObj = Title::newFromText( $wgContLang->ucfirst( $key ), NS_MEDIAWIKI );
 		$title = $titleObj->getDBkey();
 
@@ -222,7 +236,7 @@ function initialiseMessagesReal( $overwrite = false, $messageArray = false ) {
 
 	# Clear the relevant memcached key
 	$wgMessageCache->clear();
-	print "Done. Updated: $numUpdated, inserted: $numInserted, kept: $numKept.\n";
+	$outputCallback( "Done. Updated: $numUpdated, inserted: $numInserted, kept: $numKept.\n" );
 }
 
 /** */

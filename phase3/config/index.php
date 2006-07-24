@@ -859,9 +859,7 @@ error_reporting( E_ALL );
 			$revid = $revision->insertOn( $wgDatabase );
 			$article->updateRevisionOn( $wgDatabase, $revision );
 
-			print "<li><pre>";
-			initialiseMessages();
-			print "</pre></li>\n";
+			initialiseMessages( false, false, 'printListItem' );
 		}
 
 		/* Write out the config file now that all is well */
@@ -1626,6 +1624,10 @@ function database_switcher($db) {
 	$full = $ourdb[$db]['fullname'];
 	print "<div id='$db' style='display:none; background: $color'>\n";
 	print "<h3>$full specific options:</h3>\n";
+}
+
+function printListItem( $item ) {
+	print "<li>$item</li>";
 }
 
 ?>
