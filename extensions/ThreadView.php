@@ -1,7 +1,5 @@
 <?php
 
-require_once('PostHistory.php');
-
 class ThreadView {
 
      /** hack. see showEditingForm. @private */
