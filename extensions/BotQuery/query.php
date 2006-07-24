@@ -249,15 +249,17 @@ class BotQueryProcessor {
 		'category'       => array(
 			GN_FUNC => 'genPagesInCategory',
 			GN_ISMETA => true,
-			GN_PARAMS => array( 'cptitle', 'cplimit', 'cpfrom' ),
-			GN_DFLT => array( null, 200, '' ),
+			GN_PARAMS => array( 'cptitle', 'cplimit', 'cpfrom', 'cpnamespace' ),
+			GN_DFLT => array( null, 200, '', NS_ALL_NAMESPACES ),
 			GN_DESC => array(
 				"Adds pages in a given category to the output list.",
 				"Parameters supported:",
 				"cptitle    - A category name, either with or without the 'Category:' prefix.",
 				"cplimit    - How many total pages (in category) to return.",
 				"cpfrom     - The category sort key to continue paging. Starts at the beginning by default.",
+                "cpnamespace- Optional namespace id: Includes only the pages in the category that are in one namespace.",
 				"Example: query.php?what=category&cptitle=Days",
+				"Example: query.php?what=category&cptitle=Time&cpnamespace=14 -- show subcategories of category Time",
 			)),
 		'users'          => array(
 			GN_FUNC => 'genUserPages',
@@ -949,29 +951,42 @@ class BotQueryProcessor {
 	*/
 	function genPagesInCategory(&$prop, &$genInfo)
 	{
+		global $wgContLang;
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
 
 		// Validate parameters
-		if( $cptitle === null ) {
+		if( $cptitle === null )
 			$this->dieUsage( "Missing category title parameter cptitle", 'cp_missingcptitle' );
-		}
+
 		$categoryObj = &Title::newFromText( $cptitle );
 		if(    !$categoryObj ||
 			   ($categoryObj->getNamespace() !== NS_MAIN && $categoryObj->getNamespace() !== NS_CATEGORY) ||
 			   $categoryObj->isExternal() ) {
 			$this->dieUsage( "bad category name $cptitle", 'cp_invalidcategory' );
 		}
-		$conds = array( 'cl_to' => $categoryObj->getDBkey() );
-		if ( $cpfrom != '' ) {
-			$conds[] = 'cl_sortkey >= ' . $this->db->addQuotes($cpfrom);
-		}
+
+        $tables = array( 'categorylinks' );
+        $conds = array( 'cl_to' => $categoryObj->getDBkey() );
+		if ($cpfrom != '')
+            $conds[] = 'cl_sortkey >= ' . $this->db->addQuotes($cpfrom);
+
+		if( $cpnamespace !== NS_ALL_NAMESPACES )
+        {
+            if ($wgContLang->getNsText($cpnamespace) === false)
+			    $this->dieUsage( "cpnamespace is invalid", "cp_badnamespace" );
+            $tables[] = 'page';
+            $conds[] = 'cl_from = page_id';
+            $conds['page_namespace'] = $cpnamespace;
+        }
+
 		$this->validateLimit( 'cplimit', $cplimit, 500, 5000 );
 
+        // Query list of categories
 		$this->startDbProfiling();
 		$res = $this->db->select(
-			'categorylinks',
-			array( 'cl_from', 'cl_sortkey' ),
+			$tables,
+			array( 'cl_from', 'cl_sortkey', 'cl_sortkey', 'cl_timestamp' ),
 			$conds,
 			$this->classname . '::genPagesInCategory',
 			array( 'ORDER BY' => 'cl_sortkey', 'LIMIT' => $cplimit+1 ));
@@ -985,6 +1000,10 @@ class BotQueryProcessor {
 				break;
 			}
 			$this->addRaw( 'pageids', $row->cl_from );
+
+            // Add extra fields to the tree even before the page information is added to it
+            $this->addPageSubElement($row->cl_from, $prop, 'sortkey', $row->cl_sortkey, false);
+            $this->addPageSubElement($row->cl_from, $prop, 'timestamp', $row->cl_timestamp, false);
 		}
 		$this->db->freeResult( $res );
 		$this->endProfiling( $prop );
@@ -1039,7 +1058,6 @@ class BotQueryProcessor {
 		$this->endDbProfiling( $prop );
 
 		while ( $row = $this->db->fetchObject( $res ) ) {
-			// FIXME!!!!!!!!!!  param count?
 			$this->addPageSubElement( $row->a_id, 'redirect', 'to', $this->getLinkInfo( $row->b_namespace, $row->b_title, $row->b_id, $row->b_is_redirect ), false);
 			if( $row->b_is_redirect ) {
 				$this->addPageSubElement( $row->a_id, 'redirect', 'dblredirectto', $this->getLinkInfo( $row->c_namespace, $row->c_title, $row->c_id, $row->c_is_redirect ), false);
@@ -1070,9 +1088,10 @@ class BotQueryProcessor {
 
 			$this->startDbProfiling();
 			$batch->execute();
-			if( empty( $this->existingPageIds ) ) {
-				$this->endDbProfiling( $prop );
-			} else {
+			$this->endDbProfiling( $prop );
+			
+			if( !empty( $this->existingPageIds )) {
+				$this->startDbProfiling();
 				$res = $this->db->select(
 					'page',
 					array('page_id', 'page_restrictions'),
@@ -1080,7 +1099,7 @@ class BotQueryProcessor {
 					$this->classname . "::genPermissionsInfo" );
 				$this->endDbProfiling( $prop );
 
-				while ( $row = $this->db->fetchObject( $res ) ) {
+				while ( $row = $this->db->fetchObject( $res )) {
 					$titles[ intval($row->page_id) ]->loadRestrictions( $row->page_restrictions );
 				}
 				$this->db->freeResult( $res );
@@ -1425,19 +1444,22 @@ class BotQueryProcessor {
 			//
 			// Execute queries for each page (not very efficient, until agregate queries with subqueries become available)
 			//
-			$this->startDbProfiling();
 			foreach( $this->existingPageIds as $pageId ) {
 				$conds['rev_page'] = $pageId;
 				if( $rvuniqusr ) {
 					// Query just for rev_id of last modifications by unique users
+					$this->startDbProfiling();
 					$res = $this->db->select( 'revision', 'MAX(rev_id) rev_id_latest, MAX(rev_timestamp) MAX_rev_timestamp', $conds, $queryname, $options );
+					$this->endDbProfiling( $prop );
 					while ( $row = $this->db->fetchObject( $res ) ) {
 						$this->revIdsArray[] = intval($row->rev_id_latest);
 					}
 				} else {
 					// Query all revision information
 					$doneRevIds = array();
+					$this->startDbProfiling();
 					$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
+					$this->endDbProfiling( $prop );
 					while ( $row = $this->db->fetchObject( $res ) ) {
 						$this->addRevisionSubElement( $row, $pageId, $rvcontent );
 						$doneRevIds[] = intval($row->rev_id);
@@ -1453,12 +1475,13 @@ class BotQueryProcessor {
 			$fields[] = 'rev_page';	// needed to find the originating page
 			$conds2['rev_id'] = $this->revIdsArray;
 			if( $rvlimit === 0 ) $this->startDbProfiling();	// db timer was not started yet
+			$this->startDbProfiling();
 			$res = $this->db->select( $tables, $fields, $conds2, $queryname . '2', array( 'ORDER BY' => 'rev_timestamp DESC' ));
+			$this->endDbProfiling( $prop );
 			while ( $row = $this->db->fetchObject( $res ) ) {
 				$this->addRevisionSubElement( $row, $row->rev_page, $rvcontent );
 			}
 		}
-		$this->endDbProfiling( $prop );
 		$this->endProfiling( $prop );
 	}
 
@@ -1519,7 +1542,6 @@ class BotQueryProcessor {
 		$count = 0;
 		$maxallowed = ($this->isBot ? 2000 : 500);
 
-		$this->startDbProfiling(); // DB code is intermixed here, so the result is not very accurate
 		// For all valid pages in User namespace query history. Note that the page might not exist.
 		foreach( $this->data['pages'] as $pageId => &$page ) {
 			if( array_key_exists('_obj', $page) ) {
@@ -1532,7 +1554,10 @@ class BotQueryProcessor {
 					$conds['rev_user_text'] = $title->getText();
 					$data = &$page['contributions'];
 
+					$this->startDbProfiling();
 					$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
+					$this->endDbProfiling( $prop );
+					
 					while ( $row = $this->db->fetchObject( $res ) ) {
 						$vals = $this->getLinkInfo( $row->page_namespace, $row->page_title );
 						$vals['revid'] = intval($row->rev_id);
@@ -1551,7 +1576,6 @@ class BotQueryProcessor {
 				}
 			}
 		}
-		$this->endDbProfiling( $prop );
 		$this->endProfiling( $prop );
 	}
 
@@ -2047,7 +2071,13 @@ class BotQueryProcessor {
 	function recordProfiling( $module, $type, &$start )
 	{
 		$timeDelta = wfTime() - $start;
-		$this->addPerfMessage( $module, array( $type => formatTimeInMs($timeDelta) ));
+		
+		// When making multiple calls to the same module, sum up with previous value
+		$prevDelta = 0;
+		if( isset($this->data['perf'][$module][$type]) )
+			$prevDelta = $this->data['perf'][$module][$type] / 1000.0;
+		
+		$this->addPerfMessage( $module, array( $type => formatTimeInMs($timeDelta + $prevDelta) ));
 		return $timeDelta;
 	}
 
