@@ -191,8 +191,8 @@ class BotQueryProcessor {
 		'userinfo'       => array(
 			GN_FUNC => 'genMetaUserInfo',
 			GN_ISMETA => true,
-			GN_PARAMS => array( 'uiisblocked', 'uihasmsg', 'uiextended' ),
-			GN_DFLT => array( false, false, false ),
+			GN_PARAMS => array( 'uiisblocked', 'uihasmsg', 'uiextended', 'uioptions' ),
+			GN_DFLT => array( false, false, false, null ),
 			GN_DESC => array(
 				"Information about current user.",
 				"The information will always include 'name' element, and optionally 'anonymous' or 'bot' flags.",
@@ -200,7 +200,9 @@ class BotQueryProcessor {
 				"uiisblocked- If present, and current user or IP is blocked, a 'blocked' flag will be added.",
 				"uihasmsg   - If present, and current user or IP has messages waiting, a 'messages' flag will be added.",
 				"uiextended - If present, includes additional information such as rights and groups.",
+                "uioptions  - A list of user preference options to get, separated by '|'. For the complete list see User.php source file.",
 				"Example: query.php?what=userinfo&uiisblocked&uihasmsg&uiextended",
+				"         query.php?what=userinfo&uioptions=timecorrection|skin  -- get user's timezone and chosen skin",
 			)),
 		'recentchanges'  => array(
 			GN_FUNC => 'genMetaRecentChanges',
@@ -259,7 +261,7 @@ class BotQueryProcessor {
 				"cpfrom     - The category sort key to continue paging. Starts at the beginning by default.",
                 "cpnamespace- Optional namespace id: Includes only the pages in the category that are in one namespace.",
 				"Example: query.php?what=category&cptitle=Days",
-				"Example: query.php?what=category&cptitle=Time&cpnamespace=14 -- show subcategories of category Time",
+				"         query.php?what=category&cptitle=Time&cpnamespace=14 -- show subcategories of category Time",
 			)),
 		'users'          => array(
 			GN_FUNC => 'genUserPages',
@@ -759,7 +761,12 @@ class BotQueryProcessor {
 			$meta['rights'] = $wgUser->getRights();
 			$meta['rights']['_element'] = 'r';
 		}
-
+        if( $uioptions ) {
+        	$uioptions = explode( '|', $uioptions );
+            foreach( $uioptions as $option ) {
+                $meta[$option] = $wgUser->getOption($option);
+            }
+        }
 		$this->data['meta']['user'] = $meta;
 		$this->endProfiling( $prop );
 	}
