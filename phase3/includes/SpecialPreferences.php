@@ -356,7 +356,7 @@ class PreferencesForm {
 		$this->mQuickbar = $wgUser->getOption( 'quickbar' );
 		$this->mSkin = Skin::normalizeKey( $wgUser->getOption( 'skin' ) );
 		$this->mMath = $wgUser->getOption( 'math' );
-		$this->mDate = $wgUser->getOption( 'date' );
+		$this->mDate = $wgUser->getDatePreference();
 		$this->mRows = $wgUser->getOption( 'rows' );
 		$this->mCols = $wgUser->getOption( 'cols' );
 		$this->mStubs = $wgUser->getOption( 'stubthreshold' );
@@ -470,7 +470,7 @@ class PreferencesForm {
 		$qbs = $wgLang->getQuickbarSettings();
 		$skinNames = $wgLang->getSkinNames();
 		$mathopts = $wgLang->getMathNames();
-		$dateopts = $wgLang->getDateFormats();
+		$dateopts = $wgLang->getDatePreferences();
 		$togs = User::getToggles();
 
 		$titleObj = Title::makeTitle( NS_SPECIAL, 'Preferences' );
@@ -595,7 +595,7 @@ class PreferencesForm {
 		 * Make sure the site language is in the list; a custom language code
 		 * might not have a defined name...
 		 */
-		$languages = $wgLang->getLanguageNames();
+		$languages = $wgLang->getLanguageNames( true );
 		if( !array_key_exists( $wgContLanguageCode, $languages ) ) {
 			$languages[$wgContLanguageCode] = $wgContLanguageCode;
 		}
@@ -610,12 +610,8 @@ class PreferencesForm {
 		$selbox = null;
 		foreach($languages as $code => $name) {
 			global $IP;
-			/* only add languages that have a file */
-			$langfile="$IP/languages/Language".str_replace('-', '_', ucfirst($code)).".php";
-			if(file_exists($langfile) || $code == $wgContLanguageCode) {
-				$sel = ($code == $selectedLang)? ' selected="selected"' : '';
-				$selbox .= "<option value=\"$code\"$sel>$code - $name</option>\n";
-			}
+			$sel = ($code == $selectedLang)? ' selected="selected"' : '';
+			$selbox .= "<option value=\"$code\"$sel>$code - $name</option>\n";
 		}
 		$wgOut->addHTML(
 			$this->addRow(

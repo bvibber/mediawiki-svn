@@ -42,6 +42,7 @@ class User {
 	var $mSkin;			//!<
 	var $mToken;		//!<
 	var $mTouched;		//!<
+	var $mDatePreference; // !<
 	var $mVersion;		//!< serialized version
 	/**@}} */
 
@@ -426,6 +427,7 @@ class User {
 		$this->mRights = array();
 		$this->mGroups = array();
 		$this->mOptions = User::getDefaultOptions();
+		$this->mDatePreference = null;
 
 		foreach( $wgNamespacesToBeSearchedDefault as $nsnum => $val ) {
 			$this->mOptions['searchNs'.$nsnum] = $val;
@@ -1152,6 +1154,23 @@ class User {
 	}
 
 	/**
+	 * Get the user's date preference, including some important migration for 
+	 * old user rows.
+	 */
+	function getDatePreference() {
+		if ( is_null( $this->mDatePreference ) ) {
+			global $wgLang;
+			$value = $this->getOption( 'date' );
+			$map = $wgLang->getDatePreferenceMigrationMap();
+			if ( isset( $map[$value] ) ) {
+				$value = $map[$value];
+			}
+			$this->mDatePreference = $value;
+		}
+		return $this->mDatePreference;
+	}
+
+	/**
 	 * @param string $oname The option to check
 	 * @return bool False if the option is not selected, true if it is
 	 */
@@ -1482,21 +1501,12 @@ class User {
 	 * @private
 	 */
 	function decodeOptions( $str ) {
-		global $wgContLang;
+		global $wgLang;
 		
 		$a = explode( "\n", $str );
 		foreach ( $a as $s ) {
 			if ( preg_match( "/^(.[^=]*)=(.*)$/", $s, $m ) ) {
-				$name = $m[1];
-				$value = $m[2];
-				# Date format preference migration
-				if ( $name == 'date' ) {
-					$map = $wgContLang->getDateFormatMigrationMap();
-					if ( isset( $map[$value] ) ) {
-						$value = $map[$value];
-					}
-				}
-				$this->mOptions[$name] = $value;
+				$this->mOptions[$m[1]] = $m[2];
 			}
 		}
 	}
@@ -1678,7 +1688,7 @@ class User {
 	 * @return string
 	 */
 	function getPageRenderingHash() {
-		global $wgContLang;
+		global $wgContLang, $wgUseDynamicDates;
 		if( $this->mHash ){
 			return $this->mHash;
 		}
@@ -1688,7 +1698,9 @@ class User {
 
 		$confstr =        $this->getOption( 'math' );
 		$confstr .= '!' . $this->getOption( 'stubthreshold' );
-		$confstr .= '!' . $this->getOption( 'date' );
+		if ( $wgUseDynamicDates ) {
+			$confstr .= '!' . $this->getDatePreference();
+		}
 		$confstr .= '!' . ($this->getOption( 'numberheadings' ) ? '1' : '');
 		$confstr .= '!' . $this->getOption( 'language' );
 		$confstr .= '!' . $this->getOption( 'thumbsize' );

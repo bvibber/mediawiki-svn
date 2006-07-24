@@ -4,6 +4,16 @@
  * Class to implement stub globals, which are globals that delay loading the
  * their associated module code by deferring initialisation until the first 
  * method call. 
+ *
+ * Note on unstub loops: 
+ *
+ * Unstub loops (infinite recursion) sometimes occur when a constructor calls 
+ * another function, and the other function calls some method of the stub. The 
+ * best way to avoid this is to make constructors as lightweight as possible,
+ * deferring any initialisation which depends on other modules. As a last 
+ * resort, you can use StubObject::isRealObject() to break the loop, but as a 
+ * general rule, the stub object mechanism should be transparent, and code 
+ * which refers to it should be kept to a minimum.
  */
 class StubObject {
 	var $mGlobal, $mClass, $mParams;
@@ -49,12 +59,17 @@ class StubObject {
 	 * properties, e.g. eval.php
 	 */
 	function _unstub( $name = '_unstub', $level = 2 ) {
+		static $recursionLevel = 0;
 		if ( get_class( $GLOBALS[$this->mGlobal] ) != $this->mClass ) {
 			$fname = __METHOD__.'-'.$this->mGlobal;
 			wfProfileIn( $fname );
 			$caller = self::_getCaller( $level );
+			if ( ++$recursionLevel > 2 ) {
+				throw new MWException( "Unstub loop detected on call of \${$this->mGlobal}->$name from $caller\n" );
+			}
 			wfDebug( "Unstubbing \${$this->mGlobal} on call of \${$this->mGlobal}->$name from $caller\n" );
 			$GLOBALS[$this->mGlobal] = $this->_newObject();
+			--$recursionLevel;
 			wfProfileOut( $fname );
 		}
 	}
@@ -101,7 +116,6 @@ class StubUserLang extends StubObject {
 			return $wgContLang;
 		} else {
 			$obj = Language::factory( $wgLanguageCode );
-			$obj->initEncoding();
 			return $obj;
 		}
 	}

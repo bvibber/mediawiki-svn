@@ -276,9 +276,9 @@ class Language {
 		return $this->dateFormats;
 	}
 
-	function getDateFormatMigrationMap() {
+	function getDatePreferenceMigrationMap() {
 		$this->load();
-		return $this->dateFormatMigrationMap;
+		return $this->datePreferenceMigrationMap;
 	}
 
 	function getDefaultUserOptionOverrides() {
@@ -295,8 +295,28 @@ class Language {
 		return wfMsg( "tog-$tog" );
 	}
 
-	function getLanguageNames() {
-		return $GLOBALS['wgLanguageNames'];
+	/**
+	 * Get language names, indexed by code.
+	 * If $customisedOnly is true, only returns codes with a messages file
+	 */
+	function getLanguageNames( $customisedOnly = false ) {
+		global $wgLanguageNames;
+		if ( !$customisedOnly ) {
+			return $wgLanguageNames;
+		}
+		
+		global $IP;
+		$messageFiles = glob( "$IP/languages/Messages*.php" );
+		$names = array();
+		foreach ( $messageFiles as $file ) {
+			if( preg_match( '/Messages([A-Z][a-z_]+)\.php$/', $file, $m ) ) {
+				$code = str_replace( '_', '-', strtolower( $m[1] ) );
+				if ( isset( $wgLanguageNames[$code] ) ) {
+					$names[$code] = $wgLanguageNames[$code];
+				}
+			}
+		}
+		return $names;
 	}
 
 	/**
@@ -580,7 +600,7 @@ class Language {
 
 		if( is_bool( $usePrefs ) ) {
 			if( $usePrefs ) {
-				$datePreference = $wgUser->getOption( 'date' );
+				$datePreference = $wgUser->getDatePreference();
 			} else {
 				$options = User::getDefaultOptions();
 				$datePreference = (string)$options['date'];
@@ -615,7 +635,7 @@ class Language {
 		}
 
 		$pref = $this->dateFormat( $format );
-		if( $pref == 'default' ) {
+		if( $pref == 'default' || !isset( $this->dateFormats["$pref date"] ) ) {
 			$pref = $this->defaultDateFormat;
 		}
 		return $this->sprintfDate( $this->dateFormats["$pref date"], $ts );
@@ -639,7 +659,7 @@ class Language {
 		}
 
 		$pref = $this->dateFormat( $format );
-		if( $pref == 'default' ) {
+		if( $pref == 'default' || !isset( $this->dateFormats["$pref time"] ) ) {
 			$pref = $this->defaultDateFormat;
 		}
 		return $this->sprintfDate( $this->dateFormats["$pref time"], $ts );
@@ -665,9 +685,10 @@ class Language {
 		}
 
 		$pref = $this->dateFormat( $format );
-		if( $pref == 'default' ) {
+		if( $pref == 'default' || !isset( $this->dateFormats["$pref both"] ) ) {
 			$pref = $this->defaultDateFormat;
 		}
+
 		return $this->sprintfDate( $this->dateFormats["$pref both"], $ts );
 	}
 
