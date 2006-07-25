@@ -78,6 +78,13 @@ class CentralAuthUser {
 			'1',
 			array( 'gu_name' => $this->mName ),
 			__METHOD__ );
+		if( $ok ) {
+			wfDebugLog( 'CentralAuth',
+				"checked for global account '$this->mName', found" );
+		} else {
+			wfDebugLog( 'CentralAuth',
+				"checked for global account '$this->mName', missing" );
+		}
 		return (bool)$ok;
 	}
 	
@@ -104,6 +111,14 @@ class CentralAuthUser {
 				'gu_registration' => $dbw->timestamp(),
 			),
 			__METHOD__ );
+		
+		if( $ok ) {
+			wfDebugLog( 'CentralAuth',
+				"registered global account '$this->mName'" );
+		} else {
+			wfDebugLog( 'CentralAuth',
+				"registration failed for global account '$this->mName'" );
+		}
 		return $ok;
 	}
 	
@@ -198,12 +213,18 @@ class CentralAuthUser {
 		$locked = $row->gu_locked;
 		
 		if( $locked ) {
+			wfDebugLog( 'CentralAuth',
+				"authentication for '$this->mName' failed due to lock" );
 			return "locked";
 		}
 		
 		if( $this->matchHash( $password, $salt, $crypt ) ) {
+			wfDebugLog( 'CentralAuth',
+				"authentication for '$this->mName' succeeded" );
 			return "ok";
 		} else {
+			wfDebugLog( 'CentralAuth',
+				"authentication for '$this->mName' failed, bad pass" );
 			return "bad password";
 		}
 	}
