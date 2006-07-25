@@ -136,7 +136,8 @@ function jre_embed(opt){
 	var iframe = document.createElement("iframe");
 	iframe.width=opt['width'];
 	//add 4 pixles for the iframe controls) 
-	iframe.height=opt['height']+4;
+
+	iframe.height= (parseInt(opt['height'])+4);
 	iframe.frameborder=0;
 	iframe.scrolling='no';
 	iframe.MARGINWIDTH=0;
@@ -149,6 +150,7 @@ function jre_embed(opt){
 	cortado_src+= "?media_url=" + opt['media_url'];
 	cortado_src+= "&stream_type=" + opt['stream_type'];
 	cortado_src+= "&width=" + opt['width'] + "&height=" + opt['height'];
+	cortado_src+= "&duration=" + opt['duration'];
 	
 	//document.write(cortado_src);
 	iframe.src=cortado_src;

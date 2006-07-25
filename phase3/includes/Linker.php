@@ -886,6 +886,13 @@ class Linker {
 				if($wgEmbedCountId==1){
 					$embed_out.='<script type="'.$wgJsMimeType.'" src="'.$wgScriptPath.'/skins/common/embed_media.js"></script>';
 				}
+				//grab the duration
+				$duration = $img->getDuration();
+				$height = $img->getHeight();
+				//echo "GET DURRATION : $duration ... while get HEIGHT: $height<BR>";
+				
+				$embed_vars = "{target:'{$base_unique_name}',media_url:'{$media_url}',stream_type:'{$stream_type}'";
+				$embed_vars.= ",duration:'{$duration}'}";
 				//@todo plug-in sensative controls. (right now vlc primaraly supported)
 				//@todo put in language calls		
 				//@todo put in language left-to-right right-to-left styles.	
@@ -898,7 +905,7 @@ class Linker {
 					</div>
 					<div class="thumbcaption" {$textalign}>														
 						<div id="magnify_{$base_unique_name}" class="magnify" style="width:54px;float:{$magnifyalign};">
-							<a id="play_{$base_unique_name}" title="play media" href="javascript:auto_embed({target:'{$base_unique_name}',media_url:'{$media_url}',stream_type:'{$stream_type}'})">
+							<a id="play_{$base_unique_name}" title="play media" href="javascript:auto_embed({$embed_vars})">
 								<img style="float:right" src="{$icon_path}vid_play_sm.png">
 							</a>
 							<span id="cnt_{$base_unique_name}" style="display:none;">

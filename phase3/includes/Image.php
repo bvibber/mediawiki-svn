@@ -39,8 +39,8 @@ class Image
 		$historyRes,	# result of the query for the image's history (nextHistoryLine)
 		$width,         # \
 		$height,        #  |
-		$bits,          #   --- returned by getimagesize (loadFromXxx)
 		$duration,		#  | -- (for ogg audio and video only)
+		$bits,          #   --- returned by getimagesize (loadFromXxx)
 		$attr,          # /
 		$type,          # MEDIATYPE_xxx (bitmap, drawing, audio...)
 		$mime,          # MIME type, determined by MimeMagic::guessMimeType
@@ -280,13 +280,12 @@ class Image
 				$gis = wfGetSVGsize( $this->imagePath );
 				wfRestoreWarnings();
 			}
-			#get durration if mime = video
+			#get duration if mime = audio/video
 			if( $this->mime == 'application/ogg'){
 				wfSuppressWarnings();
 				$gis = $this->getOggInfo();
 				wfRestoreWarnings();
 			}
-			
 			elseif ( !$magic->isPHPImageType( $this->mime ) ) {
 				# Don't try to get the width and height of sound and video files, that's bad for performance
 				$gis[0]= 0; //width
@@ -307,7 +306,6 @@ class Image
 			$gis[1]= 0; //height
 			$gis[2]= 0; //unknown
 			$gis[3]= ""; //width height string
-
 			$this->mime = NULL;
 			$this->type = MEDIATYPE_UNKNOWN;
 			wfDebug("$fname: ".$this->imagePath." NOT FOUND!\n");
@@ -367,7 +365,7 @@ class Image
 
 			$row = $dbc->selectRow( "`$wgSharedUploadDBname`.{$wgSharedUploadDBprefix}image",
 				array(
-					'img_size', 'img_width', 'img_height', 'img_bits',
+					'img_size', 'img_width', 'img_height','img_duration', 'img_bits',
 					'img_media_type', 'img_major_mime', 'img_minor_mime', 'img_metadata' ),
 				array( 'img_name' => $name ), $fname );
 			if ( $row ) {
@@ -388,6 +386,7 @@ class Image
 			$this->size = 0;
 			$this->width = 0;
 			$this->height = 0;
+			$this->duration=0;
 			$this->bits = 0;
 			$this->type = 0;
 			$this->fileExists = false;
@@ -407,6 +406,7 @@ class Image
 		$this->size = $row->img_size;
 		$this->width = $row->img_width;
 		$this->height = $row->img_height;
+		$this->duration = $row->img_duration;
 		$this->bits = $row->img_bits;
 		$this->type = $row->img_media_type;
 
@@ -478,6 +478,7 @@ class Image
 			array(
 				'img_width' => $this->width,
 				'img_height' => $this->height,
+				'img_duration'=> $this->duration,
 				'img_bits' => $this->bits,
 				'img_media_type' => $this->type,
 				'img_major_mime' => $major,
@@ -582,6 +583,15 @@ class Image
 	function getHeight() {
 		$this->load();
 		return $this->height;
+	}
+	
+	/**
+	* Return the duration of the video file in seconds
+	* @public
+	*/
+	function getDuration(){
+		$this->load();
+		return $this->duration;
 	}
 
 	/**
@@ -1498,6 +1508,7 @@ class Image
 					'img_timestamp',
 					'img_width',
 					'img_height',
+					'img_duration',
 					"'' AS oi_archive_name"
 				),
 				array( 'img_name' => $this->title->getDBkey() ),
@@ -1516,6 +1527,7 @@ class Image
 					'oi_timestamp AS img_timestamp',
 					'oi_width as img_width',
 					'oi_height as img_height',
+					'oi_duration as img_duration', 
 					'oi_archive_name'
 				),
 				array( 'oi_name' => $this->title->getDBkey() ),
@@ -1673,6 +1685,7 @@ class Image
 					'img_size' => $this->size,
 					'img_width' => intval( $this->width ),
 					'img_height' => intval( $this->height ),
+					'img_duration' => intval( $this->duration ),
 					'img_bits' => $this->bits,
 					'img_media_type' => $this->type,
 					'img_major_mime' => $major,
@@ -1994,6 +2007,7 @@ class Image
 				'fa_size'         => 'img_size',
 				'fa_width'        => 'img_width',
 				'fa_height'       => 'img_height',
+				'fa_duration'	  => 'img_duration',
 				'fa_metadata'     => 'img_metadata',
 				'fa_bits'         => 'img_bits',
 				'fa_media_type'   => 'img_media_type',
@@ -2026,6 +2040,7 @@ class Image
 				'fa_size'         => 'oi_size',
 				'fa_width'        => 'oi_width',
 				'fa_height'       => 'oi_height',
+				'fa_duration'	  => 'oi_duration',
 				'fa_metadata'     => 'NULL',
 				'fa_bits'         => 'oi_bits',
 				'fa_media_type'   => 'NULL',
@@ -2205,6 +2220,7 @@ class Image
 						'img_size'        => $row->fa_size,
 						'img_width'       => $row->fa_width,
 						'img_height'      => $row->fa_height,
+						'img_duration'	  => $row->fa_duration, 
 						'img_metadata'    => $metadata,
 						'img_bits'        => $row->fa_bits,
 						'img_media_type'  => $media_type,
@@ -2301,7 +2317,7 @@ class Image
 	* returns info on the given ogg file
 	*/
 	function getOggInfo(){
-		//@todo make sure this is available on the system: 
+		//@todo confirm oggInfo is available on the system: 
 		$cmd = '/usr/local/bin/oggzinfo ' . $this->imagePath;
 		$ogg_info_str = shell_exec($cmd);
 		//@todo a strict ogg consistency check possible durring upload check for "dirty" ogg files
@@ -2321,7 +2337,7 @@ class Image
 		}	
 		//set 
 		$duration_str = substr($ogg_info_str, strlen('Content-Duration: '), 8);
-		$gis[2]= duration_str_2seconds($duration_str); //durration
+		$gis[2]= ceil(duration_str_2seconds($duration_str)); //duration (round to the nearest end of second)
 		return $gis;
 	}
 	
