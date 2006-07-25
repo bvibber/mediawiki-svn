@@ -418,13 +418,14 @@ class BotQueryProcessor {
 		'imageinfo'      => array(
 			GN_FUNC => 'genImageInfo',
 			GN_ISMETA => false,
-			GN_PARAMS => array( 'iihistory', 'iiurl' ),
-			GN_DFLT => array( false, false ),
+			GN_PARAMS => array( 'iihistory', 'iiurl', 'iishared' ),
+			GN_DFLT => array( false, false, false ),
 			GN_DESC => array(
 				"Image information",
 				"Parameters supported:",
 				"iiurl      - Add image URLs.",
 				"iihistory  - Include all past revisions of the image.",
+                "iishared   - Include image info from the shared image repository (commons)",
 				"Example: query.php?what=imageinfo|allpages&aplimit=10&apnamespace=6&iiurl  -- show first 10 images with URLs",
 			)),
 		'content'        => array(
@@ -1170,31 +1171,71 @@ class BotQueryProcessor {
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
 
-		// Find the image pages to process
+		// Find local image pages to process
 		$imageDbKeys = array();
 		foreach( $this->data['pages'] as $pageId => &$page ) {
-			if( $pageId > 0 && $page['ns'] == NS_IMAGE ) {
+			if (array_key_exists('_obj', $page))
+            {
 				$obj = &$page['_obj'];
-				$imageDbKeys[$obj->getDBkey()] = $pageId;
+                if ($obj->getNamespace() === NS_IMAGE )
+				    $imageDbKeys[$obj->getDBkey()] = $pageId;
 			}
 		}
-		if( !empty( $imageDbKeys )) {
-			$dbTime = $this->ImageInfoHelper( true, $imageDbKeys, $iiurl );
-			if( $iihistory ) {
-				$dbTime += $this->ImageInfoHelper( false, $imageDbKeys, $iiurl );
-			}
-			$this->totalDbTime += $dbTime;
-			$this->addPerfMessage( $prop, array( 'dbtime' => formatTimeInMs($dbTime) ));
-		}
-		$this->endProfiling( $prop );
+
+        if( !empty( $imageDbKeys ))
+        {
+			$this->ImageInfoHelper( $prop, true, false, $imageDbKeys, $iiurl, $this->db );
+			if ($iihistory)
+				$this->ImageInfoHelper( $prop, false, false, $imageDbKeys, $iiurl, $this->db );
+
+            $this->endProfiling( $prop );   // Count shared processing separatelly
+
+            if ($iishared)
+            {
+                $this->startProfiling();
+                global $wgCapitalLinks, $wgUseSharedUploads, $wgContLang;
+                if (!$wgUseSharedUploads)
+                    $this->dieUsage( "This site does not have shared image repository", 'ii_noshared' );
+
+                if (!$wgCapitalLinks)
+                {
+                    // Current site does not automatically capitalize first letter, but commons always does.
+                    $tmp = array();
+                    foreach ($imageDbKeys as $key => &$value)
+                        $tmp[$wgContLang->ucfirst($key)] = $value;
+                    $imageDbKeys = $tmp;
+                }
+
+                $prop2 = $prop . "_shrd";
+                $this->startDbProfiling();
+                $dbc =& wfGetDB( DB_SLAVE, 'commons' );
+                $this->endDbProfiling( $prop2 );
+
+			    $this->ImageInfoHelper( $prop2, true, true, $imageDbKeys, $iiurl, $dbc );
+			    if( $iihistory )
+				    $this->ImageInfoHelper( $prop2, false, true, $imageDbKeys, $iiurl, $dbc );
+                $this->endProfiling( $prop2 );
+            }
+        }
+        else
+            $this->endProfiling( $prop );
 	}
 
 	/**
 	* Generates list of image history entries, either from image or from oldimage table
 	*/
-	function ImageInfoHelper($isCur, &$imageDbKeys, $includeUrl)
+	function ImageInfoHelper($prop, $isCur, $isShared, &$imageDbKeys, $includeUrl, &$db)
 	{
-		$table  = $isCur ? 'image' : 'oldimage';
+        $tblNamePrefix = "";
+        $moduleElemName = $isCur ? 'image' : 'imghistory';
+        if ($isShared)
+        {
+            global $wgSharedUploadDBname, $wgSharedUploadDBprefix;
+            $tblNamePrefix = "`$wgSharedUploadDBname`.$wgSharedUploadDBprefix";
+            $moduleElemName = 'shared' . $moduleElemName;
+        }
+
+		$table  = $tblNamePrefix . ($isCur ? 'image' : 'oldimage');
 		$fld    = $isCur ? 'img'   : 'oi';
 		$fields = array( "{$fld}_name name", "{$fld}_size size", "{$fld}_width width", "{$fld}_height height", "{$fld}_bits bits",
 						 "{$fld}_description description", "{$fld}_user_text user_text", "{$fld}_timestamp timestamp" );
@@ -1206,15 +1247,15 @@ class BotQueryProcessor {
 			$fields[] = 'oi_archive_name';
 		}
 
-		$dbStart = wfTime();
-		$res = $this->db->select(
+        $this->startDbProfiling();
+		$res = $db->select(
 			$table,
 			$fields,
 			array( "{$fld}_name" => array_keys( $imageDbKeys )),
 			$this->classname . "::genImageInfo_{$fld}" );
-		$dbTime = wfTime() - $dbStart;
+		$this->endDbProfiling( $prop );
 
-		while ( $row = $this->db->fetchObject( $res ) ) {
+		while ( $row = $db->fetchObject( $res ) ) {
 			$name = $row->name;
 			$values = array(
 				'size' => $row->size,
@@ -1228,16 +1269,16 @@ class BotQueryProcessor {
 			if( $isCur ) {
 				$values['media'] = $row->img_media_type;
 				$values['mime']  = "{$row->img_major_mime}/{$row->img_minor_mime}";
-				if( $includeUrl ) $values['url'] = Image::imageUrl( $name );
-				$this->data['pages'][ $imageDbKeys[$name] ]['image'] = $values;
+				if( $includeUrl ) $values['url'] = Image::imageUrl( $name, $isShared );
+				$this->data['pages'][ $imageDbKeys[$name] ][$moduleElemName] = $values;
 			} else {
-				if( $includeUrl ) $values['url'] = htmlspecialchars( wfImageArchiveUrl( $row->oi_archive_name ));
-				$this->addPageSubElement( $imageDbKeys[$name], 'imghistory', 'ih', $values );
+                // FIXME: wfImageArchiveUrl does not provide URLs to the shared images
+				if( $includeUrl && !$isShared ) $values['url'] = htmlspecialchars( wfImageArchiveUrl( $row->oi_archive_name ));
+				$this->addPageSubElement( $imageDbKeys[$name], $moduleElemName, 'ih', $values );
 			}
 		}
 
-		$this->db->freeResult( $res );
-		return $dbTime;
+        $db->freeResult( $res );
 	}
 
 
@@ -2078,12 +2119,12 @@ class BotQueryProcessor {
 	function recordProfiling( $module, $type, &$start )
 	{
 		$timeDelta = wfTime() - $start;
-		
+
 		// When making multiple calls to the same module, sum up with previous value
 		$prevDelta = 0;
 		if( isset($this->data['perf'][$module][$type]) )
 			$prevDelta = $this->data['perf'][$module][$type] / 1000.0;
-		
+
 		$this->addPerfMessage( $module, array( $type => formatTimeInMs($timeDelta + $prevDelta) ));
 		return $timeDelta;
 	}
