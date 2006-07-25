@@ -383,8 +383,8 @@ class BotQueryProcessor {
 		'revisions'      => array(
 			GN_FUNC => 'genPageRevisions',
 			GN_ISMETA => false,
-			GN_PARAMS => array( 'rvuniqusr', 'rvcomments', 'rvcontent', 'rvlimit', 'rvoffset', 'rvstart', 'rvend' ),
-			GN_DFLT => array( false, false, false, 10, 0, null, null ),
+			GN_PARAMS => array( 'rvuniqusr', 'rvcomments', 'rvcontent', 'rvlimit', 'rvoffset', 'rvstart', 'rvend', 'rvrbtoken' ),
+			GN_DFLT => array( false, false, false, 10, 0, null, null, false ),
 			GN_DESC => array(
 				"Revision history - Lists edits performed to the given pages",
 				"Parameters supported:",
@@ -395,6 +395,7 @@ class BotQueryProcessor {
 				"rvoffset   - When too many results are found, use this to page. *obsolete* This option is likely to disappear soon.",
 				"rvstart    - Timestamp of the earliest entry.",
 				"rvend      - Timestamp of the latest entry.",
+                "rvrbtoken  - If logged in as an admin, a rollback tokens for top revisions will be included in the output.",
 				"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments  -- last 10 revisions of the Main Page",
 				"         query.php?what=revisions&titles=Main%20Page&rvuniqusr&rvlimit=3&rvcomments  -- 3 last unique users with their last revisions.",
 			)),
@@ -430,7 +431,9 @@ class BotQueryProcessor {
 			)),
 		'content'        => array(
 			GN_FUNC => 'genPageContent',
-			GN_ISMETA => false, null, null,
+			GN_ISMETA => false,
+			GN_PARAMS => null,
+			GN_DFLT => null,
 			GN_DESC => array(
 				"Raw page content - Retrieves raw wiki markup for all found pages.",
 				"*slow query* Please optimize content requests to reduce load on the servers.",
@@ -1449,6 +1452,13 @@ class BotQueryProcessor {
 		}
 		extract( $this->getParams( $prop, $genInfo ));
 
+        // Validate rollback token permissions
+        if ($rvrbtoken) {
+            global $wgUser;
+            if (!$wgUser->isAllowed( 'rollback' ))
+                $this->dieUsage("Current user has no rollback permission", "rv_norollback");
+        }
+
 		// Prepare query parameters
 		$queryname = $this->classname . '::genPageRevisions';
 		$tables = array('revision');
@@ -1509,7 +1519,7 @@ class BotQueryProcessor {
 					$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
 					$this->endDbProfiling( $prop );
 					while ( $row = $this->db->fetchObject( $res ) ) {
-						$this->addRevisionSubElement( $row, $pageId, $rvcontent );
+						$this->addRevisionSubElement( $row, $pageId, $rvcontent, $rvrbtoken );
 						$doneRevIds[] = intval($row->rev_id);
 					}
 					$this->revIdsArray = array_diff( $this->revIdsArray, $doneRevIds );	// remove everything already done
@@ -1527,7 +1537,7 @@ class BotQueryProcessor {
 			$res = $this->db->select( $tables, $fields, $conds2, $queryname . '2', array( 'ORDER BY' => 'rev_timestamp DESC' ));
 			$this->endDbProfiling( $prop );
 			while ( $row = $this->db->fetchObject( $res ) ) {
-				$this->addRevisionSubElement( $row, $row->rev_page, $rvcontent );
+				$this->addRevisionSubElement( $row, $row->rev_page, $rvcontent, $rvrbtoken );
 			}
 		}
 		$this->endProfiling( $prop );
@@ -1536,7 +1546,7 @@ class BotQueryProcessor {
 	/**
 	* Revision generator helper - adds a $row from revision table to the output
 	*/
-	function addRevisionSubElement( $row, $pageId, $rvcontent )
+	function addRevisionSubElement( $row, $pageId, $rvcontent, $rvrbtoken )
 	{
 		$vals = array(
 			'revid' => intval($row->rev_id),
@@ -1550,6 +1560,13 @@ class BotQueryProcessor {
 		if( $row->rev_minor_edit ) {
 			$vals['minor'] = '';
 		}
+        if( $rvrbtoken ) {
+            global $wgUser;
+            $page = $this->data['pages'][$pageId];
+            if( $row->rev_id == $page['revid'] ) {
+                $vals['rbtoken'] = $wgUser->editToken( array( $page['_obj']->getPrefixedText(), $row->rev_user_text ));
+            }
+        }
 		if( isset( $row->rev_comment )) {
 			$vals['comment'] = $row->rev_comment;
 		}
@@ -1978,14 +1995,15 @@ class BotQueryProcessor {
 				"  This API provides a way for your applications to query data directly from the MediaWiki servers.",
 				"  One or more pieces of information about the site and/or a given list of pages can be retrieved.",
 				"  Information may be returned in either a machine (xml, json, php, wddx) or a human readable format.",
-				"  Most of the information can be requested with a single query.",
+				"  More than one piece of information may be requested with a single query.",
 				"",
 				"*Usage*",
 				"  query.php ? format=... & what=...|...|... & titles=...|...|... & ...",
 				"",
 				"*Common parameters*",
 				"    format     - How should the output be formatted. See formats section below.",
-				"    what       - What information the server should return. See properties section below.",
+				"    what       - What information the server should return. See the list of available properties below.",
+                "                 More than one property may be requested at the same time, separated by pipe '|' symbol.",
 				"    titles     - A list of titles, separated by the pipe '|' symbol.",
 				"    pageids    - A list of page ids, separated by the pipe '|' symbol.",
 				"    revids     - List of revision ids, separated by '|' symbol. See 'revisions' property for additional information.",
