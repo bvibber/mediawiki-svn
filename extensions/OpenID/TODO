@@ -27,7 +27,7 @@
 + change trust data separators from , and | to FS and RS
 - User preferences tab for OpenID
 - Manage allow-to-trust settings in User preferences
-- Optionally use OpenID URL for home page
+- Optionally redirect User: page to OpenID URL
 - If user logs in with OpenID, add a cookie, and auto-login next time
 + Have some $trust_root values that we _always_ allow to trust
 + README
@@ -35,4 +35,11 @@
 + try to guess user name from URL with /
   like http://getopenid.com/evanprodromou or
   http://profile.typekey.com/EvanProdromou/
+- Allow specifying a FileStore rather than a MemcStore
+- Allow specifying a MySQLStore rather than a MemcStore
+- Fall back to DumbStore if Memc is bogus
+- Unit test for MemcStore
+- for just-a-hostname OpenIDs, if the first element is not
+  www, use the first element as a proposed ID
+- configurable regexps for finding a user ID from an OpenID.
 

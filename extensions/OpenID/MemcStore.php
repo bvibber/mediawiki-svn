@@ -82,19 +82,23 @@ if (defined('MEDIAWIKI')) {
 			$handles = $this->_getHandles($server_url);
 			if (array_key_exists($handle, $handles)) {
 				unset($handles[$handle]);
+				$this->_setHandles($server_url, $handles);
 			}
-			$this->_setHandles($server_url, $handles);
 
 			# Now, delete the association record
 			$k = $this->_associationKey($server_url, $handle);
 			$v = $wgMemc->get($k);
-			$res = $wgMemc->delete($k);
-			return ($v === false || strlen($v) == 0);
+
+			if ($v === false || strlen($v) == 0) {
+				return false;
+			} else {
+				$res = $wgMemc->delete($k);
+				return true;
+			}
 		}
 
 		function storeNonce($nonce)
 		{
-			global $wgMemc;
 			$nonces = $this->_getNonces();
 			$nonces[$nonce] = time() + MEMCSTORE_NONCE_EXPIRY;
 			$this->_setNonces($nonces);
@@ -172,17 +176,17 @@ if (defined('MEDIAWIKI')) {
 		}
 
 		function _getBestAssociation($server_url) {
-			global $wgMemc;
 			$handles = $this->_getHandles($server_url);
 			$maxexp = time();
 			$besth = null;
 			foreach ($handles as $handle => $expiry) {
-				if ($expire > $maxexp) {
+				if ($expiry > $maxexp) {
 					$besth = $handle;
+					$maxexp = $expiry;
 				}
 			}
 			if (!is_null($besth)) {
-				return $this->getKnownAssociation($server_url, $besth);
+				return $this->_getKnownAssociation($server_url, $besth);
 			} else {
 				return null;
 			}
