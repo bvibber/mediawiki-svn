@@ -44,4 +44,10 @@ $wgLinkSearchMessages['fr'] = array(
 	'linksearch-line'  => '$1 lié depuis $2',
 	'linksearch-error' => 'Les jokers ne peuvent être utilisés qu\'au début du nom de domaine.'
 );
+$wgLinkSearchMessages['sr'] = array(
+	'linksearch'	   => 'Претрага интернет веза',
+	'linksearch-text'  => 'Џокери као што су "*.wikipedia.org" могу да се користе.',
+	'linksearch-line'  => '$1 повезана са $2',
+	'linksearch-error' => 'Џокери могу да се појављују само на почетку домена.'
+);
 ?>	
