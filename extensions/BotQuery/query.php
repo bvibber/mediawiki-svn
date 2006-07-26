@@ -27,13 +27,15 @@ $IP = dirname( realpath( __FILE__ ) ) . '/../..';
 chdir( $IP );
 
 // Allow requests to go to an alternative site (proxying)
-$proxySite = GetRequestParam('proxysite');
-$proxyLang = GetRequestParam('proxylang');
+$proxySite = GetCleanProxyValue('proxysite');
+$proxyLang = GetCleanProxyValue('proxylang');
 
 if ($proxySite || $proxyLang) {
 
     $_COOKIE = array();     // Security measure - treat all requests as anonymous
 
+    // Set magic values $site & $lang.
+    // This will only work if the target site is hosted on the same cluster
     if ($proxySite) $site = $proxySite;
     if ($proxyLang) $lang = $proxyLang;
 }
@@ -2038,6 +2040,10 @@ class BotQueryProcessor {
 				"    pageids    - A list of page ids, separated by the pipe '|' symbol.",
 				"    revids     - List of revision ids, separated by '|' symbol. See 'revisions' property for additional information.",
 				"    noprofile  - When present, each sql query execution time will be hidden.",
+                "    proxysite  - Access alternative site (wikipedia/wikinews/wikiquote/...)",
+                "    proxylang  - Access alternative language (en/ru/he/commons/...)",
+                "                 *Note*: proxying is a security workaround for the browser-based scripts. Avoid using it if you can.",
+                "                         User is treated as anonymous, and only sites/languages hosted at the same cluster are accessible.",
 				"",
 				"*Examples*",
 				"    query.php?what=links|templates&titles=User:Yurik",
@@ -2487,9 +2493,9 @@ function formatTimeInMs($timeDelta)
 }
 
 /**
-*@desc Used for proxying requests between wikimedia sites
+*@desc Get a parameter from the request, and validate that it contains only '-' or lower case letters
 */
-function GetRequestParam($name)
+function GetCleanProxyValue($name)
 {
 	if (isset($_REQUEST[$name]) && !empty($_REQUEST[$name]))
     {
