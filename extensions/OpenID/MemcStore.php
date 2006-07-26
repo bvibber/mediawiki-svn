@@ -177,19 +177,16 @@ if (defined('MEDIAWIKI')) {
 
 		function _getBestAssociation($server_url) {
 			$handles = $this->_getHandles($server_url);
-			$maxexp = time();
-			$besth = null;
+			$maxissue = -1;
+			$best = null;
 			foreach ($handles as $handle => $expiry) {
-				if ($expiry > $maxexp) {
-					$besth = $handle;
-					$maxexp = $expiry;
+				$assoc = $this->_getKnownAssociation($server_url, $handle);
+				if ($assoc->issued > $maxissue) {
+					$best = $assoc;
+					$maxissue = $assoc->issued;
 				}
 			}
-			if (!is_null($besth)) {
-				return $this->_getKnownAssociation($server_url, $besth);
-			} else {
-				return null;
-			}
+			return $best;
 		}
 
 		function _associationKey($url, $handle) {

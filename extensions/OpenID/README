@@ -84,6 +84,25 @@ towards the bottom of the file:
 Theoretically it should work out of the box, although there are lots
 of configuration options (see Configuration below).
 
+=== Caching ===
+
+The extension stores some semi-persistent data in the $wgMemc object.
+Where that object stores its data is configured by $wgMainCacheType in
+LocalSettings.php. Often this is set at installation time by the
+MediaWiki configuration script.
+
+Typically for big wiki sites $wgMemc is a front-end for memcached
+(http://www.danga.com/memcached/), so $wgMainCacheType =
+CACHE_MEMCACHED.
+
+For smaller sites, $wgMemc typically uses eAccelerator to do both data
+caching and bytecode caching. In this case, $wgMainCacheType =
+CACHE_ACCEL.
+
+In case you don't have either installed, try $wgMainCacheType =
+CACHE_ANYTHING. There's usually some fallback mechanism to store this
+data for you.
+
 == Logging in using OpenID ==
 
 To log in to the wiki using an OpenID, go to the Special:OpenIDLogin

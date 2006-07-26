@@ -38,7 +38,7 @@
 - Allow specifying a FileStore rather than a MemcStore
 - Allow specifying a MySQLStore rather than a MemcStore
 - Fall back to DumbStore if Memc is bogus
-- Unit test for MemcStore
++ Unit test for MemcStore
 - for just-a-hostname OpenIDs, if the first element is not
   www, use the first element as a proposed ID
 - configurable regexps for finding a user ID from an OpenID.
