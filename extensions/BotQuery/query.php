@@ -584,13 +584,18 @@ class BotQueryProcessor {
 		foreach( $params as $param ) {
 			$val = $wgRequest->getVal($param);
 			if( $val !== null ) {
-				if( strpos( 'from', $param ) === false ) {
+				if( strpos( $param, 'from' ) === false && strpos( $param, 'title' ) === false) {
 					$paramVals[] = "$param=$val";
 				} else {
 					$paramVals[] = $param;	// ignore the value
 				}
 			}
 		}
+
+        global $proxySite, $proxyLang;
+        if ($proxySite) $paramVals[] = "proxySite=$proxySite";
+        if ($proxyLang) $paramVals[] = "proxyLang=$proxyLang";
+
 		$paramStr = implode( '&', $paramVals );
 		$perfVals = array();
 		if( array_key_exists('perf', $this->data) ) {
