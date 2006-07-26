@@ -49,7 +49,7 @@ $wgExtensionFunctions[] = 'wfForum';
 // Multi-language management
 require('language/default.php');	// require the default language file
 
-$lang = 'language/'.$wgLanguageCode;
+$lang = 'language/'.$wgLang->getCode();
 if($wgUseLatin1)
 	$lang .= '_latin1';
 else

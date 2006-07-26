@@ -82,8 +82,8 @@ function wfReviewExtensionInitMessages () {
 	// Default language is english
 	require_once('language/en.php');
 
-	global $wgLanguageCode;
-	$filename = 'language/' . addslashes($wgLanguageCode) . '.php' ;
+	global $wgLang;
+	$filename = 'language/' . addslashes($wgLang->getCode()) . '.php' ;
 	// inclusion might fail :p
 	include( $filename );
 
