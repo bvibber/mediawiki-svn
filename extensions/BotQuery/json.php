@@ -230,12 +230,42 @@ class Services_JSON
     *                           see argument 1 to Services_JSON() above for array-parsing behavior.
     *                           if var is a strng, note that encode() always expects it
     *                           to be in ASCII or UTF-8 format!
+    * @param    bool    $pretty    pretty-print output with indents and newlines
     *
     * @return   mixed   JSON string representation of input var or an error if a problem occurs
     * @access   public
     */
-    function encode($var)
+    function encode($var, $pretty=false)
     {
+        $this->indent = 0;
+        $this->pretty = $pretty;
+        $this->nameValSeparator = $pretty ? ': ' : ':';
+        return $this->encode2($var);
+    }
+
+   /**
+    * encodes an arbitrary variable into JSON format
+    *
+    * @param    mixed   $var    any number, boolean, string, array, or object to be encoded.
+    *                           see argument 1 to Services_JSON() above for array-parsing behavior.
+    *                           if var is a strng, note that encode() always expects it
+    *                           to be in ASCII or UTF-8 format!
+    *
+    * @return   mixed   JSON string representation of input var or an error if a problem occurs
+    * @access   private
+    */
+    function encode2($var)
+    {
+        if ($this->pretty) { 
+            $close = "\n" . str_repeat("\t", $this->indent);
+            $open = $close . "\t";
+            $mid = ',' . $open;
+        }
+        else {
+            $open = $close = '';
+            $mid = ',';
+        }
+
         switch (gettype($var)) {
             case 'boolean':
                 return $var ? 'true' : 'false';
@@ -376,9 +406,11 @@ class Services_JSON
 
                 // treat as a JSON object
                 if (is_array($var) && count($var) && (array_keys($var) !== range(0, sizeof($var) - 1))) {
+                    $this->indent++;
                     $properties = array_map(array($this, 'name_value'),
                                             array_keys($var),
                                             array_values($var));
+                    $this->indent--;
 
                     foreach($properties as $property) {
                         if(Services_JSON::isError($property)) {
@@ -386,26 +418,30 @@ class Services_JSON
                         }
                     }
 
-                    return '{' . join(',', $properties) . '}';
+                    return '{' . $open . join($mid, $properties) . $close . '}';
                 }
 
                 // treat it like a regular array
-                $elements = array_map(array($this, 'encode'), $var);
-
+                $this->indent++;
+                $elements = array_map(array($this, 'encode2'), $var);
+                $this->indent--;
+                
                 foreach($elements as $element) {
                     if(Services_JSON::isError($element)) {
                         return $element;
                     }
                 }
 
-                return '[' . join(',', $elements) . ']';
+                return '[' . $open . join($mid, $elements) . $close . ']';
 
             case 'object':
                 $vars = get_object_vars($var);
 
+                $this->indent++;
                 $properties = array_map(array($this, 'name_value'),
                                         array_keys($vars),
                                         array_values($vars));
+                $this->indent--;
 
                 foreach($properties as $property) {
                     if(Services_JSON::isError($property)) {
@@ -413,7 +449,7 @@ class Services_JSON
                     }
                 }
 
-                return '{' . join(',', $properties) . '}';
+                return '{' . $open . join($mid, $properties) . $close . '}';
 
             default:
                 return ($this->use & SERVICES_JSON_SUPPRESS_ERRORS)
@@ -433,13 +469,13 @@ class Services_JSON
     */
     function name_value($name, $value)
     {
-        $encoded_value = $this->encode($value);
+        $encoded_value = $this->encode2($value);
 
         if(Services_JSON::isError($encoded_value)) {
             return $encoded_value;
         }
 
-        return $this->encode(strval($name)) . ':' . $encoded_value;
+        return $this->encode2(strval($name)) . $this->nameValSeparator . $encoded_value;
     }
 
    /**

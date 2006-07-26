@@ -83,6 +83,45 @@ class BotQueryProcessor {
 	*     4) Format description
 	*/
 	var $outputGenerators = array(
+		'xmlfm'=> array(
+			GN_FUNC => 'printFormattedXML',
+			GN_MIME => 'text/html',
+			GN_PARAMS => array('nousage'),
+			GN_DFLT => array(null),
+			GN_DESC => array(
+				"XML format in HTML (Default)",
+				"The data is presented as an indented syntax-highlighted XML format.",
+				"Errors will return this usage screen, unless 'nousage' parameter is given.",
+				"Example: query.php?what=info&format=xmlfm",
+			)),
+		'jsonfm'=> array(
+			GN_FUNC => 'printFormattedJSON',
+			GN_MIME => 'text/html',
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"JSON format in HTML",
+				"Example: query.php?what=info&format=jsonfm      (Format info: http://en.wikipedia.org/wiki/JSON)",
+			)),
+		'txt' => array(
+			GN_FUNC => 'printFormattedTXT',
+			GN_MIME => 'text/html',
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"print_r() output (HTML)",
+				"Example: query.php?what=info&format=txt         (Format info: http://www.php.net/print_r)",
+			)),
+		'dbg' => array(
+			GN_FUNC => 'printFormattedDBG',
+			GN_MIME => 'text/html',
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"PHP source code using var_export() (HTML)",
+				"Example: query.php?what=info&format=dbg         (Format info: http://www.php.net/var_export)",
+				"", // empty line - following are all machine readable
+			)),
 		'xml' => array(
 			GN_FUNC => 'printXML',
 			GN_MIME => 'text/xml',
@@ -93,29 +132,8 @@ class BotQueryProcessor {
 				"Optional indentation can be enabled by supplying 'xmlindent' parameter.",
 				"Errors will return this usage screen, unless 'nousage' parameter is given.",
 				"Internet Explorer is known to have many issues with text/xml output.",
-				"Please use other browsers or switch to html format while debugging.",
+				"Please use other browsers or switch to xmlfm format while debugging.",
 				"Example: query.php?what=info&format=xml",
-			)),
-		'html'=> array(
-			GN_FUNC => 'printHTML',
-			GN_MIME => 'text/html',
-			GN_PARAMS => array('nousage'),
-			GN_DFLT => array(null),
-			GN_DESC => array(
-				"HTML format",
-				"The data is presented as an indented syntax-highlighted XML format.",
-				"Errors will return this usage screen, unless 'nousage' parameter is given.",
-				"Example: query.php?what=info&format=html",
-			)),
-		'txt' => array(
-			GN_FUNC => 'printHumanReadable',
-			GN_MIME => 'application/x-wiki-queryapi-print_r',
-			GN_PARAMS => null,
-			GN_DFLT => null,
-			GN_DESC => array(
-				"Human-readable format using print_r()",
-				"Details: http://www.php.net/print_r",
-				"Example: query.php?what=info&format=txt",
 			)),
 		'json'=> array(
 			GN_FUNC => 'printJSON',
@@ -124,8 +142,7 @@ class BotQueryProcessor {
 			GN_DFLT => null,
 			GN_DESC => array(
 				"JSON format",
-				"Details: http://en.wikipedia.org/wiki/JSON",
-				"Example: query.php?what=info&format=json",
+				"Example: query.php?what=info&format=json        (Format info: http://en.wikipedia.org/wiki/JSON)",
 			)),
 		'php' => array(
 			GN_FUNC => 'printPHP',
@@ -134,8 +151,7 @@ class BotQueryProcessor {
 			GN_DFLT => null,
 			GN_DESC => array(
 				"PHP serialized format using serialize()",
-				"Details: http://www.php.net/serialize",
-				"Example: query.php?what=info&format=php",
+				"Example: query.php?what=info&format=php         (Format info: http://www.php.net/serialize)",
 			)),
 		'wddx' => array(
 			GN_FUNC => 'printWDDX',
@@ -144,18 +160,7 @@ class BotQueryProcessor {
 			GN_DFLT => null,
 			GN_DESC => array(
 				"WDDX - Web Distributed Data eXchange format",
-				"Details: http://en.wikipedia.org/wiki/WDDX",
-				"Example: query.php?what=info&format=wddx",
-			)),
-		'dbg' => array(
-			GN_FUNC => 'printDebugCode',
-			GN_MIME => 'application/x-wiki-botquery-var_export',
-			GN_PARAMS => null,
-			GN_DFLT => null,
-			GN_DESC => array(
-				"PHP source code format using var_export()",
-				"Details: http://www.php.net/var_export",
-				"Example: query.php?what=info&format=dbg",
+				"Example: query.php?what=info&format=wddx        (Format info: http://en.wikipedia.org/wiki/WDDX)",
 			)),
 	);
 
@@ -200,7 +205,7 @@ class BotQueryProcessor {
 				"uiisblocked- If present, and current user or IP is blocked, a 'blocked' flag will be added.",
 				"uihasmsg   - If present, and current user or IP has messages waiting, a 'messages' flag will be added.",
 				"uiextended - If present, includes additional information such as rights and groups.",
-                "uioptions  - A list of user preference options to get, separated by '|'. For the complete list see User.php source file.",
+				"uioptions  - A list of user preference options to get, separated by '|'. For the complete list see User.php source file.",
 				"Example: query.php?what=userinfo&uiisblocked&uihasmsg&uiextended",
 				"         query.php?what=userinfo&uioptions=timecorrection|skin  -- get user's timezone and chosen skin",
 			)),
@@ -251,15 +256,16 @@ class BotQueryProcessor {
 		'category'       => array(
 			GN_FUNC => 'genPagesInCategory',
 			GN_ISMETA => true,
-			GN_PARAMS => array( 'cptitle', 'cplimit', 'cpfrom', 'cpnamespace' ),
-			GN_DFLT => array( null, 200, '', NS_ALL_NAMESPACES ),
+			GN_PARAMS => array( 'cptitle', 'cplimit', 'cpfrom', 'cpnamespace', 'cpextended' ),
+			GN_DFLT => array( null, 200, '', NS_ALL_NAMESPACES, false ),
 			GN_DESC => array(
 				"Adds pages in a given category to the output list.",
 				"Parameters supported:",
 				"cptitle    - A category name, either with or without the 'Category:' prefix.",
 				"cplimit    - How many total pages (in category) to return.",
 				"cpfrom     - The category sort key to continue paging. Starts at the beginning by default.",
-                "cpnamespace- Optional namespace id: Includes only the pages in the category that are in one namespace.",
+				"cpnamespace- Optional namespace id: Includes only the pages in the category that are in one namespace.",
+				"cpextended - Add extra information like sortkey and timestamp to the category output.",
 				"Example: query.php?what=category&cptitle=Days",
 				"         query.php?what=category&cptitle=Time&cpnamespace=14 -- show subcategories of category Time",
 			)),
@@ -395,15 +401,15 @@ class BotQueryProcessor {
 				"rvoffset   - When too many results are found, use this to page. *obsolete* This option is likely to disappear soon.",
 				"rvstart    - Timestamp of the earliest entry.",
 				"rvend      - Timestamp of the latest entry.",
-                "rvrbtoken  - If logged in as an admin, a rollback tokens for top revisions will be included in the output.",
+				"rvrbtoken  - If logged in as an admin, a rollback tokens for top revisions will be included in the output.",
 				"Example: query.php?what=revisions&titles=Main%20Page&rvlimit=10&rvcomments  -- last 10 revisions of the Main Page",
 				"         query.php?what=revisions&titles=Main%20Page&rvuniqusr&rvlimit=3&rvcomments  -- 3 last unique users with their last revisions.",
 			)),
 		'usercontribs'   => array(
 			GN_FUNC => 'genUserContributions',
 			GN_ISMETA => false,
-			GN_PARAMS => array( 'uccomments', 'uclimit', 'uctop' ),
-			GN_DFLT => array( false, 50,
+			GN_PARAMS => array( 'uccomments', 'uclimit', 'ucrbtoken', 'uctop' ),
+			GN_DFLT => array( false, 50, false,
 				array( GN_ENUM_DFLT => 'all',
 					   GN_ENUM_ISMULTI => false,
 					   GN_ENUM_CHOICES => array('all','only','exclude') )),
@@ -414,6 +420,7 @@ class BotQueryProcessor {
 				"uclimit    - How many links to return *for each user*.",
 				"uctop      - Filter results by contributions that are still on top:",
 				"  'all' (default), 'only' (only the ones marked as top), 'exclude' (all non-top ones)",
+				"ucrbtoken  - If logged in as an admin, a rollback tokens for top revisions will be included in the output.",
 				"Example: query.php?what=usercontribs&titles=User:YurikBot&uclimit=20&uccomments",
 			)),
 		'imageinfo'      => array(
@@ -426,7 +433,7 @@ class BotQueryProcessor {
 				"Parameters supported:",
 				"iiurl      - Add image URLs.",
 				"iihistory  - Include all past revisions of the image.",
-                "iishared   - Include image info from the shared image repository (commons)",
+				"iishared   - Include image info from the shared image repository (commons)",
 				"Example: query.php?what=imageinfo|allpages&aplimit=10&apnamespace=6&iiurl  -- show first 10 images with URLs",
 			)),
 		'content'        => array(
@@ -462,8 +469,8 @@ class BotQueryProcessor {
 
 		$this->enableProfiling = !$wgRequest->getCheck('noprofile');
 
-		$this->format = 'html'; // set it here because if parseFormat fails, the usage output relies on this setting
-		$this->format = $this->parseFormat( $wgRequest->getVal('format', 'html') );
+		$this->format = 'xmlfm'; // set it here because if parseFormat fails, the usage output relies on this setting
+		$this->format = $this->parseFormat( $wgRequest->getVal('format', 'xmlfm') );
 
 		$allProperties = array_merge(array(null), array_keys( $this->propGenerators ));
 		$this->properties = $this->parseMultiValue( 'what', null, true, $allProperties );
@@ -765,12 +772,12 @@ class BotQueryProcessor {
 			$meta['rights'] = $wgUser->getRights();
 			$meta['rights']['_element'] = 'r';
 		}
-        if( $uioptions ) {
-        	$uioptions = explode( '|', $uioptions );
-            foreach( $uioptions as $option ) {
-                $meta[$option] = $wgUser->getOption($option);
-            }
-        }
+		if( $uioptions ) {
+			$uioptions = explode( '|', $uioptions );
+			foreach( $uioptions as $option ) {
+				$meta[$option] = $wgUser->getOption($option);
+			}
+		}
 		$this->data['meta']['user'] = $meta;
 		$this->endProfiling( $prop );
 	}
@@ -977,23 +984,23 @@ class BotQueryProcessor {
 			$this->dieUsage( "bad category name $cptitle", 'cp_invalidcategory' );
 		}
 
-        $tables = array( 'categorylinks' );
-        $conds = array( 'cl_to' => $categoryObj->getDBkey() );
+		$tables = array( 'categorylinks' );
+		$conds = array( 'cl_to' => $categoryObj->getDBkey() );
 		if ($cpfrom != '')
-            $conds[] = 'cl_sortkey >= ' . $this->db->addQuotes($cpfrom);
+			$conds[] = 'cl_sortkey >= ' . $this->db->addQuotes($cpfrom);
 
 		if( $cpnamespace !== NS_ALL_NAMESPACES )
-        {
-            if ($wgContLang->getNsText($cpnamespace) === false)
-			    $this->dieUsage( "cpnamespace is invalid", "cp_badnamespace" );
-            $tables[] = 'page';
-            $conds[] = 'cl_from = page_id';
-            $conds['page_namespace'] = $cpnamespace;
-        }
+		{
+			if ($wgContLang->getNsText($cpnamespace) === false)
+				$this->dieUsage( "cpnamespace is invalid", "cp_badnamespace" );
+			$tables[] = 'page';
+			$conds[] = 'cl_from = page_id';
+			$conds['page_namespace'] = $cpnamespace;
+		}
 
 		$this->validateLimit( 'cplimit', $cplimit, 500, 5000 );
 
-        // Query list of categories
+		// Query list of categories
 		$this->startDbProfiling();
 		$res = $this->db->select(
 			$tables,
@@ -1012,9 +1019,11 @@ class BotQueryProcessor {
 			}
 			$this->addRaw( 'pageids', $row->cl_from );
 
-            // Add extra fields to the tree even before the page information is added to it
-            $this->addPageSubElement($row->cl_from, $prop, 'sortkey', $row->cl_sortkey, false);
-            $this->addPageSubElement($row->cl_from, $prop, 'timestamp', $row->cl_timestamp, false);
+			if ($cpextended) {
+				// Add extra fields to the tree even before the page information is added to it
+				$this->addPageSubElement($row->cl_from, $prop, 'sortkey', $row->cl_sortkey, false);
+				$this->addPageSubElement($row->cl_from, $prop, 'timestamp', $row->cl_timestamp, false);
+			}
 		}
 		$this->db->freeResult( $res );
 		$this->endProfiling( $prop );
@@ -1100,7 +1109,7 @@ class BotQueryProcessor {
 			$this->startDbProfiling();
 			$batch->execute();
 			$this->endDbProfiling( $prop );
-			
+
 			if( !empty( $this->existingPageIds )) {
 				$this->startDbProfiling();
 				$res = $this->db->select(
@@ -1170,7 +1179,6 @@ class BotQueryProcessor {
 	*/
 	function genImageInfo(&$prop, &$genInfo)
 	{
-		if( empty( $this->nonRedirPageIds )) return;
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
 
@@ -1178,50 +1186,50 @@ class BotQueryProcessor {
 		$imageDbKeys = array();
 		foreach( $this->data['pages'] as $pageId => &$page ) {
 			if (array_key_exists('_obj', $page))
-            {
+			{
 				$obj = &$page['_obj'];
-                if ($obj->getNamespace() === NS_IMAGE )
-				    $imageDbKeys[$obj->getDBkey()] = $pageId;
+				if ($obj->getNamespace() === NS_IMAGE )
+					$imageDbKeys[$obj->getDBkey()] = $pageId;
 			}
 		}
 
-        if( !empty( $imageDbKeys ))
-        {
+		if( !empty( $imageDbKeys ))
+		{
 			$this->ImageInfoHelper( $prop, true, false, $imageDbKeys, $iiurl, $this->db );
 			if ($iihistory)
 				$this->ImageInfoHelper( $prop, false, false, $imageDbKeys, $iiurl, $this->db );
 
-            $this->endProfiling( $prop );   // Count shared processing separatelly
+			$this->endProfiling( $prop );   // Count shared processing separatelly
 
-            if ($iishared)
-            {
-                $this->startProfiling();
-                global $wgCapitalLinks, $wgUseSharedUploads, $wgContLang;
-                if (!$wgUseSharedUploads)
-                    $this->dieUsage( "This site does not have shared image repository", 'ii_noshared' );
+			if ($iishared)
+			{
+				$this->startProfiling();
+				global $wgCapitalLinks, $wgUseSharedUploads, $wgContLang;
+				if (!$wgUseSharedUploads)
+					$this->dieUsage( "This site does not have shared image repository", 'ii_noshared' );
 
-                if (!$wgCapitalLinks)
-                {
-                    // Current site does not automatically capitalize first letter, but commons always does.
-                    $tmp = array();
-                    foreach ($imageDbKeys as $key => &$value)
-                        $tmp[$wgContLang->ucfirst($key)] = $value;
-                    $imageDbKeys = $tmp;
-                }
+				if (!$wgCapitalLinks)
+				{
+					// Current site does not automatically capitalize first letter, but commons always does.
+					$tmp = array();
+					foreach ($imageDbKeys as $key => &$value)
+						$tmp[$wgContLang->ucfirst($key)] = $value;
+					$imageDbKeys = $tmp;
+				}
 
-                $prop2 = $prop . "_shrd";
-                $this->startDbProfiling();
-                $dbc =& wfGetDB( DB_SLAVE, 'commons' );
-                $this->endDbProfiling( $prop2 );
+				$prop2 = $prop . "_shrd";
+				$this->startDbProfiling();
+				$dbc =& wfGetDB( DB_SLAVE, 'commons' );
+				$this->endDbProfiling( $prop2 );
 
-			    $this->ImageInfoHelper( $prop2, true, true, $imageDbKeys, $iiurl, $dbc );
-			    if( $iihistory )
-				    $this->ImageInfoHelper( $prop2, false, true, $imageDbKeys, $iiurl, $dbc );
-                $this->endProfiling( $prop2 );
-            }
-        }
-        else
-            $this->endProfiling( $prop );
+				$this->ImageInfoHelper( $prop2, true, true, $imageDbKeys, $iiurl, $dbc );
+				if( $iihistory )
+					$this->ImageInfoHelper( $prop2, false, true, $imageDbKeys, $iiurl, $dbc );
+				$this->endProfiling( $prop2 );
+			}
+		}
+		else
+			$this->endProfiling( $prop );
 	}
 
 	/**
@@ -1229,14 +1237,14 @@ class BotQueryProcessor {
 	*/
 	function ImageInfoHelper($prop, $isCur, $isShared, &$imageDbKeys, $includeUrl, &$db)
 	{
-        $tblNamePrefix = "";
-        $moduleElemName = $isCur ? 'image' : 'imghistory';
-        if ($isShared)
-        {
-            global $wgSharedUploadDBname, $wgSharedUploadDBprefix;
-            $tblNamePrefix = "`$wgSharedUploadDBname`.$wgSharedUploadDBprefix";
-            $moduleElemName = 'shared' . $moduleElemName;
-        }
+		$tblNamePrefix = "";
+		$moduleElemName = $isCur ? 'image' : 'imghistory';
+		if ($isShared)
+		{
+			global $wgSharedUploadDBname, $wgSharedUploadDBprefix;
+			$tblNamePrefix = "`$wgSharedUploadDBname`.$wgSharedUploadDBprefix";
+			$moduleElemName = 'shared' . $moduleElemName;
+		}
 
 		$table  = $tblNamePrefix . ($isCur ? 'image' : 'oldimage');
 		$fld    = $isCur ? 'img'   : 'oi';
@@ -1250,7 +1258,7 @@ class BotQueryProcessor {
 			$fields[] = 'oi_archive_name';
 		}
 
-        $this->startDbProfiling();
+		$this->startDbProfiling();
 		$res = $db->select(
 			$table,
 			$fields,
@@ -1275,13 +1283,13 @@ class BotQueryProcessor {
 				if( $includeUrl ) $values['url'] = Image::imageUrl( $name, $isShared );
 				$this->data['pages'][ $imageDbKeys[$name] ][$moduleElemName] = $values;
 			} else {
-                // FIXME: wfImageArchiveUrl does not provide URLs to the shared images
+				// FIXME: wfImageArchiveUrl does not provide URLs to the shared images
 				if( $includeUrl && !$isShared ) $values['url'] = htmlspecialchars( wfImageArchiveUrl( $row->oi_archive_name ));
 				$this->addPageSubElement( $imageDbKeys[$name], $moduleElemName, 'ih', $values );
 			}
 		}
 
-        $db->freeResult( $res );
+		$db->freeResult( $res );
 	}
 
 
@@ -1452,12 +1460,12 @@ class BotQueryProcessor {
 		}
 		extract( $this->getParams( $prop, $genInfo ));
 
-        // Validate rollback token permissions
-        if ($rvrbtoken) {
-            global $wgUser;
-            if (!$wgUser->isAllowed( 'rollback' ))
-                $this->dieUsage("Current user has no rollback permission", "rv_norollback");
-        }
+		// Validate rollback token permissions
+		if ($rvrbtoken) {
+			global $wgUser;
+			if (!$wgUser->isAllowed( 'rollback' ))
+				$this->dieUsage("Current user has no rollback permission", "rv_norollback");
+		}
 
 		// Prepare query parameters
 		$queryname = $this->classname . '::genPageRevisions';
@@ -1560,13 +1568,13 @@ class BotQueryProcessor {
 		if( $row->rev_minor_edit ) {
 			$vals['minor'] = '';
 		}
-        if( $rvrbtoken ) {
-            global $wgUser;
-            $page = $this->data['pages'][$pageId];
-            if( $row->rev_id == $page['revid'] ) {
-                $vals['rbtoken'] = $wgUser->editToken( array( $page['_obj']->getPrefixedText(), $row->rev_user_text ));
-            }
-        }
+		if( $rvrbtoken ) {
+			global $wgUser;
+			$page = $this->data['pages'][$pageId];
+			if( $row->rev_id == $page['revid'] ) {
+				$vals['rbtoken'] = $wgUser->editToken( array( $page['_obj']->getPrefixedText(), $row->rev_user_text ));
+			}
+		}
 		if( isset( $row->rev_comment )) {
 			$vals['comment'] = $row->rev_comment;
 		}
@@ -1587,6 +1595,13 @@ class BotQueryProcessor {
 	{
 		$this->startProfiling();
 		extract( $this->getParams( $prop, $genInfo ));
+
+		// Validate rollback token permissions
+		if ($ucrbtoken) {
+			global $wgUser;
+			if (!$wgUser->isAllowed( 'rollback' ))
+				$this->dieUsage("Current user has no rollback permission", "uc_norollback");
+		}
 
 		// Make query parameters
 		$tables = array('page', 'revision');
@@ -1622,7 +1637,7 @@ class BotQueryProcessor {
 					$this->startDbProfiling();
 					$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
 					$this->endDbProfiling( $prop );
-					
+
 					while ( $row = $this->db->fetchObject( $res ) ) {
 						$vals = $this->getLinkInfo( $row->page_namespace, $row->page_title );
 						$vals['revid'] = intval($row->rev_id);
@@ -1630,8 +1645,12 @@ class BotQueryProcessor {
 						$vals['timestamp'] = wfTimestamp( TS_ISO_8601, $row->rev_timestamp );
 						if( $row->rev_minor_edit ) $vals['minor'] = '';
 						if( $row->page_is_new ) $vals['new'] = '';
-						if( $uctop == 'only' || ($uctop == 'all' && $row->page_latest == $row->rev_id ))
+						if( $uctop == 'only' || ($uctop == 'all' && $row->page_latest == $row->rev_id )) {
 							$vals['top'] = '';
+							if( $ucrbtoken ) {
+								$vals['rbtoken'] = $wgUser->editToken( array( $vals['*'], $title->getText() ));
+							}
+						}
 						if( $uccomments ) $vals['comment'] = $row->rev_comment;
 
 						$data[] = $vals;
@@ -1957,9 +1976,8 @@ class BotQueryProcessor {
 		global $wgUser, $wgRequest;
 
 		$this->addStatusMessage( 'error', $errorcode );
-		if( !$wgRequest->getCheck( 'nousage' ) &&
-			( $this->format === 'xml' || $this->format === 'html' )) {
-
+		if( $this->format === 'xmlfm' && !$wgRequest->getCheck( 'nousage' ))
+		{
 			$indentSize = 12;
 			$indstr = str_repeat(" ", $indentSize+7);
 			$formatString = "  %-{$indentSize}s - %s\n\n";
@@ -2003,7 +2021,7 @@ class BotQueryProcessor {
 				"*Common parameters*",
 				"    format     - How should the output be formatted. See formats section below.",
 				"    what       - What information the server should return. See the list of available properties below.",
-                "                 More than one property may be requested at the same time, separated by pipe '|' symbol.",
+				"                 More than one property may be requested at the same time, separated by pipe '|' symbol.",
 				"    titles     - A list of titles, separated by the pipe '|' symbol.",
 				"    pageids    - A list of page ids, separated by the pipe '|' symbol.",
 				"    revids     - List of revision ids, separated by '|' symbol. See 'revisions' property for additional information.",
@@ -2179,9 +2197,9 @@ class BotQueryProcessor {
 	//
 
 	/**
-	* Prints data in html format. Escapes all unsafe characters. Adds an HTML warning in the beginning.
+	* Prints data in html format. Escapes all unsafe characters. Adds a warning in the beginning.
 	*/
-	function printHTML( &$data )
+	function printDataInHtml( &$data, $format )
 	{
 	?>
 	<html>
@@ -2194,19 +2212,50 @@ class BotQueryProcessor {
 		if( !array_key_exists('usage', $data) ) {
 	?>
 		<small>
-		This page is being rendered in HTML format, which might not be suitable for your application.<br/>
+		This page is being rendered in <?=$format?> format, which might not be suitable for your application.<br/>
 		See <a href="query.php">query.php</a> for more information.<br/>
 		</small>
 	<?php
 		}
 	?>
 	<pre><?php
-		recXmlPrint( 'htmlPrinter', 'yurik', $data, -2 );
-		if( $this->enableProfiling ) htmlPrinter( "\n\n*{$this->formatTimeFromStart()}*" );
+		if ($format == 'XML')
+		{
+			recXmlPrint( 'htmlPrinter', 'yurik', $data, -2 );
+		}
+		else
+		{
+			sanitizeOutputData($data);
+			switch ($format)
+			{
+				case 'JSON':
+					require_once 'json.php';
+					$json = new Services_JSON();
+					htmlPrinter( $json->encode( $data, true ));
+					break;
+				case 'TXT':
+					htmlPrinter( print_r($data, true) );
+					break;
+				case 'DBG':
+					htmlPrinter( var_export($data, true) );
+					break;
+				default:
+					wfDebugDieBacktrace( "Unknown formatted print format '$format'" );
+			}
+		}
+
+		if( $this->enableProfiling )
+			htmlPrinter( "\n\n*{$this->formatTimeFromStart()}*" );
+
 	?></pre>
 	</body>
 	<?php
 	}
+
+	function printFormattedXML( &$data )  { $this->printDataInHtml( $data, 'XML' );  }
+	function printFormattedJSON( &$data ) { $this->printDataInHtml( $data, 'JSON' ); }
+	function printFormattedTXT( &$data )  { $this->printDataInHtml( $data, 'TXT' );  }
+	function printFormattedDBG( &$data )  { $this->printDataInHtml( $data, 'DBG' );  }
 
 	/**
 	* Output data in XML format
@@ -2217,26 +2266,6 @@ class BotQueryProcessor {
 		echo '<?xml version="1.0" encoding="utf-8"?>';
 		recXmlPrint( 'echoPrinter', 'yurik', $data, $wgRequest->getCheck('xmlindent') ? -2 : null );
 		if( $this->enableProfiling ) echoPrinter( "\n<!--{$this->formatTimeFromStart()}-->" );
-	}
-
-	/**
-	* Sanitizes the data and prints it with the print_r()
-	*/
-	function printHumanReadable( &$data )
-	{
-		sanitizeOutputData($data);
-		print_r($data);
-		if( $this->enableProfiling ) echo "\n\n{$this->formatTimeFromStart()}";
-	}
-
-	/**
-	* Prints the data as is, using var_export().
-	* This format exposes all internals of the data object unescaped, thus it must never be outputed with meta set to text/*
-	*/
-	function printDebugCode( &$data )
-	{
-		var_export($data);
-		if( $this->enableProfiling ) echo "\n\n{$this->formatTimeFromStart()}";
 	}
 
 	/**
@@ -2290,7 +2319,7 @@ function htmlPrinter( $text )
 	// encode all tags as safe blue strings
 	$text = ereg_replace( '\<([^>]+)\>', '<font color=blue>&lt;\1&gt;</font>', $text );
 	// identify URLs
-	$text = ereg_replace("[a-zA-Z]+://[^ ()<\n]+", '<a href="\\0">\\0</a>', $text);
+	$text = ereg_replace("[a-zA-Z]+://[^ '()<\n]+", '<a href="\\0">\\0</a>', $text);
 	// identify requests to query.php
 	$text = ereg_replace("query\\.php\\?[^ ()<\n]+", '<a href="\\0">\\0</a>', $text);
 	// make strings inside * bold
