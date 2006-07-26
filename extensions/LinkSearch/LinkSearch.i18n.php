@@ -38,4 +38,10 @@ $wgLinkSearchMessages['nl'] = array(
 	'linksearch-line'  => '$1 gelinkt vanaf $2',
 	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.'
 );
-?>
+$wgLinkSearchMessages['fr'] = array(
+	'linksearch'	   => 'Rechercher des liens internet',
+	'linksearch-text'  => 'Des caractères joker peuvent être utilisés, par exemple "*.wikipedia.org".',
+	'linksearch-line'  => '$1 lié depuis $2',
+	'linksearch-error' => 'Les jokers ne peuvent être utilisés qu\'au début du nom de domaine.'
+);
+?>	
