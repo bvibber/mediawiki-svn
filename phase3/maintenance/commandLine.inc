@@ -28,16 +28,15 @@ if ( !isset( $optionsWithArgs ) ) {
 $optionsWithArgs[] = 'conf'; # For specifying the location of LocalSettings.php
 
 $self = array_shift( $argv );
-$self = __FILE__;
-$IP = realpath( dirname( $self ) . '/..' );
+$IP = realpath( dirname( __FILE__ ) . '/..' );
 #chdir( $IP );
+require_once( "$IP/StartProfiler.php" );
 
 $options = array();
 $args = array();
 
 
 # Parse arguments
-
 for( $arg = reset( $argv ); $arg !== false; $arg = next( $argv ) ) {
 	if ( $arg == '--' ) {
 		# End of options, remainder should be considered arguments
@@ -141,7 +140,7 @@ if ( file_exists( '/home/wikipedia/common/langlist' ) ) {
 	$DP = $IP;
 	ini_set( 'include_path', ".:$IP:$IP/includes:$IP/languages:$IP/maintenance" );
 
-	require_once( $IP.'/includes/ProfilerStub.php' );
+	#require_once( $IP.'/includes/ProfilerStub.php' );
 	require_once( $IP.'/includes/Defines.php' );
 	require_once( $IP.'/CommonSettings.php' );
 
@@ -168,7 +167,7 @@ if ( file_exists( '/home/wikipedia/common/langlist' ) ) {
 	}
 	$wgCommandLineMode = true;
 	$DP = $IP;
-	require_once( $IP.'/includes/ProfilerStub.php' );
+	#require_once( $IP.'/includes/ProfilerStub.php' );
 	require_once( $IP.'/includes/Defines.php' );
 	require_once( $settingsFile );
 	ini_set( 'include_path', ".$sep$IP$sep$IP/includes$sep$IP/languages$sep$IP/maintenance" );

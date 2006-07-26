@@ -59,7 +59,7 @@ if ( function_exists( 'posix_uname' ) ) {
 
 # Useful debug output
 if ( $wgCommandLineMode ) {
-	wfDebug( "\n\nStart command line script\n" );
+	wfDebug( "\n\nStart command line script $self\n" );
 } elseif ( function_exists( 'getallheaders' ) ) {
 	wfDebug( "\n\nStart request\n" );
 	wfDebug( $_SERVER['REQUEST_METHOD'] . ' ' . $_SERVER['REQUEST_URI'] . "\n" );
