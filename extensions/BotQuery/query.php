@@ -2494,7 +2494,7 @@ function GetRequestParam($name)
 	if (isset($_REQUEST[$name]) && !empty($_REQUEST[$name]))
     {
         $value = $_REQUEST[$name];
-        if ( preg_match('/[a-z-]+/', $value))
+        if (preg_match('/^[a-z-]+$/', $value))
             return $value;
     }
     return false;
