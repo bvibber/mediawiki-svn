@@ -244,14 +244,18 @@ class BotQueryProcessor {
 		'allpages'       => array(
 			GN_FUNC => 'genMetaAllPages',
 			GN_ISMETA => true,
-			GN_PARAMS => array( 'aplimit', 'apfrom', 'apnamespace' ),
-			GN_DFLT => array( 50, '', 0 ),
+			GN_PARAMS => array( 'aplimit', 'apfrom', 'apnamespace', 'apfilterredir' ),
+			GN_DFLT => array( 50, '', 0,
+				array( GN_ENUM_DFLT => 'all',
+					   GN_ENUM_ISMULTI => false,
+					   GN_ENUM_CHOICES => array('all', 'redirects', 'nonredirects') )),
 			GN_DESC => array(
 				"Enumerates all available pages to the output list.",
 				"Parameters supported:",
 				"aplimit      - How many total pages to return",
 				"apfrom       - The page title to start enumerating from.",
 				"apnamespace  - Limits which namespace to enumerate. Default 0 (Main)",
+				"apfilterredir- Which pages to list: 'all' (default), 'redirects', or 'nonredirects'",
 				"Example: query.php?what=allpages&aplimit=50",
 			)),
 		'nolanglinks'    => array(
@@ -907,6 +911,11 @@ class BotQueryProcessor {
 
 		$where = array( 'page_namespace' => intval($apnamespace) );
 		if( $apfrom !== '' ) $where[] = 'page_title>=' . $this->db->addQuotes($apfrom);
+
+		if ($apfilterredir === 'redirects')
+            $where['page_is_redirect'] = 1;
+		else if ($apfilterredir === 'nonredirects')
+            $where['page_is_redirect'] = 0;
 
 		$this->startDbProfiling();
 		$res = $this->db->select(
