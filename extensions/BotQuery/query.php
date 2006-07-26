@@ -26,6 +26,18 @@ $startTime = microtime(true);
 $IP = dirname( realpath( __FILE__ ) ) . '/../..';
 chdir( $IP );
 
+// Allow requests to go to an alternative site (proxying)
+$proxySite = GetRequestParam('proxysite');
+$proxyLang = GetRequestParam('proxylang');
+
+if ($proxySite || $proxyLang) {
+
+    $_COOKIE = array();     // Security measure - treat all requests as anonymous
+
+    if ($proxySite) $site = $proxySite;
+    if ($proxyLang) $lang = $proxyLang;
+}
+
 if ( file_exists( "$IP/includes/WebStart.php" ) ) {
 	require_once( "$IP/includes/WebStart.php" );
 	wfProfileIn( 'query.php' );
@@ -2472,6 +2484,20 @@ function mergeParameters( &$generators )
 function formatTimeInMs($timeDelta)
 {
 	return round( $timeDelta * 1000.0, 1 );
+}
+
+/**
+*@desc Used for proxying requests between wikimedia sites
+*/
+function GetRequestParam($name)
+{
+	if (isset($_REQUEST[$name]) && !empty($_REQUEST[$name]))
+    {
+        $value = $_REQUEST[$name];
+        if ( preg_match('/[a-z-]+/', $value))
+            return $value;
+    }
+    return false;
 }
 
 ?>
