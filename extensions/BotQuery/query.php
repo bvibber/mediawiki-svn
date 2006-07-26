@@ -256,7 +256,9 @@ class BotQueryProcessor {
 				"apfrom       - The page title to start enumerating from.",
 				"apnamespace  - Limits which namespace to enumerate. Default 0 (Main)",
 				"apfilterredir- Which pages to list: 'all' (default), 'redirects', or 'nonredirects'",
-				"Example: query.php?what=allpages&aplimit=50",
+				"Example: query.php?what=allpages&aplimit=50    (first 50 pages)",
+				"         query.php?what=allpages&aplimit=20&apnamespace=10&apfrom=C&apfilterredir=nonredirects",
+                "                                               (20 templates starting with 'C' that are not redirects)",
 			)),
 		'nolanglinks'    => array(
 			GN_FUNC => 'genMetaNoLangLinksPages',
