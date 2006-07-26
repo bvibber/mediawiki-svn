@@ -59,9 +59,60 @@ CREATE TABLE globaluser (
   unique key (gu_name)
 ) CHARSET=latin1;
 
+
+-- Migration state table
+CREATE TABLE localuser (
+  -- Database name of the wiki
+  lu_dbname varchar(32) binary,
+  
+  -- user_id on the local wiki
+  lu_id int,
+  
+  -- Username
+  lu_name varchar(255) binary,
+  
+  -- User'd old password hash; salt is lu_id
+  lu_password varchar(255) binary,
+  
+  -- The user_email and user_email_authenticated state from local wiki
+  lu_email varchar(255) binary,
+  lu_email_authenticated char(14) binary,
+  
+  -- A count of revisions and/or other actions made during migration
+  -- May be null if it hasn't yet been checked
+  lu_editcount int,
+  
+  -- Set to 1 if already migrated successfully,
+  -- 0 if the account is still awaiting migration and attachment.
+  lu_attached tinyint,
+  
+  primary key (lu_dbname,lu_id),
+  unique key (lu_dbname,lu_name),
+  key (lu_name,lu_dbname)
+) CHARSET=latin1;
+
+
+
 */
 
 $wgCentralAuthDatabase = 'authtest';
+
+/**
+ * Migration states: [not yet implemented fully]
+ * 'premigrate': Local 'user' tables are still used for authentication,
+ *               but with certain operations disabled to prevent conflicts
+ *               while data is migrated to the central auth server.
+ *
+ * 'migration': Authentication is done against 'globaluser', with automatic
+ *              transparent migration on login.
+ *
+ * 'production': Any remaining non-migrated accounts are locked out.
+ *
+ * 'testing': As 'premigrate', but no locking is done. Use to run tests
+ *            of the pass-0 data generation.
+ */
+$wgCentralAuthState = 'disabled';
+
 
 class CentralAuthUser {
 	function __construct( $username ) {
@@ -120,6 +171,87 @@ class CentralAuthUser {
 				"registration failed for global account '$this->mName'" );
 		}
 		return $ok;
+	}
+	
+	/**
+	 * For use in migration pass zero.
+	 * Store local user data into the auth server's migration table.
+	 */
+	static function storeLocalData( $dbname, $row, $editCount ) {
+		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		$ok = $dbw->insert(
+			'localuser',
+			array(
+				'lu_dbname'    => $dbname,
+				'lu_id'        => $row->user_id,
+				'lu_name'      => $row->user_name,
+				'lu_password'  => $row->user_password,
+				'lu_email'     => $row->user_email,
+				'lu_email_authenticated' => $row->user_email_authenticated,
+				'lu_editcount' => $editCount,
+				'lu_attached'  => 0, // Not yet migrated!
+			),
+			__METHOD__ );
+		wfDebugLog( 'CentralAuth',
+			"stored migration data for '$row->user_name' on $dbname" );
+	}
+	
+	/**
+	 * Try to auto-migrate this account, possibly using a given
+	 * password plaintext for additional oomph.
+	 * @fixme add some locking or something
+	 */
+	function attemptAutoMigration( $password='' ) {
+		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbw->begin();
+		
+		$attached = array();
+		$unattached = array();
+		
+		$result = $dbw->select( 'localuser',
+			array(
+				'lu_dbname',
+				'lu_id',
+				'lu_name',
+				'lu_password',
+				'lu_email',
+				'lu_email_authenticated',
+				'lu_editcount',
+				'lu_attached',
+			),
+			array( 'lu_name' => $this->mName ),
+			__METHOD__ );
+		while( $row = $dbw->fetchObject( $result ) ) {
+			if( $row->lu_attched ) {
+				$attached[] = $row;
+			} else {
+				$unattached[] = $row;
+			}
+		}
+		$dbw->freeResult( $result );
+		
+		if( count( $unattached ) == 0 ) {
+			wfDebugLog( 'CentralAuth',
+				"All accounts already migrated for '$this->mName'" );
+			$dbw->rollback();
+			return false;
+			// Or... should this return true ?
+		}
+		
+		if( count( $attached ) == 0 ) {
+			// We have to pick a winner...
+		}
+		
+		// Look for accounts we can match by password
+		foreach( $unattached as $key => $row ) {
+			if( $this->matchHash( $password, $row->lu_id, $row->lu_password ) ) {
+				wfDebugLog( 'CentralAuth',
+					"Attaching '$this->mName' on $row->lu_dbname by password" );
+				$this->attach( $row->lu_dbname );
+			}
+		}
+		
+		$dbw->commit();
 	}
 	
 	/**
@@ -187,7 +319,8 @@ class CentralAuthUser {
 		if( $rows > 0 ) {
 			return true;
 		} else {
-			wfDebug( __METHOD__ . " failed to attach \"{$this->mName}@$dbname\", not in localuser\n" );
+			wfDebugLog( 'CentralAuth',
+				"failed to attach \"{$this->mName}@$dbname\", not in localuser\n" );
 			return false;
 		}
 	}
@@ -305,6 +438,21 @@ class CentralAuthUser {
  * Quickie test implementation using local test database
  */
 class CentralAuth extends AuthPlugin {
+	static function factory() {
+		global $wgCentralAuthState;
+		switch( $wgCentralAuthState ) {
+		case 'premigrate':
+		case 'testing':
+			// FIXME
+			return new AuthPlugin();
+		case 'migration':
+		case 'production':
+			return new CentralAuth();
+		default:
+			die('wtf');
+		}
+	}
+	
 	/**
 	 * Check whether there exists a user account with the given name.
 	 * The name will be normalized to MediaWiki's requirements, so
