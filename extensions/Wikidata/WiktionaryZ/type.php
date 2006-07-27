@@ -35,20 +35,59 @@ function languageIdAsText($languageId) {
 
 function definingExpression($definedMeaningId) {
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT spelling from uw_defined_meaning, uw_expression_ns where uw_defined_meaning.defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_defined_meaning.expression_id and uw_defined_meaning.is_latest_ver=1 and uw_expression_ns.is_latest=1");
-	
-	while ($spelling = $dbr->fetchObject($queryResult))
-		$result = $spelling->spelling; 
-		
-	return $result;
+	$queryResult = $dbr->query("SELECT spelling, language_id from uw_defined_meaning, uw_expression_ns where uw_defined_meaning.defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_defined_meaning.expression_id and uw_defined_meaning.is_latest_ver=1 and uw_expression_ns.is_latest=1");
+	$expression = $dbr->fetchObject($queryResult);
+	return array($expression->spelling, $expression->language_id); 
+}
+
+function definedMeaningExpressionForLanguage($definedMeaningId, $languageId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT spelling from uw_syntrans, uw_expression_ns where defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=$languageId and uw_syntrans.endemic_meaning=1 limit 1");
+
+	if ($expression = $dbr->fetchObject($queryResult))
+		return $expression->spelling;
+	else
+		return "";
+}
+
+function definedMeaningExpressionForAnyLanguage($definedMeaningId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT spelling from uw_syntrans, uw_expression_ns where defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_syntrans.endemic_meaning=1 limit 1");
+
+	if ($expression = $dbr->fetchObject($queryResult))
+		return $expression->spelling;
+	else
+		return "";
 }
 
 function definedMeaningExpression($definedMeaningId) {
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT spelling from uw_syntrans, uw_expression_ns where defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=85 limit 1");
-	$expression = $dbr->fetchObject($queryResult);
+	global
+		$wgUser;
 	
-	return $expression->spelling;
+	$userLanguage = getLanguageIdForCode($wgUser->getOption('language'));
+	
+	list($definingExpression, $definingExpressionLanguage) = definingExpression($definedMeaningId);
+
+	if ($definingExpressionLanguage == $userLanguage)  
+		return $definingExpression;
+	else {	
+		$result = definedMeaningExpressionForLanguage($definedMeaningId, $userLanguage);
+		
+		if ($result == "") {
+			$result = definedMeaningExpressionForLanguage($definedMeaningId, 85);
+			
+			if ($result == "") {
+				$result = definedMeaningExpressionForAnyLanguage($definedMeaningId);
+				
+				if ($result == "")
+					$result = $definingExpression;
+			}
+			else
+				echo "Right on";
+		}
+	}
+	
+	return $result;
 }
 
 function getTextValue($textId) {
@@ -66,7 +105,8 @@ function getCollectionMeaningId($collectionId) {
 }
 
 function definingExpressionAsLink($definedMeaningId) {
-	return spellingAsLink(definingExpression($definedMeaningId));
+	list($definingExpression, $definingExpressionLanguage) = definingExpression($definedMeaningId);
+	return spellingAsLink($definingExpression);
 }
 
 function definedMeaningAsLink($definedMeaningId) {

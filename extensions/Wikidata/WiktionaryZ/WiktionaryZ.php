@@ -653,6 +653,7 @@ class WiktionaryZ {
 		if ($wgRequest->getText('save') != '')
 			$this->saveForm();
 
+		$userlang = $wgUser->getOption('language');
 		$skin = $wgUser->getSkin();
 		$spelling = $wgTitle->getText();
 
