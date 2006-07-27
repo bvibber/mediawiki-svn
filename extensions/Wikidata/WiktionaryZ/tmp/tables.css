@@ -69,7 +69,7 @@
 	background: #FFD0B2;
 }
 
-.wiki-data-table th.remove, .wiki-data-table th.add {
+.wiki-data-table th.remove, .wiki-data-table th.input-rows {
 	font-weight: normal;
 	padding-left: 4px;
 	padding-right: 4px;
@@ -77,6 +77,10 @@
 
 .wiki-data-table td .wiki-data-table td textarea, li .wiki-data-table td textarea {
 	width: auto;
+}
+
+td.add {
+	text-align: center;
 }
 
 /* Toggle */

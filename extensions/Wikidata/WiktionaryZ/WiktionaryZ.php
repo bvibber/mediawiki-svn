@@ -524,7 +524,7 @@ class WiktionaryZ {
 		$tuple->setAttributeValue($relationsAttribute, $this->getDefinedMeaningRelationsRelation($definedMeaningId));
 		$tuple->setAttributeValue($classMembershipAttribute, $this->getDefinedMeaningClassMembershipRelation($definedMeaningId));
 		$tuple->setAttributeValue($collectionMembershipAttribute, $this->getDefinedMeaningCollectionMembershipRelation($definedMeaningId));
-//		$tuple->setAttributeValue($textAttributeValuesAttribute, $this->getDefinedMeaningTextAttributeValuesRelation($definedMeaningId));
+		$tuple->setAttributeValue($textAttributeValuesAttribute, $this->getDefinedMeaningTextAttributeValuesRelation($definedMeaningId));
 		
 		return $tuple;
 	}
@@ -570,18 +570,26 @@ class WiktionaryZ {
 			
 		$definitionEditor = $this->getDefinedMeaningDefinitionEditor();
 		$synonymsAndTranslationsEditor = $this->getSynonymsAndTranslationsEditor(); 
+		$relationsEditor = $this->getDefinedMeaningRelationsEditor();
+		$classMembershipEditor = $this->getDefinedMeaningClassMembershipEditor();
+		$collectionMembershipEditor = $this->getDefinedMeaningCollectionMembershipEditor();
+		$textAttributeValuesEditor = $this->getDefinedMeaningTextAttributeValuesEditor();
 		
 		$definedMeaningEditor = new TupleListEditor($definedMeaningAttribute, true, false, true, null);
 		$definedMeaningEditor->addEditor($definitionEditor);
 		$definedMeaningEditor->addEditor($this->getAlternativeDefinitionsEditor());
 		$definedMeaningEditor->addEditor($synonymsAndTranslationsEditor);
-		$definedMeaningEditor->addEditor($this->getDefinedMeaningRelationsEditor());
-		$definedMeaningEditor->addEditor($this->getDefinedMeaningClassMembershipEditor());
-		$definedMeaningEditor->addEditor($this->getDefinedMeaningCollectionMembershipEditor());
-//		$definedMeaningEditor->addEditor($this->getDefinedMeaningTextAttributeValuesEditor());
+		$definedMeaningEditor->addEditor($relationsEditor);
+		$definedMeaningEditor->addEditor($classMembershipEditor);
+		$definedMeaningEditor->addEditor($collectionMembershipEditor);
+		$definedMeaningEditor->addEditor($textAttributeValuesEditor);
 		
 		$definedMeaningEditor->expandEditor($definitionEditor);
 		$definedMeaningEditor->expandEditor($synonymsAndTranslationsEditor);
+//		$definedMeaningEditor->expandEditor($relationsEditor);
+//		$definedMeaningEditor->expandEditor($classMembershipEditor);
+//		$definedMeaningEditor->expandEditor($collectionMembershipEditor);
+//		$definedMeaningEditor->expandEditor($textAttributeValuesEditor);
 		
 		$definedMeaningCaptionEditor = new TextEditor($textAttribute, false, false, true, 100);
 		$definedMeaningCaptionEditor->setAddText("New defined meaning");

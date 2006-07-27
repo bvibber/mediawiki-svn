@@ -241,16 +241,26 @@ function getSetIdForDefinedMeaningRelations($definedMeaningId) {
 	return $setId;		
 }
 
+function createRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id, $setId, $revisionId) {
+	$dbr =& wfGetDB(DB_MASTER);
+	$sql = "insert into uw_meaning_relations(set_id, meaning1_mid, meaning2_mid, relationtype_mid, is_latest_set, first_set, revision_id) " .
+			"values($setId, $definedMeaning1Id, $definedMeaning2Id, $relationTypeId, 1, $setId, $revisionId)";
+	$dbr->query($sql);
+}
+
+function addNewRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
+	$setId = getSetIdForDefinedMeaningRelations($definedMeaning1Id);
+	$revisionId = getLatestRevisionForDefinedMeaning($definedMeaning1Id);
+	
+	createRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id, $setId, $revisionId);
+}
+
 function addRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
 	$setId = getSetIdForDefinedMeaningRelations($definedMeaning1Id);
 	$revisionId = getLatestRevisionForDefinedMeaning($definedMeaning1Id);
 	
-	if (!relationExists($setId, $definedMeaning1Id, $relationTypeId, $definedMeaning2Id)) {
-		$dbr =& wfGetDB(DB_MASTER);
-		$sql = "insert into uw_meaning_relations(set_id, meaning1_mid, meaning2_mid, relationtype_mid, is_latest_set, first_set, revision_id) " .
-				"values($setId, $definedMeaning1Id, $definedMeaning2Id, $relationTypeId, 1, $setId, $revisionId)";
-		$dbr->query($sql);
-	}
+	if (!relationExists($setId, $definedMeaning1Id, $relationTypeId, $definedMeaning2Id)) 
+		createRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id, $setId, $revisionId);
 }
 
 function removeRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {

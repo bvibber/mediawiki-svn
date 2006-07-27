@@ -420,12 +420,12 @@ class RelationTableEditor extends RelationEditor {
 		$result = '<tr id="'. $idPath->getId() . '" class="' . $rowClass . '">';
 		
 		if ($allowRemove)
-			$result .= '<td/>';
+			$result .= '<td class="add"><img src="extensions/Wikidata/Images/Add.png" title="Enter new rows to add" alt="Add"/></td>';
 		
 		$result .= getHeadingAsAddCells($idPath, $this);
 					
 		if ($repeatInput)
-			$result .= '<td class="add"/>';
+			$result .= '<td class="input-rows"/>';
 			
 		return $result . '</tr>'; 
 	}
@@ -650,8 +650,11 @@ class TextEditor extends ScalarEditor {
 	public function view($idPath, $value) {
 		$escapedValue = htmlspecialchars($value);
 		
+//		global $wgParser, $wgUseTidy, $wgTitle, $wgOut;
+//		$parserOutput = $wgParser->parse($value, $wgTitle, $wgOut->mParserOptions, true, true, $wgOut->mRevisionId);
+		
 		if (!$this->truncate || strlen($value) < $this->truncateAt) 
-			return $escapedValue;
+			return $escapedValue;//$parserOutput->getText();
 		else 
 			return '<span title="'. $escapedValue .'">'. htmlspecialchars(substr($value, 0, $this->truncateAt)) . '...</span>';
 	}
@@ -1027,7 +1030,7 @@ class RelationListEditor extends RelationEditor {
 			$tupleId = 'add-' . $idPath->getId();
 			$idPath->pushAttribute($captionAttribute);
 			$result .= '<li>'.
-						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">'. $character  . ' ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
+						'<h' . $this->headerLevel .' id="collapse-'. $tupleId .'" class="toggle" onclick="toggle(this, event);">'. $character  . ' <img src="extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/> ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
 			$idPath->popAttribute();
 
 			$idPath->pushAttribute($valueAttribute);
@@ -1112,7 +1115,7 @@ class TupleSpanEditor extends TupleEditor {
 			}
 		}
 
-		return "<i>Add</i>: " . implode($this->attributeSeparator, $fields);
+		return implode($this->attributeSeparator, $fields);
 	}
 	
 	public function edit($idPath, $value) {
