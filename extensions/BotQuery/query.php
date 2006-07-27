@@ -353,6 +353,17 @@ class BotQueryProcessor {
 				"List of used templates",
 				"Example: query.php?what=templates&titles=Main_Page",
 			)),
+		'categories'     => array(
+			GN_FUNC => 'genPageCategoryLinks',
+			GN_ISMETA => false,
+			GN_PARAMS => array( 'clextended' ),
+			GN_DFLT => array( false ),
+			GN_DESC => array(
+				"List of categories the page belongs to",
+				"Parameters supported:",
+				"clextended - Add extra information like sortkey and timestamp",
+				"Example: query.php?what=categories&titles=Albert%20Einstein&clextended",
+			)),
 		'backlinks'      => array(
 			GN_FUNC => 'genPageBackLinksHelper',
 			GN_ISMETA => false,
@@ -1028,13 +1039,18 @@ class BotQueryProcessor {
 			$conds['page_namespace'] = $cpnamespace;
 		}
 
+		if ($cpextended)
+            $fields = array( 'cl_from', 'cl_sortkey', 'cl_timestamp' );
+        else
+            $fields = array( 'cl_from' );
+
 		$this->validateLimit( 'cplimit', $cplimit, 500, 5000 );
 
 		// Query list of categories
 		$this->startDbProfiling();
 		$res = $this->db->select(
 			$tables,
-			array( 'cl_from', 'cl_sortkey', 'cl_sortkey', 'cl_timestamp' ),
+			$fields,
 			$conds,
 			$this->classname . '::genPagesInCategory',
 			array( 'ORDER BY' => 'cl_sortkey', 'LIMIT' => $cplimit+1 ));
@@ -1199,6 +1215,42 @@ class BotQueryProcessor {
 				$values = $this->getLinkInfo( $row->to_namespace, $row->to_title );
 			}
 			$this->addPageSubElement( $row->from_id, $prop, $code, $values);
+		}
+		$this->db->freeResult( $res );
+		$this->endProfiling( $prop );
+	}
+
+	/**
+	* Generates list of categories for all non-redirect pages.
+	*/
+	function genPageCategoryLinks(&$prop, &$genInfo)
+	{
+		if( empty( $this->nonRedirPageIds )) return;
+		$this->startProfiling();
+
+		extract( $this->getParams( $prop, $genInfo ));
+
+        $fields = array( 'cl_from', 'cl_to' );
+        if ($clextended) {
+            $fields[] = 'cl_sortkey';
+            $fields[] = 'cl_timestamp';
+        }
+
+		$this->startDbProfiling();
+		$res = $this->db->select(
+			'categorylinks',
+			$fields,
+			array( "cl_from" => $this->nonRedirPageIds ),
+			$this->classname . "::genPageCategoryLinks" );
+		$this->endDbProfiling( $prop );
+
+		while ( $row = $this->db->fetchObject( $res ) ) {
+			$values = $this->getLinkInfo( NS_CATEGORY, $row->cl_to );
+            if ($clextended) {
+				 $values['sortkey'] = $row->cl_sortkey;
+				 $values['timestamp'] = $row->cl_timestamp;
+			}
+			$this->addPageSubElement( $row->cl_from, $prop, 'cl', $values);
 		}
 		$this->db->freeResult( $res );
 		$this->endProfiling( $prop );
