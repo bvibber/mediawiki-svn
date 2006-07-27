@@ -35,7 +35,7 @@ define( 'SV_TYPE_STABLE_CANDIDATE', 2 );
 /**@-*/
 
 # Global variables to configure StableVersion
-$wgStableVersionThereCanOnlyBeOne = false;
+$wgStableVersionThereCanOnlyBeOne = true;
 
 # Evil variables, needed internally
 $wgStableVersionCaching = false;
@@ -53,6 +53,7 @@ $wgHooks['ArticlePageDataBefore'][] = 'wfStableVersionArticlePageDataBeforeHook'
 $wgHooks['ArticlePageDataAfter'][] = 'wfStableVersionArticlePageDataAfterHook';
 $wgHooks['ParserBeforeInternalParse'][] = 'wfStableVersionParseBeforeInternalParseHook';
 $wgHooks['ArticleAfterFetchContent'][] = 'wfStableVersionArticleAfterFetchContentHook';
+$wgHooks['DisplayOldSubtitle'][] = 'wfStableVersionDisplaySubtitleHook';
 
 # BEGIN logging functions
 $wgHooks['LogPageValidTypes'][] = 'wfStableVersionAddLogType';
@@ -99,6 +100,25 @@ function wfStableVersionAddCache() {
 	$filename = 'language/' . addslashes( $wgLang->getCode() ) . '.php';
 	// inclusion might fail :p
 	include( $filename );
+}
+
+/**
+ * Adds query for stable version (OBSOLETE?)
+ * @param $article (not used)
+ * @param $fields Fields for query
+ */
+function wfStableVersionDisplaySubtitleHook( &$article, &$oldid ) {
+	global $wgStableVersionRedirectAnon;
+	global $wgUser;
+	global $wgRequest;
+
+	if ( $wgStableVersionRedirectAnon && $wgUser->isAnon() ) {
+		return false;
+	} else if ( $oldid == $article->mLastStable && !$wgRequest->getCheck('direction') ) {
+		return false;
+	} else {
+		return true;
+	}
 }
 
 /**
@@ -181,9 +201,10 @@ function wfStableVersionSetArticleVersionStatusAndCache( &$article, $rev ) {
  */
 function wfStableVersionCanChange() {
 	return true; # Dummy, everyone can set stable versions
-	global $wgUser;
+	global $wgUser, $wgOut;
 	if( !$wgUser->isAllowed( 'stableversion' ) ) {
-		$wgOut->permissionRequired( 'stableversion' );
+		#$wgOut->permissionRequired( 'stableversion' );
+		#$wgOut->setSubtitle( wfMsg('stableversion') );
 		return false;
 	}
 	return true;
@@ -194,7 +215,10 @@ function wfStableVersionCanChange() {
  * @param $article The article
  */
 function wfStableVersionHeaderHook( &$article ) {
-	global $wgOut, $wgTitle;
+	global $wgOut, $wgTitle, $wgUser;
+	global $wgStableVersionRedirectAnon, $wgStableVersionShowDefaultToAnon;
+	global $wgRequest;
+
 	wfStableVersionAddCache();
 	$st = ""; # Subtitle
 	
@@ -203,8 +227,19 @@ function wfStableVersionHeaderHook( &$article ) {
 		if( $article->mLatest == $article->mLastStable ) {
 			$st .= wfMsg( 'stableversion_this_is_stable_and_current' );
 		} else {
-			$url = $wgTitle->getLocalURL();
-			$st .= wfMsg( 'stableversion_this_is_stable', $url );
+			if ( $wgStableVersionRedirectAnon && $wgUser->isAnon() ) {
+				if ( $wgStableVersionShowDefaultToAnon ) {
+					# We allow the users to see drafts
+					$url = $wgTitle->getLocalURL( "showdraft=1" );
+					$st .= wfMsg( 'stableversion_this_is_stable', $url );
+				} else {
+					# We do not allow the users to see drafts
+					$st .= wfMsg( 'stableversion_this_is_stable_nourl' );
+				}
+			} else {
+				$url = $wgTitle->getLocalURL();
+				$st .= wfMsg( 'stableversion_this_is_stable', $url );
+			}
 		}
 	} elseif( $article->mLastStable == "0" ) {
 		# There is no spoon, er, stable version
@@ -212,21 +247,44 @@ function wfStableVersionHeaderHook( &$article ) {
 	} else {
 		# This is not the stable version, recommend it
 		$url = $wgTitle->getLocalURL( "oldid=" . $article->mLastStable );
-		$st = wfMsg( 'stableversion_this_is_draft', $url );
+		$url2 = $wgTitle->getLocalURL();
+		$showdraft = $wgRequest->getInt( 'showdraft' );
+		if ( $article->mOldId ) {
+			if ( $wgStableVersionRedirectAnon && $wgUser->isAnon() ) {
+				# Users can only look at draft and stable
+				$wgOut->redirect($url);
+			} else {
+				$st = wfMsg( 'stableversion_this_is_old', $url, $url2 );
+			}
+		} else {
+			if ( $wgStableVersionRedirectAnon && $wgUser->isAnon() ) {
+				if ( !($showdraft == 1 && $wgStableVersionShowDefaultToAnon) ) {
+					$wgOut->redirect($url);
+				} else {
+					$st = wfMsg( 'stableversion_this_is_draft', $url );
+				}
+			} else {
+				$st = wfMsg( 'stableversion_this_is_draft', $url );
+			}
+		}
+
 	}
 	
-	if( wfStableVersionCanChange() ) {
+	if( wfStableVersionCanChange() && !$wgRequest->getCheck('direction') ) {
 		# This user may alter the stable version info
 		$st .= " ";
 		$sp = Title::newFromText( "Special:StableVersion" );
 		if( $article->getRevIdFetched() == $article->mLastStable ) {
 			# This is the stable version - reset?
-			$url = $sp->getLocalURL( "id=" . $article->getID() . "&mode=reset&revision=" . $article->getRevIdFetched() );
+			$url = $sp->getLocalURL( "id=" . $article->getID() . "&mode=reset&revision=" . $article->getRevIdFetched() . "&oldid=" . $article->getOldID() );
 			$st .= wfMsg( 'stableversion_reset_stable_version', $url );
 		} else {
-			$url = $sp->getLocalURL( "id=" . $article->getID() . "&mode=set&revision=" . $article->getRevIdFetched() );
+			$url = $sp->getLocalURL( "id=" . $article->getID() . "&mode=set&revision=" . $article->getRevIdFetched() . "&oldid=" . $article->getOldID());
 			$st .= wfMsg( 'stableversion_set_stable_version', $url );
 		}
+	} else {
+		$st .= " ";
+		$st .= wfMsg( 'stableversion_noset_directional' );
 	}
 
 	$st = $wgOut->getSubtitle() . "<div id='stable_version_header'>" . $st . "</div>";
@@ -308,6 +366,7 @@ function wfStableVersion() {
 			$text = $article->mContent;
 			
 			$p = new Parser();
+			$p->disableCache();
 			$wgStableVersionCaching = true;
 			$parserOptions = ParserOptions::newFromUser( $wgUser ); # Dummy
 
