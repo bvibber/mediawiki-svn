@@ -12,9 +12,9 @@ interface XMLElementHandler {
 }
 
 interface XMLParser {
-	public function newElement($name, $attributes);
-	public function processData($data);
-	public function endElement();
+	public function startElement($parser, $name, $attributes);
+	public function characterData($parser, $data);
+	public function endElement($parser);
 }
 
 class BaseXMLParser implements XMLParser {
@@ -24,17 +24,17 @@ class BaseXMLParser implements XMLParser {
 		$this->stack = array(); 
 	}
 	
-	public function newElement($name, $attributes) {
+	public function startElement($parser, $name, $attributes) {
 		$handler = end($this->stack)->getHandlerForNewElement($name);	
 		$handler->setAttributes($attributes);
 		$this->stack[] = $handler;
 	}
 	
-	public function processData($data){
+	public function characterData($parser, $data){
 		end($this->stack)->processData($data);
 	}
 	
-	public function endElement() {
+	public function endElement($parser) {
 		$handler = array_pop($this->stack);
 		$handler->close();
 		if (count($this->stack)>0){
@@ -46,10 +46,10 @@ class BaseXMLParser implements XMLParser {
 class DefaultXMLElementHandler implements XMLElementHandler {
 	public $name;
 	public $attributes;
-	public $data;
+	public $data = "";
 	
 	public function getHandlerForNewElement($name) {
-		$result = new DefaultXMLElementHandler;
+		$result = new DefaultXMLElementHandler();
 		$result->name = $name;
 		return $result;
 	}
@@ -59,7 +59,7 @@ class DefaultXMLElementHandler implements XMLElementHandler {
 	} 
 	
 	public function processData($data) {
-		$this->data = $data;
+		$this->data .= $data;
 	}
 	
 	public function close() {
@@ -158,31 +158,10 @@ class DefaultXMLElementHandler implements XMLElementHandler {
 //	}
 //}
 
-
-function parserNewElement($parser, $name, $attrs){
-	global $specificXMLParser;
-	$specificXMLParser->newElement($name, $attrs);
-}
-
-function parserEndElement($parser, $name){
-	global $specificXMLParser;
-	$specificXMLParser->endElement();
-}
-
-function parserData($parser, $data){
-	global $specificXMLParser;
-	if ($data != NULL){
-		$specificXMLParser->processData($data);	
-	}
-}
-
 function parseXML($fileHandle, $xmlParser) {
-	global $specificXMLParser;
-	$specificXMLParser = $xmlParser;
-	
 	$standardXmlParser = xml_parser_create();
-	xml_set_element_handler($standardXmlParser, "parserNewElement", "parserEndElement");
-	xml_set_character_data_handler($standardXmlParser, "parserData");
+	xml_set_element_handler($standardXmlParser,  array($xmlParser, "startElement"), array($xmlParser, "endElement"));
+	xml_set_character_data_handler($standardXmlParser, array($xmlParser, "characterData"));
 	
 	while ($data = fread($fileHandle, 4096)) {
 	    if (!xml_parse($standardXmlParser, $data, feof($fileHandle))) {

@@ -7,45 +7,63 @@ require_once("Setup.php");
 require_once('SwissProtImport.php');
 require_once('XMLImport.php');
 
+ob_end_flush();
 $beginTime = time();
 
+global
+	$wgCommandLineMode;
+	
+$wgCommandLineMode = true;
+
 //$file = "OneEntry.xml";
-$file = "10000lines.xml";
-//$file = "uniprot_sprot.xml";
+//$file = "10000lines.xml";
+$file = "uniprot_sprot.xml";
 //$file = "uniprot_sprot.dat";
 
 $fileHandle = fopen($file, "r");
 
-$dbr =& wfGetDB(DB_SLAVE);	
-importEntriesFromXMLFile($fileHandle, $dbr);
+importEntriesFromXMLFile($fileHandle);
 
-//echoLines($fileHandle, 100000);
+//echoNofLines($fileHandle, 10000);
+//echoLinesUntilText($fileHandle, ")-");
 fclose($fileHandle);
 
 $endTime = time();
 echo "Time elapsed: " . ($endTime - $beginTime); 
 
-function echoLines($fileHandle, $numberOfLines) {
+function echoNofLines($fileHandle, $numberOfLines) {
 	$i = 0;
 	do {
 		$buffer = fgets($fileHandle);
 		$buffer = rtrim($buffer,"\n");
 		echo $buffer;
-		$i += 1;		
+		$i += 1;
 	} while($i < $numberOfLines || strpos($buffer, '</entry>') === false);
 	echo "</uniprot>";
 }
 
-function	importSwissProtEntries($fileHandle) {
-	$selectLanguageId = 'SELECT language_id FROM language_names WHERE language_name ="English"';
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query($selectLanguageId);
-	
-	if ($languageIdObject = $dbr->fetchObject($queryResult)){
-		$languageId = $languageIdObject->language_id;
-	}
+function echoLinesUntilText($fileHandle, $text) {
+	$found = false;
+	do {
+		$buffer = fgets($fileHandle);
+		$buffer = rtrim($buffer,"\n");
+		echo $buffer;
+		$found = strpos($buffer, $text) !== false;		
+	} while(!$found || strpos($buffer, '</entry>') === false);
+	echo "</uniprot>";
+}
 
-$collectionId = bootstrapCollection("Swiss-Prot", $languageId);
+function	importSwissProtEntries($fileHandle) {
+//	$selectLanguageId = 'SELECT language_id FROM language_names WHERE language_name ="English"';
+//	$dbr =& wfGetDB(DB_MASTER);
+//	$queryResult = $dbr->query($selectLanguageId);
+//	
+//	if ($languageIdObject = $dbr->fetchObject($queryResult)){
+//		$languageId = $languageIdObject->language_id;
+//	}
+
+	$languageId = 85;
+	$collectionId = bootstrapCollection("Swiss-Prot", $languageId);
 
 //	while (!feof($fileHandle)) {
 	for ($i = 1; $i <= 1000; $i++)  {
