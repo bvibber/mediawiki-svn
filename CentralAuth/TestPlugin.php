@@ -123,7 +123,7 @@ class CentralAuthUser {
 	 * this code is crap
 	 */
 	function exists() {
-		$dbr = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbr = wfGetDB( DB_MASTER, 'CentralAuth' );
 		$ok = $dbr->selectField(
 			'globaluser',
 			'1',
@@ -143,7 +143,7 @@ class CentralAuthUser {
 	 * this code is crapper
 	 */
 	function register( $password ) {
-		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbw = wfGetDB( DB_MASTER, 'CentralAuth' );
 		list( $salt, $hash ) = $this->saltedPassword( $password );
 		$ok = $dbw->insert(
 			'globaluser',
@@ -178,7 +178,7 @@ class CentralAuthUser {
 	 * Store local user data into the auth server's migration table.
 	 */
 	static function storeLocalData( $dbname, $row, $editCount ) {
-		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbw = wfGetDB( DB_MASTER, 'CentralAuth' );
 		$ok = $dbw->insert(
 			'localuser',
 			array(
@@ -197,16 +197,42 @@ class CentralAuthUser {
 	}
 	
 	/**
+	 * For use in migration pass one.
+	 * Store global user data in the auth server's main table.
+	 */
+	function storeGlobalData( $salt, $hash, $email, $emailAuth ) {
+		$dbw = wfGetDB( DB_MASTER, 'CentralAuth' );
+		$dbw->insert( 'globaluser',
+			array(
+				'gu_name' => $this->mName,
+				'gu_salt' => $salt,
+				'gu_password' => $hash,
+				'gu_email' => $email,
+				'gu_email_authenticated' => $emailAuth,
+			),
+			__METHOD__ );
+	}
+	
+	function storeAndMigrate() {
+		$dbw = wfGetDB( DB_MASTER, 'CentralAuth' );
+		$dbw->begin();
+		
+		$ret = $this->attemptAutoMigration();
+		
+		$dbw->commit();
+		return $ret;
+	}
+	
+	/**
 	 * Try to auto-migrate this account, possibly using a given
 	 * password plaintext for additional oomph.
 	 * @fixme add some locking or something
 	 */
 	function attemptAutoMigration( $password='' ) {
-		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
-		$dbw->begin();
-		
+		$dbw = wfGetDB( DB_MASTER, 'CentralAuth' );
 		$attached = array();
 		$unattached = array();
+		$migrated = array();
 		
 		$result = $dbw->select( 'localuser',
 			array(
@@ -222,7 +248,7 @@ class CentralAuthUser {
 			array( 'lu_name' => $this->mName ),
 			__METHOD__ );
 		while( $row = $dbw->fetchObject( $result ) ) {
-			if( $row->lu_attched ) {
+			if( $row->lu_attached ) {
 				$attached[] = $row;
 			} else {
 				$unattached[] = $row;
@@ -233,13 +259,29 @@ class CentralAuthUser {
 		if( count( $unattached ) == 0 ) {
 			wfDebugLog( 'CentralAuth',
 				"All accounts already migrated for '$this->mName'" );
-			$dbw->rollback();
 			return false;
 			// Or... should this return true ?
 		}
 		
 		if( count( $attached ) == 0 ) {
-			// We have to pick a winner...
+			if( count( $unattached ) == 1 ) {
+				// convenient special case
+				$row = $unattached[0];
+				$db = $row->lu_dbname;
+				wfDebugLog( 'CentralAuth',
+					"Attaching '$this->mName' on $db as singleton" );
+				$this->storeGlobalData(
+					$row->lu_id,
+					$row->lu_password,
+					$row->lu_email,
+					$row->lu_email_authenticated );
+				$this->attach( $db );
+				
+				$dbw->commit();
+				return true;
+			} else {
+				// We have to pick a winner...
+			}
 		}
 		
 		// Look for accounts we can match by password
@@ -248,10 +290,19 @@ class CentralAuthUser {
 				wfDebugLog( 'CentralAuth',
 					"Attaching '$this->mName' on $row->lu_dbname by password" );
 				$this->attach( $row->lu_dbname );
+				$migrated[] = $row;
 			}
 		}
 		
-		$dbw->commit();
+		if( count( $migrated ) == count( $unattached ) ) {
+			wfDebugLog( 'CentralAuth',
+				"Successfull auto migration for '$this->mName'" );
+			return true;
+		} else {
+			wfDebugLog( 'CentralAuth',
+				"Incomplete migration for '$this->mName'" );
+			return false;
+		}
 	}
 	
 	/**
@@ -260,7 +311,7 @@ class CentralAuthUser {
 	 * @return ("attached", "unattached", "no local user")
 	 */
 	function isAttached( $dbname ) {
-		$dbr = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbr = wfGetDB( DB_MASTER, 'CentralAuth' );
 		$row = $dbr->selectRow( 'localuser',
 			array( 'lu_attached' ),
 			array( 'lu_name' => $this->mName, 'lu_database' => $dbname ),
@@ -282,7 +333,7 @@ class CentralAuthUser {
 	 * @param 
 	 */
 	function addLocal( $dbname, $localid ) {
-		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbw = wfGetDB( DB_MASTER, 'CentralAuth' );
 		$dbw->insert( 'localuser',
 			array(
 				'lu_dbname'   => $dbname,
@@ -299,17 +350,19 @@ class CentralAuthUser {
 	 * @return true on success
 	 */
 	public function attach( $dbname ) {
-		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbw = wfGetDB( DB_MASTER, 'CentralAuth' );
 		$dbw->update( 'localuser',
 			array(
 				// Boo-yah!
 				'lu_attached' => 1,
 				
 				// Local information fields become obsolete
+				/*
 				'lu_email'               => NULL,
 				'lu_email_authenticated' => NULL,
-				'lu_salt'                => NULL,
-				'lu_password'            => NULL ),
+				'lu_password'            => NULL,
+				*/
+				),
 			array(
 				'lu_dbname' => $dbname,
 				'lu_name'   => $this->mName ),
@@ -331,7 +384,7 @@ class CentralAuthUser {
 	 * @return ("ok", "no user", "locked", "bad password")
 	 */
 	public function authenticate( $password ) {
-		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbw = wfGetDB( DB_MASTER, 'CentralAuth' );
 		$row = $dbw->selectRow( 'globaluser',
 			array( 'gu_salt', 'gu_password', 'gu_locked' ),
 			array( 'gu_name' => $this->mName ),
@@ -381,7 +434,7 @@ class CentralAuthUser {
 	 * @return array of database name strings
 	 */
 	function listUnattached() {
-		$dbr = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbr = wfGetDB( DB_MASTER, 'CentralAuth' );
 		$res = $dbr->select(
 			array( 'globaluser', 'localuser' ),
 			array( 'lu_database' ),
@@ -397,7 +450,7 @@ class CentralAuthUser {
 	}
 	
 	function getEmail() {
-		$dbr = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbr = wfGetDB( DB_MASTER, 'CentralAuth' );
 		return $dbr->selectField( 'globaluser', 'gu_email',
 			array( 'gu_name' => $this->mName ),
 			__METHOD__ );
@@ -415,7 +468,7 @@ class CentralAuthUser {
 	function setPassword( $password ) {
 		list( $salt, $hash ) = $this->saltedPassword( $password );
 		
-		$dbw = wfGetDB( DB_MASTER, 'centralauth' );
+		$dbw = wfGetDB( DB_MASTER, 'CentralAuth' );
 		$result = $dbr->update( 'globaluser',
 			array(
 				'gu_salt'     => $salt,
