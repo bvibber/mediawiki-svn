@@ -15,6 +15,7 @@ require_once 'commandLine.inc';
 function migratePassZero() {
 	global $wgDBname;
 	$dbBackground = wfGetDB( DB_SLAVE ); // fixme for large dbs
+	$start = microtime( true );
 	$result = $dbBackground->select(
 		'user',
 		array(
@@ -27,11 +28,24 @@ function migratePassZero() {
 		),
 		'',
 		__METHOD__ );
+	$migrated = 0;
 	while( $row = $dbBackground->fetchObject( $result ) ) {
 		$count = getEditCount( $row->user_id );
+		//$count = 0;
 		CentralAuthUser::storeLocalData( $wgDBname, $row, $count );
+		if( ++$migrated % 100 == 0 ) {
+			$delta = microtime( true ) - $start;
+			$rate = ($delta == 0.0) ? 0.0 : $migrated / $delta;
+			printf( "%d done in %0.1f secs (%0.3f accounts/sec).\n",
+				$migrated, $delta, $rate );
+		}
 	}
 	$dbBackground->freeResult( $result );
+	
+	$delta = microtime( true ) - $start;
+	$rate = ($delta == 0.0) ? 0.0 : $migrated / $delta;
+	printf( "%d done in %0.1f secs (%0.3f accounts/sec).\n",
+		$migrated, $delta, $rate );
 }
 
 function getEditCount( $userId ) {
@@ -41,9 +55,8 @@ function getEditCount( $userId ) {
 function countEdits( $userId, $table, $field ) {
 	$dbr = wfGetDB( DB_SLAVE );
 	$count = $dbr->selectField( $table, 'COUNT(*)',
-		array(),
-		__METHOD__,
-		array( 'GROUP BY' => $field ) );
+		array( $field => $userId ),
+		__METHOD__ );
 	return intval( $count );
 }
 
