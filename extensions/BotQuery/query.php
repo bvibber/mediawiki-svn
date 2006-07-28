@@ -499,6 +499,7 @@ class BotQueryProcessor {
 		$this->isBot = $wgUser->isBot();
 
 		$this->enableProfiling = !$wgRequest->getCheck('noprofile');
+		$this->invalidPageIdCounter = -1;
 
 		$this->format = 'xmlfm'; // set it here because if parseFormat fails, the usage output relies on this setting
 		$this->format = $this->parseFormat( $wgRequest->getVal('format', 'xmlfm') );
@@ -714,7 +715,6 @@ class BotQueryProcessor {
 			}
 
 			// Add entries for non-existent page titles
-			$i = -1;
 			if( $nonexistentPages !== null ) {
 				foreach( $nonexistentPages as $namespace => &$stuff ) {
 					foreach( $stuff as $dbk => &$arbitrary ) {
@@ -723,20 +723,20 @@ class BotQueryProcessor {
 						if ( !$title->userCanRead() ) {
 							$this->dieUsage( "No read permission for $titleString", 'pi_nopageaccessdenied' );
 						}
-						$data = &$this->data['pages'][$i];
-						$this->pageIdByText[$title->getPrefixedText()] = $i;
+						$data = &$this->data['pages'][$invalidPageIdCounter];
+						$this->pageIdByText[$title->getPrefixedText()] = $invalidPageIdCounter;
 						$data['_obj']    = $title;
 						$data['title']   = $title->getPrefixedText();
 						$data['ns']      = $title->getNamespace();
 						$data['id']      = 0;
-						$i--;
+						$invalidPageIdCounter--;
 					}
 				}
 			}
 
 			// When normalized title differs from what was given, append the given title(s)
 			foreach( $this->normalizedTitles as $givenTitle => &$title ) {
-				$data = &$this->data['pages'][$i--];
+				$data = &$this->data['pages'][$invalidPageIdCounter--];
 				$data['title'] = $givenTitle;
 				$data['normalizedTitle'] = $title->getPrefixedText();
 				// stored id might be negative, indicating a missing page
@@ -782,7 +782,7 @@ class BotQueryProcessor {
 		$meta = array();
 		$meta['_element'] = 'ns';
 		foreach( $wgContLang->getFormattedNamespaces() as $ns => $title ) {
-			$meta[$ns] = array( "id"=>$ns, "*" => $title );
+			$meta[$ns] = array( "id" => $ns, "*" => $title );
 		}
 		$this->data['meta']['namespaces'] = $meta;
 		$this->endProfiling( $prop );
@@ -1823,32 +1823,35 @@ class BotQueryProcessor {
 			$linkBatch = new LinkBatch;
 			foreach ( $titles as &$titleString ) {
 				$titleObj = &Title::newFromText( $titleString );
-				if ( !$titleObj ) {
+				if (!$titleObj) {
 					$this->dieUsage( "bad title $titleString", 'pi_invalidtitle' );
 				}
-				if ( !$titleObj->userCanRead() ) {
+				if ($titleObj->getNamespace() < 0) {
+					$this->dieUsage( "No support for special page $titleString has been implemented", 'pi_unsupportednamespace' );
+				}
+				if (!$titleObj->userCanRead()) {
 					$this->dieUsage( "No read permission for $titleString", 'pi_titleaccessdenied' );
 				}
-				$linkBatch->addObj( $titleObj );
+                $linkBatch->addObj( $titleObj );    // <0 namespaces will be ignored
 
 				// Make sure we remember the original title that was given to us
-				// This way the caller can correlate new titles with the originally requested if they change namespaces, etc
+				// This way the caller can correlate new titles with the originally requested, i.e. namespace is localized or capitalization
 				if( $titleString !== $titleObj->getPrefixedText() ) {
 					$this->normalizedTitles[$titleString] = $titleObj;
 				}
 			}
-			if ( $linkBatch->isEmpty() ) {
-				$this->dieUsage( "no valid titles were given", 'pi_novalidtitles' );
-			}
-			// Create a list of pages to query
-			$where[] = $linkBatch->constructSet( 'page', $this->db );
-			$this->requestsize += $linkBatch->getSize();
 
-			// we don't need the batch any more, data can be destroyed
-			return $linkBatch->data;
-		} else {
-			return null;
+            if (!$linkBatch->isEmpty()) {
+			    // Create a list of pages to query
+			    $where[] = $linkBatch->constructSet( 'page', $this->db );
+			    $this->requestsize += $linkBatch->getSize();
+
+			    // we don't need the batch any more, data can be destroyed
+			    return $linkBatch->data;
+            }
 		}
+
+		return null;    // No titles to get from the database
 	}
 
 	/**
