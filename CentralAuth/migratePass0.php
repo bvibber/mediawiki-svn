@@ -14,25 +14,36 @@ require_once 'commandLine.inc';
  */
 function migratePassZero() {
 	global $wgDBname;
-	$dbBackground = wfGetDB( DB_SLAVE ); // fixme for large dbs
+	$dbr = wfGetDB( DB_SLAVE ); // fixme for large dbs
+	
 	$start = microtime( true );
-	$result = $dbBackground->select(
-		'user',
-		array(
-			'user_id',
-			'user_name',
-			'user_password',
-			'user_newpassword',
-			'user_email',
-			'user_email_authenticated',
-		),
-		'',
-		__METHOD__ );
+	
+	// We're going to run two queries side-by-side here.
+	// The first fetches user data from 'user'
+	// The second fetches edit counts from 'revision'
+	//
+	// We combine these into an unholy chimera and send it to the
+	// central authentication server, which in theory might be
+	// on another continent.
+	
+	$user = $dbr->tableName( 'user' );
+	$revision = $dbr->tableName( 'revision' );
+	$result = $dbr->query(
+		"SELECT
+			user_id,
+			user_name,
+			user_password,
+			user_newpassword,
+			user_email,
+			user_email_authenticated,
+			COUNT(rev_user) AS user_editcount
+		FROM $user
+		LEFT OUTER JOIN $revision ON user_id=rev_user
+		GROUP BY user_id" );
+	
 	$migrated = 0;
-	while( $row = $dbBackground->fetchObject( $result ) ) {
-		$count = getEditCount( $row->user_id );
-		//$count = 0;
-		CentralAuthUser::storeLocalData( $wgDBname, $row, $count );
+	while( $row = $dbr->fetchObject( $result ) ) {
+		CentralAuthUser::storeLocalData( $wgDBname, $row, $row->user_editcount );
 		if( ++$migrated % 100 == 0 ) {
 			$delta = microtime( true ) - $start;
 			$rate = ($delta == 0.0) ? 0.0 : $migrated / $delta;
@@ -40,7 +51,7 @@ function migratePassZero() {
 				$migrated, $delta, $rate );
 		}
 	}
-	$dbBackground->freeResult( $result );
+	$dbr->freeResult( $result );
 	
 	$delta = microtime( true ) - $start;
 	$rate = ($delta == 0.0) ? 0.0 : $migrated / $delta;
