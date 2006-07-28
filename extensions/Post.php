@@ -141,7 +141,10 @@ class Post extends Article {
         function createLqtRecord() {
                 $dbr =& wfGetDB( DB_MASTER );
 
-                if ( $this->getID() == 0 ) { debug_print_backtrace(); }
+                if ( $this->getID() == 0 ) {
+		     echo "DANGER WILL ROBISON: createLqtRecord where post's mId = 0!";
+		     debug_print_backtrace();
+		}
                 
                 $res = $dbr->select( array('lqt', 'page'), 'lqt_id',
                                      array('lqt_this = page_id',
@@ -232,7 +235,7 @@ class Post extends Article {
                 $dbr =& wfGetDB( DB_SLAVE );
                 
                 $line = $dbr->selectRow( array('lqt', 'page'),
-                                         array('lqt_next', 'lqt_first_reply', 'lqt_topic'),
+                                         array('lqt_next', 'lqt_first_reply', 'lqt_thread'),
                                          array('lqt_this = page_id',
                                                'page_id' => $this->getID()),
                                          __METHOD__);
@@ -251,10 +254,10 @@ class Post extends Article {
                         $this->mFirstReply = null;
                 }
 
-		if ( $line && $line->lqt_topic ) {
-		     $this->mTopic = $line->lqt_topic;
+		if ( $line && $line->lqt_thread ) {
+		     $this->mThread = Thread::newFromId( $line->lqt_thread );
 		} else {
-		     $this->mTopic = null;
+		     $this->mThread = null;
 		}
         }
 
@@ -341,7 +344,30 @@ class Post extends Article {
                 $this->loadLinks();
                 return $this->mFirstReply;
         }
+  
+	// @return the Thread that this post is a member of.
+	function thread() {
+	     $this->loadLinks();
+	     return $this->mThread;
+	}
+	
+	function setThread( $t ) {
+	     $this->createLqtRecord();
                 
+	     $dbr =& wfGetDB( DB_MASTER );
+
+	     $set_to = $t ? $t->getID() : null;
+
+	     $res = $dbr->update( 'lqt',
+				  /* SET */   array( 'lqt_thread' => $set_to ),
+				  /* WHERE */ array( 'lqt_this' => $this->getID(), ),
+				  __METHOD__);
+
+	     $this->mFirstReply = $t;
+                
+	     return $res;
+	}
+	
         /**
          * Find the article's original author (the user who created the first revision).
          * @param Article $article

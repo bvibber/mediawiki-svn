@@ -26,6 +26,19 @@ li {
 	margin-bottom: .1em;
 }*/
 
+.lqt_archive_browser {
+        margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.lqt_channel_body {
+        background-color: white;
+}
+
+.ns-98 #content {
+        background-color: white;
+}
+
 .lqt_post { border: solid 1px #ddd; margin-top: 0.1in; padding: 0.2em; }
 
 .lqt_post_highlight { border: solid 1px #fabd23; margin-top: 0.1in; padding: 0.2em; }

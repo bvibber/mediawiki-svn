@@ -19,11 +19,37 @@ CREATE TABLE /*$wgDBprefix*/lqt (
   -- If this post has any replies, this points to the first one.
   lqt_first_reply int(8) unsigned NULL,
 
-  -- Top-level posts have topic/subject/headers.
-  lqt_topic varchar(255) NULL,
+  -- lqt_thread to which this post belongs.
+  lqt_thread int(8) unsigned NOT NULL,
 
   PRIMARY KEY this_lqt_id (lqt_this, lqt_id),
   UNIQUE INDEX lqt_id (lqt_id),
-  UNIQUE INDEX lqt_this (lqt_this)
+  UNIQUE INDEX lqt_this (lqt_this),
+  INDEX lqt_thread (lqt_thread)
          
+) TYPE=InnoDB;
+
+CREATE TABLE /*$wgDBprefix*/lqt_thread (
+       lqt_thread_id int(8) unsigned NOT NULL auto_increment,
+       
+       -- the page that this thread is posted to.
+       lqt_thread_page int(8) unsigned NOT NULL,
+
+       -- the first top-level post (page), from which the linked list hangs.
+       lqt_thread_first_post int(8) unsigned NOT NULL,
+
+       -- special summary post (page).
+       lqt_thread_summary_post int(8) unsigned NULL,
+
+       -- anytime a post in the thread is inserted, updated, deleted, etc., 
+       -- this timestamp is updated to the current time.
+       lqt_thread_touched char(14) binary NOT NULL default '',
+
+       -- header line.
+       lqt_thread_subject varchar(255) binary NULL,
+
+       PRIMARY KEY lqt_thread_page_id (lqt_thread_page, lqt_thread_id),
+       UNIQUE INDEX lqt_thread_id (lqt_thread_id),
+       INDEX lqt_thread_page_touched (lqt_thread_page, lqt_thread_touched),
+       INDEX lqt_thread_touched (lqt_thread_touched)
 ) TYPE=InnoDB;

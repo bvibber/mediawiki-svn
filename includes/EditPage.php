@@ -45,6 +45,9 @@ class EditPage {
 	var $edittime = '', $section = '', $starttime = '';
 	var $oldid = 0, $editintro = '', $scrolltop = null;
 
+	// Cf. showEditForm().
+	var $formCallback;
+
 	/**
 	 * @todo document
 	 * @param $article
@@ -1179,8 +1182,7 @@ class EditPage {
 <form id="editform" name="editform" method="post" action="$action" enctype="multipart/form-data">
 END
 );
-		var_dump($this->formCallback);
-		if( is_callable( $this->formCallback ) ) {
+		if( $this->formCallback && is_callable( $this->formCallback ) ) {
 			call_user_func_array( $this->formCallback, array( &$wgOut ) );
 		}
 
