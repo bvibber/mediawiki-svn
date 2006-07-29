@@ -791,7 +791,7 @@ class Linker {
 			}else{
 				$ratio = $height/$width;
 			}
-			//only allow scale if video
+			//scale if video
 			if($img->type == MEDIATYPE_VIDEO){
 				if(isset($options['width']))$width=$options['width'];				
 				if(isset($options['height'])){
@@ -800,9 +800,7 @@ class Linker {
 					//use the ratio of grabbed frame to keep scale. 
 					$height = round($width*$ratio);				
 				}
-			}									
-			
-				
+			}																
 			
 			//this may be usefull if we want to include a specific alternate image for the movie still.
 			if ( $options['manual_thumb'] != '' ) # Use manually specified thumbnail
@@ -869,8 +867,7 @@ class Linker {
 				}else{
 					$im_frame_url = $img->movieFrameUrl();
 					$stream_type = 'video';
-				}
-				
+				}				
 				
 				$u = $title->escapeLocalURL();
 				$alt = $options['alt'];
@@ -879,7 +876,7 @@ class Linker {
 				//@todo pull media server location from config. 	
 				$media_url =  "http://metavid.ucsc.edu" . $img->getUrl();					
 				
-				//do output: 			
+				//do output: 
 				$embed_out='';
 				
 				//@todo move embed media js include to <head> 
@@ -888,7 +885,6 @@ class Linker {
 				}
 				//grab the duration
 				$duration = $img->getDuration();
-				$height = $img->getHeight();
 				//echo "GET DURRATION : $duration ... while get HEIGHT: $height<BR>";
 				
 				$embed_vars = "{target:'{$base_unique_name}',media_url:'{$media_url}',stream_type:'{$stream_type}'";
@@ -903,8 +899,8 @@ class Linker {
 							<img id ="img_{$base_unique_name}" width="{$width}" height="{$height}" src="{$im_frame_url}">	
 						</a>		
 					</div>
-					<div class="thumbcaption" {$textalign}>														
-						<div id="magnify_{$base_unique_name}" class="magnify" style="width:54px;float:{$magnifyalign};">
+					<div class="thumbcaption" {$textalign}>								
+						<div id="magnify_{$base_unique_name}" class="magnify" style="width:81px;float:{$magnifyalign};">
 							<a id="play_{$base_unique_name}" title="play media" href="javascript:auto_embed({$embed_vars})">
 								<img style="float:right" src="{$icon_path}vid_play_sm.png">
 							</a>
@@ -923,8 +919,11 @@ class Linker {
 								</a> 								
 							</span>			
 							<a id="info_{$base_unique_name}" title="media info" href="{$u}">
-								<img style="float:right" src="{$wgScriptPath}/skins/common/images/icons/vid_info_sm.png">
-							</a>														
+								<img style="float:right" width="27" height="27" src="{$wgScriptPath}/skins/common/images/icons/vid_info_sm.png">
+							</a>			
+							<a id="dw_{$base_unique_name}" title="download media" href="{$media_url}">
+								<img style="float:right" width="27" height="27" src="{$wgScriptPath}/skins/common/images/icons/vid_download_sm.png">
+							</a>									
 						</div>
 						{$label}
 					</div>

@@ -28,6 +28,8 @@ var is_ie5up = (is_ie && (is_major == 4)
 || (agt.indexOf("msie 5.5")!=-1)
 || (agt.indexOf("msie 6.0")!=-1) ) );
 
+var is_mac = (agt.indexOf("mac os x")!= -1);
+
 /*
 	EMBED FUNCTIONS: 
 	replace a target with a emebed type and provided url.
@@ -49,6 +51,11 @@ function auto_embed(opt){
 	//force jre:
 	//detect plugin avalibilty
 	var embed_type = detect_client_plugins();
+	//force jre for macs for now
+	if(is_mac){
+		embed_type = 'jre';
+	}
+	
 	//draw given plugin type: 
 	//document.getElementById(target).innerHTML='play with:'+embed_type +' url: ' + url;
 
@@ -101,7 +108,7 @@ function vlc_embed(opt){
 	//div_parent.appendChild(div_cnt);
 	
 	//expand the magnified section to give space for the controls: 
-	document.getElementById("magnify_"+opt['target']).style.width='145px';
+	document.getElementById("magnify_"+opt['target']).style.width='172px';
 	//show the controls:	
 	document.getElementById("cnt_" + opt['target']).style.display='inline';
 	
@@ -123,14 +130,7 @@ function run_vlc(target, media_url){
 	document.video_Launch_of_Skylab_ogg.play();*/
 }
 function jre_embed(opt){
-	//alert(target+","+ media_url+","+ opt);
-	
-	//var eb = document.createElement("applet");
-	//eb.code='com.fluendo.player.Cortado.class';
-	//eb.archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar";
-	//eb.width='320';
-	//eb.height='240';	
-	
+
 	//need to build an iframe include only really deal with java security issues
 	//@todo make sure the embed code is coming from the same server as the media
 	var iframe = document.createElement("iframe");
@@ -145,15 +145,21 @@ function jre_embed(opt){
 
 	if(!opt['stream_type'])opt['stream_type']='video';
 
-	//@todo load in the path and server url from mediaWiki
-	var cortado_src = 'http://metavid.ucsc.edu/wiki_dev/phase3/embed/cortado_embed.php';
-	cortado_src+= "?media_url=" + opt['media_url'];
-	cortado_src+= "&stream_type=" + opt['stream_type'];
-	cortado_src+= "&width=" + opt['width'] + "&height=" + opt['height'];
-	cortado_src+= "&duration=" + opt['duration'];
+	//@todo load in the path and server url from mediaWiki or from the media URL:
+
+	//for now use jcraft for audio: 
+	if(opt['stream_type']=='audio'){
+		var iframe_src = 'http://metavid.ucsc.edu/wiki_dev/jorbis-0.0.16/player/jorbis_embed.php';
+	}else{	
+		var iframe_src = 'http://metavid.ucsc.edu/wiki_dev/phase3/embed/cortado_embed.php';
+	}	
+	iframe_src+= "?media_url=" + opt['media_url'];
+	iframe_src+= "&stream_type=" + opt['stream_type'];
+	iframe_src+= "&width=" + opt['width'] + "&height=" + opt['height'];
+	iframe_src+= "&duration=" + opt['duration'];
 	
 	//document.write(cortado_src);
-	iframe.src=cortado_src;
+	iframe.src=iframe_src;
 	
 	//wiki_dev/phase3/embed/cortado_embed.php?media_url=http://metavid.ucsc.edu/wiki_dev/phase3/images/3/38/Launch_of_Skylab.ogg
 	info_div = document.getElementById("info_"+opt['target']);
