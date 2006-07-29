@@ -31,6 +31,22 @@ li {
 	margin-bottom: 1em;
 }
 
+.lqt_deleted_notice {
+       color: #999;
+       font-style: italic;
+}
+
+.lqt_deleted_notice a {
+	 color: #5874d1;
+}
+.lqt_deleted_notice a:visited {
+	color: #937cba;
+}
+.lqt_deleted_notice a:active {
+	color: #faa700;
+}     
+}
+
 .lqt_channel_body {
         background-color: white;
 }

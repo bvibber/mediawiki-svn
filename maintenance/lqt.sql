@@ -22,6 +22,12 @@ CREATE TABLE /*$wgDBprefix*/lqt (
   -- lqt_thread to which this post belongs.
   lqt_thread int(8) unsigned NOT NULL,
 
+  -- Rudementary deletion.
+  lqt_is_deleted boolean NOT NULL,
+
+  -- Who deleted the post? == user_text.
+  lqt_deleted_by varchar(255) binary NULL,
+
   PRIMARY KEY this_lqt_id (lqt_this, lqt_id),
   UNIQUE INDEX lqt_id (lqt_id),
   UNIQUE INDEX lqt_this (lqt_this),

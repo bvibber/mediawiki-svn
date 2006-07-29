@@ -212,7 +212,7 @@ class Post extends Article {
 
                 $this->mTopic = $s;
                 
-		return null; // FIXME return success/failure.
+		return $res;
         }
 
 
@@ -221,7 +221,28 @@ class Post extends Article {
 	     return $this->mTopic;
 	}
 
+	function setDeleted($b) {
+	        $this->createLqtRecord();
+                
+		$new_b = $b ? 1 : 0;
 
+                $dbr =& wfGetDB( DB_MASTER );
+
+                $res = $dbr->update( 'lqt',
+                                     /* SET */   array( 'lqt_is_deleted' => $new_b ),
+                                     /* WHERE */ array( 'lqt_this' => $this->getID(), ),
+                                     __METHOD__);
+
+                $this->mIsDeleted = $new_b;
+		
+		return $res;
+	}
+
+	function isDeleted() {
+	     $this->loadLinks();
+	     return $this->mIsDeleted;
+	}
+	
         /**
          * Populate $mFirstReply and $mNextPost with the appropriate Post objects.
          * Hits the database, but only the first time.
@@ -235,7 +256,7 @@ class Post extends Article {
                 $dbr =& wfGetDB( DB_SLAVE );
                 
                 $line = $dbr->selectRow( array('lqt', 'page'),
-                                         array('lqt_next', 'lqt_first_reply', 'lqt_thread'),
+                                         array('*'),
                                          array('lqt_this = page_id',
                                                'page_id' => $this->getID()),
                                          __METHOD__);
@@ -258,6 +279,12 @@ class Post extends Article {
 		     $this->mThread = Thread::newFromId( $line->lqt_thread );
 		} else {
 		     $this->mThread = null;
+		}
+
+		if ( $line && $line->lqt_is_deleted ) {
+		     $this->mIsDeleted = $line->lqt_is_deleted ? 1 : 0;
+		} else {
+		     $this->mIsDeleted = 0;
 		}
         }
 

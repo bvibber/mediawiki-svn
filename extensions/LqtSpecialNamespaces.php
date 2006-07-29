@@ -118,6 +118,27 @@ else {
 			
 			$threads = Thread::threadsOfArticle($article, $first_day, $last_day);
 
+			// Execute deletes and undeletes:
+			$delete_id = $wgRequest->getInt( 'lqt_do_delete_id', false );
+			$undelete_id = $wgRequest->getInt( 'lqt_do_undelete_id', false );
+			$t = null;
+			if( $delete_id ) {
+			     $t = Title::newFromID($delete_id);
+			     $p = new Post( $t );
+			     $p->setDeleted(true);
+			} else if ($undelete_id) {
+			     $t = Title::newFromID($undelete_id);
+			     $p = new Post( $t );
+			     $p->setDeleted(false);
+			}
+			if ( $delete_id || $undelete_id ) {
+			     $query = "lqt_highlight={$t->getPartialURL()}#lqt_post_{$t->getPartialURL()}";
+			     $wgOut->redirect( $this->talkTitle->getFullURL($query) );
+			}
+		   
+
+
+
 			// Execute move operations:
 			// TODO find a better home for this.
 			$post_id     = $wgRequest->getInt( 'lqt_move_post_id',  false );
@@ -212,6 +233,26 @@ else {
 
 	       // SpecialPage::setHeaders
 	       $this->setHeaders();
+
+	       // Execute deletes and undeletes:
+	       $delete_id = $wgRequest->getInt( 'lqt_do_delete_id', false );
+	       $undelete_id = $wgRequest->getInt( 'lqt_do_undelete_id', false );
+	       $t = null;
+	       if( $delete_id ) {
+		    $t = Title::newFromID($delete_id);
+		    $p = new Post( $t );
+		    $p->setDeleted(true);
+	       } else if ($undelete_id) {
+		    $t = Title::newFromID($undelete_id);
+		    $p = new Post( $t );
+		    $p->setDeleted(false);
+	       }
+	       if ( $delete_id || $undelete_id ) {
+		    $query = "lqt_highlight={$t->getPartialURL()}#lqt_post_{$t->getPartialURL()}";
+		    $wgOut->redirect( $this->pageTitle->getFullURL($query) );
+	       }
+		   
+
 
 	       // Execute move operations:
 	       $post_id     = $wgRequest->getInt( 'lqt_move_post_id',  false );

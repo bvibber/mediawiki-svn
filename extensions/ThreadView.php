@@ -99,7 +99,13 @@ class ThreadView {
 
 	  $is_top_level = ( $this->mThread->firstPost()->getID() == $p->getID() );
 	  
-	  if ( $this->editingId == $p->getID() ) {
+	  if ( $p->isDeleted() && !$wgRequest->getVal('lqt_show_deleted', false) ) {
+	       // Render deleted posts:
+	       $author = $p->originalAuthor();
+	       $show_href = $this->talkTitle->getLocalURL('lqt_show_deleted=true&lqt_highlight='.$t.'#lqt_post_'.$t);
+	       $wgOut->addHTML( '<span class="lqt_deleted_notice">Deleted post by '.$author.'.<a href='.$show_href.'>Show</a></span>' );
+	  }
+	  elseif ( $this->editingId == $p->getID() ) {
 	       $this->editForm( $p );
 //	       $this->showEditingForm($p, "lqt_editing={$p->getID()}",  $is_top_level);
 				
@@ -140,6 +146,17 @@ class ThreadView {
 	       $wgOut->addHTML( wfOpenElement('li') .
 				wfElementClean('a', array('href'=>$move_href),'Move') .
 				wfCloseElement( 'li') );
+
+	       if ($p->isDeleted()) {
+		    $delete_href = $this->talkTitle->getLocalURL( "lqt_do_undelete_id={$p->getID()}" );
+		    $delete_message = "Undelete";
+	       } else {
+		    $delete_href = $this->talkTitle->getLocalURL( "lqt_do_delete_id={$p->getID()}" );
+		    $delete_message = "Delete";
+	       }
+	       $wgOut->addHTML( wfOpenElement('li') .
+				wfElementClean('a', array('href'=>$delete_href), $delete_message) .
+				wfCloseElement('li') );
 
 	       $permalinkTitle = Title::makeTitle( LQT_NS_THREAD, $p->getTitle()->getDBkey() );
 	       $permalink_href = $permalinkTitle->getLocalURL();
