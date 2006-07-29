@@ -224,65 +224,83 @@ class CentralAuthUser {
 	}
 	
 	/**
-	 * Try to auto-migrate this account, possibly using a given
-	 * password plaintext for additional oomph.
+	 * Pick a winning master account and try to auto-merge as many as possible.
 	 * @fixme add some locking or something
 	 */
 	function attemptAutoMigration( $password='' ) {
-		$dbw = wfGetDB( DB_MASTER, 'CentralAuth' );
-		$attached = array();
-		$unattached = array();
-		$migrated = array();
+		$rows = $this->fetchUnattached();
 		
-		$result = $dbw->select( 'localuser',
-			array(
-				'lu_dbname',
-				'lu_id',
-				'lu_name',
-				'lu_password',
-				'lu_email',
-				'lu_email_authenticated',
-				'lu_editcount',
-				'lu_attached',
-			),
-			array( 'lu_name' => $this->mName ),
-			__METHOD__ );
-		while( $row = $dbw->fetchObject( $result ) ) {
-			if( $row->lu_attached ) {
-				$attached[] = $row;
-			} else {
-				$unattached[] = $row;
+		$winner = false;
+		$max = -1;
+		$attach = array();
+		$unattach = array();
+		
+		// We have to pick a master account
+		// The winner is the one with the most edits, usually
+		foreach( $rows as $row ) {
+			if( $row->lu_editcount > $max ) {
+				$winner = $row;
+				$max = $row->lu_editcount;
 			}
 		}
-		$dbw->freeResult( $result );
+		assert( isset( $winner ) );
 		
-		if( count( $unattached ) == 0 ) {
-			wfDebugLog( 'CentralAuth',
-				"All accounts already migrated for '$this->mName'" );
-			return false;
-			// Or... should this return true ?
+		// Do they all match?
+		$allMatch = true;
+		$allMatchOrEmpty = true;
+		$allMatchOrUnused = true;
+		$isConflict = false;
+		$winningMail = ($winner->lu_email == '' ? false : $winner->lu_email);
+		
+		foreach( $rows as $row ) {
+			if( $row->lu_dbname == $winner->lu_dbname ) {
+				$attach[] = $row;
+			} else {
+				if( $row->lu_email !== $winningMail ) {
+					$allMatch = false;
+					if( $row->lu_email !== '' ) {
+						$allMatchOrEmpty = false;
+					}
+					if( $row->lu_editcount == 0 ) {
+						// Unused accounts are fair game for reclaiming
+						$attach[] = $row;
+					} else {
+						$allMatchOrUnused = false;
+						$unattach[] = $row;
+						$isConflict = true;
+					}
+				} else {
+					$attach[] = $row;
+				}
+			}
 		}
 		
-		if( count( $attached ) == 0 ) {
-			if( count( $unattached ) == 1 ) {
-				// convenient special case
-				$row = $unattached[0];
-				$db = $row->lu_dbname;
+		if( $allMatch ) {
+			if( count( $rows ) == 1 ) {
 				wfDebugLog( 'CentralAuth',
-					"Attaching '$this->mName' on $db as singleton" );
-				$this->storeGlobalData(
-					$row->lu_id,
-					$row->lu_password,
-					$row->lu_email,
-					$row->lu_email_authenticated );
-				$this->attach( $db );
-				
-				$dbw->commit();
-				return true;
+					"Singleton migration for '$this->mName'" );
 			} else {
-				// We have to pick a winner...
+				wfDebugLog( 'CentralAuth',
+					"Full automatic migration for '$this->mName'" );
 			}
+		} else {
+			wfDebugLog( 'CentralAuth',
+				"Incomplete migration for '$this->mName'" );
 		}
+
+		$this->storeGlobalData(
+			$winner->lu_id,
+			$winner->lu_password,
+			$winner->lu_email,
+			$winner->lu_email_authenticated );
+		
+		foreach( $attach as $row ) {
+			$this->attach( $row->lu_dbname );
+		}
+	
+	}
+	
+	function attemptPasswordMigration( $password ) {
 		
 		// Look for accounts we can match by password
 		foreach( $unattached as $key => $row ) {
@@ -434,19 +452,37 @@ class CentralAuthUser {
 	 * @return array of database name strings
 	 */
 	function listUnattached() {
-		$dbr = wfGetDB( DB_MASTER, 'CentralAuth' );
-		$res = $dbr->select(
-			array( 'globaluser', 'localuser' ),
-			array( 'lu_database' ),
-			array(
-				'lu_name' => $this->mName,
-				'lu_attached' => 0 ) );
-		$list = array();
-		while( $row = $db->fetchObject( $res ) ) {
-			$list[] = $row->lu_database;
+		$rows = $this->fetchUnattached;
+		$dbs = array();
+		foreach( $rows as $row ) {
+			$dbs[] = $row->lu_dbname;
 		}
-		$db->freeResult( $res );
-		return $list;
+		return $dbs;
+	}
+	
+	function fetchUnattached() {
+		$dbw = wfGetDB( DB_MASTER, 'CentralAuth' );
+		$result = $dbw->select( 'localuser',
+			array(
+				'lu_dbname',
+				'lu_id',
+				'lu_name',
+				'lu_password',
+				'lu_email',
+				'lu_email_authenticated',
+				'lu_editcount',
+				'lu_attached',
+			),
+			array(
+				'lu_name'     => $this->mName,
+				'lu_attached' => 0,
+			),
+			__METHOD__ );
+		while( $row = $dbw->fetchObject( $result ) ) {
+			$rows[] = $row;
+		}
+		$dbw->freeResult( $result );
+		return $rows;
 	}
 	
 	function getEmail() {
