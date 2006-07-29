@@ -82,8 +82,6 @@ function definedMeaningExpression($definedMeaningId) {
 				if ($result == "")
 					$result = $definingExpression;
 			}
-			else
-				echo "Right on";
 		}
 	}
 	
