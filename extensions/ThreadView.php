@@ -6,6 +6,7 @@ class ThreadView {
      protected static $callbackpost;
      protected static $callbackeditpage;
 
+     protected static $stuffDoneOnceDone;
      
      /**
       * @param $thread Thread object we're looking at.
@@ -33,23 +34,52 @@ class ThreadView {
 	  $this->showNext = false;
      }
 
+     function doStuffOnce() {
+	  global $wgOut, $wgJsMimeType, $wgStylePath;
+
+	  if (ThreadView::$stuffDoneOnceDone) return;
+	  ThreadView::$stuffDoneOnceDone = true;
+
+	  $s = "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/lqt.js\"><!-- lqt js --></script>\n";
+	  $wgOut->addScript($s);
+
+	  $h = $wgOut->getOnloadHandler();
+	  if ( $h != '' ) {
+	       $h .= '; ';
+	  }
+	  $h .= 'lqt_on_load();';
+	  $wgOut->setOnloadHandler($h);
+     }
+
      function render() {
 	  global $wgOut;
+
+	  $this->doStuffOnce();
 
 	  // Instruct Parser not to include section edit links.
 	  $wgOut->mParserOptions->setEditSection(false);
 
+	  $thread_id_attrib = 'lqt_thread_' . $this->mThread->getID();
+
+	  $wgOut->addHTML("\n\n\n");
+
 	  // Subject header:
 	  if ( $this->mIsTopLevel ) {
 	       if ( $this->mThread->mSubject )
-		    $wgOut->addWikiText( '=='.$this->mThread->mSubject.'==' );
+		    $wgOut->addHTML( wfElement('h2', array('class'=>'lqt_thread_subject_header',
+							   'onclick'=>"lqt_hide_show('$thread_id_attrib')"),
+					       $this->mThread->mSubject) );
 	       else
 		    $wgOut->addWikiText( '----' );
 	  }
 	  
+	  $wgOut->addHTML('<div class="lqt_thread" id="'.$thread_id_attrib.'">');
 	  if( $this->mFirstPost ) {
 	       $this->renderStartingFrom( $this->mFirstPost );
 	  }
+	  $wgOut->addHTML('</div>');
+
+	  $wgOut->addHTML("\n\n\n");
      }
 
 

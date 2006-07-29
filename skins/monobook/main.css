@@ -26,6 +26,10 @@ li {
 	margin-bottom: .1em;
 }*/
 
+.lqt_thread {
+        display: none;
+}
+
 .lqt_archive_browser {
         margin-top: 1em;
 	margin-bottom: 1em;
