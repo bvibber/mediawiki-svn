@@ -928,7 +928,7 @@ class BotQueryProcessor {
 		}
 
 		$where = array( 'page_namespace' => intval($apnamespace) );
-		if( $apfrom !== '' ) $where[] = 'page_title>=' . $this->db->addQuotes($apfrom);
+		if( $apfrom !== '' ) $where[] = 'page_title>=' . $this->db->addQuotes(titleToKey($apfrom));
 
 		if ($apfilterredir === 'redirects')
             $where['page_is_redirect'] = 1;
@@ -949,7 +949,7 @@ class BotQueryProcessor {
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			if( ++$count > $aplimit ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$this->addStatusMessage( $prop, array('next' => $row->page_title) );
+				$this->addStatusMessage( $prop, array('next' => keyToTitle($row->page_title)) );
 				break;
 			}
 			$this->storePageInfo( $row );
@@ -983,7 +983,7 @@ class BotQueryProcessor {
 			. " FROM $page LEFT JOIN $langlinks ON page_id = ll_from"
 			. ' WHERE'
 			. ' ll_from IS NULL AND page_is_redirect = 0 AND page_namespace=' . intval($nlnamespace)
-			. ( $nlfrom === '' ? '' : ' AND page_title>=' . $this->db->addQuotes($nlfrom) )
+			. ( $nlfrom === '' ? '' : ' AND page_title>=' . $this->db->addQuotes(titleToKey($nlfrom)) )
 			. ' ORDER BY page_namespace, page_title'
 			. ' LIMIT ' . intval($nllimit+1);
 
@@ -996,7 +996,7 @@ class BotQueryProcessor {
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			if( ++$count > $nllimit ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$this->addStatusMessage( $prop, array('next' => $row->page_title) );
+				$this->addStatusMessage( $prop, array('next' => keyToTitle($row->page_title)));
 				break;
 			}
 			$this->storePageInfo( $row );
@@ -1028,7 +1028,7 @@ class BotQueryProcessor {
 		$tables = array( 'categorylinks' );
 		$conds = array( 'cl_to' => $categoryObj->getDBkey() );
 		if ($cpfrom != '')
-			$conds[] = 'cl_sortkey >= ' . $this->db->addQuotes($cpfrom);
+			$conds[] = 'cl_sortkey >= ' . $this->db->addQuotes(titleToKey($cpfrom));
 
 		if( $cpnamespace !== NS_ALL_NAMESPACES )
 		{
@@ -1060,7 +1060,7 @@ class BotQueryProcessor {
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			if( ++$count > $cplimit ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$this->addStatusMessage( 'category', array('next' => $row->cl_sortkey) );
+				$this->addStatusMessage( 'category', array('next' => keyToTitle($row->cl_sortkey)));
 				break;
 			}
 			$this->addRaw( 'pageids', $row->cl_from );
@@ -2561,6 +2561,15 @@ function mergeParameters( &$generators )
 function formatTimeInMs($timeDelta)
 {
 	return round( $timeDelta * 1000.0, 1 );
+}
+
+function titleToKey($title)
+{
+    return str_replace(' ', '_', $title);
+}
+function keyToTitle($key)
+{
+    return str_replace('_', ' ', $key);
 }
 
 /**
