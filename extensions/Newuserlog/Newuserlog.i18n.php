@@ -51,4 +51,11 @@ $wgNewuserlogMessages['nl'] = array(
 	'newuserlog-create2-entry' => 'heeft gebruiker $1 ingeschreven',
 	'newuserlog-create-text'   => "[[{{ns:user_talk}}:$1|$2]] | [[{{ns:special}}:Contributions/$1|$3]] | [[{{ns:special}}:Blockip/$1|$4]]",
 );
+$wgNewuserlogMessages['pt'] = array(
+	'newuserlogpage'           => 'Registo de criação de utilizadores',
+	'newuserlogpagetext'       => 'Este é um registo de novas contas de utilizador',
+	'newuserlog-create-entry'  => 'Novo utilizador',
+	'newuserlog-create2-entry' => 'criou conta para $1',
+	'newuserlog-create-text'   => "[[{{ns:user_talk}}:$1|$2]] | [[{{ns:special}}:Contributions/$1|$3]] | [[{{ns:special}}:Blockip/$1|$4]]",
+);
 ?>
