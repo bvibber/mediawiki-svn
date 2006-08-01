@@ -26,4 +26,5 @@ function lqt_hide_show(that_id) {
             elem.style.display = "none";
         }
     }
+
 }

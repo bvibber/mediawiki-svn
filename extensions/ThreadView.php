@@ -31,7 +31,7 @@ class ThreadView {
 	  $this->highlightingTitle = $highlightingTitle;
 	  $this->movingId = $movingId;
 
-	  $this->showNext = false;
+	  $this->showNext = true;
      }
 
      function doStuffOnce() {
@@ -73,7 +73,7 @@ class ThreadView {
 		    $wgOut->addWikiText( '----' );
 	  }
 	  
-	  $wgOut->addHTML('<div class="lqt_thread" id="'.$thread_id_attrib.'">');
+	  $wgOut->addHTML('<a name="'.$thread_id_attrib.'"></a><div class="lqt_thread" id="'.$thread_id_attrib.'">');
 	  if( $this->mFirstPost ) {
 	       $this->renderStartingFrom( $this->mFirstPost );
 	  }

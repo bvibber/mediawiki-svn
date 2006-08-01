@@ -26,8 +26,12 @@ li {
 	margin-bottom: .1em;
 }*/
 
-.lqt_thread {
+#lqt_archive_toc {
         display: none;
+}
+
+.lqt_thread {
+//        display: none;
 }
 
 .lqt_archive_browser {

@@ -57,7 +57,7 @@ else {
 		  
 		  $wgOut->addHTML(
 		       wfOpenElement('div', array('class'=>'lqt_archive_browser')) .
-		       wfOpenElement('form', array('action'=>$this->talkTitle->getFUllURL())) .
+		       wfOpenElement('form', array('action'=>$this->talkTitle->getFullURL())) .
 		       wfOpenElement('select', array('name'=>'lqt_show_month')));
 
 		  $recent_option_attribs = $showing_recent ? array('value'=>'recent', 'selected'=>'true')
@@ -76,10 +76,29 @@ else {
 		  $wgOut->addHTML(
 		       wfCloseElement('select') .
 		       wfSubmitButton('Go') .
-		       wfCloseElement('form') .
-		       wfOpenElement('form', array()) .
-//		       wfInput('lqt_search', false, 'Search', array('style'=>'color: #999; margin-left: 1in;')) .
-		       wfCloseElement('form') .
+		       wfCloseElement('form') 
+		       );
+
+		  $wgOut->addHTML(
+		       wfElement( 'a', array('href'=>'#', 'class'=>'', 'onclick'=>'lqt_hide_show("lqt_archive_toc")'), "Show Archive TOC" ) .
+		       wfOpenElement( 'div', array('id'=>'lqt_archive_toc', 'class'=>'toc') ) .
+		       wfOpenElement('ul')
+		       );
+
+		  $all_threads = Thread::threadsOfArticle( $article );
+
+		  foreach( $all_threads as $t ) {
+		       $yyymm = substr($t->touched(), 0, 6);
+		       $wgOut->addHTML(
+			    wfOpenElement('li') .
+			    wfElement( 'a', array('href'=>$this->talkTitle->getLocalURL("lqt_show_month=$yyymm#lqt_thread_{$t->getID()}")), $t->subject() ) .
+			    wfCloseElement('li')
+			    );
+		  }
+
+		  $wgOut->addHTML(
+		       wfCloseElement('ul') .
+		       wfCloseElement('div') .
 		       wfCloseElement('div')
 		       );
 		  
