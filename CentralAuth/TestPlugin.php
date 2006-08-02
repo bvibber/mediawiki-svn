@@ -300,27 +300,52 @@ class CentralAuthUser {
 	
 	}
 	
-	function attemptPasswordMigration( $password ) {
+	/**
+	 * Attempt to migrate any remaining unattached accounts by virtue of
+	 * the password check.
+	 * 
+	 * @param string $password plaintext password to try matching
+	 * @param $migrated out array of db names for records which were
+	 *                  successfully migrated by this operation
+	 * @param $remaining out array of db names for records which are still
+	 *                   unattached after the operation
+	 * @return bool true if all accounts are migrated at the end
+	 */
+	function attemptPasswordMigration( $password, &$migrated=null, &$remaining=null ) {
+		$rows = $this->fetchUnattached();
+		
+		if( count( $rows ) == 0 ) {
+			wfDebugLog( 'CentralAuth',
+				"Already fully migrated user '$this->mName'" );
+			return true;
+		}
+		
+		$migrated = array();
+		$remaining = array();
 		
 		// Look for accounts we can match by password
-		foreach( $unattached as $key => $row ) {
+		foreach( $rows as $key => $row ) {
 			if( $this->matchHash( $password, $row->lu_id, $row->lu_password ) ) {
 				wfDebugLog( 'CentralAuth',
 					"Attaching '$this->mName' on $row->lu_dbname by password" );
 				$this->attach( $row->lu_dbname );
-				$migrated[] = $row;
+				$migrated[] = $row->lu_dbname;
+			} else {
+				wfDebugLog( 'CentralAuth',
+					"No password match for '$this->mName' on $row->lu_dbname" );
+				$remaining[] = $row->lu_dbname;
 			}
 		}
 		
-		if( count( $migrated ) == count( $unattached ) ) {
+		if( count( $remaining ) == 0 ) {
 			wfDebugLog( 'CentralAuth',
 				"Successfull auto migration for '$this->mName'" );
 			return true;
-		} else {
-			wfDebugLog( 'CentralAuth',
-				"Incomplete migration for '$this->mName'" );
-			return false;
 		}
+		
+		wfDebugLog( 'CentralAuth',
+			"Incomplete migration for '$this->mName'" );
+		return false;
 	}
 	
 	/**
