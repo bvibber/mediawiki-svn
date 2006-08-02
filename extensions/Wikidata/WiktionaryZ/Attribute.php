@@ -12,27 +12,27 @@ class ScalarType {
 	}
 }
 
-class TupleType {
-	protected $heading;	
+class RecordType {
+	protected $structure;	
 	
-	public function __construct($heading) {
-		$this->heading = $heading;
+	public function __construct($structure) {
+		$this->structure = $structure;
 	}
 	
-	public function getHeading() {
-		return $this->heading;
+	public function getStructure() {
+		return $this->structure;
 	}
 }
 
-class RelationType {
-	protected $heading;
+class RecordSetType {
+	protected $structure;
 
-	public function __construct($heading) {
-		$this->heading = $heading;
+	public function __construct($structure) {
+		$this->structure = $structure;
 	}
 	
-	public function getHeading() {
-		return $this->heading;
+	public function getStructure() {
+		return $this->structure;
 	}
 }
 
@@ -48,7 +48,7 @@ class Attribute {
 	}
 }
 
-class Heading {
+class Structure {
 	public $attributes;
 	
 	public function __construct($attributes) {

@@ -1,6 +1,6 @@
 <?php
 
-require_once("attribute.php");
+require_once("Attribute.php");
 
 global
 	$languageAttribute, $spellingAttribute, $textAttribute;
@@ -18,7 +18,7 @@ $identicalMeaningAttribute = new Attribute("indentical-meaning", "Identical mean
 global
 	$expressionAttribute;
 	
-$expressionAttribute = new Attribute("expression", "Expression", new TupleType(new Heading($languageAttribute, $spellingAttribute)));
+$expressionAttribute = new Attribute("expression", "Expression", new RecordType(new Structure($languageAttribute, $spellingAttribute)));
 
 global
 	$collectionAttribute, $sourceIdentifierAttribute;
@@ -29,7 +29,7 @@ $sourceIdentifierAttribute = new Attribute("source-identifier", "Source identifi
 global
 	$collectionMembershipAttribute;
 
-$collectionMembershipAttribute = new Attribute("collection-membership", "Collection membership", new RelationType(new Heading($collectionAttribute, $sourceIdentifierAttribute)));
+$collectionMembershipAttribute = new Attribute("collection-membership", "Collection membership", new RecordSetType(new Structure($collectionAttribute, $sourceIdentifierAttribute)));
 
 global
 	 $classAttribute;
@@ -39,7 +39,7 @@ $classAttribute = new Attribute("class", "Class", "class");
 global
 	$classMembershipAttribute;
 
-$classMembershipAttribute = new Attribute("class-membership", "Class membership", new RelationType(new Heading($classAttribute)));
+$classMembershipAttribute = new Attribute("class-membership", "Class membership", new RecordSetType(new Structure($classAttribute)));
 
 global
 	$relationTypeAttribute, $otherDefinedMeaningAttribute;
@@ -48,32 +48,32 @@ $relationTypeAttribute = new Attribute("relation-type", "Relation type", "relati
 $otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", "defining-expression");
 
 global
-	$relationsAttribute, $relationHeading;
+	$relationsAttribute, $relationStructure;
 	
-$relationHeading = new Heading($relationTypeAttribute, $otherDefinedMeaningAttribute);	
-$relationsAttribute = new Attribute("relations", "Relations", new RelationType($relationHeading));
+$relationStructure = new Structure($relationTypeAttribute, $otherDefinedMeaningAttribute);	
+$relationsAttribute = new Attribute("relations", "Relations", new RecordSetType($relationStructure));
 
 global
-	$translatedTextHeading;
+	$translatedTextStructure;
 	
-$translatedTextHeading = new Heading($languageAttribute, $textAttribute);	
+$translatedTextStructure = new Structure($languageAttribute, $textAttribute);	
 
 global
 	$definitionIdAttribute, $alternativeDefinitionAttribute;
 
 $definitionIdAttribute = new Attribute("definition-id", "Definition identifier", "integer");
-$alternativeDefinitionAttribute = new Attribute("alternative-definition", "Alternative definition", new RelationType($translatedTextHeading));
+$alternativeDefinitionAttribute = new Attribute("alternative-definition", "Alternative definition", new RecordSetType($translatedTextStructure));
 
 global
 	$alternativeDefinitionsAttribute;
 	
-$alternativeDefinitionsAttribute = new Attribute("alternative-definitions", "Alternative definitions", new RelationType(new Heading($definitionIdAttribute, $alternativeDefinitionAttribute)));
+$alternativeDefinitionsAttribute = new Attribute("alternative-definitions", "Alternative definitions", new RecordSetType(new Structure($definitionIdAttribute, $alternativeDefinitionAttribute)));
 
 global
 	$definitionAttribute, $synonymsAndTranslationsAttribute;
 	
-$definitionAttribute = new Attribute("definition", "Definition", new RelationType($translatedTextHeading));
-$synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Synonyms and translations", new RelationType(new Heading($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute)));
+$definitionAttribute = new Attribute("definition", "Definition", new RecordSetType($translatedTextStructure));
+$synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Synonyms and translations", new RecordSetType(new Structure($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute)));
 
 global
 	$definedMeaningIdAttribute;
@@ -81,24 +81,24 @@ global
 $definedMeaningIdAttribute = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
 
 global
-	$textValueIdAttribute, $textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute, $textAttributeValuesHeading;
+	$textValueIdAttribute, $textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute, $textAttributeValuesStructure;
 	
 $textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "text-attribute");
 $textValueIdAttribute = new Attribute("text-value-id", "Text value identifier", "text-value-id");
-$textValueAttribute = new Attribute("text-value", "Text value", new RelationType($translatedTextHeading));
+$textValueAttribute = new Attribute("text-value", "Text value", new RecordSetType($translatedTextStructure));
 
-$textAttributeValuesHeading = new Heading($textAttributeAttribute, $textValueIdAttribute, $textValueAttribute);
-$textAttributeValuesAttribute = new Attribute("text-attribute-values", "Text attribute values", new RelationType($textAttributeValuesHeading));
+$textAttributeValuesStructure = new Structure($textAttributeAttribute, $textValueIdAttribute, $textValueAttribute);
+$textAttributeValuesAttribute = new Attribute("text-attribute-values", "Text attribute values", new RecordSetType($textAttributeValuesStructure));
 
 global
 	$definedMeaningAttribute;
 		
-$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new TupleType(new Heading($definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute)));
+$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType(new Structure($definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute)));
 
 global
 	$expressionsAttribute, $expressionMeaningsAttribute;
 	
-$expressionMeaningsAttribute = new Attribute("expression-meanings", "Defined meanings", new RelationType(new Heading($definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute)));
-$expressionsAttribute = new Attribute("expressions", "Expressions", new RelationType(new Heading($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute)));
+$expressionMeaningsAttribute = new Attribute("expression-meanings", "Defined meanings", new RecordSetType(new Structure($definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute)));
+$expressionsAttribute = new Attribute("expressions", "Expressions", new RecordSetType(new Structure($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute)));
 
 ?>

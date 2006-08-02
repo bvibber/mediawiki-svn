@@ -10,9 +10,9 @@ define( 'MEDIAWIKI', true );
 require_once("../../../LocalSettings.php");
 require_once("Setup.php");
 
-require_once("attribute.php");
-require_once("relation.php");
-require_once("editor.php");
+require_once("Attribute.php");
+require_once("RecordSet.php");
+require_once("Editor.php");
 require_once("HTMLtable.php");
 require_once("Expression.php");
 
@@ -124,12 +124,12 @@ function getRelationTypeAsRelation($queryResult) {
 	$relationTypeAttribute = new Attribute("relation-type", "Relation type", "short-text");
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$relation = new ArrayRelation(new Heading($idAttribute, $relationTypeAttribute, $collectionAttribute), new Heading($idAttribute));
+	$relation = new ArrayRecordSet(new Structure($idAttribute, $relationTypeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addTuple(array($row->row_id, $row->relation, $row->collection));			
+		$relation->addRecord(array($row->row_id, $row->relation, $row->collection));			
 
-	$editor = new RelationTableEditor(null, false, false, false, null);
+	$editor = new RecordSetTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($relationTypeAttribute, false, false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
 	
@@ -144,12 +144,12 @@ function getAttributeAsRelation($queryResult) {
 	$attributeAttribute = new Attribute("attribute", "Attribute", "short-text");
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$relation = new ArrayRelation(new Heading($idAttribute, $attributeAttribute, $collectionAttribute), new Heading($idAttribute));
+	$relation = new ArrayRecordSet(new Structure($idAttribute, $attributeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addTuple(array($row->row_id, $row->relation, $row->collection));			
+		$relation->addRecord(array($row->row_id, $row->relation, $row->collection));			
 
-	$editor = new RelationTableEditor(null, false, false, false, null);
+	$editor = new RecordSetTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($attributeAttribute, false, false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
 
@@ -164,12 +164,12 @@ function getTextAttributeAsRelation($queryResult) {
 	$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "short-text");
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$relation = new ArrayRelation(new Heading($idAttribute, $textAttributeAttribute, $collectionAttribute), new Heading($idAttribute));
+	$relation = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addTuple(array($row->row_id, $row->relation, $row->collection));			
+		$relation->addRecord(array($row->row_id, $row->relation, $row->collection));			
 
-	$editor = new RelationTableEditor(null, false, false, false, null);
+	$editor = new RecordSetTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($textAttributeAttribute, false, false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
 
@@ -185,12 +185,12 @@ function getDefinedMeaningAsRelation($queryResult) {
 	$languageAttribute = new Attribute("language", "Language", "language");
 	$definitionAttribute = new Attribute("definition", "Definition", "definition");
 	
-	$relation = new ArrayRelation(new Heading($idAttribute, $definedMeaningAttribute, $languageAttribute, $definitionAttribute), new Heading($idAttribute));
+	$relation = new ArrayRecordSet(new Structure($idAttribute, $definedMeaningAttribute, $languageAttribute, $definitionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addTuple(array($row->row_id, $row->relation, $row->language_id, getDefinedMeaningDefinition($row->row_id)));			
+		$relation->addRecord(array($row->row_id, $row->relation, $row->language_id, getDefinedMeaningDefinition($row->row_id)));			
 
-	$editor = new RelationTableEditor(null, false, false, false, null);
+	$editor = new RecordSetTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($definedMeaningAttribute, false, false));
 	$editor->addEditor(new LanguageEditor($languageAttribute, false, false));
 	$editor->addEditor(new TextEditor($definitionAttribute, false, false, true, 75));
@@ -205,12 +205,12 @@ function getCollectionAsRelation($queryResult) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$relation = new ArrayRelation(new Heading($idAttribute, $collectionAttribute), new Heading($idAttribute));
+	$relation = new ArrayRecordSet(new Structure($idAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addTuple(array($row->row_id, $row->relation));			
+		$relation->addRecord(array($row->row_id, $row->relation));			
 
-	$editor = new RelationTableEditor(null, false, false, false, null);
+	$editor = new RecordSetTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
 
 	return array($relation, $editor);		

@@ -1,29 +1,29 @@
 <?php
 
 require_once('type.php');
-require_once('attribute.php');
+require_once('Attribute.php');
 
 interface Converter {
-	public function getHeading();
-	public function convert($tuple);
+	public function getStructure();
+	public function convert($record);
 }
 
 class ProjectConverter implements Converter {
-	protected $heading;
+	protected $structure;
 	
-	public function __construct($heading) {
-		$this->heading = $heading;
+	public function __construct($structure) {
+		$this->structure = $structure;
 	} 
 	
-	public function getHeading() {
-		return $this->heading;
+	public function getStructure() {
+		return $this->structure;
 	}
 	
-	public function convert($tuple) {
-		$result = new ArrayTuple($this->heading);
+	public function convert($record) {
+		$result = new ArrayRecord($this->structure);
 		
-		foreach($this->heading->attributes as $attribute)
-			$result->setAttributeValue($attribute, $tuple->getAttributeValue($attribute));
+		foreach($this->structure->attributes as $attribute)
+			$result->setAttributeValue($attribute, $record->getAttributeValue($attribute));
 			
 		return $result;
 	}
@@ -31,22 +31,22 @@ class ProjectConverter implements Converter {
 
 class DefaultConverter implements Converter {
 	protected $attribute;
-	protected $heading;
+	protected $structure;
 	
 	public function __construct($attribute) {
 		$this->attribute = $attribute;
-		$this->heading = new Heading($attribute);
+		$this->structure = new Structure($attribute);
 	}
 	
-	public function convert($tuple) {
-		$result = new ArrayTuple($this->heading);
-		$result->setAttributeValue($this->attribute, convertToHTML($tuple->getAttributeValue($this->attribute), $this->attribute->type));
+	public function convert($record) {
+		$result = new ArrayRecord($this->structure);
+		$result->setAttributeValue($this->attribute, convertToHTML($record->getAttributeValue($this->attribute), $this->attribute->type));
 		
 		return $result;
 	}
 	
-	public function getHeading() {
-		return $this->heading;
+	public function getStructure() {
+		return $this->structure;
 	}
 }
 
@@ -58,28 +58,28 @@ class ExpressionIdConverter extends DefaultConverter {
 			$expressionAttribute;
 			
 		parent::__construct($attribute);
-		$this->heading = new Heading($expressionAttribute);
+		$this->structure = new Structure($expressionAttribute);
 	}
 	
-	public function getHeading() {
-		return $this->heading;
+	public function getStructure() {
+		return $this->structure;
 	}
 	
-	public function convert($tuple) {
+	public function convert($record) {
 		global
 			$expressionAttribute, $expressionIdAttribute, $languageAttribute, $spellingAttribute;
 		
 		$dbr =& wfGetDB(DB_SLAVE);
-		$expressionId = $tuple->getAttributeValue($this->attribute);
+		$expressionId = $record->getAttributeValue($this->attribute);
 		$queryResult = $dbr->query("SELECT language_id, spelling from uw_expression_ns WHERE expression_id=$expressionId");
 		$expression = $dbr->fetchObject($queryResult); 
 
-		$expressionTuple = new ArrayTuple(new Heading($languageAttribute, $spellingAttribute));
-		$expressionTuple->setAttributeValue($languageAttribute, $expression->language_id);
-		$expressionTuple->setAttributeValue($spellingAttribute, $expression->spelling);
+		$expressionRecord = new ArrayRecord(new Structure($languageAttribute, $spellingAttribute));
+		$expressionRecord->setAttributeValue($languageAttribute, $expression->language_id);
+		$expressionRecord->setAttributeValue($spellingAttribute, $expression->spelling);
 
-		$result = new ArrayTuple($this->heading);
-		$result->setAttributeValue($expressionAttribute, $expressionTuple);
+		$result = new ArrayRecord($this->structure);
+		$result->setAttributeValue($expressionAttribute, $expressionRecord);
 	
 		return $result;
 	}

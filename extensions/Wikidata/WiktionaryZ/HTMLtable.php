@@ -4,9 +4,9 @@
  *   http://www.charta.org/
  */ 
 
-require_once("attribute.php");
-require_once("tuple.php");
-require_once("relation.php");
+require_once("Attribute.php");
+require_once("Record.php");
+require_once("RecordSet.php");
 
 function parityClass($value) {
 	if ($value % 2 == 0)
@@ -19,7 +19,7 @@ function parityClass($value) {
  * using rowspan and colspan for <th> elements
  */
 
-function mergeHeadingBlocks($lhs, $rhs) {
+function mergeStructureBlocks($lhs, $rhs) {
 	$result = $lhs;
 	
 	for ($i = 0; $i < count($rhs); $i++) {
@@ -32,23 +32,23 @@ function mergeHeadingBlocks($lhs, $rhs) {
 	return $result;
 }
 
-function getHeadingBlock($heading) {
+function getStructureBlock($structure) {
 	$block = array();
 	$width = 0;
 	$height = 0;
 	
-	foreach($heading->attributes as $attribute) {
+	foreach($structure->attributes as $attribute) {
 		$type = $attribute->type;
 		
-		if (is_a($type, TupleType)) {
-			list($childBlock, $childWidth, $childHeight) = getHeadingBlock($type->getHeading());
+		if (is_a($type, RecordType)) {
+			list($childBlock, $childWidth, $childHeight) = getStructureBlock($type->getStructure());
 			array_unshift($childBlock, array(array($attribute, $childWidth, $childHeight + 1)));
 			$width += $childWidth;
 			$height = max($height, $childHeight + 1);
-			$block = mergeHeadingBlocks($block, $childBlock);
+			$block = mergeStructureBlocks($block, $childBlock);
 		}
 		else { 
-			$block = mergeHeadingBlocks($block, array(array(array($attribute, 1, 1))));
+			$block = mergeStructureBlocks($block, array(array(array($attribute, 1, 1))));
 			$height = max($height, 1);
 			$width++;
 		}
@@ -57,19 +57,19 @@ function getHeadingBlock($heading) {
 	return array($block, $width, $height);
 }
 
-function getHeadingAsTableHeaderRows($heading) {
-	list($headingBlock, $width, $height) = getHeadingBlock($heading);
+function getStructureAsTableHeaderRows($structure) {
+	list($structureBlock, $width, $height) = getStructureBlock($structure);
 	
 	$result = array();
 	
 	for ($i = 0; $i < $height; $i++) {
 		$row = '';
 		
-		foreach($headingBlock[$i] as $block) {
+		foreach($structureBlock[$i] as $block) {
 			list($attribute, $blockWidth, $blockHeight) = $block;
 			$type = $attribute->type;
 			
-			if (!is_a($type, TupleType) && !is_a($type, RelationType))
+			if (!is_a($type, RecordType) && !is_a($type, RecordSetType))
 				$class = ' class="'. $type .'"';	
 			else		
 				$class = '';
@@ -84,20 +84,20 @@ function getHeadingAsTableHeaderRows($heading) {
 	return $result;
 }
 
-function getTupleAsTableCells($idPath, $editor, $tuple, &$startColumn = 0) {
+function getRecordAsTableCells($idPath, $editor, $record, &$startColumn = 0) {
 	$result = '';
 	
 	foreach($editor->getEditors() as $childEditor) {
 		$attribute = $childEditor->getAttribute();
 		$type = $attribute->type;
-		$value = $tuple->getAttributeValue($attribute);
+		$value = $record->getAttributeValue($attribute);
 		$idPath->pushAttribute($attribute);
 		$attributeId = $idPath->getId();
 		
-		if (is_a($childEditor, TupleTableCellEditor)) 
-			$result .= getTupleAsTableCells($idPath, $childEditor, $value, $startColumn);	
+		if (is_a($childEditor, RecordTableCellEditor)) 
+			$result .= getRecordAsTableCells($idPath, $childEditor, $value, $startColumn);	
 		else {
-			if (is_a($type, RelationType)) 
+			if (is_a($type, RecordSetType)) 
 				$class = "relation";
 			else 
 				$class = $type;
@@ -113,19 +113,19 @@ function getTupleAsTableCells($idPath, $editor, $tuple, &$startColumn = 0) {
 	return $result;
 }
 
-function getTupleAsEditTableCells($tuple, $idPath, $editor, &$startColumn = 0) {
+function getRecordAsEditTableCells($record, $idPath, $editor, &$startColumn = 0) {
 	$result = '';
 	
 	foreach($editor->getEditors() as $childEditor) {
 		$attribute = $childEditor->getAttribute();
 		$type = $attribute->type;
-		$value = $tuple->getAttributeValue($attribute);
+		$value = $record->getAttributeValue($attribute);
 		$idPath->pushAttribute($attribute);
 			
-		if (is_a($childEditor, TupleTableCellEditor))			
-			$result .= getTupleAsEditTableCells($value, $idPath, $childEditor, $startColumn); 
+		if (is_a($childEditor, RecordTableCellEditor))			
+			$result .= getRecordAsEditTableCells($value, $idPath, $childEditor, $startColumn); 
 		else {	
-			if (is_a($type, RelationType))  
+			if (is_a($type, RecordSetType))  
 				$class = "relation";
 			else 
 				$class = $type;
@@ -144,19 +144,19 @@ function getTupleAsEditTableCells($tuple, $idPath, $editor, &$startColumn = 0) {
 
 function getRelationAsSuggestionTable($editor, $idPath, $relation) {
 	$result = '<table id="' . $idPath->getId() .'" class="wiki-data-table">';	
-	$heading = $editor->getHeading();
+	$structure = $editor->getStructure();
 	$key = $relation->getKey();
 	
-	foreach(getHeadingAsTableHeaderRows($heading) as $headerRow)
+	foreach(getStructureAsTableHeaderRows($structure) as $headerRow)
 		$result .= '<tr>' . $headerRow . '</tr>';
 	
-	$tupleCount = $relation->getTupleCount();
+	$recordCount = $relation->getRecordCount();
 	
-	for($i = 0; $i < $tupleCount; $i++) {
-		$tuple = $relation->getTuple($i);
-		$idPath->pushKey(project($tuple, $key));
-		$id = getTupleKeyName($relation->getTuple($i), $key);
-		$result .= '<tr id="'. $id .'" class="suggestion-row inactive" onclick="suggestRowClicked(this)" onmouseover="mouseOverRow(this)" onmouseout="mouseOutRow(this)">' . getTupleAsTableCells($idPath, $editor, $tuple) .'</tr>';
+	for($i = 0; $i < $recordCount; $i++) {
+		$record = $relation->getRecord($i);
+		$idPath->pushKey(project($record, $key));
+		$id = getRecordKeyName($relation->getRecord($i), $key);
+		$result .= '<tr id="'. $id .'" class="suggestion-row inactive" onclick="suggestRowClicked(this)" onmouseover="mouseOverRow(this)" onmouseout="mouseOutRow(this)">' . getRecordAsTableCells($idPath, $editor, $record) .'</tr>';
 		$idPath->popKey();
 	}
 	
@@ -165,7 +165,7 @@ function getRelationAsSuggestionTable($editor, $idPath, $relation) {
 	return $result;
 }
 
-function getHeadingAsAddCells($idPath, $editor, &$startColumn = 0) {
+function getStructureAsAddCells($idPath, $editor, &$startColumn = 0) {
 	$result = '';
 	
 	foreach($editor->getEditors() as $childEditor) {
@@ -173,8 +173,8 @@ function getHeadingAsAddCells($idPath, $editor, &$startColumn = 0) {
 		$type = $attribute->type;
 		$idPath->pushAttribute($attribute);
 		
-		if (is_a($childEditor, TupleTableCellEditor))
-			$result .= getHeadingAsAddCells($idPath, $childEditor, $startColumn);
+		if (is_a($childEditor, RecordTableCellEditor))
+			$result .= getStructureAsAddCells($idPath, $childEditor, $startColumn);
 		else {
 			$result .= '<td class="'. $type .' column-'. parityClass($startColumn) . '">' . $childEditor->add($idPath) . '</td>';
 			$startColumn++;

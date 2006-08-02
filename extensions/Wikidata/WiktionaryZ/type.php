@@ -2,8 +2,8 @@
 
 require_once('languages.php');
 require_once('forms.php');
-require_once('attribute.php');
-require_once('tuple.php');
+require_once('Attribute.php');
+require_once('Record.php');
 
 function booleanAsText($value) {
 	if ($value)
