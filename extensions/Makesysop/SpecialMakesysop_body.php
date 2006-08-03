@@ -161,38 +161,39 @@ class MakesysopForm {
 		$res = $dbw->query( $sql, $fname );
 
 		$row = false;
-		$groups = array();
+		$oldGroups = array();
 		while ( $row = $dbw->fetchObject( $res ) ) {
-			$groups[$row->ug_group] = true;
+			$oldGroups[] = $row->ug_group;
 		}
 		$dbw->freeResult( $res );
+		$newGroups = $oldGroups;
 
-		$rightsNotation = array();
-		$wasSysop = !empty( $groups['sysop'] );
-		$wasBureaucrat = !empty( $groups['bureaucrat'] );
+		$wasSysop = in_array( 'sysop', $oldGroups );
+		$wasBureaucrat = in_array( 'bureaucrat', $oldGroups );
 
-		if ( $this->mSetBureaucrat ) {
-			if ( $wasBureaucrat ) {
-				$this->showFail( 'already_bureaucrat' );
-				return;
-			} else {
-				$dbw->insert( $user_groups, array( 'ug_user' => $id, 'ug_group' => 'bureaucrat' ), $fname );
-				$rightsNotation[] = "+bureaucrat";
-			}
-		} elseif ( $wasSysop ) {
+		$addedGroups = array();
+		if ( ( $this->mSetBureaucrat ) && ( $wasBureaucrat ) ) {
+			$this->showFail( 'already_bureaucrat' );
+			return;
+		} elseif ( ( !$this->mSetBureaucrat ) && ( $wasSysop ) ) {
 			$this->showFail( 'already_sysop' );
 			return;
-		}
-		if ( !$wasSysop ) {
+		} elseif ( !$wasSysop ) {
 			$dbw->insert( $user_groups, array( 'ug_user' => $id, 'ug_group' => 'sysop' ), $fname );
-			$rightsNotation[] = "+sysop";
+			$addedGroups[] = "sysop";
+		}
+		if ( ( $this->mSetBureaucrat ) && ( !$wasBureaucrat ) ) {
+			$dbw->insert( $user_groups, array( 'ug_user' => $id, 'ug_group' => 'bureaucrat' ), $fname );
+			$addedGroups[] = "bureaucrat";
 		}
 		
 		$wgMemc->delete( "$dbName:user:id:$id" );
-			
+		
+		$newGroups = array_merge($newGroups, $addedGroups);
+		
 		$log = new LogPage( 'rights' );
-		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $this->mUser ),
-			implode( " ", $rightsNotation ) );
+		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $this->mUser ), '',
+			array( $this->makeGroupNameList( $oldGroups ), $this->makeGroupNameList( $newGroups ) ) );
 			
 		$this->showSuccess();
 	}
@@ -214,6 +215,11 @@ class MakesysopForm {
 		$wgOut->setPagetitle( wfMsg( "makesysoptitle" ) );
 		$this->showForm( wfMsg( $msg, $this->mUser ) );
 	}
+
+	function makeGroupNameList( $ids ) {
+		return implode( ', ', $ids );
+	}
+
 }
 
 /**
