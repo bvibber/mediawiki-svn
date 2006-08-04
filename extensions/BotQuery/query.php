@@ -1042,7 +1042,7 @@ class BotQueryProcessor {
 		if ($cpextended)
             $fields = array( 'cl_from', 'cl_sortkey', 'cl_timestamp' );
         else
-            $fields = array( 'cl_from' );
+            $fields = array( 'cl_from', 'cl_sortkey' );   // Need 'cl_sortkey' to continue paging
 
 		$this->validateLimit( 'cplimit', $cplimit, 500, 5000 );
 
