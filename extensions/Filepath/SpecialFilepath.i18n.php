@@ -33,6 +33,11 @@ $wgFilepathMessages['id'] = array(
 	'filepath_page'   => 'Berkas:',
 	'filepath_submit' => 'Lokasi',
 );
+$wgFilepathMessages['ja'] = array(
+	'filepath'        => 'パスの取得',
+	'filepath_page'   => 'ファイル名:',
+	'filepath_submit' => 'パスを取得',
+);
 $wgFilepathMessages['nl'] = array(
 	'filepath'        => 'Bestandslocatie',
 	'filepath_page'   => 'Bestand:',
