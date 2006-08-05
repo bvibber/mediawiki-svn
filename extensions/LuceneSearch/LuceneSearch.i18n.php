@@ -165,4 +165,13 @@ $1\n
 Ово је вероватно привремено; покушајте поново након неколико момената,
 или претражите вики преко неког од спољних претраживачких сервиса:\n"
 );
+$wgLuceneSearchMessages['wa'] = array(
+	'searchnumber'		=> '<strong>Rizultats: $1-$2 di $3</strong>',
+	'searchprev'		=> '← <span style=\'font-size: small\'>Div.</span>',
+	'searchnext'		=> '<span style=\'font-size: small\'>Shuv.</span> →',
+	'searchnoresults'	=> 'Mande escuzes, mins i gn a rén ki corespond.',
+	'searchnearmatches'	=> '<b>Les pådjes shuvantes ont des tites ki ravizèt çou k\' vos avoz cwerou:</b>',
+	'lucenepowersearchtext'	=> 'Cweraedje dins les espåces di lomaedje: $1 <br />
+Cweraedje di: $3 $9',
+);
 ?>
