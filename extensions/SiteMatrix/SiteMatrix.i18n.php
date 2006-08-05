@@ -17,6 +17,9 @@ $wgSiteMatrixMessages['he'] = array(
 $wgSiteMatrixMessages['id'] = array(
 	"sitematrix" => "Daftar wiki Wikimedia",
 );
+$wgSiteMatrixMessages['ja'] = array(
+	"sitematrix" => "Wikimediaウィキの一覧",
+);
 $wgSiteMatrixMessages['nl'] = array(
 	"sitematrix" => "Lijst met Wikimedia wiki's",
 );
