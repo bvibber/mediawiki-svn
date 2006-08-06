@@ -439,8 +439,8 @@ class BotQueryProcessor {
 		'usercontribs'   => array(
 			GN_FUNC => 'genUserContributions',
 			GN_ISMETA => false,
-			GN_PARAMS => array( 'uccomments', 'uclimit', 'ucrbtoken', 'uctop' ),
-			GN_DFLT => array( false, 50, false,
+			GN_PARAMS => array( 'uccomments', 'uclimit', 'ucrbtoken', 'ucstart', 'ucend', 'uctop' ),
+			GN_DFLT => array( false, 50, false, null, null,
 				array( GN_ENUM_DFLT => 'all',
 					   GN_ENUM_ISMULTI => false,
 					   GN_ENUM_CHOICES => array('all','only','exclude') )),
@@ -451,6 +451,8 @@ class BotQueryProcessor {
 				"uclimit    - How many links to return *for each user*.",
 				"uctop      - Filter results by contributions that are still on top:",
 				"  'all' (default), 'only' (only the ones marked as top), 'exclude' (all non-top ones)",
+				"ucstart    - Timestamp of the earliest entry.",
+				"ucend      - Timestamp of the latest entry.",
 				"ucrbtoken  - If logged in as an admin, a rollback tokens for top revisions will be included in the output.",
 				"Example: query.php?what=usercontribs&titles=User:YurikBot&uclimit=20&uccomments",
 			)),
@@ -723,20 +725,20 @@ class BotQueryProcessor {
 						if ( !$title->userCanRead() ) {
 							$this->dieUsage( "No read permission for $titleString", 'pi_nopageaccessdenied' );
 						}
-						$data = &$this->data['pages'][$invalidPageIdCounter];
-						$this->pageIdByText[$title->getPrefixedText()] = $invalidPageIdCounter;
+						$data = &$this->data['pages'][$this->invalidPageIdCounter];
+						$this->pageIdByText[$title->getPrefixedText()] = $this->invalidPageIdCounter;
 						$data['_obj']    = $title;
 						$data['title']   = $title->getPrefixedText();
 						$data['ns']      = $title->getNamespace();
 						$data['id']      = 0;
-						$invalidPageIdCounter--;
+						$this->invalidPageIdCounter--;
 					}
 				}
 			}
 
 			// When normalized title differs from what was given, append the given title(s)
 			foreach( $this->normalizedTitles as $givenTitle => &$title ) {
-				$data = &$this->data['pages'][$invalidPageIdCounter--];
+				$data = &$this->data['pages'][$this->invalidPageIdCounter--];
 				$data['title'] = $givenTitle;
 				$data['normalizedTitle'] = $title->getPrefixedText();
 				// stored id might be negative, indicating a missing page
@@ -1713,6 +1715,8 @@ class BotQueryProcessor {
 						$this->dieUsage( "Too many user contributions requested, only $maxallowed allowed", 'uclimit * users');
 					}
 
+					if( isset($ucstart) )  $conds[] = 'rev_timestamp >= ' . $this->prepareTimestamp($ucstart);
+					if( isset($ucend) )    $conds[] = 'rev_timestamp <= ' . $this->prepareTimestamp($ucend);
 					$conds['rev_user_text'] = $title->getText();
 					$data = &$page['contributions'];
 
