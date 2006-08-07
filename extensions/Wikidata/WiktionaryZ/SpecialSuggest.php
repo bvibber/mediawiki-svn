@@ -47,7 +47,7 @@ function getSuggestions() {
 	$query = $_GET['query'];
 	
 	$dbr =& wfGetDB( DB_SLAVE );
-	$rowText = 'expression1.spelling';
+	$rowText = 'spelling';
 	
 	switch ($query) {
 		case 'relation-type':
@@ -66,15 +66,15 @@ function getSuggestions() {
 			$rowText = 'language_name';
 			break;
 		case 'defined-meaning':
-			$sql = "SELECT syntrans1.defined_meaning_id AS row_id, expression1.spelling AS relation, expression1.language_id AS language_id ".
-					"FROM uw_expression_ns expression1, uw_syntrans syntrans1 ".
-	            	"WHERE expression1.expression_id=syntrans1.expression_id ";
+			$sql = "SELECT syntrans.defined_meaning_id AS defined_meaning_id, expression.spelling AS spelling, expression.language_id AS language_id ".
+					"FROM uw_expression_ns expression, uw_syntrans syntrans ".
+	            	"WHERE expression.expression_id=syntrans.expression_id AND syntrans.endemic_meaning=1 ";
 	        break;	
 	    case 'collection':
-	    	$sql = "SELECT collection.collection_id AS row_id, expression1.spelling AS relation ".
-	    			"FROM uw_expression_ns expression1, uw_collection_ns collection, uw_syntrans syntrans ".
-	    			"WHERE expression1.expression_id=syntrans.expression_id AND syntrans.defined_meaning_id=collection.collection_mid ".
-	    			"AND collection.is_latest=1 AND syntrans.is_latest_set=1 AND expression1.is_latest=1 ";
+	    	$sql = "SELECT collection_id, spelling ".
+	    			"FROM uw_expression_ns expression, uw_collection_ns collection, uw_syntrans syntrans ".
+	    			"WHERE expression.expression_id=syntrans.expression_id AND syntrans.defined_meaning_id=collection.collection_mid ".
+	    			"AND collection.is_latest=1 AND syntrans.is_latest_set=1 AND expression.is_latest=1 AND syntrans.endemic_meaning=1 ";
 	    	break;
 	}
 	                          
@@ -112,15 +112,12 @@ function getSuggestions() {
 }
 
 function getSQLForCollectionOfType($collectionType) {
-	return "SELECT member_mid AS row_id, expression1.spelling AS relation, expression2.spelling AS collection " .
-            "FROM uw_collection_contents, uw_collection_ns, uw_syntrans syntrans1, uw_expression_ns expression1, uw_syntrans syntrans2, uw_expression_ns expression2 " .
+	return "SELECT member_mid, spelling, collection_mid " .
+            "FROM uw_collection_contents, uw_collection_ns, uw_syntrans syntrans, uw_expression_ns expression " .
             "WHERE uw_collection_contents.collection_id=uw_collection_ns.collection_id and uw_collection_ns.collection_type='$collectionType' " .
             
-            "AND syntrans1.defined_meaning_id=uw_collection_contents.member_mid " .
-            "AND expression1.expression_id=syntrans1.expression_id and expression1.language_id=85 " .
-            
-            "AND syntrans2.defined_meaning_id=uw_collection_ns.collection_mid " .
-            "AND expression2.expression_id=syntrans2.expression_id and expression2.language_id=85 " .
+            "AND syntrans.defined_meaning_id=uw_collection_contents.member_mid " .
+            "AND expression.expression_id=syntrans.expression_id AND syntrans.endemic_meaning=1 " .
 
 			"AND uw_collection_contents.is_latest_set=1 ";
 }
@@ -137,7 +134,7 @@ function getRelationTypeAsRelation($queryResult) {
 	$relation = new ArrayRecordSet(new Structure($idAttribute, $relationTypeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addRecord(array($row->row_id, $row->relation, $row->collection));			
+		$relation->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
 	$editor = new RecordSetTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($relationTypeAttribute, false, false));
@@ -157,7 +154,7 @@ function getAttributeAsRelation($queryResult) {
 	$relation = new ArrayRecordSet(new Structure($idAttribute, $attributeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addRecord(array($row->row_id, $row->relation, $row->collection));			
+		$relation->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));
 
 	$editor = new RecordSetTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($attributeAttribute, false, false));
@@ -177,7 +174,7 @@ function getTextAttributeAsRelation($queryResult) {
 	$relation = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addRecord(array($row->row_id, $row->relation, $row->collection));			
+		$relation->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
 	$editor = new RecordSetTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($textAttributeAttribute, false, false));
@@ -191,18 +188,29 @@ function getDefinedMeaningAsRelation($queryResult) {
 		$idAttribute;
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", "short-text");
+	$spellingAttribute = new Attribute("spelling", "Spelling", "short-text");
 	$languageAttribute = new Attribute("language", "Language", "language");
+	
+	$expressionStructure = new Structure($spellingAttribute, $languageAttribute);
+	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType($expressionStructure));
 	$definitionAttribute = new Attribute("definition", "Definition", "definition");
 	
-	$relation = new ArrayRecordSet(new Structure($idAttribute, $definedMeaningAttribute, $languageAttribute, $definitionAttribute), new Structure($idAttribute));
+	$relation = new ArrayRecordSet(new Structure($idAttribute, $definedMeaningAttribute, $definitionAttribute), new Structure($idAttribute));
 	
-	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addRecord(array($row->row_id, $row->relation, $row->language_id, getDefinedMeaningDefinition($row->row_id)));			
+	while ($row = $dbr->fetchObject($queryResult)) {
+		$definedMeaningRecord = new ArrayRecord($expressionStructure);
+		$definedMeaningRecord->setAttributeValue($spellingAttribute, $row->spelling);
+		$definedMeaningRecord->setAttributeValue($languageAttribute, $row->language_id);
+		
+		$relation->addRecord(array($row->defined_meaning_id, $definedMeaningRecord, getDefinedMeaningDefinition($row->defined_meaning_id)));
+	}			
+
+	$definedMeaningEditor = new RecordTableCellEditor($definedMeaningAttribute);
+	$definedMeaningEditor->addEditor(new ShortTextEditor($spellingAttribute, false, false));
+	$definedMeaningEditor->addEditor(new LanguageEditor($languageAttribute, false, false));
 
 	$editor = new RecordSetTableEditor(null, false, false, false, null);
-	$editor->addEditor(new ShortTextEditor($definedMeaningAttribute, false, false));
-	$editor->addEditor(new LanguageEditor($languageAttribute, false, false));
+	$editor->addEditor($definedMeaningEditor);
 	$editor->addEditor(new TextEditor($definitionAttribute, false, false, true, 75));
 
 	return array($relation, $editor);		
@@ -218,7 +226,7 @@ function getCollectionAsRelation($queryResult) {
 	$relation = new ArrayRecordSet(new Structure($idAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addRecord(array($row->row_id, $row->relation));			
+		$relation->addRecord(array($row->collection_id, $row->spelling));			
 
 	$editor = new RecordSetTableEditor(null, false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
