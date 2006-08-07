@@ -156,7 +156,7 @@ function getRelationAsSuggestionTable($editor, $idPath, $relation) {
 		$record = $relation->getRecord($i);
 		$idPath->pushKey(project($record, $key));
 		$id = getRecordKeyName($relation->getRecord($i), $key);
-		$result .= '<tr id="'. $id .'" class="suggestion-row inactive" onclick="suggestRowClicked(this)" onmouseover="mouseOverRow(this)" onmouseout="mouseOutRow(this)">' . getRecordAsTableCells($idPath, $editor, $record) .'</tr>';
+		$result .= '<tr id="'. $id .'" class="suggestion-row inactive" onclick="suggestRowClicked(event, this)" onmouseover="mouseOverRow(this)" onmouseout="mouseOutRow(this)">' . getRecordAsTableCells($idPath, $editor, $record) .'</tr>';
 		$idPath->popKey();
 	}
 	

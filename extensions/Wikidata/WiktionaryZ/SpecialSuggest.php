@@ -47,11 +47,7 @@ function getSuggestions() {
 	$query = $_GET['query'];
 	
 	$dbr =& wfGetDB( DB_SLAVE );
-	
-	if ($search != '')
-		$searchCondition = "AND expression1.spelling LIKE " . $dbr->addQuotes("$search%");
-	else
-		$searchCondition = "";
+	$rowText = 'expression1.spelling';
 	
 	switch ($query) {
 		case 'relation-type':
@@ -62,6 +58,12 @@ function getSuggestions() {
 			break;
 		case 'text-attribute':	
 			$sql = getSQLForCollectionOfType('TATT');
+			break;
+		case 'language':
+			$sql = "SELECT language_id AS row_id, language_name " .
+					"FROM language_names " .
+					"WHERE 1 ";
+			$rowText = 'language_name';
 			break;
 		case 'defined-meaning':
 			$sql = "SELECT syntrans1.defined_meaning_id AS row_id, expression1.spelling AS relation, expression1.language_id AS language_id ".
@@ -76,7 +78,12 @@ function getSuggestions() {
 	    	break;
 	}
 	                          
-	$sql .= $searchCondition . " ORDER BY expression1.spelling LIMIT 10";
+	if ($search != '')
+		$searchCondition = "AND $rowText LIKE " . $dbr->addQuotes("$search%");
+	else
+		$searchCondition = "";
+	
+	$sql .= $searchCondition . " ORDER BY $rowText LIMIT 10";
 	$queryResult = $dbr->query($sql);
 	$idAttribute = new Attribute("id", "ID", "id");
 	
@@ -96,6 +103,9 @@ function getSuggestions() {
 		case 'collection':
 			list($relation, $editor) = getCollectionAsRelation($queryResult);
 			break;	
+		case 'language':
+			list($relation, $editor) = getLanguageAsRelation($queryResult);
+			break;
 	}
 	
 	return getRelationAsSuggestionTable($editor, new IdStack($prefix .'table'), $relation);
@@ -215,4 +225,23 @@ function getCollectionAsRelation($queryResult) {
 
 	return array($relation, $editor);		
 }
+
+function getLanguageAsRelation($queryResult) {
+	global
+		$idAttribute;
+
+	$dbr =& wfGetDB(DB_SLAVE);
+	$languageAttribute = new Attribute("language", "Language", "short-text");
+	
+	$relation = new ArrayRecordSet(new Structure($idAttribute, $languageAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$relation->addRecord(array($row->row_id, $row->language_name));			
+
+	$editor = new RecordSetTableEditor(null, false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($languageAttribute, false, false));
+
+	return array($relation, $editor);		
+}
+
 ?>

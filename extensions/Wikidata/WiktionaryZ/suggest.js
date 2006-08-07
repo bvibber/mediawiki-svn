@@ -66,6 +66,11 @@ function suggestTextChanged(suggestText) {
 }
 
 function stopEventHandling(event) {
+	event.cancelBubble = true;
+	
+	if (event.stopPropagation)
+		event.stopPropagation();
+	
 	if (event.preventDefault)
 		event.preventDefault();
 	else
@@ -87,6 +92,7 @@ function suggestLinkClicked(event, suggestLink) {
 
 function updateSuggestValue(suggestPrefix, value, displayValue) {
 	var suggestLink = document.getElementById(suggestPrefix + "link");
+	var suggestValue = document.getElementById(suggestPrefix + "value");
 	var suggestDiv = document.getElementById(suggestPrefix + "div");
 	var suggestField = document.getElementById(stripSuffix(suggestPrefix, "-suggest-"));
 	
@@ -97,19 +103,22 @@ function updateSuggestValue(suggestPrefix, value, displayValue) {
 	suggestLink.focus();
 }
 
-function suggestClearClicked(suggestClear) {
-	updateSuggestValue(getSuggestPrefix(suggestClear, 'clear'), "", "No selection");
+function suggestClearClicked(event, suggestClear) {
+	updateSuggestValue(getSuggestPrefix(suggestClear, 'clear'), "", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+	stopEventHandling(event);
 }
 
-function suggestCloseClicked(suggestClose) {
+function suggestCloseClicked(event, suggestClose) {
 	var suggestPrefix = getSuggestPrefix(suggestClose, 'close');
 	var suggestDiv = document.getElementById(suggestPrefix + "div");
 	suggestDiv.style.display = 'none';
+	stopEventHandling(event);
 }
 
-function suggestRowClicked(suggestRow) {
+function suggestRowClicked(event, suggestRow) {
 	updateSuggestValue(getSuggestPrefix(suggestRow.parentNode.parentNode.parentNode.parentNode, "div"),
 						suggestRow.id, suggestRow.getElementsByTagName('td')[0].innerHTML);
+	stopEventHandling(event);
 }
 
 function mouseOverRow(row) {

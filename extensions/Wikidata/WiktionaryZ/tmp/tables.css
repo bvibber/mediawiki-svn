@@ -22,6 +22,7 @@
 	background-color: #EEEEEE;
 	text-align: left;
 	vertical-align: bottom;
+	white-space: nowrap;
 }
 
 .wiki-data-table td.column-odd {
@@ -40,9 +41,9 @@
 	text-align: left;
 }
 
-.wiki-data-table td.language {
+/*.wiki-data-table td.language {
 	font-style: italic;
-}
+}*/
 
 .wiki-data-table td.text {
 	padding-bottom: 4px;

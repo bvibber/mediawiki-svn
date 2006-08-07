@@ -591,13 +591,15 @@ class LanguageEditor extends ScalarEditor {
 	
 	public function edit($idPath, $value) {
 		if ($this->allowUpdate)
-			return getLanguageSelect($this->updateId($idPath->getId()));
+//			return getLanguageSelect($this->updateId($idPath->getId()));
+			return getSuggest($this->updateId($idPath->getId()), "language");
 		else
 			return languageIdAsText($value);
 	}
 	
 	public function add($idPath) {
-		return getLanguageSelect($this->addId($idPath->getId()));
+//		return getLanguageSelect($this->addId($idPath->getId()));
+		return getSuggest($this->addId($idPath->getId()), "language");
 	}
 	
 	public function getInputValue($id) {
