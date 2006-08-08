@@ -498,7 +498,7 @@ class BotQueryProcessor {
 		$this->requestsize = 0;
 		$this->db = $db;
 
-		$this->isBot = $wgUser->isBot();
+		$this->isBot = $wgUser->isAllowed( 'bot' );
 
 		$this->enableProfiling = !$wgRequest->getCheck('noprofile');
 		$this->invalidPageIdCounter = -1;
