@@ -9,8 +9,8 @@ class ShowProcesslistPage extends UnlistedSpecialPage {
 		global $wgOut, $wgUser;
 		
 		$this->setHeaders();
-		if ( !$wgUser->isDeveloper() ) {
-			$wgOut->addWikiText( 'You\'re not allowed, go away' );
+		if ( !$wgUser->isAllowed( 'siteadmin' ) ) {
+			$wgOut->permissionRequired( 'siteadmin' );
 			return;
 		}
 

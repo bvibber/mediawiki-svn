@@ -31,16 +31,9 @@ class Espionage extends SpecialPage {
 	function execute( $par = null ) {
 		global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgLang, $wgPutIPinRC, $wgUser, $wgVersion;
 		
-		if (preg_match("/^1\.4/", $wgVersion)) {
-			if ( ! $wgUser->isSysop() ) {
-				$wgOut->sysopRequired();
-				return;
-			}
-		} else {
-			if ( ! $wgUser->isAllowed('block') ) {
-				$wgOut->sysopRequired();
-				return;
-			}
+		if ( ! $wgUser->isAllowed( 'block' ) ) {
+			$wgOut->permissionRequired( 'block' );
+			return;
 		}
 		
 		if ( ! $wgPutIPinRC ) {

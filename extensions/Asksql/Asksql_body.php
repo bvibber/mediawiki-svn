@@ -31,7 +31,7 @@ class SpecialAsksql extends SpecialPage {
 			return;
 		}
 		if( !$wgUser->isAllowed('asksql') ) {
-			$wgOut->sysopRequired();
+			$wgOut->permissionRequired( 'asksql' );
 			return;
 		}
 	
