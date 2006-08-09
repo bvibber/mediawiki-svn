@@ -417,7 +417,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		else 
 			$rowClass = '';
 			
-		$result = '<tr id="'. $idPath->getId() . '" class="' . $rowClass . '">';
+		$result = '<tr id="add-'. $idPath->getId() . '" class="' . $rowClass . '">';
 		
 		if ($allowRemove)
 			$result .= '<td class="add"><img src="extensions/Wikidata/Images/Add.png" title="Enter new rows to add" alt="Add"/></td>';
