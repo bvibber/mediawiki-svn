@@ -495,7 +495,7 @@ class DefinedMeaningDefinitionController implements Controller {
 		$languageId = $record->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);
 		
-		if ($text != "") 
+		if ($languageId != 0 && $text != "") 
 			addDefinedMeaningDefinition($definedMeaningId, $revisionId, $languageId, $text);
 	}
 	
@@ -536,7 +536,7 @@ class DefinedMeaningAlternativeDefinitionsController {
 			$languageId = $definitionRecord->getAttributeValue($languageAttribute);
 			$text = $definitionRecord->getAttributeValue($textAttribute);
 			
-			if ($text != '')
+			if ($languageId != 0 && $text != '')
 				addDefinedMeaningAlternativeDefinition($definedMeaningId, $revisionId, $languageId, $text);
 		}
 	}
@@ -564,7 +564,7 @@ class DefinedMeaningAlternativeDefinitionController implements Controller {
 		$languageId = $record->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);
 
-		if ($text != "")
+		if ($languageId != 0 && $text != "")
 			addTranslatedTextIfNotPresent($definitionId, $languageId, $text, $revisionId);
 	}
 	
@@ -602,7 +602,7 @@ class SynonymTranslationController implements Controller {
 		$spelling = $expressionRecord->getAttributeValue($spellingAttribute);
 		$identicalMeaning = $record->getAttributeValue($identicalMeaningAttribute);
 
-		if ($spelling != '') {
+		if ($languageId != 0 && $spelling != '') {
 			$expression = findOrCreateExpression($spelling, $languageId);
 			$expression->assureIsBoundToDefinedMeaning($definedMeaningId, $identicalMeaning);
 		}
@@ -731,9 +731,9 @@ class ExpressionMeaningController implements Controller {
 			$definitionRecord = $definition->getRecord(0);
 			
 			$text = $definitionRecord->getAttributeValue($textAttribute);
+			$languageId = $definitionRecord->getAttributeValue($languageAttribute);
 			
-			if ($text != "") {	
-				$languageId = $definitionRecord->getAttributeValue($languageAttribute);
+			if ($languageId != 0 && $text != "") {	
 				$expressionId = $keyPath->peek(0)->getAttributeValue($expressionIdAttribute);
 				$revisionId = getRevisionForExpressionId($expressionId);
 
@@ -763,7 +763,7 @@ class ExpressionController implements Controller {
 		$expressionLanguageId = $record->getAttributeValue($expressionAttribute)->getAttributeValue($languageAttribute);
 		$expressionMeanings = $record->getAttributeValue($expressionMeaningsAttribute);
 		
-		if ($expressionMeanings->getRecordCount() > 0) {
+		if ($expressionLanguageId != 0 && $expressionMeanings->getRecordCount() > 0) {
 			$expressionMeaning = $expressionMeanings->getRecord(0);
 
 			$definition = $expressionMeaning->getAttributeValue($definedMeaningAttribute)->getAttributeValue($definitionAttribute);
@@ -772,11 +772,9 @@ class ExpressionController implements Controller {
 				$definitionRecord = $definition->getRecord(0);
 				
 				$text = $definitionRecord->getAttributeValue($textAttribute);
+				$languageId = $definitionRecord->getAttributeValue($languageAttribute);
 				
-				if ($text != "") {	
-					$languageId = $definitionRecord->getAttributeValue($languageAttribute);
-//					$expressionId = $keyPath->peek(0)->getAttributeValue($expressionIdAttribute);
-//					$revisionId = getRevisionForExpressionId($expressionId);
+				if ($languageId != 0 && $text != "") {	
 					$expression = findOrCreateExpression($this->spelling, $expressionLanguageId);
 					createNewDefinedMeaning($expression->id, $expression->revisionId, $languageId, $text);
 				}
@@ -808,7 +806,7 @@ class DefinedMeaningTextAttributeValuesController {
 			$languageId = $textValueRecord->getAttributeValue($languageAttribute);
 			$text = $textValueRecord->getAttributeValue($textAttribute);
 			
-			if ($text != '')
+			if ($languageId != 0 && $text != '')
 				addDefinedMeaningTextAttributeValue($definedMeaningId, $textAttributeId, $languageId, $text, $revisionId);
 		}
 	}
@@ -838,7 +836,7 @@ class DefinedMeaningTextAttributeValueController implements Controller {
 		$languageId = $record->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);
 
-		if ($text != "")
+		if ($languageId != 0 && $text != "")
 			addTranslatedTextIfNotPresent($textId, $languageId, $text, $revisionId);
 	}
 	
