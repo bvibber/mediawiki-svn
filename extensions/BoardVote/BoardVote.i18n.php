@@ -34,10 +34,10 @@ position. In the event of a tie, a run-off election will be held.</p>
 <ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2005\" class=\"external\">Election FAQ</a></li>
 <li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2005\" class=\"external\">Candidates</a></li></ul>
 ",
-	'boardvote_intro_change'  => "<p>You have voted before. However you may change 
-your vote using the form below. Please check the boxes next to each candidate whom 
+	'boardvote_intro_change'  => "<p>You have voted before. However you may change
+your vote using the form below. Please check the boxes next to each candidate whom
 you approve of.</p>",
-	'boardvote_footer'        => "&nbsp;",
+	'boardvote_footer'        => "&nbsp;", # Don't translate this
 	'boardvote_entered'       => "Thank you, your vote has been recorded.
 
 If you wish, you may record the following details. Your voting record is:
@@ -94,7 +94,6 @@ $wgBoardVoteMessages['he'] = array(
 <li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2005\" class=\"external\">המועמדים</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>כבר הצבעתם בעבר. עם זאת, באפשרותכם לשנות את הצבעתכם באמצעות הטופס המצורף למטה. אנא סמנו את תיבת הסימון ליד כל אחד מהמועמדים המועדפים עליכם.</p>",
-	'boardvote_footer'        => "&nbsp;",
 	'boardvote_entered'       => "תודה לכם, הצבעתכם נרשמה.
 
 אם ברצונכם בכך, אתם יכולים לרשום את הפרטים הבאים. ההצבעה נרשמה כ:
@@ -234,7 +233,6 @@ $wgBoardVoteMessages['pt'] = array(
 <li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2005\" class=\"external\">Candidatos</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>Já votou anteriormente. Contudo pode alterar o seu voto utilizando o formulário abaixo. Por favor marque a caixa ao lado de cada candidato que aprovar.</p>",
-	'boardvote_footer'        => "&nbsp;",
 	'boardvote_entered'       => "Obrigado, o seu voto foi registado.
 
 Se desejar pode guardar os seguintes detalhes. O seu registo de voto é:
@@ -270,5 +268,76 @@ A versão da encriptação segue-se, e será publicada em [[Especial:Boardvote/d
 	'group-boardvote'         => 'Board vote administradores',
 	'group-boardvote-member'  => 'Board vote administrador',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
+);
+$wgBoardVoteMessages['wa'] = array(
+	'boardvote' => 'Vôtaedje po les manaedjeus del fondåcion Wikimedia',
+	'boardvote_entry' => '* [[Special:Boardvote/vote|Vôter]]
+* [[Special:Boardvote/list|Djivêye des vôtaedjes dedja fwaits]]
+* [[Special:Boardvote/dump|Djiveye des bultins]] (tchaeke bultin est on blok ecripté)',
+	'boardvote_intro' => '<p>
+Bénvnowe å prumî vôtaedje po les manaedjeus del fondåcion Wikimedia. 
+Li vôtaedje c\' est po tchoezi deus djins ki cåzront å consey des manaedjeus po les contribouweus des diferins pordjets Wikimedia k\' overnut félmint po lzès fé viker:
+on <strong>rprezintant des mimbes ki sont des contribouweus actifs</strong>,
+eyet on <strong>rprezintant des uzeus volontaires</strong>.
+Il aidront a defini l\' voye ki prindront les pordjets Wikimedia, ossu bén tchaeke pordjet ki zels tos come groupe, dj\' ô bén k\' i rprezintèt <em>vos</em> interesses divant l\' consey des manaedjes. I decidront so des sudjets come l\' ecwårlaedje eyet l\' atribouwaedje des çanses ås diferinnès bouyes.
+</p>
+
+<p>
+Prindoz s\' i vs plait li tins di bén lére li prezintaedje di tchaesconk des candidats dvant d\' vôter.
+Tchaeke des candidats est èn uzeu respecté del kiminaalté, k\' a contribouwé bråmint do tins eyet ds efoirts po fé di ces pordjets èn evironmint amiståve ey ahessåve, et ki croeyèt fel å franc cossemaedje del kinoxhaence amon l\' djin.
+</p>
+
+<p>
+Vos ploz vôter po ostant d\' candidats ki vos vloz dins tchaeke plaece.
+Li candidat avou l\' pus d\' vwès po tchaeke plaece serè rclamé wangneu
+Dins l\' cas k\' i gn årè ewalisté inte deus prumîs candidats, on deujhinme vôtaedje serè fwait po les dispårti.
+</p>
+
+<p>
+Po pus di racsegnes, loukîz a:
+</p>
+<ul>
+<li><a href="http://meta.wikipedia.org/wiki/Election_FAQ" class="external">FAQ sol vôtaedje</a> (en inglès)</li>
+<li><a href="http://meta.wikipedia.org/wiki/Election_Candidates" class="external">Candidats</a></li>
+</ul>',
+	'boardvote_intro_change' => '<p>
+Vos avoz ddja voté.
+Mins vos ploz tot l\' minme candjî vosse vôte, po çoula
+rifjhoz ene tchuze tot clitchant so les boesses a clitchîz des
+candidats ki vos estoz d\' acoird avou zels.
+</p>',
+	'boardvote_entered' => 'Gråces, vosse vôtaedje a stî conté.
+
+Si vos vloz, vos ploz wårder les informåcions shuvantes.
+Vosse bultin a stî eredjîstré come:
+
+<pre>$1</pre>
+
+Il a stî ecripté avou l\' clé publike des manaedjeus do vôtaedje:
+
+<pre>$2</pre>
+
+Vosse bultins ecripté est chal pa dzo. Tos les bultins ecriptés polèt
+esse publicmint veyous so [[Special:Boardvote/dump]]. 
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|En erî]]',
+	'boardvote_notloggedin' => 'Vos n\' estoz nén elodjî.
+Po pleur vôter vos dvoz esse elodjî eyet vosse conté
+doet aveur stî ahivé i gn a 90 djoûs pol moens.',
+	'boardvote_notqualified' => 'Dji rgrete, mins vosse prumî contribouwaedje a stî fwait
+i gn a $1 djoûs seulmint.
+Po pleur vôter vos dvoz aveur contribouwé po pus long ki
+90 djoûs.',
+	'boardvote_novotes' => 'I gn a co nolu k\' a vôté.',
+	'boardvote_time' => 'Date ey eure',
+	'boardvote_user' => 'Uzeu',
+	'boardvote_edits' => 'Contribs',
+	'boardvote_days' => 'Djoûs',
+	'boardvote_listintro' => '<p>Çouchal, c\' est ene djivêye di totes les djins
+k\' ont ddja vote disk\' asteure.
+$1 po les dnêyes sourdant des bultins.</p>',
+	'boardvote_dumplink' => 'Clitchîz chal',
 );
 ?>
