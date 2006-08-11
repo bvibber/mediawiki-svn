@@ -146,16 +146,16 @@ class Post extends Article {
 		     debug_print_backtrace();
 		}
                 
-                $res = $dbr->select( array('lqt', 'page'), 'lqt_id',
-                                     array('lqt_this = page_id',
+                $res = $dbr->select( array('lqt_post', 'page'), 'lqt_post_id',
+                                     array('lqt_post_this = page_id',
                                            'page_id'=>$this->getID()),
                                      __METHOD__ );
                 
                 if ( $dbr->numrows($res) == 0 ) {
                         $dbr->freeResult($res);
-                        $res2 = $dbr->insert('lqt', array('lqt_this' => $this->getID(),
-                                                          'lqt_next' => null,
-                                                          'lqt_first_reply' => null),
+                        $res2 = $dbr->insert('lqt_post', array('lqt_post_this' => $this->getID(),
+                                                          'lqt_post_next' => null,
+                                                          'lqt_post_first_reply' => null),
                                              __METHOD__);
                         return true;
                 } else {
@@ -172,9 +172,9 @@ class Post extends Article {
 
                 $set_to = $p ? $p->getID() : null;
                 
-                $res = $dbr->update( 'lqt',
-                                     /* SET */   array( 'lqt_next' => $set_to ),
-                                     /* WHERE */ array( 'lqt_this' => $this->getID(), ),
+                $res = $dbr->update( 'lqt_post',
+                                     /* SET */   array( 'lqt_post_next' => $set_to ),
+                                     /* WHERE */ array( 'lqt_post_this' => $this->getID(), ),
                                      __METHOD__);
 
                 $this->mNextPost = $p;
@@ -189,9 +189,9 @@ class Post extends Article {
 
                 $set_to = $p ? $p->getID() : null;
                 
-                $res = $dbr->update( 'lqt',
-                                     /* SET */   array( 'lqt_first_reply' => $set_to ),
-                                     /* WHERE */ array( 'lqt_this' => $this->getID(), ),
+                $res = $dbr->update( 'lqt_post',
+                                     /* SET */   array( 'lqt_post_first_reply' => $set_to ),
+                                     /* WHERE */ array( 'lqt_post_this' => $this->getID(), ),
                                      __METHOD__);
 
                 $this->mFirstReply = $p;
@@ -199,26 +199,26 @@ class Post extends Article {
 		return null; // FIXME return success/failure.
         }
 
-        function setTopic($s) {
+        function setSubject($s) {
 
                 $this->createLqtRecord();
                 
                 $dbr =& wfGetDB( DB_MASTER );
 
-                $res = $dbr->update( 'lqt',
-                                     /* SET */   array( 'lqt_topic' => $s ),
-                                     /* WHERE */ array( 'lqt_this' => $this->getID(), ),
+                $res = $dbr->update( 'lqt_post',
+                                     /* SET */   array( 'lqt_post_subject' => $s ),
+                                     /* WHERE */ array( 'lqt_post_this' => $this->getID(), ),
                                      __METHOD__);
 
-                $this->mTopic = $s;
+                $this->mSubject = $s;
                 
 		return $res;
         }
 
 
-	function getTopic() {
+	function subject() {
 	     $this->loadLinks();
-	     return $this->mTopic;
+	     return $this->mSubject;
 	}
 
 	function setDeleted($b) {
@@ -228,9 +228,9 @@ class Post extends Article {
 
                 $dbr =& wfGetDB( DB_MASTER );
 
-                $res = $dbr->update( 'lqt',
-                                     /* SET */   array( 'lqt_is_deleted' => $new_b ),
-                                     /* WHERE */ array( 'lqt_this' => $this->getID(), ),
+                $res = $dbr->update( 'lqt_post',
+                                     /* SET */   array( 'lqt_post_is_deleted' => $new_b ),
+                                     /* WHERE */ array( 'lqt_post_this' => $this->getID(), ),
                                      __METHOD__);
 
                 $this->mIsDeleted = $new_b;
@@ -246,7 +246,7 @@ class Post extends Article {
         /**
          * Populate $mFirstReply and $mNextPost with the appropriate Post objects.
          * Hits the database, but only the first time.
-	 * Also loads $mTopic.
+	 * Also loads $mSubject.
          * @private
          */
         function loadLinks() {
@@ -255,36 +255,42 @@ class Post extends Article {
 
                 $dbr =& wfGetDB( DB_SLAVE );
                 
-                $line = $dbr->selectRow( array('lqt', 'page'),
+                $line = $dbr->selectRow( array('lqt_post', 'page'),
                                          array('*'),
-                                         array('lqt_this = page_id',
+                                         array('lqt_post_this = page_id',
                                                'page_id' => $this->getID()),
                                          __METHOD__);
 
-                if ( $line && $line->lqt_next ) {
-                        $next_title = Title::newFromID($line->lqt_next);
+                if ( $line && $line->lqt_post_next ) {
+                        $next_title = Title::newFromID($line->lqt_post_next);
                         $this->mNextPost = new Post($next_title);
                 } else {
                         $this->mNextPost = null;
                 }
 
-                if ( $line && $line->lqt_first_reply ) {
-                        $reply_title = Title::newFromID($line->lqt_first_reply);
+                if ( $line && $line->lqt_post_first_reply ) {
+                        $reply_title = Title::newFromID($line->lqt_post_first_reply);
                         $this->mFirstReply = new Post($reply_title);
                 } else {
                         $this->mFirstReply = null;
                 }
 
-		if ( $line && $line->lqt_thread ) {
-		     $this->mThread = Thread::newFromId( $line->lqt_thread );
+		if ( $line && $line->lqt_post_thread ) {
+		     $this->mThread = Thread::newFromId( $line->lqt_post_thread );
 		} else {
 		     $this->mThread = null;
 		}
 
-		if ( $line && $line->lqt_is_deleted ) {
-		     $this->mIsDeleted = $line->lqt_is_deleted ? 1 : 0;
+		if ( $line && $line->lqt_post_is_deleted ) {
+		     $this->mIsDeleted = $line->lqt_post_is_deleted ? 1 : 0;
 		} else {
 		     $this->mIsDeleted = 0;
+		}
+
+		if ( $line && $line->lqt_post_subject ) {
+		     $this->mSubject = $line->lqt_post_subject;
+		} else {
+		     $this->mSubject = null;
 		}
         }
 
@@ -301,10 +307,10 @@ class Post extends Article {
 
                 $dbr =& wfGetDB( DB_SLAVE );
                 
-                $line = $dbr->selectRow( array('lqt', 'page'),
-                                         array('lqt_next', 'page_id'),
-                                         array('lqt_this = page_id',
-                                               'lqt_next' => $this->getID()),
+                $line = $dbr->selectRow( array('lqt_post', 'page'),
+                                         array('lqt_post_next', 'page_id'),
+                                         array('lqt_post_this = page_id',
+                                               'lqt_post_next' => $this->getID()),
                                          __METHOD__);
                 if ( $line && $line->page_id ) {
                         $title = Title::newFromID($line->page_id);
@@ -313,10 +319,10 @@ class Post extends Article {
                         $this->mPreviousPost = null;
                 }
 
-                $line = $dbr->selectRow( array('lqt', 'page'),
-                                         array('lqt_first_reply', 'page_id'),
-                                         array('lqt_this = page_id',
-                                               'lqt_first_reply' => $this->getID()),
+                $line = $dbr->selectRow( array('lqt_post', 'page'),
+                                         array('lqt_post_first_reply', 'page_id'),
+                                         array('lqt_post_this = page_id',
+                                               'lqt_post_first_reply' => $this->getID()),
                                          __METHOD__);
                 if ( $line && $line->page_id ) {
                         $title = Title::newFromID($line->page_id);
@@ -385,9 +391,9 @@ class Post extends Article {
 
 	     $set_to = $t ? $t->getID() : null;
 
-	     $res = $dbr->update( 'lqt',
-				  /* SET */   array( 'lqt_thread' => $set_to ),
-				  /* WHERE */ array( 'lqt_this' => $this->getID(), ),
+	     $res = $dbr->update( 'lqt_post',
+				  /* SET */   array( 'lqt_post_thread' => $set_to ),
+				  /* WHERE */ array( 'lqt_post_this' => $this->getID(), ),
 				  __METHOD__);
 
 	     $this->mFirstReply = $t;

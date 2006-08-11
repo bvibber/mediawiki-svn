@@ -51,6 +51,7 @@ class ThreadView {
 	  $wgOut->setOnloadHandler($h);
      }
 
+
      function render() {
 	  global $wgOut;
 
@@ -63,19 +64,9 @@ class ThreadView {
 
 	  $wgOut->addHTML("\n\n\n");
 
-	  // Subject header:
-	  if ( $this->mIsTopLevel ) {
-	       if ( $this->mThread->mSubject )
-		    $wgOut->addHTML( wfElement('h2', array('class'=>'lqt_thread_subject_header',
-							   'onclick'=>"lqt_hide_show('$thread_id_attrib')"),
-					       $this->mThread->mSubject) );
-	       else
-		    $wgOut->addWikiText( '----' );
-	  }
-	  
-	  $wgOut->addHTML('<a name="'.$thread_id_attrib.'"></a><div class="lqt_thread" id="'.$thread_id_attrib.'">');
+	  $wgOut->addHTML('<a name="'.$thread_id_attrib.'"></a><div class="lqt_thread" id="'. 'lqt_thread_' . $this->mThread->getID() .'">');
 	  if( $this->mFirstPost ) {
-	       $this->renderStartingFrom( $this->mFirstPost );
+	       $this->renderStartingFrom( $this->mFirstPost, 2 );
 	  }
 	  $wgOut->addHTML('</div>');
 
@@ -83,16 +74,34 @@ class ThreadView {
      }
 
 
-     protected function renderStartingFrom($post) {
+     /**
+      * Render $post and its children and younger siblings. 
+      * @param $post Post to start from.
+      * @param $header_level int Which kind of <h?> tag to for the top-level.
+      */
+     protected function renderStartingFrom($post, $header_level) {
+
+	  // Subject header:
+	  $this->showSubjectHeader( $post, $header_level );
+
+	  // The post itself
 	  $this->renderPost($post);
+
+	  // Button to move a post to be the first reply of this post:
+	  if ( $this->movingId &&
+	       $this->movingId != $post->getID() &&
+	       ($post->firstReply() ? $this->movingId != $post->firstReply()->getID() : true ) ) {
+	       $this->indent();
+	       $this->showMoveButton( 'reply', $post->getID() );
+	       $this->unindent();
+	  }
 
 	  // Render replies:
 	  if ( $post->firstReply() ) {
 	       $this->indent();
-	       $this->renderStartingFrom($post->firstReply());
+	       $this->renderStartingFrom($post->firstReply(), $header_level + 1);
 	       $this->unindent();
 	  }
-
 
 	  // Show reply editing form if we're replying to this post:
 	  if ( $this->replyingToId == $post->getID() ) {
@@ -101,15 +110,46 @@ class ThreadView {
 	       $this->unindent();
 	  }
 
+	  // Button to move a post to be the next post of this post:
+	  if ( $this->movingId &&
+	       $this->movingId != $post->getID() &&
+	       ($post->nextPost() ? $this->movingId != $post->nextPost()->getID() : true ) ) {
+	       $this->showMoveButton( 'next', $post->getID() );
+	  }
 
 	  // Render siblings:
 	  if ( $this->showNext && $post->nextPost() ) {
-	       $this->renderStartingFrom($post->nextPost());
+	       $this->renderStartingFrom($post->nextPost(), $header_level);
 	  }
 
 
      }
 
+     function showSubjectHeader( $post, $level ) {
+	  global $wgStylePath, $wgOut;
+	  if ( $post->subject() ) {
+	       $wgOut->addHTML( wfOpenElement( "h$level", array('class'=>'lqt_thread_subject_header',
+							   'onclick'=>"return lqt_disclosure('{$post->getID()}');" ) ) .
+				
+				wfElement('img', array('src'=>"$wgStylePath/common/images/Arr_d.png",
+						       'class'=>'lqt_thread_disclosure_triangle',
+						       'name'=>"lqt_thread_triangle_{$post->getID()}") ) .
+
+				$post->subject() .
+				wfCloseElement( "h$level" ) );
+	  }
+     }
+
+     function showMoveButton( $type, $id ) {
+	  global $wgOut;
+	  $wgOut->addHTML(
+	       wfOpenElement('form', array('action' => $this->talkTitle->getFullURL(),
+					   'method' => 'POST')) .
+	       wfHidden("lqt_move_to_$type", "$id") .
+	       wfHidden("lqt_move_post_id", $this->movingId) .
+	       wfSubmitButton('Move Here') .
+	       wfCloseElement('form') );
+     }
      
      function renderPost($p) {
 	  global $wgOut, $wgUser, $wgRequest;
@@ -298,7 +338,7 @@ class ThreadView {
 	  $e->edit();
 
 	  // override what happens in EditPage::showEditForm, called from $e->edit():
-	  $wgOut->setArticleRelated( false ); 
+	  $wgOut->setArticleRelated( true ); 
 	  $wgOut->setArticleFlag( false ); 
 
 	  // Override editpage's redirect.
@@ -328,7 +368,7 @@ class ThreadView {
 	  // Save new topic line if there is one:
 	  if ( $e->mDidSave && $wgRequest->getVal('lqt_topic') ) {
 	       $v = Sanitizer::stripAllTags($wgRequest->getVal('lqt_topic'));
-	       $new_thread->setSubject($v);
+	       $p->setSubject($v);
 	  }
 
      }
@@ -373,7 +413,7 @@ class ThreadView {
 	  // Save new topic line if there is one:
 	  if ( $e->mDidSave && $wgRequest->getVal('lqt_topic') ) {
 	       $v = Sanitizer::stripAllTags($wgRequest->getVal('lqt_topic'));
-	       $new_thread->setSubject($v);
+	       $p->setSubject($v);
 	  }
      }
 
@@ -446,7 +486,7 @@ class ThreadView {
 	  // Save new topic line if there is one:
 	  if ( $e->mDidSave && $wgRequest->getVal('lqt_topic') ) {
 	       $v = Sanitizer::stripAllTags($wgRequest->getVal('lqt_topic'));
-	       $p->thread()->setSubject($v);
+	       $p->setSubject($v);
 	  }
      }
 
@@ -468,7 +508,7 @@ class ThreadView {
 	  if ( $wgRequest->getVal('lqt_topic') ) {
 	       $fvalue = $wgRequest->getVal('lqt_topic');
 	  } elseif ( $p->exists() ) {
-	       $fvalue = $p->thread()->subject() ? $p->thread()->subject() : '';
+	       $fvalue = $p->subject() ? $p->subject() : '';
 	  } else {
 	       $fvalue = '';
 	  }

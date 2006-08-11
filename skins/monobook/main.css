@@ -26,12 +26,20 @@ li {
 	margin-bottom: .1em;
 }*/
 
+#lqt_archive_hide_show {
+        display: block;
+}
+
 #lqt_archive_toc {
         display: none;
 }
 
 .lqt_thread {
 //        display: none;
+}
+
+.lqt_thread_disclosure_triangle {
+        margin-right: 4pt;
 }
 
 .lqt_archive_browser {

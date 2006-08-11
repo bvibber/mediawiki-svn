@@ -31,7 +31,6 @@ class Thread {
 	       $this->mFirstPostId   = $dbline->lqt_thread_first_post;
 	       $this->mSummaryPostId = $dbline->lqt_thread_summary_post;
 	       $this->mTouched       = $dbline->lqt_thread_touched;
-	       $this->mSubject       = $dbline->lqt_thread_subject;
 	  }
      }
 

@@ -80,7 +80,7 @@ else {
 		       );
 
 		  $wgOut->addHTML(
-		       wfElement( 'a', array('href'=>'#', 'class'=>'', 'onclick'=>'lqt_hide_show("lqt_archive_toc")'), "Show Archive TOC" ) .
+		       wfElement( 'a', array('href'=>'#', 'id'=>'lqt_archive_hide_show', 'onclick'=>'return lqt_hide_show_archive_toc();'), "Show Archive TOC" ) .
 		       wfOpenElement( 'div', array('id'=>'lqt_archive_toc', 'class'=>'toc') ) .
 		       wfOpenElement('ul')
 		       );
@@ -91,7 +91,7 @@ else {
 		       $yyymm = substr($t->touched(), 0, 6);
 		       $wgOut->addHTML(
 			    wfOpenElement('li') .
-			    wfElement( 'a', array('href'=>$this->talkTitle->getLocalURL("lqt_show_month=$yyymm#lqt_thread_{$t->getID()}")), $t->subject() ) .
+			    wfElement( 'a', array('href'=>$this->talkTitle->getLocalURL("lqt_show_month=$yyymm#lqt_thread_{$t->getID()}")), $t->firstPost()->subject() ) .
 			    wfCloseElement('li')
 			    );
 		  }
@@ -101,7 +101,6 @@ else {
 		       wfCloseElement('div') .
 		       wfCloseElement('div')
 		       );
-		  
 
 		  
 	     }
@@ -155,9 +154,6 @@ else {
 			     $wgOut->redirect( $this->talkTitle->getFullURL($query) );
 			}
 		   
-
-
-
 			// Execute move operations:
 			// TODO find a better home for this.
 			$post_id     = $wgRequest->getInt( 'lqt_move_post_id',  false );
@@ -188,7 +184,6 @@ else {
 
 			if ( $wgRequest->getBool("lqt_post_new", false) ) {
 			     ThreadView::newThreadForm( $article, $this->talkTitle );
-//			     ThreadView::newPostEditingForm( $this->talkTitle, $article );
 			}  else {
 				 $wgOut->addHTML( wfElement('a',
 							    array('href'=>$this->talkTitle->getLocalURL("lqt_post_new=1")),
@@ -199,27 +194,20 @@ else {
 
 			$wgOut->addHTML( wfCloseElement( 'div' ) );
 
-			$wgOut->addHTML( wfOpenElement( 'div', array('class'=>'lqt_channel_body') ) );
 
-			if ( $moving ) {
-			     if( $moving != $first_post->getID() ) {
-                                  // Very first 'move here' button at top of page:
-				  $wgOut->addHTML( wfOpenElement('p') );
-				  $view->showMoveButton( 'next', $article->getID() );
-				  $wgOut->addHTML( wfCloseElement('p') );
-			     }
-			}
 
 			if ($threads ) {
+			     $wgOut->addHTML( wfOpenElement( 'div', array('class'=>'lqt_channel_body') ) );
 			     foreach ( $threads as $t ) {
 				  $view = new ThreadView( $this->talkTitle, $t, null, $editing_id, $replying_to_id, $history_id, $highlighting_title, $moving );
 				  $view->render();
 			     }
+			     $wgOut->addHTML( wfCloseElement( 'div' ) ); 
 			} else {
 			     $wgOut->addWikiText("This talk page is empty.");
 			}
 			
-			$wgOut->addHTML( wfCloseElement( 'div' ) );			
+
 
 			$wgOut->setPageTitle($this->talkTitle->getPrefixedText());
 		}

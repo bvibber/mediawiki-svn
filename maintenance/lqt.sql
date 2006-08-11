@@ -4,34 +4,35 @@
 -- Liquid Threads. We will be adding columns in the future: summary,
 -- maybe original author, ...
 
-CREATE TABLE /*$wgDBprefix*/lqt (
-  lqt_id int(8) unsigned NOT NULL auto_increment,
+CREATE TABLE /*$wgDBprefix*/lqt_post (
+  lqt_post_id int(8) unsigned NOT NULL auto_increment,
 
   -- key to the page that this is an extension of.
-  lqt_this int(8) unsigned NOT NULL,
+  lqt_post_this int(8) unsigned NOT NULL,
 
-  -- If the page is an article, this points to the first top-level
-  -- post of that article's unarchived talk page. If this is a post,
-  -- it points to that post's next sibling. NULL if the article has an
-  -- empty talk page, or if this is the last post on this level.
-  lqt_next int(8) unsigned NULL,
+  -- This points to that post's next sibling. NULL if this is the last
+  -- post on this level.
+  lqt_post_next int(8) unsigned NULL,
 
   -- If this post has any replies, this points to the first one.
-  lqt_first_reply int(8) unsigned NULL,
+  lqt_post_first_reply int(8) unsigned NULL,
 
   -- lqt_thread to which this post belongs.
-  lqt_thread int(8) unsigned NOT NULL,
+  lqt_post_thread int(8) unsigned NOT NULL,
 
   -- Rudementary deletion.
-  lqt_is_deleted boolean NOT NULL,
+  lqt_post_is_deleted boolean NOT NULL,
 
   -- Who deleted the post? == user_text.
-  lqt_deleted_by varchar(255) binary NULL,
+  lqt_post_deleted_by varchar(255) binary NULL,
 
-  PRIMARY KEY this_lqt_id (lqt_this, lqt_id),
-  UNIQUE INDEX lqt_id (lqt_id),
-  UNIQUE INDEX lqt_this (lqt_this),
-  INDEX lqt_thread (lqt_thread)
+  -- header line.
+  lqt_post_subject varchar(255) binary NULL,
+
+  PRIMARY KEY this_lqt_post_id (lqt_post_this, lqt_post_id),
+  UNIQUE INDEX lqt_post_id (lqt_post_id),
+  UNIQUE INDEX lqt_post_this (lqt_post_this),
+  INDEX lqt_post_thread (lqt_post_thread)
          
 ) TYPE=InnoDB;
 
@@ -50,9 +51,6 @@ CREATE TABLE /*$wgDBprefix*/lqt_thread (
        -- anytime a post in the thread is inserted, updated, deleted, etc., 
        -- this timestamp is updated to the current time.
        lqt_thread_touched char(14) binary NOT NULL default '',
-
-       -- header line.
-       lqt_thread_subject varchar(255) binary NULL,
 
        PRIMARY KEY lqt_thread_page_id (lqt_thread_page, lqt_thread_id),
        UNIQUE INDEX lqt_thread_id (lqt_thread_id),
