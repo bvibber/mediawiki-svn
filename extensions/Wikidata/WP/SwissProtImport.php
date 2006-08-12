@@ -152,8 +152,8 @@ class SwissProtXMLParser extends BaseXMLParser {
 		
 //		add the expression as defined meaning:
 		$expression = $this->getOrCreateExpression($entryExpression);
-		$definedMeaningId = createNewDefinedMeaning($expression->id, $expression->revisionId, $this->languageId, $entryExpression);
-		addDefinedMeaningToCollection($definedMeaningId, $this->collectionId, $entry->accession, $expression->revisionId);
+		$definedMeaningId = createNewDefinedMeaning($expression->id, $this->languageId, $entryExpression);
+		addDefinedMeaningToCollection($definedMeaningId, $this->collectionId, $entry->accession);
 		
 //		Add entry synonyms: Swiss-Prot entry name and species specific protein synonyms		
 		addSynonymOrTranslation($swissProtExpression, $this->languageId, $definedMeaningId, true);
@@ -186,7 +186,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 			if ($comment->status != "") 
 				$textValue .= " (" . $comment->status . ")";
 				
-			addDefinedMeaningTextAttributeValue($definedMeaningId, $attributeMeaningId, $this->languageId, $textValue, $expression->revisionId);
+			addDefinedMeaningTextAttributeValue($definedMeaningId, $attributeMeaningId, $this->languageId, $textValue);
 		}		
 		
 //		add EC number:
@@ -247,8 +247,8 @@ class SwissProtXMLParser extends BaseXMLParser {
 	
 	public function addExpressionAsDefinedMeaning($spelling, $definition, $internalIdentifier, $collectionId) {
 		$expression = $this->getOrCreateExpression($spelling);
-		$definedMeaningId = createNewDefinedMeaning($expression->id, $expression->revisionId, $this->languageId, $definition);
-		addDefinedMeaningToCollection($definedMeaningId, $collectionId, $internalIdentifier, $expression->revisionId);
+		$definedMeaningId = createNewDefinedMeaning($expression->id, $this->languageId, $definition);
+		addDefinedMeaningToCollection($definedMeaningId, $collectionId, $internalIdentifier);
 		return $definedMeaningId;
 	}
 

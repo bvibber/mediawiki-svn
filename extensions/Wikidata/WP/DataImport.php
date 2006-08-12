@@ -77,9 +77,9 @@ function	importSwissProtEntries($fileHandle) {
 		$expression = findExpression($descriptionAttribute->protein->name, $languageId);
 		if (!$expression) {
 			$expression = createExpression($descriptionAttribute->protein->name, $languageId);
-			$definedMeaningId = createNewDefinedMeaning($expression->id, $expression->revisionId, $languageId, $descriptionAttribute->protein->name);
+			$definedMeaningId = createNewDefinedMeaning($expression->id, $languageId, $descriptionAttribute->protein->name);
 
-			addDefinedMeaningToCollection($definedMeaningId, $collectionId, $descriptionAttribute->protein->name, $expression->revisionId);
+			addDefinedMeaningToCollection($definedMeaningId, $collectionId, $descriptionAttribute->protein->name);
 		}
 	}
 }

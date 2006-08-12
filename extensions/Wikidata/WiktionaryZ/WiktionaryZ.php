@@ -142,13 +142,13 @@ class WiktionaryZ {
 		return $editor;
 	}
 	
-	function getDefinedMeaningRecord($definedMeaningId, $revisionId, $expressionId) {
+	function getDefinedMeaningRecord($definedMeaningId, $expressionId) {
 		global
 			$definedMeaningAttribute, $definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
 			$relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute;
 				
 		$record = new ArrayRecord($definedMeaningAttribute->type->getStructure());
-		$record->setAttributeValue($definitionAttribute, $this->getDefinedMeaningDefinitionRecordSet($definedMeaningId, $revisionId));
+		$record->setAttributeValue($definitionAttribute, $this->getDefinedMeaningDefinitionRecordSet($definedMeaningId));
 		$record->setAttributeValue($alternativeDefinitionsAttribute, $this->getAlternativeDefinitionsRecordSet($definedMeaningId));
 		$record->setAttributeValue($synonymsAndTranslationsAttribute, $this->getSynonymAndTranslationRecordSet($definedMeaningId, $expressionId));
 		$record->setAttributeValue($relationsAttribute, $this->getDefinedMeaningRelationsRecordSet($definedMeaningId));
@@ -163,13 +163,12 @@ class WiktionaryZ {
 		global
 			$definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute;
 
-		$revisionId = getRevisionForExpressionId($expressionId);
 		$recordset = new ArrayRecordSet(new Structure($definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute), new Structure($definedMeaningIdAttribute));		
 		
 		$definedMeaningIds = $this->getDefinedMeaningsForExpression($expressionId);
 
 		foreach($definedMeaningIds as $definedMeaningId) 
-			$recordset->addRecord(array($definedMeaningId, getDefinedMeaningDefinition($definedMeaningId), $this->getDefinedMeaningRecord($definedMeaningId, $revisionId, $expressionId)));
+			$recordset->addRecord(array($definedMeaningId, getDefinedMeaningDefinition($definedMeaningId), $this->getDefinedMeaningRecord($definedMeaningId, $expressionId)));
 			
 		return $recordset;
 	}
@@ -241,7 +240,7 @@ class WiktionaryZ {
 	function getAlternativeDefinitions($definedMeaningId) {
 		$result = array();
 		$dbr =& wfGetDB(DB_SLAVE);	
-		$queryResult = $dbr->query("SELECT meaning_text_tcid FROM uw_alt_meaningtexts WHERE meaning_mid=$definedMeaningId AND is_latest_set=1");
+		$queryResult = $dbr->query("SELECT meaning_text_tcid FROM uw_alt_meaningtexts WHERE meaning_mid=$definedMeaningId");
 		
 		while ($definitionId = $dbr->fetchObject($queryResult))
 			$result[] = $definitionId->meaning_text_tcid;
@@ -314,7 +313,7 @@ class WiktionaryZ {
 		$synonymAndTranslationIds = array();
 		
 		foreach($definedMeaningIds as $definedMeaningId) {
-			$queryResult = $dbr->query("SELECT expression_id from uw_syntrans where defined_meaning_id=$definedMeaningId and expression_id!=$skippedExpressionId");
+			$queryResult = $dbr->query("SELECT expression_id FROM uw_syntrans WHERE defined_meaning_id=$definedMeaningId AND expression_id!=$skippedExpressionId");
 		
 			while($synonymOrTranslation = $dbr->fetchObject($queryResult)) 
 				$synonymAndTranslationIds[$definedMeaningId][] = $synonymOrTranslation->expression_id;
@@ -332,8 +331,8 @@ class WiktionaryZ {
 		$recordset = new ArrayRecordSet(new Structure($languageAttribute, $textAttribute), 
 										new Structure($languageAttribute));
 										
-		$queryResult = $dbr->query("SELECT language_id, old_text FROM uw_defined_meaning df, translated_content tc, text t WHERE df.defined_meaning_id=$definedMeaningId AND df.is_latest_ver=1 ".
-									"AND tc.set_id=df.meaning_text_tcid AND tc.text_id=t.old_id AND tc.is_latest_set=1");
+		$queryResult = $dbr->query("SELECT language_id, old_text FROM uw_defined_meaning df, translated_content tc, text t WHERE df.defined_meaning_id=$definedMeaningId ".
+									"AND tc.set_id=df.meaning_text_tcid AND tc.text_id=t.old_id");
 									
 		while ($translatedDefinition = $dbr->fetchObject($queryResult)) 
 			$recordset->addRecord(array($translatedDefinition->language_id, $translatedDefinition->old_text));
@@ -351,7 +350,7 @@ class WiktionaryZ {
 										new Structure($languageAttribute));
 										
 		$queryResult = $dbr->query("SELECT language_id, old_text FROM translated_content tc, text t WHERE ".
-									"tc.set_id=$textId AND tc.text_id=t.old_id AND tc.is_latest_set=1");
+									"tc.set_id=$textId AND tc.text_id=t.old_id");
 									
 		while ($translatedText= $dbr->fetchObject($queryResult)) 
 			$recordset->addRecord(array($translatedText->language_id, $translatedText->old_text));
@@ -368,7 +367,7 @@ class WiktionaryZ {
 		$expressionStructure = $expressionAttribute->type->getStructure();
 		$recordset = new ArrayRecordSet(new Structure($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute), new Structure($expressionIdAttribute));
 		$queryResult = $dbr->query("SELECT uw_expression_ns.expression_id, spelling, language_id, endemic_meaning FROM uw_syntrans, uw_expression_ns WHERE uw_syntrans.defined_meaning_id=$definedMeaningId AND uw_syntrans.expression_id!=$skippedExpressionId " .
-									"AND uw_expression_ns.expression_id=uw_syntrans.expression_id AND uw_expression_ns.is_latest=1");
+									"AND uw_expression_ns.expression_id=uw_syntrans.expression_id");
 
 		while($synonymOrTranslation = $dbr->fetchObject($queryResult)) {
 			$expressionRecord = new ArrayRecord($expressionStructure);
@@ -388,7 +387,7 @@ class WiktionaryZ {
 		$recordset = new ArrayRecordSet($structure, $structure);
 		
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid!=0 and is_latest_set=1 ORDER BY relationtype_mid");
+		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid!=0 ORDER BY relationtype_mid");
 			
 		while($definedMeaningRelation = $dbr->fetchObject($queryResult))
 			$recordset->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid)); 
@@ -404,7 +403,7 @@ class WiktionaryZ {
 		$recordset = new ArrayRecordSet($structure, new Structure($collectionAttribute));
 		
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT collection_id, internal_member_id FROM uw_collection_contents WHERE member_mid=$definedMeaningId AND is_latest_set=1");
+		$queryResult = $dbr->query("SELECT collection_id, internal_member_id FROM uw_collection_contents WHERE member_mid=$definedMeaningId");
 			
 		while($collection = $dbr->fetchObject($queryResult))
 			$recordset->addRecord(array($collection->collection_id, $collection->internal_member_id)); 
@@ -435,7 +434,7 @@ class WiktionaryZ {
 		$recordset = new ArrayRecordSet($structure, $structure);
 		
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid=0 and is_latest_set=1");
+		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid=0");
 			
 		while($attribute = $dbr->fetchObject($queryResult))
 			$recordset->addRecord(array($attribute->meaning2_mid)); 
@@ -449,7 +448,7 @@ class WiktionaryZ {
 		
 		foreach($definedMeaningIds as $definedMeaningId) {
 			$relations = array();
-			$queryResult = $dbr->query("SELECT * from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid!=0 and is_latest_set=1");
+			$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid!=0");
 			
 			while($definedMeaningRelation = $dbr->fetchObject($queryResult)) 
 				$relations[$definedMeaningRelation->relationtype_mid][] = $definedMeaningRelation->meaning2_mid;
@@ -490,13 +489,12 @@ class DefinedMeaningDefinitionController implements Controller {
 		global
 			$expressionIdAttribute, $definedMeaningIdAttribute, $languageAttribute, $textAttribute;
 		
-		$revisionId = getRevisionForExpressionId($keyPath->peek(1)->getAttributeValue($expressionIdAttribute));
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$languageId = $record->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);
 		
 		if ($languageId != 0 && $text != "") 
-			addDefinedMeaningDefinition($definedMeaningId, $revisionId, $languageId, $text);
+			addDefinedMeaningDefinition($definedMeaningId, $languageId, $text);
 	}
 	
 	public function remove($keyPath) {
@@ -526,7 +524,6 @@ class DefinedMeaningAlternativeDefinitionsController {
 		global
 			$expressionIdAttribute, $definedMeaningIdAttribute, $alternativeDefinitionAttribute, $languageAttribute, $textAttribute;
 
-		$revisionId = getRevisionForExpressionId($keyPath->peek(1)->getAttributeValue($expressionIdAttribute));
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);		
 		$alternativeDefinition = $record->getAttributeValue($alternativeDefinitionAttribute);
 		
@@ -537,7 +534,7 @@ class DefinedMeaningAlternativeDefinitionsController {
 			$text = $definitionRecord->getAttributeValue($textAttribute);
 			
 			if ($languageId != 0 && $text != '')
-				addDefinedMeaningAlternativeDefinition($definedMeaningId, $revisionId, $languageId, $text);
+				addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text);
 		}
 	}
 	
@@ -559,13 +556,12 @@ class DefinedMeaningAlternativeDefinitionController implements Controller {
 		global
 			$expressionIdAttribute, $definitionIdAttribute, $languageAttribute, $textAttribute;
 
-		$revisionId = getRevisionForExpressionId($keyPath->peek(2)->getAttributeValue($expressionIdAttribute));
 		$definitionId = $keyPath->peek(0)->getAttributeValue($definitionIdAttribute);
 		$languageId = $record->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);
 
 		if ($languageId != 0 && $text != "")
-			addTranslatedTextIfNotPresent($definitionId, $languageId, $text, $revisionId);
+			addTranslatedTextIfNotPresent($definitionId, $languageId, $text);
 	}
 	
 	public function remove($keyPath) {
@@ -688,13 +684,12 @@ class DefinedMeaningCollectionController implements Controller {
 		global
 			$expressionIdAttribute, $definedMeaningIdAttribute, $collectionAttribute, $sourceIdentifierAttribute;
 
-		$revisionId = getRevisionForExpressionId($keyPath->peek(1)->getAttributeValue($expressionIdAttribute));
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);		
 		$collectionId = $record->getAttributeValue($collectionAttribute);
 		$internalId = $record->getAttributeValue($sourceIdentifierAttribute);
 		
 		if ($collectionId != 0)
-			addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectionId, $internalId, $revisionId);
+			addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectionId, $internalId);
 	}	
 
 	public function remove($keyPath) {
@@ -735,9 +730,8 @@ class ExpressionMeaningController implements Controller {
 			
 			if ($languageId != 0 && $text != "") {	
 				$expressionId = $keyPath->peek(0)->getAttributeValue($expressionIdAttribute);
-				$revisionId = getRevisionForExpressionId($expressionId);
 
-				createNewDefinedMeaning($expressionId, $revisionId, $languageId, $text);
+				createNewDefinedMeaning($expressionId, $languageId, $text);
 			}
 		}
 	}
@@ -776,7 +770,7 @@ class ExpressionController implements Controller {
 				
 				if ($languageId != 0 && $text != "") {	
 					$expression = findOrCreateExpression($this->spelling, $expressionLanguageId);
-					createNewDefinedMeaning($expression->id, $expression->revisionId, $languageId, $text);
+					createNewDefinedMeaning($expression->id, $languageId, $text);
 				}
 			}
 		}
@@ -795,7 +789,6 @@ class DefinedMeaningTextAttributeValuesController {
 			$expressionIdAttribute, $definedMeaningIdAttribute, $textValueAttribute, $languageAttribute, 
 			$textAttribute, $textAttributeAttribute;
 
-		$revisionId = getRevisionForExpressionId($keyPath->peek(1)->getAttributeValue($expressionIdAttribute));
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);		
 		$textValue = $record->getAttributeValue($textValueAttribute);
 		$textAttributeId = $record->getAttributeValue($textAttributeAttribute);
@@ -807,7 +800,7 @@ class DefinedMeaningTextAttributeValuesController {
 			$text = $textValueRecord->getAttributeValue($textAttribute);
 			
 			if ($languageId != 0 && $text != '')
-				addDefinedMeaningTextAttributeValue($definedMeaningId, $textAttributeId, $languageId, $text, $revisionId);
+				addDefinedMeaningTextAttributeValue($definedMeaningId, $textAttributeId, $languageId, $text);
 		}
 	}
 	
@@ -831,13 +824,12 @@ class DefinedMeaningTextAttributeValueController implements Controller {
 		global
 			$expressionIdAttribute, $textValueIdAttribute, $languageAttribute, $textAttribute;
 
-		$revisionId = getRevisionForExpressionId($keyPath->peek(2)->getAttributeValue($expressionIdAttribute));
 		$textId = $keyPath->peek(0)->getAttributeValue($textValueIdAttribute);
 		$languageId = $record->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);
 
 		if ($languageId != 0 && $text != "")
-			addTranslatedTextIfNotPresent($textId, $languageId, $text, $revisionId);
+			addTranslatedTextIfNotPresent($textId, $languageId, $text);
 	}
 	
 	public function remove($keyPath) {

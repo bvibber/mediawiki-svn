@@ -74,7 +74,7 @@ function getSuggestions() {
 	    	$sql = "SELECT collection_id, spelling ".
 	    			"FROM uw_expression_ns expression, uw_collection_ns collection, uw_syntrans syntrans ".
 	    			"WHERE expression.expression_id=syntrans.expression_id AND syntrans.defined_meaning_id=collection.collection_mid ".
-	    			"AND collection.is_latest=1 AND syntrans.is_latest_set=1 AND expression.is_latest=1 AND syntrans.endemic_meaning=1 ";
+	    			"AND syntrans.endemic_meaning=1 ";
 	    	break;
 	}
 	                          
@@ -117,9 +117,7 @@ function getSQLForCollectionOfType($collectionType) {
             "WHERE uw_collection_contents.collection_id=uw_collection_ns.collection_id and uw_collection_ns.collection_type='$collectionType' " .
             
             "AND syntrans.defined_meaning_id=uw_collection_contents.member_mid " .
-            "AND expression.expression_id=syntrans.expression_id AND syntrans.endemic_meaning=1 " .
-
-			"AND uw_collection_contents.is_latest_set=1 ";
+            "AND expression.expression_id=syntrans.expression_id AND syntrans.endemic_meaning=1 ";
 }
 
 function getRelationTypeAsRelation($queryResult) {

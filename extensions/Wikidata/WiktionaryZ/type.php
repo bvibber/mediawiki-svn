@@ -35,7 +35,7 @@ function languageIdAsText($languageId) {
 
 function definingExpression($definedMeaningId) {
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT spelling, language_id from uw_defined_meaning, uw_expression_ns where uw_defined_meaning.defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_defined_meaning.expression_id and uw_defined_meaning.is_latest_ver=1 and uw_expression_ns.is_latest=1");
+	$queryResult = $dbr->query("SELECT spelling, language_id from uw_defined_meaning, uw_expression_ns where uw_defined_meaning.defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_defined_meaning.expression_id");
 	$expression = $dbr->fetchObject($queryResult);
 	return array($expression->spelling, $expression->language_id); 
 }
@@ -71,7 +71,10 @@ function definedMeaningExpression($definedMeaningId) {
 	if ($definingExpressionLanguage == $userLanguage)  
 		return $definingExpression;
 	else {	
-		$result = definedMeaningExpressionForLanguage($definedMeaningId, $userLanguage);
+		if ($userLanguage > 0)
+			$result = definedMeaningExpressionForLanguage($definedMeaningId, $userLanguage);
+		else
+			$result = "";
 		
 		if ($result == "") {
 			$result = definedMeaningExpressionForLanguage($definedMeaningId, 85);
@@ -97,7 +100,7 @@ function getTextValue($textId) {
 
 function getCollectionMeaningId($collectionId) {
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT collection_mid FROM uw_collection_ns WHERE collection_id=$collectionId AND is_latest=1");
+	$queryResult = $dbr->query("SELECT collection_mid FROM uw_collection_ns WHERE collection_id=$collectionId");
 	
 	return $dbr->fetchObject($queryResult)->collection_mid;	
 }
