@@ -139,7 +139,7 @@ $wgMakesysopMessages['nl'] = array(
 );
 $wgMakesysopMessages['pl'] = array(
 	'makesysoptitle'       => 'Nadaj użytkownikowi uprawnienia administratora',
-	'makesysoptext'        => ''Ten formularz jest wykorzystywany przez użytkowników o statusie biurokraty do przyznawania innym użytkownikom praw administratora. Aby to uczynić, wpisz nazwę użytkownika i kliknij na przycisk.',
+	'makesysoptext'        => 'Ten formularz jest wykorzystywany przez użytkowników o statusie biurokraty do przyznawania innym użytkownikom praw administratora. Aby to uczynić, wpisz nazwę użytkownika i kliknij na przycisk.',
 	'makesysopname'        => 'Nazwa użytkownika:',
 	'makesysopsubmit'      => 'Przyznaj temu użytkownikowi uprawnienia administratora',
 	'makesysopok'          => "<b>Użytkownik \"$1\" otrzymał uprawnienia administratora</b>",
