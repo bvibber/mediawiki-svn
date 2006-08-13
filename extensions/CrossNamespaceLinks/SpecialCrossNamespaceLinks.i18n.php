@@ -28,4 +28,8 @@ $wgCrossNamespaceLinksMessages['nl'] = array(
 	'crossnamespacelinks'     => 'Pagina\'s met verwijzingen naar andere naamruimten',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|verwijzing|verwijzingen}} naar $3'
 );
+$wgCrossNamespaceLinksMessages['pl'] = array(
+	'crossnamespacelinks'     => 'Linki między przestrzeniami nazw',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|linki}} do $3'
+);
 ?>

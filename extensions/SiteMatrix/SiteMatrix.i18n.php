@@ -23,4 +23,7 @@ $wgSiteMatrixMessages['ja'] = array(
 $wgSiteMatrixMessages['nl'] = array(
 	"sitematrix" => "Lijst met Wikimedia wiki's",
 );
+$wgSiteMatrixMessages['pl'] = array(
+	"sitematrix" => "Lista projektów Wikimedia",
+);
 ?>
