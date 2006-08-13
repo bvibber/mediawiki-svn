@@ -4,8 +4,8 @@
 
 Summary: The Squid proxy caching server.
 Name: squid
-Version: 2.6.PRE2
-Release: 2wm
+Version: 2.6.STABLE2
+Release: 1wm
 Epoch: 8
 License: GPL
 Group: System Environment/Daemons
@@ -26,11 +26,10 @@ Source98: perl-requires-squid.sh
 # them because of local patch changes.
 Patch201: squid-2.5.STABLE11-config.patch
 Patch202: squid-2.5.STABLE4-location.patch
-Patch203: squid-2.6.PRE2-build.patch
+Patch203: squid-2.6.STABLE2-build.patch
 Patch204: squid-2.5.STABLE4-perlpath.patch
 
 # Wikimedia patches
-Patch251: squid-2.6.PRE2-htcp.patch
 Patch252: squid-2.5.STABLE13-errors.patch
 Patch253: squid-2.5.STABLE13-nomanglerequestheaders.patch
 
@@ -61,7 +60,6 @@ lookup program (dnsserver), a program for retrieving FTP data
 %patch202 -p1 -b .location
 %patch203 -p1 -b .build
 %patch204 -p1 -b .perlpath
-%patch251 -p1 -b .htcp
 %patch252 -p0 -b .errors
 %patch253 -p0 -b .nomanglerequestheaders
 
@@ -173,6 +171,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) /etc/squid/errors
 %{_sbindir}/squid
 %{_sbindir}/squidclient
+%{_sbindir}/cossdump
 %config(noreplace) /etc/squid/icons
 %config(noreplace) /etc/rc.d/init.d/squid
 %config(noreplace) /etc/logrotate.d/squid
@@ -218,6 +217,14 @@ fi
 chgrp squid /var/cache/samba/winbindd_privileged > /dev/null 2>& 1 || true
 
 %changelog
+* Wed Aug 2 2006 Mark Bergsma <mark@nedworks.org> 8:2.6.STABLE2-1.WM
+- New upstream version 2.6.STABLE2
+- Remove HTCP bugfix, it was fixed in upstream
+- Update build patches
+
+* Mon Jun 12 2006 Mark Bergsma <mark@nedworks.org> 8:2.6.PRE2-3.WM
+- Increase N_QUERIED_KEYS from 256 to 8129 in htcp.c
+
 * Mon Jun 12 2006 Mark Bergsma <mark@nedworks.org> 8:2.6.PRE2-2.WM
 - Fix wrong PID file path
 - Fix HTCP bug where the old squid format is rejected as invalid packet
