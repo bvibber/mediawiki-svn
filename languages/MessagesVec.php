@@ -1,7 +1,36 @@
 <?php
+/** Venitian ( Vèneto )
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  */
+$fallback = 'it';
 
-global $wgAllMessagesVec;
-$wgAllMessagesVec = array(
+$quickbarSettings = array(
+	'Nessun', 'Fisso a sinistra', 'Fisso a destra', 'Fluttuante a sinistra'
+);
+$namespaceNames = array(		
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Speciale',
+	NS_MAIN             => '',
+	NS_TALK             => 'Discussion',
+	NS_USER             => 'Utente',
+	NS_USER_TALK        => 'Discussion_utente',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Discussion_$1',
+	NS_IMAGE            => 'Imagine',
+	NS_IMAGE_TALK       => 'Discussion_imagine',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Discussion_MediaWiki',
+	NS_TEMPLATE         => 'Template',
+	NS_TEMPLATE_TALK    => 'Discussion_template',
+	NS_HELP             => 'Aiuto',
+	NS_HELP_TALK        => 'Discussion_aiuto',
+	NS_CATEGORY         => 'Categoria',
+	NS_CATEGORY_TALK    => 'Discussion_categoria'
+);
+
+$messages = array(
 'tog-underline'         => 'Sottolinea links',
 'tog-highlightbroken'   => 'Evidenzsia i links che i punta a <br />arthicołi ancora da scrivere',
 'tog-justify'           => 'Paragrafo: giustificato',
@@ -49,7 +78,6 @@ $wgAllMessagesVec = array(
 'nov'                   => 'Nov',
 'dec'                   => 'Diç',
 'categories'            => '{{PLURAL:$1|Categoria|Categorie}}',
-'category'              => 'Categoria',
 'category_header'       => 'Voçi n\'te ła categoria "$1"',
 'mainpage'              => 'Paxèna prinzsipałe',
 'mainpagetext'          => '\'\'\'MediaWiki xè stà instałà con sucesso.\'\'\'',
@@ -105,7 +133,6 @@ $wgAllMessagesVec = array(
 'talkpage'              => 'Discussion',
 'specialpage'           => 'Paxèna Speciałe',
 'articlepage'           => 'Varda voçe',
-'subjectpage'           => 'Vedi voçe',
 'talk'                  => 'Discussion',
 'userpage'              => 'Varda paxèna Utente',
 'projectpage'           => 'Varda ła paxèna de servizsio',
@@ -122,13 +149,7 @@ $wgAllMessagesVec = array(
 'administrators'        => 'Project:Aministradori',
 'jumptonavigation'      => 'Navigazsion',
 'jumptosearch'          => 'zserca',
-'sysoptitle'            => 'Riservà ai aministradori',
-'sysoptext'             => 'Questa operazione può essere eseguita solo da Utenti con grado di "sysop".
-Vedi $1.',
-'developertitle'        => 'Riservà ai sviłuppatori',
-'developertext'         => 'Stà operazsion la pode esser eseguia solo da Utenti con grado de "developer". Varda $1.',
 'badaccess'             => 'Eròr ne i permessi',
-'badaccesstext'         => 'L\'azsion che te ghè richiesto xè limità a i utenti co\'l permezso "$2" azsegnà. Varda $1.',
 'versionrequired'       => 'Verzsion $1 de MediaWiki richiesta',
 'versionrequiredtext'   => 'Par usare sta paxèna xè necessario dispore de ła verzsion $1 del software MediaWiki. Varda [[Special:Version]]',
 'youhavenewmessages'    => 'Te ghè $1 ($2).',
@@ -419,7 +440,6 @@ par poder personalixare le to preferenzse.',
 'userrights-lookup-user'=> 'Gestion de i gruppi utente',
 'userrights-user-editname'=> 'Inserire el nome utente:',
 'userrights-groupshelp' => 'Selezsionar i gruppi ai quałi se vołe assoçiare o rimovere l\'utente. L\'appartenenzsa ai gruppi non selezsionai non verrà modifegà. Par desełezsionare un gruppo, premere Ctrl + el tasto sinistro del mouse.',
-'userrights-logcomment' => 'Modifegà appartenenzsa gruppi da $1 a $2',
 'group-sysop'           => 'Aministradori',
 'group-sysop-member'    => 'Aministrador',
 'changes'               => 'cambiamenti',

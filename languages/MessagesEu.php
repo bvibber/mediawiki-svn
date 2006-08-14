@@ -1,7 +1,42 @@
 <?php
+/** Basque (Euskara)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
 
-/* private */ $wgAllMessagesEu = array(
+$quickbarSettings = array(
+	'Ezein ere', 'Eskuinean', 'Ezkerrean', 'Ezkerrean mugikor'
+);
+
+$skinNames = array(
+	'standard'     => 'Lehenetsia',
+	'nostalgia'    => 'Nostalgia',
+	'cologneblue'  => 'Cologne Blue',
+	'smarty'       => 'Paddington',
+	'montparnasse' => 'Montparnasse'
+);
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Aparteko',
+	NS_MAIN           => '',
+	NS_TALK           => 'Eztabaida',
+	NS_USER           => 'Lankide',
+	NS_USER_TALK      => 'Lankide_eztabaida',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_eztabaida',
+	NS_IMAGE          => 'Irudi',
+	NS_IMAGE_TALK     => 'Irudi_eztabaida',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'MediaWiki_eztabaida',
+	NS_TEMPLATE       => 'Txantiloi',
+	NS_TEMPLATE_TALK  => 'Txantiloi_eztabaida',
+	NS_CATEGORY       => 'Kategoria',
+	NS_CATEGORY_TALK  => 'Kategoria_eztabaida',
+);
+
+$messages = array(
 '1movedto2' => '$1 izenburua $2-en truke aldatu da.',
 'about' => 'buruz',
 'aboutpage' => '{{ns:project}}:{{SITENAME}}ri_buruz', // TODO: grammar
@@ -16,7 +51,6 @@
 'bold_tip' => 'Lodia',
 'cancel' => 'Bertan behera utzi',
 'categories' => 'Kategoriak',
-'category' => 'kategoria',
 'category_header' => '"$1" kategoriako artikuluak',
 'categoryarticlecount' => 'Kategoria honetan $1 artikulu daude.',
 'contributions' => 'Lankidearen ekarpenak',
@@ -126,7 +160,6 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.',
 'specialpages' => 'Orri bereziak',
 'statistics' => 'Estatistikak',
 'summary' => 'Laburpen',
-'sysoptitle' => '<i>Sysop</i> izatea behar da',
 'talk' => 'Eztabaida',
 'talkpage' => 'Eztabaida orri honen gainean',
 'toc' => 'Aurkibidea',

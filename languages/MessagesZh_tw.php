@@ -1,7 +1,61 @@
 <?php
+/**
+  * @package MediaWiki
+  * @subpackage Language
+  */
+
+$fallback = 'zh-cn';
+
+$namespaceNames = array(
+	NS_MEDIA            => "媒體",
+	NS_SPECIAL          => "特殊",
+	NS_MAIN             => "",
+	NS_TALK             => "討論",
+	NS_USER             => "用戶",
+	NS_USER_TALK        => "用戶討論",
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1討論',
+	NS_IMAGE            => "圖像",
+	NS_IMAGE_TALK       => "圖像討論",
+	NS_MEDIAWIKI        => "媒體維基",
+	NS_MEDIAWIKI_TALK   => "媒體維基討論",
+	NS_TEMPLATE         => "樣板",
+	NS_TEMPLATE_TALK    => "樣板討論",
+	NS_HELP             => "幫助",
+	NS_HELP_TALK        => "幫助討論",
+	NS_CATEGORY         => "分類",
+	NS_CATEGORY_TALK    => "分類討論"
+);
+
+$namespaceAliases = array(
+	"對話" => NS_TALK,
+	"用戶對話" => NS_USER_TALK,
+	"維基百科對話" => NS_PROJECT_TALK,
+	"圖像對話" => NS_IMAGE_TALK,
+);
+
+$quickbarSettings = array(
+        "無", /* "None" */
+	"左側固定", /* "Fixed left" */
+	"右側固定", /* "Fixed right" */
+	"左側漂移" /* "Floating left" */
+);
+
+$skinNames = array(
+        "標準",/* "Standard" */
+	"懷舊",/* "Nostalgia" */
+	"科隆香水藍" /* "Cologne Blue" */
+);
+
+$bookstoreList = array(
+	"博客來書店" => "http://www.books.com.tw/exep/openfind_book_keyword.php?cat1=4&key1=$1",
+	"三民書店" => "http://www.sanmin.com.tw/page-qsearch.asp?ct=search_isbn&qu=$1",
+	"天下書店" => "http://www.cwbook.com.tw/cw/TS.jsp?schType=product.isbn&schStr=$1",
+	"新絲書店" => "http://www.silkbook.com/function/Search_List_Book.asp?item=5&text=$1"
+);
 
 
-/* private */ $wgAllMessagesZh_tw = array(
+$messages = array(
 
 /* User toggles */
 	"tog-underline" => "下劃鏈結", /* "Underline links", */
@@ -27,10 +81,8 @@
 # Bits of text used by many pages:
 #
 "categories" => "頁面分類",
-"category" => "分類",
 "category_header" => "類別”$1“中的條目",
 "subcategories" => "子分類",
-"linktrail"		=> "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "首頁",
 "about"			=> "關於",
 "aboutpage"		=> "{{ns:project}}:關於",
@@ -69,7 +121,6 @@
 "talkpage"		=> "討論本頁",
 	 "postcomment"   => "發表評論",
 "articlepage"	=> "查看文章",
-"subjectpage"	=> "查看主題", # For compatibility
 "userpage" => "查看用戶頁",
 "projectpage" => "查看元維基頁",
 "imagepage" => 	"查看圖像頁面",
@@ -80,12 +131,6 @@
 "viewcount"		=> "本頁面已經被瀏覽$1次。",
 "protectedpage" => "被保護頁",
 "administrators" => "{{ns:project}}:管理員",
-"sysoptitle"	=> "需要管理員權限",
-"sysoptext"		=> "您剛才的請求只有擁有管理員權限的用戶才可使用。
-參見$1。",
-"developertitle" => "需要發展者權限",
-"developertext"	=> "您剛才的請求只有擁有發展者權限的用戶才可使用。
-參見$1。",
 "nbytes"		=> "$1字節",
 "go"			=> "進入",
 "ok"			=> "好",

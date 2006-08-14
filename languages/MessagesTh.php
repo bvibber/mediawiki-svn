@@ -1,7 +1,44 @@
 <?php
+/**
+  * @package MediaWiki
+  * @subpackage Language
+  */
+#--------------------------------------------------------------------------
+# ผู้แปล (Translators)
+# - วรากร อึ้งวิเชียร (Varakorn Ungvichian)
+# - จักรกฤช วงศ์สระหลวง (Jakkrit Vongsraluang) / PaePae
+#--------------------------------------------------------------------------
 
 
-/* private */ $wgAllMessagesTh = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'สื่อ',
+	NS_SPECIAL          => 'พิเศษ',
+	NS_MAIN	            => '',
+	NS_TALK	            => 'พูดคุย',
+	NS_USER             => 'ผู้ใช้',
+	NS_USER_TALK        => 'คุยกับผู้ใช้',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'คุยเรื่อง$1',
+	NS_IMAGE            => 'ภาพ',
+	NS_IMAGE_TALK       => 'คุยเรื่องภาพ',
+	NS_MEDIAWIKI        => 'มีเดียวิกิ',
+	NS_MEDIAWIKI_TALK   => 'คุยเรื่องมีเดียวิกิ',
+	NS_TEMPLATE         => 'แม่แบบ',
+	NS_TEMPLATE_TALK    => 'คุยเรื่องแม่แบบ',
+	NS_HELP             => 'วิธีใช้',
+	NS_HELP_TALK        => 'คุยเรื่องวิธีใช้',
+	NS_CATEGORY         => 'หมวดหมู่',
+	NS_CATEGORY_TALK    => 'คุยเรื่องหมวดหมู่',
+);
+
+$quickbarSettings = array(
+	"ไม่มี", "อยู่ทางซ้าย", "อยู่ทางขวา", "ลอยทางซ้าย"
+);
+
+$linkTrail = '/^([a-z]+)(.*)\$/sD';
+
+
+$messages = array(
 
 # User Toggles
 #
@@ -63,11 +100,9 @@
 # Bits of text used by many pages:
 #
 "categories" => "ประเภทของหน้า",
-"category" => "ประเภท",
 "category_header" => "บทความในประเภท \"$1\"",
 "subcategories" => "ประเภทย่อย",
 
-"linktrail"		=> "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "หน้าหลัก",
 "mainpagetext"	=> "Wiki software  ถูกติดตั้งเรียบร้อยแล้ว",
 "about"			=> "เกี่ยวกับ",
@@ -112,7 +147,6 @@
 "talkpage"		=> "พูดคุยเกี่ยวกับหน้านี้",
 "postcomment"   => "Post a comment",
 "articlepage"	=> "View article",
-"subjectpage"	=> "View subject", # For compatibility
 "userpage" => "View user page",
 "projectpage" => "View meta page",
 "imagepage" => 	"View image page",
@@ -123,14 +157,6 @@
 "viewcount"		=> "This page has been accessed $1 times.",
 "protectedpage" => "Protected page",
 "administrators" => "{{ns:project}}:Administrators",
-"sysoptitle"	=> "Sysop access required",
-"sysoptext"		=> "The action you have requested can only be
-performed by users with \"sysop\" status.
-See $1.",
-"developertitle" => "Developer access required",
-"developertext"	=> "The action you have requested can only be
-performed by users with \"developer\" status.
-See $1.",
 
 "nbytes"		=> "$1 ไบต์",
 "go"			=> "ไป",

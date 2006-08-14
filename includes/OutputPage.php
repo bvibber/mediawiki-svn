@@ -22,7 +22,7 @@ class OutputPage {
 	var $mDoNothing;
 	var $mContainsOldMagic, $mContainsNewMagic;
 	var $mIsArticleRelated;
-	var $mParserOptions;
+	protected $mParserOptions; // lazy initialised, use parserOptions()
 	var $mShowFeedLinks = false;
 	var $mEnableClientCache = true;
 	var $mArticleBodyOnly = false;
@@ -46,7 +46,7 @@ class OutputPage {
 		$this->mCategoryLinks = array();
 		$this->mDoNothing = false;
 		$this->mContainsOldMagic = $this->mContainsNewMagic = 0;
-		$this->mParserOptions = ParserOptions::newFromUser( NULL );
+		$this->mParserOptions = null;
 		$this->mSquidMaxage = 0;
 		$this->mScripts = '';
 		$this->mETag = false;
@@ -255,10 +255,13 @@ class OutputPage {
 
 	/* @deprecated */
 	function setParserOptions( $options ) {
-		return $this->ParserOptions( $options );
+		return $this->parserOptions( $options );
 	}
 
-	function ParserOptions( $options = null ) {
+	function parserOptions( $options = null ) {
+		if ( !$this->mParserOptions ) {
+			$this->mParserOptions = new ParserOptions;
+		}
 		return wfSetVar( $this->mParserOptions, $options );
 	}
 
@@ -292,7 +295,7 @@ class OutputPage {
 		$fname = 'OutputPage:addWikiTextTitle';
 		wfProfileIn($fname);
 		wfIncrStats('pcache_not_possible');
-		$parserOutput = $wgParser->parse( $text, $title, $this->mParserOptions,
+		$parserOutput = $wgParser->parse( $text, $title, $this->parserOptions(),
 			$linestart, true, $this->mRevisionId );
 		$this->addParserOutput( $parserOutput );
 		wfProfileOut($fname);
@@ -326,10 +329,11 @@ class OutputPage {
 	function addPrimaryWikiText( $text, $article, $cache = true ) {
 		global $wgParser, $wgUser;
 
-		$this->mParserOptions->setTidy(true);
+		$popts = $this->parserOptions();
+		$popts->setTidy(true);
 		$parserOutput = $wgParser->parse( $text, $article->mTitle,
-			$this->mParserOptions, true, true, $this->mRevisionId );
-		$this->mParserOptions->setTidy(false);
+			$popts, true, true, $this->mRevisionId );
+		$popts->setTidy(false);
 		if ( $cache && $article && $parserOutput->getCacheTime() != -1 ) {
 			$parserCache =& ParserCache::singleton();
 			$parserCache->save( $parserOutput, $article, $wgUser );
@@ -348,9 +352,10 @@ class OutputPage {
 	 */
 	function addSecondaryWikiText( $text, $linestart = true ) {
 		global $wgTitle;
-		$this->mParserOptions->setTidy(true);
+		$popts = $this->parserOptions();
+		$popts->setTidy(true);
 		$this->addWikiTextTitle($text, $wgTitle, $linestart);
-		$this->mParserOptions->setTidy(false);
+		$popts->setTidy(false);
 	}
 
 
@@ -370,10 +375,11 @@ class OutputPage {
 	 */
 	function parse( $text, $linestart = true, $interface = false ) {
 		global $wgParser, $wgTitle;
-		if ( $interface) { $this->mParserOptions->setInterfaceMessage(true); }
-		$parserOutput = $wgParser->parse( $text, $wgTitle, $this->mParserOptions,
+		$popts = $this->parserOptions();
+		if ( $interface) { $popts->setInterfaceMessage(true); }
+		$parserOutput = $wgParser->parse( $text, $wgTitle, $popts,
 			$linestart, true, $this->mRevisionId );
-		if ( $interface) { $this->mParserOptions->setInterfaceMessage(false); }
+		if ( $interface) { $popts->setInterfaceMessage(false); }
 		return $parserOutput->getText();
 	}
 
@@ -478,7 +484,7 @@ class OutputPage {
 	function output() {
 		global $wgUser, $wgOutputEncoding;
 		global $wgContLanguageCode, $wgDebugRedirects, $wgMimeType;
-		global $wgJsMimeType, $wgStylePath, $wgUseAjax, $wgScriptPath, $wgServer;
+		global $wgJsMimeType, $wgStylePath, $wgUseAjax, $wgAjaxSearch, $wgScriptPath, $wgServer;
 
 		if( $this->mDoNothing ){
 			return;
@@ -488,11 +494,12 @@ class OutputPage {
 		$sk = $wgUser->getSkin();
 
 		if ( $wgUseAjax ) {
-			$this->addScript( "<script type=\"{$wgJsMimeType}\">
-				var wgScriptPath=\"{$wgScriptPath}\";
-				var wgServer=\"{$wgServer}\";
-			</script>" );
 			$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajax.js\"></script>\n" );
+		}
+
+		if ( $wgUseAjax && $wgAjaxSearch ) {
+			$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxsearch.js\"></script>\n" );
+			$this->addScript( "<script type=\"{$wgJsMimeType}\">hookEvent(\"load\", sajax_onload);</script>\n" );
 		}
 
 		if ( '' != $this->mRedirect ) {
@@ -615,11 +622,6 @@ class OutputPage {
 
 		$wgInputEncoding = strtolower( $wgInputEncoding );
 
-		if( $wgUser->getOption( 'altencoding' ) ) {
-			$wgContLang->setAltEncoding();
-			return;
-		}
-
 		if ( empty( $_SERVER['HTTP_ACCEPT_CHARSET'] ) ) {
 			$wgOutputEncoding = strtolower( $wgOutputEncoding );
 			return;
@@ -713,11 +715,10 @@ class OutputPage {
 
 	/**
 	 * Display an error page noting that a given permission bit is required.
-	 * This should generally replace the sysopRequired, developerRequired etc.
 	 * @param string $permission key required
 	 */
 	function permissionRequired( $permission ) {
-		global $wgUser;
+		global $wgGroupPermissions, $wgUser;
 
 		$this->setPageTitle( wfMsg( 'badaccess' ) );
 		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
@@ -725,46 +726,46 @@ class OutputPage {
 		$this->setArticleRelated( false );
 		$this->mBodytext = '';
 
-		$sk = $wgUser->getSkin();
-		$ap = $sk->makeKnownLink( wfMsgForContent( 'administrators' ) );
-		$this->addHTML( wfMsgHtml( 'badaccesstext', $ap, $permission ) );
-		$this->returnToMain();
+		$groups = array();
+		foreach( $wgGroupPermissions as $key => $value ) {
+			if( isset( $value[$permission] ) && $value[$permission] == true ) {
+				$groupName = User::getGroupName( $key );
+				$groupPage = User::getGroupPage( $key );
+				if( $groupPage ) {
+					$skin =& $wgUser->getSkin();
+					$groups[] = '"'.$skin->makeLinkObj( $groupPage, $groupName ).'"';
+				} else {
+					$groups[] = '"'.$groupName.'"';
+				}
+			}
+		}
+		$n = count( $groups );
+		$groups = implode( ', ', $groups );
+		switch( $n ) {
+			case 0:
+			case 1:
+			case 2:
+				$message = wfMsgHtml( "badaccess-group$n", $groups );
+				break;
+			default:
+				$message = wfMsgHtml( 'badaccess-groups', $groups );
+		}
+		$this->addHtml( $message );
+		$this->returnToMain( false );
 	}
 
 	/**
 	 * @deprecated
 	 */
 	function sysopRequired() {
-		global $wgUser;
-
-		$this->setPageTitle( wfMsg( 'sysoptitle' ) );
-		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
-		$this->setArticleRelated( false );
-		$this->mBodytext = '';
-
-		$sk = $wgUser->getSkin();
-		$ap = $sk->makeKnownLink( wfMsgForContent( 'administrators' ), '' );
-		$this->addHTML( wfMsgHtml( 'sysoptext', $ap ) );
-		$this->returnToMain();
+		throw new MWException( "Call to deprecated OutputPage::sysopRequired() method\n" );
 	}
 
 	/**
 	 * @deprecated
 	 */
 	function developerRequired() {
-		global $wgUser;
-
-		$this->setPageTitle( wfMsg( 'developertitle' ) );
-		$this->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
-		$this->setRobotpolicy( 'noindex,nofollow' );
-		$this->setArticleRelated( false );
-		$this->mBodytext = '';
-
-		$sk = $wgUser->getSkin();
-		$ap = $sk->makeKnownLink( wfMsgForContent( 'administrators' ), '' );
-		$this->addHTML( wfMsgHtml( 'developertext', $ap ) );
-		$this->returnToMain();
+		throw new MWException( "Call to deprecated OutputPage::developerRequired() method\n" );
 	}
 
 	/**

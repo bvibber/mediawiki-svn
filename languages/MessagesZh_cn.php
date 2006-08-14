@@ -1,7 +1,66 @@
 <?php
+/**
+  * @package MediaWiki
+  * @subpackage Language
+  */
 
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Special',
+	NS_MAIN             => '',
+	NS_TALK             => 'Talk',
+	NS_USER             => 'User',
+	NS_USER_TALK        => 'User_talk',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_talk',
+	NS_IMAGE            => 'Image',
+	NS_IMAGE_TALK       => 'Image_talk',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_talk',
+	NS_TEMPLATE         => 'Template',
+	NS_TEMPLATE_TALK    => 'Template_talk',
+	NS_HELP             => 'Help',
+	NS_HELP_TALK        => 'Help_talk',
+	NS_CATEGORY         => 'Category',
+	NS_CATEGORY_TALK    => 'Category_talk'
+);
 
-/* private */ $wgAllMessagesZh_cn = array(
+$namespaceAliases = array(
+	"特殊"  => NS_SPECIAL,
+	"对话" => NS_TALK, 
+	"用户" => NS_USER,
+	"用户对话" => NS_USER_TALK,
+	# This has never worked so it's unlikely to annoy anyone if I disable it -- TS
+	#"{{SITENAME}}_对话" => NS_PROJECT_TALK
+	"图像" => NS_IMAGE,
+	"图像对话" => NS_IMAGE_TALK,
+);
+
+$quickbarSettings = array(
+	"无", /* "None" */
+	"左侧固定", /* "Fixed left" */
+	"右侧固定", /* "Fixed right" */
+	"左侧漂移" /* "Floating left" */
+);
+
+$skinNames = array(
+	'standard' => "标准",
+	'nostalgia' => "怀旧",
+	'cologneblue' => "科隆香水蓝"
+);
+
+$extraUserToggles = array(
+	'nolangconversion',
+);
+$datePreferences = false;
+$defaultDateFormat = 'zh';
+$dateFormats = array(
+	'zh time' => 'H:i',
+	'zh date' => 'Y年Mj日',
+	'zh both' => 'H:i Y年Mj日',
+);
+
+$messages = array(
 # User Toggles
 
 "tog-underline" => "下划链接", /* "Underline links", */
@@ -59,10 +118,8 @@
 # Bits of text used by many pages:
 #
 "categories" => "页面分类",
- 	 "category" => "分类",
- 	 "category_header" => "类别”$1“中的条目",
- 	 "subcategories" => "附分类",
-"linktrail"		=> "/^([a-z]+)(.*)\$/sD",
+"category_header" => "类别”$1“中的条目",
+"subcategories" => "附分类",
 "mainpage"		=> "首页",
 "about"			=> "关于",
 "aboutsite"      => "关于{{SITENAME}}",
@@ -102,7 +159,6 @@
 "talkpage"		=> "讨论本页",
 	 "postcomment"   => "发表评论",
 "articlepage"	=> "查看文章",
-"subjectpage"	=> "查看主题", # For compatibility
 "userpage" => "查看用户页",
 "projectpage" => "查看meta页",
 "imagepage" => 	"查看图像页面",
@@ -113,12 +169,6 @@
 "viewcount"		=> "本页面已经被浏览$1次。",
 "protectedpage" => "被保护页",
 "administrators" => "{{ns:project}}:管理员",
-"sysoptitle"	=> "需要管理员权限",
-"sysoptext"		=> "您刚才的请求只有拥有管理员权限的用户才可使用。
-参见$1。",
-"developertitle" => "需要发展者权限",
-"developertext"	=> "您刚才的请求只有拥有发展者权限的用户才可使用。
-参见$1。",
 "nbytes"		=> "$1字节",
 "go"			=> "进入",
 "ok"			=> "OK",

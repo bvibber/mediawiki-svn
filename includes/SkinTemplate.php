@@ -31,8 +31,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @subpackage Skins
  */
 
-require_once 'GlobalFunctions.php';
-
 /**
  * Wrapper object for MediaWiki's localization functions,
  * to be passed to the template engine.
@@ -141,6 +139,7 @@ class SkinTemplate extends Skin {
 		global $wgPageShowWatchingUsers;
 		global $wgUseTrackbacks;
 		global $wgDBname;
+		global $wgArticlePath, $wgScriptPath, $wgServer, $wgLang, $wgCanonicalNamespaceNames;
 
 		$fname = 'SkinTemplate::outputPage';
 		wfProfileIn( $fname );
@@ -194,6 +193,14 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'pagetitle', $wgOut->getHTMLTitle() );
 		$tpl->set( 'displaytitle', $wgOut->mPageLinkTitle );
 
+		$nsname = @$wgCanonicalNamespaceNames[ $this->mTitle->getNamespace() ];
+		if ( $nsname === NULL ) $nsname = $this->mTitle->getNsText();
+		
+		$tpl->set( 'nscanonical', $nsname );
+		$tpl->set( 'titleprefixeddbkey', $this->mTitle->getPrefixedDBKey() );
+		$tpl->set( 'titletext', $this->mTitle->getText() );
+		$tpl->set( 'articleid', $this->mTitle->getArticleId() );
+		                
 		$tpl->setRef( "thispage", $this->thispage );
 		$subpagestr = $this->subPageSubtitle();
 		$tpl->set(
@@ -231,6 +238,7 @@ class SkinTemplate extends Skin {
 		$tpl->set('headscripts', $out->getScript() );
 		$tpl->setRef( 'wgScript', $wgScript );
 		$tpl->setRef( 'skinname', $this->skinname );
+		$tpl->set( 'skinclass', get_class( $this ) );
 		$tpl->setRef( 'stylename', $this->stylename );
 		$tpl->set( 'printable', $wgRequest->getBool( 'printable' ) );
 		$tpl->setRef( 'loggedin', $this->loggedin );
@@ -246,15 +254,19 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'searchaction', $this->escapeSearchLink() );
 		$tpl->set( 'search', trim( $wgRequest->getVal( 'search' ) ) );
 		$tpl->setRef( 'stylepath', $wgStylePath );
+		$tpl->setRef( 'articlepath', $wgArticlePath );
+		$tpl->setRef( 'scriptpath', $wgScriptPath );
+		$tpl->setRef( 'serverurl', $wgServer );
 		$tpl->setRef( 'logopath', $wgLogo );
 		$tpl->setRef( "lang", $wgContLanguageCode );
 		$tpl->set( 'dir', $wgContLang->isRTL() ? "rtl" : "ltr" );
 		$tpl->set( 'rtl', $wgContLang->isRTL() );
 		$tpl->set( 'langname', $wgContLang->getLanguageName( $wgContLanguageCode ) );
 		$tpl->set( 'showjumplinks', $wgUser->getOption( 'showjumplinks' ) );
-		$tpl->setRef( 'username', $this->username );
+		$tpl->set( 'username', $wgUser->isAnon() ? NULL : $this->username );
 		$tpl->setRef( 'userpage', $this->userpage);
 		$tpl->setRef( 'userpageurl', $this->userpageUrlDetails['href']);
+		$tpl->set( 'userlang', $wgLang->getCode() );
 		$tpl->set( 'pagecss', $this->setupPageCss() );
 		$tpl->setRef( 'usercss', $this->usercss);
 		$tpl->setRef( 'userjs', $this->userjs);
@@ -377,6 +389,7 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'debug', $out->mDebugtext );
 		$tpl->set( 'reporttime', $out->reportTime() );
 		$tpl->set( 'sitenotice', wfGetSiteNotice() );
+		$tpl->set( 'bottomscripts', $this->bottomScripts() );
 
 		$printfooter = "<div class=\"printfooter\">\n" . $this->printSource() . "</div>\n";
 		$out->mBodytext .= $printfooter ;
@@ -1061,6 +1074,13 @@ class QuickTemplate {
 	/**
 	 * @private
 	 */
+	function jstext( $str ) {
+		echo Xml::escapeJsString( $this->data[$str] );
+	}
+
+	/**
+	 * @private
+	 */
 	function html( $str ) {
 		echo $this->data[$str];
 	}
@@ -1088,7 +1108,7 @@ class QuickTemplate {
 
 		$text = $this->translator->translate( $str );
 		$parserOutput = $wgParser->parse( $text, $wgTitle,
-			$wgOut->mParserOptions, true );
+			$wgOut->parserOptions(), true );
 		echo $parserOutput->getText();
 	}
 

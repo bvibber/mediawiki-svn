@@ -1,6 +1,105 @@
 <?php
+/** Bulgarian (Български)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
+$namespaceNames = array(
+	NS_MEDIA            => 'Медия',
+	NS_SPECIAL          => 'Специални',
+	NS_MAIN             => '',
+	NS_TALK             => 'Беседа',
+	NS_USER             => 'Потребител',
+	NS_USER_TALK        => 'Потребител_беседа',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_беседа',
+	NS_IMAGE            => 'Картинка',
+	NS_IMAGE_TALK       => 'Картинка_беседа',
+	NS_MEDIAWIKI        => 'МедияУики',
+	NS_MEDIAWIKI_TALK   => 'МедияУики_беседа',
+	NS_TEMPLATE         => 'Шаблон',
+	NS_TEMPLATE_TALK    => 'Шаблон_беседа',
+	NS_HELP             => 'Помощ',
+	NS_HELP_TALK        => 'Помощ_беседа',
+	NS_CATEGORY         => 'Категория',
+	NS_CATEGORY_TALK    => 'Категория_беседа'
+);
 
-/* private */ $wgAllMessagesBg = array(
+$quickbarSettings = array(
+	'Без меню', 'Неподвижно вляво', 'Неподвижно вдясно', 'Плаващо вляво', 'Плаващо вдясно'
+);
+
+$skinNames = array(
+	'standard' => 'Класика',
+	'nostalgia' => 'Носталгия',
+	'cologneblue' => 'Кьолнско синьо',
+	'smarty' => 'Падингтън',
+	'montparnasse' => 'Монпарнас',
+	'davinci' => 'ДаВинчи',
+	'mono' => 'Моно',
+	'monobook' => 'Монобук',
+	'myskin' => 'Мой облик',
+);
+
+$datePreferences = false;
+
+$bookstoreList = array(
+	'books.bg'       => 'http://www.books.bg/ISBN/$1',
+);
+
+$magicWords = array(
+#   ID                                 CASE  SYNONYMS
+	'redirect'               => array( 0, '#redirect', '#пренасочване', '#виж' ),
+	'notoc'                  => array( 0, '__NOTOC__', '__БЕЗСЪДЪРЖАНИЕ__' ),
+	'forcetoc'               => array( 0, '__FORCETOC__', '__СЪССЪДЪРЖАНИЕ__' ),
+	'toc'                    => array( 0, '__TOC__', '__СЪДЪРЖАНИЕ__'      ),
+	'noeditsection'          => array( 0, '__NOEDITSECTION__', '__БЕЗ_РЕДАКТИРАНЕ_НА_РАЗДЕЛИ__' ),
+	'start'                  => array( 0, '__START__', '__НАЧАЛО__'         ),
+	'currentmonth'           => array( 1, 'CURRENTMONTH', 'ТЕКУЩМЕСЕЦ'      ),
+	'currentmonthname'       => array( 1, 'CURRENTMONTHNAME', 'ТЕКУЩМЕСЕЦИМЕ' ),
+	'currentmonthnamegen'    => array( 1, 'CURRENTMONTHNAMEGEN', 'ТЕКУЩМЕСЕЦИМЕРОД' ),
+	'currentmonthabbrev'     => array( 1, 'CURRENTMONTHABBREV', 'ТЕКУЩМЕСЕЦСЪКР'    ),
+	'currentday'             => array( 1, 'CURRENTDAY', 'ТЕКУЩДЕН'            ),
+	'currentdayname'         => array( 1, 'CURRENTDAYNAME', 'ТЕКУЩДЕНИМЕ'     ),
+	'currentyear'            => array( 1, 'CURRENTYEAR', 'ТЕКУЩАГОДИНА'       ),
+	'currenttime'            => array( 1, 'CURRENTTIME', 'ТЕКУЩОВРЕМЕ'        ),
+	'numberofarticles'       => array( 1, 'NUMBEROFARTICLES', 'БРОЙСТАТИИ'    ),
+	'numberoffiles'          => array( 1, 'NUMBEROFFILES', 'БРОЙФАЙЛОВЕ'      ),
+	'pagename'               => array( 1, 'PAGENAME', 'СТРАНИЦА'              ),
+	'pagenamee'              => array( 1, 'PAGENAMEE', 'СТРАНИЦАИ'            ),
+	'namespace'              => array( 1, 'NAMESPACE', 'ИМЕННОПРОСТРАНСТВО'   ),
+	'subst'                  => array( 0, 'SUBST:', 'ЗАМЕСТ:'            ),
+	'msgnw'                  => array( 0, 'MSGNW:', 'СЪОБЩNW:'           ),
+	'end'                    => array( 0, '__END__', '__КРАЙ__'            ),
+	'img_thumbnail'          => array( 1, 'thumbnail', 'thumb', 'мини'     ),
+	'img_manualthumb'        => array( 1, 'thumbnail=$1', 'thumb=$1', 'мини=$1'),
+	'img_right'              => array( 1, 'right', 'вдясно', 'дясно', 'д'  ),
+	'img_left'               => array( 1, 'left', 'вляво', 'ляво', 'л'     ),
+	'img_none'               => array( 1, 'none', 'н'                  ),
+	'img_width'              => array( 1, '$1px', '$1пкс' , '$1п'         ),
+	'img_center'             => array( 1, 'center', 'centre', 'център', 'центр', 'ц' ),
+	'img_framed'             => array( 1, 'framed', 'enframed', 'frame', 'рамка', 'врамка' ),
+	'int'                    => array( 0, 'INT:'                   ),
+	'sitename'               => array( 1, 'SITENAME', 'ИМЕНАСАЙТА'       ),
+	'ns'                     => array( 0, 'NS:', 'ИП:'                    ),
+	'localurl'               => array( 0, 'LOCALURL:', 'ЛОКАЛЕНАДРЕС:'    ),
+	'localurle'              => array( 0, 'LOCALURLE:', 'ЛОКАЛЕНАДРЕСИ:'  ),
+	'server'                 => array( 0, 'SERVER', 'СЪРВЪР'       ),
+	'servername'             => array( 0, 'SERVERNAME', 'ИМЕНАСЪРВЪРА'    ),
+	'scriptpath'             => array( 0, 'SCRIPTPATH', 'ПЪТДОСКРИПТА'    ),
+	'grammar'                => array( 0, 'GRAMMAR:', 'ГРАМАТИКА:' ),
+	'notitleconvert'         => array( 0, '__NOTITLECONVERT__', '__NOTC__'),
+	'nocontentconvert'       => array( 0, '__NOCONTENTCONVERT__', '__NOCC__'),
+	'currentweek'            => array( 1, 'CURRENTWEEK', 'ТЕКУЩАСЕДМИЦА'),
+	'currentdow'             => array( 1, 'CURRENTDOW'             ),
+	'revisionid'             => array( 1, 'REVISIONID'             ),
+);
+
+$linkTrail = '/^([a-zабвгдежзийклмнопрстуфхцчшщъыьэюя]+)(.*)$/sDu';
+
+$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+
+$messages = array(
 
 # User toggles
 'tog-underline'      => 'Подчертаване на препратките',
@@ -66,10 +165,8 @@
 # Bits of text used by many pages:
 #
 'categories' => 'Категории',
-'category' => 'категория',
 'category_header' => 'Страници в категория „$1“',
 'subcategories' => 'Подкатегории',
-'linktrail'   => '/^([a-zабвгдежзийклмнопрстуфхцчшщъыьэюя]+)(.*)$/sDu',
 'linkprefix'  => '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD',
 'mainpage'    => 'Начална страница',
 'mainpagetext'  => 'Уики-системата беше успешно инсталирана.',
@@ -144,7 +241,6 @@
 'personaltools' => 'Лични инструменти',
 'postcomment'   => 'Оставяне на съобщение',
 'articlepage'  => 'Преглед на страница',
-'subjectpage'  => 'Преглед на тема', # For compatibility
 'talk' => 'Беседа',
 'views' => 'Прегледи',
 'toolbox' => 'Инструменти',
@@ -159,15 +255,7 @@
 'copyright'     => 'Съдържанието е достъпно при условията на $1.',
 'protectedpage' => 'Защитена страница',
 'administrators' => 'Project:Администратори',
-'sysoptitle'  => 'Изискване на администраторски права',
-'sysoptext'    => 'Желаното действие може да се изпълни само от администратори.
-Вижте $1.',
-'developertitle' => 'Изискват се права на разработчик',
-'developertext'  => 'Желаното действие може да се изпълни само от разработчици.
-Вижте $1.',
 'badaccess'     => 'Грешка при достъп', # Permission error
-'badaccesstext' => 'Желаното действие може да се изпълнява само от потребители с права на „$2“.
-Вижте $1.',
 'versionrequired' => 'Изисква се версия $1 на МедияУики',
 'versionrequiredtext' => 'За да използвате тази страница, е необходима версия $1 на МедияУики. Вижте [[Special:Version]].',
 'nbytes'    => '$1 байта',
@@ -503,26 +591,6 @@ Before any other mail is sent to the account, you will have to follow the instru
 $1<br />
 $2 Показване на пренасочвания &nbsp; Търсене на $3 $4',
 'searchdisabled' => 'Търсенето в {{SITENAME}} е временно изключено поради голямото натоварване на сървъра. Междувременно можете да търсите чрез Google. Обърнете внимание обаче, че е възможно съхранените при тях страници да са остарели.',
-'googlesearch' => '
-	<form method="get" action="http://www.google.com/search" style="margin-left:135px">
-		<div>
-			<input type="hidden" name="domains" value="{{SERVER}}" />
-			<input type="hidden" name="num" value="50" />
-			<input type="hidden" name="ie" value="$2" />
-
-			<input type="hidden" name="oe" value="$2" />
-			<input type="text" name="q" size="31" maxlength="255" value="$1" />
-			<input type="submit" name="btnG" value="Google Search" />
-		</div>
-		<div style="font-size:90%">
-			<input type="radio" name="sitesearch" id="gwiki" value="{{SERVER}}"
-				checked="checked" /><label for="gwiki">{{SITENAME}}</label>
-			<input type="radio" name="sitesearch" id="gWWW" value="" />
-			<label for="gWWW">Мрежата</label>
-	</div>
-	</form>
-
-Можете да използвате следната препратка, за да създадете или редактирате страницата: <a href="/w/index.php?title=$1&action=edit">$1</a>',
 'blanknamespace' => '(Основно)',
 
 # Preferences page
@@ -585,8 +653,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'userrights-groupsmember' => 'Член на:',
 'userrights-groupsavailable' => 'Групи на разположение:',
 'userrights-groupshelp' => 'Изберете групите, към които искате той да бъде прибавен или от които да бъде премахнат. Неизбраните групи няма да бъдат променени. Можете да отизберете група чрез <CTRL> + ляв бутон на мишката',
-'userrights-logcomment' => 'Смяна на груповата принадлежност от $1 към $2',
-
 
 # Recent changes
 #

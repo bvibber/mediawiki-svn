@@ -1,7 +1,60 @@
 <?php
+/** Occitan (Occitan)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
+$quickbarSettings = array(
+	'Cap', 'Esquèr', 'Drech', 'Flotejant a esquèr'
+);
+
+$skinNames = array(
+	'standard' => 'Normal',
+	'nostalgia' => 'Nostalgia',
+	'cologneblue' => 'Còlonha Blau',
+);
+
+$bookstoreList = array(
+	'Amazon.fr' => 'http://www.amazon.fr/exec/obidos/ISBN=$1'
+);
+
+$namespaceNames = array(
+	NS_SPECIAL        => 'Especial',
+	NS_MAIN           => '',
+	NS_TALK           => 'Discutir',
+	NS_USER           => 'Utilisator',
+	NS_USER_TALK      => 'Discutida_Utilisator',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'Discutida_$1',
+	NS_IMAGE          => 'Imatge',
+	NS_IMAGE_TALK     => 'Discutida_Imatge',
+	NS_MEDIAWIKI      => 'Mediaòiqui',
+	NS_MEDIAWIKI_TALK => 'Discutida_Mediaòiqui',
+	NS_TEMPLATE       => 'Modèl',
+	NS_TEMPLATE_TALK  => 'Discutida_Modèl',
+	NS_HELP           => 'Ajuda',
+	NS_HELP_TALK      => 'Discutida_Ajuda',
+	NS_CATEGORY       => 'Categoria',
+	NS_CATEGORY_TALK  => 'Discutida_Categoria',
+);
+$linkTrail = "/^([a-zàâçéèêîôû]+)(.*)\$/sDu";
+
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'M j, Y',
+	'mdy both' => 'M j, Y à H:i',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j M Y',
+	'dmy both' => 'j M Y à H:i',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y M j',
+	'ymd both' => 'Y M j à H:i',
+);
 
 
-/* private */ $wgAllMessagesOc = array(
+$messages = array(
 
 # User Toggles
 
@@ -62,12 +115,10 @@
 # Bits of text used by many pages:
 #
 "categories"	=> "Catégories de la page", // Looxix "Page categories",
-"category"	=> "catégorie",			// Looxix "category",
 "category_header" => "Articles dans la catégorie \"$1\"", // Looxix "Articles in category \"$1\"",
 "subcategories"	=> "Sous-catégories", // Looxix "Subcategories",
 
 
-"linktrail"     => "/^([a-zàâçéèêîôû]+)(.*)\$/sDu",
 "mainpage"      => "Accueil",
 "mainpagetext"  => "Logiciel {{SITENAME}} installé.",
 "about"         => "À propos",
@@ -109,7 +160,6 @@
 "talkpage"      => "Page de discussion",
 "postcomment"	=> "Ajouter un commentaire", // Looxix "Post a comment",
 "articlepage"	=> "Voir l'article",
-"subjectpage"   => "Page sujet",
 "userpage"      => "Page utilisateur",
 "projectpage" => "Page méta",
 "imagepage"     => "Page image",
@@ -120,12 +170,6 @@
 "viewcount"     => "Cette page a été consultée $1 fois.",
 "protectedpage" => "Page protégée",
 "administrators" => "{{ns:project}}:Administrateurs",
-"sysoptitle"    => "Accès administrateur requis",
-"sysoptext"     => "L'action que vous avez tentée ne peut être effectuée que par un utilisateur ayant le statut d'\"administrateur\".
-Voir $1.",
-"developertitle" => "Accès développeur requis",
-"developertext" => "L'action que vous avez tentée ne peut être effectuée que par un utilisateur ayant le statut de \"développeur\".
-Voir $1.",
 "nbytes"        => "$1 octets",
 "go"            => "Consulter",			// Looxix "OK",
 "ok"            => "OK",

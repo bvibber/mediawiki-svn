@@ -1,7 +1,68 @@
 <?php
+/** Norwegian (Norsk (bokmål))
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesNo;
-$wgAllMessagesNo = array(
+$quickbarSettings = array(
+	'Ingen', 'Fast venstre', 'Fast høyre', 'Flytende venstre'
+);
+
+$skinNames = array(
+	'standard'    => 'Standard',
+	'nostalgia'   => 'Nostalgi',
+	'cologneblue' => 'Kölnerblå'
+);
+
+$bookstoreList = array(
+	'Antikvariat.net' => 'http://www.antikvariat.net/',
+	'Frida' => 'http://wo.uio.no/as/WebObjects/frida.woa/wa/fres?action=sok&isbn=$1&visParametre=1&sort=alfabetisk&bs=50',
+	'Bibsys' => 'http://ask.bibsys.no/ask/action/result?cmd=&kilde=biblio&fid=isbn&term=$1&op=and&fid=bd&term=&arstall=&sortering=sortdate-&treffPrSide=50',
+	'Akademika' => 'http://www.akademika.no/sok.php?ts=4&sok=$1',
+	'Haugenbok' => 'http://www.haugenbok.no/resultat.cfm?st=extended&isbn=$1',
+	'Amazon.com' => 'http://www.amazon.com/exec/obidos/ISBN=$1'
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Medium',
+	NS_SPECIAL        => 'Spesial',
+	NS_MAIN           => '',
+	NS_TALK           => 'Diskusjon',
+	NS_USER           => 'Bruker',
+	NS_USER_TALK      => 'Brukerdiskusjon',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1-diskusjon',
+	NS_IMAGE          => 'Bilde',
+	NS_IMAGE_TALK     => 'Bildediskusjon',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'MediaWiki-diskusjon',
+	NS_TEMPLATE       => 'Mal',
+	NS_TEMPLATE_TALK  => 'Maldiskusjon',
+	NS_HELP           => 'Hjelp',
+	NS_HELP_TALK      => 'Hjelpdiskusjon',
+	NS_CATEGORY       => 'Kategori',
+	NS_CATEGORY_TALK  => 'Kategoridiskusjon',
+);
+
+$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'M j., Y',
+	'mdy both' => 'M j., Y "kl." H:i',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j. M Y',
+	'dmy both' => 'j. M Y "kl." H:i',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y M j.',
+	'ymd both' => 'Y M j. "kl." H:i',
+);
+
+
+$messages = array(
 'tog-underline'         => 'Strek under lenker:',
 'tog-highlightbroken'   => 'Formater ødelagte lenker <a href="" class="new">slik</a> (alternativt: slik<a href="" class="internal">?</a>).',
 'tog-justify'           => 'Blokkjusterte avsnitt',
@@ -72,7 +133,6 @@ $wgAllMessagesNo = array(
 'nov'                   => 'nov',
 'dec'                   => 'des',
 'categories'            => '{{PLURAL:$1|Kategori|Kategorier}}',
-'category'              => 'kategori',
 'category_header'       => 'Artikler i kategorien «$1»',
 'subcategories'         => 'Underkategorier',
 'mainpage'              => 'Hovedside',
@@ -148,7 +208,6 @@ $wgAllMessagesNo = array(
 'personaltools'         => 'Personlige verktøy',
 'postcomment'           => 'Legg til en kommentar',
 'articlepage'           => 'Vis artikkel',
-'subjectpage'           => 'Vis emne',
 'talk'                  => 'Diskusjon',
 'views'                 => 'Visninger',
 'toolbox'               => 'Verktøy',
@@ -168,13 +227,7 @@ $wgAllMessagesNo = array(
 'jumpto'                => 'Gå til:',
 'jumptonavigation'      => 'navigasjon',
 'jumptosearch'          => 'søk',
-'sysoptitle'            => 'Administratorrettigheter påkrevd',
-'sysoptext'             => 'Funksjonen kan kun utføres av brukere med administratorrettigheter.
-Se $1.',
-'developertitle'        => 'Utviklerrettigheter kreves.',
-'developertext'         => 'Funksjonen kan kun utføres av brukere med «utvikler»-status. Se $1.',
 'badaccess'             => 'Rettighetsfeil',
-'badaccesstext'         => 'Handlingen du har prøvd å utføre kan kun utføres av bruker med «$2»-rettigheter. Se $1.',
 'versionrequired'       => 'Versjon $1 av MediaWiki påtrengt',
 'versionrequiredtext'   => 'Versjon $1 av MediaWiki er nødvendig for å bruke denne siden. Se [[Special:Version]]',
 'ok'                    => 'OK',
@@ -550,7 +603,6 @@ Andre administratorer på denne wikien vil fortsatt kunne se det skjulte innhold
 'userrights-groupsmember'=> 'Medlem av:',
 'userrights-groupsavailable'=> 'Tilgjengelige grupper:',
 'userrights-groupshelp' => 'Velg grupper du vil at brukeren skal fjernes fra eller lagt til. Ikke valgte grupper vil ikke bli forandret. Du kan fjerne merkingen av en gruppe med Ctrl + Venstreklikk.',
-'userrights-logcomment' => 'Endret gruppemedlemskap fra $1 til $2',
 'group'                 => 'Gruppe:',
 'group-bot'             => 'Roboter',
 'group-sysop'           => 'Administratorer',

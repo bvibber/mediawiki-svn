@@ -1,7 +1,58 @@
 <?php
+/** Polish (Polski)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesPl;
-$wgAllMessagesPl = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Specjalna',
+	NS_MAIN             => '',
+	NS_TALK             => 'Dyskusja',
+	NS_USER             => 'Użytkownik',
+	NS_USER_TALK        => 'Dyskusja_użytkownika',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Dyskusja_$1',
+	NS_IMAGE            => 'Grafika',
+	NS_IMAGE_TALK       => 'Dyskusja_grafiki',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Dyskusja_MediaWiki',
+	NS_TEMPLATE         => 'Szablon',
+	NS_TEMPLATE_TALK    => 'Dyskusja_szablonu',
+	NS_HELP             => 'Pomoc',
+	NS_HELP_TALK        => 'Dyskusja_pomocy',
+	NS_CATEGORY         => 'Kategoria',
+	NS_CATEGORY_TALK    => 'Dyskusja_kategorii'
+);
+
+$quickbarSettings = array(
+	'Brak', 'Stały, z lewej', 'Stały, z prawej', 'Unoszący się, z lewej'
+);
+
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'M j, Y',
+	'mdy both' => 'H:i, M j, Y',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j M Y',
+	'dmy both' => 'H:i, j M Y',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y M j',
+	'ymd both' => 'H:i, Y M j',
+);
+
+$fallback8bitEncoding = 'iso-8859-2';
+$separatorTransformTable = array(
+	',' => "\xc2\xa0", // @bug 2749
+	'.' => ','
+);
+$linkTrail = '/^([a-zęóąśłżźćńĘÓĄŚŁŻŹĆŃ]+)(.*)$/sDu';
+
+
+$messages = array(
 
 # User preference toggles
 'tog-underline' => 'Podkreślenie linków:',
@@ -89,7 +140,6 @@ $wgAllMessagesPl = array(
 # Bits of text used by many pages:
 #
 'categories' => '{{PLURAL:$1|Kategoria|Kategorie}}',
-'category' => 'kategoria',
 'category_header' => 'Artykuły w kategorii "$1"',
 'subcategories' => 'Podkategorie',
 
@@ -155,7 +205,6 @@ $wgAllMessagesPl = array(
 'personaltools' => 'Osobiste',
 'postcomment' => 'Skomentuj',
 'articlepage' => 'Strona artykułu',
-'subjectpage' => 'Strona dyskutowana',
 'talk' => 'dyskusja',
 'toolbox' => 'Narzędzia',
 'userpage' => 'Strona użytkownika',
@@ -175,18 +224,7 @@ $wgAllMessagesPl = array(
 'jumptonavigation' => 'nawigacji',
 'jumptosearch' => 'wyszukiwania',
 
-'sysoptitle' => 'Wymagane prawa dostępu administratora',
-'sysoptext' => 'Ta operacja może być wykonana tylko przez
-użytkowania o statusie "administrator".
-Zobacz $1.',
-'developertitle' => 'Wymagane prawa dostępu Programisty',
-'developertext' => 'Ta operacja może być wykonana tylko przez
-użytkownika o prawach "Programisty".
-Zobacz $1.',
-
 'badaccess' => 'Nieprawidłowe uprawnienia',
-'badaccesstext' => 'Ta operacja może być wykonana tylko przez
-użytkownika o prawach "$2". Zobacz $1.',
 
 'retrievedfrom' => 'Źródło: "$1"',
 'youhavenewmessages' => 'Masz $1 ($2).',

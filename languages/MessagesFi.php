@@ -1,7 +1,84 @@
 <?php
+/** Finnish (Suomi)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesFi;
-$wgAllMessagesFi = array(
+$skinNames = array(
+	'standard'          => 'Perus',
+	'cologneblue'       => 'Kölnin sininen',
+	'myskin'            => 'Oma tyylisivu'
+);
+
+$quickbarSettings = array(
+	'Ei mitään', 'Tekstin mukana, vasen', 'Tekstin mukana, oikea', 'Pysyen vasemmalla', 'Pysyen oikealla'
+);
+
+$datePreferences = array(
+	'default',
+	'fi normal',
+	'fi seconds',
+	'fi numeric',
+);
+
+$defaultDateFormat = 'fi normal';
+
+$dateFormats = array(
+	'fi normal time' => 'H.i',
+	'fi normal date' => 'j. F"ta" Y',
+	'fi normal both' => 'j. F"ta" Y "kello" H.i',
+
+	'fi seconds time' => 'H:i:s',
+	'fi seconds date' => 'j. F"ta" Y',
+	'fi seconds both' => 'j. F"ta" Y "kello" H:i:s',
+
+	'fi numeric time' => 'H.i',
+	'fi numeric date' => 'j.n.Y',
+	'fi numeric both' => 'j.n.Y "kello" H.i',
+);
+
+$datePreferenceMigrationMap = array(
+	'default',
+	'fi normal',
+	'fi seconds',
+	'fi numeric',
+);
+
+$bookstoreList = array(
+	'Bookplus'                      => 'http://www.bookplus.fi/product.php?isbn=$1',
+	'Helsingin yliopiston kirjasto' => 'http://pandora.lib.hel.fi/cgi-bin/mhask/monihask.py?volname=&author=&keyword=&ident=$1&submit=Hae&engine_helka=ON',
+	'Pääkaupunkiseudun kirjastot'   => 'http://www.helmet.fi/search*fin/i?SEARCH=$1',
+	'Tampereen seudun kirjastot'    => 'http://kirjasto.tampere.fi/Piki?formid=fullt&typ0=6&dat0=$1'
+);
+
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Toiminnot',
+	NS_MAIN             => '',
+	NS_TALK             => 'Keskustelu',
+	NS_USER             => 'Käyttäjä',
+	NS_USER_TALK        => 'Keskustelu_käyttäjästä',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Keskustelu_{{grammar:elative|$1}}',
+	NS_IMAGE            => 'Kuva',
+	NS_IMAGE_TALK       => 'Keskustelu_kuvasta',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_talk',
+	NS_TEMPLATE         => 'Malline',
+	NS_TEMPLATE_TALK    => 'Keskustelu_mallineesta',
+	NS_HELP             => 'Ohje',
+	NS_HELP_TALK        => 'Keskustelu_ohjeesta',
+	NS_CATEGORY         => 'Luokka',
+	NS_CATEGORY_TALK    => 'Keskustelu_luokasta'
+);
+
+$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$linkTrail = '/^([a-zäö]+)(.*)$/sDu';
+
+
+
+$messages = array(
 
 # User preference toggles
 'tog-underline'       => 'Alleviivaa linkit:',
@@ -81,7 +158,6 @@ $wgAllMessagesFi = array(
 # Bits of text used by many pages:
 #
 'categories'          => '{{PLURAL:$1|Luokka|Luokat}}',
-'category'            => 'Luokka',
 'category_header'     => 'Sivut, jotka ovat luokassa $1',
 'subcategories'       => 'Alaluokat',
 'mainpage'            => 'Etusivu',
@@ -171,7 +247,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'personaltools'       => 'Henkilökohtaiset työkalut',
 'postcomment'         => 'Kommentti sivun loppuun',
 'articlepage'         => 'Näytä varsinainen sivu',
-'subjectpage'         => 'Näytä aihe', # For compatibility
 'talk'                => 'Keskustelu',
 'views'               => 'Näkymät',
 'toolbox'             => 'Työkalut',
@@ -191,14 +266,7 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'jumptonavigation'    => 'valikkoon',
 'jumptosearch'        => 'hakuun',
 
-
-'sysoptitle'          => 'Vaatii ylläpitäjäoikeudet',
-'sysoptext'           => 'Tämän toiminnon voi suorittaa vain käyttäjä, jolla on ylläpitäjäoikeudet. Katso $1.',
-'developertitle'      => 'Ohjelmiston kehittäjän oikeuksia vaaditaan',
-'developertext'       => 'Yrittämäsi toiminnon voi suorittaa vain henkilö, jolla on ohjelmistokehittäjänoikeudet. Katso $1.',
-
 'badaccess'           => 'Lupa evätty',
-'badaccesstext'       => 'Toiminto, jonka halusit suorittaa on rajoitettu käyttäjille, joilla on oikeus ”$2”. Katso $1.',
 
 'versionrequired'     => 'Mediawikistä tarvitaan vähintään versio $1',
 'versionrequiredtext' => 'Mediawikistä tarvitaan vähintään versio $1 tämän sivun käyttämiseen. Katso [[Special:Version|versio]]',
@@ -501,8 +569,8 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 #
 'searchresults'       => 'Hakutulokset',
 'searchresulttext'    => 'Saadaksesi lisätietoa hakutoiminnoista tällä sivustolla lue [[{{ns:project}}:Hakutoiminnot|sivuston hakuohje]].',
-'searchsubtitle'         => 'Haku termeillä [[:$1]]',
-'searchsubtitleinvalid'         => 'Haku termeillä $1',
+'searchsubtitle'      => 'Haku termeillä [[:$1]]',
+'searchsubtitleinvalid'=> 'Haku termeillä $1',
 'badquery'            => 'Kelvoton hakumerkkijono',
 'badquerytext'        => 'Tekemäsi kysely ei ole kelvollinen. Tämä johtuu todennäköisesti siitä, että et ole määritellyt hakumerkkijonoa.',
 'matchtotals'         => 'Haulla \'\'\'$1\'\'\' löytyi $2 osumaa sivujen otsikoista ja $3 osumaa sivujen sisällöistä.',
@@ -590,7 +658,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'userrights-groupsmember'    => 'Jäsenenä ryhmissä:',
 'userrights-groupsavailable' => 'Saatavilla olevat ryhmät:',
 'userrights-groupshelp'      => 'Valitse ryhmät, jotka haluat poistaa tai lisätä. Valitsemattomia ryhmiä ei muuteta. Voit poistaa valinnan pitämällä Ctrl-näppäintä pohjassa napsautuksen aikana.',
-'userrights-logcomment'      => 'Ryhmäoikeuden muutos ryhmistä ”$1” ryhmiin ”$2”',
 
 # Groups
 'group'                   => 'Ryhmä:',
@@ -1709,10 +1776,11 @@ Se on saatettu poistaa wikistä tai nimetä uudelleen.
 Kokeile [[Special:Search|hakua]] löytääksesi asiaan liittyviä sivuja.',
 
 # Shown to the admin after s/he's undeleted a page.
-'undeletedpage'       => '<big>\'\'\'$1 on palautettu\'\'\'</big>
+'undeletedpage'       => '<big>\'\'\'”$1” on palautettu.\'\'\'</big>
 
 [[Special:Log/delete|Poistolokista]] löydät listan viimeisimmistä poistoista ja palautuksista.',
 'sp-newimages-showfrom' => 'Näytä uudet kuvat alkaen $1',
+
 
 );
 ?>

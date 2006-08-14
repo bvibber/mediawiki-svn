@@ -37,8 +37,17 @@ $wgVersion			= '1.8alpha';
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
 
-/** Will be same as you set @see $wgSitename */
-$wgMetaNamespace    = FALSE;
+/** 
+ * Name of the project namespace. If left set to false, $wgSitename will be 
+ * used instead.
+ */
+$wgMetaNamespace    = false;
+
+/**
+ * Name of the project talk namespace. If left set to false, a name derived
+ * from the name of the project namespace will be used.
+ */
+$wgMetaNamespaceTalk = false;
 
 
 /** URL of the server. It will be automatically built including https mode */
@@ -1546,16 +1555,6 @@ $wgTidyInternal = function_exists( 'tidy_load_config' );
 /** See list of skins and their symbolic names in languages/Language.php */
 $wgDefaultSkin = 'monobook';
 
-/**
- * Settings added to this array will override the language globals for the user
- * preferences used by anonymous visitors and newly created accounts. (See names
- * and sample values in languages/Language.php)
- * For instance, to disable section editing links:
- *  $wgDefaultUserOptions ['editsection'] = 0;
- *
- */
-$wgDefaultUserOptions = array();
-
 /** Whether or not to allow and use real name fields. Defaults to true. */
 $wgAllowRealName = true;
 
@@ -2137,14 +2136,22 @@ $wgUpdateRowsPerJob = 500;
 $wgUpdateRowsPerQuery = 10;
 
 /**
- * Enable use of AJAX features, currently auto suggestion for the search bar
+ * Enable AJAX framework
  */
 $wgUseAjax = false;
 
 /**
- * List of Ajax-callable functions
+ * Enable auto suggestion for the search bar 
+ * Requires $wgUseAjax to be true too.
+ * Causes wfSajaxSearch to be added to $wgAjaxExportList
  */
-$wgAjaxExportList = array( 'wfSajaxSearch' );
+$wgAjaxSearch = false;
+
+/**
+ * List of Ajax-callable functions. 
+ * Extensions acting as Ajax callbacks must register here
+ */
+$wgAjaxExportList = array( );
 
 /**
  * Allow DISPLAYTITLE to change title display

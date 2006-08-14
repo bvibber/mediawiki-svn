@@ -1,7 +1,43 @@
 <?php 
 
+$quickbarSettings = array(
+	'Geen.', 'Links vas.', 'Regs vas.', 'Dryf links.'
+);
+	
+$skinNames = array(
+	'standard' => 'Standaard',
+	'nostalgia' => 'Nostalgie',
+	'cologneblue' => 'Keulen blou',
+);
 
-/* private */ $wgAllMessagesAf = array(
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Spesiaal',
+	NS_MAIN           => '',
+	NS_TALK           => 'Bespreking',
+	NS_USER           => 'Gebruiker',
+	NS_USER_TALK      => 'Gebruikerbespreking',
+	# NS_PROJECT set by $wgMetaNamespace,
+	NS_PROJECT_TALK   => '$1bespreking',
+	NS_IMAGE          => 'Beeld',
+	NS_IMAGE_TALK     => 'Beeldbespreking',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'MediaWikibespreking',
+	NS_TEMPLATE       => 'Sjabloon',
+	NS_TEMPLATE_TALK  => 'Sjabloonbespreking',
+	NS_HELP           => 'Hulp',
+	NS_HELP_TALK      => 'Hulpbespreking',
+	NS_CATEGORY       => 'Kategorie',
+	NS_CATEGORY_TALK  => 'Kategoriebespreking'
+);
+
+# South Africa uses space for thousands and comma for decimal
+# Reference: AWS Reël 7.4 p. 52, 2002 edition
+# glibc is wrong in this respect in some versions
+$separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
+$linkTrail = "/^([a-z]+)(.*)\$/sD";
+
+$messages = array(
 # User Toggles
 
 "tog-underline" => "Onderstreep skakels.",
@@ -54,7 +90,6 @@
 
 # Bits of text used by many pages:
 #
-"linktrail"		=> "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "Tuisblad",
 "about"			=> "Omtrent",
 "aboutsite"      => "Inligting oor {{SITENAME}}",
@@ -93,7 +128,6 @@
 "newpage" => "Nuwe bladsy",
 "talkpage"		=> "Bespreek hierdie bladsy",
 "articlepage"	=> "Lees artikel",
-"subjectpage"	=> "Lees onderwerp", # For compatibility
 "userpage" => "Lees gebruikersbladsy",
 "projectpage" => "Lees metabladsy",
 "imagepage" => 	"Lees bladsy oor prent",
@@ -104,12 +138,7 @@
 "viewcount"		=> "Hierdie bladsy is al $1 keer aangevra.",
 "protectedpage" => "Beskermde bladsy",
 "administrators" => "{{ns:4}}:Administreerders",
-"sysoptitle"	=> "Sisopregte verlang",
 
-
-"sysoptext"		=> "Die wysiging waarvoor jy gevra het kan slegs deur iemand wat \"sisop\"regte het, gedoen word. Lees $1.",
-"developertitle" => "Ontwerperregte verlang",
-"developertext"	=> "Die wysiging waarvoor jy gevra het kan slegs deur iemand wat \"progammeerder\"regte het, gedoen word. Lees $1.",
 "nbytes"		=> "$1 grepe",
 "go"			=> "Doen",
 "ok"			=> "Aanvaar", #fixMe

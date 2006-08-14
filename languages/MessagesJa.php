@@ -1,7 +1,57 @@
 <?php
+/**
+ * Japanese (日本語)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesJa;
-$wgAllMessagesJa = array(
+$quickbarSettings = array(
+	"なし", "左端", "右端", "ウィンドウの左上に固定"
+);
+
+$skinNames = array(
+	'standard' => "標準",
+	'nostalgia' => "ノスタルジア",
+	'cologneblue' => "ケルンブルー",
+);
+
+$datePreferences = array(
+	'default',
+	'ISO 8601',
+);
+
+$defaultDateFormat = 'ja';
+
+$dateFormats = array(
+	'ja time' => 'H:i',
+	'ja date' => 'Y年n月j日 (D)',
+	'ja both' => 'Y年n月j日 (D) H:i',
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => "Media", /* Media */
+	NS_SPECIAL        => "特別", /* Special */
+	NS_MAIN           => "",
+	NS_TALK           => "ノート", /* Talk */
+	NS_USER           => "利用者", /* User */
+	NS_USER_TALK      => "利用者‐会話", /* User_talk */
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1‐ノート', /* Wikipedia_talk */
+	NS_IMAGE          => "画像", /* Image */
+	NS_IMAGE_TALK     => "画像‐ノート", /* Image_talk */
+	NS_MEDIAWIKI      => "MediaWiki", /* MediaWiki */
+	NS_MEDIAWIKI_TALK => "MediaWiki‐ノート", /* MediaWiki_talk */
+	NS_TEMPLATE       => "Template", /* Template */
+	NS_TEMPLATE_TALK  => "Template‐ノート", /* Template_talk */
+	NS_HELP           => "Help", /* Help */
+	NS_HELP_TALK      => "Help‐ノート", /* Help_talk */
+	NS_CATEGORY       => "Category", /* Category */
+	NS_CATEGORY_TALK  => "Category‐ノート" /* Category_talk */
+);
+
+
+$messages = array(
 'tog-underline'         => 'リンクの下線:',
 'tog-highlightbroken'   => '未作成のページへのリンクをハイライトする',
 'tog-justify'           => '段落を均等割り付けする',
@@ -47,6 +97,13 @@ $wgAllMessagesJa = array(
 'thursday'              => '木曜日',
 'friday'                => '金曜日',
 'saturday'              => '土曜日',
+'sun'                   => '日',
+'mon'                   => '月',
+'tue'                   => '火',
+'wed'                   => '水',
+'thu'                   => '木',
+'fri'                   => '金',
+'sat'                   => '土',
 'january'               => '1月',
 'february'              => '2月',
 'march'                 => '3月',
@@ -72,7 +129,6 @@ $wgAllMessagesJa = array(
 'nov'                   => '11月',
 'dec'                   => '12月',
 'categories'            => 'カテゴリ',
-'category'              => 'カテゴリ',
 'category_header'       => 'カテゴリ: “$1”',
 'subcategories'         => 'サブカテゴリ',
 'mainpage'              => 'メインページ',
@@ -142,7 +198,6 @@ $wgAllMessagesJa = array(
 'personaltools'         => '個人用ツール',
 'postcomment'           => '新規にコメントを投稿',
 'articlepage'           => '項目を表示',
-'subjectpage'           => 'サブジェクト・ページ',
 'talk'                  => 'ノート',
 'views'                 => '表示',
 'toolbox'               => 'ツールボックス',
@@ -162,14 +217,7 @@ $wgAllMessagesJa = array(
 'jumpto'                => '移動:',
 'jumptonavigation'      => 'ナビゲーション',
 'jumptosearch'          => '検索',
-'sysoptitle'            => '{{int:group-sysop}}によるアクセスが必要',
-'sysoptext'             => 'あなたの要求した処理は{{int:group-sysop}}のみが実行できます。
-$1を参照してください。',
-'developertitle'        => '開発者によるアクセスが必要',
-'developertext'         => 'あなたの要求した処理は開発者のみが実行できます。
-$1 を参照してください。',
 'badaccess'             => '権限がありません',
-'badaccesstext'         => 'あなたの要求した処理は "$2" の権限を持った利用者のみが実行できます。詳しくは $1 を参照してください。',
 'versionrequired'       => 'MediaWiki バージョン $1 が必要',
 'versionrequiredtext'   => 'このページの利用には MediaWiki Version $1 が必要です。[[Special:Version|{{int:version}}]]を確認してください。',
 'retrievedfrom'         => ' "$1" より作成',
@@ -561,7 +609,6 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'userrights-groupsmember'=> '所属グループ:',
 'userrights-groupsavailable'=> '有効なグループ:',
 'userrights-groupshelp' => 'この利用者から削除したい、またはこの利用者に追加したいグループを選択してください。選択されていないグループは変更されません。選択を解除するには [CTRL]+[左クリック] です。',
-'userrights-logcomment' => '所属グループを $1 から $2 に変更しました',
 'group'                 => 'グループ:',
 'group-bot'             => 'ボット',
 'group-sysop'           => '管理者',

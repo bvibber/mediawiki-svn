@@ -1,11 +1,64 @@
 <?php
+/** Danish (Dansk)
+  *
+  * @package MediaWiki
+  * @subpackage Language
+ */
 
+$namespaceNames = array(
+	NS_MEDIA			=> 'Media',
+	NS_SPECIAL			=> 'Speciel',
+	NS_MAIN				=> '',
+	NS_TALK				=> 'Diskussion',
+	NS_USER				=> 'Bruger',
+	NS_USER_TALK		=> 'Bruger_diskussion',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK		=> '$1_diskussion',
+	NS_IMAGE			=> 'Billede',
+	NS_IMAGE_TALK		=> 'Billede_diskussion',
+	NS_MEDIAWIKI		=> 'MediaWiki',
+	NS_MEDIAWIKI_TALK	=> 'MediaWiki_diskussion',
+	NS_TEMPLATE  		=> 'Skabelon',
+	NS_TEMPLATE_TALK	=> 'Skabelon_diskussion',
+	NS_HELP				=> 'Hjælp',
+	NS_HELP_TALK		=> 'Hjælp_diskussion',
+	NS_CATEGORY			=> 'Kategori',
+	NS_CATEGORY_TALK	=> 'Kategori_diskussion'
+
+);
+
+$quickbarSettings = array(
+	'Ingen', 'Fast venstre', 'Fast højre', 'Flydende venstre'
+);
+
+$skinNames = array(
+	'standard' => 'Klassisk',
+	'nostalgia' => 'Nostalgi',
+	'cologneblue' => 'Cologne-blå',
+);
+
+$datePreferences = false;
+$defaultDateFormat = 'dmy';
+$dateFormats = array(
+	'dmy time' => 'H:i',
+	'dmy date' => 'j. M Y',
+	'dmy both' => 'j. M Y "kl." H:i',
+);
+
+$bookstoreList = array(
+	"Bibliotek.dk" => "http://bibliotek.dk/vis.php?base=dfa&origin=kommando&field1=ccl&term1=is=$1&element=L&start=1&step=10",
+	"Bogguide.dk" => "http://www.bogguide.dk/find_boeger_bog.asp?ISBN=$1",
+	'inherit' => true,
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+$linkTrail = '/^([a-zæøå]+)(.*)$/sDu';
 
 #-------------------------------------------------------------------
 # Default messages
 #-------------------------------------------------------------------
 
-/* private */ $wgAllMessagesDa = array(
+$messages = array(
 # User preference toggles
 "tog-underline" => "Understreg henvisninger",
 "tog-highlightbroken" => "Brug røde henvisninger til tomme sider",
@@ -71,11 +124,9 @@
 # Bits of text used by many pages:
 #
 "categories" => "Kategorier",
-"category" => "kategori",
 "category_header" => 'Artikler i kategorien "$1"',
 "subcategories" => "Underkategorier",
 
-"linktrail"		=> '/^([a-zæøå]+)(.*)$/sDu',
 "mainpage"		=> "Forside",
 "mainpagetext"	=> "MediaWiki er nu installeret.",
 "mainpagedocfooter" => "Se vores engelsksprogede [http://meta.wikimedia.org/wiki/MediaWiki_i18n dokumentation om tilpasning af brugergrænsefladen]
@@ -146,7 +197,6 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 'personaltools' => 'Personlige værktøjer',
 "postcomment"   => "Tilføj en kommentar",
 "articlepage"	=> "Se artiklen",
-"subjectpage"	=> "Se emnesiden",
 'talk' => 'Diskussion',
 'toolbox' => 'Værktøjer',
 "userpage" => "Se brugersiden",
@@ -160,16 +210,7 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 'copyright'	=> 'Indholdet&nbsp;er&nbsp;udgivet&nbsp;under&nbsp;$1.',
 "protectedpage" => "Beskyttet side",
 "administrators" => "{{ns:4}}:Administratorer",
-"sysoptitle"	=> "Sysop-adgang påkrævet",
-"sysoptext"		=> "Den funktion du har bedt om kan kun
-udføres af brugere med \"sysop\"-status. Se $1.",
-"developertitle" => "Developer-adgang påkrævet",
-"developertext"	=> "Den funktion du har bedt om, kan kun
-udføres af brugere med \"developer\"-status. Se $1.",
 'badaccess'     => 'Permission error',
-'badaccesstext' => 'The action you have requested is limited
-to users with the "$2" permission assigned.
-See $1.',
 
 'nbytes'		=> '$1 bytes',
 "go"			=> "Gå til",
@@ -568,7 +609,6 @@ ellers skulle man for eksempel for dansk vintertid, indtaste \"1\"
 'userrights-groupsavailable' => 'Tilgængelige grupper:',
 'userrights-groupshelp' => 'Vælg grupper som du ønsker brugeren skal fjernes fra eller føjes til.
 Grupper som ikke er valgt, vil ikke blive ændret. Du kan ophæve valget af en gruppe ved hjælp af CTRL-tasten og et venstreklik.',
-'userrights-logcomment' => 'Ændret gruppemedlemskab fra $1 til $2',
 
 # Recent changes
 #

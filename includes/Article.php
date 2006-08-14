@@ -719,6 +719,7 @@ class Article {
 		$outputDone = false;
 		if ( $pcache ) {
 			if ( $wgOut->tryParserCache( $this, $wgUser ) ) {
+				wfRunHooks( 'ArticleViewHeader', array( &$this ) );
 				$outputDone = true;
 			}
 		}
@@ -804,13 +805,13 @@ class Article {
 				# Display content, don't attempt to save to parser cache
 				# Don't show section-edit links on old revisions... this way lies madness.
 				if( !$this->isCurrent() ) {
-					$oldEditSectionSetting = $wgOut->mParserOptions->setEditSection( false );
+					$oldEditSectionSetting = $wgOut->parserOptions()->setEditSection( false );
 				}
 				# Display content and don't save to parser cache
 				$wgOut->addPrimaryWikiText( $text, $this, false );
 
 				if( !$this->isCurrent() ) {
-					$wgOut->mParserOptions->setEditSection( $oldEditSectionSetting );
+					$wgOut->parserOptions()->setEditSection( $oldEditSectionSetting );
 				}
 			}
 		}
@@ -886,7 +887,7 @@ class Article {
 		}
 
 		if ((!$wgUser->isAllowed('delete'))) {
-			$wgOut->sysopRequired();
+			$wgOut->permissionRequired( 'delete' );
 			return;
 		}
 
@@ -2179,6 +2180,10 @@ class Article {
 	 */
 	function setOldSubtitle( $oldid=0 ) {
 		global $wgLang, $wgOut, $wgUser;
+
+		if ( !wfRunHooks( 'DisplayOldSubtitle', array(&$this, &$oldid) ) ) {
+				return; 
+		}       
 
 		$revision = Revision::newFromId( $oldid );
 

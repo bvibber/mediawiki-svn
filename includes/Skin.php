@@ -255,14 +255,63 @@ class Skin extends Linker {
 
 		$out->out( $this->afterContent() );
 
+		$out->out( $this->bottomScripts() );
+
 		$out->out( $out->reportTime() );
 
 		$out->out( "\n</body></html>" );
 	}
 
+	/*static*/ function makeGlobalVariablesScript( $data ) {
+		$r = '<script type= "' . $data['jsmimetype'] . '">
+			var skin = "' . Xml::escapeJsString( $data['skinname'] ) . '";
+			var stylepath = "' . Xml::escapeJsString( $data['stylepath'] ) . '";
+
+			var wgArticlePath = "' . Xml::escapeJsString( $data['articlepath'] ) . '";
+			var wgScriptPath = "' . Xml::escapeJsString( $data['scriptpath'] ) . '";
+			var wgServer = "' . Xml::escapeJsString( $data['serverurl'] ) . '";
+                        
+			var wgCanonicalNamespace = "' . Xml::escapeJsString( $data['nscanonical'] ) . '";
+			var wgPageName = "' . Xml::escapeJsString( $data['titleprefixeddbkey'] ) . '";
+			var wgTitle = "' . Xml::escapeJsString( $data['titletext'] ) . '";
+			var wgArticleId = ' . (int)$data['articleid'] . ';
+                        
+			var wgUserName = ' . ( $data['username'] == NULL ? 'null' : ( '"' . Xml::escapeJsString( $data['username'] ) . '"' ) ) . ';
+			var wgUserLanguage = "' . Xml::escapeJsString( $data['userlang'] ) . '";
+			var wgContentLanguage = "' . Xml::escapeJsString( $data['lang'] ) . '";
+		</script>
+		';
+		
+		return $r;
+	}
+
 	function getHeadScripts() {
 		global $wgStylePath, $wgUser, $wgAllowUserJs, $wgJsMimeType;
-		$r = "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/wikibits.js\"></script>\n";
+		global $wgArticlePath, $wgScriptPath, $wgServer, $wgContLang, $wgLang;
+		global $wgTitle, $wgCanonicalNamespaceNames;
+
+		$nsname = @$wgCanonicalNamespaceNames[ $wgTitle->getNamespace() ];
+		if ( $nsname === NULL ) $nsname = $wgTitle->getNsText();
+
+		$vars = array( 
+			'jsmimetype' => $wgJsMimeType,
+			'skinname' => $this->getSkinName(),
+			'stylepath' => $wgStylePath,
+			'articlepath' => $wgArticlePath,
+			'scriptpath' => $wgScriptPath,
+			'serverurl' => $wgServer,
+			'nscanonical' => $nsname,
+			'titleprefixeddbkey' => $wgTitle->getPrefixedDBKey(),
+			'titletext' => $wgTitle->getText(),
+			'articleid' => $wgTitle->getArticleId(),
+			'username' => $wgUser->isAnon() ? NULL : $wgUser->getName(),
+			'userlang' => $wgLang->getCode(),
+			'lang' => $wgContLang->getCode(),
+		);
+
+		$r = Skin::makeGlobalVariablesScript( $vars );
+                
+		$r .= "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/wikibits.js\"></script>\n";
 		if( $wgAllowUserJs && $wgUser->isLoggedIn() ) {
 			$userpage = $wgUser->getUserPage();
 			$userjs = htmlspecialchars( $this->makeUrl(
@@ -573,12 +622,21 @@ END;
 	}
 
 	/**
-	 * This gets called immediately before the \</body\> tag.
-	 * @return String HTML to be put after \</body\> ???
+	 * This gets called shortly before the \</body\> tag.
+	 * @return String HTML to be put before \</body\> 
 	 */
 	function afterContent() {
 		$printfooter = "<div class=\"printfooter\">\n" . $this->printFooter() . "</div>\n";
 		return $printfooter . $this->doAfterContent();
+	}
+
+	/**
+	 * This gets called shortly before the \</body\> tag.
+	 * @return String HTML-wrapped JS code to be put before \</body\> 
+	 */
+	function bottomScripts() {
+		global $wgJsMimeType;
+		return "\n\t\t<script type=\"$wgJsMimeType\">if (window.runOnloadHook) runOnloadHook();</script>\n";
 	}
 
 	/** @return string Retrievied from HTML text */
@@ -1316,20 +1374,32 @@ END;
 		if( $wgTitle->isTalkPage() ) {
 			$link = $wgTitle->getSubjectPage();
 			switch( $link->getNamespace() ) {
-			case NS_MAIN:
-				$text = wfMsg('articlepage');
-				break;
-			case NS_USER:
-				$text = wfMsg('userpage');
-				break;
-			case NS_PROJECT:
-				$text = wfMsg('projectpage');
-				break;
-			case NS_IMAGE:
-				$text = wfMsg('imagepage');
-				break;
-			default:
-				$text= wfMsg('articlepage');
+				case NS_MAIN:
+					$text = wfMsg( 'articlepage' );
+					break;
+				case NS_USER:
+					$text = wfMsg( 'userpage' );
+					break;
+				case NS_PROJECT:
+					$text = wfMsg( 'projectpage' );
+					break;
+				case NS_IMAGE:
+					$text = wfMsg( 'imagepage' );
+					break;
+				case NS_MEDIAWIKI:
+					$text = wfMsg( 'mediawikipage' );
+					break;
+				case NS_TEMPLATE:
+					$text = wfMsg( 'templatepage' );
+					break;
+				case NS_HELP:
+					$text = wfMsg( 'viewhelppage' );
+					break;
+				case NS_CATEGORY:
+					$text = wfMsg( 'categorypage' );
+					break;
+				default:
+					$text = wfMsg( 'articlepage' );
 			}
 		} else {
 			$link = $wgTitle->getTalkPage();
@@ -1437,7 +1507,7 @@ END;
 	 */
 	function buildSidebar() {
 		global $wgDBname, $parserMemc, $wgEnableSidebarCache;
-		global $wgLanguageCode, $wgContLanguageCode;
+		global $wgLang, $wgContLang;
 
 		$fname = 'SkinTemplate::buildSidebar';
 
@@ -1445,7 +1515,7 @@ END;
 
 		$key = "{$wgDBname}:sidebar";
 		$cacheSidebar = $wgEnableSidebarCache &&
-			($wgLanguageCode == $wgContLanguageCode);
+			($wgLang->getCode() == $wgContLang->getCode());
 		
 		if ($cacheSidebar) {
 			$cachedsidebar = $parserMemc->get( $key );

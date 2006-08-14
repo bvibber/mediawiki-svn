@@ -64,7 +64,9 @@ class MonoBookTemplate extends QuickTemplate {
 		<!--[if IE 7]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE70Fixes.css?1";</style><![endif]-->
 		<!--[if lt IE 7]><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath') ?>/common/IEFixes.js"></script>
 		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
-		<script type="<?php $this->text('jsmimetype') ?>">var skin = '<?php $this->text('skinname')?>';var stylepath = '<?php $this->text('stylepath')?>';</script>
+		
+		<?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
+                
 		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?1"><!-- wikibits js --></script>
 <?php	if($this->data['jsvarurl'  ]) { ?>
 		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('jsvarurl'  ) ?>"><!-- site js --></script>
@@ -263,10 +265,16 @@ class MonoBookTemplate extends QuickTemplate {
 ?>
 			</ul>
 		</div>
-	<script type="text/javascript"> if (window.runOnloadHook) runOnloadHook();</script>
+		
+	<?php $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */ ?>
 </div>
 <?php $this->html('reporttime') ?>
+<?php if ( $this->data['debug'] ): ?>
+<!-- Debug output:
+<?php $this->text( 'debug' ); ?>
 
+-->
+<?php endif; ?>
 </body></html>
 <?php
 	wfRestoreWarnings();

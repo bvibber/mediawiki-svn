@@ -1,7 +1,48 @@
 <?php
+/** Friulian (Furlan)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
+$quickbarSettings = array(
+	'Nissune', 'Fis a Çampe', 'Fis a Drete', 'Flutuant a çampe'
+);
 
-global $wgAllMessagesFur;
-$wgAllMessagesFur = array(
+$skinNames = array(
+	'nostalgia' => 'Nostalgie',
+);
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Speciâl',
+	NS_MAIN           => '',
+	NS_TALK           => 'Discussion',
+	NS_USER           => 'Utent',
+	NS_USER_TALK      => 'Discussion_utent',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'Discussion_$1',
+	NS_IMAGE          => 'Figure',
+	NS_IMAGE_TALK     => 'Discussion_figure',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'Discussion_MediaWiki',
+	NS_TEMPLATE       => 'Model',
+	NS_TEMPLATE_TALK  => 'Discussion_model',
+	NS_HELP	          => 'Jutori',
+	NS_HELP_TALK      => 'Discussion_jutori',
+	NS_CATEGORY       => 'Categorie',
+	NS_CATEGORY_TALK  => 'Discussion_categorie'
+);
+
+$datePreferences = false;
+$defaultDateFormat = 'dmy';
+$dateFormats = array(
+	'dmy time' => 'H:i',
+	'dmy date' => 'j "di" M Y',
+	'dmy both' => 'j "di" M Y "a lis" H:i',
+);
+
+$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+
+$messages = array(
 '1movedto2'		=> "$1 movût in $2",
 'about' => "Informazions",
 'aboutsite' => "Informazions su {{SITENAME}}",
@@ -59,7 +100,6 @@ Sielç par plasê un altri non.',
 'cancel' => "Scancele",
 'categories' => "Categoriis",
 'categoriespagetext' => 'Te wiki a esistin lis categoriis ca sot.',
-'category' => "categorie",
 'category_header' => "Vôs inte categorie \"$1\"",
 'categoryarticlecount' => "In cheste categorie tu puedis cjatâ $1 vôs.",
 'changepassword' => 'Gambie peraule clâf',
@@ -185,29 +225,6 @@ Tu varâs di inserî di gnûf i tiei cambiaments tal test esistint.
 'filestatus' => 'Stât dal copyright',
 'friday' => "Vinars",
 'go' => "Va",
-'googlesearch' => "
-<div style=\"margin-left: 2em\">
-
-<!-- Google search -->
-<div style=\"width:130px;float:left;text-align:center;position:relative;top:-8px\"><a href=\"http://www.google.com/\" style=\"padding:0;background-image:none\"><img src=\"http://www.google.com/logos/Logo_40wht.gif\" alt=\"Google\" style=\"border:none\" /></a></div>
-
-<form method=\"get\" action=\"http://www.google.com/search\" style=\"margin-left:135px\">
-  <div>
-    <input type=\"hidden\" name=\"domains\" value=\"{{SERVER}}\" />
-    <input type=\"hidden\" name=\"num\" value=\"50\" />
-    <input type=\"hidden\" name=\"ie\" value=\"$2\" />
-    <input type=\"hidden\" name=\"oe\" value=\"$2\" />
-
-    <input type=\"text\" name=\"q\" size=\"31\" maxlength=\"255\" value=\"$1\" />
-    <input type=\"submit\" name=\"btnG\" value=\"Cîr cun Google\" />
-  </div>
-  <div style=\"font-size:90%\">
-    <input type=\"radio\" name=\"sitesearch\" id=\"gwiki\" value=\"{{SERVER}}\" checked=\"checked\" /><label for=\"gwiki\">{{SITENAME}}</label>
-    <input type=\"radio\" name=\"sitesearch\" id=\"gWWW\" value=\"\" /><label for=\"gWWW\">WWW</label>
-  </div>
-</form>
-
-</div>",
 'gotaccount'	=> 'Âstu za une identitât? $1.',
 'gotaccountlink'	=> 'Jentre',
 'guesstimezone' => "Cjape impostazions dal sgarfadôr",

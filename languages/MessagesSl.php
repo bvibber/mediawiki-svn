@@ -1,7 +1,54 @@
 <?php
+/** Slovenian (Slovenščina)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ *
+ */
 
-global $wgAllMessagesSl;
-$wgAllMessagesSl = array(
+#
+# Revision/
+# Inačica 1.00.00 XJamRastafire 2003-07-08 |NOT COMPLETE
+#         1.00.10 XJamRastafire 2003-11-03 |NOT COMPLETE
+# ______________________________________________________
+#         1.00.20 XJamRastafire 2003-11-05 |    COMPLETE
+#         1.00.30 romanm        2003-11-07 |    minor changes
+#         1.00.31 romanm        2003-11-11 |    merged incorrectly broken lines
+#         1.00.32 romanm        2003-11-19 |    merged incorrectly broken lines
+#         1.00.40 romanm        2003-11-21 |    fixed Google search
+
+
+$quickbarSettings = array(
+	'Brez', 'Levo nepomično', 'Desno nepomično', 'Levo leteče'
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Posebno',
+	NS_MAIN           => '',
+	NS_TALK           => 'Pogovor',
+	NS_USER           => 'Uporabnik',
+	NS_USER_TALK      => 'Uporabniški_pogovor',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'Pogovor_{{grammar:mestnik|$1}}',
+	NS_IMAGE          => 'Slika',
+	NS_IMAGE_TALK     => 'Pogovor_o_sliki',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'Pogovor_o_MediaWiki',
+	NS_TEMPLATE       => 'Predloga',
+	NS_TEMPLATE_TALK  => 'Pogovor_o_predlogi',
+	NS_HELP           => 'Pomoč',
+	NS_HELP_TALK      => 'Pogovor_o_pomoči',
+	NS_CATEGORY       => 'Kategorija',
+	NS_CATEGORY_TALK  => 'Pogovor_o_kategoriji'
+);
+
+$datePreferences = false;
+$fallback8bitEncoding = "iso-8859-2";
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+
+
+$messages = array(
 'tog-underline'         => 'Podčrtavanje povezav:',
 'tog-highlightbroken'   => 'Oblikuj pretrgane povezave <a href="" class="new">kot</a> (druga možnost: kot<a href="" class="internal">?</a>)',
 'tog-justify'           => 'Poravnavaj odstavke',
@@ -71,8 +118,19 @@ $wgAllMessagesSl = array(
 'oct'                   => 'okt.',
 'nov'                   => 'nov.',
 'dec'                   => 'dec.',
+'january-gen'           => 'januarja',  
+'february-gen'          => 'februarja', 
+'march-gen'             => 'marca',  
+'april-gen'             => 'aprila',  
+'may-gen'               => 'maja',  
+'june-gen'              => 'junija',
+'july-gen'              => 'julija',  
+'august-gen'            => 'avgusta',  
+'september-gen'         => 'septembra', 
+'october-gen'           => 'oktobra',  
+'november-gen'          => 'novembra', 
+'december-gen'          => 'decembra',
 'categories'            => '{{plural:$1|Kategorija|Kategoriji|Kategorije|Kategorije|Kategorije}}',
-'category'              => 'Kategorija',
 'category_header'       => 'Strani v kategoriji »$1«',
 'subcategories'         => 'Podkategorije',
 'mainpage'              => 'Glavna stran',
@@ -144,7 +202,6 @@ in [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Uporabniški priroč
 'personaltools'         => 'Osebna orodja',
 'postcomment'           => 'Objavite pripombo',
 'articlepage'           => 'Prikaže članek',
-'subjectpage'           => 'Prikaži temo',
 'talk'                  => 'Pogovor',
 'views'                 => 'Pogled',
 'toolbox'               => 'Pripomočki',
@@ -164,12 +221,7 @@ in [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Uporabniški priroč
 'jumpto'                => 'Skoči na:',
 'jumptonavigation'      => 'navigacija',
 'jumptosearch'          => 'iskanje',
-'sysoptitle'            => 'Zahtevali ste dostop administratorja',
-'sysoptext'             => 'Želeno dejanje lahko izvedejo le uporabniki s statusom administratorja. Glejte tudi $1.',
-'developertitle'        => 'Zahtevali ste dostop razvijalca',
-'developertext'         => 'Dejanje, ki ste ga zahtevali, lahko izvedejo le uporabniki s statusom razvijalca. Glejte tudi $1.',
 'badaccess'             => 'Napaka pri dovoljenju',
-'badaccesstext'         => 'Želeno dejanje lahko izvedejo le uporabniki s pooblastili »$2«. Glej $1.',
 'versionrequired'       => 'Potrebna je različica MediaWiki $1',
 'versionrequiredtext'   => 'Za uporabo strani je potrebna različica MediaWiki $1. Glejte [[Special:Version]].',
 'ok'                    => 'V redu',
@@ -580,7 +632,6 @@ $2 Seznam se preusmerja   Iskanje za $3 $9',
 'userrights-groupsavailable'=> 'Skupine, ki so na razpolago:',
 'userrights-groupshelp' => 'Izberite skupine, iz katerih želite odstraniti ali vanje dodati uporabnika.
 Neoznačene skupine ne bodo spremenjene. Skupino lahko odznačite z levim klikom in hkratnim pritiskom tipke CTRL.',
-'userrights-logcomment' => 'Uporabnik je iz skupine $1 prešel v skupino $2.',
 'group'                 => 'Skupina:',
 'group-bot'             => 'Boti',
 'group-sysop'           => 'Administratorji',

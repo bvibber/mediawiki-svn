@@ -1,5 +1,61 @@
 <?php
+/** Dutch (Nederlands)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
+$quickbarSettings = array(
+	'Uitgeschakeld', 'Links vast', 'Rechts vast', 'Links zwevend'
+);
+
+$skinNames = array(
+	'standard' => 'Standaard',
+	'nostalgia' => 'Nostalgie',
+	'cologneblue' => 'Keuls blauw',
+);
+
+$bookstoreList = array(
+	'Koninklijke Bibliotheek' => 'http://opc4.kb.nl/DB=1/SET=5/TTL=1/CMD?ACT=SRCH&IKT=1007&SRT=RLV&TRM=$1'
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Speciaal',
+	NS_MAIN           => '',
+	NS_TALK           => 'Overleg',
+	NS_USER           => 'Gebruiker',
+	NS_USER_TALK      => 'Overleg_gebruiker',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'Overleg_$1',
+	NS_IMAGE          => 'Afbeelding',
+	NS_IMAGE_TALK     => 'Overleg_afbeelding',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'Overleg_MediaWiki',
+	NS_TEMPLATE       => 'Sjabloon',
+	NS_TEMPLATE_TALK  => 'Overleg_sjabloon',
+	NS_HELP           => 'Help',
+	NS_HELP_TALK      => 'Overleg_help',
+	NS_CATEGORY       => 'Categorie',
+	NS_CATEGORY_TALK  => 'Overleg_categorie'
+);
+
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'M j, Y',
+	'mdy both' => 'M j, Y H:i',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j M Y',
+	'dmy both' => 'j M Y H:i',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y M j',
+	'ymd both' => 'Y M j H:i',
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+$linkTrail = '/^([a-zäöüïëéèà]+)(.*)$/sDu';
 
 #-------------------------------------------------------------------
 # Default messages
@@ -8,8 +64,7 @@
 # hyphen (-). If you need more characters, you may be able to change
 # the regex in MagicWord::initRegex
 
-global $wgAllMessagesNl;
-$wgAllMessagesNl = array(
+$messages = array(
 /*
 The sidebar for MonoBook is generated from this message, lines that do not
 begin with * or ** are discarded, furthermore lines that do begin with ** and
@@ -99,7 +154,6 @@ parent class in order maintain consistency across languages.
 # Bits of text used by many pages:
 #
 'categories'            => '{{PLURAL:$1|Categorie|Categorieën}}',
-'category'              => 'categorie',
 'category_header'       => 'Pagina\'s in categorie "$1"',
 'subcategories'         => 'Ondercategorieën',
 
@@ -182,7 +236,6 @@ parent class in order maintain consistency across languages.
 'personaltools'         => 'Persoonlijke instellingen',
 'postcomment'           => 'Voeg opmerking toe',
 'articlepage'           => 'Toon pagina',
-'subjectpage'           => 'Toon pagina',
 'talk'                  => 'Overleg',
 'views'                 => 'Aspecten/acties',
 'toolbox'               => 'Hulpmiddelen',
@@ -203,16 +256,7 @@ parent class in order maintain consistency across languages.
 'jumptonavigation'      => 'navigatie',
 'jumptosearch'          => 'zoek',
 
-'sysoptitle'            => 'Beheerdersrechten vereist',
-'sysoptext'             => 'De gevraagde handeling kan alleen uitgevoerd worden door beheerders. Zie $1.',
-'developertitle'        => 'Ontwikkelaarsrechten vereist',
-'developertext'         => 'De handeling die u wilt uitvoeren is alleen beschikbaar 
-voor gebruikers met de rol "ontwikkelaar".
-Zie $1.',
-
 'badaccess'             => 'Geen toestemming',
-'badaccesstext'         => 'De handeling die u probeerde uit te voeren is alleen beschikbaar voor gebruikers met de rol "$2".
-Zie $1.',
 
 'versionrequired'       => 'Versie $1 van MediaWiki is vereist',
 'versionrequiredtext'   => 'Versie $1 van MediaWiki is vereist om deze pagina te gebruiken. Zie [[Special:Version]]',
@@ -675,7 +719,6 @@ Probeer het nog een keer.',
 'userrights-groupsavailable'=> 'Beschikbare groepen:',
 'userrights-groupshelp' => 'Selecteer de groepen waaruit u de gebruiker wilt verwijderen of aan toe wilt voegen.
 Niet geselecteerde groepen worden niet gewijzigd. Deselecteer een groep met "Ctrl + linkermuisknop".',
-'userrights-logcomment' => 'Groepslidmaatschap gewijzigd van $1 naar $2',
 
 # Groups
 'group'                 => 'Groep:',

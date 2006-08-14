@@ -1,7 +1,42 @@
 <?php
+/** Malay (Bahasa Melayu)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesMs;
-$wgAllMessagesMs = array(
+# This localisation is based on a file kindly donated by the folks at MIMOS
+# http://www.asiaosc.org/enwiki/page/Knowledgebase_Home.html
+
+$quickbarSettings = array(
+	'Tiada', 'Tetap sebelah kiri', 'Tetap sebelah kanan', 'Berubah-ubah sebelah kiri'
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Istimewa', #Special
+	NS_MAIN           => '',
+	NS_TALK           => 'Perbualan',#Talk
+	NS_USER           => 'Pengguna',#User
+	NS_USER_TALK      => 'Perbualan_Pengguna',#User_talk
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'Perbualan_$1',#Wikipedia_talk
+	NS_IMAGE          => 'Imej',#Image
+	NS_IMAGE_TALK     => 'Imej_Perbualan',#Image_talk
+	NS_MEDIAWIKI      => 'MediaWiki',#MediaWiki
+	NS_MEDIAWIKI_TALK => 'MediaWiki_Perbualan',#MediaWiki_talk
+	NS_TEMPLATE       => 'Templat',#Template
+	NS_TEMPLATE_TALK  => 'Perbualan_Templat',#Template_talk
+	NS_CATEGORY       => 'Kategori',#Category
+	NS_CATEGORY_TALK  => 'Perbualan_Kategori',#Category_talk
+	NS_HELP           => 'Bantuan',#Help
+	NS_HELP_TALK      => 'Perbualan_Bantuan' #Help_talk
+);
+
+$datePreferences = false;
+
+
+$messages = array(
 
 # User Toggles
 
@@ -133,7 +168,6 @@ $wgAllMessagesMs = array(
 "postcomment"           => "Kirimkan komen",
 "toolbox"               => "Kotak Peralatan",
 "articlepage"         => "Lihat rencana", #"View article",
-"subjectpage"         => "Halaman Tajuk",
 "userpage"              => "Lihat halaman pengguna", #"View user page",
 "projectpage"         => "Lihat halaman meta", #"View meta page",
 "imagepage"             => "Paparkan halaman imej",
@@ -145,10 +179,6 @@ $wgAllMessagesMs = array(
 "viewcount"           => "Halaman ini telah dicapai sebanyak $1 kali.", #"This page has been accessed $1 times.",
 "protectedpage"         => "Halaman Dilindungi", #"Protected page",
 "administrators"        => "Special:Listusers/sysop", #"Special:Listadministrators",
-"sysoptitle"          => "Capaian penyelia diperlukan", #"Sysop access required",
-"sysoptext"           => "Perbuatan anda itu hanya boleh dilakukan oleh seorang [[{{ns:-1}}:Listusers/sysop|penyelia]]. Lihat $1", #"Only the <a href=\"{{localurle:Special:Listadministrators}}\">administrators</a>can do that.",
-"developertitle"        => "Capaian pembangun perisian diperlukan", # "Developer access required",
-"developertext"               => "Perbuatan anda hanya boleh dilakukan oleh pembangun perisian. Sila lihat $1.", #"The action you have requested can only be performed by users with \"developer\" status. See $1.",
 "nbytes"              => "$1 bait",
 "ok"                  => "OK",
 "retrievedfrom"         => "Diperolehi daripada \"$1\"", #"Retrieved from \"$1\"",
@@ -161,7 +191,6 @@ $wgAllMessagesMs = array(
 "restorelink"           => "$1 suntingan dipadam",
 "feedlinks"             => "Menyuap:",
 "categories"            => "Kategori",
-"category"              => "Kategori",
 "category_header"       => "Rencana dalam kategori \"$1\"",
 "subcategories"         => "Subkategori",
 

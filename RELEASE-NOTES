@@ -73,7 +73,54 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 6751) Fix preview of blanked section with edit on first preview option
 * (bug 5456) Separate MediaWiki:Search into messages for both noun and verb,
   introduced 'MediaWiki:Searchbutton'
-
+* Made lines from initialiseMessages() appear as list items during installation
+* Moved the bulk of the localisation data from the Language*.php files to the
+  Messages*.php files. Deleted most of the Languages*.php files.
+* Introduced "stub global" framework to provide deferred initialisation of core
+  modules. 
+* Removed placeholder values for $wgTitle and $wgArticle, these variables will
+  now be null during the initialisation process, until they are set by index.php
+  or another entry point.
+* Added DBA cache type, for BDB-style caches. 
+* Removed custom date format functions, replacing them with a format string in
+  the style of PHP's date(). Used string identifiers instead of integer
+  identifiers, in both the language files and user preferences. Migration should
+  be transparent in most cases.
+* Simplified the initialisation API for LoadBalancer objects.
+* Removed the broken altencoding feature.
+* Moved default user options and toggles from Language to User. Language objects
+  are still able to define default preference overrides and extra user toggles, 
+  via a slightly different interface.
+* Don't include the date option in the parser cache rendering hash unless
+  $wgUseDynamicDates is enabled.
+* Merged LanguageUtf8 with Language. Removed LanguageUtf8.php. 
+* Removed inclusion of language files from the bottom of Language.php. This is
+  now consistently done from Language::factory(). 
+* Add the name of the executing maintenance script to the debug log. Start the
+  profiler during maintenance scripts.
+* Added "serialized" directory, for storing precompiled data in serialized form.
+* Fix regression in auto-set NS_PROJECT_TALK namespace
+* Fix regression in ordering of namespaces
+* (bug 6806, 6030) Added several global JS variables for article path, user name,
+  page title, etc. 
+* hooks registered with addOnloadHook are now called at the one of the html body
+  by all skins.
+* Split ajax aided search from core ajax framework. Use wgUseAjax to enable the
+  framework and wgAjaxSearch to enable the suggest feature for the search box.
+* Added experimental installer for extensions. 
+  See maintenance/installExtension.php
+* Added Tajic (tg) language file.
+* (bug 6903) Added Cantonese localisation (zh-yue)
+* Fix regression in Korean and Japanese date formatting (day of week)
+* (bug 6919) Add English alias magic words for Tatar (tt) language file.
+* (bug 6753) Fixed broken Kazakh linktrail (kk)
+* (bug 6700) Added Kazakh language variants to Names.php
+* (bug 6827) some i18n specific maintenance scripts fails after merge of localisation-work branch
+* Throwed an exception for the deprecated functions OutputPage::sysopRequired and
+  OutputPage::developerRequired - use OutputPage::permissionRequired instead.
+* Removed the deprecated functions User::isSysop, User::isBureaucrat and User::isDeveloper -
+  use User::isAllowed instead.
+* (bug 769) OutputPage::permissionRequired() should suggest groups with the needed permission
 
 == Languages updated ==
 
@@ -82,16 +129,22 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Bishnupriya (bpy) stub file
 * Brazilian Portuguese (pt-br)
 * Catalan (ca)
+* Cantonese (zh-yue)
 * Dutch (nl)
 * English (en)
 * French (fr)
 * German (de)
+* Georgian (ka)
 * Hebrew (he)
 * Hungarian (hu)
 * Indonesian (id)
 * Korean (ko)
 * Polish (pl)
+* Romani (rmy)
 * Russian (ru)
+* Spanish (es)
+* Tajic (tg)
+* Tatar (tt)
 * Telugu (te)
 
 == Compatibility ==

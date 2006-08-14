@@ -1,7 +1,9 @@
 <?php
 
-global $wgAllMessagesGsw;
-$wgAllMessagesGsw = array(
+$fallback = 'de';
+$linkTrail = '/^([äöüßa-z]+)(.*)$/sDu';
+
+$messages = array(
 'tog-underline'         => 'Links unterstryche',
 'tog-highlightbroken'   => 'Links uf lääri Themene durestryche',
 'tog-justify'           => 'Tekscht als Blocksatz',
@@ -53,7 +55,6 @@ $wgAllMessagesGsw = array(
 'december'              => 'Dezämber',
 'may'                   => 'Mei',
 'categories'            => '{{PLURAL:$1|Kategori|Kategorie}}',
-'category'              => 'Kategori',
 'category_header'       => 'Artikel in de Kategori "$1"',
 'subcategories'         => 'Unterkategorie',
 'mainpage'              => 'Houptsyte',
@@ -115,7 +116,6 @@ $wgAllMessagesGsw = array(
 'personaltools'         => 'Persönlichi Wärkzüg',
 'postcomment'           => 'Kommentar abgeh',
 'articlepage'           => 'Syte',
-'subjectpage'           => 'Betreff ozeige',
 'toolbox'               => 'Wärkzügkäschtli',
 'userpage'              => 'Benutzersyte',
 'imagepage'             => 'Bildsyte',
@@ -129,10 +129,7 @@ $wgAllMessagesGsw = array(
 'administrators'        => 'Project:Adminischtratore',
 'jumpto'                => 'Hops zue:',
 'jumptosearch'          => 'Suech',
-'sysoptitle'            => 'Sysop-Zuegang notwendig',
-'sysoptext'             => 'Där Vorgang konn us Sicherheitsgründ nuer vun Benutzer mit"Sysop"-Status durchgfiehrt werre. Luege au $1.',
 'badaccess'             => 'Kei usreichendi Rechte.',
-'badaccesstext'         => 'Diä Aktion isch Onwender mit de Rechte "$2" vorbhalte. Luege $1.',
 'versionrequired'       => 'Version $1 vun MediaWiki wird bnötigt',
 'versionrequiredtext'   => 'Version $1 vun MediaWiki wird bnötigt um diä Syte zue nutze. Luege [[Special:Version]]',
 'pagetitle'             => '$1 - {{SITENAME}}',

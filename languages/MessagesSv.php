@@ -1,7 +1,65 @@
 <?php
+/**
+ * Swedish (Svenska)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesSv;
-$wgAllMessagesSv = array(
+$quickbarSettings = array(
+	"Ingen",
+	"Fast vänster",
+	"Fast höger",
+	"Flytande vänster"
+);
+
+$skinNames = array(
+	'standard' => "Standard",
+	'nostalgia' => "Nostalgi",
+	'cologneblue' => "Cologne Blå",
+);
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Special',
+	NS_MAIN	            => '',
+	NS_TALK	            => 'Diskussion',
+	NS_USER             => 'Användare',
+	NS_USER_TALK        => 'Användardiskussion',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1diskussion',
+	NS_IMAGE            => 'Bild',
+	NS_IMAGE_TALK       => 'Bilddiskussion',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_diskussion',
+	NS_TEMPLATE         => 'Mall',
+	NS_TEMPLATE_TALK    => 'Malldiskussion',
+	NS_HELP             => 'Hjälp',
+	NS_HELP_TALK        => 'Hjälp_diskussion',
+	NS_CATEGORY         => 'Kategori',
+	NS_CATEGORY_TALK    => 'Kategoridiskussion'
+);
+
+$linkTrail = '/^([a-zåäöéÅÄÖÉ]+)(.*)$/sDu';
+$separatorTransformTable =  array(
+	',' => "\xc2\xa0", // @bug 2749
+	'.' => ','
+);
+
+$dateFormats = array(
+	'mdy time' => 'H.i',
+	'mdy date' => 'F j, Y',
+	'mdy both' => 'F j, Y "kl." H.i',
+
+	'dmy time' => 'H.i',
+	'dmy date' => 'j F Y',
+	'dmy both' => 'j F Y "kl." H.i',
+
+	'ymd time' => 'H.i',
+	'ymd date' => 'Y F j',
+	'ymd both' => 'Y F j "kl." H.i',
+);
+
+$messages = array(
 'tog-underline'         => 'Stryk under länkar',
 'tog-highlightbroken'   => 'Formatera trasiga länkar <a href="" class="new">så här</a> (alternativt: <a href="" class="internal">så här</a>).',
 'tog-justify'           => 'Justera indrag',
@@ -72,7 +130,6 @@ $wgAllMessagesSv = array(
 'nov'                   => 'nov',
 'dec'                   => 'dec',
 'categories'            => '{{PLURAL:$1|Kategori|Kategorier}}',
-'category'              => 'kategori',
 'category_header'       => 'Artiklar i kategorin "$1"',
 'subcategories'         => 'Underkategorier',
 'mainpage'              => 'Huvudsida',
@@ -143,7 +200,6 @@ $wgAllMessagesSv = array(
 'personaltools'         => 'Personliga verktyg',
 'postcomment'           => 'Skicka en kommentar',
 'articlepage'           => 'Visa artikel',
-'subjectpage'           => 'Ämnessida',
 'talk'                  => 'diskussion',
 'views'                 => 'Visningar',
 'toolbox'               => 'Verktygslåda',
@@ -163,14 +219,7 @@ $wgAllMessagesSv = array(
 'jumpto'                => 'Hoppa till:',
 'jumptonavigation'      => 'navigering',
 'jumptosearch'          => 'sök',
-'sysoptitle'            => 'Behörighet som administratör krävs',
-'sysoptext'             => 'Denna åtgärd kan bara utföras av användare med administratörsrättigheter.
-Se $1.',
-'developertitle'        => 'Utvecklarbehörighet krävs',
-'developertext'         => 'Denna funktion kan bara utföras av användare med utvecklarstatus.
-Se $1.',
 'badaccess'             => 'Behörighetsfel',
-'badaccesstext'         => 'Den funktion du ville utföra är begränsad till användare med behörighet till "$2". Se $1.',
 'versionrequired'       => 'Version $1 av MediaWiki krävs',
 'versionrequiredtext'   => 'För att kunna använda den här sidan, behövs version $1 av MediaWiki. Se [[Special:Version]].',
 'ok'                    => 'OK',
@@ -547,7 +596,6 @@ $2 Lista omdirigeringar &nbsp; Sök efter $3 $9',
 'userrights-groupsmember'=> 'Medlem i:',
 'userrights-groupsavailable'=> 'Tillgängliga grupper:',
 'userrights-groupshelp' => 'Markera de grupper, som du vill lägga till eller ta bort användare i. De grupper som du inte markerar, kommer inte att förändras. Du kan avmarkera en grupp med CTRL + vänsterklick.',
-'userrights-logcomment' => 'Gruppmedlemsskapet ändrades från $1 to $2',
 'group'                 => 'Grupp:',
 'group-bot'             => 'Robotar',
 'group-sysop'           => 'Administratörer',

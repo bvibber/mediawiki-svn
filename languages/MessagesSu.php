@@ -1,7 +1,35 @@
 <?php
+/** Sundanese language file (Basa Sunda)
+  *
+  * Source: http://su.wikipedia.org/
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  */
 
-global $wgAllMessagesSu;
-$wgAllMessagesSu = array(
+$namespaceNames = array(
+	NS_MEDIA			=> 'Média',
+	NS_SPECIAL			=> 'Husus',
+	NS_MAIN				=> '',
+	NS_TALK				=> 'Obrolan',
+	NS_USER				=> 'Pamaké',
+	NS_USER_TALK		=> 'Obrolan_pamaké',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK		=> 'Obrolan_$1',
+	NS_IMAGE			=> 'Gambar',
+	NS_IMAGE_TALK		=> 'Obrolan_gambar',
+	NS_MEDIAWIKI		=> 'MediaWiki',
+	NS_MEDIAWIKI_TALK	=> 'Obrolan_MediaWiki',
+	NS_TEMPLATE			=> 'Citakan',
+	NS_TEMPLATE_TALK	=> 'Obrolan_citakan',
+	NS_HELP				=> 'Pitulung',
+	NS_HELP_TALK		=> 'Obrolan_pitulung',
+	NS_CATEGORY			=> 'Kategori',
+	NS_CATEGORY_TALK	=> 'Obrolan_kategori',
+);
+
+
+$messages = array(
 
 # dates
 'sunday' => 'Minggu',
@@ -140,7 +168,6 @@ Jaga, parobahan na kaca ieu katut kaca obrolanana bakal dibéréndélkeun di din
 'articleexists' => 'Kaca nu ngaranna kitu geus aya, atawa ngaran nu dipilih ku anjeun teu sah. Mangga pilih ngaran séjén.',
 'articlepage' => 'Témbongkeun kaca eusi',
 'autoblocker' => 'Otomatis dipeungpeuk sabab alamat IP anjeun sarua jeung "$1". Alesan "$2".',
-'badaccesstext' => 'Peta nu dipundut diwates ukur pikeun pamaké nu mibanda idin "$2". Tempo $1.',
 'badarticleerror' => 'Peta ieu teu bisa dipigawé na kaca ieu.',
 'badfilename' => 'Ngaran gambar geus dirobah jadi "$1".',
 'badfiletype' => '".$1" lain format koropak gambar nu dianjurkeun.',
@@ -185,7 +212,6 @@ Alamat IP anjeun $3, lampirkeun alamat ieu dina unggal \'\'query\'\' anjeun.',
 'cantrollback' => 'Éditan teu bisa dibalikkeun; kontribusi panungtung ngarupakeun hiji-hijina panulis kaca ieu.',
 'categories' => 'Kategori',
 'categoriespagetext' => 'Kategori-kategori di handap ieu aya na wiki.',
-'category' => 'kategori',
 'category_header' => 'Artikel-artikel na kategori "$1"',
 'categoryarticlecount' => 'Aya $1 artikel na kategori ieu.',
 'changed' => 'geus robah',
@@ -297,8 +323,6 @@ Artikel nu dituju "[[$1]]" geus aya. Badé dihapus baé sangkan bisa mindahkeun?
 <ul>
 </ul>',
 'destfilename' => 'Ngaran koropak tujuan',
-'developertext' => 'Peta nu dipénta ngan bisa dipigawé ku pamaké nu statusna "developer". Tempo $1.',
-'developertitle' => 'Kudu ku developer',
 'diff' => 'béda',
 'difference' => '(Béda antarrévisi)',
 'disambiguations' => 'Kaca disambiguasi',
@@ -830,11 +854,8 @@ jumlah-jamléh geus aya \'\'\'$3\'\'\' kaca ulasan sarta \'\'\'$4\'\'\' éditan 
 'subcategories' => 'Subkategori',
 'subcategorycount' => 'Aya $1 subkategori na kategori ieu.',
 'subject' => 'Jejer/Judul',
-'subjectpage' => 'Témbongkeun subjék',
 'successfulupload' => 'Ngamuat geus hasil',
 'summary' => 'Ringkesan',
-'sysoptext' => 'Peta nu dipénta ku anjeun ngan bisa dipigawé ku pamaké nu statusna kuncén. Tempo $1.',
-'sysoptitle' => 'Kudu ku kuncén',
 'talk' => 'Sawala',
 'talkexists' => 'Kacana geus hasil dipindahkeun, ngan kaca obrolanana teu bisa dipindahkeun sabab geus aya nu anyar na judul anyar. Mangga gabungkeun sacara manual.',
 'talkpage' => 'Sawalakeun kaca ieu',

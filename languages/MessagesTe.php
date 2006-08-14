@@ -1,7 +1,49 @@
 <?php
+/** Telugu (Telugu)
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  *
+  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
+  */
 
-global $wgAllMessagesTe;
-$wgAllMessagesTe = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'మీడియా',
+	NS_SPECIAL          => 'ప్రత్యేక',
+	NS_MAIN             => '',
+	NS_TALK             => 'చర్చ',
+	NS_USER             => 'సభ్యుడు',
+	NS_USER_TALK        => 'సభ్యునిపై_చర్చ',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_చర్చ',
+	NS_IMAGE            => 'బొమ్మ',
+	NS_IMAGE_TALK       => 'బొమ్మపై_చర్చ',
+	NS_MEDIAWIKI        => 'మీడియావికీ',
+	NS_MEDIAWIKI_TALK   => 'మీడియావికీ_చర్చ',
+	NS_TEMPLATE         => 'మూస',
+	NS_TEMPLATE_TALK    => 'మూస_చర్చ',
+	NS_HELP             => 'సహాయము',
+	NS_HELP_TALK        => 'సహాయము_చర్చ',
+	NS_CATEGORY         => 'వర్గం',
+	NS_CATEGORY_TALK    => 'వర్గం_చర్చ'
+);
+$linkTrail = "/^([\xE0\xB0\x81-\xE0\xB1\xAF]+)(.*)$/sDu";
+
+// nobody seems to use these anymore
+/*$digitTransformTable = array(
+	'0' => '౦',
+	'1' => '౧',
+	'2' => '౨',
+	'3' => '౩',
+	'4' => '౪',
+	'5' => '౫',
+	'6' => '౬',
+	'7' => '౭',
+	'8' => '౮',
+	'9' => '౯'
+);*/
+
+$messages = array(
 'tog-underline'         => 'లింకుల కింద గీతగీయి:',
 'tog-highlightbroken'   => 'తెగిపోయిన లింకులను <a href="" class="new">ఇలా చూపించు</a> (ఇంకో పధ్ధతి: <a href="" class="internal">?</a>).',
 'tog-justify'           => 'పేరాలను ఇరు పక్కలా సమానంగా సర్దు',
@@ -61,7 +103,6 @@ $wgAllMessagesTe = array(
 'nov'                   => 'నవంబర్',
 'dec'                   => 'డిసెంబర్‌',
 'categories'            => '{{PLURAL:$1|వర్గం|వర్గాలు}}',
-'category'              => 'వర్గము',
 'category_header'       => '"$1" వర్గంలో వ్యాసాలు',
 'subcategories'         => 'ఉపవర్గములు',
 'mainpage'              => 'మొదటి పేజీ',
@@ -113,7 +154,6 @@ $wgAllMessagesTe = array(
 'personaltools'         => 'స్వకీయమైన పరికరాలు',
 'postcomment'           => 'వ్యాఖ్యానము చేయండి',
 'articlepage'           => 'వ్యాసము చూడండి',
-'subjectpage'           => 'విషయం చూడు',
 'talk'                  => 'చర్చ',
 'toolbox'               => 'పరికరాలపెట్టె',
 'imagepage'             => 'బొమ్మ పేజీని చూపించు',
@@ -126,12 +166,7 @@ $wgAllMessagesTe = array(
 'copyright'             => 'విషయ సంగ్రహం $1  కి లోబడి లభ్యం.',
 'protectedpage'         => 'సంరక్షణలోని పేజీ',
 'administrators'        => 'Project:నిర్వాహకులు',
-'sysoptitle'            => 'నిర్వాహకుని హోదా ఉండాలి',
-'sysoptext'             => 'మీరడిగిన పని నిర్వాహకులు మాత్రమే చెయ్యగలరు. $1 చూడండి.',
-'developertitle'        => 'డెవెలపర్‌ స్థాయి అనుమతులు ఆవసరము',
-'developertext'         => 'మీరు చెయ్యదలచిన పని "డెవెలపర్‌లు" మాత్రమే చెయ్యగలిగినది. $1 చూడండి.',
 'badaccess'             => 'అనుమతి లోపం',
-'badaccesstext'         => 'మీరడిగిన పని "$2" అనుమతులు ఉన్న వారికే పరిమితం. $1 చూడండి.',
 'ok'                    => 'సరే',
 'pagetitle'             => '$1 - {{SITENAME}}',
 'youhavenewmessages'    => 'మీకు $1 ఉన్నాయి ($2).',

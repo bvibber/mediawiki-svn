@@ -1,7 +1,57 @@
 <?php
+/** Greek (Ελληνικά)
+  *
+  * Translation by Pasok Internet Volunteers
+  * http://forum.pasok.gr
+  * version 1.0 (initial release)
+  *
+  *The project for the translation of MediaWiki into Greek
+  *was undertaken by a group of ICT volunteers working under
+  *the auspices of the Greek political party PASOK.
+  *
+  *The idea behind this effort was  to provide an extensible,
+  *easy-to-use and non-intimidating tool for content development
+  *and project management, to be used throughout the administrative
+  *and political structure of PASOK by staff, volunteers, party members
+  *and elected officials (all of whom possess varying degrees of ICT skills).
+  *
+  *The PASOK ICT team and the volunteers who worked on this project are
+  *now returning the translated interface to the Open-Source Community
+  *with over 98% of the messages translated into user-friendly Greek.
+  *
+  *We hope that it will be used as a tool by other civil society organizations
+  *in Greece, and that it will enhance the collective creation and the dissemination
+  *of knowledge - an essential component of the democratic process.
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  */
 
-global $wgAllMessagesEl;
-$wgAllMessagesEl = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'Μέσον',
+	NS_SPECIAL          => 'Ειδικό',
+	NS_MAIN	            => '',
+	NS_TALK	            => 'Συζήτηση',
+	NS_USER             => 'Χρήστης',
+	NS_USER_TALK        => 'Συζήτηση_χρήστη',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_συζήτηση',
+	NS_IMAGE            => 'Εικόνα',
+	NS_IMAGE_TALK       => 'Συζήτηση_εικόνας',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_talk',
+	NS_TEMPLATE         => 'Πρότυπο',
+	NS_TEMPLATE_TALK    => 'Συζήτηση_προτύπου',
+	NS_HELP             => 'Βοήθεια',
+	NS_HELP_TALK        => 'Συζήτηση_βοήθειας',
+	NS_CATEGORY         => 'Κατηγορία',
+	NS_CATEGORY_TALK    => 'Συζήτηση_κατηγορίας',
+);
+$fallback8bitEncoding = 'iso-8859-7';
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+$linkTrail = '/^([a-z]+)(.*)$/sD';
+
+$messages = array(
 
 # User preference toggles
 #----------------------------------------#
@@ -79,11 +129,9 @@ $wgAllMessagesEl = array(
 # Bits of text used by many pages:
 #----------------------------------------------------#
 'categories' => 'Κατηγορίες',
-'category' => 'κατηγορία',
 'category_header' => 'Άρθρα στην κατηγορία "$1"',
 'subcategories' => 'Υποκατηγορίες',
 
-'linktrail' => '/^([a-z]+)(.*)$/sD',
 'linkprefix' => '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD',
 'mainpage' => 'Αρχική σελίδα',
 'mainpagetext' => 'To λογισμικό Wiki εγκαταστάθηκε επιτυχώς.',
@@ -160,7 +208,6 @@ $wgAllMessagesEl = array(
 'personaltools' => 'Προσωπικά εργαλεία',
 'postcomment' => 'Καταχωρίστε ένα σχόλιο.',
 'articlepage' => 'Εμφάνιση σελίδας κειμένου',
-'subjectpage' => 'Εμφάνιση θέματος',
 'talk' => 'Συζήτηση',
 'views' => 'Εμφανίσεις',
 'toolbox' => 'Εργαλεία',
@@ -176,18 +223,7 @@ $wgAllMessagesEl = array(
 'protectedpage' => 'Κλειδωμένη σελίδα',
 'administrators' => '{{ns:4}}:Διαχειριστές',
 
-'sysoptitle' => 'Απαιτείται η πρόσβαση διαχειριστή.',
-'sysoptext' => 'Το αίτημά σας αφορά σε ενέργεια
-
-που εκτελείται μόνον από διαχειριστές
-
-(βλ.$1).',
-'developertitle' => 'Απαιτείται η πρόσβαση των προγραμματιστών.',
-'developertext' => 'Η ενέργεια αυτή μπορεί να εκτελείται μόνον από τους προγραμματιστές (βλ. $1).',
 'badaccess' => 'Ακατάλληλη άδεια',
-
-'badaccesstext' => 'Η ενέργεια που ζητήσατε μπορεί να εκτελεσθεί μόνον από χρήστες στους οποίους έχει δοθεί άδεια "$2".
-Βλ. $1.',
 
 'versionrequired' => 'Απαιτείται η έκδοση $1 του MediaWiki.',
 'versionrequiredtext' => 'Για να χρησιμοποιήσετε αυτή τη σελίδα απαιτείται η έκδοση $1 του MediaWiki . Βλ. [[Special:Έκδοση]]',
@@ -540,31 +576,6 @@ $1',
 $1<br />
 $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αναζήτησης $3 $9',
 
-'googlesearch' => '
-<div style="margin-left: 2em">
-
-<!-- Google search -->
-<div style="width:130px;float:left;text-align:center;position:relative;top:-8px"><a href="http://www.google.com/" style="padding:0;background-image:none"><img src="http://www.google.com/logos/Logo_40wht.gif" alt="Google" style="border:none" /></a></div>
-
-<form method="get" action="http://www.google.com/search" style="margin-left:135px">
-  <div>
-    <input type="hidden" name="domains" value="{{SERVER}}" />
-    <input type="hidden" name="num" value="50" />
-
-    <input type="hidden" name="ie" value="$2" />
-    <input type="hidden" name="oe" value="$2" />
-
-    <input type="text" name="q" size="31" maxlength="255" value="$1" />
-    <input type="submit" name="btnG" value="Google Search" />
-  </div>
-  <div style="font-size:90%">
-    <input type="radio" name="sitesearch" id="gwiki" value="{{SERVER}}" checked="checked" /><label for="gwiki">{{SITENAME}}</label>
-    <input type="radio" name="sitesearch" id="gWWW" value="" /><label for="gWWW">WWW</label>
-
-  </div>
-</form>
-
-</div>',
 'blanknamespace' => '(Αρχική περιοχή)',
 
 
@@ -637,9 +648,6 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 'userrights-groupsavailable' => 'Υπάρχουσες ομάδες:',
 
 'userrights-groupshelp' => 'Επιλέξτε όμάδες στις οποίες επιθυμείτε να προστεθεί ο χρήστης ή ομάδες από τις οποίες επιθυμείτε να αφαιρεθεί ο χρήστης. Μπορείτε να αναιρέσετε την επιλογή μιας ομάδας με το πλήκτο CTRL + αριστερό κλικ',
-
-'userrights-logcomment' => 'Τα μέλη της ομάδας έχουν αλλάξει $1 σε $2',
-
 
 # Recent changes
 #--------------------------#

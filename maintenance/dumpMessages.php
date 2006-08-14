@@ -9,7 +9,8 @@
 require_once( "commandLine.inc" );
 $wgMessageCache->disableTransform();
 $messages = array();
-foreach ( $wgAllMessagesEn as $key => $englishValue )
+$wgEnglishMessages = array_keys( Language::getMessagesFor( 'en' ) );
+foreach ( $wgEnglishMessages as $key )
 {
 	$messages[$key] = wfMsg( $key );
 }

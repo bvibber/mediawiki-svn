@@ -1,7 +1,50 @@
 <?php
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Speciala',
+	NS_MAIN           => '',
+	NS_TALK           => 'Diskuto',
+	NS_USER           => 'Vikipediisto', # FIXME: Generalize v-isto kaj v-io
+	NS_USER_TALK      => 'Vikipediista_diskuto',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_diskuto',
+	NS_IMAGE          => 'Dosiero', #FIXME: Check the magic for Image: and Media:
+	NS_IMAGE_TALK     => 'Dosiera_diskuto',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'MediaWiki_diskuto',
+	NS_TEMPLATE       => 'Ŝablono',
+	NS_TEMPLATE_TALK  => 'Ŝablona_diskuto',
+	NS_HELP           => 'Helpo',
+	NS_HELP_TALK      => 'Helpa_diskuto',
+	NS_CATEGORY       => 'Kategorio',
+	NS_CATEGORY_TALK  => 'Kategoria_diskuto',
+);
 
-global $wgAllMessagesEo;
-$wgAllMessagesEo = array(
+$quickbarSettings =  array(
+	'Nenia', 'Fiksiĝas maldekstre', 'Fiksiĝas dekstre', 'Ŝvebas maldekstre'
+);
+
+$skinNames = array(
+	'standard' => 'Klasika',
+	'nostalgia' => 'Nostalgio',
+	'cologneblue' => 'Kolonja Bluo',
+	'mono' => 'Senkolora',
+	'monobook' => 'Librejo',
+	'chick' => 'Kokido',
+);
+
+$separatorTransformTable = array(',' => ' ', '.' => ',' );
+
+$datePreferences = false;
+$defaultDateFormat = 'dmy';
+$dateFormats = array(
+	'dmy time' => 'H:i',
+	'dmy date' => 'j. M Y',
+	'dmy both' => 'H:i, j. M Y',
+);
+
+
+$messages = array(
 'tog-underline'         => 'Substreku ligilojn',
 'tog-highlightbroken'   => 'Ruĝigu ligilojn al neekzistantaj paĝoj',
 'tog-justify'           => 'Alkadrigu liniojn',
@@ -58,7 +101,6 @@ $wgAllMessagesEo = array(
 'aug'                   => 'Aŭg',
 'oct'                   => 'Okt',
 'categories'            => '{{PLURAL:$1|Kategorio|Kategorioj}}',
-'category'              => 'kategorio',
 'category_header'       => 'Artikoloj en kategorio "$1"',
 'subcategories'         => 'Subkategorioj',
 'mainpage'              => 'Ĉefpaĝo',
@@ -133,7 +175,6 @@ $wgAllMessagesEo = array(
 'personaltools'         => 'Personaj iloj',
 'postcomment'           => 'Afiŝu komenton',
 'articlepage'           => 'Vidu la artikolon',
-'subjectpage'           => 'Vidu la artikolon',
 'talk'                  => 'Diskuto',
 'views'                 => 'Vidoj',
 'toolbox'               => 'Iloj',
@@ -151,16 +192,7 @@ $wgAllMessagesEo = array(
 'jumpto'                => 'Saltu al:',
 'jumptonavigation'      => 'navigado',
 'jumptosearch'          => 'serĉo',
-'sysoptitle'            => 'Konto de administranto bezonatas',
-'sysoptext'             => 'La ago kiun vi petis fari estas
-farebla nur de uzantoj agnoskitaj kiel "sistemestroj".
-Bonvolu legi $1.',
-'developertitle'        => 'Sistemestra konto nepras',
-'developertext'         => 'Nur tiuj kiuj havas la staton, "programisto", povas fari tiun agon.
-Vidu $1.',
 'badaccess'             => 'Vi ne havas sufiĉe da redaktorajtoj por tiu paĝo.',
-'badaccesstext'         => 'La ago kiun vi petis estas limigita nur al uzantoj, kiuj ricevis la rajton de $2.
-Vidu $1.',
 'versionrequired'       => 'Versio $1 de MediaWiki nepras',
 'versionrequiredtext'   => 'La versio $1 de MediaWiki estas necesa por uzi ĉi tiun paĝon. Vidu [[Special:Version]]',
 'ok'                    => 'Ek!',
@@ -522,7 +554,6 @@ Ekzemple, por la Centra Eŭropa Horzono, indiku "1" vintre aŭ "2" dum somertemp
 'userrights-groupsmember'=> 'Membro de:',
 'userrights-groupsavailable'=> 'Disponeblaj grupoj:',
 'userrights-groupshelp' => 'Selektu grupojn el kiuj vi volas forigi aŭ al kiuj vi volas aldoni uzanton. Neselektitaj grupoj ne estos ŝanĝitaj. Vi povas malselekti grupon per STR.',
-'userrights-logcomment' => 'Estis ŝanĝita la grupa membreco de $1 al $2.',
 'group'                 => 'Grupo:',
 'group-sysop'           => 'Sisopoj',
 'group-bureaucrat'      => 'Burokratoj',

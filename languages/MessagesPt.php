@@ -1,7 +1,124 @@
 <?php
+/** Portuguese (Português)
+ * This translation was made by:
+ *  - Yves Marques Junqueira
+ *  - Rodrigo Calanca Nishino
+ *  - Nuno Tavares
+ *  - Paulo Juntas
+ *  - Manuel Menezes de Sequeira
+ *  - Sérgio Ribeiro
+ * from the Portuguese Wikipedia
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
+
+$namespaceNames = array(
+	NS_MEDIA            => 'Media', # -2
+	NS_SPECIAL          => 'Especial', # -1
+	NS_MAIN             => '', # 0
+	NS_TALK             => 'Discussão', # 1
+	NS_USER             => 'Usuário',
+	NS_USER_TALK        => 'Usuário_Discussão',
+/*
+	Above entries are for PT_br. The following entries should
+    be used instead. But:
+
+     DO NOT USE THOSE ENTRIES WITHOUT MIGRATING STUFF ON
+     WIKIMEDIA WEB SERVERS FIRST !! You will just break a lot
+     of links 8-)
+
+	NS_USER             => 'Utilizador', # 2
+	NS_USER_TALK        => 'Utilizador_Discussão', # 3
+*/
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_Discussão', # 5
+	NS_IMAGE            => 'Imagem', # 6
+	NS_IMAGE_TALK       => 'Imagem_Discussão', # 7
+	NS_MEDIAWIKI        => 'MediaWiki', # 8
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_Discussão', # 9
+	NS_TEMPLATE         => 'Predefinição', # 10
+	NS_TEMPLATE_TALK    => 'Predefinição_Discussão', # 11
+	NS_HELP             => 'Ajuda', # 12
+	NS_HELP_TALK        => 'Ajuda_Discussão', # 13
+	NS_CATEGORY         => 'Categoria', # 14
+	NS_CATEGORY_TALK    => 'Categoria_Discussão' # 15
+);
+
+$quickbarSettings = array(
+	'Nenhuma', 'Fixo à esquerda', 'Fixo à direita', 'Flutuando à esquerda', 'Flutuando à direita'
+);
+
+$skinNames = array(
+	'standard' => 'Clássico',
+	'nostalgia' => 'Nostalgia',
+	'cologneblue' => 'Azul colonial',
+	'davinci' => 'DaVinci',
+	'mono' => 'Mono',
+	'monobook' => 'MonoBook',
+	'myskin' => 'MySkin',
+	'chick' => 'Chick'
+);
+
+# Note to translators:
+#   Please include the English words as synonyms.  This allows people
+#   from other wikis to contribute more easily.
+#
+$magicWords = array(
+#   ID                                 CASE  SYNONYMS
+	'redirect'               => array( 0,    '#REDIRECT', '#redir'    ),
+	'notoc'                  => array( 0,    '__NOTOC__'              ),
+	'forcetoc'               => array( 0,    '__FORCETOC__'           ),
+	'toc'                    => array( 0,    '__TOC__'                ),
+	'noeditsection'          => array( 0,    '__NOEDITSECTION__'      ),
+	'start'                  => array( 0,    '__START__'              ),
+	'currentmonth'           => array( 1,    'CURRENTMONTH'           ),
+	'currentmonthname'       => array( 1,    'CURRENTMONTHNAME'       ),
+	'currentmonthnamegen'    => array( 1,    'CURRENTMONTHNAMEGEN'    ),
+	'currentmonthabbrev'     => array( 1,    'CURRENTMONTHABBREV'     ),
+	'currentday'             => array( 1,    'CURRENTDAY'             ),
+	'currentdayname'         => array( 1,    'CURRENTDAYNAME'         ),
+	'currentyear'            => array( 1,    'CURRENTYEAR'            ),
+	'currenttime'            => array( 1,    'CURRENTTIME'            ),
+	'numberofarticles'       => array( 1,    'NUMBEROFARTICLES'       ),
+	'numberoffiles'          => array( 1,    'NUMBEROFFILES'          ),
+	'pagename'               => array( 1,    'PAGENAME'               ),
+	'pagenamee'              => array( 1,    'PAGENAMEE'              ),
+	'namespace'              => array( 1,    'NAMESPACE'              ),
+	'msg'                    => array( 0,    'MSG:'                   ),
+	'subst'                  => array( 0,    'SUBST:'                 ),
+	'msgnw'                  => array( 0,    'MSGNW:'                 ),
+	'end'                    => array( 0,    '__END__'                ),
+	'img_thumbnail'          => array( 1,    'thumbnail', 'thumb'     ),
+	'img_manualthumb'        => array( 1,    'thumbnail=$1', 'thumb=$1'),
+	'img_right'              => array( 1,    'right', 'direita'       ),
+	'img_left'               => array( 1,    'left', 'esquerda'       ),
+	'img_none'               => array( 1,    'none', 'nenhum'         ),
+	'img_width'              => array( 1,    '$1px'                   ),
+	'img_center'             => array( 1,    'center', 'centre'       ),
+	'img_framed'             => array( 1,    'framed', 'enframed', 'frame' ),
+	'int'                    => array( 0,    'INT:'                   ),
+	'sitename'               => array( 1,    'SITENAME'               ),
+	'ns'                     => array( 0,    'NS:'                    ),
+	'localurl'               => array( 0,    'LOCALURL:'              ),
+	'localurle'              => array( 0,    'LOCALURLE:'             ),
+	'server'                 => array( 0,    'SERVER'                 ),
+	'servername'             => array( 0,    'SERVERNAME'             ),
+	'scriptpath'             => array( 0,    'SCRIPTPATH'             ),
+	'grammar'                => array( 0,    'GRAMMAR:'               ),
+	'notitleconvert'         => array( 0,    '__NOTITLECONVERT__', '__NOTC__'),
+	'nocontentconvert'       => array( 0,    '__NOCONTENTCONVERT__', '__NOCC__'),
+	'currentweek'            => array( 1,    'CURRENTWEEK'            ),
+	'currentdow'             => array( 1,    'CURRENTDOW'             ),
+	'revisionid'             => array( 1,    'REVISIONID'             ),
+);
+
+$separatorTransformTable = array(',' => ' ', '.' => ',' );
+#$linkTrail = '/^([a-z]+)(.*)$/sD';# ignore list
 
 
-/* private */ $wgAllMessagesPt = array(
+
+$messages = array(
 
 # User preference toggles
 'tog-underline' => 'Sublinhar hiperligações',
@@ -81,12 +198,10 @@
 # Bits of text used by many pages:
 #
 'categories' => '{{PLURAL:$1|Categoria|Categorias}}',
-'category' => 'Categoria',
 'category_header' => 'Artigos na categoria "$1"',
 'subcategories' => 'Subcategorias',
 
 
-#'linktrail'             => '/^([a-z]+)(.*)$/sD', # ignore list
 #'linkprefix'            => '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD', # ignore list
 'mainpage'              => 'Página principal',
 'mainpagetext'    => "<big>'''MediaWiki instalado com sucesso.'''</big>",
@@ -168,7 +283,6 @@
 'personaltools' => 'Ferramentas pessoais',
 'postcomment'   => 'Envie um comentário',
 'articlepage'   => 'Ver artigo',
-'subjectpage'   => 'Ver assunto', # For compatibility
 'talk' => 'Discussão',
 'views' => 'Vistas',
 'toolbox' => 'Ferramentas',
@@ -188,16 +302,7 @@
 'jumptonavigation' => 'navegação',
 'jumptosearch' => 'pesquisa',
 
-'sysoptitle'    => 'Necessário acesso de Sysop',
-'sysoptext'             => "A acção que requisitou só pode ser
-executada por utilizadores com status de \"sysop\".<br />
-Veja $1.",
-'developertitle' => 'Necessário acesso de desenvolvedor',
-'developertext' => 'A acção que requisitou só pode ser
-executada por utilizadores com direitos de "desenvolvedor".<br />Veja $1.',
-
 'badaccess'     => 'Erro de permissão',
-'badaccesstext' => 'A acção que requesitou está limitada a utilizadores com permissão de "$2". Ver $1.',
 
 'versionrequired' => 'Necessária versão $1 do MediaWiki',
 'versionrequiredtext' => 'Esta página requer a versão $1 do MediaWiki para ser utilizada. Consulte [[Special:Version]]',
@@ -639,7 +744,6 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desac
 'userrights-groupsavailable' => 'Grupos disponíveis:',
 'userrights-groupshelp' => 'Seleccione os grupos no qual deseja que o utilizador seja removido ou adicionado.
 Grupos não seleccionados, não serão alterados. Pode seleccionar ou remover a selecção a um grupo com CTRL + Click esquerdo',
-'userrights-logcomment' => 'Alterado membro do grupo de $1 para $2',
 
 # Groups
 'group'                   => 'Grupo:',

@@ -1,7 +1,51 @@
 <?php
+/** Italian (Italiano)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Speciale',
+	NS_MAIN             => '',
+	NS_TALK             => 'Discussione',
+	NS_USER             => 'Utente',
+	NS_USER_TALK        => 'Discussioni_utente',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Discussioni_$1',
+	NS_IMAGE            => 'Immagine',
+	NS_IMAGE_TALK       => 'Discussioni_immagine',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Discussioni_MediaWiki',
+	NS_TEMPLATE         => 'Template',
+	NS_TEMPLATE_TALK    => 'Discussioni_template',
+	NS_HELP             => 'Aiuto',
+	NS_HELP_TALK        => 'Discussioni_aiuto',
+	NS_CATEGORY         => 'Categoria',
+	NS_CATEGORY_TALK    => 'Discussioni_categoria'
+);
 
-global $wgAllMessagesIt;
-$wgAllMessagesIt = array(
+$quickbarSettings = array(
+	'Nessuno', 'Fisso a sinistra', 'Fisso a destra', 'Fluttuante a sinistra'
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'M j, Y',
+	'mdy both' => 'H:i, M j, Y',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j M Y',
+	'dmy both' => 'H:i, j M Y',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y M j',
+	'ymd both' => 'H:i, Y M j',
+);
+
+$messages = array(
 
 # User preference toggles
 "tog-underline" => "Sottolinea i collegamenti",
@@ -82,7 +126,6 @@ $wgAllMessagesIt = array(
 # Bits of text used by many pages:
 #
 "categories" => "{{PLURAL:$1|Categoria|Categorie}}",
-"category" => "categoria",
 "category_header" => 'Pagine nella categoria "$1"',
 "subcategories" => "Sottocategorie",
 
@@ -167,7 +210,6 @@ I seguenti collegamenti sono in lingua inglese:
 "personaltools" => "Strumenti personali",
 "postcomment"   => "Aggiungi un commento",
 "articlepage"	=> "Vedi la voce",
-"subjectpage"	=> "Vedi articolo", # For compatibility
 "talk" => "Discussione",
 "views" => "Visite",
 "toolbox" => "Strumenti",
@@ -188,16 +230,7 @@ I seguenti collegamenti sono in lingua inglese:
 "jumptonavigation" => "navigazione",
 "jumptosearch" => "ricerca",
 
-"sysoptitle"	=> "Riservato agli amministratori",
-"sysoptext"		=> "Questa operazione può essere eseguita solo da utenti che siano anche amministratori (''sysop'').
-Vedi $1.",
-"developertitle" => "Riservato agli sviluppatori",
-"developertext"	=> "Questa operazione può essere eseguita solo da utenti che siano anche sviluppatori (''developer'').
-Vedi $1.",
-
 "badaccess" => "Permessi non sufficienti",
-"badaccesstext"	=> "Questa operazione può essere eseguita solo da utenti che siano dotati degli opportuni permessi (''$2'').
-Vedi $1.",
 
 "versionrequired" => "Versione $1 di MediaWiki richiesta",
 "versionrequiredtext" => "Per usare questa pagina è necessario disporre della versione $1 del software MediaWiki. Vedi [[Special:Version]]",
@@ -639,7 +672,6 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 "userrights-groupsmember"	=> "Appartiene ai gruppi:",
 "userrights-groupsavailable"	=> "Gruppi disponibili:",
 "userrights-groupshelp"	=> "Selezionare i gruppi ai quali si vuole associare o rimuovere l'utente. L'appartenenza ai gruppi non selezionati non verrà modificata. Per deselezionare un gruppo, premere Ctrl + il tasto sinistro del mouse.",
-"userrights-logcomment"	=> "Modificata appartenenza gruppi da $1 a $2",
 
 # Groups
 "group"	=> "Gruppo:",

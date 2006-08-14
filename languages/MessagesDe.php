@@ -1,7 +1,71 @@
 <?php
 
-global $wgAllMessagesDe;
-$wgAllMessagesDe = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Spezial',
+	NS_MAIN             => '',
+	NS_TALK             => 'Diskussion',
+	NS_USER             => 'Benutzer',
+	NS_USER_TALK        => 'Benutzer_Diskussion',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_Diskussion',
+	NS_IMAGE            => 'Bild',
+	NS_IMAGE_TALK       => 'Bild_Diskussion',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_Diskussion',
+	NS_TEMPLATE         => 'Vorlage',
+	NS_TEMPLATE_TALK    => 'Vorlage_Diskussion',
+	NS_HELP             => 'Hilfe',
+	NS_HELP_TALK        => 'Hilfe_Diskussion',
+	NS_CATEGORY         => 'Kategorie',
+	NS_CATEGORY_TALK    => 'Kategorie_Diskussion'
+);
+
+$quickbarSettings = array(
+	'Keine', 'Links, fest', 'Rechts, fest', 'Links, schwebend'
+);
+
+$skinNames = array(
+	'standard'      => 'Klassik',
+	'nostalgia'     => 'Nostalgie',
+	'cologneblue'   => 'Kölnisch Blau',
+	'smarty'        => 'Paddington',
+	'montparnasse'  => 'Montparnasse',
+	'davinci'       => 'DaVinci',
+	'mono'          => 'Mono',
+	'monobook'      => 'MonoBook',
+	'myskin'        => 'MySkin',
+	'chick'         => 'Küken'
+);
+
+
+$bookstoreList = array(
+	'abebooks.de' => 'http://www.abebooks.de/servlet/BookSearchPL?ph=2&isbn=$1',
+	'amazon.de' => 'http://www.amazon.de/exec/obidos/ISBN=$1',
+	'buch.de' => 'http://www.buch.de/de.buch.shop/shop/1/home/schnellsuche/buch/?fqbi=$1',
+	'buchhandel.de' => 'http://www.buchhandel.de/vlb/vlb.cgi?type=voll&isbn=$1',
+	'Karlsruher Virtueller Katalog (KVK)' => 'http://www.ubka.uni-karlsruhe.de/kvk.html?SB=$1',
+	'Lehmanns Fachbuchhandlung' => 'http://www.lob.de/cgi-bin/work/suche?flag=new&stich1=$1'
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+$linkTrail = '/^([äöüßa-z]+)(.*)$/sDu';
+
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'M j. Y',
+	'mdy both' => 'H:i, M j. Y',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j. M Y',
+	'dmy both' => 'H:i, j. M Y',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y M j',
+	'ymd both' => 'H:i, Y M j',
+);
+
+$messages = array(
 
 # stylesheets
 'Common.css'		=> '/** CSS an dieser Stelle wirkt sich auf alle Skins aus */',
@@ -57,43 +121,61 @@ $wgAllMessagesDe = array(
 
 
 # Dates
-'sunday' => "Sonntag",
-'monday' => "Montag",
-'tuesday' => "Dienstag",
-'wednesday' => "Mittwoch",
-'thursday' => "Donnerstag",
-'friday' => "Freitag",
-'saturday' => "Samstag",
-'january' => "Januar",
-'february' => "Februar",
-'march' => "März",
-'april' => "April",
-'may_long' => "Mai",
-'june' => "Juni",
-'july' => "Juli",
-'august' => "August",
-'september' => "September",
-'october' => "Oktober",
-'november' => "November",
-'december' => "Dezember",
-'jan' => "Jan",
-'feb' => "Feb",
-'mar' => "Mär",
-'apr' => "Apr",
-'may' => "Mai",
-'jun' => "Jun",
-'jul' => "Jul",
-'aug' => "Aug",
-'sep' => "Sep",
-'oct' => "Okt",
-'nov' => "Nov",
-'dec' => "Dez",
+'sunday'	=> 'Sonntag',
+'monday'	=> 'Montag',
+'tuesday'	=> 'Dienstag',
+'wednesday'	=> 'Mittwoch',
+'thursday'	=> 'Donnerstag',
+'friday'	=> 'Freitag',
+'saturday'	=> 'Samstag',
+'sun'		=> 'So',
+'mon'		=> 'Mo',
+'tue'		=> 'Di',
+'wed'		=> 'Mi',
+'thu'		=> 'Do',
+'fri'		=> 'Fr',
+'sat'		=> 'Sa',
+'january'	=> 'Januar',
+'february'	=> 'Februar',
+'march'		=> 'März',
+'april'		=> 'April',
+'may_long'	=> 'Mai',
+'june'		=> 'Juni',
+'july'		=> 'Juli',
+'august'	=> 'August',
+'september'	=> 'September',
+'october'	=> 'Oktober',
+'november'	=> 'November',
+'december'	=> 'Dezember',
+'january-gen'	=> 'Januar',
+'february-gen'	=> 'Februar',
+'march-gen'	=> 'März',
+'april-gen'	=> 'April',
+'may-gen'	=> 'Mai',
+'june-gen'	=> 'Juni',
+'july-gen'	=> 'Juli',
+'august-gen'	=> 'August',
+'september-gen'	=> 'September',
+'october-gen'	=> 'Oktober',
+'november-gen'	=> 'November',
+'december-gen'	=> 'Dezember',
+'jan'		=> 'Jan',
+'feb'		=> 'Feb',
+'mar'		=> 'Mär',
+'apr'		=> 'Apr',
+'may'		=> 'Mai',
+'jun'		=> 'Jun',
+'jul'		=> 'Jul',
+'aug'		=> 'Aug',
+'sep'		=> 'Sep',
+'oct'		=> 'Okt',
+'nov'		=> 'Nov',
+'dec'		=> 'Dez',
 
 
 # Bits of text used by many pages:
 #
 'categories'		=> '{{PLURAL:$1|Kategorie|Kategorien}}',
-"category" => "Kategorie",
 'category_header'	=> 'Artikel in der Kategorie „$1“',
 "subcategories" => "Unterkategorien",
 "mainpage"		=> "Hauptseite",
@@ -160,7 +242,6 @@ $wgAllMessagesDe = array(
 "personaltools" => "Persönliche Werkzeuge",
 "postcomment" => "Kommentar hinzufügen",
 "articlepage"	=> "Artikel",
-'subjectpage'	=> 'Betreff anzeigen',
 "toolbox" => "Werkzeuge",
 "projectpage" => "Meta-Text",
 "userpage" => "Benutzerseite",
@@ -178,12 +259,7 @@ $wgAllMessagesDe = array(
 'jumpto'		=> 'Wechseln zu:',
 'jumptonavigation'	=> 'Navigation',
 'jumptosearch'		=> 'Suche',
-'sysoptitle'		=> 'Administrator-Zugang notwendig',
-'sysoptext'		=> 'Dieser Vorgang kann aus Sicherheitsgründen nur von Administratoren durchgeführt werden. Siehe auch $1.',
-"developertitle" => "Entwickler-Zugang notwendig",
-'developertext'		=> 'Dieser Vorgang kann aus Sicherheitsgründen nur von Benutzern mit Entwickler-Status durchgeführt werden. Siehe auch $1.',
 'badaccess'	=> 'Keine ausreichenden Rechte.',
-'badaccesstext'		=> 'Diese Aktion ist Anwendern mit den Rechten „$2“ vorbehalten. Siehe $1.',
 'versionrequired'	=> 'Version $1 von MediaWiki ist erforderlich',
 'versionrequiredtext'	=> 'Version $1 von MediaWiki ist erforderlich um diese Seite zu nutzen. Siehe [[{{ns:special}}:Version]]',
 'nbytes'		=> '$1 {{PLURAL:$1|Byte|Bytes}}',
@@ -282,7 +358,7 @@ Falls dies nicht der Fall ist, haben Sie eventuell einen Fehler in der Software 
 'filedeleteerror'	=> 'Konnte Datei „$1“ nicht löschen.',
 'filenotfound'		=> 'Konnte Datei „$1“ nicht finden.',
 'unexpected'		=> 'Unerwarteter Wert: „$1“=„$2“.',
-"formerror"		=> "Fehler: Konnte Formular nicht verarbeiten",
+'formerror'		=> 'Fehler: Die Eingaben konnten nicht verarbeitet werden.',
 'badarticleerror'	=> 'Diese Aktion kann auf diese Seite nicht angewendet werden.',
 'cannotdelete'		=> 'Die gewählte Seite kann nicht gelöscht werden. Möglicherweise wurde sie bereits gelöscht.',
 "badtitle"		=> "Ungültiger Titel",
@@ -469,7 +545,7 @@ Reichen Sie hier keine Texte ein, falls Sie nicht wollen dass diese ohne Einschr
 
 Sie bestätigen hiermit auch, dass Sie diese Texte selbst geschrieben haben oder diese von einer gemeinfreien Quelle kopiert haben
 (siehe $1 für weitere Details). <strong>ÜBERTRAGEN SIE OHNE GENEHMIGUNG KEINE URHEBERRECHTLICH GESCHÜTZEN INHALTE!</strong>',
-"longpagewarning" => "<strong>WARNUNG: Diese Seite ist $1KB groß; einige Browser könnten Probleme haben, Seiten zu bearbeiten, die größer als 32KB sind.
+"longpagewarning" => "<strong>WARNUNG: Diese Seite ist $1 kB groß; einige Browser könnten Probleme haben, Seiten zu bearbeiten, die größer als 32 kB sind.
 Überlegen Sie bitte, ob eine Aufteilung der Seite in kleinere Abschnitte möglich ist.</strong>",
 'longpageerror'		=> '<strong>FEHLER: Der Text, den Sie zu speichern versuchen, ist $1 kB groß. Das ist größer als das erlaubte Maximum von $2 kB. Speicherung nicht möglich.</strong>',
 "readonlywarning" => "<strong>WARNUNG: Die Datenbank wurde während dem Ändern der
@@ -628,11 +704,11 @@ Wenn Sie sich mit dem Thema auskennen, können Sie selbst den Artikel „[[$1]]�
 'guesstimezone'		=> 'Aus Browser übernehmen',
 'allowemail'		=> 'E-Mails von anderen Benutzern empfangen.',
 "defaultns"		=> "In diesen Namensräumen soll standardmäßig gesucht werden:",
-'default'		=> 'default',
+'default'		=> 'Voreinstellung',
 'files'			=> 'Dateien',
 'imagemaxsize'		=> 'Maximale Bildgröße auf Bildbeschreibungsseiten:',
 'thumbsize'		=> 'Größe der Vorschaubilder (Thumbnails):',
-'showbigimage'		=> 'Version mit hoher Auflösung herunterladen ($1 x $2 Pixel, $3 KB)',
+'showbigimage'		=> 'Version mit hoher Auflösung herunterladen ($1 x $2 Pixel, $3 kB)',
 
 # Recent changes
 #
@@ -1137,7 +1213,6 @@ Beachten Sie die [[{{ns:special}}:Ipblocklist|{{int:ipblocklist}}]] für alle ak
 'userrights-groupsavailable' => 'Verfügbare Gruppen:',
 'userrights-groupshelp' => 'Wählen Sie die Gruppen, aus denen der Benutzer entfernt oder zu denen er hinzugefügt werden soll.
 Nicht selektierte Gruppen werden nicht geändert. Eine Selektion kann mit \'\'\'Strg + Linksklick\'\'\' (bzw. Ctrl + Linksklick) entfernt werden.',
-'userrights-logcomment'		=> 'Gruppenzugehörigkeit geändert von $1 nach $2',
 
 # Groups
 'group'				=> 'Gruppe:',

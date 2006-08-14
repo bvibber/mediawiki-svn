@@ -1,7 +1,65 @@
 <?php
+/** Frisian (Frysk)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ *
+ */
 
-global $wgAllMessagesFy;
-$wgAllMessagesFy = array(
+$quickbarSettings = array(
+	'Ut', 'Lofts fêst', 'Rjochts fêst', 'Lofts sweevjend'
+);
+
+$skinNames = array(
+	'standard' => 'Standert',
+	'nostalgia' => 'Nostalgy',
+);
+
+$dateFormats = array(
+	'mdy time' => 'H.i',
+	'mdy date' => 'M j, Y',
+	'mdy both' => 'H.i, M j, Y',
+
+	'dmy time' => 'H.i',
+	'dmy date' => 'j M Y',
+	'dmy both' => 'H.i, j M Y',
+
+	'ymd time' => 'H.i',
+	'ymd date' => 'Y M j',
+	'ymd both' => 'H.i, Y M j',	
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Wiki',
+	NS_MAIN           => '',
+	NS_TALK           => 'Oerlis',
+	NS_USER           => 'Meidogger',
+	NS_USER_TALK      => 'Meidogger_oerlis',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_oerlis',
+	NS_IMAGE          => 'Ofbyld',
+	NS_IMAGE_TALK     => 'Ofbyld_oerlis',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'MediaWiki_oerlis',
+	NS_TEMPLATE       => 'Berjocht',
+	NS_TEMPLATE_TALK  => 'Berjocht_oerlis',
+	NS_HELP           => 'Hulp',
+	NS_HELP_TALK      => 'Hulp_oerlis',
+	NS_CATEGORY       => 'Kategory',
+	NS_CATEGORY_TALK  => 'Kategory_oerlis'
+);
+
+$namespaceAliases = array(
+	'Brûker' => NS_USER,
+	'Brûker_oerlis' => NS_USER_TALK,
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+$linkTrail = '/^([a-zàáèéìíòóùúâêîôûäëïöü]+)(.*)$/sDu';
+
+
+$messages = array(
 # User Toggles
 
 "tog-underline"		=> "Keppelings ûnderstreekje",
@@ -96,7 +154,6 @@ $wgAllMessagesFy = array(
 "talkpage"		=> "Sideoerlis",
 "postcomment"   	=> "Skrieuw in opmerking",
 "articlepage"	=> "Side lêze",
-"subjectpage"	=> "Side lêze", # For compatibility
 "userpage" 		=> "Brûkerside",
 "projectpage" 	=> "Metaside",
 "imagepage" 	=> "Ofbyldside",
@@ -107,10 +164,6 @@ $wgAllMessagesFy = array(
 "viewcount"		=> "Disse side is $1 kear iepenslein.",
 "protectedpage" 	=> "Beskerme side",
 "administrators" 	=> "{{ns:project}}:Behear",
-"sysoptitle"	=> "Allinnich foar behearders",
-"sysoptext"		=> "Om dit te dwaan moatte jo behearder wêze. Sjoch \"$1\".",
-"developertitle"  => "Allinich foar untwiklers",
-"developertext"	=> "Om dit te dwaan moatte jo ûntwikler wêze. Sjoch \"$1\".",
 "nbytes"		=> "$1 byte",
 "go"			=> "Side",
 "ok"			=> "Goed",

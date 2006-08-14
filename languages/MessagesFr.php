@@ -1,7 +1,65 @@
 <?php
+/** French (Français)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ *
+ */
+$quickbarSettings = array(
+	'Aucune', 'Gauche', 'Droite', 'Flottante à gauche'
+);
 
-global $wgAllMessagesFr;
-$wgAllMessagesFr = array(
+$skinNames = array(
+	'standard'  => 'Standard',
+	'nostalgia' => 'Nostalgie',
+);
+
+$bookstoreList = array(
+	'Amazon.fr'    => 'http://www.amazon.fr/exec/obidos/ISBN=$1',
+	'alapage.fr'   => 'http://www.alapage.com/mx/?tp=F&type=101&l_isbn=$1&donnee_appel=ALASQ&devise=&',
+	'fnac.com'     => 'http://www3.fnac.com/advanced/book.do?isbn=$1',
+	'chapitre.com' => 'http://www.chapitre.com/frame_rec.asp?isbn=$1',
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Special',
+	NS_MAIN           => '',
+	NS_TALK           => 'Discuter',
+	NS_USER           => 'Utilisateur',
+	NS_USER_TALK      => 'Discussion_Utilisateur',
+	NS_PROJECT        => '$1',
+	NS_PROJECT_TALK   => 'Discussion_$1',
+	NS_IMAGE          => 'Image',
+	NS_IMAGE_TALK     => 'Discussion_Image',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'Discussion_MediaWiki',
+	NS_TEMPLATE       => 'Modèle',
+	NS_TEMPLATE_TALK  => 'Discussion_Modèle',
+	NS_HELP           => 'Aide',
+	NS_HELP_TALK      => 'Discussion_Aide',
+	NS_CATEGORY       => 'Catégorie',
+	NS_CATEGORY_TALK  => 'Discussion_Catégorie'
+);
+$linkTrail = '/^([a-zàâçéèêîôûäëïöüùÇÉÂÊÎÔÛÄËÏÖÜÀÈÙ]+)(.*)$/sDu';
+
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'F j, Y',
+	'mdy both' => 'F j, Y à H:i',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j F Y',
+	'dmy both' => 'j F Y à H:i',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y F j',
+	'ymd both' => 'Y F j à H:i',
+);
+
+$separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
+
+$messages = array(
 
 # User preference Toggles
 
@@ -83,11 +141,9 @@ $wgAllMessagesFr = array(
 # Bits of text used by many pages:
 
 'categories'	=> '{{PLURAL:$1|Catégorie|Catégories}}',
-'category'	=> 'catégorie',
 'category_header' => 'Articles dans la catégorie « $1 ».',
 'subcategories'	=> 'Sous-catégories',
 
-'linktrail'     => '/^([a-zàâçéèêîôûäëïöüùÇÉÂÊÎÔÛÄËÏÖÜÀÈÙ]+)(.*)$/sDu',
 'mainpage'      => 'Accueil',
 'mainpagetext'	=> '<big>\'\'\'MediaWiki a été installé avec succès.\'\'\'</big>',
 'mainpagedocfooter' => 'Consultez le [http://meta.wikipedia.org/wiki/Aide:Contenu Guide de l\'utilisateur] pour plus d\'informations sur l\'utilisation de ce logiciel.',
@@ -157,7 +213,6 @@ $wgAllMessagesFr = array(
 'personaltools'	=> 'Outils personnels',
 'postcomment'	=> 'Ajouter un commentaire',
 'articlepage'	=> 'Voir l\'article',
-'subjectpage'   => 'Page sujet',
 'views' => 'Affichages',
 'toolbox'	=> 'Boîte à outils',
 'userpage'      => 'Page utilisateur',
@@ -173,16 +228,7 @@ $wgAllMessagesFr = array(
 'protectedpage' => 'Page protégée',
 'administrators' => '{{ns:4}}:Administrateurs',
 
-'sysoptitle'    => 'Accès administrateur requis',
-'sysoptext'     => 'L\'action que vous avez tentée ne peut être effectuée que par un utilisateur ayant le statut d\'« administrateur ».
-Voir $1.',
-'developertitle' => 'Accès développeur requis',
-'developertext' => 'L\'action que vous avez tentée ne peut être effectuée que par un utilisateur ayant le statut de « développeur ».
-Voir $1.',
-
 'badaccess' => 'Erreur de permission',
-'badaccesstext' => 'L\'action entreprise est limitée aux utilisateurs possédant le droit « $2 ».
-Voir $1',
 
 'versionrequired' => 'Version $1 de MediaWiki nécessaire',
 'versionrequiredtext' => 'La version $1 de MediaWiki est nécessaire pour utiliser cette page. Consultez [[Special:Version]]',
@@ -397,7 +443,7 @@ Nous vous conseillons de vous connecter et de modifier ce mot de passe dès que 
 'accmailtitle' => 'Mot de passe envoyé.',
 'accmailtext' => 'Le mot de passe de « $1 » a été envoyé à l\'adresse $2.',
 'newarticle'   => '(Nouveau)',
-'newarticletext' => 'Vous avez suivi un lien vers une page qui n\'existe pas encore. Pour créer cette page, entrez votre texte dans la boîte ci-dessous (vous pouvez consulter [[Project:Aide|la page d\aide]] pour plus d\'information). Si vous êtes arrivé ici par erreur, cliquez sur le bouton \'\'\'retour\'\'\' de votre navigateur.',
+'newarticletext' => 'Vous avez suivi un lien vers une page qui n\'existe pas encore. Pour créer cette page, entrez votre texte dans la boîte ci-dessous (vous pouvez consulter [[Project:Aide|la page d\'aide]] pour plus d\'information). Si vous êtes arrivé ici par erreur, cliquez sur le bouton \'\'\'retour\'\'\' de votre navigateur.',
 'anontalkpagetext' => '---- \'\'Vous êtes sur la page de discussion d\'un utilisateur anonyme qui n\'a pas encore créé un compte ou qui ne l\'utilise pas. Pour cette raison, nous devons utiliser l\'adresse IP numérique pour l\'identifier. Une adresse de ce type peut être partagée entre plusieurs utilisateurs. Si vous êtes un utilisateur anonyme et si vous constatez que des commentaires qui ne vous concernent pas vous ont été adressés, vous pouvez [[Special:Userlogin|créer un compte ou vous connecter]] afin d\'éviter toute confusion future avec d\'autres contributeurs anonymes.\'\'',
 'noarticletext' => 'Il n\'y a pour l\'instant aucun texte sur cette page, vous pouvez [[{{ns:special}}:Search/{{PAGENAME}}|faire une recherche pour le titre de cette page]] ou [{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} modifier cette page]',
 'clearyourcache'    => '\'\'\'Note :\'\'\' Après avoir sauvegardé, vous devez forcer le rechargement de la page pour voir les changements : \'\'\'Mozilla / Konqueror / Firefox\'\'\' : \'\'ctrl-shift-r\'\', \'\'\'IE\'\'\' : \'\'ctrl-f5\'\', \'\'\'Safari\'\'\' : \'\'cmd-shift-r\'\'; \'\'\'Konqueror\'\'\' : \'\'f5\'\'.',
@@ -523,20 +569,6 @@ contenant tous les termes apparaissent dans les résultats).',
 $1<br />
 $2 Inclure les page de redirections &nbsp; Rechercher $3 $9',
 'searchdisabled' => 'La recherche sur {{SITENAME]] a été désactivée. En attendant la réactivation, vous pouvez effectuer une recherche par le biais de Google. Attention, leur indexation du contenu {{SITENAME]] peut ne pas être à jour.',
-'googlesearch' => '
-<form method="get" action="http://www.google.fr/search" id="googlesearch">
-    <input type="hidden" name="domains" value="{{SERVER}}" />
-    <input type="hidden" name="num" value="50" />
-    <input type="hidden" name="ie" value="$2" />
-    <input type="hidden" name="oe" value="$2" />
-
-    <input type="text" name="q" size="31" maxlength="255" value="$1" />
-    <input type="submit" name="btnG" value="$3" />
-  <div>
-    <input type="radio" name="sitesearch" id="gwiki" value="{{SERVER}}" checked="checked" /><label for="gwiki">{{SITENAME}}</label>
-    <input type="radio" name="sitesearch" id="gWWW" value="" /><label for="gWWW">WWW</label>
-  </div>
-</form>',
 
 # Preferences page
 #
@@ -598,7 +630,6 @@ $2 Inclure les page de redirections &nbsp; Rechercher $3 $9',
 'userrights-groupsmember' => 'Membre de :',
 'userrights-groupsavailable' => 'Groupes disponibles :',
 'userrights-groupshelp' => 'Choisissez les groupes desquels vous voulez retirer ou rajouter l\'utilsateur. Les groupes non sélectionnés ne seront pas modifiés. Vous pouvez désélectionner un groupe avec CTRL + clic gauche.',
-'userrights-logcomment' => 'Adhésion au groupe changée de $1 à $2',
 
 # Groups
 'group'                   => 'Groupe :',
@@ -1398,7 +1429,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Voir la page de la catégorie\');'
 'confirmemail_loggedin' => 'Votre adresse est maintenant confirmée',
 'confirmemail_error' => 'Un problème est survenu en voulant enregistrer votre confirmation',
 'confirmemail_subject' => 'Confirmation d\'adresse de courriel pour {{SITENAME}}',
-'confirmemail_body' => 'Quelqu\'un, probablement vous avec l\'adresse email $1, a enregistré un compte « $2 » avec cette adresse de courriel sur le site {{SITENAME}}.
+'confirmemail_body' => 'Quelqu\'un, probablement vous avec l\'adresse IP $1, a enregistré un compte « $2 » avec cette adresse de courriel sur le site {{SITENAME}}.
 
 Pour confirmer que ce compte vous appartient vraiment et activer les fonctions de messagerie sur {{SITENAME}}, veuillez suivre le lien ci dessous dans votre navigateur :
 

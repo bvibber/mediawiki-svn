@@ -1,7 +1,59 @@
 <?php
+/** Indonesian (Bahasa Indonesia)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesId;
-$wgAllMessagesId = array(
+$quickbarSettings = array(
+	'Tidak ada', 'Tetap sebelah kiri', 'Tetap sebelah kanan', 'Mengambang sebelah kiri'
+);
+
+$skinNames = array(
+	'standard'    => 'Standar',
+);
+
+$bookstoreList = array(
+	'Gramedia Cyberstore (via Google)' => 'http://www.google.com/search?q=%22ISBN+:+$1%22+%22product_detail%22+site:www.gramediacyberstore.com+OR+site:www.gramediaonline.com+OR+site:www.kompas.com&hl=id',
+	'Bhinneka.com bookstore' => 'http://www.bhinneka.com/Buku/Engine/search.asp?fisbn=$1',
+);
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Istimewa',
+	NS_MAIN             => '',
+	NS_TALK             => 'Pembicaraan',
+	NS_USER             => 'Pengguna',
+	NS_USER_TALK        => 'Pembicaraan_Pengguna',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Pembicaraan_$1',
+	NS_IMAGE            => 'Berkas',
+	NS_IMAGE_TALK       => 'Pembicaraan_Berkas',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Pembicaraan_MediaWiki',
+	NS_TEMPLATE         => 'Templat',
+	NS_TEMPLATE_TALK    => 'Pembicaraan_Templat',
+	NS_HELP             => 'Bantuan',
+	NS_HELP_TALK        => 'Pembicaraan_Bantuan',
+	NS_CATEGORY         => 'Kategori',
+	NS_CATEGORY_TALK    => 'Pembicaraan_Kategori'
+);
+
+$namespaceAliases = array(
+	'Gambar_Pembicaraan'    => NS_IMAGE_TALK,
+	'MediaWiki_Pembicaraan' => NS_MEDIAWIKI_TALK,
+	'Templat_Pembicaraan'   => NS_TEMPLATE_TALK,
+	'Bantuan_Pembicaraan'   => NS_HELP_TALK,
+	'Kategori_Pembicaraan'  => NS_CATEGORY_TALK,
+	'Gambar'                => NS_IMAGE,
+	'Pembicaraan_Gambar'    => NS_IMAGE_TALK,
+	'Bicara'                => NS_TALK,
+	'Bicara_Pengguna'       => NS_USER_TALK,
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+$datePreferences = false;
+
+$messages = array(
 
 # User preference toggles
 'tog-underline' => 'Garis bawahi pranala',
@@ -53,6 +105,13 @@ $wgAllMessagesId = array(
 'thursday' => 'Kamis',
 'friday' => "Jumat",
 'saturday' => 'Sabtu',
+'sun' => 'Min',
+'mon' => 'Sen',
+'tue' => 'Sel',
+'wed' => 'Rab',
+'thu' => 'Kam',
+'fri' => 'Jum',
+'sat' => 'Sab',
 'january' => 'Januari',
 'february' => 'Februari',
 'march' => 'Maret',
@@ -65,6 +124,18 @@ $wgAllMessagesId = array(
 'october' => 'Oktober',
 'november' => 'November',
 'december' => 'Desember',
+'january-gen' => 'Januari',
+'february-gen' => 'Februari',
+'march-gen' => 'Maret',
+'april-gen' => 'April',
+'may-gen' => 'Mei',
+'june-gen' => 'Juni',
+'july-gen' => 'Juli',
+'august-gen' => 'Agustus',
+'september-gen' => 'September',
+'october-gen' => 'Oktober',
+'november-gen' => 'November',
+'december-gen' => 'Desember',
 'jan' => 'Jan',
 'feb' => 'Feb',
 'mar' => 'Mar',
@@ -81,7 +152,6 @@ $wgAllMessagesId = array(
 # Bits of text used by many pages:
 #
 'categories' => '{{PLURAL:$1|Kategori|Kategori}}',
-"category" => "kategori",
 "category_header" => "Artikel dalam kategori \"$1\"",
 "subcategories" => "Subkategori",
 
@@ -166,13 +236,16 @@ $wgAllMessagesId = array(
 'personaltools' => 'Peralatan pribadi',
 "postcomment" => "Kirim komentar",
 "articlepage" => "Lihat artikel",
-"subjectpage" => "Halaman subyek",
 'talk' => 'Diskusi',
 'views' => 'Tampilan',
 'toolbox' => 'Kotak peralatan',
 "userpage" => "Lihat halaman pengguna",
 "projectpage" => "Lihat halaman proyek",
-"imagepage" => "Lihat halaman gambar",
+"imagepage" => "Lihat halaman berkas",
+'mediawikipage' => 	'Lihat halaman pesan sistem',
+'templatepage' => 	'Lihat halaman templat',
+'viewhelppage' => 	'Lihat halaman bantuan',
+'categorypage' => 	'Lihat halaman kategori',
 "viewtalkpage" => "Lihat diskusi",
 "otherlanguages" => "Bahasa lain",
 "redirectedfrom" => "(Dialihkan dari $1)",
@@ -187,12 +260,11 @@ $wgAllMessagesId = array(
 'jumptonavigation' => 'panduan arah',
 'jumptosearch' => 'cari',
 
-"sysoptitle" => "Akses pengurus diperlukan",
-"sysoptext" => 'Tindakan yang Anda minta hanya dapat dilakukan oleh pengguna dengan status "pengurus". Lihat $1.',
-"developertitle" => "Akses pengembang diperlukan",
-"developertext" => "Tindakan yang Anda minta hanya dapat dilakukan oleh pengguna dengan status \"pengembang\". Lihat $1.",
 'badaccess'     => 'Kesalahan hak akses',
-'badaccesstext' => 'Tindakan yang Anda minta dibatasi hanya untuk pengguna dengan hak akses "$2". Lihat $1.',
+'badaccess-group0' => 'Anda tidak diizinkan untuk melakukan tindakan yang Anda minta.',
+'badaccess-group1' => 'Tindakan yang Anda minta dibatasi untuk pengguna kelompok $1.',
+'badaccess-group2' => 'Tindakan yang Anda minta dibatasi untuk pengguna dalam kelompok $1.',
+'badaccess-groups' => 'Tindakan yang Anda minta dibatasi untuk pengguna dalam kelompok $1.',
 
 'versionrequired' => 'Dibutuhkan MediaWiki versi $1',
 'versionrequiredtext' => 'MediaWiki versi $1 dibutuhkan untuk menggunakan halaman ini. Lihat [[{{ns:special}}:Version]]',
@@ -263,7 +335,7 @@ Jika ini bukan sebabnya, Anda mungkin menemukan bug dalam perangkat lunak. Silak
 "unexpected" => "Nilai di luar jangkauan: \"$1\"=\"$2\".",
 "formerror" => "Kesalahan: Tidak dapat mengirimkan formulir",
 "badarticleerror" => "Tindakan ini tidak dapat dilaksanakan di halaman ini.",
-"cannotdelete" => "Tidak dapat menghapus halaman atau gambar yang telah ditentukan.",
+"cannotdelete" => "Tidak dapat menghapus halaman atau berkas yang diminta.",
 "badtitle" => "Judul tidak sah",
 "badtitletext" => "Judul halaman yang diminta tidak sah, kosong, atau judul antarbahasa atau antarwiki yang salah sambung.",
 "perfdisabled" => "Maaf! Fitur ini dimatikan sementara karena memperlambat basis data hingga tidak ada yang dapat menggunakan wiki ini.",
@@ -361,7 +433,7 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi {{SITENAME}} Anda.",
 "link_sample" => "Judul pranala",
 "link_tip" => "Pranala internal",
 "extlink_sample" => "http://www.contoh.com/ judul pranala",
-"extlink_tip" => "Pranala luar (ingat awalan http:// )",
+"extlink_tip" => "Pranala luar (jangan lupa awalan http:// )",
 "headline_sample" => "Teks judul",
 "headline_tip" => "Judul aras 2",
 "math_sample" => "Masukkan rumus di sini",
@@ -369,11 +441,11 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi {{SITENAME}} Anda.",
 "nowiki_sample" => "Teks ini tidak akan diformat",
 "nowiki_tip" => "Abaikan pemformatan wiki",
 "image_sample" => "Contoh.jpg",
-"image_tip" => "Gambar embedded",
+"image_tip" => "Cantumkan berkas",
 "media_sample" => "Contoh.ogg",
 "media_tip" => "Pranala berkas media",
 "sig_tip" => "Tanda tangan Anda dengan tanda waktu",
-"hr_tip" => "Garis horisontal (gunakan dengan hemat)",
+"hr_tip" => "Garis horisontal",
 
 # Edit pages
 #
@@ -541,7 +613,7 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 "showingresultsnum" => "Di bawah ini ditampilkan <strong>$3</strong> hasil, dimulai dari #<strong>$2</strong>.",
 "nonefound" => "'''Catatan''': Kegagalan pencarian biasanya disebabkan oleh pencarian kata-kata umum, seperti \"have\" dan \"from\", yang biasanya tidak diindeks, atau dengan menentukan lebih dari satu aturan pencarian (hanya halaman yang mengandung semua aturan pencarianlah yang akan ditampilkan dalam hasil pencarian)",
 "powersearch" => "Cari",
-'powersearchtext' => "Cari dalam namespace:<br />$1<br />$2 Juga tampilkan peralihan<br />Cari $3 $9",
+'powersearchtext' => "Cari dalam ruang nama:<br />$1<br />$2 Juga tampilkan peralihan<br />Cari $3 $9",
 "searchdisabled" => '<p style="margin: 1.5em 2em 1em">Mesin pencari {{SITENAME}} sementara dimatikan karena masalah kinerja. Anda dapat mencari melalui Google untuk sementara waktu. <span style="font-size: 89%; display: block; margin-left: .2em">Indeks Google untuk {{SITENAME}} mungkin belum diperbaharui. Jika istilah pencarian berisi garis bawah, gantikan dengan spasi.</span></p>',
 "blanknamespace" => "(Utama)",
 
@@ -596,9 +668,9 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 "servertime" => "Waktu server sekarang adalah",
 "guesstimezone" => "Isikan dari penjelajah web",
 'allowemail'		=> 'Ijinkan pengguna lain mengirim surat-e',
-"defaultns" => "Cari dalam namespace berikut ini secara baku:",
+"defaultns" => "Cari dalam ruang nama berikut ini secara baku:",
 'default' => 'baku',
-'files'			=> 'Gambar',
+'files'			=> 'Berkas',
 
 # User rights
 'userrights-lookup-user' => 'Mengatur grup pengguna',
@@ -611,7 +683,6 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 'userrights-groupsmember' => 'Anggota dari:',
 'userrights-groupsavailable' => 'Grup yang tersedia:',
 'userrights-groupshelp' => "Pilih grup yang Anda ingin hapus dari atau tambahkan pada pengguna. Grup yang tak dipilih tak akan diganti. Anda dapat membatalkan pilihan dengan menekan tombol CTRL + Klik kiri",
-'userrights-logcomment' => 'Keanggotaan grup diganti dari $1 ke $2',
 
 # Groups
 'group'                   => 'Grup:',
@@ -670,7 +741,7 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 "uploaderror" => "Kesalahan pemuatan",
 'uploadtext'	=> "Gunakan isian di bawah untuk memuat berkas. Gunakan [[{{ns:special}}:Imagelist|daftar berkas]] atau [[{{ns:special}}:Log/upload|log pemuatan]] untuk menampilkan atau mencari berkas atau gambar yang telah dimuat sebelumnya.
 
-Untuk menampilkan atau menyertakan gambar atau berkas pada suatu halaman, gunakan pranala dengan format
+Untuk menampilkan atau menyertakan berkas atau gambar pada suatu halaman, gunakan pranala dengan format
 '''<nowiki>[[{{ns:image}}:Berkas.jpg]]</nowiki>''',
 '''<nowiki>[[{{ns:image}}:Berkas.png|teks alternatif]]</nowiki>''' atau
 '''<nowiki>[[{{ns:media}}:Berkas.ogg]]</nowiki>''' untuk langsung menuju berkas yang dimaksud.",
@@ -687,11 +758,11 @@ Untuk menampilkan atau menyertakan gambar atau berkas pada suatu halaman, gunaka
 "uploadedfiles" => "Berkas yang telah dimuat",
 'ignorewarning'        => 'Abaikan peringatan dan langsung simpan berkas.',
 'ignorewarnings'	=> 'Abaikan peringatan apapun',
-"minlength" => "Nama gambar sekurang-kurangnya harus tiga huruf.",
+"minlength" => "Nama berkas sekurang-kurangnya harus tiga huruf.",
 'illegalfilename' => 'Nama berkas "$1" mengandung aksara yang tidak diperbolehkan ada dalam judul halaman. Silakan ubah nama berkas tersebut dan cobalah memuatkannya kembali.',
-"badfilename" => "Nama gambar telah diubah menjadi \"$1\".",
-"badfiletype" => "\".$1\" ialah format berkas gambar yang tidak diizinkan.",
-'largefile'		=> 'Ukuran gambar atau berkas disarankan untuk tidak melebihi $1 bita; berkas ini berukuran $2 bita',
+"badfilename" => "Nama berkas telah diubah menjadi \"$1\".",
+"badfiletype" => "\".$1\" adalah format berkas yang tidak diizinkan.",
+'largefile'		=> 'Ukuran berkas disarankan untuk tidak melebihi $1 bita; berkas ini berukuran $2 bita',
 'largefileserver' => 'Berkas ini lebih besar dari pada yang diizinkan server.',
 'emptyfile' => 'Berkas yang Anda muatkan kelihatannya kosong. Hal ini mungkin disebabkan karena adanya kesalahan ketik pada nama berkas. Silakan pastikan apakah Anda benar-benar ingin memuatkan berkas ini.',
 'fileexists' => 'Berkas dengan nama tersebut telah ada, harap periksa $1 jika Anda tidak yakin untuk mengubahnya.',
@@ -758,7 +829,7 @@ Untuk menampilkan atau menyertakan gambar atau berkas pada suatu halaman, gunaka
 
 # Unused templates
 'unusedtemplates' => 'Templat yang tak digunakan',
-'unusedtemplatestext' => 'Daftar berikut adalah halaman pada namespace templat yang tidak dipakai di halaman manapun. Cek dahulu pranala ke templat tersebut sebelum menghapusnya.',
+'unusedtemplatestext' => 'Daftar berikut adalah halaman pada ruang nama templat yang tidak dipakai di halaman manapun. Cek dahulu pranala ke templat tersebut sebelum menghapusnya.',
 'unusedtemplateswlh' => 'pranala ke halaman ini',
 
 # Random redirect
@@ -781,7 +852,7 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 
 "disambiguations" => "Halaman disambiguasi",
 'disambiguationspage'	=> '{{ns:template}}:Disambig',
-"disambiguationstext" => "Halaman-halaman berikut ini berpaut ke sebuah halaman disambiguasi. Halaman-halaman tersebut seharusnya berpaut ke topik-topik yang tepat.<br />Satu halaman dianggap sebagai disambiguation apabila halaman tersebut disambung dari $1.<br />Pranala dari namespace lain <em>tidak</em> terdaftar di sini.",
+"disambiguationstext" => "Halaman-halaman berikut ini berpaut ke sebuah halaman disambiguasi. Halaman-halaman tersebut seharusnya berpaut ke topik-topik yang tepat.<br />Satu halaman dianggap sebagai disambiguation apabila halaman tersebut disambung dari $1.<br />Pranala dari ruang nama lain <em>tidak</em> terdaftar di sini.",
 
 "doubleredirects" => "Pengalihan ganda",
 "doubleredirectstext" => "Setiap baris mengandung pranala ke peralihan pertama dan kedua, dan juga baris pertama dari teks peralihan kedua, yang biasanya memberikan artikel tujuan yang \"sesungguhnya\", yang seharusnya ditunjuk oleh peralihan yang pertama.",
@@ -802,16 +873,16 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 "lonelypages" => "Halaman tak bertuan",
 'uncategorizedpages' => 'Halaman yang tak terkategori',
 'uncategorizedcategories' => 'Kategori yang tak terkategori',
-'uncategorizedimages' => 'Gambar yang tak terkategori',
+'uncategorizedimages' => 'Berkas yang tak terkategori',
 'unusedcategories' => 'Kategori yang tak digunakan',
-"unusedimages" => "Gambar yang tak digunakan",
+"unusedimages" => "Berkas yang tak digunakan",
 "popularpages" => "Halaman populer",
 'wantedcategories' => 'Kategori yang diinginkan',
 "wantedpages" => "Halaman yang diinginkan",
 'mostlinked'	=> 'Halaman yang tersering dituju',
 'mostlinkedcategories' => 'Kategori dengan halaman terbanyak',
 'mostcategories' => 'Artikel dengan kategori terbanyak',
-'mostimages'	=> 'Gambar yang tersering digunakan',
+'mostimages'	=> 'Berkas yang tersering digunakan',
 'mostrevisions' => 'Artikel dengan perubahan terbanyak',
 "allpages" => "Semua halaman",
 'nextpage' => 'Halaman selanjutnya ($1)',
@@ -832,7 +903,7 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 "intl" => "Pranala antarbahasa",
 'move' => 'Pindahkan',
 "movethispage" => "Pindahkan halaman ini",
-"unusedimagestext" => "<p>Perhatikan bahwa situs web lain mungkin dapat berpaut ke sebuah berkas gambar secara langsung, dan berkas-berkas gambar seperti itu mungkin terdapat dalam daftar ini meskipun masih digunakan oleh situs web lain.",
+"unusedimagestext" => "<p>Perhatikan bahwa situs web lain mungkin dapat berpaut ke sebuah berkas secara langsung, dan berkas-berkas seperti itu mungkin terdapat dalam daftar ini meskipun masih digunakan oleh situs web lain.",
 'unusedcategoriestext' => 'Kategori berikut ada walaupun tidak ada artikel atau kategori lain yang menggunakannya.',
 
 "booksources" => "Sumber buku",
@@ -855,8 +926,8 @@ Ada sejumlah '''$3''' penampilan halaman, dan sejumlah '''$4''' penyuntingan sej
 'nextpage'          => 'Halaman berikutnya ($1)',
 'allpagesfrom'		=> 'Tampilkan halaman dimulai dengan:',
 'allarticles'       => 'Semua artikel',
-'allinnamespace'	=> 'Semua halaman (namespace $1)',
-'allnotinnamespace'	=> 'Semua halaman (bukan namespace $1)',
+'allinnamespace'	=> 'Semua halaman (ruang nama $1)',
+'allnotinnamespace'	=> 'Semua halaman (bukan ruang nama $1)',
 'allpagesprev'      => 'Sebelumnya',
 'allpagesnext'      => 'Selanjutnya',
 'allpagessubmit'    => 'Cari',
@@ -970,7 +1041,7 @@ Masukan dan bantuan lanjutan:
 "confirmdelete" => "Konfirmasi penghapusan",
 "deletesub" => "(Menghapus \"$1\")",
 "historywarning" => "Peringatan: Halaman yang ingin Anda hapus mempunyai sejarah:",
-"confirmdeletetext" => "Anda akan menghapus halaman atau gambar ini secara permanen berikut semua sejarahnya dari basis data.  Pastikan bahwa Anda memang ingin berbuat demikian, mengetahui segala akibatnya, dan apa yang Anda lakukan ini adalah sejalan dengan [[{{ns:project}}:Kebijakan|kebijakan {{SITENAME}}]].",
+"confirmdeletetext" => "Anda akan menghapus halaman atau berkas ini secara permanen berikut semua sejarahnya dari basis data.  Pastikan bahwa Anda memang ingin berbuat demikian, mengetahui segala akibatnya, dan apa yang Anda lakukan ini adalah sejalan dengan [[{{ns:project}}:Kebijakan|kebijakan {{SITENAME}}]].",
 "actioncomplete" => "Proses selesai",
 "deletedtext" => "\"$1\" telah dihapus. Lihat $2 untuk log terkini halaman yang telah dihapus.",
 "deletedarticle" => "menghapus \"[[$1]]\"",
@@ -1037,7 +1108,7 @@ Masukan dan bantuan lanjutan:
 Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan pengembalian.",
 
 # Namespace form on various pages
-'namespace' => 'Namespace:',
+'namespace' => 'Ruang nama:',
 'invert' => 'Balikkan pilihan',
 
 # Contributions
@@ -1051,7 +1122,7 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 "uctop" => " (atas)" ,
 'newbies' => 'pengguna baru',
 
-'sp-newimages-showfrom' => 'Tampilkan gambar baru dimulai dari $1',
+'sp-newimages-showfrom' => 'Tampilkan berkas baru dimulai dari $1',
 
 'sp-contributions-newest' => 'Terbaru',
 'sp-contributions-oldest' => 'Terlama',
@@ -1200,7 +1271,7 @@ Artikel yang dituju, "[[$1]]", telah mempunyai isi. Apakah Anda hendak menghapus
 'delete_and_move_confirm' => 'Ya, hapus halaman tersebut',
 'delete_and_move_reason' => 'Dihapus untuk mengantisipasikan pemindahan halaman',
 'selfmove' => "Pemindahan halaman tidak dapat dilakukan karena judul sumber dan judul tujuan sama.",
-'immobile_namespace' => "Judul tujuan termasuk tipe khusus; tidak dapat memindahkan halaman ke namespace tersebut.",
+'immobile_namespace' => "Judul tujuan termasuk tipe khusus; tidak dapat memindahkan halaman ke ruang nama tersebut.",
 
 # Export
 
@@ -1221,7 +1292,7 @@ Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal in
 'allmessagesname' => 'Nama',
 'allmessagesdefault' => 'Teks baku',
 'allmessagescurrent' => 'Teks sekarang',
-'allmessagestext' => 'Ini adalah daftar semua pesan sistem yang tersedia dalam namespace MediaWiki:',
+'allmessagestext' => 'Ini adalah daftar semua pesan sistem yang tersedia dalam ruang nama MediaWiki:',
 'allmessagesnotsupportedUI' => 'Bahasa antarmuka Anda saat ini, <strong>$1</strong> tidak didukung oleh {{ns:special}}:AllMessages di situs ini.',
 'allmessagesnotsupportedDB' => '\'\'\'{{ns:special}}:Allmessages\'\'\' tidak didukung karena wgUseDatabaseMessages dimatikan.',
 'allmessagesfilter' => 'Filter nama pesan:',
@@ -1230,8 +1301,8 @@ Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal in
 # Thumbnails
 
 "thumbnail-more" => "Perbesar",
-"missingimage" => "<strong>Gambar hilang</strong><br /><em>$1</em>",
-'filemissing' => 'Berkas hilang',
+"missingimage" => "<strong>Berkas tak ditemukan</strong><br /><em>$1</em>",
+'filemissing' => 'Berkas tak ditemukan',
 'thumbnail_error'   => 'Kesalahan sewaktu pembuatan gambar kecil (thumbnail): $1',
 
 # Special:Import
@@ -1240,7 +1311,7 @@ Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal in
 'import-interwiki-text' => 'Pilih suatu wiki dan judul halaman yang akan di impor. Tanggal revisi dan nama penyunting akan dipertahankan. Semua aktivitas impor transwiki akan dilog di [[{{ns:special}}:Log/import|log impor]].',
 'import-interwiki-history' => 'Salin semua versi terdahulu dari halaman ini',
 'import-interwiki-submit' => 'Impor',
-'import-interwiki-namespace' => 'Transfer halaman ke dalam namespace:',
+'import-interwiki-namespace' => 'Transfer halaman ke dalam ruang nama:',
 "importtext" => "Silakan ekspor berkas dari wiki asal dengan menggunakan utilitas [[{{ns:special}}:Export]], simpan ke cakram digital, dan muatkan ke sini.",
 'importstart'	=> "Mengimpor halaman...",
 'import-revision-count' => '$1 versi terdahulu',
@@ -1388,7 +1459,7 @@ ta[\'ca-nstab-user\'] = new Array(\'c\',\'Lihat halaman pengguna\');
 ta[\'ca-nstab-media\'] = new Array(\'c\',\'Lihat halaman media\');
 ta[\'ca-nstab-special\'] = new Array(\'\',\'Ini adalah halaman istimewa yang tidak dapat disunting.\');
 ta[\'ca-nstab-project\'] = new Array(\'a\',\'Lihat halaman proyek\');
-ta[\'ca-nstab-image\'] = new Array(\'c\',\'Lihat halaman gambar\');
+ta[\'ca-nstab-image\'] = new Array(\'c\',\'Lihat halaman berkas\');
 ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Lihat pesan sistem\');
 ta[\'ca-nstab-template\'] = new Array(\'c\',\'Lihat templat\');
 ta[\'ca-nstab-help\'] = new Array(\'c\',\'Lihat halaman bantuan\');
@@ -1401,7 +1472,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Lihat halaman kategori\');',
 'previousdiff' => '← Perbedaan sebelumnya',
 'nextdiff' => 'Perbedaan selanjutnya →',
 
-'imagemaxsize' => 'Batasi gambar dalam halaman deskripsi gambar sampai:',
+'imagemaxsize' => 'Batasi ukuran gambar dalam halaman deskripsi berkas sampai:',
 'thumbsize'	=> 'Ukuran gambar kecil (<em>thumbnail</em>):',
 'showbigimage' => 'Unduhkan versi resolusi tinggi ($1x$2, $3 KB)',
 

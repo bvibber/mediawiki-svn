@@ -1,7 +1,41 @@
 <?php
+/** Piedmontese (Piemontèis)
+  * Users are bilingual in Piedmontese and Italian, using Italian as template.
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  *
+  * @bug 5362
+  *
+  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>, Jens Frank
+  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason, Jens Frank
+  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+  */
+$fallback = 'it';
 
-global $wgAllMessagesPms;
-$wgAllMessagesPms = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Special',
+	NS_MAIN             => '',
+	NS_TALK             => 'Discussion',
+	NS_USER             => 'Utent',
+	NS_USER_TALK        => 'Ciaciarade',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Discussion_ant_sla_$1',
+	NS_IMAGE            => 'Figura',
+	NS_IMAGE_TALK       => 'Discussion_dla_figura',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Discussion_dla_MediaWiki',
+	NS_TEMPLATE         => 'Stamp',
+	NS_TEMPLATE_TALK    => 'Discussion_dlë_stamp',
+	NS_HELP             => 'Agiut',
+	NS_HELP_TALK        => 'Discussion_ant_sl\'agiut',
+	NS_CATEGORY         => 'Categorìa',
+	NS_CATEGORY_TALK    => 'Discussion_ant_sla_categorìa'
+);
+
+
+$messages = array(
 'tog-underline'         => 'Anliure con la sotliniadura',
 'tog-highlightbroken'   => 'Buta an evidensa j\'anliure che a men-o a<br />
 dj\'artìcol ancó pa scrit',
@@ -73,7 +107,6 @@ dj\'artìcol ancó pa scrit',
 'nov'                   => 'Nov',
 'dec'                   => 'Dze',
 'categories'            => '{{PLURAL:$1|Categorìa|Categorìe}}',
-'category'              => 'categorìa',
 'category_header'       => 'Artìcoj ant la categorìa "$1"',
 'subcategories'         => 'Sotacategorìe',
 'mainpage'              => 'Intrada',
@@ -150,7 +183,6 @@ dj\'artìcol ancó pa scrit',
 'personaltools'         => 'Utiss personaj',
 'postcomment'           => 'Gionta un coment',
 'articlepage'           => 'Che a varda l\'articol',
-'subjectpage'           => 'Che a varda l\'artìcol',
 'talk'                  => 'Discussion',
 'views'                 => 'vìsite',
 'toolbox'               => 'utiss',
@@ -170,17 +202,7 @@ dj\'artìcol ancó pa scrit',
 'jumpto'                => 'Va a:',
 'jumptonavigation'      => 'navigassion',
 'jumptosearch'          => 'arsërca',
-'sysoptitle'            => 'Riservà a j\'aministrator (Sysop)',
-'sysoptext'             => 'St\'operassion-sì a peul mach esse faita da n\'utent con la qualìfica da aministrator (sysop).
-Che a varda $1.',
-'developertitle'        => 'Riservà a jë svilupator',
-'developertext'         => ' Costa operassion-sì a peul esse faita mach da Utent che a l\'ha la qualìfica "svilupator" (developer).
-Che a varda $1.',
 'badaccess'             => 'Përmess nen giust',
-'badaccesstext'         => 'L\'operassion che a l\'ha ciamà a peul mach
-esse faita da Utent che a l\'abio un
-përmess dla sòrt "$2".
-Che a varda $1.',
 'versionrequired'       => 'A-i va për fòrsa la version $1 ëd MediaWiki',
 'versionrequiredtext'   => 'Për dovrè sta pàgina-sì a-i va la version $1 dël programa MediaWiki. Che a varda [[Special:Version]]',
 'ok'                    => 'Va bin',
@@ -614,7 +636,6 @@ për podej specifiché ij sò gust.',
 'userrights-groupsavailable'=> 'Partìe disponibij:',
 'userrights-groupshelp' => 'Che as selession-a le partìe d\'andoa che a veul gavé ò andoa che a veul buteje andrinta l\'utent.
 Le partìe nen selessionà a saran nen tocà. Për deselessioné na partìa a venta che a jë sgnaca ansima ën tnisend ësgnacà ëdcò ël tast CTRL ëd soa tastera.',
-'userrights-logcomment' => 'Apartenensa a le partìe passà da $1 a $2',
 'group'                 => 'Partìa:',
 'group-bot'             => 'Trigomiro',
 'group-sysop'           => 'Aministrator',
