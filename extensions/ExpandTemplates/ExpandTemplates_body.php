@@ -31,7 +31,9 @@ class ExpandTemplates extends SpecialPage {
 		}
 		$input = $wgRequest->getText( 'input' );
 		if ( strlen( $input ) ) {
-			$output = $wgParser->preprocess( $input, $title, new ParserOptions );
+			$options = new ParserOptions;
+			$options->setMaxIncludeSize(50000000); # 50MB, to allow fixing of articles that exceed 1MB
+			$output = $wgParser->preprocess( $input, $title, $options );
 		} else {
 			$output = '';
 		}
