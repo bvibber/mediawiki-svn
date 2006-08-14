@@ -667,7 +667,7 @@ sub addRelation {
 	
 	print "newkey: $newkey\n";
 	print "mid_A: $mid_A\n";
-	print "mid_B: $mid_A\n";
+	print "mid_B: $mid_B\n";
 	print "rtid: $rtid\n";
 	print "revid: $revid\n";
 }
