@@ -34,8 +34,9 @@ class ExpandTemplates extends SpecialPage {
 		if ( strlen( $input ) ) {
 			$removeComments = $wgRequest->getBool( 'removecomments', false );
 			$options = new ParserOptions;
+			$options->setRemoveComments( $removeComments );
 			$options->setMaxIncludeSize(50000000); # 50MB, to allow fixing of articles that exceed 1MB
-			$output = $wgParser->preprocess( $input, $title, $options, $removeComments );
+			$output = $wgParser->preprocess( $input, $title, $options );
 		} else {
 			$removeComments = $wgRequest->getBool( 'removecomments', true );
 			$output = '';
