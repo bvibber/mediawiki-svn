@@ -11,6 +11,7 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_title' => 'Context title, for &#123;&#123;PAGENAME}} etc.:',
 	'expand_templates_input' => 'Input text',
 	'expand_templates_output' => 'Result',
+	'expand_templates_remove_comments' => 'Remove comments',
 ));
 
 class ExpandTemplates extends SpecialPage {
@@ -31,18 +32,22 @@ class ExpandTemplates extends SpecialPage {
 		}
 		$input = $wgRequest->getText( 'input' );
 		if ( strlen( $input ) ) {
+			$removeComments = $wgRequest->getBool( 'removecomments', false );
 			$options = new ParserOptions;
 			$options->setMaxIncludeSize(50000000); # 50MB, to allow fixing of articles that exceed 1MB
-			$output = $wgParser->preprocess( $input, $title, $options );
+			$output = $wgParser->preprocess( $input, $title, $options, $removeComments );
 		} else {
+			$removeComments = $wgRequest->getBool( 'removecomments', true );
 			$output = '';
 		}
 
 		$encTitle = htmlspecialchars( $titleStr );
 		$encInput = htmlspecialchars( $input );
 		$encOutput = htmlspecialchars( $output );
+		$removeChecked = $removeComments ? 'checked="checked"' : '';
 		$msgTitle = wfMsg( 'expand_templates_title' );
 		$msgInput = wfMsg( 'expand_templates_input' );
+		$msgRemoveComments = wfMsg( 'expand_templates_remove_comments' );
 		$msgOutput = wfMsg( 'expand_templates_output' );
 		$msgSubmit = wfMsg( 'ok' );
 		$action = htmlspecialchars( $selfTitle->getLocalURL() );
@@ -54,6 +59,8 @@ class ExpandTemplates extends SpecialPage {
 $msgTitle <input type="text" name="contexttitle" size="60" value="$encTitle"/><br/>
 $msgInput<br/>
 <textarea name="input" rows=10>$encInput</textarea>
+<br/>
+<label><input type="checkbox" name="removecomments" $removeChecked />$msgRemoveComments</label>
 <br/>
 <input type="submit" name="submit" value="$msgSubmit" /><br/><br/>
 $msgOutput<br/>
