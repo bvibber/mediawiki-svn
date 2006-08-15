@@ -75,15 +75,34 @@ define( 'GN_ENUM_CHOICES',  2 );
 define( 'NS_ALL_NAMESPACES', -10123 );
 
 
-$db =& wfGetDB( DB_SLAVE );
-$bqp = new BotQueryProcessor( $db, $startTime );
-$bqp->execute();
-$bqp->output();
+// Possible way to implement login functionality
+//$action = $wgRequest->getVal('action', 'query');
+//switch( $action ) {
+//	case 'query':
+        $bqp = new BotQueryProcessor( $startTime );
+        $bqp->execute();
+        $bqp->output();
+//		break;
+//    case 'login':
+//        $blp = new BotLoginProcessor();
+//        $blp->execute();
+//        break;
+//}
 
 wfProfileOut( 'query.php' );
 if ( function_exists( 'wfLogProfilingData' ) ) {
 	wfLogProfilingData();
 }
+
+//class BotLoginProcessor {
+//    function BotLoginProcessor()
+//    {}
+//
+//    function execute()
+//    {
+//        wfSetupSession();
+//    }
+//}
 
 class BotQueryProcessor {
 	var $classname = 'BotQueryProcessor';
@@ -116,6 +135,15 @@ class BotQueryProcessor {
 			GN_DESC => array(
 				"JSON format in HTML",
 				"Example: query.php?what=info&format=jsonfm      (Format info: http://en.wikipedia.org/wiki/JSON)",
+			)),
+		'yamlfm'=> array(
+			GN_FUNC => 'printFormattedYAML',
+			GN_MIME => 'text/html',
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"YAML format in HTML",
+				"Example: query.php?what=info&format=yamlfm      (Format info: http://en.wikipedia.org/wiki/YAML)",
 			)),
 		'txt' => array(
 			GN_FUNC => 'printFormattedTXT',
@@ -166,6 +194,15 @@ class BotQueryProcessor {
 			GN_DESC => array(
 				"PHP serialized format using serialize()",
 				"Example: query.php?what=info&format=php         (Format info: http://www.php.net/serialize)",
+			)),
+		'yaml'=> array(
+			GN_FUNC => 'printYAML',
+			GN_MIME => 'application/yaml',
+			GN_PARAMS => null,
+			GN_DFLT => null,
+			GN_DESC => array(
+				"YAML format",
+				"Example: query.php?what=info&format=yaml        (Format info: http://en.wikipedia.org/wiki/YAML)",
 			)),
 		'wddx' => array(
 			GN_FUNC => 'printWDDX',
@@ -485,7 +522,7 @@ class BotQueryProcessor {
 	/**
 	* Object Constructor, uses a database connection as a parameter
 	*/
-	function BotQueryProcessor( $db, $startTime )
+	function BotQueryProcessor( $startTime )
 	{
 		global $wgRequest, $wgUser;
 
@@ -496,7 +533,7 @@ class BotQueryProcessor {
 
 		$this->pageIdByText = array();	// reverse page ID lookup
 		$this->requestsize = 0;
-		$this->db = $db;
+        $this->db =& wfGetDB( DB_SLAVE );
 
 		$this->isBot = $wgUser->isAllowed( 'bot' );
 
@@ -2101,7 +2138,7 @@ class BotQueryProcessor {
 				"*Summary*",
 				"  This API provides a way for your applications to query data directly from the MediaWiki servers.",
 				"  One or more pieces of information about the site and/or a given list of pages can be retrieved.",
-				"  Information may be returned in either a machine (xml, json, php, wddx) or a human readable format.",
+				"  Information may be returned in either a machine (xml, json, php, yaml, wddx) or a human readable format.",
 				"  More than one piece of information may be requested with a single query.",
 				"",
 				"*Usage*",
@@ -2326,6 +2363,10 @@ class BotQueryProcessor {
 					$json = new Services_JSON();
 					htmlPrinter( $json->encode( $data, true ));
 					break;
+				case 'YAML':
+					require_once 'spyc.php';
+					htmlPrinter( Spyc::YAMLDump($data) );
+					break;
 				case 'TXT':
 					htmlPrinter( print_r($data, true) );
 					break;
@@ -2347,6 +2388,7 @@ class BotQueryProcessor {
 
 	function printFormattedXML( &$data )  { $this->printDataInHtml( $data, 'XML' );  }
 	function printFormattedJSON( &$data ) { $this->printDataInHtml( $data, 'JSON' ); }
+	function printFormattedYAML( &$data ) { $this->printDataInHtml( $data, 'YAML' );  }
 	function printFormattedTXT( &$data )  { $this->printDataInHtml( $data, 'TXT' );  }
 	function printFormattedDBG( &$data )  { $this->printDataInHtml( $data, 'DBG' );  }
 
@@ -2401,6 +2443,16 @@ class BotQueryProcessor {
 		} else {
 			echo json_encode( $data );
 		}
+	}
+
+	/**
+	* Sanitizes the data and serializes it in YAML format
+	*/
+	function printYAML( &$data )
+	{
+		sanitizeOutputData($data);
+        require_once 'spyc.php';
+        echo Spyc::YAMLDump($data);
 	}
 }
 
