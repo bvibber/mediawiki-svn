@@ -109,30 +109,24 @@ class UserrightsForm extends HTMLForm {
 		$groups = User::getAllGroups();
 		$oldGroups = $this->getUserGroups();
 		$newGroups = $oldGroups;
-		$addgroup = array();
-		$removegroup = array();
-		foreach( $groups as $group ) {
-			if( !in_array( $group, $oldGroups ) && $this->mRequest->getCheck( "wpOpUsergroup-$group" ) &&
-			$this->isAllowedChangingGroup( $group, 1 ) ) {
-				$addgroup[] = $group;
-			}
-			if( in_array( $group, $oldGroups ) && !$this->mRequest->getCheck( "wpOpUsergroup-$group" ) &&
-			$this->isAllowedChangingGroup( $group, 0 ) ) {
-				$removegroup[] = $group;
-			}
-		}
+		$removegroup = $this->mRequest->getArray( 'member' );
+		$addgroup = $this->mRequest->getArray( 'available' );
 		
 		# Remove then add groups
 		if(isset($removegroup)) {
 			$newGroups = array_diff($newGroups, $removegroup);
 			foreach( $removegroup as $group ) {
-				$this->removeUserGroup( $group );
+				if( $this->isAllowedChangingGroup( $group, 1 ) ) {
+					$this->removeUserGroup( $group );
+				}
 			}
 		}
 		if(isset($addgroup)) {
 			$newGroups = array_merge($newGroups, $addgroup);
 			foreach( $addgroup as $group ) {
-				$this->addUserGroup( $group );
+				if( $this->isAllowedChangingGroup( $group, 0 ) ) {
+					$this->addUserGroup( $group );
+				}
 			}
 		}
 		$newGroups = array_unique( $newGroups );
@@ -225,7 +219,11 @@ class UserrightsForm extends HTMLForm {
 				'value' => $wgUser->editToken( $username ) ) ) );
 		$wgOut->addHTML( $this->fieldset( 'editusergroup',
 			$wgOut->parse( wfMsg( 'userrights-help', $username ) ) .
-			$this->selectGroups( $userGroups ).
+			'<table border="0" align="center"><tr><td>'.
+			$this->selectGroups( $userGroups, false ).
+			'</td><td>'.
+			$this->selectGroups( $userGroups, true ).
+			'</td></tr></table>'."\n".
 			$this->textbox( 'reason', '', 50 ).
 			wfElement( 'input', array(
 				'type'  => 'submit',
@@ -236,20 +234,28 @@ class UserrightsForm extends HTMLForm {
 	}
 	
 	/**
-	 * Checkboxes list of the user groups.
+	 * Select list of the user groups.
 	 * @param array $userGroups All the groups the user belongs to.
+	 * @param boolean $available Show the groups the user belongs to, or the other groups? True for the others, false for the user groups.
 	 * @return The checkboxes list.
 	 */
-	function selectGroups( $userGroups ) {
-		$out = '';
+	function selectGroups( $userGroups, $available = false ) {
 		$groups = User::getAllGroups();
-		
+		$out = htmlspecialchars( wfMsg( $available ? 'userrights-groupsavailable' : 'userrights-groupsmember' ) );
+
+		$out .= wfElement( 'select', array(
+			'name'    => ( $available ? 'available' : 'member' ) . '[]',
+			'multiple'=> 'multiple',
+			'size'    => 6 ), null );
+
 		foreach( $groups as $group ) {
-			$checked = in_array( $group, $userGroups );
-			$disabled = !$this->isAllowedChangingGroup( $group, $checked ? 2 : 1 );
-			$label = User::getGroupName( $group ) . ( $disabled ? ' '.wfMsg( 'userrights-groupdisabled' ) : '' );
-			$out .= $this->checkbox( "Usergroup-$group", $checked, $disabled, $label );
+			if( ( !in_array( $group, $userGroups ) xor $available ) || !$this->isAllowedChangingGroup( $group, $available ? 1 : 0 ) ) {
+				continue;
+			}
+			$out .= wfElement( 'option', array( 'value' => $group  ), User::getGroupName( $group ) ) . "\n";
 		}
+
+		$out .= "</select>\n";
 		return $out;
 	}
 	

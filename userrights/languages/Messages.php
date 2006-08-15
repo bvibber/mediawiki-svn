@@ -741,10 +741,14 @@ containing all of the search terms will appear in the result).",
 'editusergroup' => 'Edit User Groups',
 'userrights-editusergroup' => 'Edit user groups',
 'saveusergroups' => 'Save User Groups',
+'userrights-help' => 'You are editing the permissions of the user $1.<br />
+Select groups you want the user to be removed from or added to.<br />
+Unselected groups will not be changed. You can deselect a group with CTRL + Left Click.<br />
+Several groups may be hidden if you are not allowed to grant or revoke them.',
+'userrights-groupsmember' => 'Member of:',
+'userrights-groupsavailable' => 'Available groups:',
 'userrights-noremote' => 'You are not allowed to change permissions of users in other sites.',
 'userrights-nodatabase' => 'Database $1 is not exist or is not local.',
-'userrights-help' => 'You are editing the permissions of the user $1. Please select the permissions you want him to have.',
-'userrights-groupdisabled' => '(cannot be changed)',
 'userrights-reason' => 'Reason for changing the permissions:',
 'userrights-logcomment' => 'Changed group membership from $1 to $2',
 
