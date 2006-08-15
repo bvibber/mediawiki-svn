@@ -318,6 +318,16 @@ function addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectio
 		addDefinedMeaningToCollection($definedMeaningId, $collectionId, $internalId);
 }
 
+function getDefinedMeaningFromCollection($collectionId, $internalMemberId) {
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT member_mid FROM uw_collection_contents WHERE collection_id=$collectionId AND internal_member_id=". $dbr->addQuotes($internalMemberId));
+	
+	if ($definedMeaningObject = $dbr->fetchObject($queryResult)) 
+		return $definedMeaningObject->member_mid;
+	else
+		return null;
+}
+
 function removeDefinedMeaningFromCollection($definedMeaningId, $collectionId) {
 	$dbr = &wfGetDB(DB_MASTER);
 	$dbr->query("DELETE FROM uw_collection_contents WHERE collection_id=$collectionId AND member_mid=$definedMeaningId");	
