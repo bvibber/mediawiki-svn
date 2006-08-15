@@ -28,7 +28,15 @@ class SiteMatrixPage extends SpecialPage {
 		sort( $langlist );
 		$xLanglist = array_flip( $langlist );
 
-		$sites = array( 'wiki', 'wiktionary', 'wikibooks', 'wikinews', 'wikisource', 'wikiquote' );
+		$sites = array(
+			'wiki',
+			'wiktionary',
+			'wikibooks',
+			'wikinews',
+			'wikisource',
+			'wikiquote',
+			'wikiversity',
+		);
 		$names = array( 
 			'wiki' => 'Wikipedia<br />w',
 			'wiktionary' => 'Wiktionary<br />wikt',
