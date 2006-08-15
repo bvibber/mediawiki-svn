@@ -36,6 +36,7 @@ class SiteMatrixPage extends SpecialPage {
 			'wikinews' => 'Wikinews<br />n',
 			'wikiquote' => 'Wikiquote<br />q',
 			'wikisource' => 'Wikisource<br />s',
+			'wikiversity' => 'Wikiversity<br />v',
 		);
 		$hosts = array(
 			'wiki' => 'wikipedia.org',
@@ -44,6 +45,7 @@ class SiteMatrixPage extends SpecialPage {
 			'wikinews' => 'wikinews.org',
 			'wikisource' => 'wikisource.org',
 			'wikiquote' => 'wikiquote.org',
+			'wikiversity' => 'wikiversity.org',
 		);
 
 		# Special wikis that should point to wikiPedia, not wikiMedia
