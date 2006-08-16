@@ -299,7 +299,7 @@ class Tests_OpenID_MemcStore extends PHPUnit_TestCase {
 	function testMemcStore() {
 		# Unique prefix for this test
 		$prefix = sprintf("test-%x", time());
-		$store = new OpenID_MemcStore('test', $prefix);
+		$store = new OpenID_MemcStore($prefix);
 		$this->_testStore($store);
 		$this->_testNonce($store);
 	}

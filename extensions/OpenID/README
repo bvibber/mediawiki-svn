@@ -1,7 +1,7 @@
 MediaWiki OpenID extension
 
-version 0.3
-22 Jul 2006
+version 0.4
+16 Aug 2006
 
 This is the README file for the OpenID extension for MediaWiki
 software. The extension is only useful if you've got a MediaWiki
@@ -49,6 +49,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 Evan Prodromou <evan@wikitravel.org>
 
+Patches for YADIS support and FileStore storage by Jonathan Daugherty
+<cygnus@janrain.com>.
+
 == Pre-requisites ==
 
 This software was tested with MediaWiki 1.6.6 (which is what
@@ -62,7 +65,7 @@ available here:
 
 	  http://www.openidenabled.com/openid/libraries/php
 	  http://www.openidenabled.com/yadis/libraries/php
-	  
+
 There are also some required extensions; see the OpenIDEnabled
 documentation for details. This software has been tested with the gmp
 and curl extension installed, and it's recommended that you install
@@ -76,13 +79,28 @@ installation. Note that the software depends on having its code all in
 the "OpenID" sub-directory; naming it "OpenID-Test" or "newextension1"
 or whatever won't work.
 
+You must create a table in your MediaWiki database to hold the OpenID
+URL mappings. The openid_table.sql script in this directory should do
+the trick. Typically you do this using the mysql command-line client,
+like so:
+
+        mysql -h yourdbhost -u youradminuser -p yourwikidb < openid_table.sql
+
+Version 0.3 and below used a different database structure that was
+pretty inefficient. If you installed this extension before, you should
+copy the optionToTable.php script to your MediaWiki "maintenance"
+directory and run it from the command line. This will copy the OpenID
+mappings from the user table to the new table (but it doesn't erase
+the old data... just in case).
+
 In your MediaWiki LocalSettings.php, add the following line some place
 towards the bottom of the file:
 
 	require_once("$IP/extensions/OpenID/OpenID.php");
-	
-Theoretically it should work out of the box, although there are lots
-of configuration options (see Configuration below).
+
+Theoretically it should work out of the box, but you'll almost
+definitely want to set the trust root and access controls (see
+Configuration below).
 
 === Caching ===
 
@@ -102,6 +120,9 @@ CACHE_ACCEL.
 In case you don't have either installed, try $wgMainCacheType =
 CACHE_ANYTHING. There's usually some fallback mechanism to store this
 data for you.
+
+If none of that works, you can use a filesystem-based storage; see the
+Configuration options below.
 
 == Logging in using OpenID ==
 
@@ -174,12 +195,6 @@ itself.
 The administrator can configure these variables in the
 LocalSettings.php file. Please read carefully.
 
-* $wgOpenIDPassphrase -- A passphrase used for initializing some of
-  the crypto stuff in the OpenID protocol. If it's uninitialized, it
-  will be replaced with a mishmash of other config variables. This is
-  less than ideal; go make a 50-character random password, stick it in
-  your LocalSettings.php file, and forget it.
-
 * $wgTrustRoot -- This is an URL that identifies your site to OpenID
   servers. Typically, it's the "root" url of the site, like
   "http://en.wikipedia.org/" or "http://wikitravel.org/it/". If this is
@@ -212,6 +227,22 @@ LocalSettings.php file. Please read carefully.
   server ''anyways''. Be very careful using this across organizational
   boundaries.
 
+* $wgOpenIDConsumerStoreType and $wgOpenIDServerStoreType -- strings
+  denoting the type of storage to be used to store OpenID assocation
+  data when acting as an OpenID relying party (consumer) and server,
+  respectively. Valid values are "file" and "memc".  If the value for
+  one or both is "file", $wgOpenIDConsumerStorePath or
+  $wgOpenIDServerStorePath must be set, respectively (see below).  If
+  either of these variables is set to an invalid value, an error page
+  will be displayed.
+
+* $wgOpenIDConsumerStorePath and $wgOpenIDServerStorePath -- strings
+  specifying the paths where OpenID assocation data should be stored
+  when acting as a relying party (consumer) or server, respectively.
+  Each of these need only be set if the store type settings (above)
+  are set to "file", respectively.  These strings, if both are set,
+  MUST NOT be equal.
+
 == Skins ==
 
 If you are customizing a skin, and you want to show the OpenID
@@ -235,6 +266,7 @@ all have free signup for identities if you want to test, too.
 * http://getopenid.com/
 * http://www.typekey.com/
 * http://www.claimid.com/
+* http://pip.verisignlabs.com/
 
 == Bugs and enhancements ==
 

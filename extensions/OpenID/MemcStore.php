@@ -33,20 +33,21 @@ if (defined('MEDIAWIKI')) {
 
 	require_once('Auth/OpenID/Interface.php');
 	require_once('Auth/OpenID/HMACSHA1.php');
+	require_once('Auth/OpenID/CryptUtil.php');
 
 	class OpenID_MemcStore extends Auth_OpenID_OpenIDStore {
 
 		var $prefix = '';
 
-		function OpenID_MemcStore($passphrase, $prefix_part = null)
+		function OpenID_MemcStore($prefix_part = null)
 		{
 			global $wgMemc, $wgDBname;
 			if (isset($prefix_part)) {
 				$this->prefix = $prefix_part . ':';
 			}
 
-			$auth_key = Auth_OpenID_SHA1($passphrase);
-			$auth_key = substr($auth_key, 0, 20);
+			$auth_key =
+			  Auth_OpenID_CryptUtil::randomString($this->AUTH_KEY_LEN);
 
 			$k = $this->_authKeyKey();
 			$res = $wgMemc->add($k, $auth_key);

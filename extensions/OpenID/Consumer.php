@@ -26,8 +26,6 @@
 if (defined('MEDIAWIKI')) {
 
 	require_once("Auth/OpenID/Consumer.php");
-	require_once("Auth/OpenID/FileStore.php");
-	require_once("$IP/extensions/OpenID/MemcStore.php");
 
 	# Defines the trust root for this server
 	# If null, we make a guess
@@ -49,6 +47,17 @@ if (defined('MEDIAWIKI')) {
 	# Which partners to deny; regexps here. See above.
 
 	$wgOpenIDConsumerDeny = array();
+
+	# Where to store transitory data. Can be 'memc' for the $wgMemc
+	# global caching object, or 'file' if caching is turned off
+	# completely and you need a fallback.
+
+	$wgOpenIDConsumerStoreType = 'memc';
+
+	# If the store type is set to 'file', this is is the name of a
+	# directory to store the data in.
+
+	$wgOpenIDConsumerStorePath = NULL;
 
 	function wfSpecialOpenIDLogin($par) {
 		global $wgRequest, $wgUser, $wgOut;
@@ -198,7 +207,7 @@ if (defined('MEDIAWIKI')) {
 		global $wgOut, $wgUser;
 		$sk = $wgUser->getSkin();
 		$instructions = wfMsg('openidlogininstructions');
-		$ok = wfMsg('ok');
+		$ok = wfMsg('login');
 		$wgOut->addHTML("<p>{$instructions}</p>" .
 						'<form action="' . $sk->makeSpecialUrl('OpenIDLogin') . '" method="POST">' .
 						'<input type="text" name="openid_url" size=30 ' .
@@ -255,7 +264,7 @@ if (defined('MEDIAWIKI')) {
 						"<label for='wpNameChoiceManual'>" . wfMsg("openidchoosemanual") . "</label> " .
 						"<input type='text' name='wpNameValue' id='wpNameChoice' size='30' /><br />");
 
-		$ok = wfMsg('ok');
+		$ok = wfMsg('login');
 		$cancel = wfMsg('cancel');
 
 		$wgOut->addHTML("<input type='submit' name='wpOK' value='{$ok}' /> <input type='submit' name='wpCancel' value='{$cancel}' />");
@@ -283,8 +292,9 @@ if (defined('MEDIAWIKI')) {
 		if (isset($wgTrustRoot)) {
 			$trust_root = $wgTrustRoot;
 		} else {
-			$nt = Title::newFromText(''); // blank!
-			$trust_root = $nt->getFullURL();
+			global $wgArticlePath, $wgServer;
+			$root_article = str_replace('$1', '', $wgArticlePath);
+			$trust_root = $wgServer . $root_article;
 		}
 
 		$consumer = OpenIDConsumer();
@@ -404,21 +414,28 @@ if (defined('MEDIAWIKI')) {
 	}
 
 	function OpenIDConsumer() {
-		global $wgOpenIDPassphrase;
-		$store = new OpenID_MemcStore($wgOpenIDPassphrase, 'consumer');
+		global $wgOpenIDConsumerStoreType, $wgOpenIDConsumerStorePath;
+
+		$store = getOpenIDStore($wgOpenIDConsumerStoreType,
+					'consumer',
+					array('path' => $wgOpenIDConsumerStorePath));
+
 		return new Auth_OpenID_Consumer($store);
 	}
 
 	# Find the user with the given openid, if any
 
 	function OpenIDGetUser($openid) {
+		global $wgSharedDB, $wgDBprefix;
+		$tableName = "${wgDBprefix}user_openid";
+		if (isset($wgSharedDB)) {
+			$tableName = "`$wgSharedDB`.$tableName";
+		}
 		$dbr =& wfGetDB( DB_SLAVE );
-		## FIXME: we're interpolating a Web-supplied string into a SQL query
-		## here. Security hazard! Fixme Fixme!
-		$name = $dbr->selectField('user', 'user_name',
-								array('user_options LIKE "%openid_url=' . $openid . '\n%" OR ' .
-									  'user_options LIKE "%openid_url=' . $openid . '"'));
-		if ($name) {
+		$id = $dbr->selectField($tableName, 'uoi_user',
+								array("uoi_openid = '${openid}'"));
+		if ($id) {
+			$name = User::whoIs($id);
 			return User::newFromName($name);
 		} else {
 			return NULL;
@@ -477,7 +494,9 @@ if (defined('MEDIAWIKI')) {
 		if (!$user->getId()) {
 			wfDebug("OpenID: Error adding new user.\n");
 		} else {
-			$user->setOption('openid_url', $openid);
+
+			OpenIDInsertUserUrl($user, $openid);
+
 			if (array_key_exists('nickname', $sreg)) {
 				$user->setOption('nickname', $sreg['nickname']);
 			}
@@ -535,7 +554,19 @@ if (defined('MEDIAWIKI')) {
 		if (array_key_exists('host', $parts) &&
 			(!array_key_exists('path', $parts) || strcmp($parts['path'], '/') == 0))
 		{
-			return $parts['host'];
+			$hostparts = explode('.', $parts['host']);
+
+			# Try to catch common idiom of nickname.service.tld
+
+			if ((count($hostparts) > 2) &&
+				(strlen($hostparts[count($hostparts) - 2]) > 3) && # try to skip .co.uk, .com.au
+				(strcmp($hostparts[0], 'www') != 0))
+			{
+				return $hostparts[0];
+			} else {
+				# Do the whole hostname
+				return $parts['host'];
+			}
 		} else {
 			if (array_key_exists('path', $parts)) {
 				# Strip starting, ending slashes
@@ -581,15 +612,74 @@ if (defined('MEDIAWIKI')) {
 	}
 
 	function OpenIDGetUserUrl($user) {
-		if (!isset($user)) {
-			return NULL;
-		} else {
-			$url = $user->getOption('openid_url');
-			if (strlen($url) > 0) {
-				return $url;
-			} else {
-				return NULL;
+		$openid_url = null;
+
+		if (isset($user) && $user->getId() != 0) {
+			global $wgSharedDB, $wgDBprefix;
+
+			$tableName = "${wgDBprefix}user_openid";
+			if (isset($wgSharedDB)) {
+				$tableName = "`${wgSharedDB}`.$tableName";
 			}
+			$dbr =& wfGetDB( DB_SLAVE );
+			$res = $dbr->select(array($tableName),
+								array('uoi_openid'),
+								array('uoi_user = ' . $user->getId()),
+								'OpenIDGetUserUrl');
+
+			# This should return 0 or 1 result, since user is unique
+			# in the table.
+
+			while ($res && $row = $dbr->fetchObject($res)) {
+				$openid_url = $row->uoi_openid;
+			}
+			$dbr->freeResult($res);
+		}
+		return $openid_url;
+	}
+
+	function OpenIDSetUserUrl($user, $url) {
+		$other = OpenIDGetUserUrl($user);
+		if (isset($other)) {
+			OpenIDUpdateUserUrl($user, $url);
+		} else {
+			OpenIDInsertUserUrl($user, $url);
+		}
+	}
+
+	function OpenIDInsertUserUrl($user, $url) {
+		global $wgSharedDB, $wgDBname;
+		$dbw =& wfGetDB( DB_MASTER );
+
+		if (isset($wgSharedDB)) {
+			# It would be nicer to get the existing dbname
+			# and save it, but it's not possible
+			$dbw->selectDB($wgSharedDB);
+		}
+
+		$dbw->insert('user_openid', array('uoi_user' => $user->getId(),
+										  'uoi_openid' => $url));
+
+		if (isset($wgSharedDB)) {
+			$dbw->selectDB($wgDBname);
+		}
+	}
+
+	function OpenIDUpdateUserUrl($user, $url) {
+		global $wgSharedDB, $wgDBname;
+		$dbw =& wfGetDB( DB_MASTER );
+
+		if (isset($wgSharedDB)) {
+			# It would be nicer to get the existing dbname
+			# and save it, but it's not possible
+			$dbw->selectDB($wgSharedDB);
+		}
+
+		$dbw->set('user_openid', 'uoi_openid', $url,
+				  'uoi_user = ' . $user->getID());
+
+		if (isset($wgSharedDB)) {
+			$dbw->selectDB($wgDBname);
 		}
 	}
 

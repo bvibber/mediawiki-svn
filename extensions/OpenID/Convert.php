@@ -129,8 +129,21 @@ if (defined('MEDIAWIKI')) {
 				return;
 			}
 
-			$wgUser->setOption('openid_url', $openid_url);
-			$wgUser->saveSettings();
+			# We check again for dupes; this may be normalized or
+			# reformatted by the server.
+
+			$other = OpenIDGetUser($openid_url);
+
+			if (isset($other)) {
+				if ($other->getId() == $wgUser->getID()) {
+					$wgOut->errorpage('openiderror', 'openidconvertyourstext');
+				} else {
+					$wgOut->errorpage('openiderror', 'openidconvertothertext');
+				}
+				return;
+			}
+
+			OpenIDSetUserUrl($wgUser, $openid_url);
 
 			$wgOut->setPageTitle( wfMsg( 'openidconvertsuccess' ) );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );

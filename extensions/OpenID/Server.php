@@ -26,15 +26,79 @@
 if (defined('MEDIAWIKI')) {
 
 	require_once("Auth/OpenID/Server.php");
-	require_once("Auth/OpenID/FileStore.php");
 	require_once("Auth/OpenID/Consumer.php");
-	require_once("$IP/extensions/OpenID/MemcStore.php");
 
 	# These are trust roots that we don't bother asking users
 	# whether the trust root is allowed to trust; typically
 	# for closely-linked partner sites.
 
 	$wgOpenIDServerForceAllowTrust = array();
+
+	# Where to store transitory data. Can be 'memc' for the $wgMemc
+	# global caching object, or 'file' if caching is turned off
+	# completely and you need a fallback.
+
+	$wgOpenIDServerStoreType = 'memc';
+
+	# If the store type is set to 'file', this is is the name of a
+	# directory to store the data in.
+
+	$wgOpenIDServerStorePath = NULL;
+
+	# Outputs a Yadis (http://yadis.org/) XRDS file, saying that this server
+	# supports OpenID and lots of other jazz.
+
+	function wfSpecialOpenIDXRDS($par) {
+	        global $wgOut;
+
+		// XRDS preamble XML.
+    	        $xml_template = array('<?xml version="1.0" encoding="UTF-8"?>',
+				      '<xrds:XRDS',
+				      '  xmlns:xrds="xri://\$xrds"',
+				      '  xmlns:openid="http://openid.net/xmlns/1.0"',
+				      '  xmlns="xri://$xrd*($v*2.0)">',
+				      '<XRD>');
+
+		// Generate the user page URL.
+		$user_title = Title::makeTitle(NS_USER, $par);
+		$user_url = $user_title->getFullURL();
+
+		// Generate the OpenID server endpoint URL.
+		$server_title = Title::makeTitle(NS_SPECIAL, 'OpenIDServer');
+		$server_url = $server_title->getFullURL();
+
+		// Define array of Yadis services to be included in
+		// the XRDS output.
+		$services = array(
+				  array('uri' => $server_url,
+					'priority' => '0',
+					'types' => array('http://openid.net/signon/1.0',
+							 'http://openid.net/sreg/1.0'),
+					'delegate' => $user_url)
+				  );
+
+		// Generate <Service> elements into $service_text.
+		$service_text = "\n";
+		foreach ($services as $service) {
+		    $types = array();
+		    foreach ($service['types'] as $type_uri) {
+		        $types[] = '    <Type>'.$type_uri.'</Type>';
+		    }
+		    $service_text .= implode("\n",
+					     array('  <Service priority="'.$service['priority'].'">',
+						   '    <URI>'.$server_url.'</URI>',
+						   implode("\n", $types),
+						   '  </Service>'));
+		}
+
+		$wgOut->disable();
+
+		// Print content-type and XRDS XML.
+		header("Content-Type", "application/xrds+xml");
+		print implode("\n", $xml_template);
+		print $service_text;
+		print implode("\n", array("</XRD>", "</xrds:XRDS>"));
+	}
 
 	# Special page for the server side of OpenID
 	# It has three major flavors:
@@ -150,8 +214,13 @@ if (defined('MEDIAWIKI')) {
 	# Returns an Auth_OpenID_Server from the libraries. Utility.
 
 	function OpenIDServer() {
-		global $wgOpenIDPassphrase;
-		$store = new OpenID_MemcStore($wgOpenIDPassphrase, 'server');
+                global $wgOpenIDServerStorePath,
+		    $wgOpenIDServerStoreType;
+
+		$store = getOpenIDStore($wgOpenIDServerStoreType,
+		    'server',
+		    array('path' => $wgOpenIDServerStorePath));
+
 		return new Auth_OpenID_Server($store);
 	}
 

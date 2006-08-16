@@ -28,24 +28,28 @@ if (defined('MEDIAWIKI')) {
 	require_once("$IP/extensions/OpenID/Consumer.php");
 	require_once("$IP/extensions/OpenID/Convert.php");
 	require_once("$IP/extensions/OpenID/Server.php");
+	require_once("$IP/extensions/OpenID/MemcStore.php");
+
+	require_once("Auth/OpenID/FileStore.php");
 
 	require_once("SpecialPage.php");
 
 	define('MEDIAWIKI_OPENID_VERSION', '0.3');
 
 	$wgExtensionFunctions[] = 'setupOpenID';
-	$wgOpenIDPassphrase = null;
 
 	function setupOpenID() {
-		global $wgOpenIDPassphrase, $wgMessageCache, $wgOut;
+		global $wgMessageCache, $wgOut, $wgRequest;
 
 		$wgMessageCache->addMessages(array('openidlogin' => 'Login with OpenID',
 										   'openidfinish' => 'Finish OpenID login',
 										   'openidserver' => 'OpenID server',
 										   'openidconvert' => 'OpenID converter',
-										   'openidlogininstructions' => 'Add your OpenID login URL below',
+										   'openidlogininstructions' => 'Enter your OpenID identifier to log in:',
 										   'openiderror' => 'Verification error',
 										   'openiderrortext' => 'An error occured during verification of the OpenID URL.',
+										   'openidconfigerror' => 'OpenID Configuration Error',
+										   'openidconfigerrortext' => 'The OpenID storage configuration for this wiki is invalid.  Please consult this site\'s administrator.',
 										   'openidpermission' => 'OpenID permissions error',
 										   'openidpermissiontext' => 'The OpenID you provided is not allowed to login to this server.',
 										   'openidcancel' => 'Verification cancelled',
@@ -84,18 +88,72 @@ if (defined('MEDIAWIKI')) {
 		SpecialPage::AddPage(new UnlistedSpecialPage('OpenIDFinish'));
 		SpecialPage::AddPage(new UnlistedSpecialPage('OpenIDServer'));
 		SpecialPage::AddPage(new UnlistedSpecialPage('OpenIDConvert'));
+		SpecialPage::AddPage(new UnlistedSpecialPage('OpenIDXRDS'));
 
-		# FIXME: make this only output for user pages
+		$action = $wgRequest->getText('action', 'view');
 
-		$wgOut->addLink(array('rel' => 'openid.server',
-							  'href' => OpenIDServerUrl()));
+		if ($action == 'view') {
 
-		# FIXME: People should set their own dang passphrase
+			$title = $wgRequest->getText('title');
 
-		if (is_null($wgOpenIDPassphrase)) {
-			global $wgDBname, $wgDBuser, $wgDBpassword;
-			$wgOpenIDPassphrase = "$wgDBname|$wgDBuser|$wgDBpassword";
+			if (!isset($title) || strlen($title) == 0) {
+				# If there's no title, and Cache404 is in use, check using its stuff
+				if (defined('CACHE404_VERSION')) {
+					if ($_SERVER['REDIRECT_STATUS'] == 404) {
+						$url = getRedirectUrl($_SERVER);
+						if (isset($url)) {
+							$title = cacheUrlToTitle($url);
+						}
+					}
+				} else {
+					$title = wfMsg('mainpage');
+				}
+			}
+
+  		    $nt = Title::newFromText($title);
+
+		    // If the page being viewed is a user page,
+		    // generate the openid.server META tag and output
+		    // the X-XRDS-Location.  See the OpenIDXRDS
+		    // special page for the XRDS output / generation
+		    // logic.
+		    if ($nt && ($nt->getNamespace() == NS_USER)) {
+		        $wgOut->addLink(array('rel' => 'openid.server',
+					      'href' => OpenIDServerUrl()));
+				$rt = Title::makeTitle(NS_SPECIAL, 'OpenIDXRDS/'.$nt->getText());
+				$wgOut->addMeta('http:X-XRDS-Location', $rt->getFullURL());
+				header('X-XRDS-Location', $rt->getFullURL());
+		    }
 		}
+
+		// Verify the config file settings.  FIXME: How to
+		// report error?
+		global $wgOpenIDServerStorePath, $wgOpenIDServerStoreType,
+		  $wgOpenIDConsumerStorePath, $wgOpenIDConsumerStoreType;
+
+		if ($wgOpenIDConsumerStoreType == 'file') {
+		    assert($wgOpenIDConsumerStorePath != false);
+		}
+
+		if ($wgOpenIDServerStoreType == 'file') {
+		    assert($wgOpenIDServerStorePath != false);
+		}
+	}
+
+	function getOpenIDStore($storeType, $prefix, $options) {
+	    global $wgOut;
+
+	    switch ($storeType) {
+		 case 'memcached':
+		 case 'memc':
+			return new OpenID_MemcStore($prefix);
+
+		 case 'file':
+			return new Auth_OpenID_FileStore($options['path']);
+
+		 default:
+			$wgOut->errorPage('openidconfigerror', 'openidconfigerrortext');
+	    }
 	}
 }
 

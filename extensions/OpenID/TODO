@@ -22,7 +22,7 @@
 - move Special: pages to one page with a parameter
 + split big file into 2-3 smaller modules
 + add openid.server to user pages
-- hide openid.server for non-user pages
++ hide openid.server for non-user pages
 - optimize trust storage
 + change trust data separators from , and | to FS and RS
 - User preferences tab for OpenID
@@ -35,7 +35,7 @@
 + try to guess user name from URL with /
   like http://getopenid.com/evanprodromou or
   http://profile.typekey.com/EvanProdromou/
-- Allow specifying a FileStore rather than a MemcStore
++ Allow specifying a FileStore rather than a MemcStore
 - Allow specifying a MySQLStore rather than a MemcStore
 - Fall back to DumbStore if Memc is bogus
 + Unit test for MemcStore
