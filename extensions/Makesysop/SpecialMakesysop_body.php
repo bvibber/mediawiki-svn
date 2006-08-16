@@ -22,8 +22,8 @@ class MakeSysopPage extends SpecialPage {
 	function execute( $subpage ) {
 		global $wgUser, $wgOut, $wgRequest;
 
-		if ( $wgUser->isAnon() or $wgUser->isBlocked() ) {
-			$wgOut->errorpage( "movenologin", "movenologintext" );
+		if ( $wgUser->isBlocked() ) {
+			$wgOut->blockedPage();
 			return;
 		}
 		if ( wfReadOnly() ) {
@@ -42,10 +42,10 @@ class MakeSysopPage extends SpecialPage {
 			$f->execute();
 		} else {
 			$f = new MakesysopForm( $wgRequest );
-			if ( $f->mSubmit ) { 
-				$f->doSubmit(); 
-			} else { 
-				$f->showForm( '' ); 
+			if ( $f->mSubmit ) {
+				$f->doSubmit();
+			} else {
+				$f->showForm( '' );
 			}
 		}
 	}
