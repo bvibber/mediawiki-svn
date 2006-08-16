@@ -27,8 +27,6 @@ $wgMakesysopMessages['en'] = array(
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
-	'bureaucrattitle'      => 'Bureaucrat access required',
-	'bureaucrattext'       => 'The action you have requested can only be performed by sysops with "bureaucrat" status.',
 );
 $wgMakesysopMessages['de'] = array(
 	'makesysoptitle'       => 'Mache einen Benutzer zum Administrator',
@@ -49,8 +47,6 @@ $wgMakesysopMessages['de'] = array(
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
-	'bureaucrattitle'      => 'Bürokratenrechte erforderlich',
-	'bureaucrattext'       => 'Die Aktion die Sie durchführen wollen kann nur nur von Administratoren mit Bürokratenrechten durchgeführt werden.',
 );
 $wgMakesysopMessages['he'] = array(
 	'makesysoptitle'       => 'הפוך משתמש למפעיל מערכת',
@@ -71,8 +67,6 @@ $wgMakesysopMessages['he'] = array(
 	'group-steward'        => 'דיילים',
 	'group-steward-member' => 'דייל',
 	'grouppage-steward'    => '{{ns:project}}:דיילים',
-	'bureaucrattitle'      => 'הרשאת ביורוקרט נחוצה',
-	'bureaucrattext'       => 'רק משתמשים בעלי הרשאת ביורוקרט יכולים לבצע את הפעולה המבוקשת.',
 );
 $wgMakesysopMessages['id'] = array(
 	'makesysoptitle'       => 'Buat seorang pengguna menjadi pengurus',
@@ -93,8 +87,6 @@ $wgMakesysopMessages['id'] = array(
 	'group-steward'        => 'Steward',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => 'Project:Steward',
-	'bureaucrattitle'      => 'Dibutuhkan hak akses birokrat',
-	'bureaucrattext'       => 'Tindakan yang Anda ingin lakukan hanya dapat dilakukan oleh birokrat',
 );
 $wgMakesysopMessages['ja'] = array(
 	'makesysoptitle'       => '利用者を{{int:group-sysop}}にする',
@@ -115,8 +107,6 @@ $wgMakesysopMessages['ja'] = array(
 	'group-steward'        => 'スチュワード',
 	'group-steward-member' => 'スチュワード',
 	'grouppage-steward'    => '{{ns:project}}:{{int:group-steward}}',
-	'bureaucrattitle'      => '{{int:group-bureaucrat}}によるアクセスが必要です。',
-	'bureaucrattext'       => '要求した操作には "{{int:group-bureaucrat}}" のステータスを持つ管理者によるアクセスが必要です。',
 );
 $wgMakesysopMessages['nl'] = array(
 	'makesysoptitle'       => 'Maak een gebruiker beheerder',
@@ -134,8 +124,6 @@ $wgMakesysopMessages['nl'] = array(
 	'already_sysop'        => 'Deze gebruiker is al beheerder',
 	'already_bureaucrat'   => 'Deze gebruiker is al bureaucraat',
 	'makesysop-nodatabase' => 'Onjuiste interwikigebruikersnaam: $1',
-	'bureaucrattitle'      => 'Alleen voor bureaucraten ',
-	'bureaucrattext'       => 'Deze functie is alleen beschikbaar voor beheerders met de status "bureaucraat".',
 );
 $wgMakesysopMessages['pl'] = array(
 	'makesysoptitle'       => 'Nadaj użytkownikowi uprawnienia administratora',
@@ -156,8 +144,6 @@ $wgMakesysopMessages['pl'] = array(
 	'group-steward'        => 'Zarządcy',
 	'group-steward-member' => 'Zarządca',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
-	'bureaucrattitle'      => 'Wymagane uprawnienia biurokraty',
-	'bureaucrattext'       => 'Operacja którą chciałeś wykonać może być realizowana wyłącznie przez użytkowników z uprawnieniami biurokraty.',
 );
 $wgMakesysopMessages['pt'] = array(
 	'makesysoptitle'       => 'Tornar um utilizador num administrador',
@@ -178,7 +164,5 @@ $wgMakesysopMessages['pt'] = array(
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
-	'bureaucrattitle'      => 'Exigido acesso de burocrata',
-	'bureaucrattext'       => 'A acção que pediu só pode ser desempenhada por administradores com estatuto de "burocrata".',
 );
 ?>
