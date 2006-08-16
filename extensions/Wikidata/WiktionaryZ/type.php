@@ -98,13 +98,6 @@ function getTextValue($textId) {
 	return $dbr->fetchObject($queryResult)->old_text; 
 }
 
-function getCollectionMeaningId($collectionId) {
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT collection_mid FROM uw_collection_ns WHERE collection_id=$collectionId");
-	
-	return $dbr->fetchObject($queryResult)->collection_mid;	
-}
-
 function definingExpressionAsLink($definedMeaningId) {
 	list($definingExpression, $definingExpressionLanguage) = definingExpression($definedMeaningId);
 	return spellingAsLink($definingExpression);

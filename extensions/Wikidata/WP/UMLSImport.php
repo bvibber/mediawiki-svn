@@ -14,15 +14,42 @@ $wgCommandLineMode = true;
 openDatabase("localhost", "umls", "root", "");
 
 $languageId = 85;
+echo "Create collections\n";
 $umlsCollectionId = bootstrapCollection("UMLS", $languageId, "");
+$relationCollectionId = bootstrapCollection("UMLS Relation Types 2005", $languageId, "RELT");
+addDefinedMeaningToCollection(getCollectionMeaningId($relationCollectionId), $umlsCollectionId, "rel");
+$relationAttributesCollectionId = bootstrapCollection("UMLS Relation Attributes 2005", $languageId, "RELT");
+addDefinedMeaningToCollection($relationAttributesCollectionId, $umlsCollectionId, "rela");
+
+echo "Load source abbreviations and languages\n";
 $sourceAbbreviations = loadSourceAbbreviations();
 $isoLanguages = loadIsoLanguages();
 
+echo "Import UMLS terms\n";
 foreach ($sourceAbbreviations as $sab => $source) {
-//	echo "$sab: $source\n";
-	if (strcmp($source, "ICPC, Dutch Translation, 1993") == 0) {
+//	if (strpos($sab, "ICPC") !== false) {
+	if ((strcmp($sab, "ICPC") == 0) || (strcmp($sab, "SRC") == 0)) {
+		echo "$source\n";
 		$collectionId = bootstrapCollection($source, $languageId, "");
 		importUMLSTerms($sab, $umlsCollectionId, $collectionId, $languageId, $isoLanguages);			
+	}
+}
+
+echo "Import UMLS relation and attributes types\n";
+importUMLSRelationTypes($relationCollectionId, $languageId);
+importUMLSRelationAttributes($relationAttributesCollectionId, $languageId);
+
+echo "Import UMLS relations\n";
+$relationCollection = getCollectionContents($relationCollectionId);
+$relationAttributesCollection = getCollectionContents($relationAttributesCollectionId);
+foreach ($sourceAbbreviations as $sab => $source) {
+//	if (strpos($sab, "ICPC") !== false) {
+	if (strcmp($sab, "ICPC") == 0) {
+		echo "$source\n";
+		$query = "select cui1, cui2, rel from MRREL where sab like '$sab'";
+		importUMLSRelations($umlsCollectionId , $relationCollection, $query);
+		$query = "select cui1, cui2, rela from MRREL where sab like '$sab' and rela!=''";
+		importUMLSRelations($umlsCollectionId , $relationAttributesCollection, $query);
 	}
 }
 
@@ -71,19 +98,17 @@ function importUMLSTerms($sab, $umlsCollectionId, $collectionId, $languageId, $i
 	global
 		$db;
 	
-	echo "select str,cui,lat from MRCONSO where sab like '$sab'\n";
 	$queryResult = mysql_query("select str, cui, lat, code from MRCONSO where sab like '$sab'", $db);
-	$c1 = 0;
 	while ($umlsTerm = mysql_fetch_object($queryResult)) {
-		echo ++$c1 . "\n";
 		$definedMeaningId = getDefinedMeaningFromCollection($umlsCollectionId, $umlsTerm->cui);
-		$expression = findOrCreateExpression($umlsTerm->str, $isoLanguages[strtolower($umlsTerm->lat)]);
+		$expression = findOrCreateExpression(trim($umlsTerm->str), $isoLanguages[strtolower($umlsTerm->lat)]);
 		if (!$definedMeaningId) {
 	   		$definitionQueryResult = mysql_query("select def from MRDEF where cui='$umlsTerm->cui'", $db);
 			$definition = mysql_fetch_object($definitionQueryResult);
 			
 			if (!$definition->def) {
-				$definedMeaningId = addDefinedMeaning($expression->id);				
+				$definedMeaningId = addDefinedMeaning($expression->id);
+				createSynonymOrTranslation($definedMeaningId, $expression->id, true);				
 			}
 			else {
 				$definedMeaningId = createNewDefinedMeaning($expression->id, $languageId, $definition->def);
@@ -104,6 +129,76 @@ function importUMLSTerms($sab, $umlsCollectionId, $collectionId, $languageId, $i
 	}
 		
 	mysql_free_result($queryResult);  
+}
+
+function importUMLSRelationTypes($relationCollectionId, $languageId) {
+	global
+		$db;
+		
+	$queryResult = mysql_query("select ABBREV, FULL from rel where ABBREV!='CHD' and ABBREV!='PAR' and ABBREV!='SUBX'", $db);
+	while ($relationType = mysql_fetch_object($queryResult)) {
+		$definedMeaningId = getDefinedMeaningFromCollection($relationCollectionId, $relationType->ABBREV);
+		$expression = findOrCreateExpression(trim($relationType->FULL), $languageId);
+		if(!$definedMeaningId) {
+			$definedMeaningId = addDefinedMeaning($expression->id);
+			createSynonymOrTranslation($definedMeaningId, $expression->id, true);
+			addDefinedMeaningToCollection($definedMeaningId, $relationCollectionId, $relationType->ABBREV);		
+		}
+	}
+	
+	mysql_free_result($queryResult);  
+}
+
+function importUMLSRelationAttributes($relationAttributesCollectionId, $languageId) {
+	global
+		$db;
+		
+	$queryResult = mysql_query("select ABBREV, FULL from rela", $db);
+	while ($relationType = mysql_fetch_object($queryResult)) {
+		$definedMeaningId = getDefinedMeaningFromCollection($relationAttributesCollectionId, $relationType->ABBREV);
+		$expression = findOrCreateExpression(trim($relationType->FULL), $languageId);
+		if(!$definedMeaningId) {
+			$definedMeaningId = addDefinedMeaning($expression->id);
+			createSynonymOrTranslation($definedMeaningId, $expression->id, true);
+			addDefinedMeaningToCollection($definedMeaningId, $relationAttributesCollectionId, $relationType->ABBREV);		
+		}
+	}
+	
+	mysql_free_result($queryResult);  	
+}
+
+function importUMLSRelations($umlsCollectionId, $relationCollectionContents, $query) {
+	global
+		$db;
+
+	$queryResult = mysql_query($query, $db);
+	while ($relation = mysql_fetch_row($queryResult)) {
+		$relationType = $relation[2];
+		if(strcmp($relationType, 'CHD') == 0) {
+			$relationType='RN';			
+		}
+		elseif(strcmp($relationType, 'PAR') == 0) {
+			$relationType='RB';
+		}
+		
+		$definedMeaningId1 = getDefinedMeaningFromCollection($umlsCollectionId, $relation[0]);
+		$definedMeaningId2 = getDefinedMeaningFromCollection($umlsCollectionId, $relation[1]);
+		$relationMeaningId = $relationCollectionContents[$relationType];
+		if(!$definedMeaningId1){
+			echo "Unkown cui $relation[0]\n";
+			print_r($relation);
+		}
+		if(!$definedMeaningId2){
+			echo "Unkown cui $relation[1]\n";
+			print_r($relation);
+		}
+		if(!$relationMeaningId){
+			echo "Unkown relation $relationType\n";
+			print_r($relationCollectionContents);
+			print_r($relation);
+		}
+		addRelation($definedMeaningId2, $relationMeaningId, $definedMeaningId1);		
+	}	
 }
 
 ?>

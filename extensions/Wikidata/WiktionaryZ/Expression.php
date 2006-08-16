@@ -348,6 +348,13 @@ function bootstrapCollection($collection, $languageId, $collectionType){
 	return addCollection($definedMeaningId, $collectionType);
 }
 
+function getCollectionMeaningId($collectionId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT collection_mid FROM uw_collection_ns WHERE collection_id=$collectionId");
+	
+	return $dbr->fetchObject($queryResult)->collection_mid;	
+}
+
 function addCollection($definedMeaningId, $collectionType) {
 	$dbr = &wfGetDB(DB_MASTER);
 	$sql = "INSERT INTO uw_collection_ns(collection_mid, collection_type) VALUES($definedMeaningId, '$collectionType')";
@@ -443,5 +450,16 @@ function getDefinedMeaningDefinition($definedMeaningId) {
 	
 	return $result;
 }
+
+function getCollectionContents($collectionId) {
+	$dbr = & wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT member_mid,internal_member_id from uw_collection_contents " .
+			                   "WHERE collection_id=$collectionId");
+	$collectionContents = array();			                   
+	while ($collectionEntry = $dbr->fetchObject($queryResult)) {
+		$collectionContents[$collectionEntry->internal_member_id] = $collectionEntry->member_mid;
+	}
+	return $collectionContents;
+} 
 
 ?>
