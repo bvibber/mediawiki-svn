@@ -28,6 +28,10 @@ $wgMakesysopMessages['en'] = array(
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
 );
+$wgMakesysopMessages['cs'] = array(
+	'group-steward'        => 'Stevardi',
+	'group-steward-member' => 'Stevard',
+);
 $wgMakesysopMessages['de'] = array(
 	'makesysoptitle'       => 'Mache einen Benutzer zum Administrator',
 	'makesysoptext'        => 'Diese Maske wird von Bürokraten benutzt, um normale Benutzer zu Administratoren zu machen.',
@@ -47,6 +51,18 @@ $wgMakesysopMessages['de'] = array(
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
+);
+$wgMakesysopMessages['eo'] = array(
+	'group-steward'        => 'Stevardoj',
+	'group-steward-member' => 'Stevardo',
+);
+$wgMakesysopMessages['es'] = array(
+	'group-steward'        => 'Stewards',
+	'group-steward-member' => 'Steward',
+);
+$wgMakesysopMessages['fi'] = array(
+	'group-steward'        => 'ylivalvojat',
+	'group-steward-member' => 'ylivalvoja',
 );
 $wgMakesysopMessages['he'] = array(
 	'makesysoptitle'       => 'הפוך משתמש למפעיל מערכת',
@@ -88,6 +104,10 @@ $wgMakesysopMessages['id'] = array(
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => 'Project:Steward',
 );
+$wgMakesysopMessages['it'] = array(
+	'group-steward'        => 'Steward',
+	'group-steward-member' => 'Steward',
+);
 $wgMakesysopMessages['ja'] = array(
 	'makesysoptitle'       => '利用者を{{int:group-sysop}}にする',
 	'makesysoptext'        => 'このフォームは通常の利用者を{{int:group-sysop}}にするために使用します。{{int:group-sysop}}にする利用者名を入力し、この利用者を管理者にするボタンを押して下さい。',
@@ -108,6 +128,14 @@ $wgMakesysopMessages['ja'] = array(
 	'group-steward-member' => 'スチュワード',
 	'grouppage-steward'    => '{{ns:project}}:{{int:group-steward}}',
 );
+$wgMakesysopMessages['ko'] = array(
+	'group-steward'        => '스튜워드',
+	'group-steward-member' => '스튜워드',
+);
+$wgMakesysopMessages['mk'] = array(
+	'group-steward'        => 'Стјуарди',
+	'group-steward-member' => 'Стјуард',
+);
 $wgMakesysopMessages['nl'] = array(
 	'makesysoptitle'       => 'Maak een gebruiker beheerder',
 	'makesysoptext'        => 'Dit formulier wordt door bureaucraten gebruikt om een gebruiker beheerder te maken. Geef de naam van een gebruiker in het veld in en klik op de knop om de gebruiker beheerder te maken.',
@@ -124,6 +152,10 @@ $wgMakesysopMessages['nl'] = array(
 	'already_sysop'        => 'Deze gebruiker is al beheerder',
 	'already_bureaucrat'   => 'Deze gebruiker is al bureaucraat',
 	'makesysop-nodatabase' => 'Onjuiste interwikigebruikersnaam: $1',
+);
+$wgMakesysopMessages['no'] = array(
+	'group-steward'        => 'Stewards',
+	'group-steward-member' => 'Steward',
 );
 $wgMakesysopMessages['pl'] = array(
 	'makesysoptitle'       => 'Nadaj użytkownikowi uprawnienia administratora',
@@ -145,6 +177,10 @@ $wgMakesysopMessages['pl'] = array(
 	'group-steward-member' => 'Zarządca',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
 );
+$wgMakesysopMessages['pms'] = array(
+	'group-steward'        => 'Controlor',
+	'group-steward-member' => 'Controlor',
+);
 $wgMakesysopMessages['pt'] = array(
 	'makesysoptitle'       => 'Tornar um utilizador num administrador',
 	'makesysoptext'        => 'Este formulário é utilizado por burocratas para tornar utilizadores comuns em administradores. Introduza o nome do utilizador na caixa e clique no botão para tornar o utilizador num administrador.',
@@ -164,5 +200,45 @@ $wgMakesysopMessages['pt'] = array(
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
+);
+$wgMakesysopMessages['ro'] = array(
+	'group-steward'        => 'Stewarzi',
+	'group-steward-member' => 'Steward',
+);
+$wgMakesysopMessages['ru'] = array(
+	'group-steward'        => 'Стюарды',
+	'group-steward-member' => 'стюард',
+);
+$wgMakesysopMessages['sk'] = array(
+	'group-steward'        => 'Stewardi',
+	'group-steward-member' => 'Steward',
+);
+$wgMakesysopMessages['sl'] = array(
+	'group-steward'        => 'Upravniki',
+	'group-steward-member' => 'Upravnik',
+);
+$wgMakesysopMessages['sq'] = array(
+	'group-steward'        => 'Përgjegjës',
+	'group-steward-member' => 'Përgjegjës',
+);
+$wgMakesysopMessages['sr-ec'] = array(
+	'group-steward'        => 'стјуарди',
+	'group-steward-member' => 'стјуард',
+);
+$wgMakesysopMessages['sr-el'] = array(
+	'group-steward'        => 'stjuardi',
+	'group-steward-member' => 'stjuard',
+);
+$wgMakesysopMessages['sv'] = array(
+	'group-steward'        => 'Stewarder',
+	'group-steward-member' => 'Steward',
+);
+$wgMakesysopMessages['wa'] = array(
+	'group-steward'        => 'Mwaisse-manaedjeus tot avå',
+	'group-steward-member' => 'Mwaisse-manaedjeu tot avå',
+);
+$wgMakesysopMessages['zh-yue'] = array(
+	'group-steward'        => '執行員',
+	'group-steward-member' => '執行員',
 );
 ?>
