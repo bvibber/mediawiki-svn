@@ -358,7 +358,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$iIncludeCatCount = count($aIncludeCategories);
 	$iTotalIncludeCatCount = count($aIncludeCategories,COUNT_RECURSIVE) - $iIncludeCatCount;
 	$iExcludeCatCount = count($aExcludeCategories);
-	$iTotalCatCount = $iIncludeCatCount + $iExcludeCatCount;
+	$iTotalCatCount = $iTotalIncludeCatCount + $iExcludeCatCount;
 
 // ###### CHECKS ON PARAMETERS ######
 	
