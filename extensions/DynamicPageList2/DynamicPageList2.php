@@ -119,6 +119,7 @@ $wgDPL2DebugCodes = array(
 	'DPL2_WARN_NOINCLUDEDCATSORNS' => 2,
 	'DPL2_WARN_CATOUTPUTBUTWRONGPARAMS' => 2,
 	'DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD' => 2,
+	'DPL2_WARN_DEBUGPARAMNOTFIRST' => 2,
 	// OTHERS
 	'DPL2_QUERY' => 3
 );
@@ -187,7 +188,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 // ###### PARSE PARAMETERS ######
 	$aParams = explode("\n", $input);
 	
-	foreach($aParams as $sParam) {
+	foreach($aParams as $iParam => $sParam) {
 		
 		$aParam = explode("=", $sParam);
 		if( count( $aParam ) < 2 )
@@ -343,8 +344,11 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				break;
 				
 			case 'debug':
-				if( in_array($sArg, $wgDPL2Options['debug']) )
+				if( in_array($sArg, $wgDPL2Options['debug']) ) {
+					if($iParam > 1)
+						$output .= $logger->msg(DPL2_WARN_DEBUGPARAMNOTFIRST, "$sArg");
 					$logger->iDebugLevel = intval($sArg);
+				}
 				else	
 					$output .= $logger->msgWrongParam('debug', $sArg);
 				break;	
