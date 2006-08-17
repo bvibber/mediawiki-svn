@@ -96,7 +96,7 @@ $wgDPL2Options = array(
 	 */
 	'ordermethod' => array('default' => 'title', 'category,firstedit',  'category,lastedit', 'category,pagetouched', 'category,title', 'categoryadd', 'firstedit', 'lastedit', 'pagetouched', 'title', 'user,firstedit', 'user,lastedit'),
 	'redirects' => array('default' => 'exclude', 'exclude', 'include', 'only'),
-	'shownamespace' => array('default' => 'false', 'false', 'true')
+	'shownamespace' => array('default' => 'true', 'false', 'true')
 );
 
 /**
