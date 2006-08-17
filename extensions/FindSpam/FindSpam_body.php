@@ -29,7 +29,7 @@ class FindSpamPage extends SpecialPage {
 		$ip = $wgRequest->getText( 'ip' );
 
 		# Show form
-		$self = Title::makeTitle( NS_SPECIAL, 'Findspam' );
+		$self = Title::makeTitle( NS_SPECIAL, 'FindSpam' );
 		$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
 		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'findspam-ip' ) . '</td>';
 		$form .= '<td>' . wfInput( 'ip', 50, $ip ) . '</td></tr>';
