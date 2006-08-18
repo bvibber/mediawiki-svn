@@ -19,68 +19,67 @@ function parityClass($value) {
  * using rowspan and colspan for <th> elements
  */
 
-function mergeStructureBlocks($lhs, $rhs) {
-	$result = $lhs;
-	
-	for ($i = 0; $i < count($rhs); $i++) {
-		if ($i < count($result)) 
-			$result[$i] = array_merge($result[$i], $rhs[$i]);
-		else
-			$result[$i] = $rhs[$i]; 
-	}
-
-	return $result;
+class TableHeaderNode {
+	public $attribute = null;
+	public $width = 0;
+	public $height = 0;
+	public $childNodes = array();
 }
 
-function getStructureBlock($structure) {
-	$block = array();
-	$width = 0;
-	$height = 0;
+function getTableHeaderNode($structure) {
+	$tableHeaderNode = new TableHeaderNode();
 	
 	foreach($structure->attributes as $attribute) {
 		$type = $attribute->type;
 		
-		if (is_a($type, RecordType)) {
-			list($childBlock, $childWidth, $childHeight) = getStructureBlock($type->getStructure());
-			array_unshift($childBlock, array(array($attribute, $childWidth, $childHeight + 1)));
-			$width += $childWidth;
-			$height = max($height, $childHeight + 1);
-			$block = mergeStructureBlocks($block, $childBlock);
-		}
+		if (is_a($type, RecordType)) 
+			$childNode = getTableHeaderNode($type->getStructure());
 		else { 
-			$block = mergeStructureBlocks($block, array(array(array($attribute, 1, 1))));
-			$height = max($height, 1);
-			$width++;
+			$childNode = new TableHeaderNode();
+			$childNode->width = 1;
+			$childNode->height = 1;
 		}
+
+		$tableHeaderNode->height = max($tableHeaderNode->height, $childNode->height);
+		$tableHeaderNode->width += $childNode->width;
+		$tableHeaderNode->childNodes[] = $childNode;
+		$childNode->attribute = $attribute;
 	}
 	
-	return array($block, $width, $height);
+	$tableHeaderNode->height++;
+	
+	return $tableHeaderNode;
+}
+
+function addChildNodesToRows($headerNode, &$rows, $currentDepth) {
+	$height = $headerNode->height;
+	
+	foreach($headerNode->childNodes as $childNode) {
+		$attribute = $childNode->attribute;
+		$type = $attribute->type;
+		
+		if (!is_a($type, RecordType) && !is_a($type, RecordSetType))
+			$class = ' class="'. $type .'"';	
+		else		
+			$class = '';
+
+		$rowSpan = $height - $childNode->height;
+		$rows[$currentDepth] .= '<th' . $class .' colspan="'. $childNode->width . 
+									'" rowspan="'. $rowSpan . '">'. $attribute->name . '</th>';
+									
+		addChildNodesToRows($childNode, $rows, $currentDepth + $rowSpan);
+	} 
 }
 
 function getStructureAsTableHeaderRows($structure) {
-	list($structureBlock, $width, $height) = getStructureBlock($structure);
-	
+	$rootNode = getTableHeaderNode($structure);
 	$result = array();
 	
-	for ($i = 0; $i < $height; $i++) {
-		$row = '';
+	for ($i = 0; $i < $rootNode->height - 1; $i++)
+		$result[$i] = "";
 		
-		foreach($structureBlock[$i] as $block) {
-			list($attribute, $blockWidth, $blockHeight) = $block;
-			$type = $attribute->type;
-			
-			if (!is_a($type, RecordType) && !is_a($type, RecordSetType))
-				$class = ' class="'. $type .'"';	
-			else		
-				$class = '';
-				
-			$row .= '<th' . $class .' colspan="'. $blockWidth . 
-							'" rowspan="'. ($height - $blockHeight - $i + 1) . '">'. $attribute->name . '</th>';
-		}
-		
-		$result[] = $row;	
-	}
-	
+	addChildNodesToRows($rootNode, $result, 0);
+
 	return $result;
 }
 
