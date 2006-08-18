@@ -30,3 +30,15 @@ $wgDesysopMessages['he'] = array(
 	'desysop'              => 'בטל הרשאת מפעיל מערכת למשתמש',
 	'not_sysop'            => 'משתמש זה אינו מפעיל מערכת',
 );
+$wgDesysopMessages['nl'] = array(
+	'desysoptitle'         => 'Beheerdersrechten voor een gebruiker intrekken',
+	'desysoptext'          => "Bureaucraten begruiken dit formulier om beheerdersrechten voor een gebruiker in te trekken. Voer de gebruikersnaam in het veld in en klik op de knop om de beheerdersrechten in te trekken.",
+	'desysopname'          => 'Gebruikersnaam:',
+	'desysopok'            => "<b>Beheerdersrechten voor gebruiker \"$1\" zijn ingetrokken</b>",
+	'set_user_rights'      => 'Gebruikersrechten instellen',
+	'user_rights_set'      => "<b>Gebruikersrechten voor gebruiker \"$1\" zijn bijgewerkt</b>",
+	'set_rights_fail'      => "<b>Gebruikersrechten voor \"$1\" konden niet ingesteld worden. Heeft u de gebruikersnaam juist ingevoerd?</b>",
+	'desysop'              => 'Beheerdersrechten intrekken',
+	'not_sysop'            => 'Deze gebruiker is geen beheerder',
+);
+?>
