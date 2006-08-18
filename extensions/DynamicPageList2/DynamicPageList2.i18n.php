@@ -9,6 +9,10 @@
 
 $wgDPL2Messages = array();
 
+/**
+ * To translate messages into your language, create a $wgDPL2Messages['lang'] array where 'lang' is your language code and take $wgDPL2Messages['en'] as a model. Replace values with appropriate translations.
+ */
+
 $wgDPL2Messages['en'] = array(
 	/*
 		Debug
