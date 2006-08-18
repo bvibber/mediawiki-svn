@@ -14,14 +14,14 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	class Patroller extends SpecialPage {
 		
-		function Patroller() {
+		public function Patroller() {
 			global $wgMessageCache;
 			require_once( 'Patroller.i18n.php' );
 			efPatrollerAddMessages( $wgMessageCache );
 			SpecialPage::SpecialPage( 'Patrol', 'patroller' );
 		}
 
-		function execute( $par ) {
+		public function execute() {
 			global $wgUser, $wgRequest, $wgOut;
 			$this->setHeaders();
 			
@@ -65,6 +65,16 @@ if( defined( 'MEDIAWIKI' ) ) {
 				}
 			}
 
+			# If a token was passed, but the check box value was not, then
+			# the user wants to pause or stop patrolling
+			if( $wgRequest->getCheck( 'wpToken' ) && !$wgRequest->getCheck( 'wpAnother' ) ) {
+				$skin =& $wgUser->getSkin();
+				$self = Title::makeTitle( NS_SPECIAL, 'Patrol' );
+				$link = $skin->makeKnownLinkObj( $self, wfMsgHtml( 'patrol-resume' ) );
+				$wgOut->addHtml( wfMsgWikiHtml( 'patrol-stopped', $link ) );
+				return;
+			}
+
 			# Pop an edit off recentchanges
 			$haveEdit = false;
 			while( !$haveEdit ) {
@@ -93,7 +103,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 *
 		 * @param $edit Diff. to show the listing for
 		 */
-		function showDiffDetails( &$edit ) {
+		private function showDiffDetails( &$edit ) {
 			global $wgUser, $wgOut;
 			$edit->counter = 1;
 			$edit->mAttribs['rc_patrolled'] = 1;
@@ -108,7 +118,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 *
 		 * @param $edit Recent change to produce a diff. for
 		 */
-		function showDiff( &$edit ) {
+		private function showDiff( &$edit ) {
 			$diff = new DifferenceEngine( $edit->getTitle(), $edit->mAttribs['rc_last_oldid'], $edit->mAttribs['rc_this_oldid'] );
 			$diff->showDiff( '', '' );
 		}
@@ -118,7 +128,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 *
 		 * @param $edit RecentChange being dealt with
 		 */
-		function showControls( &$edit ) {
+		private function showControls( &$edit ) {
 			global $wgUser, $wgOut;
 			$self = Title::makeTitle( NS_SPECIAL, 'Patrol' );
 			$form = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
@@ -128,6 +138,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$form .= '<td>' . wfLabel( wfMsg( 'patrol-revert-reason' ), 'reason' ) . '&nbsp;';
 			$form .= $this->revertReasonsDropdown() . ' / ' . wfInput( 'wpPatrolRevertReason' ) . '</td></tr>';
 			$form .= '<tr><td align="right">' . wfSubmitButton( wfMsg( 'patrol-skip' ), array( 'name' => 'wpPatrolSkip' ) ) . '</td></tr></table>';
+			$form .= '<tr><td>' . wfCheck( 'wpAnother', true ) . '</td><td>' . wfMsgHtml( 'patrol-another' ) . '</td></tr>';
 			$form .= wfHidden( 'wpRcId', $edit->mAttribs['rc_id'] );
 			$form .= wfHidden( 'wpToken', $wgUser->editToken() );
 			$form .= '</form>';
@@ -144,7 +155,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 * @param $user User to suppress edits for
 		 * @return RecentChange
 		 */
-		function fetchChange( &$user ) {
+		private function fetchChange( &$user ) {
 			$dbr =& wfGetDB( DB_SLAVE );
 			$uid = $user->getId();
 			extract( $dbr->tableNames( 'recentchanges', 'patrollers', 'page' ) );
@@ -169,7 +180,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 * @param $rcid rc_id value of the row to fetch
 		 * @return RecentChange
 		 */
-		function loadChange( $rcid ) {
+		private function loadChange( $rcid ) {
 			$dbr =& wfGetDB( DB_SLAVE );
 			$res = $dbr->select( 'recentchanges', '*', array( 'rc_id' => $rcid ), 'Patroller::loadChange' );
 			if( $dbr->numRows( $res ) > 0 ) {
@@ -187,7 +198,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 * @param $edit RecentChange item to assign
 		 * @return bool
 		 */
-		function assignChange( &$edit ) {
+		private function assignChange( &$edit ) {
 			$dbw =& wfGetDB( DB_MASTER );
 			$val = array( 'ptr_change' => $edit->mAttribs['rc_id'], 'ptr_timestamp' => $dbw->timestamp() );
 			$res = $dbw->insert( 'patrollers', $val, 'Patroller::assignChange', 'IGNORE' );
@@ -200,7 +211,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 * @todo Use it or lose it
 		 * @param $rcid rc_id value
 		 */
-		function unassignChange( $rcid ) {
+		private function unassignChange( $rcid ) {
 			$dbw =& wfGetDB( DB_MASTER );
 			$dbw->delete( 'patrollers', array( 'ptr_change' => $rcid ), 'Patroller::unassignChange' );		
 		}
@@ -210,7 +221,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 * hidden forever because a user wandered off, and to
 		 * keep the table size down as regards old assignments
 		 */
-		function pruneAssignments() {
+		private function pruneAssignments() {
 			$dbw =& wfGetDB( DB_MASTER );
 			$dbw->delete( 'patrollers', array( 'ptr_timestamp < ' . $dbw->timestamp( time() - 120 ) ), 'Patroller::pruneAssignments' );
 		}
@@ -221,7 +232,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 * @param $edit RecentChange to revert
 		 * @param $comment Comment to use when reverting
 		 */
-		function revert( &$edit, $comment = '' ) {
+		private function revert( &$edit, $comment = '' ) {
 			global $wgUser;
 			if( !$wgUser->isBlocked( false ) ) { # Check block against master
 				$dbw =& wfGetDB( DB_MASTER );
@@ -230,16 +241,15 @@ if( defined( 'MEDIAWIKI' ) ) {
 				# Prepare the comment
 				$comment = wfMsgForContent( 'patrol-reverting' ) . ( $comment ? ' (' . $comment . ')' : '' );
 				# Find the old revision
-				$old = (int)$edit->mAttribs['rc_last_oldid'];
-				$oldRev = Revision::newFromId( $old );
+				$old = Revision::newFromId( $edit->mAttribs['rc_last_oldid'] );
 				# Be certain we're not overwriting a more recent change
 				# If we would, ignore it, and silently consider this change patrolled
 				$latest = (int)$dbw->selectField( 'page', 'page_latest', array( 'page_id' => $title->getArticleId() ), __METHOD__ );
-				if( $old == $latest ) {
+				if( $edit->mAttribs['rc_this_oldid'] == $latest ) {
 					# Revert the edit; keep the reversion itself out of recent changes
-					wfDebugLog( 'patroller', "Reverting " . $title->getPrefixedText() . " to r" . $oldRev->getId() );
+					wfDebugLog( 'patroller', 'Reverting "' . $title->getPrefixedText() . '" to r' . $old->getId() );
 					$article = new Article( $title );
-					$article->doEdit( $oldRev->getText(), $comment, EDIT_UPDATE & EDIT_MINOR & EDIT_SUPPRESS_RC );
+					$article->doEdit( $old->getText(), $comment, EDIT_UPDATE & EDIT_MINOR & EDIT_SUPPRESS_RC );
 				}
 				$dbw->commit();
 				# Mark the edit patrolled so it doesn't bother us again
@@ -256,7 +266,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 *
 		 * @return string
 		 */
-		function revertReasonsDropdown() {
+		private function revertReasonsDropdown() {
 			$msg = wfMsgForContent( 'patrol-reasons' );
 			if( $msg == '-' || $msg == '&lt;patrol-reasons&gt;' ) {
 				return '';
@@ -286,7 +296,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 * @param $request WebRequest object to test
 		 * @return string
 		 */
-		function revertReason( &$request ) {
+		private function revertReason( &$request ) {
 			$custom = $request->getText( 'wpPatrolRevertReason' );
 			return trim( $custom ) != ''
 					? $custom
