@@ -239,7 +239,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 				$dbw->begin();
 				$title = $edit->getTitle();
 				# Prepare the comment
-				$comment = wfMsgForContent( 'patrol-reverting' ) . ( $comment ? ' (' . $comment . ')' : '' );
+				$comment = wfMsgForContent( 'patrol-reverting', $comment );
 				# Find the old revision
 				$old = Revision::newFromId( $edit->mAttribs['rc_last_oldid'] );
 				# Be certain we're not overwriting a more recent change
