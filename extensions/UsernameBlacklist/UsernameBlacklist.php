@@ -96,7 +96,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			if( $list ) {
 				return $list;
 			} else {
-				$list = $this->makeBlacklist();
+				$list = $this->buildBlacklist();
 				$wgMemc->set( $this->key, $list, 900 );
 				return $list;
 			}
