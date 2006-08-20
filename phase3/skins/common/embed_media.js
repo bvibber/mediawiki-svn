@@ -1,6 +1,6 @@
 // JavaScript Document
 
-/*
+/* 
 	detects if the user has the vlc or annodex browser plugin.
 	//if they dont' have annodex & on a win/linux look for java/plugin
 		//look for windows media ogg filter?
@@ -63,7 +63,18 @@ function auto_embed(opt){
 		alert('error can\'t find target: ' + opt['target']);
 	}else{
 		if(embed_type){	
-			eval(embed_type + "_embed(opt)");
+			switch(embed_type){
+				case 'jre':
+					jre_embed(opt);
+				break;
+				case 'vlc':
+					vlc_embed(opt);
+				break;
+				case 'anx':
+					anx_embed(opt);
+				break;
+			}
+			//eval(embed_type + "_embed(opt)");
 		}else{
 			//make it large enough for text
 			//document.getElementById("div_" + opt['target']).style.height='320px';
@@ -149,7 +160,7 @@ function jre_embed(opt){
 
 	//for now use jcraft for audio: 
 	if(opt['stream_type']=='audio'){
-		var iframe_src = 'http://metavid.ucsc.edu/wiki_dev/jorbis-0.0.16/player/jorbis_embed.php';
+		var iframe_src = 'http://metavid.ucsc.edu/wiki_dev/phase3/embed/jorbis_embed.php';
 	}else{	
 		var iframe_src = 'http://metavid.ucsc.edu/wiki_dev/phase3/embed/cortado_embed.php';
 	}	
@@ -161,22 +172,11 @@ function jre_embed(opt){
 	//document.write(cortado_src);
 	iframe.src=iframe_src;
 	
-	//wiki_dev/phase3/embed/cortado_embed.php?media_url=http://metavid.ucsc.edu/wiki_dev/phase3/images/3/38/Launch_of_Skylab.ogg
-	info_div = document.getElementById("info_"+opt['target']);
-	
 	document.getElementById("div_" + opt['target']).innerHTML="";
 	document.getElementById("div_" + opt['target']).appendChild(iframe);
-
-	//document.getElementById("div_" + target).appendChild(info_div);
 	
- 	//'<span class="thumbcaption" style="float:left;width:30px">(you are using the cortado java player, more <a href="#">decoding options</a> are available)</span>';	
-
-	//document.getElementById(target).innerHTML="";
-	//document.getElementById(target).appendChild(eb);		  
-					  
-//	<applet code="com.fluendo.player.Cortado.class" archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar" width="320" height="240">
-					
-	//				</applet>
+	//hide the auto_embed play button: (java applet has video controls included)
+	document.getElementById("play_"+opt['target']).style.display='none';
 }
 
 function detect_client_plugins(){
@@ -291,23 +291,10 @@ function detect_applet(){
 		if ( (javaVersion != null) && (javaVersion.indexOf("1.3") != -1) ) {
 			pluginDetected = true;
 		}
-	}	
+	}		
 	if (pluginDetected) {
 		return 'jre';
 	} else {
 		return null;
 	}
-}
-/* function to dymanicly load javascript files */
-function dhtmlLoadScript(url)
-{
-   var e = document.createElement("script");
-   e.src = url;
-   e.type="text/javascript";
-   document.getElementsByTagName("head")[0].appendChild(e);
-}
-
-onload = function()
-{
-   dhtmlLoadScript("dhtml_way.js");
 }
