@@ -205,7 +205,6 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 'viewcount'             => 'Ova stranica je pogledana $1 puta.',
 'copyright'             => 'Sadržaji se koriste u skladu s $1.',
 'protectedpage'         => 'Zaštićena stranica',
-'administrators'        => 'Project:Administratori',
 'jumpto'                => 'Skoči na:',
 'jumptonavigation'      => 'orijentacija',
 'jumptosearch'          => 'traži',
@@ -1069,7 +1068,6 @@ mijenjanje postavki, uređivanje popisa praćenja i druge stvari koje zahtijevaj
 'makesysopok'           => '<b>Suradnik "$1" je postao administrator</b>',
 'makesysopfail'         => '<b>Suradnika "$1" nije se moglo učiniti administratorom. (Jeste li pravilno upisali ime?)</b>',
 'setbureaucratflag'     => 'Postavi oznaku birokrata',
-'setstewardflag'        => 'Postavi oznaku upravitelja',
 'rightslogtext'         => 'Ovo je evidencija promjena suradničkih prava.',
 'rights'                => 'Prava:',
 'set_user_rights'       => 'Postavi suradnička prava',
@@ -1078,7 +1076,6 @@ mijenjanje postavki, uređivanje popisa praćenja i druge stvari koje zahtijevaj
 'makesysop'             => 'Učini suradnika administratorom',
 'already_sysop'         => 'Ovaj je suradnik već administrator',
 'already_bureaucrat'    => 'Ovaj je suradnik već birokrat',
-'already_steward'       => 'Ovaj je suradnik već upravitelj',
 'movepage'              => 'Premjesti stranicu',
 'movepagetext'          => 'Korištenjem ovog obrasca ćete preimenovati stranicu i premjestiti sve stare izmjene
 na novo ime.

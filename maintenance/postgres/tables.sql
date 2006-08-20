@@ -240,7 +240,7 @@ CREATE INDEX img_timestamp_idx ON image (img_timestamp);
 CREATE TABLE oldimage (
   oi_name          TEXT         NOT NULL  REFERENCES image(img_name),
   oi_archive_name  TEXT         NOT NULL,
-  oi_size          SMALLINT     NOT NULL,
+  oi_size          INTEGER      NOT NULL,
   oi_width         SMALLINT     NOT NULL,
   oi_height        SMALLINT     NOT NULL,
   oi_bits          SMALLINT     NOT NULL,
@@ -446,7 +446,7 @@ CREATE TABLE profiling (
   pf_count   INTEGER         NOT NULL DEFAULT 0,
   pf_time    NUMERIC(18,10)  NOT NULL DEFAULT 0,
   pf_name    TEXT            NOT NULL,
-  pf_server  TEXT            NOT NULL
+  pf_server  TEXT            NULL
 );
 CREATE UNIQUE INDEX pf_name_server ON profiling (pf_name, pf_server);
 
@@ -454,6 +454,7 @@ CREATE UNIQUE INDEX pf_name_server ON profiling (pf_name, pf_server);
 CREATE TABLE mediawiki_version (
   type         TEXT         NOT NULL,
   mw_version   TEXT         NOT NULL,
+  notes        TEXT             NULL,
 
   pg_version   TEXT             NULL,
   pg_dbname    TEXT             NULL,

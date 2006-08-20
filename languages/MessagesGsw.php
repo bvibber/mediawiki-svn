@@ -126,7 +126,6 @@ $messages = array(
 'viewcount'             => 'Selli Syte isch {{PLURAL:$1|eimol|$1 Mol}} bsuecht worde.',
 'copyright'             => 'Der Inhalt vo dere Syte steht unter der $1.',
 'protectedpage'         => 'Gschützt Syte',
-'administrators'        => 'Project:Adminischtratore',
 'jumpto'                => 'Hops zue:',
 'jumptosearch'          => 'Suech',
 'badaccess'             => 'Kei usreichendi Rechte.',
@@ -631,7 +630,6 @@ Der aktuelle Text des gelöschten Artikels ist nur Administratoren zugänglich.'
 'rightslogtext'         => 'Des ischs Logbuech vun de Änderunge on Bnutzerrechte.',
 'already_sysop'         => 'Selle Benutzer isch scho Adminischtrator.',
 'already_bureaucrat'    => 'Selle Benutzer isch scho Bürokrat.',
-'already_steward'       => 'Selle Benutzer isch scho Steward.',
 'movepage'              => 'Artikel verschiebe',
 'movepagetext'          => 'Mit däm Forumlar chasch du en Artikel verschiebe, u zwar mit syre komplette Versionsgschicht. Der alt Titel leitet zum nöie wyter, aber Links ufen alt Titel blyben unveränderet.',
 'movepagetalktext'      => 'D Diskussionssyte wird mitverschobe, \'\'\'ussert:\'\'\'

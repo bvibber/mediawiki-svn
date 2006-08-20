@@ -2001,7 +2001,7 @@ class User {
 	 * @return array list of permission key names for given groups combined
 	 * @static
 	 */
-	function getGroupPermissions( $groups ) {
+	static function getGroupPermissions( $groups ) {
 		global $wgGroupPermissions;
 		$rights = array();
 		foreach( $groups as $group ) {
@@ -2018,7 +2018,7 @@ class User {
 	 * @return string localized descriptive name for group, if provided
 	 * @static
 	 */
-	function getGroupName( $group ) {
+	static function getGroupName( $group ) {
 		$key = "group-$group";
 		$name = wfMsg( $key );
 		if( $name == '' || $name == "&lt;$key&gt;" ) {
@@ -2033,7 +2033,7 @@ class User {
 	 * @return string localized descriptive name for member of a group, if provided
 	 * @static
 	 */
-	function getGroupMember( $group ) {
+	static function getGroupMember( $group ) {
 		$key = "group-$group-member";
 		$name = wfMsg( $key );
 		if( $name == '' || $name == "&lt;$key&gt;" ) {
@@ -2043,7 +2043,6 @@ class User {
 		}
 	}
 
-
 	/**
 	 * Return the set of defined explicit groups.
 	 * The *, 'user', 'autoconfirmed' and 'emailconfirmed'
@@ -2052,20 +2051,20 @@ class User {
 	 * @return array
 	 * @static
 	 */
-	function getAllGroups() {
+	static function getAllGroups() {
 		global $wgGroupPermissions;
 		return array_diff(
 			array_keys( $wgGroupPermissions ),
 			array( '*', 'user', 'autoconfirmed', 'emailconfirmed' ) );
 	}
-	
+
 	/**
 	 * Get the title of a page describing a particular group
 	 *
 	 * @param $group Name of the group
 	 * @return mixed
 	 */
-	function getGroupPage( $group ) {
+	static function getGroupPage( $group ) {
 		$page = wfMsgForContent( 'grouppage-' . $group );
 		if( !wfEmptyMsg( 'grouppage-' . $group, $page ) ) {
 			$title = Title::newFromText( $page );
@@ -2075,50 +2074,47 @@ class User {
 		return false;
 	}
 
-
-        /**
-	 * Fetch the user's signature text, if any, and normalize to
-	 * validated, ready-to-insert wikitext.
+	/**
+	 * Create a link to the group in HTML, if available
 	 *
-	 * @return string
-	 * @private
+	 * @param $group Name of the group
+	 * @param $text The text of the link
+	 * @return mixed
 	 */
-	function getSig() {
-		$username = $this->getName();
-		$nickname = $this->getOption( 'nickname' );
-		$nickname = $nickname === '' ? $username : $nickname;
-	
-		if( $this->getBoolOption( 'fancysig' ) !== false ) {
-			# Sig. might contain markup; validate this
-			if( User::validateSig( $nickname ) !== false ) {
-				# Validated; clean up (if needed) and return it
-				return User::cleanSig( $nickname, true );
-			} else {
-				# Failed to validate; fall back to the default
-				$nickname = $username;
-				wfDebug( "User::getSig: $username has bad XML tags in signature.\n" );
-			}
+	static function makeGroupLinkHTML( $group, $text = '' ) {
+		if( $text == '' ) {
+			$text = self::getGroupName( $group );
 		}
-
-        // Make sure nickname doesnt get a sig in a sig
-		$nickname = User::cleanSigInSig( $nickname );
-
-		# If we're still here, make it a link to the user page
-		$userpage = $this->getUserPage();
-		return( '[[' . $userpage->getPrefixedText() . '|' . wfEscapeWikiText( $nickname ) . ']]' );
+		$title = self::getGroupPage( $group );
+		if( $title ) {
+			global $wgUser;
+			$sk = $wgUser->getSkin();
+			return $sk->makeLinkObj( $title, $text );
+		} else {
+			return $text;
+		}
 	}
 
 	/**
-	 * Check that the user's signature contains no bad XML
+	 * Create a link to the group in Wikitext, if available
 	 *
-         * @static
-	 * @param string $text
-	 * @return mixed An expanded string, or false if invalid.
+	 * @param $group Name of the group
+	 * @param $text The text of the link (by default, the name of the group)
+	 * @return mixed
 	 */
-	function validateSig( $text ) {
-		return( wfIsWellFormedXmlFragment( $text ) ? $text : false );
+	static function makeGroupLinkWiki( $group, $text = '' ) {
+		if( $text == '' ) {
+			$text = self::getGroupName( $group );
+		}
+		$title = self::getGroupPage( $group );
+		if( $title ) {
+			$page = $title->getPrefixedText();
+			return "[[$page|$text]]";
+		} else {
+			return $text;
+		}
 	}
-	
+
 	/**
 	 * Clean up signature text
 	 *

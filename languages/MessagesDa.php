@@ -209,7 +209,6 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 "viewcount"		=> "Siden er vist i alt $1 gange.",
 'copyright'	=> 'Indholdet&nbsp;er&nbsp;udgivet&nbsp;under&nbsp;$1.',
 "protectedpage" => "Beskyttet side",
-"administrators" => "{{ns:4}}:Administratorer",
 'badaccess'     => 'Permission error',
 
 'nbytes'		=> '$1 bytes',
@@ -1073,7 +1072,6 @@ Indsæt navnet på brugeren i tekstboksen og tryk på knappen for at ændre rett
 'makesysopok'		=> "<b>Bruger \"$1\" er nu administrator</b>",
 'makesysopfail'		=> "<b>Bruger \"$1\" kunne ikke gøres til administrator. (Har du stavet navnet rigtigt?)</b>",
 'setbureaucratflag' => 'Sæt bureaukratflag',
-'setstewardflag'    => 'Sæt steward flag',
 'rightslogtext'		=> 'Dette er en log over ændringer i brugeres rettigheder.',
 'rights'			=> 'Rettigheder:',
 'set_user_rights'	=> 'Tildel brugerrettigheder',
@@ -1082,7 +1080,6 @@ Indsæt navnet på brugeren i tekstboksen og tryk på knappen for at ændre rett
 'makesysop'         => 'Tildel brugerrettigheder',
 'already_sysop'     => 'Denne bruger er allerede administrator',
 'already_bureaucrat' => 'Denne bruger er allerede bureaucrat',
-'already_steward'   => 'Denne bruger er allerede steward',
 
 # Move page
 #

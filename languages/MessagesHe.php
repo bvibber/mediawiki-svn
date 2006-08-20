@@ -1,4 +1,13 @@
 <?php
+/**
+ * Hebrew (עברית)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ *
+ * @author Rotem Dan (July 2003)
+ * @author Rotem Liss (March 2006 on)
+ */
 
 $rtl = true;
 $defaultUserOptionOverrides = array(
@@ -66,6 +75,7 @@ $magicWords = array(
 	'currentdayname'        => array( 1,    'שם יום נוכחי',                             'CURRENTDAYNAME'         ),
 	'currentyear'           => array( 1,    'שנה נוכחית',                               'CURRENTYEAR'            ),
 	'currenttime'           => array( 1,    'שעה נוכחית',                               'CURRENTTIME'            ),
+	'currenthour'           => array( 1,    'שעות נוכחיות',                             'CURRENTHOUR'            ),
 	'numberofpages'         => array( 1,    'מספר דפים כולל', 'מספר דפים',             'NUMBEROFPAGES'          ),
 	'numberofarticles'      => array( 1,    'מספר ערכים',                              'NUMBEROFARTICLES'       ),
 	'numberoffiles'         => array( 1,    'מספר קבצים',                              'NUMBEROFFILES'          ),
@@ -133,6 +143,9 @@ $magicWords = array(
 	'contentlanguage'       => array( 1,    'שפת תוכן',                           'CONTENTLANGUAGE', 'CONTENTLANG' ),
 	'pagesinnamespace'      => array( 1,    'דפים במרחב השם:',                   'PAGESINNAMESPACE:', 'PAGESINNS:' ),
 	'numberofadmins'        => array( 1,    'מספר מפעילים',                      'NUMBEROFADMINS' ),
+	'formatnum'             => array( 0,    'עיצוב מספר',                        'FORMATNUM' ),
+	'padleft'               => array( 0,    'ריפוד משמאל',                       'PADLEFT' ),
+	'padright'              => array( 0,    'ריפוד מימין',                       'PADRIGHT' ),
 );
 
 $namespaceNames = array(
@@ -356,7 +369,6 @@ $messages = array(
 "viewcount"         => "דף זה נצפה {{plural:$1|פעם אחת|$1 פעמים|פעמיים}}.",
 "copyright"         => "התוכן מוגש בכפוף ל־$1.<br /> בעלי זכויות היוצרים מפורטים בהיסטוריית השינויים של הדף.",
 "protectedpage"     => "דף מוגן",
-"administrators"    => "{{ns:project}}:מפעיל מערכת",
 "jumpto"            => "קפיצה אל:",
 "jumptonavigation"  => "ניווט",
 "jumptosearch"      => "חיפוש",
@@ -846,13 +858,11 @@ $messages = array(
 "group-bot"        => "בוטים",
 "group-sysop"      => "מפעילי מערכת",
 "group-bureaucrat" => "ביורוקרטים",
-"group-steward"    => "דיילים",
 "group-all"        => "(הכול)",
 
 "group-bot-member"        => "בוט",
 "group-sysop-member"      => "מפעיל מערכת",
 "group-bureaucrat-member" => "ביורוקרט",
-"group-steward-member"    => "דייל",
 
 "grouppage-bot"        => "{{ns:project}}:בוט",
 "grouppage-sysop"      => "{{ns:project}}:מפעיל מערכת",
@@ -951,6 +961,7 @@ $messages = array(
 "bysize"                    => "לפי גודל",
 "imgdelete"                 => "מחק",
 "imgdesc"                   => "תיאור",
+"imgfile"                   => "קובץ",
 "imglegend"                 => "מקרא: (תיאור) הצג/ערוך תיאור התמונה.",
 "imghistory"                => "היסטורית קובץ תמונה",
 "revertimg"                 => "חזור",
@@ -966,7 +977,13 @@ $messages = array(
 "shareduploadwiki-linktext" => "דף תיאור הקובץ",
 "noimage"                   => "לא נמצא קובץ בשם זה, אך יש באפשרותכם $1 חלופי.",
 "noimage-linktext"          => "להעלות קובץ",
-"uploadnewversion-linktext"          => "העלו גרסה חדשה של קובץ זה",
+"uploadnewversion-linktext" => "העלו גרסה חדשה של קובץ זה",
+"imagelist_date"            => "תאריך",
+"imagelist_name"            => "שם",
+"imagelist_user"            => "משתמש",
+"imagelist_size"            => "גודל (בתים)",
+"imagelist_description"     => "תיאור",
+"imagelist_search_for"      => "חיפוש תמונה בשם:",
 
 # MIME search
 "mimesearch" => "חיפוש MIME",
@@ -997,10 +1014,10 @@ $messages = array(
 
 בסך הכול בוצעו בממוצע \'\'\'$5\'\'\' עריכות לדף, והיו \'\'\'$6\'\'\' צפיות לכל עריכה.
 
-אורך [http://meta.wikimedia.org/wiki/Help:Job_queue תור המשימות] הוא \'\'\'$7\'\'\'
+אורך [http://meta.wikimedia.org/wiki/Help:Job_queue תור המשימות] הוא \'\'\'$7\'\'\'.
 
 \'\'\'$8\'\'\' קבצים הועלו לאתר עד כה.',
-"userstatstext"          => "ישנם '''$1''' [[{{ns:special}}:Listusers|משתמשים רשומים]] באתר, '''$2''' (או $4%) מתוכם מפעילי מערכת (ראו $3).",
+"userstatstext"          => "ישנם '''$1''' [[{{ns:special}}:Listusers|משתמשים רשומים]] באתר, '''$2''' (או $4%) מתוכם הם $5.",
 "statistics-mostpopular" => "הדפים הנצפים ביותר",
 
 # Disambiguations Page
@@ -1083,7 +1100,7 @@ $messages = array(
 
 # Special:Allpages
 "nextpage"          => "הדף הבא ($1)",
-"allpagesfrom"      => "הראה דפים החל מ:",
+"allpagesfrom"      => "הצג דפים החל מ:",
 "allarticles"       => "כל הדפים",
 "allinnamespace"    => "כל הדפים (מרחב שם $1)",
 "allnotinnamespace" => "כל הדפים (שלא במרחב השם $1)",
@@ -1092,6 +1109,9 @@ $messages = array(
 "allpagessubmit"    => "עבור",
 "allpagesprefix"    => "הדפים ששמם מתחיל ב…:",
 "allpagesbadtitle"  => "כותרת הדף המבוקש הייתה לא־חוקית, ריקה, קישור ויקי פנימי, או פנים שפה שגוי. ייתכן שהיא כוללת תו אחד או יותר האסורים לשימוש בכותרות.",
+
+# Special:Listusers
+"listusersfrom" => "הצג משתמשים החל מ:",
 
 # Email this user
 "mailnologin"     => "אין כתובת לשליחה",
@@ -1296,8 +1316,8 @@ $NEWPAGE
 "notargettitle" => "אין דף מטרה",
 "notargettext"  => "לא ציינתם דף מטרה או משתמש לגביו תבוצע פעולה זו.",
 "linklistsub"   => "(רשימת קישורים)",
-"linkshere"     => "הדפים שלהלן מקושרים לכאן:",
-"nolinkshere"   => "אין דפים המקושרים לכאן.",
+"linkshere"     => "הדפים שלהלן מקושרים לדף '''[[:$1]]''':",
+"nolinkshere"   => "אין דפים המקושרים לדף '''[[:$1]]'''.",
 "isredirect"    => "דף הפניה",
 "istemplate"    => "הכללה",
 
@@ -1386,7 +1406,6 @@ $NEWPAGE
 "makesysopok"        => '\'\'\'המשתמש "$1" הוא עכשיו מפעיל מערכת.\'\'\'',
 "makesysopfail"      => '\'\'\'לא ניתן היה למנות את המשתמש "$1" למפעיל מערכת.\'\'\' (האם הקלדתם נכונה את שם המשתמש?)',
 "setbureaucratflag"  => "הפוך משתמש זה לביורוקרט.",
-"setstewardflag"     => "הפוך משתמש זה לדייל",
 "rightslog"          => "יומן תפקידים",
 "rightslogtext"      => "זהו יומן השינויים בתפקידי המשתמשים.",
 "rightslogentry"     => 'שינה את ההרשאות של "$1" מההרשאות $2 להרשאות $3',
@@ -1397,7 +1416,6 @@ $NEWPAGE
 "makesysop"          => "הפוך משתמש למפעיל מערכת",
 "already_sysop"      => "משתמש זה הוא כבר מפעיל מערכת",
 "already_bureaucrat" => "משתמש זה הוא כבר ביורוקרט",
-"already_steward"    => "משתמש זה הוא כבר דייל",
 "rightsnone"         => "(ללא הרשאות)",
 
 # Move page
@@ -1980,6 +1998,7 @@ ta["ca-nstab-category"]     = ["c", "צפו בדף הקטגוריה"];',
 
 # E-mail address confirmation
 "confirmemail"            => 'אמתו כתובת דוא"ל',
+"confirmemail_noemail"    => 'אין לכם כתובת דוא"ל תקפה המוגדרת ב[[{{ns:special}}:Preferences|העדפות המשתמש]] שלכם.',
 "confirmemail_text"       => 'אתר זה דורש שתאמתו את כתובת הדוא"ל שלכם לפני שתשתמשו בשירותי הדוא"ל. לחצו על הכפתור למטה כדי לשלוח דוא"ל עם קוד אישור לכתובת הדוא"ל שהזנתם. טענו את הקישור בדפדפן שלכם כדי לאשר שכתובת הדוא"ל תקפה.',
 "confirmemail_send"       => "שלח קוד אישור",
 "confirmemail_sent"       => 'הדוא"ל עם קוד האישור נשלח.',
@@ -2047,6 +2066,17 @@ $1",
 "displaytitle" => "(קשרו לדף זה בשם [[$1]])",
 
 "loginlanguagelabel" => "שפה: $1",
+
+# Table pager
+"ascending_abbrev"         => "עולה",
+"descending_abbrev"        => "יורד",
+"table_pager_next"         => "הדף הבא",
+"table_pager_prev"         => "הדף הקודם",
+"table_pager_first"        => "הדף הראשון",
+"table_pager_last"         => "הדף האחרון",
+"table_pager_limit"        => "הצג $1 פריטים בדף",
+"table_pager_limit_submit" => "עבור",
+"table_pager_empty"        => "ללא תוצאות",
 );
 
 ?>

@@ -133,7 +133,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Témbongkeun kaca kategori\');',
 Jaga, parobahan na kaca ieu katut kaca obrolanana bakal dibéréndélkeun di dinya, sarta kacana bakal katémbong \'\'\'dikandelan\'\'\' dina kaca [[Special:Recentchanges|Nu anyar robah]] sangkan leuwih gampang ngawaskeunana.
 
 <p>Mun jaga anjeun moal deui ngawaskeun parobahan na kaca éta, klik tumbu "Eureun ngawaskeun" na lajursisi.',
-'administrators' => '{{ns:project}}:Kuncén',
 'allarticles' => 'Sadaya artikel',
 'allinnamespace' => 'Sadaya kaca ($1 ngaranspasi)',
 'alllogstext' => 'Témbongan gabungan log muatan, hapusan, koncian, peungpeukan, jeung kuncén. Bisa dipondokkeun ku cara milih tipe log, ngaran pamaké, atawa kaca nu dimaksud.',
@@ -153,7 +152,6 @@ Jaga, parobahan na kaca ieu katut kaca obrolanana bakal dibéréndélkeun di din
 'allpagessubmit' => 'Jung',
 'alphaindexline' => '$1 ka $2',
 'already_bureaucrat' => 'Pamaké ieu geus boga kalungguhan birokrat',
-'already_steward' => 'Pamaké ieu mémang geus jadi \'\'steward\'\'',
 'already_sysop' => 'Pamaké ieu geus boga kalungguhan kuncén',
 'alreadyloggedin' => '<strong>Pamaké $1, anjeun geus asup log!</strong><br />',
 'alreadyrolled' => 'Teu bisa mulangkeun édit ahir [[$1]] ku [[User:$2|$2]] ([[User talk:$2|Obrolan]]); geus aya nu ngédit atawa mulangkeun kacana. 

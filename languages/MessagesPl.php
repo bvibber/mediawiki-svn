@@ -30,6 +30,10 @@ $quickbarSettings = array(
 	'Brak', 'Stały, z lewej', 'Stały, z prawej', 'Unoszący się, z lewej'
 );
 
+$skinNames = array(
+	'standard'	=> 'Standardowa',
+);
+
 $dateFormats = array(
 	'mdy time' => 'H:i',
 	'mdy date' => 'M j, Y',
@@ -75,6 +79,10 @@ $messages = array(
 'tog-previewontop' => 'Pokazuj podgląd przed obszarem edycji',
 'tog-previewonfirst' => 'Pokaż podgląd strony podczas pierwszej edycji',
 'tog-nocache' => 'Wyłącz pamięć podręczną',
+'tog-enotifwatchlistpages' => 'Wyślij e-mail kiedy obserwowana przeze mnie strona ulegnie zmianie',
+'tog-enotifusertalkpages' => 'Wyślij e-mail kiedy moja strona dyskusji ulegnie zmianie',
+'tog-enotifminoredits' => 'Wyślij e-mail także w przypadku drobnych zmian na stronach',
+'tog-enotifrevealaddr' => 'Ujawnij mój adres e-mail w zawiadomieniach',
 'tog-shownumberswatching' => 'Pokaż liczbę obserwujących użytkowników',
 'tog-fancysig' => 'Podpis bez automatycznego linku',
 'tog-externaleditor' => 'Domyślnie używaj zewnętrznego edytora',
@@ -100,6 +108,13 @@ $messages = array(
 'thursday' => 'czwartek',
 'friday' => 'piątek',
 'saturday' => 'sobota',
+'sun' => 'Nie',
+'mon' => 'Pon',
+'tue' => 'Wto',
+'wed' => 'Śro',
+'thu' => 'Czw',
+'fri' => 'Pią',
+'sat' => 'Sob',
 'january' => 'styczeń',
 'february' => 'luty',
 'march' => 'marzec',
@@ -145,7 +160,15 @@ $messages = array(
 
 'mainpage' => 'Strona główna',
 'mainpagetext' => '<big><b>Instalacja oprogramowania powiodła się.</b></big>',
+'mainpagedocfooter' => 'Zobacz [http://meta.wikimedia.org/wiki/Help:Contents przewodnik użytkownika] w celu uzyskania informacji o działaniu oprogramowania wiki.
 
+== Na początek ==
+
+* [http://www.mediawiki.org/wiki/Help:Configuration_settings Lista ustawień konfiguracyjnych]
+* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki FAQ]
+* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce Ogłoszenia o wydaniach MediaWiki]',
+
+'portal' => 'Portal użytkowników',
 'about' => 'O serwisie',
 'aboutsite' => 'O serwisie {{SITENAME}}',
 'article' => 'Artykuł',
@@ -179,13 +202,13 @@ $messages = array(
 'privacy' => 'Zasady ochrony prywatności',
 'privacypage' => '{{ns:Project}}:Zasady ochrony prywatności',
 'errorpagetitle' => 'Błąd',
-'returnto' => 'Wróć do strony: $1.',
+'returnto' => 'Wróć do strony $1.',
 'help' => 'Pomoc',
 'search' => 'Szukaj',
 'searchbutton' => 'Szukaj',
-'go' => 'OK',
+'go' => 'Przejdź',
 'history' => 'Historia strony',
-'history_short' => 'Historia i autorzy',
+'history_short' => 'Historia',
 'info_short' => 'Informacja',
 'printableversion' => 'Wersja do druku',
 'permalink' => 'Bezpośredni link',
@@ -206,10 +229,15 @@ $messages = array(
 'postcomment' => 'Skomentuj',
 'articlepage' => 'Strona artykułu',
 'talk' => 'dyskusja',
+'views' => 'widok',
 'toolbox' => 'Narzędzia',
 'userpage' => 'Strona użytkownika',
 'projectpage' => 'Strona projektu',
 'imagepage' => 'Strona grafiki',
+'mediawikipage' => 'Strona komunikatu',
+'templatepage' => 'Strona szablonu',
+'viewhelppage' => 'Strona pomocy',
+'categorypage' => 'Strona kategorii',
 'viewtalkpage' => 'Strona dyskusji',
 'otherlanguages' => 'W innych językach',
 'redirectedfrom' => '(Przekierowano z $1)',
@@ -219,12 +247,18 @@ $messages = array(
 'viewcount' => 'Tę stronę obejrzano {{plural:$1|jeden raz|$1 razy}}.',
 'copyright' => 'Tekst udostępniany na licencji $1.',
 'protectedpage' => 'Strona zabezpieczona',
-'administrators' => '{{ns:Project}}:Administratorzy',
 'jumpto' => 'Skocz do:',
 'jumptonavigation' => 'nawigacji',
 'jumptosearch' => 'wyszukiwania',
 
 'badaccess' => 'Nieprawidłowe uprawnienia',
+'badaccess-group0' => 'Nie masz uprawnień wymaganych do wykonania tej operacji.',
+'badaccess-group1' => 'Wykonywanie tej operacji zostało ograniczone do użytkowników w grupie $1.',
+'badaccess-group2' => 'Wykonywanie tej operacji zostało ograniczone do użytkowników w jednej z grup $1.',
+'badaccess-groups' => 'Wykonywanie tej operacji zostało ograniczone do użytkowników w jednej z grup $1.',
+
+'versionrequired' => 'Wymagana MediaWiki w wesji $1',
+'versionrequiredtext' => 'Wymagana jest MediaWiki w wersji $1 aby skorzystać z tej strony . Zobacz [[Special:Version]]',
 
 'retrievedfrom' => 'Źródło: "$1"',
 'youhavenewmessages' => 'Masz $1 ($2).',
@@ -323,7 +357,9 @@ Tekst źródłowy strony można w dalszym ciągu podejrzeć i skopiować.',
 'logouttitle' => 'Wylogowanie użytkownika',
 'logouttext' => '<strong>Wylogowano Cię</strong>.<br />Możesz kontynuować pracę jako niezarejestrowany użytkownik albo zalogować się ponownie jako ten sam lub inny użytkownik.',
 
-'welcomecreation' => '==Witaj, $1!== Właśnie utworzyliśmy dla Ciebie konto. Nie zapomnij dostosować [[{{ns:Special}}:Preferences|preferencji]].',
+'welcomecreation' => '== Witaj, $1! ==
+
+Właśnie utworzyliśmy dla Ciebie konto. Nie zapomnij dostosować [[{{ns:Special}}:Preferences|preferencji]].',
 
 'loginpagetitle' => 'Logowanie',
 'yourname' => 'Login',
@@ -356,6 +392,7 @@ Tekst źródłowy strony można w dalszym ciągu podejrzeć i skopiować.',
 'yourvariant' => 'Wariant',
 'yournick' => 'Twój podpis',
 'badsig' => 'Błędny podpis, sprawdź tagi HTML.',
+'prefs-help-email-enotif' => 'Ten adres jest także używany do wysyłania powiadomień, jeśli włączysz tę opcję.',
 'prefs-help-realname' => '* Imię i nazwisko (opcjonalnie): jeśli zdecydujesz się je podać, zostaną użyte, aby zapewnić Twojej pracy atrybucję.',
 'loginerror' => 'Błąd logowania',
 'prefs-help-email' => '* E-mail (opcjonalnie): Podanie e-maila pozwala innym skontaktować się z tobą za pośrednictwem twojej strony użytkownika
@@ -371,7 +408,7 @@ lub twojej strony dyskusji bez potrzeby ujawniania twoich danych identyfikacyjny
 'wrongpassword' => 'Podane przez Ciebie hasło jest nieprawidłowe. Spróbuj jeszcze raz.',
 'wrongpasswordempty' => 'Wprowadzone hasło jest puste. Spróbuj ponownie.',
 'mailmypassword' => 'Wyślij mi nowe hasło',
-'passwordremindertitle' => '{{SITENAME}} przypomina o haśle',
+'passwordremindertitle' => 'Przypomnienie hasła w serwisie {{SITENAME}}',
 'passwordremindertext' => 'Ktoś (prawdopodobnie Ty, spod adresu $1)
 poprosił od nas o wysłanie nowego hasła dostępu do serwisu
 {{SITENAME}} ($4).
@@ -423,7 +460,7 @@ Nim jakiekolwiek wiadomości zostaną wysłane na ten adres, należy wypełnić 
 'showpreview' => 'Podgląd',
 'showdiff' => 'Podgląd zmian',
 'anoneditwarning' => 'Nie jesteś zalogowany. Twój adres IP będzie zapisany w historii edycji strony.',
-'missingsummary' => '<strong>Przypomnienie:</strong> Nie wprowadziłeś opisu zmian. Jeżeli nie chcesz go wprowadzać naciśnij przycisk "Zapisz" jeszcze raz.',
+'missingsummary' => '<b>Przypomnienie:</b> Nie wprowadziłeś opisu zmian. Jeżeli nie chcesz go wprowadzać naciśnij przycisk "Zapisz" jeszcze raz.',
 'missingcommenttext' => 'Wprowadź komentarz poniżej.',
 'blockedtitle' => 'Użytkownik jest zablokowany',
 'blockedtext' => 'Twoje konto lub adres IP zostały zablokowane przez $1.
@@ -449,11 +486,11 @@ Twój adres IP to $3.',
 'newarticletext' => 'Nie ma jeszcze artykułu o tym tytule. W poniższym polu można wpisać pierwszy jego fragment. Jeśli nie to było Twoim zamiarem, wciśnij po prostu <i>Wstecz</i>.',
 'anontalkpagetext' => '---- <i>To jest strona dyskusyjna dla użytkowników anonimowych - takich, którzy nie mają jeszcze swojego konta lub nie chcą go w tej chwili używać. By ich identyfikować używamy numerów IP. Jeśli jesteś anonimowym użytkownikiem i wydaje Ci się, że zamieszczone tu komentarze nie są skierowane do Ciebie, [[{{ns:Special}}:Userlogin|utwórz proszę konto albo zaloguj się]] - dzięki temu unikniesz w przyszłości podobnych nieporozumień.</i>',
 'noarticletext' => 'Nie ma jeszcze artykułu o tym tytule. Możesz [{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} utworzyć artykuł {{FULLPAGENAME}}] lub [[{{ns:Special}}:Search/{{FULLPAGENAME}}|poszukać {{FULLPAGENAME}} w innych artykułach]].',
-'clearyourcache' => '<strong>Uwaga:</strong> po zapisaniu zmian musisz zaktualizować pamięć podręczną (cache) przeglądarki: <strong>Mozilla / Firefox:</strong> kliknij <i>Reload</i> (lub <i>Ctrl-R</i>), <strong>IE / Opera:</strong> <i>Ctrl-F5</i>, <strong>Safari:</strong> <i>Cmd-R</i>, <strong>Konqueror</strong> <i>Ctrl-R</i>.',
+'clearyourcache' => '<b>Uwaga:</b> po zapisaniu zmian musisz zaktualizować pamięć podręczną (cache) przeglądarki: <b>Mozilla / Firefox:</b> kliknij <i>Reload</i> (lub <i>Ctrl-R</i>), <b>IE / Opera:</b> <i>Ctrl-F5</i>, <b>Safari:</b> <i>Cmd-R</i>, <b>Konqueror</b> <i>Ctrl-R</i>.',
 'usercssjsyoucanpreview' => '<strong>Wskazówka:</strong> Użyj przycisku "Podgląd", aby przetestować Twój nowy arkusz stylów CSS lub kod JavaScript przed jego zapisaniem.',
-'usercsspreview' => '<strong>Pamiętaj, że to na razie tylko podgląd Twojego arkusza stylów - nic jeszcze nie zostało zapisane!</strong>',
-'userjspreview' => '<strong>Pamiętaj, że to na razie tylko podgląd Twojego JavaScriptu - nic jeszcze nie zostało zapisane!</strong>',
-'userinvalidcssjstitle' => '<strong>Uwaga:</strong> Nie ma skórki o nazwie "$1". Pamiętaj, że strony użytkownika zawierające CSS i JavaScript powinny zaczynać się małą literą, np. User:Foo/monobook.css.',
+'usercsspreview' => '<b>Pamiętaj, że to na razie tylko podgląd Twojego arkusza stylów - nic jeszcze nie zostało zapisane!</b>',
+'userjspreview' => '<b>Pamiętaj, że to na razie tylko podgląd Twojego JavaScriptu - nic jeszcze nie zostało zapisane!</b>',
+'userinvalidcssjstitle' => '<b>Uwaga:</b> Nie ma skórki o nazwie "$1". Pamiętaj, że strony użytkownika zawierające CSS i JavaScript powinny zaczynać się małą literą, np. User:Foo/monobook.css.',
 'updated' => '(Zmodyfikowano)',
 'note' => '<strong>Uwaga:</strong>',
 'previewnote' => '<strong>To jest tylko podgląd - artykuł nie został jeszcze zapisany!</strong>',
@@ -548,7 +585,7 @@ liczba znalezionych artykułów: $3.',
 'viewprevnext' => 'Zobacz ($1) ($2) ($3).',
 'showingresults' => 'Oto lista <b>$1</b> pozycji, poczynając od numeru <b>$2</b>.',
 'showingresultsnum' => 'Oto lista <b>$3</b> pozycji, poczynając od numeru <b>$2</b>.',
-'nonefound' => '<strong>Uwaga</strong>: brak rezultatów wyszukiwania spowodowany jest bardzo często szukaniem najpopularniejszych słów, takich jak "jest" czy "nie", które nie są indeksowane, albo z powodu podania w zapytaniu więcej niż jednego słowa (na liście odnalezionych stron znajdą się tylko te, które zawierają wszystkie podane słowa).',
+'nonefound' => '<b>Uwaga</b>: brak rezultatów wyszukiwania spowodowany jest bardzo często szukaniem najpopularniejszych słów, takich jak "jest" czy "nie", które nie są indeksowane, albo z powodu podania w zapytaniu więcej niż jednego słowa (na liście odnalezionych stron znajdą się tylko te, które zawierają wszystkie podane słowa).',
 'powersearch' => 'Szukaj',
 'powersearchtext' => "Szukaj w przestrzeniach nazw:<br />$1<br />$2 Pokaż przekierowania<br />Szukany tekst $3 $9",
 'searchdisabled' => 'Wyszukiwanie w serwisie {{SITENAME}} zostało wyłączone. W międzyczasie możesz skorzystać z wyszukiwania Google.',
@@ -621,15 +658,13 @@ liczba znalezionych artykułów: $3.',
 # Groups
 'group' => 'Grupa:',
 'group-bot' => 'Boty',
-'group-sysop' => 'Sysopi',
+'group-sysop' => 'Administratorzy',
 'group-bureaucrat' => 'Biurokraci',
-'group-steward' => 'Stewardzi',
 'group-all' => '(wszyscy)',
 
 'group-bot-member' => 'Bot',
-'group-sysop-member' => 'Sysop',
+'group-sysop-member' => 'Administrator',
 'group-bureaucrat-member' => 'Biurokrata',
-'group-steward-member' => 'Steward',
 
 'grouppage-bot' => '{{ns:Project}}:Boty',
 'grouppage-sysop' => '{{ns:Project}}:Administratorzy',
@@ -724,6 +759,7 @@ liczba znalezionych artykułów: $3.',
 'bysize' => 'według rozmiaru',
 'imgdelete' => 'usuń',
 'imgdesc' => 'opis',
+'imgfile' => 'plik',
 'imglegend' => 'Legenda: (opis) - pokaż/edytuj opis pliku.',
 'imghistory' => 'Historia pliku',
 'revertimg' => 'przywróć',
@@ -737,6 +773,12 @@ liczba znalezionych artykułów: $3.',
 'noimage' => 'Nie istnieje plik o tej nazwie. Możesz go $1.',
 'noimage-linktext' => 'przesłać',
 'uploadnewversion-linktext' => 'Załaduj nowszą wersję tego pliku',
+'imagelist_date' => 'Data',
+'imagelist_name' => 'Nazwa',
+'imagelist_user' => 'Użytkownik',
+'imagelist_size' => 'Rozmiar (bajty)',
+'imagelist_description' => 'Opis',
+'imagelist_search_for' => 'Szukaj grafiki o nazwie:',
 
 # Mime search
 #
@@ -772,7 +814,7 @@ Ilość przesłanych plików: <b>$8</b>
 Użytkownicy od startu serwisu wykonali <b>$4</b> edycji, średnio <b>$5</b> edycji na stronę. W sumie było <b>$3</b> odwiedzin, średnio <b>$6</b> odwiedzin na edycję.
 
 Długość [http://meta.wikimedia.org/wiki/Help:Job_queue kolejki zadań] wynosi <b>$7</b>.',
-'userstatstext' => 'Jest <b>$1</b> zarejestrowanych użytkowników. Spośród nich <b>$2</b> (czyli <b>$4%</b>) ma status administratora (zobacz $3).',
+'userstatstext' => 'Jest <b>$1</b> zarejestrowanych użytkowników. Spośród nich <b>$2</b> (czyli <b>$4%</b>) ma status $5.',
 'statistics-mostpopular' => 'Najczęściej odwiedzane strony',
 
 'disambiguations' => 'Strony ujednoznaczniające',
@@ -900,6 +942,8 @@ Jeśli chcesz usunąć stronę ze swojej listy obserwowanych, kliknij na "Przest
 'watchdetails' => '* liczba obserwowanych przez Ciebie stron: $1, nie licząc stron dyskusji;
 * [[{{ns:Special}}:Watchlist/edit|Pokaż i edytuj pełną listę]]
 * [[{{ns:Special}}:Watchlist/clear|Usuń wszystkie strony]]',
+'wlheader-enotif' => '* Wysyłanie powiadomień na adres e-mail jest włączone.',
+'wlheader-showupdated' => '* Strony które zostały zmienione od twojej ostatniej wizyty na nich zostały <b>pogrubione</b>',
 'watchmethod-recent'=> 'poszukiwanie ostatnich zmian wśród obserwowanych stron',
 'watchmethod-list' => 'poszukiwanie obserwowanych stron wśród ostatnich zmian',
 'removechecked' => 'Usuń zaznaczone pozycje z listy obserwowanych',
@@ -915,10 +959,35 @@ Jeśli chcesz usunąć stronę ze swojej listy obserwowanych, kliknij na "Przest
 'wlhideshowbots' => '$1 edycje botów',
 'wldone' => 'Wykonano.',
 
+'enotif_mailer' => 'Powiadomienie z serwisu {{SITENAME}}',
 'enotif_reset' => 'Zaznacz wszystkie strony jako odwiedzone',
 'enotif_newpagetext'=> 'To jest nowa strona.',
-'changed' => 'zmieniono',
-'created' => 'utworzono',
+'changed' => 'zmieniona',
+'created' => 'utworzona',
+'enotif_subject' => 'Strona $PAGETITLE w serwisie {{SITENAME}} została $CHANGEDORCREATED przez użytkownika $PAGEEDITOR',
+'enotif_lastvisited' => 'Zobacz $1 w celu obejrzenia wszystkich zmian od twojej ostatniej wizyty.',
+'enotif_body' => 'Drogi $WATCHINGUSERNAME,
+
+strona $PAGETITLE w serwisie {{SITENAME}} została $CHANGEDORCREATED o $PAGEEDITDATE przez użytkownika $PAGEEDITOR, zobacz $PAGETITLE_URL w celu obejrzenia aktualnej wersji.
+
+$NEWPAGE
+
+Opis zmiany: $PAGESUMMARY $PAGEMINOREDIT
+
+Skontaktuj się z autorem:
+mail: $PAGEEDITOR_EMAIL
+wiki: $PAGEEDITOR_WIKI
+
+W przypadku kolejnych zmian nowe powiadomienia nie zostaną wysłane dopóki nie odwiedzisz tej strony. Możesz także zresetować flagi powiadomień dla wszystkich obserwowanych przez ciebie stron.
+
+             Wiadomość systemu powiadomień serwisu {{SITENAME}}
+
+--
+W celu zmiany ustawień swojej listy obserwowanych odwiedź
+{{fullurl:{{ns:special}}:Watchlist/edit}}
+
+Pomoc:
+{{fullurl:{{ns:help}}:Contents}}',
 
 # Delete/protect/revert
 #
@@ -971,7 +1040,7 @@ Naciśnij "wstecz", przeładuj stronę, po czym ponownie wydaj polecenie.',
 'protect-viewtext' => 'Nie masz uprawnień do zmiany poziomu zabezpieczenia strony. Obecne ustawienia dla strony <strong>$1</strong> to:',
 'protect-default' => '(wszyscy)',
 'protect-level-autoconfirmed' => 'tylko zarejestrowani',
-'protect-level-sysop' => 'tylko sysopowie',
+'protect-level-sysop' => 'tylko administratorzy',
 
 # restrictions (nouns)
 'restriction-edit' => 'Edytuj',
@@ -986,7 +1055,7 @@ Naciśnij "wstecz", przeładuj stronę, po czym ponownie wydaj polecenie.',
 'undeletearticle' => 'Odtwórz skasowaną stronę',
 'undeleterevisions' => 'Liczba zarchiwizowanych wersji: $1',
 'undeletehistory' => 'Odtworzenie strony spowoduje przywrócenie także jej wszystkich poprzednich wersji. Jeśli od czasu skasowania ktoś utworzył nową stronę o tej nazwie, odtwarzane wersje znajdą się w jej historii, a obecna wersja pozostanie bez zmian.',
-'undeletehistorynoadmin' => 'Ten artykuł został skasowany. Przyczyna usunięcia podana jest w podsumowaniu poniżej, razem z danymi użytkownika, który edytował artykuł przed skasowaniem. Sama treść usuniętych wersji jest dostępna jedynie dla sysopów (administratorów).',
+'undeletehistorynoadmin' => 'Ten artykuł został skasowany. Przyczyna usunięcia podana jest w podsumowaniu poniżej, razem z danymi użytkownika, który edytował artykuł przed skasowaniem. Sama treść usuniętych wersji jest dostępna jedynie dla administratorów.',
 'undeleterevision' => 'Skasowano wersję z $1',
 'undeletebtn' => 'Odtwórz',
 'undeletereset' => 'Wyczyść',
@@ -1039,7 +1108,7 @@ Zobacz [[{{ns:Special}}:Log/delete]], jeśli chcesz przejrzeć rejestr ostatnio 
 'blockip' => 'Zablokuj użytkownika',
 'blockiptext' => 'Użyj poniższego formularza aby zablokować prawo zapisu spod określonego adresu IP. Powinno się to robić jedynie by zapobiec wandalizmowi, a zarazem w zgodzie z [[{{ns:Project}}:Zasady i wskazówki|zasadami]]. Podaj powód (np. umieszczając nazwy stron, na których dopuszczono się wandalizmu).',
 'ipaddress' => 'Adres IP',
-'ipadressorusername' => 'Adres IP lub nazwa użytkownika:',
+'ipadressorusername' => 'Adres IP lub nazwa użytkownika',
 'ipbexpiry' => 'Czas blokady',
 'ipbreason' => 'Powód',
 'ipbanononly' => 'Zablokuj tylko anonimowych użytkowników',
@@ -1099,24 +1168,22 @@ Zobacz [[{{ns:Special}}:Log/delete]], jeśli chcesz przejrzeć rejestr ostatnio 
 
 # Make sysop
 'makesysoptitle' => 'Nadaj użytkownikowi uprawnienia administratora',
-'makesysoptext' => 'Ten formularz jest wykorzystywany przez użytkowników o statusie biurokraty do przyznawania użytkownikom praw administratora. Wpisz identyfikator użytkownika do okienka i kliknij na przycisk, aby to uczynić.',
+'makesysoptext' => 'Ten formularz jest wykorzystywany przez użytkowników o statusie biurokraty do przyznawania innym użytkownikom praw administratora. Aby to uczynić, wpisz nazwę użytkownika i kliknij na przycisk.',
 'makesysopname' => 'Nazwa użytkownika:',
-'makesysopsubmit' => 'Przyznaj temu użytkownikowi prawa administratora',
-'makesysopok' => '<b>Od tej chwili użytkownik "$1" jest już administratorem</b>',
-'makesysopfail' => '<b>Użytkownik "$1" nie może zostać administratorem. (Sprawdź czy poprawnie wpisałeś nazwę użytkownika.)</b>',
-'setbureaucratflag' => 'Ustaw flagę <i>Biurokraty</i>',
-'setstewardflag' => 'Ustaw flagę <i>Stewarda</i>',
+'makesysopsubmit' => 'Przyznaj temu użytkownikowi uprawnienia administratora',
+'makesysopok' => '<b>Użytkownik "$1" otrzymał uprawnienia administratora</b>',
+'makesysopfail' => '<b>Użytkownik "$1" nie otrzymał uprawnienień administratora. (Czy wprowadziłeś poprawną nazwę użytkownika?)</b>',
+'setbureaucratflag' => 'Ustaw status biurokraty',
 'rightslog' => 'Uprawnienia',
 'rightslogtext' => 'Rejestr zmian uprawnień użytkowników.',
 'rightslogentry' => 'zmienił uprawnienia użytkownika $1 z "$2" na "$3"',
 'rights' => 'Uprawnienia:',
 'set_user_rights' => 'Zmień uprawnienia użytkownika',
 'user_rights_set' => '<b>Uprawnienia użytkownika "$1" zostały zmienione</b>',
-'set_rights_fail' => '<b>Uprawnienia użytkownika "$1" nie zostały zmienione. (Sprawdź czy poprawnie wpisałeś nazwę użytkownika.)</b>',
-'makesysop' => 'Przyznaj użytkownikowi prawa administratora',
+'set_rights_fail' => '<b>Uprawnienia użytkownika "$1" nie zostały zmienione. (Czy wprowadziłeś poprawną nazwę użytkownika?)</b>',
+'makesysop' => 'Przyznaj użytkownikowi uprawnienia administratora',
 'already_sysop' => 'Ten użytkownik jest już administratorem',
 'already_bureaucrat' => 'Ten użytkownik jest już biurokratą',
-'already_steward' => 'Ten użytkownik jest już stewardem',
 'rightsnone' => '(podstawowe)',
 
 # Move page
@@ -1186,6 +1253,7 @@ Można również użyć łącza, np. [[{{ns:Special}}:Export/{{Mediawiki:mainpag
 'allmessagescurrent' => 'Tekst obecny',
 'allmessagestext' => 'Oto lista wszystkich komunikatów dostępnych w przestrzeni nazw MediaWiki:',
 'allmessagesnotsupportedUI' => 'Wybrany przez Ciebie język interfejsu <b>$1</b> nie jest wspierany przez stronę Special:Allmessages.',
+'allmessagesnotsupportedDB' => 'Strona <b>Special:Allmessages</b> nie może być użyta, ponieważ <b>$wgUseDatabaseMessages</b> jest wyłączone.',
 'allmessagesfilter' => 'Filtr nazw komunikatów:',
 'allmessagesmodified' => 'Pokaż tylko zmodyfikowane',
 
@@ -1661,7 +1729,18 @@ $1',
 'displaytitle' => '(Link do tej strony to [[:$1|$1]])',
 
 'loginlanguagelabel' => 'Język: $1',
-);
 
+# Table pager
+'ascending_abbrev' => 'rosn.',
+'descending_abbrev' => 'mal.',
+'table_pager_next' => 'Następna strona',
+'table_pager_prev' => 'Poprzednia strona',
+'table_pager_first' => 'Pierwsza strona',
+'table_pager_last' => 'Ostatnia strona',
+'table_pager_limit' => 'Pokaż $1 obiektów na stronę',
+'table_pager_limit_submit' => 'Pokaż',
+'table_pager_empty' => 'Brak wyników',
+
+);
 
 ?>

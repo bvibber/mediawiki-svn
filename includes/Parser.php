@@ -19,6 +19,7 @@ define( 'RLH_FOR_UPDATE', 1 );
 define( 'OT_HTML', 1 );
 define( 'OT_WIKI', 2 );
 define( 'OT_MSG' , 3 );
+define( 'OT_PREPROCESS', 4 );
 
 # Flags for setFunctionHook
 define( 'SFH_NO_HASH', 1 );
@@ -108,6 +109,7 @@ class Parser
 	var $mOptions,      // ParserOptions object
 		$mTitle,        // Title context, used for self-link rendering and similar things
 		$mOutputType,   // Output type, one of the OT_xxx constants
+		$ot,            // Shortcut alias, see setOutputType()
 		$mRevisionId;   // ID to display in {{REVISIONID}} tags
 
 	/**#@-*/
@@ -156,6 +158,8 @@ class Parser
 		$this->setFunctionHook( 'numberoffiles', array( 'CoreParserFunctions', 'numberoffiles' ), SFH_NO_HASH );
 		$this->setFunctionHook( 'numberofadmins', array( 'CoreParserFunctions', 'numberofadmins' ), SFH_NO_HASH );
 		$this->setFunctionHook( 'language', array( 'CoreParserFunctions', 'language' ), SFH_NO_HASH );
+		$this->setFunctionHook( 'padleft', array( 'CoreParserFunctions', 'padleft' ), SFH_NO_HASH );
+		$this->setFunctionHook( 'padright', array( 'CoreParserFunctions', 'padright' ), SFH_NO_HASH );
 
 		if ( $wgAllowDisplayTitle ) {
 			$this->setFunctionHook( 'displaytitle', array( 'CoreParserFunctions', 'displaytitle' ), SFH_NO_HASH );
@@ -226,6 +230,17 @@ class Parser
 		wfProfileOut( __METHOD__ );
 	}
 
+	function setOutputType( $ot ) {
+		$this->mOutputType = $ot;
+		// Shortcut alias
+		$this->ot = array(
+			'html' => $ot == OT_HTML,
+			'wiki' => $ot == OT_WIKI,
+			'msg' => $ot == OT_MSG,
+			'pre' => $ot == OT_PREPROCESS,
+		);
+	}
+
 	/**
 	 * Accessor for mUniqPrefix.
 	 *
@@ -268,7 +283,7 @@ class Parser
 		if( $revid !== null ) {
 			$this->mRevisionId = $revid;
 		}
-		$this->mOutputType = OT_HTML;
+		$this->setOutputType( OT_HTML );
 
 		//$text = $this->strip( $text, $this->mStripState );
 		// VOODOO MAGIC FIX! Sometimes the above segfaults in PHP5.
@@ -369,6 +384,30 @@ class Parser
 		$text = $this->strip( $text, $x );
 		wfRunHooks( 'ParserAfterStrip', array( &$this, &$text, &$x ) );
 		$text = $this->internalParse( $text );
+		wfProfileOut( __METHOD__ );
+		return $text;
+	}
+
+	/**
+	 * Expand templates and variables in the text, producing valid, static wikitext.
+	 * Also removes comments.
+	 */
+	function preprocess( $text, $title, $options ) {
+		wfProfileIn( __METHOD__ );
+		$this->clearState();
+		$this->setOutputType( OT_PREPROCESS );
+		$this->mOptions = $options;
+		$this->mTitle = $title;
+		$x =& $this->mStripState;
+		wfRunHooks( 'ParserBeforeStrip', array( &$this, &$text, &$x ) );
+		$text = $this->strip( $text, $x );
+		wfRunHooks( 'ParserAfterStrip', array( &$this, &$text, &$x ) );
+		if ( $this->mOptions->getRemoveComments() ) {
+			$text = Sanitizer::removeHTMLcomments( $text );
+		}
+		$text = $this->replaceVariables( $text );
+		$text = $this->unstrip( $text, $x );
+		$text = $this->unstripNowiki( $text, $x );
 		wfProfileOut( __METHOD__ );
 		return $text;
 	}
@@ -491,9 +530,7 @@ class Parser
 		wfProfileIn( __METHOD__ );
 		$render = ($this->mOutputType == OT_HTML);
 
-		# Replace any instances of the placeholders
 		$uniq_prefix = $this->mUniqPrefix;
-		#$text = str_replace( $uniq_prefix, wfHtmlEscapeFirst( $uniq_prefix ), $text );
 		$commentState = array();
 		
 		$elements = array_merge(
@@ -950,7 +987,7 @@ class Parser
 		wfProfileIn( __METHOD__ );
 		$text = preg_replace_callback( 
 			'!(?:                           # Start cases
-			    <a.*?</a>			# Skip link text
+			    <a.*?</a> |                 # Skip link text
 			    <.*?> |                     # Skip stuff inside HTML elements
 			    (?:RFC|PMID)\s+([0-9]+) |   # RFC or PMID, capture number as m[1]
 			    ISBN\s+([0-9Xx-]+)          # ISBN, capture number as m[2]
@@ -1710,6 +1747,7 @@ class Parser
 					// upload on the shared repository, and we want to see its
 					// auto-generated page.
 					$s .= $this->makeKnownLinkHolder( $nt, $text, '', $trail, $prefix );
+					$this->mOutput->addLink( $nt );
 					continue;
 				}
 			}
@@ -2367,6 +2405,8 @@ class Parser
 				return $varCache[$index] = $wgContLang->formatNum( date( 'Y', $ts ), true );
 			case 'currenttime':
 				return $varCache[$index] = $wgContLang->time( wfTimestamp( TS_MW, $ts ), false, false );
+			case 'currenthour':
+				return $varCache[$index] = $wgContLang->formatNum( date( 'H', $ts ), true );
 			case 'currentweek':
 				// @bug 4594 PHP5 has it zero padded, PHP4 does not, cast to
 				// int to remove the padding
@@ -2629,7 +2669,7 @@ class Parser
 		if ( !$argsOnly ) {
 			$braceCallbacks[2] = array( &$this, 'braceSubstitution' );
 		}
-		if ( $this->mOutputType == OT_HTML || $this->mOutputType == OT_WIKI ) {
+		if ( !$this->mOutputType != OT_MSG ) {
 			$braceCallbacks[3] = array( &$this, 'argSubstitution' );
 		}
 		if ( $braceCallbacks ) {
@@ -2740,10 +2780,11 @@ class Parser
 
 		$linestart = '';
 
+			
 		# $part1 is the bit before the first |, and must contain only title characters
 		# $args is a list of arguments, starting from index 0, not including $part1
 
-		$part1 = $piece['title'];
+		$titleText = $part1 = $piece['title'];
 		# If the third subpattern matched anything, it will start with |
 
 		if (null == $piece['parts']) {
@@ -2764,7 +2805,7 @@ class Parser
 		wfProfileIn( __METHOD__.'-modifiers' );
 		if ( !$found ) {
 			$mwSubst =& MagicWord::get( 'subst' );
-			if ( $mwSubst->matchStartAndRemove( $part1 ) xor ($this->mOutputType == OT_WIKI) ) {
+			if ( $mwSubst->matchStartAndRemove( $part1 ) xor $this->ot['wiki'] ) {
 				# One of two possibilities is true:
 				# 1) Found SUBST but not in the PST phase
 				# 2) Didn't find SUBST and in the PST phase
@@ -2862,8 +2903,7 @@ class Parser
 				$noargs = true;
 				$found = true;
 				$text = $linestart .
-					'{{' . $part1 . '}}' .
-					'<!-- WARNING: template loop detected -->';
+					"[[$part1]]<!-- WARNING: template loop detected -->";
 				wfDebug( __METHOD__.": template loop broken at '$part1'\n" );
 			} else {
 				# set $text to cached message.
@@ -2888,6 +2928,7 @@ class Parser
 
 
 			if ( !is_null( $title ) ) {
+				$titleText = $title->getPrefixedText();
 				$checkVariantLink = sizeof($wgContLang->getVariants())>1;
 				# Check for language variants if the template is not found
 				if($checkVariantLink && $title->getArticleID() == 0){
@@ -2895,7 +2936,7 @@ class Parser
 				}
 
 				if ( !$title->isExternal() ) {
-					if ( $title->getNamespace() == NS_SPECIAL && $this->mOptions->getAllowSpecialInclusion() && $this->mOutputType != OT_WIKI ) {
+					if ( $title->getNamespace() == NS_SPECIAL && $this->mOptions->getAllowSpecialInclusion() && $this->ot['html'] ) {
 						$text = SpecialPage::capturePath( $title );
 						if ( is_string( $text ) ) {
 							$found = true;
@@ -2914,13 +2955,13 @@ class Parser
 					}
 
 					# If the title is valid but undisplayable, make a link to it
-					if ( $this->mOutputType == OT_HTML && !$found ) {
-						$text = '[['.$title->getPrefixedText().']]';
+					if ( !$found && ( $this->ot['html'] || $this->ot['pre'] ) ) {
+						$text = "[[$titleText]]";
 						$found = true;
 					}
 				} elseif ( $title->isTrans() ) {
 					// Interwiki transclusion
-					if ( $this->mOutputType == OT_HTML && !$forceRawInterwiki ) {
+					if ( $this->ot['html'] && !$forceRawInterwiki ) {
 						$text = $this->interwikiTransclude( $title, 'render' );
 						$isHTML = true;
 						$noparse = true;
@@ -2949,17 +2990,16 @@ class Parser
 		if ( $found && !$this->incrementIncludeSize( 'pre-expand', strlen( $text ) ) ) {
 			# Error, oversize inclusion
 			$text = $linestart .
-				'{{' . $part1 . '}}' .
-				'<!-- WARNING: template omitted, pre-expand include size too large -->';
+				"[[$titleText]]<!-- WARNING: template omitted, pre-expand include size too large -->";
 			$noparse = true;
 			$noargs = true;
 		}
 
 		# Recursive parsing, escaping and link table handling
 		# Only for HTML output
-		if ( $nowiki && $found && $this->mOutputType == OT_HTML ) {
+		if ( $nowiki && $found && ( $this->ot['html'] || $this->ot['pre'] ) ) {
 			$text = wfEscapeWikiText( $text );
-		} elseif ( ($this->mOutputType == OT_HTML || $this->mOutputType == OT_WIKI) && $found ) {
+		} elseif ( !$this->ot['msg'] && $found ) {
 			if ( $noargs ) {
 				$assocArgs = array();
 			} else {
@@ -2998,16 +3038,20 @@ class Parser
 				$text = preg_replace( '/<noinclude>.*?<\/noinclude>/s', '', $text );
 				$text = strtr( $text, array( '<includeonly>' => '' , '</includeonly>' => '' ) );
 
-				if( $this->mOutputType == OT_HTML ) {
+				if( $this->ot['html'] || $this->ot['pre'] ) {
 					# Strip <nowiki>, <pre>, etc.
 					$text = $this->strip( $text, $this->mStripState );
-					$text = Sanitizer::removeHTMLtags( $text, array( &$this, 'replaceVariables' ), $assocArgs );
+					if ( $this->ot['html'] ) {
+						$text = Sanitizer::removeHTMLtags( $text, array( &$this, 'replaceVariables' ), $assocArgs );
+					} elseif ( $this->ot['pre'] && $this->mOptions->getRemoveComments() ) {
+						$text = Sanitizer::removeHTMLcomments( $text );
+					}
 				}
 				$text = $this->replaceVariables( $text, $assocArgs );
 
 				# If the template begins with a table or block-level
 				# element, it should be treated as beginning a new line.
-				if (!$piece['lineStart'] && preg_match('/^({\\||:|;|#|\*)/', $text)) {
+				if (!$piece['lineStart'] && preg_match('/^({\\||:|;|#|\*)/', $text)) /*}*/{ 
 					$text = "\n" . $text;
 				}
 			} elseif ( !$noargs ) {
@@ -3023,8 +3067,7 @@ class Parser
 		if ( $found && !$this->incrementIncludeSize( 'post-expand', strlen( $text ) ) ) {
 			# Error, oversize inclusion
 			$text = $linestart .
-				'{{' . $part1 . '}}' .
-				'<!-- WARNING: template omitted, post-expand include size too large -->';
+				"[[$titleText]]<!-- WARNING: template omitted, post-expand include size too large -->";
 			$noparse = true;
 			$noargs = true;
 		}
@@ -3042,7 +3085,7 @@ class Parser
 			} else {
 				# replace ==section headers==
 				# XXX this needs to go away once we have a better parser.
-				if ( $this->mOutputType != OT_WIKI && $replaceHeadings ) {
+				if ( !$this->ot['wiki'] && !$this->ot['pre'] && $replaceHeadings ) {
 					if( !is_null( $title ) )
 						$encodedname = base64_encode($title->getPrefixedDBkey());
 					else
@@ -3166,7 +3209,8 @@ class Parser
 
 		if ( array_key_exists( $arg, $inputArgs ) ) {
 			$text = $inputArgs[$arg];
-		} else if ($this->mOutputType == OT_HTML && null != $matches['parts'] && count($matches['parts']) > 0) {
+		} else if (($this->mOutputType == OT_HTML || $this->mOutputType == OT_PREPROCESS ) && 
+		null != $matches['parts'] && count($matches['parts']) > 0) {
 			$text = $matches['parts'][0];
 		}
 		if ( !$this->incrementIncludeSize( 'arg', strlen( $text ) ) ) {
@@ -3496,7 +3540,7 @@ class Parser
 	function preSaveTransform( $text, &$title, &$user, $options, $clearState = true ) {
 		$this->mOptions = $options;
 		$this->mTitle =& $title;
-		$this->mOutputType = OT_WIKI;
+		$this->setOutputType( OT_WIKI );
 
 		if ( $clearState ) {
 			$this->clearState();
@@ -3642,7 +3686,7 @@ class Parser
 	function startExternalParse( &$title, $options, $outputType, $clearState = true ) {
 		$this->mTitle =& $title;
 		$this->mOptions = $options;
-		$this->mOutputType = $outputType;
+		$this->setOutputType( $outputType );
 		if ( $clearState ) {
 			$this->clearState();
 		}
@@ -3672,7 +3716,7 @@ class Parser
 
 		$this->mTitle = $wgTitle;
 		$this->mOptions = $options;
-		$this->mOutputType = OT_MSG;
+		$this->setOutputType( OT_MSG );
 		$this->clearState();
 		$text = $this->replaceVariables( $text );
 
@@ -4180,11 +4224,11 @@ class Parser
 		$oldOutputType = $this->mOutputType;
 		$oldOptions = $this->mOptions;
 		$this->mOptions = new ParserOptions();
-		$this->mOutputType = OT_WIKI;
+		$this->setOutputType( OT_WIKI );
 
 		$striptext = $this->strip( $text, $striparray, true );
 
-		$this->mOutputType = $oldOutputType;
+		$this->setOutputType( $oldOutputType );
 		$this->mOptions = $oldOptions;
 
 		# now that we can be sure that no pseudo-sections are in the source,
@@ -4392,11 +4436,14 @@ class ParserOutput
 		return (bool)$this->mNewSection;
 	}
 
-	function addLink( $title, $id ) {
+	function addLink( $title, $id = null ) {
 		$ns = $title->getNamespace();
 		$dbk = $title->getDBkey();
 		if ( !isset( $this->mLinks[$ns] ) ) {
 			$this->mLinks[$ns] = array();
+		}
+		if ( is_null( $id ) ) {
+			$id = $title->getArticleID();
 		}
 		$this->mLinks[$ns][$dbk] = $id;
 	}
@@ -4450,6 +4497,7 @@ class ParserOptions
 	var $mTidy;                      # Ask for tidy cleanup
 	var $mInterfaceMessage;          # Which lang to call for PLURAL and GRAMMAR
 	var $mMaxIncludeSize;            # Maximum size of template expansions, in bytes
+	var $mRemoveComments;            # Remove HTML comments. ONLY APPLIES TO PREPROCESS OPERATIONS
 
 	var $mUser;                      # Stored user object, just used to initialise the skin
 
@@ -4464,6 +4512,7 @@ class ParserOptions
 	function getTidy()                          { return $this->mTidy; }
 	function getInterfaceMessage()              { return $this->mInterfaceMessage; }
 	function getMaxIncludeSize()                { return $this->mMaxIncludeSize; }
+	function getRemoveComments()                { return $this->mRemoveComments; }
 
 	function &getSkin() {
 		if ( !isset( $this->mSkin ) ) {
@@ -4492,6 +4541,7 @@ class ParserOptions
 	function setSkin( &$x ) { $this->mSkin =& $x; }
 	function setInterfaceMessage( $x )          { return wfSetVar( $this->mInterfaceMessage, $x); }
 	function setMaxIncludeSize( $x )            { return wfSetVar( $this->mMaxIncludeSize, $x ); }
+	function setRemoveComments( $x )            { return wfSetVar( $this->mRemoveComments, $x ); }
 
 	function ParserOptions( $user = null ) {
 		$this->initialiseFromUser( $user );
@@ -4538,6 +4588,7 @@ class ParserOptions
 		$this->mTidy = false;
 		$this->mInterfaceMessage = false;
 		$this->mMaxIncludeSize = $wgMaxArticleSize * 1024;
+		$this->mRemoveComments = true;
 		wfProfileOut( $fname );
 	}
 }

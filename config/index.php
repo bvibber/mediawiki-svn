@@ -115,7 +115,7 @@ $ourdb['postgres']['rootuser']   = 'postgres';
 		.error-top {
 			color: red;
 			background-color: #FFF0F0;
-			border: 2px solid	 red;
+			border: 2px solid red;
 			font-size: 130%;
 			font-weight: bold;
 			padding: 1em 1.5em;
@@ -151,16 +151,16 @@ $ourdb['postgres']['rootuser']   = 'postgres';
 		?>
 
 	}
-	function toggleDBarea(id) {
+	function toggleDBarea(id,defaultroot) {
 		hideall();
 		var dbarea = document.getElementById(id).style;
 		dbarea.display = (dbarea.display == 'none') ? 'block' : 'none';
 		var db = document.getElementById('RootUser');
-		<?php foreach (array_keys($ourdb) as $db) {
-		echo "\n		if (id == '$db') { db.value = '".$ourdb[$db]['rootuser']."';}";
+		if (defaultroot) {
+<?php foreach (array_keys($ourdb) as $db) {
+			echo "			if (id == '$db') { db.value = '".$ourdb[$db]['rootuser']."';}\n";
+}?>
 		}
-		?>
-
 	}
 	// -->
 	</script>
@@ -179,7 +179,7 @@ $ourdb['postgres']['rootuser']   = 'postgres';
 /* Check for existing configurations and bug out! */
 
 if( file_exists( "../LocalSettings.php" ) ) {
-	dieout( "	<p><strong>Setup has completed, <a href='../index.php'>your wiki</a> is configured.</strong></p>
+	dieout( "<p><strong>Setup has completed, <a href='../index.php'>your wiki</a> is configured.</strong></p>
 
 	<p>Please delete the /config directory for extra security.</p></div></div></div></div>" );
 }
@@ -285,7 +285,7 @@ if( ini_get( "register_globals" ) ) {
 	<li>
 		<div style="font-size:110%">
 		<strong class="error">Warning:</strong>
-		<strong>PHP's	<tt><a href="http://php.net/register_globals">register_globals</a></tt>	option is enabled. Disable it if you can.</strong>
+		<strong>PHP's <tt><a href="http://php.net/register_globals">register_globals</a></tt> option is enabled. Disable it if you can.</strong>
 		</div>
 		MediaWiki will work, but your server is more exposed to PHP-based security vulnerabilities.
 	</li>
@@ -412,14 +412,14 @@ if ($conf->apc ) {
 
 $conf->eaccel = function_exists( 'eaccelerator_get' );
 if ( $conf->eaccel ) {
-    $conf->turck = 'eaccelerator';
-    print "<li><a href=\"http://eaccelerator.sourceforge.net/\">eAccelerator</a> installed</li>\n";
+	$conf->turck = 'eaccelerator';
+	print "<li><a href=\"http://eaccelerator.sourceforge.net/\">eAccelerator</a> installed</li>\n";
 }
 
 if( !$conf->turck && !$conf->eaccel && !$conf->apc ) {
 	echo( '<li>Couldn\'t find <a href="http://turck-mmcache.sourceforge.net">Turck MMCache</a>,
-		  <a href="http://eaccelerator.sourceforge.net">eAccelerator</a> or
-		   <a href="http://www.php.net/apc">APC</a>. Object caching functions cannot be used.</li>' );
+		<a href="http://eaccelerator.sourceforge.net">eAccelerator</a> or
+		<a href="http://www.php.net/apc">APC</a>. Object caching functions cannot be used.</li>' );
 }
 
 $conf->diff3 = false;
@@ -492,8 +492,8 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 	$conf->SysopName = importPost( "SysopName", "WikiSysop" );
 	$conf->SysopPass = importPost( "SysopPass" );
 	$conf->SysopPass2 = importPost( "SysopPass2" );
-	$conf->RootUser     =  importPost( "RootUser", "root" );
-	$conf->RootPW       =  importPost( "RootPW", "-" );
+	$conf->RootUser = importPost( "RootUser", "root" );
+	$conf->RootPW = importPost( "RootPW", "-" );
 
 	## MySQL specific:
 	$conf->DBprefix     =  importPost( "DBprefix" );
@@ -565,10 +565,10 @@ if ( $conf->Shm == 'memcached' && $conf->MCServers ) {
 }
 
 /* default values for installation */
-$conf->Email	=importRequest("Email", "email_enabled");
-$conf->Emailuser=importRequest("Emailuser", "emailuser_enabled");
-$conf->Enotif	=importRequest("Enotif", "enotif_allpages");
-$conf->Eauthent	=importRequest("Eauthent", "eauthent_enabled");
+$conf->Email     = importRequest("Email", "email_enabled");
+$conf->Emailuser = importRequest("Emailuser", "emailuser_enabled");
+$conf->Enotif    = importRequest("Enotif", "enotif_allpages");
+$conf->Eauthent  = importRequest("Eauthent", "eauthent_enabled");
 
 if( $conf->posted && ( 0 == count( $errs ) ) ) {
 	do { /* So we can 'continue' to end prematurely */
@@ -611,15 +611,15 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		$wgDBts2schema = $conf->DBts2schema;
 
 		$wgCommandLineMode = true;
-		$wgUseDatabaseMessages = false;	/* FIXME: For database failure */
+		$wgUseDatabaseMessages = false; /* FIXME: For database failure */
 		require_once( "includes/Setup.php" );
 		chdir( "config" );
 
 		require_once( "maintenance/InitialiseMessages.inc" );
 
 		$wgTitle = Title::newFromText( "Installation script" );
-error_reporting( E_ALL );
-	print "<li>Loading class: $dbclass";
+		error_reporting( E_ALL );
+		print "<li>Loading class: $dbclass";
 		$dbc = new $dbclass;
 
 		if( $conf->DBtype == 'mysql' ) {
@@ -699,7 +699,7 @@ error_reporting( E_ALL );
 				$wgDatabase = $dbc->newFromParams($wgDBserver, $wgDBsuperuser, $conf->RootPW, "postgres", 1);
 				if (!$wgDatabase->isOpen()) {
 					print " error: " . $wgDatabase->lastError() . "</li>\n";
-					$errs["DBserver"] = "Couldn't connect to database as superuser";
+					$errs["DBserver"] = "Could not connect to database as superuser";
 					$errs["RootUser"] = "Check username";
 					$errs["RootPW"] = "and password";
 					continue;
@@ -724,12 +724,12 @@ error_reporting( E_ALL );
 			if( version_compare( $myver, "4.0.14" ) < 0 ) {
 				dieout( " -- mysql 4.0.14 or later required. Aborting." );
 			}
-			$mysqlNewAuth   = version_compare( $myver, "4.1.0", "ge" );
+			$mysqlNewAuth = version_compare( $myver, "4.1.0", "ge" );
 			if( $mysqlNewAuth && $mysqlOldClient ) {
 				print "; <b class='error'>You are using MySQL 4.1 server, but PHP is linked
-				 	to old client libraries; if you have trouble with authentication, see
-			 		<a href='http://dev.mysql.com/doc/mysql/en/old-client.html'
-				 	>http://dev.mysql.com/doc/mysql/en/old-client.html</a> for help.</b>";
+					to old client libraries; if you have trouble with authentication, see
+					<a href='http://dev.mysql.com/doc/mysql/en/old-client.html'
+					>http://dev.mysql.com/doc/mysql/en/old-client.html</a> for help.</b>";
 			}
 			if( $wgDBmysql5 ) {
 				if( $mysqlNewAuth ) {
@@ -820,11 +820,11 @@ error_reporting( E_ALL );
 
 			print "<li>Initializing data...";
 			$wgDatabase->insert( 'site_stats',
-				array( 'ss_row_id'        => 1,
-				       'ss_total_views'   => 0,
-				       'ss_total_edits'   => 0,
-				       'ss_good_articles' => 0 ) );
-					   
+				array ( 'ss_row_id'        => 1,
+						'ss_total_views'   => 0,
+						'ss_total_edits'   => 0,
+						'ss_good_articles' => 0 ) );
+
 			# Set up the "regular user" account *if we can, and if we need to*
 			if( $conf->Root and $conf->DBtype == 'mysql') {
 				# See if we need to
@@ -840,7 +840,7 @@ error_reporting( E_ALL );
 					echo( "success.</li>" );
 				}
 			}
-					   
+
 			if( $conf->SysopName ) {
 				$u = User::newFromName( $conf->getSysopName() );
 				if ( 0 == $u->idForName() ) {
@@ -878,16 +878,10 @@ error_reporting( E_ALL );
 
 		/* Write out the config file now that all is well */
 		print "<p>Creating LocalSettings.php...</p>\n\n";
-		$localSettings =  "<" . "?php$endl$local$endl?" . ">";
+		$localSettings = "<" . "?php$endl$local$endl?" . ">";
 		// Fix up a common line-ending problem (due to CVS on Windows)
 		$localSettings = str_replace( "\r\n", "\n", $localSettings );
-
-		if( version_compare( phpversion(), "4.3.2" ) >= 0 ) {
-			$xt = "xt"; # Refuse to overwrite an existing file
-		} else {
-			$xt = "wt"; # 'x' is not available prior to PHP 4.3.2. We did check above, but race conditions blah blah
-		}
-		$f = fopen( "LocalSettings.php", $xt );
+		$f = fopen( "LocalSettings.php", 'xt' );
 
 		if( $f == false ) {
 			dieout( "<p>Couldn't write out LocalSettings.php. Check that the directory permissions are correct and that there isn't already a file of that name here...</p>\n" .
@@ -1073,7 +1067,7 @@ if( count( $errs ) ) {
 		</ul>
 	</div>
 	<div class="config-desc">
-		<p>		
+		<p>
 		For this feature to work, an e-mail address must be present for the user account, and the notification
 		options in the user's preferences must be enabled. Also note the 
 		authentication option below. When testing the feature, keep in mind that your own changes will never trigger notifications to be sent to yourself.</p>
@@ -1172,7 +1166,7 @@ if( count( $errs ) ) {
 	?></div>
 	<div class="config-desc">
 		<p>The username specified above will have it's search path set to the above schemas, 
-           so it is recommended that you create a new user.</p>
+		so it is recommended that you create a new user.</p>
 	</div>
 	</div>
 
@@ -1201,7 +1195,11 @@ if( count( $errs ) ) {
 </div>
 
 <script type="text/javascript">
-window.onload = toggleDBarea('<?php echo $conf->DBtype; ?>');
+window.onload = toggleDBarea('<?php echo $conf->DBtype; ?>',
+<?php
+	## If they passed in a root user name, don't populate it on page load
+	echo strlen(importPost('RootUser', '')) ? 0 : 1;
+?>);
 </script>
 
 </form>
@@ -1352,7 +1350,7 @@ if ( \$wgCommandLineMode ) {
 
 \$wgSitename         = \"{$slconf['Sitename']}\";
 
-\$wgScriptPath	    = \"{$slconf['ScriptPath']}\";
+\$wgScriptPath       = \"{$slconf['ScriptPath']}\";
 \$wgScript           = \"\$wgScriptPath/index.php\";
 \$wgRedirectScript   = \"\$wgScriptPath/redirect.php\";
 
@@ -1369,11 +1367,11 @@ if ( \$wgCommandLineMode ) {
 \$wgUploadPath       = \"\$wgScriptPath/images\";
 \$wgUploadDirectory  = \"\$IP/images\";
 
-\$wgEnableEmail = $enableemail;
-\$wgEnableUserEmail = $enableuseremail;
+\$wgEnableEmail      = $enableemail;
+\$wgEnableUserEmail  = $enableuseremail;
 
 \$wgEmergencyContact = \"{$slconf['EmergencyContact']}\";
-\$wgPasswordSender	= \"{$slconf['PasswordSender']}\";
+\$wgPasswordSender = \"{$slconf['PasswordSender']}\";
 
 ## For a detailed description of the following switches see
 ## http://meta.wikimedia.org/Enotif and http://meta.wikimedia.org/Eauthent
@@ -1401,8 +1399,8 @@ if ( \$wgCommandLineMode ) {
 
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
-\$wgEnableUploads		= false;
-\$wgUseImageResize		= {$conf->UseImageResize};
+\$wgEnableUploads       = false;
+\$wgUseImageResize      = {$conf->UseImageResize};
 {$magic}\$wgUseImageMagick = true;
 {$magic}\$wgImageMagickConvertCommand = \"{$convert}\";
 
@@ -1414,7 +1412,7 @@ if ( \$wgCommandLineMode ) {
 
 ## If you have the appropriate support software installed
 ## you can enable inline LaTeX equations:
-\$wgUseTeX	         = false;
+\$wgUseTeX           = false;
 \$wgMathPath         = \"{\$wgUploadPath}/math\";
 \$wgMathDirectory    = \"{\$wgUploadDirectory}/math\";
 \$wgTmpDirectory     = \"{\$wgUploadDirectory}/tmp\";
@@ -1445,7 +1443,8 @@ if ( \$wgCommandLineMode ) {
 # sure that cached pages are cleared.
 \$configdate = gmdate( 'YmdHis', @filemtime( __FILE__ ) );
 \$wgCacheEpoch = max( \$wgCacheEpoch, \$configdate );
-";
+	"; ## End of setting the $localsettings string
+
 	// Keep things in Unix line endings internally;
 	// the system will write out as local text type.
 	return str_replace( "\r\n", "\n", $localsettings );
@@ -1504,7 +1503,7 @@ function aField( &$conf, $field, $text, $type = "text", $value = "", $onclick = 
 	}
 	echo "\t\t<input $xtype name=\"$field\" id=\"$id\" class=\"iput-$type\" $checked ";
 	if ($onclick) {
-		echo " onclick='toggleDBarea(\"$value\")' " ;
+		echo " onclick='toggleDBarea(\"$value\",1)' " ;
 	}
 	echo "value=\"";
 	if( $type == "radio" ) {
@@ -1582,7 +1581,7 @@ function testMemcachedServer( $server ) {
 	if ( !function_exists( 'fsockopen' ) ) {
 		$errstr = "Can't connect to memcached, fsockopen() not present";
 	}
-	if ( !$errstr &&  count( $hostport ) != 2 ) {
+	if ( !$errstr && count( $hostport ) != 2 ) {
 		$errstr = 'Please specify host and port';
 		var_dump( $hostport );
 	}

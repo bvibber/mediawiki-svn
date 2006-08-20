@@ -89,13 +89,13 @@ class MonoBookTemplate extends QuickTemplate {
 	</head>
 <body <?php if($this->data['body_ondblclick']) { ?>ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
 <?php if($this->data['body_onload'    ]) { ?>onload="<?php     $this->text('body_onload')     ?>"<?php } ?>
- class="<?php $this->text('nsclass') ?> <?php $this->text('dir') ?>">
+ class="mediawiki <?php $this->text('nsclass') ?> <?php $this->text('dir') ?>">
 	<div id="globalWrapper">
 		<div id="column-content">
 	<div id="content">
 		<a name="top" id="top"></a>
 		<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
-		<h1 class="firstHeading"><?php $this->data['displaytitle']!=""?$this->text('title'):$this->html('title') ?></h1>
+		<h1 class="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
 		<div id="bodyContent">
 			<h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
 			<div id="contentSub"><?php $this->html('subtitle') ?></div>

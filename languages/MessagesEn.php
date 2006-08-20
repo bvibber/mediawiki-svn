@@ -210,6 +210,7 @@ $magicWords = array(
 	'currentdayname'         => array( 1,    'CURRENTDAYNAME'         ),
 	'currentyear'            => array( 1,    'CURRENTYEAR'            ),
 	'currenttime'            => array( 1,    'CURRENTTIME'            ),
+	'currenthour'            => array( 1,    'CURRENTHOUR'            ),
 	'numberofpages'          => array( 1,    'NUMBEROFPAGES'          ),
 	'numberofarticles'       => array( 1,    'NUMBEROFARTICLES'       ),
 	'numberoffiles'          => array( 1,    'NUMBEROFFILES'          ),
@@ -278,6 +279,8 @@ $magicWords = array(
 	'pagesinnamespace'       => array( 1,    'PAGESINNAMESPACE:', 'PAGESINNS:' ),
 	'numberofadmins'         => array( 1,    'NUMBEROFADMINS' ),
 	'formatnum'              => array( 0,    'FORMATNUM' ),
+	'padleft'				 => array( 0, 	 'PADLEFT' ),
+	'padright'				 => array( 0, 	 'PADRIGHT' ),
 
 );
 
@@ -514,7 +517,6 @@ parent class in order maintain consistency across languages.
 'viewcount'		=> 'This page has been accessed {{plural:$1|one time|$1 times}}.',
 'copyright'	=> 'Content is available under $1.',
 'protectedpage' => 'Protected page',
-'administrators' => '{{ns:project}}:Administrators',
 'jumpto' => 'Jump to:',
 'jumptonavigation' => 'navigation',
 'jumptosearch' => 'search',
@@ -1050,13 +1052,11 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'group-bot'               => 'Bots',
 'group-sysop'             => 'Sysops',
 'group-bureaucrat'        => 'Bureaucrats',
-'group-steward'           => 'Stewards',
 'group-all'               => '(all)',
 
 'group-bot-member'        => 'Bot',
 'group-sysop-member'      => 'Sysop',
 'group-bureaucrat-member' => 'Bureaucrat',
-'group-steward-member'    => 'Steward',
 
 'grouppage-bot' => '{{ns:project}}:Bots',
 'grouppage-sysop' => '{{ns:project}}:Administrators',
@@ -1165,6 +1165,7 @@ created and by whom, and anything else you may know about it. If this is an imag
 'bysize'		=> 'by size',
 'imgdelete'		=> 'del',
 'imgdesc'		=> 'desc',
+'imgfile'       => 'file',
 'imglegend'		=> 'Legend: (desc) = show/edit file description.',
 'imghistory'	=> 'File history',
 'revertimg'		=> 'rev',
@@ -1183,6 +1184,12 @@ this old version, (rev) = revert to this old version.
 'noimage'       => 'No file by this name exists, you can $1.',
 'noimage-linktext'       => 'upload it',
 'uploadnewversion-linktext' => 'Upload a new version of this file',
+'imagelist_date' => 'Date',
+'imagelist_name' => 'Name',
+'imagelist_user' => 'User',
+'imagelist_size' => 'Size (bytes)',
+'imagelist_description' => 'Description',
+'imagelist_search_for' => 'Search for image name:',
 
 # Mime search
 #
@@ -1224,7 +1231,7 @@ That comes to '''$5''' average edits per page, and '''$6''' views per edit.
 
 The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''.",
 'userstatstext' => "There are '''$1''' registered users, of which
-'''$2''' (or '''$4%''') are administrators (see $3).",
+'''$2''' (or '''$4%''') are $5.",
 'statistics-mostpopular' => 'Most viewed pages',
 
 'disambiguations'	=> 'Disambiguation pages',
@@ -1316,6 +1323,9 @@ You can narrow down the view by selecting a log type, the user name, or the affe
 'allpagessubmit'	=> 'Go',
 'allpagesprefix'	=> 'Display pages with prefix:',
 'allpagesbadtitle'	=> 'The given page title was invalid or had an inter-language or inter-wiki prefix. It may contain one more characters which cannot be used in titles.',
+
+# Special:Listusers
+'listusersfrom' => 'Display users starting at:',
 
 # E this user
 #
@@ -1552,8 +1562,8 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'notargettext'	=> 'You have not specified a target page or user
 to perform this function on.',
 'linklistsub'	=> '(List of links)',
-'linkshere'		=> 'The following pages link to here:',
-'nolinkshere'	=> 'No pages link to here.',
+'linkshere' => "The following pages link to '''[[:$1]]''':",
+'nolinkshere' => "No pages link to '''[[:$1]]'''.",
 'isredirect'	=> 'redirect page',
 'istemplate'	=> 'inclusion',
 
@@ -1650,7 +1660,6 @@ Type the name of the user in the box and press the button to make the user an ad
 'makesysopok'		=> "<b>User \"$1\" is now a sysop</b>",
 'makesysopfail'		=> "<b>User \"$1\" could not be made into a sysop. (Did you enter the name correctly?)</b>",
 'setbureaucratflag' => 'Set bureaucrat flag',
-'setstewardflag'    => 'Set steward flag',
 'rightslog'		=> 'User rights log',
 'rightslogtext'		=> 'This is a log of changes to user rights.',
 'rightslogentry'	=> 'changed group membership for $1 from $2 to $3',
@@ -1661,7 +1670,6 @@ Type the name of the user in the box and press the button to make the user an ad
 'makesysop'         => 'Make a user into a sysop',
 'already_sysop'     => 'This user is already an administrator',
 'already_bureaucrat' => 'This user is already a bureaucrat',
-'already_steward'   => 'This user is already a steward',
 'rightsnone' 		=> '(none)',
 
 # Move page
@@ -2271,6 +2279,7 @@ is collapsed. Others will be hidden by default.
 
 # E-mail address confirmation
 'confirmemail' => 'Confirm E-mail address',
+'confirmemail_noemail' => 'You do not have a valid email address set in your [[Special:Preferences|user preferences]].',
 'confirmemail_text' => "This wiki requires that you validate your e-mail address
 before using e-mail features. Activate the button below to send a confirmation
 mail to your address. The mail will include a link containing a code; load the
@@ -2360,6 +2369,17 @@ Please confirm that really want to recreate this page.',
 * Español|es
 * Italiano|it
 * Nederlands|nl",
+
+# Table pager
+'ascending_abbrev' => 'asc',
+'descending_abbrev' => 'desc',
+'table_pager_next' => 'Next page',
+'table_pager_prev' => 'Previous page',
+'table_pager_first' => 'First page',
+'table_pager_last' => 'Last page',
+'table_pager_limit' => 'Show $1 items per page',
+'table_pager_limit_submit' => 'Go',
+'table_pager_empty' => 'No results',
 
 );
 

@@ -246,6 +246,10 @@ $messages = array(
 "projectpage" => "Meta-Text",
 "userpage" => "Benutzerseite",
 "imagepage" => "Bildseite",
+'mediawikipage'		=> 'Artikelseite anzeigen',
+'templatepage'		=> 'Vorlagensenseite anzeigen',
+'viewhelppage'		=> 'Hilfeseite anzeigen',
+'categorypage'		=> 'Kategorieseite anzeigen',
 "viewtalkpage" => "Diskussion",
 "otherlanguages" => "Andere Sprachen",
 "redirectedfrom" => "(Weitergeleitet von $1)",
@@ -255,11 +259,14 @@ $messages = array(
 "viewcount"		=> "Diese Seite wurde bisher $1 mal abgerufen.",
 "copyright"	=> "Inhalt ist verfügbar unter der $1.",
 "protectedpage" => "Geschützte Seite",
-'administrators'	=> '{{ns:project}}:Administratoren',
 'jumpto'		=> 'Wechseln zu:',
 'jumptonavigation'	=> 'Navigation',
 'jumptosearch'		=> 'Suche',
-'badaccess'	=> 'Keine ausreichenden Rechte.',
+'badaccess'		=> 'Keine ausreichenden Rechte.',
+'badaccess-group0'	=> 'Sie haben nicht die erforderliche Berechtigung für diese Aktion.',
+'badaccess-group1'	=> 'Diese Aktion ist beschränkt auf Benutzer, die der Gruppe $1 angehören.',
+'badaccess-group2'	=> 'Diese Aktion ist beschränkt auf Benutzer, die einer der Gruppen $1 angehören.',
+'badaccess-groups'	=> 'Diese Aktion ist beschränkt auf Benutzer, die einer der Gruppen $1 angehören.',
 'versionrequired'	=> 'Version $1 von MediaWiki ist erforderlich',
 'versionrequiredtext'	=> 'Version $1 von MediaWiki ist erforderlich um diese Seite zu nutzen. Siehe [[{{ns:special}}:Version]]',
 'nbytes'		=> '$1 {{PLURAL:$1|Byte|Bytes}}',
@@ -816,6 +823,7 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[{{ns:i
 'bysize'		=> 'nach Größe',
 "imgdelete"		=> "Löschen",
 "imgdesc"		=> "Beschreibung",
+'imgfile'		=> 'Datei',
 'imglegend'		=> 'Legende: (Beschreibung) = Zeige/Bearbeite Dateibeschreibung.',
 'imghistory'		=> 'Dateiversionen',
 "revertimg"		=> "Zurücksetzen",
@@ -831,6 +839,13 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[{{ns:i
 'noimage'			=> 'Eine Datei mit diesem Namen existiert nicht, Sie können sie jedoch $1.',
 'noimage-linktext'		=> 'hochladen',
 'uploadnewversion-linktext'	=> 'Eine neue Version dieser Datei hochladen',
+'imagelist_date'	=> 'Datum',
+'imagelist_name'	=> 'Name',
+'imagelist_user'	=> 'User',
+'imagelist_size'	=> 'Größe (Byte)',
+'imagelist_description'	=> 'Beschreibung',
+'imagelist_search_for'	=> 'Suche nach Datei:',
+
 
 # List redirects
 'listredirects' => 'Weiterleitungsliste',
@@ -861,7 +876,7 @@ Daraus ergeben sich \'\'\'$5\'\'\' Bearbeitungen pro Seite und \'\'\'$6\'\'\' Se
 
 Länge der „Job queue“: \'\'\'$7\'\'\'',
 'userstatstext'		=> 'Es gibt \'\'\'$1\'\'\' registrierte [[{{ns:special}}:Listusers|Benutzer]].
-Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
+Davon sind \'\'\'$2\'\'\' (=$4%) $5.',
 'statistics-mostpopular'	=> 'Meist besuchte Seiten',
 
 # Maintenance Page
@@ -935,6 +950,9 @@ Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
 'allpagesnext'	=> 'Nächste',
 'allpagessubmit'	=> 'Zeige',
 'allpagesbadtitle'	=> 'Der eingegebene Seitenname ist ungültig: Er hat entweder ein vorangestelltes Sprach-, ein Interwiki-Kürzel oder enthält ein oder mehrere Zeichen, welche in Seitennamen nicht verwendet werden dürfen.',
+
+# Special:Listusers
+'listusersfrom'		=> 'Zeige Benutzer beginnend mit:',
 
 # Email this user
 #
@@ -1136,8 +1154,8 @@ Im [[{{ns:special}}:Log/delete|Lösch-Logbuch]] finden Sie eine Übersicht von k
 "notargettitle" => "Kein Artikel angegeben",
 'notargettext'		=> 'Sie haben nicht angegeben, auf welche Seite diese Funktion angewendet werden soll.',
 "linklistsub"	=> "(Liste der Verweise)",
-'linkshere'	=> 'Die folgenden Seiten verweisen hierher:',
-'nolinkshere'	=> 'Keine Seiten verweisen hierher.',
+'linkshere'	=> 'Die folgenden Seiten verweisen auf \'\'\'[[:$1]]\'\'\':',
+'nolinkshere'	=> 'Keine Seiten verweisen auf \'\'\'[[:$1]]\'\'\'.',
 'isredirect'		=> 'Weiterleitungsseite',
 'istemplate'	=> 'Vorlageneinbindung',
 
@@ -1219,13 +1237,11 @@ Nicht selektierte Gruppen werden nicht geändert. Eine Selektion kann mit \'\'\'
 'group-bot'			=> 'Bots',
 'group-sysop'			=> 'Administratoren',
 'group-bureaucrat'		=> 'Bürokraten',
-'group-steward'			=> 'Stewards',
 'group-all'			=> '(alle)',
 
 'group-bot-member'		=> 'Bot',
 'group-sysop-member'		=> 'Administrator',
 'group-bureaucrat-member'	=> 'Bürokrat',
-'group-steward-member'		=> 'Steward',
 
 'grouppage-bot'			=> '{{ns:project}}:Bots',
 'grouppage-sysop'		=> '{{ns:project}}:Administratoren',
@@ -1331,7 +1347,6 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Seitentitel“ m
 'makesysopfail'		=> '<b>Benutzer „$1“ konnte nicht zu einem Administrator gemacht werden. (Haben Sie den Namen richtig geschrieben?)</b>',
 "makesysop"         => "Mache einen Benutzer zum Administrator",
 'setbureaucratflag'	=> 'Mache Benutzer zum Bürokraten',
-'setstewardflag'	=> 'Mache Benutzer zum Steward',
 'rightslog' => 'Rechte-Logbuch',
 'rightslogtext' => 'Dies ist das Logbuch der Änderungen der Benutzerrechte.',
 'rightslogentry'	=> 'Gruppenzugehörigkeit für „[[$1]]“ von „$2“ auf „$3“ geändert.',
@@ -1341,7 +1356,6 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Seitentitel“ m
 'set_rights_fail'	=> '<b>Benutzerrechte für „$1“ konnten nicht gesetzt werden. (Haben Sie den Namen korrekt eingegeben?)</b>',
 'already_sysop'		=> 'Dieser Benutzer ist bereits Administrator.',
 'already_bureaucrat'	=> 'Dieser Benutzer ist bereits Bürokrat.',
-'already_steward'	=> 'Dieser Benutzer ist bereits Steward.',
 'rightsnone'		=> '(nichts)',
 
 '1movedto2'		=> 'hat [[$1]] nach [[$2]] verschoben',
@@ -1511,6 +1525,13 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'metadata_help'		=> 'Metadaten:',
 'metadata-expand' => 'Erweiterte Details einblenden',
 'metadata-collapse'	=> 'Erweiterte Details ausblenden',
+'metadata-fields'	=> 'Die folgenden EXIF-Metadaten in dieser MediaWiki-Nachricht werden auf Bildbeschreibungsseiten angezeigt. Weitere EXIF-Metadaten werden standardmäßig ausgeblendet.
+* make
+* model
+* datetimeoriginal
+* exposuretime
+* fnumber
+* focallength',
 
 # Exif tags
 'exif-aperturevalue'		=> 'Blendenwert',
@@ -1759,6 +1780,7 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 
 # E-mail address confirmation
 'confirmemail'		=> 'Bestätigung der E-Mail-Adresse (Authentifizierung)',
+'confirmemail_noemail'	=> 'Sie haben keine gültige E-Mail-Adresse in Ihrem [[Special:Preferences|Benutzerprofil]] angegeben.',
 'confirmemail_text'	=> 'Dieses Wiki erfordert, dass Sie Ihre E-Mail-Adresse bestätigen (authentifizieren), bevor Sie die erweiterten E-Mail-Funktionen benutzen können. Durch einen Klick auf die Schaltfläche unten wird eine E-Mail an Sie gesendet. Diese E-Mail enthält einen Link mit einem Bestätigungs-Code. Durch Klicken auf diesen Link wird bestätigt, dass Ihre E-Mail-Adresse gültig ist.',
 'confirmemail_send' => 'Anforderung einer E-Mail zur Adressenbestätigung',
 'confirmemail_sent' => 'Es wurde Ihnen eine E-Mail zur Adressenbestätigung gesendet.',
@@ -1889,6 +1911,25 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Kategorieseite anzeigen\');',
 'displaytitle' => '(Link zu dieser Seite als [[$1]])',
 
 'loginlanguagelabel'	=> 'Sprache: $1',
+
+
+# Multipage image navigation
+'imgmultipageprev' => '&larr; vorige Seite',
+'imgmultipagenext' => 'n&auml;chste Seite &rarr;',
+'imgmultigo' => 'OK',
+'imgmultigotopre' => 'Gehe zu Seite',
+'imgmultigotopost' => '',
+
+# Table pager
+'ascending_abbrev'	=> 'auf',
+'descending_abbrev'	=> 'ab',
+'table_pager_next'	=> 'Nächste Seite',
+'table_pager_prev'	=> 'Vorherige Seite',
+'table_pager_first'	=> 'Erste Seite',
+'table_pager_last'	=> 'Letzte Seite',
+'table_pager_limit'	=> 'Zeige $1 Einträge pro Seite',
+'table_pager_limit_submit'	=> 'Los',
+'table_pager_empty'	=> 'Keine Ergebnisse',
 
 );
 

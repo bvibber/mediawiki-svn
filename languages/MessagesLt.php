@@ -113,7 +113,6 @@ Būsimi straipsnio bei atitinkamo aptarimo puslapio pakeitimai bus rodomi stebim
 taip pat bus \'\'\'paryškinti\'\'\' [[Special:Recentchanges|naujausių keitimų sąraše]] kad išsiskirtų iš kitų straipsnių.
 
 <p>Jei bet kuriuo metu užsinorėtumėte nustoti stebėti straipsnį, spustelkite "nebestebėti" viršutiniame meniu.',
-'administrators' => '{{ns:project}}:Administratoriai',
 'allarticles' => 'Visi straipsniai',
 'allinnamespace' => 'Visi puslapiai (sritis - $1)',
 'alllogstext' => 'Bendra įdėtų failų, ištrynimų, užrakinimų, blokavimų ir teisių suteikimų istorija.
@@ -133,7 +132,6 @@ Galima sumažinti rezultatų patikslinant veiksmo rūšį, vartotoją ar susijus
 'allpagessubmit' => 'Tinka',
 'alphaindexline' => 'Nuo $1 iki $2',
 'already_bureaucrat' => 'Vartotojas jau yra biurokratas',
-'already_steward' => 'Vartotojas jau yra ūkvedys',
 'already_sysop' => 'Vartotojas jau yra administratorius',
 'alreadyloggedin' => '<strong>Jūs jau esate prisijungęs kaip vartotojas User $1!</strong><br />',
 'alreadyrolled' => 'Nepavyko atmesti paskutinio [[Vartotojas:$2|$2]] ([[Vartotojo aptarimas:$2|aptarimas]]) daryto straipsnio [[$1]] keitimo; kažkas jau pakeitė straipsnį arba suspėjo pirmas atmesti keitimą.
@@ -689,7 +687,7 @@ Daugiau informacijos puslapyje [[{{ns:project}}:Puslapių rakinimas|Puslapių ra
 'rcnote' => 'Pateikiamas <strong>$1</strong> paskutinių pakeitimų sąrašas per paskutiniąsias <strong>$2</strong> dienas(ų).',
 'rcnotefrom' => 'Žemiau yra pakeitimai pradedant <b>$2</b> (rodoma ne daugiau <b>$1</b> pakeitimų).',
 'readonly' => 'Duomenų bazė užrakinta',
-'readonlytext' => 'Enciklopedijuos duomenų bazė šiuo metu yra užrakinta, todėl
+'readonlytext' => 'Enciklopedijos duomenų bazė šiuo metu yra užrakinta, todėl
 negalima rašyti naujų straipsnių ar redaguoti senų,
 paprastai duomenų bazė rakinama techninei profilaktikai,
 taigi vėliau bus atrakinta ir enciklopedija grįš į senas vėžes.

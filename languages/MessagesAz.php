@@ -149,7 +149,6 @@ $messages = array(
 'redirectpagesub' => 'İstiqamətləndirmə səhifəsi',
 'lastmodified' => 'Bu səhifə sonuncu dəfə $1 tarixində redaktə edilib.',
 'copyright' => 'Bu məzmun $1 əhatəsindədir.',
-'administrators' => 'Project:İdarəçilər',
 
 'nbytes' => '$1 bayt',
 'youhavenewmessages' => 'Hal-hazırda $1 var. ($2)',
@@ -546,7 +545,6 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: \'
 # Make sysop
 'already_sysop' => 'Bu istifadəçi hazirdə idarəçidir',
 'already_bureaucrat' => 'Bu istifadəçi hazirdə bürokratdı',
-'already_steward' => 'Bu istifadəçi hazirdə steward',
 
 # Move page
 #

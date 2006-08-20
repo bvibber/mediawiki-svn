@@ -261,7 +261,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'viewcount'           => 'Tämä sivu on näytetty {{PLURAL:$1|yhden kerran|$1 kertaa}}.',
 'copyright'           => 'Sisältö on käytettävissä lisenssillä $1.',
 'protectedpage'       => 'Suojattu sivu',
-'administrators'      => '{{ns:project}}:Ylläpitäjät',
 'jumpto'              => 'Loikkaa:',
 'jumptonavigation'    => 'valikkoon',
 'jumptosearch'        => 'hakuun',
@@ -664,12 +663,10 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'group-bot'               => 'botit',
 'group-sysop'             => 'ylläpitäjät',
 'group-bureaucrat'        => 'byrokraatit',
-'group-steward'           => 'ylivalvojat',
 'group-all'               => '(kaikki)',
 'group-bot-member'        => 'botti',
 'group-sysop-member'      => 'ylläpitäjä',
 'group-bureaucrat-member' => 'byrokraatti',
-'group-steward-member'    => 'ylivalvoja',
 'grouppage-bot'           => '{{ns:project}}:Botit',
 'grouppage-sysop'         => '{{ns:project}}:Ylläpitäjät',
 'grouppage-bureaucrat'    => '{{ns:project}}:Byrokraatit',
@@ -1156,7 +1153,6 @@ Palaute ja lisäapu osoitteessa:
 'makesysopok'         => 'Käyttäjä <b>$1</b> on nyt ylläpitäjä.',
 'makesysopfail'       => 'Käyttäjästä <b>$1</b> ei voitu tehdä ylläpitäjää. Kirjoititko nimen oikein?', // TODO: NOWIKIMARKUP
 'setbureaucratflag'   => 'Tee käyttäjästä myös byrokraatti',
-'setstewardflag'      => 'Tee käyttäjästä ylivalvoja',
 'rightslog'           => 'Käyttöoikeusloki',
 'rightslogtext'       => 'Alla on loki on käyttäjien käyttöoikeuksien muutoksista.',
 'rightslogentry'      => 'Käyttäjän [[$1]] oikeudet muutettiin ryhmistä $2 ryhmiin $3',
@@ -1167,7 +1163,6 @@ Palaute ja lisäapu osoitteessa:
 'makesysop'           => 'Tee käyttäjästä ylläpitäjä',
 'already_sysop'       => 'Käyttäjä on jo ylläpitäjä',
 'already_bureaucrat'  => 'Käyttäjä on jo byrokraatti',
-'already_steward'     => 'Käyttäjä on jo ylivalvoja',
 'rightsnone'          => '(ei oikeuksia)',
 
 
