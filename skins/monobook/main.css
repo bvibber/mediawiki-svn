@@ -9,6 +9,11 @@
 ** All you guys rock :)
 */
 
+.bordered {
+  border: solid 1px #ddd;
+  margin: 2em;
+}
+
 /*ul {
 	line-height: 1.5em;
 	list-style-type: square;
