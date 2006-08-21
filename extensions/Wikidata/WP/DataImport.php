@@ -7,13 +7,14 @@ require_once("Setup.php");
 require_once('SwissProtImport.php');
 require_once('XMLImport.php');
 require_once('2GoMappingImport.php');
+require_once("ProgressBar.php");
 
 ob_end_flush();
-$beginTime = time();
 
 global
-	$wgCommandLineMode;
-	
+	$beginTime, $wgCommandLineMode, $numberOfBytes;
+
+$beginTime = time();
 $wgCommandLineMode = true;
 
 //import EC code to GO mapping:
@@ -30,12 +31,16 @@ fclose($linkSwissProtKeyWord2GofileHandle);
 
 //import Swiss Prot:
 //$file = "uniprot_sprot.xml";
-//$fileHandle = fopen($file, "r");
-//importEntriesFromXMLFile($fileHandle);
-//fclose($fileHandle);
+$file = "10000lines.xml";
+$numberOfBytes = filesize($file);
+progressBar(0, $numberOfBytes);
+$fileHandle = fopen($file, "r");
+importEntriesFromXMLFile($fileHandle, $ECGoMapping, $SP2GoMapping);
+//echoNofLines($fileHandle, 10000);
+fclose($fileHandle);
 
 $endTime = time();
-echo "Time elapsed: " . ($endTime - $beginTime); 
+echo "\nTime elapsed: " . durationToString($endTime - $beginTime); 
 
 function echoNofLines($fileHandle, $numberOfLines) {
 	$i = 0;

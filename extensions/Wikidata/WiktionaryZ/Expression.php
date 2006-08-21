@@ -451,6 +451,19 @@ function getDefinedMeaningDefinition($definedMeaningId) {
 	return $result;
 }
 
+function findCollection($name) {
+	$dbr = & wfGetDB(DB_SLAVE);
+	$query = "SELECT collection_id, collection_mid, collection_type from uw_collection_ns where " .
+	         "collection_mid = (SELECT defined_meaning_id FROM uw_syntrans WHERE expression_id = " . 
+             "(SELECT expression_id FROM uw_expression_ns WHERE spelling LIKE " . $dbr->addQuotes($name) . " limit 1))";
+	$queryResult = $dbr->query($query);
+	if ($collectionObject = $dbr->fetchObject($queryResult)) {
+		return $collectionObject->collection_id;
+	}
+	else
+		return null;             
+}
+
 function getCollectionContents($collectionId) {
 	$dbr = & wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT member_mid,internal_member_id from uw_collection_contents " .

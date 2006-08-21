@@ -47,12 +47,12 @@ $isoLanguages = loadIsoLanguages();
 echo "Importing UMLS terms per source\n";
 $i = 1;
 foreach ($sourceAbbreviations as $sab => $source) {
-//	if ((strcmp($sab, "GO") == 0)) {
+	if ((strcmp($sab, "GO") == 0)) {
 		$collectionId = bootstrapCollection($source, $languageId, "");
 		clearProgressBar();
 		importUMLSTerms($i, $source, $sab, $umlsCollectionId, $collectionId, $languageId, $isoLanguages);
 		$i++;			
-//	}
+	}
 }
 
 echo "Importing UMLS relation types\n";
@@ -67,14 +67,14 @@ $relationAttributesCollection = getCollectionContents($relationAttributesCollect
 $i = 0;
 
 foreach ($sourceAbbreviations as $sab => $source) {
-//	if (strcmp($sab, "GO") == 0) {
+	if (strcmp($sab, "GO") == 0) {
 		echo "  $i: $source\n";
 		$query = "select cui1, cui2, rel from MRREL where sab like '$sab'";
 		importUMLSRelations($umlsCollectionId , $relationCollection, $query);
 		$query = "select cui1, cui2, rela from MRREL where sab like '$sab' and rela!=''";
 		importUMLSRelations($umlsCollectionId , $relationAttributesCollection, $query);
 		$i++;
-//	}
+	}
 }
 
 echo "Importing semantic network types\n";
@@ -89,10 +89,10 @@ echo "Importing UMLS semantic type relations per source\n";
 $attributeTypes = getCollectionContents($semanticNetworkSemanticTypesCollectionId);
 $i = 1;
 foreach ($sourceAbbreviations as $sab => $source) {
-//	if (strcmp($sab, "GO") == 0) {
+	if (strcmp($sab, "GO") == 0) {
 		echo "  $i: $source\n";
 		importUMLSSemanticTypes($sab, $umlsCollectionId, $attributeTypes);		
-//	}
+	}
 }
 
 $endTime = time();
