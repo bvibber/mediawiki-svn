@@ -2,9 +2,18 @@
 define('MEDIAWIKI', true );
 require_once("../../../LocalSettings.php");
 require_once("../WiktionaryZ/Expression.php");
+
+// Uncomment following line for versioning support
+//require_once("../WiktionaryZ/Transaction.php");
+
+require_once("ProgressBar.php");
 require_once("Setup.php");
 
 ob_end_flush();
+
+global
+	$beginTime;
+	
 $beginTime = time();
 
 global
@@ -13,8 +22,11 @@ global
 $wgCommandLineMode = true;
 openDatabase("localhost", "umls", "root", "");
 
+// Uncomment following line for versioning support
+//startNewTransaction(0, 0, "UMLS Import");
+
 $languageId = 85;
-echo "Create collections\n";
+echo "Creating UMLS collections\n";
 $umlsCollectionId = bootstrapCollection("UMLS", $languageId, "");
 
 $relationCollectionId = bootstrapCollection("UMLS Relation Types 2005", $languageId, "RELT");
@@ -26,55 +38,65 @@ addDefinedMeaningToCollection(getCollectionMeaningId($semanticNetworkSemanticTyp
 $semanticNetworkRelationTypesCollectionId = bootstrapCollection("Semantic Network 2005AC Relation Types", $languageId, "RELT");
 addDefinedMeaningToCollection(getCollectionMeaningId($semanticNetworkRelationTypesCollectionId), $umlsCollectionId, "RL");
 
-echo "Load source abbreviations and languages\n";
+echo "Loading source abbreviations\n";
 $sourceAbbreviations = loadSourceAbbreviations();
+
+echo "Loading languages\n";
 $isoLanguages = loadIsoLanguages();
 
-echo "Import UMLS terms\n";
+echo "Importing UMLS terms per source\n";
+$i = 1;
 foreach ($sourceAbbreviations as $sab => $source) {
-//	if ((strcmp($sab, "ICPC") == 0) || (strcmp($sab, "SRC") == 0)) {
-		echo "$source\n";
+//	if ((strcmp($sab, "GO") == 0)) {
 		$collectionId = bootstrapCollection($source, $languageId, "");
-		importUMLSTerms($sab, $umlsCollectionId, $collectionId, $languageId, $isoLanguages);			
+		clearProgressBar();
+		importUMLSTerms($i, $source, $sab, $umlsCollectionId, $collectionId, $languageId, $isoLanguages);
+		$i++;			
 //	}
 }
 
-echo "Import UMLS relation and attributes types\n";
+echo "Importing UMLS relation types\n";
 importUMLSRelationTypes($relationCollectionId, $languageId);
+
+echo "Importing UMLS attribute types\n";
 importUMLSRelationAttributes($relationAttributesCollectionId, $languageId);
 
-echo "Import UMLS relations\n";
+echo "Importing UMLS relations per source\n";
 $relationCollection = getCollectionContents($relationCollectionId);
 $relationAttributesCollection = getCollectionContents($relationAttributesCollectionId);
+$i = 0;
+
 foreach ($sourceAbbreviations as $sab => $source) {
-//	if (strcmp($sab, "ICPC") == 0) {
-		echo "$source\n";
+//	if (strcmp($sab, "GO") == 0) {
+		echo "  $i: $source\n";
 		$query = "select cui1, cui2, rel from MRREL where sab like '$sab'";
 		importUMLSRelations($umlsCollectionId , $relationCollection, $query);
 		$query = "select cui1, cui2, rela from MRREL where sab like '$sab' and rela!=''";
 		importUMLSRelations($umlsCollectionId , $relationAttributesCollection, $query);
+		$i++;
 //	}
 }
 
-echo "Import semantic network types\n";
+echo "Importing semantic network types\n";
 importSNTypes($semanticNetworkSemanticTypesCollectionId, "SELECT semtypeab,type,definition FROM srdef WHERE type='STY'", $languageId);
 importSNTypes($semanticNetworkRelationTypesCollectionId, "SELECT semtypeab,type,definition FROM srdef WHERE type='RL'", $languageId);
 
-echo "Import semantic network relations\n";
+echo "Importing semantic network relations\n";
 importSemanticTypeRelations($semanticNetworkSemanticTypesCollectionId, $relationCollection, "SELECT SEMTYPE1, RELATION, SEMTYPE2 from semtypehier");
 importSemanticTypeRelations($semanticNetworkRelationTypesCollectionId, $relationCollection, "SELECT RELTYPE1, RELATION, RELTYPE2 from semrelhier");
 
-echo "Import UMLS semantic types\n";
+echo "Importing UMLS semantic type relations per source\n";
 $attributeTypes = getCollectionContents($semanticNetworkSemanticTypesCollectionId);
+$i = 1;
 foreach ($sourceAbbreviations as $sab => $source) {
-//	if (strcmp($sab, "ICPC") == 0) {
-		echo "$source\n";
+//	if (strcmp($sab, "GO") == 0) {
+		echo "  $i: $source\n";
 		importUMLSSemanticTypes($sab, $umlsCollectionId, $attributeTypes);		
 //	}
 }
 
 $endTime = time();
-echo "Time elapsed: " . ($endTime - $beginTime); 
+echo "Time elapsed: " . durationToString($endTime - $beginTime); 
 
 function openDatabase($server, $databaseName, $userName, $password) {
 	global
@@ -103,7 +125,7 @@ function loadSourceAbbreviations() {
 		$db;
 	
 	$sourceAbbreviations = array();	
-	$queryResult = mysql_query("select RSAB, SON from mrsab", $db);
+	$queryResult = mysql_query("select RSAB, SON from MRSAB", $db);
 	
 	while ($sab = mysql_fetch_object($queryResult)) {
 	   $sourceAbbreviations[$sab->RSAB] = $sab->SON;
@@ -114,11 +136,17 @@ function loadSourceAbbreviations() {
 	return $sourceAbbreviations;  
 }
 
-function importUMLSTerms($sab, $umlsCollectionId, $collectionId, $languageId, $isoLanguages) {
+function importUMLSTerms($index, $name, $sab, $umlsCollectionId, $collectionId, $languageId, $isoLanguages) {
 	global
 		$db;
 	
 	$queryResult = mysql_query("select str, cui, lat, code from MRCONSO where sab like '$sab'", $db);
+	$rowCount = mysql_num_rows($queryResult);
+	
+	echo "  $index: $name ($rowCount)\n";
+	$i = 0;
+	progressBar(0, $rowCount);
+
 	while ($umlsTerm = mysql_fetch_object($queryResult)) {
 		$definedMeaningId = getDefinedMeaningFromCollection($umlsCollectionId, $umlsTerm->cui);
 		$expression = findOrCreateExpression(trim($umlsTerm->str), $isoLanguages[strtolower($umlsTerm->lat)]);
@@ -128,7 +156,7 @@ function importUMLSTerms($sab, $umlsCollectionId, $collectionId, $languageId, $i
 			
 			if (!$definition->def) {
 				$definedMeaningId = addDefinedMeaning($expression->id);
-				createSynonymOrTranslation($definedMeaningId, $expression->id, true);				
+				$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);				
 			}
 			else {
 				$definedMeaningId = createNewDefinedMeaning($expression->id, $languageId, $definition->def);
@@ -136,16 +164,20 @@ function importUMLSTerms($sab, $umlsCollectionId, $collectionId, $languageId, $i
 			}
 		
 			addDefinedMeaningToCollection($definedMeaningId, $umlsCollectionId, $umlsTerm->cui);
-			addDefinedMeaningToCollection($definedMeaningId, $collectionId, $umlsTerm->code);
 					
 			while ($definition = mysql_fetch_object($definitionQueryResult)) {
 				addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $definition->def);
 			}
 			mysql_free_result($definitionQueryResult);  		
 	   	}
-	   	else {
-			createSynonymOrTranslation($definedMeaningId, $expression->id, true);
-	   	}
+	   	else 
+			$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);
+
+		addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectionId, $umlsTerm->code);
+		$i++;
+		
+		if ($i % 50 == 0)
+			progressBar($i, $rowCount);
 	}
 		
 	mysql_free_result($queryResult);  
@@ -161,7 +193,7 @@ function importUMLSRelationTypes($relationCollectionId, $languageId) {
 		$expression = findOrCreateExpression(trim($relationType->FULL), $languageId);
 		if(!$definedMeaningId) {
 			$definedMeaningId = addDefinedMeaning($expression->id);
-			createSynonymOrTranslation($definedMeaningId, $expression->id, true);
+			$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);
 			addDefinedMeaningToCollection($definedMeaningId, $relationCollectionId, $relationType->ABBREV);		
 		}
 	}
@@ -179,7 +211,7 @@ function importUMLSRelationAttributes($relationAttributesCollectionId, $language
 		$expression = findOrCreateExpression(trim($relationType->FULL), $languageId);
 		if(!$definedMeaningId) {
 			$definedMeaningId = addDefinedMeaning($expression->id);
-			createSynonymOrTranslation($definedMeaningId, $expression->id, true);
+			$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);
 			addDefinedMeaningToCollection($definedMeaningId, $relationAttributesCollectionId, $relationType->ABBREV);		
 		}
 	}
@@ -205,15 +237,15 @@ function importUMLSRelations($umlsCollectionId, $relationCollectionContents, $qu
 		$definedMeaningId2 = getDefinedMeaningFromCollection($umlsCollectionId, $relation[1]);
 		$relationMeaningId = $relationCollectionContents[$relationType];
 		if(!$definedMeaningId1){
-			echo "Unkown cui $relation[0]\n";
+			echo "Unknown cui $relation[0]\n";
 			print_r($relation);
 		}
 		if(!$definedMeaningId2){
-			echo "Unkown cui $relation[1]\n";
+			echo "Unknown cui $relation[1]\n";
 			print_r($relation);
 		}
 		if(!$relationMeaningId){
-			echo "Unkown relation $relationType\n";
+			echo "Unknown relation $relationType\n";
 			print_r($relationCollectionContents);
 			print_r($relation);
 		}
@@ -253,16 +285,16 @@ function importSemanticTypeRelations($collectionId, $relationCollectionContents,
 		$relationMeaningId = $relationCollectionContents[$relationType];
 		
 		if(!$relationMeaningId){
-			echo "Unkown relation $relationType\n";
+			echo "Unknown relation $relationType\n";
 			print_r($relationCollectionContents);
 			print_r($relation);
 		}
 		if(!$definedMeaningId1){
-			echo "Unkown semantic type $relation[0]\n";
+			echo "Unknown semantic type $relation[0]\n";
 			print_r($relation);
 		}
 		if(!$definedMeaningId2){
-			echo "Unkown semantic type $relation[2]\n";
+			echo "Unknown semantic type $relation[2]\n";
 			print_r($relation);
 		}
 		addRelation($definedMeaningId2, $relationMeaningId, $definedMeaningId1);		
@@ -280,14 +312,15 @@ function importUMLSSemanticTypes($sab, $collectionId, $attributeTypes) {
 		$attributeMeaningId = $attributeTypes[$attribute->STY];
 
 		if(!$definedMeaningId){
-			echo "Unkown cui $attribute->CUI\n";
+			echo "Unknown cui $attribute->CUI\n";
 			print_r($attribute);
 		}
 		if(!$attributeMeaningId){
-			echo "Unkown attribute $$attribute->STY\n";
+			echo "Unknown attribute $attribute->STY\n";
 			print_r($attribute);
 		}
 		addRelation($definedMeaningId, 0, $attributeMeaningId);
 	}	
 }
+
 ?>
