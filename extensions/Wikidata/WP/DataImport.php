@@ -6,6 +6,7 @@ require_once("../WiktionaryZ/Expression.php");
 require_once("Setup.php");
 require_once('SwissProtImport.php');
 require_once('XMLImport.php');
+require_once('2GoMappingImport.php');
 
 ob_end_flush();
 $beginTime = time();
@@ -15,18 +16,23 @@ global
 	
 $wgCommandLineMode = true;
 
-//$file = "OneEntry.xml";
-//$file = "10000lines.xml";
-$file = "uniprot_sprot.xml";
-//$file = "uniprot_sprot.dat";
+//import EC code to GO mapping:
+$linkEC2Go = "LinksEC2Go.txt";
+$linkEC2GofileHandle = fopen($linkEC2Go, "r");
+$ECGoMapping = importEC2GoMapping($linkEC2GofileHandle);
+fclose($linkEC2GofileHandle);
 
-$fileHandle = fopen($file, "r");
+//import Swiss Prot key words to GO mapping:
+$linkSP2Go = "LinksSP2Go.txt";
+$linkSwissProtKeyWord2GofileHandle = fopen($linkSP2Go, "r");
+$SP2GoMapping = importSwissProtKeyWord2GoMapping($linkSwissProtKeyWord2GofileHandle);
+fclose($linkSwissProtKeyWord2GofileHandle);
 
-importEntriesFromXMLFile($fileHandle);
-
-//echoNofLines($fileHandle, 10000);
-//echoLinesUntilText($fileHandle, ")-");
-fclose($fileHandle);
+//import Swiss Prot:
+//$file = "uniprot_sprot.xml";
+//$fileHandle = fopen($file, "r");
+//importEntriesFromXMLFile($fileHandle);
+//fclose($fileHandle);
 
 $endTime = time();
 echo "Time elapsed: " . ($endTime - $beginTime); 

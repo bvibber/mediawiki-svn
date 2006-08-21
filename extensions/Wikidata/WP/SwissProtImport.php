@@ -194,6 +194,8 @@ class SwissProtXMLParser extends BaseXMLParser {
 			$ECNumberMeaningId = $this->getOrCreateECNumberMeaningId($entry->EC);
 			addRelation($definedMeaningId, $this->getOrCreateRelationTypeMeaningId("EC number"), $ECNumberMeaningId);
 			addRelation($ECNumberMeaningId, $this->getOrCreateRelationTypeMeaningId("referenced by"), $definedMeaningId);
+			//map to UMLS GO codes?
+			
 		}
 		
 // 		Add protein includes relations
