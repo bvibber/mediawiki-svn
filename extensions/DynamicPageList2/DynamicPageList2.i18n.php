@@ -43,16 +43,20 @@ $wgDPL2Messages['en'] = array(
 	
 	// WARNINGS
 	/**
+	 * $0: unknown parameter given by user
+	 * $1: list of DPL2 available parameters separated by ', '
+	*/
+	'dpl2_debug_' . DPL2_WARN_UNKNOWNPARAM => "WARNING: Unknown parameter '$0' is ignored. Help: available parameters: <code>$1</code>.",
+	/**
+	 * $3: list of valid param values separated by ' | '
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "WARNING: Wrong '$0' parameter: '$1'! Using default: '$2'. Help: <code>$0= $3</code>.",
+	/**
 	 * $0: param name
 	 * $1: wrong param value given by user
 	 * $2: default param value used instead by program
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGCOUNT => "WARNING: Wrong '$0' parameter: '$1'! Using default: '$2' (no count limit). Help: <code>$0= <i>empty string</i> (no count limit) | n</code>, with <code>n</code> a positive integer.",
-	'dpl2_debug_' . DPL2_WARN_WRONGINLINESYMBOL => "WARNING: Wrong '$0' parameter: '$1' (tags ignored)! Using default: '$2'. Help: <code>$0= symbol</code>, with <code>symbol</code> anything but blank (tags ignored).",
-	/**
-	 * $3: list of valid param values separated by ' | '
-	*/
-	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "WARNING: Wrong '$0' parameter: '$1'! Using default: '$2'. Help: <code>$0= $3</code>.",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'WARNING: No results!',
 	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => 'WARNING: It is strongly recommended to include at least one category or namespace. If not, the generation of the page list can be quite resource and time-consuming.',
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "WARNING: Add* parameters ('adduser', 'addeditdate', etc.)' have no effect with 'mode=category'. Only the page namespace/title can be viewed in this mode.",
