@@ -20,8 +20,8 @@ function progressBar($current, $maximum) {
 	$barWidth = 45;
 
 	if ($maximum > 0) {
-		$percentage = round(100 * $current / $maximum);
-		$barFull = round($barWidth * $current / $maximum);
+		$percentage = floor(100 * $current / $maximum);
+		$barFull = floor($barWidth * $current / $maximum);
 	}
 	else {
 		$percentage = 100;
