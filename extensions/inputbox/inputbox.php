@@ -124,7 +124,7 @@ class Inputbox {
 		<td align="center" bgcolor="{$this->bgcolor}">
 		<form name="searchbox" action="$searchpath" class="searchbox">
 		<input class="searchboxInput" name="search" type="{$type}"
-		value="{$this->defaulttext}" size="{$this->width}"/>{$this->br}
+		value="{$this->defaulttext}" size="{$this->width}" />{$this->br}
 ENDFORM;
 
 		// disabled when namespace filter active
@@ -208,7 +208,7 @@ ENDFORM;
 		
 		$action = htmlspecialchars( $wgScript );		
 		if($this->type=="comment") {
-			$comment='<input type="hidden" name="section" value="new">';
+			$comment='<input type="hidden" name="section" value="new" />';
 			if(!$this->buttonlabel) {
 				$this->buttonlabel = wfMsgHtml( "postcomment" );
 			}
@@ -224,14 +224,14 @@ ENDFORM;
 <tr>
 <td align="center" bgcolor="{$this->bgcolor}">
 <form name="createbox" action="$action" method="get" class="createbox">
-	<input type='hidden' name="action" value="edit">
+	<input type='hidden' name="action" value="edit" />
 	<input type="hidden" name="preload" value="{$this->preload}" />
-	<input type="hidden" name="editintro" value="{$this->editintro}" />	
+	<input type="hidden" name="editintro" value="{$this->editintro}" />
 	{$comment}
 	<input class="createboxInput" name="title" type="{$type}"
-	value="{$this->defaulttext}" size="{$this->width}"/>{$this->br}	
+	value="{$this->defaulttext}" size="{$this->width}" />{$this->br}
 	<input type='submit' name="create" class="createboxButton"
-	value="{$this->buttonlabel}"/>	
+	value="{$this->buttonlabel}" />
 </form>
 </td>
 </tr>
