@@ -4,13 +4,13 @@
 
 Summary: The Squid proxy caching server.
 Name: squid
-Version: 2.5.STABLE13
-Release: 8wm
-Epoch: 7
+Version: 2.6.STABLE3
+Release: 1wm
+Epoch: 8
 License: GPL
 Group: System Environment/Daemons
 Vendor: Wikimedia
-Source: http://www.squid-cache.org/Squid/Versions/v2/2.5/squid-%{version}.tar.bz2
+Source: http://www.squid-cache.org/Squid/Versions/v2/2.6/squid-%{version}.tar.bz2
 Source1: http://www.squid-cache.org/Squid/FAQ/FAQ.sgml
 Source2: squid.init
 Source3: squid.logrotate
@@ -20,30 +20,23 @@ Source6: squid.cron
 Source98: perl-requires-squid.sh
 
 # Upstream patches
-Patch100: squid-2.5.STABLE13-epoll.patch
 
 # Local patches
 # Putting upstream patches first lowers the chances that we'll need to modify
 # them because of local patch changes.
 Patch201: squid-2.5.STABLE11-config.patch
 Patch202: squid-2.5.STABLE4-location.patch
-Patch203: squid-2.5.STABLE7-build.patch
+Patch203: squid-2.6.STABLE2-build.patch
 Patch204: squid-2.5.STABLE4-perlpath.patch
-Patch205: squid-2.5.STABLE5-pipe.patch
-#Patch206: squid-2.5.STABLE11-libbind.patch
-Patch207: squid-2.5.STABLE13-htcp.patch
 
 # Wikimedia patches
-Patch251: squid-htcp-clr.diff
 Patch252: squid-2.5.STABLE13-errors.patch
 Patch253: squid-2.5.STABLE13-nomanglerequestheaders.patch
-Patch254: squid-2.5.STABLE13-htcp2.patch
-Patch255: squid-2.5.STABLE13-diskload.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Prereq: /sbin/chkconfig logrotate shadow-utils
 Requires: bash >= 2.0
-BuildPrereq: openjade linuxdoc-tools openssl-devel automake15 autoconf213 wget gcc
+BuildPrereq: openjade linuxdoc-tools openssl-devel automake15 autoconf213 libtool wget gcc unzip
 Obsoletes: squid-novm
 
 %description
@@ -61,21 +54,14 @@ lookup program (dnsserver), a program for retrieving FTP data
 %prep
 %setup -q
 
-%patch100 -p1
 ./bootstrap.sh
 
 %patch201 -p1 -b .config
 %patch202 -p1 -b .location
 %patch203 -p1 -b .build
 %patch204 -p1 -b .perlpath
-%patch205 -p1 -b .pipe
-#%patch206 -p1 -b .libbind
-%patch207 -p0 -b .htcp
-%patch251 -p0 -b .htcpclr
 %patch252 -p0 -b .errors
 %patch253 -p0 -b .nomanglerequestheaders
-%patch254 -p0 -b .htcp2
-%patch255 -p0
 
 # Fetch the Wikimedia error page from SVN
 cp -a errors/English errors/Wikimedia
@@ -102,10 +88,8 @@ done
    --enable-delay-pools \
    --enable-linux-netfilter \
    --with-pthreads \
-   --enable-ntlm-auth-helpers="SMB,winbind" \
-   --enable-external-acl-helpers="ip_user,unix_group,wbinfo_group,winbind_group" \
+   --enable-external-acl-helpers="ip_user,unix_group,wbinfo_group" \
    --enable-auth="basic,ntlm" \
-   --with-winbind-auth-challenge \
    --enable-useragent-log \
    --enable-referer-log \
    --disable-dependency-tracking \
@@ -187,6 +171,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) /etc/squid/errors
 %{_sbindir}/squid
 %{_sbindir}/squidclient
+%{_sbindir}/cossdump
 %config(noreplace) /etc/squid/icons
 %config(noreplace) /etc/rc.d/init.d/squid
 %config(noreplace) /etc/logrotate.d/squid
@@ -232,6 +217,29 @@ fi
 chgrp squid /var/cache/samba/winbindd_privileged > /dev/null 2>& 1 || true
 
 %changelog
+* Tue Aug 22 2006 Mark Bergsma <mark@nedworks.org> 8:2.6.STABLE3-1.WM
+- New upstream version 2.6.STABLE3
+
+* Wed Aug 2 2006 Mark Bergsma <mark@nedworks.org> 8:2.6.STABLE2-1.WM
+- New upstream version 2.6.STABLE2
+- Remove HTCP bugfix, it was fixed in upstream
+- Update build patches
+
+* Mon Jun 12 2006 Mark Bergsma <mark@nedworks.org> 8:2.6.PRE2-3.WM
+- Increase N_QUERIED_KEYS from 256 to 8129 in htcp.c
+
+* Mon Jun 12 2006 Mark Bergsma <mark@nedworks.org> 8:2.6.PRE2-2.WM
+- Fix wrong PID file path
+- Fix HTCP bug where the old squid format is rejected as invalid packet
+
+* Mon Jun 12 2006 Mark Bergsma <mark@nedworks.org> 8:2.6.PRE2-1.WM
+- Change upstream branch to 2.6
+- Drop all patches merged upstream (epoll, various HTCP, disk I/O)
+- Build without dlmalloc and winbind stuff
+
+* Tue May 15 2006 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE13-8.WM
+- Build with ldmalloc
+
 * Tue May 9 2006 Mark Bergsma <mark@nedworks.org> 7:2.5.STABLE13-8.WM
 - Include the HIT conversion into MISS during heavy disk I/O patch by
   Adrian Chadd
