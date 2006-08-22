@@ -4,7 +4,7 @@
 
 Summary: The Squid proxy caching server.
 Name: squid
-Version: 2.6.STABLE2
+Version: 2.6.STABLE3
 Release: 1wm
 Epoch: 8
 License: GPL
@@ -217,6 +217,9 @@ fi
 chgrp squid /var/cache/samba/winbindd_privileged > /dev/null 2>& 1 || true
 
 %changelog
+* Tue Aug 22 2006 Mark Bergsma <mark@nedworks.org> 8:2.6.STABLE3-1.WM
+- New upstream version 2.6.STABLE3
+
 * Wed Aug 2 2006 Mark Bergsma <mark@nedworks.org> 8:2.6.STABLE2-1.WM
 - New upstream version 2.6.STABLE2
 - Remove HTCP bugfix, it was fixed in upstream
