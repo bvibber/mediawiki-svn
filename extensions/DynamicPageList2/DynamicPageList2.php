@@ -79,8 +79,8 @@ $wgDPL2Options = array(
 	 * html headings (H2, H3, H4), definition list, no heading (null), ordered, unordered.
 	 */
 	'headingmode' => array( 'default' => 'null', 'H2', 'H3', 'H4', 'definition', 'null', 'ordered', 'unordered'),
-	// The pattern is to be matched after any opening/closing tag is removed (blank/whitespace symbols not allowed).
-	'inlinesymbol' => array('default' => '-', 'pattern' => '/\S/'),
+	//inline text is some wiki text used to separate list items with 'mode=inline'
+	'inlinetext' => array('default' => ' - '),
 	// mode for list of pages (possibly within a heading)
 	'mode' => array('default' => 'unordered', 'category', 'inline', 'none', 'ordered', 'unordered'),
 	'namespace' => NULL,
@@ -112,9 +112,9 @@ $wgDPL2DebugCodes = array(
 	'DPL2_ERR_MORETHAN1TYPEOFDATE' => 1,
 	'DPL2_ERR_WRONGORDERMETHOD' => 1,
 	// WARNINGS
-	'DPL2_WARN_WRONGCOUNT' => 2,
-	'DPL2_WARN_WRONGINLINESYMBOL' => 2,
+	'DPL2_WARN_UNKNOWNPARAM' => 2,
 	'DPL2_WARN_WRONGPARAM' => 2,
+	'DPL2_WARN_WRONGCOUNT' => 2,
 	'DPL2_WARN_NORESULTS' => 2,
 	'DPL2_WARN_NOINCLUDEDCATSORNS' => 2,
 	'DPL2_WARN_CATOUTPUTBUTWRONGPARAMS' => 2,
@@ -164,7 +164,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$sPageOutputMode = $wgDPL2Options['mode']['default'];
 	$sHeadingOutputMode = $wgDPL2Options['headingmode']['default'];
 	$sRedirects = $wgDPL2Options['redirects']['default'];
-	$sInlSymbol = $wgDPL2Options['inlinesymbol']['default'];
+	$sInlTxt = $wgDPL2Options['inlinetext']['default'];
 	$bShowNamespace = $wgDPL2Options['shownamespace']['default'] == 'true';
 	$bAddFirstCategoryDate = $wgDPL2Options['addfirstcategorydate']['default'] == 'true';
 	$bAddPageTouchedDate = $wgDPL2Options['addpagetoucheddate']['default'] == 'true';
@@ -179,7 +179,8 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	
 	//Local parser created. See http://meta.wikimedia.org/wiki/MediaWiki_extensions_FAQ#How_do_I_render_wikitext_in_my_extension.3F
 	$localParser = new Parser();
-	$poptions = $parser->mOptions;
+	$pOptions = $parser->mOptions;
+	$pTitle = $parser->mTitle;
 	$output = '';
 	
 	//logger (display of debug messages)
@@ -190,7 +191,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	
 	foreach($aParams as $iParam => $sParam) {
 		
-		$aParam = explode("=", $sParam);
+		$aParam = explode("=", $sParam, 2);
 		if( count( $aParam ) < 2 )
 			continue;
 		$sType = trim($aParam[0]);
@@ -202,7 +203,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				$aParams = explode("|", $sArg);
 				foreach($aParams as $sParam) {
 					$sParam=trim($sParam);
-					$title = Title::newFromText($localParser->transformMsg($sParam, $poptions));
+					$title = Title::newFromText($localParser->transformMsg($sParam, $pOptions));
 					if( $title != NULL )
 						$aCategories[] = $title;
 				}
@@ -211,7 +212,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				break;
 				
 			case 'notcategory':
-				$title = Title::newFromText($localParser->transformMsg($sArg, $poptions));
+				$title = Title::newFromText($localParser->transformMsg($sArg, $pOptions));
 				if( $title != NULL )
 					$aExcludeCategories[] = $title;
 				break;
@@ -272,12 +273,10 @@ function DynamicPageList2( $input, $params, &$parser ) {
 					$output .= $logger->msgWrongParam('headingmode', $sArg);
 				break;	
 				
-			case 'inlinesymbol':
-				$sArg = strip_tags($sArg);
-				if( preg_match($wgDPL2Options['inlinesymbol']['pattern'], $sArg) )
-					$sInlSymbol = $sArg;
-				else
-					$output .= $logger->msgWrongParam('inlinesymbol', $sArg);
+			case 'inlinetext':
+				//parse wiki text and get HTML output
+				$pOutput = $localParser->parse($sArg, $pTitle, $pOptions, false);
+				$sInlTxt = $pOutput->getText();
 				break;
 				
 			case 'order':
@@ -351,7 +350,9 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				}
 				else	
 					$output .= $logger->msgWrongParam('debug', $sArg);
-				break;	
+				break;
+			default:
+				$output .= $logger->msg(DPL2_WARN_UNKNOWNPARAM, $sType, implode(', ', array_keys($wgDPL2Options)));
 		}
 	}
 	
@@ -712,7 +713,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			if ($sPageOutputMode == 'category')
 				$output .= DPL2OutputCategoryStyle($aArticles, $aArticles_start_char, $headingStart, $headingCount);
 			else
-				$output .= DPL2OutputListStyle($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sPageOutputMode, $sInlSymbol, $headingStart, $headingCount);
+				$output .= DPL2OutputListStyle($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sPageOutputMode, $sInlTxt, $headingStart, $headingCount);
 			$output .= $headingMode->sEndItem;
 			$headingStart += $headingCount;
 		}
@@ -721,7 +722,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	elseif($sPageOutputMode == 'category')
 		$output .= DPL2OutputCategoryStyle($aArticles, $aArticles_start_char, 0, count($aArticles));
 	else
-		$output .= DPL2OutputListStyle($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sPageOutputMode, $sInlSymbol, 0, count($aArticles));
+		$output .= DPL2OutputListStyle($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sPageOutputMode, $sInlTxt, 0, count($aArticles));
 
 	return $output;
 }
@@ -739,7 +740,7 @@ function DPL2UpdateLinks($aTitles, $linkCache, &$aLinks) {
 				$sk->makeKnownLinkObj($titleval, $wgContLang->convertHtml($titleval->getText()));
 }
 
-function DPL2OutputListStyle ($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sOutputMode, $sInlSymbol, $iStart, $iCount) {
+function DPL2OutputListStyle ($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sOutputMode, $sInlTxt, $iStart, $iCount) {
 	global $wgUser, $wgLang;
 	
 	$sk = & $wgUser->getSkin();
@@ -747,7 +748,7 @@ function DPL2OutputListStyle ($aArticles, $aAddDates, $aAddUsers, $aAddCategorie
 	$tSpecCats = Title::makeTitle( NS_SPECIAL, 'Categories' );
 	$sSpecCatsLnk = $sk->makeKnownLinkObj( $tSpecCats, wfMsg('categories'));
 	
-	$mode = new DPL2OutputMode($sOutputMode, $sInlSymbol);
+	$mode = new DPL2OutputMode($sOutputMode, $sInlTxt);
 	//process results of query, outputing equivalent of <li>[[Article]]</li> for each result,
 	//or something similar if the list uses other startlist/endlist;
 	$r = $mode->sStartList;
@@ -760,7 +761,7 @@ function DPL2OutputListStyle ($aArticles, $aAddDates, $aAddUsers, $aAddCategorie
 			$r .= ' . . ' . $aAddUsers[$i];
 		if(!empty($aAddCategories[$i]))
 			$r .= ' . . <small>' . $sSpecCatsLnk . ': ' . implode(' | ', $aAddCategories[$i]) . '</small>';
-		if( (($mode->name != 'inline') && ($mode->name != 'none')) || ($i < $iStart + $iCount-1)) //no inline symbol (inline mode) at end of list
+		if( (($mode->name != 'inline') && ($mode->name != 'none')) || ($i < $iStart + $iCount-1)) //no inlinetext (inline mode) at end of list
 			$r .= $mode->sEndItem;
 	}
 	$r .= $mode->sEndList;
@@ -826,9 +827,6 @@ class DPL2Logger {
 			case 'count':
 				$msgid = DPL2_WARN_WRONGCOUNT;
 				break;
-			case 'inlinesymbol':
-				$msgid = DPL2_WARN_WRONGINLINESYMBOL;
-				break;
 			case 'namespace':
 			case 'notnamespace':
 				//get available namespaces
@@ -860,14 +858,14 @@ class DPL2OutputMode {
 	var $sStartItem = '';
 	var $sEndItem = '';
 	
-	function DPL2OutputMode($outputmode, $inlinesymbol = '-') {
+	function DPL2OutputMode($outputmode, $inlinetext = ' - ') {
 		$this->name = $outputmode;
 		switch ($outputmode) {
 			case 'none':
 				$this->sEndItem = '<br/>';
 				break;
 			case 'inline':
-				$this->sEndItem = ' ' . $inlinesymbol . ' ';
+				$this->sEndItem = $inlinetext;
 				break;
 			case 'ordered':
 				$this->sStartList = '<ol>';
