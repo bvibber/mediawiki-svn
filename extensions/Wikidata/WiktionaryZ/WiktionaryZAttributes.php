@@ -54,8 +54,9 @@ $relationStructure = new Structure($relationTypeAttribute, $otherDefinedMeaningA
 $relationsAttribute = new Attribute("relations", "Relations", new RecordSetType($relationStructure));
 
 global
-	$translatedTextStructure;
+	$translatedTextIdAttribute, $translatedTextStructure;
 	
+$translatedTextIdAttribute = new Attribute("translated-text-id", "Translated text ID", "integer");	
 $translatedTextStructure = new Structure($languageAttribute, $textAttribute);	
 
 global

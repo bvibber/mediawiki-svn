@@ -4,7 +4,7 @@ require_once("../../../LocalSettings.php");
 require_once("../WiktionaryZ/Expression.php");
 
 // Uncomment following line for versioning support
-//require_once("../WiktionaryZ/Transaction.php");
+require_once("../WiktionaryZ/Transaction.php");
 
 require_once("ProgressBar.php");
 require_once("Setup.php");
@@ -23,7 +23,7 @@ $wgCommandLineMode = true;
 openDatabase("localhost", "umls", "root", "");
 
 // Uncomment following line for versioning support
-//startNewTransaction(0, 0, "UMLS Import");
+startNewTransaction(0, 0, "UMLS Import");
 
 $languageId = 85;
 echo "Creating UMLS collections\n";
@@ -55,45 +55,45 @@ foreach ($sourceAbbreviations as $sab => $source) {
 	}
 }
 
-echo "Importing UMLS relation types\n";
-importUMLSRelationTypes($relationCollectionId, $languageId);
-
-echo "Importing UMLS attribute types\n";
-importUMLSRelationAttributes($relationAttributesCollectionId, $languageId);
-
-echo "Importing UMLS relations per source\n";
-$relationCollection = getCollectionContents($relationCollectionId);
-$relationAttributesCollection = getCollectionContents($relationAttributesCollectionId);
-$i = 0;
-
-foreach ($sourceAbbreviations as $sab => $source) {
-	if (strcmp($sab, "GO") == 0) {
-		echo "  $i: $source\n";
-		$query = "select cui1, cui2, rel from MRREL where sab like '$sab'";
-		importUMLSRelations($umlsCollectionId , $relationCollection, $query);
-		$query = "select cui1, cui2, rela from MRREL where sab like '$sab' and rela!=''";
-		importUMLSRelations($umlsCollectionId , $relationAttributesCollection, $query);
-		$i++;
-	}
-}
-
-echo "Importing semantic network types\n";
-importSNTypes($semanticNetworkSemanticTypesCollectionId, "SELECT semtypeab,type,definition FROM srdef WHERE type='STY'", $languageId);
-importSNTypes($semanticNetworkRelationTypesCollectionId, "SELECT semtypeab,type,definition FROM srdef WHERE type='RL'", $languageId);
-
-echo "Importing semantic network relations\n";
-importSemanticTypeRelations($semanticNetworkSemanticTypesCollectionId, $relationCollection, "SELECT SEMTYPE1, RELATION, SEMTYPE2 from semtypehier");
-importSemanticTypeRelations($semanticNetworkRelationTypesCollectionId, $relationCollection, "SELECT RELTYPE1, RELATION, RELTYPE2 from semrelhier");
-
-echo "Importing UMLS semantic type relations per source\n";
-$attributeTypes = getCollectionContents($semanticNetworkSemanticTypesCollectionId);
-$i = 1;
-foreach ($sourceAbbreviations as $sab => $source) {
-	if (strcmp($sab, "GO") == 0) {
-		echo "  $i: $source\n";
-		importUMLSSemanticTypes($sab, $umlsCollectionId, $attributeTypes);		
-	}
-}
+//echo "Importing UMLS relation types\n";
+//importUMLSRelationTypes($relationCollectionId, $languageId);
+//
+//echo "Importing UMLS attribute types\n";
+//importUMLSRelationAttributes($relationAttributesCollectionId, $languageId);
+//
+//echo "Importing UMLS relations per source\n";
+//$relationCollection = getCollectionContents($relationCollectionId);
+//$relationAttributesCollection = getCollectionContents($relationAttributesCollectionId);
+//$i = 0;
+//
+//foreach ($sourceAbbreviations as $sab => $source) {
+//	if (strcmp($sab, "GO") == 0) {
+//		echo "  $i: $source\n";
+//		$query = "select cui1, cui2, rel from MRREL where sab like '$sab'";
+//		importUMLSRelations($umlsCollectionId , $relationCollection, $query);
+//		$query = "select cui1, cui2, rela from MRREL where sab like '$sab' and rela!=''";
+//		importUMLSRelations($umlsCollectionId , $relationAttributesCollection, $query);
+//		$i++;
+//	}
+//}
+//
+//echo "Importing semantic network types\n";
+//importSNTypes($semanticNetworkSemanticTypesCollectionId, "SELECT semtypeab,type,definition FROM srdef WHERE type='STY'", $languageId);
+//importSNTypes($semanticNetworkRelationTypesCollectionId, "SELECT semtypeab,type,definition FROM srdef WHERE type='RL'", $languageId);
+//
+//echo "Importing semantic network relations\n";
+//importSemanticTypeRelations($semanticNetworkSemanticTypesCollectionId, $relationCollection, "SELECT SEMTYPE1, RELATION, SEMTYPE2 from semtypehier");
+//importSemanticTypeRelations($semanticNetworkRelationTypesCollectionId, $relationCollection, "SELECT RELTYPE1, RELATION, RELTYPE2 from semrelhier");
+//
+//echo "Importing UMLS semantic type relations per source\n";
+//$attributeTypes = getCollectionContents($semanticNetworkSemanticTypesCollectionId);
+//$i = 1;
+//foreach ($sourceAbbreviations as $sab => $source) {
+//	if (strcmp($sab, "GO") == 0) {
+//		echo "  $i: $source\n";
+//		importUMLSSemanticTypes($sab, $umlsCollectionId, $attributeTypes);		
+//	}
+//}
 
 $endTime = time();
 echo "Time elapsed: " . durationToString($endTime - $beginTime); 

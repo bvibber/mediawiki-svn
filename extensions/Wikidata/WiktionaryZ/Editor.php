@@ -1134,4 +1134,26 @@ class RecordSpanEditor extends RecordEditor {
 	}
 } 
 
+class UserEditor extends ScalarEditor {
+	public function view($idPath, $value) {
+		global
+			$wgUser;
+			
+		if ($value != "")	
+			return $wgUser->getSkin()->makeLink("User:".$value, $value);
+		else
+			return "";
+	}
+	
+	public function edit($idPath, $value) {
+		return $this->view($idPath, $value);
+	}
+
+	public function getInputValue($id) {
+	}
+	
+	public function add($idPath) {
+	}
+}
+
 ?>

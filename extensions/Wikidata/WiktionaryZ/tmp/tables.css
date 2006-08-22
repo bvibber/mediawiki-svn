@@ -110,3 +110,30 @@ ul.collapsable-items {
 	margin-left: 0px;
 	text-indent: 0px;
 }
+
+/* Save panel */
+
+.save-panel {
+	margin: 8px 4px 4px 4px;
+	padding: 8px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #AAAAAA;
+}
+
+.save-panel, .save-panel th {
+	background-color: #F5F5F5;
+}
+
+.save-panel th {
+	padding-right: 8px;
+}
+
+.save-panel table {
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.save-panel td {
+	width: 100%;
+}

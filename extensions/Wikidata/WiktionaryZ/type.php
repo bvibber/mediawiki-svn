@@ -42,7 +42,8 @@ function definingExpression($definedMeaningId) {
 
 function definedMeaningExpressionForLanguage($definedMeaningId, $languageId) {
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT spelling from uw_syntrans, uw_expression_ns where defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=$languageId and uw_syntrans.endemic_meaning=1 limit 1");
+	$queryResult = $dbr->query("SELECT spelling FROM uw_syntrans, uw_expression_ns " .
+								"WHERE defined_meaning_id=$definedMeaningId AND uw_expression_ns.expression_id=uw_syntrans.expression_id AND uw_expression_ns.language_id=$languageId AND uw_syntrans.endemic_meaning=1 LIMIT 1");
 
 	if ($expression = $dbr->fetchObject($queryResult))
 		return $expression->spelling;

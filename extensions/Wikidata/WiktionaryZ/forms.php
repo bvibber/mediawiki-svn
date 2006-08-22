@@ -3,7 +3,7 @@
 require_once('languages.php');
 
 function getTextBox($name, $value = "", $maximumLength = 255) {
-	return '<input type="text" name="'. $name .'" value="'. $value .'" maxlength="'. $maximumLength .'" style="width: 100%; padding: 0px; margin: 0px;"/>';
+	return '<input type="text" id="'. $name .'" name="'. $name .'" value="'. $value .'" maxlength="'. $maximumLength .'" style="width: 100%; padding: 0px; margin: 0px;"/>';
 }
  
 function getTextArea($name, $text = "", $rows = 5, $columns = 80) {

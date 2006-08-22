@@ -9,7 +9,7 @@ function importEntriesFromXMLFile($fileHandle, $EC2GoMapping, $keyword2GoMapping
 //		$languageId = $languageIdObject->language_id;
 //	}
 	
-	$goCollectionId = findCollection("Gene Ontology, 2004_12_20");
+	$goCollectionId = 264; //findCollection("Gene Ontology, 2004_12_20");
 	$goCollection = getCollectionContents($goCollectionId);
 
 	$EC2GoMeaningId = array();
@@ -101,7 +101,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 			$this->stack[] = $handler;						
 		}
 		else {
-			if (count($this->stack) == 1) {
+			if (count($this->stack) == 1 && $this->numberOfEntries % 10 == 0) {
 				$currentByteIndex = xml_get_current_byte_index($parser);
 				progressBar($currentByteIndex, $numberOfBytes);
 			}

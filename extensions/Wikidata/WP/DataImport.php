@@ -9,6 +9,9 @@ require_once('XMLImport.php');
 require_once('2GoMappingImport.php');
 require_once("ProgressBar.php");
 
+// Uncomment following line for versioning support
+require_once("../WiktionaryZ/Transaction.php");
+
 ob_end_flush();
 
 global
@@ -16,6 +19,9 @@ global
 
 $beginTime = time();
 $wgCommandLineMode = true;
+
+// Uncomment following line for versioning support
+startNewTransaction(10, 0, "Swiss-Prot Import");
 
 //import EC code to GO mapping:
 $linkEC2Go = "LinksEC2Go.txt";
@@ -30,8 +36,8 @@ $SP2GoMapping = importSwissProtKeyWord2GoMapping($linkSwissProtKeyWord2GofileHan
 fclose($linkSwissProtKeyWord2GofileHandle);
 
 //import Swiss Prot:
-//$file = "uniprot_sprot.xml";
-$file = "10000lines.xml";
+$file = "uniprot_sprot.xml";
+//$file = "10000lines.xml";
 $numberOfBytes = filesize($file);
 progressBar(0, $numberOfBytes);
 $fileHandle = fopen($file, "r");
@@ -64,7 +70,7 @@ function echoLinesUntilText($fileHandle, $text) {
 	echo "</uniprot>";
 }
 
-function	importSwissProtEntries($fileHandle) {
+function importSwissProtEntries($fileHandle) {
 //	$selectLanguageId = 'SELECT language_id FROM language_names WHERE language_name ="English"';
 //	$dbr =& wfGetDB(DB_MASTER);
 //	$queryResult = $dbr->query($selectLanguageId);

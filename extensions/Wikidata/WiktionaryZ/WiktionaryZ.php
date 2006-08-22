@@ -1,5 +1,6 @@
 <?php
 
+require_once('Transaction.php');
 require_once('Expression.php');
 require_once('forms.php');
 require_once('Attribute.php');
@@ -25,13 +26,17 @@ class WiktionaryZ {
 		$wgMessageCache->addMessages(
 			array(
 				'wz_uilang'=>'Your user interface language: $1',
-				'wz_uilang_set'=>'Set your preferences'
+				'wz_uilang_set'=>'Set your preferences',
+				'wz_save' => 'Save',
+				'wz_history' => 'History'
 			)
 		);
 		
 	}
+
 	function view() {
-		global $wgOut, $wgTitle;
+		global 
+			$wgOut, $wgTitle;
 
 		$wgOut->addHTML($this->getLanguageSelector());
 		$spelling = $wgTitle->getText();
@@ -40,6 +45,19 @@ class WiktionaryZ {
 		# We may later want to disable the regular page component
 		# $wgOut->setPageTitleArray($this->mTitle->getTitleArray());
 	}
+		
+	function history() {
+		global 
+			$wgOut, $wgTitle;
+
+		$wgOut->addHTML($this->getLanguageSelector());
+		$spelling = $wgTitle->getText();
+		$wgOut->addHTML($this->getExpressionsEditor($spelling)->view(new IdStack("expression"), $this->getExpressionsRecordSet($spelling)));
+		
+		$titleArray = $wgTitle->getTitleArray();
+		$titleArray["actionprefix"] = wfMsg('wz_history');
+		$wgOut->setPageTitleArray($titleArray);
+	}
 	
 	function getLanguageSelector() {
 		global $wgUser;
@@ -47,15 +65,29 @@ class WiktionaryZ {
 		$skin = $wgUser->getSkin();
 		return wfMsg('wz_uilang',"<b>$userlang</b>").  " &mdash; " . $skin->makeLink("Special:Preferences", wfMsg('wz_uilang_set'));
 	}
-	function getDefinedMeaningDefinitionEditor() {
+	
+	function getTransactionEditor($attribute) {
 		global
-			$definitionAttribute, $languageAttribute, $textAttribute;
+			$userAttribute, $timestampAttribute;
 		
-		$editor = new RecordSetTableEditor($definitionAttribute, true, true, true, new DefinedMeaningDefinitionController());
-		$editor->addEditor(new LanguageEditor($languageAttribute, false, true));
-		$editor->addEditor(new TextEditor($textAttribute, true, true));
+		$transactionEditor = new RecordTableCellEditor($attribute);
+		$transactionEditor->addEditor(new UserEditor($userAttribute, false, true));
+		$transactionEditor->addEditor(new ShortTextEditor($timestampAttribute, false, true));
+
+		return $transactionEditor;
+	}
+	
+	function addTableLifeSpanEditor($editor) {
+		global
+			$recordLifeSpanAttribute, $addTransactionAttribute, $removeTransactionAttribute, $wgRequest;
 		
-		return $editor;
+		if ($wgRequest->getText('action') == 'history') {
+			$lifeSpanEditor = new RecordTableCellEditor($recordLifeSpanAttribute);
+			$lifeSpanEditor->addEditor($this->getTransactionEditor($addTransactionAttribute));
+			$lifeSpanEditor->addEditor($this->getTransactionEditor($removeTransactionAttribute));
+			
+			$editor->addEditor($lifeSpanEditor);
+		}
 	}
 	
 	function getTranslatedTextEditor($attribute, $controller) {
@@ -66,9 +98,11 @@ class WiktionaryZ {
 		$editor->addEditor(new LanguageEditor($languageAttribute, false, true)); 
 		$editor->addEditor(new TextEditor($textAttribute, true, true));
 		
+		$this->addTableLifeSpanEditor($editor);
+		
 		return $editor; 
 	}
-	
+
 	function getAlternativeDefinitionsEditor() {
 		global
 			$alternativeDefinitionsAttribute, $definitionIdAttribute, $alternativeDefinitionAttribute, $languageAttribute, $textAttribute;
@@ -86,7 +120,8 @@ class WiktionaryZ {
 	
 	function getSynonymsAndTranslationsEditor() {
 		global
-			$synonymsAndTranslationsAttribute, $identicalMeaningAttribute, $expressionIdAttribute, $expressionAttribute, $languageAttribute, $spellingAttribute;
+			$synonymsAndTranslationsAttribute, $identicalMeaningAttribute, $expressionIdAttribute, $expressionAttribute, $languageAttribute, 
+			$spellingAttribute;
 		
 		$expressionEditor = new RecordTableCellEditor($expressionAttribute);
 		$expressionEditor->addEditor(new LanguageEditor($languageAttribute, false, true));
@@ -96,6 +131,8 @@ class WiktionaryZ {
 		$tableEditor->addEditor($expressionEditor);
 		$tableEditor->addEditor(new BooleanEditor($identicalMeaningAttribute, true, true, true));
 		
+		$this->addTableLifeSpanEditor($tableEditor);
+
 		return $tableEditor;
 	}
 
@@ -107,6 +144,8 @@ class WiktionaryZ {
 		$editor->addEditor(new RelationTypeEditor($relationTypeAttribute, false, true));
 		$editor->addEditor(new DefinedMeaningEditor($otherDefinedMeaningAttribute, false, true));
 		
+		$this->addTableLifeSpanEditor($editor);
+
 		return $editor;
 	}
 	
@@ -116,6 +155,8 @@ class WiktionaryZ {
 			
 		$editor = new RecordSetTableEditor($classMembershipAttribute, true, true, false, new DefinedMeaningClassMembershipController());
 		$editor->addEditor(new AttributeEditor($classAttribute, false, true));
+		
+		$this->addTableLifeSpanEditor($editor);
 
 		return $editor;
 	}
@@ -195,9 +236,9 @@ class WiktionaryZ {
 	function getExpressionsEditor($spelling) {
 		global
 			$expressionsAttribute, $definedMeaningAttribute, $expressionAttribute, $expressionMeaningsAttribute, 
-			$languageAttribute, $textAttribute;
+			$languageAttribute, $textAttribute, $definitionAttribute;
 			
-		$definitionEditor = $this->getDefinedMeaningDefinitionEditor();
+		$definitionEditor = $this->getTranslatedTextEditor($definitionAttribute, new DefinedMeaningDefinitionController()); 
 		$synonymsAndTranslationsEditor = $this->getSynonymsAndTranslationsEditor(); 
 		$relationsEditor = $this->getDefinedMeaningRelationsEditor();
 		$classMembershipEditor = $this->getDefinedMeaningClassMembershipEditor();
@@ -263,16 +304,19 @@ class WiktionaryZ {
 	
 	function saveForm() {
 		global 
-			$wgTitle, $wgUser;
+			$wgTitle, $wgUser, $wgRequest;
 		
+		$summary = $wgRequest->getText('summary');
+		
+		startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
+
 		$spelling = $wgTitle->getText();
 		$this->getExpressionsEditor($spelling)->save(new IdStack("expression"), $this->getExpressionsRecordSet($spelling));
 
 		Title::touchArray(array($wgTitle));
 		$now = wfTimestampNow();
-		RecentChange::notifyEdit($now, $wgTitle, false, $wgUser, 'Edited translations, synonyms, definition, or relations',
+		RecentChange::notifyEdit($now, $wgTitle, false, $wgUser, $summary,
 			0, $now, false, '', 0, 0, 0);
-
 	}
 
 	function edit() {
@@ -289,7 +333,10 @@ class WiktionaryZ {
 		$wgOut->addHTML("Your user interface language preference: <b>$userlang</b> - " . $skin->makeLink("Special:Preferences", "set your preferences"));
 		$wgOut->addHTML('<form method="post" action="">');
 		$wgOut->addHTML($this->getExpressionsEditor($spelling)->edit(new IdStack("expression"), $this->getExpressionsRecordSet($spelling)));
-		$wgOut->addHTML(getSubmitButton("save", "Save"));
+		$wgOut->addHTML('<div class="save-panel">');
+			$wgOut->addHTML('<table cellpadding="0" cellspacing="0"><tr><th>' . wfMsg('summary') . ': </th><td>' . getTextBox("summary") .'</td></tr></table>');
+			$wgOut->addHTML(getSubmitButton("save", wfMsg('wz_save')));
+		$wgOut->addHTML('</div>');	
 		$wgOut->addHTML('</form>');
 		
 		$titleArray = $wgTitle->getTitleArray();
@@ -300,7 +347,7 @@ class WiktionaryZ {
 	function getDefinedMeaningsForExpression($expressionId) {
 		$dbr =& wfGetDB(DB_SLAVE);
 		$definedMeanings = array();
-		$queryResult = $dbr->query("SELECT defined_meaning_id FROM uw_syntrans WHERE expression_id=$expressionId");
+		$queryResult = $dbr->query("SELECT defined_meaning_id FROM uw_syntrans WHERE expression_id=$expressionId AND ". getLatestTransactionRestriction('uw_syntrans'));
 		
 		while($definedMeaning = $dbr->fetchObject($queryResult)) 
 			$definedMeanings[] = $definedMeaning->defined_meaning_id;
@@ -308,39 +355,51 @@ class WiktionaryZ {
 		return $definedMeanings;
 	}
 	
-	function getSynonymAndTranslationIds($definedMeaningIds, $skippedExpressionId) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$synonymAndTranslationIds = array();
-		
-		foreach($definedMeaningIds as $definedMeaningId) {
-			$queryResult = $dbr->query("SELECT expression_id FROM uw_syntrans WHERE defined_meaning_id=$definedMeaningId AND expression_id!=$skippedExpressionId");
-		
-			while($synonymOrTranslation = $dbr->fetchObject($queryResult)) 
-				$synonymAndTranslationIds[$definedMeaningId][] = $synonymOrTranslation->expression_id;
-		}
-			
-		return $synonymAndTranslationIds;
-	}
+//	function getSynonymAndTranslationIds($definedMeaningIds, $skippedExpressionId) {
+//		$dbr =& wfGetDB(DB_SLAVE);
+//		$synonymAndTranslationIds = array();
+//		
+//		foreach($definedMeaningIds as $definedMeaningId) {
+//			$queryResult = $dbr->query("SELECT expression_id FROM uw_syntrans WHERE defined_meaning_id=$definedMeaningId AND expression_id!=$skippedExpressionId");
+//		
+//			while($synonymOrTranslation = $dbr->fetchObject($queryResult)) 
+//				$synonymAndTranslationIds[$definedMeaningId][] = $synonymOrTranslation->expression_id;
+//		}
+//			
+//		return $synonymAndTranslationIds;
+//	}
 
 	function getDefinedMeaningDefinitionRecordSet($definedMeaningId) {
 		global
 			$languageAttribute, $textAttribute;
 		
-		$dbr =& wfGetDB(DB_SLAVE);
-
-		$recordset = new ArrayRecordSet(new Structure($languageAttribute, $textAttribute), 
-										new Structure($languageAttribute));
-										
-		$queryResult = $dbr->query("SELECT language_id, old_text FROM uw_defined_meaning df, translated_content tc, text t WHERE df.defined_meaning_id=$definedMeaningId ".
-									"AND tc.set_id=df.meaning_text_tcid AND tc.text_id=t.old_id");
-									
-		while ($translatedDefinition = $dbr->fetchObject($queryResult)) 
-			$recordset->addRecord(array($translatedDefinition->language_id, $translatedDefinition->old_text));
-		
-		return $recordset;
+//		$dbr =& wfGetDB(DB_SLAVE);
+//
+//		$recordset = new ArrayRecordSet(new Structure($languageAttribute, $textAttribute), 
+//										new Structure($languageAttribute));
+//										
+//		$queryResult = $dbr->query("SELECT language_id, old_text FROM uw_defined_meaning df, translated_content tc, text t WHERE df.defined_meaning_id=$definedMeaningId ".
+//									"AND tc.set_id=df.meaning_text_tcid AND tc.text_id=t.old_id AND " . getViewTransactionRestriction('tc'));
+//									
+//		while ($translatedDefinition = $dbr->fetchObject($queryResult)) 
+//			$recordset->addRecord(array($translatedDefinition->language_id, $translatedDefinition->old_text));
+//		
+//		return $recordset;
+		$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
+		return $this->getTranslatedTextRecordSet($definitionId);		
 	}
 	
 	function getTranslatedTextRecordSet($textId) {
+		global
+			$wgRequest;
+			
+		if ($wgRequest->getText('action') == 'history')
+			return $this->getTranslatedTextHistoryRecordSet($textId);
+		else
+			return $this->getTranslatedTextLatestRecordSet($textId);
+	}
+	
+	function getTranslatedTextLatestRecordSet($textId) {
 		global
 			$languageAttribute, $textAttribute;
 		
@@ -350,7 +409,7 @@ class WiktionaryZ {
 										new Structure($languageAttribute));
 										
 		$queryResult = $dbr->query("SELECT language_id, old_text FROM translated_content tc, text t WHERE ".
-									"tc.set_id=$textId AND tc.text_id=t.old_id");
+									"tc.set_id=$textId AND tc.text_id=t.old_id AND " . getViewTransactionRestriction('tc'));
 									
 		while ($translatedText= $dbr->fetchObject($queryResult)) 
 			$recordset->addRecord(array($translatedText->language_id, $translatedText->old_text));
@@ -358,7 +417,66 @@ class WiktionaryZ {
 		return $recordset;
 	}
 	
+	function getTranslatedTextHistoryRecordSet($textId) {
+		global
+			$languageAttribute, $textAttribute, $recordLifeSpanAttribute;
+		
+		$dbr =& wfGetDB(DB_SLAVE);
+
+		$recordSet = new ArrayRecordSet(new Structure($languageAttribute, $textAttribute, $recordLifeSpanAttribute), 
+										new Structure($languageAttribute));
+										
+		$queryResult = $dbr->query("SELECT language_id, old_text, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live FROM translated_content tc, text t WHERE ".
+									"tc.set_id=$textId AND tc.text_id=t.old_id AND " . getViewTransactionRestriction('tc') .
+									" ORDER BY is_live, add_transaction_id DESC");
+									
+		while ($translatedText= $dbr->fetchObject($queryResult)) 
+			$recordSet->addRecord(array($translatedText->language_id, $translatedText->old_text, 
+										getRecordLifeSpanTuple($translatedText->add_transaction_id,
+																$translatedText->remove_transaction_id)));
+
+		return $recordSet;
+	}
+	
 	function getSynonymAndTranslationRecordSet($definedMeaningId, $skippedExpressionId) {
+		global
+			$wgRequest;
+			
+		if ($wgRequest->getText('action') == 'history')
+			return $this->getSynonymAndTranslationHistoryRecordSet($definedMeaningId, $skippedExpressionId);
+		else
+			return $this->getSynonymAndTranslationLatestRecordSet($definedMeaningId, $skippedExpressionId);
+	}
+	
+	function getSynonymAndTranslationHistoryRecordSet($definedMeaningId, $skippedExpressionId) {
+		global
+			$expressionIdAttribute, $expressionAttribute, $languageAttribute, $spellingAttribute, $identicalMeaningAttribute,
+			$recordLifeSpanAttribute;
+		
+		$dbr =& wfGetDB(DB_SLAVE);
+
+		$expressionStructure = $expressionAttribute->type->getStructure();
+		$recordset = new ArrayRecordSet(new Structure($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute, $recordLifeSpanAttribute), 
+										new Structure($expressionIdAttribute));
+		$queryResult = $dbr->query("SELECT uw_expression_ns.expression_id, spelling, language_id, endemic_meaning, uw_syntrans.add_transaction_id AS syntrans_add, uw_syntrans.remove_transaction_id AS syntrans_remove, NOT uw_syntrans.remove_transaction_id IS NULL is_live " .
+									" FROM uw_syntrans, uw_expression_ns " .
+									" WHERE uw_syntrans.defined_meaning_id=$definedMeaningId AND uw_syntrans.expression_id!=$skippedExpressionId " .
+									" AND uw_expression_ns.expression_id=uw_syntrans.expression_id ".
+									" ORDER BY is_live, add_transaction_id DESC");
+
+		while($synonymOrTranslation = $dbr->fetchObject($queryResult)) {
+			$expressionRecord = new ArrayRecord($expressionStructure);
+			$expressionRecord->setAttributeValuesByOrder(array($synonymOrTranslation->language_id, $synonymOrTranslation->spelling));
+
+			$recordset->addRecord(array($synonymOrTranslation->expression_id, $expressionRecord, $synonymOrTranslation->endemic_meaning,
+										getRecordLifeSpanTuple($synonymOrTranslation->syntrans_add,
+																$synonymOrTranslation->syntrans_remove)));
+		}
+		
+		return $recordset;
+	}
+
+	function getSynonymAndTranslationLatestRecordSet($definedMeaningId, $skippedExpressionId) {
 		global
 			$expressionIdAttribute, $expressionAttribute, $languageAttribute, $spellingAttribute, $identicalMeaningAttribute;
 		
@@ -367,7 +485,7 @@ class WiktionaryZ {
 		$expressionStructure = $expressionAttribute->type->getStructure();
 		$recordset = new ArrayRecordSet(new Structure($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute), new Structure($expressionIdAttribute));
 		$queryResult = $dbr->query("SELECT uw_expression_ns.expression_id, spelling, language_id, endemic_meaning FROM uw_syntrans, uw_expression_ns WHERE uw_syntrans.defined_meaning_id=$definedMeaningId AND uw_syntrans.expression_id!=$skippedExpressionId " .
-									"AND uw_expression_ns.expression_id=uw_syntrans.expression_id");
+									"AND uw_expression_ns.expression_id=uw_syntrans.expression_id AND ". getLatestTransactionRestriction('uw_syntrans'));
 
 		while($synonymOrTranslation = $dbr->fetchObject($queryResult)) {
 			$expressionRecord = new ArrayRecord($expressionStructure);
@@ -381,18 +499,49 @@ class WiktionaryZ {
 	
 	function getDefinedMeaningRelationsRecordSet($definedMeaningId) {
 		global
+			$wgRequest;
+			
+		if ($wgRequest->getText('action') == 'history')
+			return $this->getDefinedMeaningRelationsHistoryRecordSet($definedMeaningId);
+		else
+			return $this->getDefinedMeaningRelationsLatestRecordSet($definedMeaningId);
+	}
+
+	function getDefinedMeaningRelationsLatestRecordSet($definedMeaningId) {
+		global
 			$relationTypeAttribute, $otherDefinedMeaningAttribute;
 			
 		$structure = new Structure($relationTypeAttribute, $otherDefinedMeaningAttribute);
 		$recordset = new ArrayRecordSet($structure, $structure);
 		
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid!=0 ORDER BY relationtype_mid");
+		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid FROM uw_meaning_relations " .
+									"WHERE meaning1_mid=$definedMeaningId AND relationtype_mid!=0 " .
+									" AND ". getLatestTransactionRestriction('uw_meaning_relations').
+									"ORDER BY relationtype_mid");
 			
 		while($definedMeaningRelation = $dbr->fetchObject($queryResult))
 			$recordset->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid)); 
 		
 		return $recordset;
+	}
+	
+	function getDefinedMeaningRelationsHistoryRecordSet($definedMeaningId) {
+		global
+			$relationTypeAttribute, $otherDefinedMeaningAttribute, $recordLifeSpanAttribute;
+			
+		$structure = new Structure($relationTypeAttribute, $otherDefinedMeaningAttribute, $recordLifeSpanAttribute);
+		$recordSet = new ArrayRecordSet($structure, $structure);
+		
+		$dbr =& wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live FROM uw_meaning_relations " .
+									"WHERE meaning1_mid=$definedMeaningId AND relationtype_mid!=0 ORDER BY is_live, relationtype_mid");
+			
+		while($definedMeaningRelation = $dbr->fetchObject($queryResult))
+			$recordSet->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid,
+										getRecordLifeSpanTuple($definedMeaningRelation->add_transaction_id, $definedMeaningRelation->remove_transaction_id))); 
+		
+		return $recordSet;
 	}
 	
 	function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId) {
@@ -428,60 +577,91 @@ class WiktionaryZ {
 	
 	function getDefinedMeaningClassMembershipRecordSet($definedMeaningId) {
 		global
+			$wgRequest;
+			
+		if ($wgRequest->getText('action') == 'history')
+			return $this->getDefinedMeaningClassMembershipHistoryRecordSet($definedMeaningId);
+		else
+			return $this->getDefinedMeaningClassMembershipLatestRecordSet($definedMeaningId);
+	}
+
+	function getDefinedMeaningClassMembershipLatestRecordSet($definedMeaningId) {
+		global
 			$classAttribute;
 			
 		$structure = new Structure($classAttribute);
 		$recordset = new ArrayRecordSet($structure, $structure);
 		
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid=0");
+		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid FROM uw_meaning_relations" .
+									" WHERE meaning1_mid=$definedMeaningId AND relationtype_mid=0 " .
+									" AND ". getLatestTransactionRestriction('uw_meaning_relations'));
 			
-		while($attribute = $dbr->fetchObject($queryResult))
-			$recordset->addRecord(array($attribute->meaning2_mid)); 
+		while($class = $dbr->fetchObject($queryResult))
+			$recordset->addRecord(array($class->meaning2_mid)); 
+		
+		return $recordset;
+	}
+
+	function getDefinedMeaningClassMembershipHistoryRecordSet($definedMeaningId) {
+		global
+			$classAttribute, $recordLifeSpanAttribute;
+			
+		$structure = new Structure($classAttribute, $recordLifeSpanAttribute);
+		$recordset = new ArrayRecordSet($structure, $structure);
+		
+		$dbr =& wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live FROM uw_meaning_relations" .
+									" WHERE meaning1_mid=$definedMeaningId AND relationtype_mid=0 " .
+									" ORDER BY is_live ");
+			
+		while($class = $dbr->fetchObject($queryResult))
+			$recordset->addRecord(array($class->meaning2_mid, 
+										getRecordLifeSpanTuple($class->add_transaction_id, $class->remove_transaction_id))); 
 		
 		return $recordset;
 	}
 	
-	function getDefinedMeaningRelations($definedMeaningIds) {
-		$dbr =& wfGetDB(DB_SLAVE);
-	    $definedMeaningRelations = array();
-		
-		foreach($definedMeaningIds as $definedMeaningId) {
-			$relations = array();
-			$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid!=0");
-			
-			while($definedMeaningRelation = $dbr->fetchObject($queryResult)) 
-				$relations[$definedMeaningRelation->relationtype_mid][] = $definedMeaningRelation->meaning2_mid;
-						
-			$definedMeaningRelations[$definedMeaningId] = $relations;
-		}
-		
-		return $definedMeaningRelations;
-	}
-
-	function getExpressionForMeaningId($mid, $langcode) {
+//	function getDefinedMeaningRelations($definedMeaningIds) {
 //		$dbr =& wfGetDB(DB_SLAVE);
-//		$sql="SELECT spelling from uw_syntrans,uw_expression_ns where defined_meaning_id=".$mid." and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=".$langcode." limit 1";
-//		$sp_res=$dbr->query($sql);
-//		$sp_row=$dbr->fetchObject($sp_res);
-//		return $sp_row->spelling;
-		$expressions = $this->getExpressionsForDefinedMeaningIds(array($mid)); 
-		return $expressions[$mid];
-	}
+//	    $definedMeaningRelations = array();
+//		
+//		foreach($definedMeaningIds as $definedMeaningId) {
+//			$relations = array();
+//			$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid!=0");
+//			
+//			while($definedMeaningRelation = $dbr->fetchObject($queryResult)) 
+//				$relations[$definedMeaningRelation->relationtype_mid][] = $definedMeaningRelation->meaning2_mid;
+//						
+//			$definedMeaningRelations[$definedMeaningId] = $relations;
+//		}
+//		
+//		return $definedMeaningRelations;
+//	}
+//
+//	function getExpressionForMeaningId($mid, $langcode) {
+////		$dbr =& wfGetDB(DB_SLAVE);
+////		$sql="SELECT spelling from uw_syntrans,uw_expression_ns where defined_meaning_id=".$mid." and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=".$langcode." limit 1";
+////		$sp_res=$dbr->query($sql);
+////		$sp_row=$dbr->fetchObject($sp_res);
+////		return $sp_row->spelling;
+//		$expressions = $this->getExpressionsForDefinedMeaningIds(array($mid)); 
+//		return $expressions[$mid];
+//	}
 	
-	# Fixme, the following function only returns English expressions
-	# Should be expressions in the language of preference, with an appropriate fallback scheme
-	function getExpressionsForDefinedMeaningIds($definedMeaningIds) {
-		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT defined_meaning_id, spelling from uw_syntrans, uw_expression_ns where defined_meaning_id in (". implode(",", $definedMeaningIds) . ") and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=85 and uw_syntrans.endemic_meaning=1");
-		$expressions = array();
-		
-		while ($expression = $dbr->fetchObject($queryResult)) 
-			if (!array_key_exists($expression->defined_meaning_id, $expressions))
-				$expressions[$expression->defined_meaning_id] = $expression->spelling;
-		
-		return $expressions;
-	}
+//	# Fixme, the following function only returns English expressions
+//	# Should be expressions in the language of preference, with an appropriate fallback scheme
+//	function getExpressionsForDefinedMeaningIds($definedMeaningIds) {
+//		$dbr =& wfGetDB(DB_SLAVE);
+//		$queryResult = $dbr->query("SELECT defined_meaning_id, spelling from uw_syntrans, uw_expression_ns where defined_meaning_id in (". implode(",", $definedMeaningIds) . ") and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=85 and uw_syntrans.endemic_meaning=1");
+//		$expressions = array();
+//		
+//		while ($expression = $dbr->fetchObject($queryResult)) 
+//			if (!array_key_exists($expression->defined_meaning_id, $expressions))
+//				$expressions[$expression->defined_meaning_id] = $expression->spelling;
+//		
+//		return $expressions;
+//	}
 }
 
 class DefinedMeaningDefinitionController implements Controller {
