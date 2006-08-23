@@ -115,16 +115,20 @@ $wgDPL2Messages['he'] = array(
 	
 	// WARNINGS
 	/**
+	 * $0: unknown parameter given by user
+	 * $1: list of DPL2 available parameters separated by ', '
+	*/
+	'dpl2_debug_' . DPL2_WARN_UNKNOWNPARAM => "אזהרה: בוצעה התעלמות מהפרמטר הלא ידוע '$0'. עזרה: פרמטרים זמינים: <code>$1</code>.",
+	/**
+	 * $3: list of valid param values separated by ' | '
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "אזהרה: פרמטר '$0' שגוי: '$1'! משתמש בברירת המחדל: '$2'. עזרה: <code>$0= $3</code>.",
+	/**
 	 * $0: param name
 	 * $1: wrong param value given by user
 	 * $2: default param value used instead by program
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGCOUNT => "אזהרה: פרמטר '$0' שגוי: '$1'! משתמש בברירת המחדל: '$2' (ללא הגבלת ספירה). עזרה: <code>$0= <i>מחרוזת ריקה</i> (ללא הגבלת ספריה) | n</code>, עם <code>n</code> כמספר שלם וחיובי.",
-	'dpl2_debug_' . DPL2_WARN_WRONGINLINESYMBOL => "אזהרה: פרמטר '$0' שגוי: '$1' (תוך התעלמות מהתגים)! משתמש בברירת המחדל: '$2'. עזרה: <code>$0= symbol</code>, עם <code>symbol</code> ככל דבר שאינו ריק (תוך התעלמות המתגים).",
-	/**
-	 * $3: list of valid param values separated by ' | '
-	*/
-	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "אזהרה: פרמטר '$0' שגוי: '$1'! משתמש בברירת המחדל: '$2'. עזרה: <code>$0= $3</code>.",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'אזהרה: אין תוצאות!',
 	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => 'אזהרה: מומלץ ביותר להכליל לפחות קטגוריה אחת או מרחב שם אחד. אם לא, היצירה של רשימת הדפים עלולה לקחת זמן ולבזבז משאבים.',
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "אזהרה: להוספת* הפרמטרים ('adduser',‏ 'addeditdate' וכדומה) אין השפעה עם 'mode=category'. ניתן לצפות רק במרחב השם או בכותרת הדף במצב זה.",
