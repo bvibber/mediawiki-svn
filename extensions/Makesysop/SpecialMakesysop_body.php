@@ -192,7 +192,7 @@ class MakesysopForm {
 		$newGroups = array_merge($newGroups, $addedGroups);
 		
 		$log = new LogPage( 'rights' );
-		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $this->mUser ), '',
+		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), '',
 			array( $this->makeGroupNameList( $oldGroups ), $this->makeGroupNameList( $newGroups ) ) );
 			
 		$this->showSuccess();
