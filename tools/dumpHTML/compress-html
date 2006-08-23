@@ -1,0 +1,38 @@
+#!/bin/bash
+
+if [ "X$2" == X ]; then
+	echo "Usage: compress-html <language> <edition>"
+	exit
+fi
+
+cd /var/static
+
+lang=$1
+edition=$2
+
+dest=/var/static/downloads/$edition/$lang
+mkdir -p $dest
+
+echo Finding files...
+find $lang -name \*.html > $dest/html.lst
+
+#echo Filtering...
+#php scripts/filterNamespaces.php $lang wikipedia $dest/html.lst > $dest/reduced.lst
+
+find $lang/skins $lang/images -follow -type f \
+	-not \( -name \*.php -or -name \*.xcf -or -name .\* -or -name \*~ -or -path \*/CVS/\* \) \
+	> $dest/skins.lst
+find $lang/raw -type f >> $dest/skins.lst
+echo $lang/upload/b/bc/Wiki.png >> $dest/skins.lst
+
+echo Creating HTML archive...
+rm -f $dest/wikipedia-$lang-html.7z
+7z -l a $dest/wikipedia-$lang-html.7z @$dest/html.lst @$dest/skins.lst
+
+#if [ ! -e $dest/wikipedia-$lang-reduced.7z ];then
+#	echo
+#	echo Creating reduced archive...
+#	7z -l a $dest/wikipedia-$lang-reduced.7z @$dest/reduced.lst @$dest/skins.lst
+#fi
+
+
