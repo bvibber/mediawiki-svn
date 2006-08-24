@@ -83,7 +83,7 @@ function getTransactionTuple($transactionId) {
 			else if ($transaction->user_ip != "")
 				$userText = $transaction->user_ip;
 			else
-				$userText = "None"; 
+				$userText = "Nobody"; 
 				
 			$result->setAttributeValue($userAttribute, $userText);	
 			$result->setAttributeValue($timestampAttribute,  $wgContLang->timeanddate($transaction->timestamp));
@@ -91,7 +91,7 @@ function getTransactionTuple($transactionId) {
 	}
 	else {
 		if ($transactionId != null)
-			$result->setAttributeValue($userAttribute, "None");
+			$result->setAttributeValue($userAttribute, "Nobody");
 		else
 			$result->setAttributeValue($userAttribute, "");	
 				
