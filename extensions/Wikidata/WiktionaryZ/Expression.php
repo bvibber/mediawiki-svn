@@ -322,15 +322,16 @@ function removeDefinedMeaningDefinition($definedMeaningId, $languageId) {
 
 function definedMeaningInCollection($definedMeaningId, $collectionId) {
 	$dbr = &wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT collection_id FROM uw_collection_contents WHERE collection_id=$collectionId AND member_mid=$definedMeaningId");
+	$queryResult = $dbr->query("SELECT collection_id FROM uw_collection_contents WHERE collection_id=$collectionId AND member_mid=$definedMeaningId " .
+								"AND ". getLatestTransactionRestriction('uw_collection_contents'));
 	
 	return $dbr->numRows($queryResult) > 0;
 }
 
 function addDefinedMeaningToCollection($definedMeaningId, $collectionId, $internalId) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("INSERT INTO uw_collection_contents(collection_id, member_mid, internal_member_id) " .
-					"VALUES ($collectionId, $definedMeaningId, ". $dbr->addQuotes($internalId) .")");
+	$dbr->query("INSERT INTO uw_collection_contents(collection_id, member_mid, internal_member_id, add_transaction_id) " .
+					"VALUES ($collectionId, $definedMeaningId, ". $dbr->addQuotes($internalId) .", ". getUpdateTransactionId() .")");
 }
 
 function addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectionId, $internalId) {
@@ -340,7 +341,8 @@ function addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectio
 
 function getDefinedMeaningFromCollection($collectionId, $internalMemberId) {
 	$dbr = &wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT member_mid FROM uw_collection_contents WHERE collection_id=$collectionId AND internal_member_id=". $dbr->addQuotes($internalMemberId));
+	$queryResult = $dbr->query("SELECT member_mid FROM uw_collection_contents WHERE collection_id=$collectionId AND internal_member_id=". $dbr->addQuotes($internalMemberId) .
+								" AND " .getLatestTransactionRestriction('uw_collection_contents'));
 	
 	if ($definedMeaningObject = $dbr->fetchObject($queryResult)) 
 		return $definedMeaningObject->member_mid;
@@ -350,13 +352,16 @@ function getDefinedMeaningFromCollection($collectionId, $internalMemberId) {
 
 function removeDefinedMeaningFromCollection($definedMeaningId, $collectionId) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("DELETE FROM uw_collection_contents WHERE collection_id=$collectionId AND member_mid=$definedMeaningId");	
+	$dbr->query("UPDATE uw_collection_contents SET remove_transaction_id=" . getUpdateTransactionId() .
+				" WHERE collection_id=$collectionId AND member_mid=$definedMeaningId AND remove_transaction_id IS NULL");	
 }
 
 function updateDefinedMeaningInCollection($definedMeaningId, $collectionId, $internalId) {
-	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("UPDATE uw_collection_contents SET internal_member_id=".$dbr->addQuotes($internalId) . 
-				" WHERE collection_id=$collectionId AND member_mid=$definedMeaningId");	
+//	$dbr = &wfGetDB(DB_MASTER);
+//	$dbr->query("UPDATE uw_collection_contents SET internal_member_id=".$dbr->addQuotes($internalId) . 
+//				" WHERE collection_id=$collectionId AND member_mid=$definedMeaningId");
+	removeDefinedMeaningFromCollection($definedMeaningId, $collectionId);
+	addDefinedMeaningToCollection($definedMeaningId, $collectionId, $internalId);	
 }
 
 function bootstrapCollection($collection, $languageId, $collectionType){
@@ -486,11 +491,12 @@ function findCollection($name) {
 function getCollectionContents($collectionId) {
 	$dbr = & wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT member_mid,internal_member_id from uw_collection_contents " .
-			                   "WHERE collection_id=$collectionId");
+			                   "WHERE collection_id=$collectionId AND ". getLatestTransactionRestriction('uw_collection_contents'));
 	$collectionContents = array();			                   
-	while ($collectionEntry = $dbr->fetchObject($queryResult)) {
+	
+	while ($collectionEntry = $dbr->fetchObject($queryResult)) 
 		$collectionContents[$collectionEntry->internal_member_id] = $collectionEntry->member_mid;
-	}
+	
 	return $collectionContents;
 } 
 

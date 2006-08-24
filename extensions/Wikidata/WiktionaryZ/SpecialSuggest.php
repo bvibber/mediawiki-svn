@@ -121,7 +121,8 @@ function getSQLForCollectionOfType($collectionType) {
             
             "AND syntrans.defined_meaning_id=uw_collection_contents.member_mid " .
             "AND expression.expression_id=syntrans.expression_id AND syntrans.endemic_meaning=1 ".
-            "AND " . getLatestTransactionRestriction('syntrans');
+            "AND " . getLatestTransactionRestriction('syntrans') .
+            "AND " . getLatestTransactionRestriction('uw_collection_contents');
 }
 
 function getRelationTypeAsRelation($queryResult) {

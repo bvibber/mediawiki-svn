@@ -168,6 +168,8 @@ class WiktionaryZ {
 		$editor = new RecordSetTableEditor($collectionMembershipAttribute, true, true, false, new DefinedMeaningCollectionController());
 		$editor->addEditor(new CollectionEditor($collectionAttribute, false, true));
 		$editor->addEditor(new ShortTextEditor($sourceIdentifierAttribute, true, true));
+		
+		$this->addTableLifeSpanEditor($editor);
 
 		return $editor;
 	}
@@ -546,16 +548,46 @@ class WiktionaryZ {
 	
 	function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId) {
 		global
+			$wgRequest;
+			
+		if ($wgRequest->getText('action') == 'history')
+			return $this->getDefinedMeaningCollectionMembershipHistoryRecordSet($definedMeaningId);
+		else
+			return $this->getDefinedMeaningCollectionMembershipLatestRecordSet($definedMeaningId);
+	}
+
+	function getDefinedMeaningCollectionMembershipLatestRecordSet($definedMeaningId) {
+		global
 			$collectionAttribute, $sourceIdentifierAttribute;
 			
 		$structure = new Structure($collectionAttribute, $sourceIdentifierAttribute);
 		$recordset = new ArrayRecordSet($structure, new Structure($collectionAttribute));
 		
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT collection_id, internal_member_id FROM uw_collection_contents WHERE member_mid=$definedMeaningId");
+		$queryResult = $dbr->query("SELECT collection_id, internal_member_id FROM uw_collection_contents WHERE member_mid=$definedMeaningId " .
+									"AND ". getLatestTransactionRestriction('uw_collection_contents'));
 			
 		while($collection = $dbr->fetchObject($queryResult))
 			$recordset->addRecord(array($collection->collection_id, $collection->internal_member_id)); 
+		
+		return $recordset;
+	}
+	
+	function getDefinedMeaningCollectionMembershipHistoryRecordSet($definedMeaningId) {
+		global
+			$collectionAttribute, $sourceIdentifierAttribute, $recordLifeSpanAttribute;
+			
+		$structure = new Structure($collectionAttribute, $sourceIdentifierAttribute, $recordLifeSpanAttribute);
+		$recordset = new ArrayRecordSet($structure, new Structure($collectionAttribute));
+		
+		$dbr =& wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query("SELECT collection_id, internal_member_id, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL as is_live " .
+									"FROM uw_collection_contents WHERE member_mid=$definedMeaningId " .
+									"ORDER BY is_live, remove_transaction_id DESC");
+			
+		while($collection = $dbr->fetchObject($queryResult))
+			$recordset->addRecord(array($collection->collection_id, $collection->internal_member_id,
+										getRecordLifeSpanTuple($collection->add_transaction_id, $collection->remove_transaction_id))); 
 		
 		return $recordset;
 	}
