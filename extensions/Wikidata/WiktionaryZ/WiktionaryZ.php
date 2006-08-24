@@ -71,8 +71,8 @@ class WiktionaryZ {
 			$userAttribute, $timestampAttribute;
 		
 		$transactionEditor = new RecordTableCellEditor($attribute);
-		$transactionEditor->addEditor(new UserEditor($userAttribute, false, true));
-		$transactionEditor->addEditor(new ShortTextEditor($timestampAttribute, false, true));
+		$transactionEditor->addEditor(new UserEditor($userAttribute, new SimplePermissionController(false), true));
+		$transactionEditor->addEditor(new ShortTextEditor($timestampAttribute, new SimplePermissionController(false), true));
 
 		return $transactionEditor;
 	}
@@ -94,9 +94,9 @@ class WiktionaryZ {
 		global
 			$languageAttribute, $textAttribute;
 
-		$editor = new RecordSetTableEditor($attribute, true, true, true, $controller);
-		$editor->addEditor(new LanguageEditor($languageAttribute, false, true)); 
-		$editor->addEditor(new TextEditor($textAttribute, true, true));
+		$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(true), true, true, true, $controller);
+		$editor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true)); 
+		$editor->addEditor(new TextEditor($textAttribute, new SimplePermissionController(true), true));
 		
 		$this->addTableLifeSpanEditor($editor);
 		
@@ -111,7 +111,7 @@ class WiktionaryZ {
 //		$alternativeDefinitionEditor->addEditor(new LanguageEditor($languageAttribute, false, true)); 
 //		$alternativeDefinitionEditor->addEditor(new TextEditor($textAttribute, true, true)); 
 				
-		$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, true, true, false, new DefinedMeaningAlternativeDefinitionsController());
+		$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningAlternativeDefinitionsController());
 		$editor->addEditor($this->getTranslatedTextEditor($alternativeDefinitionAttribute, new DefinedMeaningAlternativeDefinitionController()));
 //		$editor->addEditor($alternativeDefinitionEditor);
 		
@@ -124,12 +124,12 @@ class WiktionaryZ {
 			$spellingAttribute;
 		
 		$expressionEditor = new RecordTableCellEditor($expressionAttribute);
-		$expressionEditor->addEditor(new LanguageEditor($languageAttribute, false, true));
-		$expressionEditor->addEditor(new SpellingEditor($spellingAttribute, false, true));
+		$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
+		$expressionEditor->addEditor(new SpellingEditor($spellingAttribute, new SimplePermissionController(false), true));
 			
-		$tableEditor = new RecordSetTableEditor($synonymsAndTranslationsAttribute, true, true, false, new SynonymTranslationController());
+		$tableEditor = new RecordSetTableEditor($synonymsAndTranslationsAttribute, new SimplePermissionController(true), true, true, false, new SynonymTranslationController());
 		$tableEditor->addEditor($expressionEditor);
-		$tableEditor->addEditor(new BooleanEditor($identicalMeaningAttribute, true, true, true));
+		$tableEditor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(true), true, true));
 		
 		$this->addTableLifeSpanEditor($tableEditor);
 
@@ -140,9 +140,9 @@ class WiktionaryZ {
 		global
 			$relationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
 		
-		$editor = new RecordSetTableEditor($relationsAttribute, true, true, false, new DefinedMeaningRelationController());
-		$editor->addEditor(new RelationTypeEditor($relationTypeAttribute, false, true));
-		$editor->addEditor(new DefinedMeaningEditor($otherDefinedMeaningAttribute, false, true));
+		$editor = new RecordSetTableEditor($relationsAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningRelationController());
+		$editor->addEditor(new RelationTypeEditor($relationTypeAttribute, new SimplePermissionController(false), true));
+		$editor->addEditor(new DefinedMeaningEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
 		
 		$this->addTableLifeSpanEditor($editor);
 
@@ -153,8 +153,8 @@ class WiktionaryZ {
 		global
 			$classMembershipAttribute, $classAttribute;
 			
-		$editor = new RecordSetTableEditor($classMembershipAttribute, true, true, false, new DefinedMeaningClassMembershipController());
-		$editor->addEditor(new AttributeEditor($classAttribute, false, true));
+		$editor = new RecordSetTableEditor($classMembershipAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningClassMembershipController());
+		$editor->addEditor(new AttributeEditor($classAttribute, new SimplePermissionController(false), true));
 		
 		$this->addTableLifeSpanEditor($editor);
 
@@ -165,9 +165,9 @@ class WiktionaryZ {
 		global
 			$collectionMembershipAttribute, $collectionAttribute, $sourceIdentifierAttribute;
 		
-		$editor = new RecordSetTableEditor($collectionMembershipAttribute, true, true, false, new DefinedMeaningCollectionController());
-		$editor->addEditor(new CollectionEditor($collectionAttribute, false, true));
-		$editor->addEditor(new ShortTextEditor($sourceIdentifierAttribute, true, true));
+		$editor = new RecordSetTableEditor($collectionMembershipAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningCollectionController());
+		$editor->addEditor(new CollectionEditor($collectionAttribute, new SimplePermissionController(false), true));
+		$editor->addEditor(new ShortTextEditor($sourceIdentifierAttribute, new SimplePermissionController(true), true));
 		
 		$this->addTableLifeSpanEditor($editor);
 
@@ -178,8 +178,8 @@ class WiktionaryZ {
 		global
 			$textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute;
 			
-		$editor = new RecordSetTableEditor($textAttributeValuesAttribute, true, true, false, new DefinedMeaningTextAttributeValuesController());
-		$editor->addEditor(new TextAttributeEditor($textAttributeAttribute, false, true));
+		$editor = new RecordSetTableEditor($textAttributeValuesAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningTextAttributeValuesController());
+		$editor->addEditor(new TextAttributeEditor($textAttributeAttribute, new SimplePermissionController(false), true));
 		$editor->addEditor($this->getTranslatedTextEditor($textValueAttribute, new DefinedMeaningTextAttributeValueController()));
 		
 		return $editor;
@@ -263,17 +263,17 @@ class WiktionaryZ {
 //		$definedMeaningEditor->expandEditor($collectionMembershipEditor);
 //		$definedMeaningEditor->expandEditor($textAttributeValuesEditor);
 		
-		$definedMeaningCaptionEditor = new TextEditor($textAttribute, false, false, true, 100);
+		$definedMeaningCaptionEditor = new TextEditor($textAttribute, new SimplePermissionController(false), false, true, 100);
 		$definedMeaningCaptionEditor->setAddText("New defined meaning");
 		
-		$expressionMeaningsEditor = new RecordSetListEditor($expressionMeaningsAttribute, true, false, true, new ExpressionMeaningController(), 3, false);
+		$expressionMeaningsEditor = new RecordSetListEditor($expressionMeaningsAttribute, new SimplePermissionController(true), true, false, true, new ExpressionMeaningController(), 3, false);
 		$expressionMeaningsEditor->setCaptionEditor($definedMeaningCaptionEditor);
 		$expressionMeaningsEditor->setValueEditor($definedMeaningEditor);
 		
 		$expressionEditor = new RecordSpanEditor($expressionAttribute, ': ', ' - ');
-		$expressionEditor->addEditor(new LanguageEditor($languageAttribute, false, true));
+		$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
 		
-		$expressionsEditor = new RecordSetListEditor($expressionsAttribute, true, false, false, new ExpressionController($spelling), 2, true);
+		$expressionsEditor = new RecordSetListEditor($expressionsAttribute, new SimplePermissionController(true), true, false, false, new ExpressionController($spelling), 2, true);
 		$expressionsEditor->setCaptionEditor($expressionEditor);
 		$expressionsEditor->setValueEditor($expressionMeaningsEditor);
 		

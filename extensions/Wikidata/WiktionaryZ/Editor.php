@@ -61,6 +61,34 @@ class IdStack {
 	}
 }
 
+interface PermissionController {
+	public function allowUpdateOfAttribute($attribute);
+	public function allowUpdateOfValue($idPath, $value);
+	public function allowRemovalOfValue($idPath, $value);
+}
+
+class SimplePermissionController {
+	protected $allowUpdate;
+	protected $allowRemove;
+	
+	public function __construct($allowUpdate, $allowRemove = true) {
+		$this->allowUpdate = $allowUpdate;
+		$this->allowRemove = $allowRemove;
+	}	
+	
+	public function allowUpdateOfAttribute($attribute) {
+		return $this->allowUpdate;
+	}
+
+	public function allowUpdateOfValue($idPath, $value) {
+		return $this->allowUpdate;
+	}
+	
+	public function allowRemovalOfValue($idPath, $value) {
+		return $this->allowRemove;
+	}
+}
+
 interface Editor {
 	public function getAttribute();
 	public function getUpdateAttribute();
@@ -133,14 +161,16 @@ abstract class Viewer extends DefaultEditor {
 }
 
 abstract class RecordSetEditor extends DefaultEditor {
+	protected $permissionController;
 	protected $allowAdd;
 	protected $allowRemove;
 	protected $isAddField;
 	protected $controller;	
 	
-	public function __construct($attribute, $allowAdd, $allowRemove, $isAddField, $controller) {
+	public function __construct($attribute, $permissionController, $allowAdd, $allowRemove, $isAddField, $controller) {
 		parent::__construct($attribute);
 		
+		$this->permissionController = $permissionController;
 		$this->allowAdd = $allowAdd;
 		$this->allowRemove = $allowRemove;
 		$this->isAddField = $isAddField;
@@ -355,7 +385,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		
 		$headerRows = getStructureAsTableHeaderRows($this->getStructure());
 	
-		if ($this->allowRemove)
+		if ($this->allowRemove) 
 			$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="skins/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>' . $headerRows[0];
 			
 		if ($this->repeatInput)		
@@ -371,10 +401,20 @@ class RecordSetTableEditor extends RecordSetEditor {
 			$record = $value->getRecord($i);
 			$idPath->pushKey(project($record, $key));
 			
-			if ($this->allowRemove)
-				$result .= '<td class="remove">' . getRemoveCheckBox('remove-'. $idPath->getId()) . '</td>';
+			if ($this->allowRemove) {
+				$result .= '<td class="remove">';
+				
+				if ($this->permissionController->allowRemovalOfValue($idPath, $value))
+				 	$result .= getRemoveCheckBox('remove-'. $idPath->getId());
+				 	
+				$result .= '</td>';
+			}
 			
-			$result .= getRecordAsEditTableCells($record, $idPath, $this);
+			if ($this->permissionController->allowUpdateOfValue($idPath, $record))
+				$result .= getRecordAsEditTableCells($record, $idPath, $this);
+			else
+				$result .= getRecordAsTableCells($idPath, $this, $record);
+			
 			$idPath->popKey();		
 			
 			if ($this->repeatInput)
@@ -538,13 +578,13 @@ class RecordTableCellEditor extends RecordEditor {
 }
 
 abstract class ScalarEditor extends DefaultEditor {
-	protected $allowUpdate;
+	protected $permissionController;
 	protected $isAddField;
 	
-	public function __construct($attribute, $allowUpdate, $isAddField) {
+	public function __construct($attribute, $permissionController, $isAddField) {
 		parent::__construct($attribute);
 		
-		$this->allowUpdate = $allowUpdate;
+		$this->permissionController = $permissionController;
 		$this->isAddField = $isAddField;
 	}
 	
@@ -560,7 +600,7 @@ abstract class ScalarEditor extends DefaultEditor {
 	}
 
 	public function getUpdateAttribute() {
-		if ($this->allowUpdate)
+		if ($this->permissionController->allowUpdateOfAttribute($this->attribute))
 			return $this->attribute;
 		else
 			return null;	
@@ -573,6 +613,8 @@ abstract class ScalarEditor extends DefaultEditor {
 			return null;	
 	}
 	
+	public abstract function getViewHTML($idPath, $value);
+	public abstract function getEditHTML($idPath, $value);
 	public abstract function getInputValue($id);
 	
 	public function getUpdateValue($idPath) {
@@ -582,23 +624,29 @@ abstract class ScalarEditor extends DefaultEditor {
 	public function getAddValue($idPath) {
 		return $this->getInputValue("add-" . $idPath->getId());
 	}
-}
-
-class LanguageEditor extends ScalarEditor {
+	
 	public function view($idPath, $value) {
-		return languageIdAsText($value);
+		return $this->getViewHTML($idPath, $value);
 	}
 	
 	public function edit($idPath, $value) {
-		if ($this->allowUpdate)
-//			return getLanguageSelect($this->updateId($idPath->getId()));
-			return getSuggest($this->updateId($idPath->getId()), "language");
+		if ($this->permissionController->allowUpdateOfValue($idPath, $value))
+			return $this->getEditHTML($idPath, $value);
 		else
-			return languageIdAsText($value);
+			return $this->getViewHTML($idPath, $value);
+	}
+}
+
+class LanguageEditor extends ScalarEditor {
+	public function getViewHTML($idPath, $value) {
+		return languageIdAsText($value);
+	}
+	
+	public function getEditHTML($idPath, $value) {
+		return getSuggest($this->updateId($idPath->getId()), "language");
 	}
 	
 	public function add($idPath) {
-//		return getLanguageSelect($this->addId($idPath->getId()));
 		return getSuggest($this->addId($idPath->getId()), "language");
 	}
 	
@@ -611,15 +659,12 @@ class LanguageEditor extends ScalarEditor {
 }
 
 class SpellingEditor extends ScalarEditor {
-	public function view($idPath, $value) {
+	public function getViewHTML($idPath, $value) {
 		return spellingAsLink($value);
 	}
 	
-	public function edit($idPath, $value) {
-		if ($this->allowUpdate)
-			return getTextBox($this->updateId($idPath->getId()));
-		else
-			return spellingAsLink($value);
+	public function getEditHTML($idPath, $value) {
+		return getTextBox($this->updateId($idPath->getId()));
 	}
 	
 	public function add($idPath) {
@@ -642,17 +687,17 @@ class TextEditor extends ScalarEditor {
 	protected $truncateAt;
 	protected $addText = "";
 	
-	public function __construct($attribute, $allowUpdate, $isAddField, $truncate=false, $truncateAt=0) {
-		parent::__construct($attribute, $allowUpdate, $isAddField);
+	public function __construct($attribute, $permissionController, $isAddField, $truncate=false, $truncateAt=0) {
+		parent::__construct($attribute, $permissionController, $isAddField);
 		
 		$this->truncate = $truncate;
 		$this->truncateAt = $truncateAt;
 	}
 	
-	public function view($idPath, $value) {
+	public function getViewHTML($idPath, $value) {
 		$escapedValue = htmlspecialchars($value);
 		
-//		global $wgParser, $wgUseTidy, $wgTitle, $wgOut;
+//		global $wgParser, $wgTitle, $wgOut;
 //		$parserOutput = $wgParser->parse($value, $wgTitle, $wgOut->mParserOptions, true, true, $wgOut->mRevisionId);
 		
 		if (!$this->truncate || strlen($value) < $this->truncateAt) 
@@ -661,11 +706,8 @@ class TextEditor extends ScalarEditor {
 			return '<span title="'. $escapedValue .'">'. htmlspecialchars(substr($value, 0, $this->truncateAt)) . '...</span>';
 	}
 
-	public function edit($idPath, $value) {
-		if ($this->allowUpdate) 
-			return getTextArea($this->updateId($idPath->getId()), $value, 3);
-		else
-			return $this->view($idPath, $value);
+	public function getEditHTML($idPath, $value) {
+		return getTextArea($this->updateId($idPath->getId()), $value, 3);
 	}
 	
 	public function add($idPath) {
@@ -688,15 +730,12 @@ class TextEditor extends ScalarEditor {
 }
 
 class ShortTextEditor extends ScalarEditor {
-	public function view($idPath, $value) {
+	public function getViewHTML($idPath, $value) {
 		return htmlspecialchars($value);
 	}
 
-	public function edit($idPath, $value) {
-		if ($this->allowUpdate) 
-			return getTextBox($this->updateId($idPath->getId()), $value);
-		else
-			return htmlspecialchars($value);
+	public function getEditHTML($idPath, $value) {
+		return getTextBox($this->updateId($idPath->getId()), $value);
 	}
 	
 	public function add($idPath) {
@@ -717,21 +756,18 @@ class ShortTextEditor extends ScalarEditor {
 class BooleanEditor extends ScalarEditor {
 	protected $defaultValue;
 	
-	public function __construct($attribute, $allowUpdate, $isAddField, $defaultValue) {
-		parent::__construct($attribute, $allowUpdate, $isAddField);
+	public function __construct($attribute, $permissionController, $isAddField, $defaultValue) {
+		parent::__construct($attribute, $permissionController, $isAddField);
 		
 		$this->defaultValue = $defaultValue;
 	}
 
-	public function view($idPath, $value) {
+	public function getViewHTML($idPath, $value) {
 		return booleanAsHTML($value);
 	}
 
-	public function edit($idPath, $value) {
-		if ($this->allowUpdate)
-			return getCheckBox($this->updateId($idPath->getId()), $value);
-		else
-			return booleanAsHTML($idPath, $value);
+	public function getEditHTML($idPath, $value) {
+		return getCheckBox($this->updateId($idPath->getId()), $value);
 	}
 	
 	public function add($idPath) {
@@ -759,11 +795,8 @@ abstract class SuggestEditor extends ScalarEditor {
 	
 	protected abstract function suggestType();
 	
-	public function edit($idPath, $value) {
-		if ($this->allowUpdate) 
-			return getSuggest($this->updateId($idPath->getId()), $this->suggestType()); 
-		else
-			return $this->view($idPath, $value);
+	public function getEditHTML($idPath, $value) {
+		return getSuggest($this->updateId($idPath->getId()), $this->suggestType()); 
 	}
 
 	public function getInputValue($id) {
@@ -779,10 +812,9 @@ class RelationTypeEditor extends SuggestEditor {
 		return "relation-type";
 	}
 	
-	public function view($idPath, $value) {
+	public function getViewHTML($idPath, $value) {
 		return definedMeaningAsLink($value);
 	}
-
 }
 
 class DefinedMeaningEditor extends SuggestEditor {
@@ -790,7 +822,7 @@ class DefinedMeaningEditor extends SuggestEditor {
 		return "defined-meaning";
 	}
 	
-	public function view($idPath, $value) {
+	public function getViewHTML($idPath, $value) {
 		return definedMeaningAsLink($value);
 	}
 }
@@ -800,7 +832,7 @@ class AttributeEditor extends SuggestEditor {
 		return "attribute";
 	}
 	
-	public function view($idPath, $value) {
+	public function getViewHTML($idPath, $value) {
 		return definedMeaningAsLink($value);
 	}
 }
@@ -810,7 +842,7 @@ class CollectionEditor extends SuggestEditor {
 		return "collection";
 	}
 	
-	public function view($idPath, $value) {
+	public function getViewHTML($idPath, $value) {
 		return collectionAsLink($value);
 	}
 }
@@ -820,7 +852,7 @@ class TextAttributeEditor extends SuggestEditor {
 		return "text-attribute";
 	}
 	
-	public function view($idPath, $value) {
+	public function getViewHTML($idPath, $value) {
 		return definedMeaningAsLink($value);
 	}
 }
@@ -928,8 +960,8 @@ class RecordSetListEditor extends RecordSetEditor {
 	protected $captionEditor;
 	protected $valueEditor;
 
-	public function __construct($attribute, $allowAdd, $allowRemove, $isAddField, $controller, $headerLevel, $childrenExpanded) {
-		parent::__construct($attribute, $allowAdd, $allowRemove, $isAddField, $controller);
+	public function __construct($attribute, $permissionController, $allowAdd, $allowRemove, $isAddField, $controller, $headerLevel, $childrenExpanded) {
+		parent::__construct($attribute, $permissionController, $allowAdd, $allowRemove, $isAddField, $controller);
 		
 		$this->headerLevel = $headerLevel;
 		$this->childrenExpanded = $childrenExpanded;
@@ -1135,7 +1167,7 @@ class RecordSpanEditor extends RecordEditor {
 } 
 
 class UserEditor extends ScalarEditor {
-	public function view($idPath, $value) {
+	public function getViewHTML($idPath, $value) {
 		global
 			$wgUser;
 			
@@ -1145,8 +1177,8 @@ class UserEditor extends ScalarEditor {
 			return "";
 	}
 	
-	public function edit($idPath, $value) {
-		return $this->view($idPath, $value);
+	public function getEditHTML($idPath, $value) {
+		return $this->getViewHTML($idPath, $value);
 	}
 
 	public function getInputValue($id) {

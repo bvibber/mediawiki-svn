@@ -139,9 +139,9 @@ function getRelationTypeAsRelation($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$relation->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
-	$editor = new RecordSetTableEditor(null, false, false, false, null);
-	$editor->addEditor(new ShortTextEditor($relationTypeAttribute, false, false));
-	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($relationTypeAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 	
 	return array($relation, $editor);		
 }
@@ -159,9 +159,9 @@ function getAttributeAsRelation($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$relation->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));
 
-	$editor = new RecordSetTableEditor(null, false, false, false, null);
-	$editor->addEditor(new ShortTextEditor($attributeAttribute, false, false));
-	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($attributeAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 
 	return array($relation, $editor);		
 }
@@ -179,9 +179,9 @@ function getTextAttributeAsRelation($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$relation->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
-	$editor = new RecordSetTableEditor(null, false, false, false, null);
-	$editor->addEditor(new ShortTextEditor($textAttributeAttribute, false, false));
-	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($textAttributeAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 
 	return array($relation, $editor);		
 }
@@ -209,12 +209,12 @@ function getDefinedMeaningAsRelation($queryResult) {
 	}			
 
 	$definedMeaningEditor = new RecordTableCellEditor($definedMeaningAttribute);
-	$definedMeaningEditor->addEditor(new ShortTextEditor($spellingAttribute, false, false));
-	$definedMeaningEditor->addEditor(new LanguageEditor($languageAttribute, false, false));
+	$definedMeaningEditor->addEditor(new ShortTextEditor($spellingAttribute, new SimplePermissionController(false), false));
+	$definedMeaningEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
 
-	$editor = new RecordSetTableEditor(null, false, false, false, null);
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
 	$editor->addEditor($definedMeaningEditor);
-	$editor->addEditor(new TextEditor($definitionAttribute, false, false, true, 75));
+	$editor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 
 	return array($relation, $editor);		
 }
@@ -231,8 +231,8 @@ function getCollectionAsRelation($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$relation->addRecord(array($row->collection_id, $row->spelling));			
 
-	$editor = new RecordSetTableEditor(null, false, false, false, null);
-	$editor->addEditor(new ShortTextEditor($collectionAttribute, false, false));
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 
 	return array($relation, $editor);		
 }
@@ -249,8 +249,8 @@ function getLanguageAsRelation($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$relation->addRecord(array($row->row_id, $row->language_name));			
 
-	$editor = new RecordSetTableEditor(null, false, false, false, null);
-	$editor->addEditor(new ShortTextEditor($languageAttribute, false, false));
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($languageAttribute, new SimplePermissionController(false), false));
 
 	return array($relation, $editor);		
 }
