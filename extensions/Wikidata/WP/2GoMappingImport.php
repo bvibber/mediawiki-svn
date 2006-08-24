@@ -1,8 +1,9 @@
 <?php
  
-function importEC2GoMapping($fileHandle) {
+function importEC2GoMapping($fileName) {
 	$mapping=array();
-
+	$fileHandle = fopen($fileName, "r");
+	
 	while (!feof($fileHandle)) {
 		$buffer = fgets($fileHandle);
 	    $buffer = rtrim($buffer,"\n");
@@ -26,15 +27,13 @@ function importEC2GoMapping($fileHandle) {
 	    }
  	 }
 	
-//	foreach ($mapping as $EC => $GO) {
-//		echo "$EC: $GO\n";
-//	}
-
+	fclose($fileHandle);
 	return $mapping;	
 }
 
-function importSwissProtKeyWord2GoMapping($fileHandle) {
+function importSwissProtKeyWord2GoMapping($fileName) {
 	$mapping=array();
+	$fileHandle = fopen($fileName, "r");
 
 	while (!feof($fileHandle)) {
 		$buffer = fgets($fileHandle);
@@ -54,10 +53,7 @@ function importSwissProtKeyWord2GoMapping($fileHandle) {
 	    }
  	 }
 	
-//	foreach ($mapping as $SP_KW => $GO) {
-//		echo "$SP_KW: $GO\n";
-//	}
-
+	fclose($fileHandle);
 	return $mapping;	
 }
 ?>

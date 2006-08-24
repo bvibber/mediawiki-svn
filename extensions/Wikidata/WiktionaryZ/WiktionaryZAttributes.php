@@ -60,15 +60,16 @@ $translatedTextIdAttribute = new Attribute("translated-text-id", "Translated tex
 $translatedTextStructure = new Structure($languageAttribute, $textAttribute);	
 
 global
-	$definitionIdAttribute, $alternativeDefinitionAttribute;
+	$definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute;
 
 $definitionIdAttribute = new Attribute("definition-id", "Definition identifier", "integer");
 $alternativeDefinitionAttribute = new Attribute("alternative-definition", "Alternative definition", new RecordSetType($translatedTextStructure));
+$sourceAttribute = new Attribute("source-id", "Source", "defined-meaning");
 
 global
 	$alternativeDefinitionsAttribute;
 	
-$alternativeDefinitionsAttribute = new Attribute("alternative-definitions", "Alternative definitions", new RecordSetType(new Structure($definitionIdAttribute, $alternativeDefinitionAttribute)));
+$alternativeDefinitionsAttribute = new Attribute("alternative-definitions", "Alternative definitions", new RecordSetType(new Structure($definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute)));
 
 global
 	$definitionAttribute, $synonymsAndTranslationsAttribute;

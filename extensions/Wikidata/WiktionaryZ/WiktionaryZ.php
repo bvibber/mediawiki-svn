@@ -105,15 +105,11 @@ class WiktionaryZ {
 
 	function getAlternativeDefinitionsEditor() {
 		global
-			$alternativeDefinitionsAttribute, $definitionIdAttribute, $alternativeDefinitionAttribute, $languageAttribute, $textAttribute;
+			$alternativeDefinitionsAttribute, $alternativeDefinitionAttribute, $sourceAttribute;
 
-//		$alternativeDefinitionEditor = new RecordSetTableEditor($alternativeDefinitionAttribute, true, true, true, new DefinedMeaningAlternativeDefinitionController());
-//		$alternativeDefinitionEditor->addEditor(new LanguageEditor($languageAttribute, false, true)); 
-//		$alternativeDefinitionEditor->addEditor(new TextEditor($textAttribute, true, true)); 
-				
 		$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningAlternativeDefinitionsController());
 		$editor->addEditor($this->getTranslatedTextEditor($alternativeDefinitionAttribute, new DefinedMeaningAlternativeDefinitionController()));
-//		$editor->addEditor($alternativeDefinitionEditor);
+		$editor->addEditor(new DefinedMeaningEditor($sourceAttribute, false, true));
 		
 		return $editor;
 	}
@@ -280,26 +276,18 @@ class WiktionaryZ {
 		return $expressionsEditor;
 	}
 	
-	function getAlternativeDefinitions($definedMeaningId) {
-		$result = array();
-		$dbr =& wfGetDB(DB_SLAVE);	
-		$queryResult = $dbr->query("SELECT meaning_text_tcid FROM uw_alt_meaningtexts WHERE meaning_mid=$definedMeaningId");
-		
-		while ($definitionId = $dbr->fetchObject($queryResult))
-			$result[] = $definitionId->meaning_text_tcid;
-			
-		return $result;
-	}
-	
 	function getAlternativeDefinitionsRecordSet($definedMeaningId) {
 		global
-			$definitionIdAttribute, $languageAttribute, $textAttribute, $alternativeDefinitionAttribute;
+			$definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute;
 		
-		$recordset = new ArrayRecordSet(new Structure($definitionIdAttribute, $alternativeDefinitionAttribute), new Structure($definitionIdAttribute));
-		$alternativeDefinitions = $this->getAlternativeDefinitions($definedMeaningId);
+		$recordset = new ArrayRecordSet(new Structure($definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute), new Structure($definitionIdAttribute));
 		
-		foreach($alternativeDefinitions as $alternativeDefinition)
-			$recordset->addRecord(array($alternativeDefinition, $this->getTranslatedTextRecordSet($alternativeDefinition)));
+		$dbr =& wfGetDB(DB_SLAVE);	
+		$queryResult = $dbr->query("SELECT meaning_text_tcid, source_id FROM uw_alt_meaningtexts WHERE meaning_mid=$definedMeaningId");
+				
+		while ($alternativeDefinition = $dbr->fetchObject($queryResult)) {
+			$recordset->addRecord(array($alternativeDefinition->meaning_text_tcid, $this->getTranslatedTextRecordSet($alternativeDefinition->meaning_text_tcid), $alternativeDefinition->source_id));			
+		}
 		
 		return $recordset;
 	}
@@ -746,7 +734,7 @@ class DefinedMeaningAlternativeDefinitionsController {
 			$text = $definitionRecord->getAttributeValue($textAttribute);
 			
 			if ($languageId != 0 && $text != '')
-				addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text);
+				addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text, NULL);
 		}
 	}
 	

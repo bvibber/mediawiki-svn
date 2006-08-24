@@ -8,6 +8,7 @@ require_once('SwissProtImport.php');
 require_once('XMLImport.php');
 require_once('2GoMappingImport.php');
 require_once("ProgressBar.php");
+require_once("UMLSImport.php");
 
 // Uncomment following line for versioning support
 require_once("../WiktionaryZ/Transaction.php");
@@ -20,30 +21,17 @@ global
 $beginTime = time();
 $wgCommandLineMode = true;
 
-// Uncomment following line for versioning support
-startNewTransaction(10, 0, "Swiss-Prot Import");
+$linkEC2GoFileName = "LinksEC2Go.txt";
+$linkSwissProtKeyWord2GoFileName = "LinksSP2Go.txt";
+$swissProtXMLFileName =  "uniprot_sprot.xml";
+//$swissProtXMLFileName =  "100000lines.xml";
 
-//import EC code to GO mapping:
-$linkEC2Go = "LinksEC2Go.txt";
-$linkEC2GofileHandle = fopen($linkEC2Go, "r");
-$ECGoMapping = importEC2GoMapping($linkEC2GofileHandle);
-fclose($linkEC2GofileHandle);
+$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "");
+$EC2GoMapping = importEC2GoMapping($linkEC2GoFileName);
+$SP2GoMapping = importSwissProtKeyWord2GoMapping($linkSwissProtKeyWord2GoFileName);
 
-//import Swiss Prot key words to GO mapping:
-$linkSP2Go = "LinksSP2Go.txt";
-$linkSwissProtKeyWord2GofileHandle = fopen($linkSP2Go, "r");
-$SP2GoMapping = importSwissProtKeyWord2GoMapping($linkSwissProtKeyWord2GofileHandle);
-fclose($linkSwissProtKeyWord2GofileHandle);
-
-//import Swiss Prot:
-$file = "uniprot_sprot.xml";
-//$file = "10000lines.xml";
-$numberOfBytes = filesize($file);
-progressBar(0, $numberOfBytes);
-$fileHandle = fopen($file, "r");
-importEntriesFromXMLFile($fileHandle, $ECGoMapping, $SP2GoMapping);
-//echoNofLines($fileHandle, 10000);
-fclose($fileHandle);
+importSwissProt($swissProtXMLFileName, $umlsImport->umlsCollectionId, $umlsImport->sourceAbbreviations['GO'], $EC2GoMapping, $SP2GoMapping);
+//importSwissProt($swissProtXMLFileName, 18, 25, $EC2GoMapping, $SP2GoMapping);
 
 $endTime = time();
 echo "\nTime elapsed: " . durationToString($endTime - $beginTime); 

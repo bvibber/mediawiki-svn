@@ -121,7 +121,7 @@ function createSynonymOrTranslation($definedMeaningId, $expressionId, $endemicMe
 	$dbr = &wfGetDB(DB_MASTER);
 	$endemicMeaningInteger = (int) $endemicMeaning;	
 	$sql = "insert into uw_syntrans(defined_meaning_id, expression_id, endemic_meaning, add_transaction_id) ".
-	       "values($definedMeaningId, $expressionId, $endemicMeaningInteger,". getUpdateTransactionId() .")";
+	       "values($definedMeaningId, $expressionId, $endemicMeaningInteger, ". getUpdateTransactionId() .")";
 	$queryResult = $dbr->query($sql);
 }
 
@@ -284,20 +284,20 @@ function addDefinedMeaningDefinition($definedMeaningId, $languageId, $text) {
 		addTranslatedTextIfNotPresent($definitionId, $languageId, $text);
 }
 
-function createDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId) {
+function createDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId, $sourceMeaningId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT max(set_id) as max_id FROM uw_alt_meaningtexts");
 	$setId = $dbr->fetchObject($queryResult)->max_id + 1;
 	
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("INSERT INTO uw_alt_meaningtexts (set_id, meaning_mid, meaning_text_tcid) " .
-			    "VALUES ($setId, $definedMeaningId, $translatedContentId)");
+	$dbr->query("INSERT INTO uw_alt_meaningtexts (set_id, meaning_mid, meaning_text_tcid, source_id) " .
+			    "VALUES ($setId, $definedMeaningId, $translatedContentId, $sourceMeaningId)");
 }
 
-function addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text) {
+function addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text, $sourceMeaningId) {
 	$translatedContentId = newTranslatedContentId();
 	
-	createDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId);
+	createDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId, $sourceMeaningId);
 	addTranslatedText($translatedContentId, $languageId, $text);
 }
 
@@ -498,6 +498,17 @@ function getCollectionContents($collectionId) {
 		$collectionContents[$collectionEntry->internal_member_id] = $collectionEntry->member_mid;
 	
 	return $collectionContents;
+} 
+
+function getCollectionMemberId($collectionId, $sourceIdentifier) {
+    $dbr = & wfGetDB(DB_SLAVE);
+    $queryResult = $dbr->query("SELECT member_mid from uw_collection_contents " .
+                               "WHERE collection_id=$collectionId AND internal_member_id=". $dbr->addQuotes($sourceIdentifier));
+
+    if ($collectionEntry = $dbr->fetchObject($queryResult)) 
+        return $collectionEntry->member_mid;
+    else
+        return null;
 } 
 
 ?>
