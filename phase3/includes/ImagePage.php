@@ -269,12 +269,22 @@ class ImagePage extends Article {
 END
 						);
 				} else {
-					$wgOut->addWikiText( <<<END
+					//if media type is audio or video do an embed link: 
+					if($this->img->type==MEDIATYPE_VIDEO || $this->img->type==MEDIATYPE_AUDIO){
+						$wgOut->addWikiText( <<<END
+<div class="fullMedia">
+[[Embed:$filename|$filename]] <span class="fileInfo"> ($info)</span>
+</div>
+END
+							);
+					}else{
+						$wgOut->addWikiText( <<<END
 <div class="fullMedia">
 [[Media:$filename|$filename]] <span class="fileInfo"> ($info)</span>
 </div>
 END
-						);
+							);
+					}
 				}
 			}
 

@@ -1308,7 +1308,7 @@ class Parser
 	 * @private
 	 */
 	function replaceInternalLinks( $s ) {
-		global $wgContLang;
+		global $wgContLang, $wgEnableEmbedMedia;
 		static $fname = 'Parser::replaceInternalLinks' ;
 
 		wfProfileIn( $fname );
@@ -1451,7 +1451,7 @@ class Parser
 			$iw = $nt->getInterWiki();
 
 			if ($might_be_img) { # if this is actually an invalid link
-				if ( ($ns == NS_IMAGE || $ns == NS_MEDIA ) && $noforce) { #but might be an image or media
+				if ( ($ns == NS_IMAGE || $ns == NS_EMBED ) && $noforce) { #but might be an image or media
 					$found = false;
 					while (isset ($a[$k+1]) ) {
 						#look at the next 'line' to see if we can close it there
@@ -1521,9 +1521,9 @@ class Parser
 
 				}
 				//enabled or disable embed media: 
-				if(true){	//@todo add in wfConfig boolean 
-					if ( $ns == NS_MEDIA ) {		
-						wfProfileIn( "$fname-media" );			
+				if($wgEnableEmbedMedia){
+					if ( $ns == NS_EMBED ) {		
+						wfProfileIn( "$fname-embed" );			
 						# recursively parse links inside the media caption
 						$text = $this->replaceExternalLinks($text);
 						$text = $this->replaceInternalLinks($text);
@@ -1532,7 +1532,7 @@ class Parser
 						$s .= $prefix . $this->armorLinks( $this->makeMedia( $nt, $text ) ) . $trail;
 						$this->mOutput->addImage( $nt->getDBkey() );			
 					
-						wfProfileOut( "$fname-media" );
+						wfProfileOut( "$fname-embed" );
 						continue;
 					}
 				}

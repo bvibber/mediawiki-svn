@@ -170,7 +170,9 @@ class MediaWiki {
 	 * @return Article
 	 */
 	function articleFromTitle( $title ) {
-		if( NS_MEDIA == $title->getNamespace() ) {
+		//redirect embed as well.
+		//should eventually redirect to File:ArticleName
+		if( NS_MEDIA == $title->getNamespace() || NS_EMBED == $title->getNamespace() ) {
 			// FIXME: where should this go?
 			$title = Title::makeTitle( NS_IMAGE, $title->getDBkey() );
 		}

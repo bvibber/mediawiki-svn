@@ -10,6 +10,7 @@
  */
 $wgCanonicalNamespaceNames = array(
 	NS_MEDIA            => 'Media',
+	NS_EMBED			=> 'Embed',
 	NS_SPECIAL          => 'Special',
 	NS_TALK	            => 'Talk',
 	NS_USER             => 'User',

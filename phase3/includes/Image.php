@@ -552,6 +552,12 @@ class Image
 			return $this->getURL();
 		}
 	}
+	
+	/**
+	* Return the full server URL
+	*
+	*/
+	
 
 	/**
 	 * Return the image path of the image in the
@@ -1056,9 +1062,6 @@ class Image
 			//wfDebug("error not a dir: $frameDirPath \n");
 		}
 		wfDebug("output to: " . $frameDirPath . $frameName."\n");
-		//run the shell command to render the frame
-		
-		//rename it from 000002.jpg to frame path name
 	}
 	/**
 	 * Create a thumbnail of the image having the specified width.

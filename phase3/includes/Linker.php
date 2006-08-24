@@ -701,12 +701,9 @@ class Linker {
 		return $this->makeMediaLinkObj( $nt, $alt );
 	}
 	
-	
-	
 	/*
 	makeEmbedMediaLinkObj Takes parsed Media paramaters and makes embed_media html
 	makes a embedMedia image and link to auto_load plugin.
-	very similar to 
 	*/
 	function makeEmbedMediaLinkObj($title, $options){	
 		global $wgScriptPath, $wgJsMimeType, $wgContLang, $wgEmbedCountId;
@@ -820,9 +817,9 @@ class Linker {
 				}
 			}
 			
-			
-			$u = $img->getEscapeLocalURL(); 
 	
+			$u = $img->getEscapeLocalURL(); 
+			
 			$more = htmlspecialchars( wfMsg( 'thumbnail-more' ) );
 			$magnifyalign = $wgContLang->isRTL() ? 'left' : 'right';
 			$textalign = $wgContLang->isRTL() ? ' style="text-align:right"' : ' style="text-align:left"';
@@ -870,10 +867,10 @@ class Linker {
 				}				
 				
 				$u = $title->escapeLocalURL();
+				
 				$alt = $options['alt'];
 							
 				//full url path to media 
-				//@todo pull media server location from config. 	
 				$media_url =  "http://metavid.ucsc.edu" . $img->getUrl();					
 				
 				//do output: 
@@ -895,7 +892,7 @@ class Linker {
 				$embed_out.= <<<END_EMBED
 				<div class="thumb t{$align}" style="width:{$oboxwidth}px">									
 					<div id="div_{$base_unique_name}" style="overflow:hidden;" >
-						<a href="$u" class="internal" title="$alt">
+						<a href="$u" class="internal" style="position:relative;left:0px;top0px;z-index1" title="$alt">
 							<img id ="img_{$base_unique_name}" width="{$width}" height="{$height}" src="{$im_frame_url}">	
 						</a>		
 					</div>
@@ -930,43 +927,10 @@ class Linker {
 				</div>
 END_EMBED;
 			}
-							
-						
-						
-			//print "MIME:" . $img->mime;			
-			
-			//display the video thumbnail: 			
-			//set up all our varialbes: 	
-			
-			//@todo think how this will work with multiple idential titled media elements in a given page
-	
+			//to avoid <p>: 
 			return str_replace("\n", ' ', $embed_out);
 			//return $embed_out;			
-		}	
-		/*classic embed ... to-be removed 
-			if($_GET['javaDemo']=='true'){
-			return '<applet code="com.fluendo.player.Cortado.class" archive="/wiki_dev/phase3/cortado-ovt-stripped-0.2.0.jar" width="320" height="240">
-					  <param name="url" value="http://metavid.ucsc.edu'.$u.'" title="'.$alt.'" />
-					  <param name="autoplay" value="false" />
-					  <param name="local" value="false"/>
-					  <param name="keepaspect" value="true" />
-					  <param name="video" value="true" />
-					  <param name="audio" value="true" />
-					  <param name="seekable" value="true" />
-					  <param name="duration" value="00455" />
-					  <param name="bufferSize" value="200" />
-					</applet>';
-		}else{
-			return '<embed type="application/x-annodex-vlc-viewer-plugin" id="video1" autoplay="no" loop="no" height="240" width="320"> <br>			
-					<script language="JavaScript">			
-						document.video1.stop();
-						document.video1.clear_playlist();
-						name=\'http://metavid.ucsc.edu'. $u.'\';
-						document.video1.add_item( name );
-						document.video1.play();
-					</script>	
-					<a href="javascript:;" onclick="document.video1.play()">Play</a> <a href="javascript:;" onclick="document.video1.pause()">Pause</a> <a href="javascript:;" onclick="document.video1.stop()">Stop</a> <a href="javascript:;" onclick="document.video1.fullscreen()">Fullscreen</a> <a href="'.$u.'">Download</a>';
-		}*/		
+		}			
 	}
 
 

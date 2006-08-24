@@ -2,10 +2,8 @@
 
 /* 
 	detects if the user has the vlc or annodex browser plugin.
-	//if they dont' have annodex & on a win/linux look for java/plugin
-		//look for windows media ogg filter?
-	//if they don't have annodex & on OSX look quicktime, and ogg extention
-		//if on mac and have
+	//if they don't have annodex & on a win/linux look for java/plugin
+	//if on mac force java plugin. 
 */
 
 //some client detection code: 
@@ -47,11 +45,9 @@ function auto_embed(opt){
 	if(!opt['height'])opt['height']=img.getAttribute("height");
 	if(!opt['duration'])opt['duration']=30; //default durration of 30 seconds (required for seeking in cortado player)
 	
-
-	//force jre:
-	//detect plugin avalibilty
+	//detect available plug-in  
 	var embed_type = detect_client_plugins();
-	//force jre for macs for now
+	//if on a mac force java for now
 	if(is_mac){
 		embed_type = 'jre';
 	}

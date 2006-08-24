@@ -40,7 +40,7 @@ body {
 -->
 </style></head>
 <body>
-	<applet code="com.fluendo.player.Cortado.class" archive="cortado-ovt-stripped-0.2.0.jar" width="<?=$width?>" height="<?=$height?>">	
+	<applet code="com.fluendo.player.Cortado.class" archive="cortado-ovt-stripped-0.2.0.1.jar" width="<?=$width?>" height="<?=$height?>">	
 		<param name="url" value="<?=$media_url?>" />
 		<param name="local" value="false"/> 
 		<param name="keepaspect" value="true" />

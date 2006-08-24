@@ -2260,6 +2260,8 @@ class Title {
 				return 'nstab-user';
 			case NS_MEDIA:
 				return 'nstab-media';
+			case NS_EMBED:
+				return 'nstab-embed';
 			case NS_SPECIAL:
 				return 'nstab-special';
 			case NS_PROJECT:

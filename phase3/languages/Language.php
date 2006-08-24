@@ -27,6 +27,7 @@ if($wgMetaNamespace === FALSE)
 
 /* private */ $wgNamespaceNamesEn = array(
 	NS_MEDIA            => 'Media',
+	NS_EMBED            => 'Embed',
 	NS_SPECIAL          => 'Special',
 	NS_MAIN	            => '',
 	NS_TALK	            => 'Talk',

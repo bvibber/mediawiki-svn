@@ -2108,4 +2108,10 @@ $wgContentNamespaces = array( NS_MAIN );
  */
 $wgMaxShellMemory = 102400;
 
+
+/**
+* Embed media options: 
+*/
+$wgEnableEmbedMedia = true; 
+
 ?>
