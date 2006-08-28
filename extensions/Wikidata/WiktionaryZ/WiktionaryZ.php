@@ -16,7 +16,7 @@ require_once('HTMLtable.php');
 /**
  * Load and modify content in a WiktionaryZ-enabled
  * namespace.
- * 
+ *
  * @package MediaWiki
  */
 class WiktionaryZ {
@@ -31,7 +31,7 @@ class WiktionaryZ {
 				'wz_history' => 'History'
 			)
 		);
-		
+
 	}
 
 	function view() {
@@ -41,7 +41,8 @@ class WiktionaryZ {
 		$wgOut->addHTML($this->getLanguageSelector());
 		$spelling = $wgTitle->getText();
 		$wgOut->addHTML($this->getExpressionsEditor($spelling)->view(new IdStack("expression"), $this->getExpressionsRecordSet($spelling)));
-		
+		$wgOut->addHTML(DefaultEditor::getExpansionCss());
+
 		# We may later want to disable the regular page component
 		# $wgOut->setPageTitleArray($this->mTitle->getTitleArray());
 	}
@@ -69,14 +70,14 @@ class WiktionaryZ {
 	function getTransactionEditor($attribute) {
 		global
 			$userAttribute, $timestampAttribute;
-		
+
 		$transactionEditor = new RecordTableCellEditor($attribute);
 		$transactionEditor->addEditor(new UserEditor($userAttribute, new SimplePermissionController(false), true));
 		$transactionEditor->addEditor(new ShortTextEditor($timestampAttribute, new SimplePermissionController(false), true));
 
 		return $transactionEditor;
 	}
-	
+
 	function addTableLifeSpanEditor($editor) {
 		global
 			$recordLifeSpanAttribute, $addTransactionAttribute, $removeTransactionAttribute, $wgRequest;
@@ -97,10 +98,10 @@ class WiktionaryZ {
 		$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(true), true, true, true, $controller);
 		$editor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true)); 
 		$editor->addEditor(new TextEditor($textAttribute, new SimplePermissionController(true), true));
-		
+
 		$this->addTableLifeSpanEditor($editor);
 		
-		return $editor; 
+		return $editor;
 	}
 
 	function getAlternativeDefinitionsEditor() {
@@ -110,23 +111,23 @@ class WiktionaryZ {
 		$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningAlternativeDefinitionsController());
 		$editor->addEditor($this->getTranslatedTextEditor($alternativeDefinitionAttribute, new DefinedMeaningAlternativeDefinitionController()));
 		$editor->addEditor(new DefinedMeaningEditor($sourceAttribute, false, true));
-		
+
 		return $editor;
 	}
-	
+
 	function getSynonymsAndTranslationsEditor() {
 		global
 			$synonymsAndTranslationsAttribute, $identicalMeaningAttribute, $expressionIdAttribute, $expressionAttribute, $languageAttribute, 
 			$spellingAttribute;
-		
+
 		$expressionEditor = new RecordTableCellEditor($expressionAttribute);
 		$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
 		$expressionEditor->addEditor(new SpellingEditor($spellingAttribute, new SimplePermissionController(false), true));
-			
+
 		$tableEditor = new RecordSetTableEditor($synonymsAndTranslationsAttribute, new SimplePermissionController(true), true, true, false, new SynonymTranslationController());
 		$tableEditor->addEditor($expressionEditor);
 		$tableEditor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(true), true, true));
-		
+
 		$this->addTableLifeSpanEditor($tableEditor);
 
 		return $tableEditor;
@@ -135,57 +136,57 @@ class WiktionaryZ {
 	function getDefinedMeaningRelationsEditor() {
 		global
 			$relationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
-		
+
 		$editor = new RecordSetTableEditor($relationsAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningRelationController());
 		$editor->addEditor(new RelationTypeEditor($relationTypeAttribute, new SimplePermissionController(false), true));
 		$editor->addEditor(new DefinedMeaningEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
-		
+
 		$this->addTableLifeSpanEditor($editor);
 
 		return $editor;
 	}
-	
+
 	function getDefinedMeaningClassMembershipEditor() {
 		global
 			$classMembershipAttribute, $classAttribute;
-			
+
 		$editor = new RecordSetTableEditor($classMembershipAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningClassMembershipController());
 		$editor->addEditor(new AttributeEditor($classAttribute, new SimplePermissionController(false), true));
-		
+
 		$this->addTableLifeSpanEditor($editor);
 
 		return $editor;
 	}
-	
+
 	function getDefinedMeaningCollectionMembershipEditor() {
 		global
 			$collectionMembershipAttribute, $collectionAttribute, $sourceIdentifierAttribute;
-		
+
 		$editor = new RecordSetTableEditor($collectionMembershipAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningCollectionController());
 		$editor->addEditor(new CollectionEditor($collectionAttribute, new SimplePermissionController(false), true));
 		$editor->addEditor(new ShortTextEditor($sourceIdentifierAttribute, new SimplePermissionController(true), true));
-		
+
 		$this->addTableLifeSpanEditor($editor);
 
 		return $editor;
 	}
-	
+
 	function getDefinedMeaningTextAttributeValuesEditor() {
 		global
 			$textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute;
-			
+
 		$editor = new RecordSetTableEditor($textAttributeValuesAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningTextAttributeValuesController());
 		$editor->addEditor(new TextAttributeEditor($textAttributeAttribute, new SimplePermissionController(false), true));
 		$editor->addEditor($this->getTranslatedTextEditor($textValueAttribute, new DefinedMeaningTextAttributeValueController()));
-		
+
 		return $editor;
 	}
-	
+
 	function getDefinedMeaningRecord($definedMeaningId, $expressionId) {
 		global
 			$definedMeaningAttribute, $definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
 			$relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute;
-				
+
 		$record = new ArrayRecord($definedMeaningAttribute->type->getStructure());
 		$record->setAttributeValue($definitionAttribute, $this->getDefinedMeaningDefinitionRecordSet($definedMeaningId));
 		$record->setAttributeValue($alternativeDefinitionsAttribute, $this->getAlternativeDefinitionsRecordSet($definedMeaningId));
@@ -194,7 +195,7 @@ class WiktionaryZ {
 		$record->setAttributeValue($classMembershipAttribute, $this->getDefinedMeaningClassMembershipRecordSet($definedMeaningId));
 		$record->setAttributeValue($collectionMembershipAttribute, $this->getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId));
 		$record->setAttributeValue($textAttributeValuesAttribute, $this->getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId));
-		
+
 		return $record;
 	}
 
@@ -202,47 +203,47 @@ class WiktionaryZ {
 		global
 			$definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute;
 
-		$recordset = new ArrayRecordSet(new Structure($definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute), new Structure($definedMeaningIdAttribute));		
-		
+		$recordset = new ArrayRecordSet(new Structure($definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute), new Structure($definedMeaningIdAttribute));
+
 		$definedMeaningIds = $this->getDefinedMeaningsForExpression($expressionId);
 
-		foreach($definedMeaningIds as $definedMeaningId) 
+		foreach($definedMeaningIds as $definedMeaningId)
 			$recordset->addRecord(array($definedMeaningId, getDefinedMeaningDefinition($definedMeaningId), $this->getDefinedMeaningRecord($definedMeaningId, $expressionId)));
-			
+
 		return $recordset;
 	}
-	
+
 	function getExpressionsRecordSet($spelling) {
 		global
 			$expressionIdAttribute, $expressionAttribute, $languageAttribute, $expressionMeaningsAttribute;
-		
+
 		$dbr =& wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT expression_id, language_id from uw_expression_ns WHERE spelling=BINARY " . $dbr->addQuotes($spelling));
-		$result = new ArrayRecordSet(new Structure($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute), new Structure($expressionIdAttribute));		
+		$result = new ArrayRecordSet(new Structure($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute), new Structure($expressionIdAttribute));
 		$expressionStructure = new Structure($languageAttribute);
-	
+
 		while($expression = $dbr->fetchObject($queryResult)) {
 			$expressionRecord = new ArrayRecord($expressionStructure);
 			$expressionRecord->setAttributeValue($languageAttribute, $expression->language_id);
-			
+
 			$result->addRecord(array($expression->expression_id, $expressionRecord, $this->getDefinedMeaningsRecordSet($expression->expression_id)));
 		}
-		
+
 		return $result;
 	}
-	
+
 	function getExpressionsEditor($spelling) {
 		global
-			$expressionsAttribute, $definedMeaningAttribute, $expressionAttribute, $expressionMeaningsAttribute, 
+			$expressionsAttribute, $definedMeaningAttribute, $expressionAttribute, $expressionMeaningsAttribute,
 			$languageAttribute, $textAttribute, $definitionAttribute;
-			
+
 		$definitionEditor = $this->getTranslatedTextEditor($definitionAttribute, new DefinedMeaningDefinitionController()); 
-		$synonymsAndTranslationsEditor = $this->getSynonymsAndTranslationsEditor(); 
+		$synonymsAndTranslationsEditor = $this->getSynonymsAndTranslationsEditor();
 		$relationsEditor = $this->getDefinedMeaningRelationsEditor();
 		$classMembershipEditor = $this->getDefinedMeaningClassMembershipEditor();
 		$collectionMembershipEditor = $this->getDefinedMeaningCollectionMembershipEditor();
 		$textAttributeValuesEditor = $this->getDefinedMeaningTextAttributeValuesEditor();
-		
+
 		$definedMeaningEditor = new RecordListEditor($definedMeaningAttribute, true, false, true, null);
 		$definedMeaningEditor->addEditor($definitionEditor);
 		$definedMeaningEditor->addEditor($this->getAlternativeDefinitionsEditor());
@@ -251,37 +252,37 @@ class WiktionaryZ {
 		$definedMeaningEditor->addEditor($classMembershipEditor);
 		$definedMeaningEditor->addEditor($collectionMembershipEditor);
 		$definedMeaningEditor->addEditor($textAttributeValuesEditor);
-		
+
 		$definedMeaningEditor->expandEditor($definitionEditor);
 		$definedMeaningEditor->expandEditor($synonymsAndTranslationsEditor);
 //		$definedMeaningEditor->expandEditor($relationsEditor);
 //		$definedMeaningEditor->expandEditor($classMembershipEditor);
 //		$definedMeaningEditor->expandEditor($collectionMembershipEditor);
 //		$definedMeaningEditor->expandEditor($textAttributeValuesEditor);
-		
+
 		$definedMeaningCaptionEditor = new TextEditor($textAttribute, new SimplePermissionController(false), false, true, 100);
 		$definedMeaningCaptionEditor->setAddText("New defined meaning");
-		
+
 		$expressionMeaningsEditor = new RecordSetListEditor($expressionMeaningsAttribute, new SimplePermissionController(true), true, false, true, new ExpressionMeaningController(), 3, false);
 		$expressionMeaningsEditor->setCaptionEditor($definedMeaningCaptionEditor);
 		$expressionMeaningsEditor->setValueEditor($definedMeaningEditor);
-		
+
 		$expressionEditor = new RecordSpanEditor($expressionAttribute, ': ', ' - ');
 		$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
-		
+
 		$expressionsEditor = new RecordSetListEditor($expressionsAttribute, new SimplePermissionController(true), true, false, false, new ExpressionController($spelling), 2, true);
 		$expressionsEditor->setCaptionEditor($expressionEditor);
 		$expressionsEditor->setValueEditor($expressionMeaningsEditor);
-		
+
 		return $expressionsEditor;
 	}
-	
+
 	function getAlternativeDefinitionsRecordSet($definedMeaningId) {
 		global
 			$definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute;
-		
+
 		$recordset = new ArrayRecordSet(new Structure($definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute), new Structure($definitionIdAttribute));
-		
+
 		$dbr =& wfGetDB(DB_SLAVE);	
 		$queryResult = $dbr->query("SELECT meaning_text_tcid, source_id FROM uw_alt_meaningtexts WHERE meaning_mid=$definedMeaningId");
 				
@@ -291,11 +292,11 @@ class WiktionaryZ {
 		
 		return $recordset;
 	}
-	
+
 	function saveForm() {
-		global 
+		global
 			$wgTitle, $wgUser, $wgRequest;
-		
+
 		$summary = $wgRequest->getText('summary');
 		
 		startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
@@ -310,9 +311,9 @@ class WiktionaryZ {
 	}
 
 	function edit() {
-		global 
+		global
 			$wgOut, $wgTitle, $wgUser, $wgRequest;
-		
+
 		if ($wgRequest->getText('save') != '')
 			$this->saveForm();
 
@@ -328,23 +329,24 @@ class WiktionaryZ {
 			$wgOut->addHTML(getSubmitButton("save", wfMsg('wz_save')));
 		$wgOut->addHTML('</div>');	
 		$wgOut->addHTML('</form>');
-		
+		$wgOut->addHTML(DefaultEditor::getExpansionCss());
+
 		$titleArray = $wgTitle->getTitleArray();
 		$titleArray["actionprefix"] = wfMsg('editing');
 		$wgOut->setPageTitleArray($titleArray);
 	}
-	
+
 	function getDefinedMeaningsForExpression($expressionId) {
 		$dbr =& wfGetDB(DB_SLAVE);
 		$definedMeanings = array();
 		$queryResult = $dbr->query("SELECT defined_meaning_id FROM uw_syntrans WHERE expression_id=$expressionId AND ". getLatestTransactionRestriction('uw_syntrans'));
-		
-		while($definedMeaning = $dbr->fetchObject($queryResult)) 
+
+		while($definedMeaning = $dbr->fetchObject($queryResult))
 			$definedMeanings[] = $definedMeaning->defined_meaning_id;
-			
+
 		return $definedMeanings;
 	}
-	
+
 //	function getSynonymAndTranslationIds($definedMeaningIds, $skippedExpressionId) {
 //		$dbr =& wfGetDB(DB_SLAVE);
 //		$synonymAndTranslationIds = array();
@@ -362,7 +364,7 @@ class WiktionaryZ {
 	function getDefinedMeaningDefinitionRecordSet($definedMeaningId) {
 		global
 			$languageAttribute, $textAttribute;
-		
+
 //		$dbr =& wfGetDB(DB_SLAVE);
 //
 //		$recordset = new ArrayRecordSet(new Structure($languageAttribute, $textAttribute), 
@@ -377,7 +379,7 @@ class WiktionaryZ {
 //		return $recordset;
 		$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
 		return $this->getTranslatedTextRecordSet($definitionId);		
-	}
+		}
 	
 	function getTranslatedTextRecordSet($textId) {
 		global
@@ -388,46 +390,46 @@ class WiktionaryZ {
 		else
 			return $this->getTranslatedTextLatestRecordSet($textId);
 	}
-	
+
 	function getTranslatedTextLatestRecordSet($textId) {
 		global
 			$languageAttribute, $textAttribute;
-		
+
 		$dbr =& wfGetDB(DB_SLAVE);
 
-		$recordset = new ArrayRecordSet(new Structure($languageAttribute, $textAttribute), 
+		$recordset = new ArrayRecordSet(new Structure($languageAttribute, $textAttribute),
 										new Structure($languageAttribute));
-										
+
 		$queryResult = $dbr->query("SELECT language_id, old_text FROM translated_content tc, text t WHERE ".
 									"tc.set_id=$textId AND tc.text_id=t.old_id AND " . getViewTransactionRestriction('tc'));
-									
+
 		while ($translatedText= $dbr->fetchObject($queryResult)) 
 			$recordset->addRecord(array($translatedText->language_id, $translatedText->old_text));
-		
+
 		return $recordset;
 	}
-	
+
 	function getTranslatedTextHistoryRecordSet($textId) {
 		global
 			$languageAttribute, $textAttribute, $recordLifeSpanAttribute;
-		
+
 		$dbr =& wfGetDB(DB_SLAVE);
 
 		$recordSet = new ArrayRecordSet(new Structure($languageAttribute, $textAttribute, $recordLifeSpanAttribute), 
 										new Structure($languageAttribute));
-										
+
 		$queryResult = $dbr->query("SELECT language_id, old_text, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live FROM translated_content tc, text t WHERE ".
 									"tc.set_id=$textId AND tc.text_id=t.old_id AND " . getViewTransactionRestriction('tc') .
 									" ORDER BY is_live, add_transaction_id DESC");
-									
-		while ($translatedText= $dbr->fetchObject($queryResult)) 
+
+		while ($translatedText= $dbr->fetchObject($queryResult))
 			$recordSet->addRecord(array($translatedText->language_id, $translatedText->old_text, 
 										getRecordLifeSpanTuple($translatedText->add_transaction_id,
 																$translatedText->remove_transaction_id)));
 
 		return $recordSet;
 	}
-	
+
 	function getSynonymAndTranslationRecordSet($definedMeaningId, $skippedExpressionId) {
 		global
 			$wgRequest;
@@ -469,7 +471,7 @@ class WiktionaryZ {
 	function getSynonymAndTranslationLatestRecordSet($definedMeaningId, $skippedExpressionId) {
 		global
 			$expressionIdAttribute, $expressionAttribute, $languageAttribute, $spellingAttribute, $identicalMeaningAttribute;
-		
+
 		$dbr =& wfGetDB(DB_SLAVE);
 
 		$expressionStructure = $expressionAttribute->type->getStructure();
@@ -483,10 +485,10 @@ class WiktionaryZ {
 
 			$recordset->addRecord(array($synonymOrTranslation->expression_id, $expressionRecord, $synonymOrTranslation->endemic_meaning));
 		}
-		
+
 		return $recordset;
 	}
-	
+
 	function getDefinedMeaningRelationsRecordSet($definedMeaningId) {
 		global
 			$wgRequest;
@@ -500,22 +502,22 @@ class WiktionaryZ {
 	function getDefinedMeaningRelationsLatestRecordSet($definedMeaningId) {
 		global
 			$relationTypeAttribute, $otherDefinedMeaningAttribute;
-			
+
 		$structure = new Structure($relationTypeAttribute, $otherDefinedMeaningAttribute);
 		$recordset = new ArrayRecordSet($structure, $structure);
-		
+
 		$dbr =& wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid FROM uw_meaning_relations " .
 									"WHERE meaning1_mid=$definedMeaningId AND relationtype_mid!=0 " .
 									" AND ". getLatestTransactionRestriction('uw_meaning_relations').
 									"ORDER BY relationtype_mid");
-			
+
 		while($definedMeaningRelation = $dbr->fetchObject($queryResult))
-			$recordset->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid)); 
-		
+			$recordset->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid));
+
 		return $recordset;
 	}
-	
+
 	function getDefinedMeaningRelationsHistoryRecordSet($definedMeaningId) {
 		global
 			$relationTypeAttribute, $otherDefinedMeaningAttribute, $recordLifeSpanAttribute;
@@ -547,20 +549,20 @@ class WiktionaryZ {
 	function getDefinedMeaningCollectionMembershipLatestRecordSet($definedMeaningId) {
 		global
 			$collectionAttribute, $sourceIdentifierAttribute;
-			
+
 		$structure = new Structure($collectionAttribute, $sourceIdentifierAttribute);
 		$recordset = new ArrayRecordSet($structure, new Structure($collectionAttribute));
-		
+
 		$dbr =& wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT collection_id, internal_member_id FROM uw_collection_contents WHERE member_mid=$definedMeaningId " .
 									"AND ". getLatestTransactionRestriction('uw_collection_contents'));
-			
+
 		while($collection = $dbr->fetchObject($queryResult))
-			$recordset->addRecord(array($collection->collection_id, $collection->internal_member_id)); 
-		
+			$recordset->addRecord(array($collection->collection_id, $collection->internal_member_id));
+
 		return $recordset;
 	}
-	
+
 	function getDefinedMeaningCollectionMembershipHistoryRecordSet($definedMeaningId) {
 		global
 			$collectionAttribute, $sourceIdentifierAttribute, $recordLifeSpanAttribute;
@@ -583,18 +585,18 @@ class WiktionaryZ {
 	function getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId) {
 		global
 			$textAttributeValuesStructure, $textAttributeAttribute, $textValueIdAttribute;
-			
+
 		$recordset = new ArrayRecordSet($textAttributeValuesStructure, new Structure($textAttributeAttribute, $textValueIdAttribute));
 
 		$dbr =& wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT attribute_mid, value_tcid FROM uw_dm_text_attribute_values WHERE defined_meaning_id=$definedMeaningId");
-		
+
 		while ($attributeValue = $dbr->fetchObject($queryResult))
 			$recordset->addRecord(array($attributeValue->attribute_mid, $attributeValue->value_tcid, $this->getTranslatedTextRecordSet($attributeValue->value_tcid)));
-		
+
 		return $recordset;
 	}
-	
+
 	function getDefinedMeaningClassMembershipRecordSet($definedMeaningId) {
 		global
 			$wgRequest;
@@ -608,18 +610,18 @@ class WiktionaryZ {
 	function getDefinedMeaningClassMembershipLatestRecordSet($definedMeaningId) {
 		global
 			$classAttribute;
-			
+
 		$structure = new Structure($classAttribute);
 		$recordset = new ArrayRecordSet($structure, $structure);
-		
+
 		$dbr =& wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid FROM uw_meaning_relations" .
 									" WHERE meaning1_mid=$definedMeaningId AND relationtype_mid=0 " .
 									" AND ". getLatestTransactionRestriction('uw_meaning_relations'));
-			
+
 		while($class = $dbr->fetchObject($queryResult))
 			$recordset->addRecord(array($class->meaning2_mid)); 
-		
+
 		return $recordset;
 	}
 
@@ -638,10 +640,10 @@ class WiktionaryZ {
 		while($class = $dbr->fetchObject($queryResult))
 			$recordset->addRecord(array($class->meaning2_mid, 
 										getRecordLifeSpanTuple($class->add_transaction_id, $class->remove_transaction_id))); 
-		
+
 		return $recordset;
 	}
-	
+
 //	function getDefinedMeaningRelations($definedMeaningIds) {
 //		$dbr =& wfGetDB(DB_SLAVE);
 //	    $definedMeaningRelations = array();
@@ -668,7 +670,7 @@ class WiktionaryZ {
 //		$expressions = $this->getExpressionsForDefinedMeaningIds(array($mid)); 
 //		return $expressions[$mid];
 //	}
-	
+
 //	# Fixme, the following function only returns English expressions
 //	# Should be expressions in the language of preference, with an appropriate fallback scheme
 //	function getExpressionsForDefinedMeaningIds($definedMeaningIds) {
@@ -682,38 +684,38 @@ class WiktionaryZ {
 //		
 //		return $expressions;
 //	}
-}
+	}
 
 class DefinedMeaningDefinitionController implements Controller {
 	public function add($keyPath, $record) {
 		global
 			$expressionIdAttribute, $definedMeaningIdAttribute, $languageAttribute, $textAttribute;
-		
+
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$languageId = $record->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);
-		
-		if ($languageId != 0 && $text != "") 
+
+		if ($languageId != 0 && $text != "")
 			addDefinedMeaningDefinition($definedMeaningId, $languageId, $text);
 	}
-	
+
 	public function remove($keyPath) {
 		global
 			$definedMeaningIdAttribute, $languageAttribute;
-			
+
 		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
 		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
 		removeDefinedMeaningDefinition($definedMeaningId, $languageId);
 	}
-	
+
 	public function update($keyPath, $record) {
 		global
 			$definedMeaningIdAttribute, $languageAttribute, $textAttribute;
-		
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute); 
+
+		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
 		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);
-		
+
 		if ($text != "")
 			updateDefinedMeaningDefinition($definedMeaningId, $languageId, $text);
 	}
@@ -724,29 +726,29 @@ class DefinedMeaningAlternativeDefinitionsController {
 		global
 			$expressionIdAttribute, $definedMeaningIdAttribute, $alternativeDefinitionAttribute, $languageAttribute, $textAttribute;
 
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);		
+		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$alternativeDefinition = $record->getAttributeValue($alternativeDefinitionAttribute);
-		
-		if ($alternativeDefinition->getRecordCount() > 0) {	
+
+		if ($alternativeDefinition->getRecordCount() > 0) {
 			$definitionRecord = $alternativeDefinition->getRecord(0);
-			
+
 			$languageId = $definitionRecord->getAttributeValue($languageAttribute);
 			$text = $definitionRecord->getAttributeValue($textAttribute);
-			
+
 			if ($languageId != 0 && $text != '')
 				addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text, NULL);
 		}
 	}
-	
+
 	public function remove($keyPath) {
 		global
 			$definedMeaningIdAttribute, $definitionIdAttribute;
 
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);			
+		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
 		$definitionId = $keyPath->peek(0)->getAttributeValue($definitionIdAttribute);
 		removeDefinedMeaningAlternativeDefinition($definedMeaningId, $definitionId);
 	}
-	
+
 	public function update($keyPath, $record) {
 	}
 }
@@ -763,17 +765,17 @@ class DefinedMeaningAlternativeDefinitionController implements Controller {
 		if ($languageId != 0 && $text != "")
 			addTranslatedTextIfNotPresent($definitionId, $languageId, $text);
 	}
-	
+
 	public function remove($keyPath) {
 		global
 			$definitionIdAttribute, $languageAttribute;
-		
+
 		$definitionId = $keyPath->peek(1)->getAttributeValue($definitionIdAttribute);
 		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
-		
+
 		removeTranslatedText($definitionId, $languageId);
 	}
-	
+
 	public function update($keyPath, $record) {
 		global
 			$definitionIdAttribute, $languageAttribute, $textAttribute;
@@ -794,7 +796,7 @@ class SynonymTranslationController implements Controller {
 
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$expressionRecord = $record->getAttributeValue($expressionAttribute);
-		$languageId = $expressionRecord->getAttributeValue($languageAttribute);		
+		$languageId = $expressionRecord->getAttributeValue($languageAttribute);
 		$spelling = $expressionRecord->getAttributeValue($spellingAttribute);
 		$identicalMeaning = $record->getAttributeValue($identicalMeaningAttribute);
 
@@ -803,21 +805,21 @@ class SynonymTranslationController implements Controller {
 			$expression->assureIsBoundToDefinedMeaning($definedMeaningId, $identicalMeaning);
 		}
 	}
-	
+
 	public function remove($keyPath) {
 		global
 			$definedMeaningIdAttribute, $expressionIdAttribute;
 
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);		
+		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
 		$expressionId = $keyPath->peek(0)->getAttributeValue($expressionIdAttribute);
-		removeSynonymOrTranslation($definedMeaningId, $expressionId);		
+		removeSynonymOrTranslation($definedMeaningId, $expressionId);
 	}
-	
+
 	public function update($keyPath, $record) {
 		global
 			$definedMeaningIdAttribute, $expressionIdAttribute, $identicalMeaningAttribute;
-			
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);		
+
+		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
 		$expressionId = $keyPath->peek(0)->getAttributeValue($expressionIdAttribute);
 		$identicalMeaning = $record->getAttributeValue($identicalMeaningAttribute);
 		updateSynonymOrTranslation($definedMeaningId, $expressionId, $identicalMeaning);
@@ -829,26 +831,26 @@ class DefinedMeaningRelationController implements Controller {
 		global
 			$definedMeaningIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
 
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);		
+		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$relationTypeId = $record->getAttributeValue($relationTypeAttribute);
 		$otherDefinedMeaningId = $record->getAttributeValue($otherDefinedMeaningAttribute);
-		  
+
 		if ($relationTypeId != 0 && $otherDefinedMeaningId != 0)
 			addRelation($definedMeaningId, $relationTypeId, $otherDefinedMeaningId);
-	}	
+	}
 
 	public function remove($keyPath) {
 		global
 			$definedMeaningIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
-			
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);	
-		$record = $keyPath->peek(0);	
+
+		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
+		$record = $keyPath->peek(0);
 		$relationTypeId = $record->getAttributeValue($relationTypeAttribute);
 		$otherDefinedMeaningId = $record->getAttributeValue($otherDefinedMeaningAttribute);
-		
+
 		removeRelation($definedMeaningId, $relationTypeId, $otherDefinedMeaningId);
 	}
-	
+
 	public function update($keyPath, $record) {
 	}
 }
@@ -857,24 +859,24 @@ class DefinedMeaningClassMembershipController implements Controller {
 	public function add($keyPath, $record) {
 		global
 			$definedMeaningIdAttribute, $classAttribute;
-		
+
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$attributeId = $record->getAttributeValue($classAttribute);
-		  
+
 		if ($attributeId != 0)
 			addRelation($definedMeaningId, 0, $attributeId);
-	}	
+	}
 
 	public function remove($keyPath) {
 		global
 			$definedMeaningIdAttribute, $classAttribute;
-			
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);	
-		$attributeId = $keyPath->peek(0)->getAttributeValue($classAttribute);	
-		
+
+		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
+		$attributeId = $keyPath->peek(0)->getAttributeValue($classAttribute);
+
 		removeRelation($definedMeaningId, 0, $attributeId);
 	}
-	
+
 	public function update($keyPath, $record) {
 	}
 }
@@ -884,32 +886,32 @@ class DefinedMeaningCollectionController implements Controller {
 		global
 			$expressionIdAttribute, $definedMeaningIdAttribute, $collectionAttribute, $sourceIdentifierAttribute;
 
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);		
+		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$collectionId = $record->getAttributeValue($collectionAttribute);
 		$internalId = $record->getAttributeValue($sourceIdentifierAttribute);
-		
+
 		if ($collectionId != 0)
 			addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectionId, $internalId);
-	}	
+	}
 
 	public function remove($keyPath) {
 		global
 			$definedMeaningIdAttribute, $collectionAttribute;
-		
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);	
+
+		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
 		$collectionId = $keyPath->peek(0)->getAttributeValue($collectionAttribute);
-			
+
 		removeDefinedMeaningFromCollection($definedMeaningId, $collectionId);
 	}
-	
+
 	public function update($keyPath, $record) {
 		global
 			$definedMeaningIdAttribute, $collectionAttribute, $sourceIdentifierAttribute;
 
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);		
+		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
 		$collectionId = $keyPath->peek(0)->getAttributeValue($collectionAttribute);
 		$sourceId = $record->getAttributeValue($sourceIdentifierAttribute);
-		
+
 //		if ($sourceId != "")
 			updateDefinedMeaningInCollection($definedMeaningId, $collectionId, $sourceId);
 	}
@@ -919,16 +921,16 @@ class ExpressionMeaningController implements Controller {
 	public function add($keyPath, $record) {
 		global
 			$expressionIdAttribute, $definedMeaningAttribute, $definitionAttribute, $languageAttribute, $textAttribute;
-			
+
 		$definition = $record->getAttributeValue($definedMeaningAttribute)->getAttributeValue($definitionAttribute);
-		
+
 		if ($definition->getRecordCount() > 0) {
 			$definitionRecord = $definition->getRecord(0);
-			
+
 			$text = $definitionRecord->getAttributeValue($textAttribute);
 			$languageId = $definitionRecord->getAttributeValue($languageAttribute);
-			
-			if ($languageId != 0 && $text != "") {	
+
+			if ($languageId != 0 && $text != "") {
 				$expressionId = $keyPath->peek(0)->getAttributeValue($expressionIdAttribute);
 
 				createNewDefinedMeaning($expressionId, $languageId, $text);
@@ -956,19 +958,19 @@ class ExpressionController implements Controller {
 
 		$expressionLanguageId = $record->getAttributeValue($expressionAttribute)->getAttributeValue($languageAttribute);
 		$expressionMeanings = $record->getAttributeValue($expressionMeaningsAttribute);
-		
+
 		if ($expressionLanguageId != 0 && $expressionMeanings->getRecordCount() > 0) {
 			$expressionMeaning = $expressionMeanings->getRecord(0);
 
 			$definition = $expressionMeaning->getAttributeValue($definedMeaningAttribute)->getAttributeValue($definitionAttribute);
-			
+
 			if ($definition->getRecordCount() > 0) {
 				$definitionRecord = $definition->getRecord(0);
-				
+
 				$text = $definitionRecord->getAttributeValue($textAttribute);
 				$languageId = $definitionRecord->getAttributeValue($languageAttribute);
-				
-				if ($languageId != 0 && $text != "") {	
+
+				if ($languageId != 0 && $text != "") {
 					$expression = findOrCreateExpression($this->spelling, $expressionLanguageId);
 					createNewDefinedMeaning($expression->id, $languageId, $text);
 				}
@@ -986,24 +988,24 @@ class ExpressionController implements Controller {
 class DefinedMeaningTextAttributeValuesController {
 	public function add($keyPath, $record)  {
 		global
-			$expressionIdAttribute, $definedMeaningIdAttribute, $textValueAttribute, $languageAttribute, 
+			$expressionIdAttribute, $definedMeaningIdAttribute, $textValueAttribute, $languageAttribute,
 			$textAttribute, $textAttributeAttribute;
 
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);		
+		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$textValue = $record->getAttributeValue($textValueAttribute);
 		$textAttributeId = $record->getAttributeValue($textAttributeAttribute);
-		
-		if ($textAttributeId != 0 && $textValue->getRecordCount() > 0) {	
+
+		if ($textAttributeId != 0 && $textValue->getRecordCount() > 0) {
 			$textValueRecord = $textValue->getRecord(0);
-			
+
 			$languageId = $textValueRecord->getAttributeValue($languageAttribute);
 			$text = $textValueRecord->getAttributeValue($textAttribute);
-			
+
 			if ($languageId != 0 && $text != '')
 				addDefinedMeaningTextAttributeValue($definedMeaningId, $textAttributeId, $languageId, $text);
 		}
 	}
-	
+
 	public function remove($keyPath) {
 		global
 			$definedMeaningIdAttribute, $textAttributeAttribute, $textValueIdAttribute;
@@ -1011,10 +1013,10 @@ class DefinedMeaningTextAttributeValuesController {
 		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
 		$attributeId = $keyPath->peek(0)->getAttributeValue($textAttributeAttribute);
 		$textId = $keyPath->peek(0)->getAttributeValue($textValueIdAttribute);
-				
+
 		removeDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $textId);
 	}
-	
+
 	public function update($keyPath, $record) {
 	}
 }
@@ -1031,17 +1033,17 @@ class DefinedMeaningTextAttributeValueController implements Controller {
 		if ($languageId != 0 && $text != "")
 			addTranslatedTextIfNotPresent($textId, $languageId, $text);
 	}
-	
+
 	public function remove($keyPath) {
 		global
 			$textValueIdAttribute, $languageAttribute;
-		
+
 		$textId = $keyPath->peek(1)->getAttributeValue($textValueIdAttribute);
 		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
-		
+
 		removeTranslatedText($textId, $languageId);
 	}
-	
+
 	public function update($keyPath, $record) {
 		global
 			$textValueIdAttribute, $languageAttribute, $textAttribute;

@@ -31,15 +31,15 @@ function updateSuggestions(suggestPrefix) {
 	var http = getHTTPObject();
 	var table = document.getElementById(suggestPrefix + "table");
 	var suggestQuery = document.getElementById(suggestPrefix + "query").value;
-		
+
 	suggestText = document.getElementById(suggestPrefix + "text");
 	suggestText.className = "suggest-loading";
-	
+
 	http.open('GET', 'extensions/Wikidata/WiktionaryZ/SpecialSuggest.php?search=' + encodeURI(suggestText.value) + '&prefix=' + encodeURI(suggestPrefix) + '&query=' + encodeURI(suggestQuery), true);
 	http.onreadystatechange = function() {
 		if (http.readyState == 4) {
 			var newTable = document.createElement('div');
-	
+
 			if (http.responseText != '') {
 				newTable.innerHTML = http.responseText;
 				table.parentNode.replaceChild(newTable.firstChild, table);
@@ -48,7 +48,7 @@ function updateSuggestions(suggestPrefix) {
 			suggestText.className = "";
 		}
 	};
-		
+
 	http.send(null);
 }
 
@@ -67,10 +67,10 @@ function suggestTextChanged(suggestText) {
 
 function stopEventHandling(event) {
 	event.cancelBubble = true;
-	
+
 	if (event.stopPropagation)
 		event.stopPropagation();
-	
+
 	if (event.preventDefault)
 		event.preventDefault();
 	else
@@ -85,7 +85,7 @@ function suggestLinkClicked(event, suggestLink) {
 	var suggestField = document.getElementById(suggestPrefix + "text");
 	suggestDiv.style.display = 'block';
 	suggestField.focus();
-	
+
 	updateSuggestions(suggestPrefix);
 	stopEventHandling(event);
 }
@@ -95,9 +95,9 @@ function updateSuggestValue(suggestPrefix, value, displayValue) {
 	var suggestValue = document.getElementById(suggestPrefix + "value");
 	var suggestDiv = document.getElementById(suggestPrefix + "div");
 	var suggestField = document.getElementById(stripSuffix(suggestPrefix, "-suggest-"));
-	
+
 	suggestField.value = value;
-	
+
 	suggestLink.innerHTML = displayValue;
 	suggestDiv.style.display = 'none';
 	suggestLink.focus();
@@ -133,7 +133,7 @@ function enableChildNodes(node, enabled) {
 	if (enabled)
 		var disabled = "";
 	else
-		var disabled = "disabled";	
+		var disabled = "disabled";
 
 	childNodes = node.getElementsByTagName('select');
 
@@ -143,45 +143,149 @@ function enableChildNodes(node, enabled) {
 
 function removeClicked(checkBox) {
 	var container = checkBox.parentNode.parentNode;
-	
-	if (checkBox.checked) 
+
+	if (checkBox.checked)
 		container.className = "to-be-removed";
 	else
 		container.className = "";
-		
+
 	//enableChildNodes(container, !checkBox.checked);
 }
 
 function isFormElement(node) {
 	var name = node.nodeName.toLowerCase();
-	
+
 	return name == 'select' || name == 'option' || name == 'input' || name == 'textarea' || name == 'button';
+}
+
+function getExpansionElementTypes() {
+	var cookies = document.cookie.split(';');
+	for(var i=0;i < cookies.length;i++) {
+		var cookie = cookies[i];
+		while(cookie.charAt(0)==' ')
+			cookie = cookie.substring(1,cookie.length);
+		if(cookie.indexOf("expanded=") == 0) {
+			var expansionElementTypesStr = cookie.substring(9,cookie.length);
+			var elementTypes = expansionElementTypesStr.split('|');
+			if(elementTypes[0] == "")
+				elementTypes.splice(0,1);
+			return elementTypes;
+		}
+	}
+	return new Array();
+}
+
+function clearExpanded(elementType) {
+	var expansionElementTypes = getExpansionElementTypes();
+	for(var i=0;i<expansionElementTypes.length;i++)
+		if(expansionElementTypes[i]==elementType) {
+			expansionElementTypes.splice(i,1);
+			document.cookie = "expanded=" + expansionElementTypes.join("|");
+			break;
+		}
+}
+
+function setExpanded(elementType) {
+	var expansionElementTypes = getExpansionElementTypes();
+	// Ensure the element type isn't yet set to expand.
+	// This could be more efficient by avoiding the clear/rewrite.
+	clearExpanded(elementType);
+	expansionElementTypes[expansionElementTypes.length] = elementType;
+	document.cookie = "expanded=" + expansionElementTypes.join("|");
+}
+
+function getCollapsableId(elementName) {
+	return 'collapsable-' + elementName;
+}
+
+function getNameOf(element) {
+	if(element.id)
+		return element.id.substr(9, element.id.length - 9);
+	else
+		return "";
+}
+
+function getTypeOf(element) {
+	return getNameOf(element).replace(/\d+/g, "0");
 }
 
 function toggle(element, event) {
 	var source = event.target;
-	
+
 	if (!source)
 		source = event.srcElement;
-	
+
 	if (!isFormElement(source)) {
-		var elementName = element.id.substr(9, element.id.length - 9);
-		var collapsableNode = document.getElementById('collapsable-' + elementName);
-		
-		if (collapsableNode.style.display == 'none') {
-			collapsableNode.style.display = 'block';
-			//var newChar = '&ndash;';
-			var newChar = '\u2013';
+		var elementName = getNameOf(element);
+		var collapsableNode = document.getElementById(getCollapsableId(elementName));
+
+		if (isCssClassExpanded(getTypeOf(element))) {
+			clearExpanded(getTypeOf(element));
+			expandCssClass(getTypeOf(element), false);
+			expandCssClass(element.id.substr(11, element.id.length - 11).replace(/\d+/g, "0"), false);
 		}
 		else {
-			collapsableNode.style.display = 'none';
-			var newChar = '+';
+			setExpanded(getTypeOf(element));
+			expandCssClass(getTypeOf(element), true);
+			expandCssClass(element.id.substr(11, element.id.length - 11).replace(/\d+/g, "0"), true);
 		}
-		
-		var textNode = element.childNodes[0];
-		var text = textNode.nodeValue;
 
-		textNode.nodeValue = newChar +  text.substr(1, text.length - 1);
 		stopEventHandling(event);
 	}
+}
+
+function show(element) {
+	var elementName = getNameOf(element);
+	var collapsableNode = document.getElementById(getCollapsableId(elementName));
+
+	collapsableNode.style.display = 'inline';
+}
+
+function shouldExpand(element) {
+	var candidateElementType = getTypeOf(element);
+	var expansionElementTypes = getExpansionElementTypes();
+	for(var i=0; i<expansionElementTypes.length; i++)
+		if(expansionElementTypes[i] == candidateElementType)
+			return true;
+
+	return false;
+}
+
+function expandEditors(event) {
+	var expansionElementTypes = getExpansionElementTypes();
+	for(var i=0; i<expansionElementTypes.length; i++)
+		expandCssClass(expansionElementTypes[i], true);
+}
+
+function expandCssClass(cssClass, isExpanded) {
+	var rulesKey;
+	if (document.all)
+		rulesKey = 'rules';
+	else
+		rulesKey = 'cssRules';
+
+	for(var sheet=0; sheet<document.styleSheets.length; sheet++)
+		for(var rule=0; rule<document.styleSheets[sheet][rulesKey].length; rule++) {
+			if(document.styleSheets[sheet][rulesKey][rule].selectorText == '.expand-'+cssClass)
+				document.styleSheets[sheet][rulesKey][rule].style['display'] = (isExpanded?'inline':'none');
+			else if(document.styleSheets[sheet][rulesKey][rule].selectorText == '.collapse-'+cssClass)
+				document.styleSheets[sheet][rulesKey][rule].style['display'] = (isExpanded?'none':'inline');
+		}
+}
+
+function isCssClassExpanded(cssClass) {
+	var rulesKey;
+	if (document.all)
+		rulesKey = 'rules';
+	else
+		rulesKey = 'cssRules';
+
+	for(var sheet=0; sheet<document.styleSheets.length; sheet++) {
+		for(var rule=0; rule<document.styleSheets[sheet][rulesKey].length; rule++) {
+			if(document.styleSheets[sheet][rulesKey][rule].selectorText == '.expand-' + cssClass)
+				return document.styleSheets[sheet][rulesKey][rule].style['display'] == 'inline';
+		}
+	}
+
+	return false;
 }

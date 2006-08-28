@@ -2,7 +2,7 @@
 
 /* Copyright (C) 2006 by Charta Software
  *   http://www.charta.org/
- */ 
+ */
 
 require_once("HTMLtable.php");
 
@@ -10,54 +10,58 @@ class IdStack {
 	protected $keyStack;
 	protected $idStack = array();
 	protected $currentId;
-	
+
 	public function __construct($prefix) {
 	 	$this->keyStack = new RecordStack();
 	 	$this->currentId = $prefix;
 	}
-	
+
 	protected function getKeyIds($record) {
 		$ids = array();
-	
+
 		foreach($record->getStructure()->attributes as $attribute)
 			$ids[] = $record->getAttributeValue($attribute);
-		
+
 		return $ids;
 	}
-	
+
 	protected function pushId($id) {
 		$this->idStack[] = $this->currentId;
 		$this->currentId .= '-' . $id;
 	}
-	
+
 	protected function popId() {
 		$this->currentId = array_pop($this->idStack);
 	}
-	
+
 	public function pushKey($record) {
 		$this->keyStack->push($record);
 		$this->pushId(implode("-", $this->getKeyIds($record)));
 	}
-	
+
 	public function pushAttribute($attribute) {
 		$this->pushId($attribute->id);
 	}
-	
+
 	public function popKey() {
 		$this->popId();
 		return $this->keyStack->pop();
 	}
-	
+
 	public function popAttribute() {
 		$this->popId();
 	}
-	
+
 	public function getId() {
 		return $this->currentId;
 	}
-	
+
 	public function getKeyStack() {
 		return $this->keyStack;
+	}
+
+	public function getElementType() {
+		return preg_replace("/\\d+/", "0", $this->getId());
 	}
 }
 
@@ -93,7 +97,7 @@ interface Editor {
 	public function getAttribute();
 	public function getUpdateAttribute();
 	public function getAddAttribute();
-	
+
 	public function view($idPath, $value);
 	public function edit($idPath, $value);
 	public function add($idPath);
@@ -101,7 +105,7 @@ interface Editor {
 
 	public function getUpdateValue($idPath);
 	public function getAddValue($idPath);
-	
+
 	public function getEditors();
 }
 
@@ -122,13 +126,40 @@ abstract class DefaultEditor implements Editor {
 	public function addEditor($editor) {
 		$this->editors[] = $editor;
 	}
-	
+
 	public function getAttribute() {
 		return $this->attribute;
 	}
-	
+
 	public function getEditors() {
 		return $this->editors;
+	}
+
+	public function getExpansionPrefix($elementType) {
+		return '<span class="collapse-' . $elementType . '">+</span><span class="expand-' . $elementType . '">&ndash;</span>';
+	}
+
+	static private $staticExpansionStyles = array();
+
+	protected function setExpansion($expand, $elementType) {
+		$expansionStyles =& DefaultEditor::$staticExpansionStyles;
+		if ($expand) {
+			$expansionStyles[".collapse-" . $elementType] = "display:none;";
+			$expansionStyles[".expand-" . $elementType] = "display:inline;";
+		} else {
+			$expansionStyles[".collapse-" . $elementType] = "display:inline;";
+			$expansionStyles[".expand-" . $elementType] = "display:none;";
+		}
+	}
+
+	public static function getExpansionCss() {
+		$s = "<style type='text/css'>\n";
+		$s .= "/*/*/ /*<![CDATA[*/\n"; # <-- Hide the styles from Netscape 4 without hiding them from IE/Mac
+		foreach(DefaultEditor::$staticExpansionStyles as $expansionStyleName => $expansionStyleValue)
+			$s .= $expansionStyleName . " {" . $expansionStyleValue . "}\n";
+		$s .= "/*]]>*/ /* */\n";
+		$s .= "</style>\n";
+		return $s;
 	}
 }
 
@@ -140,21 +171,21 @@ abstract class Viewer extends DefaultEditor {
 	public function getAddAttribute() {
 		return null;
 	}
-	
+
 	public function edit($idPath, $value) {
-		return $this->view($idPath, $value);	
+		return $this->view($idPath, $value);
 	}
-	
+
 	public function add($idPath) {
 	}
-	
+
 	public function save($idPath, $value) {
 	}
 
 	public function getUpdateValue($idPath) {
 		return null;
 	}
-	
+
 	public function getAddValue($idPath) {
 		return null;
 	}
@@ -165,38 +196,38 @@ abstract class RecordSetEditor extends DefaultEditor {
 	protected $allowAdd;
 	protected $allowRemove;
 	protected $isAddField;
-	protected $controller;	
-	
+	protected $controller;
+
 	public function __construct($attribute, $permissionController, $allowAdd, $allowRemove, $isAddField, $controller) {
 		parent::__construct($attribute);
-		
+
 		$this->permissionController = $permissionController;
 		$this->allowAdd = $allowAdd;
 		$this->allowRemove = $allowRemove;
 		$this->isAddField = $isAddField;
 		$this->controller = $controller;
 	}
-	
+
 	public function getAddValue($idPath) {
 		$addStructure = $this->getAddStructure();
-		
+
 		if (count($addStructure->attributes) > 0) {
 			$relation = new ArrayRecordSet($addStructure, $addStructure);  // TODO Determine real key
 			$values = array();
-			
-			foreach($this->editors as $editor) 
-				if ($attribute = $editor->getAddAttribute()) { 
+
+			foreach($this->editors as $editor)
+				if ($attribute = $editor->getAddAttribute()) {
 					$idPath->pushAttribute($attribute);
 					$values[] = $editor->getAddValue($idPath);
 					$idPath->popAttribute();
 				}
-				
-			$relation->addRecord($values);	
-						 
+
+			$relation->addRecord($values);
+
 			return $relation;
 		}
 		else
-			return null;	
+			return null;
 	}
 
 	protected function saveRecord($idPath, $record) {
@@ -208,199 +239,199 @@ abstract class RecordSetEditor extends DefaultEditor {
 			$idPath->popAttribute();
 		}
 	}
-	
+
 	protected function updateRecord($idPath, $record, $structure, $editors) {
 		if (count($editors) > 0) {
 			$updateRecord = $this->getUpdateRecord($idPath, $structure, $editors);
-			
-			if (!equalRecords($structure, $record, $updateRecord))		
+
+			if (!equalRecords($structure, $record, $updateRecord))
 				$this->controller->update($idPath->getKeyStack(), $updateRecord);
 		}
 	}
-	
+
 	protected function removeRecord($idPath) {
 		global
 			$wgRequest;
-		
-		if ($wgRequest->getCheck('remove-'. $idPath->getId())) {	
+
+		if ($wgRequest->getCheck('remove-'. $idPath->getId())) {
 			$this->controller->remove($idPath->getKeyStack());
 			return true;
 		}
-		else 
+		else
 			return false;
 	}
 
 	public function getStructure() {
 		$attributes = array();
-		
-		foreach($this->editors as $editor) 
+
+		foreach($this->editors as $editor)
 			$attributes[] = $editor->getAttribute();
-			
+
 		return new Structure($attributes);
 	}
-	
+
 	public function getUpdateValue($idPath) {
 		return null;
 	}
 
 	protected function getUpdateStructure() {
 		$attributes = array();
-		
-		foreach($this->editors as $editor) 
+
+		foreach($this->editors as $editor)
 			if ($updateAttribute = $editor->getUpdateAttribute())
 				$attributes[] = $updateAttribute;
-			
+
 		return new Structure($attributes);
 	}
-	
+
 	protected function getAddStructure() {
 		$attributes = array();
 
 		foreach($this->editors as $editor)
 			if ($addAttribute = $editor->getAddAttribute())
 				$attributes[] = $addAttribute;
-			
+
 		return new Structure($attributes);
 	}
-	
+
 	protected function getUpdateEditors() {
 		$updateEditors = array();
-		
+
 		foreach($this->editors as $editor)
 			if ($editor->getUpdateAttribute())
 				$updateEditors[] = $editor;
-			
+
 		return $updateEditors;
 	}
-	
+
 	protected function getAddEditors() {
 		$addEditors = array();
-		
+
 		foreach($this->editors as $editor)
 			if ($editor->getAddAttribute())
 				$addEditors[] = $editor;
-			
+
 		return $addEditors;
 	}
-	
+
 	public function getAddRecord($idPath, $structure, $editors) {
 		$result = new ArrayRecord($structure);
-		
-		foreach($editors as $editor) 
+
+		foreach($editors as $editor)
 			if ($attribute = $editor->getAddAttribute()) {
 				$idPath->pushAttribute($attribute);
 				$result->setAttributeValue($attribute, $editor->getAddValue($idPath));
 				$idPath->popAttribute();
 			}
-		
+
 		return $result;
 	}
-	
+
 	public function getUpdateRecord($idPath, $structure, $editors) {
 		$result = new ArrayRecord($structure);
-		
-		foreach($editors as $editor) 
+
+		foreach($editors as $editor)
 			if ($attribute = $editor->getUpdateAttribute()) {
 				$idPath->pushAttribute($attribute);
 				$result->setAttributeValue($attribute, $editor->getUpdateValue($idPath));
 				$idPath->popAttribute();
 			}
-		
+
 		return $result;
 	}
-	
+
 	public function save($idPath, $value) {
 		if ($this->allowAdd && $this->controller != null) {
 			$addStructure = $this->getAddStructure();
-			
+
 			if (count($addStructure->attributes) > 0) {
 				$addEditors = $this->getAddEditors();
 				$record = $this->getAddRecord($idPath, $addStructure, $addEditors);
 				$this->controller->add($idPath->getKeyStack(), $record);
 			}
 		}
-		
+
 		$recordCount = $value->getRecordCount();
 		$key = $value->getKey();
 		$updateStructure = $this->getUpdateStructure();
 		$updateEditors = $this->getUpdateEditors();
-		
+
 		for ($i = 0; $i < $recordCount; $i++) {
 			$record = $value->getRecord($i);
 			$idPath->pushKey(project($record, $key));
-			
+
 			if (!$this->allowRemove || !$this->removeRecord($idPath)) {
 				$this->saveRecord($idPath, $record);
 				$this->updateRecord($idPath, $record, $updateStructure, $updateEditors);
 			}
-			
+
 			$idPath->popKey();
 		}
 	}
-	
+
 	public function getUpdateAttribute() {
-		return null;	
+		return null;
 	}
-	
+
 	public function getAddAttribute() {
 		$result = null;
-		
+
 		if ($this->isAddField) {
 			$addStructure = $this->getAddStructure();
-			
+
 			if (count($addStructure->attributes) > 0)
 				$result = new Attribute($this->attribute->id, $this->attribute->name, new RecordSetType($addStructure));
 		}
-		
-		return $result;	
+
+		return $result;
 	}
 }
 
 class RecordSetTableEditor extends RecordSetEditor {
 	public function view($idPath, $value) {
-		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';	
+		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
 		$structure = $value->getStructure();
 		$key = $value->getKey();
-		
+
 		foreach(getStructureAsTableHeaderRows($this->getTableStructure($this)) as $headerRow)
 			$result .= '<tr>' . $headerRow . '</tr>';
-		
+
 		$recordCount = $value->getRecordCount();
-		
+
 		for($i = 0; $i < $recordCount; $i++) {
 			$record = $value->getRecord($i);
 			$idPath->pushKey(project($record, $key));
 			$result .= '<tr id="'. $idPath->getId() .'">' . getRecordAsTableCells($idPath, $this, $record) .'</tr>';
 			$idPath->popKey();
 		}
-		
+
 		$result .= '</table>';
-	
+
 		return $result;
 	}
-	
+
 	public function edit($idPath, $value) {
-		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';	
+		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
 		$key = $value->getKey();
-		
+
 		$headerRows = getStructureAsTableHeaderRows($this->getStructure());
-	
-		if ($this->allowRemove) 
+
+		if ($this->allowRemove)
 			$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="skins/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>' . $headerRows[0];
-			
-		if ($this->repeatInput)		
+
+		if ($this->repeatInput)
 			$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
-			
+
 		foreach ($headerRows as $headerRow)
 			$result .= '<tr>' . $headerRow . '</tr>';
-		
+
 		$recordCount = $value->getRecordCount();
-		
+
 		for ($i = 0; $i < $recordCount; $i++) {
 			$result .= '<tr>';
 			$record = $value->getRecord($i);
 			$idPath->pushKey(project($record, $key));
-			
+
 			if ($this->allowRemove) {
 				$result .= '<td class="remove">';
 				
@@ -411,79 +442,79 @@ class RecordSetTableEditor extends RecordSetEditor {
 			}
 			
 			if ($this->permissionController->allowUpdateOfValue($idPath, $record))
-				$result .= getRecordAsEditTableCells($record, $idPath, $this);
+			$result .= getRecordAsEditTableCells($record, $idPath, $this);
 			else
 				$result .= getRecordAsTableCells($idPath, $this, $record);
 			
-			$idPath->popKey();		
-			
+			$idPath->popKey();
+
 			if ($this->repeatInput)
 				$result .= '<td/>';
-			
+
 			$result .= '</tr>';
 		}
-		
-		if ($this->allowAdd) 
+
+		if ($this->allowAdd)
 			$result .= $this->getAddRowAsHTML($idPath, $this->repeatInput, $this->allowRemove);
-		
+
 		$result .= '</table>';
-	
+
 		return $result;
 	}
-	
+
 	public function add($idPath) {
 		if ($this->isAddField) {
-			$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';	
+			$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
 			$headerRows = getStructureAsTableHeaderRows($this->getAddStructure());
-		
-	//		if ($repeatInput)		
+
+	//		if ($repeatInput)
 	//			$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
-				
+
 			foreach ($headerRows as $headerRow)
 				$result .= '<tr>' . $headerRow . '</tr>';
-			
+
 			$result .= $this->getAddRowAsHTML($idPath, false, false);
 			$result .= '</table>';
-	
+
 			return $result;
 		}
-		else 
+		else
 			return "";
 	}
-	
+
 	function getAddRowAsHTML($idPath, $repeatInput, $allowRemove) {
 		if ($repeatInput)
 			$rowClass = 'repeat';
-		else 
+		else
 			$rowClass = '';
-			
+
 		$result = '<tr id="add-'. $idPath->getId() . '" class="' . $rowClass . '">';
-		
+
 		if ($allowRemove)
 			$result .= '<td class="add"><img src="extensions/Wikidata/Images/Add.png" title="Enter new rows to add" alt="Add"/></td>';
-		
+
 		$result .= getStructureAsAddCells($idPath, $this);
-					
+
 		if ($repeatInput)
 			$result .= '<td class="input-rows"/>';
-			
-		return $result . '</tr>'; 
+
+		return $result . '</tr>';
 	}
-	
+
 	public function getTableStructure($editor) {
 		$attributes = array();
-		
-		foreach($editor->getEditors() as $childEditor) { 
+
+		foreach($editor->getEditors() as $childEditor) {
 			$childAttribute = $childEditor->getAttribute();
-			
+
 			if (is_a($childEditor, RecordTableCellEditor))
 				$type = new RecordType($this->getTableStructure($childEditor));
 			else
 				$type = 'short-text';
-				
+
 			$attributes[] = new Attribute($childAttribute->id, $childAttribute->name, $type);;
 		}
-			
+
 		return new Structure($attributes);
 	}
 }
@@ -491,72 +522,72 @@ class RecordSetTableEditor extends RecordSetEditor {
 abstract class RecordEditor extends DefaultEditor {
 	protected function getUpdateStructure() {
 		$attributes = array();
-		
+
 		foreach($this->editors as $editor)
 			if ($updateAttribute = $editor->getUpdateAttribute())
 				$attributes[] = $updateAttribute;
-		
+
 		return new Structure($attributes);
 	}
-	
+
 	protected function getAddStructure() {
 		$attributes = array();
-		
+
 		foreach($this->editors as $editor)
 			if ($addAttribute = $editor->getAddAttribute())
 				$attributes[] = $addAttribute;
-		
+
 		return new Structure($attributes);
 	}
-	
+
 	public function getUpdateValue($idPath) {
 		$result = new ArrayRecord($this->getUpdateStructure());
-		
-		foreach($this->editors as $editor) 
-			if ($attribute = $editor->getUpdateAttribute()) { 
+
+		foreach($this->editors as $editor)
+			if ($attribute = $editor->getUpdateAttribute()) {
 				$idPath->pushAttribute($attribute);
 				$result->setAttributeValue($attribute, $editor->getUpdateValue($idPath));
 				$idPath->popAttribute();
 			}
-		
+
 		return $result;
 	}
-	
+
 	public function getAddValue($idPath) {
 		$result = new ArrayRecord($this->getAddStructure());
-		
-		foreach($this->editors as $editor) 
-			if ($attribute = $editor->getAddAttribute()) { 
+
+		foreach($this->editors as $editor)
+			if ($attribute = $editor->getAddAttribute()) {
 				$idPath->pushAttribute($attribute);
 				$result->setAttributeValue($attribute, $editor->getAddValue($idPath));
 				$idPath->popAttribute();
 			}
-		
+
 		return $result;
 	}
-	
+
 	public function getUpdateAttribute() {
 		$updateStructure = $this->getUpdateStructure();
-		
+
 		if (count($updateStructure->attributes) > 0)
 			return new Attribute($this->attribute->id, $this->attribute->name, new RecordType($updateStructure));
 		else
-			return null;	
+			return null;
 	}
-	
+
 	public function getAddAttribute() {
 		$addStructure = $this->getAddStructure();
-		
+
 		if (count($addStructure->attributes) > 0)
 			return new Attribute($this->attribute->id, $this->attribute->name, new RecordType($addStructure));
 		else
-			return null;	
+			return null;
 	}
-	
+
 	public function save($idPath, $value) {
 		foreach($this->editors as $editor) {
 			$attribute = $editor->getAttribute();
-			$idPath->pushAttribute($attribute);			
+			$idPath->pushAttribute($attribute);
 			$editor->save($idPath, $value->getAttributeValue($attribute));
 			$idPath->popAttribute();
 		}
@@ -572,7 +603,7 @@ class RecordTableCellEditor extends RecordEditor {
 
 	public function add($idPath) {
 	}
-	
+
 	public function save($idPath, $value) {
 	}
 }
@@ -580,22 +611,22 @@ class RecordTableCellEditor extends RecordEditor {
 abstract class ScalarEditor extends DefaultEditor {
 	protected $permissionController;
 	protected $isAddField;
-	
+
 	public function __construct($attribute, $permissionController, $isAddField) {
 		parent::__construct($attribute);
-		
+
 		$this->permissionController = $permissionController;
 		$this->isAddField = $isAddField;
 	}
-	
+
 	protected function addId($id) {
 		return "add-" . $id;
-	}	
-	
+	}
+
 	protected function updateId($id) {
 		return "update-" . $id;
 	}
-	
+
 	public function save($idPath, $value) {
 	}
 
@@ -603,32 +634,32 @@ abstract class ScalarEditor extends DefaultEditor {
 		if ($this->permissionController->allowUpdateOfAttribute($this->attribute))
 			return $this->attribute;
 		else
-			return null;	
+			return null;
 	}
-	
+
 	public function getAddAttribute() {
 		if ($this->isAddField)
 			return $this->attribute;
 		else
-			return null;	
+			return null;
 	}
-	
+
 	public abstract function getViewHTML($idPath, $value);
 	public abstract function getEditHTML($idPath, $value);
 	public abstract function getInputValue($id);
-	
+
 	public function getUpdateValue($idPath) {
 		return $this->getInputValue("update-" . $idPath->getId());
 	}
-	
+
 	public function getAddValue($idPath) {
 		return $this->getInputValue("add-" . $idPath->getId());
 	}
-	
+
 	public function view($idPath, $value) {
 		return $this->getViewHTML($idPath, $value);
 	}
-	
+
 	public function edit($idPath, $value) {
 		if ($this->permissionController->allowUpdateOfValue($idPath, $value))
 			return $this->getEditHTML($idPath, $value);
@@ -639,9 +670,9 @@ abstract class ScalarEditor extends DefaultEditor {
 
 class LanguageEditor extends ScalarEditor {
 	public function getViewHTML($idPath, $value) {
-		return languageIdAsText($value);
+			return languageIdAsText($value);
 	}
-	
+
 	public function getEditHTML($idPath, $value) {
 		return getSuggest($this->updateId($idPath->getId()), "language");
 	}
@@ -649,11 +680,11 @@ class LanguageEditor extends ScalarEditor {
 	public function add($idPath) {
 		return getSuggest($this->addId($idPath->getId()), "language");
 	}
-	
+
 	public function getInputValue($id) {
 		global
 			$wgRequest;
-			
+
 		return $wgRequest->getInt($id);
 	}
 }
@@ -662,11 +693,11 @@ class SpellingEditor extends ScalarEditor {
 	public function getViewHTML($idPath, $value) {
 		return spellingAsLink($value);
 	}
-	
+
 	public function getEditHTML($idPath, $value) {
-		return getTextBox($this->updateId($idPath->getId()));
+			return getTextBox($this->updateId($idPath->getId()));
 	}
-	
+
 	public function add($idPath) {
 		if ($this->isAddField)
 			return getTextBox($this->addId($idPath->getId()));
@@ -677,8 +708,8 @@ class SpellingEditor extends ScalarEditor {
 	public function getInputValue($id) {
 		global
 			$wgRequest;
-			
-		return trim($wgRequest->getText($id));		
+
+		return trim($wgRequest->getText($id));
 	}
 }
 
@@ -686,44 +717,44 @@ class TextEditor extends ScalarEditor {
 	protected $truncate;
 	protected $truncateAt;
 	protected $addText = "";
-	
+
 	public function __construct($attribute, $permissionController, $isAddField, $truncate=false, $truncateAt=0) {
 		parent::__construct($attribute, $permissionController, $isAddField);
-		
+
 		$this->truncate = $truncate;
 		$this->truncateAt = $truncateAt;
 	}
-	
+
 	public function getViewHTML($idPath, $value) {
 		$escapedValue = htmlspecialchars($value);
-		
+
 //		global $wgParser, $wgTitle, $wgOut;
 //		$parserOutput = $wgParser->parse($value, $wgTitle, $wgOut->mParserOptions, true, true, $wgOut->mRevisionId);
-		
-		if (!$this->truncate || strlen($value) < $this->truncateAt) 
+
+		if (!$this->truncate || strlen($value) < $this->truncateAt)
 			return $escapedValue;//$parserOutput->getText();
-		else 
+		else
 			return '<span title="'. $escapedValue .'">'. htmlspecialchars(substr($value, 0, $this->truncateAt)) . '...</span>';
 	}
 
 	public function getEditHTML($idPath, $value) {
-		return getTextArea($this->updateId($idPath->getId()), $value, 3);
+			return getTextArea($this->updateId($idPath->getId()), $value, 3);
 	}
-	
+
 	public function add($idPath) {
 		if ($this->isAddField)
 			return getTextArea($this->addId($idPath->getId()), "", 3);
 		else
 			return $this->addText;
 	}
-	
+
 	public function getInputValue($id) {
 		global
 			$wgRequest;
-			
-		return trim($wgRequest->getText($id));		
+
+		return trim($wgRequest->getText($id));
 	}
-	
+
 	public function setAddText($addText) {
 		$this->addText = $addText;
 	}
@@ -735,30 +766,30 @@ class ShortTextEditor extends ScalarEditor {
 	}
 
 	public function getEditHTML($idPath, $value) {
-		return getTextBox($this->updateId($idPath->getId()), $value);
+			return getTextBox($this->updateId($idPath->getId()), $value);
 	}
-	
+
 	public function add($idPath) {
 		if ($this->isAddField)
 			return getTextBox($this->addId($idPath->getId()), "");
 		else
 			return "";
 	}
-	
+
 	public function getInputValue($id) {
 		global
 			$wgRequest;
-			
-		return trim($wgRequest->getText($id));		
+
+		return trim($wgRequest->getText($id));
 	}
 }
 
 class BooleanEditor extends ScalarEditor {
 	protected $defaultValue;
-	
+
 	public function __construct($attribute, $permissionController, $isAddField, $defaultValue) {
 		parent::__construct($attribute, $permissionController, $isAddField);
-		
+
 		$this->defaultValue = $defaultValue;
 	}
 
@@ -767,21 +798,21 @@ class BooleanEditor extends ScalarEditor {
 	}
 
 	public function getEditHTML($idPath, $value) {
-		return getCheckBox($this->updateId($idPath->getId()), $value);
+			return getCheckBox($this->updateId($idPath->getId()), $value);
 	}
-	
+
 	public function add($idPath) {
 		if ($this->isAddField)
 			return getCheckBox($this->addId($idPath->getId()), $this->defaultValue);
 		else
 			return "";
 	}
-	
+
 	public function getInputValue($id) {
 		global
 			$wgRequest;
-			
-		return $wgRequest->getCheck($id);		
+
+		return $wgRequest->getCheck($id);
 	}
 }
 
@@ -792,9 +823,9 @@ abstract class SuggestEditor extends ScalarEditor {
 		else
 			return "";
 	}
-	
+
 	protected abstract function suggestType();
-	
+
 	public function getEditHTML($idPath, $value) {
 		return getSuggest($this->updateId($idPath->getId()), $this->suggestType()); 
 	}
@@ -802,8 +833,8 @@ abstract class SuggestEditor extends ScalarEditor {
 	public function getInputValue($id) {
 		global
 			$wgRequest;
-			
-		return trim($wgRequest->getText($id));		
+
+		return trim($wgRequest->getText($id));
 	}
 }
 
@@ -811,7 +842,7 @@ class RelationTypeEditor extends SuggestEditor {
 	protected function suggestType() {
 		return "relation-type";
 	}
-	
+
 	public function getViewHTML($idPath, $value) {
 		return definedMeaningAsLink($value);
 	}
@@ -821,7 +852,7 @@ class DefinedMeaningEditor extends SuggestEditor {
 	protected function suggestType() {
 		return "defined-meaning";
 	}
-	
+
 	public function getViewHTML($idPath, $value) {
 		return definedMeaningAsLink($value);
 	}
@@ -831,7 +862,7 @@ class AttributeEditor extends SuggestEditor {
 	protected function suggestType() {
 		return "attribute";
 	}
-	
+
 	public function getViewHTML($idPath, $value) {
 		return definedMeaningAsLink($value);
 	}
@@ -841,7 +872,7 @@ class CollectionEditor extends SuggestEditor {
 	protected function suggestType() {
 		return "collection";
 	}
-	
+
 	public function getViewHTML($idPath, $value) {
 		return collectionAsLink($value);
 	}
@@ -851,7 +882,7 @@ class TextAttributeEditor extends SuggestEditor {
 	protected function suggestType() {
 		return "text-attribute";
 	}
-	
+
 	public function getViewHTML($idPath, $value) {
 		return definedMeaningAsLink($value);
 	}
@@ -859,98 +890,85 @@ class TextAttributeEditor extends SuggestEditor {
 
 class RecordListEditor extends RecordEditor {
 	protected $expandedEditors = array();
-	
+
 	public function view($idPath, $value) {
 		$result = '<ul class="collapsable-items">';
-		
+
 		foreach ($this->editors as $editor) {
 			$attribute = $editor->getAttribute();
-	
-			if (!in_array($editor, $this->expandedEditors)) {
-				$style = ' style="display: none;"';
-				$character = '+';
-			}
-			else {
-				$style = '';
-				$character = '&ndash;';
-			}
-			
 			$idPath->pushAttribute($attribute);
+			$elementType = $idPath->getElementType();
+			$expansionPrefix = $this->getExpansionPrefix($elementType);
+			$this->setExpansionByEditor($editor, $elementType);
 			$attributeId = $idPath->getId();
 			$result .= '<li>'.
-						'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $attribute->name . '</h4>' .
-						'<div id="collapsable-'. $attributeId . '"'. $style .'>' . $editor->view($idPath, $value->getAttributeValue($attribute)) . '</div>' .
+						'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</h4>' .
+						'<div id="collapsable-'. $attributeId . '" class="expand-' . $elementType . '">' . $editor->view($idPath, $value->getAttributeValue($attribute)) . '</div>' .
 						'</li>';
 			$idPath->popAttribute();
 		}
-		
+
 		$result .= '</ul>';
-		
+
 		return $result;
 	}
-	
+
 	public function edit($idPath, $value) {
 		$result = '<ul class="collapsable-items">';
-		
+
 		foreach ($this->editors as $editor) {
 			$attribute = $editor->getAttribute();
-	
-			if (!in_array($editor, $this->expandedEditors)) {
-				$style = ' style="display: none;"';
-				$character = '+';
-			}
-			else {
-				$style = '';
-				$character = '&ndash;';
-			}
-			
+
 			$idPath->pushAttribute($attribute);
+			$elementType = $idPath->getElementType();
+			$this->setExpansionByEditor($editor, $elementType);
+			$expansionPrefix = $this->getExpansionPrefix($elementType);
 			$attributeId = $idPath->getId();
+
 			$result .= '<li>'.
-						'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $attribute->name . '</h4>' .
-						'<div id="collapsable-'. $attributeId . '"'. $style .'>' . $editor->edit($idPath, $value->getAttributeValue($attribute)) . '</div>' .
+						'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</h4>' .
+						'<div id="collapsable-'. $attributeId . '" class="expand-' . $elementType . '">' . $editor->edit($idPath, $value->getAttributeValue($attribute)) . '</div>' .
 						'</li>';
 			$idPath->popAttribute();
 		}
-		
+
 		$result .= '</ul>';
-		
+
 		return $result;
 	}
-	
+
 	public function add($idPath) {
 		$result = '<ul class="collapsable-items">';
-		
+
 		foreach($this->editors as $editor) {
 			if ($attribute = $editor->getAddAttribute()) {
-				if (!in_array($editor, $this->expandedEditors)) {
-					$style = ' style="display: none;"';
-					$character = '+';
-				}
-				else {
-					$style = '';
-					$character = '&ndash;';
-				}
-
 				$attribute = $editor->getAttribute();
-				$idPath->pushAttribute($attribute);			
+				$idPath->pushAttribute($attribute);
+				$elementType = $idPath->getElementType();
+				$this->setExpansionByEditor($editor, $elementType);
+				$expansionPrefix = $this->getExpansionPrefix($elementType);
 				$attributeId = $idPath->getId();
+
 				$result .= '<li>'.
-							'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">'. $character  .' ' . $attribute->name . '</h4>' .
-							'<div id="collapsable-'. $attributeId . '"'. $style .'>' . $editor->add($idPath) . '</div>' .
+							'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</h4>' .
+							'<div id="collapsable-'. $attributeId . '" class="expand-' . $elementType . '">' . $editor->add($idPath) . '</div>' .
 							'</li>';
 				$editor->add($idPath);
 				$idPath->popAttribute();
 			}
 		}
-	
+
 		$result .= '</ul>';
 
 		return $result;
 	}
-	
+
 	public function expandEditor($editor) {
 		$this->expandedEditors[] = $editor;
+	}
+
+	public function setExpansionByEditor($editor, $elementType) {
+		$this->setExpansion($editor == null || in_array($editor, $this->expandedEditors), $elementType);
 	}
 }
 
@@ -962,7 +980,7 @@ class RecordSetListEditor extends RecordSetEditor {
 
 	public function __construct($attribute, $permissionController, $allowAdd, $allowRemove, $isAddField, $controller, $headerLevel, $childrenExpanded) {
 		parent::__construct($attribute, $permissionController, $allowAdd, $allowRemove, $isAddField, $controller);
-		
+
 		$this->headerLevel = $headerLevel;
 		$this->childrenExpanded = $childrenExpanded;
 	}
@@ -970,81 +988,78 @@ class RecordSetListEditor extends RecordSetEditor {
 	public function setCaptionEditor($editor) {
 		$this->captionEditor = $editor;
 		$this->editors[0] = $editor;
-	} 
+	}
 
 	public function setValueEditor($editor) {
 		$this->valueEditor = $editor;
 		$this->editors[1] = $editor;
-	} 
-	
+	}
+
 	public function view($idPath, $value) {
 		$result = '<ul class="collapsable-items">';
 		$recordCount = $value->getRecordCount();
 		$key = $value->getKey();
 		$captionAttribute = $this->captionEditor->getAttribute();
 		$valueAttribute = $this->valueEditor->getAttribute();
-				
-		if (!$this->childrenExpanded) {
-			$style = ' style="display: none;"';
-			$character = '+';
-		}
-		else {
-			$style = '';
-			$character = '&ndash;';
-		}
 
 		for ($i = 0; $i < $recordCount; $i++) {
 			$record = $value->getRecord($i);
 			$idPath->pushKey(project($record, $key));
 			$recordId = $idPath->getId();
-			
+			if($i==0) {
+				$captionElementType = $idPath->getElementType();
+				$captionExpansionPrefix = $this->getExpansionPrefix($captionElementType);
+				$this->setExpansion($this->childrenExpanded, $captionElementType);
+				$valueElementType = $idPath->getElementType();
+				$this->setExpansion($this->childrenExpanded, $valueElementType);
+			}
+
 			$idPath->pushAttribute($captionAttribute);
 			$result .= '<li>'.
-						'<h' . $this->headerLevel .' id="collapse-'. $recordId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $this->captionEditor->view($idPath, $record->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>';
+						'<h' . $this->headerLevel .' id="collapse-'. $recordId .'" class="toggle" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&nbsp;' . $this->captionEditor->view($idPath, $record->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>';
 			$idPath->popAttribute();
-			
+
 			$idPath->pushAttribute($valueAttribute);
-			$result .= '<div id="collapsable-'. $recordId . '"'. $style .'>' . $this->valueEditor->view($idPath, $record->getAttributeValue($valueAttribute)) . '</div>' .
+			$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $valueElementType . '">' . $this->valueEditor->view($idPath, $record->getAttributeValue($valueAttribute)) . '</div>' .
 						'</li>';
 			$idPath->popAttribute();
 
 			$idPath->popKey();
 		}
-		
+
 		$result .= '</ul>';
-		
+
 		return $result;
 	}
-	
+
 	public function edit($idPath, $value) {
 		$result = '<ul class="collapsable-items">';
 		$recordCount = $value->getRecordCount();
 		$key = $value->getKey();
 		$captionAttribute = $this->captionEditor->getAttribute();
 		$valueAttribute = $this->valueEditor->getAttribute();
-				
-		if (!$this->childrenExpanded) {
-			$style = ' style="display: none;"';
-			$character = '+';
-		}
-		else {
-			$style = '';
-			$character = '&ndash;';
-		}
 
 		for ($i = 0; $i < $recordCount; $i++) {
 			$record = $value->getRecord($i);
 			$idPath->pushKey(project($record, $key));
-			
+
 			$recordId = $idPath->getId();
+
+			if($i==0) {
+				$captionElementType = $idPath->getElementType();
+				$captionExpansionPrefix = $this->getExpansionPrefix($captionElementType);
+				$this->setExpansion($this->childrenExpanded, $captionElementType);
+				$valueElementType = $idPath->getElementType();
+				$this->setExpansion($this->childrenExpanded, $valueElementType);
+			}
 
 			$idPath->pushAttribute($captionAttribute);
 			$result .= '<li>'.
-						'<h' . $this->headerLevel .' id="collapse-'. $recordId .'" class="toggle" onclick="toggle(this, event);">'. $character . ' ' . $this->captionEditor->edit($idPath, $record->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>';
+						'<h' . $this->headerLevel .' id="collapse-'. $recordId .'" class="toggle" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&nbsp;' . $this->captionEditor->edit($idPath, $record->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>';
 			$idPath->popAttribute();
 
 			$idPath->pushAttribute($valueAttribute);
-			$result .= '<div id="collapsable-'. $recordId . '"'. $style .'>' . $this->valueEditor->edit($idPath, $record->getAttributeValue($valueAttribute)) . '</div>' .
+			$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $valueElementType . '">' . $this->valueEditor->edit($idPath, $record->getAttributeValue($valueAttribute)) . '</div>' .
 						'</li>';
 			$idPath->popAttribute();
 
@@ -1052,32 +1067,27 @@ class RecordSetListEditor extends RecordSetEditor {
 		}
 
 		if ($this->allowAdd) {
-			if ($recordCount > 0) {
-				$style = ' style="display: none;"';
-				$character = '+';
-			}
-			else {
-				$style = '';
-				$character = '&ndash;';
-			}
-			
 			$recordId = 'add-' . $idPath->getId();
 			$idPath->pushAttribute($captionAttribute);
+			$elementType = $idPath->getElementType();
+
+			$this->setExpansion(true, $elementType);
+
 			$result .= '<li>'.
-						'<h' . $this->headerLevel .' id="collapse-'. $recordId .'" class="toggle" onclick="toggle(this, event);">'. $character  . ' <img src="extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/> ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
+						'<h' . $this->headerLevel .' id="collapse-'. $recordId .'" class="toggle" onclick="toggle(this, event);">' . $this->getExpansionPrefix($elementType) . ' <img src="extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/> ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
 			$idPath->popAttribute();
 
 			$idPath->pushAttribute($valueAttribute);
-			$result .= '<div id="collapsable-'. $recordId . '"'. $style .'>' . $this->valueEditor->add($idPath) . '</div>' .
+			$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $elementType . '">' . $this->valueEditor->add($idPath) . '</div>' .
 						'</li>';
 			$idPath->popAttribute();
 		}
-		
+
 		$result .= '</ul>';
-		
+
 		return $result;
 	}
-	
+
 	public function add($idPath) {
 		$result = '<ul class="collapsable-items">';
 		$captionAttribute = $this->captionEditor->getAttribute();
@@ -1086,17 +1096,21 @@ class RecordSetListEditor extends RecordSetEditor {
 		$recordId = 'add-' . $idPath->getId();
 
 		$idPath->pushAttribute($captionAttribute);
+		$elementType = $idPath->getElementType();
+
+		$this->setExpansion(true, $elementType);
+
 		$result .= '<li>'.
-					'<h' . $this->headerLevel .' id="collapse-'. $recordId .'" class="toggle" onclick="toggle(this, event);">&ndash; ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
+					'<h' . $this->headerLevel .' id="collapse-'. $recordId .'" class="toggle" onclick="toggle(this, event);">' . $this->getExpansionPrefix($elementType) . '&nbsp;' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
 		$idPath->popAttribute();
 
 		$idPath->pushAttribute($valueAttribute);
-		$result .= '<div id="collapsable-'. $recordId . '">' . $this->valueEditor->add($idPath) . '</div>' .
+		$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $elementType . '">' . $this->valueEditor->add($idPath) . '</div>' .
 					'</li>';
 		$idPath->popAttribute();
 
 		$result .= '</ul>';
-		
+
 		return $result;
 	}
 }
@@ -1105,7 +1119,7 @@ class AttributeLabelViewer extends Viewer {
 	public function view($idPath, $value) {
 		return $this->attribute->name;
 	}
-	
+
 	public function add($idPath) {
 		return "New " . strtolower($this->attribute->name);
 	}
@@ -1114,34 +1128,34 @@ class AttributeLabelViewer extends Viewer {
 class RecordSpanEditor extends RecordEditor {
 	protected $attributeSeparator;
 	protected $valueSeparator;
-	
+
 	public function __construct($attribute, $valueSeparator, $attributeSeparator) {
 		parent::__construct($attribute);
 
 		$this->attributeSeparator = $attributeSeparator;
 		$this->valueSeparator = $valueSeparator;
 	}
-		
+
 	public function view($idPath, $value) {
 		$fields = array();
-		
+
 		foreach($this->editors as $editor) {
 			$attribute = $editor->getAttribute();
 			$idPath->pushAttribute($attribute);
 			$fields[] = $attribute->name . $this->valueSeparator. $editor->view($idPath, $value->getAttributeValue($attribute));
 			$idPath->popAttribute();
 		}
-		
+
 		return implode($this->attributeSeparator, $fields);
 	}
-	
+
 	public function add($idPath) {
 		$fields = array();
 
 		foreach($this->editors as $editor) {
 			if ($attribute = $editor->getAddAttribute()) {
 				$attribute = $editor->getAttribute();
-				$idPath->pushAttribute($attribute);			
+				$idPath->pushAttribute($attribute);
 				$attributeId = $idPath->getId();
 				$fields[] = $attribute->name . $this->valueSeparator. $editor->add($idPath);
 				$editor->add($idPath);
@@ -1151,20 +1165,20 @@ class RecordSpanEditor extends RecordEditor {
 
 		return implode($this->attributeSeparator, $fields);
 	}
-	
+
 	public function edit($idPath, $value) {
 		$fields = array();
-		
+
 		foreach($this->editors as $editor) {
 			$attribute = $editor->getAttribute();
 			$idPath->pushAttribute($attribute);
 			$fields[] = $attribute->name . $this->valueSeparator. $editor->view($idPath, $value->getAttributeValue($attribute));
 			$idPath->popAttribute();
 		}
-		
+
 		return implode($this->attributeSeparator, $fields);
 	}
-} 
+}
 
 class UserEditor extends ScalarEditor {
 	public function getViewHTML($idPath, $value) {
