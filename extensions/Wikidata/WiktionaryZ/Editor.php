@@ -435,7 +435,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 			if ($this->allowRemove) {
 				$result .= '<td class="remove">';
 				
-				if ($this->permissionController->allowRemovalOfValue($idPath, $value))
+				if ($this->permissionController->allowRemovalOfValue($idPath, $record))
 				 	$result .= getRemoveCheckBox('remove-'. $idPath->getId());
 				 	
 				$result .= '</td>';
