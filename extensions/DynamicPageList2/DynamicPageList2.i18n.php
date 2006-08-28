@@ -192,7 +192,6 @@ $wgDPL2Messages['nl'] = array(
 	 * $2: default param value used instead by program
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGCOUNT => "WAARSCHUWING: Verkeerde parameter '$0': '$1'! Nu wordt de standaard gebruikt: '$2' (geen limiet in aantal). Hulp: <code>$0= <i>lege string</i> (geen limiet in aantal) | n</code>, waar <code>n</code> een positief heel getal is.",
-	'dpl2_debug_' . DPL2_WARN_WRONGINLINESYMBOL => "WAARSCHUWING: Verkeerde parameter '$0': '$1' (tags ignored)! Nu wordt de standaard gebruikt: '$2'. Hulp: <code>$0= symbool</code>, waar <code>symbol</code> alles behalve niets is (tags worden genegeerd).",
 	/**
 	 * $3: list of valid param values separated by ' | '
 	*/
