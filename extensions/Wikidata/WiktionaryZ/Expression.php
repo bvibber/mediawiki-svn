@@ -173,6 +173,14 @@ function addRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
 		createRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id);
 }
 
+function addClassMembership($definedMeaningId, $classId) {
+	addRelation($definedMeaningId, 0, $classId);
+}
+
+function removeClassMembership($definedMeaningId, $classId) {
+	removeRelation($definedMeaningId, 0, $classId);
+}
+
 function removeRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
 	$dbr =& wfGetDB(DB_MASTER);
 	$dbr->query("UPDATE uw_meaning_relations SET remove_transaction_id=" . getUpdateTransactionId() .

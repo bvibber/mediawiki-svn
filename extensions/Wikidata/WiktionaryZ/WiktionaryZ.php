@@ -55,6 +55,8 @@ class WiktionaryZ {
 		$wgOut->addHTML($this->getLanguageSelector());
 		$spelling = $wgTitle->getText();
 		$wgOut->addHTML($this->getExpressionsEditor($spelling)->view(new IdStack("expression"), $this->getExpressionsRecordSet($spelling)));
+		$wgOut->addHTML(DefaultEditor::getExpansionCss());
+		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 
 		$titleArray = $wgTitle->getTitleArray();
 		$titleArray["actionprefix"] = wfMsg('wz_history');
@@ -110,8 +112,9 @@ class WiktionaryZ {
 			$alternativeDefinitionsAttribute, $alternativeDefinitionAttribute, $sourceAttribute;
 
 		$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningAlternativeDefinitionsController());
+//		$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new AlternativeDefinitionsPermissionController(), true, true, false, new DefinedMeaningAlternativeDefinitionsController());
 		$editor->addEditor($this->getTranslatedTextEditor($alternativeDefinitionAttribute, new DefinedMeaningAlternativeDefinitionController()));
-		$editor->addEditor(new DefinedMeaningEditor($sourceAttribute, false, true));
+		$editor->addEditor(new DefinedMeaningEditor($sourceAttribute, new SimplePermissionController(false), true));
 
 		return $editor;
 	}
@@ -738,7 +741,7 @@ class DefinedMeaningAlternativeDefinitionsController {
 			$text = $definitionRecord->getAttributeValue($textAttribute);
 
 			if ($languageId != 0 && $text != '')
-				addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text, NULL);
+				addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text, 0);
 		}
 	}
 
@@ -863,20 +866,20 @@ class DefinedMeaningClassMembershipController implements Controller {
 			$definedMeaningIdAttribute, $classAttribute;
 
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
-		$attributeId = $record->getAttributeValue($classAttribute);
+		$classId = $record->getAttributeValue($classAttribute);
 
-		if ($attributeId != 0)
-			addRelation($definedMeaningId, 0, $attributeId);
+		if ($classId != 0)
+			addClassMembership($definedMeaningId, $classId);
 	}
 
 	public function remove($keyPath) {
 		global
 			$definedMeaningIdAttribute, $classAttribute;
+			
+		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);	
+		$classId = $keyPath->peek(0)->getAttributeValue($classAttribute);	
 
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
-		$attributeId = $keyPath->peek(0)->getAttributeValue($classAttribute);
-
-		removeRelation($definedMeaningId, 0, $attributeId);
+		removeClassMembership($definedMeaningId, $classId);
 	}
 
 	public function update($keyPath, $record) {
@@ -1056,6 +1059,29 @@ class DefinedMeaningTextAttributeValueController implements Controller {
 
 		if ($text != "")
 			updateTranslatedText($textId, $languageId, $text);
+	}
+}
+
+class AlternativeDefinitionsPermissionController implements PermissionController {
+	public function allowUpdateOfAttribute($attribute) {
+		return true;	
+	}
+	
+	public function allowUpdateOfValue($idPath, $value) {
+		return $this->allowAnyChangeOfValue($value);
+	}
+	
+	public function allowRemovalOfValue($idPath, $value) {
+		return $this->allowAnyChangeOfValue($value);
+	}
+
+	protected function allowAnyChangeOfValue($value) {
+		global
+			$sourceAttribute;
+			
+		$source = $value->getAttributeValue($sourceAttribute);	
+			
+		return $source == null || $source == 0;
 	}
 }
 
