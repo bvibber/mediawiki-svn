@@ -105,7 +105,10 @@ function definingExpressionAsLink($definedMeaningId) {
 }
 
 function definedMeaningAsLink($definedMeaningId) {
-	return spellingAsLink(definedMeaningExpression($definedMeaningId));
+	if ($definedMeaningId > 0)
+		return spellingAsLink(definedMeaningExpression($definedMeaningId));
+	else
+		return "";
 }
 
 function collectionAsLink($collectionId) {
