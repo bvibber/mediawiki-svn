@@ -90,8 +90,6 @@ $wgDPL2Options = array(
 	'hitemattr' => array('default' => ''),
 	/**
 	 * Attributes for the HTML list element at the heading/top level, depending on 'headingmode' ('ol' for ordered, 'ul' for unordered, 'dl' for definition, 'div' for others)
-	 * Not applicable to 'mode=category'.
-	 * @todo Make 'itemattr' param applicable to 'mode=category'.
 	 * Example: hlistattr= class="topmenul" id="dmenu"
 	 */
 	'hlistattr' => array('default' => ''),
