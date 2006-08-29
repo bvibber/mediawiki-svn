@@ -108,6 +108,8 @@ $wgDPL2Options = array(
 	'itemattr' => array('default' => ''),
 	/**
 	 * Attributes for HTML list elements, depending on 'mode' ('ol' for ordered, 'ul' for unordered, 'div' for others)
+	 * Not applicable to 'mode=category'.
+	 * @todo Make 'listattr' param applicable to 'mode=category'.
 	 * Example: listattr= class="submenul" style="color: red;"
 	 */
 	'listattr' => array('default' => ''),
