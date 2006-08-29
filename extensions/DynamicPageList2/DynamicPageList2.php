@@ -19,13 +19,13 @@
  * @author w:de:Benutzer:Unendlich 
  * @author m:User:Dangerman <cyril.dangerville@gmail.com>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version 0.6
+ * @version 0.6.1
  */
 
 /*
  * Current version
  */
-define('DPL2_VERSION', '0.6');
+define('DPL2_VERSION', '0.6.1');
 
 /**
  * Register the extension with MediaWiki
