@@ -13,13 +13,15 @@ foreach( $wgBoardVoteMessages as $key => $value ) {
 class BoardVotePage extends SpecialPage {
 	var $mPosted, $mVotedFor, $mDBname, $mUserDays, $mUserEdits;
 	var $mHasVoted, $mAction, $mUserKey, $mId, $mFinished;
+	var $mDb;
 
 	function BoardVotePage() {
 		SpecialPage::SpecialPage( "Boardvote" );
 	}
 
 	function execute( $par ) {
-		global $wgUser, $wgDBname, $wgInputEncoding, $wgRequest, $wgBoardVoteDB, $wgBoardVoteEditCount;
+		global $wgUser, $wgDBname, $wgInputEncoding, $wgRequest, $wgBoardVoteDB, 
+			$wgBoardVoteEditCount, $wgBoardVoteEndDate;
 
 		$this->mUserKey = iconv( $wgInputEncoding, "UTF-8", $wgUser->getName() ) . "@$wgDBname";
 		$this->mPosted = $wgRequest->wasPosted();
@@ -41,11 +43,11 @@ class BoardVotePage extends SpecialPage {
 
 		$this->setHeaders();
 
-		//if ( time() > 1087084800 ) {
-		//	$this->mFinished = true; 
-		//} else {
+		if ( wfTimestampNow() > $wgBoardVoteEndDate ) {
+			$this->mFinished = true; 
+		} else {
 			$this->mFinished = false;
-		//}
+		}
 
 		global $wgOut;
 		$wgOut->addWikiText( wfMsg( 'boardvote_closed' ) );
@@ -64,7 +66,9 @@ class BoardVotePage extends SpecialPage {
 				$this->notLoggedIn();
 			} else {
 				$this->getQualifications( $wgUser );
-				if ( $this->mUserEdits < $wgBoardVoteEditCount ) {
+				if ( $this->mUserEdits < $wgBoardVoteEditCount || 
+					$this->mFirstEdit > $wgBoardVoteFirstEdit 
+				) {
 					$this->notQualified();
 				} elseif ( $this->mPosted ) {
 					$this->logVote();
@@ -82,9 +86,16 @@ class BoardVotePage extends SpecialPage {
 		$wgOut->addWikiText( wfMsg( "boardvote_entry" ) );
 	}
 
+	function getDB() {
+		if ( !$this->mDb ) {
+			$this->mDb = wfGetDB( DB_MASTER, 'boardvote' );
+		}
+		return $this->mDb;
+	}
+
 	function hasVoted( &$user ) {
 		global $wgDBname;
-		$dbr =& wfGetDB( DB_MASTER ); //$dbr =& wfGetDB( DB_SLAVE );
+		$dbr =& $this->getDB();
 		$row = $dbr->selectRow( "`{$this->mDBname}`.log", array( "1" ), 
 		  array( "log_user_key" => $this->mUserKey ), "BoardVotePage::getUserVote" );
 		if ( $row === false ) {
@@ -102,7 +113,7 @@ class BoardVotePage extends SpecialPage {
 		$record = $this->getRecord();
 		$encrypted = $this->encrypt( $record );
 		$gpgKey = file_get_contents( $wgGPGPubKey );
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw =& $this->getDB();
 		$log = $dbw->tableName( "`{$this->mDBname}`.log" );
 
 		# Mark previous votes as old
@@ -179,15 +190,20 @@ class BoardVotePage extends SpecialPage {
 	}
 
 	function notLoggedIn() {
-		global $wgOut, $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgLang;
+		global $wgOut, $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgLang, $wgBoardVoteFirstEdit;
 		$wgOut->addWikiText( wfMsg( "boardvote_notloggedin", $wgBoardVoteEditCount, 
-   			$wgLang->timeanddate( $wgBoardVoteCountDate ) ) );
+			$wgLang->timeanddate( $wgBoardVoteCountDate ),
+			$wgLang->timeanddate( $wgBoardVoteFirstEdit )
+	   	) );
 	}
 	
 	function notQualified() {
-		global $wgOut, $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgLang;
+		global $wgOut, $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgLang, $wgBoardVoteFirstEdit;
 		$wgOut->addWikiText( wfMsg( "boardvote_notqualified", $this->mUserEdits, 
-   			$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteEditCount ) );
+			$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteEditCount,
+			$wgLang->timeanddate( $this->mFirstEdit ), 
+			$wgLang->timeanddate( $wgBoardVoteFirstEdit )
+		) );
 	}
 	
 	function getRecord() {
@@ -243,8 +259,9 @@ class BoardVotePage extends SpecialPage {
 
 	function getQualifications( &$user ) {
 		global $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgVersion;
-		
-		$dbr =& wfGetDB( DB_MASTER ); //$dbr =& wfGetDB( DB_SLAVE );
+
+		// Use the local database, not the boardvote database
+		$dbr =& wfGetDB( DB_SLAVE );
 
 		# Count contributions before $wgBoardVoteCountDate
 		
@@ -255,40 +272,12 @@ class BoardVotePage extends SpecialPage {
 		}
 		$date = $dbr->addQuotes( $wgBoardVoteCountDate );
 
-		if ( version_compare( $wgVersion, '1.5alpha1' ) >= 0 ) {
-			# New schema
-			extract( $dbr->tableNames( 'revision' ) );
-			$sql = "SELECT COUNT(*) as n FROM $revision WHERE rev_timestamp<=$date AND rev_user=$id";
-			$res = $dbr->query( $sql, "BoardVotePage::getQualifications" );
-			$row = $dbr->fetchObject( $res );
-			$this->mUserEdits = $row->n;
-		} else {
-			# Old schema
-			extract( $dbr->tableNames( 'cur', 'old' ) );
-			$etad = $dbr->addQuotes( wfInvertTimestamp( $wgBoardVoteCountDate ) );
-			
-			# First cur
-			#$sql = "SELECT COUNT(*) as n FROM $cur WHERE cur_timestamp<=$date AND cur_user=$id";
-			$sql = "SELECT COUNT(*) as n FROM $cur WHERE inverse_timestamp>=$etad AND cur_user=$id";
-			$res = $dbr->query( $sql, "BoardVotePage::getQualifications" );
-			$cur = $dbr->fetchObject( $res );
-			$dbr->freeResult( $res );
-
-			# If the user has stacks of contributions, don't check old as well			
-			if ( $cur->n > $wgBoardVoteEditCount * 2 ) {
-				$this->mUserEdits = 0x7fffffff;
-				return;
-			}
-
-			# Now check old
-			#$sql = "SELECT COUNT(*) as n FROM $old WHERE old_timestamp<=$date AND old_user=$id";
-			$sql = "SELECT COUNT(*) as n FROM $old WHERE inverse_timestamp>=$etad AND old_user=$id";
-			$res = $dbr->query( $sql, DB_SLAVE, "BoardVotePage::getQualifications" );
-			$old = $dbr->fetchObject( $res );
-			$dbr->freeResult( $res );
-			
-			$this->mUserEdits = $cur->n + $old->n;
-		}
+		extract( $dbr->tableNames( 'revision' ) );
+		$sql = "SELECT MIN(rev_timestamp) as first, COUNT(*) as n FROM $revision WHERE rev_timestamp<=$date AND rev_user=$id";
+		$res = $dbr->query( $sql, "BoardVotePage::getQualifications" );
+		$row = $dbr->fetchObject( $res );
+		$this->mUserEdits = $row->n;
+		$this->mFirstEdit = $row->first;
 	}
 	
 	function displayList() {
@@ -296,7 +285,7 @@ class BoardVotePage extends SpecialPage {
 
 		$userRights = $wgUser->getRights();
 		$admin = $this->isAdmin();
-		$dbr =& wfGetDB( DB_MASTER ); //$dbr =& wfGetDB( DB_SLAVE );
+		$dbr =& $this->getDB();
 		$log = $dbr->tableName( "`{$this->mDBname}`.log" );
 
 		$sql = "SELECT * FROM $log ORDER BY log_user_key";
@@ -387,7 +376,7 @@ class BoardVotePage extends SpecialPage {
 
 	function dump() {
 		global $wgOut, $wgOutputEncoding, $wgLang, $wgUser;
-		$dbr =& wfGetDB( DB_MASTER ); //$dbr =& wfGetDB( DB_SLAVE );
+		$dbr =& $this->getDB();
 		$log = $dbr->tableName( "`{$this->mDBname}`.log" );
 
 		$sql = "SELECT log_record FROM $log WHERE log_current=1 AND log_strike=0";
@@ -418,7 +407,7 @@ class BoardVotePage extends SpecialPage {
 	function strike( $id, $unstrike ) {
 		global $wgOut;
 		
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw =& $this->getDB();
 		$log = $dbw->tableName( "`{$this->mDBname}`.log" );
 
 		if ( !$this->isAdmin() ) {
