@@ -19,13 +19,13 @@
  * @author w:de:Benutzer:Unendlich 
  * @author m:User:Dangerman <cyril.dangerville@gmail.com>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version 0.6.1
+ * @version 0.6.2
  */
 
 /*
  * Current version
  */
-define('DPL2_VERSION', '0.6.1');
+define('DPL2_VERSION', '0.6.2');
 
 /**
  * Register the extension with MediaWiki
@@ -64,7 +64,9 @@ $wgDPL2Options = array(
 	 * @todo define 'category' options (retrieve list of categories from 'categorylinks' table?)
 	 */
 	'category' => NULL,
-	// Empty count value (default) indicates no count limit.
+	/**
+	 * Empty count value (default) indicates no count limit.
+	 */
 	'count' => array('default' => '', 'pattern' => '/^\d*$/'),
 	/**
 	 * debug=...
@@ -79,9 +81,40 @@ $wgDPL2Options = array(
 	 * html headings (H2, H3, H4), definition list, no heading (null), ordered, unordered.
 	 */
 	'headingmode' => array( 'default' => 'null', 'H2', 'H3', 'H4', 'definition', 'null', 'ordered', 'unordered'),
-	//inline text is some wiki text used to separate list items with 'mode=inline'
+	/**
+	 * Attributes for HTML list items (headings) at the heading level, depending on 'headingmode' ('li' for ordered/unordered, 'div' for others). 
+	 * Not yet applicable to 'headingmode=null | definition | H2 | H3 | H4'.
+	 * @todo Make 'hitemattr' param applicable to  'null', 'definition', 'H2', 'H3', 'H4' headingmodes.
+	 * Example: hitemattr= class="topmenuli" style="color: red;"
+	 */
+	'hitemattr' => array('default' => ''),
+	/**
+	 * Attributes for the HTML list element at the heading/top level, depending on 'headingmode' ('ol' for ordered, 'ul' for unordered, 'dl' for definition, 'div' for others)
+	 * Not applicable to 'mode=category'.
+	 * @todo Make 'itemattr' param applicable to 'mode=category'.
+	 * Example: hlistattr= class="topmenul" id="dmenu"
+	 */
+	'hlistattr' => array('default' => ''),
+	/** 
+	 * Inline text is some wiki text used to separate list items with 'mode=inline'.
+	 */
 	'inlinetext' => array('default' => ' - '),
-	// mode for list of pages (possibly within a heading)
+	/**
+	 * Attributes for HTML list items, depending on 'mode' ('li' for ordered/unordered, 'span' for others).
+	 * Not applicable to 'mode=category'.
+	 * @todo Make 'itemattr' param applicable to 'mode=category'.
+	 * Example: itemattr= class="submenuli" style="color: red;"
+	 */
+	'itemattr' => array('default' => ''),
+	/**
+	 * Attributes for HTML list elements, depending on 'mode' ('ol' for ordered, 'ul' for unordered, 'div' for others)
+	 * Example: listattr= class="submenul" style="color: red;"
+	 */
+	'listattr' => array('default' => ''),
+	/**
+	 * Mode for list of pages (possibly within a heading, see 'headingmode' param).
+	 * 'none' mode is implemented as a specific submode of 'inline' with <BR/> as inline text
+	 */
 	'mode' => array('default' => 'unordered', 'category', 'inline', 'none', 'ordered', 'unordered'),
 	'namespace' => NULL,
 	/**
@@ -172,6 +205,11 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$bAddUser = $wgDPL2Options['adduser']['default'] == 'true';
 	$bAddCategories = $wgDPL2Options['addcategories']['default'] == 'true';
 	$bCountSet = !empty($wgDPL2Options['count']['default']);
+	$sListHtmlAttr = $wgDPL2Options['listattr']['default'];
+	$sItemHtmlAttr = $wgDPL2Options['itemattr']['default'];
+	$sHListHtmlAttr = $wgDPL2Options['hlistattr']['default'];
+	$sHItemHtmlAttr = $wgDPL2Options['hitemattr']['default'];
+	
 	$aIncludeCategories = array(); // $aIncludeCategories is a 2-dimensional array: Memberarrays are linked using 'AND'
 	$aExcludeCategories = array();
 	$aNamespaces = array();
@@ -225,7 +263,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 					// Cannot get pages in these with DB query.
 					$mNs = $wgContLang->getNsIndex($sParam);
 					if( ($mNs === false) || ($mNs < 0) )
-						return $logger->msgWrongParam('namespace', $sParam);
+						return $logger->msgWrongParam('namespace', $sParam) . "\n";
 					$aNamespaces[] = $mNs;
 				}
 				break;
@@ -236,7 +274,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				// Cannot get pages in these with DB query.
 				$mNs = $wgContLang->getNsIndex($sArg);
 				if( ($mNs === false) || ($mNs < 0) )
-					return $logger->msgWrongParam('notnamespace', $sArg);
+					return $logger->msgWrongParam('notnamespace', $sArg) . "\n";
 				$aExcludeNamespaces[] = $mNs;
 				break;
 				
@@ -252,7 +290,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				} else { // wrong count value, use default
 					if($bCountSet)
 						$iCount = IntVal( $wgDPL2Options['count']['default'] );
-					$output .= $logger->msgWrongParam('count', $sArg);
+					$output .= $logger->msgWrongParam('count', $sArg) . "\n";
 				}
 				break;
 				
@@ -261,16 +299,21 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			 */
 			case 'mode':
 				if( in_array($sArg, $wgDPL2Options['mode']) )
+					//'none' mode is implemented as a specific submode of 'inline' with <BR/> as inline text
+					if($sArg == 'none') {
+						$sPageOutputMode = 'inline';
+						$sInlTxt = '<BR/>';
+					} else
 					$sPageOutputMode = $sArg;
 				else
-					$output .= $logger->msgWrongParam('mode', $sArg);
+					$output .= $logger->msgWrongParam('mode', $sArg) . "\n";
 				break;
 				
 			case 'headingmode':
 				if( in_array($sArg, $wgDPL2Options['headingmode']) )
 					$sHeadingOutputMode = $sArg;
 				else
-					$output .= $logger->msgWrongParam('headingmode', $sArg);
+					$output .= $logger->msgWrongParam('headingmode', $sArg) . "\n";
 				break;	
 				
 			case 'inlinetext':
@@ -283,76 +326,89 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				if( in_array($sArg, $wgDPL2Options['order']) )
 					$sOrder = $sArg;
 				else
-					$output .= $logger->msgWrongParam('order', $sArg);
+					$output .= $logger->msgWrongParam('order', $sArg) . "\n";
 				break;	
 				
 			case 'ordermethod':
 				if( in_array($sArg, $wgDPL2Options['ordermethod']) )
 					$aOrderMethods = explode(',', $sArg);
 				else
-					$output .= $logger->msgWrongParam('ordermethod', $sArg);
+					$output .= $logger->msgWrongParam('ordermethod', $sArg) . "\n";
 				break;
 				
 			case 'redirects':
 				if( in_array($sArg, $wgDPL2Options['redirects']) )
 					$sRedirects = $sArg;
 				else 
-					$output .= $logger->msgWrongParam('redirects', $sArg);
+					$output .= $logger->msgWrongParam('redirects', $sArg) . "\n";
 				break;
 				
 			case 'addfirstcategorydate':
 				if( in_array($sArg, $wgDPL2Options['addfirstcategorydate']))
 					$bAddFirstCategoryDate = $sArg == 'true';
 				else
-					$output .= $logger->msgWrongParam('addfirstcategorydate', $sArg);
+					$output .= $logger->msgWrongParam('addfirstcategorydate', $sArg) . "\n";
 				break;
 				
 			case 'addpagetoucheddate':
 				if( in_array($sArg, $wgDPL2Options['addpagetoucheddate']))
 					$bAddPageTouchedDate = $sArg == 'true';
 				else
-					$output .= $logger->msgWrongParam('addpagetoucheddate', $sArg);
+					$output .= $logger->msgWrongParam('addpagetoucheddate', $sArg) . "\n";
 				break;
 				
 			case 'addeditdate':
 				if( in_array($sArg, $wgDPL2Options['addeditdate']))
 					$bAddEditDate = $sArg == 'true';
 				else
-					$output .= $logger->msgWrongParam('addeditdate', $sArg);
+					$output .= $logger->msgWrongParam('addeditdate', $sArg) . "\n";
 				break;
 			
 			case 'adduser':
 				if( in_array($sArg, $wgDPL2Options['adduser']))
 					$bAddUser = $sArg == 'true';
 				else
-					$output .= $logger->msgWrongParam('adduser', $sArg);
+					$output .= $logger->msgWrongParam('adduser', $sArg) . "\n";
 				break;
 			
 			case 'addcategories':
 				if( in_array($sArg, $wgDPL2Options['addcategories']))
 					$bAddCategories = $sArg == 'true';
 				else
-					$output .= $logger->msgWrongParam('addcategories', $sArg);
+					$output .= $logger->msgWrongParam('addcategories', $sArg) . "\n";
 				break;
 			
 			case 'shownamespace':
 				if( in_array($sArg, $wgDPL2Options['shownamespace']))
 					$bShowNamespace = $sArg == 'true';
 				else
-					$output .= $logger->msgWrongParam('shownamespace', $sArg);
+					$output .= $logger->msgWrongParam('shownamespace', $sArg) . "\n";
 				break;
 				
 			case 'debug':
 				if( in_array($sArg, $wgDPL2Options['debug']) ) {
 					if($iParam > 1)
-						$output .= $logger->msg(DPL2_WARN_DEBUGPARAMNOTFIRST, "$sArg");
+						$output .= $logger->msg(DPL2_WARN_DEBUGPARAMNOTFIRST, "$sArg") . "\n";
 					$logger->iDebugLevel = intval($sArg);
 				}
 				else	
-					$output .= $logger->msgWrongParam('debug', $sArg);
+					$output .= $logger->msgWrongParam('debug', $sArg) . "\n";
+				break;
+			
+			case 'listattr':
+				$sListHtmlAttr = $sArg;
+				break;
+			case 'itemattr':
+				$sItemHtmlAttr = $sArg;
+				break;
+			case 'hlistattr':
+				$sHListHtmlAttr = $sArg;
+				break;
+			case 'hitemattr':
+				$sHItemHtmlAttr = $sArg;
 				break;
 			default:
-				$output .= $logger->msg(DPL2_WARN_UNKNOWNPARAM, $sType, implode(', ', array_keys($wgDPL2Options)));
+				$output .= $logger->msg(DPL2_WARN_UNKNOWNPARAM, $sType, implode(', ', array_keys($wgDPL2Options))) . "\n";
 		}
 	}
 	
@@ -365,40 +421,40 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	
 	// no included categories or namespaces
 	if ( $iTotalCatCount == 0 && empty($aNamespaces) )
-		$output .= $logger->msg(DPL2_WARN_NOINCLUDEDCATSORNS);
+		$output .= $logger->msg(DPL2_WARN_NOINCLUDEDCATSORNS) . "\n";
 
 	// too many categories!!
 	if ( ($iTotalCatCount > $wgDPL2MaxCategoryCount) && (!$wgDPL2AllowUnlimitedCategories) )
-		return $logger->msg(DPL2_ERR_TOOMANYCATS, "$wgDPL2MaxCategoryCount");
+		return $logger->msg(DPL2_ERR_TOOMANYCATS, "$wgDPL2MaxCategoryCount") . "\n";
 
 	// too few categories!!
 	if ($iTotalCatCount < $wgDPL2MinCategoryCount)
-		return $logger->msg(DPL2_ERR_TOOFEWCATS, "$wgDPL2MinCategoryCount");
+		return $logger->msg(DPL2_ERR_TOOFEWCATS, "$wgDPL2MinCategoryCount") . "\n";
 		
 	// no included categories but ordermethod=categoryadd or addfirstcategorydate=true!!
 	if ($iTotalIncludeCatCount == 0 && ($aOrderMethods[0] == 'categoryadd' || $bAddFirstCategoryDate == true) )
-		return $logger->msg(DPL2_ERR_CATDATEBUTNOINCLUDEDCATS);
+		return $logger->msg(DPL2_ERR_CATDATEBUTNOINCLUDEDCATS) . "\n";
 
 	// more than one included category but ordermethod=categoryadd or addfirstcategorydate=true!!
 	if ($iTotalIncludeCatCount > 1 && ($aOrderMethods[0] == 'categoryadd' || $bAddFirstCategoryDate == true) )
-		return $logger->msg(DPL2_ERR_CATDATEBUTMORETHAN1CAT);
+		return $logger->msg(DPL2_ERR_CATDATEBUTMORETHAN1CAT) . "\n";
 		
 	// no more than one type of date at a time!!
 	if($bAddPageTouchedDate + $bAddFirstCategoryDate + $bAddEditDate > 1)
-		return $logger->msg(DPL2_ERR_MORETHAN1TYPEOFDATE);
+		return $logger->msg(DPL2_ERR_MORETHAN1TYPEOFDATE) . "\n";
 
 	// category-style output requested with not compatible order method
 	if ($sPageOutputMode == 'category' && !in_array('title', $aOrderMethods))
-		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD,  'mode=category', 'title' );
+		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD,  'mode=category', 'title' ) . "\n";
 	
 	// addpagetoucheddate=true with unappropriate order methods
 	if( $bAddPageTouchedDate && !array_intersect($aOrderMethods, array('pagetouched', 'title')) )
-		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD,  'addpagetoucheddate=true', 'pagetouched | title' );
+		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD,  'addpagetoucheddate=true', 'pagetouched | title' ) . "\n";
 	
 	// addeditdate=true but not (ordermethod=...,firstedit or ordermethod=...,lastedit)
 	//firstedit (resp. lastedit) -> add date of first (resp. last) revision
 	if( $bAddEditDate && !array_intersect($aOrderMethods, array('firstedit', 'lastedit')) )
-		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD, 'addeditdate=true', 'firstedit | lastedit' );
+		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD, 'addeditdate=true', 'firstedit | lastedit' ) . "\n";
 	
 	// adduser=true but not (ordermethod=...,firstedit or ordermethod=...,lastedit)
 	/**
@@ -407,15 +463,15 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	 * Ideally, we could use values such as 'all', 'first' or 'last' for the adduser parameter.
 	*/
 	if( $bAddUser && !array_intersect($aOrderMethods, array('firstedit', 'lastedit')) )
-		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD, 'adduser=true', 'firstedit | lastedit' );
+		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD, 'adduser=true', 'firstedit | lastedit' ) . "\n";
 	
 	//add*** parameters have no effect with 'mode=category' (only namespace/title can be viewed in this mode)
 	if( $sPageOutputMode == 'category' && ($bAddCategories || $bAddEditDate || $bAddFirstCategoryDate || $bAddPageTouchedDate || $bAddUser) )
-		$output .= $logger->msg(DPL2_WARN_CATOUTPUTBUTWRONGPARAMS);
+		$output .= $logger->msg(DPL2_WARN_CATOUTPUTBUTWRONGPARAMS) . "\n";
 		
 	//headingmode has effects with ordermethod on multiple components only
 	if( $sHeadingOutputMode != 'null' && count($aOrderMethods) < 2 ) {
-		$output .= $logger->msg(DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD, $sHeadingOutputMode, 'null');
+		$output .= $logger->msg(DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD, $sHeadingOutputMode, 'null') . "\n";
 		$sHeadingOutputMode = 'null';
 	}	
 	// justify limits
@@ -578,12 +634,12 @@ function DynamicPageList2( $input, $params, &$parser ) {
 
 // ###### PROCESS SQL QUERY ######
 	//DEBUG: output SQL query 
-	$output .= $logger->msg(DPL2_QUERY, $sSqlSelectFrom . $sSqlWhere);
+	$output .= $logger->msg(DPL2_QUERY, $sSqlSelectFrom . $sSqlWhere) . "\n";
 	//echo 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br />";
 
 	$res = $dbr->query($sSqlSelectFrom . $sSqlWhere);
 	if ($dbr->numRows( $res ) == 0) {
-		$output .= $logger->msg(DPL2_WARN_NORESULTS);
+		$output .= $logger->msg(DPL2_WARN_NORESULTS) . "\n";
 		return $output;
 	}
 	
@@ -701,28 +757,30 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	DPL2UpdateLinks($aUncheckedCatTitles, $linkCache, $aAddCategories);
 
 // ###### SHOW OUTPUT ######
+	$outputMode = new DPL2OutputMode($sPageOutputMode, $sInlTxt, $sListHtmlAttr, $sItemHtmlAttr);
+	
 	if(!empty($aHeadings)) {
-		$headingMode = new DPL2OutputMode($sHeadingOutputMode);
+		$headingMode = new DPL2OutputMode($sHeadingOutputMode, '', $sHListHtmlAttr, $sHItemHtmlAttr);
 		$aHeadingCounts = array_count_values($aHeadings); //count articles under each heading
-		$output .= $headingMode->sStartList;
+		$output .= $headingMode->sStartList . "\n";
 		$headingStart = 0;
 		foreach($aHeadingCounts as $heading => $headingCount) {
 			$output .= $headingMode->sStartItem;
-			$output .= $headingMode->sStartHeading . $heading . $headingMode->sEndHeading;
-			$output .= '<p>' . DPL2FormatCount($headingCount, $aOrderMethods[0]) . '</p>';
+			$output .= $headingMode->sStartHeading . $heading . $headingMode->sEndHeading . "\n";
+			$output .= '<P>' . DPL2FormatCount($headingCount, $aOrderMethods[0]) . "</P>\n";
 			if ($sPageOutputMode == 'category')
-				$output .= DPL2OutputCategoryStyle($aArticles, $aArticles_start_char, $headingStart, $headingCount);
+				$output .= DPL2OutputCategoryStyle($aArticles, $aArticles_start_char, $headingStart, $headingCount) . "\n";
 			else
-				$output .= DPL2OutputListStyle($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sPageOutputMode, $sInlTxt, $headingStart, $headingCount);
-			$output .= $headingMode->sEndItem;
+				$output .= DPL2OutputListStyle($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $outputMode, $headingStart, $headingCount) . "\n";
+			$output .= $headingMode->sEndItem . "\n";
 			$headingStart += $headingCount;
 		}
 		$output .= $headingMode->sEndList;
 	} 
 	elseif($sPageOutputMode == 'category')
-		$output .= DPL2OutputCategoryStyle($aArticles, $aArticles_start_char, 0, count($aArticles));
+		$output .= DPL2OutputCategoryStyle($aArticles, $aArticles_start_char, 0, count($aArticles)) . "\n";
 	else
-		$output .= DPL2OutputListStyle($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sPageOutputMode, $sInlTxt, 0, count($aArticles));
+		$output .= DPL2OutputListStyle($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $outputMode, 0, count($aArticles)) . "\n";
 
 	return $output;
 }
@@ -740,7 +798,7 @@ function DPL2UpdateLinks($aTitles, $linkCache, &$aLinks) {
 				$sk->makeKnownLinkObj($titleval, $wgContLang->convertHtml($titleval->getText()));
 }
 
-function DPL2OutputListStyle ($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $sOutputMode, $sInlTxt, $iStart, $iCount) {
+function DPL2OutputListStyle ($aArticles, $aAddDates, $aAddUsers, $aAddCategories, $mode, $iStart, $iCount) {
 	global $wgUser, $wgLang;
 	
 	$sk = & $wgUser->getSkin();
@@ -748,11 +806,12 @@ function DPL2OutputListStyle ($aArticles, $aAddDates, $aAddUsers, $aAddCategorie
 	$tSpecCats = Title::makeTitle( NS_SPECIAL, 'Categories' );
 	$sSpecCatsLnk = $sk->makeKnownLinkObj( $tSpecCats, wfMsg('categories'));
 	
-	$mode = new DPL2OutputMode($sOutputMode, $sInlTxt);
 	//process results of query, outputing equivalent of <li>[[Article]]</li> for each result,
 	//or something similar if the list uses other startlist/endlist;
-	$r = $mode->sStartList;
+	$r = $mode->sStartList . "\n";
 	for ($i = $iStart; $i < $iStart+$iCount; $i++) {
+		if($i > $iStart)
+			$r .= $mode->sInline . "\n"; //If mode is not 'inline', sInline attribute is empty, so does nothing
 		$r .= $mode->sStartItem;
 		if(!empty($aAddDates[$i]))
 			$r .=  $wgLang->date($aAddDates[$i]) . ': ';
@@ -760,9 +819,8 @@ function DPL2OutputListStyle ($aArticles, $aAddDates, $aAddUsers, $aAddCategorie
 		if(!empty($aAddUsers[$i]))
 			$r .= ' . . ' . $aAddUsers[$i];
 		if(!empty($aAddCategories[$i]))
-			$r .= ' . . <small>' . $sSpecCatsLnk . ': ' . implode(' | ', $aAddCategories[$i]) . '</small>';
-		if( (($mode->name != 'inline') && ($mode->name != 'none')) || ($i < $iStart + $iCount-1)) //no inlinetext (inline mode) at end of list
-			$r .= $mode->sEndItem;
+			$r .= ' . . <SMALL>' . $sSpecCatsLnk . ': ' . implode(' | ', $aAddCategories[$i]) . '</SMALL>';
+			$r .= $mode->sEndItem . "\n";
 	}
 	$r .= $mode->sEndList;
 	return $r;
@@ -815,7 +873,7 @@ class DPL2Logger {
 			/**
 			 * @todo add a DPL id to identify the DPL tag that generates the message, in case of multiple DPLs in the page
 			 */
-			return '%DPL2-' . DPL2_VERSION . '-' .  wfMsg('dpl2_debug_' . $msgid, $args) . '<br/>';
+			return '%DPL2-' . DPL2_VERSION . '-' .  wfMsg('dpl2_debug_' . $msgid, $args) . '<BR/>';
 		}
 		return '';
 	}
@@ -857,38 +915,45 @@ class DPL2OutputMode {
 	var $sEndHeading = '';
 	var $sStartItem = '';
 	var $sEndItem = '';
+	var $sInline = '';
 	
-	function DPL2OutputMode($outputmode, $inlinetext = ' - ') {
+	function DPL2OutputMode($outputmode, $inlinetext = ' - ', $listattr = '', $itemattr = '') {
 		$this->name = $outputmode;
+		$_listattr = empty($listattr) ? '' : ' ' . $listattr;
+		$_itemattr = empty($itemattr) ? '' : ' ' . $itemattr;
 		switch ($outputmode) {
-			case 'none':
-				$this->sEndItem = '<br/>';
-				break;
 			case 'inline':
-				$this->sEndItem = $inlinetext;
+				$this->sStartList = '<DIV' . $_listattr . '>';
+				$this->sEndList = '</DIV>';
+				$this->sStartItem = '<SPAN' . $_itemattr . '>';
+				$this->sEndItem = '</SPAN>';
+				$this->sInline = $inlinetext;
 				break;
 			case 'ordered':
-				$this->sStartList = '<ol>';
-				$this->sEndList = '</ol>';
-				$this->sStartItem = '<li>';
-				$this->sEndItem = '</li>';
+				$this->sStartList = '<OL' . $_listattr . '>';
+				$this->sEndList = '</OL>';
+				$this->sStartItem = '<LI'. $_itemattr . '>';
+				$this->sEndItem = '</LI>';
 				break;
 			case 'unordered':
-				$this->sStartList = '<ul>';
-				$this->sEndList = '</ul>';
-				$this->sStartItem = '<li>';
-				$this->sEndItem = '</li>';
+				$this->sStartList = '<UL' . $_listattr . '>';
+				$this->sEndList = '</UL>';
+				$this->sStartItem = '<LI' . $_itemattr . '>';
+				$this->sEndItem = '</LI>';
 				break;
 			case 'definition':
-				$this->sStartList = '<dl>';
-				$this->sEndList = '</dl>';
-				$this->sStartHeading = '<dt>';
-				$this->sEndHeading = '</dt><dd>';
-				$this->sEndItem = '</dd>';
+				$this->sStartList = '<DL' . $_listattr . '>';
+				$this->sEndList = '</DL>';
+				// item html attributes on dt element or dd element ?
+				$this->sStartHeading = '<DT>';
+				$this->sEndHeading = '</DT><DD>';
+				$this->sEndItem = '</DD>';
 				break;
 			case 'H2':
 			case 'H3':
 			case 'H4':
+				$this->sStartList = '<DIV' . $_listattr . '>';
+				$this->sEndList = '</DIV>';
 				$this->sStartHeading = '<' . $outputmode .'>';
 				$this->sEndHeading = '</' . $outputmode . '>';
 				break;
