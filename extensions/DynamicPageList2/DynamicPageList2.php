@@ -98,7 +98,7 @@ $wgDPL2Options = array(
 	/** 
 	 * Inline text is some wiki text used to separate list items with 'mode=inline'.
 	 */
-	'inlinetext' => array('default' => ' - '),
+	'inlinetext' => array('default' => '&nbsp;-&nbsp;'),
 	/**
 	 * Attributes for HTML list items, depending on 'mode' ('li' for ordered/unordered, 'span' for others).
 	 * Not applicable to 'mode=category'.
