@@ -11,7 +11,7 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_title' => 'Context title, for &#123;&#123;PAGENAME}} etc.:',
 	'expand_templates_input' => 'Input text',
 	'expand_templates_output' => 'Result',
-	'expand_template_ok' => 'OK',
+	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Remove comments',
 ));
 
@@ -51,7 +51,7 @@ class ExpandTemplates extends SpecialPage {
 		$msgInput = wfMsg( 'expand_templates_input' );
 		$msgRemoveComments = wfMsg( 'expand_templates_remove_comments' );
 		$msgOutput = wfMsg( 'expand_templates_output' );
-		$msgSubmit = wfMsg( 'expand_template_ok' );
+		$msgSubmit = wfMsg( 'expand_templates_ok' );
 		$action = htmlspecialchars( $selfTitle->getLocalURL() );
 		
 		$wgOut->addWikiText( wfMsg( 'expand_templates_intro' ) );
