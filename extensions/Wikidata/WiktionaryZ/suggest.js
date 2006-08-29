@@ -164,8 +164,8 @@ function getExpansionElementTypes() {
 		var cookie = cookies[i];
 		while(cookie.charAt(0)==' ')
 			cookie = cookie.substring(1,cookie.length);
-		if(cookie.indexOf("expanded=") == 0) {
-			var expansionElementTypesStr = cookie.substring(9,cookie.length);
+		if(cookie.indexOf("expansion=") == 0) {
+			var expansionElementTypesStr = cookie.substring(10,cookie.length);
 			var elementTypes = expansionElementTypesStr.split('|');
 			if(elementTypes[0] == "")
 				elementTypes.splice(0,1);
@@ -175,23 +175,39 @@ function getExpansionElementTypes() {
 	return new Array();
 }
 
-function clearExpanded(elementType) {
-	var expansionElementTypes = getExpansionElementTypes();
-	for(var i=0;i<expansionElementTypes.length;i++)
-		if(expansionElementTypes[i]==elementType) {
-			expansionElementTypes.splice(i,1);
-			document.cookie = "expanded=" + expansionElementTypes.join("|");
-			break;
-		}
-}
-
 function setExpanded(elementType) {
-	var expansionElementTypes = getExpansionElementTypes();
 	// Ensure the element type isn't yet set to expand.
 	// This could be more efficient by avoiding the clear/rewrite.
-	clearExpanded(elementType);
-	expansionElementTypes[expansionElementTypes.length] = elementType;
-	document.cookie = "expanded=" + expansionElementTypes.join("|");
+	var expansionElementTypes = getExpansionElementTypes();
+	for(var i=0;i<expansionElementTypes.length;i++) {
+		if(expansionElementTypes[i]=="expand-" + elementType)
+			return;
+		else if(expansionElementTypes[i]=="collapse-" + elementType) {
+			expansionElementTypes[i] = "expand-" + elementType;
+			document.cookie = "expansion=" + expansionElementTypes.join("|");
+			return;
+		}
+	}
+
+	expansionElementTypes[expansionElementTypes.length] = "expand-" + elementType;
+	document.cookie = "expansion=" + expansionElementTypes.join("|");
+}
+
+function setCollapsed(elementType) {
+	// Ensure the element type isn't yet set to collapse.
+	// This could be more efficient by avoiding the clear/rewrite.
+	var expansionElementTypes = getExpansionElementTypes();
+	for(var i=0;i<expansionElementTypes.length;i++) {
+		if(expansionElementTypes[i]=="collapse-" + elementType)
+			return;
+		else if(expansionElementTypes[i]=="expand-" + elementType) {
+			expansionElementTypes[i] = "collapse-" + elementType;
+			document.cookie = "expansion=" + expansionElementTypes.join("|");
+			return;
+		}
+	}
+	expansionElementTypes[expansionElementTypes.length] = "collapse-" + elementType;
+	document.cookie = "expansion=" + expansionElementTypes.join("|");
 }
 
 function getCollapsableId(elementName) {
@@ -220,7 +236,7 @@ function toggle(element, event) {
 		var collapsableNode = document.getElementById(getCollapsableId(elementName));
 
 		if (isCssClassExpanded(getTypeOf(element))) {
-			clearExpanded(getTypeOf(element));
+			setCollapsed(getTypeOf(element));
 			expandCssClass(getTypeOf(element), false);
 			expandCssClass(element.id.substr(11, element.id.length - 11).replace(/\d+/g, "0"), false);
 		}
@@ -245,7 +261,7 @@ function shouldExpand(element) {
 	var candidateElementType = getTypeOf(element);
 	var expansionElementTypes = getExpansionElementTypes();
 	for(var i=0; i<expansionElementTypes.length; i++)
-		if(expansionElementTypes[i] == candidateElementType)
+		if(expansionElementTypes[i] == "expand-" + candidateElementType)
 			return true;
 
 	return false;
@@ -254,7 +270,10 @@ function shouldExpand(element) {
 function expandEditors(event) {
 	var expansionElementTypes = getExpansionElementTypes();
 	for(var i=0; i<expansionElementTypes.length; i++)
-		expandCssClass(expansionElementTypes[i], true);
+		if(expansionElementTypes[i].substr(0, 7) == "expand-")
+			expandCssClass(expansionElementTypes[i].substr(7), true);
+		else
+			expandCssClass(expansionElementTypes[i].substr(9), false);
 }
 
 function expandCssClass(cssClass, isExpanded) {
