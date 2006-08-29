@@ -279,9 +279,11 @@ class Skin extends Linker {
 			var wgServer = "' . Xml::escapeJsString( $data['serverurl'] ) . '";
                         
 			var wgCanonicalNamespace = "' . Xml::escapeJsString( $data['nscanonical'] ) . '";
+			var wgNamespaceNumber = ' . (int)$data['nsnumber'] . ';
 			var wgPageName = "' . Xml::escapeJsString( $data['titleprefixeddbkey'] ) . '";
 			var wgTitle = "' . Xml::escapeJsString( $data['titletext'] ) . '";
 			var wgArticleId = ' . (int)$data['articleid'] . ';
+			var wgIsArticle = ' . ( $data['isarticle'] ? 'true' : 'false' ) . ';
                         
 			var wgUserName = ' . ( $data['username'] == NULL ? 'null' : ( '"' . Xml::escapeJsString( $data['username'] ) . '"' ) ) . ';
 			var wgUserLanguage = "' . Xml::escapeJsString( $data['userlang'] ) . '";
@@ -295,7 +297,7 @@ class Skin extends Linker {
 	function getHeadScripts() {
 		global $wgStylePath, $wgUser, $wgAllowUserJs, $wgJsMimeType;
 		global $wgArticlePath, $wgScriptPath, $wgServer, $wgContLang, $wgLang;
-		global $wgTitle, $wgCanonicalNamespaceNames;
+		global $wgTitle, $wgCanonicalNamespaceNames, $wgOut;
 
 		$nsname = @$wgCanonicalNamespaceNames[ $wgTitle->getNamespace() ];
 		if ( $nsname === NULL ) $nsname = $wgTitle->getNsText();
@@ -308,9 +310,11 @@ class Skin extends Linker {
 			'scriptpath' => $wgScriptPath,
 			'serverurl' => $wgServer,
 			'nscanonical' => $nsname,
+			'nsnumber' => $wgTitle->getNamespace(),
 			'titleprefixeddbkey' => $wgTitle->getPrefixedDBKey(),
 			'titletext' => $wgTitle->getText(),
 			'articleid' => $wgTitle->getArticleId(),
+			'isarticle' => $wgOut->isArticle(),
 			'username' => $wgUser->isAnon() ? NULL : $wgUser->getName(),
 			'userlang' => $wgLang->getCode(),
 			'lang' => $wgContLang->getCode(),
@@ -1077,24 +1081,14 @@ END;
 
 	/**
 	 * show a drop-down box of special pages
-	 * @TODO crash bug913. Need to be rewrote completly.
 	 */
 	function specialPagesList() {
 		global $wgUser, $wgContLang, $wgServer, $wgRedirectScript;
 		require_once('SpecialPage.php');
 		$a = array();
-		$pages = SpecialPage::getPages();
-
-		// special pages without access restriction
-		foreach ( $pages[''] as $name => $page ) {
-			$a[$name] = $page->getDescription();
-		}
-
-		// Other special pages that are restricted.
-		foreach ( $pages['restricted'] as $name => $page ) {
-			if( $wgUser->isAllowed( $page->getRestriction() ) ) {
-				$a[$name] = $page->getDescription();
-			}
+		$pages = array_merge( SpecialPage::getRegularPages(), SpecialPage::getRestrictedPages() );
+		foreach ( $pages as $name => $page ) {
+			$pages[$name] = $page->getDescription();
 		}
 
 		$go = wfMsg( 'go' );
@@ -1107,7 +1101,7 @@ END;
 		$s .= "<option value=\"{$spp}\">{$sp}</option>\n";
 
 
-		foreach ( $a as $name => $desc ) {
+		foreach ( $pages as $name => $desc ) {
 			$p = $wgContLang->specialPage( $name );
 			$s .= "<option value=\"{$p}\">{$desc}</option>\n";
 		}

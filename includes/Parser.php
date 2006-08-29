@@ -2336,6 +2336,25 @@ class Parser
 		$ts = time();
 		wfRunHooks( 'ParserGetVariableValueTs', array( &$this, &$ts ) );
 
+		# Use the time zone
+		global $wgLocaltimezone;
+		if ( isset( $wgLocaltimezone ) ) {
+			$oldtz = getenv( 'TZ' );
+			putenv( 'TZ='.$wgLocaltimezone );
+		}
+		$localTimestamp = date( 'YmdHis', $ts );
+		$localMonth = date( 'm', $ts );
+		$localMonthName = date( 'n', $ts );
+		$localDay = date( 'j', $ts );
+		$localDay2 = date( 'd', $ts );
+		$localDayOfWeek = date( 'w', $ts );
+		$localWeek = date( 'W', $ts );
+		$localYear = date( 'Y', $ts );
+		$localHour = date( 'H', $ts );
+		if ( isset( $wgLocaltimezone ) ) {
+			putenv( 'TZ='.$oldtz );
+		}
+
 		switch ( $index ) {
 			case 'currentmonth':
 				return $varCache[$index] = $wgContLang->formatNum( date( 'm', $ts ) );
@@ -2349,6 +2368,18 @@ class Parser
 				return $varCache[$index] = $wgContLang->formatNum( date( 'j', $ts ) );
 			case 'currentday2':
 				return $varCache[$index] = $wgContLang->formatNum( date( 'd', $ts ) );
+			case 'localmonth':
+				return $varCache[$index] = $wgContLang->formatNum( $localMonth );
+			case 'localmonthname':
+				return $varCache[$index] = $wgContLang->getMonthName( $localMonthName );
+			case 'localmonthnamegen':
+				return $varCache[$index] = $wgContLang->getMonthNameGen( $localMonthName );
+			case 'localmonthabbrev':
+				return $varCache[$index] = $wgContLang->getMonthAbbreviation( $localMonthName );
+			case 'localday':
+				return $varCache[$index] = $wgContLang->formatNum( $localDay );
+			case 'localday2':
+				return $varCache[$index] = $wgContLang->formatNum( $localDay2 );
 			case 'pagename':
 				return $this->mTitle->getText();
 			case 'pagenamee':
@@ -2413,6 +2444,20 @@ class Parser
 				return $varCache[$index] = $wgContLang->formatNum( (int)date( 'W', $ts ) );
 			case 'currentdow':
 				return $varCache[$index] = $wgContLang->formatNum( date( 'w', $ts ) );
+			case 'localdayname':
+				return $varCache[$index] = $wgContLang->getWeekdayName( $localDayOfWeek + 1 );
+			case 'localyear':
+				return $varCache[$index] = $wgContLang->formatNum( $localYear, true );
+			case 'localtime':
+				return $varCache[$index] = $wgContLang->time( $localTimestamp, false, false );
+			case 'localhour':
+				return $varCache[$index] = $wgContLang->formatNum( $localHour, true );
+			case 'localweek':
+				// @bug 4594 PHP5 has it zero padded, PHP4 does not, cast to
+				// int to remove the padding
+				return $varCache[$index] = $wgContLang->formatNum( (int)$localWeek );
+			case 'localdow':
+				return $varCache[$index] = $wgContLang->formatNum( $localDayOfWeek );
 			case 'numberofarticles':
 				return $varCache[$index] = $wgContLang->formatNum( wfNumberOfArticles() );
 			case 'numberoffiles':
@@ -2425,6 +2470,8 @@ class Parser
 				return $varCache[$index]  = $wgContLang->formatNum( wfNumberOfAdmins() );
 			case 'currenttimestamp':
 				return $varCache[$index] = wfTimestampNow();
+			case 'localtimestamp':
+				return $varCache[$index] = $localTimestamp;
 			case 'currentversion':
 				global $wgVersion;
 				return $wgVersion;
@@ -4079,7 +4126,7 @@ class Parser
 	 * Parse image options text and use it to make an image
 	 */
 	function makeImage( &$nt, $options ) {
-		global $wgUseImageResize;
+		global $wgUseImageResize, $wgDjvuRenderer;
 
 		$align = '';
 
@@ -4103,9 +4150,11 @@ class Parser
 		$mwWidth  =& MagicWord::get( 'img_width' );
 		$mwCenter =& MagicWord::get( 'img_center' );
 		$mwFramed =& MagicWord::get( 'img_framed' );
+		$mwPage   =& MagicWord::get( 'img_page' );
 		$caption = '';
 
 		$width = $height = $framed = $thumb = false;
+		$page = null;
 		$manual_thumb = '' ;
 
 		foreach( $part as $key => $val ) {
@@ -4127,6 +4176,10 @@ class Parser
 			} elseif ( ! is_null( $mwNone->matchVariableStartToEnd($val) ) ) {
 				# remember to set an alignment, don't render immediately
 				$align = 'none';
+			} elseif ( isset( $wgDjvuRenderer ) && $wgDjvuRenderer
+				   && ! is_null( $match = $mwPage->matchVariableStartToEnd($val) ) ) {
+				# Select a page in a multipage document
+				$page = $match;
 			} elseif ( $wgUseImageResize && ! is_null( $match = $mwWidth->matchVariableStartToEnd($val) ) ) {
 				wfDebug( "img_width match: $match\n" );
 				# $match is the image width in pixels
@@ -4153,7 +4206,7 @@ class Parser
 
 		# Linker does the rest
 		$sk =& $this->mOptions->getSkin();
-		return $sk->makeImageLinkObj( $nt, $caption, $alt, $align, $width, $height, $framed, $thumb, $manual_thumb );
+		return $sk->makeImageLinkObj( $nt, $caption, $alt, $align, $width, $height, $framed, $thumb, $manual_thumb, $page );
 	}
 
 	/**

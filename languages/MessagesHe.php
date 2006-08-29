@@ -76,6 +76,16 @@ $magicWords = array(
 	'currentyear'           => array( 1,    'שנה נוכחית',                               'CURRENTYEAR'            ),
 	'currenttime'           => array( 1,    'שעה נוכחית',                               'CURRENTTIME'            ),
 	'currenthour'           => array( 1,    'שעות נוכחיות',                             'CURRENTHOUR'            ),
+	'localmonth'            => array( 1,    'חודש מקומי',                               'LOCALMONTH'             ),
+	'localmonthname'        => array( 1,    'שם חודש מקומי',                            'LOCALMONTHNAME'         ),
+	'localmonthnamegen'     => array( 1,    'שם חודש מקומי קניין',                      'LOCALMONTHNAMEGEN'      ),
+	'localmonthabbrev'      => array( 1,    'קיצור חודש מקומי',                         'LOCALMONTHABBREV'       ),
+	'localday'              => array( 1,    'יום מקומי',                                'LOCALDAY'               ),
+	'localday2'             => array( 1,    'יום מקומי 2',                              'LOCALDAY2'              ),
+	'localdayname'          => array( 1,    'שם יום מקומי',                             'LOCALDAYNAME'           ),
+	'localyear'             => array( 1,    'שנה מקומית',                               'LOCALYEAR'              ),
+	'localtime'             => array( 1,    'שעה מקומית',                               'LOCALTIME'              ),
+	'localhour'             => array( 1,    'שעות מקומיות',                             'LOCALHOUR'              ),
 	'numberofpages'         => array( 1,    'מספר דפים כולל', 'מספר דפים',             'NUMBEROFPAGES'          ),
 	'numberofarticles'      => array( 1,    'מספר ערכים',                              'NUMBEROFARTICLES'       ),
 	'numberoffiles'         => array( 1,    'מספר קבצים',                              'NUMBEROFFILES'          ),
@@ -110,6 +120,7 @@ $magicWords = array(
 	'img_width'             => array( 1,    '$1px',                                 '$1px'                   ),
 	'img_center'            => array( 1,    'מרכז',                                 'center', 'centre'       ),
 	'img_framed'            => array( 1,    'ממוסגר', 'מסגרת',                      'framed', 'enframed', 'frame' ),
+	'img_page'              => array( 1,    'דף=$1', 'דף $1',                       'page=$1', 'page $1'     ),
 	'int'                   => array( 0,    'הודעה:',                               'INT:'                   ),
 	'sitename'              => array( 1,    'שם האתר',                              'SITENAME'               ),
 	'ns'                    => array( 0,    'מרחב שם:',                             'NS:'                    ),
@@ -123,6 +134,8 @@ $magicWords = array(
 	'nocontentconvert'      => array( 0,    '__ללא_המרת_תוכן__',                   '__NOCONTENTCONVERT__', '__NOCC__'),
 	'currentweek'           => array( 1,    'שבוע נוכחי',                           'CURRENTWEEK'            ),
 	'currentdow'            => array( 1,    'מספר יום נוכחי',                       'CURRENTDOW'             ),
+	'localweek'             => array( 1,    'שבוע מקומי',                           'LOCALWEEK'              ),
+	'localdow'              => array( 1,    'מספר יום מקומי',                       'LOCALDOW'               ),
 	'revisionid'            => array( 1,    'מזהה גרסה',                            'REVISIONID'             ),
 	'plural'                => array( 0,    'רבים:',                                'PLURAL:'                ),
 	'fullurl'               => array( 0,    'כתובת מלאה:',                          'FULLURL:'               ),
@@ -138,14 +151,15 @@ $magicWords = array(
 	'currentversion'        => array( 1,    'גרסה נוכחית',                         'CURRENTVERSION'         ),
 	'urlencode'             => array( 0,    'נתיב מקודד:',                         'URLENCODE:'             ),
 	'currenttimestamp'      => array( 1,    'זמן נוכחי',                           'CURRENTTIMESTAMP'       ),
+	'localtimestamp'        => array( 1,    'זמן מקומי',                           'LOCALTIMESTAMP'         ),
 	'directionmark'         => array( 1,    'סימן כיווניות',                       'DIRECTIONMARK', 'DIRMARK' ),
-	'language'              => array( 0,    '#שפה:',                              '#LANGUAGE:' ),
+	'language'              => array( 0,    '#שפה:',                              '#LANGUAGE:'             ),
 	'contentlanguage'       => array( 1,    'שפת תוכן',                           'CONTENTLANGUAGE', 'CONTENTLANG' ),
 	'pagesinnamespace'      => array( 1,    'דפים במרחב השם:',                   'PAGESINNAMESPACE:', 'PAGESINNS:' ),
-	'numberofadmins'        => array( 1,    'מספר מפעילים',                      'NUMBEROFADMINS' ),
-	'formatnum'             => array( 0,    'עיצוב מספר',                        'FORMATNUM' ),
-	'padleft'               => array( 0,    'ריפוד משמאל',                       'PADLEFT' ),
-	'padright'              => array( 0,    'ריפוד מימין',                       'PADRIGHT' ),
+	'numberofadmins'        => array( 1,    'מספר מפעילים',                      'NUMBEROFADMINS'         ),
+	'formatnum'             => array( 0,    'עיצוב מספר',                        'FORMATNUM'              ),
+	'padleft'               => array( 0,    'ריפוד משמאל',                       'PADLEFT'                ),
+	'padright'              => array( 0,    'ריפוד מימין',                       'PADRIGHT'               ),
 );
 
 $namespaceNames = array(
@@ -946,8 +960,9 @@ $messages = array(
 "destfilename"                => "שמור קובץ בשם",
 "filewasdeleted"              => "קובץ בשם זה כבר הועלה בעבר, ולאחר מכן נמחק. אנא בדקו את הדף $1 לפני שתמשיכו להעלותו שנית.",
 
-"license"   => "רישיון",
-"nolicense" => "אין",
+"license"           => "רישיון",
+"nolicense"         => "אין",
+"upload_source_url" => " (כתובת URL תקפה ונגישה)",
 
 # Image list
 "imagelist"                 => "רשימת תמונות",
@@ -1265,9 +1280,9 @@ $NEWPAGE
 "restriction-move" => "העברה",
 
 # Undelete
-"undelete"                 => "שיחזור דף מחוק",
+"undelete"                 => "צפו בדפים מחוקים",
 "undeletepage"             => "צפו ושחזרו דפים מחוקים",
-"viewdeletedpage"          => "הצג דפים שנמחקו",
+"viewdeletedpage"          => "צפו בדפים מחוקים",
 "undeletepagetext"         => "הדפים שלהלן נמחקו, אך הם עדיין בארכיון וניתן לשחזר אותם. הארכיון מנוקה מעת לעת.",
 "undeleteextrahelp"        => 'לשיחזור הדף כולו, אל תסמנו אף תיבת סימון ולחצו על "שיחזור". לשיחזור של גרסאות מסוימות בלבד, סמנו את תיבות הסימון של הגרסאות הללו, ולחצו על "שיחזור". לחיצה על "איפוס" תנקה את התקציר, ואת כל תיבות הסימון.',
 "undeletearticle"          => "שחזרו דף מחוק",
@@ -2066,6 +2081,12 @@ $1",
 "displaytitle" => "(קשרו לדף זה בשם [[$1]])",
 
 "loginlanguagelabel" => "שפה: $1",
+
+# Multipage image navigation
+"imgmultipageprev" => "&rarr; לדף הקודם",
+"imgmultipagenext" => "לדף הבא &larr;",
+"imgmultigo"       => "עבור!",
+"imgmultigotopre"  => "עבור לדף",
 
 # Table pager
 "ascending_abbrev"         => "עולה",

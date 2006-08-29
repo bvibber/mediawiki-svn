@@ -809,6 +809,7 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[{{ns:i
 
 'license'		=> 'Lizenz',
 'nolicense'		=> 'keine Vorauswahl',
+'upload_source_url'	=> '(gültige, öffentlich zugängliche URL)',
 
 # Image list
 #
@@ -1155,7 +1156,7 @@ Im [[{{ns:special}}:Log/delete|Lösch-Logbuch]] finden Sie eine Übersicht von k
 'notargettext'		=> 'Sie haben nicht angegeben, auf welche Seite diese Funktion angewendet werden soll.',
 "linklistsub"	=> "(Liste der Verweise)",
 'linkshere'	=> 'Die folgenden Seiten verweisen auf \'\'\'[[:$1]]\'\'\':',
-'nolinkshere'	=> 'Keine Seiten verweisen auf \'\'\'[[:$1]]\'\'\'.',
+'nolinkshere'	=> 'Keine Seite verweist auf \'\'\'[[:$1]]\'\'\'.',
 'isredirect'		=> 'Weiterleitungsseite',
 'istemplate'	=> 'Vorlageneinbindung',
 
@@ -1634,8 +1635,8 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-gpslongituderef'		=> 'östl. oder westl. Länge',
 'exif-gpsmapdatum'		=> 'Geodätisches Datum benutzt',
 'exif-gpsmeasuremode'		=> 'Messverfahren',
-'exif-gpsmeasuremode-2'		=> 'zweidimensionale Messung',
-'exif-gpsmeasuremode-3'		=> 'dreidimensionale Messung',
+'exif-gpsmeasuremode-2'		=> '2-dimensionale Messung',
+'exif-gpsmeasuremode-3'		=> '3-dimensionale Messung',
 'exif-gpsprocessingmethod'	=> 'Name des GPS-Verfahrens',
 'exif-gpssatellites'		=> 'Für die Messung benutzte Satelliten',
 'exif-gpsspeed'			=> 'Geschwindigkeit des GPS-Empfängers',
@@ -1643,7 +1644,7 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-gpsspeed-m'		=> 'mph',
 'exif-gpsspeed-n'		=> 'Knoten',
 'exif-gpsspeedref'		=> 'Geschwindigkeitseinheit',
-'exif-gpsstatus'		=> 'Empfänger Status',
+'exif-gpsstatus'		=> 'Empfängerstatus',
 'exif-gpsstatus-a'		=> 'Messung läuft',
 #'exif-gpsstatus-v'		=> 'Measurement interoperability',
 'exif-gpstimestamp'		=> 'GPS-Zeit',
@@ -1905,6 +1906,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Kategorieseite anzeigen\');',
 'confirm_purge' => "Den Cache dieser Seite leeren? $1",
 'confirm_purge_button' => 'OK',
 
+'newtalkseperator'	=> ',_',
 'youhavenewmessagesmulti' => "Sie haben neue Nachrichten: $1",
 
 # DISPLAYTITLE
@@ -1918,7 +1920,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Kategorieseite anzeigen\');',
 'imgmultipagenext' => 'n&auml;chste Seite &rarr;',
 'imgmultigo' => 'OK',
 'imgmultigotopre' => 'Gehe zu Seite',
-'imgmultigotopost' => '',
 
 # Table pager
 'ascending_abbrev'	=> 'auf',

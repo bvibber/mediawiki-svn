@@ -212,6 +212,16 @@ $magicWords = array(
 	'currentyear'            => array( 1,    'CURRENTYEAR'            ),
 	'currenttime'            => array( 1,    'CURRENTTIME'            ),
 	'currenthour'            => array( 1,    'CURRENTHOUR'            ),
+	'localmonth'             => array( 1,    'LOCALMONTH'             ),
+	'localmonthname'         => array( 1,    'LOCALMONTHNAME'         ),
+	'localmonthnamegen'      => array( 1,    'LOCALMONTHNAMEGEN'      ),
+	'localmonthabbrev'       => array( 1,    'LOCALMONTHABBREV'       ),
+	'localday'               => array( 1,    'LOCALDAY'               ),
+	'localday2'              => array( 1,    'LOCALDAY2'              ),
+	'localdayname'           => array( 1,    'LOCALDAYNAME'           ),
+	'localyear'              => array( 1,    'LOCALYEAR'              ),
+	'localtime'              => array( 1,    'LOCALTIME'              ),
+	'localhour'              => array( 1,    'LOCALHOUR'              ),
 	'numberofpages'          => array( 1,    'NUMBEROFPAGES'          ),
 	'numberofarticles'       => array( 1,    'NUMBEROFARTICLES'       ),
 	'numberoffiles'          => array( 1,    'NUMBEROFFILES'          ),
@@ -246,6 +256,7 @@ $magicWords = array(
 	'img_width'              => array( 1,    '$1px'                   ),
 	'img_center'             => array( 1,    'center', 'centre'       ),
 	'img_framed'             => array( 1,    'framed', 'enframed', 'frame' ),
+	'img_page'               => array( 1,    'page=$1', 'page $1'     ),
 	'int'                    => array( 0,    'INT:'                   ),
 	'sitename'               => array( 1,    'SITENAME'               ),
 	'ns'                     => array( 0,    'NS:'                    ),
@@ -259,6 +270,8 @@ $magicWords = array(
 	'nocontentconvert'       => array( 0,    '__NOCONTENTCONVERT__', '__NOCC__'),
 	'currentweek'            => array( 1,    'CURRENTWEEK'            ),
 	'currentdow'             => array( 1,    'CURRENTDOW'             ),
+	'localweek'              => array( 1,    'LOCALWEEK'              ),
+	'localdow'               => array( 1,    'LOCALDOW'               ),
 	'revisionid'             => array( 1,    'REVISIONID'             ),
 	'plural'                 => array( 0,    'PLURAL:'                ),
 	'fullurl'                => array( 0,    'FULLURL:'               ),
@@ -274,14 +287,15 @@ $magicWords = array(
 	'currentversion'         => array( 1,    'CURRENTVERSION'         ),
 	'urlencode'              => array( 0,    'URLENCODE:'             ),
 	'currenttimestamp'       => array( 1,    'CURRENTTIMESTAMP'       ),
+	'localtimestamp'         => array( 1,    'LOCALTIMESTAMP'         ),
 	'directionmark'          => array( 1,    'DIRECTIONMARK', 'DIRMARK' ),
-	'language'               => array( 0,    '#LANGUAGE:' ),
+	'language'               => array( 0,    '#LANGUAGE:'             ),
 	'contentlanguage'        => array( 1,    'CONTENTLANGUAGE', 'CONTENTLANG' ),
 	'pagesinnamespace'       => array( 1,    'PAGESINNAMESPACE:', 'PAGESINNS:' ),
-	'numberofadmins'         => array( 1,    'NUMBEROFADMINS' ),
-	'formatnum'              => array( 0,    'FORMATNUM' ),
-	'padleft'				 => array( 0, 	 'PADLEFT' ),
-	'padright'				 => array( 0, 	 'PADRIGHT' ),
+	'numberofadmins'         => array( 1,    'NUMBEROFADMINS'         ),
+	'formatnum'              => array( 0,    'FORMATNUM'              ),
+	'padleft'                => array( 0,    'PADLEFT'                ),
+	'padright'               => array( 0,    'PADRIGHT'               ),
 
 );
 
@@ -1152,6 +1166,7 @@ created and by whom, and anything else you may know about it. If this is an imag
 'license' => 'Licensing',
 'nolicense' => 'None selected',
 'licenses' => '-', # Don't duplicate this in translations
+'upload_source_url' => ' (vaild, publicy accessible URL)',
 
 # Image list
 #
@@ -2370,6 +2385,13 @@ Please confirm that really want to recreate this page.',
 * Español|es
 * Italiano|it
 * Nederlands|nl",
+
+# Multipage image navigation
+'imgmultipageprev' => '&larr; previous page',
+'imgmultipagenext' => 'next page &rarr;',
+'imgmultigo' => 'Go!',
+'imgmultigotopre' => 'Go to page',
+'imgmultigotopost' => '',
 
 # Table pager
 'ascending_abbrev' => 'asc',

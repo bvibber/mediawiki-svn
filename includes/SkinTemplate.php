@@ -197,9 +197,11 @@ class SkinTemplate extends Skin {
 		if ( $nsname === NULL ) $nsname = $this->mTitle->getNsText();
 		
 		$tpl->set( 'nscanonical', $nsname );
+		$tpl->set( 'nsnumber', $this->mTitle->getNamespace() );
 		$tpl->set( 'titleprefixeddbkey', $this->mTitle->getPrefixedDBKey() );
 		$tpl->set( 'titletext', $this->mTitle->getText() );
 		$tpl->set( 'articleid', $this->mTitle->getArticleId() );
+		$tpl->set( 'isarticle', $wgOut->isArticle() );
 		                
 		$tpl->setRef( "thispage", $this->thispage );
 		$subpagestr = $this->subPageSubtitle();
@@ -572,7 +574,7 @@ class SkinTemplate extends Skin {
 		$text = wfMsg( $message );
 		if ( $text == "&lt;$message&gt;" ) {
 			global $wgContLang;
-			$text = $wgContLang->getNsText( Namespace::getSubject( $title->getNamespace() ) );
+			$text = $wgContLang->getFormattedNsText( Namespace::getSubject( $title->getNamespace() ) );
 		}
 
 		return array(

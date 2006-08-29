@@ -337,6 +337,10 @@ $wgSharedUploadDBname = false;
 $wgSharedUploadDBprefix = '';
 /** Cache shared metadata in memcached. Don't do this if the commons wiki is in a different memcached domain */
 $wgCacheSharedUploads = true;
+/** Allow for upload to be copied from an URL. Requires Special:Upload?source=web */
+$wgAllowCopyUploads = false;
+/** Max size for uploads, in bytes */
+$wgMaxUploadSize = 1024*1024*100; # 100MB
 
 /**
  * Point the upload navigation link to an external URL
@@ -449,7 +453,6 @@ $wgDBconnection     = '';
 /** Database username */
 $wgDBuser           = 'wikiuser';
 /** Database type
- * "mysql" for working code and "PostgreSQL" for development/broken code
  */
 $wgDBtype           = "mysql";
 /** Search type
@@ -481,7 +484,7 @@ $wgSharedDB = null;
 #   dbname:      Default database name
 #   user:        DB user
 #   password:    DB password
-#   type:        "mysql" or "pgsql"
+#   type:        "mysql" or "postgres"
 #   load:        ratio of DB_SLAVE load, must be >=0, the sum of all loads must be >0
 #   groupLoads:  array of load ratios, the key is the query group name. A query may belong
 #                to several groups, the most specific group defined here is used.
@@ -904,7 +907,7 @@ $wgGroupPermissions['bot'  ]['autoconfirmed']   = true;
 $wgGroupPermissions['sysop']['block']           = true;
 $wgGroupPermissions['sysop']['createaccount']   = true;
 $wgGroupPermissions['sysop']['delete']          = true;
-$wgGroupPermissions['sysop']['deletedhistory']  = true; // can view deleted history entries, but not see or restore the text
+$wgGroupPermissions['sysop']['deletedhistory'] 	= true; // can view deleted history entries, but not see or restore the text
 $wgGroupPermissions['sysop']['editinterface']   = true;
 $wgGroupPermissions['sysop']['import']          = true;
 $wgGroupPermissions['sysop']['importupload']    = true;
@@ -917,8 +920,9 @@ $wgGroupPermissions['sysop']['trackback']       = true;
 $wgGroupPermissions['sysop']['upload']          = true;
 $wgGroupPermissions['sysop']['reupload']        = true;
 $wgGroupPermissions['sysop']['reupload-shared'] = true;
-$wgGroupPermissions['sysop']['unwatchedpages']	= true;
+$wgGroupPermissions['sysop']['unwatchedpages']  = true;
 $wgGroupPermissions['sysop']['autoconfirmed']   = true;
+$wgGroupPermissions['sysop']['upload_by_url']   = true;
 
 // Permission to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
@@ -1030,6 +1034,9 @@ $wgFileCacheDirectory = "{$wgUploadDirectory}/cache";
  * Requires zlib support enabled in PHP.
  */
 $wgUseGzip = false;
+
+/** Whether MediaWiki should send an ETag header */
+$wgUseETag = false;
 
 # Email notification settings
 #
