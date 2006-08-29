@@ -88,7 +88,8 @@ $namespaceNames = array(
 	NS_CATEGORY         => 'Category',
 	NS_CATEGORY_TALK    => 'Category_talk',
 	LQT_NS_CHANNEL      => 'Discussion',
-	LQT_NS_THREAD       => 'Thread'
+	LQT_NS_THREAD       => 'Thread',
+	LQT_NS_ARCHIVE		=> 'Archive'
 );
 
 /**
