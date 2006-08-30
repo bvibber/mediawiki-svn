@@ -48,7 +48,7 @@ function efAjaxTestSetup() {
  * This loads CategoryTreeFunctions.php and calls CategoryTree::ajax()
  */
 function efAjaxTest( $text, $usestring, $httpcache, $lastmod, $error ) {
-	$text .= "(".wfTimestampNow()."|u:$usestring|h:$httpcache|l:$lastmod|e:$error)";
+	$text = htmlspecialchars($text) . "(".wfTimestampNow().")";
 	
 	if ($usestring) return $text;
 	else {
