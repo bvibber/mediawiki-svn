@@ -175,8 +175,7 @@ class MediaWiki {
 		if( NS_MEDIA == $title->getNamespace() || NS_EMBED == $title->getNamespace() ) {
 			// FIXME: where should this go?
 			$title = Title::makeTitle( NS_IMAGE, $title->getDBkey() );
-		}
-	
+		}	
 		switch( $title->getNamespace() ) {
 		case NS_IMAGE:
 			return new ImagePage( $title );

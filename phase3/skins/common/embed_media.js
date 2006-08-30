@@ -5,7 +5,7 @@
 	//if they don't have annodex & on a win/linux look for java/plugin
 	//if on mac force java plugin. 
 */
-
+var wiki_web_path = 'http://metavid.ucsc.edu/wiki_dev/phase3/';
 //some client detection code: 
 var agt=navigator.userAgent.toLowerCase();
 var is_major = parseInt(navigator.appVersion);
@@ -119,6 +119,9 @@ function vlc_embed(opt){
 	//show the controls:	
 	document.getElementById("cnt_" + opt['target']).style.display='inline';
 	
+	//set the media url to the m3u file:
+	opt['media_url']=wiki_web_path + 'embed/m3u.php?media_url='+opt['media_url'];
+	//alert('url:'+opt['media_url']);
 	setTimeout('run_vlc(\''+opt['target']+'\',\''+opt['media_url']+'\')', 200);
 }
 	
@@ -137,7 +140,6 @@ function run_vlc(target, media_url){
 	document.video_Launch_of_Skylab_ogg.play();*/
 }
 function jre_embed(opt){
-
 	//need to build an iframe include only really deal with java security issues
 	//@todo make sure the embed code is coming from the same server as the media
 	var iframe = document.createElement("iframe");
@@ -156,9 +158,9 @@ function jre_embed(opt){
 
 	//for now use jcraft for audio: 
 	if(opt['stream_type']=='audio'){
-		var iframe_src = 'http://metavid.ucsc.edu/wiki_dev/phase3/embed/jorbis_embed.php';
+		var iframe_src = wiki_web_path + 'embed/jorbis_embed.php';
 	}else{	
-		var iframe_src = 'http://metavid.ucsc.edu/wiki_dev/phase3/embed/cortado_embed.php';
+		var iframe_src = wiki_web_path + 'embed/cortado_embed.php';
 	}	
 	iframe_src+= "?media_url=" + opt['media_url'];
 	iframe_src+= "&stream_type=" + opt['stream_type'];
