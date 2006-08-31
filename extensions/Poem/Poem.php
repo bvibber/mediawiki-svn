@@ -60,7 +60,7 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 	
 	return wfOpenElement( 'div', $attribs ) .
 		"\n" .
-		$ret->getText() .
+		trim( $ret->getText() ) .
 		"\n</div>";
 }
 
