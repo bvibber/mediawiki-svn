@@ -21,7 +21,7 @@ class BoardVotePage extends SpecialPage {
 
 	function execute( $par ) {
 		global $wgUser, $wgDBname, $wgInputEncoding, $wgRequest, 
-			$wgBoardVoteEditCount, $wgBoardVoteEndDate;
+			$wgBoardVoteEditCount, $wgBoardVoteEndDate, $wgBoardVoteStartDate;
 
 		$this->mUserKey = iconv( $wgInputEncoding, "UTF-8", $wgUser->getName() ) . "@$wgDBname";
 		$this->mPosted = $wgRequest->wasPosted();
@@ -42,14 +42,28 @@ class BoardVotePage extends SpecialPage {
 
 		$this->setHeaders();
 
+		global $wgOut;
+		
+		if ( wfTimestampNow() < $wgBoardVoteStartDate && !$this->isAdmin() ) {
+			$wgOut->addWikiText( wfMsg( 'boardvote_notstarted' ) );
+			return;
+		}
+
+		if ( $wgUser->isBlocked() ) {
+			$wgOut->blockedPage();
+			return;
+		}
+		
 		if ( wfTimestampNow() > $wgBoardVoteEndDate ) {
 			$this->mFinished = true; 
 		} else {
 			$this->mFinished = false;
 		}
 
-		global $wgOut;
-		$wgOut->addWikiText( wfMsg( 'boardvote_closed' ) );
+
+		if ( $this->mFinished ) {
+				$wgOut->addWikiText( wfMsg( 'boardvote_closed' ) );
+		}
 
 		if ( $this->mAction == "list" ) {
 			$this->displayList();
