@@ -125,7 +125,7 @@ class BoardVotePage extends SpecialPage {
 	}
 
 	function logVote() {
-		global $wgUser, $wgDBname, $wgIP, $wgOut, $wgGPGPubKey;
+		global $wgUser, $wgDBname, $wgIP, $wgOut, $wgGPGPubKey, $wgRequest;
 		$fname = "BoardVotePage::logVote";
 		
 		$now = wfTimestampNow();
