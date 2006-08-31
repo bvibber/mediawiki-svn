@@ -1,7 +1,5 @@
 <?php
 
-require_once("ProgressBar.php");
-
 $depth = array();
 $specificXMLParser;
 

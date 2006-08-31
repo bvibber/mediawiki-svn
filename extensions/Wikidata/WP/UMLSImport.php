@@ -3,9 +3,6 @@ define('MEDIAWIKI', true );
 require_once("../../../LocalSettings.php");
 require_once("../WiktionaryZ/Expression.php");
 
-// Uncomment following line for versioning support
-require_once("../WiktionaryZ/Transaction.php");
-
 require_once("ProgressBar.php");
 require_once("Setup.php");
 
@@ -14,13 +11,13 @@ class UMLSImportResult {
 	public $sourceAbbreviations = array();
 }
 
-function importUMLSFromDatabase($server, $databaseName, $userName, $password) {
+/* 
+ * Import UMLS entirely. Be sure to have started a transaction first!
+ */
+function importUMLSFromDatabase($server, $databaseName, $userName, $password, $sources = null) {
 	$result = new UMLSImportResult;
 
 	openDatabase($server, $databaseName, $userName, $password);
-	
-	// Uncomment following line for versioning support
-	startNewTransaction(0, 0, "UMLS Import");
 	
 	$languageId = 85;
 	echo "Creating UMLS collections\n";
@@ -37,7 +34,7 @@ function importUMLSFromDatabase($server, $databaseName, $userName, $password) {
 	addDefinedMeaningToCollection(getCollectionMeaningId($semanticNetworkRelationTypesCollectionId), $umlsCollectionId, "RL");
 	
 	echo "Loading source abbreviations\n";
-	$sourceAbbreviations = loadSourceAbbreviations();
+	$sourceAbbreviations = loadSourceAbbreviations($sources);
 	
 	echo "Loading languages\n";
 	$isoLanguages = loadIsoLanguages();
@@ -45,13 +42,19 @@ function importUMLSFromDatabase($server, $databaseName, $userName, $password) {
 	echo "Importing UMLS terms per source\n";
 	$i = 1;
 	foreach ($sourceAbbreviations as $sab => $source) {
-//		if($sab == "ICPC" || $sab == "SRC" || $sab == "GO" || $sab == "NCI") {
-			$collectionId = bootstrapCollection($source, $languageId, "");
-			$result->sourceAbbreviations[$sab] = $collectionId;
-			clearProgressBar();
-			importUMLSTerms($i, $source, $sab, $umlsCollectionId, $collectionId, $languageId, $isoLanguages);
-			$i++;				
-//		}
+		$collectionId = bootstrapCollection($source, $languageId, "");
+		$result->sourceAbbreviations[$sab] = $collectionId;
+		echo "  $i: $sab - $source\n";
+		importUMLSTerms($sab, $umlsCollectionId, $collectionId, $languageId, $isoLanguages);
+		$i++;				
+	}
+	
+	echo "Importing UMLS definitions per source\n";
+	$i = 1;
+	foreach ($sourceAbbreviations as $sab => $source) {
+		echo "  $i: $sab - $source\n";
+		importUMLSDefinitions($sab, $umlsCollectionId, $result->sourceAbbreviations[$sab], $languageId);
+		$i++;				
 	}
 	
 	echo "Importing UMLS relation types\n";
@@ -63,17 +66,17 @@ function importUMLSFromDatabase($server, $databaseName, $userName, $password) {
 	echo "Importing UMLS relations per source\n";
 	$relationCollection = getCollectionContents($relationCollectionId);
 	$relationAttributesCollection = getCollectionContents($relationAttributesCollectionId);
-	$i = 0;
+	$i = 1;
 	
 	foreach ($sourceAbbreviations as $sab => $source) {
-//	 	if($sab == "ICPC" || $sab == "GO" || $sab == "NCI") {
-			echo "  $i: $source\n";
-			$query = "select cui1, cui2, rel from MRREL where sab like '$sab'";
-			importUMLSRelations($umlsCollectionId , $relationCollection, $query);
-			$query = "select cui1, cui2, rela from MRREL where sab like '$sab' and rela!=''";
-			importUMLSRelations($umlsCollectionId , $relationAttributesCollection, $query);
-			$i++;	 		
-//	 	}
+		echo "  $i: $sab - $source\n";
+		
+		$query = "select cui1, cui2, rel from MRREL where sab like '$sab'";
+		importUMLSRelations($umlsCollectionId , $relationCollection, $query);
+		
+		$query = "select cui1, cui2, rela from MRREL where sab like '$sab' and rela!=''";
+		importUMLSRelations($umlsCollectionId , $relationAttributesCollection, $query);
+		$i++;	 		
 	}
 	
 	echo "Importing semantic network types\n";
@@ -88,10 +91,8 @@ function importUMLSFromDatabase($server, $databaseName, $userName, $password) {
 	$attributeTypes = getCollectionContents($semanticNetworkSemanticTypesCollectionId);
 	$i = 1;
 	foreach ($sourceAbbreviations as $sab => $source) {
-//	 	if($sab == "ICPC" || $sab == "GO" || $sab == "NCI") {
-			echo "  " . $i++ . ": $source\n";
-			importUMLSSemanticTypes($sab, $umlsCollectionId, $attributeTypes);	 		
-//	 	}
+		echo "  " . $i++ . ": $sab - $source\n";
+		importUMLSSemanticTypes($sab, $umlsCollectionId, $attributeTypes);	 		
 	}
 	
 	return $result;
@@ -119,32 +120,43 @@ function loadIsoLanguages(){
 	return $languages;  	
 }
 
-function loadSourceAbbreviations() {
+function loadSourceAbbreviations($sources = null) {
 	global
 		$db;
 	
 	$sourceAbbreviations = array();	
 	$queryResult = mysql_query("select RSAB, SON from MRSAB", $db);
 	
-	while ($sab = mysql_fetch_object($queryResult)) {
-	   $sourceAbbreviations[$sab->RSAB] = $sab->SON;
-	}
+	while ($sab = mysql_fetch_object($queryResult)) 
+   		if ($sources == null || in_array($sab->RSAB, $sources))
+   			$sourceAbbreviations[$sab->RSAB] = str_replace('_', '-', $sab->SON);
 		
 	mysql_free_result($queryResult);
 	
 	return $sourceAbbreviations;  
 }
 
-function importUMLSTerms($index, $name, $sab, $umlsCollectionId, $sourceCollectionId, $languageId, $isoLanguages) {
+function getSourceName($sourceAbbreviation) {
+	global
+		$db;
+	
+	$sourceAbbreviations = array();	
+	$queryResult = mysql_query("select SON from MRSAB WHERE RSAB='$source'", $db);
+	
+	$sab = mysql_fetch_object($queryResult); 
+	$result = $sab->SON;
+		
+	mysql_free_result($queryResult);
+	
+	return $result;  
+}
+
+function importUMLSTerms($sab, $umlsCollectionId, $sourceCollectionId, $languageId, $isoLanguages) {
 	global
 		$db;
 	
 	$queryResult = mysql_query("select str, cui, lat, code from MRCONSO where sab like '$sab'", $db);
-	$rowCount = mysql_num_rows($queryResult);
-	
-	echo "  $index: $name ($rowCount)\n";
-	$i = 0;
-	progressBar(0, $rowCount);
+	initializeProgressBar(mysql_num_rows($queryResult), 100);
 
 	$collectionMeaningId = getCollectionMeaningId($sourceCollectionId);
 
@@ -157,26 +169,51 @@ function importUMLSTerms($index, $name, $sab, $umlsCollectionId, $sourceCollecti
 			addDefinedMeaningToCollection($definedMeaningId, $umlsCollectionId, $umlsTerm->cui);
 		}
 		$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);
-   		$definitionQueryResult = mysql_query("select def, sab from MRDEF where sab = '$sab' and cui='$umlsTerm->cui'", $db);
-		if($definition = mysql_fetch_object($definitionQueryResult)) {
-			if(!getDefinedMeaningDefinitionId($definedMeaningId)) {
-				addDefinedMeaningDefiningDefinition($definedMeaningId, $languageId, $definition->def);
-			}
-			addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $definition->def, $collectionMeaningId);
-			
-			while ($definition = mysql_fetch_object($definitionQueryResult)) {
-				addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $definition->def, $collectionMeaningId);
-			}
-		}
-		mysql_free_result($definitionQueryResult);
+//		$definitionQueryResult = mysql_query("select def, sab from MRDEF where sab = '$sab' and cui='$umlsTerm->cui'", $db);
+//		if($definition = mysql_fetch_object($definitionQueryResult)) {
+//			if(!getDefinedMeaningDefinitionId($definedMeaningId)) {
+//				addDefinedMeaningDefiningDefinition($definedMeaningId, $languageId, $definition->def);
+//			}
+//			addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $definition->def, $collectionMeaningId);
+//			
+//			while ($definition = mysql_fetch_object($definitionQueryResult)) {
+//				addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $definition->def, $collectionMeaningId);
+//			}
+//		}
+//		mysql_free_result($definitionQueryResult);
 
 		addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $sourceCollectionId, $umlsTerm->code);
-		$i++;
-		
-		if ($i % 50 == 0)
-			progressBar($i, $rowCount);
+		advanceProgressBar(1);
 	}
-	mysql_free_result($queryResult);  
+	
+	mysql_free_result($queryResult);
+	clearProgressBar();
+}
+
+function importUMLSDefinitions($sab, $umlsCollectionId, $sourceCollectionId, $languageId) {
+	global
+		$db;
+	
+	$queryResult = mysql_query("select def, cui from MRDEF where sab = '$sab'", $db);
+	initializeProgressBar(mysql_num_rows($queryResult), 100);
+
+	$collectionMeaningId = getCollectionMeaningId($sourceCollectionId);
+
+	while ($definition = mysql_fetch_object($queryResult)) {
+		$definedMeaningId = getDefinedMeaningFromCollection($umlsCollectionId, $definition->cui);
+		
+		if($definedMeaningId) {
+			if(!getDefinedMeaningDefinitionId($definedMeaningId)) 
+				addDefinedMeaningDefiningDefinition($definedMeaningId, $languageId, $definition->def);
+
+			addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $definition->def, $collectionMeaningId);
+		}
+		
+		advanceProgressBar(1);
+	}
+	
+	mysql_free_result($queryResult);
+	clearProgressBar();
 }
 
 function importUMLSRelationTypes($relationCollectionId, $languageId) {
@@ -220,6 +257,8 @@ function importUMLSRelations($umlsCollectionId, $relationCollectionContents, $qu
 		$db;
 
 	$queryResult = mysql_query($query, $db);
+	initializeProgressBar(mysql_num_rows($queryResult), 100);
+	
 	while ($relation = mysql_fetch_row($queryResult)) {
 		$relationType = $relation[2];
 		if(strcmp($relationType, 'CHD') == 0) {
@@ -245,8 +284,11 @@ function importUMLSRelations($umlsCollectionId, $relationCollectionContents, $qu
 			print_r($relationCollectionContents);
 			print_r($relation);
 		}
-		addRelation($definedMeaningId2, $relationMeaningId, $definedMeaningId1);		
+		addRelation($definedMeaningId2, $relationMeaningId, $definedMeaningId1);	
+		advanceProgressBar(1);	
 	}	
+	
+	clearProgressBar();
 }
 
 function importSNTypes($collectionId, $query, $languageId) {
@@ -303,6 +345,9 @@ function importUMLSSemanticTypes($sab, $collectionId, $attributeTypes) {
 
 	$query = "SELECT MRSTY.CUI, MRSTY.STY FROM MRCONSO,MRSTY where MRCONSO.SAB like '$sab' and MRCONSO.CUI=MRSTY.CUI";
 	$queryResult = mysql_query($query, $db);
+	
+	initializeProgressBar(mysql_num_rows($queryResult), 100);
+	
 	while ($attribute = mysql_fetch_object($queryResult)) {
 		$definedMeaningId = getDefinedMeaningFromCollection($collectionId, $attribute->CUI);
 		$attributeMeaningId = $attributeTypes[$attribute->STY];
@@ -315,8 +360,11 @@ function importUMLSSemanticTypes($sab, $collectionId, $attributeTypes) {
 			echo "Unknown attribute $attribute->STY\n";
 			print_r($attribute);
 		}
-		addRelation($definedMeaningId, 0, $attributeMeaningId);
-	}	
+		addClassMembership($definedMeaningId, $attributeMeaningId);
+		advanceProgressBar(1);
+	}
+	
+	clearProgressBar();	
 }
 
 ?>

@@ -1,53 +1,45 @@
 <?php
 
 require_once('XMLImport.php');
+//require_once('ProgressBar.php');
+//require_once('..\WiktionaryZ\Expression.php');
 
-function importSwissProt($xmlFileName, $umlsCollectionId, $goCollectionId, $EC2GoMapping, $keyword2GoMapping) {
-	// Uncomment following line for versioning support
-	startNewTransaction(10, 0, "Swiss-Prot Import");
-
-	// Find some UMLS concepts for cross references from SwissProt:
-	$umlsTerms = array();
-	$umlsTerms["protein"] = getCollectionMemberId($umlsCollectionId, "C0033684");
-	$umlsTerms["gene"] = getCollectionMemberId($umlsCollectionId, "C0017337");
-	$umlsTerms["organism"] = getCollectionMemberId($umlsCollectionId, "C0029235");
-	$umlsTerms["protein fragment"] = getCollectionMemberId($umlsCollectionId, "C1335533");
-
+/*
+ * Import Swiss-Prot from the XML file. Be sure to have started a transaction first!
+ */
+function importSwissProt($xmlFileName, $umlsCollectionId = 0, $goCollectionId = 0, $EC2GoMapping = array(), $keyword2GoMapping = array()) {
 	// Create mappings from EC numbers and SwissProt keywords to GO term meaning id's:	
-	$goCollection = getCollectionContents($goCollectionId);
-
 	$EC2GoMeaningId = array();
-	foreach ($EC2GoMapping as $EC => $GO) {
-		if (array_key_exists($GO, $goCollection)) {
-			$goMeaningId = $goCollection[$GO];
-			$EC2GoMeaningId[$EC] = $goMeaningId;
-		}
-	}
-
 	$keyword2GoMeaningId = array();
-	foreach ($keyword2GoMapping as $keyword => $GO) {
-		if (array_key_exists($GO, $goCollection)) {
-			$goMeaningId = $goCollection[$GO];
-			$keyword2GoMeaningId[$keyword] = $goMeaningId;
+
+	if ($goCollectionId != 0) {
+		$goCollection = getCollectionContents($goCollectionId);
+	
+		foreach ($EC2GoMapping as $EC => $GO) {
+			if (array_key_exists($GO, $goCollection)) {
+				$goMeaningId = $goCollection[$GO];
+				$EC2GoMeaningId[$EC] = $goMeaningId;
+			}
+		}
+	
+		foreach ($keyword2GoMapping as $keyword => $GO) {
+			if (array_key_exists($GO, $goCollection)) {
+				$goMeaningId = $goCollection[$GO];
+				$keyword2GoMeaningId[$keyword] = $goMeaningId;
+			}
 		}
 	}
 
 	// SwissProt import:
 	$numberOfBytes = filesize($xmlFileName);
-	progressBar(0, $numberOfBytes);
+	initializeProgressBar($numberOfBytes, 5000000);
 	$fileHandle = fopen($xmlFileName, "r");
-	importEntriesFromXMLFile($fileHandle, $umlsTerms, $EC2GoMeaningId, $keyword2GoMeaningId);
+	importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $EC2GoMeaningId, $keyword2GoMeaningId);
 
 	fclose($fileHandle);	
 }
 
-function importEntriesFromXMLFile($fileHandle, $umlsTerms, $EC2GoMeaningId, $keyword2GoMeaningId) {
-//	$selectLanguageId = 'SELECT language_id FROM language_names WHERE language_name ="English"';
-//	$queryResult = $dbr->query($selectLanguageId);
-//	if ($languageIdObject = $dbr->fetchObject($queryResult)){
-//		$languageId = $languageIdObject->language_id;
-//	}
-
+function importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $EC2GoMeaningIdMapping, $keyword2GoMeaningIdMapping) {
 	$languageId = 85;
 	$collectionId = bootstrapCollection("Swiss-Prot", $languageId, "");
 	$classCollectionId = bootstrapCollection("Swiss-Prot classes", $languageId, "ATTR");
@@ -62,22 +54,18 @@ function importEntriesFromXMLFile($fileHandle, $umlsTerms, $EC2GoMeaningId, $key
 	$xmlParser->relationTypeCollectionId = $relationTypeCollectionId;
 	$xmlParser->textAttibuteCollectionId = $textAttibuteCollectionId;
 	$xmlParser->ECCollectionId = $ECCollectionId;
-	$xmlParser->EC2GoMeaningIdMapping = $EC2GoMeaningId;
-	$xmlParser->keyword2GoMeaningIdMapping = $keyword2GoMeaningId;
+	$xmlParser->EC2GoMeaningIdMapping = $EC2GoMeaningIdMapping;
+	$xmlParser->keyword2GoMeaningIdMapping = $keyword2GoMeaningIdMapping;
 	
-	$xmlParser->setUMLSTerms($umlsTerms);
-//	$xmlParser->classes["protein"] = $umlsTerms["protein"];
-//	$xmlParser->addClass("protein");
-//	$xmlParser->classes["protein fragment"] = $umlsTerms["protein fragment"];
-//	$xmlParser->addClass("protein fragment");
-//	$xmlParser->classes["organism"] = $umlsTerms["organism"];
-//	$xmlParser->addClass("organism");
-	$xmlParser->addClass("organism specific protein");
-//	$xmlParser->classes["gene"] = $umlsTerms["gene"];
-//	$xmlParser->addClass("gene");
-	$xmlParser->addClass("organism specific gene");
-	$xmlParser->addClass("text attribute");
-	$xmlParser->addClass("enzyme commission number");
+	// Find some UMLS concepts for cross references from SwissProt:
+	if ($umlsCollectionId != 0) {
+		$xmlParser->proteinConceptId = getCollectionMemberId($umlsCollectionId, "C0033684");
+		$xmlParser->geneConceptId = getCollectionMemberId($umlsCollectionId, "C0017337");
+		$xmlParser->organismConceptId = getCollectionMemberId($umlsCollectionId, "C0029235");
+		$xmlParser->proteinFragmentConceptId = getCollectionMemberId($umlsCollectionId, "C1335533");
+	}
+	
+	$xmlParser->initialize();
 	
 	parseXML($fileHandle, $xmlParser);
 }
@@ -93,32 +81,105 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $keyword2GoMeaningIdMapping;
 	public $numberOfEntries = 0;
 	
-	public $classes = array();
-	public $relationTypes = array();
 	public $proteins = array();
 	public $species = array();
 	public $genes = array();
 	public $attributes = array();
 	public $ECNumbers = array();
 	
-	public function addClass($name) {
-		if (array_key_exists($name, $this->classes)) {
-			$definedMeaningId = $this->classes[$name];
-		}
-		else {
-			$definedMeaningId = $this->addExpressionAsDefinedMeaning($name, $name, $name, $this->classCollectionId);
-			$this->classes[$name] = $definedMeaningId;
-		}
-		return $definedMeaningId;		
+	public $proteinConceptId = 0;
+	public $proteinFragmentConceptId = 0;
+	public $organismSpecificProteinConceptId = 0;
+	public $organismSpecificGeneId = 0;
+	public $geneConceptId = 0;
+	public $organismConceptId = 0;
+	public $referencedByConceptId = 0;
+	public $keywordConceptId = 0;
+	public $includesConceptId = 0;
+	public $includedInConceptId = 0;
+	public $containsConceptId = 0;
+	public $containedInConceptId = 0;
+	public $textAttributeConceptId = 0;
+	public $enzymeCommissionNumberConceptId = 0;
+	public $activityConceptId = 0;
+	
+	protected function bootstrapDefinedMeaning($spelling, $definition) {
+		$expression = $this->getOrCreateExpression($spelling);
+		$definedMeaningId = createNewDefinedMeaning($expression->id, $this->languageId, $definition);
+
+		return $definedMeaningId;
 	}
 	
-	public function setUMLSTerms($umlsTerms) {
-		foreach ($umlsTerms as $term => $definedMeaningId) {
-			$this->classes[$term] = $definedMeaningId;
-			addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $this->classCollectionId, $term);
-			$this->relationTypes[$term] = $definedMeaningId;
-			addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $this->relationTypeCollectionId, $term);
-		}
+	protected function bootstrapConceptIds() {
+		if ($this->proteinConceptId == 0)
+			$this->proteinConceptId = $this->bootstrapDefinedMeaning("protein", "protein");
+
+		if ($this->proteinFragmentConceptId == 0)
+			$this->proteinFragmentConceptId = $this->bootstrapDefinedMeaning("protein fragment", "protein fragment");
+		
+		if ($this->organismSpecificProteinConceptId == 0)
+			$this->organismSpecificProteinConceptId = $this->bootstrapDefinedMeaning("organism specific protein", "organism specific protein");
+
+		if ($this->organismSpecificGeneConceptId == 0)
+			$this->organismSpecificGeneConceptId = $this->bootstrapDefinedMeaning("organism specific gene", "organism specific gene");
+		
+		if ($this->geneConceptId == 0)
+			$this->geneConceptId = $this->bootstrapDefinedMeaning("gene", "gene");
+		
+		if ($this->organismConceptId == 0)
+			$this->organismConceptId = $this->bootstrapDefinedMeaning("organism", "organism");
+			
+		if ($this->referencedByConceptId == 0)
+			$this->referencedByConceptId = $this->bootstrapDefinedMeaning("referenced by", "referenced by");
+		
+		if ($this->keywordConceptId == 0)
+			$this->keywordConceptId = $this->bootstrapDefinedMeaning("keyword", "keyword");
+		
+		if ($this->includesConceptId == 0)
+			$this->includesConceptId = $this->bootstrapDefinedMeaning("includes", "includes");
+		
+		if ($this->includedInConceptId == 0)
+			$this->includedInConceptId = $this->bootstrapDefinedMeaning("included in", "included in");
+		
+		if ($this->containsConceptId == 0)
+			$this->containsConceptId = $this->bootstrapDefinedMeaning("contains", "contains");
+		
+		if ($this->containedInConceptId == 0)
+			$this->containedInConceptId = $this->bootstrapDefinedMeaning("contained in", "contained in");
+		
+		if ($this->enzymeCommissionNumberConceptId == 0)
+			$this->enzymeCommissionNumberConceptId = $this->bootstrapDefinedMeaning("enzyme commission number", "organism specific gene");
+
+		if ($this->textAttributeConceptId == 0)
+			$this->textAttributeConceptId = $this->bootstrapDefinedMeaning("text attribute", "text attribute");
+
+		if ($this->activityConceptId == 0)
+			$this->activityConceptId = $this->bootstrapDefinedMeaning("activity", "activity");
+	}
+	
+	public function initialize() {
+		$this->bootstrapConceptIds();
+		
+		// Add concepts to classes
+		addDefinedMeaningToCollectionIfNotPresent($this->proteinConceptId, $this->classCollectionId, "protein");
+		addDefinedMeaningToCollectionIfNotPresent($this->proteinFragmentConceptId, $this->classCollectionId, "protein fragment");
+		addDefinedMeaningToCollectionIfNotPresent($this->geneConceptId, $this->classCollectionId, "gene");
+		addDefinedMeaningToCollectionIfNotPresent($this->organismConceptId, $this->classCollectionId, "organism");
+		addDefinedMeaningToCollectionIfNotPresent($this->organismSpecificProteinConceptId, $this->classCollectionId, "organism specific protein");
+		addDefinedMeaningToCollectionIfNotPresent($this->textAttributeConceptId, $this->classCollectionId, "text attribute");
+		addDefinedMeaningToCollectionIfNotPresent($this->enzymeCommissionNumberConceptId, $this->classCollectionId, "enzyme commission number");
+		
+		// Add concepts to relation types
+		addDefinedMeaningToCollectionIfNotPresent($this->proteinConceptId, $this->relationTypeCollectionId, "protein");
+		addDefinedMeaningToCollectionIfNotPresent($this->referencedByConceptId, $this->relationTypeCollectionId, "referenced by");
+		addDefinedMeaningToCollectionIfNotPresent($this->geneConceptId, $this->relationTypeCollectionId, "gene");
+		addDefinedMeaningToCollectionIfNotPresent($this->organismConceptId, $this->relationTypeCollectionId, "organism");
+		addDefinedMeaningToCollectionIfNotPresent($this->activityConceptId, $this->relationTypeCollectionId, "activity");
+		addDefinedMeaningToCollectionIfNotPresent($this->keywordConceptId, $this->relationTypeCollectionId, "keyword");
+		addDefinedMeaningToCollectionIfNotPresent($this->includesConceptId, $this->relationTypeCollectionId, "includes");
+		addDefinedMeaningToCollectionIfNotPresent($this->includedInConceptId, $this->relationTypeCollectionId, "included in");
+		addDefinedMeaningToCollectionIfNotPresent($this->containsConceptId, $this->relationTypeCollectionId, "contains");
+		addDefinedMeaningToCollectionIfNotPresent($this->containedInConceptId, $this->relationTypeCollectionId, "contained in");
 	}
 	
 	public function startElement($parser, $name, $attributes) {
@@ -133,10 +194,11 @@ class SwissProtXMLParser extends BaseXMLParser {
 			$this->stack[] = $handler;						
 		}
 		else {
-			if (count($this->stack) == 1 && $this->numberOfEntries % 10 == 0) {
+			if (count($this->stack) == 1) {
 				$currentByteIndex = xml_get_current_byte_index($parser);
-				progressBar($currentByteIndex, $numberOfBytes);
+				setProgressBarPosition($currentByteIndex);
 			}
+			
 			BaseXMLParser::startElement($parser, $name, $attributes);
 		}
 	}
@@ -167,9 +229,9 @@ class SwissProtXMLParser extends BaseXMLParser {
 		}
 		
 		if($protein->fragment) 
-			addRelation($definedMeaningId, 0, $this->classes["protein fragment"]);
+			addClassMembership($definedMeaningId, $this->proteinFragmentConceptId);
 		else
-			addRelation($definedMeaningId, 0, $this->classes["protein"]);			
+			addClassMembership($definedMeaningId, $this->proteinConceptId);			
 		
 		return $definedMeaningId;
 	}
@@ -183,7 +245,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 			$this->genes[$name] = $definedMeaningId;
 		}
 		
-		addRelation($definedMeaningId, 0, $this->classes["gene"]);
+		addClassMembership($definedMeaningId, $this->geneConceptId);
 		
 		foreach ($synonyms as $key => $synonym) {
 			addSynonymOrTranslation($synonym, $this->languageId, $definedMeaningId, true);
@@ -201,7 +263,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 			$this->species[$name] = $definedMeaningId;
 		}
 		
-		addRelation($definedMeaningId, 0, $this->classes["organism"]);
+		addClassMembership($definedMeaningId, $this->organismConceptId);
 		
 		foreach ($translations as $key => $translation) {
 			addSynonymOrTranslation($translation, $this->languageId, $definedMeaningId, true);
@@ -211,51 +273,39 @@ class SwissProtXMLParser extends BaseXMLParser {
 	}
 	
 	public function addEntry($entry, $proteinMeaningId, $geneMeaningId, $organismSpeciesMeaningId) {
-		$activityLabel = "activity";
-		$proteinLabel = "protein";
-		$referencedByLabel = "referenced by";
-		$geneLabel = "gene";
-		$organismLabel = "organism";
-		$includesLabel = "includes";
-		$includedInLabel = "included in";
-		$containsLabel = "contains";
-		$containedInLabel = "contained in";
-		$keywordLabel = "keyword";
-				
-		
-//		change name to make sure it works in wiki-urls:
+		// change name to make sure it works in wiki-urls:
 		$swissProtExpression = str_replace('_', '-', $entry->name);
 		$entryExpression = $entry->protein->name . ' in ' . $entry->organism;
 		
-//		add the expression as defined meaning:
+		// add the expression as defined meaning:
 		$expression = $this->getOrCreateExpression($entryExpression);
 		$definedMeaningId = createNewDefinedMeaning($expression->id, $this->languageId, $entryExpression);
 		addDefinedMeaningToCollection($definedMeaningId, $this->collectionId, $entry->accession);
 		
-//		Add entry synonyms: Swiss-Prot entry name and species specific protein synonyms		
+		// Add entry synonyms: Swiss-Prot entry name and species specific protein synonyms		
 		addSynonymOrTranslation($swissProtExpression, $this->languageId, $definedMeaningId, true);
 		
 		foreach ($entry->protein->synonyms as $key => $synonym) 
 			addSynonymOrTranslation($synonym, $this->languageId, $definedMeaningId, true);
 
-//		set the class of the entry:
-		addRelation($definedMeaningId, 0, $this->classes["organism specific protein"]);
+		// set the class of the entry:
+		addClassMembership($definedMeaningId, $this->organismSpecificProteinConceptId);
 
-//		set the protein of the swiss prot entry and relate the protein to the entry:		
-		addRelation($definedMeaningId, $this->getOrCreateRelationTypeMeaningId($proteinLabel), $proteinMeaningId);
-		addRelation($proteinMeaningId, $this->getOrCreateRelationTypeMeaningId($referencedByLabel), $definedMeaningId);
+		// set the protein of the swiss prot entry and relate the protein to the entry:		
+		addRelation($definedMeaningId, $this->proteinConceptId, $proteinMeaningId);
+		addRelation($proteinMeaningId, $this->referencedByConceptId, $definedMeaningId);
 
-//		set the gene of the swiss prot entry and relate the gene to the entry:
+		// set the gene of the swiss prot entry and relate the gene to the entry:
 		if($geneMeaningId >= 0) {
-			addRelation($definedMeaningId, $this->getOrCreateRelationTypeMeaningId($geneLabel), $geneMeaningId);
-			addRelation($geneMeaningId, $this->getOrCreateRelationTypeMeaningId($referencedByLabel), $definedMeaningId);
+			addRelation($definedMeaningId, $this->geneConceptId, $geneMeaningId);
+			addRelation($geneMeaningId, $this->referencedByConceptId, $definedMeaningId);
 		}
 		
-//		set the species of the swiss prot entry and relate the species to the entry:		
-		addRelation($definedMeaningId, $this->getOrCreateRelationTypeMeaningId($organismLabel), $organismSpeciesMeaningId);
-		addRelation($organismSpeciesMeaningId, $this->getOrCreateRelationTypeMeaningId($referencedByLabel), $definedMeaningId);
+		// set the species of the swiss prot entry and relate the species to the entry:		
+		addRelation($definedMeaningId, $this->organismConceptId, $organismSpeciesMeaningId);
+		addRelation($organismSpeciesMeaningId, $this->referencedByConceptId, $definedMeaningId);
 		
-//		add the comment fields as text attributes:
+		// add the comment fields as text attributes:
 		foreach ($entry->comments as $key => $comment) {
 			$attributeMeaningId = $this->getOrCreateAttributeMeaningId($comment->type);
 			$textValue = $comment->text;
@@ -266,34 +316,34 @@ class SwissProtXMLParser extends BaseXMLParser {
 			addDefinedMeaningTextAttributeValue($definedMeaningId, $attributeMeaningId, $this->languageId, $textValue);
 		}		
 		
-//		add EC number:
+		// add EC number:
 		if($entry->EC != ""){
 			$ECNumberMeaningId = $this->getOrCreateECNumberMeaningId($entry->EC);
-			addRelation($definedMeaningId, $this->getOrCreateRelationTypeMeaningId($activityLabel), $ECNumberMeaningId);
-			addRelation($ECNumberMeaningId, $this->getOrCreateRelationTypeMeaningId($referencedByLabel), $definedMeaningId);
+			addRelation($definedMeaningId, $this->activityConceptId, $ECNumberMeaningId);
+			addRelation($ECNumberMeaningId, $this->referencedByConceptId, $definedMeaningId);
 		}
 		
-//		add keywords:
+		// add keywords:
 		foreach ($entry->keywords as $key => $keyword) {
 			if (array_key_exists($keyword, $this->keyword2GoMeaningIdMapping)) {
 				$goMeaningId = $this->keyword2GoMeaningIdMapping[$keyword];
-				addRelation($definedMeaningId, $this->getOrCreateRelationTypeMeaningId($keywordLabel), $goMeaningId);
-				addRelation($goMeaningId, $this->getOrCreateRelationTypeMeaningId($referencedByLabel), $definedMeaningId);
+				addRelation($definedMeaningId, $this->keywordConceptId, $goMeaningId);
+				addRelation($goMeaningId, $this->referencedByConceptId, $definedMeaningId);
 			}
 		}
 		
-// 		Add protein includes relations
+ 		// Add protein includes relations
 		foreach ($entry->protein->domains as $key => $domain) {
 			$domainMeaningId = $this->addProtein($domain);
-			addRelation($definedMeaningId, $this->getOrCreateRelationTypeMeaningId($includesLabel), $domainMeaningId);
-			addRelation($domainMeaningId, $this->getOrCreateRelationTypeMeaningId($includedInLabel), $definedMeaningId);
+			addRelation($definedMeaningId, $this->includesConceptId, $domainMeaningId);
+			addRelation($domainMeaningId, $this->includedInConceptId, $definedMeaningId);
 		}
 		
-// 		Add protein includes relations
+ 		// Add protein includes relations
 		foreach ($entry->protein->components as $key => $component) {
 			$componentMeaningId = $this->addProtein($component);
-			addRelation($definedMeaningId, $this->getOrCreateRelationTypeMeaningId($containsLabel), $componentMeaningId);
-			addRelation($componentMeaningId, $this->getOrCreateRelationTypeMeaningId($containedInLabel), $definedMeaningId);
+			addRelation($definedMeaningId, $this->containsConceptId, $componentMeaningId);
+			addRelation($componentMeaningId, $this->containedInConceptId, $definedMeaningId);
 		}
 		
 		return $definedMeaningId;		
@@ -305,7 +355,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		}
 		else {
 			$definedMeaningId = $this->addExpressionAsDefinedMeaning($attribute, $attribute, $attribute, $this->textAttibuteCollectionId);
-			addRelation($definedMeaningId, 0, $this->classes["text attribute"]);
+			addClassMembership($definedMeaningId, $this->textAttributeConceptId);
 			$this->attributes[$attribute] = $definedMeaningId;
 		}
 		return $definedMeaningId;		
@@ -315,7 +365,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		if (array_key_exists($EC, $this->ECNumbers)) {
 			$definedMeaningId = $this->ECNumbers[$EC];
 		}
-		elseif(array_key_exists($EC, $this->EC2GoMeaningIdMapping)) {
+		elseif (array_key_exists($EC, $this->EC2GoMeaningIdMapping)) {
 			$definedMeaningId = $this->EC2GoMeaningIdMapping[$EC];
 			$this->ECNumbers[$EC] = $definedMeaningId;
 			$expression = $this->getOrCreateExpression($EC);
@@ -323,7 +373,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		}
 		else {
 			$definedMeaningId = $this->addExpressionAsDefinedMeaning($EC, $EC, $EC, $this->ECCollectionId);
-			addRelation($definedMeaningId, 0, $this->classes["enzyme commission number"]);
+			addClassMembership($definedMeaningId, $this->enzymeCommissionNumberConceptId);
 			$this->ECNumbers[$EC] = $definedMeaningId;
 		}
 		return $definedMeaningId;		
@@ -343,17 +393,6 @@ class SwissProtXMLParser extends BaseXMLParser {
 		addDefinedMeaningToCollection($definedMeaningId, $collectionId, $internalIdentifier);
 		return $definedMeaningId;
 	}
-
-	public function getOrCreateRelationTypeMeaningId($spelling) {
-		if (array_key_exists($spelling, $this->relationTypes)){
-			$relationTypeMeaningId = $this->relationTypes[$spelling];
-		}
-		else {
-			$relationTypeMeaningId = $this->addExpressionAsDefinedMeaning($spelling, $spelling, $spelling, $this->relationTypeCollectionId);
-			$this->relationTypes[$spelling] = $relationTypeMeaningId;
-		}
-		return $relationTypeMeaningId;
-	}	
 } 
 
 class UniProtXMLElementHandler extends DefaultXMLElementHandler {

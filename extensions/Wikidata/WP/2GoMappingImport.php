@@ -1,6 +1,6 @@
 <?php
  
-function importEC2GoMapping($fileName) {
+function loadEC2GoMapping($fileName) {
 	$mapping=array();
 	$fileHandle = fopen($fileName, "r");
 	
@@ -31,7 +31,7 @@ function importEC2GoMapping($fileName) {
 	return $mapping;	
 }
 
-function importSwissProtKeyWord2GoMapping($fileName) {
+function loadSwissProtKeyWord2GoMapping($fileName) {
 	$mapping=array();
 	$fileHandle = fopen($fileName, "r");
 
