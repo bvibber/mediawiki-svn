@@ -10,7 +10,7 @@ $wgBoardVoteMessages = array();
 
 $wgBoardVoteMessages['en'] = array(
 	'boardvote'               => "Wikimedia Board of Trustees election",
-	'boardvote_entry'         => "<!--* [[Special:Boardvote/vote|Vote]]-->
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|List votes to date]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]",
 	'boardvote_intro'         => "

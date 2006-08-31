@@ -74,7 +74,6 @@ class BoardVotePage extends SpecialPage {
 		} elseif ( $this->mAction == "unstrike" ) {
 			$this->strike( $this->mId, true );
 		} elseif( $this->mAction == "vote" && !$this->mFinished ) {
-			return;
 			if ( !$wgUser->getID() ) {
 				$this->notLoggedIn();
 			} else {
