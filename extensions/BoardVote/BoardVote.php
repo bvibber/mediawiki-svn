@@ -22,6 +22,7 @@ $wgBoardVoteFirstEdit = '20060503000000';
 $wgBoardVoteCountDate = '20060801000000';
 $wgBoardVoteStartDate = '20060901000000';
 $wgBoardVoteEndDate =   '20060922000000';
+$wgBoardVoteDBServer = $wgDBserver;
 
 # Vote admins
 $wgGroupPermissions['boardvote']['boardvote'] = true;

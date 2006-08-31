@@ -31,8 +31,8 @@ candidate with the most votes in each position will be declared the winner of th
 position. In the event of a tie, a run-off election will be held.</p>
 
 <p>For more information, see:</p>
-<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2005\" class=\"external\">Election FAQ</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2005\" class=\"external\">Candidates</a></li></ul>
+<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">Election FAQ</a></li>
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">Candidates</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>You have voted before. However you may change
 your vote using the form below. Please check the boxes next to each candidate whom
@@ -53,10 +53,8 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Back]]",
-	'boardvote_notloggedin'   => "You are not logged in. To vote, you must use an account
-with at least $1 contributions before $2.",
-	'boardvote_notqualified'  => "Sorry, you made only $1 edits before $2. You 
-need at least $3 to be able to vote.",
+	'boardvote_notloggedin'   => "You are not logged in. To vote, you must use an account with at least $1 contributions before $2, and with a first edit before $3.",
+	'boardvote_notqualified'  => "You are not qualified to vote in this election. You need to have made $3 edits before $2, you have made $1. Also, your first edit was at $4, it needs to be before $5. ",
 	'boardvote_novotes'       => "Nobody has voted yet.",
 	'boardvote_time'          => "Time",
 	'boardvote_user'          => "User",
@@ -71,7 +69,7 @@ to date. $1 for the encrypted data.</p>",
 	'boardvote_unstrike'      => "Unstrike",
 	'boardvote_needadmin'     => "Only election administrators can perform this operation.",
 	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:  Vote open until July 12",
-	'boardvote_closed'        => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2005/En the elections page for results] soon.',
+	'boardvote_closed'        => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En the elections page for results] soon.',
 	'boardvote_edits_many'    => 'many',
 	'group-boardvote'         => 'Board vote admins',
 	'group-boardvote-member'  => 'Board vote admin',
@@ -90,8 +88,8 @@ $wgBoardVoteMessages['he'] = array(
 <p>באפשרותכם להצביע עבור מספר מועמדים. המועמדים עם מירב ההצבעות בכל עמדה יוכרזו כמנצחים בעמדה זו. במידה ויתקיים שיוויון בין מספר מועמדים, תתבצע הצבעה נוספת ביניהם.</p>
 
 <p>למידע נוסף, ראו:</p>
-<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2005\" class=\"external\">שאלות נפוצות על הבחירות</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2005\" class=\"external\">המועמדים</a></li></ul>
+<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">שאלות נפוצות על הבחירות</a></li>
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">המועמדים</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>כבר הצבעתם בעבר. עם זאת, באפשרותכם לשנות את הצבעתכם באמצעות הטופס המצורף למטה. אנא סמנו את תיבת הסימון ליד כל אחד מהמועמדים המועדפים עליכם.</p>",
 	'boardvote_entered'       => "תודה לכם, הצבעתכם נרשמה.
@@ -124,7 +122,7 @@ $wgBoardVoteMessages['he'] = array(
 	'boardvote_unstrike'      => "הסתרה",
 	'boardvote_needadmin'     => "רק מנהלי הבחירות יכולים לבצע פעולה זו.",
 	'boardvote_sitenotice'    => "<a href=\"{{localurle:{{ns:special}}:Boardvote/vote}}\">בחירות לחבר הנאמנים של ויקימדיה</a>: ההצבעה פתוחה עד 12 ביולי",
-	'boardvote_closed'        => 'ההצבעה סגורה כעת, ראו [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2005/En את הדף על תוצאות הבחירות] בקרוב.',
+	'boardvote_closed'        => 'ההצבעה סגורה כעת, ראו [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En את הדף על תוצאות הבחירות] בקרוב.',
 	'boardvote_edits_many'    => 'הרבה',
 	'group-boardvote'         => 'מנהלי הבחירות לחבר המנהלים',
 	'group-boardvote-member'  => 'מנהל הבחירות לחבר המנהלים',
@@ -174,8 +172,8 @@ stemmen voor iedere positie wordt tot winnaar uitgeroepen voor de betreffende
 positie. In geval de stemmen staken wordt er een tweede ronde gehouden.</p>
 
 <p>Meer informatie:</p>
-<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2005\" class=\"external\">Bestuursverkiezing FAQ</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2005\" class=\"external\">Kandidaten</a></li></ul>
+<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">Bestuursverkiezing FAQ</a></li>
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">Kandidaten</a></li></ul>
 ",
 	"boardvote_intro_change"  => "<p>U heeft al gestemd. U kunt uw stem wijzigen via
 het onderstaande formulier. Vink alstublieft de vakjes naar iedere kandidaat die
@@ -229,8 +227,8 @@ $wgBoardVoteMessages['pt'] = array(
 <p>Poderá votar em tantos candidatos quantos desejar. O candidato que apurar mais votos em cada posição será declarado vencedor dessa posição. Em caso de empate, serão lançadas votações para desempate.</p>
 
 <p>Para mais informações, consulte:</p>
-<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2005\" class=\"external\">FAQ de eleição</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2005\" class=\"external\">Candidatos</a></li></ul>
+<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">FAQ de eleição</a></li>
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">Candidatos</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>Já votou anteriormente. Contudo pode alterar o seu voto utilizando o formulário abaixo. Por favor marque a caixa ao lado de cada candidato que aprovar.</p>",
 	'boardvote_entered'       => "Obrigado, o seu voto foi registado.
@@ -263,7 +261,7 @@ A versão da encriptação segue-se, e será publicada em [[Especial:Boardvote/d
 	'boardvote_unstrike'      => "Limpar risco",
 	'boardvote_needadmin'     => "Apenas administradores podem efectuar esta operação.",
 	'boardvote_sitenotice'    => "<a href=\"{{localurle:Especial:Boardvote/vote}}\">Comité da Fundação Wikimedia</a>: Votação aberta até 12 de Julho",
-	'boardvote_closed'        => 'As eleições estão agora encerradas, ver [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2005/Pt a página de eleições para os resultados] brevemente.',
+	'boardvote_closed'        => 'As eleições estão agora encerradas, ver [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/Pt a página de eleições para os resultados] brevemente.',
 	'boardvote_edits_many'    => 'muitos',
 	'group-boardvote'         => 'Board vote administradores',
 	'group-boardvote-member'  => 'Board vote administrador',

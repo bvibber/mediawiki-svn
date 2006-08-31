@@ -11,7 +11,7 @@ foreach( $wgBoardVoteMessages as $key => $value ) {
 }
 
 class BoardVotePage extends SpecialPage {
-	var $mPosted, $mVotedFor, $mDBname, $mUserDays, $mUserEdits;
+	var $mPosted, $mVotedFor, $mUserDays, $mUserEdits;
 	var $mHasVoted, $mAction, $mUserKey, $mId, $mFinished;
 	var $mDb;
 
@@ -20,7 +20,7 @@ class BoardVotePage extends SpecialPage {
 	}
 
 	function execute( $par ) {
-		global $wgUser, $wgDBname, $wgInputEncoding, $wgRequest, $wgBoardVoteDB, 
+		global $wgUser, $wgDBname, $wgInputEncoding, $wgRequest, 
 			$wgBoardVoteEditCount, $wgBoardVoteEndDate;
 
 		$this->mUserKey = iconv( $wgInputEncoding, "UTF-8", $wgUser->getName() ) . "@$wgDBname";
@@ -32,7 +32,6 @@ class BoardVotePage extends SpecialPage {
 		}
 		$this->mId = $wgRequest->getInt( "id", 0 );
 		
-		$this->mDBname = $wgBoardVoteDB;
 		$this->mHasVoted = $this->hasVoted( $wgUser );
 		
 		if ( $par ) {
@@ -88,15 +87,21 @@ class BoardVotePage extends SpecialPage {
 
 	function getDB() {
 		if ( !$this->mDb ) {
-			$this->mDb = wfGetDB( DB_MASTER, 'boardvote' );
+			global $wgBoardVoteDBServer, $wgBoardVoteDB, $wgDBuser, $wgDBpassword;
+			
+			$this->mDb = new Database( $wgBoardVoteDBServer, $wgDBuser, $wgDBpassword, 
+				$wgBoardVoteDB, /*failfn*/false, /*flags*/0, /*prefix*/'' );
+			if ( !$this->mDb->isOpen() ) {
+					// This should be handled inside the constructor, but we'll check just in case
+					throw new MWException( "DB connection failed unexpectedly" );
+			}
 		}
 		return $this->mDb;
 	}
 
 	function hasVoted( &$user ) {
-		global $wgDBname;
 		$dbr =& $this->getDB();
-		$row = $dbr->selectRow( "`{$this->mDBname}`.log", array( "1" ), 
+		$row = $dbr->selectRow( 'log', array( "1" ), 
 		  array( "log_user_key" => $this->mUserKey ), "BoardVotePage::getUserVote" );
 		if ( $row === false ) {
 			return false;
@@ -114,7 +119,7 @@ class BoardVotePage extends SpecialPage {
 		$encrypted = $this->encrypt( $record );
 		$gpgKey = file_get_contents( $wgGPGPubKey );
 		$dbw =& $this->getDB();
-		$log = $dbw->tableName( "`{$this->mDBname}`.log" );
+		$log = $dbw->tableName( "log" );
 
 		# Mark previous votes as old
 		$encKey = $dbw->strencode( $this->mUserKey );
@@ -286,7 +291,7 @@ class BoardVotePage extends SpecialPage {
 		$userRights = $wgUser->getRights();
 		$admin = $this->isAdmin();
 		$dbr =& $this->getDB();
-		$log = $dbr->tableName( "`{$this->mDBname}`.log" );
+		$log = $dbr->tableName( "log" );
 
 		$sql = "SELECT * FROM $log ORDER BY log_user_key";
 		$res = $dbr->query( $sql, "BoardVotePage::list" );
@@ -377,7 +382,7 @@ class BoardVotePage extends SpecialPage {
 	function dump() {
 		global $wgOut, $wgOutputEncoding, $wgLang, $wgUser;
 		$dbr =& $this->getDB();
-		$log = $dbr->tableName( "`{$this->mDBname}`.log" );
+		$log = $dbr->tableName( "log" );
 
 		$sql = "SELECT log_record FROM $log WHERE log_current=1 AND log_strike=0";
 		$res = $dbr->query( $sql, DB_SLAVE, "BoardVotePage::list" );
@@ -408,7 +413,7 @@ class BoardVotePage extends SpecialPage {
 		global $wgOut;
 		
 		$dbw =& $this->getDB();
-		$log = $dbw->tableName( "`{$this->mDBname}`.log" );
+		$log = $dbw->tableName( "log" );
 
 		if ( !$this->isAdmin() ) {
 			$wgOut->addWikiText( wfMsg( "boardvote_needadmin" ) );
