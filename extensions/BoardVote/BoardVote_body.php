@@ -78,8 +78,9 @@ class BoardVotePage extends SpecialPage {
 				$this->notLoggedIn();
 			} else {
 				$this->getQualifications( $wgUser );
-				if ( $this->mUserEdits < $wgBoardVoteEditCount || 
-					$this->mFirstEdit > $wgBoardVoteFirstEdit 
+				if ( !$this->isAdmin() && 
+					( $this->mUserEdits < $wgBoardVoteEditCount || 
+					$this->mFirstEdit > $wgBoardVoteFirstEdit )
 				) {
 					$this->notQualified();
 				} elseif ( $this->mPosted ) {
