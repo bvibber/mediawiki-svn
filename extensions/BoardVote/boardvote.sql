@@ -15,6 +15,7 @@ CREATE TABLE log (
 	log_timestamp char(14) not null default '',
 	log_current tinyint(1) not null default 0,
 	log_strike varchar(255) not null default '',
+	log_token_match tinyint(1) not null default 0,
 	unique index log_id (log_id),
 	index log_user_key (log_user_key)
 );

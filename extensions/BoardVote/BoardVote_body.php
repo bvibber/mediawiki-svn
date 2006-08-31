@@ -145,6 +145,8 @@ class BoardVotePage extends SpecialPage {
 		if ( !$xff ) {
 			$xff = '';
 		}
+
+		$tokenMatch = $wgUser->matchEditToken( $wgRequest->getVal( 'edit_token' ) );
 		
 		$dbw->insert( $log, array(
 			"log_user" => $wgUser->getID(),
@@ -157,7 +159,8 @@ class BoardVotePage extends SpecialPage {
 			"log_xff" => $xff,
 			"log_ua" => $_SERVER['HTTP_USER_AGENT'],
 			"log_timestamp" => $now,
-			"log_current" => 1
+			"log_current" => 1,
+			"log_token_match" => $tokenMatch ? 1 : 0,
 		), $fname );
 
 		$wgOut->addWikiText( wfMsg( "boardvote_entered", $record, $gpgKey, $encrypted ) );
@@ -192,8 +195,11 @@ class BoardVotePage extends SpecialPage {
 			$text .= $this->voteEntry( $candidate[0], $candidate[1] );
 		}
 		
+		global $wgUser;
+		$token = htmlspecialchars( $wgUser->editToken() );
 		$text .= "<tr><td>&nbsp;</td><td>
 		  <input name=\"submit\" type=\"submit\" value=\"$ok\">
+		  <input type='hidden' name='edit_token' value=\"{$token}\" />
 		  </td></tr></table></form>";
 		$text .= wfMsg( "boardvote_footer" );
 		$wgOut->addHTML( $text );
