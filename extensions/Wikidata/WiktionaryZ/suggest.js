@@ -222,7 +222,7 @@ function getNameOf(element) {
 }
 
 function getTypeOf(element) {
-	return getNameOf(element).replace(/\d+/g, "0");
+	return getNameOf(element).replace(/-\d+/g, "");
 }
 
 function toggle(element, event) {
