@@ -31,8 +31,8 @@ candidate with the most votes in each position will be declared the winner of th
 position. In the event of a tie, a run-off election will be held.</p>
 
 <p>For more information, see:</p>
-<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">Election FAQ</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">Candidates</a></li></ul>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">Election FAQ</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Candidates</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>You have voted before. However you may change
 your vote using the form below. Please check the boxes next to each candidate whom
@@ -78,7 +78,7 @@ to date. $1 for the encrypted data.</p>",
 );
 $wgBoardVoteMessages['he'] = array(
 	'boardvote'               => "בחירות לחבר הנאמנים של ויקימדיה",
-	'boardvote_entry'         => "<!--* [[{{ns:special}}:Boardvote/vote|הצבעה]]-->
+	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|הצבעה]]
 * [[{{ns:special}}:Boardvote/list|רשימת ההצבעות נכון לעכשיו]]
 * [[{{ns:special}}:Boardvote/dump|ההעתק המוצפן של הבחירות]]",
 	'boardvote_intro'         => "
@@ -89,8 +89,8 @@ $wgBoardVoteMessages['he'] = array(
 <p>באפשרותכם להצביע עבור מספר מועמדים. המועמדים עם מירב ההצבעות בכל עמדה יוכרזו כמנצחים בעמדה זו. במידה ויתקיים שיוויון בין מספר מועמדים, תתבצע הצבעה נוספת ביניהם.</p>
 
 <p>למידע נוסף, ראו:</p>
-<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">שאלות נפוצות על הבחירות</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">המועמדים</a></li></ul>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">שאלות נפוצות על הבחירות</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">המועמדים</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>כבר הצבעתם בעבר. עם זאת, באפשרותכם לשנות את הצבעתכם באמצעות הטופס המצורף למטה. אנא סמנו את תיבת הסימון ליד כל אחד מהמועמדים המועדפים עליכם.</p>",
 	'boardvote_entered'       => "תודה לכם, הצבעתכם נרשמה.
@@ -108,8 +108,8 @@ $wgBoardVoteMessages['he'] = array(
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|חזרה]]",
-	'boardvote_notloggedin'   => "אינכם רשומים לחשבון. כדי להצביע, עליכם להשתמש בחשבון שיש לו לפחות $1 תרומות לפני $2.",
-	'boardvote_notqualified'  => "מצטערים, ביצעתם רק $1 עריכות לפני $2. אתם צריכים לפחות $3 תרומות לפני שתוכלו להצביע.",
+	'boardvote_notloggedin'   => "אינכם רשומים לחשבון. כדי להצביע, עליכם להשתמש בחשבון שיש לו לפחות $1 תרומות לפני $2, ושעריכתו הראשונה בוצעה לפני $3.",
+	'boardvote_notqualified'  => "אינכם רשאים להצביע בבחירות הללו. תנאי הסף הם ביצוע $3 עריכות לפני $2, בעוד שאתם ביצעתם רק $1 עריכות. בנוסף, עריכתכם הראשונה הייתה בתאריך $4, בעוד היא צריכה להיות לנפי $5.",
 	'boardvote_novotes'       => "איש לא הצביע עדיין.",
 	'boardvote_time'          => "שעה",
 	'boardvote_user'          => "משתמש",
@@ -123,11 +123,12 @@ $wgBoardVoteMessages['he'] = array(
 	'boardvote_unstrike'      => "הסתרה",
 	'boardvote_needadmin'     => "רק מנהלי הבחירות יכולים לבצע פעולה זו.",
 	'boardvote_sitenotice'    => "<a href=\"{{localurle:{{ns:special}}:Boardvote/vote}}\">בחירות לחבר הנאמנים של ויקימדיה</a>: ההצבעה פתוחה עד 12 ביולי",
+	'boardvote_notstarted'    => 'ההצבעה עדיין לא התחילה',
 	'boardvote_closed'        => 'ההצבעה סגורה כעת, ראו [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En את הדף על תוצאות הבחירות] בקרוב.',
 	'boardvote_edits_many'    => 'הרבה',
-	'group-boardvote'         => 'מנהלי הבחירות לחבר המנהלים',
-	'group-boardvote-member'  => 'מנהל הבחירות לחבר המנהלים',
-	'grouppage-boardvote'     => '{{ns:project}}:מנהל הבחירות לחבר המנהלים',
+	'group-boardvote'         => 'מנהלי הבחירות לחבר הנאמנים',
+	'group-boardvote-member'  => 'מנהל הבחירות לחבר הנאמנים',
+	'grouppage-boardvote'     => '{{ns:project}}:מנהל הבחירות לחבר הנאמנים',
 );
 $wgBoardVoteMessages['id'] = array(
 	'boardvote'               => "Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia",
@@ -150,7 +151,7 @@ $wgBoardVoteMessages['id'] = array(
 );
 $wgBoardVoteMessages['nl'] = array(
 	"boardvote"               => "Wikimedia Board of Trustees-verkiezing",
-	"boardvote_entry"         => "<!--* [[Special:Boardvote/vote|Vote]]-->
+	"boardvote_entry"         => "* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|Toon uitgebrachte stemmen]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]",
 	"boardvote_intro"         => "
@@ -173,8 +174,8 @@ stemmen voor iedere positie wordt tot winnaar uitgeroepen voor de betreffende
 positie. In geval de stemmen staken wordt er een tweede ronde gehouden.</p>
 
 <p>Meer informatie:</p>
-<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">Bestuursverkiezing FAQ</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">Kandidaten</a></li></ul>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">Bestuursverkiezing FAQ</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Kandidaten</a></li></ul>
 ",
 	"boardvote_intro_change"  => "<p>U heeft al gestemd. U kunt uw stem wijzigen via
 het onderstaande formulier. Vink alstublieft de vakjes naar iedere kandidaat die
@@ -228,8 +229,8 @@ $wgBoardVoteMessages['pt'] = array(
 <p>Poderá votar em tantos candidatos quantos desejar. O candidato que apurar mais votos em cada posição será declarado vencedor dessa posição. Em caso de empate, serão lançadas votações para desempate.</p>
 
 <p>Para mais informações, consulte:</p>
-<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">FAQ de eleição</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">Candidatos</a></li></ul>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">FAQ de eleição</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Candidatos</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>Já votou anteriormente. Contudo pode alterar o seu voto utilizando o formulário abaixo. Por favor marque a caixa ao lado de cada candidato que aprovar.</p>",
 	'boardvote_entered'       => "Obrigado, o seu voto foi registado.
@@ -296,8 +297,8 @@ Dins l\' cas k\' i gn årè ewalisté inte deus prumîs candidats, on deujhinme 
 Po pus di racsegnes, loukîz a:
 </p>
 <ul>
-<li><a href="http://meta.wikipedia.org/wiki/Election_FAQ" class="external">FAQ sol vôtaedje</a> (en inglès)</li>
-<li><a href="http://meta.wikipedia.org/wiki/Election_Candidates" class="external">Candidats</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_FAQ" class="external">FAQ sol vôtaedje</a> (en inglès)</li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates" class="external">Candidats</a></li>
 </ul>',
 	'boardvote_intro_change' => '<p>
 Vos avoz ddja voté.
