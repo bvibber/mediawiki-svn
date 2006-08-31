@@ -148,7 +148,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 			$this->containedInConceptId = $this->bootstrapDefinedMeaning("contained in", "contained in");
 		
 		if ($this->enzymeCommissionNumberConceptId == 0)
-			$this->enzymeCommissionNumberConceptId = $this->bootstrapDefinedMeaning("enzyme commission number", "organism specific gene");
+			$this->enzymeCommissionNumberConceptId = $this->bootstrapDefinedMeaning("enzyme commission number", "enzyme commission number");
 
 		if ($this->textAttributeConceptId == 0)
 			$this->textAttributeConceptId = $this->bootstrapDefinedMeaning("text attribute", "text attribute");
