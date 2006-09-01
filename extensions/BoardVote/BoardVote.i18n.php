@@ -65,6 +65,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 	'boardvote_listintro'     => "<p>This is a list of all votes which have been recorded 
 to date. $1 for the encrypted data.</p>",
 	'boardvote_dumplink'      => "Click here",
+	'boardvote_submit'        => 'OK',
 	'boardvote_strike'        => "Strike",
 	'boardvote_unstrike'      => "Unstrike",
 	'boardvote_needadmin'     => "Only election administrators can perform this operation.",
@@ -119,6 +120,7 @@ $wgBoardVoteMessages['he'] = array(
 	'boardvote_ua'            => "זיהוי הדפדפן",
 	'boardvote_listintro'     => "<p>זוהי רשימה של כל ההצבעות שנרשמו עד כה. $1 כדי להגיע לנתונים המוצפנים.</p>",
 	'boardvote_dumplink'      => "לחצו כאן",
+	'boardvote_submit'        => 'הצבעה',
 	'boardvote_strike'        => "גילוי",
 	'boardvote_unstrike'      => "הסתרה",
 	'boardvote_needadmin'     => "רק מנהלי הבחירות יכולים לבצע פעולה זו.",
@@ -339,6 +341,5 @@ Po pleur vôter vos dvoz aveur contribouwé po pus long ki
 k\' ont ddja vote disk\' asteure.
 $1 po les dnêyes sourdant des bultins.</p>',
 	'boardvote_dumplink' => 'Clitchîz chal',
-	'boardvote_submit' => 'OK',
 );
 ?>
