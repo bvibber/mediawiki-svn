@@ -1,19 +1,10 @@
 <?php
 
-global $wgMessageCache;
-$wgMessageCache->addMessages( array(
-	'expandtemplates' => 'Expand templates',
-	'expand_templates_intro' => 'This special page takes some text and expands 
-all templates in it recursively. It also expands parser functions like 
-<nowiki>{{</nowiki>#if:...}}, and variables like 
-<nowiki>{{</nowiki>CURRENTDAY}}&mdash;in fact pretty much everything in double-braces.
-It does this by calling the relevant parser stage from MediaWiki itself.',
-	'expand_templates_title' => 'Context title, for &#123;&#123;PAGENAME}} etc.:',
-	'expand_templates_input' => 'Input text',
-	'expand_templates_output' => 'Result',
-	'expand_templates_ok' => 'OK',
-	'expand_templates_remove_comments' => 'Remove comments',
-));
+# Add messages
+global $wgMessageCache, $wgExpandTemplatesMessages;
+foreach( $wgExpandTemplatesMessages as $key => $value ) {
+	$wgMessageCache->addMessages( $wgExpandTemplatesMessages[$key], $key );
+}
 
 class ExpandTemplates extends SpecialPage {
 	function __construct() {

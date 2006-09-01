@@ -8,8 +8,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit(1);
 }
 
+# Internationalisation file
+require_once( 'ExpandTemplates.i18n.php' );
+
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
 extAddSpecialPage( dirname(__FILE__) . '/ExpandTemplates_body.php', 'ExpandTemplates', 'ExpandTemplates' );
 
+?>
