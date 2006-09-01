@@ -298,13 +298,9 @@ function addDefinedMeaningDefinition($definedMeaningId, $languageId, $text) {
 }
 
 function createDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId, $sourceMeaningId) {
-	$dbr = &wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT max(set_id) as max_id FROM uw_alt_meaningtexts");
-	$setId = $dbr->fetchObject($queryResult)->max_id + 1;
-	
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("INSERT INTO uw_alt_meaningtexts (set_id, meaning_mid, meaning_text_tcid, source_id, add_transaction_id) " .
-			    "VALUES ($setId, $definedMeaningId, $translatedContentId, $sourceMeaningId, " . getUpdateTransactionId() . ")");
+	$dbr->query("INSERT INTO uw_alt_meaningtexts (meaning_mid, meaning_text_tcid, source_id, add_transaction_id) " .
+			    "VALUES ($definedMeaningId, $translatedContentId, $sourceMeaningId, " . getUpdateTransactionId() . ")");
 }
 
 function addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text, $sourceMeaningId) {
