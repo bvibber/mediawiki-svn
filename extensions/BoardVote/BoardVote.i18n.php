@@ -242,6 +242,49 @@ uitgebracht. $1 voor de versleutelde gegevens.</p>",
 	'group-boardvote-member'  => 'Board vote beheerder',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote beheerder',
 );
+$wgBoardVoteMessages['pl'] = array(
+	'boardvote'               => "Wybory do Rady Powierniczej Fundacji Wikimedia",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|Głosuj]]
+* [[Special:Boardvote/list|Pokaż listę głosów]]
+* [[Special:Boardvote/dump|Zrzut zakodowanych danych wyborów]]",
+	'boardvote_intro_change'  => "<p>Już głosowałeś w tych wyborach. Możesz jednak zmienić swoje głosy za pomocą poniższego formularza. Zaznacz kandydatów, na których głosujesz.</p>",
+	'boardvote_entered'       => "Dziękujemy, twój głos został zapisany.
+
+Jeśli chcesz, możesz zapisać poniższe informacje. Oto zapis twojego głosu:
+
+<pre>$1</pre>
+
+Został on zakodowany poniższym kluczem publicznym Koordynatorów Wyborów:
+
+<pre>$2</pre>
+
+Oto zakodowana wersja. Będzie ona publicznie wyświetlona w [[Special:Boardvote/dump|zrzucie danych]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Wstecz]]",
+	'boardvote_notloggedin'   => "Nie jesteś zalogowany. Aby głosować musisz posiadać konto z wkładem minimum $1 edycji od $2 oraz pierwszą edycją wykonaną przed $3.",
+	'boardvote_notqualified'  => "Niestety nie jesteś uprawniony do głosowania, ponieważ wykonałeś tylko $1 edycji. Aby móc głosować musisz mieć minimum $3 edycji wykonanych przed $2, a twoja pierwsza edycja powinna mieć miejsce przed $5. Swoją pierwszą edycję wykonałeś $4.",
+	'boardvote_novotes'       => "Nikt jeszcze nie głosował.",
+	'boardvote_time'          => "Czas",
+	'boardvote_user'          => "Użytkownik",
+	'boardvote_edits'         => "Edycje",
+	'boardvote_days'          => "dni",
+	'boardvote_ip'            => "IP",
+	'boardvote_ua'            => "Klient",
+	'boardvote_listintro'     => "<p>Oto lista wszystkich głosów oddanych jak dotąd. $1 dla zakodowanych danych.</p>",
+	'boardvote_dumplink'      => "Kliknij tutaj",
+	'boardvote_submit'        => 'zagłosuj',
+	'boardvote_strike'        => "Skreślenie głosu",
+	'boardvote_unstrike'      => "Przywrócenie głosu",
+	'boardvote_needadmin'     => "Tylko koordynatorzy wyborów mogą wykonać tę akcję.",
+	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Wybory Rady Powierniczej Fudacji Wikimedia</a>:  głosowanie otwarte do 21 września',
+	'boardvote_notstarted'    => 'Głosowanie nie zostało jeszcze rozpoczęte',
+	'boardvote_closed'        => 'Głosowanie zostało zakończone, niedługo [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/Pl na stronie wyborów] pojawią się wyniki.',
+	'boardvote_edits_many'    => 'dużo',
+	'group-boardvote'         => 'Koordynatorzy wyborów',
+	'group-boardvote-member'  => 'Koordynator wyborów',
+);
 $wgBoardVoteMessages['pt'] = array(
 	'boardvote'               => "Eleições para o Comité da Fundação Wikimedia",
 	'boardvote_entry'         => "<!--* [[Special:Boardvote/vote|Votar]]-->
