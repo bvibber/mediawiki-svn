@@ -339,5 +339,6 @@ Po pleur vôter vos dvoz aveur contribouwé po pus long ki
 k\' ont ddja vote disk\' asteure.
 $1 po les dnêyes sourdant des bultins.</p>',
 	'boardvote_dumplink' => 'Clitchîz chal',
+	'boardvote_submit' => 'OK',
 );
 ?>

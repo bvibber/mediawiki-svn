@@ -177,7 +177,7 @@ class BoardVotePage extends SpecialPage {
 			$intro = wfMsg( "boardvote_intro" );
 		}
 
-		$ok = wfMsg( "ok" );
+		$ok = wfMsgHtml( "boardvote_submit" );
 		
 		$candidates = array();
 		foreach( $wgBoardCandidates as $i => $candidate ) {
