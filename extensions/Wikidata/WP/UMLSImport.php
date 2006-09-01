@@ -168,20 +168,8 @@ function importUMLSTerms($sab, $umlsCollectionId, $sourceCollectionId, $language
 			$definedMeaningId = addDefinedMeaning($expression->id);
 			addDefinedMeaningToCollection($definedMeaningId, $umlsCollectionId, $umlsTerm->cui);
 		}
-		$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);
-//		$definitionQueryResult = mysql_query("select def, sab from MRDEF where sab = '$sab' and cui='$umlsTerm->cui'", $db);
-//		if($definition = mysql_fetch_object($definitionQueryResult)) {
-//			if(!getDefinedMeaningDefinitionId($definedMeaningId)) {
-//				addDefinedMeaningDefiningDefinition($definedMeaningId, $languageId, $definition->def);
-//			}
-//			addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $definition->def, $collectionMeaningId);
-//			
-//			while ($definition = mysql_fetch_object($definitionQueryResult)) {
-//				addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $definition->def, $collectionMeaningId);
-//			}
-//		}
-//		mysql_free_result($definitionQueryResult);
 
+		$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);
 		addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $sourceCollectionId, $umlsTerm->code);
 		advanceProgressBar(1);
 	}
@@ -271,6 +259,7 @@ function importUMLSRelations($umlsCollectionId, $relationCollectionContents, $qu
 		$definedMeaningId1 = getDefinedMeaningFromCollection($umlsCollectionId, $relation[0]);
 		$definedMeaningId2 = getDefinedMeaningFromCollection($umlsCollectionId, $relation[1]);
 		$relationMeaningId = $relationCollectionContents[$relationType];
+		
 		if(!$definedMeaningId1){
 			echo "Unknown cui $relation[0]\n";
 			print_r($relation);
@@ -284,7 +273,10 @@ function importUMLSRelations($umlsCollectionId, $relationCollectionContents, $qu
 			print_r($relationCollectionContents);
 			print_r($relation);
 		}
-		addRelation($definedMeaningId2, $relationMeaningId, $definedMeaningId1);	
+		
+		if ($definedMeaningId2 > 0 && $definedMeaningId1 > 0 && $relationMeaningId > 0)
+			addRelation($definedMeaningId2, $relationMeaningId, $definedMeaningId1);
+				
 		advanceProgressBar(1);	
 	}	
 	
@@ -335,7 +327,9 @@ function importSemanticTypeRelations($collectionId, $relationCollectionContents,
 			echo "Unknown semantic type $relation[2]\n";
 			print_r($relation);
 		}
-		addRelation($definedMeaningId2, $relationMeaningId, $definedMeaningId1);		
+	
+		if ($definedMeaningId2 > 0 && $definedMeaningId1 > 0 && $relationMeaningId > 0)
+			addRelation($definedMeaningId2, $relationMeaningId, $definedMeaningId1);		
 	}	
 }
 
@@ -360,7 +354,10 @@ function importUMLSSemanticTypes($sab, $collectionId, $attributeTypes) {
 			echo "Unknown attribute $attribute->STY\n";
 			print_r($attribute);
 		}
-		addClassMembership($definedMeaningId, $attributeMeaningId);
+	
+		if ($definedMeaningId > 0 && $attributeMeaningId > 0)
+			addClassMembership($definedMeaningId, $attributeMeaningId);
+			
 		advanceProgressBar(1);
 	}
 	
