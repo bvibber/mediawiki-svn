@@ -35,7 +35,11 @@ function languageIdAsText($languageId) {
 
 function definingExpression($definedMeaningId) {
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT spelling, language_id from uw_defined_meaning, uw_expression_ns where uw_defined_meaning.defined_meaning_id=$definedMeaningId and uw_expression_ns.expression_id=uw_defined_meaning.expression_id");
+	$queryResult = $dbr->query("SELECT spelling, language_id " .
+								" FROM uw_defined_meaning, uw_expression_ns " .
+								" WHERE uw_defined_meaning.defined_meaning_id=$definedMeaningId " .
+								" AND uw_expression_ns.expression_id=uw_defined_meaning.expression_id".
+								" AND " . getLatestTransactionRestriction('uw_defined_meaning'));
 	$expression = $dbr->fetchObject($queryResult);
 	return array($expression->spelling, $expression->language_id); 
 }

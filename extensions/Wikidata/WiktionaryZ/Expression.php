@@ -43,7 +43,9 @@ class Expression {
 
 function getExpressionId($spelling, $languageId) {
 	$dbr = &wfGetDB(DB_SLAVE);
-	$sql = 'select expression_id from uw_expression_ns where spelling=binary '. $dbr->addQuotes($spelling) . ' and language_id=' . $languageId;
+	$sql = 'SELECT expression_id FROM uw_expression_ns ' .
+			'WHERE spelling=binary '. $dbr->addQuotes($spelling) . ' AND language_id=' . $languageId .
+			' AND '. getLatestTransactionRestriction('uw_expression_ns');
 	$queryResult = $dbr->query($sql);
 	$expression = $dbr->fetchObject($queryResult);
 	return $expression->expression_id;
@@ -51,10 +53,11 @@ function getExpressionId($spelling, $languageId) {
 
 function createExpressionId($spelling, $languageId) {
 	$dbr = &wfGetDB(DB_MASTER);
+	$queryResult = $dbr->query("SELECT max(expression_id) AS new_expression_id FROM uw_expression_ns");
+	$expressionId = $dbr->fetchObject($queryResult)->new_expression_id + 1;
+	
 	$spelling = $dbr->addQuotes($spelling);
-	$sql = "insert into uw_expression_ns(spelling,language_id) values($spelling, $languageId)";
-	$dbr->query($sql);
-	$expressionId = $dbr->insertId();
+	$dbr->query("INSERT INTO uw_expression_ns(expression_id, spelling, language_id, add_transaction_id) values($expressionId, $spelling, $languageId, ". getUpdateTransactionId() .")");
 	 
 	return $expressionId;		
 }
@@ -260,14 +263,16 @@ function addTranslatedTextIfNotPresent($definitionId, $languageId, $definition) 
 
 function getDefinedMeaningDefinitionId($definedMeaningId) {
 	$dbr = &wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT meaning_text_tcid FROM uw_defined_meaning WHERE defined_meaning_id=$definedMeaningId");
+	$queryResult = $dbr->query("SELECT meaning_text_tcid FROM uw_defined_meaning WHERE defined_meaning_id=$definedMeaningId " .
+								" AND " . getLatestTransactionRestriction('uw_defined_meaning'));
 
 	return $dbr->fetchObject($queryResult)->meaning_text_tcid;
 }
 
 function updateDefinedMeaningDefinitionId($definedMeaningId, $definitionId) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("UPDATE uw_defined_meaning SET meaning_text_tcid=$definitionId WHERE defined_meaning_id=$definedMeaningId");
+	$dbr->query("UPDATE uw_defined_meaning SET meaning_text_tcid=$definitionId WHERE defined_meaning_id=$definedMeaningId" .
+				" AND " . getLatestTransactionRestriction('uw_defined_meaning'));
 }
 
 function newTranslatedContentId() {
@@ -298,8 +303,8 @@ function createDefinedMeaningAlternativeDefinition($definedMeaningId, $translate
 	$setId = $dbr->fetchObject($queryResult)->max_id + 1;
 	
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("INSERT INTO uw_alt_meaningtexts (set_id, meaning_mid, meaning_text_tcid, source_id) " .
-			    "VALUES ($setId, $definedMeaningId, $translatedContentId, $sourceMeaningId)");
+	$dbr->query("INSERT INTO uw_alt_meaningtexts (set_id, meaning_mid, meaning_text_tcid, source_id, add_transaction_id) " .
+			    "VALUES ($setId, $definedMeaningId, $translatedContentId, $sourceMeaningId, " . getUpdateTransactionId() . ")");
 }
 
 function addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text, $sourceMeaningId) {
@@ -316,9 +321,19 @@ function removeTranslatedText($setId, $languageId) {
 //	$dbr->query("DELETE tc, t FROM translated_content AS tc, text AS t WHERE tc.set_id=$textId AND tc.language_id=$languageId AND tc.text_id=t.old_id");
 }
 
-function removeDefinedMeaningAlternativeDefinition($definedMeaningId, $definitionId) {
+function removeTranslatedTexts($setId) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("DELETE am, tc, t FROM uw_alt_meaningtexts AS am, translated_content AS tc, text AS t WHERE am.meaning_mid=$definedMeaningId AND am.meaning_text_tcid=$definitionId AND tc.set_id=$definitionId AND tc.text_id=t.old_id");
+	$dbr->query("UPDATE translated_content SET remove_transaction_id=". getUpdateTransactionId() . 
+				" WHERE set_id=$setId AND remove_transaction_id IS NULL");
+}
+
+function removeDefinedMeaningAlternativeDefinition($definedMeaningId, $definitionId) {
+	removeTranslatedTexts($definitionId);
+
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE uw_alt_meaningtexts SET remove_transaction_id=" . getUpdateTransactionId() .
+				" WHERE meaning_text_tcid=$definitionId AND meaning_mid=$definedMeaningId" .
+				" AND remove_transaction_id IS NULL");
 }
 
 function removeDefinedMeaningDefinition($definedMeaningId, $languageId) {
@@ -382,27 +397,33 @@ function bootstrapCollection($collection, $languageId, $collectionType){
 
 function getCollectionMeaningId($collectionId) {
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT collection_mid FROM uw_collection_ns WHERE collection_id=$collectionId");
+	$queryResult = $dbr->query("SELECT collection_mid FROM uw_collection_ns " .
+								" WHERE collection_id=$collectionId AND " . getLatestTransactionRestriction('uw_collection_ns'));
 	
 	return $dbr->fetchObject($queryResult)->collection_mid;	
 }
 
 function addCollection($definedMeaningId, $collectionType) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$sql = "INSERT INTO uw_collection_ns(collection_mid, collection_type) VALUES($definedMeaningId, '$collectionType')";
+
+	$queryResult = $dbr->query("SELECT max(collection_id) AS new_collection_id FROM uw_collection_ns");
+	$collectionId = $dbr->fetchObject($queryResult)->new_collection_id + 1;
+
+	$sql = "INSERT INTO uw_collection_ns(collection_id, collection_mid, collection_type, add_transaction_id) VALUES($collectionId, $definedMeaningId, '$collectionType', ". getUpdateTransactionId() .")";
 	$queryResult = $dbr->query($sql);
 	
-	return $dbr->insertId($queryResult);	
+	return $collectionId;	
 }
 
 function addDefinedMeaning($definingExpressionId){
 	$dbr = &wfGetDB(DB_MASTER);
 
-	$sql = "INSERT INTO uw_defined_meaning(expression_id) values($definingExpressionId)";
-	$queryResult = $dbr->query($sql);
-	$meaningId = $dbr->insertId($queryResult);
+	$queryResult = $dbr->query("SELECT max(defined_meaning_id) AS new_defined_meaning_id FROM uw_defined_meaning");
+	$definedMeaningId = $dbr->fetchObject($queryResult)->new_defined_meaning_id + 1;
 
-	return $meaningId;
+	$queryResult = $dbr->query("INSERT INTO uw_defined_meaning(defined_meaning_id, expression_id, add_transaction_id) values($definedMeaningId, $definingExpressionId, ". getUpdateTransactionId() .")");
+
+	return $definedMeaningId;
 }
 
 function createNewDefinedMeaning($definingExpressionId, $languageId, $text) {
@@ -415,8 +436,8 @@ function createNewDefinedMeaning($definingExpressionId, $languageId, $text) {
 
 function createDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $translatedContentId) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("INSERT INTO uw_dm_text_attribute_values (defined_meaning_id, attribute_mid, value_tcid) " .
-			    "VALUES ($definedMeaningId, $attributeId, $translatedContentId)");
+	$dbr->query("INSERT INTO uw_dm_text_attribute_values (defined_meaning_id, attribute_mid, value_tcid, add_transaction_id) " .
+			    "VALUES ($definedMeaningId, $attributeId, $translatedContentId, ". getUpdateTransactionId() .")");
 }
 
 function addDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $languageId, $text) {
@@ -427,21 +448,25 @@ function addDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $l
 }
 
 function removeDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $textId) {
-	$dbr = &wfGetDB(DB_MASTER);
-	
-	$dbr->query("DELETE tc, t FROM translated_content AS tc, text AS t " .
-				"WHERE tc.set_id=$textId AND tc.text_id=t.old_id");
+	removeTranslatedTexts($textId);
 
-	$dbr->query("DELETE FROM uw_dm_text_attribute_values " .
-				"WHERE defined_meaning_id=$definedMeaningId AND attribute_mid=$attributeId AND value_tcid=$textId");	
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE uw_dm_text_attribute_values SET remove_transaction_id=". getUpdateTransactionId() .
+				" WHERE defined_meaning_id=$definedMeaningId AND attribute_mid=$attributeId AND value_tcid=$textId" .
+				" AND remove_transaction_id IS NULL");
+
+//	$dbr->query("DELETE FROM uw_dm_text_attribute_values " .
+//				"WHERE defined_meaning_id=$definedMeaningId AND attribute_mid=$attributeId AND value_tcid=$textId");	
 }
 
 function getDefinedMeaningDefinitionForLanguage($definedMeaningId, $languageId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT old_text FROM uw_defined_meaning as dm, translated_content as tc, text as t ".
-								"WHERE dm.defined_meaning_id=$definedMeaningId AND " .
-								"      dm.meaning_text_tcid=tc.set_id AND tc.language_id=$languageId AND " .
-								"      t.old_id=tc.text_id");	
+								"WHERE dm.defined_meaning_id=$definedMeaningId " .
+								" AND " . getLatestTransactionRestriction('dm') .
+								" AND " . getLatestTransactionRestriction('tc') .
+								" AND  dm.meaning_text_tcid=tc.set_id AND tc.language_id=$languageId " .
+								" AND  t.old_id=tc.text_id");	
 	
 	if ($definition = $dbr->fetchObject($queryResult)) 
 		return $definition->old_text;
@@ -452,9 +477,11 @@ function getDefinedMeaningDefinitionForLanguage($definedMeaningId, $languageId) 
 function getDefinedMeaningDefinitionForAnyLanguage($definedMeaningId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT old_text FROM uw_defined_meaning as dm, translated_content as tc, text as t ".
-								"WHERE dm.defined_meaning_id=$definedMeaningId AND " .
-								"      dm.meaning_text_tcid=tc.set_id AND " .
-								"      t.old_id=tc.text_id LIMIT 1");	
+								"WHERE dm.defined_meaning_id=$definedMeaningId " .
+								" AND " . getLatestTransactionRestriction('dm') .
+								" AND " . getLatestTransactionRestriction('tc') .
+								" AND dm.meaning_text_tcid=tc.set_id " .
+								" AND t.old_id=tc.text_id LIMIT 1");	
 	
 	if ($definition = $dbr->fetchObject($queryResult)) 
 		return $definition->old_text;
@@ -485,13 +512,14 @@ function getDefinedMeaningDefinition($definedMeaningId) {
 
 function findCollection($name) {
 	$dbr = & wfGetDB(DB_SLAVE);
-	$query = "SELECT collection_id, collection_mid, collection_type from uw_collection_ns where " .
-	         "collection_mid = (SELECT defined_meaning_id FROM uw_syntrans WHERE expression_id = " . 
+	$query = "SELECT collection_id, collection_mid, collection_type FROM uw_collection_ns" .
+			" WHERE ".getLatestTransactionRestriction('uw_collection_ns') .
+			" AND collection_mid = (SELECT defined_meaning_id FROM uw_syntrans WHERE expression_id = " . 
              "(SELECT expression_id FROM uw_expression_ns WHERE spelling LIKE " . $dbr->addQuotes($name) . " limit 1))";
 	$queryResult = $dbr->query($query);
-	if ($collectionObject = $dbr->fetchObject($queryResult)) {
+	
+	if ($collectionObject = $dbr->fetchObject($queryResult)) 
 		return $collectionObject->collection_id;
-	}
 	else
 		return null;             
 }

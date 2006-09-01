@@ -14,7 +14,7 @@ CREATE TABLE `transactions` (
 	`user_ip` VARCHAR(15) NOT NULL,
 	`timestamp` VARCHAR(14) NOT NULL,
 	`comment` TINYBLOB NOT NULL
-) TYPE = MYISAM;
+);
 
 --
 -- Add 'add_transaction_id' and 'remove_transaction_id' to versioned tables

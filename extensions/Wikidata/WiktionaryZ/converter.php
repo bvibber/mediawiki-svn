@@ -2,6 +2,7 @@
 
 require_once('type.php');
 require_once('Attribute.php');
+require_once('Transaction.php');
 
 interface Converter {
 	public function getStructure();
@@ -71,7 +72,8 @@ class ExpressionIdConverter extends DefaultConverter {
 		
 		$dbr =& wfGetDB(DB_SLAVE);
 		$expressionId = $record->getAttributeValue($this->attribute);
-		$queryResult = $dbr->query("SELECT language_id, spelling from uw_expression_ns WHERE expression_id=$expressionId");
+		$queryResult = $dbr->query("SELECT language_id, spelling from uw_expression_ns WHERE expression_id=$expressionId" .
+									" AND ". getLatestTransactionRestriction('uw_expression_ns'));
 		$expression = $dbr->fetchObject($queryResult); 
 
 		$expressionRecord = new ArrayRecord(new Structure($languageAttribute, $spellingAttribute));

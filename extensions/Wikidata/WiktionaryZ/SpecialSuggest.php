@@ -77,7 +77,9 @@ function getSuggestions() {
 	    	$sql = "SELECT collection_id, spelling ".
 	    			"FROM uw_expression_ns expression, uw_collection_ns collection, uw_syntrans syntrans ".
 	    			"WHERE expression.expression_id=syntrans.expression_id AND syntrans.defined_meaning_id=collection.collection_mid ".
-	    			"AND syntrans.endemic_meaning=1 AND " . getLatestTransactionRestriction('syntrans');
+	    			"AND syntrans.endemic_meaning=1" .
+	    			" AND " . getLatestTransactionRestriction('syntrans') .
+	    			" AND " . getLatestTransactionRestriction('uw_collection_ns');
 	    	break;
 	}
 	                          
