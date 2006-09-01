@@ -134,9 +134,27 @@ $wgBoardVoteMessages['he'] = array(
 );
 $wgBoardVoteMessages['id'] = array(
 	'boardvote'               => "Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|Masukkan pilihan]]
+* [[Special:Boardvote/list|Daftar pemilih sampai saat ini]]
+* [[Special:Boardvote/dump|Data pemilihan terenkripsi]]",
 	'boardvote_intro_change'  => "<p>Anda sudah pernah memilih. Walaupun demikian, Anda dapat mengganti pilihan Anda dengan menggunakan formulir di bawah. Harap cek kotak di samping tiap kandidat yang Anda setujui.</p>",
-	'boardvote_notloggedin'   => "Anda tidak masuk log. Untuk dapat memilih Anda harus menggunakan akun dengan paling tidak $1 suntingan sebelum $2.",
-	'boardvote_notqualified'  => "Maaf, Anda hanya memiliki $1 suntingan sebelum $2. Anda paling tidak membutuhkan $3 suntingan sebelum dapat memilih.",
+	'boardvote_entered'       => "Terima kasih, suara Anda telah dicatat.
+
+Jika ingin, Anda dapat menyimpan detil berikut. Catatan pilihan Anda adalah:
+
+<pre>$1</pre>
+
+Data tersebut telah dienkripsi dengan kunci publik Pengurus Pemilihan:
+
+<pre>$2</pre>
+
+Berikut adalah hasil dari enkripsi. Data tersebut akan ditampilkan untuk publik di [[Special:Boardvote/sini]]. 
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Kembali]]",
+	'boardvote_notloggedin'   => "Anda tidak masuk log. Untuk dapat memilih Anda harus menggunakan akun dengan paling tidak $1 suntingan sebelum $2, dan dengan suntingan pertama sebelum $3.",
+	'boardvote_notqualified'  => "Anda tidak memiliki hak untuk memberikan suara dalam pemilihan ini. Anda harus memiliki $3 suntingan sebelum $2, sedangkan Anda hanya memiliki $1. Terlebih lagi, suntingan pertama Anda adalah pada $4, dimana disyaratkan harus sebelum $5.",
 	'boardvote_novotes'       => "Belum ada pemilih.",
 	'boardvote_time'          => "Waktu",
 	'boardvote_user'          => "Pengguna",
@@ -146,10 +164,16 @@ $wgBoardVoteMessages['id'] = array(
 	'boardvote_ua'            => "Agen pengguna",
 	'boardvote_listintro'     => "<p>Berikut adalah daftar semua suara yang telah masuk sampai hari ini. $1 untuk data terenkripsi.</p>",
 	'boardvote_dumplink'      => "Klik di sini",
+	'boardvote_submit'        => 'Kirim',
 	'boardvote_strike'        => "Coret",
 	'boardvote_unstrike'      => "Hapus coretan",
 	'boardvote_needadmin'     => "Hanya pengurus pemilihan yang dapat melakukan tindakan ini.",
+	'boardvote_notstarted'    => 'Pemilihan belum dimulai',
+	'boardvote_closed'        => 'Pemilihan telah ditutup, lihat [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En halaman pemilihan untuk mengetahui hasilnya] sebentar lagi.',
 	'boardvote_edits_many'    => 'banyak',
+	'group-boardvote'         => 'Pengurus pemilihan anggota dewan',
+	'group-boardvote-member'  => 'Pengurus pemilihan anggota dewan',
+	'grouppage-boardvote'     => '{{ns:project}}:Pengurus pemilihan anggota dewan',
 );
 $wgBoardVoteMessages['nl'] = array(
 	"boardvote"               => "Wikimedia Board of Trustees-verkiezing",

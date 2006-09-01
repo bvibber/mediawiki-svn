@@ -30,6 +30,17 @@ $wgDesysopMessages['he'] = array(
 	'desysop'              => 'בטל הרשאת מפעיל מערכת למשתמש',
 	'not_sysop'            => 'משתמש זה אינו מפעיל מערכת',
 );
+$wgDesysopMessages['id'] = array(
+	'desysoptitle'         => 'Mencabut akses pengurus dari pengguna',
+	'desysoptext'          => "Formulir ini digunakan oleh birokrat untuk mencabut hak pengurus dari seorang pengguna. Masukkan nama pengguna di kotak yang tersedia dan tekan tombol untuk mencabut hak sebagai pengurus dari pengguna yang bersangkutan.",
+	'desysopname'          => 'Nama pengguna:',
+	'desysopok'            => "<b>Pengguna \"$1\" telah dicabut kepengurusannya</b>",
+	'set_user_rights'      => 'Mengatur hak pengguna',
+	'user_rights_set'      => "<b>Hak pengguna untuk \"$1\" diperbarui</b>",
+	'set_rights_fail'      => "<b>Hak pengguna untuk \"$1\" tidak berhasil diatur. (Apakah Anda telah memasukkan nama yang tepat?)</b>",
+	'desysop'              => 'Mencabut hak pengurus pengguna',
+	'not_sysop'            => 'Pengguna ini bukan pengurus',
+);
 $wgDesysopMessages['nl'] = array(
 	'desysoptitle'         => 'Beheerdersrechten voor een gebruiker intrekken',
 	'desysoptext'          => "Bureaucraten begruiken dit formulier om beheerdersrechten voor een gebruiker in te trekken. Voer de gebruikersnaam in het veld in en klik op de knop om de beheerdersrechten in te trekken.",
