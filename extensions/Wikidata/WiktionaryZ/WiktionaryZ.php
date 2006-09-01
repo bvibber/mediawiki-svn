@@ -380,7 +380,7 @@ class WiktionaryZ {
 										new Structure($languageAttribute));
 
 		$queryResult = $dbr->query("SELECT language_id, old_text FROM translated_content tc, text t WHERE ".
-									"tc.set_id=$textId AND tc.text_id=t.old_id AND " . getViewTransactionRestriction('tc'));
+									"tc.translated_content_id=$textId AND tc.text_id=t.old_id AND " . getViewTransactionRestriction('tc'));
 
 		while ($translatedText= $dbr->fetchObject($queryResult))
 			$recordset->addRecord(array($translatedText->language_id, $translatedText->old_text));
@@ -399,7 +399,7 @@ class WiktionaryZ {
 
 		$queryResult = $dbr->query("SELECT language_id, old_text, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live" .
 									" FROM translated_content tc, text t " .
-									" WHERE tc.set_id=$textId AND tc.text_id=t.old_id AND " . getViewTransactionRestriction('tc') .
+									" WHERE tc.translated_content_id=$textId AND tc.text_id=t.old_id AND " . getViewTransactionRestriction('tc') .
 									" ORDER BY is_live, add_transaction_id DESC");
 
 		while ($translatedText= $dbr->fetchObject($queryResult))

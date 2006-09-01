@@ -11,6 +11,7 @@ TRUNCATE TABLE uw_syntrans_relations;
 TRUNCATE TABLE uw_versions_ns_collection;
 TRUNCATE TABLE uw_versions_ns_gemet;
 TRUNCATE TABLE transactions;
+TRUNCATE TABLE objects;
 
 DELETE translated_content, text FROM translated_content, text WHERE translated_content.text_id=text.old_id;
 DELETE page, revision FROM page, revision WHERE page.page_namespace >= 16 AND revision.rev_page=page.page_id;

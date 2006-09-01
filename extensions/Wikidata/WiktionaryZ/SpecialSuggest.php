@@ -79,7 +79,7 @@ function getSuggestions() {
 	    			"WHERE expression.expression_id=syntrans.expression_id AND syntrans.defined_meaning_id=collection.collection_mid ".
 	    			"AND syntrans.endemic_meaning=1" .
 	    			" AND " . getLatestTransactionRestriction('syntrans') .
-	    			" AND " . getLatestTransactionRestriction('uw_collection_ns');
+	    			" AND " . getLatestTransactionRestriction('collection');
 	    	break;
 	}
 	                          
@@ -94,26 +94,26 @@ function getSuggestions() {
 	
 	switch($query) {
 		case 'relation-type':
-			list($relation, $editor) = getRelationTypeAsRelation($queryResult);
+			list($recordSet, $editor) = getRelationTypeAsRecordSet($queryResult);
 			break;		
 		case 'attribute':
-			list($relation, $editor) = getAttributeAsRelation($queryResult);
+			list($recordSet, $editor) = getAttributeAsRecordSet($queryResult);
 			break;
 		case 'text-attribute':
-			list($relation, $editor) = getTextAttributeAsRelation($queryResult);
+			list($recordSet, $editor) = getTextAttributeAsRecordSet($queryResult);
 			break;
 		case 'defined-meaning':
-			list($relation, $editor) = getDefinedMeaningAsRelation($queryResult);
+			list($recordSet, $editor) = getDefinedMeaningAsRecordSet($queryResult);
 			break;	
 		case 'collection':
-			list($relation, $editor) = getCollectionAsRelation($queryResult);
+			list($recordSet, $editor) = getCollectionAsRecordSet($queryResult);
 			break;	
 		case 'language':
-			list($relation, $editor) = getLanguageAsRelation($queryResult);
+			list($recordSet, $editor) = getLanguageAsRecordSet($queryResult);
 			break;
 	}
 	
-	return getRelationAsSuggestionTable($editor, new IdStack($prefix .'table'), $relation);
+	return getRelationAsSuggestionTable($editor, new IdStack($prefix .'table'), $recordSet);
 }
 
 function getSQLForCollectionOfType($collectionType) {
@@ -127,7 +127,7 @@ function getSQLForCollectionOfType($collectionType) {
             "AND " . getLatestTransactionRestriction('uw_collection_contents');
 }
 
-function getRelationTypeAsRelation($queryResult) {
+function getRelationTypeAsRecordSet($queryResult) {
 	global
 		$idAttribute;
 	
@@ -136,19 +136,19 @@ function getRelationTypeAsRelation($queryResult) {
 	$relationTypeAttribute = new Attribute("relation-type", "Relation type", "short-text");
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$relation = new ArrayRecordSet(new Structure($idAttribute, $relationTypeAttribute, $collectionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $relationTypeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
+		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
 	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($relationTypeAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 	
-	return array($relation, $editor);		
+	return array($recordSet, $editor);		
 }
 
-function getAttributeAsRelation($queryResult) {
+function getAttributeAsRecordSet($queryResult) {
 	global
 		$idAttribute;
 	
@@ -156,19 +156,19 @@ function getAttributeAsRelation($queryResult) {
 	$attributeAttribute = new Attribute("attribute", "Attribute", "short-text");
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$relation = new ArrayRecordSet(new Structure($idAttribute, $attributeAttribute, $collectionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $attributeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));
+		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));
 
 	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($attributeAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 
-	return array($relation, $editor);		
+	return array($recordSet, $editor);		
 }
 
-function getTextAttributeAsRelation($queryResult) {
+function getTextAttributeAsRecordSet($queryResult) {
 	global
 		$idAttribute;
 	
@@ -176,19 +176,19 @@ function getTextAttributeAsRelation($queryResult) {
 	$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "short-text");
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$relation = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
+		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
 	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($textAttributeAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 
-	return array($relation, $editor);		
+	return array($recordSet, $editor);		
 }
 
-function getDefinedMeaningAsRelation($queryResult) {
+function getDefinedMeaningAsRecordSet($queryResult) {
 	global
 		$idAttribute;
 
@@ -200,14 +200,14 @@ function getDefinedMeaningAsRelation($queryResult) {
 	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType($expressionStructure));
 	$definitionAttribute = new Attribute("definition", "Definition", "definition");
 	
-	$relation = new ArrayRecordSet(new Structure($idAttribute, $definedMeaningAttribute, $definitionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $definedMeaningAttribute, $definitionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
 		$definedMeaningRecord = new ArrayRecord($expressionStructure);
 		$definedMeaningRecord->setAttributeValue($spellingAttribute, $row->spelling);
 		$definedMeaningRecord->setAttributeValue($languageAttribute, $row->language_id);
 		
-		$relation->addRecord(array($row->defined_meaning_id, $definedMeaningRecord, getDefinedMeaningDefinition($row->defined_meaning_id)));
+		$recordSet->addRecord(array($row->defined_meaning_id, $definedMeaningRecord, getDefinedMeaningDefinition($row->defined_meaning_id)));
 	}			
 
 	$definedMeaningEditor = new RecordTableCellEditor($definedMeaningAttribute);
@@ -218,43 +218,43 @@ function getDefinedMeaningAsRelation($queryResult) {
 	$editor->addEditor($definedMeaningEditor);
 	$editor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 
-	return array($relation, $editor);		
+	return array($recordSet, $editor);		
 }
 
-function getCollectionAsRelation($queryResult) {
+function getCollectionAsRecordSet($queryResult) {
 	global
 		$idAttribute;
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$relation = new ArrayRecordSet(new Structure($idAttribute, $collectionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addRecord(array($row->collection_id, $row->spelling));			
+		$recordSet->addRecord(array($row->collection_id, $row->spelling));			
 
 	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 
-	return array($relation, $editor);		
+	return array($recordSet, $editor);		
 }
 
-function getLanguageAsRelation($queryResult) {
+function getLanguageAsRecordSet($queryResult) {
 	global
 		$idAttribute;
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$languageAttribute = new Attribute("language", "Language", "short-text");
 	
-	$relation = new ArrayRecordSet(new Structure($idAttribute, $languageAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $languageAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$relation->addRecord(array($row->row_id, $row->language_name));			
+		$recordSet->addRecord(array($row->row_id, $row->language_name));			
 
 	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($languageAttribute, new SimplePermissionController(false), false));
 
-	return array($relation, $editor);		
+	return array($recordSet, $editor);		
 }
 
 ?>
