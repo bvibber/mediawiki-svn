@@ -109,7 +109,8 @@ $wgDPL2Options = array(
 	'itemattr' => array('default' => ''),
 	/**
 	 * Attributes for HTML list elements, depending on 'mode' ('ol' for ordered, 'ul' for unordered, 'div' for others)
-	 * Not applicable to 'mode=category' or 'mode=inline'.
+	 * Can be used with pseudo 'mode=inline' where 'inlinetext' contains one or more <BR/>.
+	 * Not applicable to 'mode=category' or 'mode=inline' (with no <BR/> in inlinetext).
 	 * @todo Make 'listattr' param applicable to 'mode=category'.
 	 * Example: listattr= class="submenul" style="color: red;"
 	 */
@@ -932,6 +933,10 @@ class DPL2OutputMode {
 
 		switch ($outputmode) {
 			case 'inline':
+				if( stristr($inlinetext, '<BR />') ) { //one item per line (pseudo-inline)
+					$this->sStartList = '<DIV'. $_listattr . '>';
+					$this->sEndList = '</DIV>';
+				}
 				$this->sStartItem = '<SPAN' . $_itemattr . '>';
 				$this->sEndItem = '</SPAN>';
 				$this->sInline = $inlinetext;
