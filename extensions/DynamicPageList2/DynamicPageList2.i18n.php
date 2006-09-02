@@ -56,7 +56,7 @@ $wgDPL2Messages['en'] = array(
 	 * $1: wrong param value given by user
 	 * $2: default param value used instead by program
 	*/
-	'dpl2_debug_' . DPL2_WARN_WRONGCOUNT => "WARNING: Wrong '$0' parameter: '$1'! Using default: '$2' (no count limit). Help: <code>$0= <i>empty string</i> (no count limit) | n</code>, with <code>n</code> a positive integer.",
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "WARNING: Wrong '$0' parameter: '$1'! Using default: '$2' (no limit). Help: <code>$0= <i>empty string</i> (no limit) | n</code>, with <code>n</code> a positive integer.",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'WARNING: No results!',
 	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => 'WARNING: It is strongly recommended to include at least one category or namespace. If not, the generation of the page list can be quite resource and time-consuming.',
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "WARNING: Add* parameters ('adduser', 'addeditdate', etc.)' have no effect with 'mode=category'. Only the page namespace/title can be viewed in this mode.",
@@ -82,8 +82,7 @@ $wgDPL2Messages['en'] = array(
 	/**
 	 * $1: number of articles
 	*/
-	'dpl2_articlecount1' => 'There is $1 article under this heading.',
-	'dpl2_articlecount' => 'There are $1 articles under this heading.'
+	'dpl2_articlecount' => 'There {{PLURAL:$1|is one article|are $1 articles}} in this heading.'
 );
 $wgDPL2Messages['he'] = array(
 	/*
