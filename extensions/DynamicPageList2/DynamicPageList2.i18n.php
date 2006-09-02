@@ -58,7 +58,7 @@ $wgDPL2Messages['en'] = array(
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "WARNING: Wrong '$0' parameter: '$1'! Using default: '$2' (no limit). Help: <code>$0= <i>empty string</i> (no limit) | n</code>, with <code>n</code> a positive integer.",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'WARNING: No results!',
-	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => 'WARNING: It is strongly recommended to include at least one category or namespace. If not, the generation of the page list can be quite resource and time-consuming.',
+	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "WARNING: It is strongly recommended to either limit the number of results with the 'count' parameter or include at least one category / namespace. If not, the generation of the page list can be quite resource and time-consuming.",
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "WARNING: Add* parameters ('adduser', 'addeditdate', etc.)' have no effect with 'mode=category'. Only the page namespace/title can be viewed in this mode.",
 	/**
 	 * $0: 'headingmode' value given by user
