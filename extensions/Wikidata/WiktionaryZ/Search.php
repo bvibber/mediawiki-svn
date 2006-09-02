@@ -61,26 +61,26 @@ function getDefinedMeaningAsRelation($queryResult) {
 	$spellingAttribute = new Attribute("spelling", "Spelling", "short-text");
 	$languageAttribute = new Attribute("language", "Language", "language");
 	
-	$expressionStructure = new Structure($spellingAttribute, $languageAttribute);
-	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType($expressionStructure));
+	$expressionStructure = new Structure($languageAttribute, $spellingAttribute);
+	$expressionAttribute = new Attribute("expression", "Expression", new RecordType($expressionStructure));
 	$definitionAttribute = new Attribute("definition", "Definition", "definition");
 	
-	$relation = new ArrayRecordSet(new Structure($idAttribute, $definedMeaningAttribute, $definitionAttribute), new Structure($idAttribute));
+	$relation = new ArrayRecordSet(new Structure($idAttribute, $expressionAttribute, $definitionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$definedMeaningRecord = new ArrayRecord($expressionStructure);
-		$definedMeaningRecord->setAttributeValue($spellingAttribute, $row->spelling);
-		$definedMeaningRecord->setAttributeValue($languageAttribute, $row->language_id);
+		$expressionRecord = new ArrayRecord($expressionStructure);
+		$expressionRecord->setAttributeValue($spellingAttribute, $row->spelling);
+		$expressionRecord->setAttributeValue($languageAttribute, $row->language_id);
 		
-		$relation->addRecord(array($row->defined_meaning_id, $definedMeaningRecord, getDefinedMeaningDefinition($row->defined_meaning_id)));
+		$relation->addRecord(array($row->defined_meaning_id, $expressionRecord, getDefinedMeaningDefinition($row->defined_meaning_id)));
 	}			
 
-	$definedMeaningEditor = new RecordTableCellEditor($definedMeaningAttribute);
-	$definedMeaningEditor->addEditor(new SpellingEditor($spellingAttribute, new SimplePermissionController(false), false));
-	$definedMeaningEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
+	$expressionEditor = new RecordTableCellEditor($expressionAttribute);
+	$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
+	$expressionEditor->addEditor(new SpellingEditor($spellingAttribute, new SimplePermissionController(false), false));
 
 	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
-	$editor->addEditor($definedMeaningEditor);
+	$editor->addEditor($expressionEditor);
 	$editor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 
 	return array($relation, $editor);		
