@@ -138,7 +138,7 @@ $wgDPL2Options = array(
 	 * Empty value (default) means no limit.
 	 * Not applicable to mode=category.
 	 */
-	 'titlecharmax' => array('default' => '', 'pattern' => '/^\d*$/'),
+	 'titlemaxlength' => array('default' => '', 'pattern' => '/^\d*$/'),
 );
 
 /**
@@ -219,8 +219,8 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$sItemHtmlAttr = $wgDPL2Options['itemattr']['default'];
 	$sHListHtmlAttr = $wgDPL2Options['hlistattr']['default'];
 	$sHItemHtmlAttr = $wgDPL2Options['hitemattr']['default'];
-	$_sTitleCharMax = $wgDPL2Options['titlecharmax']['default'];
-	$iTitleCharMax = empty($_sTitleCharMax) ? null: intval($_sTitleCharMax);
+	$_sTitleMaxLen = $wgDPL2Options['titlemaxlength']['default'];
+	$iTitleMaxLen = empty($_sTitleMaxLen) ? null: intval($_sTitleMaxLen);
 	
 	$aIncludeCategories = array(); // $aIncludeCategories is a 2-dimensional array: Memberarrays are linked using 'AND'
 	$aExcludeCategories = array();
@@ -412,12 +412,12 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				$sHItemHtmlAttr = $sArg;
 				break;
 				
-			case 'titlecharmax':
+			case 'titlemaxlength':
 				//processed like 'count' param
-				if( preg_match($wgDPL2Options['titlecharmax']['pattern'], $sArg) )
-					$iTitleCharMax = empty($sArg) ? null: intval($sArg);
+				if( preg_match($wgDPL2Options['titlemaxlength']['pattern'], $sArg) )
+					$iTitleMaxLen = empty($sArg) ? null: intval($sArg);
 				else // wrong value
-					$output .= $logger->msgWrongParam('titlecharmax', $sArg);
+					$output .= $logger->msgWrongParam('titlemaxlength', $sArg);
 				break;
 				
 			default:
@@ -709,8 +709,8 @@ function DynamicPageList2( $input, $params, &$parser ) {
 		$title = Title::makeTitle($row->page_namespace, $row->page_title);
 		$sTitleText = $title->getText();
 		//chop off title if "too long"
-		if( isset($iTitleCharMax) && (strlen($sTitleText) > $iTitleCharMax) )
-			$sTitleText = substr($sTitleText, 0, $iTitleCharMax) . '...';
+		if( isset($iTitleMaxLen) && (strlen($sTitleText) > $iTitleMaxLen) )
+			$sTitleText = substr($sTitleText, 0, $iTitleMaxLen) . '...';
 		if ($bShowNamespace)
 			//Adapted from Title::getPrefixedText()
 			$sTitleText = str_replace( '_', ' ', $title->prefix($sTitleText) );
@@ -890,7 +890,7 @@ class DPL2Logger {
 		$msgid = DPL2_WARN_WRONGPARAM;
 		switch($paramvar) {
 			case 'count':
-			case 'titlecharmax':
+			case 'titlemaxlength':
 				$msgid = DPL2_WARN_WRONGPARAM_INT;
 				break;
 			case 'namespace':
