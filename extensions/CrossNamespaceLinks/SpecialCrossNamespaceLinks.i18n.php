@@ -12,6 +12,10 @@ $wgCrossNamespaceLinksMessages['en'] = array(
 	'crossnamespacelinks'     => 'Cross-namespace links',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|links}} to $3'
 );
+$wgCrossNamespaceLinksMessages['cs'] = array(
+	'crossnamespacelinks'     => 'Odkazy napříč jmennými prostory',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazů}} do $3'
+);
 $wgCrossNamespaceLinksMessages['de'] = array(
 	'crossnamespacelinks'     => 'Artikel mit Links in andere Namensräume',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Link|Links}} auf $3'
