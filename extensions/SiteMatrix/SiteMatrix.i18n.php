@@ -14,6 +14,9 @@ $wgSiteMatrixMessages['en'] = array(
 $wgSiteMatrixMessages['cs'] = array(
 	"sitematrix" => "Seznam wiki projektů nadace Wikimedia",
 );
+$wgSiteMatrixMessages['de'] = array(
+	"sitematrix" => "Liste der Wikimedia Wikis",
+);
 $wgSiteMatrixMessages['he'] = array(
 	"sitematrix" => "רשימת אתרי ויקי של ויקימדיה",
 );
