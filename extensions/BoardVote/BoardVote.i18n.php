@@ -77,6 +77,74 @@ to date. $1 for the encrypted data.</p>",
 	'group-boardvote-member'  => 'Board vote admin',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
 );
+$wgBoardVoteMessages['cs'] = array(
+	'boardvote'               => "Volby do Správní rady nadace Wikimedia",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|Hlasovat]]
+* [[Special:Boardvote/list|Seznam již hlasujících]]
+* [[Special:Boardvote/dump||Šifrovaný záznam hlasování]]",
+	'boardvote_intro'         => "
+<p>Vítejte u třetích voleb do Správní rady nadace Wikimedia. Hlasováním
+bude zvolen jeden zástupce komunity uživatelů všech projektů nadace. Tento
+zástupce budou pomáhat v rozhodování o budoucím směru rozvoje projektů,
+jednotlivě i jako skupina, a budou reprezentovat <em>vaše</em> zájmy a
+ohledy ve Správní radě. Bude také rozhodovat o způsobech získávání
+finančních prostředků a využívání získaných peněz.</p>
+
+<p>Před hlasováním si laskavě důkladně přečtěte vyjádření kandidátů a jejich
+odpovědi na dotazy. Všichni kandidáti jsou respektovanými uživateli, kteří
+přispěli velkým množstvím času a úsilí při snaze učinit z projektů přátelské
+prostředí cílené na shromažďování a volné šíření znalostí lidstva.</p>
+
+<p>Můžete hlasovat pro libovolně mnoho kandidátů. Kandidát, který bude mít
+pro příslušnou pozici nejvíce hlasů, bude do této pozice nominován. V případě
+shody bude pořádáno druhé kolo hlasování.</p>
+
+<p>Pamatujte, že můžete hlasovat jen jednou. I pokud máte více než 400 editací na více projektech, tak to neznamená, že máte právo volit dvakrát. Pokud se později rozhodnete změnit své hlasy, učiňte tak na projektu, kde jste hlasování provedl(a) předtím.</p>
+
+<p>Další informace (anglicky a v dalších jazycích) najdete na následujících stránkách:</p>
+<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">Často kladené otázky o hlasování</a></li>
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">Kandidáti</a></li></ul>	
+",
+	'boardvote_intro_change'  => "<p>Již jste hlasoval(a). Můžete však svůj hlas změnit prostřednictvím níže uvedeného formuláře. Zaškrtněte čtvereček u každého kandidáta, kterého schvalujete.</p>",
+	'boardvote_entered'       => "Děkujeme vám, váš hlas byl zaznamenán.
+
+Pokud si přejete, můžete si poznamenat podrobnosti. Váš záznam o hlasování je:
+
+<pre>$1</pre>
+
+Byl zašifrován s použitím veřejného klíče volebních úředníků:
+
+<pre>$2</pre>
+
+Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [[Speciální:Boardvote/dump]]. 
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Zpět]]",
+  'boardvote_notloggedin'   => 'Nejste přihlášen(a). Pro hlasování musíte použít účet s nejméně $1 příspěvky před $2 a první editací před $3.',
+  'boardvote_notqualified'  => 'Litujeme, nejste oprávněn(a) hlasovat v těchto volbách, protože před $2 jste provedl(a) pouze $1 editací. Je vyžadováno $3 editací. Nebo Vaše první editace nebyla před $5, ale až $4.',
+  'boardvote_notstarted'    => 'Volby ještě nezačaly.',
+  'boardvote_novotes'       => 'Nikdo dosud nehlasoval.',
+	'boardvote_time'          => "Datum a čas",
+	'boardvote_user'          => "Uživatel",
+	'boardvote_edits'         => "Editací",
+	'boardvote_days'          => "Dní",
+	'boardvote_ip'            => "IP",
+	'boardvote_ua'            => "Klient",
+	'boardvote_listintro'     => "<p>Toto je seznam všech dosud zaznamenaných hlasů. Také můžete získat $1.</p>",
+	'boardvote_dumplink'      => "šifrovaný záznam hlasování",
+	'boardvote_submit'        => 'OK',
+	'boardvote_strike'        => "Zaškrtnout",
+	'boardvote_unstrike'      => "Odškrtnout",
+	'boardvote_needadmin'     => "Pouze volební správci mohou provést tuto operaci.",
+	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Volby do správní rady nadace Wikimedia</a>:",
+	'boardvote_notstarted'    => 'Volby ještě nezačaly.',
+	'boardvote_closed'        => 'Volby skončily. Podívejte se na [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/Cs výsledky].',
+	'boardvote_edits_many'    => 'mnoho',
+	'group-boardvote'         => 'Volební správci',
+	'group-boardvote-member'  => 'Volební správce',
+	'grouppage-boardvote'     => '{{ns:project}}:Volební správce',
+);
 $wgBoardVoteMessages['he'] = array(
 	'boardvote'               => "בחירות לחבר הנאמנים של ויקימדיה",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|הצבעה]]
