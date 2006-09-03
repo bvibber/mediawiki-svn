@@ -215,13 +215,13 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$bAddUser = $wgDPL2Options['adduser']['default'] == 'true';
 	$bAddCategories = $wgDPL2Options['addcategories']['default'] == 'true';
 	$_sCount = $wgDPL2Options['count']['default'];
-	$iCount = empty($_sCount) ? null: intval($_sCount);
+	$iCount = ($_sCount == '') ? null: intval($_sCount);
 	$sListHtmlAttr = $wgDPL2Options['listattr']['default'];
 	$sItemHtmlAttr = $wgDPL2Options['itemattr']['default'];
 	$sHListHtmlAttr = $wgDPL2Options['hlistattr']['default'];
 	$sHItemHtmlAttr = $wgDPL2Options['hitemattr']['default'];
 	$_sTitleMaxLen = $wgDPL2Options['titlemaxlength']['default'];
-	$iTitleMaxLen = empty($_sTitleMaxLen) ? null: intval($_sTitleMaxLen);
+	$iTitleMaxLen = ($_sTitleMaxLen == '') ? null: intval($_sTitleMaxLen);
 	
 	$aIncludeCategories = array(); // $aIncludeCategories is a 2-dimensional array: Memberarrays are linked using 'AND'
 	$aExcludeCategories = array();
@@ -294,7 +294,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			case 'count':
 				//ensure that $iCount is a number or no count limit;
 				if( preg_match($wgDPL2Options['count']['pattern'], $sArg) )
-					$iCount = empty($sArg) ? null: intval($sArg);
+					$iCount = ($sArg == '') ? null: intval($sArg);
 				else // wrong value
 					$output .= $logger->msgWrongParam('count', $sArg);
 				break;
@@ -416,7 +416,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			case 'titlemaxlength':
 				//processed like 'count' param
 				if( preg_match($wgDPL2Options['titlemaxlength']['pattern'], $sArg) )
-					$iTitleMaxLen = empty($sArg) ? null: intval($sArg);
+					$iTitleMaxLen = ($sArg == '') ? null: intval($sArg);
 				else // wrong value
 					$output .= $logger->msgWrongParam('titlemaxlength', $sArg);
 				break;
@@ -558,7 +558,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	
 	// JOIN ...	
 	if($bAddCategories || $aOrderMethods[0] == 'category') {
-		$b2tables = !empty($sSqlCl1Table) && !empty($sSqlCl2Table);
+		$b2tables = ($sSqlCl1Table != '') && ($sSqlCl2Table != '');
 		$sSqlSelectFrom .= ' LEFT JOIN (' .$sSqlCl1Table . ($b2tables ? ', ' : '') . $sSqlCl2Table.') ON ('. $sSqlCond_page_cl1 . ($b2tables ? ' AND ' : '') . $sSqlCond_page_cl2 .')';
 	}
 	$iCurrentTableNumber = 0;
@@ -683,7 +683,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 		if($sHeadingOutputMode != 'none')
 			switch($aOrderMethods[0]) {
 				case 'category': 
-					if(empty($row->cl_to)) //uncategorized page
+					if($row->cl_to == '') //uncategorized page
 						$aHeadings[] = $sSpecUncatLnk;
 					else {
 						$tCat = Title::makeTitle(NS_CATEGORY, $row->cl_to);
@@ -745,7 +745,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			$aAddUsers[] = '';
 		
 		//CATEGORY LINKS FROM CURRENT PAGE 
-		if(!$bAddCategories || empty($row->cats))
+		if(!$bAddCategories || ($row->cats == ''))
 			$aAddCategories[] = '';
 		else {
 			$artCatNames = explode(' | ', $row->cats);
@@ -827,12 +827,12 @@ function DPL2OutputListStyle ($aArticles, $aAddDates, $aAddUsers, $aAddCategorie
 		if($i > $iStart)
 			$r .= $mode->sInline; //If mode is not 'inline', sInline attribute is empty, so does nothing
 		$r .= $mode->sStartItem;
-		if(!empty($aAddDates[$i]))
+		if($aAddDates[$i] != '')
 			$r .=  $wgLang->date($aAddDates[$i]) . ': ';
 		$r .= $aArticles[$i];
-		if(!empty($aAddUsers[$i]))
+		if($aAddUsers[$i] != '')
 			$r .= ' . . ' . $aAddUsers[$i];
-		if(!empty($aAddCategories[$i]))
+		if($aAddCategories[$i] != '')
 			$r .= ' . . <SMALL>' . $sSpecCatsLnk . ': ' . implode(' | ', $aAddCategories[$i]) . '</SMALL>';
 		$r .= $mode->sEndItem;
 	}
@@ -928,8 +928,8 @@ class DPL2OutputMode {
 	
 	function DPL2OutputMode($outputmode, $inlinetext = '&nbsp;-&nbsp', $listattr = '', $itemattr = '') {
 		$this->name = $outputmode;
-		$_listattr = empty($listattr) ? '' : ' ' . $listattr;
-		$_itemattr = empty($itemattr) ? '' : ' ' . $itemattr;
+		$_listattr = ($listattr == '') ? '' : ' ' . $listattr;
+		$_itemattr = ($itemattr == '') ? '' : ' ' . $itemattr;
 
 		switch ($outputmode) {
 			case 'inline':
