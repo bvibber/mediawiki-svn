@@ -127,9 +127,9 @@ $wgDPL2Messages['he'] = array(
 	 * $1: wrong param value given by user
 	 * $2: default param value used instead by program
 	*/
-	'dpl2_debug_' . DPL2_WARN_WRONGCOUNT => "אזהרה: פרמטר '$0' שגוי: '$1'! משתמש בברירת המחדל: '$2' (ללא הגבלת ספירה). עזרה: <code>$0= <i>מחרוזת ריקה</i> (ללא הגבלת ספריה) | n</code>, עם <code>n</code> כמספר שלם וחיובי.",
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "אזהרה: פרמטר '$0' שגוי: '$1'! משתמש בברירת המחדל: '$2' (ללא הגבלה). עזרה: <code>$0= <i>מחרוזת ריקה</i> (ללא הגבלה) | n</code>, עם <code>n</code> כמספר שלם וחיובי.",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'אזהרה: אין תוצאות!',
-	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => 'אזהרה: מומלץ ביותר להכליל לפחות קטגוריה אחת או מרחב שם אחד. אם לא, היצירה של רשימת הדפים עלולה לקחת זמן ולבזבז משאבים.',
+	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "אזהרה: מומלץ ביותר או להגביל את מספר התוצאות עם הפרמטר 'count' או להכליל לפחות קטגוריה אחת או מרחב שם אחד. אם לא, היצירה של רשימת הדפים עלולה לקחת זמן ולבזבז משאבים.",
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "אזהרה: להוספת* הפרמטרים ('adduser',‏ 'addeditdate' וכדומה) אין השפעה עם 'mode=category'. ניתן לצפות רק במרחב השם או בכותרת הדף במצב זה.",
 	/**
 	 * $0: 'headingmode' value given by user
@@ -153,8 +153,7 @@ $wgDPL2Messages['he'] = array(
 	/**
 	 * $1: number of articles
 	*/
-	'dpl2_articlecount1' => 'ישנו דף אחד תחת כותרת זו.',
-	'dpl2_articlecount' => 'ישנם $1 דפים תחת כותרת זו.'
+	'dpl2_articlecount' => '{{plural:$1|ישנם $1 דפים|ישנו דף אחד}} תחת כותרת זו.'
 );
 $wgDPL2Messages['nl'] = array(
 	/*
