@@ -13,6 +13,11 @@ $wgFilepathMessages['en'] = array(
 	'filepath_page'   => 'File:',
 	'filepath_submit' => 'Path',
 );
+$wgFilepathMessages['cs'] = array(
+	'filepath'        => 'Cesta k souboru',
+	'filepath_page'   => 'Soubor:',
+	'filepath_submit' => 'Cesta',
+);
 $wgFilepathMessages['de'] = array(
 	'filepath'        => 'Dateipfad',
 	'filepath_page'   => 'Datei:',
