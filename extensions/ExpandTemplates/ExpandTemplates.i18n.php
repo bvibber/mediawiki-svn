@@ -30,4 +30,13 @@ $wgExpandTemplatesMessages['he'] = array(
 	'expand_templates_ok'              => 'פרוס תבניות',
 	'expand_templates_remove_comments' => 'הסר הערות',
 );
+$wgExpandTemplatesMessages['id'] = array(
+	'expandtemplates'                  => 'Pengembangan templat',
+	'expand_templates_intro'           => 'Halaman istimewa ini menerima teks dan mengembangkan semua templat di dalamnya secara rekursif. Halaman ini juga menerjemahkan semua fungsi parser seperti <nowiki>{{</nowiki>#if:...}}, dan variabel seperti <nowiki>{{</nowiki>CURRENTDAY}}&mdash;bahkan bisa dibilang segala sesuatu yang berada di antara dua tanda kurung. Ini dilakukan dengan memanggil tahapan parser yang sesuai dari MediaWiki.',
+	'expand_templates_title'           => 'Judul konteks, untuk <nowiki>{{</nowiki>PAGENAME}} dll.:',
+	'expand_templates_input'           => 'Teks sumber:',
+	'expand_templates_output'          => 'Hasil:',
+	'expand_templates_ok'              => 'Jalankan',
+	'expand_templates_remove_comments' => 'Buang komentar',
+);
 ?>
