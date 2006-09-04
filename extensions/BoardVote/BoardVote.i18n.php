@@ -526,4 +526,285 @@ k\' ont ddja vote disk\' asteure.
 $1 po les dnêyes sourdant des bultins.</p>',
 	'boardvote_dumplink' => 'Clitchîz chal',
 );
+$wgBoardVoteMessages['zh-cn'] = array(
+	'boardvote'               => "维基媒体基金会理事会选举",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|参与投票]]
+* [[Special:Boardvote/list|至今已投票列表]]
+* [[Special:Boardvote/dump|加密的选举数据]]",
+	'boardvote_intro'         => "
+<p>欢迎参与维基媒体基金会理事会第三届选举。我们将选出一人，代表各维基计划的用户社群。他/她将独力或与团队一起，帮助决定维基媒体计划的未来走向，同时在理事会中代表<b>你</b>的利益及考虑。他/她会决定创造收入的方式，及募得款项的分配。</p>
+
+<p>请在投票前，仔细阅读参选人陈述及对质问的回应。每位参选人都是受尊重的用户，贡献了相当多的时间与精力来营造维基计划的友善环境，使其为人类知识的追求及自由分散服务。</p>
+
+<p>你可以投票给任意多个参选人。得票最多的参选人将会公布为胜选。若最高票数相同，他们将进入第二轮选举。</p>
+
+<p>请留意，你有且只有一票。即便你在多个计划有超过400次编辑，你仍只可投一票。若你要改变投票选择，请在原投票计划处修改。</p>
+<p>更多信息，见：</p>
+<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">选举的常见问题解答</a></li>
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">参选人</a></li></ul>
+",
+	'boardvote_intro_change'  => "<p>你已经参与过投票。但是你还可以在下面修改你的投票。请勾选你所支持的候选人名字的选择框。</p>",
+	'boardvote_entered'       => "谢谢您，您的投票已经被记录。
+
+您可以记录下以下详情。您的投票记录是：
+
+<pre>$1</pre>
+
+已经用选举管理员的公钥加密。
+
+<pre>$2</pre>
+
+以下是加密后的版本。它将在[[Special:Boardvote/dump]]列表中公开展示。
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|返回]]",
+	'boardvote_notloggedin'   => "您还没有登录。要参与投票，您必须在$2之前至少贡献了$1次以上，而且在$3前作出第一次编辑。",
+	'boardvote_notqualified'  => "抱歉，您在$2之前只有$1次贡献。 您必须至少贡献了$3次以上才可以参与本次投票。而且，您的第一次编辑是在$4，这需要在$5之前。",
+	'boardvote_novotes'       => "目前还没有人投票。",
+	'boardvote_time'          => "时间",
+	'boardvote_user'          => "用户",
+	'boardvote_edits'         => "编辑次数",
+	'boardvote_days'          => "日",
+	'boardvote_ip'            => "IP",
+	'boardvote_ua'            => "用户代理",
+	'boardvote_listintro'     => "<p>本列表列出了迄今为止所有被登记的选票。$1是加密信息。</p>",
+	'boardvote_dumplink'      => "点击这里",
+	'boardvote_submit'        => 'OK',
+	'boardvote_strike'        => "删除线",
+	'boardvote_unstrike'      => "取消删除线",
+	'boardvote_needadmin'     => "只有选举管理员才能进行本项操作。",
+	'boardvote_sitenotice'    => "<a href=\"/wiki/Special:Boardvote/vote\">维基媒体基金会理事会选举</a>: 投票截止到9月20日",
+	'boardvote_notstarted'    => '投票尚未开始',
+	'boardvote_closed'        => '投票已经结束，请在稍后时间参看[http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/Zh 投票结果]。',
+	'boardvote_edits_many'    => '很多',
+	'group-boardvote'         => '理事会投票管理员',
+	'group-boardvote-member'  => '理事会投票管理员',
+	'grouppage-boardvote'     => '{{ns:project}}:理事会投票管理员',
+);
+$wgBoardVoteMessages['zh-hk'] = array(
+	'boardvote'               => "維基媒體基金會理事會選舉",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|參與投票]]
+* [[Special:Boardvote/list|至今已投票列表]]
+* [[Special:Boardvote/dump|加密的選舉資料]]",
+	'boardvote_intro'         => "
+<p>歡迎參與維基媒體基金會理事會第三屆選舉。我們將選出一人，代表各維基計畫的用戶社群。他/她將獨力或與團隊一起，幫助決定維基媒體計畫的未來走向，同時在理事會中代表<b>你</b>的利益及考量。他/她會決定創造收入的方式，及募得款項的分配。</p>
+
+<p>請在投票前，仔細閱讀參選人陳述及對質問的回應。每位參選人都是受尊重的用戶，貢獻了相當多的時間與精力來營造維基計畫的友善環境，使其為人類知識的追求及自由分散服務。</p>
+
+<p>你可以投票給任意多個參選人。得票最多的參選人將會公布為勝選。若最高票數相同，他們將進入第二輪選舉。</p>
+
+<p>請留意，你有且只有一票。即便你在多個計畫有超過400次編輯，你仍只可投一票。若你要改變投票選擇，請在原投票計畫處修改。</p>
+<p>更多資訊，見：</p>
+<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">選舉的常見問題解答</a></li>
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">參選人</a></li></ul>
+",
+	'boardvote_intro_change'  => "<p>你已經參與過投票。但是你還可以在下面修改你的投票。請勾選你所支持的候選人名字的選擇框。</p>",
+	'boardvote_entered'       => "謝謝您，您的投票已經被記錄。
+
+您可以記錄下以下詳情。您的投票記錄是：
+
+<pre>$1</pre>
+
+已經用選舉管理員的公眾鑰匙加密。
+
+<pre>$2</pre>
+
+以下是加密後的版本。它將在[[Special:Boardvote/dump]]列表中公開展示。
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|返回]]",
+	'boardvote_notloggedin'   => "您還沒有登錄。要參與投票，您必須在$2之前至少貢獻了$1次以上，而且在$3前作出第一次編輯。",
+	'boardvote_notqualified'  => "對不起，您在$2之前只有$1次貢獻。 您必須至少貢獻了$3次以上才可以參與本次投票。而且，您的第一次編輯是在$4，這需要在$5之前。",
+	'boardvote_novotes'       => "目前還沒有人投票。",
+	'boardvote_time'          => "時間",
+	'boardvote_user'          => "用戶",
+	'boardvote_edits'         => "編輯次數",
+	'boardvote_days'          => "日",
+	'boardvote_ip'            => "IP",
+	'boardvote_ua'            => "用戶代理",
+	'boardvote_listintro'     => "<p>本列表列出了迄今為止所有被登記的選票。$1是加密信息。</p>",
+	'boardvote_dumplink'      => "點擊這裏",
+	'boardvote_submit'        => 'OK',
+	'boardvote_strike'        => "刪除綫",
+	'boardvote_unstrike'      => "取消刪除綫",
+	'boardvote_needadmin'     => "只有選舉管理員才能進行本項操作。",
+	'boardvote_sitenotice'    => "<a href=\"/wiki/Special:Boardvote/vote\">維基媒體基金會理事會選舉</a>: 投票截止到9月20日",
+	'boardvote_notstarted'    => '投票尚未開始',
+	'boardvote_closed'        => '投票已經結束，請在稍後時間參看[http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/Zh 投票結果]。',
+	'boardvote_edits_many'    => '很多',
+	'group-boardvote'         => '理事會投票管理員',
+	'group-boardvote-member'  => '理事會投票管理員',
+	'grouppage-boardvote'     => '{{ns:project}}:理事會投票管理員',
+);
+$wgBoardVoteMessages['zh-tw'] = array(
+	'boardvote'               => "維基媒體基金會理事會選舉",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|參與投票]]
+* [[Special:Boardvote/list|至今已投票列表]]
+* [[Special:Boardvote/dump|加密的選舉資料]]",
+	'boardvote_intro'         => "
+<p>歡迎參與維基媒體基金會理事會第三屆選舉。我們將選出一人，代表各維基計畫的用戶社群。他/她將獨力或與團隊一起，幫助決定維基媒體計畫的未來走向，同時在理事會中代表<b>你</b>的利益及考量。他/她會決定創造收入的方式，及募得款項的分配。</p>
+
+<p>請在投票前，仔細閱讀參選人陳述及對質問的回應。每位參選人都是受尊重的用戶，貢獻了相當多的時間與精力來營造維基計畫的友善環境，使其為人類知識的追求及自由分散服務。</p>
+
+<p>你可以投票給任意多個參選人。得票最多的參選人將會公布為勝選。若最高票數相同，他們將進入第二輪選舉。</p>
+
+<p>請留意，你有且只有一票。即便你在多個計畫有超過400次編輯，你仍只可投一票。若你要改變投票選擇，請在原投票計畫處修改。</p>
+<p>更多資訊，見：</p>
+<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">選舉的常見問題解答</a></li>
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">參選人</a></li></ul>
+",
+	'boardvote_intro_change'  => "<p>你已經參與過投票。但是你還可以在下面修改你的投票。請勾選你所支持的候選人名字的選擇框。</p>",
+	'boardvote_entered'       => "謝謝您，您的投票已經被記錄。
+
+您可以記錄下以下詳情。您的投票記錄是：
+
+<pre>$1</pre>
+
+已經用選舉管理員的公眾鑰匙加密。
+
+<pre>$2</pre>
+
+以下是加密後的版本。它將在[[Special:Boardvote/dump]]列表中公開展示。
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|返回]]",
+	'boardvote_notloggedin'   => "您還沒有登錄。要參與投票，您必須在$2之前至少貢獻了$1次以上，而且在$3前作出第一次編輯。",
+	'boardvote_notqualified'  => "抱歉，您在$2之前只有$1次貢獻。 您必須至少貢獻了$3次以上才可以參與本次投票。而且，您的第一次編輯是在$4，這需要在$5之前。",
+	'boardvote_novotes'       => "目前還沒有人投票。",
+	'boardvote_time'          => "時間",
+	'boardvote_user'          => "用戶",
+	'boardvote_edits'         => "編輯次數",
+	'boardvote_days'          => "日",
+	'boardvote_ip'            => "IP",
+	'boardvote_ua'            => "用戶代理",
+	'boardvote_listintro'     => "<p>本列表列出了迄今為止所有被登記的選票。$1是加密信息。</p>",
+	'boardvote_dumplink'      => "點擊這裡",
+	'boardvote_submit'        => 'OK',
+	'boardvote_strike'        => "刪除線",
+	'boardvote_unstrike'      => "取消刪除線",
+	'boardvote_needadmin'     => "只有選舉管理員才能進行本項操作。",
+	'boardvote_sitenotice'    => "<a href=\"/wiki/Special:Boardvote/vote\">維基媒體基金會理事會選舉</a>: 投票截止到9月20日",
+	'boardvote_notstarted'    => '投票尚未開始',
+	'boardvote_closed'        => '投票已經結束，請在稍後時間參看[http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/Zh 投票結果]。',
+	'boardvote_edits_many'    => '很多',
+	'group-boardvote'         => '理事會投票管理員',
+	'group-boardvote-member'  => '理事會投票管理員',
+	'grouppage-boardvote'     => '{{ns:project}}:理事會投票管理員',
+);
+$wgBoardVoteMessages['zh-sg'] = array(
+	'boardvote'               => "维基媒体基金会理事会选举",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|参与投票]]
+* [[Special:Boardvote/list|至今已投票列表]]
+* [[Special:Boardvote/dump|加密的选举数据]]",
+	'boardvote_intro'         => "
+<p>欢迎参与维基媒体基金会理事会第三届选举。我们将选出一人，代表各维基计划的用户社群。他/她将独力或与团队一起，帮助决定维基媒体计划的未来走向，同时在理事会中代表<b>你</b>的利益及考虑。他/她会决定创造收入的方式，及募得款项的分配。</p>
+
+<p>请在投票前，仔细阅读参选人陈述及对质问的回应。每位参选人都是受尊重的用户，贡献了相当多的时间与精力来营造维基计划的友善环境，使其为人类知识的追求及自由分散服务。</p>
+
+<p>你可以投票给任意多个参选人。得票最多的参选人将会公布为胜选。若最高票数相同，他们将进入第二轮选举。</p>
+
+<p>请留意，你有且只有一票。即便你在多个计划有超过400次编辑，你仍只可投一票。若你要改变投票选择，请在原投票计划处修改。</p>
+<p>更多信息，见：</p>
+<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">选举的常见问题解答</a></li>
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">参选人</a></li></ul>
+",
+	'boardvote_intro_change'  => "<p>你已经参与过投票。但是你还可以在下面修改你的投票。请勾选你所支持的候选人名字的选择框。</p>",
+	'boardvote_entered'       => "谢谢您，您的投票已经被记录。
+
+您可以记录下以下详情。您的投票记录是：
+
+<pre>$1</pre>
+
+已经用选举管理员的公钥加密。
+
+<pre>$2</pre>
+
+以下是加密后的版本。它将在[[Special:Boardvote/dump]]列表中公开展示。
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|返回]]",
+	'boardvote_notloggedin'   => "您还没有登录。要参与投票，您必须在$2之前至少贡献了$1次以上，而且在$3前作出第一次编辑。",
+	'boardvote_notqualified'  => "抱歉，您在$2之前只有$1次贡献。 您必须至少贡献了$3次以上才可以参与本次投票。而且，您的第一次编辑是在$4，这需要在$5之前。",
+	'boardvote_novotes'       => "目前还没有人投票。",
+	'boardvote_time'          => "时间",
+	'boardvote_user'          => "用户",
+	'boardvote_edits'         => "编辑次数",
+	'boardvote_days'          => "日",
+	'boardvote_ip'            => "IP",
+	'boardvote_ua'            => "用户代理",
+	'boardvote_listintro'     => "<p>本列表列出了迄今为止所有被登记的选票。$1是加密信息。</p>",
+	'boardvote_dumplink'      => "点击这里",
+	'boardvote_submit'        => 'OK',
+	'boardvote_strike'        => "删除线",
+	'boardvote_unstrike'      => "取消删除线",
+	'boardvote_needadmin'     => "只有选举管理员才能进行本项操作。",
+	'boardvote_sitenotice'    => "<a href=\"/wiki/Special:Boardvote/vote\">维基媒体基金会理事会选举</a>: 投票截止到9月20日",
+	'boardvote_notstarted'    => '投票尚未开始',
+	'boardvote_closed'        => '投票已经结束，请在稍后时间参看[http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/Zh 投票结果]。',
+	'boardvote_edits_many'    => '很多',
+	'group-boardvote'         => '理事会投票管理员',
+	'group-boardvote-member'  => '理事会投票管理员',
+	'grouppage-boardvote'     => '{{ns:project}}:理事会投票管理员',
+);
+$wgBoardVoteMessages['zh-yue'] = array(
+	'boardvote'               => "Wikimedia理事委員會選舉",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|投票]]
+* [[Special:Boardvote/list|列示至今已經投咗票嘅投票]]
+* [[Special:Boardvote/dump|選舉記錄傾印]]",
+	'boardvote_intro'         => "
+<p>歡迎嚟到Wikimedia理事委員會嘅第二次選舉。我哋而家去為我哋嘅Wikimedia計劃進行投票，選出兩位人兄。佢哋會幫手去決定Wikimedia計劃將來嘅發展方向，無論個人定係團體，係畀理事委員之中代表<em>你</em>嘅興趣同埋關懷。另外佢哋會決定點樣運用所得來嘅錢同埋點樣整收入。</p>
+
+<p>響投票之前，請小心咁去睇吓有關候選人嘅表達同埋有關嘅回應。每一個候選人係一位受到尊重嘅用戶，佢哋係用咗唔少時間同埋動力去令到呢啲計劃繼續進行到一個受歡迎嘅環境同埋自由咁發放人類嘅知識。</p>
+
+<p>你可以向幾多位候選人投票都得。響每個位置中獲得最多票數嘅候選人會成為優勝者。如果有打和嘅情況，會另設決勝回合。</p>
+
+<p>要睇更多嘅資料，睇吓：</p>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">選舉FAQ</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">候選人</a></li></ul>
+",
+	'boardvote_intro_change'  => "<p>你已經投咗票。
+但係你可以利用下面嘅表格去改你嘅投票。請響每一位心目中嘅候選人打剔。</p>",
+	'boardvote_entered'       => "多謝，你嘅投票已經被記錄落嚟。
+
+如果你想記低你嘅投票記錄，你可以記住你嘅投票記錄。你嘅投票記錄係：
+
+<pre>$1</pre>
+
+佢係利用選舉管理員嘅公眾匙嘅信息：
+
+<pre>$2</pre>
+
+所加密嘅結果響下面列示。佢會響[[Special:Boardvote/dump]]度畀公眾顯示。 
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|返去]]",
+	'boardvote_notloggedin'   => "你仲未登入。要投票，你一定要用一個響$2之前最少有$1次貢獻，而且響$3之前作第一次編輯嘅戶口。",
+	'boardvote_notqualified'  => "你仲未有資格響呢次選舉度投票。你需要用響$2之前最少有$1次編輯，你而家有$1次編輯。而且，你嘅第一次編輯響$4，佢係需要響$5之前。",
+	'boardvote_novotes'       => "仲未有人投票。",
+	'boardvote_time'          => "時間",
+	'boardvote_user'          => "用戶",
+	'boardvote_edits'         => "編輯數",
+	'boardvote_days'          => "日",
+	'boardvote_ip'            => "IP",
+	'boardvote_ua'            => "用戶代理",
+	'boardvote_listintro'     => "<p>嘅個係到而家所被記錄落嚟嘅全部票數嘅名單。
+$1去睇加密嘅資料。</p>",
+	'boardvote_dumplink'      => "撳呢度",
+	'boardvote_submit'        => 'OK',
+	'boardvote_strike'        => "刪除綫",
+	'boardvote_unstrike'      => "取消刪除綫",
+	'boardvote_needadmin'     => "只有選舉管理員可以執行呢一個操作。",
+	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia理事委員會選舉</a>：投票開放到9月20日",
+	'boardvote_notstarted'    => '投票仲未開始',
+	'boardvote_closed'        => '投票已經結束咗，請響之後睇吓[http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En 選舉頁嘅結果]。',
+	'boardvote_edits_many'    => '好多',
+	'group-boardvote'         => '理事會投票管理員',
+	'group-boardvote-member'  => '理事會投票管理員',
+	'grouppage-boardvote'     => '{{ns:project}}:理事會投票管理員',
+);
 ?>
