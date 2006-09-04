@@ -872,9 +872,9 @@ class DefinedMeaningEditor extends SuggestEditor {
 	}
 }
 
-class AttributeEditor extends SuggestEditor {
+class ClassEditor extends SuggestEditor {
 	protected function suggestType() {
-		return "attribute";
+		return "class";
 	}
 
 	public function getViewHTML($idPath, $value) {

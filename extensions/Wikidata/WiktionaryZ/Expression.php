@@ -174,21 +174,9 @@ function createRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id)
 	$dbr->query($sql);
 }
 
-function addNewRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
-	createRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id);
-}
-
 function addRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
 	if (!relationExists($definedMeaning1Id, $relationTypeId, $definedMeaning2Id)) 
 		createRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id);
-}
-
-function addClassMembership($definedMeaningId, $classId) {
-	addRelation($definedMeaningId, 0, $classId);
-}
-
-function removeClassMembership($definedMeaningId, $classId) {
-	removeRelation($definedMeaningId, 0, $classId);
 }
 
 function removeRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
@@ -198,6 +186,34 @@ function removeRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id)
 				" AND remove_transaction_id IS NULL");
 //	$dbr->query("DELETE FROM uw_meaning_relations WHERE meaning1_mid=$definedMeaning1Id AND meaning2_mid=$definedMeaning2Id AND ".
 //				"relationtype_mid=$relationTypeId LIMIT 1");
+}
+
+function createClassMembership($classMemberId, $classId) {
+	$dbr =& wfGetDB(DB_MASTER);
+	$sql = "INSERT INTO uw_class_membership(class_mid, class_member_mid, add_transaction_id) " .
+			"VALUES ($classId, $classMemberId, ". getUpdateTransactionId() .")";
+	$dbr->query($sql);
+}
+
+function classMembershipExists($classMemberId, $classId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT class_member_mid FROM uw_class_membership " .
+								"WHERE class_mid=$classId AND class_member_mid=$classMemberId  " .
+								"AND " . getLatestTransactionRestriction('uw_class_membership'));
+	
+	return $dbr->numRows($queryResult) > 0;
+}
+
+function addClassMembership($classMemberId, $classId) {
+	if (!classMembershipExists($classMemberId, $classId))
+		createClassMembership($classMemberId, $classId);
+}
+
+function removeClassMembership($classMemberId, $classId) {
+	$dbr =& wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE uw_class_membership SET remove_transaction_id=" . getUpdateTransactionId() .
+				" WHERE class_mid=$classId AND class_member_mid=$classMemberId " .
+				" AND remove_transaction_id IS NULL");
 }
 
 function removeSynonymOrTranslation($definedMeaningId, $expressionId) {

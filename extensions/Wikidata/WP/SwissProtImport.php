@@ -42,7 +42,7 @@ function importSwissProt($xmlFileName, $umlsCollectionId = 0, $goCollectionId = 
 function importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $EC2GoMeaningIdMapping, $keyword2GoMeaningIdMapping) {
 	$languageId = 85;
 	$collectionId = bootstrapCollection("Swiss-Prot", $languageId, "");
-	$classCollectionId = bootstrapCollection("Swiss-Prot classes", $languageId, "ATTR");
+	$classCollectionId = bootstrapCollection("Swiss-Prot classes", $languageId, "CLAS");
 	$relationTypeCollectionId = bootstrapCollection("Swiss-Prot relation types", $languageId, "RELT");
 	$textAttibuteCollectionId = bootstrapCollection("Swiss-Prot text attributes", $languageId, "TATT");
 	$ECCollectionId = bootstrapCollection("Enzyme Commission numbers", $languageId, "");

@@ -155,7 +155,7 @@ class WiktionaryZ {
 			$classMembershipAttribute, $classAttribute;
 
 		$editor = new RecordSetTableEditor($classMembershipAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningClassMembershipController());
-		$editor->addEditor(new AttributeEditor($classAttribute, new SimplePermissionController(false), true));
+		$editor->addEditor(new ClassEditor($classAttribute, new SimplePermissionController(false), true));
 
 		$this->addTableLifeSpanEditor($editor);
 
@@ -488,7 +488,7 @@ class WiktionaryZ {
 
 		$dbr =& wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid FROM uw_meaning_relations " .
-									"WHERE meaning1_mid=$definedMeaningId AND relationtype_mid!=0 " .
+									"WHERE meaning1_mid=$definedMeaningId  " .
 									" AND ". getLatestTransactionRestriction('uw_meaning_relations').
 									"ORDER BY relationtype_mid");
 
@@ -507,7 +507,7 @@ class WiktionaryZ {
 
 		$dbr =& wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live FROM uw_meaning_relations " .
-									"WHERE meaning1_mid=$definedMeaningId AND relationtype_mid!=0 ORDER BY is_live, relationtype_mid");
+									"WHERE meaning1_mid=$definedMeaningId ORDER BY is_live, relationtype_mid");
 
 		while($definedMeaningRelation = $dbr->fetchObject($queryResult))
 			$recordSet->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid,
@@ -597,12 +597,12 @@ class WiktionaryZ {
 		$recordset = new ArrayRecordSet($structure, $structure);
 
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid FROM uw_meaning_relations" .
-									" WHERE meaning1_mid=$definedMeaningId AND relationtype_mid=0 " .
-									" AND ". getLatestTransactionRestriction('uw_meaning_relations'));
+		$queryResult = $dbr->query("SELECT class_mid FROM uw_class_membership" .
+									" WHERE class_member_mid=$definedMeaningId " .
+									" AND ". getLatestTransactionRestriction('uw_class_membership'));
 
 		while($class = $dbr->fetchObject($queryResult))
-			$recordset->addRecord(array($class->meaning2_mid));
+			$recordset->addRecord(array($class->class_mid));
 
 		return $recordset;
 	}
@@ -612,62 +612,21 @@ class WiktionaryZ {
 			$classAttribute, $recordLifeSpanAttribute;
 
 		$structure = new Structure($classAttribute, $recordLifeSpanAttribute);
-		$recordset = new ArrayRecordSet($structure, $structure);
+		$recordSet = new ArrayRecordSet($structure, $structure);
 
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live" .
-									" FROM uw_meaning_relations" .
-									" WHERE meaning1_mid=$definedMeaningId AND relationtype_mid=0 " .
+		$queryResult = $dbr->query("SELECT class_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live" .
+									" FROM uw_class_membership" .
+									" WHERE class_member_mid=$definedMeaningId " .
 									" ORDER BY is_live ");
 
 		while($class = $dbr->fetchObject($queryResult))
-			$recordset->addRecord(array($class->meaning2_mid,
+			$recordSet->addRecord(array($class->class_mid,
 										getRecordLifeSpanTuple($class->add_transaction_id, $class->remove_transaction_id)));
 
-		return $recordset;
+		return $recordSet;
 	}
-
-//	function getDefinedMeaningRelations($definedMeaningIds) {
-//		$dbr =& wfGetDB(DB_SLAVE);
-//	    $definedMeaningRelations = array();
-//
-//		foreach($definedMeaningIds as $definedMeaningId) {
-//			$relations = array();
-//			$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid from uw_meaning_relations where meaning1_mid=$definedMeaningId and relationtype_mid!=0");
-//
-//			while($definedMeaningRelation = $dbr->fetchObject($queryResult))
-//				$relations[$definedMeaningRelation->relationtype_mid][] = $definedMeaningRelation->meaning2_mid;
-//
-//			$definedMeaningRelations[$definedMeaningId] = $relations;
-//		}
-//
-//		return $definedMeaningRelations;
-//	}
-//
-//	function getExpressionForMeaningId($mid, $langcode) {
-////		$dbr =& wfGetDB(DB_SLAVE);
-////		$sql="SELECT spelling from uw_syntrans,uw_expression_ns where defined_meaning_id=".$mid." and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=".$langcode." limit 1";
-////		$sp_res=$dbr->query($sql);
-////		$sp_row=$dbr->fetchObject($sp_res);
-////		return $sp_row->spelling;
-//		$expressions = $this->getExpressionsForDefinedMeaningIds(array($mid));
-//		return $expressions[$mid];
-//	}
-
-//	# Fixme, the following function only returns English expressions
-//	# Should be expressions in the language of preference, with an appropriate fallback scheme
-//	function getExpressionsForDefinedMeaningIds($definedMeaningIds) {
-//		$dbr =& wfGetDB(DB_SLAVE);
-//		$queryResult = $dbr->query("SELECT defined_meaning_id, spelling from uw_syntrans, uw_expression_ns where defined_meaning_id in (". implode(",", $definedMeaningIds) . ") and uw_expression_ns.expression_id=uw_syntrans.expression_id and uw_expression_ns.language_id=85 and uw_syntrans.endemic_meaning=1");
-//		$expressions = array();
-//
-//		while ($expression = $dbr->fetchObject($queryResult))
-//			if (!array_key_exists($expression->defined_meaning_id, $expressions))
-//				$expressions[$expression->defined_meaning_id] = $expression->spelling;
-//
-//		return $expressions;
-//	}
-	}
+}
 
 class DefinedMeaningDefinitionController implements Controller {
 	public function add($keyPath, $record) {

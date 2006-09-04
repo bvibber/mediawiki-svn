@@ -55,8 +55,8 @@ function getSuggestions() {
 		case 'relation-type':
 			$sql = getSQLForCollectionOfType('RELT');
 			break;
-		case 'attribute':
-			$sql = getSQLForCollectionOfType('ATTR');
+		case 'class':
+			$sql = getSQLForCollectionOfType('CLAS');
 			break;
 		case 'text-attribute':	
 			$sql = getSQLForCollectionOfType('TATT');
@@ -96,8 +96,8 @@ function getSuggestions() {
 		case 'relation-type':
 			list($recordSet, $editor) = getRelationTypeAsRecordSet($queryResult);
 			break;		
-		case 'attribute':
-			list($recordSet, $editor) = getAttributeAsRecordSet($queryResult);
+		case 'class':
+			list($recordSet, $editor) = getClassAsRecordSet($queryResult);
 			break;
 		case 'text-attribute':
 			list($recordSet, $editor) = getTextAttributeAsRecordSet($queryResult);
@@ -148,21 +148,21 @@ function getRelationTypeAsRecordSet($queryResult) {
 	return array($recordSet, $editor);		
 }
 
-function getAttributeAsRecordSet($queryResult) {
+function getClassAsRecordSet($queryResult) {
 	global
 		$idAttribute;
 	
 	$dbr =& wfGetDB(DB_SLAVE);
-	$attributeAttribute = new Attribute("attribute", "Attribute", "short-text");
+	$classAttribute = new Attribute("class", "Class", "short-text");
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $attributeAttribute, $collectionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $classAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));
 
 	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
-	$editor->addEditor(new ShortTextEditor($attributeAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new ShortTextEditor($classAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 
 	return array($recordSet, $editor);		
