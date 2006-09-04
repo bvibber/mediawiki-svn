@@ -1806,39 +1806,43 @@ class BotQueryProcessor {
 	
 	
 	/**
-	* Add user contributions counter to the user pages
+	* Add counts of user contributions to the user pages
 	*/
 	function genContributionsCounter(&$prop, &$genInfo)
 	{
 		$this->startProfiling();
+		$users = array ();			// Users to query
+		$userPageIds = array ();	// Map of user name to the page ID
 
-		$maxallowed = ($this->isBot ? 10 : 1);
-		$count = 0;
-		
 		// For all valid pages in User namespace query history. Note that the page might not exist.
-		foreach( $this->data['pages'] as $pageId => &$page ) {
-			if( array_key_exists('_obj', $page) ) {
-				$title =& $page['_obj'];
-				if( $title->getNamespace() == NS_USER && !$title->isExternal() ) {
-					if( ++$count > $maxallowed ) {
-						$this->dieUsage( "Too many user contribution counts requested, only $maxallowed allowed", 'contribcountlimit');
-					}
-
-					$res = $this->db->select(
-						'revision',
-						array('count(*) cnt', 'count(DISTINCT rev_page) distcnt'),
-						array('rev_user_text' => $title->getText()),
-						$this->classname . '::genContributionsCounter'
-						);
-					while ( $row = $this->db->fetchObject( $res ) ) {
-						$this->addPageSubElement( $pageId, $prop, 'count', $row->cnt, false);
-						$this->addPageSubElement( $pageId, $prop, 'distcount', $row->distcnt, false);
-					}
+		foreach ($this->data['pages'] as $pageId => & $page) {
+			if (array_key_exists('_obj', $page)) {
+				$title = & $page['_obj'];
+				if ($title->getNamespace() == NS_USER && !$title->isExternal()) {
+					$users[] = $title->getText();
+					$userPageIds[$title->getText()] = $pageId;
 				}
 			}
 		}
-		
-		$this->endProfiling( $prop );
+
+		$this->validateLimit( 'cc_querytoobig', count($users), 10, 50 );
+		$this->startDbProfiling();
+		$res = $this->db->select('revision', array (
+			'rev_user_text',
+			'count(*) cnt',
+			'count(DISTINCT rev_page) distcnt'
+		), array (
+			'rev_user_text' => $users
+		), $this->classname . '::genContributionsCounter', array (
+			'GROUP BY' => 'rev_user_text'
+		));
+		$this->endDbProfiling($prop);
+		while ($row = $this->db->fetchObject($res)) {
+			$pageId = $userPageIds[$row->rev_user_text];
+			$this->addPageSubElement($pageId, $prop, 'count', $row->cnt, false);
+			$this->addPageSubElement($pageId, $prop, 'distcount', $row->distcnt, false);
+		}
+		$this->endProfiling($prop);
 	}
 	
 	/**
@@ -2608,7 +2612,7 @@ function recXmlPrint( $printer, $elemName, &$elemValue, $indent )
 				unset( $elemValue['*'] );
 				if( gettype( $subElemContent ) === 'array' ) {
 					$printer( $indstr . wfElement( $elemName, $elemValue, null ));
-					recXmlPrint( $printer, $elemName, $subElemValue, $indent );
+					recXmlPrint( $printer, $elemName, $subElemContent, $indent );
 					$printer( $indstr . "</$elemName>" );
 				} else {
 					$printer( $indstr . wfElement( $elemName, $elemValue, $subElemContent ));
