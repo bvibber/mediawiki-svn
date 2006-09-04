@@ -43,7 +43,7 @@ class Expression {
 
 function newObjectId($table) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("INSERT INTO objects (`table`) VALUES (". $dbr->addQuotes($table) . ")");
+	$dbr->query("INSERT INTO objects (`table`, `UUID`) VALUES (". $dbr->addQuotes($table) . ", UUID())");
 	
 	return $dbr->insertId();
 }
