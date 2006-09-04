@@ -67,7 +67,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			
 			$ns = $this->title->getNamespace();
 			$like = $dbr->addQuotes( $this->title->getDBkey() . '/%' );
-			$sql = "SELECT page_title FROM {$page} WHERE page_namespace = {$ns} AND page_title LIKE {$like}";
+			$sql = "SELECT page_title FROM {$page} WHERE page_namespace = {$ns} AND page_is_redirect=0 AND page_title LIKE {$like}";
 			$res = $dbr->query( $sql, 'SubpageList::getTitles' );
 			
 			$titles = array();
