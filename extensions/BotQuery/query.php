@@ -338,6 +338,15 @@ class BotQueryProcessor {
 				"uslimit    - How many total links to return.",
 				"Example: query.php?what=users&usfrom=Y",
 			)),
+//		'watchlist'      => array(
+//			GN_FUNC => 'genUserWatchlist',
+//			GN_ISMETA => true,
+//			GN_PARAMS => null,
+//			GN_DFLT => null,
+//			GN_DESC => array(
+//				"Adds user's watchlist pages to the output list.",
+//				"Example: query.php?what=watchlist",
+//			)),
 
 		//
 		// Page-specific Generators
@@ -492,6 +501,15 @@ class BotQueryProcessor {
 				"ucend      - Timestamp of the latest entry.",
 				"ucrbtoken  - If logged in as an admin, a rollback tokens for top revisions will be included in the output.",
 				"Example: query.php?what=usercontribs&titles=User:YurikBot&uclimit=20&uccomments",
+			)),
+		'contribcounter'   => array(
+			GN_FUNC => 'genContributionsCounter',
+			GN_ISMETA => false,
+			GN_PARAMS => array(),
+			GN_DFLT => array(),
+			GN_DESC => array(
+				"User contributions counter",
+				"Example: query.php?what=contribcounter&titles=User:Yurik",
 			)),
 		'imageinfo'      => array(
 			GN_FUNC => 'genImageInfo',
@@ -737,7 +755,7 @@ class BotQueryProcessor {
 			$this->endDbProfiling('pageInfo');
 
 			while( $row = $this->db->fetchObject( $res ) ) {
-				$this->storePageInfo( $row );
+				$this->storePageInfo( $row, $res );
 				if( $nonexistentPages !== null ) {
 					unset( $nonexistentPages[$row->page_namespace][$row->page_title] );	// Strike out link
 				}
@@ -991,7 +1009,7 @@ class BotQueryProcessor {
 				$this->addStatusMessage( $prop, array('next' => keyToTitle($row->page_title)) );
 				break;
 			}
-			$this->storePageInfo( $row );
+			$this->storePageInfo( $row, $res );
 		}
 		$this->db->freeResult( $res );
 		$this->endProfiling( $prop );
@@ -1038,7 +1056,7 @@ class BotQueryProcessor {
 				$this->addStatusMessage( $prop, array('next' => keyToTitle($row->page_title)));
 				break;
 			}
-			$this->storePageInfo( $row );
+			$this->storePageInfo( $row, $res );
 		}
 		$this->db->freeResult( $res );
 		$this->endProfiling( $prop );
@@ -1785,7 +1803,44 @@ class BotQueryProcessor {
 		}
 		$this->endProfiling( $prop );
 	}
+	
+	
+	/**
+	* Add user contributions counter to the user pages
+	*/
+	function genContributionsCounter(&$prop, &$genInfo)
+	{
+		$this->startProfiling();
 
+		$maxallowed = ($this->isBot ? 10 : 1);
+		$count = 0;
+		
+		// For all valid pages in User namespace query history. Note that the page might not exist.
+		foreach( $this->data['pages'] as $pageId => &$page ) {
+			if( array_key_exists('_obj', $page) ) {
+				$title =& $page['_obj'];
+				if( $title->getNamespace() == NS_USER && !$title->isExternal() ) {
+					if( ++$count > $maxallowed ) {
+						$this->dieUsage( "Too many user contribution counts requested, only $maxallowed allowed", 'contribcountlimit');
+					}
+
+					$res = $this->db->select(
+						'revision',
+						array('count(*) cnt', 'count(DISTINCT rev_page) distcnt'),
+						array('rev_user_text' => $title->getText()),
+						$this->classname . '::genContributionsCounter'
+						);
+					while ( $row = $this->db->fetchObject( $res ) ) {
+						$this->addPageSubElement( $pageId, $prop, 'count', $row->cnt, false);
+						$this->addPageSubElement( $pageId, $prop, 'distcount', $row->distcnt, false);
+					}
+				}
+			}
+		}
+		
+		$this->endProfiling( $prop );
+	}
+	
 	/**
 	* Add the raw content of the pages
 	*/
@@ -1826,7 +1881,7 @@ class BotQueryProcessor {
 	/**
 	* Take $row with fields from 'page' table and create needed page entries in $this->data
 	*/
-	function storePageInfo( &$row )
+	function storePageInfo( &$row, &$res )
 	{
 		$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 		if ( !$title->userCanRead() ) {
