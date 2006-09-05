@@ -1,43 +1,26 @@
 <?php
 
+require_once("Wikidata.php");
 require_once("Transaction.php");
 require_once("RecordSet.php");
 require_once("Editor.php");
 require_once("Expression.php");
 
-
-class Search {
-	function Search() {
-		global $wgMessageCache;
-		$wgMessageCache->addMessages(
-			array(
-				'wz_uilang'=>'Your user interface language: $1',
-				'wz_uilang_set'=>'Set your preferences',
-				'wz_save' => 'Save',
-				'wz_history' => 'History'
-			)
-		);
-
-	}
-	
+class Search extends DefaultWikidataApplication {
 	function view() {
 		global
 			$wgOut, $wgTitle;
 		
-		$wgOut->addHTML($this->getLanguageSelector());
+		parent::view();
+
 		$spelling = $wgTitle->getText();
+		$wgOut->addHTML('<h1>Defined meanings matching <i>'. $spelling . '</i></h1>');
+		$wgOut->addHTML('<p>Showing only a maximum of 100 matches.</p>');
 		$wgOut->addHTML($this->searchText($spelling));
 	}
 	
-	function getLanguageSelector() {
-		global $wgUser;
-		$userlang=$wgUser->getOption('language');
-		$skin = $wgUser->getSkin();
-		return wfMsg('wz_uilang',"<b>$userlang</b>").  " &mdash; " . $skin->makeLink("Special:Preferences", wfMsg('wz_uilang_set'));
-	}
-	
 	function searchText($text) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = &wfGetDB(DB_SLAVE);
 		
 		$sql = "SELECT INSTR(LCASE(uw_expression_ns.spelling), LCASE(". $dbr->addQuotes("$text") .")) as position, uw_syntrans.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS spelling, uw_expression_ns.language_id AS language_id ".
 				"FROM uw_expression_ns, uw_syntrans ".
@@ -65,14 +48,14 @@ function getDefinedMeaningAsRelation($queryResult) {
 	$expressionAttribute = new Attribute("expression", "Expression", new RecordType($expressionStructure));
 	$definitionAttribute = new Attribute("definition", "Definition", "definition");
 	
-	$relation = new ArrayRecordSet(new Structure($idAttribute, $expressionAttribute, $definitionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $expressionAttribute, $definitionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
 		$expressionRecord = new ArrayRecord($expressionStructure);
 		$expressionRecord->setAttributeValue($spellingAttribute, $row->spelling);
 		$expressionRecord->setAttributeValue($languageAttribute, $row->language_id);
 		
-		$relation->addRecord(array($row->defined_meaning_id, $expressionRecord, getDefinedMeaningDefinition($row->defined_meaning_id)));
+		$recordSet->addRecord(array($row->defined_meaning_id, $expressionRecord, getDefinedMeaningDefinition($row->defined_meaning_id)));
 	}			
 
 	$expressionEditor = new RecordTableCellEditor($expressionAttribute);
@@ -83,7 +66,7 @@ function getDefinedMeaningAsRelation($queryResult) {
 	$editor->addEditor($expressionEditor);
 	$editor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 
-	return array($relation, $editor);		
+	return array($recordSet, $editor);		
 }
 
 ?>

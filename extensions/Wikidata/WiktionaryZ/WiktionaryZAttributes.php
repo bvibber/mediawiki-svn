@@ -16,9 +16,10 @@ $expressionIdAttribute = new Attribute("expression-id", "Expression Id", "expres
 $identicalMeaningAttribute = new Attribute("indentical-meaning", "Identical meaning?", "boolean");
 
 global
-	$expressionAttribute;
+	$expressionStructure, $expressionAttribute;
 	
-$expressionAttribute = new Attribute("expression", "Expression", new RecordType(new Structure($languageAttribute, $spellingAttribute)));
+$expressionStructure = new Structure($languageAttribute, $spellingAttribute);
+$expressionAttribute = new Attribute("expression", "Expression", new RecordType($expressionStructure));
 
 global
 	$collectionAttribute, $sourceIdentifierAttribute;

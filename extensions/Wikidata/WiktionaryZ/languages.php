@@ -30,13 +30,23 @@ function getLanguageIdForCode($code) {
 }
 
 function getLanguageNamesForId($id) {
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = &wfGetDB(DB_SLAVE);
 	$langs = array();
 	$lang_res = $dbr->query("select language_names.language_id,language_names.language_name,language.wikimedia_key from language,language_names where language_names.name_language_id=".$id." and language.language_id=language_names.name_language_id");
 	while($lang_row=$dbr->fetchObject($lang_res)) {
 		$langs[$lang_row->language_id]=$lang_row->language_name;
 	}
 	return $langs;
+}
+
+function getLanguageIdForName($name) {
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT language_id FROM language_names WHERE language_name=".$dbr->addQuotes($name));
+	
+	if ($languageId = $dbr->fetchObject($queryResult))
+		return $languageId->language_id;
+	else
+		return 0;	
 }
 
 ?>

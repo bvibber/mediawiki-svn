@@ -1,5 +1,6 @@
 <?php
 
+require_once('Wikidata.php');
 require_once('Transaction.php');
 require_once('Expression.php');
 require_once('forms.php');
@@ -12,33 +13,19 @@ require_once('languages.php');
 require_once('Editor.php');
 require_once('HTMLtable.php');
 
-
 /**
  * Load and modify content in a WiktionaryZ-enabled
  * namespace.
  *
  * @package MediaWiki
  */
-class WiktionaryZ {
-
-	function WiktionaryZ() {
-		global $wgMessageCache;
-		$wgMessageCache->addMessages(
-			array(
-				'wz_uilang'=>'Your user interface language: $1',
-				'wz_uilang_set'=>'Set your preferences',
-				'wz_save' => 'Save',
-				'wz_history' => 'History'
-			)
-		);
-
-	}
-
+class WiktionaryZ extends DefaultWikidataApplication {
 	function view() {
 		global
 			$wgOut, $wgTitle;
 
-		$wgOut->addHTML($this->getLanguageSelector());
+		parent::view();
+
 		$spelling = $wgTitle->getText();
 		$wgOut->addHTML($this->getExpressionsEditor($spelling)->view(new IdStack("expression"), $this->getExpressionsRecordSet($spelling)));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
@@ -52,7 +39,8 @@ class WiktionaryZ {
 		global
 			$wgOut, $wgTitle;
 
-		$wgOut->addHTML($this->getLanguageSelector());
+		parent::history();
+
 		$spelling = $wgTitle->getText();
 		$wgOut->addHTML($this->getExpressionsEditor($spelling)->view(new IdStack("expression"), $this->getExpressionsRecordSet($spelling)));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
@@ -61,13 +49,6 @@ class WiktionaryZ {
 		$titleArray = $wgTitle->getTitleArray();
 		$titleArray["actionprefix"] = wfMsg('wz_history');
 		$wgOut->setPageTitleArray($titleArray);
-	}
-
-	function getLanguageSelector() {
-		global $wgUser;
-		$userlang=$wgUser->getOption('language');
-		$skin = $wgUser->getSkin();
-		return wfMsg('wz_uilang',"<b>$userlang</b>").  " &mdash; " . $skin->makeLink("Special:Preferences", wfMsg('wz_uilang_set'));
 	}
 
 	function getTransactionEditor($attribute) {
@@ -322,11 +303,10 @@ class WiktionaryZ {
 		if ($wgRequest->getText('save') != '')
 			$this->saveForm();
 
-		$userlang = $wgUser->getOption('language');
-		$skin = $wgUser->getSkin();
+		parent::edit();
+
 		$spelling = $wgTitle->getText();
 
-		$wgOut->addHTML("Your user interface language preference: <b>$userlang</b> - " . $skin->makeLink("Special:Preferences", "set your preferences"));
 		$wgOut->addHTML('<form method="post" action="">');
 		$wgOut->addHTML($this->getExpressionsEditor($spelling)->edit(new IdStack("expression"), $this->getExpressionsRecordSet($spelling)));
 		$wgOut->addHTML('<div class="save-panel">');
@@ -450,11 +430,10 @@ class WiktionaryZ {
 
 	function getSynonymAndTranslationLatestRecordSet($definedMeaningId, $skippedExpressionId) {
 		global
-			$expressionIdAttribute, $expressionAttribute, $languageAttribute, $spellingAttribute, $identicalMeaningAttribute;
+			$expressionIdAttribute, $expressionStructure, $expressionAttribute, $languageAttribute, $spellingAttribute, $identicalMeaningAttribute;
 
 		$dbr =& wfGetDB(DB_SLAVE);
 
-		$expressionStructure = $expressionAttribute->type->getStructure();
 		$recordset = new ArrayRecordSet(new Structure($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute), new Structure($expressionIdAttribute));
 		$queryResult = $dbr->query("SELECT uw_expression_ns.expression_id, spelling, language_id, endemic_meaning FROM uw_syntrans, uw_expression_ns WHERE uw_syntrans.defined_meaning_id=$definedMeaningId AND uw_syntrans.expression_id!=$skippedExpressionId " .
 									"AND uw_expression_ns.expression_id=uw_syntrans.expression_id AND ". getLatestTransactionRestriction('uw_syntrans'));
