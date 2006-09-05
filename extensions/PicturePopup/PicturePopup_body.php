@@ -36,7 +36,9 @@ class PicturePopup {
 		$pp = new PicturePopup( $title );
 		$value = $title->getRelatedCache( $wgMemc, $memcKey, 86400, 
 			array( $pp, 'ajaxNoCache' ), array( $sizeSel ) );
-		return $value;
+		$response = new AjaxResponse( $value );
+		$response->setContentType( 'application/json' );
+		return $response;
 	}
 
 	/**
