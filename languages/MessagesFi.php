@@ -1,7 +1,84 @@
 <?php
+/** Finnish (Suomi)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesFi;
-$wgAllMessagesFi = array(
+$skinNames = array(
+	'standard'          => 'Perus',
+	'cologneblue'       => 'Kölnin sininen',
+	'myskin'            => 'Oma tyylisivu'
+);
+
+$quickbarSettings = array(
+	'Ei mitään', 'Tekstin mukana, vasen', 'Tekstin mukana, oikea', 'Pysyen vasemmalla', 'Pysyen oikealla'
+);
+
+$datePreferences = array(
+	'default',
+	'fi normal',
+	'fi seconds',
+	'fi numeric',
+);
+
+$defaultDateFormat = 'fi normal';
+
+$dateFormats = array(
+	'fi normal time' => 'H.i',
+	'fi normal date' => 'j. F"ta" Y',
+	'fi normal both' => 'j. F"ta" Y "kello" H.i',
+
+	'fi seconds time' => 'H:i:s',
+	'fi seconds date' => 'j. F"ta" Y',
+	'fi seconds both' => 'j. F"ta" Y "kello" H:i:s',
+
+	'fi numeric time' => 'H.i',
+	'fi numeric date' => 'j.n.Y',
+	'fi numeric both' => 'j.n.Y "kello" H.i',
+);
+
+$datePreferenceMigrationMap = array(
+	'default',
+	'fi normal',
+	'fi seconds',
+	'fi numeric',
+);
+
+$bookstoreList = array(
+	'Bookplus'                      => 'http://www.bookplus.fi/product.php?isbn=$1',
+	'Helsingin yliopiston kirjasto' => 'http://pandora.lib.hel.fi/cgi-bin/mhask/monihask.py?volname=&author=&keyword=&ident=$1&submit=Hae&engine_helka=ON',
+	'Pääkaupunkiseudun kirjastot'   => 'http://www.helmet.fi/search*fin/i?SEARCH=$1',
+	'Tampereen seudun kirjastot'    => 'http://kirjasto.tampere.fi/Piki?formid=fullt&typ0=6&dat0=$1'
+);
+
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Toiminnot',
+	NS_MAIN             => '',
+	NS_TALK             => 'Keskustelu',
+	NS_USER             => 'Käyttäjä',
+	NS_USER_TALK        => 'Keskustelu_käyttäjästä',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Keskustelu_{{grammar:elative|$1}}',
+	NS_IMAGE            => 'Kuva',
+	NS_IMAGE_TALK       => 'Keskustelu_kuvasta',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_talk',
+	NS_TEMPLATE         => 'Malline',
+	NS_TEMPLATE_TALK    => 'Keskustelu_mallineesta',
+	NS_HELP             => 'Ohje',
+	NS_HELP_TALK        => 'Keskustelu_ohjeesta',
+	NS_CATEGORY         => 'Luokka',
+	NS_CATEGORY_TALK    => 'Keskustelu_luokasta'
+);
+
+$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$linkTrail = '/^([a-zäö]+)(.*)$/sDu';
+
+
+
+$messages = array(
 
 # User preference toggles
 'tog-underline'       => 'Alleviivaa linkit:',
@@ -81,7 +158,6 @@ $wgAllMessagesFi = array(
 # Bits of text used by many pages:
 #
 'categories'          => '{{PLURAL:$1|Luokka|Luokat}}',
-'category'            => 'Luokka',
 'category_header'     => 'Sivut, jotka ovat luokassa $1',
 'subcategories'       => 'Alaluokat',
 'mainpage'            => 'Etusivu',
@@ -147,6 +223,7 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'whatlinkshere'       => 'Tänne viittaavat sivut',
 'help'                => 'Ohje',
 'search'              => 'Etsi',
+'searchbutton'        => 'Etsi',
 'go'                  => 'Siirry',
 'history'             => 'Historia',
 'history_short'       => 'Historia',
@@ -160,7 +237,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'delete'              => 'Poista',
 'deletethispage'      => 'Poista tämä sivu',
 'undelete_short'      => 'Palauta $1 muokkausta',
-'undelete_short1'     => 'Palauta 1 muokkaus',
 'protect'             => 'Suojaa',
 'protectthispage'     => 'Suojaa tämä sivu',
 'unprotect'           => 'Poista suojaus',
@@ -170,9 +246,7 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'specialpage'         => 'Toimintosivu',
 'personaltools'       => 'Henkilökohtaiset työkalut',
 'postcomment'         => 'Kommentti sivun loppuun',
-'addsection'          => '+',
 'articlepage'         => 'Näytä varsinainen sivu',
-'subjectpage'         => 'Näytä aihe', # For compatibility
 'talk'                => 'Keskustelu',
 'views'               => 'Näkymät',
 'toolbox'             => 'Työkalut',
@@ -187,24 +261,15 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'viewcount'           => 'Tämä sivu on näytetty {{PLURAL:$1|yhden kerran|$1 kertaa}}.',
 'copyright'           => 'Sisältö on käytettävissä lisenssillä $1.',
 'protectedpage'       => 'Suojattu sivu',
-'administrators'      => '{{ns:project}}:Ylläpitäjät',
 'jumpto'              => 'Loikkaa:',
 'jumptonavigation'    => 'valikkoon',
 'jumptosearch'        => 'hakuun',
 
-
-'sysoptitle'          => 'Vaatii ylläpitäjäoikeudet',
-'sysoptext'           => 'Tämän toiminnon voi suorittaa vain käyttäjä, jolla on ylläpitäjäoikeudet. Katso $1.',
-'developertitle'      => 'Ohjelmiston kehittäjän oikeuksia vaaditaan',
-'developertext'       => 'Yrittämäsi toiminnon voi suorittaa vain henkilö, jolla on ohjelmistokehittäjänoikeudet. Katso $1.',
-
 'badaccess'           => 'Lupa evätty',
-'badaccesstext'       => 'Toiminto, jonka halusit suorittaa on rajoitettu käyttäjille, joilla on oikeus ”$2”. Katso $1.',
 
 'versionrequired'     => 'Mediawikistä tarvitaan vähintään versio $1',
 'versionrequiredtext' => 'Mediawikistä tarvitaan vähintään versio $1 tämän sivun käyttämiseen. Katso [[Special:Version|versio]]',
 
-'widthheight'         => '$1×$2',
 'go'                  => 'Siirry',
 'ok'                  => 'OK',
 'pagetitle'           => '$1 — {{SITENAME}}',
@@ -456,7 +521,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'loadhist'            => 'Ladataan sivuhistoriaa',
 'currentrev'          => 'Nykyinen versio',
 'revisionasof'        => 'Versio $1',
-'revisionasofwithlink'=> 'Versio, joka luotiin $1.<br />$3 | $2 | $4',
 'previousrevision'    => '← Vanhempi versio',
 'nextrevision'        => 'Uudempi versio →',
 'currentrevisionlink' => 'Nykyinen versio',
@@ -504,8 +568,8 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 #
 'searchresults'       => 'Hakutulokset',
 'searchresulttext'    => 'Saadaksesi lisätietoa hakutoiminnoista tällä sivustolla lue [[{{ns:project}}:Hakutoiminnot|sivuston hakuohje]].',
-'searchsubtitle'         => 'Haku termeillä [[:$1]]',
-'searchsubtitleinvalid'         => 'Haku termeillä $1',
+'searchsubtitle'      => 'Haku termeillä [[:$1]]',
+'searchsubtitleinvalid'=> 'Haku termeillä $1',
 'badquery'            => 'Kelvoton hakumerkkijono',
 'badquerytext'        => 'Tekemäsi kysely ei ole kelvollinen. Tämä johtuu todennäköisesti siitä, että et ole määritellyt hakumerkkijonoa.',
 'matchtotals'         => 'Haulla \'\'\'$1\'\'\' löytyi $2 osumaa sivujen otsikoista ja $3 osumaa sivujen sisällöistä.',
@@ -593,19 +657,16 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'userrights-groupsmember'    => 'Jäsenenä ryhmissä:',
 'userrights-groupsavailable' => 'Saatavilla olevat ryhmät:',
 'userrights-groupshelp'      => 'Valitse ryhmät, jotka haluat poistaa tai lisätä. Valitsemattomia ryhmiä ei muuteta. Voit poistaa valinnan pitämällä Ctrl-näppäintä pohjassa napsautuksen aikana.',
-'userrights-logcomment'      => 'Ryhmäoikeuden muutos ryhmistä ”$1” ryhmiin ”$2”',
 
 # Groups
 'group'                   => 'Ryhmä:',
 'group-bot'               => 'botit',
 'group-sysop'             => 'ylläpitäjät',
 'group-bureaucrat'        => 'byrokraatit',
-'group-steward'           => 'ylivalvojat',
 'group-all'               => '(kaikki)',
 'group-bot-member'        => 'botti',
 'group-sysop-member'      => 'ylläpitäjä',
 'group-bureaucrat-member' => 'byrokraatti',
-'group-steward-member'    => 'ylivalvoja',
 'grouppage-bot'           => '{{ns:project}}:Botit',
 'grouppage-sysop'         => '{{ns:project}}:Ylläpitäjät',
 'grouppage-bureaucrat'    => '{{ns:project}}:Byrokraatit',
@@ -633,7 +694,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'minoreditletter'     => 'p',
 'newpageletter'       => 'U',
 'sectionlink'         => '→',
-'number_of_watching_users_RCview'   => '[$1]',
 'number_of_watching_users_pageview' => '[$1 tarkkailevaa käyttäjää]', // TODO sigplu
 'rc_categories'       => 'Vain luokista (erotin on ”|”)',
 'rc_categories_any'   => 'Mikä tahansa',
@@ -817,7 +877,6 @@ Ohjelmiston ylläpitotöitä on jonossa \'\'\'$7\'\'\' kappaletta.',
 
 
 # No reason to overwrite
-//  'rfcurl'              => 'http://www.faqs.org/rfcs/rfc$1.html',
 'alphaindexline'      => '$1…$2',
 'version'             => 'Versio',
 'log'                 => 'Lokit',
@@ -857,7 +916,6 @@ Ohjelmiston ylläpitotöitä on jonossa \'\'\'$7\'\'\' kappaletta.',
 # Watchlist
 #
 'watchlist'           => 'Tarkkailulista',
-'watchlistsub'        => 'Käyttäjälle $1',
 'nowatchlist'         => 'Tarkkailulistallasi ei ole sivuja.',
 'watchlistcount'      => 'Tarkkailulistallasi on <b>$1</b> sivua, keskustelusivut mukaanlukien.',
 'clearwatchlist'      => 'Tarkkailulistan tyhjentäminen',
@@ -997,7 +1055,6 @@ Palaute ja lisäapu osoitteessa:
 'undeletecomment'     => 'Kommentti:',
 'undeletedarticle'    => 'palautti sivun [[$1]]',
 'undeletedrevisions'  => '$1 versiota palautettiin',
-'undeletedtext'       => 'Sivu [[:$1|$1]] on palautettu onnistuneesti. Lista viimeisimmistä poistoista ja palautuksista on [[Special:Log/delete|poistolokissa]].',
 
 'namespace'           => 'Nimiavaruus',
 'invert'              => 'Käännä nimiavaruusvalinta päinvastaiseksi',
@@ -1048,7 +1105,6 @@ Palaute ja lisäapu osoitteessa:
 'unblockip'           => 'Muokkauseston poisto',
 'unblockiptext'       => 'Tällä lomakkeella voit poistaa käyttäjän tai IP-osoitteen muokkauseston.',
 'ipusubmit'           => 'Poista esto',
-'ipusuccess'          => 'IP-osoitteen tai käyttäjän <b>$1</b> esto poistettu', // TODO NOWIKIMARKUP
 'ipblocklist'         => 'Lista estetyistä IP-osoitteista',
 'ipblocklistempty'    => 'Estolista on tyhjä.',
 'blocklistline'       => '$1 — $2 on estänyt käyttäjän $3 ($4)',
@@ -1097,7 +1153,6 @@ Palaute ja lisäapu osoitteessa:
 'makesysopok'         => 'Käyttäjä <b>$1</b> on nyt ylläpitäjä.',
 'makesysopfail'       => 'Käyttäjästä <b>$1</b> ei voitu tehdä ylläpitäjää. Kirjoititko nimen oikein?', // TODO: NOWIKIMARKUP
 'setbureaucratflag'   => 'Tee käyttäjästä myös byrokraatti',
-'setstewardflag'      => 'Tee käyttäjästä ylivalvoja',
 'rightslog'           => 'Käyttöoikeusloki',
 'rightslogtext'       => 'Alla on loki on käyttäjien käyttöoikeuksien muutoksista.',
 'rightslogentry'      => 'Käyttäjän [[$1]] oikeudet muutettiin ryhmistä $2 ryhmiin $3',
@@ -1108,7 +1163,6 @@ Palaute ja lisäapu osoitteessa:
 'makesysop'           => 'Tee käyttäjästä ylläpitäjä',
 'already_sysop'       => 'Käyttäjä on jo ylläpitäjä',
 'already_bureaucrat'  => 'Käyttäjä on jo byrokraatti',
-'already_steward'     => 'Käyttäjä on jo ylivalvoja',
 'rightsnone'          => '(ei oikeuksia)',
 
 
@@ -1255,7 +1309,6 @@ Näissä tapauksissa sivut täytyy siirtää tai yhdistää käsin.',
 
 # Patrolling
 'markaspatrolleddiff'   => 'Merkitse tarkastetuksi',
-'markaspatrolledlink'   => '[$1]',
 'markaspatrolledtext'   => 'Merkitse muokkaus tarkastetuksi',
 'markedaspatrolled'     => 'Tarkastettu',
 'markedaspatrolledtext' => 'Valittu versio on tarkastettu.',
@@ -1478,12 +1531,6 @@ This file contains additional information, probably added from the digital camer
 'exif-gpsdatestamp'       =>'GPS-päivämäärä',
 'exif-gpsdifferential'    =>'GPS-differentiaalikorjaus',
 
-# Make & model, can be wikified in order to link to the camera and model name
-
-'exif-make-value'     => '$1',
-'exif-model-value'    =>'$1',
-'exif-software-value' => '$1',
-
 # Exif attributes
 
 'exif-compression-1'  => 'Pakkaamaton',
@@ -1678,8 +1725,6 @@ Jos tämä tunnus ei ole sinun, ÄLÄ seuraa linkkiä. Varmennuskoodi vanhenee $
 
 # Trackbacks
 'trackbackbox' => '<div id="mw_trackbacks">Artikkelin trackbackit:<br />$1</div>',
-'trackback' => '; $4$5 : [$2 $1]',
-'trackbackexcerpt' => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>',
 'trackbackremove' => ' ([$1 poista])',
 'trackbacklink' => 'Trackback',
 'trackbackdeleteok' => 'Trackback poistettiin.',
@@ -1726,10 +1771,11 @@ Se on saatettu poistaa wikistä tai nimetä uudelleen.
 Kokeile [[Special:Search|hakua]] löytääksesi asiaan liittyviä sivuja.',
 
 # Shown to the admin after s/he's undeleted a page.
-'undeletedpage'       => '<big>\'\'\'$1 on palautettu\'\'\'</big>
+'undeletedpage'       => '<big>\'\'\'”$1” on palautettu.\'\'\'</big>
 
 [[Special:Log/delete|Poistolokista]] löydät listan viimeisimmistä poistoista ja palautuksista.',
 'sp-newimages-showfrom' => 'Näytä uudet kuvat alkaen $1',
+
 
 );
 ?>

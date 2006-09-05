@@ -4,6 +4,8 @@
  * @package MediaWiki
  */
 
+$wgProfiling = true;
+
 /**
  * @param $functioname name of the function we will profile
  */
@@ -265,7 +267,7 @@ class Profiler {
 		$this->mCalls['-overhead-total'] = $profileCount;
 
 		# Output
-		asort($this->mCollated, SORT_NUMERIC);
+		arsort($this->mCollated, SORT_NUMERIC);
 		foreach ($this->mCollated as $fname => $elapsed) {
 			$calls = $this->mCalls[$fname];
 			$percent = $total ? 100. * $elapsed / $total : 0;
@@ -346,6 +348,20 @@ class Profiler {
 	function getCurrentSection() {
 		$elt = end($this->mWorkStack);
 		return $elt[0];
+	}
+	
+	static function getCaller( $level ) {
+		$backtrace = debug_backtrace();
+		if ( isset( $backtrace[$level] ) ) {
+			if ( isset( $backtrace[$level]['class'] ) ) {
+				$caller = $backtrace[$level]['class'] . '::' . $backtrace[$level]['function'];
+			} else {
+				$caller = $backtrace[$level]['function'];
+			}
+		} else {
+			$caller = 'unknown';
+		}
+		return $caller;
 	}
 
 }

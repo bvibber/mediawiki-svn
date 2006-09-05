@@ -53,7 +53,10 @@ class MailAddress {
 	 * @return string
 	 */
 	function toString() {
-		if( $this->name != '' ) {
+		# PHP's mail() implementation under Windows is somewhat shite, and
+		# can't handle "Joe Bloggs <joe@bloggs.com>" format email addresses,
+		# so don't bother generating them
+		if( $this->name != '' && !wfIsWindows() ) {
 			$quoted = wfQuotedPrintable( $this->name );
 			if( strpos( $quoted, '.' ) !== false ) {
 				$quoted = '"' . $quoted . '"';
@@ -258,8 +261,11 @@ class EmailNotification {
 
 						$wuser = $dbr->fetchObject( $res );
 						$watchingUser->setID($wuser->wl_user);
+						
 						if ( ( $enotifwatchlistpage && $watchingUser->getOption('enotifwatchlistpages') ) ||
-							( $enotifusertalkpage && $watchingUser->getOption('enotifusertalkpages') )
+							( $enotifusertalkpage
+								&& $watchingUser->getOption('enotifusertalkpages')
+								&& $title->equals( $watchingUser->getTalkPage() ) )
 						&& (!$minorEdit || ($wgEnotifMinorEdits && $watchingUser->getOption('enotifminoredits') ) )
 						&& ($watchingUser->isEmailConfirmed() ) ) {
 							# ... adjust remaining text and page edit time placeholders
@@ -286,7 +292,7 @@ class EmailNotification {
 			);
 			# FIXME what do we do on failure ?
 		}
-
+		wfProfileOut( $fname );
 	} # function NotifyOnChange
 
 	/**

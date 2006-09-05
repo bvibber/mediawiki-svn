@@ -1,11 +1,113 @@
 <?php
+/** Czech (česky)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
+$fallback8bitEncoding = 'cp1250';
 
-/* private */ $wgAllMessagesCs = array(
+$namespaceNames = array(
+	NS_MEDIA              => 'Média',
+	NS_SPECIAL            => 'Speciální',
+	NS_MAIN               => '',
+	NS_TALK               => 'Diskuse',
+	NS_USER               => 'Uživatel',
+	NS_USER_TALK          => 'Uživatel_diskuse',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK	      => '$1_diskuse',
+	NS_IMAGE              => 'Soubor',
+	NS_IMAGE_TALK         => 'Soubor_diskuse',
+	NS_MEDIAWIKI          => 'MediaWiki',
+	NS_MEDIAWIKI_TALK     => 'MediaWiki_diskuse',
+	NS_TEMPLATE           => 'Šablona',
+	NS_TEMPLATE_TALK      => 'Šablona_diskuse',
+	NS_HELP               => 'Nápověda',
+	NS_HELP_TALK          => 'Nápověda_diskuse',
+	NS_CATEGORY           => 'Kategorie',
+	NS_CATEGORY_TALK      => 'Kategorie_diskuse',
+);
+
+$quickbarSettings = array(
+	'Žádný', 'Leží vlevo', 'Leží vpravo', 'Visí vlevo'
+);
+
+$skinNames = array(
+	'standard'            => 'Standard',
+	'nostalgia'           => 'Nostalgie',
+	'cologneblue'         => 'Kolínská modř',
+	'chick'               => 'Kuře'
+);
+
+# Hledání knihy podle ISBN
+# $wgBookstoreListCs = ..
+$bookstoreList = array(
+    'Národní knihovna'			=> 'http://sigma.nkp.cz/F/?func=find-a&find_code=ISN&request=$1',
+	'Státní technická knihovna' => 'http://www.stk.cz/cgi-bin/dflex/CZE/STK/BROWSE?A=01&V=$1',
+	'inherit' => true,
+);
+
+# Note to translators:
+#   Please include the English words as synonyms.  This allows people
+#   from other wikis to contribute more easily.
+#
+# Nepoužívá se, pro používání je třeba povolit getMagicWords dole v LanguageCs.
+$magicWords = array(
+##   ID                                 CASE  SYNONYMS
+	'redirect'               => array( 0,    '#REDIRECT',        '#PŘESMĚRUJ'     ),
+	'notoc'                  => array( 0,    '__NOTOC__',        '__BEZOBSAHU__'  ),
+	'forcetoc'               => array( 0,    '__FORCETOC__',     '__VŽDYOBSAH__'  ),
+	'toc'                    => array( 0,    '__TOC__',          '__OBSAH__'      ),
+	'noeditsection'          => array( 0,    '__NOEDITSECTION__', '__BEZEDITOVATČÁST__' ),
+	'start'                  => array( 0,    '__START__',        '__ZAČÁTEK__'        ),
+	'currentmonth'           => array( 1,    'CURRENTMONTH',     'AKTUÁLNÍMĚSÍC'      ),
+	'currentmonthname'       => array( 1,    'CURRENTMONTHNAME', 'AKTUÁLNÍMĚSÍCJMÉNO' ),
+	'currentmonthnamegen'    => array( 1,    'CURRENTMONTHNAMEGEN', 'AKTUÁLNÍMĚSÍCGEN' ),
+#	'currentmonthabbrev'     => array( 1,    'CURRENTMONTHABBREV' 'AKTUÁLNÍMĚSÍCZKR'  ),
+	'currentday'             => array( 1,    'CURRENTDAY',       'AKTUÁLNÍDEN' ),
+	'currentdayname'         => array( 1,    'CURRENTDAYNAME',   'AKTUÁLNÍDENJMÉNO'   ),
+	'currentyear'            => array( 1,    'CURRENTYEAR',      'AKTUÁLNÍROK'        ),
+	'currenttime'            => array( 1,    'CURRENTTIME',      'AKTUÁLNÍČAS'        ),
+	'numberofarticles'       => array( 1,    'NUMBEROFARTICLES', 'POČETČLÁNKŮ'        ),
+	'pagename'               => array( 1,    'PAGENAME',         'NÁZEVSTRANY'        ),
+	'pagenamee'  			 => array( 1,    'PAGENAMEE',        'NÁZEVSTRANYE'       ),
+	'namespace'              => array( 1,    'NAMESPACE',        'JMENNÝPROSTOR'      ),
+	'msg'                    => array( 0,    'MSG:'                   ),
+	'subst'                  => array( 0,    'SUBST:',           'VLOŽIT:'            ),
+	'msgnw'                  => array( 0,    'MSGNW:',           'VLOŽITNW:'          ),
+	'end'                    => array( 0,    '__END__',          '__KONEC__'          ),
+	'img_thumbnail'          => array( 1,    'thumbnail', 'thumb', 'náhled'           ),
+	'img_right'              => array( 1,    'right',            'vpravo'             ),
+	'img_left'               => array( 1,    'left',             'vlevo'              ),
+	'img_none'               => array( 1,    'none',             'žádné'              ),
+	'img_width'              => array( 1,    '$1px'                   ),
+	'img_center'             => array( 1,    'center', 'centre', 'střed'              ),
+	'img_framed'  	         => array( 1,    'framed', 'enframed', 'frame', 'rám'     ),
+	'int'                    => array( 0,    'INT:'                   ),
+	'sitename'               => array( 1,    'SITENAME',         'NÁZEVSERVERU'       ),
+	'ns'                     => array( 0,    'NS:'                    ),
+	'localurl'               => array( 0,    'LOCALURL:',        'MÍSTNÍURL:'         ),
+	'localurle'              => array( 0,    'LOCALURLE:',       'MÍSTNÍURLE:'        ),
+	'server'                 => array( 0,    'SERVER'                 ),
+	'revisionid'             => array( 1,    'REVISIONID',       'IDREVIZE'           )
+);
+
+$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$linkTrail = '/^([a-záčďéěíňóřšťúůýž]+)(.*)$/sDu';
+
+$datePreferences = false;
+$defaultDateFormat = 'dmy';
+
+$dateFormats = array(
+	'dmy time' => 'H:i',
+	'dmy date' => 'j. n. Y',
+	'dmy both' => 'H:i, j. n. Y',
+);
+
+$messages = array(
 
 # Části textu používané různými stránkami:
 'categories' => 'Kategorie',
-'category' => 'kategorie',
 'category_header' => 'Články v kategorii „$1“',
 'subcategories' => 'Podkategorie',
 
@@ -59,7 +161,6 @@
 'dec' => '12.',
 
 # Písmena, která se mají objevit jako část odkazu ve formě '[[jazyk]]y' atd:
-'linktrail'     => '/^([a-záčďéěíňóřšťúůýž]+)(.*)$/sDu',
 'mainpage'              => 'Hlavní strana',
 'mainpagetext'  => 'Wiki software úspěšně nainstalován.',
 'mainpagedocfooter' => 'Podívejte se prosím do [http://meta.wikimedia.org/wiki/MediaWiki_i18n dokumentace k nastavení rozhraní] a [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide uživatelské příručky] pro nápovědu k použití a nastavení.',
@@ -107,6 +208,7 @@
 'tagline' => 'Z {{grammar:2sg|{{SITENAME}}}}',
 'help'                  => 'Nápověda',
 'search'                => 'Hledat',
+'searchbutton'          => 'Hledat',
 'go'            => 'Jít na', #FIXME
 'history'               => 'Historie stránky',
 'history_short' => 'Historie',
@@ -120,7 +222,6 @@
 'delete' => 'Smazat',
 'deletethispage' => 'Smazat stránku',
 'undelete_short' => 'Obnovit $1 {{plural:$1|verzi|verze|verzí}}',
-'undelete_short1' => 'Obnovit $1 verzi',
 'protect' => 'Zamknout',
 'protectthispage' => 'Zamknout stránku',
 'unprotect' => 'Odemknout',
@@ -130,9 +231,7 @@
 'specialpage' => 'Speciální stránka',
 'personaltools' => 'Osobní nástroje',
 'postcomment'   => 'Přidat komentář',
-'addsection'   => '+',
 'articlepage'   => 'Prohlédnout si článek',
-'subjectpage'   => 'Stránka námětu', #FIXME: ? (zřejmě se vůbec nepoužívá)
 'talk' => 'Diskuse',
 'views' => 'Zobrazení',
 'toolbox' => 'Nástroje',
@@ -148,18 +247,11 @@
 'viewcount'             => 'Stránka byla zobrazena $1krát.',
 'copyright'     => 'Obsah je dostupný pod $1.',
 'protectedpage' => 'Zamčená stránka',
-'administrators' => '{{ns:4}}:Správci',
 'jumpto' => 'Přejít na:',
 'jumptonavigation' => 'navigace',
 'jumptosearch' => 'hledání',
 
-'sysoptitle'    => 'Pouze pro správce',
-'sysoptext'      => 'Žádaný úkon může provést jen správce. Podívejte se prosím na $1.',
-'developertitle' => 'Jen pro vývojáře',
-'developertext'  => 'Žádaný úkon může provést jen vývojář. Podívejte se prosím na $1.',
-
 'badaccess'     => 'Nedostatečná oprávnění',
-'badaccesstext' => 'Žádaný úkon může provést jen uživatel s právem „$2“ Podívejte se prosím na $1.',
 
 'versionrequired' => 'Vyžadováno MediaWiki verze $1',
 'versionrequiredtext' => 'Pro použití této stránky je vyžadováno MediaWiki verze $1. Vizte [[{{ns:-1}}:Version]].',
@@ -171,7 +263,6 @@
 'nrevisions'		=> '$1 {{plural:$1|revize|revize|revizí}}',
 'nviews'        => '$1 zobrazení',
 
-'widthheight'		=> '$1×$2',
 'ok'              => 'OK',
 'pagetitle'		=> '$1 - {{SITENAME}}',
 'retrievedfrom' => 'Citováno z „$1“', #FIXME: Ukazuje se po tisku strany
@@ -471,7 +562,6 @@ Můžete se vrátit a editovat již existující stránku, nebo [[Special:Userlo
 'loadhist'              => 'Načítá se stránka historie editací', #FIXME Apparently not used
 'currentrev'    => 'Aktuální verze',
 'revisionasof'          => 'Verze z $1',
-'revisionasofwithlink'  => 'Verze z $1; $2<br />$3 | $4',
 'previousrevision' => '← Starší verze',
 'nextrevision'		=> 'Novější verze →',
 'currentrevisionlink'   => 'zobrazit aktuální verzi',
@@ -626,7 +716,6 @@ $2 Vypsat přesměrování &nbsp; Hledat $3 $9',
 'userrights-groupsavailable' => 'Dostupné skupiny:',
 'userrights-groupshelp' => 'Zvolte skupiny, do/ze kterých chcete uživatele přidat/odebrat.
 Nezvolené skupiny nebudou změněny. Skupinu můžete vyřadit z vybraných pomocí CTRL + Levé tlačítko myši',
-'userrights-logcomment' => 'Změněno členství ve skupinách z $1 na $2',
 
 # Default group names and descriptions
 #
@@ -634,13 +723,11 @@ Nezvolené skupiny nebudou změněny. Skupinu můžete vyřadit z vybraných pom
 'group-bot'               => 'Boti',
 'group-sysop'             => 'Správci',
 'group-bureaucrat'        => 'Byrokraté',
-'group-steward'           => 'Stevardi',
 'group-all'               => '(všichni)',
 
 'group-bot-member'        => 'Bot',
 'group-sysop-member'      => 'Správce',
 'group-bureaucrat-member' => 'Byrokrat',
-'group-steward-member'    => 'Stevard',
 
 'grouppage-bot' => '{{ns:Project}}:Boti',
 'grouppage-sysop' => '{{ns:Project}}:Správci',
@@ -668,7 +755,6 @@ Nezvolené skupiny nebudou změněny. Skupinu můžete vyřadit z vybraných pom
 'minoreditletter' => 'm',
 'newpageletter' => 'N',
 'sectionlink' => '→',
-'number_of_watching_users_RCview' 	=> '[$1]',
 'number_of_watching_users_pageview' 	=> '[$1 {{plural:$1|sledující uživatel|sledující uživatelé|sledujících uživatelů}}]',
 'rc_categories'	=> 'Omezit na kategorie (oddělené „|“)',
 'rc_categories_any'	=> 'Všechny',
@@ -912,7 +998,6 @@ Zobrazení můžete zůžit výběrem typu záznamu, uživatelského jména nebo
 # Watchlist
 #
 'watchlist'             => 'Sledované stránky',
-'watchlistsub'	=> '(uživatele „$1“)',
 'nowatchlist'   => 'Na svém seznamu sledovaných stránek nemáte žádné položky.',
 'watchlistcount' 	=> "'''Na svém seznamu sledovaných stránek máte $1 {{plural:$1|položku|položky|položek}} včetně diskusí.'''",
 'clearwatchlist' 	=> 'Smazat seznam sledovaných stránek',
@@ -1111,7 +1196,6 @@ Záznam o posledních mazáních a obnoveních najdete v [[Special:Log/delete|kn
 'unblockip'             => 'Odblokovat IP adresu',
 'unblockiptext' => 'Tímto formulářem je možno obnovit právo blokované IP adresy či uživatele opět přispívat do {{grammar:2sg|{{SITENAME}}}}.',
 'ipusubmit'             => 'Odblokovat',
-'ipusuccess'	=> 'Uživatel „[[$1]]“ byl úspěšně odblokován',
 'ipblocklist'   => 'Seznam blokovaných IP adres',
 'blocklistline' => '$1 $2 zablokoval $3 ($4)',
 'infiniteblock' => 'do odvolání',
@@ -1160,7 +1244,6 @@ Záznam o posledních mazáních a obnoveních najdete v [[Special:Log/delete|kn
 'makesysopok'		=> '<b>Uživatel „$1“ nyní patří mezi správce</b>',
 'makesysopfail'		=> '<b>Uživatel „$1“ nemůže být učiněn správcem. (Vložili jste jeho jméno správně?)</b>',
 'setbureaucratflag' => 'Nastavit příznak byrokrata',
-'setstewardflag'    => 'Nastavit příznak stevarda',
 'rightslogtext'		=> 'Toto je záznam změn uživatelských oprávnění.',
 'rightslog'		=> 'Kniha práv uživatelů',
 'rightslogtext'		=> 'Toto je záznam změn uživatelských práv.',
@@ -1172,7 +1255,6 @@ Záznam o posledních mazáních a obnoveních najdete v [[Special:Log/delete|kn
 'makesysop'         => 'Učinit uživatele správcem',
 'already_sysop'     => 'Tento uživatel už je správce.',
 'already_bureaucrat' => 'Tento uživatel už je byrokrat.',
-'already_steward'   => 'Tento uživatel už je stevard.',
 'rightsnone' => '(žádné)',
 
 # Move page
@@ -1327,7 +1409,6 @@ Cílová stránka „[[$1]]“ již existuje. Přejete si ji smazat pro uvolněn
 
 # Patrolling
 'markaspatrolleddiff'   => 'Označit jako prověřené',
-'markaspatrolledlink'   => '<div class="patrollink">[$1]</div>',
 'markaspatrolledtext'   => 'Označit tento článek jako prověřený',
 'markedaspatrolled'     => 'Označeno jako prověřené',
 'markedaspatrolledtext' => 'Vybraná verze byla označena jako prověřená.',
@@ -1589,12 +1670,6 @@ ta['ca-nstab-category'] = new Array('c','Zobrazit kategorii.');",
 'exif-gpsdatestamp' =>'Datum podle GPS',
 'exif-gpsdifferential' =>'Diferenciální korekce GPS',
 
-# Make & model, can be wikified in order to link to the camera and model name
-
-'exif-make-value' => '$1',
-'exif-model-value' =>'$1',
-'exif-software-value' => '$1',
-
 # Exif attributes
 
 'exif-compression-1' => 'Nekomprimovaný',
@@ -1800,8 +1875,6 @@ kódu vyprší $4.',
 Zpětné odkazy k tomuto článku:<br />
 $1
 </div>",
-'trackback' => "; $4$5: [$2 $1]",
-'trackbackexcerpt' => "; $4$5: [$2 $1]: <nowiki>$3</nowiki>",
 'trackbackremove' => ' ([$1 Smazat])',
 'trackbacklink' => 'Zpětný odkaz',
 'trackbackdeleteok' => 'Zpětný odkaz byl úspěšně smazán.',

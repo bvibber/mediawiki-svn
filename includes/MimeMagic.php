@@ -497,13 +497,22 @@ class MimeMagic {
 			# NOTE: this function is available since PHP 4.3.0, but only if
 			# PHP was compiled with --with-mime-magic or, before 4.3.2, with --enable-mime-magic.
 			#
-			# On Winodws, you must set mime_magic.magicfile in php.ini to point to the mime.magic file bundeled with PHP;
+			# On Windows, you must set mime_magic.magicfile in php.ini to point to the mime.magic file bundeled with PHP;
 			# sometimes, this may even be needed under linus/unix.
 			#
 			# Also note that this has been DEPRECATED in favor of the fileinfo extension by PECL, see above.
 			# see http://www.php.net/manual/en/ref.mime-magic.php for details.
 
 			$m= mime_content_type($file);
+
+			if ( $m == 'text/plain' ) {
+				// mime_content_type sometimes considers DJVU files to be text/plain.
+				$deja = new DjVuImage( $file );
+				if( $deja->isValid() ) {
+					wfDebug("$fname: (re)detected $file as image/vnd.djvu\n");
+					$m = 'image/vnd.djvu';
+				}
+			}
 		}
 		else wfDebug("$fname: no magic mime detector found!\n");
 

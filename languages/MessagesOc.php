@@ -1,7 +1,60 @@
 <?php
+/** Occitan (Occitan)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
+$quickbarSettings = array(
+	'Cap', 'Esquèr', 'Drech', 'Flotejant a esquèr'
+);
+
+$skinNames = array(
+	'standard' => 'Normal',
+	'nostalgia' => 'Nostalgia',
+	'cologneblue' => 'Còlonha Blau',
+);
+
+$bookstoreList = array(
+	'Amazon.fr' => 'http://www.amazon.fr/exec/obidos/ISBN=$1'
+);
+
+$namespaceNames = array(
+	NS_SPECIAL        => 'Especial',
+	NS_MAIN           => '',
+	NS_TALK           => 'Discutir',
+	NS_USER           => 'Utilisator',
+	NS_USER_TALK      => 'Discutida_Utilisator',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'Discutida_$1',
+	NS_IMAGE          => 'Imatge',
+	NS_IMAGE_TALK     => 'Discutida_Imatge',
+	NS_MEDIAWIKI      => 'Mediaòiqui',
+	NS_MEDIAWIKI_TALK => 'Discutida_Mediaòiqui',
+	NS_TEMPLATE       => 'Modèl',
+	NS_TEMPLATE_TALK  => 'Discutida_Modèl',
+	NS_HELP           => 'Ajuda',
+	NS_HELP_TALK      => 'Discutida_Ajuda',
+	NS_CATEGORY       => 'Categoria',
+	NS_CATEGORY_TALK  => 'Discutida_Categoria',
+);
+$linkTrail = "/^([a-zàâçéèêîôû]+)(.*)\$/sDu";
+
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'M j, Y',
+	'mdy both' => 'M j, Y à H:i',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j M Y',
+	'dmy both' => 'j M Y à H:i',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y M j',
+	'ymd both' => 'Y M j à H:i',
+);
 
 
-/* private */ $wgAllMessagesOc = array(
+$messages = array(
 
 # User Toggles
 
@@ -62,12 +115,10 @@
 # Bits of text used by many pages:
 #
 "categories"	=> "Catégories de la page", // Looxix "Page categories",
-"category"	=> "catégorie",			// Looxix "category",
 "category_header" => "Articles dans la catégorie \"$1\"", // Looxix "Articles in category \"$1\"",
 "subcategories"	=> "Sous-catégories", // Looxix "Subcategories",
 
 
-"linktrail"     => "/^([a-zàâçéèêîôû]+)(.*)\$/sDu",
 "mainpage"      => "Accueil",
 "mainpagetext"  => "Logiciel {{SITENAME}} installé.",
 "about"         => "À propos",
@@ -98,6 +149,7 @@
 "whatlinkshere" => "Références à cette page",
 "help"          => "Aide",
 "search"        => "Rechercher",
+"searchbutton"  => "Rechercher",
 "history"       => "Historique",
 "printableversion" => "Version imprimable",
 "editthispage"  => "Modifier cette page",
@@ -108,7 +160,6 @@
 "talkpage"      => "Page de discussion",
 "postcomment"	=> "Ajouter un commentaire", // Looxix "Post a comment",
 "articlepage"	=> "Voir l'article",
-"subjectpage"   => "Page sujet",
 "userpage"      => "Page utilisateur",
 "projectpage" => "Page méta",
 "imagepage"     => "Page image",
@@ -118,18 +169,9 @@
 "lastmodified"  => "Dernière modification de cette page : $1.",
 "viewcount"     => "Cette page a été consultée $1 fois.",
 "protectedpage" => "Page protégée",
-"administrators" => "{{ns:project}}:Administrateurs",
-"sysoptitle"    => "Accès administrateur requis",
-"sysoptext"     => "L'action que vous avez tentée ne peut être effectuée que par un utilisateur ayant le statut d'\"administrateur\".
-Voir $1.",
-"developertitle" => "Accès développeur requis",
-"developertext" => "L'action que vous avez tentée ne peut être effectuée que par un utilisateur ayant le statut de \"développeur\".
-Voir $1.",
 "nbytes"        => "$1 octets",
 "go"            => "Consulter",			// Looxix "OK",
 "ok"            => "OK",
-"sitetitle"     => "{{SITENAME}}",
-"sitesubtitle"  => "",
 "retrievedfrom" => "Récupérée de \"$1\"",
 "newmessageslink" => "nouveaux messages",
 "editsection"	=> "modifier",
@@ -385,21 +427,16 @@ Jetez un coup d'\x{0153}il sur ces pages : [[{{ns:project}}:FAQ|foire aux questi
 et [[{{ns:project}}:Les faux-pas les plus courants|les faux-pas les plus courants]].
 
 Si vous voulez que {{SITENAME}} connaisse le succès, merci de ne pas y inclure pas de matériaux protégés par des [[{{ns:project}}:Copyright|copyrights]]. La responsabilité juridique pourrait en effet compromettre le projet. ",
-"rcloaderr"  => "Chargement des dernières modifications",
 "rcnote"  => "Voici les <strong>$1</strong> dernières modifications effectuées au cours des <strong>$2</strong> derniers jours.",
 "rcnotefrom"	=> "Voici les modifications effectuées depuis le <strong>$2</strong> (<b>$1</b> au maximum).",
 "rclistfrom"	=> "Afficher les nouvelles modifications depuis le $1.",
 # "rclinks"  => "Afficher les $1 dernières modifications effectuées au cours des $2 dernières heures / $3 derniers jours",
 # "rclinks"  => "Afficher les $1 dernières modifications effectuées au cours des $2 derniers jours.",
 "rclinks"	=> "Afficher les $1 dernières modifications effectuées au cours des $2 derniers jours; $3 modifications mineures.",	// Looxix
-"rchide"  => "in $4 form; $1 modifications mineures; $2 espaces secondaires; $3 modifications multiples.", // FIXME
 "diff"            => "diff",
 "hist"            => "hist",
 "hide"            => "cacher",
 "show"            => "montrer",
-"tableform"       => "table",
-"listform"        => "liste",
-"nchanges"        => "$1 modification(s)",
 "minoreditletter" => "M",
 "newpageletter"   => "N",
 
@@ -407,7 +444,6 @@ Si vous voulez que {{SITENAME}} connaisse le succès, merci de ne pas y inclure 
 #
 "upload"       => "Copier sur le serveur",
 "uploadbtn"    => "Copier un fichier",
-"uploadlink"   => "Copier des images",
 "reupload"     => "Copier à nouveau",
 "reuploaddesc" => "Retour au formulaire.",
 
@@ -503,9 +539,6 @@ Parmi ceux-ci, <b>$2</b> ont le statut d'administrateur (voir $3).",
 
 # Maintenance Page
 #
-"maintenance"		=> "Page de maintenance",
-"maintnancepagetext"	=> "Cette page inclut plusieurs utilitaires pour la maintenance quotidienne. Certains de ces outils ont tendance à charger la base de données; ne rechargez pas la page a chaque modification.",
-"maintenancebacklink"	=> "Retour à la page de maintenance",
 "disambiguations"	=> "Pages d'homonymie",
 "disambiguationspage"	=> "{{ns:project}}:Liens_aux_pages_d'homonymie",
 "disambiguationstext"	=> "Les articles suivants sont liés à une <i>page d'homonymie</i>. Or, ils devraient être liés au sujet.<br />Une page est considérée comme page d'homonymie si elle est liée à partir de $1.<br />Les liens à partir d'autres <i>espaces</i> ne sont pas pris en compte.",
@@ -513,19 +546,10 @@ Parmi ceux-ci, <b>$2</b> ont le statut d'administrateur (voir $3).",
 "doubleredirectstext"	=> "<b>Attention:</b> cette liste peut contenir des \"faux positifs\". Dans ce cas, c'est probablement la page du premier #REDIRECT contient aussi du texte.<br />Chaque ligne contient les liens à la 1re et 2e page de redirection, ainsi que la première ligne de cette dernière, qui donne normalement la \"vraie\" destination. Le premier #REDIRECT devrait lier vers cette destination.",
 "brokenredirects"	=> "Redirections cassées",
 "brokenredirectstext"	=> "Ces redirections mènent a une page qui n'existe pas.",
-"selflinks"		=> "Page avec un lien circulaire",
-"selflinkstext"		=> "Les pages suivantes contiennent un lien vers elles-mêmes, ce qui n'est pas permis.",
-"mispeelings"           => "Pages avec fautes d'orthographe",
-"mispeelingstext"               => "Les pages suivantes contiennent une faute d'orthographe courante (la liste de celles-ci est sur $1). L'orthographe correcte est peut-être (ceci).",
-"mispeelingspage"       => "Liste de fautes d'orthographe courantes",
-"missinglanguagelinks"  => "Liens inter-langues manquants",
-"missinglanguagelinksbutton"    => "Je n'ai pas trouvé de lien/langue pour cette page",
-"missinglanguagelinkstext"      => "Ces articles ne lient pas à leur 'contrepartie' in $1. Les redirections et les liens ne sont pas affichés.",
 
 
 # Miscellaneous special pages
 #
-"orphans"       => "Pages orphelines",
 "lonelypages"   => "Pages orphelines",
 "unusedimages"  => "Images orphelines",
 "popularpages"  => "Pages les plus consultées",
@@ -539,10 +563,8 @@ Parmi ceux-ci, <b>$2</b> ont le statut d'administrateur (voir $3).",
 "listusers"     => "Liste des participants",
 "specialpages"  => "Pages spéciales",
 "spheading"     => "Pages spéciales",
-"protectpage"   => "Protéger la page",
 "recentchangeslinked" => "Suivi des liens",
 "rclsub"        => "(des pages liées à \"$1\")",
-"debug"         => "Déboguer",
 "newpages"      => "Nouvelles pages",
 "ancientpages"	=> "Articles les plus anciens",	// Looxix
 // "intl"		    => "Liens inter-langues",
@@ -576,7 +598,6 @@ L'adresse électronique que vous avez indiquée dans vos préférences apparaît
 # Watchlist
 #
 "watchlist"	=> "Liste de suivi",
-"watchlistsub"	=> "(pour l'utilisateur \"$1\")",
 "nowatchlist"	=> "Votre liste de suivi ne contient aucun article.",
 "watchnologin"	=> "Non connecté",
 "watchnologintext" => "Vous devez être [[Special:Userlogin|connecté]]
@@ -661,8 +682,6 @@ les révisions restaurées apparaîtront dans l'historique antérieur et la vers
 "undeleterevision" => "Version effacée ($1)", // Looxix "Deleted revision as of $1",
 "undeletebtn"	=> "Restaurer !", // Looxix "Restore!",
 "undeletedarticle" => "restauré \"$1\"",	// FvdP "restored \"$1\""
-"undeletedtext"   => "L'article [[:$1|$1]] a été restauré avec succès.
-Voir [[{{ns:project}}:Trace des effacements]] pour la liste des suppressions et des restaurations récentes.", // Looxix
 # Contributions
 #
 "contributions"	=> "Contributions",
@@ -700,7 +719,6 @@ Donnez ci-dessous une raison précise (par exemple en indiquant les pages qui on
 "unblockiptext" => "Utilisez le formulaire ci-dessous pour rétablir l'accès en écriture
 à partir d'une adresse IP précédemment bloquée.",
 "ipusubmit"	=> "Débloquer cette adresse",
-"ipusuccess"	=> "Adresse IP \"$1\" débloquée",
 "ipblocklist"	=> "Liste des adresses IP bloquées",
 "blocklistline" => "$1, $2 a bloqué $3 ($4)",
 "blocklink"	=> "bloquer",

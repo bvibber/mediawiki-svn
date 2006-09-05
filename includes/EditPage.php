@@ -845,7 +845,7 @@ class EditPage {
 					$s = wfMsg('editingcomment', $this->mTitle->getPrefixedText() );
 				} else {
 					$s = wfMsg('editingsection', $this->mTitle->getPrefixedText() );
-					if( !$this->preview && !$this->diff ) {
+					if( !$this->summary && !$this->preview && !$this->diff ) {
 						preg_match( "/^(=+)(.+)\\1/mi",
 							$this->textbox1,
 							$matches );
@@ -1380,11 +1380,6 @@ END
 			wfProfileOut( $fname );
 			return $previewhead;
 		} else {
-			# if user want to see preview when he edit an article
-			if( $wgUser->getOption('previewonfirst') and ($this->textbox1 == '')) {
-				$this->textbox1 = $this->getContent();
-			}
-
 			$toparse = $this->textbox1;
 
 			# If we're adding a comment, we need to show the
@@ -1416,15 +1411,21 @@ END
 		# If the user made changes, preserve them when showing the markup
 		# (This happens when a user is blocked during edit, for instance)		
 		$first = $this->firsttime || ( !$this->save && $this->textbox1 == '' );
-		$source = $first ? $this->getContent() : $this->textbox1;
-		
+		if( $first ) {
+			$source = $this->mTitle->exists() ? $this->getContent() : false;
+		} else {
+			$source = $this->textbox1;
+		}
+	
 		# Spit out the source or the user's modified version
-		$rows = $wgUser->getOption( 'rows' );
-		$cols = $wgUser->getOption( 'cols' );
-		$attribs = array( 'id' => 'wpTextbox1', 'name' => 'wpTextbox1', 'cols' => $cols, 'rows' => $rows, 'readonly' => 'readonly' );
-		$wgOut->addHtml( '<hr />' );
-		$wgOut->addWikiText( wfMsg( $first ? 'blockedoriginalsource' : 'blockededitsource', $this->mTitle->getPrefixedText() ) );
-		$wgOut->addHtml( wfElement( 'textarea', $attribs, $source ) );
+		if( $source !== false ) {
+			$rows = $wgUser->getOption( 'rows' );
+			$cols = $wgUser->getOption( 'cols' );
+			$attribs = array( 'id' => 'wpTextbox1', 'name' => 'wpTextbox1', 'cols' => $cols, 'rows' => $rows, 'readonly' => 'readonly' );
+			$wgOut->addHtml( '<hr />' );
+			$wgOut->addWikiText( wfMsg( $first ? 'blockedoriginalsource' : 'blockededitsource', $this->mTitle->getPrefixedText() ) );
+			$wgOut->addHtml( wfOpenElement( 'textarea', $attribs ) . htmlspecialchars( $source ) . wfCloseElement( 'textarea' ) );
+		}
 	}
 
 	/**

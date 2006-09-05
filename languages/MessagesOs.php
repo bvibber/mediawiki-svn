@@ -1,7 +1,51 @@
 <?php
+/** Ossetic (Иронау)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
+$fallback = 'ru';
+
+$quickbarSettings = array(
+	'Ма равдис', 'Галиуырдыгæй', 'Рахизырдыгæй', 'Рахизырдыгæй ленккæнгæ'
+);
+
+$skinNames = array(
+	'standard' => 'Стандартон',
+	'nostalgia' => 'Æнкъард',
+	'cologneblue' => 'Кёльны æрхæндæг',
+	'davinci' => 'Да Винчи',
+	'mono' => 'Моно',
+	'monobook' => 'Моно-чиныг',
+	'myskin' => 'Мæхи',
+	'chick' => 'Карк'
+);
+$namespaceNames = array(
+	NS_MEDIA            => 'Media', //чтоб не писать "Мультимедия"
+	NS_SPECIAL          => 'Сæрмагонд',
+	NS_MAIN             => '',
+	NS_TALK             => 'Дискусси',
+	NS_USER             => 'Архайæг',
+	NS_USER_TALK        => 'Архайæджы_дискусси',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Дискусси_$1',
+	NS_IMAGE            => 'Ныв',
+	NS_IMAGE_TALK       => 'Нывы_тыххæй_дискусси',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Дискусси_MediaWiki',
+	NS_TEMPLATE         => 'Шаблон',
+	NS_TEMPLATE_TALK    => 'Шаблоны_тыххæй_дискусси',
+	NS_HELP             => 'Æххуыс',
+	NS_HELP_TALK        => 'Æххуысы_тыххæй_дискусси',
+	NS_CATEGORY         => 'Категори',
+	NS_CATEGORY_TALK    => 'Категорийы_тыххæй_дискусси',
+);
+
+$linkTrail = '/^((?:[a-z]|а|æ|б|в|г|д|е|ё|ж|з|и|й|к|л|м|н|о|п|р|с|т|у|ф|х|ц|ч|ш|щ|ъ|ы|ь|э|ю|я|“|»)+)(.*)$/sDu';
+$fallback8bitEncoding =  'windows-1251';
 
 
-/* private */ $wgAllMessagesOs = array(
+$messages = array(
 'titlematches' => 'Статьяты сæргæндты æмцаутæ',
 'toc' => 'Сæргæндтæ',
 'addedwatch' => "Дæ цæст кæмæ дарыс, уыцы статьятæм бафтыд.",
@@ -22,10 +66,8 @@
 'bysize' => "асмæ гæсгæ",
 'categories' => "Категоритæ",
 'categoriespagetext' => "Мæнæ ахæм категоритæ ирон Википедийы ис.",
-'category' => "категори",
 'category_header' => "Категори \"$1\"",
 'categoryarticlecount' => "Ацы категорийы мидæг $1 статьяйы ис.",
-'categoryarticlecount1' => "Ацы категорийы мидæг $1 статья ис.",
 'contributions' => "Йæ бавæрд",
 'createaccountmail' => "адрисмæ гæсгæ",
 'currentevents' => "Ног хабæрттæ",
@@ -61,7 +103,6 @@
 'lineno' => "Рæнхъ $1:",
 'linklistsub' => "(Æрвитæнты номхыгъд)",
 'linkstoimage' => "Ацы нывæй чи пайда кæны, ахæм статьятæ:",
-'listform' => "номхыгъд",
 'listusers' => "Архайджыты номхыгъд",
 'localtime' => "Бынатон рæстæг",
 'login' => "Дæхи бавдис системæйæн",
@@ -84,7 +125,6 @@
 'mytalk' => "Дæумæ цы дзурынц",
 'navigation' => "хъæугæ æрвитæнтæ",
 'nbytes' => "$1 байт(ы)",
-'nchanges' => "$1 ивддзинад(ы)",
 'newarticle' => "(Ног)",
 'newimages' => "Ног нывты галерей",
 'newmessageslink' => "ног фыстæгтæ",
@@ -121,22 +161,19 @@ $3",
 'savearticle' => "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Афтæ!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
 'savefile' => "Бавæр æй",
 'search' => "агур",
+'searchbutton' => "агур",
 'searchresults' => "Цы ссардæуы",
 'shortpages' => "Цыбыр фæрстæ",
 'showpreview' => "&nbsp;&nbsp;Фен уал æй&nbsp;&nbsp;",
 'showtoc' => "равдис",
-'sitesubtitle' => "",
 'show' => "равдис",
-'showhideminor' => "$1 чысыл ивддзинæдтæ | $2 роботтæ | $3 регистрацигонд архайджыты | $4 дæ цæст кæмæ дарыс, уыдон.<br />",
 'showpreview' => "&nbsp;&nbsp;Фен уал æй&nbsp;&nbsp;",
 'specialpage' => "Сæрмагонд фарс",
 'specialpages' => "Сæрмагонд фæрстæ",
 'spheading' => "Сæрмагонд фæрстæ",
 'subcategories' => "Дæлкатегоритæ",
 'subcategorycount' => "Ацы категорийы мидæг $1 дæлкатегорийы ис.",
-'subcategorycount1' => "Ацы категорийы мидæг $1 дæлкатегори ис.",
 'sunday' => "Хуыцаубон",
-'tableform' => "таблицæ",
 'tagline' => "Сæрибар энциклопеди Википедийы æрмæг.",
 'talk' => "Дискусси",
 'talkpage' => "Ацы фарсы тыххæй ныхас",
@@ -159,7 +196,6 @@ $3",
 'watchdetails' => "($1 фæрстæм дæ цæст дарыс, дискусситы фæстæмæ; $3... [$4 Æххæст номхыгъд фен].)",
 'watchlist' => "Дæ цæст кæмæ дарыс, уыцы фæрстæ",
 'watchlistcontains' => "Дæ цæст $1 фæрстæм дарыс.",
-'watchlistsub' => "$1, зæгъгæ, уыцы архайæгæн",
 'watchnologin' => "Системæйæн дæхи нæ бавдыстай",
 'watchnologintext' => "Ацы номхыгъд ивынмæ <a href=\"{{localurle:Специальные:Userlogin}}\">хъуамæ дæхи бавдисай системæйæн</a>.",
 'watchthis' => "Ацы фарсмæ дæ цæст æрдар",

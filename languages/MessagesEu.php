@@ -1,12 +1,46 @@
 <?php
+/** Basque (Euskara)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
 
-/* private */ $wgAllMessagesEu = array(
+$quickbarSettings = array(
+	'Ezein ere', 'Eskuinean', 'Ezkerrean', 'Ezkerrean mugikor'
+);
+
+$skinNames = array(
+	'standard'     => 'Lehenetsia',
+	'nostalgia'    => 'Nostalgia',
+	'cologneblue'  => 'Cologne Blue',
+	'smarty'       => 'Paddington',
+	'montparnasse' => 'Montparnasse'
+);
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Aparteko',
+	NS_MAIN           => '',
+	NS_TALK           => 'Eztabaida',
+	NS_USER           => 'Lankide',
+	NS_USER_TALK      => 'Lankide_eztabaida',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_eztabaida',
+	NS_IMAGE          => 'Irudi',
+	NS_IMAGE_TALK     => 'Irudi_eztabaida',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'MediaWiki_eztabaida',
+	NS_TEMPLATE       => 'Txantiloi',
+	NS_TEMPLATE_TALK  => 'Txantiloi_eztabaida',
+	NS_CATEGORY       => 'Kategoria',
+	NS_CATEGORY_TALK  => 'Kategoria_eztabaida',
+);
+
+$messages = array(
 '1movedto2' => '$1 izenburua $2-en truke aldatu da.',
 'about' => 'buruz',
 'aboutpage' => '{{ns:project}}:{{SITENAME}}ri_buruz', // TODO: grammar
 'accesskey-diff' => 'd',
-'administrators' => '{{ns:project}}:Administratzaileak',
 'allmessages' => 'Mezu_guztiak',
 'allpages' => 'Orri guztiak',
 'alphaindexline' => '$1 -tik $2 -raino',
@@ -16,7 +50,6 @@
 'bold_tip' => 'Lodia',
 'cancel' => 'Bertan behera utzi',
 'categories' => 'Kategoriak',
-'category' => 'kategoria',
 'category_header' => '"$1" kategoriako artikuluak',
 'categoryarticlecount' => 'Kategoria honetan $1 artikulu daude.',
 'contributions' => 'Lankidearen ekarpenak',
@@ -87,7 +120,6 @@ Honaino nahigabe helduz gero, zure arakatzaileko \'\'\'atzera\'\'\' botoia sakat
 'nstab-mediawiki' => 'Oharra',
 'nstab-special' => 'Berezia',
 'nstab-template' => 'Txantiloia',
-'orphans' => 'Orri umezurtzak',
 'otherlanguages' => 'Beste hizkuntzak',
 'pagemovedtext' => '"$1"-ren izenburua "$2"-en truke aldatu da.',
 'passwordremindertext' => 'Norbaitek (zu seguruenik, IP $1 helbidetik) {{SITENAME}}n saio berria hasteko pasahitza bidaltzea eskatu du.
@@ -105,18 +137,16 @@ Mesedez hasi saioa pasahitza hartu bezain laster.',
 'randompage' => 'Ausazko orria',
 'rclinks' => 'Erakutsi azken $1 aldaketak $2 egunetan.<br />$3',
 'rclistfrom' => 'Erakutsi $1tik aldaketa berriak',
-'rcliu' => '; $1 erregistratu diren lankideen editaketak',
-'rcloaderr' => 'Aldaketa berriak kargatzen',
 'rcnote' => 'Azken <strong>$1</strong> aldaketak <strong>$2</strong> egunetan erakusten.',
 'recentchanges' => 'Aldaketa berriak',
 'recentchangeslinked' => 'Lotutako orrien aldaketak',
 'remembermypassword' => 'Gogoratu pasahitza saio tartean (cookie gorde).',
 'savearticle' => 'Orria gorde',
 'search' => 'Bilatu',
+'searchbutton' => 'Bilatu',
 'searchresults' => 'Bilaketaren emaitza',
 'shortpages' => 'Artikulu laburrak',
 'show' => 'erakutsi',
-'showhideminor' => '$1 editaketa txikiak',
 'showpreview' => 'Aurrebista erakutsi',
 'showtoc' => 'erakutsi',
 'sitestats' => 'Gunearen estatistikak',
@@ -125,13 +155,10 @@ Horiek baztertzen, <b>$2</b> artikulu dira datu-basean.<p>
 There have been a total of <b>$3</b> page views, and <b>$4</b> page edits
 since the software was upgraded (July 20, 2002).
 That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.',
-'sitesubtitle' => '',
 'sitesupport' => 'Emariak',
 'specialpages' => 'Orri bereziak',
 'statistics' => 'Estatistikak',
 'summary' => 'Laburpen',
-'sysoptitle' => '<i>Sysop</i> izatea behar da',
-'tableform' => 'taula',
 'talk' => 'Eztabaida',
 'talkpage' => 'Eztabaida orri honen gainean',
 'toc' => 'Aurkibidea',
@@ -148,7 +175,6 @@ That comes to <b>$5</b> average edits per page, and <b>$6</b> views per edit.',
 'wantedpages' => 'Orri eskatutakoenak',
 'watchlist' => 'Segimendu zerrenda',
 'watchlistcontains' => 'Zure segimendu zerrenda $1 orri ditu.',
-'watchlistsub' => '("$1" lankidearena)',
 'watchthis' => 'Artikulua zelatatu',
 'watchthispage' => 'Orria zelatatu',
 'welcomecreation' => '<h2>Ongi etorri, $1!</h2><p>Zure kontua sotu duzu.

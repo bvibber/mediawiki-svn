@@ -1,7 +1,54 @@
 <?php
+/** Slovenian (Slovenščina)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ *
+ */
 
-global $wgAllMessagesSl;
-$wgAllMessagesSl = array(
+#
+# Revision/
+# Inačica 1.00.00 XJamRastafire 2003-07-08 |NOT COMPLETE
+#         1.00.10 XJamRastafire 2003-11-03 |NOT COMPLETE
+# ______________________________________________________
+#         1.00.20 XJamRastafire 2003-11-05 |    COMPLETE
+#         1.00.30 romanm        2003-11-07 |    minor changes
+#         1.00.31 romanm        2003-11-11 |    merged incorrectly broken lines
+#         1.00.32 romanm        2003-11-19 |    merged incorrectly broken lines
+#         1.00.40 romanm        2003-11-21 |    fixed Google search
+
+
+$quickbarSettings = array(
+	'Brez', 'Levo nepomično', 'Desno nepomično', 'Levo leteče'
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Posebno',
+	NS_MAIN           => '',
+	NS_TALK           => 'Pogovor',
+	NS_USER           => 'Uporabnik',
+	NS_USER_TALK      => 'Uporabniški_pogovor',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'Pogovor_{{grammar:mestnik|$1}}',
+	NS_IMAGE          => 'Slika',
+	NS_IMAGE_TALK     => 'Pogovor_o_sliki',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'Pogovor_o_MediaWiki',
+	NS_TEMPLATE       => 'Predloga',
+	NS_TEMPLATE_TALK  => 'Pogovor_o_predlogi',
+	NS_HELP           => 'Pomoč',
+	NS_HELP_TALK      => 'Pogovor_o_pomoči',
+	NS_CATEGORY       => 'Kategorija',
+	NS_CATEGORY_TALK  => 'Pogovor_o_kategoriji'
+);
+
+$datePreferences = false;
+$fallback8bitEncoding = "iso-8859-2";
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+
+
+$messages = array(
 'tog-underline'         => 'Podčrtavanje povezav:',
 'tog-highlightbroken'   => 'Oblikuj pretrgane povezave <a href="" class="new">kot</a> (druga možnost: kot<a href="" class="internal">?</a>)',
 'tog-justify'           => 'Poravnavaj odstavke',
@@ -71,8 +118,19 @@ $wgAllMessagesSl = array(
 'oct'                   => 'okt.',
 'nov'                   => 'nov.',
 'dec'                   => 'dec.',
+'january-gen'           => 'januarja',  
+'february-gen'          => 'februarja', 
+'march-gen'             => 'marca',  
+'april-gen'             => 'aprila',  
+'may-gen'               => 'maja',  
+'june-gen'              => 'junija',
+'july-gen'              => 'julija',  
+'august-gen'            => 'avgusta',  
+'september-gen'         => 'septembra', 
+'october-gen'           => 'oktobra',  
+'november-gen'          => 'novembra', 
+'december-gen'          => 'decembra',
 'categories'            => '{{plural:$1|Kategorija|Kategoriji|Kategorije|Kategorije|Kategorije}}',
-'category'              => 'Kategorija',
 'category_header'       => 'Strani v kategoriji »$1«',
 'subcategories'         => 'Podkategorije',
 'mainpage'              => 'Glavna stran',
@@ -120,6 +178,7 @@ in [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Uporabniški priroč
 'returnto'              => 'Vrnitev na: $1.',
 'tagline'               => 'Iz {{GRAMMAR:rodilnik|{{SITENAME}}}}',
 'search'                => 'Iskanje',
+'searchbutton'          => 'Iskanje',
 'go'                    => 'Pojdi na',
 'history'               => 'Zgodovina strani',
 'history_short'         => 'Zgodovina strani',
@@ -143,7 +202,6 @@ in [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Uporabniški priroč
 'personaltools'         => 'Osebna orodja',
 'postcomment'           => 'Objavite pripombo',
 'articlepage'           => 'Prikaže članek',
-'subjectpage'           => 'Prikaži temo',
 'talk'                  => 'Pogovor',
 'views'                 => 'Pogled',
 'toolbox'               => 'Pripomočki',
@@ -159,16 +217,10 @@ in [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide Uporabniški priroč
 'viewcount'             => 'Stran je bila naložena $1-krat.',
 'copyright'             => 'Besedilo je na razpolago pod pogoji $1.',
 'protectedpage'         => 'Zaščitena stran',
-'administrators'        => 'Project:Administratorji',
 'jumpto'                => 'Skoči na:',
 'jumptonavigation'      => 'navigacija',
 'jumptosearch'          => 'iskanje',
-'sysoptitle'            => 'Zahtevali ste dostop administratorja',
-'sysoptext'             => 'Želeno dejanje lahko izvedejo le uporabniki s statusom administratorja. Glejte tudi $1.',
-'developertitle'        => 'Zahtevali ste dostop razvijalca',
-'developertext'         => 'Dejanje, ki ste ga zahtevali, lahko izvedejo le uporabniki s statusom razvijalca. Glejte tudi $1.',
 'badaccess'             => 'Napaka pri dovoljenju',
-'badaccesstext'         => 'Želeno dejanje lahko izvedejo le uporabniki s pooblastili »$2«. Glej $1.',
 'versionrequired'       => 'Potrebna je različica MediaWiki $1',
 'versionrequiredtext'   => 'Za uporabo strani je potrebna različica MediaWiki $1. Glejte [[Special:Version]].',
 'ok'                    => 'V redu',
@@ -579,16 +631,13 @@ $2 Seznam se preusmerja   Iskanje za $3 $9',
 'userrights-groupsavailable'=> 'Skupine, ki so na razpolago:',
 'userrights-groupshelp' => 'Izberite skupine, iz katerih želite odstraniti ali vanje dodati uporabnika.
 Neoznačene skupine ne bodo spremenjene. Skupino lahko odznačite z levim klikom in hkratnim pritiskom tipke CTRL.',
-'userrights-logcomment' => 'Uporabnik je iz skupine $1 prešel v skupino $2.',
 'group'                 => 'Skupina:',
 'group-bot'             => 'Boti',
 'group-sysop'           => 'Administratorji',
 'group-bureaucrat'      => 'Birokrati',
-'group-steward'         => 'Upravniki',
 'group-all'             => '(vsi)',
 'group-sysop-member'    => 'Administrator',
 'group-bureaucrat-member'=> 'Birokrat',
-'group-steward-member'  => 'Upravnik',
 'grouppage-bot'         => 'Project:Boti',
 'grouppage-sysop'       => 'Project:Administratorji',
 'grouppage-bureaucrat'  => 'Project:Birokrati',
@@ -1041,7 +1090,6 @@ Da izbranega uporabnika povišate, vpišite njegovo ime v okence in pritisnite g
 'makesysopok'           => '<b>Uporabnik »$1« je odslej administrator</b>',
 'makesysopfail'         => '<b>Uporabnika »$1« ni mogoče povišati v administratorja. (Ste uporabniško ime pravilno vnesli?)</b>',
 'setbureaucratflag'     => 'Nastavi za birokrata',
-'setstewardflag'        => 'Nastavi za upravnika',
 'rightslog'             => 'Dnevnik_uporabniških_pravic',
 'rightslogtext'         => 'Prikazan je dnevnik sprememb uporabniških pravic.',
 'rightslogentry'        => '- sprememba pravic uporabnika $1 iz $2 v $3',
@@ -1052,7 +1100,6 @@ Da izbranega uporabnika povišate, vpišite njegovo ime v okence in pritisnite g
 'makesysop'             => 'Povišanje uporabnikov v administratorje',
 'already_sysop'         => 'Uporabnik je že administrator!',
 'already_bureaucrat'    => 'Uporabnik je že birokrat!',
-'already_steward'       => 'Uporabnik je že upravnik!',
 'rightsnone'            => '(nobeno)',
 'movepage'              => 'Prestavitev strani',
 'movepagetext'          => 'Z naslednjim obrazcem lahko stran preimenujete in hkrati prestavite tudi vso njeno zgodovino. Dosedanja stran se bo spremenila v preusmeritev na prihodnje mesto. 
@@ -1379,7 +1426,6 @@ Da boste stran lahko shranili, boste morali odstraniti vse na črni listi navede
 'exif-gpsareainformation'=> 'Ime GPS-območja',
 'exif-gpsdatestamp'     => 'GPS-datum',
 'exif-gpsdifferential'  => 'Diferencialni popravek GPS',
-'exif-make-value'       => '[[$1]]',
 'exif-compression-1'    => 'Nestisnjeno',
 'exif-orientation-1'    => 'Navadna',
 'exif-orientation-2'    => 'Vodoravno zrcaljeno',

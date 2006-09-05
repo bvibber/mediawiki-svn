@@ -24,7 +24,7 @@ function wfSpecialIpblocklist() {
 	} else if ( "submit" == $action && $wgRequest->wasPosted() &&
 		$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 		if ( ! $wgUser->isAllowed('block') ) {
-			$wgOut->sysopRequired();
+			$wgOut->permissionRequired( 'block' );
 			return;
 		}
 		$ipu->doSubmit();
@@ -171,13 +171,20 @@ class IPUnblockForm {
 			// No extra conditions
 		} elseif ( substr( $this->ip, 0, 1 ) == '#' ) {
 			$conds['ipb_id'] = substr( $this->ip, 1 );
-		} elseif ( wfIP2Unsigned( $this->ip ) !== false ) {
+		} elseif ( IP::toUnsigned( $this->ip ) !== false ) {
 			$conds['ipb_address'] = $this->ip;
+			$conds['ipb_auto'] = 0;
+		} elseif( preg_match( "/^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\\/(\\d{1,2})$/", $this->ip, $matches ) ) {
+			$conds['ipb_address'] = Block::normaliseRange( $this->ip );
 			$conds['ipb_auto'] = 0;
 		} else {
 			$user = User::newFromName( $this->ip );
-			if ( ( $id = $user->getID() ) != 0 ) {
+			if ( $user && ( $id = $user->getID() ) != 0 ) {
 				$conds['ipb_user'] = $id;
+			} else {
+				// Uh...?
+				$conds['ipb_address'] = $this->ip;
+				$conds['ipb_auto'] = 0;
 			}
 		}
 
@@ -196,11 +203,12 @@ class IPUnblockForm {
 	}
 
 	function searchForm() {
-		global $wgTitle, $wgRequest;
+		global $wgTitle, $wgScript, $wgRequest;
 		return
 			wfElement( 'form', array(
-				'action' => $wgTitle->getLocalUrl() ),
+				'action' => $wgScript ),
 				null ) .
+			wfHidden( 'title', $wgTitle->getPrefixedDbKey() ) .
 			wfElement( 'input', array(
 				'type' => 'hidden',
 				'name' => 'action',

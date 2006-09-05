@@ -1,7 +1,41 @@
 <?php
+/** Interlingua (Interlingua)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
+$quickbarSettings = array(
+	'Nulle', 'Fixe a sinistra', 'Fixe a dextera', 'Flottante a sinistra'
+);
 
-global $wgAllMessagesIa;
-$wgAllMessagesIa = array(
+$skinNames = array(
+	'cologneblue' => 'Blau Colonia',
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Special',
+	NS_MAIN           => '',
+	NS_TALK           => 'Discussion',
+	NS_USER           => 'Usator',
+	NS_USER_TALK      => 'Discussion_Usator',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'Discussion_$1',
+	NS_IMAGE          => 'Imagine',
+	NS_IMAGE_TALK     => 'Discussion_Imagine',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'Discussion_MediaWiki',
+	NS_TEMPLATE       => 'Patrono',
+	NS_TEMPLATE_TALK  => 'Discussion_Patrono',
+	NS_HELP           => 'Adjuta',
+	NS_HELP_TALK      => 'Discussion_Adjuta',
+	NS_CATEGORY       => 'Categoria',
+	NS_CATEGORY_TALK  => 'Discussion_Categoria'
+);
+$linkTrail = "/^([a-z]+)(.*)\$/sD";
+
+
+$messages = array(
 
 # User Toggles
 #
@@ -58,7 +92,6 @@ $wgAllMessagesIa = array(
 
 # Bits of text used by many pages:
 #
-"linktrail"		=> "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "Frontispicio",
 "about"			=> "A proposito",
 "aboutsite"      => "A proposito de {{SITENAME}}",
@@ -86,6 +119,7 @@ $wgAllMessagesIa = array(
 "whatlinkshere"	=> "Referentias a iste pagina",
 "help"			=> "Adjuta",
 "search"		=> "Recercar",
+"searchbutton"	=> "Recercar",
 "go"		=> "Ir",
 "history"		=> "Chronologia",
 "printableversion" => "Version imprimibile",
@@ -96,7 +130,6 @@ $wgAllMessagesIa = array(
 "newpage" => "Nove pagina",
 "talkpage"		=> "Discuter iste pagina",
 "articlepage"	=> "Vider article",
-"subjectpage"	=> "Vider subjecto", # For compatibility
 "userpage" => "Vider pagina del usator",
 "projectpage" => "Vider metapagina",
 "imagepage" => 	"Vider pagina de imagine",
@@ -106,15 +139,6 @@ $wgAllMessagesIa = array(
 "lastmodified"	=> "Ultime modification: $1.",
 "viewcount"		=> "Iste pagina esseva accessate $1 vices.",
 "protectedpage" => "Pagina protegite",
-"administrators" => "{{ns:project}}:Administratores",
-"sysoptitle"	=> "Reservate a Sysops",
-"sysoptext"		=> "Solo usatores con status de \"sysop\"
-pote effectuar iste action.
-Vide $1.",
-"developertitle" => "Reservate a disveloppatores",
-"developertext"	=> "Solo usatores con status de \"developer\"
-pote effectuar iste action.
-Vide $1.",
 "nbytes"		=> "$1 bytes",
 "go"			=> "Ir",
 "ok"			=> "OK",
@@ -385,20 +409,15 @@ Si tu vole que {{SITENAME}} habe successo, es multo importante que tu non
 include material protegite per [[{{ns:project}}:Copyright|derectos de autor]].
 Le aspectos legal connexe poterea prejudicar gravemente le projecto,
 alora per favor non lo face.",
-"rcloaderr"		=> "Carga del modificationes recente",
 "rcnote"		=> "Infra es le <strong>$1</strong> ultime modificationes in le <strong>$2</strong> ultime dies.",
 "rcnotefrom"	=> "infra es le modificationes a partir de <b>$2</b> (usque a <b>$1</b>).",
 "rclistfrom"	=> "Monstrar nove modificationes a partir de $1",
 # "rclinks"		=> "Monstrar le $1 ultime modificationes in le $2 ultime horas / $3 ultime dias",
 "rclinks"		=> "Monstrar le $1 ultime modificationes in le $2 ultime days.",
-"rchide"		=> "in forma de $4; $1 modificationes minor; $2 contextos secundari; $3 modificationes multiple.",
 "diff"			=> "diff",
 "hist"			=> "prec",
 "hide"			=> "occultar",
 "show"			=> "monstrar",
-"tableform"		=> "tabella",
-"listform"		=> "lista",
-"nchanges"		=> "$1 modificationes",
 "minoreditletter" => "M",
 "newpageletter" => "N",
 
@@ -406,7 +425,6 @@ alora per favor non lo face.",
 #
 "upload"		=> "Cargar file",
 "uploadbtn"		=> "Cargar file",
-"uploadlink"	=> "Cargar imagines",
 "reupload"		=> "Recargar",
 "reuploaddesc"	=> "Retornar al formulario de carga.",
 "uploadnologin" => "Session non aperte",
@@ -516,11 +534,6 @@ del quales <b>$2</b> es administratores (vide $3).",
 
 # Maintenance Page
 #
-"maintenance"		=> "Pagina de mantenentia",
-"maintnancepagetext"	=> "Iste pagina include plure utensiles commode pro le mantenentia quotidian del encyclopedia.
-Alcunes del functiones tende a tensionar le base de datos, pro isto per favor
-non preme \"Reload\" post cata item reparate. ;-)",
-"maintenancebacklink"	=> "Retornar al pagina de mantenentia",
 "disambiguations"	=> "Paginas de disambiguation",
 "disambiguationspage"	=> "{{ns:project}}:Ligamines_a_paginas_de_disambiguation",
 "disambiguationstext"	=> "Le articulos sequente se liga a un <i>pagina de disambiguation</i>.
@@ -535,19 +548,10 @@ secunde texto de redirection, generalmente exhibiente le articulo scopo \"real\"
 al qual le prime redirection deberea referer se.",
 "brokenredirects"	=> "Redirectiones van",
 "brokenredirectstext"	=> "Le redirectiones sequente se liga a articulos inexistente.",
-"selflinks"		=> "Paginas con ligamines circular",
-"selflinkstext"		=> "Le paginas sequente contine un ligamine a se mesme, lo que non se recommenda.",
-"mispeelings"           => "Paginas con errores orthographic",
-"mispeelingstext"               => "Le paginas sequente contine un error orthographic commun, que es listate in $1. Illo debe esser substituite per le orthographia correcte (assi).",
-"mispeelingspage"       => "Lista de errores orthographic commun",
-"missinglanguagelinks"  => "Ligamines interlinguistic absente",
-"missinglanguagelinksbutton"    => "Trovar ligamines interlinguistic mancante pro",
-"missinglanguagelinkstext"      => "Iste articulos <i>non</i> se liga a lor equivalentes in $1. Redirectiones e subpaginas <i>non</i> es monstrate.",
 
 
 # Miscellaneous special pages
 #
-"orphans"		=> "Paginas orphanas",
 "lonelypages"	=> "Paginas orphanas",
 "unusedimages"	=> "Imagines non usate",
 "popularpages"	=> "Paginas popular",
@@ -561,10 +565,8 @@ al qual le prime redirection deberea referer se.",
 "listusers"		=> "Lista de usatores",
 "specialpages"	=> "Paginas special",
 "spheading"		=> "Paginas special",
-"protectpage"	=> "Proteger pagina",
 "recentchangeslinked" => "Modificationes correlate",
 "rclsub"		=> "(a paginas ligate a partir de \"$1\")",
-"debug"			=> "Reparar disfunctiones",
 "newpages"		=> "Nove paginas",
 "movethispage"	=> "Mover iste pagina",
 "unusedimagestext" => "<p>Nota que altere sitos del web
@@ -605,7 +607,6 @@ o ha optate pro non reciper e-mail de altere usatores.",
 # Watchlist
 #
 "watchlist"		=> "Paginas sub observation",
-"watchlistsub"	=> "(pro usator \"$1\")",
 "nowatchlist"	=> "Tu non ha paginas sub observation.",
 "watchnologin"	=> "Session non aperte",
 "watchnologintext"	=> "Tu debe [[Special:Userlogin|aperir un session]]
@@ -667,8 +668,6 @@ non essera automaticamente substituite.",
 "undeleterevision" => "Revision eliminate in $1",
 "undeletebtn" => "Restautar!",
 "undeletedarticle" => "\"$1\" restaurate",
-"undeletedtext"   => "Le articulo [[:$1|$1]] ha essite restaurate con successo.
-Vide [[{{ns:project}}:Registro_de_eliminationes]] pro un registro de eliminationes e restaurationes recente.",
 
 # Contributions
 #
@@ -711,7 +710,6 @@ specific que ha essite vandalisate).",
 "unblockiptext"	=> "Usa le formulario infra pro restaurar le accesso de scriptura
 a un adresse de IP blocate previemente.",
 "ipusubmit"		=> "Disbloca iste adresse",
-"ipusuccess"	=> "Adresse IP \"$1\" disblocate",
 "ipblocklist"	=> "Lista de adresses IP blocate",
 "blocklistline"	=> "$1, $2 ha blockate $3 ($4)",
 "blocklink"		=> "blocar",

@@ -246,7 +246,7 @@ class Title {
 	}
 
 	/**
-	 * Create a new Title frrom a namespace index and a DB key.
+	 * Create a new Title from a namespace index and a DB key.
 	 * The parameters will be checked for validity, which is a bit slower
 	 * than makeTitle() but safer for user-provided data.
 	 *
@@ -286,7 +286,7 @@ class Title {
 	 * @access public
 	 */
 	public static function newFromRedirect( $text ) {
-		$mwRedir = MagicWord::get( MAG_REDIRECT );
+		$mwRedir = MagicWord::get( 'redirect' );
 		$rt = NULL;
 		if ( $mwRedir->matchStart( $text ) ) {
 			if ( preg_match( '/\[{2}(.*?)(?:\||\]{2})/', $text, $m ) ) {
@@ -1075,6 +1075,7 @@ class Title {
 		if( $action == 'create' ) {
 			if( (  $this->isTalkPage() && !$wgUser->isAllowed( 'createtalk' ) ) ||
 				( !$this->isTalkPage() && !$wgUser->isAllowed( 'createpage' ) ) ) {
+				wfProfileOut( $fname );
 				return false;
 			}
 		}
@@ -1897,7 +1898,7 @@ class Title {
 		$linkCache->clearLink( $nt->getPrefixedDBkey() );
 
 		# Recreate the redirect, this time in the other direction.
-		$mwRedir = MagicWord::get( MAG_REDIRECT );
+		$mwRedir = MagicWord::get( 'redirect' );
 		$redirectText = $mwRedir->getSynonym( 0 ) . ' [[' . $nt->getPrefixedText() . "]]\n";
 		$redirectArticle = new Article( $this );
 		$newid = $redirectArticle->insertOn( $dbw );
@@ -1970,7 +1971,7 @@ class Title {
 		$linkCache->clearLink( $nt->getPrefixedDBkey() );
 
 		# Insert redirect
-		$mwRedir = MagicWord::get( MAG_REDIRECT );
+		$mwRedir = MagicWord::get( 'redirect' );
 		$redirectText = $mwRedir->getSynonym( 0 ) . ' [[' . $nt->getPrefixedText() . "]]\n";
 		$redirectArticle = new Article( $this );
 		$newid = $redirectArticle->insertOn( $dbw );
@@ -2147,7 +2148,9 @@ class Title {
 					$stack[$parent] = array();
 				} else {
 					$nt = Title::newFromText($parent);
-					$stack[$parent] = $nt->getParentCategoryTree( $children + array($parent => 1) );
+					if ( $nt ) {
+						$stack[$parent] = $nt->getParentCategoryTree( $children + array($parent => 1) );
+					}
 				}
 			}
 			return $stack;

@@ -37,8 +37,17 @@ $wgVersion			= '1.8alpha';
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
 
-/** Will be same as you set @see $wgSitename */
-$wgMetaNamespace    = FALSE;
+/** 
+ * Name of the project namespace. If left set to false, $wgSitename will be 
+ * used instead.
+ */
+$wgMetaNamespace    = false;
+
+/**
+ * Name of the project talk namespace. If left set to false, a name derived
+ * from the name of the project namespace will be used.
+ */
+$wgMetaNamespaceTalk = false;
 
 
 /** URL of the server. It will be automatically built including https mode */
@@ -115,8 +124,8 @@ $wgStylePath   = "{$wgScriptPath}/skins";
 $wgStyleDirectory = "{$IP}/skins";
 $wgStyleSheetPath = &$wgStylePath;
 $wgArticlePath      = "{$wgScript}?title=$1";
-$wgUploadPath       = "{$wgScriptPath}/upload";
-$wgUploadDirectory	= "{$IP}/upload";
+$wgUploadPath       = "{$wgScriptPath}/images";
+$wgUploadDirectory	= "{$IP}/images";
 $wgHashedUploadDirectory	= true;
 $wgLogo				= "{$wgUploadPath}/wiki.png";
 $wgFavicon			= '/favicon.ico';
@@ -328,6 +337,10 @@ $wgSharedUploadDBname = false;
 $wgSharedUploadDBprefix = '';
 /** Cache shared metadata in memcached. Don't do this if the commons wiki is in a different memcached domain */
 $wgCacheSharedUploads = true;
+/** Allow for upload to be copied from an URL. Requires Special:Upload?source=web */
+$wgAllowCopyUploads = false;
+/** Max size for uploads, in bytes */
+$wgMaxUploadSize = 1024*1024*100; # 100MB
 
 /**
  * Point the upload navigation link to an external URL
@@ -440,7 +453,6 @@ $wgDBconnection     = '';
 /** Database username */
 $wgDBuser           = 'wikiuser';
 /** Database type
- * "mysql" for working code and "PostgreSQL" for development/broken code
  */
 $wgDBtype           = "mysql";
 /** Search type
@@ -472,7 +484,7 @@ $wgSharedDB = null;
 #   dbname:      Default database name
 #   user:        DB user
 #   password:    DB password
-#   type:        "mysql" or "pgsql"
+#   type:        "mysql" or "postgres"
 #   load:        ratio of DB_SLAVE load, must be >=0, the sum of all loads must be >0
 #   groupLoads:  array of load ratios, the key is the query group name. A query may belong
 #                to several groups, the most specific group defined here is used.
@@ -895,7 +907,7 @@ $wgGroupPermissions['bot'  ]['autoconfirmed']   = true;
 $wgGroupPermissions['sysop']['block']           = true;
 $wgGroupPermissions['sysop']['createaccount']   = true;
 $wgGroupPermissions['sysop']['delete']          = true;
-$wgGroupPermissions['sysop']['deletedhistory']  = true; // can view deleted history entries, but not see or restore the text
+$wgGroupPermissions['sysop']['deletedhistory'] 	= true; // can view deleted history entries, but not see or restore the text
 $wgGroupPermissions['sysop']['editinterface']   = true;
 $wgGroupPermissions['sysop']['import']          = true;
 $wgGroupPermissions['sysop']['importupload']    = true;
@@ -908,8 +920,9 @@ $wgGroupPermissions['sysop']['trackback']       = true;
 $wgGroupPermissions['sysop']['upload']          = true;
 $wgGroupPermissions['sysop']['reupload']        = true;
 $wgGroupPermissions['sysop']['reupload-shared'] = true;
-$wgGroupPermissions['sysop']['unwatchedpages']	= true;
+$wgGroupPermissions['sysop']['unwatchedpages']  = true;
 $wgGroupPermissions['sysop']['autoconfirmed']   = true;
+$wgGroupPermissions['sysop']['upload_by_url']   = true;
 $wgGroupPermissions['sysop']['snapshot']        = true;
 
 // Permission to change users' group assignments
@@ -1022,6 +1035,9 @@ $wgFileCacheDirectory = "{$wgUploadDirectory}/cache";
  * Requires zlib support enabled in PHP.
  */
 $wgUseGzip = false;
+
+/** Whether MediaWiki should send an ETag header */
+$wgUseETag = false;
 
 # Email notification settings
 #
@@ -1154,21 +1170,17 @@ $wgTexvc = './math/texvc';
 #
 # You have to create a 'profiling' table in your database before using
 # profiling see maintenance/archives/patch-profiling.sql .
+#
+# To enable profiling, edit StartProfiler.php
 
-/** Enable for more detailed by-function times in debug log */
-$wgProfiling = false;
 /** Only record profiling info for pages that took longer than this */
 $wgProfileLimit = 0.0;
 /** Don't put non-profiling info into log file */
 $wgProfileOnly = false;
 /** Log sums from profiling into "profiling" table in db. */
 $wgProfileToDatabase = false;
-/** Only profile every n requests when profiling is turned on */
-$wgProfileSampleRate = 1;
 /** If true, print a raw call tree instead of per-function report */
 $wgProfileCallTree = false;
-/** If not empty, specifies profiler type to load */
-$wgProfilerType = '';
 /** Should application server host be put into profiling table */
 $wgProfilePerHost = false;
 
@@ -1550,16 +1562,6 @@ $wgTidyInternal = function_exists( 'tidy_load_config' );
 
 /** See list of skins and their symbolic names in languages/Language.php */
 $wgDefaultSkin = 'monobook';
-
-/**
- * Settings added to this array will override the language globals for the user
- * preferences used by anonymous visitors and newly created accounts. (See names
- * and sample values in languages/Language.php)
- * For instance, to disable section editing links:
- *  $wgDefaultUserOptions ['editsection'] = 0;
- *
- */
-$wgDefaultUserOptions = array();
 
 /** Whether or not to allow and use real name fields. Defaults to true. */
 $wgAllowRealName = true;
@@ -2142,14 +2144,22 @@ $wgUpdateRowsPerJob = 500;
 $wgUpdateRowsPerQuery = 10;
 
 /**
- * Enable use of AJAX features, currently auto suggestion for the search bar
+ * Enable AJAX framework
  */
 $wgUseAjax = false;
 
 /**
- * List of Ajax-callable functions
+ * Enable auto suggestion for the search bar 
+ * Requires $wgUseAjax to be true too.
+ * Causes wfSajaxSearch to be added to $wgAjaxExportList
  */
-$wgAjaxExportList = array( 'wfSajaxSearch' );
+$wgAjaxSearch = false;
+
+/**
+ * List of Ajax-callable functions. 
+ * Extensions acting as Ajax callbacks must register here
+ */
+$wgAjaxExportList = array( );
 
 /**
  * Allow DISPLAYTITLE to change title display
@@ -2183,5 +2193,25 @@ $wgContentNamespaces = array( NS_MAIN );
  * Maximum amount of virtual memory available to shell processes under linux, in KB. 
  */
 $wgMaxShellMemory = 102400;
+
+/**
+ * DJVU settings
+ * Path of the djvutoxml executable
+ * Enable this and $wgDjvuRenderer to enable djvu rendering
+ */
+# $wgDjvuToXML = 'djvutoxml';
+
+/**
+ * Path of the ddjvu DJVU renderer
+ * Enable this and $wgDjvuToXML to enable djvu rendering
+ */
+# $wgDjvuRenderer = 'ddjvu';
+
+/**
+ * Path of the DJVU post processor
+ * May include command line options
+ * Default: ppmtojpeg, since ddjvu generates ppm output
+ */
+$wgDjvuPostProcessor = 'ppmtojpeg';
 
 ?>

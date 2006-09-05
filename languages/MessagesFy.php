@@ -1,7 +1,65 @@
 <?php
+/** Frisian (Frysk)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ *
+ */
 
-global $wgAllMessagesFy;
-$wgAllMessagesFy = array(
+$quickbarSettings = array(
+	'Ut', 'Lofts fêst', 'Rjochts fêst', 'Lofts sweevjend'
+);
+
+$skinNames = array(
+	'standard' => 'Standert',
+	'nostalgia' => 'Nostalgy',
+);
+
+$dateFormats = array(
+	'mdy time' => 'H.i',
+	'mdy date' => 'M j, Y',
+	'mdy both' => 'H.i, M j, Y',
+
+	'dmy time' => 'H.i',
+	'dmy date' => 'j M Y',
+	'dmy both' => 'H.i, j M Y',
+
+	'ymd time' => 'H.i',
+	'ymd date' => 'Y M j',
+	'ymd both' => 'H.i, Y M j',	
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Wiki',
+	NS_MAIN           => '',
+	NS_TALK           => 'Oerlis',
+	NS_USER           => 'Meidogger',
+	NS_USER_TALK      => 'Meidogger_oerlis',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_oerlis',
+	NS_IMAGE          => 'Ofbyld',
+	NS_IMAGE_TALK     => 'Ofbyld_oerlis',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'MediaWiki_oerlis',
+	NS_TEMPLATE       => 'Berjocht',
+	NS_TEMPLATE_TALK  => 'Berjocht_oerlis',
+	NS_HELP           => 'Hulp',
+	NS_HELP_TALK      => 'Hulp_oerlis',
+	NS_CATEGORY       => 'Kategory',
+	NS_CATEGORY_TALK  => 'Kategory_oerlis'
+);
+
+$namespaceAliases = array(
+	'Brûker' => NS_USER,
+	'Brûker_oerlis' => NS_USER_TALK,
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+$linkTrail = '/^([a-zàáèéìíòóùúâêîôûäëïöü]+)(.*)$/sDu';
+
+
+$messages = array(
 # User Toggles
 
 "tog-underline"		=> "Keppelings ûnderstreekje",
@@ -85,6 +143,7 @@ $wgAllMessagesFy = array(
 "whatlinkshere"	=> "Siden mei in keppeling hjirhinne",
 "help"		=> "Help",
 "search"		=> "Sykje",
+"searchbutton"	=> "Sykje",
 "go"			=> "Side",
 "history"		=> "Sideskiednis",
 "printableversion" => "Ofdruk-ferzje",
@@ -95,7 +154,6 @@ $wgAllMessagesFy = array(
 "talkpage"		=> "Sideoerlis",
 "postcomment"   	=> "Skrieuw in opmerking",
 "articlepage"	=> "Side lêze",
-"subjectpage"	=> "Side lêze", # For compatibility
 "userpage" 		=> "Brûkerside",
 "projectpage" 	=> "Metaside",
 "imagepage" 	=> "Ofbyldside",
@@ -105,11 +163,6 @@ $wgAllMessagesFy = array(
 "lastmodified"	=> "Lêste kear bewurke op $1.",
 "viewcount"		=> "Disse side is $1 kear iepenslein.",
 "protectedpage" 	=> "Beskerme side",
-"administrators" 	=> "{{ns:project}}:Behear",
-"sysoptitle"	=> "Allinnich foar behearders",
-"sysoptext"		=> "Om dit te dwaan moatte jo behearder wêze. Sjoch \"$1\".",
-"developertitle"  => "Allinich foar untwiklers",
-"developertext"	=> "Om dit te dwaan moatte jo ûntwikler wêze. Sjoch \"$1\".",
 "nbytes"		=> "$1 byte",
 "go"			=> "Side",
 "ok"			=> "Goed",
@@ -406,20 +459,14 @@ mooglik. Foar now kinne jo sykje fia Google:</p>",
 "changes" 			=> "feroarings",
 "recentchanges" 		=> "Koarts feroare",
 "recentchangestext" 	=> "De lêste feroarings fan de {{SITENAME}}.",
-"rcloaderr"			=> "Koarts feroare ...",
 "rcnote"			=> "Dit binne de lêste <strong>$1</strong> feroarings yn de lêste <strong>$2</strong> dagen.",
 "rcnotefrom"		=> "Dit binne de feroarings sûnt <b>$2</b> (maksimaal <b>$1</b>).",
 "rclistfrom"		=> "Jou nije feroarings, begjinnende mei $1",
 "rclinks"			=> "Jou $1 nije feroarings yn de lêste $2 dagen; $3 tekstwiziging",
-"rchide"			=> "in $4 form; $1 tekstwizigings; $2 oare nammeromten; $3 meartallige feroarings.",
-"rcliu"			=> "; $1 feroarings troch oanmelde brûkers",
 "diff"			=> "ferskil",
 "hist"			=> "skiednis",
 "hide"			=> "gjin",
 "show"			=> "al",
-"tableform"			=> "tabel",
-"listform"			=> "list",
-"nchanges"			=> "$1 feroarings",
 "minoreditletter" 	=> "T",
 "newpageletter" 		=> "N",
 
@@ -427,7 +474,6 @@ mooglik. Foar now kinne jo sykje fia Google:</p>",
 #
 "upload"		=> "Bied bestân oan",
 "uploadbtn"		=> "Bied bestân oan",
-"uploadlink"	=> "Bied ôfbylden oan",
 "reupload"		=> "Op 'e nij oanbiede",
 "reuploaddesc"	=> "Werom nei oanbied-side.",
 "uploadnologin" 	=> "Net oanmelde",
@@ -532,12 +578,6 @@ It tal fan behearders dêrfan is: <b>$2</b>.",
 
 # Maintenance Page
 #
-"maintenance"		=> "Underhâld",
-"maintnancepagetext"	=> "Op dizze side stiet ark foar it deistich ûnderhâld.
-In part fan de funksjes freegje in soad fan de databank, dus freegje net nei
-eltse oanpassing daalks in fernijde side op.",
-
-"maintenancebacklink"	=> "Werom nei Underhâldside",
 "disambiguations"		=> "Trochverwizings",
 "disambiguationspage"	=> "{{ns:project}}:trochferwizing",
 "disambiguationstext"	=> "Dizze siden binne keppele fia in
@@ -553,21 +593,10 @@ de twadde trochferwizing, wat it \"echte\" doel wêze moat.",
 
 "brokenredirects"		=> "Misse trochferwizings",
 "brokenredirectstext"	=> "Dizze trochferwizings ferwize nei siden dy't der net binne.",
-"selflinks"			=> "Siden mei sels-ferwizings",
-"selflinkstext"		=> "Dizze siden hawwe in keppeling nei de side sels, wat net sa wêze moat.",
-"mispeelings"           => "Siden mei skriuwflaters",
-"mispeelingstext"		=> "Op dizze siden stiet in skriuw- of typ-flater dy't in soad makke wurd, lykas oanjoen op \"$1\".
-Dêr soe ek stean moatte hoe't it (goed skreaun) wurdt.",
-"mispeelingspage"       => "List fan faak makke flaters",
-"missinglanguagelinks"  => "Untbrekkende taalkeppelings",
-"missinglanguagelinksbutton"    => "Fyn ûntbrekkende taalkeppelings foar",
-"missinglanguagelinkstext"      => "Dizze siden hawwe gjin taalkeppeling nei deselde side yn taal \"$1\".
-(Ferwizings en oanheake siden binne net <i>net</i> besocht.",
 
 
 # Miscellaneous special pages
 #
-"orphans"		=> "Lossteande siden",
 "lonelypages"	=> "Lossteande siden",
 "unusedimages"	=> "Lossteande ôbylden",
 "popularpages"	=> "Grage siden",
@@ -581,10 +610,8 @@ Dêr soe ek stean moatte hoe't it (goed skreaun) wurdt.",
 "listusers"		=> "Brûkerlist",
 "specialpages"	=> "Bysûndere siden",
 "spheading"		=> "Bysûndere siden foar all brûkers",
-"protectpage"	=> "Beskerm side",
 "recentchangeslinked" => "Folgje keppelings",
 "rclsub"		=> "(nei siden dêr't \"$1\" keppelings nei hat)",
-"debug"		=> "Breksykje",
 "newpages"		=> "Nije siden",
 "ancientpages"	=> "Alde siden",
 "movethispage"	=> "Move this side",
@@ -622,7 +649,6 @@ of hat oanjaan gjin post fan oare brûkers krije te wollen.",
 # Watchlist
 #
 "watchlist"		=> "Folchlist",
-"watchlistsub"	=> "(foar brûker \"$1\")",
 "nowatchlist"	=> "Jo hawwe gjin siden op jo folchlist.",
 "watchnologin"	=> "Not oanmeld in",
 "watchnologintext"=> "Jo moatte [[{{ns:special}}:Userlogin|oanmeld]] wêze om jo folchlist te feroarjen.",
@@ -713,8 +739,6 @@ troch de lêste ferzje út dy weromsette skiednis ferfangen.",
 "undeleterevision" => "Wiske side, sa't dy $1 wie.",
 "undeletebtn" 	=> "Weromset!",
 "undeletedarticle" => "\"$1\" weromset",
-"undeletedtext"   => "It weromsette fan side [[:$1|$1]] is slagge.
-(List fan resint [[{{ns:project}}:wisk-loch|wiske of weromsette siden]].",
 
 # Contributions
 #
@@ -753,7 +777,6 @@ Meld de krekte reden! Begelyk, neam de siden dy't oantaaste waarden.",
 "unblockip"		=> "Lit brûker der wer yn",
 "unblockiptext"	=> "Brûk dizze fjilden om in brûker wer skriuwtagong te jaan.",
 "ipusubmit"		=> "Lit dizze brûker der wer yn",
-"ipusuccess"	=> "Brûker \"$1\" ynlitten",
 "ipblocklist"	=> "List fan útsletten Ynternet-adressen en brûkersnammen",
 "blocklistline"	=> '"$3", troch "$2" op $1 ($4)',
 "blocklink"		=> "slut út",

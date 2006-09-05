@@ -1,7 +1,57 @@
 <?php
+/**
+ * Japanese (日本語)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesJa;
-$wgAllMessagesJa = array(
+$quickbarSettings = array(
+	"なし", "左端", "右端", "ウィンドウの左上に固定"
+);
+
+$skinNames = array(
+	'standard' => "標準",
+	'nostalgia' => "ノスタルジア",
+	'cologneblue' => "ケルンブルー",
+);
+
+$datePreferences = array(
+	'default',
+	'ISO 8601',
+);
+
+$defaultDateFormat = 'ja';
+
+$dateFormats = array(
+	'ja time' => 'H:i',
+	'ja date' => 'Y年n月j日 (D)',
+	'ja both' => 'Y年n月j日 (D) H:i',
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => "Media", /* Media */
+	NS_SPECIAL        => "特別", /* Special */
+	NS_MAIN           => "",
+	NS_TALK           => "ノート", /* Talk */
+	NS_USER           => "利用者", /* User */
+	NS_USER_TALK      => "利用者‐会話", /* User_talk */
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1‐ノート', /* Wikipedia_talk */
+	NS_IMAGE          => "画像", /* Image */
+	NS_IMAGE_TALK     => "画像‐ノート", /* Image_talk */
+	NS_MEDIAWIKI      => "MediaWiki", /* MediaWiki */
+	NS_MEDIAWIKI_TALK => "MediaWiki‐ノート", /* MediaWiki_talk */
+	NS_TEMPLATE       => "Template", /* Template */
+	NS_TEMPLATE_TALK  => "Template‐ノート", /* Template_talk */
+	NS_HELP           => "Help", /* Help */
+	NS_HELP_TALK      => "Help‐ノート", /* Help_talk */
+	NS_CATEGORY       => "Category", /* Category */
+	NS_CATEGORY_TALK  => "Category‐ノート" /* Category_talk */
+);
+
+
+$messages = array(
 'tog-underline'         => 'リンクの下線:',
 'tog-highlightbroken'   => '未作成のページへのリンクをハイライトする',
 'tog-justify'           => '段落を均等割り付けする',
@@ -47,6 +97,13 @@ $wgAllMessagesJa = array(
 'thursday'              => '木曜日',
 'friday'                => '金曜日',
 'saturday'              => '土曜日',
+'sun'                   => '日',
+'mon'                   => '月',
+'tue'                   => '火',
+'wed'                   => '水',
+'thu'                   => '木',
+'fri'                   => '金',
+'sat'                   => '土',
 'january'               => '1月',
 'february'              => '2月',
 'march'                 => '3月',
@@ -72,7 +129,6 @@ $wgAllMessagesJa = array(
 'nov'                   => '11月',
 'dec'                   => '12月',
 'categories'            => 'カテゴリ',
-'category'              => 'カテゴリ',
 'category_header'       => 'カテゴリ: “$1”',
 'subcategories'         => 'サブカテゴリ',
 'mainpage'              => 'メインページ',
@@ -118,6 +174,7 @@ $wgAllMessagesJa = array(
 'returnto'              => '$1 に戻る。',
 'tagline'               => '出典: {{SITENAME}}',
 'search'                => '検索',
+'searchbutton'          => '検索',
 'go'                    => '表示',
 'history'               => '履歴',
 'history_short'         => '履歴',
@@ -141,7 +198,6 @@ $wgAllMessagesJa = array(
 'personaltools'         => '個人用ツール',
 'postcomment'           => '新規にコメントを投稿',
 'articlepage'           => '項目を表示',
-'subjectpage'           => 'サブジェクト・ページ',
 'talk'                  => 'ノート',
 'views'                 => '表示',
 'toolbox'               => 'ツールボックス',
@@ -157,18 +213,10 @@ $wgAllMessagesJa = array(
 'viewcount'             => 'このページは $1 回アクセスされました。',
 'copyright'             => 'コンテンツは$1のライセンスで利用することができます。',
 'protectedpage'         => '保護されたページ',
-'administrators'        => 'Project:{{int:group-sysop}}',
 'jumpto'                => '移動:',
 'jumptonavigation'      => 'ナビゲーション',
 'jumptosearch'          => '検索',
-'sysoptitle'            => '{{int:group-sysop}}によるアクセスが必要',
-'sysoptext'             => 'あなたの要求した処理は{{int:group-sysop}}のみが実行できます。
-$1を参照してください。',
-'developertitle'        => '開発者によるアクセスが必要',
-'developertext'         => 'あなたの要求した処理は開発者のみが実行できます。
-$1 を参照してください。',
 'badaccess'             => '権限がありません',
-'badaccesstext'         => 'あなたの要求した処理は "$2" の権限を持った利用者のみが実行できます。詳しくは $1 を参照してください。',
 'versionrequired'       => 'MediaWiki バージョン $1 が必要',
 'versionrequiredtext'   => 'このページの利用には MediaWiki Version $1 が必要です。[[Special:Version|{{int:version}}]]を確認してください。',
 'retrievedfrom'         => ' "$1" より作成',
@@ -362,7 +410,7 @@ The database has been automatically locked while the slave database servers catc
 'blockedtext'           => 'ご使用の利用者名またはIPアドレスは $1 によって投稿をブロックされています。その理由は次の通りです。
 :$2
 
-$1 または他の[[{{int:administrators}}|{{int:group-sysop}}]]にこの件についてメールで問い合わせることができます。ただし、[[Special:Preferences|オプション]]に正しいメールアドレスが登録されていない場合、「{{int:emailuser}}」機能が使えないことに注意してください。あなたのIPアドレスは「$3」です。問い合わせを行う際には、このIPアドレスを必ず書いてください。',
+$1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件についてメールで問い合わせることができます。ただし、[[Special:Preferences|オプション]]に正しいメールアドレスが登録されていない場合、「{{int:emailuser}}」機能が使えないことに注意してください。あなたのIPアドレスは「$3」です。問い合わせを行う際には、このIPアドレスを必ず書いてください。',
 'blockedoriginalsource' => '以下に \'\'\'$1\'\'\' のソースを示します:',
 'blockededitsource'     => '\'\'\'$1\'\'\' への \'\'\'あなたの編集\'\'\' を以下に示します:',
 'whitelistedittitle'    => '編集にはログインが必要',
@@ -560,17 +608,14 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'userrights-groupsmember'=> '所属グループ:',
 'userrights-groupsavailable'=> '有効なグループ:',
 'userrights-groupshelp' => 'この利用者から削除したい、またはこの利用者に追加したいグループを選択してください。選択されていないグループは変更されません。選択を解除するには [CTRL]+[左クリック] です。',
-'userrights-logcomment' => '所属グループを $1 から $2 に変更しました',
 'group'                 => 'グループ:',
 'group-bot'             => 'ボット',
 'group-sysop'           => '管理者',
 'group-bureaucrat'      => 'ビューロクラット',
-'group-steward'         => 'スチュワード',
 'group-all'             => '（すべて）',
 'group-bot-member'      => '{{int:group-bot}}',
 'group-sysop-member'    => '{{int:group-sysop}}',
 'group-bureaucrat-member'=> '{{int:group-bureaucrat}}',
-'group-steward-member'  => '{{int:group-steward}}',
 'grouppage-bot'         => 'Project:{{int:group-bot}}',
 'grouppage-sysop'       => 'Project:{{int:group-sysop}}',
 'grouppage-bureaucrat'  => 'Project:{{int:group-bureaucrat}}',
@@ -1024,7 +1069,6 @@ $NEWPAGE
 'makesysopok'           => '<b>利用者 "$1" を{{int:group-sysop}}にしました。</b>',
 'makesysopfail'         => '<b>利用者 "$1" を{{int:group-sysop}}にできませんでした。利用者名を正しく入力していたかどうか確認してください。</b>',
 'setbureaucratflag'     => '“{{int:group-bureaucrat}}” フラグをセット',
-'setstewardflag'        => '“{{int:group-steward}}” フラグをセット',
 'rightslog'             => '権限変更記録',
 'rightslogtext'         => '以下は利用者権限変更の一覧です。',
 'rightslogentry'        => '$1 の権限を $2 から $3 へ変更しました。',
@@ -1035,7 +1079,6 @@ $NEWPAGE
 'makesysop'             => '利用者を{{int:group-sysop}}にする',
 'already_sysop'         => '利用者は既に{{int:group-sysop}}です。',
 'already_bureaucrat'    => '利用者は既に{{int:group-bureaucrat}}です。',
-'already_steward'       => '利用者は既に{{int:group-steward}}です。',
 'movepage'              => 'ページの移動',
 'movepagetext'          => '下のフォームを利用すると、ページ名を変更し、その履歴も変更先へ移動することができます。古いページは変更先へのリダイレクトページとなります。ページの中身と変更前のページに張られたリンクは変わりません。ですから、二重になったり壊れてしまったリダイレクトをチェックする必要があります。
 

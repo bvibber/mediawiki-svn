@@ -3,28 +3,42 @@
  * @package MediaWiki
  * @subpackage Maintenance
  * Check to see if all messages have been translated into the selected language.
- * To run this script, you must have a working installation, and it checks the
- * selected language of that installation.
+ * To run this script, you must have a working installation, and you can specify
+ * a language, or the script will check the installation language.
  */
 
 /** */
 require_once('commandLine.inc');
 
-if ( 'en' == $wgLanguageCode ) {
+if ( isset( $args[0] ) ) {
+	$code = $args[0];
+} else {
+	$code = $wgLang->getCode();
+}
+
+if ( $code == 'en' ) {
 	print "Current selected language is English. Cannot check translations.\n";
 	exit();
 }
 
-$count = $total = 0;
-$msgarray = 'wgAllMessages' . ucfirst( $wgLanguageCode );
+$filename = Language::getFileName( "$IP/languages/Messages", $code, '.php' );
+if ( file_exists( $filename ) ) {
+	require( $filename );
+} else {
+	$messages = array();
+}
 
-foreach ( $wgAllMessagesEn as $code => $msg ) {
+$count = $total = 0;
+$wgEnglishMessages = Language::getMessagesFor( 'en' );
+$wgLocalMessages = $messages;
+
+foreach ( $wgEnglishMessages as $key => $msg ) {
 	++$total;
-	if ( ! array_key_exists( $code, $$msgarray ) ) {
-		print "'{$code}' => \"$msg\",\n";
+	if ( !isset( $wgLocalMessages[$key] ) ) {
+		print "'{$key}' => \"$msg\",\n";
 		++$count;
 	}
 }
 
-print "{$count} messages of {$total} not translated.\n";
+print "{$count} messages of {$total} are not translated in the language {$code}.\n";
 ?>

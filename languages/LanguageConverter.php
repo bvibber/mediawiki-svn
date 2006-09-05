@@ -12,7 +12,9 @@ class LanguageConverter {
 	var $mMainLanguageCode;
 	var $mVariants, $mVariantFallbacks;
 	var $mTablesLoaded = false;
+	var $mUseFss = false;
 	var $mTables;
+	var $mFssObjects;
 	var $mTitleDisplay='';
 	var $mDoTitleConvert=true, $mDoContentConvert=true;
 	var $mCacheKey;
@@ -46,6 +48,9 @@ class LanguageConverter {
 		$this->mMarkup = array_merge($m, $markup);
 		$f = array('A'=>'A', 'T'=>'T');
 		$this->mFlags = array_merge($f, $flags);
+		if ( function_exists( 'fss_prep_replace' ) ) {
+			$this->mUseFss = true;
+		}
 	}
 
 	/**
@@ -72,11 +77,12 @@ class LanguageConverter {
 
 
 	/**
-     * get preferred language variants.
+	 * get preferred language variants.
+	 * @param boolean $fromUser Get it from $wgUser's preferences
      * @return string the preferred language code
      * @access public
 	*/
-	function getPreferredVariant() {
+	function getPreferredVariant( $fromUser = true ) {
 		global $wgUser, $wgRequest;
 
 		if($this->mPreferredVariant)
@@ -90,7 +96,9 @@ class LanguageConverter {
 		}
 
 		// get language variant preference from logged in users
-		if(is_object($wgUser) && $wgUser->isLoggedIn() )  {
+		// Don't call this on stub objects because that causes infinite 
+		// recursion during initialisation
+		if( $fromUser && $wgUser->isLoggedIn() )  {
 			$this->mPreferredVariant = $wgUser->getOption('variant');
 			return $this->mPreferredVariant;
 		}
@@ -155,15 +163,33 @@ class LanguageConverter {
 
 
 		$m = array_shift($matches);
-		$ret = strtr($m[0], $this->mTables[$toVariant]);
+		$ret = $this->translate($m[0], $toVariant);
 		$mstart = $m[1]+strlen($m[0]);
 		foreach($matches as $m) {
 			$ret .= substr($text, $mstart, $m[1]-$mstart);
-			$ret .= strtr($m[0], $this->mTables[$toVariant]);
+			$ret .= $this->translate($m[0], $toVariant);
 			$mstart = $m[1] + strlen($m[0]);
 		}
 		wfProfileOut( $fname );
 		return $ret;
+	}
+
+	/**
+	 * Translate a string to a variant
+	 * Doesn't process markup or do any of that other stuff, for that use convert()
+	 *
+	 * @param string $text Text to convert
+	 * @param string $variant Variant language code
+	 * @return string Translated text
+	 */
+	function translate( $text, $variant ) {
+		if( !$this->mTablesLoaded )
+			$this->loadTables();
+		if ( $this->mUseFss ) {
+			return fss_exec_replace( $this->mFssObjects[$variant], $text );
+		} else {
+			return strtr( $text, $this->mTables[$variant] );
+		}
 	}
 
 	/**
@@ -181,7 +207,7 @@ class LanguageConverter {
 
 		$ret = array();
 		foreach($this->mVariants as $variant) {
-			$ret[$variant] = strtr($text, $this->mTables[$variant]);
+			$ret[$variant] = $this->translate($text, $variant);
 		}
 		wfProfileOut( $fname );
 		return $ret;
@@ -223,17 +249,17 @@ class LanguageConverter {
      * @access public
      */
 	function convert( $text , $isTitle=false) {
-		$mw =& MagicWord::get( MAG_NOTITLECONVERT );
+		$mw =& MagicWord::get( 'notitleconvert'   );
 		if( $mw->matchAndRemove( $text ) )
 			$this->mDoTitleConvert = false;
 
-		$mw =& MagicWord::get( MAG_NOCONTENTCONVERT );
+		$mw =& MagicWord::get( 'nocontentconvert'   );
 		if( $mw->matchAndRemove( $text ) ) {
 			$this->mDoContentConvert = false;
 		}
 
 		// no conversion if redirecting
-		$mw =& MagicWord::get( MAG_REDIRECT );
+		$mw =& MagicWord::get( 'redirect'   );
 		if( $mw->matchStart( $text ))
 			return $text;
 
@@ -330,6 +356,9 @@ class LanguageConverter {
 							$this->mTables[$vto][$carray[$vfrom]] = $carray[$vto];
 
 						}
+					}
+					if ( $this->mUseFss ) {
+						$this->generateFssObjects();
 					}
 				}
 			}
@@ -495,6 +524,18 @@ class LanguageConverter {
 			$wgMemc->set($this->mCacheKey, $this->mTables, 43200);
 			$this->unlockCache();
 		}
+		if ( $this->mUseFss ) {
+			$this->generateFssObjects();
+		}
+	}
+
+	/**
+	 * Generate FSS objects. The FSS extension must be available.
+	 */
+	function generateFssObjects() {
+		foreach ( $this->mTables as $variant => $table ) {
+			$this->mFssObjects[$variant] = fss_prep_replace( $table );
+		}
 	}
 
     /**
@@ -601,7 +642,7 @@ class LanguageConverter {
 
 		if ($this->mUcfirst) {
 			foreach ($ret as $k => $v) {
-				$ret[LanguageUtf8::ucfirst($k)] = LanguageUtf8::ucfirst($v);
+				$ret[Language::ucfirst($k)] = Language::ucfirst($v);
 			}
 		}
 		return $ret;

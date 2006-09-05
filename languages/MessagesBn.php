@@ -1,7 +1,38 @@
 <?php
+/** Bengali (বাংলা)
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  */
 
-global $wgAllMessagesBn;
-$wgAllMessagesBn = array(
+$namespaceNames = array(
+	NS_SPECIAL        => 'বিশেষ',
+	NS_MAIN           => '',
+	NS_TALK           => 'আলাপ',
+	NS_USER           => 'ব্যবহারকারী',
+	NS_USER_TALK      => 'ব্যবহারকারী_আলাপ',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_আলাপ',
+	NS_IMAGE          => 'চিত্র',
+	NS_IMAGE_TALK     => 'চিত্র_আলাপ',
+	NS_MEDIAWIKI_TALK => 'MediaWiki_আলাপ'
+);
+$datePreferences = false;
+$digitTransformTable = array(
+	'0' => '০',
+	'1' => '১',
+	'2' => '২',
+	'3' => '৩',
+	'4' => '৪',
+	'5' => '৫',
+	'6' => '৬',
+	'7' => '৭',
+	'8' => '৮',
+	'9' => '৯'
+);
+
+
+$messages = array(
 # Dates
 
 'sunday' => 'রবিবার',
@@ -66,6 +97,7 @@ $wgAllMessagesBn = array(
 'whatlinkshere' => 'যেসব পাতা থেকে এখানে সংযোগ আছে',
 'help'      => 'সহায়িকা',
 'search'    => 'খঁুজে দেখ',
+'searchbutton'    => 'খঁুজে দেখ',
 'go'    => 'চল',
 'history'   => 'এ পৃষ্ঠার ইতিহাস',
 'printableversion' => 'ছাপার যোগ্য সংস্করণ',
@@ -76,7 +108,6 @@ $wgAllMessagesBn = array(
 'newpage' => 'নতুন পাতা',
 'talkpage'    => 'এই পৃষ্ঠা নিয়ে আলোচনা করুন',
 'articlepage' => 'নিবন্ধ দেখুন',
-'subjectpage' => 'বিষয় দেখুন', # For compatibility
 'userpage' => 'ব্যাবহারকারীর পাতা দেখুন',
 'projectpage' => 'মেটা-পাতা দেখুন',
 'imagepage' =>  'ছবির পাতা দেখুন',
@@ -85,11 +116,6 @@ $wgAllMessagesBn = array(
 'redirectedfrom' => '($1 থেকে ঘুরে এসেছে)',
 'lastmodified'  => 'এ পৃষ্ঠায় শেষ পরিবর্তন হয়েছিল $1.',
 'viewcount'   => 'এ পৃষ্ঠা দেখা হয়েছে $1 বার।',
-'administrators' => '{{ns:project}}:প্রশাসকবৃন্দ',
-'sysoptitle'  => 'Sysop এর  ক্ষমতা প্রয়োজন',
-'sysoptext'   => 'এ কাজটি কেবল \'sysop\' ক্ষমতাসম্পন্ন ব্যক্তিই করতে পারেন। $1 দেখুন।',
-'developertitle' => 'developer এর ক্ষমতা প্রয়োজন',
-'developertext' => 'এ কাজটি কেবল \'developer\' ক্ষমতাসম্পন্ন ব্যক্তিই করতে পারেন। $1 দেখুন।',
 'nbytes'    => '$1 বাইট',
 'go'      => 'চল',
 'ok'      => 'ঠিক আছে',

@@ -1,6 +1,120 @@
 <?php
+/** Arabic (العربية)
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  */
 
-/* private */ $wgAllMessagesAr = array(
+$linkPrefixExtension = true;
+$fallback8bitEncoding = 'windows-1256';
+
+$rtl = true;
+$defaultUserOptionOverrides = array(
+	# Swap sidebar to right side by default
+	'quickbar' => 2,
+	# Underlines seriously harm legibility. Force off:
+	'underline' => 0,
+);
+
+$namespaceNames = array(
+	NS_MEDIA            => 'ملف',
+	NS_SPECIAL          => 'خاص',
+	NS_MAIN             => '',
+	NS_TALK             => 'نقاش',
+	NS_USER             => 'مستخدم',
+	NS_USER_TALK        => 'نقاش_المستخدم',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'نقاش' . '_$1',
+	NS_IMAGE            => 'صورة',
+	NS_IMAGE_TALK       => 'نقاش_الصورة',
+	NS_MEDIAWIKI        => 'ميدياويكي',
+	NS_MEDIAWIKI_TALK   => 'نقاش_ميدياويكي',
+	NS_TEMPLATE         => 'قالب',
+	NS_TEMPLATE_TALK    => 'نقاش_قالب',
+	NS_HELP             => 'مساعدة',
+	NS_HELP_TALK        => 'نقاش_المساعدة',
+	NS_CATEGORY         => 'تصنيف',
+	NS_CATEGORY_TALK    => 'نقاش_التصنيف'
+);
+
+
+$magicWords = array(
+#   ID                                 CASE  SYNONYMS
+	'redirect'               => array( 0,    '#REDIRECT'    ,   '#تحويل'                  ),
+	'notoc'                  => array( 0,    '__NOTOC__'   ,   '__لافهرس__'               ),
+	'forcetoc'               => array( 0,    '__FORCETOC__'    ,   '__لصق_فهرس__'        ),
+	'toc'                    => array( 0,    '__TOC__'     ,   '__فهرس__'                ),
+	'noeditsection'          => array( 0,    '__NOEDITSECTION__' ,   '__لاتحريرقسم__'      ),
+	'start'                  => array( 0,    '__START__'   ,   '__ابدأ__'                ),
+	'currentmonth'           => array( 1,    'CURRENTMONTH'     ,    'شهر' , 'شهر_حالي'   ),
+	'currentmonthname'       => array( 1,    'CURRENTMONTHNAME'    ,   'اسم_شهر', 'اسم_شهر_حالي'),
+#	'currentmonthnamegen'    => array( 1,    'CURRENTMONTHNAMEGEN'    ),
+#	'currentmonthabbrev'     => array( 1,    'CURRENTMONTHABBREV'     ),
+	'currentday'             => array( 1,    'CURRENTDAY'    ,          'يوم'            ),
+#	'currentday2'            => array( 1,    'CURRENTDAY2'            ),
+	'currentdayname'         => array( 1,    'CURRENTDAYNAME'   ,     'اسم_يوم'          ),
+	'currentyear'            => array( 1,    'CURRENTYEAR'    ,    'عام'                 ),
+	'currenttime'            => array( 1,    'CURRENTTIME'    ,   'وقت'                  ),
+	'numberofarticles'       => array( 1,    'NUMBEROFARTICLES'  ,'عددالمقالات' , 'عدد_المقالات'),
+	'numberoffiles'          => array( 1,    'NUMBEROFFILES'  , 'عددالملفات' , 'عدد_الملفات'),
+	'pagename'               => array( 1,    'PAGENAME'       ,       'اسم_صفحة'         ),
+	'pagenamee'              => array( 1,    'PAGENAMEE'      ,         'عنوان_صفحة'     ),
+	'namespace'              => array( 1,    'NAMESPACE'       ,      'نطاق'             ),
+	'namespacee'             => array( 1,    'NAMESPACEE'     , 'عنوان_نطاق'             ),
+	'fullpagename'           => array( 1,    'FULLPAGENAME', 'اسم_كامل'                  ),
+	'fullpagenamee'          => array( 1,    'FULLPAGENAMEE'  , 'عنوان_كامل'             ),
+	'msg'                    => array( 0,    'MSG:'         ,          'رسالة:'          ),
+	'subst'                  => array( 0,    'SUBST:'      ,     'نسخ:'  , 'نسخ_قالب:'   ),
+	'msgnw'                  => array( 0,    'MSGNW:'     ,  'مصدر:' , 'مصدر_قالب:'      ),
+	'end'                    => array( 0,    '__END__'       ,  '__نهاية__', '__إنهاء__'   ),
+	'img_thumbnail'          => array( 1,    'thumbnail', 'thumb'   ,          'تصغير'    ),
+	'img_manualthumb'        => array( 1,    'thumbnail=$1', 'thumb=$1'  ,'تصغير=$1'      ),
+	'img_right'              => array( 1,    'right'       ,       'يمين'                  ),
+	'img_left'               => array( 1,    'left'           ,    'يسار'                ),
+	'img_none'               => array( 1,    'none'         ,        'بدون'              ),
+	'img_width'              => array( 1,    '$1px'  ,    '$1بك'                         ),
+	'img_center'             => array( 1,    'center', 'centre'   ,           'وسط'      ),
+	'img_framed'             => array( 1,    'framed', 'enframed', 'frame' , 'إطار', 'اطار'),
+	'int'                    => array( 0,    'INT:'        ,        'محتوى:'              ),
+	'sitename'               => array( 1,    'SITENAME'    ,          'اسم_الموقع'        ),
+	'ns'                     => array( 0,    'NS:'            ,              'نط:'       ),
+	'localurl'               => array( 0,    'LOCALURL:'      ,       'عنوان:'           ),
+#	'localurle'              => array( 0,    'LOCALURLE:'             ),
+	'server'                 => array( 0,    'SERVER'          ,   'العنوان'             ),
+	'servername'             => array( 0,    'SERVERNAME'      ,   'اسم_عنوان'           ),
+	'scriptpath'             => array( 0,    'SCRIPTPATH'       ,      'مسار'            ),
+#	'grammar'                => array( 0,    'GRAMMAR:'               ),
+	'notitleconvert'         => array( 0,    '__NOTITLECONVERT__', '__NOTC__',  'لاتحويل_عنوان'),
+	'nocontentconvert'       => array( 0,    '__NOCONTENTCONVERT__', '__NOCC__', 'لاتحويل_محتوى' ),
+	'currentweek'            => array( 1,    'CURRENTWEEK'    ,     'أسبوع'              ),
+	'currentdow'             => array( 1,    'CURRENTDOW'      ,     'رقم_يوم'           ),
+	'revisionid'             => array( 1,    'REVISIONID'        ,     'نسخة'            ),
+#	'plural'                 => array( 0,    'PLURAL:'                ),
+	'fullurl'                => array( 0,    'FULLURL:', 'عنوان_كامل:'                   ),
+#	'fullurle'               => array( 0,    'FULLURLE:'              ),
+#	'lcfirst'                => array( 0,    'LCFIRST:'               ),
+#	'ucfirst'                => array( 0,    'UCFIRST:'               ),
+#	'lc'                     => array( 0,    'LC:'                    ),
+#	'uc'                     => array( 0,    'UC:'                    ),
+#	'raw'                    => array( 0,    'RAW:'                   ),
+);
+
+$digitTransformTable = array(
+	'0' => '٠',
+	'1' => '١',
+	'2' => '٢',
+	'3' => '٣',
+	'4' => '٤',
+	'5' => '٥',
+	'6' => '٦',
+	'7' => '٧',
+	'8' => '٨',
+	'9' => '٩',
+	'.' => '٫', // wrong table?
+	',' => '٬'
+);
+
+$messages = array(
 # Dates
 'sunday' => 'الأحد',
 'monday' => 'الإثنين',
@@ -20,6 +134,17 @@
 'september' => 'سبتمبر',
 'november' => 'نوفمبر',
 'december' => 'ديسمبر',
+'jan' => 'يناير',
+'feb' => 'فبراير',
+'mar' => 'مارس',
+'apr' => 'ابريل',
+'may' => 'مايو',
+'jun' => 'يونيو',
+'jul' => 'يوليو',
+'aug' => 'أغسطس',
+'sep' => 'سبتمبر',
+'nov' => 'نوفمبر',
+'dec' => 'ديسمبر',
 
 # Bits of text used by many pages:
 #
@@ -47,7 +172,6 @@
 'acct_creation_throttle_hit' => 'معذرة، لقد أقمت $1 حساب. لا يممكنك عمل المزيد.',
 'actioncomplete' => 'انتهاء العملية',
 'addedwatch' => 'تمت الإضافة لقائمة المراقبة',
-'administrators' => '{{ns:project}}:إداريين',
 'allmessages' => 'كافة رسائل النظام',
 'allpages' => 'كل الصفحات',
 'allpagessubmit' => 'اذهب',
@@ -94,10 +218,8 @@
 'cancel' => 'إلغاء العملية',
 'categories' => 'تصنيفات الصفحة',
 'categoriespagetext' => 'التصنيفات التالية موجودة في {{SITENAME}}',
-'category' => 'تصنيف',
 'category_header' => 'المقالات في التصنيف "$1"',
 'categoryarticlecount' => 'يوجد $1 مقال في هذا التصنيف.',
-'categoryarticlecount1' => 'هناك $1 مقال  هذا التصنيف.',
 'changepassword' => 'غير كلمة السر',
 'changes' => 'تغييرات',
 'columns' => 'أعمدة',
@@ -153,7 +275,6 @@
 'editsection' => 'تحرير',
 'editold' => 'تحرير',
 'editthispage' => 'عدل هذه الصفحة',
-'emailflag' => 'عدم تلقي الرسائل من المستخدمين الآخرين',
 'emailfrom' => 'من',
 'emailmessage' => 'نص الرسالة',
 'emailpage' => 'أرسل رسالة للمستخدم',
@@ -218,7 +339,6 @@
 'link_sample' => 'عنوان وصلة',
 'linkshere' => 'الصفحات التالية تحتوي على وصلة إلى هنا:',
 'linkstoimage' => 'الصفحات التالية تحتوي على وصلة لهذه الصورة:',
-'listform' => 'قائمة',
 'listusers' => 'قائمة الأعضاء',
 'loadhist' => 'تحميل تاريخ الصفحة',
 'localtime' => 'عرض الوقت المحلي',
@@ -238,14 +358,8 @@
 'longpages' => 'صفحات طويلة',
 'mailmypassword' => 'أرسل لي كلمة السر عبر البريد الإلكتروني.',
 'mailnologin' => 'لا يوجد عنوان للإرسال',
-'maintenance' => 'صفحة الصيانة',
-'maintenancebacklink' => 'العودة لصفحة الصيانة',
 'minoredit' => 'هذا تعديل طفيف',
 'minoreditletter' => 'ط',
-'mispeelings' => 'صفحات بأخطاء إملائية',
-'mispeelingspage' => 'قائمة بالأخطاء الإملائية الشائعة',
-'missinglanguagelinks' => 'وصلات مفقودة للغات',
-'missinglanguagelinksbutton' => 'إبحث عن وصلة لغة مفقودة ل',
 'moredotdotdot' => 'المزيد...',
 'move' => 'نقل',
 'movearticle' => 'نقل صفحة',
@@ -269,14 +383,12 @@
 'namespacesall' => 'الكل',
 'navigation' => 'تصفح',
 'nbytes' => '$1 بايت',
-'nchanges' => '$1 تغييرات',
 'newarticle' => '(جديد)',
 'newarticletext' => 'لقد تبعت وصلة لصفحة لم يتم إنشائها بعد.
 لإنشاء هذه الصفحة إبدأ بالكتابة في الصندوق بالأسفل.
 (أنظر في [[{{ns:project}}:مساعدة|صفحة المساعدة]] للمزيد من المعلومات)
 إذا كانت زيارتك لهذه الصفحة بالخطأ، إضغم على زر \'\'رجوع\'\' في متصفح الإنترنت لديك.',
 'newimages' => 'معرض الصور الجديدة',
-'newmessages' => 'لديك $1.',
 'newmessageslink' => 'رسائل جديدة',
 'newpage' => 'صفحة جديدة',
 'newpageletter' => 'ج',
@@ -319,7 +431,6 @@
 'ok' => 'موافق',
 'oldpassword' => 'كلمة السر القديمة',
 'orig' => 'الأصلي',
-'orphans' => 'الصفحات اليتيمة',
 'otherlanguages' => ' لغات أخرى',
 'pagemovedsub' => 'تم النقل بنجاح',
 'pagemovedtext' => 'تم نقل الصفحة "[[$1]]" إلى "[[$2]]".',
@@ -341,7 +452,6 @@
 'protectedarticle' => 'حماية [[$1]]',
 'protectedpage' => 'صفحة محمية',
 'protectlogpage' => 'سجل_الحماية',
-'protectpage' => 'صفحة محمية',
 'protectthispage' => 'حماية هذه الصفحة',
 'qbbrowse' => 'تصفح',
 'qbedit' => 'تحرير',
@@ -354,8 +464,6 @@
 'randompage' => 'صفحة عشوائية',
 'rclinks' => 'أظهر آخر $1 تعديل في آخر $2 يوم، $3',
 'rclistfrom' => 'أظهر التغييرات بدأ من $1',
-'rcliu' => '; $1 تعديل من مستخدم مسجل',
-'rcloaderr' => 'تحميل التغييرات الأخيرة',
 'rclsub' => '(لصفحات تصل بها الصفحة "$1")',
 'rcnote' => 'في الأسفل ستجد آخر <strong>$1</strong> تعديل في آخر <strong>$2</strong> أيام.',
 'rcnotefrom' => 'في الأسفل التغييرات منذ <b>$2</b> (ولغاية <b>$1</b>).',
@@ -384,6 +492,7 @@
 'savefile' => 'حفظ الملف',
 'saveprefs' => 'حفظ التفضيلات',
 'search' => 'بحث',
+'searchbutton' => 'بحث',
 'searchdisabled' => '<p>عذرا! لقد تم إيقاف ميزة البحث في النصوص بشكل مؤقت، لأسباب تتعلق بتأثيرها على الأداء العام. في الوقت الحالي من الممكن أن تستعمل محرك البحث جووجل Google بدل من خاصية البحث في النصوص. من الممكن أن لا يكون البحث في جووجل يشمل آخر التعديلات والصفحات.
 </p>',
 'searchsubtitle' => 'لصيغة البحث "[[:$1]]"',
@@ -391,21 +500,17 @@
 'searchresults' => 'نتائج البحث',
 'searchresultshead' => 'خيارات نتائج البحث',
 'searchresulttext' => 'للمزيد من المعلومات حول البحث في {{SITENAME}}، راجع [[{{ns:project}}:تصفح]].',
-'selflinks' => 'صفحات بوصلات ذاتية',
 'servertime' => 'الوقت في الأجهزة الخادمة الآن هو',
 'shortpages' => 'صفحات قصيرة',
 'show' => 'عرض',
 'showdiff' => 'أظهر الفرق',
-'showhideminor' => '$1 التعديلات الطفيفة',
 'showpreview' => 'عرض التعديلات',
 'showtoc' => 'إظهار',
 'sitestats' => 'إحصاءات الموقع',
 'sitestatstext' => 'يوجد <b>$1</b> صفحة في قاعدة بيانات الموسوعة العربية، وهذا يشمل صفحات النقاش، والصفحات الخاصة بنظام {{SITENAME}}، والمقالات الصغيرة التي تحتاج تطوير، والتحويلات، وغيرها مما لا يرقى لأن يكون مقالا. إذا تم أهمال تلك الصفحات، فإن عدد الصفحات التي قد تحتوي على مقالات يكون <b>$2</b>.<p>
 تم عرض الصفحات <b>$3</b> مرة، وعدد التعديلات على الصفحات<b>$4</b> تعديل، منذ إنشاء الموسوعة العربية في يوليو/تموز 2003.
 وهذا يعني أن معدل التعديل لكل صفحة <b>$5</b> تعديل، ومعدل عرض كل صفحة <b>$6</b> عرض.',
-'sitesubtitle' => '',
 'sitesupport' => 'التبرعات',
-'sitetitle' => '{{SITENAME}}',
 'specialpage' => 'صفحة خاصة',
 'specialpages' => 'الصفحات الخاصّة',
 'spheading' => 'الصفحات الخاصة لكل المستخدمين',
@@ -413,12 +518,9 @@
 'storedversion' => 'النسخة المخزنة',
 'subcategories' => 'التصنيفات الفرعية',
 'subcategorycount' => 'يوجد $1 تصنيف فرعي في هذا التصنيف.',
-'subcategorycount1' => 'هناك تصنيف فرعي واحد في هذا التصنيف.',
 'subject' => 'موضوع',
-'subjectpage' => 'عرض العنوان',
 'successfulupload' => 'تحميل الملف بنجاح',
 'summary' => 'ملخص',
-'sysoptitle' => 'يتطلب صلاحيات مشغل نظام Sysop',
 'talkexists' => 'تم نقل الصفحة بنجاح، لكن لم
 يتم نقل صفحة النقاش المرافقة، بسبب وجود صفحة نقاش
 مسبقا تحت العوان الجديد.
@@ -449,7 +551,6 @@
 'uploadedfiles' => 'الملفات المحملة',
 'uploadedimage' => 'تم تحميل "$1"',
 'uploaderror' => 'خطأ في التحميل',
-'uploadlink' => 'تحميل الصور',
 'uploadlogpagetext' => 'في الأسفل قائمة بأخر الملفات التي تم تحميلها.
 كل الأوقات المعروضة هي حسب توقيت الأجهزةالخادمة (UTC).
 <ul>
@@ -472,7 +573,6 @@
 وإضغط على زر \'حذف المختارات\' في آخر الصفحة.',
 'watchlist' => 'قائمة مراقبتي',
 'watchlistcontains' => 'تحتوي قائمة المراقبة لديك على $1 صفحة.',
-'watchlistsub' => '(للمستخدم "$1")',
 'watchmethod-list' => 'إظهار التحريرات في الصفحات المراقبة',
 'watchmethod-recent' => 'تفحص التغييرات الأخيرة في قائمة المراقة لديك',
 'watchnochange' => 'لم يتم تعديل أي صفحة في قائمة المراقبة لديك خلال الفترة المحددة.',

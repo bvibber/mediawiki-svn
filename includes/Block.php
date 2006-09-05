@@ -214,7 +214,7 @@ class Block
 	 */
 	function loadRange( $address, $killExpired = true )
 	{
-		$iaddr = wfIP2Hex( $address );
+		$iaddr = IP::toHex( $address );
 		if ( $iaddr === false ) {
 			# Invalid address
 			return false;
@@ -359,10 +359,9 @@ class Block
 		$dbw =& wfGetDB( DB_MASTER );
 		$dbw->begin();
 
-		# Unset ipb_anon_only and ipb_create_account for user blocks, makes no sense
+		# Unset ipb_anon_only for user blocks, makes no sense
 		if ( $this->mUser ) {
 			$this->mAnonOnly = 0;
-			$this->mCreateAccount = 0;
 		}
 
 		# Don't collide with expired blocks
@@ -507,7 +506,7 @@ class Block
 		$parts = explode( '/', $range );
 		if ( count( $parts ) == 2 ) {
 			$shift = 32 - $parts[1];
-			$ipint = wfIP2Unsigned( $parts[0] );
+			$ipint = IP::toUnsigned( $parts[0] );
 			$ipint = $ipint >> $shift << $shift;
 			$newip = long2ip( $ipint );
 			$range = "$newip/{$parts[1]}";

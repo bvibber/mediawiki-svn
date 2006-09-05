@@ -1,7 +1,51 @@
 <?php
+/** Italian (Italiano)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Speciale',
+	NS_MAIN             => '',
+	NS_TALK             => 'Discussione',
+	NS_USER             => 'Utente',
+	NS_USER_TALK        => 'Discussioni_utente',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Discussioni_$1',
+	NS_IMAGE            => 'Immagine',
+	NS_IMAGE_TALK       => 'Discussioni_immagine',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Discussioni_MediaWiki',
+	NS_TEMPLATE         => 'Template',
+	NS_TEMPLATE_TALK    => 'Discussioni_template',
+	NS_HELP             => 'Aiuto',
+	NS_HELP_TALK        => 'Discussioni_aiuto',
+	NS_CATEGORY         => 'Categoria',
+	NS_CATEGORY_TALK    => 'Discussioni_categoria'
+);
 
-global $wgAllMessagesIt;
-$wgAllMessagesIt = array(
+$quickbarSettings = array(
+	'Nessuno', 'Fisso a sinistra', 'Fisso a destra', 'Fluttuante a sinistra'
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'M j, Y',
+	'mdy both' => 'H:i, M j, Y',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j M Y',
+	'dmy both' => 'H:i, j M Y',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y M j',
+	'ymd both' => 'H:i, Y M j',
+);
+
+$messages = array(
 
 # User preference toggles
 "tog-underline" => "Sottolinea i collegamenti",
@@ -82,7 +126,6 @@ $wgAllMessagesIt = array(
 # Bits of text used by many pages:
 #
 "categories" => "{{PLURAL:$1|Categoria|Categorie}}",
-"category" => "categoria",
 "category_header" => 'Pagine nella categoria "$1"',
 "subcategories" => "Sottocategorie",
 
@@ -143,6 +186,7 @@ I seguenti collegamenti sono in lingua inglese:
 "tagline"      	=> "Da {{SITENAME}}.",
 "help"			=> "Aiuto",
 "search"		=> "Ricerca",
+"searchbutton"	=> "Ricerca",
 "go"		=> "Vai",
 "history"		=> "Versioni precedenti",
 "history_short" => "Cronologia",
@@ -166,7 +210,6 @@ I seguenti collegamenti sono in lingua inglese:
 "personaltools" => "Strumenti personali",
 "postcomment"   => "Aggiungi un commento",
 "articlepage"	=> "Vedi la voce",
-"subjectpage"	=> "Vedi articolo", # For compatibility
 "talk" => "Discussione",
 "views" => "Visite",
 "toolbox" => "Strumenti",
@@ -182,21 +225,11 @@ I seguenti collegamenti sono in lingua inglese:
 "viewcount"		=> "Questa pagina è stata letta {{PLURAL:$1|una volta|$1 volte}}.",
 "copyright"	=> "Contenuti soggetti a licenza d'uso $1.",
 "protectedpage" => "Pagina bloccata",
-"administrators" => "Project:Amministratori",
 "jumpto" => "Vai a:",
 "jumptonavigation" => "navigazione",
 "jumptosearch" => "ricerca",
 
-"sysoptitle"	=> "Riservato agli amministratori",
-"sysoptext"		=> "Questa operazione può essere eseguita solo da utenti che siano anche amministratori (''sysop'').
-Vedi $1.",
-"developertitle" => "Riservato agli sviluppatori",
-"developertext"	=> "Questa operazione può essere eseguita solo da utenti che siano anche sviluppatori (''developer'').
-Vedi $1.",
-
 "badaccess" => "Permessi non sufficienti",
-"badaccesstext"	=> "Questa operazione può essere eseguita solo da utenti che siano dotati degli opportuni permessi (''$2'').
-Vedi $1.",
 
 "versionrequired" => "Versione $1 di MediaWiki richiesta",
 "versionrequiredtext" => "Per usare questa pagina è necessario disporre della versione $1 del software MediaWiki. Vedi [[Special:Version]]",
@@ -492,7 +525,6 @@ Verificare la URL usata per accedere a questa pagina.",
 "loadhist"		=> "Caricamento cronologia di questa pagina",
 "currentrev"	=> "Versione corrente",
 "revisionasof"	=> "Versione del $1",
-"oldrevisionnavigation"  => "Versione delle $1; autore: $5<br />$3 | $2 | $4",
 "previousrevision"	=> "← Versione meno recente",
 "nextrevision"		=> "Versione più recente →",
 "currentrevisionlink"	=> "Versione corrente",
@@ -639,20 +671,17 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 "userrights-groupsmember"	=> "Appartiene ai gruppi:",
 "userrights-groupsavailable"	=> "Gruppi disponibili:",
 "userrights-groupshelp"	=> "Selezionare i gruppi ai quali si vuole associare o rimuovere l'utente. L'appartenenza ai gruppi non selezionati non verrà modificata. Per deselezionare un gruppo, premere Ctrl + il tasto sinistro del mouse.",
-"userrights-logcomment"	=> "Modificata appartenenza gruppi da $1 a $2",
 
 # Groups
 "group"	=> "Gruppo:",
 "group-bot"	=> "Bot",
 "group-sysop"	=> "Amministratori",
 "group-bureaucrat"	=> "Burocrati",
-"group-steward"	=> "Steward",
 "group-all"	=> "(utenti)",
 
 "group-bot-member"	=> "Bot",
 "group-sysop-member"	=> "Amministratore",
 "group-bureaucrat-member"	=> "Burocrate",
-"group-steward-member"	=> "Steward",
 
 "grouppage-bot"	=> "Project:Bot",
 "grouppage-sysop"	=> "Project:Amministratori",
@@ -1111,7 +1140,6 @@ Consultare il [[Special:Log/delete|log delle cancellazioni]] per vedere le cance
 "unblockip"		=> " Sblocca utente",
 "unblockiptext"	=> "Usare il modulo sottostante per restituire l'accesso in scrittura ad un utente o indirizzo IP bloccato.",
 "ipusubmit"		=> "Sblocca l'utente",
-"ipusuccess"	=> "[[User:$1|$1] è stato sbloccato",
 "ipblocklist"	=> "Lista degli utenti e indirizzi IP bloccati",
 "blocklistline"	=> "$1, $2 ha bloccato $3 ($4)",
 "infiniteblock" => "senza scadenza",
@@ -1160,7 +1188,6 @@ Consultare il [[Special:Log/delete|log delle cancellazioni]] per vedere le cance
 "makesysopok"	=> "<b>L'utente \"$1\" è ora amministratore</b>",
 "makesysopfail"	=> "<b>Impossibile far diventare amministratore l'utente \"$1\". Verificare che il nome utente sia stato scritto correttamente.</b>",
 "setbureaucratflag"	=> "Assegna i diritti di burocrate",
-"setstewardflag"	=> "Assegna i diritti di steward",
 "rightslog"	=> "Diritti degli utenti",
 "rightslogtext"	=> "Questo è il log delle modifiche ai diritti assegnati agli utenti.",
 "rightslogentry"	=> "ha modificato l'appartenenza di $1 dal gruppo $2 al gruppo $3",
@@ -1171,7 +1198,6 @@ Consultare il [[Special:Log/delete|log delle cancellazioni]] per vedere le cance
 "makesysop"	=> "Rendi l'utente amministratore",
 "already_sysop"	=> "Questo utente è già amministratore",
 "already_bureaucrat"	=> "Questo utente è già burocrate",
-"already_steward"	=> "Questo utente è già steward",
 "rightsnone"	=> "(nessuno)",
 
 # Move page
@@ -1778,8 +1804,6 @@ Se l'account *non* ti appartiene, non seguire il collegamento. Questo codice di 
 Informazioni di trackback per questa voce:<br />
 $1
 </div>",
-"trackback" => "; $4$5 : [$2 $1]",
-"trackbackexcerpt"	=> "; $4$5 : [$2 $1]: <nowiki>$3</nowiki>",
 "trackbackremove"	=> " ([$1 Elimina])",
 "trackbacklink"	=> "Trackback",
 "trackbackdeleteok"	=> "Informazioni di trackback eliminate correttamente.",

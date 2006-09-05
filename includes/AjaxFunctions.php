@@ -70,35 +70,8 @@ function code2utf($num){
    return '';
 }
 
-class AjaxCachePolicy {
-	var $policy;
-
-	function AjaxCachePolicy( $policy = null ) {
-		$this->policy = $policy;
-	}
-
-	function setPolicy( $policy ) {
-		$this->policy = $policy;
-	}
-
-	function writeHeader() {
-		header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-		if ( is_null( $this->policy ) ) {
-			// Bust cache in the head
-			header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");    // Date in the past
-			// always modified
-			header ("Cache-Control: no-cache, must-revalidate");  // HTTP/1.1
-			header ("Pragma: no-cache");                          // HTTP/1.0
-		} else {
-			header ("Expires: " . gmdate( "D, d M Y H:i:s", time() + $this->policy ) . " GMT");
-			header ("Cache-Control: s-max-age={$this->policy},public,max-age={$this->policy}");
-		}
-	}
-}
-			
-
 function wfSajaxSearch( $term ) {
-	global $wgContLang, $wgAjaxCachePolicy, $wgOut;
+	global $wgContLang, $wgOut;
 	$limit = 16;
 	
 	$l = new Linker;
@@ -109,8 +82,6 @@ function wfSajaxSearch( $term ) {
 
 	if ( strlen( str_replace( '_', '', $term ) )<3 )
 		return;
-
-	$wgAjaxCachePolicy->setPolicy( 30*60 );
 
 	$db =& wfGetDB( DB_SLAVE );
 	$res = $db->select( 'page', 'page_title',
@@ -137,10 +108,10 @@ function wfSajaxSearch( $term ) {
 	}
 
 	$subtitlemsg = ( Title::newFromText($term) ? 'searchsubtitle' : 'searchsubtitleinvalid' );
-	$subtitle = $wgOut->parse( wfMsg( $subtitlemsg, wfEscapeWikiText($term) ) );
+	$subtitle = $wgOut->parse( wfMsg( $subtitlemsg, wfEscapeWikiText($term) ) ); #FIXME: parser is missing mTitle !
 
 	$term = htmlspecialchars( $term );
-	return '<div style="float:right; border:solid 1px black;background:gainsboro;padding:2px;"><a onclick="Searching_Hide_Results();">' 
+	$html = '<div style="float:right; border:solid 1px black;background:gainsboro;padding:2px;"><a onclick="Searching_Hide_Results();">' 
 		. wfMsg( 'hideresults' ) . '</a></div>'
 		. '<h1 class="firstHeading">'.wfMsg('search')
 		. '</h1><div id="contentSub">'. $subtitle . '</div><ul><li>'
@@ -152,6 +123,12 @@ function wfSajaxSearch( $term ) {
 					"search=$term&go=Go" )
 		. "</li></ul><h2>" . wfMsg( 'articletitles', $term ) . "</h2>"
 		. '<ul>' .$r .'</ul>'.$more;
+		
+	$response = new AjaxResponse( $html );
+	
+	$response->setCacheDuration( 30*60 );
+		
+	return $response;
 }
 
 ?>

@@ -1,7 +1,39 @@
 <?php
+/** Latvian (Latviešu)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ *
+ * @author Niklas Laxström
+ *
+ * @copyright Copyright © 2006, Niklas Laxström
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ */
 
-global $wgAllMessagesLv;
-$wgAllMessagesLv = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Special',
+	NS_MAIN             => '',
+	NS_TALK             => 'Diskusija',
+	NS_USER             => 'Lietotājs',
+	NS_USER_TALK        => 'Lietotāja_diskusija',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '{{grammar:ģenitīvs|$1}}_diskusija',
+	NS_IMAGE            => 'Attēls',
+	NS_IMAGE_TALK       => 'Attēla_diskusija',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_diskusija',
+	NS_TEMPLATE         => 'Veidne',
+	NS_TEMPLATE_TALK    => 'Veidnes_diskusija',
+	NS_HELP             => 'Palīdzība',
+	NS_HELP_TALK        => 'Palīdzības_diskusija',
+	NS_CATEGORY         => 'Kategorija',
+	NS_CATEGORY_TALK    => 'Kategorijas_diskusija',
+);
+$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+
+
+$messages= array(
 'tog-underline'         => 'Pasvītrot saites:',
 'tog-highlightbroken'   => 'Saites uz neesošām lapām rādīt <a href="" class="new">šādi</a> (alternatīva: šādi<a href="" class="internal">?</a>).',
 'tog-justify'           => 'Taisnot rindkopas',
@@ -71,7 +103,6 @@ $wgAllMessagesLv = array(
 'nov'                   => 'novembrī,',
 'dec'                   => 'decembrī,',
 'categories'            => '{{PLURAL:$1|Kategorija|Kategorijas}}',
-'category'              => 'kategorija',
 'category_header'       => 'Raksti, kas ietverti kategorijā "$1".',
 'subcategories'         => 'Apakškategorijas',
 'mainpage'              => 'Sākumlapa',
@@ -110,6 +141,7 @@ $wgAllMessagesLv = array(
 'returnto'              => 'Atgriezties: $1.',
 'tagline'               => 'No \'\'{{grammar:ģenitīvs|{{SITENAME}}}}\'\'',
 'search'                => 'Meklēt',
+'searchbutton'          => 'Meklēt',
 'go'                    => 'Aiziet!',
 'history'               => 'hronoloģija',
 'history_short'         => 'Hronoloģija',
@@ -133,7 +165,6 @@ $wgAllMessagesLv = array(
 'personaltools'         => 'Lietotāja rīki',
 'postcomment'           => 'Pievienot komentāru',
 'articlepage'           => 'Apskatīt rakstu',
-'subjectpage'           => 'Skatīt virsrakstu',
 'talk'                  => 'Diskusija',
 'views'                 => 'Apskates',
 'toolbox'               => 'Rīki',
@@ -149,16 +180,10 @@ $wgAllMessagesLv = array(
 'viewcount'             => 'Šī lapa ir tikusi apskatīta $1 reizes.',
 'copyright'             => 'Saturs ir pieejams saskaņā ar $1.',
 'protectedpage'         => 'Aizsargāta lapa',
-'administrators'        => 'Project:Administrācija',
 'jumpto'                => 'Pārlēkt uz:',
 'jumptonavigation'      => 'navigācija',
 'jumptosearch'          => 'meklēt',
-'sysoptitle'            => 'Nepieciešamas admina pilnvaras',
-'sysoptext'             => 'Šo darbību drīkst veikt tikai lietotāji, kam ir administratora tiesības. Sk. $1.',
-'developertitle'        => 'Nepieciešama izstrādātāja pieeja.',
-'developertext'         => 'Šo darbību drīkst veikt tikai lietotāji, kuriem ir "izstrādes" atļauja. Sk. $1.',
 'badaccess'             => 'Atļaujas kļūda',
-'badaccesstext'         => 'Šī darbība ir pieejama tikai lietotājiem ar "$2" atļauju. Sk. $1.',
 'versionrequired'       => 'Nepieciešamā \'\'MediaWiki\'\' versija: $1.',
 'versionrequiredtext'   => 'Lai lietotu šo lapu, nepieciešama \'\'MediaWiki\'\' versija $1. Sk. [[Special:versija]].',
 'ok'                    => 'Labi',

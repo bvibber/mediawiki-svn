@@ -1,7 +1,102 @@
 <?php
 
-global $wgAllMessagesEt;
-$wgAllMessagesEt = array(
+/** Estonian (Eesti)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ *
+ */
+
+$namespaceNames = array(
+	NS_MEDIA            => 'Meedia',
+	NS_SPECIAL          => 'Eri',
+	NS_MAIN             => '',
+	NS_TALK             => 'Arutelu',
+	NS_USER             => 'Kasutaja',
+	NS_USER_TALK        => 'Kasutaja_arutelu',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_arutelu',
+	NS_IMAGE            => 'Pilt',
+	NS_IMAGE_TALK       => 'Pildi_arutelu',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_arutelu',
+	NS_TEMPLATE         => 'Mall',
+	NS_TEMPLATE_TALK    => 'Malli_arutelu',
+	NS_HELP             => 'Juhend',
+	NS_HELP_TALK        => 'Juhendi_arutelu',
+	NS_CATEGORY         => 'Kategooria',
+	NS_CATEGORY_TALK    => 'Kategooria_arutelu'
+);
+
+$skinNames = array(
+	'standard' => 'Standard',
+	'nostalgia' => 'Nostalgia',
+	'cologneblue' => 'Kölni sinine',
+	'smarty' => 'Paddington',
+	'montparnasse' => 'Montparnasse',
+	'davinci' => 'DaVinci',
+	'mono' => 'Mono',
+	'monobook' => 'MonoBook',
+	'myskin' => 'Mu oma nahk'
+);
+
+$quickbarSettings = array(
+	'Ei_ole', 'Püsivalt_vasakul', 'Püsivalt paremal', 'Ujuvalt vasakul'
+);
+
+#Lisasin eestimaised poed, aga võõramaiseid ei julenud kustutada.
+
+$bookstoreList = array(
+	'Apollo' => 'http://www.apollo.ee/search.php?keyword=$1&search=OTSI',
+	'minu Raamat' => 'http://www.raamat.ee/advanced_search_result.php?keywords=$1',
+	'Raamatukoi' => 'http://www.raamatukoi.ee/cgi-bin/index?valik=otsing&paring=$1',
+	'AddALL' => 'http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN',
+	'PriceSCAN' => 'http://www.pricescan.com/books/bookDetail.asp?isbn=$1',
+	'Barnes & Noble' => 'http://search.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1',
+	'Amazon.com' => 'http://www.amazon.com/exec/obidos/ISBN=$1'
+);
+
+
+$magicWords = array(
+	#   ID                                 CASE  SYNONYMS
+	'redirect'               => array( 0,    '#redirect', "#suuna"    ),
+);
+
+$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$linkTrail = "/^([a-z]+)(.*)\$/sD";
+
+$datePreferences = array(
+	'default',
+	'et numeric',
+	'dmy',
+	'et roman',
+	'ISO 8601'
+);
+
+$datePreferenceMigrationMap = array(
+	'default',
+	'et numeric',
+	'dmy',
+	'et roman',
+);
+
+$defaultDateFormat = 'dmy';
+
+$dateFormats = array(
+	'et numeric time' => 'H:i',
+	'et numeric date' => 'd.m.Y',
+	'et numeric both' => 'd.m.Y, "kell" H:i',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j. F Y',
+	'dmy both' => 'j. F Y, "kell" H:i',
+
+	'et roman time' => 'H:i',
+	'et roman date' => 'j. xrm Y',
+	'et roman both' => 'j. xrm Y, "kell" H:i',
+);
+
+$messages = array(
 "tog-underline" => "Lingid alla kriipsutada",
 "tog-highlightbroken" => "Vorminda lingirikked<a href=\"\" class=\"new\">nii</a> (alternatiiv: nii<a href=\"\" class=\"internal\">?</a>).",
 "tog-justify" => "Lõikude rööpjoondus",
@@ -52,12 +147,10 @@ $wgAllMessagesEt = array(
 # Bits of text used by many pages:
 #
 'categories' => 'Kategooriad',
-'category' => 'kategooria',
 'category_header' => 'Selles kategoorias on "$1" artiklit',
 'subcategories' => 'Alamkategooriad',
 
 
-"linktrail"		=> "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "Esileht",
 "mainpagetext"	=> "Wiki tarkvara installeeritud.",
 "mainpagedocfooter" => "Juhiste saamiseks kasutamise ning konfigureerimise kohta vaata palun inglisekeelset [http://meta.wikimedia.org/wiki/MediaWiki_i18n dokumentatsiooni liidese kohaldamisest]
@@ -100,6 +193,7 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit]."
 "whatlinkshere"	=> "Siia viitavad artiklid",
 "help"			=> "Juhend",
 "search"		=> "Otsi",
+"searchbutton"	=> "Otsi",
 "go"		=> "Mine",
 "history"		=> "Artikli ajalugu",
 'history_short' => 'Ajalugu',
@@ -111,7 +205,6 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit]."
 "delete" => "Kustuta",
 "deletethispage" => "Kustuta see artikkel",
 "undelete_short" => "Taasta $1 muudatust",
-"undelete_short1" => "Taasta 1 muudatust",
 "protect" => "Kaitse",
 "protectthispage" => "Kaitse seda artiklit",
 "unprotect" => "Ära kaitse",
@@ -121,9 +214,7 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit]."
 'specialpage' => 'Erilehekülg',
 'personaltools' => 'Personaalsed tööriistad',
 'postcomment'   => 'Lisa kommentaar',
-'addsection'   => '+',
 "articlepage"	=> "Artiklilehekülg",
-"subjectpage"	=> "Teema", # For compatibility
 'talk' => 'Arutelu',
 'toolbox' => 'Tööriistakast',
 "userpage" => "Kasutajalehekülg",
@@ -137,12 +228,6 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit]."
 # aegunud, võib vist eemaldada, asendada järgmisega:
 "copyright" => "Kogu tekst on kasutatav litsentsi $1 tingimustel.",
 "protectedpage" => "Kaitstud artikkel",
-"administrators" => "{{ns:4}}:Administraatorid",
-"sysoptitle"	=> "Nõutav süsteemi operaatori staatus",
-"sysoptext"	=> "Seda toimingut saavad sooritada ainult süsteemi operaatori staatusega kasutajad. Vaata $1.",
-"developertitle" => "Nõutav süsteemiarendaja staatus",
-"developertext"	=> "Seda toimingut saavad sooritada ainult süsteemiarendaja staatusega kasutajad.
-Vaata $1.",
 "nbytes"		=> "$1 baiti",
 "go"			=> "Mine",
 "ok"			=> "OK",
@@ -282,7 +367,6 @@ Sinu {{SITENAME}}.",
 "noemail"		=> "Kasutaja \"$1\" meiliaadressi meil kahjuks pole.",
 "passwordsent"	=> "Uus parool on saadetud kasutaja \"$1\" registreeritud meiliaadressil.
 Pärast parooli saamist logige palun sisse.",
-'loginend'              => '',
 'mailerror' => "Viga kirja saatmisel: $1",
 'acct_creation_throttle_hit' => 'Vabandame, aga te olete loonud juba $1 kontot. Rohkem te ei saa.',
 
@@ -397,7 +481,6 @@ Palun kontrollige aadressi, millel Te seda lehekülge leida püüdsite.",
 "histlegend"	=> "Märgi versioonid, mida tahad võrrelda ja vajuta võrdlemisnupule.
 Legend: (viim) = erinevused võrreldes viimase redaktsiooniga,
 (eel) = erinevused võrreldes eelmise redaktsiooniga, P = pisimuudatus",
-'history_copyright'    => '-',
 # Diffs
 #
 "difference"	=> "(Erinevused redaktsioonide vahel)",
@@ -421,7 +504,6 @@ et päring oli vigane, nt. \"koer and and kass\" ei ole lubatav.
 Palun proovige teistsugust päringut.",
 "matchtotals"	=> "Otsitud sõna \"$1\" leidub $2 artikli pealkirjas
 ning $3 artikli tekstis.",
-"nogomatch" => "Täpselt sellise pealkirjaga lehekülge ei ole, proovime täistekstotsingut.",
 "titlematches"	=> "Tabamused artiklipealkirjades",
 "notitlematches" => "Artiklipealkirjades tabamusi ei ole",
 "textmatches"	=> "Tabamused artiklitekstides",
@@ -483,19 +565,14 @@ sisse logida.",
 "changes" => "muudatused",
 "recentchanges" => "Viimased muudatused",
 "recentchangestext" => "Jälgige sellel leheküljel viimaseid muudatusi.",
-"rcloaderr"		=> "Viimaste muudatuste laadimine",
 "rcnote"		=> "Allpool on esitatud viimased <strong>$1</strong> muudatust viimase <strong>$2</strong> päeva jooksul.",
 "rcnotefrom"	=> "Allpool on esitatud muudatused alates <b>$2</b> (näidatakse kuni <b>$1</b> muudatust).",
 "rclistfrom"	=> "Näita muudatusi alates $1",
 "rclinks"		=> "Näita viimast $1 muudatust viimase $2 päeva jooksul.",
-"rchide"		=> "in $4 form; $1 pisiparandust; $2 sekundaarset nimeruumi; $3 multiple edits.", ##MIS SEE ON?
 "diff"			=> "erin",
 "hist"			=> "ajal",
 "hide"			=> "peida",
 "show"			=> "näita",
-"tableform"		=> "tabel",
-"listform"		=> "list",
-"nchanges"		=> "$1 muudatust",
 "minoreditletter" => "P",
 "newpageletter" => "U",
 
@@ -503,7 +580,6 @@ sisse logida.",
 #
 "upload"		=> "Faili üleslaadimine",
 "uploadbtn"		=> "Üleslaadimine",
-"uploadlink"	=> "Piltide üleslaadimine",
 "reupload"		=> "Uuesti üleslaadimine",
 "reuploaddesc"	=> "Tagasi üleslaadimise vormi juurde.",
 "uploadnologin" => "sisse logimata",
@@ -603,15 +679,10 @@ Alates uuele programmile üleminekust 18. detsembril 2003 on lehekülgi vaadatud
 Administraatori staatuses kasutajaid: <b>$2</b> (vt $3).",
 # Maintenance Page
 #
-"maintenance"		=> "Hoolduslehekülg",
-"maintenancebacklink"	=> "Tagasi hooldusleheküljele",
 
-"selflinks"		=> "Iseendale viitavad leheküljed",
-"selflinkstext"		=> "Järgmised leheküljed sisaldavad viita iseendale, mis ei ole soovitatav.",
 
 # Miscellaneous special pages
 #
-"orphans"		=> "Üksildased artiklid",
 "lonelypages"	=> "Üksildased artiklid",
 "unusedimages"	=> "Kasutamata pildid",
 "popularpages"	=> "Populaarsed leheküljed",
@@ -625,10 +696,8 @@ Administraatori staatuses kasutajaid: <b>$2</b> (vt $3).",
 "listusers"		=> "Kasutajad",
 "specialpages"	=> "Erileheküljed",
 "spheading"		=> "Erileheküljed",
-"protectpage"	=> "Kaitse lehekülge",
 "recentchangeslinked" => "Seotud muudatused",
 "rclsub"		=> "(lehekülgedel, millele \"$1\" viitab)", #
-"debug"			=> "Silu",
 "newpages"		=> "Uued leheküljed",
 'ancientpages'          => 'Vanimad leheküljed',
 "intl"		=> "Keeltevahelised lingid",
@@ -656,7 +725,6 @@ ei tohiks konstrueerida reklaami tegemiseks.",
 # Watchlist
 #
 "watchlist"		=> "Minu jälgimisloend",
-"watchlistsub"	=> "(kasutajale nimega \"$1\")",
 "nowatchlist"	=> "Teie jälgimisloend on tühi.",
 "watchnologin"	=> "Ei ole sisse loginud",
 "watchnologintext"	=> "Jälgimisloendi muutmiseks peate [[Special:Userlogin|sisse logima]].",
@@ -714,8 +782,6 @@ versioonid varasema ajaloona. Kehtivat versiooni automaatselt välja ei vahetata
 "undeleterevision" => "Kustutatud versioon seisuga $1",
 "undeletebtn" => "Taasta!",
 "undeletedarticle" => "\"$1\" taastatud",
-"undeletedtext"   => "Artikkel [[:$1|$1]] on taastatud.
-Viimaste kustutamiste ja taastamiste logi on esitatud lehel [[{{ns:4}}:Kustutatud_leheküljed]].",
 
 # Contributions
 #
@@ -757,7 +823,6 @@ pages that were vandalized).",
 "unblockiptext"	=> "Use the form below to restore write access
 to a previously blocked IP address.",
 "ipusubmit"		=> "Unblock this address",
-"ipusuccess"	=> "IP address \"$1\" unblocked",
 "ipblocklist"	=> "Blokeeritud IP-aadresside loend",
 "blocklistline"	=> "$1, $2 blocked $3 ($4)",
 "blocklink"		=> "blokeeri",

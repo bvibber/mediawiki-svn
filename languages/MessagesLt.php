@@ -1,9 +1,51 @@
 <?php
+/** Lithuanian (Lietuvių)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ *
+ */
 
-/* Messages for LanguageLt */
+$namespaceNames = array(
+	NS_MEDIA            => 'Medija',
+	NS_SPECIAL          => 'Specialus',
+	NS_MAIN	            => '',
+	NS_TALK	            => 'Aptarimas',
+	NS_USER             => 'Naudotojas',
+	NS_USER_TALK        => 'Naudotojo_aptarimas',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_aptarimas',
+	NS_IMAGE            => 'Vaizdas',
+	NS_IMAGE_TALK       => 'Vaizdo_aptarimas',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_aptarimas',
+	NS_TEMPLATE         => 'Šablonas',
+	NS_TEMPLATE_TALK    => 'Šablono_aptarimas',
+	NS_HELP             => 'Pagalba',
+	NS_HELP_TALK        => 'Pagalbos_aptarimas',
+	NS_CATEGORY         => 'Kategorija',
+	NS_CATEGORY_TALK    => 'Kategorijos_aptarimas',
+);
 
-global $wgAllMessagesLt;
-$wgAllMessagesLt = array(
+$quickbarSettings = array(
+	'Nerodyti', 'Fiksuoti kairėje', 'Fiksuoti dešinėje', 'Plaukiojantis kairėje'
+);
+
+$skinNames = array(
+	'standard' => 'Standartinė',
+	'nostalgia' => 'Nostalgija',
+	'cologneblue' => 'Kiolno Mėlyna',
+	'davinci' => 'Da Vinči',
+	'mono' => 'Mono',
+	'monobook' => 'MonoBook',
+	'myskin' => 'MySkin',
+	'chick' => 'Chick'
+);
+$fallback8bitEncoding = 'windows-1257';
+$separatorTransformTable = array(',' => ' ', '.' => ',' );
+
+
+$messages = array(
 '1movedto2' => 'Straipsnis \'$1\' pervadintas į \'$2\'',
 '1movedto2_redir' => '\'$1\' pervadintas į \'$2\' (anksčiau buvo nukreipiamasis)',
 'Monobook.js' => '/* tooltips and access keys */
@@ -71,9 +113,6 @@ Būsimi straipsnio bei atitinkamo aptarimo puslapio pakeitimai bus rodomi stebim
 taip pat bus \'\'\'paryškinti\'\'\' [[Special:Recentchanges|naujausių keitimų sąraše]] kad išsiskirtų iš kitų straipsnių.
 
 <p>Jei bet kuriuo metu užsinorėtumėte nustoti stebėti straipsnį, spustelkite "nebestebėti" viršutiniame meniu.',
-'addgroup' => 'Pridėti grupę',
-'addgrouplogentry' => 'Pridėta grupė $2',
-'administrators' => '{{ns:project}}:Administratoriai',
 'allarticles' => 'Visi straipsniai',
 'allinnamespace' => 'Visi puslapiai (sritis - $1)',
 'alllogstext' => 'Bendra įdėtų failų, ištrynimų, užrakinimų, blokavimų ir teisių suteikimų istorija.
@@ -93,7 +132,6 @@ Galima sumažinti rezultatų patikslinant veiksmo rūšį, vartotoją ar susijus
 'allpagessubmit' => 'Tinka',
 'alphaindexline' => 'Nuo $1 iki $2',
 'already_bureaucrat' => 'Vartotojas jau yra biurokratas',
-'already_steward' => 'Vartotojas jau yra ūkvedys',
 'already_sysop' => 'Vartotojas jau yra administratorius',
 'alreadyloggedin' => '<strong>Jūs jau esate prisijungęs kaip vartotojas User $1!</strong><br />',
 'alreadyrolled' => 'Nepavyko atmesti paskutinio [[Vartotojas:$2|$2]] ([[Vartotojo aptarimas:$2|aptarimas]]) daryto straipsnio [[$1]] keitimo; kažkas jau pakeitė straipsnį arba suspėjo pirmas atmesti keitimą.
@@ -115,9 +153,6 @@ Pasirinkite kitą pavadinimą.',
 'august' => 'Rugpjūčio',
 'autoblocker' => 'Automatinis užblokavimas, nes dalinatės IP adresu su vartotoju "$1". Priežastis - "$2".',
 'badaccess' => 'Teisių klaida',
-'badaccesstext' => 'Jūsų pasirinktas veiksmas yra ribotas ir
-leidžiamas tik vartotojiems turintiems šią privilegiją - "$2".
-Žr. $1.',
 'badarticleerror' => 'Veiksmas negalimas šiam puslapiui.',
 'badfilename' => 'Paveiksliukas buvo pervadintas į "$1".',
 'badfiletype' => '".$1" yra nerekomenduojamas paveikslėlio bylos formatas.',
@@ -156,8 +191,6 @@ Nurodykite tikslią priežastį apačioje (pavyzdžiui nurodydami sugadintus pus
 'brokenredirectstext' => 'Žemiau išvardinti peradresavimo puslapiai rodo į neegzistuojančius straipsnius.',
 'bugreports' => 'Pranešti apie klaidą',
 'bugreportspage' => 'Projektas:Klaidų_fiksavimas',
-'bureaucratlog' => 'Biurokratų_sąrašas',
-'bureaucratlogentry' => 'Vartotojui "$1" suteiktos teisės "$2"',
 'bydate' => 'pagal datą',
 'byname' => 'pagal vardą',
 'bysize' => 'pagal dydį',
@@ -167,12 +200,9 @@ Nurodykite tikslią priežastį apačioje (pavyzdžiui nurodydami sugadintus pus
 'cantrollback' => 'Negalima atmesti redagavimo; paskutinis keitęs vartotojas yra vienintelis straipsnį redagavęs autorius.',
 'categories' => 'Kategorijos',
 'categoriespagetext' => 'Projekte yra šios kategorijos.',
-'category' => 'kategorija',
 'category_header' => 'Kategorijos "$1" straipsniai',
 'categoryarticlecount' => 'Kategorijoje straipsnių - $1',
-'categoryarticlecount1' => 'Straipsnių kategorijoje - $1.',
 'changed' => 'pakeitė',
-'changegrouplogentry' => 'Pakeitė grupę $2',
 'changepassword' => 'Pakeisti slaptažodį',
 'changes' => 'pasikeitimai',
 'clearyourcache' => '\'\'\'Dėmesio:\'\'\' Išsaugoję turite išvalyti naršyklės spartinančią saugyklą (cache): \'\'\'Mozilla/Safari/Konqueror:\'\'\' spausdami \'\'Shift\'\' pasirinkite \'\'reload\'\' (arba \'\'Ctrl-Shift-R\'\'), \'\'\'IE:\'\'\' \'\'Ctrl-F5\'\', \'\'\'Opera:\'\'\' \'\'F5\'\'.',
@@ -219,7 +249,6 @@ Prašome patvirtinti, kad tikrai norite iš naujo sukurti straipsnį.',
 'confirmunprotecttext' => 'Ar tikrai norite atrakinti šį straipsnį?',
 'contextchars' => 'Konteksto simbolių eilutėje',
 'contextlines' => 'Eilučių rezultate',
-'contribs-showhideminor' => '$1 smulkius keitimus',
 'contribslink' => 'įnašas',
 'contribsub' => 'Vartotojo $1',
 'contributions' => 'Vartotojo indėlis',
@@ -300,7 +329,6 @@ iš funkcijos: "$2". Klaida: "$3: $4".',
 'editcomment' => 'Redagavimo komentaras: "<i>$1</i>".',
 'editconflict' => 'Išpręskite konfliktą: $1',
 'editcurrent' => 'Redaguoti dabartinę puslapio versiją',
-'editgroup' => 'Redaguoti grupę',
 'edithelp' => 'Kaip Redaguoti',
 'edithelppage' => 'Pagalba:Redagavimas',
 'editing' => 'Taisomas straipsnis - $1',
@@ -394,8 +422,6 @@ Prašome nueiti šia nuoroda: $2 į failo aprašymo puslapį ir įrašyti inform
 'formerror' => 'Klaida: nepavyko apdoroti formos duomenų',
 'friday' => 'Penktadienis',
 'go' => 'Rodyk',
-'group-admin-name' => 'Administratorius',
-'group-bureaucrat-name' => 'Biurokratas',
 'guesstimezone' => 'Paimti iš naršyklės',
 'headline_sample' => 'Skyriaus Pavadinimas',
 'headline_tip' => 'Skyriaus pavadinimas (2-o lygio)',
@@ -440,7 +466,6 @@ seną versiją, (atst) = atstatyti seną versiją.
 'ipbreason' => 'Priežastis',
 'ipbsubmit' => 'Blokuoti šį naudotoją',
 'ipusubmit' => 'Atblokuoti šį adresą',
-'ipusuccess' => '"[[$1]]" atblokuotas',
 'isbn' => 'ISBN',
 'isredirect' => 'nukreipiamasis',
 'italic_sample' => 'Tekstas kursyvu',
@@ -466,24 +491,6 @@ seną versiją, (atst) = atstatyti seną versiją.
 'localtime' => 'Rodomas vietinis laikas',
 'log' => 'Specialiųjų veiksmų istorija',
 'login' => 'Prisijungti/Registruotis',
-'loginend' => '\'\'\'Vartotojo sukūrimas trunka tik kelias sekundes.\'\'\'
-
-<div style="font-size:88%">
-*\'\'\'Norėdami sukurti vartotoją, pasirinkite vartotojo vardą bei slaptažodį ir spustelkite "Sukurkite vartotoją".\'\'\'
-*Vengite vardų, kurie galėtų būti įžeidžiantys ar nevienareikšmiškai suprantami.
-*Pasirinkite skaitomą vardą, ne skaičių.
-*Vartotojo vardas turi prasidėti iš didžiosios raidės.
-*Vengite įžymybių vardų, taip pat vardų, panašių į įžymybės vardą ar žinomo projekto vartotojo vardą.
-</div>
-
-\'\'\'Jei jau esate susikūrę vartotoją, tereikia įvesti vartotojo vardą ir pasirinktą slaptažodį.\'\'\'
-
-<div style="font-size:88%">
-*Norėdami prisijungti, turite būti įjunge "sausainėlius" (\'\'cookies\'\') savo naršyklėje.
-</div>
-<div style="clear: both; padding-top: 2em;">
-Elektroninio pašto adresas nėra privalomas - patvirtinimo laiškai nėra siunčiami. Tačiau, jei įvestumėte el.pašto adresą, kiti vartotojai galėtų jums siųsti žinutes tuo adresu, nesužinodami pačio adreso. Taip pat el.pašto adresas būtinas, jei pamirštumėte savo slaptažodį. \'\'\'Garantuojame, kad el.pašto adresas nebus niekam atskleistas.\'\'\'
-</div>',
 'loginerror' => 'Prisijungimo klaida',
 'loginpagetitle' => 'Prisijungimas',
 'loginproblem' => '<b>Problemos su jūsų prisijungimu.</b><br />Pabandykite iš naujo!',
@@ -498,7 +505,6 @@ P.S.:  kai kuriuose puslapiuose ir toliau gali rodyti lyg būtumėte prisijungę
 'longpages' => 'Ilgiausi puslapiai',
 'mailmypassword' => 'Siųsti naują slaptažodį paštu',
 'mainpage' => 'Pradžia',
-'maintenance' => 'Įrankių puslapis',
 'makesysop' => 'Padaryti administratoriumi',
 'mar' => 'Kov',
 'march' => 'Kovo',
@@ -566,7 +572,6 @@ kad suprantate visas pasekmes.',
 'namespacesall' => 'visos',
 'navigation' => 'Navigacija',
 'nbytes' => '$1 B',
-'nchanges' => '$1 pakeitimai',
 'newarticle' => '(Naujas)',
 'newarticletext' => 'Jūs patekote į neegzistuojančio straipsnio puslapį.
 Norėdami sukurti straipsnį, pradėkite žemiau esančiame įvedimo lauke
@@ -665,7 +670,6 @@ Jūs galite žiūrėti straipsnio turinį arba jį kopijuoti:',
 'protectlogtext' => 'Žemiau yra užrakinimų bei atrakinimų sąrašas.
 Daugiau informacijos puslapyje [[{{ns:project}}:Puslapių rakinimas|Puslapių rakinimas]].',
 'protectmoveonly' => 'Uždrausti tik perkėlimus',
-'protectpage' => 'Rakinti puslapį',
 'protectsub' => '(Rakinamas "$1")',
 'protectthispage' => 'Rakinti šį puslapį',
 'qbbrowse' => 'Naršymas',
@@ -677,14 +681,13 @@ Daugiau informacijos puslapyje [[{{ns:project}}:Puslapių rakinimas|Puslapių ra
 'qbsettings' => 'Greitasis pasirinkimas',
 'qbspecialpages' => 'Specialieji puslapiai',
 'randompage' => 'Atsitiktinis straipsnis',
-'rchide' => 'in $4 form; smulkių pataisymų - $1; $2 secondary namespaces; $3 multiple edits.',
 'rclinks' => 'Rodyti paskutinius $1 pakeitimų per paskutiniąsias $2 dienas(ų)<br />$3',
 'rclistfrom' => 'Rodyti pakeitimus pradedant $1',
 'rclsub' => '(straipsnių, pasiekiamų iš "$1")',
 'rcnote' => 'Pateikiamas <strong>$1</strong> paskutinių pakeitimų sąrašas per paskutiniąsias <strong>$2</strong> dienas(ų).',
 'rcnotefrom' => 'Žemiau yra pakeitimai pradedant <b>$2</b> (rodoma ne daugiau <b>$1</b> pakeitimų).',
 'readonly' => 'Duomenų bazė užrakinta',
-'readonlytext' => 'Enciklopedijuos duomenų bazė šiuo metu yra užrakinta, todėl
+'readonlytext' => 'Enciklopedijos duomenų bazė šiuo metu yra užrakinta, todėl
 negalima rašyti naujų straipsnių ar redaguoti senų,
 paprastai duomenų bazė rakinama techninei profilaktikai,
 taigi vėliau bus atrakinta ir enciklopedija grįš į senas vėžes.
@@ -702,7 +705,6 @@ Užrakinusiojo administratoriaus pateiktas rakinimo aprašymas:
 'removingchecked' => 'Pasirinkti straipsniai išmetami iš stebimų sąrašo...',
 'resetprefs' => 'Atšaukti nustatymus',
 'restorelink' => 'ištrintų versijų: $1',
-'restorelink1' => 'vieną ištrinta versiją',
 'resultsperpage' => 'Rezultatų puslapyje',
 'retrievedfrom' => 'Rodomas puslapis "$1"',
 'returnto' => 'Grįžti į $1.',
@@ -713,7 +715,6 @@ Užrakinusiojo administratoriaus pateiktas rakinimo aprašymas:
 'revertpage' => 'Atmestas $2 pakeitimas, grąžinta paskutinė versija (vartotojo $1 keitimas)',
 'revhistory' => 'Straipsnio istorija',
 'revisionasof' => '$1 versija',
-'revisionasofwithlink' => 'Versija buvusi $1; $2<br />$3 | $4',
 'revnotfound' => 'Versija nerasta',
 'revnotfoundtext' => 'Norima straipsnio versija nerasta.
 Patikrinkite adresą (URL), kurio patekote į šį puslapį.',
@@ -727,6 +728,7 @@ Patikrinkite adresą (URL), kurio patekote į šį puslapį.',
 'savefile' => 'Išsaugoti failą',
 'saveprefs' => 'Išsaugoti nustatymus',
 'search' => 'Paieška',
+'searchbutton' => 'Paieška',
 'searchdisabled' => '<p style="margin: 1.5em 2em 1em">Projekto \'{{SITENAME}}\' paieška yra uždrausta dėl techninių kliūčių. Galite mėginti ieškoti Google paieškos sistemoje.
 <span style="font-size: 89%; display: block; margin-left: .2em">Išorinėse paieškos sistemose (kaip Google) Vikipedijos gali būti šiek tiek pasenę duomenys.</span></p>',
 'searchsubtitle' => 'Ieškoma "[[:$1]]"',
@@ -741,7 +743,6 @@ Patikrinkite adresą (URL), kurio patekote į šį puslapį.',
 'show' => 'Rodyti',
 'showbigimage' => 'Rodyti geresnės raiškos versiją ($1x$2, $3 KB)',
 'showdiff' => 'Rodyti skirtumus',
-'showhideminor' => '$1 smulkius keitimus | $2 automatinius keitimus | $3 prisijungusius vartotojus | $4 patvirtintus keitimus',
 'showingresults' => 'Rodoma <b>$1</b> rezultatų pradedant #<b>$2</b>.',
 'showlast' => 'Rodyti paskutinius $1 paveikslėlių, rūšiuojant $2.',
 'showpreview' => 'Kaip atrodys',
@@ -754,7 +755,6 @@ Be šių puslapių, tikrų straipsnių yra apie \'\'\'$2\'\'\'.
 Nuo wiki pradžios yra atlikta \'\'\'$4\'\'\' puslapių redagavimų - vidutiniškai kiekvienas puslapis keistas \'\'\'$5\'\'\' kartų.
 
 <!-- peržiūrėta: $3 vidutiniškai puslapiui: $6 -->',
-'sitesubtitle' => '',
 'sitesupport' => 'Parama',
 'skin' => 'Išvaizda',
 'sourcefilename' => 'Įkeliamas failas',
@@ -767,7 +767,6 @@ Nuo wiki pradžios yra atlikta \'\'\'$4\'\'\' puslapių redagavimų - vidutiniš
 'storedversion' => 'Išsaugota versija',
 'subcategories' => 'Subkategorijos',
 'subcategorycount' => 'Kategorijoje esančių kategorijų - $1',
-'subcategorycount1' => 'Šioje kategorijoje esančių kategorijų - $1.',
 'subject' => 'Tema/antraštė',
 'successfulupload' => 'Įkelta sėkmingai',
 'summary' => 'Komentaras',
@@ -818,25 +817,20 @@ Prašome sujungti šiuos puslapius.',
 'tooltip-save' => 'Išsaugoti pakeitimus [alt-s]',
 'tooltip-search' => 'Ieškoti lietuviškame wiki [alt-f]',
 'tooltip-watch' => 'Pridėti šį straipsnį prie stebimų [alt-w]',
-'trackback' => '; $4$5 : [$2 $1]',
 'trackbackbox' => '<div id=\'mw_trackbacks\'>
 Trackbacks for this article:<br />
 $1
 </div>',
-'trackbackexcerpt' => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>',
 'tuesday' => 'Antradienis',
 'uctop' => ' (paskutinis)',
 'uncategorizedcategories' => 'Kategorijos, nepriskirtos jokiai kategorijai',
 'uncategorizedpages' => 'Puslapiai, nepriskirti jokiai kategorijai',
 'undelete' => 'Atstatyti ištrintą puslapį',
 'undelete_short' => 'Atstatyti $1 redagavimus',
-'undelete_short1' => 'Atstatyti vieną redagavimą',
 'undeletearticle' => 'Atstatyti ištrintą straipsnį',
 'undeletebtn' => 'Atstatyti!',
 'undeletedarticle' => 'atstatyta "[[$1]]"',
 'undeletedrevisions' => 'atstatyta $1 revizijų',
-'undeletedtext' => 'Straipsnis [[:$1|$1]] sėkmingai atstatytas.
-[[Special:Log/delete|Ištrinimų sąraše]] galite peržiūrėti nesenų trynimų ir atstatymų sąrašą.',
 'undeletehistory' => 'Jei atstatysite straipsnį, istorijoje bus atstatytos visos versijos.
 Jei po ištrynimo buvo sukurtas straipsnis tokiu pačiu pavadinimu,
 atstatytos versijos atsiras ankstesnėje istorijoje, o dabartinė versija
@@ -860,7 +854,6 @@ archyve, todėl jie gali būti atstatyti. Archyvas gali būti periodiškai valom
 'uploadbtn' => 'Įkelti',
 'uploadedimage' => 'įkėlė "$1"',
 'uploaderror' => 'Įkėlimo klaida',
-'uploadlink' => 'Įkelti paveikslėlius',
 'uploadlog' => 'įkėlimų sąrašas',
 'uploadlogpage' => 'Įkėlimų_sąrašas',
 'uploadlogpagetext' => 'Žemiau pateikiamas naujausių failų įkėlimų sąrašas.',
@@ -925,7 +918,6 @@ kurių nebenorite stebėti ir spauskite apačioje
 esantį mygtuką \'Išmesti iš stebimų\'.',
 'watchlist' => 'Stebimi straipsniai',
 'watchlistcontains' => 'Straipsnių jūsų stebimųjų straipsnių sąraše - $1.',
-'watchlistsub' => '(vartotojo "$1")',
 'watchmethod-list' => 'ieškoma naujausių keitimų stebimuose puslapiuose',
 'watchnochange' => 'Pasirinktu laikotarpiu nebuvo redaguotas nei vienas stebimas straipsnis.',
 'watchthis' => 'Stebėti straipsnį',

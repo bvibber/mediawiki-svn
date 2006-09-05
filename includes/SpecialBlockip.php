@@ -73,8 +73,6 @@ class IPBlockForm {
 		$mIpbothertime = wfMsgHtml( 'ipbotheroption' );
 		$mIpbreason = wfMsgHtml( 'ipbreason' );
 		$mIpbsubmit = wfMsgHtml( 'ipbsubmit' );
-		$mIpbanononly = wfMsgHtml( 'ipbanononly' );
-		$mIpbcreateaccount = wfMsgHtml( 'ipbcreateaccount' );
 		$titleObj = Title::makeTitle( NS_SPECIAL, 'Blockip' );
 		$action = $titleObj->escapeLocalURL( "action=submit" );
 
@@ -88,8 +86,6 @@ class IPBlockForm {
 		$scBlockReason = htmlspecialchars( $this->BlockReason );
 		$scBlockOtherTime = htmlspecialchars( $this->BlockOther );
 		$scBlockExpiryOptions = htmlspecialchars( wfMsgForContent( 'ipboptions' ) );
-		$anonOnlyChecked = $this->BlockAnonOnly ? 'checked' : '';
-		$createAccountChecked = $this->BlockCreateAccount ? 'checked' : '';
 
 		$showblockoptions = $scBlockExpiryOptions != '-';
 		if (!$showblockoptions)
@@ -146,31 +142,36 @@ class IPBlockForm {
 		<tr>
 			<td>&nbsp;</td>
 			<td align=\"left\">
-				<label>
-				<input type='checkbox' name='wpAnonOnly' value='1' $anonOnlyChecked />
-				{$mIpbanononly}
-				</label>
+				" . wfCheckLabel( wfMsg( 'ipbanononly' ),
+					'wpAnonOnly', 'wpAnonOnly', $this->BlockAnonOnly,
+					array( 'tabindex' => 4 ) ) . "
 			</td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
 			<td align=\"left\">
-				<label>
-				<input type='checkbox' name='wpCreateAccount' value='1' $createAccountChecked />
-				{$mIpbcreateaccount}
-				</label>
+				" . wfCheckLabel( wfMsg( 'ipbcreateaccount' ),
+					'wpCreateAccount', 'wpCreateAccount', $this->BlockCreateAccount,
+					array( 'tabindex' => 5 ) ) . "
 			</td>
 		</tr>
 		<tr>
 			<td style='padding-top: 1em'>&nbsp;</td>
 			<td style='padding-top: 1em' align=\"left\">
-				<input tabindex='4' type='submit' name=\"wpBlock\" value=\"{$mIpbsubmit}\" />
+				<input tabindex='5' type='submit' name=\"wpBlock\" value=\"{$mIpbsubmit}\" />
 			</td>
 		</tr>
 	</table>
 	<input type='hidden' name='wpEditToken' value=\"{$token}\" />
 </form>\n" );
 
+		$user = User::newFromName( $this->BlockAddress );
+		if( is_object( $user ) ) {
+			$this->showLogFragment( $wgOut, $user->getUserPage() );
+		} elseif( preg_match( '/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/', $this->BlockAddress ) ) {
+			$this->showLogFragment( $wgOut, Title::makeTitle( NS_USER, $this->BlockAddress ) );
+		}
+	
 	}
 
 	function doSubmit() {
@@ -198,9 +199,10 @@ class IPBlockForm {
 				# Username block
 				if ( $wgSysopUserBans ) {
 					$user = User::newFromName( $this->BlockAddress );
-					if ( $user->getID() ) {
+					if( !is_null( $user ) && $user->getID() ) {
 						# Use canonical name
 						$this->BlockAddress = $user->getName();
+						$userId = $user->getID();
 					} else {
 						$this->showForm( wfMsg( 'nosuchusershort', htmlspecialchars( $this->BlockAddress ) ) );
 						return;
@@ -272,6 +274,14 @@ class IPBlockForm {
 		$text = wfMsg( 'blockipsuccesstext', $this->BlockAddress );
 		$wgOut->addWikiText( $text );
 	}
+	
+	function showLogFragment( &$out, &$title ) {
+		$out->addHtml( wfElement( 'h2', NULL, LogPage::logName( 'block' ) ) );
+		$request = new FauxRequest( array( 'page' => $title->getPrefixedText(), 'type' => 'block' ) );
+		$viewer = new LogViewer( new LogReader( $request ) );
+		$viewer->showList( $out );
+	}
+	
 }
 
 ?>

@@ -749,6 +749,7 @@ class Article {
 		
 		if ( $pcache ) {
 			if ( $wgOut->tryParserCache( $this, $wgUser ) ) {
+				wfRunHooks( 'ArticleViewHeader', array( &$this ) );
 				$outputDone = true;
 			}
 		}
@@ -834,13 +835,13 @@ class Article {
 				# Display content, don't attempt to save to parser cache
 				# Don't show section-edit links on old revisions... this way lies madness.
 				if( !$this->isCurrent() ) {
-					$oldEditSectionSetting = $wgOut->mParserOptions->setEditSection( false );
+					$oldEditSectionSetting = $wgOut->parserOptions()->setEditSection( false );
 				}
 				# Display content and don't save to parser cache
 				$wgOut->addPrimaryWikiText( $text, $this, false );
 
 				if( !$this->isCurrent() ) {
-					$wgOut->mParserOptions->setEditSection( $oldEditSectionSetting );
+					$wgOut->parserOptions()->setEditSection( $oldEditSectionSetting );
 				}
 			}
 		}
@@ -916,7 +917,7 @@ class Article {
 		}
 
 		if ((!$wgUser->isAllowed('delete'))) {
-			$wgOut->sysopRequired();
+			$wgOut->permissionRequired( 'delete' );
 			return;
 		}
 
@@ -1246,7 +1247,7 @@ class Article {
 
 		# Silently ignore EDIT_MINOR if not allowed
 		$isminor = ( $flags & EDIT_MINOR ) && $wgUser->isAllowed('minoredit');
-		$bot = $wgUser->isBot() || ( $flags & EDIT_FORCE_BOT );
+		$bot = $wgUser->isAllowed( 'bot' ) || ( $flags & EDIT_FORCE_BOT );
 
 		$text = $this->preSaveTransform( $text );
 
@@ -1671,7 +1672,7 @@ class Article {
 
 		# Check permissions
 		if( $wgUser->isAllowed( 'delete' ) ) {
-			if( $wgUser->isBlocked() ) {
+			if( $wgUser->isBlocked( !$confirm ) ) {
 				$wgOut->blockedPage();
 				return;
 			}
@@ -1940,28 +1941,34 @@ class Article {
 		);
 
 		# Now that it's safely backed up, delete it
-		$dbw->delete( 'revision', array( 'rev_page' => $id ), __METHOD__ );
 		$dbw->delete( 'page', array( 'page_id' => $id ), __METHOD__);
 
-		if ($wgUseTrackbacks)
-			$dbw->delete( 'trackbacks', array( 'tb_page' => $id ), __METHOD__ );
+		# If using cascading deletes, we can skip some explicit deletes
+		if ( !$dbw->cascadingDeletes() ) {
 
- 		# Clean up recentchanges entries...
-		$dbw->delete( 'recentchanges', array( 'rc_namespace' => $ns, 'rc_title' => $t ), __METHOD__ );
+			$dbw->delete( 'revision', array( 'rev_page' => $id ), __METHOD__ );
 
-		# Finally, clean up the link tables
-		$t = $this->mTitle->getPrefixedDBkey();
+			if ($wgUseTrackbacks)
+				$dbw->delete( 'trackbacks', array( 'tb_page' => $id ), __METHOD__ );
+
+			# Delete outgoing links
+			$dbw->delete( 'pagelinks', array( 'pl_from' => $id ) );
+			$dbw->delete( 'imagelinks', array( 'il_from' => $id ) );
+			$dbw->delete( 'categorylinks', array( 'cl_from' => $id ) );
+			$dbw->delete( 'templatelinks', array( 'tl_from' => $id ) );
+			$dbw->delete( 'externallinks', array( 'el_from' => $id ) );
+			$dbw->delete( 'langlinks', array( 'll_from' => $id ) );
+		}
+
+		# If using cleanup triggers, we can skip some manual deletes
+		if ( !$dbw->cleanupTriggers() ) {
+
+			# Clean up recentchanges entries...
+			$dbw->delete( 'recentchanges', array( 'rc_namespace' => $ns, 'rc_title' => $t ), __METHOD__ );
+		}
 
 		# Clear caches
 		Article::onArticleDelete( $this->mTitle );
-
-		# Delete outgoing links
-		$dbw->delete( 'pagelinks', array( 'pl_from' => $id ) );
-		$dbw->delete( 'imagelinks', array( 'il_from' => $id ) );
-		$dbw->delete( 'categorylinks', array( 'cl_from' => $id ) );
-		$dbw->delete( 'templatelinks', array( 'tl_from' => $id ) );
-		$dbw->delete( 'externallinks', array( 'el_from' => $id ) );
-		$dbw->delete( 'langlinks', array( 'll_from' => $id ) );
 
 		# Log the deletion
 		$log = new LogPage( 'delete' );
@@ -2171,7 +2178,7 @@ class Article {
 		# If this is another user's talk page, update newtalk
 		# Don't do this if $changed = false otherwise some idiot can null-edit a
 		# load of user talk pages and piss people off
-		if( $this->mTitle->getNamespace() == NS_USER_TALK && $shortTitle != $wgUser->getName() && $changed ) {
+		if( $this->mTitle->getNamespace() == NS_USER_TALK && $shortTitle != $wgUser->getTitleKey() && $changed ) {
 			if (wfRunHooks('ArticleEditUpdateNewTalk', array(&$this)) ) {
 				$other = User::newFromName( $shortTitle );
 				if( is_null( $other ) && User::isIP( $shortTitle ) ) {
@@ -2203,6 +2210,10 @@ class Article {
 	 */
 	function setOldSubtitle( $oldid=0 ) {
 		global $wgLang, $wgOut, $wgUser;
+
+		if ( !wfRunHooks( 'DisplayOldSubtitle', array(&$this, &$oldid) ) ) {
+				return; 
+		}       
 
 		$revision = Revision::newFromId( $oldid );
 

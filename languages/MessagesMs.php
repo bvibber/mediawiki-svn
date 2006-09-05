@@ -1,7 +1,42 @@
 <?php
+/** Malay (Bahasa Melayu)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesMs;
-$wgAllMessagesMs = array(
+# This localisation is based on a file kindly donated by the folks at MIMOS
+# http://www.asiaosc.org/enwiki/page/Knowledgebase_Home.html
+
+$quickbarSettings = array(
+	'Tiada', 'Tetap sebelah kiri', 'Tetap sebelah kanan', 'Berubah-ubah sebelah kiri'
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Istimewa', #Special
+	NS_MAIN           => '',
+	NS_TALK           => 'Perbualan',#Talk
+	NS_USER           => 'Pengguna',#User
+	NS_USER_TALK      => 'Perbualan_Pengguna',#User_talk
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'Perbualan_$1',#Wikipedia_talk
+	NS_IMAGE          => 'Imej',#Image
+	NS_IMAGE_TALK     => 'Imej_Perbualan',#Image_talk
+	NS_MEDIAWIKI      => 'MediaWiki',#MediaWiki
+	NS_MEDIAWIKI_TALK => 'MediaWiki_Perbualan',#MediaWiki_talk
+	NS_TEMPLATE       => 'Templat',#Template
+	NS_TEMPLATE_TALK  => 'Perbualan_Templat',#Template_talk
+	NS_CATEGORY       => 'Kategori',#Category
+	NS_CATEGORY_TALK  => 'Perbualan_Kategori',#Category_talk
+	NS_HELP           => 'Bantuan',#Help
+	NS_HELP_TALK      => 'Perbualan_Bantuan' #Help_talk
+);
+
+$datePreferences = false;
+
+
+$messages = array(
 
 # User Toggles
 
@@ -114,6 +149,7 @@ $wgAllMessagesMs = array(
 "whatlinkshere"               => "Halaman yang dipautkan ke sini", #"Pages that link here",
 "help"                        => "Bantuan",
 "search"              => "Cari",
+"searchbutton"        => "Cari",
 "go"                  => "Paparkan",
 "history"             => "Sejarah Halaman",
 "history_short"         => "Sejarah",
@@ -131,9 +167,7 @@ $wgAllMessagesMs = array(
 "personaltools"         => "Alatan Peribadi",
 "postcomment"           => "Kirimkan komen",
 "toolbox"               => "Kotak Peralatan",
-"addsection"            => "Tambahkan bahagian",
 "articlepage"         => "Lihat rencana", #"View article",
-"subjectpage"         => "Halaman Tajuk",
 "userpage"              => "Lihat halaman pengguna", #"View user page",
 "projectpage"         => "Lihat halaman meta", #"View meta page",
 "imagepage"             => "Paparkan halaman imej",
@@ -144,15 +178,8 @@ $wgAllMessagesMs = array(
 "copyright"             => "Kandungan tersedia di bawah $1.",
 "viewcount"           => "Halaman ini telah dicapai sebanyak $1 kali.", #"This page has been accessed $1 times.",
 "protectedpage"         => "Halaman Dilindungi", #"Protected page",
-"administrators"        => "Special:Listusers/sysop", #"Special:Listadministrators",
-"sysoptitle"          => "Capaian penyelia diperlukan", #"Sysop access required",
-"sysoptext"           => "Perbuatan anda itu hanya boleh dilakukan oleh seorang [[{{ns:-1}}:Listusers/sysop|penyelia]]. Lihat $1", #"Only the <a href=\"{{localurle:Special:Listadministrators}}\">administrators</a>can do that.",
-"developertitle"        => "Capaian pembangun perisian diperlukan", # "Developer access required",
-"developertext"               => "Perbuatan anda hanya boleh dilakukan oleh pembangun perisian. Sila lihat $1.", #"The action you have requested can only be performed by users with \"developer\" status. See $1.",
 "nbytes"              => "$1 bait",
 "ok"                  => "OK",
-"sitetitle"           => "{{SITENAME}}",
-"sitesubtitle"                => '',
 "retrievedfrom"         => "Diperolehi daripada \"$1\"", #"Retrieved from \"$1\"",
 "editsection"           => "Sunting",
 "editold"           => "Sunting",
@@ -162,9 +189,7 @@ $wgAllMessagesMs = array(
 "thisisdeleted"         => "Lihat atau kembalikan $1?",
 "restorelink"           => "$1 suntingan dipadam",
 "feedlinks"             => "Menyuap:",
-"sitenotice"            => "-",
 "categories"            => "Kategori",
-"category"              => "Kategori",
 "category_header"       => "Rencana dalam kategori \"$1\"",
 "subcategories"         => "Subkategori",
 
@@ -258,7 +283,6 @@ $wgAllMessagesMs = array(
 "noemail"             => "Tiada alamat emel dalam rekod untuk pengguna \"$1\".",
 "passwordsent"                => "Kata laluan baru telah diemelkan kepada \"$1\". Sila log masuk semula setelah penerimaannya.", #"A new password has been sent to the e-mail address registered for \"$1\". Please log in again after you receive it.",
 "eauthentsent"          => "Emel pengesahan telah dikirimkan ke alamat emel anda. Sebelum kami mengirimkan emel yang lain kepada anda, anda dikehendaki mematuhi arahan-arahan dalam emel ini untuk membuktikan pemilikan.", #"A confirmation email has been sent to the nominated email address. Before any other mail is sent to the account, you will have to follow the instructions in the email, to confirm that the account is actually yours.",
-'loginend'              => '',
 'mailerror'             => "Ralat dalam pengiriman emel: $1", #"Error sending mail: $1",
 'acct_creation_throttle_hit' => "Maaf, anda telah membuka akaun $1. Oleh sebab itu, anda tidak dibenarkan membuka akaun lagi.", #"Sorry, you have already created $1 accounts. You can\'t make any more.",
 'emailauthenticated'    => "Alamat emel anda telah disahkan pada $1.", #"Your email address was authenticated on $1.",
@@ -292,7 +316,6 @@ $wgAllMessagesMs = array(
 "accmailtext"           => "Kata laluan untuk '$1' telah dikirimkan ke $2.",
 "newarticle"          => "(Baru)", #"(New)",
 "newarticletext"        => "Anda telah mengikuti pautan ke halaman yang masih belum wujud. Untuk memulakannya, masukkan teks anda ke dalam kotak di bawah (sila lihat [[Project:Bantuan|Bantuan]] untuk maklumat lanjut).\n Jika anda mengunjungi halaman ini tanpa sengaja, klik butang '''balik''' di pelayar anda.", #"You've followed a link to a page that doesn't exist yet. To create the page, start typing in the box below (see the [[Project:Help|help page]] for more info). If you are here by mistake, just click your browser's '''back''' button.",
-'talkpagetext'          => '<!-- MediaWiki:talkpagetext -->',
 "anontalkpagetext"      => "---- Ini adalah halaman perbualan untuk pengguna tanpa nama, iaitu pengguna yang tidak log masuk ataupun masih belum membuka akaun. Kami terpaksa menggunakan alamat IP untuk mengesan pengguna tersebut. Alamat IP ini mungkin digunakan oleh ramai pengguna. Sekiranya anda adalah pengguna tanpa nama dan berasa bahawa komen yang tidak kena mengena telah ditujui kepada anda, sila [[{{ns:special}}:Userlogin|menggunakan nama pengguna anda atau membuka akaun]] bagi mengelakkan sebarang kekeliruan dengan pengguna tanpa nama yang lain.", #"---- ''This is the discussion page for an anonymous user who has not created an account yet or who does not use it. We therefore have to use the numerical [[IP address]] to identify him/her. Such an IP address can be shared by several users. If you are an anonymous user and feel that irrelevant comments have been directed at you, please [[Special:Userlogin|create an account or log in]] to avoid future confusion with other anonymous users.''",
 'clearyourcache'        => "'''Nota:''' Selepas menyimpan, anda mungkin perlu memirau ingatan cache pelayar anda untuk melihat perubahan. '''Mozilla /Firefox/Safari:''' ''Ctrl-Shift-R''; '''IE:''' ''Ctrl-F5''; '''Konqueror:''' ''F5''. Pengguna '''Opera''' mungkin perlu membersihkan kesemua ingatan cachenya di dalam ''Alatan: Tatarajah'' (''Tools?Preferences'').", #"'''Note:''' After saving, you may have to bypass your browser's cache to see the changes. '''Mozilla / Firefox / Safari:''' hold down ''Shift'' while clicking ''Reload'', or press ''Ctrl-Shift-R'' (''Cmd-Shift-R'' on Apple Mac); '''IE:''' hold ''Ctrl'' while clicking ''Refresh'', or press ''Ctrl-F5''; '''Konqueror:''': simply click the ''Reload'' button, or press ''F5''; '''Opera''' users may need to completely clear their cache in ''Tools?Preferences''.",
 "usercssjsyoucanpreview" => "'''Petua:''' Gunakan butang \"Tunjuk paparan\" untuk menguji CSS/JS anda yang baru sebelum menyimpan.", #"<strong>Tip:</strong> Use the 'Show preview' button to test your new CSS/JS before saving.",
@@ -328,14 +351,12 @@ $wgAllMessagesMs = array(
 "loadhist"      => "Muat turun halaman sejarah", #"Loading page history",
 "currentrev"    => "Semakan terkini", #"Current revision",
 "revisionasof"          => "Semakan sejak $1", #"Revision as of $1",
-"revisionasofwithlink" => "Semakan sejak $1; $2<br />$3 | $4",
 "previousrevision"     => "Semakan terdahulu",
 "cur"           => "kini", #"cur",
 "next"                  => "berikut",
 "last"                  => "akhir",
 "orig"                  => "asal",
 "histlegend"    => "Cara untuk pembandingan: Tandakan butang radio versi-versi untuk dibanding, lalu tekan butang ''enter'' atau butang di bawah. <br />Legenda: (kini) = perbezaan dengan versi terkini, (akhir) = perbezaan dengan versi terakhir, K = suntingan kecil", #'Diff selection: mark the radio boxes of the versions to compare and hit enter or the button at the bottom.<br />Legend: (cur) = difference with current version, (last) = difference with preceding version, K = minor edit.',
-"history_copyright" => "-",
 "deletedrev"        => "[dipadam]", #'[deleted]',
 "histfirst"         => "Terawal", #'Earliest'
 "histlast"          => "Terkini", #'Latest'
@@ -498,7 +519,6 @@ $wgAllMessagesMs = array(
 "nolinkstoimage"    => "Tiada halaman yang berpaut ke imej ini.", #"There are no pages that link to this image.",
 "sharedupload"      => "Fail ini merupakan pemuatan naik berkongsi dan boleh dipergunakan untuk projek lain.",
 "shareduploadwiki"  => "Sila lihat [halaman huraian fail $1] untuk maklumat lanjut.",
-"shareddescriptionfollows" => '-',
 "noimage"           => "Tiada fail yang mengandungi nama ini. Anda boleh muat naik $1.",
 "uploadnewversion-linktext"  => "Muat naik versi baru untuk fail ini",
 
@@ -538,7 +558,6 @@ $wgAllMessagesMs = array(
 "allpages"              => "Semua Halaman",
 "nextpage"              => 'Halaman yang berikut ($1)',
 "randompage"            => "Halaman Rawak",
-"randompage-url"          => "{{ns:special}}:Random",
 "shortpages"            => "Halaman Pendek",
 "longpages"             => "Halaman Panjang",
 "deadendpages"            => "Halaman Buntu",
@@ -560,8 +579,6 @@ $wgAllMessagesMs = array(
 "booksources"           => "Sumber Buku",
 "booksourcetext"          => "Di bawah ini adalah senarai pautan ke laman lain yang menjual buku,baik buku baru ataupun buku terpakai, dan mungkin mempunyai maklumat lanjut tentang buku yang anda sedang mencari. {{SITENAME}} tidak bergabung dengan mana-mana perniagaan di atas, dan senarai ini bukan merupakan penyokongan.",
 "isbn"                          => "ISBN",
-"rfcurl"                  => "http://www.ietf.org/rfc/rfc$1.txt",
-"pubmedurl"               => "http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1",
 "alphaindexline"          => "$1 ke $2",
 "version"               => "Versi",
 "log"                   => "Log",
@@ -591,7 +608,6 @@ $wgAllMessagesMs = array(
 # Watchlist
 #
 "watchlist"             => "Senarai Pantau",
-"watchlistsub"                  => "(untuk pengguna \"$1\")",   #"(for user \"$1\")",
 "nowatchlist"           => "Tiada sebarang rencana dalam senarai pantau anda.", #"You have no items on your watchlist.",
 "watchnologin"                  => "Belum log masuk", #"Not logged in",
 "watchnologintext"      => "Anda mesti [[{{ns:special}}:Userlogin|log masuk]] untuk mengubahkan senarai pantau.",
@@ -678,7 +694,6 @@ $wgAllMessagesMs = array(
 'undeletedrevisions' => "$1 semakan telah dipulih",
 "undeletebtn"       => "Pemulihan berjaya!", #"Restore!",
 "undeletedarticle"  => "telah dipulih", #"restored \"$1\"",
-"undeletedtext"     => "Pemulihan [[$1]] berjaya. Sila lihat [[Special:Log/delete|log pemadaman]] untuk rekod pemadaman dan pemulihan terkini.",
 
 
 # Contributions
@@ -720,7 +735,6 @@ $wgAllMessagesMs = array(
 "unblockip"       => "Nyahkan sekatan alamat IP atau pengguna", #"Unblock IP address or user",
 "unblockiptext"           => "Gunakan borang di bawah untuk memulihkan capaian tulis kepada alamat IP atau nama pengguna yang telah disekat.",
 "ipusubmit"       => "Nyahkan sekatan bagi alamat ini.", #"Unblock this address",
-"ipusuccess"      => "Alamat IP atau pengguna \"$1\" dinyahsekat", #"IP address or user \"$1\" unblocked",
 "ipblocklist"     => "Senarai alamat IP dan nama pengguna yang tersekat", #"List of blocked IP addresses and users",
 'infiniteblock'     => "tak terbatas",
 'expiringblock'     => "$1 tamat tempohnya",

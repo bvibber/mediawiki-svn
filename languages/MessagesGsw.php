@@ -1,7 +1,9 @@
 <?php
 
-global $wgAllMessagesGsw;
-$wgAllMessagesGsw = array(
+$fallback = 'de';
+$linkTrail = '/^([äöüßa-z]+)(.*)$/sDu';
+
+$messages = array(
 'tog-underline'         => 'Links unterstryche',
 'tog-highlightbroken'   => 'Links uf lääri Themene durestryche',
 'tog-justify'           => 'Tekscht als Blocksatz',
@@ -53,7 +55,6 @@ $wgAllMessagesGsw = array(
 'december'              => 'Dezämber',
 'may'                   => 'Mei',
 'categories'            => '{{PLURAL:$1|Kategori|Kategorie}}',
-'category'              => 'Kategori',
 'category_header'       => 'Artikel in de Kategori "$1"',
 'subcategories'         => 'Unterkategorie',
 'mainpage'              => 'Houptsyte',
@@ -95,6 +96,7 @@ $wgAllMessagesGsw = array(
 'returnto'              => 'Zrügg zur Syte $1.',
 'tagline'               => 'Us {{SITENAME}}',
 'search'                => 'Suech',
+'searchbutton'          => 'Suech',
 'history'               => 'Versione',
 'history_short'         => 'Versione/Autore',
 'printableversion'      => 'Druck-Aasicht',
@@ -104,7 +106,6 @@ $wgAllMessagesGsw = array(
 'editthispage'          => 'Syte bearbeite',
 'delete'                => 'lösche',
 'deletethispage'        => 'Syte lösche',
-'undelete_short1'       => 'widerherstelle',
 'undelete_short'        => '$1 widerherstelle',
 'protect'               => 'schütze',
 'protectthispage'       => 'Artikel schütze',
@@ -115,7 +116,6 @@ $wgAllMessagesGsw = array(
 'personaltools'         => 'Persönlichi Wärkzüg',
 'postcomment'           => 'Kommentar abgeh',
 'articlepage'           => 'Syte',
-'subjectpage'           => 'Betreff ozeige',
 'toolbox'               => 'Wärkzügkäschtli',
 'userpage'              => 'Benutzersyte',
 'imagepage'             => 'Bildsyte',
@@ -126,13 +126,9 @@ $wgAllMessagesGsw = array(
 'viewcount'             => 'Selli Syte isch {{PLURAL:$1|eimol|$1 Mol}} bsuecht worde.',
 'copyright'             => 'Der Inhalt vo dere Syte steht unter der $1.',
 'protectedpage'         => 'Gschützt Syte',
-'administrators'        => 'Project:Adminischtratore',
 'jumpto'                => 'Hops zue:',
 'jumptosearch'          => 'Suech',
-'sysoptitle'            => 'Sysop-Zuegang notwendig',
-'sysoptext'             => 'Där Vorgang konn us Sicherheitsgründ nuer vun Benutzer mit"Sysop"-Status durchgfiehrt werre. Luege au $1.',
 'badaccess'             => 'Kei usreichendi Rechte.',
-'badaccesstext'         => 'Diä Aktion isch Onwender mit de Rechte "$2" vorbhalte. Luege $1.',
 'versionrequired'       => 'Version $1 vun MediaWiki wird bnötigt',
 'versionrequiredtext'   => 'Version $1 vun MediaWiki wird bnötigt um diä Syte zue nutze. Luege [[Special:Version]]',
 'pagetitle'             => '$1 - {{SITENAME}}',
@@ -353,7 +349,6 @@ Si verspräche uns usserdäm, dass Si des alles selber gschriebe oder vo nere Qu
 'revhistory'            => 'Früecheri Versione',
 'currentrev'            => 'Itzigi Version',
 'revisionasof'          => 'Version vo $1',
-'revisionasofwithlink'  => 'Version vo $1; $2<br />$3 | $4',
 'previousrevision'      => '← Vorderi Version',
 'nextrevision'          => 'Nächschti Version →',
 'currentrevisionlink'   => 'Itzigi Version',
@@ -635,7 +630,6 @@ Der aktuelle Text des gelöschten Artikels ist nur Administratoren zugänglich.'
 'rightslogtext'         => 'Des ischs Logbuech vun de Änderunge on Bnutzerrechte.',
 'already_sysop'         => 'Selle Benutzer isch scho Adminischtrator.',
 'already_bureaucrat'    => 'Selle Benutzer isch scho Bürokrat.',
-'already_steward'       => 'Selle Benutzer isch scho Steward.',
 'movepage'              => 'Artikel verschiebe',
 'movepagetext'          => 'Mit däm Forumlar chasch du en Artikel verschiebe, u zwar mit syre komplette Versionsgschicht. Der alt Titel leitet zum nöie wyter, aber Links ufen alt Titel blyben unveränderet.',
 'movepagetalktext'      => 'D Diskussionssyte wird mitverschobe, \'\'\'ussert:\'\'\'

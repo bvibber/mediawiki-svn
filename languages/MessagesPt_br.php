@@ -1,7 +1,43 @@
 <?php
+/** Brazilian Portugese (Portuguêsi do Brasil)
+  * @package MediaWiki
+  * @subpackage Language
+  */
+#
+# This translation was made by Yves Marques Junqueira
+# and Rodrigo Calanca Nishino from Portuguese Wikipedia
+#
 
-global $wgAllMessagesPt_br;
-$wgAllMessagesPt_br = array(
+$fallback = 'pt';
+
+$skinNames = array(
+	'standard' => 'Padrão',
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Especial',
+	NS_MAIN           => '',
+	NS_TALK           => 'Discussão',
+	NS_USER           => 'Usuário',
+	NS_USER_TALK      => 'Usuário_Discussão',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_Discussão',
+	NS_IMAGE          => 'Imagem',
+	NS_IMAGE_TALK     => 'Imagem_Discussão',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'MediaWiki_Discussão',
+	NS_TEMPLATE       => 'Predefinição',
+	NS_TEMPLATE_TALK  => 'Predefinição_Discussão',
+	NS_HELP           => 'Ajuda',
+	NS_HELP_TALK      => 'Ajuda_Discussão',
+	NS_CATEGORY       => 'Categoria',
+	NS_CATEGORY_TALK  => 'Categoria_Discussão'
+);
+$linkTrail = "/^([a-z]+)(.*)\$/sD";
+
+
+$messages = array(
 # User Toggles
 "tog-underline" => "Sublinha links",
 "tog-highlightbroken" => "Formata links quebrados <a href=\"\" class=\"new\"> como isto </a> (alternative: como isto<a href=\"\" class=\"internal\">?</a>).",
@@ -57,12 +93,9 @@ $wgAllMessagesPt_br = array(
 # Bits of text used by many pages:
 #
 "categories" => "Page categories",
-
-"category" => "category",
 "category_header" => "Articles in category \"$1\"",
 "subcategories" => "Subcategories",
 
-"linktrail"     => "/^([a-z]+)(.*)\$/sD",
 "mainpage"      => "Página principal",
 "mainpagetext"  => "Software Wiki instalado com sucesso.",
 "about"         => "Sobre",
@@ -91,6 +124,7 @@ $wgAllMessagesPt_br = array(
 "whatlinkshere" => "Páginas que se ligam a essa",
 "help"          => "Ajuda",
 "search"        => "Busca",
+"searchbutton"  => "Busca",
 "go"        => "Vai",
 "history"       => "Histórico",
 "printableversion" => "Versão para impressão",
@@ -102,7 +136,6 @@ $wgAllMessagesPt_br = array(
 "talkpage"      => "Discutir esta página",
 "postcomment"   => "Post a comment",
 "articlepage"   => "Ver atigo",
-"subjectpage"   => "Ver assunto", # For compatibility
 "userpage" => "Ver página de usuário",
 "projectpage" => "Ver meta página",
 "imagepage" =>  "Ver página de imagens",
@@ -112,20 +145,9 @@ $wgAllMessagesPt_br = array(
 "lastmodified"  => "Está página foi modificada pela última vez em $1.",
 "viewcount"     => "Esta página foi acessada $1 vezes.",
 "protectedpage" => "Página protegida",
-"administrators" => "{{ns:4}}:Administradores",
-"sysoptitle"    => "Acesso de OpSys necessário",
-"sysoptext"     => "A ação que você requisitou só pode ser
-executada por usuários com status de \"opsys\".
-Veja $1.",
-"developertitle" => "Acesso de desenvolvedor necessário",
-"developertext" => "A ação que você requisitou só pode ser
-executada por usuários com status de \"desenvolvedor\".
-Veja $1.",
 "nbytes"        => "$1 bytes",
 "go"            => "vai",
 "ok"            => "OK",
-"sitetitle"     => "{{SITENAME}}",
-"sitesubtitle"  => "",
 "retrievedfrom" => "Retirado de  \"$1\"",
 "newmessageslink" => "novas mensagens",
 "editsection"=>"editar",
@@ -409,20 +431,14 @@ e [[{{ns:4}}:Most common {{SITENAME}} faux pas|most common {{SITENAME}} faux pas
 
 Se você quer ver a {{SITENAME}} crescer, é muito importante que você não adicione material restrito por outras [[{{ns:4}}:Copyrights|copyrights]].
 Um problema legal poderia realmente prejudicar o projeto de maneira que pedimos, por avor, não faça isso.",
-"rcloaderr"     => "Carregando alterações recentes",
 "rcnote"        => "Abaixo estão as últimas <strong>$1</strong> alterações nos últimos <strong>$2</strong> dias.",
 "rcnotefrom"    => "Abaixo estão as mudanças desde <b>$2</b> (até <b>$1</b> mostradas).",
 "rclistfrom"    => "Mostrar as novas alterações a partir de $1",
 "rclinks"       => "Mostrar as últimas $1 mudanças nos últimos $2 dias; $3 edições minoritárias",
-"rchide"        => "em $4 formulários; $1 edições minoritárias; $2 namespaces secundários; $3 múltiplas edições.",
-"rcliu"         => "; $1 edições de usuários autenticados",
 "diff"          => "dif",
 "hist"          => "hist",
 "hide"          => "esconde",
 "show"          => "mostra",
-"tableform"     => "tabela",
-"listform"      => "lista",
-"nchanges"      => "$1 mudanças",
 "minoreditletter" => "M",
 "newpageletter" => "N",
 
@@ -430,7 +446,6 @@ Um problema legal poderia realmente prejudicar o projeto de maneira que pedimos,
 #
 "upload"        => "Carregar arquivo",
 "uploadbtn"     => "Carregar arquivo",
-"uploadlink"    => "Carregar imagens",
 "reupload"      => "Re-carregar",
 "reuploaddesc"  => "Retornar ao formulário de Uploads.",
 "uploadnologin" => "Não autenticado",
@@ -524,9 +539,6 @@ Destes, <b>$2</b> são administradores (veja $3).",
 
 # Maintenance Page
 #
-"maintenance"       => "Página de Manutenção",
-"maintnancepagetext"    => "Esta página possui diversas ferramentas úteis para a manutenção diária da {{SITENAME}}. Algumas destas funções costumam estressar o banco de dados, então, por favor, não pressione o botão de Recarregar para cada item que você consertar ;-)",
-"maintenancebacklink"   => "Voltar para a página de Manutenção",
 "disambiguations"   => "Páginas de desambiguamento",
 "disambiguationspage"   => "{{ns:4}}:Links_para_desambiguar_páginas",
 "disambiguationstext"   => "Os artigos a seguir apontam para uma <i>página de desambiguamento</i>. Ao invés disso, eles deveriam apontar para um tópico apropriado.<br /> Uma página é tratada como disambiguamento se ela é por $1.<br />Links de outros namespaces <i>não</i> estão listados aqui.",
@@ -534,19 +546,10 @@ Destes, <b>$2</b> são administradores (veja $3).",
 "doubleredirectstext"   => "<b>Atenção:</b> Esta lista pode conter positivos falsos. O que usualmente significa que há texto adicional com links depois do primeiro #REDIRECT.<br />\nCada linha contem links para o primeiro e segundo redirecionamento, bem como a primeira linha do segundo texto redirecionado , geralmente dando o artigo alvo \"real\" , para onde o primeiro redirecionamento deveria apontar.",
 "brokenredirects"   => "Redirecionamentos Quebrados",
 "brokenredirectstext"   => "Os seguintes redirecionamentos apontam para um artigo inexistente.",
-"selflinks"     => "Páginas com links próprios",
-"selflinkstext"     => "As páginas a seguir possuem links para si mesmas, o que não deveria acontecer.",
-"mispeelings"           => "Páginas com erros ortográficos",
-"mispeelingstext"               => "As páginas a seguir contém erros comuns que estão listados em $1. A ortografia correta deve ser dada (como isto).",
-"mispeelingspage"       => "Lista de erros comuns",
-"missinglanguagelinks"  => "Missing Language Links",
-"missinglanguagelinksbutton"    => "Find missing language links for",
-"missinglanguagelinkstext"      => "These articles do <i>not</i> link to their counterpart in $1. Redirects and subpages are <i>not</i> shown.",
 
 
 # Miscellaneous special pages
 #
-"orphans"       => "Páginas órfãns",
 "lonelypages"   => "Páginas órfãns",
 "unusedimages"  => "Imagens não utilizadas",
 "popularpages"  => "Páginas populares",
@@ -560,10 +563,8 @@ Destes, <b>$2</b> são administradores (veja $3).",
 "listusers"     => "Lista de Usuários",
 "specialpages"  => "Páginas especiais",
 "spheading"     => "Páginas especiais para todos os usuários",
-"protectpage"   => "Páginas Protegidas",
 "recentchangeslinked" => "Páginas relacionadas",
 "rclsub"        => "(para páginas linkadas de \"$1\")",
-"debug"         => "Debug",
 "newpages"      => "Páginas novas",
 "ancientpages"      => "Artigos mais antigos",
 "intl"      => "Links interlínguas",
@@ -598,7 +599,6 @@ O endereço de e-mail que você disponibilizou em suas preferências aparecerá 
 # Watchlist
 #
 "watchlist"     => "Artigos do meu interesse",
-"watchlistsub"  => "(do usuário \"$1\")",
 "nowatchlist"   => "Você não está monitorando nenhum artigo.",
 "watchnologin"  => "Não está autenticado",
 "watchnologintext"  => "Você deve estar [[Special:Userlogin|autenticado]]
@@ -679,8 +679,6 @@ Se uma nova página foi criada com o mesmo nome desde a deleção, as revisões 
 "undeleterevision" => "Revisões deletadas de  $1",
 "undeletebtn" => "Restaurar!",
 "undeletedarticle" => " \"$1\" restaurado",
-"undeletedtext"   => "O artigo [[:$1|$1]] foi restaurado com sucesso.
-Veja [[{{ns:4}}:Deletion_log]] para um registro das deleções e das restaurações recentes.",
 
 # Contributions
 #
@@ -718,7 +716,6 @@ Preencha com um motivo específico (por exemplo, citando páginas que sofreram v
 "unblockip"     => "Desbloquear endereço de IP",
 "unblockiptext" => "Utilize o formulário a seguir para restaurar o acesso a escrita para um endereço de IP previamente bloqueado.",
 "ipusubmit"     => "Desbloquear este endereço",
-"ipusuccess"    => "Endereço de IP  \"$1\" foi desbloqueado",
 "ipblocklist"   => "Lista de IP's bloqueados",
 "blocklistline" => "$1, $2 bloqueado $3 ($4)",
 "blocklink"     => "block",

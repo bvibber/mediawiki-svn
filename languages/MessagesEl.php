@@ -1,7 +1,57 @@
 <?php
+/** Greek (Ελληνικά)
+  *
+  * Translation by Pasok Internet Volunteers
+  * http://forum.pasok.gr
+  * version 1.0 (initial release)
+  *
+  *The project for the translation of MediaWiki into Greek
+  *was undertaken by a group of ICT volunteers working under
+  *the auspices of the Greek political party PASOK.
+  *
+  *The idea behind this effort was  to provide an extensible,
+  *easy-to-use and non-intimidating tool for content development
+  *and project management, to be used throughout the administrative
+  *and political structure of PASOK by staff, volunteers, party members
+  *and elected officials (all of whom possess varying degrees of ICT skills).
+  *
+  *The PASOK ICT team and the volunteers who worked on this project are
+  *now returning the translated interface to the Open-Source Community
+  *with over 98% of the messages translated into user-friendly Greek.
+  *
+  *We hope that it will be used as a tool by other civil society organizations
+  *in Greece, and that it will enhance the collective creation and the dissemination
+  *of knowledge - an essential component of the democratic process.
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  */
 
-global $wgAllMessagesEl;
-$wgAllMessagesEl = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'Μέσον',
+	NS_SPECIAL          => 'Ειδικό',
+	NS_MAIN	            => '',
+	NS_TALK	            => 'Συζήτηση',
+	NS_USER             => 'Χρήστης',
+	NS_USER_TALK        => 'Συζήτηση_χρήστη',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_συζήτηση',
+	NS_IMAGE            => 'Εικόνα',
+	NS_IMAGE_TALK       => 'Συζήτηση_εικόνας',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_talk',
+	NS_TEMPLATE         => 'Πρότυπο',
+	NS_TEMPLATE_TALK    => 'Συζήτηση_προτύπου',
+	NS_HELP             => 'Βοήθεια',
+	NS_HELP_TALK        => 'Συζήτηση_βοήθειας',
+	NS_CATEGORY         => 'Κατηγορία',
+	NS_CATEGORY_TALK    => 'Συζήτηση_κατηγορίας',
+);
+$fallback8bitEncoding = 'iso-8859-7';
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+$linkTrail = '/^([a-z]+)(.*)$/sD';
+
+$messages = array(
 
 # User preference toggles
 #----------------------------------------#
@@ -79,11 +129,9 @@ $wgAllMessagesEl = array(
 # Bits of text used by many pages:
 #----------------------------------------------------#
 'categories' => 'Κατηγορίες',
-'category' => 'κατηγορία',
 'category_header' => 'Άρθρα στην κατηγορία "$1"',
 'subcategories' => 'Υποκατηγορίες',
 
-'linktrail' => '/^([a-z]+)(.*)$/sD',
 'linkprefix' => '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD',
 'mainpage' => 'Αρχική σελίδα',
 'mainpagetext' => 'To λογισμικό Wiki εγκαταστάθηκε επιτυχώς.',
@@ -126,7 +174,6 @@ $wgAllMessagesEl = array(
 # Metadata in edit box
 #---------------------------------#
 'metadata' => '<b>Μεταδεδομένα</b> (επεξήγηση στο σύνδεσμο <a href="$1">here</a>)',
-'metadata_page' => '{{ns:project}}:Μεταδεδομένα',
 
 'currentevents' => 'Τρέχοντα γεγονότα',
 'currentevents-url' => 'Τρέχοντα γεγονότα',
@@ -140,6 +187,7 @@ $wgAllMessagesEl = array(
 'whatlinkshere' => 'Αναφορές στη σελίδα',
 'help' => 'Βοήθεια',
 'search' => 'Αναζήτηση',
+'searchbutton' => 'Αναζήτηση',
 'go' => 'Μετάβαση',
 'history_short' => 'Ιστορικό',
 'info_short' => 'Πληροφορίες',
@@ -149,7 +197,6 @@ $wgAllMessagesEl = array(
 'editthispage' => 'Επεξεργασία αυτής της σελίδας',
 'delete' => 'Διαγραφή',
 'deletethispage' => 'Διαγραφή αυτής της σελίδας',
-'undelete_short1' => 'Να αναστραφεί η διαγραφή μίας επεξεργασίας.',
 'undelete_short' => 'Να αναστραφεί η διαγραφή $1 επεξεργασιών.',
 'protect' => 'Προστασία',
 'protectthispage' => 'Κλείδωμα της σελίδας',
@@ -160,9 +207,7 @@ $wgAllMessagesEl = array(
 'specialpage' => 'Σελίδα λειτουργιών',
 'personaltools' => 'Προσωπικά εργαλεία',
 'postcomment' => 'Καταχωρίστε ένα σχόλιο.',
-'addsection' => '+',
 'articlepage' => 'Εμφάνιση σελίδας κειμένου',
-'subjectpage' => 'Εμφάνιση θέματος',
 'talk' => 'Συζήτηση',
 'views' => 'Εμφανίσεις',
 'toolbox' => 'Εργαλεία',
@@ -176,20 +221,8 @@ $wgAllMessagesEl = array(
 'viewcount' => 'Αυτή η σελίδα έχει προσπελαστεί $1 φορές.',
 'copyright' => 'Το περιεχόμενο είναι διαθέσιμο σύμφωνα με την $1.',
 'protectedpage' => 'Κλειδωμένη σελίδα',
-'administrators' => '{{ns:4}}:Διαχειριστές',
 
-'sysoptitle' => 'Απαιτείται η πρόσβαση διαχειριστή.',
-'sysoptext' => 'Το αίτημά σας αφορά σε ενέργεια
-
-που εκτελείται μόνον από διαχειριστές
-
-(βλ.$1).',
-'developertitle' => 'Απαιτείται η πρόσβαση των προγραμματιστών.',
-'developertext' => 'Η ενέργεια αυτή μπορεί να εκτελείται μόνον από τους προγραμματιστές (βλ. $1).',
 'badaccess' => 'Ακατάλληλη άδεια',
-
-'badaccesstext' => 'Η ενέργεια που ζητήσατε μπορεί να εκτελεσθεί μόνον από χρήστες στους οποίους έχει δοθεί άδεια "$2".
-Βλ. $1.',
 
 'versionrequired' => 'Απαιτείται η έκδοση $1 του MediaWiki.',
 'versionrequiredtext' => 'Για να χρησιμοποιήσετε αυτή τη σελίδα απαιτείται η έκδοση $1 του MediaWiki . Βλ. [[Special:Έκδοση]]',
@@ -204,7 +237,6 @@ $wgAllMessagesEl = array(
 'thisisdeleted' => 'Εμφάνιση ή αποκατάσταση της $1;',
 'restorelink' => '$1 επεξεργασίες έχουν διαγραφεί.',
 'feedlinks' => 'Ροή δεδομένων:',
-#'sitenotice' => '-', # the equivalent to wgSiteNotice
 
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
@@ -348,7 +380,6 @@ $1',
 
 'eauthentsent' => 'Ένα μήνυμα επαλήθευσης έχει σταλεί στην ηλεκτρονική διεύθυνση που έχετε δηλώσει στο σύστημα. Πριν αρχίσει η αποστολή μηνυμάτων στη συγκεκριμένη διεύθυνση, πρέπει να ακολουθήσετε τις οδηγίες που βρίσκονται στο μήνυμα που σας έχει σταλεί για να επαληθεύσετε ότι η συγκεκριμένη ηλεκτρονική διεύθυνση ανήκει πραγματικά σε εσάς.',
 
-'loginend' => '&nbsp;',
 'mailerror' => 'Λάθος στην αποστολή του μηνύματος: $1',
 'acct_creation_throttle_hit' => 'Λυπούμαστε, έχετε ήδη δημιουργήσει $1 λογαριασμούς και δεν μπορείτε να δημιουργήσετε άλλους.',
 'emailauthenticated' => 'Η ηλεκτρονική σας διεύθυνση επιβεβαιώθηκε στις $1.',
@@ -426,7 +457,6 @@ $1',
 'newarticletext' => 'Έχετε ακολουθήσει ένα σύνδεσμο που δεν υπάρχει ακόμα. Για να δημιουργήσετε μια νέα σελίδα εδώ, αρχίστε να γράφετε το κείμενό σας στο πλαίσιο.(Βλ. [[{{ns:12}}:Περιεχόμενα|Σελίδα βοήθειας]] για περισσότερες πληροφορίες).
 Αν έχετε βρεθεί εδώ κατά λάθος, απλώς πατήστε \'\'\'επιστροφή (back)\'\'\' στον browser του υπολογιστή σας.',
 
-#'talkpagetext' => '<!-- MediaWiki:talkpagetext -->',
 
 'anontalkpagetext' => '----\'\'Αυτή η σελίδα συζήτησης προορίζεται για ανώνυμους χρήστες που δεν έχουν δημιουργήσει ακόμα λογαριασμό (ή που δεν τον χρησιμοποιούν). Έτσι για την ταυτοποίηση ενός ανώνυμου χρήστη χρησιμοποιείται η [[{{ns:12}}:διεύθυνση IP  |διεύθυνση IP ]] του. Είναι όμως πιθανόν η διεύθυνση αυτή να είναι κοινή για πολλούς διαφορετικούς χρήστες (όπως π.χ. για τους χρήστες ενός Internet Cafe ή ενός [[{{ns:12}}:proxy server|proxy server]]). Αν είστε ανώνυμος χρήστης και έχετε δεχθεί σχόλια άσχετα με τα θέματά σας (κάτι που μπορεί να συμβεί αν χρησιμοποιείτε την ίδια [[{{ns:12}}:διεύθυνση IP|διεύθυνση IP]] με κάποιον άλλο ανώνυμο χρήστη) θα ήταν καλό να [[Special:Userlogin|δημιουργήσετε ένα λογαριασμό χρήστη ή να συνδεθείτε]] για να αποφεύγεται η σύγχυση\'\'.',
 
@@ -486,7 +516,6 @@ $1',
 'loadhist' => 'Φόρτωση ιστορικού σελίδας',
 'currentrev' => 'Τρέχουσα αναθεώρηση',
 'revisionasof' => 'Αναθεώρηση της $1',
-'revisionasofwithlink' => 'Αναθεώρηση της $1; $2<br />$3 | $4',
 'previousrevision' => '&larr;Παλιότερη αναθεώρηση',
 'nextrevision' => 'Νεώτερη αναθεώρηση&rarr;',
 'currentrevisionlink' => 'εμφάνιση της τρέχουσας αναθεώρησης',
@@ -499,7 +528,6 @@ $1',
 Υπόμνημα: (τρέχον) = διαφορές με την τρέχουσα έκδοση,
 (τελευταίο) = διαφορές με την προηγούμενη έκδοση, μ = αλλαγές μικρής κλίμακας.',
 
-#'history_copyright' => '-',
 'deletedrev' => '[διαγράφτηκε]',
 'histfirst' => 'Η πιο παλιά',
 'histlast' => 'Η πιο πρόσφατη',
@@ -547,31 +575,6 @@ $1',
 $1<br />
 $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αναζήτησης $3 $9',
 
-'googlesearch' => '
-<div style="margin-left: 2em">
-
-<!-- Google search -->
-<div style="width:130px;float:left;text-align:center;position:relative;top:-8px"><a href="http://www.google.com/" style="padding:0;background-image:none"><img src="http://www.google.com/logos/Logo_40wht.gif" alt="Google" style="border:none" /></a></div>
-
-<form method="get" action="http://www.google.com/search" style="margin-left:135px">
-  <div>
-    <input type="hidden" name="domains" value="{{SERVER}}" />
-    <input type="hidden" name="num" value="50" />
-
-    <input type="hidden" name="ie" value="$2" />
-    <input type="hidden" name="oe" value="$2" />
-
-    <input type="text" name="q" size="31" maxlength="255" value="$1" />
-    <input type="submit" name="btnG" value="Google Search" />
-  </div>
-  <div style="font-size:90%">
-    <input type="radio" name="sitesearch" id="gwiki" value="{{SERVER}}" checked="checked" /><label for="gwiki">{{SITENAME}}</label>
-    <input type="radio" name="sitesearch" id="gWWW" value="" /><label for="gWWW">WWW</label>
-
-  </div>
-</form>
-
-</div>',
 'blanknamespace' => '(Αρχική περιοχή)',
 
 
@@ -631,31 +634,10 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 #--------------------------------------#
 
 # switching pan
-'groups-lookup-group' => 'Διαχείριση των δικαιωμάτων της ομάδας',
-'groups-group-edit' => 'Υπάρχουσες ομάδες:',
-'editgroup' => 'Ομάδα επεξεργασίας',
-'addgroup' => 'Προσθήκη ομάδας',
 
 'userrights-lookup-user' => 'Διαχείριση ομάδων χρηστών',
 'userrights-user-editname' => 'Δηλώστε όνομα χρήστη:',
 'editusergroup' => 'Επεξεργασία \'Ομάδα Χρηστών\'',
-
-# group editing
-'groups-editgroup' => 'Επεξεργασία ομάδας',
-'groups-addgroup' => 'Προσθήκη ομάδας',
-
-'groups-editgroup-preamble' => 'Εαν το όνομα της περιγραφής αρχίζει με άνω-κάτω τελεία, το υπόλοιπο του ονόματος θα εκληφθεί ως τίτλος μηνύματος και, για το λόγο αυτό, το κείμενο θα χωροθετηθεί με βάση το όνομα της περιοχής MediaWiki',
-
-'groups-editgroup-name' => 'Επωνυμία ομάδας:',
-'groups-editgroup-description' => 'Περιγραφή ομάδας (max 255 χαρακτήρες):<br />',
-'savegroup' => 'Αποθήκευση ομάδας',
-'groups-tableheader' => 'ID || Επωνυμία|| Περιγραφή || Δικαιώματα',
-'groups-existing' => 'Υπάρχουσες ομάδες',
-'groups-noname' => 'Παρακαλούμε δηλώστε μία έγκυρη επωνυμία ομάδας',
-'groups-already-exists' => 'Υπάρχει ήδη ομάδα με αυτό το όνομα',
-'addgrouplogentry' => 'H ομάδα $2 έχει προστεθεί.',
-'changegrouplogentry' => 'Η ομάδα $2 έχει υποστεί αλλαγή.',
-'renamegrouplogentry' => 'Μετονομασία της ομάδας $2 σε $3',
 
 # user groups editing
 #
@@ -666,48 +648,22 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 
 'userrights-groupshelp' => 'Επιλέξτε όμάδες στις οποίες επιθυμείτε να προστεθεί ο χρήστης ή ομάδες από τις οποίες επιθυμείτε να αφαιρεθεί ο χρήστης. Μπορείτε να αναιρέσετε την επιλογή μιας ομάδας με το πλήκτο CTRL + αριστερό κλικ',
 
-'userrights-logcomment' => 'Τα μέλη της ομάδας έχουν αλλάξει $1 σε $2',
-
-
-# Default group names and descriptions
-#-------------------------------------------------------------#
-'group-anon-name' => 'Ανώνυμος',
-'group-anon-desc' => 'Ανώνυμοι χρήστες',
-'group-loggedin-name' => 'Χρήστης',
-'group-loggedin-desc' => 'Γενικοί συνδεδεμένοι χρήστες',
-'group-admin-name' => 'Διαχειριστής',
-'group-admin-desc' => 'Έμπειροι χρήστες έχουν τη δυνατότητα να επιβάλλουν φραγή ή να διαγράφουν άρθρα.',
-'group-bureaucrat-name' => 'Διαχειριστής',
-'group-bureaucrat-desc' => 'Οι διαχειριστές μπορούν να ορίζουν επιπλέον διαχειριστές',
-'group-steward-name' => 'Διαχειριστής',
-'group-steward-desc' => 'Πλήρης πρόσβαση',
-
-
 # Recent changes
 #--------------------------#
 'changes' => 'αλλαγές',
 'recentchanges' => 'Πρόσφατες αλλαγές',
-'recentchanges-url' => 'Special:Recentchanges',
 'recentchangestext' => 'Παρακολουθείστε σε αυτή τη σελίδα τις πιο πρόσφατες αλλαγές στο Wiki.',
-'rcloaderr' => 'Φόρτωση πρόσφατων αλλαγών',
 'rcnote' => 'Ακολουθούν οι <strong>$1</strong> πιο πρόσφατες αλλαγές στο διάστημα των τελευταίων <strong>$2</strong> ημερών.',
 'rcnotefrom' => 'Ακολουθούν οι αλλαγές από <b>$2</b> (εμφάνιση <b>$1</b> αλλαγών max).',
 'rclistfrom' => 'Εμφάνιση νέων αλλαγών αρχίζοντας από $1',
-'showhideminor' => '$1 αλλαγές μικρής κλίμακας | $2 διαχειριστές | $3 συνδεδεμένοι χρήστες | $4 επεξεργασίες υπό παρακολούθηση',
 'rclinks' => 'Εμφάνιση των τελευταίων $1 αλλαγών στο διάστημα των τελευταίων $2 ημερών <br />$3',
-'rchide' => 'σε μορφή $4 : $1 επεξεργασίες μικρής κλίμακας, $2 δευτερεύουσες περιοχές, $3 πολλαπλές επεξεργασίες',
-'rcliu' => '; $1 επεξεργασίες από συνδεδεμένους χρήστες',
 'diff' => '\'διαφορά\'',
 'hist' => '\'ιστορικό\'',
 'hide' => 'απόκρυψη',
 'show' => 'εμφάνιση',
-'tableform' => 'πίνακας',
-'listform' => 'κατάλογος',
-'nchanges' => '$1 αλλαγές',
 'minoreditletter' => 'μ',
 'newpageletter' => 'N',
 #'sectionlink' => '&rarr;',
-'number_of_watching_users_RCview' => '[$1]',
 'number_of_watching_users_pageview' => '[$1 χρήστης (-ες) που παρακολουθούν]',
 
 
@@ -715,7 +671,6 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 #------------#
 'upload' => 'Φόρτωση αρχείου',
 'uploadbtn' => 'Φόρτωση αρχείου',
-'uploadlink' => 'Φόρτωση εικόνων',
 'reupload' => 'Επανάληψη φόρτωσης',
 'reuploaddesc' => 'Επιστροφή στη φόρμα φόρτωσης',
 'uploadnologin' => 'Δεν έχετε συνδεθεί!',
@@ -805,7 +760,6 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 'nolinkstoimage' => 'Δεν υπάρχουν σελίδες που συνδέονται με αυτήν την εικόνα.',
 'sharedupload' => 'Το αρχείο αυτό φορτώθηκε για κοινή χρήση και είναι δυνατόν να χρησιμοποιείται ταυτοχρόνως σε περισσότερα από ένα έργα.',
 'shareduploadwiki' => 'Παρακαλούμε συμβουλευθείτε την [$1 σελίδα περιγραφής αρχείου] για περισσότερες πληροφορίες.',
-#'shareddescriptionfollows' => '-',
 'noimage' => 'Δεν υπάρχει αρχείο με αυτό το όνομα, μπορείτε να [$1 το φορτώσετε].',
 'uploadnewversion-linktext' => 'Φορτώστε μια νέα έκδοση αυτού του αρχείου',
 
@@ -828,13 +782,6 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 
 # Maintenance Page
 #-----------------------------#
-'maintenance' => 'Σελίδα συντήρησης',
-
-'maintnancepagetext' => 'Η σελίδα αυτή περιέχει διάφορα εύχρηστα εργαλεία για την καθημερινή συντήρηση.
-
-Μερικές από τις λειτουργίες αυτές είναι δυνατόν να καταπονήσουν τη βάση δεδομένων, για το λόγο αυτό σας παρακαλούμε να κάνετε \'επαναφόρτωση\' μετά από κάθε στοιχείο που έχετε επιδιορθώσει;-)',
-
-'maintenancebacklink' => 'Επιστροφή στη σελίδα συντήρησης',
 'disambiguations' => 'Σελίδες αποσαφήνισης',
 'disambiguationspage' => '{{ns:4}}:Σύνδεσμοι_προς_τις_σελίδες_αποσαφήνισης',
 
@@ -846,18 +793,9 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 
 'brokenredirects' => 'Κατεστραμένες ανακατευθύνσεις',
 'brokenredirectstext' => 'Οι παρακάτω ανακατευθύνσεις οδηγούν σε σελίδες που δεν υπάρχουν.',
-'selflinks' => 'Σελίδες με αυτο-συνδέσμους',
-'selflinkstext' => 'Οι εξής σελίδες έχουν σύνδεσμο προς τον εαυτό τους -αυτό δεν θα έπρεπε να συμβαίνει.',
-'mispeelings' => 'Σελίδες με ορθογραφικά λάθη',
-'mispeelingstext' => 'Οι παρακάτω σελίδες περιέχουν συνηθισμένα ορθογραφικά λάθη, τα οποία βρίσκονται συγκεντρωμένα στο $1. Η σωστή ορθογραφία πρέπει να τοποθετείται (εντός παρενθέσεων).',
-'mispeelingspage' => 'Κατάλογος συνηθισμένων ορθογραφικών λαθών',
-'missinglanguagelinks' => 'Αγνοούμενοι σύνδεσμοι γλώσσας',
-'missinglanguagelinksbutton' => 'Εύρεση αγνοουμένων συνδέσμων γλώσσας για',
-'missinglanguagelinkstext' => 'Αυτές οι σελίδες <i>δεν</i> συνδέονται με τις ομόλογές τους στο $1. Οι ανακατευθύνσεις και οι υποσελίδες <i>δεν</i> εμφανίζονται.',
 
 # Miscellaneous special pages
 #
-'orphans' => 'Ορφανές σελίδες',
 'lonelypages' => 'Ορφανές σελίδες',
 'uncategorizedpages' => 'Αταξινόμητες σελίδες',
 'uncategorizedcategories' => 'Αταξινόμητες κατηγορίες',
@@ -870,7 +808,6 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 'nlinks' => '$1 σύνδεσμοι',
 'allpages' => 'Όλες οι σελίδες',
 'randompage' => 'Σελίδα στην τύχη',
-'randompage-url' => 'Special:Randompage',
 'shortpages' => 'Σύντομες σελίδες',
 'longpages' => 'Εκτενείς σελίδες',
 'deadendpages' => 'Αδιέξοδες σελίδες',
@@ -878,10 +815,8 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 'specialpages' => 'Σελίδες λειτουργιών',
 'spheading' => 'Σελίδες λειτουργιών για όλους τους χρήστες',
 'restrictedpheading' => 'Ειδικές σελίδες με περιορισμούς πρόσβασης',
-'protectpage' => 'Προστασία σελίδας',
 'recentchangeslinked' => 'Σχετικές αλλαγές',
 'rclsub' => '(σε σελίδες που συνδέονται από το "$1")',
-'debug' => 'Διόρθωση σφαλμάτων',
 'newpages' => 'Νέες σελίδες',
 'ancientpages' => 'Οι παλιότερες σελίδες',
 'intl' => 'Διαγλωσσικοί σύνδεσμοι',
@@ -900,8 +835,6 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 'booksourcetext' => 'Ακολουθούν σύνδεσμοι για διαδικτυακούς τόπους που εμπορεύονται καινούργια ή μεταχειρισμένα βιβλία και όπου μπορείτε να αναζητήσετε τα βιβλία που σας ενδιαφέρουν. Το {{SITENAME}} δεν έχει σχέση με αυτές τις επιχειρήσεις και ο κατάλογος αυτός δεν αποτελεί κατά κανένα τρόπο προώθηση ή διαφήμισή τους.',
 
 'isbn' => 'ISBN',
-'rfcurl' => 'http://www.faqs.org/rfcs/rfc$1.html',
-#'pubmedurl' => 'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1',
 'alphaindexline' => '$1 έως $2',
 'version' => 'Έκδοση',
 'log' => 'Καταγραφές γεγονότων',
@@ -950,7 +883,6 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 # Watchlist
 #---------------#
 'watchlist' => 'Λίστα παρακολούθησης',
-'watchlistsub' => '(για το χρήστη "$1")',
 'nowatchlist' => 'Δεν υπάρχουν εγγραφές στη λίστα παρακολούθησης.',
 'watchnologin' => 'Δεν έχετε συνδεθεί.',
 'watchnologintext' => 'Για να κάνετε αλλαγές στη λίστα παρακολούθησης πρέπει να <a href="{{localurl:Special:Userlogin}}"> συνδεθείτε </a>.',
@@ -987,8 +919,6 @@ $2 Εμφάνιση ανακατευθύνσεων &nbsp; Κριτήρια αν�
 'wlshowlast' => 'Εμφάνιση των τελευταίων $1 ωρών $2 ημερών $3',
 'wlsaved' => 'Αποθηκευμένη έκδοση της λίστας παρακολούθησης',
 'wlhideshowown' => '$1 από τις επεξεργασίες μου',
-'wlshow' => 'Εμφάνιση',
-'wlhide' => 'Απόκρυψη',
 'enotif_mailer' => 'Σύστημα ειδοποίησης μέσω αλληλογραφίας του {{SITENAME}}',
 'enotif_reset' => 'Σημειώστε όλες τις σελίδες ως αναγνωσμένες.',
 'enotif_newpagetext' => 'Αυτή είναι μια νέα σελίδα.',
@@ -1092,9 +1022,6 @@ Tο σύστημα ειδοποίησης του {{SITENAME}}
 'undeletedarticle' => 'αποκατάσταση "$1"',
 'undeletedrevisions' => 'Αποκατάσταση $1 αναθεωρήσεων',
 
-'undeletedtext' => 'Η [[:$1|$1]] έχει αποκατασταθεί επιτυχώς.
-(Βλ. [[Special:Log|Σελίδες που έχουν διαγραφεί]] για λεπτομερή στοιχεία σχετικά με τις πρόσφατες διαγραφές και αποκαταστάσεις).',
-
 
 # Namespace form on various pages
 #-------------------------------------------------------#
@@ -1112,7 +1039,6 @@ Tο σύστημα ειδοποίησης του {{SITENAME}}
 'uclinks' => 'Εμφάνιση των τελευταίων $1 αλλαγών - Εμφάνιση των τελευταίων $2 ημερών',
 'uctop' => ' (τελευταία)',
 'newbies' => 'νέοι χρήστες',
-'contribs-showhideminor' => '$1 αλλαγές μικρής κλίμακας',
 
 
 # What links here
@@ -1148,7 +1074,6 @@ Tο σύστημα ειδοποίησης του {{SITENAME}}
 'unblockip' => 'Άρση φραγής χρήστη',
 'unblockiptext' => 'Χρησιμοποιήστε την παρακάτω φόρμα για να αποκαταστήσετε την πρόσβαση σε επεξεργασία, σε μια διεύθυνση IP ή σε ένα χρήστη που είχε αποκλειστεί με φραγή.',
 'ipusubmit' => 'Άρση φραγής αυτής της διεύθυνσης',
-'ipusuccess' => 'Η άρση της φραγής του/της "$1" ολοκληρώθηκε επιτυχώς.',
 'ipblocklist' => 'Λίστα διευθύνσεων IP και ονομάτων χρηστών που έχουν υποστεί φραγή.',
 'blocklistline' => 'Φραγή του/της $3 από τους $1, $2 (λήγει $4)',
 'blocklink' => 'φραγή',
@@ -1208,10 +1133,7 @@ Tο σύστημα ειδοποίησης του {{SITENAME}}
 'makesysopok' => '<b>Ο χρήστης "$1" είναι εφεξής διαχειριστής</b>',
 'makesysopfail' => '<b>Ο χαρακτηρισμός του χρήστη "$1" σε διαχειριστή δεν ολοκληρώθηκε. (Βεβαιωθείτε πως δεν υπήρχαν λάθη στην πληκτρολόγηση του ονόματός του.)</b>',
 'setbureaucratflag' => 'Σηματοδότηση διαχειριστή (flag)',
-#'setstewardflag' => 'Set steward flag',
-'bureaucratlog' => 'Καταγραφές διαχειριστών',
 'rightslogtext' => 'Καταγραφές των αλλαγών στα δικαιώματα χρηστών.',
-'bureaucratlogentry' => 'Τα δικαιώματα του χρήστη "$1" είναι "$2"',
 'rights' => 'Δικαιώματα:',
 'set_user_rights' => 'Καθορισμός δικαιωμάτων χρήστη',
 'user_rights_set' => '<b>Τα δικαιώματα χρήστη για τον/την "$1" έχουν ενημερωθεί.</b>',
@@ -1219,7 +1141,6 @@ Tο σύστημα ειδοποίησης του {{SITENAME}}
 'makesysop' => 'Χαρακτηρισμός χρήστη ως διαχειριστή',
 'already_sysop' => 'Ο χρήστης αυτός είναι ήδη διαχειριστής.',
 'already_bureaucrat' => 'Ο χρήστης αυτός είναι ήδη διαχειριστής.',
-'already_steward' => 'Ο χρήστης αυτός είναι ήδη διαχειριστής.',
 
 
 
@@ -1370,9 +1291,7 @@ Tο σύστημα ειδοποίησης του {{SITENAME}}
 'spamprotectiontext' => 'Η σελίδα που επιχειρήσατε να αποθηκεύσετε απομονώθηκε από το φίλτρο spam. Αυτό οφείλεται, πιθανότατα, στην ύπαρξη ενός (ή περισσότερων) συνδέσμων προς εξωτερικές σελίδες.',
 'spamprotectionmatch' => 'Το φίλτρο spam έχει τεθεί σε ενέργεια εξ αιτίας του εξής κειμένου: $1',
 'subcategorycount' => 'Υπάρχουν $1 υποκατηγορίες σε αυτή την κατηγορία.',
-'subcategorycount1' => 'Υπάρχει $1 υποκατηγορία σε αυτή την κατηγορία.',
 'categoryarticlecount' => 'Υπάρχουν $1 άρθρα σε αυτή την κατηγορία.',
-'categoryarticlecount1' => 'Υπάρχει $1 άρθρο σε αυτή την κατηγορία.',
 
 
 'listingcontinuesabbrev' => 'συνεχίζεται...',
@@ -1401,7 +1320,6 @@ Tο σύστημα ειδοποίησης του {{SITENAME}}
 # Patrolling
 #--------------#
 'markaspatrolleddiff' => 'Να σημειωθεί \'υπό παρακολούθηση\'',
-'markaspatrolledlink' => '<div class=\'patrollink\'>[$1]</div>',
 'markaspatrolledtext' => 'Να σημειωθεί αυτό το άρθρο ως \'υπό παρακολούθηση\'.',
 'markedaspatrolled' => 'Σημειωμένο ως \'υπό παρακολούθηση\'',
 'markedaspatrolledtext' => 'Η αναθεώρηση που έχει επιλεγεί έχει σημειωθεί ως \'υπό παρακολούθηση\'.',
@@ -1631,13 +1549,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Δείτε τη σελίδα κα�
 'exif-gpsdatestamp' => 'Ημερομηνία GPS',
 'exif-gpsdifferential' => 'Διαφορική διόρθωση GPS',
 
-
-# Make & model, can be wikified in order to link to the camera and model name
-
-'exif-make-value' => '$1',
-'exif-model-value' => '$1',
-'exif-software-value' => '$1',
-
 'exif-compression-1' => 'Έχει αποσυμπιεστεί.',
 'exif-compression-6' => 'JPEG',
 
@@ -1844,8 +1755,6 @@ Trackbacks for this article:<br />
 $1
 </div>',
 */
-'trackback' => '; $4$5 : [$2 $1]',
-'trackbackexcerpt' => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>',
 'trackbackremove' => ' ([$1΄- Διαγραφή])',
 'trackbacklink' => 'Επιστροφή για αναζήτηση',
 'trackbackdeleteok' => 'Η επιστροφή για αναζήτηση έχει διαγραφεί επιτυχώς.',

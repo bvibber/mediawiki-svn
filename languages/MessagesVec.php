@@ -1,7 +1,36 @@
 <?php
+/** Venitian ( Vèneto )
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  */
+$fallback = 'it';
 
-global $wgAllMessagesVec;
-$wgAllMessagesVec = array(
+$quickbarSettings = array(
+	'Nessun', 'Fisso a sinistra', 'Fisso a destra', 'Fluttuante a sinistra'
+);
+$namespaceNames = array(		
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Speciale',
+	NS_MAIN             => '',
+	NS_TALK             => 'Discussion',
+	NS_USER             => 'Utente',
+	NS_USER_TALK        => 'Discussion_utente',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Discussion_$1',
+	NS_IMAGE            => 'Imagine',
+	NS_IMAGE_TALK       => 'Discussion_imagine',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Discussion_MediaWiki',
+	NS_TEMPLATE         => 'Template',
+	NS_TEMPLATE_TALK    => 'Discussion_template',
+	NS_HELP             => 'Aiuto',
+	NS_HELP_TALK        => 'Discussion_aiuto',
+	NS_CATEGORY         => 'Categoria',
+	NS_CATEGORY_TALK    => 'Discussion_categoria'
+);
+
+$messages = array(
 'tog-underline'         => 'Sottolinea links',
 'tog-highlightbroken'   => 'Evidenzsia i links che i punta a <br />arthicołi ancora da scrivere',
 'tog-justify'           => 'Paragrafo: giustificato',
@@ -49,7 +78,6 @@ $wgAllMessagesVec = array(
 'nov'                   => 'Nov',
 'dec'                   => 'Diç',
 'categories'            => '{{PLURAL:$1|Categoria|Categorie}}',
-'category'              => 'Categoria',
 'category_header'       => 'Voçi n\'te ła categoria "$1"',
 'mainpage'              => 'Paxèna prinzsipałe',
 'mainpagetext'          => '\'\'\'MediaWiki xè stà instałà con sucesso.\'\'\'',
@@ -88,6 +116,7 @@ $wgAllMessagesVec = array(
 'currentevents-url'     => 'Atuałità',
 'errorpagetitle'        => 'Erór',
 'search'                => 'Serca',
+'searchbutton'          => 'Serca',
 'history'               => 'Versión precedenti',
 'history_short'         => 'Cronołogia',
 'info_short'            => 'Informazsion',
@@ -104,7 +133,6 @@ $wgAllMessagesVec = array(
 'talkpage'              => 'Discussion',
 'specialpage'           => 'Paxèna Speciałe',
 'articlepage'           => 'Varda voçe',
-'subjectpage'           => 'Vedi voçe',
 'talk'                  => 'Discussion',
 'userpage'              => 'Varda paxèna Utente',
 'projectpage'           => 'Varda ła paxèna de servizsio',
@@ -118,16 +146,9 @@ $wgAllMessagesVec = array(
 'viewcount'             => 'Sta paxèna xè stà leta {{PLURAL:$1|na volta|$1 volte}}.',
 'copyright'             => 'Contenuto disponibile sotto $1.',
 'protectedpage'         => 'Paxèna proteta',
-'administrators'        => 'Project:Aministradori',
 'jumptonavigation'      => 'Navigazsion',
 'jumptosearch'          => 'zserca',
-'sysoptitle'            => 'Riservà ai aministradori',
-'sysoptext'             => 'Questa operazione può essere eseguita solo da Utenti con grado di "sysop".
-Vedi $1.',
-'developertitle'        => 'Riservà ai sviłuppatori',
-'developertext'         => 'Stà operazsion la pode esser eseguia solo da Utenti con grado de "developer". Varda $1.',
 'badaccess'             => 'Eròr ne i permessi',
-'badaccesstext'         => 'L\'azsion che te ghè richiesto xè limità a i utenti co\'l permezso "$2" azsegnà. Varda $1.',
 'versionrequired'       => 'Verzsion $1 de MediaWiki richiesta',
 'versionrequiredtext'   => 'Par usare sta paxèna xè necessario dispore de ła verzsion $1 del software MediaWiki. Varda [[Special:Version]]',
 'youhavenewmessages'    => 'Te ghè $1 ($2).',
@@ -418,7 +439,6 @@ par poder personalixare le to preferenzse.',
 'userrights-lookup-user'=> 'Gestion de i gruppi utente',
 'userrights-user-editname'=> 'Inserire el nome utente:',
 'userrights-groupshelp' => 'Selezsionar i gruppi ai quałi se vołe assoçiare o rimovere l\'utente. L\'appartenenzsa ai gruppi non selezsionai non verrà modifegà. Par desełezsionare un gruppo, premere Ctrl + el tasto sinistro del mouse.',
-'userrights-logcomment' => 'Modifegà appartenenzsa gruppi da $1 a $2',
 'group-sysop'           => 'Aministradori',
 'group-sysop-member'    => 'Aministrador',
 'changes'               => 'cambiamenti',
@@ -765,12 +785,10 @@ Scrivi el nome de l\'utente ne la caseła e struca el botón par far diventare a
 'makesysopok'           => '\'\'\'L\'utente \'$1\' adesso xè un aministrador\'\'\'',
 'makesysopfail'         => '<b>Impossibiłe far diventare aministrador l\'utente "$1". Verificare che el nome utente sia stà scrito coretamente.</b>',
 'setbureaucratflag'     => 'Imposta i diritti del burocrate',
-'setstewardflag'        => 'Imposta i diritti di steward',
 'set_user_rights'       => 'Imposta diritti utente',
 'makesysop'             => 'Rendi un utente aministrador',
 'already_sysop'         => 'Sto utente l\'è xà un aministradór',
 'already_bureaucrat'    => 'Sto utente l\'è xà un burocrate',
-'already_steward'       => 'Sto utente l\'è xà un steward',
 'movepage'              => 'Spostamento de paxèna',
 'movepagetext'          => 'Con el modulo sottostante te podi rinominar na paxèna, spostando anca tuta la so cronołogia al novo nome. El vecio titoło diverrà automaticamente un redirect che punta al novo titoło. I link a la vecia paxèna non sarà agiornai (e i punterà quindi al redirect); azsertai de [[Special:Manutenzsion|controłare con cura]] che non se crea doppi redirects o redirects interroti. Resta ne la to responsabilità de accertarte che i link i continua a puntare verso dove i deve dirigerse. Nota ben: la paxèna \'\'\'non\'\'\' sarà spostà se ve fusse xà una voçe con el novo nome, a meno che non sia na paxèna voda o un redirect, e sempre che non abbia cronologia. Questo significa che, se te commetti un error, te podi novamente rinominar na paxèna col vecio titoło, ma non te podi sovrascriver na paxèna xà esistente. <b>ATTENZSION!</b> Sto cambiamento drastico podaria crear inattesi contrattempi, specialmente se se tratta de na paxèna molto visità. Accertai de aver ben valutà le conseguenzse de lo spostamento, prima de procedere. Nel dubbio, contatta un Aministrador.',
 'movepagetalktext'      => 'La corrispondente paxèna de discussion sarà spostà automaticamente insieme a ła paxèna prinçipałe, \'\'\'tranne che nei seguenti casi:\'\'\'

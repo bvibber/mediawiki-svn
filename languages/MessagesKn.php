@@ -1,7 +1,54 @@
 <?php
+/**
+ * Language file for Kannada.
+ * Mosty done by:
+ *   Hari Prasad Nadig <hpnadig@gmail.com>
+ *     http://en.wikipedia.org/wiki/User:Hpnadig
+ *   Ashwath Mattur <ashwatham@gmail.com>
+ *     http://en.wikipedia.org/wiki/User:Ashwatham
+ *
+ * Also see the Kannada Localisation Initiative at:
+ *      http://kannada.sourceforge.net/
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
+$namespaceNames = array(
+	NS_MEDIA            => 'ಮೀಡಿಯ',
+	NS_SPECIAL          => 'ವಿಶೇಷ',
+	NS_MAIN             => '',
+	NS_TALK             => 'ಚರ್ಚೆಪುಟ',
+	NS_USER             => 'ಸದಸ್ಯ',
+	NS_USER_TALK        => 'ಸದಸ್ಯರ_ಚರ್ಚೆಪುಟ',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_ಚರ್ಚೆ',
+	NS_IMAGE            => 'ಚಿತ್ರ',
+	NS_IMAGE_TALK       => 'ಚಿತ್ರ_ಚರ್ಚೆಪುಟ',
+	NS_MEDIAWIKI        => 'ಮೀಡಿಯವಿಕಿ',
+	NS_MEDIAWIKI_TALK   => 'ಮೀಡೀಯವಿಕಿ_ಚರ್ಚೆ',
+	NS_TEMPLATE         => 'ಟೆಂಪ್ಲೇಟು',
+	NS_TEMPLATE_TALK    => 'ಟೆಂಪ್ಲೇಟು_ಚರ್ಚೆ',
+	NS_HELP             => 'ಸಹಾಯ',
+	NS_HELP_TALK        => 'ಸಹಾಯ_ಚರ್ಚೆ',
+	NS_CATEGORY         => 'ವರ್ಗ',
+	NS_CATEGORY_TALK    => 'ವರ್ಗ_ಚರ್ಚೆ'
+);
 
-/* private */ $wgAllMessagesKn = array(
+$digitTransformTable = array(
+	'0' => '೦',
+	'1' => '೧',
+	'2' => '೨',
+	'3' => '೩',
+	'4' => '೪',
+	'5' => '೫',
+	'6' => '೬',
+	'7' => '೭',
+	'8' => '೮',
+	'9' => '೯'
+);
+
+$messages = array(
 'jan' => 'ಜನವರಿ',
 'feb' => 'ಫೆಬ್ರುವರಿ',
 'mar' => 'ಮಾರ್ಚ್',
@@ -28,7 +75,6 @@
 'addedwatchtext' => "\"$1\" ಪುಟವನ್ನು ನಿಮ್ಮ [[Special:Watchlist|ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ]] ಸೇರಿಸಲಾಗಿದೆ. ಈ ಪುಟದ ಮತ್ತು ಇದರ ಚರ್ಚಾ ಪುಟದ ಮು೦ದಿನ ಬದಲಾವಣೆಗಳು ವೀಕ್ಷಣಾ ಪಟ್ಟಿಯಲ್ಲಿ ಕಾಣಸಿಗುತ್ತವೆ, ಮತ್ತು [[Special:Recentchanges|ಇತ್ತೀಚೆಗಿನ ಬದಲಾವಣೆಗಳ]] ಪಟ್ಟಿಯಲ್ಲಿ ಈ ಪುಟಗಳನ್ನು ದಪ್ಪಕ್ಷರಗಳಲ್ಲಿ ಕಾಣಿಸಲಾಗುವುದು.
 
 <p>ಈ ಪುಟವನ್ನು ವೀಕ್ಷಣಾ ಪಟ್ಟಿಯಿ೦ದ ತೆಗೆಯಬಯಸಿದಲ್ಲಿ, ಮೇಲ್ಪಟ್ಟಿಯಲ್ಲಿ ಕಾಣಿಸಿರುವ \"ವೀಕ್ಷಣಾ ಪುಟದಿ೦ದ ತೆಗೆ\" ಅನ್ನು ಕ್ಲಿಕ್ಕಿಸಿ.",
-'administrators' => "ವಿಕಿಪೀಡಿಯ:ನಿರ್ವಾಹಕರು",
 'alphaindexline' => "$1 ಇಂದ $2",
 'ancientpages' => "ಹಳೆಯ ಪುಟಗಳು",
 'and' => "ಮತ್ತು",
@@ -62,7 +108,6 @@
 'cannotdelete' => "ಈ ಪುಟ ಅಥವಾ ಚಿತ್ರವನ್ನು ಅಳಿಸಲಾಗಲಿಲ್ಲ. (ಬೇರೊಬ್ಬ ಸದಸ್ಯರಿ೦ದ ಆಗಲೇ ಅಳಿಸಲ್ಪಟ್ಟಿರಬಹುದು.)",
 'categories' => "ವರ್ಗಗಳು",
 'categoriespagetext' => "ವಿಕಿಯಲ್ಲಿ ಈ ಕೆಳಗಿನ ವರ್ಗಗಳಿವೆ",
-'category' => "ವರ್ಗ",
 'category_header' => "\"$1\" ವರ್ಗದಲ್ಲಿರುವ ಲೇಖನಗಳು",
 'categoryarticlecount' => "ಈ ವರ್ಗದಲ್ಲಿ $1 ಲೇಖನಗಳಿವೆ.",
 'changepassword' => "ಪ್ರವೇಶ ಪದ ಬದಲಾಯಿಸಿ",
@@ -104,7 +149,6 @@
 'deletesub' => "(\"$1\" ಅನ್ನು ಅಳಿಸಲಾಗುತ್ತಿದೆ)",
 'deletethispage' => "ಈ ಪುಟವನ್ನು ಅಳಿಸಿ",
 'deletionlog' => "ಅಳಿಸುವಿಕೆ ದಿನಚರಿ",
-'developertext' => "\"ಡೆವೆಲಪರ್\" ಸ್ಥಾನದಲ್ಲಿರುವ ಸದಸ್ಯರು ಮಾತ್ರ ಈ ಕಾರ್ಯವನ್ನು ಮಾಡಬಲ್ಲರು. $1 ನೋಡಿ.",
 'diff' => "ವ್ಯತ್ಯಾಸ",
 'difference' => "(ಆವೃತ್ತಿಗಳ ನಡುವಿನ ವ್ಯತ್ಯಾಸ)",
 
@@ -182,8 +226,6 @@ $2",
 'link_tip' => "ಆಂತರಿಕ ಸಂಪರ್ಕ",
 'linklistsub' => "(ಸ೦ಪರ್ಕಗಳ ಪಟ್ಟಿ)",
 'linkstoimage' => "ಈ ಕೆಳಗಿನ ಪುಟಗಳು ಈ ಚಿತ್ರಕ್ಕೆ ಸಂಪರ್ಕ ಹೊಂದಿವೆ:",
-'listform' => "ಪಟ್ಟಿ",
-'listusers' => "ಸದಸ್ಯ್ರರ ಪಟ್ಟಿ",
 'login' => "ಲಾಗ್ ಇನ್",
 'loginerror' => "ಲಾಗಿನ್ ದೋಷ",
 'loginproblem' => "<b>ನಿಮ್ಮ ಲಾಗಿನ್ ನಲ್ಲಿ ತೊ೦ದರೆಯಾಯಿತು.</b><br />ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ!",
@@ -198,8 +240,6 @@ $2",
 
 'mailmypassword' => "ಹೊಸ ಪ್ರವೇಶ ಪದವನ್ನು ಇ-ಅಂಚೆ ಮೂಲಕ ಕಳುಹಿಸಿ",
 'mainpagetext' => "ವಿಕಿ ತ೦ತ್ರಾ೦ಶವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಅನುಸ್ಥಾಪಿಸಲಾಯಿತು.",
-'maintenance' => "ನಿರ್ವಹಣಾ ಪುಟ",
-'maintenancebacklink' => "ನಿರ್ವಹಣಾ ಪುಟಕ್ಕೆ ಹಿ೦ದಿರುಗಿ",
 'makesysopname' => "ಸದಸ್ಯನ ಹೆಸರು:",
 'minlength' => "ಚಿತ್ರಗಳ ಹೆಸರಿನಲ್ಲಿ ಕನಿಷ್ಟ ಮೂರು ಅಕ್ಷರಗಳಿರಬೇಕು.",
 'minoredit' => "ಇದು ಚುಟುಕಾದ ಬದಲಾವಣೆ",
@@ -216,7 +256,6 @@ $2",
 
 
 'navigation' => "ಸಂಚರಣೆ",
-'nchanges' => "$1 ಬದಲಾವಣೆಗಳು",
 'newarticle' => "(ಹೊಸತು)",
 'newmessageslink' => "ಹೊಸ ಸಂದೇಶಗಳು",
 'newpage' => "ಹೊಸ ಪುಟ",
@@ -245,7 +284,6 @@ $2",
 
 'ok' => "ಸರಿ",
 'oldpassword' => "ಹಳೆಯ ಪ್ರವೇಶ ಪದ",
-'orphans' => "ಒಬ್ಬ೦ಟಿ ಪುಟಗಳು",
 'othercontribs' => "$1 ರ ಕೆಲಸವನ್ನು ಆಧರಿಸಿ.",
 'otherlanguages' => "ಇತರ ಭಾಷೆಗಳು",
 
@@ -277,10 +315,10 @@ $2",
 'savearticle' => "ಪುಟವನ್ನು ಉಳಿಸಿ",
 'savefile' => "ಕಡತವನ್ನು ಉಳಿಸಿ",
 'search' => "ಹುಡುಕು",
+'searchbutton' => "ಹುಡುಕು",
 'searchresults' => "ಶೋಧನೆಯ ಫಲಿತಾಂಶಗಳು",
 'shortpages' => "ಪುಟ್ಟ ಪುಟಗಳು",
 'show' => "ತೋರಿಸು",
-'showhideminor' => "ಚುಟುಕು ಬದಲಾವಣೆಗಳನ್ನು $1 | ಬಾಟ್‌ಗಳನ್ನು $2 | ಲಾಗಿನ್ ಆಗಿರುವ ಸದಸ್ಯರನ್ನು $3 | $4 patrolled edits",
 'showpreview' => "ಮುನ್ನೋಟ",
 'showtoc' => "ತೋರಿಸು",
 'sitestats' => "ತಾಣದ ಅಂಕಿಅಂಶಗಳು",
@@ -288,9 +326,7 @@ $2",
 ಈ ಸಂಖ್ಯೆ \"ಚರ್ಚೆ\" ಪುಟಗಳನ್ನು, ವಿಕಿಪೀಡಿಯಾದ ಬಗೆಗಿನ ಪುಟಗಳನ್ನು, ಹಾಗೂ ಪುಟ್ಟ \"ಚುಟುಕು\" ಪುಟಗಳನ್ನೂ, ರೆಡೈರೆಕ್ಟ್ ಮಾಡಿದ ಪುಟಗಳನ್ನು ಹಾಗೂ ಬೇರೆಲ್ಲೂ ಸೇರಿಸಲಾಗದ ಕೆಲವು ಇತರೆ ಪುಟಗಳನ್ನು ಒಳಗೊಂಡಿದೆ.
 
 ಇವುಗಳನ್ನು ಬಿಟ್ಟು, ಒಟ್ಟು '''$2''' ಬಹುಶಃ ನಿಜವಾದ ಲೇಖನಗಳಿಂದ ಕೂಡಿದ ಪುಟಗಳಿವೆ.",
-'sitesubtitle' => "",
 'sitesupport' => "ದೇಣಿಗೆ",
-'sitetitle' => "ವಿಕಿಪೀಡಿಯ",
 'specialpage' => "ವಿಶೇಷ ಪುಟ",
 'specialpages' => "ವಿಶೇಷ ಪುಟಗಳು",
 'spheading' => "ಎಲ್ಲಾ ಸದಸ್ಯರಿಗೂ ಇರುವ ವಿಶೇಷ ಪುಟಗಳು",
@@ -301,7 +337,6 @@ $2",
 'summary' => "ಸಾರಾಂಶ",
 
 
-'tableform' => "ಟೇಬಲ್",
 'talkpage' => "ಈ ಪುಟದ ಬಗ್ಗೆ ಚರ್ಚೆ ಮಾಡಿ",
 'timezonelegend' => "ಟೈಮ್ ಝೋನ್",
 'toc' => "ಪರಿವಿಡಿ",

@@ -1,7 +1,43 @@
 <?php 
 
+$quickbarSettings = array(
+	'Geen.', 'Links vas.', 'Regs vas.', 'Dryf links.'
+);
+	
+$skinNames = array(
+	'standard' => 'Standaard',
+	'nostalgia' => 'Nostalgie',
+	'cologneblue' => 'Keulen blou',
+);
 
-/* private */ $wgAllMessagesAf = array(
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Spesiaal',
+	NS_MAIN           => '',
+	NS_TALK           => 'Bespreking',
+	NS_USER           => 'Gebruiker',
+	NS_USER_TALK      => 'Gebruikerbespreking',
+	# NS_PROJECT set by $wgMetaNamespace,
+	NS_PROJECT_TALK   => '$1bespreking',
+	NS_IMAGE          => 'Beeld',
+	NS_IMAGE_TALK     => 'Beeldbespreking',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'MediaWikibespreking',
+	NS_TEMPLATE       => 'Sjabloon',
+	NS_TEMPLATE_TALK  => 'Sjabloonbespreking',
+	NS_HELP           => 'Hulp',
+	NS_HELP_TALK      => 'Hulpbespreking',
+	NS_CATEGORY       => 'Kategorie',
+	NS_CATEGORY_TALK  => 'Kategoriebespreking'
+);
+
+# South Africa uses space for thousands and comma for decimal
+# Reference: AWS Reël 7.4 p. 52, 2002 edition
+# glibc is wrong in this respect in some versions
+$separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
+$linkTrail = "/^([a-z]+)(.*)\$/sD";
+
+$messages = array(
 # User Toggles
 
 "tog-underline" => "Onderstreep skakels.",
@@ -54,7 +90,6 @@
 
 # Bits of text used by many pages:
 #
-"linktrail"		=> "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "Tuisblad",
 "about"			=> "Omtrent",
 "aboutsite"      => "Inligting oor {{SITENAME}}",
@@ -82,6 +117,7 @@
 "whatlinkshere"	=> "Bladsye wat hierheen skakel",
 "help"			=> "Hulp",
 "search"		=> "Soek",
+"searchbutton"		=> "Soek",
 "go"		=> "Wys",
 "history"		=> "Ouer weergawes",
 "printableversion" => "Drukbare weergawe",
@@ -92,7 +128,6 @@
 "newpage" => "Nuwe bladsy",
 "talkpage"		=> "Bespreek hierdie bladsy",
 "articlepage"	=> "Lees artikel",
-"subjectpage"	=> "Lees onderwerp", # For compatibility
 "userpage" => "Lees gebruikersbladsy",
 "projectpage" => "Lees metabladsy",
 "imagepage" => 	"Lees bladsy oor prent",
@@ -102,13 +137,7 @@
 "lastmodified"	=> "Laaste wysiging op $1.",
 "viewcount"		=> "Hierdie bladsy is al $1 keer aangevra.",
 "protectedpage" => "Beskermde bladsy",
-"administrators" => "{{ns:4}}:Administreerders",
-"sysoptitle"	=> "Sisopregte verlang",
 
-
-"sysoptext"		=> "Die wysiging waarvoor jy gevra het kan slegs deur iemand wat \"sisop\"regte het, gedoen word. Lees $1.",
-"developertitle" => "Ontwerperregte verlang",
-"developertext"	=> "Die wysiging waarvoor jy gevra het kan slegs deur iemand wat \"progammeerder\"regte het, gedoen word. Lees $1.",
 "nbytes"		=> "$1 grepe",
 "go"			=> "Doen",
 "ok"			=> "Aanvaar", #fixMe
@@ -338,19 +367,14 @@ om voorkeure te spesifiseer.",
 #
 "changes" => "wysigings",
 "recentchanges" => "Onlangse wysigings",
-"rcloaderr"		=> "Laai onlangse wysigings",
 "rcnote"		=> "Hier onder is die laaste <strong>$1</strong> wysigings gedurende die laaste <strong>$2</strong> dae.",
 "rcnotefrom"	=> "Hier onder is die wysigings sedert <b>$2</b> (tot by <b>$1</b> word gewys).",
 "rclistfrom"	=> "Wys nuwe wysigings en begin by $1",
 "rclinks"		=> "Wys die laaste $1 wysigings in die laaste $2 dae.",
-"rchide"		=> "in $4 vorm; $1 klein veranderinge; $2 sekondêre naamspasies; $3 veelvuldige wysigings.",
 "diff"			=> "verskil",
 "hist"			=> "geskiedenis",
 "hide"			=> "vat weg",
 "show"			=> "wys",
-"tableform"		=> "tabel",
-"listform"		=> "lys",
-"nchanges"		=> "$1 wysigings",
 "minoreditletter" => "K",
 "newpageletter" => "N",
 
@@ -358,7 +382,6 @@ om voorkeure te spesifiseer.",
 #
 "upload"		=> "Laai lêer",
 "uploadbtn"		=> "Laai lêer",
-"uploadlink"	=> "Laai prente",
 "reupload"		=> "Herlaai",
 "reuploaddesc"	=> "Keer terug na die laaivorm.",
 "uploadnologin" => "Nie ingeteken nie",
@@ -447,9 +470,6 @@ Dit werk uit op gemiddeld <b>$5</b> veranderings per bladsy, en bladsye word <b>
 
 # Maintenance Page
 #
-"maintenance"		=> "Instandhoudingsbladsy",
-"maintnancepagetext"	=> "Hierdie bladsy bevat handige gereedskap vir alledaagse instandhouding. Party van hierdie funksies gebruik die databasis, so moet asseblief nie die bladsy herlaai na elke item wat jy verander het nie ;-)",
-"maintenancebacklink"	=> "Terug na die instandhoudingsbladsy",
 "disambiguations"	=> "Bladsye wat onduidelikhede opklaar",
 "disambiguationspage"	=> "{{ns:4}}:Links_to_disambiguating_pages",
 "disambiguationstext"	=> "Die volgende artikels skakel na 'n <i>bladsy wat onduidelikhede opklaar</i>. Hulle behoort eerder na die relevante onderwerp te skakel.<br />'n Bladsy word gesien as een wat onduidelikhede opklaar as $1 daarna toe skakel.<br />Skakels van ander naamkontekste is <i>nie</i> hier gelys nie.",
@@ -457,19 +477,10 @@ Dit werk uit op gemiddeld <b>$5</b> veranderings per bladsy, en bladsye word <b>
 "doubleredirectstext"	=> "<b>Let op:</b> Hierdie lys bevat moontlik false positiewe. Dit beteken gewoonlik dat daar nog teks met skakels onder die eerste #REDIRECT is.<br />\nElke ry bevat skakels na die eerste en die tweede aanstuur, asook die eerste reël van van die tweede aanstuurteks, wat gewoonlik die \"regte\" teikenbladsy gee waarna die eerste aanstuur behoort te wys.",
 "brokenredirects"	=> "Stukkende aansture",
 "brokenredirectstext"	=> "Die volgende aansture skakel na 'n bladsy wat nie bestaan nie.",
-"selflinks"		=> "Bladsye met selfskakels",
-"selflinkstext"		=> "Die volgende bladsy bevat 'n skakel na hulself, en dit behoort nie te gebeur nie.",
-"mispeelings"           => "Bladsye met spelfoute",
-"mispeelingstext"               => "Die volgende bladsye bevat 'n algemene spelfout, soos gelys op $1. Die regte spelling word dalk (so) gegee.",
-"mispeelingspage"       => "Lys van algemene spelfoute",
-"missinglanguagelinks"  => "Weggelate taalskakels",
-"missinglanguagelinksbutton"    => "Het weggelate taalskakels gevind vir",
-"missinglanguagelinkstext"      => "Hierdie artikels skakel <i>nie</i> na hul eweknie in $1. Aansture en subbladsye word <i>nie</i> gewys nie.",
 
 
 # Miscellaneous special pages
 #
-"orphans"		=> "Weesbladsye",
 "lonelypages"	=> "Weesbladsye",
 "unusedimages"	=> "Ongebruikte prente",
 "popularpages"	=> "Populêre bladsye",
@@ -483,10 +494,8 @@ Dit werk uit op gemiddeld <b>$5</b> veranderings per bladsy, en bladsye word <b>
 "listusers"		=> "Gebruikerslys",
 "specialpages"	=> "Spesiale bladsye",
 "spheading"		=> "Spesiale bladsye",
-"protectpage"	=> "Beskerm bladsy",
 "recentchangeslinked" => "Verwante veranderings",
 "rclsub"		=> "(na bladsye waarna \"$1\" skakel)",
-"debug"			=> "Ontfout",
 "newpages"		=> "Nuwe bladsye",
 "movethispage"	=> "Skuif hierdie bladsy",
 "unusedimagestext" => "<p>Let asseblief op dat ander webwerwe, soos die internasionale {{SITENAME}}s, dalk met 'n direkte URL na 'n prent skakel, so die prent sal dus hier verskyn al word dit aktief gebruik.", // TODO: grammar
@@ -517,7 +526,6 @@ Die e-posadres wat jy in jou gebruikersvoorkeure het sal verkyn as die \"Van\" a
 # Watchlist
 #
 "watchlist"		=> "My dophoulys",
-"watchlistsub"	=> "(vir gebruiker \"$1\")",
 "nowatchlist"	=> "Jy het geen items in jou dophoulys nie.",
 "watchnologin"	=> "Nie ingeteken nie",
 "watchnologintext"	=> "Jy moet [[Special:Userlogin|ingeteken]]
@@ -571,8 +579,6 @@ As 'n nuwe bladsy met dieselfde naam sedert die skrapping geskep is, sal die her
 "undeleterevision" => "Geskrape weergawes vanaf $1",
 "undeletebtn" => "Herstel!",
 "undeletedarticle" => "het \"$1\" herstel",
-"undeletedtext"   => "Die bladsy [[:$1|$1]] is sukselsvol herstel.
-Kyk na [[{{ns:4}}:Deletion_log]] vir 'n rekord van onlangse skrappings en herstellings.",
 
 # Contributions
 #
@@ -611,7 +617,6 @@ Vul 'n spesifieke rede hier onder in (haal byvoorbeeld spesifieke bladsye wat ge
 "unblockip"		=> "Maak IP-adres oop",
 "unblockiptext"	=> "Gebruik die vorm hier onder om skryftoegang te herstel vir 'n voorheen geblokkeerde IP-adres.",
 "ipusubmit"		=> "Maak hierdie adres oop",
-"ipusuccess"	=> "IP-adres \"$1\" is oopgemaak",
 "ipblocklist"	=> "Lys van geblokkeerde IP-adresse",
 'blocklistline'	=> '$1, $2 het $3 geblok ($4)',
 "blocklink"		=> "blok",

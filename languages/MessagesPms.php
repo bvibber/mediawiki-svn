@@ -1,7 +1,41 @@
 <?php
+/** Piedmontese (Piemontèis)
+  * Users are bilingual in Piedmontese and Italian, using Italian as template.
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  *
+  * @bug 5362
+  *
+  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>, Jens Frank
+  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason, Jens Frank
+  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+  */
+$fallback = 'it';
 
-global $wgAllMessagesPms;
-$wgAllMessagesPms = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Special',
+	NS_MAIN             => '',
+	NS_TALK             => 'Discussion',
+	NS_USER             => 'Utent',
+	NS_USER_TALK        => 'Ciaciarade',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Discussion_ant_sla_$1',
+	NS_IMAGE            => 'Figura',
+	NS_IMAGE_TALK       => 'Discussion_dla_figura',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Discussion_dla_MediaWiki',
+	NS_TEMPLATE         => 'Stamp',
+	NS_TEMPLATE_TALK    => 'Discussion_dlë_stamp',
+	NS_HELP             => 'Agiut',
+	NS_HELP_TALK        => 'Discussion_ant_sl\'agiut',
+	NS_CATEGORY         => 'Categorìa',
+	NS_CATEGORY_TALK    => 'Discussion_ant_sla_categorìa'
+);
+
+
+$messages = array(
 'tog-underline'         => 'Anliure con la sotliniadura',
 'tog-highlightbroken'   => 'Buta an evidensa j\'anliure che a men-o a<br />
 dj\'artìcol ancó pa scrit',
@@ -73,7 +107,6 @@ dj\'artìcol ancó pa scrit',
 'nov'                   => 'Nov',
 'dec'                   => 'Dze',
 'categories'            => '{{PLURAL:$1|Categorìa|Categorìe}}',
-'category'              => 'categorìa',
 'category_header'       => 'Artìcoj ant la categorìa "$1"',
 'subcategories'         => 'Sotacategorìe',
 'mainpage'              => 'Intrada',
@@ -126,6 +159,7 @@ dj\'artìcol ancó pa scrit',
 'returnto'              => 'Torna andré a $1.',
 'tagline'               => 'Da {{SITENAME}}.',
 'search'                => 'Sërca',
+'searchbutton'          => 'Sërca',
 'go'                    => 'Va',
 'history'               => 'Version pì veje',
 'history_short'         => 'Stòria',
@@ -149,7 +183,6 @@ dj\'artìcol ancó pa scrit',
 'personaltools'         => 'Utiss personaj',
 'postcomment'           => 'Gionta un coment',
 'articlepage'           => 'Che a varda l\'articol',
-'subjectpage'           => 'Che a varda l\'artìcol',
 'talk'                  => 'Discussion',
 'views'                 => 'vìsite',
 'toolbox'               => 'utiss',
@@ -165,21 +198,10 @@ dj\'artìcol ancó pa scrit',
 'viewcount'             => 'St\'artìcol-sì a l\'é stait lesù {{plural:$1|na vira|$1 vire}}.',
 'copyright'             => 'Ël contnù a resta disponibil sota a na licensa $1.',
 'protectedpage'         => 'Pàgina proteta',
-'administrators'        => 'Project:Aministrator',
 'jumpto'                => 'Va a:',
 'jumptonavigation'      => 'navigassion',
 'jumptosearch'          => 'arsërca',
-'sysoptitle'            => 'Riservà a j\'aministrator (Sysop)',
-'sysoptext'             => 'St\'operassion-sì a peul mach esse faita da n\'utent con la qualìfica da aministrator (sysop).
-Che a varda $1.',
-'developertitle'        => 'Riservà a jë svilupator',
-'developertext'         => ' Costa operassion-sì a peul esse faita mach da Utent che a l\'ha la qualìfica "svilupator" (developer).
-Che a varda $1.',
 'badaccess'             => 'Përmess nen giust',
-'badaccesstext'         => 'L\'operassion che a l\'ha ciamà a peul mach
-esse faita da Utent che a l\'abio un
-përmess dla sòrt "$2".
-Che a varda $1.',
 'versionrequired'       => 'A-i va për fòrsa la version $1 ëd MediaWiki',
 'versionrequiredtext'   => 'Për dovrè sta pàgina-sì a-i va la version $1 dël programa MediaWiki. Che a varda [[Special:Version]]',
 'ok'                    => 'Va bin',
@@ -613,17 +635,14 @@ për podej specifiché ij sò gust.',
 'userrights-groupsavailable'=> 'Partìe disponibij:',
 'userrights-groupshelp' => 'Che as selession-a le partìe d\'andoa che a veul gavé ò andoa che a veul buteje andrinta l\'utent.
 Le partìe nen selessionà a saran nen tocà. Për deselessioné na partìa a venta che a jë sgnaca ansima ën tnisend ësgnacà ëdcò ël tast CTRL ëd soa tastera.',
-'userrights-logcomment' => 'Apartenensa a le partìe passà da $1 a $2',
 'group'                 => 'Partìa:',
 'group-bot'             => 'Trigomiro',
 'group-sysop'           => 'Aministrator',
 'group-bureaucrat'      => 'Mangiapapé',
-'group-steward'         => 'Controlor',
 'group-all'             => '(utent)',
 'group-bot-member'      => 'Trigomiro',
 'group-sysop-member'    => 'Aministrator',
 'group-bureaucrat-member'=> 'Mangiapapé',
-'group-steward-member'  => 'Controlor',
 'grouppage-bot'         => 'Wikipedia:Trigomiro',
 'grouppage-sysop'       => 'Wikipedia:Aministrator',
 'grouppage-bureaucrat'  => 'Wikipedia:Mangiapapé',
@@ -1123,7 +1142,6 @@ Che a scriva lë stranòm dl\'utent che a veul fé aministrator e peuj che a sgn
 'makesysopok'           => '<b>L\'utent "$1" adess a l\'é n\'aministrator</b>',
 'makesysopfail'         => '<b>L\'utent "$1" as peul pa felo aminìstrator. (Fuss-lo pa mai che a l\'avèissa butà un nòm nen giust?)</b>',
 'setbureaucratflag'     => 'Deje a st-utent-sì la qualìfica ëd Mangiapapé',
-'setstewardflag'        => 'Deje la qualìfica ëd controlor a st\'utent-sì',
 'rightslog'             => 'Drit dj\'utent',
 'rightslogtext'         => 'Sòn a l\'é na lista dij cambiament aj drit dj\'utent.',
 'rightslogentry'        => 'a l\'ha tramudà $1 da \'nt la partìa $2 a la partìa $3',
@@ -1134,7 +1152,6 @@ Che a scriva lë stranòm dl\'utent che a veul fé aministrator e peuj che a sgn
 'makesysop'             => 'Deje a n\'utent la qualìfica da aministrator',
 'already_sysop'         => 'St\'Utent-sì a l\'é già n\'aministrator (administrator)',
 'already_bureaucrat'    => 'St\'Utent-sì a l\'é già un Mangiapapé (bureaucrat)',
-'already_steward'       => 'St\'Utent-sì a l\'é già un controlor (steward)',
 'rightsnone'            => '(gnun)',
 'movepage'              => 'Tramudé na pàgina',
 'movepagetext'          => 'Con ël mòdulo ëd domanda ambelessì sota a peul cangeje nòm a na pàgina, tramudand-je dapress ëdcò tuta soa cronologìa anvers al nòm neuv.
@@ -1492,9 +1509,6 @@ Tute le amportassion antra wiki diferente a resto marcà ant ël [[Special:Log/i
 'exif-gpsareainformation'=> 'Nòm dlë spassi GPS',
 'exif-gpsdatestamp'     => 'Data dël GPS',
 'exif-gpsdifferential'  => 'Coression diferensial dël GPS',
-'exif-make-value'       => '$1',
-'exif-model-value'      => '$1',
-'exif-software-value'   => '$1',
 'exif-compression-1'    => 'Pa compress',
 'exif-compression-6'    => 'JPEG',
 'exif-photometricinterpretation-2'=> 'RGB',

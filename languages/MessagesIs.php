@@ -1,12 +1,89 @@
 <?php
+/** Icelandic (Íslenska)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
+$quickbarSettings = array(
+	'Sleppa', 'Fast vinstra megin', 'Fast hægra megin', 'Fljótandi til vinstri'
+);
 
+$skinNames = array(
+	'standard'	=> 'Klassískt',
+	'nostalgia'	=> 'Gamaldags',
+	'cologneblue'	=> 'Kölnarblátt',
+	'myskin'	=> 'Mitt þema',
+);
+
+$datePreferences = array(
+	'default',
+	'dmyt',
+	'short dmyt',
+	'tdmy',
+	'short tdmy',
+	'ISO 8601',
+);
+
+$datePreferenceMigrationMap = array(
+	'default',
+	'dmyt',
+	'short dmyt',
+	'tdmy',
+	'short tdmy',
+);	
+
+$dateFormats = array(
+	'dmyt time' => 'H:i',
+	'dmyt date' => 'j. F Y',
+	'dmyt both' => 'j. F Y "kl." H:i',
+
+	'short dmyt time' => 'H:i',
+	'short dmyt date' => 'j. M. Y',
+	'short dmyt both' => 'j. M. Y "kl." H:i',
+
+	'tdmy time' => 'H:i',
+	'tdmy date' => 'j. F Y',
+	'tdmy both' => 'H:i, j. F Y',
+
+	'short tdmy time' => 'H:i',
+	'short tdmy date' => 'j. M. Y',
+	'short tdmy both' => 'H:i, j. M. Y',
+);
+
+$magicWords = array(
+	'redirect'   => array( 0, '#tilvísun', '#TILVÍSUN', '#redirect' ), // MagicWord::initRegex() sucks
+);
+$namespaceNames = array(
+	NS_MEDIA          => 'Miðill',
+	NS_SPECIAL        => 'Kerfissíða',
+	NS_MAIN           => '',
+	NS_TALK           => 'Spjall',
+	NS_USER           => 'Notandi',
+	NS_USER_TALK      => 'Notandaspjall',
+	NS_PROJECT_TALK   => '$1spjall',
+	NS_IMAGE          => 'Mynd',
+	NS_IMAGE_TALK     => 'Myndaspjall',
+	NS_MEDIAWIKI      => 'Melding',
+	NS_MEDIAWIKI_TALK => 'Meldingarspjall',
+	NS_TEMPLATE       => 'Snið',
+	NS_TEMPLATE_TALK  => 'Sniðaspjall',
+	NS_HELP           => 'Hjálp',
+	NS_HELP_TALK      => 'Hjálparspjall',
+	NS_CATEGORY       => 'Flokkur',
+	NS_CATEGORY_TALK  => 'Flokkaspjall'
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+$linkPrefixExtension = true;
+$linkTrail = '/^([áðéíóúýþæöa-z-–]+)(.*)$/sDu';
+
+	
 #-------------------------------------------------------------------
 # Default messages
 #-------------------------------------------------------------------
 
-$wgAllMessagesIs = array(
-'linktrail' => '/^([áðéíóúýþæöa-z-–]+)(.*)$/sDu',
+$messages = array(
 'linkprefix'=> '/^(.*?)([áÁðÐéÉíÍóÓúÚýÝþÞæÆöÖA-Za-z-–]+)$/sDu',
 
 '1movedto2' => "$1 færð á $2",
@@ -80,7 +157,6 @@ Frekari breytingar á henni eða spallsíðu hennar munu verða sýndar þar.
 svo auðveldara sé að sjá hana þar meðal fjöldans.
 
 <p>Til að fjarlægja síðu þessa af vaktlistanum þarft þú að ýta á tengilinn er merktur er „afvakta“.",
-'administrators' => "{{ns:4}}:Stjórnendur",
 'allmessages' => "Kerfismeldingar",
 'allmessagescurrent' => "Núverandi texti",
 'allmessagesdefault' => "Sjálfgefinn texti",
@@ -129,10 +205,8 @@ the list of currently operational bans and blocks.",
 'cancel' => "Hætta við",
 'cantrollback' => "Ekki hægt að taka aftur breytingu, síðasti höfundur er eini höfundur þessarar síðu.",
 'categories' => "Flokkar",
-'category' => "flokkur",
 'category_header' => "Greinar í flokknum „$1“",
 'categoryarticlecount' => "Það eru $1 síður í þessum flokki.",
-'categoryarticlecount1' => "Það er $1 síða í þessum flokki.",
 'changepassword' => "Breyta lykilorði",
 'changes' => "Breytingar",
 'clearyourcache' => "'''Ath:''' Eftir að þú hefur vistað breytingar þarf að hreynsa flýtiskrár vafrarans til að sjá þær, í '''Mozilla / Firefox''' ''CTRL-Shift-R'', '''IE:''' ''CTRL-F5'', '''Safari:''' ''CMD-Shift-R'', '''Konqueror:''' ''F5''.",
@@ -163,7 +237,6 @@ the list of currently operational bans and blocks.",
 'dateformat' => "Tímasnið",
 'datedefault' => 'Sjálfgefið',
 'deadendpages' => "Botnlangar",
-'debug' => "Aflúsa",
 'dec' => "des",
 'december' => "desember",
 'defaultns' => "Leita í þessum nafnrýmum:",
@@ -294,7 +367,6 @@ Legend: (nú) = núverandi útgáfa,
 'longpages' => "Langar síður",
 'mailmypassword' => "Senda nýtt lykilorð með tölvupósti",
 'mainpage' => "Forsíða",
-'maintenance' => "Viðhaldssíða",
 'makesysop' => "Veita stjórnandaréttindi",
 'makesysopname' => "Notandi:",
 'makesysopok' => "<strong>Notandanum „$1“ hefur verið veitt stjórnandastaða</strong>",
@@ -419,7 +491,6 @@ to set user preferences.",
 'protectcomment' => "Ástæða",
 'protectedpagewarning' => "<!-- -->",
 'protectlogpage' => "Verndunarskrá",
-'protectpage' => "Vernda síðu",
 'protectsub' => "(Vernda „$1“)",
 'qbedit' => "Breyta",
 'qbsettings' => "Valblað",
@@ -450,8 +521,6 @@ to set user preferences.",
 'revertpage' => "Tók aftur breytingar $2, breytt til síðustu útgáfu $1",
 'revhistory' => "Útgáfusaga",
 'revisionasof' => "Útgáfa síðunnar kl. $1",
-'revisionasofwithlink' => "Útgáfa síðunnar kl. $1; $2<br />$3 | $4",
-'rfcurl' => "http://ftp.rhnet.is/pub/rfc/rfc$1.txt",
 'rollback' => "Taka aftur breytingar",
 'rollback_short' => "Afturtaka",
 'rollbackfailed' => "Afturtaka mistókst",
@@ -463,6 +532,7 @@ to set user preferences.",
 'savefile' => "Vista",
 'saveprefs' => "Vista stillingar",
 'search' => "Leit",
+'searchbutton' => "Leit",
 'searchsubtitle' => "Fyrir fyrirspurnina „[[:$1]]“",
 'searchsubtitleinvalid' => "Fyrir fyrirspurnina „$1“",
 'searchresults' => "Leitarniðurstöður",
@@ -474,7 +544,6 @@ to set user preferences.",
 'setbureaucratflag' => "Einnig möppudýr",
 'shortpages' => "Stuttar síður",
 'show' => "Sýna",
-'showhideminor' => "$1 minniháttar breytingar | $2 breytingar eftir vélmenni | $3 breytingar eftir notendur | $4 patrolled edits",
 'showingresults' => "Sýni <strong>$1</strong> niðurstöður frá og með #<strong>$2</strong>.",
 'showingresultsnum' => "Sýni <strong>$1</strong> niðurstöður frá og með #<strong>$2</strong>.",
 'showlast' => "Sýna síðustu $1 skrár raðaðar $2.",
@@ -500,7 +569,6 @@ síðan vefurinn var settur up. Það reiknast sem '''$5''' breytingar
 'stubthreshold' => "Stubbamerkja allt undir",
 'subcategories' => "Undirflokkar",
 'subcategorycount' => "Það eru $1 undirflokkar í þessum flokki.",
-'subcategorycount1' => "Það er einn<!-- líka hægt að nota $1 til að fá heiltöluna (sem verður 1)--> undirflokkur í þessum flokki.",
 'subject' => "Fyrirsögn",
 'successfulupload' => "Innhlaðning tókst",
 'summary' => "Breytingar",
@@ -597,7 +665,6 @@ af vaktlistanum og ýttu á 'fjarlægja merktar' takkan
 neðst á skjánum.",
 'watchlist' => "Vaktlistinn",
 'watchlistcontains' => "Á vaktlistanum eru $1 síður.",
-'watchlistsub' => "(fyrir notandan „$1“)",
 'watchmethod-list' => "leita að breytingum í vöktuðum síðum",
 'watchmethod-recent' => "kanna hvort nýlegar breytingar innihalda vaktaðar síður",
 'watchnochange' => "Engri síðu á vaktlistanum þínum hefur verið breytt á tilgreindu tímabili.",
