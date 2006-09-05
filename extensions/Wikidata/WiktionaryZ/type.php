@@ -20,7 +20,11 @@ function booleanAsHTML($value) {
 }
 
 function spellingAsLink($value) {
-	return createLink("WiktionaryZ", $value, $value);
+	global
+		$wgUser;
+		
+	return $wgUser->getSkin()->makeLink("WiktionaryZ:$value", htmlspecialchars($value));
+//	return createLink("WiktionaryZ", $value, $value);
 }
 
 function createLink($nameSpace, $tag, $text) {

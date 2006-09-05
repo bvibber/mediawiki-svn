@@ -5,7 +5,7 @@
  */
 
 require_once("HTMLtable.php");
-require_once("Controler.php");
+require_once("Controller.php");
 
 class IdStack {
 	protected $keyStack;
