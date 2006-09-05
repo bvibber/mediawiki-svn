@@ -5,6 +5,7 @@
  */
 
 require_once("HTMLtable.php");
+require_once("Controler.php");
 
 class IdStack {
 	protected $keyStack;
@@ -79,34 +80,6 @@ class IdStack {
 	}
 }
 
-interface PermissionController {
-	public function allowUpdateOfAttribute($attribute);
-	public function allowUpdateOfValue($idPath, $value);
-	public function allowRemovalOfValue($idPath, $value);
-}
-
-class SimplePermissionController {
-	protected $allowUpdate;
-	protected $allowRemove;
-	
-	public function __construct($allowUpdate, $allowRemove = true) {
-		$this->allowUpdate = $allowUpdate;
-		$this->allowRemove = $allowRemove;
-	}	
-	
-	public function allowUpdateOfAttribute($attribute) {
-		return $this->allowUpdate;
-	}
-
-	public function allowUpdateOfValue($idPath, $value) {
-		return $this->allowUpdate;
-	}
-	
-	public function allowRemovalOfValue($idPath, $value) {
-		return $this->allowRemove;
-	}
-}
-
 interface Editor {
 	public function getAttribute();
 	public function getUpdateAttribute();
@@ -121,12 +94,6 @@ interface Editor {
 	public function getAddValue($idPath);
 
 	public function getEditors();
-}
-
-interface Controller {
-	public function add($keyPath, $record);
-	public function remove($keyPath);
-	public function update($keyPath, $record);
 }
 
 abstract class DefaultEditor implements Editor {

@@ -20,10 +20,15 @@ function booleanAsHTML($value) {
 }
 
 function spellingAsLink($value) {
+	return createLink("WiktionaryZ", $value, $value);
+}
+
+function createLink($nameSpace, $tag, $text) {
 	global
-		$wgUser;
+		$wgUser, $wgScript;
 		
-	return $wgUser->getSkin()->makeLink("WiktionaryZ:$value", htmlspecialchars($value));
+	return "<a href=$wgScript/$nameSpace:$tag>" . htmlspecialchars($text) . "</a>";	
+//	return $wgUser->getSkin()->makeLink("$nameSpace:$tag", htmlspecialchars($text));
 } 
 
 function languageIdAsText($languageId) {
@@ -109,8 +114,13 @@ function definingExpressionAsLink($definedMeaningId) {
 }
 
 function definedMeaningAsLink($definedMeaningId) {
-	if ($definedMeaningId > 0)
+	global
+		$wgUser;
+
+	if ($definedMeaningId > 0) {
+//		return createLink("DefinedMeaning", $definedMeaningId, definedMeaningExpression($definedMeaningId));		
 		return spellingAsLink(definedMeaningExpression($definedMeaningId));
+	}
 	else
 		return "";
 }
