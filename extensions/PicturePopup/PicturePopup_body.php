@@ -20,7 +20,7 @@ class PicturePopup {
 	var $mTitle;
 	
 	static function ajax( $image, $recache = false ) {
-		global $wgMemc, $wgDBname;
+		global $wgMemc, $wgDBname, $wgLang;
 
 		$title = Title::newFromText( $image );
 		if ( $title->getNamespace() != NS_IMAGE ) {
@@ -28,8 +28,9 @@ class PicturePopup {
 		}
 
 		$sizeSel = self::getSizeSel();
+		$lang = $wgLang->getCode();
 		$hash = md5( $title->getPrefixedDBkey() );
-		$memcKey = "$wgDBname:picturepopup:ajax:$sizeSel:$hash";
+		$memcKey = "$wgDBname:picturepopup:ajax:$sizeSel:$lang:$hash";
 		if ( $recache ) {
 			$wgMemc->delete( $memcKey );
 		}
@@ -74,7 +75,7 @@ class PicturePopup {
 
 	static function error( $errorName /*, ... */ ) {
 		$args = func_get_args();
-		$text = call_user_func_array( 'wfMsg', $args );
+		$text = call_user_func_array( 'wfMsgHtml', $args );
 		return array( 
 			'errorName' => $errorName,
 			'errorText' => $text
@@ -83,7 +84,7 @@ class PicturePopup {
 
 	static function warning( $errorName /*, ... */ ) {
 		$args = func_get_args();
-		$text = call_user_func_array( 'wfMsg', $args );
+		$text = call_user_func_array( 'wfMsgHtml', $args );
 		return array( 
 			'warningName' => $errorName,
 			'warningText' => $text
@@ -178,8 +179,9 @@ class PicturePopup {
 	 * Get the license metadata for a given license
 	 */
 	function getLicenseMetadata( $title ) {
-		global $wgMemc, $wgDBname, $wgParser;
-		$memcKey = "$wgDBname:picturepopup:license:" . $title->getPrefixedDBkey();
+		global $wgMemc, $wgDBname, $wgParser, $wgLang;
+		$lang = $wgLang->getCode();
+		$memcKey = "$wgDBname:picturepopup:license:$lang:" . $title->getPrefixedDBkey();
 		return $title->getRelatedCache( $wgMemc, $memcKey, 86400, 
 			array( $this, 'getLicenseMetadataNoCache' ), array( $title ) );
 	}
