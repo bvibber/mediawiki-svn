@@ -116,8 +116,10 @@ abstract class DefaultEditor implements Editor {
 		return $this->editors;
 	}
 
-	public function getExpansionPrefix($elementType) {
-		return '<span class="collapse-' . $elementType . '">+</span><span class="expand-' . $elementType . '">&ndash;</span>';
+	public function getExpansionPrefix($idPath) {
+		$class = $idPath->getClass();
+		$elementId = $idPath->getId();
+		return '<span id="prefix-collapsed-' . $elementId . '" class="collapse-' . $class . '">+</span><span id="prefix-expanded-' . $elementId . '" class="expand-' . $class . '">&ndash;</span>';
 	}
 
 	static private $staticExpansionStyles = array();
@@ -879,7 +881,7 @@ class RecordListEditor extends RecordEditor {
 			$attribute = $editor->getAttribute();
 			$idPath->pushAttribute($attribute);
 			$class = $idPath->getClass();
-			$expansionPrefix = $this->getExpansionPrefix($class);
+			$expansionPrefix = $this->getExpansionPrefix($idPath);
 			$this->setExpansionByEditor($editor, $class);
 			$attributeId = $idPath->getId();
 			$result .= '<li>'.
@@ -903,7 +905,7 @@ class RecordListEditor extends RecordEditor {
 			$idPath->pushAttribute($attribute);
 			$class = $idPath->getClass();
 			$this->setExpansionByEditor($editor, $class);
-			$expansionPrefix = $this->getExpansionPrefix($class);
+			$expansionPrefix = $this->getExpansionPrefix($idPath);
 			$attributeId = $idPath->getId();
 
 			$result .= '<li>'.
@@ -927,7 +929,7 @@ class RecordListEditor extends RecordEditor {
 				$idPath->pushAttribute($attribute);
 				$class = $idPath->getClass();
 				$this->setExpansionByEditor($editor, $class);
-				$expansionPrefix = $this->getExpansionPrefix($class);
+				$expansionPrefix = $this->getExpansionPrefix($idPath);
 				$attributeId = $idPath->getId();
 
 				$result .= '<li>'.
@@ -989,7 +991,7 @@ class RecordSetListEditor extends RecordSetEditor {
 			$recordId = $idPath->getId();
 			if($i==0) {
 				$captionClass = $idPath->getClass();
-				$captionExpansionPrefix = $this->getExpansionPrefix($captionClass);
+				$captionExpansionPrefix = $this->getExpansionPrefix($idPath);
 				$this->setExpansion($this->childrenExpanded, $captionClass);
 				$valueClass = $idPath->getClass();
 				$this->setExpansion($this->childrenExpanded, $valueClass);
@@ -1028,7 +1030,7 @@ class RecordSetListEditor extends RecordSetEditor {
 
 			if($i==0) {
 				$captionClass = $idPath->getClass();
-				$captionExpansionPrefix = $this->getExpansionPrefix($captionClass);
+				$captionExpansionPrefix = $this->getExpansionPrefix($idPath);
 				$this->setExpansion($this->childrenExpanded, $captionClass);
 				$valueClass = $idPath->getClass();
 				$this->setExpansion($this->childrenExpanded, $valueClass);
@@ -1055,7 +1057,7 @@ class RecordSetListEditor extends RecordSetEditor {
 			$this->setExpansion(true, $class);
 
 			$result .= '<li>'.
-						'<h' . $this->headerLevel .' id="collapse-'. $recordId .'" class="toggle" onclick="toggle(this, event);">' . $this->getExpansionPrefix($class) . ' <img src="extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/> ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
+						'<h' . $this->headerLevel .' id="collapse-'. $recordId .'" class="toggle" onclick="toggle(this, event);">' . $this->getExpansionPrefix($idPath) . ' <img src="extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/> ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
 			$idPath->popAttribute();
 
 			$idPath->pushAttribute($valueAttribute);
@@ -1082,7 +1084,7 @@ class RecordSetListEditor extends RecordSetEditor {
 		$this->setExpansion(true, $class);
 
 		$result .= '<li>'.
-					'<h' . $this->headerLevel .' id="collapse-'. $recordId .'" class="toggle" onclick="toggle(this, event);">' . $this->getExpansionPrefix($class) . '&nbsp;' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
+					'<h' . $this->headerLevel .' id="collapse-'. $recordId .'" class="toggle" onclick="toggle(this, event);">' . $this->getExpansionPrefix($idPath) . '&nbsp;' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
 		$idPath->popAttribute();
 
 		$idPath->pushAttribute($valueAttribute);

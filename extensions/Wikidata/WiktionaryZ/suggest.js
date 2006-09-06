@@ -193,7 +193,7 @@ function setExpanded(elementType) {
 	document.cookie = "expansion=" + expansionElementTypes.join("|");
 }
 
-function setCollapsed(elementType) {
+function setDefaultCollapsed(elementType) {
 	// Ensure the element type isn't yet set to collapse.
 	// This could be more efficient by avoiding the clear/rewrite.
 	var expansionElementTypes = getExpansionElementTypes();
@@ -234,27 +234,45 @@ function toggle(element, event) {
 	if (!isFormElement(source)) {
 		var elementName = getNameOf(element);
 		var collapsableNode = document.getElementById(getCollapsableId(elementName));
-
-		if (isCssClassExpanded(getTypeOf(element))) {
-			setCollapsed(getTypeOf(element));
-			expandCssClass(getTypeOf(element), false);
-			expandCssClass(element.id.substr(11, element.id.length - 11).replace(/\d+/g, "0"), false);
+		if (collapsableNode.style.display == 'inline' ||
+			(collapsableNode.style.display != 'none' &&
+			isCssClassExpanded(getTypeOf(element)))) {
+			setDefaultCollapsed(getTypeOf(element));
+			show(element, false);
 		}
 		else {
 			setExpanded(getTypeOf(element));
-			expandCssClass(getTypeOf(element), true);
-			expandCssClass(element.id.substr(11, element.id.length - 11).replace(/\d+/g, "0"), true);
+			show(element, true);
 		}
 
 		stopEventHandling(event);
 	}
 }
 
-function show(element) {
+function show(element, isShown) {
 	var elementName = getNameOf(element);
 	var collapsableNode = document.getElementById(getCollapsableId(elementName));
+	var expandedPrefixNode = getExpandedPrefix(element);
+	var collapsedPrefixNode = getCollapsedPrefix(element);
 
-	collapsableNode.style.display = 'inline';
+	if(isShown) {
+		collapsableNode.style.display = 'inline';
+		expandedPrefixNode.style.display = 'inline';
+		collapsedPrefixNode.style.display = 'none';
+	}
+	else {
+		collapsableNode.style.display = 'none';
+		expandedPrefixNode.style.display = 'none';
+		collapsedPrefixNode.style.display = 'inline';
+	}
+}
+
+function getExpandedPrefix(element) {
+	return document.getElementById(element.id.replace('collapse-', 'prefix-expanded-'));
+}
+
+function getCollapsedPrefix(element) {
+	return document.getElementById(element.id.replace('collapse-', 'prefix-collapsed-'));
 }
 
 function shouldExpand(element) {
@@ -282,7 +300,6 @@ function expandCssClass(cssClass, isExpanded) {
 		rulesKey = 'rules';
 	else
 		rulesKey = 'cssRules';
-
 	for(var sheet=0; sheet<document.styleSheets.length; sheet++)
 		for(var rule=0; rule<document.styleSheets[sheet][rulesKey].length; rule++) {
 			if(document.styleSheets[sheet][rulesKey][rule].selectorText == '.expand-'+cssClass)
