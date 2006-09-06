@@ -130,6 +130,8 @@ class SpecialPage
 		'Unusedtemplates'   => array( 'SpecialPage', 'Unusedtemplates' ),
 		'Randomredirect'    => array( 'SpecialPage', 'Randomredirect' ),
 		'Snapshot'          => array( 'SpecialPage', 'Snapshot', 'snapshot' ),
+		'SnapshotAdd'       => array( 'SpecialPage', 'SnapshotAdd', 'snapshot' ),
+		'SnapshotView'      => array( 'SpecialPage', 'SnapshotView' ),
 	);
 
 	static public $mListInitialised = false;

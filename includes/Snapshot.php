@@ -137,7 +137,11 @@ class Snapshot {
 		
 		if( $row ) {
 			$snap = new Snapshot();
+			$snap->mPageId = $row->snap_page;
 			$snap->mRevisionId = $row->snap_rev;
+			$snap->mTag = $row->snap_tag;
+			$snap->mTimestamp = $row->snap_timestamp;
+			$snap->mUser = $row->snap_user;
 			$snap->linksFromId( $db, $row->snap_id );
 			return $snap;
 		}
@@ -149,6 +153,8 @@ class Snapshot {
 	 * @param int $id snapshot id
 	 */
 	private function linksFromId( $db, $id ) {
+		$this->mId = $id;
+		
 		$result = $db->select( 'snapshot_revs',
 			array( 'sr_namespace', 'sr_title', 'sr_rev' ),
 			array( 'sr_snap' => $id ),
@@ -160,6 +166,19 @@ class Snapshot {
 		}
 		
 		$db->freeResult( $result );
+	}
+	
+	public function fetchRevisionData( $db ) {
+		$result = $db->select(
+			array( 'snapshot_revs', 'revision', 'page' ),
+			'*',
+			array(
+				'sr_snap' => $this->mId,
+				'sr_rev=rev_id',
+				'rev_page=page_id',
+			),
+			__METHOD__ );
+		return $db->resultObject( $result );
 	}
 }
 

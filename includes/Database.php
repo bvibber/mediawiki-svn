@@ -1000,10 +1000,16 @@ class Database {
 			$options = array( $options );
 		}
 		if( is_array( $table ) ) {
+			$from = ' FROM ' . $this->tableNamesJoin( $table,
+				@is_array( $options['USE INDEX'] ) ?
+					$options['USE INDEX'] :
+					array() );
+			/*
 			if ( @is_array( $options['USE INDEX'] ) )
 				$from = ' FROM ' . $this->tableNamesWithUseIndex( $table, $options['USE INDEX'] );
 			else
 				$from = ' FROM ' . implode( ',', array_map( array( &$this, 'tableName' ), $table ) );
+			*/
 		} elseif ($table!='') {
 			$from = ' FROM ' . $this->tableName( $table );
 		} else {
@@ -1391,6 +1397,41 @@ class Database {
 				$ret[] = $this->tableName( $table );
 
 		return implode( ',', $ret );
+	}
+	
+	function tableNamesJoin( $tables, $indexes ) {
+		$ret = '';
+		$first = true;
+		foreach( $tables as $key => $value ) {
+			if( is_string( $key ) ) {
+				// a join!
+				$table = $this->tableName( $key );
+				$join = $value[0];
+				$conds = $value[1];
+				$sep = ' ';
+				if ( is_array( $conds ) ) {
+					$conds = $this->makeList( $conds, LIST_AND );
+				}
+				$conds = 'ON ' . $conds;
+			} else {
+				// simple table
+				$table = $this->tableName( $value );
+				$join = '';
+				$conds = '';
+				$sep = ',';
+			}
+			if ( @$use_index[$table] !== null ) {
+				$index = $this->useIndexClause( implode( ',', (array)$use_index[$table] ) );
+			} else {
+				$index = '';
+			}
+			if( $first ) {
+				$sep = '';
+				$first = false;
+			}
+			$ret .= "$sep $join $table $index $conds";
+		}
+		return $ret;
 	}
 
 	/**

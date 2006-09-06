@@ -722,28 +722,30 @@ class Article {
 		$tag = $wgRequest->getVal( 'tag' );
 		if( $tag ) {
 			$snap = Snapshot::newFromTag( $this->getId(), $tag );
-			$revId = $snap->getSnapRevision();
-			$rev = Revision::newFromTitle( $this->mTitle, $revId );
-			$text = $rev->getText();
-			
-			$wgOut->setRevisionId( $revId );
-			$wgOut->setSnapshot( $snap );
-			
-			$message =
-				"<div class=\"mw-badge-safe\">\n" .
-				"<div class=\"mw-badge-main\">" .
-				wfMsg( "tag-badge-reviewed" ) . 
-				"</div>\n" .
-				"<div class=\"mw-badge-sub\">" .
-				wfMsg( "tag-sub-changes" ) .
-				"</div>\n" .
-				"</div>\n";
-			$wgOut->addWikiText( $message );
-			
-			$wgOut->addPrimaryWikiText( $text, $this, false );
-			
-			$pcache = false;
-			$outputDone = true;
+			if( $snap ) {
+				$revId = $snap->getSnapRevision();
+				$rev = Revision::newFromTitle( $this->mTitle, $revId );
+				$text = $rev->getText();
+				
+				$wgOut->setRevisionId( $revId );
+				$wgOut->setSnapshot( $snap );
+				
+				$message =
+					"<div class=\"mw-badge-safe\">\n" .
+					"<div class=\"mw-badge-main\">" .
+					wfMsg( "tag-badge-reviewed" ) . 
+					"</div>\n" .
+					"<div class=\"mw-badge-sub\">" .
+					wfMsg( "tag-sub-changes" ) .
+					"</div>\n" .
+					"</div>\n";
+				$wgOut->addWikiText( $message );
+				
+				$wgOut->addPrimaryWikiText( $text, $this, false );
+				
+				$pcache = false;
+				$outputDone = true;
+			}
 		}
 		// END FILTHY HACK
 		

@@ -210,6 +210,14 @@ class PageHistory {
 		if( $row->rev_deleted & Revision::DELETED_TEXT ) {
 			$s .= ' ' . wfMsgHtml( 'deletedrev' );
 		}
+		if( $row->snap_id ) {
+			$s .= " [tagged: " .
+				$this->mSkin->makeLinkObj(
+					Title::makeTitle( NS_SPECIAL, 'SnapshotView' ),
+					htmlspecialchars( $row->snap_tag ),
+					'snapid=' . $row->snap_id ) .
+				"]";
+		}
 		$s .= "</li>\n";
 
 		return $s;
@@ -350,9 +358,10 @@ class PageHistory {
 		$page_id = $this->mTitle->getArticleID();
 
 		$res = $dbr->select(
-			'revision',
+			array('revision'),
 			array('rev_id', 'rev_page', 'rev_text_id', 'rev_user', 'rev_comment', 'rev_user_text',
-				'rev_timestamp', 'rev_minor_edit', 'rev_deleted'),
+				'rev_timestamp', 'rev_minor_edit', 'rev_deleted',
+				),
 			array_merge(array("rev_page=$page_id"), $offsets),
 			$fname,
 			array('ORDER BY' => "rev_timestamp $dirs",
@@ -493,11 +502,18 @@ class PageHistoryPager extends ReverseChronologicalPager {
 
 	function getQueryInfo() {
 		return array(
-			'tables' => 'revision',
+			'tables' => array(
+				'revision',
+				'snapshot' => array( 'LEFT OUTER JOIN', 'rev_id=snap_rev' ),
+			),
 			'fields' => array('rev_id', 'rev_page', 'rev_text_id', 'rev_user', 'rev_comment', 'rev_user_text',
-				'rev_timestamp', 'rev_minor_edit', 'rev_deleted'),
+				'rev_timestamp', 'rev_minor_edit', 'rev_deleted',
+				
+				// FIXME: this won't work right will it? multiple tags on a rev...
+				'snap_id', 'snap_tag',
+				),
 			'conds' => array('rev_page' => $this->mPageHistory->mTitle->getArticleID() ),
-			'options' => array( 'USE INDEX' => 'page_timestamp' )
+			'options' => array( 'USE INDEX' => array( 'revision' => 'page_timestamp' ) )
 		);
 	}
 
