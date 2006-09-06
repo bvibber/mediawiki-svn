@@ -2200,12 +2200,14 @@ $wgMaxShellMemory = 102400;
  * Enable this and $wgDjvuRenderer to enable djvu rendering
  */
 # $wgDjvuToXML = 'djvutoxml';
+$wgDjvuToXML = null;
 
 /**
  * Path of the ddjvu DJVU renderer
  * Enable this and $wgDjvuToXML to enable djvu rendering
  */
 # $wgDjvuRenderer = 'ddjvu';
+$wgDjvuRenderer = null;
 
 /**
  * Path of the DJVU post processor
