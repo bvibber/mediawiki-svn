@@ -1032,7 +1032,11 @@ CREATE TABLE /*$wgDBprefix*/snapshot (
   snap_timestamp CHAR(14) BINARY,
   
   -- Key to user_id of tagger
+  -- 0 for automated heuristics
   snap_user INT,
+  
+  -- User-provided or automated comment about the tag
+  snap_comment TEXT,
   
   -- Allow lookup of the latest given tag
   KEY (snap_page, snap_tag, snap_timestamp),

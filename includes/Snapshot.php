@@ -79,9 +79,10 @@ class Snapshot {
 	 * Returns the snapshot ID number.
 	 * @param int $pageId
 	 * @param string $tag
+	 * @param string $comment
 	 * @return int
 	 */
-	public function insertTag( $pageId, $revId, $tag ) {
+	public function insertTag( $pageId, $revId, $tag, $comment ) {
 		global $wgUser;
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
@@ -92,6 +93,7 @@ class Snapshot {
 				'snap_tag'       => $tag,
 				'snap_timestamp' => $dbw->timestamp(),
 				'snap_user'      => $wgUser->getId(),
+				'snap_comment'   => $comment,
 			),
 			__METHOD__ );
 		$snapId = $dbw->insertId();
@@ -129,7 +131,8 @@ class Snapshot {
 				'snap_rev',
 				'snap_tag',
 				'snap_timestamp',
-				'snap_user'
+				'snap_user',
+				'snap_comment',
 			),
 			$where,
 			__METHOD__,
@@ -142,6 +145,7 @@ class Snapshot {
 			$snap->mTag = $row->snap_tag;
 			$snap->mTimestamp = $row->snap_timestamp;
 			$snap->mUser = $row->snap_user;
+			$snap->mComment = $row->snap_comment;
 			$snap->linksFromId( $db, $row->snap_id );
 			return $snap;
 		}

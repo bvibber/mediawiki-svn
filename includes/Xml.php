@@ -16,7 +16,7 @@ class Xml {
 	 * @param $contents String: NULL to make an open tag only; '' for a contentless closed tag (default)
 	 * @return string
 	 */
-	public static function element( $element, $attribs = null, $contents = '') {
+	public static function element( $element, $attribs = null, $contents = false) {
 		$out = '<' . $element;
 		if( !is_null( $attribs ) ) {
 			foreach( $attribs as $name => $val ) {
@@ -26,7 +26,7 @@ class Xml {
 		if( is_null( $contents ) ) {
 			$out .= '>';
 		} else {
-			if( $contents === '' ) {
+			if( $contents === false ) {
 				$out .= ' />';
 			} else {
 				$out .= '>' . htmlspecialchars( $contents ) . "</$element>";
@@ -116,6 +116,19 @@ class Xml {
 	}
 
 	/**
+	 * Convenience function to build an HTML textarea field
+	 * @return string HTML
+	 */
+	public static function textarea( $name, $cols=false, $rows=false, $value=false, $attribs=array() ) {
+		return self::element( 'textarea', array(
+			'name' => $name,
+			'cols' => $cols,
+			'rows' => $rows,
+			'wrap' => 'virtual' ) + $attribs,
+			strval( $value ) );
+	}
+
+	/**
 	 * Internal function for use in checkboxes and radio buttons and such.
 	 * @return array
 	 */
@@ -161,6 +174,17 @@ class Xml {
 		return Xml::label( $label, $id ) .
 			'&nbsp;' .
 			self::input( $name, $size, $value, array( 'id' => $id ) + $attribs );
+	}
+
+	/**
+	 * Convenience function to build an HTML textarea field with a label,
+	 * separated by a newline
+	 * @return string HTML
+	 */
+	public static function textareaLabel( $label, $name, $id, $cols=false, $rows=false, $value=false, $attribs=array() ) {
+		return Xml::label( $label, $id ) .
+			'<br />' .
+			self::textarea( $name, $cols, $rows, $value, array( 'id' => $id ) + $attribs );
 	}
 
 	/**
