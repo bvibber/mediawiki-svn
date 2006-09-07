@@ -1,5 +1,7 @@
 <?php
 
+require_once("forms.php");
+
 interface WikidataApplication {
 	public function view();
 	public function edit();
@@ -50,6 +52,30 @@ class DefaultWikidataApplication implements WikidataApplication {
 			$wgOut;
 			
 		$wgOut->addHTML($this->getLanguageSelector());
+	}
+	
+	protected function outputEditHeader() {
+		global
+			$wgOut;
+			
+		$wgOut->addHTML('<form method="post" action="">');
+	}
+	
+	protected function outputEditFooter() {
+		global
+			$wgOut, $wgTitle;
+		
+		$wgOut->addHTML('<div class="save-panel">');
+			$wgOut->addHTML('<table cellpadding="0" cellspacing="0"><tr><th>' . wfMsg('summary') . ': </th><td>' . getTextBox("summary") .'</td></tr></table>');
+			$wgOut->addHTML(getSubmitButton("save", wfMsg('wz_save')));
+		$wgOut->addHTML('</div>');
+		$wgOut->addHTML('</form>');
+		$wgOut->addHTML(DefaultEditor::getExpansionCss());
+		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
+
+		$titleArray = $wgTitle->getTitleArray();
+		$titleArray["actionprefix"] = wfMsg('editing');
+		$wgOut->setPageTitleArray($titleArray);
 	}
 }
 

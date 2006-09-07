@@ -49,8 +49,6 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		$wgOut->setPageTitleArray($titleArray);
 	}
 
-
-
 	function saveForm() {
 		global
 			$wgTitle, $wgUser, $wgRequest;

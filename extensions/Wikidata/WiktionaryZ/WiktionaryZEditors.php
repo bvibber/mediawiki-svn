@@ -1,6 +1,7 @@
 <?php
 
 require_once('Editor.php');
+require_once('WiktionaryZAttributes.php');
 
 function getTransactionEditor($attribute) {
 	global

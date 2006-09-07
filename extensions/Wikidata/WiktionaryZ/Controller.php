@@ -1,5 +1,7 @@
 <?php
 
+require_once("WiktionaryZAttributes.php");
+
 interface Controller {
 	public function add($keyPath, $record);
 	public function remove($keyPath);
