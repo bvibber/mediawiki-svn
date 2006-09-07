@@ -32,4 +32,19 @@ $wgSiteMatrixMessages['nl'] = array(
 $wgSiteMatrixMessages['pl'] = array(
 	"sitematrix" => "Lista projektów Wikimedia",
 );
+$wgSiteMatrixMessages['zh-cn'] = array(
+	"sitematrix" => "维基媒体站点列表",
+);
+$wgSiteMatrixMessages['zh-hk'] = array(
+	"sitematrix" => "維基媒體網站清單",
+);
+$wgSiteMatrixMessages['zh-sg'] = array(
+	"sitematrix" => "维基媒体站点列表",
+);
+$wgSiteMatrixMessages['zh-tw'] = array(
+	"sitematrix" => "維基媒體網站清單",
+);
+$wgSiteMatrixMessages['zh-yue'] = array(
+	"sitematrix" => "Wikimedia嘅wiki一覽",
+);
 ?>

@@ -64,4 +64,24 @@ $wgNewuserlogMessages['wa'] = array(
 	'newuserlog-create-entry'  => 'novea uzeu',
 	'newuserlog-create2-entry' => 'conte ahivé po $1',
 );
+$wgNewuserlogMessages['zh-cn'] = array(
+	'newuserlogpage'           => '新进用户名册',
+	'newuserlogpagetext'       => '本日志是显示新注册用户的日志',
+	'newuserlog-create-entry'  => '新用户',
+	'newuserlog-create2-entry' => '已创建$1的账户',
+);
+$wgNewuserlogMessages['zh-tw'] = array(
+	'newuserlogpage'           => '新進用戶名冊',
+	'newuserlogpagetext'       => '這是一個最近被創建用戶的日誌',
+	'newuserlog-create-entry'  => '新用戶',
+	'newuserlog-create2-entry' => '已創建$1的帳戶',
+);
+$wgNewuserlogMessages['zh-yue'] = array(
+	'newuserlogpage'           => '使用者開戶記錄',
+	'newuserlogpagetext'       => '呢個係一個使用者開戶嘅日誌',
+	'newuserlog-create-entry'  => '新用戶',
+	'newuserlog-create2-entry' => '已經開咗$1嘅戶口',
+);
+$wgNewuserlogMessages['zh-hk'] = $wgNewuserlogMessages['zh-tw'];
+$wgNewuserlogMessages['zh-sg'] = $wgNewuserlogMessages['zh-cn'];
 ?>

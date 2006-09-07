@@ -36,4 +36,18 @@ $wgCrossNamespaceLinksMessages['pl'] = array(
 	'crossnamespacelinks'     => 'Linki między przestrzeniami nazw',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|linki}} do $3'
 );
+$wgCrossNamespaceLinksMessages['zh-cn'] = array(
+	'crossnamespacelinks'     => '跨名字空间的链接',
+	'crossnamespacelinkstext' => '$1: $2 个链接到 $3'
+);
+$wgCrossNamespaceLinksMessages['zh-tw'] = array(
+	'crossnamespacelinks'     => '跨名字空間的連結',
+	'crossnamespacelinkstext' => '$1: $2 個連結到 $3'
+);
+$wgCrossNamespaceLinksMessages['zh-yue'] = array(
+	'crossnamespacelinks'     => '跨空間名連結',
+	'crossnamespacelinkstext' => '$1: $2 個連結到 $3'
+);
+$wgCrossNamespaceLinksMessages['zh-hk'] = $wgCrossNamespaceLinksMessages['zh-tw'];
+$wgCrossNamespaceLinksMessages['zh-sg'] = $wgCrossNamespaceLinksMessages['zh-cn'];
 ?>
