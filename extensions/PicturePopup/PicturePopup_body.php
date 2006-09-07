@@ -24,19 +24,19 @@ class PicturePopup {
 
 		$title = Title::newFromText( $image );
 		if ( $title->getNamespace() != NS_IMAGE ) {
-			return self::jsonError( 'picturepopup_invalid_title' );
+			$value = self::jsonError( 'picturepopup_invalid_title' );
+		} else {
+			$sizeSel = self::getSizeSel();
+			$lang = $wgLang->getCode();
+			$hash = md5( $title->getPrefixedDBkey() );
+			$memcKey = "$wgDBname:picturepopup:ajax:$sizeSel:$lang:$hash";
+			if ( $recache ) {
+				$wgMemc->delete( $memcKey );
+			}
+			$pp = new PicturePopup( $title );
+			$value = $title->getRelatedCache( $wgMemc, $memcKey, 86400, 
+				array( $pp, 'ajaxNoCache' ), array( $sizeSel ) );
 		}
-
-		$sizeSel = self::getSizeSel();
-		$lang = $wgLang->getCode();
-		$hash = md5( $title->getPrefixedDBkey() );
-		$memcKey = "$wgDBname:picturepopup:ajax:$sizeSel:$lang:$hash";
-		if ( $recache ) {
-			$wgMemc->delete( $memcKey );
-		}
-		$pp = new PicturePopup( $title );
-		$value = $title->getRelatedCache( $wgMemc, $memcKey, 86400, 
-			array( $pp, 'ajaxNoCache' ), array( $sizeSel ) );
 		$response = new AjaxResponse( $value );
 		$response->setContentType( 'application/json' );
 		return $response;
@@ -171,8 +171,13 @@ class PicturePopup {
 		$licenseTitle = Title::makeTitle( NS_TEMPLATE, $row->tl_title );
 		if ( !$licenseTitle ) {
 			return self::warning( 'picturepopup_no_license' );
+		} else {
+			$data = $this->getLicenseMetadata( $licenseTitle );
+			$data['licenseTitleText'] = $licenseTitle->getPrefixedText();
+			$data['licenseTitleDBkey'] = $licenseTitle->getPrefixedDBkey();
+			$data['licenseTemplateURL'] = $licenseTitle->getLocalURL();
+			return $data;
 		}
-		return $this->getLicenseMetadata( $licenseTitle );
 	}
 
 	/**
@@ -209,7 +214,7 @@ class PicturePopup {
 		if ( !isset( $m[0] ) ) {
 			return self::warning( 'picturepopup_no_license_text' );
 		}
-		$description = strval( $m[0] );
+		$description = $m[0]->asXML();
 
 		# Get name and icon
 		$m = $xml->xpath( '//*[@id="imageLicenseIcon"]//img' );
@@ -310,6 +315,8 @@ class PicturePopup {
 				}
 			} else {
 				$thumbURL = $image->getViewURL();
+				$thumbWidth = $sourceWidth;
+				$thumbHeight = $sourceHeight;
 			}
 		} else {
 			# if direct link is allowed but it's not a renderable image, show an icon.
