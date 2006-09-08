@@ -32,6 +32,13 @@ function wfLinkSearchSetup() {
 		}
 		
 		/**
+		 * Disable RSS/Atom feeds
+		 */
+		function isSyndicated() {
+			return false;
+		}
+		
+		/**
 		 * Return an appropriately formatted LIKE query
 		 * @fixme Fix up LinkFilter to work with non-http links as well
 		 */
