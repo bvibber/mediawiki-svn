@@ -39,4 +39,17 @@ $wgExpandTemplatesMessages['id'] = array(
 	'expand_templates_ok'              => 'Jalankan',
 	'expand_templates_remove_comments' => 'Buang komentar',
 );
+$wgExpandTemplatesMessages['ksh'] = array(
+	'expandtemplates'                  => 'Schabloone övverprööfe',
+	'expand_templates_intro'           => 'Hee kannß de en Schabloon ußprobėere. Do jiss_enne Oproov_enn, un dann kriß_De dä 
+komplädd_oppjelööß, och all di innedren widdo opjeroofene Schabloone, Parrameeter, Funkzjohne, shpezjälle Nahme, 
+unn_esu, beß nix mieh övverish eß, wat mer noch oplööse künnt. Wänn jedd_en <nowiki>{{ … }}</nowiki> Klammere 
+övverbliet, dann wohr_et unnbikanndt. Do passėet jenau et_sellve wi söns_em Wikki och, nur dat_De hee tirägk_ze 
+sinn_krißß wadd_erruß kütt.',
+	'expand_templates_title'           => 'Dä Sigge_Tittel, also wat för <nowiki>{{PAGENAME}}</nowiki> uew. ennjefölldt weed:',
+	'expand_templates_input'           => 'Wat_De övverprööfe wellß:',
+	'expand_templates_output'          => 'Wadd_erruß küdd_eß:',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'De ennere Kommëntaare fott_loohße',
+);
 ?>
