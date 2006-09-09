@@ -1,7 +1,7 @@
 MediaWiki OpenID extension
 
-version 0.4
-16 Aug 2006
+version 0.5
+9 Sep 2006
 
 This is the README file for the OpenID extension for MediaWiki
 software. The extension is only useful if you've got a MediaWiki
@@ -23,9 +23,10 @@ Typical uses:
   identity server in the morning and not have to login to another site
   for the rest of the day.
 
-This is a testing version of the extension and it's almost sure to
-have bugs. See the BUGS section below for info on how to report
-problems.
+This is an early version of the extension and it's almost sure to have
+bugs. (Don't despair, though: this is running in production on
+Wikitravel [http://wikitravel.org/], a fairly big MW installation.)
+See the BUGS section below for info on how to report problems.
 
 == License ==
 

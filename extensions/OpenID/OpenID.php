@@ -34,7 +34,7 @@ if (defined('MEDIAWIKI')) {
 
 	require_once("SpecialPage.php");
 
-	define('MEDIAWIKI_OPENID_VERSION', '0.3');
+	define('MEDIAWIKI_OPENID_VERSION', '0.5');
 
 	$wgExtensionFunctions[] = 'setupOpenID';
 
@@ -117,12 +117,27 @@ if (defined('MEDIAWIKI')) {
 		    // the X-XRDS-Location.  See the OpenIDXRDS
 		    // special page for the XRDS output / generation
 		    // logic.
-		    if ($nt && ($nt->getNamespace() == NS_USER)) {
-		        $wgOut->addLink(array('rel' => 'openid.server',
-					      'href' => OpenIDServerUrl()));
-				$rt = Title::makeTitle(NS_SPECIAL, 'OpenIDXRDS/'.$nt->getText());
-				$wgOut->addMeta('http:X-XRDS-Location', $rt->getFullURL());
-				header('X-XRDS-Location', $rt->getFullURL());
+		    if ($nt && 
+				($nt->getNamespace() == NS_USER) &&
+				strpos($nt->getText(), '/') === false)
+			{
+				$user = User::newFromName($nt->getText());
+				if ($user && $user->getID() != 0) {
+					$openid = OpenIdGetUserUrl($user);
+					if (isset($openid) && strlen($openid) != 0) {
+						$disp = htmlspecialchars($openid);
+						$wgOut->setSubtitle("<span class='subpages'>" .
+											"<img src='http://openid.net/login-bg.gif' alt='OpenID' />" .
+											"<a href='$disp'>$disp</a>" .
+											"</span>");
+					} else {
+						$wgOut->addLink(array('rel' => 'openid.server',
+											  'href' => OpenIDServerUrl()));
+						$rt = Title::makeTitle(NS_SPECIAL, 'OpenIDXRDS/'.$user->getName());
+						$wgOut->addMeta('http:X-XRDS-Location', $rt->getFullURL());
+						header('X-XRDS-Location', $rt->getFullURL());
+					}
+				}
 		    }
 		}
 
