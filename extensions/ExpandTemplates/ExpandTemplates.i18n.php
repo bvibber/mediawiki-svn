@@ -21,6 +21,15 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Remove comments',
 );
+$wgExpandTemplatesMessages['de'] = array(
+	'expandtemplates'                  => 'Vorlagen expandieren',
+	'expand_templates_intro'           => 'In diese Spezialseite kann Text eingegeben werden und alle Vorlagen in ihr werden rekursiv expandiert. Auch Parserfunkionen wie <nowiki>{{</nowiki>#if:...}} und Variablen wie <nowiki>{{</nowiki>CURRENTDAY}} werden ausgewertet - faktisch alles was in doppelten geschweiften Klammern enthalten ist. Dies geschieht durch den Aufruf der jeweiligen Parser-Phasen in MediaWiki.',
+	'expand_templates_title'           => 'Kontexttitel, für <nowiki>{{</nowiki>PAGENAME}} etc.:',
+	'expand_templates_input'           => 'Eingabfeld:',
+	'expand_templates_output'          => 'Ergebnis:',
+	'expand_templates_ok'              => 'Ausführen',
+	'expand_templates_remove_comments' => 'Kommentare entfernen',
+);
 $wgExpandTemplatesMessages['he'] = array(
 	'expandtemplates'                  => 'פריסת תבניות',
 	'expand_templates_intro'           => 'דף זה מקבל כמות מסוימת של טקסט ופורס ומפרש את כל התבניות שבתוכו באופן רקורסיבי. בנוסף, הוא פורס הוראות פירוש כגון <nowiki>{{</nowiki>#תנאי:...}}, ומשתנים כגון <nowiki>{{</nowiki>יום נוכחי}}, ולמעשה בערך כל דבר בסוגריים מסולסלות כפולות. הוא עושה זאת באמצעות קריאה לפונקציות הפענוח המתאימות מתוך תוכנת מדיה־ויקי עצמה.',
