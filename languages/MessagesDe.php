@@ -620,6 +620,8 @@ Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullu
 Vielleicht wurde sie aus dem Wiki gelöscht oder verschoben.
 [[{{ns:special}}:Search|Durchsuchen]] Sie das Wiki für passende neue Seiten.',
 'revisiondelete'		=> 'Versionen löschen/wiederherstellen',
+'revdelete-nooldid-title'	=> 'Keine Version angegeben',
+'revdelete-nooldid-text'	=> 'Sie haben keine Version angegeben, auf die diese Aktion ausgeführt werden soll.',
 'revdelete-selected'		=> 'Ausgewählte Version von [[:$1]]:',
 'revdelete-text'		=> 'Der Inhalt oder andere Bestandteile gelöschter Versionen sind nicht mehr öffentlich einsehbar, erscheinen jedoch weiterhin als Einträge in der Versionsgeschichte. 
 
@@ -672,7 +674,8 @@ Wenn Sie sich mit dem Thema auskennen, können Sie selbst den Artikel „[[$1]]�
 
 # Preferences page
 #
-"preferences"	=> "Einstellungen",
+'preferences'		=> 'Einstellungen',
+'mypreferences'		=> 'Einstellungen',
 "prefsnologin" => "Nicht angemeldet",
 'prefsnologintext'	=> 'Sie müssen [[{{ns:special}}:Userlogin|angemeldet]] sein, um Ihre Einstellungen ändern zu können.',
 "prefsreset"	=> "Einstellungen wurden auf Standard zurückgesetzt.",
@@ -1933,8 +1936,8 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Kategorieseite anzeigen\');',
 
 
 # Multipage image navigation
-'imgmultipageprev' => '&larr; vorige Seite',
-'imgmultipagenext' => 'n&auml;chste Seite &rarr;',
+'imgmultipageprev' => '← vorige Seite',
+'imgmultipagenext' => 'nächste Seite →',
 'imgmultigo' => 'OK',
 'imgmultigotopre' => 'Gehe zu Seite',
 
