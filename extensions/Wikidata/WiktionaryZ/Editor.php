@@ -996,13 +996,12 @@ class RecordSetListEditor extends RecordSetEditor {
 			$record = $value->getRecord($i);
 			$idPath->pushKey(project($record, $key));
 			$recordId = $idPath->getId();
-			if($i==0) {
-				$captionClass = $idPath->getClass();
-				$captionExpansionPrefix = $this->getExpansionPrefix($idPath);
-				$this->setExpansion($this->childrenExpanded, $captionClass);
-				$valueClass = $idPath->getClass();
-				$this->setExpansion($this->childrenExpanded, $valueClass);
-			}
+
+			$captionClass = $idPath->getClass();
+			$captionExpansionPrefix = $this->getExpansionPrefix($idPath);
+			$this->setExpansion($this->childrenExpanded, $captionClass);
+			$valueClass = $idPath->getClass();
+			$this->setExpansion($this->childrenExpanded, $valueClass);
 
 			$idPath->pushAttribute($captionAttribute);
 			$result .= '<li>'.
@@ -1035,13 +1034,11 @@ class RecordSetListEditor extends RecordSetEditor {
 
 			$recordId = $idPath->getId();
 
-			if($i==0) {
-				$captionClass = $idPath->getClass();
-				$captionExpansionPrefix = $this->getExpansionPrefix($idPath);
-				$this->setExpansion($this->childrenExpanded, $captionClass);
-				$valueClass = $idPath->getClass();
-				$this->setExpansion($this->childrenExpanded, $valueClass);
-			}
+			$captionClass = $idPath->getClass();
+			$captionExpansionPrefix = $this->getExpansionPrefix($idPath);
+			$this->setExpansion($this->childrenExpanded, $captionClass);
+			$valueClass = $idPath->getClass();
+			$this->setExpansion($this->childrenExpanded, $valueClass);
 
 			$idPath->pushAttribute($captionAttribute);
 			$result .= '<li>'.
