@@ -12,7 +12,8 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		parent::view();
 
-		$definedMeaningId = $wgTitle->getText();
+//		$definedMeaningId = $wgTitle->getText();
+		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		$wgOut->addHTML(getDefinedMeaningEditor()->view($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId)));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
@@ -29,7 +30,8 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		$this->outputEditHeader();
 
-		$definedMeaningId = $wgTitle->getText();
+//		$definedMeaningId = $wgTitle->getText();
+		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		$wgOut->addHTML(getDefinedMeaningEditor()->edit($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId)));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
@@ -43,7 +45,8 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		parent::history();
 
-		$definedMeaningId = $wgTitle->getText();
+//		$definedMeaningId = $wgTitle->getText();
+		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		$wgOut->addHTML(getDefinedMeaningEditor()->view(new IdStack("defined-meaning"), getDefinedMeaningRecord($definedMeaningId)));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
@@ -61,7 +64,8 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
 
-		$definedMeaningId = $wgTitle->getText();
+//		$definedMeaningId = $wgTitle->getText();
+		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		getDefinedMeaningEditor()->save($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId));
 
 		Title::touchArray(array($wgTitle));
@@ -82,6 +86,14 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		
 		return $idStack;
 	}
+	
+	protected function getDefinedMeaningIdFromTitle($title) {
+	// get id from title: DefinedMeaning:expression(id)
+		$bracketPosition = strrpos($title, "(");
+		$definedMeaningId = substr($title, $bracketPosition + 1, strlen($title) - $bracketPosition - 2);
+		return $definedMeaningId;
+	}
+	
 }
 
 
