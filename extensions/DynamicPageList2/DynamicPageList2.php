@@ -19,13 +19,13 @@
  * @author w:de:Benutzer:Unendlich 
  * @author m:User:Dangerman <cyril.dangerville@gmail.com>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version 0.6.3
+ * @version 0.6.4
  */
 
 /*
  * Current version
  */
-define('DPL2_VERSION', '0.6.3');
+define('DPL2_VERSION', '0.6.4');
 
 /**
  * Register the extension with MediaWiki
@@ -132,6 +132,18 @@ $wgDPL2Options = array(
 	 * @todo: add 'ordermethod=category,categoryadd' (for each category CAT, pages ordered by date when page was added to CAT).
 	 */
 	'ordermethod' => array('default' => 'title', 'category,firstedit',  'category,lastedit', 'category,pagetouched', 'category,title', 'categoryadd', 'firstedit', 'lastedit', 'pagetouched', 'title', 'user,firstedit', 'user,lastedit'),
+	/**
+	 * minoredits =... (compatible with ordermethod=...,firstedit | lastedit only)
+	 * - exclude: exclude minor edits (rev_minor_edit = 0 only)
+	 * - include: include minor edits
+	 */
+	'minoredits' => array('default' => 'include', 'exclude', 'include'),
+	/**
+	 * redirects =...
+	 * - exclude: excludes redirect pages from lists (page_is_redirect = 0 only)
+	 * - include: allows redirect pages to appear in lists
+	 * - only: lists only redirect pages in lists (page_is_redirect = 1 only)
+	 */
 	'redirects' => array('default' => 'exclude', 'exclude', 'include', 'only'),
 	'shownamespace' => array('default' => 'true', 'false', 'true'),
 	/**
@@ -206,6 +218,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$sOrder = $wgDPL2Options['order']['default'];
 	$sPageOutputMode = $wgDPL2Options['mode']['default'];
 	$sHeadingOutputMode = $wgDPL2Options['headingmode']['default'];
+	$sMinorEdits = null;
 	$sRedirects = $wgDPL2Options['redirects']['default'];
 	$sInlTxt = $wgDPL2Options['inlinetext']['default'];
 	$bShowNamespace = $wgDPL2Options['shownamespace']['default'] == 'true';
@@ -340,11 +353,20 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				else
 					$output .= $logger->msgWrongParam('ordermethod', $sArg);
 				break;
+			
+			case 'minoredits':
+				if( in_array($sArg, $wgDPL2Options['minoredits']) )
+					$sMinorEdits = $sArg;
+				else { //wrong param val, using default
+					$sMinorEdits = $wgDPL2Options['minoredits']['default'];
+					$output .= $logger->msgWrongParam('minoredits', $sArg);
+				}
+				break;
 				
 			case 'redirects':
 				if( in_array($sArg, $wgDPL2Options['redirects']) )
 					$sRedirects = $sArg;
-				else 
+				else
 					$output .= $logger->msgWrongParam('redirects', $sArg);
 				break;
 				
@@ -488,6 +510,9 @@ function DynamicPageList2( $input, $params, &$parser ) {
 		$output .= $logger->msg(DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD, $sHeadingOutputMode, 'none');
 		$sHeadingOutputMode = 'none';
 	}
+	
+	if( isset($sMinorEdits) && !array_intersect($aOrderMethods, array('firstedit', 'lastedit')) )
+		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD, 'minoredits', 'firstedit | lastedit' );
 
 	// justify limits
 	if ( isset($iCount) ) {
@@ -590,7 +615,10 @@ function DynamicPageList2( $input, $params, &$parser ) {
     if ( !empty($aExcludeNamespaces)) {
         $sSqlWhere .= ' AND (page_namespace NOT IN (' . implode (',', $aExcludeNamespaces) . '))';
     }
-	// is_Redirect IS ...	
+    // rev_minor_edit IS
+    if( isset($sMinorEdits) && $sMinorEdits == 'exclude' )
+		$sSqlWhere .= ' AND rev_minor_edit = 0';
+	// page_is_redirect IS ...	
 	switch ($sRedirects) {
 		case 'only':
 			$sSqlWhere .= ' AND page_is_redirect = 1';
