@@ -134,7 +134,7 @@ $wgDPL2Options = array(
 	'ordermethod' => array('default' => 'title', 'category,firstedit',  'category,lastedit', 'category,pagetouched', 'category,title', 'categoryadd', 'firstedit', 'lastedit', 'pagetouched', 'title', 'user,firstedit', 'user,lastedit'),
 	/**
 	 * minoredits =... (compatible with ordermethod=...,firstedit | lastedit only)
-	 * - exclude: exclude minor edits (rev_minor_edit = 0 only)
+	 * - exclude: ignore minor edits when sorting the list (rev_minor_edit = 0 only)
 	 * - include: include minor edits
 	 */
 	'minoredits' => array('default' => 'include', 'exclude', 'include'),
