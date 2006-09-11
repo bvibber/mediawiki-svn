@@ -13,7 +13,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		parent::view();
 
 		$definedMeaningId = $wgTitle->getText();
-		$wgOut->addHTML(getDefinedMeaningEditor()->view($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, 0)));
+		$wgOut->addHTML(getDefinedMeaningEditor()->view($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId)));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 	}
@@ -30,7 +30,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$this->outputEditHeader();
 
 		$definedMeaningId = $wgTitle->getText();
-		$wgOut->addHTML(getDefinedMeaningEditor()->edit($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, 0)));
+		$wgOut->addHTML(getDefinedMeaningEditor()->edit($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId)));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 		
@@ -44,7 +44,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		parent::history();
 
 		$definedMeaningId = $wgTitle->getText();
-		$wgOut->addHTML(getDefinedMeaningEditor()->view(new IdStack("defined-meaning"), getDefinedMeaningRecord($definedMeaningId, 0)));
+		$wgOut->addHTML(getDefinedMeaningEditor()->view(new IdStack("defined-meaning"), getDefinedMeaningRecord($definedMeaningId)));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 
@@ -62,7 +62,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
 
 		$definedMeaningId = $wgTitle->getText();
-		getDefinedMeaningEditor()->save($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, 0));
+		getDefinedMeaningEditor()->save($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId));
 
 		Title::touchArray(array($wgTitle));
 		$now = wfTimestampNow();

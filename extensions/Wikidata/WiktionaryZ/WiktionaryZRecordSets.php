@@ -15,7 +15,7 @@ function getDefinedMeaningsRecordSet($expressionId) {
 	$definedMeaningIds = getDefinedMeaningsForExpression($expressionId);
 
 	foreach($definedMeaningIds as $definedMeaningId)
-		$recordset->addRecord(array($definedMeaningId, getDefinedMeaningDefinition($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, $expressionId)));
+		$recordset->addRecord(array($definedMeaningId, getDefinedMeaningDefinition($definedMeaningId), getDefinedMeaningRecord($definedMeaningId)));
 
 	return $recordset;
 }
@@ -51,7 +51,7 @@ function getExpressionsRecordSet($spelling) {
 	return $result;
 }
 
-function getDefinedMeaningRecord($definedMeaningId, $expressionId) {
+function getDefinedMeaningRecord($definedMeaningId) {
 	global
 		$definedMeaningAttribute, $definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
 		$relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute;
@@ -59,7 +59,7 @@ function getDefinedMeaningRecord($definedMeaningId, $expressionId) {
 	$record = new ArrayRecord($definedMeaningAttribute->type->getStructure());
 	$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecordSet($definedMeaningId));
 	$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId));
-	$record->setAttributeValue($synonymsAndTranslationsAttribute, getSynonymAndTranslationRecordSet($definedMeaningId, $expressionId));
+	$record->setAttributeValue($synonymsAndTranslationsAttribute, getSynonymAndTranslationRecordSet($definedMeaningId));
 	$record->setAttributeValue($relationsAttribute, getDefinedMeaningRelationsRecordSet($definedMeaningId));
 	$record->setAttributeValue($classMembershipAttribute, getDefinedMeaningClassMembershipRecordSet($definedMeaningId));
 	$record->setAttributeValue($collectionMembershipAttribute, getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId));
@@ -141,17 +141,17 @@ function getTranslatedTextHistoryRecordSet($textId) {
 	return $recordSet;
 }
 
-function getSynonymAndTranslationRecordSet($definedMeaningId, $skippedExpressionId) {
+function getSynonymAndTranslationRecordSet($definedMeaningId) {
 	global
 		$wgRequest;
 
 	if ($wgRequest->getText('action') == 'history')
-		return getSynonymAndTranslationHistoryRecordSet($definedMeaningId, $skippedExpressionId);
+		return getSynonymAndTranslationHistoryRecordSet($definedMeaningId);
 	else
-		return getSynonymAndTranslationLatestRecordSet($definedMeaningId, $skippedExpressionId);
+		return getSynonymAndTranslationLatestRecordSet($definedMeaningId);
 }
 
-function getSynonymAndTranslationHistoryRecordSet($definedMeaningId, $skippedExpressionId) {
+function getSynonymAndTranslationHistoryRecordSet($definedMeaningId) {
 	global
 		$expressionIdAttribute, $expressionAttribute, $languageAttribute, $spellingAttribute, $identicalMeaningAttribute,
 		$recordLifeSpanAttribute;
@@ -163,7 +163,7 @@ function getSynonymAndTranslationHistoryRecordSet($definedMeaningId, $skippedExp
 									new Structure($expressionIdAttribute));
 	$queryResult = $dbr->query("SELECT uw_expression_ns.expression_id, spelling, language_id, endemic_meaning, uw_syntrans.add_transaction_id AS syntrans_add, uw_syntrans.remove_transaction_id AS syntrans_remove, NOT uw_syntrans.remove_transaction_id IS NULL is_live " .
 								" FROM uw_syntrans, uw_expression_ns " .
-								" WHERE uw_syntrans.defined_meaning_id=$definedMeaningId AND uw_syntrans.expression_id!=$skippedExpressionId " .
+								" WHERE uw_syntrans.defined_meaning_id=$definedMeaningId " .
 								" AND uw_expression_ns.expression_id=uw_syntrans.expression_id ".
 								" ORDER BY is_live, uw_syntrans.add_transaction_id DESC");
 
@@ -179,14 +179,14 @@ function getSynonymAndTranslationHistoryRecordSet($definedMeaningId, $skippedExp
 	return $recordset;
 }
 
-function getSynonymAndTranslationLatestRecordSet($definedMeaningId, $skippedExpressionId) {
+function getSynonymAndTranslationLatestRecordSet($definedMeaningId) {
 	global
 		$expressionIdAttribute, $expressionStructure, $expressionAttribute, $languageAttribute, $spellingAttribute, $identicalMeaningAttribute;
 
 	$dbr =& wfGetDB(DB_SLAVE);
 
 	$recordset = new ArrayRecordSet(new Structure($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute), new Structure($expressionIdAttribute));
-	$queryResult = $dbr->query("SELECT uw_expression_ns.expression_id, spelling, language_id, endemic_meaning FROM uw_syntrans, uw_expression_ns WHERE uw_syntrans.defined_meaning_id=$definedMeaningId AND uw_syntrans.expression_id!=$skippedExpressionId " .
+	$queryResult = $dbr->query("SELECT uw_expression_ns.expression_id, spelling, language_id, endemic_meaning FROM uw_syntrans, uw_expression_ns WHERE uw_syntrans.defined_meaning_id=$definedMeaningId " .
 								"AND uw_expression_ns.expression_id=uw_syntrans.expression_id AND ". getLatestTransactionRestriction('uw_syntrans'));
 
 	while($synonymOrTranslation = $dbr->fetchObject($queryResult)) {
