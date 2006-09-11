@@ -5,31 +5,39 @@ require_once('Record.php');
 require_once('RecordSet.php');
 require_once('Expression.php');
 
-
-function getDefinedMeaningsRecordSet($expressionId) {
+function getExpressionMeaningsRecordSet($expressionId, $exactMeaning) {
 	global
-		$definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute;
+		$expressionMeaningStructure, $definedMeaningIdAttribute;
 
-	$recordset = new ArrayRecordSet(new Structure($definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute), new Structure($definedMeaningIdAttribute));
+	if ($exactMeaning)
+		$endemicMeaning = 1;
+	else
+		$endemicMeaning = 0;
 
-	$definedMeaningIds = getDefinedMeaningsForExpression($expressionId);
+	$recordSet = new ArrayRecordSet($expressionMeaningStructure, new Structure($definedMeaningIdAttribute));
 
-	foreach($definedMeaningIds as $definedMeaningId)
-		$recordset->addRecord(array($definedMeaningId, getDefinedMeaningDefinition($definedMeaningId), getDefinedMeaningRecord($definedMeaningId)));
-
-	return $recordset;
-}
-
-function getDefinedMeaningsForExpression($expressionId) {
 	$dbr =& wfGetDB(DB_SLAVE);
-	$definedMeanings = array();
-	$queryResult = $dbr->query("SELECT defined_meaning_id FROM uw_syntrans WHERE expression_id=$expressionId" .
+	$queryResult = $dbr->query("SELECT defined_meaning_id FROM uw_syntrans" .
+								" WHERE expression_id=$expressionId AND endemic_meaning=" . $endemicMeaning .
 								" AND ". getLatestTransactionRestriction('uw_syntrans'));
 
-	while($definedMeaning = $dbr->fetchObject($queryResult))
-		$definedMeanings[] = $definedMeaning->defined_meaning_id;
+	while($definedMeaning = $dbr->fetchObject($queryResult)) {
+		$definedMeaningId = $definedMeaning->defined_meaning_id;
+		$recordSet->addRecord(array($definedMeaningId, getDefinedMeaningDefinition($definedMeaningId), getDefinedMeaningRecord($definedMeaningId)));
+	}
 
-	return $definedMeanings;
+	return $recordSet;
+}
+
+function getExpressionMeaningsRecord($expressionId) {
+	global
+		$expressionMeaningsStructure, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute;
+		
+	$record = new ArrayRecord($expressionMeaningsStructure);
+	$record->setAttributeValue($expressionExactMeaningsAttribute, getExpressionMeaningsRecordSet($expressionId, true));
+	$record->setAttributeValue($expressionApproximateMeaningsAttribute, getExpressionMeaningsRecordSet($expressionId, false));
+	
+	return $record;
 }
 
 function getExpressionsRecordSet($spelling) {
@@ -45,7 +53,7 @@ function getExpressionsRecordSet($spelling) {
 		$expressionRecord = new ArrayRecord($expressionStructure);
 		$expressionRecord->setAttributeValue($languageAttribute, $expression->language_id);
 
-		$result->addRecord(array($expression->expression_id, $expressionRecord, getDefinedMeaningsRecordSet($expression->expression_id)));
+		$result->addRecord(array($expression->expression_id, $expressionRecord, getExpressionMeaningsRecord($expression->expression_id)));
 	}
 
 	return $result;

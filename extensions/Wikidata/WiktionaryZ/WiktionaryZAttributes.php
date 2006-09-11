@@ -99,9 +99,18 @@ global
 $definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType(new Structure($definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute)));
 
 global
-	$expressionsAttribute, $expressionMeaningsAttribute;
+	$expressionsAttribute, $expressionMeaningStructure, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute;
 	
-$expressionMeaningsAttribute = new Attribute("expression-meanings", "Defined meanings", new RecordSetType(new Structure($definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute)));
+$expressionMeaningStructure = new Structure($definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute); 	
+$expressionExactMeaningsAttribute = new Attribute("expression-exact-meanings", "Exact meanings", new RecordSetType($expressionMeaningStructure));
+$expressionApproximateMeaningsAttribute = new Attribute("expression-approximate-meanings", "Approximate meanings", new RecordSetType($expressionMeaningStructure));
+
+global
+	$expressionMeaningsAttribute, $expressionMeaningsStructure;
+
+$expressionMeaningsStructure = new Structure($expressionExactMeaningsAttribute, $expressionApproximateMeaningAttribute);
+$expressionMeaningsAttribute = new Attribute("expression-meanings", "Expression meanings", new RecordType($expressionMeaningsStructure));
+
 $expressionsAttribute = new Attribute("expressions", "Expressions", new RecordSetType(new Structure($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute)));
 
 ?>

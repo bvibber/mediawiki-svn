@@ -304,10 +304,12 @@ class ExpressionController implements Controller {
 
 	public function add($keyPath, $record) {
 		global
-			$expressionAttribute, $expressionMeaningsAttribute, $definedMeaningAttribute, $definitionAttribute, $languageAttribute, $textAttribute;
+			$expressionAttribute, $expressionMeaningsAttribute, $expressionExactMeaningsAttribute, 
+			$definedMeaningAttribute, $definitionAttribute, 
+			$languageAttribute, $textAttribute;
 
 		$expressionLanguageId = $record->getAttributeValue($expressionAttribute)->getAttributeValue($languageAttribute);
-		$expressionMeanings = $record->getAttributeValue($expressionMeaningsAttribute);
+		$expressionMeanings = $record->getAttributeValue($expressionMeaningsAttribute)->getAttributeValue($expressionExactMeaningsAttribute);
 
 		if ($expressionLanguageId != 0 && $expressionMeanings->getRecordCount() > 0) {
 			$expressionMeaning = $expressionMeanings->getRecord(0);

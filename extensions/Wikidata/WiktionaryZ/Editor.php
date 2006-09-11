@@ -873,7 +873,14 @@ class TextAttributeEditor extends SuggestEditor {
 
 class RecordListEditor extends RecordEditor {
 	protected $expandedEditors = array();
+	protected $headerLevel = 1;
 
+	public function __construct($attribute, $headerLevel) {
+		parent::__construct($attribute);
+		
+		$this->headerLevel = $headerLevel;
+	}
+	
 	public function view($idPath, $value) {
 		$result = '<ul class="collapsable-items">';
 
@@ -885,7 +892,7 @@ class RecordListEditor extends RecordEditor {
 			$this->setExpansionByEditor($editor, $class);
 			$attributeId = $idPath->getId();
 			$result .= '<li>'.
-						'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</h4>' .
+						'<h'. $this->headerLevel .' id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</h'. $this->headerLevel .'>' .
 						'<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->view($idPath, $value->getAttributeValue($attribute)) . '</div>' .
 						'</li>';
 			$idPath->popAttribute();
@@ -909,7 +916,7 @@ class RecordListEditor extends RecordEditor {
 			$attributeId = $idPath->getId();
 
 			$result .= '<li>'.
-						'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</h4>' .
+						'<h'. $this->headerLevel .' id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</h'. $this->headerLevel .'>' .
 						'<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->edit($idPath, $value->getAttributeValue($attribute)) . '</div>' .
 						'</li>';
 			$idPath->popAttribute();
@@ -933,7 +940,7 @@ class RecordListEditor extends RecordEditor {
 				$attributeId = $idPath->getId();
 
 				$result .= '<li>'.
-							'<h4 id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</h4>' .
+							'<h'. $this->headerLevel .' id="collapse-'. $attributeId .'" class="toggle" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</h'. $this->headerLevel .'>' .
 							'<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->add($idPath) . '</div>' .
 							'</li>';
 				$editor->add($idPath);

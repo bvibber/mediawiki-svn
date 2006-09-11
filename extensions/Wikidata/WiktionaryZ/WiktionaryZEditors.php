@@ -119,25 +119,36 @@ function getDefinedMeaningTextAttributeValuesEditor() {
 	return $editor;
 }
 
-function getExpressionsEditor($spelling) {
+function getExpressionMeaningsEditor($attribute, $allowAdd) {
 	global
-		$textAttribute, $expressionMeaningsAttribute, $expressionAttribute, $languageAttribute, $expressionsAttribute;
-
+		$textAttribute;
+	
 	$definedMeaningEditor = getDefinedMeaningEditor();
 
 	$definedMeaningCaptionEditor = new TextEditor($textAttribute, new SimplePermissionController(false), false, true, 100);
-	$definedMeaningCaptionEditor->setAddText("New defined meaning");
+	$definedMeaningCaptionEditor->setAddText("New exact meaning");
 
-	$expressionMeaningsEditor = new RecordSetListEditor($expressionMeaningsAttribute, new SimplePermissionController(true), true, false, true, new ExpressionMeaningController(), 3, false);
+	$expressionMeaningsEditor = new RecordSetListEditor($attribute, new SimplePermissionController(true), $allowAdd, false, $allowAdd, new ExpressionMeaningController(), 3, false);
 	$expressionMeaningsEditor->setCaptionEditor($definedMeaningCaptionEditor);
 	$expressionMeaningsEditor->setValueEditor($definedMeaningEditor);
+	
+	return $expressionMeaningsEditor;
+}
+
+function getExpressionsEditor($spelling) {
+	global
+		$expressionMeaningsAttribute, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute, $expressionAttribute, $languageAttribute, $expressionsAttribute;
+
+	$expressionMeaningsRecordEditor = new RecordListEditor($expressionMeaningsAttribute, 3);
+	$expressionMeaningsRecordEditor->addEditor(getExpressionMeaningsEditor($expressionExactMeaningsAttribute, true));
+	$expressionMeaningsRecordEditor->addEditor(getExpressionMeaningsEditor($expressionApproximateMeaningsAttribute, false));
 
 	$expressionEditor = new RecordSpanEditor($expressionAttribute, ': ', ' - ');
 	$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
 
 	$expressionsEditor = new RecordSetListEditor($expressionsAttribute, new SimplePermissionController(true), true, false, false, new ExpressionController($spelling), 2, true);
 	$expressionsEditor->setCaptionEditor($expressionEditor);
-	$expressionsEditor->setValueEditor($expressionMeaningsEditor);
+	$expressionsEditor->setValueEditor($expressionMeaningsRecordEditor);
 
 	return $expressionsEditor;
 }
@@ -153,7 +164,7 @@ function getDefinedMeaningEditor() {
 	$collectionMembershipEditor = getDefinedMeaningCollectionMembershipEditor();
 	$textAttributeValuesEditor = getDefinedMeaningTextAttributeValuesEditor();
 
-	$definedMeaningEditor = new RecordListEditor($definedMeaningAttribute, true, false, true, null);
+	$definedMeaningEditor = new RecordListEditor($definedMeaningAttribute, 4);
 	$definedMeaningEditor->addEditor($definitionEditor);
 	$definedMeaningEditor->addEditor(getAlternativeDefinitionsEditor());
 	$definedMeaningEditor->addEditor($synonymsAndTranslationsEditor);
