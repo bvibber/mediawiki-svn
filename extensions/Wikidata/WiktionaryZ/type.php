@@ -23,15 +23,15 @@ function spellingAsLink($value) {
 	global
 		$wgUser;
 		
-	return $wgUser->getSkin()->makeLink("WiktionaryZ:$value", htmlspecialchars($value));
-//	return createLink("WiktionaryZ", $value, $value);
+//	return $wgUser->getSkin()->makeLink("WiktionaryZ:$value", htmlspecialchars($value));
+	return createLink("WiktionaryZ", $value, $value);
 }
 
 function createLink($nameSpace, $tag, $text) {
 	global
 		$wgUser, $wgScript;
 		
-	return "<a href=$wgScript/$nameSpace:$tag>" . htmlspecialchars($text) . "</a>";	
+	return '<a href="'. $wgScript. '/' . $nameSpace . ':' . $tag . '">' . htmlspecialchars($text) . '</a>';	
 //	return $wgUser->getSkin()->makeLink("$nameSpace:$tag", htmlspecialchars($text));
 } 
 
