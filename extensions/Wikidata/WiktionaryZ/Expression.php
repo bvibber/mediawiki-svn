@@ -168,6 +168,17 @@ function getMaximum($field, $table) {
 		return 0;
 }
 
+function getRelationId($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT relation_id FROM uw_meaning_relations " .
+								"WHERE meaning1_mid=$definedMeaning1Id AND meaning2_mid=$definedMeaning2Id AND relationtype_mid=$relationTypeId");
+
+	if ($relation = $dbr->fetchObject($queryResult))
+		return $relation->relation_id;
+	else
+		return 0;
+}
+
 function relationExists($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT meaning1_mid FROM uw_meaning_relations " .
@@ -178,9 +189,14 @@ function relationExists($definedMeaning1Id, $relationTypeId, $definedMeaning2Id)
 }
 
 function createRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
+	$relationId = getRelationID($definedMeaning1Id, $relationTypeId, $definedMeaning2Id);
+	
+	if ($relationId == 0)
+		$relationId = newObjectId('uw_meaning_relations');
+		
 	$dbr =& wfGetDB(DB_MASTER);
-	$sql = "INSERT INTO uw_meaning_relations(meaning1_mid, meaning2_mid, relationtype_mid, add_transaction_id) " .
-			"VALUES ($definedMeaning1Id, $definedMeaning2Id, $relationTypeId, ". getUpdateTransactionId() .")";
+	$sql = "INSERT INTO uw_meaning_relations(relation_id, meaning1_mid, meaning2_mid, relationtype_mid, add_transaction_id) " .
+			" VALUES ($relationId, $definedMeaning1Id, $definedMeaning2Id, $relationTypeId, ". getUpdateTransactionId() .")";
 	$dbr->query($sql);
 }
 
@@ -194,8 +210,6 @@ function removeRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id)
 	$dbr->query("UPDATE uw_meaning_relations SET remove_transaction_id=" . getUpdateTransactionId() .
 				" WHERE meaning1_mid=$definedMeaning1Id AND meaning2_mid=$definedMeaning2Id AND relationtype_mid=$relationTypeId " .
 				" AND remove_transaction_id IS NULL");
-//	$dbr->query("DELETE FROM uw_meaning_relations WHERE meaning1_mid=$definedMeaning1Id AND meaning2_mid=$definedMeaning2Id AND ".
-//				"relationtype_mid=$relationTypeId LIMIT 1");
 }
 
 function createClassMembership($classMemberId, $classId) {
@@ -230,21 +244,14 @@ function removeSynonymOrTranslation($definedMeaningId, $expressionId) {
 	$dbr =& wfGetDB(DB_MASTER);
 	$dbr->query("UPDATE uw_syntrans SET remove_transaction_id=". getUpdateTransactionId() . 
 				" WHERE defined_meaning_id=$definedMeaningId AND expression_id=$expressionId AND remove_transaction_id IS NULL LIMIT 1");
-//	$dbr->query("DELETE FROM uw_syntrans WHERE defined_meaning_id=$definedMeaningId AND expression_id=$expressionId LIMIT 1");
 }
 
 function updateSynonymOrTranslation($definedMeaningId, $expressionId, $identicalMeaning) {
 	removeSynonymOrTranslation($definedMeaningId, $expressionId);
 	createSynonymOrTranslation($definedMeaningId, $expressionId, $identicalMeaning);
-//	$dbr =& wfGetDB(DB_MASTER);
-//	$identicalMeaningInteger = (int) $identicalMeaning;
-//	$dbr->query("UPDATE uw_syntrans SET endemic_meaning=$identicalMeaningInteger WHERE defined_meaning_id=$definedMeaningId AND expression_id=$expressionId LIMIT 1");	
 }
 
 function updateDefinedMeaningDefinition($definedMeaningId, $languageId, $text) {
-//	$dbr =& wfGetDB(DB_MASTER);
-//	$dbr->query("UPDATE uw_defined_meaning dm, translated_content tc, text t SET old_text=". $dbr->addQuotes($text) ." WHERE dm.defined_meaning_id=$definedMeaningId ".
-//									"AND tc.set_id=dm.meaning_text_tcid AND tc.language_id=$languageId AND tc.text_id=t.old_id");
 	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
 	
 	if ($definitionId != 0)
@@ -254,10 +261,6 @@ function updateDefinedMeaningDefinition($definedMeaningId, $languageId, $text) {
 function updateTranslatedText($setId, $languageId, $text) {
 	removeTranslatedText($setId, $languageId);
 	addTranslatedText($setId, $languageId, $text);
-	
-//	$dbr =& wfGetDB(DB_MASTER);
-//	$dbr->query("UPDATE translated_content tc, text t SET old_text=". $dbr->addQuotes($text) ." WHERE ".
-//									"tc.set_id=$setId AND tc.language_id=$languageId AND tc.text_id=t.old_id");	
 }
  
 function createText($text) {
@@ -344,7 +347,6 @@ function removeTranslatedText($translatedContentId, $languageId) {
 	$dbr = &wfGetDB(DB_MASTER);
 	$dbr->query("UPDATE translated_content SET remove_transaction_id=". getUpdateTransactionId() . 
 				" WHERE translated_content_id=$translatedContentId AND language_id=$languageId AND remove_transaction_id IS NULL");
-//	$dbr->query("DELETE tc, t FROM translated_content AS tc, text AS t WHERE tc.set_id=$textId AND tc.language_id=$languageId AND tc.text_id=t.old_id");
 }
 
 function removeTranslatedTexts($translatedContentId) {
@@ -406,9 +408,6 @@ function removeDefinedMeaningFromCollection($definedMeaningId, $collectionId) {
 }
 
 function updateDefinedMeaningInCollection($definedMeaningId, $collectionId, $internalId) {
-//	$dbr = &wfGetDB(DB_MASTER);
-//	$dbr->query("UPDATE uw_collection_contents SET internal_member_id=".$dbr->addQuotes($internalId) . 
-//				" WHERE collection_id=$collectionId AND member_mid=$definedMeaningId");
 	removeDefinedMeaningFromCollection($definedMeaningId, $collectionId);
 	addDefinedMeaningToCollection($definedMeaningId, $collectionId, $internalId);	
 }
@@ -480,9 +479,6 @@ function removeDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId,
 	$dbr->query("UPDATE uw_dm_text_attribute_values SET remove_transaction_id=". getUpdateTransactionId() .
 				" WHERE defined_meaning_id=$definedMeaningId AND attribute_mid=$attributeId AND value_tcid=$textId" .
 				" AND remove_transaction_id IS NULL");
-
-//	$dbr->query("DELETE FROM uw_dm_text_attribute_values " .
-//				"WHERE defined_meaning_id=$definedMeaningId AND attribute_mid=$attributeId AND value_tcid=$textId");	
 }
 
 function getDefinedMeaningDefinitionForLanguage($definedMeaningId, $languageId) {

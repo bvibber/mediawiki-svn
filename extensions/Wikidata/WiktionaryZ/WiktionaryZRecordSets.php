@@ -256,8 +256,9 @@ function getDefinedMeaningRelationsHistoryRecordSet($definedMeaningId) {
 	$recordSet = new ArrayRecordSet($structure, $structure);
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live FROM uw_meaning_relations " .
-								"WHERE meaning1_mid=$definedMeaningId ORDER BY is_live, relationtype_mid");
+	$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live" .
+								" FROM uw_meaning_relations " .
+								" WHERE meaning1_mid=$definedMeaningId ORDER BY is_live, relationtype_mid");
 
 	while($definedMeaningRelation = $dbr->fetchObject($queryResult))
 		$recordSet->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid,
