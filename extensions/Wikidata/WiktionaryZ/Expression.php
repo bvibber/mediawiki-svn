@@ -137,11 +137,27 @@ function findOrCreateExpression($spelling, $languageId) {
 		return createExpression($spelling, $languageId);
 }
 
+function getSynonymId($definedMeaningId, $expressionId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT syntrans_sid FROM uw_syntrans " .
+								"WHERE defined_meaning_id=$definedMeaningId AND expression_id=$expressionId");
+
+	if ($synonym = $dbr->fetchObject($queryResult))
+		return $synonym->syntrans_sid;
+	else
+		return 0;
+}
+
 function createSynonymOrTranslation($definedMeaningId, $expressionId, $endemicMeaning) {
+	$synonymId = getSynonymId($definedMeaningId, $expressionId);
+	
+	if ($synonymId == 0)
+		$synonymId = newObjectId('uw_syntrans');
+	
 	$dbr = &wfGetDB(DB_MASTER);
 	$endemicMeaningInteger = (int) $endemicMeaning;	
-	$sql = "insert into uw_syntrans(defined_meaning_id, expression_id, endemic_meaning, add_transaction_id) ".
-	       "values($definedMeaningId, $expressionId, $endemicMeaningInteger, ". getUpdateTransactionId() .")";
+	$sql = "insert into uw_syntrans(syntrans_sid, defined_meaning_id, expression_id, endemic_meaning, add_transaction_id) ".
+	       "values($synonymId, $definedMeaningId, $expressionId, $endemicMeaningInteger, ". getUpdateTransactionId() .")";
 	$queryResult = $dbr->query($sql);
 }
 
