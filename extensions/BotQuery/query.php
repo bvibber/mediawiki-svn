@@ -765,7 +765,7 @@ class BotQueryProcessor {
 			// Create records for non-existent page IDs
 			if( $pageids !== null ) {
 				foreach( array_diff_key($pageids, $this->existingPageIds) as $pageid ) {
-					$data = &$this->data['pages'][$pageid];
+					$data = &$this->data['pages'][$this->invalidPageIdCounter--];
 					$data['id'] = 0;
 					$data['badId'] = $pageid;
 				}
@@ -852,6 +852,7 @@ class BotQueryProcessor {
 	{
 		global $wgUser;
 		$this->startProfiling();
+		$uiisblocked = $uihasmsg = $uiextended = $uioptions = null;
 		extract( $this->getParams( $prop, $genInfo ));
 		$meta = array();
 		$meta['name'] = $wgUser->getName();
@@ -881,6 +882,7 @@ class BotQueryProcessor {
 	function genMetaRecentChanges(&$prop, &$genInfo)
 	{
 		$this->startProfiling();
+		$rchide = $rclimit = $rcfrom = null; 
 		extract( $this->getParams( $prop, $genInfo ));
 		# It makes no sense to hide both anons and logged-in users
 		if( in_array('anons', $rchide) && in_array('liu', $rchide) ) {
@@ -942,6 +944,7 @@ class BotQueryProcessor {
 	{
 		global $wgContLang;
 		$this->startProfiling();
+		$uslimit = $usfrom = null;
 		extract( $this->getParams( $prop, $genInfo ));
 
 		$this->validateLimit( 'uslimit', $uslimit, 50, 1000 );
@@ -977,6 +980,7 @@ class BotQueryProcessor {
 		//
 		global $wgContLang;
 		$this->startProfiling();
+		$aplimit = $apfrom = $apnamespace = $apfilterredir = null;
 		extract( $this->getParams( $prop, $genInfo ));
 		$this->validateLimit( 'aplimit', $aplimit, 500, 1000 );
 
@@ -1025,6 +1029,7 @@ class BotQueryProcessor {
 		//
 		global $wgContLang;
 		$this->startProfiling();
+		$nllimit = $nlnamespace = $nlfrom = null;
 		extract( $this->getParams( $prop, $genInfo ));
 		$this->validateLimit( 'nllimit', $nllimit, 50, 1000 );
 		if( $wgContLang->getNsText($nlnamespace) === false ) {
@@ -1069,6 +1074,7 @@ class BotQueryProcessor {
 	{
 		global $wgContLang;
 		$this->startProfiling();
+		$cptitle = $cpfrom = $cpnamespace = $cpextended = $cplimit = null;
 		extract( $this->getParams( $prop, $genInfo ));
 
 		// Validate parameters
@@ -1196,6 +1202,7 @@ class BotQueryProcessor {
 	function genPermissionsInfo(&$prop, &$genInfo)
 	{
 		$this->startProfiling();
+		$prcanmove = null;
 		extract( $this->getParams( $prop, $genInfo ));
 
 		$pages =& $this->data['pages'];
@@ -1251,7 +1258,7 @@ class BotQueryProcessor {
 	{
 		if( empty( $this->nonRedirPageIds )) return;
 		$this->startProfiling();
-
+		$linktbl = $langlinks = $prefix = $code = null;
 		extract( $this->genPageLinksSettings[$prop] );
 		$langlinks = $prop === 'langlinks';
 
@@ -1284,7 +1291,7 @@ class BotQueryProcessor {
 	{
 		if( empty( $this->nonRedirPageIds )) return;
 		$this->startProfiling();
-
+		$clextended = null;
 		extract( $this->getParams( $prop, $genInfo ));
 
         $fields = array( 'cl_from', 'cl_to' );
@@ -1319,8 +1326,8 @@ class BotQueryProcessor {
 	function genImageInfo(&$prop, &$genInfo)
 	{
 		$this->startProfiling();
+		$iihistory = $iishared = $iiurl = null;
 		extract( $this->getParams( $prop, $genInfo ));
-
 		// Find local image pages to process
 		$imageDbKeys = array();
 		foreach( $this->data['pages'] as $pageId => &$page ) {
@@ -1445,6 +1452,7 @@ class BotQueryProcessor {
 	{
 		global $wgContLang;
 		$this->startProfiling();
+		$prefix = $linktbl = $code = null;
 		extract( $this->genPageBackLinksSettings[$prop] );
 		$isImage = $prop === 'imagelinks';
 
@@ -1597,6 +1605,7 @@ class BotQueryProcessor {
 		if( !empty($this->revIdsArray) ) {
 			$genInfo[GN_DFLT][ array_search( 'rvlimit', $genInfo[GN_PARAMS] )] = 0;
 		}
+		$rvrbtoken = $rvcomments = $rvcontent = $rvlimit = $rvuniqusr = $rvoffset = null;
 		extract( $this->getParams( $prop, $genInfo ));
 
 		// Validate rollback token permissions
@@ -1733,6 +1742,7 @@ class BotQueryProcessor {
 	function genUserContributions(&$prop, &$genInfo)
 	{
 		$this->startProfiling();
+		$ucrbtoken = $uccomments = $uctop = $uclimit = null;
 		extract( $this->getParams( $prop, $genInfo ));
 
 		// Validate rollback token permissions
