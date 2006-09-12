@@ -296,7 +296,9 @@ function expandEditors(event) {
 
 function expandCssClass(cssClass, isExpanded) {
 	var rulesKey;
-	if (document.all)
+	var is_opera = (navigator.userAgent.toLowerCase().indexOf("opera") != -1);
+
+	if (document.all && !is_opera)
 		rulesKey = 'rules';
 	else
 		rulesKey = 'cssRules';
@@ -311,7 +313,9 @@ function expandCssClass(cssClass, isExpanded) {
 
 function isCssClassExpanded(cssClass) {
 	var rulesKey;
-	if (document.all)
+	var is_opera = (navigator.userAgent.toLowerCase().indexOf("opera") != -1);
+
+	if (document.all && !is_opera)
 		rulesKey = 'rules';
 	else
 		rulesKey = 'cssRules';
