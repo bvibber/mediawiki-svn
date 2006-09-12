@@ -397,7 +397,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
 		$key = $value->getKey();
 
-		$headerRows = getStructureAsTableHeaderRows($this->getStructure());
+		$headerRows = getStructureAsTableHeaderRows($this->getTableStructure($this));
 
 		if ($this->allowRemove)
 			$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="skins/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>' . $headerRows[0];
@@ -425,7 +425,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 			}
 			
 			if ($this->permissionController->allowUpdateOfValue($idPath, $record))
-			$result .= getRecordAsEditTableCells($record, $idPath, $this);
+				$result .= getRecordAsEditTableCells($record, $idPath, $this);
 			else
 				$result .= getRecordAsTableCells($idPath, $this, $record);
 			
@@ -820,6 +820,20 @@ abstract class SuggestEditor extends ScalarEditor {
 		return trim($wgRequest->getText($id));
 	}
 }
+
+//class NewDefinedMeaningEditor extends SuggestEditor {
+//	protected function suggestType() {
+//		return "defined-meaning";
+//	}
+//
+//	public function getViewHTML($idPath, $value) {
+//		global
+//			$definedMeaningIdAttribute, $definedMeaningLabelAttribute;
+//			
+////		return definedMeaningAsLink($value->getAttributeValue($definedMeaningIdAttribute));
+//		return spellingAsLink($value->getAttributeValue($definedMeaningLabelAttribute));
+//	}
+//}
 
 class RelationTypeEditor extends SuggestEditor {
 	protected function suggestType() {

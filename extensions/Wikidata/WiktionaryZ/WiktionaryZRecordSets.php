@@ -217,12 +217,23 @@ function getDefinedMeaningRelationsRecordSet($definedMeaningId) {
 		return getDefinedMeaningRelationsLatestRecordSet($definedMeaningId);
 }
 
+function getDefinedMeaningLabelRecord($definedMeaningId) {
+	global
+		$definedMeaningReferenceStructure, $definedMeaningIdAttribute, $definedMeaningLabelAttribute;
+	
+	$record = new ArrayRecord($definedMeaningReferenceStructure);
+	$record->setAttributeValue($definedMeaningIdAttribute, $definedMeaningId);
+	$record->setAttributeValue($definedMeaningLabelAttribute, definedMeaningExpression($definedMeaningId));
+	
+	return $record;
+}
+
 function getDefinedMeaningRelationsLatestRecordSet($definedMeaningId) {
 	global
 		$relationTypeAttribute, $otherDefinedMeaningAttribute;
 
 	$structure = new Structure($relationTypeAttribute, $otherDefinedMeaningAttribute);
-	$recordset = new ArrayRecordSet($structure, $structure);
+	$recordSet = new ArrayRecordSet($structure, $structure);
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid FROM uw_meaning_relations " .
@@ -230,10 +241,11 @@ function getDefinedMeaningRelationsLatestRecordSet($definedMeaningId) {
 								" AND ". getLatestTransactionRestriction('uw_meaning_relations').
 								"ORDER BY relationtype_mid");
 
-	while($definedMeaningRelation = $dbr->fetchObject($queryResult))
-		$recordset->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid));
+	while($definedMeaningRelation = $dbr->fetchObject($queryResult)) 
+//		$recordSet->addRecord(array($definedMeaningRelation->relationtype_mid, getDefinedMeaningLabelRecord($definedMeaningRelation->meaning2_mid)));
+		$recordSet->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid));
 
-	return $recordset;
+	return $recordSet;
 }
 
 function getDefinedMeaningRelationsHistoryRecordSet($definedMeaningId) {

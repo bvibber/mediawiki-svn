@@ -27,6 +27,11 @@ function getLatestTransactionRestriction($table) {
 	return ' '. $table . '.remove_transaction_id IS NULL ';
 }
 
+function getAtTransactionRestriction($table, $transactionId) {
+	return ' '. $table . '.add_transaction_id <= '. $transactionId . ' AND ('.		
+				$table . '.remove_transaction_id > '. $transactionId . ' OR ' . $table . '.remove_transaction_id IS NULL) ';
+}
+
 function getViewTransactionRestriction($table) {
 	global
 		$wgRequest;

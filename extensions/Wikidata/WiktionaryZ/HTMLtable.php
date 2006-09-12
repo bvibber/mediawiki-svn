@@ -83,6 +83,15 @@ function getStructureAsTableHeaderRows($structure) {
 	return $result;
 }
 
+function getHTMLClassForType($type) {
+	if (is_a($type, RecordSetType))  
+		return "relation";
+	else if (is_a($type, RecordType)) 
+		return $attribute->id;
+	else 
+		return $type;
+}
+
 function getRecordAsTableCells($idPath, $editor, $record, &$startColumn = 0) {
 	$result = '';
 	
@@ -96,13 +105,8 @@ function getRecordAsTableCells($idPath, $editor, $record, &$startColumn = 0) {
 		if (is_a($childEditor, RecordTableCellEditor)) 
 			$result .= getRecordAsTableCells($idPath, $childEditor, $value, $startColumn);	
 		else {
-			if (is_a($type, RecordSetType)) 
-				$class = "relation";
-			else 
-				$class = $type;
-			
 			$displayValue = $childEditor->view($idPath, $value);
-			$result .= '<td class="'. $class .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
+			$result .= '<td class="'. getHTMLClassForType($type) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
 			$startColumn++;
 		}
 		
@@ -124,13 +128,8 @@ function getRecordAsEditTableCells($record, $idPath, $editor, &$startColumn = 0)
 		if (is_a($childEditor, RecordTableCellEditor))			
 			$result .= getRecordAsEditTableCells($value, $idPath, $childEditor, $startColumn); 
 		else {	
-			if (is_a($type, RecordSetType))  
-				$class = "relation";
-			else 
-				$class = $type;
-			
 			$displayValue = $childEditor->edit($idPath, $value);
-			$result .= '<td class="'. $class .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
+			$result .= '<td class="'. getHTMLClassForType($type) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
 				
 			$startColumn++;
 		}
@@ -175,7 +174,7 @@ function getStructureAsAddCells($idPath, $editor, &$startColumn = 0) {
 		if (is_a($childEditor, RecordTableCellEditor))
 			$result .= getStructureAsAddCells($idPath, $childEditor, $startColumn);
 		else {
-			$result .= '<td class="'. $type .' column-'. parityClass($startColumn) . '">' . $childEditor->add($idPath) . '</td>';
+			$result .= '<td class="'. getHTMLClassForType($type) .' column-'. parityClass($startColumn) . '">' . $childEditor->add($idPath) . '</td>';
 			$startColumn++;
 		}
 		

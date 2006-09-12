@@ -30,10 +30,7 @@ class ArrayRecord implements Record {
 	
 
 	public function project($structure) {
-		$result = new ArrayRecord($structure);
-		
-		foreach($structure->attributes as $attribute)
-			$result->setAttributeValue($attribute, $this->getAttributeValue($attribute));		
+		$result = project($this, $structure);
 	}
 
 	public function setAttributeValue($attribute, $value) {
@@ -54,8 +51,15 @@ class ArrayRecord implements Record {
 function project($record, $structure) {
 	$result = new ArrayRecord($structure);
 	
-	foreach ($structure->attributes as $attribute)
-		$result->setAttributeValue($attribute, $record->getAttributeValue($attribute));
+	foreach ($structure->attributes as $attribute) {
+		$type = $attribute->type;
+		$value = $record->getAttributeValue($attribute);
+		
+		if (is_a($type, RecordType))
+			$result->setAttributeValue($attribute, project($record, $type->getStructure()));
+		else
+			$result->setAttributeValue($attribute, $value);
+	}
 		
 	return $result;
 }

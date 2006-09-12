@@ -43,10 +43,23 @@ global
 $classMembershipAttribute = new Attribute("class-membership", "Class membership", new RecordSetType(new Structure($classAttribute)));
 
 global
+	$definedMeaningIdAttribute;
+
+$definedMeaningIdAttribute = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
+
+global
+	$definedMeaningReferenceStructure, $definedMeaningLabelAttribute, $definedMeaningReferenceKeyStructure;
+	
+$definedMeaningLabelAttribute = new Attribute("defined-meaning-label", "Defined meaning label", "short-text");
+$definedMeaningReferenceStructure = new Structure($definedMeaningIdAttribute, $definedMeaningLabelAttribute);
+$definedMeaningReferenceKeyStructure = new Structure($definedMeaningIdAttribute);
+
+global
 	$relationTypeAttribute, $otherDefinedMeaningAttribute;
 	
 $relationTypeAttribute = new Attribute("relation-type", "Relation type", "relation-type"); 
-$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", "defining-expression");
+//$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", new RecordType($definedMeaningReferenceStructure));
+$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", "defined-meaning");
 
 global
 	$relationsAttribute, $relationStructure;
@@ -77,11 +90,6 @@ global
 	
 $definitionAttribute = new Attribute("definition", "Definition", new RecordSetType($translatedTextStructure));
 $synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Synonyms and translations", new RecordSetType(new Structure($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute)));
-
-global
-	$definedMeaningIdAttribute;
-
-$definedMeaningIdAttribute = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
 
 global
 	$textValueIdAttribute, $textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute, $textAttributeValuesStructure;
