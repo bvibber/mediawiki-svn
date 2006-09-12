@@ -48,4 +48,21 @@ $wgFilepathMessages['nl'] = array(
 	'filepath_page'   => 'Bestand:',
 	'filepath_submit' => 'Zoek op',
 );
+$wgFilepathMessages['zh-cn'] = array(
+	'filepath'        => '文件路径',
+	'filepath_page'   => '文件名：',
+	'filepath_submit' => '查找路径',
+);
+$wgFilepathMessages['zh-tw'] = array(
+	'filepath'        => '檔案路徑',
+	'filepath_page'   => '檔案名：',
+	'filepath_submit' => '搜尋路徑',
+);
+$wgFilepathMessages['zh-yue'] = array(
+	'filepath'        => '檔案路徑',
+	'filepath_page'   => '檔名：',
+	'filepath_submit' => '搵路徑',
+);
+$wgFilepathMessages['zh-hk'] = $wgFilepathMessages['zh-tw'];
+$wgFilepathMessages['zh-sg'] = $wgFilepathMessages['zh-cn'];
 ?>

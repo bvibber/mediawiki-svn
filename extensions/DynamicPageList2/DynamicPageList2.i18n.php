@@ -222,5 +222,219 @@ $wgDPL2Messages['nl'] = array(
 	'dpl2_articlecount1' => 'Er is $1 artikel onder deze kop.',
 	'dpl2_articlecount' => 'Er zijn $1 artikelen onder deze kop.'
 );
+$wgDPL2Messages['zh-cn'] = array(
+	/*
+		Debug
+	*/
+	// (FATAL) ERRORS
+	/**
+	 * $0: 'namespace' or 'notnamespace'
+	 * $1: wrong parameter given by user
+	 * $3: list of possible titles of namespaces (except pseudo-namespaces: Media, Special)
+	 */
+	'dpl2_debug_' . DPL2_ERR_WRONGNS => "错误: 错误的 '$0' 参数: '$1'! 帮助:  <code>$0= <i>空白字符串</i> (主)$3</code>。",
+	/**
+	 * $0: max number of categories that can be included
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOMANYCATS => '错误: 过多分类! 最大值: $0。 帮助: 增加 <code>$wgDPL2MaxCategoryCount</code> 的值去指定更多的分类或设定 <code>$wgDPL2AllowUnlimitedCategories=true</code> 以解除限制。 (当加上 <code>DynamicPageList2.php</code>后，在<code>LocalSettings.php</code>中设定变量。)',
+	/**
+	 * $0: min number of categories that have to be included
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOFEWCATS => '错误: 过少分类! 最小值: $0。 帮助: 减少 <code>$wgDPL2MinCategoryCount</code> 的值去指定更少的分类。 (当加上 <code>DynamicPageList2.php</code>后，在<code>LocalSettings.php</code>中设定一个合适的变量。)',
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTNOINCLUDEDCATS => "错误: 如果您想用 'addfirstcategorydate=true' 或 'ordermethod=categoryadd' ，您需要包含最少一个分类!",
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTMORETHAN1CAT => "错误: 如果您包含多一个分类，您不可以用 'addfirstcategorydate=true' 或 'ordermethod=categoryadd'!",
+	'dpl2_debug_' . DPL2_ERR_MORETHAN1TYPEOFDATE => '错误: 您不可以在一个时间里加入多于一种嘅日期!',
+	/**
+	 * $0: param=val that is possible only with $1 as last 'ordermethod' parameter
+	 * $1: last 'ordermethod' parameter required for $0
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "错误: 你只可以用 'ordermethod=[...,]$1' 在 '$0' 上!",
+	
+	// WARNINGS
+	/**
+	 * $0: unknown parameter given by user
+	 * $1: list of DPL2 available parameters separated by ', '
+	*/
+	'dpl2_debug_' . DPL2_WARN_UNKNOWNPARAM => "警告: 不明的参数 '$0' 被忽略。 帮助: 可用的参数: <code>$1</code>。",
+	/**
+	 * $3: list of valid param values separated by ' | '
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "警告: 错误的 '$0' 参数: '$1'! 正在使用默认值: '$2'。 帮助: <code>$0= $3</code>。",
+	/**
+	 * $0: param name
+	 * $1: wrong param value given by user
+	 * $2: default param value used instead by program
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "警告: 错误的 '$0' 参数: '$1'! 正在使用默认值: '$2' (没有上限)。 帮助: <code>$0= <i>空白字符串</i> (没有上限) | n</code>, <code>n</code>是一个正整数。",
+	'dpl2_debug_' . DPL2_WARN_NORESULTS => '警告: 无结果!',
+	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "警告: 强烈建议，只可利用 'count' 参数去设定结果上限，或者包含最少一个分类／空间名。不然的话，整个页表会花费很好多资源和时间产生。",
+	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "警告: 加入* 参数 ('adduser', 'addeditdate', 等)' 是对 'mode=category' 没有作用。只有页面空间名／标题才可以在这个模式度看到。",
+	/**
+	 * $0: 'headingmode' value given by user
+	 * $1: value used instead by program (which means no heading)
+	*/
+	'dpl2_debug_' . DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD => "警告: 在单一部件中， 'ordermethod' 用 'headingmode=$0' 是没有作用的。 正在使用: '$1'。 帮助: 你可以用非$1 'headingmode' 数值，在多个部件中用 'ordermethod' 。第一个部是用来作标题。例如在分类标题中用 'ordermethod=category,<i>comp</i>' (<i>comp</i>是另外一个部件) 。",
+	/**
+	 * $0: 'debug' value
+	*/
+	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "警告: 'debug=$0' 不是第一个在DPL元素嘅第一位置。新的除错设定在所有参数都能处理和检查前都不会应用。",
 
+	// OTHERS
+	/**
+	 * $0: SQL query executed to generate the dynamic page list
+	*/
+	'dpl2_debug_' . DPL2_QUERY => '查訽: <code>$0</code>',
+
+	/*
+	   Output formatting
+	*/
+	/**
+	 * $1: number of articles
+	*/
+	'dpl2_articlecount' => '在这个标题中有$1篇条目。'
+);
+$wgDPL2Messages['zh-tw'] = array(
+	/*
+		Debug
+	*/
+	// (FATAL) ERRORS
+	/**
+	 * $0: 'namespace' or 'notnamespace'
+	 * $1: wrong parameter given by user
+	 * $3: list of possible titles of namespaces (except pseudo-namespaces: Media, Special)
+	 */
+	'dpl2_debug_' . DPL2_ERR_WRONGNS => "錯誤: 錯誤的 '$0' 參數: '$1'! 說明:  <code>$0= <i>空白字串</i> (主)$3</code>。",
+	/**
+	 * $0: max number of categories that can be included
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOMANYCATS => '錯誤: 過多分類! 最大值: $0。 說明: 增加 <code>$wgDPL2MaxCategoryCount</code> 的值去指定更多的分類或設定 <code>$wgDPL2AllowUnlimitedCategories=true</code> 以解除限制。 (當加上 <code>DynamicPageList2.php</code>後，在<code>LocalSettings.php</code>中設定變數。)',
+	/**
+	 * $0: min number of categories that have to be included
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOFEWCATS => '錯誤: 過少分類! 最小值: $0。 說明: 減少 <code>$wgDPL2MinCategoryCount</code> 的值去指定更少的分類。 (當加上 <code>DynamicPageList2.php</code>後，在<code>LocalSettings.php</code>中設定一個合適的變數。)',
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTNOINCLUDEDCATS => "錯誤: 如果您想用 'addfirstcategorydate=true' 或 'ordermethod=categoryadd' ，您需要包含最少一個分類!",
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTMORETHAN1CAT => "錯誤: 如果您包含多一個分類，您不可以用 'addfirstcategorydate=true' 或 'ordermethod=categoryadd'!",
+	'dpl2_debug_' . DPL2_ERR_MORETHAN1TYPEOFDATE => '錯誤: 您不可以在一個時間裡加入多於一種嘅日期!',
+	/**
+	 * $0: param=val that is possible only with $1 as last 'ordermethod' parameter
+	 * $1: last 'ordermethod' parameter required for $0
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "錯誤: 你只可以用 'ordermethod=[...,]$1' 在 '$0' 上!",
+	
+	// WARNINGS
+	/**
+	 * $0: unknown parameter given by user
+	 * $1: list of DPL2 available parameters separated by ', '
+	*/
+	'dpl2_debug_' . DPL2_WARN_UNKNOWNPARAM => "警告: 不明的參數 '$0' 被忽略。 說明: 可用的參數: <code>$1</code>。",
+	/**
+	 * $3: list of valid param values separated by ' | '
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "警告: 錯誤的 '$0' 參數: '$1'! 正在使用預設值: '$2'。 說明: <code>$0= $3</code>。",
+	/**
+	 * $0: param name
+	 * $1: wrong param value given by user
+	 * $2: default param value used instead by program
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "警告: 錯誤的 '$0' 參數: '$1'! 正在使用預設值: '$2' (沒有上限)。 說明: <code>$0= <i>空白字串</i> (沒有上限) | n</code>, <code>n</code>是一個正整數。",
+	'dpl2_debug_' . DPL2_WARN_NORESULTS => '警告: 無結果!',
+	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "警告: 強烈建議，只可利用 'count' 參數去設定結果上限，或者包含最少一個分類／空間名。不然的話，整個頁表會花費很好多資源和時間產生。",
+	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "警告: 加入* 參數 ('adduser', 'addeditdate', 等)' 是對 'mode=category' 沒有作用。只有頁面空間名／標題才可以在這個模式度看到。",
+	/**
+	 * $0: 'headingmode' value given by user
+	 * $1: value used instead by program (which means no heading)
+	*/
+	'dpl2_debug_' . DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD => "警告: 在單一部件中， 'ordermethod' 用 'headingmode=$0' 是沒有作用的。 正在使用: '$1'。 說明: 你可以用非$1 'headingmode' 數值，在多個部件中用 'ordermethod' 。第一個部是用來作標題。例如在分類標題中用 'ordermethod=category,<i>comp</i>' (<i>comp</i>是另外一個部件) 。",
+	/**
+	 * $0: 'debug' value
+	*/
+	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "警告: 'debug=$0' 不是第一個在DPL元素嘅第一位置。新的除錯設定在所有參數都能處理和檢查前都不會應用。",
+
+	// OTHERS
+	/**
+	 * $0: SQL query executed to generate the dynamic page list
+	*/
+	'dpl2_debug_' . DPL2_QUERY => '查訽: <code>$0</code>',
+
+	/*
+	   Output formatting
+	*/
+	/**
+	 * $1: number of articles
+	*/
+	'dpl2_articlecount' => '在這個標題中有$1篇條目。'
+);
+$wgDPL2Messages['zh-yue'] = array(
+	/*
+		Debug
+	*/
+	// (FATAL) ERRORS
+	/**
+	 * $0: 'namespace' or 'notnamespace'
+	 * $1: wrong parameter given by user
+	 * $3: list of possible titles of namespaces (except pseudo-namespaces: Media, Special)
+	 */
+	'dpl2_debug_' . DPL2_ERR_WRONGNS => "錯誤: 錯嘅 '$0' 參數: '$1'! 幫助:  <code>$0= <i>空字串</i> (主)$3</code>。",
+	/**
+	 * $0: max number of categories that can be included
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOMANYCATS => '錯誤: 太多分類! 最大值: $0。 幫助: 增加 <code>$wgDPL2MaxCategoryCount</code> 嘅值去指定更多嘅分類或者設定 <code>$wgDPL2AllowUnlimitedCategories=true</code> 以解除限制。 (當加上 <code>DynamicPageList2.php</code>之後，響<code>LocalSettings.php</code>度設定變數。)',
+	/**
+	 * $0: min number of categories that have to be included
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOFEWCATS => '錯誤: 太少分類! 最小值: $0. 幫助: 減少 <code>$wgDPL2MinCategoryCount</code> 嘅值去指定更少嘅分類。 (當加上 <code>DynamicPageList2.php</code>之後，響<code>LocalSettings.php</code>度設定一個合適嘅變數。)',
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTNOINCLUDEDCATS => "錯誤: 如果你想去用 'addfirstcategorydate=true' 或者 'ordermethod=categoryadd' ，你需要包含最少一個分類!",
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTMORETHAN1CAT => "錯誤: 如果你包含多過一個分類，你唔可以用 'addfirstcategorydate=true' 或者 'ordermethod=categoryadd'!",
+	'dpl2_debug_' . DPL2_ERR_MORETHAN1TYPEOFDATE => '錯誤: 你唔可以響一個時間度加入多個一種嘅日期!',
+	/**
+	 * $0: param=val that is possible only with $1 as last 'ordermethod' parameter
+	 * $1: last 'ordermethod' parameter required for $0
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "錯誤: 你只可以用 'ordermethod=[...,]$1' 響 '$0' 上!",
+	
+	// WARNINGS
+	/**
+	 * $0: unknown parameter given by user
+	 * $1: list of DPL2 available parameters separated by ', '
+	*/
+	'dpl2_debug_' . DPL2_WARN_UNKNOWNPARAM => "警告: 不明嘅參數 '$0' 被忽略。 幫助: 可用嘅參數: <code>$1</code>。",
+	/**
+	 * $3: list of valid param values separated by ' | '
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "警告: 錯誤嘅 '$0' 參數: '$1'! 用緊預設嘅: '$2'。 幫助: <code>$0= $3</code>。",
+	/**
+	 * $0: param name
+	 * $1: wrong param value given by user
+	 * $2: default param value used instead by program
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "警告: 錯誤嘅 '$0' 參數: '$1'! 用緊預設嘅: '$2' (冇上限)。 幫助: <code>$0= <i>空字串</i> (冇上限) | n</code>, <code>n</code>係一個正整數。",
+	'dpl2_debug_' . DPL2_WARN_NORESULTS => '警告: 無結果!',
+	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "警告: 強烈建議，一係就利用 'count' 參數去設定結果上限，或者包含最少一個分類／空間名。唔係嘅話，整個頁表會嘥好多資源同時間。",
+	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "警告: 加入* 參數 ('adduser', 'addeditdate', 等)' 係對 'mode=category' 冇作用嘅。只有頁空間名／標題至可以響呢個模式度睇到。",
+	/**
+	 * $0: 'headingmode' value given by user
+	 * $1: value used instead by program (which means no heading)
+	*/
+	'dpl2_debug_' . DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD => "警告: 響單一部件中， 'ordermethod' 度用 'headingmode=$0' 係冇作用嘅。 用緊: '$1'。 幫助: 你可以用非$1 'headingmode' 數值，響多個部件中用 'ordermethod' 。第一個部件係用嚟做標題。例如響分類標題度用 'ordermethod=category,<i>comp</i>' (<i>comp</i>係另外一個部件) 。",
+	/**
+	 * $0: 'debug' value
+	*/
+	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "警告: 'debug=$0' 唔係第一個響DPL元素嘅第一位。新嘅除錯設定響所有參數都能夠處理同檢查之前都唔會應用。",
+
+	// OTHERS
+	/**
+	 * $0: SQL query executed to generate the dynamic page list
+	*/
+	'dpl2_debug_' . DPL2_QUERY => '查訽: <code>$0</code>',
+
+	/*
+	   Output formatting
+	*/
+	/**
+	 * $1: number of articles
+	*/
+	'dpl2_articlecount' => '響呢個標題度有$1篇文。'
+);
+$wgDPL2Messages['zh-hk'] = $wgDPL2Messages['zh-tw'];
+$wgDPL2Messages['zh-sg'] = $wgDPL2Messages['zh-cn'];
 ?>
