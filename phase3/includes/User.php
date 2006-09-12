@@ -42,8 +42,87 @@ class User {
 	var $mSkin;			//!<
 	var $mToken;		//!<
 	var $mTouched;		//!<
+	var $mDatePreference; // !<
 	var $mVersion;		//!< serialized version
 	/**@}} */
+
+	/**
+	 * Default user options
+	 * To change this array at runtime, use a UserDefaultOptions hook
+	 */
+	static public $mDefaultOptions = array( 
+		'quickbar' 		=> 1,
+		'underline' 		=> 2,
+		'cols'			=> 80,
+		'rows' 			=> 25,
+		'searchlimit' 		=> 20,
+		'contextlines' 		=> 5,
+		'contextchars' 		=> 50,
+		'skin' 			=> false,
+		'math' 			=> 1,
+		'rcdays' 		=> 7,
+		'rclimit' 		=> 50,
+		'wllimit' 		=> 250,
+		'highlightbroken'	=> 1,
+		'stubthreshold' 	=> 0,
+		'previewontop' 		=> 1,
+		'editsection'		=> 1,
+		'editsectiononrightclick'=> 0,
+		'showtoc'		=> 1,
+		'showtoolbar' 		=> 1,
+		'date' 			=> 'default',
+		'imagesize' 		=> 2,
+		'thumbsize'		=> 2,
+		'rememberpassword' 	=> 0,
+		'enotifwatchlistpages' 	=> 0,
+		'enotifusertalkpages' 	=> 1,
+		'enotifminoredits' 	=> 0,
+		'enotifrevealaddr' 	=> 0,
+		'shownumberswatching' 	=> 1,
+		'fancysig' 		=> 0,
+		'externaleditor' 	=> 0,
+		'externaldiff' 		=> 0,
+		'showjumplinks'		=> 1,
+		'numberheadings'	=> 0,
+		'uselivepreview'	=> 0,
+		'watchlistdays' 	=> 3.0,
+	);
+
+	static public $mToggles = array(
+		'highlightbroken',
+		'justify',
+		'hideminor',
+		'extendwatchlist',
+		'usenewrc',
+		'numberheadings',
+		'showtoolbar',
+		'editondblclick',
+		'editsection',
+		'editsectiononrightclick',
+		'showtoc',
+		'rememberpassword',
+		'editwidth',
+		'watchcreations',
+		'watchdefault',
+		'minordefault',
+		'previewontop',
+		'previewonfirst',
+		'nocache',
+		'enotifwatchlistpages',
+		'enotifusertalkpages',
+		'enotifminoredits',
+		'enotifrevealaddr',
+		'shownumberswatching',
+		'fancysig',
+		'externaleditor',
+		'externaldiff',
+		'showjumplinks',
+		'uselivepreview',
+		'autopatrol',
+		'forceeditsummary',
+		'watchlisthideown',
+		'watchlisthidebots',
+	);		
 
 	/** Constructor using User:loadDefaults() */
 	function User()	{
@@ -347,11 +426,9 @@ class User {
 		$this->mPassword = $this->mNewpassword = '';
 		$this->mRights = array();
 		$this->mGroups = array();
-		$this->mOptions = User::getDefaultOptions();
+		$this->mOptions = null;
+		$this->mDatePreference = null;
 
-		foreach( $wgNamespacesToBeSearchedDefault as $nsnum => $val ) {
-			$this->mOptions['searchNs'.$nsnum] = $val;
-		}
 		unset( $this->mSkin );
 		$this->mDataLoaded = false;
 		$this->mBlockedby = -1; # Unset
@@ -379,19 +456,23 @@ class User {
 	 * @private
 	 */
 	function getDefaultOptions() {
+		global $wgNamespacesToBeSearchedDefault;
 		/**
 		 * Site defaults will override the global/language defaults
 		 */
-		global $wgContLang, $wgDefaultUserOptions;
-		$defOpt = $wgDefaultUserOptions + $wgContLang->getDefaultUserOptions();
+		global $wgContLang;
+		$defOpt = self::$mDefaultOptions + $wgContLang->getDefaultUserOptionOverrides();
 
 		/**
 		 * default language setting
 		 */
-		$variant = $wgContLang->getPreferredVariant();
+		$variant = $wgContLang->getPreferredVariant( false );
 		$defOpt['variant'] = $variant;
 		$defOpt['language'] = $variant;
 
+		foreach( $wgNamespacesToBeSearchedDefault as $nsnum => $val ) {
+			$defOpt['searchNs'.$nsnum] = $val;
+		}
 		return $defOpt;
 	}
 
@@ -411,6 +492,18 @@ class User {
 			return '';
 		}
 	}
+
+	/**
+	 * Get a list of user toggle names
+	 * @return array
+	 */
+	static function getToggles() {
+		global $wgContLang;
+		$extraToggles = array();
+		wfRunHooks( 'UserToggles', array( &$extraToggles ) );
+		return array_merge( self::$mToggles, $extraToggles, $wgContLang->getExtraUserToggles() );
+	}
+
 
 	/**
 	 * Get blocking information
@@ -450,7 +543,6 @@ class User {
 		}
 
 		# Proxy blocking
-		# FIXME ? proxyunbannable is to deprecate the old isSysop()
 		if ( !$this->isAllowed('proxyunbannable') && !in_array( $ip, $wgProxyWhitelist ) ) {
 
 			# Local list
@@ -638,19 +730,10 @@ class User {
 
 	/**
 	 * Initialise php session
+	 * @deprecated use wfSetupSession()
 	 */
 	function SetupSession() {
-		global $wgSessionsInMemcached, $wgCookiePath, $wgCookieDomain;
-		if( $wgSessionsInMemcached ) {
-			require_once( 'MemcachedSessions.php' );
-		} elseif( 'files' != ini_get( 'session.save_handler' ) ) {
-			# If it's left on 'user' or another setting from another
-			# application, it will end up failing. Try to recover.
-			ini_set ( 'session.save_handler', 'files' );
-		}
-		session_set_cookie_params( 0, $wgCookiePath, $wgCookieDomain );
-		session_cache_limiter( 'private, must-revalidate' );
-		@session_start();
+		wfSetupSession();
 	}
 
 	/**
@@ -1063,11 +1146,31 @@ class User {
 	 */
 	function getOption( $oname ) {
 		$this->loadFromDatabase();
+		if ( is_null( $this->mOptions ) ) {
+			$this->mOptions = User::getDefaultOptions();
+		}
 		if ( array_key_exists( $oname, $this->mOptions ) ) {
 			return trim( $this->mOptions[$oname] );
 		} else {
 			return '';
 		}
+	}
+
+	/**
+	 * Get the user's date preference, including some important migration for 
+	 * old user rows.
+	 */
+	function getDatePreference() {
+		if ( is_null( $this->mDatePreference ) ) {
+			global $wgLang;
+			$value = $this->getOption( 'date' );
+			$map = $wgLang->getDatePreferenceMigrationMap();
+			if ( isset( $map[$value] ) ) {
+				$value = $map[$value];
+			}
+			$this->mDatePreference = $value;
+		}
+		return $this->mDatePreference;
 	}
 
 	/**
@@ -1094,6 +1197,9 @@ class User {
 
 	function setOption( $oname, $val ) {
 		$this->loadFromDatabase();
+		if ( is_null( $this->mOptions ) ) {
+			$this->mOptions = User::getDefaultOptions();
+		}
 		if ( $oname == 'skin' ) {
 			# Clear cached skin, so the new one displays immediately in Special:Preferences
 			unset( $this->mSkin );
@@ -1201,44 +1307,16 @@ class User {
 	}
 
 	/**
-	 * Deprecated in 1.6, die in 1.7, to be removed in 1.8
-	 * @deprecated
-	 */
-	function isSysop() {
-		throw new MWException( "Call to deprecated (v1.7) User::isSysop() method\n" );
-		#return $this->isAllowed( 'protect' );
-	}
-
-	/**
-	 * Deprecated in 1.6, die in 1.7, to be removed in 1.8
-	 * @deprecated
-	 */
-	function isDeveloper() {
-		throw new MWException( "Call to deprecated (v1.7) User::isDeveloper() method\n" );
-		#return $this->isAllowed( 'siteadmin' );
-	}
-
-	/**
-	 * Deprecated in 1.6, die in 1.7, to be removed in 1.8
-	 * @deprecated
-	 */
-	function isBureaucrat() {
-		throw new MWException( "Call to deprecated (v1.7) User::isBureaucrat() method\n" );
-		#return $this->isAllowed( 'makesysop' );
-	}
-
-	/**
 	 * Whether the user is a bot
-	 * @todo need to be migrated to the new user level management sytem
+	 * @deprecated
 	 */
 	function isBot() {
-		$this->loadFromDatabase();
-		return in_array( 'bot', $this->mRights );
+		return $this->isAllowed( 'bot' );
 	}
 
 	/**
 	 * Check if user is allowed to access a feature / make an action
-	 * @param string $action Action to be checked (see $wgAvailableRights in Defines.php for possible actions).
+	 * @param string $action Action to be checked
 	 * @return boolean True: action is allowed, False: action should not be allowed
 	 */
 	function isAllowed($action='') {
@@ -1393,6 +1471,9 @@ class User {
 	 * @return string Encoding options
 	 */
 	function encodeOptions() {
+		if ( is_null( $this->mOptions ) ) {
+			$this->mOptions = User::getDefaultOptions();
+		}
 		$a = array();
 		foreach ( $this->mOptions as $oname => $oval ) {
 			array_push( $a, $oname.'='.$oval );
@@ -1405,6 +1486,9 @@ class User {
 	 * @private
 	 */
 	function decodeOptions( $str ) {
+		global $wgLang;
+		
+		$this->mOptions = array();
 		$a = explode( "\n", $str );
 		foreach ( $a as $s ) {
 			if ( preg_match( "/^(.[^=]*)=(.*)$/", $s, $m ) ) {
@@ -1590,7 +1674,7 @@ class User {
 	 * @return string
 	 */
 	function getPageRenderingHash() {
-		global $wgContLang;
+		global $wgContLang, $wgUseDynamicDates;
 		if( $this->mHash ){
 			return $this->mHash;
 		}
@@ -1600,7 +1684,9 @@ class User {
 
 		$confstr =        $this->getOption( 'math' );
 		$confstr .= '!' . $this->getOption( 'stubthreshold' );
-		$confstr .= '!' . $this->getOption( 'date' );
+		if ( $wgUseDynamicDates ) {
+			$confstr .= '!' . $this->getDatePreference();
+		}
 		$confstr .= '!' . ($this->getOption( 'numberheadings' ) ? '1' : '');
 		$confstr .= '!' . $this->getOption( 'language' );
 		$confstr .= '!' . $this->getOption( 'thumbsize' );
@@ -1915,7 +2001,7 @@ class User {
 	 * @return array list of permission key names for given groups combined
 	 * @static
 	 */
-	function getGroupPermissions( $groups ) {
+	static function getGroupPermissions( $groups ) {
 		global $wgGroupPermissions;
 		$rights = array();
 		foreach( $groups as $group ) {
@@ -1932,10 +2018,10 @@ class User {
 	 * @return string localized descriptive name for group, if provided
 	 * @static
 	 */
-	function getGroupName( $group ) {
+	static function getGroupName( $group ) {
 		$key = "group-$group";
 		$name = wfMsg( $key );
-		if( $name == '' || $name == "&lt;$key&gt;" ) {
+		if( $name == '' || wfEmptyMsg( $key, $name ) ) {
 			return $group;
 		} else {
 			return $name;
@@ -1947,16 +2033,15 @@ class User {
 	 * @return string localized descriptive name for member of a group, if provided
 	 * @static
 	 */
-	function getGroupMember( $group ) {
+	static function getGroupMember( $group ) {
 		$key = "group-$group-member";
 		$name = wfMsg( $key );
-		if( $name == '' || $name == "&lt;$key&gt;" ) {
+		if( $name == '' || wfEmptyMsg( $key, $name ) ) {
 			return $group;
 		} else {
 			return $name;
 		}
 	}
-
 
 	/**
 	 * Return the set of defined explicit groups.
@@ -1966,20 +2051,20 @@ class User {
 	 * @return array
 	 * @static
 	 */
-	function getAllGroups() {
+	static function getAllGroups() {
 		global $wgGroupPermissions;
 		return array_diff(
 			array_keys( $wgGroupPermissions ),
 			array( '*', 'user', 'autoconfirmed', 'emailconfirmed' ) );
 	}
-	
+
 	/**
 	 * Get the title of a page describing a particular group
 	 *
 	 * @param $group Name of the group
 	 * @return mixed
 	 */
-	function getGroupPage( $group ) {
+	static function getGroupPage( $group ) {
 		$page = wfMsgForContent( 'grouppage-' . $group );
 		if( !wfEmptyMsg( 'grouppage-' . $group, $page ) ) {
 			$title = Title::newFromText( $page );
@@ -1988,8 +2073,47 @@ class User {
 		}
 		return false;
 	}
-	
-	
+
+	/**
+	 * Create a link to the group in HTML, if available
+	 *
+	 * @param $group Name of the group
+	 * @param $text The text of the link
+	 * @return mixed
+	 */
+	static function makeGroupLinkHTML( $group, $text = '' ) {
+		if( $text == '' ) {
+			$text = self::getGroupName( $group );
+		}
+		$title = self::getGroupPage( $group );
+		if( $title ) {
+			global $wgUser;
+			$sk = $wgUser->getSkin();
+			return $sk->makeLinkObj( $title, $text );
+		} else {
+			return $text;
+		}
+	}
+
+	/**
+	 * Create a link to the group in Wikitext, if available
+	 *
+	 * @param $group Name of the group
+	 * @param $text The text of the link (by default, the name of the group)
+	 * @return mixed
+	 */
+	static function makeGroupLinkWiki( $group, $text = '' ) {
+		if( $text == '' ) {
+			$text = self::getGroupName( $group );
+		}
+		$title = self::getGroupPage( $group );
+		if( $title ) {
+			$page = $title->getPrefixedText();
+			return "[[$page|$text]]";
+		} else {
+			return $text;
+		}
+	}
 }
 
 ?>

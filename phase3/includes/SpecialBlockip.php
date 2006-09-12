@@ -143,26 +143,35 @@ class IPBlockForm {
 			<td>&nbsp;</td>
 			<td align=\"left\">
 				" . wfCheckLabel( wfMsg( 'ipbanononly' ),
-					'wpAnonOnly', 'wpAnonOnly', $this->BlockAnonOnly ) . "
+					'wpAnonOnly', 'wpAnonOnly', $this->BlockAnonOnly,
+					array( 'tabindex' => 4 ) ) . "
 			</td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
 			<td align=\"left\">
 				" . wfCheckLabel( wfMsg( 'ipbcreateaccount' ),
-					'wpCreateAccount', 'wpCreateAccount', $this->BlockCreateAccount ) . "
+					'wpCreateAccount', 'wpCreateAccount', $this->BlockCreateAccount,
+					array( 'tabindex' => 5 ) ) . "
 			</td>
 		</tr>
 		<tr>
 			<td style='padding-top: 1em'>&nbsp;</td>
 			<td style='padding-top: 1em' align=\"left\">
-				<input tabindex='4' type='submit' name=\"wpBlock\" value=\"{$mIpbsubmit}\" />
+				<input tabindex='5' type='submit' name=\"wpBlock\" value=\"{$mIpbsubmit}\" />
 			</td>
 		</tr>
 	</table>
 	<input type='hidden' name='wpEditToken' value=\"{$token}\" />
 </form>\n" );
 
+		$user = User::newFromName( $this->BlockAddress );
+		if( is_object( $user ) ) {
+			$this->showLogFragment( $wgOut, $user->getUserPage() );
+		} elseif( preg_match( '/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/', $this->BlockAddress ) ) {
+			$this->showLogFragment( $wgOut, Title::makeTitle( NS_USER, $this->BlockAddress ) );
+		}
+	
 	}
 
 	function doSubmit() {
@@ -265,6 +274,14 @@ class IPBlockForm {
 		$text = wfMsg( 'blockipsuccesstext', $this->BlockAddress );
 		$wgOut->addWikiText( $text );
 	}
+	
+	function showLogFragment( &$out, &$title ) {
+		$out->addHtml( wfElement( 'h2', NULL, LogPage::logName( 'block' ) ) );
+		$request = new FauxRequest( array( 'page' => $title->getPrefixedText(), 'type' => 'block' ) );
+		$viewer = new LogViewer( new LogReader( $request ) );
+		$viewer->showList( $out );
+	}
+	
 }
 
 ?>

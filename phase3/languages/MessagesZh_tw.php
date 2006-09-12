@@ -1,7 +1,61 @@
 <?php
+/**
+  * @package MediaWiki
+  * @subpackage Language
+  */
+
+$fallback = 'zh-cn';
+
+$namespaceNames = array(
+	NS_MEDIA            => "媒體",
+	NS_SPECIAL          => "特殊",
+	NS_MAIN             => "",
+	NS_TALK             => "討論",
+	NS_USER             => "用戶",
+	NS_USER_TALK        => "用戶討論",
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1討論',
+	NS_IMAGE            => "圖像",
+	NS_IMAGE_TALK       => "圖像討論",
+	NS_MEDIAWIKI        => "媒體維基",
+	NS_MEDIAWIKI_TALK   => "媒體維基討論",
+	NS_TEMPLATE         => "樣板",
+	NS_TEMPLATE_TALK    => "樣板討論",
+	NS_HELP             => "幫助",
+	NS_HELP_TALK        => "幫助討論",
+	NS_CATEGORY         => "分類",
+	NS_CATEGORY_TALK    => "分類討論"
+);
+
+$namespaceAliases = array(
+	"對話" => NS_TALK,
+	"用戶對話" => NS_USER_TALK,
+	"維基百科對話" => NS_PROJECT_TALK,
+	"圖像對話" => NS_IMAGE_TALK,
+);
+
+$quickbarSettings = array(
+        "無", /* "None" */
+	"左側固定", /* "Fixed left" */
+	"右側固定", /* "Fixed right" */
+	"左側漂移" /* "Floating left" */
+);
+
+$skinNames = array(
+        "標準",/* "Standard" */
+	"懷舊",/* "Nostalgia" */
+	"科隆香水藍" /* "Cologne Blue" */
+);
+
+$bookstoreList = array(
+	"博客來書店" => "http://www.books.com.tw/exep/openfind_book_keyword.php?cat1=4&key1=$1",
+	"三民書店" => "http://www.sanmin.com.tw/page-qsearch.asp?ct=search_isbn&qu=$1",
+	"天下書店" => "http://www.cwbook.com.tw/cw/TS.jsp?schType=product.isbn&schStr=$1",
+	"新絲書店" => "http://www.silkbook.com/function/Search_List_Book.asp?item=5&text=$1"
+);
 
 
-/* private */ $wgAllMessagesZh_tw = array(
+$messages = array(
 
 /* User toggles */
 	"tog-underline" => "下劃鏈結", /* "Underline links", */
@@ -27,10 +81,8 @@
 # Bits of text used by many pages:
 #
 "categories" => "頁面分類",
-"category" => "分類",
 "category_header" => "類別”$1“中的條目",
 "subcategories" => "子分類",
-"linktrail"		=> "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "首頁",
 "about"			=> "關於",
 "aboutpage"		=> "{{ns:project}}:關於",
@@ -57,6 +109,7 @@
 "whatlinkshere"	=> "鏈入頁面",
 "help"			=> "幫助",
 "search"		=> "搜索",
+"searchbutton"	=> "搜索",
 "go"		=> "進入",
 "history"		=> "較早版本",
 "printableversion" => "可列印版",
@@ -68,7 +121,6 @@
 "talkpage"		=> "討論本頁",
 	 "postcomment"   => "發表評論",
 "articlepage"	=> "查看文章",
-"subjectpage"	=> "查看主題", # For compatibility
 "userpage" => "查看用戶頁",
 "projectpage" => "查看元維基頁",
 "imagepage" => 	"查看圖像頁面",
@@ -78,18 +130,9 @@
 "lastmodified"	=> "最後更改$1.",
 "viewcount"		=> "本頁面已經被瀏覽$1次。",
 "protectedpage" => "被保護頁",
-"administrators" => "{{ns:project}}:管理員",
-"sysoptitle"	=> "需要管理員權限",
-"sysoptext"		=> "您剛才的請求只有擁有管理員權限的用戶才可使用。
-參見$1。",
-"developertitle" => "需要發展者權限",
-"developertext"	=> "您剛才的請求只有擁有發展者權限的用戶才可使用。
-參見$1。",
 "nbytes"		=> "$1字節",
 "go"			=> "進入",
 "ok"			=> "好",
-"sitetitle"		=> "{{SITENAME}}",
-"sitesubtitle"	=> "",
 "retrievedfrom" => "取自\"$1\"",
 "newmessageslink" => "新信息",
 "editsection"=>"編輯",
@@ -386,19 +429,14 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 限制的材料，這一點將非常重要。相關的法律責任會傷害本項工程，所以請不要這樣做。
 此外請參見",
 
-"rcloaderr"		=> "載入最近更改",
 "rcnote"		=> "下面是最近<strong>$2</strong>天內最新的<strong>$1</strong>次改動。",
 "rcnotefrom"	=> "下面是自<b>$2</b>（最多顯示<b>$1</b>）。",
 "rclistfrom"	=> "顯示自$1以來的新更改",
 "rclinks"		=> "顯示最近 $2 天內最新的 $1 次改動。<br />$3",
-"rchide"		=> "以$4形式；$1個小修改；$2個二級名字空間；$3個多重修改",
 "diff"			=> "差異",
 "hist"			=> "歷史",
 "hide"			=> "隱藏",
 "show"			=> "顯示",
-"tableform"		=> "表格",
-"listform"		=> "列表",
-"nchanges"		=> "$1個更改",
 "minoreditletter" => "小",
 "newpageletter" => "新",
 
@@ -406,7 +444,6 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 #
 "upload"		=> "上載文件",
 "uploadbtn"		=> "上載文件",
-"uploadlink"	=> "上載圖像",
 "reupload"		=> "重新上載",
 "reuploaddesc"	=> "返回上載表單。",
 "uploadnologin" => "未登錄",
@@ -494,11 +531,6 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 
 # Maintenance Page
 #
-"maintenance"		=> "維護頁",
-"maintnancepagetext"	=> "這頁面提供了幾個幫助{{SITENAME}}日常維護的工具。
-但其中幾個會對我們的數據庫造成壓力，
-所以請您不要在每修理好幾個項目後就按重新載入 ;-)",
-"maintenancebacklink"	=> "返回維護頁",
 "disambiguations"	=> "消含糊頁",
 "disambiguationspage"	=> "{{ns:project}}:鏈接到消歧義的頁面",
 "disambiguationstext"	=> "以下的條目都有到消含糊頁的鏈接，但它們應該是鏈到適當的題目。<br />一個頁面會被視為消含糊頁如果它是鏈自$1.<br />由其它他名字空間來的鏈接<i>不會</i>在這兒被列出來。",
@@ -509,19 +541,9 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 通常顯示的都會是\“真正\” 的目標頁面，也就是第一個重定向頁應該指向的條目。",
 "brokenredirects"	=> "損壞的重定向頁",
 "brokenredirectstext"	=> "以下的重定向頁指向的是不存在的條目。",
-"selflinks"		=> "有自我鏈接的頁面",
-"selflinkstext"		=> "以下的頁面都錯誤地包含了連到自己的鏈接。",
-"mispeelings"           => "拼寫錯誤的頁面",
-"mispeelingstext"               => "以下頁面包含了一些常見的拼寫錯誤（見$1）。正確的拼法已經給出。",
-"mispeelingspage"       => "常見拼寫錯誤列表",
-"missinglanguagelinks"  => "無語言鏈接",
-"missinglanguagelinksbutton"    => "尋找沒有該語言的頁面",
-"missinglanguagelinkstext"      => "這些條目<i>沒有</i>鏈接到$1。
-重定向頁與副頁<b>並沒有</b>包括在內。",
 
 # Miscellaneous special pages
 #
-"orphans"		=> "孤立條目",
 "lonelypages"	=> "孤立頁面",
 "unusedimages"	=> "未使用圖像",
 "popularpages"	=> "熱點條目",
@@ -535,10 +557,8 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 "listusers"		=> "用戶列表",
 "specialpages"	=> "特殊頁面",
 "spheading"		=> "特殊頁面",
-"protectpage"	=> "保護頁面",
 "recentchangeslinked" => "鏈出更改",
 "rclsub"		=> "（從 \"$1\"鏈出的頁面）",
-"debug"			=> "除錯",
 "newpages"		=> "新頁面",
 "intl"		=> "跨語言鏈接",
 "movethispage"	=> "移動本頁",
@@ -575,7 +595,6 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 # Watchlist
 #
 "watchlist"		=> "監視列表",
-"watchlistsub"	=> "(用戶\"$1\")",
 "nowatchlist"	=> "您的監視列表為空。",
 "watchnologin"	=> "未登錄",
 "watchnologintext"	=> "您必須先[[Special:Userlogin|登錄]]
@@ -649,8 +668,6 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 "undeleterevision" => "刪除$1時的版本",
 "undeletebtn" => "恢復！",
 "undeletedarticle" => "已經恢復“$1”",
-"undeletedtext"   => "[[:$1|$1]]已經被成功復原。
-有關{{SITENAME}}最近的刪除與復原，參見[[{{ns:project}}:刪除紀錄]]",
 
 # Contributions
 #
@@ -688,7 +705,6 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 "unblockip"		=> "解除禁封網址",
 "unblockiptext"	=> "用下面的表單來恢復先前被禁封的網址的書寫權。",
 "ipusubmit"		=> "解除禁封",
-"ipusuccess"	=> "網址”$1”已經被解除禁封",
 "ipblocklist"	=> "被封網址列表",
 "blocklistline"	=> "$1，$2禁封$3 ($4)",
 "blocklink"		=> "禁封",
@@ -759,7 +775,6 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 '1movedto2' => "$1移動到$2", //"$1 moved to $2",
 '1movedto2_redir' => "$1重定向到$2", //"$1 moved to $2 over redirect",
 'acct_creation_throttle_hit' => "對不起，您已經註冊了$1賬號。你不能再註冊了。", //"Sorry, you have already created $1 accounts. You can't make any more.",
-'addgroup' => "增加新的組", //"Add Group",
 'allarticles' => "所有條目", //"All articles",
 'allmessages' => "系統界面", //"All system messages",
 'allmessagesnotsupportedDB' => "系統界面功能處於關閉狀態 (wgUseDatabaseMessages)。", //"Special:AllMessages not supported because wgUseDatabaseMessages is off.",
@@ -798,7 +813,6 @@ email address to them, and it can be used to send you a new password if you forg
 'prefs-misc' => "雜項", //"Misc settings",
 'prefs-personal' => "用戶數據",//"User data",
 'prefs-rc' => "最近更新", //"Recent changes and stub display",
-'showhideminor' => "$1 小修改 | $2 bots | $3 登錄用戶 | $4 檢查過的", //"$1 minor edits | $2 bots | $3 logged in users | $4 patrolled edits ",
 'skin' => "面板", //"Skin",
 'talk' => "討論",//"Discussion",
 'timezonelegend' => "時區", //"Time zone",

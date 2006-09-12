@@ -1,7 +1,107 @@
 <?php
+/**
+  * Based on Language.php 1.645
+  * @package MediaWiki
+  * @subpackage Language
+  * Compatible to MediaWiki 1.5
+  * Initial translation by Trần Thế Trung and Nguyễn Thanh Quang
+  * Last update 28 August 2005 (UTC)
+  */
+
+$namespaceNames = array(
+	NS_MEDIA			=> 'Phương_tiện',
+	NS_SPECIAL			=> 'Đặc_biệt',
+	NS_MAIN				=> '',
+	NS_TALK				=> 'Thảo_luận',
+	NS_USER				=> 'Thành_viên',
+	NS_USER_TALK		=> 'Thảo_luận_Thành_viên',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK		=> 'Thảo_luận_$1',
+	NS_IMAGE			=> 'Hình',
+	NS_IMAGE_TALK		=> 'Thảo_luận_Hình',
+	NS_MEDIAWIKI		=> 'MediaWiki',
+	NS_MEDIAWIKI_TALK	=> 'Thảo_luận_MediaWiki',
+	NS_TEMPLATE			=> 'Tiêu_bản',
+	NS_TEMPLATE_TALK	=> 'Thảo_luận_Tiêu_bản',
+	NS_HELP				=> 'Trợ_giúp',
+	NS_HELP_TALK		=> 'Thảo_luận_Trợ_giúp',
+	NS_CATEGORY			=> 'Thể_loại',
+	NS_CATEGORY_TALK	=> 'Thảo_luận_Thể_loại'
+);
+
+$quickbarSettings = array(
+	'Không', 'Trái', 'Phải', 'Nổi bên trái'
+);
+
+$skinNames = array(
+	'standard'		=> 'Cổ điển',
+	'nostalgia'		=> 'Vọng cổ',
+	'myskin'		=> 'Cá nhân'
+);
+
+$magicWords = array(
+	'redirect'               => array( 0,    '#redirect' , '#đổi'             ),
+	'notoc'                  => array( 0,    '__NOTOC__' , '__KHÔNGMỤCMỤC__'             ),
+	'forcetoc'               => array( 0,    '__FORCETOC__', '__LUÔNMỤCLỤC__'        ),
+	'toc'                    => array( 0,    '__TOC__' , '__MỤCLỤC__'               ),
+	'noeditsection'          => array( 0,    '__NOEDITSECTION__', '__KHÔNGSỬAMỤC__'      ),
+	'start'                  => array( 0,    '__START__' , '__BẮTĐẦU__'             ),
+	'currentmonth'           => array( 1,    'CURRENTMONTH' , 'THÁNGNÀY'          ),
+	'currentmonthname'       => array( 1,    'CURRENTMONTHNAME'  , 'TÊNTHÁNGNÀY'     ),
+	'currentmonthnamegen'    => array( 1,    'CURRENTMONTHNAMEGEN' , 'TÊNDÀITHÁNGNÀY'   ),
+	'currentmonthabbrev'     => array( 1,    'CURRENTMONTHABBREV'  , 'TÊNNGẮNTHÁNGNÀY'  ),
+	'currentday'             => array( 1,    'CURRENTDAY'       , 'NGÀYNÀY'     ),
+	'currentdayname'         => array( 1,    'CURRENTDAYNAME'   , 'TÊNNGÀYNÀY'      ),
+	'currentyear'            => array( 1,    'CURRENTYEAR'    , 'NĂMNÀY'        ),
+	'currenttime'            => array( 1,    'CURRENTTIME'     , 'GIỜNÀY'       ),
+	'numberofarticles'       => array( 1,    'NUMBEROFARTICLES'  , 'SỐBÀI'     ),
+	'numberoffiles'          => array( 1,    'NUMBEROFFILES'   , 'SỐTẬPTIN'       ),
+	'pagename'               => array( 1,    'PAGENAME'      , 'TÊNTRANG'        ),
+	'pagenamee'              => array( 1,    'PAGENAMEE'   , 'TÊNTRANG2'           ),
+	'namespace'              => array( 1,    'NAMESPACE'   , 'KHÔNGGIANTÊN'           ),
+	'msg'                    => array( 0,    'MSG:'     , 'NHẮN:'              ),
+	'subst'                  => array( 0,    'SUBST:'   ,  'THẾ:'            ),
+	'msgnw'                  => array( 0,    'MSGNW:'    ,  'NHẮNMỚI:'             ),
+	'end'                    => array( 0,    '__END__'    , '__KẾT__'            ),
+	'img_thumbnail'          => array( 1,    'thumbnail', 'thumb' , 'nhỏ'    ),
+	'img_right'              => array( 1,    'right' , 'phải'                 ),
+	'img_left'               => array( 1,    'left'  , 'trái'                ),
+	'img_none'               => array( 1,    'none'  , 'không'                 ),
+	'img_width'              => array( 1,    '$1px'                   ),
+	'img_center'             => array( 1,    'center', 'centre' , 'giữa'      ),
+	'img_framed'             => array( 1,    'framed', 'enframed', 'frame' , 'khung'),
+	'int'                    => array( 0,    'INT:'                   ),
+	'sitename'               => array( 1,    'SITENAME'  , 'TÊNMẠNG'             ),
+	'ns'                     => array( 0,    'NS:'                    ),
+	'localurl'               => array( 0,    'LOCALURL:'              ),
+	'localurle'              => array( 0,    'LOCALURLE:'             ),
+	'server'                 => array( 0,    'SERVER'    , 'MÁYCHỦ'             ),
+	'servername'             => array( 0,    'SERVERNAME' , 'TÊNMÁYCHỦ'            ),
+	'scriptpath'             => array( 0,    'SCRIPTPATH'  , ''           ),
+	'grammar'                => array( 0,    'GRAMMAR:'   , 'NGỮPHÁP'            ),
+	'notitleconvert'         => array( 0,    '__NOTITLECONVERT__',
+'__NOTC__', '__KHÔNGCHUYỂNTÊN__'),
+	'nocontentconvert'       => array( 0,    '__NOCONTENTCONVERT__',
+'__NOCC__', '__KHÔNGCHUYỂNNỘIDUNG__'),
+	'currentweek'            => array( 1,    'CURRENTWEEK' , 'TUẦNNÀY'           ),
+	'currentdow'             => array( 1,    'CURRENTDOW'             ),
+	'revisionid'             => array( 1,    'REVISIONID'  , 'SỐBẢN'           ),
+ );
+
+$dateFormats = array(
+    MW_DATE_DEFAULT => 'Không lựa chọn',
+    1 => '16:12, tháng 1 ngày 15 năm 2001',
+    2 => '16:12, ngày 15 tháng 1 năm 2001',
+    3 => '16:12, năm 2001 tháng 1 ngày 15',
+    4 => '',
+    MW_DATE_ISO => '2001-01-15 16:12:34'
+);
+
+$linkTrail = "/^([a-zàâçéèêîôûäëïöüùÇÉÂÊÎÔÛÄËÏÖÜÀÈÙ]+)(.*)$/sDu";
+$separatorTransformTable = array(',' => '.', '.' => ',' );
 
 
-/* private */ $wgAllMessagesVi = array(
+$messages = array(
 # User Toggles
 
 'tog-editwidth' => 'Cửa sổ soạn thảo mở rộng',
@@ -70,14 +170,10 @@
 
 # Bits of text used by many pages:
 'categories'	=> 'Thể loại',
-'category'	=> 'Thể loại',
 'category_header' => 'Các bài trong Thể loại "$1"',
 'subcategories'	=> 'Tiểu thể loại',
 'subcategorycount' => 'Thể loại này có $1 tiểu thể loại.',
-'subcategorycount1' => 'Thể loại này có $1 tiểu thể loại.',
 'allarticles'   => 'Mọi bài',
-'linktrail'     =>
-"/^([a-zàâçéèêîôûäëïöüùÇÉÂÊÎÔÛÄËÏÖÜÀÈÙ]+)(.*)$/sD",
 'mainpage'      => 'Trang đầu',
 'mainpagetext'	=> 'Phần mềm {{SITENAME}} đã cài đặt.',
 'portal'        => 'Cộng đồng',
@@ -117,6 +213,7 @@
 'whatlinkshere' => 'Liên kết tới đây',
 'help'          => 'Trợ giúp',
 'search'        => 'Tìm kiếm',
+'searchbutton'  => 'Tìm kiếm',
 'history'       => 'Lịch sử',
 'printableversion' => 'Bản để in',
 'edit'		=> 'Sửa',
@@ -124,7 +221,6 @@
 'delete'	=> 'Xóa',
 'deletethispage' => 'Xóa trang này',
 'undelete_short' => 'Phục hồi',
-'undelete_short1' => 'Phục hồi',
 'protect' => 'Khóa',
 'protectthispage' => 'Khóa trang này',
 'unprotect' => 'Mở',
@@ -134,9 +230,7 @@
 'specialpage'	=> 'Trang đặc biệt',
 'personaltools'	=> 'Công cụ cá nhân',
 'postcomment'	=> 'Thêm bàn luận',
-'addsection'   => '+',
 'articlepage'	=> 'Xem bài',
-'subjectpage'   => 'Trang chủ đề',
 'talk'		=> 'Thảo luận',
 'toolbox'	=> 'Công cụ',
 'userpage'      => 'Trang thành viên',
@@ -149,19 +243,12 @@
 'viewcount'     => 'Trang này đã được đọc $1 lần.',
 'copyright'	=> 'Bản quyền $1.',
 'protectedpage' => 'Trang bị khóa',
-'administrators' => '{{ns:4}}:Người_quản_lý',
-'sysoptitle'    => 'Dành cho quản lý',
-'sysoptext'     => 'Chỉ có người quản lý mới thực hiện được. Xem $1.',
-'developertitle' => 'Dành cho lập trình viên',
-'developertext' => 'Chỉ có lập trình viên mới thực hiện được. Xem $1.',
 'nbytes'        => '$1 byte',
 'go'            => 'Xem',
 'ok'            => 'OK',
 'pagetitle'	=> '$1 - {{SITENAME}}',
 'history'	=> 'Lịch sử trang',
 'history_short' => 'Lịch sử',
-'sitetitle'     => '{{SITENAME}}',
-'sitesubtitle'  => '',
 'retrievedfrom' => 'Lấy từ « $1 »',
 'newmessageslink' => 'tin nhắn mới',
 'editsection'	=> 'Sửa',
@@ -172,7 +259,6 @@
 'thisisdeleted' => 'Xem hay phục hồi $1 ?',
 'restorelink'	=> 'Phục hồi 1 sửa đổi',
 'feedlinks'	=> 'Nạp:',
-'sitenotice'	=> '-', # the equivalent to wgSiteNotice
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main' => 'Bài',
@@ -195,7 +281,6 @@
 # General errors
 'error'		=> 'Lỗi',
 'badaccess' => 'Lỗi truy cập',
-'badaccesstext' => 'Chỉ dành cho thành viên có quyền "$2". Xem $1',
 'databaseerror' => 'Lỗi cơ sở dữ liệu',
 'dberrortext'	=> "Lỗi cú pháp trong cơ sở dữ liệu. Truy vấn vừa rồi là:
 <blockquote><tt>$1</tt></blockquote>
@@ -288,7 +373,6 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 'passwordremindertext' => "Ai đó (có thể là bạn) có địa chỉ IP $1 đã xin gửi mật khẩu mới tới thư điện tử của bạn. Mật khẩu mới của \"$2\" là \"$3\". Bạn nên đăng nhập và thay đổi mật khẩu này.",
 'noemail'  => "Thành viên \"$1\" không có thư điện tử.",
 'passwordsent' => "Mật khẩu mới đã được gửi tới thư điện tử của thành viên \"$1\". Xin đăng nhập ngay khi nhận được.",
-'loginend'	=> '&nbsp;',
 'mailerror'	=> 'Lỗi gửi thư : $1',
 'acct_creation_throttle_hit' => 'Bạn đã mở $1 tài khoản. Không thể mở thêm được nữa.',
 
@@ -395,7 +479,6 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 #
 'categoriespagetext' => "Các thể loại :",
 'categoryarticlecount' => "Có $1 bài trong thể loại này.",
-'categoryarticlecount1' => "Có $1 bài trong thể loại này.",
 
 
 #  Diffs
@@ -487,21 +570,14 @@ $2 gồm cả trang đổi hướng &nbsp; Tìm $3 $9",
 "changes"	=> "sửa đổi",
 "recentchanges" => "Thay đổi gần đây",
 "recentchangestext" => "[[{{ns:4}}:Chào mừng người mới đến|Chào mừng]] bạn! Trang này dùng để theo dõi các thay đổi gần đây trên {{SITENAME}}.",
-'rcloaderr'  => "Đang lấy các thay đổi gần đây",
 'rcnote'  => "<strong>$1</strong> thay đổi của <strong>$2</strong> ngày qua.",
 'rcnotefrom'	=> "Thay đổi từ <strong>$2</strong> (<b>$1</b> tối đa).",
 'rclistfrom'	=> "Xem thay đổi từ $1.",
-'showhideminor' => "$1 sửa nhỏ | $2 robot | $3 thành viên | $4 tuần tra", // Full version
 'rclinks'	=> "Xem $1 thay đổi của $2 ngày qua; $3.",	// Looxix
-'rchide'  => "trong $4 mẫu; $1 sửa nhỏ; $2 không gian phụ; $3 sửa gộp.", // FIXME
-'rcliu'	=> "; $1 sửa của thành viên đăng nhập",
 'diff'            => 'khác',
 'hist'            => 'sử',
 'hide'            => 'giấu',
 'show'            => 'xem',
-'tableform'       => 'bảng',
-'listform'        => 'danh bạ',
-'nchanges'        => '$1 sửa',
 'minoreditletter' => 'n',
 'newpageletter'   => 'M',
 
@@ -509,7 +585,6 @@ $2 gồm cả trang đổi hướng &nbsp; Tìm $3 $9",
 #
 'upload'       => 'Tải lên',
 'uploadbtn'    => 'Tải lên',
-'uploadlink'   => 'Tải hình',
 'reupload'     => 'Tải lại',
 'reuploaddesc' => 'Quay lại.',
 
@@ -599,9 +674,6 @@ Con số này không bao gồm các trang [[{{ns:4}}:Trang_thảo_luận|thảo 
 
 # Maintenance Page
 #
-'maintenance'		=> 'Trangbảo trì',
-'maintnancepagetext'	=> 'Trang này có một số công cụ hữu ích để thực hiện công tác bảo trì. Một số chức năng tạo tải nặng lên cơ sở dữ liệu, vì vậy nên hạn chế tải lại trang mỗi khi sửa xong một mục nào đó.',
-'maintenancebacklink'	=> 'Quay lại trang bảo trì',
 'disambiguations'	=> 'Trang định hướng',
 'disambiguationspage'	=> "{{ns:4}}:Trang_định_hướng",
 'disambiguationstext'	=> "Những trang sau đây liên kết đến một <i>trang định hướng</i>. Lẽ ra chúng nên liên kết thẳng đến một trang phù hợp.<br />Xin xem thêm [$1 thông tin về trang định hướng].<br />Chú ý, dưới đây <i>không</i> liệt kê liên kết từ các không gian tên khác.",
@@ -609,16 +681,7 @@ Con số này không bao gồm các trang [[{{ns:4}}:Trang_thảo_luận|thảo 
 'doubleredirectstext'	=> "Mỗi hàng có chứa các liên kết đến trang chuyển hướng thứ nhất và thứ hai, cũng như dòng đầu tiên của nội dung trang chuyển hướng thứ hai, thường chỉ tới trang đích \"thực sự\", là nơi mà trang chuyển hướng đầu tiên phải trỏ đến.",
 'brokenredirects'	=> 'Đổi hướng sai',
 'brokenredirectstext'	=> 'Các trang đổi hướng sau đây liên kết đến một trang không tồn tại.',
-'selflinks'		=> 'Trang liên kết đến chính nó',
-'selflinkstext'		=> 'Những trang sau đây chứa một liên kết đến chính nó, điều này là không nên.',
-'mispeelings'           => 'Trang sai chính tả',
-'mispeelingstext'               => 'Những trang sau có lỗi chính tả thường gặp, được liệt kê trong $1. Chính tả đúng phải là.',
-'mispeelingspage'       => 'Lỗi chính tả thường gặp',
 
-
-'missinglanguagelinks'  => 'Liên kết liên ngôn ngữ bị thiếu',
-'missinglanguagelinksbutton'    => 'Tìm liên kết liên ngôn ngữ bị thiếu',
-'missinglanguagelinkstext'      => "Những trang này <i>không</i> liên kết đến các trang tương đương của chúng trong $1. Các trang chuyển hướng hoặc các liên kết đến nó <i>không</i> được hiển thị.",
 
 # Miscellaneous special pages
 'uncategorizedpages'    => 'Trang chưa xếp thể loại',
@@ -626,9 +689,7 @@ Con số này không bao gồm các trang [[{{ns:4}}:Trang_thảo_luận|thảo 
 'unusedimages'  => 'Hình chưa dùng',
 'nlinks'        => '$1 liên kết',
 'allpages'      => 'Tất cả các trang',
-'randompage-url'=> 'Đặc_biệt:Randompage',
 'deadendpages'  => 'Trang đường cùng',
-'orphans'       => 'Trang mồ côi',
 'lonelypages'   => 'Trang mồ côi',
 'popularpages'  => 'Trang nhiều người đọc',
 'nviews'        => '$1 lần xem',
@@ -639,10 +700,8 @@ Con số này không bao gồm các trang [[{{ns:4}}:Trang_thảo_luận|thảo 
 'listusers'     => 'Danh sách thành viên',
 'specialpages'  => 'Các trang đặc biệt',
 'spheading'     => 'Các trang đặc biệt',
-'protectpage'   => 'Khóa trang',
 'recentchangeslinked' => 'Thay đổi liên quan',
 'rclsub'        => "(trang liên kết đến \"$1\")",
-'debug'         => 'Sửa lỗi',
 'newpages'      => 'Các bài mới nhất',
 'ancientpages'	=> 'Các bài cũ nhất',
 'move'		=> 'đổi tên',
@@ -683,7 +742,6 @@ Con số này không bao gồm các trang [[{{ns:4}}:Trang_thảo_luận|thảo 
 # Watchlist
 #
 'watchlist'	=> 'Trang tôi theo dõi',
-'watchlistsub'	=> '(cho thành viên « $1 »)',
 'nowatchlist'	=> "Chưa có gì.",
 'watchnologin'	=> 'Chưa đăng nhập',
 'watchnologintext' => "Bạn phải [[Đặc_biệt:Userlogin|đăng nhập]] mới sửa đổi được danh sách theo dõi.",
@@ -760,31 +818,11 @@ Những sửa đổi đối với trang này và trang thảo luận của nó s
 'unprotectcomment' => 'Lý do',
 
 # Groups
-'addgroup' => 'Thêm nhóm',
-'editgroup' => 'Sửa nhóm',
 'editusergroup' => 'Sửa các nhóm thành viên',
-'addgrouplogentry' => 'Đã thêm nhóm $2',
 
-'groups-lookup-group' => 'Quản lý quyền hạn các nhóm',
-'groups-group-edit' => 'Các nhóm hiện nay:',
 
 'userrights-lookup-user' => 'Quản lý nhóm thành viên',
 'userrights-user-editname' => 'Nhập tên thành viên:',
-
-# group editing
-'groups-editgroup'          => 'Sửa nhóm',
-'groups-addgroup'           => 'Thêm nhóm',
-'groups-editgroup-preamble' => 'Nếu một tên hoặc một mô tả bắt đầu bằng dấu phẩy, phần còn lại được coi như tên một tin nhắn, do đó nội dung sẽ được địa phương hóa qua không gian MediaWiki',
-'groups-editgroup-name' => 'Tên nhóm:',
-'groups-editgroup-description' => 'Mô tả nhóm (tối đa 255 chữ):<br />',
-'savegroup'                 => 'Lưu nhóm',
-'groups-tableheader'        => 'ID || Tên || Mô tả || Quyền',
-'groups-existing'           => 'Các nhóm hiện nay',
-'groups-noname'             => 'Xin nhập tên nhóm hợp lệ',
-'groups-already-exists'     => 'Một nhóm đã có tên đó',
-'addgrouplogentry'          => 'Nhóm $2 đã được thêm',
-'changegrouplogentry'       => 'Nhóm $2 đã thay đổi',
-'renamegrouplogentry'       => 'Nhóm $2 đã đổi tên thành $3',
 
 # user groups editing
 #
@@ -793,19 +831,6 @@ Những sửa đổi đối với trang này và trang thảo luận của nó s
 'userrights-groupsmember' => 'Thành viên của:',
 'userrights-groupsavailable' => 'Các nhóm hiện nay:',
 'userrights-groupshelp' => 'Chọn nhóm mà bạn muốn thêm hay bớt thành viên. Các nhóm không được chọn sẽ không thay đổi. Có thể chọn nhóm bằng CTRL + Chuột trái',
-'userrights-logcomment' => 'Thành viên nhóm đã đổi từ $1 đến $2',
-
-# Default group names and descriptions
-'group-anon-name'       => 'Vô danh',
-'group-anon-desc'       => 'Các thành viên vô danh',
-'group-loggedin-name'   => 'Thành viên',
-'group-loggedin-desc'   => 'Các thành viên đăng nhập',
-'group-admin-name'      => 'Quản lý',
-'group-admin-desc'      => 'Các thành viên được tín nhiệm để chặn phá hoại hay xóa bài',
-'group-bureaucrat-name' => 'Tổng quản lý',
-'group-bureaucrat-desc' => 'Các thành viên có thể bổ nhiệm quản lý',
-'group-steward-name'    => 'Tiếp viên',
-'group-steward-desc'    => 'Có mọi quyền hạn',
 
 # Special:Undelete
 'undelete' => 'Khôi phục',
@@ -818,7 +843,6 @@ Những sửa đổi đối với trang này và trang thảo luận của nó s
 'undeletebtn' => 'Khôi phục',
 'undeletedarticle' => "đã khôi phục \"$1\"",
 'undeletedrevisions' => "$1 bản được khôi phục",
-'undeletedtext'   => "[[:$1|$1]] đã được khôi phục. Xem danh sách các xóa bỏ và khôi phục tại [[Đặc_biệt:Log/delete]].",
 
 # Contributions
 'contributions' => 'Đóng góp',
@@ -855,7 +879,6 @@ Chức năng này chỉ nên dùng để ngăn những hành vi phá hoại, và
 'unblockip'     => 'Bỏ cấm',
 'unblockiptext' => 'Mẫu sau để khôi phục lại quyền sửa bài đối với một địa chỉ IP hoặc tài khoản đã bị cấm trước đó.',
 'ipusubmit'     => 'Bỏ cấm',
-'ipusuccess'    => "\"$1\" đã hết bị cấm",
 'ipblocklist'   => 'Danh sách cấm',
 'blocklistline' => "$1, $2 đã cấm $3 (thời hạn $4)",
 'blocklink'     => 'cấm',
@@ -897,8 +920,6 @@ Xin hãy khẳng định đây là điều bạn định làm.',
 'unlockdbsuccesstext' => 'Cơ sở dữ liệu đã được mở khóa.',
 
 # Special:Makesysop
-'bureaucratlog'		=> 'Nhật trình tổng quản lý',
-'bureaucratlogentry'	=> 'Quyền của « $1 » chuyển thành « $2 »',
 'makesysoptitle'    => 'Phong một thành viên làm quản lý',
 'makesysoptext'     => 'Mẫu này được các tổng quản lý dùng để phong các thành viên bình thường thành người quản lý.
 Hãy gõ tên của thành viên cần phong quyền quản lý vào ô này và nhấn nút.',
@@ -907,9 +928,7 @@ Hãy gõ tên của thành viên cần phong quyền quản lý vào ô này và
 'makesysopok'       => "<b>Thành viên \"$1\" đã thành quản lý</b>",
 'makesysopfail'     => "<b>Thành viên \"$1\" không thể trở thành quản lý được. (Liệu bạn có nhập tên đúng không?)</b>",
 'setbureaucratflag' => 'Đặt cờ tổng quản lý',
-'bureaucratlog'     => 'Nhật trình tổng quản lý',
 'rightslogtext'     => 'Đây là nhật trình lưu những thay đổi đối với các quyền hạn thành viên.',
-'bureaucratlogentry'    => "Quyền hạn cho thành viên \"$1\" được xác lập \"$2\"",
 'rights'            => 'Quyền:',
 'set_user_rights'   => 'Đặt quyền hạn cho thành viên',
 'user_rights_set'   => "<b>Quyền hạn thành viên của \"$1\" đã được cập nhật</b>",
@@ -922,15 +941,12 @@ Hãy gõ tên của thành viên cần phong quyền quản lý vào ô này và
 'spamprotectionmatch' => 'Nội dung sau đây đã kích hoạt bộ lọc thư rác: $1',
 
 'subcategorycount' => "Có $1 tiểu thể loại trong thể loại này.",
-'subcategorycount1' => "Có $1 tiểu thể loại trong thể loại này.",
 'categoryarticlecount' => "Có $1 bài trong thể loại này.",
-'categoryarticlecount1' => "Có $1 bài trong thể loại này.",
 'listingcontinuesabbrev' => " tiếp",
 
 # Patrolling
 #
 'markaspatrolleddiff'   => "Đánh dấu tuần tra",
-'markaspatrolledlink'   => "<div class='patrollink'>[$1]</div>",
 'markaspatrolledtext'   => "Đánh dấu tuần tra",
 'markedaspatrolled'     => "Đã đánh dấu tuần tra",
 'markedaspatrolledtext' => "Bản được đánh dấu đã tuần tra.",
@@ -1185,12 +1201,9 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Xem trang thể loại\');',
 
 # new stuffs
 'already_bureaucrat' => 'Người này đã là tổng quản lý',
-'already_steward' => 'Người này đã là tiếp viên',
 'already_sysop' => 'Người này đã là quản lý',
 'changed' => 'Đã sửa',
-'changegrouplogentry' => 'Đã sửa nhóm $2',
 'compareselectedversions' => 'So sánh các bản đã chọn',
-'contribs-showhideminor' => '$1 sửa nhỏ',
 'createarticle' => 'Viết bài mới',
 'created' => 'đã viết mới',
 'currentevents-url' => 'Thời_sự',
@@ -1245,13 +1258,9 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'perfcached' => 'Dữ liệu sau lấy từ bộ nhớ đệm và có thể không cập nhật:',
 'prefs-help-email-enotif' => 'Địa chỉ thư này cũng được dùng để gửi bạn thư thông báo nếu bạn lựa chọn chức năng này.',
 'print' => 'In',
-'recentchanges-url' => 'Đặc_biệt:Recentchanges',
 'recentchangesall' => 'tất cả',
-'renamegrouplogentry' => 'Đã đổi tên nhóm $2 đến $3',
 'restrictedpheading' => 'Trang đặc biệt hạn chế',
 'revertmove' => 'lùi lại',
-'revisionasofwithlink' => 'Sửa đổi lúc $1; $2<br />$3 | $4',
-'savegroup' => 'Lưu nhóm',
 'saveusergroups' => 'Lưu nhóm thành viên',
 'scarytranscludedisabled' => 'Liên wiki bị tắt',
 'scarytranscludefailed' => 'Tiêu bản cho $1 bị tắt',
@@ -1273,9 +1282,7 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'watchlistall2' => 'tất cả',
 'wlheader-enotif' => '* Đã bật thông báo qua thư điện tử.',
 'wlheader-showupdated' => "* Các trang đã thay đổi từ lần cuối bạn xem chúng được in '''đậm'''",
-'wlhide' => 'Giấu',
 'wlhideshowown' => '$1 sửa đổi của tôi',
-'wlshow' => 'Xem',
 'yourdomainname' => 'Tên miền của bạn',
 'yourvariant' => 'Ngôn ngữ địa phương',
 'sitesupport-url' => '{{ns:4}}:Quyên_góp',
@@ -1285,7 +1292,6 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'fileinfo' => ' $1Ko, kiểu MIME: <tt>$2</tt>',
 'groups' => 'Các nhóm',
 'noimage' => 'Không có hình này, bạn có thể [$1 tải nó lên]',
-'setstewardflag' => 'Đặt cờ tiếp viên',
 'proxyblocksuccess'	=> "Xong.",
 
 'namespacesall' => 'tất cả',

@@ -1,7 +1,60 @@
 <?php
+/** Albanian (Shqip)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesSq;
-$wgAllMessagesSq = array(
+$quickbarSettings = array(
+	'Asnjë', 'Lidhur majtas', 'Lidhur djathtas', 'Pezull majtas', 'Pezull djathtas'
+);
+
+$skinNames = array(
+	'standard' => 'Standarte',
+	'nostalgia' => 'Nostalgjike',
+	'cologneblue' => 'Kolonjë Blu'
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Speciale',
+	NS_MAIN           => '',
+	NS_TALK           => 'Diskutim',
+	NS_USER           => 'Përdoruesi',
+	NS_USER_TALK      => 'Përdoruesi_diskutim',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_diskutim',
+	NS_IMAGE          => 'Figura',
+	NS_IMAGE_TALK     => 'Figura_diskutim',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'MediaWiki_diskutim',
+	NS_TEMPLATE       => 'Stampa',
+	NS_TEMPLATE_TALK  => 'Stampa_diskutim',
+	NS_HELP           => 'Ndihmë',
+	NS_HELP_TALK      => 'Ndihmë_diskutim'
+);
+
+# Compatbility with alt names
+$namespaceAliases = array(
+	'Perdoruesi' => NS_USER,
+	'Perdoruesi_diskutim' => NS_USER_TALK,
+);
+
+$datePreferences = array(
+	'default',
+	'dmy',
+	'ISO 8601',
+);
+$defaultDateFormat = 'dmy';
+$dateFormats = array(
+	'dmy time' => 'H:i',
+	'dmy date' => 'j F Y',
+	'dmy both' => 'j F Y H:i',
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+
+$messages = array(
 'tog-underline'         => 'Nënvizo lidhjet',
 'tog-highlightbroken'   => 'Trego lidhjet e faqeve bosh <a href="" class="new">kështu </a> (ndryshe: kështu<a href="" class="internal">?</a>).',
 'tog-justify'           => 'Rregullim i kryeradhës',
@@ -72,7 +125,6 @@ $wgAllMessagesSq = array(
 'nov'                   => 'Nën',
 'dec'                   => 'Dhj',
 'categories'            => '{{PLURAL:$1|Kategoria|Kategoritë}}',
-'category'              => 'kategori',
 'category_header'       => 'Artikuj në kategorinë "$1"',
 'subcategories'         => 'Nën-kategori',
 'mainpage'              => 'Faqja Kryesore',
@@ -126,6 +178,7 @@ $wgAllMessagesSq = array(
 'returnto'              => 'Kthehu tek $1.',
 'tagline'               => 'Nga {{SITENAME}}, Enciklopedia e Lirë',
 'search'                => 'Kërko',
+'searchbutton'          => 'Kërko',
 'go'                    => 'Shko',
 'history'               => 'Historiku i faqes',
 'history_short'         => 'Historiku',
@@ -149,7 +202,6 @@ $wgAllMessagesSq = array(
 'personaltools'         => 'Mjete vetjake',
 'postcomment'           => 'Shtoni koment',
 'articlepage'           => 'Shikoni artikullin',
-'subjectpage'           => 'Shikoni subjektin',
 'talk'                  => 'Diskutimet',
 'views'                 => 'Shikime',
 'toolbox'               => 'Mjete',
@@ -165,17 +217,10 @@ $wgAllMessagesSq = array(
 'viewcount'             => 'Kjo faqe është parë $1 herë.',
 'copyright'             => 'Përmbajtja është në disponim nëpërmjet licensës $1.',
 'protectedpage'         => 'Faqe e mbrojtur',
-'administrators'        => 'Project:Administruesit',
 'jumpto'                => 'Shko te:',
 'jumptonavigation'      => 'navigacion',
 'jumptosearch'          => 'kërko',
-'sysoptitle'            => 'Nevojitet titulli "administrues"',
-'sysoptext'             => 'Veprimi që kërkuat mund të bëhet vetëm nga një përdorues me titullin "administrues". Shikoni $1.',
-'developertitle'        => 'Nevojitet titulli "zhvillues"',
-'developertext'         => 'Veprimi që kërkuat mund bëhet vetëm nga një përdorues me titullin "zhvillues". Shikoni $1.',
 'badaccess'             => 'Gabim leje',
-'badaccesstext'         => 'Ky veprim është i lejuar vetëm për përdoruesit me titullin $2. 
-Shiko $1',
 'versionrequired'       => 'Nevojitet versioni $1 i MediaWiki-it',
 'versionrequiredtext'   => 'Nevojitet versioni $1 i MediaWiki-it për përdorimin e kësaj faqeje. Shikoni [[Special:Version|versionin]] tuaj.',
 'ok'                    => 'Shkoni',
@@ -574,17 +619,14 @@ $2 Lidhje përcjellëse   Kërko për $3 $9',
 'userrights-groupsmember'=> 'Anëtar i:',
 'userrights-groupsavailable'=> 'Të mundshme:',
 'userrights-groupshelp' => 'Duke zgjedhur nga lista e anëtarësimit mund të çanëtarësosh, dhe duke zgjedhur nga lista e grupeve të mundshme mund të anëtarësosh. Nuk do të ndryshojë anëtarësimi tek grupet e pazgjedhura. Mund të zgjedhësh ose çzgjedhësh duke mbajtur shtypur butonin Ctrl dhe majtas-shtypur.',
-'userrights-logcomment' => 'Ndryshova anëtarësimin nga grupi $1 tek $2',
 'group'                 => 'Grupi:',
 'group-bot'             => 'Robot',
 'group-sysop'           => 'Administrues',
 'group-bureaucrat'      => 'Burokrat',
-'group-steward'         => 'Përgjegjës',
 'group-all'             => '(të gjitha)',
 'group-bot-member'      => 'Robot',
 'group-sysop-member'    => 'Administrues',
 'group-bureaucrat-member'=> 'Burokrat',
-'group-steward-member'  => 'Përgjegjës',
 'grouppage-bot'         => 'Project:Robotë',
 'grouppage-sysop'       => 'Project:Administrues',
 'grouppage-bureaucrat'  => 'Project:Burokratë',
@@ -1053,7 +1095,6 @@ Ju lutem konfirmoni që dëshironi me të vërtetë të kryeni këtë veprim, dh
 'makesysopok'           => '<b>Përdoruesi \'$1\' u bë administrues</b>',
 'makesysopfail'         => '<b>Përdoruesi \'$1\' nuk mund të bëhej administrues. (Kontrolloni nëse emrin e keni shtypur saktësisht)</b>',
 'setbureaucratflag'     => 'Jepi titullin burokrat',
-'setstewardflag'        => 'Vendos privilegjin Përgjegjës',
 'rightslog'             => 'Regjistri i privilegjeve',
 'rightslogtext'         => 'Ky është një regjistër për ndryshimet e titujve të përdoruesve.',
 'rightslogentry'        => 'ndryshoi privilegjet e $1 prej "$2" në "$3"',
@@ -1064,7 +1105,6 @@ Ju lutem konfirmoni që dëshironi me të vërtetë të kryeni këtë veprim, dh
 'makesysop'             => 'Jepni titullin administrues',
 'already_sysop'         => 'Ky përdorues është bërë administrues më parë',
 'already_bureaucrat'    => 'Ky përdorues është bërë burokrat më parë',
-'already_steward'       => 'Ky përdorues ishte Përgjegjës që më parë',
 'rightsnone'            => '(asnjë)',
 'movepage'              => 'Zhvendose faqen',
 'movepagetext'          => 'Duke përdorur formularin e mëposhtëm do të ndërroni titullin e një faqeje, duke zhvendosur gjithë historinë përkatëse tek titulli i ri. Titulli i vjetër do të bëhet një faqe përcjellëse tek titulli i ri. Lidhjet tek faqja e vjetër nuk do të ndryshohen; duhet të kontrolloni [[{ns:special}}:Maintenance|mirëmbajtjen]] për përcjellime të dyfishta ose të prishura.
@@ -1325,9 +1365,6 @@ Për të eksportuar faqe, thjesht shtypni një emër për çdo rresht, ose krijo
 'exif-gpssatellites'    => 'Janë përdorur satelitë për matjen',
 'exif-gpstrack'         => 'Drejtimi i lëvizjes',
 'exif-gpsimgdirection'  => 'Orientimi i figurës',
-'exif-make-value'       => '$1',
-'exif-model-value'      => '$1',
-'exif-software-value'   => '$1',
 'exif-compression-1'    => 'E pangjeshur',
 'exif-compression-6'    => 'JPEG',
 'exif-photometricinterpretation-2'=> 'RGB',

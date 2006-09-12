@@ -1,7 +1,49 @@
 <?php
+/** Yiddish (ייִדיש)
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  */
+$fallback = 'he';
 
-global $wgAllMessagesYi;
-$wgAllMessagesYi = array(
+$namespaceNames = array(
+	NS_MEDIA          => 'מעדיע',
+	NS_SPECIAL        => 'באַזונדער',
+	NS_MAIN           => '',
+	NS_TALK           => 'רעדן',
+	NS_USER           => 'באַניצער',
+	NS_USER_TALK      => 'באַניצער_רעדן',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_רעדן',
+	NS_IMAGE          => 'בילד',
+	NS_IMAGE_TALK     => 'בילד_רעדן',
+	NS_MEDIAWIKI      => 'מעדיעװיקי',
+	NS_MEDIAWIKI_TALK => 'מעדיעװיקי_רעדן',
+	NS_TEMPLATE       => 'מוסטער',
+	NS_TEMPLATE_TALK  => 'מוסטער_רעדן',
+	NS_HELP           => 'הילף',
+	NS_HELP_TALK      => 'הילף_רעדן',
+	NS_CATEGORY       => 'קאַטעגאָריע',
+	NS_CATEGORY_TALK  => 'קאַטעגאָריע_רעדן'
+);
+
+$namespaceAliases = array(
+	'באזונדער' => NS_SPECIAL,
+	'באנוצער' => NS_USER,
+	'באנוצער_רעדן' => NS_USER_TALK,
+	'מעדיעוויקי' => NS_MEDIAWIKI,
+	'מעדיעוויקי_רעדן' => NS_MEDIAWIKI_TALK,
+	'קאטעגאריע' => NS_CATEGORY,
+	'קאטעגאריע_רעדן' => NS_CATEGORY_TALK,
+);
+
+$rtl = true;
+$defaultUserOptionOverrides = array(
+	# Swap sidebar to right side by default
+	'quickbar' => 2,
+);
+
+$messages = array(
 'tog-usenewrc'          => 'פֿאַרבעסערטע "לעצטע ענדערונגען" (JavaScript)',
 'tog-watchdefault'      => 'נאָכפֿאָלג אױטאָמאַטיש די װערטן װאָס איך באַאַרבעט',
 'tog-previewontop'      => 'צײַגן דעם "פֿאָרויסיקע װײַזונג" גלײַך בײַם ערשטע באַאַרבעטונג',
@@ -39,7 +81,6 @@ Raw signatures (without automatic link)',
 'nov'                   => 'נאָװ׳',
 'dec'                   => 'דעץ׳',
 'categories'            => '{{PLURAL:$1|קאַטעגאָריע|קאַטעגאָריעס}}',
-'category'              => 'קאַטעגאָריע',
 'category_header'       => 'אַרטיקלען אין קאַטעגאָריע "$1"',
 'subcategories'         => 'אונטערקאַטעגאָריעס',
 'mainpage'              => 'ערשטע זײַט',
@@ -64,6 +105,7 @@ Raw signatures (without automatic link)',
 'returnto'              => 'צוריקקערן צו $1.',
 'tagline'               => 'פֿון {{SITENAME}}',
 'search'                => 'זוכן',
+'searchbutton'          => 'זוכן',
 'go'                    => 'גײן',
 'history'               => 'אױפֿלאַגעס / מחברים',
 'history_short'         => 'געשיכטע',

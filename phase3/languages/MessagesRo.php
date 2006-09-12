@@ -1,7 +1,78 @@
 <?php
+/** Romanian (Română)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
+$quickbarSettings = array(
+	'Fără', 'Fixă, în stânga', 'Fixă, în dreapta', 'Liberă'
+);
 
-global $wgAllMessagesRo;
-$wgAllMessagesRo = array(
+$skinNames = array(
+	'standard' => 'Normală',
+	'nostalgia' => 'Nostalgie'
+);
+
+$magicWords = array(
+	#   ID                                 CASE  SYNONYMS
+	'redirect'               => array( 0,    '#redirect'                                       ),
+	'notoc'                  => array( 0,    '__NOTOC__', '__FARACUPRINS__'                    ),
+	'noeditsection'          => array( 0,    '__NOEDITSECTION__', '__FARAEDITSECTIUNE__'       ),
+	'start'                  => array( 0,    '__START__'                                       ),
+	'currentmonth'           => array( 1,    'CURRENTMONTH', '{{NUMARLUNACURENTA}}'            ),
+	'currentmonthname'       => array( 1,    'CURRENTMONTHNAME', '{{NUMELUNACURENTA}}'         ),
+	'currentday'             => array( 1,    'CURRENTDAY', '{{NUMARZIUACURENTA}}'              ),
+	'currentdayname'         => array( 1,    'CURRENTDAYNAME', '{{NUMEZIUACURENTA}}'           ),
+	'currentyear'            => array( 1,    'CURRENTYEAR', '{{ANULCURENT}}'                   ),
+	'currenttime'            => array( 1,    'CURRENTTIME', '{{ORACURENTA}}'                   ),
+	'numberofarticles'       => array( 1,    'NUMBEROFARTICLES', '{{NUMARDEARTICOLE}}'         ),
+	'currentmonthnamegen'    => array( 1,    'CURRENTMONTHNAMEGEN', '{{NUMELUNACURENTAGEN}}'   ),
+	'subst'                  => array( 0,    'SUBST:'                                          ),
+	'msgnw'                  => array( 0,    'MSGNW:', 'MSJNOU:'                               ),
+	'end'                    => array( 0,    '__END__', '__FINAL__'                            ),
+	'img_thumbnail'          => array( 1,    'thumbnail', 'thumb'                              ),
+	'img_right'              => array( 1,    'right'                                           ),
+	'img_left'               => array( 1,    'left'                                            ),
+	'img_none'               => array( 1,    'none'                                            ),
+	'img_width'              => array( 1,    '$1px'                                            ),
+	'img_center'             => array( 1,    'center', 'centre'                                ),
+	'int'                    => array( 0,    'INT:'                                            )
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Special',
+	NS_MAIN           => '',
+	NS_TALK           => 'Discuţie',
+	NS_USER           => 'Utilizator',
+	NS_USER_TALK      => 'Discuţie_Utilizator',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'Discuţie_$1',
+	NS_IMAGE          => 'Imagine',
+	NS_IMAGE_TALK     => 'Discuţie_Imagine',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'Discuţie_MediaWiki',
+	NS_TEMPLATE       => 'Format',
+	NS_TEMPLATE_TALK  => 'Discuţie_Format',
+	NS_HELP           => 'Ajutor',
+	NS_HELP_TALK      => 'Discuţie_Ajutor',
+	NS_CATEGORY       => 'Categorie',
+	NS_CATEGORY_TALK  => 'Discuţie_Categorie'
+);
+
+$datePreferences = false;
+$defaultDateFormat = 'dmy';
+$dateFormats = array(
+	'dmy time' => 'H:i',
+	'dmy date' => 'j F Y',
+	'dmy both' => 'j F Y H:i',
+);
+
+$fallback8bitEncoding = 'iso8859-2';
+
+
+
+$messages = array(
 'tog-underline'         => 'Subliniază legăturile',
 'tog-highlightbroken'   => 'Formatează legăturile necreate <a href="" class="new">aşa</a> (alternativă: aşa<a href="" class="internal">?</a>).',
 'tog-justify'           => 'Aranjează justificat paragrafele',
@@ -73,7 +144,6 @@ pe titlul secţiunii (JavaScript)',
 'nov'                   => 'nov',
 'dec'                   => 'dec',
 'categories'            => '{{PLURAL:$1|Categorie|Categorii}}',
-'category'              => 'categorie',
 'category_header'       => 'Articole din categoria "$1"',
 'subcategories'         => 'Subcategorii',
 'mainpage'              => 'Pagina principală',
@@ -121,6 +191,7 @@ pe titlul secţiunii (JavaScript)',
 'returnto'              => 'Înapoi la $1.',
 'tagline'               => 'De la {{SITENAME}}',
 'search'                => 'Caută',
+'searchbutton'          => 'Caută',
 'go'                    => 'Du-te',
 'history'               => 'Versiuni mai vechi',
 'history_short'         => 'istoric',
@@ -144,7 +215,6 @@ pe titlul secţiunii (JavaScript)',
 'personaltools'         => 'Unelte personale',
 'postcomment'           => 'Adaugă un comentariu',
 'articlepage'           => 'Vezi articolul',
-'subjectpage'           => 'Vezi subiectul',
 'talk'                  => 'Discuţie',
 'views'                 => 'Vizualizări',
 'toolbox'               => 'Trusa de unelte',
@@ -160,17 +230,10 @@ pe titlul secţiunii (JavaScript)',
 'viewcount'             => 'Această pagină a fost vizitată {{PLURAL:$1|odată|de $1 ori}}.',
 'copyright'             => 'Conţinutul este disponibil sub $1.',
 'protectedpage'         => 'Pagină protejată',
-'administrators'        => 'Project:Administratori',
 'jumpto'                => 'Salt la:',
 'jumptonavigation'      => 'Navigare',
 'jumptosearch'          => 'căutare',
-'sysoptitle'            => 'Ai nevoie de acces ca administrator',
-'sysoptext'             => 'Acţiunea pe care ai încercat-o necesită drepturi de administrator. Vezi $1.',
-'developertitle'        => 'Aveţi nevoie de acces ca dezvoltator',
-'developertext'         => 'Acţiunea pe care aţi încercat-o necesită drepturi de dezvoltator.
-Vedeţi $1.',
 'badaccess'             => 'Eroare permisiune',
-'badaccesstext'         => 'Acţiunea pe care aţi cerut-o este limitată utilizatorilor cu permisiune de "$2". Vizitaţi $1.',
 'versionrequired'       => 'Este necesară versiunea $1 MediaWiki',
 'versionrequiredtext'   => 'Versiunea $1 MediaWiki este necesară pentru a folosi această pagină. Vezi [[Special:Version|versiunea actuală]].',
 'ok'                    => 'Trimite',
@@ -558,17 +621,14 @@ Căutări după $3 $9',
 'userrights-groupsmember'=> 'Membru al:',
 'userrights-groupsavailable'=> 'Grupuri disponibile:',
 'userrights-groupshelp' => 'Selectează grupurile din care doreşti ca utilizatorul să fie şters sau în care doreşti să fie adăugat. Grupurile deselectate nu se vor modifica. Poţi deselecta un grup cu CTRL + Clic stânga',
-'userrights-logcomment' => 'A fost modificată apartenenţa la grup din $1 în $2',
 'group'                 => 'Grup:',
 'group-bot'             => 'Roboţi',
 'group-sysop'           => 'Administratori',
 'group-bureaucrat'      => 'Birocraţi:',
-'group-steward'         => 'Stewarzi',
 'group-all'             => '(toţi)',
 'group-bot-member'      => 'Robot',
 'group-sysop-member'    => 'Administrator',
 'group-bureaucrat-member'=> 'Birocrat',
-'group-steward-member'  => 'Steward',
 'grouppage-bot'         => 'Project:Boţi',
 'grouppage-sysop'       => 'Project:Administratori',
 'grouppage-bureaucrat'  => 'Project:Birocraţi',
@@ -1029,7 +1089,6 @@ Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din u
 'makesysopok'           => '<b>Utilizatorul "$1" este acum administrator</b>',
 'makesysopfail'         => '<b>Utilizatorul "$1" nu a putut deveni administrator. (Ai introdus numele corect?)</b>',
 'setbureaucratflag'     => 'Acordă şi drepturi de birocrat',
-'setstewardflag'        => 'Alege steagul steward',
 'rightslog'             => 'Raportul drepturilor de utilizator',
 'rightslogtext'         => 'Acesta este un raport al modificărilor drepturilor utilizatorilor.',
 'rightslogentry'        => 'a schimbat pentru $1 apartenenţa la un grup de la $2 la $3',
@@ -1040,7 +1099,6 @@ Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din u
 'makesysop'             => 'Fă dintr-un utilizator un administrator',
 'already_sysop'         => 'Acest utilizator este deja administrator.',
 'already_bureaucrat'    => 'Acest utilizator este deja birocrat.',
-'already_steward'       => 'Acest utilizator este deja steward.',
 'rightsnone'            => '(niciunul)',
 'movepage'              => 'Mută pagina',
 'movepagetext'          => 'Puteţi folosi formularul de mai jos pentru a redenumi
@@ -1391,9 +1449,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Vezi categoria\');',
 'exif-gpsareainformation'=> 'Numele domeniului GPS',
 'exif-gpsdatestamp'     => 'Data GPS',
 'exif-gpsdifferential'  => 'Corecţia diferenţială GPS',
-'exif-make-value'       => '$1',
-'exif-model-value'      => '$1',
-'exif-software-value'   => '$1',
 'exif-compression-1'    => 'Necomprimată',
 'exif-compression-6'    => 'JPEG',
 'exif-photometricinterpretation-2'=> 'RGB',

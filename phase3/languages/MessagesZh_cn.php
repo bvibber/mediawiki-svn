@@ -1,7 +1,66 @@
 <?php
+/**
+  * @package MediaWiki
+  * @subpackage Language
+  */
 
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Special',
+	NS_MAIN             => '',
+	NS_TALK             => 'Talk',
+	NS_USER             => 'User',
+	NS_USER_TALK        => 'User_talk',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_talk',
+	NS_IMAGE            => 'Image',
+	NS_IMAGE_TALK       => 'Image_talk',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_talk',
+	NS_TEMPLATE         => 'Template',
+	NS_TEMPLATE_TALK    => 'Template_talk',
+	NS_HELP             => 'Help',
+	NS_HELP_TALK        => 'Help_talk',
+	NS_CATEGORY         => 'Category',
+	NS_CATEGORY_TALK    => 'Category_talk'
+);
 
-/* private */ $wgAllMessagesZh_cn = array(
+$namespaceAliases = array(
+	"特殊"  => NS_SPECIAL,
+	"对话" => NS_TALK, 
+	"用户" => NS_USER,
+	"用户对话" => NS_USER_TALK,
+	# This has never worked so it's unlikely to annoy anyone if I disable it -- TS
+	#"{{SITENAME}}_对话" => NS_PROJECT_TALK
+	"图像" => NS_IMAGE,
+	"图像对话" => NS_IMAGE_TALK,
+);
+
+$quickbarSettings = array(
+	"无", /* "None" */
+	"左侧固定", /* "Fixed left" */
+	"右侧固定", /* "Fixed right" */
+	"左侧漂移" /* "Floating left" */
+);
+
+$skinNames = array(
+	'standard' => "标准",
+	'nostalgia' => "怀旧",
+	'cologneblue' => "科隆香水蓝"
+);
+
+$extraUserToggles = array(
+	'nolangconversion',
+);
+$datePreferences = false;
+$defaultDateFormat = 'zh';
+$dateFormats = array(
+	'zh time' => 'H:i',
+	'zh date' => 'Y年Mj日',
+	'zh both' => 'H:i Y年Mj日',
+);
+
+$messages = array(
 # User Toggles
 
 "tog-underline" => "下划链接", /* "Underline links", */
@@ -59,10 +118,8 @@
 # Bits of text used by many pages:
 #
 "categories" => "页面分类",
- 	 "category" => "分类",
- 	 "category_header" => "类别”$1“中的条目",
- 	 "subcategories" => "附分类",
-"linktrail"		=> "/^([a-z]+)(.*)\$/sD",
+"category_header" => "类别”$1“中的条目",
+"subcategories" => "附分类",
 "mainpage"		=> "首页",
 "about"			=> "关于",
 "aboutsite"      => "关于{{SITENAME}}",
@@ -90,6 +147,7 @@
 "whatlinkshere"	=> "链入页面",
 "help"			=> "帮助",
 "search"		=> "搜索",
+"searchbutton"	=> "搜索",
 "go"		=> "进入",
 "history"		=> "较早版本",
 "printableversion" => "可打印版",
@@ -101,7 +159,6 @@
 "talkpage"		=> "讨论本页",
 	 "postcomment"   => "发表评论",
 "articlepage"	=> "查看文章",
-"subjectpage"	=> "查看主题", # For compatibility
 "userpage" => "查看用户页",
 "projectpage" => "查看meta页",
 "imagepage" => 	"查看图像页面",
@@ -111,17 +168,9 @@
 "lastmodified"	=> "最后更改$1.",
 "viewcount"		=> "本页面已经被浏览$1次。",
 "protectedpage" => "被保护页",
-"administrators" => "{{ns:project}}:管理员",
-"sysoptitle"	=> "需要管理员权限",
-"sysoptext"		=> "您刚才的请求只有拥有管理员权限的用户才可使用。
-参见$1。",
-"developertitle" => "需要发展者权限",
-"developertext"	=> "您刚才的请求只有拥有发展者权限的用户才可使用。
-参见$1。",
 "nbytes"		=> "$1字节",
 "go"			=> "进入",
 "ok"			=> "OK",
-"sitesubtitle"	=> "",
 "retrievedfrom" => "取自\"$1\"",
 "newmessageslink" => "新信息",
 "editsection"=>"编辑",
@@ -383,19 +432,14 @@ MySQL返回错误 \"<tt>$3: $4</tt>\"。",
 限制的材料，这一点将非常重要。相关的法律责任会伤害本项工程，所以请不要这样做。
 此外请参见",
 
-"rcloaderr"		=> "载入最近更改",
 "rcnote"		=> "下面是最近<strong>$2</strong>天内最新的<strong>$1</strong>次改动。",
 "rcnotefrom"	=> "下面是自<b>$2</b>（最多显示<b>$1</b>）。",
 "rclistfrom"	=> "显示自$1以来的新更改",
 "rclinks"		=> "显示最近 $2 天内最新的 $1 次改动。<br />$3",
-"rchide"		=> "以$4形式；$1个小修改；$2个二级名字空间；$3个多重修改",
 "diff"			=> "差异",
 "hist"			=> "历史",
 "hide"			=> "隐藏",
 "show"			=> "显示",
-"tableform"		=> "表格",
-"listform"		=> "列表",
-"nchanges"		=> "$1个更改",
 "minoreditletter" => "小",
 "newpageletter" => "新",
 
@@ -403,7 +447,6 @@ MySQL返回错误 \"<tt>$3: $4</tt>\"。",
 #
 "upload"		=> "上载文件",
 "uploadbtn"		=> "上载文件",
-"uploadlink"	=> "上载图像",
 "reupload"		=> "重新上载",
 "reuploaddesc"	=> "返回上载表单。",
 "uploadnologin" => "未登录",
@@ -496,11 +539,6 @@ MySQL返回错误 \"<tt>$3: $4</tt>\"。",
 
 # Maintenance Page
 #
-"maintenance"		=> "维护页",
-"maintnancepagetext"	=> "这页面提供了几个帮助{{SITENAME}}日常维护的工具。
-但其中几个会对我们的数据库造成压力，
-所以请您不要在每修理好几个项目后就按重新载入 ;-)",
-"maintenancebacklink"	=> "返回维护页",
 "disambiguations"	=> "消含糊页",
 "disambiguationspage"	=> "{{ns:project}}:Links_to_disambiguating_pages",
 "disambiguationstext"	=> "以下的条目都有到消含糊页的链接，但它们应该是链到适当的题目。<br />一个页面会被视为消含糊页如果它是链自$1.<br />由其它他名字空间来的链接<i>不会</i>在这儿被列出来。",
@@ -511,20 +549,10 @@ MySQL返回错误 \"<tt>$3: $4</tt>\"。",
 通常显示的都会是\“真正\” 的目标页面，也就是第一个重定向页应该指向的条目。",
 "brokenredirects"	=> "损坏的重定向页",
 "brokenredirectstext"	=> "以下的重定向页指向的是不存在的条目。",
-"selflinks"		=> "有自我链接的页面",
-"selflinkstext"		=> "以下的页面都错误地包含了连到自己的链接。",
-"mispeelings"           => "拼写错误的页面",
-"mispeelingstext"               => "以下页面包含了一些常见的拼写错误（见$1）。正确的拼法已经给出。",
-"mispeelingspage"       => "常见拼写错误列表",
-"missinglanguagelinks"  => "无语言链接",
-"missinglanguagelinksbutton"    => "寻找没有该语言的页面",
-"missinglanguagelinkstext"      => "这些条目<i>没有</i>链接到$1。
-重定向页与副页<b>并没有</b>包括在内。",
 
 
 # Miscellaneous special pages
 #
-"orphans"		=> "孤立条目",
 "lonelypages"	=> "孤立页面",
 "unusedimages"	=> "未使用图像",
 "popularpages"	=> "热点条目",
@@ -538,10 +566,8 @@ MySQL返回错误 \"<tt>$3: $4</tt>\"。",
 "listusers"		=> "用户列表",
 "specialpages"	=> "特殊页面",
 "spheading"		=> "特殊页面",
-"protectpage"	=> "保护页面",
 "recentchangeslinked" => "链出更改",
 "rclsub"		=> "（从 \"$1\"链出的页面）",
-"debug"			=> "除错",
 "newpages"		=> "新页面",
 "intl"		=> "跨语言链接",
 "movethispage"	=> "移动本页",
@@ -578,7 +604,6 @@ MySQL返回错误 \"<tt>$3: $4</tt>\"。",
 # Watchlist
 #
 "watchlist"		=> "监视列表",
-"watchlistsub"	=> "(用户\"$1\")",
 "nowatchlist"	=> "您的监视列表为空。",
 "watchnologin"	=> "未登录",
 "watchnologintext"	=> "您必须先[[Special:Userlogin|登录]]
@@ -652,8 +677,6 @@ MySQL返回错误 \"<tt>$3: $4</tt>\"。",
 "undeleterevision" => "删除$1时的版本",
 "undeletebtn" => "恢复！",
 "undeletedarticle" => "已经恢复“$1”",
-"undeletedtext"   => "[[:$1|$1]]已经被成功复原。
-有关{{SITENAME}}最近的删除与复原，参见[[{{ns:project}}:删除纪录]]",
 
 # Contributions
 #
@@ -691,7 +714,6 @@ MySQL返回错误 \"<tt>$3: $4</tt>\"。",
 "unblockip"		=> "解除禁封IP地址",
 "unblockiptext"	=> "用下面的表单来恢复先前被禁封的IP地址的书写权。",
 "ipusubmit"		=> "解除禁封",
-"ipusuccess"	=> "IP地址“$1”已经被解除禁封",
 "ipblocklist"	=> "被封IP地址列表",
 "blocklistline"	=> "$1，$2禁封$3 ($4)",
 "blocklink"		=> "禁封",
@@ -769,7 +791,6 @@ MySQL返回错误 \"<tt>$3: $4</tt>\"。",
 '1movedto2' => "$1移动到$2", //"$1 moved to $2",
 '1movedto2_redir' => "$1重定向到$2", //"$1 moved to $2 over redirect",
 'acct_creation_throttle_hit' => "对不起，您已经注册了$1账号。你不能再注册了。", //"Sorry, you have already created $1 accounts. You can't make any more.",
-'addgroup' => "增加新的组", //"Add Group",
 'allarticles' => "所有条目", //"All articles",
 'allmessages' => "系统界面", //"All system messages",
 'allmessagesnotsupportedDB' => "系统界面功能处于关闭状态 (wgUseDatabaseMessages)。", //"Special:AllMessages not supported because wgUseDatabaseMessages is off.",
@@ -808,7 +829,6 @@ email address to them, and it can be used to send you a new password if you forg
 'prefs-misc' => "杂项", //"Misc settings",
 'prefs-personal' => "用户数据",//"User data",
 'prefs-rc' => "最近更新", //"Recent changes and stub display",
-'showhideminor' => "$1 小修改 | $2 bots | $3 登录用户 | $4 检查过的", //"$1 minor edits | $2 bots | $3 logged in users | $4 patrolled edits ",
 'skin' => "皮肤", //"Skin",
 'talk' => "讨论",//"Discussion",
 'timezonelegend' => "时区", //"Time zone",

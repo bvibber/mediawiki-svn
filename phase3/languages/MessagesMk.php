@@ -1,7 +1,93 @@
 <?php
+/** Macedonian (Македонски)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesMk;
-$wgAllMessagesMk = array(
+$quickbarSettings = array(
+	'Без мени', 'Фиксирано лево', 'Фиксирано десно', 'Пловечко лево'
+);
+
+$skinNames = array(
+	'standard'    => 'Класика',
+	'nostalgia'   => 'Носталгија',
+	'cologneblue' => 'Келнско сино',
+	'davinci'     => 'ДаВинчи',
+	'mono'        => 'Моно',
+	'monobook'    => 'Monobook',
+	'myskin'      => 'Моја маска',
+	'chick'       => 'Шик'
+);
+
+$magicWords = array(
+	'redirect'              => array( 0, '#redirect', '#пренасочување', '#види' ),
+	'notoc'                 => array( 0, '__NOTOC__', '__БЕЗСОДРЖИНА__' ),
+	'forcetoc'              => array( 0, '__FORCETOC__', '__СОСОДРЖИНА__' ),
+	'toc'                   => array( 0, '__TOC__', '__СОДРЖИНА__' ),
+	'noeditsection'         => array( 0, '__NOEDITSECTION__' , '__БЕЗ_УРЕДУВАЊЕ_НА_СЕКЦИИ__'),
+	'start'                 => array( 0, '__START__' , '__ПОЧЕТОК__' ),
+	'currentmonth'          => array( 1, 'CURRENTMONTH', 'СЕГАШЕНМЕСЕЦ' ),
+	'currentmonthname'      => array( 1, 'CURRENTMONTHNAME', 'СЕГАШЕНМЕСЕЦИМЕ' ),
+	'currentmonthnamegen'   => array( 1, 'CURRENTMONTHNAMEGEN', 'СЕГАШЕНМЕСЕЦИМЕРОД' ),
+	'currentmonthabbrev'    => array( 1, 'CURRENTMONTHABBREV', 'СЕГАШЕНМЕСЕЦСКР' ),
+	'currentday'            => array( 1, 'CURRENTDAY', 'СЕГАШЕНДЕН' ),
+	'currentdayname'        => array( 1, 'CURRENTDAYNAME', 'СЕГАШЕНДЕНИМЕ' ),
+	'currentyear'           => array( 1, 'CURRENTYEAR', 'СЕГАШНАГОДИНА' ),
+	'currenttime'           => array( 1, 'CURRENTTIME', 'СЕГАШНОВРЕМЕ' ),
+	'numberofarticles'      => array( 1, 'NUMBEROFARTICLES', 'БРОЈСТАТИИ' ),
+	'pagename'              => array( 1, 'PAGENAME', 'СТРАНИЦА' ),
+	'pagenamee'             => array( 1, 'PAGENAMEE', 'СТРАНИЦАИ' ),
+	'namespace'             => array( 1, 'NAMESPACE', 'ИМЕПРОСТОР' ),
+	'subst'                 => array( 0, 'SUBST:', 'ЗАМЕСТ:' ),
+	'msgnw'                 => array( 0, 'MSGNW:', 'ИЗВЕШТNW:' ),
+	'end'                   => array( 0, '', '__КРАЈ__' ),
+	'img_thumbnail'         => array( 1, 'thumbnail', 'thumb', 'мини' ),
+	'img_right'             => array( 1, 'right', 'десно', 'д' ),
+	'img_left'              => array( 1, 'left', 'лево', 'л' ),
+	'img_none'              => array( 1, 'none', 'н' ),
+	'img_width'             => array( 1, '$1px', '$1пкс' , '$1п' ),
+	'img_center'            => array( 1, 'center', 'centre', 'центар', 'ц' ),
+	'img_framed'            => array( 1, 'framed', 'enframed', 'frame', 'рамка', 'ворамка' ),
+	'int'                   => array( 0, 'INT:' ),
+	'sitename'              => array( 1, 'SITENAME', 'ИМЕНАСАЈТ' ),
+	'ns'                    => array( 0, 'NS:' ),
+	'localurl'              => array( 0, 'LOCALURL:', 'ЛОКАЛНААДРЕСА:' ),
+	'localurle'             => array( 0, 'LOCALURLE:', 'ЛОКАЛНААДРЕСАИ:' ),
+	'server'                => array( 0, 'SERVER', 'СЕРВЕР' ),
+	'grammar'               => array( 0, 'GRAMMAR:', 'ГРАМАТИКА:' ),
+	'notitleconvert'        => array( 0, '__NOTITLECONVERT__', '__NOTC__'),
+	'nocontentconvert'      => array( 0, '__NOCONTENTCONVERT__', '__NOCC__'),
+	'currentweek'           => array( 1, 'CURRENTWEEK', 'СЕГАШНАСЕДМИЦА'),
+	'currentdow'            => array( 1, 'CURRENTDOW' ),
+	'revisionid'            => array( 1, 'REVISIONID' ),
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'Медија',
+	NS_SPECIAL        => 'Специјални',
+	NS_MAIN           => '',
+	NS_TALK           => 'Разговор',
+	NS_USER           => 'Корисник',
+	NS_USER_TALK      => 'Разговор_со_корисник',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'Разговор_за_$1',
+	NS_IMAGE          => 'Слика',
+	NS_IMAGE_TALK     => 'Разговор_за_слика',
+	NS_MEDIAWIKI      => 'МедијаВики',
+	NS_MEDIAWIKI_TALK => 'Разговор_за_МедијаВики',
+	NS_TEMPLATE       => 'Шаблон',
+	NS_TEMPLATE_TALK  => 'Разговор_за_шаблон',
+	NS_HELP           => 'Помош',
+	NS_HELP_TALK      => 'Разговор_за_помош',
+	NS_CATEGORY       => 'Категорија',
+	NS_CATEGORY_TALK  => 'Разговор_за_категорија',
+);
+
+$linkTrail = '/^([a-zабвгдѓежзѕијклљмнњопрстќуфхцчџш]+)(.*)$/sDu';
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+
+$messages = array(
 'tog-underline'         => 'Потцртај ги врските',
 'tog-highlightbroken'   => 'Покажи ги неправилните врски <a href="" class="new">вака</a> (алтернативно: вака<a href="" class="internal">?</a>).',
 'tog-justify'           => 'Двостранично порамнување на параграфите',
@@ -72,7 +158,6 @@ $wgAllMessagesMk = array(
 'nov'                   => 'ное',
 'dec'                   => 'дек',
 'categories'            => '{{PLURAL:$1|Категорија|Категории}}',
-'category'              => 'категорија',
 'category_header'       => 'Статии во категоријата "$1"',
 'subcategories'         => 'Подкатегории',
 'mainpage'              => 'Главна страница',
@@ -119,6 +204,7 @@ $wgAllMessagesMk = array(
 'returnto'              => 'Врати се на $1.',
 'tagline'               => 'Од {{SITENAME}}',
 'search'                => 'Пребарај',
+'searchbutton'          => 'Пребарај',
 'go'                    => 'Оди',
 'history'               => 'Историја на страницата',
 'history_short'         => 'Историја',
@@ -142,7 +228,6 @@ $wgAllMessagesMk = array(
 'personaltools'         => 'Лични алатки',
 'postcomment'           => 'Испрати коментар',
 'articlepage'           => 'Види статија',
-'subjectpage'           => 'Види тема',
 'talk'                  => 'Разговор',
 'views'                 => 'Прегледи',
 'toolbox'               => 'Алатник',
@@ -158,18 +243,10 @@ $wgAllMessagesMk = array(
 'viewcount'             => 'Оваа страница била посетена {{plural:$1|еднаш|$1 пати}}.',
 'copyright'             => 'Сите текстови се достапни под условите на $1.',
 'protectedpage'         => 'Заштитена страница',
-'administrators'        => 'Project:Администратори',
 'jumpto'                => 'Скокни на:',
 'jumptonavigation'      => 'навигација',
 'jumptosearch'          => 'барај',
-'sysoptitle'            => 'Се бара администраторски пристап',
-'sysoptext'             => 'Бараното дејство може да го
-изврши само корисник со администраторски статус. 
-Видете $1.',
-'developertitle'        => 'Се бараат права на развивач',
-'developertext'         => 'Бараната функција може да ја изврши само корисник со статус "развивач". Види $1.',
 'badaccess'             => 'Грешка во пермисии',
-'badaccesstext'         => 'Дејството кое го баравте е ограничено на корисници со "$2" права. Видете $1.',
 'versionrequired'       => 'Верзијата $1 од МедијаВики е задолжителна',
 'versionrequiredtext'   => 'Мора да имате верзија $1 од МедијаВики за да ја користите оваа страница. Видете [[Special:Version]]',
 'ok'                    => 'Во ред',
@@ -577,17 +654,14 @@ $1',
 'userrights-groupsmember'=> 'Член на:',
 'userrights-groupsavailable'=> 'Достапни групи:',
 'userrights-groupshelp' => 'Изберете групи од кои сакате да го отстраните корисникот или да го додадете. Групите што не се избрани нема да бидат променети. Можете да деселектирате група со CTRL + лев клик',
-'userrights-logcomment' => 'Изменето членството на групата од $1 до $2',
 'group'                 => 'Група:',
 'group-bot'             => 'Ботови',
 'group-sysop'           => 'Администратори',
 'group-bureaucrat'      => 'Бирократи',
-'group-steward'         => 'Стјуарди',
 'group-all'             => '(сите)',
 'group-bot-member'      => 'Бот',
 'group-sysop-member'    => 'Администратор',
 'group-bureaucrat-member'=> 'Бирократ',
-'group-steward-member'  => 'Стјуард',
 'grouppage-bot'         => 'Project:Ботови',
 'grouppage-sysop'       => 'Project:Администратори',
 'grouppage-bureaucrat'  => 'Project:Бирократи',
@@ -1053,7 +1127,6 @@ $NEWPAGE
 'makesysopok'           => '<b>Корисникот "$1" сега е администратор</b>',
 'makesysopfail'         => '<b>Корисникот "$1" не може да биде претворен во администратор. (Дали го внесовте правилно името?)</b>',
 'setbureaucratflag'     => 'Постави „бирократ“ знаменце',
-'setstewardflag'        => 'Постави „стјуард“ знаменце',
 'rightslog'             => 'Историја на корисничките права',
 'rightslogtext'         => 'Ова е дневник на промени на кориснички права.',
 'rightslogentry'        => 'променето групно членство за $1 од $2 во $3',
@@ -1064,7 +1137,6 @@ $NEWPAGE
 'makesysop'             => 'Претвори го корисникот во администратор',
 'already_sysop'         => 'Овој корисник веќе е администратор',
 'already_bureaucrat'    => 'Овој корисник веќе е бирократ',
-'already_steward'       => 'Овој корисник веќе е стјуард',
 'rightsnone'            => '(нема)',
 'movepage'              => 'Премести ја страницата',
 'movepagetext'          => 'Со користењето на долниот формулар можете да преименувате страница, преместувајќи ја целата нејзина историја на новото име. Стариот наслов ќе стане страница за пренасочување кон новиот наслов.<br />

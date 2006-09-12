@@ -1,11 +1,64 @@
 <?php
+/** Danish (Dansk)
+  *
+  * @package MediaWiki
+  * @subpackage Language
+ */
 
+$namespaceNames = array(
+	NS_MEDIA			=> 'Media',
+	NS_SPECIAL			=> 'Speciel',
+	NS_MAIN				=> '',
+	NS_TALK				=> 'Diskussion',
+	NS_USER				=> 'Bruger',
+	NS_USER_TALK		=> 'Bruger_diskussion',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK		=> '$1_diskussion',
+	NS_IMAGE			=> 'Billede',
+	NS_IMAGE_TALK		=> 'Billede_diskussion',
+	NS_MEDIAWIKI		=> 'MediaWiki',
+	NS_MEDIAWIKI_TALK	=> 'MediaWiki_diskussion',
+	NS_TEMPLATE  		=> 'Skabelon',
+	NS_TEMPLATE_TALK	=> 'Skabelon_diskussion',
+	NS_HELP				=> 'Hjælp',
+	NS_HELP_TALK		=> 'Hjælp_diskussion',
+	NS_CATEGORY			=> 'Kategori',
+	NS_CATEGORY_TALK	=> 'Kategori_diskussion'
+
+);
+
+$quickbarSettings = array(
+	'Ingen', 'Fast venstre', 'Fast højre', 'Flydende venstre'
+);
+
+$skinNames = array(
+	'standard' => 'Klassisk',
+	'nostalgia' => 'Nostalgi',
+	'cologneblue' => 'Cologne-blå',
+);
+
+$datePreferences = false;
+$defaultDateFormat = 'dmy';
+$dateFormats = array(
+	'dmy time' => 'H:i',
+	'dmy date' => 'j. M Y',
+	'dmy both' => 'j. M Y "kl." H:i',
+);
+
+$bookstoreList = array(
+	"Bibliotek.dk" => "http://bibliotek.dk/vis.php?base=dfa&origin=kommando&field1=ccl&term1=is=$1&element=L&start=1&step=10",
+	"Bogguide.dk" => "http://www.bogguide.dk/find_boeger_bog.asp?ISBN=$1",
+	'inherit' => true,
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+$linkTrail = '/^([a-zæøå]+)(.*)$/sDu';
 
 #-------------------------------------------------------------------
 # Default messages
 #-------------------------------------------------------------------
 
-/* private */ $wgAllMessagesDa = array(
+$messages = array(
 # User preference toggles
 "tog-underline" => "Understreg henvisninger",
 "tog-highlightbroken" => "Brug røde henvisninger til tomme sider",
@@ -71,11 +124,9 @@
 # Bits of text used by many pages:
 #
 "categories" => "Kategorier",
-"category" => "kategori",
 "category_header" => 'Artikler i kategorien "$1"',
 "subcategories" => "Underkategorier",
 
-"linktrail"		=> '/^([a-zæøå]+)(.*)$/sDu',
 "mainpage"		=> "Forside",
 "mainpagetext"	=> "MediaWiki er nu installeret.",
 "mainpagedocfooter" => "Se vores engelsksprogede [http://meta.wikimedia.org/wiki/MediaWiki_i18n dokumentation om tilpasning af brugergrænsefladen]
@@ -114,7 +165,6 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 
 # Metadata in edit box
 'metadata' => '<b>Metadata</b> (for en foklaring se <a href="$1">her</a>)',
-'metadata_page' => '{{ns:4}}:Metadata',
 
 "currentevents" => "Aktuelle begivenheder",
 'currentevents-url' => 'Aktuelle begivenheder',
@@ -126,6 +176,7 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 "whatlinkshere"	=> "Hvad henviser hertil",
 "help"			=> "Hjælp",
 "search"		=> "Søg",
+"searchbutton"	=> "Søg",
 "go"		=> "Gå til",
 "history"		=> "Historik",
 'history_short' => 'Historik',
@@ -135,7 +186,6 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 "editthispage"	=> "Redigér side",
 'delete' => 'Slet',
 "deletethispage" => "Slet side",
-'undelete_short1' => 'Fortryd sletning af en version',
 "undelete_short" => "Fortryd sletning af $1 versioner",
 'protect' => 'Beskyt',
 "protectthispage" => "Beskyt side",
@@ -146,9 +196,7 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 'specialpage' => 'Speciel side',
 'personaltools' => 'Personlige værktøjer',
 "postcomment"   => "Tilføj en kommentar",
-'addsection'   => '+',
 "articlepage"	=> "Se artiklen",
-"subjectpage"	=> "Se emnesiden",
 'talk' => 'Diskussion',
 'toolbox' => 'Værktøjer',
 "userpage" => "Se brugersiden",
@@ -161,17 +209,7 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 "viewcount"		=> "Siden er vist i alt $1 gange.",
 'copyright'	=> 'Indholdet&nbsp;er&nbsp;udgivet&nbsp;under&nbsp;$1.',
 "protectedpage" => "Beskyttet side",
-"administrators" => "{{ns:4}}:Administratorer",
-"sysoptitle"	=> "Sysop-adgang påkrævet",
-"sysoptext"		=> "Den funktion du har bedt om kan kun
-udføres af brugere med \"sysop\"-status. Se $1.",
-"developertitle" => "Developer-adgang påkrævet",
-"developertext"	=> "Den funktion du har bedt om, kan kun
-udføres af brugere med \"developer\"-status. Se $1.",
 'badaccess'     => 'Permission error',
-'badaccesstext' => 'The action you have requested is limited
-to users with the "$2" permission assigned.
-See $1.',
 
 'nbytes'		=> '$1 bytes',
 "go"			=> "Gå til",
@@ -186,7 +224,6 @@ See $1.',
 "thisisdeleted" => "Se eller gendan $1?",
 "restorelink" => "$1 slettede ændringer",
 'feedlinks' => 'Feed:',
-'sitenotice'	=> '-', # the equivalent to wgSiteNotice
 'tagline' => 'Fra {{SITENAME}}',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
@@ -336,15 +373,6 @@ Du bør logge på nu og ændre din adgangskode.",
 "passwordsent"	=> "En ny adgangskode er sendt til e-mail-adressen,
 som er registreret for \"$1\".
 Du bør logge på og ændre din adgangskode straks efter du har modtaget e-mail'en.",
-'loginend'		=> "'''For at oprette en konto skal du vælge et brugernavn og en adgangskode og trykke på \"Opret en ny konto\"'''
-
-* Brugernavnet skal starte med stort bogstav og det må gerne indeholde mellemrum.
-
-'''Hvis du allerede har en konto, skal du kun udfylde brugernavn og adgangskode og trykke \"Log på\"'''
-
-* Du skal have cookies slået til for at kunne logge på.
-
-<nowiki>*</nowiki> Det er valgfrit om du vil oplyse din e-mail-adresse. Men det gør andre brugere i stand til at sende dig en e-mail, uden at du behøver at offentliggøre din e-mail-adresse. Samtidig giver det mulighed for at få sendt en ny adgangskode til din e-mail-adresse. '''Vi videregiver aldrig din e-mail-adresse til nogen som helst.'''",
 'mailerror' => "Fejl ved afsendelse af e-mail: $1",
 'acct_creation_throttle_hit' => 'Du har allerede oprettet $1 kontoer. Du kan ikke oprette flere.',
 'emailauthenticated' 	=> 'Din e-mail-adresse blev bekræftet på $1.',
@@ -404,7 +432,6 @@ Sørg venligst for at medtage denne IP-adresse i alle henvendelser til en admini
 'accmailtext' => "Adgangskoden for '$1' er sendt til $2.",
 "newarticle"	=> "(Ny)",
 "newarticletext" => "<div style=\"font-size:small;color:\#003333;border-width:1px;border-style:solid;border-color:\#aaaaaa;padding:3px\">'''{{SITENAME}} har endnu ikke nogen {{NAMESPACE}}-side ved navn {{PAGENAME}}.'''<br /> Du kan begynde en side ved at skrive i boksen herunder. (se [[{{ns:4}}:Hjælp|hjælpen]] for yderligere oplysninger).<br /> Eller du kan [[{{ns:-1}}:Search/{{PAGENAME}}|søge efter {{PAGENAME}} i {{SITENAME}}]].<br /> Hvis det ikke var din mening, så tryk på '''Tilbage'''- eller '''Back'''-knappen. '''Dit bidrag til {{SITENAME}} vil fremkomme omgående''', så hvis du bare vil teste tingene, så brug venligst [[{{ns:4}}:Sandkassen|sandkassen]]!</div>",
-'talkpagetext' => '<!-- MediaWiki:talkpagetext -->',
 "anontalkpagetext" => "---- ''Dette er en diskussionsside for en anonym bruger, der ikke har oprettet en konto endnu eller ikke bruger den. Vi er derfor nødt til at bruge den nummeriske [[IP-adresse]] til at identificere ham eller hende. En IP-adresse kan være delt mellem flere brugere. Hvis du er en anonym bruger og synes, at du har fået irrelevante kommentarer på sådan en side, så vær venlig at oprette en brugerkonto og [[Speciel:Userlogin|logge på]], så vi undgår fremtidige forvekslinger med andre anonyme brugere.''",
 "noarticletext" => "<div style=\"border: 1px solid \#ccc; padding: 7px; background-color: \#fff; color: \#000\">'''{{SITENAME}} har ikke nogen side med præcis dette navn.''' * Du kan se om {{PAGENAME}} findes i [[Wiktionary:{{NAMESPACE}}:{{PAGENAME}}|wikiordbogen]] eller på '''[[:no:{{PAGENAME}}|norsk]]''', '''[[:nn:{{PAGENAME}}|nynorsk]]''', eller '''[[:sv:{{PAGENAME}}|svensk]]'''. * Du kan '''[{{SERVER}}{{localurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} starte siden {{PAGENAME}}]''' * Eller [[{{ns:special}}:Search/{{PAGENAME}}|søge efter {{PAGENAME}}]] i andre artikler ---- * Hvis du har oprettet denne artikel indenfor de sidste få minutter, så kan de skyldes at der er lidt forsinkelse i opdateringen af {{SITENAME}}s cache. Vent venligst og tjek igen senere om artiklen dukker op, inden du forsøger at oprette artiklen igen. </div>",
 'clearyourcache' => "'''Bemærk''', efter at have gemt, er du nødt til at tømme din browsers cache for at kunne se ændringerne. '''Mozilla / Firefox / Safari''': hold ''shifttasten'' nede og klik på ''reload'' eller tryk på ''control-shift-r'' (Mac: ''cmd-shift-r''); '''Internet Explorer''': hold ''controltasten'' nede og klik på ''refresh'' eller tryk på ''control-F5''; '''Konqueror''': klik på ''reload'' eller tryk på ''F5''",
@@ -457,7 +484,6 @@ ikke findes. Kontrollér den URL du brugte til at få adgang til denne side.",
 "loadhist"		=> "Indlæser sidens historik",
 "currentrev"	=> "Nuværende version",
 "revisionasof"	=> "Versionen fra $1",
-'revisionasofwithlink'  => 'Revision pr. $1; $2<br />$3 | $4',
 'previousrevision'	=> '←Ældre version',
 'nextrevision'		=> 'Nyere version→',
 'currentrevisionlink'   => 'se nuværende version',
@@ -467,7 +493,6 @@ ikke findes. Kontrollér den URL du brugte til at få adgang til denne side.",
 "orig"			=> "originale",
 "histlegend"	=> "Forklaring: (nuværende) = forskel til den nuværende
 version, (forrige) = forskel til den forrige version, M = mindre ændring",
-'history_copyright'    => '-',
 'deletedrev' => '[slettet]',
 
 # Diffs
@@ -570,31 +595,10 @@ ellers skulle man for eksempel for dansk vintertid, indtaste \"1\"
 #
 
 # switching pan
-'groups-lookup-group' => 'Administrér grupperettigheder',
-'groups-group-edit' => 'Eksisterende grupper:',
-'editgroup' => 'Redigér gruppe',
-'addgroup' => 'Tilføj gruppe',
 
 'userrights-lookup-user' => 'Administrér brugergrupper',
 'userrights-user-editname' => 'Skriv et brugernavn:',
 'editusergroup' => 'Redigér brugergrupper',
-
-# group editing
-'groups-editgroup' => 'Redigér gruppe',
-'groups-addgroup' => 'Tilføj gruppe',
-'groups-editgroup-preamble' => 'Hvis navn eller beskrivelse starter med et kolon, så vil
-resten blive behandlet som et navn på en besked, og derfor vil teksten blive behandlet som
-en besked i MediaWiki navnerummet',
-'groups-editgroup-name' => 'Gruppenavn:',
-'groups-editgroup-description' => 'Gruppebeskrivelse (max 255 tegn):<br />',
-'savegroup' => 'Gem gruppe',
-'groups-tableheader'        => 'ID || Navn || Beskrivelse || Rettigheder',
-'groups-existing'           => 'Eksisterende grupper',
-'groups-noname'             => 'Angiv venligst et lovligt gruppenavn',
-'groups-already-exists'     => 'En gruppe ved et navn eksisterer allerede',
-'addgrouplogentry'          => 'Tilføjet gruppe $2',
-'changegrouplogentry'       => 'Ændret gruppe $2',
-'renamegrouplogentry'       => 'Omdøbt gruppe $2 to $3',
 
 # user groups editing
 #
@@ -604,54 +608,29 @@ en besked i MediaWiki navnerummet',
 'userrights-groupsavailable' => 'Tilgængelige grupper:',
 'userrights-groupshelp' => 'Vælg grupper som du ønsker brugeren skal fjernes fra eller føjes til.
 Grupper som ikke er valgt, vil ikke blive ændret. Du kan ophæve valget af en gruppe ved hjælp af CTRL-tasten og et venstreklik.',
-'userrights-logcomment' => 'Ændret gruppemedlemskab fra $1 til $2',
-
-# Default group names and descriptions
-#
-'group-anon-name'       => 'Anonym',
-'group-anon-desc'       => 'Anonyme brugere',
-'group-loggedin-name'   => 'Bruger',
-'group-loggedin-desc'   => 'Generel bruger der er logget på',
-'group-admin-name'      => 'Administrator',
-'group-admin-desc'      => 'En bruger der kan blokere andre brugere og slette sider',
-'group-bureaucrat-name' => 'Bureaukrat',
-'group-bureaucrat-desc' => 'Bureaukrater kan udnævne administratorer',
-'group-steward-name'    => 'Steward',
-'group-steward-desc'    => 'Fuld adgang',
-
 
 # Recent changes
 #
 "changes" => "ændringer",
 "recentchanges" => "Seneste ændringer",
-'recentchanges-url' => 'Speciel:Recentchanges',
-"rcloaderr"		=> "Indlæser seneste ændrede sider",
 "rcnote"		=> "Nedenfor er de seneste <strong>$1</strong> ændringer i de
 sidste <strong>$2</strong> dage.",
 "rcnotefrom"	=> "Nedenfor er ændringerne fra <b>$2</b> indtil <b>$1</b> vist.",
 "rclistfrom"	=> "Vis nye ændringer startende fra $1",
-'showhideminor' => "$1 mindre ændringer | $2 robotter | $3 brugere der er logget på | $4 patruljerede ændringer",
 "rclinks"		=> "Vis seneste $1 ændringer i de sidste $2 dage<br />$3",
-"rchide"		=> "i $4 form; $1 mindre ændringer; $2 andre navnerum; $3 mere end en redigering.",
-"rcliu"			=> "; $1 redigeringer fra brugere der er logget på",
 "diff"			=> "forskel",
 "hist"			=> "historik",
 "hide"			=> "skjul",
 "show"			=> "vis",
-"tableform"		=> "tabel",
-"listform"		=> "liste",
-"nchanges"		=> "$1 ændringer",
 "minoreditletter" => "m",
 "newpageletter" => "N",
 'sectionlink' => '→',
-'number_of_watching_users_RCview' 	=> '[$1]',
 'number_of_watching_users_pageview' 	=> '[$1 overvågende bruger/e]',
 
 # Upload
 #
 "upload"		=> "Læg en fil op",
 "uploadbtn"		=> "Læg en fil op",
-"uploadlink"	=> "Læg en fil op",
 "reupload"		=> "Læg en fil op igen",
 "reuploaddesc"	=> "Tilbage til formularen til at lægge filer op.",
 "uploadnologin" => "Ikke logget på",
@@ -764,12 +743,6 @@ Det vil sige, at der har været '''$5''' gennemsnitlige redigeringer pr. side.",
 
 # Maintenance Page
 #
-"maintenance"		=> "Vedligeholdelsesside",
-"maintnancepagetext"	=> "På denne side er der forskellige smarte
-værktøjer til at vedligeholde {{SITENAME}}. Nogle af disse funktioner er ret
-hårde for databasen (de tager lang tid), så lad være med at opdatere siden
-hver gang du har rettet en enkelt ting ;-)",
-"maintenancebacklink"	=> "Tilbage til vedligeholdelsessiden",
 "disambiguations"	=> "Artikler med flertydige titler",
 "disambiguationspage"	=> "Project:Henvisninger til artikler med flertydige titler",
 "disambiguationstext"	=> "De følgende artikler henviser til
@@ -786,24 +759,10 @@ skulle have peget på.",
 "brokenredirects"	=> "Dårlige omdirigeringer",
 "brokenredirectstext"	=> "De følgende omdirigeringer peger på en side der
 ikke eksisterer.",
-"selflinks"		=> "Sider der henviser til sig selv",
-"selflinkstext"		=> "De følgende sider indeholder henvisninger til sig selv,
-men det burde de ikke.",
-"mispeelings"           => "Sider med stavefejl",
-"mispeelingstext"               => "De følgende sider indeholder en af de
-almindelig stavefejl, som er listet på $1. Den korrekte stavemåde kan
-angives i paranteser efter den fejlagtige stavemåde (sådan her).",
-"mispeelingspage"       => "Liste over almindelige stavefejl",
-"missinglanguagelinks"  => "Manglende sproghenvisninger",
-"missinglanguagelinksbutton"    => "Find manglende sproghenvisninger for",
-"missinglanguagelinkstext"      => "Disse artikler har <i>ikke</i> nogen
-henvisning til den samme artikel i $1. Omdirigeringer og underartikler er
-<i>ikke</i> vist.",
 
 
 # Miscellaneous special pages
 #
-"orphans"		=> "Forældreløse artikler",
 "lonelypages"	=> "Forældreløse artikler",
 'uncategorizedpages'	=> 'Ukategoriserede sider',
 'uncategorizedcategories'	=> 'Ukategoriserede kategorier',
@@ -814,7 +773,6 @@ henvisning til den samme artikel i $1. Omdirigeringer og underartikler er
 "nlinks"		=> "$1 henvisninger",
 "allpages"		=> "Alle artikler",
 "randompage"	=> "Tilfældig artikel",
-'randompage-url'=> 'Speciel:Randompage',
 "shortpages"	=> "Korte artikler",
 "longpages"		=> "Lange artikler",
 'deadendpages'  => 'Blindgydesider',
@@ -822,10 +780,8 @@ henvisning til den samme artikel i $1. Omdirigeringer og underartikler er
 "specialpages"	=> "Specielle sider",
 "spheading"		=> "Specielle sider for alle brugere",
 'restrictedpheading'	=> 'Specielle sider med begrænset adgang',
-"protectpage"	=> "Beskyt side",
 "recentchangeslinked" => "Relaterede ændringer",
 "rclsub"		=> "(til sider henvist fra \"$1\")",
-"debug"			=> "Aflus",
 "newpages"		=> "Nyeste artikler",
 "ancientpages"		=> "Ældste artikler",
 "intl"		=> "Sproghenvisninger",
@@ -845,8 +801,6 @@ yderligere oplysninger om bøger du leder efter.
 {{SITENAME}} er ikke associeret med nogen af disse steder,
 og denne liste skal ikke ses som en anbefaling af disse.",
 'isbn'	=> 'ISBN',
-'rfcurl' =>  'http://www.faqs.org/rfcs/rfc$1.html',
-'pubmedurl' =>  'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1',
 "alphaindexline" => "$1 til $2",
 'version'		=> 'Information om MediaWiki',
 'log'		=> 'Logs',
@@ -890,7 +844,6 @@ eller har valgt ikke at modtage e-mail fra andre brugere.",
 # Watchlist
 #
 "watchlist"		=> "Overvågningsliste",
-"watchlistsub"	=> "(for bruger \"$1\")",
 "nowatchlist"	=> "Du har ingenting i din overvågningsliste.",
 "watchnologin"	=> "Ikke logget på",
 "watchnologintext"	=> "Du skal være [[Speciel:Userlogin|logget på]] for at kunne ændre din overvågningsliste.",
@@ -925,8 +878,6 @@ i bunden af skærmen.",
 "wlnote" => "Nedenfor er de seneste $1 ændringer i de sidste <b>$2</b> timer.",
 'wlshowlast' 		=> "Vis de seneste $1 timer $2 dage $3",
 'wlsaved'			=> 'Dette er en gemt version af din overvågningsliste.',
-'wlshow'		=> 'Vis',
-'wlhide'		=> 'Skjul',
 'wlhideshowown'		=> '$1 mine redigeringer.',
 'wlhideshowbots'		=> '$1 robotredigeringer.',
 'wldone'			=> 'Gennemført.',
@@ -1031,9 +982,6 @@ på siden.",
 "undeletebtn" => "Gendan!",
 "undeletedarticle" => "gendannede \"$1\"",
 'undeletedrevisions' => "$1 versioner gendannet",
-"undeletedtext"   => "Artiklen [[:$1|$1]] er blevet gendannet med succes.
-Se [[{{ns:project}}:Sletningslog]] for en fortegnelse over nylige
-sletninger og gendannelser.",
 
 # Namespace form on various pages
 'namespace' => 'Namvnerum:',
@@ -1077,7 +1025,6 @@ sidste <b>$2</b> dage.",
 "unblockiptext"	=> "Brug formularen herunder for at gendanne skriveadgangen
 for en tidligere blokeret IP-adresse eller bruger.",
 "ipusubmit"		=> "Ophæv blokeringen af denne adresse",
-"ipusuccess"	=> "\"$1\" har fået ophævet blokeringen",
 "ipblocklist"	=> "Liste over blokerede IP-adresser og brugernavne",
 'blocklistline'	=> '$1, $2 blokerede $3 ($4)',
 'infiniteblock' => 'udløber infinite', //fixme
@@ -1125,10 +1072,7 @@ Indsæt navnet på brugeren i tekstboksen og tryk på knappen for at ændre rett
 'makesysopok'		=> "<b>Bruger \"$1\" er nu administrator</b>",
 'makesysopfail'		=> "<b>Bruger \"$1\" kunne ikke gøres til administrator. (Har du stavet navnet rigtigt?)</b>",
 'setbureaucratflag' => 'Sæt bureaukratflag',
-'setstewardflag'    => 'Sæt steward flag',
-'bureaucratlog'		=> 'Bureaukratlog',
 'rightslogtext'		=> 'Dette er en log over ændringer i brugeres rettigheder.',
-'bureaucratlogentry'	=> "Rettigheder for bruger \"$1\" sat til \"$2\"",
 'rights'			=> 'Rettigheder:',
 'set_user_rights'	=> 'Tildel brugerrettigheder',
 'user_rights_set'	=> "<b>Rettigheder for bruger \"$1\" er opdateret</b>",
@@ -1136,7 +1080,6 @@ Indsæt navnet på brugeren i tekstboksen og tryk på knappen for at ændre rett
 'makesysop'         => 'Tildel brugerrettigheder',
 'already_sysop'     => 'Denne bruger er allerede administrator',
 'already_bureaucrat' => 'Denne bruger er allerede bureaucrat',
-'already_steward'   => 'Denne bruger er allerede steward',
 
 # Move page
 #
@@ -1274,9 +1217,7 @@ Målartiklen "[[$1]]" eksisterer allerede. Vil du slette den for at lave plads t
 'spamprotectiontext' => 'Siden du prøver at få adgang til er blokeret af spamfilteret. Dette skyldes sandsynligvis et link til et eksternt websted. Se [[m:spam blacklist]] for en komplet liste af blokerede websteder. Hvis du mener at spamfilteret blokerede redigeringen ved en fejl, så kontakt en [[m:Special:Listadmins|m:administrator]]. Det følgende er et udtræk af siden der bevirkede blokeringen:',
 'spamprotectionmatch' => 'Følgende tekst udløste vores spamfilter: $1',
 'subcategorycount' => "Der er $1 underkategorier i denne kategori.",
-'subcategorycount1' => "Der er $1 underkategori i denne kategori.",
 'categoryarticlecount' => "Der er $1 artikler i denne kategori.",
-'categoryarticlecount1' => "Der er $1 artikel i denne kategori.",
 'listingcontinuesabbrev' => " forts.",
 
 # Info page
@@ -1297,7 +1238,6 @@ Målartiklen "[[$1]]" eksisterer allerede. Vil du slette den for at lave plads t
 
 # Patrolling
 'markaspatrolleddiff'   => "Markér som patruljeret",
-'markaspatrolledlink'   => "<div class='patrollink'>[$1]</div>",
 'markaspatrolledtext'   => "Markér denne artikel som patruljeret",
 'markedaspatrolled'     => "Markeret som patruljeret",
 'markedaspatrolledtext' => "Den valgte revision er nu markeret som patruljeret.",

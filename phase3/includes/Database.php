@@ -86,6 +86,11 @@ class DBConnectionError extends DBError {
 		return $this->getMessage() . "\n";
 	}
 
+	function getLogMessage() {
+		# Don't send to the exception log
+		return false;
+	}
+
 	function getPageTitle() {
 		global $wgSitename;
 		return "$wgSitename has a problem";
@@ -205,6 +210,11 @@ class DBQueryError extends DBError {
 		}
 	}
 	
+	function getLogMessage() {
+		# Don't send to the exception log
+		return false;
+	}
+
 	function getPageTitle() {
 		return $this->msg( 'databaseerror', 'Database error' );
 	}
@@ -244,6 +254,9 @@ class Database {
 	protected $mTrxLevel = 0;
 	protected $mErrorCount = 0;
 	protected $mLBInfo = array();
+	protected $mCascadingDeletes = false;
+	protected $mCleanupTriggers = false;
+	protected $mStrictIPs = false;
 
 #------------------------------------------------------------------------------
 # Accessors
@@ -332,6 +345,28 @@ class Database {
 		} else {
 			$this->mLBInfo[$name] = $value;
 		}
+	}
+
+	/**
+	 * Returns true if this database supports (and uses) cascading deletes
+	 */
+	function cascadingDeletes() {
+		return $this->mCascadingDeletes;
+	}
+
+	/**
+	 * Returns true if this database supports (and uses) triggers (e.g. on the page table)
+	 */
+	function cleanupTriggers() {
+		return $this->mCleanupTriggers;
+	}
+
+	/**
+	 * Returns true if this database is strict about what can be put into an IP field.
+	 * Specifically, it uses a NULL value instead of an empty string.
+	 */
+	function strictIPs() {
+		return $this->mStrictIPs;
 	}
 
 	/**#@+
@@ -433,6 +468,7 @@ class Database {
 	 */
 	function open( $server, $user, $password, $dbName ) {
 		global $wguname;
+		wfProfileIn( __METHOD__ );
 
 		# Test for missing mysql.so
 		# First try to load it
@@ -492,6 +528,7 @@ class Database {
 		}
 
 		$this->mOpened = $success;
+		wfProfileOut( __METHOD__ );
 		return $success;
 	}
 	/**@}}*/
@@ -760,8 +797,8 @@ class Database {
 	 */
 	function fetchObject( $res ) {
 		@/**/$row = mysql_fetch_object( $res );
-		if( mysql_errno() ) {
-			throw new DBUnexpectedError( $this, 'Error in fetchObject(): ' . htmlspecialchars( mysql_error() ) );
+		if( $this->lastErrno() ) {
+			throw new DBUnexpectedError( $this, 'Error in fetchObject(): ' . htmlspecialchars( $this->lastError() ) );
 		}
 		return $row;
 	}
@@ -772,8 +809,8 @@ class Database {
 	 */
  	function fetchRow( $res ) {
 		@/**/$row = mysql_fetch_array( $res );
-		if (mysql_errno() ) {
-			throw new DBUnexpectedError( $this, 'Error in fetchRow(): ' . htmlspecialchars( mysql_error() ) );
+		if ( $this->lastErrno() ) {
+			throw new DBUnexpectedError( $this, 'Error in fetchRow(): ' . htmlspecialchars( $this->lastError() ) );
 		}
 		return $row;
 	}
@@ -783,8 +820,8 @@ class Database {
 	 */
 	function numRows( $res ) {
 		@/**/$n = mysql_num_rows( $res );
-		if( mysql_errno() ) {
-			throw new DBUnexpectedError( $this, 'Error in numRows(): ' . htmlspecialchars( mysql_error() ) );
+		if( $this->lastErrno() ) {
+			throw new DBUnexpectedError( $this, 'Error in numRows(): ' . htmlspecialchars( $this->lastError() ) );
 		}
 		return $n;
 	}

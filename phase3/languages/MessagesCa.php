@@ -1,7 +1,58 @@
 <?php
+$quickbarSettings = array(
+	"Cap", "Fixa a la dreta", "Fixa a l'esquerra", "Surant a l'esquerra"
+);
+$skinNames = array(
+	'standard' => "Estàndard",
+	'nostalgia' => "Nostàlgia",
+	'cologneblue' => "Colònia blava",
+);
 
-global $wgAllMessagesCa;
-$wgAllMessagesCa = array(
+$bookstoreList = array(
+	'Catàleg Col·lectiu de les Universitats de Catalunya' => 'http://ccuc.cbuc.es/cgi-bin/vtls.web.gateway?searchtype=control+numcard&searcharg=$1',
+	'Totselsllibres.com' => 'http://www.totselsllibres.com/tel/publi/busquedaAvanzadaLibros.do?ISBN=$1',
+	'inherit' => true,
+);
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Especial',
+	NS_MAIN           => '',
+	NS_TALK           => 'Discussió',
+	NS_USER           => 'Usuari',
+	NS_USER_TALK      => 'Usuari_Discussió',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_Discussió',
+	NS_IMAGE          => 'Imatge',
+	NS_IMAGE_TALK     => 'Imatge_Discussió',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'MediaWiki_Discussió',
+	NS_TEMPLATE       => 'Plantilla',
+	NS_TEMPLATE_TALK  => 'Plantilla_Discussió',
+	NS_HELP           => 'Ajuda',
+	NS_HELP_TALK      => 'Ajuda_Discussió',
+	NS_CATEGORY       => 'Categoria',
+	NS_CATEGORY_TALK  => 'Categoria_Discussió'
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'M j, Y',
+	'mdy both' => 'H:i, M j, Y',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j M Y',
+	'dmy both' => 'H:i, j M Y',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y M j',
+	'ymd both' => 'H:i, Y M j',
+);
+
+$linkTrail = '/^([a-zàèéíòóúç·ïü\']+)(.*)$/sDu';
+
+$messages = array(
 'tog-underline'         => 'Subratlla els enllaços:',
 'tog-highlightbroken'   => 'Formata els enllaços trencats  <a href="" class="new">d\'aquesta manera</a> (altrament, es faria d\'aquesta altra manera<a href="" class="internal">?</a>).',
 'tog-justify'           => 'Alineació justificada dels paràgrafs',
@@ -72,7 +123,6 @@ $wgAllMessagesCa = array(
 'nov'                   => 'nov',
 'dec'                   => 'des',
 'categories'            => '{{PLURAL:$1|Categoria|Categories}}',
-'category'              => 'categoria',
 'category_header'       => 'Articles a la categoria «$1»',
 'subcategories'         => 'Subcategories',
 'mainpage'              => 'Pàgina principal',
@@ -125,6 +175,7 @@ $wgAllMessagesCa = array(
 'returnto'              => 'Torna cap a $1.',
 'tagline'               => 'De {{SITENAME}}',
 'search'                => 'Cerca',
+'searchbutton'          => 'Cerca',
 'go'                    => 'Vés-hi',
 'history'               => 'Historial de canvis',
 'history_short'         => 'Historial',
@@ -148,7 +199,6 @@ $wgAllMessagesCa = array(
 'personaltools'         => 'Eines de l\'usuari',
 'postcomment'           => 'Envia un comentari',
 'articlepage'           => 'Mostra la pàgina',
-'subjectpage'           => 'Mostra el tema',
 'talk'                  => 'Discussió',
 'views'                 => 'Vistes',
 'toolbox'               => 'Eines',
@@ -164,20 +214,10 @@ $wgAllMessagesCa = array(
 'viewcount'             => 'Aquesta pàgina ha estat visitada {{plural:$1|una vegada|$1 vegades}}.',
 'copyright'             => 'El contingut és disponible sota els termes d\'una llicència $1',
 'protectedpage'         => 'Pàgina protegida',
-'administrators'        => 'Project:Administradors',
 'jumpto'                => 'Dreceres ràpides:',
 'jumptonavigation'      => 'navegació',
 'jumptosearch'          => 'cerca',
-'sysoptitle'            => 'Cal ser un administrador per a accedir-hi',
-'sysoptext'             => 'L\'acció que heu demanada només pot ser duta a terme per usuaris amb estatus de "administrador".
-Vegeu $1.',
-'developertitle'        => 'Cal ser un desenvolupador per a accedir-hi',
-'developertext'         => 'L\'acció que heu demanada només pot ser duta a terme per usuaris amb funcions de "desenvolupador".
-Vegeu $1.',
 'badaccess'             => 'Error de permisos',
-'badaccesstext'         => 'L\'acció que heu sol·licitat es limita
-a usuaris amb el permís «$2» assignat.
-Vegeu $1.',
 'versionrequired'       => 'Cal la versió $1 del MediaWiki',
 'versionrequiredtext'   => 'Cal la versió $1 del MediaWiki per a utilitzar aquesta pàgina. Vegeu [[Special:Version]]',
 'ok'                    => 'D\'acord',

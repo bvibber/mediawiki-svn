@@ -1,7 +1,57 @@
 <?php
+/** Punjabi (Gurmukhi)
+  * @package MediaWiki
+  * @subpackage Language
+  */
+# This file is dual-licensed under GFDL and GPL.
+#
+# See: http://bugzilla.wikimedia.org/show_bug.cgi?id=1478
 
-global $wgAllMessagesPa;
-$wgAllMessagesPa = array(
+$quickbarSettings = array(
+	'ਕੋਈ ਨਹੀਂ', 'ਸਥਿਰ ਖੱਬੇ', 'ਸਥਿਰ ਸੱਜਾ', 'ਤੈਰਦਾ ਖੱਬੇ'
+);
+
+$skinNames = array(
+	'standard'      => 'ਮਿਆਰੀ',
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => 'ਮੀਡੀਆ',
+	NS_SPECIAL        => 'ਖਾਸ',
+	NS_MAIN           => '',
+	NS_TALK           => 'ਚਰਚਾ',
+	NS_USER           => 'ਮੈਂਬਰ',
+	NS_USER_TALK      => 'ਮੈਂਬਰ_ਚਰਚਾ',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => '$1_ਚਰਚਾ',
+	NS_IMAGE          => 'ਤਸਵੀਰ',
+	NS_IMAGE_TALK     => 'ਤਸਵੀਰ_ਚਰਚਾ',
+	NS_MEDIAWIKI      => 'ਮੀਡੀਆਵਿਕਿ',
+	NS_MEDIAWIKI_TALK => 'ਮੀਡੀਆਵਿਕਿ_ਚਰਚਾ',
+	NS_TEMPLATE       => 'ਨਮੂਨਾ',
+	NS_TEMPLATE_TALK  => 'ਨਮੂਨਾ_ਚਰਚਾ',
+	NS_HELP           => 'ਮਦਦ',
+	NS_HELP_TALK      => 'ਮਦਦ_ਚਰਚਾ',
+	NS_CATEGORY       => 'ਸ਼੍ਰੇਣੀ',
+	NS_CATEGORY_TALK  => 'ਸ਼੍ਰੇਣੀ_ਚਰਚਾ'
+);
+
+$digitTransformTable = array(
+	'0' => '੦',
+	'1' => '੧',
+	'2' => '੨',
+	'3' => '੩',
+	'4' => '੪',
+	'5' => '੫',
+	'6' => '੬',
+	'7' => '੭',
+	'8' => '੮',
+	'9' => '੯'
+);
+$linkTrail = '/^([ਁਂਃਅਆਇਈਉਊਏਐਓਔਕਖਗਘਙਚਛਜਝਞਟਠਡਢਣਤਥਦਧਨਪਫਬਭਮਯਰਲਲ਼ਵਸ਼ਸਹ਼ਾਿੀੁੂੇੈੋੌ੍ਖ਼ਗ਼ਜ਼ੜਫ਼ੰੱੲੳa-z]+)(.*)$/sDu';
+
+
+$messages = array(
 # Bits of text used by many pages:
 #
 
@@ -39,11 +89,9 @@ $wgAllMessagesPa = array(
 'dec'			=> 'ਦਸੰਬਰ',
 
 'categories'	=> 'ਸ਼੍ਰੇਣੀਆਂ',
-'category'		=> 'ਸ਼੍ਰੇਣੀ',
 'category_header'	=> 'ਸ਼੍ਰੇਣੀ \'$1\' ਵਾਲੇ ਲੇਖ',
 'subcategories'	=> 'ਉਪਸ਼੍ਰੇਣੀਆਂ',
 
-'linktrail'		=> '/^([ਁਂਃਅਆਇਈਉਊਏਐਓਔਕਖਗਘਙਚਛਜਝਞਟਠਡਢਣਤਥਦਧਨਪਫਬਭਮਯਰਲਲ਼ਵਸ਼ਸਹ਼ਾਿੀੁੂੇੈੋੌ੍ਖ਼ਗ਼ਜ਼ੜਫ਼ੰੱੲੳa-z]+)(.*)$/sDu',
 'mainpage'		=> 'ਮੁੱਖ ਪੰਨਾ',
 'mainpagetext'	=> 'ਵਿਕਿ ਸਾਫ਼ਟਵੇਅਰ ਚੰਗੀ ਤਰ੍ਹਾਂ ਇੰਸਟਾਲ ਹੋ ਗਿਆ ਹੈ',
 
@@ -89,6 +137,7 @@ $wgAllMessagesPa = array(
 'whatlinkshere'	=> 'ਪੰਨੇ ਜੋ ਇੱਥੇ ਜੁੜਦੇ ਹਨ',
 'help'		=> 'ਮਦਦ',
 'search'		=> 'ਖੋਜ',
+'searchbutton'	=> 'ਖੋਜ',
 'go'			=> 'ਜਾਓ',
 'history'		=> 'ਪੁਰਾਣੇ ਆਵਰਤਣ',
 'history_short'	=> 'ਇਤਿਹਾਸ',
@@ -99,7 +148,6 @@ $wgAllMessagesPa = array(
 'delete'		=> 'ਹਟਾਓ',
 'deletethispage'	=> 'ਇਸ ਪੰਨੇ ਨੂੰ ਹਟਾਓ',
 'undelete_short'	=> '$1 ਬਦਲਾਵ ਮੁੜ ਵਾਪਿਸ ਲਿਆਓ',
-'undelete_short1'	=> '1 ਬਦਲਾਵ ਮੁੜ ਵਾਪਿਸ ਲਿਆਓ',
 'protect'		=> 'ਰੱਖਿਆ ਕਰੋ',
 'protectthispage'	=> 'ਇਸ ਪੰਨੇ ਦੀ ਰੱਖਿਆ ਕਰੋ',
 'unprotect'		=> 'ਅਸੁਰੱਖਿਅਤ ਕਰੋ',
@@ -110,7 +158,6 @@ $wgAllMessagesPa = array(
 'personaltools'	=> 'ਨਿਜੀ ਔਜ਼ਾਰ',
 'postcomment'		=> 'ਆਪਨੇ ਵਿਚਾਰ ਪੇਸ਼ ਕਰੋ',
 'articlepage'		=> 'ਵਿਸ਼ਾ-ਵਸਤੂ ਵਾਲਾ ਪੰਨਾ ਵੇਖੋ',
-'subjectpage'		=> 'ਵਿਸ਼ਾ ਵੇਖੋ',
 'talk'		=> 'ਚਰਚਾ',
 'toolbox'		=> 'ਔਜ਼ਾਰ-ਡੱਬਾ',
 'userpage'		=> 'ਮੈਂਬਰ ਦਾ ਪੰਨਾ ਵੇਖੋ',
@@ -123,17 +170,10 @@ $wgAllMessagesPa = array(
 'viewcount'		=> 'ਇਹ ਪੰਨਾ $1 ਵਾਰ ਵੇਖਿਆ ਗਿਆ ਹੈ',
 'copyright'		=> 'ਵਿਸ਼ਾ-ਵਸਤੂ $1 ਤਹਿਤ ਉਪਲੱਬਧ ਹੈ',
 'protectedpage'	=> 'ਸੁਰੱਖਿਅਤ ਪੰਨਾ',
-'administrators'	=> 'Project:ਪ੍ਰਸ਼ਾਸਕ',
-'sysoptitle'		=> 'Sysop ਦਰਜਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ',
-'sysoptext'		=> 'ਜੋ ਤੁਸੀਂ ਕਰਨਾ ਚਾਹ ਰਹੇ ਹੋ, ਓਹ ਸਿਰਫ਼ \'sysop\' ਦਰਜੇ ਵਾਲੇ ਮੈਂਬਰ ਹੀ ਕਰ ਸਕਦੇ ਹਨ. ਹੋਰ ਜਾਣਕਾਰੀ ਲਈ ਵੇਖੋ: $1',
-'developertitle'	=> 'Developer ਦਰਜਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ',
-'developertext'	=> 'ਜੋ ਤੁਸੀਂ ਕਰਨਾ ਚਾਹ ਰਹੇ ਹੋ, ਓਹ ਸਿਰਫ਼ \'developer\' ਦਰਜੇ ਵਾਲੇ ਮੈਂਬਰ ਹੀ ਕਰ ਸਕਦੇ ਹਨ. ਹੋਰ ਜਾਣਕਾਰੀ ਲਈ ਵੇਖੋ: $1',
 'nbytes'		=> '$1 ਬਾਈਟ',
 'go'			=> 'ਜਾਓ',
 'ok'			=> 'ਠੀਕ ਹੈ',
-'sitetitle'		=> '{{SITENAME}}',
 'pagetitle'		=> '$1 - {{SITENAME}}',
-'sitesubtitle'	=> '',
 'retrievedfrom'	=> '\'$1\' ਤੋਂ ਪ੍ਰਾਪਤ ਕੀਤਾ ਗਿਆ ਹੈ',
 'newmessageslink'	=> 'ਨਵੇਂ ਸੰਦੇਸ਼',
 'editsection'		=> 'ਬਦਲੋ',
@@ -256,7 +296,6 @@ You should log in and change your password now.',
 'noemail'		=> 'ਮੈਂਬਰ \'$1\' ਲਈ ਕੋਈ ਈ-ਮੇਲ ਅਡ੍ਰੈੱਸ ਨਹੀਂ ਹੈ',
 'passwordsent'	=> '\'$1\' ਮੈਂਬਰ ਦੇ ਈ-ਮੇਲ ਅਡ੍ਰੈੱਸ ਤੇ ਇੱਕ ਨਵਾਂ ਪਾਸਵਰਡ ਭੇਜ ਦਿੱਤਾ ਗਿਆ ਹੈ.
 ਪਾਸਵਰਡ ਮਿਲੱਣ ਤੋਂ ਬਾਅਦ ਕਿਰਪਾ ਲਾਗ ਇਨ ਜ਼ਰੂਰ ਕਰੋ.',
-'loginend'		=> '',
 'mailerror'		=> 'ਮੇਲ (mail) $1 ਭੇਜਣ ਵਿੱਚ ਸਮੱਸਿਆ ਆ ਗਈ ਹੈ',
 'acct_creation_throttle_hit'	=> 'ਮਾਫ਼ੀ ਚਾਹੁੰਦੇ ਹਾਂ, ਤੁਸੀਂ ਪਿਹਲਾਂ ਹੀ $1 ਖਾਤੇ ਬਣਾ ਚੁੱਕੇ ਹੋ. ਤੁਸੀਂ ਇਸਤੋਂ ਜ਼ਿਆਦਾ ਨਹੀਂ ਬਣਾ ਸੱਕਦੇ ਹੋ',
 
@@ -346,8 +385,6 @@ $1 ਜਾਂ ਕਿਸੇ ਵੀ ਹੋਰ [[{{ns:4}}:ਪ੍ਰਸ਼ਾਸਕ]]
 'rclinks'		=> 'ਪਿੱਛਲੇ $2 ਦਿਨਾਂ ਵਿੱਚ ਹੋਏ $1 ਬਦਲਾਵ ਦਿਖਾਓ<br />$3',
 'hide'		=> 'ਛੁਪਾਓ',
 'show'		=> 'ਦਿਖਾਓ',
-'listform'		=> 'ਸੂਚੀ',
-'nchanges'		=> '$1 ਬਦਲਾਵ',
 
 # tooltip help for some actions, most are in Monobook.js
 'tooltip-watch'	=> 'ਇਸ ਪੰਨੇ ਨੂੰ ਆਪਣੀ watchlist ਵਿੱਚ ਜਮਾਂ ਕਰੋ[alt-w]',

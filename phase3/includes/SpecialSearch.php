@@ -98,7 +98,7 @@ class SpecialSearch {
 		}
 
 		# if language supports variants, search in all variants
-		if(sizeof($wgContLang->getVariants())>1){
+		if($wgContLang->hasVariants()){
 			$allTermVariants = $wgContLang->convertLinkToAllVariants($term);
 
 			foreach($allTermVariants as $termVariant){
@@ -166,7 +166,7 @@ class SpecialSearch {
 				wfMsg( 'googlesearch',
 					htmlspecialchars( $term ),
 					htmlspecialchars( $wgInputEncoding ),
-					htmlspecialchars( wfMsg( 'search' ) )
+					htmlspecialchars( wfMsg( 'searchbutton' ) )
 				)
 			);
 			wfProfileOut( $fname );

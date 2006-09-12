@@ -5,6 +5,7 @@
  */
 
 class CoreParserFunctions {
+
 	static function ns( $parser, $part1 = '' ) {
 		global $wgContLang;
 		$found = false;
@@ -145,6 +146,27 @@ class CoreParserFunctions {
 		$lang = $wgContLang->getLanguageName( strtolower( $arg ) );
 		return $lang != '' ? $lang : $arg;
 	}
+	
+	function pad( $string = '', $length = 0, $char = 0, $direction = STR_PAD_RIGHT ) {
+		$length = min( max( $length, 0 ), 500 );
+		$char = substr( $char, 0, 1 );
+		return ( $string && (int)$length > 0 && strlen( trim( (string)$char ) ) > 0 )
+				? str_pad( $string, $length, (string)$char, $direction )
+				: $string;
+	}
+	
+	function padleft( $parser, $string = '', $length = 0, $char = 0 ) {
+		return self::pad( $string, $length, $char, STR_PAD_LEFT );
+	}
+	
+	function padright( $parser, $string = '', $length = 0, $char = 0 ) {
+		return self::pad( $string, $length, $char );
+	}
+	
+	function anchorencode( $parser, $text ) {
+		return str_replace( '%', '.', urlencode( $text ) );
+	}
+	
 }
 
 ?>

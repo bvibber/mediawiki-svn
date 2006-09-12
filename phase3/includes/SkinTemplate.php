@@ -31,8 +31,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @subpackage Skins
  */
 
-require_once 'GlobalFunctions.php';
-
 /**
  * Wrapper object for MediaWiki's localization functions,
  * to be passed to the template engine.
@@ -141,6 +139,7 @@ class SkinTemplate extends Skin {
 		global $wgPageShowWatchingUsers;
 		global $wgUseTrackbacks;
 		global $wgDBname;
+		global $wgArticlePath, $wgScriptPath, $wgServer, $wgLang, $wgCanonicalNamespaceNames;
 
 		$fname = 'SkinTemplate::outputPage';
 		wfProfileIn( $fname );
@@ -193,6 +192,16 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'pagetitle', $wgOut->getHTMLTitle() );
 		$tpl->set( 'displaytitle', $wgOut->mPageLinkTitle );
 
+		$nsname = @$wgCanonicalNamespaceNames[ $this->mTitle->getNamespace() ];
+		if ( $nsname === NULL ) $nsname = $this->mTitle->getNsText();
+		
+		$tpl->set( 'nscanonical', $nsname );
+		$tpl->set( 'nsnumber', $this->mTitle->getNamespace() );
+		$tpl->set( 'titleprefixeddbkey', $this->mTitle->getPrefixedDBKey() );
+		$tpl->set( 'titletext', $this->mTitle->getText() );
+		$tpl->set( 'articleid', $this->mTitle->getArticleId() );
+		$tpl->set( 'isarticle', $wgOut->isArticle() );
+		                
 		$tpl->setRef( "thispage", $this->thispage );
 		$subpagestr = $this->subPageSubtitle();
 		$tpl->set(
@@ -230,6 +239,7 @@ class SkinTemplate extends Skin {
 		$tpl->set('headscripts', $out->getScript() );
 		$tpl->setRef( 'wgScript', $wgScript );
 		$tpl->setRef( 'skinname', $this->skinname );
+		$tpl->set( 'skinclass', get_class( $this ) );
 		$tpl->setRef( 'stylename', $this->stylename );
 		$tpl->set( 'printable', $wgRequest->getBool( 'printable' ) );
 		$tpl->setRef( 'loggedin', $this->loggedin );
@@ -245,15 +255,19 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'searchaction', $this->escapeSearchLink() );
 		$tpl->set( 'search', trim( $wgRequest->getVal( 'search' ) ) );
 		$tpl->setRef( 'stylepath', $wgStylePath );
+		$tpl->setRef( 'articlepath', $wgArticlePath );
+		$tpl->setRef( 'scriptpath', $wgScriptPath );
+		$tpl->setRef( 'serverurl', $wgServer );
 		$tpl->setRef( 'logopath', $wgLogo );
 		$tpl->setRef( "lang", $wgContLanguageCode );
 		$tpl->set( 'dir', $wgContLang->isRTL() ? "rtl" : "ltr" );
 		$tpl->set( 'rtl', $wgContLang->isRTL() );
 		$tpl->set( 'langname', $wgContLang->getLanguageName( $wgContLanguageCode ) );
 		$tpl->set( 'showjumplinks', $wgUser->getOption( 'showjumplinks' ) );
-		$tpl->setRef( 'username', $this->username );
+		$tpl->set( 'username', $wgUser->isAnon() ? NULL : $this->username );
 		$tpl->setRef( 'userpage', $this->userpage);
 		$tpl->setRef( 'userpageurl', $this->userpageUrlDetails['href']);
+		$tpl->set( 'userlang', $wgLang->getCode() );
 		$tpl->set( 'pagecss', $this->setupPageCss() );
 		$tpl->setRef( 'usercss', $this->usercss);
 		$tpl->setRef( 'userjs', $this->userjs);
@@ -308,7 +322,9 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'newtalk', $ntl );
 		$tpl->setRef( 'skin', $this);
 		$tpl->set( 'logo', $this->logoText() );
-		if ( $wgOut->isArticle() and (!isset( $oldid ) or isset( $diff )) and 0 != $wgArticle->getID() ) {
+		if ( $wgOut->isArticle() and (!isset( $oldid ) or isset( $diff )) and 
+			$wgArticle and 0 != $wgArticle->getID() ) 
+		{
 			if ( !$wgDisableCounters ) {
 				$viewcount = $wgLang->formatNum( $wgArticle->getCount() );
 				if ( $viewcount ) {
@@ -376,6 +392,7 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'debug', $out->mDebugtext );
 		$tpl->set( 'reporttime', $out->reportTime() );
 		$tpl->set( 'sitenotice', wfGetSiteNotice() );
+		$tpl->set( 'bottomscripts', $this->bottomScripts() );
 
 		$printfooter = "<div class=\"printfooter\">\n" . $this->printSource() . "</div>\n";
 		$out->mBodytext .= $printfooter ;
@@ -476,7 +493,7 @@ class SkinTemplate extends Skin {
 			);
 			$href = $this->makeSpecialUrl('Preferences');
 			$personal_urls['preferences'] = array(
-				'text' => wfMsg('preferences'),
+				'text' => wfMsg('mypreferences'),
 				'href' => $this->makeSpecialUrl('Preferences'),
 				'active' => ( $href == $pageurl )
 			);
@@ -554,9 +571,9 @@ class SkinTemplate extends Skin {
 		}
 
 		$text = wfMsg( $message );
-		if ( $text == "&lt;$message&gt;" ) {
+		if ( wfEmptyMsg( $message, $text ) ) {
 			global $wgContLang;
-			$text = $wgContLang->getNsText( Namespace::getSubject( $title->getNamespace() ) );
+			$text = $wgContLang->getFormattedNsText( Namespace::getSubject( $title->getNamespace() ) );
 		}
 
 		return array(
@@ -801,7 +818,7 @@ class SkinTemplate extends Skin {
 		// A print stylesheet is attached to all pages, but nobody ever
 		// figures that out. :)  Add a link...
 		if( $this->iscontent && ($action == '' || $action == 'view' || $action == 'purge' ) ) {
-			$revid = $wgArticle->getLatest();
+			$revid = $wgArticle ? $wgArticle->getLatest() : 0;
 			if ( !( $revid == 0 )  )
 				$nav_urls['print'] = array(
 					'text' => wfMsg( 'printableversion' ),
@@ -915,7 +932,7 @@ class SkinTemplate extends Skin {
 
 		# If we use the site's dynamic CSS, throw that in, too
 		if ( $wgUseSiteCss ) {
-			$query = "action=raw&ctype=text/css&smaxage=$wgSquidMaxage";
+			$query = "usemsgcache=yes&action=raw&ctype=text/css&smaxage=$wgSquidMaxage";
 			$sitecss .= '@import "' . $this->makeNSUrl('Common.css', $query, NS_MEDIAWIKI) . '";' . "\n";
 			$sitecss .= '@import "' . $this->makeNSUrl(ucfirst($this->skinname) . '.css', $query, NS_MEDIAWIKI) . '";' . "\n";
 			$sitecss .= '@import "' . $this->makeUrl('-','action=raw&gen=css' . $siteargs) . '";' . "\n";
@@ -996,8 +1013,8 @@ class SkinTemplate extends Skin {
 		// avoid inclusion of non defined user JavaScript (with custom skins only)
 		// by checking for default message content
 		$msgKey = ucfirst($this->skinname).'.js';
-		$userJS = wfMsg($msgKey);
-		if ('&lt;'.$msgKey.'&gt;' != $userJS) {
+		$userJS = wfMsgForContent($msgKey);
+		if ( !wfEmptyMsg( $msgKey, $userJS ) ) {
 			$s .= $userJS;
 		}
 
@@ -1060,6 +1077,13 @@ class QuickTemplate {
 	/**
 	 * @private
 	 */
+	function jstext( $str ) {
+		echo Xml::escapeJsString( $this->data[$str] );
+	}
+
+	/**
+	 * @private
+	 */
 	function html( $str ) {
 		echo $this->data[$str];
 	}
@@ -1087,7 +1111,7 @@ class QuickTemplate {
 
 		$text = $this->translator->translate( $str );
 		$parserOutput = $wgParser->parse( $text, $wgTitle,
-			$wgOut->mParserOptions, true );
+			$wgOut->parserOptions(), true );
 		echo $parserOutput->getText();
 	}
 

@@ -1,7 +1,63 @@
 <?php
+/** Croatian (hrvatski)
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  */
 
-global $wgAllMessagesHr;
-$wgAllMessagesHr = array(
+
+$quickbarSettings = array(
+	'Bez', 'Lijevo nepomično', 'Desno nepomično', 'Lijevo leteće'
+);
+
+$skinNames = array(
+	'standard'  => 'Standardna',
+	'nostalgia'  => 'Nostalgija',
+	'cologneblue'  => 'Kölnska plava',
+	'smarty'  => 'Paddington',
+	'montparnasse'  => 'Montparnasse',
+	'davinci'  => 'DaVinci',
+	'mono'   => 'Mono',
+	'monobook'  => 'MonoBook',
+	'myskin'  => 'MySkin',
+	'chick'  => 'Chick'
+);
+
+$namespaceNames = array(
+	NS_MEDIA           => 'Mediji',
+	NS_SPECIAL         => 'Posebno',
+	NS_MAIN            => '',
+	NS_TALK            => 'Razgovor',
+	NS_USER            => 'Suradnik',
+	NS_USER_TALK       => 'Razgovor_sa_suradnikom',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK    => 'Razgovor_$1',
+	NS_IMAGE           => 'Slika',
+	NS_IMAGE_TALK      => 'Razgovor_o_slici',
+	NS_MEDIAWIKI       => 'MediaWiki',
+	NS_MEDIAWIKI_TALK  => 'MediaWiki_razgovor',
+	NS_TEMPLATE        => 'Predložak',
+	NS_TEMPLATE_TALK   => 'Razgovor_o_predlošku',
+	NS_HELP            => 'Pomoć',
+	NS_HELP_TALK       => 'Razgovor_o_pomoći',
+	NS_CATEGORY        => 'Kategorija',
+	NS_CATEGORY_TALK   => 'Razgovor_o_kategoriji'
+);
+
+$datePreferences = false;
+$defaultDateFormat = 'dmy';
+$dateFormats = array(
+	'dmy time' => 'H:i',
+	'dmy date' => 'j. F Y.',
+	'dmy both' => 'H:i, j. F Y.',
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+$fallback8bitEncoding = 'iso-8859-2';
+$linkTrail = '/^([čšžćđßa-z]+)(.*)$/sDu';
+
+
+$messages = array(
 'tog-underline'         => 'Podcrtane poveznice',
 'tog-highlightbroken'   => 'Istakni prazne poveznice drugom bojom (inače, upitnikom na kraju).',
 'tog-justify'           => 'Poravnaj odlomke i zdesna',
@@ -69,7 +125,6 @@ $wgAllMessagesHr = array(
 'nov'                   => 'stu',
 'dec'                   => 'pro',
 'categories'            => '{{PLURAL:$1|Kategorija|Kategorije}}',
-'category'              => 'Kategorija',
 'category_header'       => 'Članci u kategoriji "$1"',
 'subcategories'         => 'Potkategorije',
 'mainpage'              => 'Glavna stranica',
@@ -112,6 +167,7 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 'returnto'              => 'Vrati se na $1.',
 'tagline'               => 'Izvor: {{SITENAME}}',
 'search'                => 'Traži',
+'searchbutton'          => 'Traži',
 'go'                    => 'Kreni',
 'history'               => 'Stare izmjene',
 'history_short'         => 'Stare izmjene',
@@ -135,7 +191,6 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 'personaltools'         => 'Osobni alati',
 'postcomment'           => 'Napiši komentar',
 'articlepage'           => 'Vidi članak',
-'subjectpage'           => 'Vidi predmet',
 'talk'                  => 'Razgovor',
 'views'                 => 'Pogledi',
 'toolbox'               => 'Traka s alatima',
@@ -150,22 +205,10 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 'viewcount'             => 'Ova stranica je pogledana $1 puta.',
 'copyright'             => 'Sadržaji se koriste u skladu s $1.',
 'protectedpage'         => 'Zaštićena stranica',
-'administrators'        => 'Project:Administratori',
 'jumpto'                => 'Skoči na:',
 'jumptonavigation'      => 'orijentacija',
 'jumptosearch'          => 'traži',
-'sysoptitle'            => 'Nužne administrativne ovlasti',
-'sysoptext'             => 'Željenu radnju mogu obaviti samo
-suradnici sa statusom "administrator".
-Vidi i $1.',
-'developertitle'        => 'Nužne programerske ovlasti',
-'developertext'         => 'Željenu radnju mogu obaviti samo suradnici
-sa statusom "programer".
-Vidi $1.',
 'badaccess'             => 'Greška u ovlaštenjima',
-'badaccesstext'         => 'Radnju koju ste započeli
-može obaviti samo korisnik s ovlaštenjem "$2".
-Pogledajte $1.',
 'versionrequired'       => 'Potrebna inačica $1 MediaWikija',
 'versionrequiredtext'   => 'Za korištenje ove stranice potrebna je inačica $1 MediaWiki softvera. Pogledaj [[Special:Version]]',
 'ok'                    => 'U redu',
@@ -568,7 +611,6 @@ za podešavanje korisničkih postavki.',
 'userrights-groupsavailable'=> 'Dostupne skupine:',
 'userrights-groupshelp' => 'Izaberite skupine u koje želite dodati ili iz njih ukloniti suradnika.
 Neoznačene skupine neće se promijeniti. Skupinu možete deselektirati istovremenim pritiskom CTRL + lijeva tipka miša',
-'userrights-logcomment' => 'Članstvo u skupini $1 zamijenjeno članstvom u skupini $2',
 'changes'               => 'promjene',
 'recentchanges'         => 'Nedavne promjene',
 'recentchangestext'     => 'Na ovoj stranici možete pratiti nedavne promjene u wikiju.',
@@ -793,7 +835,6 @@ E-mail adresa iz vaših postavki nalazit će se u "From" polju poruke i primatel
 'emailsent'             => 'E-mail poslan',
 'emailsenttext'         => 'Vaša poruka je poslana.',
 'watchlist'             => 'Moj popis praćenja',
-'watchlistsub'          => '(za suradnika "$1")',
 'nowatchlist'           => 'Na vašem popisu praćenja nema nijednog članka.',
 'watchnologin'          => 'Niste prijavljeni',
 'watchnologintext'      => 'Morate biti [[Special:Userlogin|prijavljeni]]
@@ -1027,7 +1068,6 @@ mijenjanje postavki, uređivanje popisa praćenja i druge stvari koje zahtijevaj
 'makesysopok'           => '<b>Suradnik "$1" je postao administrator</b>',
 'makesysopfail'         => '<b>Suradnika "$1" nije se moglo učiniti administratorom. (Jeste li pravilno upisali ime?)</b>',
 'setbureaucratflag'     => 'Postavi oznaku birokrata',
-'setstewardflag'        => 'Postavi oznaku upravitelja',
 'rightslogtext'         => 'Ovo je evidencija promjena suradničkih prava.',
 'rights'                => 'Prava:',
 'set_user_rights'       => 'Postavi suradnička prava',
@@ -1036,7 +1076,6 @@ mijenjanje postavki, uređivanje popisa praćenja i druge stvari koje zahtijevaj
 'makesysop'             => 'Učini suradnika administratorom',
 'already_sysop'         => 'Ovaj je suradnik već administrator',
 'already_bureaucrat'    => 'Ovaj je suradnik već birokrat',
-'already_steward'       => 'Ovaj je suradnik već upravitelj',
 'movepage'              => 'Premjesti stranicu',
 'movepagetext'          => 'Korištenjem ovog obrasca ćete preimenovati stranicu i premjestiti sve stare izmjene
 na novo ime.

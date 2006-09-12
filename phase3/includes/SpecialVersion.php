@@ -45,7 +45,7 @@ class SpecialVersion {
 	 * @static
 	 */
 	function MediaWikiCredits() {
-		$version = $this->getVersion();
+		$version = self::getVersion();
 		$dbr =& wfGetDB( DB_SLAVE );
 
 		$ret =
@@ -77,9 +77,9 @@ class SpecialVersion {
 		return str_replace( "\t\t", '', $ret );
 	}
 	
-	function getVersion() {
+	public static function getVersion() {
 		global $wgVersion, $IP;
-		$svn = $this->getSvnRevision( $IP );
+		$svn = self::getSvnRevision( $IP );
 		return $svn ? "$wgVersion (r$svn)" : $wgVersion;
 	}
 
@@ -129,6 +129,11 @@ class SpecialVersion {
 			$out .= "** Parser extension tags:\n";
 			$out .= '***' . $this->listToText( $tags ). "\n";
 		}
+		
+		if( $cnt = count( $fhooks = $wgParser->getFunctionHooks() ) ) {
+			$out .= "** Parser function hooks:\n";
+			$out .= '***' . $this->listToText( $fhooks ) . "\n";
+		}
 
 		if ( count( $wgSkinExtensionFunction ) ) {
 			$out .= "** Skin extension functions:\n";
@@ -142,7 +147,7 @@ class SpecialVersion {
 		if ( $a['name'] === $b['name'] )
 			return 0;
 		else
-			return LanguageUtf8::lc( $a['name'] ) > LanguageUtf8::lc( $b['name'] ) ? 1 : -1;
+			return Language::lc( $a['name'] ) > Language::lc( $b['name'] ) ? 1 : -1;
 	}
 
 	function formatCredits( $name, $version = null, $author = null, $url = null, $description = null) {
@@ -236,7 +241,7 @@ class SpecialVersion {
 	 * @param string $dir
 	 * @return mixed revision number as int, or false if not a SVN checkout
 	 */
-	function getSvnRevision( $dir ) {
+	public static function getSvnRevision( $dir ) {
 		if( !function_exists( 'simplexml_load_file' ) ) {
 			// We could fall back to expat... YUCK
 			return false;

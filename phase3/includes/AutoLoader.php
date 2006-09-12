@@ -22,6 +22,7 @@ function __autoload($className) {
 		'Block' => 'includes/Block.php',
 		'CacheManager' => 'includes/CacheManager.php',
 		'CategoryPage' => 'includes/CategoryPage.php',
+		'CategoryViewer' => 'includes/CategoryPage.php',
 		'Categoryfinder' => 'includes/Categoryfinder.php',
 		'RCCacheEntry' => 'includes/ChangesList.php',
 		'ChangesList' => 'includes/ChangesList.php',
@@ -116,6 +117,7 @@ function __autoload($className) {
 		'PageHistory' => 'includes/PageHistory.php',
 		'IndexPager' => 'includes/Pager.php',
 		'ReverseChronologicalPager' => 'includes/Pager.php',
+		'TablePager' => 'includes/Pager.php',
 		'Parser' => 'includes/Parser.php',
 		'ParserOutput' => 'includes/Parser.php',
 		'ParserOptions' => 'includes/Parser.php',
@@ -213,6 +215,7 @@ function __autoload($className) {
 		'EmailNotification' => 'includes/UserMailer.php',
 		'WatchedItem' => 'includes/WatchedItem.php',
 		'WebRequest' => 'includes/WebRequest.php',
+		'WebResponse' => 'includes/WebResponse.php',
 		'FauxRequest' => 'includes/WebRequest.php',
 		'MediaWiki' => 'includes/Wiki.php',
 		'WikiError' => 'includes/WikiError.php',
@@ -221,7 +224,10 @@ function __autoload($className) {
 		'Xml' => 'includes/Xml.php',
 		'ZhClient' => 'includes/ZhClient.php',
 		'memcached' => 'includes/memcached-client.php',
-		'UtfNormal' => 'includes/normal/UtfNormal.php'
+		'UtfNormal' => 'includes/normal/UtfNormal.php',
+		'UsercreateTemplate' => 'includes/templates/Userlogin.php',
+		'UserloginTemplate' => 'includes/templates/Userlogin.php',
+		'Language' => 'languages/Language.php',
 	);
 	if ( isset( $localClasses[$className] ) ) {
 		$filename = $localClasses[$className];

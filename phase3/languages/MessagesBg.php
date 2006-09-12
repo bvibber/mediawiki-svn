@@ -1,6 +1,105 @@
 <?php
+/** Bulgarian (Български)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
+$namespaceNames = array(
+	NS_MEDIA            => 'Медия',
+	NS_SPECIAL          => 'Специални',
+	NS_MAIN             => '',
+	NS_TALK             => 'Беседа',
+	NS_USER             => 'Потребител',
+	NS_USER_TALK        => 'Потребител_беседа',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_беседа',
+	NS_IMAGE            => 'Картинка',
+	NS_IMAGE_TALK       => 'Картинка_беседа',
+	NS_MEDIAWIKI        => 'МедияУики',
+	NS_MEDIAWIKI_TALK   => 'МедияУики_беседа',
+	NS_TEMPLATE         => 'Шаблон',
+	NS_TEMPLATE_TALK    => 'Шаблон_беседа',
+	NS_HELP             => 'Помощ',
+	NS_HELP_TALK        => 'Помощ_беседа',
+	NS_CATEGORY         => 'Категория',
+	NS_CATEGORY_TALK    => 'Категория_беседа'
+);
 
-/* private */ $wgAllMessagesBg = array(
+$quickbarSettings = array(
+	'Без меню', 'Неподвижно вляво', 'Неподвижно вдясно', 'Плаващо вляво', 'Плаващо вдясно'
+);
+
+$skinNames = array(
+	'standard' => 'Класика',
+	'nostalgia' => 'Носталгия',
+	'cologneblue' => 'Кьолнско синьо',
+	'smarty' => 'Падингтън',
+	'montparnasse' => 'Монпарнас',
+	'davinci' => 'ДаВинчи',
+	'mono' => 'Моно',
+	'monobook' => 'Монобук',
+	'myskin' => 'Мой облик',
+);
+
+$datePreferences = false;
+
+$bookstoreList = array(
+	'books.bg'       => 'http://www.books.bg/ISBN/$1',
+);
+
+$magicWords = array(
+#   ID                                 CASE  SYNONYMS
+	'redirect'               => array( 0, '#redirect', '#пренасочване', '#виж' ),
+	'notoc'                  => array( 0, '__NOTOC__', '__БЕЗСЪДЪРЖАНИЕ__' ),
+	'forcetoc'               => array( 0, '__FORCETOC__', '__СЪССЪДЪРЖАНИЕ__' ),
+	'toc'                    => array( 0, '__TOC__', '__СЪДЪРЖАНИЕ__'      ),
+	'noeditsection'          => array( 0, '__NOEDITSECTION__', '__БЕЗ_РЕДАКТИРАНЕ_НА_РАЗДЕЛИ__' ),
+	'start'                  => array( 0, '__START__', '__НАЧАЛО__'         ),
+	'currentmonth'           => array( 1, 'CURRENTMONTH', 'ТЕКУЩМЕСЕЦ'      ),
+	'currentmonthname'       => array( 1, 'CURRENTMONTHNAME', 'ТЕКУЩМЕСЕЦИМЕ' ),
+	'currentmonthnamegen'    => array( 1, 'CURRENTMONTHNAMEGEN', 'ТЕКУЩМЕСЕЦИМЕРОД' ),
+	'currentmonthabbrev'     => array( 1, 'CURRENTMONTHABBREV', 'ТЕКУЩМЕСЕЦСЪКР'    ),
+	'currentday'             => array( 1, 'CURRENTDAY', 'ТЕКУЩДЕН'            ),
+	'currentdayname'         => array( 1, 'CURRENTDAYNAME', 'ТЕКУЩДЕНИМЕ'     ),
+	'currentyear'            => array( 1, 'CURRENTYEAR', 'ТЕКУЩАГОДИНА'       ),
+	'currenttime'            => array( 1, 'CURRENTTIME', 'ТЕКУЩОВРЕМЕ'        ),
+	'numberofarticles'       => array( 1, 'NUMBEROFARTICLES', 'БРОЙСТАТИИ'    ),
+	'numberoffiles'          => array( 1, 'NUMBEROFFILES', 'БРОЙФАЙЛОВЕ'      ),
+	'pagename'               => array( 1, 'PAGENAME', 'СТРАНИЦА'              ),
+	'pagenamee'              => array( 1, 'PAGENAMEE', 'СТРАНИЦАИ'            ),
+	'namespace'              => array( 1, 'NAMESPACE', 'ИМЕННОПРОСТРАНСТВО'   ),
+	'subst'                  => array( 0, 'SUBST:', 'ЗАМЕСТ:'            ),
+	'msgnw'                  => array( 0, 'MSGNW:', 'СЪОБЩNW:'           ),
+	'end'                    => array( 0, '__END__', '__КРАЙ__'            ),
+	'img_thumbnail'          => array( 1, 'thumbnail', 'thumb', 'мини'     ),
+	'img_manualthumb'        => array( 1, 'thumbnail=$1', 'thumb=$1', 'мини=$1'),
+	'img_right'              => array( 1, 'right', 'вдясно', 'дясно', 'д'  ),
+	'img_left'               => array( 1, 'left', 'вляво', 'ляво', 'л'     ),
+	'img_none'               => array( 1, 'none', 'н'                  ),
+	'img_width'              => array( 1, '$1px', '$1пкс' , '$1п'         ),
+	'img_center'             => array( 1, 'center', 'centre', 'център', 'центр', 'ц' ),
+	'img_framed'             => array( 1, 'framed', 'enframed', 'frame', 'рамка', 'врамка' ),
+	'int'                    => array( 0, 'INT:'                   ),
+	'sitename'               => array( 1, 'SITENAME', 'ИМЕНАСАЙТА'       ),
+	'ns'                     => array( 0, 'NS:', 'ИП:'                    ),
+	'localurl'               => array( 0, 'LOCALURL:', 'ЛОКАЛЕНАДРЕС:'    ),
+	'localurle'              => array( 0, 'LOCALURLE:', 'ЛОКАЛЕНАДРЕСИ:'  ),
+	'server'                 => array( 0, 'SERVER', 'СЪРВЪР'       ),
+	'servername'             => array( 0, 'SERVERNAME', 'ИМЕНАСЪРВЪРА'    ),
+	'scriptpath'             => array( 0, 'SCRIPTPATH', 'ПЪТДОСКРИПТА'    ),
+	'grammar'                => array( 0, 'GRAMMAR:', 'ГРАМАТИКА:' ),
+	'notitleconvert'         => array( 0, '__NOTITLECONVERT__', '__NOTC__'),
+	'nocontentconvert'       => array( 0, '__NOCONTENTCONVERT__', '__NOCC__'),
+	'currentweek'            => array( 1, 'CURRENTWEEK', 'ТЕКУЩАСЕДМИЦА'),
+	'currentdow'             => array( 1, 'CURRENTDOW'             ),
+	'revisionid'             => array( 1, 'REVISIONID'             ),
+);
+
+$linkTrail = '/^([a-zабвгдежзийклмнопрстуфхцчшщъыьэюя]+)(.*)$/sDu';
+
+$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+
+$messages = array(
 
 # User toggles
 'tog-underline'      => 'Подчертаване на препратките',
@@ -66,10 +165,8 @@
 # Bits of text used by many pages:
 #
 'categories' => 'Категории',
-'category' => 'категория',
 'category_header' => 'Страници в категория „$1“',
 'subcategories' => 'Подкатегории',
-'linktrail'   => '/^([a-zабвгдежзийклмнопрстуфхцчшщъыьэюя]+)(.*)$/sDu',
 'linkprefix'  => '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD',
 'mainpage'    => 'Начална страница',
 'mainpagetext'  => 'Уики-системата беше успешно инсталирана.',
@@ -109,7 +206,6 @@
 
 # Metadata in edit box
 'metadata' => '<b>Метаданни</b> (<a href="$1">разяснение</a>)',
-'metadata_page' => 'Project:Метаданни',
 
 'currentevents' => 'Текущи събития',
 'currentevents-url' => 'Текущи събития',
@@ -121,6 +217,7 @@
 'whatlinkshere'  => 'Какво сочи насам',
 'help'      => 'Помощ',
 'search'    => 'Търсене',
+'searchbutton'    => 'Търсене',
 'go'    => 'Отваряне',
 'history'    => 'История',
 'history_short' => 'История',
@@ -133,7 +230,6 @@
 'editthispage'  => 'Редактиране',
 'delete' => 'Изтриване',
 'deletethispage' => 'Изтриване',
-'undelete_short1' => 'Възстановяване на една редакция',
 'undelete_short' => 'Възстановяване на $1 редакции',
 'protect' => 'Защита',
 'protectthispage' => 'Защита',
@@ -144,9 +240,7 @@
 'specialpage' => 'Специална страница',
 'personaltools' => 'Лични инструменти',
 'postcomment'   => 'Оставяне на съобщение',
-'addsection'   => '+',
 'articlepage'  => 'Преглед на страница',
-'subjectpage'  => 'Преглед на тема', # For compatibility
 'talk' => 'Беседа',
 'views' => 'Прегледи',
 'toolbox' => 'Инструменти',
@@ -160,16 +254,7 @@
 'viewcount'    => 'Страницата е била преглеждана $1 пъти.',
 'copyright'     => 'Съдържанието е достъпно при условията на $1.',
 'protectedpage' => 'Защитена страница',
-'administrators' => 'Project:Администратори',
-'sysoptitle'  => 'Изискване на администраторски права',
-'sysoptext'    => 'Желаното действие може да се изпълни само от администратори.
-Вижте $1.',
-'developertitle' => 'Изискват се права на разработчик',
-'developertext'  => 'Желаното действие може да се изпълни само от разработчици.
-Вижте $1.',
 'badaccess'     => 'Грешка при достъп', # Permission error
-'badaccesstext' => 'Желаното действие може да се изпълнява само от потребители с права на „$2“.
-Вижте $1.',
 'versionrequired' => 'Изисква се версия $1 на МедияУики',
 'versionrequiredtext' => 'За да използвате тази страница, е необходима версия $1 на МедияУики. Вижте [[Special:Version]].',
 'nbytes'    => '$1 байта',
@@ -183,7 +268,6 @@
 'hidetoc' => 'скриване',
 'thisisdeleted' => 'Преглед или възстановяване на $1?',
 'viewdeleted' => 'Преглед на $1?',
-'restorelink1' => 'една изтрита редакция',
 'restorelink' => '$1 изтрити редакции',
 'feedlinks' => 'Feed:',
 
@@ -326,9 +410,6 @@ $1',
 # TODO
 'eauthentsent'  =>  'A confirmation email has been sent to the nominated email address.
 Before any other mail is sent to the account, you will have to follow the instructions in the email, to confirm that the account is actually yours.',
-'loginend'   => '<p>За да се регистрирате, просто въведете потребителско име и парола (два пъти) и щракнете върху бутона „<b>Регистриране</b>“.</p>
-<p>
-Следващия път е достатъчно да попълните само първите две полета и да щракнете върху „<b>Влизане</b>“.</p>',
 'mailerror' => 'Грешка при изпращане на писмо: $1',
 'acct_creation_throttle_hit' => 'Съжаляваме, създали сте вече $1 сметки и нямате право на повече.',
 # TODO
@@ -395,7 +476,6 @@ Before any other mail is sent to the account, you will have to follow the instru
 Ако сте дошли тук погрешка, просто натиснете '''бутона за връщане''' на Вашия браузър.
 
 Вашата добавка ще бъде видима '''веднага''' след съхранението, затова ако просто искате да изпробвате как работят нещата, използвайте нашия '''[[Project:Пясъчник|пясъчник]]'''.</div>",
-'talkpagetext' => '<!-- МедияУики:talkpagetext -->',
 'anontalkpagetext' => "----
 ''Това е дискусионната страница на анонимен потребител, който  все още няма сметка или не я използва. Затова се налага да използваме IP-адрес, за да го/я идентифицираме. Такъв адрес може да се споделя от няколко потребители.''
 
@@ -459,7 +539,6 @@ Before any other mail is sent to the account, you will have to follow the instru
 'loadhist'        => 'Зареждане история на страницата',
 'currentrev'      => 'Текуща версия',
 'revisionasof'    => 'Версия от $1',
-'revisionasofwithlink'  => 'Версия от $1; $2<br />$3 | $4',
 'previousrevision'      => '←По-стара версия',
 'nextrevision'          => 'По-нова версия→',
 'currentrevisionlink'   => 'преглед на текущата версия',
@@ -469,7 +548,6 @@ Before any other mail is sent to the account, you will have to follow the instru
 'orig'            => 'ориг',
 'histlegend'      => '<i>Разлики:</i> Изберете версиите, които желаете да сравните, чрез превключвателите срещу тях и натиснете &lt;Enter&gt; или бутона за сравнение.<br />
 <i>Легенда:</i> (<b>тек</b>) = разлика с текущата версия, (<b>посл</b>) = разлика с предишната версия, <b>м</b>&nbsp;=&nbsp;малка промяна',
-'history_copyright' => '-',
 'deletedrev' => '[изтрита]',
 'histfirst' => 'Първи',
 'histlast' => 'Последни',
@@ -512,26 +590,6 @@ Before any other mail is sent to the account, you will have to follow the instru
 $1<br />
 $2 Показване на пренасочвания &nbsp; Търсене на $3 $4',
 'searchdisabled' => 'Търсенето в {{SITENAME}} е временно изключено поради голямото натоварване на сървъра. Междувременно можете да търсите чрез Google. Обърнете внимание обаче, че е възможно съхранените при тях страници да са остарели.',
-'googlesearch' => '
-	<form method="get" action="http://www.google.com/search" style="margin-left:135px">
-		<div>
-			<input type="hidden" name="domains" value="{{SERVER}}" />
-			<input type="hidden" name="num" value="50" />
-			<input type="hidden" name="ie" value="$2" />
-
-			<input type="hidden" name="oe" value="$2" />
-			<input type="text" name="q" size="31" maxlength="255" value="$1" />
-			<input type="submit" name="btnG" value="Google Search" />
-		</div>
-		<div style="font-size:90%">
-			<input type="radio" name="sitesearch" id="gwiki" value="{{SERVER}}"
-				checked="checked" /><label for="gwiki">{{SITENAME}}</label>
-			<input type="radio" name="sitesearch" id="gWWW" value="" />
-			<label for="gWWW">Мрежата</label>
-	</div>
-	</form>
-
-Можете да използвате следната препратка, за да създадете или редактирате страницата: <a href="/w/index.php?title=$1&action=edit">$1</a>',
 'blanknamespace' => '(Основно)',
 
 # Preferences page
@@ -584,31 +642,9 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 
 # User levels special page
 
-# switching pan
-'groups-lookup-group' => 'Управляване на групови права',#Manage group rights
-'groups-group-edit' => 'Съществуващи групи:',
-'editgroup' => 'Редактиране на група',
-'addgroup' => 'Добавяне на група',
-
 'userrights-lookup-user' => 'Управляване на потребителските групи',#Manage user groups
 'userrights-user-editname' => 'Въведете потребителско име:', #Enter a username:
 'editusergroup' => 'Редактиране на потребителските групи', #Edit User Groups
-
-# group editing
-'groups-editgroup' => 'Редактиране на група',
-'groups-addgroup' => 'Добавяне на група',
-# TODO
-'groups-editgroup-preamble' => 'If the name or description starts with a colon, the remainder will be treated as a message name, and hence the text will be localised using the MediaWiki namespace',
-'groups-editgroup-name' => 'Име на група:',
-'groups-editgroup-description' => 'Определение на група (до 255 знака):<br />',
-'savegroup' => 'Съхранение на група',
-'groups-tableheader'        => 'ID || Име || Описание || Права',
-'groups-existing'           => 'Съществуващи групи',
-'groups-noname'             => 'Please specify a valid group name',
-'groups-already-exists'     => 'A group of that name already exists',
-'addgrouplogentry'          => 'Added group $2',
-'changegrouplogentry'       => 'Changed group $2',
-'renamegrouplogentry'       => 'Renamed group $2 to $3',
 
 # user groups editing
 'userrights-editusergroup' => 'Редактиране на потребителските групи',#Edit user groups
@@ -616,55 +652,31 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'userrights-groupsmember' => 'Член на:',
 'userrights-groupsavailable' => 'Групи на разположение:',
 'userrights-groupshelp' => 'Изберете групите, към които искате той да бъде прибавен или от които да бъде премахнат. Неизбраните групи няма да бъдат променени. Можете да отизберете група чрез <CTRL> + ляв бутон на мишката',
-'userrights-logcomment' => 'Смяна на груповата принадлежност от $1 към $2',
-
-# Default group names and descriptions
-#
-'group-anon-name'       => 'Анонимен',
-'group-anon-desc'       => 'Анонимни потребители',
-'group-loggedin-name'   => 'Потребител',
-'group-loggedin-desc'   => 'Обикновени влезли потребители',
-'group-admin-name'      => 'Администратор',
-'group-admin-desc'      => 'Доверените потребители могат да блокират потребители и да трият страници',
-'group-bureaucrat-name' => 'Бюрократ',
-'group-bureaucrat-desc' => 'Бюрократите могат да дават администраторски права',
-'group-steward-name'    => 'Стюард',
-'group-steward-desc'    => 'Неограничен достъп',
 
 # Recent changes
 #
 'changes' => 'промени',
 'recentchanges' => 'Последни промени',
-'recentchanges-url' => 'Special:Recentchanges',
 'recentchangestext' => 'Проследяване на последните промени в {{SITENAME}}.
 
 Легенда: <b>тек</b> = разлика на текущата версия,
 <b>ист</b> = история на версиите, <b>м</b>&nbsp;=&nbsp;малка промяна, <b class="newpage">Н</b>&nbsp;=&nbsp;новосъздадена страница',
-'rcloaderr'    => 'Зареждане на последни промени',
 'rcnote'    => 'Показани са последните <strong>$1</strong> промени през последните <strong>$2</strong> дни.',
 'rcnotefrom'  => 'Дадени са промените от <b>$2</b> (до <b>$1</b> показани).',
 'rclistfrom'  => 'Показване на промени, като се започва от $1.',
 'rclinks'    => 'Показване на последните $1 промени през последните $2 дни<br />$3',
-'showhideminor' => '$1 на малки промени | $2 на ботове | $3 на влезли потребители | $4 на проверени редакции',
-'rchide'    => '$4; $1 на малки промени; $2 на вторични именни пространства; $3 на многократни редакции.',
-'rcliu'      => '; $1 редакции от влезли потребители',
 'diff'      => 'разл',
 'hist'      => 'ист',
 'hide'      => 'Скриване',
 'show'      => 'Показване',
-'tableform'    => 'таблица',
-'listform'    => 'списък',
-'nchanges'    => '$1 промени',
 'minoreditletter' => 'м',
 'newpageletter' => 'Н',
 'sectionlink' => '→',
-'number_of_watching_users_RCview'       => '[$1]',
 'number_of_watching_users_pageview'     => '[$1 наблюдаващ(и) потребител(и)]',
 
 # Upload
 'upload'    => 'Качване',
 'uploadbtn'    => 'Качване',
-'uploadlink'  => 'Качване на файлове',
 'reupload'    => 'Повторно качване',
 'reuploaddesc'  => 'Връщане към формуляра за качване.',
 'uploadnologin' => 'Не сте влезли',
@@ -739,7 +751,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'sharedupload' => 'Този файл е споделен и може да бъде използван от други проекти.',
 'shareduploadwiki' => 'Моля, разгледайте $1 за по-нататъшна информация.',
 'shareduploadwiki-linktext' => 'описателната страница на файла',
-'shareddescriptionfollows' => '-',
 'noimage'       => 'Не съществува файл с това име, можете $1.',
 'noimage-linktext' => 'да го качите',
 'uploadnewversion-linktext' => 'Качване на нова версия на файла',
@@ -757,9 +768,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 
 # Maintenance Page
 #
-'maintenance'    => 'Страница за поддръжка',
-'maintnancepagetext'  => 'Тази страница съдържа няколко удобни инструмента за всекидневна поддръжка. Някои от тези функции доста натоварват базата от данни, затова, моля, не обновявайте страницата след всяка Ваша операция, ;-)',
-'maintenancebacklink'  => 'Обратно към страницата за поддръжка',
 'disambiguations'  => 'Пояснителни страници',
 'disambiguationspage'  => 'Шаблон:Пояснение',
 'disambiguationstext'  => 'Следните страници сочат към <i>пояснителна страница</i>. Вместо това те би трябвало да сочат към съответната тема.<br /> Страница се определя като „<i>пояснителна</i>“, ако към нея се сочи от $1.<br />Тук <i>не</i> са посочени препратки от други именни пространства.',
@@ -767,20 +775,10 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'doubleredirectstext' => 'Всеки ред съдържа препратки към първото и второто пренасочване, както и първия ред на текста на второто пренасочване, който обикновено посочва „<i>истинската</i>“ целева страница, към която първото пренасочване би трябвало да сочи.',
 'brokenredirects'  => 'Невалидни пренасочвания',
 'brokenredirectstext'  => 'Следните пренасочващи страници сочат към несъществуващи страници.',
-'selflinks'    => 'Страници с препратки към себе си',
-'selflinkstext'    => 'Следните страници правят препратки към себе се, което не би трябвало да е така.',
-'mispeelings'           => 'Страници с правописни грешки',
-'mispeelingstext'  => 'Следните страници съдържат основни правописни грешки, които са
-изброени в $1. Правилните форми може да се посочат в скоби: (ето така).',
-'mispeelingspage'       => 'Списък на основни правописни грешки',
-'missinglanguagelinks'  => 'Липсващи езикови препратки',
-'missinglanguagelinksbutton' => 'Търсене на липсващи езикови препратки за',
-'missinglanguagelinkstext'   => 'Тези страници <i>не</i> сочат към техните копия в $1. Пренасочванията и подстраниците <i>не са</i> показани.',
 
 
 # Miscellaneous special pages
 #
-'orphans'    => 'Страници сираци',
 'lonelypages'  => 'Страници сираци',
 'uncategorizedpages' => 'Некатегоризирани страници',
 'uncategorizedcategories' => 'Некатегоризирани категории',
@@ -794,7 +792,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'allpages'    => 'Всички страници',
 'prefixindex'   => 'Азбучен списък на представки',
 'randompage'  => 'Случайна страница',
-'randompage-url'=> 'Special:Random',
 'shortpages'  => 'Кратки страници',
 'longpages'    => 'Дълги страници',
 'deadendpages'  => 'Задънени страници',
@@ -802,10 +799,8 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'specialpages'  => 'Специални страници',
 'spheading'    => 'Специални страници за всички потребители',
 'restrictedpheading'    => 'Специални страници с ограничен достъп',
-'protectpage'  => 'Защитена страница',
 'recentchangeslinked' => 'Свързани промени',
 'rclsub'    => '(на страници, сочени от „$1“)',
-'debug'      => 'Отстраняване на грешки',
 'newpages'    => 'Нови страници',
 'ancientpages'    => 'Стари страници',
 'intl'          => 'Междуезикови препратки',
@@ -821,8 +816,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 
 'booksourcetext' => 'Показани са препратки към други сайтове, които продават нови и използвани книги и могат да имат допълнителна информация за книгите, които търсите.',
 'isbn'  => 'ISBN',
-'rfcurl' =>  'http://www.ietf.org/rfc/rfc$1.txt',
-'pubmedurl' =>  'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1',
 'alphaindexline' => 'от $1 до $2',
 'version'       => 'Версия',
 'log'           => 'Дневници',
@@ -861,7 +854,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 # Watchlist
 #
 'watchlist'    => 'Моят списък за наблюдение',
-'watchlistsub'  => '(за потребител „$1“)',
 'nowatchlist'  => 'Списъкът Ви за наблюдение е празен.',
 'watchnologin'  => 'Не сте влезли',
 'watchnologintext'  => 'Необходимо е да [[Special:Userlogin|влезете]], за да може да променяте списъка си за наблюдение.',
@@ -898,8 +890,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'wlsaved' => 'Това е съхранена версия на списъка Ви за наблюдение.',
 'wlhideshowown'         => '$1 на моите редакции.',
 'wlhideshowbots'        => '$1 на редакции на ботове.',
-'wlshow'                => 'Показване',
-'wlhide'                => 'Скриване',
 
 'enotif_mailer'  => '{{SITENAME}} Notification Mailer',
 'enotif_reset'   => 'Отбелязване на всички страници като посетени',
@@ -975,8 +965,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'undeletebtn' => 'Възстановяване!',
 'undeletedarticle' => '„[[$1]]“ беше възстановена',
 'undeletedrevisions' => '$1 версии бяха възстановени',
-'undeletedtext'   => 'Страницата [[:$1|$1]] беше успешно възстановена.
-Вижте [[Special:Log/delete|дневника на изтриванията]] за запис на последните изтривания и възстановявания.',
 
 # Namespace form on various pages
 'namespace' => 'Именно пространство:',
@@ -992,7 +980,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'uclinks'    => 'Показване на последните $1 промени; показване на последните $2 дни.',
 'uctop'    => ' (последна)',
 'newbies'  => 'новаци',
-'contribs-showhideminor' => '$1 малки промени',
 
 # What links here
 #
@@ -1029,7 +1016,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'unblockip'    => 'Отблокиране на потребител',
 'unblockiptext'  => 'Използвайте долния формуляр, за да възстановите правото на писане на по-рано блокиран IP-адрес или потребител.',
 'ipusubmit'    => 'Отблокиране на адреса',
-'ipusuccess'  => '„[[$1]]“ беше отблокиран',
 'ipblocklist'  => 'Списък на блокирани IP-адреси и потребители',
 'blocklistline'  => '$1, $2 е блокирал $3 ($4)',
 'infiniteblock' => 'неограничено',
@@ -1083,10 +1069,7 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'makesysopok'           => '<b>Потребителят „$1“ беше направен администратор</b>.',
 'makesysopfail'         => '<b>Потребителят „$1“ не беше направен администратор. (Правилно ли въведохте името?)</b>',
 'setbureaucratflag' => 'Вдигане на флага „бюрократ“',
-'setstewardflag'    => 'Вдигане на флага „стюард“',
-'bureaucratlog'         => 'Дневник на бюрократите',
 'rightslogtext'         => 'Това е дневник на промените на потребителски права.',
-'bureaucratlogentry'    => 'Смяна на груповата принадлежност на $1: от $2 към $3',
 'rights'                => 'Права:',
 'set_user_rights'       => 'Даване на потребителски права',
 'user_rights_set'       => '<b>Потребителските права на „$1“ са променени</b>',
@@ -1094,7 +1077,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'makesysop'             => 'Превръщане на потребител в администратор',
 'already_sysop'         => 'Този потребител беше вече администратор',
 'already_bureaucrat'    => 'Този потребител беше вече бюрократ',
-'already_steward'       => 'Този потребител беше вече стюард',
 
 # Move page
 #
@@ -1221,9 +1203,7 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 'spamprotectiontext' => 'Страницата, която искахте да съхраните, беше блокирана от филтъра против спам. Това обикновено е причинено от препратка към външен сайт.',
 'spamprotectionmatch' => 'Следният текст предизвика включването на филтъра: $1',
 'subcategorycount' => 'Тази категория има $1 подкатегории.',
-'subcategorycount1' => 'Тази категория има една подкатегория',
 'categoryarticlecount' => 'Тази категория съдържа $1 страници.',
-'categoryarticlecount1' => 'Тази категория съдържа една страница.',
 'listingcontinuesabbrev' => ' продълж.',
 
 # Info page
@@ -1244,7 +1224,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 
 # Patrolling
 'markaspatrolleddiff'   => 'Отбелязване като проверена версия',//'Mark as patrolled',
-'markaspatrolledlink'   => '[$1]',
 'markaspatrolledtext'   => 'Отбелязване на версията като проверена',//'Mark this article as patrolled',
 'markedaspatrolled'     => 'Проверена версия', //'Marked as patrolled',
 'markedaspatrolledtext' => 'Избраната версия беше отбелязана като проверена.',//'The selected revision has been marked as patrolled.',
@@ -1378,8 +1357,6 @@ $2 Показване на пренасочвания &nbsp; Търсене на
 Trackbacks for this article:<br />
 $1
 </div>',
-'trackback' => '; $4$5 : [$2 $1]',
-'trackbackexcerpt' => '; $4$5 : [$2 $1]: <nowiki>$3</nowiki>',
 'trackbackremove' => ' ([$1 Изтриване])',
 #'trackbacklink' => 'Trackback',
 #'trackbackdeleteok' => 'The trackback was successfully deleted.',

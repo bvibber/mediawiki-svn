@@ -18,11 +18,11 @@ $title = $wgRequest->getVal( 'title' );
 # Send Ajax requests to the Ajax dispatcher.
 #
 if ( $wgUseAjax && $action == 'ajax' ) {
-	require_once( 'AjaxDispatcher.php' );
+	require_once( $IP . '/includes/AjaxDispatcher.php' );
 
 	$dispatcher = new AjaxDispatcher();
 	$dispatcher->performAction();
-
+	$mediaWiki->restInPeace( $wgLoadBalancer );
 	exit;
 }
 

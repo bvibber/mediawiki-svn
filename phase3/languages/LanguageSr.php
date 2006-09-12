@@ -11,11 +11,9 @@
 	dictionaries: one for Cyrillics and Latin, and one for ekavian and
 	iyekavian.
 */
-require_once( "LanguageConverter.php" );
-require_once( "LanguageSr_ec.php" );
-require_once( "LanguageSr_el.php" );
-require_once( "LanguageSr_jc.php" );
-require_once( "LanguageSr_jl.php" );
+require_once( dirname(__FILE__).'/LanguageConverter.php' );
+require_once( dirname(__FILE__).'/LanguageSr_ec.php' );
+require_once( dirname(__FILE__).'/LanguageSr_el.php' );
 
 class SrConverter extends LanguageConverter {
 	var $mToLatin = array(
@@ -190,12 +188,40 @@ class SrConverter extends LanguageConverter {
 		return parent::autoConvert($text,$toVariant);
 	} 
 
+	/**
+	 *  It translates text into variant, specials:
+	 *    - ommiting roman numbers
+	 */
+	function translate($text, $toVariant){
+		$breaks = '[^\w\x80-\xff]';
+
+		// regexp for roman numbers
+		$roman = 'M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})';
+
+		$reg = '/^'.$roman.'$|^'.$roman.$breaks.'|'.$breaks.$roman.'$|'.$breaks.$roman.$breaks.'/';
+
+		$matches = preg_split($reg, $text, -1, PREG_SPLIT_OFFSET_CAPTURE);
+		
+		$m = array_shift($matches);
+		$ret = strtr($m[0], $this->mTables[$toVariant]);
+		$mstart = $m[1]+strlen($m[0]);
+		foreach($matches as $m) {
+			$ret .= substr($text, $mstart, $m[1]-$mstart);
+			$ret .= parent::translate($m[0], $toVariant);
+			$mstart = $m[1] + strlen($m[0]);
+		}
+
+		return $ret;
+	}
+
 
 }
 
 class LanguageSr extends LanguageSr_ec {
 	function __construct() {
 		global $wgHooks;
+
+		parent::__construct();
 
 		// these variants are currently UNUSED:
 		// 'sr-jc', 'sr-jl' 
@@ -215,13 +241,5 @@ class LanguageSr extends LanguageSr_ec {
 		$this->mConverter = new SrConverter($this, 'sr', $variants, $variantfallbacks, $marker, $flags);
 		$wgHooks['ArticleSaveComplete'][] = $this->mConverter;
 	}
-	function getVariantname( $code ) {
-		return wfMsg( "variantname-$code" );
-	}
-
-	function linkTrail() {
-		return "/^([abvgdđežzijklljmnnjoprstćufhcčdžšабвгдђежзијклљмнњопрстћуфхцчџш]+)(.*)$/usD";
-	}
-
 }
 ?>

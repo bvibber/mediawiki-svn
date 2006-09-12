@@ -1,10 +1,57 @@
 <?php
+/** Tyvan localization (Тыва дыл)
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-/** Tyvan localization (Тыва дыл) */
 # From friends at tyvawiki.org
 
+$namespaceNames = array(
+	NS_MEDIA            => 'Медиа', //Media
+	NS_SPECIAL          => 'Тускай', //Special
+	NS_MAIN	            => '',
+	NS_TALK	            => 'Чугаа', //Talk
+	NS_USER             => 'Aжыглакчы', //User
+	NS_USER_TALK        => 'Aжыглакчы_чугаа', //User_talk
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_чугаа', //_talk
+	NS_IMAGE            => 'Чурук', //Image
+	NS_IMAGE_TALK       => 'Чурук_чугаа', //Image_talk
+	NS_MEDIAWIKI        => 'МедиаВики', //MediaWiki
+	NS_MEDIAWIKI_TALK   => 'МедиаВики_чугаа', //MediaWiki_talk
+	NS_TEMPLATE         => 'Хээ', //Template
+	NS_TEMPLATE_TALK    => 'Хээ_чугаа', //Template_talk
+	NS_HELP             => 'Дуза', //Help
+	NS_HELP_TALK        => 'Дуза_чугаа', //Help_talk
+	NS_CATEGORY         => 'Бөлүк', //Category
+	NS_CATEGORY_TALK    => 'Бөлүк_чугаа', //Category_talk
+);
 
-/* private */ $wgAllMessagesTyv = array(
+$skinNames = array(
+	'standard' => 'Classic', //Classic
+	'nostalgia' => 'Nostalgia', //Nostalgia
+	'cologneblue' => 'Cologne Blue', //Cologne Blue
+	'davinci' => 'ДаВинчи', //DaVinci
+	'mono' => 'Моно', //Mono
+	'monobook' => 'Моно-Ном', //MonoBook
+	'myskin' => 'MySkin', //MySkin
+	'chick' => 'Chick' //Chick
+);
+
+$bookstoreList = array(
+	'ОЗОН' => 'http://www.ozon.ru/?context=advsearch_book&isbn=$1',
+	'Books.Ru' => 'http://www.books.ru/shop/search/advanced?as%5Btype%5D=books&as%5Bname%5D=&as%5Bisbn%5D=$1&as%5Bauthor%5D=&as%5Bmaker%5D=&as%5Bcontents%5D=&as%5Binfo%5D=&as%5Bdate_after%5D=&as%5Bdate_before%5D=&as%5Bprice_less%5D=&as%5Bprice_more%5D=&as%5Bstrict%5D=%E4%E0&as%5Bsub%5D=%E8%F1%EA%E0%F2%FC&x=22&y=8',
+	'Яндекс.Маркет' => 'http://market.yandex.ru/search.xml?text=$1',
+	'Amazon.com' => 'http://www.amazon.com/exec/obidos/ISBN=$1',
+	'AddALL' => 'http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN',
+	'PriceSCAN' => 'http://www.pricescan.com/books/bookDetail.asp?isbn=$1',
+	'Barnes & Noble' => 'http://shop.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1'
+);
+
+$fallback8bitEncoding = "windows-1251";
+
+
+$messages = array(
 
 # User preference toggles
 'tog-hideminor' => 'Сөөлгү өскерлиишкиннер арында бичии өскерлиишкиннер чажырар', //Hide minor edits in recent changes
@@ -50,9 +97,7 @@
 
 # Bits of text used by many pages:
 #
-'categories1' => 'Бөлүк', //Category
 'categories' => 'Бөлүктер', //Categories
-'category' => 'бөлүк', //Category
 'category_header' => '"$1" бөлүкте чүүлдер', //Articles in category $1
 'subcategories' => 'Бичии бөлүктер', //Subcategories
 
@@ -88,6 +133,7 @@
 'whatlinkshere'	=> 'Pages that link here', //Pages that link here
 'help'			=> 'Дуза', //Help
 'search'		=> 'Дилээр', //Search
+'searchbutton'	=> 'Дилээр', //Search
 'go'		=> 'Чоруур', //Go
 'history'		=> 'Арынның Төөгүзү', //Page history
 'history_short' => 'Төөгү', //History
@@ -107,7 +153,6 @@
 'specialpage' => 'Тускай Арын', //Special Page
 'personaltools' => 'Херекселдер',  //Personal tools
 'articlepage'	=> 'Допчу арынны көргүзер', //View content page
-'subjectpage'	=> 'View subject', # For compatibility
 'talk' => 'Чугаалажыр', //Discussion
 'userpage' => 'Ажыглакчыниң арынын көргүзер', //View user page
 'imagepage' => 	'Чурук арынын көргүзер', //View image page
@@ -115,7 +160,6 @@
 'otherlanguages' => 'Өске дылдарга', //In other languages
 'lastmodified'	=> 'Бо арын сөөлгү каттап $1 өскерилген.', //This page was last modified $1.
 //'viewcount'		=> 'Бо арын $1 каттап ажыттынган.', //This page has been accesed $1 times.
-'administrators' => "Project:Администраторлар", //Project:Administrators
 'retrievedfrom' => "\"$1\" арынында парлаттынган", //Retrieved from \"$1\"
 'newmessageslink' => 'чаа чагаалар', //new messages
 'editsection'=>'өскертир', //edit
@@ -123,7 +167,6 @@
 'toc' => 'Допчу', //Contents
 'showtoc' => 'көргүзер', //show
 'hidetoc' => 'чажырар', //hide
-'restorelink1' => 'бир балаттынганны өскертир', //one deleted edit
 'restorelink' => "$1 балаттынган өскерилгелер", //$1 deleted edits
 
 # Short words for each namespace, by default used in the 'article' tab in monobook

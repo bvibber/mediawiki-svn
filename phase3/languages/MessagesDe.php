@@ -1,7 +1,71 @@
 <?php
 
-global $wgAllMessagesDe;
-$wgAllMessagesDe = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Spezial',
+	NS_MAIN             => '',
+	NS_TALK             => 'Diskussion',
+	NS_USER             => 'Benutzer',
+	NS_USER_TALK        => 'Benutzer_Diskussion',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_Diskussion',
+	NS_IMAGE            => 'Bild',
+	NS_IMAGE_TALK       => 'Bild_Diskussion',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_Diskussion',
+	NS_TEMPLATE         => 'Vorlage',
+	NS_TEMPLATE_TALK    => 'Vorlage_Diskussion',
+	NS_HELP             => 'Hilfe',
+	NS_HELP_TALK        => 'Hilfe_Diskussion',
+	NS_CATEGORY         => 'Kategorie',
+	NS_CATEGORY_TALK    => 'Kategorie_Diskussion'
+);
+
+$quickbarSettings = array(
+	'Keine', 'Links, fest', 'Rechts, fest', 'Links, schwebend'
+);
+
+$skinNames = array(
+	'standard'      => 'Klassik',
+	'nostalgia'     => 'Nostalgie',
+	'cologneblue'   => 'Kölnisch Blau',
+	'smarty'        => 'Paddington',
+	'montparnasse'  => 'Montparnasse',
+	'davinci'       => 'DaVinci',
+	'mono'          => 'Mono',
+	'monobook'      => 'MonoBook',
+	'myskin'        => 'MySkin',
+	'chick'         => 'Küken'
+);
+
+
+$bookstoreList = array(
+	'abebooks.de' => 'http://www.abebooks.de/servlet/BookSearchPL?ph=2&isbn=$1',
+	'amazon.de' => 'http://www.amazon.de/exec/obidos/ISBN=$1',
+	'buch.de' => 'http://www.buch.de/de.buch.shop/shop/1/home/schnellsuche/buch/?fqbi=$1',
+	'buchhandel.de' => 'http://www.buchhandel.de/vlb/vlb.cgi?type=voll&isbn=$1',
+	'Karlsruher Virtueller Katalog (KVK)' => 'http://www.ubka.uni-karlsruhe.de/kvk.html?SB=$1',
+	'Lehmanns Fachbuchhandlung' => 'http://www.lob.de/cgi-bin/work/suche?flag=new&stich1=$1'
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+$linkTrail = '/^([äöüßa-z]+)(.*)$/sDu';
+
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'M j. Y',
+	'mdy both' => 'H:i, M j. Y',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j. M Y',
+	'dmy both' => 'H:i, j. M Y',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y M j',
+	'ymd both' => 'H:i, Y M j',
+);
+
+$messages = array(
 
 # stylesheets
 'Common.css'		=> '/** CSS an dieser Stelle wirkt sich auf alle Skins aus */',
@@ -57,43 +121,61 @@ $wgAllMessagesDe = array(
 
 
 # Dates
-'sunday' => "Sonntag",
-'monday' => "Montag",
-'tuesday' => "Dienstag",
-'wednesday' => "Mittwoch",
-'thursday' => "Donnerstag",
-'friday' => "Freitag",
-'saturday' => "Samstag",
-'january' => "Januar",
-'february' => "Februar",
-'march' => "März",
-'april' => "April",
-'may_long' => "Mai",
-'june' => "Juni",
-'july' => "Juli",
-'august' => "August",
-'september' => "September",
-'october' => "Oktober",
-'november' => "November",
-'december' => "Dezember",
-'jan' => "Jan",
-'feb' => "Feb",
-'mar' => "Mär",
-'apr' => "Apr",
-'may' => "Mai",
-'jun' => "Jun",
-'jul' => "Jul",
-'aug' => "Aug",
-'sep' => "Sep",
-'oct' => "Okt",
-'nov' => "Nov",
-'dec' => "Dez",
+'sunday'	=> 'Sonntag',
+'monday'	=> 'Montag',
+'tuesday'	=> 'Dienstag',
+'wednesday'	=> 'Mittwoch',
+'thursday'	=> 'Donnerstag',
+'friday'	=> 'Freitag',
+'saturday'	=> 'Samstag',
+'sun'		=> 'So',
+'mon'		=> 'Mo',
+'tue'		=> 'Di',
+'wed'		=> 'Mi',
+'thu'		=> 'Do',
+'fri'		=> 'Fr',
+'sat'		=> 'Sa',
+'january'	=> 'Januar',
+'february'	=> 'Februar',
+'march'		=> 'März',
+'april'		=> 'April',
+'may_long'	=> 'Mai',
+'june'		=> 'Juni',
+'july'		=> 'Juli',
+'august'	=> 'August',
+'september'	=> 'September',
+'october'	=> 'Oktober',
+'november'	=> 'November',
+'december'	=> 'Dezember',
+'january-gen'	=> 'Januar',
+'february-gen'	=> 'Februar',
+'march-gen'	=> 'März',
+'april-gen'	=> 'April',
+'may-gen'	=> 'Mai',
+'june-gen'	=> 'Juni',
+'july-gen'	=> 'Juli',
+'august-gen'	=> 'August',
+'september-gen'	=> 'September',
+'october-gen'	=> 'Oktober',
+'november-gen'	=> 'November',
+'december-gen'	=> 'Dezember',
+'jan'		=> 'Jan',
+'feb'		=> 'Feb',
+'mar'		=> 'Mär',
+'apr'		=> 'Apr',
+'may'		=> 'Mai',
+'jun'		=> 'Jun',
+'jul'		=> 'Jul',
+'aug'		=> 'Aug',
+'sep'		=> 'Sep',
+'oct'		=> 'Okt',
+'nov'		=> 'Nov',
+'dec'		=> 'Dez',
 
 
 # Bits of text used by many pages:
 #
 'categories'		=> '{{PLURAL:$1|Kategorie|Kategorien}}',
-"category" => "Kategorie",
 'category_header'	=> 'Artikel in der Kategorie „$1“',
 "subcategories" => "Unterkategorien",
 "mainpage"		=> "Hauptseite",
@@ -140,6 +222,7 @@ $wgAllMessagesDe = array(
 'tagline'		=> 'Aus {{SITENAME}}',
 "help"			=> "Hilfe",
 "search"		=> "Suche",
+"searchbutton"	=> "Suche",
 "history"		=> "Versionen",
 'info_short'		=> 'Information',
 "history_short" => "Versionen",
@@ -159,11 +242,14 @@ $wgAllMessagesDe = array(
 "personaltools" => "Persönliche Werkzeuge",
 "postcomment" => "Kommentar hinzufügen",
 "articlepage"	=> "Artikel",
-'subjectpage'	=> 'Betreff anzeigen',
 "toolbox" => "Werkzeuge",
 "projectpage" => "Meta-Text",
 "userpage" => "Benutzerseite",
 "imagepage" => "Bildseite",
+'mediawikipage'		=> 'Artikelseite anzeigen',
+'templatepage'		=> 'Vorlagensenseite anzeigen',
+'viewhelppage'		=> 'Hilfeseite anzeigen',
+'categorypage'		=> 'Kategorieseite anzeigen',
 "viewtalkpage" => "Diskussion",
 "otherlanguages" => "Andere Sprachen",
 "redirectedfrom" => "(Weitergeleitet von $1)",
@@ -173,16 +259,14 @@ $wgAllMessagesDe = array(
 "viewcount"		=> "Diese Seite wurde bisher $1 mal abgerufen.",
 "copyright"	=> "Inhalt ist verfügbar unter der $1.",
 "protectedpage" => "Geschützte Seite",
-'administrators'	=> '{{ns:project}}:Administratoren',
 'jumpto'		=> 'Wechseln zu:',
 'jumptonavigation'	=> 'Navigation',
 'jumptosearch'		=> 'Suche',
-'sysoptitle'		=> 'Administrator-Zugang notwendig',
-'sysoptext'		=> 'Dieser Vorgang kann aus Sicherheitsgründen nur von Administratoren durchgeführt werden. Siehe auch $1.',
-"developertitle" => "Entwickler-Zugang notwendig",
-'developertext'		=> 'Dieser Vorgang kann aus Sicherheitsgründen nur von Benutzern mit Entwickler-Status durchgeführt werden. Siehe auch $1.',
-'badaccess'	=> 'Keine ausreichenden Rechte.',
-'badaccesstext'		=> 'Diese Aktion ist Anwendern mit den Rechten „$2“ vorbehalten. Siehe $1.',
+'badaccess'		=> 'Keine ausreichenden Rechte.',
+'badaccess-group0'	=> 'Sie haben nicht die erforderliche Berechtigung für diese Aktion.',
+'badaccess-group1'	=> 'Diese Aktion ist beschränkt auf Benutzer, die der Gruppe $1 angehören.',
+'badaccess-group2'	=> 'Diese Aktion ist beschränkt auf Benutzer, die einer der Gruppen $1 angehören.',
+'badaccess-groups'	=> 'Diese Aktion ist beschränkt auf Benutzer, die einer der Gruppen $1 angehören.',
 'versionrequired'	=> 'Version $1 von MediaWiki ist erforderlich',
 'versionrequiredtext'	=> 'Version $1 von MediaWiki ist erforderlich um diese Seite zu nutzen. Siehe [[{{ns:special}}:Version]]',
 'nbytes'		=> '$1 {{PLURAL:$1|Byte|Bytes}}',
@@ -281,7 +365,7 @@ Falls dies nicht der Fall ist, haben Sie eventuell einen Fehler in der Software 
 'filedeleteerror'	=> 'Konnte Datei „$1“ nicht löschen.',
 'filenotfound'		=> 'Konnte Datei „$1“ nicht finden.',
 'unexpected'		=> 'Unerwarteter Wert: „$1“=„$2“.',
-"formerror"		=> "Fehler: Konnte Formular nicht verarbeiten",
+'formerror'		=> 'Fehler: Die Eingaben konnten nicht verarbeitet werden.',
 'badarticleerror'	=> 'Diese Aktion kann auf diese Seite nicht angewendet werden.',
 'cannotdelete'		=> 'Die gewählte Seite kann nicht gelöscht werden. Möglicherweise wurde sie bereits gelöscht.',
 "badtitle"		=> "Ungültiger Titel",
@@ -468,7 +552,7 @@ Reichen Sie hier keine Texte ein, falls Sie nicht wollen dass diese ohne Einschr
 
 Sie bestätigen hiermit auch, dass Sie diese Texte selbst geschrieben haben oder diese von einer gemeinfreien Quelle kopiert haben
 (siehe $1 für weitere Details). <strong>ÜBERTRAGEN SIE OHNE GENEHMIGUNG KEINE URHEBERRECHTLICH GESCHÜTZEN INHALTE!</strong>',
-"longpagewarning" => "<strong>WARNUNG: Diese Seite ist $1KB groß; einige Browser könnten Probleme haben, Seiten zu bearbeiten, die größer als 32KB sind.
+"longpagewarning" => "<strong>WARNUNG: Diese Seite ist $1 kB groß; einige Browser könnten Probleme haben, Seiten zu bearbeiten, die größer als 32 kB sind.
 Überlegen Sie bitte, ob eine Aufteilung der Seite in kleinere Abschnitte möglich ist.</strong>",
 'longpageerror'		=> '<strong>FEHLER: Der Text, den Sie zu speichern versuchen, ist $1 kB groß. Das ist größer als das erlaubte Maximum von $2 kB. Speicherung nicht möglich.</strong>',
 "readonlywarning" => "<strong>WARNUNG: Die Datenbank wurde während dem Ändern der
@@ -536,6 +620,8 @@ Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullu
 Vielleicht wurde sie aus dem Wiki gelöscht oder verschoben.
 [[{{ns:special}}:Search|Durchsuchen]] Sie das Wiki für passende neue Seiten.',
 'revisiondelete'		=> 'Versionen löschen/wiederherstellen',
+'revdelete-nooldid-title'	=> 'Keine Version angegeben',
+'revdelete-nooldid-text'	=> 'Sie haben keine Version angegeben, auf die diese Aktion ausgeführt werden soll.',
 'revdelete-selected'		=> 'Ausgewählte Version von [[:$1]]:',
 'revdelete-text'		=> 'Der Inhalt oder andere Bestandteile gelöschter Versionen sind nicht mehr öffentlich einsehbar, erscheinen jedoch weiterhin als Einträge in der Versionsgeschichte. 
 
@@ -571,8 +657,8 @@ Versuchen Sie es über die Volltextsuche.
 Alternativ können Sie auch den [[{{ns:special}}:Allpages|alphabetischen Index]] nach ähnlichen Begriffen durchsuchen.
 
 Wenn Sie sich mit dem Thema auskennen, können Sie selbst den Artikel „[[$1]]“ verfassen.',
-'titlematches'		=> 'Übereinstimmungen mit Überschriften',
-'notitlematches'	=> 'Keine Übereinstimmungen mit Überschriften',
+'titlematches'		=> 'Übereinstimmungen mit Seitentiteln',
+'notitlematches'	=> 'Keine Übereinstimmungen mit Seitentiteln',
 'textmatches'		=> 'Übereinstimmungen mit Inhalten',
 'notextmatches'		=> 'Keine Übereinstimmungen mit Inhalten',
 "prevn"			=> "vorherige $1",
@@ -588,7 +674,8 @@ Wenn Sie sich mit dem Thema auskennen, können Sie selbst den Artikel „[[$1]]�
 
 # Preferences page
 #
-"preferences"	=> "Einstellungen",
+'preferences'		=> 'Einstellungen',
+'mypreferences'		=> 'Einstellungen',
 "prefsnologin" => "Nicht angemeldet",
 'prefsnologintext'	=> 'Sie müssen [[{{ns:special}}:Userlogin|angemeldet]] sein, um Ihre Einstellungen ändern zu können.',
 "prefsreset"	=> "Einstellungen wurden auf Standard zurückgesetzt.",
@@ -627,11 +714,11 @@ Wenn Sie sich mit dem Thema auskennen, können Sie selbst den Artikel „[[$1]]�
 'guesstimezone'		=> 'Aus Browser übernehmen',
 'allowemail'		=> 'E-Mails von anderen Benutzern empfangen.',
 "defaultns"		=> "In diesen Namensräumen soll standardmäßig gesucht werden:",
-'default'		=> 'default',
+'default'		=> 'Voreinstellung',
 'files'			=> 'Dateien',
 'imagemaxsize'		=> 'Maximale Bildgröße auf Bildbeschreibungsseiten:',
 'thumbsize'		=> 'Größe der Vorschaubilder (Thumbnails):',
-'showbigimage'		=> 'Version mit hoher Auflösung herunterladen ($1 x $2 Pixel, $3 KB)',
+'showbigimage'		=> 'Version mit hoher Auflösung herunterladen ($1 x $2 Pixel, $3 kB)',
 
 # Recent changes
 #
@@ -721,10 +808,13 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[{{ns:i
 'uploaddisabledtext'	=> 'Das Hochladen von Dateien ist in diesem Wiki deaktiviert.',
 'sourcefilename'	=> 'Quelldatei',
 'destfilename'		=> 'Dateiname ändern in',
+'watchthisupload'	=> 'Diese Seite beobachten',
 'filewasdeleted'	=> 'Eine Datei mit diesem Namen wurde schon einmal hochgeladen und zwischenzeitlich wieder gelöscht. Bitte prüfen Sie zuerst den Eintrag im $1, bevor Sie die Datei wirklich speichern.',
 
 'license'		=> 'Lizenz',
 'nolicense'		=> 'keine Vorauswahl',
+'upload_source_url'	=> ' (eine gültige, öffentlich erreichbare URL)',
+'upload_source_file'	=> ' (eine Datei auf Ihrem Computer)',
 
 # Image list
 #
@@ -739,6 +829,7 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[{{ns:i
 'bysize'		=> 'nach Größe',
 "imgdelete"		=> "Löschen",
 "imgdesc"		=> "Beschreibung",
+'imgfile'		=> 'Datei',
 'imglegend'		=> 'Legende: (Beschreibung) = Zeige/Bearbeite Dateibeschreibung.',
 'imghistory'		=> 'Dateiversionen',
 "revertimg"		=> "Zurücksetzen",
@@ -754,6 +845,13 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[{{ns:i
 'noimage'			=> 'Eine Datei mit diesem Namen existiert nicht, Sie können sie jedoch $1.',
 'noimage-linktext'		=> 'hochladen',
 'uploadnewversion-linktext'	=> 'Eine neue Version dieser Datei hochladen',
+'imagelist_date'	=> 'Datum',
+'imagelist_name'	=> 'Name',
+'imagelist_user'	=> 'User',
+'imagelist_size'	=> 'Größe (Byte)',
+'imagelist_description'	=> 'Beschreibung',
+'imagelist_search_for'	=> 'Suche nach Datei:',
+
 
 # List redirects
 'listredirects' => 'Weiterleitungsliste',
@@ -784,7 +882,7 @@ Daraus ergeben sich \'\'\'$5\'\'\' Bearbeitungen pro Seite und \'\'\'$6\'\'\' Se
 
 Länge der „Job queue“: \'\'\'$7\'\'\'',
 'userstatstext'		=> 'Es gibt \'\'\'$1\'\'\' registrierte [[{{ns:special}}:Listusers|Benutzer]].
-Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
+Davon sind \'\'\'$2\'\'\' (=$4%) $5.',
 'statistics-mostpopular'	=> 'Meist besuchte Seiten',
 
 # Maintenance Page
@@ -845,6 +943,21 @@ Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
 'groups'		=> 'Benutzergruppen',
 'noimages'	=> 'Keine Dateien gefunden.',
 
+# short names for language variants used for language conversion links.
+# to disable showing a particular link, set it to 'disable', e.g.
+# 'variantname-zh-sg' => 'disable',
+'variantname-zh-cn'	=> 'cn',
+'variantname-zh-tw'	=> 'tw',
+'variantname-zh-hk'	=> 'hk',
+'variantname-zh-sg'	=> 'sg',
+'variantname-zh'	=> 'zh',
+# variants for Serbian language
+'variantname-sr-ec'	=> 'sr-ec',
+'variantname-sr-el'	=> 'sr-el',
+'variantname-sr-jc'	=> 'sr-jc',
+'variantname-sr-jl'	=> 'sr-jl',
+'variantname-sr'	=> 'sr',
+
 # Special:Allpages
 'allpages'		=> 'Alle Seiten',
 'prefixindex'		=> 'Alle Seiten (mit Präfix)',
@@ -858,6 +971,9 @@ Davon haben \'\'\'$2\'\'\' (=$4%) Administrator-Rechte (siehe $3).',
 'allpagesnext'	=> 'Nächste',
 'allpagessubmit'	=> 'Zeige',
 'allpagesbadtitle'	=> 'Der eingegebene Seitenname ist ungültig: Er hat entweder ein vorangestelltes Sprach-, ein Interwiki-Kürzel oder enthält ein oder mehrere Zeichen, welche in Seitennamen nicht verwendet werden dürfen.',
+
+# Special:Listusers
+'listusersfrom'		=> 'Zeige Benutzer beginnend mit:',
 
 # Email this user
 #
@@ -1059,8 +1175,8 @@ Im [[{{ns:special}}:Log/delete|Lösch-Logbuch]] finden Sie eine Übersicht von k
 "notargettitle" => "Kein Artikel angegeben",
 'notargettext'		=> 'Sie haben nicht angegeben, auf welche Seite diese Funktion angewendet werden soll.',
 "linklistsub"	=> "(Liste der Verweise)",
-'linkshere'	=> 'Die folgenden Seiten verweisen hierher:',
-'nolinkshere'	=> 'Keine Seiten verweisen hierher.',
+'linkshere'	=> 'Die folgenden Seiten verweisen auf \'\'\'[[:$1]]\'\'\':',
+'nolinkshere'	=> 'Keine Seite verweist auf \'\'\'[[:$1]]\'\'\'.',
 'isredirect'		=> 'Weiterleitungsseite',
 'istemplate'	=> 'Vorlageneinbindung',
 
@@ -1136,20 +1252,17 @@ Beachten Sie die [[{{ns:special}}:Ipblocklist|{{int:ipblocklist}}]] für alle ak
 'userrights-groupsavailable' => 'Verfügbare Gruppen:',
 'userrights-groupshelp' => 'Wählen Sie die Gruppen, aus denen der Benutzer entfernt oder zu denen er hinzugefügt werden soll.
 Nicht selektierte Gruppen werden nicht geändert. Eine Selektion kann mit \'\'\'Strg + Linksklick\'\'\' (bzw. Ctrl + Linksklick) entfernt werden.',
-'userrights-logcomment'		=> 'Gruppenzugehörigkeit geändert von $1 nach $2',
 
 # Groups
 'group'				=> 'Gruppe:',
 'group-bot'			=> 'Bots',
 'group-sysop'			=> 'Administratoren',
 'group-bureaucrat'		=> 'Bürokraten',
-'group-steward'			=> 'Stewards',
 'group-all'			=> '(alle)',
 
 'group-bot-member'		=> 'Bot',
 'group-sysop-member'		=> 'Administrator',
 'group-bureaucrat-member'	=> 'Bürokrat',
-'group-steward-member'		=> 'Steward',
 
 'grouppage-bot'			=> '{{ns:project}}:Bots',
 'grouppage-sysop'		=> '{{ns:project}}:Administratoren',
@@ -1183,7 +1296,7 @@ Der Zielartikel "[[$1]]" besteht bereits. Möchten Sie diesen löschen, um den A
 'delete_and_move_confirm' => 'Ja, Artikel löschen.',
 'delete_and_move_reason' => 'Gelöscht um Verschiebung zu ermöglichen',
 'selfmove' => 'Ursprungs- und Zielname sind gleich; eine Seite kann nicht zu sich selbst verschoben werden.',
-'immobile_namespace' => 'Der gewünschte Seitentitel ist ein besonderer; die Seite kann nicht in diesen (anderen) Namensraum verschoben werden.',
+'immobile_namespace'	=> 'Der Quell- oder Zielnamensraum ist geschützt; Verschiebungen in diesen Namensraum hinein oder aus diesem heraus sind nicht möglich.',
 "articleexists" => "Unter diesem Namen existiert bereits ein Artikel.
 Bitte wählen Sie einen anderen Namen.",
 "talkexists"    => "Die Seite selbst wurde erfolgreich verschoben, aber die
@@ -1255,7 +1368,6 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Seitentitel“ m
 'makesysopfail'		=> '<b>Benutzer „$1“ konnte nicht zu einem Administrator gemacht werden. (Haben Sie den Namen richtig geschrieben?)</b>',
 "makesysop"         => "Mache einen Benutzer zum Administrator",
 'setbureaucratflag'	=> 'Mache Benutzer zum Bürokraten',
-'setstewardflag'	=> 'Mache Benutzer zum Steward',
 'rightslog' => 'Rechte-Logbuch',
 'rightslogtext' => 'Dies ist das Logbuch der Änderungen der Benutzerrechte.',
 'rightslogentry'	=> 'Gruppenzugehörigkeit für „[[$1]]“ von „$2“ auf „$3“ geändert.',
@@ -1265,7 +1377,6 @@ Alternativ ist der Export auch mit der Syntax „Spezial:Export/Seitentitel“ m
 'set_rights_fail'	=> '<b>Benutzerrechte für „$1“ konnten nicht gesetzt werden. (Haben Sie den Namen korrekt eingegeben?)</b>',
 'already_sysop'		=> 'Dieser Benutzer ist bereits Administrator.',
 'already_bureaucrat'	=> 'Dieser Benutzer ist bereits Bürokrat.',
-'already_steward'	=> 'Dieser Benutzer ist bereits Steward.',
 'rightsnone'		=> '(nichts)',
 
 '1movedto2'		=> 'hat [[$1]] nach [[$2]] verschoben',
@@ -1435,6 +1546,13 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'metadata_help'		=> 'Metadaten:',
 'metadata-expand' => 'Erweiterte Details einblenden',
 'metadata-collapse'	=> 'Erweiterte Details ausblenden',
+'metadata-fields'	=> 'Die folgenden EXIF-Metadaten in dieser MediaWiki-Nachricht werden auf Bildbeschreibungsseiten angezeigt. Weitere EXIF-Metadaten werden standardmäßig ausgeblendet.
+* make
+* model
+* datetimeoriginal
+* exposuretime
+* fnumber
+* focallength',
 
 # Exif tags
 'exif-aperturevalue'		=> 'Blendenwert',
@@ -1537,8 +1655,8 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-gpslongituderef'		=> 'östl. oder westl. Länge',
 'exif-gpsmapdatum'		=> 'Geodätisches Datum benutzt',
 'exif-gpsmeasuremode'		=> 'Messverfahren',
-'exif-gpsmeasuremode-2'		=> 'zweidimensionale Messung',
-'exif-gpsmeasuremode-3'		=> 'dreidimensionale Messung',
+'exif-gpsmeasuremode-2'		=> '2-dimensionale Messung',
+'exif-gpsmeasuremode-3'		=> '3-dimensionale Messung',
 'exif-gpsprocessingmethod'	=> 'Name des GPS-Verfahrens',
 'exif-gpssatellites'		=> 'Für die Messung benutzte Satelliten',
 'exif-gpsspeed'			=> 'Geschwindigkeit des GPS-Empfängers',
@@ -1546,7 +1664,7 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-gpsspeed-m'		=> 'mph',
 'exif-gpsspeed-n'		=> 'Knoten',
 'exif-gpsspeedref'		=> 'Geschwindigkeitseinheit',
-'exif-gpsstatus'		=> 'Empfänger Status',
+'exif-gpsstatus'		=> 'Empfängerstatus',
 'exif-gpsstatus-a'		=> 'Messung läuft',
 #'exif-gpsstatus-v'		=> 'Measurement interoperability',
 'exif-gpstimestamp'		=> 'GPS-Zeit',
@@ -1659,7 +1777,7 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 'exif-subjectlocation'		=> 'Motivstandort',
 'exif-subsectime'		=> 'Speicherzeitpunkt (1/100 s)',
 'exif-subsectimedigitized'	=> 'Digitalisierungszeitpunkt (1/100 s)',
-'exif-subsectimeoriginal'	=> 'Erfassungszeitpunkt (1/100 s',
+'exif-subsectimeoriginal'	=> 'Erfassungszeitpunkt (1/100 s)',
 'exif-transferfunction'		=> 'Übertragungsfunktion',
 'exif-usercomment'		=> 'Benutzerkommentare',
 'exif-whitebalance'		=> 'Weißabgleich',
@@ -1683,6 +1801,7 @@ Alle Transwiki Import-Aktionen werden im [[{{ns:special}}:Log/import|Import-Logb
 
 # E-mail address confirmation
 'confirmemail'		=> 'Bestätigung der E-Mail-Adresse (Authentifizierung)',
+'confirmemail_noemail'	=> 'Sie haben keine gültige E-Mail-Adresse in Ihrem [[Special:Preferences|Benutzerprofil]] angegeben.',
 'confirmemail_text'	=> 'Dieses Wiki erfordert, dass Sie Ihre E-Mail-Adresse bestätigen (authentifizieren), bevor Sie die erweiterten E-Mail-Funktionen benutzen können. Durch einen Klick auf die Schaltfläche unten wird eine E-Mail an Sie gesendet. Diese E-Mail enthält einen Link mit einem Bestätigungs-Code. Durch Klicken auf diesen Link wird bestätigt, dass Ihre E-Mail-Adresse gültig ist.',
 'confirmemail_send' => 'Anforderung einer E-Mail zur Adressenbestätigung',
 'confirmemail_sent' => 'Es wurde Ihnen eine E-Mail zur Adressenbestätigung gesendet.',
@@ -1807,12 +1926,31 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'Kategorieseite anzeigen\');',
 'confirm_purge' => "Den Cache dieser Seite leeren? $1",
 'confirm_purge_button' => 'OK',
 
+'newtalkseperator'	=> ',_',
 'youhavenewmessagesmulti' => "Sie haben neue Nachrichten: $1",
 
 # DISPLAYTITLE
 'displaytitle' => '(Link zu dieser Seite als [[$1]])',
 
 'loginlanguagelabel'	=> 'Sprache: $1',
+
+
+# Multipage image navigation
+'imgmultipageprev' => '← vorige Seite',
+'imgmultipagenext' => 'nächste Seite →',
+'imgmultigo' => 'OK',
+'imgmultigotopre' => 'Gehe zu Seite',
+
+# Table pager
+'ascending_abbrev'	=> 'auf',
+'descending_abbrev'	=> 'ab',
+'table_pager_next'	=> 'Nächste Seite',
+'table_pager_prev'	=> 'Vorherige Seite',
+'table_pager_first'	=> 'Erste Seite',
+'table_pager_last'	=> 'Letzte Seite',
+'table_pager_limit'	=> 'Zeige $1 Einträge pro Seite',
+'table_pager_limit_submit'	=> 'Los',
+'table_pager_empty'	=> 'Keine Ergebnisse',
 
 );
 

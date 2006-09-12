@@ -1,7 +1,82 @@
 <?php
+/**
+  * @package MediaWiki
+  * @subpackage Language
+  */
+
+/* Cymraeg - Welsh */
+
+$namespaceNames = array(
+	NS_MEDIA          => "Media",
+	NS_SPECIAL        => "Arbennig",
+	NS_MAIN           => "",
+	NS_TALK           => "Sgwrs",
+	NS_USER           => "Defnyddiwr",
+	NS_USER_TALK      => "Sgwrs_Defnyddiwr",
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => "Sgwrs_$1",
+	NS_IMAGE          => "Delwedd",
+	NS_IMAGE_TALK     => "Sgwrs_Delwedd",
+	NS_MEDIAWIKI      => "MediaWici",
+	NS_MEDIAWIKI_TALK => "Sgwrs_MediaWici",
+	NS_TEMPLATE       => "Nodyn",
+	NS_TEMPLATE_TALK  => "Sgwrs_Nodyn",
+	NS_CATEGORY		  => "Categori",
+	NS_CATEGORY_TALK  => "Sgwrs_Categori",
+	NS_HELP			  => "Cymorth",
+	NS_HELP_TALK	  => "Sgwrs Cymorth"
+);
+
+$quickbarSettings = array(
+	"Dim", "Sefydlog chwith", "Sefydlog de", "Arnawf de"
+);
+
+$skinNames = array(
+	'standard' => "Safonol",
+	'nostalgia' => "Hiraeth",
+	'cologneblue' => "Glas Cwlen",
+);
+
+$datePreferences = false;
+
+$bookstoreList = array(
+	"AddALL" => "http://www.addall.com/New/Partner.cgi?query=$1&type=ISBN",
+	"PriceSCAN" => "http://www.pricescan.com/books/bookDetail.asp?isbn=$1",
+	"Barnes & Noble" => "http://search.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1",
+	"Amazon.com" => "http://www.amazon.com/exec/obidos/ISBN=$1",
+	"Amazon.co.uk" => "http://www.amazon.co.uk/exec/obidos/ISBN=$1"
+);
 
 
-/* private */ $wgAllMessagesCy = array(
+$magicWords = array(
+#   ID                                 CASE  SYNONYMS
+	'redirect'               => array( 0,    "#redirect", "#ail-cyfeirio"                 ),
+	'notoc'                  => array( 0,    "__NOTOC__", "__DIMTAFLENCYNNWYS__"          ),
+	'noeditsection'          => array( 0,    "__NOEDITSECTION__", "__DIMADRANGOLYGU__"    ),
+	'start'                  => array( 0,    "__START__", "__DECHRAU__"                   ),
+	'currentmonth'           => array( 1, "CURRENTMONTH", "MISCYFOES"                ),
+	'currentmonthname'       => array( 1,    "CURRENTMONTHNAME", "ENWMISCYFOES"           ),
+	'currentday'             => array( 1,    "CURRENTDAY", "DYDDIADCYFOES"                ),
+	'currentdayname'         => array( 1,    "CURRENTDAYNAME", "ENWDYDDCYFOES"            ),
+	'currentyear'            => array( 1,    "CURRENTYEAR", "FLWYDDYNCYFOES"              ),
+	'currenttime'            => array( 1,    "CURRENTTIME", "AMSERCYFOES"                 ),
+	'numberofarticles'       => array( 1, "NUMBEROFARTICLES","NIFEROERTHYGLAU"       ),
+	'currentmonthnamegen'    => array( 1,    "CURRENTMONTHNAMEGEN", "GENENWMISCYFOES"     ),
+	'subst'                  => array( 1,    "SUBST:"                                     ),
+	'msgnw'                  => array( 0,    "MSGNW:"                                     ),
+	'end'                    => array( 0, "__DIWEDD__"                                   ),
+	'img_thumbnail'          => array( 1, "ewin bawd", "bawd", "thumb", "thumbnail"  ),
+	'img_right'              => array( 1,    "de", "right"                                ),
+	'img_left'               => array( 1,    "chwith", "left"                             ),
+	'img_none'               => array( 1,    "dim", "none"                                ),
+	'img_width'              => array( 1,    "$1px"                                       ),
+	'img_center'             => array( 1, "canol", "centre", "center"                ),
+	'int'                    => array( 0,    "INT:"                                       )
+
+);
+$linkTrail = "/^([àáâèéêìíîïòóôûŵŷa-z]+)(.*)\$/sDu";
+
+$messages = array(
 # User Toggles
 
 "tog-underline" => "Tanllinellu cysylltiadau",
@@ -59,10 +134,8 @@
 # Bits of text used by many pages:
 #
 "categories" => "Categorïau tudalen",
-"category" => "categori",
 "category_header" => "Erthyglau mewn categori \"$1\"",
 "subcategories" => "Is-categorïau",
-"linktrail" => "/^([àáâèéêìíîïòóôûŵŷa-z]+)(.*)\$/sDu",
 "mainpage" => "Prif tudalen",
 "mainpagetext" => "Meddalwedd {{SITENAME}} wedi sefydlu'n llwyddiannus",
 "about"	=> "Amdano",
@@ -96,6 +169,7 @@
 "whatlinkshere"	=> "Tudalennau sydd yn cysyllti fan hyn",
 "help" => "Help",
 "search" => "Chwilio",
+"searchbutton" => "Chwilio",
 "go" => "Mynd",
 "history" => "Hanes y tudalen",
 "printableversion" => "Fersiwn argraffiol",
@@ -107,7 +181,6 @@
 "talkpage" => "Sgwrsio amdano'r tudalen hon",
 "postcomment" => "Postiwch esboniad",
 "articlepage" => "Gwyliwch erthygl",
-"subjectpage" => "Gwyliwch pwnc", # For compatibility
 "userpage" => "Gwyliwch tudalen defnyddiwr",
 "projectpage" => "Gwyliwch tudalen meta",
 "imagepage" => "Gwyliwch tudalen llun",
@@ -117,17 +190,9 @@
 "lastmodified" => "Pryd cafodd ei newid diwethaf $1.",
 "viewcount" => "Mae'r tudalen hyn wedi cael ei gweld $1 o weithiau.",
 "protectedpage" => "Tudalen amddiffyniol",
-"administrators" => "{{ns:project}}:Gweinyddwyr",
-"sysoptitle" => "Mynediad Sysop yn unig",
-"sysoptext" => "Mae'r peth rydych wedi gofyn amdano dim ond yn bosibl i ddefnyddwyr gyda statws \"sysop\".
-Gwelwch $1.",
-"developertitle" => "Mynediad Datblygwr yn unig",
-"developertext"	=> "Mae'r peth rydych wedi gofyn amdano dim ond yn bosibl i ddefnyddwyr gyda statws \"datblygwr\".
-Gwelwch $1.",
 "nbytes" => "$1 bytes",
 "go" => "Mynd",
 "ok" => "OK",
-"sitesubtitle" => "",
 "retrievedfrom" => "Wedi dod o \"$1\"",
 "newmessageslink" => "Neges(eueon) newydd",
 "editsection" => "golygu",
@@ -234,7 +299,6 @@ Sicrhau rydych chi wedi sillafu'n iawn, neu creuwch accownt newydd gyda'r ffurfl
 Allweddair defnyddwr \"$2\" rwan yw \"$3\". Ddylwch chi mewngofnodi rwan a newid yr allweddair.",
 "noemail" => "Does dim cyfeiriad e-bost wedi cofrestru dros defnyddwr \"$1\".",
 "passwordsent" => "Mae allweddair newydd wedi gael eu ddanfon at y cyfeiriad e-bost cofrestredig am \"$1\". Mewngofnodwch eto, os gwelwch yn dda, ar ol i chi dderbyn yr allweddair.",
-"loginend" => "",
 
 # Edit page toolbar
 "bold_sample" => "Testun cryf",
@@ -347,7 +411,6 @@ gyda braintiau 'sysop' sy'n medru eu olygu. Byddwch yn siwr rydych yn dilyn y
 "badquerytext" => "Roedd yn amhosibl i prosesu'ch gofyniad.
 Mae'n tebygol roedd hyn am achos yr ydych wedi trio chwilio a gair gyda llai na tri llythyrau. Hefyd, wyrach rydych wedi cam-teipio'r gofyniad. Triwch gofyniad arall.",
 "matchtotals" => "Mae'r gofyniad \"$1\" wedi cyfatebu $2 teitlau erthyglau, a'r testun oddiwrth $3 erthyglau.",
-"nogomatch" => "Does dim erthygl gyda'r union teitl hon, yn trio chwiliad testun cyfan. ",
 "titlematches" => "Teitlau erthygl yn cyfateb",
 "notitlematches" => "Does dim teitlau erthygl yn cyfateb",
 "textmatches" => "Testun erthygl yn cyfateb",
@@ -410,21 +473,14 @@ i setio ffafraethau defnyddwr.",
 "changes" => "newidiadau",
 "recentchanges" => "Newidiadau diweddar",
 "recentchangestext" => "Traciwch y newidiadau mor diweddar i'r {{SITENAME}} ac i'r tudalen hon.",
-"rcloaderr" => "Yn llwytho newidiadau diweddar",
 "rcnote" => "Isod yw'r newidiadau <strong>$1</strong> olaf yn y <strong>$2</strong> dyddiau olaf.",
 "rcnotefrom" => "Isod yw'r newidiadau ers <b>$2</b> (dangosir i fynu i <b>$1</b>).",
 "rclistfrom" => "Dangos newidiadau newydd yn dechrau oddiwrth $1",
-"showhideminor" => "$1 golygiadau bach | $2 botiau | $3 defnyddwyr wedi mewngofnodi | $4 patrolled edits",
 "rclinks" => "Dangos y $1 newidiadau olaf yn y $2 dyddiau olaf.",
-"rchide" => "yn ffurf $4; $1 golygiadon bach; $2 llefydd enw eilaidd; $3 golygiadon lluosrif.",
-"rcliu"	=> "; $1 golygiadau gan defnyddwyr wedi mewngofnodi",
 "diff"	=> "gwahan",
 "hist"	=> "hanes",
 "hide"	=> "cuddio",
 "show"	=> "dangos",
-"tableform" => "taflen",
-"listform" => "rhestr",
-"nchanges" => "$1 newidiadau",
 "minoreditletter" => "B",
 "newpageletter" => "N",
 
@@ -432,7 +488,6 @@ i setio ffafraethau defnyddwr.",
 #
 "upload" => "Llwytho ffeil i fynu",
 "uploadbtn" => "Llwytho ffeil i fynu",
-"uploadlink" => "Llwytho lluniau i fynu",
 "reupload" => "Ail-llwytho i fynu",
 "reuploaddesc"	=> "Return to the upload form.",
 "uploadnologin" => "Nid wedi mewngofnodi",
@@ -524,7 +579,6 @@ Sef <b>$5</b> golygiadau pob tudalen, ar gyfartaledd, a <b>$6</b> golygon o bob 
 
 # Miscellaneous special pages
 #
-"orphans" => "Erthyglau heb cysylltiadau",
 "lonelypages" => "Erthyglau heb cysylltiadau",
 "unusedimages"	=> "Lluniau di-defnyddio",
 "popularpages"	=> "Erthyglau poblogol",
@@ -539,10 +593,8 @@ Sef <b>$5</b> golygiadau pob tudalen, ar gyfartaledd, a <b>$6</b> golygon o bob 
 "listusers" => "Rhestr defnyddwyr",
 "specialpages" => "Erthyglau arbennig",
 "spheading" => "Erthyglau arbennig",
-"protectpage" => "Sicrhau erthygl",
 "recentchangeslinked" => "Newidiadau perthnasol",
 "rclsub" => "(i erthyglau cysyllt oddiwrth \"$1\")",
-"debug"	=> "Debug",
 "newpages" => "Erthyglau newydd",
 "ancientpages" => "Erthyglau hynach",
 "intl" => "Cysylltiadau rhwng ieithau",
@@ -577,7 +629,6 @@ i anfon e-bost i ddefnyddwyr eraill.",
 # Watchlist
 #
 "watchlist" => "Fy rhestr gwylio",
-"watchlistsub" => "(am defnyddwr \"$1\")",
 "nowatchlist"  => "Does ganddoch chi ddim eitem ar eich rhestr gwylio.",
 "watchnologin"	=> "Dydych chi ddim wedi mewngofnodi",
 "watchnologintext" => "Rhaid i chi bod wedi [[Special:Userlogin|mewngofnodi]]
@@ -664,8 +715,6 @@ Gwelwch [[{{ns:project}}:Tudalen amddiffynol]] am mwy o wybodaeth.",
 "undeletebtn" => "Adferiwch!",
 "undeletedarticle" => "wedi adferio \"$1\"",
 
-"undeletedtext" => "Mae'r erthygl [[:$1|$1]] wedi cael eu adferio'n llwyddiannus.
-Gwyliwch [[{{ns:project}}:Log_dileuon]] am record dileuon ac adferion diweddar.",
 
 # Contributions
 #
@@ -704,7 +753,6 @@ Llenwch rheswm am y bloc, isod (e.e. enwch y tudalennau a oedd wedi fandalo).",
 "unblockip" => "Di-blociwch cyfeiriad IP",
 "unblockiptext"	=> "Defnyddwch y ffurflen isod i di-blocio mynedfa ysgrifenol i cyfeiriad IP sydd wedi cael eu blocio'n gynt.",
 "ipusubmit" => "Di-blociwch y cyfeiriad hwn",
-"ipusuccess" => "Cyfeiriad IP \"$1\" wedi di-blocio",
 "ipblocklist" => "Rhestr cyfeiriadau IP wedi blocio",
 "blocklistline"	=> "$1, $2 wedi blocio $3 ($4)",
 "blocklink" => "bloc",
@@ -731,8 +779,6 @@ Teipiwch enw'r defnyddiwr yn y blwch a cliciwch y botwm i troi'r defnyddiwr i gw
 "makesysopok" => "<b>Mae defnyddwr '$1' rwan yn gweinyddwr</b>",
 "makesysopfail"	=> "<b>Wedi methu troi defnyddwr '$1' i gweinyddwr. (Ydych chi wedi sillafu'r enw'n iawn?)</b>",
 "setbureaucratflag" => "Gosod y fflag biwrocrat",
-"bureaucratlog"	=> "Log_biwrocrat",
-"bureaucratlogentry" => " gosod $1: $2",
 
 # Move page
 #

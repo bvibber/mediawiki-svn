@@ -1,7 +1,67 @@
 <?php
+/** Persian (فارسی)
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  */
+$quickbarSettings = array(
+	'نباشد', 'ثابت چپ', 'ثابت راست', 'شناور چپ'
+);
 
-global $wgAllMessagesFa;
-$wgAllMessagesFa = array(
+$skinNames = array(
+	'standard' => 'استاندارد',
+	'nostalgia' => 'نوستالژی',
+	'cologneblue' => 'آبی کلون',
+	'smarty' => 'پدینگتون',
+	'montparnasse' => 'مون‌پارناس',
+);
+$namespaceNames = array(
+	NS_MEDIA          => 'مدیا',
+	NS_SPECIAL        => 'ویژه',
+	NS_MAIN	          => '',
+	NS_TALK	          => 'بحث',
+	NS_USER           => 'کاربر',
+	NS_USER_TALK      => 'بحث_کاربر',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'بحث_$1',
+	NS_IMAGE          => 'تصویر',
+	NS_IMAGE_TALK     => 'بحث_تصویر',
+	NS_MEDIAWIKI      => 'مدیاویکی',
+	NS_MEDIAWIKI_TALK	=> 'بحث_مدیاویکی',
+	NS_TEMPLATE       => 'الگو',
+	NS_TEMPLATE_TALK  => 'بحث_الگو',
+	NS_HELP           => 'راهنما',
+	NS_HELP_TALK      => 'بحث_راهنما',
+	NS_CATEGORY       => 'رده',
+	NS_CATEGORY_TALK  => 'بحث_رده'
+);
+
+$digitTransformTable = array(
+	"0" => "۰",
+	"1" => "۱",
+	"2" => "۲",
+	"3" => "۳",
+	"4" => "۴",
+	"5" => "۵",
+	"6" => "۶",
+	"7" => "۷",
+	"8" => "۸",
+	"9" => "۹",
+	"%" => "٪",
+	"." => "٫", // wrong table?
+	"," => "٬"
+);
+
+$rtl = true;
+$defaultUserOptionOverrides = array(
+	# Swap sidebar to right side by default
+	'quickbar' => 2,
+	# Underlines seriously harm legibility. Force off:
+	'underline' => 0,
+);
+$linkTrail = "/^([a-z]+)(.*)\$/sD"; /* This may need to be changed --RP */
+
+$messages = array(
 # User toggles
 
 'tog-underline' => "زیر پیوندها خط کشیده شود",
@@ -58,11 +118,9 @@ $wgAllMessagesFa = array(
 # Bits of text used by many pages:
 #
 'categories' => "رده‌های صفحات",
-'category' => "رده",
 'category_header' => "مقاله‌های رده‌ی «$1»",
 'subcategories' => "زیررده‌ها",
 
-'linktrail'		=> "/^([a-z]+)(.*)\$/sD", /* This may need to be changed --RP */
 'mainpage'		=> "صفحه‌ی اصلی",
 'mainpagetext'	=> "نرم‌افزار ویکی با موفقیت نصب شد.",
 'about'			=> "درباره",
@@ -96,6 +154,7 @@ $wgAllMessagesFa = array(
 'whatlinkshere'	=> "صفحاتی که به اینجا پیوند دارند",
 'help'			=> "راهنما",
 'search'		=> "جستجو شود",
+'searchbutton'	=> "جستجو شود",
 'go'		=> "برود",
 'history'		=> "تاریخچه‌ی صفحه",
 'printableversion' => "نسخه‌ی قابل چاپ",
@@ -107,7 +166,6 @@ $wgAllMessagesFa = array(
 'talkpage'		=> "بحث درباره‌ی این صفحه",
 'postcomment'   => "نوشتن نظر",
 'articlepage'	=> "نمایش مقاله",
-'subjectpage'	=> "نمایش موضوع", # For compatibility
 'userpage' => "نمایش صفحه‌ی کاربر",
 'projectpage' => "نمایش فوق صفحه",
 'imagepage' => 	"نمایش صفحه‌ی تصویر",
@@ -117,13 +175,6 @@ $wgAllMessagesFa = array(
 'lastmodified'	=> "این صفحه آخرین بار در $1 تغییر کرده است.",
 'viewcount'		=> "این صفحه $1 بار دیده شده است.",
 'protectedpage' => "صفحه‌ی محافظت‌شده",
-'administrators' => "{{ns:project}}:مدیران",
-'sysoptitle'	=> "دسترسی اپراتور سیستم لازم است",
-'sysoptext'		=> "عملی را که شما درخواست کرده‌اید فقط کاربران با وضعیت «اپراتور سیستم» می‌توانند انجام دهند.
-به $1 مراجعه کنید.",
-'developertitle' => "دسترسی برنامه‌نویس لازم است",
-'developertext'	=> "عملی را که شما درخواست کرده‌اید فقط می‌تواند توسط کاربران با وضعیت «برنامه‌نویس» انجام شود.
-به $1 مراجعه کنید.",
 'nbytes'		=> "$1 بایت",
 'go'			=> "برو",
 'ok'			=> "باشد",
@@ -243,7 +294,6 @@ cookieها را از کار انداخته‌اید. لطفاً cookieها را 
 'noemail'		=> "هیچ نشانی پست الکترونیکی‌ای برای کاربر «$1» ثبت نشده است.",
 'passwordsent'	=> "یک کلمه‌ی عبور جدید به نشانی الکترونیکی ثبت شده برای کاربر «$1» فرستاده شد.
 لطفاٌ پس از دریافت آن دوباره به سیستم وارد شوید.",
-'loginend'		=> "",
 
 # Edit page toolbar
 'bold_sample'=>"متن سیاه",
@@ -458,21 +508,14 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9",
 'changes' => "تغییرات",
 'recentchanges' => "تغییرات اخیر",
 'recentchangestext' => "آخرین تغییرات ویکی را در این صفحه تعقیب کنید.",
-'rcloaderr'		=> "در حال خواندن تغییرات اخیر",
 'rcnote'		=> "در زیر آخرین <strong>$1</strong> تغییر در <strong>$2</strong> روز اخیر آمده است.",
 'rcnotefrom'	=> "در زیر تغییرات از تاریخ <b>$2</b> آمده‌اند (تا <b>$1</b> مورد نشان داده می‌شود).",
 'rclistfrom'	=> "نمایش تغییرات جدید با شروع از $1",
-'showhideminor'         => "ویرایش‌های جزئی $1 | $2 bots | $3 logged in users | $4 patrolled edits",
 'rclinks'		=> "نمایش آخرین $1 تغییر در $2 روز اخیر؛ $3",
-'rchide'		=> "به شکل $4؛ $1 ویرایش جزئی؛ $2 فضای نام ثانویه؛ $3 ویرایش چندگانه.",
-'rcliu'			=> "؛ $1 ویرایش از کاربران وارد شده به سیستم",
 'diff'			=> "تفاوت",
 'hist'			=> "تاریخچه",
 'hide'			=> "مخفی شود",
 'show'			=> "نمایش یابد",
-'tableform'		=> "جدول",
-'listform'		=> "فهرست",
-'nchanges'		=> "$1 تغییر",
 'minoreditletter' => "جز",
 'newpageletter' => "جد",
 
@@ -480,7 +523,6 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9",
 #
 'upload'		=> "بار کردن پرونده",
 'uploadbtn'		=> "پرونده بار شود",
-'uploadlink'	=> "بار کردن تصاویر",
 'reupload'		=> "بار کردن مجدد",
 'reuploaddesc'	=> "بازگشت به فرم بار کردن",
 'uploadnologin' => "به سیستم وارد نشده‌اید",
@@ -592,8 +634,6 @@ you may be blocked from uploading if you abuse the system.",
 
 # Maintenance Page
 #
-'maintenance'		=> "صفحه‌ی نگهداری",
-'maintenancebacklink'	=> "بازگشت به صفحه‌ی نگهداری",
 'disambiguations'	=> "صفحات رفع ابهام",
 'disambiguationspage'	=> "{{ns:project}}:پیوند به صفحات رفع ابهام",
 'disambiguationstext'	=> "مقاله‌های زیر به یک <i>صفحه‌ی رفع ابهام</i> پیوند دارند. به جای این، این صفحات باید به
@@ -601,19 +641,10 @@ They should link to the appropriate topic instead.<br />A page is treated as dis
 'doubleredirects'	=> "تغییرمسیرهای دوتایی",
 'brokenredirects'	=> "تغییرمسیرهای خراب",
 'brokenredirectstext'	=> "تغییرمسیرهای زیر به یک صفحه‌ی ناموجود پیوند دارند.",
-'selflinks'		=> "صفحات با پیوند به خود",
-'selflinkstext'		=> "این صفحات به خودشان پیوند دارند، که نباید داشته باشند.",
-'mispeelings'           => "صفحات با غلط املایی",
-'mispeelingstext'               => "صفحات زیر یک غلط املایی معمول دارند، که در $1 آمده است. ممکن است املای درست (به این شکل) آمده باشد.",
-'mispeelingspage'       => "فهرست غلط‌های املایی معمول",
-'missinglanguagelinks'  => "پیوندهای زبانی گم‌شده",
-'missinglanguagelinksbutton'    => "یافتن پیوندهای زبانی گم‌شده برای",
-'missinglanguagelinkstext'      => "این مقاله‌ها به همتایشان در $1 پیوند <i>ندارند</i>. Redirects و زیرصفحه‌ها نشان داده <i>نشده‌اند</i>.",
 
 
 # Miscellaneous special pages
 #
-'orphans'		=> "صفحات یتیم",
 'lonelypages'	=> "صفحات یتیم",
 'unusedimages'	=> "تصاویر بلااستفاده",
 'popularpages'	=> "صفحات محبوب",
@@ -628,10 +659,8 @@ They should link to the appropriate topic instead.<br />A page is treated as dis
 'listusers'		=> "فهرست کاربران",
 'specialpages'	=> "صفحات ویژه",
 'spheading'		=> "صفحات ویژه‌ی همه‌ی کاربران",
-'protectpage'	=> "محافظت از صفحه",
 'recentchangeslinked' => "تغییرات مرتبط",
 'rclsub'		=> "(به صفحات پیونددار از «$1»)",
-'debug'			=> "اشکال‌زدایی",
 'newpages'		=> "صفحات جدید",
 'ancientpages'		=> "قدیمی‌ترین مقاله‌ها",
 'intl'		=> "پیوندهای بین زبانی",
@@ -673,7 +702,6 @@ They should link to the appropriate topic instead.<br />A page is treated as dis
 # Watchlist
 #
 'watchlist'			=> "فهرست تعقیبات من",
-'watchlistsub'		=> "(برای کاربر «$1»)",
 'nowatchlist'		=> "در فهرست تعقیبات شما هیچ موردی نیست.",
 'watchnologin'		=> "به سیستم وارد نشده‌اید",
 'watchnologintext'	=> "برای تغییر فهرست تعقیباتتان باید [[ویژه:Userlogin|به سیستم وارد شوید]].",
@@ -759,8 +787,6 @@ by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled bac
 'undeleterevision' => "حذف نسخه‌ی به تاریخ $1",
 'undeletebtn' => "احیا شود!",
 'undeletedarticle' => "«$1» احیا شد",
-'undeletedtext'   => "مقاله‌ی [[:$1|$1]] با موفقیت احیا شد.
-برای سوابق حذف‌ها و احیاهای اخیر به [[{{ns:project}}:سیاهه‌ی_حذف]] مراجعه کنید.",
 
 # Contributions
 #
@@ -801,7 +827,6 @@ by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled bac
 'unblockiptext'	=> "برای باز گرداندن دسترسی نوشتن به یک نشانی IP یا نام کاربری بسته‌شده
 از فرم زیر استفاده کنید.",
 'ipusubmit'		=> "باز کردن این نشانی",
-'ipusuccess'	=> "«$1» باز شد",
 'ipblocklist'	=> "فهرست نشانی‌های IP و نام‌های کاربری بسته‌شده",
 'blocklistline'	=> "$1، $2 بست $3 را ($4)",
 'blocklink'		=> "بسته شود",

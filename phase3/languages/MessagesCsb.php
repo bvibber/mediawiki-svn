@@ -1,13 +1,36 @@
 <?php
+/**
+ * @package MediaWiki
+ * @subpackage Language
+ */
 
-global $wgAllMessagesCsb;
-$wgAllMessagesCsb = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Specjalnô',
+	NS_MAIN             => '',
+	NS_TALK             => 'Diskùsëjô',
+	NS_USER             => 'Brëkòwnik',
+	NS_USER_TALK        => 'Diskùsëjô_brëkòwnika',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Diskùsëjô_$1',
+	NS_IMAGE            => 'Òbrôzk',
+	NS_IMAGE_TALK       => 'Diskùsëjô_òbrôzków',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Diskùsëjô_MediaWiki',
+	NS_TEMPLATE         => 'Szablóna',
+	NS_TEMPLATE_TALK    => 'Diskùsëjô_Szablónë',
+	NS_HELP             => 'Pòmòc',
+	NS_HELP_TALK        => 'Diskùsëjô_Pòmòcë',
+	NS_CATEGORY         => 'Kategòrëjô',
+	NS_CATEGORY_TALK    => 'Diskùsëjô_Kategòrëji'
+);
+
+$messages = array(
 '1movedto2' => '$1 przeniesłé do $2',
 'aboutpage' => '{{ns:4}}:Ò_{{SITENAME}}',
 'aboutsite' => 'Ò {{SITENAME}}',
 'actioncomplete' => 'Òperacëjô wëkònónô',
 'addedwatch' => 'Dodónô do lëstë ùzérónëch',
-'administrators' => '{{ns:4}}:Administratorzë',
 'allmessages' => 'Wszëtczé systemòwé ògłosë',
 'ancientpages' => 'Nôstarszé starnë',
 'and' => 'ë',
@@ -30,7 +53,6 @@ $wgAllMessagesCsb = array(
 'categories' => '{{PLURAL:$1|Kategòrëjô|Kategòrëje}}',
 'categoryarticlecount' => 'W ny kategòrëje je $1 artiklów.',
 'category_header' => 'Artikle w kategòrëji "$1"',
-'category' => 'Kategòrëjô',
 'changepassword' => 'Zmiana parolë',
 'compareselectedversions' => 'Przërównôj wëbróné wersëje',
 'confirmdelete' => 'Pòcwierdzë rëmónié',
@@ -49,7 +71,6 @@ $wgAllMessagesCsb = array(
 'cur' => 'aktualnô',
 'databaseerror' => 'Fela w pòdôwkòwi baze',
 'dateformat' => 'Fòrmat datumù',
-'debug' => 'Òdplëskwianié "(debug-òwónié)"',
 'december-gen' => 'Gòdnika',
 'december' => 'Gòdnik',
 'defaultns' => 'Domëslno przeszëkùjë nôslédné rëmnotë mionów:',
@@ -60,7 +81,6 @@ $wgAllMessagesCsb = array(
 'delete' => 'Rëmôj',
 'deletionlog' => 'register rëmaniów',
 'dellogpage' => 'Rëmóné',
-'developertext' => "Ną òperacëjã mòże wëkònac blós brëkòwnik z prawama\n\"Programista\".\nZdrzë $1.",
 'difference' => '(różnice midzë wersëjama)',
 'disambiguationspage' => '{{ns:4}}:Starnë_ùjednoznacznieniô',
 'disclaimerpage' => '{{ns:4}}:General_disclaimer',
@@ -154,8 +174,6 @@ $wgAllMessagesCsb = array(
 'minlength' => 'Miono òbrôzka brëkùje miec przënomni trzë lëterë.',
 'minoredit' => 'Drobnô edicëjô.',
 'minoreditletter' => 'D',
-'mispeelingspage' => 'Lësta nôczãstszëch pisënkòwich felów',
-'mispeelings' => 'Starnë z felama pisënkù',
 'missingarticle' => 'Programa ni mô nalôzłé tekstu starnë, chtërnô bë mùsza bëc w baze, to je starnë "$1".<p>Colemało mô to plac, czej òstónie wëbróné sparłãczenié\ndo rëmóny starnë, np. stôrszi wersëji jińszi starnë.</p><p>Jińszé leżnosce mògą znaczëc, że w soft-wôrze je fela. W taczim przëtrôfkù prosymë zameldowac nen fakt administratorowi pòdającë hewòtną adresã.',
 'missingimage' => '<b>Felëjący òbrôzk</b><br /><i>$1</i>',
 'moredotdotdot' => 'Wicy...',
@@ -199,7 +217,6 @@ $wgAllMessagesCsb = array(
 'october-gen' => 'Rujana',
 'october' => 'Rujan',
 'ok' => 'Jo!',
-'orphans' => 'Niechóné starnë',
 'othercontribs' => 'Òpiarté na prôcë $1.',
 'pagemovedsub' => 'Przeniesenié darzëło sã',
 'pagemovedtext' => 'Starna "[[$1]]" òsta przeniesłô do "[[$2]]".',
@@ -219,14 +236,12 @@ $wgAllMessagesCsb = array(
 'protectcomment' => 'Przëczëna zazychrowóniô',
 'protectedarticle' => 'zazychrowónô [[$1]]',
 'protectedpage' => 'Starna je zazychrowónô',
-'protectpage' => 'Zazychrëjë starnã',
 'protect' => 'Zazychrëjë',
 'proxyblocksuccess' => 'Fertich.',
 'qbfind' => 'Nalézë',
 'qbmyoptions' => 'Mòje òptacëje',
 'qbspecialpages' => 'Specjalné starnë',
 'randompage' => 'Kawlowô starna',
-'rcloaderr' => 'Ladëjë slédné edicëje',
 'readonly' => 'Baza pòdôwków je zablokòwónô',
 'readonlywarning' => 'BÔCZËNK: Pòdôwkòwô baza òsta sztërkòwô zablokòwónô dlô administracëjnëch célów. Nie mòże tej timczasã zapisac nowi wersëje artikla. Bédëjemë przeniesc ji tekst do priwatnégò lopka
 (wëtnij/wstôw) ë zachòwac na pózni.',
@@ -246,6 +261,7 @@ $wgAllMessagesCsb = array(
 'savearticle' => 'Zapiszë artikel',
 'savefile' => 'Zapiszë lôpk',
 'search' => 'Szëkba',
+'searchbutton' => 'Szëkba',
 'september-gen' => 'Séwnika',
 'september' => 'Séwnik',
 'servertime' => 'Aktualny czas serwera',
@@ -277,7 +293,6 @@ $wgAllMessagesCsb = array(
 'uploaddisabled' => 'Przeprôszómë! Mòżlëwòta wladënkù lopków na nen serwer òsta wëłączonô.',
 'uploadedfiles' => 'Wladowóné lopczi',
 'uploadedimage' => 'wladënk: "$1"',
-'uploadlink' => 'Wladëjë lënk',
 'uploadlog' => 'Lësta wladënków',
 'uploadlogpage' => 'Dołączoné',
 'uploadlogpagetext' => 'Hewò je lësta slédno wladowónëch lopków.\nWszëtczé gòdzënë tikają conë ùniwersalnégò czasë (UTC).\n<ul>\n</ul>',
@@ -292,7 +307,6 @@ $wgAllMessagesCsb = array(
 'wantedpages' => 'Nônótniészé starnë',
 'watchlistcontains' => 'Wielëna artiklów na Twòji lësce ùzérónëch: $1.',
 'watchlist' => 'Lësta ùzérónëch artiklów',
-'watchlistsub' => '(dlô brëkòwnika "$1")',
 'watchmethod-list' => 'szëkba ùzérónëch artiklów westrzód pòslédnëch edicëjów',
 'watchnologin' => 'Felënk logòwóniô',
 'watchthispage' => 'Ùzérôj ną starnã',

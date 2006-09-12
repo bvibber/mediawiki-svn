@@ -1,7 +1,32 @@
 <?php
+/** Kurdish (Kurdî / كوردي)
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  */
 
-global $wgAllMessagesKu;
-$wgAllMessagesKu = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'Medya',
+	NS_SPECIAL          => 'Taybet',
+	NS_MAIN             => '',
+	NS_TALK             => 'Nîqaş',
+	NS_USER             => 'Bikarhêner',
+	NS_USER_TALK        => 'Bikarhêner_nîqaş',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_nîqaş',
+	NS_IMAGE            => 'Wêne',
+	NS_IMAGE_TALK       => 'Wêne_nîqaş',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_nîqaş',
+	NS_TEMPLATE         => 'Şablon',
+	NS_TEMPLATE_TALK    => 'Şablon_nîqaş',
+	NS_HELP             => 'Alîkarî',
+	NS_HELP_TALK        => 'Alîkarî_nîqaş',
+	NS_CATEGORY         => 'Kategorî',
+	NS_CATEGORY_TALK    => 'Kategorî_nîqaş'
+);
+
+$messages = array(
 'skinpreview'           => '(Pêşdîtin)',
 'sunday'                => 'yekşem',
 'monday'                => 'duşem',
@@ -35,7 +60,6 @@ $wgAllMessagesKu = array(
 'nov'                   => 'ser',
 'dec'                   => 'ber',
 'categories'            => '{{PLURAL:$1|Kategorî|Kategorî}}',
-'category'              => 'kategorî',
 'category_header'       => 'Gotarên di kategoriya "$1" de',
 'subcategories'         => 'Binkategorî',
 'mainpage'              => 'Destpêk',
@@ -73,6 +97,7 @@ $wgAllMessagesKu = array(
 'returnto'              => 'Bizivire $1.',
 'tagline'               => 'Ji {{SITENAME}}',
 'search'                => 'Lêbigere',
+'searchbutton'          => 'Lêbigere',
 'go'                    => 'Gotar',
 'history'               => 'Dîroka rûpelê',
 'history_short'         => 'Dîrok',
@@ -104,9 +129,6 @@ $wgAllMessagesKu = array(
 'viewcount'             => 'Ev rûpel $1 car hat xwestin.',
 'copyright'             => 'Ji bo naverokê $1 derbas dibe.',
 'protectedpage'         => 'Rûpela parastî',
-'administrators'        => 'Project:Koordînasyon',
-'sysoptext'             => 'Çalakiya ku te xwest bi tenê bikarhêneran bi mafên "sysop" dikarin çêkin. 
-Binêre $1.',
 'badaccess'             => 'Eror li bi dest Hînan',
 'ok'                    => 'Temam',
 'retrievedfrom'         => 'Ji "$1" hatiye standin.',

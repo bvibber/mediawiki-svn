@@ -1,7 +1,35 @@
 <?php
 
-global $wgAllMessagesCv;
-$wgAllMessagesCv = array(
+/**
+ * Chuvash stub localization; default to Russian instead of English.
+ */
+$fallback = 'ru';
+$linkPrefixExtension = true;
+
+$namespaceNames = array(
+	NS_MEDIA            => 'Медиа',
+	NS_SPECIAL          => 'Ятарлă',
+	NS_MAIN             => '',
+	NS_TALK             => 'Сӳтсе явасси',
+	NS_USER             => 'Хутшăнакан',
+	NS_USER_TALK        => 'Хутшăнаканăн_канашлу_страници',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_сӳтсе_явмалли',
+	NS_IMAGE            => 'Ӳкерчĕк',
+	NS_IMAGE_TALK       => 'Ӳкерчĕке_сӳтсе_явмалли',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_сӳтсе_явмалли',
+	NS_TEMPLATE         => 'Шаблон',
+	NS_TEMPLATE_TALK    => 'Шаблона_сӳтсе_явмалли',
+	NS_HELP             => 'Пулăшу',
+	NS_HELP_TALK        => 'Пулăшăва_сӳтсе_явмалли',
+	NS_CATEGORY         => 'Категори',
+	NS_CATEGORY_TALK    => 'Категорине_сӳтсе_явмалли',
+);
+
+$linkTrail = '/^([a-zа-яĕçăӳ"»]+)(.*)$/sDu';
+
+$messages = array(
 
 'Monobook.js' => '/* tooltips and access keys */
 var ta = new Object();
@@ -72,7 +100,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');',
 'hide' => 'кăтартмалла мар',
 'and' => 'тата',
 'qbspecialpages' => 'Ятарлӑ страницӑсем',
-'showhideminor' => 'кăштах кăна тунă тӳрлетӳсене $1 | ботсене $2  | системăра палăртăннă пользовательсене $3 | тěрěсленě тӳрлетӳсене $4',
 'helppage' => '{{ns:project}}:Пулăшу',
 'uploaddisabled' => 'Каçарăр та сайта халĕ нимĕн те кĕртме юрамаст.',
 'next' => 'тепěр',
@@ -109,7 +136,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');',
 'edithelppage' => '{{ns:project}}:Улшăнусене кĕртме пулăшакан пулăшу',
 'unblocklogentry' => '«$1» блокировкăран кăларнă',
 'rclinks' => 'Юлашки $2 кун хушшинче тунă $1 улшăнусене кăтартмалла<br />$3',
-'linktrail' => '/^([a-zа-яĕçăӳ"»]+)(.*)$/sDu',
 'delete_and_move' => 'Кăларса пăрахса куçарасси',
 '1movedto2' => '$1 $2 çине куçарнă',
 'mainpage' => 'Тĕп страницă',
@@ -152,7 +178,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');',
 'minoredit' => 'Кунта пěчěк улшăнусем кăна кěртнě',
 'aug' => 'Çур',
 'upload' => 'Файла кĕртесси',
-'sysoptitle' => 'Кун валли администратор прависем кирлě',
 'ilsubmit' => 'Шырамалла',
 'linkprefix' => '/^(.*?)([a-zA-Z\x80-\xff«"]+)$/sD',
 'spheading' => 'Пěтěм пользовательсем валли ятарлă страницăсем',
@@ -168,7 +193,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');',
 'apr' => 'Ака',
 'newpageletter' => 'Ç',
 'notargettitle' => 'Тĕллевне кăтартман',
-'category' => 'Категори',
 'history' => 'Истори',
 'editthispage' => 'Страницăна тӳрлетесси',
 'uctop' => ' (пуçламăш)',
@@ -193,7 +217,6 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');',
 'march' => 'Пуш',
 'linklistsub' => '(ссылкăсен списокĕ)',
 'undeletedrevisions' => '$1 кăларса пăрахнă тӳрлетӳсене каялла тавăрнă',
-'undelete_short1' => 'Пĕр тӳрлетĕве каялла тавăр',
 'tooltip-search' => 'Шырав [alt-f]',
 'may_long' => 'Çу',
 'rclistfrom' => 'Юлашки улшăнусене $1 вăхăтран пуçласа кăтартнă',
@@ -204,6 +227,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');',
 'numedits' => 'Улшăнусен шучĕ (статьясем): $1',
 'tooltip-save' => 'Тӳрлетӳсене астуса хăвармалла [alt-s]',
 'search' => 'Шырасси',
+'searchbutton' => 'Шырасси',
 'jul' => 'Утă',
 'showingresults' => 'Аяларах эсир <b>#$2</b> пуçласа кăтартнă <b>$1</b> йĕркене куратăр.',
 'rollback_short' => 'Каялла куçарасси',

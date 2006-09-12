@@ -31,18 +31,57 @@ require_once( 'Export.php' );
 function wfSpecialExport( $page = '' ) {
 	global $wgOut, $wgRequest, $wgExportAllowListContributors;
 	global $wgExportAllowHistory, $wgExportMaxHistory;
+	$maxLimit = 200;
 
 	$curonly = true;
-	if( $wgRequest->getVal( 'action' ) == 'submit') {
+	$fullHistory = array(
+		'dir' => 'asc',
+		'offset' => false,
+		'limit' => $maxLimit,
+	);
+	if( $wgRequest->wasPosted() ) {
 		$page = $wgRequest->getText( 'pages' );
 		$curonly = $wgRequest->getCheck( 'curonly' );
-	}
-	if( $wgRequest->getCheck( 'history' ) ) {
-		$curonly = false;
+		$rawOffset = $wgRequest->getVal( 'offset' );
+		if( $rawOffset ) {
+			$offset = wfTimestamp( TS_MW, $rawOffset );
+		} else {
+			$offset = null;
+		}
+		$limit = $wgRequest->getInt( 'limit' );
+		$dir = $wgRequest->getVal( 'dir' );
+		$history = array(
+			'dir' => 'asc',
+			'offset' => false,
+			'limit' => $maxLimit,
+		);
+		$historyCheck = $wgRequest->getCheck( 'history' );
+		if ( $curonly ) {
+			$history = MW_EXPORT_CURRENT;
+		} elseif ( !$historyCheck ) {
+			if ( $limit > 0 && $limit < $maxLimit ) {
+				$history['limit'] = $limit;
+			}
+			if ( !is_null( $offset ) ) {
+				$history['offset'] = $offset;
+			}
+			if ( strtolower( $dir ) == 'desc' ) {
+				$history['dir'] = 'desc';
+			}
+		}
+	} else {
+		// Default to current-only for GET requests
+		$page = $wgRequest->getText( 'pages', $page );
+		$historyCheck = $wgRequest->getCheck( 'history' );
+		if( $historyCheck ) {
+			$history = MW_EXPORT_FULL;
+		} else {
+			$history = MW_EXPORT_CURRENT;
+		}
 	}
 	if( !$wgExportAllowHistory ) {
 		// Override
-		$curonly = true;
+		$history = MW_EXPORT_CURRENT;
 	}
 	
 	$list_authors = $wgRequest->getCheck( 'listauthors' );
@@ -63,7 +102,6 @@ function wfSpecialExport( $page = '' ) {
 		$pages = explode( "\n", $page );
 
 		$db =& wfGetDB( DB_SLAVE );
-		$history = $curonly ? MW_EXPORT_CURRENT : MW_EXPORT_FULL;
 		$exporter = new WikiExporter( $db, $history );
 		$exporter->list_authors = $list_authors ;
 		$exporter->openStream();

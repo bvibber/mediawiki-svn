@@ -28,6 +28,7 @@
 	'bm' => 'Bamanankan',	# Bambara
 	'bn' => 'বাংলা',	# Bengali
 	'bo' => 'བོད་ཡིག',	# Tibetan
+	'bpy' => 'ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী',	# Bishnupriya Manipuri
 	'br' => 'Brezhoneg',	# Breton
 	'bs' => 'Bosanski',		# Bosnian
 	'bug' => 'ᨅᨔ ᨕᨘᨁᨗ',	# Buginese
@@ -103,6 +104,9 @@
 	'ki' => 'Gĩkũyũ',	# Kikuyu, correctness not guaranteed
 	'kj' => 'Kuanyama',		# Kuanyama (FIXME!)
 	'kk' => 'Қазақша',	# Kazakh
+	'kk-cn' => 'قازاق',	# Kazakh Arabic
+	'kk-kz' => 'Қазақ',	# Kazakh Cyrillic
+	'kk-tr' => 'Qazaq',	# Kazakh Latin
 	'kl' => 'Kalaallisut',	# Greenlandic
 	'km' => 'ភាសាខ្មែរ',	# Cambodian
 	'kn' => 'ಕನ್ನಡ',	# Kannada

@@ -1,7 +1,191 @@
 <?php
+/**
+ * Hebrew (עברית)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ *
+ * @author Rotem Dan (July 2003)
+ * @author Rotem Liss (March 2006 on)
+ */
 
-global $wgAllMessagesHe;
-$wgAllMessagesHe = array(
+$rtl = true;
+$defaultUserOptionOverrides = array(
+	# Swap sidebar to right side by default
+	'quickbar' => 2,
+);
+$linkTrail = '/^([a-zא-ת]+)(.*)$/sDu';
+$fallback8bitEncoding = "windows-1255";
+
+$skinNames = array(
+	"standard"    => "רגיל",
+	"nostalgia"   => "נוסטלגי",
+	"cologneblue" => "מים כחולים",
+	"davinci"     => "דה־וינצ'י",
+	"simple"      => "פשוט",
+	"mono"        => "מונו",
+	"monobook"    => "מונובוק",
+	"myskin"      => "הרקע שלי",
+	"chick"       => "צ'יק"
+);
+
+$quickbarSettings = array(
+	"ללא", "קבוע משמאל", "קבוע מימין", "צף משמאל", "צף מימין"
+);
+
+$dateFormats = array(
+	'mdy time' => 'H:i',
+	'mdy date' => 'xg j, Y',
+	'mdy both' => 'H:i, xg j, Y',
+
+	'dmy time' => 'H:i',
+	'dmy date' => 'j xg Y',
+	'dmy both' => 'H:i, j xg Y',
+
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y xg j',
+	'ymd both' => 'H:i, Y xg j',
+
+	'ISO 8601 time' => 'xnH:xni:xns',
+	'ISO 8601 date' => 'xnY-xnm-xnd',
+	'ISO 8601 both' => 'xnY-xnm-xnd"T"xnH:xni:xns',
+);
+
+$bookstoreList = array(
+	"מיתוס"          => "http://www.mitos.co.il/",
+	"iBooks"         => "http://www.ibooks.co.il/",
+	"Barnes & Noble" => "http://search.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=\$1",
+	"Amazon.com"     => "http://www.amazon.com/exec/obidos/ISBN=\$1"
+);
+
+$magicWords = array(
+	'redirect'              => array( 0,    '#הפניה',                                  '#REDIRECT'              ),
+	'notoc'                 => array( 0,    '__ללא_תוכן_עניינים__', '__ללא_תוכן__',    '__NOTOC__'              ),
+	'nogallery'             => array( 0,    '__ללא_גלריה__',                          '__NOGALLERY__'          ),
+	'forcetoc'              => array( 0,    '__חייב_תוכן_עניינים__', '__חייב_תוכן__',   '__FORCETOC__'           ),
+	'toc'                   => array( 0,    '__תוכן_עניינים__', '__תוכן__',             '__TOC__'                ),
+	'noeditsection'         => array( 0,    '__ללא_עריכה__',                           '__NOEDITSECTION__'      ),
+	'start'                 => array( 0,    '__התחלה__',                               '__START__'              ),
+	'currentmonth'          => array( 1,    'חודש נוכחי',                               'CURRENTMONTH'           ),
+	'currentmonthname'      => array( 1,    'שם חודש נוכחי',                            'CURRENTMONTHNAME'       ),
+	'currentmonthnamegen'   => array( 1,    'שם חודש נוכחי קניין',                      'CURRENTMONTHNAMEGEN'    ),
+	'currentmonthabbrev'    => array( 1,    'קיצור חודש נוכחי',                         'CURRENTMONTHABBREV'     ),
+	'currentday'            => array( 1,    'יום נוכחי',                                'CURRENTDAY'             ),
+	'currentday2'           => array( 1,    'יום נוכחי 2',                              'CURRENTDAY2'            ),
+	'currentdayname'        => array( 1,    'שם יום נוכחי',                             'CURRENTDAYNAME'         ),
+	'currentyear'           => array( 1,    'שנה נוכחית',                               'CURRENTYEAR'            ),
+	'currenttime'           => array( 1,    'שעה נוכחית',                               'CURRENTTIME'            ),
+	'currenthour'           => array( 1,    'שעות נוכחיות',                             'CURRENTHOUR'            ),
+	'localmonth'            => array( 1,    'חודש מקומי',                               'LOCALMONTH'             ),
+	'localmonthname'        => array( 1,    'שם חודש מקומי',                            'LOCALMONTHNAME'         ),
+	'localmonthnamegen'     => array( 1,    'שם חודש מקומי קניין',                      'LOCALMONTHNAMEGEN'      ),
+	'localmonthabbrev'      => array( 1,    'קיצור חודש מקומי',                         'LOCALMONTHABBREV'       ),
+	'localday'              => array( 1,    'יום מקומי',                                'LOCALDAY'               ),
+	'localday2'             => array( 1,    'יום מקומי 2',                              'LOCALDAY2'              ),
+	'localdayname'          => array( 1,    'שם יום מקומי',                             'LOCALDAYNAME'           ),
+	'localyear'             => array( 1,    'שנה מקומית',                               'LOCALYEAR'              ),
+	'localtime'             => array( 1,    'שעה מקומית',                               'LOCALTIME'              ),
+	'localhour'             => array( 1,    'שעות מקומיות',                             'LOCALHOUR'              ),
+	'numberofpages'         => array( 1,    'מספר דפים כולל', 'מספר דפים',             'NUMBEROFPAGES'          ),
+	'numberofarticles'      => array( 1,    'מספר ערכים',                              'NUMBEROFARTICLES'       ),
+	'numberoffiles'         => array( 1,    'מספר קבצים',                              'NUMBEROFFILES'          ),
+	'numberofusers'         => array( 1,    'מספר משתמשים',                            'NUMBEROFUSERS'          ),
+	'pagename'              => array( 1,    'שם הדף',                                  'PAGENAME'               ),
+	'pagenamee'             => array( 1,    'שם הדף מקודד',                            'PAGENAMEE'              ),
+	'namespace'             => array( 1,    'מרחב השם',                                'NAMESPACE'              ),
+	'namespacee'            => array( 1,    'מרחב השם מקודד',                          'NAMESPACEE'             ),
+	'talkspace'             => array( 1,    'מרחב השיחה',                              'TALKSPACE'              ),
+	'talkspacee'            => array( 1,    'מרחב השיחה מקודד',                        'TALKSPACEE'              ),
+	'subjectspace'          => array( 1,    'מרחב הנושא', 'מרחב הערכים',              'SUBJECTSPACE', 'ARTICLESPACE' ),
+	'subjectspacee'         => array( 1,    'מרחב הנושא מקודד', 'מרחב הערכים מקודד',  'SUBJECTSPACEE', 'ARTICLESPACEE' ),
+	'fullpagename'          => array( 1,    'שם הדף המלא',                            'FULLPAGENAME'           ),
+	'fullpagenamee'         => array( 1,    'שם הדף המלא מקודד',                      'FULLPAGENAMEE'          ),
+	'subpagename'           => array( 1,    'שם דף המשנה',                            'SUBPAGENAME'            ),
+	'subpagenamee'          => array( 1,    'שם דף המשנה מקודד',                      'SUBPAGENAMEE'           ),
+	'basepagename'          => array( 1,    'שם דף הבסיס',                            'BASEPAGENAME'           ),
+	'basepagenamee'         => array( 1,    'שם דף הבסיס מקודד',                      'BASEPAGENAMEE'          ),
+	'talkpagename'          => array( 1,    'שם דף השיחה',                            'TALKPAGENAME'           ),
+	'talkpagenamee'         => array( 1,    'שם דף השיחה מקודד',                      'TALKPAGENAMEE'          ),
+	'subjectpagename'       => array( 1,    'שם דף הנושא', 'שם הערך',                 'SUBJECTPAGENAME', 'ARTICLEPAGENAME' ),
+	'subjectpagenamee'      => array( 1,    'שם דף הנושא מקודד', 'שם הערך מקודד',     'SUBJECTPAGENAMEE', 'ARTICLEPAGENAMEE' ),
+	'msg'                   => array( 0,    'הכללה:',                                'MSG:'                   ),
+	'subst'                 => array( 0,    'ס:',                                    'SUBST:'                 ),
+	'msgnw'                 => array( 0,    'הכללת מקור',                            'MSGNW:'                 ),
+	'end'                   => array( 0,    '__סוף__',                               '__END__'                ),
+	'img_thumbnail'         => array( 1,    'ממוזער',                                'thumbnail', 'thumb'     ),
+	'img_manualthumb'       => array( 1,    'ממוזער=$1',                             'thumbnail=$1', 'thumb=$1'),
+	'img_right'             => array( 1,    'ימין',                                  'right'                  ),
+	'img_left'              => array( 1,    'שמאל',                                 'left'                   ),
+	'img_none'              => array( 1,    'ללא',                                  'none'                   ),
+	'img_width'             => array( 1,    '$1px',                                 '$1px'                   ),
+	'img_center'            => array( 1,    'מרכז',                                 'center', 'centre'       ),
+	'img_framed'            => array( 1,    'ממוסגר', 'מסגרת',                      'framed', 'enframed', 'frame' ),
+	'img_page'              => array( 1,    'דף=$1', 'דף $1',                       'page=$1', 'page $1'     ),
+	'int'                   => array( 0,    'הודעה:',                               'INT:'                   ),
+	'sitename'              => array( 1,    'שם האתר',                              'SITENAME'               ),
+	'ns'                    => array( 0,    'מרחב שם:',                             'NS:'                    ),
+	'localurl'              => array( 0,    'כתובת יחסית:',                         'LOCALURL:'              ),
+	'localurle'             => array( 0,    'כתובת יחסית מקודד:',                   'LOCALURLE:'             ),
+	'server'                => array( 0,    'כתובת השרת', 'שרת',                    'SERVER'                 ),
+	'servername'            => array( 0,    'שם השרת',                              'SERVERNAME'             ),
+	'scriptpath'            => array( 0,    'נתיב הקבצים',                          'SCRIPTPATH'             ),
+	'grammar'               => array( 0,    'דקדוק:',                               'GRAMMAR:'               ),
+	'notitleconvert'        => array( 0,    '__ללא_המרת_כותרת__',                  '__NOTITLECONVERT__', '__NOTC__'),
+	'nocontentconvert'      => array( 0,    '__ללא_המרת_תוכן__',                   '__NOCONTENTCONVERT__', '__NOCC__'),
+	'currentweek'           => array( 1,    'שבוע נוכחי',                           'CURRENTWEEK'            ),
+	'currentdow'            => array( 1,    'מספר יום נוכחי',                       'CURRENTDOW'             ),
+	'localweek'             => array( 1,    'שבוע מקומי',                           'LOCALWEEK'              ),
+	'localdow'              => array( 1,    'מספר יום מקומי',                       'LOCALDOW'               ),
+	'revisionid'            => array( 1,    'מזהה גרסה',                            'REVISIONID'             ),
+	'plural'                => array( 0,    'רבים:',                                'PLURAL:'                ),
+	'fullurl'               => array( 0,    'כתובת מלאה:',                          'FULLURL:'               ),
+	'fullurle'              => array( 0,    'כתובת מלאה מקודד:',                    'FULLURLE:'              ),
+	'lcfirst'               => array( 0,    'אות ראשונה קטנה:',                     'LCFIRST:'               ),
+	'ucfirst'               => array( 0,    'אות ראשונה גדולה:',                    'UCFIRST:'               ),
+	'lc'                    => array( 0,    'אותיות קטנות:',                        'LC:'                    ),
+	'uc'                    => array( 0,    'אותיות גדולות:',                       'UC:'                    ),
+	'raw'                   => array( 0,    'ללא עיבוד:',                          'RAW:'                   ),
+	'displaytitle'          => array( 1,    'כותרת תצוגה',                         'DISPLAYTITLE'           ),
+	'rawsuffix'             => array( 1,    'ללא פסיק',                            'R'                      ),
+	'newsectionlink'        => array( 1,    '__יצירת_הערה__',                      '__NEWSECTIONLINK__'     ),
+	'currentversion'        => array( 1,    'גרסה נוכחית',                         'CURRENTVERSION'         ),
+	'urlencode'             => array( 0,    'נתיב מקודד:',                         'URLENCODE:'             ),
+	'anchorencode'          => array( 0,    'עוגן מקודד:',                         'ANCHORENCODE'           ),
+	'currenttimestamp'      => array( 1,    'זמן נוכחי',                           'CURRENTTIMESTAMP'       ),
+	'localtimestamp'        => array( 1,    'זמן מקומי',                           'LOCALTIMESTAMP'         ),
+	'directionmark'         => array( 1,    'סימן כיווניות',                       'DIRECTIONMARK', 'DIRMARK' ),
+	'language'              => array( 0,    '#שפה:',                              '#LANGUAGE:'             ),
+	'contentlanguage'       => array( 1,    'שפת תוכן',                           'CONTENTLANGUAGE', 'CONTENTLANG' ),
+	'pagesinnamespace'      => array( 1,    'דפים במרחב השם:',                   'PAGESINNAMESPACE:', 'PAGESINNS:' ),
+	'numberofadmins'        => array( 1,    'מספר מפעילים',                      'NUMBEROFADMINS'         ),
+	'formatnum'             => array( 0,    'עיצוב מספר',                        'FORMATNUM'              ),
+	'padleft'               => array( 0,    'ריפוד משמאל',                       'PADLEFT'                ),
+	'padright'              => array( 0,    'ריפוד מימין',                       'PADRIGHT'               ),
+);
+
+$namespaceNames = array(
+	NS_MEDIA          => "מדיה",
+	NS_SPECIAL        => "מיוחד",
+	NS_MAIN           => "",
+	NS_TALK           => "שיחה",
+	NS_USER           => "משתמש",
+	NS_USER_TALK      => "שיחת_משתמש",
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => "שיחת_$1",
+	NS_IMAGE          => "תמונה",
+	NS_IMAGE_TALK     => "שיחת_תמונה",
+	NS_MEDIAWIKI      => "מדיה_ויקי",
+	NS_MEDIAWIKI_TALK => "שיחת_מדיה_ויקי",
+	NS_TEMPLATE       => "תבנית",
+	NS_TEMPLATE_TALK  => "שיחת_תבנית",
+	NS_HELP           => "עזרה",
+	NS_HELP_TALK      => "שיחת_עזרה",
+	NS_CATEGORY       => "קטגוריה",
+	NS_CATEGORY_TALK  => "שיחת_קטגוריה",
+);
+
+
+$messages = array(
 
 # User preference toggles
 "tog-underline"               => "סמן קישורים בקו תחתי",
@@ -46,41 +230,59 @@ $wgAllMessagesHe = array(
 "skinpreview" => "(תצוגה מקדימה)",
 
 # Dates
-"sunday"    => "ראשון",
-"monday"    => "שני",
-"tuesday"   => "שלישי",
-"wednesday" => "רביעי",
-"thursday"  => "חמישי",
-"friday"    => "שישי",
-"saturday"  => "שבת",
-"january"   => "ינואר",
-"february"  => "פברואר",
-"march"     => "מרץ",
-"april"     => "אפריל",
-"may_long"  => "מאי",
-"june"      => "יוני",
-"july"      => "יולי",
-"august"    => "אוגוסט",
-"september" => "ספטמבר",
-"october"   => "אוקטובר",
-"november"  => "נובמבר",
-"december"  => "דצמבר",
-"jan"       => "ינו'",
-"feb"       => "פבר'",
-"mar"       => "מרץ",
-"apr"       => "אפר'",
-"may"       => "מאי",
-"jun"       => "יוני",
-"jul"       => "יולי",
-"aug"       => "אוג'",
-"sep"       => "ספט'",
-"oct"       => "אוק'",
-"nov"       => "נוב'",
-"dec"       => "דצמ'",
+"sunday"        => "ראשון",
+"monday"        => "שני",
+"tuesday"       => "שלישי",
+"wednesday"     => "רביעי",
+"thursday"      => "חמישי",
+"friday"        => "שישי",
+"saturday"      => "שבת",
+"sun"           => "ראש'",
+"mon"           => "שני",
+"tue"           => "שלי'",
+"wed"           => "רבי'",
+"thu"           => "חמי'",
+"fri"           => "שיש'",
+"sat"           => "שבת",
+"january"       => "ינואר",
+"february"      => "פברואר",
+"march"         => "מרץ",
+"april"         => "אפריל",
+"may_long"      => "מאי",
+"june"          => "יוני",
+"july"          => "יולי",
+"august"        => "אוגוסט",
+"september"     => "ספטמבר",
+"october"       => "אוקטובר",
+"november"      => "נובמבר",
+"december"      => "דצמבר",
+"january-gen"   => "בינואר",
+"february-gen"  => "בפברואר",
+"march-gen"     => "במרץ",
+"april-gen"     => "באפריל",
+"may-gen"       => "במאי",
+"june-gen"      => "ביוני",
+"july-gen"      => "ביולי",
+"august-gen"    => "באוגוסט",
+"september-gen" => "בספטמבר",
+"october-gen"   => "באוקטובר",
+"november-gen"  => "בנובמבר",
+"december-gen"  => "בדצמבר",
+"jan"           => "ינו'",
+"feb"           => "פבר'",
+"mar"           => "מרץ",
+"apr"           => "אפר'",
+"may"           => "מאי",
+"jun"           => "יוני",
+"jul"           => "יולי",
+"aug"           => "אוג'",
+"sep"           => "ספט'",
+"oct"           => "אוק'",
+"nov"           => "נוב'",
+"dec"           => "דצמ'",
 
 # Bits of text used by many pages
 "categories"      => "{{plural:$1|קטגוריה|קטגוריות}}",
-"category"        => "קטגוריה",
 "category_header" => 'דפים בקטגוריה "$1"',
 "subcategories"   => "קטגוריות משנה",
 
@@ -139,6 +341,7 @@ $wgAllMessagesHe = array(
 "tagline"           => "מתוך {{SITENAME}}",
 "help"              => "עזרה",
 "search"            => "חיפוש",
+"searchbutton"      => "חיפוש",
 "go"                => "עבור",
 "history"           => "היסטוריית הדף",
 "history_short"     => "היסטוריה",
@@ -161,14 +364,17 @@ $wgAllMessagesHe = array(
 "specialpage"       => "דף מיוחד",
 "personaltools"     => "כלים אישיים",
 "postcomment"       => "הוסף הערה לדף השיחה",
-"articlepage"       => "צפו בדף",
-"subjectpage"       => "צפו בנושא", # For compatibility
+"articlepage"       => "צפו בדף התוכן",
 "talk"              => "שיחה",
 "views"             => "צפיות",
 "toolbox"           => "תיבת כלים",
 "userpage"          => "צפו בדף המשתמש",
 "projectpage"       => "צפו בדף המיזם",
-"imagepage"         => "צפה בדף התמונה",
+"imagepage"         => "צפו בדף התמונה",
+"mediawikipage"     => "צפו בדף ההודעה",
+"templatepage"      => "צפו בדף התבנית",
+"viewhelppage"      => "צפו בדף העזרה",
+"categorypage"      => "צפו בדף הקטגוריה",
 "viewtalkpage"      => "צפו בדף השיחה",
 "otherlanguages"    => "שפות אחרות",
 "redirectedfrom"    => "(הופנה מהדף $1)",
@@ -178,20 +384,15 @@ $wgAllMessagesHe = array(
 "viewcount"         => "דף זה נצפה {{plural:$1|פעם אחת|$1 פעמים|פעמיים}}.",
 "copyright"         => "התוכן מוגש בכפוף ל־$1.<br /> בעלי זכויות היוצרים מפורטים בהיסטוריית השינויים של הדף.",
 "protectedpage"     => "דף מוגן",
-"administrators"    => "{{ns:project}}:מפעיל מערכת",
 "jumpto"            => "קפיצה אל:",
 "jumptonavigation"  => "ניווט",
 "jumptosearch"      => "חיפוש",
 
-"sysoptitle"     => "דרושה הרשאת מפעיל מערכת",
-"sysoptext"      => "כדי לבצע פעולה זו דרושת הרשאת מפעיל מערכת. ראו $1.",
-"developertitle" => "דרושה הרשאת מפתח",
-"developertext"  => "כדי לבצע פעולה זו דרושת הרשאת מפתח, ראו $1.",
-
-"badaccess"     => "תקלה בהרשאות",
-"badaccesstext" => 'הפעולה שביקשתם לבצע מוגבלת למשתמשים עם הרשאת "$2".
-
-למידע נוסף, ראו $1.',
+"badaccess"        => "שגיאה בהרשאות",
+"badaccess-group0" => "אינכם מורשים לבצע את הפעולה שביקשתם.",
+"badaccess-group1" => "הפעולה שביקשתם לבצע מוגבלת למשתמשים בקבוצה $1.",
+"badaccess-group2" => "הפעולה שביקשתם לבצע מוגבלת למשתמשים באחת הקבוצות $1.",
+"badaccess-groups" => "הפעולה שביקשתם לבצע מוגבלת למשתמשים באחת הקבוצות $1.",
 
 "versionrequired"     => "נדרשת גרסה $1 של מדיה־ויקי",
 "versionrequiredtext" => 'גרסה $1 של מדיה־ויקי נדרשת לשימוש בדף זה.
@@ -205,7 +406,7 @@ $wgAllMessagesHe = array(
 "newmessageslink"     => "הודעות חדשות",
 "newmessagesdifflink" => "השוואה לגרסה הקודמת",
 "editsection"         => "עריכה",
-"editold"         => "עריכה",
+"editold"             => "עריכה",
 "editsectionhint"     => "עריכת פסקה: $1",
 "toc"                 => "תוכן עניינים",
 "showtoc"             => "הראה",
@@ -553,6 +754,8 @@ $wgAllMessagesHe = array(
 
 # Revision deletion
 "revisiondelete"            => "מחיקת ושחזור גרסאות",
+"revdelete-nooldid-title"   => "אין גרסת מטרה",
+"revdelete-nooldid-text"    => "לא ציינתם גרסת או גרסאות מטרה עליהן תבוצע פעולה זו.",
 "revdelete-selected"        => "הגרסאות שנבחרו של [[:$1]]:",
 "revdelete-text"            => "גרסאות מחוקות עדיין יופיעו בהיסטוריית הדף, אך התוכן שלהן לא יהיה זמין לציבור.
 
@@ -605,6 +808,7 @@ $wgAllMessagesHe = array(
 
 # Preferences page
 "preferences"           => "העדפות",
+"mypreferences"         => "ההעדפות שלי",
 "prefsnologin"          => "לא נרשמת באתר",
 "prefsnologintext"      => "עליכם [[{{ns:special}}:Userlogin|להיכנס לחשבון]] כדי לשנות העדפות משתמש.",
 "prefsreset"            => "העדפותיך שוחזרו לברירת המחדל.",
@@ -666,20 +870,17 @@ $wgAllMessagesHe = array(
 "userrights-groupsavailable" => "קבוצות זמינות:",
 "userrights-groupshelp"      => "אנא בחרו קבוצות שברצונכם שהמשתמש יתווסף אליהן או יוסר מהן.
 קבוצות שלא נבחרו לא ישתנו. באפשרותכם לבטל בחירה של קבוצה באמצעות לחיצה על הכפתור השמאלי של העכבר ועל Ctrl מעליה.",
-"userrights-logcomment"      => 'שינה את ההרשאות מההרשאות $1 להרשאות $2',
 
 # Groups
 "group"            => "קבוצה:",
 "group-bot"        => "בוטים",
 "group-sysop"      => "מפעילי מערכת",
 "group-bureaucrat" => "ביורוקרטים",
-"group-steward"    => "דיילים",
 "group-all"        => "(הכול)",
 
 "group-bot-member"        => "בוט",
 "group-sysop-member"      => "מפעיל מערכת",
 "group-bureaucrat-member" => "ביורוקרט",
-"group-steward-member"    => "דייל",
 
 "grouppage-bot"        => "{{ns:project}}:בוט",
 "grouppage-sysop"      => "{{ns:project}}:מפעיל מערכת",
@@ -712,9 +913,9 @@ $wgAllMessagesHe = array(
 "rc_categories_any"                 => "הכול",
 
 # Upload
-"upload"                      => "העלו קובץ לשרת",
-"uploadbtn"                   => "העלו קובץ",
-"reupload"                    => "העלו שנית",
+"upload"                      => "העלאת קובץ לשרת",
+"uploadbtn"                   => "העלה קובץ",
+"reupload"                    => "העלה שנית",
 "reuploaddesc"                => "חזרו לטופס העלאת קבצים לשרת.",
 "uploadnologin"               => "לא נכנסתם לאתר",
 "uploadnologintext"           => "עליכם [[{{ns:special}}:Userlogin|להיכנס לחשבון]] כדי להעלות קבצים.",
@@ -757,14 +958,17 @@ $wgAllMessagesHe = array(
 "uploaddisabled"              => "העלאת קבצים מנוטרלת",
 "uploaddisabledtext"          => "אפשרות העלאת הקבצים מנוטרלת באתר זה.",
 "uploadscripted"              => "הקובץ כולל קוד סקריפט או HTML שעשוי להתפרש או להתבצע בטעות על־ידי הדפדפן.",
-"uploadcorrupt"               => "קובץ זה אינו תקין או שהסיומת שלו איננה מתאימה. בבקשה בדקו את הקובץ והעלו אותו שוב.",
+"uploadcorrupt"               => "קובץ זה אינו תקין או שהסיומת שלו איננה מתאימה. אנא בדקו את הקובץ והעלו אותו שוב.",
 "uploadvirus"                 => 'הקובץ מכיל וירוס! פרטים: <div style="direction: ltr;">$1</div>',
 "sourcefilename"              => "שם הקובץ",
 "destfilename"                => "שמור קובץ בשם",
+"watchthisupload"             => "עקוב אחרי דף זה",
 "filewasdeleted"              => "קובץ בשם זה כבר הועלה בעבר, ולאחר מכן נמחק. אנא בדקו את הדף $1 לפני שתמשיכו להעלותו שנית.",
 
-"license"   => "רישיון",
-"nolicense" => "אין",
+"license"            => "רישיון",
+"nolicense"          => "אין",
+"upload_source_url"  => " (כתובת URL תקפה ונגישה)",
+"upload_source_file" => " (קובץ במחשב שלך)",
 
 # Image list
 "imagelist"                 => "רשימת תמונות",
@@ -778,6 +982,7 @@ $wgAllMessagesHe = array(
 "bysize"                    => "לפי גודל",
 "imgdelete"                 => "מחק",
 "imgdesc"                   => "תיאור",
+"imgfile"                   => "קובץ",
 "imglegend"                 => "מקרא: (תיאור) הצג/ערוך תיאור התמונה.",
 "imghistory"                => "היסטורית קובץ תמונה",
 "revertimg"                 => "חזור",
@@ -793,7 +998,13 @@ $wgAllMessagesHe = array(
 "shareduploadwiki-linktext" => "דף תיאור הקובץ",
 "noimage"                   => "לא נמצא קובץ בשם זה, אך יש באפשרותכם $1 חלופי.",
 "noimage-linktext"          => "להעלות קובץ",
-"uploadnewversion-linktext"          => "העלו גרסה חדשה של קובץ זה",
+"uploadnewversion-linktext" => "העלו גרסה חדשה של קובץ זה",
+"imagelist_date"            => "תאריך",
+"imagelist_name"            => "שם",
+"imagelist_user"            => "משתמש",
+"imagelist_size"            => "גודל (בתים)",
+"imagelist_description"     => "תיאור",
+"imagelist_search_for"      => "חיפוש תמונה בשם:",
 
 # MIME search
 "mimesearch" => "חיפוש MIME",
@@ -824,10 +1035,10 @@ $wgAllMessagesHe = array(
 
 בסך הכול בוצעו בממוצע \'\'\'$5\'\'\' עריכות לדף, והיו \'\'\'$6\'\'\' צפיות לכל עריכה.
 
-אורך [http://meta.wikimedia.org/wiki/Help:Job_queue תור המשימות] הוא \'\'\'$7\'\'\'
+אורך [http://meta.wikimedia.org/wiki/Help:Job_queue תור המשימות] הוא \'\'\'$7\'\'\'.
 
 \'\'\'$8\'\'\' קבצים הועלו לאתר עד כה.',
-"userstatstext"          => "ישנם '''$1''' [[{{ns:special}}:Listusers|משתמשים רשומים]] באתר, '''$2''' (או $4%) מתוכם מפעילי מערכת (ראו $3).",
+"userstatstext"          => "ישנם '''$1''' [[{{ns:special}}:Listusers|משתמשים רשומים]] באתר, '''$2''' (או $4%) מתוכם הם $5.",
 "statistics-mostpopular" => "הדפים הנצפים ביותר",
 
 # Disambiguations Page
@@ -910,7 +1121,7 @@ $wgAllMessagesHe = array(
 
 # Special:Allpages
 "nextpage"          => "הדף הבא ($1)",
-"allpagesfrom"      => "הראה דפים החל מ:",
+"allpagesfrom"      => "הצג דפים החל מ:",
 "allarticles"       => "כל הדפים",
 "allinnamespace"    => "כל הדפים (מרחב שם $1)",
 "allnotinnamespace" => "כל הדפים (שלא במרחב השם $1)",
@@ -919,6 +1130,9 @@ $wgAllMessagesHe = array(
 "allpagessubmit"    => "עבור",
 "allpagesprefix"    => "הדפים ששמם מתחיל ב…:",
 "allpagesbadtitle"  => "כותרת הדף המבוקש הייתה לא־חוקית, ריקה, קישור ויקי פנימי, או פנים שפה שגוי. ייתכן שהיא כוללת תו אחד או יותר האסורים לשימוש בכותרות.",
+
+# Special:Listusers
+"listusersfrom" => "הצג משתמשים החל מ:",
 
 # Email this user
 "mailnologin"     => "אין כתובת לשליחה",
@@ -1060,7 +1274,7 @@ $NEWPAGE
 "confirmunprotecttext"        => "האם אתם בטוחים שברצונכם לבטל את ההגנה על דף זה?",
 "confirmunprotect"            => "מאשר את ביטול ההגנה",
 "unprotectcomment"            => "הסיבה להסרת ההגנה",
-"protect-unchain"             => " אפשר שינוי הרשאות העברה",
+"protect-unchain"             => "אפשר שינוי הרשאות העברה",
 "protect-text"                => "באפשרותכם לראות ולשנות כאן את רמת ההגנה של הדף [[:$1]]. אנא ודאו שאתם פועלים בהתאם בהתאם לנהלי האתר.",
 "protect-viewtext"            => "לחשבון שלך אין הרשאה לשנות את רמת ההגנה של הדף. להלן ההגדרות הנוכחיות עבור הדף [[:$1]]:",
 "protect-default"             => "(ברירת מחדל)",
@@ -1072,9 +1286,9 @@ $NEWPAGE
 "restriction-move" => "העברה",
 
 # Undelete
-"undelete"                 => "שיחזור דף מחוק",
+"undelete"                 => "צפו בדפים מחוקים",
 "undeletepage"             => "צפו ושחזרו דפים מחוקים",
-"viewdeletedpage"          => "הצג דפים שנמחקו",
+"viewdeletedpage"          => "צפו בדפים מחוקים",
 "undeletepagetext"         => "הדפים שלהלן נמחקו, אך הם עדיין בארכיון וניתן לשחזר אותם. הארכיון מנוקה מעת לעת.",
 "undeleteextrahelp"        => 'לשיחזור הדף כולו, אל תסמנו אף תיבת סימון ולחצו על "שיחזור". לשיחזור של גרסאות מסוימות בלבד, סמנו את תיבות הסימון של הגרסאות הללו, ולחצו על "שיחזור". לחיצה על "איפוס" תנקה את התקציר, ואת כל תיבות הסימון.',
 "undeletearticle"          => "שחזרו דף מחוק",
@@ -1123,8 +1337,8 @@ $NEWPAGE
 "notargettitle" => "אין דף מטרה",
 "notargettext"  => "לא ציינתם דף מטרה או משתמש לגביו תבוצע פעולה זו.",
 "linklistsub"   => "(רשימת קישורים)",
-"linkshere"     => "הדפים שלהלן מקושרים לכאן:",
-"nolinkshere"   => "אין דפים המקושרים לכאן.",
+"linkshere"     => "הדפים שלהלן מקושרים לדף '''[[:$1]]''':",
+"nolinkshere"   => "אין דפים המקושרים לדף '''[[:$1]]'''.",
 "isredirect"    => "דף הפניה",
 "istemplate"    => "הכללה",
 
@@ -1213,7 +1427,6 @@ $NEWPAGE
 "makesysopok"        => '\'\'\'המשתמש "$1" הוא עכשיו מפעיל מערכת.\'\'\'',
 "makesysopfail"      => '\'\'\'לא ניתן היה למנות את המשתמש "$1" למפעיל מערכת.\'\'\' (האם הקלדתם נכונה את שם המשתמש?)',
 "setbureaucratflag"  => "הפוך משתמש זה לביורוקרט.",
-"setstewardflag"     => "הפוך משתמש זה לדייל",
 "rightslog"          => "יומן תפקידים",
 "rightslogtext"      => "זהו יומן השינויים בתפקידי המשתמשים.",
 "rightslogentry"     => 'שינה את ההרשאות של "$1" מההרשאות $2 להרשאות $3',
@@ -1224,7 +1437,6 @@ $NEWPAGE
 "makesysop"          => "הפוך משתמש למפעיל מערכת",
 "already_sysop"      => "משתמש זה הוא כבר מפעיל מערכת",
 "already_bureaucrat" => "משתמש זה הוא כבר ביורוקרט",
-"already_steward"    => "משתמש זה הוא כבר דייל",
 "rightsnone"         => "(ללא הרשאות)",
 
 # Move page
@@ -1271,7 +1483,7 @@ $NEWPAGE
 "delete_and_move_confirm" => "כן, מחק את הדף",
 "delete_and_move_reason"  => "מחיקה על מנת לאפשר העברה",
 "selfmove"                => "כותרות המקור והיעד זהות; לא ניתן להעביר דף לעצמו.",
-"immobile_namespace"      => "כותרת היעד היא סוג מיוחד של דף; אי אפשר להעביר דפים לתוך מרחב שם זה.",
+"immobile_namespace"      => "כותרת המקור או היעד היא סוג מיוחד של דף; לא ניתן להעביר דפים לתוך או מתוך מרחב שם זה.",
 
 # Export
 "export"          => "ייצוא דפים",
@@ -1807,6 +2019,7 @@ ta["ca-nstab-category"]     = ["c", "צפו בדף הקטגוריה"];',
 
 # E-mail address confirmation
 "confirmemail"            => 'אמתו כתובת דוא"ל',
+"confirmemail_noemail"    => 'אין לכם כתובת דוא"ל תקפה המוגדרת ב[[{{ns:special}}:Preferences|העדפות המשתמש]] שלכם.',
 "confirmemail_text"       => 'אתר זה דורש שתאמתו את כתובת הדוא"ל שלכם לפני שתשתמשו בשירותי הדוא"ל. לחצו על הכפתור למטה כדי לשלוח דוא"ל עם קוד אישור לכתובת הדוא"ל שהזנתם. טענו את הקישור בדפדפן שלכם כדי לאשר שכתובת הדוא"ל תקפה.',
 "confirmemail_send"       => "שלח קוד אישור",
 "confirmemail_sent"       => 'הדוא"ל עם קוד האישור נשלח.',
@@ -1874,6 +2087,23 @@ $1",
 "displaytitle" => "(קשרו לדף זה בשם [[$1]])",
 
 "loginlanguagelabel" => "שפה: $1",
+
+# Multipage image navigation
+"imgmultipageprev" => "&rarr; לדף הקודם",
+"imgmultipagenext" => "לדף הבא &larr;",
+"imgmultigo"       => "עבור!",
+"imgmultigotopre"  => "עבור לדף",
+
+# Table pager
+"ascending_abbrev"         => "עולה",
+"descending_abbrev"        => "יורד",
+"table_pager_next"         => "הדף הבא",
+"table_pager_prev"         => "הדף הקודם",
+"table_pager_first"        => "הדף הראשון",
+"table_pager_last"         => "הדף האחרון",
+"table_pager_limit"        => "הצג $1 פריטים בדף",
+"table_pager_limit_submit" => "עבור",
+"table_pager_empty"        => "ללא תוצאות",
 );
 
 ?>

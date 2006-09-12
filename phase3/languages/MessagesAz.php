@@ -1,7 +1,35 @@
 <?php
+/** Azerbaijani (Azərbaycan)
+  *
+  * @package MediaWiki
+  * @subpackage Language
+  */
 
-global $wgAllMessagesAz;
-$wgAllMessagesAz = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'Mediya',
+	NS_SPECIAL          => 'Xüsusi',
+	NS_MAIN             => '',
+	NS_TALK             => 'Müzakirə',
+	NS_USER             => 'İstifadəçi',
+	NS_USER_TALK        => 'İstifadəçi_müzakirəsi',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_müzakirəsi',
+	NS_IMAGE            => 'Şəkil',
+	NS_IMAGE_TALK       => 'Şəkil_müzakirəsi',
+	NS_MEDIAWIKI        => 'MediyaViki',
+	NS_MEDIAWIKI_TALK   => 'MediyaViki_müzakirəsi',
+	NS_TEMPLATE         => 'Şablon',
+	NS_TEMPLATE_TALK    => 'Şablon_müzakirəsi',
+	NS_HELP             => 'Kömək',
+	NS_HELP_TALK        => 'Kömək_müzakirəsi',
+	NS_CATEGORY         => 'Kateqoriya',
+	NS_CATEGORY_TALK    => 'Kateqoriya_müzakirəsi',
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+
+
+$messages = array(
 
 # User preference toggles  # Kullanıcı seçenekleri
 'tog-fancysig' => 'Xam imza (daxili bağlantı yaratmaz)',
@@ -50,7 +78,6 @@ $wgAllMessagesAz = array(
 # Bits of text used by many pages: # Birçok sayfada geçen metinler
 #
 'categories' => 'Kateqoriyalar',
-'category' => 'kateqoriya',
 'category_header' => '"$1" kategoriyasındaki məqalələr',
 'subcategories' => 'Alt kategoriyalar',
 
@@ -86,7 +113,6 @@ $wgAllMessagesAz = array(
 'navigation' => 'Rəhbər',
 
 # Metadata in edit box
-'metadata_page' => '{{ns:4}}:Metadata',
 
 'currentevents' => 'Güncəl hadisələr',
 'currentevents-url' => 'Project:Güncəl Hadisələr',
@@ -95,6 +121,7 @@ $wgAllMessagesAz = array(
 'returnto' => '$1 səhifəsinə qayıt.',
 'go' => 'Gətir',
 'search' => 'Axtar',
+'searchbutton' => 'Axtar',
 'history' => 'Səhifənin tarixçəsi',
 'history_short' => 'Tarixçə',
 'printableversion' => 'Çap variantı',
@@ -103,7 +130,6 @@ $wgAllMessagesAz = array(
 'editthispage' => 'Bu səhifəni redaktə edin',
 'delete' => 'Sil',
 'deletethispage' => 'Bu səhifəni sil',
-'undelete_short1' => 'Undelete one edit',
 'protect' => 'Qoru',
 'protectthispage' => 'Bu səhifəni qoru',
 'unprotect' => 'Qorumanı bitir',
@@ -123,7 +149,6 @@ $wgAllMessagesAz = array(
 'redirectpagesub' => 'İstiqamətləndirmə səhifəsi',
 'lastmodified' => 'Bu səhifə sonuncu dəfə $1 tarixində redaktə edilib.',
 'copyright' => 'Bu məzmun $1 əhatəsindədir.',
-'administrators' => 'Project:İdarəçilər',
 
 'nbytes' => '$1 bayt',
 'youhavenewmessages' => 'Hal-hazırda $1 var. ($2)',
@@ -244,7 +269,6 @@ $wgAllMessagesAz = array(
 'revhistory' => 'Versiya tarixçəsi',
 'currentrev' => 'Hal-hazırkı versiya',
 'revisionasof' => '$1 versiyası',
-'revisionasofwithlink' => '$1 versiyası; $2<br />$3 | $4',
 'previousrevision' => '←Əvvəlki versiya',
 'nextrevision' => 'Sonrakı versiya→',
 'currentrevisionlink' => 'Hal-hazırkı versiyanı göstər',
@@ -307,7 +331,6 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 #
 
 # switching pan
-'addgroup' => 'Bir qrup əlavə edin.',
 'userrights-lookup-user' => 'İstifadəçi qruplarını idarə et',
 'userrights-user-editname' => 'İstifadəçi adınızı yazın:',
 
@@ -317,7 +340,6 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 'changes' => 'dəyişiklik',
 'recentchanges' => 'Son dəyişikliklər',
 'recentchangestext' => '\'\'\'Ən son dəyişiklikləri bu səhifədən izləyin.\'\'\'',
-'rcloaderr' => 'Loading recent changes',
 'rcnote' => 'Aşağıdakı son <strong>$1</strong> dəyişiklik son <strong>$2</strong> gün ərzində edilmişdir.',
 'rcnotefrom' => 'Below are the changes since <b>$2</b> (up to <b>$1</b> shown).',
 'rclistfrom' => '$1 vaxtından başlayaraq yeni dəyişiklikləri göstər',
@@ -326,9 +348,6 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 'hist' => 'tarixçə',
 'hide' => 'gizlət',
 'show' => 'göstər',
-'tableform' => 'table',
-'listform' => 'siyahı',
-'nchanges' => '$1 dəyişiklik',
 'minoreditletter' => 'k',
 'newpageletter' => 'Y',
 
@@ -336,7 +355,6 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 #
 'upload' => 'Qarşıya yüklə',
 'uploadbtn' => 'Sənəd yüklə',
-'uploadlink' => 'Upload images',
 'reupload' => 'Təkrar yüklə',
 'reuploaddesc' => 'Return to the upload form.',
 'uploaderror' => 'Yükləyiş xətası',
@@ -448,7 +466,6 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: \'
 # Watchlist
 #
 'watchlist' => 'İzlədiyim səhifələr',
-'watchlistsub' => '("$1" istifadəçisi üçün)',
 'watchnologin' => 'Daxil olmamısınız',
 'addedwatch' => 'İzləmə siyahısına əlavə edildi.',
 'addedwatchtext' => '"$1" səhifəsi [[Special:Watchlist|izlədiyiniz səhifələrə]] əlavə edildi. Bu səhifədə və əlaqəli müzakirə səhifəsində olacaq dəyişikliklər orada göstəriləcək və səhifə asanlıqla seçiləbilmək üçün [[Special:Recentchanges|son dəyişikliklər]]-də qalın şriftlərlə görsənəcəkdir. <p> Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə" düyməsinə vurun.',
@@ -526,10 +543,8 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: \'
 #
 
 # Make sysop
-'bureaucratlog' => 'Bureaucrat_log',
 'already_sysop' => 'Bu istifadəçi hazirdə idarəçidir',
 'already_bureaucrat' => 'Bu istifadəçi hazirdə bürokratdı',
-'already_steward' => 'Bu istifadəçi hazirdə steward',
 
 # Move page
 #
@@ -562,9 +577,7 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: \'
 
 # Spam protection
 'subcategorycount' => 'Bu kategoriyada $1 alt kategoriya var.',
-'subcategorycount1' => 'Bu kategoriyada $1 alt kategoriya var.',
 'categoryarticlecount' => 'Bu kategoriyada $1 məqalə var.',
-'categoryarticlecount1' => 'Bu kategoriyada $1 məqalə var.',
 'listingcontinuesabbrev' => '(davam)',
 
 # Monobook.js: tooltips and access keys for monobook

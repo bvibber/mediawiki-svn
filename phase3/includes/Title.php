@@ -246,7 +246,7 @@ class Title {
 	}
 
 	/**
-	 * Create a new Title frrom a namespace index and a DB key.
+	 * Create a new Title from a namespace index and a DB key.
 	 * The parameters will be checked for validity, which is a bit slower
 	 * than makeTitle() but safer for user-provided data.
 	 *
@@ -1075,6 +1075,7 @@ class Title {
 		if( $action == 'create' ) {
 			if( (  $this->isTalkPage() && !$wgUser->isAllowed( 'createtalk' ) ) ||
 				( !$this->isTalkPage() && !$wgUser->isAllowed( 'createpage' ) ) ) {
+				wfProfileOut( $fname );
 				return false;
 			}
 		}
@@ -2147,7 +2148,9 @@ class Title {
 					$stack[$parent] = array();
 				} else {
 					$nt = Title::newFromText($parent);
-					$stack[$parent] = $nt->getParentCategoryTree( $children + array($parent => 1) );
+					if ( $nt ) {
+						$stack[$parent] = $nt->getParentCategoryTree( $children + array($parent => 1) );
+					}
 				}
 			}
 			return $stack;
@@ -2239,6 +2242,46 @@ class Title {
 			$u = new HTMLCacheUpdate( $this, 'categorylinks' );
 			$u->doUpdate();
 		}
+	}
+
+	/**
+	 * Get the last touched timestamp
+	 */
+	function getTouched() {
+		$dbr =& wfGetDB( DB_SLAVE );
+		$touched = $dbr->selectField( 'page', 'page_touched',
+			array( 
+				'page_namespace' => $this->getNamespace(),
+				'page_title' => $this->getDBkey()
+			), __METHOD__
+		);
+		return $touched;
+	}
+
+	/**
+	 * Get a cached value from a global cache that is invalidated when this page changes
+	 * @param string $key the key
+	 * @param callback $callback A callback function which generates the value on cache miss
+	 */
+	function getRelatedCache( $memc, $key, $expiry, $callback, $params = array() ) {
+		$touched = $this->getTouched();
+		$cacheEntry = $memc->get( $key );
+		if ( $cacheEntry ) {
+			if ( $cacheEntry['touched'] >= $touched ) {
+				return $cacheEntry['value'];
+			} else {
+				wfDebug( __METHOD__.": $key expired\n" );
+			}
+		} else {
+			wfDebug( __METHOD__.": $key not found\n" );
+		}
+		$value = call_user_func_array( $callback, $params );
+		$cacheEntry = array(
+			'value' => $value,
+			'touched' => $touched
+		);
+		$memc->set( $key, $cacheEntry, $expiry );
+		return $value;
 	}
 
 	function trackbackURL() {

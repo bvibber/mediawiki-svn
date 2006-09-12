@@ -1,7 +1,36 @@
 <?php
+/**
+ * Turkish (Türkçe)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */	
 
-global $wgAllMessagesTr;
-$wgAllMessagesTr = array(
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Özel',
+	NS_MAIN             => '',
+	NS_TALK             => 'Tartışma',
+	NS_USER             => 'Kullanıcı',
+	NS_USER_TALK        => 'Kullanıcı_mesaj',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => '$1_tartışma',
+	NS_IMAGE            => 'Resim',
+	NS_IMAGE_TALK       => 'Resim_tartışma',
+	NS_MEDIAWIKI        => 'MedyaViki',
+	NS_MEDIAWIKI_TALK   => 'MedyaViki_tartışma',
+	NS_TEMPLATE         => 'Şablon',
+	NS_TEMPLATE_TALK    => 'Şablon_tartışma',
+	NS_HELP             => 'Yardım',
+	NS_HELP_TALK        => 'Yardım_tartışma',
+	NS_CATEGORY         => 'Kategori',
+	NS_CATEGORY_TALK    => 'Kategori_tartışma',
+);
+
+$separatorTransformTable = array(',' => '.', '.' => ',' );
+
+
+$messages = array(
 'tog-underline'         => 'Bağlatıların altını çiz',
 'tog-highlightbroken'   => 'Boş bağlantıları <a href="" class="new">bu şekilde</a> (alternatif: bu şekilde<a href="" class="internal">?</a>) göster.',
 'tog-justify'           => 'Paragraf iki yana yaslayarak ayarla',
@@ -71,7 +100,6 @@ $wgAllMessagesTr = array(
 'nov'                   => 'Kasım',
 'dec'                   => 'Aralık',
 'categories'            => 'Sayfa {{PLURAL:$1|kategorisi|kategorileri}}',
-'category'              => 'kategori',
 'category_header'       => '"$1" kategorisindeki sayfalar',
 'subcategories'         => 'Alt Kategoriler',
 'mainpage'              => 'Ana Sayfa',
@@ -117,6 +145,7 @@ $wgAllMessagesTr = array(
 'returnto'              => '$1.',
 'tagline'               => '{{SITENAME}}, özgür ansiklopedi',
 'search'                => 'Ara',
+'searchbutton'          => 'Ara',
 'go'                    => 'Git',
 'history'               => 'Sayfanın geçmişi',
 'history_short'         => 'Geçmiş',
@@ -139,7 +168,6 @@ $wgAllMessagesTr = array(
 'personaltools'         => 'Kişisel aletler',
 'postcomment'           => 'Yorum ekle',
 'articlepage'           => 'Maddeye git',
-'subjectpage'           => 'Konuyu gör',
 'talk'                  => 'Tartışma',
 'views'                 => 'Görünümler',
 'toolbox'               => 'Araçlar',
@@ -154,11 +182,9 @@ $wgAllMessagesTr = array(
 'viewcount'             => 'Bu sayfaya $1 defa erişilmiş.',
 'copyright'             => 'İçerik $1 altındadır.',
 'protectedpage'         => 'Korumalı sayfa',
-'administrators'        => 'Project:Yöneticiler',
 'jumpto'                => 'Git ve:',
 'jumptonavigation'      => 'kullan',
 'jumptosearch'          => 'ara',
-'sysoptitle'            => 'Yönetici yetkisi gerekiyor',
 'badaccess'             => 'İzin hatası',
 'versionrequired'       => 'MedyaViki\'nin $1 sürümü gerekiyor',
 'ok'                    => 'TAMAM',
@@ -458,7 +484,6 @@ $2 yönlendirmeleri listele &nbsp; Aranacak: $3 $9',
 'userrights-user-editname'=> 'Kullanıcı adı giriniz:',
 'editusergroup'         => 'Kullanıcı grupları düzenle',
 'userrights-editusergroup'=> 'Kullanıcı grupları düzenle',
-'userrights-logcomment' => 'Grup üyeliği $1\'den $2\'e değiştirildi',
 'group'                 => 'Grup:',
 'group-bot'             => 'Botlar',
 'group-sysop'           => 'Yöneticiler',
@@ -849,7 +874,6 @@ Daha fazla bilgi için [[Project:Koruma altına alınmış sayfa]] sayfasına ba
 'user_rights_set'       => '<b>"$1" için kullanıcı hakları güncellendi</b>',
 'already_sysop'         => 'Bu kullanıcı zaten yönetici',
 'already_bureaucrat'    => 'Bu kullanıcı zaten bürokrat',
-'already_steward'       => 'Bu kullanıcı zaten steward',
 'movepage'              => 'İsim değişikliği',
 'movepagetext'          => 'Aşağıdaki form kullanılarak sayfanın adı değiştirilir. Beraberinde tüm geçmiş kayıtları da yeni isme aktarılır. Eski isim yeni isme yönlendirme haline dönüşür. Eski başlığa dogru olan bağlantılar olduğu gibi kalır; çift veya geçersiz yönlendirmeleri [[Special:Maintenance|kontrol ediniz.]] Yapacağınız bu değişikllike tüm bağlantıların olması gerektiği gibi çalıştığından sizin sorumlu olduğunuzu unutmayınız.
 

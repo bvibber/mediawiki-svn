@@ -1,7 +1,48 @@
 <?php
+/** Friulian (Furlan)
+ *
+ * @package MediaWiki
+ * @subpackage Language
+ */
+$quickbarSettings = array(
+	'Nissune', 'Fis a Çampe', 'Fis a Drete', 'Flutuant a çampe'
+);
 
-global $wgAllMessagesFur;
-$wgAllMessagesFur = array(
+$skinNames = array(
+	'nostalgia' => 'Nostalgie',
+);
+$namespaceNames = array(
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Speciâl',
+	NS_MAIN           => '',
+	NS_TALK           => 'Discussion',
+	NS_USER           => 'Utent',
+	NS_USER_TALK      => 'Discussion_utent',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK   => 'Discussion_$1',
+	NS_IMAGE          => 'Figure',
+	NS_IMAGE_TALK     => 'Discussion_figure',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'Discussion_MediaWiki',
+	NS_TEMPLATE       => 'Model',
+	NS_TEMPLATE_TALK  => 'Discussion_model',
+	NS_HELP	          => 'Jutori',
+	NS_HELP_TALK      => 'Discussion_jutori',
+	NS_CATEGORY       => 'Categorie',
+	NS_CATEGORY_TALK  => 'Discussion_categorie'
+);
+
+$datePreferences = false;
+$defaultDateFormat = 'dmy';
+$dateFormats = array(
+	'dmy time' => 'H:i',
+	'dmy date' => 'j "di" M Y',
+	'dmy both' => 'j "di" M Y "a lis" H:i',
+);
+
+$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+
+$messages = array(
 '1movedto2'		=> "$1 movût in $2",
 'about' => "Informazions",
 'aboutsite' => "Informazions su {{SITENAME}}",
@@ -14,7 +55,6 @@ e la pagjine e sarà '''gruessute''' te [[Special:Recentchanges|liste dai ultins
 
 <p>Se tu vuelis gjavâle de liste pi indevant, frache su \"No stâ tignî di voli\" te sbare in alt.",
 
-'administrators' => "Project:Aministradôrs",
 'allarticles' => "Dutis lis vôs",
 'allinnamespace'	=> "Dutis lis pagjinis (non dal spazi $1)",
 'alllogstext'	=> 'Viodude combinade dai regjistris des cjamadis, eliminazions, protezions, blocs e azions day sysop.
@@ -58,12 +98,9 @@ Sielç par plasê un altri non.',
 'bysize'		=> 'par dimension',
 'cancel' => "Scancele",
 'categories' => "Categoriis",
-'categories1' => 'Categorie',
 'categoriespagetext' => 'Te wiki a esistin lis categoriis ca sot.',
-'category' => "categorie",
 'category_header' => "Vôs inte categorie \"$1\"",
 'categoryarticlecount' => "In cheste categorie tu puedis cjatâ $1 vôs.",
-'categoryarticlecount1' => "In cheste categorie tu puedis cjatâ $1 vôs.",
 'changepassword' => 'Gambie peraule clâf',
 'changed'			=> 'cambiade',
 'changes' => 'cambiaments',
@@ -187,29 +224,6 @@ Tu varâs di inserî di gnûf i tiei cambiaments tal test esistint.
 'filestatus' => 'Stât dal copyright',
 'friday' => "Vinars",
 'go' => "Va",
-'googlesearch' => "
-<div style=\"margin-left: 2em\">
-
-<!-- Google search -->
-<div style=\"width:130px;float:left;text-align:center;position:relative;top:-8px\"><a href=\"http://www.google.com/\" style=\"padding:0;background-image:none\"><img src=\"http://www.google.com/logos/Logo_40wht.gif\" alt=\"Google\" style=\"border:none\" /></a></div>
-
-<form method=\"get\" action=\"http://www.google.com/search\" style=\"margin-left:135px\">
-  <div>
-    <input type=\"hidden\" name=\"domains\" value=\"{{SERVER}}\" />
-    <input type=\"hidden\" name=\"num\" value=\"50\" />
-    <input type=\"hidden\" name=\"ie\" value=\"$2\" />
-    <input type=\"hidden\" name=\"oe\" value=\"$2\" />
-
-    <input type=\"text\" name=\"q\" size=\"31\" maxlength=\"255\" value=\"$1\" />
-    <input type=\"submit\" name=\"btnG\" value=\"Cîr cun Google\" />
-  </div>
-  <div style=\"font-size:90%\">
-    <input type=\"radio\" name=\"sitesearch\" id=\"gwiki\" value=\"{{SERVER}}\" checked=\"checked\" /><label for=\"gwiki\">{{SITENAME}}</label>
-    <input type=\"radio\" name=\"sitesearch\" id=\"gWWW\" value=\"\" /><label for=\"gWWW\">WWW</label>
-  </div>
-</form>
-
-</div>",
 'gotaccount'	=> 'Âstu za une identitât? $1.',
 'gotaccountlink'	=> 'Jentre',
 'guesstimezone' => "Cjape impostazions dal sgarfadôr",
@@ -222,7 +236,6 @@ Tu varâs di inserî di gnûf i tiei cambiaments tal test esistint.
 'hidetoc' => "plate",
 'hist' => "stor",
 'history' => "Storic de pagjine",
-'history_copyright' => "-",
 'history_short' => "Storic",
 'historywarning' => 'Atenzion: la pagjine che tu stâs eliminant e à un storic.',
 'hr_tip' => "Rie orizontâl (no stâ doprâle masse spes)",
@@ -286,7 +299,6 @@ cheste vecje version, (rip) = torne a ripristinâ cheste vecje version.
 'log'		=> 'Regjistris',
 'logempty' => 'Nissun element corispondint tal regjistri.',
 'login' => "Jentre",
-'loginend' => "&nbsp;",
 'loginerror' => "Erôr te jentrade",
 'loginpagetitle' => "Jentrade dal utent",
 'loginprompt'	=> 'Tu âs di vê abilitâts i cookies par jentrâ in {{SITENAME}}.',
@@ -506,7 +518,6 @@ L\'aministradôr ch\'al à metût il bloc al à scrit cheste motivazion: $1',
 'removedwatchtext' 	=> "La pagjine \"$1\" e je stade gjavade de liste di chês tignudis di voli.",
 'resetprefs'	=> 'Predeterminât',
 'restorelink' => "$1 modifichis eliminadis",
-'restorelink1' => 'une modifiche eliminade',
 'restrictedpheading'	=> 'Pagjinis speciâls cun restrizions',
 'restriction-edit' => 'Cambie',
 'restriction-move' => 'Spostament',
@@ -528,6 +539,7 @@ L\'aministradôr ch\'al à metût il bloc al à scrit cheste motivazion: $1',
 'scarytranscludefailed' => '[Recupar dal model falît par $1; o si scusin]',
 'scarytranscludetoolong' => '[URL masse lungje; o si scusin]',
 'search' => "Cîr",
+'searchbutton' => "Cîr",
 'searchdisabled' => 'La ricercje in {{SITENAME}} no je ative. Tu puedis doprâ Google intant. Sta atent che i lôr indis sul contignût di {{SITENAME}} a puedin jessi pôc inzornâts.',
 'searchresults' => "Risultâts de ricercje",
 'searchresulttext' => "Par plui informazions su lis ricercjis in {{SITENAME}}, cjale [[Project:Ricercje|Ricercje in {{SITENAME}}]].",
@@ -538,7 +550,6 @@ L\'aministradôr ch\'al à metût il bloc al à scrit cheste motivazion: $1',
 'servertime'	=> 'Ore servidôr',
 'sharedupload' => 'Chest file al è condivîs e al pues jessi doprât di altris progjets.',
 'shareduploadwiki' => 'Cjale par plasê la [pagjine di descrizion dal file $1] par altris informazions.',
-'shareddescriptionfollows' => '-',
 'shortpages'	=> 'Pagjinis curtis',
 'show' => "mostre",
 'showbigimage' => "Discjame version a alte risoluzion ($1x$2, $3 KB)",
@@ -558,7 +569,6 @@ Gjavant chestis, o vin '''$2''' pagjinis che a son probabilmentri pagjinis di co
 
 O vin vût in dut '''$3''' viodudis de pagjinis e '''$4''' cambiaments aes pagjinis di cuant che la wiki e je stade implantade.
 Chest al vûl dî une medie di '''$5''' cambiaments par pagjine, e '''$6''' viodudis par ogni cambiament.",
-'sitesubtitle' => "",
 'sitesupport' => 'Doninus',
 'sitesupport-url' => 'Project:Supuarte il sît',
 'siteuser' => 'Utent $1 di {{SITENAME}}',
@@ -635,7 +645,6 @@ Chest al vûl dî une medie di '''$5''' cambiaments par pagjine, e '''$6''' viod
 'uid'			=> 'ID utent:',
 'uncategorizedpages'	=> 'Pagjinis cence categorie',
 'uncategorizedcategories'	=> 'Categoriis cence categorie',
-'undelete_short1' => 'Recupere une version eliminade',
 'undelete_short' => 'Recupere $1 modifichis eliminadis',
 'underline-always' => "Simpri",
 'underline-never' => "Mai",
@@ -679,7 +688,6 @@ Par includi une figure intune pagjine, dopre un leam inte form
 'watchlistall1' => "ducj",
 'watchlistall2' => "dutis",
 'watchlistcontains' => "Tu stâs tignint di voli $1 pagjinis.",
-'watchlistsub'		=> "(par l'utent \"$1\")",
 'watchnochange' 	=> 'Nissun element di chei tignûts di voli al è stât cambiât tal periodi mostrât.',
 'watchdetails'		=> "* $1 pagjinis tignudis di voli cence contâ lis pagjinis di discussion
 * [[Special:Watchlist/edit|Mostre e modfiche la liste complete]]",

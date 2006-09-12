@@ -1,7 +1,59 @@
 <?php
+/**
+  * @package MediaWiki
+  * @subpackage Language
+  */
+#
+# Hungarian localisation for MediaWiki
+#
 
-global $wgAllMessagesHu;
-$wgAllMessagesHu = array(
+
+$namespaceNames = array(
+	NS_MEDIA			=> "Média",
+	NS_SPECIAL			=> "Speciális",
+	NS_MAIN				=> "",
+	NS_TALK				=> "Vita",
+	NS_USER				=> "User",
+	NS_USER_TALK		=> "User_vita",
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK		=> "$1_vita",
+	NS_IMAGE			=> "Kép",
+	NS_IMAGE_TALK		=> "Kép_vita",
+	NS_MEDIAWIKI		=> "MediaWiki",
+	NS_MEDIAWIKI_TALK 	=> "MediaWiki_vita",
+	NS_TEMPLATE			=> "Sablon",
+	NS_TEMPLATE_TALK 	=> "Sablon_vita",
+	NS_HELP				=> "Segítség",
+	NS_HELP_TALK		=> "Segítség_vita",
+	NS_CATEGORY			=> "Kategória",
+	NS_CATEGORY_TALK	=> "Kategória_vita"
+);
+
+
+$quickbarSettings = array(
+	"Nincs", "Fix baloldali", "Fix jobboldali", "Lebegő baloldali"
+);
+
+$skinNames = array(
+	'standard' => "Alap",
+	'nostalgia' => "Nosztalgia",
+	'cologneblue' => "Kölni kék"
+);
+
+$fallback8bitEncoding = "iso8859-2";
+$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+
+$datePreferences = false;
+$defaultDateFormat = 'ymd';
+$dateFormats = array(
+	'ymd time' => 'H:i',
+	'ymd date' => 'Y. F j.',
+	'ymd both' => 'Y. F j., H:i',
+);
+
+$linkTrail = '/^([a-záéíóúöüőűÁÉÍÓÚÖÜŐŰ]+)(.*)$/sDu';
+
+$messages = array(
 'tog-underline'         => 'Linkek aláhúzása:',
 'tog-highlightbroken'   => 'Törött linkek <a href="" class="new">így</a> (alternatíva: így<a href="" class="internal">?</a>).',
 'tog-justify'           => 'Bekezdések teljes szélességű tördelése („sorkizárás”)',
@@ -61,14 +113,13 @@ $wgAllMessagesHu = array(
 'aug'                   => 'aug',
 'oct'                   => 'Okt',
 'categories'            => '{{PLURAL:$1|Kategória|Kategóriák}}',
-'category'              => 'kategória',
 'category_header'       => '„$1” kategóriába tartozó szócikkek',
 'subcategories'         => 'Alkategóriák',
 'mainpage'              => 'Kezdőlap',
 'mainpagetext'          => 'Wiki szoftver sikeresen telepítve.',
 'portal'                => 'Közösségi portál',
 'about'                 => 'Névjegy',
-'aboutsite'             => 'A {{SITENAME}}ROL',
+'aboutsite'             => 'A {{grammar:rol|{{SITENAME}}}}',
 'aboutpage'             => 'Project:Névjegy',
 'article'               => 'Szócikk',
 'help'                  => 'Segítség',
@@ -102,6 +153,7 @@ $wgAllMessagesHu = array(
 'returnto'              => 'Vissza a $1 cikkhez.',
 'tagline'               => 'A {{SITENAME}}BÓL',
 'search'                => 'Keresés',
+'searchbutton'          => 'Keresés',
 'go'                    => 'Menj',
 'history'               => 'laptörténet',
 'history_short'         => 'Laptörténet',
@@ -122,7 +174,6 @@ $wgAllMessagesHu = array(
 'personaltools'         => 'Személyes eszközök',
 'postcomment'           => 'Üzenethagyás',
 'articlepage'           => 'Szócikk megtekintése',
-'subjectpage'           => 'Témalap megtekintése',
 'talk'                  => 'Vitalap',
 'toolbox'               => 'Eszközök',
 'userpage'              => 'Felhasználói lap',
@@ -136,13 +187,9 @@ $wgAllMessagesHu = array(
 'viewcount'             => 'Ezt a lapot eddig {{PLURAL:$1|egy|$1}} alkalommal látogatták meg.',
 'copyright'             => 'A tartalom a $1 feltételei mellett használható.',
 'protectedpage'         => 'Védett lap',
-'administrators'        => 'Project:Adminisztrátorok',
 'jumpto'                => 'Ugrás:',
 'jumptonavigation'      => 'navigáció',
 'jumptosearch'          => 'keresés',
-'sysoptitle'            => 'Sysop hozzáférés szükséges',
-'sysoptext'             => 'Az általad kért tevékenységet csak "sysopok" végezhetik el.
-Lásd $1.',
 'retrievedfrom'         => 'A lap eredeti címe "$1"',
 'youhavenewmessages'    => '$1 van. ($2)',
 'newmessageslink'       => 'Új üzeneted',
@@ -237,7 +284,7 @@ Ne felejtsd el átnézni a személyes {{SITENAME}} beállításaidat.',
 'loginproblem'          => '<b>Valami probléma van a belépéseddel.</b><br />Kérlek, próbáld ismét!',
 'alreadyloggedin'       => '<strong>Kedves $1, már be vagy lépve!</strong><br />',
 'login'                 => 'Belépés',
-'loginprompt'           => 'Engedélyezned kell a cookie-kat, hogy bejelentkezhess a {{SITENAME}}BA.',
+'loginprompt'           => 'Engedélyezned kell a cookie-kat, hogy bejelentkezhess a {{grammar:ba|{{SITENAME}}}}.',
 'userlogin'             => 'Belépés',
 'logout'                => 'Kilépés',
 'userlogout'            => 'Kilépés',
@@ -262,7 +309,7 @@ Ne felejtsd el átnézni a személyes {{SITENAME}} beállításaidat.',
 'nocookieslogin'        => 'A(z) {{SITENAME}} cookie-kat ("sütiket") használ az azonosításhoz, de te ezeket letiltottad. Engedélyezd őket, majd próbálkozz ismét.',
 'noname'                => 'Nem adtál meg érvényes felhasználói nevet.',
 'loginsuccesstitle'     => 'Sikeres belépés',
-'loginsuccess'          => 'Beléptél a {{SITENAME}}BA "$1"-ként.',
+'loginsuccess'          => 'Beléptél a {{grammar:ba|{{SITENAME}}}} "$1"-ként.',
 'nosuchuser'            => 'Nincs olyan felhasználó hogy "$1".
 Ellenőrizd a gépelést, vagy készíts új nevet a fent látható űrlappal.',
 'wrongpassword'         => 'A megadott jelszó helytelen.',
@@ -570,7 +617,7 @@ mást, amit fontosnak tartasz. Ha egy képet töltöttél fel, így tudod beille
 'sitestats'             => 'Server statisztika',
 'userstats'             => 'Felhasználói statisztikák',
 'sitestatstext'         => 'Az adatbázisban összesen \'\'\'$1\'\'\' lap található.
-Ebben benne vannak a „vita”-lapok, a {{SITENAME}}ROL szóló lapok, a
+Ebben benne vannak a „vita”-lapok, a {{grammar:rol|{{SITENAME}}}} szóló lapok, a
 nagyon rövid („csonk”) lapok, átirányítások, és más olyan lapok, amik vélhetően nem
 számítanak igazi lapnak.
 Ezeket nem számítva \'\'$2\'\' lapunk van.
@@ -628,7 +675,7 @@ $7 [http://meta.wikimedia.org/wiki/Help:Job_queue elvégzetlen feladat] van.',
 'move'                  => 'Átmozgat',
 'movethispage'          => 'Mozgasd ezt a lapot',
 'unusedimagestext'      => '<p>Vedd figyelembe azt hogy más
-lapok - mint például a nemzetközi {{SITENAME}}K - közvetlenül
+lapok - mint például a nemzetközi {{grammar:k|{{SITENAME}}}} - közvetlenül
 hivatkozhatnak egy file URL-jére, ezért szerepelhet itt annak
 ellenére hogy aktívan használják.</p>',
 'unusedcategoriestext'  => 'A következő kategóriákban egyetlen cikk, illetve alkategória sem szerepel.',
@@ -807,7 +854,6 @@ Az utolsó szerkesztést [[User:$3|$3]] ([[User talk:$3|vita]]) végezte.',
 'rights'                => 'Rights:',
 'already_sysop'         => 'Ez a felhasználó már adminisztrátor.',
 'already_bureaucrat'    => 'Ez a felhasználó már bürokrata.',
-'already_steward'       => 'Ez a felhasználó már helytartó.',
 'movepage'              => 'Lap mozgatása',
 'movepagetext'          => 'A lentebb található űrlap segítségével lehetséges egy lapot átnevezni, és átmozgatni a teljes történetével együtt egy új névre. A régi név átirányítássá válik az új szócikkre. A régi szócikkre hivatkozások nem változnak meg; győződj meg arról, hogy nem hagysz magad után a régi szócikkre hivatkozó linkeket. A te feladatod biztosítani, hogy a linkek oda mutassanak, ahova kell nekik.
 
