@@ -24,9 +24,9 @@ require_once( 'SpecialLanguages.i18n.php' );
 
 function wfSpecialManageLanguages() {
 	# Add messages
-	global $wgMessageCache, $wgLangMessages, $IP;
-	foreach( $wgLangMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $wgLangMessages[$key], $key );
+	global $wgMessageCache, $wgLanguageManagerMessages, $IP;
+	foreach( $wgLanguageManagerMessages as $key => $value ) {
+		$wgMessageCache->addMessages( $wgLanguageManagerMessages[$key], $key );
 	}
 	require_once "$IP/includes/SpecialPage.php";
 

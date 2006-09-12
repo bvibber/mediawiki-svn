@@ -1,14 +1,17 @@
 <?php
 /**
- * Internationalisation file for Renameuser extension.
+ * Internationalisation file for Language Manager extension.
  *
  * @package MediaWiki
  * @subpackage Extensions
 */
 
-$wgLangMessages = array();
+$wgLanguageManagerMessages = array();
 
-$wgLangMessages['en'] = array(
-	'langman_title'=>'Language manager',
+$wgLanguageManagerMessages['en'] = array(
+	'langman_title' => 'Language manager',
+);
+$wgLanguageManagerMessages['he'] = array(
+	'langman_title' => 'מנהל שפות',
 );
 ?>
