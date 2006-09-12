@@ -189,7 +189,7 @@ function relationExists($definedMeaning1Id, $relationTypeId, $definedMeaning2Id)
 }
 
 function createRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
-	$relationId = getRelationID($definedMeaning1Id, $relationTypeId, $definedMeaning2Id);
+	$relationId = getRelationId($definedMeaning1Id, $relationTypeId, $definedMeaning2Id);
 	
 	if ($relationId == 0)
 		$relationId = newObjectId('uw_meaning_relations');
@@ -212,10 +212,26 @@ function removeRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id)
 				" AND remove_transaction_id IS NULL");
 }
 
+function getClassMembershipId($classMemberId, $classId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT class_membership_id FROM uw_class_membership " .
+								"WHERE class_mid=$classId AND class_member_mid=$classMemberId");
+
+	if ($classMembership = $dbr->fetchObject($queryResult))
+		return $classMembership->class_membership_id;
+	else
+		return 0;
+}
+
 function createClassMembership($classMemberId, $classId) {
+	$classMembershipId = getClassMembershipId($classMemberId, $classId);
+	
+	if ($classMembershipId == 0)
+		$classMembershipId = newObjectId('uw_class_membership');
+
 	$dbr =& wfGetDB(DB_MASTER);
-	$sql = "INSERT INTO uw_class_membership(class_mid, class_member_mid, add_transaction_id) " .
-			"VALUES ($classId, $classMemberId, ". getUpdateTransactionId() .")";
+	$sql = "INSERT INTO uw_class_membership(class_membership_id, class_mid, class_member_mid, add_transaction_id) " .
+			"VALUES ($classMembershipId, $classId, $classMemberId, ". getUpdateTransactionId() .")";
 	$dbr->query($sql);
 }
 
