@@ -36,8 +36,12 @@ function wfSpecialManageLanguages() {
 		}
 		
 		function execute( $par ) {
-			global $wgOut, $wgRequest,$wgTitle;
+			global $wgOut, $wgRequest, $wgTitle, $wgUser;
 			$wgOut->setPageTitle(wfMsg('langman_title'));
+			if(!$wgUser->isAllowed('addlanguage')) {
+				$wgOut->addHTML('You do not have permission to change language settings.');
+				return false;
+			}
 			$action=$wgRequest->getText('action');
 			if(!$action) {
 				$wgOut->addWikiText('Type the language code and the English name below:');
