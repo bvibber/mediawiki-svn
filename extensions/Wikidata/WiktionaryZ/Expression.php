@@ -14,17 +14,13 @@ class Expression {
 		$this->languageId = $languageId;
 	}
 	
-	function getPageTitle() {
-		return str_replace(' ', '_', $this->spelling);
-	}
-	
 	function createNewInDatabase() {
 		$this->pageId = $this->createPage();
 		createInitialRevisionForPage($this->pageId, 'Created by adding expression');
 	}
 	
 	function createPage() {
-		return createPage(16, $this->getPageTitle(), $this->languageId);
+		return createPage(Namespace::getIndexForName("WiktionaryZ"), getPageTitle($this->spelling), $this->languageId);
 	}
 	
 	function isBoundToDefinedMeaning($definedMeaningId) {
@@ -39,6 +35,17 @@ class Expression {
 		if (!$this->isBoundToDefinedMeaning($definedMeaningId)) 
 			$this->bindToDefinedMeaning($definedMeaningId, $endemicMeaning);		
 	}
+}
+
+function getExpression($expressionId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT spelling, language_id " .
+								" FROM uw_expression_ns " .
+								" WHERE uw_expression_ns.expression_id=$expressionId".
+								" AND " . getLatestTransactionRestriction('uw_expression_ns'));
+	$expressionRecord = $dbr->fetchObject($queryResult);
+	$expression = new Expression($expressionId, $expressionRecord->spelling, $expressionRecord->language_id);
+	return $expression; 
 }
 
 function newObjectId($table) {
@@ -69,6 +76,10 @@ function createExpressionId($spelling, $languageId) {
 	return $expressionId;		
 }
 
+function getPageTitle($spelling) {
+	return str_replace(' ', '_', $spelling);
+}
+
 function createPage($namespace, $title, $languageId) {
 	$dbr = &wfGetDB(DB_MASTER);
 	$title = $dbr->addQuotes($title);
@@ -86,7 +97,6 @@ function setPageLatestRevision($pageId, $latestRevision) {
 	$sql = "update page set page_latest=$latestRevision where page_id=$pageId";	
 	$dbr->query($sql);
 }
-
 function createInitialRevisionForPage($pageId, $comment) {
 	global
 		$wgUser;
@@ -435,6 +445,10 @@ function addDefinedMeaning($definingExpressionId) {
 	$dbr = &wfGetDB(DB_MASTER);
 	$dbr->query("INSERT INTO uw_defined_meaning(defined_meaning_id, expression_id, add_transaction_id) values($definedMeaningId, $definingExpressionId, ". getUpdateTransactionId() .")");
 
+	$expression = getExpression($definingExpressionId);
+	$pageId = createPage(Namespace::getIndexForName("DefinedMeaning"), getPageTitle("$expression->spelling ($definedMeaningId)"), $expression->languageId);
+	createInitialRevisionForPage($pageId, 'Created by adding defined meaning');
+	
 	return $definedMeaningId;
 }
 
