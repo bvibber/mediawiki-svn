@@ -14,7 +14,7 @@ class Search extends DefaultWikidataApplication {
 		parent::view();
 
 		$spelling = $wgTitle->getText();
-		$wgOut->addHTML('<h1>Defined meanings matching <i>'. $spelling . '</i></h1>');
+		$wgOut->addHTML('<h1>Words matching <i>'. $spelling . '</i> and associated meanings</h1>');
 		$wgOut->addHTML('<p>Showing only a maximum of 100 matches.</p>');
 		$wgOut->addHTML($this->searchText($spelling));
 	}
@@ -41,30 +41,43 @@ function getDefinedMeaningAsRelation($queryResult) {
 		$idAttribute;
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$spellingAttribute = new Attribute("spelling", "Spelling", "short-text");
+	$spellingAttribute = new Attribute("found-word", "Found word", "short-text");
 	$languageAttribute = new Attribute("language", "Language", "language");
 	
-	$expressionStructure = new Structure($languageAttribute, $spellingAttribute);
+	$expressionStructure = new Structure($spellingAttribute, $languageAttribute);
 	$expressionAttribute = new Attribute("expression", "Expression", new RecordType($expressionStructure));
+	
+	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", "defined-meaning");
 	$definitionAttribute = new Attribute("definition", "Definition", "definition");
 	
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $expressionAttribute, $definitionAttribute), new Structure($idAttribute));
+	$meaningStructure = new Structure($definedMeaningAttribute, $definitionAttribute);
+	$meaningAttribute = new Attribute("meaning", "Meaning", new RecordSetType($meaningStructure));
+
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $expressionAttribute, $meaningAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
 		$expressionRecord = new ArrayRecord($expressionStructure);
 		$expressionRecord->setAttributeValue($spellingAttribute, $row->spelling);
 		$expressionRecord->setAttributeValue($languageAttribute, $row->language_id);
 		
-		$recordSet->addRecord(array($row->defined_meaning_id, $expressionRecord, getDefinedMeaningDefinition($row->defined_meaning_id)));
+		$meaningRecord = new ArrayRecord($meaningStructure);
+		$meaningRecord->setAttributeValue($definedMeaningAttribute, $row->defined_meaning_id);
+		$meaningRecord->setAttributeValue($definitionAttribute, getDefinedMeaningDefinition($row->defined_meaning_id));
+
+		$recordSet->addRecord(array($row->defined_meaning_id, $expressionRecord, $meaningRecord));
 	}			
 
 	$expressionEditor = new RecordTableCellEditor($expressionAttribute);
-	$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
 	$expressionEditor->addEditor(new SpellingEditor($spellingAttribute, new SimplePermissionController(false), false));
+	$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
+
+	$meaningEditor = new RecordTableCellEditor($meaningAttribute);
+	$meaningEditor->addEditor(new DefinedMeaningEditor($definedMeaningAttribute, new SimplePermissionController(false), false));
+	$meaningEditor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 
 	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
 	$editor->addEditor($expressionEditor);
-	$editor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
+	$editor->addEditor($meaningEditor);
 
 	return array($recordSet, $editor);		
 }

@@ -122,8 +122,10 @@ function definedMeaningAsLink($definedMeaningId) {
 		$wgUser;
 
 	if ($definedMeaningId > 0) {
-//		return createLink("DefinedMeaning", $definedMeaningId, definedMeaningExpression($definedMeaningId));		
-		return spellingAsLink(definedMeaningExpression($definedMeaningId));
+		$prettyDefinedMeaningExpression = definedMeaningExpression($definedMeaningId);
+		list($definingExpression, $definingExpressionLanguage) = definingExpression($definedMeaningId);
+		
+		return createLink("DefinedMeaning", "$definingExpression ($definedMeaningId)", $prettyDefinedMeaningExpression);
 	}
 	else
 		return "";
