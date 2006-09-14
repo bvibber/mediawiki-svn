@@ -2166,7 +2166,7 @@ class Article {
 		
 		// If this is some user's CSS or JS subpage, invalidate their cache
 		// to ensure the view is properly updated.
-		if( $this->mTitle->isCssJsSubpage() ) {
+		if( $this->mTitle->isValidCssJsSubpage() ) {
 			$pageName = $this->mTitle->getText();
 			wfDebug( __METHOD__ . ": CSS/JS subpage '$pageName'...\n" );
 			

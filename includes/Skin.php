@@ -376,9 +376,9 @@ class Skin extends Linker {
 	/**
 	 * Collect the various fun site and user js bits
 	 */
-	function getUserJs() {
+	function getUserJs( $preview=false ) {
 		global $wgUseSiteJs, $wgAllowUserJs;
-		return $this->getGeneratedStuff( 'js', $wgUseSiteJs, $wgAllowUserJs );
+		return $this->getGeneratedStuff( 'js', $wgUseSiteJs, $wgAllowUserJs, $preview );
 	}
 
 	/**
@@ -388,7 +388,11 @@ class Skin extends Linker {
 		global $wgStylePath;
 		$s = "<style type='text/css'>/*<![CDATA[*/\n"; # <-- Hide the styles from Netscape 4 without hiding them from IE/Mac
 		$s .= "@import \"" . $wgStylePath . '/' . $this->getStylesheet() . "\";\n";
-		$s .= "@import \"" . $this->makeGeneratedUrl( 'css' ) . "\";\n";
+		if( $wgOut->previewCss ) {
+			$s .= $this->doGetUserStyles( $wgOut->previewCss );
+		} else {
+			$s .= "@import \"" . $this->makeGeneratedUrl( 'css' ) . "\";\n";
+		}
 		$s .= "/*]]>*/</style>\n";
 		return $s;
 	}
@@ -396,18 +400,19 @@ class Skin extends Linker {
 	/**
 	 * Some styles that are set by user through the user settings interface.
 	 */
-	function doGetUserStyles() {
+	function doGetUserStyles( $preview=false ) {
 		global $wgUseSiteCss, $wgAllowUserCss;
 		return
 			$this->reallyDoGetUserStyles() .
-			$this->getGeneratedStuff( 'css', $wgUseSiteCss, $wgAllowUserCss );
+			$this->getGeneratedStuff( 'css', $wgUseSiteCss, $wgAllowUserCss, $preview );
 	}
 	
 	/**
 	 * Combine the global, per-skin, and per-user customizations for either
 	 * CSS or JS inclusions.
+	 * An optional preview section may replace the current page of user CSS/JS
 	 */
-	private function getGeneratedStuff( $type, $perSite, $perUser ) {
+	private function getGeneratedStuff( $type, $perSite, $perUser, $preview=false ) {
 		global $wgUser;
 		$commonKey = 'common.' . $type;
 		$skinKey = $this->getSkinName() . '.' . $type;
@@ -429,11 +434,17 @@ class Skin extends Linker {
 		}
 		if( $perUser && $wgUser->isLoggedIn() ) {
 			$title = Title::makeTitle( NS_USER, $wgUser->getName() . '/' . $skinKey );
-			$rev = Revision::newFromTitle( $title );
-			if( $rev ) {
-				$s .= "/* " . $title->getPrefixedText() . " */\n" . $rev->getText() . "\n\n";
+			if( $preview === false ) {
+				$rev = Revision::newFromTitle( $title );
+				if( $rev ) {
+					$s .= "/* " . $title->getPrefixedText() . " */\n" .
+						$rev->getText() . "\n\n";
+				} else {
+					$s .= "/* no " . $title->getPrefixedText() . " */\n\n";
+				}
 			} else {
-				$s .= "/* no " . $title->getPrefixedText() . " */\n\n";
+				$s .= "/* Preview for " . $title->getPrefixedText() . " */\n" .
+					$preview . "\n\n";
 			}
 		}
 		return $s;

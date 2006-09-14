@@ -1371,8 +1371,10 @@ END
 		if ( $this->isCssJsSubpage ) {
 			if(preg_match("/\\.css$/", $wgTitle->getText() ) ) {
 				$previewtext = wfMsg('usercsspreview');
+				$wgOut->previewCss = $this->textbox1;
 			} else if(preg_match("/\\.js$/", $wgTitle->getText() ) ) {
 				$previewtext = wfMsg('userjspreview');
+				$wgOut->previewJs = $this->textbox1;
 			}
 			$parserOptions->setTidy(true);
 			$parserOutput = $wgParser->parse( $previewtext , $wgTitle, $parserOptions );

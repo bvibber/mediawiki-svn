@@ -16,7 +16,7 @@ class OutputPage {
 	var $mSubtitle, $mRedirect, $mStatusCode;
 	var $mLastModified, $mETag, $mCategoryLinks;
 	var $mScripts, $mLinkColours, $mPageLinkTitle;
-
+	
 	var $mSuppressQuickbar;
 	var $mOnloadHandler;
 	var $mDoNothing;
@@ -29,6 +29,10 @@ class OutputPage {
 	
 	var $mNewSectionLink = false;
 	var $mNoGallery = false;
+
+	// Public properties
+	public $previewCss = false;
+	public $previewJs = false;
 
 	/**
 	 * Constructor
@@ -84,7 +88,7 @@ class OutputPage {
 		$this->addLink( $linkarr );
 		$haveMeta = true;
 	}
-
+	
 	/**
 	 * checkLastModified tells the client to use the client-cached page if
 	 * possible. If sucessful, the OutputPage is disabled so that

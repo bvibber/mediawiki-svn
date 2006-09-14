@@ -274,9 +274,8 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'userlang', $wgLang->getCode() );
 		$tpl->set( 'pagecss', $this->setupPageCss() );
 		$tpl->setRef( 'usercss', $this->usercss);
-		$tpl->setRef( 'userjs', $this->userjs);
-		$tpl->setRef( 'userjsprev', $this->userjsprev);
-		$tpl->set( 'jsvarurl', $this->makeGeneratedUrl( 'js' ) );
+		$tpl->set( 'userjs', $this->userjs );
+		$tpl->set( 'userjsprev', $this->userjsprev );
 		$newtalks = $wgUser->getNewMessageLinks();
 
 		if (count($newtalks) == 1 && $newtalks[0]["wiki"] === $wgDBname) {
@@ -908,10 +907,14 @@ class SkinTemplate extends Skin {
 			$sitecss .= '@import "' . $wgStylePath . '/' . $this->stylename . '/rtl.css";' . "\n";
 		}
 		
-		$sitecss .= '@import "' . $this->makeGeneratedUrl( 'css' ) . '";' . "\n";
 
-
-		# If we use the site's dynamic CSS, throw that in, too
+		global $wgOut;
+		if( $wgOut->previewCss === false ) {
+			$sitecss .= '@import "' . $this->makeGeneratedUrl( 'css' ) . '";' . "\n";
+		} else {
+			# XXX: additional security check/prompt?
+			$sitecss .= $this->doGetUserStyles( $wgOut->previewCss );
+		}
 
 		# If we use any dynamic CSS, make a little CDATA block out of it.
 		$this->usercss = "/*<![CDATA[*/\n" . $sitecss . '/*]]>*/';
@@ -922,23 +925,13 @@ class SkinTemplate extends Skin {
 	 * @private
 	 */
 	function setupUserJs() {
-		return false;
-
-		$fname = 'SkinTemplate::setupUserJs';
-		wfProfileIn( $fname );
-
-		global $wgRequest, $wgAllowUserJs, $wgJsMimeType;
-		$action = $wgRequest->getText('action');
-
-		if( $wgAllowUserJs && $this->loggedin ) {
-			if( $this->mTitle->isJsSubpage() and $this->userCanPreview( $action ) ) {
-				# XXX: additional security check/prompt?
-				$this->userjsprev = '/*<![CDATA[*/ ' . $wgRequest->getText('wpTextbox1') . ' /*]]>*/';
-			} else {
-				$this->userjs = $this->makeUrl($this->userpage.'/'.$this->skinname.'.js', 'action=raw&ctype='.$wgJsMimeType.'&dontcountme=s');
-			}
+		global $wgOut;
+		if( $wgOut->previewJs ) {
+			# XXX: additional security check/prompt?
+			$this->userjsprev = '/*<![CDATA[*/ ' . $this->getUserJs( $wgOut->previewJs ) . ' /*]]>*/';
+		} else {
+			$this->userjs = $this->makeGeneratedUrl( 'js' );
 		}
-		wfProfileOut( $fname );
 	}
 
 	/**

@@ -68,20 +68,17 @@ class MonoBookTemplate extends QuickTemplate {
 		<?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
                 
 		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?1"><!-- wikibits js --></script>
-<?php	if($this->data['jsvarurl'  ]) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('jsvarurl'  ) ?>"><!-- site js --></script>
-<?php	} ?>
-<?php	if($this->data['pagecss'   ]) { ?>
+<?php	if($this->data['userjs'    ]) { ?>
+		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('userjs'  ) ?>"><!-- site js --></script>
+<?php	}
+		if($this->data['userjsprev']) { ?>
+		<script type="<?php $this->text('jsmimetype') ?>"><?php $this->html('userjsprev') ?></script>
+<?php	}
+		if($this->data['pagecss'   ]) { ?>
 		<style type="text/css"><?php $this->html('pagecss'   ) ?></style>
 <?php	}
 		if($this->data['usercss'   ]) { ?>
 		<style type="text/css"><?php $this->html('usercss'   ) ?></style>
-<?php	}
-		if($this->data['userjs'    ]) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('userjs' ) ?>"></script>
-<?php	}
-		if($this->data['userjsprev']) { ?>
-		<script type="<?php $this->text('jsmimetype') ?>"><?php $this->html('userjsprev') ?></script>
 <?php	}
 		if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>
 		<!-- Head Scripts -->
