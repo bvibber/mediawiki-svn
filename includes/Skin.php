@@ -139,7 +139,7 @@ class Skin extends Linker {
 
 	/** @return string path to the skin stylesheet */
 	function getStylesheet() {
-		return 'common/wikistandard.css?1';
+		return 'common/wikistandard.css?2';
 	}
 
 	/** @return string skin name */
@@ -323,16 +323,27 @@ class Skin extends Linker {
 		$r = Skin::makeGlobalVariablesScript( $vars );
                 
 		$r .= "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/wikibits.js\"></script>\n";
-		if( $wgAllowUserJs && $wgUser->isLoggedIn() ) {
-			$userpage = $wgUser->getUserPage();
-			$userjs = htmlspecialchars( $this->makeUrl(
-				$userpage->getPrefixedText().'/'.$this->getSkinName().'.js',
-				'action=raw&ctype='.$wgJsMimeType));
-			$r .= '<script type="'.$wgJsMimeType.'" src="'.$userjs."\"></script>\n";
-		}
+		$userjs = htmlspecialchars( $this->makeGeneratedUrl( 'js' ) );
+		$r .= '<script type="'.$wgJsMimeType.'" src="'.$userjs."\"></script>\n";
 		return $r;
 	}
 
+	/**
+	 * URLs for generated CSS or JavaScript inclusions
+	 * @param string $type 'js' or 'css'
+	 * @return string: relative URL
+	 */
+	function makeGeneratedUrl( $type ) {
+		global $wgUser, $wgCacheEpoch;
+		$logged = $wgUser->isLoggedIn();
+		return $this->makeUrl( '-',
+			'action=raw' .
+			'&gen=' . $type .
+			'&useskin=' . $this->getSkinName() .
+			($logged ? '&smaxage=0' : '') .
+			'&ts=' . ($logged ? $wgUser->mTouched : $wgCacheEpoch) );
+	}
+	
 	/**
 	 * To make it harder for someone to slip a user a fake
 	 * user-JavaScript or user-CSS preview, a random token
@@ -359,34 +370,26 @@ class Skin extends Linker {
 
 	# get the user/site-specific stylesheet, SkinTemplate loads via RawPage.php (settings are cached that way)
 	function getUserStylesheet() {
-		global $wgStylePath, $wgRequest, $wgContLang, $wgSquidMaxage;
-		$sheet = $this->getStylesheet();
-		$action = $wgRequest->getText('action');
-		$s = "@import \"$wgStylePath/$sheet\";\n";
-		if($wgContLang->isRTL()) $s .= "@import \"$wgStylePath/common/common_rtl.css\";\n";
-
-		$query = "usemsgcache=yes&action=raw&ctype=text/css&smaxage=$wgSquidMaxage";
-		$s .= '@import "' . $this->makeNSUrl( 'Common.css', $query, NS_MEDIAWIKI ) . "\";\n" .
-			'@import "'.$this->makeNSUrl( ucfirst( $this->getSkinName() . '.css' ), $query, NS_MEDIAWIKI ) . "\";\n";
-
-		$s .= $this->doGetUserStyles();
-		return $s."\n";
+		return $this->doGetUserStyles();
 	}
 
 	/**
-	 * placeholder, returns generated js in monobook
+	 * Collect the various fun site and user js bits
 	 */
-	function getUserJs() { return; }
+	function getUserJs() {
+		global $wgUseSiteJs, $wgAllowUserJs;
+		return $this->getGeneratedStuff( 'js', $wgUseSiteJs, $wgAllowUserJs );
+	}
 
 	/**
 	 * Return html code that include User stylesheets
 	 */
 	function getUserStyles() {
-		$s = "<style type='text/css'>\n";
-		$s .= "/*/*/ /*<![CDATA[*/\n"; # <-- Hide the styles from Netscape 4 without hiding them from IE/Mac
-		$s .= $this->getUserStylesheet();
-		$s .= "/*]]>*/ /* */\n";
-		$s .= "</style>\n";
+		global $wgStylePath;
+		$s = "<style type='text/css'>/*<![CDATA[*/\n"; # <-- Hide the styles from Netscape 4 without hiding them from IE/Mac
+		$s .= "@import \"" . $wgStylePath . '/' . $this->getStylesheet() . "\";\n";
+		$s .= "@import \"" . $this->makeGeneratedUrl( 'css' ) . "\";\n";
+		$s .= "/*]]>*/</style>\n";
 		return $s;
 	}
 
@@ -394,27 +397,51 @@ class Skin extends Linker {
 	 * Some styles that are set by user through the user settings interface.
 	 */
 	function doGetUserStyles() {
-		global $wgUser, $wgUser, $wgRequest, $wgTitle, $wgAllowUserCss;
-
+		global $wgUseSiteCss, $wgAllowUserCss;
+		return
+			$this->reallyDoGetUserStyles() .
+			$this->getGeneratedStuff( 'css', $wgUseSiteCss, $wgAllowUserCss );
+	}
+	
+	/**
+	 * Combine the global, per-skin, and per-user customizations for either
+	 * CSS or JS inclusions.
+	 */
+	private function getGeneratedStuff( $type, $perSite, $perUser ) {
+		global $wgUser;
+		$commonKey = 'common.' . $type;
+		$skinKey = $this->getSkinName() . '.' . $type;
 		$s = '';
-
-		if( $wgAllowUserCss && $wgUser->isLoggedIn() ) { # logged in
-			if($wgTitle->isCssSubpage() && $this->userCanPreview( $wgRequest->getText( 'action' ) ) ) {
-				$s .= $wgRequest->getText('wpTextbox1');
+		if( $perSite ) {
+			$common = wfMsgForContentNoTrans( $commonKey );
+			if( wfEmptyMsg( $commonKey, $common ) ) {
+				$s .= "/* no MediaWiki:$commonKey */\n\n";
 			} else {
-				$userpage = $wgUser->getUserPage();
-				$s.= '@import "'.$this->makeUrl(
-					$userpage->getPrefixedText().'/'.$this->getSkinName().'.css',
-					'action=raw&ctype=text/css').'";'."\n";
+				$s .= "/* MediaWiki:$commonKey */\n$common\n\n";
+			}
+			
+			$skin = wfMsgForContentNoTrans( $skinKey );
+			if( wfEmptyMsg( $skinKey, $skin ) ) {
+				$s .= "/* no MediaWiki:$skinKey */\n\n";
+			} else {
+				$s .= "/* MediaWiki:$skinKey */\n$skin\n\n";
 			}
 		}
-
-		return $s . $this->reallyDoGetUserStyles();
+		if( $perUser && $wgUser->isLoggedIn() ) {
+			$title = Title::makeTitle( NS_USER, $wgUser->getName() . '/' . $skinKey );
+			$rev = Revision::newFromTitle( $title );
+			if( $rev ) {
+				$s .= "/* " . $title->getPrefixedText() . " */\n" . $rev->getText() . "\n\n";
+			} else {
+				$s .= "/* no " . $title->getPrefixedText() . " */\n\n";
+			}
+		}
+		return $s;
 	}
 
 	function reallyDoGetUserStyles() {
 		global $wgUser;
-		$s = '';
+		$s = "/* Styles for user preferences */\n";
 		if (($undopt = $wgUser->getOption("underline")) != 2) {
 			$underline = $undopt ? 'underline' : 'none';
 			$s .= "a { text-decoration: $underline; }\n";
@@ -438,6 +465,7 @@ a.stub:after, #quickbar a.stub:after {
 	color: #772233;
 	text-decoration: $underline;
 }
+
 END;
 		}
 		if( $wgUser->getOption( 'justify' ) ) {
@@ -449,6 +477,7 @@ END;
 		if( !$wgUser->getOption( 'editsection' ) ) {
 			$s .= ".editsection { display: none; }\n";
 		}
+		$s .= "\n";
 		return $s;
 	}
 

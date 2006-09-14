@@ -430,3 +430,21 @@ table.multipageimage td {
 .imagelist .TablePager_col_img_description { white-space: normal }
 .imagelist th.TablePager_sort { background-color: #ccccff }
 
+
+/* Right-to-left workarounds */
+
+/* js pref toc */
+.rtl #preftoc { float: right; }
+/* workaround for moz bug, displayed bullets on left side */
+.rtl #preftoc li { list-style: none; }
+.rtl #prefcontrol { float: right; }
+.rtl fieldset.prefsection,
+.rtl fieldset.operaprefsection { 
+    margin-left: 0;
+    margin-right: 18em;
+}
+/* page history */
+.rtl #pagehistory span.user { 
+    margin-right: 1.4em;
+    margin-left: 0.4em;
+}

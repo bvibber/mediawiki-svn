@@ -94,6 +94,10 @@ class SkinTemplate extends Skin {
 	var $template;
 
 	/**#@-*/
+	
+	function getSkinName() {
+		return $this->skinname;
+	}
 
 	/**
 	 * Setup the base parameters...
@@ -272,16 +276,7 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'usercss', $this->usercss);
 		$tpl->setRef( 'userjs', $this->userjs);
 		$tpl->setRef( 'userjsprev', $this->userjsprev);
-		global $wgUseSiteJs;
-		if ($wgUseSiteJs) {
-			if($this->loggedin) {
-				$tpl->set( 'jsvarurl', $this->makeUrl('-','action=raw&smaxage=0&gen=js') );
-			} else {
-				$tpl->set( 'jsvarurl', $this->makeUrl('-','action=raw&gen=js') );
-			}
-		} else {
-			$tpl->set('jsvarurl', false);
-		}
+		$tpl->set( 'jsvarurl', $this->makeGeneratedUrl( 'js' ) );
 		$newtalks = $wgUser->getNewMessageLinks();
 
 		if (count($newtalks) == 1 && $newtalks[0]["wiki"] === $wgDBname) {
@@ -904,45 +899,22 @@ class SkinTemplate extends Skin {
 		$fname = 'SkinTemplate::setupUserCss';
 		wfProfileIn( $fname );
 
-		global $wgRequest, $wgAllowUserCss, $wgUseSiteCss, $wgContLang, $wgSquidMaxage, $wgStylePath, $wgUser;
+		global $wgRequest, $wgContLang, $wgSquidMaxage, $wgStylePath, $wgUser;
 
 		$sitecss = '';
-		$usercss = '';
-		$siteargs = '&maxage=' . $wgSquidMaxage;
-
-		# Add user-specific code if this is a user and we allow that kind of thing
-
-		if ( $wgAllowUserCss && $this->loggedin ) {
-			$action = $wgRequest->getText('action');
-
-			# if we're previewing the CSS page, use it
-			if( $this->mTitle->isCssSubpage() and $this->userCanPreview( $action ) ) {
-				$siteargs = "&smaxage=0&maxage=0";
-				$usercss = $wgRequest->getText('wpTextbox1');
-			} else {
-				$usercss = '@import "' .
-				  $this->makeUrl($this->userpage . '/'.$this->skinname.'.css',
-								 'action=raw&ctype=text/css') . '";' ."\n";
-			}
-
-			$siteargs .= '&ts=' . $wgUser->mTouched;
+		
+		if( $wgContLang->isRTL() ) {
+			// FIXME: remove this rubbish too, merge to main CSS
+			$sitecss .= '@import "' . $wgStylePath . '/' . $this->stylename . '/rtl.css";' . "\n";
 		}
+		
+		$sitecss .= '@import "' . $this->makeGeneratedUrl( 'css' ) . '";' . "\n";
 
-		if ($wgContLang->isRTL()) $sitecss .= '@import "' . $wgStylePath . '/' . $this->stylename . '/rtl.css";' . "\n";
 
 		# If we use the site's dynamic CSS, throw that in, too
-		if ( $wgUseSiteCss ) {
-			$query = "usemsgcache=yes&action=raw&ctype=text/css&smaxage=$wgSquidMaxage";
-			$sitecss .= '@import "' . $this->makeNSUrl('Common.css', $query, NS_MEDIAWIKI) . '";' . "\n";
-			$sitecss .= '@import "' . $this->makeNSUrl(ucfirst($this->skinname) . '.css', $query, NS_MEDIAWIKI) . '";' . "\n";
-			$sitecss .= '@import "' . $this->makeUrl('-','action=raw&gen=css' . $siteargs) . '";' . "\n";
-		}
 
 		# If we use any dynamic CSS, make a little CDATA block out of it.
-
-		if ( !empty($sitecss) || !empty($usercss) ) {
-			$this->usercss = "/*<![CDATA[*/\n" . $sitecss . $usercss . '/*]]>*/';
-		}
+		$this->usercss = "/*<![CDATA[*/\n" . $sitecss . '/*]]>*/';
 		wfProfileOut( $fname );
 	}
 
@@ -950,6 +922,8 @@ class SkinTemplate extends Skin {
 	 * @private
 	 */
 	function setupUserJs() {
+		return false;
+
 		$fname = 'SkinTemplate::setupUserJs';
 		wfProfileIn( $fname );
 
@@ -983,44 +957,6 @@ class SkinTemplate extends Skin {
 		return $out;
 	}
 
-	/**
-	 * returns css with user-specific options
-	 * @public
-	 */
-
-	function getUserStylesheet() {
-		$fname = 'SkinTemplate::getUserStylesheet';
-		wfProfileIn( $fname );
-
-		$s = "/* generated user stylesheet */\n";
-		$s .= $this->reallyDoGetUserStyles();
-		wfProfileOut( $fname );
-		return $s;
-	}
-
-	/**
-	 * @public
-	 */
-	function getUserJs() {
-		$fname = 'SkinTemplate::getUserJs';
-		wfProfileIn( $fname );
-
-		global $wgStylePath;
-		$s = '/* generated javascript */';
-		$s .= "var skin = '{$this->skinname}';\nvar stylepath = '{$wgStylePath}';";
-		$s .= '/* MediaWiki:'.ucfirst($this->skinname)." */\n";
-
-		// avoid inclusion of non defined user JavaScript (with custom skins only)
-		// by checking for default message content
-		$msgKey = ucfirst($this->skinname).'.js';
-		$userJS = wfMsgForContent($msgKey);
-		if ( !wfEmptyMsg( $msgKey, $userJS ) ) {
-			$s .= $userJS;
-		}
-
-		wfProfileOut( $fname );
-		return $s;
-	}
 }
 
 /**
