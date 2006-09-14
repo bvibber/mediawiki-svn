@@ -214,15 +214,27 @@ function getCollapsableId(elementName) {
 	return 'collapsable-' + elementName;
 }
 
-function getNameOf(element) {
-	if(element.id)
-		return element.id.substr(9, element.id.length - 9);
+function getCollapsableClass(element) {
+	if(element) {
+		var splitClassNames = element.className.split(' ');
+		var index = 0;
+
+		while(splitClassNames[index].indexOf("collapsable") == -1) {
+			index++;
+		}
+		return stripPrefix(splitClassNames[index], "-");
+	}
 	else
 		return "";
 }
 
-function getTypeOf(element) {
-	return getNameOf(element).replace(/-\d+/g, "");
+function stripPrefix(source, delimiter) {
+	if(source) {
+		var position = source.indexOf(delimiter) + 1;
+		return source.substr(position, source.length - position);
+	}
+	else
+		return "";
 }
 
 function toggle(element, event) {
@@ -232,16 +244,16 @@ function toggle(element, event) {
 		source = event.srcElement;
 
 	if (!isFormElement(source)) {
-		var elementName = getNameOf(element);
+		var elementName = stripPrefix(element.id, "-");
 		var collapsableNode = document.getElementById(getCollapsableId(elementName));
 		if (collapsableNode.style.display == 'inline' ||
 			(collapsableNode.style.display != 'none' &&
-			isCssClassExpanded(getTypeOf(element)))) {
-			setDefaultCollapsed(getTypeOf(element));
+			isCssClassExpanded(getCollapsableClass(element)))) {
+			setDefaultCollapsed(getCollapsableClass(element));
 			show(element, false);
 		}
 		else {
-			setExpanded(getTypeOf(element));
+			setExpanded(getCollapsableClass(element));
 			show(element, true);
 		}
 
@@ -250,7 +262,7 @@ function toggle(element, event) {
 }
 
 function show(element, isShown) {
-	var elementName = getNameOf(element);
+	var elementName = stripPrefix(element.id, "-");
 	var collapsableNode = document.getElementById(getCollapsableId(elementName));
 	var expandedPrefixNode = getExpandedPrefix(element);
 	var collapsedPrefixNode = getCollapsedPrefix(element);
@@ -275,16 +287,6 @@ function getCollapsedPrefix(element) {
 	return document.getElementById(element.id.replace('collapse-', 'prefix-collapsed-'));
 }
 
-function shouldExpand(element) {
-	var candidateElementType = getTypeOf(element);
-	var expansionElementTypes = getExpansionElementTypes();
-	for(var i=0; i<expansionElementTypes.length; i++)
-		if(expansionElementTypes[i] == "expand-" + candidateElementType)
-			return true;
-
-	return false;
-}
-
 function expandEditors(event) {
 	var expansionElementTypes = getExpansionElementTypes();
 	for(var i=0; i<expansionElementTypes.length; i++)
@@ -293,6 +295,16 @@ function expandEditors(event) {
 		else
 			expandCssClass(expansionElementTypes[i].substr(9), false);
 }
+
+/*function shouldExpand(element) {
+	var candidateElementType = getTypeOf(element);
+	var expansionElementTypes = getExpansionElementTypes();
+	for(var i=0; i<expansionElementTypes.length; i++)
+		if(expansionElementTypes[i] == "expand-" + candidateElementType)
+			return true;
+
+	return false;
+}*/
 
 function expandCssClass(cssClass, isExpanded) {
 	var rulesKey;

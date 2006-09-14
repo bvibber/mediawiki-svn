@@ -121,11 +121,11 @@ function getDefinedMeaningTextAttributeValuesEditor() {
 
 function getExpressionMeaningsEditor($attribute, $allowAdd) {
 	global
-		$textAttribute;
+		$definedMeaningIdAttribute;
 	
 	$definedMeaningEditor = getDefinedMeaningEditor();
 
-	$definedMeaningCaptionEditor = new TextEditor($textAttribute, new SimplePermissionController(false), false, true, 100);
+	$definedMeaningCaptionEditor = new DefinedMeaningHeaderEditor($definedMeaningIdAttribute, new SimplePermissionController(false), true, 75);
 	$definedMeaningCaptionEditor->setAddText("New exact meaning");
 
 	$expressionMeaningsEditor = new RecordSetListEditor($attribute, new SimplePermissionController(true), $allowAdd, false, $allowAdd, new ExpressionMeaningController(), 3, false);
@@ -140,15 +140,21 @@ function getExpressionsEditor($spelling) {
 		$expressionMeaningsAttribute, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute, $expressionAttribute, $languageAttribute, $expressionsAttribute;
 
 	$expressionMeaningsRecordEditor = new RecordListEditor($expressionMeaningsAttribute, 3);
-	$expressionMeaningsRecordEditor->addEditor(getExpressionMeaningsEditor($expressionExactMeaningsAttribute, true));
+	
+	$exactMeaningsEditor = getExpressionMeaningsEditor($expressionExactMeaningsAttribute, true);
+	$expressionMeaningsRecordEditor->addEditor($exactMeaningsEditor);
 	$expressionMeaningsRecordEditor->addEditor(getExpressionMeaningsEditor($expressionApproximateMeaningsAttribute, false));
-
+	
+	$expressionMeaningsRecordEditor->expandEditor($exactMeaningsEditor);
+	
 	$expressionEditor = new RecordSpanEditor($expressionAttribute, ': ', ' - ');
 	$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
 
 	$expressionsEditor = new RecordSetListEditor($expressionsAttribute, new SimplePermissionController(true), true, false, false, new ExpressionController($spelling), 2, true);
 	$expressionsEditor->setCaptionEditor($expressionEditor);
 	$expressionsEditor->setValueEditor($expressionMeaningsRecordEditor);
+
+
 
 	return $expressionsEditor;
 }
