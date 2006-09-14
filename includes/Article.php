@@ -2163,6 +2163,24 @@ class Article {
 				}
 			}
 		}
+		
+		// If this is some user's CSS or JS subpage, invalidate their cache
+		// to ensure the view is properly updated.
+		if( $this->mTitle->isCssJsSubpage() ) {
+			$pageName = $this->mTitle->getText();
+			wfDebug( __METHOD__ . ": CSS/JS subpage '$pageName'...\n" );
+			
+			$ownerName = substr( $pageName, 0, strpos( $pageName, '/' ) );
+			$owner = User::newFromName( $ownerName );
+			if( is_null( $owner ) || $owner->isAnon() ) {
+				wfDebug( __METHOD__ . ": CSS/JS has no owner '$ownerName'\n" );
+			} else {
+				wfDebug( __METHOD__ . ": CSS/JS found its owner '$ownerName'\n" );
+				$owner->invalidateCache();
+				$owner->saveSettings();
+			}
+		}
+		
 
 		if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
 			$wgMessageCache->replace( $shortTitle, $text );
