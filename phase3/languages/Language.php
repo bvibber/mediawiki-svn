@@ -738,7 +738,7 @@ class Language {
 	
 	function ucwordsCallbackWiki($matches){
 		global $wikiUpperChars; 
-		return strtr( "$matches[0]" , $wikiUpperChars );
+		return strtr( $matches[0] , $wikiUpperChars );
 	}
 
 	function ucfirst( $str ) {

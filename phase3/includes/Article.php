@@ -329,7 +329,7 @@ class Article {
 			$this->mLatest      = $data->page_latest;
 			$this->mNoTitleConvert = $data->page_no_title_convert;
 
-			if($this->mNoTitleConvert && sizeof($wgContLang->getVariants())>1)
+			if($this->mNoTitleConvert)
 				$wgContLang->setNoTitleConvert();
 		} else {
 			if ( is_object( $this->mTitle ) ) {
@@ -1040,14 +1040,16 @@ class Article {
 			$conditions,
 			__METHOD__ );
 
+		$succ = $dbw->affectedRows() != 0;
+
 		// check if no title magic word has been changed
-		if($this->mNoTitleConvert != $this->mNoTitleConvertParser){
+		if($succ && $this->mNoTitleConvert != $this->mNoTitleConvertParser){
 			// Clear caches
 			Article::onArticleCreate( $this->mTitle );
 		}
 
 		wfProfileOut( __METHOD__ );
-		return ( $dbw->affectedRows() != 0 );
+		return $succ;
 	}
 
 	/**
