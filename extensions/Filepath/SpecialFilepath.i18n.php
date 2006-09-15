@@ -48,6 +48,11 @@ $wgFilepathMessages['nl'] = array(
 	'filepath_page'   => 'Bestand:',
 	'filepath_submit' => 'Zoek op',
 );
+$wgFilepathMessages['ru'] = array(
+	'filepath'        => 'Путь к файлу',
+	'filepath_page'   => 'Файл:',
+	'filepath_submit' => 'Путь',
+);
 $wgFilepathMessages['zh-cn'] = array(
 	'filepath'        => '文件路径',
 	'filepath_page'   => '文件名：',

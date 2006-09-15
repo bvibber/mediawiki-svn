@@ -61,4 +61,15 @@ sinn_krißß wadd_erruß kütt.',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'De ennere Kommëntaare fott_loohße',
 );
+$wgExpandTemplatesMessages['ru'] = array(
+	'expandtemplates'                  => 'Развёртка шаблонов',
+	'expand_templates_intro'           => 'Эта служебная страница преобразует текст, рекурсивно разворачивая все шаблоны в нём.
+Также развёртке подвергаются все функции парсера (например, <nowiki>{{</nowiki>#if:...}} и переменные (<nowiki>{{</nowiki>CURRENTDAY}} и т.&nbsp;п.) — в общем, всё внутри двойных фигурных скобок.
+Это производится корректным образом, с вызовом соответствующего обработчика MediaWiki.',
+	'expand_templates_title'           => 'Заголовок страницы для <nowiki>{{</nowiki>PAGENAME}} и т.&nbsp;п.:',
+	'expand_templates_input'           => 'Входной текст:',
+	'expand_templates_output'          => 'Результат:',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Удалить комментарии',
+);
 ?>
