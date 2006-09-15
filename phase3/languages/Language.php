@@ -713,6 +713,34 @@ class Language {
 		return iconv( $in, $out, $string );
 	}
 
+	// callback functions for uc(), lc(), ucwords(), ucwordbreaks()
+	function ucwordbreaksCallbackAscii($matches){
+		return $this->ucfirst($matches[1]);
+	}
+	
+	function ucwordbreaksCallbackMB($matches){
+		return mb_strtoupper($matches[0]);
+	}
+	
+	function ucCallback($matches){
+		global $wikiUpperChars; 
+		return strtr( $matches[1] , $wikiUpperChars );
+	}
+	
+	function lcCallback($matches){
+		global $wikiLowerChars; 
+		return strtr( $matches[1] , $wikiLowerChars );
+	}
+	
+	function ucwordsCallbackMB($matches){
+		return mb_strtoupper($matches[0]);
+	}
+	
+	function ucwordsCallbackWiki($matches){
+		global $wikiUpperChars; 
+		return strtr( "$matches[0]" , $wikiUpperChars );
+	}
+
 	function ucfirst( $str ) {
 		return self::uc( $str, true );
 	}
@@ -732,7 +760,7 @@ class Language {
 				$x = $first ? '^' : '';
 				return preg_replace_callback(
 					"/$x([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/",
-					"ucCallback",
+					array($this,"ucCallback"),
 					$str
 				);
 			} else
@@ -758,7 +786,7 @@ class Language {
 				$x = $first ? '^' : '';
 				return preg_replace_callback(
 					"/$x([A-Z]|[\\xc0-\\xff][\\x80-\\xbf]*)/",
-					"lcCallback",
+					array($this,"lcCallback"),
 					$str
 				);
 			} else
@@ -782,13 +810,13 @@ class Language {
 			if ( function_exists( 'mb_strtoupper' ) )
 				return preg_replace_callback(
 					$replaceRegexp,
-					"ucwordsCallbackMB",
+					array($this,"ucwordsCallbackMB"),
 					$str
 				);
 			else 
 				return preg_replace_callback(
 					$replaceRegexp,
-					"ucwordsCallbackWiki",
+					array($this,"ucwordsCallbackWiki"),
 					$str
 				);
 		}
@@ -812,20 +840,20 @@ class Language {
 			if ( function_exists( 'mb_strtoupper' ) )
 				return preg_replace_callback(
 					$replaceRegexp,
-					"ucwordbreaksCallbackMB",
+					array($this,"ucwordbreaksCallbackMB"),
 					$str
 				);
 			else 
 				return preg_replace_callback(
 					$replaceRegexp,
-					"ucwordsCallbackWiki",
+					array($this,"ucwordsCallbackWiki"),
 					$str
 				);
 		}
 		else
 			return preg_replace_callback(
 			'/\b([\w\x80-\xff]+)\b/',
-			"ucwordbreaksCallbackAscii",
+			array($this,"ucwordbreaksCallbackAscii"),
 			$str );
 	}
 
@@ -1635,35 +1663,6 @@ class Language {
 		wfProfileOut( __METHOD__ );
 		return array( $wikiUpperChars, $wikiLowerChars );
 	}
-}
-
-// callback functions for uc(), lc(), ucwords(), ucwordbreaks()
-function ucwordbreaksCallbackAscii($matches){
-	global $wgContLang;
-	return $wgContLang->ucfirst($matches[1]);
-}
-
-function ucwordbreaksCallbackMB($matches){
-	return mb_strtoupper($matches[0]);
-}
-
-function ucCallback($matches){
-	global $wikiUpperChars; 
-	return strtr( $matches[1] , $wikiUpperChars );
-}
-
-function lcCallback($matches){
-	global $wikiLowerChars; 
-	return strtr( $matches[1] , $wikiLowerChars );
-}
-
-function ucwordsCallbackMB($matches){
-	return mb_strtoupper($matches[0]);
-}
-
-function ucwordsCallbackWiki($matches){
-	global $wikiUpperChars; 
-	return strtr( "$matches[0]" , $wikiUpperChars );
 }
 
 ?>
