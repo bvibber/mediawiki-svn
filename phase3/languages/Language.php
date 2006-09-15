@@ -730,9 +730,9 @@ class Language {
 			if ( self::isMultibyte( $str ) ) {
 				list( $wikiUpperChars ) = $this->getCaseMaps();
 				$x = $first ? '^' : '';
-				return preg_replace(
-					"/$x([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
-					"strtr( \"\$1\" , \$wikiUpperChars )",
+				return preg_replace_callback(
+					"/$x([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/",
+					"ucCallback",
 					$str
 				);
 			} else
@@ -756,9 +756,9 @@ class Language {
 			if ( self::isMultibyte( $str ) ) {
 				list( , $wikiLowerChars ) = self::getCaseMaps();
 				$x = $first ? '^' : '';
-				return preg_replace(
-					"/$x([A-Z]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
-					"strtr( \"\$1\" , \$wikiLowerChars )",
+				return preg_replace_callback(
+					"/$x([A-Z]|[\\xc0-\\xff][\\x80-\\xbf]*)/",
+					"lcCallback",
 					$str
 				);
 			} else
@@ -775,16 +775,20 @@ class Language {
 		if ( self::isMultibyte( $str ) ) {
 			$str = self::lc($str);
 
+			// regexp to find first letter in each word (i.e. after each space)
+			$replaceRegexp = "/^([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)| ([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/";
+
 			// function to use to capitalize a single char
 			if ( function_exists( 'mb_strtoupper' ) )
-				$replaceCall = "mb_strtoupper(\"\$0\")";
+				return preg_replace_callback(
+					$replaceRegexp,
+					"ucwordsCallbackMB",
+					$str
+				);
 			else 
-				$replaceCall = "strtr( \"\$0\" , \$wikiUpperChars )";
-
-			// find first letter in each word (i.e. after each space)
-			return preg_replace(
-					"/^([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)| ([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
-					$replaceCall,
+				return preg_replace_callback(
+					$replaceRegexp,
+					"ucwordsCallbackWiki",
 					$str
 				);
 		}
@@ -799,28 +803,29 @@ class Language {
 		if (self::isMultibyte( $str ) ) {
 			$str = self::lc($str);
 
-			if ( function_exists( 'mb_strtoupper' ) )
-				$replaceCall = "mb_strtoupper(\"\$0\")";
-			else 
-				$replaceCall = "strtr( \"\$0\" , \$wikiUpperChars )";
-
 			// since \b doesn't work for UTF-8, we explicitely define word break chars
 			$breaks= "[ \-\(\)\}\{\.,\?!]";
 
 			// find first letter after word break
-			return preg_replace(
-					"/^([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)|$breaks([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
-					$replaceCall,
+			$replaceRegexp = "/^([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)|$breaks([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/";
+
+			if ( function_exists( 'mb_strtoupper' ) )
+				return preg_replace_callback(
+					$replaceRegexp,
+					"ucwordbreaksCallbackMB",
+					$str
+				);
+			else 
+				return preg_replace_callback(
+					$replaceRegexp,
+					"ucwordsCallbackWiki",
 					$str
 				);
 		}
 		else
 			return preg_replace_callback(
 			'/\b([\w\x80-\xff]+)\b/',
-			create_function( '$matches', '
-				global $wgContLang;
-				return $wgContLang->ucfirst($matches[1]);
-				' ),
+			"ucwordbreaksCallbackAscii",
 			$str );
 	}
 
@@ -1630,6 +1635,35 @@ class Language {
 		wfProfileOut( __METHOD__ );
 		return array( $wikiUpperChars, $wikiLowerChars );
 	}
+}
+
+// callback functions for uc(), lc(), ucwords(), ucwordbreaks()
+function ucwordbreaksCallbackAscii($matches){
+	global $wgContLang;
+	return $wgContLang->ucfirst($matches[1]);
+}
+
+function ucwordbreaksCallbackMB($matches){
+	return mb_strtoupper($matches[0]);
+}
+
+function ucCallback($matches){
+	global $wikiUpperChars; 
+	return strtr( $matches[1] , $wikiUpperChars );
+}
+
+function lcCallback($matches){
+	global $wikiLowerChars; 
+	return strtr( $matches[1] , $wikiLowerChars );
+}
+
+function ucwordsCallbackMB($matches){
+	return mb_strtoupper($matches[0]);
+}
+
+function ucwordsCallbackWiki($matches){
+	global $wikiUpperChars; 
+	return strtr( "$matches[0]" , $wikiUpperChars );
 }
 
 ?>
