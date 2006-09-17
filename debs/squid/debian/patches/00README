@@ -1,0 +1,24 @@
+
+Upstream patches against the release, that will be integrated into
+the next stable release (http://www.squid-cache.org/Versions/v2/2.5/bugs/)
+
+[currently none]
+
+Debian specific patches:
+All patches that were in the debian squid-2.3.4 and squid-2.4.7 have been
+applied to squid-2.5.1 as well, if they hadn't been integrated yet.
+
+cf.data.debian.patch	Debian specific squid.conf patches
+dfl-error-dir.patch	Default error dir is under /usr/lib/squid for Debian
+no_append_domain_localhost.patch
+			Don't apply "append_domain" setting to "localhost"
+			in unqualified URLs.
+smb_auth.patch		Read password with '-r' so backslashes work
+			Patch awk regexp to read correct field from nmblookup
+syslog.patch		Log to daemon.log instead of local4.log
+unlinkd.patch		Only run unlinkd for diskd and ufs storage methods
+
+Not applied (yet?):
+
+vms-ftp.patch.NOT-YET	Not finished and not working
+

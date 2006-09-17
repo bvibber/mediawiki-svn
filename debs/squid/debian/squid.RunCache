@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# RunCache	Run squid. Script used to restart it if it died.
+#		This is overly cautious - with new versions of
+#		squid, it just doesn't die. So we don't restart ;)
+#
+# Version:	@(#)RunCache  2.10  23-Mar-2001  miquels@cistron.nl
+#
+
+#
+#	Squid gets run with the arguments passed to "RunCache".
+#	Set some defaults args if none were passed. If a filename
+#	was passed, treat it as configfile location (backwards compat).
+#
+case "$1" in
+	"")
+		set -- -D -sNY
+		;;
+	/*)
+		set -- -D -sNY -f "$1"
+		;;
+esac
+
+PIDFILE=/var/run/runcache.pid
+PATH=/usr/lib/squid:/bin:/sbin:/usr/sbin:/usr/bin
+export PATH
+umask 022
+
+#
+#	Just to be sure, check if squid is not already running.
+#
+if [ -f /var/run/squid.pid ]
+then
+	spid=`cat /var/run/squid.pid`
+	kill -CONT $spid 2>/dev/null
+	if [ $? = 0 ]
+	then
+		#echo "RunCache: squid is already running." >&2
+		exit 0
+	fi
+fi
+
+rm -f $PIDFILE
+echo $$ > $PIDFILE
+
+# 23-Mar-2001 - removed the while loop. This whole script should be
+# removed, but older /etc/init.d/squid scripts might still refer
+# to it, alas. -- miquels.
+
+/usr/sbin/squid "$@"
+

@@ -1,0 +1,3 @@
+/etc/init.d/squid
+/etc/logrotate.d/squid
+/etc/resolvconf/update-libc.d/squid

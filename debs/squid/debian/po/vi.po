@@ -1,0 +1,250 @@
+# Vietnamese translation for squid.
+# Copyright © 2005 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2005.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: squid 2.5.10-1\n"
+"Report-Msgid-Bugs-To: luigi@debian.org\n"
+"POT-Creation-Date: 2006-07-12 15:35+0200\n"
+"PO-Revision-Date: 2005-07-17 16:13+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: LocFactoryEditor 1.2.2\n"
+
+#. Type: note
+#. Description
+#: ../templates:1001
+msgid ""
+"The http_anonymizer directive has been replaced with header_replace and "
+"header_access."
+msgstr ""
+"Chị thị «http_anonymizer» đã được thay thế bằng «header_replace» và "
+"«header_access»."
+
+#. Type: note
+#. Description
+#: ../templates:1001
+msgid ""
+"The http_anonymizer directive that was present in squid 2.1 and 2.2 doesn't "
+"exist anymore in squid 2.3 and up. It has been replaced with header_replace "
+"and header_access that provide more fine-grained control over HTTP headers. "
+"Right now, your squid doesn't anonymize the HTTP headers anymore so you "
+"probably want to fix this. The new format is explained in the new 2.5 config "
+"file, of which you probably have a copy in /usr/share/doc/squid/examples/"
+"squid.conf."
+msgstr ""
+"Chỉ thị «http_anonymizer» (làm cho vô danh http) có trong squid phiên bản "
+"2.1 và 2.2 không còn tồn tại lại trong squid phiên bản 2.3 và sau. Nó đã "
+"được thay thế bằng «header_replace» (thay thế phần đầu) và "
+"«header_access» (truy cập phần đầu) mà cung cấp khả năng điều khiển phần đầu "
+"HTTP một cách chính xác hơn. Lúc bây giờ, trình squid của bạn không còn làm "
+"cho vô danh lại phần đầu HTTP, thì bạn sẽ muốn sửa. Khuôn dạng mới được diễn "
+"tả trong tập tin cấu hình 2.5 mới: nên có một bản sao trong «/usr/share/doc/"
+"squid/examples/squid.conf»."
+
+#. Type: note
+#. Description
+#: ../templates:2001
+msgid ""
+"The anonymize_headers and fake_user_agent directives have been replaced with "
+"header_access and header_replace."
+msgstr ""
+"Hai chỉ thị «anonymize_headers» và «fake_user_agent» đã được thay thế bằng "
+"«header_access» và «header_replace»."
+
+#. Type: note
+#. Description
+#: ../templates:2001
+msgid ""
+"The anonymize_headers and fake_user_agent directives that were present in "
+"squid 2.3 and 2.4 don't exist anymore in squid 2.5 and up. They have been "
+"replaced  with header_replace and header_access that provide more fine-"
+"grained control  over HTTP headers. Right now, your squid doesn't anonymize "
+"the HTTP headers anymore so you probably want to fix this. The new format is "
+"explained in the new 2.5 config file, of which you probably have a copy in /"
+"usr/share/doc/squid/examples/squid.conf."
+msgstr ""
+"Hai chỉ thị «anonymize_headers» (làm cho vô danh phần đầu) và "
+"«fake_user_agent» (tác nhân người dùng giả) có trong squid phiên bản 2.3 và "
+"2.4 không còn tồn tại lại trong squid phiên bản 2.5 và sau. Nó đã được thay "
+"thế bằng «header_replace» (thay thế phần đầu) và «header_access» (truy cập "
+"phần đầu) mà cung cấp khả năng điều khiển phần đầu HTTP một cách chính xác "
+"hơn. Lúc bây giờ, trình squid của bạn không còn làm cho vô danh lại phần đầu "
+"HTTP, thì bạn sẽ muốn sửa. Khuôn dạng mới được diễn tả trong tập tin cấu "
+"hình 2.5 mới: nên có một bản sao trong «/usr/share/doc/squid/examples/squid."
+"conf»."
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid "There is no automatic upgrade path to squid 2.5."
+msgstr "Không có đường dẫn tự động nâng cấp nào đến squid phiên bản 2.5."
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid "             SQUID 2.5 INSTALLATION WARNING"
+msgstr "             CẢNH BÁO CÀI ĐẶT SQUID 2.5"
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid ""
+"You are upgrading squid from an 1.x version to the 2.5 version. The 1.x and "
+"2.5 versions are NOT compatible. The structure of the cache directory is "
+"different and the configuration file \"squid.conf\" is not entirely "
+"compatible."
+msgstr ""
+"Lúc này bạn đang nâng cấp trình squid từ phiên bản 1.x đến 2.5. Hai phiên "
+"bản này KHÔNG tương thích với nhau. Cấu trúc của thư mục nhớ tạm là khác "
+"nhau, và tập tin cấu hình «squid.conf» không tương thích hoàn toàn."
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid ""
+"If you have an old cache directory, please quit NOW and remove the old cache "
+"by hand (in /var/spool/squid). Then re-install this squid version."
+msgstr ""
+"Nếu bạn có một thư mục nhớ tạm cũ, hãy thoát BÂY GIỜ và tự loại bỏ nó (ra «/"
+"var/spool/squid»). Sau đó thì hãy cài đặt lại phiên bản squid này."
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid ""
+"Also, please accept the new configuration file. After upgrading your old "
+"configuration file can be found in \"/etc/squid.conf.dpkg-old\". Then you "
+"have to edit the new configuration file by hand to match your old "
+"configuration."
+msgstr ""
+"Hơn nữa, hãy chấp nhận tập tin cấu hình mới. Sau khi nâng cấp, có thể tìm "
+"tập tin cấu hình cũ trong «/etc/squid.conf.dpkg-old». Bạn cần phải tự sửa "
+"đổi tập tin cấu hình mới để khớp với cấu hình cũ ấy."
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid "Do you want to quit now?"
+msgstr "Bạn có muốn thoát ngây bây giờ không?"
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid "squid-cgi now uses config file for target ACL"
+msgstr "squid-cgi lúc bây giờ dùng tập tin cấu hình cho ACL đích"
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid ""
+"squid-cgi now checks a configuration file before connecting to the target "
+"host. Only allowed target will be contacted. Please add hosts you want to "
+"access to the file /etc/squid/cachemgr.conf, one per line in the form"
+msgstr ""
+"squid-cgi lúc bây giờ kiểm tra một tập tin cấu hình trước khi kết nối đến "
+"máy đích. Nó sẽ liên lạc với chỉ những đích được phép thôi. Bạn hãy thêm các "
+"máy bạn muốn truy cập vào tập tin «/etc/squid/cachemgr.conf», chỉ một máy "
+"trên mỗi dòng trong đơn."
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid "  hostname:port"
+msgstr "  tên_máy:cổng"
+
+#. Type: boolean
+#. Description
+#: ../templates:5001
+msgid "Upgrade squid.conf automatically?"
+msgstr "Tự động nâng cấp «squid.conf» không?"
+
+#. Type: boolean
+#. Description
+#: ../templates:5001
+msgid ""
+"Incompatible settings have been found in the existing squid.conf file; they "
+"will prevent squid from starting or working correctly. However, this setup "
+"can try to modify them to work again. Do you want to apply the changes?"
+msgstr ""
+"Đã tìm thiết lập không tương thích trong tập tin «squid.conf» đã có: chúng "
+"sẽ ngăn cản squid khởi chạy hay hoạt động cho đúng. Tuy nhiên, trình này có "
+"thể cố sửa. Bạn có muốn áp dụng các thay đổi cần thiết không?"
+
+#. Type: note
+#. Description
+#: ../templates:6001
+msgid "The authenticate_program directive has been replaced with auth_param."
+msgstr "Chỉ thị «authenticate_program» đã được thay thế bằng «auth_param»."
+
+#. Type: note
+#. Description
+#: ../templates:6001
+msgid ""
+"The authenticate_program directive that was present in squid <= 2.4 doesn't "
+"exist anymore in squid 2.5 and up. All authentication directives have been "
+"replaced with auth_param. Right now, your squid doesn't authenticate users "
+"anymore so you probably want to fix this. The new format is explained in the "
+"new 2.5 config file, of which you probably have a copy in /usr/share/doc/"
+"squid/examples/squid.conf."
+msgstr ""
+"Chỉ thị «authenticate_program» (xác thực chương trình) có trong squid phiên "
+"bản ≤ 2.4 không còn tồn tại lại trong squid phiên bản 2.5 và sau. Mọi chỉ "
+"thị xác thực đã được thay thế bằng «auth_param» (tham số xác thực). Lúc bây "
+"giờ, trình squid của bạn không còn xác thực lại người dùng, thì bạn sẽ muốn "
+"sửa. Khuôn dạng mới được diễn tả trong tập tin cấu hình 2.5 mới: nên có một "
+"bản sao trong «/usr/share/doc/squid/examples/squid.conf»."
+
+#. Type: note
+#. Description
+#: ../templates:7001
+msgid "Warning: squid may crash when logfiles size is bigger than 2GB."
+msgstr ""
+"Cảnh báo: trình squid có thể bẻ khóa khi tập tin bản ghi có kích thước hơn "
+"2GB."
+
+#. Type: note
+#. Description
+#: ../templates:7001
+msgid ""
+"Squid may crash if any of the logfiles grows bigger than 2GB. Please "
+"configure /etc/logrotate.d/squid accordingly to your site's traffic."
+msgstr ""
+"Trình squid có thể bẻ khóa nếu tập tin bản ghi nào trở thành lớn hơn 2GB. "
+"Bạn hãy cấu hình «/etc/logrotate.d/squid» một cách thích hợp với tải nơi bạn."
+
+#. Type: boolean
+#. Description
+#: ../templates:8001
+msgid "Fix permissions of cache_dir?"
+msgstr "Sửa quyền hạn của «cache_dir» không?"
+
+#. Type: boolean
+#. Description
+#: ../templates:8001
+msgid ""
+"Values for cache_effective_user and/or cache_effective_group in config file  "
+"are incompatible with owner/group of cache directories. Do you want to "
+"automatically fix permissions on cache directory?"
+msgstr ""
+"Giá trị cho «cache_effective_user» (người dùng có quyền truy cập bộ nhớ tạm) "
+"và/hay «cache_effective_group» (nhóm như thế) trong tập tin cấu hình không "
+"có tương thích với người sở hữu/nhóm của thư mục nhớ tạm. Bạn có muốn tự "
+"động sửa quyền truy cập thư mục nhớ tạm không?"
+
+#. Type: boolean
+#. Description
+#: ../templates:8001
+msgid ""
+"WARNING: If you specified a cache directory different from /var/spool/squid "
+"and selected some other directory used by other programs (e.g. /tmp), this "
+"could affect those programs."
+msgstr ""
+"CẢNH BÁO: nếu bạn đã ghi rõ một thư mục nhớ tạm khác với «/var/spool/squid», "
+"và đã chọn một thư mục khác mà chương trình khác có dùng (v.d. «/tmp»), thì "
+"thiết lập này có thể tác động lên những chương trình ấy."
