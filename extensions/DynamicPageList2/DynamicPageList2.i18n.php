@@ -120,7 +120,7 @@ $wgDPL2Messages['he'] = array(
 	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
-	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "שגיאה: לא ניתן לבצע פעולות לוגיות על דפים ללא קטגוריות (למשל, עם הפרמטר 'קטגוריה') כיוון שתצוגת $0 אינה קיימת במסד הנתונים! עזרה: מנהל מסד הנתונים צריך להריץ את השאילתה: <code>$1</code>.",
 	
 	// WARNINGS
 	/**
