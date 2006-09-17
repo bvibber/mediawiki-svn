@@ -124,20 +124,22 @@ def join_multicast_group(sock, multicast_group):
 def print_help():
     print 'Usage:\n\tudpmcast [ options ] { addresses | forward rules }\n'
     print 'Options:'
-    print '\t-d\tFork into the background (become a daemon)'
+    print '\t-d\t\tFork into the background (become a daemon)'
     print '\t-p {portnr}\tUDP port number to listen on (default is 4827)'
-    print '\t-j {multicast address}\tMulticast group to join on startup'
-    print '\t-u {username}Change uid'
-    print '\t-g {group}Change group'
-    print '\t-v\tBe more verbose'
+    print '\t-j {mcast addr}\tMulticast group to join on startup'
+    print '\t-u {username}\tChange uid'
+    print '\t-g {group}\tChange group'
+    print '\t-t {ttl}\tSet multicast TTL for outgoing multicast packets'
+    print '\t-v\t\tBe more verbose'
 
 if __name__ == '__main__':
     host = ''
     portnr = 4827
     multicast_group = None
+    multicast_ttl = None
     daemon = False
     user = group = None
-    opts = 'dhj:p:vu:g:'
+    opts = 'dhj:p:vu:g:t:'
 
     # Parse options
     options, arguments = getopt.getopt(sys.argv[1:], opts)
@@ -161,6 +163,8 @@ if __name__ == '__main__':
                 group = value
             elif option == '-v':
                 debugging = True
+            elif option == '-t':
+                multicast_ttl = int(value)
 
     try:
         # Change uid and gid
@@ -178,9 +182,15 @@ if __name__ == '__main__':
         # Open the UDP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         sock.bind((host, portnr))
+        
+        # Set the multicast TTL if requested
+        if multicast_ttl is not None:
+            sock.setsockopt(socket.IPPROTO_IP,
+                    socket.IP_MULTICAST_TTL,
+                    multicast_ttl)  
 
         # Join a multicast group if requested
-        if multicast_group != None:
+        if multicast_group is not None:
             debug('Joining multicast group ' + multicast_group)
             join_multicast_group(sock, multicast_group)
 
