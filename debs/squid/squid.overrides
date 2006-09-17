@@ -1,5 +1,0 @@
-squid: non-standard-file-perm usr/share/doc/squid/examples/squid.conf 0600 != 0644
-squid: setgid-binary usr/lib/squid/pam_auth 2750 proxy/shadow
-squid: setgid-binary usr/lib/squid/getpwnam_auth 2750 proxy/shadow
-squid: non-standard-dir-perm var/log/squid/ 0750 != 0755
-squid: non-standard-dir-perm var/spool/squid/ 0750 != 0755

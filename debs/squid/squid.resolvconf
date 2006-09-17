@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# Make squid aware of changes to resolv.conf
-/etc/init.d/squid reload || true
