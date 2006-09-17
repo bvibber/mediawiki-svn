@@ -19,13 +19,13 @@
  * @author w:de:Benutzer:Unendlich 
  * @author m:User:Dangerman <cyril.dangerville@gmail.com>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version 0.6.4
+ * @version 0.7.0
  */
 
 /*
  * Current version
  */
-define('DPL2_VERSION', '0.6.4');
+define('DPL2_VERSION', '0.7.0');
 
 /**
  * Register the extension with MediaWiki
@@ -61,6 +61,11 @@ $wgDPL2Options = array(
 	'addpagetoucheddate' => array('default' => 'false', 'false', 'true'),
 	'adduser' => array('default' => 'false', 'false', 'true'),
 	/**
+	 * category= Cat11 | Cat12 | ...
+	 * category = Cat21 | Cat22 | ...
+	 * ...
+	 * [Special value] catX='' (empty string without quotes) means pseudo-categoy of Uncategorized pages
+	 * Means pages have to be in category (Cat11 OR (inclusive) Cat2 OR...) AND (Cat21 OR Cat22 OR...) AND...
 	 * @todo define 'category' options (retrieve list of categories from 'categorylinks' table?)
 	 */
 	'category' => NULL,
@@ -120,11 +125,27 @@ $wgDPL2Options = array(
 	 * 'none' mode is implemented as a specific submode of 'inline' with <BR/> as inline text
 	 */
 	'mode' => array('default' => 'unordered', 'category', 'inline', 'none', 'ordered', 'unordered'),
+	/**
+	 * namespace= Ns1 | Ns2 | ...
+	 * [Special value] NsX='' (empty string without quotes) means Main namespace
+	 * Means pages have to be in namespace Ns1 OR Ns2 OR...
+	 */
 	'namespace' => NULL,
 	/**
+	 * notcategory= Cat1
+	 * notcategory = Cat2
+	 * ...
+	 * Means pages can be NEITHER in category Cat1 NOR in Cat2 NOR...
 	 * @todo define 'notcategory' options (retrieve list of categories from 'categorylinks' table?)
 	 */
 	'notcategory' => NULL,
+	/**
+	 * notnamespace= Ns1
+ 	 * notnamespace= Ns2
+ 	 * ...
+	 * [Special value] NsX='' (empty string without quotes) means Main namespace
+	 * Means pages have to be NEITHER in namespace Ns1 NOR Ns2 NOR...
+	*/
 	'notnamespace' => NULL,
 	'order' => array('default' => 'ascending', 'ascending', 'descending'),
 	/**
@@ -166,6 +187,7 @@ $wgDPL2DebugCodes = array(
 	'DPL2_ERR_CATDATEBUTMORETHAN1CAT' => 1,
 	'DPL2_ERR_MORETHAN1TYPEOFDATE' => 1,
 	'DPL2_ERR_WRONGORDERMETHOD' => 1,
+	'DPL2_ERR_NOCLVIEW' => 1,
 	// WARNINGS
 	'DPL2_WARN_UNKNOWNPARAM' => 2,
 	'DPL2_WARN_WRONGPARAM' => 2,
@@ -203,7 +225,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 
 	error_reporting(E_ALL);
 	
-	global $wgDPL2Options, $wgUser, $wgContLang, $wgDPL2MaxCategoryCount, $wgDPL2MinCategoryCount, $wgDPL2MaxResultCount, $wgDPL2AllowUnlimitedCategories, $wgDPL2AllowUnlimitedResults;
+	global  $wgUser, $wgContLang, $wgDPL2Options, $wgDPL2MaxCategoryCount, $wgDPL2MinCategoryCount, $wgDPL2MaxResultCount, $wgDPL2AllowUnlimitedCategories, $wgDPL2AllowUnlimitedResults;
 	
 	// INVALIDATE CACHE
 	$parser->disableCache();
@@ -255,7 +277,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	
 	foreach($aParams as $iParam => $sParam) {
 		
-		$aParam = explode("=", $sParam, 2);
+		$aParam = explode('=', $sParam, 2);
 		if( count( $aParam ) < 2 )
 			continue;
 		$sType = trim($aParam[0]);
@@ -263,26 +285,31 @@ function DynamicPageList2( $input, $params, &$parser ) {
 		
 		switch ($sType) {
 			case 'category':
-				$aCategories = array(); // Categories in one line separated by '|' are linked using 'OR'
-				$aParams = explode("|", $sArg);
+				// Init array of categories to include
+				$aCategories = array();
+				$aParams = explode('|', $sArg);
 				foreach($aParams as $sParam) {
 					$sParam=trim($sParam);
-					$title = Title::newFromText($localParser->transformMsg($sParam, $pOptions));
-					if( $title != NULL )
-						$aCategories[] = $title;
+					if($sParam == '') // include uncategorized pages (special value: empty string)
+						$aCategories[] = '';
+					else {
+						$title = Title::newFromText($localParser->transformMsg($sParam, $pOptions));
+						if( $title != NULL )
+							$aCategories[] = $title->getDbKey();
+					}
 				}
 				if( !empty($aCategories) )
-					$aIncludeCategories[] = $aCategories;	
+					$aIncludeCategories[] = $aCategories;
 				break;
 				
 			case 'notcategory':
 				$title = Title::newFromText($localParser->transformMsg($sArg, $pOptions));
 				if( $title != NULL )
-					$aExcludeCategories[] = $title;
+					$aExcludeCategories[] = $title->getDbKey();
 				break;
 				
 			case 'namespace':
-				$aParams = explode("|", $sArg);
+				$aParams = explode('|', $sArg);
 				foreach($aParams as $sParam) {
 					$sParam=trim($sParam);
 					// Reject pseudo-namespaces (negative indices): Media (-2) and Special (-1). 
@@ -531,10 +558,10 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$sSqlCl_to = '';
 	$sSqlCats = '';
 	$sSqlCl_timestamp = '';
-	$sSqlCl1Table = '';
-	$sSqlCond_page_cl1 = '';
-	$sSqlCl2Table = '';
-	$sSqlCond_page_cl2 = '';
+	$sSqlClHeadTable = '';
+	$sSqlCond_page_cl_head = '';
+	$sSqlClTableForGC = '';
+	$sSqlCond_page_cl_gc = '';
 	$sRevisionTable = $dbr->tableName( 'revision' );
 	$sSqlRevision = '';
 	$sSqlRev_timestamp = '';
@@ -544,22 +571,22 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	foreach($aOrderMethods as $sOrderMethod) {
 		switch ($sOrderMethod) {
 			case 'category':
-				$sSqlCl_to = 'cl1.cl_to, ';
-				$sSqlCl1Table = $sCategorylinksTable . ' AS cl1';
-				$sSqlCond_page_cl1 = 'page_id=cl1.cl_from';
+				$sSqlCl_to = 'cl_head.cl_to, '; // Gives category headings in the result
+				$sSqlClHeadTable = $sCategorylinksTable . ' AS cl_head';
+				$sSqlCond_page_cl_head = 'page_id=cl_head.cl_from';
 				break;
 			case 'firstedit':
-				$sSqlRevision = $sRevisionTable. ', ';
+				$sSqlRevision = $sRevisionTable . ', ';
 				$sSqlRev_timestamp = ', min(rev_timestamp) AS rev_timestamp';
 				$sSqlCond_page_rev = ' AND page_id=rev_page';
 				break;
 			case 'lastedit':
-				$sSqlRevision = $sRevisionTable. ', ';
+				$sSqlRevision = $sRevisionTable . ', ';
 				$sSqlRev_timestamp = ', max(rev_timestamp) AS rev_timestamp';
 				$sSqlCond_page_rev = ' AND page_id=rev_page';
 				break;
 			case 'user':
-				$sSqlRevision = $sRevisionTable. ', ';
+				$sSqlRevision = $sRevisionTable . ', ';
 				break;	
 		}
 	}
@@ -567,64 +594,90 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	if ($bAddFirstCategoryDate)
 		//format cl_timestamp field (type timestamp) to string in same format as rev_timestamp field
 		//to make it compatible with $wgLang->date() function used in function DPL2OutputListStyle() to show "firstcategorydate"
-		$sSqlCl_timestamp = ", DATE_FORMAT( c1.cl_timestamp, '%Y%m%d%H%i%s' ) AS cl_timestamp";
+		$sSqlCl_timestamp = ", DATE_FORMAT(c1.cl_timestamp, '%Y%m%d%H%i%s') AS cl_timestamp";
 	if ($bAddPageTouchedDate)
 		$sSqlPage_touched = ', page_touched';
 	if ($bAddUser)
 		$sSqlRev_user = ', rev_user, rev_user_text';
 	if ($bAddCategories) {
-		$sSqlCats = ", GROUP_CONCAT(DISTINCT cl2.cl_to ORDER BY cl2.cl_to ASC SEPARATOR ' | ') AS cats";
-		$sSqlCl2Table = "$sCategorylinksTable AS cl2";
-		$sSqlCond_page_cl2 = 'page_id=cl2.cl_from';
+		$sSqlCats = ", GROUP_CONCAT(DISTINCT cl_gc.cl_to ORDER BY cl_gc.cl_to ASC SEPARATOR ' | ') AS cats"; // Gives list of all categories linked from each article, if any.
+		$sSqlClTableForGC = $sCategorylinksTable . ' AS cl_gc'; // Categorylinks table used by the Group Concat (GC) function above
+		$sSqlCond_page_cl_gc = 'page_id=cl_gc.cl_from';
 	}
 	
 	// SELECT ... FROM
-	$sSqlSelectFrom = "SELECT DISTINCT " . $sSqlCl_to . "page_namespace, page_title" . $sSqlPage_touched . $sSqlRev_timestamp . $sSqlRev_user . $sSqlCats . $sSqlCl_timestamp . " FROM " . $sSqlRevision . $sPageTable;
+	$sSqlSelectFrom = 'SELECT DISTINCT ' . $sSqlCl_to . 'page_namespace, page_title' . $sSqlPage_touched . $sSqlRev_timestamp . $sSqlRev_user . $sSqlCats . $sSqlCl_timestamp . ' FROM ' . $sSqlRevision . $sPageTable;
 	
-	// JOIN ...	
-	if($bAddCategories || $aOrderMethods[0] == 'category') {
-		$b2tables = ($sSqlCl1Table != '') && ($sSqlCl2Table != '');
-		$sSqlSelectFrom .= ' LEFT JOIN (' .$sSqlCl1Table . ($b2tables ? ', ' : '') . $sSqlCl2Table.') ON ('. $sSqlCond_page_cl1 . ($b2tables ? ' AND ' : '') . $sSqlCond_page_cl2 .')';
+	// JOIN ...
+	if($sSqlClHeadTable != '' || $sSqlClTableForGC != '') {
+		$b2tables = ($sSqlClHeadTable != '') && ($sSqlClTableForGC != '');
+		$sSqlSelectFrom .= ' LEFT OUTER JOIN (' . $sSqlClHeadTable . ($b2tables ? ', ' : '') . $sSqlClTableForGC . ') ON (' . $sSqlCond_page_cl_head . ($b2tables ? ' AND ' : '') . $sSqlCond_page_cl_gc . ')';
 	}
-	$iCurrentTableNumber = 0;
+	
+	// Include categories...
+	// If we include the Uncategorized, we use the 'dpl_clview': VIEW of the categorylinks table where we have cl_to='' (empty string) for all uncategorized pages. This VIEW must have been created by the administrator of the mediawiki DB at installation. See the documentation.
+	$sDplClView = $dbr->tableName( 'dpl_clview' );
+	// If the view is not there, we can't perform logical operations on the Uncategorized.
+	$dpl_clview_exists = false;
+	$res = $dbr->query( "SHOW TABLE STATUS LIKE '" . trim($sDplClView, '`') . "'" );
+	if ($dbr->numRows( $res ) != 0) {
+		$dbr->freeResult($res);
+		$dpl_clview_exists = true;
+	}
+	
+	$iClTable = 0;
 	for ($i = 0; $i < $iIncludeCatCount; $i++) {
-		$sSqlSelectFrom .= " INNER JOIN $sCategorylinksTable AS c" . ($iCurrentTableNumber+1);
-		$sSqlSelectFrom .= ' ON page_id = c' . ($iCurrentTableNumber+1) . '.cl_from';
-		$sSqlSelectFrom .= ' AND (c' . ($iCurrentTableNumber+1) . '.cl_to=' . $dbr->addQuotes( $aIncludeCategories[$i][0]->getDbKey() );
+		$sSqlSelectFrom .= ' INNER JOIN ';
+		// If we want the Uncategorized...
+ 		if( in_array('', $aIncludeCategories[$i]) )
+ 			if($dpl_clview_exists)
+ 				$sSqlSelectFrom .= $sDplClView;
+ 			else {
+ 				$sSqlCreate_dpl_clview = 'CREATE VIEW ' . $sDplClView . " AS SELECT COALESCE(cl_from, page_id) AS cl_from, COALESCE(cl_to, '') AS cl_to FROM " . $sPageTable . ' LEFT OUTER JOIN ' . $sCategorylinksTable . ' ON page_id=cl_from';
+				$output .= $logger->msg(DPL2_ERR_NOCLVIEW, $sDplClView, $sSqlCreate_dpl_clview);
+				return $output;
+			}
+ 		else
+			$sSqlSelectFrom .= $sCategorylinksTable;
+		$sSqlSelectFrom .= ' AS cl' . $iClTable .
+			' ON page_id=cl' . $iClTable . '.cl_from' .
+ 			' AND (cl' . $iClTable . '.cl_to=' . $dbr->addQuotes($aIncludeCategories[$i][0]);
 		for ($j = 1; $j < count($aIncludeCategories[$i]); $j++)
-			$sSqlSelectFrom .= ' OR c' . ($iCurrentTableNumber+1) . '.cl_to=' . $dbr->addQuotes( $aIncludeCategories[$i][$j]->getDbKey() );
+			$sSqlSelectFrom .= ' OR cl' . $iClTable . '.cl_to=' . $dbr->addQuotes($aIncludeCategories[$i][$j]);
 		$sSqlSelectFrom .= ') ';
-		$iCurrentTableNumber++;
+		$iClTable++;
 	}
+	
+	// Exclude categories... and start the WHERE clause on category fields for exclusion of categories
 	$sSqlWhere = ' WHERE 1=1 ';
 	for ($i = 0; $i < $iExcludeCatCount; $i++) {
-		$sSqlSelectFrom .= " LEFT OUTER JOIN $sCategorylinksTable AS c" . ($iCurrentTableNumber+1);
-		$sSqlSelectFrom .= ' ON page_id = c' . ($iCurrentTableNumber+1) . '.cl_from';
-		$sSqlSelectFrom .= ' AND c' . ($iCurrentTableNumber+1) . '.cl_to='.
-		$dbr->addQuotes( $aExcludeCategories[$i]->getDbKey() );
-		$sSqlWhere .= ' AND c' . ($iCurrentTableNumber+1) . '.cl_to IS NULL';
-		$iCurrentTableNumber++;
+		$sSqlSelectFrom .=
+			' LEFT OUTER JOIN ' . $sCategorylinksTable . ' AS cl' . $iClTable .
+			' ON page_id=cl' . $iClTable . '.cl_from' .
+			' AND cl' . $iClTable . '.cl_to=' . $dbr->addQuotes($aExcludeCategories[$i]);
+		$sSqlWhere .= ' AND cl' . $iClTable . '.cl_to IS NULL';
+		$iClTable++;
 	}
 
-	// WHERE ...
+	// WHERE... (actually finish the WHERE clause we may have started if we excluded categories - see above)
 	// Namespace IS ...
 	if ( !empty($aNamespaces)) {
-		$sSqlWhere .= ' AND (page_namespace IN (' . implode (',', $aNamespaces) . '))';
+		$sSqlWhere .= ' AND page_namespace IN (' . implode (', ', $aNamespaces) . ')';
 	}
 	// Namespace IS NOT ...
     if ( !empty($aExcludeNamespaces)) {
-        $sSqlWhere .= ' AND (page_namespace NOT IN (' . implode (',', $aExcludeNamespaces) . '))';
+        $sSqlWhere .= ' AND page_namespace NOT IN (' . implode (', ', $aExcludeNamespaces) . ')';
     }
     // rev_minor_edit IS
     if( isset($sMinorEdits) && $sMinorEdits == 'exclude' )
-		$sSqlWhere .= ' AND rev_minor_edit = 0';
+		$sSqlWhere .= ' AND rev_minor_edit=0';
 	// page_is_redirect IS ...	
 	switch ($sRedirects) {
 		case 'only':
-			$sSqlWhere .= ' AND page_is_redirect = 1';
+			$sSqlWhere .= ' AND page_is_redirect=1';
 			break;
 		case 'exclude':
-			$sSqlWhere .= ' AND page_is_redirect = 0';
+			$sSqlWhere .= ' AND page_is_redirect=0';
 			break;
 	}
 	
@@ -641,10 +694,10 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			$sSqlWhere .= ', ';
 		switch ($sOrderMethod) {
 			case 'category':
-				$sSqlWhere .= 'cl1.cl_to';
+				$sSqlWhere .= 'cl_head.cl_to';
 				break;
 			case 'categoryadd':
-				$sSqlWhere .= 'c1.cl_timestamp';
+				$sSqlWhere .= 'cl0.cl_timestamp';
 				break;
 			case 'firstedit':
 			case 'lastedit':
