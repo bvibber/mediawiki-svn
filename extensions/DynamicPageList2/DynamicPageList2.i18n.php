@@ -40,6 +40,11 @@ $wgDPL2Messages['en'] = array(
 	 * $1: last 'ordermethod' parameter required for $0
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "ERROR: You can use '$0' with 'ordermethod=[...,]$1' only!",
+	/**
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	*/
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "ERROR: Cannot perform logical operations on the Uncategorized pages (e.g. with the 'category' parameter) because the $0 view does not exist on the database! Help: have the DB admin execute this query: <code>$1</code>.",
 	
 	// WARNINGS
 	/**
@@ -111,6 +116,11 @@ $wgDPL2Messages['he'] = array(
 	 * $1: last 'ordermethod' parameter required for $0
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "שגיאה: באפשרותכם להשתמש ב־'$0' עם 'ordermethod=[...,]$1' בלבד!",
+	/**
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	*/
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
 	
 	// WARNINGS
 	/**
@@ -182,18 +192,28 @@ $wgDPL2Messages['nl'] = array(
 	 * $1: last 'ordermethod' parameter required for $0
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "FOUT: U kunt '$0' alleen met 'ordermethod=[...,]$1' gebruiken!",
+	/**
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	*/
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
 	
 	// WARNINGS
+	/**
+	 * $0: unknown parameter given by user
+	 * $1: list of DPL2 available parameters separated by ', '
+	*/
+	'dpl2_debug_' . DPL2_WARN_UNKNOWNPARAM => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_WARN_UNKNOWNPARAM],
+	/**
+	 * $3: list of valid param values separated by ' | '
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "WAARSCHUWING: Verkeerde parameter '$0': '$1'! Nu wordt de standaard gebruikt: '$2'. Hulp: <code>$0= $3</code>.",
 	/**
 	 * $0: param name
 	 * $1: wrong param value given by user
 	 * $2: default param value used instead by program
 	*/
-	#'dpl2_debug_' . DPL2_WARN_WRONGCOUNT => "WAARSCHUWING: Verkeerde parameter '$0': '$1'! Nu wordt de standaard gebruikt: '$2' (geen limiet in aantal). Hulp: <code>$0= <i>lege string</i> (geen limiet in aantal) | n</code>, waar <code>n</code> een positief heel getal is.",
-	/**
-	 * $3: list of valid param values separated by ' | '
-	*/
-	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "WAARSCHUWING: Verkeerde parameter '$0': '$1'! Nu wordt de standaard gebruikt: '$2'. Hulp: <code>$0= $3</code>.",
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT],
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'WAARSCHUWING: Geen resultaten!',
 	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => 'WAARSCHUWING: Het is sterk aan te bevelen om tenminste �n categorie of naamruimte op te nemen. Zo niet, dan is het samenstellen van de paginalijst een redelijk zware belasting voor systeembronnen en kan dit proces redelijk lang duren.',
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "WAARSCHUWING: Add* parameters ('adduser', 'addeditdate', etc.)' heeft geen effect bij 'mode=category'. Alleen de paginanaamruimte/titel is in deze modus te bekijken.",
@@ -249,6 +269,11 @@ $wgDPL2Messages['ru'] = array(
 	 * $1: last 'ordermethod' parameter required for $0
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "ОШИБКА: вы можете использовать «$0» только с «ordermethod=[...,]$1»!",
+	/**
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	*/
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
 	
 	// WARNINGS
 	/**
@@ -320,6 +345,11 @@ $wgDPL2Messages['zh-cn'] = array(
 	 * $1: last 'ordermethod' parameter required for $0
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "错误: 你只可以用 'ordermethod=[...,]$1' 在 '$0' 上!",
+	/**
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	*/
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
 	
 	// WARNINGS
 	/**
@@ -391,6 +421,11 @@ $wgDPL2Messages['zh-tw'] = array(
 	 * $1: last 'ordermethod' parameter required for $0
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "錯誤: 你只可以用 'ordermethod=[...,]$1' 在 '$0' 上!",
+	/**
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	*/
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
 	
 	// WARNINGS
 	/**
@@ -462,6 +497,11 @@ $wgDPL2Messages['zh-yue'] = array(
 	 * $1: last 'ordermethod' parameter required for $0
 	*/
 	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "錯誤: 你只可以用 'ordermethod=[...,]$1' 響 '$0' 上!",
+	/**
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	*/
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
 	
 	// WARNINGS
 	/**
