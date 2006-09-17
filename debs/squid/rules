@@ -1,0 +1,402 @@
+#! /usr/bin/make -f
+#
+#	debian/rules file for squid.
+#
+
+# Version.
+package = squid
+
+# Include dpatch stuff.
+include /usr/share/dpatch/dpatch.make
+
+SHELL	= /bin/bash
+LC_ALL	= POSIX
+
+DEB_HOST_ARCH_CPU := $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU 2>/dev/null)
+DEB_HOST_ARCH_OS := $(shell dpkg-architecture -qDEB_HOST_ARCH_OS 2>/dev/null)
+
+# Take account of old dpkg-architecture output.
+ifeq ($(DEB_HOST_ARCH_CPU),)
+  DEB_HOST_ARCH_CPU := $(shell dpkg-architecture -qDEB_HOST_GNU_CPU)
+  ifeq ($(DEB_HOST_ARCH_CPU),x86_64)
+    DEB_HOST_ARCH_CPU := amd64
+  endif
+endif
+ifeq ($(DEB_HOST_ARCH_OS),)
+  DEB_HOST_ARCH_OS := $(subst -gnu,,$(shell dpkg-architecture -qDEB_HOST_GNU_SYSTEM))
+  ifeq ($(DEB_HOST_ARCH_OS),gnu)
+    DEB_HOST_ARCH_OS := hurd
+  endif
+endif
+
+tmp	     = debian/tmp
+bindir       = /usr/sbin
+libexecdir   = /usr/lib/squid
+sysconfdir   = /etc/squid
+logdir       = /var/log/squid
+docdir       = /usr/share/doc/squid
+datadir      = /usr/share/squid
+
+DEFAULTS     =	logdir=$(logdir) \
+		DEFAULT_CACHE_LOG=$(logdir)/cache.log \
+		DEFAULT_ACCESS_LOG=$(logdir)/access.log \
+		DEFAULT_STORE_LOG=$(logdir)/store.log \
+		DEFAULT_PID_FILE=/var/run/squid.pid \
+		DEFAULT_SWAP_DIR=/var/spool/squid \
+		DEFAULT_ICON_DIR=$(datadir)/icons \
+		DEFAULT_ERROR_DIR=$(datadir)/errors/English \
+		DEFAULT_MIME_TABLE=$(datadir)/mime.conf \
+		DEFAULT_MIB_PATH=$(datadir)/mib.txt
+
+# The HURD doesn't have pthreads yet.
+ifeq ($(DEB_HOST_ARCH_OS), gnu)
+	with_pthreads = --enable-storeio=ufs,diskd,null
+	with_netfilter =
+	with_arp_acl =
+	with_epoll =
+else
+ifeq ($(DEB_HOST_ARCH_OS), kfreebsd)
+	with_pthreads = --enable-async-io --with-pthreads \
+		--enable-storeio=ufs,aufs,diskd,null
+	with_netfilter =
+	with_arp_acl =
+	with_epoll = --enable-kqueue
+else
+	with_pthreads = --enable-async-io --with-pthreads \
+		--enable-storeio=ufs,aufs,diskd,null
+	with_netfilter = --enable-linux-netfilter --enable-linux-proxy
+	with_arp_acl = --enable-arp-acl
+	with_epoll = --enable-epoll
+endif
+endif
+
+# setresuid is broken on sparc
+ifeq ($(DEB_HOST_ARCH_CPU), sparc)
+	opt_ac_cv_func_setresuid = ac_cv_func_setresuid=no
+else
+	opt_ac_cv_func_setresuid = ac_cv_func_setresuid=yes
+endif
+
+define checkdir
+	test -f src/squid.h
+endef
+
+
+# Build the binaries.
+build: patch config.status
+	$(checkdir)
+	$(MAKE) $(DEFAULTS) all
+	# Authentication modules
+	cd helpers/basic_auth/NCSA && make
+	cd helpers/basic_auth/SMB && make SAMBAPREFIX=/usr INSTALLBIN=/usr/lib/squid
+	cd helpers/basic_auth/PAM && make
+	cd helpers/basic_auth/LDAP && make
+	cd helpers/basic_auth/YP && make
+	cd helpers/basic_auth/MSNT && make
+	cd helpers/basic_auth/getpwnam && make
+	cd helpers/digest_auth/password && make
+	cd helpers/digest_auth/ldap && make
+	cd helpers/external_acl/ip_user && make
+	cd helpers/external_acl/ldap_group && make
+	cd helpers/external_acl/session && make
+	cd helpers/external_acl/unix_group && make
+	cd helpers/external_acl/wbinfo_group && make
+	cd helpers/ntlm_auth/SMB && make
+	touch build
+
+# Configure the package.
+config.status: 
+
+	$(opt_ac_cv_func_setresuid) \
+	./configure \
+	--prefix=/usr \
+	--exec_prefix=/usr \
+	--bindir=/usr/sbin --sbindir=/usr/sbin \
+	--libexecdir=/usr/lib/squid \
+	--sysconfdir=$(sysconfdir) \
+	--localstatedir=/var/spool/squid \
+	--datadir=/usr/share/squid \
+	$(with_pthreads) \
+	$(with_netfilter) \
+	$(with_arp_acl) \
+	$(with_epoll) \
+	--enable-removal-policies=lru,heap \
+	--enable-snmp \
+	--enable-delay-pools \
+	--enable-htcp \
+	--enable-cache-digests \
+	--enable-underscores \
+	--enable-referer-log \
+	--enable-useragent-log \
+	--enable-auth="basic,digest,ntlm" \
+	--enable-carp \
+	--with-large-files \
+	$(DEB_HOST_ARCH_CPU)-debian-$(DEB_HOST_ARCH_OS)
+ifeq ($(DEB_HOST_ARCH_OS), linux)
+	# Force 4096 filedescriptors
+	perl -pi -e 's/^#define SQUID_MAXFD.*/#define SQUID_MAXFD 4096/;' \
+		include/autoconf.h
+endif
+
+# Architecture independant files.
+binary-indep:	build checkroot
+	-rm -rf $(tmp) debian/files
+	$(checkdir)
+	#
+	#	Build squid-common package.
+	#
+	install -m 755 -g root -d $(tmp)/DEBIAN
+	install -m 755 -g root -d $(tmp)/usr/share/doc/squid-common
+	install -m 644 -g root ChangeLog $(tmp)/usr/share/doc/squid-common/changelog
+	install -m 644 -g root debian/changelog \
+		$(tmp)/usr/share/doc/squid-common/changelog.Debian
+	gzip -9f $(tmp)/usr/share/doc/squid-common/*
+	install -m 644 -g root debian/copyright $(tmp)/usr/share/doc/squid-common
+	install -m 755 -g root -d $(tmp)/usr/share/$(package)
+	install -m 755 -g root -d $(tmp)/usr/share/squid/{errors,icons}
+	install -m 644 -g root src/mib.txt \
+		./$(tmp)$(datadir)/mib.txt
+	install -m 644 -g root src/mime.conf.default \
+		./$(tmp)$(datadir)/mime.conf
+	#
+	cp -R errors/* ./$(tmp)$(datadir)/errors
+	rm -f ./$(tmp)$(datadir)/errors/Makefile*
+	rm -f ./$(tmp)$(datadir)/errors/list
+	chmod 755 ./$(tmp)$(datadir)/errors/*
+	chmod 644 ./$(tmp)$(datadir)/errors/*/*
+	chown -R root:root ./$(tmp)$(datadir)/errors
+	install -m 644 -g root icons/*.gif ./$(tmp)$(datadir)/icons
+	install -m 755 -g root -d $(tmp)/usr/share/doc/$(package)
+	install -m 755 -g root -d $(tmp)/usr/share/doc/$(package)/examples
+	install -m 644 -g root debian/doc/README.auth_modules $(tmp)$(docdir)
+	install -m 644 -g root helpers/basic_auth/SMB/README \
+		$(tmp)$(docdir)/README.auth_module.smb_auth
+	umask 022; head -19 helpers/basic_auth/NCSA/ncsa_auth.c > \
+		$(tmp)$(docdir)/README.auth_module.ncsa_auth
+	umask 022; head -56 helpers/basic_auth/PAM/pam_auth.c > \
+		$(tmp)$(docdir)/README.auth_module.pam_auth
+	install -m 644 -g root debian/README.ldap_auth \
+		$(tmp)$(docdir)/README.auth_module.ldap_auth
+	install -m 644 -g root helpers/basic_auth/MSNT/README.html \
+		$(tmp)$(docdir)/README.auth_module.msnt_auth.html
+	umask 022; head -21 helpers/basic_auth/getpwnam/getpwnam_auth.c > \
+		$(tmp)$(docdir)/README.auth_module.getpwnam_auth
+	umask 022; head -26 helpers/digest_auth/password/digest_pw_auth.c > \
+		$(tmp)$(docdir)/README.auth_module.digest_pw_auth
+	install -m 644 -g root helpers/external_acl/ip_user/README \
+		$(tmp)$(docdir)/README.auth_module.ip_user
+	install -m 644 -g root helpers/external_acl/ip_user/example.conf \
+		$(tmp)$(docdir)/examples/ip_user-example.conf
+	install -m 644 -g root helpers/external_acl/unix_group/README \
+		$(tmp)$(docdir)/README.auth_module.unix_group
+	install -m 644 -g root CONTRIBUTORS QUICKSTART RELEASENOTES.html \
+		README debian/doc/README.transparent-proxy \
+		debian/doc/README.morefds doc/debug-sections.txt \
+		$(tmp)/usr/share/doc/$(package)
+	gzip -9f `find debian/tmp/usr/share/doc/squid/* | grep -v examples`
+	install -m 644 -g root debian/doc/FAQ*.html $(tmp)/usr/share/doc/$(package)
+	dpkg-gencontrol -isp -psquid-common
+	dpkg --build $(tmp) ..
+	rm -f debian/substvars
+	rm -rf $(tmp)
+
+# Make a binary package (.deb file)
+binary-arch:	build checkroot
+	#
+	#	Build squid package.
+	#
+	install -m 755 -g root -d $(tmp)/DEBIAN
+	install -m 755 -g root -d $(tmp)/etc/{squid,logrotate.d,init.d}
+	install -m 755 -g root -d $(tmp)/etc/resolvconf/update-libc.d
+	install -m 755 -g root -d $(tmp)/usr/{bin,sbin}
+	install -m 755 -g root -d $(tmp)/usr/share/doc/$(package)
+	install -m 755 -g root -d $(tmp)/usr/share/doc/$(package)/examples
+	install -m 755 -g root -d $(tmp)/usr/lib/squid
+	install -m 755 -g root -d $(tmp)/var/{log,spool}
+	install -m 750 -o proxy -g proxy -d $(tmp)/var/log/squid
+	install -m 750 -o proxy -g proxy -d $(tmp)/var/spool/squid
+	install -m 755 -g root -d $(tmp)/usr/share/man/man8
+	#
+	install -s -m 755 -g root src/squid $(tmp)/usr/sbin
+	install -s -m 755 -g root src/unlinkd src/fs/diskd-daemon \
+		$(tmp)/usr/lib/squid
+	#install -s -m 4754 -g proxy src/pinger $(tmp)/usr/lib/squid
+	#
+	install -m 644 -g root debian/logrotate \
+		$(tmp)/etc/logrotate.d/squid
+	# Added for resolvconf
+	install -m 755 -g root debian/squid.resolvconf \
+		$(tmp)/etc/resolvconf/update-libc.d/squid
+	# TO BE REMOVED (left in for people with an old /etc/init.d/squid)
+	install -m 755 -g root debian/squid.RunCache \
+		$(tmp)/$(libexecdir)/RunCache
+	#
+	install -m 755 -g root -s helpers/basic_auth/SMB/smb_auth $(tmp)$(libexecdir)
+	install -m 755 -g root helpers/basic_auth/SMB/smb_auth.sh \
+		$(tmp)$(libexecdir)
+	install -m 755 -g root -s helpers/basic_auth/NCSA/ncsa_auth \
+		$(tmp)$(libexecdir)
+	install -m 2750 -o proxy -g shadow -s helpers/basic_auth/PAM/pam_auth \
+		$(tmp)$(libexecdir)
+	install -m 755 -g root -s helpers/basic_auth/LDAP/squid_ldap_auth \
+		$(tmp)$(libexecdir)/ldap_auth
+	install -m 755 -g root -s helpers/basic_auth/YP/yp_auth \
+		$(tmp)$(libexecdir)/yp_auth
+	install -m 755 -g root -s helpers/basic_auth/MSNT/msnt_auth \
+		$(tmp)$(libexecdir)/msnt_auth
+	install -m 2750 -o proxy -g shadow -s \
+		helpers/basic_auth/getpwnam/getpwname_auth \
+		$(tmp)$(libexecdir)/getpwnam_auth
+	install -m 755 -g root -s helpers/digest_auth/password/digest_pw_auth \
+		$(tmp)$(libexecdir)/digest_pw_auth
+	install -m 755 -g root -s helpers/external_acl/ip_user/ip_user_check \
+		$(tmp)$(libexecdir)/ip_user_check
+	install -m 755 -g root -s helpers/external_acl/ldap_group/squid_ldap_group \
+		$(tmp)$(libexecdir)/squid_ldap_group
+	install -m 644 helpers/external_acl/ldap_group/squid_ldap_group.8 \
+		$(tmp)/usr/share/man/man8/squid_ldap_group.8
+	install -m 755 -g root -s helpers/external_acl/session/squid_session \
+		$(tmp)$(libexecdir)/squid_session
+	install -m 644 helpers/external_acl/session/squid_session.8 \
+		$(tmp)/usr/share/man/man8/squid_session.8
+	install -m 755 -g root -s helpers/external_acl/unix_group/squid_unix_group \
+		$(tmp)$(libexecdir)/squid_unix_group
+	install -m 644 helpers/external_acl/unix_group/squid_unix_group.8 \
+		$(tmp)/usr/share/man/man8/squid_unix_group.8
+	install -m 755 -g root helpers/external_acl/wbinfo_group/wbinfo_group.pl \
+		$(tmp)$(libexecdir)/wbinfo_group.pl
+	install -m 755 -g root -s helpers/ntlm_auth/SMB/ntlm_auth \
+		$(tmp)$(libexecdir)/ntlm_auth
+	# the examples. Most have been removed from upstream :/
+	install -m 644 -g root src/squid.conf.default \
+	        $(tmp)/usr/share/doc/$(package)/examples/squid.conf
+	install -m 644 -g root debian/default.squid \
+		$(tmp)/usr/share/doc/$(package)/examples
+	
+	#
+	install -m 644 -g root ChangeLog $(tmp)/usr/share/doc/$(package)/changelog
+	install -m 644 -g root debian/changelog \
+		$(tmp)/usr/share/doc/$(package)/changelog.Debian
+	install -m 644 -g root debian/README.Debian \
+		$(tmp)/usr/share/doc/$(package)/README.Debian
+	install -m 644 -g root debian/NEWS.Debian \
+		$(tmp)/usr/share/doc/$(package)/README.Debian
+	gzip -9f `find debian/tmp/usr/share/doc/squid/* | grep -v examples`
+	#$(tmp)/usr/share/doc/$(package)/[A-Za-df-z]*
+	install -m 644 -g root debian/copyright $(tmp)/usr/share/doc/$(package)
+	install -m 644 doc/squid.8 $(tmp)/usr/share/man/man8
+	gzip -9f $(tmp)/usr/share/man/man?/*
+	install -m 755 debian/squid.rc $(tmp)/etc/init.d/squid
+	#
+	install -m 755 debian/preinst $(tmp)/DEBIAN/preinst
+	install -m 755 debian/postinst $(tmp)/DEBIAN/postinst
+	install -m 755 debian/prerm $(tmp)/DEBIAN/prerm
+	install -m 755 debian/postrm $(tmp)/DEBIAN/postrm
+	install -m 644 debian/conffiles $(tmp)/DEBIAN/conffiles
+	#install -m 644 debian/templates $(tmp)/DEBIAN/templates
+	po2debconf debian/templates > debian/templates.merged
+	install -m 644 debian/templates.merged $(tmp)/DEBIAN/templates
+	install -m 755 debian/config $(tmp)/DEBIAN/config
+
+	# overrides file
+	install -m 755 -g root -d $(tmp)/usr/share/lintian/overrides/
+	install -m 644 debian/squid.overrides $(tmp)/usr/share/lintian/overrides/squid
+	
+	dpkg-shlibdeps $(tmp)/usr/sbin/* $(tmp)$(libexecdir)/*
+	dpkg-gencontrol -isp -p$(package)
+	dpkg --build $(tmp) ..
+	rm -f debian/substvars
+	rm -rf $(tmp)
+	#
+	#	Generate squidclient package.
+	#
+	install -m 755 -g root -d $(tmp)/DEBIAN
+	install -m 755 -g root -d $(tmp)/usr/bin
+	install -m 755 -g root -d $(tmp)/usr/share/doc/squidclient
+	install -m 755 -g root -d $(tmp)/usr/share/man/man1
+	#
+	install -s -m 755 -g root tools/squidclient $(tmp)/usr/bin/squidclient
+	install -m 644 -g root debian/squidclient.1 $(tmp)/usr/share/man/man1
+	install -m 644 -g root ChangeLog $(tmp)/usr/share/doc/squidclient/changelog
+	install -m 644 -g root debian/changelog \
+		$(tmp)/usr/share/doc/squidclient/changelog.Debian
+	gzip -9f $(tmp)/usr/share/doc/squidclient/*
+	install -m 644 -g root debian/copyright $(tmp)/usr/share/doc/squidclient
+	gzip -9f $(tmp)/usr/share/man/man?/*
+	#
+	install -m 755  debian/postinst.squidclient $(tmp)/DEBIAN/prerm
+	install -m 755  debian/prerm.squidclient $(tmp)/DEBIAN/prerm
+	dpkg-shlibdeps tools/squidclient
+	dpkg-gencontrol -isp -psquidclient
+	dpkg --build $(tmp) ..
+	rm -f debian/substvars
+	rm -rf $(tmp)
+	#
+	#	Generate squid-cgi package.
+	#
+	install -m 755 -g root -d $(tmp)/DEBIAN
+	install -m 755 -g root -d $(tmp)/etc/squid
+	install -m 755 -g root -d $(tmp)/usr/lib/cgi-bin
+	install -m 755 -g root -d $(tmp)/usr/share/doc/squid-cgi
+	install -m 755 -g root -d $(tmp)/usr/share/man/man8
+	#
+	install -m 644 tools/cachemgr.conf $(tmp)/etc/squid/cachemgr.conf
+	install -s -m 755 -g root tools/cachemgr.cgi $(tmp)/usr/lib/cgi-bin/
+	install -m 644 -g root debian/squid-cgi.8 $(tmp)/usr/share/man/man8
+	install -m 644 -g root ChangeLog $(tmp)/usr/share/doc/squid-cgi/changelog
+	install -m 644 -g root debian/changelog \
+		$(tmp)/usr/share/doc/squid-cgi/changelog.Debian
+	install -m 644 -g root debian/doc/cachemgr.README \
+		$(tmp)/usr/share/doc/squid-cgi/README.cachemgr
+	gzip -9f $(tmp)/usr/share/doc/squid-cgi/*
+	install -m 644 -g root debian/copyright $(tmp)/usr/share/doc/squid-cgi
+	install -m 644 -g root debian/doc/cachemgrfaq.html \
+		$(tmp)/usr/share/doc/squid-cgi
+	gzip -9f $(tmp)/usr/share/man/man8/*
+	install -m 755 -g root -d $(tmp)/usr/share/doc/squid-cgi/examples
+	install -m 644 -g root debian/doc/cachemgr.html \
+		$(tmp)/usr/share/doc/squid-cgi/examples
+	#
+	install -m 755 debian/postinst.squid-cgi $(tmp)/DEBIAN/postinst
+	install -m 755 debian/postrm.squid-cgi $(tmp)/DEBIAN/postrm
+	install -m 755 debian/prerm.squid-cgi $(tmp)/DEBIAN/prerm
+	#install -m 644 debian/templates $(tmp)/DEBIAN/templates
+	install -m 644 debian/conffiles.squid-cgi $(tmp)/DEBIAN/conffiles
+	install -m 644 debian/templates.merged $(tmp)/DEBIAN/templates
+	dpkg-shlibdeps tools/cachemgr.cgi
+	dpkg-gencontrol -isp -psquid-cgi
+	dpkg --build $(tmp) ..
+	rm -rf $(tmp)
+
+# Clean up.
+clean: clean1 unpatch
+clean1:	checkroot
+	-$(MAKE) -i distclean
+	rm -f helpers/basic_auth/NCSA/{Makefile,ncsa_auth.o,ncsa_auth}
+	rm -f helpers/basic_auth/SMB/{smb_auth.o,smb_auth}
+	rm -f helpers/basic_auth/PAM/{pam_auth.o,pam_auth}
+	rm -f helpers/basic_auth/YP/{Makefile,yp_auth,yp_auth.o,nis_support.o}
+	rm -f helpers/basic_auth/MSNT/{Makefile,msnt_auth,*.o}
+	rm -f helpers/basic_auth/LDAP/{Makefile,squid_ldap_auth,*.o}
+	rm -f helpers/basic_auth/getpwnam/{Makefile,getpwnam_auth.o,getpwnam_auth}
+	rm -f helpers/digest_auth/password/{Makefile,digest_pw_auth,digest_pw_auth.o}
+	rm -f helpers/external_acl/ip_user/{Makefile,ip_user,dict.o,main.o,match.o}
+	rm -f helpers/external_acl/ldap_group/{Makefile,squid_ldap_group,squid_ldap_group.o}
+	rm -f helpers/external_acl/unix_group/{Makefile,squid_unix_group,check_group.o}
+	rm -f helpers/ntlm_auth/SMB/{Makefile,ntlm_auth,*.o,smbval/*.o}
+	-rm -f build debian/{substvars,files,templates.merged}
+	rm -rf $(tmp) *~
+	-find . -name '*.bak' -o -name '*~' | xargs -r rm -f --
+	#cd icons && /bin/sh ./icons.shar
+	debconf-updatepo
+
+binary:	binary-indep binary-arch
+
+checkroot:
+	$(checkdir)
+	test root = "`whoami`"
+
+dist:	binary
+	dpkg-source -b
+
+.PHONY: binary binary-arch binary-indep clean checkroot clean1 patch unpatch

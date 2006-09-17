@@ -1,0 +1,230 @@
+#! /bin/sh
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+db_version 2.0
+
+grepconf () {
+	w=" 	" # space tab
+	sq=/etc/squid/squid.conf
+	# sed is cool.
+	res=`sed -ne '
+		s/^'$1'['"$w"']\+\([^'"$w"']\+\).*$/\1/p;
+		t end;
+		d;
+		:end q' < $sq`
+	[ -n "$res" ] || res=$2
+	echo "$res"
+}
+
+grepconf2 () {
+	w=" 	" # space tab
+	sq=/etc/squid/squid.conf
+	# sed is cool.
+	res=`sed -ne '
+		s/^'$1'['"$w"']\+[^'"$w"']\+['"$w"']\+\([^'"$w"']\+\).*$/\1/p;
+		t end;
+		d;
+		:end q' < $sq`
+	[ -n "$res" ] || res=$2
+	echo "$res"
+}
+
+#
+#	Fix old style "cache_dir /var/spool/squid 100 16 256"
+#	to include "ufs" (Unix File System) after "cache_dir".
+#
+conf_fix_cache_dir () {
+
+   # get value for squid/fix_lines
+   db_get squid/fix_lines
+  
+   # handle it!
+   if [ "$RET" = "true" ] ; then
+      sed -e 's/^cache_dir\(.*\)$/cache_dir ufs\1/' \
+      -e 's/^\(dns_children.*\)$/#NOT IN 2.3#\1/' \
+      -e 's/^\(dns_defnames.*\)$/#NOT IN 2.3#\1/' \
+      -e 's/^\(cache_dns_program.*\)$/#NOT IN 2.3#\1/' \
+      < /etc/squid/squid.conf > /etc/squid/squid.conf.TMP && \
+      mv /etc/squid/squid.conf.TMP /etc/squid/squid.conf
+   fi
+
+}
+#
+#	The http_anonymizer option doesn't exist anymore.
+#	Warn the user through debconf.
+#
+conf_fix_anonymizer () {
+	w=" 	" # space tab
+	if grep -q "^http_anonymizer[$w]*" /etc/squid/squid.conf
+	then
+		db_text high squid/http_anonymizer || true
+		db_go
+	fi
+}
+
+#
+#	The anonymize_headers and fake_user_agent options don't exist anymore.
+#	Warn the user through debconf.
+#
+conf_fix_anonymizer2 () {
+	w=" 	" # space tab
+	if grep -q "^anonymize_headers[$w]*" /etc/squid/squid.conf || grep -q "^fake_user_agent[$w]*" /etc/squid/squid.conf
+	then
+		db_text high squid/anonymize_headers || true
+		db_go
+	fi
+}
+
+#
+#	We moved from /etc/cron.d/squid to /etc/logrotate.d/squid
+#
+conf_fix_logrotate () {
+	c=/etc/cron.daily/squid
+	if [ -f $c ]
+	then
+		##db_text high squid/logrotate || true
+		##db_go
+		cp -a $c $c.disabled
+		( head -1 $c
+		  echo "#"
+		  echo "# DISABLED - squid now uses /etc/logrotate.d/squid"
+		  echo "#            please remove this file."
+		  echo "#"
+		) > $c.disabled
+		tail +2 $c >> $c.disabled
+		rm -f $c
+	fi
+}
+
+#
+#	The authenticate_program option doesn't exist anymore.
+#	Warn the user through debconf.
+#
+conf_fix_auth_param () {
+	w=" 	" # space tab
+	if grep -q "^authenticate_program[$w]*" /etc/squid/squid.conf
+	then
+		db_text high squid/authenticate_program || true
+		db_go
+	fi
+}
+
+#
+#
+#
+conf_fix_http_port () {
+	w=" 	" # space tab
+	if ! grep -q "^http_port[$w]*" /etc/squid/squid.conf
+	then
+		if grep -q "^# http_port[$w]*" /etc/squid/squid.conf
+		then
+      		sed -e 's/^# http_port\(.*\)$/http_port\1/' \
+      			< /etc/squid/squid.conf > /etc/squid/squid.conf.TMP && \
+      		mv /etc/squid/squid.conf.TMP /etc/squid/squid.conf
+		else
+			echo >> /etc/squid/squid.conf
+			echo "http_port 3128" >> /etc/squid/squid.conf 
+		fi
+	fi
+}
+
+
+case "$1" in
+	configure)
+		if [ -e /etc/squid/conffile-moved ] ; then
+			rm /etc/squid/conffile-moved
+		fi
+
+		if [ ! -f /etc/squid/squid.conf ]; then
+			cp /usr/share/doc/squid/examples/squid.conf \
+				/etc/squid/squid.conf
+			chmod 0600 /etc/squid/squid.conf
+		fi
+
+		# Check for old incompatible configs
+		case "$2" in
+			2.[12].*)
+				conf_fix_cache_dir
+				FIXLINES="$RET"
+				;;
+		esac
+		conf_fix_anonymizer
+		conf_fix_anonymizer2
+		conf_fix_logrotate
+		conf_fix_auth_param
+		conf_fix_http_port
+
+		#
+		# Chown the directories.
+		#
+		dir=`grepconf2 cache_dir /var/spool/squid`
+        usr=`grepconf cache_effective_user proxy`
+		grp=`grepconf cache_effective_group proxy`
+		
+		if [ "$FIXLINES" = "false" ]; then
+		  echo "squid.conf contains 2.2.5 syntax - not doing anything!" 
+		else
+			if [ "$(/usr/bin/stat -c %U $dir)" != "$usr" ] || [ "$(/usr/bin/stat -c %G $dir)" != "$grp" ] ; then
+   				db_get "squid/fix_cachedir_perms"
+   				if [ "$RET" = "true" ] ; then
+		      		chown $usr:$grp $dir -R
+				fi
+   				db_reset "squid/fix_cachedir_perms"
+			fi
+			if [ "$(/usr/bin/stat -c %U /var/log/squid)" != "$usr" ] || [ "$(/usr/bin/stat -c %G /var/log/squid)" != "$grp" ] ; then
+				# Check if there is an override of ownership
+				if [ "$(/usr/sbin/dpkg-statoverride --list /var/log/squid)" == "" ] ; then
+		  			chown $usr:$grp /var/log/squid -R
+				fi
+			fi
+		fi
+	 
+		#
+		# Create spool dirs if they don't exist.
+		#
+		if [ -d "$dir" -a ! -d "$dir/00" ]
+		then
+			echo "Creating squid spool directory structure"
+			/usr/sbin/squid -z
+		fi
+
+		#
+		# Install /etc/default/squid file if it doesn't
+		# exist yet.
+		#
+		if [ ! -f /etc/default/squid ]
+		then
+			cp /usr/share/doc/squid/examples/default.squid \
+				/etc/default/squid
+			chmod 644 /etc/default/squid
+		fi
+
+		;;
+	abort-upgrade|abort-remove|abort-deconfigure)
+		;;
+	*)
+		#
+		#	Unknown action - do nothing.
+		#
+		exit 0
+		;;
+esac
+
+db_stop
+
+#
+#	Update links if needed and start squid.
+#
+update-rc.d squid defaults 30 >/dev/null
+
+cd /
+
+if [ "$FIXLINES" = "false" ]; then
+  echo "squid.conf contains 2.2.5 syntax - cache_dir directive - not starting "
+  echo "Run 'dpkg-reconfigure -plow squid' to fix this automatically," 
+  echo "or fix the 'cache_dir'-entry in your squid.conf manually." 
+  echo "See documentation in /usr/share/doc/squid for nearer instructions."
+else
+  invoke-rc.d squid restart
+fi
