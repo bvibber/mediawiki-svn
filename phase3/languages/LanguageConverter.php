@@ -162,7 +162,7 @@ class LanguageConverter {
 		// disable convert to variants between <code></code> tags
 		$codefix = '<code>.+?<\/code>|';
 
-		$reg = '/'.$codefix.'<[^>]+>|&[a-z#][a-z0-9]+;' . $marker . $htmlfix . '/s';
+		$reg = '/'.$codefix.'<[^>]+>|&[a-zA-Z#][a-z0-9]+;' . $marker . $htmlfix . '/s';
 	
 		$matches = preg_split($reg, $text, -1, PREG_SPLIT_OFFSET_CAPTURE);
 
