@@ -3993,11 +3993,6 @@ class Parser
 
 					$pdbk = $title->getPrefixedDBkey();
 
-					// add the original text into query to check for notitleconvert pages
-					$variantTitle = Title::makeTitle( $ns, $title->getText() );
-					$linkBatch->addObj( $variantTitle );
-					$variantMap[$variantTitle->getPrefixedDBkey()][] = $key;
-
 					// generate all variants of the link title text
 					$allTextVariants = $wgContLang->convertLinkToAllVariants($title->getText());
 
@@ -4018,7 +4013,8 @@ class Parser
 				if ( $threshold > 0 ) {
 					$variantQuery .= ', page_len, page_is_redirect';
 				}
-				$variantQuery .= ", page_no_title_convert FROM $page WHERE $titleClause";
+
+				$variantQuery .= " FROM $page WHERE $titleClause";
 				if ( $options & RLH_FOR_UPDATE ) {
 					$query .= ' FOR UPDATE';
 				}
@@ -4033,8 +4029,6 @@ class Parser
 					$linkCache->addGoodLinkObj( $s->page_id, $variantTitle );
 					$this->mOutput->addLink( $variantTitle, $s->page_id );
 
-					$noTitleConvert = $s->page_no_title_convert;
-
 					$holderKeys = $variantMap[$varPdbk];
 
 					// loop over link holders
@@ -4044,15 +4038,11 @@ class Parser
 
 						$pdbk = $title->getPrefixedDBkey();
 
-						if(!isset($colours[$pdbk]) || ($noTitleConvert && $colours[$pdbk] == 1)){
+						if(!isset($colours[$pdbk])){
 							// found link in some of the variants, replace the link holder data
 							$this->mLinkHolders['titles'][$key] = $variantTitle;
 							$this->mLinkHolders['dbkeys'][$key] = $variantTitle->getDBkey();
 							
-							// prevent link conversion if needed
-							if($noTitleConvert)
-								$this->mLinkHolders['texts'][$key] = $wgContLang->markNoConversion($variantTitle->getText(),true);
-
 							// set pdbk and colour
 							$pdbks[$key] = $varPdbk;
 							if ( $threshold >  0 ) {
