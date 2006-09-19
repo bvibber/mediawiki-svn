@@ -357,37 +357,38 @@ function getDefinedMeaningClassMembershipRecordSet($definedMeaningId) {
 
 function getDefinedMeaningClassMembershipLatestRecordSet($definedMeaningId) {
 	global
-		$classAttribute;
+		$classMembershipStructure, $classMembershipKeyStructure;
 
-	$structure = new Structure($classAttribute);
-	$recordset = new ArrayRecordSet($structure, $structure);
+	$recordset = new ArrayRecordSet($classMembershipStructure, $classMembershipKeyStructure);
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT class_mid FROM uw_class_membership" .
+	$queryResult = $dbr->query("SELECT class_membership_id, class_mid FROM uw_class_membership" .
 								" WHERE class_member_mid=$definedMeaningId " .
 								" AND ". getLatestTransactionRestriction('uw_class_membership'));
 
 	while($class = $dbr->fetchObject($queryResult))
-		$recordset->addRecord(array(getDefinedMeaningReferenceRecord($class->class_mid)));
+		$recordset->addRecord(array($class->class_membership_id,
+									getDefinedMeaningReferenceRecord($class->class_mid)));
 
 	return $recordset;
 }
 
 function getDefinedMeaningClassMembershipHistoryRecordSet($definedMeaningId) {
 	global
-		$classAttribute, $recordLifeSpanAttribute;
+		$classMembershipIdAttribute, $classAttribute, $recordLifeSpanAttribute;
 
-	$structure = new Structure($classAttribute, $recordLifeSpanAttribute);
+	$structure = new Structure($classMembershipIdAttribute, $classAttribute, $recordLifeSpanAttribute);
 	$recordSet = new ArrayRecordSet($structure, $structure);
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT class_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live" .
+	$queryResult = $dbr->query("SELECT class_membership_id, class_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live" .
 								" FROM uw_class_membership" .
 								" WHERE class_member_mid=$definedMeaningId " .
 								" ORDER BY is_live ");
 
 	while($class = $dbr->fetchObject($queryResult))
-		$recordSet->addRecord(array(getDefinedMeaningReferenceRecord($class->class_mid),
+		$recordSet->addRecord(array($class->class_membership_id,
+									getDefinedMeaningReferenceRecord($class->class_mid),
 									getRecordLifeSpanTuple($class->add_transaction_id, $class->remove_transaction_id)));
 
 	return $recordSet;

@@ -214,13 +214,17 @@ class DefinedMeaningClassMembershipController implements Controller {
 	}
 
 	public function remove($keyPath) {
+//		global
+//			$definedMeaningIdAttribute, $classAttribute;
+//			
+//		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);	
+//		$classId = $keyPath->peek(0)->getAttributeValue($classAttribute);	
+//
+//		removeClassMembership($definedMeaningId, $classId);
 		global
-			$definedMeaningIdAttribute, $classAttribute;
+			$classMembershipIdAttribute;
 			
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);	
-		$classId = $keyPath->peek(0)->getAttributeValue($classAttribute);	
-
-		removeClassMembership($definedMeaningId, $classId);
+		removeClassMembershipWithId($keyPath->peek(0)->getAttributeValue($classMembershipIdAttribute));
 	}
 
 	public function update($keyPath, $record) {
@@ -230,14 +234,14 @@ class DefinedMeaningClassMembershipController implements Controller {
 class DefinedMeaningCollectionController implements Controller {
 	public function add($keyPath, $record) {
 		global
-			$expressionIdAttribute, $definedMeaningIdAttribute, $collectionIdAttribute, $sourceIdentifierAttribute;
+			$expressionIdAttribute, $definedMeaningIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute;
 
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
-		$collectionId = $record->getAttributeValue($collectionIdAttribute);
+		$collectionMeaningId = $record->getAttributeValue($collectionMeaningAttribute);
 		$internalId = $record->getAttributeValue($sourceIdentifierAttribute);
-
-		if ($collectionId != 0)
-			addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectionId, $internalId);
+		
+		if ($collectionMeaningId != 0)
+			addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectionMeaningId, $internalId);
 	}
 
 	public function remove($keyPath) {

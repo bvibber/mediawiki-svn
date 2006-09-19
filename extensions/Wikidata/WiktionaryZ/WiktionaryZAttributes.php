@@ -49,14 +49,17 @@ global
 $collectionMembershipAttribute = new Attribute("collection-membership", "Collection membership", new RecordSetType(new Structure($collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute)));
 
 global
-	 $classAttribute;
+	 $classMembershipIdAttribute, $classAttribute;
 	 
+$classMembershipIdAttribute = new Attribute("class-membership-id", "Class membership id", "integer");	 
 $classAttribute = new Attribute("class", "Class", new RecordType($definedMeaningReferenceStructure));
 	
 global
-	$classMembershipAttribute;
+	$classMembershipStructure, $classMembershipKeyStructure, $classMembershipAttribute;
 
-$classMembershipAttribute = new Attribute("class-membership", "Class membership", new RecordSetType(new Structure($classAttribute)));
+$classMembershipStructure = new Structure($classMembershipIdAttribute, $classAttribute);
+$classMembershipKeyStructure = new Structure($classMembershipIdAttribute);
+$classMembershipAttribute = new Attribute("class-membership", "Class membership", new RecordSetType($classMembershipStructure));
 
 global
 	$relationIdAttribute, $relationTypeAttribute, $relationTypeType, $otherDefinedMeaningAttribute;

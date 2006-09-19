@@ -279,6 +279,13 @@ function removeClassMembership($classMemberId, $classId) {
 				" AND remove_transaction_id IS NULL");
 }
 
+function removeClassMembershipWithId($classMembershipId) {
+	$dbr =& wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE uw_class_membership SET remove_transaction_id=" . getUpdateTransactionId() .
+				" WHERE class_membership_id=$classMembershipId" .
+				" AND remove_transaction_id IS NULL");
+}
+
 function removeSynonymOrTranslation($definedMeaningId, $expressionId) {
 	$dbr =& wfGetDB(DB_MASTER);
 	$dbr->query("UPDATE uw_syntrans SET remove_transaction_id=". getUpdateTransactionId() . 
@@ -465,6 +472,14 @@ function getCollectionMeaningId($collectionId) {
 								" WHERE collection_id=$collectionId AND " . getLatestTransactionRestriction('uw_collection_ns'));
 	
 	return $dbr->fetchObject($queryResult)->collection_mid;	
+}
+
+function getCollectionId($collectionMeaningId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT collection_id FROM uw_collection_ns " .
+								" WHERE collection_mid=$collectionMeaningId AND " . getLatestTransactionRestriction('uw_collection_ns'));
+
+	return $dbr->fetchObject($queryResult)->collection_id;	
 }
 
 function addCollection($definedMeaningId, $collectionType) {
