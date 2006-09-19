@@ -288,27 +288,31 @@ function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId) {
 
 function getDefinedMeaningCollectionMembershipLatestRecordSet($definedMeaningId) {
 	global
-		$collectionAttribute, $sourceIdentifierAttribute;
+		$collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute;
 
-	$structure = new Structure($collectionAttribute, $sourceIdentifierAttribute);
-	$recordSet = new ArrayRecordSet($structure, new Structure($collectionAttribute));
+	$structure = new Structure($collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute);
+	$recordSet = new ArrayRecordSet($structure, new Structure($collectionIdAttribute));
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT collection_id, internal_member_id FROM uw_collection_contents WHERE member_mid=$definedMeaningId " .
-								"AND ". getLatestTransactionRestriction('uw_collection_contents'));
+	$queryResult = $dbr->query("SELECT collection_id, internal_member_id" .
+								" FROM uw_collection_contents" .
+								" WHERE member_mid=$definedMeaningId" .
+								" AND ". getLatestTransactionRestriction('uw_collection_contents'));
 
 	while($collection = $dbr->fetchObject($queryResult))
-		$recordSet->addRecord(array($collection->collection_id, $collection->internal_member_id));
+		$recordSet->addRecord(array($collection->collection_id,
+									getDefinedMeaningReferenceRecord(getCollectionMeaningId($collection->collection_id)), 
+									$collection->internal_member_id));
 
 	return $recordSet;
 }
 
 function getDefinedMeaningCollectionMembershipHistoryRecordSet($definedMeaningId) {
 	global
-		$collectionAttribute, $sourceIdentifierAttribute, $recordLifeSpanAttribute;
+		$collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute, $recordLifeSpanAttribute;
 
-	$structure = new Structure($collectionAttribute, $sourceIdentifierAttribute, $recordLifeSpanAttribute);
-	$recordSet = new ArrayRecordSet($structure, new Structure($collectionAttribute));
+	$structure = new Structure($collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute, $recordLifeSpanAttribute);
+	$recordSet = new ArrayRecordSet($structure, new Structure($collectionIdAttribute));
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT collection_id, internal_member_id, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL as is_live " .
@@ -316,7 +320,9 @@ function getDefinedMeaningCollectionMembershipHistoryRecordSet($definedMeaningId
 								"ORDER BY is_live, remove_transaction_id DESC");
 
 	while($collection = $dbr->fetchObject($queryResult))
-		$recordSet->addRecord(array($collection->collection_id, $collection->internal_member_id,
+		$recordSet->addRecord(array($collection->collection_id,
+									getDefinedMeaningReferenceRecord(getCollectionMeaningId($collection->collection_id)), 
+									$collection->internal_member_id,
 									getRecordLifeSpanTuple($collection->add_transaction_id, $collection->remove_transaction_id)));
 
 	return $recordSet;
@@ -334,7 +340,9 @@ function getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId) {
 								" AND " . getLatestTransactionRestriction('uw_dm_text_attribute_values'));
 
 	while ($attributeValue = $dbr->fetchObject($queryResult))
-		$recordSet->addRecord(array($attributeValue->attribute_mid, $attributeValue->value_tcid, getTranslatedTextRecordSet($attributeValue->value_tcid)));
+		$recordSet->addRecord(array(getDefinedMeaningReferenceRecord($attributeValue->attribute_mid), 
+									$attributeValue->value_tcid, 
+									getTranslatedTextRecordSet($attributeValue->value_tcid)));
 
 	return $recordSet;
 }
@@ -362,7 +370,7 @@ function getDefinedMeaningClassMembershipLatestRecordSet($definedMeaningId) {
 								" AND ". getLatestTransactionRestriction('uw_class_membership'));
 
 	while($class = $dbr->fetchObject($queryResult))
-		$recordset->addRecord(array($class->class_mid));
+		$recordset->addRecord(array(getDefinedMeaningReferenceRecord($class->class_mid)));
 
 	return $recordset;
 }
@@ -381,7 +389,7 @@ function getDefinedMeaningClassMembershipHistoryRecordSet($definedMeaningId) {
 								" ORDER BY is_live ");
 
 	while($class = $dbr->fetchObject($queryResult))
-		$recordSet->addRecord(array($class->class_mid,
+		$recordSet->addRecord(array(getDefinedMeaningReferenceRecord($class->class_mid),
 									getRecordLifeSpanTuple($class->add_transaction_id, $class->remove_transaction_id)));
 
 	return $recordSet;

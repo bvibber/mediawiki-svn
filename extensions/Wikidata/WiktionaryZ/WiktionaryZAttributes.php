@@ -22,27 +22,6 @@ $expressionStructure = new Structure($languageAttribute, $spellingAttribute);
 $expressionAttribute = new Attribute("expression", "Expression", new RecordType($expressionStructure));
 
 global
-	$collectionAttribute, $sourceIdentifierAttribute;
-
-$collectionAttribute = new Attribute("collection", "Collection", "collection");
-$sourceIdentifierAttribute = new Attribute("source-identifier", "Source identifier", "short-text"); 
-
-global
-	$collectionMembershipAttribute;
-
-$collectionMembershipAttribute = new Attribute("collection-membership", "Collection membership", new RecordSetType(new Structure($collectionAttribute, $sourceIdentifierAttribute)));
-
-global
-	 $classAttribute;
-	 
-$classAttribute = new Attribute("class", "Class", "class");
-	
-global
-	$classMembershipAttribute;
-
-$classMembershipAttribute = new Attribute("class-membership", "Class membership", new RecordSetType(new Structure($classAttribute)));
-
-global
 	$definedMeaningIdAttribute, $definedMeaningDefiningExpressionAttribute;
 
 $definedMeaningIdAttribute = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
@@ -55,6 +34,29 @@ $definedMeaningLabelAttribute = new Attribute("defined-meaning-label", "Defined 
 $definedMeaningReferenceStructure = new Structure($definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute);
 $definedMeaningReferenceKeyStructure = new Structure($definedMeaningIdAttribute);
 $definedMeaningReferenceType = new RecordType($definedMeaningReferenceStructure);
+
+global
+	$collectionIdAttribute, $collectionMeaningType, $collectionMeaningAttribute, $sourceIdentifierAttribute;
+
+$collectionIdAttribute = new Attribute("collection", "Collection", $collectionType);
+$collectionMeaningType = new RecordType($definedMeaningReferenceStructure);
+$collectionMeaningAttribute = new Attribute("collection-meaning", "Collection", $collectionMeaningType);
+$sourceIdentifierAttribute = new Attribute("source-identifier", "Source identifier", "short-text"); 
+
+global
+	$collectionMembershipAttribute;
+
+$collectionMembershipAttribute = new Attribute("collection-membership", "Collection membership", new RecordSetType(new Structure($collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute)));
+
+global
+	 $classAttribute;
+	 
+$classAttribute = new Attribute("class", "Class", new RecordType($definedMeaningReferenceStructure));
+	
+global
+	$classMembershipAttribute;
+
+$classMembershipAttribute = new Attribute("class-membership", "Class membership", new RecordSetType(new Structure($classAttribute)));
 
 global
 	$relationIdAttribute, $relationTypeAttribute, $relationTypeType, $otherDefinedMeaningAttribute;
@@ -99,7 +101,7 @@ $synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Syno
 global
 	$textValueIdAttribute, $textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute, $textAttributeValuesStructure;
 	
-$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "text-attribute");
+$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", $definedMeaningReferenceStructure);
 $textValueIdAttribute = new Attribute("text-value-id", "Text value identifier", "text-value-id");
 $textValueAttribute = new Attribute("text-value", "Text value", new RecordSetType($translatedTextStructure));
 

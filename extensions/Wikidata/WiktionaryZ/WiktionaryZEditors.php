@@ -75,7 +75,7 @@ function getDefinedMeaningRelationsEditor() {
 		$relationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
 
 	$editor = new RecordSetTableEditor($relationsAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningRelationController());
-	$editor->addEditor(new RelationTypeEditor($relationTypeAttribute, new SimplePermissionController(false), true));
+	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
 
 	addTableLifeSpanEditor($editor);
@@ -88,7 +88,7 @@ function getDefinedMeaningClassMembershipEditor() {
 		$classMembershipAttribute, $classAttribute;
 
 	$editor = new RecordSetTableEditor($classMembershipAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningClassMembershipController());
-	$editor->addEditor(new ClassEditor($classAttribute, new SimplePermissionController(false), true));
+	$editor->addEditor(new ClassReferenceEditor($classAttribute, new SimplePermissionController(false), true));
 
 	addTableLifeSpanEditor($editor);
 
@@ -97,10 +97,10 @@ function getDefinedMeaningClassMembershipEditor() {
 
 function getDefinedMeaningCollectionMembershipEditor() {
 	global
-		$collectionMembershipAttribute, $collectionAttribute, $sourceIdentifierAttribute;
+		$collectionMembershipAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute;
 
 	$editor = new RecordSetTableEditor($collectionMembershipAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningCollectionController());
-	$editor->addEditor(new CollectionEditor($collectionAttribute, new SimplePermissionController(false), true));
+	$editor->addEditor(new CollectionReferenceEditor($collectionMeaningAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new ShortTextEditor($sourceIdentifierAttribute, new SimplePermissionController(true), true));
 
 	addTableLifeSpanEditor($editor);

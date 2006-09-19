@@ -887,9 +887,15 @@ class DefinedMeaningReferenceEditor extends SuggestEditor {
 	}
 }
 
-class RelationTypeEditor extends DefinedMeaningReferenceEditor {
+class RelationTypeReferenceEditor extends DefinedMeaningReferenceEditor {
 	protected function suggestType() {
 		return "relation-type";
+	}
+}
+
+class ClassReferenceEditor extends DefinedMeaningReferenceEditor {
+	protected function suggestType() {
+		return "class";
 	}
 
 //	public function getViewHTML($idPath, $value) {
@@ -897,34 +903,24 @@ class RelationTypeEditor extends DefinedMeaningReferenceEditor {
 //	}
 }
 
-class ClassEditor extends SuggestEditor {
-	protected function suggestType() {
-		return "class";
-	}
-
-	public function getViewHTML($idPath, $value) {
-		return definedMeaningAsLink($value);
-	}
-}
-
-class CollectionEditor extends SuggestEditor {
+class CollectionReferenceEditor extends DefinedMeaningReferenceEditor {
 	protected function suggestType() {
 		return "collection";
 	}
 
-	public function getViewHTML($idPath, $value) {
-		return collectionAsLink($value);
-	}
+//	public function getViewHTML($idPath, $value) {
+//		return collectionAsLink($value);
+//	}
 }
 
-class TextAttributeEditor extends SuggestEditor {
+class TextAttributeEditor extends DefinedMeaningReferenceEditor {
 	protected function suggestType() {
 		return "text-attribute";
 	}
 
-	public function getViewHTML($idPath, $value) {
-		return definedMeaningAsLink($value);
-	}
+//	public function getViewHTML($idPath, $value) {
+//		return definedMeaningAsLink($value);
+//	}
 }
 
 class RecordListEditor extends RecordEditor {
