@@ -63,79 +63,15 @@ class SrConverter extends LanguageConverter {
 
 	/* rules should be defined as -{ekavian | iyekavian-} -or-
 		-{code:text | code:text | ...}-
+		update: delete all rule parsing because it's not used
+		        currently, and just produces a couple of bugs
 	*/
 	function parseManualRule($rule, $flags=array()) {
+		// ignore all formatting
+		foreach($this->mVariants as $v) {
+				$carray[$v] = $rule;
+			}
 
-		$echoices = preg_split("/(<[^>]+>)/",$rule,-1,PREG_SPLIT_DELIM_CAPTURE);
-		$choices = array();
-
-		// check if we did a split across an HTML tag
-		// if so, glue them back together
-
-		$ctold = '';
-		foreach($echoices as $ct){
-			if($ct=='');
-			else if(preg_match('/<[^>]+>/',$ct)){ 
-				$ctold.=$ct;
-			}
-			else{
-				$c = explode($this->mMarkup['varsep'],$ct);
-				if(count($c)>1){
-					$choices[]=$ctold.array_shift($c);
-					$ctold=array_pop($c);
-					$choices=array_merge($choices,$c);
-				}
-				else $ctold.=array_pop($c);			
-			}
-		}
-		if($ctold!='') $choices[]=$ctold;
-
-		$carray = array();
-		if(sizeof($choices) == 1) {
-			if(in_array('W', $flags)) {
-				$carray['sr'] = $this->autoConvert($choices[0], 'sr-ec');
-				$carray['sr-ec'] = $this->autoConvert($choices[0], 'sr-ec');
-				$carray['sr-jc'] = $this->autoConvert($choices[0], 'sr-jc');
-				$carray['sr-el'] = $this->autoConvert($choices[0], 'sr-el');
-				$carray['sr-jl'] = $this->autoConvert($choices[0], 'sr-jl');
-			}
-			foreach($this->mVariants as $v) {
-				$carray[$v] = $choices[0];
-			}
-			return $carray;
-		}
-
-		/* detect which format is used, also trim the choices*/
-		$n=0;
-		foreach($choices as $c=>$t) {
-			if(strpos($t, $this->mMarkup['codesep']) !== false) { $n++; }
-			$choices[$c] = trim($t);
-		}
-		/* the -{code:text | ...}- format */
-		if($n == sizeof($choices)) {
-			foreach($choices as $c) {
-				list($code, $text) = explode($this->mMarkup['codesep'], $c);
-				$carray[trim($code)] = trim($text);
-			}
-			return $carray;
-		}
-
-		/* the two choice format -{choice1; choice2}-*/
-		if(sizeof($choices == 2) && $n==0) {
-			if(in_array('S', $flags)) {
-				// conversion between Cyrillics and Latin
-				$carray['sr'] = $carray['sr-ec'] =$carray['sr-jc'] = $choices[0];
-				$carray['sr-el'] =$carray['sr-jl'] = $choices[1];
-			}
-			else {
-				$carray['sr'] = $this->autoConvert($choices[0], 'sr-ec');
-				$carray['sr-ec'] = $this->autoConvert($choices[0], 'sr-ec');
-				$carray['sr-jc'] = $this->autoConvert($choices[1], 'sr-jc');
-				$carray['sr-el'] = $this->autoConvert($choices[0], 'sr-el');
-				$carray['sr-jl'] = $this->autoConvert($choices[1], 'sr-jl');
-			}
-			return $carray;
-		}
 		return $carray;
 	}
 
