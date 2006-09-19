@@ -257,18 +257,20 @@ function getDefinedMeaningRelationsLatestRecordSet($definedMeaningId) {
 
 function getDefinedMeaningRelationsHistoryRecordSet($definedMeaningId) {
 	global
-		$relationTypeAttribute, $otherDefinedMeaningAttribute, $recordLifeSpanAttribute;
+		$relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $recordLifeSpanAttribute;
 
-	$structure = new Structure($relationTypeAttribute, $otherDefinedMeaningAttribute, $recordLifeSpanAttribute);
+	$structure = new Structure($relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $recordLifeSpanAttribute);
 	$recordSet = new ArrayRecordSet($structure, $structure);
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live" .
+	$queryResult = $dbr->query("SELECT relation_id, relationtype_mid, meaning2_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live" .
 								" FROM uw_meaning_relations " .
 								" WHERE meaning1_mid=$definedMeaningId ORDER BY is_live, relationtype_mid");
 
 	while($definedMeaningRelation = $dbr->fetchObject($queryResult))
-		$recordSet->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid,
+		$recordSet->addRecord(array($definedMeaningRelation->relation_id,
+									getDefinedMeaningReferenceRecord($definedMeaningRelation->relationtype_mid), 
+									getDefinedMeaningReferenceRecord($definedMeaningRelation->meaning2_mid),
 									getRecordLifeSpanTuple($definedMeaningRelation->add_transaction_id, $definedMeaningRelation->remove_transaction_id)));
 
 	return $recordSet;
