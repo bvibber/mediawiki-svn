@@ -191,14 +191,10 @@ class DefinedMeaningRelationController implements Controller {
 
 	public function remove($keyPath) {
 		global
-			$definedMeaningIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
-
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
-		$record = $keyPath->peek(0);
-		$relationTypeId = $record->getAttributeValue($relationTypeAttribute);
-		$otherDefinedMeaningId = $record->getAttributeValue($otherDefinedMeaningAttribute);
-
-		removeRelation($definedMeaningId, $relationTypeId, $otherDefinedMeaningId);
+			$relationIdAttribute;
+			
+		$relationId = $keyPath->peek(0)->getAttributeValue($relationIdAttribute);
+		removeRelationWithId($relationId);
 	}
 
 	public function update($keyPath, $record) {

@@ -228,6 +228,13 @@ function removeRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id)
 				" AND remove_transaction_id IS NULL");
 }
 
+function removeRelationWithId($relationId) {
+	$dbr =& wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE uw_meaning_relations SET remove_transaction_id=" . getUpdateTransactionId() .
+				" WHERE relation_id=$relationId " .
+				" AND remove_transaction_id IS NULL");
+}
+
 function getClassMembershipId($classMemberId, $classId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT class_membership_id FROM uw_class_membership " .

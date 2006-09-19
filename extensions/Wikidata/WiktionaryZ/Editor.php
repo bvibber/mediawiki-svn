@@ -870,38 +870,31 @@ abstract class SuggestEditor extends ScalarEditor {
 	}
 }
 
-//class NewDefinedMeaningEditor extends SuggestEditor {
-//	protected function suggestType() {
-//		return "defined-meaning";
-//	}
-//
-//	public function getViewHTML($idPath, $value) {
-//		global
-//			$definedMeaningIdAttribute, $definedMeaningLabelAttribute;
-//			
-////		return definedMeaningAsLink($value->getAttributeValue($definedMeaningIdAttribute));
-//		return spellingAsLink($value->getAttributeValue($definedMeaningLabelAttribute));
-//	}
-//}
-
-class RelationTypeEditor extends SuggestEditor {
-	protected function suggestType() {
-		return "relation-type";
-	}
-
-	public function getViewHTML($idPath, $value) {
-		return definedMeaningAsLink($value);
-	}
-}
-
-class DefinedMeaningEditor extends SuggestEditor {
+class DefinedMeaningReferenceEditor extends SuggestEditor {
 	protected function suggestType() {
 		return "defined-meaning";
 	}
 
 	public function getViewHTML($idPath, $value) {
-		return definedMeaningAsLink($value);
+		global
+			$definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute;
+			
+		$definedMeaningId = $value->getAttributeValue($definedMeaningIdAttribute);
+		$definedMeaningLabel = $value->getAttributeValue($definedMeaningLabelAttribute);
+		$definedMeaningDefiningExpression = $value->getAttributeValue($definedMeaningDefiningExpressionAttribute);
+		
+		return definedMeaningReferenceAsLink($definedMeaningId, $definedMeaningLabel, $definedMeaningDefiningExpression);
 	}
+}
+
+class RelationTypeEditor extends DefinedMeaningReferenceEditor {
+	protected function suggestType() {
+		return "relation-type";
+	}
+
+//	public function getViewHTML($idPath, $value) {
+//		return definedMeaningAsLink($value);
+//	}
 }
 
 class ClassEditor extends SuggestEditor {

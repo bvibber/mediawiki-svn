@@ -27,13 +27,17 @@ function spellingAsLink($value) {
 	return createLink("WiktionaryZ", $value, $value);
 }
 
-function createLink($nameSpace, $tag, $text) {
+function createLink($nameSpace, $title, $text) {
 	global
 		$wgUser, $wgScript;
 		
-	return '<a href="'. $wgScript. '/' . $nameSpace . ':' . $tag . '">' . htmlspecialchars($text) . '</a>';	
+	return '<a href="'. $wgScript. '/' . $nameSpace . ':' . $title . '">' . htmlspecialchars($text) . '</a>';	
 //	return $wgUser->getSkin()->makeLink("$nameSpace:$tag", htmlspecialchars($text));
 } 
+
+function definedMeaningReferenceAsLink($definedMeaningId, $definingExpression, $label) {
+	return createLink("DefinedMeaning", "$definingExpression ($definedMeaningId)", $label);
+}
 
 function languageIdAsText($languageId) {
 	global
@@ -122,10 +126,10 @@ function definedMeaningAsLink($definedMeaningId) {
 		$wgUser;
 
 	if ($definedMeaningId > 0) {
-		$prettyDefinedMeaningExpression = definedMeaningExpression($definedMeaningId);
+		$definedMeaningExpression = definedMeaningExpression($definedMeaningId);
 		list($definingExpression, $definingExpressionLanguage) = definingExpression($definedMeaningId);
 		
-		return createLink("DefinedMeaning", "$definingExpression ($definedMeaningId)", $prettyDefinedMeaningExpression);
+		return createLink("DefinedMeaning", "$definingExpression ($definedMeaningId)", $definedMeaningExpression);
 	}
 	else
 		return "";

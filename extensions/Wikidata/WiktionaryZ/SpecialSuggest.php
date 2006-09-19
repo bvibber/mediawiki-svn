@@ -210,12 +210,12 @@ function getDefinedMeaningAsRecordSet($queryResult) {
 		$recordSet->addRecord(array($row->defined_meaning_id, $definedMeaningRecord, getDefinedMeaningDefinition($row->defined_meaning_id)));
 	}			
 
-	$definedMeaningEditor = new RecordTableCellEditor($definedMeaningAttribute);
-	$definedMeaningEditor->addEditor(new ShortTextEditor($spellingAttribute, new SimplePermissionController(false), false));
-	$definedMeaningEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
+	$expressionEditor = new RecordTableCellEditor($definedMeaningAttribute);
+	$expressionEditor->addEditor(new ShortTextEditor($spellingAttribute, new SimplePermissionController(false), false));
+	$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
 
 	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
-	$editor->addEditor($definedMeaningEditor);
+	$editor->addEditor($expressionEditor);
 	$editor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 
 	return array($recordSet, $editor);		

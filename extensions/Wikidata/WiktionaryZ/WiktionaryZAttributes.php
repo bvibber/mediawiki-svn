@@ -43,28 +43,33 @@ global
 $classMembershipAttribute = new Attribute("class-membership", "Class membership", new RecordSetType(new Structure($classAttribute)));
 
 global
-	$definedMeaningIdAttribute;
+	$definedMeaningIdAttribute, $definedMeaningDefiningExpressionAttribute;
 
 $definedMeaningIdAttribute = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
+$definedMeaningDefiningExpressionAttribute = new Attribute("defined-meaning-defining-expression", "Defined meaning defining expression", "short-text");
 
 global
-	$definedMeaningReferenceStructure, $definedMeaningLabelAttribute, $definedMeaningReferenceKeyStructure;
+	$definedMeaningReferenceStructure, $definedMeaningLabelAttribute, $definedMeaningReferenceKeyStructure, $definedMeaningReferenceType;
 	
 $definedMeaningLabelAttribute = new Attribute("defined-meaning-label", "Defined meaning label", "short-text");
-$definedMeaningReferenceStructure = new Structure($definedMeaningIdAttribute, $definedMeaningLabelAttribute);
+$definedMeaningReferenceStructure = new Structure($definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute);
 $definedMeaningReferenceKeyStructure = new Structure($definedMeaningIdAttribute);
+$definedMeaningReferenceType = new RecordType($definedMeaningReferenceStructure);
 
 global
-	$relationTypeAttribute, $otherDefinedMeaningAttribute;
-	
-$relationTypeAttribute = new Attribute("relation-type", "Relation type", "relation-type"); 
-//$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", new RecordType($definedMeaningReferenceStructure));
-$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", "defined-meaning");
+	$relationIdAttribute, $relationTypeAttribute, $relationTypeType, $otherDefinedMeaningAttribute;
+
+$relationIdAttribute = new Attribute("relation-id", "Relation identifier", "object-id");
+$relationTypeType = new RecordType($definedMeaningReferenceStructure);	
+$relationTypeAttribute = new Attribute("relation-type", "Relation type", $relationTypeType); 
+$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", $definedMeaningReferenceType);
+//$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", "defined-meaning");
 
 global
-	$relationsAttribute, $relationStructure;
+	$relationsAttribute, $relationStructure, $relationKeyStructure;
 	
-$relationStructure = new Structure($relationTypeAttribute, $otherDefinedMeaningAttribute);	
+$relationStructure = new Structure($relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute);
+$relationKeyStructure = new Structure($relationIdAttribute);	
 $relationsAttribute = new Attribute("relations", "Relations", new RecordSetType($relationStructure));
 
 global
@@ -78,7 +83,7 @@ global
 
 $definitionIdAttribute = new Attribute("definition-id", "Definition identifier", "integer");
 $alternativeDefinitionAttribute = new Attribute("alternative-definition", "Alternative definition", new RecordSetType($translatedTextStructure));
-$sourceAttribute = new Attribute("source-id", "Source", "defined-meaning");
+$sourceAttribute = new Attribute("source-id", "Source", $definedMeaningReferenceType);
 
 global
 	$alternativeDefinitionsAttribute;

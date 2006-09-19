@@ -47,7 +47,7 @@ function getAlternativeDefinitionsEditor() {
 	$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningAlternativeDefinitionsController());
 //		$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new AlternativeDefinitionsPermissionController(), true, true, false, new DefinedMeaningAlternativeDefinitionsController());
 	$editor->addEditor(getTranslatedTextEditor($alternativeDefinitionAttribute, new DefinedMeaningAlternativeDefinitionController()));
-	$editor->addEditor(new DefinedMeaningEditor($sourceAttribute, new SimplePermissionController(false), true));
+	$editor->addEditor(new DefinedMeaningReferenceEditor($sourceAttribute, new SimplePermissionController(false), true));
 
 	return $editor;
 }
@@ -76,7 +76,7 @@ function getDefinedMeaningRelationsEditor() {
 
 	$editor = new RecordSetTableEditor($relationsAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningRelationController());
 	$editor->addEditor(new RelationTypeEditor($relationTypeAttribute, new SimplePermissionController(false), true));
-	$editor->addEditor(new DefinedMeaningEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
+	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
 
 	addTableLifeSpanEditor($editor);
 

@@ -88,7 +88,9 @@ function getAlternativeDefinitionsRecordSet($definedMeaningId) {
 								" AND ". getLatestTransactionRestriction('uw_alt_meaningtexts'));
 
 	while ($alternativeDefinition = $dbr->fetchObject($queryResult)) 
-		$recordSet->addRecord(array($alternativeDefinition->meaning_text_tcid, getTranslatedTextRecordSet($alternativeDefinition->meaning_text_tcid), $alternativeDefinition->source_id));
+		$recordSet->addRecord(array($alternativeDefinition->meaning_text_tcid, 
+									getTranslatedTextRecordSet($alternativeDefinition->meaning_text_tcid), 
+									getDefinedMeaningReferenceRecord($alternativeDefinition->source_id)));
 
 	return $recordSet;
 }
@@ -217,33 +219,38 @@ function getDefinedMeaningRelationsRecordSet($definedMeaningId) {
 		return getDefinedMeaningRelationsLatestRecordSet($definedMeaningId);
 }
 
-function getDefinedMeaningLabelRecord($definedMeaningId) {
+function getDefinedMeaningReferenceRecord($definedMeaningId) {
 	global
-		$definedMeaningReferenceStructure, $definedMeaningIdAttribute, $definedMeaningLabelAttribute;
+		$definedMeaningReferenceStructure, $definedMeaningIdAttribute, $definedMeaningLabelAttribute,
+		$definedMeaningDefiningExpressionAttribute;
+	
+	$definingExpression = definingExpression($definedMeaningId);
 	
 	$record = new ArrayRecord($definedMeaningReferenceStructure);
 	$record->setAttributeValue($definedMeaningIdAttribute, $definedMeaningId);
 	$record->setAttributeValue($definedMeaningLabelAttribute, definedMeaningExpression($definedMeaningId));
+	$record->setAttributeValue($definedMeaningDefiningExpressionAttribute, $definingExpression[0]);
 	
 	return $record;
 }
 
 function getDefinedMeaningRelationsLatestRecordSet($definedMeaningId) {
 	global
-		$relationTypeAttribute, $otherDefinedMeaningAttribute;
+		$relationStructure, $relationKeyStructure;
 
-	$structure = new Structure($relationTypeAttribute, $otherDefinedMeaningAttribute);
-	$recordSet = new ArrayRecordSet($structure, $structure);
+	$recordSet = new ArrayRecordSet($relationStructure, $relationKeyStructure);
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT relationtype_mid, meaning2_mid FROM uw_meaning_relations " .
+	$queryResult = $dbr->query("SELECT relation_id, relationtype_mid, meaning2_mid FROM uw_meaning_relations " .
 								"WHERE meaning1_mid=$definedMeaningId  " .
 								" AND ". getLatestTransactionRestriction('uw_meaning_relations').
 								"ORDER BY relationtype_mid");
 
 	while($definedMeaningRelation = $dbr->fetchObject($queryResult)) 
-//		$recordSet->addRecord(array($definedMeaningRelation->relationtype_mid, getDefinedMeaningLabelRecord($definedMeaningRelation->meaning2_mid)));
-		$recordSet->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid));
+		$recordSet->addRecord(array($definedMeaningRelation->relation_id,
+									getDefinedMeaningReferenceRecord($definedMeaningRelation->relationtype_mid), 
+									getDefinedMeaningReferenceRecord($definedMeaningRelation->meaning2_mid)));
+//		$recordSet->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid));
 
 	return $recordSet;
 }

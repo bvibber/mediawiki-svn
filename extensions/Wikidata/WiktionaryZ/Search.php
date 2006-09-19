@@ -5,6 +5,8 @@ require_once("Transaction.php");
 require_once("RecordSet.php");
 require_once("Editor.php");
 require_once("Expression.php");
+require_once("WiktionaryZAttributes.php");
+require_once("WiktionaryZRecordSets.php");
 
 class Search extends DefaultWikidataApplication {
 	function view() {
@@ -38,7 +40,7 @@ class Search extends DefaultWikidataApplication {
 
 function getDefinedMeaningAsRelation($queryResult) {
 	global
-		$idAttribute;
+		$idAttribute, $definedMeaningReferenceType;
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$spellingAttribute = new Attribute("found-word", "Found word", "short-text");
@@ -47,7 +49,7 @@ function getDefinedMeaningAsRelation($queryResult) {
 	$expressionStructure = new Structure($spellingAttribute, $languageAttribute);
 	$expressionAttribute = new Attribute("expression", "Expression", new RecordType($expressionStructure));
 	
-	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", "defined-meaning");
+	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", $definedMeaningReferenceType);
 	$definitionAttribute = new Attribute("definition", "Definition", "definition");
 	
 	$meaningStructure = new Structure($definedMeaningAttribute, $definitionAttribute);
@@ -61,7 +63,7 @@ function getDefinedMeaningAsRelation($queryResult) {
 		$expressionRecord->setAttributeValue($languageAttribute, $row->language_id);
 		
 		$meaningRecord = new ArrayRecord($meaningStructure);
-		$meaningRecord->setAttributeValue($definedMeaningAttribute, $row->defined_meaning_id);
+		$meaningRecord->setAttributeValue($definedMeaningAttribute, getDefinedMeaningReferenceRecord($row->defined_meaning_id));
 		$meaningRecord->setAttributeValue($definitionAttribute, getDefinedMeaningDefinition($row->defined_meaning_id));
 
 		$recordSet->addRecord(array($row->defined_meaning_id, $expressionRecord, $meaningRecord));
@@ -72,7 +74,7 @@ function getDefinedMeaningAsRelation($queryResult) {
 	$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
 
 	$meaningEditor = new RecordTableCellEditor($meaningAttribute);
-	$meaningEditor->addEditor(new DefinedMeaningEditor($definedMeaningAttribute, new SimplePermissionController(false), false));
+	$meaningEditor->addEditor(new DefinedMeaningReferenceEditor($definedMeaningAttribute, new SimplePermissionController(false), false));
 	$meaningEditor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 
 	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
