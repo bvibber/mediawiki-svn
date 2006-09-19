@@ -4007,55 +4007,59 @@ class Parser
 					}
 				}
 				
-				# construct query
-				$titleClause = $linkBatch->constructSet('page', $dbr);
-				$variantQuery =  "SELECT page_id, page_namespace, page_title";
-				if ( $threshold > 0 ) {
-					$variantQuery .= ', page_len, page_is_redirect';
-				}
 
-				$variantQuery .= " FROM $page WHERE $titleClause";
-				if ( $options & RLH_FOR_UPDATE ) {
-					$query .= ' FOR UPDATE';
-				}
-				
-				$varRes = $dbr->query( $variantQuery, $fname );
-						
-				# for each found variants, figure out link holders and replace
-				while ( $s = $dbr->fetchObject($varRes) ) {
+				if(!$linkBatch->isEmpty()){
+					// construct query
+					$titleClause = $linkBatch->constructSet('page', $dbr);
 
-					$variantTitle = Title::makeTitle( $s->page_namespace, $s->page_title );
-					$varPdbk = $variantTitle->getPrefixedDBkey();
-					$linkCache->addGoodLinkObj( $s->page_id, $variantTitle );
-					$this->mOutput->addLink( $variantTitle, $s->page_id );
+					$variantQuery =  "SELECT page_id, page_namespace, page_title";
+					if ( $threshold > 0 ) {
+						$variantQuery .= ', page_len, page_is_redirect';
+					}
 
-					$holderKeys = $variantMap[$varPdbk];
+					$variantQuery .= " FROM $page WHERE $titleClause";
+					if ( $options & RLH_FOR_UPDATE ) {
+						$variantQuery .= ' FOR UPDATE';
+					}
 
-					// loop over link holders
-					foreach($holderKeys as $key){						
-						$title = $this->mLinkHolders['titles'][$key];
-						if ( is_null( $title ) ) continue;
+					$varRes = $dbr->query( $variantQuery, $fname );
 
-						$pdbk = $title->getPrefixedDBkey();
+					// for each found variants, figure out link holders and replace
+					while ( $s = $dbr->fetchObject($varRes) ) {
 
-						if(!isset($colours[$pdbk])){
-							// found link in some of the variants, replace the link holder data
-							$this->mLinkHolders['titles'][$key] = $variantTitle;
-							$this->mLinkHolders['dbkeys'][$key] = $variantTitle->getDBkey();
+						$variantTitle = Title::makeTitle( $s->page_namespace, $s->page_title );
+						$varPdbk = $variantTitle->getPrefixedDBkey();
+						$linkCache->addGoodLinkObj( $s->page_id, $variantTitle );
+						$this->mOutput->addLink( $variantTitle, $s->page_id );
+
+						$holderKeys = $variantMap[$varPdbk];
+
+						// loop over link holders
+						foreach($holderKeys as $key){						
+							$title = $this->mLinkHolders['titles'][$key];
+							if ( is_null( $title ) ) continue;
+
+							$pdbk = $title->getPrefixedDBkey();
+
+							if(!isset($colours[$pdbk])){
+								// found link in some of the variants, replace the link holder data
+								$this->mLinkHolders['titles'][$key] = $variantTitle;
+								$this->mLinkHolders['dbkeys'][$key] = $variantTitle->getDBkey();
 							
-							// set pdbk and colour
-							$pdbks[$key] = $varPdbk;
-							if ( $threshold >  0 ) {
-								$size = $s->page_len;
-								if ( $s->page_is_redirect || $s->page_namespace != 0 || $size >= $threshold ) {
+								// set pdbk and colour
+								$pdbks[$key] = $varPdbk;
+								if ( $threshold >  0 ) {
+									$size = $s->page_len;
+									if ( $s->page_is_redirect || $s->page_namespace != 0 || $size >= $threshold ) {
+										$colours[$varPdbk] = 1;
+									} else {
+										$colours[$varPdbk] = 2;
+									}
+								} 
+								else {
 									$colours[$varPdbk] = 1;
-								} else {
-									$colours[$varPdbk] = 2;
-								}
-							} 
-							else {
-								$colours[$varPdbk] = 1;
-							}					
+								}					
+							}
 						}
 					}
 				}

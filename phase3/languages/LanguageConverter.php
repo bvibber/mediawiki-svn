@@ -312,8 +312,6 @@ class LanguageConverter {
 				$this->mTitleDisplay = $text;
 				return $text;
 			}
-			if( !empty($this->mTitleDisplay))
-				return $this->mTitleDisplay;
 
 			global $wgRequest;
 			$isredir = $wgRequest->getText( 'redirect', 'yes' );
