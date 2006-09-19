@@ -224,12 +224,10 @@ function getDefinedMeaningReferenceRecord($definedMeaningId) {
 		$definedMeaningReferenceStructure, $definedMeaningIdAttribute, $definedMeaningLabelAttribute,
 		$definedMeaningDefiningExpressionAttribute;
 	
-	$definingExpression = definingExpression($definedMeaningId);
-	
 	$record = new ArrayRecord($definedMeaningReferenceStructure);
 	$record->setAttributeValue($definedMeaningIdAttribute, $definedMeaningId);
 	$record->setAttributeValue($definedMeaningLabelAttribute, definedMeaningExpression($definedMeaningId));
-	$record->setAttributeValue($definedMeaningDefiningExpressionAttribute, $definingExpression[0]);
+	$record->setAttributeValue($definedMeaningDefiningExpressionAttribute, definingExpression($definedMeaningId));
 	
 	return $record;
 }

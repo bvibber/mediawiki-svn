@@ -46,15 +46,28 @@ function languageIdAsText($languageId) {
 	return $wgLanguageNames[$languageId];
 }
 
-function definingExpression($definedMeaningId) {
+function definingExpressionRow($definedMeaningId) {
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT spelling, language_id " .
+	$queryResult = $dbr->query("SELECT uw_expression_ns.expression_id, spelling, language_id " .
 								" FROM uw_defined_meaning, uw_expression_ns " .
 								" WHERE uw_defined_meaning.defined_meaning_id=$definedMeaningId " .
 								" AND uw_expression_ns.expression_id=uw_defined_meaning.expression_id".
-								" AND " . getLatestTransactionRestriction('uw_defined_meaning'));
+								" AND " . getLatestTransactionRestriction('uw_defined_meaning').
+								" AND " . getLatestTransactionRestriction('uw_expression_ns'));
 	$expression = $dbr->fetchObject($queryResult);
-	return array($expression->spelling, $expression->language_id); 
+	return array($expression->expression_id, $expression->spelling, $expression->language_id); 
+}
+
+function definingExpression($definedMeaningId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT spelling " .
+								" FROM uw_defined_meaning, uw_expression_ns " .
+								" WHERE uw_defined_meaning.defined_meaning_id=$definedMeaningId " .
+								" AND uw_expression_ns.expression_id=uw_defined_meaning.expression_id".
+								" AND " . getLatestTransactionRestriction('uw_defined_meaning').
+								" AND " . getLatestTransactionRestriction('uw_expression_ns'));
+	$expression = $dbr->fetchObject($queryResult);
+	return $expression->spelling; 
 }
 
 function definedMeaningExpressionForLanguage($definedMeaningId, $languageId) {
@@ -84,9 +97,9 @@ function definedMeaningExpression($definedMeaningId) {
 	
 	$userLanguage = getLanguageIdForCode($wgUser->getOption('language'));
 	
-	list($definingExpression, $definingExpressionLanguage) = definingExpression($definedMeaningId);
+	list($definingExpressionId, $definingExpression, $definingExpressionLanguage) = definingExpressionRow($definedMeaningId);
 
-	if ($definingExpressionLanguage == $userLanguage)  
+	if ($definingExpressionLanguage == $userLanguage && expressionIsBoundToDefinedMeaning($definingExpressionId, $definedMeaningId))  
 		return $definingExpression;
 	else {	
 		if ($userLanguage > 0)
@@ -117,8 +130,7 @@ function getTextValue($textId) {
 }
 
 function definingExpressionAsLink($definedMeaningId) {
-	list($definingExpression, $definingExpressionLanguage) = definingExpression($definedMeaningId);
-	return spellingAsLink($definingExpression);
+	return spellingAsLink(definingExpression($definedMeaningId));
 }
 
 function definedMeaningAsLink($definedMeaningId) {
@@ -127,7 +139,7 @@ function definedMeaningAsLink($definedMeaningId) {
 
 	if ($definedMeaningId > 0) {
 		$definedMeaningExpression = definedMeaningExpression($definedMeaningId);
-		list($definingExpression, $definingExpressionLanguage) = definingExpression($definedMeaningId);
+		$definingExpression = definingExpression($definedMeaningId);
 		
 		return createLink("DefinedMeaning", "$definingExpression ($definedMeaningId)", $definedMeaningExpression);
 	}
