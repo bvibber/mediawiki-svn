@@ -29,8 +29,25 @@ $wgMakesysopMessages['en'] = array(
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
 );
 $wgMakesysopMessages['cs'] = array(
+	'makesysoptitle'       => 'Určit nového správce',
+	'makesysoptext'        => 'Pomocí tohoto formuláře mohou byrokraté uživateli přidělit práva správce. Vepište jméno uživatele do políčka a stiskněte tlačítko; zaškrtnutím políčka přidáte uživateli také oprávnění „byrokrat“.',
+  'makesysopname'        => 'Jméno uživatele:',
+	'makesysopsubmit'      => 'Udělat z tohoto uživatele správce',
+	'makesysopok'          => "<b>Uživatel \"$1\" je teď správce</b>",
+	'makesysopfail'        => "<b>Uživatel \"$1\" nemůže být správce. (Vložili jste jeho jméno správně?)</b>",
+	'setbureaucratflag'    => 'Připojit i oprávnění „byrokrat“',
+	'rights'               => 'Oprávnění:',
+	'set_user_rights'      => 'Nastavit uživatelova oprávnění',
+	'user_rights_set'      => "<b>Oprávnění uživatele \"$1\" změněna</b>",
+	'set_rights_fail'      => "<b>Oprávnění uživatele \"$1\" nemohla být nastavena. (Vložili jste jméno správně?)</b>",
+	'makesysop'            => 'Určit nového správce',
+	'already_sysop'        => 'Tento uživatel již je správce',
+	'already_bureaucrat'   => 'Tento uživatel již je byrokrat',
+	'makesysop-nodatabase' => '$1 není platná identifikace uživatele',
 	'group-steward'        => 'Stevardi',
 	'group-steward-member' => 'Stevard',
+	'grouppage-steward'    => '{{ns:project}}:Stevardi',
+
 );
 $wgMakesysopMessages['de'] = array(
 	'makesysoptitle'       => 'Mache einen Benutzer zum Administrator',

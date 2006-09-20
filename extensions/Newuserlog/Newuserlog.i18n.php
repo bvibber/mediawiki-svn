@@ -16,6 +16,12 @@ $wgNewuserlogMessages['en'] = array(
 	'newuserlog-create2-entry' => 'created account for $1',
 	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # Don't translate this
 );
+$wgNewuserlogMessages['cs'] = array(
+  'newuserlogpage'           => 'Kniha nových uživatelů',
+  'newuserlogpagetext'       => 'Toto je záznam nově zaregistrovaných uživatelů.',
+  'newuserlog-create-entry'  => 'Nově založený uživatel',
+  'newuserlog-create2-entry' => 'založil účet pro $1',
+);
 $wgNewuserlogMessages['de'] = array(
 	'newuserlogpage'           => 'Neuanmeldungs-Logbuch',
 	'newuserlogpagetext'       => 'Dies ist ein Logbuch für neu erstellte Benutzerkonten.',
