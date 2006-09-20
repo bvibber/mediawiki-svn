@@ -74,10 +74,12 @@ class DefinedMeaningDefinitionController implements Controller {
 class DefinedMeaningAlternativeDefinitionsController {
 	public function add($keyPath, $record)  {
 		global
-			$expressionIdAttribute, $definedMeaningIdAttribute, $alternativeDefinitionAttribute, $languageAttribute, $textAttribute;
+			$expressionIdAttribute, $definedMeaningIdAttribute, $alternativeDefinitionAttribute, $languageAttribute, $textAttribute,
+			$sourceAttribute;
 
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$alternativeDefinition = $record->getAttributeValue($alternativeDefinitionAttribute);
+		$sourceId = $record->getAttributeValue($sourceAttribute);
 
 		if ($alternativeDefinition->getRecordCount() > 0) {
 			$definitionRecord = $alternativeDefinition->getRecord(0);
@@ -86,7 +88,7 @@ class DefinedMeaningAlternativeDefinitionsController {
 			$text = $definitionRecord->getAttributeValue($textAttribute);
 
 			if ($languageId != 0 && $text != '')
-				addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text, 0);
+				addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text, $sourceId);
 		}
 	}
 
