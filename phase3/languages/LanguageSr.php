@@ -133,8 +133,9 @@ class SrConverter extends LanguageConverter {
 
 		// regexp for roman numbers
 		$roman = 'M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})';
+		$dblbreaks = "(?!$breaks$breaks)"; // prevent capture of double breaks
 
-		$reg = '/^'.$roman.'$|^'.$roman.$breaks.'|'.$breaks.$roman.'$|'.$breaks.$roman.$breaks.'/';
+		$reg = '/^'.$roman.'$|^'.$dblbreaks.$roman.$breaks.'|'.$dblbreaks.$breaks.$roman.'$|'.$dblbreaks.$breaks.$roman.$breaks.'/';
 
 		$matches = preg_split($reg, $text, -1, PREG_SPLIT_OFFSET_CAPTURE);
 		
