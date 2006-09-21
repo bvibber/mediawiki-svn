@@ -1,3 +1,12 @@
+squid (2.6.3-1wm1) unstable; urgency=low
+
+  * Adapt to Wikimedia needs
+    - 8192 FDs by default
+    - Wikimedia error pages
+    - No mangling of request headers on server side requests
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 17 Sep 2006 20:00:49 +0000
+
 squid (2.6.3-1) unstable; urgency=low
 
   * New upstream release (Closes: #383763)

@@ -1,0 +1,20 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 20-wikimedia-errors.dpatch by  <mark@wikimedia.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Wikimedia specific error messages
+
+@DPATCH@
+diff -urNad squid-2.6.3~/errors/Makefile.am squid-2.6.3/errors/Makefile.am
+--- squid-2.6.3~/errors/Makefile.am	2006-09-18 16:52:26.000000000 +0000
++++ squid-2.6.3/errors/Makefile.am	2006-09-18 16:56:24.000000000 +0000
+@@ -41,7 +41,8 @@
+ 		Spanish \
+ 		Swedish \
+ 		Traditional_Chinese \
+-		Turkish
++		Turkish \
++		Wikimedia
+ 
+ install-data-local:
+ 	@for l in $(INSTALL_LANGUAGES); do \

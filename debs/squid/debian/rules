@@ -83,7 +83,7 @@ endef
 
 
 # Build the binaries.
-build: patch config.status
+build: patch wmerrors config.status
 	$(checkdir)
 	$(MAKE) $(DEFAULTS) all
 	# Authentication modules
@@ -130,12 +130,12 @@ config.status:
 	--enable-useragent-log \
 	--enable-auth="basic,digest,ntlm" \
 	--enable-carp \
+	--enable-gnuregex \
+	--disable-icmp \
 	--with-large-files \
+	--with-maxfd=8192 \
 	$(DEB_HOST_ARCH_CPU)-debian-$(DEB_HOST_ARCH_OS)
 ifeq ($(DEB_HOST_ARCH_OS), linux)
-	# Force 4096 filedescriptors
-	perl -pi -e 's/^#define SQUID_MAXFD.*/#define SQUID_MAXFD 4096/;' \
-		include/autoconf.h
 endif
 
 # Architecture independant files.
@@ -388,6 +388,7 @@ clean1:	checkroot
 	rm -rf $(tmp) *~
 	-find . -name '*.bak' -o -name '*~' | xargs -r rm -f --
 	#cd icons && /bin/sh ./icons.shar
+	rm -rf errors/Wikimedia
 	debconf-updatepo
 
 binary:	binary-indep binary-arch
@@ -399,4 +400,12 @@ checkroot:
 dist:	binary
 	dpkg-source -b
 
-.PHONY: binary binary-arch binary-indep clean checkroot clean1 patch unpatch
+wmerrors:	patch
+	# Fetch the Wikimedia error page from SVN
+	rm -rf errors/Wikimedia
+	cp -a errors/English errors/Wikimedia
+	wget -qO errors/Wikimedia/error.html http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/errorpage/error.html
+	for page in ERR_ZERO_SIZE_OBJECT ERR_CANNOT_FORWARD; do \
+		cp -f errors/Wikimedia/error.html errors/Wikimedia/$$page; done
+
+.PHONY: binary binary-arch binary-indep clean checkroot clean1 patch unpatch wmerrors

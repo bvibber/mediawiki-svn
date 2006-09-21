@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: squid_2.5.6-9\n"
 "Report-Msgid-Bugs-To: luigi@debian.org\n"
-"POT-Creation-Date: 2006-07-12 15:35+0200\n"
+"POT-Creation-Date: 2006-09-21 16:13+0000\n"
 "PO-Revision-Date: 2004-08-04 16:25+0200\n"
 "Last-Translator: Luigi Gangitano <luigi@debian.org>\n"
 "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:1001
+#: ../templates:3
 #, fuzzy
 msgid ""
 "The http_anonymizer directive has been replaced with header_replace and "
@@ -36,7 +36,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:1001
+#: ../templates:3
 msgid ""
 "The http_anonymizer directive that was present in squid 2.1 and 2.2 doesn't "
 "exist anymore in squid 2.3 and up. It has been replaced with header_replace "
@@ -57,7 +57,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:2001
+#: ../templates:14
 #, fuzzy
 msgid ""
 "The anonymize_headers and fake_user_agent directives have been replaced with "
@@ -68,7 +68,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:2001
+#: ../templates:14
 #, fuzzy
 msgid ""
 "The anonymize_headers and fake_user_agent directives that were present in "
@@ -91,20 +91,20 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:25
 #, fuzzy
 msgid "There is no automatic upgrade path to squid 2.5."
 msgstr "Non esiste un metodo automatico di aggiornamento a squid 2.5"
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:25
 msgid "             SQUID 2.5 INSTALLATION WARNING"
 msgstr "             ATTENZIONE: INSTALLAZIONE DI SQUID 2.5"
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:25
 msgid ""
 "You are upgrading squid from an 1.x version to the 2.5 version. The 1.x and "
 "2.5 versions are NOT compatible. The structure of the cache directory is "
@@ -118,7 +118,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:25
 msgid ""
 "If you have an old cache directory, please quit NOW and remove the old cache "
 "by hand (in /var/spool/squid). Then re-install this squid version."
@@ -129,7 +129,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:25
 msgid ""
 "Also, please accept the new configuration file. After upgrading your old "
 "configuration file can be found in \"/etc/squid.conf.dpkg-old\". Then you "
@@ -144,19 +144,19 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:25
 msgid "Do you want to quit now?"
 msgstr "Vuoi uscire ora?"
 
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:45
 msgid "squid-cgi now uses config file for target ACL"
 msgstr "Ora squid-cgi usa un file di configurazione per le ACL"
 
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:45
 msgid ""
 "squid-cgi now checks a configuration file before connecting to the target "
 "host. Only allowed target will be contacted. Please add hosts you want to "
@@ -169,19 +169,19 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:4001
+#: ../templates:45
 msgid "  hostname:port"
 msgstr "  nomehost:porta"
 
 #. Type: boolean
 #. Description
-#: ../templates:5001
+#: ../templates:55
 msgid "Upgrade squid.conf automatically?"
 msgstr "Aggiornare squid.conf automaticamente?"
 
 #. Type: boolean
 #. Description
-#: ../templates:5001
+#: ../templates:55
 msgid ""
 "Incompatible settings have been found in the existing squid.conf file; they "
 "will prevent squid from starting or working correctly. However, this setup "
@@ -194,14 +194,14 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:6001
+#: ../templates:63
 #, fuzzy
 msgid "The authenticate_program directive has been replaced with auth_param."
 msgstr "L'opzione authenticate_program è stata sostituita da auth_param"
 
 #. Type: note
 #. Description
-#: ../templates:6001
+#: ../templates:63
 msgid ""
 "The authenticate_program directive that was present in squid <= 2.4 doesn't "
 "exist anymore in squid 2.5 and up. All authentication directives have been "
@@ -220,7 +220,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:7001
+#: ../templates:73
 #, fuzzy
 msgid "Warning: squid may crash when logfiles size is bigger than 2GB."
 msgstr ""
@@ -229,7 +229,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:7001
+#: ../templates:73
 msgid ""
 "Squid may crash if any of the logfiles grows bigger than 2GB. Please "
 "configure /etc/logrotate.d/squid accordingly to your site's traffic."
@@ -240,13 +240,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:8001
+#: ../templates:80
 msgid "Fix permissions of cache_dir?"
 msgstr "Correggo i permessi della cache_dir?"
 
 #. Type: boolean
 #. Description
-#: ../templates:8001
+#: ../templates:80
 msgid ""
 "Values for cache_effective_user and/or cache_effective_group in config file  "
 "are incompatible with owner/group of cache directories. Do you want to "
@@ -259,7 +259,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:8001
+#: ../templates:80
 msgid ""
 "WARNING: If you specified a cache directory different from /var/spool/squid "
 "and selected some other directory used by other programs (e.g. /tmp), this "

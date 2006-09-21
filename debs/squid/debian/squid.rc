@@ -51,7 +51,7 @@ grepconf2 () {
 maxfds () {
 	[ -n "$SQUID_MAXFD" ] || return
 	[ -f /proc/sys/fs/file-max ] || return 0
-	[ $SQUID_MAXFD -le 4096 ] || SQUID_MAXFD=4096
+	[ $SQUID_MAXFD -le 8192 ] || SQUID_MAXFD=8192
 	global_file_max=`cat /proc/sys/fs/file-max`
 	minimal_file_max=$(($SQUID_MAXFD + 4096))
 	if [ "$global_file_max" -lt $minimal_file_max ]

@@ -3,3 +3,5 @@
 03-no-append-domain-localhost
 04-smb-auth
 06-unlinkd
+20-wikimedia-errors
+21-nomanglerequestheaders

@@ -22,3 +22,8 @@ Not applied (yet?):
 
 vms-ftp.patch.NOT-YET	Not finished and not working
 
+Wikimedia:
+
+wikimedia-errors	Wikimedia specific error messages
+nomanglerequestheaders	Do not alter the request headers in server-side
+			requests

@@ -1,0 +1,21 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 21-nomanglerequestheaders.dpatch by  <mark@wikimedia.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Do not alter the request headers in server-side requests
+
+@DPATCH@
+diff -urNad squid-2.6.3~/src/http.c squid-2.6.3/src/http.c
+--- squid-2.6.3~/src/http.c	2006-07-26 20:09:33.000000000 +0000
++++ squid-2.6.3/src/http.c	2006-09-19 11:20:31.000000000 +0000
+@@ -1216,8 +1216,10 @@
+ 	if (flags.front_end_https == 1 || request->protocol == PROTO_HTTPS)
+ 	    httpHeaderPutStr(hdr_out, HDR_FRONT_END_HTTPS, "On");
+     }
++#if 0
+     /* Now mangle the headers. */
+     httpHdrMangleList(hdr_out, orig_request);
++#endif
+     stringClean(&strConnection);
+ }
+ 
