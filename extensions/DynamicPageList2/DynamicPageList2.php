@@ -19,13 +19,13 @@
  * @author w:de:Benutzer:Unendlich 
  * @author m:User:Dangerman <cyril.dangerville@gmail.com>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version 0.7.0
+ * @version 0.7.1
  */
 
 /*
  * Current version
  */
-define('DPL2_VERSION', '0.7.0');
+define('DPL2_VERSION', '0.7.1');
 
 /**
  * Register the extension with MediaWiki
@@ -863,7 +863,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 		foreach($aHeadingCounts as $heading => $headingCount) {
 			$output .= $headingMode->sStartItem;
 			$output .= $headingMode->sStartHeading . $heading . $headingMode->sEndHeading;
-			$output .= DPL2FormatCount($headingCount, $aOrderMethods[0]);
+			$output .= DPL2FormatCount($headingCount, $aOrderMethods[0], $localParser, $pOptions, $pTitle);
 			if ($sPageOutputMode == 'category')
 				$output .= DPL2OutputCategoryStyle($aArticles, $aArticles_start_char, $headingStart, $headingCount);
 			else
@@ -937,13 +937,32 @@ function DPL2OutputCategoryStyle($aArticles, $aArticles_start_char, $iStart, $iC
 	return '';
 }
 
-function DPL2FormatCount( $numart, $headingtype = '' ) {
+function DPL2FormatCount( $numart, $headingtype = '', $parser, $poptions, $ptitle ) {
 	global $wgLang;
 	if($headingtype == 'category')
 		$message = 'categoryarticlecount';
 	else 
 		$message = 'dpl2_articlecount';
-	return wfMsgExt( $message, array( 'parse' ), $numart); 
+	return DPL2MsgExt( $message, $parser, $poptions, $ptitle, $numart);
+}
+
+/**
+ * Returns message in the requested format after parsing wikitext to html
+ * This is meant to be equivalent to wfMsgExt($key, array('parse')) but using a local parser instead of the global one (bugfix).
+ * @param string $key Key of the message
+ */
+function DPL2MsgExt( $key, $parser, &$poptions, $ptitle ) {
+	$args = func_get_args();
+	array_shift( $args );
+	array_shift( $args );
+	array_shift( $args );
+	array_shift( $args );
+	$string = wfMsgGetKey( $key, true, false, false );
+	$string = wfMsgReplaceArgs( $string, $args );
+	$poptions->setInterfaceMessage(true);
+	$parserOutput = $parser->parse( $string, $ptitle, $poptions );
+	$poptions->setInterfaceMessage(false);
+	return $parserOutput->getText();
 }
 
 class DPL2Logger {
