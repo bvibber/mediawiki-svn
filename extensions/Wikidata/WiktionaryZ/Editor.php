@@ -944,7 +944,7 @@ class RecordListEditor extends RecordEditor {
 			$expansionPrefix = $this->getExpansionPrefix($class, $attributeId);
 			$this->setExpansionByEditor($editor, $class);
 			$result .= '<li>'.
-						'<h'. $this->headerLevel .'><span id="collapse-'. $attributeId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $expansionPrefix . '</span>&nbsp;' . $attribute->name . '</h'. $this->headerLevel .'>' .
+						'<h'. $this->headerLevel .'><span id="collapse-'. $attributeId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</span></h'. $this->headerLevel .'>' .
 						'<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->view($idPath, $value->getAttributeValue($attribute)) . '</div>' .
 						'</li>';
 			$idPath->popAttribute();
@@ -968,7 +968,7 @@ class RecordListEditor extends RecordEditor {
 			$expansionPrefix = $this->getExpansionPrefix($class, $attributeId);
 
 			$result .= '<li>'.
-						'<h'. $this->headerLevel .'><span id="collapse-'. $attributeId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $expansionPrefix . '</span>&nbsp;' . $attribute->name . '</h'. $this->headerLevel .'>' .
+						'<h'. $this->headerLevel .'><span id="collapse-'. $attributeId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</span></h'. $this->headerLevel .'>' .
 						'<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->edit($idPath, $value->getAttributeValue($attribute)) . '</div>' .
 						'</li>';
 			$idPath->popAttribute();
@@ -992,7 +992,7 @@ class RecordListEditor extends RecordEditor {
 				$expansionPrefix = $this->getExpansionPrefix($class, $attributeId);
 
 				$result .= '<li>'.
-							'<h'. $this->headerLevel .'><span id="collapse-'. $attributeId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $expansionPrefix . '</span>&nbsp;' . $attribute->name . '</h'. $this->headerLevel .'>' .
+							'<h'. $this->headerLevel .'><span id="collapse-'. $attributeId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</span></h'. $this->headerLevel .'>' .
 							'<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->add($idPath) . '</div>' .
 							'</li>';
 				$editor->add($idPath);
@@ -1140,7 +1140,7 @@ class RecordSetListEditor extends RecordSetEditor {
 		$this->setExpansion(true, $class);
 
 		$result .= '<li>'.
-					'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $this->getExpansionPrefix($idPath->getClass(), $idPath->getId()) . '</span>&nbsp;' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
+					'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $this->getExpansionPrefix($idPath->getClass(), $idPath->getId()) . '&nbsp;' . $this->captionEditor->add($idPath) . '</span></h' . $this->headerLevel .'>';
 		$idPath->popAttribute();
 
 		$idPath->pushAttribute($valueAttribute);
