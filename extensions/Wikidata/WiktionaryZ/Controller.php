@@ -160,21 +160,21 @@ class SynonymTranslationController implements Controller {
 
 	public function remove($keyPath) {
 		global
-			$definedMeaningIdAttribute, $expressionIdAttribute;
+			$definedMeaningIdAttribute, $syntransIdAttribute;
 
 		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
-		$expressionId = $keyPath->peek(0)->getAttributeValue($expressionIdAttribute);
-		removeSynonymOrTranslation($definedMeaningId, $expressionId);
+		$syntransId = $keyPath->peek(0)->getAttributeValue($syntransIdAttribute);
+		removeSynonymOrTranslationWithId($syntransId);
 	}
 
 	public function update($keyPath, $record) {
 		global
-			$definedMeaningIdAttribute, $expressionIdAttribute, $identicalMeaningAttribute;
+			$definedMeaningIdAttribute, $syntransIdAttribute, $identicalMeaningAttribute;
 
 		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
-		$expressionId = $keyPath->peek(0)->getAttributeValue($expressionIdAttribute);
+		$syntransId = $keyPath->peek(0)->getAttributeValue($syntransIdAttribute);
 		$identicalMeaning = $record->getAttributeValue($identicalMeaningAttribute);
-		updateSynonymOrTranslation($definedMeaningId, $expressionId, $identicalMeaning);
+		updateSynonymOrTranslationWithId($syntransId, $identicalMeaning);
 	}
 }
 

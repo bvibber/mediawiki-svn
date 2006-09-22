@@ -96,10 +96,9 @@ global
 $alternativeDefinitionsAttribute = new Attribute("alternative-definitions", "Alternative definitions", new RecordSetType(new Structure($definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute)));
 
 global
-	$definitionAttribute, $synonymsAndTranslationsAttribute;
+	$synonymsAndTranslationsAttribute, $syntransIdAttribute;
 	
-$definitionAttribute = new Attribute("definition", "Definition", new RecordSetType($translatedTextStructure));
-$synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Synonyms and translations", new RecordSetType(new Structure($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute)));
+$synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Synonyms and translations", new RecordSetType(new Structure($syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute)));
 
 global
 	$textValueIdAttribute, $textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute, $textAttributeValuesStructure;
@@ -112,8 +111,9 @@ $textAttributeValuesStructure = new Structure($textAttributeAttribute, $textValu
 $textAttributeValuesAttribute = new Attribute("text-attribute-values", "Text attribute values", new RecordSetType($textAttributeValuesStructure));
 
 global
-	$definedMeaningAttribute;
+	$definitionAttribute, $definedMeaningAttribute;
 		
+$definitionAttribute = new Attribute("definition", "Definition", new RecordSetType($translatedTextStructure));
 $definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType(new Structure($definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute)));
 
 global

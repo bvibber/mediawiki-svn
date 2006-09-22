@@ -292,9 +292,25 @@ function removeSynonymOrTranslation($definedMeaningId, $expressionId) {
 				" WHERE defined_meaning_id=$definedMeaningId AND expression_id=$expressionId AND remove_transaction_id IS NULL LIMIT 1");
 }
 
+function removeSynonymOrTranslationWithId($syntransId) {
+	$dbr =& wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE uw_syntrans SET remove_transaction_id=". getUpdateTransactionId() . 
+				" WHERE syntrans_sid=$syntransId AND remove_transaction_id IS NULL LIMIT 1");
+}
+
 function updateSynonymOrTranslation($definedMeaningId, $expressionId, $identicalMeaning) {
 	removeSynonymOrTranslation($definedMeaningId, $expressionId);
 	createSynonymOrTranslation($definedMeaningId, $expressionId, $identicalMeaning);
+}
+
+function updateSynonymOrTranslationWithId($syntransId, $identicalMeaning) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT defined_meaning_id, expression_id" .
+								" FROM uw_syntrans" .
+								" WHERE syntrans_sid=$syntransId AND remove_transaction_id IS NULL");
+				
+	if ($syntrans = $dbr->fetchObject($queryResult)) 
+		updateSynonymOrTranslation($syntrans->defined_meaning_id, $syntrans->expression_id, $identicalMeaning);
 }
 
 function updateDefinedMeaningDefinition($definedMeaningId, $languageId, $text) {
