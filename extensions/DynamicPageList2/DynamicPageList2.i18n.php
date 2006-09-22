@@ -179,14 +179,14 @@ $wgDPL2Messages['nl'] = array(
 	/**
 	 * $0: max number of categories that can be included
 	*/
-	'dpl2_debug_' . DPL2_ERR_TOOMANYCATS => 'FOUT: Te veel categori�! Maximum: $0. Hulp: verhoog <code>$wgDPL2MaxCategoryCount</code> om meer categorie� op te kunnen geven of stel geen limiet in met <code>$wgDPL2AllowUnlimitedCategories=true</code>. (Neem deze variabele op in <code>LocalSettings.php</code>, na het toevoegen van <code>DynamicPageList2.php</code>.)',
+	'dpl2_debug_' . DPL2_ERR_TOOMANYCATS => 'FOUT: Te veel categoriën! Maximum: $0. Hulp: verhoog <code>$wgDPL2MaxCategoryCount</code> om meer categorieën op te kunnen geven of stel geen limiet in met <code>$wgDPL2AllowUnlimitedCategories=true</code>. (Neem deze variabele op in <code>LocalSettings.php</code>, na het toevoegen van <code>DynamicPageList2.php</code>.)',
 	/**
 	 * $0: min number of categories that have to be included
 	*/
-	'dpl2_debug_' . DPL2_ERR_TOOFEWCATS => 'FOUT: Te weinig categorie�! Minimum: $0. Hulp: verlaag <code>$wgDPL2MinCategoryCount</code> om minder categorie� aan te hoeven geven. (Stel de variabele bij voorkeur in via <code>LocalSettings.php</code>, na het toevoegen van <code>DynamicPageList2.php</code>.)',
-	'dpl2_debug_' . DPL2_ERR_CATDATEBUTNOINCLUDEDCATS => "FOUT: U dient tenminste �n categorie op te nemen als u 'addfirstcategorydate=true' of 'ordermethod=categoryadd' wilt gebruiken!",
-	'dpl2_debug_' . DPL2_ERR_CATDATEBUTMORETHAN1CAT => "FOUT: Als u meer dan �n categorie opneemt, kunt u 'addfirstcategorydate=true' of 'ordermethod=categoryadd' niet gebruiken!",
-	'dpl2_debug_' . DPL2_ERR_MORETHAN1TYPEOFDATE => 'FOUT: U kunt niet meer dan �n type of datum tegelijk gebruiken!',
+	'dpl2_debug_' . DPL2_ERR_TOOFEWCATS => 'FOUT: Te weinig categorieën! Minimum: $0. Hulp: verlaag <code>$wgDPL2MinCategoryCount</code> om minder categorieën aan te hoeven geven. (Stel de variabele bij voorkeur in via <code>LocalSettings.php</code>, na het toevoegen van <code>DynamicPageList2.php</code>.)',
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTNOINCLUDEDCATS => "FOUT: U dient tenminste één categorie op te nemen als u 'addfirstcategorydate=true' of 'ordermethod=categoryadd' wilt gebruiken!",
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTMORETHAN1CAT => "FOUT: Als u meer dan één categorie opneemt, kunt u 'addfirstcategorydate=true' of 'ordermethod=categoryadd' niet gebruiken!",
+	'dpl2_debug_' . DPL2_ERR_MORETHAN1TYPEOFDATE => 'FOUT: U kunt niet meer dan één type of datum tegelijk gebruiken!',
 	/**
 	 * $0: param=val that is possible only with $1 as last 'ordermethod' parameter
 	 * $1: last 'ordermethod' parameter required for $0
@@ -197,7 +197,7 @@ $wgDPL2Messages['nl'] = array(
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
-	
+
 	// WARNINGS
 	/**
 	 * $0: unknown parameter given by user
@@ -215,7 +215,7 @@ $wgDPL2Messages['nl'] = array(
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT],
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'WAARSCHUWING: Geen resultaten!',
-	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => 'WAARSCHUWING: Het is sterk aan te bevelen om tenminste �n categorie of naamruimte op te nemen. Zo niet, dan is het samenstellen van de paginalijst een redelijk zware belasting voor systeembronnen en kan dit proces redelijk lang duren.',
+	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => 'WAARSCHUWING: Het is sterk aan te bevelen om tenminste één categorie of naamruimte op te nemen. Zo niet, dan is het samenstellen van de paginalijst een redelijk zware belasting voor systeembronnen en kan dit proces redelijk lang duren.',
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "WAARSCHUWING: Add* parameters ('adduser', 'addeditdate', etc.)' heeft geen effect bij 'mode=category'. Alleen de paginanaamruimte/titel is in deze modus te bekijken.",
 	/**
 	 * $0: 'headingmode' value given by user
