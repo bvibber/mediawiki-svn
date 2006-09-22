@@ -38,7 +38,7 @@ $definedMeaningReferenceType = new RecordType($definedMeaningReferenceStructure)
 global
 	$collectionIdAttribute, $collectionMeaningType, $collectionMeaningAttribute, $sourceIdentifierAttribute;
 
-$collectionIdAttribute = new Attribute("collection", "Collection", $collectionType);
+$collectionIdAttribute = new Attribute("collection", "Collection", "collection-id");
 $collectionMeaningType = new RecordType($definedMeaningReferenceStructure);
 $collectionMeaningAttribute = new Attribute("collection-meaning", "Collection", $collectionMeaningType);
 $sourceIdentifierAttribute = new Attribute("source-identifier", "Source identifier", "short-text"); 

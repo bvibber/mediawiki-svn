@@ -4,6 +4,148 @@ require_once('WiktionaryZAttributes.php');
 require_once('Record.php');
 require_once('RecordSet.php');
 require_once('Expression.php');
+require_once('Transaction.php');
+
+class Table {
+	public $name;
+	public $isVersioned;
+	
+	public function __construct($name, $isVersioned) {
+		$this->name = $name;
+		$this->isVersioned = $isVersioned;
+	}
+}
+
+global
+	$tables, $meaningRelationsTable, $classMembershipsTable, $collectionMembershipsTable;
+	
+$meaningRelationsTable = new Table('uw_meaning_relations', true);
+$classMembershipsTable = new Table('uw_class_membership', true);
+$collectionMembershipsTable = new Table('uw_collection_contents', true);
+
+interface QueryTransactionInformation {
+	public function getRestriction($tableName);
+	public function versioningAttributes();
+	public function versioningFields();
+	public function versioningOrderBy();
+	public function setVersioningAttributes($record, $row);
+}
+
+class QueryLatestTransactionInformation {
+	public function getRestriction($tableName) {
+		return getLatestTransactionRestriction($tableName);
+	}
+	
+	public function versioningAttributes() {
+		return array();
+	}
+	
+	public function versioningFields($tableName) {
+		return array();
+	}
+	
+	public function versioningOrderBy() {
+		return array();
+	}
+	
+	public function setVersioningAttributes($record, $row) {
+	}
+}
+
+class QueryHistoryTransactionInformation {
+	public function getRestriction($tableName) {
+		return "1";
+	}
+	
+	public function versioningAttributes() {
+		global
+			$recordLifeSpanAttribute;
+			
+		return array($recordLifeSpanAttribute);
+	}
+
+	public function versioningFields($tableName) {
+		return array($tableName . '.add_transaction_id', $tableName . '.remove_transaction_id', $tableName . '.remove_transaction_id IS NULL AS is_live');
+	}
+
+	public function versioningOrderBy() {
+		return array('is_live DESC', 'add_transaction_id DESC');
+	}
+	
+	public function setVersioningAttributes($record, $row) {
+		global
+			$recordLifeSpanAttribute;
+			
+		$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']));
+	}
+}
+
+function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeMapping, $table, $restrictions, $orderBy = array()) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	
+	$selectFields = array_keys($fieldAttributeMapping);
+	$attributes = array_values($fieldAttributeMapping);
+
+	if ($table->isVersioned) {
+		$restrictions[] = $transactionInformation->getRestriction($table->name);
+		$orderBy = array_merge($orderBy, $transactionInformation->versioningOrderBy());
+		$selectFields = array_merge($selectFields, $transactionInformation->versioningFields($table->name));
+		$allAttributes = array_merge($attributes, $transactionInformation->versioningAttributes());
+	}
+	else
+		$allAttributes = $attributes;
+	
+	$query = "SELECT ". implode(", ", $selectFields) . 
+			" FROM ". $table->name .
+			" WHERE ". implode(' AND ', $restrictions);
+	
+	if (count($orderBy) > 0)
+		$query .= " ORDER BY " . implode(', ', $orderBy);
+	
+	$queryResult = $dbr->query($query);
+	
+	$structure = new Structure($allAttributes);
+	$recordSet = new ArrayRecordSet($structure, new Structure($keyAttribute));
+
+	while ($row = $dbr->fetchRow($queryResult)) {
+		$record = new ArrayRecord($structure);
+
+		for ($i = 0; $i < count($attributes); $i++)
+			$record->setAttributeValue($attributes[$i], $row[$i]);
+			
+		$transactionInformation->setVersioningAttributes($record, $row);	
+		$recordSet->add($record);
+	} 
+		
+	return $recordSet;
+}
+
+function expandDefinedMeaningReferencesInRecordSet($recordSet, $definedMeaningAttributes) {
+	$definedMeaningIds = array();
+	
+	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
+		$record = $recordSet->getRecord($i);
+		
+		foreach($definedMeaningAttributes as $definedMeaningAttribute) {
+			$definedMeaningId = $record->getAttributeValue($definedMeaningAttribute);
+			
+			if (!in_array($definedMeaningId, $definedMeaningIds))
+				$definedMeaningIds[] = $definedMeaningId;
+		}
+	}
+	
+	$definedMeaningReferenceRecords = getDefinedMeaningReferenceRecords($definedMeaningIds);
+
+	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
+		$record = $recordSet->getRecord($i);
+		
+		foreach($definedMeaningAttributes as $definedMeaningAttribute)
+			$record->setAttributeValue(
+				$definedMeaningAttribute, 
+				$definedMeaningReferenceRecords[$record->getAttributeValue($definedMeaningAttribute)]
+			);
+	} 
+}
 
 function getExpressionMeaningsRecordSet($expressionId, $exactMeaning) {
 	global
@@ -61,22 +203,27 @@ function getExpressionsRecordSet($spelling) {
 
 function getDefinedMeaningRecord($definedMeaningId) {
 	global
-		$definedMeaningAttribute, $definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
+		$wgRequest, $definedMeaningAttribute, $definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
 		$relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute;
 
+	if ($wgRequest->getText('action') == 'history')
+		$queryTransactionInformation = new QueryHistoryTransactionInformation();
+	else
+		$queryTransactionInformation = new QueryLatestTransactionInformation(); 
+
 	$record = new ArrayRecord($definedMeaningAttribute->type->getStructure());
-	$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecordSet($definedMeaningId));
-	$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId));
-	$record->setAttributeValue($synonymsAndTranslationsAttribute, getSynonymAndTranslationRecordSet($definedMeaningId));
-	$record->setAttributeValue($relationsAttribute, getDefinedMeaningRelationsRecordSet($definedMeaningId));
-	$record->setAttributeValue($classMembershipAttribute, getDefinedMeaningClassMembershipRecordSet($definedMeaningId));
-	$record->setAttributeValue($collectionMembershipAttribute, getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId));
-	$record->setAttributeValue($textAttributeValuesAttribute, getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId));
+	$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecordSet($definedMeaningId, $queryTransactionInformation));
+	$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId, $queryTransactionInformation));
+	$record->setAttributeValue($synonymsAndTranslationsAttribute, getSynonymAndTranslationRecordSet($definedMeaningId, $queryTransactionInformation));
+	$record->setAttributeValue($relationsAttribute, getDefinedMeaningRelationsRecordSet($definedMeaningId, $queryTransactionInformation));
+	$record->setAttributeValue($classMembershipAttribute, getDefinedMeaningClassMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
+	$record->setAttributeValue($collectionMembershipAttribute, getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
+	$record->setAttributeValue($textAttributeValuesAttribute, getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId, $queryTransactionInformation));
 
 	return $record;
 }
 
-function getAlternativeDefinitionsRecordSet($definedMeaningId) {
+function getAlternativeDefinitionsRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global
 		$definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute;
 
@@ -95,7 +242,7 @@ function getAlternativeDefinitionsRecordSet($definedMeaningId) {
 	return $recordSet;
 }
 
-function getDefinedMeaningDefinitionRecordSet($definedMeaningId) {
+function getDefinedMeaningDefinitionRecordSet($definedMeaningId, $queryTransactionInformation) {
 	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
 	
 	return getTranslatedTextRecordSet($definitionId);
@@ -151,7 +298,7 @@ function getTranslatedTextHistoryRecordSet($textId) {
 	return $recordSet;
 }
 
-function getSynonymAndTranslationRecordSet($definedMeaningId) {
+function getSynonymAndTranslationRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global
 		$wgRequest;
 
@@ -196,8 +343,13 @@ function getSynonymAndTranslationLatestRecordSet($definedMeaningId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 
 	$recordset = new ArrayRecordSet(new Structure($expressionIdAttribute, $expressionAttribute, $identicalMeaningAttribute), new Structure($expressionIdAttribute));
-	$queryResult = $dbr->query("SELECT uw_expression_ns.expression_id, spelling, language_id, endemic_meaning FROM uw_syntrans, uw_expression_ns WHERE uw_syntrans.defined_meaning_id=$definedMeaningId " .
-								"AND uw_expression_ns.expression_id=uw_syntrans.expression_id AND ". getLatestTransactionRestriction('uw_syntrans'));
+	$queryResult = $dbr->query(
+		"SELECT uw_expression_ns.expression_id, spelling, language_id, endemic_meaning" .
+		" FROM uw_syntrans, uw_expression_ns" .
+		" WHERE uw_syntrans.defined_meaning_id=$definedMeaningId " .
+		" AND uw_expression_ns.expression_id=uw_syntrans.expression_id AND ". 
+		getLatestTransactionRestriction('uw_syntrans')
+	);
 
 	while($synonymOrTranslation = $dbr->fetchObject($queryResult)) {
 		$expressionRecord = new ArrayRecord($expressionStructure);
@@ -207,16 +359,6 @@ function getSynonymAndTranslationLatestRecordSet($definedMeaningId) {
 	}
 
 	return $recordset;
-}
-
-function getDefinedMeaningRelationsRecordSet($definedMeaningId) {
-	global
-		$wgRequest;
-
-	if ($wgRequest->getText('action') == 'history')
-		return getDefinedMeaningRelationsHistoryRecordSet($definedMeaningId);
-	else
-		return getDefinedMeaningRelationsLatestRecordSet($definedMeaningId);
 }
 
 function getDefinedMeaningReferenceRecord($definedMeaningId) {
@@ -232,101 +374,68 @@ function getDefinedMeaningReferenceRecord($definedMeaningId) {
 	return $record;
 }
 
-function getDefinedMeaningRelationsLatestRecordSet($definedMeaningId) {
+function getDefinedMeaningReferenceRecords($definedMeaningIds) {
+	$result = array();
+	
+	foreach($definedMeaningIds as $definedMeaningId)
+		$result[$definedMeaningId] = getDefinedMeaningReferenceRecord($definedMeaningId);
+		
+	return $result;
+}
+
+function getDefinedMeaningRelationsRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global
-		$relationStructure, $relationKeyStructure;
+		$meaningRelationsTable, $relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
 
-	$recordSet = new ArrayRecordSet($relationStructure, $relationKeyStructure);
-
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT relation_id, relationtype_mid, meaning2_mid FROM uw_meaning_relations " .
-								"WHERE meaning1_mid=$definedMeaningId  " .
-								" AND ". getLatestTransactionRestriction('uw_meaning_relations').
-								"ORDER BY relationtype_mid");
-
-	while($definedMeaningRelation = $dbr->fetchObject($queryResult)) 
-		$recordSet->addRecord(array($definedMeaningRelation->relation_id,
-									getDefinedMeaningReferenceRecord($definedMeaningRelation->relationtype_mid), 
-									getDefinedMeaningReferenceRecord($definedMeaningRelation->meaning2_mid)));
-//		$recordSet->addRecord(array($definedMeaningRelation->relationtype_mid, $definedMeaningRelation->meaning2_mid));
-
+	$recordSet = queryRecordSet(
+		$queryTransactionInformation,
+		$relationIdAttribute,
+		array(
+			'relation_id' => $relationIdAttribute, 
+			'relationtype_mid' => $relationTypeAttribute, 
+			'meaning2_mid' => $otherDefinedMeaningAttribute
+		),
+		$meaningRelationsTable,
+		array("meaning1_mid=$definedMeaningId"),
+		array('relationtype_mid')
+	);
+	
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($relationTypeAttribute, $otherDefinedMeaningAttribute));
+	
 	return $recordSet;
 }
 
-function getDefinedMeaningRelationsHistoryRecordSet($definedMeaningId) {
+function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global
-		$relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $recordLifeSpanAttribute;
+		$collectionMembershipsTable, $collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute;
 
-	$structure = new Structure($relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $recordLifeSpanAttribute);
-	$recordSet = new ArrayRecordSet($structure, $structure);
+	$recordSet = queryRecordSet(
+		$queryTransactionInformation,
+		$collectionIdAttribute,
+		array(
+			'collection_id' => $collectionIdAttribute,
+			'internal_member_id' => $sourceIdentifierAttribute
+		),
+		$collectionMembershipsTable,
+		array("member_mid=$definedMeaningId")
+	);
 
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT relation_id, relationtype_mid, meaning2_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live" .
-								" FROM uw_meaning_relations " .
-								" WHERE meaning1_mid=$definedMeaningId ORDER BY is_live, relationtype_mid");
+	// Both the record set as the records in that set use the same Structure object
+	// Updating the structure once, updates it for all
+	// Should be an general accepted operation on record sets in the future
+	$recordSet->getStructure()->atttributes[] = $collectionMeaningAttribute;
 
-	while($definedMeaningRelation = $dbr->fetchObject($queryResult))
-		$recordSet->addRecord(array($definedMeaningRelation->relation_id,
-									getDefinedMeaningReferenceRecord($definedMeaningRelation->relationtype_mid), 
-									getDefinedMeaningReferenceRecord($definedMeaningRelation->meaning2_mid),
-									getRecordLifeSpanTuple($definedMeaningRelation->add_transaction_id, $definedMeaningRelation->remove_transaction_id)));
-
+	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
+		$record = $recordSet->getRecord($i);
+		$record->setAttributeValue($collectionMeaningAttribute, getCollectionMeaningId($record->getAttributeValue($collectionIdAttribute)));	
+	}
+	
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($collectionMeaningAttribute));
+	
 	return $recordSet;
 }
 
-function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId) {
-	global
-		$wgRequest;
-
-	if ($wgRequest->getText('action') == 'history')
-		return getDefinedMeaningCollectionMembershipHistoryRecordSet($definedMeaningId);
-	else
-		return getDefinedMeaningCollectionMembershipLatestRecordSet($definedMeaningId);
-}
-
-function getDefinedMeaningCollectionMembershipLatestRecordSet($definedMeaningId) {
-	global
-		$collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute;
-
-	$structure = new Structure($collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute);
-	$recordSet = new ArrayRecordSet($structure, new Structure($collectionIdAttribute));
-
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT collection_id, internal_member_id" .
-								" FROM uw_collection_contents" .
-								" WHERE member_mid=$definedMeaningId" .
-								" AND ". getLatestTransactionRestriction('uw_collection_contents'));
-
-	while($collection = $dbr->fetchObject($queryResult))
-		$recordSet->addRecord(array($collection->collection_id,
-									getDefinedMeaningReferenceRecord(getCollectionMeaningId($collection->collection_id)), 
-									$collection->internal_member_id));
-
-	return $recordSet;
-}
-
-function getDefinedMeaningCollectionMembershipHistoryRecordSet($definedMeaningId) {
-	global
-		$collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute, $recordLifeSpanAttribute;
-
-	$structure = new Structure($collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute, $recordLifeSpanAttribute);
-	$recordSet = new ArrayRecordSet($structure, new Structure($collectionIdAttribute));
-
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT collection_id, internal_member_id, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL as is_live " .
-								"FROM uw_collection_contents WHERE member_mid=$definedMeaningId " .
-								"ORDER BY is_live, remove_transaction_id DESC");
-
-	while($collection = $dbr->fetchObject($queryResult))
-		$recordSet->addRecord(array($collection->collection_id,
-									getDefinedMeaningReferenceRecord(getCollectionMeaningId($collection->collection_id)), 
-									$collection->internal_member_id,
-									getRecordLifeSpanTuple($collection->add_transaction_id, $collection->remove_transaction_id)));
-
-	return $recordSet;
-}
-
-function getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId) {
+function getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global
 		$textAttributeValuesStructure, $textAttributeAttribute, $textValueIdAttribute;
 
@@ -345,52 +454,23 @@ function getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId) {
 	return $recordSet;
 }
 
-function getDefinedMeaningClassMembershipRecordSet($definedMeaningId) {
+function getDefinedMeaningClassMembershipRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global
-		$wgRequest;
+		$classMembershipsTable, $classMembershipIdAttribute, $classAttribute;
 
-	if ($wgRequest->getText('action') == 'history')
-		return getDefinedMeaningClassMembershipHistoryRecordSet($definedMeaningId);
-	else
-		return getDefinedMeaningClassMembershipLatestRecordSet($definedMeaningId);
-}
-
-function getDefinedMeaningClassMembershipLatestRecordSet($definedMeaningId) {
-	global
-		$classMembershipStructure, $classMembershipKeyStructure;
-
-	$recordset = new ArrayRecordSet($classMembershipStructure, $classMembershipKeyStructure);
-
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT class_membership_id, class_mid FROM uw_class_membership" .
-								" WHERE class_member_mid=$definedMeaningId " .
-								" AND ". getLatestTransactionRestriction('uw_class_membership'));
-
-	while($class = $dbr->fetchObject($queryResult))
-		$recordset->addRecord(array($class->class_membership_id,
-									getDefinedMeaningReferenceRecord($class->class_mid)));
-
-	return $recordset;
-}
-
-function getDefinedMeaningClassMembershipHistoryRecordSet($definedMeaningId) {
-	global
-		$classMembershipIdAttribute, $classAttribute, $recordLifeSpanAttribute;
-
-	$structure = new Structure($classMembershipIdAttribute, $classAttribute, $recordLifeSpanAttribute);
-	$recordSet = new ArrayRecordSet($structure, $structure);
-
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT class_membership_id, class_mid, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live" .
-								" FROM uw_class_membership" .
-								" WHERE class_member_mid=$definedMeaningId " .
-								" ORDER BY is_live ");
-
-	while($class = $dbr->fetchObject($queryResult))
-		$recordSet->addRecord(array($class->class_membership_id,
-									getDefinedMeaningReferenceRecord($class->class_mid),
-									getRecordLifeSpanTuple($class->add_transaction_id, $class->remove_transaction_id)));
-
+	$recordSet = queryRecordSet(
+		$queryTransactionInformation,
+		$classMembershipIdAttribute,
+		array(
+			'class_membership_id' => $classMembershipIdAttribute, 
+			'class_mid' => $classAttribute
+		),
+		$classMembershipsTable,
+		array("class_member_mid=$definedMeaningId")
+	);
+	
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($classAttribute));
+	
 	return $recordSet;
 }
 
