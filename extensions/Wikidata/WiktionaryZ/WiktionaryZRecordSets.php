@@ -17,12 +17,13 @@ class Table {
 }
 
 global
-	$tables, $meaningRelationsTable, $classMembershipsTable, $collectionMembershipsTable, $syntransTable;
+	$tables, $meaningRelationsTable, $classMembershipsTable, $collectionMembershipsTable, $syntransTable, $translatedContentTable;
 	
 $meaningRelationsTable = new Table('uw_meaning_relations', true);
 $classMembershipsTable = new Table('uw_class_membership', true);
 $collectionMembershipsTable = new Table('uw_collection_contents', true);
 $syntransTable = new Table('uw_syntrans', true);
+$translatedContentTable = new Table('translated_content', true);
 
 interface QueryTransactionInformation {
 	public function getRestriction($tableName);
@@ -197,6 +198,33 @@ function expandExpressionReferencesInRecordSet($recordSet, $expressionAttributes
 	} 
 }
 
+function getTextReferences($textIds) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT old_id, old_text" .
+								" FROM text" .
+								" WHERE old_id IN (". implode(', ', $textIds) .")");
+	$result = array();
+
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$result[$row->old_id] = $row->old_text;
+		
+	return $result;
+}
+
+function expandTextReferencesInRecordSet($recordSet, $textAttributes) {
+	$textReferences = getTextReferences(getUniqueIdsInRecordSet($recordSet, $textAttributes));
+
+	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
+		$record = $recordSet->getRecord($i);
+		
+		foreach($textAttributes as $textAttribute)
+			$record->setAttributeValue(
+				$textAttribute, 
+				$textReferences[$record->getAttributeValue($textAttribute)]
+			);
+	} 
+}
+
 function getExpressionMeaningsRecordSet($expressionId, $exactMeaning) {
 	global
 		$expressionMeaningStructure, $definedMeaningIdAttribute;
@@ -286,7 +314,7 @@ function getAlternativeDefinitionsRecordSet($definedMeaningId, $queryTransaction
 
 	while ($alternativeDefinition = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($alternativeDefinition->meaning_text_tcid, 
-									getTranslatedTextRecordSet($alternativeDefinition->meaning_text_tcid), 
+									getTranslatedContentRecordSet($alternativeDefinition->meaning_text_tcid, $queryTransactionInformation), 
 									getDefinedMeaningReferenceRecord($alternativeDefinition->source_id)));
 
 	return $recordSet;
@@ -295,56 +323,26 @@ function getAlternativeDefinitionsRecordSet($definedMeaningId, $queryTransaction
 function getDefinedMeaningDefinitionRecordSet($definedMeaningId, $queryTransactionInformation) {
 	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
 	
-	return getTranslatedTextRecordSet($definitionId);
+	return getTranslatedContentRecordSet($definitionId, $queryTransactionInformation);
 }
 
-function getTranslatedTextRecordSet($textId) {
+function getTranslatedContentRecordSet($translatedContentId, $queryTransactionInformation) {
 	global
-		$wgRequest;
+		$translatedContentTable, $languageAttribute, $textAttribute;
 
-	if ($wgRequest->getText('action') == 'history')
-		return getTranslatedTextHistoryRecordSet($textId);
-	else
-		return getTranslatedTextLatestRecordSet($textId);
-}
-
-function getTranslatedTextLatestRecordSet($textId) {
-	global
-		$languageAttribute, $textAttribute;
-
-	$dbr =& wfGetDB(DB_SLAVE);
-
-	$recordset = new ArrayRecordSet(new Structure($languageAttribute, $textAttribute),
-									new Structure($languageAttribute));
-
-	$queryResult = $dbr->query("SELECT language_id, old_text FROM translated_content tc, text t WHERE ".
-								"tc.translated_content_id=$textId AND tc.text_id=t.old_id AND " . getViewTransactionRestriction('tc'));
-
-	while ($translatedText= $dbr->fetchObject($queryResult))
-		$recordset->addRecord(array($translatedText->language_id, $translatedText->old_text));
-
-	return $recordset;
-}
-
-function getTranslatedTextHistoryRecordSet($textId) {
-	global
-		$languageAttribute, $textAttribute, $recordLifeSpanAttribute;
-
-	$dbr =& wfGetDB(DB_SLAVE);
-
-	$recordSet = new ArrayRecordSet(new Structure($languageAttribute, $textAttribute, $recordLifeSpanAttribute),
-									new Structure($languageAttribute));
-
-	$queryResult = $dbr->query("SELECT language_id, old_text, add_transaction_id, remove_transaction_id, NOT remove_transaction_id IS NULL AS is_live" .
-								" FROM translated_content tc, text t " .
-								" WHERE tc.translated_content_id=$textId AND tc.text_id=t.old_id AND " . getViewTransactionRestriction('tc') .
-								" ORDER BY is_live, add_transaction_id DESC");
-
-	while ($translatedText= $dbr->fetchObject($queryResult))
-		$recordSet->addRecord(array($translatedText->language_id, $translatedText->old_text,
-									getRecordLifeSpanTuple($translatedText->add_transaction_id,
-															$translatedText->remove_transaction_id)));
-
+	$recordSet = queryRecordSet(
+		$queryTransactionInformation,
+		$languageAttribute,
+		array(
+			'language_id' => $languageAttribute, 
+			'text_id' => $textAttribute
+		),
+		$translatedContentTable,
+		array("translated_content_id=$translatedContentId")
+	);
+	
+	expandTextReferencesInRecordSet($recordSet, array($textAttribute));
+	
 	return $recordSet;
 }
 
@@ -448,7 +446,7 @@ function getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId, $query
 	while ($attributeValue = $dbr->fetchObject($queryResult))
 		$recordSet->addRecord(array(getDefinedMeaningReferenceRecord($attributeValue->attribute_mid), 
 									$attributeValue->value_tcid, 
-									getTranslatedTextRecordSet($attributeValue->value_tcid)));
+									getTranslatedContentRecordSet($attributeValue->value_tcid, $queryTransactionInformation)));
 
 	return $recordSet;
 }
