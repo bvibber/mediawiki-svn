@@ -50,6 +50,14 @@ $wgLinkSearchMessages['fr'] = array(
 	'linksearch-line'  => '$1 lié depuis $2',
 	'linksearch-error' => 'Les jokers ne peuvent être utilisés qu\'au début du nom de domaine.'
 );
+
+$wgLinkSearchMessages['ru'] = array(
+	'linksearch'       => 'Поиск внешних ссылок',
+	'linksearch-text'  => 'Можно использовать подстановочные символы, например: «*.wikipedia.org».',
+	'linksearch-line'  => 'Из $2 ссылка на $1',
+	'linksearch-error' => 'Подстановочные символы могут использоваться только в начале адресов.',
+);
+
 $wgLinkSearchMessages['sr'] = array(
 	'linksearch'	   => 'Претрага интернет веза',
 	'linksearch-text'  => 'Џокери као што су "*.wikipedia.org" могу да се користе.',

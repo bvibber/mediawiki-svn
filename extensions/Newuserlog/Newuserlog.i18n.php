@@ -17,10 +17,10 @@ $wgNewuserlogMessages['en'] = array(
 	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # Don't translate this
 );
 $wgNewuserlogMessages['cs'] = array(
-  'newuserlogpage'           => 'Kniha nových uživatelů',
-  'newuserlogpagetext'       => 'Toto je záznam nově zaregistrovaných uživatelů.',
-  'newuserlog-create-entry'  => 'Nově založený uživatel',
-  'newuserlog-create2-entry' => 'založil účet pro $1',
+	'newuserlogpage'           => 'Kniha nových uživatelů',
+	'newuserlogpagetext'       => 'Toto je záznam nově zaregistrovaných uživatelů.',
+	'newuserlog-create-entry'  => 'Nově založený uživatel',
+	'newuserlog-create2-entry' => 'založil účet pro $1',
 );
 $wgNewuserlogMessages['de'] = array(
 	'newuserlogpage'           => 'Neuanmeldungs-Logbuch',
@@ -64,6 +64,14 @@ $wgNewuserlogMessages['pt'] = array(
 	'newuserlog-create-entry'  => 'Novo utilizador',
 	'newuserlog-create2-entry' => 'criou conta para $1',
 );
+
+$wgNewuserlogMessages['ru'] = array(
+	'newuserlogpage'           => 'Журнал регистрации участников',
+	'newuserlogpagetext'       => 'Список недавно зарегистрировавшихся участников',
+	'newuserlog-create-entry'  => 'Новый участник',
+	'newuserlog-create2-entry' => 'cоздал новую учётную запись: $1',
+);
+
 $wgNewuserlogMessages['wa'] = array(
 	'newuserlogpage'           => 'Djournå des noveas uzeus',
 	'newuserlogpagetext'       => 'Chal pa dzo c\' est ene djivêye des uzeus novelmint eredjîstrés.',
