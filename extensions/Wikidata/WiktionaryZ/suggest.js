@@ -158,6 +158,10 @@ function isFormElement(node) {
 	return name == 'select' || name == 'option' || name == 'input' || name == 'textarea' || name == 'button';
 }
 
+function isLink(node) {
+	return node.nodeName.toLowerCase() == 'a';
+}
+
 function getExpansionElementTypes() {
 	var cookies = document.cookie.split(';');
 	for(var i=0;i < cookies.length;i++) {
@@ -243,7 +247,7 @@ function toggle(element, event) {
 	if (!source)
 		source = event.srcElement;
 
-	if (!isFormElement(source)) {
+	if (!isFormElement(source) && !isLink(source)) {
 		var elementName = stripPrefix(element.id, "-");
 		var collapsableNode = document.getElementById(getCollapsableId(elementName));
 		if (collapsableNode.style.display == 'inline' ||

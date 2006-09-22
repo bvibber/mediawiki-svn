@@ -715,10 +715,10 @@ class DefinedMeaningHeaderEditor extends ScalarEditor {
 		$definedMeaningAsLink = definedMeaningAsLink($value);
 		$escapedDefinition = htmlspecialchars($definition);
 
-		if (!$this->truncate || strlen($definition) < $this->truncateAt)
-			return $definedMeaningAsLink . ": " . $escapedDefinition;
-		else
-			return $definedMeaningAsLink . ": " . '<span title="'. $escapedDefinition .'">'. htmlspecialchars(substr($definition, 0, $this->truncateAt)) . '...</span>';
+		if ($this->truncate || strlen($definition) >= $this->truncateAt)
+			$escapedDefinition = '<span title="'. $escapedDefinition .'">'. htmlspecialchars(substr($definition, 0, $this->truncateAt)) . '...</span>';
+			
+		return $definedMeaningAsLink . ": " . $escapedDefinition;			
 	}
 
 	public function getEditHTML($idPath, $value) {
@@ -1058,7 +1058,7 @@ class RecordSetListEditor extends RecordSetEditor {
 
 			$idPath->pushAttribute($captionAttribute);
 			$result .= '<li>'.
-						'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($captionClass) .'" onclick="toggle(this, event);">' . $captionExpansionPrefix . '</span>&nbsp;' . $this->captionEditor->view($idPath, $record->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>';
+						'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($captionClass) .'" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&nbsp;' . $this->captionEditor->view($idPath, $record->getAttributeValue($captionAttribute)) . '</span></h' . $this->headerLevel .'>';
 			$idPath->popAttribute();
 
 			$idPath->pushAttribute($valueAttribute);
@@ -1094,7 +1094,7 @@ class RecordSetListEditor extends RecordSetEditor {
 
 			$idPath->pushAttribute($captionAttribute);
 			$result .= '<li>'.
-						'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($captionClass) .'" onclick="toggle(this, event);">' . $captionExpansionPrefix . '</span>&nbsp;' . $this->captionEditor->edit($idPath, $record->getAttributeValue($captionAttribute)) . '</h' . $this->headerLevel .'>';
+						'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($captionClass) .'" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&nbsp;' . $this->captionEditor->edit($idPath, $record->getAttributeValue($captionAttribute)) . '</span></h' . $this->headerLevel .'>';
 			$idPath->popAttribute();
 
 			$idPath->pushAttribute($valueAttribute);

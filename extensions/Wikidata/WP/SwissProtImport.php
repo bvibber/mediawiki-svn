@@ -36,7 +36,7 @@ function importSwissProt($xmlFileName, $umlsCollectionId = 0, $goCollectionId = 
 	$fileHandle = fopen($xmlFileName, "r");
 	importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $EC2GoMeaningId, $keyword2GoMeaningId);
 
-	fclose($fileHandle);	
+	fclose($fileHandle);
 }
 
 function importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $EC2GoMeaningIdMapping, $keyword2GoMeaningIdMapping) {
@@ -84,15 +84,21 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $proteins = array();
 	public $species = array();
 	public $genes = array();
+	public $organismSpecificGenes = array();
 	public $attributes = array();
 	public $ECNumbers = array();
 	
+	public $funcionalDomains = array();
+	public $proteinComponents = array();
+		
 	public $proteinConceptId = 0;
 	public $proteinFragmentConceptId = 0;
 	public $organismSpecificProteinConceptId = 0;
-	public $organismSpecificGeneId = 0;
+	public $organismSpecificGeneConceptId = 0;
 	public $geneConceptId = 0;
 	public $organismConceptId = 0;
+	public $functionalDomainConceptId = 0;
+	public $proteinComponentConceptId = 0;
 	public $referencedByConceptId = 0;
 	public $keywordConceptId = 0;
 	public $includesConceptId = 0;
@@ -128,6 +134,12 @@ class SwissProtXMLParser extends BaseXMLParser {
 		
 		if ($this->organismConceptId == 0)
 			$this->organismConceptId = $this->bootstrapDefinedMeaning("organism", "organism");
+
+		if ($this->functionalDomainConceptId == 0)
+			$this->functionalDomainConceptId = $this->bootstrapDefinedMeaning("functional domain", "functional domain");
+		
+		if ($this->proteinComponentConceptId == 0)
+			$this->proteinComponentConceptId = $this->bootstrapDefinedMeaning("protein component", "protein component");
 			
 		if ($this->referencedByConceptId == 0)
 			$this->referencedByConceptId = $this->bootstrapDefinedMeaning("referenced by", "referenced by");
@@ -165,7 +177,10 @@ class SwissProtXMLParser extends BaseXMLParser {
 		addDefinedMeaningToCollectionIfNotPresent($this->proteinFragmentConceptId, $this->classCollectionId, "protein fragment");
 		addDefinedMeaningToCollectionIfNotPresent($this->geneConceptId, $this->classCollectionId, "gene");
 		addDefinedMeaningToCollectionIfNotPresent($this->organismConceptId, $this->classCollectionId, "organism");
+		addDefinedMeaningToCollectionIfNotPresent($this->functionalDomainConceptId, $this->classCollectionId, "functional domain");
+		addDefinedMeaningToCollectionIfNotPresent($this->proteinComponentConceptId, $this->classCollectionId, "protein component");
 		addDefinedMeaningToCollectionIfNotPresent($this->organismSpecificProteinConceptId, $this->classCollectionId, "organism specific protein");
+		addDefinedMeaningToCollectionIfNotPresent($this->organismSpecificGeneConceptId, $this->classCollectionId, "organism specific gene");		
 		addDefinedMeaningToCollectionIfNotPresent($this->textAttributeConceptId, $this->classCollectionId, "text attribute");
 		addDefinedMeaningToCollectionIfNotPresent($this->enzymeCommissionNumberConceptId, $this->classCollectionId, "enzyme commission number");
 		
@@ -173,6 +188,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		addDefinedMeaningToCollectionIfNotPresent($this->proteinConceptId, $this->relationTypeCollectionId, "protein");
 		addDefinedMeaningToCollectionIfNotPresent($this->referencedByConceptId, $this->relationTypeCollectionId, "referenced by");
 		addDefinedMeaningToCollectionIfNotPresent($this->geneConceptId, $this->relationTypeCollectionId, "gene");
+		addDefinedMeaningToCollectionIfNotPresent($this->organismSpecificGeneConceptId, $this->relationTypeCollectionId, "organism specific gene");		
 		addDefinedMeaningToCollectionIfNotPresent($this->organismConceptId, $this->relationTypeCollectionId, "organism");
 		addDefinedMeaningToCollectionIfNotPresent($this->activityConceptId, $this->relationTypeCollectionId, "activity");
 		addDefinedMeaningToCollectionIfNotPresent($this->keywordConceptId, $this->relationTypeCollectionId, "keyword");
@@ -206,14 +222,16 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public function import($entry){
 		$proteinMeaningId = $this->addProtein($entry->protein);
 
-		if ($entry->gene != "")
-			$geneMeaningId = $this->addGene($entry->gene, $entry->geneSynonyms);
-		else 
-			$geneMeaningId = -1;
-		
 		$organismSpeciesMeaningId = $this->addOrganism($entry->organism, $entry->organismTranslations);
+
+		if ($entry->gene != "") {
+			$geneMeaningId = $this->addGene($entry->gene);
+			$organismSpecificGene = $this->addOrgansimSpecificGene($organismSpeciesMeaningId, $geneMeaningId, $entry->organism, $entry->gene, $entry->geneSynonyms);			
+		}
+		else 
+			$organismSpecificGene = -1;
 		
-		$entryMeaningId = $this->addEntry($entry, $proteinMeaningId, $geneMeaningId, $organismSpeciesMeaningId);
+		$entryMeaningId = $this->addEntry($entry, $proteinMeaningId, $organismSpecificGene, $organismSpeciesMeaningId);
 
 		$this->numberOfEntries += 1;
 //		echo "$this->numberOfEntries\n";
@@ -236,7 +254,35 @@ class SwissProtXMLParser extends BaseXMLParser {
 		return $definedMeaningId;
 	}
 	
-	public function addGene($name, $synonyms) {
+	public function addFunctionalDomain($domain) {
+		if (array_key_exists($domain->name, $this->funcionalDomains)) {
+			$definedMeaningId = $this->funcionalDomains[$domain->name];
+		}
+		else {
+			$definedMeaningId = $this->addExpressionAsDefinedMeaning($domain->name, "Functional domain " . $domain->name, $domain->name, $this->collectionId);
+			$this->funcionalDomains[$domain->name] = $definedMeaningId;
+		}
+		
+		addClassMembership($definedMeaningId, $this->functionalDomainConceptId);
+
+		return $definedMeaningId;
+	}
+	
+	public function addContainedProtein($component) {
+		if (array_key_exists($component->name, $this->proteinComponents)) {
+			$definedMeaningId = $this->proteinComponents[$component->name];
+		}
+		else {
+			$definedMeaningId = $this->addExpressionAsDefinedMeaning($component->name, "Protein component " . $component->name, $component->name, $this->collectionId);
+			$this->proteinComponents[$component->name] = $definedMeaningId;
+		}
+		
+		addClassMembership($definedMeaningId, $this->proteinComponentConceptId);
+
+		return $definedMeaningId;
+	}
+	
+	public function addGene($name) {
 		if (array_key_exists($name, $this->genes)) {
 			$definedMeaningId = $this->genes[$name];
 		}
@@ -247,9 +293,9 @@ class SwissProtXMLParser extends BaseXMLParser {
 		
 		addClassMembership($definedMeaningId, $this->geneConceptId);
 		
-		foreach ($synonyms as $key => $synonym) {
-			addSynonymOrTranslation($synonym, $this->languageId, $definedMeaningId, true);
-		}
+//		foreach ($synonyms as $key => $synonym) {
+//			addSynonymOrTranslation($synonym, $this->languageId, $definedMeaningId, true);
+//		}
 		
 		return $definedMeaningId;		
 	}
@@ -272,17 +318,48 @@ class SwissProtXMLParser extends BaseXMLParser {
 		return $definedMeaningId;		
 	}
 	
-	public function addEntry($entry, $proteinMeaningId, $geneMeaningId, $organismSpeciesMeaningId) {
+	public function addOrgansimSpecificGene($organismSpeciesMeaningId, $geneMeaningId, $organismName, $geneName, $synonyms) {
+		$key = $geneMeaningId . "-" . $organismSpeciesMeaningId;
+		$description = $geneName . " in " . $organismName;
+		if (array_key_exists($key, $this->organismSpecificGenes)) {
+			$definedMeaningId = $this->organismSpecificGenes[$key];
+		}
+		else {
+			$definedMeaningId = $this->addExpressionAsDefinedMeaning($description, $description, $geneName, $this->collectionId);
+			addSynonymOrTranslation($geneName, $this->languageId, $definedMeaningId, true);
+			$this->organismSpecificGenes[$key] = $definedMeaningId;
+		}
+		
+		addClassMembership($definedMeaningId, $this->organismSpecificGeneConceptId);
+		
+		//add relation between specific gene and organism 
+		addRelation($definedMeaningId, $this->organismConceptId, $organismSpeciesMeaningId);
+		addRelation($organismSpeciesMeaningId, $this->referencedByConceptId, $definedMeaningId);				
+		
+		//add relation between specific gene and gene
+		addRelation($definedMeaningId, $this->geneConceptId, $geneMeaningId);
+		addRelation($geneMeaningId, $this->referencedByConceptId, $definedMeaningId);				
+		
+		foreach ($synonyms as $key => $synonym) {
+			addSynonymOrTranslation($synonym, $this->languageId, $definedMeaningId, true);
+		}
+		
+		return $definedMeaningId;	
+	}
+	
+	public function addEntry($entry, $proteinMeaningId, $organismSpecificGene, $organismSpeciesMeaningId) {
 		// change name to make sure it works in wiki-urls:
 		$swissProtExpression = str_replace('_', '-', $entry->name);
-		$entryExpression = $entry->protein->name . ' in ' . $entry->organism;
+		
+		$entryDefinition = $entry->protein->name . ' in ' . $entry->organism;
 		
 		// add the expression as defined meaning:
-		$expression = $this->getOrCreateExpression($entryExpression);
-		$definedMeaningId = createNewDefinedMeaning($expression->id, $this->languageId, $entryExpression);
+		$expression = $this->getOrCreateExpression($entryDefinition);
+		$definedMeaningId = createNewDefinedMeaning($expression->id, $this->languageId, $entryDefinition);
 		addDefinedMeaningToCollection($definedMeaningId, $this->collectionId, $entry->accession);
 		
-		// Add entry synonyms: Swiss-Prot entry name and species specific protein synonyms		
+		// Add entry synonyms: protein name, Swiss-Prot entry name and species specific protein synonyms		
+		addSynonymOrTranslation($entry->protein->name, $this->languageId, $definedMeaningId, true);
 		addSynonymOrTranslation($swissProtExpression, $this->languageId, $definedMeaningId, true);
 		
 		foreach ($entry->protein->synonyms as $key => $synonym) 
@@ -296,9 +373,10 @@ class SwissProtXMLParser extends BaseXMLParser {
 		addRelation($proteinMeaningId, $this->referencedByConceptId, $definedMeaningId);
 
 		// set the gene of the swiss prot entry and relate the gene to the entry:
-		if($geneMeaningId >= 0) {
-			addRelation($definedMeaningId, $this->geneConceptId, $geneMeaningId);
-			addRelation($geneMeaningId, $this->referencedByConceptId, $definedMeaningId);
+		if($organismSpecificGene >= 0) {
+			//add realtion between entry and gene			
+			addRelation($definedMeaningId, $this->organismSpecificGeneConceptId, $organismSpecificGene);
+			addRelation($organismSpecificGene, $this->referencedByConceptId, $definedMeaningId);	
 		}
 		
 		// set the species of the swiss prot entry and relate the species to the entry:		
@@ -332,16 +410,24 @@ class SwissProtXMLParser extends BaseXMLParser {
 			}
 		}
 		
- 		// Add protein includes relations
+ 		// Add 'included' functional domains:
 		foreach ($entry->protein->domains as $key => $domain) {
-			$domainMeaningId = $this->addProtein($domain);
+			$domainMeaningId = $this->addFunctionalDomain($domain);
+
+			foreach ($domain->synonyms as $domainKey => $synonym) 
+				addSynonymOrTranslation($synonym, $this->languageId, $domainMeaningId, true);
+			
 			addRelation($definedMeaningId, $this->includesConceptId, $domainMeaningId);
 			addRelation($domainMeaningId, $this->includedInConceptId, $definedMeaningId);
 		}
 		
- 		// Add protein includes relations
+ 		// Add 'contained' proteins:
 		foreach ($entry->protein->components as $key => $component) {
-			$componentMeaningId = $this->addProtein($component);
+			$componentMeaningId = $this->addContainedProtein($component);
+			
+			foreach ($component->synonyms as $componentKey => $synonym) 
+				addSynonymOrTranslation($synonym, $this->languageId, $componentMeaningId, true);
+			
 			addRelation($definedMeaningId, $this->containsConceptId, $componentMeaningId);
 			addRelation($componentMeaningId, $this->containedInConceptId, $definedMeaningId);
 		}
@@ -668,171 +754,7 @@ class Protein {
 	public $synonyms = array();
 	public $domains = array();
 	public $components = array();
-	
-//	public function __construct($nameSynonymsString) {
-//		$openingBracketPosition = strpos($nameSynonymsString, "(");
-//		if ($openingBracketPosition === false) {
-//			$this->name = trim($nameSynonymsString);
-//		}
-//		else {
-//			$this->name = trim(substr($nameSynonymsString, 0, $openingBracketPosition));
-//			$nameSynonymsString = substr($nameSynonymsString, $openingBracketPosition, strlen($nameSynonymsString)-$openingBracketPosition);
-//			$openingBracketPosition = strpos($nameSynonymsString, "(");
-//		}
-//		while($openingBracketPosition !== false) {
-//			$closingBracketPosition = strpos($nameSynonymsString, ")");
-//			$this->synonyms[]= trim(substr($nameSynonymsString, $openingBracketPosition+1, $closingBracketPosition - $openingBracketPosition-1));
-//			$nameSynonymsString = substr($nameSynonymsString, $closingBracketPosition+1, strlen($nameSynonymsString)-$closingBracketPosition);
-//			$openingBracketPosition = strpos($nameSynonymsString, "(");	
-//		}	
-//	}
 }
 
-//class SwissProtImportEntry {
-//	public $attributes;
-//	
-//	public function __construct() {
-//		$this->attributes = array();
-//	}
-//	
-//	public function import($fileHandle){
-//		$line = fgets($fileHandle);
-//		while((!feof($fileHandle)) and (getPrefix($line) != "//")){
-//			$attribute = $this->getEntryAttribute($line);
-//			$line = $attribute->import($line, $fileHandle);
-//		} 
-//	}
-//	
-//	public function echoEntry(){
-//		foreach ($this->attributes as $prefix => $attribute) {
-//			foreach ($attribute->lines as $line) {
-//				echo $line;					
-//			}
-//		}
-//	}
-//	
-//	private function getEntryAttribute($line){
-//    $line = rtrim($line,"\n");
-//		$prefix = getPrefix($line);
-//    if (!array_key_exists($prefix, $this->attributes)) {
-//    	$this->attributes[$prefix]=new SwissProtEntryAttribute($prefix);	
-//    }
-//    return $this->attributes[$prefix]; 	    
-//	}
-//	
-//	public function getIdentifier(){
-//		$idAttribute = $this->attributes["ID"];
-//		if ($idAttribute) {
-//			$line = $idAttribute->lines[0];
-//			$line = stripPrefix($line);
-//			$endIdentifierPosition = strpos($line, " ");
-//			return substr($line, 0, $endIdentifierPosition);				
-//		}
-//	}
-//	
-//	public function getDescriptionAttribute(){
-//		$descriptionAttibute = $this->attributes["DE"];
-//		if ($descriptionAttibute) {
-//			return new DescriptionSwissProtEntryAttribute($descriptionAttibute);
-//		}
-//	}
-//}
-//
-//function getPrefix($line) {
-//	return substr($line, 0, 2);			
-//}
-//
-//function stripPrefix($line) {
-//	$line = substr($line, 2, strlen($line)-2);		
-//	return ltrim($line);
-//}
-//
-//function joinLinesWithoutPrefixes($attribute) {
-//	$result = "";
-//	foreach ($attribute->lines as $line) {
-//		$unPrefixedLine = stripPrefix($line);
-//		$unPrefixedLine = rtrim($unPrefixedLine,"\n");
-//		$result .= $unPrefixedLine;  
-//	}
-//	return $result;
-//}
-//
-//class SwissProtEntryAttribute {
-//	public $prefix;
-//	public $lines;
-//
-//	public function __construct($prefix) {
-//		$this->prefix = $prefix;
-//		$this->lines = array();
-//	}
-//	
-//	public function import($firstLine, $fileHandle){
-//		$this->lines[]=$firstLine;
-//		$line = fgets($fileHandle);
-//					
-//		while ( (!feof($fileHandle)) and ( (getPrefix($line) == $this->prefix) or (getPrefix($line) == "  ") )){
-//			$this->lines[]=$line;								
-//			$line = fgets($fileHandle);
-//		}
-//		return $line; 
-//	}
-//}
-//
-//class DescriptionSwissProtEntryAttribute {
-//	private $attribute;
-//	private $includesString;
-//	private $containsString;
-//	public $protein;
-//	public $containsProteins;
-//	public $includesProteins;
-//	public $isFragment;
-//	
-//	public function __construct($attribute) {
-//		$this->attribute = $attribute;
-//		$this->parse();
-//	}
-//	
-//	public function parse() {
-//		$fullDescription = rtrim(joinLinesWithoutPrefixes($this->attribute), ".");
-//		$fragmentPosition = strpos($fullDescription, "(Fragment");
-//					
-//		if ($this->isFragment = ($fragmentPosition!==false)) {
-//			$fullDescription = rtrim(substr($fullDescription, 0, $fragmentPosition));
-//		}
-//				
-//		$startContainsPosition = strpos($fullDescription, "[Contains:");
-//		$startIncludesPosition = strpos($fullDescription, "[Includes:");
-//		
-//		if (($startContainsPosition!==false) or ($startIncludesPosition!==false)) {
-//			$endProteinPosition = max($startContainsPosition, $startIncludesPosition);
-//			$this->getContainsAndIncludesStrings($fullDescription, $startContainsPosition, $startIncludesPosition);
-//		}
-//		else {
-//			$endProteinPosition = strlen($fullDescription);
-//		}  
-//		$proteinString = rtrim(substr($fullDescription, 0, $endProteinPosition));
-//		$this->protein = new Protein($proteinString);
-//	}
-//	
-//	private function getContainsAndIncludesStrings($fullDescription, $startContainsPosition, $startIncludesPosition) {
-//			if ($startContainsPosition===false) {
-//				$startContainsPosition = strlen($fullDescription);
-//			}
-//			if ($startIncludesPosition===false) {
-//				$startIncludesPosition = strlen($fullDescription);
-//			}
-//			
-//			if ($startContainsPosition > $startIncludesPosition) {
-//				$endIncludesPosition = strpos($fullDescription, "]");
-//				$endContainsPosition = strpos($fullDescription, "]", $endIncludesPosition+1);
-//			}
-//			else {
-//				$endContainsPosition = strpos($fullDescription, "]");
-//				$endIncludesPosition = strpos($fullDescription, "]", $endContainsPosition+1);
-//			}
-//			$this->includesString = trim(substr($fullDescription, $startIncludesPosition + 10, $endIncludesPosition-$startIncludesPosition-10));
-//			$this->containsString = trim(substr($fullDescription, $startContainsPosition + 10, $endContainsPosition-$startContainsPosition-10));
-//	}
-//}
 
 ?>
