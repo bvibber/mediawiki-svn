@@ -64,8 +64,8 @@ function protectSetup() {
  */
 function stripProtectTags ( &$parser , &$text, &$x ) { 
 
-	$text = str_replace( '<protect>', '', $text );
-	$text = str_replace( '</protect>', '', $text );
+	$text = preg_replace("/<protect>/i","<span class='protected'>",$text);
+	$text = preg_replace("/<\/protect>/i","</span>",$text);
 	return true;
 }
 
@@ -86,8 +86,8 @@ function checkProtect ( $editpage, $textbox1, $section )  {
 		$text1 = $editpage->mArticle->getContent(true);
 		$text2 = $textbox1 ;
 
-		preg_match_all( "/<protect>(.*?)<\/protect>/im", $text1, $list1, PREG_SET_ORDER );
-		preg_match_all( "/<protect>(.*?)<\/protect>/im", $text2, $list2, PREG_SET_ORDER );
+		preg_match_all( "/<protect>(.*?)<\/protect>/msi", $text1, $list1, PREG_SET_ORDER );
+		preg_match_all( "/<protect>(.*?)<\/protect>/msi", $text2, $list2, PREG_SET_ORDER );
 		if( count($list1) != count($list2)) { 
 			$msg = wfMsg( 'add_remove_protected_section'); 
 			$modifyProtect = true; 
