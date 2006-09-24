@@ -33,25 +33,26 @@ if ( ! defined( 'MEDIAWIKI' ) ) die();
 // Two new permissions
 $wgGroupPermissions['sysop']['protectsection']         = true;
 $wgGroupPermissions['bureaucrat']['protectsection']    = true;
+$wgAvailableRights[] = 'protectsection';
  
-$wgExtensionFunctions[] = 'protectSetup';
+$wgExtensionFunctions[] = 'wfProtectSectionSetup';
 
 // Register hooks
-$wgHooks['ParserBeforeStrip'][] = 'stripProtectTags' ;
-$wgHooks['EditFilter'][] = 'checkProtect' ;
+$wgHooks['ParserBeforeStrip'][] = 'wfStripProtectTags' ;
+$wgHooks['EditFilter'][] = 'wfCheckProtectSection' ;
 
 /**
  * TODO: use some arrays in ./languages/ for proper l10n
  */
-function protectSetup() {
+function wfProtectSectionSetup() {
 	global $wgMessageCache;
 	$wgMessageCache->addMessages(
 	array(
-		'add_remove_protected_section' => 
+		'protectsection_add_remove' => 
 			'You tried to add or remove a protected section',
-		'modify_protected_section' => 
+		'protectsection_modify' => 
 			'You tried to modify protected text',
-		'forbidden' =>
+		'protectsection_forbidden' =>
 			'Forbidden',
 		)
 	);
@@ -62,7 +63,7 @@ function protectSetup() {
  * @param &$text The text being parsed
  * @param &$x Something not used FIXME
  */
-function stripProtectTags ( &$parser , &$text, &$x ) { 
+function wfStripProtectTags ( &$parser , &$text, &$x ) { 
 
 	$text = preg_replace("/<protect>/i","<span class='protected'>",$text);
 	$text = preg_replace("/<\/protect>/i","</span>",$text);
@@ -76,7 +77,7 @@ function stripProtectTags ( &$parser , &$text, &$x ) {
  * @param $textbox1
  * @param $section
  */
-function checkProtect ( $editpage, $textbox1, $section )  {
+function wfCheckProtectSection ( $editpage, $textbox1, $section )  {
 
 	# check for partial protection 
 	global $wgUser;
@@ -86,15 +87,15 @@ function checkProtect ( $editpage, $textbox1, $section )  {
 		$text1 = $editpage->mArticle->getContent(true);
 		$text2 = $textbox1 ;
 
-		preg_match_all( "/<protect>(.*?)<\/protect>/msi", $text1, $list1, PREG_SET_ORDER );
-		preg_match_all( "/<protect>(.*?)<\/protect>/msi", $text2, $list2, PREG_SET_ORDER );
+		preg_match_all( "/<protect>(.*?)<\/protect>/si", $text1, $list1, PREG_SET_ORDER );
+		preg_match_all( "/<protect>(.*?)<\/protect>/si", $text2, $list2, PREG_SET_ORDER );
 		if( count($list1) != count($list2)) { 
-			$msg = wfMsg( 'add_remove_protected_section'); 
+			$msg = wfMsg( 'protectsection_add_remove'); 
 			$modifyProtect = true; 
 		}
 		else for ( $i=0 ; $i < count( $list1 ); $i++ ) {
 			if( $list1[$i][0] != $list2[$i][0]) { 
-				$msg = wfMsg( 'modify_protected_section' );
+				$msg = wfMsg( 'protectsection_modify' );
 				$modifyProtect = true; 
 				break;
 			}
@@ -102,7 +103,7 @@ function checkProtect ( $editpage, $textbox1, $section )  {
 
 		if( $modifyProtect ) {
 			global $wgOut;
-			$wgOut->setPageTitle( wfMsg( 'forbidden' ) );
+			$wgOut->setPageTitle( wfMsg( 'protectsection_forbidden' ) );
 			$wgOut->addWikiText($msg);
 			return false;
 		}
