@@ -46,7 +46,7 @@ $wgFilepathMessages['ja'] = array(
 $wgFilepathMessages['nl'] = array(
 	'filepath'        => 'Bestandslocatie',
 	'filepath_page'   => 'Bestand:',
-	'filepath_submit' => 'Zoek op',
+	'filepath_submit' => 'Zoeken',
 );
 $wgFilepathMessages['ru'] = array(
 	'filepath'        => 'Путь к файлу',

@@ -61,6 +61,18 @@ sinn_krißß wadd_erruß kütt.',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'De ennere Kommëntaare fott_loohße',
 );
+$wgExpandTemplatesMessages['nl'] = array(
+	'expandtemplates'                  => 'Sjablonen substitueren',
+	'expand_templates_intro'           => 'Deze speciale pagina leest de ingegeven tekst in en
+substitueert recursief alle sjablonen in de tekst.
+Het substitueert ook alle parserfuncties zoals <nowiki>{{</nowiki>#if:...}} en
+variabelen als <nowiki>{{</nowiki>CURRENTDAY}} &mdash; vrijwel alles tussen dubbele accolades.
+Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
+	'expand_templates_title'           => 'Contexttitel, voor <nowiki>{{</nowiki>PAGENAME}}, enzovoort:',
+	'expand_templates_input'           => 'Inputtekst:',
+	'expand_templates_output'          => 'Resultaat:',
+	'expand_templates_remove_comments' => 'Verwijder opmerkingen',
+);
 $wgExpandTemplatesMessages['ru'] = array(
 	'expandtemplates'                  => 'Развёртка шаблонов',
 	'expand_templates_intro'           => 'Эта служебная страница преобразует текст, рекурсивно разворачивая все шаблоны в нём.

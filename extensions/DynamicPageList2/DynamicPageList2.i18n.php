@@ -239,8 +239,7 @@ $wgDPL2Messages['nl'] = array(
 	/**
 	 * $1: number of articles
 	*/
-	'dpl2_articlecount1' => 'Er is $1 artikel onder deze kop.',
-	'dpl2_articlecount' => 'Er zijn $1 artikelen onder deze kop.'
+	'dpl2_articlecount' => 'Er {{PLURAL:$1|is één pagina|zijn $1 pagina\'s}} onder deze kop.'
 );
 $wgDPL2Messages['ru'] = array(
 	/*

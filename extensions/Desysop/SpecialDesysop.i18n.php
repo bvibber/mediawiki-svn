@@ -43,7 +43,7 @@ $wgDesysopMessages['id'] = array(
 );
 $wgDesysopMessages['nl'] = array(
 	'desysoptitle'         => 'Beheerdersrechten voor een gebruiker intrekken',
-	'desysoptext'          => "Bureaucraten begruiken dit formulier om beheerdersrechten voor een gebruiker in te trekken. Voer de gebruikersnaam in het veld in en klik op de knop om de beheerdersrechten in te trekken.",
+	'desysoptext'          => "Bureaucraten gebruiken dit formulier om beheerdersrechten voor een gebruiker in te trekken. Voer de gebruikersnaam in het veld in en klik op de knop om de beheerdersrechten in te trekken.",
 	'desysopname'          => 'Gebruikersnaam:',
 	'desysopok'            => "<b>Beheerdersrechten voor gebruiker \"$1\" zijn ingetrokken</b>",
 	'set_user_rights'      => 'Gebruikersrechten instellen',
