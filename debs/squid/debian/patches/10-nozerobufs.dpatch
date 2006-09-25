@@ -1,0 +1,173 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 10-nozerobufs.dpatch by  <mark@wikimedia.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Do not bzero() new buffers to save cpu
+
+@DPATCH@
+diff -urNad squid-2.6.4~/src/MemPool.c squid-2.6.4/src/MemPool.c
+--- squid-2.6.4~/src/MemPool.c	2006-09-18 22:54:39.000000000 +0000
++++ squid-2.6.4/src/MemPool.c	2006-09-25 13:46:54.000000000 +0000
+@@ -250,6 +250,22 @@
+ void *
+ memPoolAlloc(MemPool * pool)
+ {
++	void * foo;
++	foo = memPoolAllocNonZero(pool);
++	bzero(foo, pool->obj_size);
++	return foo;
++}
++
++void
++memPoolFree(MemPool *pool, void *obj)
++{
++	bzero(obj, pool->obj_size);
++	memPoolFreeNonZero(pool, obj);
++}
++
++void *
++memPoolAllocNonZero(MemPool * pool)
++{
+     void *obj;
+     assert(pool);
+     memMeterInc(pool->meter.inuse);
+@@ -292,14 +308,15 @@
+ 	    (void) VALGRIND_MAKE_NOACCESS(cookie, sizeof(cookie));
+ 	}
+ #else
+-	obj = xcalloc(1, pool->obj_size);
++	obj = xmalloc(pool->obj_size);
+ #endif
+     }
+     return obj;
+ }
+ 
++
+ void
+-memPoolFree(MemPool * pool, void *obj)
++memPoolFreeNonZero(MemPool * pool, void *obj)
+ {
+     assert(pool && obj);
+     memMeterDec(pool->meter.inuse);
+@@ -317,7 +334,6 @@
+     if (TheMeter.idle.level + pool->obj_size <= mem_idle_limit) {
+ 	memMeterInc(pool->meter.idle);
+ 	memMeterAdd(TheMeter.idle, pool->obj_size);
+-	memset(obj, 0, pool->obj_size);
+ #if DEBUG_MEMPOOL
+ 	(void) VALGRIND_MAKE_NOACCESS(obj, pool->real_obj_size + sizeof(struct mempool_cookie));
+ #else
+diff -urNad squid-2.6.4~/src/mem.c squid-2.6.4/src/mem.c
+--- squid-2.6.4~/src/mem.c	2006-05-20 21:51:49.000000000 +0000
++++ squid-2.6.4/src/mem.c	2006-09-25 13:46:54.000000000 +0000
+@@ -154,6 +154,12 @@
+     return memPoolAlloc(MemPools[type]);
+ }
+ 
++void *
++memAllocateNonZero(mem_type type)
++{
++    return memPoolAllocNonZero(MemPools[type]);
++}
++
+ /* give memory back to the pool */
+ void
+ memFree(void *p, int type)
+@@ -161,6 +167,12 @@
+     memPoolFree(MemPools[type], p);
+ }
+ 
++void
++memFreeNonZero(void *p, int type)
++{
++    memPoolFreeNonZero(MemPools[type], p);
++}
++
+ /* allocate a variable size buffer using best-fit pool */
+ void *
+ memAllocString(size_t net_size, size_t * gross_size)
+@@ -178,7 +190,7 @@
+     assert(*gross_size >= net_size);
+     memMeterInc(StrCountMeter);
+     memMeterAdd(StrVolumeMeter, *gross_size);
+-    return pool ? memPoolAlloc(pool) : xcalloc(1, net_size);
++    return pool ? memPoolAllocNonZero(pool) : xmalloc(net_size);
+ }
+ 
+ /* free buffer allocated with memAllocString() */
+@@ -197,7 +209,7 @@
+     }
+     memMeterDec(StrCountMeter);
+     memMeterDel(StrVolumeMeter, size);
+-    pool ? memPoolFree(pool, buf) : xfree(buf);
++    pool ? memPoolFreeNonZero(pool, buf) : xfree(buf);
+ }
+ 
+ /* Find the best fit MEM_X_BUF type */
+@@ -239,7 +251,7 @@
+ {
+     mem_type type = memFindBufSizeType(net_size, gross_size);
+     if (type != MEM_NONE)
+-	return memAllocate(type);
++	return memAllocateNonZero(type);
+     else {
+ 	memMeterInc(HugeBufCountMeter);
+ 	memMeterAdd(HugeBufVolumeMeter, *gross_size);
+@@ -271,7 +283,7 @@
+ {
+     mem_type type = memFindBufSizeType(size, NULL);
+     if (type != MEM_NONE)
+-	memFree(buf, type);
++	memFreeNonZero(buf, type);
+     else {
+ 	xfree(buf);
+ 	memMeterDec(HugeBufCountMeter);
+diff -urNad squid-2.6.4~/src/protos.h squid-2.6.4/src/protos.h
+--- squid-2.6.4~/src/protos.h	2006-09-22 10:44:24.000000000 +0000
++++ squid-2.6.4/src/protos.h	2006-09-25 13:46:54.000000000 +0000
+@@ -854,10 +854,12 @@
+ extern void memCleanModule(void);
+ extern void memConfigure(void);
+ extern void *memAllocate(mem_type);
++extern void *memAllocateNonZero(mem_type);
+ extern void *memAllocString(size_t net_size, size_t * gross_size);
+ extern void *memAllocBuf(size_t net_size, size_t * gross_size);
+ extern void *memReallocBuf(void *buf, size_t net_size, size_t * gross_size);
+ extern void memFree(void *, int type);
++extern void memFreeNonZero(void *, int type);
+ extern void memFree4K(void *);
+ extern void memFree8K(void *);
+ extern void memFreeString(size_t size, void *);
+@@ -873,6 +875,8 @@
+ extern void memPoolDestroy(MemPool * pool);
+ extern void *memPoolAlloc(MemPool * pool);
+ extern void memPoolFree(MemPool * pool, void *obj);
++extern void *memPoolAllocNonZero(MemPool * pool);
++extern void memPoolFreeNonZero(MemPool * pool, void *obj);
+ extern int memPoolWasUsed(const MemPool * pool);
+ extern int memPoolInUseCount(const MemPool * pool);
+ extern size_t memPoolInUseSize(const MemPool * pool);
+diff -urNad squid-2.6.4~/src/stmem.c squid-2.6.4/src/stmem.c
+--- squid-2.6.4~/src/stmem.c	2005-05-17 16:56:38.000000000 +0000
++++ squid-2.6.4/src/stmem.c	2006-09-25 13:46:54.000000000 +0000
+@@ -40,7 +40,7 @@
+ {
+     mem_node *p = (mem_node *) buf;
+     if (!p->uses)
+-	memFree(p, MEM_MEM_NODE);
++	memFreeNonZero(p, MEM_MEM_NODE);
+     else
+ 	p->uses--;
+ }
+@@ -116,9 +116,10 @@
+     }
+     while (len > 0) {
+ 	len_to_copy = XMIN(len, SM_PAGE_SIZE);
+-	p = memAllocate(MEM_MEM_NODE);
++	p = memAllocateNonZero(MEM_MEM_NODE);
+ 	p->next = NULL;
+ 	p->len = len_to_copy;
++	p->uses = 0;
+ 	store_mem_size += SM_PAGE_SIZE;
+ 	xmemcpy(p->data, data, len_to_copy);
+ 	if (!mem->head) {

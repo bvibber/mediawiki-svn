@@ -22,6 +22,11 @@ Not applied (yet?):
 
 vms-ftp.patch.NOT-YET	Not finished and not working
 
+Upstream patches:
+
+nozerobufs		Do not bzero() new buffers to save cpu
+			(by Adrian Chadd)
+
 Wikimedia:
 
 wikimedia-errors	Wikimedia specific error messages

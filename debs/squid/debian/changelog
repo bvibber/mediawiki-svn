@@ -1,3 +1,10 @@
+squid (2.6.4-1wm2) unstable; urgency=low
+
+  * Include an experimental patch by Adrian Chadd that prevents Squid
+    from uselessly bzero()ing new buffers, in order to save CPU.
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 25 Sep 2006 13:49:01 +0000
+
 squid (2.6.4-1wm1) unstable; urgency=low
 
   * New upstream release
