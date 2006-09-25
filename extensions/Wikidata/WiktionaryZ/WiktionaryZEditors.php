@@ -48,6 +48,8 @@ function getAlternativeDefinitionsEditor() {
 //		$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new AlternativeDefinitionsPermissionController(), true, true, false, new DefinedMeaningAlternativeDefinitionsController());
 	$editor->addEditor(getTranslatedTextEditor($alternativeDefinitionAttribute, new DefinedMeaningAlternativeDefinitionController()));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($sourceAttribute, new SimplePermissionController(false), true));
+	
+	addTableLifeSpanEditor($editor);
 
 	return $editor;
 }
@@ -115,6 +117,8 @@ function getDefinedMeaningTextAttributeValuesEditor() {
 	$editor = new RecordSetTableEditor($textAttributeValuesAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningTextAttributeValuesController());
 	$editor->addEditor(new TextAttributeEditor($textAttributeAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(getTranslatedTextEditor($textValueAttribute, new DefinedMeaningTextAttributeValueController()));
+
+	addTableLifeSpanEditor($editor);
 
 	return $editor;
 }

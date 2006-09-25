@@ -362,13 +362,11 @@ class DefinedMeaningTextAttributeValuesController {
 
 	public function remove($keyPath) {
 		global
-			$definedMeaningIdAttribute, $textAttributeAttribute, $textValueIdAttribute;
+			$textValueIdAttribute;
 
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
-		$attributeId = $keyPath->peek(0)->getAttributeValue($textAttributeAttribute);
 		$textId = $keyPath->peek(0)->getAttributeValue($textValueIdAttribute);
 
-		removeDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $textId);
+		removeDefinedMeaningTextAttributeValue($textId);
 	}
 
 	public function update($keyPath, $record) {
