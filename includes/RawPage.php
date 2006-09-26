@@ -83,9 +83,10 @@ class RawPage {
 		$this->mSmaxage = intval( $smaxage );
 		$this->mMaxage = $maxage;
 		
-		// Ensure that individual users' generated settings don't
-		// interfere with each other...
-		$this->mPrivateCache = $this->mGen && $wgUser->isLoggedIn();
+		// May contain user-specific data; vary for open sessions
+		$this->mPrivateCache = $this->mGen &&
+			( isset( $_COOKIE[ini_get( 'session.name' )] ) ||
+				$wgUser->isLoggedIn() );
 		
 		if ( $ctype == '' or ! in_array( $ctype, $allowedCTypes ) ) {
 			$this->mContentType = 'text/x-wiki';
@@ -143,7 +144,6 @@ class RawPage {
 	function getRawText() {
 		global $wgUser, $wgOut, $wgRequest;
 		if($this->mGen) {
-			// May contain user-specific data; vary for open sessions
 			$sk = $wgUser->getSkin();
 			$sk->initPage($wgOut);
 			if($this->mGen == 'css') {
