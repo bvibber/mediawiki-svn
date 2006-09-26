@@ -83,10 +83,10 @@ class RawPage {
 		$this->mSmaxage = intval( $smaxage );
 		$this->mMaxage = $maxage;
 		
-		// May contain user-specific data; vary for open sessions
-		$this->mPrivateCache = $this->mGen &&
+		// Output may contain user-specific data; vary for open sessions
+		$this->mPrivateCache = ( $this->mSmaxage == 0 ) ||
 			( isset( $_COOKIE[ini_get( 'session.name' )] ) ||
-				$wgUser->isLoggedIn() );
+			$wgUser->isLoggedIn() );
 		
 		if ( $ctype == '' or ! in_array( $ctype, $allowedCTypes ) ) {
 			$this->mContentType = 'text/x-wiki';
