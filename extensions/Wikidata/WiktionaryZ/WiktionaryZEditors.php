@@ -85,6 +85,19 @@ function getDefinedMeaningRelationsEditor($showRecordLifeSpan) {
 	return $editor;
 }
 
+function getDefinedMeaningReciprocalRelationsEditor($showRecordLifeSpan) {
+	global
+		$reciprocalRelationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
+
+	$editor = new RecordSetTableEditor($reciprocalRelationsAttribute, new SimplePermissionController(false), false, false, false, null);
+	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
+	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
+
+	addTableLifeSpanEditor($editor, $showRecordLifeSpan);
+
+	return $editor;
+}
+
 function getDefinedMeaningClassMembershipEditor($showRecordLifeSpan) {
 	global
 		$classMembershipAttribute, $classAttribute;
@@ -168,6 +181,7 @@ function getDefinedMeaningEditor($showRecordLifeSpan) {
 	$definitionEditor = getTranslatedTextEditor($definitionAttribute, new DefinedMeaningDefinitionController(), $showRecordLifeSpan);
 	$synonymsAndTranslationsEditor = getSynonymsAndTranslationsEditor($showRecordLifeSpan);
 	$relationsEditor = getDefinedMeaningRelationsEditor($showRecordLifeSpan);
+	$reciprocalRelationsEditor = getDefinedMeaningReciprocalRelationsEditor($showRecordLifeSpan);
 	$classMembershipEditor = getDefinedMeaningClassMembershipEditor($showRecordLifeSpan);
 	$collectionMembershipEditor = getDefinedMeaningCollectionMembershipEditor($showRecordLifeSpan);
 	$textAttributeValuesEditor = getDefinedMeaningTextAttributeValuesEditor($showRecordLifeSpan);
@@ -177,6 +191,7 @@ function getDefinedMeaningEditor($showRecordLifeSpan) {
 	$definedMeaningEditor->addEditor(getAlternativeDefinitionsEditor($showRecordLifeSpan));
 	$definedMeaningEditor->addEditor($synonymsAndTranslationsEditor);
 	$definedMeaningEditor->addEditor($relationsEditor);
+	$definedMeaningEditor->addEditor($reciprocalRelationsEditor);
 	$definedMeaningEditor->addEditor($classMembershipEditor);
 	$definedMeaningEditor->addEditor($collectionMembershipEditor);
 	$definedMeaningEditor->addEditor($textAttributeValuesEditor);

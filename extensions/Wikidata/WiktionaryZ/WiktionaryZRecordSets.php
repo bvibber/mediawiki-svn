@@ -331,13 +331,15 @@ function getExpressionsRecordSet($spelling, $queryTransactionInformation) {
 function getDefinedMeaningRecord($definedMeaningId, $queryTransactionInformation) {
 	global
 		$definedMeaningAttribute, $definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
-		$relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute;
+		$relationsAttribute, $reciprocalRelationsAttribute,
+		$classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute;
 
 	$record = new ArrayRecord($definedMeaningAttribute->type->getStructure());
 	$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($synonymsAndTranslationsAttribute, getSynonymAndTranslationRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($relationsAttribute, getDefinedMeaningRelationsRecordSet($definedMeaningId, $queryTransactionInformation));
+	$record->setAttributeValue($reciprocalRelationsAttribute, getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($classMembershipAttribute, getDefinedMeaningClassMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($collectionMembershipAttribute, getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($textAttributeValuesAttribute, getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId, $queryTransactionInformation));
@@ -442,6 +444,28 @@ function getDefinedMeaningRelationsRecordSet($definedMeaningId, $queryTransactio
 		),
 		$meaningRelationsTable,
 		array("meaning1_mid=$definedMeaningId"),
+		array('relationtype_mid')
+	);
+	
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($relationTypeAttribute, $otherDefinedMeaningAttribute));
+	
+	return $recordSet;
+}
+
+function getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $queryTransactionInformation) {
+	global
+		$meaningRelationsTable, $relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
+
+	$recordSet = queryRecordSet(
+		$queryTransactionInformation,
+		$relationIdAttribute,
+		array(
+			'relation_id' => $relationIdAttribute, 
+			'relationtype_mid' => $relationTypeAttribute, 
+			'meaning1_mid' => $otherDefinedMeaningAttribute
+		),
+		$meaningRelationsTable,
+		array("meaning2_mid=$definedMeaningId"),
 		array('relationtype_mid')
 	);
 	

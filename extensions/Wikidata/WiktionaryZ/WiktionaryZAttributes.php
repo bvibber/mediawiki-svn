@@ -71,11 +71,12 @@ $otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other de
 //$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", "defined-meaning");
 
 global
-	$relationsAttribute, $relationStructure, $relationKeyStructure;
+	$relationsAttribute, $relationStructure, $relationKeyStructure, $reciprocalRelationsAttribute;
 	
 $relationStructure = new Structure($relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute);
 $relationKeyStructure = new Structure($relationIdAttribute);	
 $relationsAttribute = new Attribute("relations", "Relations", new RecordSetType($relationStructure));
+$reciprocalRelationsAttribute = new Attribute("reciprocal-relations", "Reciprocal relations", new RecordSetType($relationStructure));
 
 global
 	$translatedTextIdAttribute, $translatedTextStructure;
