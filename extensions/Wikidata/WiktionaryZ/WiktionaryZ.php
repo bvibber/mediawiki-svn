@@ -25,7 +25,7 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		parent::view();
 
 		$spelling = $wgTitle->getText();
-		$wgOut->addHTML(getExpressionsEditor($spelling)->view(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryLatestTransactionInformation())));
+		$wgOut->addHTML(getExpressionsEditor($spelling, false)->view(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryLatestTransactionInformation())));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 
@@ -40,7 +40,7 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		parent::history();
 
 		$spelling = $wgTitle->getText();
-		$wgOut->addHTML(getExpressionsEditor($spelling)->view(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryHistoryTransactionInformation())));
+		$wgOut->addHTML(getExpressionsEditor($spelling, $this->showRecordLifeSpan)->view(new IdStack("expression"), getExpressionsRecordSet($spelling, $this->queryTransactionInformation)));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 
@@ -58,7 +58,7 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
 
 		$spelling = $wgTitle->getText();
-		getExpressionsEditor($spelling)->save(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryLatestTransactionInformation()));
+		getExpressionsEditor($spelling, false)->save(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryLatestTransactionInformation()));
 
 		Title::touchArray(array($wgTitle));
 		$now = wfTimestampNow();
@@ -77,13 +77,10 @@ class WiktionaryZ extends DefaultWikidataApplication {
 
 		$spelling = $wgTitle->getText();
 
-		$wgOut->addHTML('<form method="post" action="">');
-		$wgOut->addHTML(getExpressionsEditor($spelling)->edit(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryLatestTransactionInformation())));
-		$wgOut->addHTML('<div class="save-panel">');
-			$wgOut->addHTML('<table cellpadding="0" cellspacing="0"><tr><th>' . wfMsg('summary') . ': </th><td>' . getTextBox("summary") .'</td></tr></table>');
-			$wgOut->addHTML(getSubmitButton("save", wfMsg('wz_save')));
-		$wgOut->addHTML('</div>');
-		$wgOut->addHTML('</form>');
+		$this->outputEditHeader();
+		$wgOut->addHTML(getExpressionsEditor($spelling, false)->edit(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryLatestTransactionInformation())));
+		$this->outputEditFooter();
+
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 

@@ -13,7 +13,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 //		$definedMeaningId = $wgTitle->getText();
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		$wgOut->addHTML(getDefinedMeaningEditor()->view($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, new QueryLatestTransactionInformation())));
+		$wgOut->addHTML(getDefinedMeaningEditor(false)->view($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, new QueryLatestTransactionInformation())));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 	}
@@ -27,15 +27,15 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		parent::edit();
 
-		$this->outputEditHeader();
-
 //		$definedMeaningId = $wgTitle->getText();
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		$wgOut->addHTML(getDefinedMeaningEditor()->edit($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, new QueryLatestTransactionInformation())));
+
+		$this->outputEditHeader();
+		$wgOut->addHTML(getDefinedMeaningEditor(false)->edit($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, new QueryLatestTransactionInformation())));
+		$this->outputEditFooter();
+
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
-		
-		$this->outputEditFooter();
 	}
 	
 	function history() {
@@ -46,7 +46,11 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 //		$definedMeaningId = $wgTitle->getText();
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		$wgOut->addHTML(getDefinedMeaningEditor()->view(new IdStack("defined-meaning"), getDefinedMeaningRecord($definedMeaningId, new QueryHistoryTransactionInformation())));
+		$wgOut->addHTML(getDefinedMeaningEditor($this->showRecordLifeSpan)->view(
+			new IdStack("defined-meaning"), 
+			getDefinedMeaningRecord($definedMeaningId, $this->queryTransactionInformation))
+		);
+		
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 
@@ -65,7 +69,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 //		$definedMeaningId = $wgTitle->getText();
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		getDefinedMeaningEditor()->save($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, new QueryLatestTransactionInformation()));
+		getDefinedMeaningEditor(false)->save($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, new QueryLatestTransactionInformation()));
 
 		Title::touchArray(array($wgTitle));
 		$now = wfTimestampNow();

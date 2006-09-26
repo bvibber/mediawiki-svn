@@ -23,7 +23,7 @@
 	background-position: center right;
 }
 
-.wiki-data-table td .suggest-link {
+.wiki-data-table td .suggest-link, .option-panel td .suggest-link {
 	display: block;
 	zoom: 1;
 	left: 0px;

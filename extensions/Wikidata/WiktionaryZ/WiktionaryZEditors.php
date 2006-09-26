@@ -14,11 +14,11 @@ function getTransactionEditor($attribute) {
 	return $transactionEditor;
 }
 
-function addTableLifeSpanEditor($editor) {
+function addTableLifeSpanEditor($editor, $showRecordLifeSpan) {
 	global
 		$recordLifeSpanAttribute, $addTransactionAttribute, $removeTransactionAttribute, $wgRequest;
 
-	if ($wgRequest->getText('action') == 'history') {
+	if ($wgRequest->getText('action') == 'history' && $showRecordLifeSpan) {
 		$lifeSpanEditor = new RecordTableCellEditor($recordLifeSpanAttribute);
 		$lifeSpanEditor->addEditor(getTransactionEditor($addTransactionAttribute));
 		$lifeSpanEditor->addEditor(getTransactionEditor($removeTransactionAttribute));
@@ -27,7 +27,7 @@ function addTableLifeSpanEditor($editor) {
 	}
 }
 
-function getTranslatedTextEditor($attribute, $controller) {
+function getTranslatedTextEditor($attribute, $controller, $showRecordLifeSpan) {
 	global
 		$languageAttribute, $textAttribute;
 
@@ -35,26 +35,26 @@ function getTranslatedTextEditor($attribute, $controller) {
 	$editor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new TextEditor($textAttribute, new SimplePermissionController(true), true));
 
-	addTableLifeSpanEditor($editor);
+	addTableLifeSpanEditor($editor, $showRecordLifeSpan);
 
 	return $editor;
 }
 
-function getAlternativeDefinitionsEditor() {
+function getAlternativeDefinitionsEditor($showRecordLifeSpan) {
 	global
 		$alternativeDefinitionsAttribute, $alternativeDefinitionAttribute, $sourceAttribute;
 
 	$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningAlternativeDefinitionsController());
 //		$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new AlternativeDefinitionsPermissionController(), true, true, false, new DefinedMeaningAlternativeDefinitionsController());
-	$editor->addEditor(getTranslatedTextEditor($alternativeDefinitionAttribute, new DefinedMeaningAlternativeDefinitionController()));
+	$editor->addEditor(getTranslatedTextEditor($alternativeDefinitionAttribute, new DefinedMeaningAlternativeDefinitionController(), $showRecordLifeSpan));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($sourceAttribute, new SimplePermissionController(false), true));
 	
-	addTableLifeSpanEditor($editor);
+	addTableLifeSpanEditor($editor, $showRecordLifeSpan);
 
 	return $editor;
 }
 
-function getSynonymsAndTranslationsEditor() {
+function getSynonymsAndTranslationsEditor($showRecordLifeSpan) {
 	global
 		$synonymsAndTranslationsAttribute, $identicalMeaningAttribute, $expressionIdAttribute, $expressionAttribute, $languageAttribute,
 		$spellingAttribute;
@@ -67,12 +67,12 @@ function getSynonymsAndTranslationsEditor() {
 	$tableEditor->addEditor($expressionEditor);
 	$tableEditor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(true), true, true));
 
-	addTableLifeSpanEditor($tableEditor);
+	addTableLifeSpanEditor($tableEditor, $showRecordLifeSpan);
 
 	return $tableEditor;
 }
 
-function getDefinedMeaningRelationsEditor() {
+function getDefinedMeaningRelationsEditor($showRecordLifeSpan) {
 	global
 		$relationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
 
@@ -80,24 +80,24 @@ function getDefinedMeaningRelationsEditor() {
 	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
 
-	addTableLifeSpanEditor($editor);
+	addTableLifeSpanEditor($editor, $showRecordLifeSpan);
 
 	return $editor;
 }
 
-function getDefinedMeaningClassMembershipEditor() {
+function getDefinedMeaningClassMembershipEditor($showRecordLifeSpan) {
 	global
 		$classMembershipAttribute, $classAttribute;
 
 	$editor = new RecordSetTableEditor($classMembershipAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningClassMembershipController());
 	$editor->addEditor(new ClassReferenceEditor($classAttribute, new SimplePermissionController(false), true));
 
-	addTableLifeSpanEditor($editor);
+	addTableLifeSpanEditor($editor, $showRecordLifeSpan);
 
 	return $editor;
 }
 
-function getDefinedMeaningCollectionMembershipEditor() {
+function getDefinedMeaningCollectionMembershipEditor($showRecordLifeSpan) {
 	global
 		$collectionMembershipAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute;
 
@@ -105,29 +105,29 @@ function getDefinedMeaningCollectionMembershipEditor() {
 	$editor->addEditor(new CollectionReferenceEditor($collectionMeaningAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new ShortTextEditor($sourceIdentifierAttribute, new SimplePermissionController(true), true));
 
-	addTableLifeSpanEditor($editor);
+	addTableLifeSpanEditor($editor, $showRecordLifeSpan);
 
 	return $editor;
 }
 
-function getDefinedMeaningTextAttributeValuesEditor() {
+function getDefinedMeaningTextAttributeValuesEditor($showRecordLifeSpan) {
 	global
 		$textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute;
 
 	$editor = new RecordSetTableEditor($textAttributeValuesAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningTextAttributeValuesController());
 	$editor->addEditor(new TextAttributeEditor($textAttributeAttribute, new SimplePermissionController(false), true));
-	$editor->addEditor(getTranslatedTextEditor($textValueAttribute, new DefinedMeaningTextAttributeValueController()));
+	$editor->addEditor(getTranslatedTextEditor($textValueAttribute, new DefinedMeaningTextAttributeValueController(), $showRecordLifeSpan));
 
-	addTableLifeSpanEditor($editor);
+	addTableLifeSpanEditor($editor, $showRecordLifeSpan);
 
 	return $editor;
 }
 
-function getExpressionMeaningsEditor($attribute, $allowAdd) {
+function getExpressionMeaningsEditor($attribute, $allowAdd, $showRecordLifeSpan) {
 	global
 		$definedMeaningIdAttribute;
 	
-	$definedMeaningEditor = getDefinedMeaningEditor();
+	$definedMeaningEditor = getDefinedMeaningEditor($showRecordLifeSpan);
 
 	$definedMeaningCaptionEditor = new DefinedMeaningHeaderEditor($definedMeaningIdAttribute, new SimplePermissionController(false), true, 75);
 	$definedMeaningCaptionEditor->setAddText("New exact meaning");
@@ -139,15 +139,15 @@ function getExpressionMeaningsEditor($attribute, $allowAdd) {
 	return $expressionMeaningsEditor;
 }
 
-function getExpressionsEditor($spelling) {
+function getExpressionsEditor($spelling, $showRecordLifeSpan) {
 	global
 		$expressionMeaningsAttribute, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute, $expressionAttribute, $languageAttribute, $expressionsAttribute;
 
 	$expressionMeaningsRecordEditor = new RecordListEditor($expressionMeaningsAttribute, 3);
 	
-	$exactMeaningsEditor = getExpressionMeaningsEditor($expressionExactMeaningsAttribute, true);
+	$exactMeaningsEditor = getExpressionMeaningsEditor($expressionExactMeaningsAttribute, true, $showRecordLifeSpan);
 	$expressionMeaningsRecordEditor->addEditor($exactMeaningsEditor);
-	$expressionMeaningsRecordEditor->addEditor(getExpressionMeaningsEditor($expressionApproximateMeaningsAttribute, false));
+	$expressionMeaningsRecordEditor->addEditor(getExpressionMeaningsEditor($expressionApproximateMeaningsAttribute, false, $showRecordLifeSpan));
 	
 	$expressionMeaningsRecordEditor->expandEditor($exactMeaningsEditor);
 	
@@ -158,25 +158,23 @@ function getExpressionsEditor($spelling) {
 	$expressionsEditor->setCaptionEditor($expressionEditor);
 	$expressionsEditor->setValueEditor($expressionMeaningsRecordEditor);
 
-
-
 	return $expressionsEditor;
 }
 
-function getDefinedMeaningEditor() {
+function getDefinedMeaningEditor($showRecordLifeSpan) {
 	global
 		$definitionAttribute, $definedMeaningAttribute;
 		
-	$definitionEditor = getTranslatedTextEditor($definitionAttribute, new DefinedMeaningDefinitionController());
-	$synonymsAndTranslationsEditor = getSynonymsAndTranslationsEditor();
-	$relationsEditor = getDefinedMeaningRelationsEditor();
-	$classMembershipEditor = getDefinedMeaningClassMembershipEditor();
-	$collectionMembershipEditor = getDefinedMeaningCollectionMembershipEditor();
-	$textAttributeValuesEditor = getDefinedMeaningTextAttributeValuesEditor();
+	$definitionEditor = getTranslatedTextEditor($definitionAttribute, new DefinedMeaningDefinitionController(), $showRecordLifeSpan);
+	$synonymsAndTranslationsEditor = getSynonymsAndTranslationsEditor($showRecordLifeSpan);
+	$relationsEditor = getDefinedMeaningRelationsEditor($showRecordLifeSpan);
+	$classMembershipEditor = getDefinedMeaningClassMembershipEditor($showRecordLifeSpan);
+	$collectionMembershipEditor = getDefinedMeaningCollectionMembershipEditor($showRecordLifeSpan);
+	$textAttributeValuesEditor = getDefinedMeaningTextAttributeValuesEditor($showRecordLifeSpan);
 
 	$definedMeaningEditor = new RecordListEditor($definedMeaningAttribute, 4);
 	$definedMeaningEditor->addEditor($definitionEditor);
-	$definedMeaningEditor->addEditor(getAlternativeDefinitionsEditor());
+	$definedMeaningEditor->addEditor(getAlternativeDefinitionsEditor($showRecordLifeSpan));
 	$definedMeaningEditor->addEditor($synonymsAndTranslationsEditor);
 	$definedMeaningEditor->addEditor($relationsEditor);
 	$definedMeaningEditor->addEditor($classMembershipEditor);

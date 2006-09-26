@@ -47,15 +47,19 @@ function getSelect($name, $options, $selectedValue="") {
 	return $result . '</select>';
 }
 
-function getSuggest($name, $query) {
-	global
-		$dbr;
+function getSuggest($name, $query, $value=0) {
 	// href="#'. $name .'-suggest-div" 
 	//$result = '<span class="suggest"><input type="hidden" id="'. $name .'-suggest-query" value="'. $query .'"/><input type="hidden" id="'. $name .'" name="'. $name .'" value=""/><a id="'. $name .'-suggest-link" class="suggest-link" onclick="suggestLinkClicked(event, this);" title="Click to change selection"><table class="suggest-table" cellspacing="0" cellpadding="0"><tr><td id="'. $name .'-suggest-value" style="width: 100%; padding-left: 2px; padding-right: 4px;"/><td style="margin: 0px; padding: 1px;"><img src="extensions/Wikidata/Images/ArrowButtonDown.png"/></td></tr></table></a></span>';
+	
+	if ($value != 0)
+		$label = $value;
+	else
+		$label = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+		
 	$result = '<span class="suggest">' .
 					'<input type="hidden" id="'. $name .'-suggest-query" value="'. $query .'"/>' .
-					'<input type="hidden" id="'. $name .'" name="'. $name .'" value=""/>' .
-					'<a id="'. $name .'-suggest-link" class="suggest-link" onclick="suggestLinkClicked(event, this);" title="Click to change selection">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
+					'<input type="hidden" id="'. $name .'" name="'. $name .'" value="'. $value .'"/>' .
+					'<a id="'. $name .'-suggest-link" class="suggest-link" onclick="suggestLinkClicked(event, this);" title="Click to change selection">' . $label .
 //						'<span class="suggest-box">' .
 //							'<span class="suggest-value" id="'. $name .'-suggest-value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>' .
 ////							'<span class="suggest-button"><input type="image" src="extensions/Wikidata/Images/ArrowButtonDown.png"/></span>' .

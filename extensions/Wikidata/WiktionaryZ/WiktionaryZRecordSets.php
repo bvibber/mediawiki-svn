@@ -465,9 +465,6 @@ function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $quer
 		array("member_mid=$definedMeaningId")
 	);
 
-	// Both the record set as the records in that set use the same Structure object
-	// Updating the structure once, updates it for all
-	// Should be an general accepted operation on record sets in the future
 	$recordSet->getStructure()->atttributes[] = $collectionMeaningAttribute;
 
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {

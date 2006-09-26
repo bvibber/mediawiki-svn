@@ -70,6 +70,15 @@ function getUserName($userId) {
 		return "";
 }
 
+function getUserLabel($userId, $userIP) {
+	if ($userId > 0)
+		return getUserName($userId);
+	else if ($userIP != "")
+		return $userIP;
+	else
+		return "Unknown"; 
+}
+
 function getTransactionTuple($transactionId) {
 	global
 		$transactionStructure, $userAttribute, $timestampAttribute, $wgUser, $wgContLang;
@@ -83,14 +92,7 @@ function getTransactionTuple($transactionId) {
 		$queryResult = $dbr->query("SELECT user_id, user_ip, timestamp, comment FROM transactions WHERE transaction_id=$transactionId");
 		
 		if ($transaction = $dbr->fetchObject($queryResult)) {
-			if ($transaction->user_id > 0)
-				$userText = getUserName($transaction->user_id);
-			else if ($transaction->user_ip != "")
-				$userText = $transaction->user_ip;
-			else
-				$userText = "Unknown"; 
-				
-			$result->setAttributeValue($userAttribute, $userText);	
+			$result->setAttributeValue($userAttribute, getUserLabel($transaction->user_id, $transaction->user_ip));	
 			$result->setAttributeValue($timestampAttribute,  $wgContLang->timeanddate($transaction->timestamp));
 		}
 	}

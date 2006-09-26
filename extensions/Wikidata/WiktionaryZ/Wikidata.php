@@ -9,6 +9,10 @@ interface WikidataApplication {
 }
 
 class DefaultWikidataApplication implements WikidataApplication {
+	protected $showRecordLifeSpan;
+	protected $transaction;
+	protected $queryTransactionInformation;
+
 	public function __construct() {
 		global 
 			$wgMessageCache;
@@ -49,9 +53,37 @@ class DefaultWikidataApplication implements WikidataApplication {
 	
 	public function history() {
 		global
-			$wgOut;
+			$wgOut, $wgTitle;
+			
+		if (isset($_GET['show'])) {
+			$this->showRecordLifeSpan = isset($_GET["show-record-life-span"]);
+			$this->transaction = (int) $_GET["transaction"];
+		}	
+		else {
+			$this->showRecordLifeSpan = true;
+			$this->transaction = 0;
+		}
+		
+		if ($this->transaction == 0)
+			$this->queryTransactionInformation = new QueryHistoryTransactionInformation();
+		else
+			$this->queryTransactionInformation = new QueryAtTransactionInformation($this->transaction);
 			
 		$wgOut->addHTML($this->getLanguageSelector());
+		$wgOut->addHTML(
+			'<div class="option-panel">' .
+				'<form method="" action="">'.
+					'<input type="hidden" name="title" value="'. $wgTitle->getNsText() . ':' . $wgTitle->getText() .'"/>'.
+					'<input type="hidden" name="action" value="history"/>'.
+					'<table cellpadding="0" cellspacing="0">'.
+						'<tr><th>Transaction:</th><td class="option-field">'. getSuggest("transaction", "transaction", $_GET["transaction"]) . '</td></tr>'.
+						'<tr><th>Show record life span:</th><td class="option-field">'. getCheckBox("show-record-life-span", $this->showRecordLifeSpan) . '</td></tr>'.
+//						'<tr><th>Show most recent version only:</th><td class="option-field">'. getCheckBox("show-most-recent-version-only", isset($_GET["show-most-recent-version-only"])) . '</td></tr>'.
+						'<tr><th/><td>'. getSubmitButton("show", "Show"). '</td></tr>'.
+					'</table>'.
+				'</form>'.
+			'</div>'
+		);
 	}
 	
 	protected function outputEditHeader() {
@@ -65,8 +97,8 @@ class DefaultWikidataApplication implements WikidataApplication {
 		global
 			$wgOut, $wgTitle;
 		
-		$wgOut->addHTML('<div class="save-panel">');
-			$wgOut->addHTML('<table cellpadding="0" cellspacing="0"><tr><th>' . wfMsg('summary') . ': </th><td>' . getTextBox("summary") .'</td></tr></table>');
+		$wgOut->addHTML('<div class="option-panel">');
+			$wgOut->addHTML('<table cellpadding="0" cellspacing="0"><tr><th>' . wfMsg('summary') . ': </th><td class="option-field">' . getTextBox("summary") .'</td></tr></table>');
 			$wgOut->addHTML(getSubmitButton("save", wfMsg('wz_save')));
 		$wgOut->addHTML('</div>');
 		$wgOut->addHTML('</form>');

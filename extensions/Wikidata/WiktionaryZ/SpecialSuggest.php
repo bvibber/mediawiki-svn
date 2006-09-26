@@ -81,14 +81,31 @@ function getSuggestions() {
 	    			" AND " . getLatestTransactionRestriction('syntrans') .
 	    			" AND " . getLatestTransactionRestriction('collection');
 	    	break;
+	    case 'transaction':
+	    	$sql = "SELECT transaction_id, user_id, user_ip, " .
+	    			" CONCAT(SUBSTRING(timestamp, 1, 4), '-', SUBSTRING(timestamp, 5, 2), '-', SUBSTRING(timestamp, 7, 2), ' '," .
+	    			" SUBSTRING(timestamp, 9, 2), ':', SUBSTRING(timestamp, 11, 2), ':', SUBSTRING(timestamp, 13, 2)) AS time, comment" .
+	    			" FROM transactions WHERE 1";
+	    	$rowText = "CONCAT(SUBSTRING(timestamp, 1, 4), '-', SUBSTRING(timestamp, 5, 2), '-', SUBSTRING(timestamp, 7, 2), ' '," .
+	    			" SUBSTRING(timestamp, 9, 2), ':', SUBSTRING(timestamp, 11, 2), ':', SUBSTRING(timestamp, 13, 2))";
+	    	break;
 	}
 	                          
-	if ($search != '')
-		$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes("$search%");
+	if ($search != '') {
+		if ($query == 'transaction')
+			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes("%$search%");
+		else	
+			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes("$search%");
+	}
 	else
 		$searchCondition = "";
 	
-	$sql .= $searchCondition . " ORDER BY $rowText LIMIT 10";
+	if ($query == 'transaction')
+		$orderBy = 'transaction_id DESC';
+	else
+		$orderBy = $rowText;
+	
+	$sql .= $searchCondition . " ORDER BY $orderBy LIMIT 10";
 	$queryResult = $dbr->query($sql);
 	$idAttribute = new Attribute("id", "ID", "id");
 	
@@ -110,6 +127,9 @@ function getSuggestions() {
 			break;	
 		case 'language':
 			list($recordSet, $editor) = getLanguageAsRecordSet($queryResult);
+			break;
+		case 'transaction':
+			list($recordSet, $editor) = getTransactionAsRecordSet($queryResult);
 			break;
 	}
 	
@@ -253,6 +273,29 @@ function getLanguageAsRecordSet($queryResult) {
 
 	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($languageAttribute, new SimplePermissionController(false), false));
+
+	return array($recordSet, $editor);		
+}
+
+function getTransactionAsRecordSet($queryResult) {
+	global
+		$idAttribute, $userAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	
+	$timestampAttribute = new Attribute("timestamp", "Time", "timestamp");
+	$summaryAttribute = new Attribute("summary", "Summary", "short-text");
+	
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $userAttribute, $timestampAttribute, $summaryAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->transaction_id, getUserLabel($row->user_id, $row->user_ip), $row->time, $row->comment));			
+	
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($timestampAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new ShortTextEditor($idAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new ShortTextEditor($userAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new ShortTextEditor($summaryAttribute, new SimplePermissionController(false), false));
 
 	return array($recordSet, $editor);		
 }

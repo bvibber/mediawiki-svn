@@ -29,6 +29,9 @@
 	background-color: #F6F6F6;
 }
 
+.wiki-data-table td.column-even {
+	background-color: #FFFFFF;
+}
 .boolean {
 	text-align: center;
 }
@@ -111,9 +114,9 @@ ul.collapsable-items {
 	text-indent: 0px;
 }
 
-/* Save panel */
+/* Option panel */
 
-.save-panel {
+.option-panel {
 	margin: 8px 4px 4px 4px;
 	padding: 8px;
 	border-style: solid;
@@ -121,19 +124,21 @@ ul.collapsable-items {
 	border-color: #AAAAAA;
 }
 
-.save-panel, .save-panel th {
+.option-panel, .option-panel th, .option-panel td {
 	background-color: #F5F5F5;
 }
 
-.save-panel th {
+.option-panel th {
 	padding-right: 8px;
+	white-space: nowrap;
+	text-align: left;
 }
 
-.save-panel table {
+.option-panel table {
 	width: 100%;
 	margin-bottom: 8px;
 }
 
-.save-panel td {
+.option-panel td.option-field {
 	width: 100%;
 }
