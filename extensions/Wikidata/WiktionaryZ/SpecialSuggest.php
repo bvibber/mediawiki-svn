@@ -1,15 +1,31 @@
 <?php
 
-define( 'MEDIAWIKI', true );
+if (!defined('MEDIAWIKI')) die();
 
-//if (!defined('MEDIAWIKI')) die();
-//
-//global 
-//	$IP;
-//
-//require_once("$IP/includes/SpecialPage.php");
-require_once("../../../LocalSettings.php");
-require_once("Setup.php");
+global 
+	$IP;
+
+$wgExtensionFunctions[] = 'wfSpecialSuggest';
+
+function wfSpecialSuggest() {
+	class SpecialSuggest extends SpecialPage {
+		function SpecialSuggest() {
+			SpecialPage::SpecialPage('Suggest');
+		}
+		
+		function execute( $par ) {
+			global
+				$wgOut;
+				
+			$wgOut->disable();
+			echo getSuggestions();
+		}
+	}
+	
+	SpecialPage::addPage(new SpecialSuggest());
+}
+
+require_once("$IP/includes/Setup.php");
 
 require_once("Attribute.php");
 require_once("RecordSet.php");
@@ -17,28 +33,6 @@ require_once("Editor.php");
 require_once("HTMLtable.php");
 require_once("Expression.php");
 require_once("Transaction.php");
-
-//$wgExtensionFunctions[] = 'wfSpecialSuggest';
-//
-//function wfSpecialSuggest() {
-//	class SpecialSuggest extends SpecialPage {
-//		function SpecialSuggest() {
-//			SpecialPage::SpecialPage('Suggest');
-//		}
-//		
-//		function execute( $par ) {
-//			global
-//				$wgOut;
-//				
-//			$wgOut->disable();
-//			echo getSuggestions();
-//		}
-//	}
-//	
-//	SpecialPage::addPage(new SpecialSuggest());
-//}
-
-echo getSuggestions();
 
 function getSuggestions() {
 	global

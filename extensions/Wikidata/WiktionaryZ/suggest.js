@@ -35,7 +35,7 @@ function updateSuggestions(suggestPrefix) {
 	suggestText = document.getElementById(suggestPrefix + "text");
 	suggestText.className = "suggest-loading";
 
-	http.open('GET', 'extensions/Wikidata/WiktionaryZ/SpecialSuggest.php?search=' + encodeURI(suggestText.value) + '&prefix=' + encodeURI(suggestPrefix) + '&query=' + encodeURI(suggestQuery), true);
+	http.open('GET', 'index.php/Special:Suggest?search=' + encodeURI(suggestText.value) + '&prefix=' + encodeURI(suggestPrefix) + '&query=' + encodeURI(suggestQuery), true);
 	http.onreadystatechange = function() {
 		if (http.readyState == 4) {
 			var newTable = document.createElement('div');
