@@ -41,6 +41,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 		global
 			$wgOut;
 			
+		$wgOut->enableClientCache(false);
 		$wgOut->addHTML($this->getLanguageSelector());
 	}
 	
