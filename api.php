@@ -22,37 +22,74 @@
 * http://www.gnu.org/copyleft/gpl.html
 */
 
-$apiStartTime = microtime(true);
+$wgApiStartTime = microtime(true);
+
+/**
+ * When no format parameter is given, this format will be used
+ */
+define('API_DEFAULT_FORMAT', 'xmlfm');
+
+/**
+ * All API classes reside in this directory
+ */
+$wgApiDirectory = 'includes/api/';
 
 /**
  * List of classes and containing files.
  */
-$apiAutoloadClasses = array (
-	'ApiBase' => 'includes/api/ApiBase.php',
-	'ApiMain' => 'includes/api/ApiMain.php',
-	'ApiResult' => 'includes/api/ApiResult.php',
+$wgApiAutoloadClasses = array (
 
-	// Available modules - should match the $apiModules list
-	'ApiHelp' => 'includes/api/ApiHelp.php',
-	'ApiLogin' => 'includes/api/ApiLogin.php',
-	'ApiQuery' => 'includes/api/ApiQuery.php'
+	'ApiMain' => 'ApiMain.php',
+
+		// Utility classes
+	'ApiBase' => 'ApiBase.php',
+	'ApiQueryBase' => 'ApiQueryBase.php',
+	'ApiResult' => 'ApiResult.php',
+	'ApiPageSet' => 'ApiPageSet.php',
+
+		// Formats
+	'ApiFormatBase' => 'ApiFormatBase.php',
+	'ApiFormatYaml' => 'ApiFormatYaml.php',
+	'ApiFormatXml' => 'ApiFormatXml.php',
+	'ApiFormatJson' => 'ApiFormatJson.php',
+
+		// Modules (action=...) - should match the $apiModules list
+	'ApiHelp' => 'ApiHelp.php',
+	'ApiLogin' => 'ApiLogin.php',
+	'ApiQuery' => 'ApiQuery.php',
+
+		// Query items (meta/prop/list=...)
+	'ApiQuerySiteinfo' => 'ApiQuerySiteinfo.php',
+	'ApiQueryInfo' => 'ApiQueryInfo.php',
+	'ApiQueryContent' => 'ApiQueryContent.php'
 );
 
 /**
  * List of available modules: action name => module class
- * The class must also be listed in the $apiAutoloadClasses array. 
- */ 
-$apiModules = array (
+ * The class must also be listed in the $wgApiAutoloadClasses array. 
+ */
+$wgApiModules = array (
 	'help' => 'ApiHelp',
 	'login' => 'ApiLogin',
 	'query' => 'ApiQuery'
 );
 
+/**
+ * List of available formats: format name => format class
+ * The class must also be listed in the $wgApiAutoloadClasses array. 
+ */
+$wgApiFormats = array (
+	'json' => 'ApiFormatJson',
+	'jsonfm' => 'ApiFormatJson',
+	'xml' => 'ApiFormatXml',
+	'xmlfm' => 'ApiFormatXml',
+	'yaml' => 'ApiFormatYaml',
+	'yamlfm' => 'ApiFormatYaml'
+);
 
 // Initialise common code
 require_once ('./includes/WebStart.php');
 wfProfileIn('api.php');
-
 
 // Verify that the API has not been disabled
 // The next line should be 
@@ -64,24 +101,24 @@ if (!isset ($wgEnableAPI) || !$wgEnableAPI) {
 	die(-1);
 }
 
-
-ApiInitAutoloadClasses($apiAutoloadClasses);
-$processor = new ApiMain($apiStartTime, $apiModules);
+ApiInitAutoloadClasses($wgApiAutoloadClasses, $wgApiDirectory);
+$processor = new ApiMain($wgApiStartTime, $wgApiModules, $wgApiFormats);
 $processor->Execute();
 
 wfProfileOut('api.php');
 wfLogProfilingData();
 exit; // Done!
 
+function ApiInitAutoloadClasses($apiAutoloadClasses, $apiDirectory) {
 
-function ApiInitAutoloadClasses($apiAutoloadClasses) {
-
-	// Append $apiAutoloadClasses to $wgAutoloadClasses
+	// Prefix each api class with the proper prefix,
+	// and append them to $wgAutoloadClasses
 	global $wgAutoloadClasses;
-	if (isset ($wgAutoloadClasses)) {
-		$wgAutoloadClasses = array_merge($wgAutoloadClasses, $apiAutoloadClasses);
-	} else {
-		$wgAutoloadClasses = $apiAutoloadClasses;
-	}
+	
+	if (!isset ($wgAutoloadClasses))
+		$wgAutoloadClasses = array();
+
+	foreach ($apiAutoloadClasses as $className => $classFile)
+		$wgAutoloadClasses[$className] = $apiDirectory . $classFile;
 }
 ?>

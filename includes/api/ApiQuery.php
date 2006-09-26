@@ -31,74 +31,251 @@ if (!defined('MEDIAWIKI')) {
 
 class ApiQuery extends ApiBase {
 
-	private static $apiAutoloadClasses_Query = array (
-		'ApiQueryContent' => 'includes/api/ApiQueryContent.php',
-		
+	var $mMetaModuleNames, $mPropModuleNames, $mListModuleNames;
+
+	private $mQueryMetaModules = array (
+		'siteinfo' => 'ApiQuerySiteinfo',
+			//'userinfo' => 'ApiQueryUserinfo'	
+
+	
 	);
 
-	private static $sQueryModules = array (
-		'content' => 'ApiQueryContent'
+	private $mQueryPropModules = array (
+		'info' => 'ApiQueryInfo',
+			//		'categories' => 'ApiQueryCategories',
+		//		'imageinfo' => 'ApiQueryImageinfo',
+		//		'langlinks' => 'ApiQueryLanglinks',
+		//		'links' => 'ApiQueryLinks',
+		//		'templates' => 'ApiQueryTemplates',
+		//		'revisions' => 'ApiQueryRevisions',
+
+		// Should be removed
+	'content' => 'ApiQueryContent'
 	);
 
-	/**
-	* Constructor
-	*/
+	private $mQueryListModules = array (
+		// 'allpages' => 'ApiQueryAllpages',
+			//		'backlinks' => 'ApiQueryBacklinks',
+		//		'categorymembers' => 'ApiQueryCategorymembers',
+		//		'embeddedin' => 'ApiQueryEmbeddedin',
+		//		'imagelinks' => 'ApiQueryImagelinks',
+		//		'logevents' => 'ApiQueryLogevents',
+		//		'recentchanges' => 'ApiQueryRecentchanges',
+		//		'usercontribs' => 'ApiQueryUsercontribs',
+		//		'users' => 'ApiQueryUsers',
+		//		'watchlist' => 'ApiQueryWatchlist'
+
+	
+	);
+
+	private $mSlaveDB = null;
+
 	public function __construct($main, $action) {
 		parent :: __construct($main);
-		ApiInitAutoloadClasses($this->apiAutoloadClasses_Query);
-		$this->mModuleNames = array_keys($this->sQueryModules);
-		$this->mDb =& wfGetDB( DB_SLAVE );
+		$this->mMetaModuleNames = array_keys($this->mQueryMetaModules);
+		$this->mPropModuleNames = array_keys($this->mQueryPropModules);
+		$this->mListModuleNames = array_keys($this->mQueryListModules);
+
+		$this->mAllowedGenerators = array_merge($this->mListModuleNames, $this->mPropModuleNames);
 	}
-	
+
 	public function GetDB() {
-		return $this->mDb;
-	}
-	
-
-	public function Execute() {
-
+		if (!isset ($this->mSlaveDB))
+			$this->mSlaveDB = & wfGetDB(DB_SLAVE);
+		return $this->mSlaveDB;
 	}
 
 	/**
-	 * Returns an array of allowed parameters (keys) => default value for that parameter
+	 * Query execution happens in the following steps:
+	 * #1 Create a PageSet object with any pages requested by the user
+	 * #2 If using generator, execute it to get a new PageSet object
+	 * #3 Instantiate all requested modules. 
+	 *    This way the PageSet object will know what shared data is required,
+	 *    and minimize DB calls. 
+	 * #4 Output all normalization and redirect resolution information
+	 * #5 Execute all requested modules
 	 */
+	public function Execute() {
+		$meta = $prop = $list = $generator = $titles = $pageids = $revids = null;
+		$redirects = null;
+		extract($this->ExtractRequestParams());
+
+		//
+		// Create and initialize PageSet
+		//
+		// Only one of the titles/pageids/revids is allowed at the same time
+		$dataSource = null;
+		if (isset ($titles))
+			$dataSource = 'titles';
+		if (isset ($pageids)) {
+			if (isset ($dataSource))
+				$this->DieUsage("Cannot use 'pageids' at the same time as '$dataSource'", 'multisource');
+			$dataSource = 'pageids';
+		}
+		if (isset ($revids)) {
+			if (isset ($dataSource))
+				$this->DieUsage("Cannot use 'revids' at the same time as '$dataSource'", 'multisource');
+			$dataSource = 'revids';
+		}
+
+		$data = new ApiPageSet($this->GetMain(), $this->GetDB(), $redirects);
+
+		switch ($dataSource) {
+			case 'titles' :
+				$data->PopulateTitles($titles);
+				break;
+			case 'pageids' :
+				$data->PopulatePageIDs($pageids);
+				break;
+			case 'titles' :
+				$data->PopulateRevIDs($revids);
+				break;
+			default :
+				// Do nothing - some queries do not need any of the data sources.
+				break;
+		}
+
+		//
+		// If generator is provided, get a new dataset to work on
+		//
+		if (isset ($generator))
+			$data = $this->ExecuteGenerator($generator, $data, $redirects);
+
+		// Instantiate required modules
+		// During instantiation, modules may optimize data requests through the $data object 
+		// $data will be lazy loaded when modules begin to request data during execution
+		$modules = array ();
+		if (isset($meta))
+			foreach ($meta as $moduleName)
+				$modules[] = new $this->mQueryMetaModules[$moduleName] ($this->GetMain(), $moduleName, $data);
+		if (isset($prop))
+			foreach ($prop as $moduleName)
+				$modules[] = new $this->mQueryPropModules[$moduleName] ($this->GetMain(), $moduleName, $data);
+		if (isset($list))
+			foreach ($list as $moduleName)
+				$modules[] = new $this->mQueryListModules[$moduleName] ($this->GetMain(), $moduleName, $data);
+
+		// Title normalizations
+		foreach ($data->GetNormalizedTitles() as $rawTitleStr => $titleStr) {
+			$this->GetResult()->AddMessage('query', 'normalized', array (
+				'from' => $rawTitleStr,
+				'to' => $titleStr
+			), 'n');
+		}
+
+		// Show redirect information
+		if ($redirects) {
+			foreach ($data->GetRedirectTitles() as $titleStrFrom => $titleStrTo) {
+				$this->GetResult()->AddMessage('query', 'redirects', array (
+					'from' => $titleStrFrom,
+					'to' => $titleStrTo
+				), 'r');
+			}
+		}
+
+		// Execute all requested modules.
+		foreach ($modules as $module)
+			$module->Execute();
+	}
+
+	protected function ExecuteGenerator($generator, $data, $redirects) {
+		// TODO: implement
+		$this->DieUsage("Generator execution has not been implemented", 'notimplemented');
+	}
+
 	protected function GetAllowedParams() {
 		return array (
-			'what' => 'default',
-			'enumparam' => array (
-				GN_ENUM_DFLT => null,
+			'meta' => array (
 				GN_ENUM_ISMULTI => true,
-				GN_ENUM_CHOICES => $this->mModuleNames
-			)
+				GN_ENUM_CHOICES => $this->mMetaModuleNames
+			),
+			'prop' => array (
+				GN_ENUM_ISMULTI => true,
+				GN_ENUM_CHOICES => $this->mPropModuleNames
+			),
+			'list' => array (
+				GN_ENUM_ISMULTI => true,
+				GN_ENUM_CHOICES => $this->mListModuleNames
+			),
+			//			'generator' => array (
+			//				GN_ENUM_CHOICES => $this->mAllowedGenerators
+			//			),
+			'titles' => array (
+				GN_ENUM_ISMULTI => true
+			),
+			//			'pageids' => array (
+			//				GN_ENUM_TYPE => 'integer',
+			//				GN_ENUM_ISMULTI => true
+			//			),
+			//			'revids' => array (
+			//				GN_ENUM_TYPE => 'integer',
+			//				GN_ENUM_ISMULTI => true
+			//			),
+			'redirects' => false
 		);
 	}
 
 	/**
-	 * Returns the description string for this module
+	 * Override the parent to generate help messages for all available query modules.
 	 */
-	protected function GetDescription() {
-		return 'module a';
+	public function MakeHelpMsg() {
+
+		// Use parent to make default message for the query module
+		$msg = parent :: MakeHelpMsg();
+
+		$astriks = str_repeat('--- ', 8);
+		$msg .= "\n$astriks Query: Meta  $astriks\n\n";
+ 		$msg .= $this->MakeHelpMsgHelper($this->mQueryMetaModules, 'meta');
+		$msg .= "\n$astriks Query: Prop  $astriks\n\n";
+ 		$msg .= $this->MakeHelpMsgHelper($this->mQueryPropModules, 'prop');
+		$msg .= "\n$astriks Query: List  $astriks\n\n";
+ 		$msg .= $this->MakeHelpMsgHelper($this->mQueryListModules, 'list');
+
+		return $msg;
+	}
+	
+	private function MakeHelpMsgHelper($moduleList, $paramName) {
+		$msg = '';
+
+		foreach ($moduleList as $moduleName => $moduleClass) {
+			$msg .= "* $paramName=$moduleName *";
+			$module = new $moduleClass ($this->GetMain(), $moduleName, null);
+			$msg2 = $module->MakeHelpMsg();
+			if ($msg2 !== false)
+				$msg .= $msg2;
+			$msg .= "\n";
+			if ($module->GetCanGenerate())
+				$msg .= "  * Can be used as a generator\n";
+		}
+
+		return $msg;
 	}
 
-	/**
-	 * Returns usage examples for this module. Return null if no examples are available.
-	 */
+	protected function GetParamDescription() {
+		return array (
+			'meta' => 'Which meta data to get about the site',
+			'prop' => 'Which properties to get for the titles/revisions/pageids',
+			'list' => 'Which lists to get',
+			'generator' => 'Use the output of a list as the input for other prop/list/meta items',
+			'titles' => 'A list of titles to work on',
+			'pageids' => 'A list of page IDs to work on',
+			'revids' => 'A list of revision IDs to work on',
+			'redirects' => 'Automatically resolve redirects'
+		);
+	}
+
+	protected function GetDescription() {
+		return array (
+			'Query API module allows applications to get needed pieces of data from the MediaWiki databases,',
+			'and is loosely based on the Query API interface currently available on all MediaWiki servers.',
+			'All data modifications will first have to use query to acquire a token to prevent abuse from malicious sites.'
+		);
+	}
+
 	protected function GetExamples() {
 		return array (
-			'http://...'
+			'api.php?action=query&what=content&titles=ArticleA|ArticleB'
 		);
-	}
-
-	/**
-	 * Returns the description string for the given parameter.
-	 */
-	protected function GetParamDescription($paramName) {
-		switch ($paramName) {
-			case 'param' :
-				return 'description';
-			default :
-				return parent :: GetParamDescription($paramName);
-		}
 	}
 }
 ?>

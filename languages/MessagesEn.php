@@ -526,7 +526,7 @@ parent class in order maintain consistency across languages.
 'redirectedfrom' => '(Redirected from $1)',
 'autoredircomment' => 'Redirecting to [[$1]]',
 'redirectpagesub' => 'Redirect page',
-'lastmodified'	=> 'This page was last modified $1.',
+'lastmodifiedat'		=> 'This page was last modified $2, $1.',	//$1 date, $2 time
 'viewcount'		=> 'This page has been accessed {{plural:$1|one time|$1 times}}.',
 'copyright'	=> 'Content is available under $1.',
 'protectedpage' => 'Protected page',
@@ -684,10 +684,10 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'createaccountmail'	=> 'by e-mail',
 'badretype'		=> 'The passwords you entered do not match.',
 'userexists'	=> 'Username entered already in use. Please choose a different name.',
-'youremail'		=> 'E-mail *',
+'youremail'		=> 'E-mail *:',
 'username'		=> 'Username:',
 'uid'			=> 'User ID:',
-'yourrealname'		=> 'Real name *',
+'yourrealname'		=> 'Real name *:',
 'yourlanguage'	=> 'Language:',
 'yourvariant'  => 'Variant',
 'yournick'		=> 'Nickname:',
@@ -1275,6 +1275,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'nviews'		=> '$1 {{PLURAL:$1|view|views}}',
 
 'lonelypages'	=> 'Orphaned pages',
+'lonelypagestext'	=> 'The following pages are not linked from other pages in this wiki.',
 'uncategorizedpages'	=> 'Uncategorized pages',
 'uncategorizedcategories'	=> 'Uncategorized categories',
 'uncategorizedimages' => 'Uncategorized images',
@@ -1295,6 +1296,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'shortpages'	=> 'Short pages',
 'longpages'		=> 'Long pages',
 'deadendpages'  => 'Dead-end pages',
+'deadendpagestext'	=> 'The following pages do not link to other pages in this wiki.',
 'listusers'		=> 'User list',
 'specialpages'	=> 'Special pages',
 'spheading'		=> 'Special pages for all users',
@@ -1851,7 +1853,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 
 'anonymous' => 'Anonymous user(s) of {{SITENAME}}',
 'siteuser' => '{{SITENAME}} user $1',
-'lastmodifiedby' => 'This page was last modified $1 by $2.',
+'lastmodifiedatby' => 'This page was last modified $2, $1 by $3.',	// $1 date, $2 time. $3 user
 'and' => 'and',
 'othercontribs' => 'Based on work by $1.',
 'others' => 'others',
@@ -1979,6 +1981,11 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');',
 'variantname-sr-jc' => 'sr-jc',
 'variantname-sr-jl' => 'sr-jl',
 'variantname-sr' => 'sr',
+# variants for Kazakh language
+'variantname-kk-tr' => 'kk-tr',
+'variantname-kk-kz' => 'kk-kz',
+'variantname-kk-cn' => 'kk-cn',
+'variantname-kk' => 'kk',
 
 # labels for User: and Title: on Special:Log pages
 'specialloguserlabel' => 'User:',

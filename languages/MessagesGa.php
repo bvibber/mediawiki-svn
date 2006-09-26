@@ -262,7 +262,7 @@ agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar ú
 "viewtalkpage"  => "Féach ar phlé",
 "otherlanguages"    => "I dteangacha eile",
 "redirectedfrom"    => "(Athsheolta ó $1)",
-"lastmodified"  => "Athraíodh an leathanach seo ag $1.",
+"lastmodifiedat"  => "Athraíodh an leathanach seo ag $2, $1.",
 "viewcount"     => "Rochtainíodh an leathanach seo $1 uair.",
 'copyright'     => "Tá an t-ábhar le fáil faoin $1.",
 "protectedpage" => "Leathanach glasáilte",
@@ -1330,7 +1330,7 @@ ní féidir uaslódála staire díreacha a dhéanamh faoi láthair.',
 
 'anonymous' => "Úsáideoir(í) gan ainm ar {{SITENAME}}",
 'siteuser' => "Úsáideoir $1 ag {{SITENAME}}", #FIXME - genitive needed here
-'lastmodifiedby' => "Leasaigh $2 an leathanach seo go déanaí ag $1.",
+'lastmodifiedatby' => "Leasaigh $3 an leathanach seo go déanaí ag $2, $1.",
 'and' => 'agus',
 'othercontribs' => "Bunaithe ar saothair le $1.",
 'others' => 'daoine eile',

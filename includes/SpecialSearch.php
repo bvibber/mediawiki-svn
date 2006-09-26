@@ -77,6 +77,7 @@ class SpecialSearch {
 	function goResult( $term ) {
 		global $wgOut;
 		global $wgGoToEdit;
+		global $wgContLang;
 
 		$this->setupPage( $term );
 

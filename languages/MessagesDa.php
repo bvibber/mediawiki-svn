@@ -205,7 +205,7 @@ og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] 
 "viewtalkpage" => "Se diskussion",
 "otherlanguages" => "Andre sprog",
 "redirectedfrom" => "(Omdirigeret fra $1)",
-"lastmodified"	=> "Denne side blev senest ændret den $1.",
+"lastmodifiedat"	=> "Denne side blev senest ændret den $2, $1.",
 "viewcount"		=> "Siden er vist i alt $1 gange.",
 'copyright'	=> 'Indholdet&nbsp;er&nbsp;udgivet&nbsp;under&nbsp;$1.',
 "protectedpage" => "Beskyttet side",
@@ -404,7 +404,7 @@ Log ind med den midlertidige adgangskode, der er blevet sendt til dig, for at be
 
 # Edit pages
 #
-"summary"		=> '<a href="{{SERVER}}/wiki/{{ns:4}}:Beskrivelse" title="Giv venligst en kort beskrivelse af din ændring">Beskrivelse</a>',
+'summary'		=> '<a href="{{fullurl:{{ns:4}}}}:Beskrivelse" title="Giv venligst en kort beskrivelse af din ændring">Beskrivelse</a>',
 "subject"		=> "Emne/overskrift",
 "minoredit"		=> "Dette er en mindre ændring.",
 "watchthis"		=> "Overvåg denne artikel",
@@ -1203,7 +1203,7 @@ Målartiklen "[[$1]]" eksisterer allerede. Vil du slette den for at lave plads t
 
 'anonymous' => "Anonym(e) bruger(e) af {{SITENAME}}",
 'siteuser' => "{{SITENAME}} bruger $1",
-'lastmodifiedby' => "Denne side blev senest ændret $1 af $2.",
+'lastmodifiedatby' => "Denne side blev senest ændret $2, $1 af $3.",
 'and' => 'og',
 'othercontribs' => "Baseret på arbejde af $1.",
 'others' => 'andre',

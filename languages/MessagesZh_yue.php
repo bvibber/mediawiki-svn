@@ -344,7 +344,7 @@ $messages = array(
 'redirectedfrom' 	=> '(由 $1 重新定向)', //REDIRECT
 'autoredircomment' 	=> '重新定向緊到[[$1]]',
 'redirectpagesub' 	=> '重新定向頁',
-'lastmodified'		=> '呢一頁嘅最後修改係響$1。',
+'lastmodifiedat'		=> '呢一頁嘅最後修改係響$2, $1。',
 'viewcount'		=> '呢一頁已經有$1人次睇過。',
 'copyright'		=> '響版度嘅內容係根據$1嘅條款發佈。',
 'protectedpage' 	=> '受保護頁',
@@ -1578,7 +1578,7 @@ wiki: $PAGEEDITOR_WIKI
 
 'anonymous' => '{{SITENAME}}嘅匿名用戶',
 'siteuser' => '{{SITENAME}}嘅用戶$1',
-'lastmodifiedby' => '呢一頁嘅最後畀 $2 響 $1 修改。',
+'lastmodifiedatby' => '呢一頁嘅最後畀 $3 響 $2, $1 修改。',
 'and' => '同埋',
 'othercontribs' => '以$1嘅作品為基礎。',
 'others' => '其他',

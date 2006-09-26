@@ -249,7 +249,7 @@ $messages = array(
 'redirectedfrom' => '(Przekierowano z $1)',
 'autoredircomment' => 'Przekierowanie do [[$1]]',
 'redirectpagesub' => 'Strona przekierowująca',
-'lastmodified' => 'Tę stronę ostatnio zmodyfikowano $1.',
+'lastmodifiedat' => 'Tę stronę ostatnio zmodyfikowano $2, $1.',
 'viewcount' => 'Tę stronę obejrzano {{plural:$1|jeden raz|$1 razy}}.',
 'copyright' => 'Tekst udostępniany na licencji $1.',
 'protectedpage' => 'Strona zabezpieczona',
@@ -1341,7 +1341,7 @@ Można również użyć łącza, np. [[{{ns:Special}}:Export/{{Mediawiki:mainpag
 
 'anonymous' => 'Anonimowy użytkownicy serwisu {{SITENAME}}',
 'siteuser' => 'Użytkownik serwisu {{SITENAME}} - $1',
-'lastmodifiedby' => 'Ostatnia edycja tej strony: $1 (autor zmian: $2)',
+'lastmodifiedatby' => 'Ostatnia edycja tej strony: $2, $1 (autor zmian: $3)',
 'and' => 'oraz',
 'othercontribs' => 'Inni autorzy: $1.',
 'others' => 'inni',

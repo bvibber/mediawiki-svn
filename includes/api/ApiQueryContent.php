@@ -34,8 +34,8 @@ class ApiQueryContent extends ApiQueryBase {
 	/**
 	* Constructor
 	*/
-	public function __construct($main, $action) {
-		parent :: __construct($main);
+	public function __construct($main, $query, $data) {
+		parent :: __construct($main, $query);
 	}
 
 	public function Execute() {
@@ -73,18 +73,6 @@ class ApiQueryContent extends ApiQueryBase {
 		return array (
 			'http://...'
 		);
-	}
-
-	/**
-	 * Returns the description string for the given parameter.
-	 */
-	protected function GetParamDescription($paramName) {
-		switch ($paramName) {
-			case 'param' :
-				return 'description';
-			default :
-				return parent :: GetParamDescription($paramName);
-		}
 	}
 }
 ?>

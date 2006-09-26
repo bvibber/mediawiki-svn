@@ -166,7 +166,7 @@ $messages = array(
 'viewtalkpage'	=> 'ਚਰਚਾ ਵਾਲਾ ਪੰਨਾ ਵੇਖੋ',
 'otherlanguages'	=> 'ਬਾਕੀ ਭਾਸ਼ਾਵਾਂ',
 'redirectedfrom'	=> '($1 ਤੋਂ ਭੇਜਿਆ ਗਿਆ ਹੈ)',
-'lastmodified'	=> 'ਅਖੀਰਲਾ ਬਦਲਾਵ $1',
+'lastmodifiedat'	=> 'ਅਖੀਰਲਾ ਬਦਲਾਵ $2, $1',
 'viewcount'		=> 'ਇਹ ਪੰਨਾ $1 ਵਾਰ ਵੇਖਿਆ ਗਿਆ ਹੈ',
 'copyright'		=> 'ਵਿਸ਼ਾ-ਵਸਤੂ $1 ਤਹਿਤ ਉਪਲੱਬਧ ਹੈ',
 'protectedpage'	=> 'ਸੁਰੱਖਿਅਤ ਪੰਨਾ',
@@ -395,7 +395,7 @@ $1 ਜਾਂ ਕਿਸੇ ਵੀ ਹੋਰ [[{{ns:4}}:ਪ੍ਰਸ਼ਾਸਕ]]
 
 # Attribution
 
-'lastmodifiedby'	=> 'ਇਹ ਪੰਨਾ ਅਖੀਰਲੀ ਵਾਰ $1 ਨੂੰ $2 ਦੁਆਰਾ ਬਦਲਿਆ ਗਿਆ ਸੀ',
+'lastmodifiedatby'	=> 'ਇਹ ਪੰਨਾ ਅਖੀਰਲੀ ਵਾਰ $2, $1 ਨੂੰ $3 ਦੁਆਰਾ ਬਦਲਿਆ ਗਿਆ ਸੀ',
 'and'			=> 'ਅਤੇ',
 'othercontribs'	=> '$1 ਦੁਆਰਾ ਕੰਮ ਤੇ ਅਧਾਰਤ।',
 

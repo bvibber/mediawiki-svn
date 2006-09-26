@@ -178,11 +178,11 @@ class SkinTemplate extends Skin {
 		$this->userpage = $userPage->getPrefixedText();
 
 		if ( $wgUser->isLoggedIn() || $this->showIPinHeader() ) {
-			$this->userpageUrlDetails = $this->makeUrlDetails($this->userpage);
+			$this->userpageUrlDetails = self::makeUrlDetails( $this->userpage );
 		} else {
 			# This won't be used in the standard skins, but we define it to preserve the interface
 			# To save time, we check for existence
-			$this->userpageUrlDetails = $this->makeKnownUrlDetails($this->userpage);
+			$this->userpageUrlDetails = self::makeKnownUrlDetails( $this->userpage );
 		}
 
 		$this->usercss =  $this->userjs = $this->userjsprev = false;
@@ -485,27 +485,27 @@ class SkinTemplate extends Skin {
 				'class' => $usertalkUrlDetails['exists']?false:'new',
 				'active' => ( $usertalkUrlDetails['href'] == $pageurl )
 			);
-			$href = $this->makeSpecialUrl('Preferences');
+			$href = self::makeSpecialUrl( 'Preferences' );
 			$personal_urls['preferences'] = array(
-				'text' => wfMsg('mypreferences'),
-				'href' => $this->makeSpecialUrl('Preferences'),
+				'text' => wfMsg( 'mypreferences' ),
+				'href' => self::makeSpecialUrl( 'Preferences' ),
 				'active' => ( $href == $pageurl )
 			);
-			$href = $this->makeSpecialUrl('Watchlist');
+			$href = self::makeSpecialUrl( 'Watchlist' );
 			$personal_urls['watchlist'] = array(
-				'text' => wfMsg('watchlist'),
+				'text' => wfMsg( 'watchlist' ),
 				'href' => $href,
 				'active' => ( $href == $pageurl )
 			);
-			$href = $this->makeSpecialUrl("Contributions/$this->username");
+			$href = self::makeSpecialUrl( "Contributions/$this->username" );
 			$personal_urls['mycontris'] = array(
-				'text' => wfMsg('mycontris'),
+				'text' => wfMsg( 'mycontris' ),
 				'href' => $href
 				# FIXME #  'active' => ( $href == $pageurl . '/' . $this->username )
 			);
 			$personal_urls['logout'] = array(
-				'text' => wfMsg('userlogout'),
-				'href' => $this->makeSpecialUrl( 'Userlogout',
+				'text' => wfMsg( 'userlogout' ),
+				'href' => self::makeSpecialUrl( 'Userlogout',
 					$wgTitle->getNamespace() === NS_SPECIAL && $wgTitle->getText() === 'Preferences' ? '' : "returnto={$this->thisurl}"
 				)
 			);
@@ -528,14 +528,14 @@ class SkinTemplate extends Skin {
 				);
 				$personal_urls['anonlogin'] = array(
 					'text' => wfMsg('userlogin'),
-					'href' => $this->makeSpecialUrl('Userlogin', 'returnto=' . $this->thisurl ),
+					'href' => self::makeSpecialUrl( 'Userlogin', 'returnto=' . $this->thisurl ),
 					'active' => ( NS_SPECIAL == $wgTitle->getNamespace() && 'Userlogin' == $wgTitle->getDBkey() )
 				);
 			} else {
 
 				$personal_urls['login'] = array(
 					'text' => wfMsg('userlogin'),
-					'href' => $this->makeSpecialUrl('Userlogin', 'returnto=' . $this->thisurl ),
+					'href' => self::makeSpecialUrl( 'Userlogin', 'returnto=' . $this->thisurl ),
 					'active' => ( NS_SPECIAL == $wgTitle->getNamespace() && 'Userlogin' == $wgTitle->getDBkey() )
 				);
 			}
@@ -576,23 +576,23 @@ class SkinTemplate extends Skin {
 			'href' => $title->getLocalUrl( $query ) );
 	}
 
-	function makeTalkUrlDetails( $name, $urlaction='' ) {
+	function makeTalkUrlDetails( $name, $urlaction = '' ) {
 		$title = Title::newFromText( $name );
 		$title = $title->getTalkPage();
-		$this->checkTitle($title, $name);
+		self::checkTitle( $title, $name );
 		return array(
 			'href' => $title->getLocalURL( $urlaction ),
-			'exists' => $title->getArticleID() != 0?true:false
+			'exists' => $title->getArticleID() != 0 ? true : false
 		);
 	}
 
-	function makeArticleUrlDetails( $name, $urlaction='' ) {
+	function makeArticleUrlDetails( $name, $urlaction = '' ) {
 		$title = Title::newFromText( $name );
 		$title= $title->getSubjectPage();
-		$this->checkTitle($title, $name);
+		self::checkTitle( $title, $name );
 		return array(
 			'href' => $title->getLocalURL( $urlaction ),
-			'exists' => $title->getArticleID() != 0?true:false
+			'exists' => $title->getArticleID() != 0 ? true : false
 		);
 	}
 
@@ -707,7 +707,7 @@ class SkinTemplate extends Skin {
 							'class' => false,
 							'text' => wfMsgExt( 'undelete_short', array( 'parsemag' ), $n ),
 							'href' => $undelTitle->getLocalUrl( 'target=' . urlencode( $this->thispage ) )
-							#'href' => $this->makeSpecialUrl("Undelete/$this->thispage")
+							#'href' => self::makeSpecialUrl( "Undelete/$this->thispage" )
 						);
 					}
 				}
@@ -793,20 +793,20 @@ class SkinTemplate extends Skin {
 		$diff = $wgRequest->getVal( 'diff' );
 
 		$nav_urls = array();
-		$nav_urls['mainpage'] = array('href' => $this->makeI18nUrl('mainpage'));
+		$nav_urls['mainpage'] = array( 'href' => self::makeI18nUrl( 'mainpage') );
 		if( $wgEnableUploads ) {
 			if ($wgUploadNavigationUrl) {
-				$nav_urls['upload'] = array('href' => $wgUploadNavigationUrl );
+				$nav_urls['upload'] = array( 'href' => $wgUploadNavigationUrl );
 			} else {
-				$nav_urls['upload'] = array('href' => $this->makeSpecialUrl('Upload'));
+				$nav_urls['upload'] = array( 'href' => self::makeSpecialUrl( 'Upload' ) );
 			}
 		} else {
 			if ($wgUploadNavigationUrl)
-				$nav_urls['upload'] = array('href' => $wgUploadNavigationUrl );
+				$nav_urls['upload'] = array( 'href' => $wgUploadNavigationUrl );
 			else
 				$nav_urls['upload'] = false;
 		}
-		$nav_urls['specialpages'] = array('href' => $this->makeSpecialUrl('Specialpages'));
+		$nav_urls['specialpages'] = array( 'href' => self::makeSpecialUrl( 'Specialpages' ) );
 
 
 		// A print stylesheet is attached to all pages, but nobody ever
@@ -863,11 +863,11 @@ class SkinTemplate extends Skin {
 
 		if($id || $ip) { # both anons and non-anons have contri list
 			$nav_urls['contributions'] = array(
-				'href' => $this->makeSpecialUrl('Contributions/' . $this->mTitle->getText() )
+				'href' => self::makeSpecialUrl( 'Contributions/' . $this->mTitle->getText() )
 			);
 			if ( $wgUser->isAllowed( 'block' ) )
 				$nav_urls['blockip'] = array(
-					'href' => $this->makeSpecialUrl( 'Blockip/' . $this->mTitle->getText() )
+					'href' => self::makeSpecialUrl( 'Blockip/' . $this->mTitle->getText() )
 				);
 		} else {
 			$nav_urls['contributions'] = false;
@@ -875,7 +875,7 @@ class SkinTemplate extends Skin {
 		$nav_urls['emailuser'] = false;
 		if( $this->showEmailUser( $id ) ) {
 			$nav_urls['emailuser'] = array(
-				'href' => $this->makeSpecialUrl('Emailuser/' . $this->mTitle->getText() )
+				'href' => self::makeSpecialUrl( 'Emailuser/' . $this->mTitle->getText() )
 			);
 		}
 		wfProfileOut( $fname );

@@ -204,6 +204,28 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   that force edits by non-bot users to bot mode
 * Set Vary: Cookie on action=raw generated CSS and JS, to ensure that user
   preferences don't get stuck in proxy caches for other people
+* (bug 7324) Fix error message for failure of Database::sourceFile()
+* (bug 7309) Plurals: use singular form for zero in French and Brazilian Portuguese
+* Add page_no_title_convert field to support language variant conversion
+  for page titles which shouldn't be converted on display/linking
+* Lazy extraction of text chunks in Revision objects, may reduce hits to
+  external storage when actual text content is not used
+* Added experimental $wgRevisionCacheExpiry to cache extracted revision text
+  in $wgMemc, to further reduce hits to external storage.
+  Set to 0 (disabled) by default.
+* Minor changes to the installer. 
+* Remove ":" for 'youremail' and 'yourrealname' in includes/templates/Userlogin.php
+  so that ":" could be used in i18n for Special:Preferences (like 'username' and 'uid').
+* Fix layout for Special:Preferences->Date and Time (position for 'timezonetext').
+* Updates to language variant code for Serbian et al
+* (bug 6756) Enabling RTL direction for kk-cn
+* (bug 6701) Kazakh language variants in MessagesEn.php
+* (bug 7335) SVN revision check in Special:Version fails on SVN 1.4 working copy
+* (bug 6518) Replaced 'lastmodified' with 'lastmodifiedat' and 'lastmodifiedby' with 'lastmodifiedatby'
+  with seperated parameters for date and time to allow better localisation. Updated all message files
+  to display the old format for compatibility.
+* (bug 7357) Make supposedly static methods of Skin actually static
+* Added info text to Special:Deadendpages and Special:Lonelypages
 
 
 == Languages updated ==
@@ -226,6 +248,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Indonesian (id)
 * Japanese (ja)
 * Korean (ko)
+* Lojban (jbo)
 * Polish (pl)
 * Portuguese (pt)
 * Ripuarian (ksh)

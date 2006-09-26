@@ -269,7 +269,7 @@ class Skin extends Linker {
 		$out->out( "\n</body></html>" );
 	}
 
-	/*static*/ function makeGlobalVariablesScript( $data ) {
+	static function makeGlobalVariablesScript( $data ) {
 		$r = '<script type= "' . $data['jsmimetype'] . '">
 			var skin = "' . Xml::escapeJsString( $data['skinname'] ) . '";
 			var stylepath = "' . Xml::escapeJsString( $data['stylepath'] ) . '";
@@ -320,8 +320,8 @@ class Skin extends Linker {
 			'lang' => $wgContLang->getCode(),
 		);
 
-		$r = Skin::makeGlobalVariablesScript( $vars );
-                
+		$r = self::makeGlobalVariablesScript( $vars );
+
 		$r .= "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/wikibits.js\"></script>\n";
 		$userjs = htmlspecialchars( $this->makeGeneratedUrl( 'js' ) );
 		$r .= '<script type="'.$wgJsMimeType.'" src="'.$userjs."\"></script>\n";
@@ -1093,8 +1093,9 @@ END;
 
 		$timestamp = $wgArticle->getTimestamp();
 		if ( $timestamp ) {
-			$d = $wgLang->timeanddate( $timestamp, true );
-			$s = ' ' . wfMsg( 'lastmodified', $d );
+			$d = $wgLang->date( $timestamp, true );
+			$t = $wgLang->time( $timestamp, true );
+			$s = ' ' . wfMsg( 'lastmodifiedat', $d, $t );
 		} else {
 			$s = '';
 		}
@@ -1476,56 +1477,56 @@ END;
 	}
 
 	/* these are used extensively in SkinTemplate, but also some other places */
-	/*static*/ function makeSpecialUrl( $name, $urlaction='' ) {
+	static function makeSpecialUrl( $name, $urlaction = '' ) {
 		$title = Title::makeTitle( NS_SPECIAL, $name );
 		return $title->getLocalURL( $urlaction );
 	}
 
-	/*static*/ function makeI18nUrl ( $name, $urlaction='' ) {
-		$title = Title::newFromText( wfMsgForContent($name) );
-		$this->checkTitle($title, $name);
+	static function makeI18nUrl( $name, $urlaction = '' ) {
+		$title = Title::newFromText( wfMsgForContent( $name ) );
+		self::checkTitle( $title, $name );
 		return $title->getLocalURL( $urlaction );
 	}
 
-	/*static*/ function makeUrl ( $name, $urlaction='' ) {
+	static function makeUrl( $name, $urlaction = '' ) {
 		$title = Title::newFromText( $name );
-		$this->checkTitle($title, $name);
+		self::checkTitle( $title, $name );
 		return $title->getLocalURL( $urlaction );
 	}
 
 	# If url string starts with http, consider as external URL, else
 	# internal
-	/*static*/ function makeInternalOrExternalUrl( $name ) {
+	static function makeInternalOrExternalUrl( $name ) {
 		if ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $name ) ) {
 			return $name;
 		} else {
-			return $this->makeUrl( $name );
+			return self::makeUrl( $name );
 		}
 	}
 
 	# this can be passed the NS number as defined in Language.php
-	/*static*/ function makeNSUrl( $name, $urlaction='', $namespace=NS_MAIN ) {
+	static function makeNSUrl( $name, $urlaction = '', $namespace = NS_MAIN ) {
 		$title = Title::makeTitleSafe( $namespace, $name );
-		$this->checkTitle($title, $name);
+		self::checkTitle( $title, $name );
 		return $title->getLocalURL( $urlaction );
 	}
 
 	/* these return an array with the 'href' and boolean 'exists' */
-	/*static*/ function makeUrlDetails ( $name, $urlaction='' ) {
+	static function makeUrlDetails( $name, $urlaction = '' ) {
 		$title = Title::newFromText( $name );
-		$this->checkTitle($title, $name);
+		self::checkTitle( $title, $name );
 		return array(
 			'href' => $title->getLocalURL( $urlaction ),
-			'exists' => $title->getArticleID() != 0?true:false
+			'exists' => $title->getArticleID() != 0 ? true : false
 		);
 	}
 
 	/**
 	 * Make URL details where the article exists (or at least it's convenient to think so)
 	 */
-	function makeKnownUrlDetails( $name, $urlaction='' ) {
+	static function makeKnownUrlDetails( $name, $urlaction = '' ) {
 		$title = Title::newFromText( $name );
-		$this->checkTitle($title, $name);
+		self::checkTitle( $title, $name );
 		return array(
 			'href' => $title->getLocalURL( $urlaction ),
 			'exists' => true
@@ -1533,10 +1534,10 @@ END;
 	}
 
 	# make sure we have some title to operate on
-	/*static*/ function checkTitle ( &$title, &$name ) {
-		if(!is_object($title)) {
+	static function checkTitle( &$title, &$name ) {
+		if( !is_object( $title ) ) {
 			$title = Title::newFromText( $name );
-			if(!is_object($title)) {
+			if( !is_object( $title ) ) {
 				$title = Title::newFromText( '--error: link target missing--' );
 			}
 		}
@@ -1586,7 +1587,7 @@ END;
 						$text = $line[1];
 					if (wfEmptyMsg($line[0], $link))
 						$link = $line[0];
-					$href = $this->makeInternalOrExternalUrl( $link );
+					$href = self::makeInternalOrExternalUrl( $link );
 					$bar[$heading][] = array(
 						'text' => $text,
 						'href' => $href,

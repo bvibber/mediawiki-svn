@@ -1507,7 +1507,6 @@ class Parser
 		}
 
 		$selflink = $this->mTitle->getPrefixedText();
-		$checkVariantLink = sizeof($wgContLang->getVariants())>1;
 		$useSubpages = $this->areSubpagesAllowed();
 		wfProfileOut( $fname.'-setup' );
 
@@ -1602,13 +1601,6 @@ class Parser
 				continue;
 			}
 
-			#check other language variants of the link
-			#if the article does not exist
-			if( $checkVariantLink
-			    && $nt->getArticleID() == 0 ) {
-				$wgContLang->findVariantLink($link, $nt);
-			}
-
 			$ns = $nt->getNamespace();
 			$iw = $nt->getInterWiki();
 			wfProfileOut( "$fname-title" );
@@ -1674,7 +1666,7 @@ class Parser
 
 				if ( $ns == NS_IMAGE ) {
 					wfProfileIn( "$fname-image" );
-					if ( !wfIsBadImage( $nt->getDBkey() ) ) {
+					if ( !wfIsBadImage( $nt->getDBkey(), $this->mTitle ) ) {
 						# recursively parse links inside the image caption
 						# actually, this will parse them in any other parameters, too,
 						# but it might be hard to fix that, and it doesn't matter ATM
@@ -2716,7 +2708,7 @@ class Parser
 		if ( !$argsOnly ) {
 			$braceCallbacks[2] = array( &$this, 'braceSubstitution' );
 		}
-		if ( !$this->mOutputType != OT_MSG ) {
+		if ( $this->mOutputType != OT_MSG ) {
 			$braceCallbacks[3] = array( &$this, 'argSubstitution' );
 		}
 		if ( $braceCallbacks ) {
@@ -3897,6 +3889,7 @@ class Parser
 	function replaceLinkHolders( &$text, $options = 0 ) {
 		global $wgUser;
 		global $wgOutputReplace;
+		global $wgContLang, $wgLanguageCode;
 
 		$fname = 'Parser::replaceLinkHolders';
 		wfProfileIn( $fname );
@@ -3986,6 +3979,91 @@ class Parser
 				}
 			}
 			wfProfileOut( $fname.'-check' );
+
+			# Do a second query for different language variants of links (if needed)
+			if($wgContLang->hasVariants()){
+				$linkBatch = new LinkBatch(); 
+				$variantMap = array(); // maps $pdbkey_Variant => $pdbkey_original
+
+				// Add variants of links to link batch
+				foreach ( $this->mLinkHolders['namespaces'] as $key => $ns ) {
+					$title = $this->mLinkHolders['titles'][$key];
+					if ( is_null( $title ) )
+						continue;
+
+					$pdbk = $title->getPrefixedDBkey();
+
+					// generate all variants of the link title text
+					$allTextVariants = $wgContLang->convertLinkToAllVariants($title->getText());
+
+					// if link was not found (in first query), add all variants to query
+					if ( !isset($colours[$pdbk]) ){
+						foreach($allTextVariants as $textVariant){
+							$variantTitle = Title::makeTitle( $ns, $textVariant );
+							if(is_null($variantTitle)) continue;
+							$linkBatch->addObj( $variantTitle );
+							$variantMap[$variantTitle->getPrefixedDBkey()][] = $key;
+						}
+					}
+				}
+				
+
+				if(!$linkBatch->isEmpty()){
+					// construct query
+					$titleClause = $linkBatch->constructSet('page', $dbr);
+
+					$variantQuery =  "SELECT page_id, page_namespace, page_title";
+					if ( $threshold > 0 ) {
+						$variantQuery .= ', page_len, page_is_redirect';
+					}
+
+					$variantQuery .= " FROM $page WHERE $titleClause";
+					if ( $options & RLH_FOR_UPDATE ) {
+						$variantQuery .= ' FOR UPDATE';
+					}
+
+					$varRes = $dbr->query( $variantQuery, $fname );
+
+					// for each found variants, figure out link holders and replace
+					while ( $s = $dbr->fetchObject($varRes) ) {
+
+						$variantTitle = Title::makeTitle( $s->page_namespace, $s->page_title );
+						$varPdbk = $variantTitle->getPrefixedDBkey();
+						$linkCache->addGoodLinkObj( $s->page_id, $variantTitle );
+						$this->mOutput->addLink( $variantTitle, $s->page_id );
+
+						$holderKeys = $variantMap[$varPdbk];
+
+						// loop over link holders
+						foreach($holderKeys as $key){						
+							$title = $this->mLinkHolders['titles'][$key];
+							if ( is_null( $title ) ) continue;
+
+							$pdbk = $title->getPrefixedDBkey();
+
+							if(!isset($colours[$pdbk])){
+								// found link in some of the variants, replace the link holder data
+								$this->mLinkHolders['titles'][$key] = $variantTitle;
+								$this->mLinkHolders['dbkeys'][$key] = $variantTitle->getDBkey();
+							
+								// set pdbk and colour
+								$pdbks[$key] = $varPdbk;
+								if ( $threshold >  0 ) {
+									$size = $s->page_len;
+									if ( $s->page_is_redirect || $s->page_namespace != 0 || $size >= $threshold ) {
+										$colours[$varPdbk] = 1;
+									} else {
+										$colours[$varPdbk] = 2;
+									}
+								} 
+								else {
+									$colours[$varPdbk] = 1;
+								}					
+							}
+						}
+					}
+				}
+			}
 
 			# Construct search and replace arrays
 			wfProfileIn( $fname.'-construct' );

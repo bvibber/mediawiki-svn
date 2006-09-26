@@ -40,23 +40,16 @@ class ApiResult extends ApiBase {
 		parent :: __construct($main);
 		$this->Reset();
 	}
-	
+
 	public function Reset() {
-		$this->mData = array();
+		$this->mData = array ();
 	}
 
 	function GetData() {
 		return $this->mData;
 	}
 
-	/*	function addPage($title)
-		{
-			if (!isset($this->mPages))
-				$this->mPages &= $this->mData['pages'];
-		}
-	*/
-	
-	function AddMessage($mainSection, $subSection, $value, $preserveXmlSpacing = false) {
+	function AddMessage($mainSection, $subSection, $value, $multiitem = false, $preserveXmlSpacing = false) {
 		if (!array_key_exists($mainSection, $this->mData)) {
 			$this->mData[$mainSection] = array ();
 		}
@@ -68,19 +61,21 @@ class ApiResult extends ApiBase {
 		} else {
 			$element = & $this->mData[$mainSection];
 		}
-		if (is_array($value)) {
-			$element = array_merge($element, $value);
-			if (!array_key_exists('*', $element)) {
-				$element['*'] = '';
-			}
+		if ($multiitem) {
+			$element['_element'] = $multiitem;
+			$element[] = $value;
 		} else {
-			if (array_key_exists('*', $element)) {
-				$element['*'] .= $value;
+			if (is_array($value)) {
+				$element = array_merge($element, $value);
 			} else {
-				$element['*'] = $value;
-			}
-			if ($preserveXmlSpacing) {
-				$element['xml:space'] = 'preserve';
+				if (array_key_exists('*', $element)) {
+					$element['*'] .= $value;
+				} else {
+					$element['*'] = $value;
+				}
+				if ($preserveXmlSpacing) {
+					$element['xml:space'] = 'preserve';
+				}
 			}
 		}
 	}
@@ -107,7 +102,7 @@ class ApiResult extends ApiBase {
 			}
 		}
 	}
-	
+
 	public function Execute() {
 		$this->DieDebug("Execute() is not supported on Result object");
 	}

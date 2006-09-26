@@ -49,9 +49,10 @@ class FakeConverter {
 	function findVariantLink(&$l, &$n) {}
 	function getExtraHashOptions() {return '';}
 	function getParsedTitle() {return '';}
-	function markNoConversion($text) {return $text;}
+	function markNoConversion($text, $noParse=false) {return $text;}
 	function convertCategoryKey( $key ) {return $key; }
-
+	function convertLinkToAllVariants($text){ return array( $this->mLang->getCode() => $text); }
+	function setNoTitleConvert(){}
 }
 
 #--------------------------------------------------------------------------
@@ -422,10 +423,12 @@ class Language {
 	 * internationalisation, a reduced set of format characters, and a better 
 	 * escaping format.
 	 *
-	 * Supported format characters are dDjlFmMnYyHis. See the PHP manual for 
-	 * definitions. There are a number of extensions, which start with "x":
+	 * Supported format characters are dDjlNwzWFmMntLYyaAgGhHiscrU. See the 
+	 * PHP manual for definitions. There are a number of extensions, which 
+	 * start with "x":
 	 *
 	 *    xn   Do not translate digits of the next numeric format character
+	 *    xN   Toggle raw digit (xn) flag, stays set until explicitly unset
 	 *    xr   Use roman numerals for the next numeric format character
 	 *    xx   Literal x
 	 *    xg   Genitive month name
@@ -448,6 +451,8 @@ class Language {
 		$s = '';
 		$raw = false;
 		$roman = false;
+		$unix = false;
+		$rawToggle = false;
 		for ( $p = 0; $p < strlen( $format ); $p++ ) {
 			$num = false;
 			$code = $format[$p];
@@ -462,6 +467,9 @@ class Language {
 				case 'xn':
 					$raw = true;
 					break;
+				case 'xN':
+					$rawToggle = !$rawToggle;
+					break;
 				case 'xr':
 					$roman = true;
 					break;
@@ -472,14 +480,33 @@ class Language {
 					$num = substr( $ts, 6, 2 );
 					break;
 				case 'D':
-					$s .= $this->getWeekdayAbbreviation( self::calculateWeekday( $ts ) );
+					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
+					$s .= $this->getWeekdayAbbreviation( date( 'w', $unix ) + 1 );
 					break;
 				case 'j':
 					$num = intval( substr( $ts, 6, 2 ) );
 					break;
 				case 'l':
-					$s .= $this->getWeekdayName( self::calculateWeekday( $ts ) );
+					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
+					$s .= $this->getWeekdayName( date( 'w', $unix ) + 1 );
 					break;
+				case 'N':
+					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
+					$w = date( 'w', $unix );
+					$num = $w ? $w : 7;
+					break;
+				case 'w':
+					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
+					$num = date( 'w', $unix );
+					break;
+				case 'z':
+					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
+					$num = date( 'z', $unix );
+					break;
+				case 'W':
+					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
+					$num = date( 'W', $unix );
+					break;					
 				case 'F':
 					$s .= $this->getMonthName( substr( $ts, 4, 2 ) );
 					break;
@@ -492,23 +519,57 @@ class Language {
 				case 'n':
 					$num = intval( substr( $ts, 4, 2 ) );
 					break;
+				case 't':
+					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
+					$num = date( 't', $unix );
+					break;
+				case 'L':
+					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
+					$num = date( 'L', $unix );
+					break;					
 				case 'Y':
 					$num = substr( $ts, 0, 4 );
 					break;
 				case 'y':
 					$num = substr( $ts, 2, 2 );
 					break;
-				case 'H':
-					$num = substr( $ts, 8, 2 );
+				case 'a':
+					$s .= intval( substr( $ts, 8, 2 ) ) < 12 ? 'am' : 'pm';
+					break;
+				case 'A':
+					$s .= intval( substr( $ts, 8, 2 ) ) < 12 ? 'AM' : 'PM';
+					break;
+				case 'g':
+					$h = substr( $ts, 8, 2 );
+					$num = $h % 12 ? $h % 12 : 12;
 					break;
 				case 'G':
 					$num = intval( substr( $ts, 8, 2 ) );
+					break;
+				case 'h':
+					$h = substr( $ts, 8, 2 );
+					$num = sprintf( '%02d', $h % 12 ? $h % 12 : 12 );
+					break;					
+				case 'H':
+					$num = substr( $ts, 8, 2 );
 					break;
 				case 'i':
 					$num = substr( $ts, 10, 2 );
 					break;
 				case 's':
 					$num = substr( $ts, 12, 2 );
+					break;
+				case 'c':
+					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
+					$s .= date( 'c', $unix );
+					break;
+				case 'r':
+					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
+					$s .= date( 'r', $unix );
+					break;
+				case 'U':
+					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
+					$num = $unix;
 					break;
 				case '\\':
 					# Backslash escaping
@@ -538,11 +599,11 @@ class Language {
 					$s .= $format[$p];
 			}
 			if ( $num !== false ) {
-				if ( $raw ) {
+				if ( $rawToggle || $raw ) {
 					$s .= $num;
 					$raw = false;
 				} elseif ( $roman ) {
-					$s .= Language::romanNumeral( $num );
+					$s .= self::romanNumeral( $num );
 					$roman = false;
 				} else {
 					$s .= $this->formatNum( $num, true );
@@ -554,33 +615,29 @@ class Language {
 	}
 
 	/**
-	 * Roman number formatting up to 100
+	 * Roman number formatting up to 3000
 	 */
 	static function romanNumeral( $num ) {
-		static $units = array( 0, 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X' );
-		static $decades = array( 0, 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC', 'C' );
+		static $table = array(
+			array( '', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X' ),
+			array( '', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC', 'C' ),
+			array( '', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM', 'M' ),
+			array( '', 'M', 'MM', 'MMM' )
+		);
+			
 		$num = intval( $num );
-		if ( $num > 100 || $num <= 0 ) {
+		if ( $num > 3000 || $num <= 0 ) {
 			return $num;
 		}
+
 		$s = '';
-		if ( $num >= 10 ) {
-			$s .= $decades[floor( $num / 10 )];
-			$num = $num % 10;
-		}
-		if ( $num >= 1 ) {
-			$s .= $units[$num];
+		for ( $pow10 = 1000, $i = 3; $i >= 0; $pow10 /= 10, $i-- ) {
+			if ( $num >= $pow10 ) {
+				$s .= $table[$i][floor($num / $pow10)];
+			}
+			$num = $num % $pow10;
 		}
 		return $s;
-	}
-
-	/**
-	 * Calculate the day of the week for a 14-character timestamp
-	 * 1 for Sunday through to 7 for Saturday
-	 * This takes about 100us on a slow computer
-	 */
-	static function calculateWeekday( $ts ) {
-		return date( 'w', wfTimestamp( TS_UNIX, $ts ) ) + 1;
 	}
 
 	/**
@@ -712,6 +769,34 @@ class Language {
 		return iconv( $in, $out, $string );
 	}
 
+	// callback functions for uc(), lc(), ucwords(), ucwordbreaks()
+	function ucwordbreaksCallbackAscii($matches){
+		return $this->ucfirst($matches[1]);
+	}
+	
+	function ucwordbreaksCallbackMB($matches){
+		return mb_strtoupper($matches[0]);
+	}
+	
+	function ucCallback($matches){
+		list( $wikiUpperChars ) = self::getCaseMaps();
+		return strtr( $matches[1], $wikiUpperChars );
+	}
+	
+	function lcCallback($matches){
+		list( , $wikiLowerChars ) = self::getCaseMaps();
+		return strtr( $matches[1], $wikiLowerChars );
+	}
+	
+	function ucwordsCallbackMB($matches){
+		return mb_strtoupper($matches[0]);
+	}
+	
+	function ucwordsCallbackWiki($matches){
+		list( $wikiUpperChars ) = self::getCaseMaps();
+		return strtr( $matches[0], $wikiUpperChars );
+	}
+
 	function ucfirst( $str ) {
 		return self::uc( $str, true );
 	}
@@ -729,9 +814,9 @@ class Language {
 			if ( self::isMultibyte( $str ) ) {
 				list( $wikiUpperChars ) = $this->getCaseMaps();
 				$x = $first ? '^' : '';
-				return preg_replace(
-					"/$x([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
-					"strtr( \"\$1\" , \$wikiUpperChars )",
+				return preg_replace_callback(
+					"/$x([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/",
+					array($this,"ucCallback"),
 					$str
 				);
 			} else
@@ -755,9 +840,9 @@ class Language {
 			if ( self::isMultibyte( $str ) ) {
 				list( , $wikiLowerChars ) = self::getCaseMaps();
 				$x = $first ? '^' : '';
-				return preg_replace(
-					"/$x([A-Z]|[\\xc0-\\xff][\\x80-\\xbf]*)/e",
-					"strtr( \"\$1\" , \$wikiLowerChars )",
+				return preg_replace_callback(
+					"/$x([A-Z]|[\\xc0-\\xff][\\x80-\\xbf]*)/",
+					array($this,"lcCallback"),
 					$str
 				);
 			} else
@@ -766,6 +851,62 @@ class Language {
 
 	function isMultibyte( $str ) {
 		return (bool)preg_match( '/[\x80-\xff]/', $str );
+	}
+
+	function ucwords($str) {
+		if ( self::isMultibyte( $str ) ) {
+			$str = self::lc($str);
+
+			// regexp to find first letter in each word (i.e. after each space)
+			$replaceRegexp = "/^([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)| ([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/";
+
+			// function to use to capitalize a single char
+			if ( function_exists( 'mb_strtoupper' ) )
+				return preg_replace_callback(
+					$replaceRegexp,
+					array($this,"ucwordsCallbackMB"),
+					$str
+				);
+			else 
+				return preg_replace_callback(
+					$replaceRegexp,
+					array($this,"ucwordsCallbackWiki"),
+					$str
+				);
+		}
+		else
+			return ucwords( strtolower( $str ) );
+	}
+
+  # capitalize words at word breaks
+	function ucwordbreaks($str){
+		if (self::isMultibyte( $str ) ) {
+			$str = self::lc($str);
+
+			// since \b doesn't work for UTF-8, we explicitely define word break chars
+			$breaks= "[ \-\(\)\}\{\.,\?!]";
+
+			// find first letter after word break
+			$replaceRegexp = "/^([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)|$breaks([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/";
+
+			if ( function_exists( 'mb_strtoupper' ) )
+				return preg_replace_callback(
+					$replaceRegexp,
+					array($this,"ucwordbreaksCallbackMB"),
+					$str
+				);
+			else 
+				return preg_replace_callback(
+					$replaceRegexp,
+					array($this,"ucwordsCallbackWiki"),
+					$str
+				);
+		}
+		else
+			return preg_replace_callback(
+			'/\b([\w\x80-\xff]+)\b/',
+			array($this,"ucwordbreaksCallbackAscii"),
+			$str );
 	}
 
 	function checkTitleEncoding( $s ) {
@@ -1169,6 +1310,17 @@ class Language {
 		return $this->mConverter->parserConvert( $text, $parser );
 	}
 
+	# Tell the converter that it shouldn't convert titles
+	function setNoTitleConvert(){
+		$this->mConverter->setNotitleConvert();
+	}
+
+	# Check if this is a language with variants
+	function hasVariants(){
+		return sizeof($this->getVariants())>1;
+	}
+
+
 	/**
 	 * Perform output conversion on a string, and encode for safe HTML output.
 	 * @param string $text
@@ -1214,6 +1366,17 @@ class Language {
 	}
 
 	/**
+	 * If a language supports multiple variants, converts text
+	 * into an array of all possible variants of the text:
+	 *  'variant' => text in that variant
+	 */
+
+	function convertLinkToAllVariants($text){
+		return $this->mConverter->convertLinkToAllVariants($text);
+	}
+
+
+	/**
 	 * returns language specific options used by User::getPageRenderHash()
 	 * for example, the preferred language variant
 	 *
@@ -1242,8 +1405,8 @@ class Language {
 	 * @param string $text text to be tagged for no conversion
 	 * @return string the tagged text
 	*/
-	function markNoConversion( $text ) {
-		return $this->mConverter->markNoConversion( $text );
+	function markNoConversion( $text, $noParse=false ) {
+		return $this->mConverter->markNoConversion( $text, $noParse );
 	}
 
 	/**
