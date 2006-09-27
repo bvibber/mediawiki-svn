@@ -25,6 +25,10 @@
 	white-space: nowrap;
 }
 
+.wiki-data-table th.sortable {
+	cursor: pointer;
+}	
+
 .wiki-data-table td.column-odd {
 	background-color: #F6F6F6;
 }

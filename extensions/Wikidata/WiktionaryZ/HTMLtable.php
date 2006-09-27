@@ -23,21 +23,23 @@ class TableHeaderNode {
 	public $attribute = null;
 	public $width = 0;
 	public $height = 0;
+	public $column = 0;
 	public $childNodes = array();
 }
 
-function getTableHeaderNode($structure) {
+function getTableHeaderNode($structure, &$currentColumn=0) {
 	$tableHeaderNode = new TableHeaderNode();
 	
 	foreach($structure->attributes as $attribute) {
 		$type = $attribute->type;
 		
 		if (is_a($type, RecordType)) 
-			$childNode = getTableHeaderNode($type->getStructure());
+			$childNode = getTableHeaderNode($type->getStructure(), $currentColumn);
 		else { 
 			$childNode = new TableHeaderNode();
 			$childNode->width = 1;
 			$childNode->height = 1;
+			$childNode->column = $currentColumn++;
 		}
 
 		$tableHeaderNode->height = max($tableHeaderNode->height, $childNode->height);
@@ -51,7 +53,7 @@ function getTableHeaderNode($structure) {
 	return $tableHeaderNode;
 }
 
-function addChildNodesToRows($headerNode, &$rows, $currentDepth) {
+function addChildNodesToRows($headerNode, &$rows, $currentDepth, $columnOffset) {
 	$height = $headerNode->height;
 	
 	foreach($headerNode->childNodes as $childNode) {
@@ -59,7 +61,7 @@ function addChildNodesToRows($headerNode, &$rows, $currentDepth) {
 		$type = $attribute->type;
 		
 		if (!is_a($type, RecordType) && !is_a($type, RecordSetType))
-			$class = ' class="'. $type .'"';	
+			$class = ' class="'. $type .' sortable" onclick="sortTable(this, '. count($rows) .', '. ($childNode->column + $columnOffset) .')"';	
 		else		
 			$class = '';
 
@@ -67,18 +69,18 @@ function addChildNodesToRows($headerNode, &$rows, $currentDepth) {
 		$rows[$currentDepth] .= '<th' . $class .' colspan="'. $childNode->width . 
 									'" rowspan="'. $rowSpan . '">'. $attribute->name . '</th>';
 									
-		addChildNodesToRows($childNode, $rows, $currentDepth + $rowSpan);
+		addChildNodesToRows($childNode, $rows, $currentDepth + $rowSpan, $columnOffset);
 	} 
 }
 
-function getStructureAsTableHeaderRows($structure) {
+function getStructureAsTableHeaderRows($structure, $columnOffset) {
 	$rootNode = getTableHeaderNode($structure);
 	$result = array();
 	
 	for ($i = 0; $i < $rootNode->height - 1; $i++)
 		$result[$i] = "";
 		
-	addChildNodesToRows($rootNode, $result, 0);
+	addChildNodesToRows($rootNode, $result, 0, $columnOffset);
 
 	return $result;
 }
@@ -145,7 +147,7 @@ function getRelationAsSuggestionTable($editor, $idPath, $relation) {
 	$structure = $editor->getStructure();
 	$key = $relation->getKey();
 	
-	foreach(getStructureAsTableHeaderRows($structure) as $headerRow)
+	foreach(getStructureAsTableHeaderRows($structure, 0) as $headerRow)
 		$result .= '<tr>' . $headerRow . '</tr>';
 	
 	$recordCount = $relation->getRecordCount();

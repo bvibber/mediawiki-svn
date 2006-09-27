@@ -378,7 +378,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$structure = $value->getStructure();
 		$key = $value->getKey();
 
-		foreach(getStructureAsTableHeaderRows($this->getTableStructure($this)) as $headerRow)
+		foreach(getStructureAsTableHeaderRows($this->getTableStructure($this), 0) as $headerRow)
 			$result .= '<tr>' . $headerRow . '</tr>';
 
 		$recordCount = $value->getRecordCount();
@@ -396,13 +396,21 @@ class RecordSetTableEditor extends RecordSetEditor {
 	}
 
 	public function edit($idPath, $value) {
+		global
+			$wgStylePath;
+			
 		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
 		$key = $value->getKey();
 
-		$headerRows = getStructureAsTableHeaderRows($this->getTableStructure($this));
+		if ($this->allowRemove)
+			$columnOffset = 1;
+		else
+			$columnOffset = 0;
+			
+		$headerRows = getStructureAsTableHeaderRows($this->getTableStructure($this), $columnOffset);
 
 		if ($this->allowRemove)
-			$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="skins/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>' . $headerRows[0];
+			$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="'.$wgStylePath.'/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>' . $headerRows[0];
 
 		if ($this->repeatInput)
 			$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
@@ -450,7 +458,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 	public function add($idPath) {
 		if ($this->isAddField) {
 			$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
-			$headerRows = getStructureAsTableHeaderRows($this->getAddStructure());
+			$headerRows = getStructureAsTableHeaderRows($this->getAddStructure(), 0);
 
 	//		if ($repeatInput)
 	//			$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
@@ -468,6 +476,9 @@ class RecordSetTableEditor extends RecordSetEditor {
 	}
 
 	function getAddRowAsHTML($idPath, $repeatInput, $allowRemove) {
+		global
+			$wgScriptPath;
+		
 		if ($repeatInput)
 			$rowClass = 'repeat';
 		else
@@ -476,7 +487,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$result = '<tr id="add-'. $idPath->getId() . '" class="' . $rowClass . '">';
 
 		if ($allowRemove)
-			$result .= '<td class="add"><img src="extensions/Wikidata/Images/Add.png" title="Enter new rows to add" alt="Add"/></td>';
+			$result .= '<td class="add"><img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="Enter new rows to add" alt="Add"/></td>';
 
 		$result .= getStructureAsAddCells($idPath, $this);
 
@@ -497,7 +508,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 			else
 				$type = 'short-text';
 
-			$attributes[] = new Attribute($childAttribute->id, $childAttribute->name, $type);;
+			$attributes[] = new Attribute($childAttribute->id, $childAttribute->name, $type);
 		}
 
 		return new Structure($attributes);
@@ -1075,6 +1086,9 @@ class RecordSetListEditor extends RecordSetEditor {
 	}
 
 	public function edit($idPath, $value) {
+		global
+			$wgScriptPath;
+		
 		$result = '<ul class="collapsable-items">';
 		$recordCount = $value->getRecordCount();
 		$key = $value->getKey();
@@ -1113,7 +1127,7 @@ class RecordSetListEditor extends RecordSetEditor {
 			$this->setExpansion(true, $class);
 
 			$result .= '<li>'.
-						'<h' . $this->headerLevel . '><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);"' . $this->getExpansionPrefix($idPath->getClass(), $idPath->getId()) . ' <img src="extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/> ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
+						'<h' . $this->headerLevel . '><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);"' . $this->getExpansionPrefix($idPath->getClass(), $idPath->getId()) . ' <img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/> ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
 			$idPath->popAttribute();
 
 			$idPath->pushAttribute($valueAttribute);

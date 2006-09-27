@@ -38,7 +38,7 @@ function getSuggestions() {
 	global
 		$idAttribute;
 
-	$search = ltrim($_GET['search']);
+	$search = ltrim($_GET['search-text']);
 	$prefix = $_GET['prefix'];
 	$query = $_GET['query'];
 	

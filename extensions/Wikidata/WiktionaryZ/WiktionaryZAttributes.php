@@ -76,7 +76,7 @@ global
 $relationStructure = new Structure($relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute);
 $relationKeyStructure = new Structure($relationIdAttribute);	
 $relationsAttribute = new Attribute("relations", "Relations", new RecordSetType($relationStructure));
-$reciprocalRelationsAttribute = new Attribute("reciprocal-relations", "Reciprocal relations", new RecordSetType($relationStructure));
+$reciprocalRelationsAttribute = new Attribute("reciprocal-relations", "Incoming relations", new RecordSetType($relationStructure));
 
 global
 	$translatedTextIdAttribute, $translatedTextStructure;

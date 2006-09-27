@@ -248,16 +248,20 @@ function expandExpressionReferencesInRecordSet($recordSet, $expressionAttributes
 }
 
 function getTextReferences($textIds) {
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT old_id, old_text" .
-								" FROM text" .
-								" WHERE old_id IN (". implode(', ', $textIds) .")");
-	$result = array();
-
-	while ($row = $dbr->fetchObject($queryResult)) 
-		$result[$row->old_id] = $row->old_text;
-		
-	return $result;
+	if (count($textIds) > 0) {
+		$dbr =& wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query("SELECT old_id, old_text" .
+									" FROM text" .
+									" WHERE old_id IN (". implode(', ', $textIds) .")");
+		$result = array();
+	
+		while ($row = $dbr->fetchObject($queryResult)) 
+			$result[$row->old_id] = $row->old_text;
+			
+		return $result;
+	}
+	else
+		return array();
 }
 
 function expandTextReferencesInRecordSet($recordSet, $textAttributes) {

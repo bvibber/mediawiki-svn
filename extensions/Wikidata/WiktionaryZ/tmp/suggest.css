@@ -60,7 +60,8 @@
 }
 
 .suggestion-row.active td.column-even, .suggestion-row.active td.column-odd {
-	background-color: #DDDDDD;
+	/*background-color: #DDDDDD;*/
+	background-color: #CECCF7;
 	cursor: pointer;
 }
 

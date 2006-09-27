@@ -35,7 +35,7 @@ function updateSuggestions(suggestPrefix) {
 	suggestText = document.getElementById(suggestPrefix + "text");
 	suggestText.className = "suggest-loading";
 
-	http.open('GET', 'index.php/Special:Suggest?search=' + encodeURI(suggestText.value) + '&prefix=' + encodeURI(suggestPrefix) + '&query=' + encodeURI(suggestQuery), true);
+	http.open('GET', 'index.php/Special:Suggest?search-text=' + encodeURI(suggestText.value) + '&prefix=' + encodeURI(suggestPrefix) + '&query=' + encodeURI(suggestQuery), true);
 	http.onreadystatechange = function() {
 		if (http.readyState == 4) {
 			var newTable = document.createElement('div');
@@ -344,4 +344,63 @@ function isCssClassExpanded(cssClass) {
 	}
 
 	return false;
+}
+
+function getParentNode(node, nodeName) {
+	var result = node.parentNode;
+	
+	while (result != null && result.tagName.toLowerCase() != nodeName)
+		result = result.parentNode;
+		
+	return result; 
+}
+
+var sortColumnIndex;
+
+function getInnerText(element) {
+	if (typeof element == "string") return element;
+	if (typeof element == "undefined") { return elemenet };
+	if (element.innerText) return element.innerText;
+	var str = "";
+	
+	var cs = element.childNodes;
+	var l = cs.length;
+	for (var i = 0; i < l; i++) {
+		switch (cs[i].nodeType) {
+			case 1: //ELEMENT_NODE
+				str += getInnerText(cs[i]);
+				break;
+			case 3:	//TEXT_NODE
+				str += cs[i].nodeValue;
+				break;
+		}
+	}
+	
+	return str;
+}
+
+function compareTableRows(row1, row2) {
+	var value1 = getInnerText(row1.cells[sortColumnIndex]).toLowerCase();
+	var value2 = getInnerText(row2.cells[sortColumnIndex]).toLowerCase();
+	
+	if (value1 == value2)
+		return 0;
+	else if (value1 > value2)
+		return 1;
+	else
+		return -1;
+}
+
+function sortTable(columnNode, skipRows, columnIndex) {
+	sortColumnIndex = columnIndex;
+	var tableNode = getParentNode(columnNode, 'table');
+	var rowsToSort = new Array();
+	
+	for (var i = skipRows; i < tableNode.rows.length; i++)
+		rowsToSort.push(tableNode.rows[i]);
+		
+	rowsToSort.sort(compareTableRows);
+
+	for (var i = 0; i < rowsToSort.length; i++)
+		tableNode.tBodies[0].appendChild(rowsToSort[i]);	
 }
