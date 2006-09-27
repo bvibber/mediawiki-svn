@@ -215,22 +215,26 @@ function getExpressionReferenceRecords($expressionIds) {
 	global
 		$expressionStructure, $languageAttribute, $spellingAttribute;
 	
-	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT expression_id, language_id, spelling" .
-								" FROM uw_expression_ns" .
-								" WHERE expression_id IN (". implode(', ', $expressionIds) .")" .
-								" AND ". getLatestTransactionRestriction('uw_expression_ns'));
-	$result = array();
-
-	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($expressionStructure);
-		$record->setAttributeValue($languageAttribute, $row->language_id);
-		$record->setAttributeValue($spellingAttribute, $row->spelling);
-		
-		$result[$row->expression_id] = $record;
+	if (count($expressionIds) > 0) {
+		$dbr =& wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query("SELECT expression_id, language_id, spelling" .
+									" FROM uw_expression_ns" .
+									" WHERE expression_id IN (". implode(', ', $expressionIds) .")" .
+									" AND ". getLatestTransactionRestriction('uw_expression_ns'));
+		$result = array();
+	
+		while ($row = $dbr->fetchObject($queryResult)) {
+			$record = new ArrayRecord($expressionStructure);
+			$record->setAttributeValue($languageAttribute, $row->language_id);
+			$record->setAttributeValue($spellingAttribute, $row->spelling);
+			
+			$result[$row->expression_id] = $record;
+		}
+			
+		return $result;
 	}
-		
-	return $result;
+	else
+		return array();
 }
 
 function expandExpressionReferencesInRecordSet($recordSet, $expressionAttributes) {
