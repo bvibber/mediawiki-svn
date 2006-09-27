@@ -2,9 +2,6 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-global 
-	$IP;
-
 $wgExtensionFunctions[] = 'wfSpecialSuggest';
 
 function wfSpecialSuggest() {
@@ -15,24 +12,23 @@ function wfSpecialSuggest() {
 		
 		function execute( $par ) {
 			global
-				$wgOut;
+				$wgOut,	$IP;
 				
 			$wgOut->disable();
+			
+			require_once("$IP/includes/Setup.php");
+			require_once("Attribute.php");
+			require_once("RecordSet.php");
+			require_once("Editor.php");
+			require_once("HTMLtable.php");
+			require_once("Expression.php");
+			require_once("Transaction.php");			
 			echo getSuggestions();
 		}
 	}
 	
 	SpecialPage::addPage(new SpecialSuggest());
 }
-
-require_once("$IP/includes/Setup.php");
-
-require_once("Attribute.php");
-require_once("RecordSet.php");
-require_once("Editor.php");
-require_once("HTMLtable.php");
-require_once("Expression.php");
-require_once("Transaction.php");
 
 function getSuggestions() {
 	global
