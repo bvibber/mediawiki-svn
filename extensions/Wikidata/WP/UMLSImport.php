@@ -162,7 +162,8 @@ function importUMLSTerms($sab, $umlsCollectionId, $sourceCollectionId, $language
 
 	while ($umlsTerm = mysql_fetch_object($queryResult)) {
 		$definedMeaningId = getDefinedMeaningFromCollection($umlsCollectionId, $umlsTerm->cui);
-		$expression = findOrCreateExpression(trim($umlsTerm->str), $isoLanguages[strtolower($umlsTerm->lat)]);
+		$string = str_replace('_', ' ', trim($umlsTerm->str));
+		$expression = findOrCreateExpression($string, $isoLanguages[strtolower($umlsTerm->lat)]);
 		
 		if(!$definedMeaningId) {
 			$definedMeaningId = addDefinedMeaning($expression->id);

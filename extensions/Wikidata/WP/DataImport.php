@@ -26,28 +26,30 @@ $sibUserID = 10;
 //$nlmUserID = 1;
 //$sibUserID = 1;
 
-$linkEC2GoFileName = "LinksEC2Go.txt";
-$linkSwissProtKeyWord2GoFileName = "LinksSP2Go.txt";
-$swissProtXMLFileName =  "uniprot_sprot.xml";
-//$swissProtXMLFileName =  "100000lines.xml";
+//$linkEC2GoFileName = "LinksEC2Go.txt";
+//$linkSwissProtKeyWord2GoFileName = "LinksSP2Go.txt";
+//$swissProtXMLFileName =  "uniprot_sprot.xml";
+$swissProtXMLFileName =  "100000lines.xml";
 
 $wgUser->setID($nlmUserID);
 startNewTransaction($nlmUserID, 0, "UMLS Import");
 echo "Importing UMLS\n";
-$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod");//, array("NCI", "GO"));
-//$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", NULL, array("NCI", "GO", "SRC"));
+//$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod");//, array("NCI", "GO"));
+$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod", array("GO", "SRC", "NCI", "HUGO"));
+//$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", NULL, array("GO", "SRC", "NCI", "HUGO"));
 
-$EC2GoMapping = loadEC2GoMapping($linkEC2GoFileName);
-$SP2GoMapping = loadSwissProtKeyWord2GoMapping($linkSwissProtKeyWord2GoFileName);
+//$EC2GoMapping = loadEC2GoMapping($linkEC2GoFileName);
+//$SP2GoMapping = loadSwissProtKeyWord2GoMapping($linkSwissProtKeyWord2GoFileName);
 
 $wgUser->setID($sibUserID);
 startNewTransaction($sibUserID, 0, "Swiss-Prot Import");
 echo "\nImporting Swiss-Prot\n";
 //$umlsImport = new UMLSImportResult;
 //$umlsImport->umlsCollectionId = 5;
-//$umlsImport->sourceAbbreviations['GO'] = 236810; 
+//$umlsImport->sourceAbbreviations['GO'] = 30; 
+//$umlsImport->sourceAbbreviations['HUGO'] = 69912;
 
-importSwissProt($swissProtXMLFileName, $umlsImport->umlsCollectionId, $umlsImport->sourceAbbreviations['GO'], $EC2GoMapping, $SP2GoMapping);
+importSwissProt($swissProtXMLFileName, $umlsImport->umlsCollectionId, $umlsImport->sourceAbbreviations['GO'], $umlsImport->sourceAbbreviations['HUGO'], $EC2GoMapping, $SP2GoMapping);
 //importSwissProt($swissProtXMLFileName);
 
 $endTime = time();
