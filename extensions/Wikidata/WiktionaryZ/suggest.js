@@ -355,11 +355,9 @@ function getParentNode(node, nodeName) {
 	return result; 
 }
 
-var sortColumnIndex;
-
 function getInnerText(element) {
 	if (typeof element == "string") return element;
-	if (typeof element == "undefined") { return elemenet };
+	if (typeof element == "undefined") { return element };
 	if (element.innerText) return element.innerText;
 	var str = "";
 	
@@ -379,28 +377,136 @@ function getInnerText(element) {
 	return str;
 }
 
-function compareTableRows(row1, row2) {
-	var value1 = getInnerText(row1.cells[sortColumnIndex]).toLowerCase();
-	var value2 = getInnerText(row2.cells[sortColumnIndex]).toLowerCase();
+function ColumnSortInformation(index, direction) {
+	this.index = index;
+	this.direction = direction;
 	
-	if (value1 == value2)
+	this.toText = function () {
+		return this.index + "," + this.direction;
+	}
+}
+
+function SortOrder() {
+	this.columns = new Array();
+	this.length = 0;
+	
+	this.addColumn = function (column) {
+		this.columns.push(column);
+		this.length++;
+	}
+	
+	this.extractColumn = function (index) {
+		var result = this.columns[index];
+		this.columns.splice(index, 1);
+		this.length--;
+		return result;
+	}
+	
+	this.insertColumn = function (column) {
+		this.columns.unshift(column);
+		this.length++;
+	}
+	
+	this.getColumn = function (index) {
+		return this.columns[index];
+	}
+	
+	this.toText = function () {
+		var result = new Array();
+		
+		for (var i = 0; i < this.columns.length; i++)
+			result.push(this.columns[i].toText());
+			
+		return result.join(';');
+	}
+	
+	this.indexOfColumn = function(columnIndex) {
+		var result = -1;
+		var i = 0;
+		
+		while (result == -1 && i < this.columns.length)
+			if (this.getColumn(i).index == columnIndex)
+				result = i;
+			else
+				i++; 
+		
+		return result;
+	}
+	
+	this.alterOrder = function (columnIndex) {
+		var index = this.indexOfColumn(columnIndex);
+		
+		if (index == 0)
+			this.getColumn(0).direction *= -1;
+		else if (index == -1)
+			this.insertColumn(new ColumnSortInformation(columnIndex, 1));
+		else {
+			var column = this.extractColumn(index);
+			column.direction = 1;
+			
+			this.insertColumn(column);
+		}
+	}
+}
+
+function stringToSortOrder(value) {
+	var result = new SortOrder();
+	var columns = value.split(';');
+	
+	for (var i = 0; i < columns.length; i++) {
+		var fields = columns[i].split(',');
+		result.addColumn(new ColumnSortInformation(fields[0], fields[1]));
+	}
+	
+	return result;
+}
+
+var sortOrder;
+
+function compareTexts(text1, text2) {
+	text1 = text1.toLowerCase();
+	text2 = text2.toLowerCase();
+
+	if (text1 == text2)
 		return 0;
-	else if (value1 > value2)
+	else if (text1 > text2)
 		return 1;
 	else
 		return -1;
 }
 
+function compareTableRows(row1, row2) {
+	var result = 0;
+	var i = 0;
+	
+	while (result == 0 && i < sortOrder.length) {
+		var column = sortOrder.getColumn(i);
+		result = column.direction * compareTexts(getInnerText(row1.cells[column.index]), getInnerText(row2.cells[column.index]));		
+		i++;
+	} 
+
+	return result;
+}
+
 function sortTable(columnNode, skipRows, columnIndex) {
-	sortColumnIndex = columnIndex;
 	var tableNode = getParentNode(columnNode, 'table');
 	var rowsToSort = new Array();
 	
 	for (var i = skipRows; i < tableNode.rows.length; i++)
 		rowsToSort.push(tableNode.rows[i]);
+	
+	var sortAttribute = tableNode.getAttribute('sort-order');	
+	
+	if (sortAttribute != null)
+		sortOrder = stringToSortOrder(sortAttribute);
+	else 
+		sortOrder = new SortOrder();
 		
+	sortOrder.alterOrder(columnIndex);
 	rowsToSort.sort(compareTableRows);
 
 	for (var i = 0; i < rowsToSort.length; i++)
 		tableNode.tBodies[0].appendChild(rowsToSort[i]);	
+		
+	tableNode.setAttribute('sort-order', sortOrder.toText());
 }
