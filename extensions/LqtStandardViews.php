@@ -1,28 +1,66 @@
 <?php
 
 require_once( 'LqtModel.php' );
+require_once( 'LqtConstants.php' );
 
 class LqtView {
 	/** h1, h2, h3, etc. */
 	var $headerLevel = 1;
+	
+	/** Title object representing the URL used to get to this view itself -- as opposed to
+	 	the article that this is the discussion page of, if any, etc. */
+	var $viewTitle = null;
 
-	function __construct() {
+	function __construct( $viewTitle ) {
 		global $wgOut;
+		
+		$this->viewTitle = $viewTitle;
+		
 		$wgOut->setArticleRelated( false );
 		$wgOut->setRobotPolicy( "noindex,nofollow" );
 		$wgOut->setPageTitle( "LQT Thing" );
 	}
 
 	/*************************
-	* Simple HTML Functions *
+	* Utlity functions       *
+	*************************/
+	
+	function queryStringFromArray( $vars ) {
+		$q = '';
+		if ( $vars && count( $vars ) != 0 ) {
+			foreach( $vars as $name => $value )
+				$q .= "$name=$value&";
+		}
+		return $q;
+	}
+	
+	/**
+		@return href for a link to the same page as is being currently viewed, 
+		        but with additional query variables.
+		@param $vars array( 'query_variable_name' => 'value', ... ).
+	*/
+	function selflink( $vars ) {
+		return $this->viewTitle->getFullURL( $this->queryStringFromArray($vars) );
+	}
+	
+	/**
+		@return true if the value of the give query variable name is equal to the given post's ID.
+	*/
+	function commandApplies( $command, $post ) {
+		global $wgRequest;
+		return $wgRequest->getInt($command) == $post->getID();
+	}
+	
+	/*************************
+	* Simple HTML Functions  *
 	*************************/
 
 	function openDiv( $class = null ) {
 		global $wgOut;
 		if ( $class )
-		$wgOut->addHTML( wfOpenElement( 'div', array('class'=>$class) ) );
+			$wgOut->addHTML( wfOpenElement( 'div', array('class'=>$class) ) );
 		else
-		$wgOut->addHTML( wfOpenElement( 'div') );
+			$wgOut->addHTML( wfOpenElement( 'div') );
 	}
 
 	function closeDiv() {
@@ -37,6 +75,16 @@ class LqtView {
 	function showNewThreadForm() {
 		global $wgOut;
 		$wgOut->addHTML('<p>new thread form</p>');
+	}
+
+	function showPostEditingForm() {
+		global $wgOut;	
+		$wgOut->addHTML("edit");
+	}
+	
+	function showReplyForm( $post ) {
+		global $wgOut;	
+		$wgOut->addHTML("reply");
 	}
 
 	function showPostBody( $post ) {
@@ -59,7 +107,44 @@ class LqtView {
 
 		if (!$outputDone) {
 			// Cache miss; parse and output it.
+			// TODO: this is probably not the correct interface, but who the hell
+			// knows what the correct one is?
+			$post->loadContent();
 			$wgOut->addWikiText($post->mContent);
+		}
+	}
+
+	function showPostCommands( $post ) {
+		global $wgOut;
+		$commands = array( 'Edit' => $this->selflink( array( LQT_COMMAND_EDIT_POST => $post->getID() ) ),
+						   'Reply' => $this->selflink( array( LQT_COMMAND_REPLY_TO_POST => $post->getID() ) ));
+						
+		$wgOut->addHTML(wfOpenElement('ul', array('class'=>'lqt_commands')));
+		
+		foreach( $commands as $label => $href ) {
+			$wgOut->addHTML( wfOpenElement( 'li' ) );
+			$wgOut->addHTML( wfElement('a', array('href'=>$href), $label) );
+			$wgOut->addHTML( wfCloseElement( 'li' ) );
+		}
+		
+		$wgOut->addHTML(wfCloseELement('ul'));
+	}
+
+	function showPost( $post ) {
+		global $wgOut;
+		$this->openDiv( 'lqt_post' );
+		
+		if( $this->commandApplies( LQT_COMMAND_EDIT_POST, $post ) ) {
+			$this->showPostEditingForm( $post );
+		} else{
+			$this->showPostBody( $post );
+			$this->showPostCommands( $post );
+		}
+		
+		$this->closeDiv();
+		
+		if( $this->commandApplies( LQT_COMMAND_REPLY_TO_POST, $post ) ) {
+			$this->showReplyForm( $post );
 		}
 	}
 
@@ -69,12 +154,6 @@ class LqtView {
 		$wgOut->addHTML( wfElement( "h{$this->headerLevel}", null, $thread->subject() ) );
 	}
 
-	function showPost( $post ) {
-		global $wgOut;
-		$this->openDiv( 'lqt_post' );
-		$this->showPostBody( $post );
-		$this->closeDiv();
-	}
 	function showThread( $thread ) {
 		global $wgOut;
 
@@ -86,6 +165,7 @@ class LqtView {
 		}
 		$this->unindent();
 	}
+
 	function indent() {
 		global $wgOut;
 		$wgOut->addHTML( wfOpenElement( 'dl', array('class'=>'lqt_replies') ) );
@@ -129,10 +209,9 @@ class ArchiveBrowser extends LqtView {
 			$this->_showThreadTOC( $t );
 		}
 	}
-	function __construct($channelTitle) {
-		parent::__construct();
-		$this->channelTitle = $channelTitle; // TODO: these three lines are the same as in ChannelView.
-		$this->articleTitle = Title::makeTitle( NS_MAIN, $channelTitle->getDBkey() );
+	function __construct($viewTitle) {
+		parent::__construct($viewTitle); // TODO this is redundant with ChannelView::__construct.
+		$this->articleTitle = Title::makeTitle( NS_MAIN, $viewTitle->getDBkey() );
 		$this->article = new Article($this->articleTitle);
 	}
 }
@@ -148,10 +227,9 @@ class ChannelView extends LqtView {
 		$b->showPartialBrowser();
 	}
 
-	function __construct($channelTitle) {
-		parent::__construct();
-		$this->channelTitle = $channelTitle;
-		$this->articleTitle = Title::makeTitle( NS_MAIN, $channelTitle->getDBkey() );
+	function __construct($viewTitle) {
+		parent::__construct( $viewTitle );
+		$this->articleTitle = Title::makeTitle( NS_MAIN, $viewTitle->getDBkey() );
 		$this->article = new Article($this->articleTitle);
 		$this->threads = Thread::latestNThreadsOfArticle( $this->article, 10 );
 	}
@@ -160,7 +238,6 @@ class ChannelView extends LqtView {
 class ArchiveView extends LqtView {
 	function show() {
 		$tihs->showLinkToLatest();
-
 	}
 }
 

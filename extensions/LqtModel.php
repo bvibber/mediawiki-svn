@@ -2,6 +2,17 @@
 
 require_once('Article.php');
 
+/**
+	Contains the informaton needed to show an edit, reply, or new post form.
+	Can grab that information either from an article in the database, or from
+	the $wgRequest (or any other request). Can also present blank information
+	for the case of replies or new posts on the first run through the
+	edit-preview-diffs cycle.
+*/
+class PostProxy {
+	
+}
+
 class Post extends Article {
 	// Empty for the time being.
 }
@@ -92,7 +103,7 @@ class Thread {
 	static function allThreadsOfArticle( $article ) {
 		return Thread::threadsWhere( array('thread_article' => $article->getID(),
 		                                   'thread_subthread_of is null'),
-		array('ORDER BY' => 'thread_touched DESC') );
+											array('ORDER BY' => 'thread_touched DESC') );
 	}
 
 	static function threadsWhere( $where_clause, $options = array() ) {
