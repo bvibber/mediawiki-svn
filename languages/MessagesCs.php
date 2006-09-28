@@ -243,7 +243,7 @@ $messages = array(
 'redirectedfrom' => '(Přesměrováno z $1)',
 'redirectpagesub' => 'Přesměrování',
 'autoredircomment' => 'Přesměrováno na [[$1]]',
-'lastmodified'  => ' Stránka byla naposledy editována v $1.',
+'lastmodifiedat'  => ' Stránka byla naposledy editována v $2, $1.',
 'viewcount'             => 'Stránka byla zobrazena $1krát.',
 'copyright'     => 'Obsah je dostupný pod $1.',
 'protectedpage' => 'Zamčená stránka',
@@ -1368,7 +1368,7 @@ Cílová stránka „[[$1]]“ již existuje. Přejete si ji smazat pro uvolněn
 
 'anonymous' => "Anonymní uživatel(é) {{SITENAME}}",
 'siteuser' => "Uživatel {{SITENAME}} $1",
-'lastmodifiedby' => 'Tuto stránku naposledy měnil $2 v $1.',
+'lastmodifiedatby' => 'Tuto stránku naposledy měnil $3 v $2, $1.',
 'and' => 'a',
 'othercontribs' => 'Založeno na textu od uživatele $1.',
 'others' => 'další',

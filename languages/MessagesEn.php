@@ -273,6 +273,11 @@ $magicWords = array(
 	'localweek'              => array( 1,    'LOCALWEEK'              ),
 	'localdow'               => array( 1,    'LOCALDOW'               ),
 	'revisionid'             => array( 1,    'REVISIONID'             ),
+	'revisionday'            => array( 1,    'REVISIONDAY'            ),
+	'revisionday2'           => array( 1,    'REVISIONDAY2'           ),
+	'revisionmonth'          => array( 1,    'REVISIONMONTH'          ),
+	'revisionyear'           => array( 1,    'REVISIONYEAR'           ),
+	'revisiontimestamp'      => array( 1,    'REVISIONTIMESTAMP'      ),
 	'plural'                 => array( 0,    'PLURAL:'                ),
 	'fullurl'                => array( 0,    'FULLURL:'               ),
 	'fullurle'               => array( 0,    'FULLURLE:'              ),
@@ -286,6 +291,7 @@ $magicWords = array(
 	'newsectionlink'         => array( 1,    '__NEWSECTIONLINK__'     ),
 	'currentversion'         => array( 1,    'CURRENTVERSION'         ),
 	'urlencode'              => array( 0,    'URLENCODE:'             ),
+	'anchorencode'			 => array( 0,	 'ANCHORENCODE'			  ),
 	'currenttimestamp'       => array( 1,    'CURRENTTIMESTAMP'       ),
 	'localtimestamp'         => array( 1,    'LOCALTIMESTAMP'         ),
 	'directionmark'          => array( 1,    'DIRECTIONMARK', 'DIRMARK' ),
@@ -528,7 +534,7 @@ parent class in order maintain consistency across languages.
 'redirectedfrom' => '(Redirected from $1)',
 'autoredircomment' => 'Redirecting to [[$1]]',
 'redirectpagesub' => 'Redirect page',
-'lastmodified'	=> 'This page was last modified $1.',
+'lastmodifiedat'		=> 'This page was last modified $2, $1.',	//$1 date, $2 time
 'viewcount'		=> 'This page has been accessed {{plural:$1|one time|$1 times}}.',
 'copyright'	=> 'Content is available under $1.',
 'protectedpage' => 'Protected page',
@@ -686,10 +692,10 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'createaccountmail'	=> 'by e-mail',
 'badretype'		=> 'The passwords you entered do not match.',
 'userexists'	=> 'Username entered already in use. Please choose a different name.',
-'youremail'		=> 'E-mail *',
+'youremail'		=> 'E-mail *:',
 'username'		=> 'Username:',
 'uid'			=> 'User ID:',
-'yourrealname'		=> 'Real name *',
+'yourrealname'		=> 'Real name *:',
 'yourlanguage'	=> 'Language:',
 'yourvariant'  => 'Variant',
 'yournick'		=> 'Nickname:',
@@ -869,7 +875,7 @@ You can go back and edit an existing page, or [[Special:Userlogin|log in or crea
 'cantcreateaccounttitle' => 'Can\'t create account',
 'cantcreateaccounttext' => 'Account creation from this IP address (<b>$1</b>) has been blocked. 
 This is probably due to persistent vandalism from your school or Internet service 
-provider. ',
+provider.',
 
 # History pages
 #
@@ -921,6 +927,9 @@ Try [[Special:Search|searching on the wiki]] for relevant new pages.',
 # Revision deletion
 #
 'revisiondelete' => 'Delete/undelete revisions',
+'revdelete-nooldid-title' => 'No target revision',
+'revdelete-nooldid-text' => 'You have not specified target revision or revisions
+to perform this function on.',
 'revdelete-selected' => 'Selected revision of [[:$1]]:',
 'revdelete-text' => "Deleted revisions will still appear in the page history,
 but their text contents will be inaccessible to the public.
@@ -999,6 +1008,7 @@ containing all of the search terms will appear in the result).",
 # Preferences page
 #
 'preferences'	=> 'Preferences',
+'mypreferences'	=> 'My preferences',
 'prefsnologin' => 'Not logged in',
 'prefsnologintext'	=> "You must be [[Special:Userlogin|logged in]] to set user preferences.",
 'prefsreset'	=> 'Preferences have been reset from storage.',
@@ -1161,12 +1171,14 @@ created and by whom, and anything else you may know about it. If this is an imag
 'uploadvirus' => 'The file contains a virus! Details: $1',
 'sourcefilename' => 'Source filename',
 'destfilename' => 'Destination filename',
+'watchthisupload'	=> 'Watch this page',
 'filewasdeleted' => 'A file of this name has been previously uploaded and subsequently deleted. You should check the $1 before proceeding to upload it again.',
 
 'license' => 'Licensing',
 'nolicense' => 'None selected',
 'licenses' => '-', # Don't duplicate this in translations
-'upload_source_url' => ' (vaild, publicy accessible URL)',
+'upload_source_url' => ' (a valid, publicly accessible URL)',
+'upload_source_file' => ' (a file on your computer)',
 
 # Image list
 #
@@ -1271,6 +1283,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'nviews'		=> '$1 {{PLURAL:$1|view|views}}',
 
 'lonelypages'	=> 'Orphaned pages',
+'lonelypagestext'	=> 'The following pages are not linked from other pages in this wiki.',
 'uncategorizedpages'	=> 'Uncategorized pages',
 'uncategorizedcategories'	=> 'Uncategorized categories',
 'uncategorizedimages' => 'Uncategorized images',
@@ -1291,6 +1304,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'shortpages'	=> 'Short pages',
 'longpages'		=> 'Long pages',
 'deadendpages'  => 'Dead-end pages',
+'deadendpagestext'	=> 'The following pages do not link to other pages in this wiki.',
 'listusers'		=> 'User list',
 'specialpages'	=> 'Special pages',
 'spheading'		=> 'Special pages for all users',
@@ -1744,7 +1758,7 @@ The destination article "[[$1]]" already exists. Do you want to delete it to mak
 'delete_and_move_confirm' => 'Yes, delete the page',
 'delete_and_move_reason' => 'Deleted to make way for move',
 'selfmove' => "Source and destination titles are the same; can't move a page over itself.",
-'immobile_namespace' => "Destination title is of a special type; cannot move pages into that namespace.",
+'immobile_namespace' => "Source or destination title is of a special type; cannot move pages from and into that namespace.",
 
 # Export
 
@@ -1847,7 +1861,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 
 'anonymous' => 'Anonymous user(s) of {{SITENAME}}',
 'siteuser' => '{{SITENAME}} user $1',
-'lastmodifiedby' => 'This page was last modified $1 by $2.',
+'lastmodifiedatby' => 'This page was last modified $2, $1 by $3.',	// $1 date, $2 time. $3 user
 'and' => 'and',
 'othercontribs' => 'Based on work by $1.',
 'others' => 'others',
@@ -1975,6 +1989,11 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');',
 'variantname-sr-jc' => 'sr-jc',
 'variantname-sr-jl' => 'sr-jl',
 'variantname-sr' => 'sr',
+# variants for Kazakh language
+'variantname-kk-tr' => 'kk-tr',
+'variantname-kk-kz' => 'kk-kz',
+'variantname-kk-cn' => 'kk-cn',
+'variantname-kk' => 'kk',
 
 # labels for User: and Title: on Special:Log pages
 'specialloguserlabel' => 'User:',

@@ -290,7 +290,7 @@ De weßße wellß wi de Wikki_ßoffwäer jebruch un bedeendt weede moß.
 'redirectedfrom'        => '(Ömjelëijdt fun $1)',
 'autoredircomment'      => 'Lëijdt öm op „[[$1]]“',
 'redirectpagesub'       => 'Ömlëijdungß_Sigk',
-'lastmodified'          => 'Shtand fum $1',
+'lastmodifiedat'          => 'Shtand fum $2, $1',
 'viewcount'             => 'Di Sigk eß beß jäz {{PLURAL:$1|ëijmol|$1 Mol}} affjeroofe woode.',
 'copyright'             => 'Dä Ennhalldt_shtëijdt unger_de $1.',
 'protectedpage'         => 'Jeshözde Sigk',
@@ -2105,7 +2105,7 @@ wat Dinge [http://ksh.wikipedia.org/wiki/Help:Client Client] odde [http://ksh.wi
 Brauser] foshtonn künnt.',
 'anonymous'             => 'Namelose Medmaacher fun_de {{SITENAME}}',
 'siteuser'              => '{{SITENAME}}-Medmaacher $1',
-'lastmodifiedby'        => 'Hee di Sigk wood_et läz jeänndort fun $2 om $1',
+'lastmodifiedatby'        => 'Hee di Sigk wood_et läz jeänndort fun $3 om $2, $1',
 'and'                   => 'un',
 'othercontribs'         => 'Bout op de Ärbeëijdt fun „<strong>$1</strong>“ op.',
 'others'                => 'anndere',
@@ -2380,17 +2380,6 @@ $1',
 'table_pager_limit_submit' => 'Loßß jonn!',
 'table_pager_empty'     => 'Këij Äjepniß',
 
-# TODO move into the expand templates extension
-'expand_templates_input' => 'Wat_De övverprööfe wellß:',
-'expand_templates_intro' => 'Hee kannß de en Schabloon ußprobėere. Do jiss_enne Oproov_enn, un dann kriß_De dä 
-komplädd_oppjelööß, och all di innedren widdo opjeroofene Schabloone, Parrameeter, Funkzjohne, shpezjälle Nahme, 
-unn_esu, beß nix mieh övverish eß, wat mer noch oplööse künnt. Wänn jedd_en <nowiki>{{ … }}</nowiki> Klammere 
-övverbliet, dann wohr_et unnbikanndt. Do passėet jenau et_sellve wi söns_em Wikki och, nur dat_De hee tirägk_ze 
-sinn_krißß wadd_erruß kütt.',
-'expand_templates_output' => 'Wadd_erruß küdd_eß:',
-'expand_templates_remove_comments' => ' De ennere Kommëntaare fott_loohße',
-'expand_templates_title' => 'Dä Sigge_Tittel, also wat för <nowiki>{{PAGENAME}}</nowiki> uew. ennjefölldt weed:',
-'expandtemplates'        => 'Schabloone övverprööfe',
 );
 
 ?>

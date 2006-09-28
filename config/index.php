@@ -203,7 +203,9 @@ if( !is_writable( "." ) ) {
 	<pre>
 	cd <i>/path/to/wiki</i>
 	chmod a+w config
-	</pre>" );
+	</pre>
+	
+	<p>Afterwards retry to start the <a href=\"\">setup</a>.</p>" );
 }
 
 
@@ -878,7 +880,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 
 		/* Write out the config file now that all is well */
 		print "<p>Creating LocalSettings.php...</p>\n\n";
-		$localSettings = "<" . "?php$endl$local$endl?" . ">";
+		$localSettings = "<" . "?php$endl$local$endl?" . ">\r\n";
 		// Fix up a common line-ending problem (due to CVS on Windows)
 		$localSettings = str_replace( "\r\n", "\n", $localSettings );
 		$f = fopen( "LocalSettings.php", 'xt' );
@@ -995,7 +997,7 @@ if( count( $errs ) ) {
 		<?php aField( $conf, "SysopPass2", "Password confirm:", "password" ) ?>
 	</div>
 	<p class="config-desc">
-		An admin can lock/delete pages, block users from editing, and other maintenance tasks.<br />
+		An admin can lock/delete pages, block users from editing, and do other maintenance tasks.<br />
 		A new account will be added only when creating a new wiki database.
 	</p>
 
@@ -1120,11 +1122,26 @@ if( count( $errs ) ) {
 	<p class="config-desc">
 		If you only have a single user account and database available,
 		enter those here. If you have database root access (see below)
-		you can specify new accounts/databases to be created.
-	</p>
-	<p>
-		This account will not be created if it pre-exists. If this is the case, ensure that it
+		you can specify new accounts/databases to be created. This account 
+		will not be created if it pre-exists. If this is the case, ensure that it
 		has SELECT, INSERT, UPDATE and DELETE permissions on the MediaWiki database.
+	</p>
+
+	<div class="config-input">
+		<?php
+		aField( $conf, "RootUser", "Superuser account:", "superuser" );
+		?>
+	</div>
+	<div class="config-input">
+		<?php
+		aField( $conf, "RootPW", "Superuser password:", "password" );
+		?>
+	</div>
+	
+	<p class="config-desc">
+		If the database user specified above does not exist, or does not have access to create
+		the database (if needed) or tables within it, please provide details of a superuser account,
+		such as <strong>root</strong>, which does. Leave the password set to <strong>-</strong> if this is not needed.
 	</p>
 
 	<?php database_switcher('mysql'); ?>
@@ -1170,23 +1187,6 @@ if( count( $errs ) ) {
 	</div>
 	</div>
 
-	<div class="config-input">
-		<?php
-		aField( $conf, "RootUser", "Superuser account:", "superuser" );
-		?>
-	</div>
-	<div class="config-input">
-		<?php
-		aField( $conf, "RootPW", "Superuser password:", "password" );
-		?>
-	</div>
-	
-	<p class="config-desc">
-		If the database user specified above does not exist, or does not have access to create
-		the database (if needed) or tables within it, please provide details of a superuser account,
-		such as <strong>root</strong>, which does. Leave the password set to <strong>-</strong> if this is not needed.
-	</p>
-
 	<div class="config-input" style="padding:2em 0 3em">
 		<label class='column'>&nbsp;</label>
 		<input type="submit" value="Install MediaWiki!" class="btn-install" />
@@ -1225,8 +1225,8 @@ which means that anyone on the same server can read your database password! Down
 it and uploading it again will hopefully change the ownership to a user ID specific to you.</p>
 EOT;
 	} else {
-		echo "<p>Installation successful! Move the config/LocalSettings.php file into the parent directory, then follow
-			<a href='../index.php'>this link</a> to your wiki.</p>\n";
+		echo "<p><span style='font-weight:bold;color:green;font-size:110%'>Installation successful!</span> Move the <tt>config/LocalSettings.php</tt> file into the parent directory, then follow
+			<strong><a href='../index.php'>this link</a></strong> to your wiki.</p>\n";
 	}
 }
 

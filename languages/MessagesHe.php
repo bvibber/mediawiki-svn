@@ -150,6 +150,7 @@ $magicWords = array(
 	'newsectionlink'        => array( 1,    '__יצירת_הערה__',                      '__NEWSECTIONLINK__'     ),
 	'currentversion'        => array( 1,    'גרסה נוכחית',                         'CURRENTVERSION'         ),
 	'urlencode'             => array( 0,    'נתיב מקודד:',                         'URLENCODE:'             ),
+	'anchorencode'          => array( 0,    'עוגן מקודד:',                         'ANCHORENCODE'           ),
 	'currenttimestamp'      => array( 1,    'זמן נוכחי',                           'CURRENTTIMESTAMP'       ),
 	'localtimestamp'        => array( 1,    'זמן מקומי',                           'LOCALTIMESTAMP'         ),
 	'directionmark'         => array( 1,    'סימן כיווניות',                       'DIRECTIONMARK', 'DIRMARK' ),
@@ -379,7 +380,7 @@ $messages = array(
 "redirectedfrom"    => "(הופנה מהדף $1)",
 "autoredircomment"  => "הפניה לדף [[$1]]",
 "redirectpagesub"   => "דף הפניה",
-"lastmodified"      => "שונה לאחרונה ב־$1.",
+"lastmodifiedat"      => "שונה לאחרונה ב־$2, $1.",
 "viewcount"         => "דף זה נצפה {{plural:$1|פעם אחת|$1 פעמים|פעמיים}}.",
 "copyright"         => "התוכן מוגש בכפוף ל־$1.<br /> בעלי זכויות היוצרים מפורטים בהיסטוריית השינויים של הדף.",
 "protectedpage"     => "דף מוגן",
@@ -547,10 +548,10 @@ $messages = array(
 "createaccountmail"          => 'באמצעות דוא"ל',
 "badretype"                  => "הסיסמאות שהזנת אינן מתאימות.",
 "userexists"                 => "שם המשתמש שבחרתם נמצא בשימוש. אנא בחרו שם אחר.",
-"youremail"                  => "דואר אלקטרוני *",
+"youremail"                  => "דואר אלקטרוני *:",
 "username"                   => "שם משתמש:",
 "uid"                        => "מספר סידורי:",
-"yourrealname"               => "שם אמיתי *",
+"yourrealname"               => "שם אמיתי *:",
 "yourlanguage"               => "שפת הממשק:",
 "yourvariant"                => "שינוי",
 "yournick"                   => "כינוי (לחתימות):",
@@ -753,6 +754,8 @@ $messages = array(
 
 # Revision deletion
 "revisiondelete"            => "מחיקת ושחזור גרסאות",
+"revdelete-nooldid-title"   => "אין גרסת מטרה",
+"revdelete-nooldid-text"    => "לא ציינתם גרסת או גרסאות מטרה עליהן תבוצע פעולה זו.",
 "revdelete-selected"        => "הגרסאות שנבחרו של [[:$1]]:",
 "revdelete-text"            => "גרסאות מחוקות עדיין יופיעו בהיסטוריית הדף, אך התוכן שלהן לא יהיה זמין לציבור.
 
@@ -805,6 +808,7 @@ $messages = array(
 
 # Preferences page
 "preferences"           => "העדפות",
+"mypreferences"         => "ההעדפות שלי",
 "prefsnologin"          => "לא נרשמת באתר",
 "prefsnologintext"      => "עליכם [[{{ns:special}}:Userlogin|להיכנס לחשבון]] כדי לשנות העדפות משתמש.",
 "prefsreset"            => "העדפותיך שוחזרו לברירת המחדל.",
@@ -909,9 +913,9 @@ $messages = array(
 "rc_categories_any"                 => "הכול",
 
 # Upload
-"upload"                      => "העלו קובץ לשרת",
-"uploadbtn"                   => "העלו קובץ",
-"reupload"                    => "העלו שנית",
+"upload"                      => "העלאת קובץ לשרת",
+"uploadbtn"                   => "העלה קובץ",
+"reupload"                    => "העלה שנית",
 "reuploaddesc"                => "חזרו לטופס העלאת קבצים לשרת.",
 "uploadnologin"               => "לא נכנסתם לאתר",
 "uploadnologintext"           => "עליכם [[{{ns:special}}:Userlogin|להיכנס לחשבון]] כדי להעלות קבצים.",
@@ -954,15 +958,17 @@ $messages = array(
 "uploaddisabled"              => "העלאת קבצים מנוטרלת",
 "uploaddisabledtext"          => "אפשרות העלאת הקבצים מנוטרלת באתר זה.",
 "uploadscripted"              => "הקובץ כולל קוד סקריפט או HTML שעשוי להתפרש או להתבצע בטעות על־ידי הדפדפן.",
-"uploadcorrupt"               => "קובץ זה אינו תקין או שהסיומת שלו איננה מתאימה. בבקשה בדקו את הקובץ והעלו אותו שוב.",
+"uploadcorrupt"               => "קובץ זה אינו תקין או שהסיומת שלו איננה מתאימה. אנא בדקו את הקובץ והעלו אותו שוב.",
 "uploadvirus"                 => 'הקובץ מכיל וירוס! פרטים: <div style="direction: ltr;">$1</div>',
 "sourcefilename"              => "שם הקובץ",
 "destfilename"                => "שמור קובץ בשם",
+"watchthisupload"             => "עקוב אחרי דף זה",
 "filewasdeleted"              => "קובץ בשם זה כבר הועלה בעבר, ולאחר מכן נמחק. אנא בדקו את הדף $1 לפני שתמשיכו להעלותו שנית.",
 
-"license"           => "רישיון",
-"nolicense"         => "אין",
-"upload_source_url" => " (כתובת URL תקפה ונגישה)",
+"license"            => "רישיון",
+"nolicense"          => "אין",
+"upload_source_url"  => " (כתובת URL תקפה ונגישה)",
+"upload_source_file" => " (קובץ במחשב שלך)",
 
 # Image list
 "imagelist"                 => "רשימת תמונות",
@@ -1063,6 +1069,7 @@ $messages = array(
 "nviews"      => "{{plural:$1|צפיה אחת|$1 צפיות}}",
 
 "lonelypages"             => "דפים יתומים",
+"lonelypagestext"         => "לדפים הבאים אין קישורים מדפים אחרים באתר זה.",
 "uncategorizedpages"      => "דפים חסרי קטגוריה",
 "uncategorizedcategories" => "קטגוריות חסרות קטגוריה",
 "uncategorizedimages"     => "תמונות חסרות קטגוריה",
@@ -1082,6 +1089,7 @@ $messages = array(
 "shortpages"              => "דפים קצרים",
 "longpages"               => "דפים ארוכים",
 "deadendpages"            => "דפים ללא קישורים",
+"deadendpagestext"        => "הדפים הבאים אינם מקשרים לדפים אחרים באתר.",
 "listusers"               => "רשימת משתמשים",
 "specialpages"            => "דפים מיוחדים",
 "spheading"               => "דפים מיוחדים",
@@ -1477,7 +1485,7 @@ $NEWPAGE
 "delete_and_move_confirm" => "כן, מחק את הדף",
 "delete_and_move_reason"  => "מחיקה על מנת לאפשר העברה",
 "selfmove"                => "כותרות המקור והיעד זהות; לא ניתן להעביר דף לעצמו.",
-"immobile_namespace"      => "כותרת היעד היא סוג מיוחד של דף; אי אפשר להעביר דפים לתוך מרחב שם זה.",
+"immobile_namespace"      => "כותרת המקור או היעד היא סוג מיוחד של דף; לא ניתן להעביר דפים לתוך או מתוך מרחב שם זה.",
 
 # Export
 "export"          => "ייצוא דפים",
@@ -1574,7 +1582,7 @@ $NEWPAGE
 # Attribution
 "anonymous"      => "משתמש(ים) אנונימי(ים) של {{SITENAME}}",
 "siteuser"       => "משתמש {{SITENAME}} $1",
-"lastmodifiedby" => "דף זה שונה לאחרונה בתאריך $1 על־ידי $2.",
+"lastmodifiedatby" => "דף זה שונה לאחרונה בתאריך $2, $1 על־ידי $3.",
 "and"            => "וגם",
 "othercontribs"  => "מבוסס על העבודה של $1.",
 "others"         => "אחרים",
@@ -1701,6 +1709,11 @@ ta["ca-nstab-category"]     = ["c", "צפו בדף הקטגוריה"];',
 "variantname-sr-jc" => "sr-jc",
 "variantname-sr-jl" => "sr-jl",
 "variantname-sr"    => "sr",
+# Variants for Kazakh language
+"variantname-kk-tr" => "kk-tr",
+"variantname-kk-kz" => "kk-kz",
+"variantname-kk-cn" => "kk-cn",
+"variantname-kk"    => "kk",
 
 # labels for User: and Title: on Special:Log pages
 "specialloguserlabel"  => "משתמש:",

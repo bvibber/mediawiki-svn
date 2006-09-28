@@ -142,7 +142,7 @@ CREATE TABLE pagelinks (
   pl_namespace  SMALLINT  NOT NULL,
   pl_title      TEXT      NOT NULL
 );
-CREATE UNIQUE INDEX pagelink_unique ON pagelinks (pl_namespace,pl_title,pl_from);
+CREATE UNIQUE INDEX pagelink_unique ON pagelinks (pl_from,pl_namespace,pl_title);
 
 CREATE TABLE templatelinks (
   tl_from       INTEGER  NOT NULL  REFERENCES page(page_id) ON DELETE CASCADE,
@@ -406,9 +406,9 @@ CREATE FUNCTION ts2_page_title() RETURNS TRIGGER LANGUAGE plpgsql AS
 $mw$
 BEGIN
 IF TG_OP = 'INSERT' THEN
-  NEW.titlevector = to_tsvector(NEW.page_title);
+  NEW.titlevector = to_tsvector('default',NEW.page_title);
 ELSIF NEW.page_title != OLD.page_title THEN
-  NEW.titlevector := to_tsvector(NEW.page_title);
+  NEW.titlevector := to_tsvector('default',NEW.page_title);
 END IF;
 RETURN NEW;
 END;
@@ -424,9 +424,9 @@ CREATE FUNCTION ts2_page_text() RETURNS TRIGGER LANGUAGE plpgsql AS
 $mw$
 BEGIN
 IF TG_OP = 'INSERT' THEN
-  NEW.textvector = to_tsvector(NEW.old_text);
+  NEW.textvector = to_tsvector('default',NEW.old_text);
 ELSIF NEW.old_text != OLD.old_text THEN
-  NEW.textvector := to_tsvector(NEW.old_text);
+  NEW.textvector := to_tsvector('default',NEW.old_text);
 END IF;
 RETURN NEW;
 END;
@@ -462,6 +462,7 @@ CREATE TABLE mediawiki_version (
   pg_port      TEXT             NULL,
   mw_schema    TEXT             NULL,
   ts2_schema   TEXT             NULL,
+  ctype        TEXT             NULL,
 
   sql_version  TEXT             NULL,
   sql_date     TEXT             NULL,

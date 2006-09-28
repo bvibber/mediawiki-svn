@@ -259,10 +259,13 @@ class Revision {
 				$this->mTitle = null;
 			}
 
+			// Lazy extraction...
+			$this->mText      = null;
 			if( isset( $row->old_text ) ) {
-				$this->mText  = $this->getRevisionText( $row );
+				$this->mTextRow = $row;
 			} else {
-				$this->mText  = null;
+				// 'text' table row entry will be lazy-loaded
+				$this->mTextRow = null;
 			}
 		} elseif( is_array( $row ) ) {
 			// Build a new revision to be saved...
@@ -668,14 +671,33 @@ class Revision {
 	function loadText() {
 		$fname = 'Revision::loadText';
 		wfProfileIn( $fname );
-
-		$dbr =& wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow( 'text',
-			array( 'old_text', 'old_flags' ),
-			array( 'old_id' => $this->getTextId() ),
-			$fname);
+		
+		// Caching may be beneficial for massive use of external storage
+		global $wgRevisionCacheExpiry, $wgMemc, $wgDBname;
+		$key = "$wgDBname:revisiontext:textid:" . $this->getTextId();
+		if( $wgRevisionCacheExpiry ) {
+			$text = $wgMemc->get( $key );
+			if( is_string( $text ) ) {
+				wfProfileOut( $fname );
+				return $text;
+			}
+		}
+		
+		// If we kept data for lazy extraction, use it now...
+		$row = $this->mTextRow;
+		$this->mTextRow = null;
+		
+		if( !$row ) {
+			// Text data is immutable; check slaves first.
+			$dbr =& wfGetDB( DB_SLAVE );
+			$row = $dbr->selectRow( 'text',
+				array( 'old_text', 'old_flags' ),
+				array( 'old_id' => $this->getTextId() ),
+				$fname);
+		}
 
 		if( !$row ) {
+			// Possible slave lag!
 			$dbw =& wfGetDB( DB_MASTER );
 			$row = $dbw->selectRow( 'text',
 				array( 'old_text', 'old_flags' ),
@@ -684,6 +706,11 @@ class Revision {
 		}
 
 		$text = Revision::getRevisionText( $row );
+		
+		if( $wgRevisionCacheExpiry ) {
+			$wgMemc->set( $key, $text, $wgRevisionCacheExpiry );
+		}
+		
 		wfProfileOut( $fname );
 
 		return $text;

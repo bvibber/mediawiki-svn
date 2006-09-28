@@ -2071,6 +2071,14 @@ $wgExternalServers = array();
 $wgDefaultExternalStore = false;
 
 /**
+ * Revision text may be cached in $wgMemc to reduce load on external storage
+ * servers and object extraction overhead for frequently-loaded revisions.
+ *
+ * Set to 0 to disable, or number of seconds before cache expiry.
+ */
+$wgRevisionCacheExpiry = 0;
+
+/**
 * list of trusted media-types and mime types.
 * Use the MEDIATYPE_xxx constants to represent media types.
 * This list is used by Image::isSafeFile
@@ -2194,17 +2202,25 @@ $wgContentNamespaces = array( NS_MAIN );
 $wgMaxShellMemory = 102400;
 
 /**
+ * Maximum file size created by shell processes under linux, in KB
+ * ImageMagick convert for example can be fairly hungry for scratch space
+ */
+$wgMaxShellFileSize = 102400;
+
+/**
  * DJVU settings
  * Path of the djvutoxml executable
  * Enable this and $wgDjvuRenderer to enable djvu rendering
  */
 # $wgDjvuToXML = 'djvutoxml';
+$wgDjvuToXML = null;
 
 /**
  * Path of the ddjvu DJVU renderer
  * Enable this and $wgDjvuToXML to enable djvu rendering
  */
 # $wgDjvuRenderer = 'ddjvu';
+$wgDjvuRenderer = null;
 
 /**
  * Path of the DJVU post processor

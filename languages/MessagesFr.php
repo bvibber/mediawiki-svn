@@ -222,7 +222,7 @@ $messages = array(
 'otherlanguages' => 'Autres langues',
 'redirectedfrom' => '(Redirigé depuis $1)',
 'redirectpagesub' => 'Page de redirection',
-'lastmodified'  => 'Dernière modification de cette page le $1.',
+'lastmodifiedat'  => 'Dernière modification de cette page le $2, $1.',
 'viewcount'     => 'Cette page a été consultée $1 fois.',
 'copyright'	=> 'Contenu disponible sous $1.',
 'protectedpage' => 'Page protégée',
@@ -1270,7 +1270,7 @@ Dans ce dernier cas, vous pouvez aussi utiliser un lien, comme [[{{ns:Special}}:
 
 'anonymous'	=> 'Utilisateur(s) anonyme(s) de {{SITENAME}}',
 'siteuser'	=> 'Utilisateur $1 de {{SITENAME}}',
-'lastmodifiedby' => 'Cette page a été modifiée pour la dernière fois le $1 par $2',
+'lastmodifiedatby' => 'Cette page a été modifiée pour la dernière fois le $2, $1 par $3',
 'and'	=> 'et',
 'othercontribs' => 'Basé sur le travail de $1.',
 'others' => 'autres',

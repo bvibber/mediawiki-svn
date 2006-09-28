@@ -221,7 +221,7 @@ I seguenti collegamenti sono in lingua inglese:
 "redirectedfrom" => "(Redirect da $1)",
 "autoredircomment" => "Redirect alla pagina [[$1]]",
 "redirectpagesub" => "Pagina di redirect",
-"lastmodified"	=> "Ultima modifica per la pagina: $1.",
+"lastmodifiedat"	=> "Ultima modifica per la pagina: $2, $1.",
 "viewcount"		=> "Questa pagina è stata letta {{PLURAL:$1|una volta|$1 volte}}.",
 "copyright"	=> "Contenuti soggetti a licenza d'uso $1.",
 "protectedpage" => "Pagina bloccata",
@@ -1336,7 +1336,7 @@ Tutte le operazioni di importazione trans-wiki sono registrate nel [[Special:Log
 # Attribution
 "anonymous"	=> "uno o più utenti anonimi di {{SITENAME}}",
 "siteuser"	=> "$1, utente di {{SITENAME}}",
-"lastmodifiedby"	=> "Questa pagina è stata modificata per l'ultima volta il $1 da $2.",
+"lastmodifiedatby"	=> "Questa pagina è stata modificata per l'ultima volta il $2, $1 da $3.",
 "and"	=> "e",
 "othercontribs"	=> "Il testo attuale è basato su contributi di $1.",
 "others"	=> "altri",

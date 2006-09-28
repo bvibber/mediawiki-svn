@@ -165,7 +165,7 @@ class ImagePage extends Article {
 	}
 
 	function openShowImage() {
-		global $wgOut, $wgUser, $wgImageLimits, $wgRequest;
+		global $wgOut, $wgUser, $wgImageLimits, $wgRequest, $wgLang;
 		global $wgUseImageResize, $wgGenerateThumbnailOnParse;
 
 		$full_url  = $this->img->getURL();
@@ -276,11 +276,8 @@ class ImagePage extends Article {
 					$select .= $wgOut->parse( wfMsg( 'imgmultigotopre' ), false ) .
 						' <select id="pageselector" name="page">';
 					for ( $i=1; $i <= $count; $i++ ) {
-						if ( $i == $page ) {
-							$select .= "<option value=\"$i\" selected=\"selected\">$i</option>";
-						} else {
-							$select .= "<option value=\"$i\" >$i</option>\n";
-						}
+						$select .= Xml::option( $wgLang->formatNum( $i ), $i,
+							$i == $page );
 					}
 					$select .= '</select>' . $wgOut->parse( wfMsg( 'imgmultigotopost' ), false ) .
 						'<input type="submit" value="' .

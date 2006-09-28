@@ -315,7 +315,7 @@ $messages = array(
 'viewtalkpage'            => 'Vis diskusjon',
 'otherlanguages'          => 'På andre språk',
 'redirectedfrom'          => '(Omdirigert frå $1)',
-'lastmodified'	          => 'Sist endra $1.',
+'lastmodifiedat'	          => 'Sist endra $2, $1.',
 'viewcount'		  => 'Vist $1 gonger.',
 'copyright'	          => 'Innhaldet er utgjeve under $1.',
 'protectedpage'           => 'Verna side',
@@ -1188,7 +1188,7 @@ For å eksportere bruker du [[{{ns:-1}}:Export|eksportsida]] på kjeldewikien; h
 # Attribution
 'anonymous'             => 'Anonym(e) brukar(ar) av {{SITENAME}}',
 'siteuser'              => '{{SITENAME}} brukar $1',
-'lastmodifiedby'        => 'Denne sida vart sist endra $1 av $2.',
+'lastmodifiedatby'        => 'Denne sida vart sist endra $2, $1 av $3.',
 'and'                   => 'og',
 'othercontribs'         => 'Basert på arbeid av $1.',
 'others'                => 'andre',

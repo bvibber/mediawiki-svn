@@ -222,7 +222,7 @@ $messages = array(
 'redirectedfrom' => '(Redjiblé di $1)',
 'autoredircomment' => 'Redjiblaedje viè [[$1]]',
 'redirectpagesub' => 'Pådje di redjiblaedje',
-'lastmodified' => 'Cisse pådje a stî candjeye pol dierin côp li $1.',
+'lastmodifiedat' => 'Cisse pådje a stî candjeye pol dierin côp li $2, $1.',
 'viewcount' => 'Cisse pådje la a stî léjhowe {{PLURAL:$1|on côp|$1 côps}}.',
 'copyright' => 'Li contnou est dizo l\' $1.',
 'protectedpage' => 'Pådje protedjeye',
@@ -1384,7 +1384,7 @@ Dins ç\' dierin cas, vos ploz eto eployî ene hårdêye, eg: [[{{ns:special}}:E
 # Attribution
 'anonymous' => 'Uzeu(s) anonime(s) di {{SITENAME}}',
 'siteuser' => 'Uzeu d\' {{SITENAME}} «$1»',
-'lastmodifiedby' => 'Cisse pådje a stî candjeye pol dierin côp li $1 pa $2.',
+'lastmodifiedatby' => 'Cisse pådje a stî candjeye pol dierin côp li $2, $1 pa $3.',
 'and' => 'eyet',
 'othercontribs' => 'Båzé so l\' ovraedje da $1.',
 'others' => 'des ôtes',
