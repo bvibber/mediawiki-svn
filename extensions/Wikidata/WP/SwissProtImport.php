@@ -113,15 +113,15 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $organismConceptId = 0;
 	public $functionalDomainConceptId = 0;
 	public $proteinComponentConceptId = 0;
-	public $referencedByConceptId = 0;
+//	public $referencedByConceptId = 0;
 	public $biologicalProcessConceptId = 0;
 	public $molecularFunctionConceptId = 0;
 	public $cellularComponentConceptId = 0;
-	public $keywordConceptId = 0;
+//	public $keywordConceptId = 0;
 	public $includesConceptId = 0;
-	public $includedInConceptId = 0;
+//	public $includedInConceptId = 0;
 	public $containsConceptId = 0;
-	public $containedInConceptId = 0;
+//	public $containedInConceptId = 0;
 	public $textAttributeConceptId = 0;
 	public $enzymeCommissionNumberConceptId = 0;
 	public $activityConceptId = 0;
@@ -158,8 +158,8 @@ class SwissProtXMLParser extends BaseXMLParser {
 		if ($this->proteinComponentConceptId == 0)
 			$this->proteinComponentConceptId = $this->bootstrapDefinedMeaning("protein component", "protein component");
 			
-		if ($this->referencedByConceptId == 0)
-			$this->referencedByConceptId = $this->bootstrapDefinedMeaning("referenced by", "referenced by");
+//		if ($this->referencedByConceptId == 0)
+//			$this->referencedByConceptId = $this->bootstrapDefinedMeaning("referenced by", "referenced by");
 		
 		if ($this->biologicalProcessConceptId == 0)
 			$this->biologicalProcessConceptId = $this->bootstrapDefinedMeaning("biological process", "biological process");		
@@ -170,20 +170,20 @@ class SwissProtXMLParser extends BaseXMLParser {
 		if ($this->cellularComponentConceptId == 0)
 			$this->cellularComponentConceptId = $this->bootstrapDefinedMeaning("cellular component", "cellular component");		
 		
-		if ($this->keywordConceptId == 0)
-			$this->keywordConceptId = $this->bootstrapDefinedMeaning("keyword", "keyword");
+//		if ($this->keywordConceptId == 0)
+//			$this->keywordConceptId = $this->bootstrapDefinedMeaning("keyword", "keyword");
 		
 		if ($this->includesConceptId == 0)
 			$this->includesConceptId = $this->bootstrapDefinedMeaning("includes", "includes");
 		
-		if ($this->includedInConceptId == 0)
-			$this->includedInConceptId = $this->bootstrapDefinedMeaning("included in", "included in");
+//		if ($this->includedInConceptId == 0)
+//			$this->includedInConceptId = $this->bootstrapDefinedMeaning("included in", "included in");
 		
 		if ($this->containsConceptId == 0)
 			$this->containsConceptId = $this->bootstrapDefinedMeaning("contains", "contains");
 		
-		if ($this->containedInConceptId == 0)
-			$this->containedInConceptId = $this->bootstrapDefinedMeaning("contained in", "contained in");
+//		if ($this->containedInConceptId == 0)
+//			$this->containedInConceptId = $this->bootstrapDefinedMeaning("contained in", "contained in");
 		
 		if ($this->enzymeCommissionNumberConceptId == 0)
 			$this->enzymeCommissionNumberConceptId = $this->bootstrapDefinedMeaning("enzyme commission number", "enzyme commission number");
@@ -212,7 +212,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		
 		// Add concepts to relation types
 		addDefinedMeaningToCollectionIfNotPresent($this->proteinConceptId, $this->relationTypeCollectionId, "protein");
-		addDefinedMeaningToCollectionIfNotPresent($this->referencedByConceptId, $this->relationTypeCollectionId, "referenced by");
+//		addDefinedMeaningToCollectionIfNotPresent($this->referencedByConceptId, $this->relationTypeCollectionId, "referenced by");
 		addDefinedMeaningToCollectionIfNotPresent($this->geneConceptId, $this->relationTypeCollectionId, "gene");
 		addDefinedMeaningToCollectionIfNotPresent($this->organismSpecificGeneConceptId, $this->relationTypeCollectionId, "organism specific gene");		
 		addDefinedMeaningToCollectionIfNotPresent($this->organismConceptId, $this->relationTypeCollectionId, "organism");
@@ -220,11 +220,11 @@ class SwissProtXMLParser extends BaseXMLParser {
 		addDefinedMeaningToCollectionIfNotPresent($this->biologicalProcessConceptId, $this->relationTypeCollectionId, "biological process");
 		addDefinedMeaningToCollectionIfNotPresent($this->molecularFunctionConceptId, $this->relationTypeCollectionId, "molecular function");
 		addDefinedMeaningToCollectionIfNotPresent($this->cellularComponentConceptId, $this->relationTypeCollectionId, "cellular component");		
-		addDefinedMeaningToCollectionIfNotPresent($this->keywordConceptId, $this->relationTypeCollectionId, "keyword");
+//		addDefinedMeaningToCollectionIfNotPresent($this->keywordConceptId, $this->relationTypeCollectionId, "keyword");
 		addDefinedMeaningToCollectionIfNotPresent($this->includesConceptId, $this->relationTypeCollectionId, "includes");
-		addDefinedMeaningToCollectionIfNotPresent($this->includedInConceptId, $this->relationTypeCollectionId, "included in");
+//		addDefinedMeaningToCollectionIfNotPresent($this->includedInConceptId, $this->relationTypeCollectionId, "included in");
 		addDefinedMeaningToCollectionIfNotPresent($this->containsConceptId, $this->relationTypeCollectionId, "contains");
-		addDefinedMeaningToCollectionIfNotPresent($this->containedInConceptId, $this->relationTypeCollectionId, "contained in");
+//		addDefinedMeaningToCollectionIfNotPresent($this->containedInConceptId, $this->relationTypeCollectionId, "contained in");
 	}
 	
 	public function startElement($parser, $name, $attributes) {
@@ -473,7 +473,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 				addSynonymOrTranslation($synonym, $this->languageId, $domainMeaningId, true);
 			
 			addRelation($definedMeaningId, $this->includesConceptId, $domainMeaningId);
-			addRelation($domainMeaningId, $this->includedInConceptId, $definedMeaningId);
+//			addRelation($domainMeaningId, $this->includedInConceptId, $definedMeaningId);
 		}
 		
  		// Add 'contained' proteins:
@@ -484,7 +484,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 				addSynonymOrTranslation($synonym, $this->languageId, $componentMeaningId, true);
 			
 			addRelation($definedMeaningId, $this->containsConceptId, $componentMeaningId);
-			addRelation($componentMeaningId, $this->containedInConceptId, $definedMeaningId);
+//			addRelation($componentMeaningId, $this->containedInConceptId, $definedMeaningId);
 		}
 		
 		return $definedMeaningId;		
