@@ -238,25 +238,45 @@ class MediaWikiConverter {
 		if ( $params['add_gfdl'] ) {
 			copy ( $xmlg['sourcedir'] . "/gfdl.xml" , $temp_dir . "/gfdl.xml" ) ;
 		}
+
+		if ( $params['docbook']['out_dir'] ) {
+			$output_dir = $params['docbook']['out_dir'];
+		} else {
+			$output_dir = $params['docbook']['temp_dir'];
+		}
+
 		
 		# Call converter
 		if ( $mode == "PDF" ) {
-			$command = str_replace ( "%1" , $project , $params['docbook']['command_pdf'] ) ;
+			$command = str_replace ( "%1" , $xml_file , $params['docbook']['command_pdf'] ) ;
 			$out_subdir = 'pdf' ;
 		} else if ( $mode == "HTML" ) {
-			$command = str_replace ( "%1" , $project , $params['docbook']['command_html'] ) ;
+			$command = str_replace ( "%1" , $xml_file , $params['docbook']['command_html'] ) ;
 			$out_subdir = 'html' ;
 		}
+
+		# PHP4 does not have recursive mkdir
+		$output_dir = $output_dir . '/' . $out_subdir ;
+		if ( ! file_exists( $output_dir ) ) {
+			mkdir ( $output_dir ) ;
+		}
+		$output_dir = $output_dir . '/' . $project;
+		if ( ! file_exists( $output_dir ) ) {
+			mkdir ( $output_dir ) ;
+		}
+
+		$command = $command . ' --nochunks --output ' . $output_dir;
+
 		exec ( $command ) ;
 		
 		# Cleanup xml file
 		SureRemoveDir ( $temp_dir ) ;
 		
 		# Check if everything is OK
-		$output_filename = $params['docbook']['out_dir'] . '/' . $project . '/' . $out_subdir . '/' . $project . '.' . $out_subdir ;
+		$output_filename = $output_dir . '/' . $project . '.' . $out_subdir ;
 		if ( !file_exists ( $output_filename ) ) {
 			header('Content-type: text/html; charset=utf-8');
-			print "ERROR : Document was not created: Docbook creator has failed!" ;
+			print "ERROR : Document was not created: Docbook creator has failed! Command was: $command. output_filename = $output_filename" ;
 		}
 		
 		# Return pdf filename

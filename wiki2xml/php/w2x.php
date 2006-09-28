@@ -261,7 +261,7 @@ if ( get_param('doit',false) ) { # Process
 		if ( $xmlg['allow_xml_temp_files'] ) $xmlg['use_xml_temp_files'] = true ;
 		
 		foreach ( explode ( "\n" , $wikitext ) AS $a ) {
-			push_article( &$aArticles, $a );
+			push_article( $aArticles, $a );
 		}
 
 		# set the first article name as the default title
@@ -280,7 +280,7 @@ if ( get_param('doit',false) ) { # Process
 			
 			$wikitext = $content_provider->get_wiki_text ( $title_page ) ;
 			add_authors ( $content_provider->authors ) ;
-			append_to_xml ( $xml , $converter->article2xml ( $title_name , $wikitext , $xmlg, &$aArticles ) ) ;
+			append_to_xml ( $xml , $converter->article2xml ( $title_name , $wikitext , $xmlg, $aArticles ) ) ;
 			#$xml .= $converter->article2xml ( $title_name , $wikitext , $xmlg, &$aArticles ) ;
 		}
 	}
@@ -431,10 +431,13 @@ if ( get_param('doit',false) ) { # Process
 		if ( file_exists ( $filename ) ) {
 			$fp = fopen($filename, 'rb');
 			if ( $format == "docbook_pdf" ) {
-				header('Content-type: application/pdf');
-				header("Content-Length: " . filesize($filename));
-			} else if ( $format == "docbook_pdf" ) {
-				header('Content-type: text/html');
+				header('Content-Type: application/pdf');
+				header("Content-Length: " . (string) filesize($filename));
+				header('Content-Disposition: attachment; filename="'.$xmlg["book_title"].'.pdf"');
+			} else if ( $format == "docbook_html" ) {
+				header('Content-Type: text/html');
+				header("Content-Length: " . (string) filesize($filename));
+				header('Content-Disposition: inline; filename="'.$xmlg["book_title"].'.html"');
 			}
 			fpassthru($fp);
 			fclose ( $fp ) ;
