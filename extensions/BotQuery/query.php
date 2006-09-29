@@ -75,34 +75,14 @@ define( 'GN_ENUM_CHOICES',  2 );
 define( 'NS_ALL_NAMESPACES', -10123 );
 
 
-// Possible way to implement login functionality
-//$action = $wgRequest->getVal('action', 'query');
-//switch( $action ) {
-//	case 'query':
-        $bqp = new BotQueryProcessor( $startTime );
-        $bqp->execute();
-        $bqp->output();
-//		break;
-//    case 'login':
-//        $blp = new BotLoginProcessor();
-//        $blp->execute();
-//        break;
-//}
+$bqp = new BotQueryProcessor( $startTime );
+$bqp->execute();
+$bqp->output();
 
 wfProfileOut( 'query.php' );
 if ( function_exists( 'wfLogProfilingData' ) ) {
 	wfLogProfilingData();
 }
-
-//class BotLoginProcessor {
-//    function BotLoginProcessor()
-//    {}
-//
-//    function execute()
-//    {
-//        wfSetupSession();
-//    }
-//}
 
 class BotQueryProcessor {
 	var $classname = 'BotQueryProcessor';
@@ -502,15 +482,18 @@ class BotQueryProcessor {
 				"ucrbtoken  - If logged in as an admin, a rollback tokens for top revisions will be included in the output.",
 				"Example: query.php?what=usercontribs&titles=User:YurikBot&uclimit=20&uccomments",
 			)),
-		'contribcounter'   => array(
-			GN_FUNC => 'genContributionsCounter',
-			GN_ISMETA => false,
-			GN_PARAMS => array(),
-			GN_DFLT => array(),
-			GN_DESC => array(
-				"User contributions counter",
-				"Example: query.php?what=contribcounter&titles=User:Yurik",
-			)),
+			
+			// Extremelly slow query!!!
+			
+//		'contribcounter'   => array(
+//			GN_FUNC => 'genContributionsCounter',
+//			GN_ISMETA => false,
+//			GN_PARAMS => array(),
+//			GN_DFLT => array(),
+//			GN_DESC => array(
+//				"User contributions counter",
+//				"Example: query.php?what=contribcounter&titles=User:Yurik",
+//			)),
 		'imageinfo'      => array(
 			GN_FUNC => 'genImageInfo',
 			GN_ISMETA => false,
@@ -543,6 +526,9 @@ class BotQueryProcessor {
 	function BotQueryProcessor( $startTime )
 	{
 		global $wgRequest, $wgUser;
+
+		// Initialize Error handler
+		set_exception_handler( array($this, 'ExceptionHandler') );
 
 		$this->startTime = $startTime;
 		$this->totalDbTime = 0;
@@ -578,6 +564,40 @@ class BotQueryProcessor {
 		$this->nonRedirPageIds = array();	// all regular, non-redirect pages
 
 		$this->revIdsArray     = array();	// all explicitly requested revision ids
+	}
+
+	/**
+	 * Exception handler which simulates the appropriate catch() handling:
+	 *
+	 *   try {
+	 *       ...
+	 *   } catch ( MWException $e ) {
+	 *       dieUsage()
+	 *   } catch ( Exception $e ) {
+	 *       echo $e->__toString();
+	 *   }
+	 */
+	function ExceptionHandler( $e ) {
+		global $wgFullyInitialised;
+		 if ( is_a( $e, 'MWException' ) ) {
+			 try {
+                 $this->dieUsage( "Exception Caught: {$e->getMessage()}\n\n{$e->getTraceAsString()}\n\n", 'internal_error' );
+			 } catch (Exception $e2) {
+                 echo $e->__toString();
+             }
+		 } else {
+			 echo $e->__toString();
+		 }
+
+		// Final cleanup, similar to wfErrorExit()
+		if ( $wgFullyInitialised ) {
+			try {
+				wfLogProfilingData(); // uses $wgRequest, hence the $wgFullyInitialised condition
+			} catch ( Exception $e ) {}
+		}
+
+		// Exit value should be nonzero for the benefit of shell jobs
+		exit( 1 );
 	}
 
 	/**
@@ -1141,13 +1161,79 @@ class BotQueryProcessor {
 	//
 	// ************************************* PAGE INFO GENERATORS *************************************
 	//
-
+	
 	/**
-	* Populate redirect data. Redirects may be one of the following:
-	*     Redir to nonexisting, Existing page, or Existing redirect.
-	*     Existing redirect may point to yet another nonexisting or existing page( which in turn may also be a redirect)
-	*/
+	 * Simpler replacement for double-redirect resolving genRedirectInfo2()
+	 */
 	function genRedirectInfo(&$prop, &$genInfo)
+	{
+		if( empty( $this->redirectPageIds )) return;
+		$this->startProfiling();
+
+		$this->startDbProfiling();
+		$res = $this->db->select(
+			array('page', 'pagelinks'),
+			array('pl_from', 'pl_namespace', 'pl_title', 'page_id', 'page_is_redirect'),
+			array('pl_from' => $this->redirectPageIds,
+				  'pl_namespace = page_namespace',
+				  'pl_title = page_title'),
+			__CLASS__ . '::' . __FUNCTION__ );
+		$this->endDbProfiling( $prop );
+
+        $multiLinkRedirPages = array();
+        
+		while ( $row = $this->db->fetchObject( $res ) ) {
+            $pageId = intval($row->pl_from);
+			$data = & $this->data['pages'][$pageId]['redirect'];
+            if ( !isset($data['to']) ) {
+			    $data['to'] = $this->getLinkInfo( $row->pl_namespace, $row->pl_title, $row->page_id, $row->page_is_redirect );
+            } else {
+                // More than one link exists from redirect page
+                $multiLinkRedirPages[$pageId] = '';
+            }
+		}
+		$this->db->freeResult( $res );
+        
+        if (!empty($multiLinkRedirPages)) {
+            // We found some bad redirect pages. Get the content and solve.   
+            $multiLinkRedirPages = array_keys($multiLinkRedirPages);
+            $ids = array();
+            foreach( $multiLinkRedirPages as $pageId ) {
+                $ids[] = "(rev_page=$pageId AND rev_id={$this->data['pages'][$pageId]['revid']})";
+            }
+
+            $this->startDbProfiling();
+            $res = $this->db->select(
+                array('page', 'revision', 'text'),
+                array('page_id', 'page_is_redirect', 'old_id', 'old_text', 'old_flags'),
+                array('page_id' => $multiLinkRedirPages, 'page_latest=rev_id', 'rev_text_id=old_id' ),
+                $this->classname . '::genPageContent'
+                );
+            while ( $row = $this->db->fetchObject( $res ) ) {
+                $title = Title :: newFromRedirect(Revision::getRevisionText( $row ));
+                if ($title) {
+                    $article = new Article($title);
+                    $pageId = $article->getTitle()->getArticleId();
+                    $isRedirect = $pageId > 0 ? !$article->checkTouched() : false;                    
+                    $link = $this->getTitleInfo( $title, $pageId, $isRedirect );
+                    $this->data['pages'][intval($row->page_id)]['redirect']['to'] = $link;
+                }
+            }
+            $this->db->freeResult( $res );
+        }
+        
+		$this->endProfiling( $prop );
+	}
+	
+	/**
+	 * 
+	 *  This method cannot be used until http://bugzilla.wikipedia.org/show_bug.cgi?id=7304 is fixed  
+	 * 
+	 * Populate redirect data. Redirects may be one of the following:
+	 *     Redir to nonexisting, Existing page, or Existing redirect.
+	 *     Existing redirect may point to yet another nonexisting or existing page( which in turn may also be a redirect)
+	 */
+	function genRedirectInfo2(&$prop, &$genInfo)
 	{
 		if( empty( $this->redirectPageIds )) return;
 		$this->startProfiling();
@@ -1815,45 +1901,45 @@ class BotQueryProcessor {
 	}
 	
 	
-	/**
-	* Add counts of user contributions to the user pages
-	*/
-	function genContributionsCounter(&$prop, &$genInfo)
-	{
-		$this->startProfiling();
-		$users = array ();			// Users to query
-		$userPageIds = array ();	// Map of user name to the page ID
-
-		// For all valid pages in User namespace query history. Note that the page might not exist.
-		foreach ($this->data['pages'] as $pageId => & $page) {
-			if (array_key_exists('_obj', $page)) {
-				$title = & $page['_obj'];
-				if ($title->getNamespace() == NS_USER && !$title->isExternal()) {
-					$users[] = $title->getText();
-					$userPageIds[$title->getText()] = $pageId;
-				}
-			}
-		}
-
-		$this->validateLimit( 'cc_querytoobig', count($users), 10, 50 );
-		$this->startDbProfiling();
-		$res = $this->db->select('revision', array (
-			'rev_user_text',
-			'count(*) cnt',
-			'count(DISTINCT rev_page) distcnt'
-		), array (
-			'rev_user_text' => $users
-		), $this->classname . '::genContributionsCounter', array (
-			'GROUP BY' => 'rev_user_text'
-		));
-		$this->endDbProfiling($prop);
-		while ($row = $this->db->fetchObject($res)) {
-			$pageId = $userPageIds[$row->rev_user_text];
-			$this->addPageSubElement($pageId, $prop, 'count', $row->cnt, false);
-			$this->addPageSubElement($pageId, $prop, 'distcount', $row->distcnt, false);
-		}
-		$this->endProfiling($prop);
-	}
+//	/**
+//	* Add counts of user contributions to the user pages
+//	*/
+//	function genContributionsCounter(&$prop, &$genInfo)
+//	{
+//		$this->startProfiling();
+//		$users = array ();			// Users to query
+//		$userPageIds = array ();	// Map of user name to the page ID
+//
+//		// For all valid pages in User namespace query history. Note that the page might not exist.
+//		foreach ($this->data['pages'] as $pageId => & $page) {
+//			if (array_key_exists('_obj', $page)) {
+//				$title = & $page['_obj'];
+//				if ($title->getNamespace() == NS_USER && !$title->isExternal()) {
+//					$users[] = $title->getText();
+//					$userPageIds[$title->getText()] = $pageId;
+//				}
+//			}
+//		}
+//
+//		$this->validateLimit( 'cc_querytoobig', count($users), 10, 50 );
+//		$this->startDbProfiling();
+//		$res = $this->db->select('revision', array (
+//			'rev_user_text',
+//			'count(*) cnt',
+//			'count(DISTINCT rev_page) distcnt'
+//		), array (
+//			'rev_user_text' => $users
+//		), $this->classname . '::genContributionsCounter', array (
+//			'GROUP BY' => 'rev_user_text'
+//		));
+//		$this->endDbProfiling($prop);
+//		while ($row = $this->db->fetchObject($res)) {
+//			$pageId = $userPageIds[$row->rev_user_text];
+//			$this->addPageSubElement($pageId, $prop, 'count', $row->cnt, false);
+//			$this->addPageSubElement($pageId, $prop, 'distcount', $row->distcnt, false);
+//		}
+//		$this->endProfiling($prop);
+//	}
 	
 	/**
 	* Add the raw content of the pages
