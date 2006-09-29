@@ -3,6 +3,33 @@
 require_once( 'LqtModel.php' );
 require_once( 'LqtConstants.php' );
 
+class Form {
+	function __construct( $fields, $method, $action ) {
+		$this->fields = $fields;
+		$this->method = $method;
+		$this->action = $action;
+	}
+	
+	function html() {
+		$result = "<form method=\"{$this->method}\" action=\"{$this->action}\" enctype=\"multipart/form-data\">";
+		
+		foreach ( $this->fields as $f ) {
+			if ( $f['type'] == 'textarea' ) {
+				$result .= '<textarea name="'.$f['name'].'">'.$f['value'].'</textarea>';
+			} else if ( $f['type'] == 'input' ) {
+				$result .= '<input name="'.$f['name'].'" value="'.$f['value'].'">';
+			} else if ( $f['type'] == 'hidden' ) {
+					$result .= '<input type="hidden" name="'.$f['name'].'" value="'.$f['value'].'">';
+			} else if ( $f['type'] == 'submit' ) {
+				$result .= '<input type="submit" name="'.$f['name'].'" value="'.$f['label'].'">';
+			}
+		}
+		
+		$result .= "</form>";
+		return $result;
+	}
+}
+
 class LqtView {
 	/** h1, h2, h3, etc. */
 	var $headerLevel = 1;
@@ -22,7 +49,7 @@ class LqtView {
 	}
 
 	/*************************
-	* Utlity functions       *
+	* Utlity methods         *
 	*************************/
 	
 	function queryStringFromArray( $vars ) {
@@ -39,7 +66,7 @@ class LqtView {
 		        but with additional query variables.
 		@param $vars array( 'query_variable_name' => 'value', ... ).
 	*/
-	function selflink( $vars ) {
+	function selflink( $vars = null ) {
 		return $this->viewTitle->getFullURL( $this->queryStringFromArray($vars) );
 	}
 	
@@ -52,7 +79,7 @@ class LqtView {
 	}
 	
 	/*************************
-	* Simple HTML Functions  *
+	* Simple HTML methods    *
 	*************************/
 
 	function openDiv( $class = null ) {
@@ -69,7 +96,7 @@ class LqtView {
 	}
 
 	/*******************************
-	* Output functions with logic *
+	* Output methods with logic    *
 	*******************************/
 
 	function showNewThreadForm() {
@@ -77,14 +104,51 @@ class LqtView {
 		$wgOut->addHTML('<p>new thread form</p>');
 	}
 
-	function showPostEditingForm() {
-		global $wgOut;	
-		$wgOut->addHTML("edit");
+	function showPostEditingForm( $post ) {
+		global $wgRequest;
+		$pp = new PostProxy( $post, $wgRequest );
+		$this->showEditingFormInGeneral( $pp, 'editExisting', $post->getID() );
 	}
-	
+
 	function showReplyForm( $post ) {
-		global $wgOut;	
-		$wgOut->addHTML("reply");
+		global $wgRequest;
+		$pp = new PostProxy( null, $wgRequest );
+		$this->showEditingFormInGeneral( $pp, 'reply', $post->getID() );
+	}
+
+	function showEditingFormInGeneral( $post_proxy, $edit_type, $edit_applies_to ) {
+		global $wgOut, $wgRequest;
+
+		$pp = $post_proxy;
+		
+		if ( $pp->submittedPreview() ) {
+			$wgOut->addHTML("THIS IS ONLY A PREVIEW, FOO");
+			$wgOut->addWikiText( $pp->content() );
+		}
+		
+		$fields = array( array( 'type' => 'textarea',
+		                        'name' => 'content',
+		                        'value'=>$pp->content() ),
+		 		         array( 'type'=>'input',
+		                        'name'=>'summary',
+		                        'value'=>$pp->summary() ),
+		                 array( 'type'=>'hidden',
+		                        'name'=>'editType',
+								'value'=>$edit_type),
+						 array( 'type'=>'hidden',
+			                    'name'=>'editAppliesTo',
+								'value'=>$edit_applies_to),
+ 						 array( 'type'=>'submit',
+						        'name'=>'save',
+								'label'=>'Save'),
+		                 array( 'type'=>'submit',
+						        'name'=>'preview',
+								'label'=>'Preview')
+						);
+		$f = new Form( $fields, 'POST', $wgRequest->getFullRequestURL() );
+		$wgOut->addHTML( $f->html() );
+		
+		$wgOut->addHTML( wfElement( 'a', array( 'href'=>$this->selflink()), 'Cancel' ) );
 	}
 
 	function showPostBody( $post ) {
@@ -107,10 +171,8 @@ class LqtView {
 
 		if (!$outputDone) {
 			// Cache miss; parse and output it.
-			// TODO: this is probably not the correct interface, but who the hell
-			// knows what the correct one is?
-			$post->loadContent();
-			$wgOut->addWikiText($post->mContent);
+			$rev = Revision::newFromTitle( $post->getTitle() );
+			$wgOut->addWikiText( $rev->getText() );
 		}
 	}
 
@@ -119,7 +181,7 @@ class LqtView {
 		$commands = array( 'Edit' => $this->selflink( array( LQT_COMMAND_EDIT_POST => $post->getID() ) ),
 						   'Reply' => $this->selflink( array( LQT_COMMAND_REPLY_TO_POST => $post->getID() ) ));
 						
-		$wgOut->addHTML(wfOpenElement('ul', array('class'=>'lqt_commands')));
+		$wgOut->addHTML(wfOpenElement('ul', array('class'=>'lqt_footer')));
 		
 		foreach( $commands as $label => $href ) {
 			$wgOut->addHTML( wfOpenElement( 'li' ) );
@@ -144,7 +206,9 @@ class LqtView {
 		$this->closeDiv();
 		
 		if( $this->commandApplies( LQT_COMMAND_REPLY_TO_POST, $post ) ) {
+			$this->indent();
 			$this->showReplyForm( $post );
+			$this->unindent();
 		}
 	}
 

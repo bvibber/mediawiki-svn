@@ -10,6 +10,8 @@ $lqtViews = array(
 /** Each value for the lqtMethod query variable corresponds to a  */
 $lqtMethods = array();
 
+
+
 /** 
  * Returns true if the caller is to go ahead with default behavior, false if it is to skip.
  * The method is passed a reference to $caller, plus any additional arguments supplied.
@@ -62,19 +64,19 @@ class LqtDispatch {
 	}
 	
 	function execute($title) {
+		global $wgRequest, $wgOut;
+		
 		if( lqtDelegate( $this, $this->delegate, 'lqtDispatchShouldExecute', $title ) ) {
 
-/* Fictitious editing thing:
-			$editing_post = Post::newFromID( $this->requestOption(LQT_OPT_EDIT_POST) );
-			if ( $editing_post ) {
-				$ep = new EditPage($editing_post);
-				if ( $ep->shouldSave() ) {
-					$ep->save();
-					$new_values = $ep->getSomethingOrOther();
-					$editing_post->save( $new_values );
+			$pp = new PostProxy(null, $wgRequest);
+
+			if( $pp->submittedSave() ) {
+				if ($pp->editType() == 'editExisting') {
+					$redirect = EditController::saveExisting( $title, $pp );
+					$wgOut->redirect( $redirect );
 				}
 			}
-*/
+
 			$view = $this->viewForTitle( $title );
 			if ($view) {
 				$view->show();
@@ -85,6 +87,13 @@ class LqtDispatch {
 
 		}
 		lqtDelegate( $this, $this->delegate, 'lqtDispatchDidExecute' );
+	}
+}
+
+class EditController
+{
+	static function saveExisting ( $title, $post_proxy ) {
+		
 	}
 }
 
