@@ -1206,7 +1206,7 @@ class BotQueryProcessor {
             $res = $this->db->select(
                 array('page', 'revision', 'text'),
                 array('page_id', 'page_is_redirect', 'old_id', 'old_text', 'old_flags'),
-                array('page_id' => $multiLinkRedirPages, 'page_latest=rev_id', 'rev_text_id=old_id' ),
+                array('page_id' => $multiLinkRedirPages, 'page_id=rev_page', 'page_latest=rev_id', 'rev_text_id=old_id' ),
                 $this->classname . '::genPageContent'
                 );
             while ( $row = $this->db->fetchObject( $res ) ) {
