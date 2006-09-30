@@ -1,6 +1,6 @@
 <?php
 /**
- * Main include file for the DynamicPageList2 extension of MediaWiki. 
+ * Main include file for the DynamicPageList2 extension of MediaWiki.
  * This code is released under the GNU General Public License.
  *
  *  Purpose:
@@ -19,13 +19,13 @@
  * @author w:de:Benutzer:Unendlich 
  * @author m:User:Dangerman <cyril.dangerville@gmail.com>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version 0.7.1
+ * @version 0.7.7
  */
 
 /*
  * Current version
  */
-define('DPL2_VERSION', '0.7.1');
+define('DPL2_VERSION', '0.7.7');
 
 /**
  * Register the extension with MediaWiki
@@ -48,6 +48,8 @@ $wgDPL2MaxResultCount = 50; // Maximum number of results to allow
 $wgDPL2CategoryStyleListCutoff = 6; //Max length to format a list of articles chunked by letter as bullet list, if list bigger, columnar format user (same as cutoff arg for CategoryPage::formatList())
 $wgDPL2AllowUnlimitedCategories = true; // Allow unlimited categories in the Query
 $wgDPL2AllowUnlimitedResults = true; // Allow unlimited results to be shown
+$wgDPL2AllowedNamespaces = NULL; // to be initialized at first use of DPL2, array of all namespaces except Media and Special, because we cannot use the DB for these to generate dynamic page lists. Cannot be customized. Use $wgDPL2Options['namespace'] or $wgDPL2Options['notnamespace'] for customization.
+
 /**
  * Map parameters to possible values.
  * A 'default' key indicates the default value for the parameter.
@@ -62,10 +64,12 @@ $wgDPL2Options = array(
 	'adduser' => array('default' => 'false', 'false', 'true'),
 	/**
 	 * category= Cat11 | Cat12 | ...
-	 * category = Cat21 | Cat22 | ...
+	 * category= Cat21 | Cat22 | ...
 	 * ...
 	 * [Special value] catX='' (empty string without quotes) means pseudo-categoy of Uncategorized pages
 	 * Means pages have to be in category (Cat11 OR (inclusive) Cat2 OR...) AND (Cat21 OR Cat22 OR...) AND...
+	 * If '+' prefixes the list of categories (e.g. category=+ Cat1 | Cat 2 ...), only these categories can be used as headings in the DPL. See  'headingmode' param.
+	 * Magic words allowed.
 	 * @todo define 'category' options (retrieve list of categories from 'categorylinks' table?)
 	 */
 	'category' => NULL,
@@ -121,6 +125,12 @@ $wgDPL2Options = array(
 	 */
 	'listattr' => array('default' => ''),
 	/**
+	 * this parameter restricts the output to articles which contain a reference to the specified page.
+	 * Magic words allowed.
+	 * Examples:   linksto=my article   ,  linksto=Template:my template   ,  linksto = {{FULLPAGENAME}}
+	 */
+    'linksto' => array('default' => ''),
+	/**
 	 * Mode for list of pages (possibly within a heading, see 'headingmode' param).
 	 * 'none' mode is implemented as a specific submode of 'inline' with <BR/> as inline text
 	 */
@@ -129,6 +139,7 @@ $wgDPL2Options = array(
 	 * namespace= Ns1 | Ns2 | ...
 	 * [Special value] NsX='' (empty string without quotes) means Main namespace
 	 * Means pages have to be in namespace Ns1 OR Ns2 OR...
+	 * Magic words allowed.
 	 */
 	'namespace' => NULL,
 	/**
@@ -136,6 +147,7 @@ $wgDPL2Options = array(
 	 * notcategory = Cat2
 	 * ...
 	 * Means pages can be NEITHER in category Cat1 NOR in Cat2 NOR...
+	 * Magic words allowed.
 	 * @todo define 'notcategory' options (retrieve list of categories from 'categorylinks' table?)
 	 */
 	'notcategory' => NULL,
@@ -145,6 +157,7 @@ $wgDPL2Options = array(
  	 * ...
 	 * [Special value] NsX='' (empty string without quotes) means Main namespace
 	 * Means pages have to be NEITHER in namespace Ns1 NOR Ns2 NOR...
+	 * Magic words allowed.
 	*/
 	'notnamespace' => NULL,
 	'order' => array('default' => 'ascending', 'ascending', 'descending'),
@@ -152,7 +165,7 @@ $wgDPL2Options = array(
 	 * 'ordermethod=param1,param2' means ordered by param1 first, then by param2.
 	 * @todo: add 'ordermethod=category,categoryadd' (for each category CAT, pages ordered by date when page was added to CAT).
 	 */
-	'ordermethod' => array('default' => 'title', 'category,firstedit',  'category,lastedit', 'category,pagetouched', 'category,title', 'categoryadd', 'firstedit', 'lastedit', 'pagetouched', 'title', 'user,firstedit', 'user,lastedit'),
+	'ordermethod' => array('default' => 'title', 'category,firstedit',  'category,lastedit', 'category,pagetouched', 'category,sortkey', 'categoryadd', 'firstedit', 'lastedit', 'pagetouched', 'title', 'user,firstedit', 'user,lastedit'),
 	/**
 	 * minoredits =... (compatible with ordermethod=...,firstedit | lastedit only)
 	 * - exclude: ignore minor edits when sorting the list (rev_minor_edit = 0 only)
@@ -181,6 +194,7 @@ $wgDPL2Options = array(
 $wgDPL2DebugCodes = array(
 	// (FATAL) ERRORS
 	'DPL2_ERR_WRONGNS' => 1,
+	'DPL2_ERR_WRONGLINKSTO' => 1,
  	'DPL2_ERR_TOOMANYCATS' => 1,
 	'DPL2_ERR_TOOFEWCATS' => 1,
 	'DPL2_ERR_CATDATEBUTNOINCLUDEDCATS' => 1,
@@ -193,7 +207,6 @@ $wgDPL2DebugCodes = array(
 	'DPL2_WARN_WRONGPARAM' => 2,
 	'DPL2_WARN_WRONGPARAM_INT' => 2,
 	'DPL2_WARN_NORESULTS' => 2,
-	'DPL2_WARN_NOINCLUDEDCATSORNS' => 2,
 	'DPL2_WARN_CATOUTPUTBUTWRONGPARAMS' => 2,
 	'DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD' => 2,
 	'DPL2_WARN_DEBUGPARAMNOTFIRST' => 2,
@@ -225,7 +238,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 
 	error_reporting(E_ALL);
 	
-	global  $wgUser, $wgContLang, $wgDPL2Options, $wgDPL2MaxCategoryCount, $wgDPL2MinCategoryCount, $wgDPL2MaxResultCount, $wgDPL2AllowUnlimitedCategories, $wgDPL2AllowUnlimitedResults;
+	global  $wgUser, $wgContLang, $wgDPL2AllowedNamespaces, $wgDPL2Options, $wgDPL2MaxCategoryCount, $wgDPL2MinCategoryCount, $wgDPL2MaxResultCount, $wgDPL2AllowUnlimitedCategories, $wgDPL2AllowUnlimitedResults;
 	
 	// INVALIDATE CACHE
 	$parser->disableCache();
@@ -235,12 +248,36 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	/**
 	 * Initialization
 	 */
+	 // Local parser created. See http://meta.wikimedia.org/wiki/MediaWiki_extensions_FAQ#How_do_I_render_wikitext_in_my_extension.3F
+	$localParser = new Parser();
+	$pOptions = $parser->mOptions;
+	$pTitle = $parser->mTitle;
+	
+	// Extension variables
+	// Allowed namespaces for DPL2: all namespaces except the first 2: Media (-2) and Special (-1), because we cannot use the DB for these to generate dynamic page lists.
+	if( !is_array($wgDPL2AllowedNamespaces) ) { // Initialization
+		$aNs = $wgContLang->getNamespaces();
+		$wgDPL2AllowedNamespaces = array_slice($aNs, 2, count($aNs), true);
+		if( !is_array($wgDPL2Options['namespace']) )
+			$wgDPL2Options['namespace'] = $wgDPL2AllowedNamespaces;
+		else // Make sure user namespace options are allowed.
+			$wgDPL2Options['namespace'] = array_intersect($wgDPL2Options['namespace'], $wgDPL2AllowedNamespaces);
+		if( !isset($wgDPL2Options['namespace']['default']) )
+			$wgDPL2Options['namespace']['default'] = NULL;
+		if( !is_array($wgDPL2Options['notnamespace']) )
+			$wgDPL2Options['notnamespace'] = $wgDPL2AllowedNamespaces;
+		else
+			$wgDPL2Options['notnamespace'] = array_intersect($wgDPL2Options['notnamespace'], $wgDPL2AllowedNamespaces);
+		if( !isset($wgDPL2Options['notnamespace']['default']) )
+			$wgDPL2Options['notnamespace']['default'] = NULL;
+	}	
+	
 	 // Options
 	$aOrderMethods = explode(',', $wgDPL2Options['ordermethod']['default']);
 	$sOrder = $wgDPL2Options['order']['default'];
 	$sPageOutputMode = $wgDPL2Options['mode']['default'];
 	$sHeadingOutputMode = $wgDPL2Options['headingmode']['default'];
-	$sMinorEdits = null;
+	$sMinorEdits = NULL;
 	$sRedirects = $wgDPL2Options['redirects']['default'];
 	$sInlTxt = $wgDPL2Options['inlinetext']['default'];
 	$bShowNamespace = $wgDPL2Options['shownamespace']['default'] == 'true';
@@ -250,23 +287,22 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$bAddUser = $wgDPL2Options['adduser']['default'] == 'true';
 	$bAddCategories = $wgDPL2Options['addcategories']['default'] == 'true';
 	$_sCount = $wgDPL2Options['count']['default'];
-	$iCount = ($_sCount == '') ? null: intval($_sCount);
+	$iCount = ($_sCount == '') ? NULL: intval($_sCount);
 	$sListHtmlAttr = $wgDPL2Options['listattr']['default'];
 	$sItemHtmlAttr = $wgDPL2Options['itemattr']['default'];
 	$sHListHtmlAttr = $wgDPL2Options['hlistattr']['default'];
 	$sHItemHtmlAttr = $wgDPL2Options['hitemattr']['default'];
 	$_sTitleMaxLen = $wgDPL2Options['titlemaxlength']['default'];
-	$iTitleMaxLen = ($_sTitleMaxLen == '') ? null: intval($_sTitleMaxLen);
+	$iTitleMaxLen = ($_sTitleMaxLen == '') ? NULL: intval($_sTitleMaxLen);
+	$tLinksTo = Title::newFromText($localParser->transformMsg($wgDPL2Options['linksto']['default'], $pOptions));
 	
 	$aIncludeCategories = array(); // $aIncludeCategories is a 2-dimensional array: Memberarrays are linked using 'AND'
 	$aExcludeCategories = array();
+	$aCatHeadings = array();
 	$aNamespaces = array();
 	$aExcludeNamespaces  = array();
 	
-	//Local parser created. See http://meta.wikimedia.org/wiki/MediaWiki_extensions_FAQ#How_do_I_render_wikitext_in_my_extension.3F
-	$localParser = new Parser();
-	$pOptions = $parser->mOptions;
-	$pTitle = $parser->mTitle;
+	// Output
 	$output = '';
 	
 	//logger (display of debug messages)
@@ -274,6 +310,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 
 // ###### PARSE PARAMETERS ######
 	$aParams = explode("\n", $input);
+	$bIncludeUncat = false; // to check if pseudo-category of Uncategorized pages is included
 	
 	foreach($aParams as $iParam => $sParam) {
 		
@@ -284,27 +321,39 @@ function DynamicPageList2( $input, $params, &$parser ) {
 		$sArg = trim($aParam[1]);
 		
 		switch ($sType) {
+			/**
+			 * FILTER PARAMETERS
+			 */
 			case 'category':
 				// Init array of categories to include
 				$aCategories = array();
+				$bHeading = false;
+				if($sArg != '' && $sArg[0] == '+') {// categories are headings
+					$bHeading = true;
+					$sArg[0] = '';
+				}
 				$aParams = explode('|', $sArg);
 				foreach($aParams as $sParam) {
 					$sParam=trim($sParam);
-					if($sParam == '') // include uncategorized pages (special value: empty string)
+					if($sParam == '') { // include uncategorized pages (special value: empty string)
+						$bIncludeUncat = true;
 						$aCategories[] = '';
-					else {
+					} else {
 						$title = Title::newFromText($localParser->transformMsg($sParam, $pOptions));
-						if( $title != NULL )
+						if( !is_null($title) )
 							$aCategories[] = $title->getDbKey();
 					}
 				}
-				if( !empty($aCategories) )
+				if( !empty($aCategories) ) {
 					$aIncludeCategories[] = $aCategories;
+					if($bHeading)
+						$aCatHeadings = array_unique($aCatHeadings + $aCategories);
+				}	
 				break;
 				
 			case 'notcategory':
 				$title = Title::newFromText($localParser->transformMsg($sArg, $pOptions));
-				if( $title != NULL )
+				if( !is_null($title) )
 					$aExcludeCategories[] = $title->getDbKey();
 				break;
 				
@@ -312,73 +361,25 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				$aParams = explode('|', $sArg);
 				foreach($aParams as $sParam) {
 					$sParam=trim($sParam);
-					// Reject pseudo-namespaces (negative indices): Media (-2) and Special (-1). 
-					// Cannot get pages in these with DB query.
-					$mNs = $wgContLang->getNsIndex($sParam);
-					if( ($mNs === false) || ($mNs < 0) )
+					$sNs = $localParser->transformMsg($sParam, $pOptions);
+					if( !in_array($sNs, $wgDPL2Options['namespace']) )
 						return $logger->msgWrongParam('namespace', $sParam);
-					$aNamespaces[] = $mNs;
+					$aNamespaces[] = $wgContLang->getNsIndex($sNs);
 				}
 				break;
 			
 			case 'notnamespace':
 				$sArg=trim($sArg);
-				// Reject pseudo-namespaces (negative indices): Media (-2) and Special (-1).
-				// Cannot get pages in these with DB query.
-				$mNs = $wgContLang->getNsIndex($sArg);
-				if( ($mNs === false) || ($mNs < 0) )
+				$sNs = $localParser->transformMsg($sArg, $pOptions);
+				if( !in_array($sNs, $wgDPL2Options['notnamespace']) )
 					return $logger->msgWrongParam('notnamespace', $sArg);
-				$aExcludeNamespaces[] = $mNs;
+				$aExcludeNamespaces[] = $wgContLang->getNsIndex($sNs);
 				break;
-				
-			case 'count':
-				//ensure that $iCount is a number or no count limit;
-				if( preg_match($wgDPL2Options['count']['pattern'], $sArg) )
-					$iCount = ($sArg == '') ? null: intval($sArg);
-				else // wrong value
-					$output .= $logger->msgWrongParam('count', $sArg);
-				break;
-				
-			/**
-			 * @todo allow addpagetoucheddate, addeditdate, adduser, addcategories to have effect with 'mode=category'
-			 */
-			case 'mode':
-				if( in_array($sArg, $wgDPL2Options['mode']) )
-					//'none' mode is implemented as a specific submode of 'inline' with <BR/> as inline text
-					if($sArg == 'none') {
-						$sPageOutputMode = 'inline';
-						$sInlTxt = '<BR/>';
-					} else
-					$sPageOutputMode = $sArg;
-				else
-					$output .= $logger->msgWrongParam('mode', $sArg);
-				break;
-				
-			case 'headingmode':
-				if( in_array($sArg, $wgDPL2Options['headingmode']) )
-					$sHeadingOutputMode = $sArg;
-				else
-					$output .= $logger->msgWrongParam('headingmode', $sArg);
-				break;	
-				
-			case 'inlinetext':
-				//parse wiki text and get HTML output
-				$pOutput = $localParser->parse($sArg, $pTitle, $pOptions, false);
-				$sInlTxt = $pOutput->getText();
-				break;
-				
-			case 'order':
-				if( in_array($sArg, $wgDPL2Options['order']) )
-					$sOrder = $sArg;
-				else
-					$output .= $logger->msgWrongParam('order', $sArg);
-				break;	
-				
-			case 'ordermethod':
-				if( in_array($sArg, $wgDPL2Options['ordermethod']) )
-					$aOrderMethods = explode(',', $sArg);
-				else
-					$output .= $logger->msgWrongParam('ordermethod', $sArg);
+			
+			case 'linksto':
+				$tLinksTo = Title::newFromText($localParser->transformMsg($sArg, $pOptions));
+				if( is_null($tLinksTo) ) // wrong param
+					return $logger->msgWrongParam('linksto', $sArg);
 				break;
 			
 			case 'minoredits':
@@ -397,6 +398,31 @@ function DynamicPageList2( $input, $params, &$parser ) {
 					$output .= $logger->msgWrongParam('redirects', $sArg);
 				break;
 				
+			case 'count':
+				//ensure that $iCount is a number or no count limit;
+				if( preg_match($wgDPL2Options['count']['pattern'], $sArg) )
+					$iCount = ($sArg == '') ? NULL: intval($sArg);
+				else // wrong value
+					$output .= $logger->msgWrongParam('count', $sArg);
+				break;
+			
+			/**
+			 * CONTENT PARAMETERS
+			 */
+			case 'addcategories':
+				if( in_array($sArg, $wgDPL2Options['addcategories']))
+					$bAddCategories = $sArg == 'true';
+				else
+					$output .= $logger->msgWrongParam('addcategories', $sArg);
+				break;
+			
+			case 'addeditdate':
+				if( in_array($sArg, $wgDPL2Options['addeditdate']))
+					$bAddEditDate = $sArg == 'true';
+				else
+					$output .= $logger->msgWrongParam('addeditdate', $sArg);
+				break;
+			
 			case 'addfirstcategorydate':
 				if( in_array($sArg, $wgDPL2Options['addfirstcategorydate']))
 					$bAddFirstCategoryDate = $sArg == 'true';
@@ -410,26 +436,58 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				else
 					$output .= $logger->msgWrongParam('addpagetoucheddate', $sArg);
 				break;
-				
-			case 'addeditdate':
-				if( in_array($sArg, $wgDPL2Options['addeditdate']))
-					$bAddEditDate = $sArg == 'true';
-				else
-					$output .= $logger->msgWrongParam('addeditdate', $sArg);
-				break;
-			
+
 			case 'adduser':
 				if( in_array($sArg, $wgDPL2Options['adduser']))
 					$bAddUser = $sArg == 'true';
 				else
 					$output .= $logger->msgWrongParam('adduser', $sArg);
 				break;
-			
-			case 'addcategories':
-				if( in_array($sArg, $wgDPL2Options['addcategories']))
-					$bAddCategories = $sArg == 'true';
+				
+			/**
+			 * ORDER PARAMETERS
+			 */	
+			case 'ordermethod':
+				if( in_array($sArg, $wgDPL2Options['ordermethod']) )
+					$aOrderMethods = explode(',', $sArg);
 				else
-					$output .= $logger->msgWrongParam('addcategories', $sArg);
+					$output .= $logger->msgWrongParam('ordermethod', $sArg);
+				break;
+			
+			case 'order':
+				if( in_array($sArg, $wgDPL2Options['order']) )
+					$sOrder = $sArg;
+				else
+					$output .= $logger->msgWrongParam('order', $sArg);
+				break;
+				
+			/**
+			 * FORMAT/HTML PARAMETERS
+			 * @todo allow addpagetoucheddate, addeditdate, adduser, addcategories to have effect with 'mode=category'
+			 */
+			case 'headingmode':
+				if( in_array($sArg, $wgDPL2Options['headingmode']) )
+					$sHeadingOutputMode = $sArg;
+				else
+					$output .= $logger->msgWrongParam('headingmode', $sArg);
+				break;
+				
+			case 'mode':
+				if( in_array($sArg, $wgDPL2Options['mode']) )
+					//'none' mode is implemented as a specific submode of 'inline' with <BR/> as inline text
+					if($sArg == 'none') {
+						$sPageOutputMode = 'inline';
+						$sInlTxt = '<BR/>';
+					} else
+					$sPageOutputMode = $sArg;
+				else
+					$output .= $logger->msgWrongParam('mode', $sArg);
+				break;
+				
+			case 'inlinetext':
+				//parse wiki text and get HTML output
+				$pOutput = $localParser->parse($sArg, $pTitle, $pOptions, false);
+				$sInlTxt = $pOutput->getText();
 				break;
 			
 			case 'shownamespace':
@@ -438,17 +496,15 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				else
 					$output .= $logger->msgWrongParam('shownamespace', $sArg);
 				break;
-				
-			case 'debug':
-				if( in_array($sArg, $wgDPL2Options['debug']) ) {
-					if($iParam > 1)
-						$output .= $logger->msg(DPL2_WARN_DEBUGPARAMNOTFIRST, "$sArg");
-					$logger->iDebugLevel = intval($sArg);
-				}
-				else	
-					$output .= $logger->msgWrongParam('debug', $sArg);
-				break;
 			
+			case 'titlemaxlength':
+				//processed like 'count' param
+				if( preg_match($wgDPL2Options['titlemaxlength']['pattern'], $sArg) )
+					$iTitleMaxLen = ($sArg == '') ? NULL: intval($sArg);
+				else // wrong value
+					$output .= $logger->msgWrongParam('titlemaxlength', $sArg);
+				break;
+				
 			case 'listattr':
 				$sListHtmlAttr = $sArg;
 				break;
@@ -462,30 +518,33 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				$sHItemHtmlAttr = $sArg;
 				break;
 				
-			case 'titlemaxlength':
-				//processed like 'count' param
-				if( preg_match($wgDPL2Options['titlemaxlength']['pattern'], $sArg) )
-					$iTitleMaxLen = ($sArg == '') ? null: intval($sArg);
-				else // wrong value
-					$output .= $logger->msgWrongParam('titlemaxlength', $sArg);
+			/**
+			 * DEBUG PARAMETER
+			 */
+			case 'debug':
+				if( in_array($sArg, $wgDPL2Options['debug']) ) {
+					if($iParam > 1)
+						$output .= $logger->msg(DPL2_WARN_DEBUGPARAMNOTFIRST, "$sArg");
+					$logger->iDebugLevel = intval($sArg);
+				}
+				else
+					$output .= $logger->msgWrongParam('debug', $sArg);
 				break;
 				
+			/**
+			 * UNKNOWN PARAMETER
+			 */
 			default:
 				$output .= $logger->msg(DPL2_WARN_UNKNOWNPARAM, $sType, implode(', ', array_keys($wgDPL2Options)));
 		}
 	}
 	
 	$iIncludeCatCount = count($aIncludeCategories);
-	$iTotalIncludeCatCount = count($aIncludeCategories,COUNT_RECURSIVE) - $iIncludeCatCount;
+	$iTotalIncludeCatCount = count($aIncludeCategories, COUNT_RECURSIVE) - $iIncludeCatCount;
 	$iExcludeCatCount = count($aExcludeCategories);
 	$iTotalCatCount = $iTotalIncludeCatCount + $iExcludeCatCount;
 
 // ###### CHECKS ON PARAMETERS ######
-	
-	// no included categories or namespaces
-	if ( $iTotalCatCount == 0 && empty($aNamespaces) )
-		$output .= $logger->msg(DPL2_WARN_NOINCLUDEDCATSORNS);
-
 	// too many categories!!
 	if ( ($iTotalCatCount > $wgDPL2MaxCategoryCount) && (!$wgDPL2AllowUnlimitedCategories) )
 		return $logger->msg(DPL2_ERR_TOOMANYCATS, "$wgDPL2MaxCategoryCount");
@@ -507,8 +566,8 @@ function DynamicPageList2( $input, $params, &$parser ) {
 		return $logger->msg(DPL2_ERR_MORETHAN1TYPEOFDATE);
 
 	// category-style output requested with not compatible order method
-	if ($sPageOutputMode == 'category' && !in_array('title', $aOrderMethods))
-		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD,  'mode=category', 'title' );
+	if ($sPageOutputMode == 'category' && !array_intersect($aOrderMethods, array('sortkey', 'title')) )
+		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD,  'mode=category', 'sortkey | title' );
 	
 	// addpagetoucheddate=true with unappropriate order methods
 	if( $bAddPageTouchedDate && !array_intersect($aOrderMethods, array('pagetouched', 'title')) )
@@ -528,6 +587,29 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	if( $bAddUser && !array_intersect($aOrderMethods, array('firstedit', 'lastedit')) )
 		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD, 'adduser=true', 'firstedit | lastedit' );
 	
+	if( isset($sMinorEdits) && !array_intersect($aOrderMethods, array('firstedit', 'lastedit')) )
+		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD, 'minoredits', 'firstedit | lastedit' );
+	
+	/**
+	 * If we include the Uncategorized, we need the 'dpl_clview': VIEW of the categorylinks table where we have cl_to='' (empty string) for all uncategorized pages. This VIEW must have been created by the administrator of the mediawiki DB at installation. See the documentation.
+	 */
+	$dbr =& wfGetDB( DB_SLAVE );
+	$sPageTable = $dbr->tableName( 'page' );
+	$sCategorylinksTable = $dbr->tableName( 'categorylinks' );
+	$sDplClView = '';
+	if($bIncludeUncat) {
+		$sDplClView = $dbr->tableName( 'dpl_clview' );
+		// If the view is not there, we can't perform logical operations on the Uncategorized.
+		$res = $dbr->query( "SHOW TABLE STATUS LIKE '" . trim($sDplClView, '`') . "'" );
+		if ($dbr->numRows( $res ) != 0) {
+			$dbr->freeResult($res);
+		} else {
+			$sSqlCreate_dpl_clview = 'CREATE VIEW ' . $sDplClView . " AS SELECT IFNULL(cl_from, page_id) AS cl_from, IFNULL(cl_to, '') AS cl_to, cl_sortkey FROM " . $sPageTable . ' LEFT OUTER JOIN ' . $sCategorylinksTable . ' ON page_id=cl_from';
+			$output .= $logger->msg(DPL2_ERR_NOCLVIEW, $sDplClView, $sSqlCreate_dpl_clview);
+			return $output;
+		}
+	}
+	
 	//add*** parameters have no effect with 'mode=category' (only namespace/title can be viewed in this mode)
 	if( $sPageOutputMode == 'category' && ($bAddCategories || $bAddEditDate || $bAddFirstCategoryDate || $bAddPageTouchedDate || $bAddUser) )
 		$output .= $logger->msg(DPL2_WARN_CATOUTPUTBUTWRONGPARAMS);
@@ -537,9 +619,6 @@ function DynamicPageList2( $input, $params, &$parser ) {
 		$output .= $logger->msg(DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD, $sHeadingOutputMode, 'none');
 		$sHeadingOutputMode = 'none';
 	}
-	
-	if( isset($sMinorEdits) && !array_intersect($aOrderMethods, array('firstedit', 'lastedit')) )
-		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD, 'minoredits', 'firstedit | lastedit' );
 
 	// justify limits
 	if ( isset($iCount) ) {
@@ -550,11 +629,8 @@ function DynamicPageList2( $input, $params, &$parser ) {
 
 
 // ###### BUILD SQL QUERY ######
-
-	$dbr =& wfGetDB( DB_SLAVE );
-	$sPageTable = $dbr->tableName( 'page' );
 	$sSqlPage_touched = '';
-	$sCategorylinksTable = $dbr->tableName( 'categorylinks' );
+	$sSqlSortkey = '';
 	$sSqlCl_to = '';
 	$sSqlCats = '';
 	$sSqlCl_timestamp = '';
@@ -563,33 +639,68 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$sSqlClTableForGC = '';
 	$sSqlCond_page_cl_gc = '';
 	$sRevisionTable = $dbr->tableName( 'revision' );
-	$sSqlRevision = '';
+	$sSqlRevisionTable = '';
 	$sSqlRev_timestamp = '';
 	$sSqlRev_user = '';
 	$sSqlCond_page_rev = '';
+	$sPageLinksTable = $dbr->tableName( 'pagelinks' );
+	$sSqlPageLinksTable = '';
+	$sSqlCond_page_pl = '';
+	$sSqlWhere = ' WHERE 1=1 ';
+	$sSqlGroupBy = '';
 	
 	foreach($aOrderMethods as $sOrderMethod) {
 		switch ($sOrderMethod) {
 			case 'category':
-				$sSqlCl_to = 'cl_head.cl_to, '; // Gives category headings in the result
-				$sSqlClHeadTable = $sCategorylinksTable . ' AS cl_head';
+				$sSqlCl_to = "cl_head.cl_to, "; // Gives category headings in the result
+				$sSqlClHeadTable = ( in_array('', $aCatHeadings) ? $sDplClView : $sCategorylinksTable ) . ' AS cl_head';
 				$sSqlCond_page_cl_head = 'page_id=cl_head.cl_from';
+				if(!empty($aCatHeadings))
+					$sSqlWhere .= " AND cl_head.cl_to IN ('" . implode("', '", $aCatHeadings) . "')";
 				break;
 			case 'firstedit':
-				$sSqlRevision = $sRevisionTable . ', ';
+				$sSqlRevisionTable = $sRevisionTable . ', ';
 				$sSqlRev_timestamp = ', min(rev_timestamp) AS rev_timestamp';
 				$sSqlCond_page_rev = ' AND page_id=rev_page';
+				$sSqlGroupBy = ' GROUP BY ' . $sSqlCl_to . 'page_id';
 				break;
 			case 'lastedit':
-				$sSqlRevision = $sRevisionTable . ', ';
+				$sSqlRevisionTable = $sRevisionTable . ', ';
 				$sSqlRev_timestamp = ', max(rev_timestamp) AS rev_timestamp';
 				$sSqlCond_page_rev = ' AND page_id=rev_page';
+				$sSqlGroupBy = ' GROUP BY ' . $sSqlCl_to . 'page_id';
+				break;
+			case 'sortkey':
+				// We need the namespaces with strictly positive indices (DPL2 allowed namespaces, except the first one: Main).
+				$aStrictNs = array_slice($wgDPL2AllowedNamespaces, 1, count($wgDPL2AllowedNamespaces), true);
+				// map ns index to name
+				$sSqlNsIdToText = 'CASE page_namespace';
+				foreach($aStrictNs as $iNs => $sNs)
+					$sSqlNsIdToText .= ' WHEN ' . $iNs . " THEN '"  . $sNs . "'";
+				$sSqlNsIdToText .= ' END';
+				// If cl_sortkey is null (uncategorized page), generate a sortkey in the usual way (full page name, underscores replaced with spaces).
+				$sSqlSortkey = ", IFNULL(cl_head.cl_sortkey, REPLACE(CONCAT( IF(page_namespace=0, '', CONCAT(" . $sSqlNsIdToText . ", ':')), page_title), '_', ' ')) as sortkey";
+				break;
+			case 'title':
+				$aStrictNs = array_slice($wgDPL2AllowedNamespaces, 1, count($wgDPL2AllowedNamespaces), true);
+				// map ns index to name
+				$sSqlNsIdToText = 'CASE page_namespace';
+				foreach($aStrictNs as $iNs => $sNs)
+					$sSqlNsIdToText .= ' WHEN ' . $iNs . " THEN '"  . $sNs . "'";
+				$sSqlNsIdToText .= ' END';
+				// Generate sortkey like for category links.
+				$sSqlSortkey = ", REPLACE(CONCAT( IF(page_namespace=0, '', CONCAT(" . $sSqlNsIdToText . ", ':')), page_title), '_', ' ') as sortkey";
 				break;
 			case 'user':
-				$sSqlRevision = $sRevisionTable . ', ';
-				break;	
+				$sSqlRevisionTable = $sRevisionTable . ', ';
+				break;
 		}
 	}
+	
+	if ( !is_null($tLinksTo) ) {
+		$sSqlPageLinksTable = $sPageLinksTable . ' as pl, ';
+ 		$sSqlCond_page_pl = ' AND page_id=pl.pl_from  AND pl.pl_namespace=' . $tLinksTo->getNamespace() . " AND pl.pl_title='" . $tLinksTo->getDbKey() . "'";
+ 	}
 	
 	if ($bAddFirstCategoryDate)
 		//format cl_timestamp field (type timestamp) to string in same format as rev_timestamp field
@@ -603,10 +714,11 @@ function DynamicPageList2( $input, $params, &$parser ) {
 		$sSqlCats = ", GROUP_CONCAT(DISTINCT cl_gc.cl_to ORDER BY cl_gc.cl_to ASC SEPARATOR ' | ') AS cats"; // Gives list of all categories linked from each article, if any.
 		$sSqlClTableForGC = $sCategorylinksTable . ' AS cl_gc'; // Categorylinks table used by the Group Concat (GC) function above
 		$sSqlCond_page_cl_gc = 'page_id=cl_gc.cl_from';
+		$sSqlGroupBy = ' GROUP BY ' . $sSqlCl_to . 'page_id';
 	}
 	
 	// SELECT ... FROM
-	$sSqlSelectFrom = 'SELECT DISTINCT ' . $sSqlCl_to . 'page_namespace, page_title' . $sSqlPage_touched . $sSqlRev_timestamp . $sSqlRev_user . $sSqlCats . $sSqlCl_timestamp . ' FROM ' . $sSqlRevision . $sPageTable;
+	$sSqlSelectFrom = 'SELECT DISTINCT ' . $sSqlCl_to . 'page_namespace, page_title' . $sSqlSortkey . $sSqlPage_touched . $sSqlRev_timestamp . $sSqlRev_user . $sSqlCats . $sSqlCl_timestamp . ' FROM ' . $sSqlRevisionTable . $sSqlPageLinksTable . $sPageTable;
 	
 	// JOIN ...
 	if($sSqlClHeadTable != '' || $sSqlClTableForGC != '') {
@@ -615,41 +727,17 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	}
 	
 	// Include categories...
-	// If we include the Uncategorized, we use the 'dpl_clview': VIEW of the categorylinks table where we have cl_to='' (empty string) for all uncategorized pages. This VIEW must have been created by the administrator of the mediawiki DB at installation. See the documentation.
-	$sDplClView = $dbr->tableName( 'dpl_clview' );
-	// If the view is not there, we can't perform logical operations on the Uncategorized.
-	$dpl_clview_exists = false;
-	$res = $dbr->query( "SHOW TABLE STATUS LIKE '" . trim($sDplClView, '`') . "'" );
-	if ($dbr->numRows( $res ) != 0) {
-		$dbr->freeResult($res);
-		$dpl_clview_exists = true;
-	}
-	
 	$iClTable = 0;
 	for ($i = 0; $i < $iIncludeCatCount; $i++) {
-		$sSqlSelectFrom .= ' INNER JOIN ';
-		// If we want the Uncategorized...
- 		if( in_array('', $aIncludeCategories[$i]) )
- 			if($dpl_clview_exists)
- 				$sSqlSelectFrom .= $sDplClView;
- 			else {
- 				$sSqlCreate_dpl_clview = 'CREATE VIEW ' . $sDplClView . " AS SELECT COALESCE(cl_from, page_id) AS cl_from, COALESCE(cl_to, '') AS cl_to FROM " . $sPageTable . ' LEFT OUTER JOIN ' . $sCategorylinksTable . ' ON page_id=cl_from';
-				$output .= $logger->msg(DPL2_ERR_NOCLVIEW, $sDplClView, $sSqlCreate_dpl_clview);
-				return $output;
-			}
- 		else
-			$sSqlSelectFrom .= $sCategorylinksTable;
-		$sSqlSelectFrom .= ' AS cl' . $iClTable .
-			' ON page_id=cl' . $iClTable . '.cl_from' .
- 			' AND (cl' . $iClTable . '.cl_to=' . $dbr->addQuotes($aIncludeCategories[$i][0]);
+		// If we want the Uncategorized
+		$sSqlSelectFrom .= ' INNER JOIN ' . ( in_array('', $aIncludeCategories[$i]) ? $sDplClView : $sCategorylinksTable ) . ' AS cl' . $iClTable . ' ON page_id=cl' . $iClTable . '.cl_from AND (cl' . $iClTable . '.cl_to=' . $dbr->addQuotes($aIncludeCategories[$i][0]);
 		for ($j = 1; $j < count($aIncludeCategories[$i]); $j++)
 			$sSqlSelectFrom .= ' OR cl' . $iClTable . '.cl_to=' . $dbr->addQuotes($aIncludeCategories[$i][$j]);
 		$sSqlSelectFrom .= ') ';
 		$iClTable++;
 	}
 	
-	// Exclude categories... and start the WHERE clause on category fields for exclusion of categories
-	$sSqlWhere = ' WHERE 1=1 ';
+	// Exclude categories...
 	for ($i = 0; $i < $iExcludeCatCount; $i++) {
 		$sSqlSelectFrom .=
 			' LEFT OUTER JOIN ' . $sCategorylinksTable . ' AS cl' . $iClTable .
@@ -681,11 +769,13 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			break;
 	}
 	
-	//page_id=rev_page (if revision table required)
+	// page_id=rev_page (if revision table required)
 	$sSqlWhere .= $sSqlCond_page_rev;
+	// page_id=pl.pl_from (if pagelinks table required)
+	$sSqlWhere .= $sSqlCond_page_pl;
 	
 	// GROUP BY ...
-	$sSqlWhere .= ' GROUP BY ' . $sSqlCl_to . 'page_id';// for min or max(rev_timestamp) (page_id=rev_page)
+	$sSqlWhere .= $sSqlGroupBy;
 	
 	// ORDER BY ...
 	$sSqlWhere .= ' ORDER BY ';
@@ -706,8 +796,9 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			case 'pagetouched':
 				$sSqlWhere .= 'page_touched';
 				break;
+			case 'sortkey':
 			case 'title':
-				$sSqlWhere .= 'page_title';
+				$sSqlWhere .= 'sortkey';
 				break;
 			case 'user':
 				// rev_user_text can discriminate anonymous users (e.g. based on IP), rev_user cannot (=' 0' for all)
@@ -729,7 +820,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 // ###### PROCESS SQL QUERY ######
 	//DEBUG: output SQL query 
 	$output .= $logger->msg(DPL2_QUERY, $sSqlSelectFrom . $sSqlWhere);
-	//echo 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br />";
+	// echo 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br />";
 
 	$res = $dbr->query($sSqlSelectFrom . $sSqlWhere);
 	if ($dbr->numRows( $res ) == 0) {
@@ -763,7 +854,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 		//HEADINGS (category,... or user,... ordermethods)
 		if($sHeadingOutputMode != 'none')
 			switch($aOrderMethods[0]) {
-				case 'category': 
+				case 'category':
 					if($row->cl_to == '') //uncategorized page
 						$aHeadings[] = $sSpecUncatLnk;
 					else {
@@ -799,7 +890,8 @@ function DynamicPageList2( $input, $params, &$parser ) {
 		$aArticles[] = $sk->makeKnownLinkObj($title,  $wgContLang->convertHtml($sTitleText));
 		
 		//get first char used for category-style output
-		$aArticles_start_char[] = $wgContLang->convert($wgContLang->firstChar($row->page_title));
+		if( isset($row->sortkey) )
+			$aArticles_start_char[] = $wgContLang->convert($wgContLang->firstChar($row->sortkey));
 			
 		//SHOW "PAGE_TOUCHED" DATE, "FIRSTCATEGORYDATE" OR (FIRST/LAST) EDIT DATE
 		if($bAddPageTouchedDate)
@@ -909,7 +1001,7 @@ function DPL2OutputListStyle ($aArticles, $aAddDates, $aAddUsers, $aAddCategorie
 			$r .= $mode->sInline; //If mode is not 'inline', sInline attribute is empty, so does nothing
 		$r .= $mode->sStartItem;
 		if($aAddDates[$i] != '')
-			$r .=  $wgLang->date($aAddDates[$i]) . ': ';
+			$r .=  $wgLang->timeanddate($aAddDates[$i]) . ': ';
 		$r .= $aArticles[$i];
 		if($aAddUsers[$i] != '')
 			$r .= ' . . ' . $aAddUsers[$i];
@@ -990,22 +1082,16 @@ class DPL2Logger {
 		global $wgContLang, $wgDPL2Options;
 		$msgid = DPL2_WARN_WRONGPARAM;
 		switch($paramvar) {
+			case 'namespace':
+			case 'notnamespace':
+				$msgid = DPL2_ERR_WRONGNS;
+				break;
+			case 'linksto':
+				$msgid = DPL2_ERR_WRONGLINKSTO;
+				break;
 			case 'count':
 			case 'titlemaxlength':
 				$msgid = DPL2_WARN_WRONGPARAM_INT;
-				break;
-			case 'namespace':
-			case 'notnamespace':
-				//get available namespaces
-				if( empty($wgDPL2Options['namespace']) ) {
-					$aNsTexts = $wgContLang->getNamespaces();
-					//remove the 2 pseudo-namespaces (invalid)
-					$wgDPL2Options['notnamespace'] =
-						$wgDPL2Options['namespace'] = array_slice($aNsTexts, 2, count($aNsTexts), true);
-					$wgDPL2Options['namespace']['default'] =
-						$wgDPL2Options['notnamespace']['default'] = null;
-				}
-				$msgid = DPL2_ERR_WRONGNS;
 				break;
 		}
 		$paramoptions = array_unique($wgDPL2Options[$paramvar]);
