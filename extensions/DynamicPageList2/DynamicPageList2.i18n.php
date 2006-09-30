@@ -23,7 +23,12 @@ $wgDPL2Messages['en'] = array(
 	 * $1: wrong parameter given by user
 	 * $3: list of possible titles of namespaces (except pseudo-namespaces: Media, Special)
 	 */
-	'dpl2_debug_' . DPL2_ERR_WRONGNS => "ERROR: Wrong '$0' parameter: '$1'! Help:  <code>$0= <i>empty string</i> (Main)$3</code>.",
+	'dpl2_debug_' . DPL2_ERR_WRONGNS => "ERROR: Wrong '$0' parameter: '$1'! Help:  <code>$0= <i>empty string</i> (Main)$3</code>. (Equivalents with magic words are allowed too.)",
+	/**
+	 * $0: 'linksto' (left as $0 just in case the parameter is renamed in the future)
+	 * $1: wrong parameter given by user
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGLINKSTO => "ERROR: Wrong '$0' parameter: '$1'! Help:  <code>$0= <i>full pagename</i></code>. (Magic words are allowed.)",
 	/**
 	 * $0: max number of categories that can be included
 	*/
@@ -63,7 +68,6 @@ $wgDPL2Messages['en'] = array(
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "WARNING: Wrong '$0' parameter: '$1'! Using default: '$2' (no limit). Help: <code>$0= <i>empty string</i> (no limit) | n</code>, with <code>n</code> a positive integer.",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'WARNING: No results!',
-	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "WARNING: It is strongly recommended to either limit the number of results with the 'count' parameter or include at least one category / namespace. If not, the generation of the page list can be quite resource and time-consuming.",
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "WARNING: Add* parameters ('adduser', 'addeditdate', etc.)' have no effect with 'mode=category'. Only the page namespace/title can be viewed in this mode.",
 	/**
 	 * $0: 'headingmode' value given by user
@@ -139,7 +143,7 @@ $wgDPL2Messages['he'] = array(
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "אזהרה: פרמטר '$0' שגוי: '$1'! משתמש בברירת המחדל: '$2' (ללא הגבלה). עזרה: <code>$0= <i>מחרוזת ריקה</i> (ללא הגבלה) | n</code>, עם <code>n</code> כמספר שלם וחיובי.",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'אזהרה: אין תוצאות!',
-	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "אזהרה: מומלץ ביותר או להגביל את מספר התוצאות עם הפרמטר 'count' או להכליל לפחות קטגוריה אחת או מרחב שם אחד. אם לא, היצירה של רשימת הדפים עלולה לקחת זמן ולבזבז משאבים.",
+	// 'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "אזהרה: מומלץ ביותר או להגביל את מספר התוצאות עם הפרמטר 'count' או להכליל לפחות קטגוריה אחת או מרחב שם אחד. אם לא, היצירה של רשימת הדפים עלולה לקחת זמן ולבזבז משאבים.",
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "אזהרה: להוספת* הפרמטרים ('adduser',‏ 'addeditdate' וכדומה) אין השפעה עם 'mode=category'. ניתן לצפות רק במרחב השם או בכותרת הדף במצב זה.",
 	/**
 	 * $0: 'headingmode' value given by user
@@ -197,7 +201,7 @@ $wgDPL2Messages['nl'] = array(
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
-
+	
 	// WARNINGS
 	/**
 	 * $0: unknown parameter given by user
@@ -215,7 +219,7 @@ $wgDPL2Messages['nl'] = array(
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT],
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'WAARSCHUWING: Geen resultaten!',
-	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => 'WAARSCHUWING: Het is sterk aan te bevelen om tenminste één categorie of naamruimte op te nemen. Zo niet, dan is het samenstellen van de paginalijst een redelijk zware belasting voor systeembronnen en kan dit proces redelijk lang duren.',
+	// 'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => 'WAARSCHUWING: Het is sterk aan te bevelen om tenminste één categorie of naamruimte op te nemen. Zo niet, dan is het samenstellen van de paginalijst een redelijk zware belasting voor systeembronnen en kan dit proces redelijk lang duren.',
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "WAARSCHUWING: Add* parameters ('adduser', 'addeditdate', etc.)' heeft geen effect bij 'mode=category'. Alleen de paginanaamruimte/titel is in deze modus te bekijken.",
 	/**
 	 * $0: 'headingmode' value given by user
@@ -291,7 +295,7 @@ $wgDPL2Messages['ru'] = array(
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "ПРЕДУПРЕЖДЕНИЕ: неправильный параметр «$0»: «$1»! Использование параметра по умолчанию: «$2» (без ограничений). Подсказка: <code>$0= <i>пустая строка</i> (без ограничений) | n</code>, с <code>n</code> равным положительному целому числу.",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'ПРЕДУПРЕЖДЕНИЕ: не найдено!',
-	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "ПРЕДУПРЕЖДЕНИЕ: настоятельно рекомендуется ограничивать число результатов с помощью параметра «count» или включать по крайней мере одну категорию или пространство имён. В противном случае создание списка страниц может стать весьма ресурсоёмким и занимающим много времени.",
+	// 'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "ПРЕДУПРЕЖДЕНИЕ: настоятельно рекомендуется ограничивать число результатов с помощью параметра «count» или включать по крайней мере одну категорию или пространство имён. В противном случае создание списка страниц может стать весьма ресурсоёмким и занимающим много времени.",
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "ПРЕДУПРЕЖДЕНИЕ: Добавление* параметров («adduser», «addeditdate», и др.) не действительны с «mode=category». Только пространства имён или названия могут просматриваться в этом режиме.",
 	/**
 	 * $0: 'headingmode' value given by user
@@ -367,7 +371,7 @@ $wgDPL2Messages['zh-cn'] = array(
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "警告: 错误的 '$0' 参数: '$1'! 正在使用默认值: '$2' (没有上限)。 帮助: <code>$0= <i>空白字符串</i> (没有上限) | n</code>, <code>n</code>是一个正整数。",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => '警告: 无结果!',
-	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "警告: 强烈建议，只可利用 'count' 参数去设定结果上限，或者包含最少一个分类／空间名。不然的话，整个页表会花费很好多资源和时间产生。",
+	// 'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "警告: 强烈建议，只可利用 'count' 参数去设定结果上限，或者包含最少一个分类／空间名。不然的话，整个页表会花费很好多资源和时间产生。",
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "警告: 加入* 参数 ('adduser', 'addeditdate', 等)' 是对 'mode=category' 没有作用。只有页面空间名／标题才可以在这个模式度看到。",
 	/**
 	 * $0: 'headingmode' value given by user
@@ -443,7 +447,7 @@ $wgDPL2Messages['zh-tw'] = array(
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "警告: 錯誤的 '$0' 參數: '$1'! 正在使用預設值: '$2' (沒有上限)。 說明: <code>$0= <i>空白字串</i> (沒有上限) | n</code>, <code>n</code>是一個正整數。",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => '警告: 無結果!',
-	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "警告: 強烈建議，只可利用 'count' 參數去設定結果上限，或者包含最少一個分類／空間名。不然的話，整個頁表會花費很好多資源和時間產生。",
+	// 'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "警告: 強烈建議，只可利用 'count' 參數去設定結果上限，或者包含最少一個分類／空間名。不然的話，整個頁表會花費很好多資源和時間產生。",
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "警告: 加入* 參數 ('adduser', 'addeditdate', 等)' 是對 'mode=category' 沒有作用。只有頁面空間名／標題才可以在這個模式度看到。",
 	/**
 	 * $0: 'headingmode' value given by user
@@ -519,7 +523,7 @@ $wgDPL2Messages['zh-yue'] = array(
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "警告: 錯誤嘅 '$0' 參數: '$1'! 用緊預設嘅: '$2' (冇上限)。 幫助: <code>$0= <i>空字串</i> (冇上限) | n</code>, <code>n</code>係一個正整數。",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => '警告: 無結果!',
-	'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "警告: 強烈建議，一係就利用 'count' 參數去設定結果上限，或者包含最少一個分類／空間名。唔係嘅話，整個頁表會嘥好多資源同時間。",
+	// 'dpl2_debug_' . DPL2_WARN_NOINCLUDEDCATSORNS => "警告: 強烈建議，一係就利用 'count' 參數去設定結果上限，或者包含最少一個分類／空間名。唔係嘅話，整個頁表會嘥好多資源同時間。",
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "警告: 加入* 參數 ('adduser', 'addeditdate', 等)' 係對 'mode=category' 冇作用嘅。只有頁空間名／標題至可以響呢個模式度睇到。",
 	/**
 	 * $0: 'headingmode' value given by user
