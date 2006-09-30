@@ -894,7 +894,7 @@ class DefinedMeaningReferenceEditor extends SuggestEditor {
 		$definedMeaningLabel = $value->getAttributeValue($definedMeaningLabelAttribute);
 		$definedMeaningDefiningExpression = $value->getAttributeValue($definedMeaningDefiningExpressionAttribute);
 		
-		return definedMeaningReferenceAsLink($definedMeaningId, $definedMeaningLabel, $definedMeaningDefiningExpression);
+		return definedMeaningReferenceAsLink($definedMeaningId, $definedMeaningDefiningExpression, $definedMeaningLabel);
 	}
 }
 
