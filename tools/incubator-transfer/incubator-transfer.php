@@ -17,9 +17,10 @@ if ( substr( $prefix, -1 ) == '/' ) {
 	$prefix = substr( $prefix, 0, -1 );
 }
 $prefix = ucfirst( $prefix );
+print "Prefix: $prefix, destination: $destDB\n";
 
 # Initialise Dumper object
-$dumper = new BackupDumper( array( '--output', 'file:transfer.xml' ) );
+$dumper = new BackupDumper( array( '--output=file:transfer.xml' ) );
 
 # Get page list
 $dbr =& wfGetDB( DB_SLAVE );
@@ -37,6 +38,9 @@ while ( $row = $dbr->fetchObject( $res ) ) {
 	$dumper->pages[] = $title->getPrefixedDBkey();
 }
 $dbr->freeResult( $res );
+
+# Save a list file
+file_put_contents( 'transfer.lst', implode( "\n", $dumper->pages ) );
 
 # Export the XML
 $dumper->dump( MW_EXPORT_FULL );
