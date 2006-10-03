@@ -26,7 +26,7 @@
 
 if (!defined('MEDIAWIKI')) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiFormatBase.php");
+	require_once ('ApiFormatBase.php');
 }
 
 class ApiFormatJson extends ApiFormatBase {
@@ -42,11 +42,15 @@ class ApiFormatJson extends ApiFormatBase {
 	public function execute() {
 		require ('ApiFormatJson_json.php');
 		$json = new Services_JSON();
-		$this->printText($json->encode($this->getResult()->getData(), true));
+		$this->printText($json->encode($this->getResultData(), true));
 	}
 
 	protected function getDescription() {
 		return 'Output data in JSON format';
+	}
+
+	public function getVersion() {
+		return __CLASS__ . ': $Id$';
 	}
 }
 ?>

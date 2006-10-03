@@ -26,19 +26,20 @@
 
 if (!defined('MEDIAWIKI')) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiBase.php");
+	require_once ('ApiBase.php');
 }
 
 class ApiMain extends ApiBase {
 
-	private $mPrinter, $mModules, $mModuleNames, $mFormats, $mFormatNames, $mApiStartTime, $mResult;
+	private $mPrinter, $mModules, $mModuleNames, $mFormats, $mFormatNames;
+	private $mApiStartTime, $mResult, $mShowVersions, $mEnableWrite;
 
 	/**
 	* Constructor
 	* $apiStartTime - time of the originating call for profiling purposes
 	* $modules - an array of actions (keys) and classes that handle them (values) 
 	*/
-	public function __construct($apiStartTime, $modules, $formats) {
+	public function __construct($apiStartTime, $modules, $formats, $enableWrite) {
 		// Special handling for the main module: $parent === $this
 		parent :: __construct($this);
 
@@ -48,37 +49,52 @@ class ApiMain extends ApiBase {
 		$this->mFormatNames = array_keys($formats);
 		$this->mApiStartTime = $apiStartTime;
 		$this->mResult = new ApiResult($this);
+		$this->mShowVersions = false;
+		$this->mEnableWrite = $enableWrite;
 	}
 
-	public function getResult() {
+	public function & getResult() {
 		return $this->mResult;
+	}
+
+	public function getShowVersions() {
+		return $this->mShowVersions;
+	}
+
+	public function requestWriteMode() {
+		if (!$this->mEnableWrite)
+			$this->dieUsage('Editing of this site is disabled. Make sure the $wgEnableWriteAPI=true; ' .
+			'statement is included in the site\'s LocalSettings.php file', 'readonly');
 	}
 
 	protected function getAllowedParams() {
 		return array (
 			'format' => array (
-				GN_ENUM_DFLT => API_DEFAULT_FORMAT,
-				GN_ENUM_TYPE => $this->mFormatNames
+				ApiBase :: PARAM_DFLT => API_DEFAULT_FORMAT,
+				ApiBase :: PARAM_TYPE => $this->mFormatNames
 			),
 			'action' => array (
-				GN_ENUM_DFLT => 'help',
-				GN_ENUM_TYPE => $this->mModuleNames
-			)
+				ApiBase :: PARAM_DFLT => 'help',
+				ApiBase :: PARAM_TYPE => $this->mModuleNames
+			),
+			'version' => false
 		);
 	}
 
 	protected function getParamDescription() {
 		return array (
 			'format' => 'The format of the output',
-			'action' => 'What action you would like to perform'
+			'action' => 'What action you would like to perform',
+			'version' => 'When showing help, include version for each module'
 		);
 	}
 
 	public function execute() {
 		$this->profileIn();
-		$action = $format = null;
+		$action = $format = $version = null;
 		try {
 			extract($this->extractRequestParams());
+			$this->mShowVersions = $version;
 
 			// Create an appropriate printer
 			$this->mPrinter = new $this->mFormats[$format] ($this, $format);
@@ -89,11 +105,14 @@ class ApiMain extends ApiBase {
 			$module->execute();
 			$module->profileOut();
 			$this->printResult(false);
+
 		} catch (UsageException $e) {
+
 			// Printer may not be initialized if the extractRequestParams() fails for the main module
 			if (!isset ($this->mPrinter))
 				$this->mPrinter = new $this->mFormats[API_DEFAULT_FORMAT] ($this, API_DEFAULT_FORMAT);
 			$this->printResult(true);
+
 		}
 		$this->profileOut();
 	}
@@ -123,13 +142,16 @@ class ApiMain extends ApiBase {
 
 	public function mainDieUsage($description, $errorCode, $httpRespCode = 0) {
 		$this->mResult->Reset();
-		$this->mResult->addMessage('error', null, $errorCode);
 		if ($httpRespCode === 0)
 			header($errorCode, true);
 		else
 			header($errorCode, true, $httpRespCode);
 
-		$this->mResult->addMessage('usage', null, $this->makeHelpMsg());
+		$data = array (
+			'code' => $errorCode
+		);
+		ApiResult :: setContent($data, $this->makeHelpMsg());
+		$this->mResult->addValue(null, 'error', $data);
 
 		throw new UsageException($description, $errorCode);
 	}
@@ -174,6 +196,15 @@ class ApiMain extends ApiBase {
 		}
 		return $this->mIsBot;
 	}
+
+	public function getVersion() {
+		$vers = array ();
+		$vers[] = __CLASS__ . ': $Id$';
+		$vers[] = ApiBase :: getBaseVersion();
+		$vers[] = ApiFormatBase :: getBaseVersion();
+		$vers[] = ApiQueryBase :: getBaseVersion();
+		return $vers;
+	}
 }
 
 /**
@@ -191,5 +222,4 @@ class UsageException extends Exception {
 		return "{$this->codestr}: {$this->message}";
 	}
 }
-
 ?>

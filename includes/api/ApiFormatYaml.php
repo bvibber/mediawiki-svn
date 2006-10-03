@@ -26,7 +26,7 @@
 
 if (!defined('MEDIAWIKI')) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiFormatBase.php");
+	require_once ('ApiFormatBase.php');
 }
 
 class ApiFormatYaml extends ApiFormatBase {
@@ -41,11 +41,15 @@ class ApiFormatYaml extends ApiFormatBase {
 
 	public function execute() {
 		require ('ApiFormatYaml_spyc.php');
-		$this->printText(Spyc :: YAMLDump($this->getResult()->getData()));
+		$this->printText(Spyc :: YAMLDump($this->getResultData()));
 	}
 
 	protected function getDescription() {
 		return 'Output data in YAML format';
+	}
+
+	public function getVersion() {
+		return __CLASS__ . ': $Id$';
 	}
 }
 ?>

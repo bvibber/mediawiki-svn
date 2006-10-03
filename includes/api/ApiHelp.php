@@ -26,7 +26,7 @@
 
 if (!defined('MEDIAWIKI')) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiBase.php");
+	require_once ('ApiBase.php');
 }
 
 class ApiHelp extends ApiBase {
@@ -46,6 +46,10 @@ class ApiHelp extends ApiBase {
 		return array (
 			'Display this help screen.'
 		);
+	}
+
+	public function getVersion() {
+		return __CLASS__ . ': $Id$';
 	}
 }
 ?>

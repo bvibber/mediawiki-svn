@@ -26,7 +26,7 @@
 
 if (!defined('MEDIAWIKI')) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiBase.php");
+	require_once ('ApiBase.php');
 }
 
 abstract class ApiFormatBase extends ApiBase {
@@ -94,7 +94,7 @@ abstract class ApiFormatBase extends ApiBase {
 			<small>
 			This result is being shown in <?=$this->mFormat?> format,
 			which might not be suitable for your application.<br/>
-			See <a href="api.php">API help</a> for more information.<br/>
+			See <a href='api.php'>API help</a> for more information.<br/>
 			</small>
 <?php
 
@@ -131,7 +131,7 @@ abstract class ApiFormatBase extends ApiBase {
 
 	/**
 	* Prety-print various elements in HTML format, such as xml tags and URLs.
-	* This method also replaces any "<" with &lt;
+	* This method also replaces any '<' with &lt;
 	*/
 	protected function formatHTML($text) {
 		// encode all tags as safe blue strings
@@ -142,6 +142,8 @@ abstract class ApiFormatBase extends ApiBase {
 		$text = ereg_replace("api\\.php\\?[^ ()<\n\t]+", '<a href="\\0">\\0</a>', $text);
 		// make strings inside * bold
 		$text = ereg_replace("\\*[^<>\n]+\\*", '<b>\\0</b>', $text);
+		// make strings inside $ italic
+		$text = ereg_replace("\\$[^<>\n]+\\$", '<b><i>\\0</i></b>', $text);
 
 		return $text;
 	}
@@ -151,6 +153,10 @@ abstract class ApiFormatBase extends ApiBase {
 	 */
 	protected function getExamples() {
 		return 'api.php?action=query&meta=siteinfo&si=namespaces&format=' . $this->mOriginalFormat;
+	}
+
+	public static function getBaseVersion() {
+		return __CLASS__ . ': $Id$';
 	}
 }
 ?>

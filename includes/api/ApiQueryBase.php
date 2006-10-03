@@ -26,18 +26,25 @@
 
 if (!defined('MEDIAWIKI')) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiBase.php");
+	require_once ('ApiBase.php');
 }
 
 abstract class ApiQueryBase extends ApiBase {
 
-	private $mQueryModule, $mModuleName, $mGenerator;
+	private $mQueryModule, $mModuleName, $mIsGenerator;
 
-	public function __construct($query, $moduleName, $generator = false) {
+	public function __construct($query, $moduleName, $isGenerator = false) {
 		parent :: __construct($query->getMain());
 		$this->mQueryModule = $query;
 		$this->mModuleName = $moduleName;
-		$this->mGenerator = $generator;
+		$this->mIsGenerator = $isGenerator;
+	}
+
+	/**
+	 * Override this method to request extra fields from the pageSet
+	 * using $this->getPageSet()->requestField('fieldName')
+	 */
+	public function requestExtraData() {
 	}
 
 	/**
@@ -55,6 +62,16 @@ abstract class ApiQueryBase extends ApiBase {
 	}
 
 	/**
+	 * Overrides base class to prepend 'g' to every generator parameter
+	 */
+	public function extractRequestParams() {
+		$prefix = '';
+		if($this->isGenerator())
+			$prefix = 'g';
+		return parent :: extractRequestParams($prefix);
+	}
+	
+	/**
 	 * Get the Query database connection (readonly)
 	 */
 	protected function getDB() {
@@ -65,15 +82,15 @@ abstract class ApiQueryBase extends ApiBase {
 	 * Get the PageSet object to work on
 	 * @return ApiPageSet data
 	 */
-	protected function getData() {
-		return $this->mQueryModule->getData();
+	protected function getPageSet() {
+		return $this->mQueryModule->getPageSet();
 	}
 
 	/**
 	 * Return true if this instance is being used as a generator.
 	 */
-	protected function getIsGenerator() {
-		return $this->mGenerator;
+	protected function isGenerator() {
+		return $this->mIsGenerator;
 	}
 
 	/**
@@ -86,8 +103,13 @@ abstract class ApiQueryBase extends ApiBase {
 	public static function titleToKey($title) {
 		return str_replace(' ', '_', $title);
 	}
+	
 	public static function keyToTitle($key) {
 		return str_replace('_', ' ', $key);
+	}
+
+	public static function getBaseVersion() {
+		return __CLASS__ . ': $Id$';
 	}
 }
 ?>
