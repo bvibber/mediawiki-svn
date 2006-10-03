@@ -86,13 +86,16 @@ class LqtDispatch {
 			}
 
 		}
-		lqtDelegate( $this, $this->delegate, 'lqtDispatchDidExecute' );
+		return lqtDelegate( $this, $this->delegate, 'lqtDispatchDidExecute' );
 	}
 }
 
 class EditController
 {
 	static function saveExisting ( $title, $post_proxy ) {
+		echo "article id = {$post_proxy->editAppliesTo()}";
+		echo $post_proxy->content();
+		
 		
 	}
 }
