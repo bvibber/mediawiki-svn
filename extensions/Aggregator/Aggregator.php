@@ -16,6 +16,13 @@ function wfAggregatorSetup() {
 	$wgParser->setHook( 'aggregator', 'wfAggregatorHook' );
 	
 	// Magpie
+	if( defined( 'MAGPIE_OUTPUT_ENCODING' ) ) {
+		if( stricmp( MAGPIE_OUTPUT_ENCODING, 'UTF-8' ) ) {
+			die( 'Must set MAGPIE_OUTPUT_ENCODING to "UTF-8".' );
+		}
+	} else {
+		define( 'MAGPIE_OUTPUT_ENCODING', 'UTF-8' );
+	}
 	require_once 'rss_fetch.inc';
 	
 	// Wiki pieces
