@@ -1,0 +1,16 @@
+Source: wikimedia-lvs-realserver
+Section: unknown
+Priority: optional
+Maintainer: Mark Bergsma <mark@wikimedia.org>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.2
+
+Package: wikimedia-lvs-realserver
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Sets the system up as a LVS realserver
+ wikimedia-lvs-server makes sure that the prerequisites of a
+ system acting as a LVS realserver are fullfilled. This means
+ that:
+ * The relevant sysctl settings with respect to ARP are correct
+ * The LVS service IP is bound to the loopback interface

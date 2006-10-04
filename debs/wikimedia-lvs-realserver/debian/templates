@@ -1,0 +1,7 @@
+Template: wikimedia-lvs-realserver/service_ips
+Type: string
+Description: LVS service IPs
+ Please specify the LVS service IP addresses to be bound to the loopback
+ interface, separated by spaces.
+ .
+ Warning: Mistakes here may render the LVS service unusable!

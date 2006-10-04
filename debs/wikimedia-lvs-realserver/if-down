@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+# Only act on loopback interface actions
+[ "$IFACE" == "lo" ] || exit 0
+
+export PATH=/sbin
+
+. /etc/default/wikimedia-lvs-realserver
+
+[ -z "$LVS_SERVICE_IPS" ] && exit 0
+
+# Add the service IPs to the loopback interface
+for SIP in "$LVS_SERVICE_IPS"
+do
+	ip addr del $SIP dev lo || exit 0	# Fail gracefully
+done

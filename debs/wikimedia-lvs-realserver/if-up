@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e
+
+export PATH=/sbin
+
+# Only act on loopback interface actions
+[ "$IFACE" == "lo" ] || exit 0
+
+. /etc/default/wikimedia-lvs-realserver
+
+[ -z "$SYSCTLFILE" ] && exit 0
+[ -z "$LVS_SERVICE_IPS" ] && exit 0
+
+# Set the sysctl variables to ignore ARP for the LVS service IPs
+sysctl -p $SYSCTLFILE
+
+# Add the service IPs to the loopback interface
+for SIP in "$LVS_SERVICE_IPS"
+do
+	ip addr add $SIP dev lo
+done
