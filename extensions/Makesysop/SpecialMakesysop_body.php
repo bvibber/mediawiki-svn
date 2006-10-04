@@ -137,7 +137,6 @@ class MakesysopForm {
 		$usertable   = $dbw->tableName( 'user' );
 
 		$username = $this->mUser;
-		$dbName = $wgDBname;
 
 		// Clean up username
 		$t = Title::newFromText( $username );
@@ -186,8 +185,12 @@ class MakesysopForm {
 			$dbw->insert( $user_groups, array( 'ug_user' => $id, 'ug_group' => 'bureaucrat' ), $fname );
 			$addedGroups[] = "bureaucrat";
 		}
-		
-		$wgMemc->delete( "$dbName:user:id:$id" );
+
+		if ( function_exists( 'wfMemcKey' ) ) {
+			$wgMemc->delete( wfMemcKey( 'user', 'id', $id ) );
+		} else {
+			$wgMemc->delete( "$wgDBname:user:id:$id" );
+		}
 		
 		$newGroups = array_merge($newGroups, $addedGroups);
 		
@@ -353,7 +356,6 @@ class MakesysopStewardForm extends UserrightsForm {
 	 * @return Database
 	 */
 	function &getDB( $database ) {
-		global $wgDBname;
 		if( $database == '' ) {
 			$db =& wfGetDB( DB_MASTER );
 		} else {
@@ -422,7 +424,11 @@ class MakesysopStewardForm extends UserrightsForm {
 			'MakesysopStewardForm::touchUser' );
 		
 		global $wgMemc;
-		$key = "$database:user:id:$userid";
+		if ( function_exists( 'wfForeignMemcKey' ) ) {
+			$key = wfForeignMemcKey( $database, false, 'user', 'id', $userid );
+		} else {
+			$key = "$database:user:id:$userid";
+		}
 		$wgMemc->delete( $key );
 	}
 }
