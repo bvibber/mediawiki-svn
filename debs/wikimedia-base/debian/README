@@ -1,0 +1,10 @@
+The Debian Package wikimedia-base
+----------------------------
+
+wikimedia-base provides the Wikimedia specific base requirements
+for any Wikimedia server. Currently that involves:
+
+* Depends on several packages wanted on every server,
+  like ssh, sysstat, mcelog, zsh, joe
+
+Mark Bergsma <mark@wikimedia.org>, Tue,  3 Oct 2006 16:58:55 +0000
