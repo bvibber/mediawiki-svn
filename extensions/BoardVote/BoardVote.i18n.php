@@ -76,6 +76,7 @@ to date. $1 for the encrypted data.</p>",
 	'group-boardvote'         => 'Board vote admins',
 	'group-boardvote-member'  => 'Board vote admin',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
+	'boardvote_submit' => 'OK',
 );
 $wgBoardVoteMessages['cs'] = array(
 	'boardvote'               => "Volby do Správní rady nadace Wikimedia",

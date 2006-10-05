@@ -21,7 +21,8 @@ class BoardVotePage extends SpecialPage {
 
 	function execute( $par ) {
 		global $wgUser, $wgDBname, $wgInputEncoding, $wgRequest, 
-			$wgBoardVoteEditCount, $wgBoardVoteEndDate, $wgBoardVoteStartDate;
+			$wgBoardVoteEditCount, $wgBoardVoteEndDate, $wgBoardVoteStartDate, 
+			$wgBoardVoteFirstEdit;
 
 		$this->mUserKey = iconv( $wgInputEncoding, "UTF-8", $wgUser->getName() ) . "@$wgDBname";
 		$this->mPosted = $wgRequest->wasPosted();
