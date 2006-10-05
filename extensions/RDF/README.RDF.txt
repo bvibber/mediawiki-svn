@@ -1,7 +1,7 @@
 MediaWiki RDF extension
 
-version 0.4
-24 January 2006
+version 0.6
+24 May 2006
 
 This is the README file for the RDF extension for MediaWiki
 software. The extension is only useful if you've got a MediaWiki
@@ -13,7 +13,7 @@ Special:Rdf. It allows users to add custom RDF statements to a page
 between <rdf> ... </rdf> tags. Administrators and programmers can add
 new automated RDF models, too.
 
-This is the first version of the extension and it's almost sure to
+This is an early version of the extension and it's almost sure to
 have bugs. See the BUGS section below for info on how to report
 problems.
 
@@ -37,7 +37,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 == Installation ==
 
-You have to have MediaWiki 1.4.x installed for this software to work.
+You have to have MediaWiki 1.5.x installed for this software to work.
 Sorry, but that's the version I've got installed, so it's the one this
 software works with.
 
@@ -48,11 +48,12 @@ apply a patch to the distribution if you want RDF to work; it's
 included in this distribution. (Future versions of RAP will have these
 enhancements).
 
-You can copy the file MwRdf.php to the extensions directory of your
-MediaWiki installation. Then add these lines to your LocalSettings.php:
+You should be able to move the directory created by unpacking the
+MwRDF archive to the extensions subdirectory of your MediaWiki
+installation. Then add these lines to your LocalSettings.php:
 
   define("RDFAPI_INCLUDE_DIR", "/full/path/to/rdfapi-php/api/");
-  require_once("extensions/MwRdf.php");
+  require_once("extensions/Rdf/Rdf.php");
 
 == 60-second intro to RDF ==
 

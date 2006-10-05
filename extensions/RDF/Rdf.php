@@ -1,7 +1,7 @@
 <?php
 /**
  * MwRdf.php -- RDF framework for MediaWiki
- * Copyright 2005 Evan Prodromou <evan@wikitravel.org>
+ * Copyright 2005,2006 Evan Prodromou <evan@wikitravel.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
  * @subpackage Extensions
  */
 if (defined('MEDIAWIKI')) {
+
 	require_once('GlobalFunctions.php');
 	if (!defined('RDFAPI_INCLUDE_DIR')) {
 		wfDebugDieBacktrace("MwRdf: you must install RAP (RDF API for PHP) " .
@@ -30,8 +31,8 @@ if (defined('MEDIAWIKI')) {
 	require_once(RDFAPI_INCLUDE_DIR . "RdfAPI.php");
 	require_once(RDFAPI_INCLUDE_DIR . PACKAGE_VOCABULARY);
 	require_once('SpecialPage.php');
-	
-	define('MWRDF_VERSION', '0.4');
+
+	define('MWRDF_VERSION', '0.6');
 	define('MWRDF_XML_TYPE_PREFS',
 		   "application/rdf+xml,text/xml;q=0.7," .
 		   "application/xml;q=0.5,text/rdf;q=0.1");
@@ -56,26 +57,26 @@ if (defined('MEDIAWIKI')) {
 
 	/* Config stuff -- set and reset in LocalSettings.php */
 
-	$wgRdfModelFunctions = array('inpage' => MwRdfInPage,
-								 'dcmes' => MwRdfDcmes,
-								 'cc' => MwRdfCreativeCommons,
-								 'linksto' => MwRdfLinksTo,
-								 'linksfrom' => MwRdfLinksFrom,
-								 'links' => MwRdfAllLinks,
-								 'image' => MwRdfImage,
-								 'history' => MwRdfHistory,
-								 'interwiki' => MwRdfInterwiki,
-								 'categories' => MwRdfCategories);
+	$wgRdfModelFunctions = array('inpage' => 'MwRdfInPage',
+								 'dcmes' => 'MwRdfDcmes',
+								 'cc' => 'MwRdfCreativeCommons',
+								 'linksto' => 'MwRdfLinksTo',
+								 'linksfrom' => 'MwRdfLinksFrom',
+								 'links' => 'MwRdfAllLinks',
+								 'image' => 'MwRdfImage',
+								 'history' => 'MwRdfHistory',
+								 'interwiki' => 'MwRdfInterwiki',
+								 'categories' => 'MwRdfCategories');
 
 	$wgRdfDefaultModels = array('inpage', 'cc', 'links', 'image', 'interwiki', 'categories');
 
-	$wgRdfOutputFunctions = array('xml' => MwRdfOutputXml,
-								  'turtle' => MwRdfOutputTurtle,
-								  'ntriples' => MwRdfOutputNtriples);
+	$wgRdfOutputFunctions = array('xml' => 'MwRdfOutputXml',
+								  'turtle' => 'MwRdfOutputTurtle',
+								  'ntriples' => 'MwRdfOutputNtriples');
 
 	$wgRdfNamespaces = array('cc' => CC_NS);
 	$wgRdfCacheExpiry = 86400;
-	
+
 	/* Config end */
 
 	$wgExtensionFunctions[] = 'setupMwRdf';
@@ -116,7 +117,7 @@ if (defined('MEDIAWIKI')) {
 
 		# If there's no requested title...
 
-		if (!isset($title) || mb_strlen($title) == 0) {
+		if (!isset($title) || strlen($title) == 0) {
 			# If there's no title, and Cache404 is in use, check using its stuff
 			if (defined('CACHE404_VERSION')) {
 				if ($_SERVER['REDIRECT_STATUS'] == 404) {
@@ -128,24 +129,28 @@ if (defined('MEDIAWIKI')) {
 			}
 		}
 
-		if (isset($title) && mb_strlen($title) > 0) {
-			$nt =& Title::newFromText($title);
+		if (isset($title) && strlen($title) > 0) {
+			$nt = Title::newFromText($title);
 
 			if (isset($nt) &&
-				$action == 'view' &&
 				$nt->getNamespace() != NS_SPECIAL)
 			{
-				$rdft =& Title::makeTitle(NS_SPECIAL, "Rdf");
-				$target = $nt->getPrefixedDBkey();
-				$linkdata = array('title' => 'RDF Metadata',
-								  'type' => 'application/rdf+xml',
-								  'href' => $rdft->getLocalURL("target={$target}" ));
-				$wgOut->addMetadataLink($linkdata);
+				if ($action == 'view') {
+					$rdft = Title::makeTitle(NS_SPECIAL, "Rdf");
+					$target = $nt->getPrefixedDBkey();
+					$linkdata = array('title' => 'RDF Metadata',
+									  'type' => 'application/rdf+xml',
+									  'href' => $rdft->getLocalURL("target={$target}" ));
+					$wgOut->addMetadataLink($linkdata);
+				} else if ($action == 'purge') {
+					# clear cache on purge
+					MwRdfClearCacheAll($nt);
+				}
 			}
 		}
 
 		# We set some hooks for invalidating the cache
-		
+
 		$wgHooks['ArticleSave'][] = 'MwRdfOnArticleSave';
 		$wgHooks['ArticleSaveComplete'][] = 'MwRdfOnArticleSaveComplete';
 		$wgHooks['TitleMoveComplete'][] = 'MwRdfOnTitleMoveComplete';
@@ -159,7 +164,7 @@ if (defined('MEDIAWIKI')) {
 
 		if (!isset($target)) { # no target parameter
 			MwRdfShowForm();
-		} else if (mb_strlen($target) == 0) { # no target contents
+		} else if (strlen($target) == 0) { # no target contents
 			MwRdfShowForm(wfMsg('badtitle'));
 		} else {
 			$nt = Title::newFromText($target);
@@ -168,10 +173,11 @@ if (defined('MEDIAWIKI')) {
 			} else {
 				$article = new Article($nt);
 
-				# Note: throws a warning if modelnames is an array
-				$older =error_reporting(0);
-				$modelnames = $wgRequest->getVal('modelnames', $wgRdfDefaultModels);
-				error_reporting($older);
+				# Note: WebRequest chokes on arrays here
+				$modelnames = $_REQUEST['modelnames'];
+				if (is_null($modelnames)) {
+					$modelnames = $wgRdfDefaultModels;
+				}
 
 				if (is_string($modelnames)) {
 					$modelnames = explode(',', $modelnames);
@@ -309,16 +315,16 @@ if (defined('MEDIAWIKI')) {
 			}
 
 			# Check the cache...
-			
+
 			$model = MwRdfGetCache($title, $modelname);
-			
+
 			# If it's not there, regenerate.
-			
+
 			if (!isset($model) || !$model) {
 				$model = $modelfunc($article);
 				MwRdfSetCache($title, $modelname, $model);
 			}
-				
+
 			if (isset($model)) {
 				$fullModel->addModel($model);
 			}
@@ -328,13 +334,14 @@ if (defined('MEDIAWIKI')) {
 	}
 
 	function MwRdfShowForm($msg = null) {
-		global $wgOut, $wgRdfModelFunctions, $wgRdfOutputFunctions, $wgRdfDefaultModels, $wgTitle;
+		global $wgOut, $wgRdfModelFunctions, $wgRdfOutputFunctions, $wgRdfDefaultModels, $wgUser;
+		$sk = $wgUser->getSkin();
 		$instructions = $wgOut->parse(wfMsg('rdf-instructions'));
-		if (isset($msg) && mb_strlen($msg) > 0) {
+		if (isset($msg) && strlen($msg) > 0) {
 			$wgOut->addHTML("<p class='error'>${msg}</p>");
 		}
 		$wgOut->addHTML("<p>{$instructions}</p>" .
-						"<form action='" . $wgTitle->getLocalURL() . "' method='GET'>" .
+						"<form action='" . $sk->makeSpecialUrl('Rdf') . "' method='POST'>" .
 						"<table border='0'>" .
 						"<tr>" .
 						"<td align='right'><label for='target'>" . wfMsg('rdf-target') . "</label></td>" .
@@ -361,21 +368,27 @@ if (defined('MEDIAWIKI')) {
 
 	function MwRdfInPage($article) {
 		$text = $article->getContent(true);
+		# Strip comments and <nowiki>
+		$text = preg_replace("/<!--.*?-->/s", "", $text);
+		$text = preg_replace("@<nowiki>.*?</nowiki>@s", "", $text);
 		# change template usage to substitution; note that this is WRONG
 		$tchars = Title::legalChars();
 		$text = preg_replace("/(?<!{){{([$tchars]+)(\|.*?)?}}(?!})/", "{{subst:$1$2}}", $text);
 		$parser = new Parser();
 		# so the magic variables work out right
+		$parser->mOptions = new ParserOptions();
 		$parser->mTitle = $article->mTitle;
 		$parser->mOutputType = OT_WIKI;
 		$parser->initialiseVariables();
+		$parser->clearState();
 		$text = $parser->replaceVariables($text);
-		Parser::extractTags('rdf', $text, $content);
+		preg_match_all("@<rdf>(.*?)</rdf>@s", $text, $matches, PREG_PATTERN_ORDER);
+		$content = $matches[1];
 		$rdf = implode(' ', array_values($content));
 
 		$model = null;
 
-		if (mb_strlen($rdf) > 0) {
+		if (strlen($rdf) > 0) {
 
 			$parser->mOutputType = OT_HTML;
 			$rdf = $parser->replaceVariables($rdf);
@@ -403,8 +416,12 @@ if (defined('MEDIAWIKI')) {
 										  $RDFS_comment,
 										  MwRdfLiteral("Error parsing in-page RDF: "
 													   . $parser->errors[0] .
-													   "\n code here: \n '" . $prelude . $rdf . "'" , null,													   
+													   "\n code here: \n '" . $prelude . $rdf . "'" , null,
 													   "en")));
+			} else {
+				# To make it unique, we unite with an empty model
+				$fake = new MemModel();
+				$model =& $fake->unite($model);
 			}
 		}
 		return $model;
@@ -560,14 +577,13 @@ if (defined('MEDIAWIKI')) {
 		$model = ModelFactory::getDefaultModel();
 		$ar = MwRdfArticleResource($article);
 		$dbr =& wfGetDB(DB_SLAVE);
-		$res = $dbr->select(array('cur', 'links'),
-							array('cur_namespace', 'cur_title'),
-							array('cur_id = l_to',
-								  'l_from = ' . $article->mTitle->getArticleID()),
+		$res = $dbr->select(array('pagelinks'),
+							array('pl_namespace', 'pl_title'),
+							array('pl_from = ' . $article->mTitle->getArticleID()),
 							'MwRdfLinksFrom',
-							array('ORDER BY' => 'cur_namespace, cur_title'));
+							array('ORDER BY' => 'pl_namespace, pl_title'));
 		while ($res && $row = $dbr->fetchObject($res)) {
-			$lt = Title::makeTitle($row->cur_namespace, $row->cur_title);
+			$lt = Title::makeTitle($row->pl_namespace, $row->pl_title);
 			$model->add(new Statement($ar, $DCTERM['references'],
 									  MwRdfTitleResource($lt)));
 		}
@@ -590,22 +606,25 @@ if (defined('MEDIAWIKI')) {
 		$nt = $article->getTitle();
 		$tr = MwRdfTitleResource($nt);
 		$dbr =& wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'old', array('old_id', 'old_timestamp', 'old_user', 'old_user_text'),
-							 array('old_namespace = ' . $nt->getNamespace(),
-								   'old_title = "' . $nt->getDBkey() . '"'),
+		$res = $dbr->select( array('page', 'revision'),
+							 array('rev_id', 'rev_timestamp', 'rev_user', 'rev_user_text'),
+							 array('page_namespace = ' . $nt->getNamespace(),
+								   'page_title = ' . $dbr->addQuotes($nt->getDBkey()),
+								   'rev_page = page_id',
+								   'rev_id != page_latest'),
 							 'MwRdfHistory',
-							 array('ORDER BY' => 'old_timestamp DESC'));
+							 array('ORDER BY' => 'rev_timestamp DESC'));
 		while ($res && $row = $dbr->fetchObject($res)) {
-			$url = $nt->getFullURL('oldid=' . $row->old_id);
+			$url = $nt->getFullURL('oldid=' . $row->rev_id);
 			$ur = MwRdfGetResource($url);
 			$model->add(new Statement($tr, $DCTERM['hasVersion'], $ur));
 			$model->add(new Statement($ur, $DCTERM['isVersionOf'], $tr));
 			$model->add(new Statement($ur, $DCMES['language'], MwRdfLanguage($wgContLanguageCode)));
-			$pr = MwRdfPersonResource($row->old_user, $row->old_user_text,
-									  ($row->old_user == 0) ? null : User::whoIsReal($row->old_user));
+			$pr = MwRdfPersonResource($row->rev_user, $row->rev_user_text,
+									  ($row->rev_user == 0) ? null : User::whoIsReal($row->rev_user));
 			$model->add(new Statement($ur, $DCMES['creator'], $pr));
 			$model->add(new Statement($ur, $DCMES['date'],
-									  MwRdfTimestamp($row->old_timestamp)));
+									  MwRdfTimestamp($row->rev_timestamp)));
 		}
 		$dbr->freeResult($res);
 		return $model;
@@ -629,12 +648,16 @@ if (defined('MEDIAWIKI')) {
 							'MwRdfImage');
 
 		while ($res && $row = $dbr->fetchObject($res)) {
-			$img = new Image($row->il_to);
+			$img = Image::newFromName($row->il_to);
 			if ($img->exists()) {
-				$ir = MwRdfGetResource($wgServer . $img->getURL());
+				$iuri = $img->getURL();
+				if ($iuri[0] == '/') {
+					$iuri = $wgServer . $iuri;
+				}
+				$ir = MwRdfGetResource($iuri);
 				$model->add(new Statement($tr, $DCTERM['hasPart'], $ir));
 				$model->add(new Statement($ir, $DCMES['type'], $DCMITYPE['Image']));
-				$tc = $img->getType();
+				$tc = $img->getMimeType();
 				$mt = $typecode[$tc];
 				if (isset($mt)) {
 					$model->add(new Statement($ir, $DCMES['format'],
@@ -676,6 +699,8 @@ if (defined('MEDIAWIKI')) {
 		$parser = new Parser();
 		$parser->mTitle = $nt;
 
+		$parser->initialiseVariables();
+		$parser->clearState();
 		$text = $parser->replaceVariables($text);
 		# XXX: this sucks
 		# Ignore <nowiki> blocks
@@ -685,16 +710,16 @@ if (defined('MEDIAWIKI')) {
 		preg_match_all("/\[\[([^|\]]+:[^|\]]+)(\|.*)?\]\]/", $text, $matches);
 
 		# XXX: this fails for Category: namespace; why?
-		
+
 		if (isset($matches)) {
 			foreach ($matches[1] as $linktext) {
 				$iwlink = Title::newFromText($linktext);
 				if (isset($iwlink)) {
 					$pfx = $iwlink->getInterwiki();
-					if (mb_strlen($pfx) > 0) {
+					if (strlen($pfx) > 0) {
 						$iwr = MwRdfTitleResource($iwlink);
 						# XXX: Wikitravel uses some 4+ prefixes for sister site links
-						if ($wgContLang->getLanguageName($pfx) && mb_strlen($pfx) < 4) {
+						if ($wgContLang->getLanguageName($pfx) && strlen($pfx) < 4) {
 							$model->add(new Statement($tr, $DCTERM['hasVersion'], $iwr));
 							$model->add(new Statement($iwr, $DCMES['language'],
 													  MwRdfLanguage($pfx)));
@@ -734,8 +759,8 @@ if (defined('MEDIAWIKI')) {
 
 	# A dummy rendering procedure for the <rdf> ... </rdf> block used for in-page RDF
 
-	function renderMwRdf($input, $argv = null) {
-		return '';
+	function renderMwRdf($input, $argv = null, $parser = null) {
+		return ' ';
 	}
 
 	function MwRdfGetResource($url) {
@@ -883,21 +908,21 @@ if (defined('MEDIAWIKI')) {
 		}
 		return $prefixes;
 	}
-	
+
 	function MwRdfGetCache($title, $modelname) {
 		global $wgMemc;
 		if (!isset($wgMemc)) {
 			return false;
 		} else {
 			$ntrip = $wgMemc->get(MwRdfCacheKey($title, $modelname));
-			if (isset($ntrip) && $ntrip) {
+			if (isset($ntrip) && $ntrip && strlen($ntrip) > 0) {
 				return MwRdfNTriplesToModel($ntrip);
 			} else {
 				return null;
 			}
 		}
 	}
-	
+
 	function MwRdfClearCache($title, $modelname) {
 		global $wgMemc;
 		if (!isset($wgMemc)) {
@@ -914,13 +939,13 @@ if (defined('MEDIAWIKI')) {
 			MwRdfClearCache($nt, $modelname);
 		}
 	}
-	
+
 	function MwRdfSetCache($title, $modelname, $model) {
-		global $wgMemc, $wgRdfCacheExpiry; 
+		global $wgMemc, $wgRdfCacheExpiry;
 		if (!isset($wgMemc)) {
 			return false;
 		} else {
-			return $wgMemc->set(MwRdfCacheKey($title, $modelname), 
+			return $wgMemc->set(MwRdfCacheKey($title, $modelname),
 								MwRdfModelToNTriples($model),
 								$wgRdfCacheExpiry);
 		}
@@ -936,21 +961,19 @@ if (defined('MEDIAWIKI')) {
 			return "$wgDBname:rdf:$ns:$dbkey:$modelname";
 		}
 	}
-	
+
 	# Before saving, we clear the cache for articles this article links to
-	
+
 	function MwRdfOnArticleSave($article, $dc1, $dc2, $dc3, $dc4, $dc5, $dc6) {
 		$id = $article->mTitle->getArticleID();
 		if ($id != 0) {
 			$dbr =& wfGetDB(DB_SLAVE);
-			$res = $dbr->select(array('cur', 'links'),
-								array('cur_namespace', 'cur_title'),
-								array('cur_id = l_to',
-									  'l_from = ' . $id),
-								'MwRdfOnArticleSave',
-								array('ORDER BY' => 'cur_namespace, cur_title'));
+			$res = $dbr->select('pagelinks',
+								array('pl_namespace', 'pl_title'),
+								array('pl_from = ' . $id),
+								'MwRdfOnArticleSave');
 			while ($res && $row = $dbr->fetchObject($res)) {
-				$lt = Title::makeTitle($row->cur_namespace, $row->cur_title);
+				$lt = Title::makeTitle($row->pl_namespace, $row->pl_title);
 				MwRdfClearCache($lt, 'linksto');
 			}
 		}
@@ -958,27 +981,27 @@ if (defined('MEDIAWIKI')) {
 	}
 
 	# Clear the cache when the article is saved
-	
+
 	function MwRdfOnArticleSaveComplete($article, $dc1, $dc2, $dc3, $dc4, $dc5, $dc6) {
 	   MwRdfClearCacheAll($article->mTitle);
 	    return true;
 	}
 
 	# Clear the cache when an article is moved
-	
+
 	function MwRdfOnTitleMoveComplete($oldt, $newt, $user, $oldid, $newid) {
-	   MwRdfClearCacheAll($newt);		
+	   MwRdfClearCacheAll($newt);
 	   MwRdfClearCacheAll($oldt);
 	    return true;
 	}
 
 	# Clear the cache when an article is deleted
-	
+
 	function MwRdfOnArticleDeleteComplete($article, $user, $reason) {
 		MwRdfClearCacheAll($article->mTitle);
 	    return true;
 	}
-	
+
 	function MwRdfNTriplesToModel($ntrip) {
 		require_once(RDFAPI_INCLUDE_DIR.PACKAGE_SYNTAX_N3);
 		$parser = new N3Parser();
@@ -996,6 +1019,28 @@ if (defined('MEDIAWIKI')) {
 			return $ser->serialize($model);
 		}
 	}
+
+	# This is used by a lot of RDF extensions, so put it here
+
+	function MwRdfFullUrlToTitle($url) {
+		global $wgArticlePath, $wgServer;
+		$parts = parse_url($url);
+		$relative = $parts['path'];
+		if (!is_null($parts['query']) && strlen($parts['query']) > 0) {
+			$relative .= '?' . $parts['query'];
+		}
+		$pattern = str_replace('$1', '(.*)', $wgArticlePath);
+		$pattern = str_replace('?', '\?', $pattern);
+		# Can't have a pound-sign in the relative, since that's for fragments
+		if (preg_match("#$pattern#", $relative, $matches)) {
+			$titletext = urldecode($matches[1]);
+			$nt = Title::newFromText($titletext);
+			return $nt;
+		} else {
+			return null;
+		}
+	}
+
 }
 
 ?>
