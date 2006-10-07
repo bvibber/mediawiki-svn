@@ -57,7 +57,10 @@ function RenderChemForm( $input, $argv, &$parser ) {
 		$wgMessageCache->addMessages( $wgChemFunctions_Messages[$key], $key );
 	}
 
-	$searchfor = $argv["query"];
+	$searchfor = false;
+	if ( isset( $argv["query"] ) )
+		$searchfor = $argv["query"];
+
 	if ($searchfor) {
 		$searchfor = str_replace(" ", "", $searchfor );
 	} else {
@@ -67,7 +70,10 @@ function RenderChemForm( $input, $argv, &$parser ) {
 		$searchfor = str_replace(" ", "", $searchfor );
 	}
 
-	$noprocess = $argv["noprocess"];
+	$noprocess = false;
+	if ( isset( $argv["noprocess"] ) )
+		$noprocess = $argv["noprocess"];
+
 	$showthis = $input;
 	if (!$noprocess) {
 		$showthis = $input;
@@ -84,7 +90,11 @@ function RenderChemForm( $input, $argv, &$parser ) {
 	$showthis = Sanitizer::removeHTMLtags( $showthis);
 	$searchfor = Sanitizer::removeHTMLtags( $searchfor);
 
-	if ($argv["nolink"]) {
+	$nolink = false;
+	if ( isset( $argv["nolink"] ) )
+		$nolink =  $argv["nolink"];
+
+	if ( $nolink ) {
 		$output = $showthis;
 	} else {
 		$title = Title::makeTitle( NS_SPECIAL, wfMsg('ChemFunctions_Chemicalsources' ) );
