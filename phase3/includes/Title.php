@@ -812,6 +812,33 @@ class Title {
 	}
 
 	/**
+	 * Get a real URL referring to this title in some of the variant
+	 *
+	 * @param string $variant variant name
+	 * @return string the URL
+	 * @access public
+	 */
+	function getFullVariantURL( $variant = '' ) {
+		global $wgServer, $wgRequest;
+
+		if ( '' == $this->mInterwiki ) {
+			$url = $this->getLocalVariantURL( $variant );
+
+			if ($wgRequest->getVal('action') != 'render') {
+				$url = $wgServer . $url;
+			}
+		}
+
+		# Finally, add the fragment.
+		if ( '' != $this->mFragment ) {
+			$url .= '#' . $this->mFragment;
+		}	 
+
+		return $url;
+	}
+
+
+	/**
 	 * Get a URL with no fragment or server name.  If this page is generated
 	 * with action=render, $wgServer is prepended.
 	 * @param string $query an optional query string; if not specified,

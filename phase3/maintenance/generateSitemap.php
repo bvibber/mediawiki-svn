@@ -264,6 +264,16 @@ class GenerateSitemap {
 				$entry = $this->fileEntry( $title->getFullURL(), $date, $this->priority( $namespace ) );
 				$length += strlen( $entry );
 				$this->write( $this->file, $entry );
+				// generate pages for language variants
+				if($wgContLang->hasVariants()){
+					$variants = $wgContLang->getVariants();
+					unset($variants[array_search($wgContLang->getCode(),$variants)]); // we don't want default
+					foreach($variants as $vCode){
+						$entry = $this->fileEntry( $title->getFullVariantURL($vCode), $date, $this->priority( $namespace ) );
+						$length += strlen( $entry );
+						$this->write( $this->file, $entry );
+					}
+				}
 			}
 			if ( $this->file ) {
 				$this->write( $this->file, $this->closeFile() );
