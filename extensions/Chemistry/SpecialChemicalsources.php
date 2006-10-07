@@ -20,7 +20,7 @@
  *  These parameters are built into the page [[Wikipedia:Chemical Sources]] by replacement
  *  of the $ codes (empty codes giving empty strings).
  *
- *  Note: ChemFunctions.i18n.php has to be stored in the same folder like SpecialChemicalsources.php 
+ *  Note: ChemFunctions.i18n.php has to be stored in the same folder like SpecialChemicalsources.php
  *
  * @package MediaWiki
  * @subpackage SpecialPage
@@ -65,7 +65,7 @@ function wfSpecialChemicalsources () {
 			$ParamsCheck = "";
 			global $wgChemFunctions_ChemicalIdentifiers;
 			foreach ($wgChemFunctions_ChemicalIdentifiers as $key) {
-			  	if ( isset( $Params [$key] ) )
+				  if ( isset( $Params [$key] ) )
 					$ParamsCheck .= $Params [$key];
 			}
 			if ($ParamsCheck) {
@@ -106,7 +106,7 @@ function wfSpecialChemicalsources () {
 				$Params['CAS'] = preg_replace( '/[^0-9\-]/', "", $Params['CAS'] );
 			else $Params['CAS'] = '';
 			if ( isset( $Params['EINECS'] ) )
-			 	$Params['EINECS'] = preg_replace( '/[^0-9\-]/', "", $Params['EINECS'] );
+				 $Params['EINECS'] = preg_replace( '/[^0-9\-]/', "", $Params['EINECS'] );
 			else $Params['EINECS'] = '';
 			if ( isset( $Params['CHEBI'] ) )
 				$Params['CHEBI'] = preg_replace( '/[^0-9\-]/', "", $Params['CHEBI'] );
@@ -173,7 +173,7 @@ function wfSpecialChemicalsources () {
 								 "\$MIXNameFormula" => $TEMPNAMEFORMULA);
 			global $wgChemFunctions_ChemicalIdentifiers;
 			foreach ($wgChemFunctions_ChemicalIdentifiers as $key) {
-				if ( isset( $Params[$key] ) ) 
+				if ( isset( $Params[$key] ) )
 					$transParams["\$" . $key] =  $Params[$key] ;
 			}
 			return $transParams;
@@ -187,6 +187,7 @@ function wfSpecialChemicalsources () {
 			$go = htmlspecialchars( wfMsg( "go" ) );
 
 			global $wgChemFunctions_ChemicalIdentifiers;
+			$wgOut->addWikitext ( wfMsg('ChemFunctions_SearchExplanation'));
 			$wgOut->addHTML("<table><tr><td>");
 			foreach ($wgChemFunctions_ChemicalIdentifiers as $key) {
 			   $this->GetParam_Row("ChemFunctions_" . $key, $key, $action, $go);
@@ -197,7 +198,7 @@ function wfSpecialChemicalsources () {
 		function GetParam_Row($p, $q, $action, $go) {
 #Creates a table row
 			global $wgOut;
-			$wgOut->addWikitext("[[" . htmlspecialchars( wfMsg( $p ) ) . "]]: ");
+			$wgOut->addHTML ( wfMsg( $p ) . ": ");
 			$wgOut->addHTML("</td><td>
 				<form action=\"$action\" method='post'>
 					<input name=\"$q\" id=\"$q\" />
