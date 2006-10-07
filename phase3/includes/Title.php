@@ -868,6 +868,27 @@ class Title {
 	}
 
 	/**
+	 * Similar to getLocalURL, except it uses $wgVariantArticlePath
+	 * and gets the URL with no fragment or server name, but in a 
+   * certain language variant (relevant only to languages with variants)
+	 * @param string $variant caption of variant
+	 * @return string the URL
+	 * @access public
+	 */
+	function getLocalVariantURL( $variant='' ) {
+		global $wgVariantArticlePath;
+		if($variant=='') return $this->getLocalURL();
+
+		$dbkey = wfUrlencode( $this->getPrefixedDBkey() );
+		$url = str_replace( '$1', $dbkey, $wgVariantArticlePath );
+		$code = urlencode( $variant );
+		$url = str_replace( '$2', $code, $url );
+
+		return $url;
+		
+	}
+
+	/**
 	 * Get an HTML-escaped version of the URL form, suitable for
 	 * using in a link, without a server name or fragment
 	 * @param string $query an optional query string
