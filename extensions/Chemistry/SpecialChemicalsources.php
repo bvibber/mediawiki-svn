@@ -17,8 +17,10 @@
  *
  *   From these the parameters $CASNameFormula, $CASName, $CASFormula and $NameFormula are generated.
  *
- * These parameters are built into the page [[Wikipedia:Chemical Sources]] by replacement
- * of the $ codes (empty codes giving empty strings).
+ *  These parameters are built into the page [[Wikipedia:Chemical Sources]] by replacement
+ *  of the $ codes (empty codes giving empty strings).
+ *
+ *  Note: ChemFunctions.i18n.php has to be stored in the same folder like SpecialChemicalsources.php 
  *
  * @package MediaWiki
  * @subpackage SpecialPage
@@ -63,13 +65,14 @@ function wfSpecialChemicalsources () {
 			$ParamsCheck = "";
 			global $wgChemFunctions_ChemicalIdentifiers;
 			foreach ($wgChemFunctions_ChemicalIdentifiers as $key) {
-			  $ParamsCheck .= $Params [$key];
+			  	if ( isset( $Params [$key] ) )
+					$ParamsCheck .= $Params [$key];
 			}
 			if ($ParamsCheck) {
 				$transParams = $this->TransposeAndCheckParams($Params);
 				$this->OutputChemicalSources($transParams);
 			} else {
-				$Params = $this->GetParams();
+				$Params = $this->getParams();
 			}
 		}
 
@@ -99,19 +102,46 @@ function wfSpecialChemicalsources () {
 # Check the parameters supplied
 # Make the mixed parameters
 # and put them into the transpose matrix.
-		   $Params['CAS'] = preg_replace( '/[^0-9\-]/', "", $Params['CAS'] );
-		   $Params['EINECS'] = preg_replace( '/[^0-9\-]/', "", $Params['EINECS'] );
-		   $Params['CHEBI'] = preg_replace( '/[^0-9\-]/', "", $Params['CHEBI'] );
-		   $Params['PubChem'] = preg_replace( '/[^0-9\-]/', "", $Params['PubChem'] );
-#		   $Params['SMILES'] = $Params['SMILES'];
-#		   $Params['InChI'] = $Params['InChI'];
-		   $Params['ATCCode'] = preg_replace( '/[^0-9\-]/', "", $Params['ATCCode'] );
-		   $Params['KEGG'] = preg_replace( '/[^C0-9\-]/', "", $Params['KEGG'] );
-		   $Params['RTECS'] = preg_replace( '/[^0-9\-]/', "", $Params['RTECS'] );
-		   $Params['ECNumber'] = preg_replace( '/[^0-9\-]/', "", $Params['ECNumber'] );
-		   $Params['Drugbank'] = preg_replace( '/[^0-9\-]/', "", $Params['Drugbank'] );
-		   $Params['Formula'] = preg_replace( "<,*?>", "", $Params['Formula'] );
-		   $Params['Name'] = str_replace( " ", "%20", $Params['Name'] );
+			if ( isset( $Params['CAS'] ) )
+				$Params['CAS'] = preg_replace( '/[^0-9\-]/', "", $Params['CAS'] );
+			else $Params['CAS'] = '';
+			if ( isset( $Params['EINECS'] ) )
+			 	$Params['EINECS'] = preg_replace( '/[^0-9\-]/', "", $Params['EINECS'] );
+			else $Params['EINECS'] = '';
+			if ( isset( $Params['CHEBI'] ) )
+				$Params['CHEBI'] = preg_replace( '/[^0-9\-]/', "", $Params['CHEBI'] );
+			else $Params['CHEBI'] = '';
+			if ( isset( $Params['PubChem'] ) )
+				$Params['PubChem'] = preg_replace( '/[^0-9\-]/', "", $Params['PubChem'] );
+			/*
+			if ( isset( $Params['SMILES'] ) )
+				$Params['SMILES'] = $Params['SMILES'];
+			else $Params['SMILES'] = '';
+			if ( isset( $Params['InChI'] ) )
+				$Params['InChI'] = $Params['InChI'];
+			else $Params['InChI'] = '';
+			*/
+			if ( isset( $Params['ATCCode'] ) )
+				$Params['ATCCode'] = preg_replace( '/[^0-9\-]/', "", $Params['ATCCode'] );
+			else $Params['ATCCode'] = '';
+			if ( isset( $Params['KEGG'] ) )
+				$Params['KEGG'] = preg_replace( '/[^C0-9\-]/', "", $Params['KEGG'] );
+			else $Params['KEGG'] = '';
+			if ( isset( $Params['RTECS'] ) )
+				$Params['RTECS'] = preg_replace( '/[^0-9\-]/', "", $Params['RTECS'] );
+			else $Params['RTECS'] = '';
+			if ( isset( $Params['ECNumber'] ) )
+				$Params['ECNumber'] = preg_replace( '/[^0-9\-]/', "", $Params['ECNumber'] );
+			else $Params['ECNumber'] = '';
+			if ( isset( $Params['Drugbank'] ) )
+				$Params['Drugbank'] = preg_replace( '/[^0-9\-]/', "", $Params['Drugbank'] );
+			else $Params['Drugbank'] = '';
+			if ( isset( $Params['Formula']  ) )
+				$Params['Formula'] = preg_replace( "<,*?>", "", $Params['Formula'] );
+			else $Params['Formula'] = '';
+			if ( isset( $Params['Name'] ) )
+				$Params['Name'] = str_replace( " ", "%20", $Params['Name'] );
+			else $Params['Name'] = '';
 
 
 			$TEMPCASNAMEFORMULA = $Params["CAS"];
@@ -143,13 +173,14 @@ function wfSpecialChemicalsources () {
 								 "\$MIXNameFormula" => $TEMPNAMEFORMULA);
 			global $wgChemFunctions_ChemicalIdentifiers;
 			foreach ($wgChemFunctions_ChemicalIdentifiers as $key) {
-			  $transParams["\$" . $key] =  $Params[$key] ;
+				if ( isset( $Params[$key] ) ) 
+					$transParams["\$" . $key] =  $Params[$key] ;
 			}
 			return $transParams;
 		}
 
 
-		function getParams($Params){
+		function getParams() {
 #If no parameters supplied, get them!
 			global $wgTitle, $wgOut; $wfMsg;
 			$action = $wgTitle->escapeLocalUrl();

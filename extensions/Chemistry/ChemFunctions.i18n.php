@@ -37,6 +37,7 @@ $wgChemFunctions_Messages = array();
  */
 
 $wgChemFunctions_Messages['en'] = array(
+	'chemicalsources' => 'Chemical sources',
 	'ChemFunctions_Chemicalsources' => 'Chemical sources',
 	'ChemFunctions_ChemicalsourcesPage' => 'Chemical sources',
 	'ChemFunctions_CAS' => 'CAS number',
@@ -58,6 +59,7 @@ $wgChemFunctions_Messages['en'] = array(
 );
 
 $wgChemFunctions_Messages['de'] = array(
+	'chemicalsources' => 'Chemische Quellen',
 	'ChemFunctions_Chemicalsources' => 'Chemische Quellen',
 	'ChemFunctions_ChemicalsourcesPage' => 'Chemische Quellen',
 	'ChemFunctions_CAS' => 'CAS Nummer',
@@ -79,6 +81,7 @@ $wgChemFunctions_Messages['de'] = array(
 );
 
 $wgChemFunctions_Messages['nl'] = array(
+	'chemicalsources' => 'Chemicaliën bronnen',
 	'ChemFunctions_Chemicalsources' => 'Chemicaliën bronnen',
 	'ChemFunctions_ChemicalsourcesPage' => 'Chemicaliën bronnen',
 	'ChemFunctions_CAS' => 'CAS nummer',

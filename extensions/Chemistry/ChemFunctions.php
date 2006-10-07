@@ -97,7 +97,7 @@ function RenderChemForm( $input, $argv, &$parser ) {
 	if ( $nolink ) {
 		$output = $showthis;
 	} else {
-		$title = Title::makeTitle( NS_SPECIAL, wfMsg('ChemFunctions_Chemicalsources' ) );
+		$title = Title::makeTitle( NS_SPECIAL, 'Chemicalsources' );
 		$output = "<a href = " . $title->getFullUrl() . "?Formula=" . $searchfor .  ">" . $showthis . "</a>";
 	}
 
