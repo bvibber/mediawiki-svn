@@ -1,1 +1,2 @@
 include init.d/gmetricd
+include *.py

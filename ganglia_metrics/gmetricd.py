@@ -116,6 +116,7 @@ for line in gmondFile:
 	m = portRegex.match(line)
 	if m != None:
 		port = m.group(1)
+gmondFile.close()
 
 if addr == None or port == None:
 	sys.stderr.write("Unable to determine multicast address\n")
@@ -164,6 +165,9 @@ try:
 	sys.stdin.close()
 	sys.stdout.close()
 	sys.stderr.close()
+	os.close(0)
+	os.close(1)
+	os.close(2)
 
 	os.setsid()
 	signal.signal(signal.SIGTERM, termHandler)
