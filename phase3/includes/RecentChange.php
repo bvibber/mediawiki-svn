@@ -173,7 +173,7 @@ class RecentChange
 			}
 		}
 
-		// E-mail notifications
+		# E-mail notifications
 		global $wgUseEnotif;
 		if( $wgUseEnotif ) {
 			# this would be better as an extension hook
@@ -187,6 +187,8 @@ class RecentChange
 				$this->mAttribs['rc_last_oldid'] );
 		}
 
+		# Notify extensions
+		wfRunHooks( 'RecentChange_save', array( &$this ) );
 	}
 
 	# Marks a certain row as patrolled
@@ -210,7 +212,7 @@ class RecentChange
 		$oldId, $lastTimestamp, $bot = "default", $ip = '', $oldSize = 0, $newSize = 0,
 		$newId = 0)
 	{
-		if ( $bot == 'default' ) {
+		if ( $bot === 'default' ) {
 			$bot = $user->isAllowed( 'bot' );
 		}
 

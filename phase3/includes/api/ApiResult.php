@@ -26,7 +26,7 @@
 
 if (!defined('MEDIAWIKI')) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiBase.php");
+	require_once ('ApiBase.php');
 }
 
 class ApiResult extends ApiBase {
@@ -37,52 +37,89 @@ class ApiResult extends ApiBase {
 	* Constructor
 	*/
 	public function __construct($main) {
-		parent :: __construct($main);
+		parent :: __construct($main, 'result');
 		$this->Reset();
 	}
-	
+
 	public function Reset() {
-		$this->mData = array();
+		$this->mData = array ();
 	}
 
-	function GetData() {
+	function & getData() {
 		return $this->mData;
 	}
 
-	/*	function addPage($title)
-		{
-			if (!isset($this->mPages))
-				$this->mPages &= $this->mData['pages'];
+	/**
+	 * Add an output value to the array by name.
+	 * Verifies that value with the same name has not been added before.
+	 */
+	public static function setElement(& $arr, $name, $value) {
+		if ($arr === null || $name === null || $value === null || !is_array($arr) || is_array($name))
+			ApiBase :: dieDebug(__METHOD__, 'Bad parameter');
+
+		if (!isset ($arr[$name])) {
+			$arr[$name] = $value;
 		}
-	*/
-	
-	function AddMessage($mainSection, $subSection, $value, $preserveXmlSpacing = false) {
-		if (!array_key_exists($mainSection, $this->mData)) {
-			$this->mData[$mainSection] = array ();
-		}
-		if ($subSection !== null) {
-			if (!array_key_exists($subSection, $this->mData[$mainSection])) {
-				$this->mData[$mainSection][$subSection] = array ();
-			}
-			$element = & $this->mData[$mainSection][$subSection];
-		} else {
-			$element = & $this->mData[$mainSection];
-		}
-		if (is_array($value)) {
-			$element = array_merge($element, $value);
-			if (!array_key_exists('*', $element)) {
-				$element['*'] = '';
-			}
-		} else {
-			if (array_key_exists('*', $element)) {
-				$element['*'] .= $value;
+		elseif (is_array($arr[$name]) && is_array($value)) {
+			$merged = array_intersect_key($arr[$name], $value);
+			if (empty ($merged))
+				$arr[$name] += $value;
+			else
+				ApiBase :: dieDebug(__METHOD__, "Attempting to merge element $name");
+		} else
+			ApiBase :: dieDebug(__METHOD__, "Attempting to add element $name=$value, existing value is {$arr[$name]}");
+	}
+
+	/**
+	 * Adds the content element to the array.
+	 * Use this function instead of hardcoding the '*' element.
+	 */
+	public static function setContent(& $arr, $value) {
+		if (is_array($value))
+			ApiBase :: dieDebug(__METHOD__, 'Bad parameter');
+		ApiResult :: setElement($arr, '*', $value);
+	}
+
+	//	public static function makeContentElement($tag, $value) {
+	//		$result = array();
+	//		ApiResult::setContent($result, )
+	//	}
+	//
+	/**
+	 * In case the array contains indexed values (in addition to named),
+	 * all indexed values will have the given tag name.
+	 */
+	public static function setIndexedTagName(& $arr, $tag) {
+		// Do not use setElement() as it is ok to call this more than once
+		if ($arr === null || $tag === null || !is_array($arr) || is_array($tag))
+			ApiBase :: dieDebug(__METHOD__, 'Bad parameter');
+		$arr['_element'] = $tag;
+	}
+
+	/**
+	 * Add value to the output data at the given path.
+	 * Path is an indexed array, each element specifing the branch at which to add the new value
+	 * Setting $path to array('a','b','c') is equivalent to data['a']['b']['c'] = $value  
+	 */
+	public function addValue($path, $name, $value) {
+
+		$data = & $this->getData();
+
+		if (isset ($path)) {
+			if (is_array($path)) {
+				foreach ($path as $p) {
+					if (!isset ($data[$p]))
+						$data[$p] = array ();
+					$data = & $data[$p];
+				}
 			} else {
-				$element['*'] = $value;
-			}
-			if ($preserveXmlSpacing) {
-				$element['xml:space'] = 'preserve';
+				if (!isset ($data[$path]))
+					$data[$path] = array ();
+				$data = & $data[$path];
 			}
 		}
+
+		ApiResult :: setElement($data, $name, $value);
 	}
 
 	/**
@@ -99,17 +136,18 @@ class ApiResult extends ApiBase {
 			if ($key[0] === '_') {
 				unset ($data[$key]);
 			}
-			elseif ($key === '*' && $value === '') {
-				unset ($data[$key]);
-			}
 			elseif (is_array($value)) {
 				ApiResult :: SanitizeDataInt($value);
 			}
 		}
 	}
-	
-	public function Execute() {
-		$this->DieDebug("Execute() is not supported on Result object");
+
+	public function execute() {
+		ApiBase :: dieDebug(__METHOD__, 'execute() is not supported on Result object');
+	}
+
+	public function getVersion() {
+		return __CLASS__ . ': $Id$';
 	}
 }
 ?>

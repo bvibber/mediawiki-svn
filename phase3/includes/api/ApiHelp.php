@@ -26,23 +26,30 @@
 
 if (!defined('MEDIAWIKI')) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiBase.php");
+	require_once ('ApiBase.php');
 }
 
 class ApiHelp extends ApiBase {
 
-	/**
-	* Constructor
-	*/
 	public function __construct($main, $action) {
-		parent :: __construct($main);
+		parent :: __construct($main, $action);
 	}
 
 	/**
 	 * Stub module for displaying help when no parameters are given
 	 */
-	public function Execute() {
-		$this->DieUsage('', 'help');
+	public function execute() {
+		$this->dieUsage('', 'help');
+	}
+
+	protected function getDescription() {
+		return array (
+			'Display this help screen.'
+		);
+	}
+
+	public function getVersion() {
+		return __CLASS__ . ': $Id$';
 	}
 }
 ?>

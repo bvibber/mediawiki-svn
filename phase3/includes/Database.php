@@ -5,13 +5,6 @@
  * @package MediaWiki
  */
 
-/** See Database::makeList() */
-define( 'LIST_COMMA', 0 );
-define( 'LIST_AND', 1 );
-define( 'LIST_SET', 2 );
-define( 'LIST_NAMES', 3);
-define( 'LIST_OR', 4);
-
 /** Number of times to re-try an operation in case of deadlock */
 define( 'DEADLOCK_TRIES', 4 );
 /** Minimum time to wait before retry, in microseconds */
@@ -490,12 +483,28 @@ class Database {
 
 		$success = false;
 
-		if ( $this->mFlags & DBO_PERSISTENT ) {
-			@/**/$this->mConn = mysql_pconnect( $server, $user, $password );
-		} else {
-			# Create a new connection...
-			@/**/$this->mConn = mysql_connect( $server, $user, $password, true );
+		wfProfileIn("dbconnect-$server");
+		
+		# LIVE PATCH by Tim, ask Domas for why: retry loop
+		$this->mConn = false;
+		$max = 3;
+		for ( $i = 0; $i < $max && !$this->mConn; $i++ ) {
+			if ( $i > 1 ) {
+				usleep( 1000 );
+			}
+			if ( $this->mFlags & DBO_PERSISTENT ) {
+				@/**/$this->mConn = mysql_pconnect( $server, $user, $password );
+			} else {
+				# Create a new connection...
+				@/**/$this->mConn = mysql_connect( $server, $user, $password, true );
+			}
+			if ($this->mConn === false) {
+				$iplus = $i + 1;
+				wfLogDBError("Connect loop error $iplus of $max ($server): " . mysql_errno() . " - " . mysql_error()."\n"); 
+			}
 		}
+		
+		wfProfileOut("dbconnect-$server");
 
 		if ( $dbName != '' ) {
 			if ( $this->mConn !== false ) {
@@ -503,6 +512,7 @@ class Database {
 				if ( !$success ) {
 					$error = "Error selecting database $dbName on server {$this->mServer} " .
 						"from client host {$wguname['nodename']}\n";
+					wfLogDBError(" Error selecting database $dbname on server {$this->mServer} \n");
 					wfDebug( $error );
 				}
 			} else {
@@ -516,15 +526,15 @@ class Database {
 			$success = (bool)$this->mConn;
 		}
 
-		if ( !$success ) {
+		if ( $success ) {
+			global $wgDBmysql5;
+			if( $wgDBmysql5 ) {
+				// Tell the server we're communicating with it in UTF-8.
+				// This may engage various charset conversions.
+				$this->query( 'SET NAMES utf8' );
+			}
+		} else {
 			$this->reportConnectionError();
-		}
-
-		global $wgDBmysql5;
-		if( $wgDBmysql5 ) {
-			// Tell the server we're communicating with it in UTF-8.
-			// This may engage various charset conversions.
-			$this->query( 'SET NAMES utf8' );
 		}
 
 		$this->mOpened = $success;
@@ -1902,7 +1912,7 @@ class Database {
 	function sourceFile( $filename ) {
 		$fp = fopen( $filename, 'r' );
 		if ( false === $fp ) {
-			return "Could not open \"{$fname}\".\n";
+			return "Could not open \"{$filename}\".\n";
 		}
 
 		$cmd = "";

@@ -142,7 +142,7 @@ CREATE TABLE pagelinks (
   pl_namespace  SMALLINT  NOT NULL,
   pl_title      TEXT      NOT NULL
 );
-CREATE UNIQUE INDEX pagelink_unique ON pagelinks (pl_namespace,pl_title,pl_from);
+CREATE UNIQUE INDEX pagelink_unique ON pagelinks (pl_from,pl_namespace,pl_title);
 
 CREATE TABLE templatelinks (
   tl_from       INTEGER  NOT NULL  REFERENCES page(page_id) ON DELETE CASCADE,
@@ -241,8 +241,8 @@ CREATE TABLE oldimage (
   oi_name          TEXT         NOT NULL  REFERENCES image(img_name),
   oi_archive_name  TEXT         NOT NULL,
   oi_size          INTEGER      NOT NULL,
-  oi_width         SMALLINT     NOT NULL,
-  oi_height        SMALLINT     NOT NULL,
+  oi_width         INTEGER      NOT NULL,
+  oi_height        INTEGER      NOT NULL,
   oi_bits          SMALLINT     NOT NULL,
   oi_description   TEXT,
   oi_user          INTEGER          NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL,

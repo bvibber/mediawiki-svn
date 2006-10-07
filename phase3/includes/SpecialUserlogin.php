@@ -25,15 +25,16 @@ function wfSpecialUserlogin() {
  * @subpackage SpecialPage
  */
 
-define("AuthSuccess", 0);
-define("AuthNoName", 1);
-define("AuthIllegal", 2);
-define("AuthWrongPluginPass", 3);
-define("AuthNotExists", 4);
-define("AuthWrongPass", 5);
-define("AuthEmptyPass", 6);
-
 class LoginForm {
+
+	const SUCCESS = 0;
+	const NO_NAME = 1;
+	const ILLEGAL = 2;
+	const WRONG_PLUGIN_PASS = 3;
+	const NOT_EXISTS = 4;
+	const WRONG_PASS = 5;
+	const EMPTY_PASS = 6;
+
 	var $mName, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
 	var $mAction, $mCreateaccount, $mCreateaccountMail, $mMailmypassword;
 	var $mLoginattempt, $mRemember, $mEmail, $mDomain, $mLanguage;
@@ -194,8 +195,8 @@ class LoginForm {
 	function addNewAccountInternal() {
 		global $wgUser, $wgOut;
 		global $wgEnableSorbs, $wgProxyWhitelist;
-		global $wgMemc, $wgAccountCreationThrottle, $wgDBname;
-		global $wgAuth, $wgMinimalPasswordLength, $wgReservedUsernames;
+		global $wgMemc, $wgAccountCreationThrottle;
+		global $wgAuth, $wgMinimalPasswordLength;
 
 		// If the user passes an invalid domain, something is fishy
 		if( !$wgAuth->validDomain( $this->mDomain ) ) {
@@ -236,7 +237,7 @@ class LoginForm {
 
 		$name = trim( $this->mName );
 		$u = User::newFromName( $name );
-		if ( is_null( $u ) || in_array( $u->getName(), $wgReservedUsernames ) ) {
+		if ( is_null( $u ) || !User::isCreatableName( $u->getName() ) ) {
 			$this->mainLoginForm( wfMsg( 'noname' ) );
 			return false;
 		}
@@ -257,7 +258,7 @@ class LoginForm {
 		}
 
 		if ( $wgAccountCreationThrottle ) {
-			$key = $wgDBname.':acctcreate:ip:'.$ip;
+			$key = wfMemcKey( 'acctcreate', 'ip', $ip );
 			$value = $wgMemc->incr( $key );
 			if ( !$value ) {
 				$wgMemc->set( $key, 1, 86400 );
@@ -317,13 +318,13 @@ class LoginForm {
 	
 	function authenticateUserData()
 	{
-		global $wgUser, $wgAuth, $wgReservedUsernames;
+		global $wgUser, $wgAuth;
 		if ( '' == $this->mName ) {
-			return AuthNoName;
+			return self::NO_NAME;
 		}
 		$u = User::newFromName( $this->mName );
-		if( is_null( $u ) || in_array( $u->getName(), $wgReservedUsernames ) ) {
-			return AuthIllegal;
+		if( is_null( $u ) || !User::isUsableName( $u->getName() ) ) {
+			return self::ILLEGAL;
 		}
 		if ( 0 == $u->getID() ) {
 			global $wgAuth;
@@ -336,37 +337,41 @@ class LoginForm {
 				if ( $wgAuth->authenticate( $u->getName(), $this->mPassword ) ) {
 					$u =& $this->initUser( $u );
 				} else {
-					return AuthPluginPass;
+					return self::WRONG_PLUGIN_PASS;
 				}
 			} else {
-				return AuthNotExists;
+				return self::NOT_EXISTS;
 			}
 		} else {
 			$u->loadFromDatabase();
 		}
 
 		if (!$u->checkPassword( $this->mPassword )) {
-			return '' == $this->mPassword ? AuthEmptyPass : AuthWrongPass;
+			return '' == $this->mPassword ? self::EMPTY_PASS : self::WRONG_PASS;
 		}
 		else
 		{	
 			$wgAuth->updateUser( $u );
 			$wgUser = $u;
-			return AuthSuccess;
+
+			return self::SUCCESS;
 		}
 	}
 	
 	function processLogin() {
-		global $wgUser, $wgAuth, $wgReservedUsernames;
+		global $wgUser, $wgAuth;
 
 		switch ($this->authenticateUserData())
 		{
-			case (AuthSuccess):
+			case self::SUCCESS:
 				# We've verified now, update the real record
-				#
-				$wgUser->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
+				if( (bool)$this->mRemember != (bool)$wgUser->getOption( 'rememberpassword' ) ) {
+					$wgUser->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
+					$wgUser->saveSettings();
+				} else {
+					$wgUser->invalidateCache();
+				}
 				$wgUser->setCookies();
-				$wgUser->saveSettings();
 
 				if( $this->hasSessionCookie() ) {
 					return $this->successfulLogin( wfMsg( 'loginsuccess', $wgUser->getName() ) );
@@ -375,20 +380,20 @@ class LoginForm {
 				}
 				break;
 
-			case (AuthNoName):
-			case (AuthIllegal):
+			case self::NO_NAME:
+			case self::ILLEGAL:
 				$this->mainLoginForm( wfMsg( 'noname' ) );
 				break;
-			case (AuthWrongPluginPass):
+			case self::WRONG_PLUGIN_PASS:
 				$this->mainLoginForm( wfMsg( 'wrongpassword' ) );
 				break;
-			case (AuthNotExists):
+			case self::NOT_EXISTS:
 				$this->mainLoginForm( wfMsg( 'nosuchuser', htmlspecialchars( $this->mName ) ) );
 				break;
-			case (AuthWrongPass):
+			case self::WRONG_PASS:
 				$this->mainLoginForm( wfMsg( 'wrongpassword' ) );
 				break;
-			case (AuthEmptyPass):
+			case self::EMPTY_PASS:
 				$this->mainLoginForm( wfMsg( 'wrongpasswordempty' ) );
 				break;
 			default:

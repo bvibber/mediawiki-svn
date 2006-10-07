@@ -145,7 +145,7 @@ $wgLang = new StubUserLang;
 $wgOut = new StubObject( 'wgOut', 'OutputPage' );
 $wgParser = new StubObject( 'wgParser', 'Parser' );
 $wgMessageCache = new StubObject( 'wgMessageCache', 'MessageCache', 
-	array( $parserMemc, $wgUseDatabaseMessages, $wgMsgCacheExpiry, $wgDBname) );
+	array( $parserMemc, $wgUseDatabaseMessages, $wgMsgCacheExpiry, wfWikiID() ) );
 
 wfProfileOut( $fname.'-globals' );
 wfProfileIn( $fname.'-User' );
@@ -184,7 +184,10 @@ wfProfileIn( $fname.'-extensions' );
 # of the extension file. This allows the extension to perform
 # any necessary initialisation in the fully initialised environment
 foreach ( $wgExtensionFunctions as $func ) {
+	$profName = $fname.'-extensions-'.strval( $func );
+	wfProfileIn( $profName );
 	call_user_func( $func );
+	wfProfileOut( $profName );
 }
 
 // For compatibility

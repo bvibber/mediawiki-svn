@@ -22,22 +22,18 @@
  * @subpackage SpecialPage
  */
 
-/** */
-require_once( 'Export.php' );
-
 /**
  *
  */
 function wfSpecialExport( $page = '' ) {
 	global $wgOut, $wgRequest, $wgExportAllowListContributors;
 	global $wgExportAllowHistory, $wgExportMaxHistory;
-	$maxLimit = 200;
 
 	$curonly = true;
 	$fullHistory = array(
 		'dir' => 'asc',
 		'offset' => false,
-		'limit' => $maxLimit,
+		'limit' => $wgExportMaxHistory,
 	);
 	if( $wgRequest->wasPosted() ) {
 		$page = $wgRequest->getText( 'pages' );
@@ -53,13 +49,13 @@ function wfSpecialExport( $page = '' ) {
 		$history = array(
 			'dir' => 'asc',
 			'offset' => false,
-			'limit' => $maxLimit,
+			'limit' => $wgExportMaxHistory,
 		);
 		$historyCheck = $wgRequest->getCheck( 'history' );
 		if ( $curonly ) {
-			$history = MW_EXPORT_CURRENT;
+			$history = WikiExporter::CURRENT;
 		} elseif ( !$historyCheck ) {
-			if ( $limit > 0 && $limit < $maxLimit ) {
+			if ( $limit > 0 && $limit < $wgExportMaxHistory ) {
 				$history['limit'] = $limit;
 			}
 			if ( !is_null( $offset ) ) {
@@ -74,14 +70,14 @@ function wfSpecialExport( $page = '' ) {
 		$page = $wgRequest->getText( 'pages', $page );
 		$historyCheck = $wgRequest->getCheck( 'history' );
 		if( $historyCheck ) {
-			$history = MW_EXPORT_FULL;
+			$history = WikiExporter::FULL;
 		} else {
-			$history = MW_EXPORT_CURRENT;
+			$history = WikiExporter::CURRENT;
 		}
 	}
 	if( !$wgExportAllowHistory ) {
 		// Override
-		$history = MW_EXPORT_CURRENT;
+		$history = WikiExporter::CURRENT;
 	}
 	
 	$list_authors = $wgRequest->getCheck( 'listauthors' );
@@ -107,6 +103,7 @@ function wfSpecialExport( $page = '' ) {
 		$exporter->openStream();
 		
 		foreach( $pages as $page ) {
+			/*
 			if( $wgExportMaxHistory && !$curonly ) {
 				$title = Title::newFromText( $page );
 				if( $title ) {
@@ -117,7 +114,7 @@ function wfSpecialExport( $page = '' ) {
 						continue;
 					}
 				}
-			}
+			}*/
 			$exporter->pageByName( $page );
 		}
 		

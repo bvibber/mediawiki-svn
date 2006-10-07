@@ -26,23 +26,87 @@
 
 if (!defined('MEDIAWIKI')) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiBase.php");
+	require_once ('ApiBase.php');
 }
 
 abstract class ApiQueryBase extends ApiBase {
 
 	private $mQueryModule;
-	
-	/**
-	* Constructor
-	*/
-	public function __construct($main, $query) {
-		parent :: __construct($main);
+    
+	public function __construct($query, $moduleName, $paramPrefix = '') {
+		parent :: __construct($query->getMain(), $moduleName, $paramPrefix);
 		$this->mQueryModule = $query;
 	}
-	
-	public function GetQuery() {
+
+	/**
+	 * Override this method to request extra fields from the pageSet
+	 * using $this->getPageSet()->requestField('fieldName')
+	 */
+	public function requestExtraData() {
+	}
+
+	/**
+	 * Get the main Query module 
+	 */
+	public function getQuery() {
 		return $this->mQueryModule;
 	}
+
+	/**
+	 * Get the Query database connection (readonly)
+	 */
+	protected function getDB() {
+		return $this->getQuery()->getDB();
+	}
+
+	/**
+	 * Get the PageSet object to work on
+	 * @return ApiPageSet data
+	 */
+	protected function getPageSet() {
+		return $this->mQueryModule->getPageSet();
+	}
+
+	public static function titleToKey($title) {
+		return str_replace(' ', '_', $title);
+	}
+
+	public static function keyToTitle($key) {
+		return str_replace('_', ' ', $key);
+	}
+
+	public static function getBaseVersion() {
+		return __CLASS__ . ': $Id$';
+	}
+}
+
+abstract class ApiQueryGeneratorBase extends ApiQueryBase {
+
+	private $mIsGenerator;
+
+	public function __construct($query, $moduleName, $paramPrefix = '') {
+		parent :: __construct($query, $moduleName, $paramPrefix);
+		$mIsGenerator = false;
+	}
+
+	public function setGeneratorMode() {
+		$this->mIsGenerator = true;
+	}
+
+	/**
+	 * Overrides base class to prepend 'g' to every generator parameter
+	 */
+	public function encodeParamName($paramName) {
+		if ($this->mIsGenerator)
+			return 'g' . parent :: encodeParamName($paramName);
+		else
+			return parent :: encodeParamName($paramName);
+	}
+
+	/**
+	 * Execute this module as a generator
+	 * @param $resultPageSet PageSet: All output should be appended to this object
+	 */
+	public abstract function executeGenerator($resultPageSet);
 }
 ?>

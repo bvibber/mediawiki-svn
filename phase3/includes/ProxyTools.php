@@ -75,7 +75,7 @@ function wfGetIP() {
  */
 function wfProxyCheck() {
 	global $wgBlockOpenProxies, $wgProxyPorts, $wgProxyScriptPath;
-	global $wgUseMemCached, $wgMemc, $wgDBname, $wgProxyMemcExpiry;
+	global $wgUseMemCached, $wgMemc, $wgProxyMemcExpiry;
 	global $wgProxyKey;
 
 	if ( !$wgBlockOpenProxies ) {
@@ -87,7 +87,7 @@ function wfProxyCheck() {
 	# Get MemCached key
 	$skip = false;
 	if ( $wgUseMemCached ) {
-		$mcKey = "$wgDBname:proxy:ip:$ip";
+		$mcKey = wfMemcKey( 'proxy', 'ip', $ip );
 		$mcValue = $wgMemc->get( $mcKey );
 		if ( $mcValue ) {
 			$skip = true;
@@ -120,18 +120,7 @@ function wfProxyCheck() {
  * Convert a network specification in CIDR notation to an integer network and a number of bits
  */
 function wfParseCIDR( $range ) {
-	$parts = explode( '/', $range, 2 );
-	if ( count( $parts ) != 2 ) {
-		return array( false, false );
-	}
-	$network = IP::toUnsigned( $parts[0] );
-	if ( $network !== false && is_numeric( $parts[1] ) && $parts[1] >= 0 && $parts[1] <= 32 ) {
-		$bits = $parts[1];
-	} else {
-		$network = false;
-		$bits = false;
-	}
-	return array( $network, $bits );
+	return IP::parseCIDR( $range );
 }
 
 /**

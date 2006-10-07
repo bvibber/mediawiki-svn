@@ -17,7 +17,7 @@ require_once( 'SpecialRecentchanges.php' );
  */
 function wfSpecialWatchlist( $par ) {
 	global $wgUser, $wgOut, $wgLang, $wgMemc, $wgRequest, $wgContLang;
-	global $wgUseWatchlistCache, $wgWLCacheTimeout, $wgDBname;
+	global $wgUseWatchlistCache, $wgWLCacheTimeout;
 	global $wgRCShowWatchingUsers, $wgEnotifWatchlist, $wgShowUpdatedMarker;
 	global $wgEnotifWatchlist;
 	$fname = 'wfSpecialWatchlist';
@@ -90,20 +90,20 @@ function wfSpecialWatchlist( $par ) {
 			if( !is_null( $t ) ) {
 				$wl = WatchedItem::fromUserTitle( $wgUser, $t );
 				if( $wl->removeWatch() === false ) {
-					$wgOut->addHTML( "<br />\n" . wfMsg( 'couldntremove', htmlspecialchars($one) ) );
+					$wgOut->addHTML( wfMsg( 'couldntremove', htmlspecialchars($one) ) . "<br />\n" );
 				} else {
 					wfRunHooks('UnwatchArticle', array(&$wgUser, new Article($t)));
-					$wgOut->addHTML( ' (' . htmlspecialchars($one) . ')' );
+					$wgOut->addHTML( '(' . htmlspecialchars($one) . ')<br />' );
 				}
 			} else {
-				$wgOut->addHTML( "<br />\n" . wfMsg( 'iteminvalidname', htmlspecialchars($one) ) );
+				$wgOut->addHTML( wfMsg( 'iteminvalidname', htmlspecialchars($one) ) . "<br />\n" );
 			}
 		}
-		$wgOut->addHTML( "<br />\n" . wfMsg( 'wldone' ) . "</p>\n" );
+		$wgOut->addHTML( "</p>\n<p>" . wfMsg( 'wldone' ) . "</p>\n" );
 	}
 
 	if ( $wgUseWatchlistCache ) {
-		$memckey = "$wgDBname:watchlist:id:" . $wgUser->getId();
+		$memckey = wfMemcKey( 'watchlist', 'id', $wgUser->getId() );
 		$cache_s = @$wgMemc->get( $memckey );
 		if( $cache_s ){
 			$wgOut->addWikiText( wfMsg('wlsaved') );

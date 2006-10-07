@@ -335,6 +335,48 @@ class User {
 		
 		return true;
 	}
+	
+	/**
+	 * Usernames which fail to pass this function will be blocked
+	 * from user login and new account registrations, but may be used
+	 * internally by batch processes.
+	 *
+	 * If an account already exists in this form, login will be blocked
+	 * by a failure to pass this function.
+	 *
+	 * @param string $name
+	 * @return bool
+	 */
+	static function isUsableName( $name ) {
+		global $wgReservedUsernames;
+		return
+			// Must be a usable username, obviously ;)
+			self::isValidUserName( $name ) &&
+			
+			// Certain names may be reserved for batch processes.
+			!in_array( $name, $wgReservedUsernames );
+	}
+	
+	/**
+	 * Usernames which fail to pass this function will be blocked
+	 * from new account registrations, but may be used internally
+	 * either by batch processes or by user accounts which have
+	 * already been created.
+	 *
+	 * Additional character blacklisting may be added here
+	 * rather than in isValidUserName() to avoid disrupting
+	 * existing accounts.
+	 *
+	 * @param string $name
+	 * @return bool
+	 */
+	static function isCreatableName( $name ) {
+		return
+			self::isUsableName( $name ) &&
+			
+			// Registration-time character blacklisting...
+			strpos( $name, '@' ) === false;
+	}
 
 	/**
 	 * Is the input a valid password?
@@ -623,7 +665,7 @@ class User {
 				return false;
 		}
 		
-		global $wgMemc, $wgDBname, $wgRateLimitLog;
+		global $wgMemc, $wgRateLimitLog;
 		$fname = 'User::pingLimiter';
 		wfProfileIn( $fname );
 
@@ -633,15 +675,15 @@ class User {
 		$ip = wfGetIP();
 
 		if( isset( $limits['anon'] ) && $id == 0 ) {
-			$keys["$wgDBname:limiter:$action:anon"] = $limits['anon'];
+			$keys[wfMemcKey( 'limiter', $action, 'anon' )] = $limits['anon'];
 		}
 
 		if( isset( $limits['user'] ) && $id != 0 ) {
-			$keys["$wgDBname:limiter:$action:user:$id"] = $limits['user'];
+			$keys[wfMemcKey( 'limiter', $action, 'user', $id )] = $limits['user'];
 		}
 		if( $this->isNewbie() ) {
 			if( isset( $limits['newbie'] ) && $id != 0 ) {
-				$keys["$wgDBname:limiter:$action:user:$id"] = $limits['newbie'];
+				$keys[wfMemcKey( 'limiter', $action, 'user', $id )] = $limits['newbie'];
 			}
 			if( isset( $limits['ip'] ) ) {
 				$keys["mediawiki:limiter:$action:ip:$ip"] = $limits['ip'];
@@ -661,7 +703,7 @@ class User {
 				if( $count > $max ) {
 					wfDebug( "$fname: tripped! $key at $count $summary\n" );
 					if( $wgRateLimitLog ) {
-						@error_log( wfTimestamp( TS_MW ) . ' ' . $wgDBname . ': ' . $this->getName() . " tripped $key at $count $summary\n", 3, $wgRateLimitLog );
+						@error_log( wfTimestamp( TS_MW ) . ' ' . wfWikiID() . ': ' . $this->getName() . " tripped $key at $count $summary\n", 3, $wgRateLimitLog );
 					}
 					$triggered = true;
 				} else {
@@ -741,7 +783,7 @@ class User {
 	 * @static
 	 */
 	function loadFromSession() {
-		global $wgMemc, $wgDBname, $wgCookiePrefix;
+		global $wgMemc, $wgCookiePrefix;
 
 		if ( isset( $_SESSION['wsUserID'] ) ) {
 			if ( 0 != $_SESSION['wsUserID'] ) {
@@ -765,7 +807,7 @@ class User {
 		}
 
 		$passwordCorrect = FALSE;
-		$user = $wgMemc->get( $key = "$wgDBname:user:id:$sId" );
+		$user = $wgMemc->get( $key = wfMemcKey( 'user', 'id', $sId ) );
 		if( !is_object( $user ) || $user->mVersion < MW_USER_VERSION ) {
 			# Expire old serialized objects; they may be corrupt.
 			$user = false;
@@ -916,8 +958,8 @@ class User {
 			# Check memcached separately for anons, who have no
 			# entire User object stored in there.
 			if( !$this->mId ) {
-				global $wgDBname, $wgMemc;
-				$key = "$wgDBname:newtalk:ip:" . $this->getName();
+				global $wgMemc;
+				$key = wfMemcKey( 'newtalk', 'ip', $this->getName() );
 				$newtalk = $wgMemc->get( $key );
 				if( is_integer( $newtalk ) ) {
 					$this->mNewtalk = (bool)$newtalk;
@@ -937,7 +979,6 @@ class User {
 	 * Return the talk page(s) this user has new messages on.
 	 */
 	function getNewMessageLinks() {
-	global	$wgDBname;
 		$talks = array();
 		if (!wfRunHooks('UserRetrieveNewTalks', array(&$this, &$talks)))
 			return $talks;
@@ -946,7 +987,7 @@ class User {
 			return array();
 		$up = $this->getUserPage();
 		$utp = $up->getTalkPage();
-		return array(array("wiki" => $wgDBname, "link" => $utp->getLocalURL()));
+		return array(array("wiki" => wfWikiID(), "link" => $utp->getLocalURL()));
 	}
 
 		
@@ -1041,8 +1082,8 @@ class User {
 			if( $this->isAnon() ) {
 				// Anons have a separate memcached space, since
 				// user records aren't kept for them.
-				global $wgDBname, $wgMemc;
-				$key = "$wgDBname:newtalk:ip:$val";
+				global $wgMemc;
+				$key = wfMemcKey( 'newtalk', 'ip', $val );
 				$wgMemc->set( $key, $val ? 1 : 0 );
 			} else {
 				if( $val ) {
@@ -1052,16 +1093,49 @@ class User {
 				}
 			}
 			$this->invalidateCache();
-			$this->saveSettings();
+		}
+	}
+	
+	/**
+	 * Generate a current or new-future timestamp to be stored in the
+	 * user_touched field when we update things.
+	 */
+	private static function newTouchedTimestamp() {
+		global $wgClockSkewFudge;
+		return wfTimestamp( TS_MW, time() + $wgClockSkewFudge );
+	}
+	
+	/**
+	 * Clear user data from memcached.
+	 * Use after applying fun updates to the database; caller's
+	 * responsibility to update user_touched if appropriate.
+	 *
+	 * Called implicitly from invalidateCache() and saveSettings().
+	 */
+	private function clearUserCache() {
+		if( $this->mId ) {
+			global $wgMemc;
+			$wgMemc->delete( wfMemcKey( 'user', 'id', $this->mId ) );
 		}
 	}
 
+	/**
+	 * Immediately touch the user data cache for this account.
+	 * Updates user_touched field, and removes account data from memcached
+	 * for reload on the next hit.
+	 */
 	function invalidateCache() {
-		global $wgClockSkewFudge;
-		$this->loadFromDatabase();
-		$this->mTouched = wfTimestamp(TS_MW, time() + $wgClockSkewFudge );
-		# Don't forget to save the options after this or
-		# it won't take effect!
+		if( $this->mId ) {
+			$this->mTouched = self::newTouchedTimestamp();
+			
+			$dbw =& wfGetDB( DB_MASTER );
+			$dbw->update( 'user',
+				array( 'user_touched' => $dbw->timestamp( $this->mTouched ) ),
+				array( 'user_id' => $this->mId ),
+				__METHOD__ );
+			
+			$this->clearUserCache();
+		}
 	}
 
 	function validateCache( $timestamp ) {
@@ -1089,7 +1163,7 @@ class User {
 
 	# Set the random token (used for persistent authentication)
 	function setToken( $token = false ) {
-		global $wgSecretKey, $wgProxyKey, $wgDBname;
+		global $wgSecretKey, $wgProxyKey;
 		if ( !$token ) {
 			if ( $wgSecretKey ) {
 				$key = $wgSecretKey;
@@ -1098,7 +1172,7 @@ class User {
 			} else {
 				$key = microtime();
 			}
-			$this->mToken = md5( $key . mt_rand( 0, 0x7fffffff ) . $wgDBname . $this->mId );
+			$this->mToken = md5( $key . mt_rand( 0, 0x7fffffff ) . wfWikiID() . $this->mId );
 		} else {
 			$this->mToken = $token;
 		}
@@ -1210,7 +1284,6 @@ class User {
 		$val = str_replace( "\r", "\n", $val );
 		$val = str_replace( "\n", " ", $val );
 		$this->mOptions[$oname] = $val;
-		$this->invalidateCache();
 	}
 
 	function getRights() {
@@ -1261,7 +1334,6 @@ class User {
 		$this->mRights = User::getGroupPermissions( $this->getEffectiveGroups() );
 
 		$this->invalidateCache();
-		$this->saveSettings();
 	}
 
 	/**
@@ -1282,7 +1354,6 @@ class User {
 		$this->mRights = User::getGroupPermissions( $this->getEffectiveGroups() );
 
 		$this->invalidateCache();
-		$this->saveSettings();
 	}
 
 
@@ -1455,7 +1526,7 @@ class User {
 			$dbw =& wfGetDB( DB_MASTER );
 			$success = $dbw->update( 'watchlist',
 				array( /* SET */
-					'wl_notificationtimestamp' => 0
+					'wl_notificationtimestamp' => NULL
 				), array( /* WHERE */
 					'wl_user' => $currentUser
 				), 'UserMailer::clearAll'
@@ -1537,13 +1608,15 @@ class User {
 
 	/**
 	 * Save object settings into database
+	 * @fixme Only rarely do all these fields need to be set!
 	 */
 	function saveSettings() {
-		global $wgMemc, $wgDBname;
 		$fname = 'User::saveSettings';
 
 		if ( wfReadOnly() ) { return; }
 		if ( 0 == $this->mId ) { return; }
+		
+		$this->mTouched = self::newTouchedTimestamp();
 
 		$dbw =& wfGetDB( DB_MASTER );
 		$dbw->update( 'user',
@@ -1561,7 +1634,7 @@ class User {
 				'user_id' => $this->mId
 			), $fname
 		);
-		$wgMemc->delete( "$wgDBname:user:id:$this->mId" );
+		$this->clearUserCache();
 	}
 
 
@@ -1795,7 +1868,7 @@ class User {
 		} elseif ( function_exists( 'iconv' ) ) {
 			# Some wikis were converted from ISO 8859-1 to UTF-8, the passwords can't be converted
 			# Check for this with iconv
-			$cp1252hash = $this->encryptPassword( iconv( 'UTF-8', 'WINDOWS-1252', $password ) );
+			$cp1252hash = $this->encryptPassword( iconv( 'UTF-8', 'WINDOWS-1252//TRANSLIT', $password ) );
 			if ( 0 == strcmp( $cp1252hash, $this->mPassword ) ) {
 				return true;
 			}

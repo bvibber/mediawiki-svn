@@ -121,12 +121,12 @@ class Image
 	 * Returns an array, first element is the local cache key, second is the shared cache key, if there is one
 	 */
 	function getCacheKeys( ) {
-		global $wgDBname, $wgUseSharedUploads, $wgSharedUploadDBname, $wgCacheSharedUploads;
+		global $wgUseSharedUploads, $wgSharedUploadDBname, $wgCacheSharedUploads;
 
 		$hashedName = md5($this->name);
-		$keys = array( "$wgDBname:Image:$hashedName" );
+		$keys = array( wfMemcKey( 'Image', $hashedName ) );
 		if ( $wgUseSharedUploads && $wgSharedUploadDBname && $wgCacheSharedUploads ) {
-			$keys[] = "$wgSharedUploadDBname:Image:$hashedName";
+			$keys[] = wfForeignMemcKey( $wgSharedUploadDBname, false, 'Image', $hashedName );
 		}
 		return $keys;
 	}
@@ -260,7 +260,7 @@ class Image
 
 
 		if ( $this->fileExists ) {
-			$magic=& wfGetMimeMagic();
+			$magic=& MimeMagic::singleton();
 
 			$this->mime = $magic->guessMimeType($this->imagePath,true);
 			$this->type = $magic->getMediaType($this->imagePath,$this->mime);
@@ -268,7 +268,7 @@ class Image
 			# Get size in bytes
 			$this->size = filesize( $this->imagePath );
 
-			$magic=& wfGetMimeMagic();
+			$magic=& MimeMagic::singleton();
 
 			# Height and width
 			wfSuppressWarnings();
@@ -1211,7 +1211,7 @@ class Image
 					// For the -resize option a "!" is needed to force exact size,
 					// or ImageMagick may decide your ratio is wrong and slice off
 					// a pixel.
-					" -resize " . wfEscapeShellArg( "{$width}x{$height}!" ) .
+					" -thumbnail " . wfEscapeShellArg( "{$width}x{$height}!" ) .
 					" -depth 8 " .
 					wfEscapeShellArg($thumbPath) . " 2>&1";
 				wfDebug("reallyRenderThumb: running ImageMagick: $cmd\n");
@@ -2134,7 +2134,7 @@ class Image
 						$tempFile = $store->filePath( $row->fa_storage_key );
 						$metadata = serialize( $this->retrieveExifData( $tempFile ) );
 						
-						$magic = wfGetMimeMagic();
+						$magic = MimeMagic::singleton();
 						$mime = $magic->guessMimeType( $tempFile, true );
 						$media_type = $magic->getMediaType( $tempFile, $mime );
 						list( $major_mime, $minor_mime ) = self::splitMime( $mime );
@@ -2282,7 +2282,9 @@ class Image
 				__METHOD__
 			);
 		}
+		wfSuppressWarnings();
 		$this->multiPageXML = new SimpleXMLElement( $this->metadata );
+		wfRestoreWarnings();
 	}
 
 	/**

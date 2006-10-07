@@ -168,9 +168,6 @@ class BackupDumper {
 	}
 
 	function dump( $history, $text = MW_EXPORT_TEXT ) {
-		# This shouldn't happen if on console... ;)
-		header( 'Content-type: text/html; charset=UTF-8' );
-
 		# Notice messages will foul up your XML output even if they're
 		# relatively harmless.
 		ini_set( 'display_errors', false );
@@ -265,9 +262,8 @@ class BackupDumper {
 				$revrate = '-';
 				$etats = '-';
 			}
-			global $wgDBname;
 			$this->progress( sprintf( "%s: %s %d pages (%0.3f/sec), %d revs (%0.3f/sec), ETA %s [max %d]",
-				$now, $wgDBname, $this->pageCount, $rate, $this->revCount, $revrate, $etats, $this->maxCount ) );
+				$now, wfWikiID(), $this->pageCount, $rate, $this->revCount, $revrate, $etats, $this->maxCount ) );
 		}
 	}
 

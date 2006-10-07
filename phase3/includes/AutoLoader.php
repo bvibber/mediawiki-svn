@@ -10,6 +10,7 @@ function __autoload($className) {
 	static $localClasses = array(
 		'AjaxDispatcher' => 'includes/AjaxDispatcher.php',
 		'AjaxCachePolicy' => 'includes/AjaxFunctions.php',
+		'AjaxResponse' => 'includes/AjaxResponse.php',
 		'Article' => 'includes/Article.php',
 		'AuthPlugin' => 'includes/AuthPlugin.php',
 		'BagOStuff' => 'includes/BagOStuff.php',
@@ -19,6 +20,7 @@ function __autoload($className) {
 		'TurckBagOStuff' => 'includes/BagOStuff.php',
 		'APCBagOStuff' => 'includes/BagOStuff.php',
 		'eAccelBagOStuff' => 'includes/BagOStuff.php',
+		'DBABagOStuff' => 'includes/BagOStuff.php',
 		'Block' => 'includes/Block.php',
 		'CacheManager' => 'includes/CacheManager.php',
 		'CategoryPage' => 'includes/CategoryPage.php',

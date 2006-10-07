@@ -38,13 +38,13 @@ class LanguageConverter {
 								$variantfallbacks=array(),
 								$markup=array(),
 								$flags = array()) {
-		global $wgDBname;
+		global $wgLegalTitleChars;
 		global $wgLegalTitleChars;
 		$this->mLangObj = $langobj;
 		$this->mMainLanguageCode = $maincode;
 		$this->mVariants = $variants;
 		$this->mVariantFallbacks = $variantfallbacks;
-		$this->mCacheKey = $wgDBname . ":conversiontables";
+		$this->mCacheKey = wfMemcKey( 'conversiontables' );
 		$m = array('begin'=>'-{', 'flagsep'=>'|', 'codesep'=>':',
 				   'varsep'=>';', 'end'=>'}-');
 		$this->mMarkup = array_merge($m, $markup);

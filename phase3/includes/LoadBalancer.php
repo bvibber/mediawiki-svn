@@ -4,16 +4,6 @@
  * @package MediaWiki
  */
 
-/**
- * Depends on the database object
- */
-require_once( 'Database.php' );
-
-
-# Scale polling time so that under overload conditions, the database server
-# receives a SHOW STATUS query at an average interval of this many microseconds
-define( 'AVG_STATUS_POLL', 2000 );
-
 
 /**
  * Database load balancing object
@@ -27,6 +17,12 @@ class LoadBalancer {
 	/* private */ var $mForce, $mReadIndex, $mLastIndex, $mAllowLagged;
 	/* private */ var $mWaitForFile, $mWaitForPos, $mWaitTimeout;
 	/* private */ var $mLaggedSlaveMode, $mLastError = 'Unknown error';
+
+	/**
+	 * Scale polling time so that under overload conditions, the database server
+	 * receives a SHOW STATUS query at an average interval of this many microseconds
+	 */
+	const AVG_STATUS_POLL = 2000;
 
 	function LoadBalancer( $servers, $failFunction = false, $waitTimeout = 10, $waitForMasterNow = false )
 	{
@@ -161,7 +157,7 @@ class LoadBalancer {
 						$i = $this->getRandomNonLagged( $loads );
 						if ( $i === false && count( $loads ) != 0 )  {
 							# All slaves lagged. Switch to read-only mode
-							$wgReadOnly = wfMsgNoDB( 'readonly_lag' );
+							$wgReadOnly = wfMsgNoDBForContent( 'readonly_lag' );
 							$i = $this->pickRandom( $loads );
 						}
 					}
@@ -182,7 +178,7 @@ class LoadBalancer {
 								# Too much load, back off and wait for a while.
 								# The sleep time is scaled by the number of threads connected,
 								# to produce a roughly constant global poll rate.
-								$sleepTime = AVG_STATUS_POLL * $status['Threads_connected'];
+								$sleepTime = self::AVG_STATUS_POLL * $status['Threads_connected'];
 
 								# If we reach the timeout and exit the loop, don't use it
 								$i = false;
@@ -423,9 +419,6 @@ class LoadBalancer {
 		extract( $server );
 		# Get class for this database type
 		$class = 'Database' . ucfirst( $type );
-		if ( !class_exists( $class ) ) {
-			require_once( "$class.php" );
-		}
 
 		# Create object
 		$db = new $class( $host, $user, $password, $dbname, 1, $flags );
@@ -606,14 +599,12 @@ class LoadBalancer {
 	 * Results are cached for a short time in memcached
 	 */
 	function getLagTimes() {
-		global $wgDBname;
-
 		wfProfileIn( __METHOD__ );
 		$expiry = 5;
 		$requestRate = 10;
 
 		global $wgMemc;
-		$times = $wgMemc->get( "$wgDBname:lag_times" );
+		$times = $wgMemc->get( wfMemcKey( 'lag_times' ) );
 		if ( $times ) {
 			# Randomly recache with probability rising over $expiry
 			$elapsed = time() - $times['timestamp'];
@@ -623,6 +614,9 @@ class LoadBalancer {
 				wfProfileOut( __METHOD__ );
 				return $times;
 			}
+			wfIncrStats( 'lag_cache_miss_expired' );
+		} else {
+			wfIncrStats( 'lag_cache_miss_absent' );
 		}
 
 		# Cache key missing or expired
@@ -638,11 +632,10 @@ class LoadBalancer {
 
 		# Add a timestamp key so we know when it was cached
 		$times['timestamp'] = time();
-		$wgMemc->set( "$wgDBname:lag_times", $times, $expiry );
+		$wgMemc->set( wfMemcKey( 'lag_times' ), $times, $expiry );
 
 		# But don't give the timestamp to the caller
 		unset($times['timestamp']);
-		wfIncrStats( 'lag_cache_miss' );
 		wfProfileOut( __METHOD__ );
 		return $times;
 	}

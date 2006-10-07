@@ -35,6 +35,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   multipage djvu for thumbnail generation.
 * Full Postgres support is now enabled. It requires version 8.1 or better, and 
   needs to have both plpgsql and tsearch2 already installed.
+* (bug 6386) fix grammatical errors in danish naming of talk namespaces.
 
 == Changes since 1.7 ==
 
@@ -197,33 +198,110 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Add --user, --comment, and --license options to importImages.php
 * (bug 6216) The immobile namespace message does not mention the source page
 * (bug 7299) Normalize username filter on Special:Newpages
+* (bug 7306) RTL text in an LTR wiki breaks appearance of Special:Recentchanges
+* (bug 7312) Don't emit SET NAMES utf8 if connection failed
+* (bug 7305) Proper compare for bot check on RC notify, should fix overrides
+  that force edits by non-bot users to bot mode
+* Set Vary: Cookie on action=raw generated CSS and JS, to ensure that user
+  preferences don't get stuck in proxy caches for other people
+* (bug 7324) Fix error message for failure of Database::sourceFile()
+* (bug 7309) Plurals: use singular form for zero in French and Brazilian Portuguese
+* Add page_no_title_convert field to support language variant conversion
+  for page titles which shouldn't be converted on display/linking
+* Lazy extraction of text chunks in Revision objects, may reduce hits to
+  external storage when actual text content is not used
+* Added experimental $wgRevisionCacheExpiry to cache extracted revision text
+  in $wgMemc, to further reduce hits to external storage.
+  Set to 0 (disabled) by default.
+* Minor changes to the installer. 
+* Remove ":" for 'youremail' and 'yourrealname' in includes/templates/Userlogin.php
+  so that ":" could be used in i18n for Special:Preferences (like 'username' and 'uid').
+* Fix layout for Special:Preferences->Date and Time (position for 'timezonetext').
+* Updates to language variant code for Serbian et al
+* (bug 6756) Enabling RTL direction for kk-cn
+* (bug 6701) Kazakh language variants in MessagesEn.php
+* (bug 7335) SVN revision check in Special:Version fails on SVN 1.4 working copy
+* (bug 6518) Replaced 'lastmodified' with 'lastmodifiedat' and 'lastmodifiedby' with 'lastmodifiedatby'
+  with seperated parameters for date and time to allow better localisation. Updated all message files
+  to display the old format for compatibility.
+* (bug 7357) Make supposedly static methods of Skin actually static
+* Added info text to Special:Deadendpages and Special:Lonelypages
+* Fix regression in cachability of generated CSS and JS for MonoBook skin,
+  while avoiding clobbering of different users' cached data
+* (bug 6849) Block @ from usernames; interferes with multi-database tools and
+  was meant to be banned years ago... For now existing accounts will not be
+  prevented fromm login.
+* (bug 6092) Introduce magic words {{REVISIONDAY}}, {{REVISIONDAY2}, {{REVISIONMONTH}},
+  {{REVISIONYEAR}} and {{REVISIONTIMESTAMP}} 
+* (bug 7425) Preceeding whitespace in [[...]] breaks subpages
+* Try to reconnect after transitory database errors in dumpTextPass.php
+* (bug 6023) Fixed mismatch of 0/NULL for wl_notificationtimestamp; now notification
+  mails are working after 'Mark all pages visited' button on Special:Watchlist is clicked
+* Made {{INT:}} a core parser function instead of a special case. The syntax 
+  and behaviour is largely unchanged. 
+* (bug 7448) Fixing the native name for Ewe (ee)
+* (bug 6864) Replace message 'editing' with new message 'editinguser' in Special:Userrights
+  to allow better localisation
+* Add '*-summary' for special pages to MessagesEn.php to allow customizing/translation
+  directly through Special:Allmessages
+* (bug 6130, bug 5818) Replaced message 'go'  with the new message 'searcharticle' in skins
+  to allow better localisation
+* Add + to $wgLegalTitleChars by default. Some sites may have occasional
+  problems with hard-to-reach pages, but it should be less trouble than
+  "I can't import dumps from Wikipedia" complaints
+* (bug 7460) Revert broken patch for bug 7226 which slows down
+  Special:Allmessages by a factor of 16
+* Committed a bunch of live hacks from Wikimedia servers
+* (bug 6889) PHP notices in thumb.php with missing params
+* Cleaner error behavior on thumb.php with invalid page selection
+* (bug 6617) Validate timestamps on Special:Undelete
+* Do fewer unnecessary full writes of user rows; only update user_touched
+  for watch/unwatch, group membership change, and login operations
+* Restructured the languages directory, to avoid problems when people 
+  untar MW 1.8 over the top of a 1.7 installation.  
+* (bug 6890) SQL query error on bad input to Pager lists 
+  due to negative LIMIT clause, caused by integer wraparound.
+* Fixed various bugs related to table prefixes, especially the interaction
+  between table prefixes and memcached, which was formerly completely broken.
+* (bug 7004) PHP iconv() notice on bad password input to Special:Userlogin.
+* (bug 6826) Extend pre-save transform context link ("pipe trick")
+  syntax to pages with commas in title
+* Use ImageMagick -thumbnail option instead of -resize to avoid including
+  excessive metadata in thumbs (requires ImageMagick 6.0.0 or newer).
+* (bug 7499) Corrections to Swedish talk namespace names
+* (bug 7508) Added option to compress HTML pages by dumpHTML.php
 
 
 == Languages updated ==
 
 * Albanian (sq)
 * Bashkir (ba)
+* Bavarian (bar) stub file
 * Belarusian (be)
 * Bishnupriya (bpy) stub file
 * Brazilian Portuguese (pt-br)
-* Catalan (ca)
 * Cantonese (zh-yue)
+* Catalan (ca)
+* Czech (cs)
 * Dutch (nl)
 * English (en)
 * Finnish (fi)
 * French (fr)
-* German (de)
 * Georgian (ka)
+* German (de)
 * Hebrew (he)
 * Hungarian (hu)
 * Indonesian (id)
 * Japanese (ja)
 * Korean (ko)
+* Lojban (jbo)
+* Mazandarani (mzn)
 * Polish (pl)
 * Portuguese (pt)
 * Ripuarian (ksh)
 * Romani (rmy)
 * Russian (ru)
+* Slovak (sk)
 * Spanish (es)
 * Tajic (tg)
 * Tatar (tt)

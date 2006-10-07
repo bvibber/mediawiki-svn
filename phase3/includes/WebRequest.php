@@ -34,6 +34,15 @@
  *
  * @package MediaWiki
  */
+
+/**
+ * Some entry points may use this file without first enabling the 
+ * autoloader.
+ */
+if ( !function_exists( '__autoload' ) ) {
+	require_once( dirname(__FILE__) . '/normal/UtfNormal.php' );
+}
+
 class WebRequest {
 	function WebRequest() {
 		$this->checkMagicQuotes();
@@ -119,7 +128,6 @@ class WebRequest {
 					$data = $wgContLang->checkTitleEncoding( $data );
 				}
 			}
-			require_once( 'normal/UtfNormal.php' );
 			$data = $this->normalizeUnicode( $data );
 			return $data;
 		} else {

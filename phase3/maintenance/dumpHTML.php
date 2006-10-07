@@ -13,6 +13,7 @@
  * -s <start>           start ID
  * -e <end>             end ID
  * -k <skin>            skin to use (defaults to htmldump)
+ * --no-overwrite       skip existing HTML files
  * --checkpoint <file>  use a checkpoint file to allow restarting of interrupted dumps
  * --slice <n/m>        split the job into m segments and do the n'th one
  * --images             only do image description pages
@@ -22,6 +23,7 @@
  * --force-copy         copy commons instead of symlink, needed for Wikimedia
  * --interlang          allow interlanguage links
  * --image-snapshot     copy all images used to the destination directory
+ * --compress           generate compressed version of the html pages
  */
 
 
@@ -88,7 +90,9 @@ $wgHTMLDump = new DumpHTML( array(
 	'startID' => $start,
 	'endID' => $end,
 	'sliceNumerator' => $sliceNumerator,
-	'sliceDenominator' => $sliceDenominator
+	'sliceDenominator' => $sliceDenominator,
+	'noOverwrite' => $options['no-overwrite'],
+	'compress' => $options['compress'],
 ));
 
 
@@ -114,7 +118,19 @@ if ( $options['special'] ) {
 }
 
 if ( isset( $options['debug'] ) ) {
-	print_r($GLOBALS);
+	#print_r($GLOBALS);
+	# Workaround for bug #36957
+	$globals = array_keys( $GLOBALS );
+	#sort( $globals );
+	$sizes = array();
+	foreach ( $globals as $name ) {
+		 $sizes[$name] = strlen( serialize( $GLOBALS[$name] ) );
+	}
+	arsort($sizes);
+	$sizes = array_slice( $sizes, 0, 20 );
+	foreach ( $sizes as $name => $size ) {
+		printf( "%9d %s\n", $size, $name );
+	}
 }
 
 if ( $profiling ) {

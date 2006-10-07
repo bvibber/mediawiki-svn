@@ -203,7 +203,9 @@ if( !is_writable( "." ) ) {
 	<pre>
 	cd <i>/path/to/wiki</i>
 	chmod a+w config
-	</pre>" );
+	</pre>
+	
+	<p>Afterwards retry to start the <a href=\"\">setup</a>.</p>" );
 }
 
 
@@ -787,14 +789,12 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 					dbsource( "../maintenance/users.sql", $wgDatabase );
 				}
 			}
-			if ( $conf->DBtype == 'mysql') {
-				print "<pre>\n";
-				chdir( ".." );
-				flush();
-				do_all_updates();
-				chdir( "config" );
-				print "</pre>\n";
-			}
+			print "<pre>\n";
+			chdir( ".." );
+			flush();
+			do_all_updates();
+			chdir( "config" );
+			print "</pre>\n";
 			print "<li>Finished update checks.</li>\n";
 		} else {
 			# FIXME: Check for errors
@@ -995,7 +995,7 @@ if( count( $errs ) ) {
 		<?php aField( $conf, "SysopPass2", "Password confirm:", "password" ) ?>
 	</div>
 	<p class="config-desc">
-		An admin can lock/delete pages, block users from editing, and other maintenance tasks.<br />
+		An admin can lock/delete pages, block users from editing, and do other maintenance tasks.<br />
 		A new account will be added only when creating a new wiki database.
 	</p>
 
@@ -1223,7 +1223,7 @@ which means that anyone on the same server can read your database password! Down
 it and uploading it again will hopefully change the ownership to a user ID specific to you.</p>
 EOT;
 	} else {
-		echo "<p>Installation successful! Move the config/LocalSettings.php file into the parent directory, then follow
+		echo "<p><span style='font-weight:bold;color:green;font-size:110%'>Installation successful!</span> Move the <tt>config/LocalSettings.php</tt> file into the parent directory, then follow
 			<strong><a href='../index.php'>this link</a></strong> to your wiki.</p>\n";
 	}
 }
@@ -1528,10 +1528,10 @@ function getLanguageList() {
 
 	$codes = array();
 
-	$d = opendir( "../languages" );
+	$d = opendir( "../languages/messages" );
 	/* In case we are called from the root directory */
 	if (!$d)
-		$d = opendir( "languages");
+		$d = opendir( "languages/messages");
 	while( false !== ($f = readdir( $d ) ) ) {
 		$m = array();
 		if( preg_match( '/Messages([A-Z][a-z_]+)\.php$/', $f, $m ) ) {

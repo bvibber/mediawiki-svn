@@ -139,6 +139,7 @@ class Parser
 
 		$this->setHook( 'pre', array( $this, 'renderPreTag' ) );
 
+		$this->setFunctionHook( 'int', array( 'CoreParserFunctions', 'intFunction' ), SFH_NO_HASH );
 		$this->setFunctionHook( 'ns', array( 'CoreParserFunctions', 'ns' ), SFH_NO_HASH );
 		$this->setFunctionHook( 'urlencode', array( 'CoreParserFunctions', 'urlencode' ), SFH_NO_HASH );
 		$this->setFunctionHook( 'lcfirst', array( 'CoreParserFunctions', 'lcfirst' ), SFH_NO_HASH );
@@ -271,7 +272,7 @@ class Parser
 		 */
 
 		global $wgUseTidy, $wgAlwaysUseTidy, $wgContLang;
-		$fname = 'Parser::parse';
+		$fname = 'Parser::parse-' . wfGetCaller();
 		wfProfileIn( $fname );
 
 		if ( $clearState ) {
@@ -1666,7 +1667,7 @@ class Parser
 
 				if ( $ns == NS_IMAGE ) {
 					wfProfileIn( "$fname-image" );
-					if ( !wfIsBadImage( $nt->getDBkey() ) ) {
+					if ( !wfIsBadImage( $nt->getDBkey(), $this->mTitle ) ) {
 						# recursively parse links inside the image caption
 						# actually, this will parse them in any other parameters, too,
 						# but it might be hard to fix that, and it doesn't matter ATM
@@ -1851,6 +1852,9 @@ class Parser
 		$fname = 'Parser::maybeDoSubpageLink';
 		wfProfileIn( $fname );
 		$ret = $target; # default return value is no change
+
+		# bug 7425
+		$target = trim( $target );
 
 		# Some namespaces don't allow subpages,
 		# so only perform processing if subpages are allowed
@@ -2411,6 +2415,16 @@ class Parser
 				return $subjPage->getPrefixedUrl();
 			case 'revisionid':
 				return $this->mRevisionId;
+			case 'revisionday':
+				return intval( substr( wfRevisionTimestamp( $this->mRevisionId ), 6, 2 ) );
+			case 'revisionday2':
+				return substr( wfRevisionTimestamp( $this->mRevisionId ), 6, 2 );
+			case 'revisionmonth':
+				return intval( substr( wfRevisionTimestamp( $this->mRevisionId ), 4, 2 ) );
+			case 'revisionyear':
+				return substr( wfRevisionTimestamp( $this->mRevisionId ), 0, 4 );
+			case 'revisiontimestamp':
+				return wfRevisionTimestamp( $this->mRevisionId );
 			case 'namespace':
 				return str_replace('_',' ',$wgContLang->getNsText( $this->mTitle->getNamespace() ) );
 			case 'namespacee':
@@ -2547,9 +2561,14 @@ class Parser
 					$found = 'pipe';
 				} elseif ( $text[$i] == $currentClosing ) {
 					$found = 'close';
-				} else {
+				} elseif ( isset( $callbacks[$text[$i]] ) ) {
 					$found = 'open';
 					$rule = $callbacks[$text[$i]];
+				} else {
+					# Some versions of PHP have a strcspn which stops on null characters
+					# Ignore and continue
+					++$i;
+					continue;
 				}
 			} else {
 				# All done
@@ -2708,7 +2727,7 @@ class Parser
 		if ( !$argsOnly ) {
 			$braceCallbacks[2] = array( &$this, 'braceSubstitution' );
 		}
-		if ( !$this->mOutputType != OT_MSG ) {
+		if ( $this->mOutputType != OT_MSG ) {
 			$braceCallbacks[3] = array( &$this, 'argSubstitution' );
 		}
 		if ( $braceCallbacks ) {
@@ -2856,7 +2875,7 @@ class Parser
 			}
 		}
 
-		# MSG, MSGNW, INT and RAW
+		# MSG, MSGNW and RAW
 		if ( !$found ) {
 			# Check for MSGNW:
 			$mwMsgnw =& MagicWord::get( 'msgnw' );
@@ -2872,13 +2891,6 @@ class Parser
 			$mwRaw =& MagicWord::get( 'raw' );
 			if ( $mwRaw->matchStartAndRemove( $part1 ) ) {
 				$forceRawInterwiki = true;
-			}
-			
-			# Check if it is an internal message
-			$mwInt =& MagicWord::get( 'int' );
-			if ( $mwInt->matchStartAndRemove( $part1 ) ) {
-				$text = $linestart . wfMsgReal( $part1, $args, true );
-				$found = true;
 			}
 		}
 		wfProfileOut( __METHOD__.'-modifiers' );
@@ -3638,20 +3650,23 @@ class Parser
 		#
 		global $wgLegalTitleChars;
 		$tc = "[$wgLegalTitleChars]";
+		$nc = '[ _0-9A-Za-z\x80-\xff]'; # Namespaces can use non-ascii!
 
-		$namespacechar = '[ _0-9A-Za-z\x80-\xff]'; # Namespaces can use non-ascii!
-		$conpat = "/^{$tc}+?( \\({$tc}+\\)|)$/";
+		$p1 = "/\[\[(:?$nc+:|:|)($tc+?)( \\($tc+\\))\\|]]/";		# [[ns:page (context)|]]
+		$p3 = "/\[\[(:?$nc+:|:|)($tc+?)( \\($tc+\\)|)(, $tc+|)\\|]]/";	# [[ns:page (context), context|]]
+		$p2 = "/\[\[\\|($tc+)]]/";					# [[|page]]
 
-		$p1 = "/\[\[(:?$namespacechar+:|:|)({$tc}+?)( \\({$tc}+\\)|)\\|]]/";	# [[ns:page (context)|]]
-		$p2 = "/\[\[\\|({$tc}+)]]/";						# [[|page]]
-
+		# try $p1 first, to turn "[[A, B (C)|]]" into "[[A, B (C)|A, B]]"
 		$text = preg_replace( $p1, '[[\\1\\2\\3|\\2]]', $text );
+		$text = preg_replace( $p3, '[[\\1\\2\\3\\4|\\2]]', $text );
 
 		$t = $this->mTitle->getText();
-		if ( preg_match( $conpat, $t, $m ) && '' != $m[1] ) {
-			$text = preg_replace( $p2, "[[\\1{$m[1]}|\\1]]", $text );
+		if ( preg_match( "/^($nc+:|)$tc+?( \\($tc+\\))$/", $t, $m ) ) {
+			$text = preg_replace( $p2, "[[$m[1]\\1$m[2]|\\1]]", $text );
+		} elseif ( preg_match( "/^($nc+:|)$tc+?(, $tc+|)$/", $t, $m ) && '' != "$m[1]$m[2]" ) {
+			$text = preg_replace( $p2, "[[$m[1]\\1$m[2]|\\1]]", $text );
 		} else {
-			# if $m[1] is empty, don't bother duplicating the title
+			# if there's no context, don't bother duplicating the title
 			$text = preg_replace( $p2, '[[\\1]]', $text );
 		}
 
@@ -3780,7 +3795,11 @@ class Parser
 
 		wfProfileIn($fname);
 
-		$this->mTitle = $wgTitle;
+		if ( $wgTitle ) {
+			$this->mTitle = $wgTitle;
+		} else {
+			$this->mTitle = Title::newFromText('msg');
+		}
 		$this->mOptions = $options;
 		$this->setOutputType( OT_MSG );
 		$this->clearState();
@@ -4870,6 +4889,26 @@ function wfLoadSiteStats() {
 		$wgTotalEdits = $s->ss_total_edits;
 		$wgNumberOfArticles = $s->ss_good_articles;
 	}
+}
+
+/**
+ * Get revision timestamp from the database considering timecorrection
+ *
+ * @param $id Int: page revision id
+ * @return integer
+ */
+function wfRevisionTimestamp( $id ) {
+	global $wgContLang;
+	$fname = 'wfRevisionTimestamp';
+	
+	wfProfileIn( $fname );
+	$dbr =& wfGetDB( DB_SLAVE );
+	$timestamp = $dbr->selectField( 'revision', 'rev_timestamp',
+			array( 'rev_id' => $id ), __METHOD__ );
+	$timestamp = $wgContLang->userAdjust( $timestamp );
+	wfProfileOut( $fname );
+
+	return $timestamp;
 }
 
 /**
