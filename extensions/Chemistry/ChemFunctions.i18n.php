@@ -7,13 +7,6 @@
  * @subpackage Extensions
  */
 
-$wgExtensionCredits['Extension'][] = array(
-	'name' => 'ChemFunctions.i18n.php',
-	'description' => 'Internationalisation file for ChemFunctions / SpecialChemicalsources',
-	'author' => 'Dirk Beetstra',
-	'url' => 'http://meta.wikimedia.org/wiki/Chemistry'
-
-);
 /**
  * This is a list of all the possible parameters supplied to Special:ChemicalSources
  *  Note: The names must be the same (also same case) as supplied in wgChemFunctions_Messages after the 'ChemFunctions_'
@@ -66,8 +59,8 @@ $wgChemFunctions_Messages['en'] = array(
 );
 
 $wgChemFunctions_Messages['nl'] = array(
-	'ChemFunctions_Chemicalsources' => 'Chemicaliën bronnen',
-	'ChemFunctions_ChemicalsourcesPage' => 'Chemicaliën bronnen',
+	'ChemFunctions_Chemicalsources' => 'ChemicaliÃ«n bronnen',
+	'ChemFunctions_ChemicalsourcesPage' => 'ChemicaliÃ«n bronnen',
 	'ChemFunctions_CAS' => 'CAS nummer',
 	'ChemFunctions_EINECS' => 'Einecs',
 	'ChemFunctions_CHEBI' => 'CHEBI',
