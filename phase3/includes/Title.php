@@ -876,8 +876,11 @@ class Title {
 	 * @access public
 	 */
 	function getLocalVariantURL( $variant='' ) {
-		global $wgVariantArticlePath;
+		global $wgVariantArticlePath,$wgScript;
 		if($variant=='') return $this->getLocalURL();
+
+		if($wgVariantArticlePath==false)
+			$wgVariantArticlePath = "$wgScript?title=$1&variant=$2";
 
 		$dbkey = wfUrlencode( $this->getPrefixedDBkey() );
 		$url = str_replace( '$1', $dbkey, $wgVariantArticlePath );

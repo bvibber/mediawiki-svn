@@ -1357,7 +1357,6 @@ if ( \$wgCommandLineMode ) {
 ## If using PHP as a CGI module, the ?title= style usually must be used.
 {$pretty}\$wgArticlePath      = \"\$wgScript/\$1\";
 {$ugly}\$wgArticlePath      = \"\$wgScript?title=\$1\";
-\$wgVariantArticlePath      = \"\$wgScript?title=\$1&variant=\$2\";
 
 \$wgStylePath        = \"\$wgScriptPath/skins\";
 \$wgStyleDirectory   = \"\$IP/skins\";
