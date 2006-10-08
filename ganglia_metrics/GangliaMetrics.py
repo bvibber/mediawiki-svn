@@ -218,7 +218,8 @@ class DiskStats(MetricCollection):
 			procfile = open('/proc/diskstats', 'r')
 		except IOError:
 			type, value = sys.exc_info()[:2]
-			logging.warning("Unable to open /proc/diskstats: %s\n" % value)
+			logger = logging.getLogger('GangliaMetrics')
+			logger.warning("Unable to open /proc/diskstats: %s\n" % value)
 			self.disabled = True
 			return False
 		

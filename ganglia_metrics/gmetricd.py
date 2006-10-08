@@ -55,7 +55,9 @@ def termHandler(sig, frame):
 	except: pass
 	try: os.unlink(conf['sock'])
 	except: pass
-	try: logging.info('Received TERM signal, exiting')
+	try: 
+		logger = logging.getLogger('gmetricd')
+		logger.info('Received TERM signal, exiting')
 	except: pass
 	os._exit(0)
 
@@ -122,12 +124,15 @@ if addr == None or port == None:
 	sys.stderr.write("Unable to determine multicast address\n")
 	sys.exit(1)
 
-# Open the log file
-logging.basicConfig(
-	filename = conf['log'],
-	format = '%(asctime)s  %(message)s',
-	datefmt = '%Y-%m-%d %H:%M:%S',
-	level = logging.INFO)
+# Configure the logger
+logger = logging.getLogger('gmetricd')
+handler = logging.FileHandler(conf['log'])
+handler.setFormatter(logging.Formatter('%(asctime)s  %(message)s', '%Y-%m-%d %H:%M:%S'))
+logger.addHandler(handler)
+logger.setLevel(logging.INFO)
+logger = logging.getLogger('GangliaMetrics')
+logger.addHandler(handler)
+logger.setLevel(logging.INFO)
 
 # Create a socket for metric transmission
 transmitSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -159,7 +164,7 @@ if pid != 0:
 	sys.exit(0)
 pidFile.close()
 
-logging.info('gmetricd started, PID = %d' % os.getpid())
+logger.info('gmetricd started, PID = %d' % os.getpid())
 try:
 	os.chdir('/')
 	sys.stdin.close()
@@ -177,7 +182,7 @@ try:
 	tick = 10
 	currentTime = lastTime = time.time()
 except:
-	logging.exception('Exception on startup: ')
+	logger.exception('Exception on startup: ')
 	sys.exit(1)
 
 except_count = 0
@@ -213,7 +218,7 @@ while 1:
 	except:
 		except_count += 1
 		if except_count > 100:
-			logging.critical('Too many exceptions, stopping')
+			logger.critical('Too many exceptions, stopping')
 			sys.exit(1)
 		else:
-			logging.exception('Exception: ')
+			logger.exception('Exception: ')
