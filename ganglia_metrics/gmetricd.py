@@ -107,8 +107,10 @@ selectServer = SelectServer()
 gmondFile = open(conf['gmondConf'])
 addrRegex = re.compile(r"^\s*mcast_join\s*=\s*([0-9.:]+)")
 portRegex = re.compile(r"^\s*port\s*=\s*([0-9]+)")
+ttlRegex  = re.compile(r"^\s*ttl\s*=\s*([0-9]+)")
 addr = None
 port = None
+ttl = 1
 for line in gmondFile:
 	m = addrRegex.match(line)
 	if m != None:
@@ -118,6 +120,13 @@ for line in gmondFile:
 	m = portRegex.match(line)
 	if m != None:
 		port = m.group(1)
+		continue
+	
+	m = ttlRegex.match(line)
+	if m != None:
+		ttl = m.group(1)
+		continue
+	
 gmondFile.close()
 
 if addr == None or port == None:
@@ -136,6 +145,7 @@ logger.setLevel(logging.INFO)
 
 # Create a socket for metric transmission
 transmitSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+transmitSocket.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, int(ttl))
 transmitAddress = (addr, int(port))
 
 # Create unix socket for volatile push metrics (e.g. HTTP request time)
