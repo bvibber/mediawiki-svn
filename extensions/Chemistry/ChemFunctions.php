@@ -24,7 +24,7 @@ if (!defined('MEDIAWIKI')) die();
  *   searchfor: alternate (e.g. CAS-sorted) formula to search for (plain formula, e.g. "C12H22O11"
  *   noprocess: results in the text between the tags not to be processed, for 'difficult' formula's like:
  *	 "CuSO4 . 10 H2O" , where the 10 should not be subscripted.
- *   nolink: results in the text between the tags to be no link to special:chemicalsources.
+ *   link: results in the text between the tags to be a link to special:chemicalsources.
  *	 N.B.  : use noprocess with the searchfor parameter, otherwise search results may (!) be garbage/broken links.
  *	 N.B.2 : the text between the tags is interpreted as HTML, not as wikitext!
  *
@@ -49,7 +49,7 @@ function wfChemFormExtension() {
 function RenderChemForm( $input, $argv, &$parser ) {
 	global $wgServer, $wgScript, $wgChemFunctions_Messages, $wgMessageCache;
 
-	require_once( 'extensions/ChemFunctions.i18n.php' );
+	require_once( 'ChemFunctions.i18n.php' );
 
 	# add messages
 	global $wgMessageCache, $wgChemFunctions_Messages;
@@ -90,15 +90,15 @@ function RenderChemForm( $input, $argv, &$parser ) {
 	$showthis = Sanitizer::removeHTMLtags( $showthis);
 	$searchfor = Sanitizer::removeHTMLtags( $searchfor);
 
-	$nolink = false;
-	if ( isset( $argv["nolink"] ) )
-		$nolink =  $argv["nolink"];
+	$link = false;
+	if ( isset( $argv["link"] ) )
+		$link =  $argv["link"];
 
-	if ( $nolink ) {
-		$output = $showthis;
-	} else {
+	if ( $link ) {
 		$title = Title::makeTitle( NS_SPECIAL, 'Chemicalsources' );
 		$output = "<a href = " . $title->getFullUrl() . "?Formula=" . $searchfor .  ">" . $showthis . "</a>";
+	} else {
+		$output = $showthis;
 	}
 
 	return $output;
