@@ -43,7 +43,7 @@ Suche nach $3 $9",
 	'lucenefallback'        => "Bei der {{SITENAME}}-internen Suche ist ein Problem aufgetreten.
 Dies ist normalerweise ein vorübergehendes Problem. Bitte versuchen Sie es nochmal.
 Alternativ können Sie auch die externen Suchmöglichkeiten nutzen: :\n"
-);	
+);
 $wgLuceneSearchMessages['eo'] = array(
 	'searchnumber'          => "<strong>Rezultoj $1-$2 el $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Antaŭa</span>",
@@ -147,6 +147,24 @@ $1\n
 Вероятно, эта временная проблема, попробуйте ещё раз чуть позже,
 либо воспользуйтесь поиском во внешних поисковых системах.\n"
 );
+$wgLuceneSearchMessages['sk'] = array(
+	'searchnumber'          => "<strong>Výsledky $1-$2 zo $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Späť</span>",
+	'searchnext'            => "<span style='font-size: small'>Ďalej</span> &#x00BB;",
+	'searchscore'           => "Relevantnosť: $1",
+	'searchsize'            => "$1KB ($2 slov)",
+	'searchdidyoumean'      => "Mali ste na mysli: \"<a href=\"$1\">$2</a>\"?",
+	'searchnoresults'       => "Ľutujeme, vyhľadávanie nevrátilo žiadne presné výsledky na Váš dotaz.",
+	'searchnearmatches'     => "<b>Tieto stránky majú názvy podobné Vášmu dotazu:</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+Vyhľadávanie v menných priestoroch:\n
+$1\n
+Hľadanie $3 $9",
+	'lucenefallback'        => "S vyhľadávaním na wiki nastal problém.
+Je možné, že je to dočasné; o chvíľu to skúste znova
+alebo vyhľadávajte na wiki pomocou externej indexovacej služby:\n"
+);
 $wgLuceneSearchMessages['sr'] = array(
 	'searchnumber'          => "<strong>Резултати $1-$2 од $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Претходна</span>",
@@ -166,12 +184,12 @@ $1\n
 или претражите вики преко неког од спољних претраживачких сервиса:\n"
 );
 $wgLuceneSearchMessages['wa'] = array(
-	'searchnumber'		=> '<strong>Rizultats: $1-$2 di $3</strong>',
-	'searchprev'		=> '← <span style=\'font-size: small\'>Div.</span>',
-	'searchnext'		=> '<span style=\'font-size: small\'>Shuv.</span> →',
-	'searchnoresults'	=> 'Mande escuzes, mins i gn a rén ki corespond.',
-	'searchnearmatches'	=> '<b>Les pådjes shuvantes ont des tites ki ravizèt çou k\' vos avoz cwerou:</b>',
-	'lucenepowersearchtext'	=> 'Cweraedje dins les espåces di lomaedje: $1 <br />
+	'searchnumber'          => '<strong>Rizultats: $1-$2 di $3</strong>',
+	'searchprev'            => '← <span style=\'font-size: small\'>Div.</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Shuv.</span> →',
+	'searchnoresults'       => 'Mande escuzes, mins i gn a rén ki corespond.',
+	'searchnearmatches'     => '<b>Les pådjes shuvantes ont des tites ki ravizèt çou k\' vos avoz cwerou:</b>',
+	'lucenepowersearchtext' => 'Cweraedje dins les espåces di lomaedje: $1 <br />
 Cweraedje di: $3 $9',
 );
 ?>

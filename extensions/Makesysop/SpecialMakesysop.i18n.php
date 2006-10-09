@@ -244,8 +244,24 @@ $wgMakesysopMessages['ru'] = array(
 	'grouppage-steward'    => '{{ns:project}}:Стюарды',
 );
 $wgMakesysopMessages['sk'] = array(
+	'makesysoptitle'       => 'Urob z používateľa správcu',
+	'makesysoptext'        => 'Tento formulár je používaný byrokratmi na zmenu redaktorov na správcov. Do poľa napíšte meno redaktora a potvrďte zmenu redaktora na správcu.',
+	'makesysopname'        => 'Meno používateľa:',
+	'makesysopsubmit'      => 'Urob z tohto redaktora správcu',
+	'makesysopok'          => "<b>Redaktor \"$1\" je teraz správcom(sysop)</b>",
+	'makesysopfail'        => "<b>Redaktor \"$1\" nemôže byť správcom. (Zadali ste meno správne?)</b>",
+	'setbureaucratflag'    => 'Nastav príznak byrokrat',
+	'rights'               => 'Práva:',
+	'set_user_rights'      => 'Nastav redaktorove práva',
+	'user_rights_set'      => "<b>Redaktorove práva pre „$1“ aktualizované</b>",
+	'set_rights_fail'      => "<b>Redaktorove práva pre \"$1\" nemohli byť nastavené. (zadali ste meno správne?)</b>",
+	'makesysop'            => 'Urob používateľa správcom',
+	'already_sysop'        => 'Tento používateľ už je správca',
+	'already_bureaucrat'   => 'Tento používateľ už je byrokrat',
+	'makesysop-nodatabase' => 'Zlé interwiki používateľské meno: $1',
 	'group-steward'        => 'Stewardi',
 	'group-steward-member' => 'Steward',
+	'grouppage-steward'    => '{{ns:project}}:Stewardi',
 );
 $wgMakesysopMessages['sl'] = array(
 	'group-steward'        => 'Upravniki',

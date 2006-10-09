@@ -53,6 +53,11 @@ $wgFilepathMessages['ru'] = array(
 	'filepath_page'   => 'Файл:',
 	'filepath_submit' => 'Путь',
 );
+$wgFilepathMessages['sk'] = array(
+	'filepath'        => 'Cesta k súboru',
+	'filepath_page'   => 'Súbor:',
+	'filepath_submit' => 'Cesta',
+);
 $wgFilepathMessages['zh-cn'] = array(
 	'filepath'        => '文件路径',
 	'filepath_page'   => '文件名：',

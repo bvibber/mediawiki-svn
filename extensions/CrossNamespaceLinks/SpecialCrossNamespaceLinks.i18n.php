@@ -36,6 +36,10 @@ $wgCrossNamespaceLinksMessages['pl'] = array(
 	'crossnamespacelinks'     => 'Linki między przestrzeniami nazw',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|linki}} do $3'
 );
+$wgCrossNamespaceLinksMessages['sk'] = array(
+	'crossnamespacelinks'     => 'Odkazy medzi mennými priestormi',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazov}} na $3'
+);
 $wgCrossNamespaceLinksMessages['zh-cn'] = array(
 	'crossnamespacelinks'     => '跨名字空间的链接',
 	'crossnamespacelinkstext' => '$1: $2 个链接到 $3'
