@@ -58,6 +58,13 @@ $wgLinkSearchMessages['ru'] = array(
 	'linksearch-error' => 'Подстановочные символы могут использоваться только в начале адресов.',
 );
 
+$wgLinkSearchMessages['sk'] = array(
+    'linksearch'       => 'Hľadať webové odkazy',
+    'linksearch-text'  => 'Je možné použiť zástupné znaky ako "*.wikipedia.org".',
+    'linksearch-line'  => 'Na $1 odkazuje $2',
+    'linksearch-error' => 'Zástupné znaky je možné použiť iba na začiatku názvu domény.',
+);
+
 $wgLinkSearchMessages['sr'] = array(
 	'linksearch'	   => 'Претрага интернет веза',
 	'linksearch-text'  => 'Џокери као што су "*.wikipedia.org" могу да се користе.',
