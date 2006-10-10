@@ -28,14 +28,14 @@ $sibUserID = 10;
 
 //$linkEC2GoFileName = "LinksEC2Go.txt";
 //$linkSwissProtKeyWord2GoFileName = "LinksSP2Go.txt";
-//$swissProtXMLFileName =  "uniprot_sprot.xml";
-$swissProtXMLFileName =  "100000lines.xml";
+$swissProtXMLFileName =  "uniprot_sprot.xml";
+//$swissProtXMLFileName =  "100000lines.xml";
 
 $wgUser->setID($nlmUserID);
 startNewTransaction($nlmUserID, 0, "UMLS Import");
 echo "Importing UMLS\n";
-//$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod");//, array("NCI", "GO"));
-$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod", array("GO", "SRC", "NCI", "HUGO"));
+$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod");//, array("NCI", "GO"));
+//$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod", array("GO", "SRC", "NCI", "HUGO"));
 //$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", NULL, array("GO", "SRC", "NCI", "HUGO"));
 
 //$EC2GoMapping = loadEC2GoMapping($linkEC2GoFileName);

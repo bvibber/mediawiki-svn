@@ -26,7 +26,7 @@ class Search extends DefaultWikidataApplication {
 		
 		$sql = "SELECT INSTR(LCASE(uw_expression_ns.spelling), LCASE(". $dbr->addQuotes("$text") .")) as position, uw_syntrans.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS spelling, uw_expression_ns.language_id AS language_id ".
 				"FROM uw_expression_ns, uw_syntrans ".
-	            "WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id AND uw_syntrans.endemic_meaning=1 " .
+	            "WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id AND uw_syntrans.identical_meaning=1 " .
 	            " AND " . getLatestTransactionRestriction('uw_syntrans').
 				" AND spelling LIKE " . $dbr->addQuotes("%$text%") .
 				" ORDER BY position ASC, uw_expression_ns.spelling ASC limit 100";

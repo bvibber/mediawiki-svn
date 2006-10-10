@@ -20,20 +20,21 @@ class Expression {
 	}
 	
 	function createPage() {
-		return createPage(Namespace::getIndexForName("WiktionaryZ"), getPageTitle($this->spelling), $this->languageId);
+		return createPage(Namespace::getIndexForName("WiktionaryZ"), getPageTitle($this->spelling));
+//		return createPage(16, getPageTitle($this->spelling));
 	}
 	
 	function isBoundToDefinedMeaning($definedMeaningId) {
 		return expressionIsBoundToDefinedMeaning($definedMeaningId, $this->id);
 	}
 
-	function bindToDefinedMeaning($definedMeaningId, $endemicMeaning) {
-		createSynonymOrTranslation($definedMeaningId, $this->id, $endemicMeaning);	
+	function bindToDefinedMeaning($definedMeaningId, $identicalMeaning) {
+		createSynonymOrTranslation($definedMeaningId, $this->id, $identicalMeaning);	
 	}
 	
-	function assureIsBoundToDefinedMeaning($definedMeaningId, $endemicMeaning) {
+	function assureIsBoundToDefinedMeaning($definedMeaningId, $identicalMeaning) {
 		if (!$this->isBoundToDefinedMeaning($definedMeaningId)) 
-			$this->bindToDefinedMeaning($definedMeaningId, $endemicMeaning);		
+			$this->bindToDefinedMeaning($definedMeaningId, $identicalMeaning);		
 	}
 }
 
@@ -80,13 +81,13 @@ function getPageTitle($spelling) {
 	return str_replace(' ', '_', $spelling);
 }
 
-function createPage($namespace, $title, $languageId) {
+function createPage($namespace, $title) {
 	$dbr = &wfGetDB(DB_MASTER);
 	$title = $dbr->addQuotes($title);
 	$timestamp = $dbr->timestamp(); 
 	
-	$sql = "insert into page(page_namespace,page_title,page_is_new,page_title_language_id,page_touched) ".
-	       "values($namespace, $title, 1, $languageId, $timestamp)";
+	$sql = "insert into page(page_namespace,page_title,page_is_new,page_touched) ".
+	       "values($namespace, $title, 1, $timestamp)";
 	$dbr->query($sql);
 	
 	return $dbr->insertId();
@@ -148,16 +149,16 @@ function getSynonymId($definedMeaningId, $expressionId) {
 		return 0;
 }
 
-function createSynonymOrTranslation($definedMeaningId, $expressionId, $endemicMeaning) {
+function createSynonymOrTranslation($definedMeaningId, $expressionId, $identicalMeaning) {
 	$synonymId = getSynonymId($definedMeaningId, $expressionId);
 	
 	if ($synonymId == 0)
 		$synonymId = newObjectId('uw_syntrans');
 	
 	$dbr = &wfGetDB(DB_MASTER);
-	$endemicMeaningInteger = (int) $endemicMeaning;	
-	$sql = "insert into uw_syntrans(syntrans_sid, defined_meaning_id, expression_id, endemic_meaning, add_transaction_id) ".
-	       "values($synonymId, $definedMeaningId, $expressionId, $endemicMeaningInteger, ". getUpdateTransactionId() .")";
+	$identicalMeaningInteger = (int) $identicalMeaning;	
+	$sql = "insert into uw_syntrans(syntrans_sid, defined_meaning_id, expression_id, identical_meaning, add_transaction_id) ".
+	       "values($synonymId, $definedMeaningId, $expressionId, $identicalMeaningInteger, ". getUpdateTransactionId() .")";
 	$queryResult = $dbr->query($sql);
 }
 
@@ -168,9 +169,9 @@ function expressionIsBoundToDefinedMeaning($definedMeaningId, $expressionId) {
 	return $dbr->numRows($queryResult) > 0;
 }
 
-function addSynonymOrTranslation($spelling, $languageId, $definedMeaningId, $endemicMeaning) {
+function addSynonymOrTranslation($spelling, $languageId, $definedMeaningId, $identicalMeaning) {
 	$expression = findOrCreateExpression($spelling, $languageId);
-	$expression->assureIsBoundToDefinedMeaning($definedMeaningId, $endemicMeaning);
+	$expression->assureIsBoundToDefinedMeaning($definedMeaningId, $identicalMeaning);
 }
 	
 function getMaximum($field, $table) {
@@ -515,7 +516,8 @@ function addDefinedMeaning($definingExpressionId) {
 	$dbr->query("INSERT INTO uw_defined_meaning(defined_meaning_id, expression_id, add_transaction_id) values($definedMeaningId, $definingExpressionId, ". getUpdateTransactionId() .")");
 
 	$expression = getExpression($definingExpressionId);
-	$pageId = createPage(Namespace::getIndexForName("DefinedMeaning"), getPageTitle("$expression->spelling ($definedMeaningId)"), $expression->languageId);
+	$pageId = createPage(Namespace::getIndexForName("DefinedMeaning"), getPageTitle("$expression->spelling ($definedMeaningId)"));
+//	$pageId = createPage(22, getPageTitle("$expression->spelling ($definedMeaningId)"));
 	createInitialRevisionForPage($pageId, 'Created by adding defined meaning');
 	
 	return $definedMeaningId;

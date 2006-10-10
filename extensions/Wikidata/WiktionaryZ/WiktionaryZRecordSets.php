@@ -287,15 +287,15 @@ function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, $queryTran
 		$expressionMeaningStructure, $definedMeaningIdAttribute;
 
 	if ($exactMeaning)
-		$endemicMeaning = 1;
+		$identicalMeaning = 1;
 	else
-		$endemicMeaning = 0;
+		$identicalMeaning = 0;
 		
 	$recordSet = new ArrayRecordSet($expressionMeaningStructure, new Structure($definedMeaningIdAttribute));
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT defined_meaning_id FROM uw_syntrans" .
-								" WHERE expression_id=$expressionId AND endemic_meaning=" . $endemicMeaning .
+								" WHERE expression_id=$expressionId AND identical_meaning=" . $identicalMeaning .
 								" AND ". getLatestTransactionRestriction('uw_syntrans'));
 
 	while($definedMeaning = $dbr->fetchObject($queryResult)) {
@@ -414,7 +414,7 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, $queryTransactionI
 		array(
 			'syntrans_sid' => $syntransIdAttribute, 
 			'expression_id' => $expressionAttribute,
-			'endemic_meaning' => $identicalMeaningAttribute
+			'identical_meaning' => $identicalMeaningAttribute
 		),
 		$syntransTable,
 		array("defined_meaning_id=$definedMeaningId")
