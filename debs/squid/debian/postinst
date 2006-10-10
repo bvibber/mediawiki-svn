@@ -136,12 +136,6 @@ case "$1" in
 			rm /etc/squid/conffile-moved
 		fi
 
-		if [ ! -f /etc/squid/squid.conf ]; then
-			cp /usr/share/doc/squid/examples/squid.conf \
-				/etc/squid/squid.conf
-			chmod 0600 /etc/squid/squid.conf
-		fi
-
 		# Check for old incompatible configs
 		case "$2" in
 			2.[12].*)
@@ -149,45 +143,45 @@ case "$1" in
 				FIXLINES="$RET"
 				;;
 		esac
-		conf_fix_anonymizer
-		conf_fix_anonymizer2
-		conf_fix_logrotate
-		conf_fix_auth_param
-		conf_fix_http_port
+		#conf_fix_anonymizer
+		#conf_fix_anonymizer2
+		#conf_fix_logrotate
+		#conf_fix_auth_param
+		#conf_fix_http_port
 
 		#
 		# Chown the directories.
 		#
-		dir=`grepconf2 cache_dir /var/spool/squid`
-        usr=`grepconf cache_effective_user proxy`
-		grp=`grepconf cache_effective_group proxy`
+		# dir=`grepconf2 cache_dir /var/spool/squid`
+	        # usr=`grepconf cache_effective_user proxy`
+		# grp=`grepconf cache_effective_group proxy`
 		
-		if [ "$FIXLINES" = "false" ]; then
-		  echo "squid.conf contains 2.2.5 syntax - not doing anything!" 
-		else
-			if [ "$(/usr/bin/stat -c %U $dir)" != "$usr" ] || [ "$(/usr/bin/stat -c %G $dir)" != "$grp" ] ; then
-   				db_get "squid/fix_cachedir_perms"
-   				if [ "$RET" = "true" ] ; then
-		      		chown $usr:$grp $dir -R
-				fi
-   				db_reset "squid/fix_cachedir_perms"
-			fi
-			if [ "$(/usr/bin/stat -c %U /var/log/squid)" != "$usr" ] || [ "$(/usr/bin/stat -c %G /var/log/squid)" != "$grp" ] ; then
-				# Check if there is an override of ownership
-				if [ "$(/usr/sbin/dpkg-statoverride --list /var/log/squid)" == "" ] ; then
-		  			chown $usr:$grp /var/log/squid -R
-				fi
-			fi
-		fi
+		# if [ "$FIXLINES" = "false" ]; then
+		#   echo "squid.conf contains 2.2.5 syntax - not doing anything!" 
+		# else
+		# 	if [ "$(/usr/bin/stat -c %U $dir)" != "$usr" ] || [ "$(/usr/bin/stat -c %G $dir)" != "$grp" ] ; then
+   		# 		db_get "squid/fix_cachedir_perms"
+   		# 		if [ "$RET" = "true" ] ; then
+		#       		chown $usr:$grp $dir -R
+		# 		fi
+   		# 		db_reset "squid/fix_cachedir_perms"
+		# 	fi
+		# 	if [ "$(/usr/bin/stat -c %U /var/log/squid)" != "$usr" ] || [ "$(/usr/bin/stat -c %G /var/log/squid)" != "$grp" ] ; then
+		# 		# Check if there is an override of ownership
+		#  		if [ "$(/usr/sbin/dpkg-statoverride --list /var/log/squid)" == "" ] ; then
+		# 			chown $usr:$grp /var/log/squid -R
+		# 		fi
+		# 	fi
+		# fi
 	 
 		#
 		# Create spool dirs if they don't exist.
 		#
-		if [ -d "$dir" -a ! -d "$dir/00" ]
-		then
-			echo "Creating squid spool directory structure"
-			/usr/sbin/squid -z
-		fi
+		# if [ -d "$dir" -a ! -d "$dir/00" ]
+		# then
+		# 	echo "Creating squid spool directory structure"
+		# 	/usr/sbin/squid -z
+		# fi
 
 		#
 		# Install /etc/default/squid file if it doesn't
@@ -226,5 +220,10 @@ if [ "$FIXLINES" = "false" ]; then
   echo "or fix the 'cache_dir'-entry in your squid.conf manually." 
   echo "See documentation in /usr/share/doc/squid for nearer instructions."
 else
-  invoke-rc.d squid restart
+  if [ -f /etc/squid/squid.conf ]
+  then
+    invoke-rc.d squid restart
+  else
+    exit 0
+  fi
 fi

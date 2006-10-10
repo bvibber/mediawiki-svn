@@ -1,3 +1,11 @@
+squid (2.6.4-1wm3) unstable; urgency=low
+
+  * Don't install /etc/squid/squid.conf
+  * Prepare COSS files on startup by emptying them
+  * chdir to /var/spool/squid instead of any cache_dir
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 10 Oct 2006 20:26:05 +0000
+
 squid (2.6.4-1wm2) unstable; urgency=low
 
   * Include an experimental patch by Adrian Chadd that prevents Squid
