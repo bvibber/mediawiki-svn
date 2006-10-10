@@ -5,7 +5,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 global $IP;
-require_once( "OAIFunctions.php" );
+require_once( "$IP/extensions/OAI/OAIFunctions.php" );
 require_once( "$IP/includes/Export.php" );
 
 global $wgMessageCache;
