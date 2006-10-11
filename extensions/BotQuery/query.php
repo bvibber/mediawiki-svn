@@ -22,7 +22,6 @@
 */
 
 $startTime = microtime(true);
-
 $IP = dirname( realpath( __FILE__ ) ) . '/../..';
 chdir( $IP );
 
@@ -42,7 +41,8 @@ if ($proxySite || $proxyLang) {
 
 if ( file_exists( "$IP/includes/WebStart.php" ) ) {
 	require_once( "$IP/includes/WebStart.php" );
-	wfProfileIn( 'query.php' );
+	# $startTime may have been unset by register_globals protector
+	$startTime = $wgRequestTime;
 } else {
 	define( 'MEDIAWIKI', true );
 	if ( isset( $_REQUEST['GLOBALS'] ) ) {
@@ -56,8 +56,9 @@ if ( file_exists( "$IP/includes/WebStart.php" ) ) {
 	require_once( "$IP/includes/Defines.php" );
 	require_once( "$IP/LocalSettings.php" );
 	require_once( "$IP/includes/Setup.php" );
-	wfProfileIn( 'query.php' );
 }
+
+wfProfileIn( 'query.php' );
 
 define( 'GN_FUNC', 	   0 );
 define( 'GN_MIME',     1 );
