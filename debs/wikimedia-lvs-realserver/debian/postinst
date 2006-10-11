@@ -26,7 +26,6 @@ case "$1" in
 		. /usr/share/debconf/confmodule
 		db_version 2.0
 
-		db_reset wikimedia-lvs-realserver/service_ips
 		db_input high wikimedia-lvs-realserver/service_ips || true
 		db_go
 		db_get wikimedia-lvs-realserver/service_ips
