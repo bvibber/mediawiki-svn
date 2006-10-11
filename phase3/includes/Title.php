@@ -821,6 +821,8 @@ class Title {
 	function getFullVariantURL( $variant = '' ) {
 		global $wgServer, $wgRequest;
 
+		$url = ''; // should not be called for interwiki
+
 		if ( '' == $this->mInterwiki ) {
 			$url = $this->getLocalVariantURL( $variant );
 
@@ -828,11 +830,6 @@ class Title {
 				$url = $wgServer . $url;
 			}
 		}
-
-		# Finally, add the fragment.
-		if ( '' != $this->mFragment ) {
-			$url .= '#' . $this->mFragment;
-		}	 
 
 		return $url;
 	}
@@ -907,10 +904,12 @@ class Title {
 		if($variant=='') return $this->getLocalURL();
 
 		if($wgVariantArticlePath==false)
-			$wgVariantArticlePath = "$wgScript?title=$1&variant=$2";
+			$vArticlePath =  "$wgScript?title=$1&variant=$2"; // default
+		else 
+			$vArticlePath = $wgVariantArticlePath;
 
 		$dbkey = wfUrlencode( $this->getPrefixedDBkey() );
-		$url = str_replace( '$1', $dbkey, $wgVariantArticlePath );
+		$url = str_replace( '$1', $dbkey, $vArticlePath );
 		$code = urlencode( $variant );
 		$url = str_replace( '$2', $code, $url );
 
@@ -956,6 +955,23 @@ class Title {
 		wfRunHooks( 'GetInternalURL', array( &$this, &$url, $query ) );
 		return $url;
 	}
+
+	/**
+	 * Get the URL form for an internal variant link.
+	 * - Used in various Squid-related code, in case we have a different
+	 * internal hostname for the server from the exposed one.
+	 *
+	 * @param string $variant an optional query string
+	 * @return string the URL
+	 * @access public
+	 */
+	function getInternalVariantURL( $variant = '' ) {
+		global $wgInternalServer;
+		$url = $wgInternalServer . $this->getLocalVariantURL( $variant );
+		// not sure: wfRunHooks( 'GetInternalURL', array( &$this, &$url, $query ) );
+		return $url;
+	}
+
 
 	/**
 	 * Get the edit URL for this Title
@@ -1749,10 +1765,23 @@ class Title {
 	 * @access public
 	 */
 	function getSquidURLs() {
-		return array(
+		global $wgContLang,$wgVariantArticlePath;
+
+		$urls = array(
 			$this->getInternalURL(),
 			$this->getInternalURL( 'action=history' )
 		);
+
+		// purge variant url's as well (when using aliases)
+		if($wgContLang->hasVariants() && $wgVariantArticlePath!=false){
+			$variants = $wgContLang->getVariants();
+			foreach($variants as $vCode){
+				if($vCode==$wgContLang->getCode()) continue; // we don't want default variant
+				$urls[] = $this->getInternalVariantURL($vCode);
+			}
+		}
+
+		return $urls;
 	}
 
 	function purgeSquid() {
