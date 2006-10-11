@@ -64,7 +64,7 @@ maxfds () {
 prepare_coss() {
 	COSS_FILES=`sed -e 's/#.*//g' /etc/squid/squid.conf | \
 	        egrep "cache_dir[[:space:]]+coss" | awk '{ print $3 }'`
-	for cossfile in "$COSS_FILES"
+	for cossfile in $COSS_FILES
 	do
 		log_warning_msg "Preparing COSS file $cossfile..."
 		cosssize=`sed -e 's/#.*//g' /etc/squid/squid.conf | \

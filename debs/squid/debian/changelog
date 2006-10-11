@@ -1,3 +1,9 @@
+squid (2.6.4-1wm4) unstable; urgency=low
+
+  * Fix bug in initscript COSS preparation
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 10 Oct 2006 23:08:33 +0000
+
 squid (2.6.4-1wm3) unstable; urgency=low
 
   * Don't install /etc/squid/squid.conf
