@@ -769,14 +769,15 @@ class Title {
 	 *
 	 * @param string $query an optional query string, not used
 	 * 	for interwiki links
+	 * @param string $variant language variant of url (for sr, zh..)
 	 * @return string the URL
 	 * @access public
 	 */
-	function getFullURL( $query = '' ) {
+	function getFullURL( $query = '', $variant = false ) {
 		global $wgContLang, $wgServer, $wgRequest;
 
 		if ( '' == $this->mInterwiki ) {
-			$url = $this->getLocalUrl( $query );
+			$url = $this->getLocalUrl( $query, $variant );
 
 			// Ugly quick hack to avoid duplicate prefixes (bug 4571 etc)
 			// Correct fix would be to move the prepending elsewhere.
@@ -812,39 +813,24 @@ class Title {
 	}
 
 	/**
-	 * Get a real URL referring to this title in some of the variant
-	 *
-	 * @param string $variant variant name
-	 * @return string the URL
-	 * @access public
-	 */
-	function getFullVariantURL( $variant = '' ) {
-		global $wgServer, $wgRequest;
-
-		$url = ''; // should not be called for interwiki
-
-		if ( '' == $this->mInterwiki ) {
-			$url = $this->getLocalVariantURL( $variant );
-
-			if ($wgRequest->getVal('action') != 'render') {
-				$url = $wgServer . $url;
-			}
-		}
-
-		return $url;
-	}
-
-
-	/**
 	 * Get a URL with no fragment or server name.  If this page is generated
 	 * with action=render, $wgServer is prepended.
 	 * @param string $query an optional query string; if not specified,
 	 * 	$wgArticlePath will be used.
+	 * @param string $variant language variant of url (for sr, zh..)
 	 * @return string the URL
 	 * @access public
 	 */
-	function getLocalURL( $query = '' ) {
+	function getLocalURL( $query = '', $variant = false ) {
 		global $wgArticlePath, $wgScript, $wgServer, $wgRequest;
+		global $wgVariantArticlePath, $wgContLang, $wgUser;
+
+		// internal links should point to same variant as current page (only anonymous users)
+		if($variant == false && $wgContLang->hasVariants() && !$wgUser->isLoggedIn()){
+			$pref = $wgContLang->getPreferredVariant(false);
+			if($pref != $wgContLang->getCode())
+				$variant = $pref;
+		}
 
 		if ( $this->isExternal() ) {
 			$url = $this->getFullURL();
@@ -858,7 +844,17 @@ class Title {
 		} else {
 			$dbkey = wfUrlencode( $this->getPrefixedDBkey() );
 			if ( $query == '' ) {
-				$url = str_replace( '$1', $dbkey, $wgArticlePath );
+				if($variant!=false && $wgContLang->hasVariants()){
+					if($wgVariantArticlePath==false)
+						$variantArticlePath =  "$wgScript?title=$1&variant=$2"; // default
+					else 
+						$variantArticlePath = $wgVariantArticlePath;
+					
+					$url = str_replace( '$1', $dbkey, $variantArticlePath );
+					$url = str_replace( '$2', urlencode( $variant ), $url );					
+				}
+				else 
+					$url = str_replace( '$1', $dbkey, $wgArticlePath );
 			} else {
 				global $wgActionPaths;
 				$url = false;
@@ -892,32 +888,6 @@ class Title {
 	}
 
 	/**
-	 * Similar to getLocalURL, except it uses $wgVariantArticlePath
-	 * and gets the URL with no fragment or server name, but in a 
-   * certain language variant (relevant only to languages with variants)
-	 * @param string $variant caption of variant
-	 * @return string the URL
-	 * @access public
-	 */
-	function getLocalVariantURL( $variant='' ) {
-		global $wgVariantArticlePath,$wgScript;
-		if($variant=='') return $this->getLocalURL();
-
-		if($wgVariantArticlePath==false)
-			$vArticlePath =  "$wgScript?title=$1&variant=$2"; // default
-		else 
-			$vArticlePath = $wgVariantArticlePath;
-
-		$dbkey = wfUrlencode( $this->getPrefixedDBkey() );
-		$url = str_replace( '$1', $dbkey, $vArticlePath );
-		$code = urlencode( $variant );
-		$url = str_replace( '$2', $code, $url );
-
-		return $url;
-		
-	}
-
-	/**
 	 * Get an HTML-escaped version of the URL form, suitable for
 	 * using in a link, without a server name or fragment
 	 * @param string $query an optional query string
@@ -946,32 +916,16 @@ class Title {
 	 * internal hostname for the server from the exposed one.
 	 *
 	 * @param string $query an optional query string
+	 * @param string $variant language variant of url (for sr, zh..)
 	 * @return string the URL
 	 * @access public
 	 */
-	function getInternalURL( $query = '' ) {
+	function getInternalURL( $query = '', $variant = false ) {
 		global $wgInternalServer;
-		$url = $wgInternalServer . $this->getLocalURL( $query );
+		$url = $wgInternalServer . $this->getLocalURL( $query, $variant );
 		wfRunHooks( 'GetInternalURL', array( &$this, &$url, $query ) );
 		return $url;
 	}
-
-	/**
-	 * Get the URL form for an internal variant link.
-	 * - Used in various Squid-related code, in case we have a different
-	 * internal hostname for the server from the exposed one.
-	 *
-	 * @param string $variant an optional query string
-	 * @return string the URL
-	 * @access public
-	 */
-	function getInternalVariantURL( $variant = '' ) {
-		global $wgInternalServer;
-		$url = $wgInternalServer . $this->getLocalVariantURL( $variant );
-		// not sure: wfRunHooks( 'GetInternalURL', array( &$this, &$url, $query ) );
-		return $url;
-	}
-
 
 	/**
 	 * Get the edit URL for this Title
@@ -1765,19 +1719,19 @@ class Title {
 	 * @access public
 	 */
 	function getSquidURLs() {
-		global $wgContLang,$wgVariantArticlePath;
+		global $wgContLang;
 
 		$urls = array(
 			$this->getInternalURL(),
 			$this->getInternalURL( 'action=history' )
 		);
 
-		// purge variant url's as well (when using aliases)
-		if($wgContLang->hasVariants() && $wgVariantArticlePath!=false){
+		// purge variant urls as well
+		if($wgContLang->hasVariants()){
 			$variants = $wgContLang->getVariants();
 			foreach($variants as $vCode){
 				if($vCode==$wgContLang->getCode()) continue; // we don't want default variant
-				$urls[] = $this->getInternalVariantURL($vCode);
+				$urls[] = $this->getInternalURL('',$vCode);
 			}
 		}
 

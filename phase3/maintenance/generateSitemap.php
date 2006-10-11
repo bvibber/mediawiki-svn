@@ -269,7 +269,7 @@ class GenerateSitemap {
 					$variants = $wgContLang->getVariants();
 					foreach($variants as $vCode){
 						if($vCode==$wgContLang->getCode()) continue; // we don't want default variant
-						$entry = $this->fileEntry( $title->getFullVariantURL($vCode), $date, $this->priority( $namespace ) );
+						$entry = $this->fileEntry( $title->getFullURL('',$vCode), $date, $this->priority( $namespace ) );
 						$length += strlen( $entry );
 						$this->write( $this->file, $entry );
 					}
