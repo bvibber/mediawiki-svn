@@ -650,6 +650,7 @@ class BotQueryProcessor {
 		$printer = $this->outputGenerators[$this->format][GN_FUNC];
 		$mime = $this->outputGenerators[$this->format][GN_MIME];
 		header( "Content-Type: $mime; charset=utf-8;" );
+		header( "Cache-Control: private, s-maxage=0, max-age=0" );
 		if( !$isError ) {
 			if( !$this->enableProfiling && array_key_exists( 'perf', $this->data )) {
 				$perf =& $this->data['perf'];
