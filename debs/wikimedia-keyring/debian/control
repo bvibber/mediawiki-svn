@@ -1,0 +1,21 @@
+Source: wikimedia-keyring
+Section: misc
+Priority: optional
+Maintainer: Mark Bergsma <mark@wikimedia.org>
+Standards-Version: 3.6.1.0
+
+Package: wikimedia-keyring
+Architecture: all
+Depends: gnupg (>= 1.0.6-4)
+Description: GnuPG keys of the Wikimedia archive
+ Wikimedia digitally signs its Release files. This package
+ contains the archive keys used for that.
+
+Package: wikimedia-keyring-udeb
+Architecture: all
+Section: debian-installer
+Recommends: gpgv-udeb
+Description: GnuPG keys of the Wikimedia archive
+ Wikimedia digitally signs its Release files. This package
+ contains the archive keys used for that, in a minimal form for use
+ in the installer.
