@@ -19,7 +19,19 @@ set -e
 
 case "$1" in
     configure)
+	if ! grep -qs "^Explanation: Prefer Wikimedia APT repository packages in all cases" /etc/apt/preferences
+	then
+		# Set package pinning to prefer Wikimedia APT repository packages
+		[ -f /etc/apt/preferences ] && echo >> /etc/apt/preferences
+		cat /usr/share/doc/wikimedia-base/apt_preferences >> /etc/apt/preferences
+	fi
 
+	# Optimize TCP
+	if ! grep -q "^### START: Added by wikimedia-base" /etc/sysctl.conf
+	then
+		cat /usr/share/doc/wikimedia-base/sysctl.conf >> /etc/sysctl.conf
+		sysctl -p /usr/share/doc/wikimedia-base/sysctl.conf
+	fi	
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
