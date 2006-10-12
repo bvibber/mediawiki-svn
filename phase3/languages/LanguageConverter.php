@@ -98,10 +98,9 @@ class LanguageConverter {
 		}
 
 		// check the syntax /code/ArticleTitle
-		$script = $_SERVER['SCRIPT_NAME'];
-		$variants = implode('|',$this->mVariants);
-		if(preg_match("/($variants)$/",$script,$matches)){
-			$this->mPreferredVariant = $matches[1];
+		$scriptBase = basename( $_SERVER['SCRIPT_NAME'] );
+		if(in_array($scriptBase,$this->mVariants)){
+			$this->mPreferredVariant = $scriptBase;
 			return $this->mPreferredVariant;
 		}
 
