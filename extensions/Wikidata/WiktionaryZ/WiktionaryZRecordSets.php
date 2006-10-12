@@ -26,7 +26,7 @@ $collectionMembershipsTable = new Table('uw_collection_contents', true);
 $syntransTable = new Table('uw_syntrans', true);
 $translatedContentTable = new Table('translated_content', true);
 $alternativeDefinitionsTable = new Table('uw_alt_meaningtexts', true);
-$textAttributeValuesTable = new Table('uw_dm_text_attribute_values', true);
+$textAttributeValuesTable = new Table('uw_text_attribute_values', true);
 
 interface QueryTransactionInformation {
 	public function getRestriction($tableName);
@@ -521,7 +521,7 @@ function getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId, $query
 			'value_tcid' => $textValueIdAttribute
 		),
 		$textAttributeValuesTable,
-		array("defined_meaning_id=$definedMeaningId")
+		array("object_id=$definedMeaningId")
 	);
 	
 	$recordSet->getStructure->attributes[] = $textValueAttribute;

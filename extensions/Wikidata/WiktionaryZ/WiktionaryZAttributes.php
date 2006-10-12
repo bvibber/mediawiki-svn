@@ -113,7 +113,7 @@ $textAttributeValuesAttribute = new Attribute("text-attribute-values", "Text att
 
 global
 	$definitionAttribute, $definedMeaningAttribute;
-		
+
 $definitionAttribute = new Attribute("definition", "Definition", new RecordSetType($translatedTextStructure));
 $definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType(new Structure($definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute)));
 

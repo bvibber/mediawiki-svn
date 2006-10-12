@@ -533,7 +533,7 @@ function createNewDefinedMeaning($definingExpressionId, $languageId, $text) {
 
 function createDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $translatedContentId) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("INSERT INTO uw_dm_text_attribute_values (defined_meaning_id, attribute_mid, value_tcid, add_transaction_id) " .
+	$dbr->query("INSERT INTO uw_text_attribute_values (object_id, attribute_mid, value_tcid, add_transaction_id) " .
 			    "VALUES ($definedMeaningId, $attributeId, $translatedContentId, ". getUpdateTransactionId() .")");
 }
 
@@ -548,7 +548,7 @@ function removeDefinedMeaningTextAttributeValue($textId) {
 	removeTranslatedTexts($textId);
 
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("UPDATE uw_dm_text_attribute_values SET remove_transaction_id=". getUpdateTransactionId() .
+	$dbr->query("UPDATE uw_text_attribute_values SET remove_transaction_id=". getUpdateTransactionId() .
 				" WHERE value_tcid=$textId" .
 				" AND remove_transaction_id IS NULL");
 }
