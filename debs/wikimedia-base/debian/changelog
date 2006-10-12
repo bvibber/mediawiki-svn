@@ -1,3 +1,11 @@
+wikimedia-base (0.03) dapper; urgency=low
+
+  * Do not remove sysctl.conf settings on package upgrade,
+    as the user may have altered them
+  * Depend on mcelog, but only for arch amd64
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 12 Oct 2006 11:52:35 +0000
+
 wikimedia-base (0.02) unstable; urgency=low
 
   * Set up APT package pinning for Wikimedia packages in /etc/apt/preferences

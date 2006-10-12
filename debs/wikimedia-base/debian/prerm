@@ -18,9 +18,11 @@ set -e
 
 
 case "$1" in
-    remove|upgrade|deconfigure)
+    remove|deconfigure)
 	# Remove TCP optimizations
 	sed -i '/^### START: Added by wikimedia-base/,/^### END: Added by wikimedia-base/d' /etc/sysctl.conf
+	;;
+    upgrade)
         ;;
     failed-upgrade)
         ;;
