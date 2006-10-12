@@ -1,3 +1,12 @@
+squid (2.6.4-1wm5) dapper; urgency=low
+
+  * Change the init.d script to not use the executable file on
+    stops, as this doesn't work on upgrades when the executable has
+    been replaced by a newer one. Verify the process name instead.
+  * Do not prepare COSS files on a restart
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 12 Oct 2006 21:36:57 +0000
+
 squid (2.6.4-1wm4) unstable; urgency=low
 
   * Fix bug in initscript COSS preparation

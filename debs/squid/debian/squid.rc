@@ -98,7 +98,7 @@ start () {
 	fi
 
 	# Prepare COSS files, if any
-	prepare_coss
+	[ "$RESTART" != "yes" ] && prepare_coss
 
 	if [ "$CHUID" = "" ]; then
 		CHUID=root
@@ -116,7 +116,7 @@ start () {
 
 stop () {
 	PID=`cat $PIDFILE 2>/dev/null`
-	start-stop-daemon --stop --quiet --pidfile $PIDFILE --exec $DAEMON
+	start-stop-daemon --stop --quiet --pidfile $PIDFILE --name squid
 	#
 	#	Now we have to wait until squid has _really_ stopped.
 	#
@@ -168,6 +168,7 @@ case "$1" in
 	;;
     restart)
 	log_daemon_msg "Restarting Squid HTTP proxy" "squid"
+	RESTART=yes
 	stop
 	if start ; then
 		log_end_msg $?
