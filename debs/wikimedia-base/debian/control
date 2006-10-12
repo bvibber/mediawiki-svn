@@ -8,10 +8,10 @@ Standards-Version: 3.6.2
 Package: wikimedia-base
 Architecture: all
 Origin: Wikimedia
-Depends: ${shlibs:Depends}, ${misc:Depends}, openssh-server, sysstat, ntp-simple, zsh, joe, screen, smartmontools, mcelog [amd64]
+Depends: ${shlibs:Depends}, ${misc:Depends}, openssh-server, sysstat, ntp-simple, zsh, joe, screen, smartmontools
 Description: Base requirements for any Wikimedia server
  wikimedia-base provides the Wikimedia specific base requirements
  for any Wikimedia server. Currently that involves:
  * Depends on several packages wanted on every server,
-   like ssh, sysstat, mcelog, zsh, joe
+   like ssh, sysstat, zsh, joe
  * Sets APT package pinning for Wikimedia packages

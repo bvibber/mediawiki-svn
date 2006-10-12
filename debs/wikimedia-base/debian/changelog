@@ -1,3 +1,11 @@
+wikimedia-base (0.04) dapper; urgency=low
+
+  * Architecture specific Depends don't work, only in BuildDepends.
+    There are possibilities with substitute variables, but we'll
+    worry about that later.
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 12 Oct 2006 20:55:30 +0000
+
 wikimedia-base (0.03) dapper; urgency=low
 
   * Do not remove sysctl.conf settings on package upgrade,
