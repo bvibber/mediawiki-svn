@@ -86,8 +86,6 @@ if ( function_exists( 'wfLogProfilingData' ) ) {
 }
 
 class BotQueryProcessor {
-	var $classname = 'BotQueryProcessor';
-
 	/**
 	* Output generators - each format name points to an array of the following parameters:
 	*     0) Function to call
@@ -773,7 +771,7 @@ class BotQueryProcessor {
 				'page',
 				array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_touched', 'page_latest' ),
 				$this->db->makeList( $where, LIST_OR ),
-				$this->classname . '::genPageInfo' );
+				__METHOD__ );
 			$this->endDbProfiling('pageInfo');
 
 			while( $row = $this->db->fetchObject( $res ) ) {
@@ -946,7 +944,7 @@ class BotQueryProcessor {
 			'recentchanges',
 			'rc_cur_id',
 			$conds,
-			$this->classname . '::genMetaRecentChanges',
+			__METHOD__,
 			$options
 			);
 		$this->endDbProfiling( $prop );
@@ -976,7 +974,7 @@ class BotQueryProcessor {
 			'user',
 			'user_name',
 			"user_name >= " . $this->db->addQuotes($usfrom),
-			$this->classname . '::genUserPages',
+			__METHOD__,
 			array( 'ORDER BY' => 'user_name', 'LIMIT' => $uslimit )
 			);
 		$this->endDbProfiling( $prop );
@@ -1023,7 +1021,7 @@ class BotQueryProcessor {
 			'page',
 			array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect', 'page_touched', 'page_latest' ),
 			$where,
-			$this->classname . '::genMetaAllPages',
+			__METHOD__,
 			array( 'USE INDEX' => 'name_title', 'LIMIT' => $aplimit+1, 'ORDER BY' => 'page_namespace, page_title' ));
 		$this->endDbProfiling( $prop );
 
@@ -1072,7 +1070,7 @@ class BotQueryProcessor {
 			. ' LIMIT ' . intval($nllimit+1);
 
 		$this->startDbProfiling();
-		$res = $this->db->query( $sql, $this->classname . '::genMetaNoLangLinksPages' );
+		$res = $this->db->query( $sql, __METHOD__ );
 		$this->endDbProfiling( $prop );
 
 		// Add found page ids to the list of requested titles - they will be auto-populated later
@@ -1113,7 +1111,7 @@ class BotQueryProcessor {
 		$tables = array( 'categorylinks' );
 		$conds = array( 'cl_to' => $categoryObj->getDBkey() );
 		if ($cpfrom != '')
-			$conds[] = 'cl_sortkey >= ' . $this->db->addQuotes(titleToKey($cpfrom));
+			$conds[] = 'cl_sortkey >= ' . $this->db->addQuotes($cpfrom);
 
 		if( $cpnamespace !== NS_ALL_NAMESPACES )
 		{
@@ -1137,7 +1135,7 @@ class BotQueryProcessor {
 			$tables,
 			$fields,
 			$conds,
-			$this->classname . '::genPagesInCategory',
+			__METHOD__,
 			array( 'ORDER BY' => 'cl_sortkey', 'LIMIT' => $cplimit+1 ));
 		$this->endDbProfiling( $prop );
 
@@ -1145,7 +1143,7 @@ class BotQueryProcessor {
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			if( ++$count > $cplimit ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$this->addStatusMessage( 'category', array('next' => keyToTitle($row->cl_sortkey)));
+				$this->addStatusMessage( 'category', array('next' => $row->cl_sortkey));
 				break;
 			}
 			$this->addRaw( 'pageids', $row->cl_from );
@@ -1179,7 +1177,7 @@ class BotQueryProcessor {
 			array('pl_from' => $this->redirectPageIds,
 				  'pl_namespace = page_namespace',
 				  'pl_title = page_title'),
-			__CLASS__ . '::' . __FUNCTION__ );
+			__METHOD__ );
 		$this->endDbProfiling( $prop );
 
         $multiLinkRedirPages = array();
@@ -1209,7 +1207,7 @@ class BotQueryProcessor {
                 array('page', 'revision', 'text'),
                 array('page_id', 'page_is_redirect', 'old_id', 'old_text', 'old_flags'),
                 array('page_id' => $multiLinkRedirPages, 'page_id=rev_page', 'page_latest=rev_id', 'rev_text_id=old_id' ),
-                $this->classname . '::genPageContent'
+                __METHOD__
                 );
             while ( $row = $this->db->fetchObject( $res ) ) {
                 $title = Title :: newFromRedirect(Revision::getRevisionText( $row ));
@@ -1271,7 +1269,7 @@ class BotQueryProcessor {
 				), LIST_AND );
 
 		$this->startDbProfiling();
-		$res = $this->db->query( $sql, $this->classname . '::genRedirectInfo' );
+		$res = $this->db->query( $sql, __METHOD__ );
 		$this->endDbProfiling( $prop );
 
 		while ( $row = $this->db->fetchObject( $res ) ) {
@@ -1314,7 +1312,7 @@ class BotQueryProcessor {
 					'page',
 					array('page_id', 'page_restrictions'),
 					array('page_id' => $this->existingPageIds),
-					$this->classname . "::genPermissionsInfo" );
+					__METHOD__ );
 				$this->endDbProfiling( $prop );
 
 				while ( $row = $this->db->fetchObject( $res )) {
@@ -1357,7 +1355,7 @@ class BotQueryProcessor {
 					($langlinks ? 'll_lang' : "{$prefix}_namespace to_namespace"),
 					"{$prefix}_title to_title" ),
 			array( "{$prefix}_from" => $this->nonRedirPageIds ),
-			$this->classname . "::genPageLinks_{$code}" );
+			__METHOD__ . "_{$code}" );
 		$this->endDbProfiling( $prop );
 
 		while ( $row = $this->db->fetchObject( $res ) ) {
@@ -1393,7 +1391,7 @@ class BotQueryProcessor {
 			'categorylinks',
 			$fields,
 			array( "cl_from" => $this->nonRedirPageIds ),
-			$this->classname . "::genPageCategoryLinks" );
+			__METHOD__ );
 		$this->endDbProfiling( $prop );
 
 		while ( $row = $this->db->fetchObject( $res ) ) {
@@ -1497,7 +1495,7 @@ class BotQueryProcessor {
 			$table,
 			$fields,
 			array( "{$fld}_name" => array_keys( $imageDbKeys )),
-			$this->classname . "::genImageInfo_{$fld}" );
+			__METHOD__ . "_{$fld}" );
 		$this->endDbProfiling( $prop );
 
 		while ( $row = $db->fetchObject( $res ) ) {
@@ -1661,7 +1659,7 @@ class BotQueryProcessor {
 			array( $linktbl, 'page' ),
 			$columns,
 			$where,
-			$this->classname . "::genPageBackLinks_{$code}",
+			__METHOD__ . "_{$code}",
 			$options );
 		$this->endDbProfiling( $prop );
 
@@ -1704,7 +1702,7 @@ class BotQueryProcessor {
 		}
 
 		// Prepare query parameters
-		$queryname = $this->classname . '::genPageRevisions';
+		$queryname = __METHOD__;
 		$tables = array('revision');
 		$fields = array('rev_id', 'rev_text_id', 'rev_timestamp', 'rev_user', 'rev_user_text', 'rev_minor_edit');
 		if( $rvcomments ) $fields[] = 'rev_comment';
@@ -1853,7 +1851,6 @@ class BotQueryProcessor {
 		elseif( $uctop == 'exclude' )
 			$conds[] = 'page_latest<>rev_id';
 
-		$queryname = $this->classname . '::genUserContributions';
 		$options = array( 'LIMIT' => $uclimit, 'ORDER BY' => 'rev_timestamp DESC', 'FORCE INDEX' => 'usertext_timestamp' );
 
 		$count = 0;
@@ -1874,7 +1871,7 @@ class BotQueryProcessor {
 					$data = &$page['contributions'];
 
 					$this->startDbProfiling();
-					$res = $this->db->select( $tables, $fields, $conds, $queryname, $options );
+					$res = $this->db->select( $tables, $fields, $conds, __METHOD__, $options );
 					$this->endDbProfiling( $prop );
 
 					while ( $row = $this->db->fetchObject( $res ) ) {
@@ -1931,7 +1928,7 @@ class BotQueryProcessor {
 //			'count(DISTINCT rev_page) distcnt'
 //		), array (
 //			'rev_user_text' => $users
-//		), $this->classname . '::genContributionsCounter', array (
+//		), __METHOD__, array (
 //			'GROUP BY' => 'rev_user_text'
 //		));
 //		$this->endDbProfiling($prop);
@@ -1965,7 +1962,7 @@ class BotQueryProcessor {
 			array('revision', 'text'),
 			array('rev_page', 'old_id', 'old_text', 'old_flags'),
 			array('rev_text_id=old_id', implode('OR', $ids)),
-			$this->classname . '::genPageContent'
+			__METHOD__
 			);
 		while ( $row = $this->db->fetchObject( $res ) ) {
 			$this->addPageSubElement( $row->rev_page, $prop, 'xml:space', 'preserve', false);
@@ -2070,7 +2067,7 @@ class BotQueryProcessor {
 
 			$res = $this->db->select( 'revision', 'DISTINCT rev_page',
 									  array( 'rev_deleted' => 0, 'rev_id' => $revids ),
-									  $this->classname . '::parseRevIds' );
+									  __METHOD__ );
 			while ( $row = $this->db->fetchObject( $res ) ) {
 				$pageids[] = $row->rev_page;
 			}
