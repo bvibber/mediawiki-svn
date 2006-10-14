@@ -20,4 +20,7 @@ $wgLanguageManagerMessages['he'] = array(
 $wgLanguageManagerMessages['nl'] = array(
 	'langman_title' => 'Taalmanager',
 );
+$wgLanguageManagerMessages['sk'] = array(
+	'langman_title' => 'Správca jazykov',
+);
 ?>

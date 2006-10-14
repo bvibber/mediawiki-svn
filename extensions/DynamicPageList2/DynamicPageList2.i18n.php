@@ -323,6 +323,86 @@ $wgDPL2Messages['ru'] = array(
 	*/
 	'dpl2_articlecount' => 'Ğ’ ÑÑ‚Ğ¾Ğ¼ Ğ·Ğ°Ğ³Ğ¾Ğ»Ğ¾Ğ²ĞºĞµ $1 {{PLURAL:$1|ÑÑ‚Ğ°Ñ‚ÑŒÑ|ÑÑ‚Ğ°Ñ‚ÑŒĞ¸|ÑÑ‚Ğ°Ñ‚ĞµĞ¹}}.'
 );
+$wgDPL2Messages['sk'] = array(
+	/*
+		Debug
+	*/
+	// (FATAL) ERRORS
+	/**
+	 * $0: 'namespace' or 'notnamespace'
+	 * $1: wrong parameter given by user
+	 * $3: list of possible titles of namespaces (except pseudo-namespaces: Media, Special)
+	 */
+	'dpl2_debug_' . DPL2_ERR_WRONGNS => "CHYBA: nesprávny parameter '$0': '$1'! Pomocník:  <code>$0= <i>prázdny reazec</i> (Hlavnı)$3</code>. (Ekvivalenty s magickımi slovami sú tie povolené.)",
+	/**
+	 * $0: 'linksto' (left as $0 just in case the parameter is renamed in the future)
+	 * $1: wrong parameter given by user
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGLINKSTO => "CHYBA: Zlı parameter '$0': '$1'! Pomocník:  <code>$0= <i>plnı názov stránky</i></code>. (Magické slová sú zapnuté.)",
+	/**
+	 * $0: max number of categories that can be included
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOMANYCATS => 'CHYBA: Príliš ve¾a kategórií! Maximum: $0. Pomocník: zvıšte <code>$wgDPL2MaxCategoryCount</code>, èím špecifikujete viac kategórií alebo nastavte <code>$wgDPL2AllowUnlimitedCategories=true</code> pre vypnutie limitu. (Premennú nastavte v <code>LocalSettings.php</code>, potom ako bol includovanı <code>DynamicPageList2.php</code>.)',
+	/**
+	 * $0: min number of categories that have to be included
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOFEWCATS => 'CHYBA: Príliš málo kategórií! Minimum: $0. Pomocník: zníte <code>$wgDPL2MinCategoryCount</code>, èím špecifikujete menej kategórií. (Premennú nastavte v <code>LocalSettings.php</code>, potom ako bol includovanı <code>DynamicPageList2.php</code>.)',
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTNOINCLUDEDCATS => "CHYBA: Musíte zahrnú aspoò jednu kategóriu ak chcete poui 'addfirstcategorydate=true' alebo 'ordermethod=categoryadd'!",
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTMORETHAN1CAT => "CHYBA: Ak zahrniete viac ako jednu kategóriu, nemôete poui 'addfirstcategorydate=true' alebo 'ordermethod=categoryadd'!",
+	'dpl2_debug_' . DPL2_ERR_MORETHAN1TYPEOFDATE => 'CHYBA: Nemôete naraz prida viac ako jeden typ dátumu!',
+	/**
+	 * $0: param=val that is possible only with $1 as last 'ordermethod' parameter
+	 * $1: last 'ordermethod' parameter required for $0
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "CHYBA: '$0' môete poui iba s 'ordermethod=[...,]$1'!",
+	/**
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	*/
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "CHYBA: Nie je moné vykonáva logické operácie na nekategorizovanıch stránkach (napr. s parametrom 'Kategória') lebo neexistuje na databázu poh¾ad $0! Pomocník: nech admim databázy vykoná tento dotaz: <code>$1</code>.",
+	
+	// WARNINGS
+	/**
+	 * $0: unknown parameter given by user
+	 * $1: list of DPL2 available parameters separated by ', '
+	*/
+	'dpl2_debug_' . DPL2_WARN_UNKNOWNPARAM => "VAROVANIE: Neznámy parameter '$0' ignorovanı. Pomocník: dostupné parametre: <code>$1</code>.",
+	/**
+	 * $3: list of valid param values separated by ' | '
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "VAROVANIE: Nesprávny '$0' parameter: '$1'! Pouívam štandardné: '$2'. Pomocník: <code>$0= $3</code>.",
+	/**
+	 * $0: param name
+	 * $1: wrong param value given by user
+	 * $2: default param value used instead by program
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "VAROVANIE: Nesprávny parameter  '$0': '$1'! Pouívam štandardné: '$2' (bez obmedzenia). Pomocník: <code>$0= <i>prázdny reazec</i> (bez obmedzenia) | n</code>, s <code>n</code> kladnım celım èíslom.",
+	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'VAROVANIE: No results!',
+	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "VAROVANIE: Parametre Add* ('adduser', 'addeditdate', atï.)' nepracujú s 'mode=category'. V tomto reime je moné prehliada iba mennı priestor/titulok stránky.",
+	/**
+	 * $0: 'headingmode' value given by user
+	 * $1: value used instead by program (which means no heading)
+	*/
+	'dpl2_debug_' . DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD => "VAROVANIE: 'headingmode=$0' nepracuje s 'ordermethod' na jednom komponente. Pouívam: '$1'. Pomocník: ôete poui not-$1 hodnoty 'headingmode' s 'ordermethod' na viaceré komponenty. Prvı komponent sa pouíva na nadpisy. Napr. 'ordermethod=category,<i>comp</i>' (<i>comp</i> je inı komponent) pre nadpisy kategórie.",
+	/**
+	 * $0: 'debug' value
+	*/
+	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "VAROVANIE: 'debug=$0' nie je prvá pozícia v prvky DPL. Nové debugovacie nastavenia nebudú pouité skôr, ako budú preparsované a skontrolované všetky predchádzajúce.",
+
+	// OTHERS
+	/**
+	 * $0: SQL query executed to generate the dynamic page list
+	*/
+	'dpl2_debug_' . DPL2_QUERY => 'DOTAZ: <code>$0</code>',
+
+	/*
+	   Output formatting
+	*/
+	/**
+	 * $1: number of articles
+	*/
+	'dpl2_articlecount' => 'V tomto nadpise {{PLURAL:$1|je jeden èlánok|sú $1 èlány|je $1 èlánkov}} in this heading.'
+);
 $wgDPL2Messages['zh-cn'] = array(
 	/*
 		Debug

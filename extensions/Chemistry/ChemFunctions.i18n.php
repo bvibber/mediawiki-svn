@@ -105,4 +105,27 @@ $wgChemFunctions_Messages['nl'] = array(
 	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS op de pagina van de Oxford University (UK) (geen zoekresultaten)</a><br />'
 );
 
+$wgChemFunctions_Messages['sk'] = array(
+	'chemicalsources' => 'Chemické zdroje',
+	'ChemFunctions_Chemicalsources' => 'Chemické zdroje',
+	'ChemFunctions_ChemicalsourcesPage' => 'Chemické zdroje',
+	'ChemFunctions_CAS' => 'CAS číslo',
+	'ChemFunctions_EINECS' => 'Einecs',
+	'ChemFunctions_CHEBI' => 'CHEBI',
+	'ChemFunctions_PubChem' => 'PubChem',
+	'ChemFunctions_SMILES' => 'SMILES',
+	'ChemFunctions_InChI' => 'InChI',
+	'ChemFunctions_RTECS' => 'RTECS',
+	'ChemFunctions_KEGG' => 'KEGG',
+	'ChemFunctions_ATCCode' => 'ATCCode',
+	'ChemFunctions_DrugBank' => 'DrugBank',
+	'ChemFunctions_ECNumber' => 'ECNumber',
+	'ChemFunctions_Formula' => 'Formula',
+	'ChemFunctions_Name' => 'IUPAC názov',
+	'ChemFunctions_SearchExplanation' => '',
+	'ChemFunctions_ChemicalDataList' => 'Nižšie je zoznam odkazov na stránky, ktoré môžu poskytnúť informácie o chemikálii, ktorú používate.<br /><br />
+	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Zlúčenina $MIXCASNameFormula na NIST</a><br />
+	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Oxford University (UK) (nedá sa vyhľadávať)</a><br />'
+);
+
 ?>
