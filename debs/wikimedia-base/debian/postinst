@@ -93,6 +93,13 @@ case "$1" in
 	update-alternatives --install /usr/bin/editor editor /usr/bin/vim 75 \
 		--slave /usr/share/man/man1/editor.1.gz editor.1.gz \
 		/usr/share/man/man1/vim.1.gz
+
+	# Enable smartd
+	if ! [ -f /var/run/smartd.pid ] || ! kill -0 $(cat /var/run/smartd.pid)
+	then
+		sed -i -e '/^#start_smartd=yes/s/^#//' /etc/default/smartmontools
+		invoke-rc.d smartmontools start
+	fi
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

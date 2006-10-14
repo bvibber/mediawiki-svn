@@ -1,3 +1,9 @@
+wikimedia-base (0.07) dapper; urgency=low
+
+  * Enable smartd disk monitoring
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sat, 14 Oct 2006 22:15:02 +0000
+
 wikimedia-base (0.06) dapper; urgency=low
 
   * Force the default editor to be vim, regardless of whether we

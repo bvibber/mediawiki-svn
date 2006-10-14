@@ -17,3 +17,4 @@ Description: Base requirements for any Wikimedia server
  * Finds out which Wikimedia cluster the host belongs to
  * Sets APT package pinning for Wikimedia packages
  * Sets up NTP
+ * Set up SMART disk monitoring
