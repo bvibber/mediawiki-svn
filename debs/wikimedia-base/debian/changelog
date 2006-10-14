@@ -1,3 +1,10 @@
+wikimedia-base (0.06) dapper; urgency=low
+
+  * Force the default editor to be vim, regardless of whether we
+    pull in joe or not. We want Brion happy, but not *that* happy...
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sat, 14 Oct 2006 21:35:20 +0000
+
 wikimedia-base (0.05) dapper; urgency=low
 
   * Depend on ssmtp | mail-transport-agent to get a (minimal) MTA
