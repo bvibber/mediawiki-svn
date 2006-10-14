@@ -1,3 +1,13 @@
+wikimedia-base (0.05) dapper; urgency=low
+
+  * Depend on ssmtp | mail-transport-agent to get a (minimal) MTA
+    on each server
+  * Find out what Wikimedia cluster the host belongs to, and write it
+    to /etc/wikimedia-cluster
+  * Select a closer, cluster specific NTP server
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sat, 14 Oct 2006 14:50:19 +0000
+
 wikimedia-base (0.04) dapper; urgency=low
 
   * Architecture specific Depends don't work, only in BuildDepends.

@@ -17,8 +17,31 @@ set -e
 # the debian-policy package
 #
 
+. /usr/share/debconf/confmodule
+
 case "$1" in
     configure)
+	# Determine which cluster this host is part of
+	if [ -f /etc/wikimedia-cluster ]
+	then
+		CLUSTERNAME=$(cat /etc/wikimedia-cluster)
+	else
+		# FIXME: we can (need?) to do better than this
+		case $(hostname -d) in
+		knams.wikimedia.org)
+			CLUSTERNAME=knams
+			;;
+		yaseo.wikimedia.org)
+			CLUSTERNAME=yaseo
+			;;
+		pmtpa.wmnet|wikimedia.org)
+			CLUSTERNAME=pmtpa
+			;;
+		esac
+		
+		echo $CLUSTERNAME > /etc/wikimedia-cluster
+	fi
+
 	if ! grep -qs "^Explanation: Prefer Wikimedia APT repository packages in all cases" /etc/apt/preferences
 	then
 		# Set package pinning to prefer Wikimedia APT repository packages
@@ -26,12 +49,45 @@ case "$1" in
 		cat /usr/share/doc/wikimedia-base/apt_preferences >> /etc/apt/preferences
 	fi
 
+	# Pick a closer NTP server
+	NTP_SERVER=""
+	case $CLUSTERNAME in
+	pmtpa)
+		NTP_SERVER=zwinger.wikimedia.org
+		;;
+	esac
+	if [ -n "$NTP_SERVER" ] && ! grep -q "^server $NTP_SERVER" /etc/ntp.conf
+	then
+		sed -i -e "/^server ntp\.ubuntu\.com/s/ntp\.ubuntu\.com/$NTP_SERVER/" /etc/ntp.conf
+		invoke-rc.d ntp-server restart
+	fi
+
 	# Optimize TCP
 	if ! grep -q "^### START: Added by wikimedia-base" /etc/sysctl.conf
 	then
 		cat /usr/share/doc/wikimedia-base/sysctl.conf >> /etc/sysctl.conf
 		sysctl -p /usr/share/doc/wikimedia-base/sysctl.conf
-	fi	
+	fi
+
+        # Set up a minimalistic MTA
+        MAILHUB=""
+        case $CLUSTERNAME in
+        pmtpa)
+                MAILHUB=goeje.wikimedia.org
+                ;;
+        knams)
+                MAILHUB=pascal.knams.wikimedia.org
+                ;;
+        yaseo)
+                MAILHUB=amaryllis.yaseo.wikimedia.org
+                ;;
+        esac
+        db_get ssmtp/mailhub
+        if [ "$RET" == "mail" ]
+	then
+		db_set ssmtp/mailhub "$MAILHUB"
+		dpkg-reconfigure ssmtp
+	fi
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
