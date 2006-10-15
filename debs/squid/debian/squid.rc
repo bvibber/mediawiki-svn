@@ -64,17 +64,8 @@ maxfds () {
 prepare_coss() {
 	COSS_FILES=`sed -e 's/#.*//g' /etc/squid/squid.conf | \
 	        egrep "cache_dir[[:space:]]+coss" | awk '{ print $3 }'`
-	for cossfile in $COSS_FILES
-	do
-		log_warning_msg "Preparing COSS file $cossfile..."
-		cosssize=`sed -e 's/#.*//g' /etc/squid/squid.conf | \
-                	egrep "cache_dir[[:space:]]+coss[[:space:]]+$cossfile" | awk '{ print $4 }'`
-		if [ -w $cossfile -a -n "$cosssize" -a $cosssize -gt 0 ]
-		then
-			gid=`grepconf cache_effective_group proxy`
-			su $gid dd if=/dev/zero bs=1048576 count=$cosssize of=$cossfile || exit 1
-		fi
-	done
+	gid=`grepconf cache_effective_group proxy`
+	chgrp $gid $COSS_FILES
 }
 
 start () {

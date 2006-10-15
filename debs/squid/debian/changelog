@@ -1,3 +1,16 @@
+squid (2.6.4-2wm1) dapper; urgency=low
+
+  * Incorporate Debian package changes:
+    - Added DEB_BUILD_OPTIONS dependent optimization and install options,
+      allowing for easy builing of unstripped binary packages as per Policy
+      10.1. (Closes: #384616)
+  * Build with --enable-stacktraces
+  * COSS preparation:
+    - Remove the time consuming and likely useless dd
+    - chgrp $gid COSS files on every Squid start, as they get reset on boot
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 15 Oct 2006 18:05:05 +0000
+
 squid (2.6.4-1wm5) dapper; urgency=low
 
   * Change the init.d script to not use the executable file on
