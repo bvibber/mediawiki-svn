@@ -1,3 +1,9 @@
+wikimedia-base (0.10) dapper; urgency=low
+
+  * Remove debconf preseeding of ssmtp, as this causes problems with locks
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 15 Oct 2006 17:17:23 +0000
+
 wikimedia-base (0.09) dapper; urgency=low
 
   * Pre-Depend on ntp-server and smartmontools, as they need to be set

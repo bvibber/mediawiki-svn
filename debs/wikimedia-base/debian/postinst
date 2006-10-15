@@ -17,7 +17,6 @@ set -e
 # the debian-policy package
 #
 
-. /usr/share/debconf/confmodule
 . /lib/lsb/init-functions
 
 case "$1" in
@@ -71,26 +70,6 @@ case "$1" in
 	then
 		cat /usr/share/doc/wikimedia-base/sysctl.conf >> /etc/sysctl.conf
 		sysctl -p /usr/share/doc/wikimedia-base/sysctl.conf
-	fi
-
-        # Set up a minimalistic MTA
-        MAILHUB=""
-        case $CLUSTERNAME in
-        pmtpa)
-                MAILHUB=goeje.wikimedia.org
-                ;;
-        knams)
-                MAILHUB=pascal.knams.wikimedia.org
-                ;;
-        yaseo)
-                MAILHUB=amaryllis.yaseo.wikimedia.org
-                ;;
-        esac
-        db_get ssmtp/mailhub
-        if [ "$RET" == "mail" ]
-	then
-		db_set ssmtp/mailhub "$MAILHUB"
-		dpkg-reconfigure ssmtp
 	fi
 
 	# Default editor joe? wtf!?
