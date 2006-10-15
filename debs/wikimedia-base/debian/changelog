@@ -1,3 +1,12 @@
+wikimedia-base (0.08) dapper; urgency=low
+
+  * Set amaryllis as NTP server for yaseo, as all others are firewalled off
+  * Do not restart ntpd, as it hangs the upgrade process for some reason
+  * Ignore failed smartd starts, as they are normal on systems without
+    (recognized) disks, e.g. SATA disks
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 15 Oct 2006 15:45:29 +0000
+
 wikimedia-base (0.07) dapper; urgency=low
 
   * Enable smartd disk monitoring

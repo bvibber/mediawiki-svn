@@ -18,6 +18,7 @@ set -e
 #
 
 . /usr/share/debconf/confmodule
+. /lib/lsb/init-functions
 
 case "$1" in
     configure)
@@ -55,11 +56,14 @@ case "$1" in
 	pmtpa)
 		NTP_SERVER=zwinger.wikimedia.org
 		;;
+	yaseo)
+		NTP_SERVER=amaryllis.yaseo.wikimedia.org
+		;;
 	esac
 	if [ -n "$NTP_SERVER" ] && ! grep -q "^server $NTP_SERVER" /etc/ntp.conf
 	then
 		sed -i -e "/^server ntp\.ubuntu\.com/s/ntp\.ubuntu\.com/$NTP_SERVER/" /etc/ntp.conf
-		invoke-rc.d ntp-server restart
+		log_warning_msg "New NTP server set, please restart ntpd manually!"
 	fi
 
 	# Optimize TCP
@@ -98,7 +102,7 @@ case "$1" in
 	if ! [ -f /var/run/smartd.pid ] || ! kill -0 $(cat /var/run/smartd.pid)
 	then
 		sed -i -e '/^#start_smartd=yes/s/^#//' /etc/default/smartmontools
-		invoke-rc.d smartmontools start
+		invoke-rc.d smartmontools start || true
 	fi
     ;;
 
