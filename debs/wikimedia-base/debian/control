@@ -8,7 +8,8 @@ Standards-Version: 3.6.2
 Package: wikimedia-base
 Architecture: all
 Origin: Wikimedia
-Depends: ${shlibs:Depends}, ${misc:Depends}, openssh-server, sysstat, ntp-simple, zsh, joe, screen, smartmontools, ssmtp | mail-transport-agent
+Pre-Depends: ntp-server, smartmontools
+Depends: ${shlibs:Depends}, ${misc:Depends}, openssh-server, sysstat, zsh, joe, screen, ntp-simple, ssmtp | mail-transport-agent
 Description: Base requirements for any Wikimedia server
  wikimedia-base provides the Wikimedia specific base requirements
  for any Wikimedia server. Currently that involves:

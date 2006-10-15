@@ -1,3 +1,10 @@
+wikimedia-base (0.09) dapper; urgency=low
+
+  * Pre-Depend on ntp-server and smartmontools, as they need to be set
+    up before our postinst scripts runs
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 15 Oct 2006 16:56:06 +0000
+
 wikimedia-base (0.08) dapper; urgency=low
 
   * Set amaryllis as NTP server for yaseo, as all others are firewalled off
