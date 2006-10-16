@@ -1,6 +1,99 @@
 <?php
 
 require_once('Attribute.php');
+require_once('Record.php');
+require_once('RecordSet.php');
+
+interface QueryTransactionInformation {
+	public function getRestriction($tableName);
+	public function versioningAttributes();
+	public function versioningFields($tableName);
+	public function versioningOrderBy();
+	public function setVersioningAttributes($record, $row);
+}
+
+class QueryLatestTransactionInformation implements QueryTransactionInformation {
+	public function getRestriction($tableName) {
+		return getLatestTransactionRestriction($tableName);
+	}
+	
+	public function versioningAttributes() {
+		return array();
+	}
+	
+	public function versioningFields($tableName) {
+		return array();
+	}
+	
+	public function versioningOrderBy() {
+		return array();
+	}
+	
+	public function setVersioningAttributes($record, $row) {
+	}
+}
+
+class QueryHistoryTransactionInformation implements QueryTransactionInformation {
+	public function getRestriction($tableName) {
+		return "1";
+	}
+	
+	public function versioningAttributes() {
+		global
+			$recordLifeSpanAttribute;
+			
+		return array($recordLifeSpanAttribute);
+	}
+
+	public function versioningFields($tableName) {
+		return array($tableName . '.add_transaction_id', $tableName . '.remove_transaction_id', $tableName . '.remove_transaction_id IS NULL AS is_live');
+	}
+
+	public function versioningOrderBy() {
+		return array('is_live DESC', 'add_transaction_id DESC');
+	}
+	
+	public function setVersioningAttributes($record, $row) {
+		global
+			$recordLifeSpanAttribute;
+			
+		$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']));
+	}
+}
+
+class QueryAtTransactionInformation implements QueryTransactionInformation {
+	protected $transactionId;
+	
+	public function __construct($transactionId) {
+		$this->transactionId = $transactionId;
+	}
+	
+	public function getRestriction($tableName) {
+		return getAtTransactionRestriction($tableName, $this->transactionId);
+	}
+	
+	public function versioningAttributes() {
+		global
+			$recordLifeSpanAttribute;
+			
+		return array($recordLifeSpanAttribute);
+	}
+	
+	public function versioningFields($tableName) {
+		return array($tableName . '.add_transaction_id', $tableName . '.remove_transaction_id', $tableName . '.remove_transaction_id IS NULL AS is_live');
+	}
+	
+	public function versioningOrderBy() {
+		return array();
+	}
+	
+	public function setVersioningAttributes($record, $row) {
+		global
+			$recordLifeSpanAttribute;
+			
+		$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']));
+	}
+}
 
 global
 	$updateTransactionId;
@@ -47,9 +140,10 @@ function getViewTransactionRestriction($table) {
 }
 
 global
-	$userAttribute, $timestampAttribute, $transactionStructure, $addTransactionAttribute, $removeTransactionAttribute, 
+	$transactionIdAttribute, $userAttribute, $timestampAttribute, $transactionStructure, $addTransactionAttribute, $removeTransactionAttribute, 
 	$recordLifeSpanAttribute, $recordLifeSpanStructure;
 	
+$transactionIdAttribute = new Attribute('transaction-id', 'Transaction ID', 'integer');
 $userAttribute = new Attribute('user', 'User', 'user');
 $timestampAttribute = new Attribute('timestamp', 'Time', 'timestamp');
 $transactionStructure = new Structure($userAttribute, $timestampAttribute);
@@ -81,11 +175,10 @@ function getUserLabel($userId, $userIP) {
 
 function getTransactionTuple($transactionId) {
 	global
-		$transactionStructure, $userAttribute, $timestampAttribute, $wgUser, $wgContLang;
+		$transactionStructure, $transactionIdAttribute, $userAttribute, $timestampAttribute, $wgUser, $wgContLang;
 	
 	$result = new ArrayRecord($transactionStructure);
-//	$result->setAttributeValue($userAttribute, "");
-//	$result->setAttributeValue($timestampAttribute, "");
+	$result->setAttributeValue($transactionIdAttribute, $transactionId);
 	
 	if ($transactionId > 0) {
 		$dbr =& wfGetDB(DB_SLAVE);

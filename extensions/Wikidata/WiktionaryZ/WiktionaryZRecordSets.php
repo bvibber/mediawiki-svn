@@ -5,119 +5,7 @@ require_once('Record.php');
 require_once('RecordSet.php');
 require_once('Expression.php');
 require_once('Transaction.php');
-
-class Table {
-	public $name;
-	public $isVersioned;
-	
-	public function __construct($name, $isVersioned) {
-		$this->name = $name;
-		$this->isVersioned = $isVersioned;
-	}
-}
-
-global
-	$tables, $meaningRelationsTable, $classMembershipsTable, $collectionMembershipsTable, $syntransTable, 
-	$translatedContentTable, $alternativeDefinitionsTable, $textAttributeValuesTable;
-	
-$meaningRelationsTable = new Table('uw_meaning_relations', true);
-$classMembershipsTable = new Table('uw_class_membership', true);
-$collectionMembershipsTable = new Table('uw_collection_contents', true);
-$syntransTable = new Table('uw_syntrans', true);
-$translatedContentTable = new Table('translated_content', true);
-$alternativeDefinitionsTable = new Table('uw_alt_meaningtexts', true);
-$textAttributeValuesTable = new Table('uw_text_attribute_values', true);
-
-interface QueryTransactionInformation {
-	public function getRestriction($tableName);
-	public function versioningAttributes();
-	public function versioningFields($tableName);
-	public function versioningOrderBy();
-	public function setVersioningAttributes($record, $row);
-}
-
-class QueryLatestTransactionInformation implements QueryTransactionInformation {
-	public function getRestriction($tableName) {
-		return getLatestTransactionRestriction($tableName);
-	}
-	
-	public function versioningAttributes() {
-		return array();
-	}
-	
-	public function versioningFields($tableName) {
-		return array();
-	}
-	
-	public function versioningOrderBy() {
-		return array();
-	}
-	
-	public function setVersioningAttributes($record, $row) {
-	}
-}
-
-class QueryHistoryTransactionInformation implements QueryTransactionInformation {
-	public function getRestriction($tableName) {
-		return "1";
-	}
-	
-	public function versioningAttributes() {
-		global
-			$recordLifeSpanAttribute;
-			
-		return array($recordLifeSpanAttribute);
-	}
-
-	public function versioningFields($tableName) {
-		return array($tableName . '.add_transaction_id', $tableName . '.remove_transaction_id', $tableName . '.remove_transaction_id IS NULL AS is_live');
-	}
-
-	public function versioningOrderBy() {
-		return array('is_live DESC', 'add_transaction_id DESC');
-	}
-	
-	public function setVersioningAttributes($record, $row) {
-		global
-			$recordLifeSpanAttribute;
-			
-		$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']));
-	}
-}
-
-class QueryAtTransactionInformation implements QueryTransactionInformation {
-	protected $transactionId;
-	
-	public function __construct($transactionId) {
-		$this->transactionId = $transactionId;
-	}
-	
-	public function getRestriction($tableName) {
-		return getAtTransactionRestriction($tableName, $this->transactionId);
-	}
-	
-	public function versioningAttributes() {
-		global
-			$recordLifeSpanAttribute;
-			
-		return array($recordLifeSpanAttribute);
-	}
-	
-	public function versioningFields($tableName) {
-		return array($tableName . '.add_transaction_id', $tableName . '.remove_transaction_id', $tableName . '.remove_transaction_id IS NULL AS is_live');
-	}
-	
-	public function versioningOrderBy() {
-		return array();
-	}
-	
-	public function setVersioningAttributes($record, $row) {
-		global
-			$recordLifeSpanAttribute;
-			
-		$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']));
-	}
-}
+require_once('WikiDataTables.php');
 
 function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeMapping, $table, $restrictions, $orderBy = array()) {
 	$dbr =& wfGetDB(DB_SLAVE);
@@ -135,8 +23,10 @@ function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeM
 		$allAttributes = $attributes;
 	
 	$query = "SELECT ". implode(", ", $selectFields) . 
-			" FROM ". $table->name .
-			" WHERE ". implode(' AND ', $restrictions);
+			" FROM ". $table->name;
+
+	if (count($restrictions) > 0)
+		$query .= " WHERE ". implode(' AND ', $restrictions);
 	
 	if (count($orderBy) > 0)
 		$query .= " ORDER BY " . implode(', ', $orderBy);
@@ -524,7 +414,7 @@ function getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId, $query
 		array("object_id=$definedMeaningId")
 	);
 	
-	$recordSet->getStructure->attributes[] = $textValueAttribute;
+	$recordSet->getStructure()->attributes[] = $textValueAttribute;
 	
 	expandTranslatedContentsInRecordSet($recordSet, $textValueIdAttribute, $textValueAttribute, $queryTransactionInformation);
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($textAttributeAttribute));
