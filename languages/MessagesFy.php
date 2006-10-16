@@ -145,6 +145,7 @@ $messages = array(
 "search"		=> "Sykje",
 "searchbutton"	=> "Sykje",
 "go"			=> "Side",
+'searcharticle'			=> "Side",
 "history"		=> "Sideskiednis",
 "printableversion" => "Ofdruk-ferzje",
 "editthispage"	=> "Side bewurkje",
@@ -164,7 +165,6 @@ $messages = array(
 "viewcount"		=> "Disse side is $1 kear iepenslein.",
 "protectedpage" 	=> "Beskerme side",
 "nbytes"		=> "$1 byte",
-"go"			=> "Side",
 "ok"			=> "Goed",
 "retrievedfrom" 	=> "Untfongen fan \"$1\"",
 "editsection"	=> "edit",
@@ -321,8 +321,9 @@ jo jo [[{{ns:special}}:Userlogin|oanmelde]], dat jo allinnich opmerkings foar jo
 "previewnote"	=> "Tink der om dat dizze side noch net fêstlein is!",
 "previewconflict" => "Dizze side belanget allinich it earste bewurkingsfjild oan.",
 "editing"		=> "Bewurkje \"$1\"",
-"editing"		=> "Bewurkje \"$1\" (seksje)",
-"editing"		=> "Bewurkje \"$1\" (nije opmerking)",
+'editinguser'		=> "Bewurkje \"$1\"",
+//"editing"		=> "Bewurkje \"$1\" (seksje)",
+//"editing"		=> "Bewurkje \"$1\" (nije opmerking)",
 "editconflict"	=> "Tagelyk bewurke: \"$1\"",
 "explainconflict" => "In oar hat de side feroare sûnt jo begûn binne mei it bewurkjen.
 It earste bewurkingsfjild is hoe't de tekst wilens wurde is.

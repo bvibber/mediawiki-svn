@@ -60,7 +60,19 @@ class LqtDispatch {
 				echo "something really, really bad happened.";
 			}
 		}
-		
+	}
+	
+	protected function handleSubmittedSave($title, $pp) {
+		global $wgOut;
+				
+		$status = LqtEditController::tryOperation($pp);
+
+		if ( $status == LqtEditController::SAVE_OK ) {
+			$wgOut->addRedirect( $title->getFullURL() );
+		}
+		else {
+			echo "something bad happened.";
+		}
 	}
 	
 	function execute($title) {
@@ -71,10 +83,8 @@ class LqtDispatch {
 			$pp = new PostProxy(null, $wgRequest);
 
 			if( $pp->submittedSave() ) {
-				if ($pp->editType() == 'editExisting') {
-					$redirect = EditController::saveExisting( $title, $pp );
-					$wgOut->redirect( $redirect );
-				}
+				$this->handleSubmittedSave($title, $pp);
+				// exit point? XXX
 			}
 
 			$view = $this->viewForTitle( $title );
@@ -90,8 +100,47 @@ class LqtDispatch {
 	}
 }
 
-class EditController
+class LqtEditController
 {
+	/** returned by saveNewRevision if the revision saved alright. */
+	const SAVE_OK = 1;
+	const SAVE_ERROR = 2;
+
+	
+	static function tryOperation($pp) {
+		switch( $pp->editType() ) {
+			case "edit":
+				$article = $pp->editAppliesTo();
+//				$allowed_status = EditController::canEditArticle( $article );
+//				if( $allowed_status == EditControlled::OK )
+				
+					return $article->doEdit($pp->content(), $pp->summary) ? LqtEditController::SAVE_OK : LqtEditController::SAVE_ERROR;
+//				else
+//					return $allowed_status; /* weird: two possible sets of return values. but, orthogonal sets.*/
+			break;
+/*			case "reply":
+				$parent = $pp->editAppliesTo();
+				$allowed_status = LqtEditController::canReplyTo($parent);
+				if ( $allowed_status == EditController::OK ) { // edtcontroller?
+					$new_article = null; /// xxx
+					// need to also make new thread.
+				}
+			break;
+			case "new":
+			break;*/
+		}
+	}
+	
+	
+	
+	static function canEdit( $pp ) {
+		return false;
+	}
+	
+	static function saveNewRevision( $pp ) {
+		return false;
+	}
+	
 	static function saveExisting ( $title, $post_proxy ) {
 		echo "article id = {$post_proxy->editAppliesTo()}";
 		echo $post_proxy->content();

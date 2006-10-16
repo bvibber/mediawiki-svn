@@ -244,6 +244,7 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'search'              => 'Etsi',
 'searchbutton'        => 'Etsi',
 'go'                  => 'Siirry',
+'searcharticle'                  => 'Siirry',
 'history'             => 'Historia',
 'history_short'       => 'Historia',
 'updatedmarker'       => 'päivitetty viimeisimmän käyntisi jälkeen',
@@ -297,7 +298,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'versionrequired'     => 'Mediawikistä tarvitaan vähintään versio $1',
 'versionrequiredtext' => 'Mediawikistä tarvitaan vähintään versio $1 tämän sivun käyttämiseen. Katso [[Special:Version|versio]]',
 
-'go'                  => 'Siirry',
 'ok'                  => 'OK',
 'pagetitle'           => '$1 — {{SITENAME}}',
 'retrievedfrom'       => 'Haettu osoitteesta $1',
@@ -524,6 +524,7 @@ Esikatselu on piilotettu varokeinona JavaScript-hyökkäyksiä vastaan – täss
 Yritä uudelleen. Jos ongelma ei katoa, yritä kirjautua ulos ja takaisin sisään.',
 'importing'           => 'Tuodaan sivua $1',
 'editing'             => 'Muokataan sivua $1',
+'editinguser'             => 'Muokataan sivua $1',
 'editingsection'      => 'Muokataan osiota sivusta $1',
 'editingcomment'      => 'Muokataan kommenttia sivulla $1',
 'editconflict'        => 'Päällekkäinen muokkaus: $1',

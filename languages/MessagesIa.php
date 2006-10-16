@@ -121,6 +121,7 @@ $messages = array(
 "search"		=> "Recercar",
 "searchbutton"	=> "Recercar",
 "go"		=> "Ir",
+'searcharticle'		=> "Ir",
 "history"		=> "Chronologia",
 "printableversion" => "Version imprimibile",
 "editthispage"	=> "Modificar iste pagina",
@@ -140,7 +141,6 @@ $messages = array(
 "viewcount"		=> "Iste pagina esseva accessate $1 vices.",
 "protectedpage" => "Pagina protegite",
 "nbytes"		=> "$1 bytes",
-"go"			=> "Ir",
 "ok"			=> "OK",
 "retrievedfrom" => "Recuperate de \"$1\"",
 "newmessageslink" => "messages nove",
@@ -269,6 +269,7 @@ Si tu es hic per error, simplemente clicca le button '''Retornar''' de tu naviga
 "previewconflict" => "Iste previsualisation reflecte le apparentia final del texto in le area de redaction superior
 si tu opta pro salvar lo.",
 "editing"		=> "Modification de $1",
+'editinguser'		=> "Modification de $1",
 "editconflict"	=> "Conflicto de edition: $1",
 "explainconflict" => "Alcuno ha modificate iste pagina post que tu
 ha comenciate a modificar lo.

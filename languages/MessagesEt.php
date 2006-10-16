@@ -195,6 +195,7 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit]."
 "search"		=> "Otsi",
 "searchbutton"	=> "Otsi",
 "go"		=> "Mine",
+'searcharticle'		=> "Mine",
 "history"		=> "Artikli ajalugu",
 'history_short' => 'Ajalugu',
 'info_short'    => 'Info',
@@ -229,7 +230,6 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit]."
 "copyright" => "Kogu tekst on kasutatav litsentsi $1 tingimustel.",
 "protectedpage" => "Kaitstud artikkel",
 "nbytes"		=> "$1 baiti",
-"go"			=> "Mine",
 "ok"			=> "OK",
 "retrievedfrom" => "Välja otsitud andmebaasist \"$1\"", # parandaks sõnastust?
 'editsection'=>'redigeeri',
@@ -442,6 +442,7 @@ Kui sattusite siia kogemata, klõpsake lihtsalt brauseri ''back''-nupule.",
 "previewnote"	=> "Ärge unustage, et see versioon ei ole veel salvestatud!",
 "previewconflict" => "See eelvaade näitab, kuidas ülemises toimetuskastis olev tekst hakkab välja nägema, kui otsustate salvestada.", ## redaktoriboks?
 "editing"		=> "Redigeerimisel on $1",
+'editinguser'		=> "Redigeerimisel on $1",
 "editconflict"	=> "Redigeerimiskonflikt: $1",
 "explainconflict" => "Keegi teine on muutnud seda lehekülge pärast seda, kui Teie seda redigeerima hakkasite.
 Ülemine toimetuskast sisaldab teksti viimast versiooni.

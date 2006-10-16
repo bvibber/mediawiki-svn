@@ -235,6 +235,25 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   {{REVISIONYEAR}} and {{REVISIONTIMESTAMP}} 
 * (bug 7425) Preceeding whitespace in [[...]] breaks subpages
 * Try to reconnect after transitory database errors in dumpTextPass.php
+* (bug 6023) Fixed mismatch of 0/NULL for wl_notificationtimestamp; now notification
+  mails are working after 'Mark all pages visited' button on Special:Watchlist is clicked
+* Made {{INT:}} a core parser function instead of a special case. The syntax 
+  and behaviour is largely unchanged. 
+* (bug 7448) Fixing the native name for Ewe (ee)
+* (bug 6864) Replace message 'editing' with new message 'editinguser' in Special:Userrights
+  to allow better localisation
+* Add '*-summary' for special pages to MessagesEn.php to allow customizing/translation
+  directly through Special:Allmessages
+* (bug 6130, bug 5818) Replaced message 'go'  with the new message 'searcharticle' in skins
+  to allow better localisation
+* Add + to $wgLegalTitleChars by default. Some sites may have occasional
+  problems with hard-to-reach pages, but it should be less trouble than
+  "I can't import dumps from Wikipedia" complaints
+* (bug 7460) Revert broken patch for bug 7226 which slows down
+  Special:Allmessages by a factor of 16
+* Committed a bunch of live hacks from Wikimedia servers
+* (bug 6889) PHP notices in thumb.php with missing params
+* Cleaner error behavior on thumb.php with invalid page selection
 
 
 == Languages updated ==
@@ -246,6 +265,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Brazilian Portuguese (pt-br)
 * Catalan (ca)
 * Cantonese (zh-yue)
+* Czech (cs)
 * Dutch (nl)
 * English (en)
 * Finnish (fi)

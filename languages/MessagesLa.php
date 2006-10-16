@@ -115,6 +115,7 @@ $messages = array(
 'search'                => 'Quaerere',
 'searchbutton'          => 'Quaerere',
 'go'                    => 'Ire',
+'searcharticle'                    => 'Ire',
 'history'               => 'Historia',
 'history_short'         => 'Historia',
 'printableversion'      => 'Forma impressibilis',
@@ -229,6 +230,7 @@ Monemus qui novum conventum aperis et tesseram tuam mutas.',
 'updated'               => '(Novata)',
 'previewnote'           => 'Memento hanc paginam solum praevisum esse, neque iam servatam!',
 'editing'               => 'Recensio paginae "$1"',
+'editinguser'               => 'Recensio paginae "$1"',
 'editconflict'          => 'Contentio recensionis: $1',
 'explainconflict'       => 'Alius hanc paginam mutavit postquam eadem mutare incipebat.
 Capsa superior paginae verba recentissima continet.

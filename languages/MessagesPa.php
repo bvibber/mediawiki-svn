@@ -139,6 +139,7 @@ $messages = array(
 'search'		=> 'ਖੋਜ',
 'searchbutton'	=> 'ਖੋਜ',
 'go'			=> 'ਜਾਓ',
+'searcharticle'			=> 'ਜਾਓ',
 'history'		=> 'ਪੁਰਾਣੇ ਆਵਰਤਣ',
 'history_short'	=> 'ਇਤਿਹਾਸ',
 'info_short'		=> 'ਸੂਚਨਾ',
@@ -171,7 +172,6 @@ $messages = array(
 'copyright'		=> 'ਵਿਸ਼ਾ-ਵਸਤੂ $1 ਤਹਿਤ ਉਪਲੱਬਧ ਹੈ',
 'protectedpage'	=> 'ਸੁਰੱਖਿਅਤ ਪੰਨਾ',
 'nbytes'		=> '$1 ਬਾਈਟ',
-'go'			=> 'ਜਾਓ',
 'ok'			=> 'ਠੀਕ ਹੈ',
 'pagetitle'		=> '$1 - {{SITENAME}}',
 'retrievedfrom'	=> '\'$1\' ਤੋਂ ਪ੍ਰਾਪਤ ਕੀਤਾ ਗਿਆ ਹੈ',
@@ -350,6 +350,7 @@ $1 ਜਾਂ ਕਿਸੇ ਵੀ ਹੋਰ [[{{ns:4}}:ਪ੍ਰਸ਼ਾਸਕ]]
 'note'		=> '<strong>ਧਿਆਨ ਦਿਓ:</strong>',
 'previewnote'		=> 'ਯਾਦ ਰੱਖੋ ਕਿ ਇਹ ਸਿਰਫ਼ ਇਕ ਝਲਕ ਹੈ, ਅਜੇ ਇਸਨੂੰ ਪੱਕਾ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਹੈ!',
 'editing'		=> 'ਬਦਲ ਰਹੇ ਹਾਂ: $1',
+'editinguser'		=> 'ਬਦਲ ਰਹੇ ਹਾਂ: $1',
 'editconflict'	=> 'ਬਦਲਾਵ ਮੱਤਭੇਦ: $1',
 'yourdiff'		=> 'ਅੰਤਰ (Differences)',
 

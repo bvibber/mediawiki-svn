@@ -156,6 +156,7 @@ $messages = array(
 'search'		=> "جستجو شود",
 'searchbutton'	=> "جستجو شود",
 'go'		=> "برود",
+'searcharticle'		=> "برود",
 'history'		=> "تاریخچه‌ی صفحه",
 'printableversion' => "نسخه‌ی قابل چاپ",
 'editthispage'	=> "ویرایش این صفحه",
@@ -177,6 +178,7 @@ $messages = array(
 'protectedpage' => "صفحه‌ی محافظت‌شده",
 'nbytes'		=> "$1 بایت",
 'go'			=> "برو",
+'searcharticle'			=> "برو",
 'ok'			=> "باشد",
 'retrievedfrom' => "گرفته شده از «$1»",
 'editsection'=>"ویرایش",
@@ -371,6 +373,7 @@ cookieها را از کار انداخته‌اید. لطفاً cookieها را 
 'previewconflict' => "این پیش‌نمایش منعکس‌کننده‌ی متن ناحیه‌ی ویرایش متن بالایی است،
 به شکلی که اگر بخواهید متن را ذخیره کنید نشان داده خواهد شد.",
 'editing'		=> "در حال ویرایش $1",
+'editinguser'		=> "در حال ویرایش $1",
 'editingsection'	=> "در حال ویرایش $1 (قسمت)",
 'editingcomment'	=> "در حال ویرایش $1 (یادداشت)",
 'editconflict'	=> "تعارض ویرایشی: $1",

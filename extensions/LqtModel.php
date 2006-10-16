@@ -56,10 +56,18 @@ class PostProxy {
 	}
 	
 	function editAppliesTo() {
-		if ( $this->request ) return $this->request->getVal( 'editAppliesTo' );
+		if ( $this->request && $this->request->getVal('editAppliesTo') ) {
+			$title =  Title::newFromID();
+			return $title ? new Article($title) : null;
+		}
 		else return null;
 	}
 	
+	/**
+	 * 'reply' if we're replying to a post,
+	 * 'edit' if we're editing an existing post,
+	 * 'new' if we're writing a new top-level post.
+	*/
 	function editType() {
 		if ( $this->request ) return $this->request->getVal( 'editType' );
 		else return null;
@@ -106,6 +114,19 @@ class Thread {
 	
 	/* Identity */
 	protected $id;
+
+	/**
+	 * Make the given Post a reply to this.
+	 * 	
+	*/
+	function setSuperthread($thread) {
+		$this->superthread = $thread->id();
+		$this->updateRecord();
+	}
+	
+	function id() {
+		return $this->id;
+	}
 
 	function rootPost() {
 		if ( !$this->rootPostId ) return null;

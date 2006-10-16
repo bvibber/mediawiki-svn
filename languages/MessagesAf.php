@@ -119,6 +119,7 @@ $messages = array(
 "search"		=> "Soek",
 "searchbutton"		=> "Soek",
 "go"		=> "Wys",
+'searcharticle'		=> "Wys",
 "history"		=> "Ouer weergawes",
 "printableversion" => "Drukbare weergawe",
 "editthispage"	=> "Wysig hierdie bladsy",
@@ -139,7 +140,6 @@ $messages = array(
 "protectedpage" => "Beskermde bladsy",
 
 "nbytes"		=> "$1 grepe",
-"go"			=> "Doen",
 "ok"			=> "Aanvaar", #fixMe
 "retrievedfrom" => "Ontsluit van \"$1\"",
 "newmessageslink" => "nuwe boodskappe",
@@ -255,6 +255,7 @@ Indien jy per ongeluk hier is, gebruik jou blaaier se '''terug''' knop.",
 "previewnote"	=> "Onthou dat dit slegs 'n voorskou is en nog nie gestoor is nie!",
 "previewconflict" => "Hierdie voorskou reflekteer die teks in die boonste invoerboks soos dit sal lyk as jy dit stoor.",
 "editing"		=> "Besig om $1 te wysig",
+'editinguser'		=> "Besig om $1 te wysig",
 "editconflict"	=> "Wysigingskonflik: $1",
 "explainconflict" => "Iemand anders het hierdie bladsy gewysig sedert jy dit begin verander het.
 Die boonste invoerboks het die teks wat tans bestaan.

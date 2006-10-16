@@ -179,6 +179,7 @@ $messages = array(
 'search'                => '찾기',
 'searchbutton'          => '찾기',
 'go'                    => '가기',
+'searcharticle'                    => '가기',
 'history'               => '문서 역사',
 'history_short'         => '역사',
 'updatedmarker'         => '마지막으로 방문한 후 변경됨',
@@ -429,6 +430,7 @@ $messages = array(
 
 \'\'\'다시 시도해도 되지 않으면 로그아웃한 다음 다시 로그인해 보십시오.\'\'\'',
 'editing'               => '$1 편집하기',
+'editinguser'               => '$1 편집하기',
 'editingsection'        => '$1 편집하기 (부분)',
 'editingcomment'        => '$1 편집하기 (덧붙이기)',
 'editconflict'          => '편집 충돌: $1',

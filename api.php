@@ -30,34 +30,39 @@ $wgApiStartTime = microtime(true);
 define('API_DEFAULT_FORMAT', 'xmlfm');
 
 /**
+ * Location of all api-related files (must end with a slash '/')
+ */
+define('API_DIR', 'includes/api/');
+
+/**
  * List of classes and containing files.
  */
 $wgApiAutoloadClasses = array (
 
-	'ApiMain' => 'ApiMain.php',
+	'ApiMain' => API_DIR . 'ApiMain.php',
 
 		// Utility classes
-	'ApiBase' => 'ApiBase.php',
-	'ApiQueryBase' => 'ApiQueryBase.php',
-	'ApiResult' => 'ApiResult.php',
-	'ApiPageSet' => 'ApiPageSet.php',
+	'ApiBase' => API_DIR . 'ApiBase.php',
+	'ApiQueryBase' => API_DIR . 'ApiQueryBase.php',
+	'ApiResult' => API_DIR . 'ApiResult.php',
+	'ApiPageSet' => API_DIR . 'ApiPageSet.php',
 
 		// Formats
-	'ApiFormatBase' => 'ApiFormatBase.php',
-	'ApiFormatYaml' => 'ApiFormatYaml.php',
-	'ApiFormatXml' => 'ApiFormatXml.php',
-	'ApiFormatJson' => 'ApiFormatJson.php',
+	'ApiFormatBase' => API_DIR . 'ApiFormatBase.php',
+	'ApiFormatYaml' => API_DIR . 'ApiFormatYaml.php',
+	'ApiFormatXml' => API_DIR . 'ApiFormatXml.php',
+	'ApiFormatJson' => API_DIR . 'ApiFormatJson.php',
 
 		// Modules (action=...) - should match the $apiModules list
-	'ApiHelp' => 'ApiHelp.php',
-	'ApiLogin' => 'ApiLogin.php',
-	'ApiQuery' => 'ApiQuery.php',
+	'ApiHelp' => API_DIR . 'ApiHelp.php',
+	'ApiLogin' => API_DIR . 'ApiLogin.php',
+	'ApiQuery' => API_DIR . 'ApiQuery.php',
 
 		// Query items (meta/prop/list=...)
-	'ApiQuerySiteinfo' => 'ApiQuerySiteinfo.php',
-	'ApiQueryInfo' => 'ApiQueryInfo.php',
-	'ApiQueryRevisions' => 'ApiQueryRevisions.php',
-	'ApiQueryAllpages' => 'ApiQueryAllpages.php'
+	'ApiQuerySiteinfo' => API_DIR . 'ApiQuerySiteinfo.php',
+	'ApiQueryInfo' => API_DIR . 'ApiQueryInfo.php',
+	'ApiQueryRevisions' => API_DIR . 'ApiQueryRevisions.php',
+	'ApiQueryAllpages' => API_DIR . 'ApiQueryAllpages.php'
 );
 
 /**
@@ -84,7 +89,7 @@ $wgApiFormats = array (
 );
 
 // Initialise common code
-require (dirname(__FILE__) . "/includes/WebStart.php");
+require (dirname(__FILE__) . '/includes/WebStart.php');
 wfProfileIn('api.php');
 
 // Verify that the API has not been disabled
@@ -97,21 +102,15 @@ if (!isset ($wgEnableAPI) || !$wgEnableAPI) {
 	die(-1);
 }
 
-apiInitAutoloadClasses($wgApiAutoloadClasses, "$IP/includes/api/");
-$processor = new ApiMain($wgApiStartTime, $wgApiModules, $wgApiFormats);
+$wgAutoloadClasses = array_merge($wgAutoloadClasses, $wgApiAutoloadClasses);
+
+if (!isset($wgEnableWriteAPI))
+	$wgEnableWriteAPI = false;	// This should be 'true' later, once the api is stable. 
+	
+$processor = new ApiMain($wgApiStartTime, $wgApiModules, $wgApiFormats, $wgEnableWriteAPI);
 $processor->execute();
 
 wfProfileOut('api.php');
 wfLogProfilingData();
 exit; // Done!
-
-function apiInitAutoloadClasses($apiAutoloadClasses, $apiDirectory) {
-
-	// Prefix each api class with the proper prefix,
-	// and append them to $wgAutoloadClasses
-	global $wgAutoloadClasses;
-
-	foreach ($apiAutoloadClasses as $className => $classFile)
-		$wgAutoloadClasses[$className] = $apiDirectory . $classFile;
-}
 ?>

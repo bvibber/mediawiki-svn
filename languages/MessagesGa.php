@@ -233,6 +233,7 @@ agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar ú
 "search"	=> "Cuardaigh",
 "searchbutton"	=> "Cuardaigh",
 "go"	    => "Téir",
+'searcharticle'	    => "Téir",
 "history"       => "Stair an lgh seo",
 'history_short' => 'Stair',
 'info_short'    => 'Eolas',
@@ -274,7 +275,6 @@ agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar ú
 
 
 "nbytes"	=> "$1 beart",
-"go"	    => "Téir",
 "ok"	    => "Déan",
 "editsection"   => "athraigh",
 "editold"   => "athraigh",
@@ -527,6 +527,7 @@ níor sábháladh é go fóill!'''",
 "previewconflict" => "San réamhamharc seo, feachann tú an téacs dé réir an eagarbhosca
 thuas mar a taispeáinfear é má sábháilfear é.",
 "editing"       => "Ag athrú $1",
+'editinguser'       => "Ag athrú $1",
 "editconflict"  => "Coimhlint athraithe: $1",
 "explainconflict" => "D'athraigh duine eile an leathanach seo ó shin a thosaigh tú ag athrú é.
 Sa bhosca seo thuas feiceann tú téacs an leathanaigh mar atá sé faoi láthair.
