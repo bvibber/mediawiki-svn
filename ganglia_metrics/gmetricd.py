@@ -66,7 +66,7 @@ if conf['user']:
 	try:
 		userPwd = pwd.getpwnam(conf['user'])
 	except KeyError:
-		sys.stderr.write("User \"%s\" does not exist, exiting\n")
+		sys.stderr.write("User \"%s\" does not exist, exiting\n" % conf['user'])
 		sys.exit(1)
 
 	userId = userPwd.pw_uid
