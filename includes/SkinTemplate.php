@@ -138,7 +138,6 @@ class SkinTemplate extends Skin {
 		global $wgMaxCredits, $wgShowCreditsIfMax;
 		global $wgPageShowWatchingUsers;
 		global $wgUseTrackbacks;
-		global $wgDBname;
 		global $wgArticlePath, $wgScriptPath, $wgServer, $wgLang, $wgCanonicalNamespaceNames;
 
 		$fname = 'SkinTemplate::outputPage';
@@ -285,7 +284,7 @@ class SkinTemplate extends Skin {
 		}
 		$newtalks = $wgUser->getNewMessageLinks();
 
-		if (count($newtalks) == 1 && $newtalks[0]["wiki"] === $wgDBname) {
+		if (count($newtalks) == 1 && $newtalks[0]["wiki"] === wfWikiID() ) {
 			$usertitle = $this->mUser->getUserPage();
 			$usertalktitle = $usertitle->getTalkPage();
 			if( !$usertalktitle->equals( $this->mTitle ) ) {
@@ -741,7 +740,7 @@ class SkinTemplate extends Skin {
 		} else {
 			/* show special page tab */
 
-			$content_actions['article'] = array(
+			$content_actions[$this->mTitle->getNamespaceKey()] = array(
 				'class' => 'selected',
 				'text' => wfMsg('specialpage'),
 				'href' => $wgRequest->getRequestURL(), // @bug 2457, 2510
@@ -767,7 +766,7 @@ class SkinTemplate extends Skin {
 				$content_actions['varlang-' . $vcount] = array(
 						'class' => $selected,
 						'text' => $varname,
-						'href' => $this->mTitle->getLocalUrl( $actstr . 'variant=' . urlencode( $code ) )
+						'href' => $this->mTitle->getLocalURL('',$code)
 					);
 				$vcount ++;
 			}
@@ -934,7 +933,10 @@ class SkinTemplate extends Skin {
 			$siteargs .= '&ts=' . $wgUser->mTouched;
 		}
 
-		if ($wgContLang->isRTL()) $sitecss .= '@import "' . $wgStylePath . '/' . $this->stylename . '/rtl.css";' . "\n";
+		if( $wgContLang->isRTL() ) {
+			global $wgStyleVersion;
+			$sitecss .= "@import \"$wgStylePath/$this->stylename/rtl.css?$wgStyleVersion\";\n";
+		}
 
 		# If we use the site's dynamic CSS, throw that in, too
 		if ( $wgUseSiteCss ) {

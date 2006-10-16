@@ -35,19 +35,28 @@ abstract class ApiBase {
 	const PARAM_MAX2 = 4;
 	const PARAM_MIN = 5;
 
-	private $mMainModule;
+	private $mMainModule, $mModuleName, $mParamPrefix;
 
 	/**
 	* Constructor
 	*/
-	public function __construct($mainModule) {
+	public function __construct($mainModule, $moduleName, $paramPrefix = '') {
 		$this->mMainModule = $mainModule;
+        $this->mModuleName = $moduleName;
+		$this->mParamPrefix = $paramPrefix;
 	}
 
 	/**
 	 * Executes this module
 	 */
 	public abstract function execute();
+
+    /**
+     * Get the name of the query being executed by this instance 
+     */
+    public function getModuleName() {
+        return $this->mModuleName;
+    }
 
 	/**
 	 * Get main module
@@ -79,6 +88,15 @@ abstract class ApiBase {
 	 */
 	public function & getResultData() {
 		return $this->getResult()->getData();
+	}
+
+	/**
+	 * If the module may only be used with a certain format module,
+	 * it should override this method to return an instance of that formatter.
+	 * A value of null means the default format will be used.  
+	 */
+	public function getCustomPrinter() {
+		return null;
 	}
 
 	/**
@@ -132,11 +150,25 @@ abstract class ApiBase {
 
 			$paramsDescription = $this->getParamDescription();
 			$msg = '';
-			foreach (array_keys($params) as $paramName) {
+			$paramPrefix = "\n" . str_repeat(' ', 19);
+			foreach ($params as $paramName => &$paramSettings) {
 				$desc = isset ($paramsDescription[$paramName]) ? $paramsDescription[$paramName] : '';
 				if (is_array($desc))
-					$desc = implode("\n" . str_repeat(' ', 19), $desc);
-				$msg .= sprintf("  %-14s - %s\n", $paramName, $desc);
+					$desc = implode($paramPrefix, $desc);
+				if (isset ($paramSettings[self :: PARAM_TYPE])) {
+					$type = $paramSettings[self :: PARAM_TYPE];
+					if (is_array($type)) {
+						$desc .= $paramPrefix . 'Allowed values: '. implode(', ', $type);
+					}
+				}
+				
+				$default = is_array($paramSettings) 
+					? (isset ($paramSettings[self :: PARAM_DFLT]) ? $paramSettings[self :: PARAM_DFLT] : null)
+					: $paramSettings;
+				if (!is_null($default) && $default !== false)
+					$desc .= $paramPrefix . "Default: $default";
+					
+				$msg .= sprintf("  %-14s - %s\n", $this->encodeParamName($paramName), $desc);
 			}
 			return $msg;
 
@@ -171,32 +203,48 @@ abstract class ApiBase {
 	protected function getParamDescription() {
 		return false;
 	}
+	
+	/**
+	 * This method mangles parameter name based on the prefix supplied to the constructor.
+	 * Override this method to change parameter name during runtime 
+	 */
+	public function encodeParamName($paramName) {
+		return $this->mParamPrefix . $paramName;
+	}
 
 	/**
 	* Using getAllowedParams(), makes an array of the values provided by the user,
 	* with key being the name of the variable, and value - validated value from user or default.
 	* This method can be used to generate local variables using extract().
-	* 
-	* @param $prefix String: prepend this prefix to all parameter names. 
 	*/
-	public function extractRequestParams($prefix = '') {
+	public function extractRequestParams() {
 		$params = $this->getAllowedParams();
 		$results = array ();
 
 		foreach ($params as $paramName => $paramSettings)
-			$results[$paramName] = $this->getParameterFromSettings($prefix . $paramName, $paramSettings);
+			$results[$paramName] = $this->getParameterFromSettings($paramName, $paramSettings);
 
 		return $results;
 	}
 
-	protected function getParameter($paramName, $prefix = '') {
+	/**
+	 * Get a value for the given parameter 
+	 */
+	protected function getParameter($paramName) {
 		$params = $this->getAllowedParams();
 		$paramSettings = $params[$paramName];
-		return $this->getParameterFromSettings($prefix . $paramName, $paramSettings);
+		return $this->getParameterFromSettings($paramName, $paramSettings);
 	}
-	
+
+	/**
+	 * Using the settings determine the value for the given parameter
+	 * @param $paramName String: parameter name
+	 * @param $paramSettings Mixed: default value or an array of settings using PARAM_* constants.
+	 */	
 	protected function getParameterFromSettings($paramName, $paramSettings) {
-		global $wgRequest;
+
+		// Some classes may decide to change parameter names
+		$paramName = $this->encodeParamName($paramName);
 
 		if (!is_array($paramSettings)) {
 			$default = $paramSettings;
@@ -222,10 +270,11 @@ abstract class ApiBase {
 				ApiBase :: dieDebug(__METHOD__, "Boolean param $paramName's default is set to '$default'");
 			}
 
-			$value = $wgRequest->getCheck($paramName);
-		} else
-			$value = $wgRequest->getVal($paramName, $default);
-
+			$value = $this->getMain()->getRequest()->getCheck($paramName);
+		} else {
+			$value = $this->getMain()->getRequest()->getVal($paramName, $default);
+		}
+		
 		if (isset ($value) && ($multi || is_array($type)))
 			$value = $this->parseMultiValue($paramName, $value, $multi, is_array($type) ? $type : null);
 
@@ -266,6 +315,10 @@ abstract class ApiBase {
 			}
 		}
 
+		// There should never be any duplicate values in a list
+		if (is_array($value))
+			$value = array_unique($value);
+			
 		return $value;
 	}
 
@@ -319,7 +372,7 @@ abstract class ApiBase {
 	 * Call main module's error handler 
 	 */
 	public function dieUsage($description, $errorCode, $httpRespCode = 0) {
-		$this->getMain()->mainDieUsage($description, $errorCode, $httpRespCode);
+		throw new UsageException($description, $this->encodeParamName($errorCode), $httpRespCode);
 	}
 
 	/**

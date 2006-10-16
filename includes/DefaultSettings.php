@@ -32,7 +32,7 @@ require_once( 'includes/SiteConfiguration.php' );
 $wgConf = new SiteConfiguration;
 
 /** MediaWiki version number */
-$wgVersion			= '1.8alpha';
+$wgVersion			= '1.9alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -124,6 +124,7 @@ $wgStylePath   = "{$wgScriptPath}/skins";
 $wgStyleDirectory = "{$IP}/skins";
 $wgStyleSheetPath = &$wgStylePath;
 $wgArticlePath      = "{$wgScript}?title=$1";
+$wgVariantArticlePath = false;
 $wgUploadPath       = "{$wgScriptPath}/images";
 $wgUploadDirectory	= "{$IP}/images";
 $wgHashedUploadDirectory	= true;
@@ -790,6 +791,14 @@ $wgShowSQLErrors        = false;
 $wgColorErrors          = true;
 
 /**
+ * If set to true, uncaught exceptions will print a complete stack trace
+ * to output. This should only be used for debugging, as it may reveal
+ * private information in function parameters due to PHP's backtrace
+ * formatting.
+ */
+$wgShowExceptionDetails = false;
+
+/**
  * disable experimental dmoz-like category browsing. Output things like:
  * Encyclopedia > Music > Style of Music > Jazz
  */
@@ -1015,6 +1024,13 @@ $wgCachePages       = true;
  */
 $wgCacheEpoch = '20030516000000';
 
+/**
+ * Bump this number when changing the global style sheets and JavaScript.
+ * It should be appended in the query string of static CSS and JS includes,
+ * to ensure that client-side caches don't keep obsolete copies of global
+ * styles.
+ */
+$wgStyleVersion = '12';
 
 # Server-side caching:
 
@@ -1265,7 +1281,7 @@ $wgFileBlacklist = array(
 	# HTML may contain cookie-stealing JavaScript and web bugs
 	'html', 'htm', 'js', 'jsb',
 	# PHP scripts may execute arbitrary code on the server
-	'php', 'phtml', 'php3', 'php4', 'phps',
+	'php', 'phtml', 'php3', 'php4', 'php5', 'phps',
 	# Other types that may be interpreted by some servers
 	'shtml', 'jhtml', 'pl', 'py', 'cgi',
 	# May contain harmful executables for Windows victims
@@ -1563,6 +1579,51 @@ $wgTidyInternal = function_exists( 'tidy_load_config' );
 
 /** See list of skins and their symbolic names in languages/Language.php */
 $wgDefaultSkin = 'monobook';
+
+/**
+ * Settings added to this array will override the default globals for the user
+ * preferences used by anonymous visitors and newly created accounts.
+ * For instance, to disable section editing links:
+ *  $wgDefaultUserOptions ['editsection'] = 0;
+ *
+ */
+$wgDefaultUserOptions = array( 
+	'quickbar' 		=> 1,
+	'underline' 		=> 2,
+	'cols'			=> 80,
+	'rows' 			=> 25,
+	'searchlimit' 		=> 20,
+	'contextlines' 		=> 5,
+	'contextchars' 		=> 50,
+	'skin' 			=> false,
+	'math' 			=> 1,
+	'rcdays' 		=> 7,
+	'rclimit' 		=> 50,
+	'wllimit' 		=> 250,
+	'highlightbroken'	=> 1,
+	'stubthreshold' 	=> 0,
+	'previewontop' 		=> 1,
+	'editsection'		=> 1,
+	'editsectiononrightclick'=> 0,
+	'showtoc'		=> 1,
+	'showtoolbar' 		=> 1,
+	'date' 			=> 'default',
+	'imagesize' 		=> 2,
+	'thumbsize'		=> 2,
+	'rememberpassword' 	=> 0,
+	'enotifwatchlistpages' 	=> 0,
+	'enotifusertalkpages' 	=> 1,
+	'enotifminoredits' 	=> 0,
+	'enotifrevealaddr' 	=> 0,
+	'shownumberswatching' 	=> 1,
+	'fancysig' 		=> 0,
+	'externaleditor' 	=> 0,
+	'externaldiff' 		=> 0,
+	'showjumplinks'		=> 1,
+	'numberheadings'	=> 0,
+	'uselivepreview'	=> 0,
+	'watchlistdays' 	=> 3.0,
+);
 
 /** Whether or not to allow and use real name fields. Defaults to true. */
 $wgAllowRealName = true;
@@ -2230,5 +2291,12 @@ $wgDjvuRenderer = null;
  * Default: ppmtojpeg, since ddjvu generates ppm output
  */
 $wgDjvuPostProcessor = 'ppmtojpeg';
+
+/**
+* Enable direct access to the data API
+* through api.php
+*/
+$wgEnableAPI = true;
+$wgEnableWriteAPI = false;
 
 ?>

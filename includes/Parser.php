@@ -2561,9 +2561,14 @@ class Parser
 					$found = 'pipe';
 				} elseif ( $text[$i] == $currentClosing ) {
 					$found = 'close';
-				} else {
+				} elseif ( isset( $callbacks[$text[$i]] ) ) {
 					$found = 'open';
 					$rule = $callbacks[$text[$i]];
+				} else {
+					# Some versions of PHP have a strcspn which stops on null characters
+					# Ignore and continue
+					++$i;
+					continue;
 				}
 			} else {
 				# All done
@@ -2753,8 +2758,9 @@ class Parser
 	 * @private
 	 */
 	function variableSubstitution( $matches ) {
+		global $wgContLang;
 		$fname = 'Parser::variableSubstitution';
-		$varname = $matches[1];
+		$varname = $wgContLang->lc($matches[1]);
 		wfProfileIn( $fname );
 		$skip = false;
 		if ( $this->mOutputType == OT_WIKI ) {
@@ -2768,38 +2774,19 @@ class Parser
 		}
 		if ( !$skip && array_key_exists( $varname, $this->mVariables ) ) {
 			$id = $this->mVariables[$varname];
-			$text = $this->getVariableValue( $id );
-			$this->mOutput->mContainsOldMagic = true;
+			# Now check if we did really match, case sensitive or not
+			$mw =& MagicWord::get( $id );
+			if ($mw->match($matches[1])) {
+				$text = $this->getVariableValue( $id );
+				$this->mOutput->mContainsOldMagic = true;
+			} else {
+				$text = $matches[0];
+			}
 		} else {
 			$text = $matches[0];
 		}
 		wfProfileOut( $fname );
 		return $text;
-	}
-
-	# Split template arguments
-	function getTemplateArgs( $argsString ) {
-		if ( $argsString === '' ) {
-			return array();
-		}
-
-		$args = explode( '|', substr( $argsString, 1 ) );
-
-		# If any of the arguments contains a '[[' but no ']]', it needs to be
-		# merged with the next arg because the '|' character between belongs
-		# to the link syntax and not the template parameter syntax.
-		$argc = count($args);
-
-		for ( $i = 0; $i < $argc-1; $i++ ) {
-			if ( substr_count ( $args[$i], '[[' ) != substr_count ( $args[$i], ']]' ) ) {
-				$args[$i] .= '|'.$args[$i+1];
-				array_splice($args, $i+1, 1);
-				$i--;
-				$argc--;
-			}
-		}
-
-		return $args;
 	}
 
 	/**
@@ -3002,7 +2989,7 @@ class Parser
 
 					# If the title is valid but undisplayable, make a link to it
 					if ( !$found && ( $this->ot['html'] || $this->ot['pre'] ) ) {
-						$text = "[[$titleText]]";
+						$text = "[[:$titleText]]";
 						$found = true;
 					}
 				} elseif ( $title->isTrans() ) {
@@ -3645,20 +3632,23 @@ class Parser
 		#
 		global $wgLegalTitleChars;
 		$tc = "[$wgLegalTitleChars]";
+		$nc = '[ _0-9A-Za-z\x80-\xff]'; # Namespaces can use non-ascii!
 
-		$namespacechar = '[ _0-9A-Za-z\x80-\xff]'; # Namespaces can use non-ascii!
-		$conpat = "/^{$tc}+?( \\({$tc}+\\)|)$/";
+		$p1 = "/\[\[(:?$nc+:|:|)($tc+?)( \\($tc+\\))\\|]]/";		# [[ns:page (context)|]]
+		$p3 = "/\[\[(:?$nc+:|:|)($tc+?)( \\($tc+\\)|)(, $tc+|)\\|]]/";	# [[ns:page (context), context|]]
+		$p2 = "/\[\[\\|($tc+)]]/";					# [[|page]]
 
-		$p1 = "/\[\[(:?$namespacechar+:|:|)({$tc}+?)( \\({$tc}+\\)|)\\|]]/";	# [[ns:page (context)|]]
-		$p2 = "/\[\[\\|({$tc}+)]]/";						# [[|page]]
-
+		# try $p1 first, to turn "[[A, B (C)|]]" into "[[A, B (C)|A, B]]"
 		$text = preg_replace( $p1, '[[\\1\\2\\3|\\2]]', $text );
+		$text = preg_replace( $p3, '[[\\1\\2\\3\\4|\\2]]', $text );
 
 		$t = $this->mTitle->getText();
-		if ( preg_match( $conpat, $t, $m ) && '' != $m[1] ) {
-			$text = preg_replace( $p2, "[[\\1{$m[1]}|\\1]]", $text );
+		if ( preg_match( "/^($nc+:|)$tc+?( \\($tc+\\))$/", $t, $m ) ) {
+			$text = preg_replace( $p2, "[[$m[1]\\1$m[2]|\\1]]", $text );
+		} elseif ( preg_match( "/^($nc+:|)$tc+?(, $tc+|)$/", $t, $m ) && '' != "$m[1]$m[2]" ) {
+			$text = preg_replace( $p2, "[[$m[1]\\1$m[2]|\\1]]", $text );
 		} else {
-			# if $m[1] is empty, don't bother duplicating the title
+			# if there's no context, don't bother duplicating the title
 			$text = preg_replace( $p2, '[[\\1]]', $text );
 		}
 
@@ -4716,7 +4706,6 @@ class ParserOptions
 				$user = $wgUser;
 			} else {
 				$user = new User;
-				$user->setLoaded( true );
 			}
 		} else {
 			$user =& $userInput;

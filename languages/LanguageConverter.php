@@ -38,13 +38,12 @@ class LanguageConverter {
 								$variantfallbacks=array(),
 								$markup=array(),
 								$flags = array()) {
-		global $wgDBname;
 		global $wgLegalTitleChars;
 		$this->mLangObj = $langobj;
 		$this->mMainLanguageCode = $maincode;
 		$this->mVariants = $variants;
 		$this->mVariantFallbacks = $variantfallbacks;
-		$this->mCacheKey = $wgDBname . ":conversiontables";
+		$this->mCacheKey = wfMemcKey( 'conversiontables' );
 		$m = array('begin'=>'-{', 'flagsep'=>'|', 'codesep'=>':',
 				   'varsep'=>';', 'end'=>'}-');
 		$this->mMarkup = array_merge($m, $markup);
@@ -95,6 +94,13 @@ class LanguageConverter {
 		if( in_array( $req, $this->mVariants ) ) {
 			$this->mPreferredVariant = $req;
 			return $req;
+		}
+
+		// check the syntax /code/ArticleTitle
+		$scriptBase = basename( $_SERVER['SCRIPT_NAME'] );
+		if(in_array($scriptBase,$this->mVariants)){
+			$this->mPreferredVariant = $scriptBase;
+			return $this->mPreferredVariant;
 		}
 
 		// get language variant preference from logged in users
@@ -191,9 +197,15 @@ class LanguageConverter {
 		if( !$this->mTablesLoaded )
 			$this->loadTables();
 		if ( $this->mUseFss ) {
-			return fss_exec_replace( $this->mFssObjects[$variant], $text );
+			wfProfileIn( __METHOD__.'-fss' );
+			$text = fss_exec_replace( $this->mFssObjects[$variant], $text );
+			wfProfileOut( __METHOD__.'-fss' );
+			return $text;
 		} else {
-			return strtr( $text, $this->mTables[$variant] );
+			wfProfileIn( __METHOD__.'-strtr' );
+			$text = strtr( $text, $this->mTables[$variant] );
+			wfProfileOut( __METHOD__.'-strtr' );
+			return $text;
 		}
 	}
 
@@ -537,31 +549,40 @@ class LanguageConverter {
 		global $wgMemc;
 		if( $this->mTablesLoaded )
 			return;
+		wfProfileIn( __METHOD__ );
 		$this->mTablesLoaded = true;
+		$this->mTables = false;
 		if($fromcache) {
+			wfProfileIn( __METHOD__.'-cache' );
 			$this->mTables = $wgMemc->get( $this->mCacheKey );
-			if( !empty( $this->mTables ) ) //all done
-				return;
+			wfProfileOut( __METHOD__.'-cache' );
 		}
-		// not in cache, or we need a fresh reload.
-		// we will first load the default tables
-		// then update them using things in MediaWiki:Zhconversiontable/*
-		global $wgMessageCache;
-		$this->loadDefaultTables();
-		foreach($this->mVariants as $var) {
-			$cached = $this->parseCachedTable($var);
-			$this->mTables[$var] = array_merge($this->mTables[$var], $cached);
-		}
+		if ( !$this->mTables ) {
+			wfProfileOut( __METHOD__.'-recache' );
+			// not in cache, or we need a fresh reload.
+			// we will first load the default tables
+			// then update them using things in MediaWiki:Zhconversiontable/*
+			global $wgMessageCache;
+			$this->loadDefaultTables();
+			foreach($this->mVariants as $var) {
+				$cached = $this->parseCachedTable($var);
+				$this->mTables[$var] = array_merge($this->mTables[$var], $cached);
+			}
 
-		$this->postLoadTables();
+			$this->postLoadTables();
 
-		if($this->lockCache()) {
-			$wgMemc->set($this->mCacheKey, $this->mTables, 43200);
-			$this->unlockCache();
+			if($this->lockCache()) {
+				$wgMemc->set($this->mCacheKey, $this->mTables, 43200);
+				$this->unlockCache();
+			}
+			wfProfileOut( __METHOD__.'-recache' );
 		}
 		if ( $this->mUseFss ) {
+			wfProfileIn( __METHOD__.'-fss' );
 			$this->generateFssObjects();
+			wfProfileOut( __METHOD__.'-fss' );
 		}
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**

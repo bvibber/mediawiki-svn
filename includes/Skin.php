@@ -139,7 +139,7 @@ class Skin extends Linker {
 
 	/** @return string path to the skin stylesheet */
 	function getStylesheet() {
-		return 'common/wikistandard.css?1';
+		return 'common/wikistandard.css';
 	}
 
 	/** @return string skin name */
@@ -157,7 +157,7 @@ class Skin extends Linker {
 	}
 
 	function initPage( &$out ) {
-		global $wgFavicon, $wgScriptPath;
+		global $wgFavicon, $wgScriptPath, $wgSitename, $wgLanguageCode, $wgLanguageNames;
 
 		$fname = 'Skin::initPage';
 		wfProfileIn( $fname );
@@ -170,7 +170,8 @@ class Skin extends Linker {
 		$out->addLink( array( 
 			'rel' => 'search', 
 			'type' => 'application/opensearchdescription+xml',
-			'href' => "$wgScriptPath/opensearch_desc.php"
+			'href' => "$wgScriptPath/opensearch_desc.php",
+			'title' => "$wgSitename ({$wgLanguageNames[$wgLanguageCode]})",
 		));
 
 		$this->addMetadataLinks($out);
@@ -295,7 +296,7 @@ class Skin extends Linker {
 	}
 
 	function getHeadScripts() {
-		global $wgStylePath, $wgUser, $wgAllowUserJs, $wgJsMimeType;
+		global $wgStylePath, $wgUser, $wgAllowUserJs, $wgJsMimeType, $wgStyleVersion;
 		global $wgArticlePath, $wgScriptPath, $wgServer, $wgContLang, $wgLang;
 		global $wgTitle, $wgCanonicalNamespaceNames, $wgOut;
 
@@ -322,7 +323,7 @@ class Skin extends Linker {
 
 		$r = self::makeGlobalVariablesScript( $vars );
 
-		$r .= "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/wikibits.js\"></script>\n";
+		$r .= "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/wikibits.js?$wgStyleVersion\"></script>\n";
 		if( $wgAllowUserJs && $wgUser->isLoggedIn() ) {
 			$userpage = $wgUser->getUserPage();
 			$userjs = htmlspecialchars( self::makeUrl(
@@ -359,11 +360,11 @@ class Skin extends Linker {
 
 	# get the user/site-specific stylesheet, SkinTemplate loads via RawPage.php (settings are cached that way)
 	function getUserStylesheet() {
-		global $wgStylePath, $wgRequest, $wgContLang, $wgSquidMaxage;
+		global $wgStylePath, $wgRequest, $wgContLang, $wgSquidMaxage, $wgStyleVersion;
 		$sheet = $this->getStylesheet();
 		$action = $wgRequest->getText('action');
-		$s = "@import \"$wgStylePath/$sheet\";\n";
-		if($wgContLang->isRTL()) $s .= "@import \"$wgStylePath/common/common_rtl.css\";\n";
+		$s = "@import \"$wgStylePath/$sheet?$wgStyleVersion\";\n";
+		if($wgContLang->isRTL()) $s .= "@import \"$wgStylePath/common/common_rtl.css?1\";\n";
 
 		$query = "usemsgcache=yes&action=raw&ctype=text/css&smaxage=$wgSquidMaxage";
 		$s .= '@import "' . self::makeNSUrl( 'Common.css', $query, NS_MEDIAWIKI ) . "\";\n" .
@@ -575,7 +576,7 @@ END;
 		$pop = '</span>';
 		$t = $embed . implode ( "{$pop} {$sep} {$embed}" , $wgOut->mCategoryLinks ) . $pop;
 
-		$msg = wfMsgExt('categories', array('parsemag', 'escape'), count( $wgOut->mCategoryLinks ));
+		$msg = wfMsgExt( 'pagecategories', array( 'parsemag', 'escape' ), count( $wgOut->mCategoryLinks ) );
 		$s = $this->makeKnownLinkObj( Title::makeTitle( NS_SPECIAL, 'Categories' ),
 			$msg, 'article=' . urlencode( $wgTitle->getPrefixedDBkey() ) )
 			. ': ' . $t;
@@ -1086,7 +1087,6 @@ END;
 	 */
 	function specialPagesList() {
 		global $wgUser, $wgContLang, $wgServer, $wgRedirectScript;
-		require_once('SpecialPage.php');
 		$a = array();
 		$pages = array_merge( SpecialPage::getRegularPages(), SpecialPage::getRestrictedPages() );
 		foreach ( $pages as $name => $page ) {
@@ -1509,14 +1509,14 @@ END;
 	 * @private
 	 */
 	function buildSidebar() {
-		global $wgDBname, $parserMemc, $wgEnableSidebarCache;
+		global $parserMemc, $wgEnableSidebarCache;
 		global $wgLang, $wgContLang;
 
 		$fname = 'SkinTemplate::buildSidebar';
 
 		wfProfileIn( $fname );
 
-		$key = "{$wgDBname}:sidebar";
+		$key = wfMemcKey( 'sidebar' );
 		$cacheSidebar = $wgEnableSidebarCache &&
 			($wgLang->getCode() == $wgContLang->getCode());
 		

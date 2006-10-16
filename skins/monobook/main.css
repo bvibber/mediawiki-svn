@@ -159,7 +159,7 @@ li {
 	color: black;
 	border: 1px solid #aaa;
 	border-right: none;
-	line-height: 1.5em;
+	line-height: 1.5;
 	position: relative;
 	z-index: 2;
 }
@@ -198,6 +198,9 @@ body {
 table {
 	font-size: 100%;
 	color: black;
+	/* we don't want the bottom borders of <h2>s to be visible through
+	   floated tables */
+	background-color: white;
 }
 a {
 	text-decoration: none;
@@ -229,7 +232,7 @@ img {
 }
 p {
 	margin: .4em 0 .5em 0;
-	line-height: 1.5em;
+	line-height: 1.5;
 }
 p img {
 	margin: 0;
@@ -252,26 +255,46 @@ h1, h2, h3, h4, h5, h6 {
 	padding-bottom: .17em;
 	border-bottom: 1px solid #aaa;
 }
-h1 { font-size: 188%; }
-h2 { font-size: 150%; }
+h1 {
+	font-size: 188%;
+	line-height: 0.8;
+}
+h2 {
+	font-size: 150%;
+	line-height: 1;
+}
 h3, h4, h5, h6 {
 	border-bottom: none;
 	font-weight: bold;
 }
-h3 { font-size: 132%; }
-h4 { font-size: 116%; }
+h3 {
+	font-size: 132%;
+	line-height: 1.14;
+}
+h4 {
+	font-size: 116%;
+	line-height: 1.30;
+}
 h5 { font-size: 100%; }
-h6 { font-size: 80%;  }
+h6 {
+	font-size: 80%;
+	line-height: 1.89;
+}
+
+div.editsection {
+	float: right;
+	margin-left: 5px;
+}
 
 ul {
-	line-height: 1.5em;
+	line-height: 1.5;
 	list-style-type: square;
 	margin: .3em 0 0 1.5em;
 	padding: 0;
 	list-style-image: url(bullet.gif);
 }
 ol {
-	line-height: 1.5em;
+	line-height: 1.5;
 	margin: .3em 0 0 3.2em;
 	padding: 0;
 	list-style-image: none;
@@ -288,7 +311,7 @@ dl {
 	margin-bottom: .5em;
 }
 dd {
-	line-height: 1.5em;
+	line-height: 1.5;
 	margin-left: 2em;
 	margin-bottom: .1em;
 }
@@ -297,7 +320,7 @@ fieldset {
 	border: 1px solid #2f6fab;
 	margin: 1em 0 1em 0;
 	padding: 0 1em 1em;
-	line-height: 1.5em;
+	line-height: 1.5;
 }
 legend {
 	padding: .5em;
@@ -346,7 +369,7 @@ pre {
 	border: 1px dashed #2f6fab;
 	color: black;
 	background-color: #f9f9f9;
-	line-height: 1.1em;
+	line-height: 1.1;
 }
 
 /*
@@ -363,7 +386,7 @@ pre {
 
 #contentSub, #contentSub2 {
 	font-size: 84%;
-	line-height: 1.2em;
+	line-height: 1.2;
 	margin: 0 0 1.4em 1em;
 	color: #7d7d7d;
 	width: auto;
@@ -444,7 +467,7 @@ in the bottom-right corner of the content area */
 	font-weight: bold;
 	display: block;
 	margin: 1em 0;
-	line-height: 1.5em;
+	line-height: 1.5;
 }
 .documentByLine {
 	text-align: right;
@@ -566,7 +589,7 @@ div.thumb div a img {
 div.thumb div div.thumbcaption {
 	border: none;
 	text-align: left;
-	line-height: 1.4em;
+	line-height: 1.4;
 	padding: .3em 0 .1em 0;
 }
 div.magnify {
@@ -652,7 +675,7 @@ div.townBox dl dd {
 ** edit views etc
 */
 .special li {
-	line-height: 1.4em;
+	line-height: 1.4;
 	margin: 0;
 	padding: 0;
 }
@@ -807,7 +830,7 @@ special external link styling */
 	padding: 0;
 }
 .portlet ul {
-	line-height: 1.5em;
+	line-height: 1.5;
 	list-style-type: square;
 	list-style-image: url(bullet.gif);
 	font-size: 95%;
@@ -909,7 +932,7 @@ input.searchButton {
 	border: none;
 	background: none;
 	overflow: visible;
-	line-height: 1.2em;
+	line-height: 1.2;
 }
 
 #p-personal h5 {
@@ -927,7 +950,7 @@ input.searchButton {
 /* this is the ul contained in the portlet */
 #p-personal ul {
 	border: none;
-	line-height: 1.4em;
+	line-height: 1.4;
 	color: #2f6fab;
 	padding: 0 2em 0 3em;
 	margin: 0;
@@ -945,7 +968,7 @@ input.searchButton {
 	display: inline;
 	color: #2f6fab;
 	margin-left: 1em;
-	line-height: 1.2em;
+	line-height: 1.2;
 	background: none;
 }
 #p-personal li.active {
@@ -985,7 +1008,7 @@ li#pt-login {
 	margin: 0;
 	white-space: nowrap;
 	width: 76%;
-	line-height: 1.1em;
+	line-height: 1.1;
 	overflow: visible;
 	background: none;
 	border-collapse: collapse;
@@ -1485,6 +1508,10 @@ ul#filetoc {
 	display: inline;
 	list-style-type: none;
 	padding-right: 2em;
+}
+
+input#wpSummary {
+	width: 80%;
 }
 
 /* @bug 1714 */

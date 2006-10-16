@@ -195,7 +195,7 @@ class LoginForm {
 	function addNewAccountInternal() {
 		global $wgUser, $wgOut;
 		global $wgEnableSorbs, $wgProxyWhitelist;
-		global $wgMemc, $wgAccountCreationThrottle, $wgDBname;
+		global $wgMemc, $wgAccountCreationThrottle;
 		global $wgAuth, $wgMinimalPasswordLength;
 
 		// If the user passes an invalid domain, something is fishy
@@ -236,8 +236,8 @@ class LoginForm {
 		}
 
 		$name = trim( $this->mName );
-		$u = User::newFromName( $name );
-		if ( is_null( $u ) || !User::isCreatableName( $u->getName() ) ) {
+		$u = User::newFromName( $name, 'creatable' );
+		if ( is_null( $u ) ) {
 			$this->mainLoginForm( wfMsg( 'noname' ) );
 			return false;
 		}
@@ -258,7 +258,7 @@ class LoginForm {
 		}
 
 		if ( $wgAccountCreationThrottle ) {
-			$key = $wgDBname.':acctcreate:ip:'.$ip;
+			$key = wfMemcKey( 'acctcreate', 'ip', $ip );
 			$value = $wgMemc->incr( $key );
 			if ( !$value ) {
 				$wgMemc->set( $key, 1, 86400 );
@@ -365,9 +365,13 @@ class LoginForm {
 		{
 			case self::SUCCESS:
 				# We've verified now, update the real record
-				$wgUser->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
+				if( (bool)$this->mRemember != (bool)$wgUser->getOption( 'rememberpassword' ) ) {
+					$wgUser->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
+					$wgUser->saveSettings();
+				} else {
+					$wgUser->invalidateCache();
+				}
 				$wgUser->setCookies();
-				$wgUser->saveSettings();
 
 				if( $this->hasSessionCookie() ) {
 					return $this->successfulLogin( wfMsg( 'loginsuccess', $wgUser->getName() ) );

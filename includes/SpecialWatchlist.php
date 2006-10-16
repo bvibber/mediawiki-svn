@@ -17,7 +17,7 @@ require_once( 'SpecialRecentchanges.php' );
  */
 function wfSpecialWatchlist( $par ) {
 	global $wgUser, $wgOut, $wgLang, $wgMemc, $wgRequest, $wgContLang;
-	global $wgUseWatchlistCache, $wgWLCacheTimeout, $wgDBname;
+	global $wgUseWatchlistCache, $wgWLCacheTimeout;
 	global $wgRCShowWatchingUsers, $wgEnotifWatchlist, $wgShowUpdatedMarker;
 	global $wgEnotifWatchlist;
 	$fname = 'wfSpecialWatchlist';
@@ -103,7 +103,7 @@ function wfSpecialWatchlist( $par ) {
 	}
 
 	if ( $wgUseWatchlistCache ) {
-		$memckey = "$wgDBname:watchlist:id:" . $wgUser->getId();
+		$memckey = wfMemcKey( 'watchlist', 'id', $wgUser->getId() );
 		$cache_s = @$wgMemc->get( $memckey );
 		if( $cache_s ){
 			$wgOut->addWikiText( wfMsg('wlsaved') );
@@ -273,7 +273,7 @@ function wfSpecialWatchlist( $par ) {
 	}
 
 	# TODO: Consider removing the third parameter
-	$header .= wfMsg( 'watchdetails', $wgLang->formatNum( $nitems ),
+	$header .= wfMsgExt( 'watchdetails', array( 'parsemag' ), $wgLang->formatNum( $nitems ),
 		$wgLang->formatNum( $npages ), '',
 		$specialTitle->getFullUrl( 'edit=yes' ) );
 	$wgOut->addWikiText( $header );
@@ -476,6 +476,8 @@ function wlCountItems( &$user, $talk = true ) {
  * 				code needs to do something further
  */
 function wlHandleClear( &$out, &$request, $par ) {
+	global $wgLang;
+
 	# Check this function has something to do
 	if( $request->getText( 'action' ) == 'clear' || $par == 'clear' ) {
 		global $wgUser;
@@ -487,13 +489,13 @@ function wlHandleClear( &$out, &$request, $par ) {
 				# Clearing, so do it and report the result
 				$dbw =& wfGetDB( DB_MASTER );
 				$dbw->delete( 'watchlist', array( 'wl_user' => $wgUser->mId ), 'wlHandleClear' );
-				$out->addWikiText( wfMsg( 'watchlistcleardone', $count ) );
+				$out->addWikiText( wfMsgExt( 'watchlistcleardone', array( 'parsemag', 'escape'), $wgLang->formatNum( $count ) ) );
 				$out->returnToMain();
 			} else {
 				# Confirming, so show a form
 				$wlTitle = Title::makeTitle( NS_SPECIAL, 'Watchlist' );
 				$out->addHTML( wfElement( 'form', array( 'method' => 'post', 'action' => $wlTitle->getLocalUrl( 'action=clear' ) ), NULL ) );
-				$out->addWikiText( wfMsg( 'watchlistcount', $count ) );
+				$out->addWikiText( wfMsgExt( 'watchlistcount', array( 'parsemag', 'escape'), $wgLang->formatNum( $count ) ) );
 				$out->addWikiText( wfMsg( 'watchlistcleartext' ) );
 				$out->addHTML(
 					wfHidden( 'token', $wgUser->editToken( 'clearwatchlist' ) ) .

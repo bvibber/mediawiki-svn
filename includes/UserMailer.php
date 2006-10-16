@@ -104,6 +104,11 @@ function userMailer( $to, $from, $subject, $body, $replyto=false ) {
 
 		// Create the mail object using the Mail::factory method
 		$mail_object =& Mail::factory('smtp', $wgSMTP);
+		if( PEAR::isError( $mail_object ) ) {
+			wfDebug( "PEAR::Mail factory failed: " . $mail_object->getMessage() . "\n" );
+			return $mail_object->getMessage();
+		}
+
 		wfDebug( "Sending mail via PEAR::Mail to $dest\n" );
 		$mailResult =& $mail_object->send($dest, $headers, $body);
 
@@ -120,14 +125,23 @@ function userMailer( $to, $from, $subject, $body, $replyto=false ) {
 	} else	{
 		# In the following $headers = expression we removed "Reply-To: {$from}\r\n" , because it is treated differently
 		# (fifth parameter of the PHP mail function, see some lines below)
+
+		# Line endings need to be different on Unix and Windows due to 
+		# the bug described at http://trac.wordpress.org/ticket/2603
+		if ( wfIsWindows() ) {
+			$body = str_replace( "\n", "\r\n", $body );
+			$endl = "\r\n";
+		} else {
+			$endl = "\n";
+		}
 		$headers =
-			"MIME-Version: 1.0\n" .
-			"Content-type: text/plain; charset={$wgOutputEncoding}\n" .
-			"Content-Transfer-Encoding: 8bit\n" .
-			"X-Mailer: MediaWiki mailer\n".
-			'From: ' . $from->toString() . "\n";
+			"MIME-Version: 1.0$endl" .
+			"Content-type: text/plain; charset={$wgOutputEncoding}$endl" .
+			"Content-Transfer-Encoding: 8bit$endl" .
+			"X-Mailer: MediaWiki mailer$endl".
+			'From: ' . $from->toString();
 		if ($replyto) {
-			$headers .= "Reply-To: $replyto\n";
+			$headers .= "{$endl}Reply-To: $replyto";
 		}
 
 		$dest = $to->toString();
@@ -153,7 +167,7 @@ function userMailer( $to, $from, $subject, $body, $replyto=false ) {
  */
 function mailErrorHandler( $code, $string ) {
 	global $wgErrorString;
-	$wgErrorString = preg_replace( "/^mail\(\): /", '', $string );
+	$wgErrorString = preg_replace( '/^mail\(\)(\s*\[.*?\])?: /', '', $string );
 }
 
 

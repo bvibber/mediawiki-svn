@@ -37,6 +37,12 @@ if( !ini_set( "include_path", ".$sep$IP$sep$IP/includes$sep$IP/languages" ) ) {
 # Define an entry point and include some files
 define( "MEDIAWIKI", true );
 define( "MEDIAWIKI_INSTALL", true );
+
+// Run version checks before including other files
+// so people don't see a scary parse error.
+require_once( "install-utils.inc" );
+install_version_checks();
+
 require_once( "includes/Defines.php" );
 require_once( "includes/DefaultSettings.php" );
 require_once( "includes/MagicWord.php" );
@@ -1380,13 +1386,17 @@ if ( \$wgCommandLineMode ) {
 \$wgEnotifWatchlist = $enotifwatchlist; # UPO
 \$wgEmailAuthentication = $eauthent;
 
+\$wgDBtype           = \"{$slconf['DBtype']}\";
 \$wgDBserver         = \"{$slconf['DBserver']}\";
 \$wgDBname           = \"{$slconf['DBname']}\";
 \$wgDBuser           = \"{$slconf['DBuser']}\";
 \$wgDBpassword       = \"{$slconf['DBpassword']}\";
-\$wgDBprefix         = \"{$slconf['DBprefix']}\";
-\$wgDBtype           = \"{$slconf['DBtype']}\";
 \$wgDBport           = \"{$slconf['DBport']}\";
+\$wgDBprefix         = \"{$slconf['DBprefix']}\";
+
+# Schemas for Postgres
+\$wgDBmwschema       = \"{$slconf['DBmwschema']}\";
+\$wgDBts2schema      = \"{$slconf['DBts2schema']}\";
 
 # Experimental charset support for MySQL 4.1/5.0.
 \$wgDBmysql5 = {$conf->DBmysql5};
@@ -1528,10 +1538,10 @@ function getLanguageList() {
 
 	$codes = array();
 
-	$d = opendir( "../languages" );
+	$d = opendir( "../languages/messages" );
 	/* In case we are called from the root directory */
 	if (!$d)
-		$d = opendir( "languages");
+		$d = opendir( "languages/messages");
 	while( false !== ($f = readdir( $d ) ) ) {
 		$m = array();
 		if( preg_match( '/Messages([A-Z][a-z_]+)\.php$/', $f, $m ) ) {

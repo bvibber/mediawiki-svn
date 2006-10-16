@@ -5,8 +5,10 @@
  */
 
 require_once( dirname(__FILE__) . '/includes/WebStart.php' );
-$shortName = htmlspecialchars( mb_substr( $wgSitename, 0, 16 ) );
-$siteName = htmlspecialchars( $wgSitename );
+require_once( dirname(__FILE__) . '/languages/Names.php' );
+$fullName = "$wgSitename ({$wgLanguageNames[$wgLanguageCode]})";
+$shortName = htmlspecialchars( mb_substr( $fullName, 0, 24 ) );
+$siteName = htmlspecialchars( $fullName );
 
 if ( !preg_match( '/^https?:/', $wgFavicon ) ) {
 	$favicon = htmlspecialchars( $wgServer . $wgFavicon );
@@ -16,6 +18,9 @@ if ( !preg_match( '/^https?:/', $wgFavicon ) ) {
 
 $title = Title::makeTitle( NS_SPECIAL, 'Search' );
 $template = $title->escapeFullURL( 'search={searchTerms}' );
+
+$suggest = htmlspecialchars($wgServer . $wgScriptPath . '/api.php?action=opensearch&search={searchTerms}');
+
 
 $response = $wgRequest->response();
 $response->header( 'Content-type: application/opensearchdescription+xml' );
@@ -32,7 +37,9 @@ echo <<<EOT
 <Description>$siteName</Description>
 <Image height="16" width="16" type="image/x-icon">$favicon</Image>
 <Url type="text/html" method="get" template="$template"/>
+<Url type="application/x-suggestions+json" method="GET" template="$suggest"/>
 </OpenSearchDescription>
 EOT;
+
 
 ?>

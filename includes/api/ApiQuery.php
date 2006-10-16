@@ -33,6 +33,7 @@ class ApiQuery extends ApiBase {
 
 	private $mPropModuleNames, $mListModuleNames, $mMetaModuleNames;
 	private $mPageSet;
+	private $mValidNamespaces;
 
 	private $mQueryPropModules = array (
 		'info' => 'ApiQueryInfo',
@@ -45,7 +46,8 @@ class ApiQuery extends ApiBase {
 	//	'templates' => 'ApiQueryTemplates',
 
 	private $mQueryListModules = array (
-		'allpages' => 'ApiQueryAllpages'
+		'allpages' => 'ApiQueryAllpages',
+		'watchlist' => 'ApiQueryWatchlist'
 	);
 	//	'backlinks' => 'ApiQueryBacklinks',
 	//	'categorymembers' => 'ApiQueryCategorymembers',
@@ -65,10 +67,11 @@ class ApiQuery extends ApiBase {
 	private $mSlaveDB = null;
 
 	public function __construct($main, $action) {
-		parent :: __construct($main);
+		parent :: __construct($main, $action);
 		$this->mPropModuleNames = array_keys($this->mQueryPropModules);
 		$this->mListModuleNames = array_keys($this->mQueryListModules);
 		$this->mMetaModuleNames = array_keys($this->mQueryMetaModules);
+		$this->mValidNamespaces = null;
 
 		// Allow the entire list of modules at first,
 		// but during module instantiation check if it can be used as a generator.
@@ -85,6 +88,19 @@ class ApiQuery extends ApiBase {
 		return $this->mPageSet;
 	}
 
+	public function getValidNamespaces() {
+		global $wgContLang;
+
+		if (is_null($this->mValidNamespaces)) {
+			$this->mValidNamespaces = array ();
+			foreach (array_keys($wgContLang->getNamespaces()) as $ns) {
+				if ($ns >= 0)
+					$this->mValidNamespaces[] = $ns; // strval($ns);		
+			}
+		}
+		return $this->mValidNamespaces;
+	}
+
 	/**
 	 * Query execution happens in the following steps:
 	 * #1 Create a PageSet object with any pages requested by the user
@@ -96,19 +112,13 @@ class ApiQuery extends ApiBase {
 	 * #5 Execute all requested modules
 	 */
 	public function execute() {
-		$prop = $list = $meta = $generator = null;
+		$prop = $list = $meta = $generator = $redirects = null;
 		extract($this->extractRequestParams());
 
 		//
 		// Create PageSet
 		//
-		$this->mPageSet = new ApiPageSet($this);
-
-		//
-		// If generator is provided, get a new dataset to work on
-		//
-		if (isset ($generator))
-			$this->executeGenerator($generator);
+		$this->mPageSet = new ApiPageSet($this, $redirects);
 
 		// Instantiate required modules
 		$modules = array ();
@@ -129,16 +139,24 @@ class ApiQuery extends ApiBase {
 		}
 
 		//
-		// Get page information for the given pageSet
+		// If given, execute generator to substitute user supplied data with generated data.  
+		//
+		if (isset ($generator))
+			$this->executeGeneratorModule($generator, $redirects);
+
+		//
+		// Populate page information for the given pageSet
 		//
 		$this->mPageSet->execute();
 
 		//
-		// Record page information
+		// Record page information (title, namespace, if exists, etc)
 		//
 		$this->outputGeneralPageInfo();
 
+		//
 		// Execute all requested modules.
+		//
 		foreach ($modules as $module) {
 			$module->profileIn();
 			$module->execute();
@@ -178,6 +196,22 @@ class ApiQuery extends ApiBase {
 			$this->getResult()->addValue('query', 'redirects', $redirValues);
 		}
 
+
+		//
+		// Missing revision elements
+		//
+		$missingRevIDs = $pageSet->getMissingRevisionIDs();
+		if (!empty($missingRevIDs)) {
+			$revids = array();
+			foreach ($missingRevIDs as $revid) {
+				$revids[$revid] = array (
+					'revid' => $revid
+				);
+			}
+			ApiResult :: setIndexedTagName($revids, 'rev');
+			$this->getResult()->addValue('query', 'badrevids', $revids);
+		}
+		
 		//
 		// Page elements
 		//
@@ -210,27 +244,41 @@ class ApiQuery extends ApiBase {
 		}
 	}
 
-	protected function executeGenerator($generatorName) {
+	protected function executeGeneratorModule($generatorName, $redirects) {
 
 		// Find class that implements requested generator
-		if (isset ($this->mQueryListModules[$generatorName]))
+		if (isset ($this->mQueryListModules[$generatorName])) {
 			$className = $this->mQueryListModules[$generatorName];
-		elseif (isset ($this->mQueryPropModules[$generatorName])) $className = $this->mQueryPropModules[$generatorName];
-		else
+		}
+		elseif (isset ($this->mQueryPropModules[$generatorName])) {
+			$className = $this->mQueryPropModules[$generatorName];
+		} else {
 			ApiBase :: dieDebug(__METHOD__, "Unknown generator=$generatorName");
+		}
 
-		$generator = new $className ($this, $generatorName, true);
-		if (!$generator->getCanGenerate())
+		// Use current pageset as the result, and create a new one just for the generator 
+		$resultPageSet = $this->mPageSet;
+		$this->mPageSet = new ApiPageSet($this, $redirects);
+
+		// Create and execute the generator
+		$generator = new $className ($this, $generatorName);
+		if (!$generator instanceof ApiQueryGeneratorBase)
 			$this->dieUsage("Module $generatorName cannot be used as a generator", "badgenerator");
-			
+
+		$generator->setGeneratorMode();
 		$generator->requestExtraData();
 
-		// execute pageSet here to get the data required by the generator module
+		// execute current pageSet to get the data for the generator module
 		$this->mPageSet->execute();
-
+		
+		// populate resultPageSet with the generator output
 		$generator->profileIn();
-		$this->mPageSet = $generator->execute();
+		$generator->executeGenerator($resultPageSet);
+		$resultPageSet->finishPageSetGeneration();
 		$generator->profileOut();
+		
+		// Swap the resulting pageset back in
+		$this->mPageSet = $resultPageSet;
 	}
 
 	protected function getAllowedParams() {
@@ -248,8 +296,9 @@ class ApiQuery extends ApiBase {
 				ApiBase :: PARAM_TYPE => $this->mMetaModuleNames
 			),
 			'generator' => array (
-			    ApiBase::PARAM_TYPE => $this->mAllowedGenerators
-			)			
+				ApiBase :: PARAM_TYPE => $this->mAllowedGenerators
+			),
+			'redirects' => false
 		);
 	}
 
@@ -286,7 +335,7 @@ class ApiQuery extends ApiBase {
 			$msg2 = $module->makeHelpMsg();
 			if ($msg2 !== false)
 				$msg .= $msg2;
-			if ($module->getCanGenerate())
+			if ($module instanceof ApiQueryGeneratorBase)
 				$msg .= "Generator:\n  This module may be used as a generator\n";
 			$moduleDscriptions[] = $msg;
 		}
@@ -307,7 +356,8 @@ class ApiQuery extends ApiBase {
 			'prop' => 'Which properties to get for the titles/revisions/pageids',
 			'list' => 'Which lists to get',
 			'meta' => 'Which meta data to get about the site',
-			'generator' => 'Use the output of a list as the input for other prop/list/meta items'
+			'generator' => 'Use the output of a list as the input for other prop/list/meta items',
+			'redirects' => 'Automatically resolve redirects'
 		);
 	}
 
@@ -327,7 +377,7 @@ class ApiQuery extends ApiBase {
 
 	public function getVersion() {
 		$psModule = new ApiPageSet($this);
-		$vers = array();
+		$vers = array ();
 		$vers[] = __CLASS__ . ': $Id$';
 		$vers[] = $psModule->getVersion();
 		return $vers;

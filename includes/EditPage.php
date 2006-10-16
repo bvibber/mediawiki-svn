@@ -1257,7 +1257,6 @@ END
 		$wgOut->addHtml( wfHidden( 'wpAutoSummary', $autosumm ) );
 
 		if ( $this->isConflict ) {
-			require_once( "DifferenceEngine.php" );
 			$wgOut->addWikiText( '==' . wfMsg( "yourdiff" ) . '==' );
 
 			$de = new DifferenceEngine( $this->mTitle );
@@ -1349,9 +1348,9 @@ END
 	 * of the preview button
 	 */
 	function doLivePreviewScript() {
-		global $wgStylePath, $wgJsMimeType, $wgOut, $wgTitle;
+		global $wgStylePath, $wgJsMimeType, $wgStyleVersion, $wgOut, $wgTitle;
 		$wgOut->addHTML( '<script type="'.$wgJsMimeType.'" src="' .
-			htmlspecialchars( $wgStylePath . '/common/preview.js' ) .
+			htmlspecialchars( "$wgStylePath/common/preview.js?$wgStyleVersion" ) .
 			'"></script>' . "\n" );
 		$liveAction = $wgTitle->getLocalUrl( 'action=submit&wpPreview=true&live=true' );
 		return "return !livePreview(" .
@@ -1779,7 +1778,6 @@ END
 	 * @return string HTML
 	 */
 	function getDiff() {
-		require_once( 'DifferenceEngine.php' );
 		$oldtext = $this->mArticle->fetchContent();
 		$newtext = $this->mArticle->replaceSection(
 			$this->section, $this->textbox1, $this->summary, $this->edittime );

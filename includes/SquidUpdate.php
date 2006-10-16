@@ -223,7 +223,7 @@ class SquidUpdate {
 				$htcpTransID = rand();
 
 				$htcpSpecifier = pack( 'na4na*na8n',
-					4, 'NONE', strlen( $url ), $url,
+					4, 'HEAD', strlen( $url ), $url,
 					8, 'HTTP/1.0', 0 );
 
 				$htcpDataLen = 8 + 2 + strlen( $htcpSpecifier );

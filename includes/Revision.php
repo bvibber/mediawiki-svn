@@ -4,9 +4,6 @@
  * @todo document
  */
 
-/** */
-require_once( 'Database.php' );
-
 /**
  * @package MediaWiki
  * @todo document
@@ -539,7 +536,6 @@ class Revision {
 				wfProfileOut( $fname );
 				return false;
 			}
-			require_once('ExternalStore.php');
 			$text=ExternalStore::fetchFromURL($url);
 		}
 
@@ -629,7 +625,6 @@ class Revision {
 			} else {
 				$store = $wgDefaultExternalStore;
 			}
-			require_once('ExternalStore.php');
 			// Store and get the URL
 			$data = ExternalStore::insert( $store, $data );
 			if ( !$data ) {
@@ -690,8 +685,8 @@ class Revision {
 		wfProfileIn( $fname );
 		
 		// Caching may be beneficial for massive use of external storage
-		global $wgRevisionCacheExpiry, $wgMemc, $wgDBname;
-		$key = "$wgDBname:revisiontext:textid:" . $this->getTextId();
+		global $wgRevisionCacheExpiry, $wgMemc;
+		$key = wfMemcKey( 'revisiontext', 'textid', $this->getTextId() );
 		if( $wgRevisionCacheExpiry ) {
 			$text = $wgMemc->get( $key );
 			if( is_string( $text ) ) {
@@ -701,8 +696,12 @@ class Revision {
 		}
 		
 		// If we kept data for lazy extraction, use it now...
-		$row = $this->mTextRow;
-		$this->mTextRow = null;
+		if ( isset( $this->mTextRow ) ) {
+			$row = $this->mTextRow;
+			$this->mTextRow = null;
+		} else {
+			$row = null;
+		}
 		
 		if( !$row ) {
 			// Text data is immutable; check slaves first.

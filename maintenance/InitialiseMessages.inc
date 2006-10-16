@@ -72,14 +72,15 @@ function initialiseMessages( $overwrite = false, $messageArray = false, $outputC
 function initialiseMessagesReal( $overwrite = false, $messageArray = false, $outputCallback = false ) {
 	global $wgContLang, $wgScript, $wgServer, $wgLanguageCode;
 	global $wgOut, $wgArticle, $wgUser;
-	global $wgMessageCache, $wgMemc, $wgDBname, $wgUseMemCached;
+	global $wgMessageCache, $wgMemc, $wgUseMemCached;
 
 	# Initialise $wgOut and $wgUser for a command line script
 	$wgOut->disable();
 
-	$wgUser = new User;
-	$wgUser->setLoaded( true ); # Don't load from DB
-	$wgUser->setName( 'MediaWiki default' );
+	$wgUser = User::newFromName( 'MediaWiki default' );
+	if ( $wgUser->isAnon() ) {
+		$wgUser->addToDatabase();
+	}
 
 	# Don't try to draw messages from the database we're initialising
 	$wgMessageCache->disable();

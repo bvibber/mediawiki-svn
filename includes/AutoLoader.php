@@ -10,6 +10,7 @@ function __autoload($className) {
 	static $localClasses = array(
 		'AjaxDispatcher' => 'includes/AjaxDispatcher.php',
 		'AjaxCachePolicy' => 'includes/AjaxFunctions.php',
+		'AjaxResponse' => 'includes/AjaxResponse.php',
 		'Article' => 'includes/Article.php',
 		'AuthPlugin' => 'includes/AuthPlugin.php',
 		'BagOStuff' => 'includes/BagOStuff.php',
@@ -19,8 +20,13 @@ function __autoload($className) {
 		'TurckBagOStuff' => 'includes/BagOStuff.php',
 		'APCBagOStuff' => 'includes/BagOStuff.php',
 		'eAccelBagOStuff' => 'includes/BagOStuff.php',
+		'DBABagOStuff' => 'includes/BagOStuff.php',
 		'Block' => 'includes/Block.php',
-		'CacheManager' => 'includes/CacheManager.php',
+		'HTMLFileCache' => 'includes/HTMLFileCache.php',
+		'DependencyWrapper' => 'includes/CacheDependency.php',
+		'FileDependency' => 'includes/CacheDependency.php',
+		'TitleDependency' => 'includes/CacheDependency.php',
+		'TitleListDependency' => 'includes/CacheDependency.php',
 		'CategoryPage' => 'includes/CategoryPage.php',
 		'CategoryViewer' => 'includes/CategoryPage.php',
 		'Categoryfinder' => 'includes/Categoryfinder.php',
@@ -228,7 +234,32 @@ function __autoload($className) {
 		'UsercreateTemplate' => 'includes/templates/Userlogin.php',
 		'UserloginTemplate' => 'includes/templates/Userlogin.php',
 		'Language' => 'languages/Language.php',
+
+		// API classes
+		'ApiBase' => 'includes/api/ApiBase.php',
+		'ApiFormatFeedWrapper' => 'includes/api/ApiFormatBase.php',
+		'ApiFeedWatchlist' => 'includes/api/ApiFeedWatchlist.php',
+		'ApiFormatBase' => 'includes/api/ApiFormatBase.php',
+		'Services_JSON' => 'includes/api/ApiFormatJson_json.php',
+		'ApiFormatJson' => 'includes/api/ApiFormatJson.php',
+		'ApiFormatXml' => 'includes/api/ApiFormatXml.php',
+		'Spyc' => 'includes/api/ApiFormatYaml_spyc.php',
+		'ApiFormatYaml' => 'includes/api/ApiFormatYaml.php',
+		'ApiHelp' => 'includes/api/ApiHelp.php',
+		'ApiLogin' => 'includes/api/ApiLogin.php',
+		'ApiMain' => 'includes/api/ApiMain.php',
+		'ApiOpenSearch' => 'includes/api/ApiOpenSearch.php',
+		'ApiPageSet' => 'includes/api/ApiPageSet.php',
+		'ApiQuery' => 'includes/api/ApiQuery.php',
+		'ApiQueryAllpages' => 'includes/api/ApiQueryAllpages.php',
+		'ApiQueryBase' => 'includes/api/ApiQueryBase.php',
+		'ApiQueryInfo' => 'includes/api/ApiQueryInfo.php',
+		'ApiQueryRevisions' => 'includes/api/ApiQueryRevisions.php',
+		'ApiQuerySiteinfo' => 'includes/api/ApiQuerySiteinfo.php',
+		'ApiQueryWatchlist' => 'includes/api/ApiQueryWatchlist.php',
+		'ApiResult' => 'includes/api/ApiResult.php',
 	);
+	
 	if ( isset( $localClasses[$className] ) ) {
 		$filename = $localClasses[$className];
 	} elseif ( isset( $wgAutoloadClasses[$className] ) ) {

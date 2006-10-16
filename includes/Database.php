@@ -5,13 +5,6 @@
  * @package MediaWiki
  */
 
-/** See Database::makeList() */
-define( 'LIST_COMMA', 0 );
-define( 'LIST_AND', 1 );
-define( 'LIST_SET', 2 );
-define( 'LIST_NAMES', 3);
-define( 'LIST_OR', 4);
-
 /** Number of times to re-try an operation in case of deadlock */
 define( 'DEADLOCK_TRIES', 4 );
 /** Minimum time to wait before retry, in microseconds */
@@ -159,7 +152,7 @@ border=\"0\" ALT=\"Google\"></A>
 				}
 			}
 
-			$cache = new CacheManager( $t );
+			$cache = new HTMLFileCache( $t );
 			if( $cache->isFileCached() ) {
 				$msg = '<p style="color: red"><b>'.$msg."<br />\n" .
 					$cachederror . "</b></p>\n";
@@ -519,7 +512,7 @@ class Database {
 				if ( !$success ) {
 					$error = "Error selecting database $dbName on server {$this->mServer} " .
 						"from client host {$wguname['nodename']}\n";
-					wfLogDBError(" Error selecting database $dbname on server {$this->mServer} \n");
+					wfLogDBError(" Error selecting database $dbName on server {$this->mServer} \n");
 					wfDebug( $error );
 				}
 			} else {

@@ -29,122 +29,131 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiQueryBase.php');
 }
 
-class ApiQueryAllpages extends ApiQueryBase {
+class ApiQueryAllpages extends ApiQueryGeneratorBase {
 
-	public function __construct($query, $moduleName, $generator = false) {
-		parent :: __construct($query, $moduleName, $generator);
+	public function __construct($query, $moduleName) {
+		parent :: __construct($query, $moduleName, 'ap');
 	}
 
 	public function execute() {
-		$aplimit = $apfrom = $apnamespace = $apfilterredir = null;
+		$this->run();
+	}
+
+	public function executeGenerator($resultPageSet) {
+		if ($resultPageSet->isResolvingRedirects())
+			$this->dieUsage('Use "gapfilterredir=nonredirects" option instead of "redirects" when using allpages as a generator', 'params');
+
+		$this->run($resultPageSet);
+	}
+
+	private function run($resultPageSet = null) {
+		$limit = $from = $namespace = $filterredir = null;
 		extract($this->extractRequestParams());
 
 		$db = $this->getDB();
-		$where = array (
-			'page_namespace' => $apnamespace
-		);
-		if (isset ($apfrom))
-			$where[] = 'page_title>=' . $db->addQuotes(ApiQueryBase :: titleToKey($apfrom));
 
-		if ($apfilterredir === 'redirects')
+		$where = array (
+			'page_namespace' => $namespace
+		);
+
+		if (isset ($from)) {
+			$where[] = 'page_title>=' . $db->addQuotes(ApiQueryBase :: titleToKey($from));
+		}
+		
+		if (isset ($prefix)) {
+			$where[] = "page_title LIKE '{$db->strencode(ApiQueryBase :: titleToKey($prefix))}%'";
+		}
+
+		if ($filterredir === 'redirects') {
 			$where['page_is_redirect'] = 1;
-		elseif ($apfilterredir === 'nonredirects') $where['page_is_redirect'] = 0;
+		}
+		elseif ($filterredir === 'nonredirects') {
+			$where['page_is_redirect'] = 0;
+		}
+
+		if (is_null($resultPageSet)) {
+			$fields = array (
+				'page_id',
+				'page_namespace',
+				'page_title'
+			);
+		} else {
+			$fields = $resultPageSet->getPageTableFields();
+		}
+
+		$options = array (
+			'USE INDEX' => 'name_title',
+			'LIMIT' => $limit +1,
+			'ORDER BY' => 'page_namespace, page_title'
+		);
 
 		$this->profileDBIn();
-		$res = $db->select('page', array (
-			'page_id',
-			'page_namespace',
-			'page_title'
-		), $where, __CLASS__ . '::' . __METHOD__, array (
-			'USE INDEX' => 'name_title',
-			'LIMIT' => $aplimit +1,
-			'ORDER BY' => 'page_namespace, page_title'
-		));
+		$res = $db->select('page', $fields, $where, __METHOD__, $options);
 		$this->profileDBOut();
 
 		$data = array ();
-		if(!$this->isGenerator())
-			ApiResult :: setIndexedTagName($data, 'p');
-			
 		$count = 0;
 		while ($row = $db->fetchObject($res)) {
-			if (++ $count > $aplimit) {
+			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$msg = array (
-					'continue' => ($this->isGenerator() ? 'g' : '') . 'apfrom=' . ApiQueryBase :: keyToTitle($row->page_title
-				));
-				$this->getResult()->addValue('query-status', 'allpages', $msg);
+				$this->setContinueEnumParameter('from', ApiQueryBase :: keyToTitle($row->page_title));
 				break;
 			}
 
 			$title = Title :: makeTitle($row->page_namespace, $row->page_title);
 			// skip any pages that user has no rights to read
 			if ($title->userCanRead()) {
-				$id = intval($row->page_id);
 
-				if ($this->isGenerator()) {
-					$data[] = $id;	// in generator mode, just assemble a list of page IDs.
+				if (is_null($resultPageSet)) {
+					$id = intval($row->page_id);
+					$data[$id] = array (
+						'id' => $id,
+						'ns' => $title->getNamespace(),
+						'title' => $title->getPrefixedText());
 				} else {
-					$pagedata = array ();
-					$pagedata['id'] = $id;
-					if ($title->getNamespace() !== 0)
-						$pagedata['ns'] = $title->getNamespace();
-					$pagedata['title'] = $title->getPrefixedText();
-	
-					$data[$id] = $pagedata;
+					$resultPageSet->processDbRow($row);
 				}
 			}
 		}
 		$db->freeResult($res);
 
-		if ($this->isGenerator()) {
-			$pageSet = new ApiPageSet($this->getQuery());
-			$pageSet->executeForPageIDs($data);
-			return $pageSet;
-		} else {
+		if (is_null($resultPageSet)) {
+			ApiResult :: setIndexedTagName($data, 'p');
 			$this->getResult()->addValue('query', 'allpages', $data);
 		}
 	}
 
 	protected function getAllowedParams() {
 
-		global $wgContLang;
-		$validNamespaces = array ();
-		foreach (array_keys($wgContLang->getNamespaces()) as $ns) {
-			if ($ns >= 0)
-				$validNamespaces[] = $ns; // strval($ns);		
-		}
-
 		return array (
-			'apfrom' => null,
-			'apnamespace' => array (
+			'from' => null,
+			'prefix' => null,
+			'namespace' => array (
 				ApiBase :: PARAM_DFLT => 0,
-				ApiBase :: PARAM_TYPE => $validNamespaces
-			),
-			'apfilterredir' => array (
+				ApiBase :: PARAM_TYPE => $this->getQuery()->getValidNamespaces()),
+			'filterredir' => array (
 				ApiBase :: PARAM_DFLT => 'all',
 				ApiBase :: PARAM_TYPE => array (
 					'all',
 					'redirects',
 					'nonredirects'
-				)
-			),
-			'aplimit' => array (
+				)),
+			'limit' => array (
 				ApiBase :: PARAM_DFLT => 10,
 				ApiBase :: PARAM_TYPE => 'limit',
 				ApiBase :: PARAM_MIN => 1,
 				ApiBase :: PARAM_MAX1 => 500,
 				ApiBase :: PARAM_MAX2 => 5000
-			)
-		);
+		));
 	}
 
 	protected function getParamDescription() {
 		return array (
-			'apfrom' => 'The page title to start enumerating from.',
-			'apnamespace' => 'The namespace to enumerate. Default 0 (Main).',
-			'apfilterredir' => 'Which pages to list: "all" (default), "redirects", or "nonredirects"',
-			'aplimit' => 'How many total pages to return'
+			'from' => 'The page title to start enumerating from.',
+			'prefix' => 'Search for all page titles that begin with this value.',
+			'namespace' => 'The namespace to enumerate.',
+			'filterredir' => 'Which pages to list.',
+			'limit' => 'How many total pages to return.'
 		);
 	}
 
@@ -154,14 +163,15 @@ class ApiQueryAllpages extends ApiQueryBase {
 
 	protected function getExamples() {
 		return array (
-			'api.php?action=query&list=allpages',
-			'api.php?action=query&list=allpages&apfrom=B&aplimit=5',
-			'api.php?action=query&generator=allpages&gaplimit=4&prop=info (generator)'
+			'Simple Use',
+			' Show a list of pages starting at the letter "B"',
+			'  api.php?action=query&list=allpages&apfrom=B',
+			'Using as Generator',
+			' Show info about 4 pages starting at the letter "T"',
+			'  api.php?action=query&generator=allpages&gaplimit=4&gapfrom=T&prop=info',
+			' Show content of first 2 non-redirect pages begining at "Re"',
+			'  api.php?action=query&generator=allpages&gaplimit=2&gapfilterredir=nonredirects&gapfrom=Re&prop=revisions&rvprop=content'
 		);
-	}
-
-	public function getCanGenerate() {
-		return true;
 	}
 
 	public function getVersion() {

@@ -9,8 +9,6 @@
 if( !defined( 'MEDIAWIKI' ) )
 	die( 1 );
 
-require_once( 'Image.php' );
-
 /**
  * Special handling for image description pages
  * @package MediaWiki
@@ -73,13 +71,13 @@ class ImagePage extends Article {
 			$this->imageHistory();
 			$this->imageLinks();
 			if( $exif ) {
-				global $wgStylePath;
+				global $wgStylePath, $wgStyleVersion;
 				$expand = htmlspecialchars( wfEscapeJsString( wfMsg( 'metadata-expand' ) ) );
 				$collapse = htmlspecialchars( wfEscapeJsString( wfMsg( 'metadata-collapse' ) ) );
 				$wgOut->addHTML( "<h2 id=\"metadata\">" . wfMsgHtml( 'metadata' ) . "</h2>\n" );
 				$wgOut->addWikiText( $this->makeMetadataTable( $exif ) );
 				$wgOut->addHTML(
-					"<script type=\"text/javascript\" src=\"$wgStylePath/common/metadata.js\"></script>\n" .
+					"<script type=\"text/javascript\" src=\"$wgStylePath/common/metadata.js?wgStyleVersion\"></script>\n" .
 					"<script type=\"text/javascript\">attachMetadataToggle('mw_metadata', '$expand', '$collapse');</script>\n" );
 			}
 		} else {
@@ -359,10 +357,7 @@ END
 		$wgOut->addHTML($sharedtext);
 
 		if ($wgRepositoryBaseUrl && $wgFetchCommonsDescriptions) {
-			require_once("HttpFunctions.php");
-			$ur = ini_set('allow_url_fopen', true);
-			$text = wfGetHTTP($url . '?action=render');
-			ini_set('allow_url_fopen', $ur);
+			$text = Http::get($url . '?action=render');
 			if ($text)
 				$this->mExtraDescription = $text;
 		}

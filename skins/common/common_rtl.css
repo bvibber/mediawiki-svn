@@ -13,3 +13,13 @@ fieldset.operaprefsection {
     margin-right: 1.4em;
     margin-left: 0.4em;
 }
+div.editsection {
+	float: left;
+	margin-right: 5px;
+}
+div.tright {
+	clear: none;
+}
+div.tleft {
+	clear: left;
+}

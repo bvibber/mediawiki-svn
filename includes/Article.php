@@ -5,16 +5,11 @@
  */
 
 /**
- * Need the CacheManager to be loaded
- */
-require_once( 'CacheManager.php' );
-
-/**
  * Class representing a MediaWiki article and history.
  *
  * See design.txt for an overview.
  * Note: edit user interface and cache support functions have been
- * moved to separate EditPage and CacheManager classes.
+ * moved to separate EditPage and HTMLFileCache classes.
  *
  * @package MediaWiki
  */
@@ -651,7 +646,6 @@ class Article {
 		# diff page instead of the article.
 
 		if ( !is_null( $diff ) ) {
-			require_once( 'DifferenceEngine.php' );
 			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 
 			$de = new DifferenceEngine( $this->mTitle, $oldid, $diff, $rcid );
@@ -1470,7 +1464,6 @@ class Article {
 		
 		if (wfRunHooks('WatchArticle', array(&$wgUser, &$this))) {
 			$wgUser->addWatch( $this->mTitle );
-			$wgUser->saveSettings();
 
 			return wfRunHooks('WatchArticleComplete', array(&$wgUser, &$this));
 		}
@@ -1518,7 +1511,6 @@ class Article {
 
 		if (wfRunHooks('UnwatchArticle', array(&$wgUser, &$this))) {
 			$wgUser->removeWatch( $this->mTitle );
-			$wgUser->saveSettings();
 
 			return wfRunHooks('UnwatchArticleComplete', array(&$wgUser, &$this));
 		}
@@ -1530,7 +1522,6 @@ class Article {
 	 * action=protect handler
 	 */
 	function protect() {
-		require_once 'ProtectionForm.php';
 		$form = new ProtectionForm( $this );
 		$form->show();
 	}
@@ -2170,6 +2161,22 @@ class Article {
 
 		wfProfileOut( __METHOD__ );
 	}
+	
+	/**
+	 * Perform article updates on a special page creation.
+	 *
+	 * @param Revision $rev
+	 *
+	 * @fixme This is a shitty interface function. Kill it and replace the
+	 * other shitty functions like editUpdates and such so it's not needed
+	 * anymore.
+	 */
+	function createUpdates( $rev ) {
+		$this->mGoodAdjustment = $this->isCountable( $rev->getText() );
+		$this->mTotalAdjustment = 1;
+		$this->editUpdates( $rev->getText(), $rev->getComment(),
+			$rev->isMinor(), wfTimestamp(), $rev->getId(), true );
+	}
 
 	/**
 	 * Generate the navigation links when browsing through an article revisions
@@ -2243,7 +2250,7 @@ class Article {
 		$called = true;
 		if($this->isFileCacheable()) {
 			$touched = $this->mTouched;
-			$cache = new CacheManager( $this->mTitle );
+			$cache = new HTMLFileCache( $this->mTitle );
 			if($cache->isFileCacheGood( $touched )) {
 				wfDebug( "Article::tryFileCache(): about to load file\n" );
 				$cache->loadFromFileCache();
@@ -2431,7 +2438,7 @@ class Article {
 		
 		# File cache
 		if ( $wgUseFileCache ) {
-			$cm = new CacheManager( $title );
+			$cm = new HTMLFileCache( $title );
 			@unlink( $cm->fileCacheName() );
 		}
 
@@ -2457,7 +2464,7 @@ class Article {
 
 		# Clear file cache
 		if ( $wgUseFileCache ) {
-			$cm = new CacheManager( $title );
+			$cm = new HTMLFileCache( $title );
 			@unlink( $cm->fileCacheName() );
 		}
 	}

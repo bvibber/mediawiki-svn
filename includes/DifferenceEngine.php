@@ -5,10 +5,6 @@
  * @subpackage DifferenceEngine
  */
 
-/** */
-define( 'MAX_DIFF_LINE', 10000 );
-define( 'MAX_DIFF_XREF_LENGTH', 10000 );
-
 /**
  * @todo document
  * @public
@@ -301,7 +297,7 @@ CONTROL;
 	 * Returns false on error
 	 */
 	function getDiffBody() {
-		global $wgMemc, $wgDBname;
+		global $wgMemc;
 		$fname = 'DifferenceEngine::getDiffBody';
 		wfProfileIn( $fname );
 		
@@ -309,7 +305,7 @@ CONTROL;
 		$key = false;
 		if ( $this->mOldid && $this->mNewid ) {
 			// Try cache
-			$key = "$wgDBname:diff:oldid:{$this->mOldid}:newid:{$this->mNewid}";
+			$key = wfMemcKey( 'diff', 'oldid', $this->mOldid, 'newid', $this->mNewid );
 			$difftext = $wgMemc->get( $key );
 			if ( $difftext ) {
 				wfIncrStats( 'diff_cache_hit' );
@@ -724,6 +720,8 @@ class _DiffOp_Change extends _DiffOp {
  */
 class _DiffEngine
 {
+	const MAX_XREF_LENGTH =  10000;
+
 	function diff ($from_lines, $to_lines) {
 		$fname = '_DiffEngine::diff';
 		wfProfileIn( $fname );
@@ -821,7 +819,7 @@ class _DiffEngine
 	 * Returns the whole line if it's small enough, or the MD5 hash otherwise
 	 */
 	function _line_hash( $line ) {
-		if ( strlen( $line ) > MAX_DIFF_XREF_LENGTH ) {
+		if ( strlen( $line ) > self::MAX_XREF_LENGTH ) {
 			return md5( $line );
 		} else {
 			return $line;
@@ -1576,6 +1574,8 @@ class _HWLDF_WordAccumulator {
  */
 class WordLevelDiff extends MappedDiff
 {
+	const MAX_LINE_LENGTH = 10000;
+
 	function WordLevelDiff ($orig_lines, $closing_lines) {
 		$fname = 'WordLevelDiff::WordLevelDiff';
 		wfProfileIn( $fname );
@@ -1604,7 +1604,7 @@ class WordLevelDiff extends MappedDiff
 				$words[] = "\n";
 				$stripped[] = "\n";
 			}
-			if ( strlen( $line ) > MAX_DIFF_LINE ) {
+			if ( strlen( $line ) > self::MAX_LINE_LENGTH ) {
 				$words[] = $line;
 				$stripped[] = $line;
 			} else {

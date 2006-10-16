@@ -212,9 +212,9 @@ class ProtectionForm {
 	}
 
 	function buildScript() {
-		global $wgStylePath;
+		global $wgStylePath, $wgStyleVersion;
 		return '<script type="text/javascript" src="' .
-			htmlspecialchars( $wgStylePath . "/common/protect.js" ) .
+			htmlspecialchars( $wgStylePath . "/common/protect.js?$wgStyleVersion" ) .
 			'"></script>';
 	}
 
@@ -230,7 +230,6 @@ class ProtectionForm {
 	function showLogExtract( &$out ) {
 		# Show relevant lines from the deletion log:
 		$out->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'protect' ) ) . "</h2>\n" );
-		require_once( 'SpecialLog.php' );
 		$logViewer = new LogViewer(
 			new LogReader(
 				new FauxRequest(

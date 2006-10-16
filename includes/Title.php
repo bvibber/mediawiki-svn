@@ -356,7 +356,7 @@ class Title {
 		$lc = SearchEngine::legalSearchChars() . '&#;';
 		$t = $wgContLang->stripForSearch( $title );
 		$t = preg_replace( "/[^{$lc}]+/", ' ', $t );
-		$t = strtolower( $t );
+		$t = $wgContLang->lc( $t );
 
 		# Handle 's, s'
 		$t = preg_replace( "/([{$lc}]+)'s( |$)/", "\\1 \\1's ", $t );
@@ -392,13 +392,13 @@ class Title {
 	 * @access public
 	 */
 	function getInterwikiLink( $key )  {
-		global $wgMemc, $wgDBname, $wgInterwikiExpiry;
-		global $wgInterwikiCache;
+		global $wgMemc, $wgInterwikiExpiry;
+		global $wgInterwikiCache, $wgContLang;
 		$fname = 'Title::getInterwikiLink';
 
-		$key = strtolower( $key );
+		$key = $wgContLang->lc( $key );
 
-		$k = $wgDBname.':interwiki:'.$key;
+		$k = wfMemcKey( 'interwiki', $key );
 		if( array_key_exists( $k, Title::$interwikiCache ) ) {
 			return Title::$interwikiCache[$k]->iw_url;
 		}
@@ -445,18 +445,18 @@ class Title {
 	 * @access public
 	 */
 	function getInterwikiCached( $key ) {
-		global $wgDBname, $wgInterwikiCache, $wgInterwikiScopes, $wgInterwikiFallbackSite;
+		global $wgInterwikiCache, $wgInterwikiScopes, $wgInterwikiFallbackSite;
 		static $db, $site;
 
 		if (!$db)
 			$db=dba_open($wgInterwikiCache,'r','cdb');
 		/* Resolve site name */
 		if ($wgInterwikiScopes>=3 and !$site) {
-			$site = dba_fetch("__sites:{$wgDBname}", $db);
+			$site = dba_fetch('__sites:' . wfWikiID(), $db);
 			if ($site=="")
 				$site = $wgInterwikiFallbackSite;
 		}
-		$value = dba_fetch("{$wgDBname}:{$key}", $db);
+		$value = dba_fetch( wfMemcKey( $key ), $db);
 		if ($value=='' and $wgInterwikiScopes>=3) {
 			/* try site-level */
 			$value = dba_fetch("_{$site}:{$key}", $db);
@@ -476,7 +476,7 @@ class Title {
 			$s->iw_url=$url;
 			$s->iw_local=(int)$local;
 		}
-		Title::$interwikiCache[$wgDBname.':interwiki:'.$key] = $s;
+		Title::$interwikiCache[wfMemcKey( 'interwiki', $key )] = $s;
 		return $s->iw_url;
 	}
 	/**
@@ -488,12 +488,10 @@ class Title {
 	 * @access public
 	 */
 	function isLocal() {
-		global $wgDBname;
-
 		if ( $this->mInterwiki != '' ) {
 			# Make sure key is loaded into cache
 			$this->getInterwikiLink( $this->mInterwiki );
-			$k = $wgDBname.':interwiki:' . $this->mInterwiki;
+			$k = wfMemcKey( 'interwiki', $this->mInterwiki );
 			return (bool)(Title::$interwikiCache[$k]->iw_local);
 		} else {
 			return true;
@@ -508,13 +506,11 @@ class Title {
 	 * @access public
 	 */
 	function isTrans() {
-		global $wgDBname;
-
 		if ($this->mInterwiki == '')
 			return false;
 		# Make sure key is loaded into cache
 		$this->getInterwikiLink( $this->mInterwiki );
-		$k = $wgDBname.':interwiki:' . $this->mInterwiki;
+		$k = wfMemcKey( 'interwiki', $this->mInterwiki );
 		return (bool)(Title::$interwikiCache[$k]->iw_trans);
 	}
 
@@ -544,7 +540,7 @@ class Title {
 
 		foreach ( $titles as $title ) {
 			if ( $wgUseFileCache ) {
-				$cm = new CacheManager($title);
+				$cm = new HTMLFileCache($title);
 				@unlink($cm->fileCacheName());
 			}
 
@@ -773,14 +769,15 @@ class Title {
 	 *
 	 * @param string $query an optional query string, not used
 	 * 	for interwiki links
+	 * @param string $variant language variant of url (for sr, zh..)
 	 * @return string the URL
 	 * @access public
 	 */
-	function getFullURL( $query = '' ) {
+	function getFullURL( $query = '', $variant = false ) {
 		global $wgContLang, $wgServer, $wgRequest;
 
 		if ( '' == $this->mInterwiki ) {
-			$url = $this->getLocalUrl( $query );
+			$url = $this->getLocalUrl( $query, $variant );
 
 			// Ugly quick hack to avoid duplicate prefixes (bug 4571 etc)
 			// Correct fix would be to move the prepending elsewhere.
@@ -820,11 +817,20 @@ class Title {
 	 * with action=render, $wgServer is prepended.
 	 * @param string $query an optional query string; if not specified,
 	 * 	$wgArticlePath will be used.
+	 * @param string $variant language variant of url (for sr, zh..)
 	 * @return string the URL
 	 * @access public
 	 */
-	function getLocalURL( $query = '' ) {
+	function getLocalURL( $query = '', $variant = false ) {
 		global $wgArticlePath, $wgScript, $wgServer, $wgRequest;
+		global $wgVariantArticlePath, $wgContLang, $wgUser;
+
+		// internal links should point to same variant as current page (only anonymous users)
+		if($variant == false && $wgContLang->hasVariants() && !$wgUser->isLoggedIn()){
+			$pref = $wgContLang->getPreferredVariant(false);
+			if($pref != $wgContLang->getCode())
+				$variant = $pref;
+		}
 
 		if ( $this->isExternal() ) {
 			$url = $this->getFullURL();
@@ -838,7 +844,18 @@ class Title {
 		} else {
 			$dbkey = wfUrlencode( $this->getPrefixedDBkey() );
 			if ( $query == '' ) {
-				$url = str_replace( '$1', $dbkey, $wgArticlePath );
+				if($variant!=false && $wgContLang->hasVariants()){
+					if($wgVariantArticlePath==false)
+						$variantArticlePath =  "$wgScript?title=$1&variant=$2"; // default
+					else 
+						$variantArticlePath = $wgVariantArticlePath;
+					
+					$url = str_replace( '$2', urlencode( $variant ), $variantArticlePath );
+					$url = str_replace( '$1', $dbkey, $url  );
+					
+				}
+				else 
+					$url = str_replace( '$1', $dbkey, $wgArticlePath );
 			} else {
 				global $wgActionPaths;
 				$url = false;
@@ -900,12 +917,13 @@ class Title {
 	 * internal hostname for the server from the exposed one.
 	 *
 	 * @param string $query an optional query string
+	 * @param string $variant language variant of url (for sr, zh..)
 	 * @return string the URL
 	 * @access public
 	 */
-	function getInternalURL( $query = '' ) {
+	function getInternalURL( $query = '', $variant = false ) {
 		global $wgInternalServer;
-		$url = $wgInternalServer . $this->getLocalURL( $query );
+		$url = $wgInternalServer . $this->getLocalURL( $query, $variant );
 		wfRunHooks( 'GetInternalURL', array( &$this, &$url, $query ) );
 		return $url;
 	}
@@ -1142,10 +1160,11 @@ class Title {
 		} else {
 			global $wgWhitelistRead;
 
-			/** If anon users can create an account,
-			    they need to reach the login page first! */
-			if( $wgUser->isAllowed( 'createaccount' )
-			    && $this->getNamespace() == NS_SPECIAL
+			/** 
+			 * Always grant access to the login page.
+			 * Even anons need to be able to log in.
+			*/
+			if( $this->getNamespace() == NS_SPECIAL
 			    && $this->getText() == 'Userlogin' ) {
 				return true;
 			}
@@ -1370,7 +1389,7 @@ class Title {
 		);
 
 		if ($wgUseFileCache) {
-			$cache = new CacheManager($this);
+			$cache = new HTMLFileCache($this);
 			@unlink($cache->fileCacheName());
 		}
 
@@ -1451,7 +1470,7 @@ class Title {
 		do {
 			if ( preg_match( "/^(.+?)_*:_*(.*)$/S", $t, $m ) ) {
 				$p = $m[1];
-				$lowerNs = strtolower( $p );
+				$lowerNs = $wgContLang->lc( $p );
 				if ( $ns = Namespace::getCanonicalIndex( $lowerNs ) ) {
 					# Canonical namespace
 					$t = $m[2];
@@ -1469,7 +1488,7 @@ class Title {
 
 					# Interwiki link
 					$t = $m[2];
-					$this->mInterwiki = strtolower( $p );
+					$this->mInterwiki = $wgContLang->lc( $p );
 
 					# Redundant interwiki prefix to the local wiki
 					if ( 0 == strcasecmp( $this->mInterwiki, $wgLocalInterwiki ) ) {
@@ -1702,10 +1721,23 @@ class Title {
 	 * @access public
 	 */
 	function getSquidURLs() {
-		return array(
+		global $wgContLang;
+
+		$urls = array(
 			$this->getInternalURL(),
 			$this->getInternalURL( 'action=history' )
 		);
+
+		// purge variant urls as well
+		if($wgContLang->hasVariants()){
+			$variants = $wgContLang->getVariants();
+			foreach($variants as $vCode){
+				if($vCode==$wgContLang->getCode()) continue; // we don't want default variant
+				$urls[] = $this->getInternalURL('',$vCode);
+			}
+		}
+
+		return $urls;
 	}
 
 	function purgeSquid() {
@@ -2262,26 +2294,12 @@ class Title {
 	 * Get a cached value from a global cache that is invalidated when this page changes
 	 * @param string $key the key
 	 * @param callback $callback A callback function which generates the value on cache miss
+	 *
+	 * @deprecated use DependencyWrapper
 	 */
 	function getRelatedCache( $memc, $key, $expiry, $callback, $params = array() ) {
-		$touched = $this->getTouched();
-		$cacheEntry = $memc->get( $key );
-		if ( $cacheEntry ) {
-			if ( $cacheEntry['touched'] >= $touched ) {
-				return $cacheEntry['value'];
-			} else {
-				wfDebug( __METHOD__.": $key expired\n" );
-			}
-		} else {
-			wfDebug( __METHOD__.": $key not found\n" );
-		}
-		$value = call_user_func_array( $callback, $params );
-		$cacheEntry = array(
-			'value' => $value,
-			'touched' => $touched
-		);
-		$memc->set( $key, $cacheEntry, $expiry );
-		return $value;
+		return DependencyWrapper::getValueFromCache( $memc, $key, $expiry, $callback, 
+			$params, new TitleDependency( $this ) );
 	}
 
 	function trackbackURL() {
@@ -2313,6 +2331,7 @@ class Title {
 	 * @return string
 	 */
 	function getNamespaceKey() {
+		global $wgContLang;
 		switch ($this->getNamespace()) {
 			case NS_MAIN:
 			case NS_TALK:
@@ -2343,7 +2362,7 @@ class Title {
 			case NS_CATEGORY_TALK:
 				return 'nstab-category';
 			default:
-				return 'nstab-' . strtolower( $this->getSubjectNsText() );
+				return 'nstab-' . $wgContLang->lc( $this->getSubjectNsText() );
 		}
 	}
 }

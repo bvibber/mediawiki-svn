@@ -99,7 +99,7 @@ stream_wrapper_register( 'mediawiki.compress.7z', 'SevenZipStream' );
 class TextPassDumper extends BackupDumper {
 	var $prefetch = null;
 	var $input = "php://stdin";
-	var $history = MW_EXPORT_FULL;
+	var $history = WikiExporter::FULL;
 	var $fetchCount = 0;
 	var $prefetchCount = 0;
 	
@@ -143,10 +143,10 @@ class TextPassDumper extends BackupDumper {
 			$this->input = $url;
 			break;
 		case 'current':
-			$this->history = MW_EXPORT_CURRENT;
+			$this->history = WikiExporter::CURRENT;
 			break;
 		case 'full':
-			$this->history = MW_EXPORT_FULL;
+			$this->history = WikiExporter::FULL;
 			break;
 		}
 	}
@@ -190,9 +190,8 @@ class TextPassDumper extends BackupDumper {
 				$etats = '-';
 				$fetchrate = '-';
 			}
-			global $wgDBname;
 			$this->progress( sprintf( "%s: %s %d pages (%0.3f/sec), %d revs (%0.3f/sec), %0.1f%% prefetched, ETA %s [max %d]",
-				$now, $wgDBname, $this->pageCount, $rate, $this->revCount, $revrate, $fetchrate, $etats, $this->maxCount ) );
+				$now, wfWikiID(), $this->pageCount, $rate, $this->revCount, $revrate, $fetchrate, $etats, $this->maxCount ) );
 		}
 	}
 

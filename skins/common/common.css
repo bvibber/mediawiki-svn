@@ -58,6 +58,7 @@ div.thumbcaption {
 }
 div.tright {
     float: right;
+    clear: right;
     margin-left:0.5em;
 }
 div.tleft {
@@ -314,6 +315,10 @@ li span.deleted {
 	font-style: italic;
 }
 
+div.editsection {
+	float: right;
+	margin-left: 5px;
+}
 
 /* Classes for EXIF data display */
 table.mw_metadata {
@@ -429,4 +434,3 @@ table.multipageimage td {
 .imagelist .TablePager_col_links { background-color: #eeeeff }
 .imagelist .TablePager_col_img_description { white-space: normal }
 .imagelist th.TablePager_sort { background-color: #ccccff }
-
