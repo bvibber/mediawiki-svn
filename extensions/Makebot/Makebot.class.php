@@ -39,7 +39,12 @@ class MakeBot extends SpecialPage {
 			$wgOut->addHtml( wfElement( 'p', NULL, NULL ) );
 			$user = User::newFromName( $this->target );
 			if( is_object( $user ) && !is_null( $user ) ) {
-				$user->loadFromDatabase();
+				global $wgVersion;
+				if( version_compare( $wgVersion, '1.9alpha' ) < 0 ) {
+					$user->loadFromDatabase();
+				} else {
+					$user->load();
+				}
 				# Valid username, check existence
 				if( $user->getID() ) {
 					# Exists; check current privileges
