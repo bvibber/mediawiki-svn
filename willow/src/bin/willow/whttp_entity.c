@@ -972,8 +972,8 @@ parse_headers(entity)
 	char *line;
 
 	while (line = evbuffer_readline(entity->_he_frombuf->input)) {
-		char **hdr;
-		char *value;
+		char **hdr = NULL;
+		char *value = NULL;
 		int error = 1;
 
 		if (!line)

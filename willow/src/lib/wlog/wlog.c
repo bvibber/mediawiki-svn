@@ -34,6 +34,7 @@ static const char *sev_names[] = {
 
 static const int syslog_pri[] = {
 	LOG_INFO,
+	LOG_INFO,
 	LOG_WARNING,
 	LOG_ERR,
 };

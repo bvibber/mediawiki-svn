@@ -321,7 +321,7 @@ struct	qvalue		*val;
 	/*
 	 * Check for cached object.
 	 */
-	if (client->cl_reqtype == REQTYPE_GET) {
+	if (config.ncaches && client->cl_reqtype == REQTYPE_GET) {
 		if (cacheable)
 			client->cl_co = wcache_find_object(client->cl_path, &client->cl_cfd,
 				WCACHE_RDWR);

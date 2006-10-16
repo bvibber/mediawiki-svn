@@ -29,7 +29,7 @@
 #include "confparse.h"
 #include "wconfig.h"
 
-#define rotl(i,r) ((i) << (r) | (i) >> sizeof(i)*CHAR_BIT-(r));
+#define rotl(i,r) (((i) << (r)) | ((i) >> (sizeof(i)*CHAR_BIT-(r))))
 
 static struct backend **backends;
 int nbackends;
@@ -41,7 +41,8 @@ static uint32_t carp_urlhash(const char *);
 static uint32_t carp_hosthash(const char *);
 static uint32_t carp_combine(const char *url, uint32_t host);
 static void carp_recalc(const char *url);
-static int becalc_cmp(const struct backend *a, const struct backend *b);
+static void carp_calc(void);
+static int becalc_cmp(const struct backend **a, const struct backend **b);
 
 struct backend_cb_data {
 struct	backend		*bc_backend;
@@ -86,6 +87,7 @@ add_backend(addr, port)
 	if ((backends = wrealloc(backends, sizeof(struct backend*) * ++nbackends)) == NULL)
 		outofmemory();
 	backends[nbackends - 1] = new_backend(addr, addr, port);
+	carp_calc();
 	wlog(WLOG_NOTICE, "backend: %s:%d", addr, port);
 }
 
@@ -209,8 +211,12 @@ next_backend(url)
 static	int	cur = 0;
 	int	tried = 0;
 
-	if (config.use_carp)
+	if (config.use_carp) {
 		carp_recalc(url);
+	//	cur = 0;
+	}
+
+	WDEBUG((WLOG_DEBUG, "next_backend: url=[%s]", url));
 
 	while (tried++ <= nbackends) {
 		time_t now = time(NULL);
@@ -226,6 +232,8 @@ static	int	cur = 0;
 			continue;
 		}
 
+		if (config.use_carp)
+			cur = 0;
 		return backends[cur++];
 	}
 
@@ -236,9 +244,11 @@ static uint32_t
 carp_urlhash(str)
 	const char *str;
 {
+	const char *ostr = str;
 	uint32_t h = 0;
 	for (; *str; ++str)
-		h += rotl(h, 19) + *str;
+		h += (rotl(h, 19) + *str);
+	WDEBUG((WLOG_DEBUG, "hash(%s) = %d", ostr, h));
 	return h;
 }
 
@@ -267,11 +277,13 @@ struct	backend *be, *prev;
 	int	 i, j;
 
 	backends[0]->be_carp = pow((nbackends * backends[0]->be_load), 1.0 / nbackends);
+	backends[0]->be_carplfm = 1.0;
 	for (i = 1; i < nbackends; ++i) {
 		float l = 0;
 		be = backends[i];
 		prev = backends[i - 1];
-		be->be_carplfm = ((nbackends-i+1) * (be->be_load - prev->be_load));
+		be->be_carplfm = 1.0 + ((nbackends-i+1) * (be->be_load - prev->be_load));
+		WDEBUG((WLOG_DEBUG, "carp_calc: %s lfm = %f", be->be_name, be->be_carplfm));
 		for (j = 0; j < i; ++j)
 			l *= backends[j]->be_carp;
 		be->be_carp /= l;
@@ -291,14 +303,21 @@ carp_recalc(url)
 		hash += hash * 0x62531965;
 		hash = rotl(hash, 21);
 		hash *= backends[i]->be_carplfm;
+		WDEBUG((WLOG_DEBUG, "%s: hash = %lu, lfm = %f", backends[i]->be_name, hash, backends[i]->be_carplfm));
 		backends[i]->be_carp = hash;
 	}
 	qsort(backends, nbackends, sizeof(struct backend *), becalc_cmp);
+	WDEBUG((WLOG_DEBUG, "first backend = %s", backends[0]->be_name));
 }
 
 static int
 becalc_cmp(a, b)
-const 	struct	backend	*a, *b;
+const 	struct	backend	**a, **b;
 {
-	return a->be_carp - b->be_carp;
+	WDEBUG((WLOG_DEBUG, "compare %s(%lu)/%s(%lu)", (*a)->be_name, (*a)->be_carp, (*b)->be_name, (*b)->be_carp));
+	if ((*a)->be_carp < (*b)->be_carp)
+		return -1;
+	else if ((*a)->be_carp == (*b)->be_carp)
+		return 0;
+	return 1;
 }
