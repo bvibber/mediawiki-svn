@@ -89,6 +89,7 @@ interface Editor {
 	public function getUpdateAttribute();
 	public function getAddAttribute();
 
+	public function showsData($value);
 	public function view($idPath, $value);
 	public function edit($idPath, $value);
 	public function add($idPath);
@@ -370,6 +371,10 @@ abstract class RecordSetEditor extends DefaultEditor {
 
 		return $result;
 	}
+	
+	public function showsData($value) {
+		return $value->getRecordCount() > 0;
+	}
 }
 
 class RecordSetTableEditor extends RecordSetEditor {
@@ -588,6 +593,10 @@ abstract class RecordEditor extends DefaultEditor {
 			$idPath->popAttribute();
 		}
 	}
+	
+	public function showsData($value) {
+		return true;
+	}
 }
 
 class RecordTableCellEditor extends RecordEditor {
@@ -661,6 +670,10 @@ abstract class ScalarEditor extends DefaultEditor {
 			return $this->getEditHTML($idPath, $value);
 		else
 			return $this->getViewHTML($idPath, $value);
+	}
+	
+	public function showsData($value) {
+		return true;
 	}
 }
 
@@ -954,10 +967,14 @@ class RecordListEditor extends RecordEditor {
 			$attributeId = $idPath->getId();
 			$expansionPrefix = $this->getExpansionPrefix($class, $attributeId);
 			$this->setExpansionByEditor($editor, $class);
-			$result .= '<li>'.
-						'<h'. $this->headerLevel .'><span id="collapse-'. $attributeId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</span></h'. $this->headerLevel .'>' .
-						'<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->view($idPath, $value->getAttributeValue($attribute)) . '</div>' .
-						'</li>';
+			$attributeValue = $value->getAttributeValue($attribute);
+			
+			if ($editor->showsData($attributeValue)) 
+				$result .= '<li>'.
+							'<h'. $this->headerLevel .'><span id="collapse-'. $attributeId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</span></h'. $this->headerLevel .'>' .
+							'<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->view($idPath, $attributeValue) . '</div>' .
+							'</li>';
+
 			$idPath->popAttribute();
 		}
 
@@ -1175,6 +1192,10 @@ class AttributeLabelViewer extends Viewer {
 
 	public function add($idPath) {
 		return "New " . strtolower($this->attribute->name);
+	}
+	
+	public function showsData($value) {
+		return true;
 	}
 }
 
