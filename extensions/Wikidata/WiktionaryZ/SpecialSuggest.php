@@ -52,9 +52,7 @@ function getSuggestions() {
 			$sql = getSQLForCollectionOfType('TATT');
 			break;
 		case 'language':
-			$sql = "SELECT language_id AS row_id, language_name " .
-					"FROM language_names " .
-					"WHERE 1 ";
+			$sql = getSQLForLanguage();
 			$rowText = 'language_name';
 			break;
 		case 'defined-meaning':
@@ -84,6 +82,8 @@ function getSuggestions() {
 	if ($search != '') {
 		if ($query == 'transaction')
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes("%$search%");
+		else if ($query == 'language')
+			$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes("$search%");
 		else	
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes("$search%");
 	}
@@ -135,6 +135,24 @@ function getSQLForCollectionOfType($collectionType) {
             "AND expression.expression_id=syntrans.expression_id AND syntrans.identical_meaning=1 ".
             "AND " . getLatestTransactionRestriction('syntrans') .
             "AND " . getLatestTransactionRestriction('uw_collection_contents');
+}
+
+function getSQLForLanguage() {
+	global
+		$wgUser;
+	
+	$userLanguage = $wgUser->getOption('language');
+
+	if ($userLanguage == 'en')
+		return "SELECT language.language_id AS row_id,language_names.language_name " .
+			"FROM language " .
+			"JOIN language_names ON language.language_id = language_names.language_id " .
+			"WHERE language_names.name_language_id = " . getLanguageIdForCode('en');
+	else
+		return "SELECT language.language_id AS row_id,COALESCE(ln1.language_name,ln2.language_name) AS language_name " .
+			"FROM language " .
+			"LEFT JOIN language_names AS ln1 ON language.language_id = ln1.language_id AND ln1.name_language_id = " . getLanguageIdForCode($userLanguage) . " " .
+			"JOIN language_names AS ln2 ON language.language_id = ln2.language_id AND ln2.name_language_id = " . getLanguageIdForCode('en');
 }
 
 function getRelationTypeAsRecordSet($queryResult) {
