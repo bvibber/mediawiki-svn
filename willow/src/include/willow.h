@@ -63,11 +63,18 @@ void outofmemory(void);
 # pragma does_not_return(outofmemory)
 #endif
 
-#define safe_snprintf(n,a) if (snprintf a > (n - 1)) abort();
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
 #define CHAR_HOST	1
 
 extern int char_table[];
+
+#if defined(__GNUC__) || defined(__INTEL_COMPILER)
+# define likely(c) __builtin_expect((c), 1)
+# define unlikely(c) __buildin_expect((c), 0)
+#else
+# define likely(c) c
+# define unlikely(c) c
+#endif
 
 #endif

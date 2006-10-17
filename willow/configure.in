@@ -16,7 +16,7 @@ sunpro_common="-errshort=tags -errtags -mc -xc99"
 debug_cflags_sunpro="-g $sunpro_common -v -xs"
 prod_cflags_sunpro="-fast $sunpro_common -xdepend=yes -xipo=2 -xalias_level=std"
 
-AC_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADER(src/include/config.h)
 
 echo ""
 echo "examining environment..."
@@ -55,15 +55,8 @@ echo "using CFLAGS: $USE_CFLAGS"
 
 AC_PROG_INSTALL
 AC_MAKE_INCLUDE
-AC_PATH_PROG([YACC], [yacc],none)
-if test x$YACC = xnone; then
-	AC_MSG_ERROR([you don't have yacc])
-fi
-
-AC_PATH_PROG([LEX], [lex],none)
-if test x$LEX = xnone; then
-	AC_MSG_ERROR([you don't have lex])
-fi
+AC_PROG_YACC
+AC_PROG_LEX
 
 dependstyle=null
 
@@ -137,6 +130,14 @@ AC_CHECK_LIB(event, event_add, [],[AC_ERROR([libevent not found])])
 datadir="${datadir}/willow"
 CFLAGS="$USE_CFLAGS"
 
+
+PATH_LIBEXECDIR=`eval echo $libexecdir | sed -e "s,NONE,$prefix,"`
+PATH_DATADIR=`eval echo $datadir`
+PATH_SYSCONFDIR=`eval echo $sysconfdir`
+AC_DEFINE_UNQUOTED([LIBEXECDIR], ["$PATH_LIBEXECDIR"], [Path to libexec dir])
+AC_DEFINE_UNQUOTED([DATADIR], ["$PATH_DATADIR"], [Path to data dir])
+AC_DEFINE_UNQUOTED([SYSCONFDIR], ["$PATH_SYSCONFDIR"], [Path to sysconf dir])
+
 AC_OUTPUT(
 	mk/prog.mk 
 	mk/lib.mk
@@ -150,10 +151,6 @@ AC_OUTPUT(
 	mk/Makefile
 	Makefile 
 	src/Makefile 
-	src/bin/Makefile
-	src/bin/willow/Makefile
-	src/bin/wlogwriter/Makefile
-	src/lib/Makefile
-	src/lib/wnet/Makefile
-	src/lib/wlog/Makefile
+	src/willow/Makefile
+	src/wlogwriter/Makefile
 	errors/Makefile)

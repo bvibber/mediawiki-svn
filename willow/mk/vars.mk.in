@@ -12,7 +12,7 @@ _LEX=		@LEX@
 _YACC=		@YACC@
 
 CC=		@CC@
-_CPPFLAGS=	-I@abs_top_srcdir@ -I. -I@abs_top_srcdir@/src/include @CPPFLAGS@
+_CPPFLAGS=	@CPPFLAGS@
 _CFLAGS=	@CFLAGS@
 _LDFLAGS=	@LDFLAGS@ @LIBS@
 
