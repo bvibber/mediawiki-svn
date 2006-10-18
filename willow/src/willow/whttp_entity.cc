@@ -185,7 +185,8 @@ struct	header_list	*hl;
 	entity->he_flags.hdr_only = 0;
 	if (!entity->he_flags.response && entity->he_rdata.request.reqtype == REQTYPE_POST) {
 		entity->he_source.fde._wrt = entity->he_rdata.request.contlen;
-	}
+	} else if (entity->he_flags.response)
+		entity->he_source.fde._wrt = entity->he_rdata.request.contlen;
 
 	entity->_he_tobuf = bufferevent_new(entity->_he_target->fde_fd,
 		NULL, entity_send_target_write,
@@ -440,21 +441,22 @@ struct	http_entity	*entity = (http_entity *) d;
 		read = bufferevent_read(entity->_he_frombuf, buf, want);
 		WDEBUG((WLOG_DEBUG, "rw %d, got %d wrote=%d wrt=%d", want, read, wrote,
 				entity->he_source.fde._wrt));
-		if (read == 0) {
-			if (!wrote)
-				bufferevent_enable(entity->_he_frombuf, EV_READ);
-			else
-				bufferevent_disable(entity->_he_frombuf, EV_READ);
-			return;
-		}
-		
-		if (entity->_he_chunk_size)
-			entity->_he_chunk_size -= read;
 		if (entity->he_source.fde._wrt) {
 			entity->he_source.fde._wrt -= read;
 			if (entity->he_source.fde._wrt == 0)
 				contdone = 1;
 		}
+		if (read == 0 && !contdone) {
+//			if (!wrote)
+				bufferevent_enable(entity->_he_frombuf, EV_READ);
+			bufferevent_disable(entity->_he_tobuf, EV_WRITE);
+//			else
+//				bufferevent_disable(entity->_he_frombuf, EV_READ);
+			return;
+		}
+		
+		if (entity->_he_chunk_size)
+			entity->_he_chunk_size -= read;
 
 		if ((entity->he_te & TE_CHUNKED) && entity->_he_chunk_size == 0)
 			/* subtract the +2 we added above */
@@ -652,8 +654,8 @@ static  char		 fbuf[ZLIB_BLOCK];
 	bufferevent_disable(entity->_he_tobuf, EV_WRITE);
 	if (!entity->he_flags.drained) {
 		entity->he_flags.drained = 1;
-		entity_read_callback(entity->_he_frombuf, entity);
-	}
+}		entity_read_callback(entity->_he_frombuf, entity);
+//	}
 }
 
 static void
