@@ -16,6 +16,10 @@
 
 #include <sstream>
 
+#ifdef __INTEL_COMPILER
+# pragma warning (disable: 869 981 304 383 1418 1469 810)
+#endif
+
 template<typename To, typename From>
 To lexical_cast(From const &f)
 {
@@ -25,7 +29,7 @@ To			t;
 	strm >> t;
 	return t;
 }
- 
+
 typedef unsigned long long w_size_t;
 
 #ifdef WDEBUG_ALLOC

@@ -37,7 +37,6 @@ static void backend_read(struct fde *);
 static struct backend *next_backend(string const &url);
 static uint32_t carp_urlhash(string const &);
 static uint32_t carp_hosthash(string const &);
-static uint32_t carp_combine(string const &, uint32_t);
 static void carp_recalc(string const &url);
 static void carp_calc(void);
 static int becarp_cmp(backend const *a, backend const *b);
@@ -159,11 +158,10 @@ struct	backend_cb_data	*cbd = static_cast<backend_cb_data *>(e->fde_rdata);
 		wlog(WLOG_WARNING, "%s: [%d] %s; retry in %d seconds", 
 			cbd->bc_backend->be_name.c_str(), error, strerror(error), config.backend_retry);
 		cbd->bc_backend->be_dead = 1;
-		cbd->bc_backend->be_time = time(NULL) + config.backend_retry;
+		cbd->bc_backend->be_time = retry;
 		if (get_backend(cbd->bc_url, cbd->bc_func, cbd->bc_data, 0) == -1) {
 			cbd->bc_func(NULL, NULL, cbd->bc_data);
 		}
-
 		wfree(cbd);
 		return;
 	}
@@ -225,14 +223,6 @@ carp_hosthash(string const &str)
 {
 	uint32_t h = carp_urlhash(str) * 0x62531965;
 	return rotl(h, 21);
-}
-
-static uint32_t
-carp_combine(string const &url, uint32_t host)
-{
-	uint32_t c = carp_urlhash(url) ^ host;
-	c += c * 0x62531965;
-	return rotl(c, 21);
 }
 
 static void

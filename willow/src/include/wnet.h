@@ -62,9 +62,9 @@ struct	client_data	*fde_cdata;
 	int		 fde_epflags;
 struct	readbuf		 fde_readbuf;
 	struct {
-		int	open:1;
-		int	held:1;
-		int	pend:1;
+		unsigned int	open:1;
+		unsigned int	held:1;
+		unsigned int	pend:1;
 	}		 fde_flags;
 struct	event		 fde_ev;
 };

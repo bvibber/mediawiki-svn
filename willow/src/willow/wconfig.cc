@@ -59,7 +59,7 @@ struct listener	*nl = new listener;
 	nl->port = port;
 	nl->name = e.item_key;
 	nl->addr.sin_family = AF_INET;
-	nl->addr.sin_port = htons(nl->port);
+	nl->addr.sin_port = htons((unsigned short)nl->port);
 	nl->addr.sin_addr.s_addr = inet_addr(nl->name.c_str());
 	wlog(WLOG_NOTICE, "listening on %s:%d", e.item_key.c_str(), port);
 }
@@ -88,8 +88,6 @@ value	*v;
 			config.caches[config.ncaches].maxsize);
 	config.ncaches++;
 }
-
-extern int parse_error;
 
 bool
 read_config(string const &file)

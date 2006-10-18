@@ -35,6 +35,7 @@
 #define ENT_ERR_INVREQ	-4	/* invalid request type			*/
 #define ENT_ERR_2MANY	-5	/* too many headers			*/
 #define ENT_ERR_LOOP	-6	/* forwarding loop detected		*/
+#define ENT_ERR_INVAE	-7	/* invalid accept-encoding		*/
 
 #define TE_CHUNKED	0x1	/* Chunked encoding			*/
 
@@ -77,7 +78,7 @@ enum encoding {
 	E_DEFLATE,
 	E_X_DEFLATE,
 	E_GZIP,
-	E_X_GZIP,
+	E_X_GZIP
 };
 
 struct http_entity {
@@ -131,13 +132,13 @@ struct	header_list	 he_headers;
 	}		 he_source;
 
 	struct {
-		int	 cachable:1;
-		int	 response:1;
-		int	 error:1;
-		int	 hdr_only:1;
-		int	 eof:1;
-		int	 drained:1;
-		int	 chunked:1;
+		unsigned int	 cachable:1;
+		unsigned int	 response:1;
+		unsigned int	 error:1;
+		unsigned int	 hdr_only:1;
+		unsigned int	 eof:1;
+		unsigned int	 drained:1;
+		unsigned int	 chunked:1;
 	}		 he_flags;
 
 	int		 he_te;		/* transfer encoding		*/

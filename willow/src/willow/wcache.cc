@@ -30,7 +30,6 @@
 
 #define CACHEDIR "__objects__"
 
-static void dberror(const char *, int);
 static int cache_next_id(void);
 static void run_expiry(int, short, void*);
 static void wcache_evict(struct cache_object *);
@@ -95,7 +94,6 @@ cache_unlink(cache_object *obj)
 {
 	char *path;
 	int plen;
-	int i;
 
 	plen = strlen(config.caches[0].dir) + 1 + sizeof(CACHEDIR) + 1 + 6 + int_max_len;
 	path = (char *)wmalloc(plen + 1);
@@ -113,7 +111,7 @@ struct	cachedir	*cd;
 struct	cache_state	 state;
 	
 	for (cd = config.caches; cd < config.caches + config.ncaches; ++cd) {
-		size_t	 len, dlen;
+		size_t	 dlen;
 		char 	*dir;
 		
 		dlen = strlen(cd->dir) + sizeof(CACHEDIR) + 2 + 6 /* 0/1/2/ */;
@@ -179,7 +177,6 @@ void
 wcache_init(int readstate)
 {
 struct	cachedir	*cd;
-	int		 i;
 	
 	if (config.ncaches == 0) {
 		wlog(WLOG_WARNING, "no cache directories specified");
@@ -289,11 +286,12 @@ struct	cache_object	*obj;
 		wlog(WLOG_WARNING, "opening cache dir %s: %s", stpath, strerror(errno));
 		exit(8);
 	}
-	fprintf(stfil, "%lld %lld\n", state->cs_id, state->cs_size);
+	fprintf(stfil, "%llu %llu\n", (w_size_t) state->cs_id, (w_size_t)state->cs_size);
 	TAILQ_FOREACH(obj, &objects, entries) {
 		if (!obj->co_complete)
 			continue;
-		fprintf(stfil, "%s %s %d %lu %lu %d %lu\n", obj->co_key, obj->co_path, obj->co_size, 
+		fprintf(stfil, "%s %s %lu %lu %lu %d %lu\n", obj->co_key, obj->co_path, 
+			(unsigned long) obj->co_size, 
 		        (unsigned long) obj->co_time, (unsigned long) obj->co_lru, obj->co_id, 
 		        (unsigned long) obj->co_expires);
 	}
@@ -306,10 +304,7 @@ cache_getstate(cache_state *state)
 	FILE 		*stfil;
 	char		*stpath;
 	int		 stlen;
-struct	cache_object	*obj;
-	int		 i;
 	char		*s;
-	size_t		 l;
 
 	stlen = strlen(config.caches[0].dir) + 1 + 5 + 1;
 	if ((stpath = (char *)wmalloc(stlen)) == NULL)
@@ -322,7 +317,7 @@ struct	cache_object	*obj;
 		return;
 	}
 
-	if (fscanf(stfil, "%lld %lld\n", &state->cs_id, &state->cs_size) != 2) {
+	if (fscanf(stfil, "%llu %llu\n", &state->cs_id, &state->cs_size) != 2) {
 		wlog(WLOG_ERROR, "data format error in cache state file %s", stpath);
 		exit(8);
 	}
@@ -410,8 +405,6 @@ static void
 run_expiry(int fd, short ev, void *data)
 {
 	w_size_t	 wantsize;
-	int		 i;
-struct	cache_object	*obj;
 
 	WDEBUG((WLOG_DEBUG, "expire: start, run every %d, cache is %lld bytes large", 
 		config.cache_expevery, state.cs_size));

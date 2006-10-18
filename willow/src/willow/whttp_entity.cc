@@ -87,12 +87,7 @@ static int via_includes_me(const char *);
 static int write_zlib_eof(struct http_entity *);
 static int write_data(struct http_entity *, void *buf, size_t len);
 
-static void entity_send_headers_done(struct fde *, void *, int);
-static void entity_send_fde_write_done(struct fde *, void *, int);
-static void entity_send_buf_done(struct fde *, void *, int);
-static void entity_send_fde_read(struct fde *);
 static void entity_send_file_done(struct fde *, void *, int);
-static void entity_send_target_read(struct bufferevent *, void *);
 static void entity_send_target_write(struct bufferevent *, void *);
 static void entity_send_target_error(struct bufferevent *, short, void *);
 
@@ -104,6 +99,7 @@ const char *ent_errors[] = {
 	/* -4 */	"Invalid request type",
 	/* -5 */	"Too many headers",
 	/* -6 */	"Forwarding loop detected",
+	/* -7 */	"Invalid Accept-Encoding",
 };
 
 const char *ent_encodings[] = {
@@ -173,16 +169,11 @@ entity_read_headers(http_entity *entity, header_cb func, void *udata)
 				entity_read_callback, NULL, entity_error_callback, entity);
 	bufferevent_disable(entity->_he_frombuf, EV_WRITE);
 	bufferevent_enable(entity->_he_frombuf, EV_READ);
-//	wnet_register(entity->he_source.fde.fde->fde_fd, FDE_READ, entity_read_callback, entity);
-	//entity_read_callback(entity->he_source.fde);
 }
 
 void
 entity_send(fde *fde, http_entity *entity, header_cb cb, void *data, int flags)
 {
-	char		 status[4];
-	int		 wn_flags = 0;
-	char		*hdr;
 struct	header_list	*hl;
 	int		 window = 15;
 
@@ -539,14 +530,6 @@ static	unsigned char zbuf[ZLIB_BLOCK * 2];
 }
 
 static void
-entity_send_target_read(struct bufferevent *buf, void *d)
-{
-	/*
-	 * Read from target possible.  This never happens.
-	 */
-}
-
-static void
 entity_send_target_write(struct bufferevent *buf, void *d)
 {
 struct	http_entity	*entity = (http_entity *)d;
@@ -873,13 +856,13 @@ struct	header_list	*h;
 	write(fd, &i, sizeof(i));	
 	
 	while (head->hl_next) {
-		int i, j;
+		int j, k;
 		head = head->hl_next;
-		i = strlen(head->hl_name);
-		write(fd, &i, sizeof(i));
+		k = strlen(head->hl_name);
+		write(fd, &k, sizeof(k));
 		j = strlen(head->hl_value);
 		write(fd, &j, sizeof(j));
-		write(fd, head->hl_name, i);
+		write(fd, head->hl_name, k);
 		write(fd, head->hl_value, j);
 	}
 }
@@ -887,21 +870,21 @@ struct	header_list	*h;
 int
 header_undump(header_list *head, int fd, off_t *len)
 {
-	int		 i = 0, j = 0, n = 0;
+	int		 i = 0, j = 0, sz = 0;
 struct	header_list	*it = head;
 	ssize_t		 r;
 	
 	*len = 0;
 	bzero(head, sizeof(*head));
-	if ((r = read(fd, &n, sizeof(n))) < 0) {
+	if ((r = read(fd, &sz, sizeof(sz))) < 0) {
 		wlog(WLOG_WARNING, "reading cache file: %s", strerror(errno));
 		return -1; /* XXX */
 	}
 	
 	*len += r;
-	WDEBUG((WLOG_DEBUG, "header_undump: %d entries", n));
+	WDEBUG((WLOG_DEBUG, "header_undump: %d entries", sz));
 
-	while (n--) {
+	while (sz--) {
 		char *n, *v, *s;
 		int k;
 		
@@ -967,7 +950,7 @@ parse_headers(http_entity *entity)
 			if (isspace(*line)) {
 				char *s = line;
 				if (!entity->he_headers.hl_next) {
-					error = -1;
+					error = ENT_ERR_INVHDR;
 					goto error;
 				}
 				while (isspace(*s))
@@ -1022,7 +1005,7 @@ parse_headers(http_entity *entity)
 			} else if (!strcasecmp(hdr[0], "Accept-Encoding")) {
 				if (!entity->he_flags.response &&
 				    qvalue_parse(&entity->he_rdata.request.accept_encoding, value) == -1) {
-					error = -1;
+					error = ENT_ERR_INVAE;
 					WDEBUG((WLOG_DEBUG, "a-e parse failed"));
 					goto error;
 				}
@@ -1052,7 +1035,7 @@ parse_headers(http_entity *entity)
 			if (value)
 				wfree(value);
 			free(line);
-			return -1;
+			return -error;
 		}
 
 		free(line);

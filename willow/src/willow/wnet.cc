@@ -274,18 +274,9 @@ wnet_write_do(fde *e)
 {
 struct	wrtbuf	*buf;
 	int	 i;
-#ifdef WILLOW_DEBUG
-	char	*p;
-#endif
 	
 	buf = (wrtbuf *)e->fde_wdata;
 	while ((i = write(e->fde_fd, (char *)buf->wb_buf + buf->wb_done, buf->wb_size - buf->wb_done)) > -1) {
-#ifdef WILLOW_DEBUG_no
-		(void)fprintf(stderr, "write buf: [");
-		for (p = ((char *)buf->wb_buf + buf->wb_done); p < ((char *)buf->wb_buf + buf->wb_done + i); ++p)
-			(void)fputc(*p, stderr);
-		(void)fputs("]\n", stderr);
-#endif
 		buf->wb_done += i;
 		WDEBUG((WLOG_DEBUG, "%d of %d done", buf->wb_done, buf->wb_size));
 		if (buf->wb_done == (off_t)buf->wb_size) {

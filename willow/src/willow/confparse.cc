@@ -117,8 +117,8 @@ bool
 if_true(std::string const &if_)
 {
 if_entry	*e;
-char const	*dir, *od;
-	dir = od = if_.c_str();
+char const	*dir;
+	dir = if_.c_str();
 	dir += sizeof("%if");
 	while (isspace(*dir))
 		dir++;
@@ -202,9 +202,6 @@ new_tree_entry_from_template(
 	bool			 is_template
 ) {
 tree_entry	*n, *e;
-value		*value;
-void		*pp = NULL;
-const char	*key;
 	if ((e = t.find(block, templatename)) == NULL)
 		return e;
 	n = t.find_or_new(block, name, pos, unnamed, true);
@@ -217,9 +214,6 @@ int
 find_untouched(tree &t)
 {
 int		 i = 0;
-const char	*key;
-value		*val;
-void		*pp = NULL;
 vector<tree_entry>::const_iterator	it, end;
 map<string, value>::const_iterator	vit, vend;
 	for (it = t.entries.begin(), end = t.entries.end(); it != end; ++it) {
@@ -264,7 +258,6 @@ map<string, value>::iterator	it;
 bool
 tree::add(tree_entry const &item)
 {
-value		*existing;
 	/* if the entry already exists, do nothing */
 	if (find_item(item) != NULL)
 		return false;

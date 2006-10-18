@@ -91,9 +91,9 @@ struct	http_entity	 cl_entity;	/* reply to send back			*/
 	int		 cl_cfd;	/* FD of cache file for writing, or 0	*/
 struct	cache_object	*cl_co;		/* Cache object				*/
 	struct {
-		int	f_cached:1;
-		int	f_closed:1;
-		int	f_http11:1;	/* Client understands HTTP/1.1		*/
+		unsigned int	f_cached:1;
+		unsigned int	f_closed:1;
+		unsigned int	f_http11:1;	/* Client understands HTTP/1.1		*/
 	}		 cl_flags;
 	size_t		 cl_dsize;	/* Object size				*/
 enum	encoding	 cl_enc;
@@ -101,7 +101,6 @@ struct	http_client	*fe_next;	/* freelist 				*/
 };
 
 static struct http_client freelist;
-static struct http_client deadlist;
 
 static void client_close(struct http_client *);
 static void proxy_start_backend(struct backend *, struct fde *, void *);
@@ -239,7 +238,6 @@ static void
 client_read_done(http_entity *entity, void *data, int res)
 {
 struct	http_client	*client = (http_client *)data;
-struct	cache_object	*cobj;
 	char		*pragma, *cache_control, *ifmod;
 struct	qvalue_head	*acceptenc;
 struct	qvalue		*val;
@@ -464,8 +462,6 @@ static void
 client_headers_done(http_entity *entity, void *data, int res)
 {
 struct	http_client	*client = (http_client *)data;
-	char		*cache_path;
-	size_t		 plen;
 	
 	WDEBUG((WLOG_DEBUG, "client_headers_done: called"));
 	
@@ -499,9 +495,9 @@ struct	http_client	*client = (http_client *)data;
 		 */
 		if ((lastmod = entity->he_h_last_modified) != NULL) {
 			struct tm tim;
-			char *res;
-			res = strptime(lastmod, "%a, %d %b %Y %H:%M:%S", &tim);
-			if (res) {
+			char *lm;
+			lm = strptime(lastmod, "%a, %d %b %Y %H:%M:%S", &tim);
+			if (lm) {
 				WDEBUG((WLOG_DEBUG, "last-modified: %d", mktime(&tim)));
 				client->cl_co->co_time = mktime(&tim);
 			}
@@ -552,7 +548,7 @@ struct	stat	 sb;
 	header_add(&client->cl_entity.he_headers, wstrdup("Via"), wstrdup(via_hdr));
 	header_add(&client->cl_entity.he_headers, wstrdup("X-Cache"), wstrdup(cache_hit_hdr));
 	if (!client->cl_enc && !header_find(&client->cl_entity.he_headers, "Content-Length")) {
-		snprintf(size, sizeof(size), "%d", client->cl_co->co_size);
+		snprintf(size, sizeof(size), "%lu", (unsigned long) client->cl_co->co_size);
 		header_add(&client->cl_entity.he_headers, wstrdup("Content-Length"), wstrdup(size));
 	}
 

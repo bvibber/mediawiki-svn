@@ -42,9 +42,11 @@ struct event ev_sigint;
 
 static void fde_ev_callback(int, short, void *);
 
-void sig_exit(int, short, void *);
+static void
+sig_exit(int, short, void *);
 
-void sig_exit(int sig, short what, void *d)
+void
+sig_exit(int sig, short what, void *d)
 {
 	exit(0);
 }
@@ -52,8 +54,6 @@ void sig_exit(int sig, short what, void *d)
 void
 wnet_init_select(void)
 {
-	int	 i;
-
 	signal(SIGPIPE, SIG_IGN);
 	event_init();
 
