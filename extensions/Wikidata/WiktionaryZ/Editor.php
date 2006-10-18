@@ -739,7 +739,7 @@ class DefinedMeaningHeaderEditor extends ScalarEditor {
 		$definedMeaningAsLink = definedMeaningAsLink($value);
 		$escapedDefinition = htmlspecialchars($definition);
 
-		if ($this->truncate && strlen($definition) >= $this->truncateAt)
+		if ($this->truncate && strlen($definition) > $this->truncateAt)
 			$escapedDefinition = '<span title="'. $escapedDefinition .'">'. htmlspecialchars(substr($definition, 0, $this->truncateAt)) . '...</span>';
 			
 		return $definedMeaningAsLink . ": " . $escapedDefinition;			
@@ -786,7 +786,7 @@ class TextEditor extends ScalarEditor {
 //		global $wgParser, $wgTitle, $wgOut;
 //		$parserOutput = $wgParser->parse($value, $wgTitle, $wgOut->mParserOptions, true, true, $wgOut->mRevisionId);
 
-		if (!$this->truncate || strlen($value) < $this->truncateAt)
+		if (!$this->truncate || strlen($value) <= $this->truncateAt)
 			return $escapedValue;//$parserOutput->getText();
 		else
 			return '<span title="'. $escapedValue .'">'. htmlspecialchars(substr($value, 0, $this->truncateAt)) . '...</span>';
