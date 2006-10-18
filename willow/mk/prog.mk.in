@@ -10,15 +10,15 @@ default: all
 _PROGRAM=$(PROGRAM)
 all: $(_PROGRAM)
 
-OBJS=$(SRCS:.c=.o) $(OBJADD)
+_ALLOBJS=$(OBJS) $(OBJADD)
 
-$(_PROGRAM): $(OBJS)
+$(_PROGRAM): $(_ALLOBJS)
 	@echo "	$(_LINK) -o $@"
 	@$(_LINK) -o $@
 	
 clean:
-	@echo "	$(_RMF) $(_PROGRAM) $(OBJS)"
-	@$(_RMF) $(_PROGRAM) $(OBJS)
+	@echo "	$(_RMF) $(_PROGRAM) $(_ALLOBJS)"
+	@$(_RMF) $(_PROGRAM) $(_ALLOBJS) y.tab.cc lex.yy.cc y.tab.h
 
 install:
 	@echo "	$(_MKDIR) $(BINDIR)"

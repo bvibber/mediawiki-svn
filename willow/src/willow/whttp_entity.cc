@@ -115,8 +115,7 @@ const char *ent_encodings[] = {
 };
 
 void
-entity_free(entity)
-	struct http_entity *entity;
+entity_free(http_entity *entity)
 {
 	WDEBUG((WLOG_DEBUG, "free entity @ %p", entity));
 
@@ -141,9 +140,7 @@ entity_free(entity)
 }
 
 void
-entity_set_response(ent, isresp)
-	struct http_entity *ent;
-	int isresp;
+entity_set_response(http_entity *ent, int isresp)
 {
 	if (isresp) {
 		if (ent->he_flags.response)
@@ -163,10 +160,7 @@ entity_set_response(ent, isresp)
 }
 
 void
-entity_read_headers(entity, func, udata)
-	struct http_entity *entity;
-	header_cb func;
-	void *udata;
+entity_read_headers(http_entity *entity, header_cb func, void *udata)
 {
 	entity->_he_cbdata = udata;
 	entity->_he_func = func;
@@ -184,12 +178,7 @@ entity_read_headers(entity, func, udata)
 }
 
 void
-entity_send(fde, entity, cb, data, flags)
-	struct fde *fde;
-	struct http_entity *entity;
-	header_cb cb;
-	void *data;
-	int flags;
+entity_send(fde *fde, http_entity *entity, header_cb cb, void *data, int flags)
 {
 	char		 status[4];
 	int		 wn_flags = 0;
@@ -259,13 +248,13 @@ struct	header_list	*hl;
 			wstrdup(ent_encodings[entity->he_encoding]));
 	for (hl = entity->he_headers.hl_next; hl; hl = hl->hl_next)
 		evbuffer_add_printf(entity->_he_tobuf->output, "%s: %s\r\n", hl->hl_name, hl->hl_value);
-	bufferevent_write(entity->_he_tobuf, "\r\n", 2);
+	bufferevent_write(entity->_he_tobuf, const_cast<char *>("\r\n"), 2);
 }
 
 static void
 entity_error_callback(struct bufferevent *be, short what, void *d)
 {
-struct	http_entity	*entity = d;
+struct	http_entity	*entity = (http_entity *)d;
 
 	/*
 	 * Some kind of error occured while we were reading from the backend.
@@ -288,7 +277,7 @@ struct	http_entity	*entity = d;
 			WDEBUG((WLOG_DEBUG, "writing chunked data, append EOF"));
 			entity->he_flags.eof = 1;
 			bufferevent_enable(entity->_he_tobuf, EV_WRITE);
-			bufferevent_write(entity->_he_tobuf, "0\r\n", 3);
+			bufferevent_write(entity->_he_tobuf, const_cast<void *>((void *)"0\r\n"), 3);
 			return;
 		}
 		WDEBUG((WLOG_DEBUG, "entity_error_callback: EOF"));
@@ -302,8 +291,7 @@ struct	http_entity	*entity = d;
 }
 
 static int
-write_zlib_eof(entity)
-	struct http_entity *entity;
+write_zlib_eof(http_entity *entity)
 {
 	int zerr;
 	unsigned char zbuf[16384];
@@ -336,11 +324,9 @@ write_zlib_eof(entity)
 }
 
 static void
-entity_read_callback(be, d)
-	struct bufferevent *be;
-	void *d;
+entity_read_callback(bufferevent *be, void *d)
 {
-struct	http_entity	*entity = d;
+struct	http_entity	*entity = (http_entity *) d;
 	int		 i;
 #define RD_BUFSZ	 16386
 	char		 buf[RD_BUFSZ];
@@ -432,7 +418,7 @@ struct	http_entity	*entity = d;
 				if (entity->he_flags.chunked) {
 					bufferevent_disable(entity->_he_frombuf, EV_READ);
 					bufferevent_enable(entity->_he_tobuf, EV_WRITE);
-					bufferevent_write(entity->_he_tobuf, "0\r\n", 3);
+					bufferevent_write(entity->_he_tobuf, const_cast<void *>((void *)"0\r\n"), 3);
 					more = 1;
 				}
 
@@ -508,10 +494,7 @@ struct	http_entity	*entity = d;
 }
 
 static int
-write_data(entity, buf, len)
-struct	http_entity	*entity;
-	void		*buf;
-	size_t		 len;
+write_data(http_entity *entity, void *buf, size_t len)
 {
 static	unsigned char zbuf[ZLIB_BLOCK * 2];
 
@@ -566,7 +549,7 @@ entity_send_target_read(struct bufferevent *buf, void *d)
 static void
 entity_send_target_write(struct bufferevent *buf, void *d)
 {
-struct	http_entity	*entity = d;
+struct	http_entity	*entity = (http_entity *)d;
 static  char		 fbuf[ZLIB_BLOCK];
 
 	WDEBUG((WLOG_DEBUG, "entity_send_target_write: eof=%d, state=%d", 
@@ -668,7 +651,7 @@ static  char		 fbuf[ZLIB_BLOCK];
 			return;
 		}
 		entity->he_source.fd.off += i;
-		if (entity->he_source.fd.off == entity->he_source.fd.size) {
+		if (entity->he_source.fd.off == (off_t) entity->he_source.fd.size) {
 			entity->he_flags.eof = 1;
 			write_zlib_eof(entity);
 			return;
@@ -693,7 +676,7 @@ static  char		 fbuf[ZLIB_BLOCK];
 static void
 entity_send_target_error(struct bufferevent *buf, short err, void *d)
 {
-struct	http_entity	*entity = d;
+struct	http_entity	*entity = (http_entity *)d;
 
 	/*
 	 * Writing to target produced an error.
@@ -703,12 +686,9 @@ struct	http_entity	*entity = d;
 
 /*ARGSUSED*/
 static void
-entity_send_file_done(fde, data, res)
-	struct fde *fde;
-	void *data;
-	int res;
+entity_send_file_done(fde *fde, void *data, int res)
 {
-struct	http_entity	*entity = data;
+struct	http_entity	*entity = (http_entity *)data;
 
 	WDEBUG((WLOG_DEBUG, "entity_send_file_done: called for %d [%s], res=%d", 
 		fde->fde_fd, fde->fde_desc, res));
@@ -717,8 +697,7 @@ struct	http_entity	*entity = data;
 }	
 
 static int
-validhost(host)
-	const char *host;
+validhost(const char *host)
 {
 	for (; *host; ++host) {
 		if (!(char_table[(unsigned char)*host] & CHAR_HOST))
@@ -728,8 +707,7 @@ validhost(host)
 }
 
 static int
-via_includes_me(s)
-        const char *s;
+via_includes_me(const char *s)
 {
 	char    *orig = wstrdup(s);
 	char    *via = orig, *comma, *space;
@@ -766,17 +744,16 @@ via_includes_me(s)
  * Header handling.
  */
 void
-header_free(head)
-	struct header_list *head;
+header_free(header_list *head)
 {
 struct	header_list	*next = head->hl_next;
 
 	while (next) {
-		struct header_list *this = next;
-		next = this->hl_next;
-		wfree((char *)this->hl_name);
-		wfree((char *)this->hl_value);
-		wfree(this);
+		struct header_list *here = next;
+		next = here->hl_next;
+		wfree((char *)here->hl_name);
+		wfree((char *)here->hl_value);
+		wfree(here);
 	}
 
 	bzero(head, sizeof(*head));
@@ -787,33 +764,29 @@ struct	header_list	*next = head->hl_next;
 #endif
 
 void
-header_add(head, name, value)
-	struct header_list *head;
-	char *name, *value;
+header_add(header_list *head, char *name, char *value)
 {
-struct	header_list	*new = head;
+struct	header_list	*n = head;
 
 	head->hl_num++;
 	
 	if (head->hl_tail)
-		new = head->hl_tail;
+		n = head->hl_tail;
 	else
-		while (new->hl_next)
-			new = new->hl_next;
-	new->hl_next = wmalloc(sizeof(*head->hl_next));
-	head->hl_tail = new->hl_next;
+		while (n->hl_next)
+			n = n->hl_next;
+	n->hl_next = (header_list *)wmalloc(sizeof(*head->hl_next));
+	head->hl_tail = n->hl_next;
 	head->hl_len += strlen(name) + strlen(value) + 4;
-	new = new->hl_next;
-	new->hl_name = name;
-	new->hl_value = value;
-	new->hl_next = new->hl_tail = NULL;
-	new->hl_flags = 0;
+	n = n->hl_next;
+	n->hl_name = name;
+	n->hl_value = value;
+	n->hl_next = n->hl_tail = NULL;
+	n->hl_flags = 0;
 }
 
 void
-header_append_last(head, append)
-	struct header_list *head;
-	const char *append;
+header_append_last(header_list *head, const char *append)
 {
 struct	header_list	*last = head;
 	char		*cur;
@@ -824,15 +797,14 @@ struct	header_list	*last = head;
 		last = last->hl_next;
 
 	cur = last->hl_value;
-	last->hl_value = wmalloc(strlen(cur) + 1 + strlen(append) + 1);
+	last->hl_value = (char *)wmalloc(strlen(cur) + 1 + strlen(append) + 1);
 	sprintf(last->hl_value, "%s %s", cur, append);
 	wfree(cur);
 }
 
 	
 void
-header_remove(head, it)
-	struct header_list *head, *it;
+header_remove(header_list *head, header_list *it)
 {
 struct	header_list	*jt;
 
@@ -848,9 +820,7 @@ struct	header_list	*jt;
 }
 
 struct header_list *
-header_find(head, name)
-	struct header_list *head;
-	const char *name;
+header_find(header_list *head, const char *name)
 {
 struct	header_list	*it;
 
@@ -864,15 +834,14 @@ struct	header_list	*it;
 # pragma error_messages(off, E_GLOBAL_COULD_BE_STATIC)
 #endif
 char *
-header_build(head)
-	struct header_list *head;
+header_build(header_list *head)
 {
 	char	*buf;
 	size_t	 bufsz;
 	size_t	 buflen = 0;
 
 	bufsz = head->hl_len + 3;
-	if ((buf = wmalloc(bufsz)) == NULL)
+	if ((buf = (char *)wmalloc(bufsz)) == NULL)
 		outofmemory();
 	
 	*buf = '\0';
@@ -890,9 +859,7 @@ header_build(head)
 #endif
 
 void
-header_dump(head, fd)
-	struct header_list *head;
-	int fd;
+header_dump(header_list *head, int fd)
 {
 	int i = 0;
 struct	header_list	*h;
@@ -918,10 +885,7 @@ struct	header_list	*h;
 }
 
 int
-header_undump(head, fd, len)
-	struct header_list *head;
-	int fd;
-	off_t *len;
+header_undump(header_list *head, int fd, off_t *len)
 {
 	int		 i = 0, j = 0, n = 0;
 struct	header_list	*it = head;
@@ -941,13 +905,13 @@ struct	header_list	*it = head;
 		char *n, *v, *s;
 		int k;
 		
-		if ((it->hl_next = wcalloc(1, sizeof(struct header_list))) == NULL)
+		if ((it->hl_next = (header_list *)wcalloc(1, sizeof(struct header_list))) == NULL)
 			outofmemory();
 		it = it->hl_next;
 		*len += read(fd, &i, sizeof(i));	
 		*len += read(fd, &j, sizeof(j));
 		WDEBUG((WLOG_DEBUG, "header_undump: i=%d j=%d", i, j));
-		n = wmalloc(i + j + 2);
+		n = (char *)wmalloc(i + j + 2);
 		i = read(fd, n, i);
 		*len += i;
 		s = n + i;
@@ -967,8 +931,7 @@ struct	header_list	*it = head;
 }
 
 static int
-parse_headers(entity)
-	struct http_entity *entity;
+parse_headers(http_entity *entity)
 {
 	char *line;
 
@@ -1098,8 +1061,7 @@ parse_headers(entity)
 }
 
 static int 
-parse_reqtype(entity)
-	struct http_entity *entity;
+parse_reqtype(http_entity *entity)
 {
 	char	*p, *s, *t;
 	char	*request = entity->he_reqstr;;
@@ -1187,9 +1149,7 @@ parse_reqtype(entity)
 }
 
 int
-qvalue_parse(list, header)
-	struct qvalue_head *list;
-	const char *header;
+qvalue_parse(qvalue_head *list, const char *header)
 {
 	char **values;
 	char **value;
@@ -1201,7 +1161,7 @@ qvalue_parse(list, header)
 		char **bits;
 		struct qvalue *entry;
 		bits = wstrvec(*value, ";", 0);
-		entry = wcalloc(1, sizeof(*entry));
+		entry = (qvalue *)wcalloc(1, sizeof(*entry));
 		entry->name = wstrdup(bits[0]);
 		if (bits[1])
 			entry->val = atof(bits[1]);
@@ -1216,8 +1176,7 @@ qvalue_parse(list, header)
 }
 
 struct qvalue *
-qvalue_remove_best(list)
-	struct qvalue_head *list;
+qvalue_remove_best(qvalue_head *list)
 {
 	struct qvalue *entry, *best = NULL;
 	float bestf = 0;
@@ -1234,8 +1193,7 @@ qvalue_remove_best(list)
 }
 
 enum encoding
-accept_encoding(enc)
-	const char *enc;
+accept_encoding(const char *enc)
 {
 static	struct {
 	const char *name;
@@ -1246,10 +1204,10 @@ static	struct {
 	{ "identity",	E_NONE		},
 	{ "gzip",	E_GZIP		},
 	{ "x-gzip",	E_X_GZIP	},
-	{ NULL, 0 }
+	{ NULL, E_NONE }
 }, *s;
 	for (s = encs; s->name; s++)
 		if (!strcasecmp(s->name, enc))
 			return s->value;
-	return 0;
+	return E_NONE;
 }

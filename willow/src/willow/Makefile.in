@@ -2,7 +2,18 @@ PROGRAM = willow
 BINDIR = @bindir@
 CPPFLAGS = -I../include
 
-BASESRCS = willow.c wconfig.c whttp.c wbackend.c whttp_entity.c wcache.c confparse.c
+BASESRCS =	 		\
+	willow.cc 		\
+	wconfig.cc		\
+	whttp.cc		\
+	wbackend.cc		\
+	whttp_entity.cc		\
+	wcache.cc		\
+	confparse.cc		\
+	wnet.cc			\
+	wnet_libevent.cc	\
+	wlog.cc
+OBJS=	willow.o wconfig.o whttp.o wbackend.o whttp_entity.o wcache.o confparse.o wnet.o wlog.o wnet_libevent.o
 SRCS=$(BASESRCS)
 OBJADD = @LIBOBJS@ y.tab.o lex.yy.o
 
@@ -11,20 +22,22 @@ EXTRA_DIST= strlcat.c strlcpy.c \
 	daemon.c \
 	Makefile.in
 
-LDFLAGS = -L$(SRCROOT)/src/lib/wnet -lwillownet \
-	  -L$(SRCROOT)/src/lib/wlog -lwillowlog \
-	  $(LIBOBJS)
+LDFLAGS = $(LIBOBJS)
+
+.SUFFIXES: .y .l .c .cc .o
 
 default: all
 
-y.tab.o: y.tab.c
-lex.yy.o: lex.yy.c y.tab.h
+y.tab.o: y.tab.cc ../include/confparse.h ../include/willow.h
+lex.yy.o: lex.yy.cc y.tab.h ../include/confparse.h ../include/willow.h
 
-y.tab.c y.tab.h: parser.y
+y.tab.cc y.tab.h: parser.y
 	@echo "	$(_YACC) -d parser.y"
 	@$(_YACC) -d parser.y
-lex.yy.c: lexer.l y.tab.h
+	@mv y.tab.c y.tab.cc
+lex.yy.cc: lexer.l y.tab.h
 	@echo "	$(_LEX) lexer.l"
 	@$(_LEX) lexer.l || rm -f lex.yy.c
+	@test -f lex.yy.c && mv lex.yy.c lex.yy.cc
 
 @include@ @q@@top_srcdir@/mk/prog.mk@q@

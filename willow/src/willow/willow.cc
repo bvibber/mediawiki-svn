@@ -28,6 +28,7 @@
 #include "willow.h"
 #include "whttp.h"
 #include "wcache.h"
+#include "confparse.h"
 
 #ifdef WDEBUG_ALLOC
 static void ae_checkleaks(void);
@@ -40,8 +41,7 @@ static const char *progname;
 
 /*ARGSUSED*/
 static void 
-sig_exit(s)
-	int s;
+sig_exit(int s)
 {
 	wnet_exit = 1;
 }
@@ -61,9 +61,7 @@ usage(void)
 #endif
 
 int 
-main(argc, argv)
-	char *argv[];
-	int argc;
+main(int argc, char *argv[])
 {
 	int	 i;
 	int	 zflag = 0;
@@ -114,10 +112,10 @@ struct	sigaction	segv_act;
 
 	wconfig_init(cfg);
 
-	if (config.sgid) {
-		struct group *group = getgrnam(config.sgid);
+	if (config.sgid != "") {
+		struct group *group = getgrnam(config.sgid.c_str());
 		if (!group) {
-			fprintf(stderr, "group %s does not exist", config.sgid);
+			fprintf(stderr, "group %s does not exist", config.sgid.c_str());
 			exit(8);
 		}
 		if (setgid(group->gr_gid) < 0) {
@@ -126,10 +124,10 @@ struct	sigaction	segv_act;
 		}
 	}
 
-	if (config.suid) {
-		struct passwd *user = getpwnam(config.suid);
+	if (config.suid != "") {
+		struct passwd *user = getpwnam(config.suid.c_str());
 		if (!user) {
-			fprintf(stderr, "user %s does not exist", config.suid);
+			fprintf(stderr, "user %s does not exist", config.suid.c_str());
 			exit(8);
 		}
 		if (setuid(user->pw_uid) < 0) {
@@ -193,9 +191,7 @@ outofmemory(void)
 }
 
 void
-realloc_addchar(sp, c)
-	char **sp;
-	int c;
+realloc_addchar(char **sp, int c)
 {
 	char	*p;
 	int	 len;
@@ -205,7 +201,7 @@ realloc_addchar(sp, c)
 	else
 		len = 0;
 	
-	if ((*sp = wrealloc(*sp, len + 2)) == NULL)
+	if ((*sp = (char *)wrealloc(*sp, len + 2)) == NULL)
 		outofmemory();
 	p = *sp + len;
 	*p++ = (char) c;
@@ -213,9 +209,7 @@ realloc_addchar(sp, c)
 }
 
 void
-realloc_strcat(sp, s)
-	char **sp;
-	const char *s;
+realloc_strcat(char **sp, const char *s)
 {
 	int	 len;
 	
@@ -223,15 +217,13 @@ realloc_strcat(sp, s)
 		len = strlen(*sp);
 	else
 		len = 1;
-	if ((*sp = wrealloc(*sp, len + strlen(s) + 1)) == NULL)
+	if ((*sp = (char *)wrealloc(*sp, len + strlen(s) + 1)) == NULL)
 		outofmemory();
 	(void)strcat(*sp, s);
 }
 
 char **
-wstrvec(str, sep, lim)
-	const char *str, *sep;
-	int lim;
+wstrvec(const char *str, const char *sep, int lim)
 {
 	char	**result = NULL;
 	int	 nres = 0;
@@ -239,27 +231,27 @@ wstrvec(str, sep, lim)
 const	char	*st = str;
 
 	while ((!lim || --lim) && (s = strstr(st, sep))) {
-		result = wrealloc(result, ++nres * sizeof(char *));
+		result = (char **)wrealloc(result, ++nres * sizeof(char *));
 		while (isspace(*st))
 			st++;
-		result[nres - 1] = wmalloc((s - st) + 1);
+		result[nres - 1] = (char *)wmalloc((s - st) + 1);
 		memcpy(result[nres - 1], st, s - st);
 		result[nres - 1][s - st] = '\0';
 		st = s + strlen(sep);
 	}
 
-	result = wrealloc(result, ++nres * sizeof(char *));
+	result = (char **)wrealloc(result, ++nres * sizeof(char *));
 	while (isspace(*st))
 		st++;
 	result[nres - 1] = wstrdup(st);
 
-	result = wrealloc(result, (nres + 1) * sizeof(char *));
+	result = (char **)wrealloc(result, (nres + 1) * sizeof(char *));
 	result[nres] = NULL;
 	return result;
 }
 
-void wstrvecfree(vec)
-	char **vec;
+void
+wstrvecfree(char **vec)
 {
 	char **s = vec;
 	while (*s) {

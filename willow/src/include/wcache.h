@@ -36,7 +36,7 @@ struct cache_object {
 	time_t		  co_time;	/* Last-Modified / retrieval time	*/
 	time_t		  co_lru;	/* Last used timestamp, for eviction	*/
 	int		  co_id;	/* Object id				*/
-	int		  co_plen;	/* Size of cache object path		*/
+	size_t		  co_plen;	/* Size of cache object path		*/
 	size_t		  co_size;	/* Object size				*/
 	char		 *co_path;	/* Object data location			*/
 	int		  co_complete;	/* Finished being cached		*/

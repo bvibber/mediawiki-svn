@@ -15,14 +15,18 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 
+#include <string>
+using std::string;
+#include <vector>
+using std::vector;
+
 struct listener {
-	char		*name;
-	char		*host;
+	string		 name;
+	string		 host;
 	int 		 port;
-struct	sockaddr_in	addr;
+struct	sockaddr_in	 addr;
 };
-extern int nlisteners;
-extern struct listener **listeners;
+extern vector<listener *> listeners;
 
 struct cachedir {
 	char	*dir;
@@ -31,22 +35,22 @@ struct cachedir {
 
 extern struct configuration {
 	int		 foreground;
-const	char		*access_log;
+	string		 access_log;
 struct	cachedir	*caches;
 	int		 ncaches;
 	time_t		 cache_expevery;
 	int		 cache_expthresh;
-	char		*suid, *sgid;
-	int		 compress;
+	string		 suid, sgid;
+	bool		 compress;
 	int		 complevel;
-	int		 backend_retry;
-	int		 cache_private;
-	int		 use_carp;
+	time_t		 backend_retry;
+	bool		 cache_private;
+	bool		 use_carp;
 } config;
 
-void wconfig_init(const char *);
+void wconfig_init(char const *);
 
-int add_listener(const char *, int);
-int add_cachedir(const char *, int);
+int add_listener(string const &, int);
+int add_cachedir(string const &, int);
 
 #endif

@@ -12,8 +12,10 @@
 /*
  * The logic of whttp is explained in whttp_entity.c
  */
- 
-#define _GNU_SOURCE	/* glibc strptime */
+
+#ifndef _GNU_SOURCE
+# define _GNU_SOURCE	/* glibc strptime */
+#endif
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -142,8 +144,8 @@ whttp_init(void)
 	snprintf(via_hdr, sizeof(via_hdr), "1.1 %s (%s)", my_hostname, my_version);
 
 	hsize = sizeof("MISS from ") + strlen(my_hostname);
-	cache_hit_hdr = wmalloc(hsize + 1);
-	cache_miss_hdr = wmalloc(hsize + 1);
+	cache_hit_hdr = (char *)wmalloc(hsize + 1);
+	cache_miss_hdr = (char *)wmalloc(hsize + 1);
 	
 	if (cache_hit_hdr == NULL || cache_miss_hdr == NULL)
 		outofmemory();
@@ -155,7 +157,7 @@ whttp_init(void)
 	 * Fork the logwriter.
 	 */
 
-	if (config.access_log) {
+	if (config.access_log.size()) {
 		if (pipe(logwr_pipe) < 0) {
 			perror("pipe");
 			exit(8);
@@ -168,7 +170,8 @@ whttp_init(void)
 		case 0:
 			(void)dup2(logwr_pipe[0], STDIN_FILENO);
 			/*LINTED execl*/
-			(void)execl(LIBEXECDIR "/wlogwriter", "wlogwriter", config.access_log, NULL);
+			(void)execl(LIBEXECDIR "/wlogwriter", "wlogwriter", 
+				config.access_log.c_str(), NULL);
 			exit(8);
 			/*NOTREACHED*/
 		default:
@@ -191,21 +194,19 @@ whttp_shutdown(void)
 /*
  * Create a new client associated with the FDE 'e'.
  */
-static struct http_client *
-new_client(e)
-	struct fde *e;
+static http_client *
+new_client(fde *e)
 {
 struct	http_client	*cl;
 
 	if (freelist.fe_next) {
 		cl = freelist.fe_next;
 		freelist.fe_next = cl->fe_next;
-		bzero(cl, sizeof(*cl));
-	} else {
-		if ((cl = wcalloc(1, sizeof(*cl))) == NULL)
-			outofmemory();
-	}
+		new (cl) http_client;
+	} else
+		cl = new http_client;
 
+	memset(cl, 0, sizeof(*cl));
 	cl->cl_fde = e;
 	return cl;
 }
@@ -215,8 +216,7 @@ struct	http_client	*cl;
  * from the client.
  */
 void
-http_new(e)
-	struct fde *e;
+http_new(fde *e)
 {
 struct	http_client	*cl;
 
@@ -236,12 +236,9 @@ struct	http_client	*cl;
  */
 /*ARGSUSED*/
 static void
-client_read_done(entity, data, res)
-	struct http_entity *entity;
-	void *data;
-	int res;
+client_read_done(http_entity *entity, void *data, int res)
 {
-struct	http_client	*client = data;
+struct	http_client	*client = (http_client *)data;
 struct	cache_object	*cobj;
 	char		*pragma, *cache_control, *ifmod;
 struct	qvalue_head	*acceptenc;
@@ -273,7 +270,7 @@ struct	qvalue		*val;
 		len = strlen(client->cl_entity.he_rdata.request.host) +
 			strlen(client->cl_entity.he_rdata.request.path)	+ 7;
 		
-		client->cl_path = wmalloc(len + 1);
+		client->cl_path = (char *)wmalloc(len + 1);
 		if (client->cl_path == NULL)
 			outofmemory();
 		snprintf(client->cl_path, len + 1, "http://%s%s",
@@ -373,12 +370,9 @@ struct	qvalue		*val;
  * Called when backend is ready.  backend==NULL if none was found.
  */
 static void
-proxy_start_backend(backend, e, data)
-	struct backend *backend;
-	struct fde *e;
-	void *data;
+proxy_start_backend(backend *backend, fde *e, void *data)
 {
-struct	http_client	*client = data;
+struct	http_client	*client = (http_client *)data;
 struct	header_list	*it;
 	int		 error = 0;
 	socklen_t	 len = sizeof(error);
@@ -437,12 +431,9 @@ struct	header_list	*it;
  */
 /*ARGSUSED*/
 static void
-backend_headers_done(entity, data, res)
-	struct http_entity *entity;
-	void *data;
-	int res;
+backend_headers_done(http_entity *entity, void *data, int res)
 {
-struct	http_client	*client = data;
+struct	http_client	*client = (http_client *)data;
 	
 	WDEBUG((WLOG_DEBUG, "backend_headers_done: called"));
 	if (res == -1) {
@@ -470,12 +461,9 @@ struct	http_client	*client = data;
  * Called when backend's headers are finished reading.
  */
 static void
-client_headers_done(entity, data, res)
-	struct http_entity *entity;
-	void *data;
-	int res;
+client_headers_done(http_entity *entity, void *data, int res)
 {
-struct	http_client	*client = data;
+struct	http_client	*client = (http_client *)data;
 	char		*cache_path;
 	size_t		 plen;
 	
@@ -537,8 +525,7 @@ struct	http_client	*client = data;
  * Write a cached object to the client.
  */
 static void
-client_write_cached(client)
-	struct http_client *client;
+client_write_cached(http_client *client)
 {
 	size_t	 plen;
 	char	*cache_path;
@@ -546,7 +533,7 @@ struct	stat	 sb;
 	char	 size[64];
 
 	plen = strlen(config.caches[0].dir) + client->cl_co->co_plen + 12 + 2;
-	if ((cache_path = wcalloc(1, plen + 1)) == NULL)
+	if ((cache_path = (char *)wcalloc(1, plen + 1)) == NULL)
 		outofmemory();
 
 	if (fstat(client->cl_cfd, &sb) < 0) {
@@ -589,12 +576,9 @@ struct	stat	 sb;
  */
 /*ARGSUSED*/
 static void
-client_response_done(entity, data, res)
-	struct http_entity *entity;
-	void *data;
-	int res;
+client_response_done(http_entity *entity, void *data, int res)
 {
-struct	http_client	*client = data;
+struct	http_client	*client = (http_client *)data;
 
 	WDEBUG((WLOG_DEBUG, "client_response_done: called, res=%d", res));
 
@@ -659,8 +643,7 @@ struct	http_client	*client = data;
 }
 	
 static void
-client_close(client)
-	struct http_client *client;
+client_close(http_client *client)
 {
 	WDEBUG((WLOG_DEBUG, "close client %d", client->cl_fde->fde_fd));
 	assert(!client->cl_flags.f_closed);
@@ -679,10 +662,7 @@ client_close(client)
 }
 
 static void
-client_send_error(client, errnum, errdata, status, statstr)
-	struct http_client *client;
-	int errnum, status;
-	const char *errdata, *statstr;
+client_send_error(http_client *client, int errnum, const char * errdata, int status, const char *statstr)
 {
 	FILE		*errfile;
 	char		 errbuf[8192];
@@ -734,7 +714,7 @@ client_send_error(client, errnum, errdata, status, statstr)
 					realloc_strcat(&u, my_version);
 					break;
 				case 'C': {
-					char *s = wmalloc(4);
+					char *s = (char *)wmalloc(4);
 					sprintf(s, "%d", status);
 					realloc_strcat(&u, s);
 					wfree(s);
@@ -783,19 +763,18 @@ client_send_error(client, errnum, errdata, status, statstr)
 }
 
 static void
-client_log_request(client)
-	struct http_client *client;
+client_log_request(http_client *client)
 {
 	int	i;
 	
-	if (!config.access_log)
+	if (!config.access_log.size())
 		return;
 
 	i = fprintf(alf, "[%s] %s %s \"%s\" %d %s %s\n",
 			current_time_short, client->cl_fde->fde_straddr,
 			request_string[client->cl_reqtype],
 			client->cl_path, client->cl_entity.he_rdata.response.status,
-			client->cl_backend ? client->cl_backend->be_name : "-",
+			client->cl_backend ? client->cl_backend->be_name.c_str() : "-",
 			client->cl_flags.f_cached ? "HIT" : "MISS");
 	if (i < 0) {
 		wlog(WLOG_ERROR, "writing logfile: %s", strerror(errno));
@@ -809,12 +788,9 @@ client_log_request(client)
 }
 
 static void
-do_cache_write(buf, len, data)
-	const char *buf;
-	size_t len;
-	void *data;
+do_cache_write(const char *buf, size_t len, void *data)
 {
-struct	http_client	*client = data;
+struct	http_client	*client = (http_client *)data;
 
 	if (write(client->cl_cfd, buf, len) < 0) {
 		/*EMPTY*/
@@ -824,8 +800,7 @@ struct	http_client	*client = data;
 }
 
 static int
-removable_header(hdr)
-	const char *hdr;
+removable_header(const char *hdr)
 {
 static const char *removable_headers[] = {
 	"Connection",

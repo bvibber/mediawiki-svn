@@ -14,14 +14,13 @@
 
 #include <arpa/inet.h>
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <errno.h>
-#include <strings.h>
-#include <limits.h>
-#include <math.h>
-#include <time.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
+#include <cerrno>
+#include <climits>
+#include <cmath>
+#include <ctime>
 
 #include "willow.h"
 #include "wbackend.h"
@@ -32,64 +31,43 @@
 
 #define rotl(i,r) (((i) << (r)) | ((i) >> (sizeof(i)*CHAR_BIT-(r))))
 
-static struct backend **backends;
-int nbackends;
+vector<backend *> backends;
 
-static struct backend *new_backend(const char *, const char *, int);
 static void backend_read(struct fde *);
-static struct backend *next_backend(const char *url);
-static uint32_t carp_urlhash(const char *);
-static uint32_t carp_hosthash(const char *);
-static uint32_t carp_combine(const char *url, uint32_t host);
-static void carp_recalc(const char *url);
+static struct backend *next_backend(string const &url);
+static uint32_t carp_urlhash(string const &);
+static uint32_t carp_hosthash(string const &);
+static uint32_t carp_combine(string const &, uint32_t);
+static void carp_recalc(string const &url);
 static void carp_calc(void);
-static int becalc_cmp(const void *a, const void *b);
+static int becarp_cmp(backend const *a, backend const *b);
 
 struct backend_cb_data {
 struct	backend		*bc_backend;
 	backend_cb	 bc_func;
 	void		*bc_data;
-const	char		*bc_url;
+	string		 bc_url;
 };
 
-static struct backend *
-new_backend(name, addr, port)
-	const char *name, *addr;
-	int port;
+backend::backend(string const &name, string const &addr, int port)
+	: be_name(name)
+	, be_port(port)
+	, be_straddr(addr)
+	, be_dead(false)
+	, be_hash(carp_hosthash(be_name))
+	, be_load(1.)
 {
-struct	backend	 *nb;
-
-	if ((nb = wcalloc(1, sizeof(*nb))) == NULL)
-		outofmemory();
-
-	nb->be_port = port;
-	nb->be_straddr = wstrdup(addr);
-	nb->be_name = wstrdup(name);
-	nb->be_addr.sin_family = AF_INET;
-	nb->be_addr.sin_port = htons(nb->be_port);
-	nb->be_addr.sin_addr.s_addr = inet_addr(nb->be_name);
-	nb->be_dead = 0;
-	nb->be_hash = carp_hosthash(nb->be_name);
-	nb->be_load = 1.0;
-	return nb;
+	be_addr.sin_family = AF_INET;
+	be_addr.sin_port = htons(be_port);
+	be_addr.sin_addr.s_addr = inet_addr(be_name.c_str());
 }
 
 void
-add_backend(addr, port)
-	const char *addr;
-	int port;
+add_backend(string const &addr, int port)
 {
-	if (port < 1 || port > 65535) {
-		conf_report_error("invalid backend port: %d", port);
-		nerrors++;
-		return;
-	}
-	
-	if ((backends = wrealloc(backends, sizeof(struct backend*) * ++nbackends)) == NULL)
-		outofmemory();
-	backends[nbackends - 1] = new_backend(addr, addr, port);
+	backends.push_back(new backend(addr, addr, port));
 	carp_calc();
-	wlog(WLOG_NOTICE, "backend: %s:%d", addr, port);
+	wlog(WLOG_NOTICE, "backend: %s:%d", addr.c_str(), port);
 }
 
 #if 0
@@ -115,19 +93,14 @@ backend_file(file)
 #endif
 
 int
-get_backend(url, func, data, flags)
-	const char *url;
-	backend_cb func;
-	void *data;
-	int flags;
+get_backend(string const &url, backend_cb func, void *data, int flags)
 {
 struct	backend_cb_data	*cbd;
 	int		 s;
 	
 	WDEBUG((WLOG_DEBUG, "get_backend: called"));
-	
-	if ((cbd = wmalloc(sizeof(*cbd))) == NULL)
-		outofmemory();
+
+	cbd = new backend_cb_data;
 
 	cbd->bc_func = func;
 	cbd->bc_data = data;
@@ -159,7 +132,7 @@ struct	backend_cb_data	*cbd;
 			time_t retry = time(NULL) + config.backend_retry;
 			wnet_close(s);
 			wlog(WLOG_WARNING, "%s: %s; retry in %d seconds", 
-				cbd->bc_backend->be_name, strerror(errno), config.backend_retry);
+				cbd->bc_backend->be_name.c_str(), strerror(errno), config.backend_retry);
 			cbd->bc_backend->be_dead = 1;
 			cbd->bc_backend->be_time = retry;
 			continue;
@@ -172,10 +145,9 @@ struct	backend_cb_data	*cbd;
 }
 
 static void
-backend_read(e)
-	struct fde *e;
+backend_read(fde *e)
 {
-struct	backend_cb_data	*cbd = e->fde_rdata;
+struct	backend_cb_data	*cbd = static_cast<backend_cb_data *>(e->fde_rdata);
 	int		 error = 0;
 	socklen_t	 len = sizeof(error);
 
@@ -185,7 +157,7 @@ struct	backend_cb_data	*cbd = e->fde_rdata;
 		time_t retry = time(NULL) + config.backend_retry;
 		wnet_close(e->fde_fd);
 		wlog(WLOG_WARNING, "%s: [%d] %s; retry in %d seconds", 
-			cbd->bc_backend->be_name, error, strerror(error), config.backend_retry);
+			cbd->bc_backend->be_name.c_str(), error, strerror(error), config.backend_retry);
 		cbd->bc_backend->be_dead = 1;
 		cbd->bc_backend->be_time = time(NULL) + config.backend_retry;
 		if (get_backend(cbd->bc_url, cbd->bc_func, cbd->bc_data, 0) == -1) {
@@ -207,23 +179,20 @@ struct	backend_cb_data	*cbd = e->fde_rdata;
 }
 
 static struct backend *
-next_backend(url)
-	const char *url;
+next_backend(string const &url)
 {
-static	int	cur = 0;
-	int	tried = 0;
+static	size_t	cur = 0;
+	size_t	tried = 0;
 
-	if (config.use_carp) {
+	if (config.use_carp)
 		carp_recalc(url);
-	//	cur = 0;
-	}
 
-	WDEBUG((WLOG_DEBUG, "next_backend: url=[%s]", url));
+	WDEBUG((WLOG_DEBUG, "next_backend: url=[%s]", url.c_str()));
 
-	while (tried++ <= nbackends) {
+	while (tried++ <= backends.size()) {
 		time_t now = time(NULL);
 
-		if (cur >= nbackends)
+		if (cur >= backends.size())
 			cur = 0;
 
 		if (backends[cur]->be_dead && now >= backends[cur]->be_time)
@@ -243,29 +212,23 @@ static	int	cur = 0;
 }
 
 static uint32_t
-carp_urlhash(str)
-	const char *str;
+carp_urlhash(string const &str)
 {
-	const char *ostr = str;
 	uint32_t h = 0;
-	for (; *str; ++str)
-		h += (rotl(h, 19) + *str);
-	WDEBUG((WLOG_DEBUG, "hash(%s) = %d", ostr, h));
+	for (string::const_iterator it = str.begin(), end = str.end(); it != end; ++it)
+		h += rotl(h, 19) + *it;
 	return h;
 }
 
 static uint32_t
-carp_hosthash(str)
-	const char *str;
+carp_hosthash(string const &str)
 {
 	uint32_t h = carp_urlhash(str) * 0x62531965;
 	return rotl(h, 21);
 }
 
 static uint32_t
-carp_combine(url, host)
-	const char *url;
-	uint32_t host;
+carp_combine(string const &url, uint32_t host)
 {
 	uint32_t c = carp_urlhash(url) ^ host;
 	c += c * 0x62531965;
@@ -276,46 +239,40 @@ static void
 carp_calc(void)
 {
 struct	backend *be, *prev;
-	int	 i, j;
+	size_t	 i, j;
 
-	backends[0]->be_carp = pow((nbackends * backends[0]->be_load), 1.0 / nbackends);
+	backends[0]->be_carp = (uint32_t) pow((backends.size() * backends[0]->be_load), 1.0 / backends.size());
 	backends[0]->be_carplfm = 1.0;
-	for (i = 1; i < nbackends; ++i) {
+	for (i = 1; i < backends.size(); ++i) {
 		float l = 0;
 		be = backends[i];
 		prev = backends[i - 1];
-		be->be_carplfm = 1.0 + ((nbackends-i+1) * (be->be_load - prev->be_load));
-		WDEBUG((WLOG_DEBUG, "carp_calc: %s lfm = %f", be->be_name, be->be_carplfm));
+		be->be_carplfm = 1.0 + ((backends.size()-i+1) * (be->be_load - prev->be_load));
 		for (j = 0; j < i; ++j)
 			l *= backends[j]->be_carp;
-		be->be_carp /= l;
-		be->be_carp += pow(prev->be_carp, nbackends-i+1);
-		be->be_carp = pow(be->be_carp, 1/(nbackends-i+1));
+		be->be_carp = (uint32_t) (be->be_carp / l);
+		be->be_carp += (uint32_t) pow(prev->be_carp, backends.size()-i+1);
+		be->be_carp = (uint32_t) pow(be->be_carp, 1/(backends.size()-i+1));
 	}
 }
 
 static void
-carp_recalc(url)
-	const char *url;
+carp_recalc(string const &url)
 {
 	uint32_t	hash;
-	int		i;
-	for (i = 0; i < nbackends; ++i) {
+	size_t		i;
+	for (i = 0; i < backends.size(); ++i) {
 		hash = carp_urlhash(url) ^ backends[i]->be_hash;
 		hash += hash * 0x62531965;
 		hash = rotl(hash, 21);
-		hash *= backends[i]->be_carplfm;
-		WDEBUG((WLOG_DEBUG, "%s: hash = %lu, lfm = %f", backends[i]->be_name, hash, backends[i]->be_carplfm));
+		hash *= (uint32_t) backends[i]->be_carplfm;
 		backends[i]->be_carp = hash;
 	}
-	qsort(backends, nbackends, sizeof(struct backend *), becalc_cmp);
-	WDEBUG((WLOG_DEBUG, "first backend = %s", backends[0]->be_name));
+	sort(backends.begin(), backends.end(), becarp_cmp);
 }
 
 static int
-becalc_cmp(a, b)
-const void	*a, *b;
+becarp_cmp(backend const *a, backend const *b)
 {
-struct backend	**ba = a, **bb = b;
-	return (*ba)->be_carp - (*bb)->be_carp;
+	return a->be_carp - b->be_carp;
 }

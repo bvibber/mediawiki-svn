@@ -12,7 +12,9 @@
 # pragma ident "@(#)$Header$"
 #endif
 
-#include <stdio.h>
+#include <cstdio>
+#include <string>
+using std::string;
 
 #include "config.h"
 
@@ -23,11 +25,11 @@
 #define WLOG_MAX 3
 
 extern struct log_variables {
-	char *file;
-	int level;
-	FILE *fp;
-	int syslog;
-	int facility;
+	string	 file;
+	int	 level;
+	FILE	*fp;
+	bool	 syslog;
+	int	 facility;
 } logging;
 
 void wlog_init(void);

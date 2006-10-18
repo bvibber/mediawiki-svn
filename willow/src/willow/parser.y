@@ -1,38 +1,35 @@
-/* @(#) $Header$ */
-/* From: $Nightmare: nightmare/src/main/parser.y,v 1.2.2.1.2.1 2002/07/02 03:42:10 ejb Exp $ */
-/* From: ircd_parser.y,v 1.281 2005/03/22 16:27:48 androsyn Exp */
-/* This source code is in the public domain. */
-/*
- * Willow: Lightweight HTTP reverse-proxy.
- * parser: configuration file parser.
+/* This code is in the public domain.
+ * $Nightmare: nightmare/src/main/parser.y,v 1.2.2.1.2.1 2002/07/02 03:42:10 ejb Exp $
+ * $Header$
  */
 
 %{
-#if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Header$"
-#endif
-
 #include <sys/types.h>
 #include <sys/stat.h>
 
 #include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h>
 
-#include <string.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <stdio.h>
+#include <vector>
+using std::vector;
 
+#include <cstdlib>
+#include <cstdarg>
+#include <cstdio>
+
+#define NEED_PARSING_TREE
 #include "willow.h"
 #include "confparse.h"
 
 #define YY_NO_UNPUT
 
-int yyparse();
-int yyerror(const char *);
-int yylex();
+/* icc emits these with -w2 */
+#ifdef __INTEL_COMPILER
+# pragma warning (disable : 193)
+#endif
 
-static time_t conf_find_time(const char*);
-static void add_cur_list(int, const char *, int);
+static time_t conf_find_time(string const &);
 
 static struct {
 	const char *	name;
@@ -59,24 +56,130 @@ static struct {
 	{NULL, NULL, 0},
 };
 
-static time_t 
-conf_find_time(name)
-	const char *name;
+time_t conf_find_time(string const &name)
 {
-	int	i;
+  int i;
 
-	for (i = 0; conf_times[i].name; ++i) {
-		if (!strcasecmp(conf_times[i].name, name) ||
-		    (conf_times[i].plural && !strcasecmp(conf_times[i].plural, name)))
-			return conf_times[i].val;
-	}
+  for (i = 0; conf_times[i].name; i++)
+    {
+      if (conf_times[i].name ==name ||
+	  (conf_times[i].plural && conf_times[i].plural == name))
+	return conf_times[i].val;
+    }
 
-	return 0;
+  return 0;
 }
 
-static struct {
-const	char	*word;
-	int	 yesno;
+/*ARGSUSED*/
+static conf::value *
+f_hostname(vector<conf::avalue> *args)
+{
+#ifndef HOST_NAME_MAX
+# define HOST_NAME_MAX 255	/* SUSv2 */
+#endif
+char		host[HOST_NAME_MAX] = { 0 };
+conf::value	*ret;
+conf::avalue	 aval;
+	gethostname(host, sizeof(host));
+	ret = new conf::value(conf::declpos::here());
+	aval.av_type = conf::cv_qstring;
+	aval.av_strval = host;
+	ret->cv_values.push_back(aval);
+	return ret;
+}
+
+static conf::value *
+f_dns(vector<conf::avalue> *args)
+{
+struct addrinfo	*res, hints;
+string		 aftype;
+conf::value	*ret;
+int		 i;
+conf::avalue	 aval;
+char		 tmp[64];
+	ret = new conf::value(conf::declpos::here());
+	aftype = (*args)[0].av_strval.c_str();
+	bzero(&hints, sizeof(hints));
+	if (aftype == "ipv4")
+		hints.ai_family = AF_INET;
+	else if (aftype == "ipv6")
+		hints.ai_family = AF_INET6;
+	else {
+		return ret;
+	}
+	if ((i = getaddrinfo((*args)[0].av_strval.c_str(), "80", &hints, &res)) != 0) {
+		conf::report_parse_error("getaddrinfo(%s): %s", 
+			(*args)[0].av_strval.c_str(), gai_strerror(i));
+		return ret;
+	}
+	
+	/* format the address as an IP */
+	aval.av_type = conf::cv_qstring;
+	inet_ntop(res->ai_family, res->ai_addr->sa_data, tmp, sizeof(tmp));
+	aval.av_strval = tmp;
+	ret->cv_values.push_back(aval);
+	freeaddrinfo(res);
+	return ret;
+}
+
+typedef struct function_stru {
+	const char	*name;
+	conf::value	*(*execute)(vector<conf::avalue> *args);
+	int		 args[3];	/* XXX */
+} function_t;
+
+static function_t functions[] = {
+	{ "hostname",	f_hostname,	{ 0, 0, 0 }			},
+	{ "dns",	f_dns,		{ conf::cv_qstring, conf::cv_string, 0 }	},
+	{ NULL, NULL, { } }
+};
+
+static int
+match_func_parms(function_t *f, vector<conf::avalue> *args)
+{
+size_t		i;
+vector<conf::avalue>::const_iterator	it, end;
+	it = args->begin();
+	end = args->end();
+	for (i = 0; f->args[i]; ++i) {
+		if (i+1 > args->size()) {
+			conf::report_parse_error("not enough arguments to function '%s' (got %d)", 
+				f->name, i+1);
+			return 0;
+		}
+		if (f->args[i] != (it)->av_type) {
+			conf::report_parse_error("wrong type %d for argument %d to '%s' (expected %d)", 
+				(it)->av_type, i + 1, f->name, f->args[i]);
+			return 0;
+		}
+		it++;
+	}
+	if (args->size() > i) {
+		conf::report_parse_error("too many arguments to function '%s'", f->name);
+		return 0;
+	}
+	return 1;
+}
+
+static function_t*
+find_function(string const &name, vector<conf::avalue> *args)
+{
+function_t	*f;
+	for (f = functions; f->name; ++f)
+		if (f->name == name)
+		{
+			if (match_func_parms(f, args))
+				return f;
+			else
+				break;
+		}
+	return NULL;
+}
+
+static struct
+{
+	const char *word;
+	int yesno;
 } yesno[] = {
 	{"yes",		1},
 	{"no",		0},
@@ -88,229 +191,348 @@ const	char	*word;
 };
 
 static int
-conf_get_yesno_value(str)
-	const char *str;
+conf_get_yesno_value(string const &str)
 {
-	int i;
-
+int	i;
 	for (i = 0; yesno[i].word; i++)
-		if (!strcasecmp(str, yesno[i].word))
+		if (str == yesno[i].word)
 			return yesno[i].yesno;
 
 	return -1;
 }
 
-static void
-free_cur_list(list)
-	conf_parm_t *list;
-{
-	switch (list->type & CF_MTYPE) {
-	case CF_STRING:
-	case CF_QSTRING:
-		wfree(list->v.string);
-		break;
-	case CF_LIST:
-		free_cur_list(list->v.list);
-		break;
-	default: break;
-	}
-
-	if (list->next)
-		free_cur_list(list->next);
-}
-
-		
-conf_parm_t *	cur_list = NULL;
-
-static void
-add_cur_list_cpt(new)
-	conf_parm_t *new;
-{
-	if (cur_list == NULL) {
-		cur_list = wcalloc(1, sizeof(conf_parm_t));
-		cur_list->type |= CF_FLIST;
-		cur_list->v.list = new;
-	} else {
-		new->next = cur_list->v.list;
-		cur_list->v.list = new;
-	}
-}
-
-static void
-add_cur_list(type, str, number)
-	int type, number;
-	const char *str;
-{
-	conf_parm_t *new;
-
-	new = wmalloc(sizeof(conf_parm_t));
-	new->next = NULL;
-	new->type = type;
-
-	switch(type) {
-	case CF_INT:
-	case CF_TIME:
-	case CF_YESNO:
-		new->v.number = number;
-		break;
-	case CF_STRING:
-	case CF_QSTRING:
-		new->v.string = wstrdup(str);
-		break;
-	}
-
-	add_cur_list_cpt(new);
-}
-
-
 %}
 
 %union {
-	int 		 number;
-	char 		*string;
-	conf_parm_t	*conf_parm;
+	long			 number;
+	string			*string_;
+	conf::avalue		*avalue;
+	conf::value		*value;
+	vector<conf::value>	*value_list;
+	vector<conf::avalue>	*avalue_list;
+	vector<conf::item_entry>*entry_list;
+	conf::item_entry	*entry;
+	bool			 bool_;
 }
 
-%token TWODOTS
+%token TWODOTS VAR TEMPLATE FROM
 
-%token <string> QSTRING STRING
+%token <string_> QSTRING STRING VARNAME
 %token <number> NUMBER
 
-%type <string> qstring string
-%type <number> number timespec 
-%type <conf_parm> oneitem single itemlist
+%type <string_>       qstring string varname astring from_clause key_clause
+%type <number>       number timespec 
+%type <avalue>       oneitem
+%type <avalue_list>  single
+%type <avalue_list>  itemlist
+%type <entry_list>   block_items optional_block
+%type <entry>        block_item
+%type <bool_>        template_clause
+%type <avalue_list>	func_args
+%type <value>        function
 
+%left '+'
+%nonassoc poneitem
+%nonassoc ptimespec
 %start conf
 
 %%
 
 conf: 
 	| conf conf_item 
-	| error
 	;
 
 conf_item: block
          ;
 
-block: string 
-         { 
-           conf_start_block($1, NULL);
-	   wfree($1);
-         }
-       '{' block_items '}' ';' 
-         {
-	   if (conf_cur_block)
-           	conf_end_block(conf_cur_block);
-         }
-     | string qstring 
-         { 
-           conf_start_block($1, $2);
-	   wfree($1);
-	   wfree($2);
-         }
-       '{' block_items '}' ';'
-         {
-	   if (conf_cur_block)
-           	conf_end_block(conf_cur_block);
-         }
-     ;
+from_clause:
+	  { $$ = NULL; }
+	| FROM astring {
+		$$ = $2;
+	}
+	;
+key_clause:
+	  { $$ = NULL; }
+	| astring {
+		$$ = $1;
+	}
+	;
 
-block_items: block_items block_item 
-           | block_item 
-           ;
+template_clause:
+	  { $$ = 0; }
+	| TEMPLATE { $$ = 1; }
+	;
 
-block_item:	string '=' itemlist ';'
-		{
-			conf_call_set(conf_cur_block, $1, cur_list, CF_LIST);
-			free_cur_list(cur_list);
-			cur_list = NULL;
-			wfree($1);
+semicolon:
+	';'
+	| { conf::report_parse_error("expected ';'"); }
+	;
+
+equals:
+	'='
+	| { conf::report_parse_error("expected '='"); }
+	;
+
+func_args:
+	{ $$ = new vector<conf::avalue>; }
+	| itemlist {
+		$$ = $1;
+		delete $1;
+	}
+	;
+
+function:
+	string '(' func_args ')'
+	{
+	function_t	*func;
+		if ((func = find_function(*$1, $3)) == NULL) {
+			conf::report_parse_error("undefined function %s", $1);
+			$$ = new conf::value(conf::declpos::here());
+		} else {
+			$$ = func->execute($3);
 		}
-		;
+		free($1);
+	}
+	;
 
+optional_block:
+	{
+		$$ = NULL;
+	}
+	| '{' block_items '}'
+	{
+		$$ = $2;
+	}
+	;
+
+block:	template_clause string key_clause from_clause optional_block semicolon
+	{ 
+	const char		*block_key;
+	char			 nname[10];
+	static int		 nseq;
+	bool			 unnamed = false;
+	conf::tree_entry	*e;
+	vector<conf::item_entry>::const_iterator	it, end;
+		if ($3)
+			block_key = $3->c_str();
+		else {
+			sprintf(nname, "__%d", nseq++);
+			block_key = nname;
+			unnamed = true;
+		}
+		if ($4) {
+			if ((e = conf::new_tree_entry_from_template(conf::parsing_tree, *$2, block_key, *$4, 
+			                                       conf::declpos::here(), unnamed, $1)) == NULL) {
+				conf::report_parse_error("template block \"%s\" not found", $4);
+				goto end;
+			}
+		} else {
+			if ((e = conf::parsing_tree.find(*$2, block_key)) != NULL) {
+				conf::report_parse_error("%s \"%s\" already defined at %s",
+					$2->c_str(), block_key, e->item_pos.format().c_str());
+				goto end;
+			}
+			e = conf::parsing_tree.find_or_new(*$2, block_key, conf::declpos::here(), unnamed, $1);
+		}
+		
+		if ($5) for (it = $5->begin(), end = $5->end(); it != end; ++it) {
+			e->add(*it->val);
+			delete it->val;
+		}
+	end:
+		delete $2;
+		delete $3;
+		delete $4;
+	}
+	| VAR varname equals itemlist semicolon
+	{
+	conf::value	*value;
+		value = new conf::value(conf::declpos::here());
+		value->cv_name = $2->substr(1);
+		value->cv_values = *$4;
+		conf::add_variable(value);
+		delete $4;
+	}
+	| error
+	;
+
+block_items:
+	  block_items block_item 
+	{
+		$$ = new vector<conf::item_entry>($1->begin(), $1->end());
+		$$->push_back(*$2);
+		delete $1;
+		delete $2;
+	}
+	| block_item
+	{
+		$$ = new vector<conf::item_entry>;
+		$$->push_back(*$1);
+		delete $1;
+	}
+	;
+
+block_item:	
+	string equals itemlist semicolon
+	{
+	conf::value	*val = new conf::value(conf::declpos::here());
+		$$ = new conf::item_entry(conf::declpos::here(), val);
+		$$->val->cv_name = *$1;
+		$$->val->cv_values = *$3;
+	}
+	;
+
+/* 
+ * "single" is a list of items. 
+ */
 itemlist: itemlist ',' single
+	{
+		$$->insert($$->end(), $3->begin(), $3->end());
+		delete $3;
+		delete $1;
+	}
 	| single
+	{
+		$$ = new vector<conf::avalue>;
+		$$->insert($$->end(), $1->begin(), $1->end());
+		delete $1;
+	}
 	;
 
 single: oneitem
 	{
-		add_cur_list_cpt($1);
+		$$ = new vector<conf::avalue>;
+		$$->push_back(*$1);
+		delete $1;
 	}
 	| oneitem TWODOTS oneitem
 	{
+		$$ = new vector<conf::avalue>;
 		/* "1 .. 5" meaning 1,2,3,4,5 - only valid for integers */
-		if (($1->type & CF_MTYPE) != CF_INT ||
-		    ($3->type & CF_MTYPE) != CF_INT) {
-			conf_report_error("Both arguments in '..' notation must be integers.");
+		if ($1->av_type != conf::cv_int || $3->av_type != conf::cv_int) {
+			conf::report_parse_error("both arguments in '..' notation must be integers.");
 			break;
 		} else {
-			int i;
-
-			for (i = $1->v.number; i <= $3->v.number; i++) {
-				add_cur_list(CF_INT, 0, i);
+			int		 i;
+			conf::avalue	 val;
+			for (i = $1->av_intval; i <= $3->av_intval; i++) {
+				val.av_type = conf::cv_int;
+				val.av_intval = i;
+				$$->push_back(val);
 			}
+		}
+		delete $1;
+		delete $3;
+	}
+	| varname
+	 {
+	string		 varname_;
+	conf::value	*value;
+		$$ = new vector<conf::avalue>;
+		varname_ = $1->substr(1);
+		value = conf::value_from_variable("", varname_, conf::declpos::here());
+		if (value == NULL) {
+			conf::report_parse_error("undefined variable %s", varname_.c_str());
+		} else {
+			$$->insert($$->begin(), value->cv_values.begin(), value->cv_values.end());
+		}
+	}
+	| single '+' single
+	{
+	int	flen, slen;
+		flen = $1->size();
+		slen = $3->size();
+		if (flen == 1 && slen == 1) {
+		conf::avalue	n;
+			n.av_type = conf::cv_qstring;
+			n.av_strval = (*$1)[0].av_strval + (*$3)[0].av_strval;
+			$$->push_back(n);
+		} else {
+			conf::report_parse_error("do not know how to add these values (%d+%d)", flen, slen);
 		}
 	}
 	;
 
-oneitem: qstring
+oneitem: astring
             {
-		$$ = wmalloc(sizeof(conf_parm_t));
-		$$->type = CF_QSTRING;
-		$$->v.string = wstrdup($1);
-		wfree($1);
+		$$ = new conf::avalue;
+		$$->av_type = conf::cv_qstring;
+		$$->av_strval = *$1;
+		delete $1;
 	    }
-          | timespec
+          | timespec 
             {
-		$$ = wmalloc(sizeof(conf_parm_t));
-		$$->type = CF_TIME;
-		$$->v.number = $1;
+		$$ = new conf::avalue;
+		$$->av_type = conf::cv_time;
+		$$->av_intval = $1;
 	    }
           | number
             {
-		$$ = wmalloc(sizeof(conf_parm_t));
-		$$->type = CF_INT;
-		$$->v.number = $1;
+		$$ = new conf::avalue;
+		$$->av_type = conf::cv_int;
+		$$->av_intval = $1;
 	    }
           | string
             {
 		/* a 'string' could also be a yes/no value .. 
 		   so pass it as that, if so */
-		int val = conf_get_yesno_value($1);
+		int val = conf_get_yesno_value(*$1);
 
-		$$ = wmalloc(sizeof(conf_parm_t));
+		$$ = new conf::avalue;
 
 		if (val != -1) {
-			$$->type = CF_YESNO;
-			$$->v.number = val;
+			$$->av_type = conf::cv_yesno;
+			$$->av_intval = val;
 		} else {
-			$$->type = CF_STRING;
-			$$->v.string = wstrdup($1);
+			$$->av_type = conf::cv_string;
+			$$->av_strval = *$1;
 		}
-		wfree($1);
+		delete $1;
             }
           ;
 
-qstring: QSTRING { strcpy($$, $1); } ;
-string: STRING { strcpy($$, $1); } ;
+astring:
+	  qstring { 
+		$$ = $1;
+	}
+	| function {
+	conf::value	*value;
+		value = $1;
+		if (!value->is_single(conf::cv_qstring)) {
+			value->report_error("function in concatenation must return quoted string");
+			$$ = new string("");
+		} else {
+			$$ = new string($1->cv_values[0].av_strval);
+		}
+		delete $1;
+	}
+	;
+
+qstring:
+	  QSTRING {
+		$$ = $1;
+	}
+	| QSTRING QSTRING {
+		$$ = new string (*$1 + *$2);
+		delete $1;
+		delete $2;
+	}
+	;
+string: STRING { $$ = $1; } ;
 number: NUMBER { $$ = $1; } ;
+varname: VARNAME { $$ = $1; } ;
 
-timespec:	number string
+timespec:	number string 
          	{
-			time_t t;
-
-			if ((t = conf_find_time($2)) == 0) {
-				conf_report_error("Unrecognised time type/size '%s'", $2);
+		time_t	t;
+			if ((t = conf_find_time(*$2)) == 0) {
+				conf::report_parse_error("unrecognised time type/size \"%s\"", $2->c_str());
 				t = 1;
 			}
-	    
+	    		delete $2;
 			$$ = $1 * t;
 		}
 		| timespec timespec
-		{
-			$$ = $1 + $2;
-		}
-		| timespec number
 		{
 			$$ = $1 + $2;
 		}

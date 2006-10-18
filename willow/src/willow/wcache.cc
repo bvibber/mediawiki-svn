@@ -66,23 +66,22 @@ struct key_idx_entry {
 	LIST_ENTRY(key_idx_entry) entries;
 };
 
+LIST_HEAD(key_idx_head, key_idx_entry);
 struct key_idx_bucket {
-	LIST_HEAD(key_idx_head, key_idx_entry) head;
+	key_idx_head head;
 } key_idx[HASH_ELEMS];
  	
 TAILQ_HEAD(objlist, cache_object) objects;
 
 static int
-cache_open(obj, flags, mode)
-	struct cache_object *obj;
-	int flags, mode;
+cache_open(cache_object *obj, int flags, int mode)
 {
 	char *path;
 	int plen;
 	int i;
 
 	plen = strlen(config.caches[0].dir) + 1 + sizeof(CACHEDIR) + 1 + 6 + int_max_len;
-	path = wmalloc(plen + 1);
+	path = (char *)wmalloc(plen + 1);
 	sprintf(path, "%s/%s/%s", config.caches[0].dir, CACHEDIR, obj->co_path);
 	if (mode)
 		unlink(path);
@@ -92,15 +91,14 @@ cache_open(obj, flags, mode)
 }
 
 static void
-cache_unlink(obj)
-	struct cache_object *obj;
+cache_unlink(cache_object *obj)
 {
 	char *path;
 	int plen;
 	int i;
 
 	plen = strlen(config.caches[0].dir) + 1 + sizeof(CACHEDIR) + 1 + 6 + int_max_len;
-	path = wmalloc(plen + 1);
+	path = (char *)wmalloc(plen + 1);
 	sprintf(path, "%s/%s/%s", config.caches[0].dir, CACHEDIR, obj->co_path);
 	unlink(path);
 	wfree(path);
@@ -119,7 +117,7 @@ struct	cache_state	 state;
 		char 	*dir;
 		
 		dlen = strlen(cd->dir) + sizeof(CACHEDIR) + 2 + 6 /* 0/1/2/ */;
-		if ((dir = wmalloc(dlen)) == NULL)
+		if ((dir = (char *)wmalloc(dlen)) == NULL)
 			outofmemory();
 		
 		snprintf(dir, dlen, "%s/%s", cd->dir, CACHEDIR);
@@ -178,8 +176,7 @@ wcache_shutdown(void)
 }
 
 void
-wcache_init(readstate)
-	int readstate;
+wcache_init(int readstate)
 {
 struct	cachedir	*cd;
 	int		 i;
@@ -204,7 +201,7 @@ struct	cachedir	*cd;
 }
 
 static void
-expire_sched()
+expire_sched(void)
 {
 	expire_tv.tv_usec = 0;
 	expire_tv.tv_sec = config.cache_expevery;
@@ -213,9 +210,7 @@ expire_sched()
 }
 
 void
-wcache_release(obj, comp)
-	struct cache_object *obj;
-	int comp;
+wcache_release(cache_object *obj, int comp)
 {
 	WDEBUG((WLOG_DEBUG, "release %s, comp=%d", obj->co_key, comp));
 
@@ -229,8 +224,7 @@ wcache_release(obj, comp)
 }
 
 static void
-wcache_evict(obj)
-	struct cache_object *obj;
+wcache_evict(cache_object *obj)
 {
 	TAILQ_REMOVE(&objects, obj, entries);
 	cache_unlink(obj);
@@ -240,9 +234,7 @@ wcache_evict(obj)
 }
 
 struct cache_object *
-wcache_find_object(key, fd, flags)
-	const char *key;
-	int *fd, flags;
+wcache_find_object(const char *key, int *fd, int flags)
 {
 struct	cache_object	*co;
 
@@ -282,8 +274,7 @@ struct	cache_object	*co;
 }
 
 static void
-cache_writestate(state)
-	struct cache_state *state;
+cache_writestate(cache_state *state)
 {
 	FILE 		*stfil;
 	char		*stpath;
@@ -291,7 +282,7 @@ cache_writestate(state)
 struct	cache_object	*obj;
 
 	stlen = strlen(config.caches[0].dir) + 1 + 5 + 1;
-	if ((stpath = wmalloc(stlen)) == NULL)
+	if ((stpath = (char *)wmalloc(stlen)) == NULL)
 		outofmemory();
 	snprintf(stpath, stlen, "%s/%s", config.caches[0].dir, "state");
 	if ((stfil = fopen(stpath, "w")) == NULL) {
@@ -310,8 +301,7 @@ struct	cache_object	*obj;
 }
 
 static void
-cache_getstate(state)
-	struct cache_state *state;
+cache_getstate(cache_state *state)
 {
 	FILE 		*stfil;
 	char		*stpath;
@@ -322,7 +312,7 @@ struct	cache_object	*obj;
 	size_t		 l;
 
 	stlen = strlen(config.caches[0].dir) + 1 + 5 + 1;
-	if ((stpath = wmalloc(stlen)) == NULL)
+	if ((stpath = (char *)wmalloc(stlen)) == NULL)
 		outofmemory();
 	snprintf(stpath, stlen, "%s/%s", config.caches[0].dir, "state");
 	if ((stfil = fopen(stpath, "r")) == NULL) {
@@ -337,7 +327,7 @@ struct	cache_object	*obj;
 		exit(8);
 	}
 
-	s = wmalloc(65535);
+	s = (char *)wmalloc(65535);
 	while (fgets(s, 65534, stfil)) {
 		char url[65535], path[128];
 		int size, time, lru, id, expires;
@@ -346,7 +336,7 @@ struct	cache_object	*obj;
 			wlog(WLOG_ERROR, "data format error in cache state file %s", stpath);
 			exit(8);
 		}
-		obj = wmalloc(sizeof(*obj));
+		obj = (cache_object *)wmalloc(sizeof(*obj));
 		bzero(obj, sizeof(*obj));
 		obj->co_key = wstrdup(url);
 		obj->co_size = size;
@@ -373,14 +363,13 @@ cache_next_id(void)
 }
 
 static struct cache_object *
-wcache_new_object(key)
-	const char *key;
+wcache_new_object(const char *key)
 {
 struct	cache_object	*ret;
 	int		 i;
 	char		 *p, *s, a[11];
 
-	if ((ret = wcalloc(1, sizeof(*ret))) == NULL) {
+	if ((ret = (cache_object *)wcalloc(1, sizeof(*ret))) == NULL) {
 		outofmemory();
 		/*NOTREACHED*/
 	}
@@ -390,7 +379,7 @@ struct	cache_object	*ret;
 
 	assert(ret->co_id > 999);
 	ret->co_plen = int_max_len + 6;
-	if ((ret->co_path = wmalloc(ret->co_plen + 1)) == NULL) {
+	if ((ret->co_path = (char *)wmalloc(ret->co_plen + 1)) == NULL) {
 		outofmemory();
 		/*NOTREACHED*/
 	}
@@ -413,8 +402,7 @@ struct	cache_object	*ret;
 }
 
 static void
-wcache_free_object(obj)
-	struct cache_object *obj;
+wcache_free_object(cache_object *obj)
 {
 }
 
@@ -429,7 +417,7 @@ struct	cache_object	*obj;
 		config.cache_expevery, state.cs_size));
 
 	cache_writestate(&state);
-	wantsize = config.caches[0].maxsize * ((100.0-config.cache_expthresh)/100);
+	wantsize = (w_size_t) (config.caches[0].maxsize * ((100.0-config.cache_expthresh)/100));
 	if (state.cs_size <= wantsize) {
 		WDEBUG((WLOG_DEBUG, "expire: cache only %lld bytes large", state.cs_size));
 		expire_sched();
@@ -447,19 +435,17 @@ struct	cache_object	*obj;
 }
 
 static void
-idx_add(obj)
-	struct cache_object *obj;
+idx_add(cache_object *obj)
 {
 	struct key_idx_head *head = &key_idx[hash((ub1 *)obj->co_key)].head;
-	struct key_idx_entry *entry = wmalloc(sizeof(*entry));
+	struct key_idx_entry *entry = (key_idx_entry *)wmalloc(sizeof(*entry));
 	bzero(entry, sizeof(*entry));
 	entry->obj = obj;
 	LIST_INSERT_HEAD(head, entry, entries);
 }
 
 static struct cache_object *
-idx_find(key)
-	const char *key;
+idx_find(const char *key)
 {
 	struct key_idx_head *head = &key_idx[hash((ub1 *)key)].head;
 	struct key_idx_entry *entry;
@@ -470,8 +456,7 @@ idx_find(key)
 }
 
 static void
-idx_rem(obj)
-	struct cache_object *obj;
+idx_rem(cache_object *obj)
 {
 	struct key_idx_head *head = &key_idx[hash((ub1 *)obj->co_key)].head;
 	struct key_idx_entry *entry;
@@ -500,8 +485,7 @@ idx_rem(obj)
  * See http://burtleburtle.net/bob/hash/evahash.html
  */
 
-ub4 hash(k)
-register const ub1 *k;        /* the key */
+ub4 hash(const ub1 *k)
 {
    register ub4 a,b,c,len;
    register ub4 length = strlen((char *)k);

@@ -8,6 +8,10 @@
 	@echo "	$(_COMPILE) -c $<"
 	@$(_COMPILE) -c $<
 
+.cc.o:
+	@echo "	$(_COMPILEXX) -c $<"
+	@$(_COMPILEXX) -c $<
+
 _dist: 
 	[ -d $(DISTDEST)/$(_DISTPATH) ] || mkdir -p $(DISTDEST)/$(_DISTPATH)
 	cp $(_MYDISTFILES) $(DISTDEST)/$(_DISTPATH)

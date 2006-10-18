@@ -13,16 +13,21 @@
 #endif
 
 #include <sys/types.h>
-
 #include <netinet/in.h>
+
+#include <string>
+using std::string;
+#include <vector>
+using std::vector;
 
 struct fde;
 
 struct backend {
-	char		*be_name;	/* IP as specified in config	*/
+			 backend(string const &, string const &, int);
+	string		 be_name;	/* IP as specified in config	*/
 	int	 	 be_port;	/* port number			*/
 struct	sockaddr_in	 be_addr;	/* socket address		*/
-	char		*be_straddr;	/* formatted address		*/
+	string		 be_straddr;	/* formatted address		*/
 	int	 	 be_dead;	/* 0 if okay, 1 if unavailable	*/
 	time_t		 be_time;	/* If dead, time to retry	*/
 	uint32_t	 be_hash;	/* constant carp "host" hash	*/
@@ -33,11 +38,11 @@ struct	sockaddr_in	 be_addr;	/* socket address		*/
 
 typedef void (*backend_cb)(struct backend *, struct fde *, void *);
 
-void add_backend(const char *, int);
-void backend_file(char *);
+void add_backend(string const &, int);
+void backend_file(string const &);
 
-int get_backend(const char *url, backend_cb, void *, int);
+int get_backend(string const &url, backend_cb, void *, int);
 
-extern int nbackends;
+extern vector<backend *> backends;
 
 #endif

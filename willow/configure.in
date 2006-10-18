@@ -1,8 +1,8 @@
 # @(#) $Header$
 
-AC_INIT(willow, 1.0-cvs, keturner@livejournal.com)
+AC_INIT(willow, 1.0-cvs, river@attenuate.org)
 
-USER_CFLAGS="$CFLAGS"
+USER_CXXFLAGS="$CXXFLAGS"
 
 # autoconf brokenness
 if test -z "$CC"; then
@@ -10,48 +10,49 @@ if test -z "$CC"; then
 fi
 
 gcc_common="-W -Wall -Wno-unused -g"
-debug_cflags_gcc="$gcc_common -O0"
-prod_cflags_gcc="$gcc_common -O3"
+debug_cxxflags_gcc="$gcc_common -O0"
+prod_cxxflags_gcc="$gcc_common -O3"
 sunpro_common="-errshort=tags -errtags -mc -xc99"
-debug_cflags_sunpro="-g $sunpro_common -v -xs"
-prod_cflags_sunpro="-fast $sunpro_common -xdepend=yes -xipo=2 -xalias_level=std"
+debug_cxxflags_sunpro="-g $sunpro_common -v -xs"
+prod_cxxflags_sunpro="-fast $sunpro_common -xdepend=yes -xipo=2 -xalias_level=std"
 
 AC_CONFIG_HEADER(src/include/config.h)
 
 echo ""
 echo "examining environment..."
-AC_LANG_C
+AC_LANG(C++)
 AC_PROG_CC
+AC_PROG_CXX
 
 if test x${ac_compiler_gnu} = xyes; then
-	debug_cflags=$debug_cflags_gcc
-	prod_cflags=$prod_cflags_gcc
+	debug_cxxflags=$debug_cxxflags_gcc
+	prod_cxxflags=$prod_cxxflags_gcc
 fi
 
 AC_MSG_CHECKING(whether we are using the SunPro C compiler)
 if $CC -V 2>&1 | grep "Sun C" >/dev/null; then
 	AC_MSG_RESULT(yes)
-	debug_cflags=$debug_cflags_sunpro
-	prod_cflags=$prod_cflags_sunpro
+	debug_cxxflags=$debug_cxxflags_sunpro
+	prod_cxxflags=$prod_cxxflags_sunpro
 else
 	AC_MSG_RESULT(no)
 fi
 
-mycflags=$prod_cflags
+mycxxflags=$prod_cxxflags
 AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug],[Compile with debug support]),
 [	if test $enableval = yes; then
 		AC_DEFINE([WILLOW_DEBUG], [], [Compile with debug support])
-		mycflags=$debug_cflags
+		mycxxflags=$debug_cxxflags
 	fi
 ])
 
-if test -z "$USER_CFLAGS"; then
-	USE_CFLAGS=$mycflags
+if test -z "$USER_CXXFLAGS"; then
+	USE_CXXFLAGS=$mycxxflags
 else
-	USE_CFLAGS=$USER_CFLAGS
+	USE_CXXFLAGS=$USER_CXXFLAGS
 fi
 
-echo "using CFLAGS: $USE_CFLAGS"
+echo "using CXXFLAGS: $USE_CXXFLAGS"
 
 AC_PROG_INSTALL
 AC_MAKE_INCLUDE
@@ -128,7 +129,7 @@ AC_ARG_ENABLE(debug-alloc, AC_HELP_STRING([--enable-debug-alloc],[Compile with d
 AC_CHECK_LIB(event, event_add, [],[AC_ERROR([libevent not found])])
 
 datadir="${datadir}/willow"
-CFLAGS="$USE_CFLAGS"
+CXXFLAGS="$USE_CXXFLAGS"
 
 
 PATH_LIBEXECDIR=`eval echo $libexecdir | sed -e "s,NONE,$prefix,"`
