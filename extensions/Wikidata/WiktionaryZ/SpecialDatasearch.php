@@ -34,6 +34,7 @@ function wfSpecialDatasearch() {
 					"FROM uw_expression_ns, uw_syntrans ".
 		            "WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id AND uw_syntrans.identical_meaning=1 " .
 		            " AND " . getLatestTransactionRestriction('uw_syntrans').
+		            " AND " . getLatestTransactionRestriction('uw_expression_ns').
 					" AND spelling LIKE " . $dbr->addQuotes("%$text%") .
 					" ORDER BY position ASC, uw_expression_ns.spelling ASC limit 100";
 			

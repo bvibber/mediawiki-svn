@@ -59,7 +59,8 @@ function getSuggestions() {
 			$sql = "SELECT syntrans.defined_meaning_id AS defined_meaning_id, expression.spelling AS spelling, expression.language_id AS language_id ".
 					"FROM uw_expression_ns expression, uw_syntrans syntrans ".
 	            	"WHERE expression.expression_id=syntrans.expression_id AND syntrans.identical_meaning=1 " .
-	            	" AND " . getLatestTransactionRestriction('syntrans');
+	            	" AND " . getLatestTransactionRestriction('syntrans').
+	            	" AND " . getLatestTransactionRestriction('expression');
 	        break;	
 	    case 'collection':
 	    	$sql = "SELECT collection_id, spelling ".
@@ -67,6 +68,7 @@ function getSuggestions() {
 	    			"WHERE expression.expression_id=syntrans.expression_id AND syntrans.defined_meaning_id=collection.collection_mid ".
 	    			"AND syntrans.identical_meaning=1" .
 	    			" AND " . getLatestTransactionRestriction('syntrans') .
+	    			" AND " . getLatestTransactionRestriction('expression') .
 	    			" AND " . getLatestTransactionRestriction('collection');
 	    	break;
 	    case 'transaction':
@@ -134,6 +136,7 @@ function getSQLForCollectionOfType($collectionType) {
             "AND syntrans.defined_meaning_id=uw_collection_contents.member_mid " .
             "AND expression.expression_id=syntrans.expression_id AND syntrans.identical_meaning=1 ".
             "AND " . getLatestTransactionRestriction('syntrans') .
+            "AND " . getLatestTransactionRestriction('expression') .
             "AND " . getLatestTransactionRestriction('uw_collection_contents');
 }
 
