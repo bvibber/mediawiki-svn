@@ -96,7 +96,9 @@ get_backend(string const &url, backend_cb func, void *data, int flags)
 {
 struct	backend_cb_data	*cbd;
 	int		 s;
-	
+static	time_t		 last_nfile;
+	time_t		 now = time(NULL);
+
 	WDEBUG((WLOG_DEBUG, "get_backend: called"));
 
 	cbd = new backend_cb_data;
@@ -114,7 +116,10 @@ struct	backend_cb_data	*cbd;
 		}
 
 		if ((s = wnet_open("backend connection")) == -1) {
-			wlog(WLOG_WARNING, "opening backend socket: %s", strerror(errno));
+			if (errno != ENFILE || now - last_nfile > 60) 
+				wlog(WLOG_WARNING, "opening backend socket: %s", strerror(errno));
+			if (errno == ENFILE)
+				last_nfile = now;
 			wfree(cbd);
 			return -1;
 		}

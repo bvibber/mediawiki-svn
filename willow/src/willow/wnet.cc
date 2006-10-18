@@ -121,20 +121,27 @@ struct	client_data	*cdata;
 #endif
 	int		 newfd, val;
 struct	fde		*newe;
-
+static time_t		 last_nfile = 0;
+	time_t		 now = time(NULL);
 	if ((cdata = (client_data *)wcalloc(1, sizeof(*cdata))) == NULL)
 		outofmemory();
 
 	addrlen = sizeof(cdata->cdat_addr);
 
 	if ((newfd = accept(e->fde_fd, (struct sockaddr *) &cdata->cdat_addr, &addrlen)) < 0) {
-		wlog(WLOG_NOTICE, "accept error: %s", strerror(errno));
+		if (errno != ENFILE || now - last_nfile > 60) 
+			wlog(WLOG_NOTICE, "accept error: %s", strerror(errno));
+		if (errno == ENFILE)
+			last_nfile = now;
 		wfree(cdata);
 		return;
 	}
 
 	if (newfd >= max_fd) {
-		wlog(WLOG_NOTICE, "out of file descriptors!");
+		if (errno != ENFILE || now - last_nfile > 60) 
+			wlog(WLOG_NOTICE, "out of file descriptors!");
+		if (errno == ENFILE)
+			last_nfile = now;
 		wfree(cdata);
 		(void)close(newfd);
 		return;
@@ -173,9 +180,13 @@ int
 wnet_open(const char *desc)
 {
 	int	fd, val;
-
+static int	last_nfile = 0;
+	time_t	now = time(NULL);
 	if ((fd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) {
-		wlog(WLOG_WARNING, "socket: %s", strerror(errno));
+		if (errno != ENFILE || now - last_nfile > 60) 
+			wlog(WLOG_WARNING, "socket: %s", strerror(errno));
+		if (errno == ENFILE)
+			last_nfile = now;
 		return -1;
 	}
 
