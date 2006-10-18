@@ -739,15 +739,14 @@ class DefinedMeaningHeaderEditor extends ScalarEditor {
 		$definedMeaningAsLink = definedMeaningAsLink($value);
 		$escapedDefinition = htmlspecialchars($definition);
 
-		if ($this->truncate || strlen($definition) >= $this->truncateAt)
+		if ($this->truncate && strlen($definition) >= $this->truncateAt)
 			$escapedDefinition = '<span title="'. $escapedDefinition .'">'. htmlspecialchars(substr($definition, 0, $this->truncateAt)) . '...</span>';
 			
 		return $definedMeaningAsLink . ": " . $escapedDefinition;			
 	}
 
 	public function getEditHTML($idPath, $value) {
-		//Not editable
-		return null;
+		return "";
 	}
 
 	public function add($idPath) {
@@ -921,30 +920,18 @@ class ClassReferenceEditor extends DefinedMeaningReferenceEditor {
 	protected function suggestType() {
 		return "class";
 	}
-
-//	public function getViewHTML($idPath, $value) {
-//		return definedMeaningAsLink($value);
-//	}
 }
 
 class CollectionReferenceEditor extends DefinedMeaningReferenceEditor {
 	protected function suggestType() {
 		return "collection";
 	}
-
-//	public function getViewHTML($idPath, $value) {
-//		return collectionAsLink($value);
-//	}
 }
 
 class TextAttributeEditor extends DefinedMeaningReferenceEditor {
 	protected function suggestType() {
 		return "text-attribute";
 	}
-
-//	public function getViewHTML($idPath, $value) {
-//		return definedMeaningAsLink($value);
-//	}
 }
 
 class RecordListEditor extends RecordEditor {
