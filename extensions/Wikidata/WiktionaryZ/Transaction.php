@@ -116,6 +116,16 @@ function getUpdateTransactionId() {
 	return $updateTransactionId;	
 }
 
+function getLatestTransactionId() {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT max(transaction_id) AS transaction_id FROM transactions");
+
+	if ($transaction = $dbr->fetchObject($queryResult)) 
+		return $transaction->transaction_id;
+	else
+		return 0;
+}
+
 function getLatestTransactionRestriction($table) {
 	return ' '. $table . '.remove_transaction_id IS NULL ';
 }

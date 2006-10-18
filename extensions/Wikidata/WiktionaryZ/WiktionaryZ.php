@@ -18,7 +18,7 @@ require_once('WiktionaryZEditors.php');
  * @package MediaWiki
  */
 class WiktionaryZ extends DefaultWikidataApplication {
-	function view() {
+	public function view() {
 		global
 			$wgOut, $wgTitle;
 
@@ -33,7 +33,7 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		# $wgOut->setPageTitleArray($this->mTitle->getTitleArray());
 	}
 
-	function history() {
+	public function history() {
 		global
 			$wgOut, $wgTitle;
 
@@ -49,29 +49,17 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		$wgOut->setPageTitleArray($titleArray);
 	}
 
-	function saveForm() {
+	protected function save($referenceTransaction) {
 		global
-			$wgTitle, $wgUser, $wgRequest;
-
-		$summary = $wgRequest->getText('summary');
-
-		startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
+			$wgTitle;
 
 		$spelling = $wgTitle->getText();
-		getExpressionsEditor($spelling, false)->save(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryLatestTransactionInformation()));
-
-		Title::touchArray(array($wgTitle));
-		$now = wfTimestampNow();
-		RecentChange::notifyEdit($now, $wgTitle, false, $wgUser, $summary,
-			0, $now, false, '', 0, 0, 0);
+		getExpressionsEditor($spelling, false)->save(new IdStack("expression"), getExpressionsRecordSet($spelling, $referenceTransaction));
 	}
 
-	function edit() {
+	public function edit() {
 		global
-			$wgOut, $wgTitle, $wgUser, $wgRequest;
-
-		if ($wgRequest->getText('save') != '')
-			$this->saveForm();
+			$wgOut, $wgTitle, $wgUser;
 
 		parent::edit();
 
@@ -80,13 +68,6 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		$this->outputEditHeader();
 		$wgOut->addHTML(getExpressionsEditor($spelling, false)->edit(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryLatestTransactionInformation())));
 		$this->outputEditFooter();
-
-		$wgOut->addHTML(DefaultEditor::getExpansionCss());
-		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
-
-		$titleArray = $wgTitle->getTitleArray();
-		$titleArray["actionprefix"] = wfMsg('editing');
-		$wgOut->setPageTitleArray($titleArray);
 	}
 }
 

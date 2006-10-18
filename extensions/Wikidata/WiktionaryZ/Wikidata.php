@@ -1,6 +1,7 @@
 <?php
 
 require_once("forms.php");
+require_once("Transaction.php");
 
 interface WikidataApplication {
 	public function view();
@@ -45,10 +46,31 @@ class DefaultWikidataApplication implements WikidataApplication {
 		$wgOut->addHTML($this->getLanguageSelector());
 	}
 	
+	protected function save($referenceTransaction) {
+	}
+	
+	public function saveWithinTransaction() {
+		global
+			$wgTitle, $wgUser, $wgRequest;
+
+		$summary = $wgRequest->getText('summary');
+
+		startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
+		$this->save(new QueryAtTransactionInformation($wgRequest->getInt('transaction')));
+
+
+		Title::touchArray(array($wgTitle));
+		$now = wfTimestampNow();
+		RecentChange::notifyEdit($now, $wgTitle, false, $wgUser, $summary, 0, $now, false, '', 0, 0, 0);
+	}
+	
 	public function edit() {
 		global
-			$wgOut;
+			$wgOut, $wgRequest;
 			
+		if ($wgRequest->getText('save') != '') 
+			$this->saveWithinTransaction();
+
 		$wgOut->addHTML($this->getLanguageSelector());
 	}
 	
@@ -91,17 +113,26 @@ class DefaultWikidataApplication implements WikidataApplication {
 		global
 			$wgOut;
 			
-		$wgOut->addHTML('<form method="post" action="">');
+		$wgOut->addHTML(
+			'<form method="post" action="">' .
+				'<input type="hidden" name="transaction" value="'. getLatestTransactionId() .'"/>'
+		);
 	}
 	
 	protected function outputEditFooter() {
 		global
 			$wgOut, $wgTitle;
 		
-		$wgOut->addHTML('<div class="option-panel">');
-			$wgOut->addHTML('<table cellpadding="0" cellspacing="0"><tr><th>' . wfMsg('summary') . ': </th><td class="option-field">' . getTextBox("summary") .'</td></tr></table>');
-			$wgOut->addHTML(getSubmitButton("save", wfMsg('wz_save')));
-		$wgOut->addHTML('</div>');
+		$wgOut->addHTML(
+			'<div class="option-panel">'.
+				'<table cellpadding="0" cellspacing="0"><tr>' .
+					'<th>' . wfMsg('summary') . ': </th>' .
+					'<td class="option-field">' . getTextBox("summary") .'</td>' .
+				'</tr></table>' .
+				getSubmitButton("save", wfMsg('wz_save')).
+			'</div>'
+		);
+		
 		$wgOut->addHTML('</form>');
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");

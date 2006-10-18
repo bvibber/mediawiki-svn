@@ -20,10 +20,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 	
 	public function edit() {
 		global
-			$wgOut, $wgTitle, $wgRequest;
-
-		if ($wgRequest->getText('save') != '')
-			$this->save();
+			$wgOut, $wgTitle;
 
 		parent::edit();
 
@@ -33,12 +30,9 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$this->outputEditHeader();
 		$wgOut->addHTML(getDefinedMeaningEditor(false)->edit($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, new QueryLatestTransactionInformation())));
 		$this->outputEditFooter();
-
-		$wgOut->addHTML(DefaultEditor::getExpansionCss());
-		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 	}
 	
-	function history() {
+	public function history() {
 		global
 			$wgOut, $wgTitle;
 
@@ -59,21 +53,13 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$wgOut->setPageTitleArray($titleArray);
 	}
 
-	protected function save() {
+	protected function save($referenceTransaction) {
 		global
-			$wgTitle, $wgUser, $wgRequest;
-
-		$summary = $wgRequest->getText('summary');
-
-		startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
+			$wgTitle;
 
 //		$definedMeaningId = $wgTitle->getText();
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		getDefinedMeaningEditor(false)->save($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, new QueryLatestTransactionInformation()));
-
-		Title::touchArray(array($wgTitle));
-		$now = wfTimestampNow();
-		RecentChange::notifyEdit($now, $wgTitle, false, $wgUser, $summary, 0, $now, false, '', 0, 0, 0);
+		getDefinedMeaningEditor(false)->save($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, $referenceTransaction));
 	}
 	
 	protected function getIdStack($definedMeaningId) {
@@ -95,9 +81,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$bracketPosition = strrpos($title, "(");
 		$definedMeaningId = substr($title, $bracketPosition + 1, strlen($title) - $bracketPosition - 2);
 		return $definedMeaningId;
-	}
-	
+	}	
 }
-
 
 ?>
