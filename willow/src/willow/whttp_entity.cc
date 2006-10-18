@@ -441,17 +441,25 @@ struct	http_entity	*entity = (http_entity *) d;
 		read = bufferevent_read(entity->_he_frombuf, buf, want);
 		WDEBUG((WLOG_DEBUG, "rw %d, got %d wrote=%d wrt=%d", want, read, wrote,
 				entity->he_source.fde._wrt));
+
+		/*
+		 * _wrt holds the remaining data to read from the source, if we know
+		 * it (e.g. Content-Length header).  Decrement it by the amount we just
+		 * read; if it ends up 0, we read the entire entity.
+		 */
 		if (entity->he_source.fde._wrt) {
 			entity->he_source.fde._wrt -= read;
 			if (entity->he_source.fde._wrt == 0)
 				contdone = 1;
 		}
+
+		/*
+		 * We ran out of data and haven't reached the end of the source entity.
+		 * Schedule another read on the source and return.
+		 */
 		if (read == 0 && !contdone) {
-//			if (!wrote)
-				bufferevent_enable(entity->_he_frombuf, EV_READ);
+			bufferevent_enable(entity->_he_frombuf, EV_READ);
 			bufferevent_disable(entity->_he_tobuf, EV_WRITE);
-//			else
-//				bufferevent_disable(entity->_he_frombuf, EV_READ);
 			return;
 		}
 		
