@@ -19,16 +19,14 @@
 #include "config.h"
 
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	FILE	*outf;
 	char	*line;
 	size_t	 lnsz;
 
 	lnsz = 8192;
-	line = malloc(lnsz);
+	line = new char[lnsz];
 
 	(void)signal(SIGPIPE, SIG_IGN);
 
