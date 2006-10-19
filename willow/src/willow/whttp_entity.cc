@@ -94,6 +94,8 @@ static void entity_send_file_done(struct fde *, void *, int);
 static void entity_send_target_write(struct bufferevent *, void *);
 static void entity_send_target_error(struct bufferevent *, short, void *);
 
+header	 header::hr_fl;	/* header free list */
+
 const char *ent_errors[] = {
 	/* 0  */	"Unknown error",
 	/* -1 */	"Read error",
@@ -119,6 +121,7 @@ entity_free(http_entity *entity)
 	WDEBUG((WLOG_DEBUG, "free entity @ %p", entity));
 
 	header_free(&entity->he_headers);
+	entity->he_headers.~header_list();
 	if (entity->_he_frombuf) {
 		bufferevent_disable(entity->_he_frombuf, EV_READ | EV_WRITE);
 		bufferevent_free(entity->_he_frombuf);
@@ -135,7 +138,6 @@ entity_free(http_entity *entity)
 		if (entity->he_rdata.request.path)
 			wfree(entity->he_rdata.request.path);
 	}
-	bzero(entity, sizeof(*entity));
 }
 
 void
@@ -943,7 +945,6 @@ parse_headers(http_entity *entity)
 			value = hdr[1];
 			while (isspace(*value))
 				++value;
-			value = wstrdup(value);
 
 			WDEBUG((WLOG_DEBUG, "header: from [%s], [%s] = [%s]",
 				line, hdr[0], value));
@@ -957,17 +958,17 @@ parse_headers(http_entity *entity)
 					error = ENT_ERR_INVHOST;
 					goto error;
 				}
-				header_add(&entity->he_headers, wstrdup(hdr[0]), value);
+				header_add(&entity->he_headers, wstrdup(hdr[0]), wstrdup(value));
 				entity->he_rdata.request.host = wstrdup(value);
 			} else if (!strcasecmp(hdr[0], "Content-Length")) {
-				header_add(&entity->he_headers, wstrdup(hdr[0]), value);
+				header_add(&entity->he_headers, wstrdup(hdr[0]), wstrdup(value));
 				entity->he_rdata.request.contlen = atoi(value);
 			} else if (!strcasecmp(hdr[0], "Via")) {
 				if (via_includes_me(value)) {
 					error = ENT_ERR_LOOP;
 					goto error;
 				}
-				header_add(&entity->he_headers, wstrdup(hdr[0]), value);
+				header_add(&entity->he_headers, wstrdup(hdr[0]), wstrdup(value));
 			} else if (!strcasecmp(hdr[0], "transfer-encoding")) {
 				/* XXX */
 				if (!strcasecmp(value, "chunked")) {
@@ -998,7 +999,7 @@ parse_headers(http_entity *entity)
 				entity->he_h_last_modified = wstrdup(value);
 				header_add(&entity->he_headers, wstrdup(hdr[0]), entity->he_h_last_modified);
 			} else 
-				header_add(&entity->he_headers, wstrdup(hdr[0]), value);
+				header_add(&entity->he_headers, wstrdup(hdr[0]), wstrdup(value));
 
 			wstrvecfree(hdr);
 			break;

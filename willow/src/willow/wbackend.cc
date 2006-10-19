@@ -178,7 +178,7 @@ struct	backend_cb_data	*cbd = static_cast<backend_cb_data *>(e->fde_rdata);
 	wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
 
 	cbd->bc_func(cbd->bc_backend, e, cbd->bc_data);
-	wfree(cbd);
+	delete cbd;
 }
 
 static struct backend *

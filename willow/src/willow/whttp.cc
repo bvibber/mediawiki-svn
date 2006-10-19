@@ -201,11 +201,10 @@ struct	http_client	*cl;
 	if (freelist.fe_next) {
 		cl = freelist.fe_next;
 		freelist.fe_next = cl->fe_next;
-		new (cl) http_client;
 	} else
-		cl = new http_client;
-
+		cl = (http_client *)new char[sizeof(http_client)];
 	memset(cl, 0, sizeof(*cl));
+	new (cl) http_client;
 	cl->cl_fde = e;
 	return cl;
 }

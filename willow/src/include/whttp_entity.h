@@ -58,8 +58,27 @@ typedef void (*cache_callback)(const char *, size_t, void *);
 struct header {
 	header(char *n, char *v)
 		: hr_name(n), hr_value(v) {}
+	header() : hr_name(NULL), hr_value(NULL), fl_next(NULL) {}
 	char		*hr_name;
 	char		*hr_value;
+
+	void *operator new(size_t size) {
+		if (hr_fl.fl_next) {
+		header	*ret = hr_fl.fl_next;
+			hr_fl.fl_next = hr_fl.fl_next->fl_next;
+			return ret;
+		}
+		return ::new char[sizeof(header)];
+	}
+
+	void operator delete(void *p) {
+	header	*hdr = (header *)p;
+		hdr->fl_next = hr_fl.fl_next;
+		hr_fl.fl_next = hdr;
+	}
+
+	header		*fl_next;
+	static header	 hr_fl;
 };
 
 struct header_list {
