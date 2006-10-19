@@ -15,6 +15,10 @@
 #include "config.h"
 
 #include <sstream>
+#include <cstddef>
+#include <iostream>
+
+#include "wlog.h"
 
 #ifdef __INTEL_COMPILER
 # pragma warning (disable: 869 981 304 383 1418 1469 810)
@@ -31,6 +35,37 @@ To			t;
 }
 
 typedef unsigned long long w_size_t;
+
+template<typename T>
+struct freelist_allocator {
+        T       *_freelist_next;
+static  T       *_freelist;
+ 
+        void *operator new(std::size_t size) {
+                if (_freelist) {
+                T       *n = _freelist;
+			WDEBUG((WLOG_DEBUG, "allocate %s from freelist @ %p", typeid(T).name(), n));
+                        _freelist = _freelist->_freelist_next;
+                        return n;
+                } else {
+		void	*ret;
+			ret = new char[size];
+			WDEBUG((WLOG_DEBUG, "allocate %s from heap @ %p", typeid(T).name(), ret));
+			memset(ret, 0, size);
+			return ret;
+		}
+        }
+ 
+        void operator delete (void *p) {
+        T       *o = (T *)p;
+		WDEBUG((WLOG_DEBUG, "return %s @ %p to freelist", typeid(T).name(), p));
+		memset(o, 0, sizeof(*o));
+                o->_freelist_next = _freelist;
+                _freelist = o;
+        }
+};
+template<typename T>
+T *freelist_allocator<T>::_freelist;
 
 #ifdef WDEBUG_ALLOC
 void *internal_wmalloc(size_t, const char *, int);

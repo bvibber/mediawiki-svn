@@ -78,14 +78,29 @@ struct request_type supported_reqtypes[] = {
 	{ NULL,		0,	REQTYPE_INVALID }
 };
 
-struct http_client {
+struct http_client : freelist_allocator<http_client> {
+		http_client(fde *e) : cl_fde(e) {
+			cl_entity = new http_entity;
+		}
+		~http_client() {
+			if (cl_wrtbuf)
+				wfree(cl_wrtbuf);
+			if (cl_path)
+				wfree(cl_path);
+			delete cl_entity;
+			wnet_close(cl_fde->fde_fd);
+			if (cl_backendfde)
+				wnet_close(cl_backendfde->fde_fd);
+		}
+
+		
 struct	fde		*cl_fde;	/* backref to fd			*/
 	int		 cl_reqtype;	/* request type or 0			*/
 	char		*cl_path;	/* path they want			*/
 	char		*cl_wrtbuf;	/* write buf (either to client or be)	*/
 struct	backend		*cl_backend;	/* backend servicing this client	*/
 struct	fde		*cl_backendfde;	/* fde for backend			*/
-struct	http_entity	 cl_entity;	/* reply to send back			*/
+struct	http_entity	*cl_entity;	/* reply to send back			*/
 
 	/* Cache-related data */
 	int		 cl_cfd;	/* FD of cache file for writing, or 0	*/
@@ -100,9 +115,6 @@ enum	encoding	 cl_enc;
 struct	http_client	*fe_next;	/* freelist 				*/
 };
 
-static struct http_client freelist;
-
-static void client_close(struct http_client *);
 static void proxy_start_backend(struct backend *, struct fde *, void *);
 static void client_read_done(struct http_entity *, void *, int);
 static void client_response_done(struct http_entity *, void *, int);
@@ -191,25 +203,6 @@ whttp_shutdown(void)
 }
 
 /*
- * Create a new client associated with the FDE 'e'.
- */
-static http_client *
-new_client(fde *e)
-{
-struct	http_client	*cl;
-
-	if (freelist.fe_next) {
-		cl = freelist.fe_next;
-		freelist.fe_next = cl->fe_next;
-	} else
-		cl = (http_client *)new char[sizeof(http_client)];
-	memset(cl, 0, sizeof(*cl));
-	new (cl) http_client;
-	cl->cl_fde = e;
-	return cl;
-}
-
-/*
  * Called by wnet_accept to regiister a new client.  Reads the request headers
  * from the client.
  */
@@ -218,13 +211,13 @@ http_new(fde *e)
 {
 struct	http_client	*cl;
 
-	cl = new_client(e);
-	cl->cl_entity.he_source_type = ENT_SOURCE_FDE;
-	cl->cl_entity.he_source.fde.fde = e;
-	cl->cl_entity.he_rdata.request.contlen = -1;
+	cl = new http_client(e);
+	cl->cl_entity->he_source_type = ENT_SOURCE_FDE;
+	cl->cl_entity->he_source.fde.fde = e;
+	cl->cl_entity->he_rdata.request.contlen = -1;
 		
 	WDEBUG((WLOG_DEBUG, "http_new: starting header read for %d", cl->cl_fde->fde_fd));
-	entity_read_headers(&cl->cl_entity, client_read_done, cl);
+	entity_read_headers(cl->cl_entity, client_read_done, cl);
 }
 
 /*
@@ -248,34 +241,34 @@ struct	qvalue		*val;
 		client_send_error(client, ERR_BADREQUEST, ent_errors[-res], 400, "Bad request (#10.4.1)");
 		return;
 	} else if (res == -1) {
-		client_close(client);
+		delete client;
 		return;
 	} else if (res == 1) {
-		client_close(client);
+		delete client;
 		return;
 	}
 	
-	if (client->cl_entity.he_rdata.request.httpmaj >= 1 &&
-	    client->cl_entity.he_rdata.request.httpmin >= 1)
+	if (client->cl_entity->he_rdata.request.httpmaj >= 1 &&
+	    client->cl_entity->he_rdata.request.httpmin >= 1)
 		client->cl_flags.f_http11 = 1;
 
-	if (client->cl_entity.he_rdata.request.host == NULL)
-		client->cl_path = wstrdup(client->cl_entity.he_rdata.request.path);
+	if (client->cl_entity->he_rdata.request.host == NULL)
+		client->cl_path = wstrdup(client->cl_entity->he_rdata.request.path);
 	else {
 		int	len;
 		
-		len = strlen(client->cl_entity.he_rdata.request.host) +
-			strlen(client->cl_entity.he_rdata.request.path)	+ 7;
+		len = strlen(client->cl_entity->he_rdata.request.host) +
+			strlen(client->cl_entity->he_rdata.request.path) + 7;
 		
 		client->cl_path = (char *)wmalloc(len + 1);
 		if (client->cl_path == NULL)
 			outofmemory();
 		snprintf(client->cl_path, len + 1, "http://%s%s",
-				client->cl_entity.he_rdata.request.host,
-				client->cl_entity.he_rdata.request.path);
+				client->cl_entity->he_rdata.request.host,
+				client->cl_entity->he_rdata.request.path);
 	}
 	
-	client->cl_reqtype = client->cl_entity.he_rdata.request.reqtype;
+	client->cl_reqtype = client->cl_entity->he_rdata.request.reqtype;
 
 	pragma = entity->he_h_pragma;
 	cache_control = entity->he_h_cache_control;
@@ -394,33 +387,33 @@ vector<header *>::iterator	it, end;
 		return;
 	}
 
-	for (it = client->cl_entity.he_headers.hl_hdrs.begin();
-	     it != client->cl_entity.he_headers.hl_hdrs.end();) {
+	for (it = client->cl_entity->he_headers.hl_hdrs.begin();
+	     it != client->cl_entity->he_headers.hl_hdrs.end();) {
 		if (removable_header((*it)->hr_name))
-			header_remove(&client->cl_entity.he_headers, *it);
+			header_remove(&client->cl_entity->he_headers, *it);
 		else	++it;
 	}
 
-	header_add(&client->cl_entity.he_headers, wstrdup("X-Forwarded-For"), wstrdup(client->cl_fde->fde_straddr));
-	header_add(&client->cl_entity.he_headers, wstrdup("Connection"), wstrdup("Close"));
+	header_add(&client->cl_entity->he_headers, wstrdup("X-Forwarded-For"), wstrdup(client->cl_fde->fde_straddr));
+	header_add(&client->cl_entity->he_headers, wstrdup("Connection"), wstrdup("Close"));
 	/*
 	 * POST requests require Content-Length.
 	 */
 	if (client->cl_reqtype == REQTYPE_POST) {
-		if (client->cl_entity.he_rdata.request.contlen == -1) {
+		if (client->cl_entity->he_rdata.request.contlen == -1) {
 			client_send_error(client, ERR_BADREQUEST, "POST request without Content-Length",
 						411, "Length required (#10.4.12)");
 			return;
 		}
 		
-		WDEBUG((WLOG_DEBUG, "client content-length=%d", client->cl_entity.he_rdata.request.contlen));
-		client->cl_entity.he_source_type = ENT_SOURCE_FDE;
-		client->cl_entity.he_source.fde.fde = client->cl_fde;
-		client->cl_entity.he_source.fde.len = client->cl_entity.he_rdata.request.contlen;
+		WDEBUG((WLOG_DEBUG, "client content-length=%d", client->cl_entity->he_rdata.request.contlen));
+		client->cl_entity->he_source_type = ENT_SOURCE_FDE;
+		client->cl_entity->he_source.fde.fde = client->cl_fde;
+		client->cl_entity->he_source.fde.len = client->cl_entity->he_rdata.request.contlen;
 	} else
-		client->cl_entity.he_source_type = ENT_SOURCE_NONE;
+		client->cl_entity->he_source_type = ENT_SOURCE_NONE;
 	
-	entity_send(e, &client->cl_entity, backend_headers_done, client, 0);
+	entity_send(e, client->cl_entity, backend_headers_done, client, 0);
 }
 
 /*
@@ -439,19 +432,19 @@ struct	http_client	*client = (http_client *)data;
 		return;
 	}
 	
-	entity_free(&client->cl_entity);
-	bzero(&client->cl_entity, sizeof(client->cl_entity));
-	client->cl_entity.he_source_type = ENT_SOURCE_FDE;
-	client->cl_entity.he_source.fde.fde = client->cl_backendfde;
-	client->cl_entity.he_source.fde.len = -1;
+	delete client->cl_entity;
+	client->cl_entity = new http_entity;
+	client->cl_entity->he_source_type = ENT_SOURCE_FDE;
+	client->cl_entity->he_source.fde.fde = client->cl_backendfde;
+	client->cl_entity->he_source.fde.len = -1;
 	
-	entity_set_response(&client->cl_entity, 1);
+	entity_set_response(client->cl_entity, 1);
 
 	/*
 	 * This should probably be handled somewhere inside
 	 * whttp_entity.c ...
 	 */
-	entity_read_headers(&client->cl_entity, client_headers_done, client);
+	entity_read_headers(client->cl_entity, client_headers_done, client);
 }
 
 /*
@@ -465,7 +458,7 @@ struct	http_client	*client = (http_client *)data;
 	WDEBUG((WLOG_DEBUG, "client_headers_done: called"));
 	
 	if (res == -1) {
-		client_close(client);
+		delete client;
 		return;
 	} else if (res < -1) {
 		client_send_error(client, ERR_GENERAL, ent_errors[-res], 503,
@@ -487,7 +480,7 @@ struct	http_client	*client = (http_client *)data;
 
 		entity->he_cache_callback = do_cache_write;
 		entity->he_cache_callback_data = client;
-		header_dump(&client->cl_entity.he_headers, client->cl_cfd);
+		header_dump(&client->cl_entity->he_headers, client->cl_cfd);
 
 		/*
 		 * Look for last-modified
@@ -503,16 +496,16 @@ struct	http_client	*client = (http_client *)data;
 		}
 	}
 	
-	header_add(&client->cl_entity.he_headers, wstrdup("Via"), wstrdup(via_hdr));
-	header_add(&client->cl_entity.he_headers, wstrdup("X-Cache"), wstrdup(cache_miss_hdr));
-	client->cl_entity.he_source.fde.len = -1;
+	header_add(&client->cl_entity->he_headers, wstrdup("Via"), wstrdup(via_hdr));
+	header_add(&client->cl_entity->he_headers, wstrdup("X-Cache"), wstrdup(cache_miss_hdr));
+	client->cl_entity->he_source.fde.len = -1;
 	if (config.compress)
-		client->cl_entity.he_encoding = client->cl_enc;
+		client->cl_entity->he_encoding = client->cl_enc;
 
-	if (!HAS_BODY(client->cl_entity.he_rdata.response.status))
-		client->cl_entity.he_source_type = ENT_SOURCE_NONE;
+	if (!HAS_BODY(client->cl_entity->he_rdata.response.status))
+		client->cl_entity->he_source_type = ENT_SOURCE_NONE;
 
-	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client,
+	entity_send(client->cl_fde, client->cl_entity, client_response_done, client,
 			client->cl_flags.f_http11 ? ENT_CHUNKED_OKAY : 0);
 }
 
@@ -541,29 +534,29 @@ struct	stat	 sb;
 		
 	wfree(cache_path);
 	
-	entity_free(&client->cl_entity);
-	bzero(&client->cl_entity, sizeof(client->cl_entity));
-	header_undump(&client->cl_entity.he_headers, client->cl_cfd, &client->cl_entity.he_source.fd.off);
-	header_add(&client->cl_entity.he_headers, wstrdup("Via"), wstrdup(via_hdr));
-	header_add(&client->cl_entity.he_headers, wstrdup("X-Cache"), wstrdup(cache_hit_hdr));
-	if (!client->cl_enc && !header_find(&client->cl_entity.he_headers, "Content-Length")) {
+	delete client->cl_entity;
+	client->cl_entity = new http_entity;
+	header_undump(&client->cl_entity->he_headers, client->cl_cfd, &client->cl_entity->he_source.fd.off);
+	header_add(&client->cl_entity->he_headers, wstrdup("Via"), wstrdup(via_hdr));
+	header_add(&client->cl_entity->he_headers, wstrdup("X-Cache"), wstrdup(cache_hit_hdr));
+	if (!client->cl_enc && !header_find(&client->cl_entity->he_headers, "Content-Length")) {
 		snprintf(size, sizeof(size), "%lu", (unsigned long) client->cl_co->co_size);
-		header_add(&client->cl_entity.he_headers, wstrdup("Content-Length"), wstrdup(size));
+		header_add(&client->cl_entity->he_headers, wstrdup("Content-Length"), wstrdup(size));
 	}
 
-	entity_set_response(&client->cl_entity, 1);
-	client->cl_entity.he_rdata.response.status = 200;
-	client->cl_entity.he_rdata.response.status_str = "OK";
+	entity_set_response(client->cl_entity, 1);
+	client->cl_entity->he_rdata.response.status = 200;
+	client->cl_entity->he_rdata.response.status_str = "OK";
 			
-	client->cl_entity.he_source.fd.fd = client->cl_cfd;
-	client->cl_entity.he_source.fd.size = sb.st_size;
+	client->cl_entity->he_source.fd.fd = client->cl_cfd;
+	client->cl_entity->he_source.fd.size = sb.st_size;
 	if (config.compress)
-		client->cl_entity.he_encoding = client->cl_enc;
+		client->cl_entity->he_encoding = client->cl_enc;
 
-	client->cl_entity.he_source_type = ENT_SOURCE_FILE;
+	client->cl_entity->he_source_type = ENT_SOURCE_FILE;
 
 	client->cl_flags.f_cached = 1;
-	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client, 0);
+	entity_send(client->cl_fde, client->cl_entity, client_response_done, client, 0);
 }
 
 /*
@@ -595,7 +588,7 @@ struct	http_client	*client = (http_client *)data;
 		/*
 		 * HTTP/1.0 Pragma
 		 */
-		hdr = header_find(&client->cl_entity.he_headers, "Pragma");
+		hdr = header_find(&client->cl_entity->he_headers, "Pragma");
 		if (hdr) {
 			char **pragmas = wstrvec(hdr->hr_value, ",", 0);
 			char **s;
@@ -611,7 +604,7 @@ struct	http_client	*client = (http_client *)data;
 		/*
 		 * HTTP/1.1 Cache-Control
 		 */
-		hdr = header_find(&client->cl_entity.he_headers, "Cache-Control");
+		hdr = header_find(&client->cl_entity->he_headers, "Cache-Control");
 		if (hdr) {
 			char **controls = wstrvec(hdr->hr_value, ",", 0);
 			char **s;
@@ -634,26 +627,7 @@ struct	http_client	*client = (http_client *)data;
 	}
 	
 	client_log_request(client);
-	client_close(client);
-}
-	
-static void
-client_close(http_client *client)
-{
-	WDEBUG((WLOG_DEBUG, "close client %d", client->cl_fde->fde_fd));
-	assert(!client->cl_flags.f_closed);
-	client->cl_flags.f_closed = 1;
-	if (client->cl_wrtbuf)
-		wfree(client->cl_wrtbuf);
-	if (client->cl_path)
-		wfree(client->cl_path);
-	entity_free(&client->cl_entity);
-	wnet_close(client->cl_fde->fde_fd);
-	if (client->cl_backendfde)
-		wnet_close(client->cl_backendfde->fde_fd);
-	
-	client->fe_next = freelist.fe_next;
-	freelist.fe_next = client;
+	delete client;
 }
 
 static void
@@ -669,13 +643,13 @@ client_send_error(http_client *client, int errnum, const char * errdata, int sta
 
 	if (errnum >= 0) {
 		if ((errfile = fopen(error_files[errnum], "r")) == NULL) {
-			client_close(client);
+			delete client;
 			return;
 		}
 
 		if ((size = fread(errbuf, 1, sizeof(errbuf) - 1, errfile)) < 0) {
 			(void)fclose(errfile);
-			client_close(client);
+			delete client;
 			return;
 		}
 
@@ -734,27 +708,28 @@ client_send_error(http_client *client, int errnum, const char * errdata, int sta
 		client->cl_wrtbuf = u;
 	}
 
-	header_free(&client->cl_entity.he_headers);
-	bzero(&client->cl_entity.he_headers, sizeof(client->cl_entity.he_headers));
-	header_add(&client->cl_entity.he_headers, wstrdup("Date"), wstrdup(current_time_str));
-	header_add(&client->cl_entity.he_headers, wstrdup("Expires"), wstrdup(current_time_str));
-	header_add(&client->cl_entity.he_headers, wstrdup("Server"), wstrdup(my_version));
-	header_add(&client->cl_entity.he_headers, wstrdup("Connection"), wstrdup("close"));
+	delete client->cl_entity;
+	client->cl_entity = new http_entity;
 
-	entity_set_response(&client->cl_entity, 1);
-	client->cl_entity.he_rdata.response.status = status;
-	client->cl_entity.he_rdata.response.status_str = statstr;
+	header_add(&client->cl_entity->he_headers, wstrdup("Date"), wstrdup(current_time_str));
+	header_add(&client->cl_entity->he_headers, wstrdup("Expires"), wstrdup(current_time_str));
+	header_add(&client->cl_entity->he_headers, wstrdup("Server"), wstrdup(my_version));
+	header_add(&client->cl_entity->he_headers, wstrdup("Connection"), wstrdup("close"));
+
+	entity_set_response(client->cl_entity, 1);
+	client->cl_entity->he_rdata.response.status = status;
+	client->cl_entity->he_rdata.response.status_str = statstr;
 	if (errnum >= 0) {
-		header_add(&client->cl_entity.he_headers, wstrdup("Content-Type"), wstrdup("text/html"));
-		client->cl_entity.he_source_type = ENT_SOURCE_BUFFER;
-		client->cl_entity.he_source.buffer.addr = client->cl_wrtbuf;
-		client->cl_entity.he_source.buffer.len = strlen(client->cl_wrtbuf);
+		header_add(&client->cl_entity->he_headers, wstrdup("Content-Type"), wstrdup("text/html"));
+		client->cl_entity->he_source_type = ENT_SOURCE_BUFFER;
+		client->cl_entity->he_source.buffer.addr = client->cl_wrtbuf;
+		client->cl_entity->he_source.buffer.len = strlen(client->cl_wrtbuf);
 	} else {
-		client->cl_entity.he_source_type = ENT_SOURCE_NONE;
+		client->cl_entity->he_source_type = ENT_SOURCE_NONE;
 	}
 
-	client->cl_entity.he_flags.cachable = 0;
-	entity_send(client->cl_fde, &client->cl_entity, client_response_done, client, 0);
+	client->cl_entity->he_flags.cachable = 0;
+	entity_send(client->cl_fde, client->cl_entity, client_response_done, client, 0);
 }
 
 static void
@@ -768,7 +743,7 @@ client_log_request(http_client *client)
 	i = fprintf(alf, "[%s] %s %s \"%s\" %d %s %s\n",
 			current_time_short, client->cl_fde->fde_straddr,
 			request_string[client->cl_reqtype],
-			client->cl_path, client->cl_entity.he_rdata.response.status,
+			client->cl_path, client->cl_entity->he_rdata.response.status,
 			client->cl_backend ? client->cl_backend->be_name.c_str() : "-",
 			client->cl_flags.f_cached ? "HIT" : "MISS");
 	if (i < 0) {

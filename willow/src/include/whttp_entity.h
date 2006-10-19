@@ -55,30 +55,12 @@ struct bufferevent;
 typedef void (*header_cb)(struct http_entity *, void *, int);
 typedef void (*cache_callback)(const char *, size_t, void *);
 
-struct header {
+struct header : freelist_allocator<header> {
 	header(char *n, char *v)
 		: hr_name(n), hr_value(v) {}
-	header() : hr_name(NULL), hr_value(NULL), fl_next(NULL) {}
+	header() : hr_name(NULL), hr_value(NULL) {}
 	char		*hr_name;
 	char		*hr_value;
-
-	void *operator new(size_t size) {
-		if (hr_fl.fl_next) {
-		header	*ret = hr_fl.fl_next;
-			hr_fl.fl_next = hr_fl.fl_next->fl_next;
-			return ret;
-		}
-		return ::new char[sizeof(header)];
-	}
-
-	void operator delete(void *p) {
-	header	*hdr = (header *)p;
-		hdr->fl_next = hr_fl.fl_next;
-		hr_fl.fl_next = hdr;
-	}
-
-	header		*fl_next;
-	static header	 hr_fl;
 };
 
 struct header_list {
@@ -88,6 +70,11 @@ struct header_list {
 	void append(header *h) {
 		hl_hdrs.push_back(h);
 		hl_len += strlen(h->hr_name) + strlen(h->hr_value) + 4;
+	}
+	~header_list() {
+	vector<header *>::iterator it, end;
+		for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it)
+			delete *it;
 	}
 	vector<header *> hl_hdrs;
 	int		 hl_len;
@@ -109,7 +96,26 @@ enum encoding {
 	E_X_GZIP
 };
 
-struct http_entity {
+struct http_entity : freelist_allocator<http_entity> {
+	~http_entity() {
+		if (_he_frombuf) {
+			bufferevent_disable(_he_frombuf, EV_READ | EV_WRITE);
+			bufferevent_free(_he_frombuf);
+		}
+		if (_he_tobuf) {
+			bufferevent_disable(_he_tobuf, EV_READ | EV_WRITE);
+			bufferevent_free(_he_tobuf);
+		}
+		if (he_reqstr)
+			wfree(he_reqstr);
+		if (!he_flags.response) {
+			if (he_rdata.request.host)
+				wfree(he_rdata.request.host);
+			if (he_rdata.request.path)
+				wfree(he_rdata.request.path);
+		}
+	}
+
 	union {
 		/* response-only data */
 		struct {

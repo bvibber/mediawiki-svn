@@ -94,8 +94,6 @@ static void entity_send_file_done(struct fde *, void *, int);
 static void entity_send_target_write(struct bufferevent *, void *);
 static void entity_send_target_error(struct bufferevent *, short, void *);
 
-header	 header::hr_fl;	/* header free list */
-
 const char *ent_errors[] = {
 	/* 0  */	"Unknown error",
 	/* -1 */	"Read error",
@@ -114,31 +112,6 @@ const char *ent_encodings[] = {
 	"gzip",
 	"x-gzip",
 };
-
-void
-entity_free(http_entity *entity)
-{
-	WDEBUG((WLOG_DEBUG, "free entity @ %p", entity));
-
-	header_free(&entity->he_headers);
-	entity->he_headers.~header_list();
-	if (entity->_he_frombuf) {
-		bufferevent_disable(entity->_he_frombuf, EV_READ | EV_WRITE);
-		bufferevent_free(entity->_he_frombuf);
-	}
-	if (entity->_he_tobuf) {
-		bufferevent_disable(entity->_he_tobuf, EV_READ | EV_WRITE);
-		bufferevent_free(entity->_he_tobuf);
-	}
-	if (entity->he_reqstr)
-		wfree(entity->he_reqstr);
-	if (!entity->he_flags.response) {
-		if (entity->he_rdata.request.host)
-			wfree(entity->he_rdata.request.host);
-		if (entity->he_rdata.request.path)
-			wfree(entity->he_rdata.request.path);
-	}
-}
 
 void
 entity_set_response(http_entity *ent, int isresp)

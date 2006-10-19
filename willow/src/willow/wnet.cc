@@ -38,7 +38,7 @@
 
 #define RDBUF_INC	8192	/* buffer in 8 KiB incrs		*/
 
-struct wrtbuf {
+struct wrtbuf : freelist_allocator<wrtbuf> {
 	/* for buffers only */
 const	void	*wb_buf;
 	/* for sendfile only */
@@ -265,8 +265,7 @@ struct	fde	*e = &fde_table[fd];
 
 	WDEBUG((WLOG_DEBUG, "wnet_write: %d bytes to %d [%s]", bufsz, e->fde_fd, e->fde_desc));
 	
-	if ((wb = (wrtbuf *)wmalloc(sizeof(*wb))) == NULL)
-		outofmemory();
+	wb = new wrtbuf;
 
 	wb->wb_buf = buf;
 	wb->wb_size = bufsz;
@@ -293,7 +292,7 @@ struct	wrtbuf	*buf;
 		if (buf->wb_done == (off_t)buf->wb_size) {
 			wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
 			buf->wb_func(e, buf->wb_udata, 0);
-			wfree(buf);
+			delete buf;
 			return;
 		}
 	}
@@ -303,7 +302,7 @@ struct	wrtbuf	*buf;
 			
 	wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
 	buf->wb_func(e, buf->wb_udata, -1);
-	wfree(buf);
+	delete buf;
 }
 
 static void
