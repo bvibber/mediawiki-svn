@@ -62,6 +62,9 @@
 #include <ctype.h>
 #include <zlib.h>
 
+#include <vector>
+using std::vector;
+
 #include "willow.h"
 #include "whttp.h"
 #include "whttp_entity.h"
@@ -175,6 +178,7 @@ void
 entity_send(fde *fde, http_entity *entity, header_cb cb, void *data, int flags)
 {
 struct	header_list	*hl;
+vector<header *>::iterator vit, vend;
 	int		 window = 15;
 
 	errno = 0;
@@ -212,7 +216,7 @@ struct	header_list	*hl;
 	}
 		
 	if (flags & ENT_CHUNKED_OKAY) {
-		struct header_list *contlen;
+	struct header *contlen;
 		entity->he_flags.chunked = 1;
 		if (!entity->he_h_transfer_encoding)
 			header_add(&entity->he_headers, wstrdup("Transfer-Encoding"), wstrdup("chunked"));
@@ -238,8 +242,9 @@ struct	header_list	*hl;
 	}
 	header_add(&entity->he_headers, wstrdup("Content-Encoding"),
 			wstrdup(ent_encodings[entity->he_encoding]));
-	for (hl = entity->he_headers.hl_next; hl; hl = hl->hl_next)
-		evbuffer_add_printf(entity->_he_tobuf->output, "%s: %s\r\n", hl->hl_name, hl->hl_value);
+	for (vit = entity->he_headers.hl_hdrs.begin(), vend = entity->he_headers.hl_hdrs.end();
+	     vit != vend; ++vit)
+		evbuffer_add_printf(entity->_he_tobuf->output, "%s: %s\r\n", (*vit)->hr_name, (*vit)->hr_value);
 	bufferevent_write(entity->_he_tobuf, const_cast<char *>("\r\n"), 2);
 }
 
@@ -739,17 +744,14 @@ via_includes_me(const char *s)
 void
 header_free(header_list *head)
 {
-struct	header_list	*next = head->hl_next;
-
-	while (next) {
-		struct header_list *here = next;
-		next = here->hl_next;
-		wfree((char *)here->hl_name);
-		wfree((char *)here->hl_value);
-		wfree(here);
+vector<header *>::iterator vit, vend;
+	for (vit = head->hl_hdrs.begin(), vend = head->hl_hdrs.end(); vit != vend; ++vit) {
+		wfree((*vit)->hr_name);
+		wfree((*vit)->hr_value);
+		delete *vit;
 	}
-
-	bzero(head, sizeof(*head));
+	head->hl_hdrs.clear();
+	head->hl_len = 0;
 }
 
 #ifdef __lint
@@ -759,67 +761,42 @@ struct	header_list	*next = head->hl_next;
 void
 header_add(header_list *head, char *name, char *value)
 {
-struct	header_list	*n = head;
-
-	head->hl_num++;
-	
-	if (head->hl_tail)
-		n = head->hl_tail;
-	else
-		while (n->hl_next)
-			n = n->hl_next;
-	n->hl_next = (header_list *)wmalloc(sizeof(*head->hl_next));
-	head->hl_tail = n->hl_next;
-	head->hl_len += strlen(name) + strlen(value) + 4;
-	n = n->hl_next;
-	n->hl_name = name;
-	n->hl_value = value;
-	n->hl_next = n->hl_tail = NULL;
-	n->hl_flags = 0;
+	head->append(new header(name, value));
 }
 
 void
 header_append_last(header_list *head, const char *append)
 {
-struct	header_list	*last = head;
-	char		*cur;
-
-	assert(last->hl_next);
-
-	while (last->hl_next)
-		last = last->hl_next;
-
-	cur = last->hl_value;
-	last->hl_value = (char *)wmalloc(strlen(cur) + 1 + strlen(append) + 1);
-	sprintf(last->hl_value, "%s %s", cur, append);
-	wfree(cur);
+header	*last;
+char	*tmp;
+	last = *head->hl_hdrs.rbegin();
+	tmp = last->hr_value;
+	last->hr_value = (char *)wmalloc(strlen(tmp) + strlen(append) + 2);
+	sprintf(last->hr_value, "%s %s", tmp, append);
+	wfree(tmp);
 }
-
 	
 void
-header_remove(header_list *head, header_list *it)
+header_remove(header_list *head, header *it)
 {
-struct	header_list	*jt;
+vector<header *>::iterator vit;
+	if ((vit = std::find(head->hl_hdrs.begin(), head->hl_hdrs.end(), it)) == head->hl_hdrs.end())
+		return;
+	wfree((*vit)->hr_name);
+	wfree((*vit)->hr_value);
+	delete *vit;
 
-	jt = head;
-	while (jt->hl_next && jt->hl_next != it)
-		jt = jt->hl_next;
-	jt->hl_next = jt->hl_next->hl_next;
-	if (it == head->hl_tail)
-		head->hl_tail = jt;
-	wfree(it->hl_name);
-	wfree(it->hl_value);
-	wfree(it);
+	std::swap(*vit, *head->hl_hdrs.rbegin());
+	head->hl_hdrs.pop_back();
 }
 
-struct header_list *
+struct header *
 header_find(header_list *head, const char *name)
 {
-struct	header_list	*it;
-
-	for (it = head->hl_next; it; it = it->hl_next)
-		if (!strcasecmp(name, it->hl_name))
-			return it;
+vector<header *>::iterator vit, vend;
+	for (vit = head->hl_hdrs.begin(), vend = head->hl_hdrs.end(); vit != vend; ++vit)
+		if (!strcasecmp(name, (*vit)->hr_name))
+			return *vit;
 	return NULL;
 }
 
@@ -829,19 +806,18 @@ struct	header_list	*it;
 char *
 header_build(header_list *head)
 {
-	char	*buf;
-	size_t	 bufsz;
-	size_t	 buflen = 0;
+char	*buf;
+size_t	 bufsz;
+size_t	 buflen = 0;
+vector<header *>::iterator vit, vend;
 
 	bufsz = head->hl_len + 3;
 	if ((buf = (char *)wmalloc(bufsz)) == NULL)
 		outofmemory();
 	
 	*buf = '\0';
-	while (head->hl_next) {
-		head = head->hl_next;
-		buflen += snprintf(buf + buflen, bufsz - buflen - 1, "%s: %s\r\n", head->hl_name, head->hl_value);
-	}
+	for (vit = head->hl_hdrs.begin(), vend = head->hl_hdrs.end(); vit != vend; ++vit)
+		buflen += snprintf(buf + buflen, bufsz - buflen - 1, "%s: %s\r\n", (*vit)->hr_name, (*vit)->hr_value);
 	if (strlcat(buf, "\r\n", bufsz) >= bufsz)
 		abort();
 
@@ -854,26 +830,19 @@ header_build(header_list *head)
 void
 header_dump(header_list *head, int fd)
 {
-	int i = 0;
-struct	header_list	*h;
-
-	h = head->hl_next;
-	while (h) {
-		h = h->hl_next;
-		++i;
-	}
-	
+vector<header *>::iterator vit, vend;
+int i = 0;
+	i = head->hl_hdrs.size();
 	write(fd, &i, sizeof(i));	
-	
-	while (head->hl_next) {
+
+	for (vit = head->hl_hdrs.begin(), vend = head->hl_hdrs.end(); vit != vend; ++vit) {
 		int j, k;
-		head = head->hl_next;
-		k = strlen(head->hl_name);
+		k = strlen((*vit)->hr_name);
 		write(fd, &k, sizeof(k));
-		j = strlen(head->hl_value);
+		j = strlen((*vit)->hr_value);
 		write(fd, &j, sizeof(j));
-		write(fd, head->hl_name, k);
-		write(fd, head->hl_value, j);
+		write(fd, (*vit)->hr_name, k);
+		write(fd, (*vit)->hr_value, j);
 	}
 }
 
@@ -881,11 +850,10 @@ int
 header_undump(header_list *head, int fd, off_t *len)
 {
 	int		 i = 0, j = 0, sz = 0;
-struct	header_list	*it = head;
 	ssize_t		 r;
 	
 	*len = 0;
-	bzero(head, sizeof(*head));
+	head->hl_hdrs.clear();
 	if ((r = read(fd, &sz, sizeof(sz))) < 0) {
 		wlog(WLOG_WARNING, "reading cache file: %s", strerror(errno));
 		return -1; /* XXX */
@@ -895,12 +863,9 @@ struct	header_list	*it = head;
 	WDEBUG((WLOG_DEBUG, "header_undump: %d entries", sz));
 
 	while (sz--) {
-		char *n, *v, *s;
-		int k;
-		
-		if ((it->hl_next = (header_list *)wcalloc(1, sizeof(struct header_list))) == NULL)
-			outofmemory();
-		it = it->hl_next;
+	char	*n, *v, *s;
+	int	 k;
+	header	*h;
 		*len += read(fd, &i, sizeof(i));	
 		*len += read(fd, &j, sizeof(j));
 		WDEBUG((WLOG_DEBUG, "header_undump: i=%d j=%d", i, j));
@@ -914,12 +879,10 @@ struct	header_list	*it = head;
 		*len += k;
 		s += k;
 		*s = '\0';
-		it->hl_name = n;
-		it->hl_value = wstrdup(v);
-		head->hl_len += i + j + 4;
+		h = new header(n, wstrdup(v));
+		head->append(h);
 	}
 	
-	head->hl_tail = it;
 	return 0;
 }
 
@@ -959,7 +922,7 @@ parse_headers(http_entity *entity)
 		case ENTITY_STATE_HDR:
 			if (isspace(*line)) {
 				char *s = line;
-				if (!entity->he_headers.hl_next) {
+				if (!entity->he_headers.hl_hdrs.size()) {
 					error = ENT_ERR_INVHDR;
 					goto error;
 				}
@@ -985,7 +948,7 @@ parse_headers(http_entity *entity)
 			WDEBUG((WLOG_DEBUG, "header: from [%s], [%s] = [%s]",
 				line, hdr[0], value));
 
-			if (++entity->he_headers.hl_num > MAX_HEADERS) {
+			if (entity->he_headers.hl_hdrs.size() > MAX_HEADERS) {
 				error = ENT_ERR_2MANY;
 				goto error;
 			}

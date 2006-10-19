@@ -371,7 +371,8 @@ static void
 proxy_start_backend(backend *backend, fde *e, void *data)
 {
 struct	http_client	*client = (http_client *)data;
-struct	header_list	*it;
+struct	header		*hdr;
+vector<header *>::iterator	it, end;
 	int		 error = 0;
 	socklen_t	 len = sizeof(error);
 	
@@ -394,10 +395,11 @@ struct	header_list	*it;
 		return;
 	}
 
-	for (it = client->cl_entity.he_headers.hl_next; it; it = it->hl_next) {
-		if (removable_header(it->hl_name)) {
-			header_remove(&client->cl_entity.he_headers, it);
-			it = client->cl_entity.he_headers.hl_next;
+	for (it = client->cl_entity.he_headers.hl_hdrs.begin(), 
+	     end = client->cl_entity.he_headers.hl_hdrs.end();
+	     it != end; ++it) {
+		if (removable_header((*it)->hr_name)) {
+			header_remove(&client->cl_entity.he_headers, *it);
 			continue;
 		}
 	}
@@ -585,8 +587,8 @@ struct	http_client	*client = (http_client *)data;
 	}
 	
 	if (client->cl_co) {
-		int complete = (res != -1);
-		struct header_list *hdr;
+	int		 complete = (res != -1);
+	struct header	*hdr;
 
 		/*
 		 * The server may have indicated that we shouldn't cache this document.
@@ -598,7 +600,7 @@ struct	http_client	*client = (http_client *)data;
 		 */
 		hdr = header_find(&client->cl_entity.he_headers, "Pragma");
 		if (hdr) {
-			char **pragmas = wstrvec(hdr->hl_value, ",", 0);
+			char **pragmas = wstrvec(hdr->hr_value, ",", 0);
 			char **s;
 			for (s = pragmas; *s; ++s) {
 				if (!strcasecmp(*s, "no-cache")) {
@@ -614,7 +616,7 @@ struct	http_client	*client = (http_client *)data;
 		 */
 		hdr = header_find(&client->cl_entity.he_headers, "Cache-Control");
 		if (hdr) {
-			char **controls = wstrvec(hdr->hl_value, ",", 0);
+			char **controls = wstrvec(hdr->hr_value, ",", 0);
 			char **s;
 			for (s = controls; *s; ++s) {
 				/*

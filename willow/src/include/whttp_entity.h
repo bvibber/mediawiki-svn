@@ -55,14 +55,23 @@ struct bufferevent;
 typedef void (*header_cb)(struct http_entity *, void *, int);
 typedef void (*cache_callback)(const char *, size_t, void *);
 
+struct header {
+	header(char *n, char *v)
+		: hr_name(n), hr_value(v) {}
+	char		*hr_name;
+	char		*hr_value;
+};
+
 struct header_list {
-	char		*hl_name;
-	char		*hl_value;
-struct	header_list	*hl_next;
-struct	header_list	*hl_tail;
+	header_list() : hl_len(0) {
+		hl_hdrs.reserve(20);	/* should be enough for most requests */
+	}
+	void append(header *h) {
+		hl_hdrs.push_back(h);
+		hl_len += strlen(h->hr_name) + strlen(h->hr_value) + 4;
+	}
+	vector<header *> hl_hdrs;
 	int		 hl_len;
-	int		 hl_num;
-	int		 hl_flags;
 };
 
 struct qvalue {
@@ -180,10 +189,10 @@ enum	encoding	 accept_encoding	(const char *ent);
 	void		 header_append_last	(struct header_list *, const char *);
 	void		 header_free		(struct header_list *);
 	char		*header_build		(struct header_list *);
-	void		 header_remove		(struct header_list *, struct header_list *);
+	void		 header_remove		(struct header_list *, struct header *);
 	void		 header_dump		(struct header_list *, int);
 	int		 header_undump		(struct header_list *, int, off_t *);
-struct header_list * header_find(struct header_list *head, const char *name);
+struct header		*header_find		(struct header_list *head, const char *name);
 
 
 #endif
