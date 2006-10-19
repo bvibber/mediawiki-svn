@@ -397,11 +397,10 @@ vector<header *>::iterator	it, end;
 
 	for (it = client->cl_entity.he_headers.hl_hdrs.begin(), 
 	     end = client->cl_entity.he_headers.hl_hdrs.end();
-	     it != end; ++it) {
-		if (removable_header((*it)->hr_name)) {
-			header_remove(&client->cl_entity.he_headers, *it);
-			continue;
-		}
+	     it != end;) {
+		if (removable_header((*it)->hr_name))
+			it = client->cl_entity.he_headers.hl_hdrs.erase(it);
+		else	++it;
 	}
 
 	header_add(&client->cl_entity.he_headers, wstrdup("X-Forwarded-For"), wstrdup(client->cl_fde->fde_straddr));
