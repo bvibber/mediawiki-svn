@@ -395,11 +395,10 @@ vector<header *>::iterator	it, end;
 		return;
 	}
 
-	for (it = client->cl_entity.he_headers.hl_hdrs.begin(), 
-	     end = client->cl_entity.he_headers.hl_hdrs.end();
-	     it != end;) {
+	for (it = client->cl_entity.he_headers.hl_hdrs.begin();
+	     it != client->cl_entity.he_headers.hl_hdrs.end();) {
 		if (removable_header((*it)->hr_name))
-			it = client->cl_entity.he_headers.hl_hdrs.erase(it);
+			header_remove(&client->cl_entity.he_headers, *it);
 		else	++it;
 	}
 
