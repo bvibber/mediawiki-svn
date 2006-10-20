@@ -189,9 +189,10 @@ struct	header_list	*hl;
 		evbuffer_add_printf(entity->_he_tobuf->output, "HTTP/1.1 %d %s\r\n",
 			entity->he_rdata.response.status, entity->he_rdata.response.status_str);
 	} else {
-		evbuffer_add_printf(entity->_he_tobuf->output, "%s %s HTTP/1.1\r\n",
+		evbuffer_add_printf(entity->_he_tobuf->output, "%s %s HTTP/1.%d\r\n",
 			request_string[entity->he_rdata.request.reqtype],
-			entity->he_rdata.request.path);
+			entity->he_rdata.request.path,
+			entity->he_rdata.request.host ? 1 : 0);
 	}
 		
 	if (flags & ENT_CHUNKED_OKAY) {
