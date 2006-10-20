@@ -64,6 +64,10 @@
 
 #include <vector>
 using std::vector;
+#include <utility>
+#include <algorithm>
+using std::search;
+using std::max;
 
 #include "willow.h"
 #include "whttp.h"
@@ -153,7 +157,6 @@ void
 entity_send(fde *fde, http_entity *entity, header_cb cb, void *data, int flags)
 {
 struct	header_list	*hl;
-vector<header *>::iterator vit, vend;
 	int		 window = 15;
 
 	errno = 0;
@@ -216,10 +219,13 @@ vector<header *>::iterator vit, vend;
 		break;
 	}
 	}
-	entity->he_headers.add("Content-Encoding", ent_encodings[entity->he_encoding]);
-	for (vit = entity->he_headers.hl_hdrs.begin(), vend = entity->he_headers.hl_hdrs.end();
-	     vit != vend; ++vit)
-		evbuffer_add_printf(entity->_he_tobuf->output, "%s: %s\r\n", (*vit)->hr_name, (*vit)->hr_value);
+	evbuffer_add_printf(entity->_he_tobuf->output, "Content-Encoding: %s\r\n",
+			    ent_encodings[entity->he_encoding]);
+	for (vector<header>::iterator it = entity->he_headers.hl_hdrs.begin(),
+	     end = entity->he_headers.hl_hdrs.end(); it != end; ++it)
+		evbuffer_add_printf(entity->_he_tobuf->output, "%s: %s\r\n",
+				    it->hr_name, it->hr_value);
+	evbuffer_add_buffer(entity->_he_tobuf->output, entity->he_extraheaders);
 	bufferevent_write(entity->_he_tobuf, const_cast<char *>("\r\n"), 2);
 }
 
@@ -295,6 +301,40 @@ write_zlib_eof(http_entity *entity)
 	return 0;
 }
 
+static char *
+find_rn(char *buf, char *end)
+{
+char	*s;
+	for (s = buf; s < end; s += 2) {
+		if ((s + 1 < end) && s[0] == '\r' && s[1] == '\n')
+			return s;
+		if (s > buf && s[-1] == '\r' && s[0] == '\n')
+			return s - 1;
+	}
+	return NULL;
+}
+
+static char *
+find_rnrn(char *buf, char *end)
+{
+char	*s;
+	/* find any \r or \n */
+	for (s = buf; s < end; s += 4) {
+		if (*s == '\r' || *s == '\n') {
+		char	*q = s;
+			while (q > buf && (q[-1] == '\r' || q[-1] == '\n'))
+				q--;
+			if (q + 3 >= end)
+				continue;
+			if (q[0] == '\r' && q[1] == '\n'
+			    && q[2] == '\r' && q[3] == '\n')
+				return q;
+		}
+	}
+	/* nothing found... */
+	return NULL;
+}
+
 static void
 entity_read_callback(bufferevent *be, void *d)
 {
@@ -313,16 +353,35 @@ struct	http_entity	*entity = (http_entity *) d;
 			entity->he_source.fde.fde->fde_fd));
 
 	if (entity->_he_state < ENTITY_STATE_SEND_BODY) {
-		if ((i = parse_headers(entity)) < 0) {
-			WDEBUG((WLOG_DEBUG, "entity_read_callback: parse_headers returned -1"));
-			entity->he_flags.error = 1;
-			entity->_he_func(entity, entity->_he_cbdata, i);
+	char		*buf = entity->_he_hdrsearch;
+	char		*end, *found;
+static	char const	*rnrn = "\r\n\r\n";
+		if (buf == NULL)
+			buf = (char *)EVBUFFER_DATA(entity->_he_frombuf->input);
+		end = (char *)EVBUFFER_DATA(entity->_he_frombuf->input) + EVBUFFER_LENGTH(entity->_he_frombuf->input);
+		WDEBUG((WLOG_DEBUG, "entity_read_callback: end=%p; buf=%p; data=%p",
+			end, buf, EVBUFFER_DATA(entity->_he_frombuf->input)));
+		
+		if ((found = find_rnrn(buf, end)) == NULL) {
+			// need more data
+			entity->_he_hdrsearch = max(buf, end - 4);
+			WDEBUG((WLOG_DEBUG, "entity_read_callback: need more data, read %d [%s]", 
+				end - buf, buf));
 			return;
 		}
 
-		WDEBUG((WLOG_DEBUG, "parse_headers returned; client now %d", entity->_he_state));
+		entity->_he_hdrsearch = found + 4;	// so parse_headers knows how much to search
+		if ((i = parse_headers(entity)) < 0) {
+			WDEBUG((WLOG_DEBUG, "entity_read_callback: parse_headers returned -1"));
+			entity->he_flags.error = 1;
+			bufferevent_disable(entity->_he_frombuf, EV_READ);
+			entity->_he_func(entity, entity->_he_cbdata, i);
+			return;
+		}
+		WDEBUG((WLOG_DEBUG, "parse_headers returned; client now %d hdr_only=%d",
+			entity->_he_state, entity->he_flags.hdr_only));
 
-		if (entity->_he_state == ENTITY_STATE_DONE) {
+		if (entity->_he_state == ENTITY_STATE_DONE) {			
 			if (entity->he_flags.hdr_only) {
 				WDEBUG((WLOG_DEBUG, "entity_read_callback: client is ENTITY_STATE_DONE"));
 				bufferevent_disable(entity->_he_frombuf, EV_READ);
@@ -438,8 +497,8 @@ struct	http_entity	*entity = (http_entity *) d;
 		 * Schedule another read on the source and return.
 		 */
 		if (read == 0 && !contdone) {
-			bufferevent_enable(entity->_he_frombuf, EV_READ);
 			bufferevent_disable(entity->_he_tobuf, EV_WRITE);
+			bufferevent_enable(entity->_he_frombuf, EV_READ);
 			return;
 		}
 		
@@ -594,7 +653,8 @@ static  char		 fbuf[ZLIB_BLOCK];
 		 * Writing buffer completed.
 		 */
 		bufferevent_disable(entity->_he_tobuf, EV_WRITE);
-		bufferevent_disable(entity->_he_frombuf, EV_READ);
+		if (entity->_he_frombuf)
+			bufferevent_disable(entity->_he_frombuf, EV_READ);
 		entity->_he_func(entity, entity->_he_cbdata, 0);
 		return;
 	}
@@ -635,7 +695,8 @@ static  char		 fbuf[ZLIB_BLOCK];
 		return;
 	}
 
-	WDEBUG((WLOG_DEBUG, "entity_send_target_write: FDE"));
+	WDEBUG((WLOG_DEBUG, "entity_send_target_write: FDE, drained=%d",
+		entity->he_flags.drained));
 
 	/*
 	 * Otherwise, we're sending from an FDE, and the last write completed.
@@ -715,24 +776,40 @@ via_includes_me(const char *s)
 static int
 parse_headers(http_entity *entity)
 {
-	char *line;
-
-	while ((line = evbuffer_readline(entity->_he_frombuf->input)) != NULL) {
-		char **hdr = NULL;
-		char *value = NULL;
-		int error = 1;
-
-		if (!line)
-			return 0;
-
+char		*line;
+char		*rdbuf;
+char		*buf = (char *)EVBUFFER_DATA(entity->_he_frombuf->input);
+char		*end = entity->_he_hdrsearch;
+char		*nexthdr;
+static char	 rn[] = { '\r', '\n' };
+size_t		 i, nread;
+char		*lbuf, *lend;
+	entity->_he_hdrbuf = new char[end - buf];
+	lbuf = entity->_he_hdrbuf;
+	lend = lbuf + (end - buf);
+	WDEBUG((WLOG_DEBUG, "parse_headers: %d in buffer before read of %d",
+		(int)EVBUFFER_LENGTH(entity->_he_frombuf->input), end - buf));
+	if ((i = bufferevent_read(entity->_he_frombuf, lbuf, end - buf)) != (end - buf)) {
+		WDEBUG((WLOG_DEBUG, "expected %d bytes, read %d!", end - buf, i));
+		abort();
+	}
+	WDEBUG((WLOG_DEBUG, "parse_headers: %d left in buffer",
+		(int)EVBUFFER_LENGTH(entity->_he_frombuf->input)));
+	while ((nexthdr = find_rn(lbuf, lend)) != NULL) {
+#if 0
+	while ((nexthdr = std::search(entity->_he_hdrbuf, lend, rn, rn + sizeof(rn))) != end) {
+#endif
+	char	*name = NULL, *value = NULL;
+	int	 error = 1;
+		*nexthdr = '\0';
+		line = lbuf; 
+		lbuf = nexthdr + 2;
 		if (!*line) {
 			if (!entity->he_reqstr) {
-				free(line);
 				return ENT_ERR_INVREQ;
 			}
 
 			entity->_he_state = ENTITY_STATE_DONE;
-			free(line);
 			return 0;
 		}
 
@@ -740,7 +817,6 @@ parse_headers(http_entity *entity)
 		case ENTITY_STATE_START:
 			entity->he_reqstr = wstrdup(line);
 			if (parse_reqtype(entity) == -1) {
-				free(line);
 				return ENT_ERR_INVREQ;
 			}
 			entity->_he_state = ENTITY_STATE_HDR;
@@ -755,87 +831,78 @@ parse_headers(http_entity *entity)
 				while (isspace(*s))
 					s++;
 				entity->he_headers.append_last(s);
-				free(line);
 				continue;
 			}
 
-			hdr = wstrvec(line, ":", 2);
-
-			if (!hdr[0] || !hdr[1]) {
+			name = line;
+			value = strchr(name, ':');
+			if (value == NULL) {
 				error = ENT_ERR_INVREQ;
 				goto error;
 			}
 
-			value = hdr[1];
+			*value++ = '\0';
 			while (isspace(*value))
 				++value;
 
 			WDEBUG((WLOG_DEBUG, "header: from [%s], [%s] = [%s]",
-				line, hdr[0], value));
+				line, name, value));
 
 			if (entity->he_headers.hl_hdrs.size() > MAX_HEADERS) {
 				error = ENT_ERR_2MANY;
 				goto error;
 			}
-			if (!strcasecmp(hdr[0], "Host")) {
+			if (!strcasecmp(name, "Host")) {
 				if (!validhost(value)) {
 					error = ENT_ERR_INVHOST;
 					goto error;
 				}
-				entity->he_headers.add(hdr[0], value);
+				entity->he_headers.add(name, value);
 				entity->he_rdata.request.host = wstrdup(value);
-			} else if (!strcasecmp(hdr[0], "Content-Length")) {
-				entity->he_headers.add(hdr[0], value);
+			} else if (!strcasecmp(name, "Content-Length")) {
+				entity->he_headers.add(name, value);
 				entity->he_rdata.request.contlen = atoi(value);
-			} else if (!strcasecmp(hdr[0], "Via")) {
+			} else if (!strcasecmp(name, "Via")) {
 				if (via_includes_me(value)) {
 					error = ENT_ERR_LOOP;
 					goto error;
 				}
-				entity->he_headers.add(hdr[0], value);
-			} else if (!strcasecmp(hdr[0], "transfer-encoding")) {
+				entity->he_headers.add(name, value);
+			} else if (!strcasecmp(name, "transfer-encoding")) {
 				/* XXX */
 				if (!strcasecmp(value, "chunked")) {
 					entity->he_te |= TE_CHUNKED;
 				}
 				/* Don't forward transfer-encoding... */
-			} else if (!strcasecmp(hdr[0], "Accept-Encoding")) {
+			} else if (!strcasecmp(name, "Accept-Encoding")) {
 				if (!entity->he_flags.response &&
 				    qvalue_parse(entity->he_rdata.request.accept_encoding, value) == -1) {
 					error = ENT_ERR_INVAE;
 					WDEBUG((WLOG_DEBUG, "a-e parse failed"));
 					goto error;
 				}
-			} else if (!strcasecmp(hdr[0], "Pragma")) {
+			} else if (!strcasecmp(name, "Pragma")) {
 				entity->he_h_pragma = wstrdup(value);
-				entity->he_headers.add(hdr[0], entity->he_h_pragma);
-			} else if (!strcasecmp(hdr[0], "Cache-Control")) {
+				entity->he_headers.add(name, value);
+			} else if (!strcasecmp(name, "Cache-Control")) {
 				entity->he_h_cache_control = wstrdup(value);
-				entity->he_headers.add(hdr[0], entity->he_h_cache_control);
-			} else if (!strcasecmp(hdr[0], "If-Modified-Since")) {
+				entity->he_headers.add(name, value);
+			} else if (!strcasecmp(name, "If-Modified-Since")) {
 				entity->he_h_if_modified_since = wstrdup(value);
-				entity->he_headers.add(hdr[0], entity->he_h_if_modified_since);
-			} else if (!strcasecmp(hdr[0], "Transfer-Encoding")) {
+				entity->he_headers.add(name, value);
+			} else if (!strcasecmp(name, "Transfer-Encoding")) {
 				entity->he_h_transfer_encoding = wstrdup(value);
-				entity->he_headers.add(hdr[0], entity->he_h_transfer_encoding);
-			} else if (!strcasecmp(hdr[0], "Last-Modified")) {
+				entity->he_headers.add(name, value);
+			} else if (!strcasecmp(name, "Last-Modified")) {
 				entity->he_h_last_modified = wstrdup(value);
-				entity->he_headers.add(hdr[0], entity->he_h_last_modified);
+				entity->he_headers.add(name, value);
 			} else 
-				entity->he_headers.add(hdr[0], value);
+				entity->he_headers.add(name, value);
 
-			wstrvecfree(hdr);
 			break;
 		error:
-			if (hdr)
-				wstrvecfree(hdr);
-			if (value)
-				wfree(value);
-			free(line);
 			return -error;
 		}
-
-		free(line);
 	}
 	return 0;
 }

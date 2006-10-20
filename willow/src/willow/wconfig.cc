@@ -89,6 +89,30 @@ value	*v;
 	config.ncaches++;
 }
 
+static bool
+v_carp_hash(tree_entry &e, value &v)
+{
+	if (!v.is_single(cv_string)) {
+		v.report_error("expected single unquoted string");
+		return false;
+	}
+string	s = v.cv_values[0].av_strval;
+	if (s != "carp" && s != "simple") {
+		v.report_error("carp-hash must be \"carp\" or \"simple\"");
+		return false;
+	}
+	return true;
+}
+
+static void
+s_carp_hash(tree_entry &e, value &v)
+{
+string	s = v.cv_values[0].av_strval;
+	if (s == "carp")
+		config.carp_hash = configuration::carp_hash_carp;
+	else	config.carp_hash = configuration::carp_hash_simple;
+}
+	
 bool
 read_config(string const &file)
 {
@@ -110,6 +134,7 @@ conf
 		.value("backend-retry",		simple_time(),		set_time(config.backend_retry))
 		.value("cache-private",		simple_yesno(),		set_yesno(config.cache_private))
 		.value("use-carp",		simple_yesno(),		set_yesno(config.use_carp))
+		.value("carp-hash",		func(v_carp_hash),	func(s_carp_hash))
 
 	.block("cache-dir", require_name)
 		.end(func(set_cache))

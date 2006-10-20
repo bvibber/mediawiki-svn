@@ -46,6 +46,10 @@ struct	cachedir	*caches;
 	time_t		 backend_retry;
 	bool		 cache_private;
 	bool		 use_carp;
+	enum {
+		carp_hash_carp = 0,
+		carp_hash_simple
+	}		 carp_hash;
 } config;
 
 void wconfig_init(char const *);

@@ -14,21 +14,23 @@
 
 #include "config.h"
 #include "willow.h"
+#include "tst.h"
 
 struct header : freelist_allocator<header> {
-	header(char const *n, char const *v);
-	~header();
+	header(char *n, char *v);
+	~header() {}
 
-	char		*hr_name;
-	char		*hr_value;
+	char	*hr_name;
+	char	*hr_value;
+	header	*hr_next;
 };
 
 struct header_list {
 	header_list();
-	~header_list();
+	~header_list() {};
 
-	void	 append		(header *h);
-	void	 add		(char const *, char const *);
+	void	 append		(header const &h);
+	void	 add		(char *, char *);
 	void	 append_last	(const char *);
 	char	*build		(void);
 	void	 remove		(const char *);
@@ -36,8 +38,9 @@ struct header_list {
 	int	 undump		(int, off_t *);
 struct header	*find		(const char *name);
 
-	vector<header *> hl_hdrs;
-	int		 hl_len;
+	header			*hl_last;
+	vector<header>		 hl_hdrs;
+	int			 hl_len;
 };
 
 struct qvalue {

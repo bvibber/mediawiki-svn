@@ -12,6 +12,8 @@
 # pragma ident "@(#)$Id$"
 #endif
 
+#include <sys/types.h>
+
 #include "willow.h"
 #include "queue.h"
 
@@ -52,5 +54,8 @@ void state_unlock(void);
 
 struct cache_object *wcache_find_object(const char *key, int *, int);
 void wcache_release(struct cache_object *, int complete);
+
+#define HASH_BITS 20
+static uint32_t hash(const u_char *, int bits = HASH_BITS);
 
 #endif

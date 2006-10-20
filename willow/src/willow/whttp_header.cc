@@ -21,79 +21,75 @@ using std::strlen;
 #include "whttp_entity.h"
 #include "whttp_header.h"
 
-header::header(char const *n, char const *v)
+header::header(char *n, char *v)
+	: hr_name(n)
+	, hr_value(v)
 {
-int	nlen = strlen(n);
-	hr_name = new char[nlen + strlen(v) + 2];
-	hr_value = hr_name + nlen + 1;
-	memcpy(hr_name, n, nlen + 1);
-	strcpy(hr_value, v);
-}
-
-header::~header() {
-	delete[] hr_name;
 }
 
 header_list::header_list()
 	: hl_len(0)
 {
-	hl_hdrs.reserve(20);	/* should be enough for most requests */
+	hl_hdrs.reserve(20);
 }
 
 void
-header_list::append(header *h)
+header_list::append(header const &h)
 {
 	hl_hdrs.push_back(h);
-	hl_len += strlen(h->hr_name) + strlen(h->hr_value) + 4;
-}
-
-header_list::~header_list()
-{
-vector<header *>::iterator it, end;
-	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it)
-		delete *it;
+	hl_last = &*hl_hdrs.rbegin();
+	hl_len += strlen(h.hr_name) + strlen(h.hr_value) + 4;
 }
 
 void
-header_list::add(char const *name, char const *value)
+header_list::add(char *name, char *value)
 {
-	append(new header(name, value));
+	append(header(name, value));
 }
 
 void
 header_list::append_last(const char *append)
 {
-header	*last;
 char	*tmp;
-	last = *hl_hdrs.rbegin();
-	tmp = last->hr_value;
-	last->hr_value = (char *)wmalloc(strlen(tmp) + strlen(append) + 2);
-	sprintf(last->hr_value, "%s %s", tmp, append);
-	wfree(tmp);
+	assert(hl_last);
+	tmp = hl_last->hr_value;
+	hl_last->hr_value = (char *)wmalloc(strlen(tmp) + strlen(append) + 2);
+	strcat(hl_last->hr_value, tmp);
+	strcat(hl_last->hr_value, " ");
+	strcat(hl_last->hr_value, append);
 }
-	
-void
-header_list::remove(const char *it)
-{
-vector<header *>::iterator vit, vend;
-	for (vit = hl_hdrs.begin(), vend = hl_hdrs.end(); vit != vend; ++vit)
-		if (strcasecmp(it, (*vit)->hr_value))
-			break;
 
-	delete *vit;
-	std::swap(*vit, *hl_hdrs.rbegin());
-	hl_hdrs.pop_back();
+void
+header_list::remove(const char *name)
+{
+vector<header>::iterator	it, end;
+	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
+		if (strcasecmp(it->hr_name, name))
+			continue;
+		hl_hdrs.erase(it);
+		return;
+	}
+	
 }
 
 struct header *
 header_list::find(const char *name)
 {
-vector<header *>::iterator vit, vend;
-	for (vit = hl_hdrs.begin(), vend = hl_hdrs.end(); vit != vend; ++vit)
-		if (!strcasecmp(name, (*vit)->hr_name))
-			return *vit;
+vector<header>::iterator	it, end;
+	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
+		if (strcasecmp(it->hr_name, name))
+			continue;
+		return &*it;
+	}
 	return NULL;
 }
+#if 0
+tst<char, header *>::iterator it;
+	if ((it = hl_hdrs.find(name)) == hl_hdrs.end())
+		return NULL;
+	return it->second;
+}
+#endif
 
 char *
 header_list::build(void)
@@ -101,15 +97,16 @@ header_list::build(void)
 char	*buf;
 size_t	 bufsz;
 size_t	 buflen = 0;
-vector<header *>::iterator vit, vend;
 
 	bufsz = hl_len + 3;
 	if ((buf = (char *)wmalloc(bufsz)) == NULL)
 		outofmemory();
 	
 	*buf = '\0';
-	for (vit = hl_hdrs.begin(), vend = hl_hdrs.end(); vit != vend; ++vit)
-		buflen += snprintf(buf + buflen, bufsz - buflen - 1, "%s: %s\r\n", (*vit)->hr_name, (*vit)->hr_value);
+	for (header *h = hl_last; h; h = h->hr_next) {
+		buflen += snprintf(buf + buflen, bufsz - buflen - 1, "%s: %s\r\n", 
+				h->hr_name, h->hr_value);
+	}
 	if (strlcat(buf, "\r\n", bufsz) >= bufsz)
 		abort();
 
@@ -119,19 +116,19 @@ vector<header *>::iterator vit, vend;
 void
 header_list::dump(int fd)
 {
-vector<header *>::iterator vit, vend;
+tst<char, header *>::iterator vit, vend;
 int i = 0;
 	i = hl_hdrs.size();
 	write(fd, &i, sizeof(i));	
 
-	for (vit = hl_hdrs.begin(), vend = hl_hdrs.end(); vit != vend; ++vit) {
+	for (header *h = hl_last; h; h = h->hr_next) {
 		int j, k;
-		k = strlen((*vit)->hr_name);
+		k = strlen(h->hr_name);
 		write(fd, &k, sizeof(k));
-		j = strlen((*vit)->hr_value);
+		j = strlen(h->hr_value);
 		write(fd, &j, sizeof(j));
-		write(fd, (*vit)->hr_name, k);
-		write(fd, (*vit)->hr_value, j);
+		write(fd, h->hr_name, k);
+		write(fd, h->hr_value, j);
 	}
 }
 
@@ -142,7 +139,6 @@ header_list::undump(int fd, off_t *len)
 	ssize_t		 r;
 	
 	*len = 0;
-	hl_hdrs.clear();
 	if ((r = read(fd, &sz, sizeof(sz))) < 0) {
 		wlog(WLOG_WARNING, "reading cache file: %s", strerror(errno));
 		return -1; /* XXX */
@@ -168,7 +164,7 @@ header_list::undump(int fd, off_t *len)
 		*len += k;
 		s += k;
 		*s = '\0';
-		append(new header(n, wstrdup(v)));
+		append(header(n, wstrdup(v)));
 	}
 	
 	return 0;

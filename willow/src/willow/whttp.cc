@@ -364,15 +364,24 @@ vector<header *>::iterator	it, end;
 		return;
 	}
 
-	for (it = client->cl_entity->he_headers.hl_hdrs.begin();
-	     it != client->cl_entity->he_headers.hl_hdrs.end();) {
-		if (removable_header((*it)->hr_name))
-			client->cl_entity->he_headers.remove((*it)->hr_name);
-		else	++it;
+static const char *removable_headers[] = {
+	"Connection",
+	"Keep-Alive",
+	"Proxy-Authenticate",
+	"Proxy-Authorization",
+	"TE",
+	"Trailers",
+	"Transfer-Encoding",
+	"Upgrade",
+	NULL,
+};
+	for (const char **s = removable_headers; *s; ++s) {
+		client->cl_entity->he_headers.remove(*s);
 	}
 
-	client->cl_entity->he_headers.add("X-Forwarded-For", client->cl_fde->fde_straddr);
-	client->cl_entity->he_headers.add("Connection", "Close");
+	evbuffer_add_printf(client->cl_entity->he_extraheaders, "X-Forwarded-For: %s\r\n",
+		client->cl_fde->fde_straddr);
+	client->cl_entity->he_headers.add("Connection", "close");
 	/*
 	 * POST requests require Content-Length.
 	 */
@@ -517,8 +526,8 @@ struct	stat	 sb;
 	client->cl_entity->he_headers.add("Via", via_hdr);
 	client->cl_entity->he_headers.add("X-Cache", cache_hit_hdr);
 	if (!client->cl_enc && !client->cl_entity->he_headers.find("Content-Length")) {
-		snprintf(size, sizeof(size), "%lu", (unsigned long) client->cl_co->co_size);
-		client->cl_entity->he_headers.add("Content-Length", size);
+		evbuffer_add_printf(client->cl_entity->he_extraheaders, "Content-Length: %lu\r\n",
+			(unsigned long) client->cl_co->co_size);
 	}
 
 	entity_set_response(client->cl_entity, 1);
@@ -741,26 +750,3 @@ struct	http_client	*client = (http_client *)data;
 	}
 	client->cl_co->co_size += len;
 }
-
-static int
-removable_header(const char *hdr)
-{
-static const char *removable_headers[] = {
-	"Connection",
-	"Keep-Alive",
-	"Proxy-Authenticate",
-	"Proxy-Authorization",
-	"TE",
-	"Trailers",
-	"Transfer-Encoding",
-	"Upgrade",
-	NULL,
-};
-	const char **s;
-	for (s = &removable_headers[0]; *s; s++)
-		if (!strcasecmp(*s, hdr))
-			return 1;
-	return 0;
-}
-
-

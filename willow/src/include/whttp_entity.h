@@ -68,6 +68,10 @@ enum encoding {
 };
 
 struct http_entity : freelist_allocator<http_entity> {
+	http_entity() {
+		he_extraheaders = evbuffer_new();
+	}
+
 	~http_entity() {
 		if (_he_frombuf) {
 			bufferevent_disable(_he_frombuf, EV_READ | EV_WRITE);
@@ -85,6 +89,8 @@ struct http_entity : freelist_allocator<http_entity> {
 			if (he_rdata.request.path)
 				wfree(he_rdata.request.path);
 		}
+		delete[] _he_hdrbuf;
+		evbuffer_free(he_extraheaders);
 	}
 
 	struct {
@@ -114,6 +120,7 @@ struct http_entity : freelist_allocator<http_entity> {
 	char		*he_h_last_modified;
 	char		*he_reqstr;	
 struct	header_list	 he_headers;
+struct	evbuffer	*he_extraheaders;
 	int		 he_source_type;
 	
 	union {
@@ -170,11 +177,12 @@ struct	fde		*_he_target;
 struct	bufferevent	*_he_frombuf;
 struct	bufferevent	*_he_tobuf;
 	z_stream	 _he_zbuf;
+	char		*_he_hdrsearch;		/* internal use by entity_read_callback	*/
+	char		*_he_hdrbuf;		/*          ''     ''			*/
 };
 
 	void	entity_read_headers	(struct http_entity *, header_cb, void *);
 	void	entity_send		(struct fde *, struct http_entity *, header_cb, void *, int);
-	void	entity_free		(struct http_entity *);
 	void	entity_set_response	(struct http_entity *, int isresp);
 
 	int 		 qvalue_parse		(set<qvalue> &list, const char *header);

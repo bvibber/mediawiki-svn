@@ -44,14 +44,9 @@ static void idx_add(struct cache_object *);
 static void idx_rem(struct cache_object *);
 static struct cache_object *idx_find(const char *key);
 
-typedef  unsigned long  int  ub4;   /* unsigned 4-byte quantities */
-typedef  unsigned       char ub1;   /* unsigned 1-byte quantities */
-static ub4 hash(const ub1 *);
-
-#define hashsize(n) ((ub4)1<<(n))
+#define hashsize(n) ((uint32_t)1<<(n))
 #define hashmask(n) (hashsize(n)-1)
 
-#define HASH_BITS 20
 #define HASH_ELEMS hashsize(HASH_BITS)
 
 static struct cache_state state;
@@ -430,7 +425,7 @@ run_expiry(int fd, short ev, void *data)
 static void
 idx_add(cache_object *obj)
 {
-	struct key_idx_head *head = &key_idx[hash((ub1 *)obj->co_key)].head;
+	struct key_idx_head *head = &key_idx[hash((u_char *)obj->co_key)].head;
 	struct key_idx_entry *entry = (key_idx_entry *)wmalloc(sizeof(*entry));
 	bzero(entry, sizeof(*entry));
 	entry->obj = obj;
@@ -440,7 +435,7 @@ idx_add(cache_object *obj)
 static struct cache_object *
 idx_find(const char *key)
 {
-	struct key_idx_head *head = &key_idx[hash((ub1 *)key)].head;
+	struct key_idx_head *head = &key_idx[hash((u_char *)key)].head;
 	struct key_idx_entry *entry;
 	LIST_FOREACH(entry, head, entries)
 		if (!strcmp(entry->obj->co_key, key))	
@@ -451,7 +446,7 @@ idx_find(const char *key)
 static void
 idx_rem(cache_object *obj)
 {
-	struct key_idx_head *head = &key_idx[hash((ub1 *)obj->co_key)].head;
+	struct key_idx_head *head = &key_idx[hash((u_char *)obj->co_key)].head;
 	struct key_idx_entry *entry;
 	LIST_FOREACH(entry, head, entries)
 		if (entry->obj == obj)	
@@ -478,11 +473,11 @@ idx_rem(cache_object *obj)
  * See http://burtleburtle.net/bob/hash/evahash.html
  */
 
-ub4 hash(const ub1 *k)
+uint32_t hash(const u_char *k, int bits)
 {
-   register ub4 a,b,c,len;
-   register ub4 length = strlen((char *)k);
-   register ub4 initval = 0;
+   uint32_t a,b,c,len;
+   uint32_t length = strlen((char *)k);
+   uint32_t initval = 0;
 
    /* Set up the internal state */
    len = length;
@@ -492,9 +487,9 @@ ub4 hash(const ub1 *k)
    /*---------------------------------------- handle most of the key */
    while (len >= 12)
    {
-      a += (k[0] +((ub4)k[1]<<8) +((ub4)k[2]<<16) +((ub4)k[3]<<24));
-      b += (k[4] +((ub4)k[5]<<8) +((ub4)k[6]<<16) +((ub4)k[7]<<24));
-      c += (k[8] +((ub4)k[9]<<8) +((ub4)k[10]<<16)+((ub4)k[11]<<24));
+      a += (k[0] +((uint32_t)k[1]<<8) +((uint32_t)k[2]<<16) +((uint32_t)k[3]<<24));
+      b += (k[4] +((uint32_t)k[5]<<8) +((uint32_t)k[6]<<16) +((uint32_t)k[7]<<24));
+      c += (k[8] +((uint32_t)k[9]<<8) +((uint32_t)k[10]<<16)+((uint32_t)k[11]<<24));
       mix(a,b,c);
       k += 12; len -= 12;
    }
@@ -503,21 +498,21 @@ ub4 hash(const ub1 *k)
    c += length;
    switch(len)              /* all the case statements fall through */
    {
-   case 11: c+=((ub4)k[10]<<24);
-   case 10: c+=((ub4)k[9]<<16);
-   case 9 : c+=((ub4)k[8]<<8);
+   case 11: c+=((uint32_t)k[10]<<24);
+   case 10: c+=((uint32_t)k[9]<<16);
+   case 9 : c+=((uint32_t)k[8]<<8);
       /* the first byte of c is reserved for the length */
-   case 8 : b+=((ub4)k[7]<<24);
-   case 7 : b+=((ub4)k[6]<<16);
-   case 6 : b+=((ub4)k[5]<<8);
+   case 8 : b+=((uint32_t)k[7]<<24);
+   case 7 : b+=((uint32_t)k[6]<<16);
+   case 6 : b+=((uint32_t)k[5]<<8);
    case 5 : b+=k[4];
-   case 4 : a+=((ub4)k[3]<<24);
-   case 3 : a+=((ub4)k[2]<<16);
-   case 2 : a+=((ub4)k[1]<<8);
+   case 4 : a+=((uint32_t)k[3]<<24);
+   case 3 : a+=((uint32_t)k[2]<<16);
+   case 2 : a+=((uint32_t)k[1]<<8);
    case 1 : a+=k[0];
      /* case 0: nothing left to add */
    }
    mix(a,b,c);
    /*-------------------------------------------- report the result */
-   return c & hashmask(HASH_BITS);
+   return c & hashmask(bits);
 }
