@@ -210,8 +210,6 @@ int	i;
 	conf::value		*value;
 	vector<conf::value>	*value_list;
 	vector<conf::avalue>	*avalue_list;
-	vector<conf::item_entry>*entry_list;
-	conf::item_entry	*entry;
 	bool			 bool_;
 }
 
@@ -225,8 +223,8 @@ int	i;
 %type <avalue>       oneitem
 %type <avalue_list>  single
 %type <avalue_list>  itemlist
-%type <entry_list>   block_items optional_block
-%type <entry>        block_item
+%type <value_list>   block_items optional_block
+%type <value>        block_item
 %type <bool_>        template_clause
 %type <avalue_list>	func_args
 %type <value>        function
@@ -291,7 +289,7 @@ function:
 		} else {
 			$$ = func->execute($3);
 		}
-		free($1);
+		delete $1;
 	}
 	;
 
@@ -312,7 +310,7 @@ block:	template_clause string key_clause from_clause optional_block semicolon
 	static int		 nseq;
 	bool			 unnamed = false;
 	conf::tree_entry	*e;
-	vector<conf::item_entry>::const_iterator	it, end;
+	vector<conf::value>::const_iterator	it, end;
 		if ($3)
 			block_key = $3->c_str();
 		else {
@@ -336,13 +334,13 @@ block:	template_clause string key_clause from_clause optional_block semicolon
 		}
 		
 		if ($5) for (it = $5->begin(), end = $5->end(); it != end; ++it) {
-			e->add(*it->val);
-			delete it->val;
+			e->add(*it);
 		}
 	end:
 		delete $2;
 		delete $3;
 		delete $4;
+		delete $5;
 	}
 	| VAR varname equals itemlist semicolon
 	{
@@ -359,14 +357,14 @@ block:	template_clause string key_clause from_clause optional_block semicolon
 block_items:
 	  block_items block_item 
 	{
-		$$ = new vector<conf::item_entry>($1->begin(), $1->end());
+		$$ = new vector<conf::value>($1->begin(), $1->end());
 		$$->push_back(*$2);
 		delete $1;
 		delete $2;
 	}
 	| block_item
 	{
-		$$ = new vector<conf::item_entry>;
+		$$ = new vector<conf::value>;
 		$$->push_back(*$1);
 		delete $1;
 	}
@@ -375,10 +373,11 @@ block_items:
 block_item:	
 	string equals itemlist semicolon
 	{
-	conf::value	*val = new conf::value(conf::declpos::here());
-		$$ = new conf::item_entry(conf::declpos::here(), val);
-		$$->val->cv_name = *$1;
-		$$->val->cv_values = *$3;
+		$$ = new conf::value(conf::declpos::here());
+		$$->cv_name = *$1;
+		$$->cv_values = *$3;
+		delete $1;
+		delete $3;
 	}
 	;
 
@@ -436,6 +435,7 @@ single: oneitem
 		} else {
 			$$->insert($$->begin(), value->cv_values.begin(), value->cv_values.end());
 		}
+		delete $1;
 	}
 	| single '+' single
 	{
@@ -450,6 +450,8 @@ single: oneitem
 		} else {
 			conf::report_parse_error("do not know how to add these values (%d+%d)", flen, slen);
 		}
+		delete $1;
+		delete $3;
 	}
 	;
 

@@ -423,6 +423,13 @@ block_definer *b = new block_definer(*this, name, flags);
 	return *b;
 }
 
+conf_definer::~conf_definer()
+{
+vector<block_definer *>::iterator	it, end;
+	for (it = blocks.begin(), end = blocks.end(); it != end; ++it)
+		delete *it;
+}
+
 bool
 value_definer::validate(tree_entry &e, value &v)
 {
@@ -442,6 +449,15 @@ block_definer::block_definer(conf_definer &parent_, string const &name_, int fla
 	, sefn(NULL)
 	, flags(flags_)
 {
+}
+
+block_definer::~block_definer()
+{
+map<string, value_definer *>::iterator	vit, vend;
+	for (vit = values.begin(), vend = values.end(); vit != vend; ++vit)
+		delete vit->second;
+	delete vefn;
+	delete sefn;
 }
 
 block_definer &

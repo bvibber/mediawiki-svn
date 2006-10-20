@@ -195,9 +195,9 @@ vector<header *>::iterator vit, vend;
 	struct header *contlen;
 		entity->he_flags.chunked = 1;
 		if (!entity->he_h_transfer_encoding)
-			header_add(&entity->he_headers, "Transfer-Encoding", "chunked");
-		if ((contlen = header_find(&entity->he_headers, "Content-Length")) != NULL)
-			header_remove(&entity->he_headers, contlen);
+			entity->he_headers.add("Transfer-Encoding", "chunked");
+		if ((contlen = entity->he_headers.find("Content-Length")) != NULL)
+			entity->he_headers.remove("Content-Length");
 	}
 
 	switch (entity->he_encoding) {
@@ -216,8 +216,7 @@ vector<header *>::iterator vit, vend;
 		break;
 	}
 	}
-	header_add(&entity->he_headers, "Content-Encoding",
-			ent_encodings[entity->he_encoding]);
+	entity->he_headers.add("Content-Encoding", ent_encodings[entity->he_encoding]);
 	for (vit = entity->he_headers.hl_hdrs.begin(), vend = entity->he_headers.hl_hdrs.end();
 	     vit != vend; ++vit)
 		evbuffer_add_printf(entity->_he_tobuf->output, "%s: %s\r\n", (*vit)->hr_name, (*vit)->hr_value);
@@ -713,41 +712,18 @@ via_includes_me(const char *s)
 	return 0;
 }
 
-#ifdef __lint
-# pragma error_messages(off, E_GLOBAL_COULD_BE_STATIC)
-#endif
-/*
- * Header handling.
- */
 void
-header_free(header_list *head)
+header_list::add(char const *name, char const *value)
 {
-vector<header *>::iterator vit, vend;
-	for (vit = head->hl_hdrs.begin(), vend = head->hl_hdrs.end(); vit != vend; ++vit) {
-		wfree((*vit)->hr_name);
-		wfree((*vit)->hr_value);
-		delete *vit;
-	}
-	head->hl_hdrs.clear();
-	head->hl_len = 0;
-}
-
-#ifdef __lint
-# pragma error_messages(default, E_GLOBAL_COULD_BE_STATIC)
-#endif
-
-void
-header_add(header_list *head, char const *name, char const *value)
-{
-	head->append(new header(name, value));
+	append(new header(name, value));
 }
 
 void
-header_append_last(header_list *head, const char *append)
+header_list::append_last(const char *append)
 {
 header	*last;
 char	*tmp;
-	last = *head->hl_hdrs.rbegin();
+	last = *hl_hdrs.rbegin();
 	tmp = last->hr_value;
 	last->hr_value = (char *)wmalloc(strlen(tmp) + strlen(append) + 2);
 	sprintf(last->hr_value, "%s %s", tmp, append);
@@ -755,22 +731,23 @@ char	*tmp;
 }
 	
 void
-header_remove(header_list *head, header *it)
+header_list::remove(const char *it)
 {
-vector<header *>::iterator vit;
-	if ((vit = std::find(head->hl_hdrs.begin(), head->hl_hdrs.end(), it)) == head->hl_hdrs.end())
-		return;
-	delete *vit;
+vector<header *>::iterator vit, vend;
+	for (vit = hl_hdrs.begin(), vend = hl_hdrs.end(); vit != vend; ++vit)
+		if (strcasecmp(it, (*vit)->hr_value))
+			break;
 
-	std::swap(*vit, *head->hl_hdrs.rbegin());
-	head->hl_hdrs.pop_back();
+	delete *vit;
+	std::swap(*vit, *hl_hdrs.rbegin());
+	hl_hdrs.pop_back();
 }
 
 struct header *
-header_find(header_list *head, const char *name)
+header_list::find(const char *name)
 {
 vector<header *>::iterator vit, vend;
-	for (vit = head->hl_hdrs.begin(), vend = head->hl_hdrs.end(); vit != vend; ++vit)
+	for (vit = hl_hdrs.begin(), vend = hl_hdrs.end(); vit != vend; ++vit)
 		if (!strcasecmp(name, (*vit)->hr_name))
 			return *vit;
 	return NULL;
@@ -780,19 +757,19 @@ vector<header *>::iterator vit, vend;
 # pragma error_messages(off, E_GLOBAL_COULD_BE_STATIC)
 #endif
 char *
-header_build(header_list *head)
+header_list::build(void)
 {
 char	*buf;
 size_t	 bufsz;
 size_t	 buflen = 0;
 vector<header *>::iterator vit, vend;
 
-	bufsz = head->hl_len + 3;
+	bufsz = hl_len + 3;
 	if ((buf = (char *)wmalloc(bufsz)) == NULL)
 		outofmemory();
 	
 	*buf = '\0';
-	for (vit = head->hl_hdrs.begin(), vend = head->hl_hdrs.end(); vit != vend; ++vit)
+	for (vit = hl_hdrs.begin(), vend = hl_hdrs.end(); vit != vend; ++vit)
 		buflen += snprintf(buf + buflen, bufsz - buflen - 1, "%s: %s\r\n", (*vit)->hr_name, (*vit)->hr_value);
 	if (strlcat(buf, "\r\n", bufsz) >= bufsz)
 		abort();
@@ -804,14 +781,14 @@ vector<header *>::iterator vit, vend;
 #endif
 
 void
-header_dump(header_list *head, int fd)
+header_list::dump(int fd)
 {
 vector<header *>::iterator vit, vend;
 int i = 0;
-	i = head->hl_hdrs.size();
+	i = hl_hdrs.size();
 	write(fd, &i, sizeof(i));	
 
-	for (vit = head->hl_hdrs.begin(), vend = head->hl_hdrs.end(); vit != vend; ++vit) {
+	for (vit = hl_hdrs.begin(), vend = hl_hdrs.end(); vit != vend; ++vit) {
 		int j, k;
 		k = strlen((*vit)->hr_name);
 		write(fd, &k, sizeof(k));
@@ -823,13 +800,13 @@ int i = 0;
 }
 
 int
-header_undump(header_list *head, int fd, off_t *len)
+header_list::undump(int fd, off_t *len)
 {
 	int		 i = 0, j = 0, sz = 0;
 	ssize_t		 r;
 	
 	*len = 0;
-	head->hl_hdrs.clear();
+	hl_hdrs.clear();
 	if ((r = read(fd, &sz, sizeof(sz))) < 0) {
 		wlog(WLOG_WARNING, "reading cache file: %s", strerror(errno));
 		return -1; /* XXX */
@@ -855,8 +832,7 @@ header_undump(header_list *head, int fd, off_t *len)
 		*len += k;
 		s += k;
 		*s = '\0';
-		h = new header(n, wstrdup(v));
-		head->append(h);
+		append(new header(n, wstrdup(v)));
 	}
 	
 	return 0;
@@ -904,7 +880,7 @@ parse_headers(http_entity *entity)
 				}
 				while (isspace(*s))
 					s++;
-				header_append_last(&entity->he_headers, s);
+				entity->he_headers.append_last(s);
 				free(line);
 				continue;
 			}
@@ -932,17 +908,17 @@ parse_headers(http_entity *entity)
 					error = ENT_ERR_INVHOST;
 					goto error;
 				}
-				header_add(&entity->he_headers, hdr[0], value);
+				entity->he_headers.add(hdr[0], value);
 				entity->he_rdata.request.host = wstrdup(value);
 			} else if (!strcasecmp(hdr[0], "Content-Length")) {
-				header_add(&entity->he_headers, hdr[0], value);
+				entity->he_headers.add(hdr[0], value);
 				entity->he_rdata.request.contlen = atoi(value);
 			} else if (!strcasecmp(hdr[0], "Via")) {
 				if (via_includes_me(value)) {
 					error = ENT_ERR_LOOP;
 					goto error;
 				}
-				header_add(&entity->he_headers, hdr[0], value);
+				entity->he_headers.add(hdr[0], value);
 			} else if (!strcasecmp(hdr[0], "transfer-encoding")) {
 				/* XXX */
 				if (!strcasecmp(value, "chunked")) {
@@ -958,21 +934,21 @@ parse_headers(http_entity *entity)
 				}
 			} else if (!strcasecmp(hdr[0], "Pragma")) {
 				entity->he_h_pragma = wstrdup(value);
-				header_add(&entity->he_headers, hdr[0], entity->he_h_pragma);
+				entity->he_headers.add(hdr[0], entity->he_h_pragma);
 			} else if (!strcasecmp(hdr[0], "Cache-Control")) {
 				entity->he_h_cache_control = wstrdup(value);
-				header_add(&entity->he_headers, hdr[0], entity->he_h_cache_control);
+				entity->he_headers.add(hdr[0], entity->he_h_cache_control);
 			} else if (!strcasecmp(hdr[0], "If-Modified-Since")) {
 				entity->he_h_if_modified_since = wstrdup(value);
-				header_add(&entity->he_headers, hdr[0], entity->he_h_if_modified_since);
+				entity->he_headers.add(hdr[0], entity->he_h_if_modified_since);
 			} else if (!strcasecmp(hdr[0], "Transfer-Encoding")) {
 				entity->he_h_transfer_encoding = wstrdup(value);
-				header_add(&entity->he_headers, hdr[0], entity->he_h_transfer_encoding);
+				entity->he_headers.add(hdr[0], entity->he_h_transfer_encoding);
 			} else if (!strcasecmp(hdr[0], "Last-Modified")) {
 				entity->he_h_last_modified = wstrdup(value);
-				header_add(&entity->he_headers, hdr[0], entity->he_h_last_modified);
+				entity->he_headers.add(hdr[0], entity->he_h_last_modified);
 			} else 
-				header_add(&entity->he_headers, hdr[0], value);
+				entity->he_headers.add(hdr[0], value);
 
 			wstrvecfree(hdr);
 			break;

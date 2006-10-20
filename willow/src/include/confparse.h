@@ -291,6 +291,8 @@ struct ignore : callable<void> {
 
 struct conf_definer {
 	conf_definer() {};
+	~conf_definer();
+
 	block_definer &block(string const &name, int flags = 0);
 	vector<block_definer *> blocks;
 
@@ -304,6 +306,10 @@ struct value_definer {
 		vv = new Vt(v_);
 		vs = new St(s_);
 	}
+	~value_definer() {
+		delete vv;
+		delete vs;
+	}
 
 	bool validate(tree_entry &e, value &v);
 	void set(tree_entry &e, value &v);
@@ -316,6 +322,7 @@ extern const int require_name;
 
 struct block_definer {
 	block_definer(conf_definer &parent_, string const &name, int flags);
+	~block_definer();
 
 	template<typename Vt, typename St>
 	block_definer &value(string const &name, Vt const &v, St const &s) {
@@ -377,14 +384,6 @@ bool	if_true			(string const &);
 void	add_variable		(value *value);
 void	add_variable_simple	(const char *, const char *);
 bool	find_include		(string &);
-
-struct item_entry {
-	item_entry(declpos const &pos_, value *val_)
-		: where(pos_), val(val_) {}
-
-	declpos		  where;
-	conf::value	 *val;
-};
 
 } // namespace conf
 

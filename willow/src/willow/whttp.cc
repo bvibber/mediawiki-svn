@@ -371,12 +371,12 @@ vector<header *>::iterator	it, end;
 	for (it = client->cl_entity->he_headers.hl_hdrs.begin();
 	     it != client->cl_entity->he_headers.hl_hdrs.end();) {
 		if (removable_header((*it)->hr_name))
-			header_remove(&client->cl_entity->he_headers, *it);
+			client->cl_entity->he_headers.remove((*it)->hr_name);
 		else	++it;
 	}
 
-	header_add(&client->cl_entity->he_headers, wstrdup("X-Forwarded-For"), wstrdup(client->cl_fde->fde_straddr));
-	header_add(&client->cl_entity->he_headers, wstrdup("Connection"), wstrdup("Close"));
+	client->cl_entity->he_headers.add("X-Forwarded-For", client->cl_fde->fde_straddr);
+	client->cl_entity->he_headers.add("Connection", "Close");
 	/*
 	 * POST requests require Content-Length.
 	 */
@@ -461,7 +461,7 @@ struct	http_client	*client = (http_client *)data;
 
 		entity->he_cache_callback = do_cache_write;
 		entity->he_cache_callback_data = client;
-		header_dump(&client->cl_entity->he_headers, client->cl_cfd);
+		client->cl_entity->he_headers.dump(client->cl_cfd);
 
 		/*
 		 * Look for last-modified
@@ -477,8 +477,8 @@ struct	http_client	*client = (http_client *)data;
 		}
 	}
 	
-	header_add(&client->cl_entity->he_headers, wstrdup("Via"), wstrdup(via_hdr));
-	header_add(&client->cl_entity->he_headers, wstrdup("X-Cache"), wstrdup(cache_miss_hdr));
+	client->cl_entity->he_headers.add("Via", via_hdr);
+	client->cl_entity->he_headers.add("X-Cache", cache_miss_hdr);
 	client->cl_entity->he_source.fde.len = -1;
 	if (config.compress)
 		client->cl_entity->he_encoding = client->cl_enc;
@@ -517,12 +517,12 @@ struct	stat	 sb;
 	
 	delete client->cl_entity;
 	client->cl_entity = new http_entity;
-	header_undump(&client->cl_entity->he_headers, client->cl_cfd, &client->cl_entity->he_source.fd.off);
-	header_add(&client->cl_entity->he_headers, wstrdup("Via"), wstrdup(via_hdr));
-	header_add(&client->cl_entity->he_headers, wstrdup("X-Cache"), wstrdup(cache_hit_hdr));
-	if (!client->cl_enc && !header_find(&client->cl_entity->he_headers, "Content-Length")) {
+	client->cl_entity->he_headers.undump(client->cl_cfd, &client->cl_entity->he_source.fd.off);
+	client->cl_entity->he_headers.add("Via", via_hdr);
+	client->cl_entity->he_headers.add("X-Cache", cache_hit_hdr);
+	if (!client->cl_enc && !client->cl_entity->he_headers.find("Content-Length")) {
 		snprintf(size, sizeof(size), "%lu", (unsigned long) client->cl_co->co_size);
-		header_add(&client->cl_entity->he_headers, wstrdup("Content-Length"), wstrdup(size));
+		client->cl_entity->he_headers.add("Content-Length", size);
 	}
 
 	entity_set_response(client->cl_entity, 1);
@@ -569,7 +569,7 @@ struct	http_client	*client = (http_client *)data;
 		/*
 		 * HTTP/1.0 Pragma
 		 */
-		hdr = header_find(&client->cl_entity->he_headers, "Pragma");
+		hdr = client->cl_entity->he_headers.find("Pragma");
 		if (hdr) {
 			char **pragmas = wstrvec(hdr->hr_value, ",", 0);
 			char **s;
@@ -585,7 +585,7 @@ struct	http_client	*client = (http_client *)data;
 		/*
 		 * HTTP/1.1 Cache-Control
 		 */
-		hdr = header_find(&client->cl_entity->he_headers, "Cache-Control");
+		hdr = client->cl_entity->he_headers.find("Cache-Control");
 		if (hdr) {
 			char **controls = wstrvec(hdr->hr_value, ",", 0);
 			char **s;
@@ -692,16 +692,16 @@ client_send_error(http_client *client, int errnum, const char * errdata, int sta
 	delete client->cl_entity;
 	client->cl_entity = new http_entity;
 
-	header_add(&client->cl_entity->he_headers, wstrdup("Date"), wstrdup(current_time_str));
-	header_add(&client->cl_entity->he_headers, wstrdup("Expires"), wstrdup(current_time_str));
-	header_add(&client->cl_entity->he_headers, wstrdup("Server"), wstrdup(my_version));
-	header_add(&client->cl_entity->he_headers, wstrdup("Connection"), wstrdup("close"));
+	client->cl_entity->he_headers.add("Date", current_time_str);
+	client->cl_entity->he_headers.add("Expires", current_time_str);
+	client->cl_entity->he_headers.add("Server", my_version);
+	client->cl_entity->he_headers.add("Connection", "close");
 
 	entity_set_response(client->cl_entity, 1);
 	client->cl_entity->he_rdata.response.status = status;
 	client->cl_entity->he_rdata.response.status_str = statstr;
 	if (errnum >= 0) {
-		header_add(&client->cl_entity->he_headers, wstrdup("Content-Type"), wstrdup("text/html"));
+		client->cl_entity->he_headers.add("Content-Type", "text/html");
 		client->cl_entity->he_source_type = ENT_SOURCE_BUFFER;
 		client->cl_entity->he_source.buffer.addr = client->cl_wrtbuf;
 		client->cl_entity->he_source.buffer.len = strlen(client->cl_wrtbuf);

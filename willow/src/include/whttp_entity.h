@@ -83,6 +83,15 @@ struct header_list {
 		for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it)
 			delete *it;
 	}
+
+	void		 add		(char const *, char const *);
+	void		 append_last	(const char *);
+	char		*build		(void);
+	void		 remove		(const char *);
+	void		 dump		(int);
+	int		 undump		(int, off_t *);
+struct header		*find		(const char *name);
+
 	vector<header *> hl_hdrs;
 	int		 hl_len;
 };
@@ -216,15 +225,5 @@ struct	bufferevent	*_he_tobuf;
 	int 		 qvalue_parse		(struct qvalue_head *list, const char *header);
 struct	qvalue		*qvalue_remove_best	(struct qvalue_head *list);
 enum	encoding	 accept_encoding	(const char *ent);
-
-	void		 header_add		(struct header_list *, char const *, char const *);
-	void		 header_append_last	(struct header_list *, const char *);
-	void		 header_free		(struct header_list *);
-	char		*header_build		(struct header_list *);
-	void		 header_remove		(struct header_list *, struct header *);
-	void		 header_dump		(struct header_list *, int);
-	int		 header_undump		(struct header_list *, int, off_t *);
-struct header		*header_find		(struct header_list *head, const char *name);
-
 
 #endif
