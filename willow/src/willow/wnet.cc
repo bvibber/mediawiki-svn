@@ -108,6 +108,8 @@ size_t	 i;
 		wnet_register(fd, FDE_READ, wnet_accept, NULL);
 		wlog(WLOG_NOTICE, "listening on %s", lns->name.c_str());
 	}
+	wlog(WLOG_NOTICE, "wnet: initialised, using libevent %s (%s)",
+		event_get_version(), event_get_method());
 }
 
 void

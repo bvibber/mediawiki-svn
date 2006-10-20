@@ -170,6 +170,7 @@ vector<header *>::iterator vit, vend;
 	entity->_he_tobuf = bufferevent_new(entity->_he_target->fde_fd,
 		NULL, entity_send_target_write,
 		entity_send_target_error, entity);
+
 	bufferevent_disable(entity->_he_tobuf, EV_READ);
 	bufferevent_enable(entity->_he_tobuf, EV_WRITE);
 	if (entity->_he_frombuf) {
@@ -194,7 +195,7 @@ vector<header *>::iterator vit, vend;
 	struct header *contlen;
 		entity->he_flags.chunked = 1;
 		if (!entity->he_h_transfer_encoding)
-			header_add(&entity->he_headers, wstrdup("Transfer-Encoding"), wstrdup("chunked"));
+			header_add(&entity->he_headers, "Transfer-Encoding", "chunked");
 		if ((contlen = header_find(&entity->he_headers, "Content-Length")) != NULL)
 			header_remove(&entity->he_headers, contlen);
 	}
@@ -215,8 +216,8 @@ vector<header *>::iterator vit, vend;
 		break;
 	}
 	}
-	header_add(&entity->he_headers, wstrdup("Content-Encoding"),
-			wstrdup(ent_encodings[entity->he_encoding]));
+	header_add(&entity->he_headers, "Content-Encoding",
+			ent_encodings[entity->he_encoding]);
 	for (vit = entity->he_headers.hl_hdrs.begin(), vend = entity->he_headers.hl_hdrs.end();
 	     vit != vend; ++vit)
 		evbuffer_add_printf(entity->_he_tobuf->output, "%s: %s\r\n", (*vit)->hr_name, (*vit)->hr_value);
@@ -464,6 +465,8 @@ struct	http_entity	*entity = (http_entity *) d;
 
 		wrote++;
 		if (contdone) {
+			if (entity->he_flags.chunked)
+				bufferevent_write(entity->_he_tobuf, const_cast<char *>("0\r\n"), 3);
 			bufferevent_disable(entity->_he_frombuf, EV_READ);
 			//entity->_he_func(entity, entity->_he_cbdata, 0);
 			entity->he_flags.eof = 1;
@@ -734,7 +737,7 @@ vector<header *>::iterator vit, vend;
 #endif
 
 void
-header_add(header_list *head, char *name, char *value)
+header_add(header_list *head, char const *name, char const *value)
 {
 	head->append(new header(name, value));
 }
@@ -757,8 +760,6 @@ header_remove(header_list *head, header *it)
 vector<header *>::iterator vit;
 	if ((vit = std::find(head->hl_hdrs.begin(), head->hl_hdrs.end(), it)) == head->hl_hdrs.end())
 		return;
-	wfree((*vit)->hr_name);
-	wfree((*vit)->hr_value);
 	delete *vit;
 
 	std::swap(*vit, *head->hl_hdrs.rbegin());
@@ -931,24 +932,23 @@ parse_headers(http_entity *entity)
 					error = ENT_ERR_INVHOST;
 					goto error;
 				}
-				header_add(&entity->he_headers, wstrdup(hdr[0]), wstrdup(value));
+				header_add(&entity->he_headers, hdr[0], value);
 				entity->he_rdata.request.host = wstrdup(value);
 			} else if (!strcasecmp(hdr[0], "Content-Length")) {
-				header_add(&entity->he_headers, wstrdup(hdr[0]), wstrdup(value));
+				header_add(&entity->he_headers, hdr[0], value);
 				entity->he_rdata.request.contlen = atoi(value);
 			} else if (!strcasecmp(hdr[0], "Via")) {
 				if (via_includes_me(value)) {
 					error = ENT_ERR_LOOP;
 					goto error;
 				}
-				header_add(&entity->he_headers, wstrdup(hdr[0]), wstrdup(value));
+				header_add(&entity->he_headers, hdr[0], value);
 			} else if (!strcasecmp(hdr[0], "transfer-encoding")) {
 				/* XXX */
 				if (!strcasecmp(value, "chunked")) {
 					entity->he_te |= TE_CHUNKED;
 				}
 				/* Don't forward transfer-encoding... */
-				wfree(value);
 			} else if (!strcasecmp(hdr[0], "Accept-Encoding")) {
 				if (!entity->he_flags.response &&
 				    qvalue_parse(&entity->he_rdata.request.accept_encoding, value) == -1) {
@@ -958,21 +958,21 @@ parse_headers(http_entity *entity)
 				}
 			} else if (!strcasecmp(hdr[0], "Pragma")) {
 				entity->he_h_pragma = wstrdup(value);
-				header_add(&entity->he_headers, wstrdup(hdr[0]), entity->he_h_pragma);
+				header_add(&entity->he_headers, hdr[0], entity->he_h_pragma);
 			} else if (!strcasecmp(hdr[0], "Cache-Control")) {
 				entity->he_h_cache_control = wstrdup(value);
-				header_add(&entity->he_headers, wstrdup(hdr[0]), entity->he_h_cache_control);
+				header_add(&entity->he_headers, hdr[0], entity->he_h_cache_control);
 			} else if (!strcasecmp(hdr[0], "If-Modified-Since")) {
 				entity->he_h_if_modified_since = wstrdup(value);
-				header_add(&entity->he_headers, wstrdup(hdr[0]), entity->he_h_if_modified_since);
+				header_add(&entity->he_headers, hdr[0], entity->he_h_if_modified_since);
 			} else if (!strcasecmp(hdr[0], "Transfer-Encoding")) {
 				entity->he_h_transfer_encoding = wstrdup(value);
-				header_add(&entity->he_headers, wstrdup(hdr[0]), entity->he_h_transfer_encoding);
+				header_add(&entity->he_headers, hdr[0], entity->he_h_transfer_encoding);
 			} else if (!strcasecmp(hdr[0], "Last-Modified")) {
 				entity->he_h_last_modified = wstrdup(value);
-				header_add(&entity->he_headers, wstrdup(hdr[0]), entity->he_h_last_modified);
+				header_add(&entity->he_headers, hdr[0], entity->he_h_last_modified);
 			} else 
-				header_add(&entity->he_headers, wstrdup(hdr[0]), wstrdup(value));
+				header_add(&entity->he_headers, hdr[0], value);
 
 			wstrvecfree(hdr);
 			break;
@@ -1065,7 +1065,7 @@ parse_reqtype(http_entity *entity)
 			return -1;
 		entity->he_rdata.request.path = wstrdup(t);
 		*t = '\0';
-		entity->he_rdata.request.host = p;
+		entity->he_rdata.request.host = wstrdup(p);
 	} else {
 		entity->he_rdata.request.path = wstrdup(p);
 	}

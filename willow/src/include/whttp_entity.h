@@ -56,12 +56,15 @@ typedef void (*header_cb)(struct http_entity *, void *, int);
 typedef void (*cache_callback)(const char *, size_t, void *);
 
 struct header : freelist_allocator<header> {
-	header(char *n, char *v)
-		: hr_name(n), hr_value(v) {}
-	header() : hr_name(NULL), hr_value(NULL) {}
+	header(char const *n, char const *v) {
+	int	nlen = strlen(n);
+		hr_name = new char[nlen + strlen(v) + 2];
+		hr_value = hr_name + nlen + 1;
+		memcpy(hr_name, n, nlen + 1);
+		strcpy(hr_value, v);
+	}
 	~header() {
-		wfree(hr_name);
-		wfree(hr_value);
+		delete[] hr_name;
 	}
 	char		*hr_name;
 	char		*hr_value;
@@ -214,7 +217,7 @@ struct	bufferevent	*_he_tobuf;
 struct	qvalue		*qvalue_remove_best	(struct qvalue_head *list);
 enum	encoding	 accept_encoding	(const char *ent);
 
-	void		 header_add		(struct header_list *, char *, char *);
+	void		 header_add		(struct header_list *, char const *, char const *);
 	void		 header_append_last	(struct header_list *, const char *);
 	void		 header_free		(struct header_list *);
 	char		*header_build		(struct header_list *);

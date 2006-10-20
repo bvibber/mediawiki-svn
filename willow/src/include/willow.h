@@ -46,6 +46,7 @@ static  T       *_freelist;
                 T       *n = _freelist;
 			WDEBUG((WLOG_DEBUG, "allocate %s from freelist @ %p", typeid(T).name(), n));
                         _freelist = _freelist->_freelist_next;
+			memset(n, 0, sizeof(*n));
                         return n;
                 } else {
 		void	*ret;
