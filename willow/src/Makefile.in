@@ -2,7 +2,7 @@
 #
 # src/ makefile.
 
-SUBDIRS=willow wlogwriter
+SUBDIRS=willow
 
 @include@ @q@@top_srcdir@/mk/subdir.mk@q@
 
