@@ -712,132 +712,6 @@ via_includes_me(const char *s)
 	return 0;
 }
 
-void
-header_list::add(char const *name, char const *value)
-{
-	append(new header(name, value));
-}
-
-void
-header_list::append_last(const char *append)
-{
-header	*last;
-char	*tmp;
-	last = *hl_hdrs.rbegin();
-	tmp = last->hr_value;
-	last->hr_value = (char *)wmalloc(strlen(tmp) + strlen(append) + 2);
-	sprintf(last->hr_value, "%s %s", tmp, append);
-	wfree(tmp);
-}
-	
-void
-header_list::remove(const char *it)
-{
-vector<header *>::iterator vit, vend;
-	for (vit = hl_hdrs.begin(), vend = hl_hdrs.end(); vit != vend; ++vit)
-		if (strcasecmp(it, (*vit)->hr_value))
-			break;
-
-	delete *vit;
-	std::swap(*vit, *hl_hdrs.rbegin());
-	hl_hdrs.pop_back();
-}
-
-struct header *
-header_list::find(const char *name)
-{
-vector<header *>::iterator vit, vend;
-	for (vit = hl_hdrs.begin(), vend = hl_hdrs.end(); vit != vend; ++vit)
-		if (!strcasecmp(name, (*vit)->hr_name))
-			return *vit;
-	return NULL;
-}
-
-#ifdef __lint
-# pragma error_messages(off, E_GLOBAL_COULD_BE_STATIC)
-#endif
-char *
-header_list::build(void)
-{
-char	*buf;
-size_t	 bufsz;
-size_t	 buflen = 0;
-vector<header *>::iterator vit, vend;
-
-	bufsz = hl_len + 3;
-	if ((buf = (char *)wmalloc(bufsz)) == NULL)
-		outofmemory();
-	
-	*buf = '\0';
-	for (vit = hl_hdrs.begin(), vend = hl_hdrs.end(); vit != vend; ++vit)
-		buflen += snprintf(buf + buflen, bufsz - buflen - 1, "%s: %s\r\n", (*vit)->hr_name, (*vit)->hr_value);
-	if (strlcat(buf, "\r\n", bufsz) >= bufsz)
-		abort();
-
-	return buf;
-}
-#ifdef __lint
-# pragma error_messages(default, E_GLOBAL_COULD_BE_STATIC)
-#endif
-
-void
-header_list::dump(int fd)
-{
-vector<header *>::iterator vit, vend;
-int i = 0;
-	i = hl_hdrs.size();
-	write(fd, &i, sizeof(i));	
-
-	for (vit = hl_hdrs.begin(), vend = hl_hdrs.end(); vit != vend; ++vit) {
-		int j, k;
-		k = strlen((*vit)->hr_name);
-		write(fd, &k, sizeof(k));
-		j = strlen((*vit)->hr_value);
-		write(fd, &j, sizeof(j));
-		write(fd, (*vit)->hr_name, k);
-		write(fd, (*vit)->hr_value, j);
-	}
-}
-
-int
-header_list::undump(int fd, off_t *len)
-{
-	int		 i = 0, j = 0, sz = 0;
-	ssize_t		 r;
-	
-	*len = 0;
-	hl_hdrs.clear();
-	if ((r = read(fd, &sz, sizeof(sz))) < 0) {
-		wlog(WLOG_WARNING, "reading cache file: %s", strerror(errno));
-		return -1; /* XXX */
-	}
-	
-	*len += r;
-	WDEBUG((WLOG_DEBUG, "header_undump: %d entries", sz));
-
-	while (sz--) {
-	char	*n, *v, *s;
-	int	 k;
-	header	*h;
-		*len += read(fd, &i, sizeof(i));	
-		*len += read(fd, &j, sizeof(j));
-		WDEBUG((WLOG_DEBUG, "header_undump: i=%d j=%d", i, j));
-		n = (char *)wmalloc(i + j + 2);
-		i = read(fd, n, i);
-		*len += i;
-		s = n + i;
-		*s++ = '\0';
-		v = s;
-		k = read(fd, s, j);
-		*len += k;
-		s += k;
-		*s = '\0';
-		append(new header(n, wstrdup(v)));
-	}
-	
-	return 0;
-}
-
 static int
 parse_headers(http_entity *entity)
 {
@@ -927,7 +801,7 @@ parse_headers(http_entity *entity)
 				/* Don't forward transfer-encoding... */
 			} else if (!strcasecmp(hdr[0], "Accept-Encoding")) {
 				if (!entity->he_flags.response &&
-				    qvalue_parse(&entity->he_rdata.request.accept_encoding, value) == -1) {
+				    qvalue_parse(entity->he_rdata.request.accept_encoding, value) == -1) {
 					error = ENT_ERR_INVAE;
 					WDEBUG((WLOG_DEBUG, "a-e parse failed"));
 					goto error;
@@ -1055,25 +929,22 @@ parse_reqtype(http_entity *entity)
 }
 
 int
-qvalue_parse(qvalue_head *list, const char *header)
+qvalue_parse(set<qvalue> &list, const char *header)
 {
-	char **values;
-	char **value;
-
-	TAILQ_INIT(list);
+char **values;
+char **value;
 
 	values = wstrvec(header, ",", 0);
 	for (value = values; *value; ++value) {
-		char **bits;
-		struct qvalue *entry;
+	char	**bits;
+	qvalue	  entry;
 		bits = wstrvec(*value, ";", 0);
-		entry = (qvalue *)wcalloc(1, sizeof(*entry));
-		entry->name = wstrdup(bits[0]);
+		entry.name = wstrdup(bits[0]);
 		if (bits[1])
-			entry->val = atof(bits[1]);
+			entry.val = atof(bits[1]);
 		else
-			entry->val = 1.0;
-		TAILQ_INSERT_TAIL(list, entry, entries);
+			entry.val = 1.0;
+		list.insert(entry);
 		wstrvecfree(bits);
 	}
 
@@ -1081,21 +952,15 @@ qvalue_parse(qvalue_head *list, const char *header)
 	return 0;
 }
 
-struct qvalue *
-qvalue_remove_best(qvalue_head *list)
+bool
+qvalue_remove_best(set<qvalue> &list, qvalue &val)
 {
-	struct qvalue *entry, *best = NULL;
-	float bestf = 0;
-	TAILQ_FOREACH(entry, list, entries) {
-		if (entry->val > bestf) {
-			best = entry;
-			bestf = entry->val;
-		}
-	}
-	if (!best)
-		return NULL;
-	TAILQ_REMOVE(list, best, entries);
-	return best;
+set<qvalue>::iterator	it;
+	if ((it = list.begin()) == list.end())
+		return false;
+	val = *it;
+	list.erase(it);
+	return true;
 }
 
 enum encoding

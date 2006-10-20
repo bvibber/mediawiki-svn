@@ -212,8 +212,8 @@ client_read_done(http_entity *entity, void *data, int res)
 {
 struct	http_client	*client = (http_client *)data;
 	char		*pragma, *cache_control, *ifmod;
-struct	qvalue_head	*acceptenc;
-struct	qvalue		*val;
+	vector<qvalue>	 acceptenc;
+	qvalue		 val;
 	int		 cacheable = 1;
 
 	WDEBUG((WLOG_DEBUG, "client_read_done: called, res=%d", res));
@@ -278,14 +278,10 @@ struct	qvalue		*val;
 		wstrvecfree(cache_controls);
 	}
 
-	acceptenc = &entity->he_rdata.request.accept_encoding;
-	while ((val = qvalue_remove_best(acceptenc)) != NULL) {
-		WDEBUG((WLOG_DEBUG, "client offers [%s] q=%f", val->name, (double) val->val));
-		if ((client->cl_enc = accept_encoding(val->name)) != E_NONE) {
-			wfree(val);
+	while (qvalue_remove_best(entity->he_rdata.request.accept_encoding, val)) {
+		WDEBUG((WLOG_DEBUG, "client offers [%s] q=%f", val.name, (double) val.val));
+		if ((client->cl_enc = accept_encoding(val.name)) != E_NONE)
 			break;
-		}
-		wfree(val);
 	}
 
 	/*

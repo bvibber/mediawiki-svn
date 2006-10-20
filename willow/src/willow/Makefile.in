@@ -12,8 +12,11 @@ BASESRCS =	 		\
 	confparse.cc		\
 	wnet.cc			\
 	wnet_libevent.cc	\
-	wlog.cc
-OBJS=	willow.o wconfig.o whttp.o wbackend.o whttp_entity.o wcache.o confparse.o wnet.o wlog.o wnet_libevent.o
+	wlog.cc			\
+	whttp_header.cc
+
+OBJS=	$(BASESRCS:.cc=.o)
+
 SRCS=$(BASESRCS)
 OBJADD = @LIBOBJS@ y.tab.o lex.yy.o
 

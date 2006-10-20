@@ -12,9 +12,13 @@
 # pragma ident "@(#)$Id$"
 #endif
 
+#include <set>
+using std::set;
+
 #include <zlib.h>
 
 #include "whttp.h"
+#include "whttp_header.h"
 #include "queue.h"
 
 #define ENT_SOURCE_BUFFER	1
@@ -55,55 +59,6 @@ struct bufferevent;
 typedef void (*header_cb)(struct http_entity *, void *, int);
 typedef void (*cache_callback)(const char *, size_t, void *);
 
-struct header : freelist_allocator<header> {
-	header(char const *n, char const *v) {
-	int	nlen = strlen(n);
-		hr_name = new char[nlen + strlen(v) + 2];
-		hr_value = hr_name + nlen + 1;
-		memcpy(hr_name, n, nlen + 1);
-		strcpy(hr_value, v);
-	}
-	~header() {
-		delete[] hr_name;
-	}
-	char		*hr_name;
-	char		*hr_value;
-};
-
-struct header_list {
-	header_list() : hl_len(0) {
-		hl_hdrs.reserve(20);	/* should be enough for most requests */
-	}
-	void append(header *h) {
-		hl_hdrs.push_back(h);
-		hl_len += strlen(h->hr_name) + strlen(h->hr_value) + 4;
-	}
-	~header_list() {
-	vector<header *>::iterator it, end;
-		for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it)
-			delete *it;
-	}
-
-	void		 add		(char const *, char const *);
-	void		 append_last	(const char *);
-	char		*build		(void);
-	void		 remove		(const char *);
-	void		 dump		(int);
-	int		 undump		(int, off_t *);
-struct header		*find		(const char *name);
-
-	vector<header *> hl_hdrs;
-	int		 hl_len;
-};
-
-struct qvalue {
-	float	 val;
-const	char	*name;
-
-	TAILQ_ENTRY(qvalue) entries;
-};
-TAILQ_HEAD(qvalue_head, qvalue);
-
 enum encoding {
 	E_NONE = 0,
 	E_DEFLATE,
@@ -132,7 +87,7 @@ struct http_entity : freelist_allocator<http_entity> {
 		}
 	}
 
-	union {
+	struct {
 		/* response-only data */
 		struct {
 			int		 status;
@@ -148,7 +103,7 @@ struct http_entity : freelist_allocator<http_entity> {
 			 */
 			char	*host;		/* Host			*/
 			int	 contlen;	/* Content-Length	*/
-		struct	qvalue_head accept_encoding;
+			set<qvalue>	accept_encoding;
 		} request;
 	}		 he_rdata;
 
@@ -222,8 +177,8 @@ struct	bufferevent	*_he_tobuf;
 	void	entity_free		(struct http_entity *);
 	void	entity_set_response	(struct http_entity *, int isresp);
 
-	int 		 qvalue_parse		(struct qvalue_head *list, const char *header);
-struct	qvalue		*qvalue_remove_best	(struct qvalue_head *list);
+	int 		 qvalue_parse		(set<qvalue> &list, const char *header);
+	bool		 qvalue_remove_best	(set<qvalue> &list, qvalue &);
 enum	encoding	 accept_encoding	(const char *ent);
 
 #endif
