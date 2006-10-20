@@ -886,22 +886,27 @@ bool		 sent_host = false;
 					WDEBUG((WLOG_DEBUG, "a-e parse failed"));
 					goto error;
 				}
-			} else if (!strcasecmp(name, "Pragma")) {
-				entity->he_h_pragma = wstrdup(value);
-				entity->he_headers.add(name, value);
-			} else if (!strcasecmp(name, "Cache-Control")) {
-				entity->he_h_cache_control = wstrdup(value);
-				entity->he_headers.add(name, value);
-			} else if (!strcasecmp(name, "If-Modified-Since")) {
-				entity->he_h_if_modified_since = wstrdup(value);
-				entity->he_headers.add(name, value);
-			} else if (!strcasecmp(name, "Transfer-Encoding")) {
-				entity->he_h_transfer_encoding = wstrdup(value);
-				entity->he_headers.add(name, value);
-			} else if (!strcasecmp(name, "Last-Modified")) {
-				entity->he_h_last_modified = wstrdup(value);
-				entity->he_headers.add(name, value);
-			} else 
+			} 
+
+			if (config.ncaches) {
+				if (!strcasecmp(name, "Pragma")) {
+					entity->he_h_pragma = wstrdup(value);
+					entity->he_headers.add(name, value);
+				} else if (!strcasecmp(name, "Cache-Control")) {
+					entity->he_h_cache_control = wstrdup(value);
+					entity->he_headers.add(name, value);
+				} else if (!strcasecmp(name, "If-Modified-Since")) {
+					entity->he_h_if_modified_since = wstrdup(value);
+					entity->he_headers.add(name, value);
+				} else if (!strcasecmp(name, "Transfer-Encoding")) {
+					entity->he_h_transfer_encoding = wstrdup(value);
+					entity->he_headers.add(name, value);
+				} else if (!strcasecmp(name, "Last-Modified")) {
+					entity->he_h_last_modified = wstrdup(value);
+					entity->he_headers.add(name, value);
+				} else
+					entity->he_headers.add(name, value);
+			} else
 				entity->he_headers.add(name, value);
 			break;
 		error:
