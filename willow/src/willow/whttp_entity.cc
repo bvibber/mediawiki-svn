@@ -260,6 +260,7 @@ struct	http_entity	*entity = (http_entity *)d;
 			return;
 		}
 		WDEBUG((WLOG_DEBUG, "entity_error_callback: EOF"));
+		bufferevent_disable(entity->_he_frombuf, EV_READ);
 		entity->_he_func(entity, entity->_he_cbdata, 1);
 		//entity->he_flags.eof = 1;
 		return;
@@ -362,7 +363,7 @@ static	char const	*rnrn = "\r\n\r\n";
 		end = (char *)EVBUFFER_DATA(entity->_he_frombuf->input) + EVBUFFER_LENGTH(entity->_he_frombuf->input);
 		WDEBUG((WLOG_DEBUG, "entity_read_callback: end=%p; buf=%p; data=%p",
 			end, buf, EVBUFFER_DATA(entity->_he_frombuf->input)));
-		
+
 		if ((found = find_rnrn(buf, end)) == NULL) {
 			// need more data
 			entity->_he_hdrsearch = max(buf, end - 4);

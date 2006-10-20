@@ -446,8 +446,9 @@ struct	http_client	*client = (http_client *)data;
 	if (res == -1) {
 		delete client;
 		return;
-	} else if (res < -1) {
-		client_send_error(client, ERR_GENERAL, ent_errors[-res], 503,
+	} else if (res < -1 || res == 1) {
+		client_send_error(client, ERR_GENERAL, 
+			res == 1 ? "Server response contained no data." : ent_errors[-res], 503,
 			"Service unavailable (#10.5.4)");
 		return;
 	}
