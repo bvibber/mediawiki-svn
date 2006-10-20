@@ -41,7 +41,7 @@ static void carp_recalc(string const &url);
 static void carp_calc(void);
 static int becarp_cmp(backend const *a, backend const *b);
 
-struct backend_cb_data {
+struct backend_cb_data : freelist_allocator<backend_cb_data> {
 struct	backend		*bc_backend;
 	backend_cb	 bc_func;
 	void		*bc_data;
@@ -111,7 +111,7 @@ static	time_t		 last_nfile;
 		cbd->bc_backend = next_backend(url);
 
 		if (cbd->bc_backend == NULL) {
-			wfree(cbd);
+			delete cbd;
 			return -1;
 		}
 
@@ -120,7 +120,7 @@ static	time_t		 last_nfile;
 				wlog(WLOG_WARNING, "opening backend socket: %s", strerror(errno));
 			if (errno == ENFILE)
 				last_nfile = now;
-			wfree(cbd);
+			delete cbd;
 			return -1;
 		}
 
@@ -128,7 +128,7 @@ static	time_t		 last_nfile;
 		    sizeof(cbd->bc_backend->be_addr)) == 0) {
 			WDEBUG((WLOG_DEBUG, "get_backend: connection completed immediately"));
 			func(cbd->bc_backend, &fde_table[s], data);
-			wfree(cbd);
+			delete cbd;
 			return 0;
 		}
 
@@ -167,7 +167,7 @@ struct	backend_cb_data	*cbd = static_cast<backend_cb_data *>(e->fde_rdata);
 		if (get_backend(cbd->bc_url, cbd->bc_func, cbd->bc_data, 0) == -1) {
 			cbd->bc_func(NULL, NULL, cbd->bc_data);
 		}
-		wfree(cbd);
+		delete cbd;
 		return;
 	}
 

@@ -83,12 +83,6 @@ struct http_entity : freelist_allocator<http_entity> {
 		}
 		if (he_reqstr)
 			wfree(he_reqstr);
-		if (!he_flags.response) {
-			if (he_rdata.request.host)
-				wfree(he_rdata.request.host);
-			if (he_rdata.request.path)
-				wfree(he_rdata.request.path);
-		}
 		delete[] _he_hdrbuf;
 		evbuffer_free(he_extraheaders);
 	}

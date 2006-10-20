@@ -784,6 +784,7 @@ char		*nexthdr;
 static char	 rn[] = { '\r', '\n' };
 size_t		 i, nread;
 char		*lbuf, *lend;
+bool		 sent_host = false;
 	entity->_he_hdrbuf = new char[end - buf];
 	lbuf = entity->_he_hdrbuf;
 	lend = lbuf + (end - buf);
@@ -796,9 +797,6 @@ char		*lbuf, *lend;
 	WDEBUG((WLOG_DEBUG, "parse_headers: %d left in buffer",
 		(int)EVBUFFER_LENGTH(entity->_he_frombuf->input)));
 	while ((nexthdr = find_rn(lbuf, lend)) != NULL) {
-#if 0
-	while ((nexthdr = std::search(entity->_he_hdrbuf, lend, rn, rn + sizeof(rn))) != end) {
-#endif
 	char	*name = NULL, *value = NULL;
 	int	 error = 1;
 		*nexthdr = '\0';
@@ -808,6 +806,10 @@ char		*lbuf, *lend;
 			if (!entity->he_reqstr) {
 				return ENT_ERR_INVREQ;
 			}
+
+			if (!sent_host && entity->he_rdata.request.host)
+				evbuffer_add_printf(entity->he_extraheaders, "Host: %s\r\n",
+					entity->he_rdata.request.host);
 
 			entity->_he_state = ENTITY_STATE_DONE;
 			return 0;
@@ -858,7 +860,8 @@ char		*lbuf, *lend;
 					goto error;
 				}
 				entity->he_headers.add(name, value);
-				entity->he_rdata.request.host = wstrdup(value);
+				entity->he_rdata.request.host = value;
+				sent_host = true;
 			} else if (!strcasecmp(name, "Content-Length")) {
 				entity->he_headers.add(name, value);
 				entity->he_rdata.request.contlen = atoi(value);
@@ -898,7 +901,6 @@ char		*lbuf, *lend;
 				entity->he_headers.add(name, value);
 			} else 
 				entity->he_headers.add(name, value);
-
 			break;
 		error:
 			return -error;
@@ -980,11 +982,12 @@ parse_reqtype(http_entity *entity)
 		t = strchr(p, '/');
 		if (t == NULL)
 			return -1;
-		entity->he_rdata.request.path = wstrdup(t);
-		*t = '\0';
-		entity->he_rdata.request.host = wstrdup(p);
+		memmove(p - 1, p, t - p);
+		entity->he_rdata.request.host = p - 1;
+		t[-1] = '\0';
+		entity->he_rdata.request.path = t;
 	} else {
-		entity->he_rdata.request.path = wstrdup(p);
+		entity->he_rdata.request.path = p;
 	}
 
 	/* HTTP/1.0 */
