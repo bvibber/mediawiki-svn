@@ -1,11 +1,11 @@
-/* @(#) $Header$ */
+/* @(#) $Id$ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
  */
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Header$"
+# pragma ident "@(#)$Id$"
 #endif
 
 #include <sys/mman.h>

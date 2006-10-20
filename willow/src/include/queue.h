@@ -1,4 +1,4 @@
-/* @(#) $Header$ */
+/* @(#) $Id$ */
 /* From: @(#)queue.h	8.5 (Berkeley) 8/20/94 */
 /* From: $FreeBSD: src/sys/sys/queue.h,v 1.58 2004/04/07 04:19:49 imp Exp $ */
 
@@ -36,7 +36,7 @@
 #define	QUEUE_H
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Header$"
+# pragma ident "@(#)$Id$"
 #endif
 
 #include "config.h"

@@ -1,4 +1,4 @@
-/* @(#) $Header$ */
+/* @(#) $Id$ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
@@ -9,7 +9,7 @@
 #define WLOGWRITER_H
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Header$"
+# pragma ident "@(#)$Id$"
 #endif
 
 void wlogwriter_start(int *);

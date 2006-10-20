@@ -1,4 +1,4 @@
-/* @(#) $Header$ */
+/* @(#) $Id$ */
 /* From: $Nightmare: nightmare/include/config.h,v 1.32.2.2.2.2 2002/07/02 03:41:28 ejb Exp $ */
 /* From: newconf.h,v 7.36 2005/03/21 22:42:10 leeh Exp */
 /* From: newconf.h 2651 2006-10-13 18:54:49Z river */
@@ -12,7 +12,7 @@
 #define CONFPARSE_H
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Header$"
+# pragma ident "@(#)$Id$"
 #endif
 
 #include <string>

@@ -1,6 +1,6 @@
 /* This code is in the public domain.
  * $Nightmare: nightmare/src/main/parser.y,v 1.2.2.1.2.1 2002/07/02 03:42:10 ejb Exp $
- * $Header$
+ * $Id$
  */
 
 %{

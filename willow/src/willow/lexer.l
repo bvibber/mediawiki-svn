@@ -3,7 +3,7 @@
  * This source code is in the public domain.
  * River Tarnell <river@attenuate.org>
  */
-/* $Id: idl.l 2619 2006-10-13 15:46:38Z river $ */
+/* $Id$ */
 
 %option noyywrap
 %option nounput
