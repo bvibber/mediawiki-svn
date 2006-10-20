@@ -153,5 +153,4 @@ AC_OUTPUT(
 	Makefile 
 	src/Makefile 
 	src/willow/Makefile
-	src/wlogwriter/Makefile
 	errors/Makefile)

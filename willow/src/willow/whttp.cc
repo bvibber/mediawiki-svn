@@ -169,27 +169,8 @@ whttp_init(void)
 	 */
 
 	if (config.access_log.size()) {
-		if (pipe(logwr_pipe) < 0) {
-			perror("pipe");
-			exit(8);
-		}
-		switch (fork()) {
-		case -1:
-			wlog(WLOG_ERROR, "starting logwriter: %s", strerror(errno));
-			exit(8);
-			/*NOTREACHED*/
-		case 0:
-			(void)dup2(logwr_pipe[0], STDIN_FILENO);
-			/*LINTED execl*/
-			(void)execl(LIBEXECDIR "/wlogwriter", "wlogwriter", 
-				config.access_log.c_str(), NULL);
-			exit(8);
-			/*NOTREACHED*/
-		default:
-			break;
-		}
-		if ((alf = fdopen(logwr_pipe[1], "a")) == NULL) {
-			perror("whttp: fdopen");
+		if ((alf = fopen(config.access_log.c_str(), "a")) == NULL) {
+			wlog(WLOG_ERROR, "opening %s: %s", config.access_log.c_str(), strerror(errno));
 			exit(8);
 		}
 	}
@@ -737,7 +718,7 @@ client_log_request(http_client *client)
 {
 	int	i;
 	
-	if (!config.access_log.size())
+	if (!alf)
 		return;
 
 	i = fprintf(alf, "[%s] %s %s \"%s\" %d %s %s\n",
@@ -747,13 +728,9 @@ client_log_request(http_client *client)
 			client->cl_backend ? client->cl_backend->be_name.c_str() : "-",
 			client->cl_flags.f_cached ? "HIT" : "MISS");
 	if (i < 0) {
-		wlog(WLOG_ERROR, "writing logfile: %s", strerror(errno));
-		exit(8);
-	}
-	
-	if (fflush(alf) == EOF) {
-		wlog(WLOG_ERROR, "flushing logfile: %s", strerror(errno));
-		exit(8);
+		wlog(WLOG_ERROR, "writing access log: %s; log will be closed", strerror(errno));
+		fclose(alf);
+		alf = NULL;
 	}
 }
 
