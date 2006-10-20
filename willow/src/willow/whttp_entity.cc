@@ -302,33 +302,6 @@ write_zlib_eof(http_entity *entity)
 	deflateEnd(&entity->_he_zbuf);
 	return 0;
 }
-
-#if (defined(__GNUC__) || defined(__INTEL_COMPILER)) && defined(__i386__)
-static char *
-find_rn(char *buf, char *end)
-{
-char *res;
-__asm__ (
-"1:\n"
-"cmpl %1,%2\n"
-"je 3f\n"
-"cmpb $13,(%1)\n"
-"jne 2f\n"
-"cmpb $10, 1(%1)\n"
-"jne 2f\n"
-"movl %1, %0\n"
-"jmp 4f\n"
-"2:\n"
-"incl %1\n"
-"jmp 1b\n"
-"3:\n"
-"movl $0, %1\n"
-"4:\n"
-: "=d" (res) : "a" (buf), "b" (end)
-);
-        return res;
-}
-#else
 static char *
 find_rn(char *buf, char *end)
 {
@@ -343,7 +316,6 @@ char	*s;
 	}
 	return NULL;
 }
-#endif
 
 static char *
 find_rnrn(char *buf, char *end)
