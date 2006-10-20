@@ -59,6 +59,10 @@ struct header : freelist_allocator<header> {
 	header(char *n, char *v)
 		: hr_name(n), hr_value(v) {}
 	header() : hr_name(NULL), hr_value(NULL) {}
+	~header() {
+		wfree(hr_name);
+		wfree(hr_value);
+	}
 	char		*hr_name;
 	char		*hr_value;
 };
