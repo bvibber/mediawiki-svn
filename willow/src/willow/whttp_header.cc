@@ -34,17 +34,17 @@ header_list::header_list()
 }
 
 void
-header_list::append(header const &h)
+header_list::add(char *name, size_t namelen, char *value, size_t vallen)
 {
-	hl_hdrs.push_back(h);
+	hl_hdrs.push_back(header(name, value));
 	hl_last = &*hl_hdrs.rbegin();
-	hl_len += strlen(h.hr_name) + strlen(h.hr_value) + 4;
+	hl_len += namelen + vallen + 4;
 }
 
 void
 header_list::add(char *name, char *value)
 {
-	append(header(name, value));
+	add(name, strlen(name), value, strlen(value));
 }
 
 void
@@ -164,7 +164,7 @@ header_list::undump(int fd, off_t *len)
 		*len += k;
 		s += k;
 		*s = '\0';
-		append(header(n, wstrdup(v)));
+		add(n, wstrdup(v));
 	}
 	
 	return 0;

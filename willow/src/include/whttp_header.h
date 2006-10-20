@@ -29,8 +29,8 @@ struct header_list {
 	header_list();
 	~header_list() {};
 
-	void	 append		(header const &h);
 	void	 add		(char *, char *);
+	void	 add		(char *, size_t, char *, size_t);
 	void	 append_last	(const char *);
 	char	*build		(void);
 	void	 remove		(const char *);

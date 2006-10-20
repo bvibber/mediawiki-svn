@@ -308,6 +308,8 @@ find_rn(char *buf, char *end)
 {
 char	*s;
 	for (s = buf; s < end; s += 2) {
+		if (*s != '\r' && *s != '\n')
+			continue;
 		if ((s + 1 < end) && s[0] == '\r' && s[1] == '\n')
 			return s;
 		if (s > buf && s[-1] == '\r' && s[0] == '\n')
@@ -800,6 +802,7 @@ bool		 sent_host = false;
 		(int)EVBUFFER_LENGTH(entity->_he_frombuf->input)));
 	while ((nexthdr = find_rn(lbuf, lend)) != NULL) {
 	char	*name = NULL, *value = NULL;
+	size_t	 nlen, vlen;
 	int	 error = 1;
 		*nexthdr = '\0';
 		line = lbuf; 
@@ -844,8 +847,9 @@ bool		 sent_host = false;
 				error = ENT_ERR_INVREQ;
 				goto error;
 			}
-
+			nlen = value - name;
 			*value++ = '\0';
+			vlen = nexthdr - value - 1;
 			while (isspace(*value))
 				++value;
 
@@ -861,18 +865,18 @@ bool		 sent_host = false;
 					error = ENT_ERR_INVHOST;
 					goto error;
 				}
-				entity->he_headers.add(name, value);
+				entity->he_headers.add(name, nlen, value, vlen);
 				entity->he_rdata.request.host = value;
 				sent_host = true;
 			} else if (!strcasecmp(name, "Content-Length")) {
-				entity->he_headers.add(name, value);
+				entity->he_headers.add(name, nlen, value, vlen);
 				entity->he_rdata.request.contlen = atoi(value);
 			} else if (!strcasecmp(name, "Via")) {
 				if (via_includes_me(value)) {
 					error = ENT_ERR_LOOP;
 					goto error;
 				}
-				entity->he_headers.add(name, value);
+				entity->he_headers.add(name, nlen, value, vlen);
 			} else if (!strcasecmp(name, "transfer-encoding")) {
 				/* XXX */
 				if (!strcasecmp(value, "chunked")) {
@@ -886,28 +890,26 @@ bool		 sent_host = false;
 					WDEBUG((WLOG_DEBUG, "a-e parse failed"));
 					goto error;
 				}
-			} 
-
-			if (config.ncaches) {
+			} else if (config.ncaches) {
 				if (!strcasecmp(name, "Pragma")) {
 					entity->he_h_pragma = wstrdup(value);
-					entity->he_headers.add(name, value);
+					entity->he_headers.add(name, nlen, value, vlen);
 				} else if (!strcasecmp(name, "Cache-Control")) {
 					entity->he_h_cache_control = wstrdup(value);
-					entity->he_headers.add(name, value);
+					entity->he_headers.add(name, nlen, value, vlen);
 				} else if (!strcasecmp(name, "If-Modified-Since")) {
 					entity->he_h_if_modified_since = wstrdup(value);
-					entity->he_headers.add(name, value);
+					entity->he_headers.add(name, nlen, value, vlen);
 				} else if (!strcasecmp(name, "Transfer-Encoding")) {
 					entity->he_h_transfer_encoding = wstrdup(value);
-					entity->he_headers.add(name, value);
+					entity->he_headers.add(name, nlen, value, vlen);
 				} else if (!strcasecmp(name, "Last-Modified")) {
 					entity->he_h_last_modified = wstrdup(value);
-					entity->he_headers.add(name, value);
+					entity->he_headers.add(name, nlen, value, vlen);
 				} else
-					entity->he_headers.add(name, value);
+					entity->he_headers.add(name, nlen, value, vlen);
 			} else
-				entity->he_headers.add(name, value);
+				entity->he_headers.add(name, nlen, value, vlen);
 			break;
 		error:
 			return -error;
