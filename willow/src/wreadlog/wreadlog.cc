@@ -241,9 +241,11 @@ usage(const char *progname)
 "\t-4           listen on IPv4 socket\n"
 "\t-6           listen on IPv6 socket\n"
 "\t   (default: listen on  both)\n"
+"\t-a <addr>    listen only on this address\n"
+"\t   (default: all addresses\n"
 "\t-p <port>    listen on <port> (default 4445)\n"
 "\t-f <format>  output logs in this format\n"
-"\t             (one of: \"willow\" (default), \"clf\", \"squid\"\n"
+"\t   (one of: \"willow\" (default), \"clf\", \"squid\")\n"
 		, progname);
 }
 
@@ -252,12 +254,13 @@ main(int argc, char *argv[])
 {
 vector<int>	 sfds;
 int		 i;
-const char	*port = "4445";
+const char	*port = "4445", *host = NULL;
+char		*progname = argv[0];
 struct sockaddr_in servaddr, cliaddr;
 struct addrinfo hints, *res;
 	memset(&hints, 0, sizeof(hints));
 	doprint = doprint_willow;
-	while ((i = getopt(argc, argv, "p:f:")) != -1) {
+	while ((i = getopt(argc, argv, "46a:p:f:")) != -1) {
                 switch (i) {
 		case '4':
 			hints.ai_family = AF_INET;
@@ -281,6 +284,9 @@ struct addrinfo hints, *res;
 				return 1;
 			}
 			break;
+		case 'a':
+			host = optarg;
+			break;
 		default:
 			usage(argv[0]);
 			return 1;
@@ -290,25 +296,38 @@ struct addrinfo hints, *res;
 	argv += optind;
 
 	hints.ai_socktype = SOCK_DGRAM;
-	if ((i = getaddrinfo(NULL, port, &hints, &res)) != 0) {
-		fprintf(stderr, "%s: %s\n", port, gai_strerror(i));
+	if ((i = getaddrinfo(host, port, &hints, &res)) != 0) {
+		if (host)
+			fprintf(stderr, "%s: resolving [%s]:%s: %s\n", progname, host, port, gai_strerror(i));
+		else
+			fprintf(stderr, "%s: resolving %s: %s\n", progname, port, gai_strerror(i));
 		return 1;
 	}
 
 	for (addrinfo *r = res; r; r = r->ai_next) {
 	int	sfd;
 		if ((sfd = socket(r->ai_family, r->ai_socktype, r->ai_protocol)) == -1) {
-			fprintf(stderr, "creating listening socket: %s\n", strerror(errno));
+			if (host)
+				fprintf(stderr, "%s: binding to [%s]:%s: %s\n", 
+					progname, host, port, strerror(errno));
+			else
+				fprintf(stderr, "%s: binding to %s: %s\n",
+					progname, port, strerror(errno));
 			continue;
 		}
 		if (bind(sfd, r->ai_addr, r->ai_addrlen) < 0) {
-			perror("bind");
+			if (host)
+				fprintf(stderr, "%s: binding to [%s]:%s: %s\n",
+					progname, host, port, strerror(errno));
+			else
+				fprintf(stderr, "%s: binding to %s: %s\n",
+					progname, port, strerror(errno));
 			continue;
 		}
 		sfds.push_back(sfd);
 	}
 	if (sfds.empty()) {
-		fprintf(stderr, "cannot bind any listening sockets\n");
+		fprintf(stderr, "Could not create any listening sockets\n");
 		return 1;
 	}
 

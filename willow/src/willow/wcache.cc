@@ -160,8 +160,8 @@ struct	cache_state	 state;
 	
 	wlog(WLOG_NOTICE, "wrote initial cache state");
 	wcache_shutdown();
-}									
-			
+}
+
 void
 wcache_shutdown(void)
 {
