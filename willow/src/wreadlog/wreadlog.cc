@@ -13,11 +13,13 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/select.h>
+#include <sys/stat.h>
 
 #include <netinet/in.h>
 
 #include <arpa/inet.h>
 #include <netdb.h>
+#include <fcntl.h>
 
 #include <cerrno>
 #include <cstdio>
@@ -38,11 +40,13 @@ using std::strchr;
 
 #include "acl.h"
 
-acl acl4(AF_INET, "IPv4 ACL")
+static acl acl4(AF_INET, "IPv4 ACL")
 #ifdef AF_INET6
 	, acl6(AF_INET6, "IPv6 ACL")
 #endif
 	;
+
+static int outfd = 1; /* stdout */
 
 static void handle_packet(int fd);
 
@@ -100,7 +104,7 @@ char	statstr[6];
 		IOV("HIT", 3);
 	else	IOV("MISS", 4);
 	IOV("\n", 1);
-	writev(1, vecs, sizeof (vecs) / sizeof(*vecs));
+	writev(outfd, vecs, sizeof (vecs) / sizeof(*vecs));
 }
 
 static void
@@ -133,7 +137,7 @@ int	tlen, tlen2;
 	tlen2 = sprintf(tmpstr2, " %d", *e.r_docsize);
 	IOV(tmpstr2, tlen2);
 	IOV("\n", 1);
-	writev(1, vecs, sizeof (vecs) / sizeof(*vecs));
+	writev(outfd, vecs, sizeof (vecs) / sizeof(*vecs));
 } 
 
 static void
@@ -167,7 +171,7 @@ static const char *reqtypes[] = { " GET ", " POST ", " HEAD ", " TRACE ", " OPTI
 	IOV(e.r_beaddr, *e.r_belen);
 	IOV(" -", 2);	/* should be mime type */
 	IOV("\n", 1);
-	writev(1, vecs, sizeof (vecs) / sizeof(*vecs));
+	writev(outfd, vecs, sizeof (vecs) / sizeof(*vecs));
 }
 
 static void
@@ -267,6 +271,8 @@ usage(const char *progname)
 "\t           (default: allow all addresses)\n"
 "\t-f <format>  output logs in this format\n"
 "\t           (one of: \"willow\" (default), \"clf\", \"squid\")\n"
+"\t-F <file>    become a daemon and write to this file instead of\n"
+"\t             stdout\n"
 		, progname);
 }
 
@@ -281,7 +287,7 @@ struct sockaddr_in servaddr, cliaddr;
 struct addrinfo hints, *res;
 	memset(&hints, 0, sizeof(hints));
 	doprint = doprint_willow;
-	while ((i = getopt(argc, argv, "h46a:p:f:s:")) != -1) {
+	while ((i = getopt(argc, argv, "h46a:p:f:s:F:")) != -1) {
                 switch (i) {
 		case '4':
 			hints.ai_family = AF_INET;
@@ -340,6 +346,12 @@ struct addrinfo hints, *res;
 			delete[] p;
 			break;
 		}
+		case 'F':
+			if ((outfd = open(optarg, O_RDWR|O_APPEND|O_CREAT, 0666)) == -1) {
+				fprintf(stderr, "%s: %s: %s\n", argv[0], optarg, strerror(errno));
+				return 1;
+			}
+			break;
 		default:
 			usage(argv[0]);
 			return 1;
@@ -390,6 +402,28 @@ struct addrinfo hints, *res;
 	}
 
 	freeaddrinfo(res);
+
+	if (outfd != 1) {
+		switch (fork()) {
+		case -1:
+			fprintf(stderr, "%s: cannot fork: %s\n", progname, strerror(errno));
+			return 1;
+		case 0:
+			break;
+		default:
+			_exit(0);
+		}
+		if (setsid() == -1)
+			return 1;
+		chdir("/");
+	int	fd;
+		if ((fd = open("/dev/null", O_RDWR, 0)) != -1) {
+			dup2(fd, 0);
+			dup2(fd, 1);
+			dup2(fd, 2);
+			close(fd);
+		}
+	}
 
         ioloop(sfds);
         return 0;
