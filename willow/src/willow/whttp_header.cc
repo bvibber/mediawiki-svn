@@ -10,12 +10,13 @@
 #endif
 
 #include <vector>
-using std::vector;
 #include <cstring>
-using std::strlen;
 #include <cerrno>
+using std::strlen;
+using std::vector;
 
 #include <event.h>
+#include <assert.h>
 
 #include "config.h"
 #include "whttp_entity.h"
@@ -116,7 +117,6 @@ size_t	 buflen = 0;
 void
 header_list::dump(int fd)
 {
-tst<char, header *>::iterator vit, vend;
 int i = 0;
 	i = hl_hdrs.size();
 	write(fd, &i, sizeof(i));	

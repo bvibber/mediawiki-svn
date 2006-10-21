@@ -14,7 +14,6 @@
 
 #include "config.h"
 #include "willow.h"
-#include "tst.h"
 
 struct header : freelist_allocator<header> {
 	header(char *n, char *v);
