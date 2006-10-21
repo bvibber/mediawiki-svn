@@ -218,9 +218,12 @@ struct simple_value : callable<bool> {
 		return true;
 	}
 };
-typedef simple_value<cv_int> simple_int;
-typedef simple_value<cv_yesno> simple_yesno;
-typedef simple_value<cv_time> simple_time;
+typedef simple_value<cv_int> simple_int_t;
+typedef simple_value<cv_yesno> simple_yesno_t;
+typedef simple_value<cv_time> simple_time_t;
+extern simple_int_t simple_int;
+extern simple_yesno_t simple_yesno;
+extern simple_time_t simple_time;
 
 struct simple_range : callable<bool> {
 	simple_range(int min_, int max_) : min(min_), max(max_) {}
@@ -253,8 +256,10 @@ struct nonempty_astring : callable<bool> {
 		return true;
 	}
 };
-typedef nonempty_astring<cv_string> nonempty_string;
-typedef nonempty_astring<cv_qstring> nonempty_qstring;
+typedef nonempty_astring<cv_string> nonempty_string_t;
+typedef nonempty_astring<cv_qstring> nonempty_qstring_t;
+extern nonempty_string_t nonempty_string;
+extern nonempty_qstring_t nonempty_qstring;
 
 template<typename T>
 struct set_simple : callable<void> {
@@ -278,16 +283,18 @@ typedef set_simple<time_t>	set_time;
 typedef set_simple<bool>	set_yesno;
 typedef set_simple<int>		set_int;
 
-struct accept_any : callable<bool> {
+struct accept_any_t : callable<bool> {
 	bool operator() (tree_entry &e, value &v) const {
 		return true;
 	}
 };
+extern accept_any_t accept_any;
 
-struct ignore : callable<void> {
+struct ignore_t : callable<void> {
 	void operator() (tree_entry &e, value &v) const {
 	}
 };
+extern ignore_t ignore;
 
 struct conf_definer {
 	conf_definer() {};

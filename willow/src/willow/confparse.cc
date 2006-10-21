@@ -37,6 +37,14 @@ tree parsing_tree;
 
 const int require_name = 0x1;
 
+simple_int_t simple_int;
+simple_yesno_t simple_yesno;
+simple_time_t simple_time;
+nonempty_string_t nonempty_string;
+nonempty_qstring_t nonempty_qstring;
+ignore_t ignore;
+accept_any_t accept_any;
+
 tree *
 parse_file(string const &file)
 {
