@@ -12,6 +12,7 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/select.h>
 
 #include <netinet/in.h>
 
@@ -24,9 +25,16 @@
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
+#include <algorithm>
+#include <vector>
 using std::strftime;
 using std::strlen;
 using std::fprintf;
+using std::sprintf;
+using std::max;
+using std::vector;
+
+static void handle_packet(int fd);
 
 struct logent {
 	uint32_t	*r_reqtime;
@@ -152,45 +160,77 @@ static const char *reqtypes[] = { " GET ", " POST ", " HEAD ", " TRACE ", " OPTI
 	writev(1, vecs, sizeof (vecs) / sizeof(*vecs));
 }
 
+static void
+wait_event(vector<int> &socks, int maxfd, fd_set &rfds)
+{
+vector<int>::iterator	it, end;
+int	i;
+	for (;;) {
+		FD_ZERO(&rfds);
+		for (it = socks.begin(), end = socks.end(); it != end; ++it)
+			FD_SET(*it, &rfds);
+		if (select(maxfd + 1, &rfds, NULL, NULL, NULL) <1) {
+			if (errno == EINTR)
+				continue;
+			fprintf(stderr, "select: %s\n", strerror(errno));
+			exit(1);
+		}
+		return;
+	}
+}
 
 static void
-ioloop(int sfd)
+ioloop(vector<int> &socks)
+{
+int	maxfd;
+fd_set	rfds;
+vector<int>::iterator	it, end;
+
+	for (it = socks.begin(), end = socks.end(); it != end; ++it)
+		maxfd = max(maxfd, *it);
+
+	for (;;) {
+		wait_event(socks, maxfd, rfds);
+		for (it = socks.begin(), end = socks.end(); it != end; ++it)
+			if (FD_ISSET(*it, &rfds))
+				handle_packet(*it);
+	}
+}
+
+static void
+handle_packet(int sfd)
 {
 sockaddr_storage	cliaddr;
 socklen_t		clilen;
-int	n, len;
+int	n, i, nlen;
 char	buf[65535], *end = buf + sizeof(buf), *bufp = buf;
-
-	for (;;) {
-		clilen = sizeof(cliaddr);
-		bufp = buf;
-		if ((n = recvfrom(sfd, buf, 65535, 0, (sockaddr *)&cliaddr, &clilen)) < 0) {
-			perror("recvfrom");
-			exit(8);
-		}
+	clilen = sizeof(cliaddr);
+	bufp = buf;
+	if ((n = recvfrom(sfd, buf, 65535, 0, (sockaddr *)&cliaddr, &clilen)) < 0) {
+		perror("recvfrom");
+		exit(8);
+	}
 
 #define GET_BYTES(s) 	if (bufp + (s) >= end) {	\
-				printf("not enough data (got %d, read %d, want %d)\n",n,bufp - buf, s);\
-				continue;		\
+				return;			\
 			} else {			\
 				bufp += (s);		\
 			}
-	logent	e;
-		e.r_reqtime = (uint32_t *) bufp;	GET_BYTES(4);
-		e.r_clilen  = (uint32_t *) bufp;	GET_BYTES(4);
-		e.r_cliaddr = (char *)     bufp;	GET_BYTES(*e.r_clilen);
-		e.r_reqtype = (uint8_t *)  bufp;	GET_BYTES(1);
-		e.r_pathlen = (uint32_t *) bufp;	GET_BYTES(4);
-		e.r_path    = (char *)     bufp;	GET_BYTES(*e.r_pathlen);
-		e.r_status  = (uint16_t *) bufp;	GET_BYTES(2);
-		e.r_belen   = (uint32_t *) bufp;	GET_BYTES(4);
-		e.r_beaddr  = (char *)     bufp;	GET_BYTES(*e.r_belen);
-		e.r_cached =  (uint8_t *)  bufp;	GET_BYTES(1);
-		if (buf + 4 >= end)
-			continue;
-		e.r_docsize = (uint32_t *)bufp;
-		doprint(e);
-	}
+logent	e;
+	e.r_reqtime = (uint32_t *) bufp;	GET_BYTES(4);
+	e.r_clilen  = (uint32_t *) bufp;	GET_BYTES(4);
+	e.r_cliaddr = (char *)     bufp;	GET_BYTES(*e.r_clilen);
+	e.r_reqtype = (uint8_t *)  bufp;	GET_BYTES(1);
+	e.r_pathlen = (uint32_t *) bufp;	GET_BYTES(4);
+	e.r_path    = (char *)     bufp;	GET_BYTES(*e.r_pathlen);
+	e.r_status  = (uint16_t *) bufp;	GET_BYTES(2);
+	e.r_belen   = (uint32_t *) bufp;	GET_BYTES(4);
+	e.r_beaddr  = (char *)     bufp;	GET_BYTES(*e.r_belen);
+	e.r_cached =  (uint8_t *)  bufp;	GET_BYTES(1);
+	if (buf + 4 >= end)
+		return;
+	e.r_docsize = (uint32_t *)bufp;
+	doprint(e);
 }
 
 void
@@ -200,6 +240,7 @@ usage(const char *progname)
 "usage: %s [-46] [-p port] [-f format]\n"
 "\t-4           listen on IPv4 socket\n"
 "\t-6           listen on IPv6 socket\n"
+"\t   (default: listen on  both)\n"
 "\t-p <port>    listen on <port> (default 4445)\n"
 "\t-f <format>  output logs in this format\n"
 "\t             (one of: \"willow\" (default), \"clf\", \"squid\"\n"
@@ -209,7 +250,7 @@ usage(const char *progname)
 int
 main(int argc, char *argv[])
 {
-int		 sfd;
+vector<int>	 sfds;
 int		 i;
 const char	*port = "4445";
 struct sockaddr_in servaddr, cliaddr;
@@ -254,16 +295,25 @@ struct addrinfo hints, *res;
 		return 1;
 	}
 
-	if ((sfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol)) == -1) {
-		fprintf(stderr, "creating listening socket: %s\n", strerror(errno));
+	for (addrinfo *r = res; r; r = r->ai_next) {
+	int	sfd;
+		if ((sfd = socket(r->ai_family, r->ai_socktype, r->ai_protocol)) == -1) {
+			fprintf(stderr, "creating listening socket: %s\n", strerror(errno));
+			continue;
+		}
+		if (bind(sfd, r->ai_addr, r->ai_addrlen) < 0) {
+			perror("bind");
+			continue;
+		}
+		sfds.push_back(sfd);
+	}
+	if (sfds.empty()) {
+		fprintf(stderr, "cannot bind any listening sockets\n");
 		return 1;
 	}
-	
-        if (bind(sfd, res->ai_addr, res->ai_addrlen) < 0) {
-                perror("bind");
-                exit(8);
-        }
 
-        ioloop(sfd);
+	freeaddrinfo(res);
+
+        ioloop(sfds);
         return 0;
 }
