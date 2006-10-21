@@ -7,7 +7,7 @@
 
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id: wnet.cc 17121 2006-10-20 03:35:35Z river $"
+# pragma ident "@(#)$Id$"
 #endif
 
 #include <sys/types.h>
