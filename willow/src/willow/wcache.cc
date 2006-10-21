@@ -174,7 +174,7 @@ wcache_init(int readstate)
 struct	cachedir	*cd;
 	
 	if (config.ncaches == 0) {
-		wlog(WLOG_WARNING, "no cache directories specified");
+		wlog(WLOG_NOTICE, "caching disabled, running in proxy-only mode");
 		return;
 	}
 	
