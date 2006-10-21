@@ -1,9 +1,10 @@
 # $Id$
-PROGRAM = wreadlog
-BINDIR = @bindir@
-
+PROGRAM		= wreadlog
+BINDIR		= @bindir@
+CPPFLAGS	= -I../include
 BASESRCS =	 		\
-	wreadlog.cc
+	wreadlog.cc		\
+	acl.cc
 
 OBJS=	$(BASESRCS:.cc=.o)
 

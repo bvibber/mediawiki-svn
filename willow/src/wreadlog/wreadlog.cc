@@ -33,6 +33,16 @@ using std::fprintf;
 using std::sprintf;
 using std::max;
 using std::vector;
+using std::strcpy;
+using std::strchr;
+
+#include "acl.h"
+
+acl acl4(AF_INET, "IPv4 ACL")
+#ifdef AF_INET6
+	, acl6(AF_INET6, "IPv6 ACL")
+#endif
+	;
 
 static void handle_packet(int fd);
 
@@ -166,6 +176,7 @@ wait_event(vector<int> &socks, int maxfd, fd_set &rfds)
 vector<int>::iterator	it, end;
 int	i;
 	for (;;) {
+		bzero(&rfds, sizeof(rfds));
 		FD_ZERO(&rfds);
 		for (it = socks.begin(), end = socks.end(); it != end; ++it)
 			FD_SET(*it, &rfds);
@@ -204,12 +215,17 @@ sockaddr_storage	cliaddr;
 socklen_t		clilen;
 int	n, i, nlen;
 char	buf[65535], *end = buf + sizeof(buf), *bufp = buf;
+const aclnode	*an;
 	clilen = sizeof(cliaddr);
 	bufp = buf;
 	if ((n = recvfrom(sfd, buf, 65535, 0, (sockaddr *)&cliaddr, &clilen)) < 0) {
 		perror("recvfrom");
 		exit(8);
 	}
+
+	if (((an = acl4.match((sockaddr *)&cliaddr)) && (an->action == ACL_BLOCK))
+	    || ((an = acl6.match((sockaddr *)&cliaddr)) && (an->action == ACL_BLOCK)))
+		return;
 
 #define GET_BYTES(s) 	if (bufp + (s) >= end) {	\
 				return;			\
@@ -237,15 +253,20 @@ void
 usage(const char *progname)
 {
 	fprintf(stderr,
-"usage: %s [-46] [-p port] [-f format]\n"
+"usage: %s [-46] [-a addr] [-p port] [-s mask] [-f format]\n"
 "\t-4           listen on IPv4 socket\n"
 "\t-6           listen on IPv6 socket\n"
-"\t   (default: listen on  both)\n"
+"\t           (default: listen on both)\n"
 "\t-a <addr>    listen only on this address\n"
-"\t   (default: all addresses\n"
-"\t-p <port>    listen on <port> (default 4445)\n"
+"\t           (default: all addresses)\n"
+"\t-p <port>    listen on <port>\n"
+"\t           (default: 4445)\n"
+"\t-s <mask>    only allow queries from this source IP, specified as\n"
+"\t             single IP address or CIDR mask (127.0.0.0/8, 2000::/3)\n"
+"\t             this option can be specified multiple times\n"
+"\t           (default: allow all addresses)\n"
 "\t-f <format>  output logs in this format\n"
-"\t   (one of: \"willow\" (default), \"clf\", \"squid\")\n"
+"\t           (one of: \"willow\" (default), \"clf\", \"squid\")\n"
 		, progname);
 }
 
@@ -260,7 +281,7 @@ struct sockaddr_in servaddr, cliaddr;
 struct addrinfo hints, *res;
 	memset(&hints, 0, sizeof(hints));
 	doprint = doprint_willow;
-	while ((i = getopt(argc, argv, "46a:p:f:")) != -1) {
+	while ((i = getopt(argc, argv, "h46a:p:f:s:")) != -1) {
                 switch (i) {
 		case '4':
 			hints.ai_family = AF_INET;
@@ -287,6 +308,38 @@ struct addrinfo hints, *res;
 		case 'a':
 			host = optarg;
 			break;
+		case 'h':
+			usage(argv[0]);
+			return 0;
+		case 's': {
+		char	*lenp, *p = new char[strlen(optarg) + 1];
+		int	len = 0;
+			strcpy(p, optarg);
+			if ((lenp = strchr(p, '/')) != NULL) {
+				*lenp++ = '\0';
+				len = atoi(lenp);
+			}
+			if (strchr(p, '.')) {
+				if (!len)
+					len = 32;
+				if (acl4.add(p, len, ACL_PASS, ACLFL_NONE) == false) {
+					fprintf(stderr, "%s: could not parse IP mask: %s\n", argv[0], optarg);
+					return 1;
+				}
+			}
+#ifdef AF_INET6 
+			else {
+				if (!len)
+					len = 128;
+				if (acl6.add(p, len, ACL_PASS, ACLFL_NONE) == false) {
+					fprintf(stderr, "%s: could not parse IP mask: %s\n", argv[0], optarg);
+					return 1;
+				}
+			}
+#endif
+			delete[] p;
+			break;
+		}
 		default:
 			usage(argv[0]);
 			return 1;
@@ -294,6 +347,11 @@ struct addrinfo hints, *res;
 	}
 	argc -= optind;
 	argv += optind;
+
+	if (!acl4.acllist.empty() || !acl6.acllist.empty()) {
+		acl4.add("0.0.0.0", 0, ACL_BLOCK, ACLFL_NONE);
+		acl6.add("::", 0, ACL_BLOCK, ACLFL_NONE);
+	}
 
 	hints.ai_socktype = SOCK_DGRAM;
 	if ((i = getaddrinfo(host, port, &hints, &res)) != 0) {
