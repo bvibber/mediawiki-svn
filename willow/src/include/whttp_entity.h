@@ -26,6 +26,10 @@ using std::set;
 #define ENT_SOURCE_NONE		3
 #define ENT_SOURCE_FILE		4
 
+/*
+ * Do NOT change these values, they are used in the UDP
+ * log packets.
+ */
 #define REQTYPE_GET	0
 #define REQTYPE_POST	1
 #define REQTYPE_HEAD	2

@@ -1,5 +1,5 @@
 /*
- * @(#) $Header$
+ * @(#) $Id$
  *
  * This is an example configuration file.  You will need to modify it for
  * your installation.
@@ -34,8 +34,8 @@ cache {
 	 * algorithm.  This only occurs if the cache is more than
 	 * (100 - expire_theshold)% full.
 	 */
-	expire_every = 1 hour;
-	expire_threshold = 5;
+	expire-every = 1 hour;
+	expire-threshold = 5;
 
 	/*
 	 * Compress data if the client indicates it supports deflate or
@@ -46,13 +46,13 @@ cache {
 	 * and 9 (slowest, best compression).  The default is 6.
 	 */
         compress = yes;
-	compress_level = 6;
+	compress-level = 6;
 
 	/*
 	 * If a backend is not available, wait this amount of time before
 	 * retrying it.
 	 */
-	backend_retry = 30 seconds;
+	backend-retry = 30 seconds;
 
 	/*
 	 * According to RFC2616, data marked as "private" should not be
@@ -63,20 +63,24 @@ cache {
 	 * unless you're sure the backend application will never mark data
 	 * which is actually private this way.
 	 */
-	cache_private = no;
+	cache-private = no;
 
 	/*
 	 * Use the CARP algorithm to route requests for the same object
 	 * to the same proxy? (Improves cache ratio of caches behind this
 	 * one, at the expense of a small bit of performance).
 	 */
-	use_carp = yes;
+	use-carp = yes;
 };
 
 /*
  * For now, only one cache directory is allowed.
  * Run "willow -z" to create the initial directory.  Make sure it
  * doesn't exist first.
+ *
+ * If you specify no cache directories, Willow will switch to a more
+ * efficient proxy-only mode.  This is most useful in combination with
+ * CARP hashing in front of another cache.
  */
 cache-dir "/home/kate/mediawiki/willow/cache" {
 	size = 10 mb;
@@ -106,17 +110,30 @@ log {
 	 * Facilities:
 	 *
 	 * user, mail, daemon, auth, lpr, news, uucp,
-	 * cron, audit (Solaris only), local0 .. local 7.
+	 * cron, audit, local0 .. local7.
 	 *
 	 * If not specified, defaults to 'daemon'.
 	 */
 	facility = daemon;
 
 	/*
-	 * Log client requests.
+	 * Log client requests.  Every 1/log-sample requests are logged.
 	 *
 	 * Note: this is quite slow; if you don't need this, you may find
-	 * that disabling it increases performance by 25% or so.
+	 * that disabling it or increasing the sample rate improves performance
+	 * significantly.
 	 */
 	access-log = "/var/log/willow/access.log";
+	log-sample = 2;
+
+	/*
+	 * Log client requests to a UDP socket.  Every 1/log-sample requests
+	 * are logged.  This is much more efficient than a file-based access log.
+	 *
+	 * The wlogread binary (installed into <prefix>/bin) can read the UDP
+	 * log and convert it into several formats.
+	 */
+	udp-log = yes;
+	udp-port = 4445;
+	udp-host = "127.0.0.1";
 };

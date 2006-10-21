@@ -17,6 +17,7 @@ struct fde;
 void http_new(struct fde *);
 void whttp_init(void);
 void whttp_shutdown(void);
+void whttp_reconfigure(void);
 
 extern const char *request_string[];
 extern char my_hostname[];

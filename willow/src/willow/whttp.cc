@@ -138,6 +138,11 @@ static char my_version[64];
 static int logwr_pipe[2];
 static FILE *alf;
 
+static int const default_udplog_port = 4445;
+static int udplog_sock;
+static int udplog_count;
+static bool do_udplog;
+
 /*
  * Initialize whttp, start loggers.
  */
@@ -163,17 +168,66 @@ whttp_init(void)
 	
 	snprintf(cache_hit_hdr, hsize, "HIT from %s", my_hostname);
 	snprintf(cache_miss_hdr, hsize, "MISS from %s", my_hostname);
-	
-	/*
-	 * Fork the logwriter.
-	 */
+}
 
+void
+whttp_reconfigure(void)
+{
+	/* file logging */
 	if (config.access_log.size()) {
 		if ((alf = fopen(config.access_log.c_str(), "a")) == NULL) {
-			wlog(WLOG_ERROR, "opening %s: %s", config.access_log.c_str(), strerror(errno));
-			exit(8);
+			wlog(WLOG_WARNING, "opening %s: %s", config.access_log.c_str(), strerror(errno));
 		}
 	}
+
+	/* UDP logging */
+	if (config.udp_log) {
+	struct addrinfo	*res, *r, hints;
+	int	i;
+		if (config.udplog_port == 0)
+			config.udplog_port = default_udplog_port;
+		memset(&hints, 0, sizeof(hints));
+		hints.ai_socktype = SOCK_DGRAM;
+		if ((i = getaddrinfo(config.udplog_host.c_str(),
+				lexical_cast<string>(config.udplog_port).c_str(),
+				&hints, &r)) != 0) {
+			wlog(WLOG_WARNING, "resolving UDP log host %s: %s; disabling UDP logging",
+				config.udplog_host.c_str(),
+				gai_strerror(i));
+			return;
+		}
+
+		for (res = r; res; res = res->ai_next) {
+			if ((udplog_sock = socket(res->ai_family, res->ai_socktype, res->ai_protocol)) == -1) {
+				wlog(WLOG_WARNING, "%s[%s]:%d: %s",
+					config.udplog_host.c_str(),
+					wnet::straddr(res->ai_addr, res->ai_addrlen).c_str(),
+					config.udplog_port, strerror(errno));
+				continue;
+			}
+			if (connect(udplog_sock, res->ai_addr, res->ai_addrlen) == -1) {
+				wlog(WLOG_WARNING, "%s[%s]:%d: %s",
+					config.udplog_host.c_str(),
+					wnet::straddr(res->ai_addr, res->ai_addrlen).c_str(),
+					config.udplog_port, strerror(errno));
+				close(udplog_sock);
+				udplog_sock = -1;
+				continue;
+			}
+			break;
+		}
+		if (udplog_sock == -1) {
+			wlog(WLOG_WARNING, "could not connect to UDP log host; disabling UDP logging");
+			return;
+		}
+		do_udplog = true;
+		wlog(WLOG_NOTICE, "UDP logging to %s[%s]:%d, sample rate 1/%d",
+			config.udplog_host.c_str(),
+			wnet::straddr(res->ai_addr, res->ai_addrlen).c_str(),
+			config.udplog_port, config.udplog_sample);
+		freeaddrinfo(r);
+	}
+
 }
 
 void
@@ -724,19 +778,72 @@ client_log_request(http_client *client)
 {
 	int	i;
 	
-	if (!alf)
-		return;
+	if (alf) {
+		i = fprintf(alf, "[%s] %s %s \"%s\" %d %s %s\n",
+				current_time_short, client->cl_fde->fde_straddr,
+				request_string[client->cl_reqtype],
+				client->cl_path, client->cl_entity->he_rdata.response.status,
+				client->cl_backend ? client->cl_backend->be_name.c_str() : "-",
+				client->cl_flags.f_cached ? "HIT" : "MISS");
+		if (i < 0) {
+			wlog(WLOG_ERROR, "writing access log: %s; log will be closed", strerror(errno));
+			fclose(alf);
+			alf = NULL;
+		}
+	}
 
-	i = fprintf(alf, "[%s] %s %s \"%s\" %d %s %s\n",
-			current_time_short, client->cl_fde->fde_straddr,
-			request_string[client->cl_reqtype],
-			client->cl_path, client->cl_entity->he_rdata.response.status,
-			client->cl_backend ? client->cl_backend->be_name.c_str() : "-",
-			client->cl_flags.f_cached ? "HIT" : "MISS");
-	if (i < 0) {
-		wlog(WLOG_ERROR, "writing access log: %s; log will be closed", strerror(errno));
-		fclose(alf);
-		alf = NULL;
+	if (config.udp_log) {
+	char	 buf[65535];
+	char	*bufp = buf, *endp = buf + sizeof(buf);
+		if (++udplog_count != config.udplog_sample)
+			return;
+		udplog_count = 0;
+		/*
+		 * The log format is a packed binary strucure laid out like this:
+		 *
+		 *    <curtime><addrlen><straddr><reqtype><pathlen><reqpath><status>
+		 *    <belen><bestr><cached>
+		 *
+		 * curtime is a 32-bit Unix timestamp.  *len are the length in bytes
+		 * of the next element.  straddr is the ASCII IP address of the client.
+		 * reqtype is an 8-bit integer:
+		 *   0 - GET
+		 *   1 - POST
+		 *   2 - HEAD
+		 *   3 - TRACE
+		 *   4 - OPTIONS
+		 * reqpath is the request path, including "http://" and the host.
+		 * status is a 16-bit HTTP status code for the response.
+		 * bestr is the ASCII IP address of the backend.  cached is an 
+		 * 8-bit value, 1 if the request was served from the cache and 0 if not.
+		 */
+#define HAS_SPACE(b,l) (((b) + (l)) < endp)
+#define ADD_UINT32(b,i)	if (HAS_SPACE(b,4)) { *(uint32_t*)b = i; b += 4; }
+#define ADD_UINT16(b,i)	if (HAS_SPACE(b,2)) { *(uint16_t*)b = i; b += 2; }
+#define ADD_UINT8(b,i)	if (HAS_SPACE(b,1)) { *(uint8_t*)b = i; b += 1; }
+#define ADD_STRING(b,s) do {	uint32_t len = strlen(s);		\
+				if (HAS_SPACE(b,4 + len)) {		\
+					ADD_UINT32(b,len);		\
+					memcpy(b, s, len);		\
+					b += len;			\
+				}					\
+			} while (0)
+		ADD_UINT32(bufp, (uint32_t)time(NULL));
+		ADD_STRING(bufp, client->cl_fde->fde_straddr);
+		ADD_UINT8(bufp, client->cl_reqtype);
+		ADD_STRING(bufp, client->cl_path);
+		ADD_UINT16(bufp, client->cl_entity->he_rdata.response.status);
+		ADD_STRING(bufp, client->cl_backend ? client->cl_backend->be_name.c_str() : "-");
+		ADD_UINT8(bufp, client->cl_flags.f_cached ? 1 : 0);
+		write(udplog_sock, buf, bufp - buf);
+#if 0
+		if (write(udplog_sock, buf, bufp - buf) < 0) {
+			wlog(WLOG_ERROR, "writing to UDP log host: %s", strerror(errno));
+			close(udplog_sock);
+			udplog_sock = 0;
+			config.udp_log = false;
+		}
+#endif
 	}
 }
 

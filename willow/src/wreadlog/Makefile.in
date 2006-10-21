@@ -1,0 +1,20 @@
+PROGRAM = wreadlog
+BINDIR = @bindir@
+
+BASESRCS =	 		\
+	wreadlog.cc
+
+OBJS=	$(BASESRCS:.cc=.o)
+
+SRCS=$(BASESRCS)
+OBJADD =
+
+EXTRA_DIST= Makefile.in
+
+LDFLAGS = $(LIBOBJS)
+
+.SUFFIXES: .y .l .c .cc .o
+
+default: all
+
+@include@ @q@@top_srcdir@/mk/prog.mk@q@

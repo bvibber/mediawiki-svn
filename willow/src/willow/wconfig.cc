@@ -13,20 +13,20 @@
 #include <sys/socket.h>
 
 #include <netinet/in.h>
-
 #include <arpa/inet.h>
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include <syslog.h>
-#include <errno.h>
-#include <strings.h>
+
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
+#include <cerrno>
+#include <climits>
 
 #include "willow.h"
 #include "wconfig.h"
 #include "wbackend.h"
 #include "wlog.h"
+#include "whttp.h"
 #include "confparse.h"
 
 using namespace conf;
@@ -96,7 +96,7 @@ v_carp_hash(tree_entry &e, value &v)
 		v.report_error("expected single unquoted string");
 		return false;
 	}
-string	s = v.cv_values[0].av_strval;
+string	&s = v.cv_values[0].av_strval;
 	if (s != "carp" && s != "simple") {
 		v.report_error("carp-hash must be \"carp\" or \"simple\"");
 		return false;
@@ -107,12 +107,24 @@ string	s = v.cv_values[0].av_strval;
 static void
 s_carp_hash(tree_entry &e, value &v)
 {
-string	s = v.cv_values[0].av_strval;
+string	&s = v.cv_values[0].av_strval;
 	if (s == "carp")
 		config.carp_hash = configuration::carp_hash_carp;
 	else	config.carp_hash = configuration::carp_hash_simple;
 }
-	
+
+static bool
+v_udp_log(tree_entry &e, value &v)
+{
+value	*val;
+bool	 ret = true;
+	if ((val = e/"udp-host") == NULL) {
+		v.report_error("udp-host must be specified for UDP logging");
+		ret = false;
+	}
+	return ret;
+}
+
 bool
 read_config(string const &file)
 {
@@ -125,6 +137,10 @@ conf
 		.value("syslog",	simple_yesno(),			set_yesno(logging.syslog))
 		.value("facility",	func(validate_log_facility),	func(set_log_facility))
 		.value("access-log",	nonempty_qstring(),		set_qstring(config.access_log))
+		.value("log-sample",	simple_range(1, INT_MAX),	set_int(config.udplog_sample))
+		.value("udp-log",	simple_yesno(),			set_yesno(config.udp_log))
+		.value("udp-port",	simple_range(0, 65535),		set_int(config.udplog_port))
+		.value("udp-host",	nonempty_qstring(),		set_string(config.udplog_host))
 
 	.block("cache")
 		.value("expire-every",		simple_time(),		set_time(config.cache_expevery))
@@ -154,6 +170,7 @@ conf
 	if (!conf.validate(*t))
 		return false;
 	conf.set(*t);
+	whttp_reconfigure();
 	global_conf_tree = *t;
 	return true;
 }

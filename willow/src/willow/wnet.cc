@@ -434,3 +434,17 @@ readbuf_reset(readbuf *buffer)
 {
 	buffer->rb_dpos = buffer->rb_dsize = 0;
 }	
+
+namespace wnet {
+
+string
+straddr(sockaddr const *addr, socklen_t len)
+{
+char	res[NI_MAXHOST];
+int	i;
+	if ((i = getnameinfo(addr, len, res, sizeof(res), NULL, 0, NI_NUMERICHOST)) != 0)
+		return ""; /* XXX */
+	return res;
+}
+
+}

@@ -36,6 +36,10 @@ struct cachedir {
 extern struct configuration {
 	int		 foreground;
 	string		 access_log;
+	bool		 udp_log;
+	int		 udplog_sample;
+	string		 udplog_host;
+	int		 udplog_port;
 struct	cachedir	*caches;
 	int		 ncaches;
 	time_t		 cache_expevery;

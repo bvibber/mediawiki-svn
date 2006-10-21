@@ -153,4 +153,5 @@ AC_OUTPUT(
 	Makefile 
 	src/Makefile 
 	src/willow/Makefile
+	src/wreadlog/Makefile
 	errors/Makefile)

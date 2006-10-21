@@ -20,12 +20,16 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 #endif
 
 #include <sys/types.h>
+#include <sys/socket.h>
 
 #include <netinet/in.h>
+#include <netdb.h>
 
 #include "config.h"
 #include <sys/time.h>
 #include <event.h>
+#include <vector>
+using std::vector;
 
 #include "willow.h"
 
@@ -98,4 +102,12 @@ void wnet_init_select(void);
 int readbuf_getdata(struct fde *);
 void readbuf_free(struct readbuf *);
 
+namespace wnet {	/* things above should move here eventually */
+
+	string			straddr(sockaddr const *addr, socklen_t len);
+	vector<addrinfo>	nametoaddrs(string const &name, int port);
+	string			reserror(int);
+
+}
+	
 #endif
