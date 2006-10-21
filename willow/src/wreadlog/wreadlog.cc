@@ -37,12 +37,18 @@ struct logent {
 	uint16_t	*r_status;
 	char		*r_beaddr;
 	uint8_t		*r_cached;
+	uint32_t	*r_docsize;
 };
 
 static void (*doprint) (logent &);
 static void doprint_willow (logent &);
 static void doprint_clf (logent &);
 static void doprint_squid (logent &);
+
+#define IOV(s,l) do {	vecs[iovn].iov_base = (void *)s;	\
+			vecs[iovn].iov_len = l;			\
+			iovn++;					\
+		} while (0)
 
 void doprint_willow(logent &e)
 {
@@ -59,10 +65,6 @@ static	time_t	lasttime, now;
 		strftime(timebuf, sizeof timebuf, "[%Y-%m-%d %H:%M:%S] ", atm);
 		timebufl = strlen(timebuf);
 	}
-#define IOV(s,l) do {	vecs[iovn].iov_base = (void *)s;	\
-			vecs[iovn].iov_len = l;			\
-			iovn++;					\
-		} while (0)
 	IOV(timebuf, timebufl);
 	IOV(e.r_cliaddr, *e.r_clilen);
 	IOV(" ", 1);
@@ -84,7 +86,76 @@ char	statstr[6];
 	writev(1, vecs, sizeof (vecs) / sizeof(*vecs));
 }
 
-void
+static void
+doprint_clf(logent &e)
+{
+	iovec	vecs[8];
+	int	iovn = 0;
+static	char	timebuf[40];
+	int	timebufl;
+static	time_t	lasttime, now;
+	time(&now);
+	if (now != lasttime) {
+	tm	*atm;
+		atm = gmtime(&now);
+		lasttime = now;
+		strftime(timebuf, sizeof timebuf, " - - [%d/%b/%Y %H:%M:%S +0000] ", atm);
+		timebufl = strlen(timebuf);
+	}
+	IOV(e.r_cliaddr, *e.r_clilen);
+	IOV(timebuf, timebufl);
+static const char *reqtypes[] = { "\"GET ", "\"POST ", "\"HEAD ", "\"TRACE ", "\"OPTIONS " };
+	if (*e.r_reqtype >= sizeof(reqtypes) / sizeof(*reqtypes))
+		return;
+	IOV(reqtypes[*e.r_reqtype], strlen(reqtypes[*e.r_reqtype]));
+	IOV(e.r_path, *e.r_pathlen);
+	IOV(" HTTP/1.0\" ", 11);
+char	tmpstr[16], tmpstr2[16];
+int	tlen, tlen2;
+	tlen = sprintf(tmpstr, "%d", *e.r_status);
+	IOV(tmpstr, tlen);
+	tlen2 = sprintf(tmpstr2, " %d", *e.r_docsize);
+	IOV(tmpstr2, tlen2);
+	IOV("\n", 1);
+	writev(1, vecs, sizeof (vecs) / sizeof(*vecs));
+} 
+
+static void
+doprint_squid(logent &e)
+{
+	iovec	vecs[12];
+	int	iovn = 0;
+static	char	timebuf[16];
+static	int	timebufl;
+static	time_t	lasttime;
+	if (*e.r_reqtime != lasttime)
+		timebufl = sprintf(timebuf, "%ul.0 ", (unsigned long)*e.r_reqtime);
+	IOV(timebuf, timebufl);
+	IOV("     0 ", 7);	/* should be time to process request */
+	IOV(e.r_cliaddr, *e.r_clilen);
+	if (*e.r_cached)
+		IOV(" TCP_HIT/", 9);
+	else	IOV(" TCP_MISS/", 10);
+char	tmpstr[16], tmpstr2[16];
+int	tlen, tlen2;
+	tlen = sprintf(tmpstr, "%d ", *e.r_status);
+	IOV(tmpstr, tlen);
+	tlen2 = sprintf(tmpstr2, "%d", *e.r_docsize);
+	IOV(tmpstr2, tlen2);
+static const char *reqtypes[] = { " GET ", " POST ", " HEAD ", " TRACE ", " OPTIONS " };
+	if (*e.r_reqtype >= sizeof(reqtypes) / sizeof(*reqtypes))
+		return;
+	IOV(reqtypes[*e.r_reqtype], strlen(reqtypes[*e.r_reqtype]));
+	IOV(e.r_path, *e.r_pathlen);
+	IOV(" - PARENT_HIT/", 15);
+	IOV(e.r_beaddr, *e.r_belen);
+	IOV(" -", 2);	/* should be mime type */
+	IOV("\n", 1);
+	writev(1, vecs, sizeof (vecs) / sizeof(*vecs));
+}
+
+
+static void
 ioloop(int sfd)
 {
 sockaddr_storage	cliaddr;
@@ -116,85 +187,12 @@ char	buf[65535], *end = buf + sizeof(buf), *bufp = buf;
 		e.r_status  = (uint16_t *) bufp;	GET_BYTES(2);
 		e.r_belen   = (uint32_t *) bufp;	GET_BYTES(4);
 		e.r_beaddr  = (char *)     bufp;	GET_BYTES(*e.r_belen);
-		if (buf + 1 >= end)
+		e.r_cached =  (uint8_t *)  bufp;	GET_BYTES(1);
+		if (buf + 4 >= end)
 			continue;
-		e.r_cached = (uint8_t *)bufp;
+		e.r_docsize = (uint32_t *)bufp;
 		doprint(e);
 	}
-}
-
-static void
-doprint_clf(logent &e)
-{
-	iovec	vecs[8];
-	int	iovn = 0;
-static	char	timebuf[40];
-	int	timebufl;
-static	time_t	lasttime, now;
-	time(&now);
-	if (now != lasttime) {
-	tm	*atm;
-		atm = gmtime(&now);
-		lasttime = now;
-		strftime(timebuf, sizeof timebuf, " - - [%d/%b/%Y %H:%M:%S +0000] ", atm);
-		timebufl = strlen(timebuf);
-	}
-#define IOV(s,l) do {	vecs[iovn].iov_base = (void *)s;	\
-			vecs[iovn].iov_len = l;			\
-			iovn++;					\
-		} while (0)
-	IOV(e.r_cliaddr, *e.r_clilen);
-	IOV(timebuf, timebufl);
-static const char *reqtypes[] = { "\"GET ", "\"POST ", "\"HEAD ", "\"TRACE ", "\"OPTIONS " };
-	if (*e.r_reqtype >= sizeof(reqtypes) / sizeof(*reqtypes))
-		return;
-	IOV(reqtypes[*e.r_reqtype], strlen(reqtypes[*e.r_reqtype]));
-	IOV(e.r_path, *e.r_pathlen);
-	IOV(" HTTP/1.0\" ", 11);
-char	statstr[6];
-	sprintf(statstr, "%d", *e.r_status);
-	IOV(statstr, strlen(statstr));
-	IOV(" 0", 2);	/* should be document size */
-	IOV("\n", 1);
-	writev(1, vecs, sizeof (vecs) / sizeof(*vecs));
-} 
-
-static void
-doprint_squid(logent &e)
-{
-	// 1142534818.154    247 69.246.29.205 TCP_HIT/200 11571 GET http://en.wikipedia.org/wiki/Trainspotting_%28novel%29 - NONE/- text/html
-
-	iovec	vecs[12];
-	int	iovn = 0;
-static	char	timebuf[16];
-static	int	timebufl;
-static	time_t	lasttime;
-	if (*e.r_reqtime != lasttime)
-		timebufl = sprintf(timebuf, "%ul.0 ", (unsigned long)*e.r_reqtime);
-#define IOV(s,l) do {	vecs[iovn].iov_base = (void *)s;	\
-			vecs[iovn].iov_len = l;			\
-			iovn++;					\
-		} while (0)
-	IOV(timebuf, timebufl);
-	IOV("     0 ", 7);	/* should be time to process request */
-	IOV(e.r_cliaddr, *e.r_clilen);
-	if (*e.r_cached)
-		IOV(" TCP_HIT/", 9);
-	else	IOV(" TCP_MISS/", 10);
-char	statstr[6];
-	sprintf(statstr, "%d ", *e.r_status);
-	IOV(statstr, strlen(statstr));
-	IOV("0", 2);	/* should be length of document */
-static const char *reqtypes[] = { " GET ", " POST ", " HEAD ", " TRACE ", " OPTIONS " };
-	if (*e.r_reqtype >= sizeof(reqtypes) / sizeof(*reqtypes))
-		return;
-	IOV(reqtypes[*e.r_reqtype], strlen(reqtypes[*e.r_reqtype]));
-	IOV(e.r_path, *e.r_pathlen);
-	IOV(" - PARENT_HIT/", 15);
-	IOV(e.r_beaddr, *e.r_belen);
-	IOV(" -", 2);	/* should be mime type */
-	IOV("\n", 1);
-	writev(1, vecs, sizeof (vecs) / sizeof(*vecs));
 }
 
 void

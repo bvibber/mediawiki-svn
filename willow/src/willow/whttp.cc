@@ -802,7 +802,7 @@ client_log_request(http_client *client)
 		 * The log format is a packed binary strucure laid out like this:
 		 *
 		 *    <curtime><addrlen><straddr><reqtype><pathlen><reqpath><status>
-		 *    <belen><bestr><cached>
+		 *    <belen><bestr><cached><docsize>
 		 *
 		 * curtime is a 32-bit Unix timestamp.  *len are the length in bytes
 		 * of the next element.  straddr is the ASCII IP address of the client.
@@ -816,6 +816,7 @@ client_log_request(http_client *client)
 		 * status is a 16-bit HTTP status code for the response.
 		 * bestr is the ASCII IP address of the backend.  cached is an 
 		 * 8-bit value, 1 if the request was served from the cache and 0 if not.
+		 * docsize is the size of the response object, excluding headers.
 		 */
 #define HAS_SPACE(b,l) (((b) + (l)) < endp)
 #define ADD_UINT32(b,i)	if (HAS_SPACE(b,4)) { *(uint32_t*)b = i; b += 4; }
@@ -835,6 +836,7 @@ client_log_request(http_client *client)
 		ADD_UINT16(bufp, client->cl_entity->he_rdata.response.status);
 		ADD_STRING(bufp, client->cl_backend ? client->cl_backend->be_name.c_str() : "-");
 		ADD_UINT8(bufp, client->cl_flags.f_cached ? 1 : 0);
+		ADD_UINT32(bufp, client->cl_entity->he_size);
 		write(udplog_sock, buf, bufp - buf);
 #if 0
 		if (write(udplog_sock, buf, bufp - buf) < 0) {
