@@ -56,12 +56,11 @@ void doprint_willow(logent &e)
 	int	iovn = 0;
 static	char	timebuf[25];
 	int	timebufl;
-static	time_t	lasttime, now;
-	time(&now);
-	if (now != lasttime) {
+static	time_t	lasttime;
+	if (*e.r_reqtime != lasttime) {
 	tm	*atm;
-		atm = gmtime(&now);
-		lasttime = now;
+		lasttime = *e.r_reqtime;
+		atm = gmtime(&lasttime);
 		strftime(timebuf, sizeof timebuf, "[%Y-%m-%d %H:%M:%S] ", atm);
 		timebufl = strlen(timebuf);
 	}
@@ -93,12 +92,11 @@ doprint_clf(logent &e)
 	int	iovn = 0;
 static	char	timebuf[40];
 	int	timebufl;
-static	time_t	lasttime, now;
-	time(&now);
-	if (now != lasttime) {
+static	time_t	lasttime;
+	if (*e.r_reqtime != lasttime) {
 	tm	*atm;
-		atm = gmtime(&now);
-		lasttime = now;
+		lasttime = *e.r_reqtime;
+		atm = gmtime(&lasttime);
 		strftime(timebuf, sizeof timebuf, " - - [%d/%b/%Y %H:%M:%S +0000] ", atm);
 		timebufl = strlen(timebuf);
 	}
