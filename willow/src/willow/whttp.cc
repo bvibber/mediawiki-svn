@@ -705,11 +705,10 @@ struct	http_client	*client = (http_client *)data;
 static void
 client_send_error(http_client *client, int errnum, const char * errdata, int status, const char *statstr)
 {
-	FILE		*errfile;
-	char		 errbuf[8192];
-	char		*p = errbuf, *u;
-	ssize_t		 size;
-	
+FILE		*errfile;
+string		 errtxt;
+char		 errbuf[8192], *p = errbuf;
+ssize_t		 size;
 	if (client->cl_co)
 		wcache_release(client->cl_co, 0);
 
@@ -724,45 +723,42 @@ client_send_error(http_client *client, int errnum, const char * errdata, int sta
 			delete client;
 			return;
 		}
-
-		(void)fclose(errfile);
 		errbuf[size] = '\0';
+		errtxt.reserve(size * 2);
+		(void)fclose(errfile);
 
 		if (!errdata)
 			errdata = "Unknown error";
 		if (!client->cl_path)
 			client->cl_path = wstrdup("NONE");
 
-		u = NULL;
-
 		while (*p) {
 			switch(*p) {
 			case '%':
 				switch (*++p) {
 				case 'U':
-					realloc_strcat(&u, client->cl_path);
+					errtxt += client->cl_path;
 					break;
 				case 'D':
-					realloc_strcat(&u, current_time_str);
+					errtxt += current_time_str;
 					break;
 				case 'H':
-					realloc_strcat(&u, my_hostname);
+					errtxt += my_hostname;
 					break;
 				case 'E':
-					realloc_strcat(&u, errdata);
+					errtxt += errdata;
 					break;
 				case 'V':
-					realloc_strcat(&u, my_version);
+					errtxt += my_version;
 					break;
 				case 'C': {
-					char *s = (char *)wmalloc(4);
+				char	s[4];
 					sprintf(s, "%d", status);
-					realloc_strcat(&u, s);
-					wfree(s);
+					errtxt += s;
 					break;
 				}
 				case 'S':
-					realloc_strcat(&u, statstr);
+					errtxt += statstr;
 					break;
 				default:
 					break;
@@ -770,14 +766,14 @@ client_send_error(http_client *client, int errnum, const char * errdata, int sta
 				p++;
 				continue;
 			default:
-				realloc_addchar(&u, *p);
+				errtxt += *p;
 				break;
 			}
 			++p;
 		}
 
 
-		client->cl_wrtbuf = u;
+		client->cl_wrtbuf = wstrdup(errtxt.c_str());
 	}
 
 	delete client->cl_entity;
