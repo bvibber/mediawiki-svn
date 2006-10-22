@@ -68,26 +68,12 @@ static  T       *_freelist;
 template<typename T>
 T *freelist_allocator<T>::_freelist;
 
-#ifdef WDEBUG_ALLOC
-void *internal_wmalloc(size_t, const char *, int);
-void internal_wfree(void *, const char *, int);
-char *internal_wstrdup(const char *, const char *, int);
-void *internal_wrealloc(void *, size_t, const char *, int);
-void *internal_wcalloc(size_t, size_t, const char *, int);
-# define wmalloc(s) internal_wmalloc(s, __FILE__, __LINE__)
-# define wfree(p) internal_wfree(p, __FILE__, __LINE__)
-# define wstrdup(p) internal_wstrdup(p, __FILE__, __LINE__)
-# define wrealloc(p,s) internal_wrealloc(p, s, __FILE__, __LINE__)
-# define wcalloc(n,s) internal_wcalloc(n, s, __FILE__, __LINE__)
-#else
 # include <stdlib.h>
-
 # define wmalloc malloc
 # define wfree free
 # define wstrdup strdup
 # define wrealloc realloc
 # define wcalloc calloc
-#endif
 
 void realloc_strcat(char **, const char *);
 void realloc_addchar(char **, int);
