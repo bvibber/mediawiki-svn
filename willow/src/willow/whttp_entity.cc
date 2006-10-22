@@ -68,6 +68,7 @@ using std::vector;
 #include <algorithm>
 using std::search;
 using std::max;
+using std::min;
 
 #include "willow.h"
 #include "whttp.h"
@@ -356,10 +357,10 @@ struct	http_entity	*entity = (http_entity *) d;
 			entity->he_source.fde.fde->fde_fd));
 
 	if (entity->_he_state < ENTITY_STATE_SEND_BODY) {
-	char		*buf = entity->_he_hdrsearch;
+	char		*buf = ((char *)EVBUFFER_DATA(entity->_he_frombuf->input)) + entity->_he_hdroff;
 	char		*end, *found;
 static	char const	*rnrn = "\r\n\r\n";
-		if (buf == NULL)
+		if (entity->_he_hdroff == 0)
 			buf = (char *)EVBUFFER_DATA(entity->_he_frombuf->input);
 		end = (char *)EVBUFFER_DATA(entity->_he_frombuf->input) + EVBUFFER_LENGTH(entity->_he_frombuf->input);
 		WDEBUG((WLOG_DEBUG, "entity_read_callback: end=%p; buf=%p; data=%p",
@@ -367,13 +368,13 @@ static	char const	*rnrn = "\r\n\r\n";
 
 		if ((found = find_rnrn(buf, end)) == NULL) {
 			// need more data
-			entity->_he_hdrsearch = max(buf, end - 4);
+			entity->_he_hdroff = min(buf, end - 4) - buf;
 			WDEBUG((WLOG_DEBUG, "entity_read_callback: need more data, read %d [%s]", 
 				end - buf, buf));
 			return;
 		}
 
-		entity->_he_hdrsearch = found + 4;	// so parse_headers knows how much to search
+		entity->_he_hdroff = (found + 4) - buf;	// so parse_headers knows how much to search
 		if ((i = parse_headers(entity)) < 0) {
 			WDEBUG((WLOG_DEBUG, "entity_read_callback: parse_headers returned -1"));
 			entity->he_flags.error = 1;
@@ -782,7 +783,7 @@ parse_headers(http_entity *entity)
 char		*line;
 char		*rdbuf;
 char		*buf = (char *)EVBUFFER_DATA(entity->_he_frombuf->input);
-char		*end = entity->_he_hdrsearch;
+char		*end = buf + entity->_he_hdroff;
 char		*nexthdr;
 static char	 rn[] = { '\r', '\n' };
 size_t		 i, nread;

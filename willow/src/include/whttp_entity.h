@@ -175,7 +175,7 @@ struct	fde		*_he_target;
 struct	bufferevent	*_he_frombuf;
 struct	bufferevent	*_he_tobuf;
 	z_stream	 _he_zbuf;
-	char		*_he_hdrsearch;		/* internal use by entity_read_callback	*/
+	size_t		 _he_hdroff;		/* internal use by entity_read_callback	*/
 	char		*_he_hdrbuf;		/*          ''     ''			*/
 };
 
