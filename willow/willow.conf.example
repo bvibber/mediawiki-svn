@@ -19,6 +19,14 @@ backend "127.0.0.1" {
 };
 
 /*
+ * You can also force a particular address family (v4 or v6) when
+ * using a hostname.
+ */
+backend "backends.mycompany.com" {
+	aftype = ipv6;	/* only connect to IPv6 addresses */
+};
+
+/*
  * Any number of listeners can be defined.  Hostnames are allowed,
  * the same as backend{}.
  */
