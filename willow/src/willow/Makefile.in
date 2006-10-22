@@ -13,7 +13,8 @@ BASESRCS =	 		\
 	wnet.cc			\
 	wnet_libevent.cc	\
 	wlog.cc			\
-	whttp_header.cc
+	whttp_header.cc		\
+	radix.cc
 
 OBJS=	$(BASESRCS:.cc=.o)
 

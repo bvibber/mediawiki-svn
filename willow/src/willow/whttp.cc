@@ -41,6 +41,7 @@
 #include "whttp_entity.h"
 #include "wlog.h"
 #include "wcache.h"
+#include "radix.h"
 
 #ifndef MAXHOSTNAMELEN
 # define MAXHOSTNAMELEN HOST_NAME_MAX /* SysV / BSD disagreement */
@@ -49,16 +50,18 @@
 /*
  * Error handling.
  */
-#define ERR_GENERAL	0
-#define ERR_BADREQUEST	1
-#define ERR_BADRESPONSE	2
-#define ERR_CACHE_IO	3
+#define ERR_GENERAL	0	/* unspecified error			*/
+#define ERR_BADREQUEST	1	/* client request invalid		*/
+#define ERR_BADRESPONSE	2	/* backend response invalid		*/
+#define ERR_CACHE_IO	3	/* i/o failure reading cache		*/
+#define ERR_BLOCKED	4	/* client denied by configuration	*/
 
 static const char *error_files[] = {
 	/* ERR_GENERAL		*/	DATADIR "/errors/ERR_GENERAL",
 	/* ERR_BADREQUEST	*/	DATADIR "/errors/ERR_BADREQUEST",
 	/* ERR_BADRESPONSE	*/	DATADIR "/errors/ERR_BADRESPONSE",
 	/* ERR_CACHE_IO		*/	DATADIR "/errors/ERR_CACHE_IO",
+	/* ERR_BLOCKED		*/	DATADIR "/errors/ERR_BLOCKED",
 };
 
 const char *request_string[] = {
@@ -302,7 +305,19 @@ struct	http_client	*client = (http_client *)data;
 				client->cl_entity->he_rdata.request.host,
 				client->cl_entity->he_rdata.request.path);
 	}
-	
+
+radix_node	*r;
+	if (	(client->cl_fde->fde_cdata->cdat_addr.ss_family == AF_INET
+	         && (r = radix_search(config.v4_access, client->cl_fde->fde_straddr)) 
+	         && (r->flags & RFL_DENY))
+	    ||	(client->cl_fde->fde_cdata->cdat_addr.ss_family == AF_INET6
+	         && (r = radix_search(config.v6_access, client->cl_fde->fde_straddr))
+	         && (r->flags & RFL_DENY)))
+	{
+		client_send_error(client, ERR_BLOCKED, r->prefix->tostring(), 403, "Access denied");
+		return;
+	}
+   	
 	client->cl_reqtype = client->cl_entity->he_rdata.request.reqtype;
 
 	pragma = entity->he_h_pragma;

@@ -33,6 +33,7 @@ struct cachedir {
 	size_t	 maxsize;
 };
 
+struct radix;
 extern struct configuration {
 	int		 foreground;
 	string		 access_log;
@@ -54,6 +55,8 @@ struct	cachedir	*caches;
 		carp_hash_carp = 0,
 		carp_hash_simple
 	}		 carp_hash;
+	radix		*v4_access;
+	radix		*v6_access;
 } config;
 
 void wconfig_init(char const *);

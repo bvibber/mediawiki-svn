@@ -147,3 +147,33 @@ log {
 	udp-port = 4445;
 	udp-host = "127.0.0.1";
 };
+
+/*
+ * Access control.
+ *
+ * access-v4 and access-v6 are lists of addresses that are granted or denied
+ * permission to use this proxy.  Denied networks will be sent an error page
+ * for any request.
+ *
+ * This is *not* an ACL; entries are not compared in order.  Rather, the best
+ * match prefix for the client's address is used to decide whether they are
+ * given access.
+ *
+ * There is no default-deny.  To deny access by default, add a deny entry for
+ * all addresses (0.0.0.0/0 in IPv4 or ::0/0 in IPv6).
+ */
+
+access-v4 {
+	/* allow localhost and the local network */
+	allow = "127.0.0.1/32", "10.0.0.0/8";
+
+	/* deny an evil network */
+	deny = "1.2.3.0/24";
+};
+
+access-v6 {
+	/* allow everyone except localhost */
+	allow = "::0/0";
+	deny = "::1/128";
+};
+

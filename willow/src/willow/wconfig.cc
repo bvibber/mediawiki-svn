@@ -30,6 +30,7 @@
 #include "whttp.h"
 #include "wnet.h"
 #include "confparse.h"
+#include "radix.h"
 
 using namespace conf;
 
@@ -165,6 +166,82 @@ string	&s = v.cv_values[0].av_strval;
 	return true;
 }
 
+static void
+set_access_v4(tree_entry &e)
+{
+value		*allow, *deny;
+radix_node	*r;
+	config.v4_access = new radix;
+	if ((allow = e/"allow") != NULL) {
+	vector<avalue>::iterator	it = allow->cv_values.begin(),
+					end = allow->cv_values.end();
+		for (; it != end; ++it) {
+			r = radix_add(config.v4_access, it->av_strval.c_str());
+			r->flags = RFL_ALLOW;
+		}
+	}
+
+	if ((deny = e/"deny") != NULL) {
+	vector<avalue>::iterator	it = deny->cv_values.begin(),
+					end = deny->cv_values.end();
+		for (; it != end; ++it) {
+			r = radix_add(config.v4_access, it->av_strval.c_str());
+			r->flags = RFL_DENY;
+		}
+	}
+}
+
+static void
+set_access_v6(tree_entry &e)
+{
+value		*allow, *deny;
+radix_node	*r;
+	config.v6_access = new radix;
+	if ((allow = e/"allow") != NULL) {
+	vector<avalue>::iterator	it = allow->cv_values.begin(),
+					end = allow->cv_values.end();
+		for (; it != end; ++it) {
+			r = radix_add(config.v6_access, it->av_strval.c_str());
+			r->flags = RFL_ALLOW;
+		}
+	}
+
+	if ((deny = e/"deny") != NULL) {
+	vector<avalue>::iterator	it = deny->cv_values.begin(),
+					end = deny->cv_values.end();
+		for (; it != end; ++it) {
+			r = radix_add(config.v6_access, it->av_strval.c_str());
+			r->flags = RFL_DENY;
+		}
+	}
+}
+
+static bool
+radix_prefix(tree_entry &e, value &v)
+{
+vector<avalue>::iterator	it = v.cv_values.begin(),
+				end = v.cv_values.end();
+prefix	p;
+	for (; it != end; ++it) {
+		if (it->av_type != cv_qstring) {
+			v.report_error("access prefix must be a list of quoted strings");
+			return false;
+		}
+
+		if (prefix_fromstring(it->av_strval.c_str(), &p) == NULL) {
+			v.report_error("%s: cannot parse network address mask", it->av_strval.c_str());
+			return false;
+		}
+
+		if ((p.family == AF_INET && p.prefixlen > 32)
+		    || (p.family == AF_INET6 && p.prefixlen > 128)) {
+			v.report_error("%s: prefix length is too long for address family", it->av_strval.c_str());
+			return false;
+		}
+	}
+	return true;
+}
+
 bool
 read_config(string const &file)
 {
@@ -205,6 +282,16 @@ conf
 		.end(func(set_backend))
 		.value("port",		simple_range(1, 65535), ignore)
 		.value("aftype",	func(v_aftype),		ignore)
+
+	.block("access-v4")
+		.end(func(set_access_v4))
+		.value("allow",		func(radix_prefix),	ignore)
+		.value("deny",		func(radix_prefix),	ignore)
+
+	.block("access-v6")
+		.end(func(set_access_v6))
+		.value("allow",		func(radix_prefix),	ignore)
+		.value("deny",		func(radix_prefix),	ignore)
 	;
 
 	if ((t = conf::parse_file(file)) == NULL)
