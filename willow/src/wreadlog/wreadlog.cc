@@ -44,6 +44,7 @@ static FILE *outfile = stdout;
 static void handle_packet(int fd);
 static const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS" };
 static const int nreqtypes = sizeof(reqtypes) / sizeof(*reqtypes);
+static bool usegmt = true;
 
 static acl acl4(AF_INET, "IPv4 ACL")
 #ifdef AF_INET6
@@ -77,7 +78,9 @@ tm		*atm;
 	if (when == lasttime)
 		return timebuf;
 	lasttime = when;
-	atm = gmtime(&lasttime);
+	if (usegmt)
+		atm = gmtime(&lasttime);
+	else	atm = localtime(&lasttime);
 	strftime(timebuf, sizeof(timebuf), fmt, atm);
 	return timebuf;
 }
@@ -213,6 +216,7 @@ usage(const char *progname)
 "\t           (one of: \"willow\" (default), \"clf\", \"squid\")\n"
 "\t-F <file>    write to this file instead of stdout\n"
 "\t-d           become a daemon after startup\n"
+"\t-L           print timestamps in local time, not GMT\n"
 		, progname);
 }
 
@@ -228,7 +232,7 @@ struct addrinfo hints, *res;
 bool		 daemon = false;
 	memset(&hints, 0, sizeof(hints));
 	doprint = doprint_willow;
-	while ((i = getopt(argc, argv, "h46a:p:f:s:F:d")) != -1) {
+	while ((i = getopt(argc, argv, "h46a:p:f:s:F:dL")) != -1) {
                 switch (i) {
 		case '4':
 			hints.ai_family = AF_INET;
@@ -238,6 +242,9 @@ bool		 daemon = false;
 			break;
 		case 'd':
 			daemon = true;
+			break;
+		case 'L':
+			usegmt = false;
 			break;
 		case 'p':
 			port = optarg;
