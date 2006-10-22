@@ -113,9 +113,10 @@ extern int char_table[];
 # define unlikely(c) c
 #endif
 
+struct radix;
 extern struct stats_stru {
 	int	interval;	/* update interval	*/
-
+	radix	*v4_access, *v6_access;
 	/*
 	 * Absolute values.
 	 */

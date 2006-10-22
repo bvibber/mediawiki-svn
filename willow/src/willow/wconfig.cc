@@ -209,6 +209,26 @@ set_access_v6(tree_entry &e)
 	radix_from_list(e, config.v6_access);
 }
 
+static void
+stats_access_v4(tree_entry &e, value &v)
+{
+	stats.v4_access = new radix;
+vector<avalue>::iterator	it = v.cv_values.begin(),
+				end = v.cv_values.end();
+	for (; it != end; ++it)
+		radix_add(stats.v4_access, it->av_strval.c_str());
+}
+
+static void
+stats_access_v6(tree_entry &e, value &v)
+{
+	stats.v6_access = new radix;
+vector<avalue>::iterator	it = v.cv_values.begin(),
+				end = v.cv_values.end();
+	for (; it != end; ++it)
+		radix_add(stats.v6_access, it->av_strval.c_str());
+}
+
 static bool
 radix_prefix(tree_entry &e, value &v)
 {
@@ -280,6 +300,8 @@ conf
 	.block("stats")
 		.value("port",		simple_range(0, 65535),		set_int(config.stats_port))
 		.value("interval",	simple_range(1, INT_MAX),	set_int(stats.interval))
+		.value("allow-v4",	func(radix_prefix),		func(stats_access_v4))
+		.value("allow-v6",	func(radix_prefix),		func(stats_access_v6))
 
 	.block("cache-dir", require_name)
 		.end(func(set_cache))

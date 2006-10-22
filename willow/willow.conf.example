@@ -182,3 +182,22 @@ access-v6 {
 	deny = "::1/128";
 };
 
+/*
+ * Statistics.
+ *
+ * The server collects runtime statistics for use by the 'wgetstats' program.
+ */
+stats {
+	/* How often to re-calculate averages */
+	interval = 30;
+
+	/* Default port is 4445 */
+	port = 4445;
+
+	/*
+	 * Only allow stats requests from certain networks.  If you specify
+	 * either allow-v4 or allow-v6, *both* will be set to default-deny.
+	 */
+	allow-v4 = "127.0.0.0/8";
+	allow-v6 = "::0/0";
+};

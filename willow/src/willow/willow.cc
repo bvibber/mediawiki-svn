@@ -27,6 +27,7 @@
 #include "whttp.h"
 #include "wcache.h"
 #include "confparse.h"
+#include "radix.h"
 
 static void stats_init(void);
 
@@ -298,10 +299,21 @@ char	rdata[3];
 int	i;
 sockaddr_storage	ss;
 socklen_t		sslen = sizeof(ss);
+char	str[NI_MAXHOST];
 	if (recvfrom(e->fde_fd, rdata, sizeof(rdata), 0, (sockaddr *)&ss, &sslen) != 2)
 		return;
 	if (rdata[0] != 1 || rdata[1] != 0)
 		return;
+	if (stats.v4_access || stats.v6_access) {
+		if (getnameinfo((sockaddr *)&ss, sslen, str, sizeof(str), NULL, 0, NI_NUMERICHOST) != 0)
+			return;
+		if (stats.v4_access && ss.ss_family == AF_INET)
+			if (!radix_search(stats.v4_access, str))
+				return;
+		if (stats.v6_access && ss.ss_family == AF_INET6)
+			if (!radix_search(stats.v6_access, str))
+				return;
+	}
 
 	/*
 	 * Stats format:
