@@ -34,9 +34,11 @@ using std::strlen;
 using std::fprintf;
 using std::sprintf;
 using std::max;
+using std::min;
 using std::vector;
 using std::strcpy;
 using std::strchr;
+using std::auto_ptr;
 
 #include "acl.h"
 
@@ -44,7 +46,7 @@ static FILE *outfile = stdout;
 static void handle_packet(int fd);
 static const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS" };
 static const int nreqtypes = sizeof(reqtypes) / sizeof(*reqtypes);
-static bool usegmt = true;
+static bool usegmt = true, dodns = true;
 
 static acl acl4(AF_INET, "IPv4 ACL")
 #ifdef AF_INET6
@@ -85,10 +87,44 @@ tm		*atm;
 	return timebuf;
 }
 
+static const char *
+resolve(const char *host_, int hostlen)
+{
+addrinfo	hints, *res = NULL, *res2 = NULL;
+static char	hoststr[NI_MAXHOST + 1];
+vector<char>	host(hostlen + 1);
+	if (!dodns)
+		goto err;
+	if (hostlen > NI_MAXHOST)
+		goto err;
+
+	memcpy(&host[0], host_, hostlen);
+	host[hostlen] = '\0';
+
+	memset(&hints, 0, sizeof(hints));
+	hints.ai_socktype = SOCK_STREAM;
+
+	if (getaddrinfo(&host[0], "80", &hints, &res) != 0)
+		goto err;
+	if (getnameinfo(res->ai_addr, res->ai_addrlen, hoststr, sizeof(hoststr), NULL, 0, 0) != 0)
+		goto err;
+	if (getaddrinfo(hoststr, "80", &hints, &res2) != 0)
+		goto err;
+	if (memcmp(res->ai_addr, res2->ai_addr, min(res->ai_addrlen, res2->ai_addrlen)))
+		goto err;
+	return hoststr;
+err:	if (res)
+		freeaddrinfo(res);
+	if (res2)
+		freeaddrinfo(res2);
+	strcpy(hoststr, host_);
+	return hoststr;
+}
+
 void doprint_willow(logent &e)
 {
-	fprintf(outfile, "[%s] %.*s %s \"%.*s\" %lu %d %.*s %s\n", fmttime(*e.r_reqtime, "%Y-%m-%d %H:%M:%S"), 
-		(int)*e.r_clilen, e.r_cliaddr,
+	fprintf(outfile, "[%s] %s %s \"%.*s\" %lu %d %.*s %s\n", fmttime(*e.r_reqtime, "%Y-%m-%d %H:%M:%S"), 
+		resolve(e.r_cliaddr, *e.r_clilen),
 		reqtypes[*e.r_reqtype], (int)*e.r_pathlen, e.r_path, 
 		(unsigned long)*e.r_docsize, (int)*e.r_status,
 		(int)*e.r_belen, e.r_beaddr, *e.r_cached ? "HIT" : "MISS");
@@ -97,8 +133,8 @@ void doprint_willow(logent &e)
 static void
 doprint_clf(logent &e)
 {
-	fprintf(outfile, "%.*s - - [%s] \"%s %.*s HTTP/1.0\" %d %lu\n",
-		(int)*e.r_clilen, e.r_cliaddr,
+	fprintf(outfile, "%s - - [%s] \"%s %.*s HTTP/1.0\" %d %lu\n",
+		resolve(e.r_cliaddr, *e.r_clilen),
 		fmttime(*e.r_reqtime, "%d/%b/%Y %H:%M:%S %z"), 
 		reqtypes[*e.r_reqtype], (int)*e.r_pathlen, e.r_path,
 		(int)*e.r_status, (unsigned long)*e.r_docsize);
@@ -107,8 +143,8 @@ doprint_clf(logent &e)
 static void
 doprint_squid(logent &e)
 {
-	fprintf(outfile, "%ul.0      0 %.*s TCP_%s/%d %lu %s %.*s - ", (unsigned long)*e.r_reqtime,
-		(int)*e.r_clilen, e.r_cliaddr, *e.r_cached ? "HIT" : "MISS",
+	fprintf(outfile, "%ul.0      0 %s TCP_%s/%d %lu %s %.*s - ", (unsigned long)*e.r_reqtime,
+		resolve(e.r_cliaddr, *e.r_clilen), *e.r_cached ? "HIT" : "MISS",
 		(int)*e.r_status, (unsigned long)*e.r_docsize,
 		reqtypes[*e.r_reqtype], (int)*e.r_pathlen, e.r_path);
 	if (!*e.r_cached)
@@ -218,6 +254,7 @@ usage(const char *progname)
 "\t-F <file>    write to this file instead of stdout\n"
 "\t-d           become a daemon after startup\n"
 "\t-L           print timestamps in local time, not GMT\n"
+"\t-n           don't try to resolve client IPs to names\n"
 		, progname);
 }
 
@@ -233,13 +270,16 @@ struct addrinfo hints, *res;
 bool		 daemon = false;
 	memset(&hints, 0, sizeof(hints));
 	doprint = doprint_willow;
-	while ((i = getopt(argc, argv, "h46a:p:f:s:F:dL")) != -1) {
+	while ((i = getopt(argc, argv, "h46a:p:f:s:F:dLn")) != -1) {
                 switch (i) {
 		case '4':
 			hints.ai_family = AF_INET;
 			break;
 		case '6':
 			hints.ai_family = AF_INET6;
+			break;
+		case 'n':
+			dodns = false;
 			break;
 		case 'd':
 			daemon = true;
@@ -311,6 +351,11 @@ bool		 daemon = false;
 	}
 	argc -= optind;
 	argv += optind;
+
+	if (argc) {
+		usage(progname);
+		return 1;
+	}
 
 	if (!acl4.acllist.empty() || !acl6.acllist.empty()) {
 		acl4.add("0.0.0.0", 0, ACL_BLOCK, ACLFL_NONE);
