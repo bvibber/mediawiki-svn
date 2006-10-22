@@ -9,9 +9,9 @@
 $wgCrossNamespaceLinksMessages = array();
 
 $wgCrossNamespaceLinksMessages['en'] = array(
-	'crossnamespacelinks'     => 'Cross-namespace links',
-	'crossnamespacelinks-summary' => 'This page provides a list of links from a page in one namespace to a page in another.',
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|links}} to $3'
+	'crossnamespacelinks'         => 'Cross-namespace links',
+	'crossnamespacelinks-summary' => 'This page provides a list of links from a page in the main namespace to a page in other namespaces (except for {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}} namespaces), which are not advisable to use.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|links}} to $3'
 );
 $wgCrossNamespaceLinksMessages['cs'] = array(
 	'crossnamespacelinks'     => 'Odkazy napříč jmennými prostory',
@@ -22,8 +22,9 @@ $wgCrossNamespaceLinksMessages['de'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Link|Links}} auf $3'
 );
 $wgCrossNamespaceLinksMessages['he'] = array(
-	'crossnamespacelinks'     => 'קישורים מדפי תוכן למרחבי שם אחרים',
-	'crossnamespacelinkstext' => '$1: {{plural:$2|קישור אחד|$2 קישורים}} למרחב $3'
+	'crossnamespacelinks'          => 'קישורים מדפי תוכן למרחבי שם אחרים',
+	'crossnamespacelinks-summary' => 'דף זה מספק רשימה של קישורים מדפים במרחב השם הראשי לדפים במרחבי שם אחרים (למעט מרחבי השם {{ns:special}}, {{ns:talk}}, {{ns:project}} ו{{ns:template}}), שאינם רצויים לשימוש.',
+	'crossnamespacelinkstext'     => '$1: {{plural:$2|קישור אחד|$2 קישורים}} למרחב $3'
 );
 $wgCrossNamespaceLinksMessages['id'] = array(
 	'crossnamespacelinks'     => 'Pranala antar-namespace',
