@@ -806,11 +806,11 @@ ssize_t		 size;
 static void
 client_log_request(http_client *client)
 {
-	int	i;
-	
-	if (client->cl_entity->he_rdata.response.status == 200)
-		stats.cur.n_httpreq_ok++;
-	else	stats.cur.n_httpreq_fail++;
+int	i, s;
+	s = client->cl_entity->he_rdata.response.status;
+	if ((s >= 400 && s <= 600))
+		stats.cur.n_httpreq_fail++;
+	else	stats.cur.n_httpreq_ok++;
 
 	if (alf) {
 		i = fprintf(alf, "[%s] %s %s \"%s\" %lu %d %s %s\n",
