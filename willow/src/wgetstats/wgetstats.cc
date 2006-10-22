@@ -84,7 +84,7 @@ int		 timeo = 10;
 		return 1;
 	}
 
-int	sfd;
+int	sfd = -1;
 char	sendbuf[2];
 	sendbuf[0] = 1;	/* stats proto version */
 	sendbuf[1] = 0;	/* get request */
@@ -110,6 +110,8 @@ timeval	tv;
 		}
 		break;
 	}
+	if (sfd == -1)
+		return 1;
 char	rbuf[65535];
 	if ((i = read(sfd, rbuf, sizeof (rbuf))) < 0) {
 		if (errno == EWOULDBLOCK)
