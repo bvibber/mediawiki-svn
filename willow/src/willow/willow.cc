@@ -355,7 +355,7 @@ char		portstr[6];
 	}
 	for (r = res; r; r = r->ai_next) {
 	int	sfd;
-		if ((sfd = wnet_open("statistics listener", r->ai_family, r->ai_socktype)) == -1) {
+		if ((sfd = wnet_open("statistics listener", prio_stats, r->ai_family, r->ai_socktype)) == -1) {
 			wlog(WLOG_WARNING, "creating statistics listener: %s", strerror(errno));
 			continue;
 		}

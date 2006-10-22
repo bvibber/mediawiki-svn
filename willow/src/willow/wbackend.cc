@@ -133,7 +133,7 @@ static	time_t		 last_nfile;
 			return -1;
 		}
 
-		if ((s = wnet_open("backend connection", cbd->bc_backend->be_addr.ss_family)) == -1) {
+		if ((s = wnet_open("backend connection", prio_backend, cbd->bc_backend->be_addr.ss_family)) == -1) {
 			if (errno != ENFILE || now - last_nfile > 60) 
 				wlog(WLOG_WARNING, "opening backend socket: %s", strerror(errno));
 			if (errno == ENFILE)

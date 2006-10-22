@@ -91,7 +91,7 @@ size_t	 i;
 	for (i = 0; i < listeners.size(); ++i) {
 		struct listener	*lns = listeners[i];
 
-		int fd = wnet_open("listener", lns->addr.ss_family);
+		int fd = wnet_open("listener", prio_accept, lns->addr.ss_family);
 		int one = 1;
 		if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one)) == -1) {
 			wlog(WLOG_ERROR, "setsockopt: %s: %s\n", lns->name.c_str(), strerror(errno));
@@ -177,7 +177,7 @@ init_fde(fde *fde)
 }
 
 int
-wnet_open(const char *desc, int aftype, int type)
+wnet_open(const char *desc, sprio p, int aftype, int type)
 {
 	int	fd, val;
 static int	last_nfile = 0;
@@ -200,7 +200,7 @@ static int	last_nfile = 0;
 	fde_table[fd].fde_fd = fd;
 	fde_table[fd].fde_desc = desc;
 	fde_table[fd].fde_flags.open = 1;
-
+	fde_table[fd].fde_prio = p;
 	return fd;
 }
 

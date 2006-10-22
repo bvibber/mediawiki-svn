@@ -42,6 +42,14 @@ typedef void (*fdwcb)(struct fde*, void*, int);
 
 struct client_data;
 
+enum sprio {
+	prio_stats	= 0,
+	prio_backend,
+	prio_norm,
+	prio_accept,
+	prio_max
+};
+
 struct readbuf {
 	char	*rb_p;		/* start of allocated region	*/
 	int	 rb_size;	/* size of allocated region	*/
@@ -86,6 +94,7 @@ struct	readbuf		 fde_readbuf;
 		unsigned int	pend:1;
 	}		 fde_flags;
 struct	event		 fde_ev;
+enum	sprio		 fde_prio;
 };
 extern struct fde *fde_table;
 
@@ -106,7 +115,7 @@ void wnet_init(void);
 void wnet_run(void);
 
 void wnet_register(int, int, fdcb, void *);
-int wnet_open(const char *desc, int aftype, int type = SOCK_STREAM);
+int wnet_open(const char *desc, sprio p, int aftype, int type = SOCK_STREAM);
 void wnet_close(int);
 void wnet_write(int, const void *, size_t, fdwcb, void *, int);
 int wnet_sendfile(int, int, size_t, off_t, fdwcb, void *, int);

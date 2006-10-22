@@ -56,7 +56,7 @@ wnet_init_select(void)
 {
 	signal(SIGPIPE, SIG_IGN);
 	event_init();
-
+	event_priority_init(prio_max);
 	signal_set(&ev_sigint, SIGINT, sig_exit, NULL);
 	signal_add(&ev_sigint, NULL);
 }
@@ -119,6 +119,7 @@ struct	fde	*fde = &fde_table[fd];
 
 	//ev_flags |= EV_PERSIST;
 	event_set(&fde->fde_ev, fde->fde_fd, ev_flags, fde_ev_callback, fde);
+	event_priority_set(&fde->fde_ev, (int) fde->fde_prio);
 	event_add(&fde->fde_ev, NULL);
 	fde->fde_flags.pend = 1;
 }
