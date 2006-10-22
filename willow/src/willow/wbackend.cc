@@ -48,25 +48,41 @@ struct	backend		*bc_backend;
 	string		 bc_url;
 };
 
-backend::backend(string const &name, string const &addr, int port)
+backend::backend(string const &name, string const &straddr, sockaddr *addr, socklen_t addrlen)
 	: be_name(name)
-	, be_port(port)
-	, be_straddr(addr)
+	, be_straddr(straddr)
 	, be_dead(false)
-	, be_hash(carp_hosthash(be_name))
+	, be_hash(carp_hosthash(be_straddr))
 	, be_load(1.)
 {
-	be_addr.sin_family = AF_INET;
-	be_addr.sin_port = htons(be_port);
-	be_addr.sin_addr.s_addr = inet_addr(be_name.c_str());
+	memcpy(&be_addr, addr, be_addrlen = addrlen);
 }
 
 void
 add_backend(string const &addr, int port)
 {
-	backends.push_back(new backend(addr, addr, port));
+int		 i;
+addrinfo	 hints, *res, *r;
+char		 portstr[6];
+	sprintf(portstr, "%d", port);
+	std::memset(&hints, 0, sizeof(hints));
+	hints.ai_socktype = SOCK_STREAM;
+
+	if ((i = getaddrinfo(addr.c_str(), portstr, &hints, &res)) != 0) {
+		wlog(WLOG_ERROR, "resolving %s: %s", addr.c_str(), gai_strerror(i));
+		return;
+	}
+
+	for (r = res; r; r = r->ai_next) {
+		backends.push_back(new backend(addr,
+			wnet::straddr(r->ai_addr, r->ai_addrlen),
+			r->ai_addr, r->ai_addrlen));
+		wlog(WLOG_NOTICE, "backend server: %s[%s]:%d", 
+		     addr.c_str(), wnet::straddr(r->ai_addr, r->ai_addrlen).c_str(), port);
+	}
+	freeaddrinfo(res);
+
 	carp_calc();
-	wlog(WLOG_NOTICE, "backend: %s:%d", addr.c_str(), port);
 }
 
 #if 0

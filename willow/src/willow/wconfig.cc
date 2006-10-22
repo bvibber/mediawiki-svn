@@ -21,12 +21,14 @@
 #include <cstring>
 #include <cerrno>
 #include <climits>
+#include <netdb.h>
 
 #include "willow.h"
 #include "wconfig.h"
 #include "wbackend.h"
 #include "wlog.h"
 #include "whttp.h"
+#include "wnet.h"
 #include "confparse.h"
 
 using namespace conf;
@@ -51,17 +53,32 @@ set_listen(conf::tree_entry &e)
 {
 value const	*val;
 int		 port = 80;
-struct listener	*nl = new listener;
+struct listener	*nl;
+int		 i;
+addrinfo	 hints, *res, *r;
+char		 portstr[6];
 	if ((val = e/"port") != NULL)
 		port = CONF_AINTVAL(*val);
-	listeners.push_back(nl);
-	
-	nl->port = port;
-	nl->name = e.item_key;
-	nl->addr.sin_family = AF_INET;
-	nl->addr.sin_port = htons((unsigned short)nl->port);
-	nl->addr.sin_addr.s_addr = inet_addr(nl->name.c_str());
-	wlog(WLOG_NOTICE, "listening on %s:%d", e.item_key.c_str(), port);
+	sprintf(portstr, "%d", port);
+	std::memset(&hints, 0, sizeof(hints));
+	hints.ai_socktype = SOCK_STREAM;
+
+	if ((i = getaddrinfo(e.item_key.c_str(), portstr, &hints, &res)) != 0) {
+		wlog(WLOG_ERROR, "resolving %s: %s", e.item_key.c_str(), gai_strerror(i));
+		return;
+	}
+
+	for (r = res; r; r = r->ai_next) {
+		nl = new listener;
+		nl->port = port;
+		nl->name = e.item_key;
+		nl->host = wnet::straddr(r->ai_addr, r->ai_addrlen);
+		memcpy(&nl->addr, r->ai_addr, r->ai_addrlen);
+		listeners.push_back(nl);
+		wlog(WLOG_NOTICE, "listening on %s[%s]:%d", 
+		     e.item_key.c_str(), nl->host.c_str(), port);
+	}
+	freeaddrinfo(res);
 }
 
 static bool

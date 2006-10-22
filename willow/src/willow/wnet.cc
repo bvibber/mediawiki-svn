@@ -106,7 +106,6 @@ size_t	 i;
 			exit(8);
 		}
 		wnet_register(fd, FDE_READ, wnet_accept, NULL);
-		wlog(WLOG_NOTICE, "listening on %s", lns->name.c_str());
 	}
 	wlog(WLOG_NOTICE, "wnet: initialised, using libevent %s (%s)",
 		event_get_version(), event_get_method());
@@ -116,21 +115,15 @@ void
 wnet_accept(fde *e)
 {
 struct	client_data	*cdata;
-#ifdef __hpux
-	int		 addrlen;
-#else
-	socklen_t	 addrlen;
-#endif
 	int		 newfd, val;
 struct	fde		*newe;
 static time_t		 last_nfile = 0;
 	time_t		 now = time(NULL);
 	if ((cdata = (client_data *)wcalloc(1, sizeof(*cdata))) == NULL)
 		outofmemory();
+	cdata->cdat_addrlen = sizeof(cdata->cdat_addr);
 
-	addrlen = sizeof(cdata->cdat_addr);
-
-	if ((newfd = accept(e->fde_fd, (struct sockaddr *) &cdata->cdat_addr, &addrlen)) < 0) {
+	if ((newfd = accept(e->fde_fd, (struct sockaddr *) &cdata->cdat_addr, &cdata->cdat_addrlen)) < 0) {
 		if (errno != ENFILE || now - last_nfile > 60) 
 			wlog(WLOG_NOTICE, "accept error: %s", strerror(errno));
 		if (errno == ENFILE)
@@ -163,7 +156,12 @@ static time_t		 last_nfile = 0;
 	newe->fde_fd = newfd;
 	newe->fde_cdata = cdata;
 	newe->fde_desc = "accept()ed fd";
-	(void)inet_ntop(AF_INET, &cdata->cdat_addr.sin_addr.s_addr, newe->fde_straddr, sizeof(newe->fde_straddr));
+	if (cdata->cdat_addr.ss_family == AF_INET)
+		inet_ntop(AF_INET, &((sockaddr_in *)&cdata->cdat_addr)->sin_addr.s_addr, 
+		  newe->fde_straddr, sizeof(newe->fde_straddr));
+	else
+		inet_ntop(AF_INET6, &((sockaddr_in6 *)&cdata->cdat_addr)->sin6_addr.s6_addr, 
+		  newe->fde_straddr, sizeof(newe->fde_straddr));
 
 	WDEBUG((WLOG_DEBUG, "wnet_accept: new fd %d", newfd));
 	http_new(newe);

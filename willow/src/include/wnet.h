@@ -62,7 +62,7 @@ struct fde {
 struct	client_data	*fde_cdata;
 	void		*fde_rdata;
 	void		*fde_wdata;
-	char		 fde_straddr[16];
+	char		 fde_straddr[40];
 	int		 fde_epflags;
 struct	readbuf		 fde_readbuf;
 	struct {
@@ -75,7 +75,8 @@ struct	event		 fde_ev;
 extern struct fde *fde_table;
 
 struct client_data {
-struct	sockaddr_in	cdat_addr;
+	sockaddr_storage	cdat_addr;
+	socklen_t		cdat_addrlen;
 };
 
 extern char current_time_str[];

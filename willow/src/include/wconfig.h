@@ -21,10 +21,10 @@ using std::string;
 using std::vector;
 
 struct listener {
-	string		 name;
-	string		 host;
-	int 		 port;
-struct	sockaddr_in	 addr;
+	string			 name;
+	string			 host;
+	int	 		 port;
+	sockaddr_storage	 addr;
 };
 extern vector<listener *> listeners;
 

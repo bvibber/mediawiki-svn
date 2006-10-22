@@ -23,17 +23,19 @@ using std::vector;
 struct fde;
 
 struct backend {
-			 backend(string const &, string const &, int);
-	string		 be_name;	/* IP as specified in config	*/
-	int	 	 be_port;	/* port number			*/
-struct	sockaddr_in	 be_addr;	/* socket address		*/
-	string		 be_straddr;	/* formatted address		*/
-	int	 	 be_dead;	/* 0 if okay, 1 if unavailable	*/
-	time_t		 be_time;	/* If dead, time to retry	*/
-	uint32_t	 be_hash;	/* constant carp "host" hash	*/
-	uint32_t	 be_carp;	/* carp hash for the last url	*/
-	float		 be_load;	/* carp load factor		*/
-	float		 be_carplfm;	/* carp LFM after calculation	*/
+		backend(string const &, string const &, sockaddr *, socklen_t);
+
+	string			 be_name;	/* IP as specified in config	*/
+	int	 		 be_port;	/* port number			*/
+	sockaddr_storage	 be_addr;	/* socket address		*/
+	socklen_t		 be_addrlen;	/* address length		*/
+	string			 be_straddr;	/* formatted address		*/
+	int	 		 be_dead;	/* 0 if okay, 1 if unavailable	*/
+	time_t			 be_time;	/* If dead, time to retry	*/
+	uint32_t		 be_hash;	/* constant carp "host" hash	*/
+	uint32_t		 be_carp;	/* carp hash for the last url	*/
+	float			 be_load;	/* carp load factor		*/
+	float			 be_carplfm;	/* carp LFM after calculation	*/
 };
 
 typedef void (*backend_cb)(struct backend *, struct fde *, void *);
