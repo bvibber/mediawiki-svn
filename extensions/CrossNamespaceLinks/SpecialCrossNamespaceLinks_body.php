@@ -65,7 +65,11 @@ class CrossNamespaceLinksPage extends QueryPage {
 	function getName() { return 'CrossNamespaceLinks'; }
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
-	
+
+	function getPageHeader() {
+		return '<p>' . wfMsg('crossnamespacelinks-summary') . '</p>';
+	}
+
 	/**
 	 * Note: NS_SPECIAL and NS_MEDIA are not on our namespace
 	 * whitelist so articles linking to them will be reported,

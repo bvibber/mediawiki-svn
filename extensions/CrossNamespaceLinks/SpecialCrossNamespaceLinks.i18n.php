@@ -10,6 +10,7 @@ $wgCrossNamespaceLinksMessages = array();
 
 $wgCrossNamespaceLinksMessages['en'] = array(
 	'crossnamespacelinks'     => 'Cross-namespace links',
+	'crossnamespacelinks-summary' => 'This page provides a list of links from a page in one namespace to a page in another.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|links}} to $3'
 );
 $wgCrossNamespaceLinksMessages['cs'] = array(
