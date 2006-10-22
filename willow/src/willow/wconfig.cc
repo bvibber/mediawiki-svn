@@ -42,10 +42,14 @@ static void
 set_backend(conf::tree_entry &e)
 {
 value const	*val;
-int		 port = 80;
+int		 port = 80, family = -1;
 	if ((val = e/"port") != NULL)
 		port = CONF_AINTVAL(*val);
-	add_backend(e.item_key, port);
+	if ((val = e/"aftype") != NULL)
+		if (val->cv_values[0].av_strval == "ipv6")
+			family = AF_INET6;
+		else	family = AF_INET;
+	add_backend(e.item_key, port, family);
 }
 
 static void
@@ -62,6 +66,10 @@ char		 portstr[6];
 	sprintf(portstr, "%d", port);
 	std::memset(&hints, 0, sizeof(hints));
 	hints.ai_socktype = SOCK_STREAM;
+	if ((val = e/"aftype") != NULL)
+		if (val->cv_values[0].av_strval == "ipv6")
+			hints.ai_family = AF_INET6;
+		else	hints.ai_family = AF_INET;
 
 	if ((i = getaddrinfo(e.item_key.c_str(), portstr, &hints, &res)) != 0) {
 		wlog(WLOG_ERROR, "resolving %s: %s", e.item_key.c_str(), gai_strerror(i));
@@ -142,6 +150,21 @@ bool	 ret = true;
 	return ret;
 }
 
+static bool
+v_aftype(tree_entry &e, value &v)
+{
+	if (!v.is_single(cv_string)) {
+		v.report_error("aftype must be single unquoted string");
+		return false;
+	}
+string	&s = v.cv_values[0].av_strval;
+	if (s != "ipv4" && s != "ipv6") {
+		v.report_error("aftype must be \"ipv4\" or \"ipv6\"");
+		return false;
+	}
+	return true;
+}
+
 bool
 read_config(string const &file)
 {
@@ -175,11 +198,13 @@ conf
 
 	.block("listen", require_name)
 		.end(func(set_listen))
-		.value("port", simple_range(1, 65535), ignore)
+		.value("port",		simple_range(1, 65535), ignore)
+		.value("aftype",	func(v_aftype),		ignore)
 
 	.block("backend", require_name)
 		.end(func(set_backend))
-		.value("port", simple_range(1, 65535), ignore)
+		.value("port",		simple_range(1, 65535), ignore)
+		.value("aftype",	func(v_aftype),		ignore)
 	;
 
 	if ((t = conf::parse_file(file)) == NULL)

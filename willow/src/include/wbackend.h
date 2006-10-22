@@ -40,7 +40,7 @@ struct backend {
 
 typedef void (*backend_cb)(struct backend *, struct fde *, void *);
 
-void add_backend(string const &, int);
+void add_backend(string const &, int, int);
 void backend_file(string const &);
 
 int get_backend(string const &url, backend_cb, void *, int);

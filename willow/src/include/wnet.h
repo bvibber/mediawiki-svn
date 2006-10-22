@@ -91,7 +91,7 @@ void wnet_init(void);
 void wnet_run(void);
 
 void wnet_register(int, int, fdcb, void *);
-int wnet_open(const char *desc);
+int wnet_open(const char *desc, int aftype);
 void wnet_close(int);
 void wnet_write(int, const void *, size_t, fdwcb, void *, int);
 int wnet_sendfile(int, int, size_t, off_t, fdwcb, void *, int);

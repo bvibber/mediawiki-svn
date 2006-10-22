@@ -59,7 +59,7 @@ backend::backend(string const &name, string const &straddr, sockaddr *addr, sock
 }
 
 void
-add_backend(string const &addr, int port)
+add_backend(string const &addr, int port, int family)
 {
 int		 i;
 addrinfo	 hints, *res, *r;
@@ -67,6 +67,8 @@ char		 portstr[6];
 	sprintf(portstr, "%d", port);
 	std::memset(&hints, 0, sizeof(hints));
 	hints.ai_socktype = SOCK_STREAM;
+	if (family != -1)
+		hints.ai_family = family;
 
 	if ((i = getaddrinfo(addr.c_str(), portstr, &hints, &res)) != 0) {
 		wlog(WLOG_ERROR, "resolving %s: %s", addr.c_str(), gai_strerror(i));
@@ -131,7 +133,7 @@ static	time_t		 last_nfile;
 			return -1;
 		}
 
-		if ((s = wnet_open("backend connection")) == -1) {
+		if ((s = wnet_open("backend connection", cbd->bc_backend->be_addr.ss_family)) == -1) {
 			if (errno != ENFILE || now - last_nfile > 60) 
 				wlog(WLOG_WARNING, "opening backend socket: %s", strerror(errno));
 			if (errno == ENFILE)

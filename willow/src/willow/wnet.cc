@@ -91,7 +91,7 @@ size_t	 i;
 	for (i = 0; i < listeners.size(); ++i) {
 		struct listener	*lns = listeners[i];
 
-		int fd = wnet_open("listener");
+		int fd = wnet_open("listener", lns->addr.ss_family);
 		int one = 1;
 		if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one)) == -1) {
 			wlog(WLOG_ERROR, "setsockopt: %s: %s\n", lns->name.c_str(), strerror(errno));
@@ -177,12 +177,12 @@ init_fde(fde *fde)
 }
 
 int
-wnet_open(const char *desc)
+wnet_open(const char *desc, int aftype)
 {
 	int	fd, val;
 static int	last_nfile = 0;
 	time_t	now = time(NULL);
-	if ((fd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) {
+	if ((fd = socket(aftype, SOCK_STREAM, IPPROTO_TCP)) < 0) {
 		if (errno != ENFILE || now - last_nfile > 60) 
 			wlog(WLOG_WARNING, "socket: %s", strerror(errno));
 		if (errno == ENFILE)
