@@ -40,15 +40,16 @@ using std::strchr;
 
 #include "acl.h"
 
+static FILE *outfile = stdout;
+static void handle_packet(int fd);
+static const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS" };
+static const int nreqtypes = sizeof(reqtypes) / sizeof(*reqtypes);
+
 static acl acl4(AF_INET, "IPv4 ACL")
 #ifdef AF_INET6
 	, acl6(AF_INET6, "IPv6 ACL")
 #endif
 	;
-
-FILE *outfile = stdout;
-
-static void handle_packet(int fd);
 
 struct logent {
 	uint32_t	*r_reqtime;
@@ -67,20 +68,24 @@ static void doprint_willow (logent &);
 static void doprint_clf (logent &);
 static void doprint_squid (logent &);
 
+const char *
+fmttime(time_t when, const char *fmt)
+{
+static char	 timebuf[40];
+static time_t	 lasttime;
+tm		*atm;
+	if (when == lasttime)
+		return timebuf;
+	lasttime = when;
+	atm = gmtime(&lasttime);
+	strftime(timebuf, sizeof(timebuf), fmt, atm);
+	return timebuf;
+}
+
 void doprint_willow(logent &e)
 {
-static	char	timebuf[25];
-static	time_t	lasttime;
-	if (*e.r_reqtime != lasttime) {
-	tm	*atm;
-		lasttime = *e.r_reqtime;
-		atm = gmtime(&lasttime);
-		strftime(timebuf, sizeof timebuf, "[%Y-%m-%d %H:%M:%S]", atm);
-	}
-static const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS" };
-	if (*e.r_reqtype >= sizeof(reqtypes) / sizeof(*reqtypes))
-		return;
-	fprintf(outfile, "%s %.*s %s \"%.*s\" %d %.*s %s\n", timebuf, (int)*e.r_clilen, e.r_cliaddr,
+	fprintf(outfile, "[%s] %.*s %s \"%.*s\" %d %.*s %s\n", fmttime(*e.r_reqtime, "%Y-%m-%d %H:%M:%S"), 
+		(int)*e.r_clilen, e.r_cliaddr,
 		reqtypes[*e.r_reqtype], (int)*e.r_pathlen, e.r_path, (int)*e.r_status,
 		(int)*e.r_belen, e.r_beaddr, *e.r_cached ? "HIT" : "MISS");
 }
@@ -88,18 +93,9 @@ static const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS" };
 static void
 doprint_clf(logent &e)
 {
-static	char	timebuf[40];
-static	time_t	lasttime;
-	if (*e.r_reqtime != lasttime) {
-	tm	*atm;
-		lasttime = *e.r_reqtime;
-		atm = gmtime(&lasttime);
-		strftime(timebuf, sizeof timebuf, "- - [%d/%b/%Y %H:%M:%S +0000]", atm);
-	}
-static const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS" };
-	if (*e.r_reqtype >= sizeof(reqtypes) / sizeof(*reqtypes))
-		return;
-	fprintf(outfile, "%.*s %s \"%s %.*s HTTP/1.0\" %d %lu\n", (int)*e.r_clilen, e.r_cliaddr, timebuf, 
+	fprintf(outfile, "%.*s - - [%s] \"%s %.*s HTTP/1.0\" %d %lu\n",
+		(int)*e.r_clilen, e.r_cliaddr,
+		fmttime(*e.r_reqtime, "%d/%b/%Y %H:%M:%S %z"), 
 		reqtypes[*e.r_reqtype], (int)*e.r_pathlen, e.r_path,
 		(int)*e.r_status, (unsigned long)*e.r_docsize);
 } 
@@ -107,17 +103,7 @@ static const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS" };
 static void
 doprint_squid(logent &e)
 {
-	iovec	vecs[12];
-	int	iovn = 0;
-static	char	timebuf[16];
-static	int	timebufl;
-static	time_t	lasttime;
-	if (*e.r_reqtime != lasttime)
-		sprintf(timebuf, "%ul.0", (unsigned long)*e.r_reqtime);
-static const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS" };
-	if (*e.r_reqtype >= sizeof(reqtypes) / sizeof(*reqtypes))
-		return;
-	fprintf(outfile, "%s      0 %.*s TCP_%s/%d %lu %s %.*s - ", timebuf,
+	fprintf(outfile, "%ul.0      0 %.*s TCP_%s/%d %lu %s %.*s - ", (unsigned long)*e.r_reqtime,
 		(int)*e.r_clilen, e.r_cliaddr, *e.r_cached ? "HIT" : "MISS",
 		(int)*e.r_status, (unsigned long)*e.r_docsize,
 		reqtypes[*e.r_reqtype], (int)*e.r_pathlen, e.r_path);
@@ -202,6 +188,8 @@ logent	e;
 	if (buf + 4 >= end)
 		return;
 	e.r_docsize = (uint32_t *)bufp;
+	if (*e.r_reqtype >= nreqtypes)
+		return;
 	doprint(e);
 }
 
