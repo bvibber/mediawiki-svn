@@ -277,6 +277,10 @@ conf
 		.value("use-carp",		simple_yesno,		set_yesno(config.use_carp))
 		.value("carp-hash",		func(v_carp_hash),	func(s_carp_hash))
 
+	.block("stats")
+		.value("port",		simple_range(0, 65535),		set_int(config.stats_port))
+		.value("interval",	simple_range(1, INT_MAX),	set_int(stats.interval))
+
 	.block("cache-dir", require_name)
 		.end(func(set_cache))
 		.value("size", simple_time, ignore)

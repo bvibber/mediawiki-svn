@@ -57,6 +57,8 @@ struct	cachedir	*caches;
 	}		 carp_hash;
 	radix		*v4_access;
 	radix		*v6_access;
+
+	int		 stats_port;
 } config;
 
 void wconfig_init(char const *);

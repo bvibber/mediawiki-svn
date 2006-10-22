@@ -177,12 +177,12 @@ init_fde(fde *fde)
 }
 
 int
-wnet_open(const char *desc, int aftype)
+wnet_open(const char *desc, int aftype, int type)
 {
 	int	fd, val;
 static int	last_nfile = 0;
 	time_t	now = time(NULL);
-	if ((fd = socket(aftype, SOCK_STREAM, IPPROTO_TCP)) < 0) {
+	if ((fd = socket(aftype, type, 0)) < 0) {
 		if (errno != ENFILE || now - last_nfile > 60) 
 			wlog(WLOG_WARNING, "socket: %s", strerror(errno));
 		if (errno == ENFILE)
@@ -445,4 +445,17 @@ int	i;
 	return res;
 }
 
+string
+fstraddr(string const &straddr, sockaddr const *addr, socklen_t len)
+{
+char	host[NI_MAXHOST];
+char	port[NI_MAXSERV];
+string	res;
+int	i;
+	if ((i = getnameinfo(addr, len, host, sizeof(host), port, sizeof(port), 
+			     NI_NUMERICHOST | NI_NUMERICSERV)) != 0)
+		return "";
+	return straddr + '[' + host + "]:" + port;
 }
+
+} // namespace wnet

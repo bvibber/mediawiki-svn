@@ -302,9 +302,11 @@ struct	http_client	*client = (http_client *)data;
 		client_send_error(client, ERR_BADREQUEST, ent_errors[-res], 400, "Bad request (#10.4.1)");
 		return;
 	} else if (res == -1) {
+		stats.cur.n_httpreq_fail++;
 		delete client;
 		return;
 	} else if (res == 1) {
+		stats.cur.n_httpreq_fail++;
 		delete client;
 		return;
 	}
@@ -529,6 +531,7 @@ struct	http_client	*client = (http_client *)data;
 	WDEBUG((WLOG_DEBUG, "client_headers_done: called"));
 	
 	if (res == -1) {
+		stats.cur.n_httpreq_fail++;		
 		delete client;
 		return;
 	} else if (res < -1 || res == 1) {
@@ -805,6 +808,10 @@ client_log_request(http_client *client)
 {
 	int	i;
 	
+	if (client->cl_entity->he_rdata.response.status == 200)
+		stats.cur.n_httpreq_ok++;
+	else	stats.cur.n_httpreq_fail++;
+
 	if (alf) {
 		i = fprintf(alf, "[%s] %s %s \"%s\" %lu %d %s %s\n",
 				current_time_short, client->cl_fde->fde_straddr,
@@ -846,25 +853,14 @@ client_log_request(http_client *client)
 		 * 8-bit value, 1 if the request was served from the cache and 0 if not.
 		 * docsize is the size of the response object, excluding headers.
 		 */
-#define HAS_SPACE(b,l) (((b) + (l)) < endp)
-#define ADD_UINT32(b,i)	if (HAS_SPACE(b,4)) { *(uint32_t*)b = i; b += 4; }
-#define ADD_UINT16(b,i)	if (HAS_SPACE(b,2)) { *(uint16_t*)b = i; b += 2; }
-#define ADD_UINT8(b,i)	if (HAS_SPACE(b,1)) { *(uint8_t*)b = i; b += 1; }
-#define ADD_STRING(b,s) do {	uint32_t len = strlen(s);		\
-				if (HAS_SPACE(b,4 + len)) {		\
-					ADD_UINT32(b,len);		\
-					memcpy(b, s, len);		\
-					b += len;			\
-				}					\
-			} while (0)
-		ADD_UINT32(bufp, (uint32_t)time(NULL));
-		ADD_STRING(bufp, client->cl_fde->fde_straddr);
-		ADD_UINT8(bufp, client->cl_reqtype);
-		ADD_STRING(bufp, client->cl_path);
-		ADD_UINT16(bufp, client->cl_entity->he_rdata.response.status);
-		ADD_STRING(bufp, client->cl_backend ? client->cl_backend->be_name.c_str() : "-");
-		ADD_UINT8(bufp, client->cl_flags.f_cached ? 1 : 0);
-		ADD_UINT32(bufp, client->cl_entity->he_size);
+		ADD_UINT32(bufp, (uint32_t)time(NULL), endp);
+		ADD_STRING(bufp, client->cl_fde->fde_straddr, endp);
+		ADD_UINT8(bufp, client->cl_reqtype, endp);
+		ADD_STRING(bufp, client->cl_path, endp);
+		ADD_UINT16(bufp, client->cl_entity->he_rdata.response.status, endp);
+		ADD_STRING(bufp, client->cl_backend ? client->cl_backend->be_name.c_str() : "-", endp);
+		ADD_UINT8(bufp, client->cl_flags.f_cached ? 1 : 0, endp);
+		ADD_UINT32(bufp, client->cl_entity->he_size, endp);
 		write(udplog_sock, buf, bufp - buf);
 	}
 }

@@ -54,6 +54,21 @@ struct readbuf {
 #define readbuf_inc_data_pos(b, i) ((b)->rb_dpos += (i))
 #define readbuf_cur_pos(b) ((b)->rb_p + (b)->rb_dpos)
 
+/*
+ * For working with packed UDP data.
+ */
+#define HAS_SPACE(b,l,endp)	(((b) + (l)) < endp)
+#define ADD_UINT32(b,i,endp)	if (HAS_SPACE(b,4,endp)) { *(uint32_t*)b = i; b += 4; }
+#define ADD_UINT16(b,i,endp)	if (HAS_SPACE(b,2,endp)) { *(uint16_t*)b = i; b += 2; }
+#define ADD_UINT8(b,i,endp)	if (HAS_SPACE(b,1,endp)) { *(uint8_t*)b = i; b += 1; }
+#define ADD_STRING(b,s,endp) do {	uint16_t len = strlen(s);		\
+					if (HAS_SPACE(b,2 + len,endp)) {	\
+						ADD_UINT16(b,len,endp);		\
+						memcpy(b, s, len);		\
+						b += len;			\
+					}					\
+				} while (0)
+
 struct fde {
 	int		 fde_fd;
 	const char	*fde_desc;
@@ -91,7 +106,7 @@ void wnet_init(void);
 void wnet_run(void);
 
 void wnet_register(int, int, fdcb, void *);
-int wnet_open(const char *desc, int aftype);
+int wnet_open(const char *desc, int aftype, int type = SOCK_STREAM);
 void wnet_close(int);
 void wnet_write(int, const void *, size_t, fdwcb, void *, int);
 int wnet_sendfile(int, int, size_t, off_t, fdwcb, void *, int);
@@ -106,6 +121,7 @@ void readbuf_free(struct readbuf *);
 namespace wnet {	/* things above should move here eventually */
 
 	string			straddr(sockaddr const *addr, socklen_t len);
+	string			fstraddr(string const &, sockaddr const *addr, socklen_t len);
 	vector<addrinfo>	nametoaddrs(string const &name, int port);
 	string			reserror(int);
 

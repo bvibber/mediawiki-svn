@@ -2,7 +2,7 @@
 #
 # src/ makefile.
 
-SUBDIRS=willow wreadlog
+SUBDIRS=willow wreadlog wgetstats
 
 @include@ @q@@top_srcdir@/mk/subdir.mk@q@
 

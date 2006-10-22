@@ -100,6 +100,16 @@ fi
 
 rm -f conftest.c conftest.h
 
+AC_MSG_CHECKING([for GNU make])
+if `make --version 2>&1 | grep '^GNU Make' >/dev/null`; then
+        AC_MSG_RESULT(yes)
+        M_FLAGS=--no-print-directory
+else
+        AC_MSG_RESULT(no)
+        M_FLAGS=""
+fi
+AC_SUBST(M_FLAGS)
+
 AC_SUBST(dependstyle)
 
 echo ""
@@ -148,4 +158,5 @@ AC_OUTPUT(
 	src/Makefile 
 	src/willow/Makefile
 	src/wreadlog/Makefile
+	src/wgetstats/Makefile
 	errors/Makefile)

@@ -28,6 +28,8 @@
 #include "wcache.h"
 #include "confparse.h"
 
+static void stats_init(void);
+
 static const char *progname;
 
 #define min(x,y) ((x) < (y) ? (x) : (y))
@@ -133,6 +135,7 @@ main(int argc, char *argv[])
 	whttp_init();
 	wnet_init();
 	wcache_init(1);
+	stats_init();
 
 	(void)signal(SIGINT, sig_exit);
 	(void)signal(SIGTERM, sig_exit);
@@ -281,3 +284,102 @@ int char_table[256] = {
 	/* 240 */ 0, 0, 0, 0, 0, 0, 0, 0,
 	/* 248 */ 0, 0, 0, 0, 0, 0, 0, 0,
 };
+
+stats_stru stats;
+static struct event stats_ev;
+static struct timeval stats_tv;
+static void stats_sched(void);
+
+static void
+stats_cb(fde *e)
+{
+char	buf[65535], *bufp = buf, *endp = buf + sizeof(buf);
+char	rdata[3];
+int	i;
+sockaddr_storage	ss;
+socklen_t		sslen = sizeof(ss);
+	if (recvfrom(e->fde_fd, rdata, sizeof(rdata), 0, (sockaddr *)&ss, &sslen) != 2)
+		return;
+	if (rdata[0] != 1 || rdata[1] != 0)
+		return;
+
+	/*
+	 * Stats format:
+	 *   <version><treqok><treqfail><trespok><trespfail><reqoks><respoks>
+	 *   <reqfails><respfails>
+	 */
+	ADD_UINT8(bufp, 1, endp);		/* stats format version */
+	ADD_STRING(bufp, PACKAGE_VERSION, endp);
+	ADD_UINT32(bufp, stats.cur.n_httpreq_ok, endp);
+	ADD_UINT32(bufp, stats.cur.n_httpreq_fail, endp);
+	ADD_UINT32(bufp, stats.cur.n_httpresp_ok, endp);
+	ADD_UINT32(bufp, stats.cur.n_httpresp_fail, endp);
+	ADD_UINT32(bufp, stats.n_httpreq_oks, endp);
+	ADD_UINT32(bufp, stats.n_httpresp_oks, endp);
+	ADD_UINT32(bufp, stats.n_httpreq_fails, endp);
+	ADD_UINT32(bufp, stats.n_httpresp_fails, endp);
+	sendto(e->fde_fd, buf, bufp - buf, 0, (sockaddr *)&ss, sslen);
+}
+
+static void
+stats_update(int, short, void *)
+{
+	stats.n_httpreq_oks = (stats.cur.n_httpreq_ok - stats.last.n_httpreq_ok) / stats.interval;
+	stats.n_httpreq_fails = (stats.cur.n_httpreq_fail - stats.last.n_httpreq_fail) / stats.interval;
+	stats.n_httpresp_oks = (stats.cur.n_httpresp_ok - stats.last.n_httpresp_ok) / stats.interval;
+	stats.n_httpresp_fails = (stats.cur.n_httpresp_fail - stats.last.n_httpresp_fail) / stats.interval;
+	stats.last = stats.cur;
+
+	stats_sched();
+}
+
+static void
+stats_init(void)
+{
+addrinfo	hints, *res, *r;
+int		i;
+char		portstr[6];
+	if (!config.stats_port)
+		return;
+
+	/*
+	 * Create the UDP listener.
+	 */
+	sprintf(portstr, "%d", config.stats_port);
+	memset(&hints, 0, sizeof(hints));
+	hints.ai_socktype = SOCK_DGRAM;
+	if ((i = getaddrinfo(NULL, portstr, &hints, &res)) != 0) {
+		wlog(WLOG_WARNING, "resolving statistics listener: %s: %s",
+			portstr, strerror(errno));
+		return;
+	}
+	for (r = res; r; r = r->ai_next) {
+	int	sfd;
+		if ((sfd = wnet_open("statistics listener", r->ai_family, r->ai_socktype)) == -1) {
+			wlog(WLOG_WARNING, "creating statistics listener: %s", strerror(errno));
+			continue;
+		}
+		if (bind(sfd, r->ai_addr, r->ai_addrlen) < 0) {
+			wlog(WLOG_WARNING, "binding %s: %s", wnet::fstraddr("", r->ai_addr, r->ai_addrlen).c_str(),
+				strerror(errno));
+			wnet_close(sfd);
+			continue;
+		}
+		wnet_register(sfd, FDE_READ, stats_cb, NULL);
+		wlog(WLOG_NOTICE, "statistics listener: %s", wnet::fstraddr("", r->ai_addr, r->ai_addrlen).c_str());
+	}
+	freeaddrinfo(r);
+	stats_sched();
+}
+
+/*
+ * Schedule the update event.
+ */
+static void
+stats_sched(void)
+{
+	stats_tv.tv_usec = 0;
+	stats_tv.tv_sec = stats.interval;
+	evtimer_set(&stats_ev, stats_update, NULL);
+	event_add(&stats_ev, &stats_tv);
+}

@@ -107,10 +107,32 @@ extern int char_table[];
 
 #if defined(__GNUC__) || defined(__INTEL_COMPILER)
 # define likely(c) __builtin_expect((c), 1)
-# define unlikely(c) __buildin_expect((c), 0)
+# define unlikely(c) __builtin_expect((c), 0)
 #else
 # define likely(c) c
 # define unlikely(c) c
 #endif
+
+extern struct stats_stru {
+	int	interval;	/* update interval	*/
+
+	/*
+	 * Absolute values.
+	 */
+	struct {
+		uint64_t	n_httpreq_ok;		/* requests which were sent to a backend		*/
+		uint64_t	n_httpreq_fail;		/* requests which did not reach a backend		*/
+		uint64_t	n_httpresp_ok;		/* backend responses with status 200			*/
+		uint64_t	n_httpresp_fail;	/* backend responses with status other than 200		*/
+	} cur, last;
+
+	/*
+	 * Averages.
+	 */
+	uint32_t	n_httpreq_oks;		/* httpreq_ok per sec		*/
+	uint32_t	n_httpreq_fails;	/* httpreq_fail per sec		*/
+	uint32_t	n_httpresp_oks;		/* httpresp_ok per sec		*/
+	uint32_t	n_httpresp_fails;	/* httpresp_fail per sec	*/
+} stats;
 
 #endif

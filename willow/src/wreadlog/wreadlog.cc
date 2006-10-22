@@ -56,7 +56,7 @@ static acl acl4(AF_INET, "IPv4 ACL")
 
 struct logent {
 	uint32_t	*r_reqtime;
-	uint32_t	*r_clilen, *r_pathlen, *r_belen;
+	uint16_t	*r_clilen, *r_pathlen, *r_belen;
 	char		*r_cliaddr;
 	uint8_t		*r_reqtype;
 	char		*r_path;
@@ -216,13 +216,13 @@ const aclnode	*an;
 			}
 logent	e;
 	e.r_reqtime = (uint32_t *) bufp;	GET_BYTES(4);
-	e.r_clilen  = (uint32_t *) bufp;	GET_BYTES(4);
+	e.r_clilen  = (uint16_t *) bufp;	GET_BYTES(2);
 	e.r_cliaddr = (char *)     bufp;	GET_BYTES(*e.r_clilen);
 	e.r_reqtype = (uint8_t *)  bufp;	GET_BYTES(1);
-	e.r_pathlen = (uint32_t *) bufp;	GET_BYTES(4);
+	e.r_pathlen = (uint16_t *) bufp;	GET_BYTES(2);
 	e.r_path    = (char *)     bufp;	GET_BYTES(*e.r_pathlen);
 	e.r_status  = (uint16_t *) bufp;	GET_BYTES(2);
-	e.r_belen   = (uint32_t *) bufp;	GET_BYTES(4);
+	e.r_belen   = (uint16_t *) bufp;	GET_BYTES(2);
 	e.r_beaddr  = (char *)     bufp;	GET_BYTES(*e.r_belen);
 	e.r_cached =  (uint8_t *)  bufp;	GET_BYTES(1);
 	if (buf + 4 >= end)
