@@ -46,7 +46,7 @@ static acl acl4(AF_INET, "IPv4 ACL")
 #endif
 	;
 
-static int outfd = 1; /* stdout */
+FILE *outfile = stdout;
 
 static void handle_packet(int fd);
 
@@ -67,77 +67,41 @@ static void doprint_willow (logent &);
 static void doprint_clf (logent &);
 static void doprint_squid (logent &);
 
-#define IOV(s,l) do {	vecs[iovn].iov_base = (void *)s;	\
-			vecs[iovn].iov_len = l;			\
-			iovn++;					\
-		} while (0)
-
 void doprint_willow(logent &e)
 {
-	iovec	vecs[11];
-	int	iovn = 0;
 static	char	timebuf[25];
-	int	timebufl;
 static	time_t	lasttime;
 	if (*e.r_reqtime != lasttime) {
 	tm	*atm;
 		lasttime = *e.r_reqtime;
 		atm = gmtime(&lasttime);
-		strftime(timebuf, sizeof timebuf, "[%Y-%m-%d %H:%M:%S] ", atm);
-		timebufl = strlen(timebuf);
+		strftime(timebuf, sizeof timebuf, "[%Y-%m-%d %H:%M:%S]", atm);
 	}
-	IOV(timebuf, timebufl);
-	IOV(e.r_cliaddr, *e.r_clilen);
-	IOV(" ", 1);
-static const char *reqtypes[] = { "GET \"", "POST \"", "HEAD \"", "TRACE \"", "OPTIONS \"" };
+static const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS" };
 	if (*e.r_reqtype >= sizeof(reqtypes) / sizeof(*reqtypes))
 		return;
-	IOV(reqtypes[*e.r_reqtype], strlen(reqtypes[*e.r_reqtype]));
-	IOV(e.r_path, *e.r_pathlen);
-	IOV("\" ", 2);
-char	statstr[6];
-	sprintf(statstr, "%d ", *e.r_status);
-	IOV(statstr, strlen(statstr));
-	IOV(e.r_beaddr, *e.r_belen);
-	IOV(" ", 1);
-	if (*e.r_cached)
-		IOV("HIT", 3);
-	else	IOV("MISS", 4);
-	IOV("\n", 1);
-	writev(outfd, vecs, sizeof (vecs) / sizeof(*vecs));
+	fprintf(outfile, "%s %.*s %s \"%.*s\" %d %.*s %s\n", timebuf, (int)*e.r_clilen, e.r_cliaddr,
+		reqtypes[*e.r_reqtype], (int)*e.r_pathlen, e.r_path, (int)*e.r_status,
+		(int)*e.r_belen, e.r_beaddr, *e.r_cached ? "HIT" : "MISS");
 }
 
 static void
 doprint_clf(logent &e)
 {
-	iovec	vecs[8];
-	int	iovn = 0;
 static	char	timebuf[40];
-	int	timebufl;
 static	time_t	lasttime;
 	if (*e.r_reqtime != lasttime) {
 	tm	*atm;
 		lasttime = *e.r_reqtime;
 		atm = gmtime(&lasttime);
-		strftime(timebuf, sizeof timebuf, " - - [%d/%b/%Y %H:%M:%S +0000] ", atm);
-		timebufl = strlen(timebuf);
+		strftime(timebuf, sizeof timebuf, "- - [%d/%b/%Y %H:%M:%S +0000]", atm);
 	}
-	IOV(e.r_cliaddr, *e.r_clilen);
-	IOV(timebuf, timebufl);
-static const char *reqtypes[] = { "\"GET ", "\"POST ", "\"HEAD ", "\"TRACE ", "\"OPTIONS " };
+static const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS" };
 	if (*e.r_reqtype >= sizeof(reqtypes) / sizeof(*reqtypes))
 		return;
-	IOV(reqtypes[*e.r_reqtype], strlen(reqtypes[*e.r_reqtype]));
-	IOV(e.r_path, *e.r_pathlen);
-	IOV(" HTTP/1.0\" ", 11);
-char	tmpstr[16], tmpstr2[16];
-int	tlen, tlen2;
-	tlen = sprintf(tmpstr, "%d", *e.r_status);
-	IOV(tmpstr, tlen);
-	tlen2 = sprintf(tmpstr2, " %d", *e.r_docsize);
-	IOV(tmpstr2, tlen2);
-	IOV("\n", 1);
-	writev(outfd, vecs, sizeof (vecs) / sizeof(*vecs));
+	fprintf(outfile, "%.*s %s \"%s %.*s HTTP/1.0\" %d %lu\n", (int)*e.r_clilen, e.r_cliaddr, timebuf, 
+		reqtypes[*e.r_reqtype], (int)*e.r_pathlen, e.r_path,
+		(int)*e.r_status, (unsigned long)*e.r_docsize);
 } 
 
 static void
@@ -149,29 +113,17 @@ static	char	timebuf[16];
 static	int	timebufl;
 static	time_t	lasttime;
 	if (*e.r_reqtime != lasttime)
-		timebufl = sprintf(timebuf, "%ul.0 ", (unsigned long)*e.r_reqtime);
-	IOV(timebuf, timebufl);
-	IOV("     0 ", 7);	/* should be time to process request */
-	IOV(e.r_cliaddr, *e.r_clilen);
-	if (*e.r_cached)
-		IOV(" TCP_HIT/", 9);
-	else	IOV(" TCP_MISS/", 10);
-char	tmpstr[16], tmpstr2[16];
-int	tlen, tlen2;
-	tlen = sprintf(tmpstr, "%d ", *e.r_status);
-	IOV(tmpstr, tlen);
-	tlen2 = sprintf(tmpstr2, "%d", *e.r_docsize);
-	IOV(tmpstr2, tlen2);
-static const char *reqtypes[] = { " GET ", " POST ", " HEAD ", " TRACE ", " OPTIONS " };
+		sprintf(timebuf, "%ul.0", (unsigned long)*e.r_reqtime);
+static const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS" };
 	if (*e.r_reqtype >= sizeof(reqtypes) / sizeof(*reqtypes))
 		return;
-	IOV(reqtypes[*e.r_reqtype], strlen(reqtypes[*e.r_reqtype]));
-	IOV(e.r_path, *e.r_pathlen);
-	IOV(" - PARENT_HIT/", 15);
-	IOV(e.r_beaddr, *e.r_belen);
-	IOV(" -", 2);	/* should be mime type */
-	IOV("\n", 1);
-	writev(outfd, vecs, sizeof (vecs) / sizeof(*vecs));
+	fprintf(outfile, "%s      0 %.*s TCP_%s/%d %lu %s %.*s - ", timebuf,
+		(int)*e.r_clilen, e.r_cliaddr, *e.r_cached ? "HIT" : "MISS",
+		(int)*e.r_status, (unsigned long)*e.r_docsize,
+		reqtypes[*e.r_reqtype], (int)*e.r_pathlen, e.r_path);
+	if (!*e.r_cached)
+		fprintf(outfile, "PARENT_HIT/%.*s -\n", (int)*e.r_belen, e.r_beaddr);
+	else	fprintf(outfile, "NONE/- -\n");
 }
 
 static void
@@ -271,8 +223,8 @@ usage(const char *progname)
 "\t           (default: allow all addresses)\n"
 "\t-f <format>  output logs in this format\n"
 "\t           (one of: \"willow\" (default), \"clf\", \"squid\")\n"
-"\t-F <file>    become a daemon and write to this file instead of\n"
-"\t             stdout\n"
+"\t-F <file>    write to this file instead of stdout\n"
+"\t-d           become a daemon after startup\n"
 		, progname);
 }
 
@@ -285,15 +237,19 @@ const char	*port = "4445", *host = NULL;
 char		*progname = argv[0];
 struct sockaddr_in servaddr, cliaddr;
 struct addrinfo hints, *res;
+bool		 daemon = false;
 	memset(&hints, 0, sizeof(hints));
 	doprint = doprint_willow;
-	while ((i = getopt(argc, argv, "h46a:p:f:s:F:")) != -1) {
+	while ((i = getopt(argc, argv, "h46a:p:f:s:F:d")) != -1) {
                 switch (i) {
 		case '4':
 			hints.ai_family = AF_INET;
 			break;
 		case '6':
 			hints.ai_family = AF_INET6;
+			break;
+		case 'd':
+			daemon = true;
 			break;
 		case 'p':
 			port = optarg;
@@ -347,7 +303,7 @@ struct addrinfo hints, *res;
 			break;
 		}
 		case 'F':
-			if ((outfd = open(optarg, O_RDWR|O_APPEND|O_CREAT, 0666)) == -1) {
+			if ((outfile = fopen(optarg, "a")) == NULL) {
 				fprintf(stderr, "%s: %s: %s\n", argv[0], optarg, strerror(errno));
 				return 1;
 			}
@@ -403,7 +359,7 @@ struct addrinfo hints, *res;
 
 	freeaddrinfo(res);
 
-	if (outfd != 1) {
+	if (daemon) {
 		switch (fork()) {
 		case -1:
 			fprintf(stderr, "%s: cannot fork: %s\n", progname, strerror(errno));
