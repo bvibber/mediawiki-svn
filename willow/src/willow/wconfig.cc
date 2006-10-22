@@ -167,53 +167,46 @@ string	&s = v.cv_values[0].av_strval;
 }
 
 static void
-set_access_v4(tree_entry &e)
+radix_from_list(tree_entry &e, radix *rad)
 {
-value		*allow, *deny;
+value		*val;
 radix_node	*r;
-	config.v4_access = new radix;
-	if ((allow = e/"allow") != NULL) {
-	vector<avalue>::iterator	it = allow->cv_values.begin(),
-					end = allow->cv_values.end();
+int		 immed = 0;
+	if ((val = e/"apply-at") != NULL)
+		if (val->cv_values[0].av_strval == "connect")
+			immed = RFL_CONNECT;
+
+	if ((val = e/"allow") != NULL) {
+	vector<avalue>::iterator	it = val->cv_values.begin(),
+					end = val->cv_values.end();
 		for (; it != end; ++it) {
-			r = radix_add(config.v4_access, it->av_strval.c_str());
-			r->flags = RFL_ALLOW;
+			r = radix_add(rad, it->av_strval.c_str());
+			r->flags = RFL_ALLOW | immed;
 		}
 	}
 
-	if ((deny = e/"deny") != NULL) {
-	vector<avalue>::iterator	it = deny->cv_values.begin(),
-					end = deny->cv_values.end();
+	if ((val = e/"deny") != NULL) {
+	vector<avalue>::iterator	it = val->cv_values.begin(),
+					end = val->cv_values.end();
 		for (; it != end; ++it) {
-			r = radix_add(config.v4_access, it->av_strval.c_str());
-			r->flags = RFL_DENY;
+			r = radix_add(rad, it->av_strval.c_str());
+			r->flags = RFL_DENY | immed;
 		}
 	}
 }
 
 static void
+set_access_v4(tree_entry &e)
+{
+	config.v4_access = new radix;
+	radix_from_list(e, config.v4_access);
+}
+
+static void
 set_access_v6(tree_entry &e)
 {
-value		*allow, *deny;
-radix_node	*r;
 	config.v6_access = new radix;
-	if ((allow = e/"allow") != NULL) {
-	vector<avalue>::iterator	it = allow->cv_values.begin(),
-					end = allow->cv_values.end();
-		for (; it != end; ++it) {
-			r = radix_add(config.v6_access, it->av_strval.c_str());
-			r->flags = RFL_ALLOW;
-		}
-	}
-
-	if ((deny = e/"deny") != NULL) {
-	vector<avalue>::iterator	it = deny->cv_values.begin(),
-					end = deny->cv_values.end();
-		for (; it != end; ++it) {
-			r = radix_add(config.v6_access, it->av_strval.c_str());
-			r->flags = RFL_DENY;
-		}
-	}
+	radix_from_list(e, config.v6_access);
 }
 
 static bool
@@ -238,6 +231,21 @@ prefix	p;
 			v.report_error("%s: prefix length is too long for address family", it->av_strval.c_str());
 			return false;
 		}
+	}
+	return true;
+}
+
+bool
+v_apply_at(tree_entry &e, value &v)
+{
+	if (!v.is_single(cv_string)) {
+		v.report_error("apply-at must be single unquoted string");
+		return false;
+	}
+string	&s = v.cv_values[0].av_strval;
+	if (s != "connect" && s != "request") {
+		v.report_error("expected \"connect\" or \"request\"");
+		return false;
 	}
 	return true;
 }
@@ -287,11 +295,13 @@ conf
 		.end(func(set_access_v4))
 		.value("allow",		func(radix_prefix),	ignore)
 		.value("deny",		func(radix_prefix),	ignore)
+		.value("apply-at",	func(v_apply_at),	ignore)
 
 	.block("access-v6")
 		.end(func(set_access_v6))
 		.value("allow",		func(radix_prefix),	ignore)
 		.value("deny",		func(radix_prefix),	ignore)
+		.value("apply-at",	func(v_apply_at),	ignore)
 	;
 
 	if ((t = conf::parse_file(file)) == NULL)

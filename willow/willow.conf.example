@@ -161,6 +161,11 @@ log {
  *
  * There is no default-deny.  To deny access by default, add a deny entry for
  * all addresses (0.0.0.0/0 in IPv4 or ::0/0 in IPv6).
+ *
+ * If "apply-at = connect;" is set in an access block, clients matching a
+ * deny rule in that block will be disconnected immediately, without waiting
+ * for a request or sending any error message.  You can specify multiple
+ * access blocks, with or without apply-at; they will be merged.
  */
 
 access-v4 {

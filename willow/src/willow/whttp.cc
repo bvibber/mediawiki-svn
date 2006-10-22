@@ -88,10 +88,11 @@ struct http_client : freelist_allocator<http_client> {
 		~http_client() {
 			if (cl_wrtbuf)
 				wfree(cl_wrtbuf);
-			if (cl_path)
-				wfree(cl_path);
+			wfree(cl_path);
 			delete cl_entity;
 			wnet_close(cl_fde->fde_fd);
+			if (cl_blockednet)
+				wfree(cl_blockednet);
 			if (cl_backendfde)
 				wnet_close(cl_backendfde->fde_fd);
 		}
@@ -112,7 +113,9 @@ struct	cache_object	*cl_co;		/* Cache object				*/
 		unsigned int	f_cached:1;
 		unsigned int	f_closed:1;
 		unsigned int	f_http11:1;	/* Client understands HTTP/1.1		*/
+		unsigned int	f_blocked:1;
 	}		 cl_flags;
+	char		*cl_blockednet;
 	size_t		 cl_dsize;	/* Object size				*/
 enum	encoding	 cl_enc;
 struct	http_client	*fe_next;	/* freelist 				*/
@@ -249,11 +252,31 @@ http_new(fde *e)
 {
 struct	http_client	*cl;
 
+radix_node	*r;
+char	*blknet = NULL;
+	if (	(e->fde_cdata->cdat_addr.ss_family == AF_INET
+	         && (r = radix_search(config.v4_access, e->fde_straddr)) 
+	         && (r->flags & RFL_DENY))
+	    ||	(e->fde_cdata->cdat_addr.ss_family == AF_INET6
+	         && (r = radix_search(config.v6_access, e->fde_straddr))
+	         && (r->flags & RFL_DENY)))
+	{
+		if (r->flags & RFL_CONNECT) {
+			wnet_close(e->fde_fd);
+			return;
+		}
+
+		blknet = wstrdup(r->prefix->tostring());
+	}
+
 	cl = new http_client(e);
 	cl->cl_entity->he_source_type = ENT_SOURCE_FDE;
 	cl->cl_entity->he_source.fde.fde = e;
 	cl->cl_entity->he_rdata.request.contlen = -1;
-		
+
+	cl->cl_blockednet = blknet;
+	cl->cl_flags.f_blocked = blknet != NULL;
+
 	WDEBUG((WLOG_DEBUG, "http_new: starting header read for %d", cl->cl_fde->fde_fd));
 	entity_read_headers(cl->cl_entity, client_read_done, cl);
 }
@@ -306,19 +329,12 @@ struct	http_client	*client = (http_client *)data;
 				client->cl_entity->he_rdata.request.path);
 	}
 
-radix_node	*r;
-	if (	(client->cl_fde->fde_cdata->cdat_addr.ss_family == AF_INET
-	         && (r = radix_search(config.v4_access, client->cl_fde->fde_straddr)) 
-	         && (r->flags & RFL_DENY))
-	    ||	(client->cl_fde->fde_cdata->cdat_addr.ss_family == AF_INET6
-	         && (r = radix_search(config.v6_access, client->cl_fde->fde_straddr))
-	         && (r->flags & RFL_DENY)))
-	{
-		client_send_error(client, ERR_BLOCKED, r->prefix->tostring(), 403, "Access denied");
+	client->cl_reqtype = client->cl_entity->he_rdata.request.reqtype;
+
+	if (client->cl_flags.f_blocked) {
+		client_send_error(client, ERR_BLOCKED, client->cl_blockednet, 403, "Access denied");
 		return;
 	}
-   	
-	client->cl_reqtype = client->cl_entity->he_rdata.request.reqtype;
 
 	pragma = entity->he_h_pragma;
 	cache_control = entity->he_h_cache_control;

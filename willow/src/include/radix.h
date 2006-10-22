@@ -25,6 +25,7 @@
 
 #define	RFL_ALLOW	0x01
 #define RFL_DENY	0x02
+#define RFL_CONNECT	0x04
 
 typedef void (*void_fn_t)();
 
