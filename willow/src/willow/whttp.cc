@@ -779,10 +779,11 @@ client_log_request(http_client *client)
 	int	i;
 	
 	if (alf) {
-		i = fprintf(alf, "[%s] %s %s \"%s\" %d %s %s\n",
+		i = fprintf(alf, "[%s] %s %s \"%s\" %lu %d %s %s\n",
 				current_time_short, client->cl_fde->fde_straddr,
 				request_string[client->cl_reqtype],
-				client->cl_path, client->cl_entity->he_rdata.response.status,
+				client->cl_path, client->cl_entity->he_size,
+				client->cl_entity->he_rdata.response.status,
 				client->cl_backend ? client->cl_backend->be_name.c_str() : "-",
 				client->cl_flags.f_cached ? "HIT" : "MISS");
 		if (i < 0) {
@@ -838,14 +839,6 @@ client_log_request(http_client *client)
 		ADD_UINT8(bufp, client->cl_flags.f_cached ? 1 : 0);
 		ADD_UINT32(bufp, client->cl_entity->he_size);
 		write(udplog_sock, buf, bufp - buf);
-#if 0
-		if (write(udplog_sock, buf, bufp - buf) < 0) {
-			wlog(WLOG_ERROR, "writing to UDP log host: %s", strerror(errno));
-			close(udplog_sock);
-			udplog_sock = 0;
-			config.udp_log = false;
-		}
-#endif
 	}
 }
 

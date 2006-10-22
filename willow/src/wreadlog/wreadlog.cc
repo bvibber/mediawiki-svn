@@ -87,9 +87,10 @@ tm		*atm;
 
 void doprint_willow(logent &e)
 {
-	fprintf(outfile, "[%s] %.*s %s \"%.*s\" %d %.*s %s\n", fmttime(*e.r_reqtime, "%Y-%m-%d %H:%M:%S"), 
+	fprintf(outfile, "[%s] %.*s %s \"%.*s\" %lu %d %.*s %s\n", fmttime(*e.r_reqtime, "%Y-%m-%d %H:%M:%S"), 
 		(int)*e.r_clilen, e.r_cliaddr,
-		reqtypes[*e.r_reqtype], (int)*e.r_pathlen, e.r_path, (int)*e.r_status,
+		reqtypes[*e.r_reqtype], (int)*e.r_pathlen, e.r_path, 
+		(unsigned long)*e.r_docsize, (int)*e.r_status,
 		(int)*e.r_belen, e.r_beaddr, *e.r_cached ? "HIT" : "MISS");
 }
 
