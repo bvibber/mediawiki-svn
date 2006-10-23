@@ -368,9 +368,9 @@ static	char const	*rnrn = "\r\n\r\n";
 
 		if ((found = find_rnrn(buf, end)) == NULL) {
 			// need more data
-			entity->_he_hdroff = min(buf, end - 4) - buf;
-			WDEBUG((WLOG_DEBUG, "entity_read_callback: need more data, read %d [%s]", 
-				end - buf, buf));
+			entity->_he_hdroff = max(buf, min(buf, end - 4)) - buf;
+			WDEBUG((WLOG_DEBUG, "entity_read_callback: need more data, read %d [%s], hdroff=%d", 
+				end - buf, buf, entity->_he_hdroff));
 			return;
 		}
 
