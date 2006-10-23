@@ -190,11 +190,12 @@ access-v6 {
 stats {
 	enable = yes;
 
+	/* Addresses to listen on */
+	listen = "127.0.0.1";	/* port defaults to 4446 */;
+	listen = "[::1]:4447";
+
 	/* How often to re-calculate averages (default: 300) */
 	interval = 30;
-
-	/* Default port is 4446 */
-	port = 4446;
 
 	/*
 	 * Only allow stats requests from certain networks.  If you specify

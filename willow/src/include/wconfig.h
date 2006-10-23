@@ -16,8 +16,10 @@
 #include <netinet/in.h>
 
 #include <string>
-using std::string;
 #include <vector>
+#include <utility>
+using std::pair;
+using std::string;
 using std::vector;
 
 struct listener {
@@ -34,7 +36,7 @@ struct cachedir {
 };
 
 #define DEFAULT_STATS_INTERVAL	300
-#define DEFAULT_STATS_PORT	4446
+#define DEFAULT_STATS_PORT	"4446"
 
 struct radix;
 extern struct configuration {
@@ -61,8 +63,7 @@ struct	cachedir	*caches;
 	radix		*v4_access;
 	radix		*v6_access;
 	bool		 udp_stats;
-	int		 stats_port;
-	string		 stats_host;
+	vector<pair<string, string> >		 stats_hosts;
 } config;
 
 void wconfig_init(char const *);

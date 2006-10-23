@@ -290,6 +290,7 @@ stats_stru stats;
 static struct event stats_ev;
 static struct timeval stats_tv;
 static void stats_sched(void);
+void add_stats_listener(pair<string,string> const &ip);
 
 static void
 stats_cb(fde *e)
@@ -348,22 +349,31 @@ stats_update(int, short, void *)
 static void
 stats_init(void)
 {
-addrinfo	 hints, *res, *r;
-int		 i;
-char		 portstr[6];
-const char	*hoststr = config.stats_host.empty()? NULL: config.stats_host.c_str();
 	if (!config.udp_stats)
 		return;
 
-	/*
-	 * Create the UDP listener.
-	 */
-	sprintf(portstr, "%d", config.stats_port);
+vector<pair<string,string> >::iterator	it = config.stats_hosts.begin(),
+					end = config.stats_hosts.end();
+	for (; it != end; ++it)
+		add_stats_listener(*it);
+	stats_sched();
+}
+
+void
+add_stats_listener(pair<string,string> const &ip)
+{
+const char	*hstr = NULL, *pstr = DEFAULT_STATS_PORT;
+addrinfo	 hints, *res, *r;
+int		 i;
+	if (!ip.first.empty())
+		hstr = ip.first.c_str();
+	if (!ip.second.empty())
+		pstr = ip.second.c_str();
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_socktype = SOCK_DGRAM;
-	if ((i = getaddrinfo(hoststr, portstr, &hints, &res)) != 0) {
-		wlog(WLOG_WARNING, "resolving statistics listener: %s: %s",
-			portstr, strerror(errno));
+	if ((i = getaddrinfo(hstr, pstr, &hints, &res)) != 0) {
+		wlog(WLOG_WARNING, "resolving [%s]:%s: %s",
+			hstr, pstr, gai_strerror(i));
 		return;
 	}
 	for (r = res; r; r = r->ai_next) {
@@ -374,17 +384,16 @@ const char	*hoststr = config.stats_host.empty()? NULL: config.stats_host.c_str()
 		}
 		if (bind(sfd, r->ai_addr, r->ai_addrlen) < 0) {
 			wlog(WLOG_WARNING, "binding %s: %s",
-				wnet::fstraddr(config.stats_host, r->ai_addr, r->ai_addrlen).c_str(),
+				wnet::fstraddr(ip.first, r->ai_addr, r->ai_addrlen).c_str(),
 				strerror(errno));
 			wnet_close(sfd);
 			continue;
 		}
 		wnet_register(sfd, FDE_READ, stats_cb, NULL);
 		wlog(WLOG_NOTICE, "statistics listener: %s", 
-			wnet::fstraddr(config.stats_host, r->ai_addr, r->ai_addrlen).c_str());
+			wnet::fstraddr(ip.first, r->ai_addr, r->ai_addrlen).c_str());
 	}
 	freeaddrinfo(r);
-	stats_sched();
 }
 
 /*

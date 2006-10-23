@@ -18,11 +18,13 @@
 #include <string>
 #include <map>
 #include <vector>
-#include <assert.h>
+#include <utility>
+#include <cassert>
 
 using std::string;
 using std::map;
 using std::vector;
+using std::pair;
 
 #include "willow.h"
 
@@ -142,8 +144,8 @@ struct tree {
 	tree_entry	*find_item	(tree_entry const &);
 	tree_entry	*find		(string const &key);
 	tree_entry	*find		(string const &key, string const &name);
-	tree_entry	*find_or_new(string const &block, string const &name, declpos const &pos,
-				      bool unnamed, bool is_template);
+	tree_entry	*find_or_new	(string const &block, string const &name, declpos const &pos,
+					 bool unnamed, bool is_template);
 
 	vector<tree_entry>	entries;
 };
@@ -162,6 +164,8 @@ typedef bool (*function) (tree_entry &, value &);
 struct value_definer;
 struct block_definer;
 struct conf_definer;
+
+bool parse_ip (string const &, pair<string,string> &);
 
 template<typename ret>
 struct callable {
@@ -260,6 +264,42 @@ typedef nonempty_astring<cv_string> nonempty_string_t;
 typedef nonempty_astring<cv_qstring> nonempty_qstring_t;
 extern nonempty_string_t nonempty_string;
 extern nonempty_qstring_t nonempty_qstring;
+
+struct ip_address_list_t : callable<bool> {
+	bool operator() (tree_entry &e, value &v) const {
+	pair<string,string>	ip;
+	vector<avalue>::iterator	it = v.cv_values.begin(),
+					end = v.cv_values.end();
+		for (; it != end; ++it) {
+			if (it->av_type != cv_qstring) {
+				v.report_error("IP address must be quoted string");
+				return false;
+			}
+			if (!parse_ip(it->av_strval, ip)) {
+				v.report_error("could not parse IP address");
+				return false;
+			}
+		}
+		return true;
+	}
+};
+extern ip_address_list_t ip_address_list;
+
+struct add_ip : callable<void> {
+	vector<pair<string,string> > &list;
+	add_ip(vector<pair<string,string> > &list_)
+		: list(list_) {}
+
+	void operator() (tree_entry &e, value &v) const {
+	pair<string,string>	ip;
+	vector<avalue>::iterator	it = v.cv_values.begin(),
+					end = v.cv_values.end();
+		for (; it != end; ++it) {
+			parse_ip(it->av_strval, ip);
+			list.push_back(ip);
+		}
+	}
+};
 
 template<typename T>
 struct set_simple : callable<void> {

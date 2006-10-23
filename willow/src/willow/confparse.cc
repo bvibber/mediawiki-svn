@@ -2,6 +2,11 @@
  * $Id$
  */
 
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
 #include <vector>
 #include <string>
 #include <utility>
@@ -44,6 +49,7 @@ nonempty_string_t nonempty_string;
 nonempty_qstring_t nonempty_qstring;
 ignore_t ignore;
 accept_any_t accept_any;
+ip_address_list_t ip_address_list;
 
 tree *
 parse_file(string const &file)
@@ -562,5 +568,31 @@ vector<tree_entry>::iterator	tit, tend;
 		}
 	}
 }
- 
+
+bool
+parse_ip(string const &ip, pair<string, string> &result)
+{
+string::size_type       i;
+in_addr                 a4;
+in6_addr                a6;
+        if (ip.empty())
+                return false;
+        result.first = ip;
+        if (ip[0] == '[') {
+                if ((i = ip.find_first_of(']')) == string::npos)
+                        return false;
+                result.first = ip.substr(1, i - 1);
+                if (ip.size() > i + 1 && ip[i + 1] == ':')
+                        result.second = ip.substr(i + 2);
+        } else if ((i = ip.find_first_of(':')) != string::npos) {
+                result.first = ip.substr(0, i);
+                result.second = ip.substr(i + 1);
+        }
+        if (result.first.find_first_of(':') != string::npos) {
+                if (inet_pton(AF_INET6, result.first.c_str(), &a6) <= 0)
+                        return false;
+        }
+        return true;
+}
+
 } // namespace conf

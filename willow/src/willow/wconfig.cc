@@ -298,12 +298,11 @@ conf
 		.value("carp-hash",		func(v_carp_hash),	func(s_carp_hash))
 
 	.block("stats")
-		.value("port",		simple_range(0, 65535),		set_int(config.stats_port))
 		.value("interval",	simple_range(1, INT_MAX),	set_int(stats.interval))
 		.value("allow-v4",	func(radix_prefix),		func(stats_access_v4))
 		.value("allow-v6",	func(radix_prefix),		func(stats_access_v6))
 		.value("enable",	simple_yesno,			set_yesno(config.udp_stats))
-		.value("listen",	nonempty_qstring,		set_string(config.stats_host))
+		.value("listen",	ip_address_list,		add_ip(config.stats_hosts))
 
 	.block("cache-dir", require_name)
 		.end(func(set_cache))
@@ -341,7 +340,6 @@ conf
 	 * Defaults
 	 */
 	stats.interval = DEFAULT_STATS_INTERVAL;
-	config.stats_port = DEFAULT_STATS_PORT;
 	conf.set(*t);
 	whttp_reconfigure();
 	global_conf_tree = *t;

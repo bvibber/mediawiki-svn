@@ -386,10 +386,9 @@ block_item:
  */
 itemlist: itemlist ',' single
 	{
-		$$ = new vector<conf::avalue>;
+		$$ = $1;
 		$$->insert($$->end(), $3->begin(), $3->end());
 		delete $3;
-		delete $1;
 	}
 	| single
 	{
