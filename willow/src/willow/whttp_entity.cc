@@ -499,6 +499,7 @@ static	char const	*rnrn = "\r\n\r\n";
 			if (entity->he_source.fde._wrt == 0)
 				contdone = 1;
 		}
+		WDEBUG((WLOG_DEBUG, "contdone=%d", contdone));
 
 		/*
 		 * We ran out of data and haven't reached the end of the source entity.
@@ -523,12 +524,16 @@ static	char const	*rnrn = "\r\n\r\n";
 			entity->he_cache_callback(buf, read, entity->he_cache_callback_data);
 		}
 		bufferevent_enable(entity->_he_tobuf, EV_WRITE);
-		
-		if (write_data(entity, buf, read) == -1) {
+
+		if ((i = write_data(entity, buf, read)) == -1) {
 			entity->_he_func(entity, entity->_he_cbdata, -1);
 			return;	
 		}
-
+		if (read > 0) {
+			bufferevent_disable(entity->_he_frombuf, EV_READ);
+			bufferevent_enable(entity->_he_tobuf, EV_WRITE);
+			return;
+		}
 		wrote++;
 		if (contdone) {
 			if (entity->he_flags.chunked)
@@ -547,6 +552,8 @@ static int
 write_data(http_entity *entity, void *buf, size_t len)
 {
 static	unsigned char zbuf[ZLIB_BLOCK * 2];
+
+	WDEBUG((WLOG_DEBUG, "write_data: writing %d", len));
 
 	switch (entity->he_encoding) {
 	case E_NONE:

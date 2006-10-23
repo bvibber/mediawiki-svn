@@ -231,6 +231,7 @@ http_thread	*t = (http_thread *)arg;
 	make_event_base();
 	stats.tcur = new stats_stru::abs_t;
 	merge_ev = new event;
+	memset(merge_ev, 0, sizeof(*merge_ev));
 	merge_sched();
 	wnet_register(t->sv[1], FDE_READ, accept_wakeup, arg);
 	event_base_loop(evb, 0);
@@ -534,6 +535,7 @@ static const char *removable_headers[] = {
 	"Keep-Alive",
 	"Proxy-Authenticate",
 	"Proxy-Authorization",
+	"Proxy-Connection",
 	"TE",
 	"Trailers",
 	"Transfer-Encoding",
