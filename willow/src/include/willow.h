@@ -37,50 +37,15 @@ To			t;
 
 typedef unsigned long long w_size_t;
 
-template<typename T>
-struct freelist_allocator {
-        T       *_freelist_next;
-static  T       *_freelist;
- 
-        void *operator new(std::size_t size) {
-                if (_freelist) {
-                T       *n = _freelist;
-			WDEBUG((WLOG_DEBUG, "allocate %s from freelist @ %p", typeid(T).name(), n));
-                        _freelist = _freelist->_freelist_next;
-			memset(n, 0, sizeof(*n));
-                        return n;
-                } else {
-		void	*ret;
-			ret = new char[size];
-			WDEBUG((WLOG_DEBUG, "allocate %s from heap @ %p", typeid(T).name(), ret));
-			memset(ret, 0, size);
-			return ret;
-		}
-        }
- 
-        void operator delete (void *p) {
-        T       *o = (T *)p;
-		WDEBUG((WLOG_DEBUG, "return %s @ %p to freelist", typeid(T).name(), p));
-		memset(o, 0, sizeof(*o));
-                o->_freelist_next = _freelist;
-                _freelist = o;
-        }
-};
-template<typename T>
-T *freelist_allocator<T>::_freelist;
+#include <stdlib.h>
+#define wmalloc malloc
+#define wfree free
+#define wstrdup strdup
+#define wrealloc realloc
+#define wcalloc calloc
 
-# include <stdlib.h>
-# define wmalloc malloc
-# define wfree free
-# define wstrdup strdup
-# define wrealloc realloc
-# define wcalloc calloc
-
-void realloc_strcat(char **, const char *);
-void realloc_addchar(char **, int);
-
-char **wstrvec(const char *, const char *, int);
-void wstrvecfree(char **);
+	char **wstrvec		(const char *, const char *, int);
+	void wstrvecfree	(char **);
 
 #ifndef HAVE_DAEMON
 int daemon(int, int);
@@ -227,7 +192,6 @@ struct atomic {
 		return *this;
 	}
 	T operator++ (int) {
-		HOLDING(m);
 	atomic	u (*this);
 		u.v++;
 		return u;
@@ -351,5 +315,64 @@ extern struct stats_stru : noncopyable {
 	atomic<uint32_t>	n_httpresp_oks;		/* httpresp_ok per sec		*/
 	atomic<uint32_t>	n_httpresp_fails;	/* httpresp_fail per sec	*/
 } stats;
+
+template<typename T>
+struct tss {
+	mutable pthread_key_t	key;
+	tss() {
+		pthread_key_create(&key, NULL);
+	}
+	T const& operator* (void) const {
+		return *(T *)pthread_getspecific(key);
+	}
+	T& operator* (void) {
+		return *(T *)pthread_getspecific(key);
+	}
+	T const * operator-> (void) const {
+		return (T *)pthread_getspecific(key);
+	}
+	T *operator-> (void) {
+		return (T *)pthread_getspecific(key);
+	}
+	tss &operator= (T* n) {
+		pthread_setspecific(key, n);
+		return *this;
+	}
+	operator T* (void) {
+		return (T *)pthread_getspecific(key);
+	}
+};
+
+template<typename T>
+struct freelist_allocator {
+	T		*_freelist_next;
+static  tss<T>		 _freelist;
+
+        void *operator new(std::size_t size) {
+                if (_freelist) {
+                T       *n = _freelist;
+			WDEBUG((WLOG_DEBUG, "allocate %s from freelist @ %p", typeid(T).name(), n));
+                        _freelist = _freelist->_freelist_next;
+			memset(n, 0, sizeof(*n));
+                        return n;
+                } else {
+		void	*ret;
+			ret = new char[size];
+			WDEBUG((WLOG_DEBUG, "allocate %s from heap @ %p", typeid(T).name(), ret));
+			memset(ret, 0, size);
+			return ret;
+		}
+        }
+ 
+        void operator delete (void *p) {
+        T       *o = (T *)p;
+		WDEBUG((WLOG_DEBUG, "return %s @ %p to freelist", typeid(T).name(), p));
+		memset(o, 0, sizeof(*o));
+                o->_freelist_next = _freelist;
+                _freelist = o;
+        }
+};
+template<typename T>
+tss<T> freelist_allocator<T>::_freelist;
 
 #endif

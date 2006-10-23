@@ -98,6 +98,9 @@ enum	sprio		 fde_prio;
 };
 extern struct fde *fde_table;
 
+extern event_base	*main_base;
+extern tss<event_base>	 client_base;
+	
 struct client_data {
 	sockaddr_storage	cdat_addr;
 	socklen_t		cdat_addrlen;

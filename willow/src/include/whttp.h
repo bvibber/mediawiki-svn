@@ -13,6 +13,7 @@
 #endif
 
 struct fde;
+struct event_base;
 
 void http_new(struct fde *);
 void whttp_init(void);

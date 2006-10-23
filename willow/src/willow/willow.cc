@@ -170,38 +170,6 @@ outofmemory(void)
 	exit(8);
 }
 
-void
-realloc_addchar(char **sp, int c)
-{
-	char	*p;
-	int	 len;
-	
-	if (*sp)
-		len = strlen(*sp);
-	else
-		len = 0;
-	
-	if ((*sp = (char *)wrealloc(*sp, len + 2)) == NULL)
-		outofmemory();
-	p = *sp + len;
-	*p++ = (char) c;
-	*p++ = '\0';
-}
-
-void
-realloc_strcat(char **sp, const char *s)
-{
-	int	 len;
-	
-	if (*sp)
-		len = strlen(*sp);
-	else
-		len = 1;
-	if ((*sp = (char *)wrealloc(*sp, len + strlen(s) + 1)) == NULL)
-		outofmemory();
-	(void)strcat(*sp, s);
-}
-
 char **
 wstrvec(const char *str, const char *sep, int lim)
 {
