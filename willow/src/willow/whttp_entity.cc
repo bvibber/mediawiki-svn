@@ -901,6 +901,13 @@ bool		 sent_host = false;
 					WDEBUG((WLOG_DEBUG, "a-e parse failed"));
 					goto error;
 				}
+			} else if (!strcasecmp(name, "User-Agent") && strstr(value, "MSIE")) {
+				/*
+				 * Some MSIE versions cannot handle chunked replies properly.
+				 * Force a fallback to HTTP/1.0.
+				 * http://support.microsoft.com/kb/263754
+				 */
+				entity->he_rdata.request.httpmin = 0;
 			} else if (config.ncaches) {
 				if (!strcasecmp(name, "Pragma")) {
 					entity->he_h_pragma = wstrdup(value);

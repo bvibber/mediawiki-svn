@@ -81,6 +81,13 @@ cache {
 	 * one, at the expense of a small bit of performance).
 	 */
 	use-carp = yes;
+
+	/*
+	 * Certain versions of MSIE cannot properly handle HTTP/1.1 chunked
+	 * encoding, and will crash when sent a chunked reply.  Enable this
+	 * to detect MSIE and force fallback to HTTP 1.0.
+	 *
+	msie-http11-hack = yes;
 };
 
 /*

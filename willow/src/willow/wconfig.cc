@@ -298,6 +298,7 @@ conf
 		.value("use-carp",		simple_yesno,		set_yesno(config.use_carp))
 		.value("carp-hash",		func(v_carp_hash),	func(s_carp_hash))
 		.value("threads",		simple_range(1, 1024),	set_int(config.nthreads))
+		.value("msie-http11-hack",	simple_yesno,		set_yesno(config.msie_hack))
 
 	.block("stats")
 		.value("interval",	simple_range(1, INT_MAX),	set_aint(stats.interval))

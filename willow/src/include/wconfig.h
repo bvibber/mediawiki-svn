@@ -57,6 +57,7 @@ struct	cachedir	*caches;
 	time_t		 backend_retry;
 	bool		 cache_private;
 	bool		 use_carp;
+	bool		 msie_hack;
 	enum {
 		carp_hash_carp = 0,
 		carp_hash_simple
