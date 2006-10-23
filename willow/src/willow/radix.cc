@@ -89,8 +89,8 @@ prefix_destroy (struct prefix *prefix)
 }
 
 
-extern struct prefix *
-prefix_fromstring (const char *string, struct prefix *prefix)
+prefix *
+prefix::fromstring (const char *string, struct prefix *prefix)
 {
 	char *cp;
 	char prefixstr[64];
@@ -124,6 +124,28 @@ prefix_fromstring (const char *string, struct prefix *prefix)
 	return prefix;
 }
 
+prefix *
+prefix::fromsockaddr (sockaddr const *addr, prefix *prefix)
+{
+sockaddr_in	*in;
+sockaddr_in6	*in6;
+	prefix->family = addr->sa_family;
+	switch (prefix->family) {
+	case AF_INET:
+		prefix->prefixlen = 32;
+		in = (sockaddr_in *)addr;
+		memcpy(&prefix->add.sin4, &in->sin_addr, sizeof(in->sin_addr));
+		break;
+	case AF_INET6:
+		prefix->prefixlen = 128;
+		in6 = (sockaddr_in6 *)addr;
+		memcpy(&prefix->add.sin6, &in6->sin6_addr, sizeof(in6->sin6_addr));
+		break;
+	default:
+		abort();
+	}
+	return prefix;
+}
 
 static void
 prefix_deref (struct prefix *prefix)
@@ -157,25 +179,34 @@ radix::radix(void)
 {
 }
 
-extern struct radix_node *
-radix_search (const struct radix *radix, const char *prefixstr)
+radix_node *
+radix_search (const radix *radix, const char *prefixstr)
 {
-	int inclusive = 1;
-	struct radix_node *node;
-	struct radix_node *stack[RADIX_MAXBITS + 1];
-	struct prefix prefix;
-	uint8_t *addr;
-	int cnt = 0;
-
-	if (!radix)
+prefix	prefix;
+	if (!prefix::fromstring(prefixstr, &prefix))
 		return NULL;
-	if (!prefixstr)
-		return NULL;
+	return radix_search(radix, &prefix);
+}
 
-	if (!prefix_fromstring(prefixstr, &prefix))
+radix_node *
+radix_search (const radix *radix, const sockaddr *addr)
+{
+prefix	prefix;
+	if (!prefix::fromsockaddr(addr, &prefix))
 		return NULL;
+	return radix_search(radix, &prefix);
+}
 
-	if (prefix.prefixlen > radix->maxbits) {
+radix_node *
+radix_search (const radix *radix, prefix const *prefix)
+{
+int		 inclusive = 1;
+radix_node	*node;
+radix_node	*stack[RADIX_MAXBITS + 1];
+uint8_t		*addr;
+int		 cnt = 0;
+
+	if (prefix->prefixlen > radix->maxbits) {
 		return NULL;
 	}
 
@@ -184,9 +215,9 @@ radix_search (const struct radix *radix, const char *prefixstr)
 	}
 
 	node = radix->head;
-	addr = prefix_tochar (&prefix);
+	addr = prefix_tochar (prefix);
 
-	while (node->bit < prefix.prefixlen) {
+	while (node->bit < prefix->prefixlen) {
 		if (node->prefix) {
 			stack[cnt++] = node;
 		}
@@ -210,7 +241,7 @@ radix_search (const struct radix *radix, const char *prefixstr)
 
 	while (--cnt >= 0) {
 		node = stack[cnt];
-        if (comp_with_mask (prefix_tochar (node->prefix), prefix_tochar (&prefix), node->prefix->prefixlen)) { 
+        if (comp_with_mask (prefix_tochar (node->prefix), prefix_tochar (prefix), node->prefix->prefixlen)) { 
 			return node;
 		}
 	}
@@ -294,7 +325,7 @@ radix_search_exact (const struct radix *radix, const char *prefixstr)
 	if (!radix)
 		return NULL;
 
-	if (!prefix_fromstring (prefixstr, &prefix))
+	if (!prefix::fromstring (prefixstr, &prefix))
 		return NULL;
 
 	assert (prefix.prefixlen <= radix->maxbits);
@@ -345,7 +376,7 @@ radix_add (struct radix *radix, const char *prefixstr)
 	if (!prefix)
 		return NULL;
 
-	if (!prefix_fromstring (prefixstr, prefix)) {
+	if (!prefix::fromstring (prefixstr, prefix)) {
 		prefix_destroy (prefix);
 		return NULL;
 	}

@@ -333,11 +333,11 @@ struct	http_client	*cl;
 
 radix_node	*r;
 char	*blknet = NULL;
-	if (	(e->fde_cdata->cdat_addr.ss_family == AF_INET
-	         && (r = radix_search(config.v4_access, e->fde_straddr)) 
+	if (	(e->fde_cdata->cdat_addr.ss_family == AF_INET && config.v4_access 
+		 && (r = radix_search(config.v4_access, (sockaddr *)&e->fde_cdata->cdat_addr)) 
 	         && (r->flags & RFL_DENY))
-	    ||	(e->fde_cdata->cdat_addr.ss_family == AF_INET6
-	         && (r = radix_search(config.v6_access, e->fde_straddr))
+	    ||	(e->fde_cdata->cdat_addr.ss_family == AF_INET6 && config.v6_access
+	         && (r = radix_search(config.v6_access, (sockaddr *)&e->fde_cdata->cdat_addr))
 	         && (r->flags & RFL_DENY)))
 	{
 		if (r->flags & RFL_CONNECT) {

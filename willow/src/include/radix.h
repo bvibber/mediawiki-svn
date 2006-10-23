@@ -34,10 +34,10 @@ typedef void (*void_fn_t)();
 
 struct prefix {
 		prefix();
-		prefix (const char *);
 
 	char *	tostring(void);
-
+static	prefix *fromstring	(const char *string, prefix *);
+static	prefix *fromsockaddr	(const sockaddr *, prefix *);
 	uint16_t family;
 	uint16_t prefixlen;
 	uint32_t ref_count;
@@ -65,14 +65,16 @@ struct radix {
 	uint32_t	 num_active_node;
 };
 
-struct prefix *prefix_fromstring (const char *string, prefix *);
 
-struct radix_node *radix_add (radix *radix, const char *prefixstr);
-struct radix_node *radix_search (const radix *radix, const char *prefixstr);
-struct radix_node *radix_search_exact (const radix *radix, const char *prefixstr);
-int radix_del (struct radix *radix, const char *prefixstr);
-void radix_destroy (struct radix **radix, void_fn_t func);
-void radix_doall (struct radix *radix, void_fn_t func);
+	radix_node	*radix_add		(radix *radix, const char *prefixstr);
+	radix_node	*radix_search		(const radix *, const prefix *);
+	radix_node	*radix_search		(const radix *, const char *);
+	radix_node	*radix_search		(const radix *, const sockaddr *);
+	radix_node	*radix_search_exact	(const radix *radix, const char *);
+	radix_node	*radix_search_exact	(const radix *radix, const sockaddr *);
+	int		 radix_del		(radix *radix, const char *prefixstr);
+	void		 radix_destroy		(radix **radix, void_fn_t func);
+	void		 radix_doall		(radix *radix, void_fn_t func);
 
 #define RADIX_WALK(Xhead, Xnode) \
     do { \

@@ -242,7 +242,7 @@ prefix	p;
 			return false;
 		}
 
-		if (prefix_fromstring(it->av_strval.c_str(), &p) == NULL) {
+		if (prefix::fromstring(it->av_strval.c_str(), &p) == NULL) {
 			v.report_error("%s: cannot parse network address mask", it->av_strval.c_str());
 			return false;
 		}
