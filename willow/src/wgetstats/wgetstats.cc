@@ -155,9 +155,9 @@ uint8_t		*vers;
 	respfails	= (uint32_t *)	bufp;	GET_BYTES(3);
 
 	fprintf(stderr, "%s (Willow %.*s):\n", host, (int)*wverslen, wvers);
-	fprintf(stderr, "\tTotal requests served: % 10lu (% 6d/sec) Invalid: % 5lu (% 6d/sec)\n",
+	fprintf(stderr, "\tTotal requests served: % 10lu (% 6d/sec)  Errors: % 6lu (% 6d/sec)\n",
 		(unsigned long) *treqok, (int) *reqoks, (unsigned long) *treqfail, *reqfails);
-	fprintf(stderr, "\tBackend requests:      % 10lu (% 6d/sec) Invalid: % 5lu (% 6d/sec)\n",
+	fprintf(stderr, "\tBackend requests:      % 10lu (% 6d/sec) Invalid: % 6lu (% 6d/sec)\n",
 		(unsigned long) *trespok, (int) *respoks, (unsigned long) *trespfail, *respfails);
 	
 	freeaddrinfo(res);
