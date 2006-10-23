@@ -293,29 +293,6 @@ T1 operator ~ (atomic<T1> const &v1) {
 	return ~v1.v;
 }
 
-struct radix;
-extern struct stats_stru : noncopyable {
-	atomic<int>	interval;	/* update interval	*/
-	radix	*v4_access, *v6_access;
-	/*
-	 * Absolute values.
-	 */
-	struct {
-		atomic<uint64_t>	n_httpreq_ok;		/* requests which were sent to a backend		*/
-		atomic<uint64_t>	n_httpreq_fail;		/* requests which did not reach a backend		*/
-		atomic<uint64_t>	n_httpresp_ok;		/* backend responses with status 200			*/
-		atomic<uint64_t>	n_httpresp_fail;	/* backend responses with status other than 200		*/
-	} cur, last;
-
-	/*
-	 * Averages.
-	 */
-	atomic<uint32_t>	n_httpreq_oks;		/* httpreq_ok per sec		*/
-	atomic<uint32_t>	n_httpreq_fails;	/* httpreq_fail per sec		*/
-	atomic<uint32_t>	n_httpresp_oks;		/* httpresp_ok per sec		*/
-	atomic<uint32_t>	n_httpresp_fails;	/* httpresp_fail per sec	*/
-} stats;
-
 template<typename T>
 struct tss {
 	mutable pthread_key_t	key;
@@ -372,7 +349,32 @@ static  tss<T>		 _freelist;
                 _freelist = o;
         }
 };
+
 template<typename T>
 tss<T> freelist_allocator<T>::_freelist;
+
+struct radix;
+extern struct stats_stru : noncopyable {
+	atomic<int>	interval;	/* update interval	*/
+	radix	*v4_access, *v6_access;
+	/*
+	 * Absolute values.
+	 */
+	struct abs_t {
+		atomic<uint64_t>	n_httpreq_ok;		/* requests which were sent to a backend		*/
+		atomic<uint64_t>	n_httpreq_fail;		/* requests which did not reach a backend		*/
+		atomic<uint64_t>	n_httpresp_ok;		/* backend responses with status 200			*/
+		atomic<uint64_t>	n_httpresp_fail;	/* backend responses with status other than 200		*/
+	} cur, last;
+	tss<abs_t>	tcur;
+
+	/*
+	 * Averages.
+	 */
+	atomic<uint32_t>	n_httpreq_oks;		/* httpreq_ok per sec		*/
+	atomic<uint32_t>	n_httpreq_fails;	/* httpreq_fail per sec		*/
+	atomic<uint32_t>	n_httpresp_oks;		/* httpresp_ok per sec		*/
+	atomic<uint32_t>	n_httpresp_fails;	/* httpresp_fail per sec	*/
+} stats;
 
 #endif
