@@ -140,11 +140,12 @@ char	*bufp = rbuf, *end = rbuf + i;
 char	*wvers;
 uint32_t	*treqok, *treqfail, *trespok, *trespfail,
 		*reqoks, *respoks, *reqfails, *respfails;
-uint16_t	*wverslen;
+uint16_t	*wverslen, *repint;
 uint8_t		*vers;
 	vers 		= (uint8_t *)	bufp;	GET_BYTES(1);
 	wverslen	= (uint16_t *)	bufp;	GET_BYTES(2);
 	wvers		= (char *)	bufp;	GET_BYTES(*wverslen);
+	repint		= (uint16_t *)	bufp;	GET_BYTES(2);
 	treqok		= (uint32_t *)	bufp;	GET_BYTES(4);
 	treqfail	= (uint32_t *)	bufp;	GET_BYTES(4);
 	trespok		= (uint32_t *)	bufp;	GET_BYTES(4);
@@ -154,7 +155,8 @@ uint8_t		*vers;
 	reqfails	= (uint32_t *)	bufp;	GET_BYTES(4);
 	respfails	= (uint32_t *)	bufp;	GET_BYTES(3);
 
-	fprintf(stderr, "%s (Willow %.*s):\n", host, (int)*wverslen, wvers);
+	fprintf(stderr, "%s (Willow %.*s), report interval %d seconds:\n", host, 
+		(int)*wverslen, wvers, (int) *repint);
 	fprintf(stderr, "\tTotal requests served: % 10lu (% 6d/sec)  Errors: % 6lu (% 6d/sec)\n",
 		(unsigned long) *treqok, (int) *reqoks, (unsigned long) *treqfail, *reqfails);
 	fprintf(stderr, "\tBackend requests:      % 10lu (% 6d/sec) Invalid: % 6lu (% 6d/sec)\n",

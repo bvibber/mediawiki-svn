@@ -282,12 +282,13 @@ char	str[NI_MAXHOST];
 
 	/*
 	 * Stats format:
-	 *   <version><treqok><treqfail><trespok><trespfail><reqoks><respoks>
+	 *   <version><interval><treqok><treqfail><trespok><trespfail><reqoks><respoks>
 	 *   <reqfails><respfails>
 	 */
 	{	HOLDING(stats.cur_lock);
 		ADD_UINT8(bufp, 1, endp);		/* stats format version */
 		ADD_STRING(bufp, PACKAGE_VERSION, endp);
+		ADD_UINT16(bufp, stats.interval, endp);
 		ADD_UINT32(bufp, stats.cur.n_httpreq_ok, endp);
 		ADD_UINT32(bufp, stats.cur.n_httpreq_fail, endp);
 		ADD_UINT32(bufp, stats.cur.n_httpresp_ok, endp);
