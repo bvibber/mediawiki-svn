@@ -33,6 +33,9 @@ struct cachedir {
 	size_t	 maxsize;
 };
 
+#define DEFAULT_STATS_INTERVAL	300
+#define DEFAULT_STATS_PORT	4446
+
 struct radix;
 extern struct configuration {
 	int		 foreground;
@@ -57,7 +60,7 @@ struct	cachedir	*caches;
 	}		 carp_hash;
 	radix		*v4_access;
 	radix		*v6_access;
-
+	bool		 udp_stats;
 	int		 stats_port;
 } config;
 

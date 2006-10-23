@@ -188,11 +188,13 @@ access-v6 {
  * The server collects runtime statistics for use by the 'wgetstats' program.
  */
 stats {
-	/* How often to re-calculate averages */
+	enable = yes;
+
+	/* How often to re-calculate averages (default: 300) */
 	interval = 30;
 
-	/* Default port is 4445 */
-	port = 4445;
+	/* Default port is 4446 */
+	port = 4446;
 
 	/*
 	 * Only allow stats requests from certain networks.  If you specify

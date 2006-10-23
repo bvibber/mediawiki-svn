@@ -351,7 +351,8 @@ stats_init(void)
 addrinfo	hints, *res, *r;
 int		i;
 char		portstr[6];
-	if (!config.stats_port)
+
+	if (!config.udp_stats)
 		return;
 
 	/*

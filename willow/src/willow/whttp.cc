@@ -816,7 +816,7 @@ int	i, s;
 		i = fprintf(alf, "[%s] %s %s \"%s\" %lu %d %s %s\n",
 				current_time_short, client->cl_fde->fde_straddr,
 				request_string[client->cl_reqtype],
-				client->cl_path, client->cl_entity->he_size,
+				client->cl_path, (unsigned long) client->cl_entity->he_size,
 				client->cl_entity->he_rdata.response.status,
 				client->cl_backend ? client->cl_backend->be_name.c_str() : "-",
 				client->cl_flags.f_cached ? "HIT" : "MISS");
