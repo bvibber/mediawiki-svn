@@ -298,7 +298,7 @@ conf
 		.value("carp-hash",		func(v_carp_hash),	func(s_carp_hash))
 
 	.block("stats")
-		.value("interval",	simple_range(1, INT_MAX),	set_int(stats.interval))
+		.value("interval",	simple_range(1, INT_MAX),	set_aint(stats.interval))
 		.value("allow-v4",	func(radix_prefix),		func(stats_access_v4))
 		.value("allow-v6",	func(radix_prefix),		func(stats_access_v6))
 		.value("enable",	simple_yesno,			set_yesno(config.udp_stats))

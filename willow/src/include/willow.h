@@ -17,6 +17,7 @@
 #include <sstream>
 #include <cstddef>
 #include <iostream>
+#include <pthread.h>
 
 #include "wlog.h"
 
@@ -113,27 +114,242 @@ extern int char_table[];
 # define unlikely(c) c
 #endif
 
+struct noncopyable {
+	noncopyable() {};
+private:
+	noncopyable(noncopyable const &);	/* no implementation */
+};
+
+#define HOLDING(l) locker _l(l)
+
+struct lockable : noncopyable {
+	mutable pthread_mutex_t	m;
+	lockable() {
+		pthread_mutex_init(&m, NULL);
+	}
+	void _lock() const {
+		pthread_mutex_lock(&m);
+	}
+	void _unlock() const {
+		pthread_mutex_unlock(&m);
+	}
+};
+
+struct locker : noncopyable {
+	lockable const	&m;
+	locker(lockable const &m_)
+		: m(m_) {
+		m._lock();
+	}
+	~locker() {
+		m._unlock();
+	}
+};
+
+template<typename T>
+struct atomic {
+	T 		v;
+	lockable	m;
+
+	atomic () : v(T()) {}
+	atomic (T v_) : v(v_) {}
+	atomic (atomic const& o) {
+		HOLDING(o.m);
+		v = o.v;
+	}
+	template<typename U> atomic (atomic<U> const &o) {
+		HOLDING(o.m);
+		v = o.v;
+	}
+
+	operator T (void) const {
+		HOLDING(m);
+		return v;
+	}
+	template<typename U> atomic &operator = (U o) {
+		HOLDING(m);
+		v = o;
+		return *this;
+	}
+	template<typename U> atomic &operator += (U o) {
+		HOLDING(m);
+		v += o;
+		return *this;
+	}
+	template<typename U> atomic &operator -= (U o) {
+		HOLDING(m);
+		v -= o;
+		return *this;
+	}
+	template<typename U> atomic &operator *= (U o) {
+		HOLDING(m);
+		v *= o;
+		return *this;
+	}
+	template<typename U> atomic &operator /= (U o) {
+		HOLDING(m);
+		v /= o;
+		return *this;
+	}
+	template<typename U> atomic &operator %= (U o) {
+		HOLDING(m);
+		v %= o;
+		return *this;
+	}
+	template<typename U> atomic &operator <<= (U o) {
+		HOLDING(m);
+		v <<= o;
+		return *this;
+	}
+	template<typename U> atomic &operator >>= (U o) {
+		HOLDING(m);
+		v >>= o;
+		return *this;
+	}
+	template<typename U> atomic &operator &= (U o) {
+		HOLDING(m);
+		v &= o;
+		return *this;
+	}
+	template<typename U> atomic &operator |= (U o) {
+		HOLDING(m);
+		v |= o;
+		return *this;
+	}
+	template<typename U> atomic &operator ^= (U o) {
+		HOLDING(m);
+		v ^= o;
+		return *this;
+	}
+	atomic &operator++ (void) {
+		HOLDING(m);
+		v++;
+		return *this;
+	}
+	T operator++ (int) {
+		HOLDING(m);
+	atomic	u (*this);
+		u.v++;
+		return u;
+	}
+};
+
+template<typename T1, typename T2>
+T1 operator + (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v + v2;
+}
+template<typename T1, typename T2>
+T1 operator - (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v - v2;
+}
+template<typename T1, typename T2>
+T1 operator * (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v * v2;
+}
+template<typename T1, typename T2>
+T1 operator / (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v / v2;
+}
+template<typename T1, typename T2>
+T1 operator ^ (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v ^ v2;
+}
+template<typename T1, typename T2>
+T1 operator & (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v & v2;
+}
+template<typename T1, typename T2>
+T1 operator | (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v | v2;
+}
+template<typename T1, typename T2>
+T1 operator && (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v && v2;
+}
+template<typename T1, typename T2>
+T1 operator || (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v || v2;
+}
+template<typename T1, typename T2>
+T1 operator == (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v == v2;
+}
+template<typename T1, typename T2>
+T1 operator != (atomic<T1> const &v1, T2 v2) {
+	return !(v1 == v2);
+}
+template<typename T1, typename T2>
+T1 operator < (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v < v2;
+}
+template<typename T1, typename T2>
+T1 operator > (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v > v2;
+}
+template<typename T1, typename T2>
+T1 operator <= (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v <= v2;
+}
+template<typename T1, typename T2>
+T1 operator >= (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v >= v2;
+}
+template<typename T1, typename T2>
+T1 operator << (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v << v2;
+}
+template<typename T1, typename T2>
+T1 operator >> (atomic<T1> const &v1, T2 v2) {
+	HOLDING(v1.m);
+	return v1.v >> v2;
+}
+template<typename T1>
+T1 operator ! (atomic<T1> const &v1) {
+	HOLDING(v1.m);
+	return !v1.v;
+}
+template<typename T1>
+T1 operator ~ (atomic<T1> const &v1) {
+	HOLDING(v1.m);
+	return ~v1.v;
+}
+
 struct radix;
-extern struct stats_stru {
-	int	interval;	/* update interval	*/
+extern struct stats_stru : noncopyable {
+	atomic<int>	interval;	/* update interval	*/
 	radix	*v4_access, *v6_access;
 	/*
 	 * Absolute values.
 	 */
 	struct {
-		uint64_t	n_httpreq_ok;		/* requests which were sent to a backend		*/
-		uint64_t	n_httpreq_fail;		/* requests which did not reach a backend		*/
-		uint64_t	n_httpresp_ok;		/* backend responses with status 200			*/
-		uint64_t	n_httpresp_fail;	/* backend responses with status other than 200		*/
+		atomic<uint64_t>	n_httpreq_ok;		/* requests which were sent to a backend		*/
+		atomic<uint64_t>	n_httpreq_fail;		/* requests which did not reach a backend		*/
+		atomic<uint64_t>	n_httpresp_ok;		/* backend responses with status 200			*/
+		atomic<uint64_t>	n_httpresp_fail;	/* backend responses with status other than 200		*/
 	} cur, last;
 
 	/*
 	 * Averages.
 	 */
-	uint32_t	n_httpreq_oks;		/* httpreq_ok per sec		*/
-	uint32_t	n_httpreq_fails;	/* httpreq_fail per sec		*/
-	uint32_t	n_httpresp_oks;		/* httpresp_ok per sec		*/
-	uint32_t	n_httpresp_fails;	/* httpresp_fail per sec	*/
+	atomic<uint32_t>	n_httpreq_oks;		/* httpreq_ok per sec		*/
+	atomic<uint32_t>	n_httpreq_fails;	/* httpreq_fail per sec		*/
+	atomic<uint32_t>	n_httpresp_oks;		/* httpresp_ok per sec		*/
+	atomic<uint32_t>	n_httpresp_fails;	/* httpresp_fail per sec	*/
 } stats;
 
 #endif

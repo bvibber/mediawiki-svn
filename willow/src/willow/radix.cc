@@ -151,8 +151,8 @@ prefix_ref (struct prefix *prefix)
 
 
 radix::radix(void)
-	: maxbits(128)
-	, head(NULL)
+	: head(NULL)
+	, maxbits(128)
 	, num_active_node(0)
 {
 }

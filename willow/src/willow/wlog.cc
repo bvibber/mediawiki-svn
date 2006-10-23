@@ -24,6 +24,7 @@
 #include "wconfig.h"
 
 struct log_variables logging;
+static lockable log_lock;
 
 static const char *sev_names[] = {
 	"Debug",
@@ -75,7 +76,8 @@ struct	timeval	tv;
 		abort();
 	if (vsnprintf(s + i, 1023 - i, fmt, ap) > (1023 - i - 1))
 		abort();
-	
+
+	HOLDING(log_lock);	
 	if (logging.syslog)
 		syslog(syslog_pri[sev], "%s", s + i);
 	if (logging.fp) {

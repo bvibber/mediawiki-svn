@@ -143,11 +143,13 @@ char my_hostname[MAXHOSTNAMELEN + 1];
 static char my_version[64];
 static int logwr_pipe[2];
 static FILE *alf;
+lockable alf_lock;
 
 static int const default_udplog_port = 4445;
 static int udplog_sock;
 static int udplog_count;
 static bool do_udplog;
+lockable udp_lock;
 
 /*
  * Initialize whttp, start loggers.
@@ -813,6 +815,7 @@ int	i, s;
 	else	stats.cur.n_httpreq_ok++;
 
 	if (alf) {
+		HOLDING(alf_lock);
 		i = fprintf(alf, "[%s] %s %s \"%s\" %lu %d %s %s\n",
 				current_time_short, client->cl_fde->fde_straddr,
 				request_string[client->cl_reqtype],
@@ -861,6 +864,7 @@ int	i, s;
 		ADD_STRING(bufp, client->cl_backend ? client->cl_backend->be_name.c_str() : "-", endp);
 		ADD_UINT8(bufp, client->cl_flags.f_cached ? 1 : 0, endp);
 		ADD_UINT32(bufp, client->cl_entity->he_size, endp);
+		HOLDING(udp_lock);
 		write(udplog_sock, buf, bufp - buf);
 	}
 }

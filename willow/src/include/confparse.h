@@ -309,6 +309,15 @@ struct set_simple : callable<void> {
 	}
 	T& sv;
 };
+template<typename T>
+struct set_simple<atomic<T> > : callable<void> {
+	atomic<T>	&sv;
+	set_simple(atomic<T>& sv_) : sv(sv_) {}
+	void operator() (tree_entry &e, value &v) const {
+		sv = v.cv_values[0].av_intval;
+	}
+};
+
 struct set_astring : callable<void> {
 	set_astring(string& sv_) : sv(sv_) {}
 	void operator() (tree_entry &e, value &v) const {
@@ -322,6 +331,9 @@ typedef set_astring		set_qstring;
 typedef set_simple<time_t>	set_time;
 typedef set_simple<bool>	set_yesno;
 typedef set_simple<int>		set_int;
+typedef set_simple<atomic<time_t> >	set_atime;
+typedef set_simple<atomic<bool> >	set_abool;
+typedef set_simple<atomic<int> >	set_aint;
 
 struct accept_any_t : callable<bool> {
 	bool operator() (tree_entry &e, value &v) const {
