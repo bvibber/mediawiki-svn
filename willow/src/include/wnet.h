@@ -132,6 +132,7 @@ void wnet_run(void);
 	int	wnet_socketpair		(int, int, int, int[2]);
 	void 	wnet_set_time		(void);
 	void 	wnet_init_select	(void);
+	void	make_event_base		(void);
 
 	int	readbuf_getdata		(struct fde *);
 	void	readbuf_free		(struct readbuf *);

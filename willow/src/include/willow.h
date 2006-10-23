@@ -357,15 +357,20 @@ struct radix;
 extern struct stats_stru : noncopyable {
 	atomic<int>	interval;	/* update interval	*/
 	radix	*v4_access, *v6_access;
+
 	/*
 	 * Absolute values.
 	 */
 	struct abs_t {
-		atomic<uint64_t>	n_httpreq_ok;		/* requests which were sent to a backend		*/
-		atomic<uint64_t>	n_httpreq_fail;		/* requests which did not reach a backend		*/
-		atomic<uint64_t>	n_httpresp_ok;		/* backend responses with status 200			*/
-		atomic<uint64_t>	n_httpresp_fail;	/* backend responses with status other than 200		*/
+			abs_t() {
+				memset(this, 0, sizeof(*this));
+			}
+		uint64_t	n_httpreq_ok;		/* requests which were sent to a backend		*/
+		uint64_t	n_httpreq_fail;		/* requests which did not reach a backend		*/
+		uint64_t	n_httpresp_ok;		/* backend responses with status 200			*/
+		uint64_t	n_httpresp_fail;	/* backend responses with status other than 200		*/
 	} cur, last;
+	lockable	cur_lock;
 	tss<abs_t>	tcur;
 
 	/*

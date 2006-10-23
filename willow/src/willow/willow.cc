@@ -285,27 +285,31 @@ char	str[NI_MAXHOST];
 	 *   <version><treqok><treqfail><trespok><trespfail><reqoks><respoks>
 	 *   <reqfails><respfails>
 	 */
-	ADD_UINT8(bufp, 1, endp);		/* stats format version */
-	ADD_STRING(bufp, PACKAGE_VERSION, endp);
-	ADD_UINT32(bufp, stats.cur.n_httpreq_ok, endp);
-	ADD_UINT32(bufp, stats.cur.n_httpreq_fail, endp);
-	ADD_UINT32(bufp, stats.cur.n_httpresp_ok, endp);
-	ADD_UINT32(bufp, stats.cur.n_httpresp_fail, endp);
-	ADD_UINT32(bufp, stats.n_httpreq_oks, endp);
-	ADD_UINT32(bufp, stats.n_httpresp_oks, endp);
-	ADD_UINT32(bufp, stats.n_httpreq_fails, endp);
-	ADD_UINT32(bufp, stats.n_httpresp_fails, endp);
-	sendto(e->fde_fd, buf, bufp - buf, 0, (sockaddr *)&ss, sslen);
+	{	HOLDING(stats.cur_lock);
+		ADD_UINT8(bufp, 1, endp);		/* stats format version */
+		ADD_STRING(bufp, PACKAGE_VERSION, endp);
+		ADD_UINT32(bufp, stats.cur.n_httpreq_ok, endp);
+		ADD_UINT32(bufp, stats.cur.n_httpreq_fail, endp);
+		ADD_UINT32(bufp, stats.cur.n_httpresp_ok, endp);
+		ADD_UINT32(bufp, stats.cur.n_httpresp_fail, endp);
+		ADD_UINT32(bufp, stats.n_httpreq_oks, endp);
+		ADD_UINT32(bufp, stats.n_httpresp_oks, endp);
+		ADD_UINT32(bufp, stats.n_httpreq_fails, endp);
+		ADD_UINT32(bufp, stats.n_httpresp_fails, endp);
+		sendto(e->fde_fd, buf, bufp - buf, 0, (sockaddr *)&ss, sslen);
+	}
 }
 
 static void
 stats_update(int, short, void *)
 {
-	stats.n_httpreq_oks = (stats.cur.n_httpreq_ok - stats.last.n_httpreq_ok) / stats.interval;
-	stats.n_httpreq_fails = (stats.cur.n_httpreq_fail - stats.last.n_httpreq_fail) / stats.interval;
-	stats.n_httpresp_oks = (stats.cur.n_httpresp_ok - stats.last.n_httpresp_ok) / stats.interval;
-	stats.n_httpresp_fails = (stats.cur.n_httpresp_fail - stats.last.n_httpresp_fail) / stats.interval;
-	stats.last = stats.cur;
+	{	HOLDING(stats.cur_lock);
+		stats.n_httpreq_oks = (stats.cur.n_httpreq_ok - stats.last.n_httpreq_ok) / stats.interval;
+		stats.n_httpreq_fails = (stats.cur.n_httpreq_fail - stats.last.n_httpreq_fail) / stats.interval;
+		stats.n_httpresp_oks = (stats.cur.n_httpresp_ok - stats.last.n_httpresp_ok) / stats.interval;
+		stats.n_httpresp_fails = (stats.cur.n_httpresp_fail - stats.last.n_httpresp_fail) / stats.interval;
+		stats.last = stats.cur;
+	}
 
 	stats_sched();
 }

@@ -140,10 +140,13 @@ static void client_log_request(struct http_client *);
 static void do_cache_write(const char *, size_t, void *);
 
 static void *client_thread(void *);
+static void stats_merge(int, short, void *);
 
 static char via_hdr[1024];
 static char *cache_hit_hdr;
 static char *cache_miss_hdr;
+
+tss<event> merge_ev;
 
 char my_hostname[MAXHOSTNAMELEN + 1];
 static char my_version[64];
@@ -211,14 +214,44 @@ int	nfd, afd = ((http_thread *)e->fde_rdata)->sv[1];
 	http_new(&fde_table[nfd]);
 }
 
+static void merge_sched(void)
+{
+timeval	 tv;
+	tv.tv_usec = 250000;
+	tv.tv_sec = 0;
+	evtimer_set(merge_ev, stats_merge, NULL);
+	event_base_set(evb, merge_ev);
+	event_add(merge_ev, &tv);
+}
+
 static void *
 client_thread(void *arg)
 {
 http_thread	*t = (http_thread *)arg;
+	make_event_base();
+	stats.tcur = new stats_stru::abs_t;
+	merge_ev = new event;
+	merge_sched();
 	wnet_register(t->sv[1], FDE_READ, accept_wakeup, arg);
 	event_base_loop(evb, 0);
 	wlog(WLOG_ERROR, "event_base_loop: %s", strerror(errno));
 	exit(1);
+}
+
+static void
+stats_merge(int, short, void *)
+{
+	{	HOLDING(stats.cur_lock);
+		stats.cur.n_httpreq_ok += stats.tcur->n_httpreq_ok;
+		stats.tcur->n_httpreq_ok = 0;
+		stats.cur.n_httpreq_fail += stats.tcur->n_httpreq_fail;
+		stats.tcur->n_httpreq_fail = 0;
+		stats.cur.n_httpresp_ok += stats.tcur->n_httpresp_ok;
+		stats.tcur->n_httpreq_ok = 0;
+		stats.cur.n_httpresp_fail += stats.tcur->n_httpresp_fail;
+		stats.tcur->n_httpresp_fail = 0;
+	}
+	merge_sched();
 }
 
 void
@@ -347,11 +380,11 @@ struct	http_client	*client = (http_client *)data;
 		client_send_error(client, ERR_BADREQUEST, ent_errors[-res], 400, "Bad request (#10.4.1)");
 		return;
 	} else if (res == -1) {
-		stats.cur.n_httpreq_fail++;
+		stats.tcur->n_httpreq_fail++;
 		delete client;
 		return;
 	} else if (res == 1) {
-		stats.cur.n_httpreq_fail++;
+		stats.tcur->n_httpreq_fail++;
 		delete client;
 		return;
 	}
@@ -576,7 +609,7 @@ struct	http_client	*client = (http_client *)data;
 	WDEBUG((WLOG_DEBUG, "client_headers_done: called"));
 	
 	if (res == -1) {
-		stats.cur.n_httpreq_fail++;		
+		stats.tcur->n_httpreq_fail++;		
 		delete client;
 		return;
 	} else if (res < -1 || res == 1) {
@@ -854,8 +887,8 @@ client_log_request(http_client *client)
 int	i, s;
 	s = client->cl_entity->he_rdata.response.status;
 	if ((s >= 400 && s <= 600))
-		stats.cur.n_httpreq_fail++;
-	else	stats.cur.n_httpreq_ok++;
+		stats.tcur->n_httpreq_fail++;
+	else	stats.tcur->n_httpreq_ok++;
 
 	if (alf) {
 		HOLDING(alf_lock);
