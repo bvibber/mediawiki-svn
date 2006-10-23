@@ -28,7 +28,10 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 #include "config.h"
 #include <sys/time.h>
 #include <event.h>
+#include <pthread.h>
 #include <vector>
+#include <deque>
+using std::deque;
 using std::vector;
 
 #include "willow.h"
@@ -98,9 +101,11 @@ enum	sprio		 fde_prio;
 };
 extern struct fde *fde_table;
 
-extern event_base	*main_base;
-extern tss<event_base>	 client_base;
-	
+extern pthread_cond_t	 acceptq_cond;
+extern lockable		 acceptq_lock;
+extern deque<int>	 acceptq;
+extern tss<event_base>	 evb;
+
 struct client_data {
 	sockaddr_storage	cdat_addr;
 	socklen_t		cdat_addrlen;
@@ -117,18 +122,19 @@ extern int wnet_exit;
 void wnet_init(void);
 void wnet_run(void);
 
-void wnet_register(int, int, fdcb, void *);
-int wnet_open(const char *desc, sprio p, int aftype, int type = SOCK_STREAM);
-void wnet_close(int);
-void wnet_write(int, const void *, size_t, fdwcb, void *, int);
-int wnet_sendfile(int, int, size_t, off_t, fdwcb, void *, int);
-void wnet_set_blocking(int);
+	void	wnet_register		(int, int, fdcb, void *);
+	int	wnet_open		(const char *desc, sprio p, int aftype, int type = SOCK_STREAM);
+	void	wnet_close		(int);
+	void	wnet_write		(int, const void *, size_t, fdwcb, void *, int);
+	int	wnet_sendfile		(int, int, size_t, off_t, fdwcb, void *, int);
+	void	wnet_set_blocking	(int);
+	void	wnet_add_accept_wakeup	(int);
+	int	wnet_socketpair		(int, int, int, int[2]);
+	void 	wnet_set_time		(void);
+	void 	wnet_init_select	(void);
 
-void wnet_set_time(void);
-void wnet_init_select(void);
-
-int readbuf_getdata(struct fde *);
-void readbuf_free(struct readbuf *);
+	int	readbuf_getdata		(struct fde *);
+	void	readbuf_free		(struct readbuf *);
 
 namespace wnet {	/* things above should move here eventually */
 

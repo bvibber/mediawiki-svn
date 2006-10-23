@@ -39,11 +39,21 @@
 #include "whttp.h"
 
 struct event ev_sigint;
+tss<event_base> evb;
 
 static void fde_ev_callback(int, short, void *);
 
 static void
 sig_exit(int, short, void *);
+
+void
+make_event_base(void)
+{
+	if (evb == NULL) {
+		evb = (event_base *)event_init();
+		event_base_priority_init(evb, prio_max);
+	}
+}
 
 void
 sig_exit(int sig, short what, void *d)
@@ -55,8 +65,7 @@ void
 wnet_init_select(void)
 {
 	signal(SIGPIPE, SIG_IGN);
-	event_init();
-	event_priority_init(prio_max);
+	make_event_base();
 	signal_set(&ev_sigint, SIGINT, sig_exit, NULL);
 	signal_add(&ev_sigint, NULL);
 }
@@ -64,8 +73,9 @@ wnet_init_select(void)
 void
 wnet_run(void)
 {
-	event_dispatch();
-	perror("event_dispatch");
+	make_event_base();
+	event_base_loop(evb, 0);
+	perror("event_base_loop");
 }
 
 static void
@@ -91,6 +101,9 @@ struct	fde	*fde = &fde_table[fd];
 
 	if (fde->fde_flags.held)
 		return;
+
+	make_event_base();
+	event_base_set(evb, &fde->fde_ev);
 
 	if (event_pending(&fde->fde_ev, EV_READ | EV_WRITE, NULL))
 		event_del(&fde->fde_ev);

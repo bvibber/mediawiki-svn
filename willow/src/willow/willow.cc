@@ -129,12 +129,8 @@ main(int argc, char *argv[])
 		exit(0);
 	}
 		
-	/*
-	 * HTTP should be initialised before the network so that
-	 * the wlogwriter exits cleanly.
-	 */
-	whttp_init();
 	wnet_init();
+	whttp_init();
 	wcache_init(1);
 	stats_init();
 
@@ -373,5 +369,6 @@ stats_sched(void)
 	stats_tv.tv_usec = 0;
 	stats_tv.tv_sec = stats.interval;
 	evtimer_set(&stats_ev, stats_update, NULL);
+	event_base_set(evb, &stats_ev);
 	event_add(&stats_ev, &stats_tv);
 }

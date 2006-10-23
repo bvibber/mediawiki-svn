@@ -22,6 +22,7 @@
 #include <cerrno>
 #include <climits>
 #include <netdb.h>
+#include <pthread.h>
 
 #include "willow.h"
 #include "wconfig.h"
@@ -296,6 +297,7 @@ conf
 		.value("cache-private",		simple_yesno,		set_yesno(config.cache_private))
 		.value("use-carp",		simple_yesno,		set_yesno(config.use_carp))
 		.value("carp-hash",		func(v_carp_hash),	func(s_carp_hash))
+		.value("threads",		simple_range(1, 1024),	set_int(config.nthreads))
 
 	.block("stats")
 		.value("interval",	simple_range(1, INT_MAX),	set_aint(stats.interval))
@@ -340,6 +342,7 @@ conf
 	 * Defaults
 	 */
 	stats.interval = DEFAULT_STATS_INTERVAL;
+	config.nthreads = 1;
 	conf.set(*t);
 	whttp_reconfigure();
 	global_conf_tree = *t;

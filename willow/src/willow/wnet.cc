@@ -19,16 +19,18 @@
 
 #include <arpa/inet.h>
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
+#include <cerrno>
+#include <csignal>
+#include <cassert>
+#include <ctime>
+#include <deque>
+using std::deque;
+
 #include <unistd.h>
-#include <errno.h>
 #include <fcntl.h>
-#include <signal.h>
-#include <assert.h>
-#include <strings.h>
-#include <time.h>
 
 #include "willow.h"
 #include "wnet.h"
@@ -73,6 +75,14 @@ struct fde *fde_table;
 int max_fd;
 
 int wnet_exit;
+vector<int>	awaks;
+int		cawak;
+
+void
+wnet_add_accept_wakeup(int s)
+{
+	awaks.push_back(s);
+}
 
 void
 wnet_init(void)
@@ -164,10 +174,33 @@ static time_t		 last_nfile = 0;
 		  newe->fde_straddr, sizeof(newe->fde_straddr));
 
 	WDEBUG((WLOG_DEBUG, "wnet_accept: new fd %d", newfd));
-	http_new(newe);
+	if (cawak == awaks.size())
+		cawak = 0;
+	if (write(awaks[cawak], &newfd, sizeof(newfd)) < 0) {
+		wlog(WLOG_ERROR, "writing to thread wakeup socket: %s", strerror(errno));
+		exit(1);
+	}
+	cawak++;
 	return;
 }
 
+int
+wnet_socketpair(int d, int type, int protocol, int sv[2])
+{
+fde	*e;
+	if (socketpair(d, type, protocol, sv) < 0)
+		return -1;
+	e = &fde_table[sv[0]];
+	init_fde(e);
+	e->fde_flags.open = 1;
+	e->fde_fd = sv[0];
+
+	e = &fde_table[sv[1]];
+	init_fde(e);
+	e->fde_flags.open = 1;
+	e->fde_fd = sv[1];
+	return 0;
+}	
 static void
 init_fde(fde *fde)
 {
@@ -221,13 +254,17 @@ struct	fde	*e = &fde_table[fd];
 	assert(e->fde_flags.open);
 	WDEBUG((WLOG_DEBUG, "close fd %d [%s]", e->fde_fd, e->fde_desc));
 	wnet_register(fd, FDE_READ | FDE_WRITE, NULL, NULL);
-	(void)close(e->fde_fd);
 	if (e->fde_cdata)
 		wfree(e->fde_cdata);
 	readbuf_free(&e->fde_readbuf);
 	e->fde_flags.open = 0;
 	e->fde_read_handler = NULL;
 	e->fde_write_handler = NULL;
+	/*
+	 * Do NOT touch the fde after closing this - we do not mutex
+	 * fde accesses and it will be immediately reused.
+	 */
+	(void)close(e->fde_fd);
 }
 
 int

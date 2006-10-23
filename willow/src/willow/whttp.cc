@@ -31,6 +31,10 @@
 #include <strings.h>
 #include <assert.h>
 #include <time.h>
+#include <pthread.h>
+
+#include <deque>
+using std::deque;
 
 #include "willow.h"
 #include "whttp.h"
@@ -135,6 +139,8 @@ static void client_log_request(struct http_client *);
 
 static void do_cache_write(const char *, size_t, void *);
 
+static void *client_thread(void *);
+
 static char via_hdr[1024];
 static char *cache_hit_hdr;
 static char *cache_miss_hdr;
@@ -154,6 +160,12 @@ lockable udp_lock;
 /*
  * Initialize whttp, start loggers.
  */
+struct http_thread {
+	pthread_t	thr;
+	int		sv[2];
+};
+vector<http_thread *> threads;
+
 void
 whttp_init(void)
 {
@@ -176,6 +188,35 @@ whttp_init(void)
 	
 	snprintf(cache_hit_hdr, hsize, "HIT from %s", my_hostname);
 	snprintf(cache_miss_hdr, hsize, "MISS from %s", my_hostname);
+
+	wlog(WLOG_NOTICE, "whttp: starting %d worker threads", config.nthreads);
+	for (int i = 0; i < config.nthreads; ++i) {
+	http_thread	*t = new http_thread;
+		wnet_socketpair(AF_UNIX, SOCK_DGRAM, 0, t->sv);
+		wnet_add_accept_wakeup(t->sv[0]);
+		threads.push_back(t);
+		pthread_create(&t->thr, NULL, client_thread, t);
+	}
+}
+
+static void
+accept_wakeup(fde *e)
+{
+int	nfd, afd = ((http_thread *)e->fde_rdata)->sv[1];
+	if (read(afd, &nfd, sizeof(nfd)) < sizeof(nfd)) {
+		wlog(WLOG_ERROR, "accept_wakeup: reading fd: %s", strerror(errno));
+		exit(1);
+	}
+	WDEBUG((WLOG_DEBUG, "accept_wakeup, nfd=%d", nfd));
+	http_new(&fde_table[nfd]);
+}
+
+static void *
+client_thread(void *arg)
+{
+http_thread	*t = (http_thread *)arg;
+	wnet_register(t->sv[1], FDE_READ, accept_wakeup, arg);
+	event_base_loop(evb, 0);
 }
 
 void

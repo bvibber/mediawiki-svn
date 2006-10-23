@@ -41,6 +41,7 @@ struct cachedir {
 struct radix;
 extern struct configuration {
 	int		 foreground;
+	int		 nthreads;
 	string		 access_log;
 	bool		 udp_log;
 	int		 udplog_sample;
