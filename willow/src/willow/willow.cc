@@ -348,10 +348,10 @@ stats_update(int, short, void *)
 static void
 stats_init(void)
 {
-addrinfo	hints, *res, *r;
-int		i;
-char		portstr[6];
-
+addrinfo	 hints, *res, *r;
+int		 i;
+char		 portstr[6];
+const char	*hoststr = config.stats_host.empty()? NULL: config.stats_host.c_str();
 	if (!config.udp_stats)
 		return;
 
@@ -361,7 +361,7 @@ char		portstr[6];
 	sprintf(portstr, "%d", config.stats_port);
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_socktype = SOCK_DGRAM;
-	if ((i = getaddrinfo(NULL, portstr, &hints, &res)) != 0) {
+	if ((i = getaddrinfo(hoststr, portstr, &hints, &res)) != 0) {
 		wlog(WLOG_WARNING, "resolving statistics listener: %s: %s",
 			portstr, strerror(errno));
 		return;
@@ -373,13 +373,15 @@ char		portstr[6];
 			continue;
 		}
 		if (bind(sfd, r->ai_addr, r->ai_addrlen) < 0) {
-			wlog(WLOG_WARNING, "binding %s: %s", wnet::fstraddr("", r->ai_addr, r->ai_addrlen).c_str(),
+			wlog(WLOG_WARNING, "binding %s: %s",
+				wnet::fstraddr(config.stats_host, r->ai_addr, r->ai_addrlen).c_str(),
 				strerror(errno));
 			wnet_close(sfd);
 			continue;
 		}
 		wnet_register(sfd, FDE_READ, stats_cb, NULL);
-		wlog(WLOG_NOTICE, "statistics listener: %s", wnet::fstraddr("", r->ai_addr, r->ai_addrlen).c_str());
+		wlog(WLOG_NOTICE, "statistics listener: %s", 
+			wnet::fstraddr(config.stats_host, r->ai_addr, r->ai_addrlen).c_str());
 	}
 	freeaddrinfo(r);
 	stats_sched();

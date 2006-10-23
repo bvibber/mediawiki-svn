@@ -303,6 +303,7 @@ conf
 		.value("allow-v4",	func(radix_prefix),		func(stats_access_v4))
 		.value("allow-v6",	func(radix_prefix),		func(stats_access_v6))
 		.value("enable",	simple_yesno,			set_yesno(config.udp_stats))
+		.value("listen",	nonempty_qstring,		set_string(config.stats_host))
 
 	.block("cache-dir", require_name)
 		.end(func(set_cache))

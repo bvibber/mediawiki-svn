@@ -62,6 +62,7 @@ struct	cachedir	*caches;
 	radix		*v6_access;
 	bool		 udp_stats;
 	int		 stats_port;
+	string		 stats_host;
 } config;
 
 void wconfig_init(char const *);
