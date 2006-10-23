@@ -217,6 +217,8 @@ client_thread(void *arg)
 http_thread	*t = (http_thread *)arg;
 	wnet_register(t->sv[1], FDE_READ, accept_wakeup, arg);
 	event_base_loop(evb, 0);
+	wlog(WLOG_ERROR, "event_base_loop: %s", strerror(errno));
+	exit(1);
 }
 
 void

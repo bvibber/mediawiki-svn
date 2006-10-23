@@ -103,7 +103,6 @@ struct	fde	*fde = &fde_table[fd];
 		return;
 
 	make_event_base();
-	event_base_set(evb, &fde->fde_ev);
 
 	if (event_pending(&fde->fde_ev, EV_READ | EV_WRITE, NULL))
 		event_del(&fde->fde_ev);
@@ -132,6 +131,7 @@ struct	fde	*fde = &fde_table[fd];
 
 	//ev_flags |= EV_PERSIST;
 	event_set(&fde->fde_ev, fde->fde_fd, ev_flags, fde_ev_callback, fde);
+	event_base_set(evb, &fde->fde_ev);
 	event_priority_set(&fde->fde_ev, (int) fde->fde_prio);
 	event_add(&fde->fde_ev, NULL);
 	fde->fde_flags.pend = 1;

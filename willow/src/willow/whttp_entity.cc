@@ -150,6 +150,8 @@ entity_read_headers(http_entity *entity, header_cb func, void *udata)
 	/* XXX source for an entity header read is _always_ an fde */
 	entity->_he_frombuf = bufferevent_new(entity->he_source.fde.fde->fde_fd,
 				entity_read_callback, NULL, entity_error_callback, entity);
+	event_base_set(evb, &entity->_he_frombuf->ev_read);
+	event_base_set(evb, &entity->_he_frombuf->ev_write);
 	bufferevent_disable(entity->_he_frombuf, EV_WRITE);
 	bufferevent_enable(entity->_he_frombuf, EV_READ);
 }
@@ -174,6 +176,8 @@ struct	header_list	*hl;
 	entity->_he_tobuf = bufferevent_new(entity->_he_target->fde_fd,
 		NULL, entity_send_target_write,
 		entity_send_target_error, entity);
+	event_base_set(evb, &entity->_he_tobuf->ev_read);
+	event_base_set(evb, &entity->_he_tobuf->ev_write);
 
 	bufferevent_disable(entity->_he_tobuf, EV_READ);
 	bufferevent_enable(entity->_he_tobuf, EV_WRITE);

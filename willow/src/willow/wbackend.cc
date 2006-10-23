@@ -152,11 +152,11 @@ static	time_t		 last_nfile;
 
 		if (errno != EINPROGRESS) {
 			time_t retry = time(NULL) + config.backend_retry;
-			wnet_close(s);
 			wlog(WLOG_WARNING, "%s: %s; retry in %d seconds", 
 				cbd->bc_backend->be_name.c_str(), strerror(errno), config.backend_retry);
 			cbd->bc_backend->be_dead = 1;
 			cbd->bc_backend->be_time = retry;
+			wnet_close(s);
 			continue;
 		}
 
@@ -177,11 +177,11 @@ struct	backend_cb_data	*cbd = static_cast<backend_cb_data *>(e->fde_rdata);
 
 	if (error && error != EINPROGRESS) {
 		time_t retry = time(NULL) + config.backend_retry;
-		wnet_close(e->fde_fd);
 		wlog(WLOG_WARNING, "%s: [%d] %s; retry in %d seconds", 
 			cbd->bc_backend->be_name.c_str(), error, strerror(error), config.backend_retry);
 		cbd->bc_backend->be_dead = 1;
 		cbd->bc_backend->be_time = retry;
+		wnet_close(e->fde_fd);
 		if (get_backend(cbd->bc_url, cbd->bc_func, cbd->bc_data, 0) == -1) {
 			cbd->bc_func(NULL, NULL, cbd->bc_data);
 		}
