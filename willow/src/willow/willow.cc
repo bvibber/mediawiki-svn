@@ -269,14 +269,12 @@ char	str[NI_MAXHOST];
 		return;
 	if (rdata[0] != 1 || rdata[1] != 0)
 		return;
-	if (stats.v4_access || stats.v6_access) {
+	if (!stats.v4_access.empty() || !stats.v6_access.empty()) {
 		if (getnameinfo((sockaddr *)&ss, sslen, str, sizeof(str), NULL, 0, NI_NUMERICHOST) != 0)
 			return;
-		if (stats.v4_access && ss.ss_family == AF_INET)
-			if (!radix_search(stats.v4_access, str))
+		if (ss.ss_family == AF_INET && !stats.v4_access.search((sockaddr *)&ss))
 				return;
-		if (stats.v6_access && ss.ss_family == AF_INET6)
-			if (!radix_search(stats.v6_access, str))
+		if (ss.ss_family == AF_INET6 && !stats.v6_access.search((sockaddr *)&ss))
 				return;
 	}
 

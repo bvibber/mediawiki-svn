@@ -20,6 +20,7 @@
 #include <pthread.h>
 
 #include "wlog.h"
+#include "radix.h"
 
 #ifdef __INTEL_COMPILER
 # pragma warning (disable: 869 981 304 383 1418 1469 810)
@@ -353,10 +354,10 @@ static  tss<T>		 _freelist;
 template<typename T>
 tss<T> freelist_allocator<T>::_freelist;
 
-struct radix;
 extern struct stats_stru : noncopyable {
 	atomic<int>	interval;	/* update interval	*/
-	radix	*v4_access, *v6_access;
+	radix		v4_access;
+	radix		v6_access;
 
 	/*
 	 * Absolute values.

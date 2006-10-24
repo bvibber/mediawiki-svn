@@ -62,8 +62,8 @@ struct	cachedir	*caches;
 		carp_hash_carp = 0,
 		carp_hash_simple
 	}		 carp_hash;
-	radix		*v4_access;
-	radix		*v6_access;
+	radix		 v4_access;
+	radix		 v6_access;
 	bool		 udp_stats;
 	vector<pair<string, string> >		 stats_hosts;
 } config;

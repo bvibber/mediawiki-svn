@@ -168,7 +168,7 @@ string	&s = v.cv_values[0].av_strval;
 }
 
 static void
-radix_from_list(tree_entry &e, radix *rad)
+radix_from_list(tree_entry &e, radix &rad)
 {
 value		*val;
 radix_node	*r;
@@ -181,7 +181,7 @@ int		 immed = 0;
 	vector<avalue>::iterator	it = val->cv_values.begin(),
 					end = val->cv_values.end();
 		for (; it != end; ++it) {
-			r = radix_add(rad, it->av_strval.c_str());
+			r = rad.add(it->av_strval);
 			r->flags = RFL_ALLOW | immed;
 		}
 	}
@@ -190,7 +190,7 @@ int		 immed = 0;
 	vector<avalue>::iterator	it = val->cv_values.begin(),
 					end = val->cv_values.end();
 		for (; it != end; ++it) {
-			r = radix_add(rad, it->av_strval.c_str());
+			r = rad.add(it->av_strval);
 			r->flags = RFL_DENY | immed;
 		}
 	}
@@ -199,35 +199,31 @@ int		 immed = 0;
 static void
 set_access_v4(tree_entry &e)
 {
-	config.v4_access = new radix;
 	radix_from_list(e, config.v4_access);
 }
 
 static void
 set_access_v6(tree_entry &e)
 {
-	config.v6_access = new radix;
 	radix_from_list(e, config.v6_access);
 }
 
 static void
 stats_access_v4(tree_entry &e, value &v)
 {
-	stats.v4_access = new radix;
 vector<avalue>::iterator	it = v.cv_values.begin(),
 				end = v.cv_values.end();
 	for (; it != end; ++it)
-		radix_add(stats.v4_access, it->av_strval.c_str());
+		stats.v4_access.add(it->av_strval);
 }
 
 static void
 stats_access_v6(tree_entry &e, value &v)
 {
-	stats.v6_access = new radix;
 vector<avalue>::iterator	it = v.cv_values.begin(),
 				end = v.cv_values.end();
 	for (; it != end; ++it)
-		radix_add(stats.v6_access, it->av_strval.c_str());
+		stats.v6_access.add(it->av_strval);
 }
 
 static bool
@@ -242,14 +238,10 @@ prefix	p;
 			return false;
 		}
 
-		if (prefix::fromstring(it->av_strval.c_str(), &p) == NULL) {
-			v.report_error("%s: cannot parse network address mask", it->av_strval.c_str());
-			return false;
-		}
-
-		if ((p.family == AF_INET && p.prefixlen > 32)
-		    || (p.family == AF_INET6 && p.prefixlen > 128)) {
-			v.report_error("%s: prefix length is too long for address family", it->av_strval.c_str());
+		try {
+		prefix	p(it->av_strval);
+		} catch (invalid_prefix& e) {
+			v.report_error("%s: %s", it->av_strval.c_str(), e.what());
 			return false;
 		}
 	}

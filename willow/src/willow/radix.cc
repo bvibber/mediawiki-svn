@@ -14,208 +14,210 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
+#include <cassert>
 using std::sprintf;
 
 #include "willow.h"
 #include "radix.h"
 
-char *
+#define RADIX_WALK(Xhead, Xnode) \
+    do { \
+        struct radix_node *Xstack[RADIX_MAXBITS+1]; \
+        struct radix_node **Xsp = Xstack; \
+        struct radix_node *Xrn = (Xhead); \
+        while ((Xnode = Xrn)) { \
+            if (Xnode->prefix)
+
+#define RADIX_WALK_ALL(Xhead, Xnode) \
+do { \
+        struct radix_node *Xstack[RADIX_MAXBITS+1]; \
+        struct radix_node **Xsp = Xstack; \
+        struct radix_node *Xrn = (Xhead); \
+        while ((Xnode = Xrn)) { \
+            if (1)
+
+#define RADIX_WALK_BREAK { \
+            if (Xsp != Xstack) { \
+                Xrn = *(--Xsp); \
+             } else { \
+                Xrn = (struct radix_node *) 0; \
+            } \
+            continue; }
+
+#define RADIX_WALK_END \
+            if (Xrn->l) { \
+                if (Xrn->r) { \
+                    *Xsp++ = Xrn->r; \
+                } \
+                Xrn = Xrn->l; \
+            } else if (Xrn->r) { \
+                Xrn = Xrn->r; \
+            } else if (Xsp != Xstack) { \
+                Xrn = *(--Xsp); \
+            } else { \
+                Xrn = (struct radix_node *) 0; \
+            } \
+        } \
+    } while (0)
+
+std::string
 prefix::tostring (void)
 {
 static char	ret[100];
 char		ipstr[100];
-	inet_ntop(family, (void*)&add, ipstr, sizeof(ipstr));
+	inet_ntop(_family, (void*)&add, ipstr, sizeof(ipstr));
 	snprintf(ret, 100, "%s/%d", ipstr, prefixlen);
 	return ret;
 }
 
+int
+prefix::family(void) const
+{
+	return _family;
+}
+
 static int 
-comp_with_mask (void *addr, void *dest, uint32_t mask)
+comp_with_mask (void const *addr, void const *dest, uint32_t mask)
 {
 	if ( /* mask/8 == 0 || */ memcmp (addr, dest, mask / 8) == 0) {
 		int n = mask / 8;
 		int m = ((-1) << (8 - (mask % 8)));
-		if (mask % 8 == 0 || (((uint8_t *)addr)[n] & m) == (((uint8_t *)dest)[n] & m))
+		if (mask % 8 == 0 || (((uint8_t const*)addr)[n] & m) == (((uint8_t const*)dest)[n] & m))
 			return (1);
 	}
 	return (0);
 }
 
-static uint8_t *
-prefix_tochar (const struct prefix * prefix)
+uint8_t const *
+prefix::tochar(void) const
 {
-	if (prefix == NULL)
-		return (NULL);
-
-	return ((uint8_t *) & prefix->add.sin4);
+	return ((uint8_t const *) &add.sin4);
 }
 
-extern struct prefix *
-prefix_new (int family, void *dest, int prefixlen)
+uint8_t *
+prefix::tochar(void)
 {
-	struct prefix *prefix;
-
-	prefix = new ::prefix;
-
-	if (family == AF_INET6) {
-		memcpy (&prefix->add.sin6, dest, 16);
-	} else if (family == AF_INET) {
-		memcpy (&prefix->add.sin4, dest, 4);
-	} else {
-		return NULL;
-	}
-	prefix->prefixlen = prefixlen;
-	prefix->family = family;
-	prefix->ref_count = 0;
-
-	return prefix;
+	return ((uint8_t *) &add.sin4);
 }
+
 
 prefix::prefix(void)
-	: family(0)
+	: _family(0)
 	, prefixlen(0)
 	, ref_count(0)
 {
 	memset(&add, 0, sizeof(add));
 }
 
-static void
-prefix_destroy (struct prefix *prefix)
+prefix::prefix(char const *s)
 {
-	if (!prefix)
-		return;
-	delete prefix;
-	return;
+	_from(s);
 }
 
-
-prefix *
-prefix::fromstring (const char *string, struct prefix *prefix)
+prefix::prefix(string const &s)
 {
-	char *cp;
-	char prefixstr[64];
+	_from(s.c_str());
+}
 
-	if (!string)
-		return NULL;
+void
+prefix::_from(char const *string)
+{
+char *cp;
+char prefixstr[64];
 
-	if (!prefix)
-		return NULL;
-			
 	if (strchr (string, ':')) {
-		prefix->prefixlen = 128;
-		prefix->family = AF_INET6;
+		prefixlen = 128;
+		_family = AF_INET6;
 	} else if (strchr (string, '.')) {
-		prefix->family = AF_INET;
-		prefix->prefixlen = 32;
+		_family = AF_INET;
+		prefixlen = 32;
 	} else {
-		return NULL;
+		throw invalid_prefix("cannot parse IP address");
 	}
 
 	if ((cp = strchr (string, '/')) != NULL) {
-		prefix->prefixlen = atol (cp+1);
+		prefixlen = atol (cp+1);
 		memcpy (prefixstr, string, cp-string);
 		prefixstr[cp-string] = '\0';
 	} else {
-		strlcpy (prefixstr, string, sizeof (prefixstr));
+		strlcpy (prefixstr, string, sizeof(prefixstr));
 	}
 
-	if (inet_pton (prefix->family, prefixstr, &prefix->add) != 1)
-		return NULL;
-	return prefix;
+	if (inet_pton (_family, prefixstr, &add) != 1)
+		throw invalid_prefix("IP address is invalid");
 }
 
-prefix *
-prefix::fromsockaddr (sockaddr const *addr, prefix *prefix)
+prefix::prefix(sockaddr const *addr)
 {
 sockaddr_in	*in;
 sockaddr_in6	*in6;
-	prefix->family = addr->sa_family;
-	switch (prefix->family) {
+	_family = addr->sa_family;
+	switch (_family) {
 	case AF_INET:
-		prefix->prefixlen = 32;
+		prefixlen = 32;
 		in = (sockaddr_in *)addr;
-		memcpy(&prefix->add.sin4, &in->sin_addr, sizeof(in->sin_addr));
+		memcpy(&add.sin4, &in->sin_addr, sizeof(in->sin_addr));
 		break;
 	case AF_INET6:
-		prefix->prefixlen = 128;
+		prefixlen = 128;
 		in6 = (sockaddr_in6 *)addr;
-		memcpy(&prefix->add.sin6, &in6->sin6_addr, sizeof(in6->sin6_addr));
+		memcpy(&add.sin6, &in6->sin6_addr, sizeof(in6->sin6_addr));
 		break;
 	default:
 		abort();
 	}
-	return prefix;
 }
-
-static void
-prefix_deref (struct prefix *prefix)
-{
-	if (!prefix)
-		return;
-/*	printf ("prefix_deref: ref_count=%d\n", prefix->ref_count); */
-	assert (prefix->ref_count > 0);
-	prefix->ref_count--;
-	if (prefix->ref_count == 0)
-		prefix_destroy (prefix);
-	return;
-}
-
-static struct prefix *
-prefix_ref (struct prefix *prefix)
-{
-	if (!prefix)
-		return NULL;
-
-/*	printf ("prefix_ref: ref_count=%d\n", prefix->ref_count); */
-	prefix->ref_count++;
-	return prefix;
-}
-
 
 radix::radix(void)
 	: head(NULL)
 	, maxbits(128)
 	, num_active_node(0)
+	, dtor(NULL)
 {
 }
 
-radix_node *
-radix_search (const radix *radix, const char *prefixstr)
+radix::~radix(void)
 {
-prefix	prefix;
-	if (!prefix::fromstring(prefixstr, &prefix))
-		return NULL;
-	return radix_search(radix, &prefix);
+	clear(dtor);
 }
 
 radix_node *
-radix_search (const radix *radix, const sockaddr *addr)
+radix::search (string const &s) const
 {
-prefix	prefix;
-	if (!prefix::fromsockaddr(addr, &prefix))
-		return NULL;
-	return radix_search(radix, &prefix);
+	return search(s.c_str());
 }
 
 radix_node *
-radix_search (const radix *radix, prefix const *prefix)
+radix::search (const char *prefixstr) const
+{
+prefix	pfx(prefixstr);
+	return search(&pfx);
+}
+
+radix_node *
+radix::search (const sockaddr *addr) const
+{
+prefix	prefix(addr);
+	return search(&prefix);
+}
+
+radix_node *
+radix::search (prefix const *prefix) const
 {
 int		 inclusive = 1;
 radix_node	*node;
 radix_node	*stack[RADIX_MAXBITS + 1];
-uint8_t		*addr;
+uint8_t	const	*addr;
 int		 cnt = 0;
 
-	if (prefix->prefixlen > radix->maxbits) {
+	if (prefix->prefixlen > maxbits)
 		return NULL;
-	}
 
-	if (radix->head == NULL) {
-		return (NULL);
-	}
+	if (head == NULL)
+		return NULL;
 
-	node = radix->head;
-	addr = prefix_tochar (prefix);
+	node = head;
+	addr = prefix->tochar();
 
 	while (node->bit < prefix->prefixlen) {
 		if (node->prefix) {
@@ -241,36 +243,34 @@ int		 cnt = 0;
 
 	while (--cnt >= 0) {
 		node = stack[cnt];
-        if (comp_with_mask (prefix_tochar (node->prefix), prefix_tochar (prefix), node->prefix->prefixlen)) { 
+		if (comp_with_mask(node->prefix->tochar(), prefix->tochar(), node->prefix->prefixlen)) { 
 			return node;
 		}
 	}
 	return NULL;
 }
 
-static void
-radix_clear (struct radix *radix, void_fn_t func)
+void
+radix::clear (void_fn_t func)
 {
-	assert (radix);
-
-	if (radix->head) {
-		struct radix_node *Xstack[RADIX_MAXBITS+1];
-        struct radix_node **Xsp = Xstack;
-        struct radix_node *Xrn = radix->head;
+	if (head) {
+	radix_node *Xstack[RADIX_MAXBITS+1];
+	radix_node **Xsp = Xstack;
+	radix_node *Xrn = head;
 
 		while (Xrn) {
-			struct radix_node *l = Xrn->l;
-			struct radix_node *r = Xrn->r;
+		radix_node *l = Xrn->l;
+		radix_node *r = Xrn->r;
 
 			if (Xrn->prefix) {
-				prefix_deref (Xrn->prefix);
+				delete Xrn->prefix;
 				if (Xrn->data && func)
 					((void (*)(void *))func) (Xrn->data);
 			} else {
 				assert (NULL == Xrn->data);
 			}
 			delete Xrn;
-			radix->num_active_node--;
+			num_active_node--;
 			if (l) {
 				if (r) {
 					*Xsp++ = r;
@@ -285,58 +285,58 @@ radix_clear (struct radix *radix, void_fn_t func)
 			}
 		}
 	}
-	assert (radix->num_active_node == 0);
+	assert (num_active_node == 0);
 	return;
 }
 
-extern void 
-radix_destroy (struct radix **radix, void_fn_t func)
+void
+radix::doall(void_fn_t func)
 {
-	radix_clear (*radix, func);
-	delete *radix;
-	*radix = NULL;
-/*	printf ("radix_destroy\n"); */
-	return;
-}
-
-extern void
-radix_doall (struct radix *radix, void_fn_t func)
-{
-	struct radix_node *node;
+radix_node *node;
 
 	if (!func)
 		return;
-	if (!radix)
-		return;
 
-	RADIX_WALK (radix->head, node) {
+	RADIX_WALK (head, node) {
 		((void (*)(prefix *, void *)) func) (node->prefix, node->data);
 	} RADIX_WALK_END;
 }
 
-
-struct radix_node *
-radix_search_exact (const struct radix *radix, const char *prefixstr)
+radix_node *
+radix::search_exact (string const &s) const
 {
-	struct radix_node *node;
-	uint8_t *addr;
-	struct prefix prefix;
+	return search_exact(s.c_str());
+}
 
-	if (!radix)
+radix_node *
+radix::search_exact (const char *prefixstr) const
+{
+prefix	pfx(prefixstr);
+	return search_exact(&pfx);
+}
+
+radix_node *
+radix::search_exact (const sockaddr *addr) const
+{
+prefix	pfx(addr);
+	return search_exact(&pfx);
+}
+
+radix_node *
+radix::search_exact (prefix const *pfx) const
+{
+radix_node	*node;
+uint8_t const	*addr;
+
+	assert(pfx->prefixlen <= maxbits);
+
+	if (!head)
 		return NULL;
 
-	if (!prefix::fromstring (prefixstr, &prefix))
-		return NULL;
+	node = head;
+	addr = pfx->tochar();
 
-	assert (prefix.prefixlen <= radix->maxbits);
-
-	node = radix->head;
-	addr = prefix_tochar (&prefix);
-
-	if (!radix->head)
-		return NULL;
-
-	while (node->bit < prefix.prefixlen) {
+	while (node->bit < pfx->prefixlen) {
 		if (BIT_TEST (addr[node->bit >> 3], 0x80 >> (node->bit & 0x07))) {
 			node = node->r;
 		} else {
@@ -346,59 +346,58 @@ radix_search_exact (const struct radix *radix, const char *prefixstr)
 		if (node == NULL)
 			return NULL;
 	}
-    if (node->bit > prefix.prefixlen || node->prefix == NULL)
-        return (NULL);
-    assert (node->bit == prefix.prefixlen);
-    assert (node->bit == node->prefix->prefixlen);
-    if (comp_with_mask (prefix_tochar (node->prefix), prefix_tochar (&prefix), prefix.prefixlen))
-		return (node);
+	if (node->bit > pfx->prefixlen || node->prefix == NULL)
+		return NULL;
+	assert(node->bit == pfx->prefixlen);
+	assert(node->bit == node->prefix->prefixlen);
+	if (comp_with_mask(node->prefix->tochar(), pfx->tochar(), pfx->prefixlen))
+		return node;
 	
 	return NULL;
 }
 
-struct radix_node *
-radix_add (struct radix *radix, const char *prefixstr)
+radix_node *
+radix::add (string const &s)
 {
-	struct radix_node *node, *new_node, *parent, *glue;
-	uint8_t *addr, *test_addr;
-	uint32_t prefixlen, check_bit, differ_bit;
-	int i, j, r;
-	struct prefix *prefix;
+	return add(s.c_str());
+}
 
-	if (!radix)
-		return NULL;
+radix_node *
+radix::add (const char *prefixstr)
+{
+	return add(new prefix(prefixstr));
+}
 
-	node = radix_search_exact (radix, prefixstr);
-	if (node) {
+radix_node *
+radix::add(prefix *pfx)
+{
+radix_node	*node, *new_node, *parent, *glue;
+uint8_t		*addr, *test_addr;
+uint32_t	 prefixlen, check_bit, differ_bit;
+int		 i, j, r;
+prefix		*prefix;
+
+	if ((node = search_exact(pfx)) != NULL)
 		return node;
-	}
-	prefix = new ::prefix;
-	if (!prefix)
-		return NULL;
 
-	if (!prefix::fromstring (prefixstr, prefix)) {
-		prefix_destroy (prefix);
-		return NULL;
-	}
-
-	if (radix->head == NULL) {
+	if (head == NULL) {
 		node = new radix_node;
-		node->bit = prefix->prefixlen;
-		node->prefix = prefix_ref (prefix);
+		node->bit = pfx->prefixlen;
+		node->prefix = pfx;
 		node->parent = NULL;
 		node->l = node->r = NULL;
 		node->data = NULL;
-		radix->head = node;
-		radix->num_active_node++;
+		head = node;
+		num_active_node++;
 		return node;
 	}
 
-	addr = prefix_tochar (prefix);
-	prefixlen = prefix->prefixlen;
-	node = radix->head;
+	addr = pfx->tochar();
+	prefixlen = pfx->prefixlen;
+	node = head;
 
 	while (node->bit < prefixlen || node->prefix == NULL) {
-		if (node->bit < radix->maxbits && BIT_TEST (addr[node->bit >> 3], 0x80 >> (node->bit & 0x07))) {
+		if (node->bit < maxbits && BIT_TEST(addr[node->bit >> 3], 0x80 >> (node->bit & 0x07))) {
 			if (node->r == NULL)
 				break;
 			node = node->r;
@@ -409,10 +408,9 @@ radix_add (struct radix *radix, const char *prefixstr)
 		}
 		assert (node);
 	}
-	assert (node->prefix);
+	assert(node->prefix);
 
-
-	test_addr = prefix_tochar (node->prefix);
+	test_addr = node->prefix->tochar();
 	/* find the first bit different */
 	check_bit = (node->bit < prefixlen)? node->bit: prefixlen;
 	differ_bit = 0;
@@ -423,11 +421,11 @@ radix_add (struct radix *radix, const char *prefixstr)
 		}
 		/* I know the better way, but for now */
 		for (j = 0; j < 8; j++) {
-			if (BIT_TEST (r, (0x80 >> j)))
+			if (BIT_TEST(r, (0x80 >> j)))
 				break;
 		}
 		/* must be found */
-		assert (j < 8);
+		assert(j < 8);
 		differ_bit = i * 8 + j;
 		break;
 	}
@@ -440,45 +438,46 @@ radix_add (struct radix *radix, const char *prefixstr)
 		node = parent;
 		parent = node->parent;
 	}
+
 	if (differ_bit == prefixlen && node->bit == prefixlen) {
 		if (node->prefix) {
 			return node;
 		}
-        node->prefix = prefix_ref (prefix);
-		assert (node->data == NULL);
+		node->prefix = pfx;
+		assert(node->data == NULL);
 		return node;
 	}
 
 	new_node = new radix_node;
-	new_node->bit = prefix->prefixlen;
-	new_node->prefix = prefix_ref (prefix);
+	new_node->bit = pfx->prefixlen;
+	new_node->prefix = pfx;
 	new_node->parent = NULL;
 	new_node->l = new_node->r = NULL;
 	new_node->data = NULL;
-	radix->num_active_node++;
+	num_active_node++;
 
 	if (node->bit == differ_bit) {
 		new_node->parent = node;
-		if (node->bit < radix->maxbits && BIT_TEST (addr[node->bit >> 3], 0x80 >> (node->bit & 0x07))) {
-			assert (node->r == NULL);
+		if (node->bit < maxbits && BIT_TEST(addr[node->bit >> 3], 0x80 >> (node->bit & 0x07))) {
+			assert(node->r == NULL);
 			node->r = new_node;
 		} else {
-			assert (node->l == NULL);
+			assert(node->l == NULL);
 			node->l = new_node;
 		}
-		return (new_node);
+		return new_node;
 	}
 
 	if (prefixlen == differ_bit) {
-		if (prefixlen < radix->maxbits && BIT_TEST (test_addr[prefixlen >> 3], 0x80 >> (prefixlen & 0x07))) {
+		if (prefixlen < maxbits && BIT_TEST (test_addr[prefixlen >> 3], 0x80 >> (prefixlen & 0x07))) {
 			new_node->r = node;
 		} else {
 			new_node->l = node;
 		}
 		new_node->parent = node->parent;
 		if (node->parent == NULL) {
-			assert (radix->head == node);
-			radix->head = new_node;
+			assert(head == node);
+			head = new_node;
 		} else if (node->parent->r == node) {
 			node->parent->r = new_node;
 		} else {
@@ -491,8 +490,8 @@ radix_add (struct radix *radix, const char *prefixstr)
 		glue->prefix = NULL;
 		glue->parent = node->parent;
 		glue->data = NULL;
-		radix->num_active_node++;
-		if (differ_bit < radix->maxbits && BIT_TEST (addr[differ_bit >> 3], 0x80 >> (differ_bit & 0x07))) {
+		num_active_node++;
+		if (differ_bit < maxbits && BIT_TEST(addr[differ_bit >> 3], 0x80 >> (differ_bit & 0x07))) {
 			glue->r = new_node;
 			glue->l = node;
 		} else {
@@ -501,8 +500,8 @@ radix_add (struct radix *radix, const char *prefixstr)
 		}
 		new_node->parent = glue;
 		if (node->parent == NULL) {
-			assert (radix->head == node);
-			radix->head = glue;
+			assert(head == node);
+			head = glue;
 		} else if (node->parent->r == node) { 
 			node->parent->r = glue;
 		} else { 
@@ -513,162 +512,15 @@ radix_add (struct radix *radix, const char *prefixstr)
 	return new_node;
 }
 
-struct radix_node *
-radix_lookup (struct radix *radix, struct prefix *prefix)
+void
+radix::remove (struct radix_node *node)
 {
-	struct radix_node *node, *new_node, *parent, *glue;
-	uint8_t *addr, *test_addr;
-	uint32_t prefixlen, check_bit, differ_bit;
-	int i, j, r;
+radix_node *parent, *child;
 
-	assert (radix);
-	assert (prefix);
-	assert (prefix->prefixlen <= radix->maxbits);
-	if (radix->head == NULL) {
-		node = new radix_node;
-		node->bit = prefix->prefixlen;
-		node->prefix = prefix_ref (prefix);
-		node->parent = NULL;
-		node->l = node->r = NULL;
-		node->data = NULL;
-		radix->head = node;
-		radix->num_active_node++;
-		return node;
-	}
-
-    addr = prefix_tochar (prefix);
-	prefixlen = prefix->prefixlen;
-	node = radix->head;
-
-	while (node->bit < prefixlen || node->prefix == NULL) {
-		if (node->bit < radix->maxbits && BIT_TEST (addr[node->bit >> 3], 0x80 >> (node->bit & 0x07))) {
-			if (node->r == NULL)
-				break;
-			node = node->r;
-		} else {
-			if (node->l == NULL)
-				break;
-			node = node->l;
-		}
-		assert (node);
-	}
-	assert (node->prefix);
-
-
-	test_addr = prefix_tochar (node->prefix);
-	/* find the first bit different */
-	check_bit = (node->bit < prefixlen)? node->bit: prefixlen;
-	differ_bit = 0;
-	for (i = 0; i*8 < (int) check_bit; i++) {
-		if ((r = (addr[i] ^ test_addr[i])) == 0) {
-			differ_bit = (i + 1) * 8;
-			continue;
-		}
-		/* I know the better way, but for now */
-		for (j = 0; j < 8; j++) {
-			if (BIT_TEST (r, (0x80 >> j)))
-				break;
-		}
-		/* must be found */
-		assert (j < 8);
-		differ_bit = i * 8 + j;
-		break;
-	}
-
-    if (differ_bit > check_bit)
-		differ_bit = check_bit;
-
-	parent = node->parent;
-	while (parent && parent->bit >= differ_bit) {
-		node = parent;
-		parent = node->parent;
-	}
-    if (differ_bit == prefixlen && node->bit == prefixlen) {
-		if (node->prefix) {
-			return node;
-		}
-        node->prefix = prefix_ref (prefix);
-		assert (node->data == NULL);
-		return node;
-	}
-
-	new_node = new radix_node;
-	new_node->bit = prefix->prefixlen;
-	new_node->prefix = prefix_ref (prefix);
-	new_node->parent = NULL;
-	new_node->l = new_node->r = NULL;
-	new_node->data = NULL;
-	radix->num_active_node++;
-
-    if (node->bit == differ_bit) {
-		new_node->parent = node;
-		if (node->bit < radix->maxbits && BIT_TEST (addr[node->bit >> 3], 0x80 >> (node->bit & 0x07))) {
-			assert (node->r == NULL);
-			node->r = new_node;
-		} else {
-			assert (node->l == NULL);
-			node->l = new_node;
-		}
-		return (new_node);
-	}
-
-	if (prefixlen == differ_bit) {
-		if (prefixlen < radix->maxbits && BIT_TEST (test_addr[prefixlen >> 3], 0x80 >> (prefixlen & 0x07))) {
-			new_node->r = node;
-		} else {
-			new_node->l = node;
-		}
-		new_node->parent = node->parent;
-		if (node->parent == NULL) {
-			assert (radix->head == node);
-			radix->head = new_node;
-		} else if (node->parent->r == node) {
-			node->parent->r = new_node;
-		} else {
-			node->parent->l = new_node;
-		}
-		node->parent = new_node;
-	} else {
-		glue = new radix_node;
-		glue->bit = differ_bit;
-		glue->prefix = NULL;
-		glue->parent = node->parent;
-		glue->data = NULL;
-		radix->num_active_node++;
-		if (differ_bit < radix->maxbits && BIT_TEST (addr[differ_bit >> 3], 0x80 >> (differ_bit & 0x07))) {
-			glue->r = new_node;
-			glue->l = node;
-		} else {
-			glue->r = node;
-			glue->l = new_node;
-		}
-		new_node->parent = glue;
-		if (node->parent == NULL) {
-			assert (radix->head == node);
-			radix->head = glue;
-		} else if (node->parent->r == node) { 
-			node->parent->r = glue;
-		} else { 
-			node->parent->l = glue;
-		}
-		node->parent = glue; 
-	}
-	return new_node;
-}
-
-
-
-extern void
-radix_remove (struct radix *radix, struct radix_node *node)
-{
-	struct radix_node *parent, *child;
-
-	assert (radix);
 	assert (node);
 
 	if (node->r && node->l) {
-		if (node->prefix != NULL) 
-			prefix_deref (node->prefix);
+		delete node->prefix;
 		node->prefix = NULL;
 		node->data = NULL;
 		return;
@@ -676,20 +528,20 @@ radix_remove (struct radix *radix, struct radix_node *node)
 
 	if (node->r == NULL && node->l == NULL) {
 		parent = node->parent;
-		prefix_deref (node->prefix);
+		delete node->prefix;
 		delete node;
-		radix->num_active_node--;
+		num_active_node--;
 		if (parent == NULL) {
-			assert (radix->head == node);
-			radix->head = NULL;
+			assert(head == node);
+			head = NULL;
 			return;
 		}
 
-        if (parent->r == node) {
+		if (parent->r == node) {
 			parent->r = NULL;
 			child = parent->l;
 		} else {
-			assert (parent->l == node);
+			assert(parent->l == node);
 			parent->l = NULL;
 			child = parent->r;
 		}
@@ -700,20 +552,20 @@ radix_remove (struct radix *radix, struct radix_node *node)
 		/* we need to remove parent too */
 
 		if (parent->parent == NULL) {
-			assert (radix->head == parent);
-			radix->head = child;
+			assert(head == parent);
+			head = child;
 		} else if (parent->parent->r == parent) {
 			parent->parent->r = child;
 		} else {
-			assert (parent->parent->l == parent);
+			assert(parent->parent->l == parent);
 			parent->parent->l = child;
 		}
 		child->parent = parent->parent;
 		delete node;
-		radix->num_active_node--;
+		num_active_node--;
 		return;
 	}
-    if (node->r) {
+	if (node->r) {
 		child = node->r;
 	} else {
 		assert (node->l);
@@ -722,36 +574,141 @@ radix_remove (struct radix *radix, struct radix_node *node)
 	parent = node->parent;
 	child->parent = parent;
 
-	prefix_deref (node->prefix);
+	delete node->prefix;
 	delete node;
-	radix->num_active_node--;
+	num_active_node--;
 
 	if (parent == NULL) {
-		assert (radix->head == node);
-		radix->head = child;
+		assert(head == node);
+		head = child;
 		return;
 	}
 
 	if (parent->r == node) {
 		parent->r = child;
 	} else {
-		assert (parent->l == node);
+		assert(parent->l == node);
 		parent->l = child;
 	}
 
 	return;
 }
 
-extern int
-radix_del (struct radix *radix, const char *prefixstr)
+int
+radix::del (string const &s)
 {
-	struct radix_node *node;
+	return del(s.c_str());
+}
 
-	node = radix_search_exact (radix, prefixstr);
-	if (!node) {
-/*		printf ("radix_del: Cannot find '%s'\n", prefixstr); */
+int
+radix::del (const char *prefixstr)
+{
+radix_node *node;
+
+	node = search_exact(prefixstr);
+	if (!node)
 		return -1;
-	}
-	radix_remove (radix, node);
+	remove(node);
 	return 0;
+}
+
+const int access_list::_denyflg	= 0x1;
+const int access_list::_allowflg	= 0x2;
+
+bool
+access_list::allowed(char const *s) const
+{
+prefix	p(s);
+	return allowed(&p);
+}
+
+bool
+access_list::allowed(string const &s) const
+{
+	return allowed(s.c_str());
+}
+
+bool
+access_list::allowed(sockaddr const *addr) const
+{
+prefix	p(addr);
+	return allowed(&p);
+}
+
+bool
+access_list::allowed(prefix const *p) const
+{
+	if (_empty())
+		return true;
+
+radix_node	*r;
+	r = _get(p);
+	if (r->flags & _denyflg)
+		return false;
+	else if (r->flags & _allowflg)
+		return true;
+	else
+		abort();
+}
+
+radix_node *
+access_list::_get(prefix const *p) const
+{
+	switch (p->family()) {
+	case AF_INET:
+		return _v4.search(p);
+	case AF_INET6:
+		return _v6.search(p);
+	}
+	abort();
+}
+
+bool
+access_list::_empty(void) const
+{
+	return _v4.empty() && _v6.empty();
+}
+
+radix_node *
+access_list::_add(prefix *p, int flags)
+{
+radix_node	*r;
+	switch (p->family()) {
+	case AF_INET:
+		r = _v4.add(p);
+		break;
+	case AF_INET6:
+		r = _v6.add(p);
+		break;
+	default:
+		abort();
+	}
+	r->flags = flags;
+	return r;
+}
+
+void
+access_list::allow(char const *s)
+{
+prefix	p(s);
+	_add(&p, _allowflg);
+}
+
+void
+access_list::allow(string const &s)
+{
+	allow(s.c_str());
+}
+
+void
+access_list::deny(char const *s)
+{
+prefix	p(s);
+	_add(&p, _denyflg);
+}
+
+void
+access_list::deny(string const &s)
+{
+	deny(s.c_str());
 }
