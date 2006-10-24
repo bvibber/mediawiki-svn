@@ -158,9 +158,8 @@ log {
 /*
  * Access control.
  *
- * access-v4 and access-v6 are lists of addresses that are granted or denied
- * permission to use this proxy.  Denied networks will be sent an error page
- * for any request.
+ * access is a list of addresses that are granted or denied * permission to
+ * use this proxy.  Denied networks will be sent an error page for any request.
  *
  * This is *not* an ACL; entries are not compared in order.  Rather, the best
  * match prefix for the client's address is used to decide whether they are
@@ -181,10 +180,8 @@ access-v4 {
 
 	/* deny an evil network */
 	deny = "1.2.3.0/24";
-};
 
-access-v6 {
-	/* allow everyone except localhost */
+	/* allow everyone via IPv6 except localhost */
 	allow = "::0/0";
 	deny = "::1/128";
 };
@@ -206,8 +203,8 @@ stats {
 
 	/*
 	 * Only allow stats requests from certain networks.  If you specify
-	 * either allow-v4 or allow-v6, *both* will be set to default-deny.
+	 * either any IPv4 or IPv6 entries, *both* will be set to default-deny.
 	 */
-	allow-v4 = "127.0.0.0/8";
-	allow-v6 = "::0/0";
+	allow = "127.0.0.0/8";
+	allow = "::0/0";
 };
