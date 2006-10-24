@@ -40,6 +40,7 @@ struct cachedir {
 
 struct radix;
 extern struct configuration {
+	string		 admin;
 	int		 foreground;
 	int		 nthreads;
 	string		 access_log;

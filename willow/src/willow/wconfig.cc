@@ -272,6 +272,7 @@ conf
 		.value("carp-hash",		func(v_carp_hash),	func(s_carp_hash))
 		.value("threads",		simple_range(1, 1024),	set_int(config.nthreads))
 		.value("msie-http11-hack",	simple_yesno,		set_yesno(config.msie_hack))
+		.value("admin",			nonempty_qstring,	set_string(config.admin))
 
 	.block("stats")
 		.value("interval",	simple_range(1, INT_MAX),	set_aint(stats.interval))
@@ -310,6 +311,7 @@ conf
 	 */
 	stats.interval = DEFAULT_STATS_INTERVAL;
 	config.nthreads = 1;
+	config.admin = "nobody@example.com";
 	conf.set(*t);
 	whttp_reconfigure();
 	global_conf_tree = *t;

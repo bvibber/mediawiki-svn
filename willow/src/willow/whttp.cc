@@ -773,6 +773,32 @@ struct	http_client	*client = (http_client *)data;
 	delete client;
 }
 
+static string
+errsafe(string const &s)
+{
+string::const_iterator	it = s.begin(), end = s.end();
+string	res;
+	res.reserve((long) (s.size() * 1.2));
+	for (; it != end; ++it)
+		switch (*it) {
+		case '<':
+			res += "&lt;";
+			break;
+		case '>':
+			res += "&gt;";
+			break;
+		case '"':
+			res += "&quot;";
+			break;
+		case '\'':
+			res += "&apos;";
+			break;
+		default:
+			res += *it;
+		}
+	return res;
+}
+
 static void
 client_send_error(http_client *client, int errnum, const char * errdata, int status, const char *statstr)
 {
@@ -807,8 +833,11 @@ ssize_t		 size;
 			switch(*p) {
 			case '%':
 				switch (*++p) {
+				case 'A':
+					errtxt += errsafe(config.admin);
+					break;
 				case 'U':
-					errtxt += client->cl_path;
+					errtxt += errsafe(client->cl_path);
 					break;
 				case 'D':
 					errtxt += current_time_str;
@@ -817,7 +846,7 @@ ssize_t		 size;
 					errtxt += my_hostname;
 					break;
 				case 'E':
-					errtxt += errdata;
+					errtxt += errsafe(errdata);
 					break;
 				case 'V':
 					errtxt += my_version;
@@ -829,9 +858,10 @@ ssize_t		 size;
 					break;
 				}
 				case 'S':
-					errtxt += statstr;
+					errtxt += errsafe(statstr);
 					break;
 				default:
+					errtxt += *p;
 					break;
 				}
 				p++;
@@ -859,7 +889,7 @@ ssize_t		 size;
 	client->cl_entity->he_rdata.response.status = status;
 	client->cl_entity->he_rdata.response.status_str = statstr;
 	if (errnum >= 0) {
-		client->cl_entity->he_headers.add("Content-Type", "text/html");
+		client->cl_entity->he_headers.add("Content-Type", "text/html;charset=UTF-8");
 		client->cl_entity->he_source_type = ENT_SOURCE_BUFFER;
 		client->cl_entity->he_source.buffer.addr = client->cl_wrtbuf;
 		client->cl_entity->he_source.buffer.len = strlen(client->cl_wrtbuf);

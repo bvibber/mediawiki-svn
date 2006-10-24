@@ -3,19 +3,63 @@
 <head>
 <title>Error: %C %S</title>
 <style type="text/css">
+* {
+	font-family: sans-serif;
+}
+
 body {
-	background-color: white;
+	background-color: #eeeeee;
 	color: black;
+}
+
+#topbar {
+	font-size: 1.3em;
+	text-align: center;
+	border-bottom: solid 1px black;
+	color: #770000;
+}
+
+#header {
+	font-size: 1.3em;
+	text-decoration: underline;
+}
+
+#footer {
+	border-top: dashed 1px black;
+	padding-top: 3px;
+	text-align: right;
+	color: #777777;
+}
+
+span.ms {
+	font-family: monospace;
+}
+
+a {
+	color: #555599;
 }
 </style>
 </head>
 <body>
-<h1>Request failed: %C %S</h1>
-<p>While trying to retrieve the URL:</p>
-<ul><li>%U</li></ul>
-<p>The following internal cache error was encountered:</p>
+
+<div id="topbar">
+Error loading page: %C %S
+</div>
+
+<p>This is the Willow proxy-cache at server <span class="ms">%H</span>.
+I am sorry to inform you that I was unable to retrieve the URL you requested:</p>
+
+<ul><li><a href="%U"><span class="ms">%U</span></a></li></ul>
+
+<p>The following error was encountered while trying:</p>
+
 <ul><li>%E</li></ul>
-<hr>
+
+<p>Please wait a while and try again.  If the problem persists, please contact
+my owner: <a href="mailto:%A">%A</a>.</p>
+
+<div id="footer">
 Generated %D by %H (%V)
+</div>
 </body>
 </html>
