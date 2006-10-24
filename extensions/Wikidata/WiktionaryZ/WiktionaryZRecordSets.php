@@ -7,7 +7,7 @@ require_once('Expression.php');
 require_once('Transaction.php');
 require_once('WikiDataTables.php');
 
-function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeMapping, $table, $restrictions, $orderBy = array()) {
+function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeMapping, $table, $restrictions, $orderBy = array(), $count = -1, $offset = 0) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	
 	$selectFields = array_keys($fieldAttributeMapping);
@@ -30,6 +30,9 @@ function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeM
 	
 	if (count($orderBy) > 0)
 		$query .= " ORDER BY " . implode(', ', $orderBy);
+		
+	if ($count != -1) 
+		$query .= " LIMIT " . $offset . ", " . $count;
 	
 	$queryResult = $dbr->query($query);
 	

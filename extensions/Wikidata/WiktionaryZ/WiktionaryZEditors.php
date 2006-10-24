@@ -9,7 +9,7 @@ function getTransactionEditor($attribute) {
 
 	$transactionEditor = new RecordTableCellEditor($attribute);
 	$transactionEditor->addEditor(new UserEditor($userAttribute, new SimplePermissionController(false), true));
-	$transactionEditor->addEditor(new ShortTextEditor($timestampAttribute, new SimplePermissionController(false), true));
+	$transactionEditor->addEditor(new TimestampEditor($timestampAttribute, new SimplePermissionController(false), true));
 
 	return $transactionEditor;
 }

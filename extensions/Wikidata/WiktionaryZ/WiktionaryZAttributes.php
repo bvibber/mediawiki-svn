@@ -28,12 +28,14 @@ $definedMeaningIdAttribute = new Attribute("defined-meaning-id", "Defined meanin
 $definedMeaningDefiningExpressionAttribute = new Attribute("defined-meaning-defining-expression", "Defined meaning defining expression", "short-text");
 
 global
-	$definedMeaningReferenceStructure, $definedMeaningLabelAttribute, $definedMeaningReferenceKeyStructure, $definedMeaningReferenceType;
+	$definedMeaningReferenceStructure, $definedMeaningLabelAttribute, $definedMeaningReferenceKeyStructure, $definedMeaningReferenceType,
+	$definedMeaningReferenceAttribute;
 	
 $definedMeaningLabelAttribute = new Attribute("defined-meaning-label", "Defined meaning label", "short-text");
 $definedMeaningReferenceStructure = new Structure($definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute);
 $definedMeaningReferenceKeyStructure = new Structure($definedMeaningIdAttribute);
 $definedMeaningReferenceType = new RecordType($definedMeaningReferenceStructure);
+$definedMeaningReferenceAttribute = new Attribute("defined-meaning", "Defined meaning", $definedMeaningReferenceType);
 
 global
 	$collectionIdAttribute, $collectionMeaningType, $collectionMeaningAttribute, $sourceIdentifierAttribute;

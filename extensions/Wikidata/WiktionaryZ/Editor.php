@@ -1189,12 +1189,14 @@ class AttributeLabelViewer extends Viewer {
 class RecordSpanEditor extends RecordEditor {
 	protected $attributeSeparator;
 	protected $valueSeparator;
+	protected $showAttributeNames;
 
-	public function __construct($attribute, $valueSeparator, $attributeSeparator) {
+	public function __construct($attribute, $valueSeparator, $attributeSeparator, $showAttributeNames = true) {
 		parent::__construct($attribute);
 
 		$this->attributeSeparator = $attributeSeparator;
 		$this->valueSeparator = $valueSeparator;
+		$this->showAttributeNames = $showAttributeNames;
 	}
 
 	public function view($idPath, $value) {
@@ -1203,7 +1205,13 @@ class RecordSpanEditor extends RecordEditor {
 		foreach($this->editors as $editor) {
 			$attribute = $editor->getAttribute();
 			$idPath->pushAttribute($attribute);
-			$fields[] = $attribute->name . $this->valueSeparator. $editor->view($idPath, $value->getAttributeValue($attribute));
+			$attributeValue = $editor->view($idPath, $value->getAttributeValue($attribute));
+			
+			if ($this->showAttributeNames)	
+				$fields[] = $attribute->name . $this->valueSeparator . $attributeValue;
+			else
+				$fields[] = $attributeValue; 
+				
 			$idPath->popAttribute();
 		}
 
@@ -1248,6 +1256,27 @@ class UserEditor extends ScalarEditor {
 			
 		if ($value != "")	
 			return $wgUser->getSkin()->makeLink("User:".$value, $value);
+		else
+			return "";
+	}
+	
+	public function getEditHTML($idPath, $value) {
+		return $this->getViewHTML($idPath, $value);
+	}
+
+	public function getInputValue($id) {
+	}
+	
+	public function add($idPath) {
+	}
+}
+
+class TimestampEditor extends ScalarEditor {
+	public function getViewHTML($idPath, $value) {
+		if ($value != "")
+			return 
+				substr($value, 0, 4) . '-' . substr($value, 4, 2) . '-' . substr($value, 6, 2) . ' ' .
+				substr($value, 8, 2) . ':' . substr($value, 10, 2) . ':' . substr($value, 12, 2);
 		else
 			return "";
 	}

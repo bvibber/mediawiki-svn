@@ -95,6 +95,41 @@ class QueryAtTransactionInformation implements QueryTransactionInformation {
 	}
 }
 
+class QueryUpdateTransactionInformation implements QueryTransactionInformation {
+	protected $transactionId;
+	
+	public function __construct($transactionId) {
+		$this->transactionId = $transactionId;
+	}
+	
+	public function getRestriction($tableName) {
+		return " $tableName.add_transaction_id = $this->transactionId OR $tableName.removeTransactionId = $this->transactionId ";
+	}
+	
+	public function versioningAttributes() {
+//		global
+//			$recordLifeSpanAttribute;
+			
+		return array();
+	}
+	
+	public function versioningFields($tableName) {
+//		return array($tableName . '.add_transaction_id', $tableName . '.remove_transaction_id', $tableName . '.remove_transaction_id IS NULL AS is_live');
+		return array();
+	}
+	
+	public function versioningOrderBy() {
+		return array();
+	}
+	
+	public function setVersioningAttributes($record, $row) {
+//		global
+//			$recordLifeSpanAttribute;
+//			
+//		$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']));
+	}
+}
+
 global
 	$updateTransactionId;
 
@@ -150,13 +185,17 @@ function getViewTransactionRestriction($table) {
 }
 
 global
-	$transactionIdAttribute, $userAttribute, $timestampAttribute, $transactionStructure, $addTransactionAttribute, $removeTransactionAttribute, 
+	$transactionIdAttribute, $userAttribute, $userIPAttribute, $timestampAttribute,
+	$transactionStructure, $summaryAttribute, 
+	$addTransactionAttribute, $removeTransactionAttribute, 
 	$recordLifeSpanAttribute, $recordLifeSpanStructure;
 	
 $transactionIdAttribute = new Attribute('transaction-id', 'Transaction ID', 'integer');
 $userAttribute = new Attribute('user', 'User', 'user');
+$userIPAttribute = new Attribute('user-ip', 'User IP', 'IP');
 $timestampAttribute = new Attribute('timestamp', 'Time', 'timestamp');
-$transactionStructure = new Structure($userAttribute, $timestampAttribute);
+$summaryAttribute = new Attribute('summary', 'Summary', 'text');
+$transactionStructure = new Structure($transactionIdAttribute, $userAttribute, $userIPAttribute, $timestampAttribute, $summaryAttribute);
 
 $addTransactionAttribute = new Attribute('add-transaction', 'Added', new RecordType($transactionStructure));
 $removeTransactionAttribute = new Attribute('remove-transaction', 'Removed', new RecordType($transactionStructure));
@@ -183,9 +222,32 @@ function getUserLabel($userId, $userIP) {
 		return "Unknown"; 
 }
 
-function getTransactionTuple($transactionId) {
+function expandUserIDsInRecordSet($recordSet, $userIDAttribute, $userIPAttribute) {
+	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) { 
+		$record = $recordSet->getRecord($i);
+		$record->setAttributeValue(
+			$userIDAttribute, 
+			getUserLabel(
+				$record->getAttributeValue($userIDAttribute),
+				$record->getAttributeValue($userIPAttribute)
+			)
+		);
+	}
+}								
+
+function expandTransactionIdsInRecordSet($recordSet, $transactionIdAttribute, $transactionAttribute) {
+	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) { 
+		$record = $recordSet->getRecord($i);
+		$record->setAttributeValue(
+			$transactionAttribute, 
+			getTransactionRecord($record->getAttributeValue($transactionIdAttribute))
+		);
+	}
+}	
+
+function getTransactionRecord($transactionId) {
 	global
-		$transactionStructure, $transactionIdAttribute, $userAttribute, $timestampAttribute, $wgUser, $wgContLang;
+		$transactionStructure, $transactionIdAttribute, $userAttribute, $timestampAttribute, $summaryAttribute;
 	
 	$result = new ArrayRecord($transactionStructure);
 	$result->setAttributeValue($transactionIdAttribute, $transactionId);
@@ -196,7 +258,8 @@ function getTransactionTuple($transactionId) {
 		
 		if ($transaction = $dbr->fetchObject($queryResult)) {
 			$result->setAttributeValue($userAttribute, getUserLabel($transaction->user_id, $transaction->user_ip));	
-			$result->setAttributeValue($timestampAttribute,  $wgContLang->timeanddate($transaction->timestamp));
+			$result->setAttributeValue($timestampAttribute, $transaction->timestamp);
+			$result->setAttributeValue($summaryAttribute, $transaction->comment);
 		}
 	}
 	else {
@@ -205,7 +268,8 @@ function getTransactionTuple($transactionId) {
 		else
 			$result->setAttributeValue($userAttribute, "");	
 				
-		$result->setAttributeValue($timestampAttribute,  "");
+		$result->setAttributeValue($timestampAttribute, "");
+		$result->setAttributeValue($summaryAttribute, "");
 	}
 
 	return $result;
@@ -216,8 +280,8 @@ function getRecordLifeSpanTuple($addTransactionId, $removeTransactionId) {
 		$recordLifeSpanStructure, $addTransactionAttribute, $removeTransactionAttribute;
 	
 	$result = new ArrayRecord($recordLifeSpanStructure);
-	$result->setAttributeValue($addTransactionAttribute, getTransactionTuple($addTransactionId));
-	$result->setAttributeValue($removeTransactionAttribute, getTransactionTuple($removeTransactionId));
+	$result->setAttributeValue($addTransactionAttribute, getTransactionRecord($addTransactionId));
+	$result->setAttributeValue($removeTransactionAttribute, getTransactionRecord($removeTransactionId));
 	
 	return $result;
 }
