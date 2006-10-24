@@ -183,17 +183,6 @@ case "$1" in
 		# 	/usr/sbin/squid -z
 		# fi
 
-		#
-		# Install /etc/default/squid file if it doesn't
-		# exist yet.
-		#
-		if [ ! -f /etc/default/squid ]
-		then
-			cp /usr/share/doc/squid/examples/default.squid \
-				/etc/default/squid
-			chmod 644 /etc/default/squid
-		fi
-
 		;;
 	abort-upgrade|abort-remove|abort-deconfigure)
 		;;

@@ -232,6 +232,7 @@ binary-arch:	build checkroot
 	$(INSTALL_DIR) $(tmp)/usr/share/doc/$(package)/examples
 	$(INSTALL_DIR) $(tmp)/usr/lib/squid
 	$(INSTALL_DIR) $(tmp)/var/{log,spool}
+	$(INSTALL_DIR) $(tmp)/etc/default
 	install -m 750 -o proxy -g proxy -d $(tmp)/var/log/squid
 	install -m 750 -o proxy -g proxy -d $(tmp)/var/spool/squid
 	$(INSTALL_DIR) $(tmp)/usr/share/man/man8
@@ -278,7 +279,7 @@ binary-arch:	build checkroot
 	$(INSTALL_FILE) src/squid.conf.default \
 	        $(tmp)/usr/share/doc/$(package)/examples/squid.conf
 	$(INSTALL_FILE) debian/default.squid \
-		$(tmp)/usr/share/doc/$(package)/examples
+		$(tmp)/etc/default/squid
 	
 	#
 	$(INSTALL_FILE) ChangeLog $(tmp)/usr/share/doc/$(package)/changelog

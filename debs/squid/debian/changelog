@@ -1,3 +1,9 @@
+squid (2.6.4-2wm3) dapper; urgency=low
+
+  * Install /etc/default/squid as a conffile, not in postinst
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 24 Oct 2006 14:59:45 +0000
+
 squid (2.6.4-2wm2) dapper; urgency=low
 
   * Use 16384 FDs by default
