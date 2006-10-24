@@ -70,6 +70,7 @@ static void wnet_write_do(struct fde *);
 static void wnet_sendfile_do(struct fde *);
 
 static void readbuf_reset(struct readbuf *);
+static void secondly_sched(void);
 
 struct fde *fde_table;
 int max_fd;
@@ -82,6 +83,26 @@ void
 wnet_add_accept_wakeup(int s)
 {
 	awaks.push_back(s);
+}
+
+event	secondly_ev;
+timeval	secondly_tv;
+
+static void
+secondly_update(int, short, void *)
+{
+	wnet_set_time();
+	secondly_sched();
+}
+
+static void
+secondly_sched(void)
+{
+	secondly_tv.tv_usec = 0;
+	secondly_tv.tv_sec = 1;
+	evtimer_set(&secondly_ev, secondly_update, NULL);
+	event_base_set(evb, &secondly_ev);
+	event_add(&secondly_ev, &secondly_tv);
 }
 
 void
@@ -119,6 +140,7 @@ size_t	 i;
 	}
 	wlog(WLOG_NOTICE, "wnet: initialised, using libevent %s (%s)",
 		event_get_version(), event_get_method());
+	secondly_sched();
 }
 
 void
