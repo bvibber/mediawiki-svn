@@ -1,3 +1,10 @@
+squid (2.6.4-2wm2) dapper; urgency=low
+
+  * Use 16384 FDs by default
+  * Disable nozerobufs patch, as it may be the cause for crashes
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 24 Oct 2006 14:44:24 +0000
+
 squid (2.6.4-2wm1) dapper; urgency=low
 
   * Incorporate Debian package changes:
