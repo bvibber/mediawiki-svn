@@ -356,8 +356,7 @@ tss<T> freelist_allocator<T>::_freelist;
 
 extern struct stats_stru : noncopyable {
 	atomic<int>	interval;	/* update interval	*/
-	radix		v4_access;
-	radix		v6_access;
+	access_list	access;
 
 	/*
 	 * Absolute values.

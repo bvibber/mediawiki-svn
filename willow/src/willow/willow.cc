@@ -265,18 +265,15 @@ int	i;
 sockaddr_storage	ss;
 socklen_t		sslen = sizeof(ss);
 char	str[NI_MAXHOST];
+
 	if (recvfrom(e->fde_fd, rdata, sizeof(rdata), 0, (sockaddr *)&ss, &sslen) != 2)
 		return;
+
 	if (rdata[0] != 1 || rdata[1] != 0)
+		return;	/* wrong version or length */
+
+	if (!stats.access.allowed((sockaddr *)&ss).first)
 		return;
-	if (!stats.v4_access.empty() || !stats.v6_access.empty()) {
-		if (getnameinfo((sockaddr *)&ss, sslen, str, sizeof(str), NULL, 0, NI_NUMERICHOST) != 0)
-			return;
-		if (ss.ss_family == AF_INET && !stats.v4_access.search((sockaddr *)&ss))
-				return;
-		if (ss.ss_family == AF_INET6 && !stats.v6_access.search((sockaddr *)&ss))
-				return;
-	}
 
 	/*
 	 * Stats format:

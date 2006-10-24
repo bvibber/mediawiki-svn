@@ -7,6 +7,7 @@
    Merit Network, Inc., and their contributors. 
  * 
  * Copyright (c) 2005, IPng, Pim van Pelt <pim@ipng.nl>
+ * Copyright 2006 River Tarnell.
  */
 /* From: Id: radix.h,v 1.1.1.1 2005/11/07 20:17:44 pim Exp */
 /* $Id$ */
@@ -15,18 +16,17 @@
 #define _RADIX_H
 
 #include <sys/types.h>
-#include <inttypes.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+
 #include <netdb.h>
+#include <inttypes.h>
 
 #include <stdexcept>
+#include <utility>
 using std::invalid_argument;
-
-#define	RFL_ALLOW	0x01
-#define RFL_DENY	0x02
-#define RFL_CONNECT	0x04
+using std::pair;
 
 typedef void (*void_fn_t)();
 
@@ -71,6 +71,7 @@ private:
 };
 
 struct radix_node {
+		radix_node() { memset(this, 0, sizeof(*this)); }
 	uint32_t		 bit;
 	struct prefix 		*prefix;
 	struct radix_node 	*l, *r;
@@ -117,16 +118,16 @@ private:
 
 class access_list : radix {
 public:
-	bool	allowed	(char const *) const;
-	bool	allowed	(string const &) const;
-	bool	allowed	(sockaddr const *) const;
-	bool	allowed	(prefix const *) const;
+	pair<bool,uint16_t>	allowed	(char const *) const;
+	pair<bool,uint16_t>	allowed	(string const &) const;
+	pair<bool,uint16_t>	allowed	(sockaddr const *) const;
+	pair<bool,uint16_t>	allowed	(prefix const *) const;
 
-	void	allow	(char const *);
-	void	allow	(string const &);
+	void	allow	(char const *, uint16_t flags = 0);
+	void	allow	(string const &, uint16_t flags = 0);
 
-	void	deny	(char const *);
-	void	deny	(string const &);
+	void	deny	(char const *, uint16_t flags = 0);
+	void	deny	(string const &, uint16_t flags = 0);
 
 private:
 	radix_node	*_add	(prefix *, int);

@@ -117,7 +117,6 @@ struct	cache_object	*cl_co;		/* Cache object				*/
 		unsigned int	f_http11:1;	/* Client understands HTTP/1.1		*/
 		unsigned int	f_blocked:1;
 	}		 cl_flags;
-	string		 cl_blockednet;
 	size_t		 cl_dsize;	/* Object size				*/
 enum	encoding	 cl_enc;
 struct	http_client	*fe_next;	/* freelist 				*/
@@ -330,19 +329,11 @@ http_new(fde *e)
 struct	http_client	*cl;
 
 radix_node	*r;
-bool		 blocked;
-	if (	(e->fde_cdata->cdat_addr.ss_family == AF_INET
-		 && (r = config.v4_access.search((sockaddr *)&e->fde_cdata->cdat_addr)) 
-	         && (r->flags & RFL_DENY))
-	    ||	(e->fde_cdata->cdat_addr.ss_family == AF_INET6
-	         && (r = config.v6_access.search((sockaddr *)&e->fde_cdata->cdat_addr))
-	         && (r->flags & RFL_DENY)))
-	{
-		if (r->flags & RFL_CONNECT) {
-			wnet_close(e->fde_fd);
-			return;
-		}
-		blocked = true;
+pair<bool,int>	 blocked;
+	blocked = config.access.allowed((sockaddr *)&e->fde_cdata->cdat_addr);
+	if (blocked.first && (blocked.second & whttp_deny_connect)) {
+		wnet_close(e->fde_fd);
+		return;
 	}
 
 	cl = new http_client(e);
@@ -350,10 +341,8 @@ bool		 blocked;
 	cl->cl_entity->he_source.fde.fde = e;
 	cl->cl_entity->he_rdata.request.contlen = -1;
 
-	if (blocked) {
-		cl->cl_blockednet = r->prefix->tostring();
+	if (blocked.first)
 		cl->cl_flags.f_blocked = 1;
-	}
 
 	WDEBUG((WLOG_DEBUG, "http_new: starting header read for %d", cl->cl_fde->fde_fd));
 	entity_read_headers(cl->cl_entity, client_read_done, cl);
@@ -412,7 +401,7 @@ struct	http_client	*client = (http_client *)data;
 	client->cl_reqtype = client->cl_entity->he_rdata.request.reqtype;
 
 	if (client->cl_flags.f_blocked) {
-		client_send_error(client, ERR_BLOCKED, client->cl_blockednet.c_str(), 403, "Access denied");
+		client_send_error(client, ERR_BLOCKED, "", 403, "Access denied");
 		return;
 	}
 

@@ -168,62 +168,43 @@ string	&s = v.cv_values[0].av_strval;
 }
 
 static void
-radix_from_list(tree_entry &e, radix &rad)
+radix_from_list(tree_entry &e, access_list &rad)
 {
 value		*val;
 radix_node	*r;
 int		 immed = 0;
 	if ((val = e/"apply-at") != NULL)
 		if (val->cv_values[0].av_strval == "connect")
-			immed = RFL_CONNECT;
+			immed = whttp_deny_connect;
 
 	if ((val = e/"allow") != NULL) {
 	vector<avalue>::iterator	it = val->cv_values.begin(),
 					end = val->cv_values.end();
-		for (; it != end; ++it) {
-			r = rad.add(it->av_strval);
-			r->flags = RFL_ALLOW | immed;
-		}
+		for (; it != end; ++it)
+			rad.allow(it->av_strval, immed);
 	}
 
 	if ((val = e/"deny") != NULL) {
 	vector<avalue>::iterator	it = val->cv_values.begin(),
 					end = val->cv_values.end();
-		for (; it != end; ++it) {
-			r = rad.add(it->av_strval);
-			r->flags = RFL_DENY | immed;
-		}
+		for (; it != end; ++it)
+			rad.deny(it->av_strval, immed);
 	}
 }
 
 static void
-set_access_v4(tree_entry &e)
+set_access(tree_entry &e)
 {
-	radix_from_list(e, config.v4_access);
+	radix_from_list(e, config.access);
 }
 
 static void
-set_access_v6(tree_entry &e)
-{
-	radix_from_list(e, config.v6_access);
-}
-
-static void
-stats_access_v4(tree_entry &e, value &v)
+stats_access(tree_entry &e, value &v)
 {
 vector<avalue>::iterator	it = v.cv_values.begin(),
 				end = v.cv_values.end();
 	for (; it != end; ++it)
-		stats.v4_access.add(it->av_strval);
-}
-
-static void
-stats_access_v6(tree_entry &e, value &v)
-{
-vector<avalue>::iterator	it = v.cv_values.begin(),
-				end = v.cv_values.end();
-	for (; it != end; ++it)
-		stats.v6_access.add(it->av_strval);
+		stats.access.allow(it->av_strval);
 }
 
 static bool
@@ -294,8 +275,7 @@ conf
 
 	.block("stats")
 		.value("interval",	simple_range(1, INT_MAX),	set_aint(stats.interval))
-		.value("allow-v4",	func(radix_prefix),		func(stats_access_v4))
-		.value("allow-v6",	func(radix_prefix),		func(stats_access_v6))
+		.value("allow",		func(radix_prefix),		func(stats_access))
 		.value("enable",	simple_yesno,			set_yesno(config.udp_stats))
 		.value("listen",	ip_address_list,		add_ip(config.stats_hosts))
 
@@ -313,14 +293,8 @@ conf
 		.value("port",		simple_range(1, 65535), ignore)
 		.value("aftype",	func(v_aftype),		ignore)
 
-	.block("access-v4")
-		.end(func(set_access_v4))
-		.value("allow",		func(radix_prefix),	ignore)
-		.value("deny",		func(radix_prefix),	ignore)
-		.value("apply-at",	func(v_apply_at),	ignore)
-
-	.block("access-v6")
-		.end(func(set_access_v6))
+	.block("access")
+		.end(func(set_access))
 		.value("allow",		func(radix_prefix),	ignore)
 		.value("deny",		func(radix_prefix),	ignore)
 		.value("apply-at",	func(v_apply_at),	ignore)

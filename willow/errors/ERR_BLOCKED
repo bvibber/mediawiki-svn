@@ -14,7 +14,7 @@ body {
 <p>While trying to retrieve the URL:</p>
 <ul><li>%U</li></ul>
 <p>The following error was encountered:</p>
-<ul><li>Your IP address (inside the network %E) was denied access to this server.</li></ul>
+<ul><li>Your IP address was denied access to this server.</li></ul>
 <hr>
 Generated %D by %H (%V)
 </body>

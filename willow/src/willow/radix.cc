@@ -7,6 +7,7 @@
  * 
  * See the radix.h header for more information.
  * Copyright (c) 2005, IPng, Pim van Pelt <pim@ipng.nl>
+ * Copyright 2006 River Tarnell.
  */
 /* From: Id: radix.c,v 1.1.1.1 2005/11/07 20:17:44 pim Exp */
 /* $Id$ */
@@ -15,7 +16,10 @@
 #include <cstring>
 #include <cstdlib>
 #include <cassert>
+#include <utility>
 using std::sprintf;
+using std::pair;
+using std::make_pair;
 
 #include "willow.h"
 #include "radix.h"
@@ -269,6 +273,7 @@ radix::clear (void_fn_t func)
 			} else {
 				assert (NULL == Xrn->data);
 			}
+			Xrn->prefix = NULL;
 			delete Xrn;
 			num_active_node--;
 			if (l) {
@@ -281,11 +286,11 @@ radix::clear (void_fn_t func)
 			} else if (Xsp != Xstack) {
 				Xrn = *(--Xsp);
 			} else {
-				Xrn = (struct radix_node *) 0;
+				Xrn = NULL;
 			}
 		}
 	}
-	assert (num_active_node == 0);
+	assert(num_active_node == 0);
 	return;
 }
 
@@ -375,10 +380,11 @@ radix_node	*node, *new_node, *parent, *glue;
 uint8_t		*addr, *test_addr;
 uint32_t	 prefixlen, check_bit, differ_bit;
 int		 i, j, r;
-prefix		*prefix;
 
-	if ((node = search_exact(pfx)) != NULL)
+	if ((node = search_exact(pfx)) != NULL) {
+		delete pfx;
 		return node;
+	}
 
 	if (head == NULL) {
 		node = new radix_node;
@@ -529,6 +535,7 @@ radix_node *parent, *child;
 	if (node->r == NULL && node->l == NULL) {
 		parent = node->parent;
 		delete node->prefix;
+		node->prefix = NULL;
 		delete node;
 		num_active_node--;
 		if (parent == NULL) {
@@ -575,6 +582,7 @@ radix_node *parent, *child;
 	child->parent = parent;
 
 	delete node->prefix;
+	node->prefix = NULL;
 	delete node;
 	num_active_node--;
 
@@ -612,41 +620,46 @@ radix_node *node;
 	return 0;
 }
 
-const int access_list::_denyflg	= 0x1;
-const int access_list::_allowflg	= 0x2;
+/*
+ * Lower 16 bits are reserved for consumers.
+ */
+const int access_list::_denyflg		= 0x10000;
+const int access_list::_allowflg	= 0x20000;
 
-bool
+pair<bool,uint16_t>
 access_list::allowed(char const *s) const
 {
 prefix	p(s);
 	return allowed(&p);
 }
 
-bool
+pair<bool,uint16_t>
 access_list::allowed(string const &s) const
 {
 	return allowed(s.c_str());
 }
 
-bool
+pair<bool,uint16_t>
 access_list::allowed(sockaddr const *addr) const
 {
 prefix	p(addr);
 	return allowed(&p);
 }
 
-bool
+pair<bool,uint16_t>
 access_list::allowed(prefix const *p) const
 {
 	if (_empty())
-		return true;
+		return make_pair(false, 0);
 
 radix_node	*r;
-	r = _get(p);
+	if ((r = _get(p)) == NULL)
+		return make_pair(true, 0);
+
 	if (r->flags & _denyflg)
-		return false;
+		return make_pair(false, r->flags & 0xFFFF);
 	else if (r->flags & _allowflg)
-		return true;
+		return make_pair(true, r->flags & 0xFFFF);
 	else
 		abort();
 }
@@ -688,27 +701,25 @@ radix_node	*r;
 }
 
 void
-access_list::allow(char const *s)
+access_list::allow(char const *s, uint16_t flags)
 {
-prefix	p(s);
-	_add(&p, _allowflg);
+	_add(new prefix(s), _allowflg | (flags & 0xFFFF));
 }
 
 void
-access_list::allow(string const &s)
+access_list::allow(string const &s, uint16_t flags)
 {
-	allow(s.c_str());
+	allow(s.c_str(), flags);
 }
 
 void
-access_list::deny(char const *s)
+access_list::deny(char const *s, uint16_t flags)
 {
-prefix	p(s);
-	_add(&p, _denyflg);
+	_add(new prefix(s), _denyflg | (flags & 0xFFFF));
 }
 
 void
-access_list::deny(string const &s)
+access_list::deny(string const &s, uint16_t flags)
 {
-	deny(s.c_str());
+	deny(s.c_str(), flags);
 }

@@ -12,6 +12,8 @@
 # pragma ident "@(#)$Id$"
 #endif
 
+static const int whttp_deny_connect = 0x1;
+
 struct fde;
 struct event_base;
 
