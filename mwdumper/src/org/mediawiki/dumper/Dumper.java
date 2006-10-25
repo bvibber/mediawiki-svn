@@ -67,12 +67,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.zip.GZIPOutputStream;
 
+import java.text.ParseException;
 
 import org.mediawiki.importer.*;
 
 
 class Dumper {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ParseException {
 		InputStream input = null;
 		OutputWrapper output = null;
 		DumpWriter sink = null;
@@ -242,7 +243,7 @@ class Dumper {
 	
 	// ----------------
 	
-	static DumpWriter addFilter(DumpWriter sink, String filter, String param) throws IOException {
+	static DumpWriter addFilter(DumpWriter sink, String filter, String param) throws IOException, ParseException {
 		if (filter.equals("latest"))
 			return new LatestFilter(sink);
 		else if (filter.equals("namespace"))
@@ -257,6 +258,10 @@ class Dumper {
 			return new ExactListFilter(sink, param);
 		else if (filter.equals("revlist"))
 			return new RevisionListFilter(sink, param);
+		else if (filter.equals("before"))
+			return new BeforeTimeStampFilter(sink, param);
+		else if (filter.equals("after"))
+			return new AfterTimeStampFilter(sink, param);
 		else
 			throw new IllegalArgumentException("Filter unknown: " + filter);
 	}
