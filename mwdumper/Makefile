@@ -23,6 +23,8 @@ SOURCES_DUMPER=\
   src/org/apache/commons/compress/bzip2/CRC.java
 
 SOURCES_IMPORT=\
+  src/org/mediawiki/importer/AfterTimeStampFilter.java \
+  src/org/mediawiki/importer/BeforeTimeStampFilter.java \
   src/org/mediawiki/importer/Buffer.java \
   src/org/mediawiki/importer/Contributor.java \
   src/org/mediawiki/importer/DumpWriter.java \
@@ -46,6 +48,7 @@ SOURCES_IMPORT=\
   src/org/mediawiki/importer/SqlWriter.java \
   src/org/mediawiki/importer/SqlWriter14.java \
   src/org/mediawiki/importer/SqlWriter15.java \
+  src/org/mediawiki/importer/TimeStampFilter.java \
   src/org/mediawiki/importer/Title.java \
   src/org/mediawiki/importer/TitleMatchFilter.java \
   src/org/mediawiki/importer/XmlDumpReader.java \
