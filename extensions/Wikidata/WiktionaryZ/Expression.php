@@ -531,24 +531,56 @@ function createNewDefinedMeaning($definingExpressionId, $languageId, $text) {
 	return $definedMeaningId;
 }
 
-function createDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $translatedContentId) {
-	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("INSERT INTO uw_text_attribute_values (object_id, attribute_mid, value_tcid, add_transaction_id) " .
-			    "VALUES ($definedMeaningId, $attributeId, $translatedContentId, ". getUpdateTransactionId() .")");
+function addTextAttributeValue($objectId, $textAttributeId, $text) {
+	$textValueAttributeId = newObjectId('uw_text_attribute_values');
+	createTextAttributeValue($objectId, $textAttributeId, $text, $textValueAttributeId);
 }
 
-function addDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $languageId, $text) {
+function createTextAttributeValue($objectId, $textAttributeId, $text, $textValueAttributeId) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("INSERT INTO uw_text_attribute_values (value_id, object_id, attribute_mid, text, add_transaction_id) " .
+			    "VALUES ($textValueAttributeId, $objectId, $textAttributeId, '$text', ". getUpdateTransactionId() .")");	
+}
+
+function removeTextAttributeValue($textValueAttributeId) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE uw_text_attribute_values SET remove_transaction_id=". getUpdateTransactionId() .
+				" WHERE value_id=$textValueAttributeId" .
+				" AND remove_transaction_id IS NULL");	
+}
+
+function updateTextAttributeValue($text, $textValueAttributeId) {
+	$textValueAttribute = getTextValueAttribute($textValueAttributeId);
+	removeTextAttributeValue($textValueAttributeId);
+	createTextAttributeValue($textValueAttribute->object_id, $textValueAttribute->attribute_mid, $text, $textValueAttributeId);
+}
+
+function getTextValueAttribute($textValueAttributeId) {
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT object_id, attribute_mid, text FROM uw_text_attribute_values WHERE value_id=$textValueAttributeId " .
+								" AND " . getLatestTransactionRestriction('uw_text_attribute_values'));
+
+	return $dbr->fetchObject($queryResult);
+}
+
+function createTranslatedTextAttributeValue($objectId, $attributeId, $translatedContentId) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("INSERT INTO uw_translated_content_attribute_values (object_id, attribute_mid, value_tcid, add_transaction_id) " .
+			    "VALUES ($objectId, $attributeId, $translatedContentId, ". getUpdateTransactionId() .")");
+}
+
+function addTranslatedTextAttributeValue($objectId, $attributeId, $languageId, $text) {
 	$translatedContentId = newTranslatedContentId();
 	
-	createDefinedMeaningTextAttributeValue($definedMeaningId, $attributeId, $translatedContentId);
+	createTranslatedTextAttributeValue($objectId, $attributeId, $translatedContentId);
 	addTranslatedText($translatedContentId, $languageId, $text);
 }
 
-function removeDefinedMeaningTextAttributeValue($textId) {
+function removeTranslatedTextAttributeValue($textId) {
 	removeTranslatedTexts($textId);
 
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("UPDATE uw_text_attribute_values SET remove_transaction_id=". getUpdateTransactionId() .
+	$dbr->query("UPDATE uw_translated_content_attribute_values SET remove_transaction_id=". getUpdateTransactionId() .
 				" WHERE value_tcid=$textId" .
 				" AND remove_transaction_id IS NULL");
 }

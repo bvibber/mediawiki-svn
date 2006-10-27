@@ -48,6 +48,7 @@ function getSuggestions() {
 		case 'class':
 			$sql = getSQLForCollectionOfType('CLAS');
 			break;
+		case 'translated-text-attribute':
 		case 'text-attribute':	
 			$sql = getSQLForCollectionOfType('TATT');
 			break;
@@ -110,6 +111,9 @@ function getSuggestions() {
 			break;
 		case 'text-attribute':
 			list($recordSet, $editor) = getTextAttributeAsRecordSet($queryResult);
+			break;
+		case 'translated-text-attribute':
+			list($recordSet, $editor) = getTranslatedTextAttributeAsRecordSet($queryResult);
 			break;
 		case 'defined-meaning':
 			list($recordSet, $editor) = getDefinedMeaningAsRecordSet($queryResult);
@@ -201,11 +205,9 @@ function getClassAsRecordSet($queryResult) {
 
 function getTextAttributeAsRecordSet($queryResult) {
 	global
-		$idAttribute;
+		$idAttribute, $textAttributeAttribute, $collectionAttribute;
 	
 	$dbr =& wfGetDB(DB_SLAVE);
-	$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "short-text");
-	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
 	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
@@ -214,6 +216,26 @@ function getTextAttributeAsRecordSet($queryResult) {
 
 	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
 	$editor->addEditor(new ShortTextEditor($textAttributeAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
+
+	return array($recordSet, $editor);		
+}
+
+function getTranslatedTextAttributeAsRecordSet($queryResult) {
+	global
+		$idAttribute, $translatedTextAttributeAttribute, $collectionAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+//	$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", "Translated text attribute", "short-text");
+//	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
+	
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $translatedTextAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
+
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor->addEditor(new ShortTextEditor($translatedTextAttributeAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 
 	return array($recordSet, $editor);		

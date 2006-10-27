@@ -510,3 +510,53 @@ function sortTable(columnNode, skipRows, columnIndex) {
 		
 	tableNode.setAttribute('sort-order', sortOrder.toText());
 }
+
+function showAttributeToggle(elementId) {
+ 	if (document.createTextNode) {
+	    var linkHolder = document.getElementById('attribute-record-editor-title-' + elementId);
+	    if (!linkHolder)
+	    	return;
+	
+	    var outerSpan = document.createElement('span');
+	    outerSpan.className = 'attributetoggle';
+	
+	    var toggleLink = document.createElement('a');
+	    toggleLink.id = 'togglelink' + elementId;
+	    toggleLink.className = 'internal';
+	    toggleLink.href = 'javascript:toggleAttribute("' + elementId + '")';
+	    toggleLink.appendChild(document.createTextNode(attributeShowText));
+	
+	    outerSpan.appendChild(document.createTextNode('['));
+	    outerSpan.appendChild(toggleLink);
+	    outerSpan.appendChild(document.createTextNode(']'));
+	
+	    linkHolder.appendChild(document.createTextNode(' '));
+	    linkHolder.appendChild(outerSpan);
+	
+	    var cookiePos = document.cookie.indexOf("hideattribute=");
+	    if (cookiePos > -1 && document.cookie.charAt(cookiePos + 8) == 1)
+	    	toggleAttribute();
+  	}
+}
+
+function changeText(el, newText) {
+ 	if (el.innerText)
+    	el.innerText = newText;
+	else if (el.firstChild && el.firstChild.nodeValue)
+    	el.firstChild.nodeValue = newText;
+}
+
+function toggleAttribute(elementId) {
+	var attribute = document.getElementById('attribute-record-editor-toggle-' + elementId).getElementsByTagName('div')[0];
+  	var toggleLink = document.getElementById('togglelink' + elementId)
+  
+ 	if(attribute && toggleLink && attribute.style.display == 'none') {
+    	changeText(toggleLink, attributeHideText);
+ 		attribute.style.display = 'block';
+     	document.cookie = "hideattribute=0";
+	} else {
+    	changeText(toggleLink, attributeShowText);
+		attribute.style.display = 'none';
+    	document.cookie = "hideattribute=1";
+	}
+}

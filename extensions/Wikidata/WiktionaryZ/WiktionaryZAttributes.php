@@ -104,20 +104,30 @@ global
 $synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Synonyms and translations", new RecordSetType(new Structure($syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute)));
 
 global
-	$textValueIdAttribute, $textAttributeAttribute, $textValueAttribute, $textAttributeValuesAttribute, $textAttributeValuesStructure;
+	$translatedTextValueIdAttribute, $translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, $translatedTextAttributeValuesStructure;
 	
-$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", $definedMeaningReferenceStructure);
-$textValueIdAttribute = new Attribute("text-value-id", "Text value identifier", "text-value-id");
-$textValueAttribute = new Attribute("text-value", "Text value", new RecordSetType($translatedTextStructure));
+$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", "Attribute", $definedMeaningReferenceStructure);
+$translatedTextValueIdAttribute = new Attribute("translated-text-value-id", "Translated text value identifier", "translated-text-value-id");
+$translatedTextValueAttribute = new Attribute("translated-text-value", "Value", new RecordSetType($translatedTextStructure));
 
-$textAttributeValuesStructure = new Structure($textAttributeAttribute, $textValueIdAttribute, $textValueAttribute);
+$translatedTextAttributeValuesStructure = new Structure($translatedTextAttributeAttribute, $translatedTextValueIdAttribute, $translatedTextValueAttribute);
+$translatedTextAttributeValuesAttribute = new Attribute("translated-text-attribute-values", "Translated text attribute values", new RecordSetType($translatedTextAttributeValuesStructure));
+
+global
+	$textAttributeIdAttribute, $textAttributeAttribute, $textAttributeValuesStructure, $textAttributeValuesAttribute;
+
+$textAttributeIdAttribute = new Attribute("text-attribute-id", "Attribute identifier", "object-id");
+$textAttributeObjectAttribute = new Attribute("text-attribute-object-id", "Attribute object", "object-id");
+$textAttributeAttribute = new Attribute("text-attribute", "Attribute", $definedMeaningReferenceStructure);
+$textAttributeValuesStructure = new Structure($textAttributeIdAttribute, $textAttributeObjectAttribute, $textAttributeAttribute, $textAttribute);	
 $textAttributeValuesAttribute = new Attribute("text-attribute-values", "Text attribute values", new RecordSetType($textAttributeValuesStructure));
 
 global
-	$definitionAttribute, $definedMeaningAttribute;
+	$definitionAttribute, $definedMeaningAttribute, $translatedTextAttribute;
 
-$definitionAttribute = new Attribute("definition", "Definition", new RecordSetType($translatedTextStructure));
-$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType(new Structure($definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute)));
+$translatedTextAttribute = new Attribute("translated-text", "Translated text", new RecordSetType($translatedTextStructure));
+$definitionAttribute = new Attribute("definition", "Definition", new RecordType(new Structure($translatedTextAttribute, $objectAttributesAttribute)));
+$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType(new Structure($definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $objectAttributesAttribute)));
 
 global
 	$expressionsAttribute, $expressionMeaningStructure, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute;
@@ -133,5 +143,12 @@ $expressionMeaningsStructure = new Structure($expressionExactMeaningsAttribute, 
 $expressionMeaningsAttribute = new Attribute("expression-meanings", "Expression meanings", new RecordType($expressionMeaningsStructure));
 
 $expressionsAttribute = new Attribute("expressions", "Expressions", new RecordSetType(new Structure($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute)));
+
+global
+	$objectIdAttribute, $objectAttributesStructure, $objectAttributesAttribute;
+
+$objectIdAttribute = new Attribute("object-id", "Object identifier", "object-id");
+$objectAttributesStructure = new Structure($objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute);
+$objectAttributesAttribute = new Attribute("object-attributes", "Attributes", new RecordType($objectAttributesStructure));
 
 ?>

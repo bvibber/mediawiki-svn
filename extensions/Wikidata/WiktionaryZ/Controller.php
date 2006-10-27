@@ -272,12 +272,13 @@ class DefinedMeaningCollectionController implements Controller {
 class ExpressionMeaningController implements Controller {
 	public function add($keyPath, $record) {
 		global
-			$expressionIdAttribute, $definedMeaningAttribute, $definitionAttribute, $languageAttribute, $textAttribute;
+			$expressionIdAttribute, $definedMeaningAttribute, $definitionAttribute, $translatedTextAttribute, $languageAttribute, $textAttribute;
 
 		$definition = $record->getAttributeValue($definedMeaningAttribute)->getAttributeValue($definitionAttribute);
+		$translatedContent = $definition->getAttributeValue($translatedTextAttribute);
 
-		if ($definition->getRecordCount() > 0) {
-			$definitionRecord = $definition->getRecord(0);
+		if ($translatedContent->getRecordCount() > 0) {
+			$definitionRecord = $translatedContent->getRecord(0);
 
 			$text = $definitionRecord->getAttributeValue($textAttribute);
 			$languageId = $definitionRecord->getAttributeValue($languageAttribute);
@@ -339,46 +340,102 @@ class ExpressionController implements Controller {
 	}
 }
 
-class DefinedMeaningTextAttributeValuesController {
+class ObjectIdFetcher {
+	protected $objectIdAttributeLevel;
+	protected $objectIdAttribute;
+	
+	public function __construct($objectIdAttributeLevel, $objectIdAttribute) {
+		$this->objectIdAttributeLevel = $objectIdAttributeLevel;
+		$this->objectIdAttribute = $objectIdAttribute;
+	}
+	public function fetch($keyPath, $record) {
+		return $keyPath->peek($this->objectIdAttributeLevel)->getAttributeValue($this->objectIdAttribute);			
+	}
+}
+
+class DefinitionObjectIdFetcher extends ObjectIdFetcher {
+	public function fetch($keyPath, $record) {
+		$definedMeaningId = $keyPath->peek($this->objectIdAttributeLevel)->getAttributeValue($this->objectIdAttribute);
+		return getDefinedMeaningDefinitionId($definedMeaningId);
+	}	
+}
+
+class ObjectAttributeValuesController {
+	protected $objectIdFetcher;
+	
+	public function __construct($objectIdFetcher) {
+		$this->objectIdFetcher = $objectIdFetcher;
+	}
+}
+
+class TextAttributeValuesController extends ObjectAttributeValuesController {
 	public function add($keyPath, $record)  {
 		global
-			$expressionIdAttribute, $definedMeaningIdAttribute, $textValueAttribute, $languageAttribute,
 			$textAttribute, $textAttributeAttribute;
-
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
-		$textValue = $record->getAttributeValue($textValueAttribute);
+		$objectId = $this->objectIdFetcher->fetch($keyPath, $record);
 		$textAttributeId = $record->getAttributeValue($textAttributeAttribute);
+		$text = $record->getAttributeValue($textAttribute);
+		if ($textAttributeId != 0 && $text != '')		
+			addTextAttributeValue($objectId, $textAttributeId, $text);
+	}
+
+	public function remove($keyPath) {
+		global
+			$textAttributeIdAttribute;
+		$textId = $keyPath->peek(0)->getAttributeValue($textAttributeIdAttribute);
+		removeTextAttributeValue($textId);
+	}
+
+	public function update($keyPath, $record) {
+		global
+			$textAttributeIdAttribute, $textAttribute;
+		$textId = $keyPath->peek(0)->getAttributeValue($textAttributeIdAttribute);
+		$text = $record->getAttributeValue($textAttribute);		
+		
+		updateTextAttributeValue($text, $textId);
+	}
+}
+
+class TranslatedTextAttributeValuesController extends ObjectAttributeValuesController {
+	public function add($keyPath, $record)  {
+		global
+			$translatedTextValueAttribute, $languageAttribute,
+			$textAttribute, $translatedTextAttributeAttribute;
+
+		$objectId = $this->objectIdFetcher->fetch($keyPath, $record);
+		$textValue = $record->getAttributeValue($translatedTextValueAttribute);
+		$textAttributeId = $record->getAttributeValue($translatedTextAttributeAttribute);
 
 		if ($textAttributeId != 0 && $textValue->getRecordCount() > 0) {
 			$textValueRecord = $textValue->getRecord(0);
 
 			$languageId = $textValueRecord->getAttributeValue($languageAttribute);
 			$text = $textValueRecord->getAttributeValue($textAttribute);
-
+			
 			if ($languageId != 0 && $text != '')
-				addDefinedMeaningTextAttributeValue($definedMeaningId, $textAttributeId, $languageId, $text);
+				addTranslatedTextAttributeValue($objectId, $textAttributeId, $languageId, $text);
 		}
 	}
 
 	public function remove($keyPath) {
 		global
-			$textValueIdAttribute;
+			$translatedTextValueIdAttribute;
 
-		$textId = $keyPath->peek(0)->getAttributeValue($textValueIdAttribute);
+		$textId = $keyPath->peek(0)->getAttributeValue($translatedTextValueIdAttribute);
 
-		removeDefinedMeaningTextAttributeValue($textId);
+		removeTranslatedTextAttributeValue($textId);
 	}
 
 	public function update($keyPath, $record) {
 	}
 }
 
-class DefinedMeaningTextAttributeValueController implements Controller {
+class TranslatedTextAttributeValueController implements Controller {
 	public function add($keyPath, $record) {
 		global
-			$expressionIdAttribute, $textValueIdAttribute, $languageAttribute, $textAttribute;
+			$translatedTextValueIdAttribute, $languageAttribute, $textAttribute;
 
-		$textId = $keyPath->peek(0)->getAttributeValue($textValueIdAttribute);
+		$textId = $keyPath->peek(0)->getAttributeValue($translatedTextValueIdAttribute);
 		$languageId = $record->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);
 
@@ -388,9 +445,9 @@ class DefinedMeaningTextAttributeValueController implements Controller {
 
 	public function remove($keyPath) {
 		global
-			$textValueIdAttribute, $languageAttribute;
+			$translatedTextValueIdAttribute, $languageAttribute;
 
-		$textId = $keyPath->peek(1)->getAttributeValue($textValueIdAttribute);
+		$textId = $keyPath->peek(1)->getAttributeValue($translatedTextValueIdAttribute);
 		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
 
 		removeTranslatedText($textId, $languageId);
@@ -398,9 +455,9 @@ class DefinedMeaningTextAttributeValueController implements Controller {
 
 	public function update($keyPath, $record) {
 		global
-			$textValueIdAttribute, $languageAttribute, $textAttribute;
+			$translatedTextValueIdAttribute, $languageAttribute, $textAttribute;
 
-		$textId = $keyPath->peek(1)->getAttributeValue($textValueIdAttribute);
+		$textId = $keyPath->peek(1)->getAttributeValue($translatedTextValueIdAttribute);
 		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);
 

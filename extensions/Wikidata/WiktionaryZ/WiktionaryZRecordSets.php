@@ -233,17 +233,17 @@ function getDefinedMeaningRecord($definedMeaningId, $queryTransactionInformation
 	global
 		$definedMeaningAttribute, $definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
 		$relationsAttribute, $reciprocalRelationsAttribute,
-		$classMembershipAttribute, $collectionMembershipAttribute, $textAttributeValuesAttribute;
+		$classMembershipAttribute, $collectionMembershipAttribute, $objectAttributesAttribute;
 
 	$record = new ArrayRecord($definedMeaningAttribute->type->getStructure());
-	$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecordSet($definedMeaningId, $queryTransactionInformation));
+	$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecord($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($synonymsAndTranslationsAttribute, getSynonymAndTranslationRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($relationsAttribute, getDefinedMeaningRelationsRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($reciprocalRelationsAttribute, getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($classMembershipAttribute, getDefinedMeaningClassMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($collectionMembershipAttribute, getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
-	$record->setAttributeValue($textAttributeValuesAttribute, getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId, $queryTransactionInformation));
+	$record->setAttributeValue($objectAttributesAttribute, getObjectAttributesRecord($definedMeaningId, $queryTransactionInformation));
 
 	return $record;
 }
@@ -271,10 +271,29 @@ function getAlternativeDefinitionsRecordSet($definedMeaningId, $queryTransaction
 	return $recordSet;
 }
 
-function getDefinedMeaningDefinitionRecordSet($definedMeaningId, $queryTransactionInformation) {
+function getDefinedMeaningDefinitionRecord($definedMeaningId, $queryTransactionInformation) {
+	global
+		$definitionAttribute, $translatedTextAttribute, $objectAttributesAttribute;
+		
 	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
+	$record = new ArrayRecord($definitionAttribute->type->getStructure());
+	$record->setAttributeValue($translatedTextAttribute, getTranslatedContentRecordSet($definitionId, $queryTransactionInformation));
+	$record->setAttributeValue($objectAttributesAttribute, getObjectAttributesRecord($definitionId, $queryTransactionInformation));
+
+	return $record;
+}
+
+function getObjectAttributesRecord($objectId, $queryTransactionInformation) {
+	global
+		$objectAttributesAttribute, $objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute; 
+		
+	$record = new ArrayRecord($objectAttributesAttribute->type->getStructure());
 	
-	return getTranslatedContentRecordSet($definitionId, $queryTransactionInformation);
+	$record->setAttributeValue($objectIdAttribute, $objectId);
+	$record->setAttributeValue($textAttributeValuesAttribute, getTextAttributesValuesRecordSet($objectId, $queryTransactionInformation));
+	$record->setAttributeValue($translatedTextAttributeValuesAttribute, getTranslatedTextAttributeValuesRecordSet($objectId, $queryTransactionInformation));	
+
+	return $record;
 }
 
 function getTranslatedContentRecordSet($translatedContentId, $queryTransactionInformation) {
@@ -402,25 +421,46 @@ function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $quer
 	return $recordSet;
 }
 
-function getDefinedMeaningTextAttributeValuesRecordSet($definedMeaningId, $queryTransactionInformation) {
+function getTextAttributesValuesRecordSet($objectId, $queryTransactionInformation) {
 	global
-		$textAttributeValuesTable, $textAttributeAttribute, $textValueAttribute, $textValueIdAttribute;
+		$textAttributeValuesTable, $textAttributeIdAttribute, $textAttributeObjectAttribute, $textAttributeAttribute, $textAttribute;
 
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
-		$textValueIdAttribute,
+		$textAttributeIdAttribute,
 		array(
+			'value_id' => $textAttributeIdAttribute,
+			'object_id' => $textAttributeObjectAttribute,
 			'attribute_mid' => $textAttributeAttribute,
-			'value_tcid' => $textValueIdAttribute
+			'text' => $textAttribute
 		),
 		$textAttributeValuesTable,
-		array("object_id=$definedMeaningId")
+		array("object_id=$objectId")
 	);
 	
-	$recordSet->getStructure()->attributes[] = $textValueAttribute;
-	
-	expandTranslatedContentsInRecordSet($recordSet, $textValueIdAttribute, $textValueAttribute, $queryTransactionInformation);
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($textAttributeAttribute));
+	return $recordSet;
+}
+
+function getTranslatedTextAttributeValuesRecordSet($objectId, $queryTransactionInformation) {
+	global
+		$translatedContentAttributeValuesTable, $translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextValueIdAttribute;
+
+	$recordSet = queryRecordSet(
+		$queryTransactionInformation,
+		$translatedTextValueIdAttribute,
+		array(
+			'attribute_mid' => $translatedTextAttributeAttribute,
+			'value_tcid' => $translatedTextValueIdAttribute
+		),
+		$translatedContentAttributeValuesTable,
+		array("object_id=$objectId")
+	);
+	
+	$recordSet->getStructure()->attributes[] = $translatedTextValueAttribute;
+	
+	expandTranslatedContentsInRecordSet($recordSet, $translatedTextValueIdAttribute, $translatedTextValueAttribute, $queryTransactionInformation);
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($translatedTextAttributeAttribute));
 
 	return $recordSet;
 }

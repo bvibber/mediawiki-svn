@@ -399,7 +399,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 			if ($comment->status != "") 
 				$textValue .= " (" . $comment->status . ")";
 				
-			addDefinedMeaningTextAttributeValue($definedMeaningId, $attributeMeaningId, $this->languageId, $textValue);
+			addTranslatedTextAttributeValue($definedMeaningId, $attributeMeaningId, $this->languageId, $textValue);
 		}		
 		
 		// add EC number:
