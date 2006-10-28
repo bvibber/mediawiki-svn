@@ -12,8 +12,8 @@ wget -O /target/root/.ssh/authorized_keys http://apt.wikimedia.org/autoinstall/s
 chmod go-rwx /target/root/.ssh/authorized_keys
 
 # Do not let Ubuntu installer disable the console
-[ -d /usr/lib/prebaseconfig.d ] && rm -f /usr/lib/prebaseconfig.d/90console
-[ -d /usr/lib/finishinstall.d ] && rm -f /usr/lib/finishinstall.d/90console
+[ -f /usr/lib/prebaseconfig.d/90console ] && rm -f /usr/lib/prebaseconfig.d/90console
+[ -f /usr/lib/finish-install.d/90console ] && rm -f /usr/lib/finish-install.d/90console
 
 # Enable serial console
 if [ -f /target/etc/inittab ]
@@ -22,4 +22,11 @@ then
 fi
 
 # Change /etc/motd to read the auto-install date
-chroot /target /bin/sh -c 'echo -e \\n$(cat /etc/issue.net) auto-installed on $(date). > /etc/motd'
+if [ -f /etc/motd.tail ]
+then
+	# Edgy
+	in-target 'echo -e $(cat /etc/issue.net) auto-installed on $(date). > /etc/motd.tail'
+else
+	# Dapper
+	chroot /target /bin/sh -c 'echo -e \\n$(cat /etc/issue.net) auto-installed on $(date). > /etc/motd'
+fi
