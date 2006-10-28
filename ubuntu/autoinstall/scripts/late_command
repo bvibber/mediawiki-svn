@@ -12,13 +12,11 @@ mkdir /target/root/.ssh
 wget -O /target/root/.ssh/authorized_keys http://apt.wikimedia.org/autoinstall/ssh/authorized_keys
 chmod go-rwx /target/root/.ssh/authorized_keys
 
-# Do not let Ubuntu installer disable the console
-[ -f /usr/lib/prebaseconfig.d/90console ] && rm -f /usr/lib/prebaseconfig.d/90console
-[ -f /usr/lib/finish-install.d/90console ] && rm -f /usr/lib/finish-install.d/90console
-
-# Enable serial console
+# Enable serial console (this has changed in Edgy with upstart)
 if [ -f /target/etc/inittab ]
 then
+	# Do not let Ubuntu installer disable the console
+	rm -f /usr/lib/prebaseconfig.d/90console
 	sed -i -e "s/^#T0:/T0:/" /target/etc/inittab
 fi
 
@@ -26,7 +24,7 @@ fi
 if [ -f /target/etc/motd.tail ]
 then
 	# Edgy
-	in-target 'echo -e $(cat /etc/issue.net) auto-installed on $(date). > /etc/motd.tail'
+	chroot /target /bin/sh -c 'echo -e $(cat /etc/issue.net) auto-installed on $(date). > /etc/motd.tail'
 else
 	# Dapper
 	chroot /target /bin/sh -c 'echo -e \\n$(cat /etc/issue.net) auto-installed on $(date). > /etc/motd'
