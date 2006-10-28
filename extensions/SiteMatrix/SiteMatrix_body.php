@@ -58,8 +58,7 @@ class SiteMatrixPage extends SpecialPage {
 
 		# Special wikis that should point to wikiPedia, not wikiMedia
 		$wikipediaSpecial = array(
-			'aa', 'bat_smg', 'closed_zh_tw', 'dk', 'fiu_vro', 'map_bms', 'nds_nl',
-			'roa_rup', 'sep11', 'sources', 'species', 'test', 'zh_min_nan', 'zh_yue',
+			'dk', 'sep11', 'sources', 'species', 'test',
 		);
 
 		# Some internal databases for other domains.
