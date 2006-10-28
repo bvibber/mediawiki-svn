@@ -4,6 +4,7 @@ require_once('languages.php');
 require_once('forms.php');
 require_once('Attribute.php');
 require_once('Record.php');
+require_once('Transaction.php');
 
 function booleanAsText($value) {
 	if ($value)
@@ -115,7 +116,7 @@ function definedMeaningExpression($definedMeaningId) {
 	$userLanguage = getLanguageIdForCode($wgUser->getOption('language'));
 	
 	list($definingExpressionId, $definingExpression, $definingExpressionLanguage) = definingExpressionRow($definedMeaningId);
-
+	
 	if ($definingExpressionLanguage == $userLanguage && expressionIsBoundToDefinedMeaning($definingExpressionId, $definedMeaningId))  
 		return $definingExpression;
 	else {	
@@ -135,7 +136,7 @@ function definedMeaningExpression($definedMeaningId) {
 			}
 		}
 	}
-	
+
 	return $result;
 }
 
