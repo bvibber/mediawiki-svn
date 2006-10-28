@@ -75,7 +75,7 @@ class SiteMatrixPage extends SpecialPage {
 				$m = array();
 				if ( preg_match( "/(.*)$site\$/", $db, $m ) ) {
 					$lang =  str_replace( '_', '-', $m[1] );
-					if ( empty( $xLanglist[$lang] ) && $site == 'wiki' ) {
+					if ( !isset( $xLanglist[$lang] ) && $site == 'wiki' ) {
 						$specials[] = $lang;
 					} else {
 						$matrix[$site][$lang] = 1;
