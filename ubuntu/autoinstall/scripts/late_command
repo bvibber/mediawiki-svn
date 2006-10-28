@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -e
+set -x
 
 # Install wikimedia-base which pulls in a lot of other stuff, and
 # openssh-server just to be sure
@@ -22,7 +23,7 @@ then
 fi
 
 # Change /etc/motd to read the auto-install date
-if [ -f /etc/motd.tail ]
+if [ -f /target/etc/motd.tail ]
 then
 	# Edgy
 	in-target 'echo -e $(cat /etc/issue.net) auto-installed on $(date). > /etc/motd.tail'
