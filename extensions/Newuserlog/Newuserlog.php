@@ -54,13 +54,17 @@ function wfNewuserlogHook( $user ) {
 	$talk = $wgContLang->getFormattedNsText( NS_TALK );
 	$contribs = wfMsgForContent( 'contribslink' );
 	$block = wfMsgForContent( 'blocklink' );
-	$message = wfMsgForContent( 'newuserlog-create-text',
-		$user->getName(), $talk, $contribs, $block );
 	
 	if( $user->getName() == $wgUser->getName() ) {
 		$action = 'create';
+		$message = '';
 	} else {
 		$action = 'create2';
+		
+		// Links not necessary for self-creations, they will appear already in
+		// recentchanges and special:log view for the creating user.
+		$message = wfMsgForContent( 'newuserlog-create-text',
+			$user->getName(), $talk, $contribs, $block );
 	}
 	
 	$log = new LogPage( 'newusers' );
