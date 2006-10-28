@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+# Install wikimedia-base which pulls in a lot of other stuff, and
+# openssh-server just to be sure
+apt-install wikimedia-base openssh-server
+
+# Install the public root ssh key
+mkdir /target/root/.ssh
+wget -O /target/root/.ssh/authorized_keys http://apt.wikimedia.org/autoinstall/ssh/authorized_keys
+chmod go-rwx /target/root/.ssh/authorized_keys
+
+# Do not let Ubuntu installer disable the console
+rm -f /usr/lib/prebaseconfig.d/90console
+
+# Enable serial console
+sed -i -e "s/^#T0:/T0:/" /target/etc/inittab
+
+# Change /etc/motd to read the auto-install date
+chroot /target /bin/sh -c 'echo -e \\n$(cat /etc/issue.net) auto-installed on $(date). > /etc/motd'
