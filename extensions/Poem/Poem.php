@@ -19,6 +19,12 @@
 # http://meta.wikimedia.org/wiki/Poem_Extension
 
 $wgExtensionFunctions[]="wfPoemExtension";
+$wgExtensionCredits['parserhook'][] = array(
+	'name' => 'Cite',
+	'author' => 'Nikola Smolenski',
+	'description' => 'adds <nowiki><poem></nowiki> tag for poem formatting',
+	'url' => 'http://meta.wikimedia.org/wiki/Poem_Extension'
+);
 
 function wfPoemExtension() {
 	$GLOBALS['wgParser']->setHook("poem","PoemExtension");
