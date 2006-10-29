@@ -24,7 +24,7 @@ fi
 if [ -f /target/etc/motd.tail ]
 then
 	# Edgy
-	chroot /target /bin/sh -c 'echo -e "$(cat /etc/issue.net) auto-installed on $(date)." > /etc/motd.tail'
+	chroot /target /bin/sh -c 'echo $(cat /etc/issue.net) auto-installed on $(date). > /etc/motd.tail'
 else
 	# Dapper
 	chroot /target /bin/sh -c 'echo -e \\n$(cat /etc/issue.net) auto-installed on $(date). > /etc/motd'

@@ -4,10 +4,11 @@
 d-i debian-installer/locale string en_US
 
 # Keyboard selection.
-#d-i console-tools/archs select at
-d-i console-keymaps-at/keymap select us
-# Example for a different keyboard architecture
-#d-i console-keymaps-usb/keymap select mac-usb-us
+#d-i console-setup/modelcode string pc105
+d-i console-setup/layoutcode string us
+# To select a variant of the selected layout (if you leave this out, the
+# basic form of the layout will be used):
+#d-i console-setup/variantcode string dvorak
 
 ### Network configuration
 # netcfg will choose an interface that has link if possible. This makes it
@@ -51,14 +52,14 @@ d-i netcfg/wireless_wep string
 
 ### Mirror settings
 d-i mirror/country string enter information manually
-d-i mirror/http/hostname string http.us.debian.org
-d-i mirror/http/directory string /debian
+d-i mirror/http/hostname string archive.ubuntu.com
+d-i mirror/http/directory string /ubuntu
 d-i mirror/http/proxy string
 
 # Suite to install.
-#d-i mirror/suite string testing
+#d-i mirror/suite string edgy
 # Suite to use for loading installer components (optional).
-#d-i mirror/udeb/suite string testing
+#d-i mirror/udeb/suite string edgy
 
 ### Partitioning
 # If the system has free space you can choose to only partition that space.
@@ -67,18 +68,11 @@ d-i mirror/http/proxy string
 #      select Use the largest continuous free space
 
 # Alternatively, you can specify a disk to partition. The device name can
-# be given in either devfs or traditional non-devfs format. If the method
-# supports it, you can specify several disks separated by spaces.
-# For example, to use the first disk:
-d-i partman-auto/disk string /dev/discs/disc0/disc
-# In addition, you'll need to specify the method to use.
-# The presently available methods are: "regular", "lvm" and "crypto"
-d-i partman-auto/method string lvm
-
-# If one of the disks that are going to be automatically partitioned
-# contains an old LVM configuration, the user will normally receive a
-# warning. This can be preseeded away...
-d-i partman-auto/purge_lvm_from_device boolean true
+# be given in either devfs or traditional non-devfs format.
+# For example, to use the first SCSI hard disk:
+d-i partman-auto/disk string /dev/sda
+# Or, if you want to use LVM:
+#d-i partman-auto-lvm/disk string /dev/sda
 
 # You can choose from any of the predefined partitioning recipes.
 # Note: this must be preseeded with a localized (translated) value.
@@ -130,23 +124,28 @@ d-i clock-setup/utc boolean true
 d-i time/zone string US/Eastern
 
 ### Apt setup
-# You can choose to install non-free and contrib software.
-#d-i apt-setup/non-free boolean true
-#d-i apt-setup/contrib boolean true
+# You can choose to install restricted and universe software, or to install
+# software from the backports repository.
+#d-i apt-setup/restricted boolean true
+#d-i apt-setup/universe boolean true
+#d-i apt-setup/backports boolean true
 # Uncomment this to avoid adding security sources, or
-# add a hostname to use a different server than security.debian.org.
+# add a hostname to use a different server than security.ubuntu.com.
 #d-i apt-setup/security_host string
 
 # Additional repositories, local[0-9] available
+#d-i apt-setup/local0/repository string \
+#       deb http://local.server/ubuntu edgy main
 #d-i apt-setup/local0/comment string local server
-#d-i apt-setup/local0/source string \
-#       deb http://local.server/debian stable main
+# Enable deb-src lines
+#d-i apt-setup/local0/source boolean true
 # URL to the public key of the local repository
 #d-i apt-setup/local0/key string http://local.server/key
 
 ### Account setup
 # Skip creation of a root account (normal user account will be able to
-# use sudo).
+# use sudo). The default is false; preseed this to true if you want to set
+# a root password.
 #d-i passwd/root-login boolean false
 # Alternatively, to skip creation of a normal user account.
 #d-i passwd/make-user boolean false
@@ -158,8 +157,8 @@ d-i time/zone string US/Eastern
 #d-i passwd/root-password-crypted password [MD5 hash]
 
 # To create a normal user account.
-#d-i passwd/user-fullname string Debian User
-#d-i passwd/username string debian
+#d-i passwd/user-fullname string Ubuntu User
+#d-i passwd/username string ubuntu
 # Normal user's password, either in clear text
 #d-i passwd/user-password password insecure
 #d-i passwd/user-password-again password insecure
@@ -185,18 +184,15 @@ d-i grub-installer/with_other_os boolean true
 
 # Alternatively, if you want to install to a location other than the mbr,
 # uncomment and edit these lines:
+#d-i grub-installer/bootdev  string (hd0,0)
 #d-i grub-installer/only_debian boolean false
 #d-i grub-installer/with_other_os boolean false
-#d-i grub-installer/bootdev  string (hd0,0)
-# To install grub to multiple disks:
-#d-i grub-installer/bootdev  string (hd0,0) (hd1,0) (hd2,0)
 
 ### Package selection
-tasksel tasksel/first multiselect standard, desktop
-#tasksel tasksel/first multiselect standard, web-server
-#tasksel tasksel/first multiselect standard, kde-desktop
+tasksel tasksel/first multiselect ubuntu-standard, ubuntu-desktop
+#tasksel tasksel/first multiselect ubuntu-standard, lamp-server
+#tasksel tasksel/first multiselect ubuntu-standard, kubuntu-desktop
 
-# Individual additional packages to install
 #d-i pkgsel/include string openssh-server build-essential
 
 # Some versions of the installer can report back on what software you have
@@ -212,13 +208,6 @@ d-i finish-install/reboot_in_progress note
 # This will prevent the installer from ejecting the CD during the reboot,
 # which is useful in some situations.
 #d-i cdrom-detect/eject boolean false
-
-### Mailer configuration
-exim4-config exim4/dc_eximconfig_configtype \
-       select no configuration at this time
-exim4-config exim4/no_config boolean true
-exim4-config exim4/no_config boolean true
-exim4-config exim4/dc_postmaster string
 
 ### X configuration
 # X can detect the right driver for some cards, but if you're preseeding,
