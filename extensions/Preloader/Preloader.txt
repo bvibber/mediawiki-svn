@@ -1,0 +1,18 @@
+(Better documentation is coming soon)
+
+To use the Preloader extension with MediaWiki < 1.7alpha, apply this patch to
+includes/EditForm.php and install the extension as normal.
+
+Index: EditPage.php
+===================================================================
+--- EditPage.php	(revision 14753)
++++ EditPage.php	(working copy)
+@@ -304,6 +304,8 @@
+ 		# checking, etc.
+ 		if ( 'initial' == $this->formtype || $this->firsttime ) {
+ 			$this->initialiseForm();
++			if( !$this->mTitle->getArticleId() ) 
++				wfRunHooks( 'EditFormPreloadText', array( &$this->textbox1, &$this->mTitle ) );
+ 		}
+ 
+ 		$this->showEditForm();
