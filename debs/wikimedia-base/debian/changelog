@@ -1,3 +1,10 @@
+wikimedia-base (0.11) dapper; urgency=low
+
+  * Restart ntpd on upgrade again, it wasn't the cause of problems
+  * Remove the 'quiet' kernel command line option in /boot/grub/menu.lst
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 30 Oct 2006 12:44:04 +0000
+
 wikimedia-base (0.10) dapper; urgency=low
 
   * Remove debconf preseeding of ssmtp, as this causes problems with locks

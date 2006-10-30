@@ -49,6 +49,14 @@ case "$1" in
 		cat /usr/share/doc/wikimedia-base/apt_preferences >> /etc/apt/preferences
 	fi
 
+	# Disable the 'quiet' kernel command line option so console messages
+	# will be printed.
+	if grep -q "^# defoptions.*[= ]quiet " /boot/grub/menu.lst
+	then
+		sed -i '/^# defoptions.*[= ]quiet /s/quiet //' /boot/grub/menu.lst
+		update-grub
+	fi
+
 	# Pick a closer NTP server
 	NTP_SERVER=""
 	case $CLUSTERNAME in
@@ -62,7 +70,7 @@ case "$1" in
 	if [ -n "$NTP_SERVER" ] && ! grep -q "^server $NTP_SERVER" /etc/ntp.conf
 	then
 		sed -i -e "/^server ntp\.ubuntu\.com/s/ntp\.ubuntu\.com/$NTP_SERVER/" /etc/ntp.conf
-		log_warning_msg "New NTP server set, please restart ntpd manually!"
+		invoke-rc.d ntp-server restart
 	fi
 
 	# Optimize TCP
