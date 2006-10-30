@@ -55,9 +55,11 @@ Patches for YADIS support and FileStore storage by Jonathan Daugherty
 
 == Pre-requisites ==
 
-This software was tested with MediaWiki 1.6.6 (which is what
-Wikitravel was running at the time.) It may or may not work with
-earlier or later versions, but please test it.
+This software has been tested in production with MediaWiki 1.6.x,
+1.7.x and 1.8.x. It may or may not work with earlier or later
+versions, but I'm interested in making later versions work, and I'd be
+happy to make minor changes to make older, unsupported versions work
+too.
 
 The software depends on the OpenIDEnabled.com PHP library for OpenID,
 which in turn depends on the OpenIDEnabled.com PHP library for YADIS.
@@ -71,6 +73,11 @@ There are also some required extensions; see the OpenIDEnabled
 documentation for details. This software has been tested with the gmp
 and curl extension installed, and it's recommended that you install
 them, too.
+
+Note that some versions of MediaWiki overwrite the PHP library path in
+LocalSettings.php. You may need to add the path to your PHP library
+directory to the $path variable, like "/usr/share/php" or
+"/usr/local/share/php".
 
 == Installation ==
 
