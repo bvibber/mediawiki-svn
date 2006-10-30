@@ -37,7 +37,7 @@ function wfSpecialChemicalsources () {
 }
 
 class SpecialChemicalsources extends SpecialPage {
-	var $Parameters, $Prefix;
+	private $Parameters, $Prefix;
 
 	function SpecialChemicalsources() {
 		global $wgChemFunctions_Parameters, $wgChemFunctions_Prefix;
@@ -45,7 +45,7 @@ class SpecialChemicalsources extends SpecialPage {
 		$this->Prefix = $wgChemFunctions_Prefix;
 
 		global $wgMessageCache, $wgChemFunctions_Messages;
-		foreach( $wgChemFunctions_Messages as $key => $value ) {
+		foreach( array_keys($wgChemFunctions_Messages) as $key) {
 			$wgMessageCache->addMessages( $wgChemFunctions_Messages[$key], $key );
 		}
 
@@ -53,8 +53,8 @@ class SpecialChemicalsources extends SpecialPage {
 		$this->includable( false );
 	}
 
-	function execute ($par) {
-		global $wgOut, $wgRequest, $wgContLang, $wgScript, $wgServer, $wgTitle;
+	function execute () {
+		global $wgOut, $wgRequest;
 
 		$wgOut->setPagetitle( wfMsg("chemicalsources") );
 
@@ -89,7 +89,7 @@ class SpecialChemicalsources extends SpecialPage {
 					$wgOut->addWikiText( $bstext );
 				}
 			} else {
-				$bstext = wfMsg( $Prefix . '_DataList' );
+				$bstext = wfMsg( $this->Prefix . '_DataList' );
 				$bstext = strtr($bstext, $transParams);
 				$wgOut->addHTML( $bstext );
 			}
@@ -133,10 +133,10 @@ class SpecialChemicalsources extends SpecialPage {
 			$Params['Drugbank'] = preg_replace( '/[^0-9\-]/', "", $Params['Drugbank'] );
 		else $Params['Drugbank'] = '';
 		if ( isset( $Params['Formula']  ) )
-			$Params['Formula'] = preg_replace( "<,*?>", "", $Params['Formula'] );
+			$Params['Formula'] = htmlentities( preg_replace( "<,*?>", "", $Params['Formula'] ) );
 		else $Params['Formula'] = '';
 		if ( isset( $Params['Name'] ) )
-			$Params['Name'] = str_replace( " ", "%20", $Params['Name'] );
+			$Params['Name'] = htmlentities( str_replace( " ", "%20", $Params['Name'] ) );
 		else $Params['Name'] = '';
 
 		# Create some new from old ones
@@ -182,7 +182,7 @@ class SpecialChemicalsources extends SpecialPage {
 
 	#If no parameters supplied, get them!
 	function getParams() {
-		global $wgTitle, $wgOut; $wfMsg;
+		global $wgTitle, $wgOut;
 		$action = $wgTitle->escapeLocalUrl();
 		$go = htmlspecialchars( wfMsg( "go" ) );
 

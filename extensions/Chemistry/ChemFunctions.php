@@ -46,14 +46,14 @@ function wfChemFormExtension() {
 	$wgParser->setHook( "chemform", "RenderChemForm" );
 }
 
-function RenderChemForm( $input, $argv, &$parser ) {
-	global $wgServer, $wgScript, $wgChemFunctions_Messages, $wgMessageCache;
+function RenderChemForm( $input, $argv ) {
+	global $wgChemFunctions_Messages, $wgMessageCache;
 
 	require_once( 'ChemFunctions.i18n.php' );
 
 	# add messages
 	global $wgMessageCache, $wgChemFunctions_Messages;
-	foreach( $wgChemFunctions_Messages as $key => $value ) {
+	foreach( array_keys($wgChemFunctions_Messages) as $key ) {
 		$wgMessageCache->addMessages( $wgChemFunctions_Messages[$key], $key );
 	}
 
@@ -84,7 +84,6 @@ function RenderChemForm( $input, $argv, &$parser ) {
 		$showthis = preg_replace("/<sub>([0-9\+\-]+)<\/sup>/", "<sup>$1</sup>", $showthis);  # and <sub>whatever</sup> to <sup>..</sup>
 	}
 
-	global $removeHTMLtags;
 	$output = "";
 
 	$showthis = Sanitizer::removeHTMLtags( $showthis);
