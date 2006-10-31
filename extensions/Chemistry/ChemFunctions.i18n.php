@@ -1,10 +1,30 @@
-
 <?php
+
 /**
- * Internationalisation file for ChemFunctions and Special:Chemicalsources extensions.
+ * MediaWiki Internationalisation file for ChemFunctions.php and SpecialChemicalsources.php.
  *
  * @package MediaWiki
  * @subpackage Extensions
+ *
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ */
+
+/**
+ * To write the i18n so that it functions with another listpage:
+ *   1) copy this file to the i18n of your choice
+ *   2) Choose your prefix (the best way, if this i18n file is called YourPrefix, then choose that as your Prefix
+ *   3) Replace all occurences of ChemFunctions with the name of your Prefix.
+ *   4) $wgYourPrefix_Parameters should contain the names of the parameters as they can be given to your specialpage
+ *		In the ListPage you have created, the Magiccodes are then $ParameterName, so if the Parameter is called 'WhAtEvEr',
+ *		then in the ListPage $WhAtEvEr will be replaced with the value of the parameter WhAtEvEr
+ *   5) In the internationalisation messages, you need the following values:
+ *		1) The name of your specialpage
+ *		2) YourPrefix_ListPage -> the name of the page which will hold the links, this page should be in the project namespace
+ *		3) YourPrefix_SearchExplanation -> a text which can appear as help above the input boxes, when no parameter is given to the page
+ *		4) YourPrefix_DataList -> If the ListPage does not exist, this is a html string that is displayed as alternative
+ *		5) For each of the parameters in $wgYourPrefix_Parameters you should have a YourPrefix_ParameterName,
+ *			containing the string as you want it displayed.
+ *			So, if you have a parameter 'WhAtEvEr', you should have a 'YourPrefix_WhAtEvEr' with value 'Whatever'
  */
 
 /**
@@ -26,8 +46,20 @@
  *   ECNumber = The EC Number for the compound
  */
 
-$wgChemFunctions_Parameters = array ('CAS', 'Formula', 'Name', 'EINECS', 'CHEBI', 'PubChem', 'SMILES', 'InChI', 'ATCCode', 'DrugBank', 'KEGG', 'ECNumber', 'RTECS');
 $wgChemFunctions_Prefix = "ChemFunctions";
+$wgChemFunctions_Parameters = array ('CAS',
+									 'Formula',
+									 'Name',
+									 'EINECS',
+									 'CHEBI',
+									 'PubChem',
+									 'SMILES',
+									 'InChI',
+									 'ATCCode',
+									 'DrugBank',
+									 'KEGG',
+									 'ECNumber',
+									 'RTECS');
 
 # Begin internationalisation
 
@@ -59,6 +91,10 @@ $wgChemFunctions_Messages['en'] = array(
 	'ChemFunctions_Name' => 'IUPAC Name'
 );
 
+/**
+ * de
+ */
+
 $wgChemFunctions_Messages['de'] = array(
 	'chemicalsources' => 'Chemische Quellen',
 	'ChemFunctions_ListPage' => 'Chemische Quellen',
@@ -81,6 +117,10 @@ $wgChemFunctions_Messages['de'] = array(
 	'ChemFunctions_Name' => 'IUPAC Name'
 );
 
+/**
+ * nl
+ */
+
 $wgChemFunctions_Messages['nl'] = array(
 	'chemicalsources' => 'Chemicaliën bronnen',
 	'ChemFunctions_ListPage' => 'Chemicaliën bronnen',
@@ -102,6 +142,10 @@ $wgChemFunctions_Messages['nl'] = array(
 	'ChemFunctions_Formula' => 'Formula',
 	'ChemFunctions_Name' => 'IUPAC Naam'
 );
+
+/**
+ * sk
+ */
 
 $wgChemFunctions_Messages['sk'] = array(
 	'chemicalsources' => 'Chemické zdroje',

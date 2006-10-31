@@ -1,18 +1,35 @@
 <?php
 
 /**
- * Special List-page adapted for Chemical sources.
+ * A MediaWiki extension that adds a Specialpage for Chemical sources.
  *
  * The i18n file is required for operation!
+ * Installation: copy this file and ChemFunctions.i18n.php into the extensions directory
+ *   and add 'require_once( "$IP/extensions/SpecialChemicalsources.php" );' to localsettings.php (using the correct path)
  *
  * i18n is retrieved from ChemFunctions.i18n.php
- * wfSpecialChemicalSources (adds the specialpage
+ * wfSpecialChemicalSources (adds the specialpage)
  * Class SpecialChemicalsources is an extension of SpecialPage
  * Parameter checking is performed in the function "TransposeAndCheckParams"
  *
- *
  * @package MediaWiki
  * @subpackage SpecialPage
+ * @subpackage Extensions
+ *
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ */
+
+/**
+ * Adapting this listpage to your own listpage
+ *
+ * 1) Write your own i18n file (see instructions there)
+ * 2) copy this file to the name of your specialpage, and in that file:
+ * 3) make the line "require_once( 'ChemFunctions.i18n.php' );" call your i18n file
+ * 4) Replace all the occurences of the word 'chemicalsources' with the name of your specialpage
+ * 5) Replace every occurence of the word ChemFunctions with your chosen prefix from your i18n.
+ * 6) rewrite the function TransposeAndCheckParams
+ *	  You will get a list $Params which contains: $Params['paramname']='value'
+ *	  You have to return a list which contains: $transParams['thestringtoreplaceinyourpage'] = 'withwhatitshouldbereplaced'
  */
 
 if (!defined('MEDIAWIKI')) die();
@@ -23,10 +40,10 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Special:Chemicalsources',
 	'description' => 'Special Page for Chemical sources',
 	'author' => 'Dirk Beetstra',
-	'url' => 'http://meta.wikimedia.org/wiki/Chemistry'
+	'url' => 'http://meta.wikimedia.org/wiki/Chemistry/SpecialChemicalsources.php'
 );
 
-# Includes
+#Includes
 global $IP;
 require_once ("$IP/includes/SpecialPage.php");
 require_once( 'ChemFunctions.i18n.php' );
@@ -56,7 +73,7 @@ class SpecialChemicalsources extends SpecialPage {
 	function execute () {
 		global $wgOut, $wgRequest;
 
-		$wgOut->setPagetitle( wfMsg("chemicalsources") );
+		$wgOut->setPagetitle( wfMsg("chemicalsources") ); 
 
 		$Params = $wgRequest->getValues();
 
@@ -68,35 +85,14 @@ class SpecialChemicalsources extends SpecialPage {
 
 		if ($ParamsCheck) {
 			$transParams = $this->TransposeAndCheckParams($Params);
-			$this->OutputChemicalSources($transParams);
+			$this->OutputListPage($transParams);
 		} else {
 			$Params = $this->getParams();
 		}
 	}
 
-	#Create the actual page
-	function OutputChemicalSources($transParams) {
-		global $wgOut;
-
-		# First, see if we have a custom list setup
-		$bstitle = Title::makeTitleSafe( NS_PROJECT, wfMsg( $this->Prefix . '_ListPage' ) );
-		if( $bstitle ) {
-			$revision = Revision::newFromTitle( $bstitle );
-			if( $revision ) {
-				$bstext = $revision->getText();
-				if( $bstext ) {
-					$bstext = strtr($bstext, $transParams);
-					$wgOut->addWikiText( $bstext );
-				}
-			} else {
-				$bstext = wfMsg( $this->Prefix . '_DataList' );
-				$bstext = strtr($bstext, $transParams);
-				$wgOut->addHTML( $bstext );
-			}
-		}
-	}
-
 	# Check the parameters supplied, make the mixed parameters, and put them into the transpose matrix.
+
 	function TransposeAndCheckParams($Params) {
 		if ( isset( $Params['CAS'] ) )
 			$Params['CAS'] = preg_replace( '/[^0-9\-]/', "", $Params['CAS'] );
@@ -109,14 +105,13 @@ class SpecialChemicalsources extends SpecialPage {
 		else $Params['CHEBI'] = '';
 		if ( isset( $Params['PubChem'] ) )
 			$Params['PubChem'] = preg_replace( '/[^0-9\-]/', "", $Params['PubChem'] );
-		/*
+		else $Params['PubChem'] = '';
 		if ( isset( $Params['SMILES'] ) )
-			$Params['SMILES'] = $Params['SMILES'];
+			$Params['SMILES'] = preg_replace( '/\ /', "", $Params['SMILES'] );
 		else $Params['SMILES'] = '';
 		if ( isset( $Params['InChI'] ) )
-			$Params['InChI'] = $Params['InChI'];
+			$Params['InChI'] = preg_replace( '/\ /', "", $Params['InChI'] );
 		else $Params['InChI'] = '';
-		*/
 		if ( isset( $Params['ATCCode'] ) )
 			$Params['ATCCode'] = preg_replace( '/[^0-9\-]/', "", $Params['ATCCode'] );
 		else $Params['ATCCode'] = '';
@@ -124,7 +119,7 @@ class SpecialChemicalsources extends SpecialPage {
 			$Params['KEGG'] = preg_replace( '/[^C0-9\-]/', "", $Params['KEGG'] );
 		else $Params['KEGG'] = '';
 		if ( isset( $Params['RTECS'] ) )
-			$Params['RTECS'] = preg_replace( '/[^0-9\-]/', "", $Params['RTECS'] );
+			$Params['RTECS'] = preg_replace( '/\ /', "", $Params['RTECS'] );
 		else $Params['RTECS'] = '';
 		if ( isset( $Params['ECNumber'] ) )
 			$Params['ECNumber'] = preg_replace( '/[^0-9\-]/', "", $Params['ECNumber'] );
@@ -133,10 +128,10 @@ class SpecialChemicalsources extends SpecialPage {
 			$Params['Drugbank'] = preg_replace( '/[^0-9\-]/', "", $Params['Drugbank'] );
 		else $Params['Drugbank'] = '';
 		if ( isset( $Params['Formula']  ) )
-			$Params['Formula'] = htmlentities( preg_replace( "<,*?>", "", $Params['Formula'] ) );
+			$Params['Formula'] = preg_replace( '/\ /', "" , $Params['Formula'] );
 		else $Params['Formula'] = '';
 		if ( isset( $Params['Name'] ) )
-			$Params['Name'] = htmlentities( str_replace( " ", "%20", $Params['Name'] ) );
+			$Params['Name'] = preg_replace( '/\ /', "%20", $Params['Name'] );
 		else $Params['Name'] = '';
 
 		# Create some new from old ones
@@ -178,6 +173,34 @@ class SpecialChemicalsources extends SpecialPage {
 			}
 		}
 		return $transParams;
+	}
+
+	#Create the actual page
+	function OutputListPage($transParams) {
+		global $wgOut;
+
+		# check all the parameters before we put them in the page
+
+		foreach ($transParams as $key => $value) {
+			 $transParams[$key] = wfUrlEncode( htmlentities( preg_replace( "/\<.*?\>/","", $value) ) );
+		}
+
+		# First, see if we have a custom list setup
+		$bstitle = Title::makeTitleSafe( NS_PROJECT, wfMsg( $this->Prefix . '_ListPage' ) );
+		if( $bstitle ) {
+			$revision = Revision::newFromTitle( $bstitle );
+			if( $revision ) {
+				$bstext = $revision->getText();
+				if( $bstext ) {
+					$bstext = strtr($bstext, $transParams);
+					$wgOut->addWikiText( $bstext );
+				}
+			} else {
+				$bstext = wfMsg( $this->Prefix . '_DataList' );
+				$bstext = strtr($bstext, $transParams);
+				$wgOut->addHTML( $bstext );
+			}
+		}
 	}
 
 	#If no parameters supplied, get them!
