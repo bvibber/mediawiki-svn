@@ -113,6 +113,33 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 7758) Added wrapper span to "templates used" explanation to allow CSS
   styling (class="mw-templatesUsedExplanation").
 
+== Changed classes and id's ==
+For greater consistency and to ensure that content id's can't conflict with
+interface id's, almost every id and class in the interface has been changed,
+as follows.
+
+=== changed id's ===
+contentSub					mw-content-subtitle
+deleteconfirm				mw-confirm-delete
+editform					mw-page-edit-form
+editpage-copywarn			mw-editpage-copyright-warning
+mw-pages					mw-category-pages
+toolbar						mw-edit-toolbar
+wikiDiff					mw-diff
+wikiPreview					mw-preview
+wpMinoredit					mw-minor-edit-checkbox
+wpRecreate					mw-confirm-recreate
+wpScrolltop					mw-scroll-top (What does this do?  Better name?)
+wpSummary					mw-edit-summary-box
+wpSummaryLabel				mw-edit-summary-label
+wpTextbox1					mw-page-edit-box
+wpTextbox2					mw-edit-conflict-box
+wpWatchthis					mw-watch-page-checkbox
+
+=== id's converted to classes ===
+wpConfirmB					wpConfirmB
+wpReason					wpReason
+
 == Languages updated ==
 
 * Bishnupriya Manipuri (bpy)

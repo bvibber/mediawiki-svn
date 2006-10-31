@@ -112,7 +112,7 @@ function wfSajaxSearch( $term ) {
 	$html = '<div style="float:right; border:solid 1px black;background:gainsboro;padding:2px;"><a onclick="Searching_Hide_Results();">' 
 		. wfMsg( 'hideresults' ) . '</a></div>'
 		. '<h1 class="firstHeading">'.wfMsg('search')
-		. '</h1><div id="contentSub">'. $subtitle . '</div><ul><li>'
+		. '</h1><div id="mw-content-subtitle">'. $subtitle . '</div><ul><li>'
 		. $l->makeKnownLink( $wgContLang->specialPage( 'Search' ),
 					wfMsg( 'searchcontaining', $term ),
 					"search=$term&fulltext=Search" )

@@ -951,7 +951,7 @@ class EditPage {
 			htmlspecialchars( wfMsg( 'newwindow' ) );
 
 		global $wgRightsText;
-		$copywarn = "<div id=\"editpage-copywarn\">\n" .
+		$copywarn = "<div id=\"mw-editpage-copyright-warning\">\n" .
 			wfMsg( $wgRightsText ? 'copyrightwarning' : 'copyrightwarning2',
 				'[[' . wfMsgForContent( 'copyrightpage' ) . ']]',
 				$wgRightsText ) . "\n</div>";
@@ -985,7 +985,7 @@ class EditPage {
 		if ( $wgUser->isAllowed('minoredit') ) {
 			$minoredithtml =
 				"<input tabindex='3' type='checkbox' value='1' name='wpMinoredit'".($this->minoredit?" checked='checked'":"").
-				Skin::tooltipAndAccesskey('minoredit')."' id='wpMinoredit' />\n".
+				Skin::tooltipAndAccesskey('minoredit')."' id='mw-minor-edit-checkbox' />\n".
 				"<label for='wpMinoredit'".Skin::tooltip('minoredit').">{$minor}</label>\n";
 		}
 
@@ -994,7 +994,7 @@ class EditPage {
 		if ( $wgUser->isLoggedIn() ) {
 			$watchhtml = "<input tabindex='4' type='checkbox' name='wpWatchthis'".
 				($this->watchthis?" checked='checked'":"").
-				Skin::tooltipAndAccesskey('watch')." id='wpWatchthis'  />\n".
+				Skin::tooltipAndAccesskey('watch')." id='mw-watch-page-checkbox'  />\n".
 				"<label for='wpWatchthis'".Skin::tooltip('watch').">{$watchthis}</label>\n";
 		}
 
@@ -1005,7 +1005,7 @@ class EditPage {
 			if ( 'preview' == $this->formtype ) {
 				$this->showPreview();
 			} else {
-				$wgOut->addHTML( '<div id="wikiPreview"></div>' );
+				$wgOut->addHTML( '<div id="mw-preview"></div>' );
 			}
 
 			if ( 'diff' == $this->formtype ) {
@@ -1018,11 +1018,11 @@ class EditPage {
 		# Otherwise, show a summary field at the bottom
 		$summarytext = htmlspecialchars( $wgContLang->recodeForEdit( $this->summary ) ); # FIXME
 		if( $this->section == 'new' ) {
-			$commentsubject="<span id='wpSummaryLabel'><label for='wpSummary'>{$subject}:</label></span>\n<div class='editOptions'>\n<input tabindex='1' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' /><br />";
+			$commentsubject="<span id='mw-edit-summary-label'><label for='wpSummary'>{$subject}:</label></span>\n<div class='editOptions'>\n<input tabindex='1' type='text' value=\"$summarytext\" name='wpSummary' id='mw-edit-summary-box' maxlength='200' size='60' /><br />";
 			$editsummary = '';
 		} else {
 			$commentsubject = '';
-			$editsummary="<span id='wpSummaryLabel'><label for='wpSummary'>{$summary}:</label></span>\n<div class='editOptions'>\n<input tabindex='2' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' /><br />";
+			$editsummary="<span id='mw-edit-summary-label'><label for='wpSummary'>{$summary}:</label></span>\n<div class='editOptions'>\n<input tabindex='2' type='text' value=\"$summarytext\" name='wpSummary' id='mw-edit-summary-text' maxlength='200' size='60' /><br />";
 		}
 
 		# Set focus to the edit box on load, except on preview or diff, where it would interfere with the display
@@ -1052,8 +1052,8 @@ class EditPage {
 				$hidden = 'type="hidden" style="display:none;"';
 				$recreate = $wgOut->parse( wfMsg( 'confirmrecreate',  $this->lastDelete->user_name , $this->lastDelete->log_comment ));
 				$recreate .=
-					"<br /><input tabindex='1' type='checkbox' value='1' name='wpRecreate' id='wpRecreate' />".
-					"<label for='wpRecreate' title='".wfMsg('tooltip-recreate')."'>". wfMsg('recreate')."</label>";
+					"<br /><input tabindex='1' type='checkbox' value='1' name='wpRecreate' id='mw-confirm-recreate' />".
+					"<label for='wpRecreate'".Skin::tooltip('confirm-recreate').'>'. wfMsg('recreate')."</label>";
 			}
 		}
 
@@ -1122,7 +1122,7 @@ class EditPage {
 
 		$wgOut->addHTML( <<<END
 {$toolbar}
-<form id="editform" name="editform" method="post" action="$action" enctype="multipart/form-data">
+<form id="mw-page-edit-form" name="editform" method="post" action="$action" enctype="multipart/form-data">
 END
 );
 
@@ -1135,12 +1135,12 @@ END
 <input type='hidden' value=\"" . htmlspecialchars( $this->section ) . "\" name=\"wpSection\" />
 <input type='hidden' value=\"{$this->starttime}\" name=\"wpStarttime\" />\n
 <input type='hidden' value=\"{$this->edittime}\" name=\"wpEdittime\" />\n
-<input type='hidden' value=\"{$this->scrolltop}\" name=\"wpScrolltop\" id=\"wpScrolltop\" />\n" );
+<input type='hidden' value=\"{$this->scrolltop}\" name=\"wpScrolltop\" id=\"mw-scroll-top\" />\n" );
 
 		$wgOut->addHTML(
 "$recreate
 {$commentsubject}
-<textarea tabindex=\"1\" name=\"wpTextbox1\" id=\"wpTextbox1\" rows=\"{$rows}\"
+<textarea tabindex=\"1\" name=\"wpTextbox1\" id=\"mw-page-edit-box\" rows=\"{$rows}\"
 cols=\"{$cols}\"{$ew} $hidden".Skin::accesskey('textbox').">"
 . htmlspecialchars( $this->safeUnicodeOutput( $this->textbox1 ) ) .
 "
@@ -1207,7 +1207,7 @@ cols=\"{$cols}\"{$ew} $hidden".Skin::accesskey('textbox').">"
 			$de->showDiff( wfMsg( "yourtext" ), wfMsg( "storedversion" ) );
 
 			$wgOut->addWikiText( '==' . wfMsg( "yourtext" ) . '==' );
-			$wgOut->addHTML( "<textarea tabindex=6 id='wpTextbox2' name=\"wpTextbox2\" rows='{$rows}' cols='{$cols}' wrap='virtual'>"
+			$wgOut->addHTML( "<textarea tabindex=6 id='mw-edit-conflict-box' name=\"wpTextbox2\" rows='{$rows}' cols='{$cols}' wrap='virtual'>"
 				. htmlspecialchars( $this->safeUnicodeOutput( $this->textbox2 ) ) . "\n</textarea>" );
 		}
 		$wgOut->addHTML( "</form>\n" );
@@ -1216,7 +1216,7 @@ cols=\"{$cols}\"{$ew} $hidden".Skin::accesskey('textbox').">"
 			if ( $this->formtype == 'preview') {
 				$this->showPreview();
 			} else {
-				$wgOut->addHTML( '<div id="wikiPreview"></div>' );
+				$wgOut->addHTML( '<div id="mw-preview"></div>' );
 			}
 		
 			if ( $this->formtype == 'diff') {
@@ -1235,7 +1235,7 @@ cols=\"{$cols}\"{$ew} $hidden".Skin::accesskey('textbox').">"
 	 */
 	function showPreview() {
 		global $wgOut;
-		$wgOut->addHTML( '<div id="wikiPreview">' );
+		$wgOut->addHTML( '<div id="mw-preview">' );
 		if($this->mTitle->getNamespace() == NS_CATEGORY) {
 			$this->mArticle->openShowCategory();
 		}
@@ -1661,7 +1661,7 @@ cols=\"{$cols}\"{$ew} $hidden".Skin::accesskey('textbox').">"
 					'key'	=>	'R'
 				)
 		);
-		$toolbar = "<div id='toolbar'>\n";
+		$toolbar = "<div id='mw-edit-toolbar'>\n";
 		$toolbar.="<script type='$wgJsMimeType'>\n/*<![CDATA[*/\n";
 
 		foreach($toolarray as $tool) {
@@ -1735,7 +1735,7 @@ cols=\"{$cols}\"{$ew} $hidden".Skin::accesskey('textbox').">"
 			$difftext = '';
 		}
 
-		return '<div id="wikiDiff">' . $difftext . '</div>';
+		return '<div id="mw-diff">' . $difftext . '</div>';
 	}
 
 	/**

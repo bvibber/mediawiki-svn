@@ -1861,20 +1861,20 @@ class Article {
 		$token = htmlspecialchars( $wgUser->editToken() );
 
 		$wgOut->addHTML( "
-<form id='deleteconfirm' method='post' action=\"{$formaction}\">
+<form id='mw-confirm-delete' method='post' action=\"{$formaction}\">
 	<table border='0'>
 		<tr>
 			<td align='right'>
 				<label for='wpReason'>{$delcom}:</label>
 			</td>
 			<td align='left'>
-				<input type='text' size='60' name='wpReason' id='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" />
+				<input type='text' size='60' name='wpReason' class='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" />
 			</td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
 			<td>
-				<input type='submit' name='wpConfirmB' id='wpConfirmB' value=\"{$confirm}\" />
+				<input type='submit' name='wpConfirmB' class='wpConfirmB' value=\"{$confirm}\" />
 			</td>
 		</tr>
 	</table>

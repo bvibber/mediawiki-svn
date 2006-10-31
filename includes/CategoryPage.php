@@ -247,7 +247,7 @@ class CategoryViewer {
 
 	function getPagesSection() {
 		$ti = htmlspecialchars( $this->title->getText() );
-		$r = "<div id=\"mw-pages\">\n";
+		$r = "<div id=\"mw-category-pages\">\n";
 		$r .= '<h2>' . wfMsg( 'category_header', $ti ) . "</h2>\n";
 		$r .= wfMsgExt( 'categoryarticlecount', array( 'parse' ), count( $this->articles) );
 		$r .= $this->formatList( $this->articles, $this->articles_start_char );
