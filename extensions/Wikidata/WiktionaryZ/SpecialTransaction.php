@@ -73,7 +73,7 @@ function getTransactionOverview() {
 	$captionEditor->addEditor(new UserEditor($userAttribute, new SimplePermissionController(false), false));
 	$captionEditor->addEditor(new TextEditor($summaryAttribute, new SimplePermissionController(false), false));
 	
-	$valueEditor = new RecordListEditor($updatesInTransactionAttribute, 5);
+	$valueEditor = new RecordUnorderedListEditor($updatesInTransactionAttribute, 5);
 	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($updatedDefinitionAttribute));
 	
 	$editor = new RecordSetListEditor(null, new SimplePermissionController(false), false, false, false, null, 4, false);
