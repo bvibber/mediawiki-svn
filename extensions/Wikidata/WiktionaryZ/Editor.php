@@ -1099,58 +1099,90 @@ class RecordDivListEditor extends RecordListEditor {
 	}
 }
 
-class PopUpRecordEditor extends RecordEditor {
+class WrappingEditor implements Editor {
 	protected $wrappedEditor;
+	
 	public function __construct($wrappedEditor) {
-		parent::__construct($wrappedEditor->getAttribute());		
 		$this->wrappedEditor = $wrappedEditor;
 	}
 
-	public function view($idPath, $value) {
-		return 	$this->startToggleCode($idPath->getId()) .
-				$this->wrappedEditor->view($idPath, $value) . 
-				$this->endToggleCode($idPath->getId());
+	public function getAttribute() {
+		return $this->wrappedEditor->getAttribute();
 	}
 	
-	public function edit($idPath, $value) {
-		return 	$this->startToggleCode($idPath->getId()) .
-				$this->wrappedEditor->edit($idPath, $value) .
-				$this->endToggleCode($idPath->getId());
+	public function getUpdateAttribute() {
+		return $this->wrappedEditor->getUpdateAttribute();
+	}
+	
+	public function getAddAttribute() {
+		return $this->wrappedEditor->getAddAttribute();
 	}
 
-	public function add($idPath) {
-		return 	$this->startToggleCode($idPath->getId()) .
-				$this->wrappedEditor->add($idPath) .
-				$this->endToggleCode($idPath->getId());
-	}
-	
-	public function save($idPath, $value) {
-		$this->wrappedEditor->save($idPath, $value);	
-	}
-	
-	protected function startToggleCode($attributeId) {
-		return 	'<span id="attribute-record-editor-toggle-' . $attributeId . '">' .
-				'<span id="attribute-record-editor-title-' . $attributeId . '" style="font-weight: bolder; font-size: 90%;">attributes</span>' . 
-				'<div id="attribute-toggleable" style="position: absolute; border: 1px solid #000000; display: none; background-color: white; padding: 4px">';
-	}
-
-	protected function endToggleCode($attributeId) {
-		return 	'</div>' .
-			   	'</span>' . 
-				'<p><script type="text/javascript">var attributeShowText = "open >>"; var attributeHideText = "<< close"; showAttributeToggle("' . $attributeId . '");</script></p>';
-	}
-	
 	public function showsData($value) {
 		return $this->wrappedEditor->showsData($value);
 	}
 	
-	public function expandEditor($editor) {
-		$this->wrappedEditor->expandEditor($editor);
+	public function view($idPath, $value) {
+		return $this->wrappedEditor->view($idPath, $value);
+	}
+	
+	public function edit($idPath, $value) {
+		return $this->wrappedEditor->edit($idPath, $value);	
+	}
+	
+	public function add($idPath) {
+		return $this->wrappedEditor->add($idPath);	
+	}
+	
+	public function save($idPath, $value) {
+		$this->wrappedEditor->save($idPath, $value);
 	}
 
-	public function setExpansionByEditor($editor, $elementType) {
-		$this->wrappedEditor->setExpansionByEditor($editor, $elementType);
-	}	
+	public function getUpdateValue($idPath) {
+		return $this->wrappedEditor->getUpdateValue($idPath);	
+	}
+	
+	public function getAddValue($idPath) {
+		return $this->wrappedEditor->getAddValue($idPath);
+	}
+
+	public function getEditors() {
+		return $this->wrappedEditor->getEditors();
+	}
+}
+
+class PopUpEditor extends WrappingEditor {
+	protected $linkCaption;
+	
+	public function __construct($wrappedEditor, $linkCaption) {
+		parent::__construct($wrappedEditor);
+				
+		$this->linkCaption = $linkCaption;
+	}
+
+	public function view($idPath, $value) {
+		return
+			$this->startToggleCode($idPath->getId()) .
+			$this->wrappedEditor->view($idPath, $value) . 
+			$this->endToggleCode($idPath->getId());
+	}
+	
+	public function edit($idPath, $value) {
+		return 	
+			$this->startToggleCode($idPath->getId()) .
+			$this->wrappedEditor->edit($idPath, $value) .
+			$this->endToggleCode($idPath->getId());
+	}
+
+	protected function startToggleCode($attributeId) {
+		return 	
+			'<a id="popup-' . $attributeId . '-link" style="cursor: pointer; font-weight: bolder; font-size: 90%;" onclick="togglePopup(this, event);">'. $this->linkCaption .' &raquo;</a>' . 
+			'<div style="absolute"><div id="popup-' . $attributeId . '-toggleable" style="position: absolute; border: 1px solid #000000; display: none; background-color: white; padding: 4px;">';
+	}
+
+	protected function endToggleCode($attributeId) {
+		return '</div></div>';
+	}
 }
 
 class RecordSetListEditor extends RecordSetEditor {
@@ -1253,7 +1285,7 @@ class RecordSetListEditor extends RecordSetEditor {
 			$this->setExpansion(true, $class);
 
 			$result .= '<li>'.
-						'<h' . $this->headerLevel . '><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);"' . $this->getExpansionPrefix($idPath->getClass(), $idPath->getId()) . ' <img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/> ' . $this->captionEditor->add($idPath) . '</h' . $this->headerLevel .'>';
+						'<h' . $this->headerLevel . '><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $this->getExpansionPrefix($idPath->getClass(), $idPath->getId()) . ' <img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/> ' . $this->captionEditor->add($idPath) . '</span></h' . $this->headerLevel .'>';
 			$idPath->popAttribute();
 
 			$idPath->pushAttribute($valueAttribute);

@@ -33,7 +33,8 @@ function getDefinitionEditor($attribute, $controller, $showRecordLifeSpan) {
 
 	$editor = new RecordDivListEditor($attribute);
 	$editor->addEditor(getTranslatedTextEditor($translatedTextAttribute, new DefinedMeaningDefinitionController(), $showRecordLifeSpan));
-	$editor->addEditor(new PopUpRecordEditor(getObjectAttributesEditor($objectAttributesAttribute, null, $showRecordLifeSpan, new DefinitionObjectIdFetcher(0, $definedMeaningIdAttribute))));
+	$editor->addEditor(new PopUpEditor(getObjectAttributesEditor($objectAttributesAttribute, null, $showRecordLifeSpan, new DefinitionObjectIdFetcher(0, $definedMeaningIdAttribute)), 'Annotation'));
+
 	return $editor;		
 }	
 
