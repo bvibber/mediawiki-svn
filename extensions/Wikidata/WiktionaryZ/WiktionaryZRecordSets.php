@@ -65,70 +65,49 @@ function getUniqueIdsInRecordSet($recordSet, $idAttributes) {
 	return array_unique($ids);
 }
 
-//		$sql = 
-//			"SELECT " .
-//			" uw_defined_meaning.defined_meaning_id, " .
-//			" COALESCE(defining_expression.spelling, user_expression.spelling, english_expression.spelling, any_expression.spelling) AS label, " .
-//			" defining_expression.spelling AS defining_spelling," .
-//			" user_expression.spelling AS user_spelling," .
-//			" english_expression.spelling AS english_spelling, " .
-//			" any_expression.spelling AS any_spelling " .
-//			" FROM uw_defined_meaning " .
-//			getDefiningJoinSQLForLanguage('defining', $userLanguage) .
-//			getSynonymJoinSQLForLanguage('user', $userLanguage) .
-//			getSynonymJoinSQLForLanguage('english', 85) .
-//			getSynonymJoinSQLForAnyLanguage('any') .
-//			" WHERE uw_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")"  .
-//			" AND " . getLatestTransactionRestriction('uw_defined_meaning') .
-//			" GROUP BY defined_meaning_id"; 
-//		
-//		echo $sql . "\n\n";
-//		$dbr =& wfGetDB(DB_SLAVE);
-//		$dbr->query(
-//			$sql
-//		);
-
-//function getSynonymJoinSQLForLanguage($alias, $languageId) {
-//	return 
-//		" JOIN (uw_syntrans AS ". $alias . "_syntrans, uw_expression_ns AS ". $alias . "_expression) ON " .
-//		" (uw_defined_meaning.defined_meaning_id=". $alias . "_syntrans.defined_meaning_id AND ". $alias . "_syntrans.identical_meaning=1 AND " . getLatestTransactionRestriction($alias . '_syntrans') .
-//		"  AND ". $alias . "_expression.expression_id=". $alias . "_syntrans.expression_id AND ". $alias . "_expression.language_id=" . $languageId . " AND " . getLatestTransactionRestriction($alias . '_expression') . ")";
-//}
-//
-//function getSynonymJoinSQLForAnyLanguage($alias) {
-//	return 
-//		" JOIN (uw_syntrans AS ". $alias . "_syntrans, uw_expression_ns AS ". $alias . "_expression) ON " .
-//		" (uw_defined_meaning.defined_meaning_id=". $alias . "_syntrans.defined_meaning_id AND ". $alias . "_syntrans.identical_meaning=1 AND " . getLatestTransactionRestriction($alias . '_syntrans') .
-//		"  AND ". $alias . "_expression.expression_id=". $alias . "_syntrans.expression_id AND " . getLatestTransactionRestriction($alias . '_expression') . ")";
-//}
-
-function getSynonymJoinSQLForLanguage($alias, $languageId) {
+function getSynonymSQLForLanguage($languageId, &$definedMeaningIds) {
 	return 
-		" JOIN (SELECT spelling FROM uw_expression_ns, uw_syntrans WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id" .
+		"SELECT uw_defined_meaning.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS label " .
+		" FROM uw_defined_meaning, uw_syntrans, uw_expression_ns " .
+		" WHERE uw_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")" .
 		" AND " . getLatestTransactionRestriction('uw_syntrans') .
 		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
-		" AND uw_expression.ns.language_id=" . $languageId .
+		" AND " . getLatestTransactionRestriction('uw_defined_meaning') .
+		" AND uw_expression_ns.language_id=" . $languageId .
+		" AND uw_expression_ns.expression_id=uw_syntrans.expression_id " .
 		" AND uw_defined_meaning.defined_meaning_id=uw_syntrans.defined_meaning_id " . 
-		" AND uw_syntrans.identical_meaning=1 " . 
-		" LIMIT 1) ";
+		" AND uw_syntrans.identical_meaning=1 " .
+		" GROUP BY uw_defined_meaning.defined_meaning_id";
 }
 
-function getSynonymJoinSQLForAnyLanguage($alias) {
+function getSynonymSQLForAnyLanguage(&$definedMeaningIds) {
 	return 
-		" JOIN (SELECT spelling FROM uw_expression_ns, uw_syntrans WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id" .
+		"SELECT uw_defined_meaning.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS label " .
+		" FROM uw_defined_meaning, uw_syntrans, uw_expression_ns " .
+		" WHERE uw_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")" .
 		" AND " . getLatestTransactionRestriction('uw_syntrans') .
 		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
+		" AND " . getLatestTransactionRestriction('uw_defined_meaning') .
+		" AND uw_expression_ns.expression_id=uw_syntrans.expression_id " .
 		" AND uw_defined_meaning.defined_meaning_id=uw_syntrans.defined_meaning_id " . 
-		" AND uw_syntrans.identical_meaning=1 " . 
-		" LIMIT 1) ";
+		" AND uw_syntrans.identical_meaning=1 " .
+		" GROUP BY uw_defined_meaning.defined_meaning_id";
 }
 
-function getDefiningJoinSQLForLanguage($alias, $languageId) {
+function getDefiningSQLForLanguage($languageId, &$definedMeaningIds) {
 	return 
-		" JOIN (uw_syntrans AS ". $alias . "_syntrans, uw_expression_ns AS ". $alias . "_expression) ON " .
-		" (uw_defined_meaning.defined_meaning_id=". $alias . "_syntrans.defined_meaning_id AND ". $alias . "_syntrans.identical_meaning=1 AND " . getLatestTransactionRestriction($alias . '_syntrans') .
-		"  AND ". $alias . "_expression.expression_id=". $alias . "_syntrans.expression_id AND ". $alias . "_expression.language_id=" . $languageId . " AND " . getLatestTransactionRestriction($alias . '_expression') . "" .
-		"  AND uw_defined_meaning.expression_id=". $alias . "_syntrans.expression_id)";
+		"SELECT uw_defined_meaning.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS label " .
+		" FROM uw_defined_meaning, uw_syntrans, uw_expression_ns " .
+		" WHERE uw_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")" .
+		" AND " . getLatestTransactionRestriction('uw_syntrans') .
+		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
+		" AND " . getLatestTransactionRestriction('uw_defined_meaning') .
+		" AND uw_expression_ns.expression_id=uw_syntrans.expression_id " .
+		" AND uw_defined_meaning.defined_meaning_id=uw_syntrans.defined_meaning_id " . 
+		" AND uw_syntrans.identical_meaning=1 " .
+		" AND uw_defined_meaning.expression_id=uw_expression_ns.expression_id " .
+		" AND uw_expression_ns.language_id=" . $languageId .
+		" GROUP BY uw_defined_meaning.defined_meaning_id";
 }
 
 function fetchDefinedMeaningReferenceRecords($sql, &$definedMeaningIds, &$definedMeaningReferenceRecords) {
@@ -147,8 +126,7 @@ function fetchDefinedMeaningReferenceRecords($sql, &$definedMeaningIds, &$define
 		$record = new ArrayRecord($definedMeaningReferenceStructure);
 		$record->setAttributeValue($definedMeaningIdAttribute, $definedMeaningId);
 		$record->setAttributeValue($definedMeaningLabelAttribute, $row->label);
-		$record->setAttributeValue($definedMeaningDefiningExpressionAttribute, $row->label);
-		
+				
 		$definedMeaningReferenceRecords[$definedMeaningId] = $record;
 		$foundDefinedMeaningIds[] = $definedMeaningId;
 	}
@@ -210,49 +188,35 @@ function getDefinedMeaningReferenceRecords($definedMeaningIds) {
 	if (count($definedMeaningIds) > 0) {
 		$userLanguage = getLanguageIdForCode($wgUser->getOption('language'));
 		
-		fetchDefinedMeaningReferenceRecords(
-			"SELECT uw_defined_meaning.defined_meaning_id AS defined_meaning_id, any_expression.spelling AS label " .
-			"FROM uw_defined_meaning" .
-			getDefiningJoinSQLForLanguage('any', $userLanguage) . 
-			" WHERE uw_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")"  .
-			" GROUP BY uw_defined_meaning.defined_meaning_id",
+		if ($userLanguage > 0)
+			$definingLanguage = $userLanguage;
+		else
+			$definingLanguage = 85;
 			
+		fetchDefinedMeaningReferenceRecords(
+			getDefiningSQLForLanguage($definingLanguage, $definedMeaningIds),
 			$definedMeaningIds,
 			$result
 		);
 	
 		if (count($definedMeaningIds) > 0) {
-			fetchDefinedMeaningReferenceRecords(
-				"SELECT uw_defined_meaning.defined_meaning_id AS defined_meaning_id, spelling AS label " .
-				"FROM uw_defined_meaning" .
-				getSynonymJoinSQLForLanguage('any', $userLanguage) . 
-				" WHERE uw_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")",//  .
-//				" GROUP BY uw_defined_meaning.defined_meaning_id",
-				
-				$definedMeaningIds,
-				$result
-			);
+			if ($userLanguage > 0)
+				fetchDefinedMeaningReferenceRecords(
+					getSynonymSQLForLanguage($userLanguage, $definedMeaningIds),
+					$definedMeaningIds,
+					$result
+				);
 	
 			if (count($definedMeaningIds) > 0) {
 				fetchDefinedMeaningReferenceRecords(
-					"SELECT uw_defined_meaning.defined_meaning_id AS defined_meaning_id, spelling AS label " .
-					"FROM uw_defined_meaning" .
-					getSynonymJoinSQLForLanguage('any', 85) . 
-					" WHERE uw_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")",//  .
-//					" GROUP BY uw_defined_meaning.defined_meaning_id",
-					
+					getSynonymSQLForLanguage(85, $definedMeaningIds),
 					$definedMeaningIds,
 					$result
 				);
 		
 				if (count($definedMeaningIds) > 0) {
 					fetchDefinedMeaningReferenceRecords(
-						"SELECT uw_defined_meaning.defined_meaning_id AS defined_meaning_id, spelling AS label " .
-						"FROM uw_defined_meaning" .
-						getSynonymJoinSQLForAnyLanguage('any') . 
-						" WHERE uw_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")",//  .
-//						" GROUP BY uw_defined_meaning.defined_meaning_id",
-						
+						getSynonymSQLForAnyLanguage($definedMeaningIds),
 						$definedMeaningIds,
 						$result
 					);
