@@ -985,8 +985,8 @@ class EditPage {
 		if ( $wgUser->isAllowed('minoredit') ) {
 			$minoredithtml =
 				"<input tabindex='3' type='checkbox' value='1' name='wpMinoredit'".($this->minoredit?" checked='checked'":"").
-				" accesskey='".wfMsg('accesskey-minoredit')."' id='wpMinoredit' />\n".
-				"<label for='wpMinoredit'".Skin::tooltipAndAccesskey('minoredit').">{$minor}</label>\n";
+				Skin::tooltipAndAccesskey('minoredit')."' id='wpMinoredit' />\n".
+				"<label for='wpMinoredit'".Skin::tooltip('minoredit').">{$minor}</label>\n";
 		}
 
 		$watchhtml = '';
@@ -994,8 +994,8 @@ class EditPage {
 		if ( $wgUser->isLoggedIn() ) {
 			$watchhtml = "<input tabindex='4' type='checkbox' name='wpWatchthis'".
 				($this->watchthis?" checked='checked'":"").
-				" accesskey=\"".htmlspecialchars(wfMsg('accesskey-watch'))."\" id='wpWatchthis'  />\n".
-				"<label for='wpWatchthis'".Skin::tooltipAndAccesskey('watch').">{$watchthis}</label>\n";
+				Skin::tooltipAndAccesskey('watch')." id='wpWatchthis'  />\n".
+				"<label for='wpWatchthis'".Skin::tooltip('watch').">{$watchthis}</label>\n";
 		}
 
 		$checkboxhtml = $minoredithtml . $watchhtml;
@@ -1137,12 +1137,11 @@ END
 <input type='hidden' value=\"{$this->edittime}\" name=\"wpEdittime\" />\n
 <input type='hidden' value=\"{$this->scrolltop}\" name=\"wpScrolltop\" id=\"wpScrolltop\" />\n" );
 
-		$wgOut->addHTML( <<<END
-$recreate
+		$wgOut->addHTML(
+"$recreate
 {$commentsubject}
-<textarea tabindex='1' accesskey="," name="wpTextbox1" id="wpTextbox1" rows='{$rows}'
-cols='{$cols}'{$ew} $hidden>
-END
+<textarea tabindex=\"1\" name=\"wpTextbox1\" id=\"wpTextbox1\" rows=\"{$rows}\"
+cols=\"{$cols}\"{$ew} $hidden".Skin::accesskey('textbox').">"
 . htmlspecialchars( $this->safeUnicodeOutput( $this->textbox1 ) ) .
 "
 </textarea>

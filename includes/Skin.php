@@ -1587,11 +1587,14 @@ END;
 	}
 
 	/**
-	 * Given the id of an interface element (minus any prefixes such as 'n-'),
+	 * Given the id of an interface element (minus the 'mw-' prefix),
 	 * constructs the appropriate title and accesskey attributes from the
 	 * system messages.
 	 *
-	 * @param string $name Id of the element, minus prefixes.
+	 * Example return value: ' title="foo [x]" accesskey="x"'.
+	 *
+	 * @param string $name Id of the element, minus 'mw-' prefix. If no
+	 * id, use the parent element's id instead.
 	 * @return string title and accesskey attributes, ready to drop in an
 	 * element.
 	 */
@@ -1610,6 +1613,55 @@ END;
 			$out .= '"';
 		}
 		return $out;
+	}
+
+	/**
+	 * Given the id of an interface element (minus the 'mw-' prefix),
+	 * constructs the appropriate title attribute from the system messages.
+	 * Suitable for elements where accesskeys aren't allowed.
+	 *
+	 * Example return value: ' title="foo"'.
+	 *
+	 * @param string $name Id of the element, minus 'mw-' prefix. If no
+	 * id, use the parent element's id instead.
+	 * @return string title attribute, ready to drop in an element.
+	 */
+	public static function tooltip($name) {
+		$out = '';
+
+		$tooltip = wfMsg('tooltip-'.$name);
+		if (!wfEmptyMsg('tooltip-'.$name, $tooltip)) {
+			$out .= ' title="'.htmlspecialchars($tooltip);
+		}
+		$accesskey = wfMsg('accesskey-'.$name);
+		if ($accesskey && !wfEmptyMsg('accesskey-'.$name, $accesskey)) {
+			if ($out) $out .= " [$accesskey]\"";
+			else $out .= " title=\"[$accesskey]\"";
+		} elseif ($out) {
+			$out .= '"';
+		}
+		return $out;
+	}
+
+	/**
+	 * Given the id of an interface element (minus the 'mw-' prefix),
+	 * constructs the appropriate accesskey attribute from the system
+	 * messages. Suitable for elements such as textareas where titles aren't
+	 * desirable.
+	 *
+	 * Example return value: ' accesskey="x"'.
+	 *
+	 * @param string $name Id of the element, minus 'mw-' prefix. If no
+	 * id, use the parent element's id instead.
+	 * @return string accesskey attribute, ready to drop in an element.
+	 */
+	public static function accesskey($name) {
+		$accesskey = wfMsg('accesskey-'.$name);
+		if ($accesskey && !wfEmptyMsg('accesskey-'.$name, $accesskey)) {
+			return ' accesskey="'.$accesskey.'"';
+		} else {
+			return '';
+		}
 	}
 }
 ?>
