@@ -1,8 +1,0 @@
-WiktionaryZ is a universal dictionary and thesaurus built using Wikidata.
-
-This directory contains:
-* WiktionaryZ.php and related files - preliminary WiktionaryZ code (much functionality will go back into
-MediaWiki). This code is not ready for use yet - more info/code to follow.
-* WiktionaryZ.pm - a generic importer library for WiktionaryZ written in Perl that includes specific support for the GEMET and UMLS
-thesauri.
-
