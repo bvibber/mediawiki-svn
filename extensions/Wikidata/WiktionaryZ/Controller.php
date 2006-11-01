@@ -309,7 +309,7 @@ class ExpressionController implements Controller {
 		global
 			$expressionAttribute, $expressionMeaningsAttribute, $expressionExactMeaningsAttribute, 
 			$definedMeaningAttribute, $definitionAttribute, 
-			$languageAttribute, $textAttribute;
+			$languageAttribute, $textAttribute, $translatedTextAttribute;
 
 		$expressionLanguageId = $record->getAttributeValue($expressionAttribute)->getAttributeValue($languageAttribute);
 		$expressionMeanings = $record->getAttributeValue($expressionMeaningsAttribute)->getAttributeValue($expressionExactMeaningsAttribute);
@@ -318,9 +318,10 @@ class ExpressionController implements Controller {
 			$expressionMeaning = $expressionMeanings->getRecord(0);
 
 			$definition = $expressionMeaning->getAttributeValue($definedMeaningAttribute)->getAttributeValue($definitionAttribute);
+                        $translatedContent = $definition->getAttributeValue($translatedTextAttribute);
 
-			if ($definition->getRecordCount() > 0) {
-				$definitionRecord = $definition->getRecord(0);
+			if ($translatedContent->getRecordCount() > 0) {
+				$definitionRecord = $translatedContent->getRecord(0);
 
 				$text = $definitionRecord->getAttributeValue($textAttribute);
 				$languageId = $definitionRecord->getAttributeValue($languageAttribute);
