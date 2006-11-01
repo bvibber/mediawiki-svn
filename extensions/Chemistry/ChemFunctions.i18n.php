@@ -88,7 +88,9 @@ $wgChemFunctions_Messages['en'] = array(
 	'ChemFunctions_DrugBank' => 'DrugBank',
 	'ChemFunctions_ECNumber' => 'ECNumber',
 	'ChemFunctions_Formula' => 'Formula',
-	'ChemFunctions_Name' => 'IUPAC Name'
+	'ChemFunctions_Name' => 'IUPAC Name',
+
+	'ChemFunctions_ChemFormInputError' => 'Chemform: Input error!'
 );
 
 /**
@@ -114,7 +116,9 @@ $wgChemFunctions_Messages['de'] = array(
 	'ChemFunctions_DrugBank' => 'DrugBank',
 	'ChemFunctions_ECNumber' => 'ECNumber',
 	'ChemFunctions_Formula' => 'Formula',
-	'ChemFunctions_Name' => 'IUPAC Name'
+	'ChemFunctions_Name' => 'IUPAC Name',
+
+	'ChemFunctions_ChemFormInputError' => 'Chemform: Eingabe Fehler!'
 );
 
 /**
@@ -140,7 +144,9 @@ $wgChemFunctions_Messages['nl'] = array(
 	'ChemFunctions_DrugBank' => 'DrugBank',
 	'ChemFunctions_ECNumber' => 'EC Nummer',
 	'ChemFunctions_Formula' => 'Formula',
-	'ChemFunctions_Name' => 'IUPAC Naam'
+	'ChemFunctions_Name' => 'IUPAC Naam',
+
+	'ChemFunctions_ChemFormInputError' => 'Chemform: Input fout!'
 );
 
 /**
@@ -166,7 +172,9 @@ $wgChemFunctions_Messages['sk'] = array(
 	'ChemFunctions_DrugBank' => 'DrugBank',
 	'ChemFunctions_ECNumber' => 'ECNumber',
 	'ChemFunctions_Formula' => 'Formula',
-	'ChemFunctions_Name' => 'IUPAC názov'
+	'ChemFunctions_Name' => 'IUPAC názov',
+
+	'ChemFunctions_ChemFormInputError' => 'Chemform: Input error!'
 );
 
 ?>

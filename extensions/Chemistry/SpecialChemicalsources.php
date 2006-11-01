@@ -73,7 +73,7 @@ class SpecialChemicalsources extends SpecialPage {
 	function execute () {
 		global $wgOut, $wgRequest;
 
-		$wgOut->setPagetitle( wfMsg("chemicalsources") ); 
+		$wgOut->setPagetitle( wfMsg("chemicalsources") );
 
 		$Params = $wgRequest->getValues();
 

@@ -103,19 +103,25 @@ function RenderChemForm( $input, $argv ) {
 		$showthis = preg_replace("/<sub>([0-9\+\-]+)<\/sup>/", "<sup>$1</sup>", $showthis);  # and <sub>whatever</sup> to <sup>..</sup>
 	}
 
-	$showthis = Sanitizer::removeHTMLtags( $showthis);
-	$searchfor = Sanitizer::removeHTMLtags( $searchfor);
-
+	$showthis = htmlentities( $showthis);
+	$searchfor = htmlentities( $searchfor);
+	if (!$searchfor) {
+	   $searchfor = "Error, no text given";
+	}
 	if ( $link ) {
 		$title = Title::makeTitleSafe( NS_SPECIAL, 'Chemicalsources' );
-		$output = "<a href = " . $title->getFullUrl() . "?Formula=" . $searchfor .  ">" . $showthis . "</a>";
+		$output = "<a href=\"" . $title->getFullUrl() . "?Formula=" . $searchfor .  "\">" . $showthis . "</a>";
 	} elseif ( $wikilink) {
 		$title = Title::makeTitleSafe( NS_MAIN, $searchfor );
-		$revision = Revision::newFromTitle( $title );
-		if ($revision ) {
-		   $output = "<a href = " . $title->getFullUrl() . ">" . $showthis . "</a>";
+		if ($title) {
+			$revision = Revision::newFromTitle( $title );
+			if ($revision ) {
+			   $output = "<a href=\"" . $title->getFullUrl() . "\">" . $showthis . "</a>";
+			} else {
+			   $output = "<a href=\"" . $title->getFullUrl() . "?action=edit\" class=\"new\">" . $showthis . "</a>";
+			}
 		} else {
-		   $output = "<a href = " . $title->getFullUrl() . "?action=edit class=new>" . $showthis . "</a>";
+			$output = wfMsg('ChemFunctions_ChemFormInputError');
 		}
 	} else {
 		$output = $showthis;
