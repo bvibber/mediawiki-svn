@@ -30,18 +30,14 @@ $wgExtensionCredits['Extension'][] = array(
  *    Second:  and - are put in superscript
  *    Third: all numericals preceding a + or a - are converted from subscript to superscript.
  *
- * usage: <chemform searchfor="formula to be searched for" noprocess link wikilink>formula</chemform>
+ * usage: <chemform query="formula to be searched for" link wikilink>formula</chemform>
  *  (all parameters are optional).
  * Parameters:
  *   query: alternate (e.g. CAS-sorted) formula to search for (plain formula, e.g. "C12H22O11")
- *   noprocess: results in the text between the tags not to be processed, for 'difficult' formula's like:
- *     "CuSO<sub>4</sub> . 10 H<sub>2</sub>O" , where the 10 should not be subscripted.
  *   link: results in the text between the tags to be a link to special:chemicalsources.
  *     N.B.  : use noprocess with the searchfor parameter, otherwise search results may (!) be garbage/broken links.
  *     N.B.2 : the text between the tags is interpreted as HTML, not as wikitext!
  *   wikilink: makes the text between the tags a wikilink.
- *
- *   The query takes the value of query, or link, or wikilink (in that order)
  *
  * Written by Dirk Beetstra, Oct. 2, 2006.
  */
@@ -66,11 +62,8 @@ function RenderChemForm( $input, $argv ) {
 
     $link = false;
     $wikilink = false;
-    $noprocess = false;
-    $searchfor = "";
-
-    if ( isset( $argv["noprocess"] ) )
-        $noprocess = $argv["noprocess"];
+    $showthis = $input;
+    $searchfor = $input;
 
     if ( isset( $argv["link"] ) )
         $link =  $argv["link"];
@@ -81,36 +74,20 @@ function RenderChemForm( $input, $argv ) {
     if ( isset( $argv["query"] ) )
         $searchfor = $argv["query"];
 
-    if (!$searchfor) {
-        $searchfor = $input;
-        $searchfor = preg_replace( "/<.*?>/", "", $searchfor );
-        $searchfor = preg_replace( "/[\[\]]/", "", $searchfor );
-    }
-    $searchfor = str_replace(" ", "", $searchfor );
+    if (!$showthis) 
+        $showthis = $searchfor;
 
-    if (!$searchfor )
-        $searchfor = $link;
-    if (!$searchfor )
-        $searchfor = $wikilink;
-
-    $showthis = $input;
-    if (!$noprocess) {
-        $showthis = $input;
-        $showthis = preg_replace( "/<.*?>/", "", $showthis );                                # Remove all tags
-        $showthis = htmlentities( Sanitizer::StripAllTags ( $showthis ) );                   # tagstripping
-        $showthis = preg_replace("/[0-9]+/", "<sub>$0</sub>", $showthis);                    # All numbers down
-        $showthis = preg_replace("/[\+\-]/", "<sup>$0</sup>", $showthis);                    # + and - up
-        $showthis = preg_replace("/<\/sub><sup>/", "", $showthis);                           # </sub><sup> should not occur
-        $showthis = preg_replace("/<sub>([0-9\+\-]+)<\/sup>/", "<sup>$1</sup>", $showthis);  # and <sub>whatever</sup> to <sup>..</sup>
-    } else {
-        $showthis = htmlentities( Sanitizer::StripAllTags ( $showthis ) );
-    }
+    $showthis = htmlentities( Sanitizer::StripAllTags ( $showthis ) );                   # tagstripping
+    $showthis = preg_replace("/[0-9]+/", "<sub>$0</sub>", $showthis);                    # All numbers down
+    $showthis = preg_replace("/[\+\-]/", "<sup>$0</sup>", $showthis);                    # + and - up
+    $showthis = preg_replace("/<\/sub><sup>/", "", $showthis);                           # </sub><sup> should not occur
+    $showthis = preg_replace("/<sub>([0-9\+\-]+)<\/sup>/", "<sup>$1</sup>", $showthis);  # and <sub>whatever</sup> to <sup>..</sup>
 
     $searchfor = htmlentities( Sanitizer::StripAllTags ( $searchfor ) );
 
-    if (!$searchfor) {
-       $searchfor = "Error, no text given";
-    }
+    if (! ( $showthis . $searchfor ) ) 
+        return wfMsg('ChemFunctions_ChemFormInputError');
+
     if ( $link ) {
         $title = Title::makeTitleSafe( NS_SPECIAL, 'Chemicalsources' );
         $output = "<a href=\"" . $title->getFullUrl() . "?Formula=" . $searchfor .  "\">" . $showthis . "</a>";
