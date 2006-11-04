@@ -169,8 +169,11 @@ socklen_t	 len = sizeof(error);
 struct backend *
 backend_pool::_next_backend(string const &url)
 {
-static	size_t	cur = 0;
-	size_t	tried = 0;
+static tss<size_t>	cur;
+size_t			tried = 0;
+
+	if (cur == NULL)
+		cur = new size_t();
 
 	if (config.use_carp)
 		_carp_recalc(url);
@@ -180,20 +183,20 @@ static	size_t	cur = 0;
 	while (tried++ <= backends.size()) {
 		time_t now = time(NULL);
 
-		if (cur >= backends.size())
-			cur = 0;
+		if (*cur >= backends.size())
+			*cur = 0;
 
-		if (backends[cur]->be_dead && now >= backends[cur]->be_time)
-			backends[cur]->be_dead = 0;
+		if (backends[*cur]->be_dead && now >= backends[*cur]->be_time)
+			backends[*cur]->be_dead = 0;
 
-		if (backends[cur]->be_dead) {
-			cur++;
+		if (backends[*cur]->be_dead) {
+			(*cur)++;
 			continue;
 		}
 
 		if (config.use_carp)
-			cur = 0;
-		return backends[cur++];
+			(*cur) = 0;
+		return backends[(*cur)++];
 	}
 
 	return NULL;

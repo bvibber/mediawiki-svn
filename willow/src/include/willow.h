@@ -312,28 +312,28 @@ T1 operator ~ (atomic<T1> const &v1) {
 
 template<typename T>
 struct tss {
-	mutable pthread_key_t	key;
+	mutable pthread_key_t	_key;
 	tss() {
-		pthread_key_create(&key, NULL);
+		pthread_key_create(&_key, NULL);
 	}
 	T const& operator* (void) const {
-		return *(T *)pthread_getspecific(key);
+		return *(T *)pthread_getspecific(_key);
 	}
 	T& operator* (void) {
-		return *(T *)pthread_getspecific(key);
+		return *(T *)pthread_getspecific(_key);
 	}
 	T const * operator-> (void) const {
-		return (T *)pthread_getspecific(key);
+		return (T *)pthread_getspecific(_key);
 	}
 	T *operator-> (void) {
-		return (T *)pthread_getspecific(key);
+		return (T *)pthread_getspecific(_key);
 	}
 	tss &operator= (T* n) {
-		pthread_setspecific(key, n);
+		pthread_setspecific(_key, n);
 		return *this;
 	}
 	operator T* (void) {
-		return (T *)pthread_getspecific(key);
+		return (T *)pthread_getspecific(_key);
 	}
 };
 

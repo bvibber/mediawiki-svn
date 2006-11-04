@@ -104,8 +104,7 @@ size_t	 bufsz;
 size_t	 buflen = 0;
 
 	bufsz = hl_len + 3;
-	if ((buf = (char *)wmalloc(bufsz)) == NULL)
-		outofmemory();
+	buf = new char[bufsz];
 	
 	*buf = '\0';
 vector<header>::iterator	it, end;
@@ -385,7 +384,8 @@ header_parser::set_response(void)
 }
 
 header_spigot::header_spigot(int errcode, char const *msg)
-	: _corked(true)
+	: _built(false)
+	, _corked(true)
 {
 char	cstr[4];
 	sprintf(cstr, "%d", errcode);

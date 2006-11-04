@@ -42,7 +42,8 @@ void
 fde_spigot::_fdecall(fde *e, int) {
 ssize_t	 read;
 sink_result	res;
-	WDEBUG((WLOG_DEBUG, "fde_spigot::_fdecall_impl, saved=%d, _off=%d [%.*s]", _saved, _off, _saved - _off, _savebuf + _off));
+	WDEBUG((WLOG_DEBUG, "fde_spigot::_fdecall_impl, fd=%d saved=%d, _off=%d [%.*s]", 
+		e->fde_fd, _saved, _off, _saved - _off, _savebuf + _off));
 
 	if (_off) {
 		memmove(_savebuf, _savebuf + _off, _saved - _off);
@@ -81,6 +82,14 @@ sink_result	res;
 	}
 
 	if (read == -1 && errno == EAGAIN) {
+		WDEBUG((WLOG_DEBUG, "fde_spigot read -1, EAGAIN"));
+		ioloop->readback(_fde->fde_fd, polycaller<fde *, int>(*this, &fde_spigot::_fdecall), 0);
+		return;
+	}
+
+	if (read == -1) {
+		WDEBUG((WLOG_DEBUG, "fde_spigot read -1; error = %s", strerror(errno)));
+		_sp_error_callee();
 		return;
 	}
 

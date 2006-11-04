@@ -569,6 +569,10 @@ static void
 fde_ev_callback(int fd, short ev, void *d)
 {
 struct	fde	*fde = &fde_table[fd];
+	WDEBUG((WLOG_DEBUG, "fde_ev_callback: %s%son %d [%s]",
+		(ev & EV_READ) ? "read " : "",
+		(ev & EV_WRITE) ? "write " : "",
+		fd, fde->fde_desc));
 
 	assert(fde->fde_flags.open);
 
@@ -576,8 +580,10 @@ struct	fde	*fde = &fde_table[fd];
 		fde->fde_read_handler(fde);
 	if (ev & EV_WRITE)
 		fde->fde_write_handler(fde);
-	if (!fde->fde_flags.read_held || !fde->fde_flags.write_held)
+	if (!fde->fde_flags.read_held || !fde->fde_flags.write_held) {
+		WDEBUG((WLOG_DEBUG, "fde_ev_callback: rescheduling %d", fd));
 		event_add(&fde->fde_ev, NULL);
+	}
 }
 
 void
@@ -599,6 +605,11 @@ ioloop_t::_register(int fd, int what, polycallback<fde *> handler)
 {
 struct	fde	*fde = &fde_table[fd];
 	int	 ev_flags = 0;
+
+	WDEBUG((WLOG_DEBUG, "_register: %s%son %d [%s]",
+		(what & FDE_READ) ? "read " : "",
+		(what & FDE_WRITE) ? "write " : "",
+		fd, fde->fde_desc));
 
 	make_event_base();
 

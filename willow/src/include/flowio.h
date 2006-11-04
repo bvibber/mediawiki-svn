@@ -202,7 +202,6 @@ struct fde_spigot : freelist_allocator<fde_spigot>, spigot {
 	virtual void sp_uncork(void) {
 		if (_corked) {
 			_corked = false;
-			ioloop->readback(_fde->fde_fd, polycaller<fde *, int>(*this, &fde_spigot::_fdecall), 0);
 			_fdecall(_fde, 0);
 		}
 	}
