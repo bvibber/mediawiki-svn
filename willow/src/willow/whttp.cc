@@ -167,6 +167,22 @@ static int udplog_count;
 static bool do_udplog;
 lockable udp_lock;
 
+struct error_transform_filter : io::buffering_filter, freelist_allocator<error_transform_filter>
+{
+	string const	_url;
+	string const	_errdata;
+	string const	_statstr;
+	int		 _status;
+
+	error_transform_filter(
+		string const &url, 
+		string const &errdata, 
+		string const &statstr,
+		int status);
+
+	io::sink_result	bf_transform(char const *, size_t, ssize_t &);
+};		
+
 struct httpcllr {
 	/* Accept a new client and start processing it. */
 	httpcllr(fde *);
@@ -187,7 +203,9 @@ struct httpcllr {
 	void send_headers_to_client_error	(void);
 	void send_body_to_client_done		(void);
 	void send_body_to_client_error		(void);
+		/* sending errors to the client */
 	void send_error_to_client		(void);
+	void error_send_headers_done		(void);
 	void error_send_done			(void);
 
 	void send_error(int, char const *, int, char const *);
@@ -204,6 +222,8 @@ struct httpcllr {
 				 _backend_headers;
 	dechunking_filter	*_dechunking_filter;
 	header_spigot		*_error_headers;
+	io::file_spigot		*_error_body;
+	error_transform_filter	*_error_filter;
 };
 
 httpcllr::httpcllr(fde *e)
@@ -234,6 +254,8 @@ httpcllr::~httpcllr(void)
 	delete _client_sink;
 	delete _dechunking_filter;
 	delete _error_headers;
+	delete _error_filter;
+	delete _error_body;
 	if (_backend_fde)
 		wnet_close(_backend_fde->fde_fd);
 	wnet_close(_client_fde->fde_fd);
@@ -571,6 +593,173 @@ whttp_shutdown(void)
 	wfree(cache_hit_hdr);
 	wfree(cache_miss_hdr);
 }
+
+static string
+errsafe(string const &s)
+{
+string::const_iterator	it = s.begin(), end = s.end();
+string	res;
+	res.reserve((long) (s.size() * 1.2));
+	for (; it != end; ++it)
+		switch (*it) {
+		case '<':
+			res += "&lt;";
+			break;
+		case '>':
+			res += "&gt;";
+			break;
+		case '"':
+			res += "&quot;";
+			break;
+		case '\'':
+			res += "&apos;";
+			break;
+		default:
+			res += *it;
+		}
+	return res;
+}
+
+error_transform_filter::error_transform_filter(
+		string const &url, 
+		string const &errdata, 
+		string const &statstr,
+		int status)
+	: _url(url)
+	, _errdata(errdata)
+	, _statstr(statstr) 
+	, _status(status) {
+}
+
+io::sink_result
+error_transform_filter::bf_transform(char const *buf, size_t len, ssize_t &discard) 
+{
+string		 errtxt;
+char const	*p = buf;
+	errtxt.reserve((int) (len * 1.2));
+	while (p < buf + len) {
+		switch(*p) {
+		case '%':
+			if (p + 1 < buf + len) {
+				switch (*++p) {
+				case 'A':
+					errtxt += errsafe(config.admin);
+					break;
+				case 'U':
+					errtxt += _url;
+					break;
+				case 'D':
+					errtxt += current_time_str;
+					break;
+				case 'H':
+					errtxt += my_hostname;
+					break;
+				case 'E':
+					errtxt += errsafe(_errdata);
+					break;
+				case 'V':
+					errtxt += my_version;
+					break;
+				case 'C': {
+				char	s[4];
+					sprintf(s, "%d", _status);
+					errtxt += s;
+					break;
+				}
+				case 'S':
+					errtxt += errsafe(_statstr);
+					break;
+				default:
+					errtxt += *p;
+					break;
+				}
+				p++;
+				continue;
+			}
+			break;
+		default:
+			errtxt += *p;
+			break;
+		}
+		++p;
+	}
+char	*r;
+	r = new char[errtxt.size()];
+	memcpy(r, errtxt.data(), errtxt.size());
+	_buf.add(r, errtxt.size(), true);
+	discard += len;
+	return io::sink_result_later;
+}
+		
+
+void
+httpcllr::send_error(int errnum, char const *errdata, int status, char const *statstr)
+{
+FILE		*errfile;
+string		 errtxt, url = "NONE";
+char		 errbuf[8192], *p = errbuf;
+ssize_t		 size;
+	WDEBUG((WLOG_DEBUG, "send_error; url=[%s]", _header_parser._http_path.c_str()));
+
+	if ((errfile = fopen(error_files[errnum], "r")) == NULL) {
+		delete this;
+		return;
+	}
+
+	if ((size = fread(errbuf, 1, sizeof(errbuf) - 1, errfile)) < 0) {
+		(void)fclose(errfile);
+		delete this;
+		return;
+	}
+	errbuf[size] = '\0';
+	errtxt.reserve(size * 2);
+	fclose(errfile);
+	if (_header_parser._http_path.size())
+		url = errsafe(_header_parser._http_path);
+
+	_error_headers = new header_spigot(status, statstr);
+	if (!_client_sink)
+		_client_sink = new io::fde_sink(_client_fde);
+
+	_error_headers->add("Date", current_time_str);
+	_error_headers->add("Expires", current_time_str);
+	_error_headers->add("Server", my_version);
+	_error_headers->add("Connection", "close");
+	_error_headers->add("Content-Type", "text/html;charset=UTF-8");
+
+	_error_body = io::file_spigot::from_path(error_files[errnum]);
+	if (_error_body == NULL) {
+		delete this;
+		return;
+	}
+	_error_filter = new error_transform_filter(url, errdata, statstr, status);
+
+	_error_headers->completed_callee(this, &httpcllr::error_send_headers_done);
+	_error_headers->error_callee(this, &httpcllr::error_send_done);
+
+	_error_headers->sp_connect(_client_sink);
+	_error_headers->sp_uncork();
+}
+
+void
+httpcllr::error_send_headers_done(void)
+{
+	_error_headers->sp_disconnect();
+	_error_body->completed_callee(this, &httpcllr::error_send_done);
+	_error_body->error_callee(this, &httpcllr::error_send_done);
+
+	_error_body->sp_connect(_error_filter);
+	_error_filter->sp_connect(_client_sink);
+	_error_body->sp_uncork();
+}
+
+void
+httpcllr::error_send_done(void)
+{
+	WDEBUG((WLOG_DEBUG, "error_send_done"));
+	delete this;
+}
+
 
 /*
  * Called by wnet_accept to regiister a new client.  Reads the request headers
@@ -1031,126 +1220,6 @@ struct	http_client	*client = (http_client *)data;
 	delete client;
 }
 #endif
-
-static string
-errsafe(string const &s)
-{
-string::const_iterator	it = s.begin(), end = s.end();
-string	res;
-	res.reserve((long) (s.size() * 1.2));
-	for (; it != end; ++it)
-		switch (*it) {
-		case '<':
-			res += "&lt;";
-			break;
-		case '>':
-			res += "&gt;";
-			break;
-		case '"':
-			res += "&quot;";
-			break;
-		case '\'':
-			res += "&apos;";
-			break;
-		default:
-			res += *it;
-		}
-	return res;
-}
-
-void
-httpcllr::send_error(int errnum, char const *errdata, int status, char const *statstr)
-{
-FILE		*errfile;
-string		 errtxt, url = "NONE";
-char		 errbuf[8192], *p = errbuf;
-ssize_t		 size;
-	WDEBUG((WLOG_DEBUG, "send_error; url=[%s]", _header_parser._http_path.c_str()));
-
-	if ((errfile = fopen(error_files[errnum], "r")) == NULL) {
-		delete this;
-		return;
-	}
-
-	if ((size = fread(errbuf, 1, sizeof(errbuf) - 1, errfile)) < 0) {
-		(void)fclose(errfile);
-		delete this;
-		return;
-	}
-	errbuf[size] = '\0';
-	errtxt.reserve(size * 2);
-	fclose(errfile);
-	if (_header_parser._http_path.size())
-		url = errsafe(_header_parser._http_path);
-
-	while (*p) {
-		switch(*p) {
-		case '%':
-			switch (*++p) {
-			case 'A':
-				errtxt += errsafe(config.admin);
-				break;
-			case 'U':
-				errtxt += url;
-				break;
-			case 'D':
-				errtxt += current_time_str;
-				break;
-			case 'H':
-				errtxt += my_hostname;
-				break;
-			case 'E':
-				errtxt += errsafe(errdata);
-				break;
-			case 'V':
-				errtxt += my_version;
-				break;
-			case 'C': {
-			char	s[4];
-				sprintf(s, "%d", status);
-				errtxt += s;
-				break;
-			}
-			case 'S':
-				errtxt += errsafe(statstr);
-				break;
-			default:
-				errtxt += *p;
-				break;
-			}
-			p++;
-			continue;
-		default:
-				errtxt += *p;
-			break;
-		}
-		++p;
-	}
-
-	_error_headers = new header_spigot(status, statstr);
-	if (!_client_sink)
-		_client_sink = new io::fde_sink(_client_fde);
-
-	_error_headers->add("Date", current_time_str);
-	_error_headers->add("Expires", current_time_str);
-	_error_headers->add("Server", my_version);
-	_error_headers->add("Connection", "close");
-	_error_headers->add("Content-Type", "text/html;charset=UTF-8");
-	_error_headers->body(errtxt);
-
-	_error_headers->completed_callee(this, &httpcllr::error_send_done);
-	_error_headers->error_callee(this, &httpcllr::error_send_done);
-
-	_error_headers->sp_connect(_client_sink);
-	_error_headers->sp_uncork();
-}
-
-void
-httpcllr::error_send_done(void)
-{
-	WDEBUG((WLOG_DEBUG, "error_send_done"));
-	delete this;
-}
 
 static void
 client_log_request(http_client *client)

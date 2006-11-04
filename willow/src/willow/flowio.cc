@@ -124,4 +124,87 @@ ssize_t	wrote;
 	return sink_result_later;
 }
 
+file_spigot::file_spigot(void)
+	: _corked(false)
+	, _off(-1)
+	, _size(0)
+{
+}
+
+file_spigot *
+file_spigot::from_path(string const &path)
+{
+file_spigot	*s = new file_spigot;
+	if (!s->open(path.c_str())) {
+		delete s;
+		return NULL;
+	}
+	return s;
+}
+
+file_spigot *
+file_spigot::from_path(char const *path)
+{
+file_spigot	*s = new file_spigot;
+	if (!s->open(path)) {
+		delete s;
+		return NULL;
+	}
+	return s;
+}
+
+bool
+file_spigot::open(char const *file)
+{
+	_file.open(file);
+	return _file.is_open();
+}
+
+void
+file_spigot::sp_cork(void)
+{
+	_corked = true;
+}
+
+void
+file_spigot::sp_uncork(void)
+{
+	_corked = false;
+	while (!_corked) {
+	char		*buf;
+	size_t		 sz;
+		if (_off >= 0 && _off < _size) {
+			WDEBUG((WLOG_DEBUG, "file_spigot: _off=%d, _size=%d",
+				(int) _off, (int) _size));
+			buf = _buf + _off;
+			sz = _size - _off;
+		} else {
+			_size = _file.readsome(_buf, 16384);
+			if (_size == 0) {
+				_sp_completed_callee();
+				return;
+			} else if (_file.fail()) {
+				_sp_error_callee();
+				return;
+			}
+			WDEBUG((WLOG_DEBUG, "file_spigot: read %d from file", (int)_size));
+			_off = 0;
+			buf = _buf;
+			sz = _size;
+		}
+
+		switch (_sp_data_ready(buf, sz, _off)) {
+		case sink_result_error:
+			_sp_error_callee();
+			return;
+		case sink_result_later:
+			continue;
+		case sink_result_done:
+			sp_cork();
+			_sp_completed_callee();
+			return;
+		}
+	}
+}
+
 } // namespace io

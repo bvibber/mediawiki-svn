@@ -12,7 +12,9 @@
 # pragma ident "@(#)$Id$"
 #endif
 
+#include <fstream>
 #include <string>
+using std::ifstream;
 using std::string;
 
 #include "wnet.h"
@@ -275,6 +277,28 @@ struct buffering_filter : sink, spigot {
 
 	bool		_corked;
 	wnet::buffer	_buf;
+};
+
+/*
+ * A file_spigot reads data from a file.
+ */
+struct file_spigot : spigot, freelist_allocator<file_spigot>
+{
+	void	sp_cork(void);
+	void	sp_uncork(void);
+
+	static file_spigot	*from_path(string const &);
+	static file_spigot	*from_path(char const *);
+
+	bool		_corked;
+	ifstream	_file;
+	char		_buf[16384];
+	ssize_t		_off;
+	ssize_t		_size;
+
+private:
+		file_spigot	(void);
+	bool	open		(char const *);
 };
 
 } // namespace io
