@@ -31,6 +31,14 @@ using std::vector;
 
 using namespace wnet;
 
+const char *request_string[] = {
+	"GET ",
+	"POST ",
+	"HEAD ",
+	"TRACE ",
+	"OPTIONS ",
+};
+
 struct request_type supported_reqtypes[] = {
 	{ "GET",	3,	REQTYPE_GET	},
 	{ "POST",	4,	REQTYPE_POST	},
@@ -370,7 +378,7 @@ int	 left = _headers.hl_len;
 	if (!_built) {
 	char	*s;
 		if (!_is_response) {
-		string	req = "GET " + _http_path + " HTTP/1.1\r\n";
+		string	req = request_string[_http_reqtype] + _http_path + " HTTP/1.1\r\n";
 			s = new char[req.size()];
 			memcpy(s, req.data(), req.size());
 			_buf.add(s, req.size(), true);

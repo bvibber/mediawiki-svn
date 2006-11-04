@@ -74,14 +74,6 @@ static const char *error_files[] = {
 	/* ERR_BLOCKED		*/	DATADIR "/errors/ERR_BLOCKED",
 };
 
-const char *request_string[] = {
-	"GET",
-	"POST",
-	"HEAD",
-	"TRACE",
-	"OPTIONS",
-};
-
 struct http_client : freelist_allocator<http_client> {
 		http_client(fde *e) : cl_fde(e) {
 			cl_entity = new http_entity;
