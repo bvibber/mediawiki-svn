@@ -297,6 +297,9 @@ struct polycallback {
         polycallback(Ftype f, userT t) : binder(NULL), _null(false) {
                 binder = new polycallback_binder2<Ftype,userT,arg1,arg2>(f,t);
         }
+	~polycallback() {
+		delete binder;
+	}
 
         template<typename Ftype, typename userT>
         polycallback &assign(Ftype f, userT t) {
@@ -305,6 +308,15 @@ struct polycallback {
 		_null = false;
                 return *this;
         }
+
+	polycallback &operator= (polycallback<arg1, arg2> const &other) {
+		delete binder;
+		_null = other._null;
+		if (other.binder)
+			binder = other.binder->clone();
+		else	binder = NULL;
+		return *this;
+	}
 
         void operator() (arg1 a, arg2 b) const {
 		if (_null)
@@ -343,6 +355,10 @@ struct polycallback<arg1,void> {
 	}
 
 	polycallback() : binder(NULL), _null(true) {}
+	~polycallback() {
+		delete binder;
+	}
+
 	polycallback(polycallback<arg1> const &other)
 		: _null(other._null) {
 		if (other.binder)
@@ -362,6 +378,15 @@ struct polycallback<arg1,void> {
 		_null = false;
                 return *this;
         }
+
+	polycallback &operator= (polycallback<arg1> const &other) {
+		delete binder;
+		_null = other._null;
+		if (other.binder)
+			binder = other.binder->clone();
+		else	binder = NULL;
+		return *this;
+	}
 
         void operator() (arg1 a) {
 		if (_null)
@@ -411,6 +436,7 @@ struct polycallback<void,void> {
 	}
 
 	polycallback& operator=(polycallback<> const &other) {
+		delete binder;
 		_null = other._null; 
 		if (other.binder)
 			binder = other.binder->clone();
@@ -421,6 +447,9 @@ struct polycallback<void,void> {
 	template<typename Ftype, typename userT>
 	polycallback (Ftype f, userT t) : binder(NULL), _null(false) {
 		assign(f, t);
+	}
+	~polycallback() {
+		delete binder;
 	}
 
         template<typename Ftype, typename userT>

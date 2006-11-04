@@ -400,7 +400,7 @@ int		 i;
 		wlog(WLOG_NOTICE, "statistics listener: %s", 
 			wnet::fstraddr(ip.first, r->ai_addr, r->ai_addrlen).c_str());
 	}
-	freeaddrinfo(r);
+	freeaddrinfo(res);
 }
 
 /*
