@@ -360,11 +360,13 @@ static  tss<T>		 _freelist;
 # ifdef __GNUC__
 	static char const *demangle(void) {
 	int	 status = 0;
-	char	*ret = abi::__cxa_demangle(typeid(T).name(), 0, 0, &status);
+	char	*ret;
 	static tss<char const *> cache;
 
 		if (cache)
 			return *cache;
+
+		ret = abi::__cxa_demangle(typeid(T).name(), 0, 0, &status);
 
 		if (status != 0) {
 			wlog(WLOG_DEBUG, "cannot demangle [%s]: %d", typeid(T).name(), status);

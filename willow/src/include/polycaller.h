@@ -28,7 +28,7 @@ struct polycaller_base {
 	std::type_info const	*tid;
 	impltype		*impl;
 	polycaller_base() : tid(NULL), impl(NULL) {}
-	~polycaller_base() {
+	virtual ~polycaller_base() {
 		delete impl;
 	}
 };
@@ -121,6 +121,7 @@ struct polycaller<arg1,arg2,void> : polycaller_base<polycaller<arg1,arg2>, polyc
 	}
 
 	polycaller& operator= (polycaller<arg1,arg2> &other) {
+		delete this->impl;
 		this->impl = other.impl->clone();
 		return *this;
 	}
@@ -183,6 +184,12 @@ struct polycaller<arg1,void,void> : polycaller_base<polycaller<arg1,void>, polyc
 		this->tid = other.tid;
 		if (other.impl)
 			this->impl = other.impl->clone();
+	}
+
+	polycaller& operator= (polycaller<arg1> &other) {
+		delete this->impl;
+		this->impl = other.impl->clone();
+		return *this;
 	}
 
         template<typename T>

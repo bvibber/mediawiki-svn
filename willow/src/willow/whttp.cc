@@ -216,7 +216,7 @@ httpcllr::httpcllr(fde *e)
 	: _client_fde(e)
 	, _backend(NULL)
 	, _backend_fde(NULL)
-	, _client_spigot(new io::fde_spigot(e))
+	, _client_spigot(NULL)
 	, _backend_spigot(NULL)
 	, _backend_sink(NULL)
 	, _client_sink(NULL)
@@ -230,6 +230,7 @@ httpcllr::httpcllr(fde *e)
 	/*
 	 * Start by reading headers.
 	 */
+	_client_spigot = new io::fde_spigot(e);
 	_client_spigot->completed_callee(this, &httpcllr::header_read_complete);
 	_client_spigot->error_callee(this, &httpcllr::header_read_error);
 	_client_spigot->sp_connect(&_header_parser);

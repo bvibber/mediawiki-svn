@@ -139,7 +139,7 @@ struct buffer_item : freelist_allocator<buffer_item> {
 	buffer_item(buffer_item const &o)
 		: len(o.len)
 		, off(o.off)
-		, free(o.free) {
+		, free(true) {
 		buf = (const char *)memcpy(new char[len], o.buf, len);
 	}
 
