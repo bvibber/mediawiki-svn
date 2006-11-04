@@ -272,6 +272,12 @@ httpcllr::header_read_complete(void)
 	_header_parser._headers.add("Connection", "close");
 
 
+	if (_header_parser._http_reqtype == REQTYPE_POST && _header_parser._content_length == -1) {
+		send_error(ERR_BADREQUEST, "POST request without content length",
+			400, "Bad request");
+		return;
+	}
+
 	/*
 	 * Now parse the client's headers and decide what to do with
 	 * the request.
