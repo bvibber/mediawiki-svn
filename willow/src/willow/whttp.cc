@@ -288,7 +288,9 @@ httpcllr::header_read_complete(void)
 	 * the request.
 	 */
 	_client_spigot->sp_disconnect();
-	gbep.get(_header_parser._http_path, polycaller<backend *, fde *, int>(*this, &httpcllr::backend_ready), 0);
+	if (gbep.get(_header_parser._http_path, 
+		     polycaller<backend *, fde *, int>(*this, &httpcllr::backend_ready), 0) == -1)
+		backend_ready(NULL, NULL, 0);
 }
 
 void
