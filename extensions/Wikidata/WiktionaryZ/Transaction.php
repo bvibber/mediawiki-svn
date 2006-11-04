@@ -184,6 +184,14 @@ function getViewTransactionRestriction($table) {
 		return getLatestTransactionRestriction($table);		
 }
 
+function getOperationSelectColumn($table, $transactionId) {
+	return " IF($table.add_transaction_id=$transactionId, 'Added', 'Removed') AS operation "; 
+}
+
+function getInTransactionRestriction($table, $transactionId) {
+	return " ($table.add_transaction_id=$transactionId OR $table.remove_transaction_id=$transactionId) ";
+}
+
 global
 	$transactionIdAttribute, $userAttribute, $userIPAttribute, $timestampAttribute,
 	$transactionStructure, $summaryAttribute, 

@@ -78,17 +78,23 @@ function getAlternativeDefinitionsEditor($showRecordLifeSpan) {
 	return $editor;
 }
 
+function getExpressionTableCellEditor($attribute) {
+	global
+		$languageAttribute, $spellingAttribute;
+
+	$editor = new RecordTableCellEditor($attribute);
+	$editor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
+	$editor->addEditor(new SpellingEditor($spellingAttribute, new SimplePermissionController(false), true));
+	
+	return $editor;
+}
+
 function getSynonymsAndTranslationsEditor($showRecordLifeSpan) {
 	global
-		$synonymsAndTranslationsAttribute, $identicalMeaningAttribute, $expressionIdAttribute, $expressionAttribute, $languageAttribute,
-		$spellingAttribute;
-
-	$expressionEditor = new RecordTableCellEditor($expressionAttribute);
-	$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
-	$expressionEditor->addEditor(new SpellingEditor($spellingAttribute, new SimplePermissionController(false), true));
+		$synonymsAndTranslationsAttribute, $identicalMeaningAttribute, $expressionIdAttribute, $expressionAttribute;
 
 	$tableEditor = new RecordSetTableEditor($synonymsAndTranslationsAttribute, new SimplePermissionController(true), true, true, false, new SynonymTranslationController());
-	$tableEditor->addEditor($expressionEditor);
+	$tableEditor->addEditor(getExpressionTableCellEditor($expressionAttribute));
 	$tableEditor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(true), true, true));
 
 	addTableLifeSpanEditor($tableEditor, $showRecordLifeSpan);
