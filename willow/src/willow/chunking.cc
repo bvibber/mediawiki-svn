@@ -48,14 +48,14 @@ int	i;
 	_buf.add(sstr, i, true);
 	_buf.add(buf, len, false);
 	discard = len;
-	return io::sink_result_later;
+	return io::sink_result_okay;
 }
 
 io::sink_result
 chunking_filter::bf_eof(void)
 {
 	_buf.add("0\r\n", 3, false);
-	return io::sink_result_done;
+	return io::sink_result_okay;
 }
 
 dechunking_filter::dechunking_filter()
@@ -77,10 +77,10 @@ dechunking_filter::bf_transform(char const *buf, size_t len, ssize_t &discard)
 	char const	*rn;
 		if ((rn = header_parser::find_rn(buf, buf + len)) == NULL) {
 			discard = 0;
-			return io::sink_result_later;	/* need more data */
+			return io::sink_result_okay;	/* need more data */
 		}
 		_current_chunk_size = str16toint(buf, rn - buf);
 		discard = rn - buf + 2;
 	}
-	return io::sink_result_later;
+	return io::sink_result_okay;
 }

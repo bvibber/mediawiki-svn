@@ -236,6 +236,8 @@ httpcllr::httpcllr(fde *e)
 	, _client_sink(NULL)
 	, _dechunking_filter(NULL)
 	, _error_headers(NULL)
+	, _error_body(NULL)
+	, _error_filter(NULL)
 {
 	/*
 	 * Start by reading headers.
@@ -690,32 +692,16 @@ char	*r;
 	memcpy(r, errtxt.data(), errtxt.size());
 	_buf.add(r, errtxt.size(), true);
 	discard += len;
-	return io::sink_result_later;
+	return io::sink_result_okay;
 }
 		
 
 void
 httpcllr::send_error(int errnum, char const *errdata, int status, char const *statstr)
 {
-FILE		*errfile;
-string		 errtxt, url = "NONE";
-char		 errbuf[8192], *p = errbuf;
-ssize_t		 size;
+string	url = "NONE";
 	WDEBUG((WLOG_DEBUG, "send_error; url=[%s]", _header_parser._http_path.c_str()));
 
-	if ((errfile = fopen(error_files[errnum], "r")) == NULL) {
-		delete this;
-		return;
-	}
-
-	if ((size = fread(errbuf, 1, sizeof(errbuf) - 1, errfile)) < 0) {
-		(void)fclose(errfile);
-		delete this;
-		return;
-	}
-	errbuf[size] = '\0';
-	errtxt.reserve(size * 2);
-	fclose(errfile);
 	if (_header_parser._http_path.size())
 		url = errsafe(_header_parser._http_path);
 
@@ -729,7 +715,7 @@ ssize_t		 size;
 	_error_headers->add("Connection", "close");
 	_error_headers->add("Content-Type", "text/html;charset=UTF-8");
 
-	_error_body = io::file_spigot::from_path(error_files[errnum]);
+	_error_body = io::file_spigot::from_path(error_files[errnum], true);
 	if (_error_body == NULL) {
 		delete this;
 		return;

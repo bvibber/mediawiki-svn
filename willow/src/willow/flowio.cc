@@ -8,8 +8,13 @@
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Id$"
 #endif
+#include <sys/stat.h>
+#include <sys/types.h>
 
+#include <iostream>
 #include <cerrno>
+using std::streamsize;
+
 #include "flowio.h"
 #include "wnet.h"
 
@@ -54,12 +59,15 @@ sink_result	res;
 
 	if (_saved) {
 		switch (this->_sp_data_ready(_savebuf, _saved, _off)) {
-		case sink_result_later:
+		case sink_result_blocked:
+			sp_cork();
 			return;
+		case sink_result_okay:
+			break;
 		case sink_result_error:
 			_sp_error_callee();
 			return;
-		case sink_result_done:
+		case sink_result_finished:
 			_sp_completed_callee();
 			return;
 		}
@@ -70,12 +78,15 @@ sink_result	res;
 	if (read == 0) {
 		sp_cork();
 		switch (this->_sp_data_empty()) {
-		case sink_result_later:
+		case sink_result_blocked:
+			sp_cork();
+			return;
+		case sink_result_okay:
 			return;
 		case sink_result_error:
 			_sp_error_callee();
 			return;
-		case sink_result_done:
+		case sink_result_finished:
 			_sp_completed_callee();
 			return;
 		}
@@ -95,12 +106,13 @@ sink_result	res;
 
 	_saved = read;
 	switch (this->_sp_data_ready(_savebuf, _saved, _off)) {
-	case sink_result_later:
+	case sink_result_blocked:
+	case sink_result_okay:
 		return;
 	case sink_result_error:
 		_sp_error_callee();
 		return;
-	case sink_result_done:
+	case sink_result_finished:
 		_sp_completed_callee();
 		return;
 	}
@@ -122,7 +134,7 @@ ssize_t	wrote;
 				ioloop->writeback(_fde->fde_fd, polycaller<fde *, int>(*this, &fde_sink::_fdecall), 0);
 				_reg = true;
 			}
-			return sink_result_later;
+			return sink_result_blocked;
 		}
 		_sink_spigot->sp_cork();
 		return sink_result_error;
@@ -130,21 +142,23 @@ ssize_t	wrote;
 	}
 	WDEBUG((WLOG_DEBUG, "fde_sink::data_ready: got %lu, wrote %lu", len, wrote));
 	discard = wrote;
-	return sink_result_later;
+	return sink_result_okay;
 }
+
+tss<file_spigot::cache_map> file_spigot::_cache;
 
 file_spigot::file_spigot(void)
 	: _corked(false)
-	, _off(-1)
-	, _size(0)
+	, _cached(false)
+	, _cached_size(0)
 {
 }
 
 file_spigot *
-file_spigot::from_path(string const &path)
+file_spigot::from_path(string const &path, bool cache)
 {
 file_spigot	*s = new file_spigot;
-	if (!s->open(path.c_str())) {
+	if (!s->open(path.c_str(), cache)) {
 		delete s;
 		return NULL;
 	}
@@ -152,10 +166,10 @@ file_spigot	*s = new file_spigot;
 }
 
 file_spigot *
-file_spigot::from_path(char const *path)
+file_spigot::from_path(char const *path, bool cache)
 {
 file_spigot	*s = new file_spigot;
-	if (!s->open(path)) {
+	if (!s->open(path, cache)) {
 		delete s;
 		return NULL;
 	}
@@ -163,57 +177,81 @@ file_spigot	*s = new file_spigot;
 }
 
 bool
-file_spigot::open(char const *file)
+file_spigot::open(char const *file, bool cache)
 {
+cache_map::iterator	it;
+cache_item		item;
+struct stat		sb;
+
+	if (_cache == NULL)
+		_cache = new cache_map;
+
+	if (cache) {
+		if (stat(file, &sb) == -1)
+			return false;
+
+		if ((it = _cache->find(file)) != _cache->end()) {
+			if (sb.st_mtime == it->second.mtime) {
+				_cached = true;
+				_cdata = it->second.data;
+				_cached_size = it->second.len;
+				return true;
+			}
+			delete[] it->second.data;
+			_cache->erase(it);
+		}
+
+
+		_file.open(file);
+		if (!_file.is_open())
+			return false;
+
+		item.mtime = sb.st_mtime;
+		item.data = new char[sb.st_size];
+		item.len = sb.st_size;
+		if (_file.readsome(item.data, sb.st_size) != sb.st_size) {
+			delete[] item.data;
+			_file.seekg(0);
+			return true;
+		}
+		(*_cache)[file] = item;
+		_cached = true;
+		_cached_size = sb.st_size;
+		_cdata = item.data;
+		return true;
+	}
+
 	_file.open(file);
 	return _file.is_open();
 }
 
-void
-file_spigot::sp_cork(void)
+bool
+file_spigot::bs_get_data(void)
 {
-	_corked = true;
-}
-
-void
-file_spigot::sp_uncork(void)
-{
-	_corked = false;
-	while (!_corked) {
-	char		*buf;
-	size_t		 sz;
-		if (_off >= 0 && _off < _size) {
-			WDEBUG((WLOG_DEBUG, "file_spigot: _off=%d, _size=%d",
-				(int) _off, (int) _size));
-			buf = _buf + _off;
-			sz = _size - _off;
-		} else {
-			_size = _file.readsome(_buf, 16384);
-			if (_size == 0) {
-				_sp_completed_callee();
-				return;
-			} else if (_file.fail()) {
-				_sp_error_callee();
-				return;
-			}
-			WDEBUG((WLOG_DEBUG, "file_spigot: read %d from file", (int)_size));
-			_off = 0;
-			buf = _buf;
-			sz = _size;
-		}
-
-		switch (_sp_data_ready(buf, sz, _off)) {
-		case sink_result_error:
-			_sp_error_callee();
-			return;
-		case sink_result_later:
-			continue;
-		case sink_result_done:
-			sp_cork();
+streamsize	size;
+	if (_cached) {
+		if (!_cached_size) {
 			_sp_completed_callee();
-			return;
+			return false;
 		}
+		WDEBUG((WLOG_DEBUG, "file_spigot: %d of cached data", _cached_size));
+
+		_buf.add(_cdata, _cached_size, false);
+		_cached_size = 0;
+		return true;
 	}
+
+	size = _file.readsome(_fbuf, 16384);
+	WDEBUG((WLOG_DEBUG, "file_spigot: read %d from file", (int)size));
+	if (size == 0) {
+		_sp_completed_callee();
+		return false;
+	} else if (_file.fail()) {
+		_sp_error_callee();
+		return false;
+	}
+	_buf.add(_fbuf, size, false);
+	return true;
 }
 
 } // namespace io

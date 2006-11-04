@@ -14,9 +14,12 @@
 
 #include <fstream>
 #include <string>
+#include <map>
 using std::ifstream;
 using std::string;
+using std::map;
 
+#include "willow.h"
 #include "wnet.h"
 
 namespace io {
@@ -25,9 +28,10 @@ struct sink;
 struct spigot;
 
 enum sink_result {
-	sink_result_done,
+	sink_result_finished,
 	sink_result_error,
-	sink_result_later
+	sink_result_okay,
+	sink_result_blocked
 };
 
 /*
@@ -119,7 +123,7 @@ struct fde_sink : freelist_allocator<fde_sink>, sink {
 		WDEBUG((WLOG_DEBUG, "fde_sink::data_empty"));
 		ioloop->clear_writeback(_fde->fde_fd);
 		_reg = false;
-		return sink_result_done;
+		return sink_result_finished;
 	}
 
 	fde		*_fde;
@@ -155,12 +159,14 @@ struct string_spigot : freelist_allocator<string_spigot>, spigot {
 
 	void _send_data(void) {
 		switch (this->_sp_data_ready(_data, _len - _pos, _pos)) {
-		case sink_result_later:
+		case sink_result_blocked:
+			sp_cork();
 			return;
 		case sink_result_error:
 			_sp_error_callee();
 			return;
-		case sink_result_done:
+		case sink_result_okay:
+		case sink_result_finished:
 			_sp_completed_callee();
 			return;
 		}
@@ -227,7 +233,7 @@ struct buffering_filter : sink, spigot {
 
 	virtual sink_result bf_transform(char const *, size_t, ssize_t &discard) = 0;
 	virtual sink_result bf_eof(void) {
-		return sink_result_done;
+		return sink_result_okay;
 	}
 
 	sink_result data_ready(char const *buf, size_t len, ssize_t &discard) {
@@ -241,14 +247,15 @@ struct buffering_filter : sink, spigot {
 	sink_result data_empty () {
 	sink_result	res;
 		res = bf_eof();
-		if (res != sink_result_done)
+		if (res != sink_result_finished)
 			return res;
 		return _sp_sink->data_empty();
 	}
 	
 	void sp_uncork(void) {
 		_corked = false;
-		_bf_push_data();
+		if (_bf_push_data() != sink_result_okay)
+			return;
 		_sink_spigot->sp_uncork();
 	}
 
@@ -259,7 +266,7 @@ struct buffering_filter : sink, spigot {
 	sink_result _bf_push_data(void) {
 		while (!_corked && _buf.items.size()) {
 		wnet::buffer_item	&b = *_buf.items.begin();
-		ssize_t			 discard;
+		ssize_t			 discard = 0;
 		sink_result		 res;
 			res = _sp_sink->data_ready(b.buf + b.off, b.len, discard);
 			if ((size_t)discard == b.len) {
@@ -268,10 +275,75 @@ struct buffering_filter : sink, spigot {
 				b.len -= discard;
 				b.off += discard;
 			}
-			if (res != sink_result_later)
+			switch (res) {
+			case sink_result_blocked:
+				sp_cork();
+				return res;
+			case sink_result_okay:
+				continue;
+			case sink_result_finished:
+				_sp_completed_callee();
+				return res;
+			case sink_result_error:
+				_sp_error_callee();
+				return res;
+			}
+		}
+		return sink_result_okay;
+	}
+
+	bool		_corked;
+	wnet::buffer	_buf;
+};
+
+struct buffering_spigot : spigot
+{
+	buffering_spigot() 
+		: _corked(false) {
+	}
+
+	virtual bool bs_get_data(void) = 0;
+
+	void sp_uncork(void) {
+		_corked = false;
+		while (bs_get_data()) {
+			switch(_bs_push_data()) {
+			case sink_result_finished:
+				_sp_completed_callee();
+				return;
+			case sink_result_okay:
+				continue;
+			case sink_result_error:
+				_sp_error_callee();
+				return;
+			case sink_result_blocked:
+				return;
+			}
+		}
+	}
+
+	void sp_cork(void) {
+		_corked = true;
+	}
+
+	sink_result _bs_push_data(void) {
+		while (!_corked && _buf.items.size()) {
+		wnet::buffer_item	&b = *_buf.items.begin();
+		ssize_t			 discard = 0;
+		sink_result		 res;
+			WDEBUG((WLOG_DEBUG, "_bs_push_data: pushing %d discard=%d", (int) b.len, (int) discard));
+			res = _sp_sink->data_ready(b.buf + b.off, b.len, discard);
+			WDEBUG((WLOG_DEBUG, "_bs_push_data: done, discard=%d", (int) discard));
+			if ((size_t)discard == b.len) {
+				_buf.items.pop_front();
+			} else {
+				b.len -= discard;
+				b.off += discard;
+			}
+			if (res != sink_result_okay)
 				return res;
 		}
-		return sink_result_later;
+		return sink_result_okay;
 	}
 
 	bool		_corked;
@@ -281,23 +353,32 @@ struct buffering_filter : sink, spigot {
 /*
  * A file_spigot reads data from a file.
  */
-struct file_spigot : spigot, freelist_allocator<file_spigot>
+struct file_spigot : buffering_spigot, freelist_allocator<file_spigot>
 {
-	void	sp_cork(void);
-	void	sp_uncork(void);
+	bool	bs_get_data(void);
 
-	static file_spigot	*from_path(string const &);
-	static file_spigot	*from_path(char const *);
-
-	bool		_corked;
-	ifstream	_file;
-	char		_buf[16384];
-	ssize_t		_off;
-	ssize_t		_size;
+	static file_spigot	*from_path(string const &, bool = false);
+	static file_spigot	*from_path(char const *, bool = false);
 
 private:
+	struct cache_item {
+		time_t	 mtime;
+		char	*data;
+		size_t	 len;
+	};
+	typedef map<string, cache_item> cache_map;
+
+	bool		 _corked;
+	ifstream	 _file;
+	bool		 _cached;
+	size_t		 _cached_size;
+	char		*_cdata;
+	char		 _fbuf[16384];
+
+	static tss<cache_map> _cache;
+
 		file_spigot	(void);
-	bool	open		(char const *);
+	bool	open		(char const *, bool = false);
 };
 
 } // namespace io

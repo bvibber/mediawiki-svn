@@ -199,7 +199,7 @@ size_t		 vlen, nlen, rnpos;
 			if (!_got_reqtype)
 				return io::sink_result_error;
 			else
-				return io::sink_result_done;
+				return io::sink_result_finished;
 		}
 		rnpos = rn - bufp;
 		name = bufp;
@@ -241,7 +241,7 @@ size_t		 vlen, nlen, rnpos;
 	}
 	WDEBUG((WLOG_DEBUG, "header_parser: discarding %d", bufp - buf));
 	discard = bufp - buf;
-	return io::sink_result_later;
+	return io::sink_result_okay;
 }
 
 int
@@ -364,14 +364,19 @@ int	 left = _headers.hl_len;
 			b.len -= discard;
 			b.off += discard;
 		}
-		if (res == io::sink_result_done) {
+		switch (res) {
+		case io::sink_result_finished:
 			_sp_completed_callee();
-			return;
-		} else if (res == io::sink_result_error) {
+			break;
+		case io::sink_result_error:
 			_sp_error_callee();
 			return;
-		} else if (res == io::sink_result_later)
+		case io::sink_result_blocked:
+			sp_cork();
+			return;
+		case io::sink_result_okay:
 			continue;
+		}
 	}
 	this->_sp_data_empty();
 	_sp_completed_callee();
@@ -441,11 +446,14 @@ header_spigot::sp_uncork(void)
 		case io::sink_result_error:
 			_sp_error_callee();
 			return;
-		case io::sink_result_done:
+		case io::sink_result_finished:
 			_sp_completed_callee();
 			return;
-		case io::sink_result_later:
+		case io::sink_result_okay:
 			continue;
+		case io::sink_result_blocked:
+			sp_cork();
+			return;
 		}
 	}
 	if (!_corked) {
