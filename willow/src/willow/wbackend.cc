@@ -31,19 +31,11 @@
 
 #define rotl(i,r) (((i) << (r)) | ((i) >> (sizeof(i)*CHAR_BIT-(r))))
 
-vector<backend *> backends;
-
-static void backend_read(struct fde *);
-static struct backend *next_backend(string const &url);
-static uint32_t carp_urlhash(string const &);
-static uint32_t carp_hosthash(string const &);
-static void carp_recalc(string const &url);
-static void carp_calc(void);
-static int becarp_cmp(backend const *a, backend const *b);
+backend_pool gbep;
 
 struct backend_cb_data : freelist_allocator<backend_cb_data> {
 struct	backend		*bc_backend;
-	backend_cb	 bc_func;
+	polycallback<backend *, fde *> bc_func;
 	void		*bc_data;
 	string		 bc_url;
 };
@@ -52,14 +44,14 @@ backend::backend(string const &name, string const &straddr, sockaddr *addr, sock
 	: be_name(name)
 	, be_straddr(straddr)
 	, be_dead(false)
-	, be_hash(carp_hosthash(be_straddr))
+	, be_hash(_carp_hosthash(be_straddr))
 	, be_load(1.)
 {
 	memcpy(&be_addr, addr, be_addrlen = addrlen);
 }
 
 void
-add_backend(string const &addr, int port, int family)
+backend_pool::add(string const &addr, int port, int family)
 {
 int		 i;
 addrinfo	 hints, *res, *r;
@@ -84,33 +76,11 @@ char		 portstr[6];
 	}
 	freeaddrinfo(res);
 
-	carp_calc();
+	_carp_calc();
 }
-
-#if 0
-void
-backend_file(file)
-	char *file;
-{
-	FILE	*f;
-	char	 line[1024];
-	
-	if ((f = fopen(file, "r")) == NULL) {
-		perror(file);
-		exit(8);
-	}
-
-	while (fgets(line, sizeof line, f)) {
-		line[strlen(line) - 1] = '\0';
-		add_backend(line);
-	}
-
-	(void)fclose(f);
-}
-#endif
 
 int
-get_backend(string const &url, backend_cb func, void *data, int flags)
+backend_pool::_get_impl(string const &url, polycallback<backend *, fde *> cb)
 {
 struct	backend_cb_data	*cbd;
 	int		 s;
@@ -120,13 +90,11 @@ static	time_t		 last_nfile;
 	WDEBUG((WLOG_DEBUG, "get_backend: called"));
 
 	cbd = new backend_cb_data;
-
-	cbd->bc_func = func;
-	cbd->bc_data = data;
+	cbd->bc_func = cb;
 	cbd->bc_url = url;
 	
 	for (;;) {
-		cbd->bc_backend = next_backend(url);
+		cbd->bc_backend = _next_backend(url);
 
 		if (cbd->bc_backend == NULL) {
 			delete cbd;
@@ -145,7 +113,7 @@ static	time_t		 last_nfile;
 		if (connect(s, (struct sockaddr *)&cbd->bc_backend->be_addr, 
 		    sizeof(cbd->bc_backend->be_addr)) == 0) {
 			WDEBUG((WLOG_DEBUG, "get_backend: connection completed immediately"));
-			func(cbd->bc_backend, &fde_table[s], data);
+			cb(cbd->bc_backend, &fde_table[s]);
 			delete cbd;
 			return 0;
 		}
@@ -161,17 +129,16 @@ static	time_t		 last_nfile;
 		}
 
 		WDEBUG((WLOG_DEBUG, "get_backend: waiting for connection to complete"));
-		wnet_register(s, FDE_WRITE, backend_read, cbd);
+		ioloop->writeback(s, polycaller<fde *, backend_cb_data*>(*this, &backend_pool::_backend_read), cbd);
 		return 0;
 	}
 }
 
-static void
-backend_read(fde *e)
+void
+backend_pool::_backend_read(fde *e, backend_cb_data *cbd)
 {
-struct	backend_cb_data	*cbd = static_cast<backend_cb_data *>(e->fde_rdata);
-	int		 error = 0;
-	socklen_t	 len = sizeof(error);
+int		 error = 0;
+socklen_t	 len = sizeof(error);
 
 	getsockopt(e->fde_fd, SOL_SOCKET, SO_ERROR, &error, &len);
 
@@ -182,8 +149,8 @@ struct	backend_cb_data	*cbd = static_cast<backend_cb_data *>(e->fde_rdata);
 		cbd->bc_backend->be_dead = 1;
 		cbd->bc_backend->be_time = retry;
 		wnet_close(e->fde_fd);
-		if (get_backend(cbd->bc_url, cbd->bc_func, cbd->bc_data, 0) == -1) {
-			cbd->bc_func(NULL, NULL, cbd->bc_data);
+		if (_get_impl(cbd->bc_url, cbd->bc_func) == -1) {
+			cbd->bc_func(NULL, NULL);
 		}
 		delete cbd;
 		return;
@@ -193,20 +160,20 @@ struct	backend_cb_data	*cbd = static_cast<backend_cb_data *>(e->fde_rdata);
 	 * After handing the fd off to the caller, we don't care about it
 	 * any more. 
 	 */
-	wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
+	ioloop->clear_writeback(e->fde_fd);
 
-	cbd->bc_func(cbd->bc_backend, e, cbd->bc_data);
+	cbd->bc_func(cbd->bc_backend, e);
 	delete cbd;
 }
 
-static struct backend *
-next_backend(string const &url)
+struct backend *
+backend_pool::_next_backend(string const &url)
 {
 static	size_t	cur = 0;
 	size_t	tried = 0;
 
 	if (config.use_carp)
-		carp_recalc(url);
+		_carp_recalc(url);
 
 	WDEBUG((WLOG_DEBUG, "next_backend: url=[%s]", url.c_str()));
 
@@ -232,8 +199,8 @@ static	size_t	cur = 0;
 	return NULL;
 }
 
-static uint32_t
-carp_urlhash(string const &str)
+uint32_t
+backend_pool::_carp_urlhash(string const &str)
 {
 	uint32_t h = 0;
 	for (string::const_iterator it = str.begin(), end = str.end(); it != end; ++it)
@@ -241,15 +208,15 @@ carp_urlhash(string const &str)
 	return h;
 }
 
-static uint32_t
-carp_hosthash(string const &str)
+uint32_t
+backend::_carp_hosthash(string const &str)
 {
-	uint32_t h = carp_urlhash(str) * 0x62531965;
+	uint32_t h = backend_pool::_carp_urlhash(str) * 0x62531965;
 	return rotl(h, 21);
 }
 
-static void
-carp_calc(void)
+void
+backend_pool::_carp_calc(void)
 {
 struct	backend *be, *prev;
 	size_t	 i, j;
@@ -269,23 +236,23 @@ struct	backend *be, *prev;
 	}
 }
 
-static void
-carp_recalc(string const &url)
+void
+backend_pool::_carp_recalc(string const &url)
 {
 	uint32_t	hash;
 	size_t		i;
 	for (i = 0; i < backends.size(); ++i) {
-		hash = carp_urlhash(url) ^ backends[i]->be_hash;
+		hash = _carp_urlhash(url) ^ backends[i]->be_hash;
 		hash += hash * 0x62531965;
 		hash = rotl(hash, 21);
 		hash *= (uint32_t) backends[i]->be_carplfm;
 		backends[i]->be_carp = hash;
 	}
-	sort(backends.begin(), backends.end(), becarp_cmp);
+	sort(backends.begin(), backends.end(), _becarp_cmp);
 }
 
-static int
-becarp_cmp(backend const *a, backend const *b)
+int
+backend_pool::_becarp_cmp(backend const *a, backend const *b)
 {
 	return a->be_carp - b->be_carp;
 }

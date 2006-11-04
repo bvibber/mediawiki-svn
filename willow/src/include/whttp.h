@@ -30,4 +30,10 @@ extern struct request_type {
 	int len;
 	int type;
 } supported_reqtypes[];
+
+enum http_version {
+	http10,
+	http11
+};
+
 #endif

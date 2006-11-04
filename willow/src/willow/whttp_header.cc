@@ -9,6 +9,10 @@
 # pragma ident "@(#)$Id$"
 #endif
 
+#if 0
+# define WILLOW_DEBUG
+#endif
+
 #include <vector>
 #include <cstring>
 #include <cerrno>
@@ -21,10 +25,14 @@ using std::vector;
 #include "config.h"
 #include "whttp_entity.h"
 #include "whttp_header.h"
+#include "wnet.h"
+#include "flowio.h"
+using namespace wnet;
 
-header::header(char *n, char *v)
+header::header(char const *n, char const *v)
 	: hr_name(n)
 	, hr_value(v)
+	, hr_next(NULL)
 {
 }
 
@@ -35,7 +43,7 @@ header_list::header_list()
 }
 
 void
-header_list::add(char *name, size_t namelen, char *value, size_t vallen)
+header_list::add(char const *name, size_t namelen, char const *value, size_t vallen)
 {
 	hl_hdrs.push_back(header(name, value));
 	hl_last = &*hl_hdrs.rbegin();
@@ -43,7 +51,7 @@ header_list::add(char *name, size_t namelen, char *value, size_t vallen)
 }
 
 void
-header_list::add(char *name, char *value)
+header_list::add(char const *name, char const *value)
 {
 	add(name, strlen(name), value, strlen(value));
 }
@@ -51,13 +59,15 @@ header_list::add(char *name, char *value)
 void
 header_list::append_last(const char *append)
 {
-char	*tmp;
+char const	*tmp;
+char		*n;
 	assert(hl_last);
 	tmp = hl_last->hr_value;
-	hl_last->hr_value = (char *)wmalloc(strlen(tmp) + strlen(append) + 2);
-	strcat(hl_last->hr_value, tmp);
-	strcat(hl_last->hr_value, " ");
-	strcat(hl_last->hr_value, append);
+	n = (char *)wmalloc(strlen(tmp) + strlen(append) + 2);
+	strcat(n, tmp);
+	strcat(n, " ");
+	strcat(n, append);
+	hl_last->hr_value = n;
 }
 
 void
@@ -67,6 +77,7 @@ vector<header>::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
 		if (strcasecmp(it->hr_name, name))
 			continue;
+		hl_len -= strlen(it->hr_name) + strlen(it->hr_value) + 4;
 		hl_hdrs.erase(it);
 		return;
 	}
@@ -84,18 +95,11 @@ vector<header>::iterator	it, end;
 	}
 	return NULL;
 }
-#if 0
-tst<char, header *>::iterator it;
-	if ((it = hl_hdrs.find(name)) == hl_hdrs.end())
-		return NULL;
-	return it->second;
-}
-#endif
 
 char *
 header_list::build(void)
 {
-char	*buf;
+char	*buf, *bufp;
 size_t	 bufsz;
 size_t	 buflen = 0;
 
@@ -104,12 +108,22 @@ size_t	 buflen = 0;
 		outofmemory();
 	
 	*buf = '\0';
-	for (header *h = hl_last; h; h = h->hr_next) {
-		buflen += snprintf(buf + buflen, bufsz - buflen - 1, "%s: %s\r\n", 
-				h->hr_name, h->hr_value);
+vector<header>::iterator	it, end;
+	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
+	int	incr;
+		incr = strlen(it->hr_name);
+		memcpy(buf + buflen, it->hr_name, incr);
+		buflen += incr;
+		memcpy(buf + buflen, ": ", 2);
+		buflen += 2;
+		incr = strlen(it->hr_value);
+		memcpy(buf + buflen, it->hr_value, incr);
+		buflen += incr;
+		memcpy(buf + buflen, "\r\n", 2);
+		buflen += 2;
 	}
-	if (strlcat(buf, "\r\n", bufsz) >= bufsz)
-		abort();
+
+	memcpy(buf + buflen, "\r\n", 2);
 
 	return buf;
 }
@@ -168,4 +182,280 @@ header_list::undump(int fd, off_t *len)
 	}
 	
 	return 0;
+}
+
+io::sink_result
+header_parser::data_ready(char const *buf, size_t len, ssize_t &discard)
+{
+	WDEBUG((WLOG_DEBUG, "header_parser: got data [%.*s]", len, buf));
+char const	*rn, *value, *name, *bufp = buf;
+size_t		 vlen, nlen, rnpos;
+	while ((rn = find_rn(bufp, bufp + len)) != NULL) {
+		WDEBUG((WLOG_DEBUG, "after find_rn: cur: [%.*s]", rn - bufp, bufp));
+		if (rn == bufp) {
+			_sink_spigot->sp_cork();
+			discard = bufp - buf + 2;
+			WDEBUG((WLOG_DEBUG, "header_parser::data_ready: discarding %d up to [%s]", discard, buf + discard));
+			/* request with no request is an error */
+			if (!_got_reqtype)
+				return io::sink_result_error;
+			else
+				return io::sink_result_done;
+		}
+		rnpos = rn - bufp;
+		name = bufp;
+
+		if (!_got_reqtype) {
+			if ((!_is_response && parse_reqtype(bufp, rn) == -1)
+			    || (_is_response && parse_response(bufp, rn) == -1)) {
+				_sink_spigot->sp_cork();
+				return io::sink_result_error;
+			}
+			_got_reqtype = true;
+			goto next;
+		}
+		if ((value = (const char *)memchr(name, ':', rnpos)) == NULL) {
+			_sink_spigot->sp_cork();
+			return io::sink_result_error;
+		}
+		nlen = value - name;
+		value++;
+		while (isspace(*value) && value < rn)
+			value++;
+		vlen = rn - value;
+		if (!strncmp(name, "Transfer-Encoding", rnpos) && !strncmp(value, "chunked", rnpos))
+			_flags.f_chunked = 1;
+		WDEBUG((WLOG_DEBUG, "header_parser: header [%.*s] = [%.*s]", nlen, (char *)name, vlen, (char *)value));
+	char	*n, *v;
+		n = (char *)malloc(nlen + 1);
+		v = (char *)malloc(vlen + 1);
+		strncpy(n, name, nlen);
+		strncpy(v, value, vlen);
+		n[nlen] = '\0';
+		v[vlen] = '\0';
+		_headers.add(n, nlen, v, vlen);
+	next:
+		len -= rn - bufp + 2;
+		bufp = rn + 2;
+		WDEBUG((WLOG_DEBUG, "continue with bufp=[%.*s] len=%d",
+			len, bufp, len));
+	}
+	WDEBUG((WLOG_DEBUG, "header_parser: discarding %d", bufp - buf));
+	discard = bufp - buf;
+	return io::sink_result_later;
+}
+
+int
+header_parser::parse_reqtype(char const *buf, char const *endp)
+{
+char const	*path, *vers;
+size_t		 plen, vlen;
+int		 httpmaj, httpmin;
+	if ((path = (char const *)memchr(buf, ' ', endp - buf)) == NULL)
+		return -1;
+	path++;
+	if ((vers = (char const *)memchr(path, ' ', endp - path)) == NULL)
+		return -1;
+	plen = vers - path;
+	vers++;
+	vlen = endp - vers;
+	WDEBUG((WLOG_DEBUG, "path: [%.*s] vers: [%.*s]", plen, path, vlen, vers));
+	if (vlen != 8)
+		return -1;
+	if (strncmp(vers, "HTTP/", 5))
+		return -1;
+	if (vers[5] != '1' || vers[6] != '.')
+		return -1;
+	if (vers[7] == '0')
+		_http_vers = http10;
+	else if (vers[7] == '1')
+		_http_vers = http11;
+	else	return -1;
+	_http_path.assign(path, path + plen);
+	return 0;
+}
+
+int
+header_parser::parse_response(char const *buf, char const *endp)
+{
+char const	*errcode, *errdesc;
+int		 codelen, desclen;
+	if ((errcode = (char const *)memchr(buf, ' ', endp - buf)) == NULL)
+		return -1;
+	if (errcode - buf != 8)
+		return -1;
+	errcode++;
+	if ((errdesc = (char const *)memchr(errcode, ' ', endp - errcode)) == NULL)
+		return -1;
+	codelen = errdesc - errcode;
+	errdesc++;
+	desclen = endp - errdesc;
+	if (strncmp(buf, "HTTP/", 5))
+		return -1;
+	if (buf[5] != '1' || buf[6] != '.')
+		return -1;
+	if (buf[7] == '0')
+		_http_vers = http10;
+	else if (buf[7] == '1')
+		_http_vers = http11;
+	else	return -1;
+
+	_http_path.assign(errcode, errcode + codelen);
+	_http_path += " ";
+	_http_path.append(errdesc, errdesc + desclen);
+	WDEBUG((WLOG_DEBUG, "vers: [%.*s] errcode: [%.*s] errdesc: [%.*s]",
+		errcode - buf - 1, buf, codelen, errcode, desclen, errdesc));
+	return 0;
+}
+
+/*
+ * Should never run out of data when reading headers.
+ */ 
+io::sink_result
+header_parser::data_empty(void)
+{
+	_sink_spigot->sp_cork();
+	return io::sink_result_error;
+}
+
+void
+header_parser::sp_cork(void)
+{
+	_corked = true;
+}
+
+void
+header_parser::sp_uncork(void) 
+{
+char	*bptr;
+int	 left = _headers.hl_len;
+	WDEBUG((WLOG_DEBUG, "header_parse::uncork: %d left", left));
+	if (!_built) {
+	char	*s;
+		if (!_is_response) {
+		string	req = "GET " + _http_path + " HTTP/1.1\r\n";
+			s = new char[req.size()];
+			memcpy(s, req.data(), req.size());
+			_buf.add(s, req.size(), true);
+		} else {
+		string	req = "HTTP/1.1 " + _http_path + "\r\n";
+			s = new char[req.size()];
+			memcpy(s, req.data(), req.size());
+			_buf.add(s, req.size(), true);
+		}
+		s = _headers.build();
+		WDEBUG((WLOG_DEBUG, "built headers: [%.*s]", _headers.hl_len, s));
+		_buf.add(s, _headers.hl_len, true);
+		_buf.add("\r\n", 2, false);
+		_built = true;
+	}
+
+	_corked = false;
+	while (!_corked && _buf.items.size()) {
+	wnet::buffer_item	&b = *_buf.items.begin();
+	ssize_t			 discard;
+	io::sink_result		 res;
+		WDEBUG((WLOG_DEBUG, "header_parse::uncork: %d in current buffer %p", b.len, b.buf));
+		res = _sp_sink->data_ready(b.buf + b.off, b.len - b.off, discard);
+		if (discard == 0)
+			return;
+		if ((size_t)discard == b.len) {
+			_buf.items.pop_front();
+		} else {
+			b.len -= discard;
+			b.off += discard;
+		}
+		if (res == io::sink_result_done) {
+			_sp_completed_callee();
+			return;
+		} else if (res == io::sink_result_error) {
+			_sp_error_callee();
+			return;
+		} else if (res == io::sink_result_later)
+			continue;
+	}
+	this->_sp_data_empty();
+	_sp_completed_callee();
+}
+ 
+void
+header_parser::set_response(void)
+{
+	_is_response = true;
+}
+
+header_spigot::header_spigot(int errcode, char const *msg)
+	: _corked(true)
+{
+char	cstr[4];
+	sprintf(cstr, "%d", errcode);
+	_first = "HTTP/1.1 ";
+	_first += cstr;
+	_first += " ";
+	_first += msg;
+	_first += "\r\n";
+}
+
+void
+header_spigot::add(char const *h, char const *v)
+{
+	_headers.add(h, v);
+}
+
+void
+header_spigot::body(string const &body)
+{
+	_body = body;
+}
+
+void
+header_spigot::body(string &body)
+{
+	_body.swap(body);
+}
+
+void
+header_spigot::sp_uncork(void)
+{
+	_corked = false;
+
+	if (!_built) {
+		_buf.add(_first.data(), _first.size(), false);
+		_buf.add(_headers.build(), _headers.hl_len, true);
+		_buf.add("\r\n", 2, false);
+		_buf.add(_body.data(), _body.size(), false);
+	}
+
+	while (!_corked && _buf.items.size()) {
+	buffer_item	&b = *_buf.items.begin();
+	ssize_t		 discard;
+	io::sink_result	 res;
+		res = _sp_sink->data_ready(b.buf + b.off, b.len, discard);
+		if ((size_t)discard == b.len) {
+			_buf.items.pop_front();
+		} else {
+			b.len -= discard;
+			b.off += discard;
+		}
+		switch (res) {
+		case io::sink_result_error:
+			_sp_error_callee();
+			return;
+		case io::sink_result_done:
+			_sp_completed_callee();
+			return;
+		case io::sink_result_later:
+			continue;
+		}
+	}
+	if (!_corked) {
+		sp_cork();
+		_sp_completed_callee();
+	}
+}
+
+void
+header_spigot::sp_cork(void)
+{
+	_corked = true;
 }

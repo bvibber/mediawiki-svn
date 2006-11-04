@@ -652,12 +652,13 @@ static  char		 fbuf[ZLIB_BLOCK];
 			}
 
 			bufferevent_disable(entity->_he_tobuf, EV_WRITE);
-				
+#if 0				
 			if (wnet_sendfile(entity->_he_target->fde_fd, entity->he_source.fd.fd, 
 			    entity->he_source.fd.size - entity->he_source.fd.off,
 			    entity->he_source.fd.off, entity_send_file_done, entity, 0) == -1) {
 				entity->_he_func(entity, entity->_he_cbdata, -1);
 			}
+#endif
 			return;
 		}
 		entity->_he_state = ENTITY_STATE_SEND_BODY;

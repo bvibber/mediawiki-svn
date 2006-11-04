@@ -6,6 +6,7 @@ BASESRCS =	 		\
 	willow.cc 		\
 	wconfig.cc		\
 	whttp.cc		\
+	chunking.cc		\
 	wbackend.cc		\
 	whttp_entity.cc		\
 	wcache.cc		\
@@ -14,7 +15,8 @@ BASESRCS =	 		\
 	wnet_libevent.cc	\
 	wlog.cc			\
 	whttp_header.cc		\
-	radix.cc
+	radix.cc		\
+	flowio.cc
 
 OBJS=	$(BASESRCS:.cc=.o)
 

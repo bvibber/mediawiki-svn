@@ -51,7 +51,7 @@ int		 port = 80, family = -1;
 		if (val->cv_values[0].av_strval == "ipv6")
 			family = AF_INET6;
 		else	family = AF_INET;
-	add_backend(e.item_key, port, family);
+	gbep.add(e.item_key, port, family);
 }
 
 static void
@@ -336,7 +336,7 @@ int	nerrors = 0;
 		wlog(WLOG_ERROR, "no listeners defined");
 		nerrors++;
 	}
-	if (!backends.size()) {
+	if (!gbep.backends.size()) {
 		wlog(WLOG_ERROR, "no backends defined");
 		nerrors++;
 	}

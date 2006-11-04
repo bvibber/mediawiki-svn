@@ -4,6 +4,8 @@
 
 @include@ @q@@abs_top_srcdir@/mk/vars.mk@q@
 
+.PHONY: all clean install depend distclean dist _dist
+
 .c.o:
 	@echo "	$(_COMPILE) -c $<"
 	@$(_COMPILE) -c $<

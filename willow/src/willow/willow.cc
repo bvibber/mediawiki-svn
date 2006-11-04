@@ -128,8 +128,8 @@ main(int argc, char *argv[])
 		wcache_setupfs();
 		exit(0);
 	}
-		
-	wnet_init();
+
+	ioloop = new ioloop_t;		
 	whttp_init();
 	wcache_init(1);
 	stats_init();
@@ -256,8 +256,13 @@ static struct timeval stats_tv;
 static void stats_sched(void);
 void add_stats_listener(pair<string,string> const &ip);
 
-static void
-stats_cb(fde *e)
+struct stats_handler_stru : noncopyable {
+	void	callback (fde *, int);
+};
+static stats_handler_stru stats_handler;
+ 
+void
+stats_handler_stru::callback(fde *e, int)
 {
 char	buf[65535], *bufp = buf, *endp = buf + sizeof(buf);
 char	rdata[3];
@@ -353,7 +358,7 @@ int		 i;
 			wnet_close(sfd);
 			continue;
 		}
-		wnet_register(sfd, FDE_READ, stats_cb, NULL);
+		ioloop->readback(sfd, polycaller<fde *, int>(stats_handler, &stats_handler_stru::callback), 0);
 		wlog(WLOG_NOTICE, "statistics listener: %s", 
 			wnet::fstraddr(ip.first, r->ai_addr, r->ai_addrlen).c_str());
 	}

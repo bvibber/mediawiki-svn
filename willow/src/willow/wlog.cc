@@ -71,11 +71,8 @@ struct	timeval	tv;
 		return;
 	va_start(ap, fmt);
 	gettimeofday(&tv, NULL);
-	i = snprintf(s, 1024, "%s+%.04f| %s: ", current_time_short, tv.tv_usec / 1000000.0, sev_names[sev]);
-	if (i > 1023)
-		abort();
-	if (vsnprintf(s + i, 1023 - i, fmt, ap) > (1023 - i - 1))
-		abort();
+	i = snprintf(s, sizeof s, "%s+%.04f| %s: ", current_time_short, tv.tv_usec / 1000000.0, sev_names[sev]);
+	vsnprintf(s + i, 1023 - i, fmt, ap);
 
 	HOLDING(log_lock);	
 	if (logging.syslog)

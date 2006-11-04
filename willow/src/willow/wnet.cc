@@ -40,6 +40,8 @@ using std::deque;
 
 #define RDBUF_INC	8192	/* buffer in 8 KiB incrs		*/
 
+ioloop_t *ioloop;
+
 struct wrtbuf : freelist_allocator<wrtbuf> {
 	/* for buffers only */
 const	void	*wb_buf;
@@ -49,19 +51,13 @@ const	void	*wb_buf;
 	/* for buffers & sendfile */
 	size_t	 wb_size;
 	int	 wb_done;
-	fdwcb	 wb_func;
+	polycallback<fde *, int> wb_func;
 	void	*wb_udata;
 };
 
 char current_time_str[30];
 char current_time_short[30];
-#ifdef __lint
-# pragma error_messages(off, E_GLOBAL_COULD_BE_STATIC)
-#endif
 time_t current_time;
-#ifdef __lint
-# pragma error_messages(default, E_GLOBAL_COULD_BE_STATIC)
-#endif
 
 static void init_fde(struct fde *);
 
@@ -105,8 +101,13 @@ secondly_sched(void)
 	event_add(&secondly_ev, &secondly_tv);
 }
 
+ioloop_t::ioloop_t(void)
+{
+	prepare();
+}
+
 void
-wnet_init(void)
+ioloop_t::prepare(void)
 {
 size_t	 i;
 
@@ -136,7 +137,7 @@ size_t	 i;
 			wlog(WLOG_ERROR, "listen: %s: %s\n", lns->name.c_str(), strerror(errno));
 			exit(8);
 		}
-		wnet_register(fd, FDE_READ, wnet_accept, NULL);
+		readback(fd, polycaller<fde *, int>(*this, &ioloop_t::_accept), 0);
 	}
 	wlog(WLOG_NOTICE, "wnet: initialised, using libevent %s (%s)",
 		event_get_version(), event_get_method());
@@ -144,7 +145,7 @@ size_t	 i;
 }
 
 void
-wnet_accept(fde *e)
+ioloop_t::_accept(fde *e, int)
 {
 struct	client_data	*cdata;
 	int		 newfd, val;
@@ -187,6 +188,7 @@ static time_t		 last_nfile = 0;
 	newe->fde_flags.open = 1;
 	newe->fde_fd = newfd;
 	newe->fde_cdata = cdata;
+	newe->fde_flags.read_held = newe->fde_flags.write_held = 1;
 	newe->fde_desc = "accept()ed fd";
 	if (cdata->cdat_addr.ss_family == AF_INET)
 		inet_ntop(AF_INET, &((sockaddr_in *)&cdata->cdat_addr)->sin_addr.s_addr, 
@@ -256,6 +258,7 @@ static int	last_nfile = 0;
 	fde_table[fd].fde_desc = desc;
 	fde_table[fd].fde_flags.open = 1;
 	fde_table[fd].fde_prio = p;
+	fde_table[fd].fde_flags.read_held = fde_table[fd].fde_flags.write_held = 1;
 	return fd;
 }
 
@@ -275,13 +278,13 @@ wnet_close(int fd)
 struct	fde	*e = &fde_table[fd];
 	assert(e->fde_flags.open);
 	WDEBUG((WLOG_DEBUG, "close fd %d [%s]", e->fde_fd, e->fde_desc));
-	wnet_register(fd, FDE_READ | FDE_WRITE, NULL, NULL);
+	ioloop->clear_readback(fd);
+	ioloop->clear_writeback(fd);
 	if (e->fde_cdata)
 		wfree(e->fde_cdata);
 	readbuf_free(&e->fde_readbuf);
 	e->fde_flags.open = 0;
-	e->fde_read_handler = NULL;
-	e->fde_write_handler = NULL;
+
 	/*
 	 * Do NOT touch the fde after closing this - we do not mutex
 	 * fde accesses and it will be immediately reused.
@@ -289,6 +292,7 @@ struct	fde	*e = &fde_table[fd];
 	(void)close(e->fde_fd);
 }
 
+#if 0
 int
 wnet_sendfile(int fd, int source, size_t size, off_t off, fdwcb cb, void *data, int flags)
 {
@@ -434,6 +438,7 @@ struct	wrtbuf *buf;
 		return;
 	
 }
+#endif
 
 void
 wnet_set_time(void)

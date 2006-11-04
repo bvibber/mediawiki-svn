@@ -20,6 +20,8 @@ using std::string;
 #include <vector>
 using std::vector;
 
+#include "polycaller.h"
+
 struct fde;
 
 struct backend {
@@ -36,15 +38,31 @@ struct backend {
 	uint32_t		 be_carp;	/* carp hash for the last url	*/
 	float			 be_load;	/* carp load factor		*/
 	float			 be_carplfm;	/* carp LFM after calculation	*/
+
+	static uint32_t 	 _carp_hosthash	(string const &);
 };
 
-typedef void (*backend_cb)(struct backend *, struct fde *, void *);
+struct backend_cb_data;
+struct backend_pool {
+	void	add	(string const &, int, int);
 
-void add_backend(string const &, int, int);
-void backend_file(string const &);
+	template<typename T>
+	int	get	(string const &url, polycaller<backend *, fde *, T> cb, T t) {
+		return _get_impl(url, polycallback<backend *, fde *>(cb, t));
+	}
 
-int get_backend(string const &url, backend_cb, void *, int);
+	vector<backend *> backends;
 
-extern vector<backend *> backends;
+	int		 _get_impl	(string const &, polycallback<backend *, fde *>);
+	void		 _backend_read	(fde *e, backend_cb_data *);
+	struct backend 	*_next_backend	(string const &url);
+	void		 _carp_recalc	(string const &url);
+	void		 _carp_calc	(void);
+
+	static int	 _becarp_cmp	(backend const *a, backend const *b);
+	static uint32_t  _carp_urlhash	(string const &);
+};
+
+extern backend_pool gbep;
 
 #endif

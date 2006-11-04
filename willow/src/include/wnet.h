@@ -31,17 +31,17 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 #include <pthread.h>
 #include <vector>
 #include <deque>
+#include <cassert>
+
 using std::deque;
 using std::vector;
 
 #include "willow.h"
+#include "polycaller.h"
 
 struct fde;
 
 extern int max_fd;
-
-typedef void (*fdcb)(struct fde*);
-typedef void (*fdwcb)(struct fde*, void*, int);
 
 struct client_data;
 
@@ -65,6 +65,31 @@ struct readbuf {
 #define readbuf_inc_data_pos(b, i) ((b)->rb_dpos += (i))
 #define readbuf_cur_pos(b) ((b)->rb_p + (b)->rb_dpos)
 
+#define FDE_READ	0x1
+#define FDE_WRITE	0x2
+
+extern struct ioloop_t {
+	ioloop_t();
+
+	void	prepare(void);
+
+	void	_register	(int, int, polycallback<fde *>);
+	void	_accept		(fde *, int);
+
+	template<typename T>
+	void	readback (int fd, polycaller<fde *, T> cb, T ud) {
+		_register(fd, FDE_READ, polycallback<fde *>(cb, ud));
+	}
+
+	template<typename T>
+	void	writeback (int fd, polycaller<fde *, T> cb, T ud) {
+		_register(fd, FDE_WRITE, polycallback<fde *>(cb, ud));
+	}
+
+	void	clear_readback	(int fd);
+	void	clear_writeback	(int fd);
+} *ioloop;
+
 /*
  * For working with packed UDP data.
  */
@@ -81,29 +106,65 @@ struct readbuf {
 				} while (0)
 
 struct fde {
-	int		 fde_fd;
-	const char	*fde_desc;
-	fdcb		 fde_read_handler;
-	fdcb		 fde_write_handler;
-struct	client_data	*fde_cdata;
-	void		*fde_rdata;
-	void		*fde_wdata;
-	char		 fde_straddr[40];
-	int		 fde_epflags;
-struct	readbuf		 fde_readbuf;
+	int			 fde_fd;
+	const char		*fde_desc;
+	polycallback<fde *>	 fde_read_handler;
+	polycallback<fde *>	 fde_write_handler;
+struct	client_data		*fde_cdata;
+	char			 fde_straddr[40];
+	int			 fde_epflags;
+struct	readbuf			 fde_readbuf;
 	struct {
 		unsigned int	open:1;
-		unsigned int	held:1;
+		unsigned int	read_held:1;
+		unsigned int	write_held:1;
 		unsigned int	pend:1;
-	}		 fde_flags;
-struct	event		 fde_ev;
-enum	sprio		 fde_prio;
+	}			 fde_flags;
+struct	event			 fde_ev;
+enum	sprio			 fde_prio;
 };
 extern struct fde *fde_table;
 
-extern pthread_cond_t	 acceptq_cond;
+namespace wnet {
+
+struct buffer;
+
+struct buffer_item : freelist_allocator<buffer_item> {
+	buffer_item(char const *buf_, size_t len_, bool free_)
+		: buf(buf_)
+		, len(len_)
+		, off(0)
+		, free(free_) {
+	}
+	buffer_item(buffer_item const &o)
+		: len(o.len)
+		, off(o.off)
+		, free(o.free) {
+		buf = (const char *)memcpy(new char[len], o.buf, len);
+	}
+
+	~buffer_item() {
+		if (free)
+			delete[] buf;
+	}
+
+	char const	*buf;
+	size_t		 len;
+	size_t		 off;
+	bool		 free;
+};
+
+struct buffer {
+	void add(char const *buf, size_t len, bool free) {
+		items.push_back(buffer_item(buf, len, free));
+	}
+
+	deque<buffer_item> items;
+};
+
+} // namespace wnet
+
 extern lockable		 acceptq_lock;
-extern deque<int>	 acceptq;
 extern tss<event_base>	 evb;
 
 struct client_data {
@@ -116,17 +177,12 @@ extern char current_time_short[];
 extern time_t current_time;
 extern int wnet_exit;
 
-#define FDE_READ	0x1
-#define FDE_WRITE	0x2
+	void	wnet_run(void);
 
-void wnet_init(void);
-void wnet_run(void);
-
-	void	wnet_register		(int, int, fdcb, void *);
 	int	wnet_open		(const char *desc, sprio p, int aftype, int type = SOCK_STREAM);
 	void	wnet_close		(int);
-	void	wnet_write		(int, const void *, size_t, fdwcb, void *, int);
-	int	wnet_sendfile		(int, int, size_t, off_t, fdwcb, void *, int);
+	void	wnet_write		(int, const void *, size_t, polycaller<fde *, int>);
+	int	wnet_sendfile		(int, int, size_t, off_t, polycaller<fde *, int>);
 	void	wnet_set_blocking	(int);
 	void	wnet_add_accept_wakeup	(int);
 	int	wnet_socketpair		(int, int, int, int[2]);

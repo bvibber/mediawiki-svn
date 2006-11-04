@@ -88,22 +88,33 @@ struct	fde	*fde = &fde_table[fd];
 
 	assert(fde->fde_flags.open);
 
-	if ((ev & EV_READ) && fde->fde_read_handler)
+	if (ev & EV_READ)
 		fde->fde_read_handler(fde);
-	if ((ev & EV_WRITE) && fde->fde_write_handler)
+	if (ev & EV_WRITE)
 		fde->fde_write_handler(fde);
-	if (fde->fde_read_handler || fde->fde_write_handler)
+	if (!fde->fde_flags.read_held || !fde->fde_flags.write_held)
 		event_add(&fde->fde_ev, NULL);
 }
 
 void
-wnet_register(int fd, int what, fdcb handler, void *data)
+ioloop_t::clear_readback(int fd)
+{
+struct fde	*fde = &fde_table[fd];
+	fde->fde_flags.read_held = 1;
+}
+
+void
+ioloop_t::clear_writeback(int fd)
+{
+struct fde	*fde = &fde_table[fd];
+	fde->fde_flags.write_held = 1;
+}
+
+void
+ioloop_t::_register(int fd, int what, polycallback<fde *> handler)
 {
 struct	fde	*fde = &fde_table[fd];
 	int	 ev_flags = 0;
-
-	if (fde->fde_flags.held)
-		return;
 
 	make_event_base();
 
@@ -114,23 +125,14 @@ struct	fde	*fde = &fde_table[fd];
 
 	if (what & FDE_READ) {
 		fde->fde_read_handler = handler;
+		fde->fde_flags.read_held = 0;
 		ev_flags |= EV_READ;
 	}
 	if (what & FDE_WRITE) {
 		ev_flags |= EV_WRITE;
+		fde->fde_flags.write_held = 0;
 		fde->fde_write_handler = handler;
 	}
-
-	if (handler == NULL) {
-		//if (event_pending(&fde->fde_ev, EV_READ | EV_WRITE, NULL))
-		//if (fde->fde_flags.pend)
-		//	event_del(fde->fde_ev);
-		fde->fde_flags.pend = 0;
-		return;
-	}
-
-	if (data)
-		fde->fde_rdata = data;
 
 	//ev_flags |= EV_PERSIST;
 	event_set(&fde->fde_ev, fde->fde_fd, ev_flags, fde_ev_callback, fde);

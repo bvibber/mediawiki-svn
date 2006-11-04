@@ -17,6 +17,8 @@
 #include <sstream>
 #include <cstddef>
 #include <iostream>
+#include <typeinfo>
+
 #include <pthread.h>
 
 #include "wlog.h"
@@ -109,6 +111,20 @@ struct locker : noncopyable {
 	}
 	~locker() {
 		m._unlock();
+	}
+};
+
+template<typename T, void (T::*ptmf) (void)>
+void ptmf_transform(void *p)
+{
+T	*o = (T *)p;
+	(o->*ptmf)();
+}
+
+template<typename T, typename AT1, typename AT2, void (T::*ptmf) (AT1, AT2)>
+struct ptmf_transform2 {
+	static void call(AT1 a, AT2 b, void *p) {
+		(static_cast<T*>(p)->*ptmf)(a, b);
 	}
 };
 
