@@ -12,7 +12,6 @@ BASESRCS =	 		\
 	wcache.cc		\
 	confparse.cc		\
 	wnet.cc			\
-	wnet_libevent.cc	\
 	wlog.cc			\
 	whttp_header.cc		\
 	radix.cc		\
