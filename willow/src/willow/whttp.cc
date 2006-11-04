@@ -82,15 +82,6 @@ const char *request_string[] = {
 	"OPTIONS",
 };
 
-struct request_type supported_reqtypes[] = {
-	{ "GET",	3,	REQTYPE_GET	},
-	{ "POST",	4,	REQTYPE_POST	},
-	{ "HEAD",	4,	REQTYPE_HEAD	},
-	{ "TRACE",	5,	REQTYPE_TRACE	},
-	{ "OPTIONS",	7,	REQTYPE_OPTIONS	},
-	{ NULL,		0,	REQTYPE_INVALID }
-};
-
 struct http_client : freelist_allocator<http_client> {
 		http_client(fde *e) : cl_fde(e) {
 			cl_entity = new http_entity;
@@ -303,6 +294,7 @@ void
 httpcllr::header_read_error(void)
 {
 	WDEBUG((WLOG_DEBUG, "header_read_error()"));
+	stats.tcur->n_httpreq_fail++;
 	send_error(ERR_BADREQUEST, "Could not parse client headers", 400, "Bad request");
 }
 
@@ -311,6 +303,7 @@ httpcllr::backend_ready(backend *be, fde *e, int)
 {
 	WDEBUG((WLOG_DEBUG, "backend_ready"));
 	if (be == NULL) {
+		stats.tcur->n_httpreq_fail++;
 		send_error(ERR_GENERAL, "No backends were available to serve your request", 
 			503, "Internal server error");
 		return;
@@ -333,6 +326,7 @@ void
 httpcllr::backend_write_error(void)
 {
 	WDEBUG((WLOG_DEBUG, "backend_write_error"));
+	stats.tcur->n_httpreq_fail++;
 	send_error(ERR_GENERAL, "Could not write request to backend", 503, "Internal server error");
 }
 
@@ -388,6 +382,7 @@ void
 httpcllr::backend_read_headers_error(void)
 {
 	WDEBUG((WLOG_DEBUG, "backend_read_headers_error"));
+	stats.tcur->n_httpreq_fail++;
 	send_error(ERR_BADRESPONSE, "Could not parse backend response", 503, "Internal server error");
 }
 
@@ -436,6 +431,7 @@ void
 httpcllr::send_body_to_client_done(void)
 {
 	WDEBUG((WLOG_DEBUG, "send_body_to_client_done"));
+	stats.tcur->n_httpreq_ok++;
 	delete this;
 }
 
@@ -443,6 +439,7 @@ void
 httpcllr::send_body_to_client_error(void)
 {
 	WDEBUG((WLOG_DEBUG, "send_body_to_client_error"));
+	stats.tcur->n_httpreq_fail++;
 	delete this;
 }
 
@@ -450,6 +447,7 @@ void
 httpcllr::send_headers_to_client_error(void)
 {
 	WDEBUG((WLOG_DEBUG, "send_headers_to_client_error"));
+	stats.tcur->n_httpreq_fail++;
 	delete this;
 }
 
@@ -775,481 +773,16 @@ httpcllr::error_send_done(void)
 	WDEBUG((WLOG_DEBUG, "error_send_done"));
 	delete this;
 }
-
-
-/*
- * Called by wnet_accept to regiister a new client.  Reads the request headers
- * from the client.
- */
 #if 0
 void
-http_new(fde *e)
+httpcllr::log_request(void)
 {
-struct	http_client	*cl;
-
-radix_node	*r;
-pair<bool,int>	 blocked;
-	blocked = config.access.allowed((sockaddr *)&e->fde_cdata->cdat_addr);
-	if (blocked.first && (blocked.second & whttp_deny_connect)) {
-		wnet_close(e->fde_fd);
-		return;
-	}
-
-	cl = new http_client(e);
-	cl->cl_entity->he_source_type = ENT_SOURCE_FDE;
-	cl->cl_entity->he_source.fde.fde = e;
-	cl->cl_entity->he_rdata.request.contlen = -1;
-
-	if (blocked.first)
-		cl->cl_flags.f_blocked = 1;
-
-	WDEBUG((WLOG_DEBUG, "http_new: starting header read for %d", cl->cl_fde->fde_fd));
-	entity_read_headers(cl->cl_entity, client_read_done, cl);
-}
-#endif
-
-/*
- * Called when the initial request has been read.  Checks if the object is
- * cached, and starts a backend request if not.  If it it, sends the cached
- * object to the client.
- */
-/*ARGSUSED*/
-#if 0
-static void
-client_read_done(http_entity *entity, void *data, int res)
-{
-struct	http_client	*client = (http_client *)data;
-	char		*pragma, *cache_control, *ifmod;
-	vector<qvalue>	 acceptenc;
-	qvalue		 val;
-	int		 cacheable = 1;
-
-	WDEBUG((WLOG_DEBUG, "client_read_done: called, res=%d", res));
-
-	if (res < -1) {
-		client_send_error(client, ERR_BADREQUEST, ent_errors[-res], 400, "Bad request (#10.4.1)");
-		return;
-	} else if (res == -1) {
-		stats.tcur->n_httpreq_fail++;
-		delete client;
-		return;
-	} else if (res == 1) {
-		stats.tcur->n_httpreq_fail++;
-		delete client;
-		return;
-	}
-	
-	if (client->cl_entity->he_rdata.request.httpmaj >= 1 &&
-	    client->cl_entity->he_rdata.request.httpmin >= 1)
-		client->cl_flags.f_http11 = 1;
-
-	if (client->cl_entity->he_rdata.request.host == NULL)
-		client->cl_path = wstrdup(client->cl_entity->he_rdata.request.path);
-	else {
-		int	len;
-		
-		len = strlen(client->cl_entity->he_rdata.request.host) +
-			strlen(client->cl_entity->he_rdata.request.path) + 7;
-		
-		client->cl_path = (char *)wmalloc(len + 1);
-		if (client->cl_path == NULL)
-			outofmemory();
-		snprintf(client->cl_path, len + 1, "http://%s%s",
-				client->cl_entity->he_rdata.request.host,
-				client->cl_entity->he_rdata.request.path);
-	}
-
-	client->cl_reqtype = client->cl_entity->he_rdata.request.reqtype;
-
-	if (client->cl_flags.f_blocked) {
-		client_send_error(client, ERR_BLOCKED, "", 403, "Access denied");
-		return;
-	}
-
-	pragma = entity->he_h_pragma;
-	cache_control = entity->he_h_cache_control;
-
-	if (pragma) {
-		char **pragmas = wstrvec(pragma, ",", 0);
-		char **s;
-		for (s = pragmas; *s; ++s) {
-			if (!strcasecmp(*s, "no-cache")) {
-				cacheable = 0;
-				break;
-			}
-		}
-		wstrvecfree(pragmas);
-	}
-
-	if (cache_control) {
-		char **cache_controls = wstrvec(cache_control, ",", 0);
-		char **s;
-		for (s = cache_controls; *s; ++s) {
-			if (!strcasecmp(*s, "no-cache")) {
-				cacheable = 0;
-				break;
-			}
-		}
-		wstrvecfree(cache_controls);
-	}
-
-	while (qvalue_remove_best(entity->he_rdata.request.accept_encoding, val)) {
-		WDEBUG((WLOG_DEBUG, "client offers [%s] q=%f", val.name, (double) val.val));
-		if ((client->cl_enc = accept_encoding(val.name)) != E_NONE)
-			break;
-	}
-
-	/*
-	 * Check for cached object.
-	 */
-	if (config.ncaches && client->cl_reqtype == REQTYPE_GET) {
-		if (cacheable)
-			client->cl_co = wcache_find_object(client->cl_path, &client->cl_cfd,
-				WCACHE_RDWR);
-		else
-			client->cl_co = wcache_find_object(client->cl_path, &client->cl_cfd,
-				WCACHE_WRONLY);
-
-		if (cacheable && client->cl_co && client->cl_co->co_time && 
-		    (ifmod = entity->he_h_if_modified_since)) {
-			char *s;
-			time_t t;
-			struct tm m;
-			s = strptime(ifmod, "%a, %d %b %Y %H:%M:%S", &m);
-			if (s) {
-				t = mktime(&m);
-				WDEBUG((WLOG_DEBUG, "if-mod: %d, last-mod: %d", t, client->cl_co->co_time));
-				if (t >= client->cl_co->co_time) {
-					/*
-					 * Not modified
-					 */
-					client_send_error(client, -1, NULL, 304, "Not modified (#10.3.5)");
-					return;
-				}
-			}
-		}
-
-		if (client->cl_co && client->cl_co->co_complete) {
-			WDEBUG((WLOG_DEBUG, "client_read_done: object %s cached", client->cl_path));
-			client_write_cached(client);
-			return;
-		}
-		WDEBUG((WLOG_DEBUG, "client_read_done: %s not cached", client->cl_path));
-	}
-	
-	/*
-	 * Not cached.  Find a backend.
-	 */
-#if 0
-	if (get_backend(client->cl_path, proxy_start_backend, client, 0) == -1) {
-		client_send_error(client, ERR_GENERAL, 
-			"No backends were available to service your request", 503, 
-			"Service unavailable (#10.5.4)");
-		return;
-	}
-#endif
-}
-
-/*
- * Called when backend is ready.  backend==NULL if none was found.
- */
-static void
-proxy_start_backend(backend *backend, fde *e, void *data)
-{
-struct	http_client	*client = (http_client *)data;
-struct	header		*hdr;
-vector<header *>::iterator	it, end;
-	int		 error = 0;
-	socklen_t	 len = sizeof(error);
-	
-	WDEBUG((WLOG_DEBUG, "proxy_start_backend: called; for client=%d", client->cl_fde->fde_fd));
-	
-	if (backend == NULL) {
-		client_send_error(client, ERR_GENERAL, 
-			"No backends were available to service your request", 
-			503, "Service unavailable (#10.5.4)");
-		return;
-	}
-	
-	client->cl_backend = backend;
-	client->cl_backendfde = e;
-
-	getsockopt(e->fde_fd, SOL_SOCKET, SO_ERROR, &error, &len);
-	if (error) {
-		client_send_error(client, ERR_GENERAL, strerror(error), 503, 
-			"Service unavailable (#10.5.4)");
-		return;
-	}
-
-static const char *removable_headers[] = {
-	"Connection",
-	"Keep-Alive",
-	"Proxy-Authenticate",
-	"Proxy-Authorization",
-	"Proxy-Connection",
-	"TE",
-	"Trailers",
-	"Transfer-Encoding",
-	"Upgrade",
-	NULL,
-};
-	for (const char **s = removable_headers; *s; ++s) {
-		client->cl_entity->he_headers.remove(*s);
-	}
-
-	evbuffer_add_printf(client->cl_entity->he_extraheaders, "X-Forwarded-For: %s\r\n",
-		client->cl_fde->fde_straddr);
-	client->cl_entity->he_headers.add("Connection", "close");
-	/*
-	 * POST requests require Content-Length.
-	 */
-	if (client->cl_reqtype == REQTYPE_POST) {
-		if (client->cl_entity->he_rdata.request.contlen == -1) {
-			client_send_error(client, ERR_BADREQUEST, "POST request without Content-Length",
-						411, "Length required (#10.4.12)");
-			return;
-		}
-		
-		WDEBUG((WLOG_DEBUG, "client content-length=%d", client->cl_entity->he_rdata.request.contlen));
-		client->cl_entity->he_source_type = ENT_SOURCE_FDE;
-		client->cl_entity->he_source.fde.fde = client->cl_fde;
-		client->cl_entity->he_source.fde.len = client->cl_entity->he_rdata.request.contlen;
-	} else
-		client->cl_entity->he_source_type = ENT_SOURCE_NONE;
-	
-	entity_send(e, client->cl_entity, backend_headers_done, client, 0);
-}
-
-/*
- * Called when clients request was written to the backend.
- */
-/*ARGSUSED*/
-static void
-backend_headers_done(http_entity *entity, void *data, int res)
-{
-struct	http_client	*client = (http_client *)data;
-	
-	WDEBUG((WLOG_DEBUG, "backend_headers_done: called"));
-	if (res == -1) {
-		client_send_error(client, ERR_GENERAL, strerror(errno), 503,
-			"Service unavailable (#10.5.4)");
-		return;
-	}
-	
-	delete client->cl_entity;
-	client->cl_entity = new http_entity;
-	client->cl_entity->he_source_type = ENT_SOURCE_FDE;
-	client->cl_entity->he_source.fde.fde = client->cl_backendfde;
-	client->cl_entity->he_source.fde.len = -1;
-	
-	entity_set_response(client->cl_entity, 1);
-
-	/*
-	 * This should probably be handled somewhere inside
-	 * whttp_entity.c ...
-	 */
-	entity_read_headers(client->cl_entity, client_headers_done, client);
-}
-
-/*
- * Called when backend's headers are finished reading.
- */
-static void
-client_headers_done(http_entity *entity, void *data, int res)
-{
-struct	http_client	*client = (http_client *)data;
-	
-	WDEBUG((WLOG_DEBUG, "client_headers_done: called"));
-	
-	if (res == -1) {
-		stats.tcur->n_httpreq_fail++;		
-		delete client;
-		return;
-	} else if (res < -1 || res == 1) {
-		client_send_error(client, ERR_GENERAL, 
-			res == 1 ? "Server response contained no data." : ent_errors[-res], 503,
-			"Service unavailable (#10.5.4)");
-		return;
-	}
-	
-	/*
-	 * If cachable, open the cache file and write data.
-	 *
-	 * Don't cache responses to non-GET requests, or non-200 replies.
-	 */
-	if (client->cl_reqtype != REQTYPE_GET || entity->he_rdata.response.status != 200
-	    || !config.ncaches || !client->cl_co) {
-		if (client->cl_co)
-			wcache_release(client->cl_co, 0);
-	} else if (client->cl_co) {
-		char *lastmod;
-
-		entity->he_cache_callback = do_cache_write;
-		entity->he_cache_callback_data = client;
-		client->cl_entity->he_headers.dump(client->cl_cfd);
-
-		/*
-		 * Look for last-modified
-		 */
-		if ((lastmod = entity->he_h_last_modified) != NULL) {
-			struct tm tim;
-			char *lm;
-			lm = strptime(lastmod, "%a, %d %b %Y %H:%M:%S", &tim);
-			if (lm) {
-				WDEBUG((WLOG_DEBUG, "last-modified: %d", mktime(&tim)));
-				client->cl_co->co_time = mktime(&tim);
-			}
-		}
-	}
-	
-	client->cl_entity->he_headers.add("Via", via_hdr);
-	client->cl_entity->he_headers.add("X-Cache", cache_miss_hdr);
-	client->cl_entity->he_source.fde.len = -1;
-	if (config.compress)
-		client->cl_entity->he_encoding = client->cl_enc;
-
-	if (!HAS_BODY(client->cl_entity->he_rdata.response.status))
-		client->cl_entity->he_source_type = ENT_SOURCE_NONE;
-
-	entity_send(client->cl_fde, client->cl_entity, client_response_done, client,
-			client->cl_flags.f_http11 ? ENT_CHUNKED_OKAY : 0);
-}
-
-/*
- * Write a cached object to the client.
- */
-static void
-client_write_cached(http_client *client)
-{
-	size_t	 plen;
-	char	*cache_path;
-struct	stat	 sb;
-	char	 size[64];
-
-	plen = strlen(config.caches[0].dir) + client->cl_co->co_plen + 12 + 2;
-	if ((cache_path = (char *)wcalloc(1, plen + 1)) == NULL)
-		outofmemory();
-
-	if (fstat(client->cl_cfd, &sb) < 0) {
-		wlog(WLOG_WARNING, "stat(%s): %s", cache_path, strerror(errno));
-		client_send_error(client, ERR_CACHE_IO, strerror(errno),
-			500, "Internal server error (#10.5.1)");
-		wfree(cache_path);
-		return;
-	}
-		
-	wfree(cache_path);
-	
-	delete client->cl_entity;
-	client->cl_entity = new http_entity;
-	client->cl_entity->he_headers.undump(client->cl_cfd, &client->cl_entity->he_source.fd.off);
-	client->cl_entity->he_headers.add("Via", via_hdr);
-	client->cl_entity->he_headers.add("X-Cache", cache_hit_hdr);
-	if (!client->cl_enc && !client->cl_entity->he_headers.find("Content-Length")) {
-		evbuffer_add_printf(client->cl_entity->he_extraheaders, "Content-Length: %lu\r\n",
-			(unsigned long) client->cl_co->co_size);
-	}
-
-	entity_set_response(client->cl_entity, 1);
-	client->cl_entity->he_rdata.response.status = 200;
-	client->cl_entity->he_rdata.response.status_str = "OK";
-			
-	client->cl_entity->he_source.fd.fd = client->cl_cfd;
-	client->cl_entity->he_source.fd.size = sb.st_size;
-	if (config.compress)
-		client->cl_entity->he_encoding = client->cl_enc;
-
-	client->cl_entity->he_source_type = ENT_SOURCE_FILE;
-
-	client->cl_flags.f_cached = 1;
-	entity_send(client->cl_fde, client->cl_entity, client_response_done, client, 0);
-}
-
-/*
- * Called when response was finished writing to the client.
- */
-/*ARGSUSED*/
-static void
-client_response_done(http_entity *entity, void *data, int res)
-{
-struct	http_client	*client = (http_client *)data;
-
-	WDEBUG((WLOG_DEBUG, "client_response_done: called, res=%d", res));
-
-	if (client->cl_cfd) {
-		if (close(client->cl_cfd) < 0) {
-			wlog(WLOG_WARNING, "closing cache file: %s", strerror(errno));
-		}
-	}
-	
-	if (client->cl_co) {
-	int		 complete = (res != -1);
-	struct header	*hdr;
-
-		/*
-		 * The server may have indicated that we shouldn't cache this document.
-		 * If so, release it in an incomplete state so it gets evicted.
-		 */
-
-		/*
-		 * HTTP/1.0 Pragma
-		 */
-		hdr = client->cl_entity->he_headers.find("Pragma");
-		if (hdr) {
-			char **pragmas = wstrvec(hdr->hr_value, ",", 0);
-			char **s;
-			for (s = pragmas; *s; ++s) {
-				if (!strcasecmp(*s, "no-cache")) {
-					complete = 0;
-					break;
-				}
-			}
-			wstrvecfree(pragmas);
-		}
-
-		/*
-		 * HTTP/1.1 Cache-Control
-		 */
-		hdr = client->cl_entity->he_headers.find("Cache-Control");
-		if (hdr) {
-			char **controls = wstrvec(hdr->hr_value, ",", 0);
-			char **s;
-			for (s = controls; *s; ++s) {
-				/*
-				 * According to the standard, we can still cache no-cache
-				 * documents, but we have to revalidate them on every request.
-				 */
-				if (!strcasecmp(*s, "no-cache") ||
-				    (!config.cache_private && !strcasecmp(*s, "private")) ||
-				    !strcasecmp(*s, "no-store")) {
-					complete = 0;
-					break;
-				}
-			}
-			wstrvecfree(controls);
-		}
-
-		wcache_release(client->cl_co, complete);
-	}
-	
-	client_log_request(client);
-	delete client;
-}
-#endif
-
-static void
-client_log_request(http_client *client)
-{
-int	i, s;
-	s = client->cl_entity->he_rdata.response.status;
-	if ((s >= 400 && s <= 600))
-		stats.tcur->n_httpreq_fail++;
-	else	stats.tcur->n_httpreq_ok++;
+int	i;
 
 	if (alf) {
 		HOLDING(alf_lock);
 		i = fprintf(alf, "[%s] %s %s \"%s\" %lu %d %s %s\n",
-				current_time_short, client->cl_fde->fde_straddr,
+				current_time_short, _client_fde->fde_straddr,
 				request_string[client->cl_reqtype],
 				client->cl_path, (unsigned long) client->cl_entity->he_size,
 				client->cl_entity->he_rdata.response.status,
@@ -1300,15 +833,4 @@ int	i, s;
 		write(udplog_sock, buf, bufp - buf);
 	}
 }
-
-static void
-do_cache_write(const char *buf, size_t len, void *data)
-{
-struct	http_client	*client = (http_client *)data;
-
-	if (write(client->cl_cfd, buf, len) < 0) {
-		/*EMPTY*/
-		WDEBUG((WLOG_WARNING, "writing cached data: %s", strerror(errno)));
-	}
-	client->cl_co->co_size += len;
-}
+#endif

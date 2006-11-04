@@ -25,12 +25,6 @@ void whttp_reconfigure(void);
 extern const char *request_string[];
 extern char my_hostname[];
 
-extern struct request_type {
-	const char *name;
-	int len;
-	int type;
-} supported_reqtypes[];
-
 enum http_version {
 	http10,
 	http11

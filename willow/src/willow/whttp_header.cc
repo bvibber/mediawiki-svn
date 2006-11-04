@@ -31,6 +31,24 @@ using std::vector;
 
 using namespace wnet;
 
+struct request_type supported_reqtypes[] = {
+	{ "GET",	3,	REQTYPE_GET	},
+	{ "POST",	4,	REQTYPE_POST	},
+	{ "HEAD",	4,	REQTYPE_HEAD	},
+	{ "TRACE",	5,	REQTYPE_TRACE	},
+	{ "OPTIONS",	7,	REQTYPE_OPTIONS	},
+	{ NULL,		0,	REQTYPE_INVALID }
+};
+
+static int
+find_reqtype(char const *str, int len)
+{
+	for (request_type *r = supported_reqtypes; r->name; r++)
+		if (r->len == len && !memcmp(r->name, str, len))
+			return r->type;
+	return REQTYPE_INVALID;
+}
+
 header::header(char const *n, char const *v)
 	: hr_name(n)
 	, hr_value(v)
@@ -285,6 +303,9 @@ int		 httpmaj, httpmin;
 	else if (vers[7] == '1')
 		_http_vers = http11;
 	else	return -1;
+	if ((_http_reqtype = find_reqtype(buf, path - buf - 1)) == REQTYPE_INVALID)
+		return -1;
+
 	_http_path.assign(path, path + plen);
 	return 0;
 }

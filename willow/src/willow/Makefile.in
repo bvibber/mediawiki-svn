@@ -8,7 +8,6 @@ BASESRCS =	 		\
 	whttp.cc		\
 	chunking.cc		\
 	wbackend.cc		\
-	whttp_entity.cc		\
 	wcache.cc		\
 	confparse.cc		\
 	wnet.cc			\

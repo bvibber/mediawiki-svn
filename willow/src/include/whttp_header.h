@@ -18,6 +18,23 @@
 #include "wnet.h"
 #include "flowio.h"
 
+/*
+ * Do NOT change these values, they are used in the UDP
+ * log packets.
+ */
+#define REQTYPE_GET	0
+#define REQTYPE_POST	1
+#define REQTYPE_HEAD	2
+#define REQTYPE_TRACE	3
+#define REQTYPE_OPTIONS	4
+#define REQTYPE_INVALID	-1
+
+extern struct request_type {
+	const char *name;
+	int len;
+	int type;
+} supported_reqtypes[];
+
 struct header : freelist_allocator<header> {
 	header(char const *n, char const *v);
 	~header() {}
@@ -92,6 +109,7 @@ struct header_parser : io::sink, io::spigot
 		, _content_length(-1)
 		, _response(0)
 		, _is_msie(false)
+		, _http_reqtype(REQTYPE_INVALID)
 		{
 			_flags.f_chunked = 0;
 	}
@@ -132,6 +150,8 @@ struct header_parser : io::sink, io::spigot
 	ssize_t		 _content_length;
 	int		 _response;
 	bool		 _is_msie;
+	int		 _http_reqtype;
+
 	wnet::buffer	 _buf;
 
 	struct {

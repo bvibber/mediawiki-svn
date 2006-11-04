@@ -26,17 +26,6 @@ using std::set;
 #define ENT_SOURCE_NONE		3
 #define ENT_SOURCE_FILE		4
 
-/*
- * Do NOT change these values, they are used in the UDP
- * log packets.
- */
-#define REQTYPE_GET	0
-#define REQTYPE_POST	1
-#define REQTYPE_HEAD	2
-#define REQTYPE_TRACE	3
-#define REQTYPE_OPTIONS	4
-#define REQTYPE_INVALID	-1
-
 #define ENT_ERR_READERR	-1	/* read error while parsing headers	*/
 #define ENT_ERR_INVHDR	-2	/* invalid headers 			*/
 #define ENT_ERR_INVHOST	-3	/* invalid Host:			*/
@@ -44,6 +33,8 @@ using std::set;
 #define ENT_ERR_2MANY	-5	/* too many headers			*/
 #define ENT_ERR_LOOP	-6	/* forwarding loop detected		*/
 #define ENT_ERR_INVAE	-7	/* invalid accept-encoding		*/
+
+extern struct request_type supported_reqtypes[];
 
 #define TE_CHUNKED	0x1	/* Chunked encoding			*/
 
