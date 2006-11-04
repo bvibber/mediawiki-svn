@@ -72,6 +72,13 @@ extern "C" size_t strlcpy(char *dst, const char *src, size_t siz);
 int str10toint(char const *src, int len);
 int str16toint(char const *src, int len);
 
+static inline bool
+httpcompare(string const &a, string const &b)
+{
+	return a.size() == b.size() &&
+	       !strncasecmp(a.data(), b.data(), a.size());
+}
+
 void outofmemory(void);
 #ifdef __SUNPRO_C
 # pragma does_not_return(outofmemory)

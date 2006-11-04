@@ -57,7 +57,7 @@ find_reqtype(char const *str, int len)
 	return REQTYPE_INVALID;
 }
 
-header::header(char const *n, char const *v)
+header::header(string const &n, string const &v)
 	: hr_name(n)
 	, hr_value(v)
 	, hr_next(NULL)
@@ -71,9 +71,17 @@ header_list::header_list()
 }
 
 void
-header_list::add(char const *name, size_t namelen, char const *value, size_t vallen)
+header_list::add(string const &name, string const &value)
 {
 	hl_hdrs.push_back(header(name, value));
+	hl_last = &*hl_hdrs.rbegin();
+	hl_len += name.size() + value.size() + 4;
+}
+
+void
+header_list::add(char const *name, size_t namelen, char const *value, size_t vallen)
+{
+	hl_hdrs.push_back(header(string(name, name + namelen), string(value, value + vallen)));
 	hl_last = &*hl_hdrs.rbegin();
 	hl_len += namelen + vallen + 4;
 }
@@ -81,7 +89,7 @@ header_list::add(char const *name, size_t namelen, char const *value, size_t val
 void
 header_list::add(char const *name, char const *value)
 {
-	add(name, strlen(name), value, strlen(value));
+	add(string(name), string(value));
 }
 
 void
@@ -90,12 +98,7 @@ header_list::append_last(const char *append)
 char const	*tmp;
 char		*n;
 	assert(hl_last);
-	tmp = hl_last->hr_value;
-	n = (char *)wmalloc(strlen(tmp) + strlen(append) + 2);
-	strcat(n, tmp);
-	strcat(n, " ");
-	strcat(n, append);
-	hl_last->hr_value = n;
+	hl_last->hr_value += append;
 }
 
 void
@@ -103,9 +106,9 @@ header_list::remove(const char *name)
 {
 vector<header>::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
-		if (strcasecmp(it->hr_name, name))
+		if (!httpcompare(it->hr_name, name))
 			continue;
-		hl_len -= strlen(it->hr_name) + strlen(it->hr_value) + 4;
+		hl_len -= it->hr_name.size() + it->hr_value.size() + 4;
 		hl_hdrs.erase(it);
 		return;
 	}
@@ -117,7 +120,7 @@ header_list::find(const char *name)
 {
 vector<header>::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
-		if (strcasecmp(it->hr_name, name))
+		if (!httpcompare(it->hr_name, name))
 			continue;
 		return &*it;
 	}
@@ -138,13 +141,13 @@ size_t	 buflen = 0;
 vector<header>::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
 	int	incr;
-		incr = strlen(it->hr_name);
-		memcpy(buf + buflen, it->hr_name, incr);
+		incr = it->hr_name.size();
+		memcpy(buf + buflen, it->hr_name.data(), incr);
 		buflen += incr;
 		memcpy(buf + buflen, ": ", 2);
 		buflen += 2;
-		incr = strlen(it->hr_value);
-		memcpy(buf + buflen, it->hr_value, incr);
+		incr = it->hr_value.size();
+		memcpy(buf + buflen, it->hr_value.data(), incr);
 		buflen += incr;
 		memcpy(buf + buflen, "\r\n", 2);
 		buflen += 2;
@@ -164,12 +167,12 @@ int i = 0;
 
 	for (header *h = hl_last; h; h = h->hr_next) {
 		int j, k;
-		k = strlen(h->hr_name);
+		k = h->hr_name.size();
 		write(fd, &k, sizeof(k));
-		j = strlen(h->hr_value);
+		j = h->hr_value.size();
 		write(fd, &j, sizeof(j));
-		write(fd, h->hr_name, k);
-		write(fd, h->hr_value, j);
+		write(fd, h->hr_name.data(), k);
+		write(fd, h->hr_value.data(), j);
 	}
 }
 
@@ -195,7 +198,7 @@ header_list::undump(int fd, off_t *len)
 		*len += read(fd, &i, sizeof(i));	
 		*len += read(fd, &j, sizeof(j));
 		WDEBUG((WLOG_DEBUG, "header_undump: i=%d j=%d", i, j));
-		n = (char *)wmalloc(i + j + 2);
+		n = (char *)malloc(i + j + 2);
 		i = read(fd, n, i);
 		*len += i;
 		s = n + i;
@@ -205,7 +208,8 @@ header_list::undump(int fd, off_t *len)
 		*len += k;
 		s += k;
 		*s = '\0';
-		add(n, wstrdup(v));
+		add(n, v);
+		free(n);
 	}
 	
 	return 0;
@@ -266,14 +270,7 @@ size_t		 vlen, nlen, rnpos;
 		}
 
 		WDEBUG((WLOG_DEBUG, "header_parser: header [%.*s] = [%.*s]", nlen, (char *)name, vlen, (char *)value));
-	char	*n, *v;
-		n = (char *)malloc(nlen + 1);
-		v = (char *)malloc(vlen + 1);
-		strncpy(n, name, nlen);
-		strncpy(v, value, vlen);
-		n[nlen] = '\0';
-		v[vlen] = '\0';
-		_headers.add(n, nlen, v, vlen);
+		_headers.add(name, nlen, value, vlen);
 	next:
 		len -= rn - bufp + 2;
 		bufp = rn + 2;
