@@ -318,7 +318,7 @@ class ExpressionController implements Controller {
 			$expressionMeaning = $expressionMeanings->getRecord(0);
 
 			$definition = $expressionMeaning->getAttributeValue($definedMeaningAttribute)->getAttributeValue($definitionAttribute);
-                        $translatedContent = $definition->getAttributeValue($translatedTextAttribute);
+			$translatedContent = $definition->getAttributeValue($translatedTextAttribute);
 
 			if ($translatedContent->getRecordCount() > 0) {
 				$definitionRecord = $translatedContent->getRecord(0);
