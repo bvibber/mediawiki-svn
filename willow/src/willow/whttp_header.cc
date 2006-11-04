@@ -226,8 +226,11 @@ size_t		 vlen, nlen, rnpos;
 		while (isspace(*value) && value < rn)
 			value++;
 		vlen = rn - value;
-		if (!strncmp(name, "Transfer-Encoding", rnpos) && !strncmp(value, "chunked", rnpos))
+		if (!strncasecmp(name, "Transfer-Encoding", nlen) && !strncasecmp(value, "chunked", vlen))
 			_flags.f_chunked = 1;
+		if (!strncasecmp(name, "Content-Length", nlen))
+			_content_length = str10toint(value, vlen);
+
 		WDEBUG((WLOG_DEBUG, "header_parser: header [%.*s] = [%.*s]", nlen, (char *)name, vlen, (char *)value));
 	char	*n, *v;
 		n = (char *)malloc(nlen + 1);

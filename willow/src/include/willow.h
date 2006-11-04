@@ -65,6 +65,9 @@ extern "C" size_t strlcat(char *dst, const char *src, size_t siz);
 extern "C" size_t strlcpy(char *dst, const char *src, size_t siz);
 #endif
 
+int str10toint(char const *src, int len);
+int str16toint(char const *src, int len);
+
 void outofmemory(void);
 #ifdef __SUNPRO_C
 # pragma does_not_return(outofmemory)

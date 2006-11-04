@@ -224,6 +224,7 @@ struct httpcllr {
 	header_spigot		*_error_headers;
 	io::file_spigot		*_error_body;
 	error_transform_filter	*_error_filter;
+	chunking_filter		*_chunking_filter;
 };
 
 httpcllr::httpcllr(fde *e)
@@ -238,6 +239,7 @@ httpcllr::httpcllr(fde *e)
 	, _error_headers(NULL)
 	, _error_body(NULL)
 	, _error_filter(NULL)
+	, _chunking_filter(NULL)
 {
 	/*
 	 * Start by reading headers.
@@ -258,6 +260,7 @@ httpcllr::~httpcllr(void)
 	delete _error_headers;
 	delete _error_filter;
 	delete _error_body;
+	delete _chunking_filter;
 	if (_backend_fde)
 		wnet_close(_backend_fde->fde_fd);
 	wnet_close(_client_fde->fde_fd);
@@ -271,7 +274,6 @@ static const char *removable_headers[] = {
 	"Proxy-Connection",
 	"TE",
 	"Trailers",
-	"Transfer-Encoding",
 	"Upgrade",
 	NULL,
 };
@@ -358,6 +360,13 @@ httpcllr::backend_read_headers_done(void)
 		_backend_headers._headers.remove(*s);
 	_backend_headers._headers.add("Connection", "close");
 
+	if (_backend_headers._content_length == -1 && !_backend_headers._flags.f_chunked
+		   && _header_parser._http_vers == http11)
+		/* we will chunk the request later */
+		_backend_headers._headers.add("Transfer-Encoding", "chunked");
+	if (_backend_headers._flags.f_chunked && _header_parser._http_vers == http10)
+		_backend_headers._headers.remove("Transfer-Encoding");
+
 	/*
 	 * Send the headers to the client.
 	 */
@@ -397,6 +406,16 @@ httpcllr::send_headers_to_client_done(void)
 		_dechunking_filter = new dechunking_filter;
 		_backend_spigot->sp_connect(_dechunking_filter);
 		_dechunking_filter->sp_connect(_client_sink);
+	} else if (_backend_headers._content_length == -1 && !_backend_headers._flags.f_chunked
+		   && _header_parser._http_vers == http11) {
+		/*
+		 * Unchunked request without Content-Length.  Insert a chunking filter
+		 * between the backend and the client so the client at least knows if we
+		 * didn't send enough data.
+		 */
+		_chunking_filter = new chunking_filter;
+		_backend_spigot->sp_connect(_chunking_filter);
+		_chunking_filter->sp_connect(_client_sink);
 	} else {
 		_backend_spigot->sp_connect(_client_sink);
 	}

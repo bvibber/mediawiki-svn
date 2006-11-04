@@ -250,6 +250,44 @@ int char_table[256] = {
 	/* 248 */ 0, 0, 0, 0, 0, 0, 0, 0,
 };
 
+int
+str16toint(char const *src, int len)
+{
+int     mult = 1;
+int     res = 0;
+        for (; len; len--) {
+        int     tval;
+        char    c = src[len - 1];
+                if (c >= '0' && c <= '9')
+                        tval = c - '0';
+                else if (c >= 'a' && c <= 'f')
+                        tval = 10 + c - 'a';
+                else if (c >= 'A' && c <= 'F')
+                        tval = 10 + c - 'A';
+                else    return res;
+                res += tval * mult;
+                mult <<= 4;
+        }
+        return res;
+}
+
+int
+str10toint(char const *src, int len)
+{
+int     mult = 1;
+int     res = 0;
+        for (; len; len--) {
+        int     tval;
+        char    c = src[len - 1];
+                if (c >= '0' && c <= '9')
+                        tval = c - '0';
+                else    return res;
+                res += tval * mult;
+                mult *= 10;
+        }
+        return res;
+}
+
 stats_stru stats;
 static struct event stats_ev;
 static struct timeval stats_tv;

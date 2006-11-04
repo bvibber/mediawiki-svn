@@ -282,10 +282,8 @@ struct buffering_filter : sink, spigot {
 			case sink_result_okay:
 				continue;
 			case sink_result_finished:
-				_sp_completed_callee();
 				return res;
 			case sink_result_error:
-				_sp_error_callee();
 				return res;
 			}
 		}

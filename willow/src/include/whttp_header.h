@@ -89,6 +89,7 @@ struct header_parser : io::sink, io::spigot
 		, _built(false)
 		, _corked(true)
 		, _is_response(false)
+		, _content_length(-1)
 		{
 			_flags.f_chunked = 0;
 	}
@@ -126,6 +127,7 @@ struct header_parser : io::sink, io::spigot
 	bool		 _built;
 	bool		 _corked;
 	bool		 _is_response;
+	ssize_t		 _content_length;
 	wnet::buffer	 _buf;
 	struct {
 		unsigned int	f_chunked:1;

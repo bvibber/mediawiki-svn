@@ -16,27 +16,6 @@ using std::min;
 #include "whttp_header.h"
 #include "flowio.h"
 
-int
-str16toint(char const *src, int len)
-{
-int     mult = 1;
-int     res = 0;
-        for (; len; len--) {
-        int     tval;
-        char    c = src[len - 1];
-                if (c >= '0' && c <= '9')
-                        tval = c - '0';
-                else if (c >= 'a' && c <= 'f')
-                        tval = 10 + c - 'a';
-                else if (c >= 'A' && c <= 'F')
-                        tval = 10 + c - 'A';
-                else    return res;
-                res += tval * mult;
-                mult <<= 4;
-        }
-        return res;
-}
-
 io::sink_result
 chunking_filter::bf_transform(char const *buf, size_t len, ssize_t &discard)
 {
@@ -45,7 +24,7 @@ int	i;
 	i = snprintf(sstr, sizeof(sstr), "%x\r\n", len);
 	s = new char[strlen(sstr)];
 	memcpy(s, sstr, i); 
-	_buf.add(sstr, i, true);
+	_buf.add(s, i, true);
 	_buf.add(buf, len, false);
 	discard += len;
 	return io::sink_result_okay;
@@ -55,7 +34,7 @@ io::sink_result
 chunking_filter::bf_eof(void)
 {
 	_buf.add("0\r\n", 3, false);
-	return io::sink_result_okay;
+	return io::sink_result_finished;
 }
 
 dechunking_filter::dechunking_filter()
