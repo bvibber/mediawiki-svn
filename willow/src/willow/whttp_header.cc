@@ -192,7 +192,7 @@ size_t		 vlen, nlen, rnpos;
 	while ((rn = find_rn(bufp, bufp + len)) != NULL) {
 		WDEBUG((WLOG_DEBUG, "after find_rn: cur: [%.*s]", rn - bufp, bufp));
 		for (char const *c = bufp; c < rn; ++c)
-			if (*(unsigned char *)c > 0x7f)
+			if (*(unsigned char *)c > 0x7f || !*c)
 				return io::sink_result_error;
 
 		if (rn == bufp) {
