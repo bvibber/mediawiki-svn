@@ -14,10 +14,12 @@
 
 #include <fstream>
 #include <string>
+#include <algorithm>
 #include <map>
 using std::ifstream;
 using std::string;
 using std::map;
+using std::min;
 
 #include "willow.h"
 #include "wnet.h"
@@ -381,6 +383,44 @@ private:
 
 		file_spigot	(void);
 	bool	open		(char const *, bool = false);
+};
+
+/*
+ * Claims to be finished after reading a certain amount of data.
+ */
+struct size_limiting_filter : sink, spigot, freelist_allocator<size_limiting_filter>
+{
+	size_limiting_filter(size_t sz) : _left(sz) {}
+
+	void sp_uncork(void) {
+		_sink_spigot->sp_uncork();
+	}
+
+	void sp_cork(void) {
+		_sink_spigot->sp_cork();
+	}
+
+	sink_result data_ready(char const *buf, size_t len, ssize_t &discard) {
+	sink_result	res;
+	ssize_t		sent = 0, send = min(len, _left);
+		res = _sp_sink->data_ready(buf, send, sent);
+		_left -= sent;
+		discard += sent;
+		if (res == sink_result_error)
+			return res;
+
+		if (_left == 0) {
+			WDEBUG((WLOG_DEBUG, "size limiter: finished"));
+			return sink_result_finished;
+		}
+		return res;		
+	}
+
+	sink_result data_empty(void) {
+		return _sp_sink->data_empty();
+	}
+private:
+	size_t	_left;
 };
 
 } // namespace io

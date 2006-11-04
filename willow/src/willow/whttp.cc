@@ -176,7 +176,8 @@ struct httpcllr {
 	void header_read_error			(void);
 		/* sending request to backend */
 	void backend_ready			(backend *, fde *, int);
-	void backend_write_done			(void);
+	void backend_write_headers_done		(void);
+	void backend_write_body_done		(void);
 	void backend_write_error		(void);
 		/* reading request from backend */
 	void backend_read_headers_done		(void);
@@ -197,17 +198,18 @@ struct httpcllr {
 	backend		*_backend;
 	fde		*_backend_fde;
 
-	io::fde_spigot		*_client_spigot;
-	io::fde_spigot		*_backend_spigot;
-	io::fde_sink		*_backend_sink,
-				*_client_sink;
-	header_parser		 _header_parser,
-				 _backend_headers;
-	dechunking_filter	*_dechunking_filter;
-	header_spigot		*_error_headers;
-	io::file_spigot		*_error_body;
-	error_transform_filter	*_error_filter;
-	chunking_filter		*_chunking_filter;
+	io::fde_spigot			*_client_spigot;
+	io::fde_spigot			*_backend_spigot;
+	io::fde_sink			*_backend_sink,
+					*_client_sink;
+	header_parser			 _header_parser,
+					 _backend_headers;
+	dechunking_filter		*_dechunking_filter;
+	header_spigot			*_error_headers;
+	io::file_spigot			*_error_body;
+	error_transform_filter		*_error_filter;
+	chunking_filter			*_chunking_filter;
+	io::size_limiting_filter	*_size_limit;
 };
 
 httpcllr::httpcllr(fde *e)
@@ -223,6 +225,7 @@ httpcllr::httpcllr(fde *e)
 	, _error_body(NULL)
 	, _error_filter(NULL)
 	, _chunking_filter(NULL)
+	, _size_limit(NULL)
 {
 	/*
 	 * Start by reading headers.
@@ -244,6 +247,7 @@ httpcllr::~httpcllr(void)
 	delete _error_filter;
 	delete _error_body;
 	delete _chunking_filter;
+	delete _size_limit;
 	if (_backend_fde)
 		wnet_close(_backend_fde->fde_fd);
 	wnet_close(_client_fde->fde_fd);
@@ -267,21 +271,22 @@ void
 httpcllr::header_read_complete(void)
 {
 	WDEBUG((WLOG_DEBUG, "header_read_complete()"));
-	for (const char **s = removable_headers; *s; ++s)
-		_header_parser._headers.remove(*s);
-	_header_parser._headers.add("Connection", "close");
-
-
-	if (_header_parser._http_reqtype == REQTYPE_POST && _header_parser._content_length == -1) {
-		send_error(ERR_BADREQUEST, "POST request without content length",
-			400, "Bad request");
-		return;
-	}
-
 	/*
 	 * Now parse the client's headers and decide what to do with
 	 * the request.
 	 */
+	for (const char **s = removable_headers; *s; ++s)
+		_header_parser._headers.remove(*s);
+	_header_parser._headers.add("Connection", "close");
+
+	if (_header_parser._http_reqtype == REQTYPE_POST) {
+		if (_header_parser._content_length == -1) {
+			send_error(ERR_BADREQUEST, "POST request without content length",
+				400, "Bad request");
+			return;
+		}
+	}
+
 	_client_spigot->sp_disconnect();
 	if (gbep.get(_header_parser._http_path, 
 		     polycaller<backend *, fde *, int>(*this, &httpcllr::backend_ready), 0) == -1)
@@ -314,7 +319,7 @@ httpcllr::backend_ready(backend *be, fde *e, int)
 	_backend_fde = e;
 	_backend = be;
 	_backend_sink = new io::fde_sink(e);
-	_header_parser.completed_callee(this, &httpcllr::backend_write_done);
+	_header_parser.completed_callee(this, &httpcllr::backend_write_headers_done);
 	_header_parser.error_callee(this, &httpcllr::backend_write_error);
 	_header_parser.sp_connect(_backend_sink);
 	_header_parser.sp_uncork();
@@ -329,9 +334,29 @@ httpcllr::backend_write_error(void)
 }
 
 void
-httpcllr::backend_write_done(void)
+httpcllr::backend_write_headers_done(void)
 {
 	WDEBUG((WLOG_DEBUG, "backend_write_done"));
+	if (_header_parser._http_reqtype == REQTYPE_POST) {
+		/*
+		 * Connect the client to the backend and read the POST data.
+		 */
+		_size_limit = new io::size_limiting_filter(_header_parser._content_length);
+		_client_spigot->sp_connect(_size_limit);
+		_size_limit->sp_connect(_backend_sink);
+
+		_client_spigot->completed_callee(this, &httpcllr::backend_write_body_done);
+		_client_spigot->error_callee(this, &httpcllr::backend_write_error);
+
+		_client_spigot->sp_uncork();
+		return;
+	}
+	backend_write_body_done();
+}
+
+void
+httpcllr::backend_write_body_done(void)
+{
 	/*
 	 * Detach the backend sink and create a spigot to read the reply.
 	 */
