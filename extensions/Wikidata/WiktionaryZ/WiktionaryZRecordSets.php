@@ -180,7 +180,7 @@ function getDefinedMeaningReferenceRecords($definedMeaningIds) {
 	global
 		$wgUser;
 	
-	$startTime = microtime(true);
+//	$startTime = microtime(true);
 
 	$result = array();
 	$definedMeaningIdsForExpressions = $definedMeaningIds;
@@ -228,8 +228,8 @@ function getDefinedMeaningReferenceRecords($definedMeaningIds) {
 		$result[0] = getNullDefinedMeaningReferenceRecord();
 	}
 
-	$queriesTime = microtime(true) - $startTime;
-	echo "<!-- Defined meaning reference queries: " . $queriesTime . " -->\n";
+//	$queriesTime = microtime(true) - $startTime;
+//	echo "<!-- Defined meaning reference queries: " . $queriesTime . " -->\n";
 
 	return $result;
 }
