@@ -73,6 +73,9 @@ sink_result	res;
 		}
 	}
 
+	if (_off >= _saved)
+		_off = _saved = 0;
+
 	read = ::read(e->fde_fd, _savebuf, sizeof(_savebuf));
 	WDEBUG((WLOG_DEBUG, "read %d", read));
 	if (read == 0) {
@@ -108,7 +111,7 @@ sink_result	res;
 	switch (this->_sp_data_ready(_savebuf, _saved, _off)) {
 	case sink_result_blocked:
 	case sink_result_okay:
-		return;
+		break;
 	case sink_result_error:
 		_sp_error_callee();
 		return;
@@ -116,7 +119,7 @@ sink_result	res;
 		_sp_completed_callee();
 		return;
 	}
-	assert(_off <= read);
+	ioloop->readback(_fde->fde_fd, polycaller<fde *, int>(*this, &fde_spigot::_fdecall), 0);
 	WDEBUG((WLOG_DEBUG, "fde_spigot::_fdecall_impl: saving %d", _saved));
 	return;
 }
@@ -141,7 +144,7 @@ ssize_t	wrote;
 		break;
 	}
 	WDEBUG((WLOG_DEBUG, "fde_sink::data_ready: got %lu, wrote %lu", len, wrote));
-	discard = wrote;
+	discard += wrote;
 	return sink_result_okay;
 }
 

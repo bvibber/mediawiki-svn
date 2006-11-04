@@ -47,7 +47,7 @@ int	i;
 	memcpy(s, sstr, i); 
 	_buf.add(sstr, i, true);
 	_buf.add(buf, len, false);
-	discard = len;
+	discard += len;
 	return io::sink_result_okay;
 }
 
@@ -71,16 +71,15 @@ dechunking_filter::bf_transform(char const *buf, size_t len, ssize_t &discard)
 	size_t	sent = min(len, _current_chunk_size);
 		_buf.add(buf, sent, false);
 		_current_chunk_size -= sent;
-		discard = sent;
+		discard += sent;
 	} else {
 		/* this data is the chunk size */
 	char const	*rn;
 		if ((rn = header_parser::find_rn(buf, buf + len)) == NULL) {
-			discard = 0;
 			return io::sink_result_okay;	/* need more data */
 		}
 		_current_chunk_size = str16toint(buf, rn - buf);
-		discard = rn - buf + 2;
+		discard += rn - buf + 2;
 	}
 	return io::sink_result_okay;
 }

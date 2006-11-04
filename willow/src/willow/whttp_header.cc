@@ -193,7 +193,7 @@ size_t		 vlen, nlen, rnpos;
 		WDEBUG((WLOG_DEBUG, "after find_rn: cur: [%.*s]", rn - bufp, bufp));
 		if (rn == bufp) {
 			_sink_spigot->sp_cork();
-			discard = bufp - buf + 2;
+			discard += bufp - buf + 2;
 			WDEBUG((WLOG_DEBUG, "header_parser::data_ready: discarding %d up to [%s]", discard, buf + discard));
 			/* request with no request is an error */
 			if (!_got_reqtype)
@@ -240,7 +240,7 @@ size_t		 vlen, nlen, rnpos;
 			len, bufp, len));
 	}
 	WDEBUG((WLOG_DEBUG, "header_parser: discarding %d", bufp - buf));
-	discard = bufp - buf;
+	discard += bufp - buf;
 	return io::sink_result_okay;
 }
 
@@ -352,7 +352,7 @@ int	 left = _headers.hl_len;
 	_corked = false;
 	while (!_corked && _buf.items.size()) {
 	wnet::buffer_item	&b = *_buf.items.begin();
-	ssize_t			 discard;
+	ssize_t			 discard = 0;
 	io::sink_result		 res;
 		WDEBUG((WLOG_DEBUG, "header_parse::uncork: %d in current buffer %p", b.len, b.buf));
 		res = _sp_sink->data_ready(b.buf + b.off, b.len - b.off, discard);
