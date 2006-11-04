@@ -1052,22 +1052,24 @@ class RecordUnorderedListEditor extends RecordListEditor {
 		parent::__construct($attribute, $headerLevel, "li");
 	}
 	
+	protected function wrapInList($listItems) {
+		if ($listItems != "")
+			return
+				'<ul class="collapsable-items">' . $listItems . '</ul>';
+		else
+			return "";
+	}
+	
 	public function view($idPath, $value) {
-		return	'<ul class="collapsable-items">' .
-					parent::view($idPath, $value) .
-				'</ul>';
+		return $this->wrapInList(parent::view($idPath, $value));
 	}
 
 	public function edit($idPath, $value) {
-		return 	'<ul class="collapsable-items">' .
-					parent::edit($idPath, $value) .
-				'</ul>';
+		return $this->wrapInList(parent::edit($idPath, $value));
 	}
 
 	public function add($idPath) {
-		return	'<ul class="collapsable-items">' .
-					parent::add($idPath) .
-				'</ul>';
+		return $this->wrapInList(parent::add($idPath));
 	}
 }
 
@@ -1076,22 +1078,20 @@ class RecordDivListEditor extends RecordListEditor {
 		parent::__construct($attribute, 0, "div");
 	}
 
+	protected function wrapInDiv($listItems) {
+		return '<div>' . $listItems . '</div>';
+	}
+	
 	public function view($idPath, $value) {
-		return	'<div class="collapsable-items">' .
-					parent::view($idPath, $value) .
-				'</div>';
+		return $this->wrapInDiv(parent::view($idPath, $value));
 	}
 
 	public function edit($idPath, $value) {
-		return 	'<div class="collapsable-items">' .
-					parent::edit($idPath, $value) .
-				'</div>';
+		return $this->wrapInDiv(parent::edit($idPath, $value));
 	}
 
 	public function add($idPath) {
-		return	'<div class="collapsable-items">' .
-					parent::add($idPath) .
-				'</div>';
+		return $this->wrapInDiv(parent::add($idPath));
 	}
 	
 	protected function childHeader($editor, $attribute, $class, $attributeId){
@@ -1209,94 +1209,104 @@ class RecordSetListEditor extends RecordSetEditor {
 	}
 
 	public function view($idPath, $value) {
-		$result = '<ul class="collapsable-items">';
 		$recordCount = $value->getRecordCount();
-		$key = $value->getKey();
-		$captionAttribute = $this->captionEditor->getAttribute();
-		$valueAttribute = $this->valueEditor->getAttribute();
 
-		for ($i = 0; $i < $recordCount; $i++) {
-			$record = $value->getRecord($i);
-			$idPath->pushKey(project($record, $key));
-			$recordId = $idPath->getId();
-			$captionClass = $idPath->getClass() . "-record";
-			$captionExpansionPrefix = $this->getExpansionPrefix($captionClass, $recordId);
-			$this->setExpansion($this->childrenExpanded, $captionClass);
-			$valueClass = $idPath->getClass() . "-record";
-			$this->setExpansion($this->childrenExpanded, $valueClass);
-
-			$idPath->pushAttribute($captionAttribute);
-			$result .= '<li>'.
-						'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($captionClass) .'" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&nbsp;' . $this->captionEditor->view($idPath, $record->getAttributeValue($captionAttribute)) . '</span></h' . $this->headerLevel .'>';
-			$idPath->popAttribute();
-
-			$idPath->pushAttribute($valueAttribute);
-			$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $valueClass . '">' . $this->valueEditor->view($idPath, $record->getAttributeValue($valueAttribute)) . '</div>' .
-						'</li>';
-			$idPath->popAttribute();
-
-			$idPath->popKey();
+		if ($recordCount > 0) {
+			$result = '<ul class="collapsable-items">';
+			$key = $value->getKey();
+			$captionAttribute = $this->captionEditor->getAttribute();
+			$valueAttribute = $this->valueEditor->getAttribute();
+		
+			for ($i = 0; $i < $recordCount; $i++) {
+				$record = $value->getRecord($i);
+				$idPath->pushKey(project($record, $key));
+				$recordId = $idPath->getId();
+				$captionClass = $idPath->getClass() . "-record";
+				$captionExpansionPrefix = $this->getExpansionPrefix($captionClass, $recordId);
+				$this->setExpansion($this->childrenExpanded, $captionClass);
+				$valueClass = $idPath->getClass() . "-record";
+				$this->setExpansion($this->childrenExpanded, $valueClass);
+		
+				$idPath->pushAttribute($captionAttribute);
+				$result .= '<li>'.
+							'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($captionClass) .'" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&nbsp;' . $this->captionEditor->view($idPath, $record->getAttributeValue($captionAttribute)) . '</span></h' . $this->headerLevel .'>';
+				$idPath->popAttribute();
+		
+				$idPath->pushAttribute($valueAttribute);
+				$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $valueClass . '">' . $this->valueEditor->view($idPath, $record->getAttributeValue($valueAttribute)) . '</div>' .
+							'</li>';
+				$idPath->popAttribute();
+		
+				$idPath->popKey();
+			}
+		
+			$result .= '</ul>';
+		
+			return $result;
 		}
-
-		$result .= '</ul>';
-
-		return $result;
+		else
+			return "";	
 	}
 
 	public function edit($idPath, $value) {
 		global
 			$wgScriptPath;
 		
-		$result = '<ul class="collapsable-items">';
 		$recordCount = $value->getRecordCount();
-		$key = $value->getKey();
-		$captionAttribute = $this->captionEditor->getAttribute();
-		$valueAttribute = $this->valueEditor->getAttribute();
+		
+		if ($recordCount > 0 || $this->allowAdd) {
+			$result = '<ul class="collapsable-items">';
+			$key = $value->getKey();
+			$captionAttribute = $this->captionEditor->getAttribute();
+			$valueAttribute = $this->valueEditor->getAttribute();
+	
+			for ($i = 0; $i < $recordCount; $i++) {
+				$record = $value->getRecord($i);
+				$idPath->pushKey(project($record, $key));
+	
+				$recordId = $idPath->getId();
+				$captionClass = $idPath->getClass();
+				$captionExpansionPrefix = $this->getExpansionPrefix($captionClass, $recordId);
+				$this->setExpansion($this->childrenExpanded, $captionClass);
+				$valueClass = $idPath->getClass();
+				$this->setExpansion($this->childrenExpanded, $valueClass);
+	
+				$idPath->pushAttribute($captionAttribute);
+				$result .= '<li>'.
+							'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($captionClass) .'" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&nbsp;' . $this->captionEditor->edit($idPath, $record->getAttributeValue($captionAttribute)) . '</span></h' . $this->headerLevel .'>';
+				$idPath->popAttribute();
+	
+				$idPath->pushAttribute($valueAttribute);
+				$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $valueClass . '">' . $this->valueEditor->edit($idPath, $record->getAttributeValue($valueAttribute)) . '</div>' .
+							'</li>';
+				$idPath->popAttribute();
+	
+				$idPath->popKey();
+			}
+	
+			if ($this->allowAdd) {
+				$recordId = 'add-' . $idPath->getId();
+				$idPath->pushAttribute($captionAttribute);
+				$class = $idPath->getClass();
+	
+				$this->setExpansion(true, $class);
+	
+				$result .= '<li>'.
+							'<h' . $this->headerLevel . '><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $this->getExpansionPrefix($idPath->getClass(), $idPath->getId()) . ' <img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/> ' . $this->captionEditor->add($idPath) . '</span></h' . $this->headerLevel .'>';
+				$idPath->popAttribute();
+	
+				$idPath->pushAttribute($valueAttribute);
+				$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $class . '">' . $this->valueEditor->add($idPath) . '</div>' .
+							'</li>';
+				$idPath->popAttribute();
+			}
 
-		for ($i = 0; $i < $recordCount; $i++) {
-			$record = $value->getRecord($i);
-			$idPath->pushKey(project($record, $key));
+			$result .= '</ul>';
 
-			$recordId = $idPath->getId();
-			$captionClass = $idPath->getClass();
-			$captionExpansionPrefix = $this->getExpansionPrefix($captionClass, $recordId);
-			$this->setExpansion($this->childrenExpanded, $captionClass);
-			$valueClass = $idPath->getClass();
-			$this->setExpansion($this->childrenExpanded, $valueClass);
-
-			$idPath->pushAttribute($captionAttribute);
-			$result .= '<li>'.
-						'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($captionClass) .'" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&nbsp;' . $this->captionEditor->edit($idPath, $record->getAttributeValue($captionAttribute)) . '</span></h' . $this->headerLevel .'>';
-			$idPath->popAttribute();
-
-			$idPath->pushAttribute($valueAttribute);
-			$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $valueClass . '">' . $this->valueEditor->edit($idPath, $record->getAttributeValue($valueAttribute)) . '</div>' .
-						'</li>';
-			$idPath->popAttribute();
-
-			$idPath->popKey();
+			return $result;
 		}
-
-		if ($this->allowAdd) {
-			$recordId = 'add-' . $idPath->getId();
-			$idPath->pushAttribute($captionAttribute);
-			$class = $idPath->getClass();
-
-			$this->setExpansion(true, $class);
-
-			$result .= '<li>'.
-						'<h' . $this->headerLevel . '><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $this->getExpansionPrefix($idPath->getClass(), $idPath->getId()) . ' <img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/> ' . $this->captionEditor->add($idPath) . '</span></h' . $this->headerLevel .'>';
-			$idPath->popAttribute();
-
-			$idPath->pushAttribute($valueAttribute);
-			$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $class . '">' . $this->valueEditor->add($idPath) . '</div>' .
-						'</li>';
-			$idPath->popAttribute();
-		}
-
-		$result .= '</ul>';
-
-		return $result;
+		else
+			return ""; 
 	}
 
 	public function add($idPath) {
