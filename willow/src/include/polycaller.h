@@ -1,4 +1,4 @@
-/* @(#) $Id: wnet.h 17221 2006-10-23 18:37:57Z river $ */
+/* @(#) $Id$ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
@@ -9,7 +9,7 @@
 #define POLYCALLER_H
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id: wnet.h 17221 2006-10-23 18:37:57Z river $"
+# pragma ident "@(#)$Id$"
 #endif
 
 #include <stdexcept>

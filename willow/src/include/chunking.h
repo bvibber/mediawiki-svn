@@ -1,4 +1,4 @@
-/* @(#) $Id: whttp.h 17230 2006-10-24 01:00:19Z river $ */
+/* @(#) $Id$ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
@@ -9,7 +9,7 @@
 #define DECHUNKING_FILTER_H
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id: whttp.h 17230 2006-10-24 01:00:19Z river $"
+# pragma ident "@(#)$Id$"
 #endif
 
 #include "willow.h"
