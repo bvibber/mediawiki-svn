@@ -35,33 +35,61 @@ function wfSpecialTransaction() {
 
 function initializeAttributes() {
 	global
-		$operationAttribute, $updatedDefinitionStructure, $updatedDefinitionAttribute, $languageAttribute, $textAttribute, 
-		$definedMeaningReferenceAttribute, $definedMeaningIdAttribute, $updatesInTransactionAttribute,
-		$expressionAttribute, $identicalMeaningAttribute, $updatedSyntransesAttribute;
+		$operationAttribute, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, $languageAttribute, $textAttribute,
+		$definedMeaningReferenceStructure;
 
 	$operationAttribute = new Attribute('operation', 'Operation', 'text');
+
+	global
+		$updatedDefinitionStructure, $updatedDefinitionAttribute;
 	
 	$updatedDefinitionStructure = new Structure(
 		$definedMeaningIdAttribute, 
 		$definedMeaningReferenceAttribute, 
 		$languageAttribute, 
-		$textAttribute
+		$textAttribute,
+		$operationAttribute
 	);		
 	
 	$updatedDefinitionAttribute = new Attribute('updated-definition', 'Definition', new RecordSetType($updatedDefinitionStructure));
+
+	global
+		$expressionAttribute, $identicalMeaningAttribute, $updatedSyntransesAttribute;
 
 	$updatedSyntransesStructure = new Structure(
 		$definedMeaningIdAttribute, 
 		$definedMeaningReferenceAttribute, 
 		$expressionAttribute, 
-		$identicalMeaningAttribute
+		$identicalMeaningAttribute,
+		$operationAttribute
 	); 
 	
 	$updatedSyntransesAttribute = new Attribute('updated-syntranses', 'Synonyms and translations', new RecordSetType($updatedSyntransesStructure));
 	
+	global
+		$relationIdAttribute, $firstMeaningAttribute, $secondMeaningAttribute, $relationTypeAttribute, 
+		$updatedRelationsStructure, $updatedRelationsAttribute;
+	
+	$firstMeaningAttribute = new Attribute('first-meaning', "First defined meaning", new RecordType($definedMeaningReferenceStructure));
+	$secondMeaningAttribute = new Attribute('second-meaning', "Second defined meaning", new RecordType($definedMeaningReferenceStructure));
+
+	$updatedRelationsStructure = new Structure(
+		$relationIdAttribute,
+		$firstMeaningAttribute, 
+		$relationTypeAttribute, 
+		$secondMeaningAttribute,
+		$operationAttribute
+	);
+	
+	$updatedRelationsAttribute = new Attribute('updated-relations', 'Relations', new RecordSetType($updatedRelationsStructure));
+	
+	global
+		$updatesInTransactionAttribute;
+
 	$updatesInTransactionStructure = new Structure(
 		$updatedDefinitionAttribute,
-		$updatedSyntransesAttribute
+		$updatedSyntransesAttribute,
+		$updatedRelationsAttribute
 	);
 	
 	$updatesInTransactionAttribute = new Attribute('updates-in-transaction', 'Updates in transaction', new RecordType($updatesInTransactionStructure));
@@ -71,7 +99,7 @@ function getTransactionOverview() {
 	global
 		$transactionsTable, $transactionAttribute, $transactionIdAttribute, $userAttribute, $userIPAttribute, 
 		$timestampAttribute, $summaryAttribute, $updatesInTransactionAttribute, $updatedDefinitionAttribute,
-		$updatedSyntransesAttribute;
+		$updatedSyntransesAttribute, $updatedRelationsAttribute;
 
 	$queryTransactionInformation = new QueryLatestTransactionInformation();
 
@@ -101,6 +129,7 @@ function getTransactionOverview() {
 	$valueEditor = new RecordUnorderedListEditor($updatesInTransactionAttribute, 5);
 	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($updatedDefinitionAttribute));
 	$valueEditor->addEditor(getUpdatedSyntransesEditor($updatedSyntransesAttribute));
+	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute));
 	
 	$editor = new RecordSetListEditor(null, new SimplePermissionController(false), false, false, false, null, 4, false);
 	$editor->setCaptionEditor($captionEditor);
@@ -124,11 +153,12 @@ function expandUpdatesInTransactionInRecordSet($recordSet) {
 
 function getUpdatesInTransactionRecord($transactionId) {
 	global	
-		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute;
+		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, $updatedRelationsAttribute;
 		
 	$record = new ArrayRecord($updatesInTransactionAttribute->type->getStructure());
 	$record->setAttributeValue($updatedDefinitionAttribute, getUpdatedDefinedMeaningDefinitionRecordSet($transactionId));
 	$record->setAttributeValue($updatedSyntransesAttribute, getUpdatedSyntransesRecordSet($transactionId));
+	$record->setAttributeValue($updatedRelationsAttribute, getUpdatedRelationsRecordSet($transactionId));
 	
 	return $record;
 }
@@ -199,6 +229,34 @@ function getUpdatedSyntransesRecordSet($transactionId) {
 	return $recordSet;
 }
 
+function getUpdatedRelationsRecordSet($transactionId) {
+	global
+		$updatedRelationsStructure, $relationIdAttribute, $firstMeaningAttribute, $secondMeaningAttribute, 
+		$relationTypeAttribute, $operationAttribute;
+	
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT relation_id, meaning1_mid, meaning2_mid, relationtype_mid, " . getOperationSelectColumn('uw_meaning_relations', $transactionId) . 
+		" FROM uw_meaning_relations " .
+		" WHERE " . getInTransactionRestriction('uw_meaning_relations', $transactionId)
+	);
+		
+	$recordSet = new ArrayRecordSet($updatedRelationsStructure, new Structure($relationIdAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) {
+		$record = new ArrayRecord($updatedRelationsStructure);
+		$record->setAttributeValue($relationIdAttribute, $row->relation_id);
+		$record->setAttributeValue($firstMeaningAttribute, getDefinedMeaningReferenceRecord($row->meaning1_mid));
+		$record->setAttributeValue($secondMeaningAttribute, getDefinedMeaningReferenceRecord($row->meaning2_mid));
+		$record->setAttributeValue($relationTypeAttribute, getDefinedMeaningReferenceRecord($row->relationtype_mid));
+		$record->setAttributeValue($operationAttribute, $row->operation);
+		
+		$recordSet->add($record);	
+	}
+	
+	return $recordSet;
+}
+
 function getUpdatedDefinedMeaningDefinitionEditor($attribute) {
 	global
 		$definedMeaningReferenceAttribute, $languageAttribute, $textAttribute, $operationAttribute;
@@ -220,6 +278,19 @@ function getUpdatedSyntransesEditor($attribute) {
 	$editor->addEditor(new DefinedMeaningReferenceEditor($definedMeaningReferenceAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(getExpressionTableCellEditor($expressionAttribute));
 	$editor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(false), false, false));
+	$editor->addEditor(new TextEditor($operationAttribute, new SimplePermissionController(false), false));
+	
+	return $editor;
+}
+
+function getUpdatedRelationsEditor($attribute) {
+	global
+		$firstMeaningAttribute, $relationTypeAttribute, $secondMeaningAttribute, $operationAttribute;
+		
+	$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(false), false, false, false, null);
+	$editor->addEditor(new DefinedMeaningReferenceEditor($firstMeaningAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new DefinedMeaningReferenceEditor($secondMeaningAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new TextEditor($operationAttribute, new SimplePermissionController(false), false));
 	
 	return $editor;
