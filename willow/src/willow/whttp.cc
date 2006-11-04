@@ -278,6 +278,7 @@ httpcllr::header_read_complete(void)
 	for (const char **s = removable_headers; *s; ++s)
 		_header_parser._headers.remove(*s);
 	_header_parser._headers.add("Connection", "close");
+	_header_parser._headers.add("X-Forwarded-For", _client_fde->fde_straddr);
 
 	if (_header_parser._http_reqtype == REQTYPE_POST) {
 		if (_header_parser._content_length == -1) {
