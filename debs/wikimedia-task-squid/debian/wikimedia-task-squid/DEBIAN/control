@@ -1,0 +1,12 @@
+Package: wikimedia-task-squid
+Version: 0.01
+Section: unknown
+Priority: optional
+Architecture: all
+Depends: squid, wikimedia-lvs-realserver
+Installed-Size: 52
+Maintainer: Mark Bergsma <mark@wikimedia.org>
+Description: Provides a Wikimedia Squid caching proxy server
+ Package wikimedia-task-squid depends on the appropriate packages
+ that need to be installed on a Wikimedia Squid server, and does
+ some system customization specific to Wikimedia Squid servers

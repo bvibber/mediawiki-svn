@@ -1,0 +1,14 @@
+Source: wikimedia-task-squid
+Section: unknown
+Priority: optional
+Maintainer: Mark Bergsma <mark@wikimedia.org>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.2
+
+Package: wikimedia-task-squid
+Architecture: all
+Depends: squid, wikimedia-lvs-realserver
+Description: Provides a Wikimedia Squid caching proxy server
+ Package wikimedia-task-squid depends on the appropriate packages
+ that need to be installed on a Wikimedia Squid server, and does
+ some system customization specific to Wikimedia Squid servers
