@@ -377,7 +377,19 @@ function getExpressionsRecordSet($spelling, $queryTransactionInformation) {
 		$expressionIdAttribute, $expressionAttribute, $languageAttribute, $expressionMeaningsAttribute;
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT expression_id, language_id from uw_expression_ns WHERE spelling=BINARY " . $dbr->addQuotes($spelling));
+	$queryResult = $dbr->query(
+		"SELECT expression_id, language_id " .
+		" FROM uw_expression_ns" .
+		" WHERE spelling=BINARY " . $dbr->addQuotes($spelling) .
+		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
+		" AND EXISTS (" .
+			"SELECT expression_id " .
+			" FROM uw_syntrans " .
+			" WHERE uw_syntrans.expression_id=uw_expression_ns.expression_id" .
+			" AND ". getLatestTransactionRestriction('uw_syntrans') 
+		.")"
+	);
+	
 	$result = new ArrayRecordSet(new Structure($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute), new Structure($expressionIdAttribute));
 	$expressionStructure = new Structure($languageAttribute);
 
