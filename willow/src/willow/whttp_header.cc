@@ -27,6 +27,8 @@ using std::vector;
 #include "whttp_header.h"
 #include "wnet.h"
 #include "flowio.h"
+#include "wconfig.h"
+
 using namespace wnet;
 
 header::header(char const *n, char const *v)
@@ -186,6 +188,7 @@ header_list::undump(int fd, off_t *len)
 io::sink_result
 header_parser::data_ready(char const *buf, size_t len, ssize_t &discard)
 {
+static char const *msie = "MSIE";
 	WDEBUG((WLOG_DEBUG, "header_parser: got data [%.*s]", len, buf));
 char const	*rn, *value, *name, *bufp = buf;
 size_t		 vlen, nlen, rnpos;
@@ -228,8 +231,13 @@ size_t		 vlen, nlen, rnpos;
 		vlen = rn - value;
 		if (!strncasecmp(name, "Transfer-Encoding", nlen) && !strncasecmp(value, "chunked", vlen))
 			_flags.f_chunked = 1;
-		if (!strncasecmp(name, "Content-Length", nlen))
+		else if (!strncasecmp(name, "Content-Length", nlen))
 			_content_length = str10toint(value, vlen);
+		else if (config.msie_hack && !strncasecmp(name, "User-Agent", nlen) &&
+			 std::search(value, value + vlen, msie, msie + 4) != value + vlen) {
+			WDEBUG((WLOG_DEBUG, "client is MSIE"));
+			_is_msie = true;
+		}
 
 		WDEBUG((WLOG_DEBUG, "header_parser: header [%.*s] = [%.*s]", nlen, (char *)name, vlen, (char *)value));
 	char	*n, *v;

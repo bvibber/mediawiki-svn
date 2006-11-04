@@ -363,10 +363,12 @@ httpcllr::backend_read_headers_done(void)
 	_backend_headers._headers.add("Connection", "close");
 
 	if (_backend_headers._content_length == -1 && !_backend_headers._flags.f_chunked
-		   && _header_parser._http_vers == http11)
+		   && _header_parser._http_vers == http11 && !(config.msie_hack && _header_parser._is_msie))
 		/* we will chunk the request later */
 		_backend_headers._headers.add("Transfer-Encoding", "chunked");
-	if (_backend_headers._flags.f_chunked && _header_parser._http_vers == http10)
+	else if (_backend_headers._flags.f_chunked && _header_parser._http_vers == http10)
+		_backend_headers._headers.remove("Transfer-Encoding");
+	else if (_backend_headers._flags.f_chunked && config.msie_hack && _header_parser._is_msie)
 		_backend_headers._headers.remove("Transfer-Encoding");
 
 	/*
@@ -409,7 +411,7 @@ httpcllr::send_headers_to_client_done(void)
 		_backend_spigot->sp_connect(_dechunking_filter);
 		_dechunking_filter->sp_connect(_client_sink);
 	} else if (_backend_headers._content_length == -1 && !_backend_headers._flags.f_chunked
-		   && _header_parser._http_vers == http11) {
+		   && _header_parser._http_vers == http11 && !(config.msie_hack && _header_parser._is_msie)) {
 		/*
 		 * Unchunked request without Content-Length.  Insert a chunking filter
 		 * between the backend and the client so the client at least knows if we
@@ -418,6 +420,11 @@ httpcllr::send_headers_to_client_done(void)
 		_chunking_filter = new chunking_filter;
 		_backend_spigot->sp_connect(_chunking_filter);
 		_chunking_filter->sp_connect(_client_sink);
+	} else if (_backend_headers._flags.f_chunked && config.msie_hack && _header_parser._is_msie) {
+		WDEBUG((WLOG_DEBUG, "MSIE client, inserting dechunking_filter"));
+		_dechunking_filter = new dechunking_filter;
+		_backend_spigot->sp_connect(_dechunking_filter);
+		_dechunking_filter->sp_connect(_client_sink);
 	} else {
 		_backend_spigot->sp_connect(_client_sink);
 	}
