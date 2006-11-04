@@ -306,6 +306,8 @@ int		 codelen, desclen;
 		_http_vers = http11;
 	else	return -1;
 
+	_response = str10toint(errcode, codelen);
+
 	_http_path.assign(errcode, errcode + codelen);
 	_http_path += " ";
 	_http_path.append(errdesc, errdesc + desclen);
@@ -440,8 +442,10 @@ header_spigot::sp_uncork(void)
 
 	while (!_corked && _buf.items.size()) {
 	buffer_item	&b = *_buf.items.begin();
-	ssize_t		 discard;
+	ssize_t		 discard = 0;
 	io::sink_result	 res;
+		WDEBUG((WLOG_DEBUG, "header_spigot: writing %d", b.len));
+
 		res = _sp_sink->data_ready(b.buf + b.off, b.len, discard);
 		if ((size_t)discard == b.len) {
 			_buf.items.pop_front();

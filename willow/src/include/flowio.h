@@ -246,8 +246,12 @@ struct buffering_filter : sink, spigot {
 
 	sink_result data_empty () {
 	sink_result	res;
+		WDEBUG((WLOG_DEBUG, "buffering_filter: data_empty"));
 		res = bf_eof();
 		if (res != sink_result_finished)
+			return res;
+		res = _bf_push_data();
+		if (res != sink_result_okay && res != sink_result_finished)
 			return res;
 		return _sp_sink->data_empty();
 	}
@@ -297,7 +301,7 @@ struct buffering_filter : sink, spigot {
 struct buffering_spigot : spigot
 {
 	buffering_spigot() 
-		: _corked(false) {
+		: _corked(true) {
 	}
 
 	virtual bool bs_get_data(void) = 0;

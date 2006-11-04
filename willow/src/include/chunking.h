@@ -22,8 +22,12 @@
  */
 struct chunking_filter : freelist_allocator<chunking_filter>, io::buffering_filter
 {
+	chunking_filter() : _first(true) {}
+
 	io::sink_result	bf_transform(char const *, size_t, ssize_t &);
 	io::sink_result	bf_eof(void);
+
+	bool _first;
 };
 
 

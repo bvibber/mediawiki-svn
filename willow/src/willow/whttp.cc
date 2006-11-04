@@ -275,6 +275,8 @@ static const char *removable_headers[] = {
 	"TE",
 	"Trailers",
 	"Upgrade",
+	"If-Modified-Since",
+	"Last-Modified",
 	NULL,
 };
 

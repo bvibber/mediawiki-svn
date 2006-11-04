@@ -21,7 +21,12 @@ chunking_filter::bf_transform(char const *buf, size_t len, ssize_t &discard)
 {
 char	sstr[16], *s;
 int	i;
-	i = snprintf(sstr, sizeof(sstr), "%x\r\n", len);
+	if (!_first) {
+		i = snprintf(sstr, sizeof(sstr), "\r\n%x\r\n", len);
+	} else {
+		i = snprintf(sstr, sizeof(sstr), "%x\r\n", len);
+		_first = false;
+	}
 	s = new char[strlen(sstr)];
 	memcpy(s, sstr, i); 
 	_buf.add(s, i, true);
@@ -33,7 +38,7 @@ int	i;
 io::sink_result
 chunking_filter::bf_eof(void)
 {
-	_buf.add("0\r\n", 3, false);
+	_buf.add("\r\n0\r\n", 5, false);
 	return io::sink_result_finished;
 }
 

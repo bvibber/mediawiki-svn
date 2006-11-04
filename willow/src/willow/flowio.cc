@@ -190,8 +190,10 @@ struct stat		sb;
 		_cache = new cache_map;
 
 	if (cache) {
-		if (stat(file, &sb) == -1)
+		if (stat(file, &sb) == -1) {
+			wlog(WLOG_WARNING, "cannot open %s: %s", file, strerror(errno));
 			return false;
+		}
 
 		if ((it = _cache->find(file)) != _cache->end()) {
 			if (sb.st_mtime == it->second.mtime) {
@@ -206,8 +208,10 @@ struct stat		sb;
 
 
 		_file.open(file);
-		if (!_file.is_open())
+		if (!_file.is_open()) {
+			wlog(WLOG_WARNING, "cannot open %s: %s", file, strerror(errno));
 			return false;
+		}
 
 		item.mtime = sb.st_mtime;
 		item.data = new char[sb.st_size];
@@ -225,6 +229,8 @@ struct stat		sb;
 	}
 
 	_file.open(file);
+	if (!_file.is_open())
+		wlog(WLOG_WARNING, "cannot open %s: %s", file, strerror(errno));
 	return _file.is_open();
 }
 
@@ -233,6 +239,8 @@ file_spigot::bs_get_data(void)
 {
 streamsize	size;
 	if (_cached) {
+		WDEBUG((WLOG_DEBUG, "file_spigot: cached=%d", _cached_size));
+
 		if (!_cached_size) {
 			_sp_completed_callee();
 			return false;
