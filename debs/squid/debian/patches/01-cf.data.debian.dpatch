@@ -23,9 +23,9 @@ esac
 exit 0
 
 @DPATCH@
-diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
---- squid-2.6.1~/src/cf.data.pre	2006-06-30 23:23:05.000000000 +0200
-+++ squid-2.6.1/src/cf.data.pre	2006-07-03 14:48:08.000000000 +0200
+diff -urNad squid-2.6.5~/src/cf.data.pre squid-2.6.5/src/cf.data.pre
+--- squid-2.6.5~/src/cf.data.pre	2006-11-04 14:03:15.000000000 +0000
++++ squid-2.6.5/src/cf.data.pre	2006-11-04 14:04:02.000000000 +0000
 @@ -320,12 +320,12 @@
  NAME: htcp_port
  IFDEF: USE_HTCP
@@ -42,7 +42,7 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  DOC_END
  
  
-@@ -1611,6 +1611,10 @@
+@@ -1651,6 +1651,10 @@
  	If append_domain is used, that domain will be added to
  	domain-local (i.e. not containing any dot character) host
  	definitions.
@@ -53,7 +53,7 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  DOC_END
  
  NAME: diskd_program
-@@ -1823,7 +1827,7 @@
+@@ -1863,7 +1867,7 @@
  
  	Then, set this line to something like
  
@@ -62,7 +62,7 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  
  	"children" numberofchildren
  	The number of authenticator processes to spawn. If you start too few 
-@@ -1883,7 +1887,7 @@
+@@ -1930,7 +1934,7 @@
  
  	Then, set this line to something like
  
@@ -71,7 +71,7 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  
  
  	"children" numberofchildren
-@@ -1945,7 +1949,10 @@
+@@ -1999,7 +2003,10 @@
  	By default, the ntlm authentication scheme is not used unless a
  	program is specified.
  
@@ -83,17 +83,7 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  
  	"children" numberofchildren
  	The number of authenticator processes to spawn. If you start too few 
-@@ -2751,7 +2758,8 @@
- acl manager proto cache_object
- acl localhost src 127.0.0.1/255.255.255.255
- acl to_localhost dst 127.0.0.0/8
--acl SSL_ports port 443 563
-+acl SSL_ports port 443 563	# https, snews
-+acl SSL_ports port 873		# rsync
- acl Safe_ports port 80		# http
- acl Safe_ports port 21		# ftp
- acl Safe_ports port 443 563	# https, snews
-@@ -2762,6 +2770,10 @@
+@@ -2812,6 +2819,10 @@
  acl Safe_ports port 488		# gss-http
  acl Safe_ports port 591		# filemaker
  acl Safe_ports port 777		# multiling http
@@ -104,7 +94,7 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  acl CONNECT method CONNECT
  NOCOMMENT_END
  DOC_END
-@@ -2881,6 +2893,9 @@
+@@ -2931,6 +2942,9 @@
  # Only allow cachemgr access from localhost
  http_access allow manager localhost
  http_access deny manager
@@ -114,7 +104,7 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  # Deny requests to unknown ports
  http_access deny !Safe_ports
  # Deny CONNECT to other than SSL ports
-@@ -2898,6 +2913,7 @@
+@@ -2948,6 +2962,7 @@
  # be allowed
  #acl our_networks src 192.168.1.0/24 192.168.2.0/24
  #http_access allow our_networks
@@ -122,7 +112,7 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  
  # And finally deny all other access to this proxy
  http_access deny all
-@@ -3230,12 +3246,12 @@
+@@ -3280,12 +3295,12 @@
  
  NAME: cache_effective_user
  TYPE: string
@@ -137,7 +127,7 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  	cache_effective_group, Squid sets the GID to the effective
  	user's default group ID (taken from the password file) and
  	supplementary group list from the from groups membership of
-@@ -3245,7 +3261,7 @@
+@@ -3295,7 +3310,7 @@
  
  NAME: cache_effective_group
  TYPE: string
@@ -146,7 +136,7 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  LOC: Config.effectiveGroup
  DOC_START
  	If you want Squid to run with a specific GID regardless of
-@@ -3421,7 +3437,7 @@
+@@ -3471,7 +3486,7 @@
  
  NAME: logfile_rotate
  TYPE: int
@@ -155,7 +145,7 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  LOC: Config.Log.rotateNumber
  DOC_START
  	Specifies the number of logfile rotations to make when you
-@@ -3437,6 +3453,9 @@
+@@ -3487,6 +3502,9 @@
  	purposes, so -k rotate uses another signal.  It is best to get
  	in the habit of using 'squid -k rotate' instead of 'kill -USR1
  	<pid>'.
@@ -165,7 +155,7 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  DOC_END
  
  
-@@ -4082,12 +4101,15 @@
+@@ -4132,12 +4150,15 @@
  NAME: snmp_port
  TYPE: ushort
  LOC: Config.Port.snmp
@@ -182,3 +172,30 @@ diff -urNad squid-2.6.1~/src/cf.data.pre squid-2.6.1/src/cf.data.pre
  DOC_END
  
  NAME: snmp_access
+diff -urNad squid-2.6.5~/src/cf.data.pre.rej squid-2.6.5/src/cf.data.pre.rej
+--- squid-2.6.5~/src/cf.data.pre.rej	2006-11-04 14:03:15.000000000 +0000
++++ squid-2.6.5/src/cf.data.pre.rej	2006-11-04 14:04:02.000000000 +0000
+@@ -1,18 +1,18 @@
+ ***************
+-*** 2812,2819 ****
++*** 2805,2811 ****
+   acl manager proto cache_object
+   acl localhost src 127.0.0.1/255.255.255.255
+   acl to_localhost dst 127.0.0.0/8
+-- acl SSL_ports port 443 563	# https, snews
+-- acl SSL_ports port 873		# rsync
++- acl SSL_ports port 443 563
+   acl Safe_ports port 80		# http
+   acl Safe_ports port 21		# ftp
+   acl Safe_ports port 443 563	# https, snews
+---- 2805,2811 ----
++--- 2812,2819 ----
+   acl manager proto cache_object
+   acl localhost src 127.0.0.1/255.255.255.255
+   acl to_localhost dst 127.0.0.0/8
+-+ acl SSL_ports port 443 563
+++ acl SSL_ports port 443 563	# https, snews
+++ acl SSL_ports port 873		# rsync
+   acl Safe_ports port 80		# http
+   acl Safe_ports port 21		# ftp
+   acl Safe_ports port 443 563	# https, snews

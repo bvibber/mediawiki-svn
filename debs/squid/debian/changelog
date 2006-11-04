@@ -1,3 +1,12 @@
+squid (2.6.5-1wm1) edgy; urgency=medium
+
+  * New upstream version 2.6.STABLE5
+  * Include patch fixing http://www.squid-cache.org/bugs/show_bug.cgi?id=1817
+  * Include a 'clean' initscript option that cleans all COSS dirs with nulls
+  * Fix error message in initscript when no COSS cache dirs are defined
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sat,  4 Nov 2006 13:58:55 +0000
+
 squid (2.6.4-2wm3) dapper; urgency=low
 
   * Install /etc/default/squid as a conffile, not in postinst
