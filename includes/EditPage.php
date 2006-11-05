@@ -748,6 +748,15 @@ class EditPage {
 			}
 		}
 
+		#And a similar thing for new sections
+                if( $this->section == 'new' && !$this->allowBlankSummary && $wgUser->getOption( 'forceeditsummary' ) ) {
+			if (trim($this->summary) == '') {
+				$this->missingSummary = true;
+				wfProfileOut( $fname );
+				return( true );
+			}
+		}
+
 		# All's well
 		wfProfileIn( "$fname-sectionanchor" );
 		$sectionanchor = '';
@@ -866,9 +875,13 @@ class EditPage {
 				$wgOut->addWikiText( wfMsg( 'missingcommenttext' ) );
 			}
 			
-			if( $this->missingSummary ) {
+			if( $this->missingSummary && $this->section != 'new' ) {
 				$wgOut->addWikiText( wfMsg( 'missingsummary' ) );
 			}
+			
+                        if( $this->missingSummary && $this->section == 'new' ) {
+                                $wgOut->addWikiText( wfMsg( 'missingcommentheader' ) );
+                        }
 			
 			if( !$this->hookError == '' ) {
 				$wgOut->addWikiText( $this->hookError );
@@ -1270,7 +1283,9 @@ cols=\"{$cols}\"{$ew} $hidden".Skin::accesskey('textbox').">"
 			$batch->execute();
 
 			# Construct the HTML
-			$outText = '<br /><span class="mw-templatesUsedExplanation">'. wfMsgExt( 'templatesused', array( 'parseinline' ) ) . '</span><ul>';
+			$outText = '<div class="mw-templatesUsedExplanation">' .
+				wfMsgExt( 'templatesused', array( 'parse' ) ) .
+				'</div><ul>';
 			foreach ( $templates as $titleObj ) {
 				$outText .= '<li>' . $sk->makeLinkObj( $titleObj ) . '</li>';
 			}

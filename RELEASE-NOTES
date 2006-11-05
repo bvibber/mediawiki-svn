@@ -112,6 +112,41 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Used special page subpages in a few more places, instead of query parameters.
 * (bug 7758) Added wrapper span to "templates used" explanation to allow CSS
   styling (class="mw-templatesUsedExplanation").
+* Added {{#special:}} parser function, to give the local default title for 
+  special pages
+* (bug 7766) Remove redundant / from AJAX requests, can break some servers
+* Add tab links from extensions to classic-based skins (SkinTemplateTab hook)
+  Provides better cross-skin compatibility for extensions using the modern
+  skin hooks, such as Oversight
+* Moved variant language links on Cologne Blue and Nostalgia to before the
+  login/logout link
+* Fix for parser tests with MySQL 5 in strict mode
+* Added block option "enable autoblocks"
+* Amend Special:Ipblocklist to note when a block has autoblock DISABLED.
+* (bug 7780) Fix regression in editing redirects
+* Add whitespace above "templates included on this page" using CSS, not
+  hardcoded line break.
+* Remove entries from redirect table on article deletion
+* (bug 7788) Force section headers in new section links for users who have
+  'prompt for blank edit summaries' on.
+* (bug 1133) Special:Emailuser: add an option to send yourself a copy your mail.
+* (bug 461) Allow "Categories:" link at bottom of pages to be customized via
+  pagecategorieslink message.
+* Sort the list of skins in "My Preferences" -> Skins by alphabetical order.
+* (bug 7785) Postgres compatibility for timestamps in RC feeds
+* (bug 7550) Normalize user parameter normally on Special:Log
+* (bug 7294) Fix PATH search for diff3 on install
+* Various fixes related to the blocking change re: autoblocks. On inserting
+  an IP block, the ipb_enable_autoblock field is now automagically blanked,
+  because it doesn't make any sense for an IP. Additionally, IP blocks
+  without the ipb_enable_autoblock option no longer show up as "autoblock
+  disabled" on Special:Ipblocklist.
+* (bug 7774) MATH: aded more amstex functions
+* (bug 1182) MATH: fixed inconsistent rendering of upper case Greek letters in TeX
+* Fix regression in streaming page dump generation
+* (bug 7801) Add support for parser function hooks in parser tests
+* checkUsernames.php now uses wfDebugLog instead of hardcoded path to log
+* (bug 7810) Update talk namespaces for Occitan
 
 == Changed classes and id's ==
 For greater consistency and to ensure that content id's can't conflict with
@@ -152,6 +187,7 @@ wpReason					wpReason
 * Occitan (oc)
 * Polish (pl)
 * Portuguese (pt)
+* Russian (ru)
 * Upper Sorbian (hsb)
 
 == Compatibility ==
