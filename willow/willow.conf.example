@@ -24,6 +24,13 @@ backend "127.0.0.1" {
  */
 backend "backends.mycompany.com" {
 	aftype = ipv6;	/* only connect to IPv6 addresses */
+
+	/*
+	 * Put this backend into a specific group.  When a listener
+	 * also has this group, requests to that listener will only
+	 * go to backends in that group.
+	 */
+	group = "backup";
 };
 
 /*
@@ -32,6 +39,14 @@ backend "backends.mycompany.com" {
  */
 listen "127.0.0.1" {
 	port = 8080;
+};
+
+listen "10.0.0.2" {
+	/*
+	 * Send requests for this listener to the specified backend
+	 * group.
+	 */
+	group = "backup";
 };
 
 /*
