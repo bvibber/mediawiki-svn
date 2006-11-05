@@ -210,6 +210,8 @@ struct httpcllr {
 	error_transform_filter		*_error_filter;
 	chunking_filter			*_chunking_filter;
 	io::size_limiting_filter	*_size_limit;
+
+	bool	_denied;
 };
 
 httpcllr::httpcllr(fde *e)
@@ -226,7 +228,20 @@ httpcllr::httpcllr(fde *e)
 	, _error_filter(NULL)
 	, _chunking_filter(NULL)
 	, _size_limit(NULL)
+	, _denied(false)
 {
+	/*
+	 * Check access controls.
+	 */
+pair<bool, uint16_t>	acc = config.access.allowed((sockaddr *)&e->fde_cdata->cdat_addr);
+	if (!acc.first) {
+		if (acc.second & whttp_deny_connect) {
+			delete this;
+			return;
+		}
+		_denied = true;
+	}
+
 	/*
 	 * Start by reading headers.
 	 */
@@ -272,6 +287,12 @@ void
 httpcllr::header_read_complete(void)
 {
 	WDEBUG((WLOG_DEBUG, "header_read_complete()"));
+	if (_denied) {
+		send_error(ERR_BLOCKED, "You are not permitted to access this server.",
+				403, "Forbidden");
+		return;
+	}
+ 
 	/*
 	 * Now parse the client's headers and decide what to do with
 	 * the request.
@@ -808,8 +829,8 @@ int	i;
 		HOLDING(alf_lock);
 		i = fprintf(alf, "[%s] %s %s \"%s\" %lu %d %s %s\n",
 				current_time_short, _client_fde->fde_straddr,
-				request_string[client->cl_reqtype],
-				client->cl_path, (unsigned long) client->cl_entity->he_size,
+				request_string[_header_parser._http_reqtype,
+				_header_parser._http_path, (unsigned long) client->cl_entity->he_size,
 				client->cl_entity->he_rdata.response.status,
 				client->cl_backend ? client->cl_backend->be_name.c_str() : "-",
 				client->cl_flags.f_cached ? "HIT" : "MISS");
