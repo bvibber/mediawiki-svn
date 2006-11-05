@@ -99,6 +99,7 @@ class ParserTest {
 		}
 		
 		$this->hooks = array();
+		$this->functionHooks = array();
 	}
 
 	/**
@@ -161,6 +162,20 @@ class ParserTest {
 						$line = trim( $line );
 						if( $line ) {
 							$this->requireHook( $line );
+						}
+					}
+					$data = array();
+					$section = null;
+					continue;
+				}
+				if( $section == 'endfunctionhooks' ) {
+					if( !isset( $data['functionhooks'] ) ) {
+						wfDie( "'endfunctionhooks' without 'functionhooks' at line $n\n" );
+					}
+					foreach( explode( "\n", $data['functionhooks'] ) as $line ) {
+						$line = trim( $line );
+						if( $line ) {
+							$this->requireFunctionHook( $line );
 						}
 					}
 					$data = array();
@@ -263,6 +278,9 @@ class ParserTest {
 		$parser = new Parser();
 		foreach( $this->hooks as $tag => $callback ) {
 			$parser->setHook( $tag, $callback );
+		}
+		foreach( $this->functionHooks as $tag => $callback ) {
+			$parser->setFunctionHook( $tag, $callback );
 		}
 		wfRunHooks( 'ParserTestParser', array( &$parser ) );
 		
@@ -485,6 +503,7 @@ class ParserTest {
 				'img_media_type'  => MEDIATYPE_BITMAP,
 				'img_major_mime'  => "image",
 				'img_minor_mime'  => "jpeg",
+				'img_metadata'    => serialize( array() ),
 				) );
 				
 			# Update certain things in site_stats
@@ -725,6 +744,22 @@ class ParserTest {
 			$this->hooks[$name] = $wgParser->mTagHooks[$name];
 		} else {
 			wfDie( "This test suite requires the '$name' hook extension.\n" );
+		}
+	}
+
+	
+	/**
+	 * Steal a callback function from the primary parser, save it for
+	 * application to our scary parser. If the hook is not installed,
+	 * die a painful dead to warn the others.
+	 * @param string $name
+	 */
+	private function requireFunctionHook( $name ) {
+		global $wgParser;
+		if( isset( $wgParser->mFunctionHooks[$name] ) ) {
+			$this->functionHooks[$name] = $wgParser->mFunctionHooks[$name];
+		} else {
+			wfDie( "This test suite requires the '$name' function hook extension.\n" );
 		}
 	}
 

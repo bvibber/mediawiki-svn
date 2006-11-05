@@ -318,6 +318,7 @@ $magicWords = array(
 	'formatnum'              => array( 0,    'FORMATNUM'              ),
 	'padleft'                => array( 0,    'PADLEFT'                ),
 	'padright'               => array( 0,    'PADRIGHT'               ),
+	'special'                => array( 0,    'special',               ),
 );
 
 /**
@@ -529,6 +530,7 @@ parent class in order maintain consistency across languages.
 #
 'categories' => 'Categories',
 'pagecategories' => '{{PLURAL:$1|Category|Categories}}',
+'pagecategorieslink' => 'Special:Categories',
 'category_header' => 'Articles in category "$1"',
 'subcategories' => 'Subcategories',
 
@@ -886,6 +888,7 @@ format. Please enter a well-formatted address or empty that field.',
 'anoneditwarning' => "'''Warning:''' You are not logged in. Your IP address will be recorded in this page's edit history.",
 'missingsummary' => "'''Reminder:''' You have not provided an edit summary. If you click Save again, your edit will be saved without one.",
 'missingcommenttext' => 'Please enter a comment below.',
+'missingcommentheader' => "'''Reminder:''' You have not provided a subject/headline for this comment. If you click Save again, your edit will be saved without one.",
 'blockedtitle'	=> 'User is blocked',
 'blockedtext' => "<big>'''Your user name or IP address has been blocked.'''</big>
 
@@ -1494,7 +1497,7 @@ You can narrow down the view by selecting a log type, the user name, or the affe
 # Special:Listusers
 'listusersfrom' => 'Display users starting at:',
 
-# E this user
+# Email this user
 #
 'mailnologin'	=> 'No send address',
 'mailnologintext' => "You must be [[Special:Userlogin|logged in]]
@@ -1517,6 +1520,8 @@ or has chosen not to receive e-mail from other users.',
 'emailsubject'	=> 'Subject',
 'emailmessage'	=> 'Message',
 'emailsend'		=> 'Send',
+'emailccme'     => 'E-mail me a copy of my message.',
+'emailccsubject'=> 'Copy of your message to $1: $2',
 'emailsent'		=> 'E-mail sent',
 'emailsenttext' => 'Your e-mail message has been sent.',
 
@@ -1753,6 +1758,7 @@ pages that were vandalized).",
 'ipbreason'		=> 'Reason',
 'ipbanononly'   => 'Block anonymous users only',
 'ipbcreateaccount' => 'Prevent account creation',
+'ipbenableautoblock' => 'Automatically block IP addresses used by this user',
 'ipbsubmit'		=> 'Block this user',
 'ipbother'		=> 'Other time',
 'ipboptions'		=> '2 hours:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite',
@@ -1772,6 +1778,7 @@ to a previously blocked IP address or username.',
 'infiniteblock' => 'infinite',
 'expiringblock' => 'expires $1',
 'anononlyblock' => 'anon. only',
+'noautoblockblock' => 'autoblock disabled',
 'createaccountblock' => 'account creation blocked',
 'ipblocklistempty'	=> 'The blocklist is empty.',
 'blocklink'		=> 'block',

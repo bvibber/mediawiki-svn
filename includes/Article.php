@@ -1008,8 +1008,6 @@ class Article {
 		$text = $revision->getText();
 		$rt = Title::newFromRedirect( $text );
 		
-		$this->updateRedirectOn( $dbw, $rt, $lastRevIsRedirect ); 
-
 		$conditions = array( 'page_id' => $this->getId() );
 		if( !is_null( $lastRevision ) ) {
 			# An extra check against threads stepping on each other
@@ -1027,8 +1025,15 @@ class Article {
 			$conditions,
 			__METHOD__ );
 
+		$result = $dbw->affectedRows() != 0;
+
+		if ($result) {
+			// FIXME: Should the result from updateRedirectOn() be returned instead?
+			$this->updateRedirectOn( $dbw, $rt, $lastRevIsRedirect ); 
+		}
+		
 		wfProfileOut( __METHOD__ );
-		return ( $dbw->affectedRows() != 0 );
+		return $result;
 	}
 
 	/**
@@ -1052,25 +1057,19 @@ class Article {
 
 			wfProfileIn( __METHOD__ );
 
-			$where = array('rd_from' => $this->getId());
-
 			if ($isRedirect) {
 
 				// This title is a redirect, Add/Update row in the redirect table
 				$set = array( /* SET */
 					'rd_namespace' => $redirectTitle->getNamespace(),
-					'rd_title'     => $redirectTitle->getDBkey()
+					'rd_title'     => $redirectTitle->getDBkey(),
+					'rd_from'      => $this->getId(),
 				);
 
-				$dbw->update( 'redirect', $set, $where, __METHOD__ );
-
-				if ( $dbw->affectedRows() == 0 ) {
-					// Update failed, need to insert the row instead
-					$dbw->insert( 'redirect', array_merge($set, $where), __METHOD__ );
-				}
+				$dbw->replace( 'redirect', array( 'rd_from' ), $set, __METHOD__ );
 			} else {
-
 				// This is not a redirect, remove row from redirect table 
+				$where = array( 'rd_from' => $this->getId() );
 				$dbw->delete( 'redirect', $where, __METHOD__);
 			}
 
@@ -1104,7 +1103,7 @@ class Article {
 				return false;
 			}
 			$prev = $row->rev_id;
-			$lastRevIsRedirect = $row->page_is_redirect === '1';
+			$lastRevIsRedirect = (bool)$row->page_is_redirect;
 		} else {
 			# No or missing previous revision; mark the page as new
 			$prev = 0;
@@ -1979,6 +1978,7 @@ class Article {
 			$dbw->delete( 'templatelinks', array( 'tl_from' => $id ) );
 			$dbw->delete( 'externallinks', array( 'el_from' => $id ) );
 			$dbw->delete( 'langlinks', array( 'll_from' => $id ) );
+			$dbw->delete( 'redirect', array( 'rd_from' => $id ) );
 		}
 
 		# If using cleanup triggers, we can skip some manual deletes

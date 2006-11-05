@@ -161,6 +161,7 @@ $magicWords = array(
 	'formatnum'             => array( 0,    'עיצוב מספר',                        'FORMATNUM'              ),
 	'padleft'               => array( 0,    'ריפוד משמאל',                       'PADLEFT'                ),
 	'padright'              => array( 0,    'ריפוד מימין',                       'PADRIGHT'               ),
+	'special'               => array( 0,    'מיוחד',                             'special'                ),
 );
 
 $namespaceNames = array(
@@ -419,8 +420,6 @@ $messages = array(
 "restorelink"         => "{{plural:$1|גרסה מחוקה אחת|$1 גרסאות מחוקות}}",
 "feedlinks"           => "הזנה:",
 "feed-invalid"        => "סוג הזנת המנוי שגוי.",
-"feed-atom"           => "Atom",
-"feed-rss"            => "RSS",
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 "nstab-main"      => "דף תוכן",
@@ -632,6 +631,7 @@ $messages = array(
 "anoneditwarning"           => "'''אזהרה:''' אינכם מחוברים לחשבון. כתובת ה־IP שלכם תירשם בהיסטוריית העריכות של הדף. אם לדעתכם זוהי פגיעה בפרטיותכם, עליכם [[{{ns:special}}:Userlogin|להיכנס לחשבון]].",
 "missingsummary"            => '\'\'\'תזכורת:\'\'\' לא הזנתם תקציר עריכה. אם תלחצו שוב על "שמור דף", עריכתכם תישמר בלעדיו.',
 "missingcommenttext"        => "אנא הקלידו את ההערה למטה.",
+"missingcommentheader"      => '\'\'\'תזכורת:\'\'\' לא הזנתם נושא/כותרת להערה זו. אם תלחצו שוב על "שמור דף", עריכתכם תישמר בלעדיו.',
 "blockedtitle"              => "המשתמש חסום",
 "blockedtext"               => '<big>\'\'\'שם המשתמש או כתובת ה־IP שלכם נחסמו.\'\'\'</big>
 
@@ -1157,6 +1157,8 @@ $messages = array(
 "emailsubject"    => "נושא",
 "emailmessage"    => "הודעה",
 "emailsend"       => "שלח",
+"emailccme"       => "שלח אלי בדואר האלקטרוני העתק של הודעתי.",
+"emailccsubject"  => "העתק של הודעתך למשתמש $1: $2",
 "emailsent"       => "הדואר נשלח",
 "emailsenttext"   => "הודעת הדואר האלקטרוני שלך נשלחה.",
 
@@ -1364,6 +1366,7 @@ $NEWPAGE
 "ipbreason"                   => "סיבה",
 "ipbanononly"                 => "חסום משתמשים אנונימיים בלבד",
 "ipbcreateaccount"            => "חסום יצירת חשבונות",
+"ipbenableautoblock"          => "חסום אוטומטית כתובות IP שמשתמש זה השתמש בהן",
 "ipbsubmit"                   => "חסום משתמש זה",
 "ipbother"                    => "זמן אחר",
 "ipboptions"                  => "שעתיים:2 hours,יום:1 day,שלושה ימים:3 days,שבוע:1 week,שבועיים:2 weeks,חודש:1 month,שלושה חודשים:3 months,חצי שנה:6 months,שנה:1 year,לצמיתות:infinite",
@@ -1382,6 +1385,7 @@ $NEWPAGE
 "infiniteblock"               => "לצמיתות",
 "expiringblock"               => "פוקע $1",
 "anononlyblock"               => "משתמשים אנונימיים בלבד",
+"noautoblockblock"            => "חסימה אוטומטית נוטרלה",
 "createaccountblock"          => "יצירת חשבונות נחסמה",
 "ipblocklistempty"            => "רשימת המשתמשים החסומים ריקה.",
 "blocklink"                   => "חסום",

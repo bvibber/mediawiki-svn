@@ -162,7 +162,11 @@ for more information.
 	 * Returns usage examples for this format.
 	 */
 	protected function getExamples() {
-		return 'api.php?action=query&meta=siteinfo&si=namespaces&format=' . $this->getModuleName();
+		return 'api.php?action=query&meta=siteinfo&siprop=namespaces&format=' . $this->getModuleName();
+	}
+
+	protected function getDescription() {
+		return $this->getIsHtml() ? ' (pretty-print in HTML)' : '';
 	}
 
 	public static function getBaseVersion() {
@@ -220,7 +224,7 @@ class ApiFormatFeedWrapper extends ApiFormatBase {
 			wfHttpError(500, 'Internal Server Error', '');
 		}
 	}
-
+	
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}

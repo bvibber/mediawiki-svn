@@ -24,6 +24,7 @@ $wgIgnoredMessages = array(
 	'newarticletextanon',
 	'noarticletextanon',
 	'number_of_watching_users_RCview',
+	'pagecategorieslink',
 	'pubmedurl',
 	'randompage-url',
 	'recentchanges-url',
@@ -43,6 +44,8 @@ $wgIgnoredMessages = array(
 $wgOptionalMessages = array(
 	'imgmultigotopost',
 	'linkprefix',
+	'feed-atom',
+	'feed-rss',
 	'allpages-summary',
 	'booksources-summary',
 	'ipblocklist-summary',

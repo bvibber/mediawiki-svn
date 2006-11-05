@@ -36,21 +36,24 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	}
 
 	public function execute() {
-		$limit = $prop = $from = $namespace = $hide = $dir = $start = $end = null;
+		$limit = $prop = $from = $namespace = $show = $dir = $start = $end = null;
 		extract($this->extractRequestParams());
 
 		$this->addTables('recentchanges');
 		$this->addWhereRange('rc_timestamp', $dir, $start, $end);
 		$this->addWhereFld('rc_namespace', $namespace);
 
-		if (!is_null($hide)) {
-			$hide = array_flip($hide);
-			if(isset ($hide['anons']) && isset ($hide['liu'])) 
-				$this->dieUsage( "Both 'anons' and 'liu' cannot be set at the same time", 'hide' );
-			$this->addWhereIf('rc_minor = 0', isset ($hide['minor']));
-			$this->addWhereIf('rc_bot = 0', isset ($hide['bots']));
-			$this->addWhereIf('rc_user != 0', isset ($hide['anons']));
-			$this->addWhereIf('rc_user = 0', isset ($hide['liu']));
+		if (!is_null($show)) {
+			$show = array_flip($show);
+			if ((isset ($show['minor']) && isset ($show['!minor'])) || (isset ($show['bot']) && isset ($show['!bot'])) || (isset ($show['anon']) && isset ($show['!anon'])))
+				$this->dieUsage("Incorrect parameter - mutually exclusive values may not be supplied", 'show');
+
+			$this->addWhereIf('rc_minor = 0', isset ($show['!minor']));
+			$this->addWhereIf('rc_minor != 0', isset ($show['minor']));
+			$this->addWhereIf('rc_bot = 0', isset ($show['!bot']));
+			$this->addWhereIf('rc_bot != 0', isset ($show['bot']));
+			$this->addWhereIf('rc_user = 0', isset ($show['anon']));
+			$this->addWhereIf('rc_user != 0', isset ($show['!anon']));
 		}
 
 		$this->addFields(array (
@@ -80,6 +83,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		}
 
 		$this->addOption('LIMIT', $limit +1);
+		$this->addOption('USE INDEX', 'rc_timestamp');
 
 		$data = array ();
 		$count = 0;
@@ -93,7 +97,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			}
 
 			$vals = $this->addRowInfo('rc', $row);
-			if($vals)
+			if ($vals)
 				$data[] = $vals;
 		}
 		$db->freeResult($res);
@@ -104,8 +108,13 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	}
 
 	protected function getAllowedParams() {
-		$namespaces = $this->getQuery()->getValidNamespaces();
 		return array (
+			'start' => array (
+				ApiBase :: PARAM_TYPE => 'timestamp'
+			),
+			'end' => array (
+				ApiBase :: PARAM_TYPE => 'timestamp'
+			),
 			'dir' => array (
 				ApiBase :: PARAM_DFLT => 'older',
 				ApiBase :: PARAM_TYPE => array (
@@ -113,15 +122,9 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 					'older'
 				)
 			),
-			'start' => array (
-				ApiBase :: PARAM_TYPE => 'timestamp'
-			),
-			'end' => array (
-				ApiBase :: PARAM_TYPE => 'timestamp'
-			),
 			'namespace' => array (
-				ApiBase :: PARAM_DFLT => 0,
-				ApiBase :: PARAM_TYPE => $namespaces
+				ApiBase :: PARAM_ISMULTI => true,
+				ApiBase :: PARAM_TYPE => 'namespace'
 			),
 			'prop' => array (
 				ApiBase :: PARAM_ISMULTI => true,
@@ -131,13 +134,15 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 					'flags'
 				)
 			),
-			'hide' => array (
+			'show' => array (
 				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_TYPE => array (
 					'minor',
-					'bots',
-					'anons',
-					'liu'
+					'!minor',
+					'bot',
+					'!bot',
+					'anon',
+					'!anon'
 				)
 			),
 			'limit' => array (
@@ -154,6 +159,13 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		return array (
 			'start' => 'The timestamp to start enumerating from.',
 			'end' => 'The timestamp to end enumerating.',
+			'dir' => 'In which direction to enumerate.',
+			'namespace' => 'Filter log entries to only this namespace(s)',
+			'prop' => 'Include additional pieces of information',
+			'show' => array (
+				'Show only items that meet this criteria.',
+				'For example, to see only minor edits done by logged-in users, set show=minor|!anon'
+			),
 			'limit' => 'How many total pages to return.'
 		);
 	}
@@ -164,7 +176,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 
 	protected function getExamples() {
 		return array (
-			'api.php?action=query&list=recentchanges',
+			'api.php?action=query&list=recentchanges'
 		);
 	}
 
