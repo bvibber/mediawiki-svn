@@ -16,9 +16,11 @@
 #include <netinet/in.h>
 
 #include <string>
-using std::string;
 #include <vector>
+#include <map>
+using std::string;
 using std::vector;
+using std::map;
 
 #include "polycaller.h"
 
@@ -28,6 +30,7 @@ struct backend {
 		backend(string const &, string const &, sockaddr *, socklen_t);
 
 	string			 be_name;	/* IP as specified in config	*/
+	int			 be_group;	/* group			*/
 	int	 		 be_port;	/* port number			*/
 	sockaddr_storage	 be_addr;	/* socket address		*/
 	socklen_t		 be_addrlen;	/* address length		*/
@@ -44,6 +47,8 @@ struct backend {
 
 struct backend_cb_data;
 struct backend_pool {
+	backend_pool();
+
 	void	add	(string const &, int, int);
 
 	template<typename T>
@@ -61,8 +66,12 @@ struct backend_pool {
 
 	static int	 _becarp_cmp	(backend const *a, backend const *b);
 	static uint32_t  _carp_urlhash	(string const &);
+
+	tss<int>	 _cur;
 };
 
-extern backend_pool gbep;
+extern map<int, backend_pool> bpools;
+extern map<string, int> poolnames;
+extern int nbpools;
 
 #endif

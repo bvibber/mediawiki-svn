@@ -168,7 +168,7 @@ struct error_transform_filter : io::buffering_filter, freelist_allocator<error_t
 
 struct httpcllr {
 	/* Accept a new client and start processing it. */
-	httpcllr(fde *);
+	httpcllr(fde *, int);
 	~httpcllr();
 
 		/* reading request from client */
@@ -212,9 +212,10 @@ struct httpcllr {
 	io::size_limiting_filter	*_size_limit;
 
 	bool	_denied;
+	int	_group;
 };
 
-httpcllr::httpcllr(fde *e)
+httpcllr::httpcllr(fde *e, int gr)
 	: _client_fde(e)
 	, _backend(NULL)
 	, _backend_fde(NULL)
@@ -229,6 +230,7 @@ httpcllr::httpcllr(fde *e)
 	, _chunking_filter(NULL)
 	, _size_limit(NULL)
 	, _denied(false)
+	, _group(gr)
 {
 	/*
 	 * Check access controls.
@@ -311,7 +313,7 @@ httpcllr::header_read_complete(void)
 	}
 
 	_client_spigot->sp_disconnect();
-	if (gbep.get(_header_parser._http_path, 
+	if (bpools[_group].get(_header_parser._http_path, 
 		     polycaller<backend *, fde *, int>(*this, &httpcllr::backend_ready), 0) == -1)
 		backend_ready(NULL, NULL, 0);
 }
@@ -545,13 +547,13 @@ whttp_init(void)
 void
 http_thread::accept_wakeup(fde *e, int)
 {
-int	nfd, afd = sv[1];
-	if (read(afd, &nfd, sizeof(nfd)) < sizeof(nfd)) {
+int	nfds[2], afd = sv[1];
+	if (read(afd, nfds, sizeof(nfds)) < sizeof(nfds)) {
 		wlog(WLOG_ERROR, "accept_wakeup: reading fd: %s", strerror(errno));
 		exit(1);
 	}
-	WDEBUG((WLOG_DEBUG, "accept_wakeup, nfd=%d", nfd));
-	new httpcllr(&fde_table[nfd]);
+	WDEBUG((WLOG_DEBUG, "accept_wakeup, nfd=%d", nfds[0]));
+	new httpcllr(&fde_table[nfds[0]], lsn2group[nfds[1]]);
 }
 
 static

@@ -18,17 +18,21 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <map>
 using std::pair;
 using std::string;
 using std::vector;
+using std::map;
 
 struct listener {
 	string			 name;
 	string			 host;
 	int	 		 port;
 	sockaddr_storage	 addr;
+	int			 group;
 };
 extern vector<listener *> listeners;
+extern map<int, int> lsn2group;
 
 struct cachedir {
 	char	*dir;

@@ -35,6 +35,8 @@
 
 using namespace conf;
 
+map<int, int> lsn2group;
+
 #define CONFIGFILE SYSCONFDIR "/willow.conf"
 
 vector<listener *> listeners;
@@ -44,14 +46,29 @@ static void
 set_backend(conf::tree_entry &e)
 {
 value const	*val;
-int		 port = 80, family = -1;
+int		 port = 80, family = -1, gn = 0;
+string		 group = "<default>";
+map<string, int>::iterator it;
+
 	if ((val = e/"port") != NULL)
 		port = CONF_AINTVAL(*val);
 	if ((val = e/"aftype") != NULL)
 		if (val->cv_values[0].av_strval == "ipv6")
 			family = AF_INET6;
 		else	family = AF_INET;
-	gbep.add(e.item_key, port, family);
+
+	if ((val = e/"group") != NULL) {
+		group = val->cv_values[0].av_strval;
+
+		it = poolnames.find(group);
+		if (it == poolnames.end()) {
+			gn = nbpools;
+			poolnames[group] = nbpools++;
+		} else
+			gn = it->second;
+	}
+
+	bpools[gn].add(e.item_key, port, family);
 }
 
 static void
@@ -60,9 +77,12 @@ set_listen(conf::tree_entry &e)
 value const	*val;
 int		 port = 80;
 struct listener	*nl;
-int		 i;
+int		 i, gn = 0;
 addrinfo	 hints, *res, *r;
 char		 portstr[6];
+string		 group;
+map<string, int>::iterator	it;
+
 	if ((val = e/"port") != NULL)
 		port = CONF_AINTVAL(*val);
 	sprintf(portstr, "%d", port);
@@ -72,6 +92,17 @@ char		 portstr[6];
 		if (val->cv_values[0].av_strval == "ipv6")
 			hints.ai_family = AF_INET6;
 		else	hints.ai_family = AF_INET;
+
+	if ((val = e/"group") != NULL) {
+		group = val->cv_values[0].av_strval;
+
+		it = poolnames.find(group);
+		if (it == poolnames.end()) {
+			gn = nbpools;
+			poolnames[group] = nbpools++;
+		} else
+			gn = it->second;
+	}
 
 	if ((i = getaddrinfo(e.item_key.c_str(), portstr, &hints, &res)) != 0) {
 		wlog(WLOG_ERROR, "resolving %s: %s", e.item_key.c_str(), gai_strerror(i));
@@ -83,10 +114,11 @@ char		 portstr[6];
 		nl->port = port;
 		nl->name = e.item_key;
 		nl->host = wnet::straddr(r->ai_addr, r->ai_addrlen);
+		nl->group = gn;
 		memcpy(&nl->addr, r->ai_addr, r->ai_addrlen);
 		listeners.push_back(nl);
-		wlog(WLOG_NOTICE, "listening on %s[%s]:%d", 
-		     e.item_key.c_str(), nl->host.c_str(), port);
+		wlog(WLOG_NOTICE, "listening on %s[%s]:%d (group %d)", 
+		     e.item_key.c_str(), nl->host.c_str(), port, gn);
 	}
 	freeaddrinfo(res);
 }
@@ -288,11 +320,13 @@ conf
 		.end(func(set_listen))
 		.value("port",		simple_range(1, 65535), ignore)
 		.value("aftype",	func(v_aftype),		ignore)
+		.value("group",		nonempty_qstring,	ignore)
 
 	.block("backend", require_name)
 		.end(func(set_backend))
 		.value("port",		simple_range(1, 65535), ignore)
 		.value("aftype",	func(v_aftype),		ignore)
+		.value("group",		nonempty_qstring,	ignore)
 
 	.block("access")
 		.end(func(set_access))
@@ -336,7 +370,7 @@ int	nerrors = 0;
 		wlog(WLOG_ERROR, "no listeners defined");
 		nerrors++;
 	}
-	if (!gbep.backends.size()) {
+	if (!bpools.size()) {
 		wlog(WLOG_ERROR, "no backends defined");
 		nerrors++;
 	}

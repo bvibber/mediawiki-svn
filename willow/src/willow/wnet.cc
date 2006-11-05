@@ -144,6 +144,7 @@ size_t	 i;
 			wlog(WLOG_ERROR, "listen: %s: %s\n", lns->name.c_str(), strerror(errno));
 			exit(8);
 		}
+		lsn2group[fd] = lns->group;
 		readback(fd, polycaller<fde *, int>(*this, &ioloop_t::_accept), 0);
 	}
 	wlog(WLOG_NOTICE, "wnet: initialised, using libevent %s (%s)",
@@ -207,7 +208,8 @@ static time_t		 last_nfile = 0;
 	WDEBUG((WLOG_DEBUG, "wnet_accept: new fd %d", newfd));
 	if (cawak == awaks.size())
 		cawak = 0;
-	if (write(awaks[cawak], &newfd, sizeof(newfd)) < 0) {
+int	fds[2] = { newfd, e->fde_fd };
+	if (write(awaks[cawak], fds, sizeof(fds)) < 0) {
 		wlog(WLOG_ERROR, "writing to thread wakeup socket: %s", strerror(errno));
 		exit(1);
 	}

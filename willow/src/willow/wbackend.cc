@@ -31,7 +31,9 @@
 
 #define rotl(i,r) (((i) << (r)) | ((i) >> (sizeof(i)*CHAR_BIT-(r))))
 
-backend_pool gbep;
+map<int, backend_pool> bpools;
+map<string, int> poolnames;
+int nbpools;
 
 struct backend_cb_data : freelist_allocator<backend_cb_data> {
 struct	backend		*bc_backend;
@@ -48,6 +50,10 @@ backend::backend(string const &name, string const &straddr, sockaddr *addr, sock
 	, be_load(1.)
 {
 	memcpy(&be_addr, addr, be_addrlen = addrlen);
+}
+
+backend_pool::backend_pool(void)
+{
 }
 
 void
@@ -169,11 +175,10 @@ socklen_t	 len = sizeof(error);
 struct backend *
 backend_pool::_next_backend(string const &url)
 {
-static tss<size_t>	cur;
 size_t			tried = 0;
 
-	if (cur == NULL)
-		cur = new size_t();
+	if (!_cur)
+		_cur = new int();
 
 	if (config.use_carp)
 		_carp_recalc(url);
@@ -183,20 +188,20 @@ size_t			tried = 0;
 	while (tried++ <= backends.size()) {
 		time_t now = time(NULL);
 
-		if (*cur >= backends.size())
-			*cur = 0;
+		if (*_cur >= (int) backends.size())
+			*_cur = 0;
 
-		if (backends[*cur]->be_dead && now >= backends[*cur]->be_time)
-			backends[*cur]->be_dead = 0;
+		if (backends[*_cur]->be_dead && now >= backends[*_cur]->be_time)
+			backends[*_cur]->be_dead = 0;
 
-		if (backends[*cur]->be_dead) {
-			(*cur)++;
+		if (backends[*_cur]->be_dead) {
+			(*_cur)++;
 			continue;
 		}
 
 		if (config.use_carp)
-			(*cur) = 0;
-		return backends[(*cur)++];
+			(*_cur) = 0;
+		return backends[(*_cur)++];
 	}
 
 	return NULL;
