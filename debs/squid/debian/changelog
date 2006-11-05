@@ -1,3 +1,10 @@
+squid (2.6.5-1wm2) edgy; urgency=low
+
+  * Include a proposed patch for squid bug #1818, COSS rebuild crashes
+  * Never strip binaries
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun,  5 Nov 2006 14:12:13 +0000
+
 squid (2.6.5-1wm1) edgy; urgency=medium
 
   * New upstream version 2.6.STABLE5

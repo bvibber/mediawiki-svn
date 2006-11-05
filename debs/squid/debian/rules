@@ -27,9 +27,9 @@ CFLAGS += -O0
 else
 CFLAGS += -O2
 endif
-ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-INSTALL_PROGRAM += -s
-endif
+#ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
+#INSTALL_PROGRAM += -s
+#endif
 
 # Take account of old dpkg-architecture output.
 ifeq ($(DEB_HOST_ARCH_CPU),)
