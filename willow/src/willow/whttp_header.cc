@@ -238,8 +238,14 @@ size_t		 vlen, nlen, rnpos;
 			if (!_got_reqtype)
 				return io::sink_result_error;
 			else {
-				if (!_is_response && _http_vers == http11 && _http_host.empty())
-					return io::sink_result_error;
+				if (!_is_response && _http_host.empty()) {
+					if (_http_vers == http11)
+						return io::sink_result_error;
+					else if (!config.default_host.empty()) {
+						_headers.add("Host", config.default_host.c_str());
+						_http_host = config.default_host;
+					}
+				}
 				return io::sink_result_finished;
 			}
 		}

@@ -63,6 +63,7 @@ struct	cachedir	*caches;
 	bool		 cache_private;
 	bool		 use_carp;
 	bool		 msie_hack;
+	string		 default_host;
 	enum {
 		carp_hash_carp = 0,
 		carp_hash_simple

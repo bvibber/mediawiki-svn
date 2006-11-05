@@ -101,8 +101,18 @@ cache {
 	 * Certain versions of MSIE cannot properly handle HTTP/1.1 chunked
 	 * encoding, and will crash when sent a chunked reply.  Enable this
 	 * to detect MSIE and force fallback to HTTP 1.0.
-	 *
+	 */
 	msie-http11-hack = yes;
+
+	/*
+	 * If an HTTP 1.0 request without a Host: header is received, it
+	 * must normally be forwarded to the backend as HTTP 1.0, rather
+	 * then being upgraded to HTTP 1.1.  This means that we can't
+	 * take advantage of some 1.1 features.  If default-host is set,
+	 * then these requests will be forwarded as 1.1 with this value as
+	 * the Host: header.
+	 */
+	default-host = "localhost";
 };
 
 /*

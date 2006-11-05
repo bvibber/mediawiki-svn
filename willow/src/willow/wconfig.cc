@@ -305,6 +305,7 @@ conf
 		.value("threads",		simple_range(1, 1024),	set_int(config.nthreads))
 		.value("msie-http11-hack",	simple_yesno,		set_yesno(config.msie_hack))
 		.value("admin",			nonempty_qstring,	set_string(config.admin))
+		.value("default-host",		nonempty_qstring,	set_string(config.default_host))
 
 	.block("stats")
 		.value("interval",	simple_range(1, INT_MAX),	set_aint(stats.interval))
