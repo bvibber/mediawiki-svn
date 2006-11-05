@@ -39,7 +39,7 @@ class HTMLForm {
 		if ( $this->mRequest->wasPosted() && !is_null( $this->mRequest->getVal( $varname ) ) ) {
 			$checked = $this->mRequest->getCheck( $varname );
 		}
-		return "<div><input type='checkbox' value=\"1\" id=\"{$varname}\" name=\"wpOp{$varname}\"" .
+		return "<div><input type='checkbox' value=\"1\" id=\"mw-{$varname}\" name=\"wpOp{$varname}\"" .
 			( $checked ? ' checked="checked"' : '' ) .
 			" /><label for=\"{$varname}\">". wfMsg( $this->mName.'-'.$varname ) .
 			"</label></div>\n";

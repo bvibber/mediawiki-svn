@@ -64,7 +64,7 @@ class ImagePage extends Article {
 				if( $fol != '-' ) {
 					$wgOut->addWikiText( $fol );
 				}
-				$wgOut->addHTML( '<div id="shared-image-desc">' . $this->mExtraDescription . '</div>' );
+				$wgOut->addHTML( '<div id="mw-shared-image-desc">' . $this->mExtraDescription . '</div>' );
 			}
 
 			$this->closeShowImage();
@@ -74,7 +74,7 @@ class ImagePage extends Article {
 				global $wgStylePath, $wgStyleVersion;
 				$expand = htmlspecialchars( wfEscapeJsString( wfMsg( 'metadata-expand' ) ) );
 				$collapse = htmlspecialchars( wfEscapeJsString( wfMsg( 'metadata-collapse' ) ) );
-				$wgOut->addHTML( "<h2 id=\"metadata\">" . wfMsgHtml( 'metadata' ) . "</h2>\n" );
+				$wgOut->addHTML( "<h2 id=\"mw-metadata\">" . wfMsgHtml( 'metadata' ) . "</h2>\n" );
 				$wgOut->addWikiText( $this->makeMetadataTable( $exif ) );
 				$wgOut->addHTML(
 					"<script type=\"text/javascript\" src=\"$wgStylePath/common/metadata.js?wgStyleVersion\"></script>\n" .
@@ -95,7 +95,7 @@ class ImagePage extends Article {
 	 */
 	function showTOC( $metadata ) {
 		global $wgLang;
-		$r = '<ul id="filetoc">
+		$r = '<ul id="mw-filetoc">
 			<li><a href="#file">' . $wgLang->getNsText( NS_IMAGE ) . '</a></li>
 			<li><a href="#filehistory">' . wfMsgHtml( 'imghistory' ) . '</a></li>
 			<li><a href="#filelinks">' . wfMsgHtml( 'imagelinks' ) . '</a></li>' .
@@ -114,7 +114,7 @@ class ImagePage extends Article {
 	 */
 	function makeMetadataTable( $exif ) {
 		$r = wfMsg( 'metadata-help' ) . "\n\n";
-		$r .= "{| id=mw_metadata class=mw_metadata\n";
+		$r .= "{| id='mw-metadata-table' class='mw_metadata'\n";
 		$visibleFields = $this->visibleMetadataFields();
 		foreach( $exif as $k => $v ) {
 			$tag = strtolower( $k );
@@ -245,7 +245,7 @@ class ImagePage extends Article {
 					$wgOut->addHTML( '<table class="multipageimage"><tr><td>' );
 				}
 
-				$wgOut->addHTML( '<div class="fullImageLink" id="file">' . $anchoropen .
+				$wgOut->addHTML( '<div class="fullImageLink" id="mw-file">' . $anchoropen .
 				     "<img border=\"0\" src=\"{$url}\" width=\"{$width}\" height=\"{$height}\" alt=\"" .
 				     htmlspecialchars( $wgRequest->getVal( 'image' ) ).'" />' . $anchorclose . '</div>' );
 
@@ -272,7 +272,7 @@ class ImagePage extends Article {
 
 					$select = '<form name="pageselector" action="' . $this->img->getEscapeLocalUrl( '' ) . '" method="GET" onchange="document.pageselector.submit();">' ;
 					$select .= $wgOut->parse( wfMsg( 'imgmultigotopre' ), false ) .
-						' <select id="pageselector" name="page">';
+						' <select id="mw-page-selector" name="page">';
 					for ( $i=1; $i <= $count; $i++ ) {
 						$select .= Xml::option( $wgLang->formatNum( $i ), $i,
 							$i == $page );
@@ -289,7 +289,7 @@ class ImagePage extends Article {
 				if ($this->img->isSafeFile()) {
 					$icon= $this->img->iconThumb();
 
-					$wgOut->addHTML( '<div class="fullImageLink" id="file"><a href="' . $full_url . '">' .
+					$wgOut->addHTML( '<div class="fullImageLink" id="mw-file"><a href="' . $full_url . '">' .
 					$icon->toHtml() .
 					'</a></div>' );
 				}
@@ -446,7 +446,7 @@ END
 	{
 		global $wgUser, $wgOut;
 
-		$wgOut->addHTML( '<h2 id="filelinks">' . wfMsg( 'imagelinks' ) . "</h2>\n" );
+		$wgOut->addHTML( '<h2 id="mw-file-links">' . wfMsg( 'imagelinks' ) . "</h2>\n" );
 
 		$dbr =& wfGetDB( DB_SLAVE );
 		$page = $dbr->tableName( 'page' );
@@ -704,7 +704,7 @@ class ImageHistoryList {
 	}
 
 	function beginImageHistoryList() {
-		$s = "\n<h2 id=\"filehistory\">" . wfMsg( 'imghistory' ) . "</h2>\n" .
+		$s = "\n<h2 id=\"mw-file-history\">" . wfMsg( 'imghistory' ) . "</h2>\n" .
 		  "<p>" . wfMsg( 'imghistlegend' ) . "</p>\n".'<ul class="special">';
 		return $s;
 	}

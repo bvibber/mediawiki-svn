@@ -1435,7 +1435,7 @@ function wfGetNamespaceNotice() {
 	$key = "namespacenotice-" . $wgTitle->getNsText();
 	$namespaceNotice = wfGetCachedNotice( $key );
 	if ( $namespaceNotice && substr ( $namespaceNotice , 0 ,7 ) != "<p>&lt;" ) {
-		 $namespaceNotice = '<div id="namespacebanner">' . $namespaceNotice . "</div>";
+		 $namespaceNotice = '<div id="mw-namespace-banner">' . $namespaceNotice . "</div>";
 	} else {
 		$namespaceNotice = "";
 	}

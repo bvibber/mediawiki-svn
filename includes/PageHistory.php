@@ -140,7 +140,7 @@ class PageHistory {
 		$s .= "<input type='hidden' name='title' value=\"{$prefixedkey}\" />\n";
 
 		$s .= $this->submitButton();
-		$s .= '<ul id="pagehistory">' . "\n";
+		$s .= '<ul id="mw-page-history">' . "\n";
 		return $s;
 	}
 

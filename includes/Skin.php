@@ -516,7 +516,7 @@ END;
 			$borderhack = 'class="top"';
 		}
 
-		$s .= "\n<div id='content'>\n<div id='topbar'>\n" .
+		$s .= "\n<div id='mw-content'>\n<div id='mw-topbar'>\n" .
 		  "<table border='0' cellspacing='0' width='98%'>\n<tr>\n";
 
 		$shove = ($qb != 0);
@@ -548,11 +548,11 @@ END;
 			$s .= $this->getQuickbarCompensator( $rows );
 		}
 		$s .= "</tr>\n</table>\n</div>\n";
-		$s .= "\n<div id='article'>\n";
+		$s .= "\n<div id='mw-article'>\n";
 
 		$notice = wfGetSiteNotice();
 		if( $notice ) {
-			$s .= "\n<div id='siteNotice'>$notice</div>\n";
+			$s .= "\n<div id='mw-site-notice'>$notice</div>\n";
 		}
 		$s .= $this->pageTitle();
 		$s .= $this->pageSubtitle() ;
@@ -1129,7 +1129,7 @@ END;
 		$sp = wfMsg( 'specialpages' );
 		$spp = $wgContLang->specialPage( 'Specialpages' );
 
-		$s = '<form id="specialpages" method="get" class="inline" ' .
+		$s = '<form id="mw-special-pages" method="get" class="inline" ' .
 		  'action="' . htmlspecialchars( "{$wgServer}{$wgRedirectScript}" ) . "\">\n";
 		$s .= "<select name=\"wpDropdown\">\n";
 		$s .= "<option value=\"{$spp}\">{$sp}</option>\n";

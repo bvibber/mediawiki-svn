@@ -99,7 +99,7 @@ class BookSourceList {
 		$isbn = htmlspecialchars( wfMsg( "isbn" ) );
 		$go = htmlspecialchars( wfMsg( "go" ) );
 		$out = "<form action=\"$action\" method='post'>
-			$isbn: <input name='isbn' id='isbn' />
+			$isbn: <input name='isbn' id='mw-booksources-isbn-box' />
 			<input type='submit' value=\"$go\" />
 		</form>";
 		$wgOut->addHTML( $out );

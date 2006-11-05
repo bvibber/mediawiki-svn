@@ -1025,8 +1025,8 @@ class Linker {
 		global $wgJsMimeType;
 		$title =  wfMsgForContent('toc') ;
 		return
-		   '<table id="toc" class="toc" summary="' . $title .'"><tr><td>'
-		 . '<div id="toctitle"><h2>' . $title . "</h2></div>\n"
+		   '<table id="mw-toc" class="toc" summary="' . $title .'"><tr><td>'
+		 . '<div id="mw-toc-title"><h2>' . $title . "</h2></div>\n"
 		 . $toc
 		 # no trailing newline, script should not be wrapped in a
 		 # paragraph

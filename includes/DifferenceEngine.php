@@ -163,12 +163,12 @@ CONTROL;
 		}
 
 		$prevlink = $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'previousdiff' ),
-			'diff=prev&oldid='.$this->mOldid, '', '', 'id="differences-prevlink"' );
+			'diff=prev&oldid='.$this->mOldid, '', '', 'id="mw-differences-prevlink"' );
 		if ( $this->mNewRev->isCurrent() ) {
 			$nextlink = '&nbsp;';
 		} else {
 			$nextlink = $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'nextdiff' ),
-				'diff=next&oldid='.$this->mNewid, '', '', 'id="differences-nextlink"' );
+				'diff=next&oldid='.$this->mNewid, '', '', 'id="mw-differences-nextlink"' );
 		}
 
 		$oldHeader = "<strong>{$this->mOldtitle}</strong><br />" .

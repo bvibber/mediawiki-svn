@@ -127,7 +127,7 @@ class ProtectionForm {
 				'value' => $wgUser->editToken() ) );
 		}
 
-		$out .= "<table id='mwProtectSet'>";
+		$out .= "<table id='mw-protect-set'>";
 		$out .= "<tbody>";
 		$out .= "<tr>\n";
 		foreach( $this->mRestrictions as $action => $required ) {

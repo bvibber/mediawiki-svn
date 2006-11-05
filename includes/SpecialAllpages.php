@@ -55,14 +55,14 @@ function namespaceForm ( $namespace = NS_MAIN, $from = '' ) {
 
 	$namespaceselect = HTMLnamespaceselector($namespace, null);
 
-	$frombox = "<input type='text' size='20' name='from' id='nsfrom' value=\""
+	$frombox = "<input type='text' size='20' name='from' id='mw-allpages-from-box' value=\""
 	            . htmlspecialchars ( $from ) . '"/>';
 	$submitbutton = '<input type="submit" value="' . wfMsgHtml( 'allpagessubmit' ) . '" />';
 
 	$out = "<div class='namespaceoptions'><form method='get' action='{$wgScript}'>";
 	$out .= '<input type="hidden" name="title" value="'.$t->getPrefixedText().'" />';
 	$out .= "
-<table id='nsselect' class='allpages'>
+<table id='mw-allpages-namespace-box' class='allpages'>
 	<tr>
 		<td align='right'>" . wfMsgHtml($this->nsfromMsg) . "</td>
 		<td align='left'><label for='nsfrom'>$frombox</label></td>

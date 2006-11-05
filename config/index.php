@@ -173,10 +173,10 @@ $ourdb['postgres']['rootuser']   = 'postgres';
 </head>
 
 <body>
-<div id="globalWrapper">
-<div id="column-content">
-<div id="content">
-<div id="bodyContent">
+<div id="mw-global-wrapper">
+<div id="mw-column-content">
+<div id="mw-content">
+<div id="mw-body-content">
 
 <h1>MediaWiki <?php print $wgVersion ?> Installation</h1>
 
@@ -1688,8 +1688,8 @@ function printListItem( $item ) {
 </div></div></div>
 
 
-<div id="column-one">
-	<div class="portlet" id="p-logo">
+<div id="mw-column-one">
+	<div class="portlet" id="mw-p-logo">
 	  <a style="background-image: url(../skins/common/images/mediawiki.png);"
 	    href="http://www.mediawiki.org/"
 	    title="Main Page"></a>
