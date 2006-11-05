@@ -122,6 +122,7 @@ struct	readbuf			 fde_readbuf;
 	}			 fde_flags;
 struct	event			 fde_ev;
 enum	sprio			 fde_prio;
+	lockable		 fde_lock;
 };
 extern struct fde *fde_table;
 

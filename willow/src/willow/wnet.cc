@@ -256,6 +256,8 @@ static int	last_nfile = 0;
 		return -1;
 	}
 
+	HOLDING(fde_table[fd].fde_lock);
+
 	val = fcntl(fd, F_GETFL, 0);
 	if (val == -1 || fcntl(fd, F_SETFL, val | O_NONBLOCK) == -1) {
 		wlog(WLOG_WARNING, "fcntl(%d) failed: %s", fd, strerror(errno));
@@ -576,13 +578,15 @@ struct	fde	*fde = &fde_table[fd];
 		(ev & EV_WRITE) ? "write " : "",
 		fd, fde->fde_desc));
 
+	HOLDING(fde->fde_lock);
+
 	assert(fde->fde_flags.open);
 
 	if (ev & EV_READ)
 		fde->fde_read_handler(fde);
 	if (ev & EV_WRITE)
 		fde->fde_write_handler(fde);
-	if (!fde->fde_flags.read_held || !fde->fde_flags.write_held) {
+	if (fde->fde_flags.open && (!fde->fde_flags.read_held || !fde->fde_flags.write_held)) {
 		WDEBUG((WLOG_DEBUG, "fde_ev_callback: rescheduling %d", fd));
 		event_add(&fde->fde_ev, NULL);
 	}
