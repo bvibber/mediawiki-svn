@@ -51,7 +51,7 @@ struct header_list {
 	void	 add		(string const &, string const &);
 	void	 add		(char const *, char const *);
 	void	 add		(char const *, size_t, char const *, size_t);
-	void	 append_last	(const char *);
+	void	 append_last	(const char *, size_t);
 	char	*build		(void);
 	void	 remove		(const char *);
 	void	 dump		(int);

@@ -93,12 +93,14 @@ header_list::add(char const *name, char const *value)
 }
 
 void
-header_list::append_last(const char *append)
+header_list::append_last(const char *append, size_t len)
 {
 char const	*tmp;
 char		*n;
 	assert(hl_last);
-	hl_last->hr_value += append;
+	hl_last->hr_value += ", ";
+	hl_last->hr_value.append(append, append + len);
+	hl_len += len + 2;
 }
 
 void
@@ -250,6 +252,17 @@ size_t		 vlen, nlen, rnpos;
 			_got_reqtype = true;
 			goto next;
 		}
+		if (*name == ' ') {
+		const char	*s = name;
+			/* continuation of last header */
+			if (!_headers.hl_len)
+				return io::sink_result_error;
+			while (*s == ' ')
+				s++;
+			_headers.append_last(s, rnpos - (s - name));
+			goto next;
+		}
+
 		if ((value = (const char *)memchr(name, ':', rnpos)) == NULL) {
 			_sink_spigot->sp_cork();
 			return io::sink_result_error;
