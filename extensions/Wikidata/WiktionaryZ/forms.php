@@ -94,5 +94,29 @@ function getLanguageSelect($name, $languageIdsToExclude = array()) {
 function getSubmitButton($name, $value) {
 	return '<input type="submit" name="'. $name .'" value="'. $value .'"/>'; 	
 }
- 
+
+function getOptionPanel($fields, $action = '') {
+	global 
+		$wgTitle;
+
+	$result = 
+		'<div class="option-panel">' .
+			'<form method="GET" action="">' .
+				'<table cellpadding="0" cellspacing="0">' .
+					'<input type="hidden" name="title" value="' . $wgTitle->getNsText() . ':' . $wgTitle->getText() . '"/>';
+
+	if ($action && $action != '')
+		$result .= '<input type="hidden" name="action" value="' . $action . '"/>';
+
+	foreach($fields as $caption => $field) 
+		$result .= '<tr><th>' . $caption . ':</th><td class="option-field">' . $field . '</td></tr>';
+
+	$result .=
+					'<tr><th/><td>' . getSubmitButton("show","Show") . '</td></tr>' .
+				'</table>' .
+			'</form>' .
+		'</div>';
+		
+	return $result;
+}
 ?>

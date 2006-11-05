@@ -35,20 +35,10 @@ function wfSpecialDatasearch() {
 				else
 					$collectionLabel = "";
 				
-				$wgOut->addHTML(
-					'<div class="option-panel">' .
-						'<form method="GET" action="">'.
-							'<table cellpadding="0" cellspacing="0">'.
-								'<input type="hidden" name="title" value="'. $wgTitle->getNsText() . ':' . $wgTitle->getText() .'"/>'.
-								'<tr><th>Search text:</th><td class="option-field">'. getTextBox("search-text", $_GET["search-text"]) . '</td></tr>'.
-								'<tr><th>Collection:</th><td class="option-field">'. getSuggest("collection", "collection", $collectionId, $collectionLabel) . '</td></tr>'.
-	//							'<tr><th>Show record life span:</th><td class="option-field">'. getCheckBox("show-record-life-span", $this->showRecordLifeSpan) . '</td></tr>'.
-	//							'<tr><th>Show most recent version only:</th><td class="option-field">'. getCheckBox("show-most-recent-version-only", isset($_GET["show-most-recent-version-only"])) . '</td></tr>'.
-								'<tr><th/><td>'. getSubmitButton("show", "Show"). '</td></tr>'.
-							'</table>'.
-						'</form>'.
-					'</div>'
-				);
+				$wgOut->addHTML(getOptionPanel(array(
+					'Search text' => getTextBox('search-text', $_GET['search-text']),
+					'Collection' => getSuggest('collection', 'collection', $collectionId, $collectionLabel)
+				)));
 							
 				$wgOut->addHTML('<h1>Words matching <i>'. $spelling . '</i> and associated meanings</h1>');
 				$wgOut->addHTML('<p>Showing only a maximum of 100 matches.</p>');
