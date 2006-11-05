@@ -1,3 +1,12 @@
+wikimedia-lvs-realserver (0.03) edgy; urgency=low
+
+  * 'test' in Edgy doesn't seem to like operator '==', use '=' instead
+  * 'ip' in Edgy doesn't seem to like ip addr del without a /32 mask
+  * Use Linux's IP address "labels" to tag LVS addresses and reliably
+    remove them
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun,  5 Nov 2006 15:39:03 +0000
+
 wikimedia-lvs-realserver (0.02) unstable; urgency=low
 
   * Do not reset the preseeded service_ips variable

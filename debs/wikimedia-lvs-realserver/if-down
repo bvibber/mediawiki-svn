@@ -3,16 +3,17 @@
 set -e
 
 # Only act on loopback interface actions
-[ "$IFACE" == "lo" ] || exit 0
+[ "$IFACE" = "lo" ] || exit 0
 
-export PATH=/sbin
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
 
 . /etc/default/wikimedia-lvs-realserver
 
-[ -z "$LVS_SERVICE_IPS" ] && exit 0
+# Compile a list of LVS service IPs currently bound to lo
+LVS_SERVICE_IPS=$(ip addr show label "lo:LVS" | awk '{ print $2 }')
 
-# Add the service IPs to the loopback interface
+# Delete the service IPs from the loopback interface
 for SIP in "$LVS_SERVICE_IPS"
 do
-	ip addr del $SIP dev lo || exit 0	# Fail gracefully
+	ip addr del $SIP label "lo:LVS" dev lo
 done
