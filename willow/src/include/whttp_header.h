@@ -152,7 +152,7 @@ struct header_parser : io::sink, io::spigot
 	int		 _response;
 	bool		 _is_msie;
 	int		 _http_reqtype;
-
+	string		 _http_host;
 	wnet::buffer	 _buf;
 
 	struct {

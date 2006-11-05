@@ -237,8 +237,11 @@ size_t		 vlen, nlen, rnpos;
 			/* request with no request is an error */
 			if (!_got_reqtype)
 				return io::sink_result_error;
-			else
+			else {
+				if (!_is_response && _http_vers == http11 && _http_host.empty())
+					return io::sink_result_error;
 				return io::sink_result_finished;
+			}
 		}
 		rnpos = rn - bufp;
 		name = bufp;
@@ -257,9 +260,10 @@ size_t		 vlen, nlen, rnpos;
 			/* continuation of last header */
 			if (!_headers.hl_len)
 				return io::sink_result_error;
-			while (*s == ' ')
+			while (*s == ' ' && s < rn)
 				s++;
-			_headers.append_last(s, rnpos - (s - name));
+			if (s < rn)
+				_headers.append_last(s, rnpos - (s - name));
 			goto next;
 		}
 
@@ -280,7 +284,8 @@ size_t		 vlen, nlen, rnpos;
 			 std::search(value, value + vlen, msie, msie + 4) != value + vlen) {
 			WDEBUG((WLOG_DEBUG, "client is MSIE"));
 			_is_msie = true;
-		}
+		} else if (!strncasecmp(name, "Host", nlen))
+			_http_host.assign(value, value + vlen);
 
 		WDEBUG((WLOG_DEBUG, "header_parser: header [%.*s] = [%.*s]", nlen, (char *)name, vlen, (char *)value));
 		_headers.add(name, nlen, value, vlen);
@@ -388,7 +393,10 @@ int	 left = _headers.hl_len;
 	if (!_built) {
 	char	*s;
 		if (!_is_response) {
-		string	req = request_string[_http_reqtype] + _http_path + " HTTP/1.1\r\n";
+		string	req = request_string[_http_reqtype] + _http_path + " HTTP/1.";
+			if (_http_host.size())
+				req += "1\r\n";
+			else	req += "0\r\n";
 			s = new char[req.size()];
 			memcpy(s, req.data(), req.size());
 			_buf.add(s, req.size(), true);
