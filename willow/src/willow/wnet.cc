@@ -183,6 +183,8 @@ static time_t		 last_nfile = 0;
 		return;
 	}
 
+	HOLDING(fde_table[newfd].fde_lock);
+
 	val = fcntl(newfd, F_GETFL, 0);
 	if (val == -1 || fcntl(newfd, F_SETFL, val | O_NONBLOCK) == -1) {
 		wlog(WLOG_WARNING, "fcntl(%d) failed: %s", newfd, strerror(errno));
