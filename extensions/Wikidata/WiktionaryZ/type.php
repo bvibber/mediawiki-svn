@@ -5,6 +5,7 @@ require_once('forms.php');
 require_once('Attribute.php');
 require_once('Record.php');
 require_once('Transaction.php');
+require_once('Expression.php');
 
 function booleanAsText($value) {
 	if ($value)
@@ -45,6 +46,13 @@ function languageIdAsText($languageId) {
 		$wgLanguageNames;	
 
 	return $wgLanguageNames[$languageId];
+}
+
+function collectionIdAsText($collectionId) {
+	if ($collectionId > 0) 
+		return definedMeaningExpression(getCollectionMeaningId($collectionId));
+	else
+		return "";
 }
 
 function definingExpressionRow($definedMeaningId) {

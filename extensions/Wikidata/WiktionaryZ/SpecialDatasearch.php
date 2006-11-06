@@ -30,14 +30,9 @@ function wfSpecialDatasearch() {
 				$fulltext = $_GET['fulltext'];
 				$collectionId = $wgRequest->getInt("collection");
 				
-				if ($collectionId > 0) 
-					$collectionLabel = definedMeaningExpression(getCollectionMeaningId($collectionId));
-				else
-					$collectionLabel = "";
-				
 				$wgOut->addHTML(getOptionPanel(array(
 					'Search text' => getTextBox('search-text', $_GET['search-text']),
-					'Collection' => getSuggest('collection', 'collection', $collectionId, $collectionLabel)
+					'Collection' => getSuggest('collection', 'collection', $collectionId, collectionIdAsText($collectionId))
 				)));
 							
 				$wgOut->addHTML('<h1>Words matching <i>'. $spelling . '</i> and associated meanings</h1>');
