@@ -9,5 +9,5 @@ debconf-set-selections /tmp/static_net.cfg
 killall.sh; netcfg; true
 
 # Preseed the correct wikimedia repository location
-SUITE=$(db_get mirror/suite)
+SUITE=$(debconf-get mirror/suite)
 echo d-i apt-setup/local0/repository string  http://apt.wikimedia.org/wikimedia $SUITE-wikimedia main restricted universe multiverse | debconf-set-selections
