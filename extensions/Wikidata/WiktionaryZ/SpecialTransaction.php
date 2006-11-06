@@ -99,6 +99,24 @@ function initializeAttributes() {
 	$updatedClassMembershipAttribute = new Attribute('updated-class-membership', 'Class membership', new RecordSetType($updatedClassMembershipStructure));
 	
 	global
+		$collectionIdAttribute, $collectionMeaningAttribute, $collectionMemberAttribute, $sourceIdentifierAttribute,
+		$updatedCollectionMembershipStructure, $updatedCollectionMembershipAttribute, $collectionMemberIdAttribute;
+		
+	$collectionMemberAttribute = new Attribute('collection-member', 'Collection member', new RecordType($definedMeaningReferenceStructure));
+	$collectionMemberAttribute = new Attribute('collection-member-id', 'Collection member identifier', 'defined-meaning-id');
+	
+	$updatedCollectionMembershipStructure = new Structure(
+		$collectionIdAttribute,
+		$collectionMeaningAttribute,
+		$collectionMemberIdAttribute,
+		$collectionMemberAttribute,
+		$sourceIdentifierAttribute,
+		$operationAttribute
+	);
+	
+	$updatedCollectionMembershipAttribute = new Attribute('updated-collection-membership', 'Collection membership', new RecordSetType($updatedCollectionMembershipStructure));
+	
+	global
 		$updatesInTransactionAttribute;
 
 	$updatesInTransactionStructure = new Structure(
@@ -115,7 +133,8 @@ function getTransactionOverview() {
 	global
 		$transactionsTable, $transactionAttribute, $transactionIdAttribute, $userAttribute, $userIPAttribute, 
 		$timestampAttribute, $summaryAttribute, $updatesInTransactionAttribute, $updatedDefinitionAttribute,
-		$updatedSyntransesAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute;
+		$updatedSyntransesAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute,
+		$updatedCollectionMembershipAttribute;
 
 	$queryTransactionInformation = new QueryLatestTransactionInformation();
 
@@ -147,6 +166,7 @@ function getTransactionOverview() {
 	$valueEditor->addEditor(getUpdatedSyntransesEditor($updatedSyntransesAttribute));
 	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute));
 	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute));
+	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($updatedCollectionMembershipAttribute));
 	
 	$editor = new RecordSetListEditor(null, new SimplePermissionController(false), false, false, false, null, 4, false);
 	$editor->setCaptionEditor($captionEditor);
@@ -171,13 +191,14 @@ function expandUpdatesInTransactionInRecordSet($recordSet) {
 function getUpdatesInTransactionRecord($transactionId) {
 	global	
 		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, 
-		$updatedRelationsAttribute, $updatedClassMembershipAttribute;
+		$updatedRelationsAttribute, $updatedClassMembershipAttribute, $updatedCollectionMembershipAttribute;
 		
 	$record = new ArrayRecord($updatesInTransactionAttribute->type->getStructure());
 	$record->setAttributeValue($updatedDefinitionAttribute, getUpdatedDefinedMeaningDefinitionRecordSet($transactionId));
 	$record->setAttributeValue($updatedSyntransesAttribute, getUpdatedSyntransesRecordSet($transactionId));
 	$record->setAttributeValue($updatedRelationsAttribute, getUpdatedRelationsRecordSet($transactionId));
 	$record->setAttributeValue($updatedClassMembershipAttribute, getUpdatedClassMembershipRecordSet($transactionId));
+	$record->setAttributeValue($updatedCollectionMembershipAttribute, getUpdatedCollectionMembershipRecordSet($transactionId));
 	
 	return $record;
 }
@@ -303,6 +324,37 @@ function getUpdatedClassMembershipRecordSet($transactionId) {
 	return $recordSet;
 }
 
+function getUpdatedCollectionMembershipRecordSet($transactionId) {
+	global
+		$updatedCollectionMembershipStructure, $collectionIdAttribute, $collectionMeaningAttribute, 
+		$collectionMemberAttribute, $sourceIdentifierAttribute, $operationAttribute, $collectionMemberIdAttribute;
+	
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT uw_collection_contents.collection_id, collection_mid, member_mid, internal_member_id, " . getOperationSelectColumn('uw_collection_contents', $transactionId) . 
+		" FROM uw_collection_contents, uw_collection_ns " .
+		" WHERE uw_collection_contents.collection_id=uw_collection_ns.collection_id " .
+		" AND " . getInTransactionRestriction('uw_collection_contents', $transactionId) .
+		" AND " . getAtTransactionRestriction('uw_collection_ns', $transactionId)
+	);
+		
+	$recordSet = new ArrayRecordSet($updatedCollectionMembershipStructure, new Structure($collectionIdAttribute, $collectionMemberIdAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) {
+		$record = new ArrayRecord($updatedCollectionMembershipStructure);
+		$record->setAttributeValue($collectionIdAttribute, $row->collection_id);
+		$record->setAttributeValue($collectionMeaningAttribute, getDefinedMeaningReferenceRecord($row->collection_mid));
+		$record->setAttributeValue($collectionMemberIdAttribute, $row->member_mid);
+		$record->setAttributeValue($collectionMemberAttribute, getDefinedMeaningReferenceRecord($row->member_mid));
+		$record->setAttributeValue($sourceIdentifierAttribute, $row->internal_member_id);
+		$record->setAttributeValue($operationAttribute, $row->operation);
+		
+		$recordSet->add($record);	
+	}
+	
+	return $recordSet;
+}
+
 function getUpdatedDefinedMeaningDefinitionEditor($attribute) {
 	global
 		$definedMeaningReferenceAttribute, $languageAttribute, $textAttribute, $operationAttribute;
@@ -349,6 +401,19 @@ function getUpdatedClassMembershipEditor($attribute) {
 	$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(false), false, false, false, null);
 	$editor->addEditor(new ClassReferenceEditor($classAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($classMemberAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new TextEditor($operationAttribute, new SimplePermissionController(false), false));
+	
+	return $editor;
+}
+
+function getUpdatedCollectionMembershipEditor($attribute) {
+	global
+		$collectionMeaningAttribute, $collectionMemberAttribute, $sourceIdentifierAttribute, $operationAttribute;
+		
+	$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(false), false, false, false, null);
+	$editor->addEditor(new CollectionReferenceEditor($collectionMeaningAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new DefinedMeaningReferenceEditor($collectionMemberAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new ShortTextEditor($sourceIdentifierAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new TextEditor($operationAttribute, new SimplePermissionController(false), false));
 	
 	return $editor;
