@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+set -x
+
+# Redo network configuration statically
+echo d-i netcfg/get_ipaddress string $(ifconfig | grep "inet addr" | cut -d ' ' -f 12 | sed 's/addr://' | grep -v 127\.0\.0\.1) | debconf-set-selections
+killall.sh; netcfg; true
+
+# Preseed the correct wikimedia repository location
+SUITE=$(db_get mirror/suite)
+echo d-i apt-setup/local0/repository string  http://apt.wikimedia.org/wikimedia $SUITE-wikimedia main restricted universe multiverse | debconf-set-selections
