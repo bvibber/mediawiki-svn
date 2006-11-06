@@ -84,12 +84,28 @@ function initializeAttributes() {
 	$updatedRelationsAttribute = new Attribute('updated-relations', 'Relations', new RecordSetType($updatedRelationsStructure));
 	
 	global
+		$classMembershipIdAttribute, $classAttribute, $classMemberAttribute,
+		$updatedClassMembershipStructure, $updatedClassMembershipAttribute;
+		
+	$classMemberAttribute = new Attribute('class-member', 'Class member', new RecordType($definedMeaningReferenceStructure));
+	
+	$updatedClassMembershipStructure = new Structure(
+		$classMembershipIdAttribute,
+		$classAttribute,
+		$classMemberAttribute,
+		$operationAttribute
+	);
+	
+	$updatedClassMembershipAttribute = new Attribute('updated-class-membership', 'Class membership', new RecordSetType($updatedClassMembershipStructure));
+	
+	global
 		$updatesInTransactionAttribute;
 
 	$updatesInTransactionStructure = new Structure(
 		$updatedDefinitionAttribute,
 		$updatedSyntransesAttribute,
-		$updatedRelationsAttribute
+		$updatedRelationsAttribute,
+		$updatedClassMembershipAttribute
 	);
 	
 	$updatesInTransactionAttribute = new Attribute('updates-in-transaction', 'Updates in transaction', new RecordType($updatesInTransactionStructure));
@@ -99,7 +115,7 @@ function getTransactionOverview() {
 	global
 		$transactionsTable, $transactionAttribute, $transactionIdAttribute, $userAttribute, $userIPAttribute, 
 		$timestampAttribute, $summaryAttribute, $updatesInTransactionAttribute, $updatedDefinitionAttribute,
-		$updatedSyntransesAttribute, $updatedRelationsAttribute;
+		$updatedSyntransesAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute;
 
 	$queryTransactionInformation = new QueryLatestTransactionInformation();
 
@@ -130,6 +146,7 @@ function getTransactionOverview() {
 	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($updatedDefinitionAttribute));
 	$valueEditor->addEditor(getUpdatedSyntransesEditor($updatedSyntransesAttribute));
 	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute));
+	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute));
 	
 	$editor = new RecordSetListEditor(null, new SimplePermissionController(false), false, false, false, null, 4, false);
 	$editor->setCaptionEditor($captionEditor);
@@ -153,12 +170,14 @@ function expandUpdatesInTransactionInRecordSet($recordSet) {
 
 function getUpdatesInTransactionRecord($transactionId) {
 	global	
-		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, $updatedRelationsAttribute;
+		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, 
+		$updatedRelationsAttribute, $updatedClassMembershipAttribute;
 		
 	$record = new ArrayRecord($updatesInTransactionAttribute->type->getStructure());
 	$record->setAttributeValue($updatedDefinitionAttribute, getUpdatedDefinedMeaningDefinitionRecordSet($transactionId));
 	$record->setAttributeValue($updatedSyntransesAttribute, getUpdatedSyntransesRecordSet($transactionId));
 	$record->setAttributeValue($updatedRelationsAttribute, getUpdatedRelationsRecordSet($transactionId));
+	$record->setAttributeValue($updatedClassMembershipAttribute, getUpdatedClassMembershipRecordSet($transactionId));
 	
 	return $record;
 }
@@ -257,6 +276,33 @@ function getUpdatedRelationsRecordSet($transactionId) {
 	return $recordSet;
 }
 
+function getUpdatedClassMembershipRecordSet($transactionId) {
+	global
+		$updatedClassMembershipStructure, $classMembershipIdAttribute, $classAttribute, $classMemberAttribute, 
+		$operationAttribute;
+	
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT class_membership_id, class_mid, class_member_mid, " . getOperationSelectColumn('uw_class_membership', $transactionId) . 
+		" FROM uw_class_membership " .
+		" WHERE " . getInTransactionRestriction('uw_class_membership', $transactionId)
+	);
+		
+	$recordSet = new ArrayRecordSet($updatedClassMembershipStructure, new Structure($classMembershipIdAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) {
+		$record = new ArrayRecord($updatedClassMembershipStructure);
+		$record->setAttributeValue($classMembershipIdAttribute, $row->class_membership_id);
+		$record->setAttributeValue($classAttribute, getDefinedMeaningReferenceRecord($row->class_mid));
+		$record->setAttributeValue($classMemberAttribute, getDefinedMeaningReferenceRecord($row->class_member_mid));
+		$record->setAttributeValue($operationAttribute, $row->operation);
+		
+		$recordSet->add($record);	
+	}
+	
+	return $recordSet;
+}
+
 function getUpdatedDefinedMeaningDefinitionEditor($attribute) {
 	global
 		$definedMeaningReferenceAttribute, $languageAttribute, $textAttribute, $operationAttribute;
@@ -291,6 +337,18 @@ function getUpdatedRelationsEditor($attribute) {
 	$editor->addEditor(new DefinedMeaningReferenceEditor($firstMeaningAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($secondMeaningAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new TextEditor($operationAttribute, new SimplePermissionController(false), false));
+	
+	return $editor;
+}
+
+function getUpdatedClassMembershipEditor($attribute) {
+	global
+		$classAttribute, $classMemberAttribute, $operationAttribute;
+		
+	$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(false), false, false, false, null);
+	$editor->addEditor(new ClassReferenceEditor($classAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new DefinedMeaningReferenceEditor($classMemberAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new TextEditor($operationAttribute, new SimplePermissionController(false), false));
 	
 	return $editor;
