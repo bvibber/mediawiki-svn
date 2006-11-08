@@ -102,18 +102,13 @@ class CrossNamespaceLinksPage extends QueryPage {
 
 	function sortDescending() { return false; }
 
-	function formatResult( $result, $old = null ) {
-		if($old) { // pre-1.9
-			$skin = $result;
-			$result = $old;
-		}
+	function formatResult( $skin, $result ) {
 		global $wgContLang, $wgLang;
 
 		$nt = Title::makeTitle( NS_MAIN, $result->title );
 		$text = $wgContLang->convert( $nt->getPrefixedText() );
 
-		$plink = $old ? $skin->makeKnownLink( $nt->getPrefixedText(), htmlspecialchars( $text ) )
-			: Linker::makeKnownLink( $nt->getPrefixedText(), htmlspecialchars( $text ) );
+		$plink = $skin->makeKnownLink( $nt->getPrefixedText(), htmlspecialchars( $text ) );
 
 		return wfMsgExt( 'crossnamespacelinkstext', array( 'parsemag' ), $plink, $wgLang->formatNum( $result->namespace ), htmlspecialchars( $wgLang->getNsText( $result->value ) ) );
 	}

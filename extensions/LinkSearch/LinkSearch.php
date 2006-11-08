@@ -75,16 +75,12 @@ function wfLinkSearchSetup() {
 					AND el_index LIKE $encSearch";
 		}
 		
-		function formatResult( $result, $old = null ) {
-			if($old) { // pre-1.9
-				$skin = $result;
-				$result = $old;
-			}
+		function formatResult( $skin, $result ) {
 			$title = Title::makeTitle( $result->namespace, $result->title );
 			$url = $result->url;
 			
-			$pageLink = $old ? $skin->makeKnownLinkObj( $title ) : Linker::makeKnownLinkObj( $title );
-			$urlLink = $old ? $skin->makeExternalLink( $url, $url ) : Linker::makeExternalLink( $url, $url );
+			$pageLink = $skin->makeKnownLinkObj( $title );
+			$urlLink = $skin->makeExternalLink( $url, $url );
 			
 			return wfMsgHtml( 'linksearch-line', $urlLink, $pageLink );
 		}
