@@ -43,9 +43,13 @@ WHERE page_namespace = ".NS_USER_TALK."
 	}
 
 
-	function formatResult( $skin, $result) {
+	function formatResult( $result, $old = null ) {
+		if($old) { // pre-1.9
+			$skin = $result;
+			$result = $old;
+		}
 		$title = Title::makeTitle( $result->namespace, $result->title );
-		$link = $skin->makeKnownLinkObj( $title );
+		$link = $old ? $skin->makeKnownLinkObj( $title ) : Linker::makeKnownLinkObj( $title );
 		return "$link";
 	}
 }
