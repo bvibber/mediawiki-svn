@@ -10,9 +10,13 @@ $wgCheckUserMessages = array();
 
 $wgCheckUserMessages['en'] = array(
 	'checkuser'              => 'Check user',
-	'group-checkuser'        => 'Check users',
-	'group-checkuser-member' => 'Check user',
+	'group-checkuser'        => 'Special:CheckUser access',
+	'group-checkuser-member' => 'Special:CheckUser access',
 	'grouppage-checkuser'    => '{{ns:project}}:Check user',
+
+	'checkuser_invalid_ip'   => 'Invalid IP address',
+	'checkuser_no_results'   => 'No results',
+	'checkuser_cant_log'     => 'Unable to add log entry',
 );
 $wgCheckUserMessages['fr'] = array(
 	'checkuser'              => 'Vérificateur d\'utilisateur',

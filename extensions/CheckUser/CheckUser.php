@@ -12,7 +12,7 @@ require_once( 'CheckUser.i18n.php' );
 $wgAvailableRights[] = 'checkuser';
 $wgGroupPermissions['checkuser']['checkuser'] = true;
 
-$wgCheckUserLog = '/home/wikipedia/logs/checkuser.log';
+$wgHooks['RecentChange_save'][] = 'CheckUser::onChange';
 
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
