@@ -156,6 +156,32 @@ abstract class IndexPager implements Pager {
 	}
 
 	/**
+	 * Takes the query info from the subclass and adds conditions and options for paging
+	 *
+	 * @param string $offset Index offset, inclusive
+	 * @param integer $limit Exact query limit
+	 * @param boolean $descending Query direction, false for ascending, true for descending
+	 * @return array
+	 */
+	function getCompleteQueryInfo( $offset, $limit, $ascending ) {
+		$info = $this->getQueryInfo();
+		if ( !isset( $info['conds'] ) ) $info['conds'] = array();
+		if ( !isset( $info['options'] ) ) $info['options'] = array();
+		if ( $ascending ) {
+			$info['options']['ORDER BY'] = $this->mIndexField;
+			$operator = '>';
+		} else {
+			$info['options']['ORDER BY'] = $this->mIndexField . ' DESC';
+			$operator = '<';
+		}
+		if ( $offset != '' ) {
+			$info['conds'][] = $this->mIndexField . $operator . $this->mDb->addQuotes( $offset );
+		}
+		$info['options']['LIMIT'] = intval( $limit );
+		return $info;
+	}
+
+	/**
 	 * Do a query with specified parameters, rather than using the object context
 	 *
 	 * @param string $offset Index offset, inclusive
@@ -165,22 +191,7 @@ abstract class IndexPager implements Pager {
 	 */
 	function reallyDoQuery( $offset, $limit, $ascending ) {
 		$fname = __METHOD__ . ' (' . get_class( $this ) . ')';
-		$info = $this->getQueryInfo();
-		$tables = $info['tables'];
-		$fields = $info['fields'];
-		$conds = isset( $info['conds'] ) ? $info['conds'] : array();
-		$options = isset( $info['options'] ) ? $info['options'] : array();
-		if ( $ascending ) {
-			$options['ORDER BY'] = $this->mIndexField;
-			$operator = '>';
-		} else {
-			$options['ORDER BY'] = $this->mIndexField . ' DESC';
-			$operator = '<';
-		}
-		if ( $offset != '' ) {
-			$conds[] = $this->mIndexField . $operator . $this->mDb->addQuotes( $offset );
-		}
-		$options['LIMIT'] = intval( $limit );
+		extract( $this->getCompleteQueryInfo( $offset, $limit, $ascending ) );
 		$res = $this->mDb->select( $tables, $fields, $conds, $fname, $options );
 		return new ResultWrapper( $this->mDb, $res );
 	}
@@ -502,7 +513,7 @@ abstract class TablePager extends IndexPager {
 		$this->mCurrentRow = $row;  # In case formatValue needs to know
 		foreach ( $fieldNames as $field => $name ) {
 			$value = isset( $row->$field ) ? $row->$field : null;
-			$formatted = strval( $this->formatValue( $field, $value ) );
+			$formatted = strval( $this->formatValue( $field, $value, $row ) );
 			if ( $formatted == '' ) {
 				$formatted = '&nbsp;';
 			}
@@ -634,12 +645,12 @@ abstract class TablePager extends IndexPager {
 	 * not &nbsp; for empty cells. Do not include the <td> and </td>. 
 	 *
 	 * @param string $name The database field name
-	 * @param string $value The value retrieved from the database
+	 * @param string $value The field value retrieved from the database
+	 * @param object $row The result of the row
 	 *
-	 * The current result row is available as $this->mCurrentRow, in case you need 
 	 * more context.
 	 */
-	abstract function formatValue( $name, $value );
+	abstract function formatValue( $name, $value, $row );
 
 	/**
 	 * The database field name used as a default sort order
@@ -652,5 +663,9 @@ abstract class TablePager extends IndexPager {
 	 * will be HTML-escaped later.
 	 */
 	abstract function getFieldNames();
+
+	/**
+	 * getQueryInfo() is also still abstract, inherited from IndexPager
+	 */
 }
 ?>
