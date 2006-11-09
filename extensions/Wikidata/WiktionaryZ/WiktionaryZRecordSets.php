@@ -512,13 +512,13 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, $queryTransactionI
 	//and expand the records
 	$recordSet->getStructure()->attributes[] = $objectAttributesAttribute;
 	expandObjectAttributesAttribute($recordSet, $syntransIdAttribute, $queryTransactionInformation);
-	
 	return $recordSet;
 }
 
 function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $queryTransactionInformation) {
 	global
 		$objectAttributesAttribute;
+		
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 		$record = $recordSet->getRecord($i);
 		$record->setAttributeValue($objectAttributesAttribute, getObjectAttributesRecord($record->getAttributeValue($objectIdAttribute), $queryTransactionInformation));		
@@ -655,12 +655,14 @@ function getTextAttributesValuesRecordSet($objectId, $queryTransactionInformatio
 
 function getTranslatedTextAttributeValuesRecordSet($objectId, $queryTransactionInformation) {
 	global
-		$translatedContentAttributeValuesTable, $translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextValueIdAttribute;
+		$translatedTextAttributeIdAttribute, $translatedContentAttributeValuesTable, $translatedTextAttributeAttribute,
+		$objectAttributesAttribute, $translatedTextValueAttribute, $translatedTextValueIdAttribute;
 
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
-		$translatedTextValueIdAttribute,
+		$translatedTextAttributeIdAttribute,
 		array(
+			'value_id' => $translatedTextAttributeIdAttribute,
 			'attribute_mid' => $translatedTextAttributeAttribute,
 			'value_tcid' => $translatedTextValueIdAttribute
 		),
@@ -673,6 +675,10 @@ function getTranslatedTextAttributeValuesRecordSet($objectId, $queryTransactionI
 	expandTranslatedContentsInRecordSet($recordSet, $translatedTextValueIdAttribute, $translatedTextValueAttribute, $queryTransactionInformation);
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($translatedTextAttributeAttribute));
 
+	//add object attributes attribute to the generated structure 
+	//and expand the records
+	$recordSet->getStructure()->attributes[] = $objectAttributesAttribute;
+	expandObjectAttributesAttribute($recordSet, $translatedTextAttributeIdAttribute, $queryTransactionInformation);
 	return $recordSet;
 }
 

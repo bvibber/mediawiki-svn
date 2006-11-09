@@ -12,19 +12,22 @@ function initializeObjectAttributeEditors() {
 		$definitionObjectAttributesEditor, $definedMeaningIdAttribute,
 		$synonymsAndTranslationsObjectAttributesEditor, $syntransIdAttribute,
 		$relationsObjectAttributesEditor, $relationIdAttribute,
-		$textValueObjectAttributesEditor, $textAttributeIdAttribute;
+		$textValueObjectAttributesEditor, $textAttributeIdAttribute,
+		$translatedTextValueObjectAttributesEditor, $translatedTextAttributeIdAttribute;
 		
 	$definedMeaningObjectAttributesEditor =	new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$definitionObjectAttributesEditor =	new RecordUnorderedListEditor($objectAttributesAttribute, 5); 
 	$synonymsAndTranslationsObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$relationsObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
-	$textValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);		
+	$textValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
+	$translatedTextValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	
 	setObjectAttributesEditor($definedMeaningObjectAttributesEditor, false, new ObjectIdFetcher(0, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($definitionObjectAttributesEditor, false, new DefinitionObjectIdFetcher(0, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($synonymsAndTranslationsObjectAttributesEditor, false, new ObjectIdFetcher(0, $syntransIdAttribute));
 	setObjectAttributesEditor($relationsObjectAttributesEditor, false, new ObjectIdFetcher(0, $relationIdAttribute));
 	setObjectAttributesEditor($textValueObjectAttributesEditor, false, new ObjectIdFetcher(0, $textAttributeIdAttribute));
+	setObjectAttributesEditor($translatedTextValueObjectAttributesEditor, false, new ObjectIdFetcher(0, $translatedTextAttributeIdAttribute));	
 }
 
 function getTransactionEditor($attribute) {
@@ -76,9 +79,6 @@ function getTranslatedTextEditor($attribute, $controller, $showRecordLifeSpan) {
 }
 
 function setObjectAttributesEditor($objectAttributesEditor, $showRecordLifeSpan, $objectIdFetcher) {
-	global
-		$translatedTextAttributeValuesAttribute;
-	
 	$objectAttributesEditor->addEditor(getTextAttributeValuesEditor($showRecordLifeSpan, new TextAttributeValuesController($objectIdFetcher)));
 	$objectAttributesEditor->addEditor(getTranslatedTextAttributeValuesEditor($showRecordLifeSpan, new TranslatedTextAttributeValuesController($objectIdFetcher)));
 }
@@ -194,11 +194,12 @@ function getTextAttributeValuesEditor($showRecordLifeSpan, $controller) {
 
 function getTranslatedTextAttributeValuesEditor($showRecordLifeSpan, $controller) {
 	global
-		$translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute;
+		$translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, $translatedTextValueObjectAttributesEditor;
 
 	$editor = new RecordSetTableEditor($translatedTextAttributeValuesAttribute, new SimplePermissionController(true), true, true, false, $controller);
 	$editor->addEditor(new TranslatedTextAttributeEditor($translatedTextAttributeAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(getTranslatedTextEditor($translatedTextValueAttribute, new TranslatedTextAttributeValueController(), $showRecordLifeSpan));
+	$editor->addEditor(new PopUpEditor($translatedTextValueObjectAttributesEditor, 'Annotation'));
 
 	addTableLifeSpanEditor($editor, $showRecordLifeSpan);
 

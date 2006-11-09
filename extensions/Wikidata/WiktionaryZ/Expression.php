@@ -563,16 +563,17 @@ function getTextValueAttribute($textValueAttributeId) {
 	return $dbr->fetchObject($queryResult);
 }
 
-function createTranslatedTextAttributeValue($objectId, $attributeId, $translatedContentId) {
+function createTranslatedTextAttributeValue($valueId, $objectId, $attributeId, $translatedContentId) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("INSERT INTO uw_translated_content_attribute_values (object_id, attribute_mid, value_tcid, add_transaction_id) " .
-			    "VALUES ($objectId, $attributeId, $translatedContentId, ". getUpdateTransactionId() .")");
+	$dbr->query("INSERT INTO uw_translated_content_attribute_values (value_id, object_id, attribute_mid, value_tcid, add_transaction_id) " .
+			    "VALUES ($valueId, $objectId, $attributeId, $translatedContentId, ". getUpdateTransactionId() .")");
 }
 
 function addTranslatedTextAttributeValue($objectId, $attributeId, $languageId, $text) {
+	$translatedTextValueAttributeId = newObjectId('uw_translated_content_attribute_values');
 	$translatedContentId = newTranslatedContentId();
 	
-	createTranslatedTextAttributeValue($objectId, $attributeId, $translatedContentId);
+	createTranslatedTextAttributeValue($translatedTextValueAttributeId, $objectId, $attributeId, $translatedContentId);
 	addTranslatedText($translatedContentId, $languageId, $text);
 }
 
