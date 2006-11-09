@@ -659,16 +659,14 @@ function DynamicPageList2( $input, $params, &$parser ) {
 					$sSqlWhere .= " AND cl_head.cl_to IN ('" . implode("', '", $aCatHeadings) . "')";
 				break;
 			case 'firstedit':
-				$sSqlRevisionTable = $sRevisionTable . ', ';
-				$sSqlRev_timestamp = ', min(rev_timestamp) AS rev_timestamp';
-				$sSqlCond_page_rev = ' AND page_id=rev_page';
-				$sSqlGroupBy = ' GROUP BY ' . $sSqlCl_to . 'page_id';
+				$sSqlRevisionTable = $sRevisionTable . ' AS rev, ';
+				$sSqlRev_timestamp = ', rev_timestamp';
+				$sSqlCond_page_rev = ' AND page_id=rev.rev_page AND rev.rev_timestamp=( SELECT MIN(rev_aux.rev_timestamp) FROM ' . $sRevisionTable . ' AS rev_aux WHERE rev_aux.rev_page=rev.rev_page )';
 				break;
 			case 'lastedit':
-				$sSqlRevisionTable = $sRevisionTable . ', ';
-				$sSqlRev_timestamp = ', max(rev_timestamp) AS rev_timestamp';
-				$sSqlCond_page_rev = ' AND page_id=rev_page';
-				$sSqlGroupBy = ' GROUP BY ' . $sSqlCl_to . 'page_id';
+				$sSqlRevisionTable = $sRevisionTable . ' AS rev, ';
+				$sSqlRev_timestamp = ', rev_timestamp';
+				$sSqlCond_page_rev = ' AND page_id=rev.rev_page AND rev.rev_timestamp=( SELECT MAX(rev_aux.rev_timestamp) FROM ' . $sRevisionTable . ' AS rev_aux WHERE rev_aux.rev_page=rev.rev_page )';
 				break;
 			case 'sortkey':
 				// We need the namespaces with strictly positive indices (DPL2 allowed namespaces, except the first one: Main).
