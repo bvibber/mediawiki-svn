@@ -76,7 +76,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 	
 	public function history() {
 		global
-			$wgOut, $wgTitle;
+			$wgOut, $wgTitle, $wgRequest;
 			
 		if (isset($_GET['show'])) {
 			$this->showRecordLifeSpan = isset($_GET["show-record-life-span"]);
@@ -92,11 +92,12 @@ class DefaultWikidataApplication implements WikidataApplication {
 		else
 			$this->queryTransactionInformation = new QueryAtTransactionInformation($this->transaction);
 			
-		$wgOut->addHTML($this->getLanguageSelector());
+		$transactionId = $wgRequest->getInt('transaction');
 
+		$wgOut->addHTML($this->getLanguageSelector());
 		$wgOut->addHTML(getOptionPanel(
 			array(
-				'Transaction' => getSuggest('transaction','transaction', $_GET['transaction']),
+				'Transaction' => getSuggest('transaction','transaction', $transactionId, getTransactionLabel($transactionId), array(0, 2, 3)),
 				'Show record life span' => getCheckBox('show-record-life-span',$this->showRecordLifeSpan)
 			),
 			'history'

@@ -6,6 +6,7 @@
 
 require_once("HTMLtable.php");
 require_once("Controller.php");
+require_once("type.php");
 
 function addCollapsablePrefixToClass($class) {
 	return "collapsable-$class";
@@ -1372,10 +1373,13 @@ class RecordSpanEditor extends RecordEditor {
 			$attributeValue = $editor->view($idPath, $value->getAttributeValue($attribute));
 			
 			if ($this->showAttributeNames)	
-				$fields[] = $attribute->name . $this->valueSeparator . $attributeValue;
+				$field = $attribute->name . $this->valueSeparator . $attributeValue;
 			else
-				$fields[] = $attributeValue; 
-				
+				$field = $attributeValue; 
+			
+			if ($field != "")
+				$fields[] = $field;
+					
 			$idPath->popAttribute();
 		}
 
@@ -1438,9 +1442,7 @@ class UserEditor extends ScalarEditor {
 class TimestampEditor extends ScalarEditor {
 	public function getViewHTML($idPath, $value) {
 		if ($value != "")
-			return 
-				substr($value, 0, 4) . '-' . substr($value, 4, 2) . '-' . substr($value, 6, 2) . ' ' .
-				substr($value, 8, 2) . ':' . substr($value, 10, 2) . ':' . substr($value, 12, 2);
+			return timestampAsText($value);
 		else
 			return "";
 	}

@@ -47,13 +47,14 @@ function getSelect($name, $options, $selectedValue="") {
 	return $result . '</select>';
 }
 
-function getSuggest($name, $query, $value=0, $label='') {
+function getSuggest($name, $query, $value=0, $label='', $displayLabelColumns = array(0)) {
 	if ($label == "")
 		$label = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 	 
 	$result = 
 		'<span class="suggest">' .
 			'<input type="hidden" id="'. $name .'-suggest-query" value="'. $query .'"/>' .
+			'<input type="hidden" id="'. $name .'-suggest-label-columns" value="'. implode(', ', $displayLabelColumns) .'"/>' .
 			'<input type="hidden" id="'. $name .'" name="'. $name .'" value="'. $value .'"/>' .
 			'<a id="'. $name .'-suggest-link" class="suggest-link" onclick="suggestLinkClicked(event, this);" title="Click to change selection">' . $label . '</a>' .
 		'</span>'.

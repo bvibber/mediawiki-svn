@@ -122,8 +122,19 @@ function suggestCloseClicked(event, suggestClose) {
 }
 
 function suggestRowClicked(event, suggestRow) {
-	updateSuggestValue(getSuggestPrefix(suggestRow.parentNode.parentNode.parentNode.parentNode, "div"),
-						suggestRow.id, suggestRow.getElementsByTagName('td')[0].innerHTML);
+	var suggestPrefix = getSuggestPrefix(suggestRow.parentNode.parentNode.parentNode.parentNode, "div"); 
+	var displayLabelField = document.getElementById(suggestPrefix + "label-columns");
+	var displayLabelColumnIndices = displayLabelField.value.split(", ");
+	var labels = new Array();
+	
+	for (var i = 0; i < displayLabelColumnIndices.length; i++) {
+		var columnValue = suggestRow.getElementsByTagName('td')[displayLabelColumnIndices[i]].innerHTML;
+		
+		if (columnValue != "")
+			labels.push(columnValue);
+	} 
+	
+	updateSuggestValue(suggestPrefix, suggestRow.id, labels.join(', '));
 	stopEventHandling(event);
 }
 

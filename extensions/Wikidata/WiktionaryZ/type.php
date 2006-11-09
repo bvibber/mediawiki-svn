@@ -55,6 +55,12 @@ function collectionIdAsText($collectionId) {
 		return "";
 }
 
+function timestampAsText($timestamp) {
+	return
+		substr($timestamp, 0, 4) . '-' . substr($timestamp, 4, 2) . '-' . substr($timestamp, 6, 2) . ' ' .
+		substr($timestamp, 8, 2) . ':' . substr($timestamp, 10, 2) . ':' . substr($timestamp, 12, 2);
+}
+
 function definingExpressionRow($definedMeaningId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT uw_expression_ns.expression_id, spelling, language_id " .

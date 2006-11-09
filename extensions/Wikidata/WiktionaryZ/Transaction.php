@@ -294,4 +294,26 @@ function getRecordLifeSpanTuple($addTransactionId, $removeTransactionId) {
 	return $result;
 }
 
+function getTransactionLabel($transactionId) {
+	global
+		$timestampAttribute, $userAttribute, $summaryAttribute;
+	
+	if ($transactionId > 0) {
+		$record = getTransactionRecord($transactionId);
+		
+		$label = 
+			timestampAsText($record->getAttributeValue($timestampAttribute)) . ', ' .
+			$record->getAttributeValue($userAttribute);
+			
+		$summary = $record->getAttributeValue($summaryAttribute);
+		
+		if ($summary != "")
+			$label .= ', ' . $summary;
+			
+		return $label;
+	}
+	else 
+		return "";
+}
+
 ?>

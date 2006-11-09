@@ -10,9 +10,9 @@ function wfSpecialTransaction() {
 			SpecialPage::SpecialPage('Transaction');
 		}
 		
-		function execute( $par ) {
+		function execute($parameter) {
 			global
-				$wgOut;
+				$wgOut, $wgRequest;
 			
 			require_once("WikiDataTables.php");
 			require_once("WiktionaryZAttributes.php");
@@ -21,9 +21,13 @@ function wfSpecialTransaction() {
 			require_once("Transaction.php");
 			require_once("Editor.php");
 			require_once("Controller.php");
+			require_once("type.php");
 			
 			initializeAttributes();
 			
+			$fromTransactionId = $wgRequest->getInt('from-transaction');
+			
+//			$wgOut->addHTML(getFilterOptionsPanel($fromTransactionId));
 			$wgOut->addHTML(getTransactionOverview());
 			$wgOut->addHTML(DefaultEditor::getExpansionCss());
 			$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
@@ -31,6 +35,18 @@ function wfSpecialTransaction() {
 	}
 	
 	SpecialPage::addPage(new SpecialTransaction());
+}
+
+function getFilterOptionsPanel($fromTransactionId) {
+	return getOptionPanel(array(
+		"From transaction" => getSuggest(
+			'from-transaction', 
+			'transaction', 
+			$fromTransactionId, 
+			getTransactionLabel($fromTransactionId), 
+			array(0, 2, 3)
+		)
+	)); 
 }
 
 function initializeAttributes() {
