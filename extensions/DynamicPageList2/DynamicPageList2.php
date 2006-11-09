@@ -705,7 +705,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	if ($bAddFirstCategoryDate)
 		//format cl_timestamp field (type timestamp) to string in same format as rev_timestamp field
 		//to make it compatible with $wgLang->date() function used in function DPL2OutputListStyle() to show "firstcategorydate"
-		$sSqlCl_timestamp = ", DATE_FORMAT(c1.cl_timestamp, '%Y%m%d%H%i%s') AS cl_timestamp";
+		$sSqlCl_timestamp = ", DATE_FORMAT(cl0.cl_timestamp, '%Y%m%d%H%i%s') AS cl_timestamp";
 	if ($bAddPageTouchedDate)
 		$sSqlPage_touched = ', page_touched';
 	if ($bAddUser)
