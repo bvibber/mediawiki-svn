@@ -75,7 +75,7 @@ $otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other de
 global
 	$relationsAttribute, $relationStructure, $relationKeyStructure, $reciprocalRelationsAttribute;
 	
-$relationStructure = new Structure($relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute);
+$relationStructure = new Structure($relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $objectAttributesAttribute);
 $relationKeyStructure = new Structure($relationIdAttribute);	
 $relationsAttribute = new Attribute("relations", "Relations", new RecordSetType($relationStructure));
 $reciprocalRelationsAttribute = new Attribute("reciprocal-relations", "Incoming relations", new RecordSetType($relationStructure));
@@ -100,8 +100,9 @@ $alternativeDefinitionsAttribute = new Attribute("alternative-definitions", "Alt
 
 global
 	$synonymsAndTranslationsAttribute, $syntransIdAttribute;
-	
-$synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Synonyms and translations", new RecordSetType(new Structure($syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute)));
+
+$syntransIdAttribute = new Attribute("syntrans-id", "Synonym and translation identifier", "integer");
+$synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "Synonyms and translations", new RecordSetType(new Structure($syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute, $objectAttributesAttribute)));
 
 global
 	$translatedTextValueIdAttribute, $translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, $translatedTextAttributeValuesStructure;
@@ -119,7 +120,7 @@ global
 $textAttributeIdAttribute = new Attribute("text-attribute-id", "Attribute identifier", "object-id");
 $textAttributeObjectAttribute = new Attribute("text-attribute-object-id", "Attribute object", "object-id");
 $textAttributeAttribute = new Attribute("text-attribute", "Attribute", $definedMeaningReferenceStructure);
-$textAttributeValuesStructure = new Structure($textAttributeIdAttribute, $textAttributeObjectAttribute, $textAttributeAttribute, $textAttribute);	
+$textAttributeValuesStructure = new Structure($textAttributeIdAttribute, $textAttributeObjectAttribute, $textAttributeAttribute, $textAttribute, $objectAttributesAttribute);	
 $textAttributeValuesAttribute = new Attribute("text-attribute-values", "Text attribute values", new RecordSetType($textAttributeValuesStructure));
 
 global
@@ -149,6 +150,6 @@ global
 
 $objectIdAttribute = new Attribute("object-id", "Object identifier", "object-id");
 $objectAttributesStructure = new Structure($objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute);
-$objectAttributesAttribute = new Attribute("object-attributes", "Attributes", new RecordType($objectAttributesStructure));
+$objectAttributesAttribute = new Attribute("object-attributes", "Annotation", new RecordType($objectAttributesStructure));
 
 ?>

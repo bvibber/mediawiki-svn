@@ -107,7 +107,10 @@ function getRecordAsTableCells($idPath, $editor, $record, &$startColumn = 0) {
 		if (is_a($childEditor, RecordTableCellEditor)) 
 			$result .= getRecordAsTableCells($idPath, $childEditor, $value, $startColumn);	
 		else {
-			$displayValue = $childEditor->view($idPath, $value);
+			if($childEditor->showsData($value))
+				$displayValue = $childEditor->view($idPath, $value);
+			else
+				$displayValue = "";
 			$result .= '<td class="'. getHTMLClassForType($type) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
 			$startColumn++;
 		}

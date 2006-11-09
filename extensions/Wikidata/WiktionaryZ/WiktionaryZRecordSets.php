@@ -492,7 +492,7 @@ function getTranslatedContentRecordSet($translatedContentId, $queryTransactionIn
 
 function getSynonymAndTranslationRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global
-		$syntransTable, $syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute;
+		$syntransTable, $syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute, $objectAttributesAttribute;
 
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
@@ -507,9 +507,24 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, $queryTransactionI
 	);
 	
 	expandExpressionReferencesInRecordSet($recordSet, array($expressionAttribute));
+
+	//add object attributes attribute to the generated structure 
+	//and expand the records
+	$recordSet->getStructure()->attributes[] = $objectAttributesAttribute;
+	expandObjectAttributesAttribute($recordSet, $syntransIdAttribute, $queryTransactionInformation);
 	
 	return $recordSet;
 }
+
+function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $queryTransactionInformation) {
+	global
+		$objectAttributesAttribute;
+	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
+		$record = $recordSet->getRecord($i);
+		$record->setAttributeValue($objectAttributesAttribute, getObjectAttributesRecord($record->getAttributeValue($objectIdAttribute), $queryTransactionInformation));		
+	}
+}
+
 
 function getDefinedMeaningReferenceRecord($definedMeaningId) {
 	global
@@ -526,7 +541,8 @@ function getDefinedMeaningReferenceRecord($definedMeaningId) {
 
 function getDefinedMeaningRelationsRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global
-		$meaningRelationsTable, $relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
+		$meaningRelationsTable, $relationIdAttribute, $relationTypeAttribute, 
+		$objectAttributesAttribute, $otherDefinedMeaningAttribute;
 
 //	$startTime = microtime(true);
 	$recordSet = queryRecordSet(
@@ -545,13 +561,19 @@ function getDefinedMeaningRelationsRecordSet($definedMeaningId, $queryTransactio
 //	echo "<!--" . (microtime(true) - $startTime). " -->";
 	
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($relationTypeAttribute, $otherDefinedMeaningAttribute));
+
+	//add object attributes attribute to the generated structure 
+	//and expand the records
+	$recordSet->getStructure()->attributes[] = $objectAttributesAttribute;
+	expandObjectAttributesAttribute($recordSet, $relationIdAttribute, $queryTransactionInformation);
 	
 	return $recordSet;
 }
 
 function getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global
-		$meaningRelationsTable, $relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
+		$meaningRelationsTable, $relationIdAttribute, $relationTypeAttribute, 
+		$otherDefinedMeaningAttribute, $objectAttributesAttribute;
 
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
@@ -567,6 +589,11 @@ function getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $query
 	);
 	
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($relationTypeAttribute, $otherDefinedMeaningAttribute));
+
+	//add object attributes attribute to the generated structure 
+	//and expand the records
+	$recordSet->getStructure()->attributes[] = $objectAttributesAttribute;
+	expandObjectAttributesAttribute($recordSet, $relationIdAttribute, $queryTransactionInformation);
 	
 	return $recordSet;
 }
@@ -600,7 +627,8 @@ function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $quer
 
 function getTextAttributesValuesRecordSet($objectId, $queryTransactionInformation) {
 	global
-		$textAttributeValuesTable, $textAttributeIdAttribute, $textAttributeObjectAttribute, $textAttributeAttribute, $textAttribute;
+		$textAttributeValuesTable, $textAttributeIdAttribute, $textAttributeObjectAttribute,
+		$textAttributeAttribute, $textAttribute, $objectAttributesAttribute;
 
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
@@ -616,6 +644,12 @@ function getTextAttributesValuesRecordSet($objectId, $queryTransactionInformatio
 	);
 	
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($textAttributeAttribute));
+
+	//add object attributes attribute to the generated structure 
+	//and expand the records
+	$recordSet->getStructure()->attributes[] = $objectAttributesAttribute;
+	expandObjectAttributesAttribute($recordSet, $textAttributeIdAttribute, $queryTransactionInformation);	
+	
 	return $recordSet;
 }
 
