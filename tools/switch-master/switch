@@ -1,0 +1,30 @@
+#!/bin/bash
+
+pause() {
+	echo -n $1
+	head -n1 > /dev/null
+}
+
+dir=`dirname $0`
+cd $dir
+
+. config
+
+echo Current master: $master
+echo New master: $newmaster
+echo "Slaves (must not contain either of the above): $slaves"
+pause "Ready? Press enter to continue, or ctrl-c to exit"
+
+echo "Setting master to read only..."
+./10-master-readonly
+pause "Done, press enter to continue"
+echo "Getting old master pos..."
+./15-master-pos
+echo "Getting new master pos..."
+./20-newmaster-pos
+pause "Press enter to switch the slaves to use the new masters"
+./30-slaves
+pause "Done, press enter to switch the new master to r/w"
+./40-newmaster-rw
+echo "All done."
+

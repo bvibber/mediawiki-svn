@@ -1,0 +1,9 @@
+#!/bin/sh
+
+. config
+
+ssh root@$master 'sed -i~ '\''s/#\s*read-only/read-only/'\'' /etc/my.cnf'
+echo "set global read_only=1; flush tables;" | mysql -h $master
+echo '\sselect @@read_only' | mysql -h $master
+echo
+

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+. config
+
+echo show master status | mysql -h $newmaster | tee ${newmaster}-pos
