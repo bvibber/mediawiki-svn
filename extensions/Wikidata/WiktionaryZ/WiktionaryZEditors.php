@@ -3,9 +3,8 @@
 require_once('Editor.php');
 require_once('WiktionaryZAttributes.php');
 
-initializeObjectAttributeEditors();
-
-function initializeObjectAttributeEditors() {
+initializeObjectAttributeEditors(true);
+function initializeObjectAttributeEditors($showRecordLifeSpan) {
 	global
 		$objectAttributesAttribute,
 		$definedMeaningObjectAttributesEditor, $definedMeaningIdAttribute,
@@ -22,12 +21,12 @@ function initializeObjectAttributeEditors() {
 	$textValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$translatedTextValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	
-	setObjectAttributesEditor($definedMeaningObjectAttributesEditor, false, new ObjectIdFetcher(0, $definedMeaningIdAttribute));
-	setObjectAttributesEditor($definitionObjectAttributesEditor, false, new DefinitionObjectIdFetcher(0, $definedMeaningIdAttribute));
-	setObjectAttributesEditor($synonymsAndTranslationsObjectAttributesEditor, false, new ObjectIdFetcher(0, $syntransIdAttribute));
-	setObjectAttributesEditor($relationsObjectAttributesEditor, false, new ObjectIdFetcher(0, $relationIdAttribute));
-	setObjectAttributesEditor($textValueObjectAttributesEditor, false, new ObjectIdFetcher(0, $textAttributeIdAttribute));
-	setObjectAttributesEditor($translatedTextValueObjectAttributesEditor, false, new ObjectIdFetcher(0, $translatedTextAttributeIdAttribute));	
+	setObjectAttributesEditor($definedMeaningObjectAttributesEditor, $showRecordLifeSpan, new ObjectIdFetcher(0, $definedMeaningIdAttribute));
+	setObjectAttributesEditor($definitionObjectAttributesEditor, $showRecordLifeSpan, new DefinitionObjectIdFetcher(0, $definedMeaningIdAttribute));
+	setObjectAttributesEditor($synonymsAndTranslationsObjectAttributesEditor, $showRecordLifeSpan, new ObjectIdFetcher(0, $syntransIdAttribute));
+	setObjectAttributesEditor($relationsObjectAttributesEditor, $showRecordLifeSpan, new ObjectIdFetcher(0, $relationIdAttribute));
+	setObjectAttributesEditor($textValueObjectAttributesEditor, $showRecordLifeSpan, new ObjectIdFetcher(0, $textAttributeIdAttribute));
+	setObjectAttributesEditor($translatedTextValueObjectAttributesEditor, $showRecordLifeSpan, new ObjectIdFetcher(0, $translatedTextAttributeIdAttribute));	
 }
 
 function getTransactionEditor($attribute) {
