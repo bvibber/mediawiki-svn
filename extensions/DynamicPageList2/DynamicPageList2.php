@@ -1001,7 +1001,7 @@ function DPL2OutputListStyle ($aArticles, $aAddDates, $aAddUsers, $aAddCategorie
 			$r .= $mode->sInline; //If mode is not 'inline', sInline attribute is empty, so does nothing
 		$r .= $mode->sStartItem;
 		if($aAddDates[$i] != '')
-			$r .=  $wgLang->timeanddate($aAddDates[$i]) . ': ';
+			$r .=  $wgLang->timeanddate($aAddDates[$i], true) . ': ';
 		$r .= $aArticles[$i];
 		if($aAddUsers[$i] != '')
 			$r .= ' . . ' . $aAddUsers[$i];
