@@ -133,6 +133,10 @@ class LogPage {
 	function actionText( $type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks=false, $translate=false ) {
 		global $wgLang, $wgContLang, $wgLogActions;
 
+		if ( !is_array( $params ) ) {
+			$params = self::extractParams( $params );
+		}
+
 		$key = "$type/$action";
 		if( isset( $wgLogActions[$key] ) ) {
 			if( is_null( $title ) ) {
