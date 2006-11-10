@@ -67,13 +67,31 @@ namespace MediaWiki.Search {
 		 * @return
 		 */
 		protected Analyzer GetAnalyzerForLanguage(string language) {
-			if (language.Equals("de"))
-				return new GermanAnalyzer();
-			if (language.Equals("eo"))
-				return new EsperantoAnalyzer();
-			if (language.Equals("ru"))
-				return new RussianAnalyzer();
-			return new EnglishAnalyzer();
+			Analyzer contentAnalyzer = null;
+			Analyzer defaultAnalyzer = null;
+			Analyzer perFieldAnalyzer = null;
+			
+			switch (language) {
+			case "de":
+				contentAnalyzer = new GermanAnalyzer();
+				break;
+			case "eo":
+				contentAnalyzer = new EsperantoAnalyzer();
+				break;
+			case "ru":
+				contentAnalyzer = new RussianAnalyzer();
+				break;
+			}
+
+			if (contentAnalyzer == null) {
+				contentAnalyzer = new EnglishAnalyzer();
+			}
+			if (defaultAnalyzer == null) {
+				defaultAnalyzer = new SimpleAnalyzer();
+			}
+			perFieldAnalyzer = new PerFieldAnalyzer(defaultAnalyzer);
+			perFieldAnalyzer.AddAnalyzer("content", contentAnalyzer);
+			return perFieldAnalyzer;
 		}
 		
 		/**
