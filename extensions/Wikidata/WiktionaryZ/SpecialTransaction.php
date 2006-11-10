@@ -26,9 +26,19 @@ function wfSpecialTransaction() {
 			initializeAttributes();
 			
 			$fromTransactionId = $wgRequest->getInt('from-transaction');
+			$transactionCount = $wgRequest->getInt('transaction-count');
+			$userName = $wgRequest->getText('user-name');
 			
-//			$wgOut->addHTML(getFilterOptionsPanel($fromTransactionId));
-			$wgOut->addHTML(getTransactionOverview());
+			if ($fromTransactionId == 0)
+				$fromTransactionId = getLatestTransactionId();
+				
+			if ($transactionCount == 0)
+				$transactionCount = 10;
+			else
+				$transactionCount = min($transactionCount, 20);
+			
+			$wgOut->addHTML(getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName));
+			$wgOut->addHTML(getTransactionOverview($fromTransactionId, $transactionCount, $userName));
 			$wgOut->addHTML(DefaultEditor::getExpansionCss());
 			$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 		}
@@ -37,15 +47,28 @@ function wfSpecialTransaction() {
 	SpecialPage::addPage(new SpecialTransaction());
 }
 
-function getFilterOptionsPanel($fromTransactionId) {
+function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName) {
+	$countOptions = array();
+	
+	for ($i = 1; $i <= 20; $i++)
+		$countOptions[$i] = $i;
+	
 	return getOptionPanel(array(
-		"From transaction" => getSuggest(
-			'from-transaction', 
-			'transaction', 
-			$fromTransactionId, 
-			getTransactionLabel($fromTransactionId), 
-			array(0, 2, 3)
-		)
+		"From transaction" => 
+			getSuggest(
+				'from-transaction', 
+				'transaction', 
+				$fromTransactionId, 
+				getTransactionLabel($fromTransactionId), 
+				array(0, 2, 3)
+			),
+		"Count" => 
+			getSelect('transaction-count',
+				$countOptions,
+				$transactionCount 
+			),
+		"User name" =>
+			getTextBox('user-name', $userName)
 	)); 
 }
 
@@ -145,7 +168,7 @@ function initializeAttributes() {
 	$updatesInTransactionAttribute = new Attribute('updates-in-transaction', 'Updates in transaction', new RecordType($updatesInTransactionStructure));
 }
 
-function getTransactionOverview() {
+function getTransactionOverview($fromTransactionId, $transactionCount, $userName) {
 	global
 		$transactionsTable, $transactionAttribute, $transactionIdAttribute, $userAttribute, $userIPAttribute, 
 		$timestampAttribute, $summaryAttribute, $updatesInTransactionAttribute, $updatedDefinitionAttribute,
@@ -154,6 +177,11 @@ function getTransactionOverview() {
 
 	$queryTransactionInformation = new QueryLatestTransactionInformation();
 
+	$restrictions = array("transaction_id <= $fromTransactionId");
+	
+	if ($userName != "")
+		$restrictions[] = "EXISTS (SELECT user_name FROM user WHERE user.user_id=transactions.user_id)"; 
+
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
 		$transactionIdAttribute,
@@ -161,9 +189,9 @@ function getTransactionOverview() {
 			'transaction_id' => $transactionIdAttribute
 		),
 		$transactionsTable,
-		array(),
+		$restrictions,
 		array('transaction_id DESC'),
-		10
+		$transactionCount
 	);
 	
 	$recordSet->getStructure()->attributes[] = $transactionIdAttribute;
