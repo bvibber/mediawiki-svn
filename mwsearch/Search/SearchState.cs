@@ -69,7 +69,7 @@ namespace MediaWiki.Search {
 		protected Analyzer GetAnalyzerForLanguage(string language) {
 			Analyzer contentAnalyzer = null;
 			Analyzer defaultAnalyzer = null;
-			Analyzer perFieldAnalyzer = null;
+			PerFieldAnalyzerWrapper perFieldAnalyzer = null;
 			
 			switch (language) {
 			case "de":
@@ -89,8 +89,8 @@ namespace MediaWiki.Search {
 			if (defaultAnalyzer == null) {
 				defaultAnalyzer = new SimpleAnalyzer();
 			}
-			perFieldAnalyzer = new PerFieldAnalyzer(defaultAnalyzer);
-			perFieldAnalyzer.AddAnalyzer("content", contentAnalyzer);
+			perFieldAnalyzer = new PerFieldAnalyzerWrapper(defaultAnalyzer);
+			perFieldAnalyzer.AddAnalyzer("contents", contentAnalyzer);
 			return perFieldAnalyzer;
 		}
 		
