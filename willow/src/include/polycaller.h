@@ -15,6 +15,8 @@
 #include <stdexcept>
 #include <typeinfo>
 
+#include "willow.h"
+
 struct polycaller_type_mismatch : std::logic_error {
         polycaller_type_mismatch() : std::logic_error("polycaller called type does not match stored type") {}
 };
@@ -41,7 +43,8 @@ struct polycaller_impl_base3 {
 };
 
 template<typename T, typename arg1, typename arg2, typename arg3>
-struct polycaller_impl3 : polycaller_impl_base3<arg1,arg2,arg3> {
+struct polycaller_impl3 : polycaller_impl_base3<arg1,arg2,arg3>,
+		freelist_allocator<polycaller_impl3<T,arg1,arg2,arg3> > {
 	typedef void (T::*ftype) (arg1, arg2, arg3);
 	ftype	 f;
 	T	*o;
@@ -97,7 +100,8 @@ struct polycaller_impl_base2 {
 };
 
 template<typename T, typename arg1, typename arg2>
-struct polycaller_impl2 : polycaller_impl_base2<arg1,arg2> {
+struct polycaller_impl2 : polycaller_impl_base2<arg1,arg2>,
+		freelist_allocator<polycaller_impl2<T,arg1,arg2> > {
 	typedef void (T::*ftype) (arg1, arg2);
 	ftype	 f;
 	T	*o;
@@ -154,7 +158,8 @@ struct polycaller_impl_base1 {
 };
 
 template<typename T, typename arg1>
-struct polycaller_impl1 : polycaller_impl_base1<arg1> {
+struct polycaller_impl1 : polycaller_impl_base1<arg1>,
+		freelist_allocator<polycaller_impl1<T,arg1> > {
 	typedef void (T::*ftype) (arg1);
 	ftype	 f;
 	T	*o;
@@ -209,7 +214,8 @@ struct polycaller_impl_base0 {
 };
 
 template<typename T>
-struct polycaller_impl0 : polycaller_impl_base0 {
+struct polycaller_impl0 : polycaller_impl_base0,
+		freelist_allocator<polycaller_impl0<T> > {
 	typedef void (T::*ftype) (void);
 	ftype	 f;
 	T	*o;
@@ -272,7 +278,8 @@ struct polycallback_binder_base2 {
 };
 
 template<typename Ftype, typename T, typename arg1, typename arg2>
-struct polycallback_binder2 : polycallback_binder_base2<arg1,arg2> {
+struct polycallback_binder2 : polycallback_binder_base2<arg1,arg2>,
+		freelist_allocator<polycallback_binder2<Ftype,T,arg1,arg2> > {
         Ftype   f;
         T       arg;
         polycallback_binder2 (Ftype f_, T arg_) : f(f_), arg(arg_) {}
@@ -337,7 +344,8 @@ struct polycallback_binder_base1 {
 };
 
 template<typename Ftype, typename T, typename arg1>
-struct polycallback_binder1 : polycallback_binder_base1<arg1> {
+struct polycallback_binder1 : polycallback_binder_base1<arg1>,
+		freelist_allocator<polycallback_binder1<Ftype,T,arg1> > {
         Ftype   f;
         T       arg;
         polycallback_binder1 (Ftype f_, T arg_) : f(f_), arg(arg_) {}
@@ -406,7 +414,8 @@ struct polycallback_binder_base0 {
 };
 
 template<typename Ftype, typename T>
-struct polycallback_binder0 : polycallback_binder_base0 {
+struct polycallback_binder0 : polycallback_binder_base0,
+		freelist_allocator<polycallback_binder0<Ftype,T> > {
         Ftype   f;
         T       arg;
         polycallback_binder0 (Ftype f_, T arg_) : f(f_), arg(arg_) {}

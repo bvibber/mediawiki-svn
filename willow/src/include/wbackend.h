@@ -54,7 +54,7 @@ struct backend {
 	static uint32_t 	 _carp_hosthash	(string const &);
 };
 
-struct backend_list {
+struct backend_list : freelist_allocator<backend_list> {
 	backend_list(	backend_pool const &pool,
 			string const &url,
 			string const &host,

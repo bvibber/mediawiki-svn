@@ -172,7 +172,7 @@ enum socktype {
 	st_dgram = SOCK_DGRAM,
 };
 
-struct address {
+struct address : freelist_allocator<address> {
 	address(void);
 	address(const address &o);
 	address(sockaddr *, socklen_t);
@@ -198,7 +198,7 @@ private:
 	mutable string		 _straddr, _shortaddr;
 };
 
-struct addrlist {
+struct addrlist : freelist_allocator<addrlist> {
 	typedef address value_type;
 	typedef vector<value_type>::const_iterator
 		iterator, const_iterator;
@@ -226,7 +226,7 @@ private:
 	vector<value_type>	 _addrs;
 };
 
-struct socket : noncopyable {
+struct socket : noncopyable, freelist_allocator<socket> {
 	~socket();
 
 	static socket	*create(string const &addr, int port,
