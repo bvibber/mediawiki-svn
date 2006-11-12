@@ -37,19 +37,23 @@ int nbpools;
 
 struct backend_cb_data : freelist_allocator<backend_cb_data> {
 struct	backend		*bc_backend;
-	polycallback<backend *, fde *> bc_func;
+	polycallback<backend *, wsocket *> bc_func;
 	void		*bc_data;
 	string		 bc_url;
 };
 
-backend::backend(string const &name, string const &straddr, sockaddr *addr, socklen_t addrlen)
+backend::backend(
+	string const &name,
+	string const &straddr,
+	address const &addr)
+
 	: be_name(name)
 	, be_straddr(straddr)
+	, be_addr(addr)
 	, be_dead(false)
 	, be_hash(_carp_hosthash(be_straddr))
 	, be_load(1.)
 {
-	memcpy(&be_addr, addr, be_addrlen = addrlen);
 }
 
 backend_pool::backend_pool(void)
@@ -59,37 +63,31 @@ backend_pool::backend_pool(void)
 void
 backend_pool::add(string const &addr, int port, int family)
 {
-int		 i;
-addrinfo	 hints, *res, *r;
-char		 portstr[6];
-	sprintf(portstr, "%d", port);
-	std::memset(&hints, 0, sizeof(hints));
-	hints.ai_socktype = SOCK_STREAM;
-	if (family != -1)
-		hints.ai_family = family;
-
-	if ((i = getaddrinfo(addr.c_str(), portstr, &hints, &res)) != 0) {
-		wlog(WLOG_ERROR, "resolving %s: %s", addr.c_str(), gai_strerror(i));
+addrlist	*list;
+	try {
+		list = addrlist::resolve(addr, port, st_stream, family);
+	} catch (resolution_error &e) {
+		wlog(WLOG_ERROR, "resolving %s: %s", 
+			addr.c_str(), e.what());
 		return;
 	}
 
-	for (r = res; r; r = r->ai_next) {
-		backends.push_back(new backend(addr,
-			wnet::straddr(r->ai_addr, r->ai_addrlen),
-			r->ai_addr, r->ai_addrlen));
+addrlist::iterator	it = list->begin(), end = list->end();
+
+	for (; it != end; ++it) {
+		backends.push_back(new backend(addr, it->straddr(), *it));
 		wlog(WLOG_NOTICE, "backend server: %s[%s]:%d", 
-		     addr.c_str(), wnet::straddr(r->ai_addr, r->ai_addrlen).c_str(), port);
+		     addr.c_str(), it->straddr().c_str(), port);
 	}
-	freeaddrinfo(res);
 
 	_carp_calc();
 }
 
 int
-backend_pool::_get_impl(string const &url, polycallback<backend *, fde *> cb)
+backend_pool::_get_impl(string const &url, polycallback<backend *, wsocket *> cb)
 {
 struct	backend_cb_data	*cbd;
-	int		 s;
+	wsocket		*s = NULL;
 static	time_t		 last_nfile;
 	time_t		 now = time(NULL);
 
@@ -107,46 +105,53 @@ static	time_t		 last_nfile;
 			return -1;
 		}
 
-		if ((s = wnet_open("backend connection", prio_backend, cbd->bc_backend->be_addr.ss_family)) == -1) {
-			if (errno != ENFILE || now - last_nfile > 60) 
-				wlog(WLOG_WARNING, "opening backend socket: %s", strerror(errno));
-			if (errno == ENFILE)
+		try {
+			s = cbd->bc_backend->be_addr.makesocket(
+				"backend connection", prio_backend);
+			s->nonblocking(true);
+		} catch (socket_error &e) {
+			if (e.err() != ENFILE || now - last_nfile > 60) 
+				wlog(WLOG_WARNING, "opening backend socket: %s",
+					e.what());
+			if (e.err() == ENFILE)
 				last_nfile = now;
 			delete cbd;
+			delete s;
 			return -1;
 		}
 
-		if (connect(s, (struct sockaddr *)&cbd->bc_backend->be_addr, 
-		    sizeof(cbd->bc_backend->be_addr)) == 0) {
-			WDEBUG((WLOG_DEBUG, "get_backend: connection completed immediately"));
-			cb(cbd->bc_backend, &fde_table[s]);
-			delete cbd;
-			return 0;
-		}
-
-		if (errno != EINPROGRESS) {
+	connect_status	cs;
+		try {
+			cs = s->connect();
+		} catch (socket_error &e) {
 			time_t retry = time(NULL) + config.backend_retry;
 			wlog(WLOG_WARNING, "%s: %s; retry in %d seconds", 
-				cbd->bc_backend->be_name.c_str(), strerror(errno), config.backend_retry);
+				cbd->bc_backend->be_name.c_str(), 
+				e.what(), config.backend_retry);
 			cbd->bc_backend->be_dead = 1;
 			cbd->bc_backend->be_time = retry;
-			wnet_close(s);
+			delete s;
 			continue;
 		}
 
-		WDEBUG((WLOG_DEBUG, "get_backend: waiting for connection to complete"));
-		ioloop->writeback(s, polycaller<fde *, backend_cb_data*>(*this, &backend_pool::_backend_read), cbd);
+		if (cs == connect_later) {
+			WDEBUG((WLOG_DEBUG, "get_backend: waiting for connection to complete"));
+			s->writeback(
+				polycaller<wsocket *, backend_cb_data*>(*this, 
+					&backend_pool::_backend_read), cbd);
+		} else {
+			WDEBUG((WLOG_DEBUG, "get_backend: connection completed immediately"));
+			cb(cbd->bc_backend, s);
+			delete cbd;
+		}
 		return 0;
 	}
 }
 
 void
-backend_pool::_backend_read(fde *e, backend_cb_data *cbd)
+backend_pool::_backend_read(wsocket *s, backend_cb_data *cbd)
 {
-int		 error = 0;
-socklen_t	 len = sizeof(error);
-
-	getsockopt(e->fde_fd, SOL_SOCKET, SO_ERROR, &error, &len);
+int		 error = s->error();
 
 	if (error && error != EINPROGRESS) {
 		time_t retry = time(NULL) + config.backend_retry;
@@ -154,7 +159,7 @@ socklen_t	 len = sizeof(error);
 			cbd->bc_backend->be_name.c_str(), error, strerror(error), config.backend_retry);
 		cbd->bc_backend->be_dead = 1;
 		cbd->bc_backend->be_time = retry;
-		wnet_close(e->fde_fd);
+		delete s;
 		if (_get_impl(cbd->bc_url, cbd->bc_func) == -1) {
 			cbd->bc_func(NULL, NULL);
 		}
@@ -162,13 +167,7 @@ socklen_t	 len = sizeof(error);
 		return;
 	}
 
-	/*
-	 * After handing the fd off to the caller, we don't care about it
-	 * any more. 
-	 */
-	ioloop->clear_writeback(e->fde_fd);
-
-	cbd->bc_func(cbd->bc_backend, e);
+	cbd->bc_func(cbd->bc_backend, s);
 	delete cbd;
 }
 

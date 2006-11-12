@@ -28,10 +28,6 @@
 # pragma warning (disable: 869 981 304 383 1418 1469 810)
 #endif
 
-#ifdef __GNUC__
-# include <cxxabi.h>
-#endif
-
 template<typename To, typename From>
 To lexical_cast(From const &f)
 {
@@ -356,47 +352,15 @@ struct freelist_allocator {
 	T		*_freelist_next;
 static  tss<T>		 _freelist;
 
-#ifdef WILLOW_DEBUG
-# ifdef __GNUC__
-	static char const *demangle(void) {
-	int	 status = 0;
-	char	*ret;
-	static tss<char const *> cache;
-
-		if (cache)
-			return *cache;
-
-		ret = abi::__cxa_demangle(typeid(T).name(), 0, 0, &status);
-
-		if (status != 0) {
-			wlog(WLOG_DEBUG, "cannot demangle [%s]: %d", typeid(T).name(), status);
-			return typeid(T).name();
-		}
-		cache = new char const *(ret);
-		return ret;
-	}
-# else
-	static char const *demangle(void) {
-		return typeid(T).name();
-	}
-# endif
-#endif
-
         void *operator new(std::size_t size) {
                 if (_freelist) {
                 T       *n = _freelist;
-#ifdef WILLOW_DEBUG
-			wlog(WLOG_DEBUG, "allocate %s from freelist @ %p", demangle(), n);
-#endif
                         _freelist = _freelist->_freelist_next;
 			memset(n, 0, sizeof(*n));
                         return n;
                 } else {
 		void	*ret;
 			ret = new char[size];
-#ifdef WILLOW_DEBUG
-			wlog(WLOG_DEBUG, "allocate %s from heap @ %p", demangle(), ret);
-#endif
 			memset(ret, 0, size);
 			return ret;
 		}
@@ -404,7 +368,6 @@ static  tss<T>		 _freelist;
  
         void operator delete (void *p) {
         T       *o = (T *)p;
-		WDEBUG((WLOG_DEBUG, "return %s @ %p to freelist", demangle(), p));
 		memset(o, 0, sizeof(*o));
                 o->_freelist_next = _freelist;
                 _freelist = o;

@@ -171,10 +171,7 @@ struct polycaller_impl1 : polycaller_impl_base1<arg1> {
 template<typename arg1>
 struct polycaller<arg1,void,void> : polycaller_base<polycaller<arg1,void>, polycaller_impl_base1<arg1> > {
         polycaller(void) {}
-	polycaller& operator= (polycaller<arg1> &other) {
-		this->impl = other.impl->clone();
-		return *this;
-	}
+
 	template<typename T>
 	polycaller(T &o, void (T::*f) (arg1)) {
 		assign(o, f);

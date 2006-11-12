@@ -23,24 +23,23 @@ using std::vector;
 using std::map;
 
 #include "polycaller.h"
-
-struct fde;
+#include "wnet.h"
+using namespace wnet;
 
 struct backend {
-		backend(string const &, string const &, sockaddr *, socklen_t);
+		backend(string const &, string const &, address const &);
 
-	string			 be_name;	/* IP as specified in config	*/
-	int			 be_group;	/* group			*/
-	int	 		 be_port;	/* port number			*/
-	sockaddr_storage	 be_addr;	/* socket address		*/
-	socklen_t		 be_addrlen;	/* address length		*/
-	string			 be_straddr;	/* formatted address		*/
-	int	 		 be_dead;	/* 0 if okay, 1 if unavailable	*/
-	time_t			 be_time;	/* If dead, time to retry	*/
-	uint32_t		 be_hash;	/* constant carp "host" hash	*/
-	uint32_t		 be_carp;	/* carp hash for the last url	*/
-	float			 be_load;	/* carp load factor		*/
-	float			 be_carplfm;	/* carp LFM after calculation	*/
+	string		 be_name;	/* IP as specified in config	*/
+	int		 be_group;	/* group			*/
+	int	 	 be_port;	/* port number			*/
+	string		 be_straddr;	/* formatted address		*/
+	address		 be_addr;	/* address			*/
+	int	 	 be_dead;	/* 0 if okay, 1 if unavailable	*/
+	time_t		 be_time;	/* If dead, time to retry	*/
+	uint32_t	 be_hash;	/* constant carp "host" hash	*/
+	uint32_t	 be_carp;	/* carp hash for the last url	*/
+	float		 be_load;	/* carp load factor		*/
+	float		 be_carplfm;	/* carp LFM after calculation	*/
 
 	static uint32_t 	 _carp_hosthash	(string const &);
 };
@@ -52,14 +51,14 @@ struct backend_pool {
 	void	add	(string const &, int, int);
 
 	template<typename T>
-	int	get	(string const &url, polycaller<backend *, fde *, T> cb, T t) {
-		return _get_impl(url, polycallback<backend *, fde *>(cb, t));
+	int	get	(string const &url, polycaller<backend *, wsocket *, T> cb, T t) {
+		return _get_impl(url, polycallback<backend *, wsocket *>(cb, t));
 	}
 
 	vector<backend *> backends;
 
-	int		 _get_impl	(string const &, polycallback<backend *, fde *>);
-	void		 _backend_read	(fde *e, backend_cb_data *);
+	int		 _get_impl	(string const &, polycallback<backend *, wsocket *>);
+	void		 _backend_read	(wsocket *e, backend_cb_data *);
 	struct backend 	*_next_backend	(string const &url);
 	void		 _carp_recalc	(string const &url);
 	void		 _carp_calc	(void);

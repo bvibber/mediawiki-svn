@@ -221,11 +221,9 @@ io::sink_result
 header_parser::data_ready(char const *buf, size_t len, ssize_t &discard)
 {
 static char const *msie = "MSIE";
-	WDEBUG((WLOG_DEBUG, "header_parser: got data [%.*s]", len, buf));
 char const	*rn, *value, *name, *bufp = buf;
 size_t		 vlen, nlen, rnpos;
 	while ((rn = find_rn(bufp, bufp + len)) != NULL) {
-		WDEBUG((WLOG_DEBUG, "after find_rn: cur: [%.*s]", rn - bufp, bufp));
 		for (char const *c = bufp; c < rn; ++c)
 			if (*(unsigned char *)c > 0x7f || !*c)
 				return io::sink_result_error;
@@ -233,7 +231,6 @@ size_t		 vlen, nlen, rnpos;
 		if (rn == bufp) {
 			_sink_spigot->sp_cork();
 			discard += bufp - buf + 2;
-			WDEBUG((WLOG_DEBUG, "header_parser::data_ready: discarding %d up to [%s]", discard, buf + discard));
 			/* request with no request is an error */
 			if (!_got_reqtype)
 				return io::sink_result_error;
@@ -288,20 +285,15 @@ size_t		 vlen, nlen, rnpos;
 			_content_length = str10toint(value, vlen);
 		else if (config.msie_hack && !strncasecmp(name, "User-Agent", nlen) &&
 			 std::search(value, value + vlen, msie, msie + 4) != value + vlen) {
-			WDEBUG((WLOG_DEBUG, "client is MSIE"));
 			_is_msie = true;
 		} else if (!strncasecmp(name, "Host", nlen))
 			_http_host.assign(value, value + vlen);
 
-		WDEBUG((WLOG_DEBUG, "header_parser: header [%.*s] = [%.*s]", nlen, (char *)name, vlen, (char *)value));
 		_headers.add(name, nlen, value, vlen);
 	next:
 		len -= rn - bufp + 2;
 		bufp = rn + 2;
-		WDEBUG((WLOG_DEBUG, "continue with bufp=[%.*s] len=%d",
-			len, bufp, len));
 	}
-	WDEBUG((WLOG_DEBUG, "header_parser: discarding %d", bufp - buf));
 	discard += bufp - buf;
 	return io::sink_result_okay;
 }
@@ -320,7 +312,6 @@ int		 httpmaj, httpmin;
 	plen = vers - path;
 	vers++;
 	vlen = endp - vers;
-	WDEBUG((WLOG_DEBUG, "path: [%.*s] vers: [%.*s]", plen, path, vlen, vers));
 	if (vlen != 8)
 		return -1;
 	if (strncmp(vers, "HTTP/", 5))
@@ -369,8 +360,6 @@ int		 codelen, desclen;
 	_http_path.assign(errcode, errcode + codelen);
 	_http_path += " ";
 	_http_path.append(errdesc, errdesc + desclen);
-	WDEBUG((WLOG_DEBUG, "vers: [%.*s] errcode: [%.*s] errdesc: [%.*s]",
-		errcode - buf - 1, buf, codelen, errcode, desclen, errdesc));
 	return 0;
 }
 
@@ -395,7 +384,6 @@ header_parser::sp_uncork(void)
 {
 char	*bptr;
 int	 left = _headers.hl_len;
-	WDEBUG((WLOG_DEBUG, "header_parse::uncork: %d left", left));
 	if (!_built) {
 	char	*s;
 		if (!_is_response) {
@@ -413,7 +401,6 @@ int	 left = _headers.hl_len;
 			_buf.add(s, req.size(), true);
 		}
 		s = _headers.build();
-		WDEBUG((WLOG_DEBUG, "built headers: [%.*s]", _headers.hl_len, s));
 		_buf.add(s, _headers.hl_len, true);
 		_buf.add("\r\n", 2, false);
 		_built = true;
@@ -424,7 +411,6 @@ int	 left = _headers.hl_len;
 	wnet::buffer_item	&b = *_buf.items.begin();
 	ssize_t			 discard = 0;
 	io::sink_result		 res;
-		WDEBUG((WLOG_DEBUG, "header_parse::uncork: %d in current buffer %p", b.len, b.buf));
 		res = _sp_sink->data_ready(b.buf + b.off, b.len - b.off, discard);
 		if (discard == 0)
 			return;
@@ -505,7 +491,6 @@ header_spigot::sp_uncork(void)
 	buffer_item	&b = *_buf.items.begin();
 	ssize_t		 discard = 0;
 	io::sink_result	 res;
-		WDEBUG((WLOG_DEBUG, "header_spigot: writing %d", b.len));
 
 		res = _sp_sink->data_ready(b.buf + b.off, b.len, discard);
 		if ((size_t)discard == b.len) {

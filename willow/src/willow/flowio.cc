@@ -44,18 +44,18 @@ spigot::sp_disconnect(void) {
 }
 
 void
-fde_spigot::_fdecall(fde *e, int) {
+socket_spigot::_socketcall(wsocket *s, int) {
 ssize_t	 read;
 sink_result	res;
-	WDEBUG((WLOG_DEBUG, "fde_spigot::_fdecall_impl, fd=%d saved=%d, _off=%d [%.*s]", 
-		e->fde_fd, _saved, _off, _saved - _off, _savebuf + _off));
+	WDEBUG((WLOG_DEBUG, "socket_spigot::_socketcall_impl, fd=%p saved=%d, _off=%d", 
+		s, _saved, _off));
 
 	if (_off) {
 		memmove(_savebuf, _savebuf + _off, _saved - _off);
 		_saved -= _off;
 		_off = 0;
 	}
-	WDEBUG((WLOG_DEBUG, "now saved=%d, _off=%d [%.*s]", _saved, _off, _saved - _off, _savebuf + _off));
+	WDEBUG((WLOG_DEBUG, "now saved=%d, _off=%d", _saved, _off));
 
 	if (_saved) {
 		switch (this->_sp_data_ready(_savebuf, _saved, _off)) {
@@ -76,7 +76,7 @@ sink_result	res;
 	if (_off >= _saved)
 		_off = _saved = 0;
 
-	read = ::read(e->fde_fd, _savebuf, sizeof(_savebuf));
+	read = s->read(_savebuf, sizeof(_savebuf));
 	WDEBUG((WLOG_DEBUG, "read %d", read));
 	if (read == 0) {
 		sp_cork();
@@ -96,13 +96,14 @@ sink_result	res;
 	}
 
 	if (read == -1 && errno == EAGAIN) {
-		WDEBUG((WLOG_DEBUG, "fde_spigot read -1, EAGAIN"));
-		ioloop->readback(_fde->fde_fd, polycaller<fde *, int>(*this, &fde_spigot::_fdecall), 0);
+		WDEBUG((WLOG_DEBUG, "socket_spigot read -1, EAGAIN"));
+		_socket->readback(polycaller<wsocket *, int>(*this,
+			&socket_spigot::_socketcall), 0);
 		return;
 	}
 
 	if (read == -1) {
-		WDEBUG((WLOG_DEBUG, "fde_spigot read -1; error = %s", strerror(errno)));
+		WDEBUG((WLOG_DEBUG, "socket_spigot read -1; error = %s", strerror(errno)));
 		_sp_error_callee();
 		return;
 	}
@@ -119,22 +120,23 @@ sink_result	res;
 		_sp_completed_callee();
 		return;
 	}
-	ioloop->readback(_fde->fde_fd, polycaller<fde *, int>(*this, &fde_spigot::_fdecall), 0);
-	WDEBUG((WLOG_DEBUG, "fde_spigot::_fdecall_impl: saving %d", _saved));
+	_socket->readback(polycaller<wsocket *, int>(*this, &socket_spigot::_socketcall), 0);
+	WDEBUG((WLOG_DEBUG, "socket_spigot::_socketcall_impl: saving %d", _saved));
 	return;
 }
 
 sink_result
-fde_sink::data_ready(char const *buf, size_t len, ssize_t &discard)
+socket_sink::data_ready(char const *buf, size_t len, ssize_t &discard)
 {
 ssize_t	wrote;
-	switch (wrote = write(_fde->fde_fd, buf, len)) {
+	switch (wrote = _socket->write(buf, len)) {
 	case -1:
 		if (errno == EAGAIN) {
-			WDEBUG((WLOG_DEBUG, "fde_sink::data_ready: socket blocked"));
+			WDEBUG((WLOG_DEBUG, "socket_sink::data_ready: socket blocked"));
 			_sink_spigot->sp_cork();
 			if (!_reg) {
-				ioloop->writeback(_fde->fde_fd, polycaller<fde *, int>(*this, &fde_sink::_fdecall), 0);
+				_socket->writeback(polycaller<wsocket *, int>(
+					*this, &socket_sink::_socketcall), 0);
 				_reg = true;
 			}
 			return sink_result_blocked;
@@ -143,7 +145,7 @@ ssize_t	wrote;
 		return sink_result_error;
 		break;
 	}
-	WDEBUG((WLOG_DEBUG, "fde_sink::data_ready: got %lu, wrote %lu", len, wrote));
+	WDEBUG((WLOG_DEBUG, "socket_sink::data_ready: got %lu, wrote %lu", len, wrote));
 	discard += wrote;
 	return sink_result_okay;
 }

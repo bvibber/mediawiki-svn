@@ -27,23 +27,33 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 
 #include "config.h"
 #include <sys/time.h>
+#include <sys/fcntl.h>
+
 #include <event.h>
 #include <pthread.h>
 #include <vector>
 #include <deque>
 #include <cassert>
-
+#include <stdexcept>
+#include <cerrno>
+#include <utility>
 using std::deque;
 using std::vector;
+using std::runtime_error;
+using std::pair;
+using std::make_pair;
 
 #include "willow.h"
 #include "polycaller.h"
 
-struct fde;
-
-extern int max_fd;
-
 struct client_data;
+
+namespace wnet {
+	struct addrlist;
+	struct address;
+	struct socket;
+	typedef socket wsocket;
+}
 
 enum sprio {
 	prio_stats	= 0,
@@ -53,18 +63,6 @@ enum sprio {
 	prio_max
 };
 
-struct readbuf {
-	char	*rb_p;		/* start of allocated region	*/
-	int	 rb_size;	/* size of allocated region	*/
-	int	 rb_dsize;	/* [p,p+dsize) is valid data	*/
-	int	 rb_dpos;	/* current data position	*/
-};
-#define readbuf_spare_size(b) ((b)->rb_size - (b)->rb_dsize)
-#define readbuf_spare_start(b) ((b)->rb_p + (b)->rb_dsize)
-#define readbuf_data_left(b) ((b)->rb_dsize - (b)->rb_dpos)
-#define readbuf_inc_data_pos(b, i) ((b)->rb_dpos += (i))
-#define readbuf_cur_pos(b) ((b)->rb_p + (b)->rb_dpos)
-
 #define FDE_READ	0x1
 #define FDE_WRITE	0x2
 
@@ -73,21 +71,7 @@ extern struct ioloop_t {
 
 	void	prepare(void);
 
-	void	_register	(int, int, polycallback<fde *>);
-	void	_accept		(fde *, int);
-
-	template<typename T>
-	void	readback (int fd, polycaller<fde *, T> cb, T ud) {
-		_register(fd, FDE_READ, polycallback<fde *>(cb, ud));
-	}
-
-	template<typename T>
-	void	writeback (int fd, polycaller<fde *, T> cb, T ud) {
-		_register(fd, FDE_WRITE, polycallback<fde *>(cb, ud));
-	}
-
-	void	clear_readback	(int fd);
-	void	clear_writeback	(int fd);
+	void	_accept		(wnet::socket *, int);
 } *ioloop;
 
 /*
@@ -104,27 +88,6 @@ extern struct ioloop_t {
 						b += len;			\
 					}					\
 				} while (0)
-
-struct fde {
-	int			 fde_fd;
-	const char		*fde_desc;
-	polycallback<fde *>	 fde_read_handler;
-	polycallback<fde *>	 fde_write_handler;
-struct	client_data		*fde_cdata;
-	char			 fde_straddr[40];
-	int			 fde_epflags;
-struct	readbuf			 fde_readbuf;
-	struct {
-		unsigned int	open:1;
-		unsigned int	read_held:1;
-		unsigned int	write_held:1;
-		unsigned int	pend:1;
-	}			 fde_flags;
-struct	event			 fde_ev;
-enum	sprio			 fde_prio;
-	lockable		 fde_lock;
-};
-extern struct fde *fde_table;
 
 namespace wnet {
 
@@ -180,27 +143,163 @@ extern int wnet_exit;
 
 	void	wnet_run(void);
 
-	int	wnet_open		(const char *desc, sprio p, int aftype, int type = SOCK_STREAM);
-	void	wnet_close		(int);
-	void	wnet_write		(int, const void *, size_t, polycaller<fde *, int>);
-	int	wnet_sendfile		(int, int, size_t, off_t, polycaller<fde *, int>);
-	void	wnet_set_blocking	(int);
-	void	wnet_add_accept_wakeup	(int);
-	int	wnet_socketpair		(int, int, int, int[2]);
+	void	wnet_add_accept_wakeup	(wnet::socket *);
 	void 	wnet_set_time		(void);
 	void 	wnet_init_select	(void);
 	void	make_event_base		(void);
 
-	int	readbuf_getdata		(struct fde *);
-	void	readbuf_free		(struct readbuf *);
-
 namespace wnet {	/* things above should move here eventually */
 
-	string			straddr(sockaddr const *addr, socklen_t len);
+struct socket_error : runtime_error {
+	int	_err;
+	int	err(void) const {
+		return _err;
+	}
+	socket_error(int i) : runtime_error(strerror(i)), _err(i) {}
+	socket_error(char const *s) : runtime_error(s), _err(0) {}
+	socket_error() : runtime_error(strerror(errno)), _err(errno) {}
+};
+
+struct resolution_error : socket_error {
+	resolution_error(int i) : socket_error(gai_strerror(i)) {}
+};
+
+enum connect_status {
+	connect_okay,
+	connect_later
+};
+
+enum socktype {
+	st_stream = SOCK_STREAM,
+	st_dgram = SOCK_DGRAM,
+};
+
+struct address {
+	address(void);
+	address(const address &o);
+	address(sockaddr *, socklen_t);
+
+	address& operator= (const address &o);
+
+	string const &straddr(void) const;
+
+	socket 	 *makesocket  (char const *, sprio) const;
+	int	  length  (void) const {	return _addrlen;		}
+	sockaddr *addr    (void) const {	return (sockaddr *)&_addr;	}
+	int	  family  (void) const {	return _fam;			}
+	int	  socktype(void) const {	return _stype;			}
+	int	  protocol(void) const {	return _prot;			}
+
+private:
+	friend struct addrlist;
+	address(addrinfo *ai);
+
+	sockaddr_storage	 _addr;
+	socklen_t		 _addrlen;
+	int			 _fam, _stype, _prot;
+	mutable string		 _straddr;
+};
+
+struct addrlist {
+	typedef address value_type;
+	typedef vector<value_type>::const_iterator
+		iterator, const_iterator;
+
+	~addrlist();
+
+	iterator	 begin		(void) const;
+	iterator	 end		(void) const;
+	socket		*makesocket	(char const *, sprio) const;
+	static addrlist	*resolve	(string const &, 
+					 string const &, 
+					 enum socktype, int = AF_UNSPEC);
+	static addrlist	*resolve	(string const &, int ,
+					 enum socktype, int = AF_UNSPEC);
+
+	static address	 first		(string const &, 
+					 string const &, 
+					 enum socktype, int = AF_UNSPEC);
+	static address	 first		(string const &, int,
+					 enum socktype, int = AF_UNSPEC);
+
+private:
+	addrlist() {};
+
+	vector<value_type>	 _addrs;
+};
+
+struct socket : noncopyable {
+	~socket();
+
+	static socket	*create(string const &addr, int port,
+				enum socktype, char const *, sprio,
+				int = AF_UNSPEC);
+	static socket	*create(string const &addr, string const &port,
+				enum socktype, char const *, sprio,
+				int = AF_UNSPEC);
+	static pair<socket *, socket *> socketpair(enum socktype);
+
+	socket		*accept		(char const *, sprio);
+	connect_status	 connect	(void);
+	int		 read		(char *, size_t);
+	int		 recvfrom	(char *, size_t, wnet::address &);
+	int		 sendto		(char const *, size_t, wnet::address const &);
+	int		 write		(char const *, size_t);
+	void		 nonblocking	(bool);
+	void		 reuseaddr	(bool);
+	void		 bind		(void);
+	void		 listen		(int bl = 25);
+	int		 getopt		(int, void *, socklen_t *) const;
+	int		 setopt		(int, void *, socklen_t);
+	int		 error		(void) const;
+	char const	*description	(void) const;
+
+	wnet::address const	&address	(void) const;
+	string const 	&straddr	(void) const;
+
+	template<typename T>
+	void	readback (polycaller<wnet::socket *, T> cb, T ud);
+
+	template<typename T>
+	void	writeback (polycaller<wnet::socket *, T> cb, T ud);
+
+
+protected:
+	friend struct wnet::address;
+	friend struct ::ioloop_t;
+
+	explicit socket (int, wnet::address const &, char const *, sprio);
+	explicit socket (wnet::address const &, char const *, sprio);
+
+	void		_register	(int, polycallback<wsocket *>);
+	static void	_ev_callback	(int fd, short ev, void *d);
+
+	polycallback<wsocket *>	_read_handler, _write_handler;
+
+	int		 _s;
+	wnet::address	 _addr;
+	char const	*_desc;
+	sprio		 _prio;
+	event		 ev;
+};
+
+
 	string			fstraddr(string const &, sockaddr const *addr, socklen_t len);
 	vector<addrinfo>	nametoaddrs(string const &name, int port);
 	string			reserror(int);
 
+template<typename T>
+void
+socket::readback (polycaller<wnet::socket *, T> cb, T ud) {
+	_register(FDE_READ, polycallback<wnet::socket *>(cb, ud));
 }
-	
+
+template<typename T>
+void
+socket::writeback (polycaller<wnet::socket *, T> cb, T ud) {
+	_register(FDE_WRITE, polycallback<wnet::socket *>(cb, ud));
+}
+
+} // namespace wnet
+
 #endif

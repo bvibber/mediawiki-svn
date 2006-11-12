@@ -24,15 +24,18 @@ using std::string;
 using std::vector;
 using std::map;
 
+#include "wnet.h"
+using namespace wnet;
+
 struct listener {
-	string			 name;
-	string			 host;
-	int	 		 port;
-	sockaddr_storage	 addr;
-	int			 group;
+	string		 name;
+	string		 host;
+	int		 port;
+	int		 group;
+	wnet::socket	*sock;
 };
 extern vector<listener *> listeners;
-extern map<int, int> lsn2group;
+extern map<wsocket *, int> lsn2group;
 
 struct cachedir {
 	char	*dir;

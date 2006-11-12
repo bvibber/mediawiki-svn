@@ -52,10 +52,6 @@ usage(void)
 			, progname);
 }
 
-#ifdef __lint
-# pragma error_messages(off, E_H_C_CHECK2)
-#endif
-
 int 
 main(int argc, char *argv[])
 {
@@ -149,10 +145,6 @@ main(int argc, char *argv[])
 	
 	return EXIT_SUCCESS;
 }
-
-#ifdef __lint
-# pragma error_messages(default, E_H_C_CHECK2)
-#endif
 
 void
 outofmemory(void)
@@ -295,27 +287,24 @@ static void stats_sched(void);
 void add_stats_listener(pair<string,string> const &ip);
 
 struct stats_handler_stru : noncopyable {
-	void	callback (fde *, int);
+	void	callback (wsocket *, int);
 };
 static stats_handler_stru stats_handler;
  
 void
-stats_handler_stru::callback(fde *e, int)
+stats_handler_stru::callback(wsocket *s, int)
 {
-char	buf[65535], *bufp = buf, *endp = buf + sizeof(buf);
-char	rdata[3];
-int	i;
-sockaddr_storage	ss;
-socklen_t		sslen = sizeof(ss);
-char	str[NI_MAXHOST];
+char		buf[65535], *bufp = buf, *endp = buf + sizeof(buf);
+char		rdata[3];
+address		addr;
 
-	if (recvfrom(e->fde_fd, rdata, sizeof(rdata), 0, (sockaddr *)&ss, &sslen) != 2)
+	if (s->recvfrom(rdata, sizeof(rdata), addr) != 2)
 		return;
 
 	if (rdata[0] != 1 || rdata[1] != 0)
 		return;	/* wrong version or length */
 
-	if (!stats.access.allowed((sockaddr *)&ss).first)
+	if (!stats.access.allowed(addr.addr()).first)
 		return;
 
 	/*
@@ -335,7 +324,7 @@ char	str[NI_MAXHOST];
 		ADD_UINT32(bufp, stats.n_httpresp_oks, endp);
 		ADD_UINT32(bufp, stats.n_httpreq_fails, endp);
 		ADD_UINT32(bufp, stats.n_httpresp_fails, endp);
-		sendto(e->fde_fd, buf, bufp - buf, 0, (sockaddr *)&ss, sslen);
+		s->sendto(buf, bufp - buf, addr);
 	}
 }
 
@@ -369,38 +358,49 @@ vector<pair<string,string> >::iterator	it = config.stats_hosts.begin(),
 void
 add_stats_listener(pair<string,string> const &ip)
 {
+addrlist	*alist;
 const char	*hstr = NULL, *pstr = DEFAULT_STATS_PORT;
-addrinfo	 hints, *res, *r;
-int		 i;
 	if (!ip.first.empty())
 		hstr = ip.first.c_str();
 	if (!ip.second.empty())
 		pstr = ip.second.c_str();
-	memset(&hints, 0, sizeof(hints));
-	hints.ai_socktype = SOCK_DGRAM;
-	if ((i = getaddrinfo(hstr, pstr, &hints, &res)) != 0) {
+
+	try {
+		alist = addrlist::resolve(hstr, pstr, st_dgram);
+	} catch (socket_error &e) {
 		wlog(WLOG_WARNING, "resolving [%s]:%s: %s",
-			hstr, pstr, gai_strerror(i));
+			hstr, pstr, e.what());
 		return;
 	}
-	for (r = res; r; r = r->ai_next) {
-	int	sfd;
-		if ((sfd = wnet_open("statistics listener", prio_stats, r->ai_family, r->ai_socktype)) == -1) {
-			wlog(WLOG_WARNING, "creating statistics listener: %s", strerror(errno));
+
+addrlist::iterator	it = alist->begin(), end = alist->end();
+	for (; it != end; ++it) {
+	wnet::socket	*sock = NULL;
+		try {
+			sock = it->makesocket("statistics listener", prio_stats);
+			sock->nonblocking(true);
+		} catch (socket_error &e) {
+			wlog(WLOG_WARNING,
+				"creating statistics listener: %s:%s: %s",
+				ip.first.c_str(), ip.second.c_str(), e.what());
+			delete sock;
 			continue;
 		}
-		if (bind(sfd, r->ai_addr, r->ai_addrlen) < 0) {
-			wlog(WLOG_WARNING, "binding %s: %s",
-				wnet::fstraddr(ip.first, r->ai_addr, r->ai_addrlen).c_str(),
-				strerror(errno));
-			wnet_close(sfd);
+
+		try {
+			sock->bind();
+		} catch (socket_error &e) {
+			wlog(WLOG_WARNING, "binding statistics listener %s: %s",
+				it->straddr().c_str(), e.what());
+			delete sock;
 			continue;
 		}
-		ioloop->readback(sfd, polycaller<fde *, int>(stats_handler, &stats_handler_stru::callback), 0);
-		wlog(WLOG_NOTICE, "statistics listener: %s", 
-			wnet::fstraddr(ip.first, r->ai_addr, r->ai_addrlen).c_str());
+
+		sock->readback(polycaller<wsocket *, int>(stats_handler, 
+			&stats_handler_stru::callback), 0);
+		wlog(WLOG_NOTICE, "statistics listener: %s",
+			sock->straddr().c_str());
 	}
-	freeaddrinfo(res);
 }
 
 /*

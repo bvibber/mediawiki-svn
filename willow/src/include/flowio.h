@@ -23,6 +23,7 @@ using std::min;
 
 #include "willow.h"
 #include "wnet.h"
+using namespace wnet;
 
 namespace io {
 
@@ -104,31 +105,28 @@ private:
 };
 
 /*
- * A sink that sends data to an FDE.
+ * A sink that sends data to a socket.
  */
-struct fde_sink : freelist_allocator<fde_sink>, sink {
-	fde_sink(fde *e)
-		: _fde(e)
+struct socket_sink : freelist_allocator<socket_sink>, sink {
+	socket_sink(wsocket *s)
+		: _socket(s)
 		, _reg(false) {
 	}
-	~fde_sink() {
-		if (_reg)
-			ioloop->clear_writeback(_fde->fde_fd);
+	~socket_sink() {
 	}
 
-	void _fdecall(fde *e, int) {
+	void _socketcall(wsocket *e, int) {
 		_spigot->sp_uncork();
 	}
 
 	sink_result data_ready(char const *buf, size_t len, ssize_t &discard);
 	sink_result data_empty(void) {
-		WDEBUG((WLOG_DEBUG, "fde_sink::data_empty"));
-		ioloop->clear_writeback(_fde->fde_fd);
+		WDEBUG((WLOG_DEBUG, "socket_sink::data_empty"));
 		_reg = false;
 		return sink_result_finished;
 	}
 
-	fde		*_fde;
+	wsocket		*_socket;
 	spigot		*_spigot;
 	bool		 _reg;
 };
@@ -182,43 +180,39 @@ struct string_spigot : freelist_allocator<string_spigot>, spigot {
 };
 
 /*
- * A spigot that reads from an fde.
+ * A spigot that reads from a socket.
  */
-struct fde_spigot : freelist_allocator<fde_spigot>, spigot {
+struct socket_spigot : freelist_allocator<socket_spigot>, spigot {
 	/*
-	 * Create a new corked fde_spigot.
-	 * fde should not have any existing callbacks or odd
+	 * Create a new corked socket_spigot.
+	 * socket should not have any existing callbacks or odd
 	 * things will happen.
 	 */ 
-	fde_spigot(fde *e)
-		: _fde(e) 
+	socket_spigot(wsocket *s)
+		: _socket(s) 
 		, _saved(0)
 		, _off(0)
 		, _corked(true) {
 	}
 
-	~fde_spigot() {
-		if (!_corked)
-			ioloop->clear_readback(_fde->fde_fd);
+	~socket_spigot() {
 	}
 	
 	virtual void sp_cork(void) {
-		if (!_corked)
-			ioloop->clear_readback(_fde->fde_fd);
 		_corked = true;
 	}
 	virtual void sp_uncork(void) {
 		if (_corked) {
 			_corked = false;
-			_fdecall(_fde, 0);
+			_socketcall(_socket, 0);
 		}
 	}
 
 private:
-	void _fdecall(fde *e, int);
+	void _socketcall(wsocket *e, int);
 
 	static const int bufsz = 65535;
-	fde	*_fde;
+	wsocket	*_socket;
 	char	 _savebuf[bufsz];
 	size_t	 _saved;
 	ssize_t	 _off;

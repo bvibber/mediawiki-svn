@@ -35,7 +35,7 @@
 
 using namespace conf;
 
-map<int, int> lsn2group;
+map<wsocket *, int> lsn2group;
 
 #define CONFIGFILE SYSCONFDIR "/willow.conf"
 
@@ -78,22 +78,20 @@ value const	*val;
 int		 port = 80;
 struct listener	*nl;
 int		 i, gn = 0;
-addrinfo	 hints, *res, *r;
-char		 portstr[6];
 string		 group;
-map<string, int>::iterator	it;
+int		 fam = AF_UNSPEC;
+addrlist	*res;
 
 	if ((val = e/"port") != NULL)
 		port = CONF_AINTVAL(*val);
-	sprintf(portstr, "%d", port);
-	std::memset(&hints, 0, sizeof(hints));
-	hints.ai_socktype = SOCK_STREAM;
+
 	if ((val = e/"aftype") != NULL)
 		if (val->cv_values[0].av_strval == "ipv6")
-			hints.ai_family = AF_INET6;
-		else	hints.ai_family = AF_INET;
+			fam = AF_INET6;
+		else	fam = AF_INET;
 
 	if ((val = e/"group") != NULL) {
+	map<string, int>::iterator	it;
 		group = val->cv_values[0].av_strval;
 
 		it = poolnames.find(group);
@@ -104,23 +102,32 @@ map<string, int>::iterator	it;
 			gn = it->second;
 	}
 
-	if ((i = getaddrinfo(e.item_key.c_str(), portstr, &hints, &res)) != 0) {
-		wlog(WLOG_ERROR, "resolving %s: %s", e.item_key.c_str(), gai_strerror(i));
-		return;
+	try {
+		res = addrlist::resolve(e.item_key, port, st_stream, fam);
+	} catch (socket_error &ex) {
+		wlog(WLOG_ERROR, "resolving %s: %s",
+		    e.item_key.c_str(), ex.what());
 	}
 
-	for (r = res; r; r = r->ai_next) {
+addrlist::iterator	it = res->begin(), end = res->end();
+	for (; it != end; ++it) {
 		nl = new listener;
+		try {
+			nl->sock = it->makesocket("HTTP listener", prio_accept);
+		} catch (socket_error &ex) {
+			delete nl;
+			delete res;
+			return;
+		}
+
 		nl->port = port;
 		nl->name = e.item_key;
-		nl->host = wnet::straddr(r->ai_addr, r->ai_addrlen);
 		nl->group = gn;
-		memcpy(&nl->addr, r->ai_addr, r->ai_addrlen);
 		listeners.push_back(nl);
 		wlog(WLOG_NOTICE, "listening on %s[%s]:%d (group %d)", 
 		     e.item_key.c_str(), nl->host.c_str(), port, gn);
 	}
-	freeaddrinfo(res);
+	delete res;
 }
 
 static bool

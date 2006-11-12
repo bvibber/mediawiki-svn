@@ -44,7 +44,6 @@ struct event ev_sigint;
 struct event ev_sigterm;
 tss<event_base> evb;
 
-static void fde_ev_callback(int, short, void *);
 static void sig_exit(int, short, void *);
 
 ioloop_t *ioloop;
@@ -66,24 +65,14 @@ char current_time_str[30];
 char current_time_short[30];
 time_t current_time;
 
-static void init_fde(struct fde *);
-
-static void wnet_accept(struct fde *);
-static void wnet_write_do(struct fde *);
-static void wnet_sendfile_do(struct fde *);
-
-static void readbuf_reset(struct readbuf *);
 static void secondly_sched(void);
 
-struct fde *fde_table;
-int max_fd;
-
 int wnet_exit;
-vector<int>	awaks;
-int		cawak;
+vector<wsocket *>	awaks;
+int			cawak;
 
 void
-wnet_add_accept_wakeup(int s)
+wnet_add_accept_wakeup(wsocket *s)
 {
 	awaks.push_back(s);
 }
@@ -118,34 +107,26 @@ ioloop_t::prepare(void)
 {
 size_t	 i;
 
-	max_fd = getdtablesize();
-	if ((fde_table = (fde *)wcalloc(max_fd, sizeof(struct fde))) == NULL)
-		outofmemory();
-				
-	wlog(WLOG_NOTICE, "maximum number of open files: %d", max_fd);
+	wlog(WLOG_NOTICE, "maximum number of open files: %d", getdtablesize());
 	
 	(void)signal(SIGPIPE, SIG_IGN);
 	wnet_init_select();
 
 	for (i = 0; i < listeners.size(); ++i) {
-		struct listener	*lns = listeners[i];
+	listener	*lns = listeners[i];
 
-		int fd = wnet_open("listener", prio_accept, lns->addr.ss_family);
-		int one = 1;
-		if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one)) == -1) {
-			wlog(WLOG_ERROR, "setsockopt: %s: %s\n", lns->name.c_str(), strerror(errno));
+		try {
+			lns->sock->reuseaddr(true);
+			lns->sock->bind();
+			lns->sock->listen();
+		} catch (socket_error &e) {
+			wlog(WLOG_ERROR, "creating listener %s: %s",
+				lns->sock->straddr().c_str(), e.what());
 			exit(8);
 		}
-		if (bind(fd, (struct sockaddr *) &lns->addr, sizeof(lns->addr)) < 0) {
-			wlog(WLOG_ERROR, "bind: %s: %s\n", lns->name.c_str(), strerror(errno));
-			exit(8);
-		}
-		if (listen(fd, 10) < 0) {
-			wlog(WLOG_ERROR, "listen: %s: %s\n", lns->name.c_str(), strerror(errno));
-			exit(8);
-		}
-		lsn2group[fd] = lns->group;
-		readback(fd, polycaller<fde *, int>(*this, &ioloop_t::_accept), 0);
+
+		lsn2group[lns->sock] = lns->group;
+		lns->sock->readback(polycaller<wsocket *, int>(*this, &ioloop_t::_accept), 0);
 	}
 	wlog(WLOG_NOTICE, "wnet: initialised, using libevent %s (%s)",
 		event_get_version(), event_get_method());
@@ -153,305 +134,37 @@ size_t	 i;
 }
 
 void
-ioloop_t::_accept(fde *e, int)
+ioloop_t::_accept(wsocket *s, int)
 {
-struct	client_data	*cdata;
-	int		 newfd, val;
-struct	fde		*newe;
+	int		 val;
+	wsocket		*newe;
 static time_t		 last_nfile = 0;
 	time_t		 now = time(NULL);
-	if ((cdata = (client_data *)wcalloc(1, sizeof(*cdata))) == NULL)
-		outofmemory();
-	cdata->cdat_addrlen = sizeof(cdata->cdat_addr);
 
-	if ((newfd = accept(e->fde_fd, (struct sockaddr *) &cdata->cdat_addr, &cdata->cdat_addrlen)) < 0) {
+	if ((newe = s->accept("HTTP client", prio_norm)) == NULL) {
 		if (errno != ENFILE || now - last_nfile > 60) 
 			wlog(WLOG_NOTICE, "accept error: %s", strerror(errno));
 		if (errno == ENFILE)
 			last_nfile = now;
-		wfree(cdata);
 		return;
 	}
+	s->readback(polycaller<wsocket *, int>(*this, &ioloop_t::_accept), 0);
 
-	if (newfd >= max_fd) {
-		if (errno != ENFILE || now - last_nfile > 60) 
-			wlog(WLOG_NOTICE, "out of file descriptors!");
-		if (errno == ENFILE)
-			last_nfile = now;
-		wfree(cdata);
-		(void)close(newfd);
-		return;
-	}
+	newe->nonblocking(true);
 
-	HOLDING(fde_table[newfd].fde_lock);
-
-	val = fcntl(newfd, F_GETFL, 0);
-	if (val == -1 || fcntl(newfd, F_SETFL, val | O_NONBLOCK) == -1) {
-		wlog(WLOG_WARNING, "fcntl(%d) failed: %s", newfd, strerror(errno));
-		wfree(cdata);
-		(void)close(newfd);
-		return;
-	}
-
-	newe = &fde_table[newfd];
-	init_fde(newe);
-	newe->fde_flags.open = 1;
-	newe->fde_fd = newfd;
-	newe->fde_cdata = cdata;
-	newe->fde_flags.read_held = newe->fde_flags.write_held = 1;
-	newe->fde_desc = "accept()ed fd";
-	if (cdata->cdat_addr.ss_family == AF_INET)
-		inet_ntop(AF_INET, &((sockaddr_in *)&cdata->cdat_addr)->sin_addr.s_addr, 
-		  newe->fde_straddr, sizeof(newe->fde_straddr));
-	else
-		inet_ntop(AF_INET6, &((sockaddr_in6 *)&cdata->cdat_addr)->sin6_addr.s6_addr, 
-		  newe->fde_straddr, sizeof(newe->fde_straddr));
-
-	WDEBUG((WLOG_DEBUG, "wnet_accept: new fd %d", newfd));
 	if (cawak == awaks.size())
 		cawak = 0;
-int	fds[2] = { newfd, e->fde_fd };
-	if (write(awaks[cawak], fds, sizeof(fds)) < 0) {
+char	buf[sizeof(wsocket *) * 2];
+	memcpy(buf, &newe, sizeof(newe));
+	memcpy(buf + sizeof(newe), &s, sizeof(s));
+
+	if (awaks[cawak]->write(buf, sizeof(wsocket *) * 2) < 0) {
 		wlog(WLOG_ERROR, "writing to thread wakeup socket: %s", strerror(errno));
 		exit(1);
 	}
 	cawak++;
 	return;
 }
-
-int
-wnet_socketpair(int d, int type, int protocol, int sv[2])
-{
-fde	*e;
-	if (socketpair(d, type, protocol, sv) < 0)
-		return -1;
-	e = &fde_table[sv[0]];
-	init_fde(e);
-	e->fde_flags.open = 1;
-	e->fde_fd = sv[0];
-
-	e = &fde_table[sv[1]];
-	init_fde(e);
-	e->fde_flags.open = 1;
-	e->fde_fd = sv[1];
-	return 0;
-}	
-static void
-init_fde(fde *fde)
-{
-	bzero(fde, sizeof(*fde));
-	fde->fde_desc = "<unknown>";
-	(void)strcpy(fde->fde_straddr, "NONE");
-}
-
-int
-wnet_open(const char *desc, sprio p, int aftype, int type)
-{
-	int	fd, val;
-static int	last_nfile = 0;
-	time_t	now = time(NULL);
-	if ((fd = socket(aftype, type, 0)) < 0) {
-		if (errno != ENFILE || now - last_nfile > 60) 
-			wlog(WLOG_WARNING, "socket: %s", strerror(errno));
-		if (errno == ENFILE)
-			last_nfile = now;
-		return -1;
-	}
-
-	HOLDING(fde_table[fd].fde_lock);
-
-	val = fcntl(fd, F_GETFL, 0);
-	if (val == -1 || fcntl(fd, F_SETFL, val | O_NONBLOCK) == -1) {
-		wlog(WLOG_WARNING, "fcntl(%d) failed: %s", fd, strerror(errno));
-		return -1;
-	}
-
-	init_fde(&fde_table[fd]);
-	fde_table[fd].fde_fd = fd;
-	fde_table[fd].fde_desc = desc;
-	fde_table[fd].fde_flags.open = 1;
-	fde_table[fd].fde_prio = p;
-	fde_table[fd].fde_flags.read_held = fde_table[fd].fde_flags.write_held = 1;
-	return fd;
-}
-
-void
-wnet_set_blocking(int fd)
-{
-	int	val;
-
-	val = fcntl(fd, F_GETFL, 0);
-	if (val == -1 || fcntl(fd, F_SETFL, val & ~O_NONBLOCK) == -1)
-		wlog(WLOG_WARNING, "fcntl(%d) failed: %s", fd, strerror(errno));
-}
-
-void
-wnet_close(int fd)
-{
-struct	fde	*e = &fde_table[fd];
-	assert(e->fde_flags.open);
-	WDEBUG((WLOG_DEBUG, "close fd %d [%s]", e->fde_fd, e->fde_desc));
-	ioloop->clear_readback(fd);
-	ioloop->clear_writeback(fd);
-	if (e->fde_cdata)
-		wfree(e->fde_cdata);
-	readbuf_free(&e->fde_readbuf);
-	e->fde_flags.open = 0;
-
-	/*
-	 * Do NOT touch the fde after closing this - we do not mutex
-	 * fde accesses and it will be immediately reused.
-	 */
-	(void)close(e->fde_fd);
-}
-
-#if 0
-int
-wnet_sendfile(int fd, int source, size_t size, off_t off, fdwcb cb, void *data, int flags)
-{
-struct	wrtbuf	*wb;
-struct	fde	*e = &fde_table[fd];
-
-	WDEBUG((WLOG_DEBUG, "wnet_sendfile: %d (+%ld) bytes from %d to %d [%s]", 
-		size, (long)off, source, fd, e->fde_desc));
-	
-	if ((wb = (wrtbuf *)wcalloc(1, sizeof(*wb))) == NULL) {
-		wlog(WLOG_WARNING, "out of memory");
-		return -1;
-	}
-	
-	wb->wb_done = 0;
-	wb->wb_func = cb;
-	wb->wb_udata = data;
-	wb->wb_size = size;
-	wb->wb_source = source;
-	wb->wb_off = off;
-	
-	e->fde_wdata = wb;
-	wnet_register(e->fde_fd, FDE_WRITE, wnet_sendfile_do, e);
-	wnet_sendfile_do(e);
-	return 0;
-}
-
-void
-wnet_write(int fd, const void *buf, size_t bufsz, fdwcb cb, void *data, int flags)
-{
-struct	wrtbuf	*wb;
-struct	fde	*e = &fde_table[fd];
-
-	WDEBUG((WLOG_DEBUG, "wnet_write: %d bytes to %d [%s]", bufsz, e->fde_fd, e->fde_desc));
-	
-	wb = new wrtbuf;
-
-	wb->wb_buf = buf;
-	wb->wb_size = bufsz;
-	wb->wb_done = 0;
-	wb->wb_func = cb;
-	wb->wb_udata = data;
-
-	e->fde_wdata = wb;
-
-	wnet_register(e->fde_fd, FDE_WRITE, wnet_write_do, e);
-	wnet_write_do(e);
-}
-
-static void
-wnet_write_do(fde *e)
-{
-struct	wrtbuf	*buf;
-	int	 i;
-	
-	buf = (wrtbuf *)e->fde_wdata;
-	while ((i = write(e->fde_fd, (char *)buf->wb_buf + buf->wb_done, buf->wb_size - buf->wb_done)) > -1) {
-		buf->wb_done += i;
-		WDEBUG((WLOG_DEBUG, "%d of %d done", buf->wb_done, buf->wb_size));
-		if (buf->wb_done == (off_t)buf->wb_size) {
-			wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
-			buf->wb_func(e, buf->wb_udata, 0);
-			delete buf;
-			return;
-		}
-	}
-
-	if (errno == EWOULDBLOCK) 
-		return;
-			
-	wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
-	buf->wb_func(e, buf->wb_udata, -1);
-	delete buf;
-}
-
-static void
-wnet_sendfile_do(fde *e)
-{
-struct	wrtbuf *buf;
-	int	i;
-	/*LINTED unused variable: freebsd-only*/
-	off_t	off, origoff;
-	
-	(void)off;
-
-	buf = (wrtbuf *)e->fde_wdata;
-	origoff = buf->wb_off;
-	
-	WDEBUG((WLOG_DEBUG, "wnet_sendfile_do: for %d, off=%ld, size=%d", e->fde_fd, (long) buf->wb_off, buf->wb_size));
-	/*
-	 * On Solaris (sendfilev), FreeBSD, Tru64 UNIX and HP-UX (sendfile), we can write header data
-	 * along with the sendfile, which improves performance and reduces syscall usage.
-	 * At the moment this isn't supported, though...
-	 *
-	 * Linux sendfile() doesn't seem to have anything similar.
-	 */
-#if defined __linux__ || defined __sun
-	i = sendfile(e->fde_fd, buf->wb_source, &buf->wb_off, buf->wb_size);
-#elif defined __FreeBSD__ 
-	i = sendfile(buf->wb_source, e->fde_fd, buf->wb_size, NULL, &off, 0);
-	buf->wb_off += off;
-#elif defined __hpux || (defined __digital__ && defined __unix__)
-	i = sendfile(e->fde_fd, buf->wb_source, buf->wb_off, buf->wb_size, NULL, 0);
-	buf->wb_off += i;
-#else
-# error i dont know how to invoke sendfile on this system
-#endif
-
-#ifdef __linux
-	/*
-	 * The Linux sendfile() manual page says:
-	 *
-	 *   When sendfile() returns, this variable will be set to the offset of the byte following the
-	 *   last byte that was read.
-	 *
-	 * However, this is not true on x86-64 when we are compiled as a 32-bit binary; the correct
-	 * number of bytes is returned, but off is _not_ updated.  So, we fudge it into working as we
-	 * expect.
-	 */
-	if (i > 0 && buf->wb_off == origoff)
-		buf->wb_off += i;
-#endif
-
-	buf->wb_size -= (buf->wb_off - origoff);
-	WDEBUG((WLOG_DEBUG, "sent %d bytes i=%d", (int)(buf->wb_off - origoff), i));
-	
-	if (buf->wb_size == 0) {
-		wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
-		buf->wb_func(e, buf->wb_udata, 0);
-		wfree(buf);
-		return;
-	}
-
-	if (i == -1 && errno != EWOULDBLOCK) {
-		wnet_register(e->fde_fd, FDE_WRITE, NULL, NULL);
-		buf->wb_func(e, buf->wb_udata, -1);
-		wfree(buf);
-	}
-
-	WDEBUG((WLOG_DEBUG, "wnet_sendfile_do: sendfile failed %s", strerror(errno)));
-	
-	if (errno == EWOULDBLOCK)
-		return;
-	
-}
-#endif
 
 void
 wnet_set_time(void)
@@ -472,55 +185,7 @@ struct	tm	*now;
 	assert(n);
 }
 
-
-int
-readbuf_getdata(fde *fde)
-{
-	int	i;
-
-	WDEBUG((WLOG_DEBUG, "readbuf_getdata: called"));
-	if (readbuf_data_left(&fde->fde_readbuf) == 0)
-		readbuf_reset(&fde->fde_readbuf);
-	
-	if (readbuf_spare_size(&fde->fde_readbuf) == 0) {
-		WDEBUG((WLOG_DEBUG, "readbuf_getdata: no space in buffer"));
-		fde->fde_readbuf.rb_size += RDBUF_INC;
-		fde->fde_readbuf.rb_p = (char *)wrealloc(fde->fde_readbuf.rb_p, fde->fde_readbuf.rb_size);
-	}
-
-	if ((i = read(fde->fde_fd, readbuf_spare_start(&fde->fde_readbuf), readbuf_spare_size(&fde->fde_readbuf))) < 1)
-		return i;
-	fde->fde_readbuf.rb_dsize += i;
-	WDEBUG((WLOG_DEBUG, "readbuf_getdata: read %d bytes", i));
-
-	return i;
-}
-
-void
-readbuf_free(readbuf *buffer)
-{
-	if (buffer->rb_p)
-		free(buffer->rb_p);
-	bzero(buffer, sizeof(*buffer));
-}
-
-static void
-readbuf_reset(readbuf *buffer)
-{
-	buffer->rb_dpos = buffer->rb_dsize = 0;
-}	
-
 namespace wnet {
-
-string
-straddr(sockaddr const *addr, socklen_t len)
-{
-char	res[NI_MAXHOST];
-int	i;
-	if ((i = getnameinfo(addr, len, res, sizeof(res), NULL, 0, NI_NUMERICHOST)) != 0)
-		return ""; /* XXX */
-	return res;
-}
 
 string
 fstraddr(string const &straddr, sockaddr const *addr, socklen_t len)
@@ -533,6 +198,385 @@ int	i;
 			     NI_NUMERICHOST | NI_NUMERICSERV)) != 0)
 		return "";
 	return straddr + '[' + host + "]:" + port;
+}
+
+void
+socket::_ev_callback(int fd, short ev, void *d)
+{
+wsocket	*s = (wsocket *)d;
+
+	WDEBUG((WLOG_DEBUG, "fde_ev_callback: %s%son %d (%s)",
+		(ev & EV_READ) ? "read " : "",
+		(ev & EV_WRITE) ? "write " : "",
+		fd, s->_desc));
+
+	if (ev & EV_READ)
+		s->_read_handler(s);
+	if (ev & EV_WRITE)
+		s->_write_handler(s);
+}
+
+void
+socket::_register(int what, polycallback<wsocket *> handler)
+{
+	int	 ev_flags = 0;
+
+	WDEBUG((WLOG_DEBUG, "_register: %s%son %d (%s)",
+		(what & FDE_READ) ? "read " : "",
+		(what & FDE_WRITE) ? "write " : "",
+		_s, _desc));
+
+	if (event_pending(&ev, EV_READ | EV_WRITE, NULL))
+		event_del(&ev);
+
+	if (what & FDE_READ) {
+		_read_handler = handler;
+		ev_flags |= EV_READ;
+	}
+	if (what & FDE_WRITE) {
+		_write_handler = handler;
+		ev_flags |= EV_WRITE;
+	}
+
+	event_set(&ev, _s, ev_flags, _ev_callback, this);
+	event_base_set(evb, &ev);
+	event_priority_set(&ev, (int) _prio);
+	event_add(&ev, NULL);
+}
+
+address::address(void)
+{
+	memset(&_addr, 0, sizeof(_addr));
+	_addrlen = 0;
+	_fam = AF_UNSPEC;
+	_stype = _prot = 0;
+}
+
+address::address(sockaddr *sa, socklen_t len)
+{
+	memcpy(&_addr, sa, len);
+	_addrlen = len;
+	_stype = _prot = 0;
+	_fam = ((sockaddr_storage *)sa)->ss_family;
+}
+
+address::address(addrinfo *ai) 
+{
+	memcpy(&_addr, ai->ai_addr, ai->ai_addrlen);
+	_addrlen = ai->ai_addrlen;
+	_fam = ai->ai_family;
+	_stype = ai->ai_socktype;
+	_prot = ai->ai_protocol;
+}
+
+socket *
+address::makesocket(char const *desc, sprio p) const
+{
+	try {
+		return new socket(*this, desc, p);
+	} catch (socket_error &) {
+		return NULL;
+	}
+}
+
+address::address(address const &o)
+	: _addrlen(o._addrlen)
+	, _fam(o._fam)
+	, _stype(o._stype)
+	, _prot(o._prot) {
+	memcpy(&_addr, &o._addr, _addrlen);
+}
+
+address &
+address::operator= (address const &o)
+{
+	_addrlen = o._addrlen;
+	_fam = o._fam;
+	_stype = o._stype;
+	_prot = o._prot;
+	memcpy(&_addr, &o._addr, _addrlen);
+	return *this;
+}
+
+string const &
+address::straddr(void) const
+{
+	if (_straddr.empty()) {
+	char	res[NI_MAXHOST];
+	int	i;
+		if ((i = getnameinfo((sockaddr *) &_addr, _addrlen, 
+		    res, sizeof(res), NULL, 0, NI_NUMERICHOST)) != 0)
+			throw resolution_error(i);
+		_straddr = res;
+	}
+	return _straddr;
+}
+
+addrlist *
+addrlist::resolve(string const &addr, string const &port,
+		  enum socktype socktype, int family)
+{
+addrinfo	 hints, *res, *ai;
+int		 r;
+	memset(&hints, 0, sizeof(hints));
+	hints.ai_socktype = (int) socktype;
+	if (family != AF_UNSPEC)
+		hints.ai_family = family;
+
+	if ((r = getaddrinfo(addr.c_str(), 
+	    port.c_str(), &hints, &res)) != 0)
+		throw resolution_error(r);
+
+addrlist	*al = new addrlist;
+	for (ai = res; ai; ai = ai->ai_next)
+		al->_addrs.push_back(address(ai));
+
+	freeaddrinfo(res);
+	return al;
+}
+
+address
+addrlist::first(string const &addr, int port,
+		enum socktype socktype, int family)
+{
+	return first(addr, lexical_cast<string>(port), socktype, family);
+}
+
+addrlist *
+addrlist::resolve(string const &addr, int port, 
+		  enum socktype socktype, int family)
+{
+	return resolve(addr, lexical_cast<string>(port), socktype, family);
+}
+
+address
+addrlist::first(string const &addr, string const &port,
+		enum socktype socktype, int family)
+{
+addrlist	*r = addrlist::resolve(addr, port, socktype, family);
+address		 res;
+	res = *r->begin();
+	delete r;
+	return res;
+}
+
+addrlist::~addrlist(void)
+{
+}
+
+addrlist::iterator
+addrlist::begin(void) const
+{
+	return _addrs.begin();
+}
+
+addrlist::iterator
+addrlist::end(void) const
+{
+	return _addrs.end();
+}
+
+socket *
+addrlist::makesocket(char const *desc, sprio p) const
+{
+iterator	it = _addrs.begin(), end = _addrs.end();
+	for (; it != end; ++it) {
+	socket	*ns;
+		if ((ns = it->makesocket(desc, p)) != NULL)
+			return ns;
+	}
+	throw socket_error();
+}
+
+socket *
+socket::create(string const &addr, int port,
+	       enum socktype socktype, char const *desc, sprio p, int family)
+{
+	return create(addr, lexical_cast<string>(port), socktype, desc, p, family);
+}
+
+socket *
+socket::create(string const &addr, string const &port,
+	       enum socktype socktype, char const *desc, sprio p, int family)
+{
+addrlist	*al = addrlist::resolve(addr, port, socktype, family);
+	return al->makesocket(desc, p);
+}
+
+pair<socket *, socket *>
+socket::socketpair(enum socktype st)
+{
+socket	*s1 = NULL, *s2 = NULL;
+int	 sv[2];
+	if (::socketpair(AF_UNIX, (int) st, 0, sv) == -1)
+		throw socket_error();
+	s1 = new socket(sv[0], wnet::address(), "socketpair", prio_norm);
+	try {
+		s2 = new socket(sv[1], wnet::address(), "socketpair", prio_norm);
+	} catch (...) {
+		delete s1;
+		throw;
+	}
+	return make_pair(s1, s2);
+}
+
+connect_status
+socket::connect(void)
+{
+	if (::connect(_s, _addr.addr(), _addr.length()) == -1)
+		if (errno == EINPROGRESS)
+			return connect_later;
+		else
+			throw socket_error();
+	return connect_okay;
+}
+
+socket *
+socket::accept(char const *desc, sprio p)
+{
+int			ns;
+sockaddr_storage	addr;
+socklen_t		addrlen = sizeof(addr);
+	if ((ns = ::accept(_s, (sockaddr *)&addr, &addrlen)) == -1)
+		return NULL;
+	return new socket(ns, wnet::address((sockaddr *)&addr, addrlen), desc, p);
+}
+
+int
+socket::recvfrom(char *buf, size_t count, wnet::address &addr)
+{
+sockaddr_storage	saddr;
+socklen_t		addrlen= sizeof(addr);
+int			i;
+	if ((i = ::recvfrom(_s, buf, count, 0, (sockaddr *)&saddr, &addrlen)) < 0)
+		return i;
+	addr = wnet::address((sockaddr *)&addr, addrlen);
+	return i;
+}
+
+int
+socket::sendto(char const *buf, size_t count, wnet::address const &addr)
+{
+	return ::sendto(_s, buf, count, 0, addr.addr(), addr.length());
+}
+
+int
+socket::read(char *buf, size_t count)
+{
+	return ::read(_s, buf, count);
+}
+
+int
+socket::write(char const *buf, size_t count)
+{
+	return ::write(_s, buf, count);
+}
+
+wnet::address const &
+socket::address(void) const
+{
+	return _addr;
+}
+
+
+string const &
+socket::straddr(void) const
+{
+	return _addr.straddr();
+}
+
+void
+socket::nonblocking(bool v)
+{
+int	val;
+	val = fcntl(_s, F_GETFL, 0);
+	if (val == -1)
+		throw socket_error();
+	if (v)
+		val |= O_NONBLOCK;
+	else	val &= ~O_NONBLOCK;
+
+	if (fcntl(_s, F_SETFL, val) == -1)
+		throw socket_error();
+}
+
+void
+socket::reuseaddr(bool v)
+{
+int	i = v;
+int	len = sizeof(i);
+	setopt(SO_REUSEADDR, &i, len);
+}
+
+int
+socket::getopt(int what, void *addr, socklen_t *len) const
+{
+int	i;
+	if ((i = getsockopt(_s, SOL_SOCKET, what, addr, len)) == -1)
+		throw socket_error();
+	return i;
+}
+
+int
+socket::setopt(int what, void *addr, socklen_t len)
+{
+int	i;
+	if ((i = setsockopt(_s, SOL_SOCKET, what, addr, len)) == -1)
+		throw socket_error();
+	return i;
+}
+
+int
+socket::error(void) const
+{
+int		error = 0;
+socklen_t	len = sizeof(error);
+	try {
+		getopt(SO_ERROR, &error, &len);
+		return error;
+	} catch (socket_error &) {
+		return 0;
+	}
+}
+
+socket::socket(int s, wnet::address const &a, char const *desc, sprio p)
+	: _addr(a)
+	, _desc(desc)
+	, _prio(p)
+{
+	memset(&ev, 0, sizeof(ev));
+	_s = s;
+}
+
+socket::socket(wnet::address const &a, char const *desc, sprio p)
+	: _addr(a)
+	, _desc(desc)
+	, _prio(p)
+{
+	memset(&ev, 0, sizeof(ev));
+	_s = ::socket(_addr.family(), _addr.socktype(), _addr.protocol());
+	if (_s == -1)
+		throw socket_error();
+}
+
+void
+socket::bind(void)
+{
+	if (::bind(_s, _addr.addr(), _addr.length()) == -1)
+		throw socket_error();
+}
+
+void
+socket::listen(int bl)
+{
+	if (::listen(_s, bl) == -1)
+		throw socket_error();
+}
+
+socket::~socket(void)
+{
+	event_del(&ev);
+	close(_s);
 }
 
 } // namespace wnet
@@ -569,78 +613,4 @@ wnet_run(void)
 	make_event_base();
 	event_base_loop(evb, 0);
 	perror("event_base_loop");
-}
-
-static void
-fde_ev_callback(int fd, short ev, void *d)
-{
-struct	fde	*fde = &fde_table[fd];
-	WDEBUG((WLOG_DEBUG, "fde_ev_callback: %s%son %d [%s]",
-		(ev & EV_READ) ? "read " : "",
-		(ev & EV_WRITE) ? "write " : "",
-		fd, fde->fde_desc));
-
-	HOLDING(fde->fde_lock);
-
-	assert(fde->fde_flags.open);
-
-	if (ev & EV_READ)
-		fde->fde_read_handler(fde);
-	if (ev & EV_WRITE)
-		fde->fde_write_handler(fde);
-	if (fde->fde_flags.open && (!fde->fde_flags.read_held || !fde->fde_flags.write_held)) {
-		WDEBUG((WLOG_DEBUG, "fde_ev_callback: rescheduling %d", fd));
-		event_add(&fde->fde_ev, NULL);
-	}
-}
-
-void
-ioloop_t::clear_readback(int fd)
-{
-struct fde	*fde = &fde_table[fd];
-	fde->fde_flags.read_held = 1;
-}
-
-void
-ioloop_t::clear_writeback(int fd)
-{
-struct fde	*fde = &fde_table[fd];
-	fde->fde_flags.write_held = 1;
-}
-
-void
-ioloop_t::_register(int fd, int what, polycallback<fde *> handler)
-{
-struct	fde	*fde = &fde_table[fd];
-	int	 ev_flags = 0;
-
-	WDEBUG((WLOG_DEBUG, "_register: %s%son %d [%s]",
-		(what & FDE_READ) ? "read " : "",
-		(what & FDE_WRITE) ? "write " : "",
-		fd, fde->fde_desc));
-
-	make_event_base();
-
-	if (event_pending(&fde->fde_ev, EV_READ | EV_WRITE, NULL))
-		event_del(&fde->fde_ev);
-
-	assert(fde->fde_flags.open);
-
-	if (what & FDE_READ) {
-		fde->fde_read_handler = handler;
-		fde->fde_flags.read_held = 0;
-		ev_flags |= EV_READ;
-	}
-	if (what & FDE_WRITE) {
-		ev_flags |= EV_WRITE;
-		fde->fde_flags.write_held = 0;
-		fde->fde_write_handler = handler;
-	}
-
-	//ev_flags |= EV_PERSIST;
-	event_set(&fde->fde_ev, fde->fde_fd, ev_flags, fde_ev_callback, fde);
-	event_base_set(evb, &fde->fde_ev);
-	event_priority_set(&fde->fde_ev, (int) fde->fde_prio);
-	event_add(&fde->fde_ev, NULL);
-	fde->fde_flags.pend = 1;
 }

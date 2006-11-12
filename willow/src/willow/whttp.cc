@@ -74,57 +74,8 @@ static const char *error_files[] = {
 	/* ERR_BLOCKED		*/	DATADIR "/errors/ERR_BLOCKED",
 };
 
-struct http_client : freelist_allocator<http_client> {
-		http_client(fde *e) : cl_fde(e) {
-			cl_entity = new http_entity;
-		}
-		~http_client() {
-			if (cl_wrtbuf)
-				wfree(cl_wrtbuf);
-			wfree(cl_path);
-			delete cl_entity;
-			wnet_close(cl_fde->fde_fd);
-			if (cl_backendfde)
-				wnet_close(cl_backendfde->fde_fd);
-		}
-
-		
-struct	fde		*cl_fde;	/* backref to fd			*/
-	int		 cl_reqtype;	/* request type or 0			*/
-	char		*cl_path;	/* path they want			*/
-	char		*cl_wrtbuf;	/* write buf (either to client or be)	*/
-struct	backend		*cl_backend;	/* backend servicing this client	*/
-struct	fde		*cl_backendfde;	/* fde for backend			*/
-struct	http_entity	*cl_entity;	/* reply to send back			*/
-
-	/* Cache-related data */
-	int		 cl_cfd;	/* FD of cache file for writing, or 0	*/
-struct	cache_object	*cl_co;		/* Cache object				*/
-	struct {
-		unsigned int	f_cached:1;
-		unsigned int	f_closed:1;
-		unsigned int	f_http11:1;	/* Client understands HTTP/1.1		*/
-		unsigned int	f_blocked:1;
-	}		 cl_flags;
-	size_t		 cl_dsize;	/* Object size				*/
-enum	encoding	 cl_enc;
-struct	http_client	*fe_next;	/* freelist 				*/
-};
-
-#if 0
-static void proxy_start_backend(struct backend *, struct fde *, void *);
-static void client_read_done(struct http_entity *, void *, int);
-static void client_response_done(struct http_entity *, void *, int);
-static void backend_headers_done(struct http_entity *, void *, int);
-static void client_headers_done(struct http_entity *, void *, int);
-static void client_write_cached(struct http_client *);
-#endif
 static int removable_header(const char *);
 
-#if 0
-static void client_send_error(struct http_client *, int errcode, const char *error,
-				int status, const char *statusstr);
-#endif
 static void client_log_request(struct http_client *);
 
 static void do_cache_write(const char *, size_t, void *);
@@ -145,7 +96,7 @@ static FILE *alf;
 lockable alf_lock;
 
 static int const default_udplog_port = 4445;
-static int udplog_sock;
+wnet::socket *udplog_sock;
 static int udplog_count;
 static bool do_udplog;
 lockable udp_lock;
@@ -168,14 +119,14 @@ struct error_transform_filter : io::buffering_filter, freelist_allocator<error_t
 
 struct httpcllr {
 	/* Accept a new client and start processing it. */
-	httpcllr(fde *, int);
+	httpcllr(wsocket *, int);
 	~httpcllr();
 
 		/* reading request from client */
 	void header_read_complete		(void);
 	void header_read_error			(void);
 		/* sending request to backend */
-	void backend_ready			(backend *, fde *, int);
+	void backend_ready			(backend *, wsocket *, int);
 	void backend_write_headers_done		(void);
 	void backend_write_body_done		(void);
 	void backend_write_error		(void);
@@ -194,13 +145,13 @@ struct httpcllr {
 
 	void send_error(int, char const *, int, char const *);
 
-	fde		*_client_fde;
+	wsocket		*_client_socket;
 	backend		*_backend;
-	fde		*_backend_fde;
+	wsocket		*_backend_socket;
 
-	io::fde_spigot			*_client_spigot;
-	io::fde_spigot			*_backend_spigot;
-	io::fde_sink			*_backend_sink,
+	io::socket_spigot		*_client_spigot;
+	io::socket_spigot		*_backend_spigot;
+	io::socket_sink			*_backend_sink,
 					*_client_sink;
 	header_parser			 _header_parser,
 					 _backend_headers;
@@ -215,10 +166,10 @@ struct httpcllr {
 	int	_group;
 };
 
-httpcllr::httpcllr(fde *e, int gr)
-	: _client_fde(e)
+httpcllr::httpcllr(wsocket *s, int gr)
+	: _client_socket(s)
 	, _backend(NULL)
-	, _backend_fde(NULL)
+	, _backend_socket(NULL)
 	, _client_spigot(NULL)
 	, _backend_spigot(NULL)
 	, _backend_sink(NULL)
@@ -235,7 +186,7 @@ httpcllr::httpcllr(fde *e, int gr)
 	/*
 	 * Check access controls.
 	 */
-pair<bool, uint16_t>	acc = config.access.allowed((sockaddr *)&e->fde_cdata->cdat_addr);
+pair<bool, uint16_t>	acc = config.access.allowed(s->address().addr());
 	if (!acc.first) {
 		if (acc.second & whttp_deny_connect) {
 			delete this;
@@ -247,7 +198,7 @@ pair<bool, uint16_t>	acc = config.access.allowed((sockaddr *)&e->fde_cdata->cdat
 	/*
 	 * Start by reading headers.
 	 */
-	_client_spigot = new io::fde_spigot(e);
+	_client_spigot = new io::socket_spigot(s);
 	_client_spigot->completed_callee(this, &httpcllr::header_read_complete);
 	_client_spigot->error_callee(this, &httpcllr::header_read_error);
 	_client_spigot->sp_connect(&_header_parser);
@@ -266,9 +217,8 @@ httpcllr::~httpcllr(void)
 	delete _error_body;
 	delete _chunking_filter;
 	delete _size_limit;
-	if (_backend_fde)
-		wnet_close(_backend_fde->fde_fd);
-	wnet_close(_client_fde->fde_fd);
+	delete _backend_socket;
+	delete _client_socket;
 }
 
 static const char *removable_headers[] = {
@@ -302,7 +252,7 @@ httpcllr::header_read_complete(void)
 	for (const char **s = removable_headers; *s; ++s)
 		_header_parser._headers.remove(*s);
 	_header_parser._headers.add("Connection", "close");
-	_header_parser._headers.add("X-Forwarded-For", _client_fde->fde_straddr);
+	_header_parser._headers.add("X-Forwarded-For", _client_socket->straddr());
 
 	if (_header_parser._http_reqtype == REQTYPE_POST) {
 		if (_header_parser._content_length == -1) {
@@ -314,7 +264,8 @@ httpcllr::header_read_complete(void)
 
 	_client_spigot->sp_disconnect();
 	if (bpools[_group].get(_header_parser._http_path, 
-		     polycaller<backend *, fde *, int>(*this, &httpcllr::backend_ready), 0) == -1)
+		     polycaller<backend *, wsocket *, int>(*this, 
+		    &httpcllr::backend_ready), 0) == -1)
 		backend_ready(NULL, NULL, 0);
 }
 
@@ -327,7 +278,7 @@ httpcllr::header_read_error(void)
 }
 
 void
-httpcllr::backend_ready(backend *be, fde *e, int)
+httpcllr::backend_ready(backend *be, wsocket *s, int)
 {
 	WDEBUG((WLOG_DEBUG, "backend_ready"));
 	if (be == NULL) {
@@ -338,12 +289,12 @@ httpcllr::backend_ready(backend *be, fde *e, int)
 	}
 
 	/*
-	 * Create the backend fde_sink, connect the header parser to it
+	 * Create the backend socket_sink, connect the header parser to it
 	 * and start sending headers.
 	 */
-	_backend_fde = e;
+	_backend_socket = s;
 	_backend = be;
-	_backend_sink = new io::fde_sink(e);
+	_backend_sink = new io::socket_sink(s);
 	_header_parser.completed_callee(this, &httpcllr::backend_write_headers_done);
 	_header_parser.error_callee(this, &httpcllr::backend_write_error);
 	_header_parser.sp_connect(_backend_sink);
@@ -389,7 +340,7 @@ httpcllr::backend_write_body_done(void)
 
 	_backend_headers.set_response();
 
-	_backend_spigot = new io::fde_spigot(_backend_fde);
+	_backend_spigot = new io::socket_spigot(_backend_socket);
 	_backend_spigot->completed_callee(this, &httpcllr::backend_read_headers_done);
 	_backend_spigot->error_callee(this, &httpcllr::backend_read_headers_error);
 	_backend_spigot->sp_connect(&_backend_headers);
@@ -418,7 +369,7 @@ httpcllr::backend_read_headers_done(void)
 	 */
 	_backend_spigot->sp_disconnect();
 
-	_client_sink = new io::fde_sink(_client_fde);
+	_client_sink = new io::socket_sink(_client_socket);
 	_backend_headers.completed_callee(this, &httpcllr::send_headers_to_client_done);
 	_backend_headers.error_callee(this, &httpcllr::send_headers_to_client_error);
 
@@ -504,10 +455,11 @@ httpcllr::send_headers_to_client_error(void)
  */
 struct http_thread {
 	pthread_t	thr;
-	int		sv[2];
+	pair<wnet::socket *, wnet::socket *>
+			sv;
 
 	void	execute		(void);
-	void	accept_wakeup	(fde *, int);
+	void	accept_wakeup	(wsocket *, int);
 };
 vector<http_thread *> threads;
 
@@ -537,23 +489,25 @@ whttp_init(void)
 	wlog(WLOG_NOTICE, "whttp: starting %d worker threads", config.nthreads);
 	for (int i = 0; i < config.nthreads; ++i) {
 	http_thread	*t = new http_thread;
-		wnet_socketpair(AF_UNIX, SOCK_DGRAM, 0, t->sv);
-		wnet_add_accept_wakeup(t->sv[0]);
+		t->sv = wnet::socket::socketpair(st_dgram);
+		wnet_add_accept_wakeup(t->sv.first);
 		threads.push_back(t);
 		pthread_create(&t->thr, NULL, client_thread, t);
 	}
 }
 
 void
-http_thread::accept_wakeup(fde *e, int)
+http_thread::accept_wakeup(wsocket *s, int)
 {
-int	nfds[2], afd = sv[1];
-	if (read(afd, nfds, sizeof(nfds)) < sizeof(nfds)) {
+wsocket	*cli, *lsnr;
+	if (s->read((char *)&cli, sizeof(cli)) < sizeof(cli) ||
+	    s->read((char *)&lsnr, sizeof(lsnr) < sizeof(lsnr))) {
 		wlog(WLOG_ERROR, "accept_wakeup: reading fd: %s", strerror(errno));
 		exit(1);
 	}
-	WDEBUG((WLOG_DEBUG, "accept_wakeup, nfd=%d", nfds[0]));
-	new httpcllr(&fde_table[nfds[0]], lsn2group[nfds[1]]);
+	s->readback(polycaller<wsocket *, int>(*this, 
+		&http_thread::accept_wakeup), 0);
+	new httpcllr(cli, lsn2group[lsnr]);
 }
 
 static
@@ -583,7 +537,9 @@ http_thread::execute(void)
 	merge_ev = new event;
 	memset(merge_ev, 0, sizeof(*merge_ev));
 	merge_sched();
-	ioloop->readback(sv[1], polycaller<fde *, int>(*this, &http_thread::accept_wakeup), 0);
+
+	sv.second->readback(polycaller<wsocket *, int>(*this, 
+		&http_thread::accept_wakeup), 0);
 	event_base_loop(evb, 0);
 	wlog(WLOG_ERROR, "event_base_loop: %s", strerror(errno));
 	exit(1);
@@ -617,50 +573,24 @@ whttp_reconfigure(void)
 
 	/* UDP logging */
 	if (config.udp_log) {
-	struct addrinfo	*res, *r, hints;
-	int	i;
 		if (config.udplog_port == 0)
 			config.udplog_port = default_udplog_port;
-		memset(&hints, 0, sizeof(hints));
-		hints.ai_socktype = SOCK_DGRAM;
-		if ((i = getaddrinfo(config.udplog_host.c_str(),
-				lexical_cast<string>(config.udplog_port).c_str(),
-				&hints, &r)) != 0) {
-			wlog(WLOG_WARNING, "resolving UDP log host %s: %s; disabling UDP logging",
-				config.udplog_host.c_str(),
-				gai_strerror(i));
+
+		try {
+			udplog_sock = wnet::socket::create(config.udplog_host,
+				config.udplog_port, st_dgram, "UDP logger", prio_norm);
+			udplog_sock->connect();
+		} catch (socket_error &e) {
+			wlog(WLOG_WARNING, "connecting to UDP log host %s: %s; disabling UDP logging",
+				config.udplog_host.c_str(), e.what());
 			return;
 		}
 
-		for (res = r; res; res = res->ai_next) {
-			if ((udplog_sock = socket(res->ai_family, res->ai_socktype, res->ai_protocol)) == -1) {
-				wlog(WLOG_WARNING, "%s[%s]:%d: %s",
-					config.udplog_host.c_str(),
-					wnet::straddr(res->ai_addr, res->ai_addrlen).c_str(),
-					config.udplog_port, strerror(errno));
-				continue;
-			}
-			if (connect(udplog_sock, res->ai_addr, res->ai_addrlen) == -1) {
-				wlog(WLOG_WARNING, "%s[%s]:%d: %s",
-					config.udplog_host.c_str(),
-					wnet::straddr(res->ai_addr, res->ai_addrlen).c_str(),
-					config.udplog_port, strerror(errno));
-				close(udplog_sock);
-				udplog_sock = -1;
-				continue;
-			}
-			break;
-		}
-		if (udplog_sock == -1) {
-			wlog(WLOG_WARNING, "could not connect to UDP log host; disabling UDP logging");
-			return;
-		}
 		do_udplog = true;
 		wlog(WLOG_NOTICE, "UDP logging to %s[%s]:%d, sample rate 1/%d",
 			config.udplog_host.c_str(),
-			wnet::straddr(res->ai_addr, res->ai_addrlen).c_str(),
+			udplog_sock->straddr().c_str(),
 			config.udplog_port, config.udplog_sample);
-		freeaddrinfo(r);
 	}
 
 }
@@ -781,7 +711,7 @@ string	url = "NONE";
 
 	_error_headers = new header_spigot(status, statstr);
 	if (!_client_sink)
-		_client_sink = new io::fde_sink(_client_fde);
+		_client_sink = new io::socket_sink(_client_socket);
 
 	_error_headers->add("Date", current_time_str);
 	_error_headers->add("Expires", current_time_str);
