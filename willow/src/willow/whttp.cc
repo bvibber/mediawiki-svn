@@ -119,7 +119,7 @@ struct error_transform_filter : io::buffering_filter, freelist_allocator<error_t
 	io::sink_result	bf_transform(char const *, size_t, ssize_t &);
 };		
 
-struct httpcllr {
+struct httpcllr : freelist_allocator<httpcllr> {
 	/* Accept a new client and start processing it. */
 	httpcllr(wsocket *, int);
 	~httpcllr();
@@ -474,7 +474,7 @@ httpcllr::send_headers_to_client_error(void)
 /*
  * Initialize whttp, start loggers.
  */
-struct http_thread {
+struct http_thread : freelist_allocator<http_thread> {
 	pthread_t	thr;
 	pair<wnet::socket *, wnet::socket *>
 			sv;
