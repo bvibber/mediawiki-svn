@@ -47,7 +47,7 @@ static void
 set_backend(conf::tree_entry &e)
 {
 value const	*val;
-int		 port = 80, family = -1, gn = 0;
+int		 port = 80, family = AF_UNSPEC, gn = 0;
 string		 group = "<default>";
 map<string, int>::iterator it;
 
