@@ -114,7 +114,6 @@ size_t	 i;
 			exit(8);
 		}
 
-		lsn2group[lns->sock] = lns->group;
 		lns->sock->readback(polycaller<wsocket *, int>(*this, &ioloop_t::_accept), 0);
 	}
 	wlog(WLOG_NOTICE, format("wnet: initialised, using libevent %s (%s)")
@@ -146,6 +145,7 @@ static time_t		 last_nfile = 0;
 char	buf[sizeof(wsocket *) * 2];
 	memcpy(buf, &newe, sizeof(newe));
 	memcpy(buf + sizeof(newe), &s, sizeof(s));
+	WDEBUG((WLOG_DEBUG, format("_accept, lsnr=%d") % s));
 
 	if (awaks[cawak]->write(buf, sizeof(wsocket *) * 2) < 0) {
 		wlog(WLOG_ERROR, format("writing to thread wakeup socket: %e"));

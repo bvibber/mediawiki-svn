@@ -55,12 +55,15 @@ struct backend {
 };
 
 struct backend_list {
-	backend_list(backend_pool const &, string const &, lb_type, int);
+	backend_list(	backend_pool const &pool,
+			string const &url,
+			string const &host,
+			lb_type, int start);
 
 	int		 _get_impl	(polycallback<backend *, wsocket *>);
 	void		 _backend_read	(wsocket *e, backend_cb_data *);
 	struct backend 	*_next_backend	(void);
-	void		 _carp_recalc	(string const &url, lb_type);
+	void		 _carp_recalc	(string const &, string const &, lb_type);
 	static int	 _becarp_cmp	(backend const *a, backend const *b);
 	static uint32_t  _carp_urlhash	(string const &);
 
@@ -78,7 +81,7 @@ struct backend_pool {
 	backend_pool(lb_type);
 
 	void		 add		(string const &, int, int);
-	backend_list	*get_list	(string const &);
+	backend_list	*get_list	(string const & url, string const &host);
 
 	vector<backend *> backends;
 
@@ -86,10 +89,11 @@ struct backend_pool {
 
 private:
 	tss<int>	 _cur;
-	lb_type	_lbtype;
+	lb_type		 _lbtype;
 };
 
 extern map<int, backend_pool> bpools;
+extern map<string, int> host_to_bpool;
 extern map<string, int> poolnames;
 extern int nbpools;
 

@@ -264,9 +264,16 @@ httpcllr::header_read_complete(void)
 		}
 	}
 
+	WDEBUG((WLOG_DEBUG, format("whttp: _group=%d") % _group));
 	_client_spigot->sp_disconnect();
+map<string,int>::iterator	it;
+	if ((it = host_to_bpool.find(_header_parser._http_host)) !=
+	    host_to_bpool.end())
+		_group = it->second;
+
 	_blist = bpools.find(_group)->second.get_list(
-				_header_parser._http_path);
+				_header_parser._http_path,
+				_header_parser._http_host);
 	
 	if (_blist->get(polycaller<backend *, wsocket *, int>(*this, 
 		    &httpcllr::backend_ready), 0) == -1)
@@ -493,15 +500,20 @@ whttp_init(void)
 void
 http_thread::accept_wakeup(wsocket *s, int)
 {
-wsocket	*cli, *lsnr;
-	if (s->read((char *)&cli, sizeof(cli)) < sizeof(cli) ||
-	    s->read((char *)&lsnr, sizeof(lsnr) < sizeof(lsnr))) {
+wsocket	*socks[2];
+map<wsocket *, int>::iterator lsnit;
+
+	if (s->read((char *)socks, sizeof(socks)) < sizeof(socks)) {
 		wlog(WLOG_ERROR, format("accept_wakeup: reading fd: %e"));
 		exit(1);
 	}
+	WDEBUG((WLOG_DEBUG, format("accept_wakeup, lsnr = %d") % socks[1]));
 	s->readback(polycaller<wsocket *, int>(*this, 
 		&http_thread::accept_wakeup), 0);
-	new httpcllr(cli, lsn2group[lsnr]);
+	if ((lsnit = lsn2group.find(socks[1])) == lsn2group.end())
+		throw runtime_error("listener not found");
+
+	new httpcllr(socks[0], lsnit->second);
 }
 
 static

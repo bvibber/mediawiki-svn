@@ -34,9 +34,10 @@ using std::rotate;
 
 #define rotl(i,r) (((i) << (r)) | ((i) >> (sizeof(i)*CHAR_BIT-(r))))
 
+map<string, int> host_to_bpool;
 map<int, backend_pool> bpools;
 map<string, int> poolnames;
-int nbpools;
+int nbpools = 1;
 
 struct backend_cb_data : freelist_allocator<backend_cb_data> {
 struct	backend		*bc_backend;
@@ -63,6 +64,7 @@ backend::backend(
 backend_pool::backend_pool(lb_type lbt)
 	: _lbtype(lbt)
 {
+	WDEBUG((WLOG_DEBUG, format("creating backend_pool, lbt=%d") % (int) lbt));
 }
 
 void
@@ -176,27 +178,29 @@ int		 error = s->error();
 
 backend_list::backend_list(
 	backend_pool const &bp, 
-	string const &url, 
+	string const &url,
+	string const &host, 
 	lb_type lbt,
 	int cur)
 
 	: backends(bp.backends)
 	, _cur(0)
 {
+	WDEBUG((WLOG_DEBUG, format("lbt = %d") % (int)lbt));
 	rotate(backends.begin(), backends.begin() + cur, backends.end());
 	if (lbt == lb_carp || lbt == lb_carp_hostonly)
-		_carp_recalc(url, lbt);
+		_carp_recalc(url, host, lbt);
 }
 
 backend_list *
-backend_pool::get_list(string const &url)
+backend_pool::get_list(string const &url, string const &host)
 {
 	if (_cur == 0)
 		_cur = new int();
 	if (*_cur >= backends.size())
 		*_cur = 0;
 
-	return new backend_list(*this, url, _lbtype, (*_cur)++);
+	return new backend_list(*this, url, host, _lbtype, (*_cur)++);
 }
 
 struct backend *
@@ -265,17 +269,14 @@ struct	backend *be, *prev;
 }
 
 void
-backend_list::_carp_recalc(string const &url, lb_type lbtype)
+backend_list::_carp_recalc(string const &url, string const &host, lb_type lbtype)
 {
 	uint32_t	hash = 0;
 	size_t		i;
 	for (i = 0; i < backends.size(); ++i) {
 	string	s = url;
-		if (lbtype == lb_carp_hostonly && url.size() > 6) {
-		string::size_type	i;
-			if ((i = url.find('/', 7)) != string::npos)
-				s = url.substr(7, i - 7);
-		}
+		if (lbtype == lb_carp_hostonly)
+			s = host;
 		hash = _carp_urlhash(s) ^ backends[i]->be_hash;			
 		hash += hash * 0x62531965;
 		hash = rotl(hash, 21);

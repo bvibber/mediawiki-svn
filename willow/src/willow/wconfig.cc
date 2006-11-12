@@ -123,6 +123,9 @@ addrlist::iterator	it = res->begin(), end = res->end();
 			delete res;
 			return;
 		}
+		WDEBUG((WLOG_DEBUG, format("listener %d has group %d")
+			% nl->sock % gn));
+		lsn2group[nl->sock] = gn;
 
 		nl->port = port;
 		nl->name = e.item_key;
@@ -304,8 +307,29 @@ value	*v;
 		else if (s == "carp-host")
 			lbtype = lb_carp_hostonly;
 	}
+
+	WDEBUG((WLOG_DEBUG, format("adding backend %d type = %d") % gn % (int) lbtype));
 	bpools.insert(make_pair(gn, backend_pool(lbtype)));
+
+	if ((v = e/"hosts") != NULL) {
+	vector<avalue>::iterator it = v->cv_values.begin(), end = v->cv_values.end();
+		for (; it != end; ++it)
+			host_to_bpool[it->av_strval] = gn;
+	}
 }
+
+bool
+v_hosts(tree_entry &e, value &v)
+{
+vector<avalue>::iterator it = v.cv_values.begin(), end = v.cv_values.end();
+	for (; it != end; ++it)
+		if (it->av_type != cv_qstring) {
+			v.report_error("hosts must be a list of quoted strings");
+			return false;
+		}
+	return true;
+}
+
 	
 bool
 read_config(string const &file)
@@ -355,6 +379,7 @@ conf
 	.block("backend-group", require_name)
 		.end(func(set_backend_group))
 		.value("lb-type",	func(v_lb_type),	ignore)
+		.value("hosts",		func(v_hosts),		ignore)
 
 	.block("backend", require_name)
 		.end(func(set_backend))
