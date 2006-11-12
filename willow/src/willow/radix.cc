@@ -64,7 +64,7 @@ do { \
         } \
     } while (0)
 
-std::string
+string
 prefix::tostring (void)
 {
 static char	ret[100];

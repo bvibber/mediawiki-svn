@@ -19,10 +19,8 @@
 #include <sstream>
 #include <cerrno>
 using std::vector;
-using std::string;
 using std::ios;
 using std::runtime_error;
-using std::ostringstream;
 using std::strerror;
 
 #include "willow.h"

@@ -28,6 +28,9 @@
 using std::invalid_argument;
 using std::pair;
 
+#include "ptalloc.h"
+#include "willow.h"
+
 typedef void (*void_fn_t)();
 
 #define RADIX_MAXBITS 128

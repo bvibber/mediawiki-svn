@@ -15,11 +15,11 @@
 #include <cstdio>
 
 using std::strerror;
-using std::string;
 using std::fopen;
 
 #include "confparse.h"
 #include "y.tab.h"
+#include "willow.h"
 
 struct func_attrs;
 
@@ -123,12 +123,12 @@ from		{ oldpos = conf::curpos; conf::curpos += yyleng; return FROM; }
 \.\.		{ oldpos = conf::curpos; conf::curpos += yyleng; return TWODOTS; }
 
 {qstring}	{
-			yylval.string_ = new std::string(yytext + 1, yyleng - 2);
+			yylval.string_ = new string(yytext + 1, yyleng - 2);
 			oldpos = conf::curpos; conf::curpos += yyleng;
 			return QSTRING;
 		}
 {string}	{
-			yylval.string_ = new std::string(yytext, yyleng);
+			yylval.string_ = new string(yytext, yyleng);
 			oldpos = conf::curpos; conf::curpos += yyleng;
 			return STRING;
 		}

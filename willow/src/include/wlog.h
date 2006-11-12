@@ -14,9 +14,10 @@
 
 #include <cstdio>
 #include <string>
-using std::string;
 
+#include "willow.h"
 #include "config.h"
+#include "ptalloc.h"
 
 #define WLOG_DEBUG 0
 #define WLOG_NOTICE 1

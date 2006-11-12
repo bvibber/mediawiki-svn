@@ -19,48 +19,21 @@
 #include <iostream>
 #include <typeinfo>
 #include <stdexcept>
+#include <string>
+#include <cmath>
+#include <vector>
 using std::runtime_error;
-
-#include <pthread.h>
+using std::basic_string;
+using std::char_traits;
+using std::vector;
 
 #include "wlog.h"
 #include "radix.h"
+#include "ptalloc.h"
 
 #ifdef __INTEL_COMPILER
 # pragma warning (disable: 869 981 304 383 1418 1469 810)
 #endif
-
-struct bad_lexical_cast : runtime_error {
-	bad_lexical_cast() 
-		: runtime_error("lexical_cast could not convert arguments") {}
-};
-
-template<typename From, typename To>
-struct lexical_caster {
-	static To cast (From const &f) {
-	std::stringstream	strm;
-	To			t;
-		if (!(strm << f) || !(strm >> t))
-			throw bad_lexical_cast();
-		return t;
-	}
-};
-
-template<typename From>
-struct lexical_caster<From, string> {
-	static string cast (From const &f) {
-	std::stringstream	strm;
-		if (!(strm << f))
-			throw bad_lexical_cast();
-		return strm.str();
-	}
-};
-		
-template<typename To, typename From>
-To lexical_cast(From const &f)
-{
-	return lexical_caster<From, To>::cast(f);
-}
 
 typedef unsigned long long w_size_t;
 
@@ -116,38 +89,6 @@ extern int char_table[];
 # define unlikely(c) c
 #endif
 
-struct noncopyable {
-	noncopyable() {};
-private:
-	noncopyable(noncopyable const &);	/* no implementation */
-};
-
-#define HOLDING(l) locker _l(l)
-
-struct lockable : noncopyable {
-	mutable pthread_mutex_t	m;
-	lockable() {
-		pthread_mutex_init(&m, NULL);
-	}
-	void _lock() const {
-		pthread_mutex_lock(&m);
-	}
-	void _unlock() const {
-		pthread_mutex_unlock(&m);
-	}
-};
-
-struct locker : noncopyable {
-	lockable const	&m;
-	locker(lockable const &m_)
-		: m(m_) {
-		m._lock();
-	}
-	~locker() {
-		m._unlock();
-	}
-};
-
 template<typename T, void (T::*ptmf) (void)>
 void ptmf_transform(void *p)
 {
@@ -161,245 +102,6 @@ struct ptmf_transform2 {
 		(static_cast<T*>(p)->*ptmf)(a, b);
 	}
 };
-
-template<typename T>
-struct atomic {
-	T 		v;
-	lockable	m;
-
-	atomic () : v(T()) {}
-	atomic (T v_) : v(v_) {}
-	atomic (atomic const& o) {
-		HOLDING(o.m);
-		v = o.v;
-	}
-	template<typename U> atomic (atomic<U> const &o) {
-		HOLDING(o.m);
-		v = o.v;
-	}
-
-	operator T (void) const {
-		HOLDING(m);
-		return v;
-	}
-	template<typename U> atomic &operator = (U o) {
-		HOLDING(m);
-		v = o;
-		return *this;
-	}
-	template<typename U> atomic &operator += (U o) {
-		HOLDING(m);
-		v += o;
-		return *this;
-	}
-	template<typename U> atomic &operator -= (U o) {
-		HOLDING(m);
-		v -= o;
-		return *this;
-	}
-	template<typename U> atomic &operator *= (U o) {
-		HOLDING(m);
-		v *= o;
-		return *this;
-	}
-	template<typename U> atomic &operator /= (U o) {
-		HOLDING(m);
-		v /= o;
-		return *this;
-	}
-	template<typename U> atomic &operator %= (U o) {
-		HOLDING(m);
-		v %= o;
-		return *this;
-	}
-	template<typename U> atomic &operator <<= (U o) {
-		HOLDING(m);
-		v <<= o;
-		return *this;
-	}
-	template<typename U> atomic &operator >>= (U o) {
-		HOLDING(m);
-		v >>= o;
-		return *this;
-	}
-	template<typename U> atomic &operator &= (U o) {
-		HOLDING(m);
-		v &= o;
-		return *this;
-	}
-	template<typename U> atomic &operator |= (U o) {
-		HOLDING(m);
-		v |= o;
-		return *this;
-	}
-	template<typename U> atomic &operator ^= (U o) {
-		HOLDING(m);
-		v ^= o;
-		return *this;
-	}
-	atomic &operator++ (void) {
-		HOLDING(m);
-		v++;
-		return *this;
-	}
-	T operator++ (int) {
-	atomic	u (*this);
-		u.v++;
-		return u;
-	}
-};
-
-template<typename T1, typename T2>
-T1 operator + (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v + v2;
-}
-template<typename T1, typename T2>
-T1 operator - (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v - v2;
-}
-template<typename T1, typename T2>
-T1 operator * (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v * v2;
-}
-template<typename T1, typename T2>
-T1 operator / (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v / v2;
-}
-template<typename T1, typename T2>
-T1 operator ^ (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v ^ v2;
-}
-template<typename T1, typename T2>
-T1 operator & (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v & v2;
-}
-template<typename T1, typename T2>
-T1 operator | (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v | v2;
-}
-template<typename T1, typename T2>
-T1 operator && (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v && v2;
-}
-template<typename T1, typename T2>
-T1 operator || (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v || v2;
-}
-template<typename T1, typename T2>
-T1 operator == (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v == v2;
-}
-template<typename T1, typename T2>
-T1 operator != (atomic<T1> const &v1, T2 v2) {
-	return !(v1 == v2);
-}
-template<typename T1, typename T2>
-T1 operator < (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v < v2;
-}
-template<typename T1, typename T2>
-T1 operator > (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v > v2;
-}
-template<typename T1, typename T2>
-T1 operator <= (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v <= v2;
-}
-template<typename T1, typename T2>
-T1 operator >= (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v >= v2;
-}
-template<typename T1, typename T2>
-T1 operator << (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v << v2;
-}
-template<typename T1, typename T2>
-T1 operator >> (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v >> v2;
-}
-template<typename T1>
-T1 operator ! (atomic<T1> const &v1) {
-	HOLDING(v1.m);
-	return !v1.v;
-}
-template<typename T1>
-T1 operator ~ (atomic<T1> const &v1) {
-	HOLDING(v1.m);
-	return ~v1.v;
-}
-
-template<typename T>
-struct tss {
-	mutable pthread_key_t	_key;
-	tss() {
-		pthread_key_create(&_key, NULL);
-	}
-	T const& operator* (void) const {
-		return *(T *)pthread_getspecific(_key);
-	}
-	T& operator* (void) {
-		return *(T *)pthread_getspecific(_key);
-	}
-	T const * operator-> (void) const {
-		return (T *)pthread_getspecific(_key);
-	}
-	T *operator-> (void) {
-		return (T *)pthread_getspecific(_key);
-	}
-	tss &operator= (T* n) {
-		pthread_setspecific(_key, n);
-		return *this;
-	}
-	operator T* (void) {
-		return (T *)pthread_getspecific(_key);
-	}
-};
-
-template<typename T>
-struct freelist_allocator {
-	T		*_freelist_next;
-static  tss<T>		 _freelist;
-
-        void *operator new(std::size_t size) {
-                if (_freelist) {
-                T       *n = _freelist;
-                        _freelist = _freelist->_freelist_next;
-			memset(n, 0, sizeof(*n));
-                        return n;
-                } else {
-		void	*ret;
-			ret = new char[size];
-			memset(ret, 0, size);
-			return ret;
-		}
-        }
- 
-        void operator delete (void *p) {
-        T       *o = (T *)p;
-		memset(o, 0, sizeof(*o));
-                o->_freelist_next = _freelist;
-                _freelist = o;
-        }
-};
-
-template<typename T>
-tss<T> freelist_allocator<T>::_freelist;
 
 extern struct stats_stru : noncopyable {
 	atomic<int>	interval;	/* update interval	*/

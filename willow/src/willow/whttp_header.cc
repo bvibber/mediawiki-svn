@@ -58,7 +58,7 @@ find_reqtype(char const *str, int len)
 	return REQTYPE_INVALID;
 }
 
-header::header(string const &n, string const &v)
+header::header(ptstring const &n, ptstring const &v)
 	: hr_name(n)
 	, hr_value(v)
 {
@@ -78,7 +78,7 @@ header_list::header_list()
 }
 
 void
-header_list::add(string const &name, string const &value)
+header_list::add(ptstring const &name, ptstring const &value)
 {
 	hl_hdrs.push_back(header(name, value));
 	hl_last = &*hl_hdrs.rbegin();
@@ -113,7 +113,7 @@ char		*n;
 void
 header_list::remove(const char *name)
 {
-vector<header>::iterator	it, end;
+vector<header, pt_allocator<header> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
 		if (!httpcompare(it->hr_name, name))
 			continue;
@@ -128,7 +128,7 @@ vector<header>::iterator	it, end;
 struct header *
 header_list::find(const char *name)
 {
-vector<header>::iterator	it, end;
+vector<header, pt_allocator<header> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
 		if (!httpcompare(it->hr_name, name))
 			continue;
@@ -148,7 +148,7 @@ size_t	 buflen = 0;
 	buf = new char[bufsz];
 	
 	*buf = '\0';
-vector<header>::iterator	it, end;
+vector<header, pt_allocator<header> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
 	int	incr;
 		incr = it->hr_name.size();

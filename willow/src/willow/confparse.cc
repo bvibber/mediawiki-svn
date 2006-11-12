@@ -12,7 +12,6 @@
 #include <utility>
 #include <cstdarg>
 #include <cerrno>
-using std::string;
 using std::vector;
 using std::make_pair;
 
@@ -109,13 +108,13 @@ value	*val;
 
 
 static void
-add_ignorable(std::string const &pat)
+add_ignorable(string const &pat)
 {
 	ignorables.push_back(pat);
 }
 
 static int
-is_ignorable(std::string const &pat)
+is_ignorable(string const &pat)
 {
 	return std::find(ignorables.begin(), ignorables.end(), pat) != ignorables.end();
 }
@@ -129,7 +128,7 @@ struct if_entry {
 };
 
 bool
-if_true(std::string const &if_)
+if_true(string const &if_)
 {
 if_entry	*e;
 char const	*dir;

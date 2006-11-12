@@ -21,7 +21,6 @@
 #include <utility>
 #include <cassert>
 
-using std::string;
 using std::map;
 using std::vector;
 using std::pair;
@@ -63,7 +62,7 @@ struct declpos {
 		declpos() : file(""), line(0), pos(0) {}
 
 	string	format(void) const {
-		return file + "(" + lexical_cast<std::string>(line) + ")";
+		return file + "(" + lexical_cast<string>(line) + ")";
 	}
 
 	static declpos here() {

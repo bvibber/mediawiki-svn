@@ -17,7 +17,6 @@
 #include <algorithm>
 #include <map>
 using std::ifstream;
-using std::string;
 using std::map;
 using std::min;
 

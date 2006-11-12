@@ -36,20 +36,20 @@ extern struct request_type {
 } supported_reqtypes[];
 
 struct header : freelist_allocator<header> {
-	header(string const &, string const &);
+	header(ptstring const &, ptstring const &);
 	~header() {}
 
 	void	swap(header &);
 
-	string	 hr_name;
-	string	 hr_value;
+	ptstring	 hr_name;
+	ptstring	 hr_value;
 };
 
 struct header_list {
 	header_list();
 	~header_list() {};
 
-	void	 add		(string const &, string const &);
+	void	 add		(ptstring const &, ptstring const &);
 	void	 add		(char const *, char const *);
 	void	 add		(char const *, size_t, char const *, size_t);
 	void	 append_last	(const char *, size_t);
@@ -60,7 +60,7 @@ struct header_list {
 struct header	*find		(const char *name);
 
 	header			*hl_last;
-	vector<header>		 hl_hdrs;
+	vector<header, pt_allocator<header> >	 hl_hdrs;
 	int			 hl_len;
 };
 
