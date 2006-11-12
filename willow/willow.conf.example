@@ -25,6 +25,12 @@ backend-group "backup" {
 	 * request host, not the pathname).
 	 */
 	lb-type = carp;
+
+	/*
+	 * This group will always get requests for www[2].bar.com, no
+	 * matter which listener received the request.
+	 */
+	hosts = "www.bar.com", "www2.bar.com";
 };
 
 backend "backends.mycompany.com" {
