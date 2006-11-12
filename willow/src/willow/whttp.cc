@@ -162,8 +162,9 @@ struct httpcllr {
 	chunking_filter			*_chunking_filter;
 	io::size_limiting_filter	*_size_limit;
 
-	bool	_denied;
-	int	_group;
+	backend_list	*_blist;
+	bool		 _denied;
+	int		 _group;
 };
 
 httpcllr::httpcllr(wsocket *s, int gr)
@@ -180,6 +181,7 @@ httpcllr::httpcllr(wsocket *s, int gr)
 	, _error_filter(NULL)
 	, _chunking_filter(NULL)
 	, _size_limit(NULL)
+	, _blist(NULL)
 	, _denied(false)
 	, _group(gr)
 {
@@ -219,6 +221,7 @@ httpcllr::~httpcllr(void)
 	delete _size_limit;
 	delete _backend_socket;
 	delete _client_socket;
+	delete _blist;
 }
 
 static const char *removable_headers[] = {
@@ -262,8 +265,10 @@ httpcllr::header_read_complete(void)
 	}
 
 	_client_spigot->sp_disconnect();
-	if (bpools.find(_group)->second.get(_header_parser._http_path, 
-		     polycaller<backend *, wsocket *, int>(*this, 
+	_blist = bpools.find(_group)->second.get_list(
+				_header_parser._http_path);
+	
+	if (_blist->get(polycaller<backend *, wsocket *, int>(*this, 
 		    &httpcllr::backend_ready), 0) == -1)
 		backend_ready(NULL, NULL, 0);
 }

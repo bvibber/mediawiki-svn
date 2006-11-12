@@ -21,6 +21,8 @@
 #include <climits>
 #include <cmath>
 #include <ctime>
+#include <algorithm>
+using std::rotate;
 
 #include "willow.h"
 #include "wbackend.h"
@@ -40,7 +42,6 @@ struct backend_cb_data : freelist_allocator<backend_cb_data> {
 struct	backend		*bc_backend;
 	polycallback<backend *, wsocket *> bc_func;
 	void		*bc_data;
-	string		 bc_url;
 };
 
 backend::backend(
@@ -88,7 +89,7 @@ addrlist::iterator	it = list->begin(), end = list->end();
 }
 
 int
-backend_pool::_get_impl(string const &url, polycallback<backend *, wsocket *> cb)
+backend_list::_get_impl(polycallback<backend *, wsocket *> cb)
 {
 struct	backend_cb_data	*cbd;
 	wsocket		*s = NULL;
@@ -97,10 +98,9 @@ static	time_t		 last_nfile;
 
 	cbd = new backend_cb_data;
 	cbd->bc_func = cb;
-	cbd->bc_url = url;
 	
 	for (;;) {
-		cbd->bc_backend = _next_backend(url);
+		cbd->bc_backend = _next_backend();
 
 		if (cbd->bc_backend == NULL) {
 			delete cbd;
@@ -140,7 +140,7 @@ static	time_t		 last_nfile;
 		if (cs == connect_later) {
 			s->writeback(
 				polycaller<wsocket *, backend_cb_data*>(*this, 
-					&backend_pool::_backend_read), cbd);
+					&backend_list::_backend_read), cbd);
 		} else {
 			cb(cbd->bc_backend, s);
 			delete cbd;
@@ -150,7 +150,7 @@ static	time_t		 last_nfile;
 }
 
 void
-backend_pool::_backend_read(wsocket *s, backend_cb_data *cbd)
+backend_list::_backend_read(wsocket *s, backend_cb_data *cbd)
 {
 int		 error = s->error();
 
@@ -163,7 +163,7 @@ int		 error = s->error();
 		cbd->bc_backend->be_dead = 1;
 		cbd->bc_backend->be_time = retry;
 		delete s;
-		if (_get_impl(cbd->bc_url, cbd->bc_func) == -1) {
+		if (_get_impl(cbd->bc_func) == -1) {
 			cbd->bc_func(NULL, NULL);
 		}
 		delete cbd;
@@ -174,46 +174,61 @@ int		 error = s->error();
 	delete cbd;
 }
 
+backend_list::backend_list(
+	backend_pool const &bp, 
+	string const &url, 
+	lb_type lbt,
+	int cur)
+
+	: backends(bp.backends)
+	, _cur(0)
+{
+	rotate(backends.begin(), backends.begin() + cur, backends.end());
+	if (lbt == lb_carp || lbt == lb_carp_hostonly)
+		_carp_recalc(url, lbt);
+}
+
+backend_list *
+backend_pool::get_list(string const &url)
+{
+	if (_cur == 0)
+		_cur = new int();
+	if (*_cur >= backends.size())
+		*_cur = 0;
+
+	return new backend_list(*this, url, _lbtype, (*_cur)++);
+}
+
 struct backend *
-backend_pool::_next_backend(string const &url)
+backend_list::_next_backend(void)
 {
 size_t			tried = 0;
-
-	if (!_cur)
-		_cur = new int();
-
-	if (_lbtype == lb_carp || _lbtype == lb_carp_hostonly) {
-		_carp_recalc(url);
-		*_cur = 0;
-	}
 
 	while (tried++ <= backends.size()) {
 		time_t now = time(NULL);
 
 		WDEBUG((WLOG_DEBUG, format("_next_backend: considering %d %s")
-			% *_cur % backends[*_cur]->be_name));
+			% _cur % backends[_cur]->be_name));
 
-		if (*_cur >= (int) backends.size())
-			*_cur = 0;
+		if (_cur >= (int) backends.size())
+			_cur = 0;
 
-		if (backends[*_cur]->be_dead && now >= backends[*_cur]->be_time)
-			backends[*_cur]->be_dead = 0;
+		if (backends[_cur]->be_dead && now >= backends[_cur]->be_time)
+			backends[_cur]->be_dead = 0;
 
-		if (backends[*_cur]->be_dead) {
-			(*_cur)++;
+		if (backends[_cur]->be_dead) {
+			_cur++;
 			continue;
 		}
 
-		if (_lbtype == lb_carp || _lbtype == lb_carp_hostonly)
-			*_cur = 0;
-		return backends[(*_cur)++];
+		return backends[_cur++];
 	}
 
 	return NULL;
 }
 
 uint32_t
-backend_pool::_carp_urlhash(string const &str)
+backend_list::_carp_urlhash(string const &str)
 {
 	uint32_t h = 0;
 	for (string::const_iterator it = str.begin(), end = str.end(); it != end; ++it)
@@ -224,7 +239,7 @@ backend_pool::_carp_urlhash(string const &str)
 uint32_t
 backend::_carp_hosthash(string const &str)
 {
-	uint32_t h = backend_pool::_carp_urlhash(str) * 0x62531965;
+	uint32_t h = backend_list::_carp_urlhash(str) * 0x62531965;
 	return rotl(h, 21);
 }
 
@@ -250,13 +265,13 @@ struct	backend *be, *prev;
 }
 
 void
-backend_pool::_carp_recalc(string const &url)
+backend_list::_carp_recalc(string const &url, lb_type lbtype)
 {
 	uint32_t	hash = 0;
 	size_t		i;
 	for (i = 0; i < backends.size(); ++i) {
 	string	s = url;
-		if (_lbtype == lb_carp_hostonly && url.size() > 6) {
+		if (lbtype == lb_carp_hostonly && url.size() > 6) {
 		string::size_type	i;
 			if ((i = url.find('/', 7)) != string::npos)
 				s = url.substr(7, i - 7);
@@ -272,7 +287,7 @@ backend_pool::_carp_recalc(string const &url)
 }
 
 int
-backend_pool::_becarp_cmp(backend const *a, backend const *b)
+backend_list::_becarp_cmp(backend const *a, backend const *b)
 {
 	return a->be_carp < b->be_carp ? true : false;
 }

@@ -32,6 +32,10 @@ enum lb_type {
 	lb_carp_hostonly,
 };
 
+struct backend_list;
+struct backend_pool;
+struct backend_cb_data;
+
 struct backend {
 		backend(string const &, string const &, address const &);
 
@@ -50,27 +54,35 @@ struct backend {
 	static uint32_t 	 _carp_hosthash	(string const &);
 };
 
-struct backend_cb_data;
+struct backend_list {
+	backend_list(backend_pool const &, string const &, lb_type, int);
+
+	int		 _get_impl	(polycallback<backend *, wsocket *>);
+	void		 _backend_read	(wsocket *e, backend_cb_data *);
+	struct backend 	*_next_backend	(void);
+	void		 _carp_recalc	(string const &url, lb_type);
+	static int	 _becarp_cmp	(backend const *a, backend const *b);
+	static uint32_t  _carp_urlhash	(string const &);
+
+	template<typename T>
+	int	get	(polycaller<backend *, wsocket *, T> cb, T t) {
+		return _get_impl(polycallback<backend *, wsocket *>(cb, t));
+	}
+
+private:
+	vector<backend *> backends;
+	int _cur;
+};
+
 struct backend_pool {
 	backend_pool(lb_type);
 
-	void	add	(string const &, int, int);
-
-	template<typename T>
-	int	get	(string const &url, polycaller<backend *, wsocket *, T> cb, T t) {
-		return _get_impl(url, polycallback<backend *, wsocket *>(cb, t));
-	}
+	void		 add		(string const &, int, int);
+	backend_list	*get_list	(string const &);
 
 	vector<backend *> backends;
 
-	int		 _get_impl	(string const &, polycallback<backend *, wsocket *>);
-	void		 _backend_read	(wsocket *e, backend_cb_data *);
-	struct backend 	*_next_backend	(string const &url);
-	void		 _carp_recalc	(string const &url);
 	void		 _carp_calc	(void);
-
-	static int	 _becarp_cmp	(backend const *a, backend const *b);
-	static uint32_t  _carp_urlhash	(string const &);
 
 private:
 	tss<int>	 _cur;
