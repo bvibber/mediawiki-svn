@@ -26,6 +26,27 @@ struct pta_block : freelist_allocator<pta_block> {
 	void *addr;
 };
 
+static const int lt256[] = 
+{
+  0, 0, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3,
+  4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+  5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+  5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+  6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+  6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+  6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+  6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+  7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+  7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+  7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+  7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+  7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+  7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+  7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+  7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7
+};
+
+
 template<typename T>
 struct pt_allocator {
 	typedef T			 value_type;
@@ -46,7 +67,7 @@ struct pt_allocator {
 
 	pointer allocate(size_type n, const_pointer = 0) {
 	size_t			 sz = sizeof(T) * n;
-	int			 exp = (int) log2(sz) + 1;
+	int			 exp = ilog2(sz) + 1;
 	void			*ret;
 		if (!freelist)
 			freelist = new vector<pta_block *>;
@@ -61,13 +82,13 @@ struct pt_allocator {
 			return (pointer) ret;
 		}
 		/* no, need a new block */
-		ret = new char[(int) pow(2, exp)];
+		ret = new char[2 << (exp - 1)];
 		return (pointer) ret;		
 	}
 
 	void deallocate(pointer p, size_type n) {
 	size_t			 sz = sizeof(T) * n;
-	int			 exp = (int) log2(sz) + 1;
+	int			 exp = ilog2(sz) + 1;
 	vector<pta_block *>	&fl = *freelist;
 	pta_block		*ptb = new pta_block;
 
@@ -104,6 +125,18 @@ struct pt_allocator {
 
 	bool operator== (pt_allocator const &other) const {
 		return true;
+	}
+
+	/* from http://graphics.stanford.edu/~seander/bithacks.html#IntegerLogLookup */
+	int ilog2(int i) {
+	unsigned r = 0; // r will be lg(v)
+	register unsigned int t, tt; // temporaries
+
+		if ((tt = (i >> 16)))
+			r = (t = (i >> 24)) ? 24 + lt256[t] : 16 + lt256[tt & 0xFF];
+		else 
+			r = (t = (i >> 8)) ? 8 + lt256[t] : lt256[i];
+		return r;
 	}
 
 	static tss<vector<pta_block *> >	freelist;
