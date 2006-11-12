@@ -380,6 +380,9 @@ conf
 	stats.interval = DEFAULT_STATS_INTERVAL;
 	config.nthreads = 1;
 	config.admin = "nobody@example.com";
+	poolnames["<default>"] = 0;
+	bpools.insert(make_pair(0, backend_pool(lb_rr)));
+
 	conf.set(*t);
 	whttp_reconfigure();
 	global_conf_tree = *t;
