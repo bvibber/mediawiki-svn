@@ -78,18 +78,23 @@ private:
 };
 
 struct backend_pool {
-	backend_pool(lb_type);
+	backend_pool(string const &name, lb_type);
 
 	void		 add		(string const &, int, int);
 	backend_list	*get_list	(string const & url, string const &host);
 
-	vector<backend *> backends;
+	int		 size		(void) const;
+	string const	&name		(void) const;
+
+private:
+	friend class backend_list;
 
 	void		 _carp_calc	(void);
 
-private:
+	vector<backend *> backends;
 	tss<int>	 _cur;
 	lb_type		 _lbtype;
+	string		 _name;
 };
 
 extern map<int, backend_pool> bpools;

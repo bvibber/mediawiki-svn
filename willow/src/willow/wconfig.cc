@@ -23,6 +23,8 @@
 #include <climits>
 #include <netdb.h>
 #include <pthread.h>
+#include <set>
+using std::set;
 
 #include "willow.h"
 #include "wconfig.h"
@@ -37,6 +39,7 @@
 using namespace conf;
 
 map<wsocket *, int> lsn2group;
+set<int> used_pools;
 
 #define CONFIGFILE SYSCONFDIR "/willow.conf"
 
@@ -70,6 +73,7 @@ map<string, int>::iterator it;
 			gn = it->second;
 	}
 
+	used_pools.insert(gn);
 	bpools.find(gn)->second.add(e.item_key, port, family);
 }
 
@@ -126,6 +130,7 @@ addrlist::iterator	it = res->begin(), end = res->end();
 		WDEBUG((WLOG_DEBUG, format("listener %d has group %d")
 			% nl->sock % gn));
 		lsn2group[nl->sock] = gn;
+		used_pools.insert(gn);
 
 		nl->port = port;
 		nl->name = e.item_key;
@@ -309,12 +314,13 @@ value	*v;
 	}
 
 	WDEBUG((WLOG_DEBUG, format("adding backend %d type = %d") % gn % (int) lbtype));
-	bpools.insert(make_pair(gn, backend_pool(lbtype)));
+	bpools.insert(make_pair(gn, backend_pool(e.item_key, lbtype)));
 
 	if ((v = e/"hosts") != NULL) {
 	vector<avalue>::iterator it = v->cv_values.begin(), end = v->cv_values.end();
 		for (; it != end; ++it)
 			host_to_bpool[it->av_strval] = gn;
+		used_pools.insert(gn);
 	}
 }
 
@@ -406,7 +412,7 @@ conf
 	config.nthreads = 1;
 	config.admin = "nobody@example.com";
 	poolnames["<default>"] = 0;
-	bpools.insert(make_pair(0, backend_pool(lb_rr)));
+	bpools.insert(make_pair(0, backend_pool("<default>", lb_rr)));
 
 	conf.set(*t);
 	whttp_reconfigure();
@@ -438,6 +444,16 @@ int	nerrors = 0;
 		wlog(WLOG_ERROR, "no backends defined");
 		nerrors++;
 	}
+
+	for (map<int, backend_pool>::iterator it = bpools.begin(), end = bpools.end();
+	     it != end; ++it) {
+		if (!it->second.size() && used_pools.find(it->first) != used_pools.end()) {
+			wlog(WLOG_ERROR, format("backend group \"%s\" is used but has no backends")
+				% it->second.name());
+			nerrors++;
+		}
+	}
+
 	if (nerrors) {
 		wlog(WLOG_ERROR, 
 			format("%d error(s) in configuration file.  cannot continue.")

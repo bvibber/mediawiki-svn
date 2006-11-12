@@ -61,8 +61,9 @@ backend::backend(
 		% be_straddr % be_hash));
 }
 
-backend_pool::backend_pool(lb_type lbt)
+backend_pool::backend_pool(string const &name, lb_type lbt)
 	: _lbtype(lbt)
+	, _name(name)
 {
 	WDEBUG((WLOG_DEBUG, format("creating backend_pool, lbt=%d") % (int) lbt));
 }
@@ -266,6 +267,18 @@ struct	backend *be, *prev;
 		be->be_carp += (uint32_t) pow(prev->be_carp, backends.size()-i+1);
 		be->be_carp = (uint32_t) pow(be->be_carp, 1/(backends.size()-i+1));
 	}
+}
+
+int
+backend_pool::size(void) const
+{
+	return backends.size();
+}
+
+string const &
+backend_pool::name(void) const
+{
+	return _name;
 }
 
 void
