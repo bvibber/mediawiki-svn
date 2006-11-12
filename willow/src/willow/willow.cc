@@ -298,6 +298,9 @@ char		buf[65535], *bufp = buf, *endp = buf + sizeof(buf);
 char		rdata[3];
 address		addr;
 
+	s->readback(polycaller<wsocket *, int>(stats_handler, 
+		&stats_handler_stru::callback), 0);
+
 	if (s->recvfrom(rdata, sizeof(rdata), addr) != 2)
 		return;
 

@@ -433,11 +433,12 @@ int
 socket::recvfrom(char *buf, size_t count, wnet::address &addr)
 {
 sockaddr_storage	saddr;
-socklen_t		addrlen= sizeof(addr);
+socklen_t		addrlen = sizeof(addr);
 int			i;
 	if ((i = ::recvfrom(_s, buf, count, 0, (sockaddr *)&saddr, &addrlen)) < 0)
 		return i;
-	addr = wnet::address((sockaddr *)&addr, addrlen);
+	WDEBUG((WLOG_DEBUG, "recvfrom: fam=%d", saddr.ss_family));
+	addr = wnet::address((sockaddr *)&saddr, addrlen);
 	return i;
 }
 
