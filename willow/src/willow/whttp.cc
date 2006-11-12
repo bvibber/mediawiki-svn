@@ -583,10 +583,10 @@ whttp_reconfigure(void)
 		}
 
 		do_udplog = true;
-		wlog(WLOG_NOTICE, format("UDP logging to %s[%s]:%d, sample rate 1/%d")
+		wlog(WLOG_NOTICE, format("UDP logging to %s%s, sample rate 1/%d")
 			% config.udplog_host
 			% udplog_sock->straddr()
-			% config.udplog_port % config.udplog_sample);
+			% config.udplog_sample);
 	}
 
 }
