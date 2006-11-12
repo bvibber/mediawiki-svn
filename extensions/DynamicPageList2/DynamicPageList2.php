@@ -533,7 +533,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			case 'debug':
 				if( in_array($sArg, $wgDPL2Options['debug']) ) {
 					if($iParam > 1)
-						$output .= $logger->msg(DPL2_WARN_DEBUGPARAMNOTFIRST, "$sArg");
+						$output .= $logger->escapeMsg(DPL2_WARN_DEBUGPARAMNOTFIRST, $sArg );
 					$logger->iDebugLevel = intval($sArg);
 				}
 				else
@@ -544,7 +544,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			 * UNKNOWN PARAMETER
 			 */
 			default:
-				$output .= $logger->msg(DPL2_WARN_UNKNOWNPARAM, $sType, implode(', ', array_keys($wgDPL2Options)));
+				$output .= $logger->escapeMsg(DPL2_WARN_UNKNOWNPARAM, $sType, implode(', ', array_keys($wgDPL2Options)));
 		}
 	}
 	
@@ -556,36 +556,36 @@ function DynamicPageList2( $input, $params, &$parser ) {
 // ###### CHECKS ON PARAMETERS ######
 	// too many categories!!
 	if ( ($iTotalCatCount > $wgDPL2MaxCategoryCount) && (!$wgDPL2AllowUnlimitedCategories) )
-		return $logger->msg(DPL2_ERR_TOOMANYCATS, "$wgDPL2MaxCategoryCount");
+		return $logger->escapeMsg(DPL2_ERR_TOOMANYCATS, $wgDPL2MaxCategoryCount);
 
 	// too few categories!!
 	if ($iTotalCatCount < $wgDPL2MinCategoryCount)
-		return $logger->msg(DPL2_ERR_TOOFEWCATS, "$wgDPL2MinCategoryCount");
+		return $logger->escapeMsg(DPL2_ERR_TOOFEWCATS, $wgDPL2MinCategoryCount);
 		
 	// no included categories but ordermethod=categoryadd or addfirstcategorydate=true!!
 	if ($iTotalIncludeCatCount == 0 && ($aOrderMethods[0] == 'categoryadd' || $bAddFirstCategoryDate == true) )
-		return $logger->msg(DPL2_ERR_CATDATEBUTNOINCLUDEDCATS);
+		return $logger->escapeMsg(DPL2_ERR_CATDATEBUTNOINCLUDEDCATS);
 
 	// more than one included category but ordermethod=categoryadd or addfirstcategorydate=true!!
 	if ($iTotalIncludeCatCount > 1 && ($aOrderMethods[0] == 'categoryadd' || $bAddFirstCategoryDate == true) )
-		return $logger->msg(DPL2_ERR_CATDATEBUTMORETHAN1CAT);
+		return $logger->escapeMsg(DPL2_ERR_CATDATEBUTMORETHAN1CAT);
 		
 	// no more than one type of date at a time!!
 	if($bAddPageTouchedDate + $bAddFirstCategoryDate + $bAddEditDate > 1)
-		return $logger->msg(DPL2_ERR_MORETHAN1TYPEOFDATE);
+		return $logger->escapeMsg(DPL2_ERR_MORETHAN1TYPEOFDATE);
 
 	// category-style output requested with not compatible order method
 	if ($sPageListMode == 'category' && !array_intersect($aOrderMethods, array('sortkey', 'title')) )
-		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD,  'mode=category', 'sortkey | title' );
+		return $logger->escapeMsg(DPL2_ERR_WRONGORDERMETHOD,  'mode=category', 'sortkey | title' );
 	
 	// addpagetoucheddate=true with unappropriate order methods
 	if( $bAddPageTouchedDate && !array_intersect($aOrderMethods, array('pagetouched', 'title')) )
-		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD,  'addpagetoucheddate=true', 'pagetouched | title' );
+		return $logger->escapeMsg(DPL2_ERR_WRONGORDERMETHOD,  'addpagetoucheddate=true', 'pagetouched | title' );
 	
 	// addeditdate=true but not (ordermethod=...,firstedit or ordermethod=...,lastedit)
 	//firstedit (resp. lastedit) -> add date of first (resp. last) revision
 	if( $bAddEditDate && !array_intersect($aOrderMethods, array('firstedit', 'lastedit')) )
-		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD, 'addeditdate=true', 'firstedit | lastedit' );
+		return $logger->escapeMsg(DPL2_ERR_WRONGORDERMETHOD, 'addeditdate=true', 'firstedit | lastedit' );
 	
 	// adduser=true but not (ordermethod=...,firstedit or ordermethod=...,lastedit)
 	/**
@@ -594,10 +594,10 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	 * Ideally, we could use values such as 'all', 'first' or 'last' for the adduser parameter.
 	*/
 	if( $bAddUser && !array_intersect($aOrderMethods, array('firstedit', 'lastedit')) )
-		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD, 'adduser=true', 'firstedit | lastedit' );
+		return $logger->escapeMsg(DPL2_ERR_WRONGORDERMETHOD, 'adduser=true', 'firstedit | lastedit' );
 	
 	if( isset($sMinorEdits) && !array_intersect($aOrderMethods, array('firstedit', 'lastedit')) )
-		return $logger->msg(DPL2_ERR_WRONGORDERMETHOD, 'minoredits', 'firstedit | lastedit' );
+		return $logger->escapeMsg(DPL2_ERR_WRONGORDERMETHOD, 'minoredits', 'firstedit | lastedit' );
 	
 	/**
 	 * If we include the Uncategorized, we need the 'dpl_clview': VIEW of the categorylinks table where we have cl_to='' (empty string) for all uncategorized pages. This VIEW must have been created by the administrator of the mediawiki DB at installation. See the documentation.
@@ -609,23 +609,20 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	if($bIncludeUncat) {
 		$sDplClView = $dbr->tableName( 'dpl_clview' );
 		// If the view is not there, we can't perform logical operations on the Uncategorized.
-		$res = $dbr->query( "SHOW TABLE STATUS LIKE '" . trim($sDplClView, '`') . "'" );
-		if ($dbr->numRows( $res ) != 0) {
-			$dbr->freeResult($res);
-		} else {
+		if ( !$dbr->tableExists( 'dpl_clview' ) ) {
 			$sSqlCreate_dpl_clview = 'CREATE VIEW ' . $sDplClView . " AS SELECT IFNULL(cl_from, page_id) AS cl_from, IFNULL(cl_to, '') AS cl_to, cl_sortkey FROM " . $sPageTable . ' LEFT OUTER JOIN ' . $sCategorylinksTable . ' ON page_id=cl_from';
-			$output .= $logger->msg(DPL2_ERR_NOCLVIEW, $sDplClView, $sSqlCreate_dpl_clview);
+			$output .= $logger->escapeMsg(DPL2_ERR_NOCLVIEW, $sDplClView, $sSqlCreate_dpl_clview);
 			return $output;
 		}
 	}
 	
 	//add*** parameters have no effect with 'mode=category' (only namespace/title can be viewed in this mode)
 	if( $sPageListMode == 'category' && ($bAddCategories || $bAddEditDate || $bAddFirstCategoryDate || $bAddPageTouchedDate || $bAddUser) )
-		$output .= $logger->msg(DPL2_WARN_CATOUTPUTBUTWRONGPARAMS);
+		$output .= $logger->escapeMsg(DPL2_WARN_CATOUTPUTBUTWRONGPARAMS);
 		
 	//headingmode has effects with ordermethod on multiple components only
 	if( $sHListMode != 'none' && count($aOrderMethods) < 2 ) {
-		$output .= $logger->msg(DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD, $sHListMode, 'none');
+		$output .= $logger->escapeMsg(DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD, $sHListMode, 'none');
 		$sHListMode = 'none';
 	}
 
@@ -666,7 +663,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				$sSqlClHeadTable = ( in_array('', $aCatHeadings) ? $sDplClView : $sCategorylinksTable ) . ' AS cl_head'; // use dpl_clview if Uncategorized in headings
 				$sSqlCond_page_cl_head = 'page_id=cl_head.cl_from';
 				if(!empty($aCatHeadings))
-					$sSqlWhere .= " AND cl_head.cl_to IN ('" . implode("', '", $aCatHeadings) . "')";
+					$sSqlWhere .= " AND cl_head.cl_to IN (" . $dbr->makeList( $aCatHeadings ) . ")";
 				break;
 			case 'firstedit':
 				$sSqlRevisionTable = $sRevisionTable . ' AS rev, ';
@@ -684,7 +681,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				// map ns index to name
 				$sSqlNsIdToText = 'CASE page_namespace';
 				foreach($aStrictNs as $iNs => $sNs)
-					$sSqlNsIdToText .= ' WHEN ' . $iNs . " THEN '"  . $sNs . "'";
+					$sSqlNsIdToText .= ' WHEN ' . intval( $iNs ) . " THEN " . $dbr->addQuotes( $sNs );
 				$sSqlNsIdToText .= ' END';
 				// If cl_sortkey is null (uncategorized page), generate a sortkey in the usual way (full page name, underscores replaced with spaces).
 				$sSqlSortkey = ", IFNULL(cl_head.cl_sortkey, REPLACE(CONCAT( IF(page_namespace=0, '', CONCAT(" . $sSqlNsIdToText . ", ':')), CONVERT(page_title USING utf8)), '_', ' ')) as sortkey";
@@ -694,7 +691,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				// map ns index to name
 				$sSqlNsIdToText = 'CASE page_namespace';
 				foreach($aStrictNs as $iNs => $sNs)
-					$sSqlNsIdToText .= ' WHEN ' . $iNs . " THEN '"  . $sNs . "'";
+					$sSqlNsIdToText .= ' WHEN ' . intval( $iNs ) . " THEN " . $dbr->addQuotes( $sNs ) ;
 				$sSqlNsIdToText .= ' END';
 				// Generate sortkey like for category links.
 				$sSqlSortkey = ", REPLACE(CONCAT( IF(page_namespace=0, '', CONCAT(" . $sSqlNsIdToText . ", ':')), CONVERT(page_title USING utf8)), '_', ' ') as sortkey";
@@ -708,7 +705,8 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	
 	if ( !is_null($tLinksTo) ) {
 		$sSqlPageLinksTable = $sPageLinksTable . ' as pl, ';
- 		$sSqlCond_page_pl = ' AND page_id=pl.pl_from  AND pl.pl_namespace=' . $tLinksTo->getNamespace() . " AND pl.pl_title='" . $tLinksTo->getDbKey() . "'";
+		$sSqlCond_page_pl = ' AND page_id=pl.pl_from  AND pl.pl_namespace=' . intval( $tLinksTo->getNamespace() ) . 
+			" AND pl.pl_title=" . $dbr->addQuotes( $tLinksTo->getDbKey() );
  	}
 	
 	if ($bAddFirstCategoryDate)
@@ -761,11 +759,11 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	// WHERE... (actually finish the WHERE clause we may have started if we excluded categories - see above)
 	// Namespace IS ...
 	if ( !empty($aNamespaces)) {
-		$sSqlWhere .= ' AND page_namespace IN (' . implode (', ', $aNamespaces) . ')';
+		$sSqlWhere .= ' AND page_namespace IN (' . $dbr->makeList( $aNamespaces) . ')';
 	}
 	// Namespace IS NOT ...
     if ( !empty($aExcludeNamespaces)) {
-        $sSqlWhere .= ' AND page_namespace NOT IN (' . implode (', ', $aExcludeNamespaces) . ')';
+        $sSqlWhere .= ' AND page_namespace NOT IN (' . $dbr->makeList( $aExcludeNamespaces ) . ')';
     }
     // rev_minor_edit IS
     if( isset($sMinorEdits) && $sMinorEdits == 'exclude' )
@@ -827,18 +825,18 @@ function DynamicPageList2( $input, $params, &$parser ) {
 
 	// LIMIT ....
 	if ( isset($iCount) )
-		$sSqlWhere .= ' LIMIT ' . $iCount;
+		$sSqlWhere .= ' LIMIT ' . intval( $iCount );
 
 
 
 // ###### PROCESS SQL QUERY ######
 	//DEBUG: output SQL query 
-	$output .= $logger->msg(DPL2_QUERY, $sSqlSelectFrom . $sSqlWhere);
+	$output .= $logger->escapeMsg(DPL2_QUERY, $sSqlSelectFrom . $sSqlWhere);
 	//echo 'QUERY: [' . $sSqlSelectFrom . $sSqlWhere . "]<br />";
 
 	$res = $dbr->query($sSqlSelectFrom . $sSqlWhere);
 	if ($dbr->numRows( $res ) == 0) {
-		$output .= $logger->msg(DPL2_WARN_NORESULTS);
+		$output .= $logger->escapeMsg(DPL2_WARN_NORESULTS);
 		return $output;
 	}
 	
@@ -1011,8 +1009,8 @@ class DPL2ListMode {
 	
 	function DPL2ListMode($listmode, $inlinetext = '&nbsp;-&nbsp', $listattr = '', $itemattr = '') {
 		$this->name = $listmode;
-		$_listattr = ($listattr == '') ? '' : ' ' . $listattr;
-		$_itemattr = ($itemattr == '') ? '' : ' ' . $itemattr;
+		$_listattr = ($listattr == '') ? '' : ' ' . Sanitizer::fixTagAttributes( $listattr, 'ul' );
+		$_itemattr = ($itemattr == '') ? '' : ' ' . Sanitizer::fixTagAttributes( $itemattr, 'li' );
 
 		switch ($listmode) {
 			case 'inline':
@@ -1213,7 +1211,11 @@ class DPL2Logger {
 		global $wgDPL2Options;
 		$this->iDebugLevel = $wgDPL2Options['debug']['default'];
 	}
-	
+
+	/**
+	 * Get a message, with optional parameters
+	 * Parameters from user input must be escaped for HTML *before* passing to this function
+	 */
 	function msg($msgid) {
 		global $wgDPL2DebugMinLevels;
 		if($this->iDebugLevel >= $wgDPL2DebugMinLevels[$msgid]) {
@@ -1226,7 +1228,23 @@ class DPL2Logger {
 		}
 		return '';
 	}
-	
+
+	/**
+	 * Get a message. 
+	 * Parameters may be unescaped, this function will escape them for HTML.
+	 */
+	function escapeMsg( $msgid /*, ... */ ) {
+		$args = func_get_args();
+		$args = array_map( 'htmlspecialchars', $args );
+		return call_user_func_array( array( &$this, 'msg' ), $args );
+	}
+
+	/**
+	 * Get a "wrong parameter" message.
+	 * @param $paramvar The parameter name
+	 * @param $val The unescaped input value
+	 * @return HTML error message
+	 */
 	function msgWrongParam($paramvar, $val) {
 		global $wgContLang, $wgDPL2Options;
 		$msgid = DPL2_WARN_WRONGPARAM;
@@ -1245,7 +1263,7 @@ class DPL2Logger {
 		}
 		$paramoptions = array_unique($wgDPL2Options[$paramvar]);
 		sort($paramoptions);
-		return $this->msg( $msgid, $paramvar, $val, $wgDPL2Options[$paramvar]['default'], implode(' | ', $paramoptions ));
+		return $this->escapeMsg( $msgid, $paramvar, htmlspecialchars( $val ), $wgDPL2Options[$paramvar]['default'], implode(' | ', $paramoptions ));
 	}
 	
 }
