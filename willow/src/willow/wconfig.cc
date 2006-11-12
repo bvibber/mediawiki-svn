@@ -358,7 +358,7 @@ conf
 		.value("syslog",	simple_yesno,			set_yesno(logging.syslog))
 		.value("facility",	func(validate_log_facility),	func(set_log_facility))
 		.value("access-log",	nonempty_qstring,		set_qstring(config.access_log))
-		.value("log-sample",	simple_range(1, INT_MAX),	set_int(config.udplog_sample))
+		.value("log-sample",	simple_range(1, INT_MAX),	set_int(config.log_sample))
 		.value("udp-log",	simple_yesno,			set_yesno(config.udp_log))
 		.value("udp-port",	simple_range(0, 65535),		set_int(config.udplog_port))
 		.value("udp-host",	nonempty_qstring,		set_string(config.udplog_host))

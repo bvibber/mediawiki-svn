@@ -50,9 +50,9 @@ extern struct configuration {
 	string		 admin;
 	int		 foreground;
 	int		 nthreads;
+	int		 log_sample;
 	string		 access_log;
 	bool		 udp_log;
-	int		 udplog_sample;
 	string		 udplog_host;
 	int		 udplog_port;
 struct	cachedir	*caches;

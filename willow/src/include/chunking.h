@@ -22,12 +22,13 @@
  */
 struct chunking_filter : freelist_allocator<chunking_filter>, io::buffering_filter
 {
-	chunking_filter() : _first(true) {}
+	chunking_filter() : _first(true), _counter(0) {}
 
 	io::sink_result	bf_transform(char const *, size_t, ssize_t &);
 	io::sink_result	bf_eof(void);
 
-	bool _first;
+	bool	_first;
+	size_t	_counter;
 };
 
 
@@ -40,7 +41,8 @@ struct dechunking_filter : freelist_allocator<dechunking_filter>, io::buffering_
 	dechunking_filter();
 	io::sink_result bf_transform(char const *, size_t, ssize_t &);
 
-	size_t		 _current_chunk_size;
+	size_t	 _current_chunk_size;
+	size_t	_counter;
 };
 
 #endif

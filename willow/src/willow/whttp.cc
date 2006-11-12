@@ -30,12 +30,15 @@
 #include <fcntl.h>
 #include <cassert>
 #include <ctime>
+#include <fstream>
 #include <pthread.h>
 
 #include <utility>
 #include <deque>
 using std::deque;
 using std::min;
+using std::ofstream;
+using std::endl;
 
 #include "willow.h"
 #include "whttp.h"
@@ -92,14 +95,13 @@ tss<event> merge_ev;
 char my_hostname[MAXHOSTNAMELEN + 1];
 static char my_version[64];
 static int logwr_pipe[2];
-static FILE *alf;
+static ofstream alf;
 lockable alf_lock;
 
 static int const default_udplog_port = 4445;
 wnet::socket *udplog_sock;
-static int udplog_count;
+static atomic<int> log_count;
 static bool do_udplog;
-lockable udp_lock;
 
 struct error_transform_filter : io::buffering_filter, freelist_allocator<error_transform_filter>
 {
@@ -144,6 +146,7 @@ struct httpcllr {
 	void error_send_done			(void);
 
 	void send_error(int, char const *, int, char const *);
+	void log_request (void);
 
 	wsocket		*_client_socket;
 	backend		*_backend;
@@ -165,6 +168,7 @@ struct httpcllr {
 	backend_list	*_blist;
 	bool		 _denied;
 	int		 _group;
+	int		 _response;
 };
 
 httpcllr::httpcllr(wsocket *s, int gr)
@@ -184,6 +188,7 @@ httpcllr::httpcllr(wsocket *s, int gr)
 	, _blist(NULL)
 	, _denied(false)
 	, _group(gr)
+	, _response(0)
 {
 	/*
 	 * Check access controls.
@@ -373,6 +378,8 @@ httpcllr::backend_read_headers_done(void)
 		_backend_headers._headers.remove(*s);
 	_backend_headers._headers.add("Connection", "close");
 
+	_response = _backend_headers._response;
+
 	if (_backend_headers._content_length == -1 && !_backend_headers._flags.f_chunked
 		   && _header_parser._http_vers == http11 && !(config.msie_hack && _header_parser._is_msie))
 		/* we will chunk the request later */
@@ -436,6 +443,7 @@ httpcllr::send_headers_to_client_done(void)
 		_dechunking_filter->sp_connect(_client_sink);
 	} else {
 		_backend_spigot->sp_connect(_client_sink);
+		_client_sink->_counter = 0;
 	}
 	_backend_spigot->sp_uncork();
 }
@@ -445,6 +453,7 @@ void
 httpcllr::send_body_to_client_done(void)
 {
 	stats.tcur->n_httpreq_ok++;
+	log_request();
 	delete this;
 }
 
@@ -584,7 +593,8 @@ whttp_reconfigure(void)
 {
 	/* file logging */
 	if (config.access_log.size()) {
-		if ((alf = fopen(config.access_log.c_str(), "a")) == NULL) {
+		alf.open(config.access_log.c_str(), ofstream::app);
+		if (!alf.good()) {
 			wlog(WLOG_WARNING, format("opening %s: %e")
 				% config.access_log);
 		}
@@ -610,7 +620,7 @@ whttp_reconfigure(void)
 		wlog(WLOG_NOTICE, format("UDP logging to %s%s, sample rate 1/%d")
 			% config.udplog_host
 			% udplog_sock->straddr()
-			% config.udplog_sample);
+			% config.log_sample);
 	}
 
 }
@@ -724,6 +734,8 @@ void
 httpcllr::send_error(int errnum, char const *errdata, int status, char const *statstr)
 {
 string	url = "NONE";
+	_response = status;
+
 	if (_header_parser._http_path.size())
 		url = errsafe(_header_parser._http_path);
 
@@ -766,36 +778,52 @@ httpcllr::error_send_headers_done(void)
 void
 httpcllr::error_send_done(void)
 {
+	log_request();
 	delete this;
 }
-#if 0
+
 void
 httpcllr::log_request(void)
 {
 int	i;
+size_t	size;
 
-	if (alf) {
+	if (_header_parser._http_reqtype == REQTYPE_INVALID)
+		return;
+
+	if (++log_count != config.log_sample)
+		return;
+	log_count = 0;
+
+	if (_chunking_filter)
+		size = _chunking_filter->_counter;
+	else if (_dechunking_filter)
+		size = _dechunking_filter->_counter;
+	else
+		size = _client_sink->_counter;
+
+	if (alf.is_open()) {
+	string	line;
+		line = format("[%s] %s %s\"%s\" %d %d %s MISS")
+			% current_time_short
+			% _client_socket->straddr(false)
+			% request_string[_header_parser._http_reqtype]
+			% _header_parser._http_path
+			% size
+			% _response
+			% (_backend ? _backend->be_name : "-");
+
 		HOLDING(alf_lock);
-		i = fprintf(alf, "[%s] %s %s \"%s\" %lu %d %s %s\n",
-				current_time_short, _client_fde->fde_straddr,
-				request_string[_header_parser._http_reqtype,
-				_header_parser._http_path, (unsigned long) client->cl_entity->he_size,
-				client->cl_entity->he_rdata.response.status,
-				client->cl_backend ? client->cl_backend->be_name.c_str() : "-",
-				client->cl_flags.f_cached ? "HIT" : "MISS");
-		if (i < 0) {
-			wlog(WLOG_ERROR, "writing access log: %s; log will be closed", strerror(errno));
-			fclose(alf);
-			alf = NULL;
+
+		if (!(alf << line << endl)) {
+			wlog(WLOG_ERROR, "writing access log: %e; log will be closed");
+			alf.close();
 		}
 	}
 
 	if (config.udp_log) {
 	char	 buf[65535];
 	char	*bufp = buf, *endp = buf + sizeof(buf);
-		if (++udplog_count != config.udplog_sample)
-			return;
-		udplog_count = 0;
 		/*
 		 * The log format is a packed binary strucure laid out like this:
 		 *
@@ -817,15 +845,13 @@ int	i;
 		 * docsize is the size of the response object, excluding headers.
 		 */
 		ADD_UINT32(bufp, (uint32_t)time(NULL), endp);
-		ADD_STRING(bufp, client->cl_fde->fde_straddr, endp);
-		ADD_UINT8(bufp, client->cl_reqtype, endp);
-		ADD_STRING(bufp, client->cl_path, endp);
-		ADD_UINT16(bufp, client->cl_entity->he_rdata.response.status, endp);
-		ADD_STRING(bufp, client->cl_backend ? client->cl_backend->be_name.c_str() : "-", endp);
-		ADD_UINT8(bufp, client->cl_flags.f_cached ? 1 : 0, endp);
-		ADD_UINT32(bufp, client->cl_entity->he_size, endp);
-		HOLDING(udp_lock);
-		write(udplog_sock, buf, bufp - buf);
+		ADD_STRING(bufp, _client_socket->straddr(false), endp);
+		ADD_UINT8(bufp, _header_parser._http_reqtype, endp);
+		ADD_STRING(bufp, _header_parser._http_path, endp);
+		ADD_UINT16(bufp, _response, endp);
+		ADD_STRING(bufp, string(_backend ? _backend->be_name : "-"), endp);
+		ADD_UINT8(bufp, 0, endp);
+		ADD_UINT32(bufp, size, endp);
+		udplog_sock->write(buf, bufp - buf);
 	}
 }
-#endif

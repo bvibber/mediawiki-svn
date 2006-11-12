@@ -110,7 +110,8 @@ private:
 struct socket_sink : freelist_allocator<socket_sink>, sink {
 	socket_sink(wsocket *s)
 		: _socket(s)
-		, _reg(false) {
+		, _reg(false)
+		, _counter(false) {
 	}
 	~socket_sink() {
 	}
@@ -129,6 +130,7 @@ struct socket_sink : freelist_allocator<socket_sink>, sink {
 	wsocket		*_socket;
 	spigot		*_spigot;
 	bool		 _reg;
+	size_t		 _counter;
 };
 
 /*

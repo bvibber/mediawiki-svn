@@ -110,7 +110,7 @@ size_t	 i;
 			lns->sock->listen();
 		} catch (socket_error &e) {
 			wlog(WLOG_ERROR, format("creating listener %s: %s")
-				% lns->sock->straddr().c_str() % e.what());
+				% lns->sock->straddr() % e.what());
 			exit(8);
 		}
 
@@ -175,19 +175,6 @@ struct	tm	*now;
 }
 
 namespace wnet {
-
-string
-fstraddr(string const &straddr, sockaddr const *addr, socklen_t len)
-{
-char	host[NI_MAXHOST];
-char	port[NI_MAXSERV];
-string	res;
-int	i;
-	if ((i = getnameinfo(addr, len, host, sizeof(host), port, sizeof(port), 
-			     NI_NUMERICHOST | NI_NUMERICSERV)) != 0)
-		return "";
-	return straddr + '[' + host + "]:" + port;
-}
 
 void
 socket::_ev_callback(int fd, short ev, void *d)
@@ -288,12 +275,22 @@ address::operator= (address const &o)
 }
 
 string const &
-address::straddr(void) const
+address::straddr(bool lng) const
 {
+char	res[NI_MAXHOST];
+int	i;
+	if (!lng) {
+		if (_shortaddr.empty()) {
+			if ((i = getnameinfo((sockaddr *) &_addr, _addrlen, 
+			    res, sizeof(res), NULL, 0, NI_NUMERICHOST)) != 0)
+				throw resolution_error(i);
+			_shortaddr = res; 
+		}
+		return _shortaddr;
+	}
+
 	if (_straddr.empty()) {
-	char	res[NI_MAXHOST];
 	char	port[NI_MAXSERV];
-	int	i;
 		if ((i = getnameinfo((sockaddr *) &_addr, _addrlen, 
 		    res, sizeof(res), port, sizeof(port), 
 			NI_NUMERICHOST | NI_NUMERICSERV)) != 0)
@@ -472,9 +469,9 @@ socket::address(void) const
 
 
 string const &
-socket::straddr(void) const
+socket::straddr(bool lng) const
 {
-	return _addr.straddr();
+	return _addr.straddr(lng);
 }
 
 void

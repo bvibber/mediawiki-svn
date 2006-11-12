@@ -318,7 +318,7 @@ address		addr;
 	 */
 	{	HOLDING(stats.cur_lock);
 		ADD_UINT8(bufp, 1, endp);		/* stats format version */
-		ADD_STRING(bufp, PACKAGE_VERSION, endp);
+		ADD_STRING(bufp, string(PACKAGE_VERSION), endp);
 		ADD_UINT16(bufp, stats.interval, endp);
 		ADD_UINT32(bufp, stats.cur.n_httpreq_ok, endp);
 		ADD_UINT32(bufp, stats.cur.n_httpreq_fail, endp);

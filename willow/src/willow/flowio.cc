@@ -138,6 +138,7 @@ ssize_t	wrote;
 		break;
 	}
 	discard += wrote;
+	_counter += wrote;
 	return sink_result_okay;
 }
 

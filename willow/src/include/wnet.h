@@ -82,10 +82,10 @@ extern struct ioloop_t {
 #define ADD_UINT32(b,i,endp)	if (HAS_SPACE(b,4,endp)) { *(uint32_t*)b = i; b += 4; }
 #define ADD_UINT16(b,i,endp)	if (HAS_SPACE(b,2,endp)) { *(uint16_t*)b = i; b += 2; }
 #define ADD_UINT8(b,i,endp)	if (HAS_SPACE(b,1,endp)) { *(uint8_t*)b = i; b += 1; }
-#define ADD_STRING(b,s,endp) do {	uint16_t len = strlen(s);		\
+#define ADD_STRING(b,s,endp) do {	uint16_t len = s.size();		\
 					if (HAS_SPACE(b,2 + len,endp)) {	\
 						ADD_UINT16(b,len,endp);		\
-						memcpy(b, s, len);		\
+						memcpy(b, s.data(), len);		\
 						b += len;			\
 					}					\
 				} while (0)
@@ -179,7 +179,7 @@ struct address {
 
 	address& operator= (const address &o);
 
-	string const &straddr(void) const;
+	string const &straddr(bool lng = true) const;
 
 	socket 	 *makesocket  (char const *, sprio) const;
 	int	  length  (void) const {	return _addrlen;		}
@@ -195,7 +195,7 @@ private:
 	sockaddr_storage	 _addr;
 	socklen_t		 _addrlen;
 	int			 _fam, _stype, _prot;
-	mutable string		 _straddr;
+	mutable string		 _straddr, _shortaddr;
 };
 
 struct addrlist {
@@ -253,7 +253,7 @@ struct socket : noncopyable {
 	char const	*description	(void) const;
 
 	wnet::address const	&address	(void) const;
-	string const 	&straddr	(void) const;
+	string const 	&straddr	(bool = true) const;
 
 	template<typename T>
 	void	readback (polycaller<wnet::socket *, T> cb, T ud);
@@ -281,8 +281,6 @@ protected:
 	event		 ev;
 };
 
-
-	string			fstraddr(string const &, sockaddr const *addr, socklen_t len);
 	vector<addrinfo>	nametoaddrs(string const &name, int port);
 	string			reserror(int);
 

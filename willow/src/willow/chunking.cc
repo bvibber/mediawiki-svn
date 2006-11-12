@@ -32,6 +32,7 @@ int	i;
 	_buf.add(s, i, true);
 	_buf.add(buf, len, false);
 	discard += len;
+	_counter += len;
 	return io::sink_result_okay;
 }
 
@@ -44,6 +45,7 @@ chunking_filter::bf_eof(void)
 
 dechunking_filter::dechunking_filter()
 	: _current_chunk_size(0)
+	, _counter(0)
 {
 }
 
@@ -55,6 +57,7 @@ dechunking_filter::bf_transform(char const *buf, size_t len, ssize_t &discard)
 		_buf.add(buf, sent, false);
 		_current_chunk_size -= sent;
 		discard += sent;
+		_counter += sent;
 	} else {
 		/* this data is the chunk size */
 	char const	*rn;
