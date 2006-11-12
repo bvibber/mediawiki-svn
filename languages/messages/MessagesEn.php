@@ -533,6 +533,7 @@ parent class in order maintain consistency across languages.
 'pagecategorieslink' => 'Special:Categories',
 'category_header' => 'Articles in category "$1"',
 'subcategories' => 'Subcategories',
+'category-media-header' => 'Media in category "$1"',
 
 
 'linkprefix'		=> '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD',
@@ -739,7 +740,7 @@ Please report this to an administrator, making note of the URL.',
 'badarticleerror' => 'This action cannot be performed on this page.',
 'cannotdelete'	=> 'Could not delete the page or file specified. (It may have already been deleted by someone else.)',
 'badtitle'		=> 'Bad title',
-'badtitletext' => 'The requested page title was invalid, empty, or an incorrectly linked inter-language or inter-wiki title. It may contain one more characters which cannot be used in titles.',
+'badtitletext' => 'The requested page title was invalid, empty, or an incorrectly linked inter-language or inter-wiki title. It may contain one or more characters which cannot be used in titles.',
 'perfdisabled' => 'Sorry! This feature has been temporarily disabled because it slows the database down to the point that no one can use the wiki.',
 'perfdisabledsub' => 'Here is a saved copy from $1:', # obsolete?
 'perfcached' => 'The following data is cached and may not be up to date.',
@@ -1283,6 +1284,18 @@ created and by whom, and anything else you may know about it. If this is an imag
 'watchthisupload'	=> 'Watch this page',
 'filewasdeleted' => 'A file of this name has been previously uploaded and subsequently deleted. You should check the $1 before proceeding to upload it again.',
 
+'upload-proto-error' => 'Incorrect protocol',
+'upload-proto-error-text' => 'Remote upload requires URLs beginning with <code>http://</code> or <code>ftp://</code>.',
+'upload-file-error' => 'Internal error',
+'upload-file-error-text' => 'An internal error occurred when attempting to create a temporary file on the server.  Please contact a system administrator.',
+'upload-misc-error' => 'Unknown upload error',
+'upload-misc-error-text' => 'An unknown error occurred during the upload.  Please verify that the URL is valid and accessible and try again.  If the problem persists, contact a system administrator.',
+# Some likely curl errors.  More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
+'upload-curl-error6' => "Couldn't reach URL",
+'upload-curl-error6-text' => 'The URL provided could not be reached.  Please double-check that the URL is correct and the site is up.',
+'upload-curl-error28' => 'Upload timeout',
+'upload-curl-error28-text' => 'The site took too long to respond. Please check the site is up, wait a short while and try again. You may want to try at a less busy time.',
+
 'license' => 'Licensing',
 'nolicense' => 'None selected',
 'licenses' => '-', # Don't duplicate this in translations
@@ -1492,7 +1505,7 @@ You can narrow down the view by selecting a log type, the user name, or the affe
 'allpagesnext'		=> 'Next',
 'allpagessubmit'	=> 'Go',
 'allpagesprefix'	=> 'Display pages with prefix:',
-'allpagesbadtitle'	=> 'The given page title was invalid or had an inter-language or inter-wiki prefix. It may contain one more characters which cannot be used in titles.',
+'allpagesbadtitle'	=> 'The given page title was invalid or had an inter-language or inter-wiki prefix. It may contain one or more characters which cannot be used in titles.',
 
 # Special:Listusers
 'listusersfrom' => 'Display users starting at:',
@@ -1758,7 +1771,7 @@ pages that were vandalized).",
 'ipbreason'		=> 'Reason',
 'ipbanononly'   => 'Block anonymous users only',
 'ipbcreateaccount' => 'Prevent account creation',
-'ipbenableautoblock' => 'Automatically block IP addresses used by this user',
+'ipbenableautoblock' => 'Automatically block the last IP address used by this user, and any subsequent addresses they try to edit from',
 'ipbsubmit'		=> 'Block this user',
 'ipbother'		=> 'Other time',
 'ipboptions'		=> '2 hours:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite',
@@ -1799,9 +1812,9 @@ the list of currently operational bans and blocks.',
 'ipb_cant_unblock' => 'Error: Block ID $1 not found. It may have been unblocked already.',
 'proxyblockreason'	=> 'Your IP address has been blocked because it is an open proxy. Please contact your Internet service provider or tech support and inform them of this serious security problem.',
 'proxyblocksuccess'	=> 'Done.',
-'sorbs'         => 'SORBS DNSBL',
-'sorbsreason'   => 'Your IP address is listed as an open proxy in the [http://www.sorbs.net SORBS] DNSBL.',
-'sorbs_create_account_reason' => 'Your IP address is listed as an open proxy in the [http://www.sorbs.net SORBS] DNSBL. You cannot create an account',
+'sorbs'         => 'DNSBL',
+'sorbsreason'   => 'Your IP address is listed as an open proxy in the DNSBL used by this site.',
+'sorbs_create_account_reason' => 'Your IP address is listed as an open proxy in the DNSBL used by this site. You cannot create an account',
 
 
 # Developer tools

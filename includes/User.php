@@ -861,9 +861,10 @@ class User {
 	}
 
 	function inSorbsBlacklist( $ip ) {
-		global $wgEnableSorbs;
+		global $wgEnableSorbs, $wgSorbsUrl;
+
 		return $wgEnableSorbs &&
-			$this->inDnsBlacklist( $ip, 'http.dnsbl.sorbs.net.' );
+			$this->inDnsBlacklist( $ip, $wgSorbsUrl );
 	}
 
 	function inDnsBlacklist( $ip, $base ) {
@@ -1924,45 +1925,7 @@ class User {
 			return;
 		}
 
-		if ( !$userblock->mEnableAutoblock ) {
-			return;
-		}
-
-		# Check if this IP address is already blocked
-		$ipblock = Block::newFromDB( wfGetIP() );
-		if ( $ipblock ) {
-			# If the user is already blocked. Then check if the autoblock would
-			# excede the user block. If it would excede, then do nothing, else
-			# prolong block time
-			if ($userblock->mExpiry &&
-				($userblock->mExpiry < Block::getAutoblockExpiry($ipblock->mTimestamp))) {
-				return;
-			}
-			# Just update the timestamp
-			$ipblock->updateTimestamp();
-			return;
-		} else {
-			$ipblock = new Block;
-		}
-
-		# Make a new block object with the desired properties
-		wfDebug( "Autoblocking {$this->mName}@" . wfGetIP() . "\n" );
-		$ipblock->mAddress = wfGetIP();
-		$ipblock->mUser = 0;
-		$ipblock->mBy = $userblock->mBy;
-		$ipblock->mReason = wfMsg( 'autoblocker', $this->getName(), $userblock->mReason );
-		$ipblock->mTimestamp = wfTimestampNow();
-		$ipblock->mAuto = 1;
-		# If the user is already blocked with an expiry date, we don't
-		# want to pile on top of that!
-		if($userblock->mExpiry) {
-			$ipblock->mExpiry = min ( $userblock->mExpiry, Block::getAutoblockExpiry( $ipblock->mTimestamp ));
-		} else {
-			$ipblock->mExpiry = Block::getAutoblockExpiry( $ipblock->mTimestamp );
-		}
-
-		# Insert it
-		$ipblock->insert();
+		$userblock->doAutoblock( wfGetIp() );
 
 	}
 

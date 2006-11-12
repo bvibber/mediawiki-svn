@@ -103,10 +103,6 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 7745) Add id attribute to search button in Monobook
 * (bug 7749) MATH: added some more LaTeX symbols, e.g. parallel, diamond, ast, ...
 * (bug 7304) Added code in Article.php to keep redirect table up to date.
-* (bug 5376) All tooltips moved to system messages, JavaScript no longer
-  required.
-* (bug 5051) Accesskeys no longer require JavaScript.
-* Correctly detect browser accesskey prefix for all buttons, not just most.
 * Made special page names case-insensitive and localisable. Care has been taken 
   to maintain backwards compatibility.
 * Used special page subpages in a few more places, instead of query parameters.
@@ -129,7 +125,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Remove entries from redirect table on article deletion
 * (bug 7788) Force section headers in new section links for users who have
   'prompt for blank edit summaries' on.
-* (bug 1133) Special:Emailuser: add an option to send yourself a copy your mail.
+* (bug 1133) Special:Emailuser: add an option to send yourself a copy of your mail.
 * (bug 461) Allow "Categories:" link at bottom of pages to be customized via
   pagecategorieslink message.
 * Sort the list of skins in "My Preferences" -> Skins by alphabetical order.
@@ -147,6 +143,42 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 7801) Add support for parser function hooks in parser tests
 * checkUsernames.php now uses wfDebugLog instead of hardcoded path to log
 * (bug 7810) Update talk namespaces for Occitan
+* Allow case-sensitive URLs to be used for uploading from URLs.
+* (bug 1109) Correct fix for compressed 304 responses when additional output
+  buffers have been installed within the compression handler
+* (bug 7819) Move automatic redirect edit summary after pre-save transform
+  to work properly with subst: fun
+* (bug 7826) Fix typos in two English messages.
+* (bug 5365) Stop users being prompted to enter an edit summary for null edits,
+  if they have selected that option in preferences.
+* (bug 5936) Show an 'm' to the left of the edit summary on diff pages for minor edits.
+* (bug 7820) Improve error reporting for uploads via URL.
+* (bug 5149) When autoblocks are enabled, retroactively apply an autoblock to the most 
+  recently used IP of a user when they are blocked.
+* Add an index on (rc_user_text,rc_timestamp) on the recentchanges table. This will 
+  make CheckUser.php and the new retroactive autoblock functionality faster.
+* Fix regression in Special:Undelete for revisions deleted under MediaWiki 1.4
+  with compression or legacy encoding
+* (bug 6737) Fixes for MySQL 5 schema in strict mode
+* Approximate height for client-side scaling fallback instead of passing -1
+  into the HTML output.
+* Make the DNSBL to check for proxy blocking configurable via $wgSorbsUrl
+* Add experimental recording/reporting mode to parser tests runner, to
+  compare changes against the previous run.
+  Additional tables 'testrun' and 'testitem' are in maintenance/testRunner.sql,
+  source this and pass --record option to parserTests.php
+* Make the set of default parser test input files extensible via
+  $wgParserTestFiles. This can now be appended to by extensions or local
+  configuration files so that extension or custom tests can be automatically
+  run along with the main batch.
+* Run PHP install version checks on update.php so command-line updaters see
+  new version requirements
+* Do a check for the PHP 5.0.x 64-bit bug, since this is much more disruptive
+  as of MW 1.8 than it used to be. Install or upgrade now aborts with a
+  warning and a request to upgrade.
+* (bug 6440) Updated indexes to improve backlinking queries (links, templates, images)
+* Switched 'anon-only' block mode to default for IP blocks
+* (bug 3687) Add distinct heading for media files in category display.
 
 == Changed classes and id's ==
 For greater consistency and to ensure that content id's can't conflict with
@@ -221,8 +253,10 @@ wpReason					wpReason
 * Hebrew (he)
 * Indonesian (id)
 * Italian (it)
+* Kazakh (kk)
 * Latin (la)
 * Lithuanian (lt)
+* Norwegian (no)
 * Occitan (oc)
 * Polish (pl)
 * Portuguese (pt)
@@ -232,6 +266,10 @@ wpReason					wpReason
 == Compatibility ==
 
 MediaWiki 1.9 requires PHP 5 (5.1 recommended). PHP 4 is no longer supported.
+
+PHP 5.0.x fails on 64-bit systems due to serious bugs with array processing:
+http://bugs.php.net/bug.php?id=34879
+Upgrade affected systems to PHP 5.1 or higher.
 
 MySQL 3.23.x is no longer supported; some older hosts may need to upgrade.
 At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.

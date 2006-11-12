@@ -1037,7 +1037,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '24';
+$wgStyleVersion = '25';
 
 # Server-side caching:
 
@@ -2059,6 +2059,7 @@ $wgDisableHardRedirects = false;
  * Use http.dnsbl.sorbs.net to check for open proxies
  */
 $wgEnableSorbs = false;
+$wgSorbsUrl = 'http.dnsbl.sorbs.net';
 
 /**
  * Proxy whitelist, list of addresses that are assumed to be non-proxy despite what the other
@@ -2306,5 +2307,18 @@ $wgDjvuPostProcessor = 'ppmtojpeg';
 */
 $wgEnableAPI = true;
 $wgEnableWriteAPI = false;
+
+/**
+ * Parser test suite files to be run by parserTests.php when no specific
+ * filename is passed to it.
+ *
+ * Extensions may add their own tests to this array, or site-local tests
+ * may be added via LocalSettings.php
+ *
+ * Use full paths.
+ */
+$wgParserTestFiles = array(
+	"$IP/maintenance/parserTests.txt",
+);
 
 ?>

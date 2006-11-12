@@ -779,7 +779,45 @@ function do_rc_indices_update() {
 		dbsource( archive( 'patch-recentchanges-utindex.sql' ) );
 	} else {
 		# Index seems to exist
-		echo( "...seems to be ok\n" );
+		echo( "...index on ( rc_namespace, rc_user_text ) seems to be ok\n" );
+	}
+
+	#Add (rc_user_text, rc_timestamp) index [A. Garrett], November 2006
+	# See if we can find the index we want
+	$info = $wgDatabase->indexInfo( 'recentchanges', 'rc_user_text', __METHOD__ );
+	if( !$info ) {
+		# None, so create
+		echo( "...index on ( rc_user_text, rc_timestamp ) not found; creating\n" );
+		dbsource( archive( 'patch-rc_user_text-index.sql' ) );
+	} else {
+		# Index seems to exist
+		echo( "...index on ( rc_user_text, rc_timestamp ) seems to be ok\n" );
+	}
+}
+
+function index_has_field($table, $index, $field) {
+	global $wgDatabase;
+	echo( "Checking if $table index $index includes field $field...\n" );
+	$info = $wgDatabase->indexInfo( $table, $index, __METHOD__ );
+	if( $info ) {
+		foreach($info as $row) {
+			if($row->Column_name == $field) {
+				echo( "...index $index on table $table seems to be ok\n" );
+				return true;
+			}
+		}
+	}
+	echo( "...index $index on table $table has no field $field; adding\n" );
+	return false;
+}
+
+function do_backlinking_indices_update() {
+	echo( "Checking for backlinking indices...\n" );
+	if (!index_has_field('pagelinks', 'pl_namespace', 'pl_from') ||
+		!index_has_field('templatelinks', 'tl_namespace', 'tl_from') ||
+		!index_has_field('imagelinks', 'il_to', 'il_from'))
+	{	
+		dbsource( archive( 'patch-backlinkindexes.sql' ) );
 	}
 }
 
@@ -848,6 +886,8 @@ function do_all_updates( $doShared = false ) {
 	do_page_random_update(); flush();
 	
 	do_rc_indices_update(); flush();
+	
+	do_backlinking_indices_update(); flush();
 
 	initialiseMessages(); flush();
 }
@@ -981,6 +1021,9 @@ ALTER TABLE mwuser ADD user_newpass_time TIMESTAMPTZ;
 
 -- New column for autoblocking problem users
 ALTER TABLE ipblocks ADD ipb_enable_autoblock CHAR NOT NULL DEFAULT '1';
+
+-- Despite it's name, ipb_address does not necessarily contain IP addresses :)
+ALTER TABLE ipblocks ALTER ipb_address TYPE TEXT USING ipb_address::TEXT;
 
 -- New tables:
 CREATE TABLE redirect (

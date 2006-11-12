@@ -107,10 +107,10 @@ function makeHTMLText( $messages ) {
 		'onclick' => 'allmessagesmodified()'
 	), '' );
 
-	$txt = '<span id="mw-all-messages-filter" style="display: none;">' . wfMsgHtml( 'allmessagesfilter' ) . " {$input}{$checkbox} " . '</span>';
+	$txt = '<span id="allmessagesfilter" style="display: none;">' . wfMsgHtml( 'allmessagesfilter' ) . " {$input}{$checkbox} " . '</span>';
 
 	$txt .= '
-<table border="1" cellspacing="0" width="100%" id="mw-all-messages-table">
+<table border="1" cellspacing="0" width="100%" id="allmessagestable">
 	<tr>
 		<th rowspan="2">' . wfMsgHtml( 'allmessagesname' ) . '</th>
 		<th>' . wfMsgHtml( 'allmessagesdefault' ) . '</th>
@@ -155,9 +155,9 @@ function makeHTMLText( $messages ) {
 		$mw = htmlspecialchars( $m['msg'] );
 
 		if( isset( $pageExists[NS_MEDIAWIKI][$title] ) ) {
-			$pageLink = $sk->makeKnownLinkObj( $titleObj, "<span id=\"mw-message-number-$i\">" .  htmlspecialchars( $key ) . '</span>' );
+			$pageLink = $sk->makeKnownLinkObj( $titleObj, "<span id=\"sp-allmessages-i-$i\">" .  htmlspecialchars( $key ) . '</span>' );
 		} else {
-			$pageLink = $sk->makeBrokenLinkObj( $titleObj, "<span id=\"me-message-number-$i\">" .  htmlspecialchars( $key ) . '</span>' );
+			$pageLink = $sk->makeBrokenLinkObj( $titleObj, "<span id=\"sp-allmessages-i-$i\">" .  htmlspecialchars( $key ) . '</span>' );
 		}
 		if( isset( $pageExists[NS_MEDIAWIKI_TALK][$title] ) ) {
 			$talkLink = $sk->makeKnownLinkObj( $talkPage, htmlspecialchars( $talk ) );
@@ -165,25 +165,25 @@ function makeHTMLText( $messages ) {
 			$talkLink = $sk->makeBrokenLinkObj( $talkPage, htmlspecialchars( $talk ) );
 		}
 		
-		$anchor = 'mw-message-' . htmlspecialchars( strtolower( $title ) );
+		$anchor = 'msg_' . htmlspecialchars( strtolower( $title ) );
 		$anchor = "<a id=\"$anchor\" name=\"$anchor\"></a>";
 
 		if( $changed ) {
 			$txt .= "
-	<tr class=\"orig\" id=\"mw-message-original-$i\">
+	<tr class=\"orig\" id=\"sp-allmessages-r1-$i\">
 		<td rowspan=\"2\">
 			$anchor$pageLink<br />$talkLink
 		</td><td>
 $message
 		</td>
-	</tr><tr class=\"new\" id=\"mw-message-changed-$i\">
+	</tr><tr class=\"new\" id=\"sp-allmessages-r2-$i\">
 		<td>
 $mw
 		</td>
 	</tr>";
 		} else {
 			$txt .= "
-	<tr class=\"def\" id=\"mw-message-original-$i\">
+	<tr class=\"def\" id=\"sp-allmessages-r1-$i\">
 		<td>
 			$anchor$pageLink<br />$talkLink
 		</td><td>

@@ -652,14 +652,6 @@ class EditPage {
 					return false;
 			}
 
-			# If no edit comment was given when creating a new page, and what's being
-			# created is a redirect, be smart and fill in a neat auto-comment
-			if( $this->summary == '' ) {
-				$rt = Title::newFromRedirect( $this->textbox1 );
-				if( is_object( $rt ) )
-					$this->summary = wfMsgForContent( 'autoredircomment', $rt->getPrefixedText() );
-			}
-
 			$isComment=($this->section=='new');
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
 				$this->minoredit, $this->watchthis, false, $isComment);
@@ -731,16 +723,11 @@ class EditPage {
 			return true;
 		}
 
-		# If no edit comment was given when turning a page into a redirect, be smart
-		# and fill in a neat auto-comment
-		if( $this->summary == '' ) {
-			$rt = Title::newFromRedirect( $this->textbox1 );
-			if( is_object( $rt ) )
-				$this->summary = wfMsgForContent( 'autoredircomment', $rt->getPrefixedText() );
-		}
+		$oldtext = $this->mArticle->getContent();
 
-		# Handle the user preference to force summaries here
-		if( $this->section != 'new' && !$this->allowBlankSummary && $wgUser->getOption( 'forceeditsummary' ) ) {
+		# Handle the user preference to force summaries here, but not for null edits
+		if( $this->section != 'new' && !$this->allowBlankSummary && $wgUser->getOption( 'forceeditsummary')
+			&&  0 != strcmp($oldtext, $text) ) {
 			if( md5( $this->summary ) == $this->autoSumm ) {
 				$this->missingSummary = true;
 				wfProfileOut( $fname );
@@ -878,6 +865,10 @@ class EditPage {
 			if( $this->missingSummary && $this->section != 'new' ) {
 				$wgOut->addWikiText( wfMsg( 'missingsummary' ) );
 			}
+
+                        if( $this->missingSummary && $this->section == 'new' ) {
+                                $wgOut->addWikiText( wfMsg( 'missingcommentheader' ) );
+                        }
 			
                         if( $this->missingSummary && $this->section == 'new' ) {
                                 $wgOut->addWikiText( wfMsg( 'missingcommentheader' ) );
