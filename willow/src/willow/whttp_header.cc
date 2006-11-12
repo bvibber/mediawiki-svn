@@ -61,10 +61,16 @@ find_reqtype(char const *str, int len)
 header::header(string const &n, string const &v)
 	: hr_name(n)
 	, hr_value(v)
-	, hr_next(NULL)
 {
 }
 
+void
+header::swap(header &other)
+{
+	hr_name.swap(other.hr_name);
+	hr_value.swap(other.hr_value);
+}
+	
 header_list::header_list()
 	: hl_len(0)
 {
@@ -112,7 +118,8 @@ vector<header>::iterator	it, end;
 		if (!httpcompare(it->hr_name, name))
 			continue;
 		hl_len -= it->hr_name.size() + it->hr_value.size() + 4;
-		hl_hdrs.erase(it);
+		it->swap(*hl_hdrs.rbegin());
+		hl_hdrs.pop_back();
 		return;
 	}
 	
@@ -159,61 +166,6 @@ vector<header>::iterator	it, end;
 	memcpy(buf + buflen, "\r\n", 2);
 
 	return buf;
-}
-
-void
-header_list::dump(int fd)
-{
-int i = 0;
-	i = hl_hdrs.size();
-	write(fd, &i, sizeof(i));	
-
-	for (header *h = hl_last; h; h = h->hr_next) {
-		int j, k;
-		k = h->hr_name.size();
-		write(fd, &k, sizeof(k));
-		j = h->hr_value.size();
-		write(fd, &j, sizeof(j));
-		write(fd, h->hr_name.data(), k);
-		write(fd, h->hr_value.data(), j);
-	}
-}
-
-int
-header_list::undump(int fd, off_t *len)
-{
-	int		 i = 0, j = 0, sz = 0;
-	ssize_t		 r;
-	
-	*len = 0;
-	if ((r = read(fd, &sz, sizeof(sz))) < 0) {
-		wlog(WLOG_WARNING, format("reading cache file: %e"));
-		return -1; /* XXX */
-	}
-	
-	*len += r;
-
-	while (sz--) {
-	char	*n, *v, *s;
-	int	 k;
-	header	*h;
-		*len += read(fd, &i, sizeof(i));	
-		*len += read(fd, &j, sizeof(j));
-		n = (char *)malloc(i + j + 2);
-		i = read(fd, n, i);
-		*len += i;
-		s = n + i;
-		*s++ = '\0';
-		v = s;
-		k = read(fd, s, j);
-		*len += k;
-		s += k;
-		*s = '\0';
-		add(n, v);
-		free(n);
-	}
-	
-	return 0;
 }
 
 io::sink_result

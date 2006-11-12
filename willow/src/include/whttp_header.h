@@ -39,9 +39,10 @@ struct header : freelist_allocator<header> {
 	header(string const &, string const &);
 	~header() {}
 
+	void	swap(header &);
+
 	string	 hr_name;
 	string	 hr_value;
-	header	*hr_next;
 };
 
 struct header_list {
