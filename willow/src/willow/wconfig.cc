@@ -128,8 +128,8 @@ addrlist::iterator	it = res->begin(), end = res->end();
 		nl->name = e.item_key;
 		nl->group = gn;
 		listeners.push_back(nl);
-		wlog(WLOG_NOTICE, format("listening on %s[%s]:%d (group %d)")
-		     % e.item_key % nl->host % port % gn);
+		wlog(WLOG_NOTICE, format("listening on %s%s (group %d)")
+		     % e.item_key % it->straddr() % gn);
 	}
 	delete res;
 }

@@ -81,8 +81,8 @@ addrlist::iterator	it = list->begin(), end = list->end();
 
 	for (; it != end; ++it) {
 		backends.push_back(new backend(addr, it->straddr(), *it));
-		wlog(WLOG_NOTICE, format("backend server: %s[%s]:%d") 
-		     % addr % it->straddr() % port);
+		wlog(WLOG_NOTICE, format("backend server: %s%s") 
+		     % addr % it->straddr());
 	}
 
 	_carp_calc();
