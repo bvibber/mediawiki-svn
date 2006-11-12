@@ -287,6 +287,8 @@ size_t		 vlen, nlen, rnpos;
 			_is_msie = true;
 		} else if (!strncasecmp(name, "Host", nlen))
 			_http_host.assign(value, value + vlen);
+		else if (!strncasecmp(name, "X-Willow-Backend-Group", nlen))
+			_http_backend.assign(value, value + vlen);
 
 		_headers.add(name, nlen, value, vlen);
 	next:

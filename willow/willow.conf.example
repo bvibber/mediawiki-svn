@@ -128,6 +128,13 @@ cache {
 	 * the Host: header.
 	 */
 	default-host = "localhost";
+
+	/*
+	 * These clients will be able to override the usual backend by
+	 * sending a header of the form "X-Willow-Backend-Group: <name>"
+	 * with their request.
+	 */
+	force-backend = "127.0.0.0/8";
 };
 
 /*

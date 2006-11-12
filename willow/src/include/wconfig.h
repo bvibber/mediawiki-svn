@@ -67,6 +67,7 @@ struct	cachedir	*caches;
 	bool		 msie_hack;
 	string		 default_host;
 	access_list	 access;
+	access_list	 force_backend;
 	bool		 udp_stats;
 	vector<pair<string, string> >		 stats_hosts;
 } config;

@@ -234,6 +234,15 @@ vector<avalue>::iterator	it = v.cv_values.begin(),
 		stats.access.allow(it->av_strval);
 }
 
+static void
+force_backend_access(tree_entry &e, value &v)
+{
+vector<avalue>::iterator	it = v.cv_values.begin(),
+				end = v.cv_values.end();
+	for (; it != end; ++it)
+		config.force_backend.allow(it->av_strval, 1);
+}
+
 static bool
 radix_prefix(tree_entry &e, value &v)
 {
@@ -365,6 +374,7 @@ conf
 		.value("msie-http11-hack",	simple_yesno,		set_yesno(config.msie_hack))
 		.value("admin",			nonempty_qstring,	set_string(config.admin))
 		.value("default-host",		nonempty_qstring,	set_string(config.default_host))
+		.value("force-backend",		func(radix_prefix),	func(force_backend_access))
 
 	.block("stats")
 		.value("interval",	simple_range(1, INT_MAX),	set_aint(stats.interval))

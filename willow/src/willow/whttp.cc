@@ -267,9 +267,21 @@ httpcllr::header_read_complete(void)
 	WDEBUG((WLOG_DEBUG, format("whttp: _group=%d") % _group));
 	_client_spigot->sp_disconnect();
 map<string,int>::iterator	it;
+pair<bool, uint16_t> acheck;
+
 	if ((it = host_to_bpool.find(_header_parser._http_host)) !=
 	    host_to_bpool.end())
 		_group = it->second;
+
+	if (!_header_parser._http_backend.empty()) {
+		acheck = config.force_backend.allowed(_client_socket->address().addr());
+		if (acheck.first && acheck.second) {
+			if ((it = poolnames.find(_header_parser._http_backend))
+			    != poolnames.end()) {
+				_group = it->second;
+			}
+		}
+	}
 
 	_blist = bpools.find(_group)->second.get_list(
 				_header_parser._http_path,
