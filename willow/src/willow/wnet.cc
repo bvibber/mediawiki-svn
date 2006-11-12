@@ -449,31 +449,6 @@ socket::sendto(char const *buf, size_t count, wnet::address const &addr)
 	return ::sendto(_s, buf, count, 0, addr.addr(), addr.length());
 }
 
-int
-socket::read(char *buf, size_t count)
-{
-	return ::read(_s, buf, count);
-}
-
-int
-socket::write(char const *buf, size_t count)
-{
-	return ::write(_s, buf, count);
-}
-
-wnet::address const &
-socket::address(void) const
-{
-	return _addr;
-}
-
-
-string const &
-socket::straddr(bool lng) const
-{
-	return _addr.straddr(lng);
-}
-
 void
 socket::nonblocking(bool v)
 {

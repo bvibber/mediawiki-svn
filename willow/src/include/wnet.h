@@ -239,10 +239,15 @@ struct socket : noncopyable {
 
 	socket		*accept		(char const *, sprio);
 	connect_status	 connect	(void);
-	int		 read		(char *, size_t);
+	int		 read		(char *buf, size_t count) {
+		return ::read(_s, buf, count);
+	}
 	int		 recvfrom	(char *, size_t, wnet::address &);
 	int		 sendto		(char const *, size_t, wnet::address const &);
-	int		 write		(char const *, size_t);
+	int		 write		(char const *buf, size_t count) {
+		return ::write(_s, buf, count);
+	}
+
 	void		 nonblocking	(bool);
 	void		 reuseaddr	(bool);
 	void		 bind		(void);
@@ -252,8 +257,12 @@ struct socket : noncopyable {
 	int		 error		(void) const;
 	char const	*description	(void) const;
 
-	wnet::address const	&address	(void) const;
-	string const 	&straddr	(bool = true) const;
+	wnet::address const	&address	(void) const {
+		return _addr;
+	}
+	string const 	&straddr	(bool lng = true) const {
+		return _addr.straddr(lng);
+	}
 
 	template<typename T>
 	void	readback (polycaller<wnet::socket *, T> cb, T ud);
