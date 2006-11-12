@@ -28,6 +28,7 @@
 #include "wcache.h"
 #include "confparse.h"
 #include "radix.h"
+#include "format.h"
 
 static void stats_init(void);
 
@@ -371,8 +372,8 @@ const char	*hstr = NULL, *pstr = DEFAULT_STATS_PORT;
 	try {
 		alist = addrlist::resolve(hstr, pstr, st_dgram);
 	} catch (socket_error &e) {
-		wlog(WLOG_WARNING, "resolving [%s]:%s: %s",
-			hstr, pstr, e.what());
+		wlog(WLOG_WARNING, format("resolving [%s]:%s: %s")
+			% hstr % pstr % e.what());
 		return;
 	}
 
@@ -384,8 +385,8 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 			sock->nonblocking(true);
 		} catch (socket_error &e) {
 			wlog(WLOG_WARNING,
-				"creating statistics listener: %s:%s: %s",
-				ip.first.c_str(), ip.second.c_str(), e.what());
+				format("creating statistics listener: %s:%s: %s")
+				% ip.first % ip.second % e.what());
 			delete sock;
 			continue;
 		}
@@ -393,16 +394,17 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 		try {
 			sock->bind();
 		} catch (socket_error &e) {
-			wlog(WLOG_WARNING, "binding statistics listener %s: %s",
-				it->straddr().c_str(), e.what());
+			wlog(WLOG_WARNING,
+				format("binding statistics listener %s: %s")
+				% it->straddr() % e.what());
 			delete sock;
 			continue;
 		}
 
 		sock->readback(polycaller<wsocket *, int>(stats_handler, 
 			&stats_handler_stru::callback), 0);
-		wlog(WLOG_NOTICE, "statistics listener: %s",
-			sock->straddr().c_str());
+		wlog(WLOG_NOTICE, format("statistics listener: %s")
+			% sock->straddr());
 	}
 }
 

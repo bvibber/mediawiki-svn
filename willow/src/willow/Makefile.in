@@ -14,6 +14,7 @@ BASESRCS =	 		\
 	wlog.cc			\
 	whttp_header.cc		\
 	radix.cc		\
+	format.cc		\
 	flowio.cc
 
 OBJS=	$(BASESRCS:.cc=.o)

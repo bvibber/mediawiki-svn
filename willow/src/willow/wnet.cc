@@ -37,6 +37,7 @@ using std::deque;
 #include "wconfig.h"
 #include "wlog.h"
 #include "whttp.h"
+#include "format.h"
 
 #define RDBUF_INC	8192	/* buffer in 8 KiB incrs		*/
 
@@ -94,7 +95,8 @@ ioloop_t::prepare(void)
 {
 size_t	 i;
 
-	wlog(WLOG_NOTICE, "maximum number of open files: %d", getdtablesize());
+	wlog(WLOG_NOTICE, format("maximum number of open files: %d")
+		% getdtablesize());
 	
 	signal(SIGPIPE, SIG_IGN);
 	make_event_base();
@@ -107,16 +109,16 @@ size_t	 i;
 			lns->sock->bind();
 			lns->sock->listen();
 		} catch (socket_error &e) {
-			wlog(WLOG_ERROR, "creating listener %s: %s",
-				lns->sock->straddr().c_str(), e.what());
+			wlog(WLOG_ERROR, format("creating listener %s: %s")
+				% lns->sock->straddr().c_str() % e.what());
 			exit(8);
 		}
 
 		lsn2group[lns->sock] = lns->group;
 		lns->sock->readback(polycaller<wsocket *, int>(*this, &ioloop_t::_accept), 0);
 	}
-	wlog(WLOG_NOTICE, "wnet: initialised, using libevent %s (%s)",
-		event_get_version(), event_get_method());
+	wlog(WLOG_NOTICE, format("wnet: initialised, using libevent %s (%s)")
+		% event_get_version() % event_get_method());
 	secondly_sched();
 }
 
@@ -130,7 +132,7 @@ static time_t		 last_nfile = 0;
 
 	if ((newe = s->accept("HTTP client", prio_norm)) == NULL) {
 		if (errno != ENFILE || now - last_nfile > 60) 
-			wlog(WLOG_NOTICE, "accept error: %s", strerror(errno));
+			wlog(WLOG_NOTICE, format("accept error: %e"));
 		if (errno == ENFILE)
 			last_nfile = now;
 		return;
@@ -146,7 +148,7 @@ char	buf[sizeof(wsocket *) * 2];
 	memcpy(buf + sizeof(newe), &s, sizeof(s));
 
 	if (awaks[cawak]->write(buf, sizeof(wsocket *) * 2) < 0) {
-		wlog(WLOG_ERROR, "writing to thread wakeup socket: %s", strerror(errno));
+		wlog(WLOG_ERROR, format("writing to thread wakeup socket: %e"));
 		exit(1);
 	}
 	cawak++;
@@ -192,10 +194,10 @@ socket::_ev_callback(int fd, short ev, void *d)
 {
 wsocket	*s = (wsocket *)d;
 
-	WDEBUG((WLOG_DEBUG, "fde_ev_callback: %s%son %d (%s)",
-		(ev & EV_READ) ? "read " : "",
-		(ev & EV_WRITE) ? "write " : "",
-		fd, s->_desc));
+	WDEBUG((WLOG_DEBUG, format("_ev_callback: %s%son %d (%s)")
+		% ((ev & EV_READ) ? "read " : "")
+		% ((ev & EV_WRITE) ? "write " : "")
+		% fd % s->_desc));
 
 	if (ev & EV_READ)
 		s->_read_handler(s);
@@ -208,10 +210,10 @@ socket::_register(int what, polycallback<wsocket *> handler)
 {
 	int	 ev_flags = 0;
 
-	WDEBUG((WLOG_DEBUG, "_register: %s%son %d (%s)",
-		(what & FDE_READ) ? "read " : "",
-		(what & FDE_WRITE) ? "write " : "",
-		_s, _desc));
+	WDEBUG((WLOG_DEBUG, format("_register: %s%son %d (%s)")
+		% ((what & FDE_READ) ? "read " : "")
+		% ((what & FDE_WRITE) ? "write " : "")
+		% _s % _desc));
 
 	if (event_pending(&ev, EV_READ | EV_WRITE, NULL))
 		event_del(&ev);
@@ -437,7 +439,7 @@ socklen_t		addrlen = sizeof(addr);
 int			i;
 	if ((i = ::recvfrom(_s, buf, count, 0, (sockaddr *)&saddr, &addrlen)) < 0)
 		return i;
-	WDEBUG((WLOG_DEBUG, "recvfrom: fam=%d", saddr.ss_family));
+	WDEBUG((WLOG_DEBUG, format("recvfrom: fam=%d") % saddr.ss_family));
 	addr = wnet::address((sockaddr *)&saddr, addrlen);
 	return i;
 }

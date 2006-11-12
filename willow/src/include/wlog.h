@@ -34,7 +34,8 @@ extern struct log_variables {
 
 void wlog_init(void);
 /*PRINTFLIKE2*/
-void wlog(int, const char *, ...);
+void wlog(int, string const &);
+
 void wlog_close(void);
 
 #ifndef WILLOW_DEBUG

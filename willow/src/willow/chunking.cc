@@ -50,7 +50,6 @@ dechunking_filter::dechunking_filter()
 io::sink_result
 dechunking_filter::bf_transform(char const *buf, size_t len, ssize_t &discard)
 {
-	WDEBUG((WLOG_DEBUG, "dechunking_filter::bf_transform: got %d", len));
 	if (_current_chunk_size) {
 	size_t	sent = min(len, _current_chunk_size);
 		_buf.add(buf, sent, false);

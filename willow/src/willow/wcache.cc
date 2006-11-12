@@ -12,13 +12,13 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#include <string.h>
-#include <errno.h>
-#include <stdlib.h>
-#include <math.h>
+#include <cstring>
+#include <cerrno>
+#include <cstdlib>
+#include <cmath>
 #include <strings.h>
 #include <limits.h>
-#include <assert.h>
+#include <cassert>
 #include <unistd.h>
 #include <fcntl.h>
 #include <event.h>
@@ -27,6 +27,7 @@
 #include "wlog.h"
 #include "wconfig.h"
 #include "willow.h"
+#include "format.h"
 
 #define CACHEDIR "__objects__"
 
@@ -118,7 +119,7 @@ struct	cache_state	 state;
 		/* create base directory if it doesn't exist */
 		/*LINTED unsafe mkdir*/
 		if (mkdir(cd->dir, 0700) < 0 || mkdir(dir, 0700) < 0) {
-			wlog(WLOG_ERROR, "%s: mkdir: %s", cd->dir, strerror(errno));
+			wlog(WLOG_ERROR, format("%s: mkdir: %e") % cd->dir);
 			exit(8);
 		}
 		
@@ -127,7 +128,7 @@ struct	cache_state	 state;
 			
 			/*LINTED unsafe mkdir*/
 			if (mkdir(dir, 0700) < 0) {
-				wlog(WLOG_ERROR, "%s: mkdir: %s", dir, strerror(errno));
+				wlog(WLOG_ERROR, format("%s: mkdir: %e") % dir);
 				exit(8);
 			}
 			
@@ -135,21 +136,24 @@ struct	cache_state	 state;
 				snprintf(dir, dlen, "%s/%s/%d/%d", cd->dir, CACHEDIR, i, j);
 				/*LINTED unsafe mkdir*/
 				if (mkdir(dir, 0700) < 0) {
-					wlog(WLOG_ERROR, "%s: mkdir: %s", dir, strerror(errno));
+					wlog(WLOG_ERROR, format("%s: mkdir: %e")
+						% dir);
 					exit(8);
 				}
 				for (k = 0; k < 10; ++k) {
 					snprintf(dir, dlen, "%s/%s/%d/%d/%d", cd->dir, CACHEDIR, i, j, k);
 					/*LINTED unsafe mkdir*/
 					if (mkdir(dir, 0700) < 0) {
-						wlog(WLOG_ERROR, "%s: mkdir: %s", dir, strerror(errno));
+						wlog(WLOG_ERROR, 
+						format("%s: mkdir: %e") % dir);
 						exit(8);
 					}
 				}
 			}
 		}
 		wfree(dir);
-		wlog(WLOG_NOTICE, "created cache directory structure for %s", cd->dir);
+		wlog(WLOG_NOTICE, format("created cache directory structure for %s")
+			% cd->dir);
 	}
 	wcache_init(0);
 	
@@ -204,8 +208,6 @@ expire_sched(void)
 void
 wcache_release(cache_object *obj, int comp)
 {
-	WDEBUG((WLOG_DEBUG, "release %s, comp=%d", obj->co_key, comp));
-
 	if (comp) {
 		if (!obj->co_complete)
 			state.cs_size += obj->co_size;
@@ -230,7 +232,6 @@ wcache_find_object(const char *key, int *fd, int flags)
 {
 struct	cache_object	*co;
 
-	WDEBUG((WLOG_DEBUG, "wcache_find_object: looking for %s", key));
 	co = idx_find(key);
 
 	if (co) {
@@ -245,9 +246,10 @@ struct	cache_object	*co;
 				return NULL;
 			}
 			*fd = cache_open(co, O_RDONLY, 0);
-			WDEBUG((WLOG_DEBUG, "found! fd=%d", *fd));
 			if (*fd == -1) {
-				wlog(WLOG_WARNING, "opening cache file %s: %s", co->co_path, strerror(errno));
+				wlog(WLOG_WARNING,
+					format("opening cache file %s: %e")
+					% co->co_path);
 				co = NULL;
 			}
 			return co;
@@ -257,7 +259,7 @@ struct	cache_object	*co;
 	co = wcache_new_object(key);
 	idx_add(co);
 	if ((*fd = cache_open(co, O_WRONLY | O_CREAT | O_EXCL, 0600)) == -1) {
-		wlog(WLOG_WARNING, "opening cached file: %s", strerror(errno));
+		wlog(WLOG_WARNING, format("opening cached file: %e"));
 		wcache_free_object(co);
 		return NULL;
 	}
@@ -278,7 +280,7 @@ struct	cache_object	*obj;
 		outofmemory();
 	snprintf(stpath, stlen, "%s/%s", config.caches[0].dir, "state");
 	if ((stfil = fopen(stpath, "w")) == NULL) {
-		wlog(WLOG_WARNING, "opening cache dir %s: %s", stpath, strerror(errno));
+		wlog(WLOG_WARNING, format("opening cache dir %s: %e") % stpath);
 		exit(8);
 	}
 	fprintf(stfil, "%llu %llu\n", (w_size_t) state->cs_id, (w_size_t)state->cs_size);
@@ -306,14 +308,15 @@ cache_getstate(cache_state *state)
 		outofmemory();
 	snprintf(stpath, stlen, "%s/%s", config.caches[0].dir, "state");
 	if ((stfil = fopen(stpath, "r")) == NULL) {
-		wlog(WLOG_WARNING, "opening cache state %s: %s", stpath, strerror(errno));
+		wlog(WLOG_WARNING, format("opening cache state %s: %e") % stpath);
 		wlog(WLOG_WARNING, "using default cache state");
 		state->cs_id = 1000;
 		return;
 	}
 
 	if (fscanf(stfil, "%llu %llu\n", &state->cs_id, &state->cs_size) != 2) {
-		wlog(WLOG_ERROR, "data format error in cache state file %s", stpath);
+		wlog(WLOG_ERROR, format("data format error in cache state file %s")
+			% stpath);
 		exit(8);
 	}
 
@@ -323,7 +326,9 @@ cache_getstate(cache_state *state)
 		int size, time, lru, id, expires;
 		struct cache_object *obj;
 		if (sscanf(s, "%65534s %127s %d %d %d %d %d", url, path, &size, &time, &lru, &id, &expires) != 7) {
-			wlog(WLOG_ERROR, "data format error in cache state file %s", stpath);
+			wlog(WLOG_ERROR, 
+				format("data format error in cache state file %s")
+				% stpath);
 			exit(8);
 		}
 		obj = (cache_object *)wmalloc(sizeof(*obj));
@@ -338,7 +343,6 @@ cache_getstate(cache_state *state)
 		obj->co_expires = expires;
 		TAILQ_INSERT_TAIL(&objects, obj, entries);
 		idx_add(obj);
-		WDEBUG((WLOG_DEBUG, "load %s %s from cache", obj->co_key, obj->co_path));
 	}
 
 }
@@ -376,7 +380,6 @@ struct	cache_object	*ret;
 	p = ret->co_path;
 	snprintf(a, 10, "%d", ret->co_id);
 	s = a + strlen(a) - 1;
-	WDEBUG((WLOG_DEBUG, "id=%d a=%s", ret->co_id, a));
 	
 	for (i = 0; i < 3; ++i) {
 		*p++ = *s--;
@@ -385,7 +388,6 @@ struct	cache_object	*ret;
 	*p = '\0';
 	if (strlcat(ret->co_path, a, ret->co_plen + 1) >= ret->co_plen + 1)
 		abort();
-	WDEBUG((WLOG_DEBUG, "new object path is [%s], len %d", ret->co_path, ret->co_plen));
 
 	TAILQ_INSERT_HEAD(&objects, ret, entries);
 	return ret;
@@ -401,20 +403,14 @@ run_expiry(int fd, short ev, void *data)
 {
 	w_size_t	 wantsize;
 
-	WDEBUG((WLOG_DEBUG, "expire: start, run every %d, cache is %lld bytes large", 
-		config.cache_expevery, state.cs_size));
-
 	cache_writestate(&state);
 	wantsize = (w_size_t) (config.caches[0].maxsize * ((100.0-config.cache_expthresh)/100));
 	if (state.cs_size <= wantsize) {
-		WDEBUG((WLOG_DEBUG, "expire: cache only %lld bytes large", state.cs_size));
 		expire_sched();
 		return;
 	}
 	while (state.cs_size > wantsize) {
 		struct cache_object *obj = TAILQ_LAST(&objects, objlist);
-		WDEBUG((WLOG_DEBUG, "expiring some objects, size=%lld, want=%lld, obj=%p, last=%p, *last=%p", 
-			state.cs_size, wantsize, obj, objects.tqh_last, *objects.tqh_last));
 		if (!obj)
 			break;
 		wcache_evict(obj);

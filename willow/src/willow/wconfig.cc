@@ -32,6 +32,7 @@
 #include "wnet.h"
 #include "confparse.h"
 #include "radix.h"
+#include "format.h"
 
 using namespace conf;
 
@@ -105,8 +106,9 @@ addrlist	*res;
 	try {
 		res = addrlist::resolve(e.item_key, port, st_stream, fam);
 	} catch (socket_error &ex) {
-		wlog(WLOG_ERROR, "resolving %s: %s",
-		    e.item_key.c_str(), ex.what());
+		wlog(WLOG_ERROR, format("resolving %s: %s")
+		    % e.item_key % ex.what());
+		return;
 	}
 
 addrlist::iterator	it = res->begin(), end = res->end();
@@ -124,8 +126,8 @@ addrlist::iterator	it = res->begin(), end = res->end();
 		nl->name = e.item_key;
 		nl->group = gn;
 		listeners.push_back(nl);
-		wlog(WLOG_NOTICE, "listening on %s[%s]:%d (group %d)", 
-		     e.item_key.c_str(), nl->host.c_str(), port, gn);
+		wlog(WLOG_NOTICE, format("listening on %s[%s]:%d (group %d)")
+		     % e.item_key % nl->host % port % gn);
 	}
 	delete res;
 }
@@ -149,9 +151,9 @@ value	*v;
 	config.caches = (cachedir *)wrealloc(config.caches, sizeof(*config.caches) * (config.ncaches + 1));
 	config.caches[config.ncaches].dir = wstrdup(e.item_key.c_str());
 	config.caches[config.ncaches].maxsize = v->cv_values[0].av_intval;
-	wlog(WLOG_NOTICE, "cache dir \"%s\", size %d bytes",
-			config.caches[config.ncaches].dir,
-			config.caches[config.ncaches].maxsize);
+	wlog(WLOG_NOTICE, format("cache dir \"%s\", size %d bytes")
+			% config.caches[config.ncaches].dir
+			% config.caches[config.ncaches].maxsize);
 	config.ncaches++;
 }
 
@@ -368,7 +370,9 @@ int	nerrors = 0;
 		file = CONFIGFILE;
 	conf::current_file = file;
 
-	wlog(WLOG_NOTICE, "loading configuration from %s", conf::current_file.c_str());
+	wlog(WLOG_NOTICE, format("loading configuration from %s")
+		% conf::current_file);
+
 	if (!read_config(file)) {
 		wlog(WLOG_ERROR, "cannot load configuration");
 		nerrors++;
@@ -383,7 +387,9 @@ int	nerrors = 0;
 		nerrors++;
 	}
 	if (nerrors) {
-		wlog(WLOG_ERROR, "%d error(s) in configuration file.  cannot continue.", nerrors);
+		wlog(WLOG_ERROR, 
+			format("%d error(s) in configuration file.  cannot continue.")
+			% nerrors);
 		exit(8);
 	}
 }

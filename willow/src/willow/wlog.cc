@@ -9,19 +9,21 @@
 # pragma ident "@(#)$Id$"
 #endif
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <string.h>
+#include <cstdio>
+#include <cstdarg>
+#include <cstdlib>
+#include <cstring>
 #include <syslog.h>
-#include <errno.h>
+#include <cerrno>
+#include <iostream>
+using std::cout;
 
 #include "config.h"
 
 #include "wlog.h"
 #include "wnet.h"
 #include "wconfig.h"
+#include "format.h"
 
 struct log_variables logging;
 static lockable log_lock;
@@ -52,43 +54,39 @@ wlog_init(void)
 	/*LINTED unsafe fopen*/
 	logging.fp = fopen(logging.file.c_str(), "a");
 	if (logging.fp == NULL) {
-		wlog(WLOG_ERROR, "Cannot open error log file: %s", logging.file.c_str());
+		wlog(WLOG_ERROR, format("cannot open error log file %s: %e")
+			% logging.file.c_str());
 		exit(8);
 	}
 }
 
 void
-wlog(int sev, const char *fmt, ...)
+wlog(int sev, string const &e)
 {
-	char	s[1024];
-	va_list ap;
-	int	i;
-struct	timeval	tv;
+string	r;
 
 	if (sev > WLOG_MAX)
 		sev = WLOG_NOTICE;
 	if (sev < logging.level)
 		return;
-	va_start(ap, fmt);
-	gettimeofday(&tv, NULL);
-	i = snprintf(s, sizeof s, "%s+%.04f| %s: ", current_time_short, tv.tv_usec / 1000000.0, sev_names[sev]);
-	vsnprintf(s + i, 1023 - i, fmt, ap);
+
+	r = format("%s| %s: %s") % current_time_short % sev_names[sev] % e;
 
 	HOLDING(log_lock);	
 	if (logging.syslog)
-		syslog(syslog_pri[sev], "%s", s + i);
+		syslog(syslog_pri[sev], "%s", e.c_str());
+
 	if (logging.fp) {
-		if (fprintf(logging.fp, "%s\n", s) < 0) {
-			(void)fclose(logging.fp);
+		if (fprintf(logging.fp, "%s\n", r.c_str()) < 0) {
+			fclose(logging.fp);
 			logging.fp = NULL;
-			wlog(WLOG_ERROR, "writing to logfile: %s", strerror(errno));
+			wlog(WLOG_ERROR, format("writing to logfile: %e"));
 			exit(8);
 		}
 	}
 	
 	if (config.foreground)
-		(void)fprintf(stderr, "%s\n", s);
-	va_end(ap);
+		cout << r << '\n';
 }
 
 void
@@ -96,7 +94,7 @@ wlog_close(void)
 {
 	if (logging.fp && fclose(logging.fp) == EOF) {
 		logging.fp = NULL;
-		wlog(WLOG_WARNING, "closing logfile: %s", strerror(errno));
+		wlog(WLOG_WARNING, format("closing logfile: %e"));
 	}
 	
 	if (logging.syslog)

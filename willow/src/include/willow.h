@@ -18,6 +18,8 @@
 #include <cstddef>
 #include <iostream>
 #include <typeinfo>
+#include <stdexcept>
+using std::runtime_error;
 
 #include <pthread.h>
 
@@ -28,14 +30,36 @@
 # pragma warning (disable: 869 981 304 383 1418 1469 810)
 #endif
 
+struct bad_lexical_cast : runtime_error {
+	bad_lexical_cast() 
+		: runtime_error("lexical_cast could not convert arguments") {}
+};
+
+template<typename From, typename To>
+struct lexical_caster {
+	static To cast (From const &f) {
+	std::stringstream	strm;
+	To			t;
+		if (!(strm << f) || !(strm >> t))
+			throw bad_lexical_cast();
+		return t;
+	}
+};
+
+template<typename From>
+struct lexical_caster<From, string> {
+	static string cast (From const &f) {
+	std::stringstream	strm;
+		if (!(strm << f))
+			throw bad_lexical_cast();
+		return strm.str();
+	}
+};
+		
 template<typename To, typename From>
 To lexical_cast(From const &f)
 {
-std::stringstream	strm;
-To			t;
-	strm << f;
-	strm >> t;
-	return t;
+	return lexical_caster<From, To>::cast(f);
 }
 
 typedef unsigned long long w_size_t;

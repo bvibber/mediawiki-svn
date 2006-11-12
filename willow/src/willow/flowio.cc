@@ -17,6 +17,7 @@ using std::streamsize;
 
 #include "flowio.h"
 #include "wnet.h"
+#include "format.h"
 
 namespace io {
 
@@ -47,15 +48,11 @@ void
 socket_spigot::_socketcall(wsocket *s, int) {
 ssize_t	 read;
 sink_result	res;
-	WDEBUG((WLOG_DEBUG, "socket_spigot::_socketcall_impl, fd=%p saved=%d, _off=%d", 
-		s, _saved, _off));
-
 	if (_off) {
 		memmove(_savebuf, _savebuf + _off, _saved - _off);
 		_saved -= _off;
 		_off = 0;
 	}
-	WDEBUG((WLOG_DEBUG, "now saved=%d, _off=%d", _saved, _off));
 
 	if (_saved) {
 		switch (this->_sp_data_ready(_savebuf, _saved, _off)) {
@@ -77,7 +74,6 @@ sink_result	res;
 		_off = _saved = 0;
 
 	read = s->read(_savebuf, sizeof(_savebuf));
-	WDEBUG((WLOG_DEBUG, "read %d", read));
 	if (read == 0) {
 		sp_cork();
 		switch (this->_sp_data_empty()) {
@@ -96,14 +92,12 @@ sink_result	res;
 	}
 
 	if (read == -1 && errno == EAGAIN) {
-		WDEBUG((WLOG_DEBUG, "socket_spigot read -1, EAGAIN"));
 		_socket->readback(polycaller<wsocket *, int>(*this,
 			&socket_spigot::_socketcall), 0);
 		return;
 	}
 
 	if (read == -1) {
-		WDEBUG((WLOG_DEBUG, "socket_spigot read -1; error = %s", strerror(errno)));
 		_sp_error_callee();
 		return;
 	}
@@ -121,7 +115,6 @@ sink_result	res;
 		return;
 	}
 	_socket->readback(polycaller<wsocket *, int>(*this, &socket_spigot::_socketcall), 0);
-	WDEBUG((WLOG_DEBUG, "socket_spigot::_socketcall_impl: saving %d", _saved));
 	return;
 }
 
@@ -132,7 +125,6 @@ ssize_t	wrote;
 	switch (wrote = _socket->write(buf, len)) {
 	case -1:
 		if (errno == EAGAIN) {
-			WDEBUG((WLOG_DEBUG, "socket_sink::data_ready: socket blocked"));
 			_sink_spigot->sp_cork();
 			if (!_reg) {
 				_socket->writeback(polycaller<wsocket *, int>(
@@ -145,7 +137,6 @@ ssize_t	wrote;
 		return sink_result_error;
 		break;
 	}
-	WDEBUG((WLOG_DEBUG, "socket_sink::data_ready: got %lu, wrote %lu", len, wrote));
 	discard += wrote;
 	return sink_result_okay;
 }
@@ -193,7 +184,7 @@ struct stat		sb;
 
 	if (cache) {
 		if (stat(file, &sb) == -1) {
-			wlog(WLOG_WARNING, "cannot open %s: %s", file, strerror(errno));
+			wlog(WLOG_WARNING, format("cannot open %s: %e") % file);
 			return false;
 		}
 
@@ -211,7 +202,7 @@ struct stat		sb;
 
 		_file.open(file);
 		if (!_file.is_open()) {
-			wlog(WLOG_WARNING, "cannot open %s: %s", file, strerror(errno));
+			wlog(WLOG_WARNING, format("cannot open %s: %e") % file);
 			return false;
 		}
 
@@ -232,7 +223,7 @@ struct stat		sb;
 
 	_file.open(file);
 	if (!_file.is_open())
-		wlog(WLOG_WARNING, "cannot open %s: %s", file, strerror(errno));
+		wlog(WLOG_WARNING, format("cannot open %s: %e") % file);
 	return _file.is_open();
 }
 
@@ -241,13 +232,10 @@ file_spigot::bs_get_data(void)
 {
 streamsize	size;
 	if (_cached) {
-		WDEBUG((WLOG_DEBUG, "file_spigot: cached=%d", _cached_size));
-
 		if (!_cached_size) {
 			_sp_completed_callee();
 			return false;
 		}
-		WDEBUG((WLOG_DEBUG, "file_spigot: %d of cached data", _cached_size));
 
 		_buf.add(_cdata, _cached_size, false);
 		_cached_size = 0;
@@ -255,7 +243,6 @@ streamsize	size;
 	}
 
 	size = _file.readsome(_fbuf, 16384);
-	WDEBUG((WLOG_DEBUG, "file_spigot: read %d from file", (int)size));
 	if (size == 0) {
 		_sp_completed_callee();
 		return false;

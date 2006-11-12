@@ -329,9 +329,7 @@ struct buffering_spigot : spigot
 		wnet::buffer_item	&b = *_buf.items.begin();
 		ssize_t			 discard = 0;
 		sink_result		 res;
-			WDEBUG((WLOG_DEBUG, "_bs_push_data: pushing %d discard=%d", (int) b.len, (int) discard));
 			res = _sp_sink->data_ready(b.buf + b.off, b.len, discard);
-			WDEBUG((WLOG_DEBUG, "_bs_push_data: done, discard=%d", (int) discard));
 			if ((size_t)discard == b.len) {
 				_buf.items.pop_front();
 			} else {

@@ -28,6 +28,7 @@
 #include "wlog.h"
 #include "confparse.h"
 #include "wconfig.h"
+#include "format.h"
 
 #define rotl(i,r) (((i) << (r)) | ((i) >> (sizeof(i)*CHAR_BIT-(r))))
 
@@ -67,8 +68,8 @@ addrlist	*list;
 	try {
 		list = addrlist::resolve(addr, port, st_stream, family);
 	} catch (resolution_error &e) {
-		wlog(WLOG_ERROR, "resolving %s: %s", 
-			addr.c_str(), e.what());
+		wlog(WLOG_ERROR, format("resolving %s: %s")
+			% addr % e.what());
 		return;
 	}
 
@@ -76,8 +77,8 @@ addrlist::iterator	it = list->begin(), end = list->end();
 
 	for (; it != end; ++it) {
 		backends.push_back(new backend(addr, it->straddr(), *it));
-		wlog(WLOG_NOTICE, "backend server: %s[%s]:%d", 
-		     addr.c_str(), it->straddr().c_str(), port);
+		wlog(WLOG_NOTICE, format("backend server: %s[%s]:%d") 
+		     % addr % it->straddr() % port);
 	}
 
 	_carp_calc();
@@ -90,8 +91,6 @@ struct	backend_cb_data	*cbd;
 	wsocket		*s = NULL;
 static	time_t		 last_nfile;
 	time_t		 now = time(NULL);
-
-	WDEBUG((WLOG_DEBUG, "get_backend: called"));
 
 	cbd = new backend_cb_data;
 	cbd->bc_func = cb;
@@ -111,8 +110,9 @@ static	time_t		 last_nfile;
 			s->nonblocking(true);
 		} catch (socket_error &e) {
 			if (e.err() != ENFILE || now - last_nfile > 60) 
-				wlog(WLOG_WARNING, "opening backend socket: %s",
-					e.what());
+				wlog(WLOG_WARNING,
+					format("opening backend socket: %s")
+					% e.what());
 			if (e.err() == ENFILE)
 				last_nfile = now;
 			delete cbd;
@@ -125,9 +125,9 @@ static	time_t		 last_nfile;
 			cs = s->connect();
 		} catch (socket_error &e) {
 			time_t retry = time(NULL) + config.backend_retry;
-			wlog(WLOG_WARNING, "%s: %s; retry in %d seconds", 
-				cbd->bc_backend->be_name.c_str(), 
-				e.what(), config.backend_retry);
+			wlog(WLOG_WARNING, format("%s: %s; retry in %d seconds")
+				% cbd->bc_backend->be_name 
+				% e.what() % config.backend_retry);
 			cbd->bc_backend->be_dead = 1;
 			cbd->bc_backend->be_time = retry;
 			delete s;
@@ -135,12 +135,10 @@ static	time_t		 last_nfile;
 		}
 
 		if (cs == connect_later) {
-			WDEBUG((WLOG_DEBUG, "get_backend: waiting for connection to complete"));
 			s->writeback(
 				polycaller<wsocket *, backend_cb_data*>(*this, 
 					&backend_pool::_backend_read), cbd);
 		} else {
-			WDEBUG((WLOG_DEBUG, "get_backend: connection completed immediately"));
 			cb(cbd->bc_backend, s);
 			delete cbd;
 		}
@@ -155,8 +153,10 @@ int		 error = s->error();
 
 	if (error && error != EINPROGRESS) {
 		time_t retry = time(NULL) + config.backend_retry;
-		wlog(WLOG_WARNING, "%s: [%d] %s; retry in %d seconds", 
-			cbd->bc_backend->be_name.c_str(), error, strerror(error), config.backend_retry);
+		wlog(WLOG_WARNING, format("%s: %s; retry in %d seconds")
+			% cbd->bc_backend->be_name
+			% strerror(error)
+			% config.backend_retry);
 		cbd->bc_backend->be_dead = 1;
 		cbd->bc_backend->be_time = retry;
 		delete s;
@@ -181,8 +181,6 @@ size_t			tried = 0;
 
 	if (config.use_carp)
 		_carp_recalc(url);
-
-	WDEBUG((WLOG_DEBUG, "next_backend: url=[%s]", url.c_str()));
 
 	while (tried++ <= backends.size()) {
 		time_t now = time(NULL);

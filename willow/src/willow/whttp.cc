@@ -21,16 +21,15 @@
 #include <sys/stat.h>
 #include <sys/param.h>
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
 #include <unistd.h>
-#include <errno.h>
+#include <cerrno>
 #include <netdb.h>
 #include <fcntl.h>
-#include <strings.h>
-#include <assert.h>
-#include <time.h>
+#include <cassert>
+#include <ctime>
 #include <pthread.h>
 
 #include <utility>
@@ -50,6 +49,7 @@ using std::min;
 #include "radix.h"
 #include "chunking.h"
 #include "flowio.h"
+#include "format.h"
 
 using namespace wnet;
 
@@ -238,7 +238,6 @@ static const char *removable_headers[] = {
 void
 httpcllr::header_read_complete(void)
 {
-	WDEBUG((WLOG_DEBUG, "header_read_complete()"));
 	if (_denied) {
 		send_error(ERR_BLOCKED, "You are not permitted to access this server.",
 				403, "Forbidden");
@@ -272,7 +271,6 @@ httpcllr::header_read_complete(void)
 void
 httpcllr::header_read_error(void)
 {
-	WDEBUG((WLOG_DEBUG, "header_read_error()"));
 	stats.tcur->n_httpreq_fail++;
 	send_error(ERR_BADREQUEST, "Could not parse client headers", 400, "Bad request");
 }
@@ -280,7 +278,6 @@ httpcllr::header_read_error(void)
 void
 httpcllr::backend_ready(backend *be, wsocket *s, int)
 {
-	WDEBUG((WLOG_DEBUG, "backend_ready"));
 	if (be == NULL) {
 		stats.tcur->n_httpreq_fail++;
 		send_error(ERR_GENERAL, "No backends were available to serve your request", 
@@ -304,7 +301,6 @@ httpcllr::backend_ready(backend *be, wsocket *s, int)
 void
 httpcllr::backend_write_error(void)
 {
-	WDEBUG((WLOG_DEBUG, "backend_write_error"));
 	stats.tcur->n_httpreq_fail++;
 	send_error(ERR_GENERAL, "Could not write request to backend", 503, "Internal server error");
 }
@@ -312,7 +308,6 @@ httpcllr::backend_write_error(void)
 void
 httpcllr::backend_write_headers_done(void)
 {
-	WDEBUG((WLOG_DEBUG, "backend_write_done"));
 	if (_header_parser._http_reqtype == REQTYPE_POST) {
 		/*
 		 * Connect the client to the backend and read the POST data.
@@ -350,7 +345,6 @@ httpcllr::backend_write_body_done(void)
 void
 httpcllr::backend_read_headers_done(void)
 {
-	WDEBUG((WLOG_DEBUG, "backend_read_headers_done"));
 	for (const char **s = removable_headers; *s; ++s)
 		_backend_headers._headers.remove(*s);
 	_backend_headers._headers.add("Connection", "close");
@@ -380,7 +374,6 @@ httpcllr::backend_read_headers_done(void)
 void
 httpcllr::backend_read_headers_error(void)
 {
-	WDEBUG((WLOG_DEBUG, "backend_read_headers_error"));
 	stats.tcur->n_httpreq_fail++;
 	send_error(ERR_BADRESPONSE, "Could not parse backend response", 503, "Internal server error");
 }
@@ -388,7 +381,6 @@ httpcllr::backend_read_headers_error(void)
 void
 httpcllr::send_headers_to_client_done(void)
 {
-	WDEBUG((WLOG_DEBUG, "send_headers_to_client_done"));
 	/*
 	 * Now connect the backend directly to the client.
 	 */ 
@@ -415,7 +407,6 @@ httpcllr::send_headers_to_client_done(void)
 		_backend_spigot->sp_connect(_chunking_filter);
 		_chunking_filter->sp_connect(_client_sink);
 	} else if (_backend_headers._flags.f_chunked && config.msie_hack && _header_parser._is_msie) {
-		WDEBUG((WLOG_DEBUG, "MSIE client, inserting dechunking_filter"));
 		_dechunking_filter = new dechunking_filter;
 		_backend_spigot->sp_connect(_dechunking_filter);
 		_dechunking_filter->sp_connect(_client_sink);
@@ -429,7 +420,6 @@ httpcllr::send_headers_to_client_done(void)
 void
 httpcllr::send_body_to_client_done(void)
 {
-	WDEBUG((WLOG_DEBUG, "send_body_to_client_done"));
 	stats.tcur->n_httpreq_ok++;
 	delete this;
 }
@@ -437,7 +427,6 @@ httpcllr::send_body_to_client_done(void)
 void
 httpcllr::send_body_to_client_error(void)
 {
-	WDEBUG((WLOG_DEBUG, "send_body_to_client_error"));
 	stats.tcur->n_httpreq_fail++;
 	delete this;
 }
@@ -445,7 +434,6 @@ httpcllr::send_body_to_client_error(void)
 void
 httpcllr::send_headers_to_client_error(void)
 {
-	WDEBUG((WLOG_DEBUG, "send_headers_to_client_error"));
 	stats.tcur->n_httpreq_fail++;
 	delete this;
 }
@@ -486,7 +474,8 @@ whttp_init(void)
 	snprintf(cache_hit_hdr, hsize, "HIT from %s", my_hostname);
 	snprintf(cache_miss_hdr, hsize, "MISS from %s", my_hostname);
 
-	wlog(WLOG_NOTICE, "whttp: starting %d worker threads", config.nthreads);
+	wlog(WLOG_NOTICE, format("whttp: starting %d worker threads")
+		% config.nthreads);
 	for (int i = 0; i < config.nthreads; ++i) {
 	http_thread	*t = new http_thread;
 		t->sv = wnet::socket::socketpair(st_dgram);
@@ -502,7 +491,7 @@ http_thread::accept_wakeup(wsocket *s, int)
 wsocket	*cli, *lsnr;
 	if (s->read((char *)&cli, sizeof(cli)) < sizeof(cli) ||
 	    s->read((char *)&lsnr, sizeof(lsnr) < sizeof(lsnr))) {
-		wlog(WLOG_ERROR, "accept_wakeup: reading fd: %s", strerror(errno));
+		wlog(WLOG_ERROR, format("accept_wakeup: reading fd: %e"));
 		exit(1);
 	}
 	s->readback(polycaller<wsocket *, int>(*this, 
@@ -541,7 +530,7 @@ http_thread::execute(void)
 	sv.second->readback(polycaller<wsocket *, int>(*this, 
 		&http_thread::accept_wakeup), 0);
 	event_base_loop(evb, 0);
-	wlog(WLOG_ERROR, "event_base_loop: %s", strerror(errno));
+	wlog(WLOG_ERROR, format("event_base_loop: %e"));
 	exit(1);
 }
 
@@ -567,7 +556,8 @@ whttp_reconfigure(void)
 	/* file logging */
 	if (config.access_log.size()) {
 		if ((alf = fopen(config.access_log.c_str(), "a")) == NULL) {
-			wlog(WLOG_WARNING, "opening %s: %s", config.access_log.c_str(), strerror(errno));
+			wlog(WLOG_WARNING, format("opening %s: %e")
+				% config.access_log);
 		}
 	}
 
@@ -581,16 +571,17 @@ whttp_reconfigure(void)
 				config.udplog_port, st_dgram, "UDP logger", prio_norm);
 			udplog_sock->connect();
 		} catch (socket_error &e) {
-			wlog(WLOG_WARNING, "connecting to UDP log host %s: %s; disabling UDP logging",
-				config.udplog_host.c_str(), e.what());
+			wlog(WLOG_WARNING, 
+		format("connecting to UDP log host %s: %s; disabling UDP logging")
+				% config.udplog_host % e.what());
 			return;
 		}
 
 		do_udplog = true;
-		wlog(WLOG_NOTICE, "UDP logging to %s[%s]:%d, sample rate 1/%d",
-			config.udplog_host.c_str(),
-			udplog_sock->straddr().c_str(),
-			config.udplog_port, config.udplog_sample);
+		wlog(WLOG_NOTICE, format("UDP logging to %s[%s]:%d, sample rate 1/%d")
+			% config.udplog_host
+			% udplog_sock->straddr()
+			% config.udplog_port % config.udplog_sample);
 	}
 
 }
@@ -704,8 +695,6 @@ void
 httpcllr::send_error(int errnum, char const *errdata, int status, char const *statstr)
 {
 string	url = "NONE";
-	WDEBUG((WLOG_DEBUG, "send_error; url=[%s]", _header_parser._http_path.c_str()));
-
 	if (_header_parser._http_path.size())
 		url = errsafe(_header_parser._http_path);
 
@@ -748,7 +737,6 @@ httpcllr::error_send_headers_done(void)
 void
 httpcllr::error_send_done(void)
 {
-	WDEBUG((WLOG_DEBUG, "error_send_done"));
 	delete this;
 }
 #if 0

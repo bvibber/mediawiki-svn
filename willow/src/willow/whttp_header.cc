@@ -28,6 +28,7 @@ using std::vector;
 #include "wnet.h"
 #include "flowio.h"
 #include "wconfig.h"
+#include "format.h"
 
 using namespace wnet;
 
@@ -186,12 +187,11 @@ header_list::undump(int fd, off_t *len)
 	
 	*len = 0;
 	if ((r = read(fd, &sz, sizeof(sz))) < 0) {
-		wlog(WLOG_WARNING, "reading cache file: %s", strerror(errno));
+		wlog(WLOG_WARNING, format("reading cache file: %e"));
 		return -1; /* XXX */
 	}
 	
 	*len += r;
-	WDEBUG((WLOG_DEBUG, "header_undump: %d entries", sz));
 
 	while (sz--) {
 	char	*n, *v, *s;
@@ -199,7 +199,6 @@ header_list::undump(int fd, off_t *len)
 	header	*h;
 		*len += read(fd, &i, sizeof(i));	
 		*len += read(fd, &j, sizeof(j));
-		WDEBUG((WLOG_DEBUG, "header_undump: i=%d j=%d", i, j));
 		n = (char *)malloc(i + j + 2);
 		i = read(fd, n, i);
 		*len += i;

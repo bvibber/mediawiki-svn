@@ -23,6 +23,7 @@ using std::make_pair;
 #include "wlog.h"
 #include "wbackend.h"
 #include "wconfig.h"
+#include "format.h"
 
 namespace conf {
 
@@ -56,8 +57,8 @@ parse_file(string const &file)
 {
 	parsing_tree.reset();
 	if ((yyin = fopen(file.c_str(), "r")) == NULL) {
-		wlog(WLOG_ERROR, "could not open configuration file %s: %s",
-				file.c_str(), strerror(errno));
+		wlog(WLOG_ERROR, 
+			format("could not open configuration file %s: %e") % file);
 		return NULL;
 	}
 	if (yyparse() || parse_error)
@@ -351,7 +352,8 @@ char	msg[1024] = { 0 };
 	vsnprintf(msg, sizeof msg, fmt, ap);
 	va_end(ap);
 
-	wlog(WLOG_ERROR, "\"%s\", line %d: %s", current_file.c_str(), lineno, msg);
+	wlog(WLOG_ERROR, format("\"%s\", line %d: %s")	
+		% current_file % lineno % msg);
 }
 
 void
@@ -359,7 +361,7 @@ value::vreport_error(const char *fmt, va_list ap) const
 {
 char	msg[1024] = { 0 };
 	vsnprintf(msg, sizeof msg, fmt, ap);
-	wlog(WLOG_ERROR, "%s: %s", cv_pos.format().c_str(), msg);
+	wlog(WLOG_ERROR, format("%s: %s") % cv_pos.format() % msg);
 }
 
 void
@@ -388,7 +390,7 @@ tree_entry::vreport_error(const char *fmt, va_list ap) const
 {
 char	msg[1024] = { 0 };
 	vsnprintf(msg, sizeof msg, fmt, ap);
-	wlog(WLOG_ERROR, "%s: %s", item_pos.format().c_str(), msg);
+	wlog(WLOG_ERROR, format("%s: %s") % item_pos.format() % msg);
 }
 
 void
@@ -408,13 +410,15 @@ va_list	ap;
 	va_start(ap, fmt);
 	vsnprintf(msg, sizeof msg, fmt, ap);
 	va_end(ap);
-	wlog(WLOG_ERROR, "\"%s\", line %d: catastrophic error: %s", current_file.c_str(), lineno, msg);
+	wlog(WLOG_ERROR, format("\"%s\", line %d: catastrophic error: %s")
+		% current_file % lineno % msg);
 }
 
 extern "C" void
 yyerror(const char *err)
 {
-	wlog(WLOG_ERROR, "\"%s\", line %d: %s", current_file.c_str(), lineno, err);
+	wlog(WLOG_ERROR, format("\"%s\", line %d: %s")
+		% current_file % lineno % err);
 }
 
 void
