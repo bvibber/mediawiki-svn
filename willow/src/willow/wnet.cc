@@ -48,19 +48,6 @@ static void sig_exit(int, short, void *);
 
 ioloop_t *ioloop;
 
-struct wrtbuf : freelist_allocator<wrtbuf> {
-	/* for buffers only */
-const	void	*wb_buf;
-	/* for sendfile only */
-	off_t	 wb_off;
-	int	 wb_source;
-	/* for buffers & sendfile */
-	size_t	 wb_size;
-	int	 wb_done;
-	polycallback<fde *, int> wb_func;
-	void	*wb_udata;
-};
-
 char current_time_str[30];
 char current_time_short[30];
 time_t current_time;
@@ -109,8 +96,8 @@ size_t	 i;
 
 	wlog(WLOG_NOTICE, "maximum number of open files: %d", getdtablesize());
 	
-	(void)signal(SIGPIPE, SIG_IGN);
-	wnet_init_select();
+	signal(SIGPIPE, SIG_IGN);
+	make_event_base();
 
 	for (i = 0; i < listeners.size(); ++i) {
 	listener	*lns = listeners[i];
@@ -601,14 +588,7 @@ sig_exit(int sig, short what, void *d)
 }
 
 void
-wnet_init_select(void)
-{
-	signal(SIGPIPE, SIG_IGN);
-	make_event_base();
-}
-
-void
-wnet_run(void)
+ioloop_t::run(void)
 {
 	make_event_base();
 	event_base_loop(evb, 0);

@@ -69,7 +69,8 @@ enum sprio {
 extern struct ioloop_t {
 	ioloop_t();
 
-	void	prepare(void);
+	void	prepare	(void);
+	void	run	(void);
 
 	void	_accept		(wnet::socket *, int);
 } *ioloop;
@@ -141,11 +142,8 @@ extern char current_time_short[];
 extern time_t current_time;
 extern int wnet_exit;
 
-	void	wnet_run(void);
-
 	void	wnet_add_accept_wakeup	(wnet::socket *);
 	void 	wnet_set_time		(void);
-	void 	wnet_init_select	(void);
 	void	make_event_base		(void);
 
 namespace wnet {	/* things above should move here eventually */

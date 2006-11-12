@@ -138,7 +138,7 @@ main(int argc, char *argv[])
 	if (!config.foreground)
 		daemon(0, 0);
 
-	wnet_run();
+	ioloop->run();
 	wlog_close();
 	wcache_shutdown();
 	whttp_shutdown();
