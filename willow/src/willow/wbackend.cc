@@ -49,15 +49,18 @@ backend::backend(
 	address const &addr)
 
 	: be_name(name)
-	, be_straddr(straddr)
+	, be_straddr(addr.straddr())
 	, be_addr(addr)
 	, be_dead(false)
 	, be_hash(_carp_hosthash(be_straddr))
 	, be_load(1.)
 {
+	WDEBUG((WLOG_DEBUG, format("adding backend with straddr [%s], hash %s")
+		% be_straddr % be_hash));
 }
 
-backend_pool::backend_pool(void)
+backend_pool::backend_pool(lb_type lbt)
+	: _lbtype(lbt)
 {
 }
 
@@ -179,11 +182,16 @@ size_t			tried = 0;
 	if (!_cur)
 		_cur = new int();
 
-	if (config.use_carp)
+	if (_lbtype == lb_carp || _lbtype == lb_carp_hostonly) {
 		_carp_recalc(url);
+		*_cur = 0;
+	}
 
 	while (tried++ <= backends.size()) {
 		time_t now = time(NULL);
+
+		WDEBUG((WLOG_DEBUG, format("_next_backend: considering %d %s")
+			% *_cur % backends[*_cur]->be_name));
 
 		if (*_cur >= (int) backends.size())
 			*_cur = 0;
@@ -196,8 +204,8 @@ size_t			tried = 0;
 			continue;
 		}
 
-		if (config.use_carp)
-			(*_cur) = 0;
+		if (_lbtype == lb_carp || _lbtype == lb_carp_hostonly)
+			*_cur = 0;
 		return backends[(*_cur)++];
 	}
 
@@ -244,14 +252,21 @@ struct	backend *be, *prev;
 void
 backend_pool::_carp_recalc(string const &url)
 {
-	uint32_t	hash;
+	uint32_t	hash = 0;
 	size_t		i;
 	for (i = 0; i < backends.size(); ++i) {
-		hash = _carp_urlhash(url) ^ backends[i]->be_hash;
+	string	s = url;
+		if (_lbtype == lb_carp_hostonly && url.size() > 6) {
+		string::size_type	i;
+			if ((i = url.find('/', 7)) != string::npos)
+				s = url.substr(7, i - 7);
+		}
+		hash = _carp_urlhash(s) ^ backends[i]->be_hash;			
 		hash += hash * 0x62531965;
 		hash = rotl(hash, 21);
 		hash *= (uint32_t) backends[i]->be_carplfm;
 		backends[i]->be_carp = hash;
+		WDEBUG((WLOG_DEBUG, format("host for CARP: [%s] -> %d, be hash %d") % s % hash % backends[i]->be_hash));
 	}
 	sort(backends.begin(), backends.end(), _becarp_cmp);
 }
@@ -259,5 +274,5 @@ backend_pool::_carp_recalc(string const &url)
 int
 backend_pool::_becarp_cmp(backend const *a, backend const *b)
 {
-	return a->be_carp - b->be_carp;
+	return a->be_carp < b->be_carp ? true : false;
 }

@@ -63,13 +63,14 @@ map<string, int>::iterator it;
 
 		it = poolnames.find(group);
 		if (it == poolnames.end()) {
-			gn = nbpools;
-			poolnames[group] = nbpools++;
+			val->report_error("backend group %s does not exist",
+				group.c_str());
+			return;
 		} else
 			gn = it->second;
 	}
 
-	bpools[gn].add(e.item_key, port, family);
+	bpools.find(gn)->second.add(e.item_key, port, family);
 }
 
 static void
@@ -97,8 +98,9 @@ addrlist	*res;
 
 		it = poolnames.find(group);
 		if (it == poolnames.end()) {
-			gn = nbpools;
-			poolnames[group] = nbpools++;
+			val->report_error("backend group %s does not exist",
+				group.c_str());
+			return;
 		} else
 			gn = it->second;
 	}
@@ -155,30 +157,6 @@ value	*v;
 			% config.caches[config.ncaches].dir
 			% config.caches[config.ncaches].maxsize);
 	config.ncaches++;
-}
-
-static bool
-v_carp_hash(tree_entry &e, value &v)
-{
-	if (!v.is_single(cv_string)) {
-		v.report_error("expected single unquoted string");
-		return false;
-	}
-string	&s = v.cv_values[0].av_strval;
-	if (s != "carp" && s != "simple") {
-		v.report_error("carp-hash must be \"carp\" or \"simple\"");
-		return false;
-	}
-	return true;
-}
-
-static void
-s_carp_hash(tree_entry &e, value &v)
-{
-string	&s = v.cv_values[0].av_strval;
-	if (s == "carp")
-		config.carp_hash = configuration::carp_hash_carp;
-	else	config.carp_hash = configuration::carp_hash_simple;
 }
 
 static bool
@@ -286,6 +264,50 @@ string	&s = v.cv_values[0].av_strval;
 }
 
 bool
+v_lb_type(tree_entry &e, value &v)
+{
+	if (!v.is_single(cv_string)) {
+		v.report_error("lb-type must be single unquoted string");
+		return false;
+	}
+string	&s = v.cv_values[0].av_strval;
+	if (s != "rr" && s != "carp" && s != "carp-host") {
+		v.report_error("expected \"rr\", \"carp\" or \"carp-host\"");
+		return false;
+	}
+	return true;
+}
+
+void
+set_backend_group(tree_entry &e)
+{
+int	gn;
+string	group;
+map<string, int>::iterator	it;
+	group = e.item_key;
+
+	it = poolnames.find(group);
+	if (it == poolnames.end()) {
+		gn = nbpools;
+		poolnames[group] = nbpools++;
+	} else
+		gn = it->second;
+
+lb_type	 lbtype = lb_rr;
+value	*v;
+	if ((v = e/"lb-type") != NULL) {
+	string	&s = v->cv_values[0].av_strval;
+		if (s == "rr")
+			lbtype = lb_rr;
+		else if (s == "carp")
+			lbtype = lb_carp;
+		else if (s == "carp-host")
+			lbtype = lb_carp_hostonly;
+	}
+	bpools.insert(make_pair(gn, backend_pool(lbtype)));
+}
+	
+bool
 read_config(string const &file)
 {
 conf_definer	 conf;
@@ -309,8 +331,6 @@ conf
 		.value("compress-level",	simple_range(1, 9),	set_int(config.complevel))
 		.value("backend-retry",		simple_time,		set_time(config.backend_retry))
 		.value("cache-private",		simple_yesno,		set_yesno(config.cache_private))
-		.value("use-carp",		simple_yesno,		set_yesno(config.use_carp))
-		.value("carp-hash",		func(v_carp_hash),	func(s_carp_hash))
 		.value("threads",		simple_range(1, 1024),	set_int(config.nthreads))
 		.value("msie-http11-hack",	simple_yesno,		set_yesno(config.msie_hack))
 		.value("admin",			nonempty_qstring,	set_string(config.admin))
@@ -331,6 +351,10 @@ conf
 		.value("port",		simple_range(1, 65535), ignore)
 		.value("aftype",	func(v_aftype),		ignore)
 		.value("group",		nonempty_qstring,	ignore)
+
+	.block("backend-group", require_name)
+		.end(func(set_backend_group))
+		.value("lb-type",	func(v_lb_type),	ignore)
 
 	.block("backend", require_name)
 		.end(func(set_backend))

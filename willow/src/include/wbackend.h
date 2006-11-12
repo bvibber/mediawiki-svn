@@ -26,6 +26,12 @@ using std::map;
 #include "wnet.h"
 using namespace wnet;
 
+enum lb_type {
+	lb_rr,
+	lb_carp,
+	lb_carp_hostonly,
+};
+
 struct backend {
 		backend(string const &, string const &, address const &);
 
@@ -46,7 +52,7 @@ struct backend {
 
 struct backend_cb_data;
 struct backend_pool {
-	backend_pool();
+	backend_pool(lb_type);
 
 	void	add	(string const &, int, int);
 
@@ -66,7 +72,9 @@ struct backend_pool {
 	static int	 _becarp_cmp	(backend const *a, backend const *b);
 	static uint32_t  _carp_urlhash	(string const &);
 
+private:
 	tss<int>	 _cur;
+	lb_type	_lbtype;
 };
 
 extern map<int, backend_pool> bpools;

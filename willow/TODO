@@ -1,3 +1,2 @@
-- CARP: use only hostname (no URL)
 - backend selection by URL
 - backend selection by client-supplied header

@@ -262,7 +262,7 @@ httpcllr::header_read_complete(void)
 	}
 
 	_client_spigot->sp_disconnect();
-	if (bpools[_group].get(_header_parser._http_path, 
+	if (bpools.find(_group)->second.get(_header_parser._http_path, 
 		     polycaller<backend *, wsocket *, int>(*this, 
 		    &httpcllr::backend_ready), 0) == -1)
 		backend_ready(NULL, NULL, 0);

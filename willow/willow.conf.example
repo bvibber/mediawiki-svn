@@ -18,11 +18,20 @@ backend "127.0.0.1" {
 	port = 8081;
 };
 
-/*
- * You can also force a particular address family (v4 or v6) when
- * using a hostname.
- */
+backend-group "backup" {
+	/*
+	 * lb-type can be "rr" (plain roundrobin), "carp" (use CARP
+	 * algorithm) or "carp-host" (use CARP but only consider the
+	 * request host, not the pathname).
+	 */
+	lb-type = carp;
+};
+
 backend "backends.mycompany.com" {
+	/*
+	 * You can also force a particular address family (v4 or v6) when
+	 * using a hostname.
+	 */
 	aftype = ipv6;	/* only connect to IPv6 addresses */
 
 	/*

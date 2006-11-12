@@ -292,11 +292,13 @@ address::straddr(void) const
 {
 	if (_straddr.empty()) {
 	char	res[NI_MAXHOST];
+	char	port[NI_MAXSERV];
 	int	i;
 		if ((i = getnameinfo((sockaddr *) &_addr, _addrlen, 
-		    res, sizeof(res), NULL, 0, NI_NUMERICHOST)) != 0)
+		    res, sizeof(res), port, sizeof(port), 
+			NI_NUMERICHOST | NI_NUMERICSERV)) != 0)
 			throw resolution_error(i);
-		_straddr = res;
+		_straddr = format("[%s]:%s") % res % port;
 	}
 	return _straddr;
 }
