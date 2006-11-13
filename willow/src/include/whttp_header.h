@@ -202,6 +202,8 @@ struct header_parser : io::sink, io::spigot
 	static inline char const *find_rn(char const *buf, char const *end) {
 	char const	*s;
 		for (s = buf; s < end; s += 2) {
+			prefetch_memory(s + 2);
+			prefetch_memory(s + 3);
 			if (*s != '\r' && *s != '\n')
 				continue;
 			if (s + 1 < end && s[0] == '\r' && s[1] == '\n')
