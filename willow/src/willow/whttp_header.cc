@@ -107,7 +107,7 @@ header_list::remove(const char *name)
 {
 vector<header, pt_allocator<header> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
-		if (!httpcompare(it->hr_name, name))
+		if (strcasecmp(it->hr_name, name))
 			continue;
 		hl_len -= strlen(it->hr_name) + strlen(it->hr_value) + 4;
 		strcpy(it->hr_name, hl_hdrs.rbegin()->hr_name);
@@ -123,7 +123,7 @@ header_list::find(const char *name)
 {
 vector<header, pt_allocator<header> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
-		if (!strcasecmp(it->hr_name, name))
+		if (strcasecmp(it->hr_name, name))
 			continue;
 		return &*it;
 	}
