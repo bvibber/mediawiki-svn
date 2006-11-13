@@ -29,8 +29,7 @@
 #define REQTYPE_OPTIONS	4
 #define REQTYPE_INVALID	-1
 
-#define MAX_HDRNAM	30
-#define MAX_HDRVAL	128
+#define HDR_BUFSZ	256
 
 extern struct request_type {
 	const char *name;
@@ -38,27 +37,99 @@ extern struct request_type {
 	int type;
 } supported_reqtypes[];
 
+/*
+ * A single header.  Usually stored inside a header_list.  For speed,
+ * we assume the length of one header line is no more than HDX_BUFSZ-1
+ * characters, and pre-allocate a buffer of that size.  In case the
+ * header is longer, hr_buffer is ignored, and a new buffer is allocated
+ * from the pt_allocator.  hr_free==true indicated that the buffer should
+ * be freed on destruction.
+ */
 struct header : freelist_allocator<header> {
-	header(char const *, size_t, char const *, size_t);
-	~header() {}
-	header(header const &);
+	/*
+	 * Construct a new header from the given name and value, which need
+	 * not be null terminated.
+	 */
+	header( char const *name, size_t namelen,
+		char const *value, size_t valuelen);
 
-	char	hr_name[MAX_HDRNAM];
-	char	hr_value[MAX_HDRVAL];
+	~header();
+	header(header const &);
+	
+	/*
+	 * Assign new values to this header.
+	 */
+	void	assign( char const *name, size_t namelen,
+			char const *value, size_t valuelen);
+
+	/*
+	 * Destructively assign the contents of other to *this.  The state
+	 * of other is undefined until assign() or ~header is called.
+	 */
+	void	move	(header &other);
+
+	/* return the header's name */
+	char const	*name	(void) const { return hr_name; }
+	/* return the header's value */
+	char const	*value	(void) const { return hr_value; }
+
+private:
+	friend struct header_list;
+
+	char	 hr_buffer[HDR_BUFSZ];
+	char	*hr_name;	/* name, == hr_buffer or else alloc'd data	*/
+	char	*hr_value;	/* value					*/
+	size_t	 hr_allocd;	/* size of buffer alloced if any		*/
+	static pt_allocator<char>	alloc;
 };
 
+/*
+ * A list of headers found in a request.
+ */
 struct header_list {
+	/* Construct an empty header list. */
 	header_list();
 	~header_list() {};
 
-	void	 add		(char const *, char const *);
-	void	 add		(char const *, size_t, char const *, size_t);
-	void	 append_last	(const char *, size_t);
-	char	*build		(void);
+	/*
+	 * Add a new (header,value) pair to the list.  name and value must be
+	 * nul-terminated.
+	 */
+	void	 add		(char const *name, char const *value);
+
+	/*
+	 * As above, but nul terminated is not required.
+	 */
+	void	 add		(char const *name, size_t namelen,
+				 char const *value, size_t valuelen);
+
+	/*
+	 * Append ", app" to the end of the previous header.  app need not
+	 * be terminated.
+	 */
+	void	 append_last	(const char *app, size_t applen);
+
+	/*
+	 * Remove the named header from the list.
+	 */
 	void	 remove		(const char *);
-	void	 dump		(int);
-	int	 undump		(int, off_t *);
+
+	/*
+	 * Return a string (allocated with new char[]) containing the request
+	 * headers in a form suitable for use in an HTTP request or response.
+	 * The caller is expected to delete the returned value.
+	 */
+	char	*build		(void);
+
+	/*
+	 * Find a specific header in the list.  Returns NULL if no such header
+	 * exists.
+	 */
 struct header	*find		(const char *name);
+
+private:
+	friend struct header_spigot;
+	friend struct header_parser;
 
 	header			*hl_last;
 	vector<header, pt_allocator<header> >	 hl_hdrs;

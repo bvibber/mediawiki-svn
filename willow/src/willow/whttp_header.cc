@@ -58,17 +58,75 @@ find_reqtype(char const *str, int len)
 	return REQTYPE_INVALID;
 }
 
+pt_allocator<char> header::alloc;
+
 header::header(char const *n, size_t nlen, char const *v, size_t vlen)
+	: hr_allocd(0)
 {
+	assign(n, nlen, v, vlen);
+}
+
+header::header(header const &other)
+	: hr_allocd(0)
+{
+	assign(other.hr_name, strlen(other.hr_name),
+		other.hr_value, strlen(other.hr_value));
+}
+
+void
+header::assign(char const *n, size_t nlen, char const *v, size_t vlen)
+{
+char	*buf = hr_buffer;
+	if (hr_allocd) {
+		alloc.deallocate(hr_name, hr_allocd);
+		hr_allocd = false;
+	}
+
+	if ((nlen + vlen + 2) >= HDR_BUFSZ) {
+		buf = alloc.allocate(nlen + vlen + 2);
+		hr_allocd = nlen + vlen + 2;
+	}
+
+	hr_name = buf;
+	hr_value = buf + nlen + 1;
+
 	memcpy(hr_name, n, nlen);
 	memcpy(hr_value, v, vlen);
 	hr_name[nlen] = hr_value[vlen] = '\0';
 }
 
-header::header(header const &other)
+header::~header(void)
 {
-	strcpy(hr_name, other.hr_name);
-	strcpy(hr_value, other.hr_value);
+	if (hr_allocd)
+		alloc.deallocate(hr_name, hr_allocd);
+}
+
+void
+header::move(header &other)
+{
+	/*
+	 * The other header is static, just copy the string.
+	 */
+	if (!other.hr_allocd) {
+		if (hr_allocd) {
+			alloc.deallocate(hr_name, hr_allocd);
+			hr_allocd = 0;
+		}
+	
+		hr_name = hr_buffer;
+		strcpy(hr_name, other.hr_name);
+		hr_value = hr_buffer + strlen(hr_name) + 1;
+		strcpy(hr_value, other.hr_value);
+		return;
+	}
+
+	/*
+	 * The other header is allocd, steal its buffer.
+	 */
+	hr_allocd = other.hr_allocd;
+	hr_name = other.hr_name;
+	hr_value = other.hr_value;
+	other.hr_allocd = 0;
 }
 
 header_list::header_list()
@@ -96,10 +154,43 @@ header_list::append_last(const char *append, size_t len)
 {
 char const	*tmp;
 char		*n;
-	assert(hl_last);
-	strlcat(hl_last->hr_value, ", ", sizeof(hl_last->hr_value));
-	strncat(hl_last->hr_value, append, min(len, MAX_HDRVAL - strlen(hl_last->hr_value) - 1));
+int		 curnlen, curvlen;
+	curnlen = strlen(hl_last->hr_name);
+	curvlen = strlen(hl_last->hr_value);
+
 	hl_len += len + 2;
+
+size_t	nbufsz = curnlen + curvlen + 4 + len;
+	/*
+	 * Simple case: not allocated, and new header fits in static buf.
+	 */
+	if (!hl_last->hr_allocd && nbufsz < HDR_BUFSZ) {
+		strcat(hl_last->hr_value, ", ");
+		strncat(hl_last->hr_value, append, len);
+		return;
+	}
+
+	/*
+	 * New header is too long.
+	 */
+	if ((!hl_last->hr_allocd && nbufsz >= HDR_BUFSZ) ||
+	     (hl_last->hr_allocd && nbufsz >= hl_last->hr_allocd)) {
+	char	*nbuf = hl_last->alloc.allocate(nbufsz);
+		strcpy(nbuf, hl_last->hr_name);
+		sprintf(nbuf + curnlen + 1, "%s, %.*s",
+			hl_last->hr_value, len, append);
+
+		if (hl_last->hr_allocd)
+			hl_last->alloc.deallocate(hl_last->hr_name, hl_last->hr_allocd);
+
+		hl_last->hr_name = nbuf;
+		hl_last->hr_value = nbuf + curnlen + 1;
+		hl_last->hr_allocd = nbufsz;
+		return;
+	}
+
+	/* should not get here */
+	abort();
 }
 
 void
@@ -110,8 +201,7 @@ vector<header, pt_allocator<header> >::iterator	it, end;
 		if (strcasecmp(it->hr_name, name))
 			continue;
 		hl_len -= strlen(it->hr_name) + strlen(it->hr_value) + 4;
-		strcpy(it->hr_name, hl_hdrs.rbegin()->hr_name);
-		strcpy(it->hr_value, hl_hdrs.rbegin()->hr_value);
+		it->move(*hl_hdrs.rbegin());
 		hl_hdrs.pop_back();
 		return;
 	}
@@ -223,11 +313,6 @@ size_t		 vlen, nlen, rnpos;
 		while (isspace(*value) && value < rn)
 			value++;
 		vlen = rn - value;
-
-		if (nlen > MAX_HDRNAM || vlen > MAX_HDRVAL) {
-			_sink_spigot->sp_cork();
-			return io::sink_result_error;
-		}
 
 		if (!strncasecmp(name, "Transfer-Encoding", nlen) && !strncasecmp(value, "chunked", vlen))
 			_flags.f_chunked = 1;
