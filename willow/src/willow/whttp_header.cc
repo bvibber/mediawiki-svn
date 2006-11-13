@@ -168,11 +168,20 @@ header_list::header_list()
 	hl_hdrs.reserve(20);
 }
 
+header_list::~header_list()
+{
+	for (vector<header *, pt_allocator<header *> >::iterator
+		it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it)
+		delete *it;
+}
+
 void
 header_list::add(char const *name, size_t namelen, char const *value, size_t vallen)
 {
-	hl_hdrs.push_back(header(name, namelen, value, vallen));
-	hl_last = &*hl_hdrs.rbegin();
+header	*h = new header(name, namelen, value, vallen);
+
+	hl_hdrs.push_back(h);
+	hl_last = h;
 	hl_len += namelen + vallen + 4;
 }
 
@@ -229,12 +238,12 @@ size_t	nbufsz = curnlen + curvlen + 4 + len;
 void
 header_list::remove(const char *name)
 {
-vector<header, pt_allocator<header> >::iterator	it, end;
+vector<header *, pt_allocator<header *> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
-		if (strcasecmp(it->hr_name, name))
+		if (strcasecmp((*it)->hr_name, name))
 			continue;
-		hl_len -= strlen(it->hr_name) + strlen(it->hr_value) + 4;
-		it->move(*hl_hdrs.rbegin());
+		hl_len -= strlen((*it)->hr_name) + strlen((*it)->hr_value) + 4;
+		(*it)->move(**hl_hdrs.rbegin());
 		hl_hdrs.pop_back();
 		return;
 	}
@@ -244,11 +253,11 @@ vector<header, pt_allocator<header> >::iterator	it, end;
 struct header *
 header_list::find(const char *name)
 {
-vector<header, pt_allocator<header> >::iterator	it, end;
+vector<header *, pt_allocator<header *> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
-		if (strcasecmp(it->hr_name, name))
+		if (strcasecmp((*it)->hr_name, name))
 			continue;
-		return &*it;
+		return *it;
 	}
 	return NULL;
 }
@@ -264,16 +273,16 @@ size_t	 buflen = 0;
 	buf = new char[bufsz];
 	
 	*buf = '\0';
-vector<header, pt_allocator<header> >::iterator	it, end;
+vector<header *, pt_allocator<header *> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
 	int	incr;
-		incr = strlen(it->hr_name);
-		memcpy(buf + buflen, it->hr_name, incr);
+		incr = strlen((*it)->hr_name);
+		memcpy(buf + buflen, (*it)->hr_name, incr);
 		buflen += incr;
 		memcpy(buf + buflen, ": ", 2);
 		buflen += 2;
-		incr = strlen(it->hr_value);
-		memcpy(buf + buflen, it->hr_value, incr);
+		incr = strlen((*it)->hr_value);
+		memcpy(buf + buflen, (*it)->hr_value, incr);
 		buflen += incr;
 		memcpy(buf + buflen, "\r\n", 2);
 		buflen += 2;

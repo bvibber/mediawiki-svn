@@ -89,7 +89,7 @@ private:
 struct header_list {
 	/* Construct an empty header list. */
 	header_list();
-	~header_list() {};
+	~header_list();
 
 	/*
 	 * Add a new (header,value) pair to the list.  name and value must be
@@ -132,7 +132,7 @@ private:
 	friend struct header_parser;
 
 	header			*hl_last;
-	vector<header, pt_allocator<header> >	 hl_hdrs;
+	vector<header *, pt_allocator<header *> >	 hl_hdrs;
 	int			 hl_len;
 };
 
