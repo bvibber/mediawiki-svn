@@ -292,14 +292,14 @@ char const	*rn, *value, *name, *bufp = buf;
 size_t		 vlen, nlen, rnpos;
 	while ((rn = find_rn(bufp, bufp + len)) != NULL) {
 		for (char const *c = bufp; c < rn; ++c)
-			if (*(unsigned char *)c > 0x7f || !*c)
+			if (unlikely(*(unsigned char *)c > 0x7f || !*c))
 				return io::sink_result_error;
 
 		if (rn == bufp) {
 			_sink_spigot->sp_cork();
 			discard += bufp - buf + 2;
 			/* request with no request is an error */
-			if (!_got_reqtype)
+			if (unlikely(!_got_reqtype))
 				return io::sink_result_error;
 			else {
 				if (!_is_response && _http_host.empty()) {
@@ -317,14 +317,15 @@ size_t		 vlen, nlen, rnpos;
 		name = bufp;
 
 		if (!_got_reqtype) {
-			if ((!_is_response && parse_reqtype(bufp, rn) == -1)
-			    || (_is_response && parse_response(bufp, rn) == -1)) {
+			if (unlikely((!_is_response && parse_reqtype(bufp, rn) == -1)
+			    || (_is_response && parse_response(bufp, rn) == -1))) {
 				_sink_spigot->sp_cork();
 				return io::sink_result_error;
 			}
 			_got_reqtype = true;
 			goto next;
 		}
+
 		if (*name == ' ') {
 		const char	*s = name;
 			/* continuation of last header */
@@ -337,7 +338,7 @@ size_t		 vlen, nlen, rnpos;
 			goto next;
 		}
 
-		if ((value = (const char *)memchr(name, ':', rnpos)) == NULL) {
+		if (unlikely((value = (const char *)memchr(name, ':', rnpos)) == NULL)) {
 			_sink_spigot->sp_cork();
 			return io::sink_result_error;
 		}

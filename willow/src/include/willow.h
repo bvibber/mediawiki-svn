@@ -82,8 +82,8 @@ void outofmemory(void);
 extern int char_table[];
 
 #if defined(__GNUC__) || defined(__INTEL_COMPILER)
-# define likely(c) __builtin_expect((c), 1)
-# define unlikely(c) __builtin_expect((c), 0)
+# define likely(c) __builtin_expect((c), true)
+# define unlikely(c) __builtin_expect((c), false)
 #else
 # define likely(c) c
 # define unlikely(c) c
