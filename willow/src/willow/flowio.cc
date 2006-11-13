@@ -125,24 +125,28 @@ sink_result	res;
 sink_result
 socket_sink::data_ready(char const *buf, size_t len, ssize_t &discard)
 {
-ssize_t	wrote;
-	switch (wrote = _socket->write(buf, len)) {
-	case -1:
-		if (errno == EAGAIN) {
-			_sink_spigot->sp_cork();
-			if (!_reg) {
-				_socket->writeback(polycaller<wsocket *, int>(
-					*this, &socket_sink::_socketcall), 0);
-				_reg = true;
+ssize_t	off = 0;
+	while (off < len) {
+	ssize_t	wrote;
+		switch (wrote = _socket->write(buf + off, len - off)) {
+		case -1:
+			if (errno == EAGAIN) {
+				_sink_spigot->sp_cork();
+				if (!_reg) {
+					_socket->writeback(polycaller<wsocket *, int>(
+						*this, &socket_sink::_socketcall), 0);
+					_reg = true;
+				}
+				return sink_result_blocked;
 			}
-			return sink_result_blocked;
+			_sink_spigot->sp_cork();
+			return sink_result_error;
+			break;
 		}
-		_sink_spigot->sp_cork();
-		return sink_result_error;
-		break;
+		discard += wrote;
+		_counter += wrote;
+		off += wrote;
 	}
-	discard += wrote;
-	_counter += wrote;
 	return sink_result_okay;
 }
 
