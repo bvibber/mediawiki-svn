@@ -121,6 +121,7 @@ struct socket_sink : freelist_allocator<socket_sink>, sink {
 	}
 
 	void _socketcall(wsocket *, int) {
+		_reg = false;
 		_sink_spigot->sp_uncork();
 	}
 	virtual void _sink_disconnected(void) {
