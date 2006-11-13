@@ -35,7 +35,7 @@ struct backend_list;
 struct backend_pool;
 struct backend_cb_data;
 
-struct backend {
+struct backend : freelist_allocator<backend> {
 		backend(string const &, string const &, address const &);
 
 	string		 be_name;	/* IP as specified in config	*/
