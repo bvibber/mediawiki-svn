@@ -52,6 +52,7 @@ private:
 	vector<argtype>	_argtypes;
 	vector<string>	_args;
 	string		_fmt;
+	int		_reserve;
 };
 
 template<typename T>
@@ -62,6 +63,7 @@ ostringstream	strm;
 	switch (_argtypes[_args.size()]) {
 	case at_string:
 		_args.push_back(lexical_cast<string>(arg));
+		_reserve += _args.rbegin()->size();
 		return *this;
 	case at_decint:
 		break;
@@ -73,10 +75,12 @@ ostringstream	strm;
 		break;
 	case at_errno:
 		_args.push_back(strerror(errno));
+		_reserve += _args.rbegin()->size();
 		return *this;
 	}
 	strm << arg;
 	_args.push_back(strm.str());
+	_reserve += _args.rbegin()->size();
 	return *this;
 }
 

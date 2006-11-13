@@ -13,6 +13,7 @@
 
 format::format(string const &str)
 	: _fmt(str)
+	, _reserve(0)
 {
 	parse_format_string();
 }
@@ -21,6 +22,7 @@ void
 format::parse_format_string(void)
 {
 int	i, len = _fmt.length();
+	_reserve += len;
 	for (i = 0; i < len; ++i) {
 		switch (_fmt[i]) {
 		case '%':
@@ -58,6 +60,7 @@ format::str(void) const
 int	i, len = _fmt.length();
 string	result;
 int	argn = 0;
+	result.reserve(_reserve);
 	for (i = 0; i < len; ++i) {
 		switch (_fmt[i]) {
 		case '%':
