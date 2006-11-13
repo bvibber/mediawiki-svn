@@ -79,7 +79,7 @@ clean_coss() {
 		if [ -w $cossfile -a -n "$cosssize" -a $cosssize -gt 0 ]
 		then
 			gid=`grepconf cache_effective_group proxy`
-			su $gid dd if=/dev/zero bs=1048576 count=$cosssize of=$cossfile || exit 1
+			su $gid -c "/bin/dd if=/dev/zero bs=1048576 count=$cosssize of=$cossfile" || exit 1
 		fi
 	done
 }
@@ -185,6 +185,7 @@ case "$1" in
 	;;
     clean)
 	log_action_msg "Cleaning cache directories"
+	prepare_coss
 	clean_coss
 	;;
     *)

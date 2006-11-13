@@ -1,3 +1,9 @@
+squid (2.6.5-1wm3) edgy; urgency=low
+
+  * Fix 'dd' line in initscript 'clean'
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 13 Nov 2006 16:19:30 +0000
+
 squid (2.6.5-1wm2) edgy; urgency=low
 
   * Include a proposed patch for squid bug #1818, COSS rebuild crashes
