@@ -103,12 +103,17 @@ struct backend_pool {
 	int		 size		(void) const;
 	string const	&name		(void) const;
 
+	void		 add_keptalive	(pair<wsocket *, backend *>);
+	pair<wsocket *, backend *>
+			 get_keptalive	(void);
+
 private:
 	friend class backend_list;
 
 	void		 _carp_calc	(void);
 
 	vector<backend *, pt_allocator<backend *> > backends;
+	tss<vector<pair<wsocket *, backend *> > > _keptalive;
 	tss<size_t>	 _cur;
 	lb_type		 _lbtype;
 	string		 _name;

@@ -263,6 +263,26 @@ backend_pool::name(void) const
 }
 
 void
+backend_pool::add_keptalive(pair<wsocket *, backend *>s)
+{
+	if (!_keptalive)
+		_keptalive = new vector<pair<wsocket *, backend *> >;
+	_keptalive->push_back(s);
+}
+
+pair<wsocket *, backend *>
+backend_pool::get_keptalive(void)
+{
+	if (!_keptalive)
+		_keptalive = new vector<pair<wsocket *, backend *> >;
+	if (_keptalive->empty())
+		return pair<wsocket *, backend *>(0, 0);
+pair<wsocket *, backend *> ret = *_keptalive->rbegin();
+	_keptalive->pop_back();
+	return ret;
+}
+
+void
 backend_list::_carp_recalc(imstring const &url, imstring const &host, lb_type lbtype)
 {
 	uint32_t	hash = 0;

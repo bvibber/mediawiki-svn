@@ -257,10 +257,21 @@ bool	can_keepalive = false;
 	_blist = NULL;
 	delete _header_parser;
 	_header_parser = NULL;
+
+	/*
+	 * Return the backend to the keepalive pool, if we can.
+	 */
+	if (_backend_socket && !_backend_headers->_no_keepalive &&
+	    _backend_headers->_http_vers == http11) {
+		bpools.find(_group)->second.add_keptalive(
+			make_pair(_backend_socket, _backend));
+	} else {
+		delete _backend_socket;
+	}
+
+	_backend_socket = NULL;
 	delete _backend_headers;
 	_backend_headers = NULL;
-	delete _backend_socket;
-	_backend_socket = NULL;
 
 	_client_spigot->sp_disconnect();
 	_client_spigot->sp_cork();
@@ -299,7 +310,6 @@ httpcllr::header_read_complete(void)
 	 * Now parse the client's headers and decide what to do with
 	 * the request.
 	 */
-	_header_parser->_headers.add("Connection", "close");
 	_header_parser->_headers.add("X-Forwarded-For", _client_socket->straddr(false).c_str());
 
 	if (_header_parser->_http_reqtype == REQTYPE_POST) {
@@ -330,6 +340,11 @@ pair<bool, uint16_t> acheck;
 		}
 	}
 
+pair<wsocket *, backend *> ke = bpools.find(_group)->second.get_keptalive();
+	if (ke.first) {
+		backend_ready(ke.second, ke.first, 0);
+		return;
+	}
 	_blist = bpools.find(_group)->second.get_list(
 				_header_parser->_http_path,
 				_header_parser->_http_host);
@@ -497,7 +512,18 @@ httpcllr::send_headers_to_client_done(void)
 		_backend_spigot->sp_connect(_dechunking_filter);
 		_dechunking_filter->sp_connect(_client_sink);
 	} else {
-		_backend_spigot->sp_connect(_client_sink);
+		/*
+		 * For a keep-alive request, we need a size limiting filter to prevent
+		 * hanging forever on the backend.
+		 */
+		if (_backend_headers->_content_length != -1) {
+			delete _size_limit;
+			_size_limit = new io::size_limiting_filter(_backend_headers->_content_length);
+			_backend_spigot->sp_connect(_size_limit);
+			_size_limit->sp_connect(_client_sink);
+		} else {
+			_backend_spigot->sp_connect(_client_sink);
+		}
 		_client_sink->_counter = 0;
 	}
 	_backend_spigot->sp_uncork();
