@@ -419,6 +419,13 @@ httpcllr::backend_read_headers_done(void)
 		_backend_headers->_headers.remove("Transfer-Encoding");
 
 	/*
+	 * Insert HTTP/1.0 keep-alive headers.
+	 */
+	if (_header_parser->_force_keepalive) {
+		_backend_headers->_headers.add("Keep-Alive", "300");
+	}
+
+	/*
 	 * Send the headers to the client.
 	 */
 	_backend_spigot->sp_disconnect();
