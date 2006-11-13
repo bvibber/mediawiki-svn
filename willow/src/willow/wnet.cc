@@ -548,7 +548,9 @@ socket::~socket(void)
 void
 make_event_base(void)
 {
+static lockable meb_lock;
 	if (evb == NULL) {
+		HOLDING(meb_lock);
 		evb = (event_base *)event_init();
 		event_base_priority_init(evb, prio_max);
 		signal_set(&ev_sigint, SIGINT, sig_exit, NULL);
