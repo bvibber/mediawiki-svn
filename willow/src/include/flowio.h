@@ -131,7 +131,6 @@ struct socket_sink : freelist_allocator<socket_sink>, sink {
 	sink_result data_ready(char const *buf, size_t len, ssize_t &discard);
 	sink_result data_empty(void) {
 		WDEBUG((WLOG_DEBUG, "socket_sink::data_empty"));
-		_socket->uncork();
 		_reg = false;
 		return sink_result_finished;
 	}

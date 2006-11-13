@@ -351,6 +351,7 @@ httpcllr::backend_ready(backend *be, wsocket *s, int)
 	 * Create the backend socket_sink, connect the header parser to it
 	 * and start sending headers.
 	 */
+	s->cork();
 	_backend_socket = s;
 	_backend = be;
 	_backend_sink = new io::socket_sink(s);
@@ -390,6 +391,8 @@ httpcllr::backend_write_headers_done(void)
 void
 httpcllr::backend_write_body_done(void)
 {
+	_backend_socket->uncork();
+
 	/*
 	 * Detach the backend sink and create a spigot to read the reply.
 	 */
@@ -431,6 +434,7 @@ httpcllr::backend_read_headers_done(void)
 	 */
 	_backend_spigot->sp_disconnect();
 
+	_client_socket->cork();
 	_client_sink = new io::socket_sink(_client_socket);
 	_backend_headers->completed_callee(this, &httpcllr::send_headers_to_client_done);
 	_backend_headers->error_callee(this, &httpcllr::send_headers_to_client_error);
@@ -489,6 +493,7 @@ httpcllr::send_headers_to_client_done(void)
 void
 httpcllr::send_body_to_client_done(void)
 {
+	_client_socket->uncork();
 	stats.tcur->n_httpreq_ok++;
 	log_request();
 	end_request();
