@@ -256,11 +256,12 @@ httpcllr::header_read_complete(void)
 	WDEBUG((WLOG_DEBUG, format("whttp: _group=%d") % _group));
 	_client_spigot->sp_disconnect();
 map<string,int>::iterator	it;
+map<imstring,int>::iterator	mit;
 pair<bool, uint16_t> acheck;
 
-	if ((it = host_to_bpool.find(_header_parser._http_host)) !=
+	if ((mit = host_to_bpool.find(_header_parser._http_host)) !=
 	    host_to_bpool.end())
-		_group = it->second;
+		_group = mit->second;
 
 	if (!_header_parser._http_backend.empty()) {
 		acheck = config.force_backend.allowed(_client_socket->address().addr());
@@ -719,7 +720,7 @@ string	url = "NONE";
 	_response = status;
 
 	if (_header_parser._http_path.size())
-		url = errsafe(_header_parser._http_path);
+		url = errsafe(_header_parser._http_path.c_str());
 
 	_error_headers = new header_spigot(status, statstr);
 	if (!_client_sink)

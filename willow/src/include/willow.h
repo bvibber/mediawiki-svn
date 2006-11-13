@@ -26,6 +26,7 @@ using std::runtime_error;
 using std::basic_string;
 using std::char_traits;
 using std::vector;
+using std::basic_ostream;
 
 #include "wlog.h"
 #include "radix.h"
@@ -61,6 +62,8 @@ extern "C" size_t strlcat(char *dst, const char *src, size_t siz);
 #ifndef HAVE_STRLCPY
 extern "C" size_t strlcpy(char *dst, const char *src, size_t siz);
 #endif
+
+#define rotl(i,r) (((i) << (r)) | ((i) >> (sizeof(i)*CHAR_BIT-(r))))
 
 int str10toint(char const *src, int len);
 int str16toint(char const *src, int len);
@@ -132,5 +135,299 @@ extern struct stats_stru : noncopyable {
 	atomic<uint32_t>	n_httpresp_oks;		/* httpresp_ok per sec		*/
 	atomic<uint32_t>	n_httpresp_fails;	/* httpresp_fail per sec	*/
 } stats;
+
+template<typename charT, typename allocator>
+struct basic_imstring {
+	typedef typename allocator::size_type	size_type;
+	typedef charT 		*iterator;
+	typedef charT const	*const_iterator;
+
+	basic_imstring(void);
+	basic_imstring(charT const *);
+	basic_imstring(charT const *, size_type);
+	basic_imstring(basic_imstring const &);
+
+	template<typename Sallocator>
+	basic_imstring(basic_string<charT, char_traits<charT>, Sallocator> const &);
+
+	basic_imstring& operator= (basic_imstring const &);
+
+	charT const	*c_str		(void)	const;
+	charT const	*data		(void)	const;
+	std::basic_string<charT, char_traits<charT>, allocator >
+			 string		(void)	const;
+	
+	void	 reserve	(size_type len);
+	void	 assign		(charT const *);
+	void	 assign		(charT const *, size_type);
+	void	 assign		(charT const *, charT const *);
+	void	 append		(charT const *);
+	void	 append		(charT const *, size_type);
+	void	 append		(charT const *, charT const *);
+
+	size_type	length	(void) const;
+	size_type	size	(void) const;
+	bool		empty	(void) const;
+
+	const_iterator	begin		(void) const;
+	const_iterator	end		(void) const;
+	iterator	begin		(void);
+	iterator	end		(void);
+
+	basic_ostream<charT, char_traits<charT> >
+		&print		(basic_ostream<charT, char_traits<charT> > &) const;
+
+	bool	operator<	(basic_imstring const &) const;
+	bool	operator>	(basic_imstring const &) const;
+	bool	operator==	(basic_imstring const &) const;
+	bool	operator!=	(basic_imstring const &) const;
+
+private:
+	charT		*_buf, *_end;
+	size_type	 _len;
+	
+	allocator	 _alloc;
+};
+
+typedef basic_imstring<char, std::allocator<char> > imstring;
+
+template<typename charT, typename allocator>
+basic_imstring<charT, allocator>::basic_imstring(void)
+	: _buf(NULL)
+	, _len(0)
+{
+}
+
+template<typename charT, typename allocator>
+basic_imstring<charT, allocator>::basic_imstring(charT const *str)
+{
+	reserve(strlen(str));
+	_end = _buf + _len;
+	memcpy(_buf, str, _len + 1);
+}
+
+template<typename charT, typename allocator>
+basic_imstring<charT, allocator>::basic_imstring(charT const *str, size_type len)
+{
+	reserve(len);
+	_end = _buf + _len;
+	memcpy(_buf, str, _len);
+	_buf[len] = 0;
+}
+
+template<typename charT, typename allocator>
+basic_imstring<charT, allocator>::basic_imstring(basic_imstring const &o)
+{
+	reserve(o._len);
+	_end = _buf + _len;
+	memcpy(_buf, o._buf, _len + 1);
+}
+
+template<typename charT, typename allocator>
+void
+basic_imstring<charT, allocator>::assign(charT const *str)
+{
+	_alloc.deallocate(_buf, _len);
+	reserve(strlen(str));
+	_end = _buf + _len;
+	memcpy(_buf, str, _len + 1);
+}
+
+template<typename charT, typename allocator>
+void
+basic_imstring<charT, allocator>::assign(charT const *str, charT const *end)
+{
+	assign(str, end - str);
+	_buf[end - str] = 0;
+}
+
+template<typename charT, typename allocator>
+void
+basic_imstring<charT, allocator>::assign(charT const *str, size_type len)
+{
+	_alloc.deallocate(_buf, _len);
+	reserve(len);
+	_end = _buf + _len;
+	memcpy(_buf, str, _len);
+	_buf[len] = 0;
+}
+
+template<typename charT, typename allocator>
+basic_imstring<charT, allocator> &
+basic_imstring<charT, allocator>::operator= (
+	basic_imstring<charT, allocator> const &o)
+{
+	_alloc.deallocate(_buf, _len);
+	reserve(o._len);
+	_end = _buf + _len;
+	memcpy(_buf, o._buf, _len + 1);
+	return *this;
+}
+	
+template<typename charT, typename allocator>
+template<typename Sallocator>
+basic_imstring<charT, allocator>::basic_imstring(
+		basic_string<charT, char_traits<charT>, Sallocator> const &s)
+{
+	reserve(s.size());
+	_end = _buf + _len;
+	memcpy(_buf, s.data(), _len);
+	_buf[_len] = 0;
+}
+
+
+template<typename charT, typename allocator>
+void
+basic_imstring<charT, allocator>::reserve(
+		basic_imstring<charT, allocator>::size_type s)
+{
+	_buf = _alloc.allocate(s + 1);
+	_len = s;
+	_end = _buf;
+}
+
+template<typename charT, typename allocator>
+void
+basic_imstring<charT, allocator>::append(charT const *s)
+{
+	append(s, strlen(s));
+}
+
+template<typename charT, typename allocator>
+void
+basic_imstring<charT, allocator>::append(charT const *s, charT const *e)
+{
+	append(s, e - s);
+}
+
+template<typename charT, typename allocator>
+void
+basic_imstring<charT, allocator>::append(charT const *s,
+		basic_imstring<charT, allocator>::size_type len)
+{
+	memcpy(_end, s, len);
+	_end += len;
+	*_end = '\0';
+}
+
+template<typename charT, typename allocator>
+charT const *
+basic_imstring<charT, allocator>::c_str(void) const
+{
+	return _buf;
+}
+
+template<typename charT, typename allocator>
+charT const *
+basic_imstring<charT, allocator>::data(void) const
+{
+	return _buf;
+}
+
+template<typename charT, typename allocator>
+typename basic_imstring<charT, allocator>::size_type
+basic_imstring<charT, allocator>::length(void) const
+{
+	return _len;
+}
+
+template<typename charT, typename allocator>
+typename basic_imstring<charT, allocator>::size_type
+basic_imstring<charT, allocator>::size(void) const
+{
+	return _len;
+}
+
+template<typename charT, typename allocator>
+std::basic_string<charT, char_traits<charT>, allocator>
+basic_imstring<charT, allocator>::string(void) const
+{
+	return std::basic_string<charT, char_traits<charT>, allocator>(
+		_buf, _end);
+}
+
+template<typename charT, typename allocator>
+basic_ostream<charT, char_traits<charT> > &
+basic_imstring<charT, allocator>::print(basic_ostream<charT, char_traits<charT> > &o) const
+{
+	o << _buf;
+	return o;
+}
+
+template<typename charT, typename allocator>
+basic_ostream<charT, char_traits<charT> > &
+operator<< (	basic_ostream<charT, char_traits<charT> > &o,
+		basic_imstring<charT, allocator> const &s)
+{
+	return s.print(o);
+}
+
+template<typename charT, typename allocator>
+bool
+basic_imstring<charT, allocator>::operator==(
+	basic_imstring<charT, allocator> const &o) const
+{
+	return strcmp(_buf, o._buf) == 0;
+}
+
+template<typename charT, typename allocator>
+bool
+basic_imstring<charT, allocator>::operator!=(
+	basic_imstring<charT, allocator> const &o) const
+{
+	return !(*this == o);
+}
+
+template<typename charT, typename allocator>
+bool
+basic_imstring<charT, allocator>::operator<(
+	basic_imstring<charT, allocator> const &o) const
+{
+	return strcmp(_buf, o._buf) < 0;
+}
+
+template<typename charT, typename allocator>
+bool
+basic_imstring<charT, allocator>::operator>(
+	basic_imstring<charT, allocator> const &o) const
+{
+	return strcmp(_buf, o._buf) > 0;
+}
+
+template<typename charT, typename allocator>
+typename basic_imstring<charT, allocator>::const_iterator
+basic_imstring<charT, allocator>::begin(void) const
+{
+	return _buf;
+}
+
+template<typename charT, typename allocator>
+typename basic_imstring<charT, allocator>::iterator
+basic_imstring<charT, allocator>::begin(void)
+{
+	return _buf;
+}
+
+template<typename charT, typename allocator>
+typename basic_imstring<charT, allocator>::const_iterator
+basic_imstring<charT, allocator>::end(void) const
+{
+	return _end;
+}
+
+template<typename charT, typename allocator>
+typename basic_imstring<charT, allocator>::iterator
+basic_imstring<charT, allocator>::end(void)
+{
+	return _end;
+}
+
+template<typename charT, typename allocator>
+bool
+basic_imstring<charT, allocator>::empty(void) const
+{
+	return size() == 0;
+}
+
 
 #endif

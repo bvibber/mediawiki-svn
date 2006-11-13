@@ -32,9 +32,7 @@ using std::rotate;
 #include "wconfig.h"
 #include "format.h"
 
-#define rotl(i,r) (((i) << (r)) | ((i) >> (sizeof(i)*CHAR_BIT-(r))))
-
-map<string, int> host_to_bpool;
+map<imstring, int> host_to_bpool;
 map<int, backend_pool> bpools;
 map<string, int> poolnames;
 int nbpools = 1;
@@ -179,8 +177,8 @@ int		 error = s->error();
 
 backend_list::backend_list(
 	backend_pool const &bp, 
-	string const &url,
-	string const &host, 
+	imstring const &url,
+	imstring const &host, 
 	lb_type lbt,
 	int cur)
 
@@ -194,7 +192,7 @@ backend_list::backend_list(
 }
 
 backend_list *
-backend_pool::get_list(string const &url, string const &host)
+backend_pool::get_list(imstring const &url, imstring const &host)
 {
 	if (_cur == 0)
 		_cur = new int();
@@ -232,22 +230,6 @@ size_t			tried = 0;
 	return NULL;
 }
 
-uint32_t
-backend_list::_carp_urlhash(string const &str)
-{
-	uint32_t h = 0;
-	for (string::const_iterator it = str.begin(), end = str.end(); it != end; ++it)
-		h += rotl(h, 19) + *it;
-	return h;
-}
-
-uint32_t
-backend::_carp_hosthash(string const &str)
-{
-	uint32_t h = backend_list::_carp_urlhash(str) * 0x62531965;
-	return rotl(h, 21);
-}
-
 void
 backend_pool::_carp_calc(void)
 {
@@ -282,12 +264,12 @@ backend_pool::name(void) const
 }
 
 void
-backend_list::_carp_recalc(string const &url, string const &host, lb_type lbtype)
+backend_list::_carp_recalc(imstring const &url, imstring const &host, lb_type lbtype)
 {
 	uint32_t	hash = 0;
 	size_t		i;
 	for (i = 0; i < backends.size(); ++i) {
-	string	s = url;
+	imstring	s = url;
 		if (lbtype == lb_carp_hostonly)
 			s = host;
 		hash = _carp_urlhash(s) ^ backends[i]->be_hash;			

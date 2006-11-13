@@ -219,7 +219,7 @@ struct header_parser : io::sink, io::spigot
 	header_list	 _headers;
 	bool		 _got_reqtype;
 	http_version	 _http_vers;
-	string		 _http_path;
+	imstring	 _http_path;
 	bool		 _built;
 	bool		 _corked;
 	bool		 _is_response;
@@ -227,7 +227,7 @@ struct header_parser : io::sink, io::spigot
 	int		 _response;
 	bool		 _is_msie;
 	int		 _http_reqtype;
-	string		 _http_host;
+	imstring	 _http_host;
 	string		 _http_backend;
 	wnet::buffer	 _buf;
 

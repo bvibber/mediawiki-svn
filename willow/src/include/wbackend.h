@@ -50,21 +50,31 @@ struct backend : freelist_allocator<backend> {
 	float		 be_load;	/* carp load factor		*/
 	float		 be_carplfm;	/* carp LFM after calculation	*/
 
-	static uint32_t 	 _carp_hosthash	(string const &);
+	template<typename stringT>
+	static uint32_t _carp_hosthash(stringT const &str);
 };
 
 struct backend_list : freelist_allocator<backend_list> {
 	backend_list(	backend_pool const &pool,
-			string const &url,
-			string const &host,
+			imstring const &url,
+			imstring const &host,
 			lb_type, int start);
 
 	int		 _get_impl	(polycallback<backend *, wsocket *>);
 	void		 _backend_read	(wsocket *e, backend_cb_data *);
 	struct backend 	*_next_backend	(void);
-	void		 _carp_recalc	(string const &, string const &, lb_type);
+	void		 _carp_recalc	(imstring const &, imstring const &, lb_type);
 	static int	 _becarp_cmp	(backend const *a, backend const *b);
-	static uint32_t  _carp_urlhash	(string const &);
+
+	template<typename stringT>
+	static uint32_t _carp_urlhash(stringT const &str) {
+		uint32_t h = 0;
+		for (typename stringT::const_iterator it = str.begin(), end = str.end(); 
+		     it != end; ++it)
+			h += rotl(h, 19) + *it;
+		return h;
+	}
+
 
 	template<typename T>
 	int	get	(polycaller<backend *, wsocket *, T> cb, T t) {
@@ -76,11 +86,19 @@ private:
 	int _cur;
 };
 
+template<typename stringT>
+uint32_t
+backend::_carp_hosthash(stringT const &str)
+{
+	uint32_t h = backend_list::_carp_urlhash(str) * 0x62531965;
+	return rotl(h, 21);
+}
+
 struct backend_pool {
 	backend_pool(string const &name, lb_type);
 
 	void		 add		(string const &, int, int);
-	backend_list	*get_list	(string const & url, string const &host);
+	backend_list	*get_list	(imstring const & url, imstring const &host);
 
 	int		 size		(void) const;
 	string const	&name		(void) const;
@@ -97,7 +115,7 @@ private:
 };
 
 extern map<int, backend_pool> bpools;
-extern map<string, int> host_to_bpool;
+extern map<imstring, int> host_to_bpool;
 extern map<string, int> poolnames;
 extern int nbpools;
 

@@ -328,7 +328,7 @@ value	*v;
 	if ((v = e/"hosts") != NULL) {
 	vector<avalue>::iterator it = v->cv_values.begin(), end = v->cv_values.end();
 		for (; it != end; ++it)
-			host_to_bpool[it->av_strval] = gn;
+			host_to_bpool[imstring(it->av_strval)] = gn;
 		used_pools.insert(gn);
 	}
 }

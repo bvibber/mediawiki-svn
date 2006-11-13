@@ -432,7 +432,7 @@ int		 codelen, desclen;
 	_response = str10toint(errcode, codelen);
 	_http_path.reserve(codelen + desclen + 1);
 	_http_path.assign(errcode, errcode + codelen);
-	_http_path += " ";
+	_http_path.append(" ", 1);
 	_http_path.append(errdesc, errdesc + desclen);
 	return 0;
 }
@@ -461,7 +461,13 @@ int	 left = _headers.hl_len;
 	if (!_built) {
 	char	*s;
 		if (!_is_response) {
-		string	req = request_string[_http_reqtype] + _http_path + " HTTP/1.";
+		string	req;
+			req.reserve(strlen(request_string[_http_reqtype]) +
+				_http_path.size() + 11);
+
+			req = request_string[_http_reqtype];
+			req += _http_path.c_str();
+			req += " HTTP/1.";
 			if (_http_host.size())
 				req += "1\r\n";
 			else	req += "0\r\n";
@@ -469,7 +475,11 @@ int	 left = _headers.hl_len;
 			memcpy(s, req.data(), req.size());
 			_buf.add(s, req.size(), true);
 		} else {
-		string	req = "HTTP/1.1 " + _http_path + "\r\n";
+		string	req;
+			req.reserve(_http_path.size() + 11);
+			req = "HTTP/1.1 ";
+			req += _http_path.c_str();
+			req += "\r\n";
 			s = new char[req.size()];
 			memcpy(s, req.data(), req.size());
 			_buf.add(s, req.size(), true);
