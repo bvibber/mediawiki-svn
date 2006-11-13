@@ -371,8 +371,10 @@ size_t		 vlen, nlen, rnpos;
 		else if (!strncasecmp(name, "X-Willow-Backend-Group", nlen))
 			_http_backend.assign(value, value + vlen);
 		else if (!strncasecmp(name, "Connection", nlen)) {
-			if(!strncasecmp(value, "close", vlen))
+			if (!strncasecmp(value, "close", vlen))
 				_no_keepalive = true;
+			else if (!strncasecmp(value, "keep-alive", vlen))
+				_force_keepalive = true;
 			goto next;
 		}
 

@@ -221,8 +221,8 @@ void
 httpcllr::end_request(void)
 {
 bool	can_keepalive = false;
-	if (_header_parser->_http_vers == http11 &&
-	    !_header_parser->_no_keepalive) {
+	if ((_header_parser->_http_vers == http11 &&
+	    !_header_parser->_no_keepalive) || _header_parser->_force_keepalive) {
 		can_keepalive = true;
 	}
 
