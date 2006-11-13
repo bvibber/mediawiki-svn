@@ -32,6 +32,27 @@ using std::vector;
 
 using namespace wnet;
 
+/*
+ * A list of headers we should remove from the request and the response
+ * because we don't like them, or we want to insert our own.
+ */
+static const struct rmhdr_t {
+	char	*name;
+	size_t	 len;
+} removable_headers[] = {
+	{	"Connection",		sizeof("Connection") - 1 },
+	{	"If-Modified-Since",	sizeof("If-Modified-Since") - 1 },
+	{	"Last-Modified",	sizeof("Last-Modified") - 1 },
+	{	"Keep-Alive",		sizeof("Keep-Alive") - 1 },
+	{	"TE",			sizeof("TE") - 1 },
+	{	"Trailers",		sizeof("Trailers") - 1 },
+	{	"Upgrade",		sizeof("Upgrade") - 1 },
+	{	"Proxy-Authenticate",	sizeof("Proxy-Authenticate") - 1 },
+	{	"Proxy-Authorization",	sizeof("Proxy-Authorization") - 1 },
+	{	"Proxy-Connection",	sizeof("Proxy-Connection") - 1 },
+	{	NULL, 0 }
+};
+
 const char *request_string[] = {
 	"GET ",
 	"POST ",
@@ -48,6 +69,18 @@ struct request_type supported_reqtypes[] = {
 	{ "OPTIONS",	7,	REQTYPE_OPTIONS	},
 	{ NULL,		0,	REQTYPE_INVALID }
 };
+
+/*
+ * Check if we should remove this header.
+ */
+static bool
+is_removable(char const *header, size_t hlen)
+{
+	for (rmhdr_t const *s = removable_headers; s->name; ++s)
+		if (hlen == s->len && !strncasecmp(header, s->name, hlen))
+			return true;
+	return false;
+}
 
 static int
 find_reqtype(char const *str, int len)
@@ -309,6 +342,9 @@ size_t		 vlen, nlen, rnpos;
 			return io::sink_result_error;
 		}
 		nlen = value - name;
+		if (is_removable(name, nlen))
+			goto next;
+
 		value++;
 		while (isspace(*value) && value < rn)
 			value++;

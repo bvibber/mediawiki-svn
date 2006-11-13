@@ -229,20 +229,6 @@ httpcllr::~httpcllr(void)
 	delete _blist;
 }
 
-static const char *removable_headers[] = {
-	"Connection",
-	"Keep-Alive",
-	"Proxy-Authenticate",
-	"Proxy-Authorization",
-	"Proxy-Connection",
-	"TE",
-	"Trailers",
-	"Upgrade",
-	"If-Modified-Since",
-	"Last-Modified",
-	NULL,
-};
-
 void
 httpcllr::header_read_complete(void)
 {
@@ -256,8 +242,6 @@ httpcllr::header_read_complete(void)
 	 * Now parse the client's headers and decide what to do with
 	 * the request.
 	 */
-	for (const char **s = removable_headers; *s; ++s)
-		_header_parser._headers.remove(*s);
 	_header_parser._headers.add("Connection", "close");
 	_header_parser._headers.add("X-Forwarded-For", _client_socket->straddr().c_str());
 
@@ -374,8 +358,6 @@ httpcllr::backend_write_body_done(void)
 void
 httpcllr::backend_read_headers_done(void)
 {
-	for (const char **s = removable_headers; *s; ++s)
-		_backend_headers._headers.remove(*s);
 	_backend_headers._headers.add("Connection", "close");
 
 	_response = _backend_headers._response;
@@ -524,7 +506,7 @@ http_thread::accept_wakeup(wsocket *s, int)
 wsocket	*socks[2];
 map<wsocket *, int>::iterator lsnit;
 
-	if (s->read((char *)socks, sizeof(socks)) < sizeof(socks)) {
+	if (s->read((char *)socks, sizeof(socks)) < (int)sizeof(socks)) {
 		wlog(WLOG_ERROR, format("accept_wakeup: reading fd: %e"));
 		exit(1);
 	}
