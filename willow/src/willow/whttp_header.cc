@@ -463,6 +463,8 @@ io::sink_result
 header_parser::data_empty(void)
 {
 	_sink_spigot->sp_cork();
+	if (!_got_reqtype)
+		_eof = true;
 	return io::sink_result_error;
 }
 

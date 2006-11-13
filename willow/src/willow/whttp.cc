@@ -118,7 +118,8 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	~httpcllr();
 
 	void start_request (void);
-	void end_request (void);
+	void end_request (bool = true);
+	void force_end_request (void);
 
 		/* reading request from client */
 	void header_read_complete		(void);
@@ -211,18 +212,26 @@ httpcllr::start_request(void)
 	 * Start by reading headers.
 	 */
 	_header_parser = new header_parser;
+
 	_client_spigot->completed_callee(this, &httpcllr::header_read_complete);
 	_client_spigot->error_callee(this, &httpcllr::header_read_error);
+
 	_client_spigot->sp_connect(_header_parser);
 	_client_spigot->sp_uncork();
 }
 
 void
-httpcllr::end_request(void)
+httpcllr::force_end_request(void)
+{
+	end_request(false);
+}
+
+void
+httpcllr::end_request(bool tryke)
 {
 bool	can_keepalive = false;
-	if ((_header_parser->_http_vers == http11 &&
-	    !_header_parser->_no_keepalive) || _header_parser->_force_keepalive) {
+	if (tryke && ((_header_parser->_http_vers == http11 &&
+	    !_header_parser->_no_keepalive) || _header_parser->_force_keepalive)) {
 		can_keepalive = true;
 	}
 
@@ -333,6 +342,11 @@ pair<bool, uint16_t> acheck;
 void
 httpcllr::header_read_error(void)
 {
+	if (_header_parser->_eof) {
+		force_end_request();
+		return;
+	}
+
 	stats.tcur->n_httpreq_fail++;
 	send_error(ERR_BADREQUEST, "Could not parse client headers", 400, "Bad request");
 }
