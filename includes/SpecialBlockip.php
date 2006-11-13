@@ -53,13 +53,6 @@ class IPBlockForm {
 		$this->BlockAnonOnly = $wgRequest->getBool( 'wpAnonOnly', $byDefault );
 		$this->BlockCreateAccount = $wgRequest->getBool( 'wpCreateAccount', $byDefault );
 		$this->BlockEnableAutoblock = $wgRequest->getBool( 'wpEnableAutoblock', $byDefault );
-
-		if ( $wgRequest->wasPosted() ) {
-			$this->BlockEnableAutoblock = $wgRequest->getBool( 'wpEnableAutoblock', false );
-		} else {
-			$this->BlockEnableAutoblock = $wgRequest->getBool( 'wpEnableAutoblock', true );
-		}
-
 	}
 
 	function showForm( $err ) {
@@ -111,7 +104,7 @@ class IPBlockForm {
 		$token = htmlspecialchars( $wgUser->editToken() );
 
 		$wgOut->addHTML( "
-<form id=\"mw-block-form\" method=\"post\" action=\"{$action}\">
+<form id=\"blockip\" method=\"post\" action=\"{$action}\">
 	<table border='0'>
 		<tr>
 			<td align=\"right\">{$mIpaddress}:</td>
@@ -124,7 +117,7 @@ class IPBlockForm {
 			$wgOut->addHTML("
 			<td align=\"right\">{$mIpbexpiry}:</td>
 			<td align=\"left\">
-				<select tabindex='2' id='mw-block-expiry-box' name=\"wpBlockExpiry\" onchange=\"considerChangingExpiryFocus()\">
+				<select tabindex='2' id='wpBlockExpiry' name=\"wpBlockExpiry\" onchange=\"considerChangingExpiryFocus()\">
 					$blockExpiryFormOptions
 				</select>
 			</td>
@@ -132,7 +125,7 @@ class IPBlockForm {
 		}
 		$wgOut->addHTML("
 		</tr>
-		<tr id='mw-block-other'>
+		<tr id='wpBlockOther'>
 			<td align=\"right\">{$mIpbother}:</td>
 			<td align=\"left\">
 				<input tabindex='3' type='text' size='40' name=\"wpBlockOther\" value=\"{$scBlockOtherTime}\" />
