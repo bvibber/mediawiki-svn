@@ -66,7 +66,11 @@ int	argn = 0;
 		case '%':
 			if (++i == len)
 				throw invalid_format_string();
-			result += _args[argn++];
+			if (_fmt[i] == 'e')
+				result += strerror(errno);
+			else
+				result += _args[argn];
+			argn++;
 			break;
 		default:
 			result += _fmt[i];

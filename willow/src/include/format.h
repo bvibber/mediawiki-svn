@@ -74,9 +74,8 @@ ostringstream	strm;
 		strm << std::hex;
 		break;
 	case at_errno:
-		_args.push_back(strerror(errno));
-		_reserve += _args.rbegin()->size();
-		return *this;
+		_args.push_back("");
+		return *this % arg;
 	}
 	strm << arg;
 	_args.push_back(strm.str());

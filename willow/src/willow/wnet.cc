@@ -125,16 +125,20 @@ ioloop_t::_accept(wsocket *s, int)
 {
 	int		 val;
 	wsocket		*newe;
-static time_t		 last_nfile = 0;
+static atomic<time_t>	 last_nfile = 0;
 	time_t		 now = time(NULL);
 
+
 	if ((newe = s->accept("HTTP client", prio_norm)) == NULL) {
-		if (errno != ENFILE || now - last_nfile > 60) 
+		if ((errno != ENFILE && errno != EMFILE) || (now - last_nfile) > 60) {
+			if (errno == ENFILE || errno == EMFILE)
+				last_nfile = now;
 			wlog(WLOG_NOTICE, format("accept error: %e"));
-		if (errno == ENFILE)
-			last_nfile = now;
+		}
+		s->readback(polycaller<wsocket *, int>(*this, &ioloop_t::_accept), 0);
 		return;
 	}
+
 	s->readback(polycaller<wsocket *, int>(*this, &ioloop_t::_accept), 0);
 
 	newe->nonblocking(true);
@@ -247,11 +251,7 @@ address::address(addrinfo *ai)
 socket *
 address::makesocket(char const *desc, sprio p) const
 {
-	try {
-		return new socket(*this, desc, p);
-	} catch (socket_error &) {
-		return NULL;
-	}
+	return new socket(*this, desc, p);
 }
 
 address::address(address const &o)
