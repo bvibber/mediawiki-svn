@@ -250,6 +250,8 @@ bool	can_keepalive = false;
 	_header_parser = NULL;
 	delete _backend_headers;
 	_backend_headers = NULL;
+	delete _backend_socket;
+	_backend_socket = NULL;
 
 	_client_spigot->sp_disconnect();
 	_client_spigot->sp_cork();
@@ -272,7 +274,6 @@ bool	can_keepalive = false;
 httpcllr::~httpcllr(void)
 {				
 	delete _client_spigot;
-	delete _backend_socket;
 	delete _client_socket;
 }
 
