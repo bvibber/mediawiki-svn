@@ -126,6 +126,7 @@ sink_result
 socket_sink::data_ready(char const *buf, size_t len, ssize_t &discard)
 {
 ssize_t	off = 0;
+	_socket->cork();
 	while (off < len) {
 	ssize_t	wrote;
 		switch (wrote = _socket->write(buf + off, len - off)) {

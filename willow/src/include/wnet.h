@@ -252,8 +252,10 @@ struct socket : noncopyable, freelist_allocator<socket> {
 	void		 reuseaddr	(bool);
 	void		 bind		(void);
 	void		 listen		(int bl = 25);
-	int		 getopt		(int, void *, socklen_t *) const;
-	int		 setopt		(int, void *, socklen_t);
+	int		 getopt		(int, int, void *, socklen_t *) const;
+	int		 setopt		(int, int, void *, socklen_t);
+	void		 cork		(void);
+	void		 uncork		(void);
 	int		 error		(void) const;
 	char const	*description	(void) const;
 

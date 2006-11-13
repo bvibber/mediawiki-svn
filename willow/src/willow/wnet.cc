@@ -17,6 +17,7 @@
 # include <sys/sendfile.h>
 #endif
 
+#include <netinet/tcp.h>
 #include <arpa/inet.h>
 
 #include <cstdio>
@@ -468,23 +469,37 @@ socket::reuseaddr(bool v)
 {
 int	i = v;
 int	len = sizeof(i);
-	setopt(SO_REUSEADDR, &i, len);
+	setopt(SOL_SOCKET, SO_REUSEADDR, &i, len);
+}
+
+void
+socket::cork(void)
+{
+int	one = 1;
+	setopt(IPPROTO_TCP, TCP_CORK, &one, sizeof(one));
+}
+
+void
+socket::uncork(void)
+{
+int	zero = 0;
+	setopt(IPPROTO_TCP, TCP_CORK, &zero, sizeof(zero));
 }
 
 int
-socket::getopt(int what, void *addr, socklen_t *len) const
+socket::getopt(int level, int what, void *addr, socklen_t *len) const
 {
 int	i;
-	if ((i = getsockopt(_s, SOL_SOCKET, what, addr, len)) == -1)
+	if ((i = getsockopt(_s, level, what, addr, len)) == -1)
 		throw socket_error();
 	return i;
 }
 
 int
-socket::setopt(int what, void *addr, socklen_t len)
+socket::setopt(int level, int what, void *addr, socklen_t len)
 {
 int	i;
-	if ((i = setsockopt(_s, SOL_SOCKET, what, addr, len)) == -1)
+	if ((i = setsockopt(_s, level, what, addr, len)) == -1)
 		throw socket_error();
 	return i;
 }
@@ -495,7 +510,7 @@ socket::error(void) const
 int		error = 0;
 socklen_t	len = sizeof(error);
 	try {
-		getopt(SO_ERROR, &error, &len);
+		getopt(SOL_SOCKET, SO_ERROR, &error, &len);
 		return error;
 	} catch (socket_error &) {
 		return 0;
@@ -520,6 +535,9 @@ socket::socket(wnet::address const &a, char const *desc, sprio p)
 	_s = ::socket(_addr.family(), _addr.socktype(), _addr.protocol());
 	if (_s == -1)
 		throw socket_error();
+int	one = 1;
+	if (_addr.socktype() == SOCK_STREAM)
+		setopt(IPPROTO_TCP, TCP_NODELAY, &one, sizeof(one));
 }
 
 void
