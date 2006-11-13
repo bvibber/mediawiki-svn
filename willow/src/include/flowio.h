@@ -121,7 +121,7 @@ struct socket_sink : freelist_allocator<socket_sink>, sink {
 	}
 
 	void _socketcall(wsocket *e, int) {
-		_spigot->sp_uncork();
+		_sink_spigot->sp_uncork();
 	}
 	virtual void _sink_disconnected(void) {
 		_socket->clearbacks();
@@ -135,7 +135,6 @@ struct socket_sink : freelist_allocator<socket_sink>, sink {
 	}
 
 	wsocket		*_socket;
-	spigot		*_spigot;
 	bool		 _reg;
 	size_t		 _counter;
 };
