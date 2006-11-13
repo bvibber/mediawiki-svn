@@ -39,8 +39,10 @@ spigot::sp_connect(sink *s) {
 
 void
 spigot::sp_disconnect(void) {
-	if (_sp_sink)
+	if (_sp_sink) {
+		_sp_sink->_sink_disconnected();
 		_sp_sink->_sink_spigot = NULL;
+	}
 	_sp_sink = NULL;
 }
 
@@ -105,6 +107,7 @@ sink_result	res;
 	_saved = read;
 	switch (this->_sp_data_ready(_savebuf, _saved, _off)) {
 	case sink_result_blocked:
+		sp_cork();
 	case sink_result_okay:
 		break;
 	case sink_result_error:
@@ -114,7 +117,8 @@ sink_result	res;
 		_sp_completed_callee();
 		return;
 	}
-	_socket->readback(polycaller<wsocket *, int>(*this, &socket_spigot::_socketcall), 0);
+	if (!_corked)
+		_socket->readback(polycaller<wsocket *, int>(*this, &socket_spigot::_socketcall), 0);
 	return;
 }
 

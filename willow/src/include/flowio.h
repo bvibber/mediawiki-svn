@@ -88,8 +88,10 @@ struct sink : noncopyable {
 	sink() : _sink_spigot(NULL) {}
 
 	virtual ~sink() {
-		if (_sink_spigot)
+		if (_sink_spigot) {
+			_sink_disconnected();
 			_sink_spigot->sp_disconnect();
+		}
 	}
 
 	virtual sink_result	data_ready (char const*, size_t, ssize_t &) = 0;
@@ -97,6 +99,8 @@ struct sink : noncopyable {
 
 protected:
 	friend class spigot;
+
+	virtual void _sink_disconnected(void) {}
 
 	spigot		*_sink_spigot;
 
@@ -118,6 +122,9 @@ struct socket_sink : freelist_allocator<socket_sink>, sink {
 
 	void _socketcall(wsocket *e, int) {
 		_spigot->sp_uncork();
+	}
+	virtual void _sink_disconnected(void) {
+		_socket->clearbacks();
 	}
 
 	sink_result data_ready(char const *buf, size_t len, ssize_t &discard);
