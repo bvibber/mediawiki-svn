@@ -113,6 +113,7 @@ struct socket_sink : freelist_allocator<socket_sink>, sink {
 		, _counter(false) {
 	}
 	~socket_sink() {
+		_socket->clearbacks();
 	}
 
 	void _socketcall(wsocket *e, int) {
@@ -197,6 +198,7 @@ struct socket_spigot : freelist_allocator<socket_spigot>, spigot {
 	}
 
 	~socket_spigot() {
+		_socket->clearbacks();
 	}
 	
 	virtual void sp_cork(void) {

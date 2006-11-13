@@ -270,6 +270,7 @@ struct socket : noncopyable, freelist_allocator<socket> {
 	template<typename T>
 	void	writeback (polycaller<wnet::socket *, T> cb, T ud);
 
+	void	clearbacks	(void);
 
 protected:
 	friend struct wnet::address;

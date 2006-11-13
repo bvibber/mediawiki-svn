@@ -542,6 +542,12 @@ socket::~socket(void)
 	close(_s);
 }
 
+void
+socket::clearbacks(void)
+{
+	event_del(&ev);
+}
+
 } // namespace wnet
 
 void
