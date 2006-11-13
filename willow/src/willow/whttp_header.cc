@@ -430,7 +430,7 @@ int		 codelen, desclen;
 	else	return -1;
 
 	_response = str10toint(errcode, codelen);
-
+	_http_path.reserve(codelen + desclen + 1);
 	_http_path.assign(errcode, errcode + codelen);
 	_http_path += " ";
 	_http_path.append(errdesc, errdesc + desclen);
