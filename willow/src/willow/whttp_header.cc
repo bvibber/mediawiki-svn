@@ -40,7 +40,6 @@ static const struct rmhdr_t {
 	char	*name;
 	size_t	 len;
 } removable_headers[] = {
-	{	"Connection",		sizeof("Connection") - 1 },
 	{	"If-Modified-Since",	sizeof("If-Modified-Since") - 1 },
 	{	"Last-Modified",	sizeof("Last-Modified") - 1 },
 	{	"Keep-Alive",		sizeof("Keep-Alive") - 1 },
@@ -371,6 +370,11 @@ size_t		 vlen, nlen, rnpos;
 			_http_host.assign(value, value + vlen);
 		else if (!strncasecmp(name, "X-Willow-Backend-Group", nlen))
 			_http_backend.assign(value, value + vlen);
+		else if (!strncasecmp(name, "Connection", nlen)) {
+			if(!strncasecmp(value, "close", vlen))
+				_no_keepalive = true;
+			goto next;
+		}
 
 		_headers.add(name, nlen, value, vlen);
 	next:

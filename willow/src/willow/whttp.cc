@@ -117,6 +117,9 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	httpcllr(wsocket *, int);
 	~httpcllr();
 
+	void start_request (void);
+	void end_request (void);
+
 		/* reading request from client */
 	void header_read_complete		(void);
 	void header_read_error			(void);
@@ -149,8 +152,8 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	io::socket_spigot		*_backend_spigot;
 	io::socket_sink			*_backend_sink,
 					*_client_sink;
-	header_parser			 _header_parser,
-					 _backend_headers;
+	header_parser			*_header_parser,
+					*_backend_headers;
 	dechunking_filter		*_dechunking_filter;
 	header_spigot			*_error_headers;
 	io::file_spigot			*_error_body;
@@ -172,6 +175,8 @@ httpcllr::httpcllr(wsocket *s, int gr)
 	, _backend_spigot(NULL)
 	, _backend_sink(NULL)
 	, _client_sink(NULL)
+	, _header_parser(NULL)
+	, _backend_headers(NULL)
 	, _dechunking_filter(NULL)
 	, _error_headers(NULL)
 	, _error_body(NULL)
@@ -195,31 +200,80 @@ pair<bool, uint16_t>	acc = config.access.allowed(s->address().addr());
 		_denied = true;
 	}
 
+	_client_spigot = new io::socket_spigot(_client_socket);
+	start_request();
+}
+
+void
+httpcllr::start_request(void)
+{
 	/*
 	 * Start by reading headers.
 	 */
-	_client_spigot = new io::socket_spigot(s);
+	_header_parser = new header_parser;
 	_client_spigot->completed_callee(this, &httpcllr::header_read_complete);
 	_client_spigot->error_callee(this, &httpcllr::header_read_error);
-	_client_spigot->sp_connect(&_header_parser);
+	_client_spigot->sp_connect(_header_parser);
 	_client_spigot->sp_uncork();
 }
 
-httpcllr::~httpcllr(void)
+void
+httpcllr::end_request(void)
 {
-	delete _client_spigot;
+bool	can_keepalive = false;
+	if (_header_parser->_http_vers == http11 &&
+	    !_header_parser->_no_keepalive) {
+		can_keepalive = true;
+	}
+
 	delete _backend_spigot;
+	_backend_spigot = NULL;
 	delete _backend_sink;
+	_backend_sink = NULL;
 	delete _client_sink;
+	_client_sink = NULL;
 	delete _dechunking_filter;
+	_dechunking_filter = NULL;
 	delete _error_headers;
+	_error_headers = NULL;
 	delete _error_filter;
+	_error_filter = NULL;
 	delete _error_body;
+	_error_body = NULL;
 	delete _chunking_filter;
+	_chunking_filter = NULL;
 	delete _size_limit;
+	_size_limit = NULL;
+	delete _blist;
+	_blist = NULL;
+	delete _header_parser;
+	_header_parser = NULL;
+	delete _backend_headers;
+	_backend_headers = NULL;
+
+	_client_spigot->sp_disconnect();
+	_client_spigot->sp_cork();
+
+	if (can_keepalive) {
+		/* 
+		 * leave the connection open, assuming they will send another
+		 * request (keep-alive).
+		 */
+		start_request();
+		return;
+	}
+
+	/*
+	 * No keep alive, close the connection.
+	 */
+	delete this;
+}
+
+httpcllr::~httpcllr(void)
+{				
+	delete _client_spigot;
 	delete _backend_socket;
 	delete _client_socket;
-	delete _blist;
 }
 
 void
@@ -235,11 +289,11 @@ httpcllr::header_read_complete(void)
 	 * Now parse the client's headers and decide what to do with
 	 * the request.
 	 */
-	_header_parser._headers.add("Connection", "close");
-	_header_parser._headers.add("X-Forwarded-For", _client_socket->straddr(false).c_str());
+	_header_parser->_headers.add("Connection", "close");
+	_header_parser->_headers.add("X-Forwarded-For", _client_socket->straddr(false).c_str());
 
-	if (_header_parser._http_reqtype == REQTYPE_POST) {
-		if (_header_parser._content_length == -1) {
+	if (_header_parser->_http_reqtype == REQTYPE_POST) {
+		if (_header_parser->_content_length == -1) {
 			send_error(ERR_BADREQUEST, "POST request without content length",
 				400, "Bad request");
 			return;
@@ -252,14 +306,14 @@ map<string,int>::iterator	it;
 map<imstring,int>::iterator	mit;
 pair<bool, uint16_t> acheck;
 
-	if ((mit = host_to_bpool.find(_header_parser._http_host)) !=
+	if ((mit = host_to_bpool.find(_header_parser->_http_host)) !=
 	    host_to_bpool.end())
 		_group = mit->second;
 
-	if (!_header_parser._http_backend.empty()) {
+	if (!_header_parser->_http_backend.empty()) {
 		acheck = config.force_backend.allowed(_client_socket->address().addr());
 		if (acheck.first && acheck.second) {
-			if ((it = poolnames.find(_header_parser._http_backend))
+			if ((it = poolnames.find(_header_parser->_http_backend))
 			    != poolnames.end()) {
 				_group = it->second;
 			}
@@ -267,8 +321,8 @@ pair<bool, uint16_t> acheck;
 	}
 
 	_blist = bpools.find(_group)->second.get_list(
-				_header_parser._http_path,
-				_header_parser._http_host);
+				_header_parser->_http_path,
+				_header_parser->_http_host);
 	
 	if (_blist->get(polycaller<backend *, wsocket *, int>(*this, 
 		    &httpcllr::backend_ready), 0) == -1)
@@ -299,10 +353,10 @@ httpcllr::backend_ready(backend *be, wsocket *s, int)
 	_backend_socket = s;
 	_backend = be;
 	_backend_sink = new io::socket_sink(s);
-	_header_parser.completed_callee(this, &httpcllr::backend_write_headers_done);
-	_header_parser.error_callee(this, &httpcllr::backend_write_error);
-	_header_parser.sp_connect(_backend_sink);
-	_header_parser.sp_uncork();
+	_header_parser->completed_callee(this, &httpcllr::backend_write_headers_done);
+	_header_parser->error_callee(this, &httpcllr::backend_write_error);
+	_header_parser->sp_connect(_backend_sink);
+	_header_parser->sp_uncork();
 }
 
 void
@@ -315,11 +369,11 @@ httpcllr::backend_write_error(void)
 void
 httpcllr::backend_write_headers_done(void)
 {
-	if (_header_parser._http_reqtype == REQTYPE_POST) {
+	if (_header_parser->_http_reqtype == REQTYPE_POST) {
 		/*
 		 * Connect the client to the backend and read the POST data.
 		 */
-		_size_limit = new io::size_limiting_filter(_header_parser._content_length);
+		_size_limit = new io::size_limiting_filter(_header_parser->_content_length);
 		_client_spigot->sp_connect(_size_limit);
 		_size_limit->sp_connect(_backend_sink);
 
@@ -338,32 +392,31 @@ httpcllr::backend_write_body_done(void)
 	/*
 	 * Detach the backend sink and create a spigot to read the reply.
 	 */
-	_header_parser.sp_disconnect();
+	_header_parser->sp_disconnect();
 
-	_backend_headers.set_response();
+	_backend_headers = new header_parser;
+	_backend_headers->set_response();
 
 	_backend_spigot = new io::socket_spigot(_backend_socket);
 	_backend_spigot->completed_callee(this, &httpcllr::backend_read_headers_done);
 	_backend_spigot->error_callee(this, &httpcllr::backend_read_headers_error);
-	_backend_spigot->sp_connect(&_backend_headers);
+	_backend_spigot->sp_connect(_backend_headers);
 	_backend_spigot->sp_uncork();
 }
 
 void
 httpcllr::backend_read_headers_done(void)
 {
-	_backend_headers._headers.add("Connection", "close");
+	_response = _backend_headers->_response;
 
-	_response = _backend_headers._response;
-
-	if (_backend_headers._content_length == -1 && !_backend_headers._flags.f_chunked
-		   && _header_parser._http_vers == http11 && !(config.msie_hack && _header_parser._is_msie))
+	if (_backend_headers->_content_length == -1 && !_backend_headers->_flags.f_chunked
+		   && _header_parser->_http_vers == http11 && !(config.msie_hack && _header_parser->_is_msie))
 		/* we will chunk the request later */
-		_backend_headers._headers.add("Transfer-Encoding", "chunked");
-	else if (_backend_headers._flags.f_chunked && _header_parser._http_vers == http10)
-		_backend_headers._headers.remove("Transfer-Encoding");
-	else if (_backend_headers._flags.f_chunked && config.msie_hack && _header_parser._is_msie)
-		_backend_headers._headers.remove("Transfer-Encoding");
+		_backend_headers->_headers.add("Transfer-Encoding", "chunked");
+	else if (_backend_headers->_flags.f_chunked && _header_parser->_http_vers == http10)
+		_backend_headers->_headers.remove("Transfer-Encoding");
+	else if (_backend_headers->_flags.f_chunked && config.msie_hack && _header_parser->_is_msie)
+		_backend_headers->_headers.remove("Transfer-Encoding");
 
 	/*
 	 * Send the headers to the client.
@@ -371,11 +424,11 @@ httpcllr::backend_read_headers_done(void)
 	_backend_spigot->sp_disconnect();
 
 	_client_sink = new io::socket_sink(_client_socket);
-	_backend_headers.completed_callee(this, &httpcllr::send_headers_to_client_done);
-	_backend_headers.error_callee(this, &httpcllr::send_headers_to_client_error);
+	_backend_headers->completed_callee(this, &httpcllr::send_headers_to_client_done);
+	_backend_headers->error_callee(this, &httpcllr::send_headers_to_client_error);
 
-	_backend_headers.sp_connect(_client_sink);
-	_backend_headers.sp_uncork();
+	_backend_headers->sp_connect(_client_sink);
+	_backend_headers->sp_uncork();
 }
 
 void
@@ -399,12 +452,12 @@ httpcllr::send_headers_to_client_done(void)
 	 * HTTP 1.0, insert a dechunking filter.
 	 */
 	_backend_spigot->sp_disconnect();
-	if (_backend_headers._flags.f_chunked && _header_parser._http_vers == http10) {
+	if (_backend_headers->_flags.f_chunked && _header_parser->_http_vers == http10) {
 		_dechunking_filter = new dechunking_filter;
 		_backend_spigot->sp_connect(_dechunking_filter);
 		_dechunking_filter->sp_connect(_client_sink);
-	} else if (_backend_headers._content_length == -1 && !_backend_headers._flags.f_chunked
-		   && _header_parser._http_vers == http11 && !(config.msie_hack && _header_parser._is_msie)) {
+	} else if (_backend_headers->_content_length == -1 && !_backend_headers->_flags.f_chunked
+		   && _header_parser->_http_vers == http11 && !(config.msie_hack && _header_parser->_is_msie)) {
 		/*
 		 * Unchunked request without Content-Length.  Insert a chunking filter
 		 * between the backend and the client so the client at least knows if we
@@ -413,7 +466,7 @@ httpcllr::send_headers_to_client_done(void)
 		_chunking_filter = new chunking_filter;
 		_backend_spigot->sp_connect(_chunking_filter);
 		_chunking_filter->sp_connect(_client_sink);
-	} else if (_backend_headers._flags.f_chunked && config.msie_hack && _header_parser._is_msie) {
+	} else if (_backend_headers->_flags.f_chunked && config.msie_hack && _header_parser->_is_msie) {
 		_dechunking_filter = new dechunking_filter;
 		_backend_spigot->sp_connect(_dechunking_filter);
 		_dechunking_filter->sp_connect(_client_sink);
@@ -430,21 +483,21 @@ httpcllr::send_body_to_client_done(void)
 {
 	stats.tcur->n_httpreq_ok++;
 	log_request();
-	delete this;
+	end_request();
 }
 
 void
 httpcllr::send_body_to_client_error(void)
 {
 	stats.tcur->n_httpreq_fail++;
-	delete this;
+	end_request();
 }
 
 void
 httpcllr::send_headers_to_client_error(void)
 {
 	stats.tcur->n_httpreq_fail++;
-	delete this;
+	end_request();
 }
 
 /*
@@ -712,8 +765,8 @@ httpcllr::send_error(int errnum, char const *errdata, int status, char const *st
 string	url = "NONE";
 	_response = status;
 
-	if (_header_parser._http_path.size())
-		url = errsafe(_header_parser._http_path.c_str());
+	if (_header_parser->_http_path.size())
+		url = errsafe(_header_parser->_http_path.c_str());
 
 	_error_headers = new header_spigot(status, statstr);
 	if (!_client_sink)
@@ -755,7 +808,7 @@ void
 httpcllr::error_send_done(void)
 {
 	log_request();
-	delete this;
+	end_request();
 }
 
 void
@@ -763,7 +816,7 @@ httpcllr::log_request(void)
 {
 size_t	size;
 
-	if (_header_parser._http_reqtype == REQTYPE_INVALID)
+	if (_header_parser->_http_reqtype == REQTYPE_INVALID)
 		return;
 
 	if (++log_count != config.log_sample)
@@ -782,8 +835,8 @@ size_t	size;
 		line = format("[%s] %s %s\"%s\" %d %d %s MISS")
 			% current_time_short
 			% _client_socket->straddr(false)
-			% request_string[_header_parser._http_reqtype]
-			% _header_parser._http_path
+			% request_string[_header_parser->_http_reqtype]
+			% _header_parser->_http_path
 			% size
 			% _response
 			% (_backend ? _backend->be_name : "-");
@@ -821,8 +874,8 @@ size_t	size;
 		 */
 		ADD_UINT32(bufp, (uint32_t)time(NULL), endp);
 		ADD_STRING(bufp, _client_socket->straddr(false), endp);
-		ADD_UINT8(bufp, _header_parser._http_reqtype, endp);
-		ADD_STRING(bufp, _header_parser._http_path, endp);
+		ADD_UINT8(bufp, _header_parser->_http_reqtype, endp);
+		ADD_STRING(bufp, _header_parser->_http_path, endp);
 		ADD_UINT16(bufp, _response, endp);
 		ADD_STRING(bufp, string(_backend ? _backend->be_name : "-"), endp);
 		ADD_UINT8(bufp, 0, endp);

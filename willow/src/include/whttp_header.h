@@ -184,6 +184,7 @@ struct header_parser : io::sink, io::spigot
 		, _response(0)
 		, _is_msie(false)
 		, _http_reqtype(REQTYPE_INVALID)
+		, _no_keepalive(false)
 		{
 			_flags.f_chunked = 0;
 	}
@@ -229,6 +230,7 @@ struct header_parser : io::sink, io::spigot
 	int		 _http_reqtype;
 	imstring	 _http_host;
 	string		 _http_backend;
+	bool		 _no_keepalive;
 	wnet::buffer	 _buf;
 
 	struct {
