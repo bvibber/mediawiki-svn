@@ -188,6 +188,7 @@ interface id's, almost every id and class in the interface has been changed,
 as follows.
 
 === changed id's ===
+[toggle name]				mw-prefs-[toggle name]
 allmessagesfilter			mw-all-messages-filter
 allmessagestable			mw-all-messages-table
 blockip						mw-block-form
@@ -201,14 +202,20 @@ differences-prevlink		mw-differences-prevlink
 differences-nextlink		mw-differences-nextlink
 editform					mw-page-edit-form
 editpage-copywarn			mw-editpage-copyright-warning
+emailuser					mw-email-user-form
 file						mw-file
 filehistory					mw-file-history
 filelinks					mw-file-links
 filetoc						mw-filetoc
 globalWrapper				mw-global-wrapper
+guesstimezonebutton			mw-prefs-guess-time-zone-button
+imagesearch					mw-newimages-search
 isbn						mw-booksources-isbn-box
+lockdb						mw-lockdb-form
+mailheader					mw-email-header
 metadata					mw-metadata
-msg-[msgname]				mw-message-[msgname]
+movepage					mw-movepage-form
+msg_[msgname]				mw-message-[msgname]
 mw-pages					mw-category-pages
 mw_metadata					mw-metadata-table
 mwProtectSet				mw-protect-set
@@ -218,6 +225,8 @@ nsselect					mw-allpages-namespace-box
 p-logo						mw-p-logo
 pagehistory					mw-page-history
 pageselector				mw-page-selector
+preferences					mw-preferences
+prefsubmit					mw-prefs-submit
 shared-image-desc			mw-shared-image-desc
 siteNotice					mw-site-notice
 sp-allmessages-i-[#]		mw-message-number-[#]
@@ -228,17 +237,38 @@ toc							mw-toc
 toctitle					mw-toc-title
 toolbar						mw-edit-toolbar
 topbar						mw-topbar
+unblockip					mw-unblock-form
 wikiDiff					mw-diff
 wikiPreview					mw-preview
 wpBlockExpiry				mw-block-expiry-box
 wpBlockOther				mw-block-other
+wpConfirm					mw-confirm-overwrite
+wpDate[#]					mw-prefs-date-radio
+wpEmailFlag					mw-prefs-allow-email-checkbox
+wpHourDiff					mw-prefs-time-zone-input
+wpImageSize					mw-prefs-image-size-select
 wpMinoredit					mw-minor-edit-checkbox
+wpMovetalk					mw-movepage-talk-checkbox
+wpNewPass					mw-prefs-new-pass-input
+wpNewTitle					mw-movepage-new-title-input
+wpNick						mw-prefs-nick-input
+wpNs[#]						mw-prefs-ns-[#]
+wpOldPass					mw-prefs-old-pass-input
+wpOpunderline				mw-prefs-underline-links-select
+wpRealName					mw-prefs-real-name-input
+wpReason					mw-movepage-reason
 wpRecreate					mw-confirm-recreate
+wpRetypePass				mw-prefs-retype-pass-input
 wpScrolltop					mw-scroll-top (What does this do?  Better name?)
+wpSkin[skin]				mw-prefs-skin-[skin]
 wpSummary					mw-edit-summary-box
 wpSummaryLabel				mw-edit-summary-label
 wpTextbox1					mw-page-edit-box
 wpTextbox2					mw-edit-conflict-box
+wpTextLabel					mw-email-message-label
+wpThumbSize					mw-prefs-thumb-size-select
+wpUserEmail					mw-prefs-email-input
+wpUserLanguage				mw-prefs-user-language-select
 wpWatchthis					mw-watch-page-checkbox
 
 FIXME: All checkboxes created with HTMLForm.php were changed from id=$varname
