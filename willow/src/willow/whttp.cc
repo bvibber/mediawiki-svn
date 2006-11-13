@@ -243,7 +243,7 @@ httpcllr::header_read_complete(void)
 	 * the request.
 	 */
 	_header_parser._headers.add("Connection", "close");
-	_header_parser._headers.add("X-Forwarded-For", _client_socket->straddr().c_str());
+	_header_parser._headers.add("X-Forwarded-For", _client_socket->straddr(false).c_str());
 
 	if (_header_parser._http_reqtype == REQTYPE_POST) {
 		if (_header_parser._content_length == -1) {
