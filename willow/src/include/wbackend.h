@@ -72,7 +72,7 @@ struct backend_list : freelist_allocator<backend_list> {
 	}
 
 private:
-	vector<backend *> backends;
+	vector<backend *, pt_allocator<backend *> > backends;
 	int _cur;
 };
 
@@ -90,7 +90,7 @@ private:
 
 	void		 _carp_calc	(void);
 
-	vector<backend *> backends;
+	vector<backend *, pt_allocator<backend *> > backends;
 	tss<int>	 _cur;
 	lb_type		 _lbtype;
 	string		 _name;
