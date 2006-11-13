@@ -189,7 +189,7 @@ private:
 	allocator	 _alloc;
 };
 
-typedef basic_imstring<char, std::allocator<char> > imstring;
+typedef basic_imstring<char, pt_allocator<char> > imstring;
 
 template<typename charT, typename allocator>
 basic_imstring<charT, allocator>::basic_imstring(void)
@@ -226,10 +226,11 @@ basic_imstring<charT, allocator>::basic_imstring(basic_imstring const &o)
 template<typename charT, typename allocator>
 void
 basic_imstring<charT, allocator>::assign(charT const *str)
-{
-	_alloc.deallocate(_buf, _len);
-	reserve(strlen(str));
-	_end = _buf + _len;
+{	
+int	slen = strlen(str);
+	if (!_buf)
+		reserve(slen);
+	_end = _buf + slen;
 	memcpy(_buf, str, _len + 1);
 }
 
@@ -238,17 +239,16 @@ void
 basic_imstring<charT, allocator>::assign(charT const *str, charT const *end)
 {
 	assign(str, end - str);
-	_buf[end - str] = 0;
 }
 
 template<typename charT, typename allocator>
 void
 basic_imstring<charT, allocator>::assign(charT const *str, size_type len)
 {
-	_alloc.deallocate(_buf, _len);
-	reserve(len);
-	_end = _buf + _len;
-	memcpy(_buf, str, _len);
+	if (!_buf)
+		reserve(len);
+	_end = _buf + len;
+	memcpy(_buf, str, len);
 	_buf[len] = 0;
 }
 

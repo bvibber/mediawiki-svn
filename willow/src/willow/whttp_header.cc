@@ -438,6 +438,10 @@ int		 codelen, desclen;
 		_http_vers = http11;
 	else	return -1;
 
+	WDEBUG((WLOG_DEBUG, format("parse_response: codelen=%d [%s] desclen=%d [%s]")
+		% codelen % string(errcode, errcode + codelen)
+		% desclen % string(errdesc, errdesc + desclen)));
+
 	_response = str10toint(errcode, codelen);
 	_http_path.reserve(codelen + desclen + 1);
 	_http_path.assign(errcode, errcode + codelen);
