@@ -94,7 +94,7 @@ avalue	aval;
 }
 
 value *
-value_from_variable(string const &name, string const &varname, declpos const &pos)
+value_from_variable(string const &, string const &varname, declpos const &pos)
 {
 map<string, value>::iterator	it;
 value	*val;
@@ -213,7 +213,7 @@ new_tree_entry_from_template(
 	string const		&templatename,
 	declpos const		&pos,
 	bool			 unnamed,
-	bool			 is_template
+	bool
 ) {
 tree_entry	*n, *e;
 	if ((e = t.find(block, templatename)) == NULL)
@@ -427,7 +427,7 @@ tree::reset(void)
 }
 
 bool
-find_include(string &file)
+find_include(string &)
 {
 	return false;
 }

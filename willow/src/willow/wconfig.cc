@@ -83,7 +83,7 @@ set_listen(conf::tree_entry &e)
 value const	*val;
 int		 port = 80;
 struct listener	*nl;
-int		 i, gn = 0;
+int		 gn = 0;
 string		 group;
 int		 fam = AF_UNSPEC;
 addrlist	*res;
@@ -143,13 +143,13 @@ addrlist::iterator	it = res->begin(), end = res->end();
 }
 
 static bool
-validate_log_facility(tree_entry &e, value &v)
+validate_log_facility(tree_entry &, value &)
 {
 	return true;
 }
 
 static void
-set_log_facility(tree_entry &e, value &v)
+set_log_facility(tree_entry &, value &)
 {
 }
 
@@ -176,11 +176,17 @@ bool	 ret = true;
 		v.report_error("udp-host must be specified for UDP logging");
 		ret = false;
 	}
+
+	if (!v.is_single(cv_yesno)) {
+		v.report_error("udp-log must be yes/no");
+		ret = false;
+	}
+
 	return ret;
 }
 
 static bool
-v_aftype(tree_entry &e, value &v)
+v_aftype(tree_entry &, value &v)
 {
 	if (!v.is_single(cv_string)) {
 		v.report_error("aftype must be single unquoted string");
@@ -198,7 +204,6 @@ static void
 radix_from_list(tree_entry &e, access_list &rad)
 {
 value		*val;
-radix_node	*r;
 int		 immed = 0;
 	if ((val = e/"apply-at") != NULL)
 		if (val->cv_values[0].av_strval == "connect")
@@ -226,7 +231,7 @@ set_access(tree_entry &e)
 }
 
 static void
-stats_access(tree_entry &e, value &v)
+stats_access(tree_entry &, value &v)
 {
 vector<avalue>::iterator	it = v.cv_values.begin(),
 				end = v.cv_values.end();
@@ -235,7 +240,7 @@ vector<avalue>::iterator	it = v.cv_values.begin(),
 }
 
 static void
-force_backend_access(tree_entry &e, value &v)
+force_backend_access(tree_entry &, value &v)
 {
 vector<avalue>::iterator	it = v.cv_values.begin(),
 				end = v.cv_values.end();
@@ -244,7 +249,7 @@ vector<avalue>::iterator	it = v.cv_values.begin(),
 }
 
 static bool
-radix_prefix(tree_entry &e, value &v)
+radix_prefix(tree_entry &, value &v)
 {
 vector<avalue>::iterator	it = v.cv_values.begin(),
 				end = v.cv_values.end();
@@ -266,7 +271,7 @@ prefix	p;
 }
 
 bool
-v_apply_at(tree_entry &e, value &v)
+v_apply_at(tree_entry &, value &v)
 {
 	if (!v.is_single(cv_string)) {
 		v.report_error("apply-at must be single unquoted string");
@@ -281,7 +286,7 @@ string	&s = v.cv_values[0].av_strval;
 }
 
 bool
-v_lb_type(tree_entry &e, value &v)
+v_lb_type(tree_entry &, value &v)
 {
 	if (!v.is_single(cv_string)) {
 		v.report_error("lb-type must be single unquoted string");
@@ -334,7 +339,7 @@ value	*v;
 }
 
 bool
-v_hosts(tree_entry &e, value &v)
+v_hosts(tree_entry &, value &v)
 {
 vector<avalue>::iterator it = v.cv_values.begin(), end = v.cv_values.end();
 	for (; it != end; ++it)
@@ -359,7 +364,7 @@ conf
 		.value("facility",	func(validate_log_facility),	func(set_log_facility))
 		.value("access-log",	nonempty_qstring,		set_qstring(config.access_log))
 		.value("log-sample",	simple_range(1, INT_MAX),	set_int(config.log_sample))
-		.value("udp-log",	simple_yesno,			set_yesno(config.udp_log))
+		.value("udp-log",	func(v_udp_log),		set_yesno(config.udp_log))
 		.value("udp-port",	simple_range(0, 65535),		set_int(config.udplog_port))
 		.value("udp-host",	nonempty_qstring,		set_string(config.udplog_host))
 

@@ -56,6 +56,6 @@ struct cache_object *wcache_find_object(const char *key, int *, int);
 void wcache_release(struct cache_object *, int complete);
 
 #define HASH_BITS 20
-static uint32_t hash(const u_char *, int bits = HASH_BITS);
+uint32_t hash(const u_char *, int bits = HASH_BITS);
 
 #endif

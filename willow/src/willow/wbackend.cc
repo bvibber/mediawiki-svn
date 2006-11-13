@@ -45,7 +45,6 @@ struct	backend		*bc_backend;
 
 backend::backend(
 	string const &name,
-	string const &straddr,
 	address const &addr)
 
 	: be_name(name)
@@ -81,7 +80,7 @@ addrlist	*list;
 addrlist::iterator	it = list->begin(), end = list->end();
 
 	for (; it != end; ++it) {
-		backends.push_back(new backend(addr, it->straddr(), *it));
+		backends.push_back(new backend(addr, *it));
 		wlog(WLOG_NOTICE, format("backend server: %s%s") 
 		     % addr % it->straddr());
 	}
@@ -195,7 +194,7 @@ backend_list *
 backend_pool::get_list(imstring const &url, imstring const &host)
 {
 	if (_cur == 0)
-		_cur = new int();
+		_cur = new size_t();
 	if (*_cur >= backends.size())
 		*_cur = 0;
 
@@ -213,7 +212,7 @@ size_t			tried = 0;
 		WDEBUG((WLOG_DEBUG, format("_next_backend: considering %d %s")
 			% _cur % backends[_cur]->be_name));
 
-		if (_cur >= (int) backends.size())
+		if (_cur >= backends.size())
 			_cur = 0;
 
 		if (backends[_cur]->be_dead && now >= backends[_cur]->be_time)

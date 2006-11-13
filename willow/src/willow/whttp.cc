@@ -77,12 +77,6 @@ static const char *error_files[] = {
 	/* ERR_BLOCKED		*/	DATADIR "/errors/ERR_BLOCKED",
 };
 
-static int removable_header(const char *);
-
-static void client_log_request(struct http_client *);
-
-static void do_cache_write(const char *, size_t, void *);
-
 static void *client_thread(void *);
 static void stats_merge(int, short, void *);
 
@@ -94,7 +88,6 @@ tss<event> merge_ev;
 
 char my_hostname[MAXHOSTNAMELEN + 1];
 static char my_version[64];
-static int logwr_pipe[2];
 static ofstream alf;
 lockable alf_lock;
 
@@ -768,7 +761,6 @@ httpcllr::error_send_done(void)
 void
 httpcllr::log_request(void)
 {
-int	i;
 size_t	size;
 
 	if (_header_parser._http_reqtype == REQTYPE_INVALID)

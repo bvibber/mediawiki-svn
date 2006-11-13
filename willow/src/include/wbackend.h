@@ -36,7 +36,7 @@ struct backend_pool;
 struct backend_cb_data;
 
 struct backend : freelist_allocator<backend> {
-		backend(string const &, string const &, address const &);
+		backend(string const &, address const &);
 
 	string		 be_name;	/* IP as specified in config	*/
 	int		 be_group;	/* group			*/
@@ -83,7 +83,7 @@ struct backend_list : freelist_allocator<backend_list> {
 
 private:
 	vector<backend *, pt_allocator<backend *> > backends;
-	int _cur;
+	size_t _cur;
 };
 
 template<typename stringT>
@@ -109,7 +109,7 @@ private:
 	void		 _carp_calc	(void);
 
 	vector<backend *, pt_allocator<backend *> > backends;
-	tss<int>	 _cur;
+	tss<size_t>	 _cur;
 	lb_type		 _lbtype;
 	string		 _name;
 };

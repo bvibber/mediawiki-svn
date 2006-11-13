@@ -213,7 +213,7 @@ function_ender<ret> func(ret (*f)(tree_entry &)) {
 
 template<cv_type type>
 struct simple_value : callable<bool> {
-	bool operator() (tree_entry &e, value &v) const {
+	bool operator() (tree_entry &, value &v) const {
 		if (!v.is_single(type)) {
 			v.report_error("expected single %s", type_name(type).c_str());
 			return false;
@@ -230,7 +230,7 @@ extern simple_time_t simple_time;
 
 struct simple_range : callable<bool> {
 	simple_range(int min_, int max_) : min(min_), max(max_) {}
-	bool operator() (tree_entry &e, value &v) const {
+	bool operator() (tree_entry &, value &v) const {
 		if (!v.is_single(cv_int)) {
 			v.report_error("expected single integer");
 			return false;
@@ -247,7 +247,7 @@ struct simple_range : callable<bool> {
 
 template<cv_type string_type>
 struct nonempty_astring : callable<bool> {
-	bool operator() (tree_entry &e, value &v) const {
+	bool operator() (tree_entry &, value &v) const {
 		if (!v.is_single(string_type)) {
 			v.report_error("expected single string");
 			return false;
@@ -265,7 +265,7 @@ extern nonempty_string_t nonempty_string;
 extern nonempty_qstring_t nonempty_qstring;
 
 struct ip_address_list_t : callable<bool> {
-	bool operator() (tree_entry &e, value &v) const {
+	bool operator() (tree_entry &, value &v) const {
 	pair<string,string>	ip;
 	vector<avalue>::iterator	it = v.cv_values.begin(),
 					end = v.cv_values.end();
@@ -289,7 +289,7 @@ struct add_ip : callable<void> {
 	add_ip(vector<pair<string,string> > &list_)
 		: list(list_) {}
 
-	void operator() (tree_entry &e, value &v) const {
+	void operator() (tree_entry &, value &v) const {
 	pair<string,string>	ip;
 	vector<avalue>::iterator	it = v.cv_values.begin(),
 					end = v.cv_values.end();
@@ -303,7 +303,7 @@ struct add_ip : callable<void> {
 template<typename T>
 struct set_simple : callable<void> {
 	set_simple(T& sv_) : sv(sv_) {}
-	void operator() (tree_entry &e, value &v) const {
+	void operator() (tree_entry &, value &v) const {
 		sv = v.cv_values[0].av_intval;
 	}
 	T& sv;
@@ -312,14 +312,14 @@ template<typename T>
 struct set_simple<atomic<T> > : callable<void> {
 	atomic<T>	&sv;
 	set_simple(atomic<T>& sv_) : sv(sv_) {}
-	void operator() (tree_entry &e, value &v) const {
+	void operator() (tree_entry &, value &v) const {
 		sv = v.cv_values[0].av_intval;
 	}
 };
 
 struct set_astring : callable<void> {
 	set_astring(string& sv_) : sv(sv_) {}
-	void operator() (tree_entry &e, value &v) const {
+	void operator() (tree_entry &, value &v) const {
 		sv = v.cv_values[0].av_strval;
 	}
 	string& sv;
@@ -335,14 +335,14 @@ typedef set_simple<atomic<bool> >	set_abool;
 typedef set_simple<atomic<int> >	set_aint;
 
 struct accept_any_t : callable<bool> {
-	bool operator() (tree_entry &e, value &v) const {
+	bool operator() (tree_entry &, value &) const {
 		return true;
 	}
 };
 extern accept_any_t accept_any;
 
 struct ignore_t : callable<void> {
-	void operator() (tree_entry &e, value &v) const {
+	void operator() (tree_entry &, value &) const {
 	}
 };
 extern ignore_t ignore;
@@ -360,7 +360,7 @@ struct conf_definer {
 
 struct value_definer {
 	template<typename Vt, typename St>
-	value_definer(string const &name_, Vt const &v_, St const &s_) {
+	value_definer(string const &, Vt const &v_, St const &s_) {
 		vv = new Vt(v_);
 		vs = new St(s_);
 	}

@@ -72,7 +72,7 @@ time_t conf_find_time(string const &name)
 
 /*ARGSUSED*/
 static conf::value *
-f_hostname(vector<conf::avalue> *args)
+f_hostname(vector<conf::avalue> *)
 {
 #ifndef HOST_NAME_MAX
 # define HOST_NAME_MAX 255	/* SUSv2 */

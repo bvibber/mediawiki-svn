@@ -153,7 +153,7 @@ struct pt_allocator {
 		typedef pt_allocator<U> other;
 	};
 
-	bool operator== (pt_allocator const &other) const {
+	bool operator== (pt_allocator const &) const {
 		return true;
 	}
 

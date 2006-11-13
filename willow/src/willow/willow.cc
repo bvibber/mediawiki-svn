@@ -36,9 +36,8 @@ static const char *progname;
 
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
-/*ARGSUSED*/
 static void 
-sig_exit(int s)
+sig_exit(int)
 {
 	wnet_exit = 1;
 }
