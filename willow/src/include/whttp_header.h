@@ -29,6 +29,9 @@
 #define REQTYPE_OPTIONS	4
 #define REQTYPE_INVALID	-1
 
+#define MAX_HDRNAM	30
+#define MAX_HDRVAL	128
+
 extern struct request_type {
 	const char *name;
 	int len;
@@ -36,20 +39,18 @@ extern struct request_type {
 } supported_reqtypes[];
 
 struct header : freelist_allocator<header> {
-	header(ptstring const &, ptstring const &);
+	header(char const *, size_t, char const *, size_t);
 	~header() {}
+	header(header const &);
 
-	void	swap(header &);
-
-	ptstring	 hr_name;
-	ptstring	 hr_value;
+	char	hr_name[MAX_HDRNAM];
+	char	hr_value[MAX_HDRVAL];
 };
 
 struct header_list {
 	header_list();
 	~header_list() {};
 
-	void	 add		(ptstring const &, ptstring const &);
 	void	 add		(char const *, char const *);
 	void	 add		(char const *, size_t, char const *, size_t);
 	void	 append_last	(const char *, size_t);

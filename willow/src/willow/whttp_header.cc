@@ -58,19 +58,19 @@ find_reqtype(char const *str, int len)
 	return REQTYPE_INVALID;
 }
 
-header::header(ptstring const &n, ptstring const &v)
-	: hr_name(n)
-	, hr_value(v)
+header::header(char const *n, size_t nlen, char const *v, size_t vlen)
 {
+	memcpy(hr_name, n, nlen);
+	memcpy(hr_value, v, vlen);
+	hr_name[nlen] = hr_value[vlen] = '\0';
 }
 
-void
-header::swap(header &other)
+header::header(header const &other)
 {
-	hr_name.swap(other.hr_name);
-	hr_value.swap(other.hr_value);
+	strcpy(hr_name, other.hr_name);
+	strcpy(hr_value, other.hr_value);
 }
-	
+
 header_list::header_list()
 	: hl_len(0)
 {
@@ -78,17 +78,9 @@ header_list::header_list()
 }
 
 void
-header_list::add(ptstring const &name, ptstring const &value)
-{
-	hl_hdrs.push_back(header(name, value));
-	hl_last = &*hl_hdrs.rbegin();
-	hl_len += name.size() + value.size() + 4;
-}
-
-void
 header_list::add(char const *name, size_t namelen, char const *value, size_t vallen)
 {
-	hl_hdrs.push_back(header(string(name, name + namelen), string(value, value + vallen)));
+	hl_hdrs.push_back(header(name, namelen, value, vallen));
 	hl_last = &*hl_hdrs.rbegin();
 	hl_len += namelen + vallen + 4;
 }
@@ -96,7 +88,7 @@ header_list::add(char const *name, size_t namelen, char const *value, size_t val
 void
 header_list::add(char const *name, char const *value)
 {
-	add(string(name), string(value));
+	add(name, strlen(name), value, strlen(value));
 }
 
 void
@@ -105,8 +97,8 @@ header_list::append_last(const char *append, size_t len)
 char const	*tmp;
 char		*n;
 	assert(hl_last);
-	hl_last->hr_value += ", ";
-	hl_last->hr_value.append(append, append + len);
+	strlcat(hl_last->hr_value, ", ", sizeof(hl_last->hr_value));
+	strncat(hl_last->hr_value, append, min(len, MAX_HDRVAL - strlen(hl_last->hr_value) - 1));
 	hl_len += len + 2;
 }
 
@@ -117,8 +109,9 @@ vector<header, pt_allocator<header> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
 		if (!httpcompare(it->hr_name, name))
 			continue;
-		hl_len -= it->hr_name.size() + it->hr_value.size() + 4;
-		it->swap(*hl_hdrs.rbegin());
+		hl_len -= strlen(it->hr_name) + strlen(it->hr_value) + 4;
+		strcpy(it->hr_name, hl_hdrs.rbegin()->hr_name);
+		strcpy(it->hr_value, hl_hdrs.rbegin()->hr_value);
 		hl_hdrs.pop_back();
 		return;
 	}
@@ -130,7 +123,7 @@ header_list::find(const char *name)
 {
 vector<header, pt_allocator<header> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
-		if (!httpcompare(it->hr_name, name))
+		if (!strcasecmp(it->hr_name, name))
 			continue;
 		return &*it;
 	}
@@ -151,13 +144,13 @@ size_t	 buflen = 0;
 vector<header, pt_allocator<header> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
 	int	incr;
-		incr = it->hr_name.size();
-		memcpy(buf + buflen, it->hr_name.data(), incr);
+		incr = strlen(it->hr_name);
+		memcpy(buf + buflen, it->hr_name, incr);
 		buflen += incr;
 		memcpy(buf + buflen, ": ", 2);
 		buflen += 2;
-		incr = it->hr_value.size();
-		memcpy(buf + buflen, it->hr_value.data(), incr);
+		incr = strlen(it->hr_value);
+		memcpy(buf + buflen, it->hr_value, incr);
 		buflen += incr;
 		memcpy(buf + buflen, "\r\n", 2);
 		buflen += 2;
@@ -230,6 +223,12 @@ size_t		 vlen, nlen, rnpos;
 		while (isspace(*value) && value < rn)
 			value++;
 		vlen = rn - value;
+
+		if (nlen > MAX_HDRNAM || vlen > MAX_HDRVAL) {
+			_sink_spigot->sp_cork();
+			return io::sink_result_error;
+		}
+
 		if (!strncasecmp(name, "Transfer-Encoding", nlen) && !strncasecmp(value, "chunked", vlen))
 			_flags.f_chunked = 1;
 		else if (!strncasecmp(name, "Content-Length", nlen))
