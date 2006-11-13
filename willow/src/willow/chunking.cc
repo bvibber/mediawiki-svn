@@ -22,9 +22,9 @@ chunking_filter::bf_transform(char const *buf, size_t len, ssize_t &discard)
 char	sstr[16], *s;
 int	i;
 	if (!_first) {
-		i = snprintf(sstr, sizeof(sstr), "\r\n%x\r\n", len);
+		i = snprintf(sstr, sizeof(sstr), "\r\n%lx\r\n", (unsigned long)len);
 	} else {
-		i = snprintf(sstr, sizeof(sstr), "%x\r\n", len);
+		i = snprintf(sstr, sizeof(sstr), "%lx\r\n", (unsigned long) len);
 		_first = false;
 	}
 	s = new char[strlen(sstr)];

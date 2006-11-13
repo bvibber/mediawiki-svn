@@ -220,7 +220,7 @@ size_t	nbufsz = curnlen + curvlen + 4 + len;
 	char	*nbuf = hl_last->alloc.allocate(nbufsz);
 		strcpy(nbuf, hl_last->hr_name);
 		sprintf(nbuf + curnlen + 1, "%s, %.*s",
-			hl_last->hr_value, len, append);
+			hl_last->hr_value, (int) len, append);
 
 		if (hl_last->hr_allocd)
 			hl_last->alloc.deallocate(hl_last->hr_name, hl_last->hr_allocd);
