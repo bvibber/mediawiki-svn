@@ -26,12 +26,10 @@ static  tss<T>		 _freelist;
                 if (_freelist) {
                 T       *n = _freelist;
                         _freelist = _freelist->_freelist_next;
-			memset(n, 0, sizeof(*n));
                         return n;
                 } else {
 		void	*ret;
-			ret = new char[size];
-			memset(ret, 0, size);
+			ret = ::operator new(size);
 			return ret;
 		}
         }
@@ -42,7 +40,6 @@ static  tss<T>		 _freelist;
 
         void operator delete (void *p) {
         T       *o = (T *)p;
-		memset(o, 0, sizeof(*o));
                 o->_freelist_next = _freelist;
                 _freelist = o;
         }
