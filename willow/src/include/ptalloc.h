@@ -117,8 +117,10 @@ struct pt_allocator {
 	void deallocate(pointer p, size_type n) {
 	size_t			 sz = sizeof(T) * n;
 	int			 exp = ilog2(sz) + 1;
-	vector<pta_block *>	&fl = *freelist;
 	pta_block		*ptb = get_ptb();
+		if (!freelist)
+			freelist = new vector<pta_block *>;
+	vector<pta_block *>	&fl = *freelist;
 
 		if ((int)fl.size() <= exp)
 			fl.resize(exp + 1);
