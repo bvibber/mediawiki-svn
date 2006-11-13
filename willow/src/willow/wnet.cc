@@ -99,7 +99,6 @@ size_t	 i;
 		% getdtablesize());
 	
 	signal(SIGPIPE, SIG_IGN);
-	make_event_base();
 
 	for (i = 0; i < listeners.size(); ++i) {
 	listener	*lns = listeners[i];
@@ -569,7 +568,6 @@ sig_exit(int sig, short what, void *d)
 void
 ioloop_t::run(void)
 {
-	make_event_base();
 	event_base_loop(evb, 0);
 	perror("event_base_loop");
 }

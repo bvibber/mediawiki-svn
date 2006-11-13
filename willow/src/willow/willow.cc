@@ -126,6 +126,7 @@ main(int argc, char *argv[])
 		exit(0);
 	}
 
+	make_event_base();
 	ioloop = new ioloop_t;		
 	whttp_init();
 	wcache_init(1);

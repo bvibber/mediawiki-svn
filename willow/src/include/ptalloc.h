@@ -21,7 +21,7 @@
  * A fast, thread-specific power of two allocator.  Backended by
  * new[].
  */
-struct pta_block : freelist_allocator<pta_block> {
+struct pta_block {
 	struct pta_block *next;
 	void *addr;
 };
@@ -57,6 +57,34 @@ struct pt_allocator {
 	typedef size_t			 size_type;
 	typedef ptrdiff_t		 difference_type;
 
+	pta_block *get_ptb(void) {
+	pta_block	**ptfl = (pta_block **)pthread_getspecific(tssw.key);
+	pta_block	 *ret;
+		if (!ptfl) {
+			ptfl = new pta_block *(NULL);
+			pthread_setspecific(tssw.key, ptfl);
+		}
+
+		if (*ptfl) {
+			ret = *ptfl;
+			(*ptfl) = ret->next;
+		} else {
+			ret = (pta_block *)malloc(sizeof(*ret));
+		}
+		return ret;
+	}
+
+	void lose_ptb(pta_block *ptb) {
+	pta_block	**ptfl = (pta_block **)pthread_getspecific(tssw.key);
+		if (!ptfl) {
+			ptfl = new pta_block *(NULL);
+			pthread_setspecific(tssw.key, ptfl);
+		}
+
+		ptb->next = *ptfl;
+		*ptfl = ptb;
+	}
+
 	pointer address (reference x) const {
 		return &x;
 	}
@@ -78,7 +106,7 @@ struct pt_allocator {
 		pta_block	*ptb = fl[exp];
 			fl[exp] = ptb->next;
 			ret = ptb->addr;
-			delete ptb;
+			lose_ptb(ptb);
 			return (pointer) ret;
 		}
 		/* no, need a new block */
@@ -90,7 +118,7 @@ struct pt_allocator {
 	size_t			 sz = sizeof(T) * n;
 	int			 exp = ilog2(sz) + 1;
 	vector<pta_block *>	&fl = *freelist;
-	pta_block		*ptb = new pta_block;
+	pta_block		*ptb = get_ptb();
 
 		if ((int)fl.size() <= exp)
 			fl.resize(exp + 1);
@@ -139,11 +167,20 @@ struct pt_allocator {
 		return r;
 	}
 
+	static struct tsswrap {
+		tsswrap() {
+			pthread_key_create(&key, NULL);
+		}
+		pthread_key_t key;
+	} tssw;
+
 	static tss<vector<pta_block *> >	freelist;
 };
 
 template<typename T>
 tss<vector<pta_block *> > pt_allocator<T>::freelist;
+template<typename T>
+typename pt_allocator<T>::tsswrap pt_allocator<T>::tssw;
 
 template<>
 struct pt_allocator<void>
