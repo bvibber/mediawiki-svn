@@ -535,9 +535,6 @@ socket::socket(wnet::address const &a, char const *desc, sprio p)
 	_s = ::socket(_addr.family(), _addr.socktype(), _addr.protocol());
 	if (_s == -1)
 		throw socket_error();
-int	one = 1;
-	if (_addr.socktype() == SOCK_STREAM)
-		setopt(IPPROTO_TCP, TCP_NODELAY, &one, sizeof(one));
 }
 
 void
