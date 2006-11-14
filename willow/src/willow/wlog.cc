@@ -70,7 +70,7 @@ string	r;
 	if (sev < logging.level)
 		return;
 
-	r = format("%s| %s: %s") % current_time_short % sev_names[sev] % e;
+	r = format("%s| %s: %s") % (char *)current_time_short % sev_names[sev] % e;
 
 	HOLDING(log_lock);	
 	if (logging.syslog)

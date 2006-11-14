@@ -34,7 +34,9 @@ struct format
 	format	(string const &);
 
 	template<typename T>
-	format& operator%(T const &);
+	format& operator% (T const &);
+	template<typename T, int i>
+	format& operator% (T (&)[i]);
 
 	string	str(void) const;
 		operator string(void) const;
@@ -47,7 +49,7 @@ private:
 		at_decint,
 		at_hexint,
 		at_octint,
-		at_errno,
+		at_errno
 	};
 	vector<argtype>	_argtypes;
 	vector<string>	_args;
@@ -81,6 +83,13 @@ ostringstream	strm;
 	_args.push_back(strm.str());
 	_reserve += _args.rbegin()->size();
 	return *this;
+}
+
+template<typename T, int i>
+format&
+format::operator% (T (&s)[i])
+{
+	return *this % (T *)s;
 }
 
 #endif

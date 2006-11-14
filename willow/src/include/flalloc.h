@@ -49,6 +49,9 @@ static  tss<T, flalloc_dtor<T> >		 _freelist;
 		return pos;
 	}
 
+	void operator delete (void *, T *) {
+	}
+
         void operator delete (void *p) {
         T       *o = (T *)p;
                 o->_freelist_next = _freelist;

@@ -28,7 +28,7 @@ using namespace wnet;
 enum lb_type {
 	lb_rr,
 	lb_carp,
-	lb_carp_hostonly,
+	lb_carp_hostonly
 };
 
 struct backend_list;

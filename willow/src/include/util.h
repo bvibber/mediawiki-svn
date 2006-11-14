@@ -15,6 +15,10 @@
 #include <iostream>
 #include <string>
 
+#ifdef __INTEL_COMPILER
+# pragma warning (disable: 869 981 304 383 1418 1469 810 444)
+#endif
+
 struct noncopyable {
 	noncopyable() {};
 private:
@@ -53,6 +57,5 @@ To lexical_cast(From const &f)
 {
 	return lexical_caster<From, To>::cast(f);
 }
-
 
 #endif

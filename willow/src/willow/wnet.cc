@@ -124,7 +124,6 @@ size_t	 i;
 void
 ioloop_t::_accept(wsocket *s, int)
 {
-	int		 val;
 	wsocket		*newe;
 static atomic<time_t>	 last_nfile = 0;
 	time_t		 now = time(NULL);

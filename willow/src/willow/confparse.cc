@@ -294,7 +294,6 @@ char	*mp, *op, *ap;
 		if (*ap != '"' || ap[strlen(ap) - 1] != '"')
 			report_parse_error("%%pragma include_path must be followed by a quoted string");
 		else {
-		const char	*sp;
 			ap++;
 			ap[strlen(ap) - 1] = '\0';
 				add_ipath(ap);

@@ -1012,13 +1012,13 @@ size_t	size;
 	if (alf.is_open()) {
 	string	line;
 		line = format("[%s] %s %s\"%s\" %d %d %s MISS")
-			% current_time_short
+			% (char *)current_time_short
 			% _client_socket->straddr(false)
 			% request_string[_header_parser->_http_reqtype]
 			% _request_path
 			% size
 			% _response
-			% (_backend ? _backend->be_name : "-");
+			% (_backend ? _backend->be_name : string("-"));
 
 		HOLDING(alf_lock);
 
@@ -1028,7 +1028,7 @@ size_t	size;
 		}
 	}
 
-	if (config.udp_log) {
+	if (do_udplog) {
 	char	 buf[65535];
 	char	*bufp = buf, *endp = buf + sizeof(buf);
 		/*

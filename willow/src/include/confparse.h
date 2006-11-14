@@ -26,6 +26,7 @@ using std::vector;
 using std::pair;
 
 #include "willow.h"
+#include "util.h"
 
 /*
  * the config tree.

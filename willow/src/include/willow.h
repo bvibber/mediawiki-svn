@@ -32,10 +32,6 @@ using std::basic_ostream;
 #include "radix.h"
 #include "ptalloc.h"
 
-#ifdef __INTEL_COMPILER
-# pragma warning (disable: 869 981 304 383 1418 1469 810)
-#endif
-
 typedef unsigned long long w_size_t;
 
 #include <stdlib.h>

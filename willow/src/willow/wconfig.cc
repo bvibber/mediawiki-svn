@@ -123,6 +123,8 @@ addrlist::iterator	it = res->begin(), end = res->end();
 		try {
 			nl->sock = it->makesocket("HTTP listener", prio_accept);
 		} catch (socket_error &ex) {
+			wlog(WLOG_DEBUG, format("creating listener %s: %s")
+				% e.item_key % ex.what());
 			delete nl;
 			delete res;
 			return;
@@ -170,9 +172,8 @@ value	*v;
 static bool
 v_udp_log(tree_entry &e, value &v)
 {
-value	*val;
 bool	 ret = true;
-	if ((val = e/"udp-host") == NULL) {
+	if (e/"udp-host" == NULL) {
 		v.report_error("udp-host must be specified for UDP logging");
 		ret = false;
 	}
@@ -253,7 +254,6 @@ radix_prefix(tree_entry &, value &v)
 {
 vector<avalue>::iterator	it = v.cv_values.begin(),
 				end = v.cv_values.end();
-prefix	p;
 	for (; it != end; ++it) {
 		if (it->av_type != cv_qstring) {
 			v.report_error("access prefix must be a list of quoted strings");
@@ -339,9 +339,9 @@ value	*v;
 	bpools.insert(make_pair(gn, backend_pool(e.item_key, lbtype, fogroup)));
 
 	if ((v = e/"hosts") != NULL) {
-	vector<avalue>::iterator it = v->cv_values.begin(), end = v->cv_values.end();
-		for (; it != end; ++it)
-			host_to_bpool[imstring(it->av_strval)] = gn;
+	vector<avalue>::iterator hit = v->cv_values.begin(), hend = v->cv_values.end();
+		for (; hit != hend; ++hit)
+			host_to_bpool[imstring(hit->av_strval)] = gn;
 		used_pools.insert(gn);
 	}
 }

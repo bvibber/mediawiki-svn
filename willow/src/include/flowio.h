@@ -86,7 +86,7 @@ protected:
 
 enum dio_source {
 	dio_source_fd,
-	dio_source_socket,
+	dio_source_socket
 };
 
 /*

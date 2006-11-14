@@ -351,7 +351,7 @@ stats_stru stats;
 static struct event stats_ev;
 static struct timeval stats_tv;
 static void stats_sched(void);
-void add_stats_listener(pair<string,string> const &ip);
+static void add_stats_listener(pair<string,string> const &ip);
 
 struct stats_handler_stru : noncopyable {
 	void	callback (wsocket *, int);
@@ -425,7 +425,7 @@ vector<pair<string,string> >::iterator	it = config.stats_hosts.begin(),
 	stats_sched();
 }
 
-void
+static void
 add_stats_listener(pair<string,string> const &ip)
 {
 addrlist	*alist;

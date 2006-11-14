@@ -173,7 +173,7 @@ enum connect_status {
 
 enum socktype {
 	st_stream = SOCK_STREAM,
-	st_dgram = SOCK_DGRAM,
+	st_dgram = SOCK_DGRAM
 };
 
 struct address : freelist_allocator<address> {
