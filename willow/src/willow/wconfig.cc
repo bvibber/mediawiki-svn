@@ -443,6 +443,7 @@ conf
 	config.keepalive_max = 0;
 	config.max_redirects = 1;
 	config.use_dio = false;
+	config.x_follow = false;
 
 	conf.set(*t);
 	whttp_reconfigure();

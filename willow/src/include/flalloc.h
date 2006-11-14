@@ -18,9 +18,20 @@ using std::memset;
 #include "wthread.h"
 
 template<typename T>
+void
+flalloc_dtor(void *p)
+{
+T	*n = (T *)p, *o;
+	while (o = n) {
+		n = n->_freelist_next;
+		::operator delete(o);
+	}
+}
+
+template<typename T>
 struct freelist_allocator {
 	T		*_freelist_next;
-static  tss<T>		 _freelist;
+static  tss<T, flalloc_dtor<T> >		 _freelist;
 
         void *operator new(std::size_t size) {
                 if (_freelist) {
@@ -46,6 +57,6 @@ static  tss<T>		 _freelist;
 };
 
 template<typename T>
-tss<T> freelist_allocator<T>::_freelist;
+tss<T, flalloc_dtor<T> > freelist_allocator<T>::_freelist;
 
 #endif

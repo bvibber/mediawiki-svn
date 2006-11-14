@@ -85,6 +85,7 @@ addrlist::iterator	it = list->begin(), end = list->end();
 		     % addr % it->straddr());
 	}
 
+	delete list;
 	_carp_calc();
 }
 
@@ -188,6 +189,12 @@ backend_list::backend_list(
 	rotate(backends.begin(), backends.begin() + cur, backends.end());
 	if (lbt == lb_carp || lbt == lb_carp_hostonly)
 		_carp_recalc(url, host, lbt);
+}
+
+backend_pool::~backend_pool(void)
+{
+	for (int i = 0; i < backends.size(); ++i)
+		delete backends[i];
 }
 
 backend_list *

@@ -32,6 +32,10 @@ struct listener {
 	int		 port;
 	int		 group;
 	wnet::socket	*sock;
+
+	~listener() {
+		delete sock;
+	}
 };
 extern vector<listener *> listeners;
 extern map<wsocket *, int> lsn2group;

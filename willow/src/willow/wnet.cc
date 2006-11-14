@@ -56,7 +56,7 @@ time_t current_time;
 
 static void secondly_sched(void);
 
-int wnet_exit;
+bool wnet_exit;
 vector<wsocket *>	awaks;
 int			cawak;
 
@@ -583,12 +583,17 @@ static lockable meb_lock;
 void
 sig_exit(int sig, short what, void *d)
 {
-	exit(0);
+	wnet_exit = true;
 }
 
 void
 ioloop_t::run(void)
 {
-	event_base_loop(evb, 0);
-	perror("event_base_loop");
+	while (!wnet_exit) {
+		event_base_loop(evb, EVLOOP_ONCE);
+	}
+
+size_t	 i;
+	for (i = 0; i < listeners.size(); ++i)
+		delete listeners[i];
 }

@@ -275,6 +275,8 @@ cache_writestate(cache_state *state)
 	int		 stlen;
 struct	cache_object	*obj;
 
+	if (!config.caches)
+		return;
 	stlen = strlen(config.caches[0].dir) + 1 + 5 + 1;
 	if ((stpath = (char *)wmalloc(stlen)) == NULL)
 		outofmemory();

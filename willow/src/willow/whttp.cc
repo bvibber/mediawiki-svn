@@ -172,6 +172,9 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	imstring	 _request_host;
 	imstring	 _request_path;
 	int		 _nredir;
+
+private:
+	httpcllr(const httpcllr &);
 };
 
 httpcllr::httpcllr(wsocket *s, int gr)
@@ -673,10 +676,13 @@ whttp_init(void)
 		% config.nthreads);
 	for (int i = 0; i < config.nthreads; ++i) {
 	http_thread	*t = new http_thread;
+	pthread_attr_t	 attr;
+		pthread_attr_init(&attr);
+		pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
 		t->sv = wnet::socket::socketpair(st_dgram);
 		wnet_add_accept_wakeup(t->sv.first);
 		threads.push_back(t);
-		pthread_create(&t->thr, NULL, client_thread, t);
+		pthread_create(&t->thr, &attr, client_thread, t);
 	}
 	whttp_header_init();
 }
@@ -731,13 +737,20 @@ http_thread::execute(void)
 	sv.second->readback(polycaller<wsocket *, int>(*this, 
 		&http_thread::accept_wakeup), 0);
 	event_base_loop(evb, 0);
-	wlog(WLOG_ERROR, format("event_base_loop: %e"));
-	exit(1);
+	delete merge_ev;
+	delete stats.tcur;
+	return;
 }
 
 static void
 stats_merge(int, short, void *)
 {
+timeval	tv = {0, 0};
+	if (wnet_exit) {
+		event_base_loopexit(evb, &tv);
+		return;
+	}
+
 	{	HOLDING(stats.cur_lock);
 		stats.cur.n_httpreq_ok += stats.tcur->n_httpreq_ok;
 		stats.tcur->n_httpreq_ok = 0;

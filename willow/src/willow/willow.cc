@@ -34,15 +34,35 @@ static void stats_init(void);
 
 static const char *progname;
 
-tss<vector<pta_block *> > ptfreelist;
+tss<vector<pta_block *>, ptdealloc> ptfreelist;
 pttsswrap pttssw;
+event checkexit_ev;
+timeval checkexit_tv;
 
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
-static void 
-sig_exit(int)
+static void checkexit_sched(void);
+
+static void
+checkexit_update(int, short, void *)
 {
-	wnet_exit = 1;
+timeval	tv = {0, 0};
+	if (wnet_exit) {
+		event_del(&checkexit_ev);
+		event_base_loopexit(evb, &tv);
+		return;
+	}
+	checkexit_sched();
+}
+
+static void
+checkexit_sched(void)
+{
+	checkexit_tv.tv_usec = 0;
+	checkexit_tv.tv_sec = 1;
+	evtimer_set(&checkexit_ev, checkexit_update, NULL);
+	event_base_set(evb, &checkexit_ev);
+	event_add(&checkexit_ev, &checkexit_tv);
 }
 
 static void
@@ -57,6 +77,28 @@ usage(void)
 "                            'false') in the configuration parser.  if 'value'\n"
 "                            is not specified, defaults to true\n"
 			, progname);
+}
+
+void
+tss_null_dtor(void *)
+{
+}
+
+void
+ptdealloc(void *p)
+{
+vector<pta_block *> *v = (vector<pta_block *> *)p;
+std::cout<<"ptdealloc\n";
+	for (vector<pta_block *>::iterator it = v->begin(), end = v->end();
+	     it != end; ++it) {
+	pta_block *n = *it, *o;
+		while (o = n) {
+			n = n->next;
+			delete [] (char *)o->addr;
+			free(o);
+		}
+	}
+	delete v;
 }
 
 int 
@@ -152,23 +194,23 @@ char	*dval;
 
 	make_event_base();
 	ioloop = new ioloop_t;		
+	checkexit_sched();
 	whttp_init();
 	wcache_init(1);
 	stats_init();
 
-	(void)signal(SIGINT, sig_exit);
-	(void)signal(SIGTERM, sig_exit);
-	
 	wlog(WLOG_NOTICE, "running");
 
 	if (!config.foreground)
 		daemon(0, 0);
 
 	ioloop->run();
+	wlog(WLOG_NOTICE, "shutting down");
 	wlog_close();
 	wcache_shutdown();
 	whttp_shutdown();
-	
+
+	pthread_exit(NULL);	
 	return EXIT_SUCCESS;
 }
 

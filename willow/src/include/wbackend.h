@@ -96,6 +96,7 @@ backend::_carp_hosthash(stringT const &str)
 
 struct backend_pool {
 	backend_pool(string const &name, lb_type);
+	~backend_pool();
 
 	void		 add		(string const &, int, int);
 	backend_list	*get_list	(imstring const & url, imstring const &host);

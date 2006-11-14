@@ -47,7 +47,7 @@ using std::make_pair;
 #include "willow.h"
 #include "polycaller.h"
 
-struct client_data;
+extern bool wnet_exit;
 
 namespace wnet {
 	struct addrlist;
@@ -145,7 +145,6 @@ struct client_data {
 extern char current_time_str[];
 extern char current_time_short[];
 extern time_t current_time;
-extern int wnet_exit;
 
 	void	wnet_add_accept_wakeup	(wnet::socket *);
 	void 	wnet_set_time		(void);

@@ -47,13 +47,24 @@ static const int lt256[] =
 };
 
 struct pttsswrap {
+	static void pttsswrapdtor(void *p) {
+	pta_block	**pt = (pta_block **)p, *n = *pt, *o;
+		while (o = n) {
+			n = n->next;
+			free(o);
+		}
+		delete pt;
+	}
+
 	pttsswrap() {
-		pthread_key_create(&key, NULL);
+		pthread_key_create(&key, pttsswrapdtor);
 	}
 	pthread_key_t key;
 };
 
-extern tss<vector<pta_block *> > ptfreelist;
+void ptdealloc(void *);
+
+extern tss<vector<pta_block *>, ptdealloc> ptfreelist;
 extern pttsswrap pttssw;
 
 template<typename T>
@@ -106,6 +117,7 @@ struct pt_allocator {
 	size_t			 sz = sizeof(T) * n;
 	int			 exp = ilog2(sz) + 1;
 	void			*ret;
+
 		if (!ptfreelist)
 			ptfreelist = new vector<pta_block *>;
 	vector<pta_block *>	&fl = *ptfreelist;
@@ -119,7 +131,7 @@ struct pt_allocator {
 			return (pointer) ret;
 		}
 		/* no, need a new block */
-		ret = new char[2 << (exp - 1)];
+		ret = new char[2 << exp];
 		return (pointer) ret;		
 	}
 
@@ -127,6 +139,7 @@ struct pt_allocator {
 	size_t			 sz = sizeof(T) * n;
 	int			 exp = ilog2(sz) + 1;
 	pta_block		*ptb = get_ptb();
+
 		if (!ptfreelist)
 			ptfreelist = new vector<pta_block *>;
 	vector<pta_block *>	&fl = *ptfreelist;

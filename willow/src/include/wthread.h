@@ -223,11 +223,13 @@ T1 operator ~ (atomic<T1> const &v1) {
 	return ~v1.v;
 }
 
-template<typename T>
+void tss_null_dtor(void *);
+
+template<typename T, void dtor (void *) = tss_null_dtor>
 struct tss {
 	mutable pthread_key_t	_key;
 	tss() {
-		pthread_key_create(&_key, NULL);
+		pthread_key_create(&_key, dtor);
 	}
 	T const& operator* (void) const {
 		return *(T *)pthread_getspecific(_key);

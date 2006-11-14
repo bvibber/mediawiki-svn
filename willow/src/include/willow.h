@@ -183,6 +183,12 @@ struct basic_imstring {
 	bool	operator!=	(basic_imstring const &) const;
 
 private:
+	template<typename charT2, typename allocator2>
+	basic_imstring(basic_imstring<charT2, allocator2> const &);
+	template<typename charT2, typename allocator2>
+	basic_imstring &
+	operator=(basic_imstring<charT2, allocator2> const &);
+	
 	charT		*_buf, *_end;
 	size_type	 _len;
 	
@@ -200,6 +206,8 @@ basic_imstring<charT, allocator>::basic_imstring(void)
 
 template<typename charT, typename allocator>
 basic_imstring<charT, allocator>::basic_imstring(charT const *str)
+	: _buf(NULL)
+	, _len(0)
 {
 	reserve(strlen(str));
 	_end = _buf + _len;
@@ -208,6 +216,8 @@ basic_imstring<charT, allocator>::basic_imstring(charT const *str)
 
 template<typename charT, typename allocator>
 basic_imstring<charT, allocator>::basic_imstring(charT const *str, size_type len)
+	: _buf(NULL)
+	, _len(0)
 {
 	reserve(len);
 	_end = _buf + _len;
@@ -217,6 +227,8 @@ basic_imstring<charT, allocator>::basic_imstring(charT const *str, size_type len
 
 template<typename charT, typename allocator>
 basic_imstring<charT, allocator>::basic_imstring(basic_imstring const &o)
+	: _buf(NULL)
+	, _len(0)
 {
 	reserve(o._len);
 	_end = _buf + _len;
@@ -260,7 +272,18 @@ basic_imstring<charT, allocator>::operator= (
 	if (this == &o)
 		return *this;
 
-	_alloc.deallocate(_buf, _len);
+	if (_buf) {
+		_alloc.deallocate(_buf, _len);
+		_buf = NULL;
+		_len = 0;
+	}
+
+	if (!o._buf) {
+		_buf = 0;
+		_len = 0;
+		return *this;
+	}
+
 	reserve(o._len);
 	_end = _buf + _len;
 	memcpy(_buf, o._buf, _len + 1);
@@ -271,6 +294,8 @@ template<typename charT, typename allocator>
 template<typename Sallocator>
 basic_imstring<charT, allocator>::basic_imstring(
 		basic_string<charT, char_traits<charT>, Sallocator> const &s)
+	: _buf(NULL)
+	, _len(0)
 {
 	reserve(s.size());
 	_end = _buf + _len;
@@ -284,6 +309,8 @@ void
 basic_imstring<charT, allocator>::reserve(
 		basic_imstring<charT, allocator>::size_type s)
 {
+	if (_buf)
+		_alloc.deallocate(_buf, _len);
 	_buf = _alloc.allocate(s + 1);
 	_len = s;
 	_end = _buf;
