@@ -193,7 +193,7 @@ sink_result
 socket_sink::data_ready(char const *buf, size_t len, ssize_t &discard)
 {
 ssize_t	wrote;
-	if ((wrote = _socket->write(buf + off, len - off)) == -1) {
+	if ((wrote = _socket->write(buf, len)) == -1) {
 		if (errno == EAGAIN) {
 			_sink_spigot->sp_cork();
 			if (!_reg) {
@@ -239,7 +239,6 @@ ssize_t	wrote;
 		}
 		_sink_spigot->sp_cork();
 		return sink_result_error;
-		break;
 	}
 	discard += wrote;
 	_counter += wrote;
