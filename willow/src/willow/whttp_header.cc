@@ -84,23 +84,23 @@ vector<pair<char const *, int> > htypemap;
 static struct htypent {
 	char 	*name;
 	int	 n;
-	int	 len;
+	size_t	 len;
 } list[] = {
-	{ "transfer-encoding",		H_TRANSFER_ENCODING },
-	{ "content-length",		H_CONTENT_LENGTH },
-	{ "user-agent",			H_USER_AGENT },
-	{ "host",			H_HOST },
-	{ "connection",			H_CONNECTION },
-	{ "location",			H_LOCATION },
-	{ "x-willow-backend-group",	H_X_WILLOW_BACKEND_GROUP },
-	{ "x-willow-follow-redirect",	H_X_WILLOW_FOLLOW_REDIRECT },
-	{ "keep-alive",			H_IGNORE },
-	{ "te",				H_IGNORE },
-	{ "trailers",			H_IGNORE },
-	{ "upgrade",			H_IGNORE },
-	{ "proxy-authenticate",		H_IGNORE },
-	{ "proxy-connection",		H_IGNORE },
-	{ 0, 0 }
+	{ "transfer-encoding",		H_TRANSFER_ENCODING, 0 },
+	{ "content-length",		H_CONTENT_LENGTH, 0 },
+	{ "user-agent",			H_USER_AGENT, 0 },
+	{ "host",			H_HOST, 0 },
+	{ "connection",			H_CONNECTION, 0 },
+	{ "location",			H_LOCATION, 0 },
+	{ "x-willow-backend-group",	H_X_WILLOW_BACKEND_GROUP, 0 },
+	{ "x-willow-follow-redirect",	H_X_WILLOW_FOLLOW_REDIRECT, 0 },
+	{ "keep-alive",			H_IGNORE, 0 },
+	{ "te",				H_IGNORE, 0 },
+	{ "trailers",			H_IGNORE, 0 },
+	{ "upgrade",			H_IGNORE, 0 },
+	{ "proxy-authenticate",		H_IGNORE, 0 },
+	{ "proxy-connection",		H_IGNORE, 0 },
+	{ 0, 0, 0 }
 };
 void
 whttp_header_init(void)

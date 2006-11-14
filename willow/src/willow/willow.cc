@@ -88,11 +88,10 @@ void
 ptdealloc(void *p)
 {
 vector<pta_block *> *v = (vector<pta_block *> *)p;
-std::cout<<"ptdealloc\n";
 	for (vector<pta_block *>::iterator it = v->begin(), end = v->end();
 	     it != end; ++it) {
 	pta_block *n = *it, *o;
-		while (o = n) {
+		while ((o = n) != NULL) {
 			n = n->next;
 			delete [] (char *)o->addr;
 			free(o);

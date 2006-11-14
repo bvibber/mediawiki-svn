@@ -118,7 +118,7 @@ int		bufsz;
 	/* _off was increased by the previous send, reduce _saved
 	 * appropriately
 	 */
-	if (_off >= _saved)
+	if (_off >= (ssize_t)_saved)
 		_saved = _off = 0;
 	else
 		_saved -= _off;
@@ -139,7 +139,7 @@ int		bufsz;
 		}
 	}
 
-	if (_off >= _saved)
+	if (_off >= (ssize_t)_saved)
 		_off = _saved = 0;
 
 	read = s->read(_savebuf + _off + _saved, DIOBUFSZ - (_off + _saved));
@@ -210,7 +210,7 @@ ssize_t	wrote;
 	discard += wrote;
 	_counter += wrote;
 
-	if (len == wrote) {
+	if ((ssize_t)len == wrote) {
 		return sink_result_okay;
 	} else {
 		_sink_spigot->sp_cork();
@@ -243,7 +243,7 @@ ssize_t	wrote;
 	discard += wrote;
 	_counter += wrote;
 
-	if (len == wrote) {
+	if ((ssize_t)len == wrote) {
 		return sink_result_okay;
 	} else {
 		_sink_spigot->sp_cork();

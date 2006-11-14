@@ -58,7 +58,7 @@ static void secondly_sched(void);
 
 bool wnet_exit;
 vector<wsocket *>	awaks;
-int			cawak;
+size_t			cawak;
 
 void
 wnet_add_accept_wakeup(wsocket *s)

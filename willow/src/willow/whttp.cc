@@ -330,7 +330,6 @@ httpcllr::header_read_complete(void)
 		}
 	}
 
-	WDEBUG((WLOG_DEBUG, format("whttp: _group=%d") % _group));
 	_client_spigot->sp_disconnect();
 map<string,int>::iterator	it;
 map<imstring,int>::iterator	mit;
@@ -376,7 +375,14 @@ char	*url = url_.c_str(), *slash;
 void
 httpcllr::start_backend_request(imstring const &host, imstring const &path)
 {
-pair<wsocket *, backend *> ke = bpools.find(_group)->second.get_keptalive();
+pair<wsocket *, backend *> ke;
+
+	/*
+	 * Never try to send a POST request over keepalive - if the connection
+	 * breaks we don't have the POST data anymore so we can't retry.
+	 */
+	if (_header_parser->_http_reqtype != REQTYPE_POST)
+		ke = bpools.find(_group)->second.get_keptalive();
 	
 	_request_host = host;
 	_request_path = path;
@@ -463,6 +469,7 @@ void
 httpcllr::backend_write_headers_done(void)
 {
 	if (_header_parser->_http_reqtype == REQTYPE_POST) {
+std::cout<<"POST "<<_header_parser->_content_length<<" bytes\n";
 		/*
 		 * Connect the client to the backend and read the POST data.
 		 */
@@ -576,6 +583,13 @@ httpcllr::send_headers_to_client_done(void)
 	 * HTTP 1.0, insert a dechunking filter.
 	 */
 	_backend_spigot->sp_disconnect();
+
+	if (_backend_headers->_response == 304 && _backend_headers->_content_length < 0) {
+		/* No body */
+		send_body_to_client_done();
+		return;
+	}
+
 	if (_backend_headers->_flags.f_chunked && _header_parser->_http_vers == http10) {
 		_dechunking_filter = new dechunking_filter;
 		_backend_spigot->sp_connect(_dechunking_filter);
@@ -609,6 +623,7 @@ httpcllr::send_headers_to_client_done(void)
 		}
 		_client_sink->_counter = 0;
 	}
+
 	_backend_spigot->sp_uncork();
 }
 

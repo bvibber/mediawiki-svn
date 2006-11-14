@@ -193,7 +193,7 @@ backend_list::backend_list(
 
 backend_pool::~backend_pool(void)
 {
-	for (int i = 0; i < backends.size(); ++i)
+	for (size_t i = 0; i < backends.size(); ++i)
 		delete backends[i];
 }
 
@@ -277,7 +277,7 @@ backend_pool::add_keptalive(pair<wsocket *, backend *>s)
 
 	if (!_keptalive)
 		_keptalive = new vector<pair<wsocket *, backend *> >;
-	else while (config.keepalive_max && (_keptalive->size() >= config.keepalive_max)) {
+	else while (config.keepalive_max && (_keptalive->size() >= (size_t)config.keepalive_max)) {
 		delete _keptalive->begin()->first;
 		_keptalive->erase(_keptalive->begin());
 	}

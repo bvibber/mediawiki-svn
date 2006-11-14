@@ -49,7 +49,7 @@ static const int lt256[] =
 struct pttsswrap {
 	static void pttsswrapdtor(void *p) {
 	pta_block	**pt = (pta_block **)p, *n = *pt, *o;
-		while (o = n) {
+		while ((o = n) != NULL) {
 			n = n->next;
 			free(o);
 		}

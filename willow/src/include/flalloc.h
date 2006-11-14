@@ -22,7 +22,7 @@ void
 flalloc_dtor(void *p)
 {
 T	*n = (T *)p, *o;
-	while (o = n) {
+	while ((o = n) != NULL) {
 		n = n->_freelist_next;
 		::operator delete(o);
 	}
