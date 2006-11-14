@@ -179,17 +179,16 @@ $wgChemFunctions_Messages['sk'] = array(
 
 /**
  *  vi
- *
  */
 
 $wgChemFunctions_Messages['vi'] = array(
-	'chemicalsources' => 'Ngu?n h�a h?c',
-	'ChemFunctions_ListPage' => 'Ngu?n h�a h?c',
+	'chemicalsources' => 'Nguồn hóa học',
+	'ChemFunctions_ListPage' => 'Nguồn hóa học',
 	'ChemFunctions_SearchExplanation' => '',
-	'ChemFunctions_DataList' => '��y l� danh s�ch nh?ng website c� th? cung c?p th�ng tin v? ch?t h�a h?c n�y:<br /><br />
-	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Ch?t $MIXCASNameFormula t?i NIST</a><br />
-	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS t?i �?i h?c Oxford (Anh)</a> (kh�ng c� b? t�m ki?m)<br />',
-	'ChemFunctions_CAS' => 'S? CAS',
+	'ChemFunctions_DataList' => 'Đây là danh sách những website có thể cung cấp thông tin về chất hóa học này:<br /><br />
+	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Chất $MIXCASNameFormula tại NIST</a><br />
+	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS tại Đại học Oxford (Anh)</a> (không có bộ tìm kiếm)<br />',
+	'ChemFunctions_CAS' => 'Số CAS',
 	'ChemFunctions_EINECS' => 'Einecs',
 	'ChemFunctions_CHEBI' => 'CHEBI',
 	'ChemFunctions_PubChem' => 'PubChem',
@@ -200,10 +199,10 @@ $wgChemFunctions_Messages['vi'] = array(
 	'ChemFunctions_ATCCode' => 'ATCCode',
 	'ChemFunctions_DrugBank' => 'DrugBank',
 	'ChemFunctions_ECNumber' => 'ECNumber',
-	'ChemFunctions_Formula' => 'C�ng th?c',
-	'ChemFunctions_Name' => 'T�n IUPAC',
+	'ChemFunctions_Formula' => 'Công thức',
+	'ChemFunctions_Name' => 'Tên IUPAC',
 
-	'ChemFunctions_ChemFormInputError' => 'Chemform: l?i nh?p!'
+	'ChemFunctions_ChemFormInputError' => 'Chemform: lỗi nhập!'
 );
 
-?> 
+?>
