@@ -40,6 +40,10 @@ using std::strcpy;
 using std::strchr;
 using std::auto_ptr;
 
+#ifdef __INTEL_COMPILER
+# pragma warning (disable: 1418 383 981)
+#endif
+
 #include "acl.h"
 
 static FILE *outfile = stdout;
@@ -143,7 +147,7 @@ doprint_clf(logent &e)
 static void
 doprint_squid(logent &e)
 {
-	fprintf(outfile, "%ul.0      0 %s TCP_%s/%d %lu %s %.*s - ", (unsigned long)*e.r_reqtime,
+	fprintf(outfile, "%lu.0      0 %s TCP_%s/%d %lu %s %.*s - ", (unsigned long)*e.r_reqtime,
 		resolve(e.r_cliaddr, *e.r_clilen), *e.r_cached ? "HIT" : "MISS",
 		(int)*e.r_status, (unsigned long)*e.r_docsize,
 		reqtypes[*e.r_reqtype], (int)*e.r_pathlen, e.r_path);
@@ -156,13 +160,12 @@ static void
 wait_event(vector<int> &socks, int maxfd, fd_set &rfds)
 {
 vector<int>::iterator	it, end;
-int	i;
 	for (;;) {
 		bzero(&rfds, sizeof(rfds));
 		FD_ZERO(&rfds);
 		for (it = socks.begin(), end = socks.end(); it != end; ++it)
 			FD_SET(*it, &rfds);
-		if (select(maxfd + 1, &rfds, NULL, NULL, NULL) <1) {
+		if (select(maxfd + 1, &rfds, NULL, NULL, NULL) < 1) {
 			if (errno == EINTR)
 				continue;
 			fprintf(stderr, "select: %s\n", strerror(errno));
@@ -195,8 +198,8 @@ handle_packet(int sfd)
 {
 sockaddr_storage	cliaddr;
 socklen_t		clilen;
-int	n, i, nlen;
-char	buf[65535], *end = buf + sizeof(buf), *bufp = buf;
+int	n;
+char	buf[65535], *end, *bufp = buf;
 const aclnode	*an;
 	clilen = sizeof(cliaddr);
 	bufp = buf;
@@ -204,6 +207,8 @@ const aclnode	*an;
 		perror("recvfrom");
 		exit(8);
 	}
+
+	end = buf + n;
 
 	if (((an = acl4.match((sockaddr *)&cliaddr)) && (an->action == ACL_BLOCK))
 	    || ((an = acl6.match((sockaddr *)&cliaddr)) && (an->action == ACL_BLOCK)))
@@ -265,7 +270,6 @@ vector<int>	 sfds;
 int		 i;
 const char	*port = "4445", *host = NULL;
 char		*progname = argv[0];
-struct sockaddr_in servaddr, cliaddr;
 struct addrinfo hints, *res;
 bool		 daemon = false;
 	memset(&hints, 0, sizeof(hints));
@@ -320,7 +324,7 @@ bool		 daemon = false;
 			if (strchr(p, '.')) {
 				if (!len)
 					len = 32;
-				if (acl4.add(p, len, ACL_PASS, ACLFL_NONE) == false) {
+				if (acl4.add(p, (uint8_t) len, ACL_PASS, ACLFL_NONE) == false) {
 					fprintf(stderr, "%s: could not parse IP mask: %s\n", argv[0], optarg);
 					return 1;
 				}
@@ -329,7 +333,7 @@ bool		 daemon = false;
 			else {
 				if (!len)
 					len = 128;
-				if (acl6.add(p, len, ACL_PASS, ACLFL_NONE) == false) {
+				if (acl6.add(p, (uint8_t) len, ACL_PASS, ACLFL_NONE) == false) {
 					fprintf(stderr, "%s: could not parse IP mask: %s\n", argv[0], optarg);
 					return 1;
 				}

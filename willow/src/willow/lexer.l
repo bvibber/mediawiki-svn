@@ -32,7 +32,6 @@ struct statestack_stru {
 	int			lineno;
 } statestack[MAXINCLUDE + 1];
 int inclevel;
-static int oldpos;
 static bool in_if;
 
 #undef YY_INPUT
@@ -58,7 +57,7 @@ endif     %{ws}endif{ws}$
 
 ^.*		{
 			conf::linebuf.assign(yytext, yyleng);
-			oldpos = conf::curpos = 0; 
+			conf::curpos = 0; 
 			yyless(0); 
 		}
 <IGNORING>{if}  { conf::report_parse_error("%%if may not be nested"); }
@@ -133,27 +132,27 @@ endif     %{ws}endif{ws}$
 				yyterminate();
 		}
 				
-\t		{ oldpos = conf::curpos; conf::curpos += 8; }
-{ws}            { oldpos = conf::curpos; conf::curpos += yyleng; }
-var		{ oldpos = conf::curpos; conf::curpos += yyleng; return VAR; }
-template	{ oldpos = conf::curpos; conf::curpos += yyleng; return TEMPLATE; }
-from		{ oldpos = conf::curpos; conf::curpos += yyleng; return FROM; }
-\.\.		{ oldpos = conf::curpos; conf::curpos += yyleng; return TWODOTS; }
+\t		{ conf::curpos += 8; }
+{ws}            { conf::curpos += yyleng; }
+var		{ conf::curpos += yyleng; return VAR; }
+template	{ conf::curpos += yyleng; return TEMPLATE; }
+from		{ conf::curpos += yyleng; return FROM; }
+\.\.		{ conf::curpos += yyleng; return TWODOTS; }
 
 {qstring}	{
 			yylval.string_ = new string(yytext + 1, yyleng - 2);
-			oldpos = conf::curpos; conf::curpos += yyleng;
+			conf::curpos += yyleng;
 			return QSTRING;
 		}
 {string}	{
 			yylval.string_ = new string(yytext, yyleng);
-			oldpos = conf::curpos; conf::curpos += yyleng;
+			conf::curpos += yyleng;
 			return STRING;
 		}
 {number}	{
 			yylval.number = atoi(yytext);
-			oldpos = conf::curpos; conf::curpos += yyleng;
+			conf::curpos += yyleng;
 			return NUMBER;
 		}
-.               { oldpos = conf::curpos; conf::curpos++; return yytext[0]; }
+.               { conf::curpos++; return yytext[0]; }
 %%

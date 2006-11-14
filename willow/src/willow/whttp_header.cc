@@ -42,7 +42,7 @@ enum {
 	H_CONNECTION,
 	H_LOCATION,
 	H_X_WILLOW_BACKEND_GROUP,
-	H_X_WILLOW_FOLLOW_REDIRECT,
+	H_X_WILLOW_FOLLOW_REDIRECT
 };
 
 #if 0
@@ -132,26 +132,6 @@ hmap_type::iterator	it;
 }
 #endif
 
-/*
- * A list of headers we should remove from the request and the response
- * because we don't like them, or we want to insert our own.
- */
-static const struct rmhdr_t {
-	char	*name;
-	size_t	 len;
-} removable_headers[] = {
-	{	"If-Modified-Since",	sizeof("If-Modified-Since") - 1 },
-	{	"Last-Modified",	sizeof("Last-Modified") - 1 },
-	{	"Keep-Alive",		sizeof("Keep-Alive") - 1 },
-	{	"TE",			sizeof("TE") - 1 },
-	{	"Trailers",		sizeof("Trailers") - 1 },
-	{	"Upgrade",		sizeof("Upgrade") - 1 },
-	{	"Proxy-Authenticate",	sizeof("Proxy-Authenticate") - 1 },
-	{	"Proxy-Authorization",	sizeof("Proxy-Authorization") - 1 },
-	{	"Proxy-Connection",	sizeof("Proxy-Connection") - 1 },
-	{	NULL, 0 }
-};
-
 const char *request_string[] = {
 	"GET ",
 	"POST ",
@@ -168,18 +148,6 @@ struct request_type supported_reqtypes[] = {
 	{ "OPTIONS",	7,	REQTYPE_OPTIONS	},
 	{ NULL,		0,	REQTYPE_INVALID }
 };
-
-/*
- * Check if we should remove this header.
- */
-static bool
-is_removable(char const *header, size_t hlen)
-{
-	for (rmhdr_t const *s = removable_headers; s->name; ++s)
-		if (hlen == s->len && !strncasecmp(header, s->name, hlen))
-			return true;
-	return false;
-}
 
 static int
 find_reqtype(char const *str, int len)
@@ -293,8 +261,6 @@ header_list::add(char const *name, char const *value)
 void
 header_list::append_last(const char *append, size_t len)
 {
-char const	*tmp;
-char		*n;
 int		 curnlen, curvlen;
 	curnlen = strlen(hl_last->hr_name);
 	curvlen = strlen(hl_last->hr_value);
@@ -364,7 +330,7 @@ vector<header *, pt_allocator<header *> >::iterator	it, end;
 char *
 header_list::build(void)
 {
-char	*buf, *bufp;
+char	*buf;
 size_t	 bufsz;
 size_t	 buflen = 0;
 
@@ -510,7 +476,6 @@ header_parser::parse_reqtype(char const *buf, char const *endp)
 {
 char const	*path, *vers;
 size_t		 plen, vlen;
-int		 httpmaj, httpmin;
 	if ((path = (char const *)memchr(buf, ' ', endp - buf)) == NULL)
 		return -1;
 	path++;
@@ -602,8 +567,6 @@ header_parser::sending_restart(void)
 void
 header_parser::sp_uncork(void) 
 {
-char	*bptr;
-int	 left = _headers.hl_len;
 	if (!_built) {
 	char	*s;
 		if (!_is_response) {

@@ -107,8 +107,6 @@ char	*ret;
 void
 socket_spigot::_socketcall(wsocket *s, int) {
 ssize_t		read;
-sink_result	res;
-int		bufsz;
 
 	/*
 	 * _off is the offset of the start of _savebuf

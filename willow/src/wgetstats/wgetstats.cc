@@ -25,15 +25,18 @@ using std::strchr;
 using std::strerror;
 using std::string;
 
+#ifdef __INTEL_COMPILER
+# pragma warning (disable: 383 981 1418)
+#endif
+
 string
 fstraddr(string const &straddr, sockaddr const *addr, socklen_t len)
 {
 char	host[NI_MAXHOST];
 char	port[NI_MAXSERV];
 string	res;
-int	i;
-	if ((i = getnameinfo(addr, len, host, sizeof(host), port, sizeof(port), 
-			     NI_NUMERICHOST | NI_NUMERICSERV)) != 0)
+	if (getnameinfo(addr, len, host, sizeof(host), port, sizeof(port), 
+			     NI_NUMERICHOST | NI_NUMERICSERV) != 0)
 		return "";
 	return straddr + '[' + host + "]:" + port;
 }
@@ -155,12 +158,19 @@ uint8_t		*vers;
 	reqfails	= (uint32_t *)	bufp;	GET_BYTES(4);
 	respfails	= (uint32_t *)	bufp;	GET_BYTES(3);
 
+	if (*vers != 1) {
+		fprintf(stderr,
+	     "cannot decode this statistics format version (%d, expected 1)\n",
+			(int) *vers);
+		exit(1);
+	}
+
 	fprintf(stderr, "%s (Willow %.*s), report interval %d seconds:\n", host, 
 		(int)*wverslen, wvers, (int) *repint);
 	fprintf(stderr, "\tTotal requests served: % 10lu (% 6d/sec)  Errors: % 6lu (% 6d/sec)\n",
-		(unsigned long) *treqok, (int) *reqoks, (unsigned long) *treqfail, *reqfails);
+		(unsigned long) *treqok, (int) *reqoks, (unsigned long) *treqfail, (int) *reqfails);
 	fprintf(stderr, "\tBackend requests:      % 10lu (% 6d/sec) Invalid: % 6lu (% 6d/sec)\n",
-		(unsigned long) *trespok, (int) *respoks, (unsigned long) *trespfail, *respfails);
+		(unsigned long) *trespok, (int) *respoks, (unsigned long) *trespfail, (int) *respfails);
 	
 	freeaddrinfo(res);
 }
