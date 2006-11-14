@@ -457,18 +457,26 @@ int		 htype;
 			value++;
 		vlen = rn - value;
 
-		if (htype == H_TRANSFER_ENCODING && !strncasecmp(value, "chunked", vlen))
-			_flags.f_chunked = 1;
-		else if (htype == H_CONTENT_LENGTH)
+		switch (htype) {
+		case H_TRANSFER_ENCODING:
+			if (!strncasecmp(value, "chunked", vlen))
+				_flags.f_chunked = 1;
+			break;
+		case H_CONTENT_LENGTH:
 			_content_length = str10toint(value, vlen);
-		else if (config.msie_hack && htype == H_USER_AGENT &&
-			 std::search(value, value + vlen, msie, msie + 4) != value + vlen) {
-			_is_msie = true;
-		} else if (htype == H_HOST)
+			break;
+		case H_USER_AGENT:
+			if (config.msie_hack &&
+			    std::search(value, value + vlen, msie, msie + 4) != value + vlen)
+				_is_msie = true;
+			break;
+		case H_HOST:
 			_http_host.assign(value, value + vlen);
-		else if (htype == H_X_WILLOW_BACKEND_GROUP)
+			break;
+		case H_X_WILLOW_BACKEND_GROUP:
 			_http_backend.assign(value, value + vlen);
-		else if (htype == H_CONNECTION) {
+			break;
+		case H_CONNECTION:
 			if (!strncasecmp(value, "close", vlen))
 				_no_keepalive = true;
 			else if (!strncasecmp(value, "keep-alive", vlen))
