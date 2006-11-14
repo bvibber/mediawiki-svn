@@ -146,6 +146,7 @@ struct basic_imstring {
 	basic_imstring(charT const *);
 	basic_imstring(charT const *, size_type);
 	basic_imstring(basic_imstring const &);
+	~basic_imstring(void);
 
 	template<typename Sallocator>
 	basic_imstring(basic_string<charT, char_traits<charT>, Sallocator> const &);
@@ -196,6 +197,13 @@ private:
 };
 
 typedef basic_imstring<char, pt_allocator<char> > imstring;
+
+template<typename charT, typename allocator>
+basic_imstring<charT, allocator>::~basic_imstring(void)
+{
+	if (_buf)
+		_alloc.deallocate(_buf, _len);
+}
 
 template<typename charT, typename allocator>
 basic_imstring<charT, allocator>::basic_imstring(void)
