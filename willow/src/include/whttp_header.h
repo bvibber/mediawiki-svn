@@ -235,6 +235,9 @@ struct header_parser : io::sink, io::spigot
 	string		 _http_backend;
 	bool		 _no_keepalive;
 	bool		 _force_keepalive;
+	bool		 _follow_redirect;
+	imstring	 _location;
+
 	bool		 _eof;
 	wnet::buffer	 _buf;
 

@@ -126,7 +126,12 @@ cache {
 	 */
 	expire-every = 1 hour;
 	expire-threshold = 5;
+};
 
+/*
+ * HTTP options.
+ */
+http {
 	/*
 	 * Compress data if the client indicates it supports deflate or
 	 * gzip encoding.  Note that this has a large impact on raw
@@ -189,6 +194,17 @@ cache {
 	backend-keepalive = yes;
 	client-keepalive = yes;
 	keepalive-max = 0;
+
+	/*
+	 * Honour X-Willow-Follow-Redirect in backend replies.  If this
+	 * enabled and a backend response with a 3xx status contains such
+	 * a header, Willow will follow the redirect and deliver the
+	 * referred-to document to the client.  Only max-redirects
+	 * (default: 1, 0: unlimmited) redirects will be followed, to prevent
+	 * infinite redirect loops.
+	 */
+	x-follow-redirect = true;
+	max-redirects = 1;
 };
 
 /*

@@ -382,7 +382,9 @@ conf
 		.value("force-backend",		func(radix_prefix),	func(force_backend_access))
 		.value("backend-keepalive",	simple_yesno,		set_yesno(config.backend_keepalive))
 		.value("client-keepalive",	simple_yesno,		set_yesno(config.client_keepalive))
-		.value("keepalive-max",		simple_range(0, INT_MAX),	set_int(config.keepalive_max))
+		.value("keepalive-max",		simple_range(0),	set_int(config.keepalive_max))
+		.value("x-follow-redirect",	simple_yesno,		set_yesno(config.x_follow))
+		.value("max-redirects",		simple_range(1),	set_int(config.max_redirects))
 
 	.block("server")
 		.value("threads",		simple_range(1, 1024),	set_int(config.nthreads))
@@ -438,6 +440,7 @@ conf
 	config.backend_keepalive = true;
 	config.client_keepalive = true;
 	config.keepalive_max = 0;
+	config.max_redirects = 1;
 
 	conf.set(*t);
 	whttp_reconfigure();

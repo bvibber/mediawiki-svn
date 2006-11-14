@@ -230,7 +230,7 @@ extern simple_yesno_t simple_yesno;
 extern simple_time_t simple_time;
 
 struct simple_range : callable<bool> {
-	simple_range(int min_, int max_) : min(min_), max(max_) {}
+	simple_range(int min_, int max_ = INT_MAX) : min(min_), max(max_) {}
 	bool operator() (tree_entry &, value &v) const {
 		if (!v.is_single(cv_int)) {
 			v.report_error("expected single integer");

@@ -121,7 +121,8 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	void end_request (bool = true);
 	void force_end_request (void);
 
-	void start_backend_request (void);
+	void start_backend_request (imstring const &host, imstring const &path);
+	void start_backend_request (imstring const &url);
 
 		/* reading request from client */
 	void header_read_complete		(void);
@@ -168,6 +169,9 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	bool		 _denied;
 	int		 _group;
 	int		 _response;
+	imstring	 _request_host;
+	imstring	 _request_path;
+	int		 _nredir;
 };
 
 httpcllr::httpcllr(wsocket *s, int gr)
@@ -190,6 +194,7 @@ httpcllr::httpcllr(wsocket *s, int gr)
 	, _denied(false)
 	, _group(gr)
 	, _response(0)
+	, _nredir(0)
 {
 	/*
 	 * Check access controls.
@@ -342,16 +347,51 @@ pair<bool, uint16_t> acheck;
 		}
 	}
 
-	start_backend_request();
+	start_backend_request(_header_parser->_http_host,
+			_header_parser->_http_path);
 }
 
 void
-httpcllr::start_backend_request(void)
+httpcllr::start_backend_request(imstring const &url_)
+{
+char	*url = url_.c_str(), *slash;
+	if (strncasecmp(url, "http://", 7)) {
+		send_error(ERR_BADRESPONSE,
+			"Could not parse server redirect location",
+			503, "Internal server error");
+		return;
+	}
+	url += 7;
+	slash = strchr(url, '/');
+	if (slash == NULL) {
+		start_backend_request(url, "/");
+		return;
+	}
+	start_backend_request(imstring(url, slash - url), slash);
+}
+
+void
+httpcllr::start_backend_request(imstring const &host, imstring const &path)
 {
 pair<wsocket *, backend *> ke = bpools.find(_group)->second.get_keptalive();
 	
+	_request_host = host;
+	_request_path = path;
+
 	delete _backend_sink;
 	_backend_sink = NULL;
+	delete _backend_spigot;
+	_backend_spigot = NULL;
+	delete _size_limit;
+	_size_limit = NULL;
+	delete _dechunking_filter;
+	_dechunking_filter = NULL;
+	delete _chunking_filter;
+	_chunking_filter = NULL;
+	delete _blist;
+	_blist = NULL;
+	delete _backend_headers;
+	_backend_headers = NULL;
 
 	if (ke.first) {
 		backend_ready(ke.second, ke.first, 0);
@@ -360,8 +400,7 @@ pair<wsocket *, backend *> ke = bpools.find(_group)->second.get_keptalive();
 
 	if (!_blist)
 		_blist = bpools.find(_group)->second.get_list(
-				_header_parser->_http_path,
-				_header_parser->_http_host);
+				_request_path, _request_host);
 	
 	if (_blist->get(polycaller<backend *, wsocket *, int>(*this, 
 		    &httpcllr::backend_ready), 0) == -1)
@@ -398,6 +437,12 @@ httpcllr::backend_ready(backend *be, wsocket *s, int)
 	_backend_socket = s;
 	_backend = be;
 	_backend_sink = new io::socket_sink(s);
+
+	if (_request_host.size())
+		_header_parser->_http_host = _request_host;
+	if (_request_path.size())
+		_header_parser->_http_path = _request_path;
+
 	_header_parser->sending_restart();
 	_header_parser->completed_callee(this, &httpcllr::backend_write_headers_done);
 	_header_parser->error_callee(this, &httpcllr::backend_write_error);
@@ -408,7 +453,7 @@ httpcllr::backend_ready(backend *be, wsocket *s, int)
 void
 httpcllr::backend_write_error(void)
 {
-	start_backend_request();
+	start_backend_request(_request_host, _request_path);
 }
 
 void
@@ -456,6 +501,25 @@ httpcllr::backend_read_headers_done(void)
 {
 	_response = _backend_headers->_response;
 
+	/*
+	 * Check for X-Willow-Follow-Redirect header, which means we should
+	 * follow the redirect.
+	 */
+
+	if (config.x_follow &&
+	    _backend_headers->_follow_redirect &&
+	    _backend_headers->_location.size() &&
+	    (_backend_headers->_response >= 300 && _backend_headers->_response < 400)) {
+		if (config.max_redirects && (_nredir++ == config.max_redirects)) {
+			send_error(ERR_BADRESPONSE, "Too many redirects in server reply",
+				503, "Internal server error");
+			return;
+		}
+
+		start_backend_request(_backend_headers->_location);
+		return;
+	}
+
 	if (_backend_headers->_content_length == -1 && !_backend_headers->_flags.f_chunked
 		   && _header_parser->_http_vers == http11 && !(config.msie_hack && _header_parser->_is_msie))
 		/* we will chunk the request later */
@@ -492,7 +556,7 @@ httpcllr::backend_read_headers_error(void)
 	/*
 	 * Try another backend...
 	 */
-	start_backend_request();
+	start_backend_request(_request_host, _request_path);
 }
 
 void
@@ -835,8 +899,8 @@ httpcllr::send_error(int errnum, char const *errdata, int status, char const *st
 string	url = "NONE";
 	_response = status;
 
-	if (_header_parser->_http_path.size())
-		url = errsafe(_header_parser->_http_path.c_str());
+	if (_request_path.size())
+		url = errsafe(_request_path.c_str());
 
 	_error_headers = new header_spigot(status, statstr);
 	if (!_client_sink)
@@ -906,7 +970,7 @@ size_t	size;
 			% current_time_short
 			% _client_socket->straddr(false)
 			% request_string[_header_parser->_http_reqtype]
-			% _header_parser->_http_path
+			% _request_path
 			% size
 			% _response
 			% (_backend ? _backend->be_name : "-");
@@ -945,7 +1009,7 @@ size_t	size;
 		ADD_UINT32(bufp, (uint32_t)time(NULL), endp);
 		ADD_STRING(bufp, _client_socket->straddr(false), endp);
 		ADD_UINT8(bufp, _header_parser->_http_reqtype, endp);
-		ADD_STRING(bufp, _header_parser->_http_path, endp);
+		ADD_STRING(bufp, _request_path, endp);
 		ADD_UINT16(bufp, _response, endp);
 		ADD_STRING(bufp, string(_backend ? _backend->be_name : "-"), endp);
 		ADD_UINT8(bufp, 0, endp);

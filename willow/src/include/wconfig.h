@@ -71,6 +71,8 @@ struct	cachedir	*caches;
 	bool		 backend_keepalive;
 	bool		 client_keepalive;
 	int		 keepalive_max;
+	bool		 x_follow;
+	int		 max_redirects;
 	vector<pair<string, string> >		 stats_hosts;
 } config;
 

@@ -152,8 +152,8 @@ struct basic_imstring {
 
 	basic_imstring& operator= (basic_imstring const &);
 
-	charT const	*c_str		(void)	const;
-	charT const	*data		(void)	const;
+	charT		*c_str		(void)	const;
+	charT 		*data		(void)	const;
 	std::basic_string<charT, char_traits<charT>, allocator >
 			 string		(void)	const;
 	
@@ -257,6 +257,9 @@ basic_imstring<charT, allocator> &
 basic_imstring<charT, allocator>::operator= (
 	basic_imstring<charT, allocator> const &o)
 {
+	if (this == &o)
+		return *this;
+
 	_alloc.deallocate(_buf, _len);
 	reserve(o._len);
 	_end = _buf + _len;
@@ -311,14 +314,14 @@ basic_imstring<charT, allocator>::append(charT const *s,
 }
 
 template<typename charT, typename allocator>
-charT const *
+charT *
 basic_imstring<charT, allocator>::c_str(void) const
 {
 	return _buf;
 }
 
 template<typename charT, typename allocator>
-charT const *
+charT *
 basic_imstring<charT, allocator>::data(void) const
 {
 	return _buf;
@@ -350,7 +353,8 @@ template<typename charT, typename allocator>
 basic_ostream<charT, char_traits<charT> > &
 basic_imstring<charT, allocator>::print(basic_ostream<charT, char_traits<charT> > &o) const
 {
-	o << _buf;
+	if (_buf)
+		o << _buf;
 	return o;
 }
 

@@ -33,13 +33,17 @@ using std::vector;
 
 using namespace wnet;
 
-#define H_IGNORE 0
-#define H_TRANSFER_ENCODING 1
-#define H_CONTENT_LENGTH 2
-#define H_USER_AGENT 3
-#define H_HOST 4
-#define H_X_WILLOW_BACKEND_GROUP 5
-#define H_CONNECTION 6
+enum {
+	H_IGNORE,
+	H_TRANSFER_ENCODING,
+	H_CONTENT_LENGTH,
+	H_USER_AGENT,
+	H_HOST,
+	H_CONNECTION,
+	H_LOCATION,
+	H_X_WILLOW_BACKEND_GROUP,
+	H_X_WILLOW_FOLLOW_REDIRECT,
+};
 
 #if 0
 #ifdef __GNUC__
@@ -86,8 +90,10 @@ static struct htypent {
 	{ "content-length",		H_CONTENT_LENGTH },
 	{ "user-agent",			H_USER_AGENT },
 	{ "host",			H_HOST },
-	{ "x-willow-backend-group",	H_X_WILLOW_BACKEND_GROUP },
 	{ "connection",			H_CONNECTION },
+	{ "location",			H_LOCATION },
+	{ "x-willow-backend-group",	H_X_WILLOW_BACKEND_GROUP },
+	{ "x-willow-follow-redirect",	H_X_WILLOW_FOLLOW_REDIRECT },
 	{ "keep-alive",			H_IGNORE },
 	{ "te",				H_IGNORE },
 	{ "trailers",			H_IGNORE },
@@ -473,15 +479,21 @@ int		 htype;
 		case H_HOST:
 			_http_host.assign(value, value + vlen);
 			break;
-		case H_X_WILLOW_BACKEND_GROUP:
-			_http_backend.assign(value, value + vlen);
-			break;
 		case H_CONNECTION:
 			if (!strncasecmp(value, "close", vlen))
 				_no_keepalive = true;
 			else if (!strncasecmp(value, "keep-alive", vlen))
 				_force_keepalive = true;
 			goto next;
+		case H_LOCATION:
+			_location.assign(value, value + vlen);
+			break;
+		case H_X_WILLOW_BACKEND_GROUP:
+			_http_backend.assign(value, value + vlen);
+			break;
+		case H_X_WILLOW_FOLLOW_REDIRECT:
+			_follow_redirect = true;
+			break;
 		}
 
 		_headers.add(name, nlen, value, vlen);
