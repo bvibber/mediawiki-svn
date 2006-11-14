@@ -118,7 +118,10 @@ int		bufsz;
 	/* _off was increased by the previous send, reduce _saved
 	 * appropriately
 	 */
-	_saved -= _off;
+	if (_off >= _saved)
+		_saved = _off = 0;
+	else
+		_saved -= _off;
 
 	if (_saved) {
 		switch (this->_maybe_dio_send(_off, _savebuf, _saved, _off)) {
@@ -139,7 +142,7 @@ int		bufsz;
 	if (_off >= _saved)
 		_off = _saved = 0;
 
-	read = s->read(_savebuf + _off + _saved, DIOBUFSZ);
+	read = s->read(_savebuf + _off + _saved, DIOBUFSZ - (_off + _saved));
 	if (read == 0) {
 		sp_cork();
 		switch (this->_sp_data_empty()) {
@@ -189,59 +192,69 @@ int		bufsz;
 sink_result
 socket_sink::data_ready(char const *buf, size_t len, ssize_t &discard)
 {
-ssize_t	off = 0;
-
-	while (off < len) {
-	ssize_t	wrote;
-		switch (wrote = _socket->write(buf + off, len - off)) {
-		case -1:
-			if (errno == EAGAIN) {
-				_sink_spigot->sp_cork();
-				if (!_reg) {
-					_socket->writeback(polycaller<wsocket *, int>(
-						*this, &socket_sink::_socketcall), 0);
-					_reg = true;
-				}
-				return sink_result_blocked;
-			}
+ssize_t	wrote;
+	if ((wrote = _socket->write(buf + off, len - off)) == -1) {
+		if (errno == EAGAIN) {
 			_sink_spigot->sp_cork();
-			return sink_result_error;
-			break;
+			if (!_reg) {
+				_socket->writeback(polycaller<wsocket *, int>(
+					*this, &socket_sink::_socketcall), 0);
+				_reg = true;
+			}
+			return sink_result_blocked;
 		}
-		discard += wrote;
-		_counter += wrote;
-		off += wrote;
+		_sink_spigot->sp_cork();
+		return sink_result_error;
 	}
-	return sink_result_okay;
+
+	discard += wrote;
+	_counter += wrote;
+
+	if (len == wrote) {
+		return sink_result_okay;
+	} else {
+		_sink_spigot->sp_cork();
+		if (!_reg) {
+			_socket->writeback(polycaller<wsocket *, int>(
+				*this, &socket_sink::_socketcall), 0);
+			_reg = true;
+		}
+		return sink_result_blocked;
+	}
 }
 
 sink_result
 socket_sink::dio_ready(int fd, off_t off, size_t len, ssize_t &discard)
 {
-ssize_t	got = 0;
-
-	while (got < len) {
-	ssize_t	wrote;
-		switch (wrote = _socket->sendfile(fd, &off, len)) {
-		case -1:
-			if (errno == EAGAIN) {
-				_sink_spigot->sp_cork();
-				if (!_reg) {
-					_socket->writeback(polycaller<wsocket *, int>(
-						*this, &socket_sink::_socketcall), 0);
-					_reg = true;
-				}
-				return sink_result_blocked;
-			}
+ssize_t	wrote;
+	if ((wrote = _socket->sendfile(fd, &off, len)) == -1) {
+		if (errno == EAGAIN) {
 			_sink_spigot->sp_cork();
-			return sink_result_error;
-			break;
+			if (!_reg) {
+				_socket->writeback(polycaller<wsocket *, int>(
+					*this, &socket_sink::_socketcall), 0);
+				_reg = true;
+			}
+			return sink_result_blocked;
 		}
-		discard += wrote;
-		_counter += wrote;
-		got += wrote;
+		_sink_spigot->sp_cork();
+		return sink_result_error;
+		break;
 	}
-	return sink_result_okay;
+	discard += wrote;
+	_counter += wrote;
+
+	if (len == wrote) {
+		return sink_result_okay;
+	} else {
+		_sink_spigot->sp_cork();
+		if (!_reg) {
+			_socket->writeback(polycaller<wsocket *, int>(
+				*this, &socket_sink::_socketcall), 0);
+			_reg = true;
+		}
+		return sink_result_blocked;
+	}
 }
 
 tss<file_spigot::cache_map> file_spigot::_cache;
