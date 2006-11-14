@@ -41,6 +41,7 @@ using namespace wnet;
 #define H_X_WILLOW_BACKEND_GROUP 5
 #define H_CONNECTION 6
 
+#if 0
 #ifdef __GNUC__
 # include <ext/hash_map>
 typedef __gnu_cxx::hash_map<imstring,int> hmap_type;
@@ -73,22 +74,20 @@ typedef map<imstring, int> hmap_type;
 #endif
 
 hmap_type htypemap;
+#endif
+vector<pair<char const *, int> > htypemap;
 
-void
-whttp_header_init(void)
-{
-struct {
+static struct htypent {
 	char 	*name;
 	int	 n;
-} *it, list[] = {
+	int	 len;
+} list[] = {
 	{ "transfer-encoding",		H_TRANSFER_ENCODING },
 	{ "content-length",		H_CONTENT_LENGTH },
 	{ "user-agent",			H_USER_AGENT },
 	{ "host",			H_HOST },
 	{ "x-willow-backend-group",	H_X_WILLOW_BACKEND_GROUP },
 	{ "connection",			H_CONNECTION },
-	{ "if-modified-since",		H_IGNORE },
-	{ "last-modified",		H_IGNORE },
 	{ "keep-alive",			H_IGNORE },
 	{ "te",				H_IGNORE },
 	{ "trailers",			H_IGNORE },
@@ -97,10 +96,23 @@ struct {
 	{ "proxy-connection",		H_IGNORE },
 	{ 0, 0 }
 };
-	for (it = list; it->name; ++it)
-		htypemap[imstring(it->name)] = it->n;
+void
+whttp_header_init(void)
+{
+	for (htypent *tit = list; tit->name; ++tit)
+		tit->len = strlen(tit->name);
 }
 
+static inline int
+find_htype(char const *s, size_t slen)
+{
+	for (htypent *tit = list; tit->name; ++tit)
+		if (tit->len == slen && !strncasecmp(s, tit->name, slen))
+			return tit->n;
+	return -1;
+}
+
+#if 0
 int
 find_htype(char const *s, size_t slen)
 {
@@ -112,6 +124,7 @@ hmap_type::iterator	it;
 		return -1;
 	return it->second;
 }
+#endif
 
 /*
  * A list of headers we should remove from the request and the response
