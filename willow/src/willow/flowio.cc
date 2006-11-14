@@ -348,6 +348,7 @@ file_spigot::bs_get_data(void)
 streamsize	size;
 	if (_cached) {
 		if (!_cached_size) {
+			_sp_data_empty();
 			_sp_completed_callee();
 			return false;
 		}
@@ -359,6 +360,7 @@ streamsize	size;
 
 	size = _file.readsome(_fbuf, 16384);
 	if (size == 0) {
+		_sp_data_empty();
 		_sp_completed_callee();
 		return false;
 	} else if (_file.fail()) {

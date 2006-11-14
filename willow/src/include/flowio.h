@@ -294,7 +294,7 @@ struct buffering_filter : sink, spigot {
 
 	virtual sink_result bf_transform(char const *, size_t, ssize_t &discard) = 0;
 	virtual sink_result bf_eof(void) {
-		return sink_result_okay;
+		return sink_result_finished;
 	}
 
 	sink_result data_ready(char const *buf, size_t len, ssize_t &discard) {

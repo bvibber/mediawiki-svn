@@ -937,7 +937,7 @@ string	url = "NONE";
 	_error_headers->add("Date", current_time_str);
 	_error_headers->add("Expires", current_time_str);
 	_error_headers->add("Server", my_version);
-	_error_headers->add("Connection", "close");
+
 	_error_headers->add("Content-Type", "text/html;charset=UTF-8");
 
 	_error_body = io::file_spigot::from_path(error_files[errnum], true);
@@ -949,6 +949,12 @@ string	url = "NONE";
 
 	_error_headers->completed_callee(this, &httpcllr::error_send_headers_done);
 	_error_headers->error_callee(this, &httpcllr::error_send_done);
+
+	/*
+	 * Can we chunk the error?
+	 */
+	if (_header_parser->_http_vers != http11)
+		_error_headers->add("Connection", "close");
 
 	_error_headers->sp_connect(_client_sink);
 	_error_headers->sp_uncork();
@@ -962,7 +968,16 @@ httpcllr::error_send_headers_done(void)
 	_error_body->error_callee(this, &httpcllr::error_send_done);
 
 	_error_body->sp_connect(_error_filter);
-	_error_filter->sp_connect(_client_sink);
+	if (_header_parser->_http_vers == http11) {
+		_chunking_filter = new chunking_filter;
+		_error_filter->sp_connect(_chunking_filter);
+		_chunking_filter->sp_connect(_client_sink);
+	} else {
+		_header_parser->_no_keepalive = true;
+		_header_parser->_force_keepalive = false;
+		_error_filter->sp_connect(_client_sink);
+	}
+
 	_error_body->sp_uncork();
 }
 
