@@ -265,14 +265,25 @@ backend_pool::name(void) const
 void
 backend_pool::add_keptalive(pair<wsocket *, backend *>s)
 {
+	if (!config.backend_keepalive)
+		return;
+
 	if (!_keptalive)
 		_keptalive = new vector<pair<wsocket *, backend *> >;
+	else while (_keptalive->size() >= config.keepalive_max) {
+		delete _keptalive->begin()->first;
+		_keptalive->erase(_keptalive->begin());
+	}
+
 	_keptalive->push_back(s);
 }
 
 pair<wsocket *, backend *>
 backend_pool::get_keptalive(void)
 {
+	if (!config.backend_keepalive)
+		return pair<wsocket *, backend *>(0, 0);
+
 	if (!_keptalive)
 		_keptalive = new vector<pair<wsocket *, backend *> >;
 	if (_keptalive->empty())

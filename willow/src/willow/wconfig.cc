@@ -380,6 +380,9 @@ conf
 		.value("admin",			nonempty_qstring,	set_string(config.admin))
 		.value("default-host",		nonempty_qstring,	set_string(config.default_host))
 		.value("force-backend",		func(radix_prefix),	func(force_backend_access))
+		.value("backend-keepalive",	simple_yesno,		set_yesno(config.backend_keepalive))
+		.value("client-keepalive",	simple_yesno,		set_yesno(config.client_keepalive))
+		.value("keepalive-max",		simple_range(0, INT_MAX),	set_int(config.keepalive_max))
 
 	.block("stats")
 		.value("interval",	simple_range(1, INT_MAX),	set_aint(stats.interval))
@@ -428,6 +431,9 @@ conf
 	config.admin = "nobody@example.com";
 	poolnames["<default>"] = 0;
 	bpools.insert(make_pair(0, backend_pool("<default>", lb_rr)));
+	config.backend_keepalive = true;
+	config.client_keepalive = true;
+	config.keepalive_max = 0;
 
 	conf.set(*t);
 	whttp_reconfigure();

@@ -278,7 +278,7 @@ bool	can_keepalive = false;
 	_client_spigot->sp_disconnect();
 	_client_spigot->sp_cork();
 
-	if (can_keepalive) {
+	if (can_keepalive && config.client_keepalive) {
 		/* 
 		 * leave the connection open, assuming they will send another
 		 * request (keep-alive).

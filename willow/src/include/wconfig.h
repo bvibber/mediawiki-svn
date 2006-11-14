@@ -68,6 +68,9 @@ struct	cachedir	*caches;
 	access_list	 access;
 	access_list	 force_backend;
 	bool		 udp_stats;
+	bool		 backend_keepalive;
+	bool		 client_keepalive;
+	int		 keepalive_max;
 	vector<pair<string, string> >		 stats_hosts;
 } config;
 

@@ -135,6 +135,17 @@ cache {
 	 * with their request.
 	 */
 	force-backend = "127.0.0.0/8";
+
+	/*
+	 * Enable HTTP keep-alive for backends or clients.  If enabled for
+	 * backends, keepalive-max is the maximum number of backends to
+	 * cache (0 = unlimited).  keepalive-max is per thread, e.g. if
+	 * you have 5 threads and keepalive-max = 10, up to 50 backends
+	 * will be cached.
+	 */
+	backend-keepalive = yes;
+	client-keepalive = yes;
+	keepalive-max = 0;
 };
 
 /*
