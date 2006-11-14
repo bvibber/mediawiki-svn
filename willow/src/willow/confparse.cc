@@ -35,7 +35,7 @@ static int is_ignorable(string const &);
 int parse_error;
 
 int curpos = 0;
-int lineno = 0;
+int lineno = 1;
 string linebuf;
 string current_file;
 tree parsing_tree;

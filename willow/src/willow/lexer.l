@@ -71,6 +71,7 @@ endif     %{ws}endif{ws}$
 <COMMENT>.	;
 <COMMENT>\n	{ conf::lineno++; conf::curpos = 0; }
 \/\/.*$		;
+#.*$		;
 \n		conf::lineno++;
 {include}	{
 		FILE	*f;
