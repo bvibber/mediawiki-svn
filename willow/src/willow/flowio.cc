@@ -8,8 +8,11 @@
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Id$"
 #endif
+
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <sys/fcntl.h>
+#include <sys/mman.h>
 
 #include <iostream>
 #include <cerrno>
@@ -18,12 +21,18 @@ using std::streamsize;
 #include "flowio.h"
 #include "wnet.h"
 #include "format.h"
+#include "wconfig.h"
 
 namespace io {
 
 sink_result
 spigot::_sp_data_ready(char *b, size_t s, ssize_t &discard) {
 	return _sp_sink->data_ready(b, s, discard);
+}
+
+sink_result
+spigot::_sp_dio_ready(int fd, off_t off, char *b, size_t s, ssize_t &discard) {
+	return _sp_sink->dio_ready(fd, off, s, discard);
 }
 
 sink_result
@@ -46,18 +55,73 @@ spigot::sp_disconnect(void) {
 	_sp_sink = NULL;
 }
 
-void
-socket_spigot::_socketcall(wsocket *s, int) {
-ssize_t	 read;
-sink_result	res;
-	if (_off) {
-		memmove(_savebuf, _savebuf + _off, _saved - _off);
-		_saved -= _off;
-		_off = 0;
+tss<diocache> socket_spigot::_diocache;
+
+char *
+socket_spigot::_get_dio_buf(void)
+{
+char	 path[PATH_MAX + 1];
+char	*ret;
+	if (!config.use_dio)
+		return new char[DIOBUFSZ];
+
+	if (_diocache) {
+	diocache	*d = _diocache;
+		_diocache = d->next;
+		_diofd = d->fd;
+		ret = d->addr;
+		delete d;
+		return ret;
 	}
 
+	snprintf(path, sizeof(path), "/dev/shm/willow.diobuf.%d.%d.%d",
+		getpid(), (int) pthread_self(), rand());
+	if ((_diofd = open(path, O_CREAT | O_EXCL | O_RDWR, 0600)) == -1) {
+		wlog(WLOG_WARNING, format("opening diobuf %s: %e") % path);
+		return new char[DIOBUFSZ];
+	}
+	unlink(path);
+
+	if (lseek(_diofd, DIOBUFSZ, SEEK_SET) == -1) {
+		wlog(WLOG_WARNING, format("seeking diobuf %s: %e") % path);
+		close(_diofd);
+		_diofd = -1;
+		return new char[DIOBUFSZ];
+	}
+	if (write(_diofd, "", 1) < 1) {
+		wlog(WLOG_WARNING, format("extending diobuf %s: %e") % path);
+		close(_diofd);
+		_diofd = -1;
+		return new char[DIOBUFSZ];
+	}
+	ret = (char *)mmap(0, DIOBUFSZ, PROT_READ | PROT_WRITE, MAP_SHARED, _diofd, 0);
+	if (ret == MAP_FAILED) {
+		wlog(WLOG_WARNING, format("mapping diobuf %s: %e") % path);
+		close(_diofd);
+		_diofd = -1;
+		return new char[DIOBUFSZ];
+	}
+	return ret;
+}
+
+void
+socket_spigot::_socketcall(wsocket *s, int) {
+ssize_t		read;
+sink_result	res;
+int		bufsz;
+
+	/*
+	 * _off is the offset of the start of _savebuf
+	 * _saved is the number of bytes past _off that are usable.
+	 */
+
+	/* _off was increased by the previous send, reduce _saved
+	 * appropriately
+	 */
+	_saved -= _off;
+
 	if (_saved) {
-		switch (this->_sp_data_ready(_savebuf, _saved, _off)) {
+		switch (this->_maybe_dio_send(_off, _savebuf, _saved, _off)) {
 		case sink_result_blocked:
 			sp_cork();
 			return;
@@ -75,7 +139,7 @@ sink_result	res;
 	if (_off >= _saved)
 		_off = _saved = 0;
 
-	read = s->read(_savebuf, sizeof(_savebuf));
+	read = s->read(_savebuf + _off + _saved, DIOBUFSZ);
 	if (read == 0) {
 		sp_cork();
 		switch (this->_sp_data_empty()) {
@@ -105,7 +169,7 @@ sink_result	res;
 	}
 
 	_saved = read;
-	switch (this->_sp_data_ready(_savebuf, _saved, _off)) {
+	switch (this->_maybe_dio_send(0, _savebuf, _saved, _off)) {
 	case sink_result_blocked:
 		sp_cork();
 	case sink_result_okay:
@@ -147,6 +211,35 @@ ssize_t	off = 0;
 		discard += wrote;
 		_counter += wrote;
 		off += wrote;
+	}
+	return sink_result_okay;
+}
+
+sink_result
+socket_sink::dio_ready(int fd, off_t off, size_t len, ssize_t &discard)
+{
+ssize_t	got = 0;
+
+	while (got < len) {
+	ssize_t	wrote;
+		switch (wrote = _socket->sendfile(fd, &off, len)) {
+		case -1:
+			if (errno == EAGAIN) {
+				_sink_spigot->sp_cork();
+				if (!_reg) {
+					_socket->writeback(polycaller<wsocket *, int>(
+						*this, &socket_sink::_socketcall), 0);
+					_reg = true;
+				}
+				return sink_result_blocked;
+			}
+			_sink_spigot->sp_cork();
+			return sink_result_error;
+			break;
+		}
+		discard += wrote;
+		_counter += wrote;
+		got += wrote;
 	}
 	return sink_result_okay;
 }

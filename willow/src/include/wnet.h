@@ -28,6 +28,7 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 #include "config.h"
 #include <sys/time.h>
 #include <sys/fcntl.h>
+#include <sys/sendfile.h>
 
 #include <event.h>
 #include <pthread.h>
@@ -250,6 +251,9 @@ struct socket : noncopyable, freelist_allocator<socket> {
 	int		 sendto		(char const *, size_t, wnet::address const &);
 	int		 write		(char const *buf, size_t count) {
 		return ::write(_s, buf, count);
+	}
+	int		 sendfile	(int to, off_t *off, size_t n) {
+		return ::sendfile(_s, to, off, n);
 	}
 
 	void		 nonblocking	(bool);

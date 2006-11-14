@@ -73,6 +73,7 @@ struct	cachedir	*caches;
 	int		 keepalive_max;
 	bool		 x_follow;
 	int		 max_redirects;
+	bool		 use_dio;
 	vector<pair<string, string> >		 stats_hosts;
 } config;
 

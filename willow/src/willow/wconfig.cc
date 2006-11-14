@@ -387,8 +387,9 @@ conf
 		.value("max-redirects",		simple_range(1),	set_int(config.max_redirects))
 
 	.block("server")
-		.value("threads",		simple_range(1, 1024),	set_int(config.nthreads))
-		.value("admin",			nonempty_qstring,	set_string(config.admin))
+		.value("threads",	simple_range(1, 1024),	set_int(config.nthreads))
+		.value("admin",		nonempty_qstring,	set_string(config.admin))
+		.value("use-dio",	simple_yesno,		set_yesno(config.use_dio))
 
 	.block("stats")
 		.value("interval",	simple_range(1, INT_MAX),	set_aint(stats.interval))
@@ -441,6 +442,7 @@ conf
 	config.client_keepalive = true;
 	config.keepalive_max = 0;
 	config.max_redirects = 1;
+	config.use_dio = false;
 
 	conf.set(*t);
 	whttp_reconfigure();

@@ -12,6 +12,8 @@
 # pragma ident "@(#)$Id$"
 #endif
 
+#include <sys/mman.h>
+
 #include <fstream>
 #include <string>
 #include <algorithm>
@@ -74,11 +76,17 @@ struct spigot : noncopyable {
 
 protected:
 	sink_result 	 _sp_data_ready (char *b, size_t s, ssize_t &discard);
+	sink_result 	 _sp_dio_ready (int fd, off_t off, char *b, size_t s, ssize_t &discard);
 	sink_result	 _sp_data_empty (void);
 
 	polycaller<>	 _sp_completed_callee;
 	polycaller<>	 _sp_error_callee;
 	sink		*_sp_sink;
+};
+
+enum dio_source {
+	dio_source_fd,
+	dio_source_socket,
 };
 
 /*
@@ -96,6 +104,16 @@ struct sink : noncopyable {
 
 	virtual sink_result	data_ready (char const*, size_t, ssize_t &) = 0;
 	virtual sink_result	data_empty (void) = 0;
+
+	/*
+	 * Direct I/O.  This is used for mechanisms like sendfile()
+	 * which operate on an fd instead of a buffer.  If dio_supported
+	 * returns true, a spigot supporting direct i/o will call dio_ready
+	 * instead of data_ready.  The sink should then read data from
+	 * fd, beginning at offset.  discard and size are used as normal.
+	 */
+	virtual bool		dio_supported	(dio_source) const { return false; }
+	virtual sink_result	dio_ready	(int, off_t, size_t, ssize_t&) { abort(); }
 
 protected:
 	friend class spigot;
@@ -127,6 +145,11 @@ struct socket_sink : freelist_allocator<socket_sink>, sink {
 	virtual void _sink_disconnected(void) {
 		_socket->clearbacks();
 	}
+
+	virtual bool dio_supported(dio_source s) const {
+		return s == dio_source_fd;
+	}
+	virtual sink_result dio_ready(int, off_t, size_t, ssize_t&);
 
 	sink_result data_ready(char const *buf, size_t len, ssize_t &discard);
 	sink_result data_empty(void) {
@@ -188,6 +211,13 @@ struct string_spigot : freelist_allocator<string_spigot>, spigot {
 	bool			 _corked;
 };
 
+#define DIOBUFSZ 65535
+struct diocache : freelist_allocator<diocache> {
+	int	 fd;
+	char	*addr;
+	struct diocache *next;
+};
+
 /*
  * A spigot that reads from a socket.
  */
@@ -198,20 +228,34 @@ struct socket_spigot : freelist_allocator<socket_spigot>, spigot {
 	 * things will happen.
 	 */ 
 	socket_spigot(wsocket *s)
-		: _socket(s) 
+		: _socket(s)
+		, _savebuf(NULL) 
 		, _saved(0)
 		, _off(0)
-		, _corked(true) {
+		, _corked(true)
+		, _diofd(-1) {
+		_savebuf = _get_dio_buf();
 	}
 
 	~socket_spigot() {
 		_socket->clearbacks();
+		if (_diofd > -1) {
+		diocache	*d = new diocache;
+			d->fd = _diofd;
+			d->addr = _savebuf;
+			d->next = _diocache;
+			_diocache = d;	
+		} else {
+			delete[] _savebuf;
+		}
 	}
 	
 	virtual void sp_cork(void) {
 		_corked = true;
 	}
 	virtual void sp_uncork(void) {
+		_dio = (_diofd > -1) && _sp_sink->dio_supported(dio_source_fd);
+
 		if (_corked) {
 			_corked = false;
 			_socketcall(_socket, 0);
@@ -219,14 +263,25 @@ struct socket_spigot : freelist_allocator<socket_spigot>, spigot {
 	}
 
 private:
-	void _socketcall(wsocket *e, int);
+	sink_result _maybe_dio_send(off_t off, char *bf, size_t sz, ssize_t &disc) {
+		if (_dio)
+			return _sp_dio_ready(_diofd, off, bf, sz, disc);
+		else
+			return _sp_data_ready(bf + off, sz, disc);
+	}
 
-	static const int bufsz = 65535;
+	void _socketcall(wsocket *e, int);
+	char *_get_dio_buf(void);
+
 	wsocket	*_socket;
-	char	 _savebuf[bufsz];
+	char	*_savebuf;
 	size_t	 _saved;
 	ssize_t	 _off;
 	bool	 _corked;
+	bool	 _dio;
+	int	 _diofd;
+
+	static tss<diocache> _diocache;
 };
 
 /*
@@ -402,6 +457,24 @@ struct size_limiting_filter : sink, spigot, freelist_allocator<size_limiting_fil
 		_sink_spigot->sp_cork();
 	}
 
+	bool dio_supported (dio_source s) const {
+		return _sp_sink->dio_supported(s);
+	}
+	
+	sink_result dio_ready(int fd, off_t off, size_t len, ssize_t &discard) {
+	sink_result	res;
+	ssize_t		sent = 0, send = min(len, _left);
+		res = _sp_sink->dio_ready(fd, off, send, sent);
+		_left -= sent;
+		discard += sent;
+		if (res == sink_result_error)
+			return res;
+
+		if (_left == 0)
+			return sink_result_finished;
+		return res;		
+	}
+
 	sink_result data_ready(char const *buf, size_t len, ssize_t &discard) {
 	sink_result	res;
 	ssize_t		sent = 0, send = min(len, _left);
@@ -411,10 +484,8 @@ struct size_limiting_filter : sink, spigot, freelist_allocator<size_limiting_fil
 		if (res == sink_result_error)
 			return res;
 
-		if (_left == 0) {
-			WDEBUG((WLOG_DEBUG, "size limiter: finished"));
+		if (_left == 0)
 			return sink_result_finished;
-		}
 		return res;		
 	}
 
