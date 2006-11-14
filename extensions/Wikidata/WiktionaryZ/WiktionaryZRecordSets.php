@@ -405,12 +405,14 @@ function getExpressionsRecordSet($spelling, $queryTransactionInformation) {
 
 function getDefinedMeaningRecord($definedMeaningId, $queryTransactionInformation) {
 	global
-		$definedMeaningAttribute, $definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
+		$definedMeaningAttribute, $definitionAttribute, $classAttributesAttribute, 
+		$alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
 		$relationsAttribute, $reciprocalRelationsAttribute,
 		$classMembershipAttribute, $collectionMembershipAttribute, $objectAttributesAttribute;
 
 	$record = new ArrayRecord($definedMeaningAttribute->type->getStructure());
 	$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecord($definedMeaningId, $queryTransactionInformation));
+	$record->setAttributeValue($classAttributesAttribute, getClassAttributesRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($synonymsAndTranslationsAttribute, getSynonymAndTranslationRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($relationsAttribute, getDefinedMeaningRelationsRecordSet($definedMeaningId, $queryTransactionInformation));
@@ -420,6 +422,25 @@ function getDefinedMeaningRecord($definedMeaningId, $queryTransactionInformation
 	$record->setAttributeValue($objectAttributesAttribute, getObjectAttributesRecord($definedMeaningId, $queryTransactionInformation));
 
 	return $record;
+}
+
+function getClassAttributesRecordSet($definedMeaningId, $queryTransactionInformation) {
+	global
+		$classAttributesTable, $classAttributeIdAttribute, $classAttributeAttributeAttribute;
+
+	$recordSet = queryRecordSet(
+		$queryTransactionInformation,
+		$classAttributeIdAttribute,
+		array(
+			'object_id' => $classAttributeIdAttribute,
+			'attribute_mid' => $classAttributeAttributeAttribute
+		),
+		$classAttributesTable,
+		array("class_mid=$definedMeaningId")
+	);
+	
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($classAttributeAttributeAttribute));
+	return $recordSet;
 }
 
 function getAlternativeDefinitionsRecordSet($definedMeaningId, $queryTransactionInformation) {

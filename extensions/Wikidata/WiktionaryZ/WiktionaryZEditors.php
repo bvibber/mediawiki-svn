@@ -107,6 +107,16 @@ function getExpressionTableCellEditor($attribute) {
 	return $editor;
 }
 
+function getClassAttributesEditor($showRecordLifeSpan) {
+	global
+		$classAttributesAttribute, $classAttributeAttributeAttribute;
+
+	$tableEditor = new RecordSetTableEditor($classAttributesAttribute, new SimplePermissionController(true), true, true, false, new ClassAttributesController());
+	$tableEditor->addEditor(new DefinedMeaningReferenceEditor($classAttributeAttributeAttribute, new SimplePermissionController(false), true));
+	addTableLifeSpanEditor($tableEditor, $showRecordLifeSpan);
+	return $tableEditor;
+}
+
 function getSynonymsAndTranslationsEditor($showRecordLifeSpan) {
 	global
 		$synonymsAndTranslationsAttribute, $identicalMeaningAttribute, $expressionIdAttribute, 
@@ -247,7 +257,8 @@ function getDefinedMeaningEditor($showRecordLifeSpan) {
 	global
 		$definitionAttribute, $definedMeaningAttribute, $definedMeaningObjectAttributesEditor;
 	
-	$definitionEditor = getDefinitionEditor($definitionAttribute, new DefinedMeaningDefinitionController(), $showRecordLifeSpan);	
+	$definitionEditor = getDefinitionEditor($definitionAttribute, new DefinedMeaningDefinitionController(), $showRecordLifeSpan);
+	$classAttributesEditor = getClassAttributesEditor($showRecordLifeSpan);		
 	$synonymsAndTranslationsEditor = getSynonymsAndTranslationsEditor($showRecordLifeSpan);
 	$relationsEditor = getDefinedMeaningRelationsEditor($showRecordLifeSpan);
 	$reciprocalRelationsEditor = getDefinedMeaningReciprocalRelationsEditor($showRecordLifeSpan);
@@ -256,6 +267,7 @@ function getDefinedMeaningEditor($showRecordLifeSpan) {
 	
 	$definedMeaningEditor = new RecordUnorderedListEditor($definedMeaningAttribute, 4);
 	$definedMeaningEditor->addEditor($definitionEditor);
+	$definedMeaningEditor->addEditor($classAttributesEditor);
 	$definedMeaningEditor->addEditor(getAlternativeDefinitionsEditor($showRecordLifeSpan));
 	$definedMeaningEditor->addEditor($synonymsAndTranslationsEditor);
 	$definedMeaningEditor->addEditor($relationsEditor);

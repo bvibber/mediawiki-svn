@@ -13,7 +13,7 @@ class Table {
 global
 	$tables, $meaningRelationsTable, $classMembershipsTable, $collectionMembershipsTable, $syntransTable, 
 	$translatedContentTable, $alternativeDefinitionsTable, $translatedContentAttributeValuesTable, $transactionsTable,
-	$textAttributeValuesTable;
+	$textAttributeValuesTable, $classAttributesTable;
 	
 $transactionsTable = new Table('transactions', false);
 $meaningRelationsTable = new Table('uw_meaning_relations', true);
@@ -22,6 +22,7 @@ $collectionMembershipsTable = new Table('uw_collection_contents', true);
 $syntransTable = new Table('uw_syntrans', true);
 $translatedContentTable = new Table('translated_content', true);
 $alternativeDefinitionsTable = new Table('uw_alt_meaningtexts', true);
+$classAttributesTable = new Table('uw_class_attributes', true);
 
 $translatedContentAttributeValuesTable = new Table('uw_translated_content_attribute_values', true);
 $textAttributeValuesTable = new Table('uw_text_attribute_values', true);

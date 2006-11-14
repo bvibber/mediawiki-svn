@@ -178,6 +178,30 @@ class SynonymTranslationController implements Controller {
 	}
 }
 
+class ClassAttributesController implements Controller {
+	public function add($keyPath, $record) {
+		global
+			$definedMeaningIdAttribute, $classAttributeAttributeAttribute;
+
+		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
+		$attibuteMeaningId = $record->getAttributeValue($classAttributeAttributeAttribute);
+
+		if ($attibuteMeaningId != 0)
+			addClassAttribute($definedMeaningId, $attibuteMeaningId);
+	}
+
+	public function remove($keyPath) {
+		global
+			$classAttributeIdAttribute;
+			
+		$classAttributeId = $keyPath->peek(0)->getAttributeValue($classAttributeIdAttribute);
+		removeClassAttributeWithId($classAttributeId);
+	}
+
+	public function update($keyPath, $record) {
+	}	
+}
+
 class DefinedMeaningRelationController implements Controller {
 	public function add($keyPath, $record) {
 		global

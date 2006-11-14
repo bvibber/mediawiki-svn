@@ -129,7 +129,7 @@ global
 
 $translatedTextAttribute = new Attribute("translated-text", "Translated text", new RecordSetType($translatedTextStructure));
 $definitionAttribute = new Attribute("definition", "Definition", new RecordType(new Structure($translatedTextAttribute, $objectAttributesAttribute)));
-$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType(new Structure($definitionAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $objectAttributesAttribute)));
+$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType(new Structure($definitionAttribute, $classAttributesAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $objectAttributesAttribute)));
 
 global
 	$expressionsAttribute, $expressionMeaningStructure, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute;
@@ -152,5 +152,18 @@ global
 $objectIdAttribute = new Attribute("object-id", "Object identifier", "object-id");
 $objectAttributesStructure = new Structure($objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute);
 $objectAttributesAttribute = new Attribute("object-attributes", "Annotation", new RecordType($objectAttributesStructure));
+
+global
+	$classAttributesStructure,
+	$classAttributesAttribute,
+//	$classAttributeClassAttribute, 
+	$classAttributeIdAttribute, $classAttributeAttributeAttribute;	
+	
+$classAttributeIdAttribute = new Attribute("class-attribute-id", "Class attribute identifier", "object-id");
+//$classAttributeClassAttribute = new Attribute("class-attribute-class", "Class", "defined-meaning-id");
+$classAttributeAttributeAttribute = new Attribute("class-attribute-attribute", "Attribute", new RecordType($definedMeaningReferenceStructure));
+
+$classAttributesStructure = new Structure($classAttributeIdAttribute, $classAttributeAttributeAttribute);
+$classAttributesAttribute = new Attribute("class-attributes", "Class attributes", new RecordSetType($classAttributesStructure));
 
 ?>

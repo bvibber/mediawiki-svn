@@ -236,6 +236,14 @@ function removeRelationWithId($relationId) {
 				" AND remove_transaction_id IS NULL");
 }
 
+function addClassAttribute($definedMeaningId, $attibuteMeaningId) {
+//TODO: addClassAttribute	
+}
+
+function removeClassAttributeWithId($classAttributeId) {
+//TODO: removeClassAttributeWithId
+}			
+
 function getClassMembershipId($classMemberId, $classId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT class_membership_id FROM uw_class_membership " .
