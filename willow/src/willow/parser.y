@@ -236,8 +236,10 @@ int	i;
 
 %%
 
-conf: 
-	| conf conf_item 
+conf: | items
+
+items: conf_item
+	| items conf_item 
 	;
 
 conf_item: block

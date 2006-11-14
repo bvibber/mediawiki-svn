@@ -32,7 +32,7 @@ map<string, value> variable_list;
 vector<string> ignorables;
 static void add_ignorable(string const &);
 static int is_ignorable(string const &);
-int parse_error;
+bool parse_error;
 
 int curpos = 0;
 int lineno = 1;
@@ -416,7 +416,8 @@ va_list	ap;
 extern "C" void
 yyerror(const char *err)
 {
-	wlog(WLOG_ERROR, format("\"%s\", line %d: %s")
+	parse_error = true;
+	wlog(WLOG_ERROR, format("%s(%d): %s")
 		% current_file % lineno % err);
 }
 
