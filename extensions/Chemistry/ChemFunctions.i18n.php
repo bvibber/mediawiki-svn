@@ -177,4 +177,33 @@ $wgChemFunctions_Messages['sk'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Input error!'
 );
 
-?>
+/**
+ *  vi
+ *
+ */
+
+$wgChemFunctions_Messages['vi'] = array(
+	'chemicalsources' => 'Ngu?n hóa h?c',
+	'ChemFunctions_ListPage' => 'Ngu?n hóa h?c',
+	'ChemFunctions_SearchExplanation' => '',
+	'ChemFunctions_DataList' => 'Ðây là danh sách nh?ng website có th? cung c?p thông tin v? ch?t hóa h?c này:<br /><br />
+	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Ch?t $MIXCASNameFormula t?i NIST</a><br />
+	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS t?i Ð?i h?c Oxford (Anh)</a> (không có b? tìm ki?m)<br />',
+	'ChemFunctions_CAS' => 'S? CAS',
+	'ChemFunctions_EINECS' => 'Einecs',
+	'ChemFunctions_CHEBI' => 'CHEBI',
+	'ChemFunctions_PubChem' => 'PubChem',
+	'ChemFunctions_SMILES' => 'SMILES',
+	'ChemFunctions_InChI' => 'InChI',
+	'ChemFunctions_RTECS' => 'RTECS',
+	'ChemFunctions_KEGG' => 'KEGG',
+	'ChemFunctions_ATCCode' => 'ATCCode',
+	'ChemFunctions_DrugBank' => 'DrugBank',
+	'ChemFunctions_ECNumber' => 'ECNumber',
+	'ChemFunctions_Formula' => 'Công th?c',
+	'ChemFunctions_Name' => 'Tên IUPAC',
+
+	'ChemFunctions_ChemFormInputError' => 'Chemform: l?i nh?p!'
+);
+
+?> 
