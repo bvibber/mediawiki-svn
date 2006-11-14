@@ -58,9 +58,10 @@ backend::backend(
 		% be_straddr % be_hash));
 }
 
-backend_pool::backend_pool(string const &name, lb_type lbt)
+backend_pool::backend_pool(string const &name, lb_type lbt, int failgroup)
 	: _lbtype(lbt)
 	, _name(name)
+	, _failgroup(failgroup)
 {
 	WDEBUG((WLOG_DEBUG, format("creating backend_pool, lbt=%d") % (int) lbt));
 }
@@ -97,6 +98,12 @@ struct	backend_cb_data	*cbd;
 static	time_t		 last_nfile;
 	time_t		 now = time(NULL);
 
+	/*
+	 * If we're delegating (for failover), pass this request off.
+	 */
+	if (_delegate)
+		return _delegate->_get_impl(cb);
+
 	cbd = new backend_cb_data;
 	cbd->bc_func = cb;
 	
@@ -104,7 +111,15 @@ static	time_t		 last_nfile;
 		cbd->bc_backend = _next_backend();
 
 		if (cbd->bc_backend == NULL) {
+			/*
+			 * All out of backends.  See if we have a failover
+			 * group to try.
+			 */
 			delete cbd;
+			if (_failgroup != -1) {
+				_delegate = bpools.find(_failgroup)->second.get_list("", "");
+				return _delegate->_get_impl(cb);
+			}
 			return -1;
 		}
 
@@ -179,11 +194,14 @@ backend_list::backend_list(
 	backend_pool const &bp, 
 	imstring const &url,
 	imstring const &host, 
+	int failgroup,
 	lb_type lbt,
 	int cur)
 
 	: backends(bp.backends)
 	, _cur(0)
+	, _failgroup(failgroup)
+	, _delegate(NULL)
 {
 	WDEBUG((WLOG_DEBUG, format("lbt = %d") % (int)lbt));
 	rotate(backends.begin(), backends.begin() + cur, backends.end());
@@ -205,7 +223,7 @@ backend_pool::get_list(imstring const &url, imstring const &host)
 	if (*_cur >= backends.size())
 		*_cur = 0;
 
-	return new backend_list(*this, url, host, _lbtype, (*_cur)++);
+	return new backend_list(*this, url, host, _failgroup, _lbtype, (*_cur)++);
 }
 
 struct backend *
@@ -215,9 +233,6 @@ size_t			tried = 0;
 
 	while (tried++ <= backends.size()) {
 		time_t now = time(NULL);
-
-		WDEBUG((WLOG_DEBUG, format("_next_backend: considering %d %s")
-			% _cur % backends[_cur]->be_name));
 
 		if (_cur >= backends.size())
 			_cur = 0;

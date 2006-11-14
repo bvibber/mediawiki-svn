@@ -52,7 +52,13 @@ backend "127.0.0.1" {
 	port = 8081;
 };
 
-backend-group "backup" {
+/* A place to send requests for which no backend was found */
+backend-group "failover";
+backend "failover.mycompany.com" {
+	group = "failover";
+};
+
+backend-group "primary" {
 	/*
 	 * lb-type can be "rr" (plain roundrobin), "carp" (use CARP
 	 * algorithm) or "carp-host" (use CARP but only consider the
@@ -65,6 +71,12 @@ backend-group "backup" {
 	 * matter which listener received the request.
 	 */
 	hosts = "www.bar.com", "www2.bar.com";
+
+	/*
+	 * If all backends in the group are down, send requests to this
+	 * group instead.
+	 */
+	failover-group = "failover";
 };
 
 backend "backends.mycompany.com" {
@@ -79,7 +91,7 @@ backend "backends.mycompany.com" {
 	 * also has this group, requests to that listener will only
 	 * go to backends in that group.
 	 */
-	group = "backup";
+	group = "primary";
 };
 
 /*

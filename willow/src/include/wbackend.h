@@ -58,6 +58,7 @@ struct backend_list : freelist_allocator<backend_list> {
 	backend_list(	backend_pool const &pool,
 			imstring const &url,
 			imstring const &host,
+			int failgroup,
 			lb_type, int start);
 
 	int		 _get_impl	(polycallback<backend *, wsocket *>);
@@ -65,6 +66,9 @@ struct backend_list : freelist_allocator<backend_list> {
 	struct backend 	*_next_backend	(void);
 	void		 _carp_recalc	(imstring const &, imstring const &, lb_type);
 	static int	 _becarp_cmp	(backend const *a, backend const *b);
+	bool		 failed		(void) const {
+		return _delegate;
+	}
 
 	template<typename stringT>
 	static uint32_t _carp_urlhash(stringT const &str) {
@@ -81,9 +85,16 @@ struct backend_list : freelist_allocator<backend_list> {
 		return _get_impl(polycallback<backend *, wsocket *>(cb, t));
 	}
 
+	~backend_list() {
+		if (_delegate)
+			delete _delegate;
+	}
+
 private:
 	vector<backend *, pt_allocator<backend *> > backends;
-	size_t _cur;
+	size_t	_cur;
+	int	_failgroup;
+	struct backend_list *_delegate;
 };
 
 template<typename stringT>
@@ -95,7 +106,7 @@ backend::_carp_hosthash(stringT const &str)
 }
 
 struct backend_pool {
-	backend_pool(string const &name, lb_type);
+	backend_pool(string const &name, lb_type, int failgroup = -1);
 	~backend_pool();
 
 	void		 add		(string const &, int, int);
@@ -118,6 +129,7 @@ private:
 	tss<size_t>	 _cur;
 	lb_type		 _lbtype;
 	string		 _name;
+	int		 _failgroup;
 };
 
 extern map<int, backend_pool> bpools;

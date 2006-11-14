@@ -303,7 +303,7 @@ string	&s = v.cv_values[0].av_strval;
 void
 set_backend_group(tree_entry &e)
 {
-int	gn;
+int	gn, fogroup = -1;
 string	group;
 map<string, int>::iterator	it;
 	group = e.item_key;
@@ -327,8 +327,16 @@ value	*v;
 			lbtype = lb_carp_hostonly;
 	}
 
+	if ((v = e/"failover-group") != NULL) {
+		if ((it = poolnames.find(v->cv_values[0].av_strval)) == poolnames.end()) {
+			v->report_error("failover-group does not exist");
+		} else {
+			fogroup = it->second;
+		}
+	}
+
 	WDEBUG((WLOG_DEBUG, format("adding backend %d type = %d") % gn % (int) lbtype));
-	bpools.insert(make_pair(gn, backend_pool(e.item_key, lbtype)));
+	bpools.insert(make_pair(gn, backend_pool(e.item_key, lbtype, fogroup)));
 
 	if ((v = e/"hosts") != NULL) {
 	vector<avalue>::iterator it = v->cv_values.begin(), end = v->cv_values.end();
@@ -409,8 +417,9 @@ conf
 
 	.block("backend-group", require_name)
 		.end(func(set_backend_group))
-		.value("lb-type",	func(v_lb_type),	ignore)
-		.value("hosts",		func(v_hosts),		ignore)
+		.value("lb-type",		func(v_lb_type),	ignore)
+		.value("hosts",			func(v_hosts),		ignore)
+		.value("failover-group",	nonempty_qstring,	ignore)
 
 	.block("backend", require_name)
 		.end(func(set_backend))
