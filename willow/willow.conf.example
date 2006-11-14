@@ -65,6 +65,22 @@ listen "10.0.0.2" {
 };
 
 /*
+ * Controls global server parameters.
+ */
+server {
+	/*
+	 * Number of HTTP worker threads to start.  Something around
+	 * ncpus+1 is probably a good value for this.
+	 *
+	threads = 2;
+
+	/*
+	 * The owner of this server.  Will be used in error messages.
+	 */
+	admin = "nobody@example.com";
+};
+	
+/*
  * Controls global caching options.
  */
 cache {
@@ -104,13 +120,6 @@ cache {
 	 * which is actually private this way.
 	 */
 	cache-private = no;
-
-	/*
-	 * Use the CARP algorithm to route requests for the same object
-	 * to the same proxy? (Improves cache ratio of caches behind this
-	 * one, at the expense of a small bit of performance).
-	 */
-	use-carp = yes;
 
 	/*
 	 * Certain versions of MSIE cannot properly handle HTTP/1.1 chunked
