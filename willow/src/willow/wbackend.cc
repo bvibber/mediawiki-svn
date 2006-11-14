@@ -270,7 +270,7 @@ backend_pool::add_keptalive(pair<wsocket *, backend *>s)
 
 	if (!_keptalive)
 		_keptalive = new vector<pair<wsocket *, backend *> >;
-	else while (_keptalive->size() >= config.keepalive_max) {
+	else while (config.keepalive_max && (_keptalive->size() >= config.keepalive_max)) {
 		delete _keptalive->begin()->first;
 		_keptalive->erase(_keptalive->begin());
 	}
