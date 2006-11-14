@@ -18,6 +18,8 @@
 
 char *opcodestring[] = { "NOP", "TST", "MON", "SET", "CLR" };
 
+void urldecode(char * dest, const char * src, size_t num);
+
 int main( int argc, char *argv[] ) {
 	u_int yes = 1;		/* Used with SO_REUSEADDR.  In Linux both u_int */
 	/* and u_char are valid. */
@@ -74,7 +76,7 @@ int main( int argc, char *argv[] ) {
 		exit( 1 );
 	}
 	int n;
-	int len;
+	socklen_t len;
 	struct sockaddr_in from;
 	unsigned char message[MAXLEN + 1];
 	for ( ;; ) {
@@ -117,26 +119,40 @@ int main( int argc, char *argv[] ) {
 
 			uint16_t methodlength = message[14] * 256 + message[15];
 			char method[2000];
-			strncpy( method, message + 16, MAX( methodlength, 1999 ) );
+			strncpy( method, (char*)message + 16, MAX( methodlength, 1999 ) );
 			method[MAX( methodlength, 1999 )] = '\0';
 
 			int base = 16 + methodlength;
 			uint16_t urilength = message[base] * 256 + message[base + 1];
 			char uri[2000];
-			strncpy( uri, message + base + 2, MAX( urilength, 1999 ) );
-			uri[MAX( urilength, 1999 )] = '\0';
-			base += 2 + urilength;
+
+			/* Check for overlong URI */
+			if ( urilength > 1999 ) {
+				strncpy( uri, (char*)message + base + 2, 1999 );
+				uri[1999] = '\0';
+				printf( "URI too long: %s\n", uri );
+				continue;
+			}
+
+			/* Decode the URI */
+			urldecode( uri, (char*)message + base + 2, urilength );
 
 			if ( prefix == NULL
 			     || ( urilength >= prefixlength && strncmp( prefix, uri, prefixlength ) == 0 ) ) {
 				errno = 0;
-				if ( unlink( uri + prefixlength ) ) {
+				char * path = uri + prefixlength;
+				
+				if ( strstr( path, "../" ) == path || strstr( path, "/../" ) ) {
+					printf( "Error, path contains \"../\": " );
+				} else if ( path[0] == '/' ) {
+					printf( "Error, leading slash: " );
+				} else if ( unlink( path ) ) {
 					printf( "Failed on " );
 					/*  exit(1); */
 				} else {
 					printf( "Deleted " );
 				}
-				printf( "%s\n", uri + prefixlength );
+				printf( "%s\n", path );
 			} else {
 #ifdef DEBUG
 				printf( "Length:      %d\n", length );
@@ -158,3 +174,38 @@ int main( int argc, char *argv[] ) {
 		}
 	}
 }
+
+/**
+ * Decode a URL-encoded string
+ * Adds a null byte to the end of the destination string
+ * dest must have enough storage space for num+1 bytes (including null terminator)
+ * src is a string of length num
+ */
+void urldecode(char * dest, const char * src, size_t num) {
+	const char * end = src + num;
+	char * dummy;
+	unsigned char byte;
+	char hexbuf[3];
+	hexbuf[2] = '\0';
+	
+	while (src < end) {
+		if (*src == '%') {
+			if (src + 2 >= end) {
+				/* Invalid "%" at end of string, pass through */
+				*dest = *src;
+			} else {
+				hexbuf[0] = *(++src);
+				hexbuf[1] = *(++src);
+				byte = (unsigned char) strtoul(hexbuf, &dummy, 16);
+				*(unsigned char*)dest = byte;
+			}
+		} else {
+			*dest = *src;
+		}
+		++src;
+		++dest;
+	}
+	*dest = '\0';
+}
+
+
