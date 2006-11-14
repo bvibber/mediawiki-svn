@@ -154,7 +154,8 @@ extern tree global_conf_tree;
 extern tree parsing_tree;
 #endif
 
-tree *parse_file(string const &file);
+tree	*parse_file	(string const &file);
+void	 add_if_entry	(string const &name, bool v);
 
 string type_name(cv_type);
 

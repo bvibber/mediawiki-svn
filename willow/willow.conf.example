@@ -6,6 +6,40 @@
  */
 
 /*
+ * As well as configuration, this file can contain the preprocessor directives
+ * "%if", "%pragma" and "%include".
+ *
+ * %if allows a section of the file to be * dependant on a particular condition.
+ * There are two built-in conditions: "true" (which is always true) and "false"
+ * (which is always false).  You can add new true conditions by passing
+ * -Dcond[=value] on the command line (value should be 1 or 0; default is 1).
+ *
+ * Example:
+ *
+ *  %if testing_server
+ *    backend "localhost";
+ *  %else
+ *    backend "remote.host";
+ *  %endif
+ *
+ * %include inserts the contents of an existing file at the point it's used.
+ *
+ * Example:
+ *
+ *  %include "backends.conf"
+ *
+ * %pragma sets options in the configuration parser.  Valid options are:
+ *
+ *   include_path    - add the argument to the search path used to locate
+ *                     filenames used in %include.
+ *
+ * Example:
+ *
+ *  %pragma include_path "/etc/willow/conf.d"
+ *
+ */
+
+/*
  * Any number of backends can be defined.  The name can be an IP
  * address or a hostname.  For hostnames, all addresses associated
  * with the interface will be added.

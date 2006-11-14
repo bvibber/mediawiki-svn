@@ -33,6 +33,7 @@ struct statestack_stru {
 } statestack[MAXINCLUDE + 1];
 int inclevel;
 static int oldpos;
+static bool in_if;
 
 #undef YY_INPUT
 
@@ -62,7 +63,7 @@ endif     %{ws}endif{ws}$
 		}
 <IGNORING>{if}  { conf::report_parse_error("%%if may not be nested"); }
 <IGNORING>{endif} { BEGIN 0; }
-<IGNORING>{else} { BEGIN 0; }
+<IGNORING>{else} { in_if = true; BEGIN 0; }
 <IGNORING>.     ;
 <IGNORING>\n    { conf::lineno++; }
 
@@ -73,6 +74,22 @@ endif     %{ws}endif{ws}$
 \/\/.*$		;
 #.*$		;
 \n		conf::lineno++;
+{pragma}	{ conf::handle_pragma(yytext); }
+{if}		{ if (!conf::if_true(yytext))
+			BEGIN IGNORING;
+		  else
+			in_if = true;
+		}
+{else}		{ if (in_if)
+			BEGIN IGNORING;
+		  else
+			conf::report_parse_error("%%else without %%if");
+		}
+{endif}		{ if (in_if)
+			in_if = false;
+		  else
+			conf::report_parse_error("%%endif without %%if");
+		}
 {include}	{
 		FILE	*f;
 		char	*s, *t, c;

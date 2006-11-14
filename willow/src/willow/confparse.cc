@@ -28,10 +28,10 @@ namespace conf {
 
 tree global_conf_tree;
 map<string, value> variable_list;
+map<string, bool> if_table;
 
-vector<string> ignorables;
-static void add_ignorable(string const &);
-static int is_ignorable(string const &);
+vector<string> ipaths;
+static void add_ipath(string const &);
 bool parse_error;
 
 int curpos = 0;
@@ -55,6 +55,12 @@ tree *
 parse_file(string const &file)
 {
 	parsing_tree.reset();
+	
+	if (if_table.empty()) {
+		add_if_entry("true", true);
+		add_if_entry("false", false);
+	}
+
 	if ((yyin = fopen(file.c_str(), "r")) == NULL) {
 		wlog(WLOG_ERROR, 
 			format("could not open configuration file %s: %e") % file);
@@ -106,42 +112,31 @@ value	*val;
 	return val;
 }
 
-
-static void
-add_ignorable(string const &pat)
+void
+add_if_entry(string const &name, bool v)
 {
-	ignorables.push_back(pat);
+	if_table[name] = v;
 }
-
-static int
-is_ignorable(string const &pat)
-{
-	return std::find(ignorables.begin(), ignorables.end(), pat) != ignorables.end();
-}
-
-
-struct if_entry {
-	const char	*name;
-	bool		 true_;
-} if_table[] = {
-	{ NULL, false }
-};
 
 bool
 if_true(string const &if_)
 {
-if_entry	*e;
 char const	*dir;
 	dir = if_.c_str();
 	dir += sizeof("%if");
 	while (isspace(*dir))
 		dir++;
 
-	for (e = if_table; e->name; ++e)
-		if (e->name == dir)
-			return e->true_;
-	conf::report_parse_error("unknown %%if directive \"%s\"", dir);
-	return false;
+map<string, bool>::iterator it = if_table.find(dir);
+	if (it == if_table.end())
+		return false;
+	return it->second;
+}
+
+void
+add_ipath(string const &path)
+{
+	ipaths.push_back(path);
 }
 
 void
@@ -246,8 +241,6 @@ map<string, value>::const_iterator	vit, vend;
 				name = "/" + it->item_name + "=" + it->item_key + "/" + vit->second.cv_name;
 			else
 				name = "/" + it->item_name + "/" + vit->second.cv_name;
-			if (is_ignorable(name))
-				continue;
 			vit->second.report_error("%s was not recognised", name.c_str());
 			i++;
 		}
@@ -287,6 +280,8 @@ char	*mp, *op, *ap;
 	op = mp;
 	if (*mp == '\n')
 		++mp;
+	while (isspace(*mp))
+		mp++;
 	/* skip '%pragma ' */
 	mp += sizeof("%pragma");
 	while (isspace(*mp))
@@ -295,20 +290,14 @@ char	*mp, *op, *ap;
 	/* now up to the first space or EOS is the pragma name */
 	if ((ap = strchr(mp, ' ')) != NULL)
 		*ap++ = '\0';
-	if (!strcmp(mp, "ignore_ok")) {
+	if (!strcmp(mp, "include_path")) {
 		if (*ap != '"' || ap[strlen(ap) - 1] != '"')
-			report_parse_error("%%pragma ignore_ok must be followed by a quoted string");
+			report_parse_error("%%pragma include_path must be followed by a quoted string");
 		else {
 		const char	*sp;
 			ap++;
 			ap[strlen(ap) - 1] = '\0';
-			for (sp = ap; *sp; ++sp) {
-				if (!(isalnum(*sp) || strchr("_?*/=", *sp)))
-					report_parse_error("\"%s\" is not a valid value mask", ap);
-				else {
-					add_ignorable(ap);
-				}
-			}
+				add_ipath(ap);
 		}	
 	} else {
 		report_parse_error("unrecognised %%pragma \"%s\"", mp);
@@ -345,13 +334,13 @@ report_parse_error(const char *fmt, ...)
 va_list	ap;
 char	msg[1024] = { 0 };
 
-	parse_error = 1;
+	parse_error = true;
 
 	va_start(ap, fmt);
 	vsnprintf(msg, sizeof msg, fmt, ap);
 	va_end(ap);
 
-	wlog(WLOG_ERROR, format("\"%s\", line %d: %s")	
+	wlog(WLOG_ERROR, format("%s(%d): %s")	
 		% current_file % lineno % msg);
 }
 
@@ -409,8 +398,9 @@ va_list	ap;
 	va_start(ap, fmt);
 	vsnprintf(msg, sizeof msg, fmt, ap);
 	va_end(ap);
-	wlog(WLOG_ERROR, format("\"%s\", line %d: catastrophic error: %s")
+	wlog(WLOG_ERROR, format("%s(%d): catastrophic error: %s")
 		% current_file % lineno % msg);
+	parse_error = true;
 }
 
 extern "C" void
@@ -428,8 +418,18 @@ tree::reset(void)
 }
 
 bool
-find_include(string &)
+find_include(string &file)
 {
+vector<string>::iterator it = ipaths.begin(), end = ipaths.end();
+string	ret;
+	for (; it != end; ++it) {
+	struct stat	sb;
+		if (stat((*it + '/' + file).c_str(), &sb) == 0) {
+			file = *it + '/' + file;
+			return true;
+		}
+	}
+
 	return false;
 }
 
