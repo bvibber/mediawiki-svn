@@ -955,6 +955,8 @@ string	url = "NONE";
 	 */
 	if (_header_parser->_http_vers != http11)
 		_error_headers->add("Connection", "close");
+	else
+		_error_headers->add("Transfer-Encoding", "chunked");
 
 	_error_headers->sp_connect(_client_sink);
 	_error_headers->sp_uncork();
