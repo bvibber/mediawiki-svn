@@ -201,6 +201,7 @@ struct header_parser : io::sink, io::spigot
 	void		sp_cork			(void);
 	void		sp_uncork		(void);
 	void 		set_response		(void);
+	void		sending_restart		(void);
 
 	static inline char const *find_rn(char const *buf, char const *end) {
 	char const	*s;

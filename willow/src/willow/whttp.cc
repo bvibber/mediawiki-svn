@@ -121,6 +121,8 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	void end_request (bool = true);
 	void force_end_request (void);
 
+	void start_backend_request (void);
+
 		/* reading request from client */
 	void header_read_complete		(void);
 	void header_read_error			(void);
@@ -340,12 +342,24 @@ pair<bool, uint16_t> acheck;
 		}
 	}
 
+	start_backend_request();
+}
+
+void
+httpcllr::start_backend_request(void)
+{
 pair<wsocket *, backend *> ke = bpools.find(_group)->second.get_keptalive();
+	
+	delete _backend_sink;
+	_backend_sink = NULL;
+
 	if (ke.first) {
 		backend_ready(ke.second, ke.first, 0);
 		return;
 	}
-	_blist = bpools.find(_group)->second.get_list(
+
+	if (!_blist)
+		_blist = bpools.find(_group)->second.get_list(
 				_header_parser->_http_path,
 				_header_parser->_http_host);
 	
@@ -384,6 +398,7 @@ httpcllr::backend_ready(backend *be, wsocket *s, int)
 	_backend_socket = s;
 	_backend = be;
 	_backend_sink = new io::socket_sink(s);
+	_header_parser->sending_restart();
 	_header_parser->completed_callee(this, &httpcllr::backend_write_headers_done);
 	_header_parser->error_callee(this, &httpcllr::backend_write_error);
 	_header_parser->sp_connect(_backend_sink);
@@ -393,8 +408,7 @@ httpcllr::backend_ready(backend *be, wsocket *s, int)
 void
 httpcllr::backend_write_error(void)
 {
-	stats.tcur->n_httpreq_fail++;
-	send_error(ERR_GENERAL, "Could not write request to backend", 503, "Internal server error");
+	start_backend_request();
 }
 
 void
@@ -475,8 +489,10 @@ httpcllr::backend_read_headers_done(void)
 void
 httpcllr::backend_read_headers_error(void)
 {
-	stats.tcur->n_httpreq_fail++;
-	send_error(ERR_BADRESPONSE, "Could not parse backend response", 503, "Internal server error");
+	/*
+	 * Try another backend...
+	 */
+	start_backend_request();
 }
 
 void

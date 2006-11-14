@@ -475,6 +475,13 @@ header_parser::sp_cork(void)
 }
 
 void
+header_parser::sending_restart(void)
+{
+	_buf.reset();
+	_built = false;
+}
+
+void
 header_parser::sp_uncork(void) 
 {
 char	*bptr;

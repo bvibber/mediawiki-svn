@@ -124,6 +124,10 @@ struct buffer {
 		items.push_back(buffer_item(buf, len, free));
 	}
 
+	void reset(void) {
+		items.clear();
+	}
+
 	deque<buffer_item> items;
 };
 
