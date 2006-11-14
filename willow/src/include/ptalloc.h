@@ -46,6 +46,15 @@ static const int lt256[] =
   7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7
 };
 
+struct pttsswrap {
+	pttsswrap() {
+		pthread_key_create(&key, NULL);
+	}
+	pthread_key_t key;
+};
+
+extern tss<vector<pta_block *> > ptfreelist;
+extern pttsswrap pttssw;
 
 template<typename T>
 struct pt_allocator {
@@ -58,11 +67,11 @@ struct pt_allocator {
 	typedef ptrdiff_t		 difference_type;
 
 	pta_block *get_ptb(void) {
-	pta_block	**ptfl = (pta_block **)pthread_getspecific(tssw.key);
+	pta_block	**ptfl = (pta_block **)pthread_getspecific(pttssw.key);
 	pta_block	 *ret;
 		if (!ptfl) {
 			ptfl = new pta_block *(NULL);
-			pthread_setspecific(tssw.key, ptfl);
+			pthread_setspecific(pttssw.key, ptfl);
 		}
 
 		if (*ptfl) {
@@ -75,10 +84,10 @@ struct pt_allocator {
 	}
 
 	void lose_ptb(pta_block *ptb) {
-	pta_block	**ptfl = (pta_block **)pthread_getspecific(tssw.key);
+	pta_block	**ptfl = (pta_block **)pthread_getspecific(pttssw.key);
 		if (!ptfl) {
 			ptfl = new pta_block *(NULL);
-			pthread_setspecific(tssw.key, ptfl);
+			pthread_setspecific(pttssw.key, ptfl);
 		}
 
 		ptb->next = *ptfl;
@@ -97,9 +106,9 @@ struct pt_allocator {
 	size_t			 sz = sizeof(T) * n;
 	int			 exp = ilog2(sz) + 1;
 	void			*ret;
-		if (!freelist)
-			freelist = new vector<pta_block *>;
-	vector<pta_block *>	&fl = *freelist;
+		if (!ptfreelist)
+			ptfreelist = new vector<pta_block *>;
+	vector<pta_block *>	&fl = *ptfreelist;
 
 		/* do we have a free block of this size? */
 		if (exp < (int) fl.size() && fl[exp]) {
@@ -118,9 +127,9 @@ struct pt_allocator {
 	size_t			 sz = sizeof(T) * n;
 	int			 exp = ilog2(sz) + 1;
 	pta_block		*ptb = get_ptb();
-		if (!freelist)
-			freelist = new vector<pta_block *>;
-	vector<pta_block *>	&fl = *freelist;
+		if (!ptfreelist)
+			ptfreelist = new vector<pta_block *>;
+	vector<pta_block *>	&fl = *ptfreelist;
 
 		if ((int)fl.size() <= exp)
 			fl.resize(exp + 1);
@@ -168,21 +177,7 @@ struct pt_allocator {
 			r = (t = (i >> 8)) ? 8 + lt256[t] : lt256[i];
 		return r;
 	}
-
-	static struct tsswrap {
-		tsswrap() {
-			pthread_key_create(&key, NULL);
-		}
-		pthread_key_t key;
-	} tssw;
-
-	static tss<vector<pta_block *> >	freelist;
 };
-
-template<typename T>
-tss<vector<pta_block *> > pt_allocator<T>::freelist;
-template<typename T>
-typename pt_allocator<T>::tsswrap pt_allocator<T>::tssw;
 
 template<>
 struct pt_allocator<void>

@@ -128,7 +128,7 @@ struct buffer {
 		items.clear();
 	}
 
-	deque<buffer_item> items;
+	deque<buffer_item, pt_allocator<buffer_item> > items;
 };
 
 } // namespace wnet

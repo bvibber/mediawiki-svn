@@ -34,6 +34,9 @@ static void stats_init(void);
 
 static const char *progname;
 
+tss<vector<pta_block *> > ptfreelist;
+pttsswrap pttssw;
+
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
 static void 
