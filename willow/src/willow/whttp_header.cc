@@ -29,8 +29,89 @@ using std::vector;
 #include "flowio.h"
 #include "wconfig.h"
 #include "format.h"
+#include "wcache.h"
 
 using namespace wnet;
+
+#define H_IGNORE 0
+#define H_TRANSFER_ENCODING 1
+#define H_CONTENT_LENGTH 2
+#define H_USER_AGENT 3
+#define H_HOST 4
+#define H_X_WILLOW_BACKEND_GROUP 5
+#define H_CONNECTION 6
+
+#ifdef __GNUC__
+# include <ext/hash_map>
+typedef __gnu_cxx::hash_map<imstring,int> hmap_type;
+namespace __gnu_cxx {
+
+#define FNV_32_PRIME 0x01000193u
+
+template<>
+struct hash<imstring> {
+	size_t operator() (imstring const &str) const {
+	uint32_t	 hval = 0x811c9dc5u;
+	unsigned char 	*q = (unsigned char *)str.c_str() + str.size() - 1,
+			*s = q;	/* unsigned string */
+
+		while (*s && (q - s < 4)) {
+#ifndef __GNUC__
+			hval *= FNV_32_PRIME;
+#else
+			hval += (hval<<1) + (hval<<4) + (hval<<7) + (hval<<8) + (hval<<24);
+#endif
+			hval ^= (uint32_t)std::tolower(*s--);
+    		}
+		return hval;
+	}
+};
+
+}
+#else
+typedef map<imstring, int> hmap_type;
+#endif
+
+hmap_type htypemap;
+
+void
+whttp_header_init(void)
+{
+struct {
+	char 	*name;
+	int	 n;
+} *it, list[] = {
+	{ "transfer-encoding",		H_TRANSFER_ENCODING },
+	{ "content-length",		H_CONTENT_LENGTH },
+	{ "user-agent",			H_USER_AGENT },
+	{ "host",			H_HOST },
+	{ "x-willow-backend-group",	H_X_WILLOW_BACKEND_GROUP },
+	{ "connection",			H_CONNECTION },
+	{ "if-modified-since",		H_IGNORE },
+	{ "last-modified",		H_IGNORE },
+	{ "keep-alive",			H_IGNORE },
+	{ "te",				H_IGNORE },
+	{ "trailers",			H_IGNORE },
+	{ "upgrade",			H_IGNORE },
+	{ "proxy-authenticate",		H_IGNORE },
+	{ "proxy-connection",		H_IGNORE },
+	{ 0, 0 }
+};
+	for (it = list; it->name; ++it)
+		htypemap[imstring(it->name)] = it->n;
+}
+
+int
+find_htype(char const *s, size_t slen)
+{
+hmap_type::iterator	it;
+	if (slen >= 24)
+		return -1;
+	it = htypemap.find(imstring(s, slen));
+	if (it == htypemap.end())
+		return -1;
+	return it->second;
+}
 
 /*
  * A list of headers we should remove from the request and the response
@@ -298,6 +379,8 @@ header_parser::data_ready(char const *buf, size_t len, ssize_t &discard)
 static char const *msie = "MSIE";
 char const	*rn, *value, *name, *bufp = buf;
 size_t		 vlen, nlen, rnpos;
+int		 htype;
+
 	while ((rn = find_rn(bufp, bufp + len)) != NULL) {
 		for (char const *c = bufp; c < rn; ++c)
 			if (*(unsigned char *)c > 0x7f || !*c)
@@ -351,7 +434,9 @@ size_t		 vlen, nlen, rnpos;
 			return io::sink_result_error;
 		}
 		nlen = value - name;
-		if (is_removable(name, nlen))
+
+		htype = find_htype(name, nlen);
+		if (htype == H_IGNORE)
 			goto next;
 
 		value++;
@@ -359,18 +444,18 @@ size_t		 vlen, nlen, rnpos;
 			value++;
 		vlen = rn - value;
 
-		if (!strncasecmp(name, "Transfer-Encoding", nlen) && !strncasecmp(value, "chunked", vlen))
+		if (htype == H_TRANSFER_ENCODING && !strncasecmp(value, "chunked", vlen))
 			_flags.f_chunked = 1;
-		else if (!strncasecmp(name, "Content-Length", nlen))
+		else if (htype == H_CONTENT_LENGTH)
 			_content_length = str10toint(value, vlen);
-		else if (config.msie_hack && !strncasecmp(name, "User-Agent", nlen) &&
+		else if (config.msie_hack && htype == H_USER_AGENT &&
 			 std::search(value, value + vlen, msie, msie + 4) != value + vlen) {
 			_is_msie = true;
-		} else if (!strncasecmp(name, "Host", nlen))
+		} else if (htype == H_HOST)
 			_http_host.assign(value, value + vlen);
-		else if (!strncasecmp(name, "X-Willow-Backend-Group", nlen))
+		else if (htype == H_X_WILLOW_BACKEND_GROUP)
 			_http_backend.assign(value, value + vlen);
-		else if (!strncasecmp(name, "Connection", nlen)) {
+		else if (htype == H_CONNECTION) {
 			if (!strncasecmp(value, "close", vlen))
 				_no_keepalive = true;
 			else if (!strncasecmp(value, "keep-alive", vlen))

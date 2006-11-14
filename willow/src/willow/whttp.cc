@@ -614,6 +614,7 @@ whttp_init(void)
 		threads.push_back(t);
 		pthread_create(&t->thr, NULL, client_thread, t);
 	}
+	whttp_header_init();
 }
 
 void

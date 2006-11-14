@@ -243,4 +243,6 @@ struct header_parser : io::sink, io::spigot
 	}		 _flags;
 };
 
+void whttp_header_init(void);
+
 #endif

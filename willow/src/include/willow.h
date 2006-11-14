@@ -367,7 +367,7 @@ bool
 basic_imstring<charT, allocator>::operator==(
 	basic_imstring<charT, allocator> const &o) const
 {
-	return strcmp(_buf, o._buf) == 0;
+	return strcasecmp(_buf, o._buf) == 0;
 }
 
 template<typename charT, typename allocator>
@@ -383,7 +383,7 @@ bool
 basic_imstring<charT, allocator>::operator<(
 	basic_imstring<charT, allocator> const &o) const
 {
-	return strcmp(_buf, o._buf) < 0;
+	return strcasecmp(_buf, o._buf) < 0;
 }
 
 template<typename charT, typename allocator>
@@ -391,7 +391,7 @@ bool
 basic_imstring<charT, allocator>::operator>(
 	basic_imstring<charT, allocator> const &o) const
 {
-	return strcmp(_buf, o._buf) > 0;
+	return strcasecmp(_buf, o._buf) > 0;
 }
 
 template<typename charT, typename allocator>
