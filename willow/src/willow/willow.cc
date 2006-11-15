@@ -509,11 +509,19 @@ diobuf::resize(size_t newsize)
 	}
 }
 
+void
+diobuf::finished(void)
+{
+	munmap(_buf, _reserved);
+	_buf = NULL;
+}
+
 diobuf::~diobuf(void)
 {
 	if (_fd != -1) {
 		close(_fd);
-		munmap(_buf, _size);
+		if (_buf)
+			munmap(_buf, _reserved);
 	} else {
 		delete[] _buf;
 	}

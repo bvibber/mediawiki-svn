@@ -494,6 +494,8 @@ struct diobuf : freelist_allocator<diobuf> {
 		memcpy(_buf + osize, buf, len);
 	}
 
+	void finished(void);
+
 private:
 	int	 _fd;
 	char	*_buf;

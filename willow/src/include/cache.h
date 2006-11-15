@@ -117,6 +117,8 @@ struct cachedentity {
 		revalidated();
 		_builthdrs = _headers.build();
 		_builtsz = _headers.length();
+		_data.finished();
+
 		_complete = true;
 	}
 
