@@ -59,18 +59,18 @@ for host, number in threads.iteritems():
 			
 			if host == "localhost":
 				#os.execlp("php", "php", "-n", scripts+"/queueSlave.php", socket.gethostname(), "8200", base)
-				os.execlp("python", "python", scripts+"/queueSlave", socket.gethostname(), "8200", base)
+				os.execlp("python", "python", scripts+"/queueSlave", socket.gethostname(), "8200", base, edition)
 				sys.exit(1)
 			else:
 				#os.execlp("ssh", "ssh", host, "php", "-n", scripts+"/queueSlave.php", socket.gethostname(), "8200", base)
-				os.execlp("ssh", "ssh", host, "python", scripts+"/queueSlave", socket.gethostname(), "8200", base)
+				os.execlp("ssh", "ssh", host, "python", scripts+"/queueSlave", socket.gethostname(), "8200", base, edition)
 				sys.exit(1)
 		slaves.append(pid)
 
 # Start controller, wait for it to exit
 print "Starting controller"
 try:
-	os.spawnlp(os.P_WAIT, "php", "php", "-n", "queueController.php", edition)
+	os.spawnlp(os.P_WAIT, "php", "php", "-n", "queueController.php")
 	print "Controller has exited, all done\n"
 except KeyboardInterrupt:
 	pass
