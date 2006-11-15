@@ -657,14 +657,25 @@ bool	cache = false;
 		return;
 	}
 
-	if (_backend_headers->_flags.f_chunked && _header_parser->_http_vers == http10) {
-		_dechunking_filter = new dechunking_filter;
-		_backend_spigot->sp_connect(_dechunking_filter);
-		if (cache) {
-			_dechunking_filter->sp_connect(_cache_filter);
-			_cache_filter->sp_connect(_client_sink);
+	if (cache) {
+		/*
+		 * If we're caching, always dechunk.
+		 */
+		if (_backend_headers->_flags.f_chunked) {
+std::cout<<"dechunk\n";
+			_dechunking_filter = new dechunking_filter;
+			_chunking_filter = new chunking_filter;
+			*_backend_spigot >> *_dechunking_filter >> *_cache_filter 
+				>> *_chunking_filter >> *_client_sink;
 		} else
-			_dechunking_filter->sp_connect(_client_sink);
+			*_backend_spigot >> *_cache_filter >> *_client_sink;
+	} else if (_backend_headers->_flags.f_chunked && _header_parser->_http_vers == http10) {
+		_dechunking_filter = new dechunking_filter;
+		*_backend_spigot >> *_dechunking_filter;
+		if (cache) {
+			*_dechunking_filter >> *_cache_filter >> *_client_sink;
+		} else
+			*_dechunking_filter >> *_client_sink;
 	} else if (_backend_headers->_content_length == -1 && !_backend_headers->_flags.f_chunked
 		   && _header_parser->_http_vers == http11 && !(config.msie_hack && _header_parser->_is_msie)) {
 		/*
@@ -674,19 +685,18 @@ bool	cache = false;
 		 */
 		_chunking_filter = new chunking_filter;
 		if (cache) {
-			_backend_spigot->sp_connect(_cache_filter);
-			_cache_filter->sp_connect(_chunking_filter);
+			*_backend_spigot >> *_cache_filter >> *_chunking_filter;
 		} else
-			_backend_spigot->sp_connect(_chunking_filter);
+			*_backend_spigot >> *_chunking_filter;
 		_chunking_filter->sp_connect(_client_sink);
 	} else if (_backend_headers->_flags.f_chunked && config.msie_hack && _header_parser->_is_msie) {
 		_dechunking_filter = new dechunking_filter;
-		_backend_spigot->sp_connect(_dechunking_filter);
+		*_backend_spigot >> *_dechunking_filter;
+
 		if (cache) {
-			_dechunking_filter->sp_connect(_cache_filter);
-			_cache_filter->sp_connect(_client_sink);
+			*_dechunking_filter >> *_cache_filter >> *_client_sink;
 		} else
-			_dechunking_filter->sp_connect(_client_sink);
+			*_dechunking_filter >> *_client_sink;
 	} else {
 		/*
 		 * For a keep-alive request, we need a size limiting filter to prevent

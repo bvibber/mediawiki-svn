@@ -195,6 +195,14 @@ char	*buf = hr_buffer;
 	hr_name[nlen] = hr_value[vlen] = '\0';
 }
 
+header&
+header::operator= (header const &other)
+{
+	assign(other.hr_name, strlen(other.hr_name),
+		other.hr_value, strlen(other.hr_value));
+	return *this;
+}
+
 header::~header(void)
 {
 	if (hr_allocd)
@@ -208,6 +216,7 @@ header::move(header &other)
 	 * The other header is static, just copy the string.
 	 */
 	if (!other.hr_allocd) {
+std::cout<<"moving unallocated header\n";
 		if (hr_allocd) {
 			alloc.deallocate(hr_name, hr_allocd);
 			hr_allocd = 0;
@@ -219,7 +228,7 @@ header::move(header &other)
 		strcpy(hr_value, other.hr_value);
 		return;
 	}
-
+std::cout<<"moving allocated header\n";
 	/*
 	 * The other header is allocd, steal its buffer.
 	 */
@@ -303,6 +312,7 @@ size_t	nbufsz = curnlen + curvlen + 4 + len;
 void
 header_list::remove(const char *name)
 {
+std::cout<<"remove ["<<name<<"] s="<<hl_hdrs.size()<<" len="<<hl_len<<"\n";
 vector<header *, pt_allocator<header *> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
 		if (strcasecmp((*it)->hr_name, name))
@@ -310,6 +320,7 @@ vector<header *, pt_allocator<header *> >::iterator	it, end;
 		hl_len -= strlen((*it)->hr_name) + strlen((*it)->hr_value) + 4;
 		(*it)->move(**hl_hdrs.rbegin());
 		hl_hdrs.pop_back();
+std::cout<<"now sz="<<hl_hdrs.size()<<" len="<<hl_len<<"\n";
 		return;
 	}
 	
@@ -327,6 +338,21 @@ vector<header *, pt_allocator<header *> >::iterator	it, end;
 	return NULL;
 }
 
+header_list&
+header_list::operator= (header_list const &other)
+{
+	for (vector<header *, pt_allocator<header *> >::iterator
+		it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it)
+		delete *it;
+	hl_hdrs.clear();
+	for (vector<header *, pt_allocator<header *> >::const_iterator
+		it = other.hl_hdrs.begin(), end = other.hl_hdrs.end(); it != end; ++it)
+		hl_hdrs.push_back(new header(**it));
+	hl_len = other.hl_len;
+	hl_last = *hl_hdrs.rbegin();
+	return *this;
+}
+	
 char *
 header_list::build(void)
 {
@@ -341,6 +367,7 @@ size_t	 buflen = 0;
 vector<header *, pt_allocator<header *> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
 	int	incr;
+std::cout<<(format("build [%s]=[%s]\n")%(*it)->hr_name%(*it)->hr_value).str();
 		incr = strlen((*it)->hr_name);
 		memcpy(buf + buflen, (*it)->hr_name, incr);
 		buflen += incr;

@@ -312,7 +312,7 @@ int     res = 0;
                         tval = 10 + c - 'a';
                 else if (c >= 'A' && c <= 'F')
                         tval = 10 + c - 'A';
-                else    return res;
+                else    return -1;
                 res += tval * mult;
                 mult <<= 4;
         }

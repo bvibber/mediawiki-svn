@@ -41,8 +41,19 @@ struct dechunking_filter : freelist_allocator<dechunking_filter>, io::buffering_
 	dechunking_filter();
 	io::sink_result bf_transform(char const *, size_t, ssize_t &);
 
-	size_t	 _current_chunk_size;
+	enum {
+		s_start,
+		s_data,
+		s_end_chunk,
+		s_end_chunk_n,
+		s_trailers,
+		s_trailers_n
+	}	_state;
+	ssize_t	_current_chunk_size;
 	size_t	_counter;
+	bool	_atend;
+	bool	_first;
+	char	_cbuf[16];		/* enough to hold a chunk size */
 };
 
 #endif

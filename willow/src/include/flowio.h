@@ -54,6 +54,12 @@ struct spigot : noncopyable {
 	void sp_connect(sink *s);
 	void sp_disconnect(void);
 
+	template<typename T>
+	T &operator>> (T &s) {
+		sp_connect(&s);
+		return s;
+	}
+
 	/*
 	 * Stop providing new data.
 	 */
@@ -299,9 +305,16 @@ struct buffering_filter : sink, spigot {
 
 	sink_result data_ready(char const *buf, size_t len, ssize_t &discard) {
 	sink_result	result;
-		result = bf_transform(buf, len, discard);
-		if (discard > 0)
+	ssize_t		d = discard;
+		while ((discard - d) < len) {
+			result = bf_transform(buf + (discard - d), len - (discard - d), discard);
+			if (result != sink_result_okay &&
+			    result != sink_result_finished)
+				return result;
 			_bf_push_data();
+			if (result == sink_result_finished)
+				return _sp_sink->data_empty();
+		}
 		return result;
 	}
 

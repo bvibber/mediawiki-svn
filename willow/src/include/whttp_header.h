@@ -55,7 +55,8 @@ struct header : freelist_allocator<header> {
 
 	~header();
 	header(header const &);
-	
+	header& operator= (header const &);
+
 	/*
 	 * Assign new values to this header.
 	 */
@@ -90,6 +91,7 @@ struct header_list {
 	/* Construct an empty header list. */
 	header_list();
 	~header_list();
+	header_list &operator= (header_list const &other);
 
 	/*
 	 * Add a new (header,value) pair to the list.  name and value must be

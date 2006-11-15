@@ -47,26 +47,94 @@ chunking_filter::bf_eof(void)
 dechunking_filter::dechunking_filter()
 	: _current_chunk_size(0)
 	, _counter(0)
+	, _atend(false)
+	, _first(true)
+	, _state(s_start)
 {
+	_cbuf[0] = '\0';
 }
 
 io::sink_result
 dechunking_filter::bf_transform(char const *buf, size_t len, ssize_t &discard)
 {
-	if (_current_chunk_size) {
-	size_t	sent = min(len, _current_chunk_size);
-		_buf.add(buf, sent, false);
-		_current_chunk_size -= sent;
-		discard += sent;
-		_counter += sent;
-	} else {
-		/* this data is the chunk size */
-	char const	*rn;
-		if ((rn = header_parser::find_rn(buf, buf + len)) == NULL) {
-			return io::sink_result_okay;	/* need more data */
+char const	*rn;
+int		 i;
+ssize_t		 s;
+	while (len) {
+std::cout<<"dechunk: buf=["<<string(buf, buf + len).substr(0, 10)<<"]\n";
+		switch (_state) {
+		case s_start:	/* expect a chunk, <digits>\r\n */
+			if ((rn = header_parser::find_rn(buf, buf + len)) == NULL) {
+				/* no \r\n yet, need more data */
+				if (len + strlen(_cbuf) > 15)
+					return io::sink_result_error;
+				strncat(_cbuf, buf, len);
+				discard += len;
+				return io::sink_result_okay;
+			}
+			i = (rn - buf);
+			if (i + strlen(_cbuf) > 15)
+				return io::sink_result_error;
+			strncat(_cbuf, buf, i);
+std::cout<<"got chunk size ["<<_cbuf<<"]\n";
+			_current_chunk_size = str16toint(_cbuf, strlen(_cbuf));
+			discard += i + 2;
+			len -= i + 2;
+			buf += i + 2;
+			_cbuf[0] = '\0';
+			if (_current_chunk_size == -1)
+				return io::sink_result_error;
+			if (_current_chunk_size == 0) {
+				_state = s_trailers;
+				break;;
+			}
+			_state = s_data;
+			break;;
+		case s_data:	/* expect to read _current_chunk_size bytes */
+			s = min((ssize_t)len, _current_chunk_size);			
+			_current_chunk_size -= s;
+std::cout<<"queue: "<<s<<" ["<<string(buf, buf + s).substr(0, 10)<<"\n";
+			_buf.add(buf, s, false);
+			discard += s;
+			len -= s;
+			buf += s;
+			if (_current_chunk_size == 0)
+				_state = s_end_chunk;
+			break;
+		case s_end_chunk:
+			if (*buf != '\r')
+				return io::sink_result_error;
+			_state = s_end_chunk_n;
+			len--;
+			buf++;
+			discard++;
+			break;
+		case s_end_chunk_n:
+			if (*buf != '\n')
+				return io::sink_result_error;
+			len--;
+			buf++;
+			discard++;
+std::cout<<"got end of chunk\n";
+			_state = s_start;
+			break;
+		case s_trailers:
+			if (*buf != '\r')
+				return io::sink_result_error;
+			_state = s_trailers_n;
+			len--;
+			buf++;
+			discard++;
+			break;
+		case s_trailers_n:
+			if (*buf != '\n' || len > 1)
+				return io::sink_result_error;
+			len--;
+			buf++;
+			discard++;
+std::cout<<"got end of buf\n";
+			return io::sink_result_finished;
 		}
-		_current_chunk_size = str16toint(buf, rn - buf);
-		discard += rn - buf + 2;
 	}
 	return io::sink_result_okay;
 }

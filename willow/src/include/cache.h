@@ -49,7 +49,8 @@ struct cachedentity {
 		WDEBUG((WLOG_DEBUG, format("set_complete: void=%d") % _void));
 		if (_void)
 			return;
-		if (!_headers.find("content-length") && !_headers.find("transfer-encoding")) {
+		_headers.remove("transfer-encoding");
+		if (!_headers.find("content-length")) {
 		char	lenstr[64];
 			snprintf(lenstr, sizeof lenstr, "%lu", 
 				(unsigned long) _data.size());
