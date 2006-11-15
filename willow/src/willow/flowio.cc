@@ -31,7 +31,7 @@ spigot::_sp_data_ready(char *b, size_t s, ssize_t &discard) {
 }
 
 sink_result
-spigot::_sp_dio_ready(int fd, off_t off, char *b, size_t s, ssize_t &discard) {
+spigot::_sp_dio_ready(int fd, off_t off, size_t s, ssize_t &discard) {
 	return _sp_sink->dio_ready(fd, off, s, discard);
 }
 

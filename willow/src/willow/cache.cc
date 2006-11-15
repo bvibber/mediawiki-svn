@@ -143,6 +143,7 @@ cachedentity *ent;
 
 cachedentity::cachedentity(imstring const &url, size_t hint)
 	: _url(url)
+	, _data(hint ? hint : 4096)
 	, _refs(0)
 	, _complete(false)
 	, _builthdrs(NULL)
@@ -152,8 +153,6 @@ cachedentity::cachedentity(imstring const &url, size_t hint)
 	, _expires(0)
 	, _modified(0)
 {
-	if (hint)
-		_data.reserve(hint);
 }
 
 cachedentity::~cachedentity()
@@ -179,7 +178,7 @@ cachedentity::_append(char const *data, size_t size)
 		_void = true;
 		return;
 	}
-	_data.insert(_data.end(), data, data + size);
+	_data.append(data, size);
 }
 
 time_t

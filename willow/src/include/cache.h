@@ -156,7 +156,7 @@ private:
 
 	imstring	 _url;
 	imstring	 _status;
-	vector<char>	 _data;
+	diobuf		 _data;
 	atomic<int>	 _refs;
 	atomic<bool>	 _complete;
 	header_list	 _headers;
@@ -231,11 +231,15 @@ private:
 	cachedentity	*_entity;
 };
 
-struct cached_spigot : io::buffering_spigot {
+struct cached_spigot : io::spigot {
 	cached_spigot(cachedentity *ent)
 		: _ent(ent)
 		, _done(false)
-		, _keepalive(false) {}
+		, _keepalive(false)
+		, _doneheaders(false)
+		, _inited(false)
+		, _corked(true)
+		, _off(0) {}
 
 	~cached_spigot() {
 		sp_cork();
@@ -245,27 +249,105 @@ struct cached_spigot : io::buffering_spigot {
 		_keepalive = ke;
 	}
 
-	bool	bs_get_data(void) {
-		if (_done) {
-			_sp_completed_callee();
-			return false;
+	void sp_cork(void) {
+		_corked = true;
+	}
+
+	void sp_uncork(void) {
+		_dio = _sp_sink->dio_supported(io::dio_source_fd)
+			&& _ent->_data.fd() != -1;
+
+		_corked = false;
+		if (!_inited) {
+			push_headers();
+			_inited = true;
 		}
 
-		_done = true;	
+		if (!_doneheaders) {
+			while (!_corked && _buf.items.size()) {
+			wnet::buffer_item	&b = *_buf.items.begin();
+			ssize_t			 discard = 0;
+			io::sink_result		 res;
+				res = _sp_sink->data_ready(b.buf + b.off, b.len, discard);
+				if ((size_t)discard == b.len) {
+					_buf.items.pop_front();
+				} else {
+					b.len -= discard;
+					b.off += discard;
+				}
+
+				switch (res) {
+				case io::sink_result_finished:
+					_sp_completed_callee();
+					return;
+				case io::sink_result_okay:
+					continue;
+				case io::sink_result_error:
+					_sp_error_callee();
+					return;
+				case io::sink_result_blocked:
+					return;
+				}
+			}
+			_doneheaders = true;
+			_off = 0;
+		}
+
+	ssize_t		disc = 0;
+	io::sink_result	res;
+		for (;;) {
+			WDEBUG((WLOG_DEBUG, format("cached_spigot: %d left, off %d fd %d")
+				% (_ent->_data.size() - _off) % _off % _ent->_data.fd()));
+			if (_dio) {		
+				res = _sp_dio_ready(_ent->_data.fd(), _off, 
+					_ent->_data.size() - _off, disc);
+			} else {
+				res = _sp_data_ready(_ent->_data.ptr() + _off, 
+					_ent->_data.size() - _off, disc);
+			}
+			_off += disc;
+			switch (res) {
+			case io::sink_result_finished:
+				_sp_completed_callee();
+				WDEBUG((WLOG_DEBUG, "all finished"));
+				return;
+			case io::sink_result_okay:
+				if (_off = _ent->_data.size()) {
+					_sp_completed_callee();
+					return;
+				}
+				WDEBUG((WLOG_DEBUG, "continuing"));
+				continue;
+			case io::sink_result_error:
+				WDEBUG((WLOG_DEBUG, format("error %e")));
+				_sp_error_callee();
+				return;
+			case io::sink_result_blocked:
+				WDEBUG((WLOG_DEBUG, "blocked"));
+				return;
+			}
+		}
+	}
+
+	void	push_headers(void) {
 		_buf.add(_ent->_status.data(), _ent->_status.size(), false);
 		_buf.add(_ent->_builthdrs, _ent->_builtsz, false);
 	static char const ke_header[] = "Keep-Alive: 300\r\n";
 		if (_keepalive)
 			_buf.add(ke_header, sizeof(ke_header) - 1, false);
 		_buf.add("\r\n", 2, false);
-		_buf.add(&_ent->_data[0], _ent->_data.size(), false);
-		return true;
 	}
 
 private:
 	cachedentity	*_ent;
 	bool		 _done;
 	bool		 _keepalive;
+	bool		 _doneheaders;
+	bool		 _dio;
+	wnet::buffer	 _buf;
+	bool		 _corked;
+	bool		 _inited;
+	size_t		 _off;
 };
 
 extern httpcache entitycache;

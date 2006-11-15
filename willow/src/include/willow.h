@@ -31,6 +31,8 @@ using std::basic_ostream;
 #include "wlog.h"
 #include "radix.h"
 #include "ptalloc.h"
+#include "format.h"
+#include "wconfig.h"
 
 typedef unsigned long long w_size_t;
 
@@ -464,5 +466,39 @@ basic_imstring<charT, allocator>::empty(void) const
 	return size() == 0;
 }
 
+/*
+ * A buffer which uses /dev/shm buffers if possible (on Linux), so we can use
+ * sendfile() on the buffer.
+ */
+struct diobuf : freelist_allocator<diobuf> {
+	diobuf(size_t size = 4096);
+	~diobuf(void);
+
+	void resize(size_t newsize);
+
+	char *ptr(void) {
+		return _buf;
+	}
+
+	size_t size(void) {
+		return _size;
+	}
+
+	int fd(void) {
+		return _fd;
+	}
+
+	void append(char const *buf, size_t len) {
+	size_t	osize = _size;
+		resize(_size + len);
+		memcpy(_buf + osize, buf, len);
+	}
+
+private:
+	int	 _fd;
+	char	*_buf;
+	size_t	 _size;
+	size_t	 _reserved;
+};
 
 #endif

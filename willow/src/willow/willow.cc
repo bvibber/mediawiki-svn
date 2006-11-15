@@ -8,6 +8,10 @@
 # pragma ident "@(#)$Id$"
 #endif
 
+#include <sys/mman.h>
+#include <fcntl.h>
+#include <unistd.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
@@ -474,4 +478,89 @@ stats_sched(void)
 	evtimer_set(&stats_ev, stats_update, NULL);
 	event_base_set(evb, &stats_ev);
 	event_add(&stats_ev, &stats_tv);
+}
+
+void
+diobuf::resize(size_t newsize)
+{
+	if (newsize <= _reserved) {
+		_size = newsize;
+		return;
+	}
+
+	if (_fd != -1) {
+		munmap(_buf, _size);
+		_size = _reserved = newsize;
+		lseek(_fd, _size, SEEK_SET);
+		write(_fd, "", 1);
+		_buf = (char *)mmap(0, _size, PROT_READ | PROT_WRITE, MAP_SHARED, _fd, 0);
+		if (_buf == MAP_FAILED)
+			abort();
+	} else {
+	char	*n;
+		n = new char[newsize];
+		memcpy(n, _buf, _size);
+		delete[] _buf;
+		_buf = n;
+		_size = _reserved = newsize;
+	}
+}
+
+diobuf::~diobuf(void)
+{
+	if (_fd != -1) {
+		close(_fd);
+		munmap(_buf, _size);
+	} else {
+		delete[] _buf;
+	}
+}
+
+diobuf::diobuf(size_t size)
+	: _buf(0)
+	, _fd(-1)
+	, _size(0)
+	, _reserved(size)
+{
+	if (size == 0)
+		_reserved = size = 4096;
+
+	if (!config.use_dio) {
+		_buf = new char[size];
+		return;
+	}
+	char	path[PATH_MAX];
+	snprintf(path, sizeof(path), "/dev/shm/willow.diobuf.%d.%d.%d",
+		getpid(), (int) pthread_self(), rand());
+		if ((_fd = open(path, O_CREAT | O_EXCL | O_RDWR, 0600)) == -1) {
+		wlog(WLOG_WARNING, format("opening diobuf %s: %e") % path);
+		_buf = new char[size];
+		return;
+	}
+	unlink(path);
+
+	if (lseek(_fd, _size, SEEK_SET) == -1) {
+		wlog(WLOG_WARNING, format("seeking diobuf %s: %e") % path);
+		close(_fd);
+		_fd = -1;
+		_buf = new char[size];
+		return;
+	}
+
+	if (write(_fd, "", 1) < 1) {
+		wlog(WLOG_WARNING, format("extending diobuf %s: %e") % path);
+		close(_fd);
+		_fd = -1;
+		_buf = new char[size];
+		return;
+	}
+
+	_buf = (char *)mmap(0, size, PROT_READ | PROT_WRITE, MAP_SHARED, _fd, 0);
+	if (_buf == MAP_FAILED) {
+		wlog(WLOG_WARNING, format("mapping diobuf %s: %e") % path);
+		close(_fd);
+		_fd = -1;
+		_buf = new char[size];
+		return;
+	}
 }

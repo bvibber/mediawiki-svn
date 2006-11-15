@@ -82,7 +82,7 @@ struct spigot : noncopyable {
 
 protected:
 	sink_result 	 _sp_data_ready (char *b, size_t s, ssize_t &discard);
-	sink_result 	 _sp_dio_ready (int fd, off_t off, char *b, size_t s, ssize_t &discard);
+	sink_result 	 _sp_dio_ready (int fd, off_t off, size_t s, ssize_t &discard);
 	sink_result	 _sp_data_empty (void);
 
 	polycaller<>	 _sp_completed_callee;
@@ -271,7 +271,7 @@ struct socket_spigot : freelist_allocator<socket_spigot>, spigot {
 private:
 	sink_result _maybe_dio_send(off_t off, char *bf, size_t sz, ssize_t &disc) {
 		if (_dio)
-			return _sp_dio_ready(_diofd, off, bf, sz, disc);
+			return _sp_dio_ready(_diofd, off, sz, disc);
 		else
 			return _sp_data_ready(bf + off, sz, disc);
 	}
