@@ -5,7 +5,7 @@ if [ "asdf$1" == asdf ];then
 	exit
 fi
 
-basedir=/var/static
+basedir=/mnt/static
 htmldir=$basedir/$1
 destdir=$basedir/downloads/$1/volumes
 shift

@@ -5,29 +5,36 @@ if [ "X$2" == X ]; then
 	exit
 fi
 
-cd /var/static
 
 lang=$1
 edition=$2
+site=wikipedia
 
-dest=/var/static/downloads/$edition/$lang
+base=/mnt/static
+sitebase=$base/$site
+dest=$base/downloads/$edition/$lang
+
 mkdir -p $dest
 
 echo Finding files...
+cd $sitebase
 find $lang -name \*.html > $dest/html.lst
 
 #echo Filtering...
 #php scripts/filterNamespaces.php $lang wikipedia $dest/html.lst > $dest/reduced.lst
 
 find $lang/skins $lang/images -follow -type f \
-	-not \( -name \*.php -or -name \*.xcf -or -name .\* -or -name \*~ -or -path \*/CVS/\* \) \
+	-not \( -name \*.php -or -name \*.xcf -or -name .\* -or -name \*~ -or \
+	-path \*/CVS/\* -or -path \*/.svn\* -or -path \*/wikimania\* \) \
 	> $dest/skins.lst
 find $lang/raw -type f >> $dest/skins.lst
 echo $lang/upload/b/bc/Wiki.png >> $dest/skins.lst
 
 echo Creating HTML archive...
 rm -f $dest/wikipedia-$lang-html.7z
-7z -l a $dest/wikipedia-$lang-html.7z @$dest/html.lst @$dest/skins.lst
+
+# Set chunk size to 8MB for faster random access
+7z -l -ms8m a $dest/wikipedia-$lang-html.7z @$dest/html.lst @$dest/skins.lst
 
 #if [ ! -e $dest/wikipedia-$lang-reduced.7z ];then
 #	echo

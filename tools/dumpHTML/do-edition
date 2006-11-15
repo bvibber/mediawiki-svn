@@ -1,0 +1,81 @@
+#!/usr/bin/python
+import sys, os, socket, signal, time, stat
+
+base = "/mnt/static"
+scripts = base + "/scripts"
+
+if len(sys.argv) < 2:
+	print "Usage: do-edition <edition>"
+	sys.exit(1)
+
+edition = sys.argv[1]
+
+threads = {
+	"localhost": 1
+	#"srv42": 4,
+	#"srv122": 2,
+	#"srv123": 2,
+	#"srv124": 2,
+	#"srv125": 2
+}
+
+# Create some directories
+try: os.makedirs(base + "/logs")
+except: pass
+try: os.makedirs(base + "/checkpoints")
+except: pass
+
+# Start queue server
+print "Starting queue server"
+queueServer = os.fork()
+if 0 == queueServer:
+	# Run it in a new group so that its precious finishlang children don't get hurt
+	os.setsid()
+	os.execlp("python", "python", scripts+"/netqueue.py")
+	sys.exit(1)
+
+# Wait for it to start up
+queueSock = socket.socket()
+while queueSock.connect_ex(("localhost", 8200)):
+	time.sleep(0.1)
+
+
+# Start slave threads
+slaves = []
+for host, number in threads.iteritems():
+	for i in range(number):
+		print "Starting thread %d on host %s" % (i, host)
+		pid = os.fork()
+		if pid == 0:
+			# Redirect stdout
+			os.close(1)
+			fd = os.open("%s/logs/%s-%d.out" % (base, host, i), os.O_WRONLY|os.O_CREAT|os.O_APPEND, 0666)
+			os.dup2(fd, 1)
+
+			# Redirect stderr
+			os.close(2)
+			fd = os.open("%s/logs/%s-%d.err" % (base, host, i), os.O_WRONLY|os.O_CREAT|os.O_APPEND, 0666)
+			os.dup2(fd, 2)
+			
+			if host == "localhost":
+				#os.execlp("php", "php", "-n", scripts+"/queueSlave.php", socket.gethostname(), "8200", base)
+				os.execlp("python", "python", scripts+"/queueSlave", socket.gethostname(), "8200", base)
+				sys.exit(1)
+			else:
+				#os.execlp("ssh", "ssh", host, "php", "-n", scripts+"/queueSlave.php", socket.gethostname(), "8200", base)
+				os.execlp("ssh", "ssh", host, "python", scripts+"/queueSlave", socket.gethostname(), "8200", base)
+				sys.exit(1)
+		slaves.append(pid)
+
+# Start controller, wait for it to exit
+print "Starting controller"
+try:
+	os.spawnlp(os.P_WAIT, "php", "php", "-n", "queueController.php", edition)
+	print "Controller has exited, all done\n"
+except KeyboardInterrupt:
+	pass
+
+
+# All done, kill queue server
+os.kill(queueServer, signal.SIGKILL)
+

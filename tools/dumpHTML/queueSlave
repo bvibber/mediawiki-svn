@@ -1,0 +1,56 @@
+#!/usr/bin/python
+
+import sys,os,signal,socket,re,time
+
+queueHost = sys.argv[1]
+queuePort = int(sys.argv[2])
+baseDir = sys.argv[3]
+siteDir = baseDir+"/wikipedia"
+
+queueSock = socket.socket()
+queueSock.connect((queueHost, queuePort))
+queueFile = queueSock.makefile()
+
+os.chdir("/home/wikipedia/common/php-1.5/maintenance")
+waiting = False
+
+dataRegex = re.compile("data ([a-z_-]+) (\d+/\d+)")
+
+# Loop until the parent exits
+while (os.getppid() > 1):
+	queueFile.write("deq\n")
+	queueFile.flush()
+	s = queueFile.readline()
+	m = dataRegex.match(s)
+	if m != None:
+		waiting = False
+		wiki = m.group(1)
+		slice = m.group(2)
+		print "-------------------------------------------------------------------"
+		print wiki + ' ' + slice
+		print "-------------------------------------------------------------------"
+		checkpoint = baseDir+"/checkpoints/"+wiki+"_" + slice.replace( '/', '_' )
+		lang = wiki.replace( 'wiki', '' )
+		dest = siteDir+"/"+lang+"-new"
+		pid = os.spawnlp(os.P_NOWAIT, "nice", "nice", "-n15", 
+			"php","-n","dumpHTML.php",wiki,#"--force-copy",
+			"--image-snapshot","--interlang","-d",dest,"--slice",slice,
+			"--checkpoint",checkpoint,"--no-overwrite")
+		
+		# Wait for the child to exit (or the parent)
+		status = os.waitpid(pid, os.WNOHANG)
+		while status == (0,0) and os.getppid() > 1:
+			time.sleep(5)
+			status = os.waitpid(pid, os.WNOHANG)
+
+		# If the parent exited, then kill the child
+		if status == (0,0):
+			os.kill(pid, signal.SIGKILL)
+
+	else:
+		if not waiting:
+			print "Waiting..."
+			waiting = True
+		time.sleep(5)
+
+
