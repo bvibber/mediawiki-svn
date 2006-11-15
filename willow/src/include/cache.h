@@ -49,6 +49,14 @@ struct cachedentity {
 		WDEBUG((WLOG_DEBUG, format("set_complete: void=%d") % _void));
 		if (_void)
 			return;
+		if (!_headers.find("content-length") && !_headers.find("transfer-encoding")) {
+		char	lenstr[64];
+			snprintf(lenstr, sizeof lenstr, "%lu", 
+				(unsigned long) _data.size());
+			_headers.add("Content-Length", lenstr);
+		}
+		_builthdrs = _headers.build();
+		_builtsz = _headers.length();
 		_complete = true;
 	}
 
@@ -58,8 +66,8 @@ struct cachedentity {
 
 	void store_headers(header_list const &h) {
 		_headers = h;
-		_builthdrs = _headers.build();
-		_builtsz = _headers.length();
+		_headers.add("X-Cache", cache_hit_hdr);
+		_headers.add("Via", via_hdr);
 	}
 
 	time_t lastuse(void) const {

@@ -24,6 +24,9 @@ void whttp_reconfigure(void);
 
 extern const char *request_string[];
 extern char my_hostname[];
+extern char *cache_miss_hdr;
+extern char *cache_hit_hdr;
+extern char via_hdr[];
 
 enum http_version {
 	http10,

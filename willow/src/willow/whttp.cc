@@ -80,9 +80,9 @@ static const char *error_files[] = {
 static void *client_thread(void *);
 static void stats_merge(int, short, void *);
 
-static char via_hdr[1024];
-static char *cache_hit_hdr;
-static char *cache_miss_hdr;
+char via_hdr[1024];
+char *cache_hit_hdr;
+char *cache_miss_hdr;
 
 tss<event> merge_ev;
 
@@ -600,6 +600,9 @@ httpcllr::backend_read_headers_done(void)
 	if (_header_parser->_force_keepalive) {
 		_backend_headers->_headers.add("Keep-Alive", "300");
 	}
+
+	_backend_headers->_headers.add("X-Cache", cache_miss_hdr);
+	_backend_headers->_headers.add("Via", via_hdr);
 
 	/*
 	 * Send the headers to the client.
