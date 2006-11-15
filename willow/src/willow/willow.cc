@@ -35,7 +35,7 @@
 #include "format.h"
 
 static void stats_init(void);
-
+static int pagesize;
 static const char *progname;
 
 tss<vector<pta_block *>, ptdealloc> ptfreelist;
@@ -111,7 +111,8 @@ char	*cfg = NULL;
 char	*dval;
 
 	progname = argv[0];
-	
+	pagesize = sysconf(_SC_PAGESIZE);
+
 	while ((i = getopt(argc, argv, "fvc:D:h")) != -1) {
 		switch (i) {
 			case 'h':
@@ -491,7 +492,7 @@ diobuf::resize(size_t newsize)
 	if (_fd != -1) {
 		munmap(_buf, _size);
 		_size = newsize;
-		_reserved = newsize + (newsize % 4096);
+		_reserved = pagesize * (newsize / pagesize + 1);
 		WDEBUG((WLOG_DEBUG, format("new size %d reserved %d") % _size % _reserved));
 		lseek(_fd, _reserved, SEEK_SET);
 		write(_fd, "", 1);
@@ -531,12 +532,12 @@ diobuf::diobuf(size_t size)
 	: _buf(0)
 	, _fd(-1)
 	, _size(0)
-	, _reserved(size + (size % 4096))
+	, _reserved(pagesize * (size / pagesize + 1))
 {
 	WDEBUG((WLOG_DEBUG, format("reserved: %d") % _reserved));
 
 	if (size == 0)
-		_reserved = size = 4096;
+		_reserved = size = pagesize;
 
 	if (!config.use_dio) {
 		_buf = new char[size];
