@@ -37,6 +37,10 @@ function wfSpecialTransaction() {
 			else
 				$transactionCount = min($transactionCount, 20);
 			
+			if (isset($_GET['roll-back']))
+				rollBackTransactions($fromTransactionId, $transactionCount, $userName);
+			
+			$wgOut->addHTML('<h1>Recent changes</h1>');
 			$wgOut->addHTML(getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName));
 			$wgOut->addHTML(getTransactionOverview($fromTransactionId, $transactionCount, $userName));
 			$wgOut->addHTML(DefaultEditor::getExpansionCss());
@@ -53,23 +57,30 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName)
 	for ($i = 1; $i <= 20; $i++)
 		$countOptions[$i] = $i;
 	
-	return getOptionPanel(array(
-		"From transaction" => 
-			getSuggest(
-				'from-transaction', 
-				'transaction', 
-				$fromTransactionId, 
-				getTransactionLabel($fromTransactionId), 
-				array(0, 2, 3)
-			),
-		"Count" => 
-			getSelect('transaction-count',
-				$countOptions,
-				$transactionCount 
-			),
-		"User name" =>
-			getTextBox('user-name', $userName)
-	)); 
+	return getOptionPanel(
+		array(
+			"From transaction" => 
+				getSuggest(
+					'from-transaction', 
+					'transaction', 
+					$fromTransactionId, 
+					getTransactionLabel($fromTransactionId), 
+					array(0, 2, 3)
+				),
+			"Count" => 
+				getSelect('transaction-count',
+					$countOptions,
+					$transactionCount 
+				),
+			"User name" =>
+				getTextBox('user-name', $userName)
+		),
+		'',
+		array(
+			"show" => "Show",
+//			"roll-back" => "Roll back"
+		)
+	); 
 }
 
 function initializeAttributes() {
@@ -180,7 +191,7 @@ function getTransactionOverview($fromTransactionId, $transactionCount, $userName
 	$restrictions = array("transaction_id <= $fromTransactionId");
 	
 	if ($userName != "")
-		$restrictions[] = "EXISTS (SELECT user_name FROM user WHERE user.user_id=transactions.user_id)"; 
+		$restrictions[] = "EXISTS (SELECT user_name FROM user WHERE user.user_id=transactions.user_id AND user.user_name='" . $userName . "')"; 
 
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
@@ -403,11 +414,11 @@ function getUpdatedDefinedMeaningDefinitionEditor($attribute) {
 	global
 		$definedMeaningReferenceAttribute, $languageAttribute, $textAttribute, $operationAttribute;
 	
-	$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(false), false, false, false, null);
-	$editor->addEditor(new DefinedMeaningReferenceEditor($definedMeaningReferenceAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new TextEditor($textAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new TextEditor($operationAttribute, new SimplePermissionController(false), false));
+	$editor = createTableViewer($attribute);
+	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
+	$editor->addEditor(createLanguageViewer($languageAttribute));
+	$editor->addEditor(createLongTextViewer($textAttribute));
+	$editor->addEditor(createShortTextViewer($operationAttribute));
 	
 	return $editor;
 }
@@ -416,11 +427,11 @@ function getUpdatedSyntransesEditor($attribute) {
 	global
 		$definedMeaningReferenceAttribute, $expressionAttribute, $identicalMeaningAttribute, $operationAttribute;
 		
-	$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(false), false, false, false, null);
-	$editor->addEditor(new DefinedMeaningReferenceEditor($definedMeaningReferenceAttribute, new SimplePermissionController(false), false));
+	$editor = createTableViewer($attribute);
+	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
 	$editor->addEditor(getExpressionTableCellEditor($expressionAttribute));
 	$editor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(false), false, false));
-	$editor->addEditor(new TextEditor($operationAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(createShortTextViewer($operationAttribute));
 	
 	return $editor;
 }
@@ -429,11 +440,11 @@ function getUpdatedRelationsEditor($attribute) {
 	global
 		$firstMeaningAttribute, $relationTypeAttribute, $secondMeaningAttribute, $operationAttribute;
 		
-	$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(false), false, false, false, null);
-	$editor->addEditor(new DefinedMeaningReferenceEditor($firstMeaningAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new DefinedMeaningReferenceEditor($secondMeaningAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new TextEditor($operationAttribute, new SimplePermissionController(false), false));
+	$editor = createTableViewer($attribute);
+	$editor->addEditor(createDefinedMeaningReferenceViewer($firstMeaningAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($relationTypeAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($secondMeaningAttribute));
+	$editor->addEditor(createShortTextViewer($operationAttribute));
 	
 	return $editor;
 }
@@ -442,10 +453,10 @@ function getUpdatedClassMembershipEditor($attribute) {
 	global
 		$classAttribute, $classMemberAttribute, $operationAttribute;
 		
-	$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(false), false, false, false, null);
-	$editor->addEditor(new ClassReferenceEditor($classAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new DefinedMeaningReferenceEditor($classMemberAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new TextEditor($operationAttribute, new SimplePermissionController(false), false));
+	$editor = createTableViewer($attribute);
+	$editor->addEditor(createDefinedMeaningReferenceViewer($classAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($classMemberAttribute));
+	$editor->addEditor(createShortTextViewer($operationAttribute));
 	
 	return $editor;
 }
@@ -454,13 +465,17 @@ function getUpdatedCollectionMembershipEditor($attribute) {
 	global
 		$collectionMeaningAttribute, $collectionMemberAttribute, $sourceIdentifierAttribute, $operationAttribute;
 		
-	$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(false), false, false, false, null);
-	$editor->addEditor(new CollectionReferenceEditor($collectionMeaningAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new DefinedMeaningReferenceEditor($collectionMemberAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new ShortTextEditor($sourceIdentifierAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new TextEditor($operationAttribute, new SimplePermissionController(false), false));
+	$editor = createTableViewer($attribute);
+	$editor->addEditor(createDefinedMeaningReferenceViewer($collectionMeaningAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($collectionMemberAttribute));
+	$editor->addEditor(createShortTextViewer($sourceIdentifierAttribute));
+	$editor->addEditor(createShortTextViewer($operationAttribute));
 	
 	return $editor;
+}
+
+function rollBackTransactions($fromTransactionId, $transactionCount, $userName) {
+	
 }
 
 ?>

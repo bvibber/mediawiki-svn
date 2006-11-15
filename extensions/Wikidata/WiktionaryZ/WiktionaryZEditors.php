@@ -289,4 +289,24 @@ function getDefinedMeaningEditor($showRecordLifeSpan) {
 	return $definedMeaningEditor;
 }
 
+function createTableViewer($attribute) {
+	return new RecordSetTableEditor($attribute, new SimplePermissionController(false), false, false, false, null);
+}
+
+function createLanguageViewer($attribute) {
+	return new LanguageEditor($attribute, new SimplePermissionController(false), false);
+}
+
+function createLongTextViewer($attribute) {
+	return new TextEditor($attribute, new SimplePermissionController(false), false);
+}
+
+function createShortTextViewer($attribute) {
+	return new ShortTextEditor($attribute, new SimplePermissionController(false), false);
+}
+
+function createDefinedMeaningReferenceViewer($attribute) {
+	return new DefinedMeaningReferenceEditor($attribute, new SimplePermissionController(false), false);
+}
+
 ?>

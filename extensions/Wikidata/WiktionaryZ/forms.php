@@ -96,7 +96,7 @@ function getSubmitButton($name, $value) {
 	return '<input type="submit" name="'. $name .'" value="'. $value .'"/>'; 	
 }
 
-function getOptionPanel($fields, $action = '') {
+function getOptionPanel($fields, $action = '', $buttons = array("show" => "Show")) {
 	global 
 		$wgTitle;
 
@@ -112,8 +112,13 @@ function getOptionPanel($fields, $action = '') {
 	foreach($fields as $caption => $field) 
 		$result .= '<tr><th>' . $caption . ':</th><td class="option-field">' . $field . '</td></tr>';
 
+	$buttonHTML = "";
+	
+	foreach ($buttons as $name => $caption)
+		$buttonHTML .= getSubmitButton($name, $caption);
+	
 	$result .=
-					'<tr><th/><td>' . getSubmitButton("show","Show") . '</td></tr>' .
+					'<tr><th/><td>' . $buttonHTML . '</td></tr>' .
 				'</table>' .
 			'</form>' .
 		'</div>';
