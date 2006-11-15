@@ -62,6 +62,10 @@ struct cachedentity {
 		_builtsz = _headers.length();
 	}
 
+	time_t lastuse(void) const {
+		return _lastuse;
+	}
+
 private:
 	friend struct httpcache;
 	friend struct caching_filter;
@@ -108,7 +112,7 @@ private:
 	struct lru_comparator {
 		bool operator() (entmap::iterator a,
 				 entmap::iterator b) const {
-			return a->second->_lastuse < b->second->_lastuse;
+			return a->second->lastuse() < b->second->lastuse();
 		}
 	};
 
