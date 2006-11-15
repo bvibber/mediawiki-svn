@@ -216,7 +216,6 @@ header::move(header &other)
 	 * The other header is static, just copy the string.
 	 */
 	if (!other.hr_allocd) {
-std::cout<<"moving unallocated header\n";
 		if (hr_allocd) {
 			alloc.deallocate(hr_name, hr_allocd);
 			hr_allocd = 0;
@@ -228,7 +227,7 @@ std::cout<<"moving unallocated header\n";
 		strcpy(hr_value, other.hr_value);
 		return;
 	}
-std::cout<<"moving allocated header\n";
+
 	/*
 	 * The other header is allocd, steal its buffer.
 	 */
@@ -312,7 +311,6 @@ size_t	nbufsz = curnlen + curvlen + 4 + len;
 void
 header_list::remove(const char *name)
 {
-std::cout<<"remove ["<<name<<"] s="<<hl_hdrs.size()<<" len="<<hl_len<<"\n";
 vector<header *, pt_allocator<header *> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
 		if (strcasecmp((*it)->hr_name, name))
@@ -320,7 +318,6 @@ vector<header *, pt_allocator<header *> >::iterator	it, end;
 		hl_len -= strlen((*it)->hr_name) + strlen((*it)->hr_value) + 4;
 		(*it)->move(**hl_hdrs.rbegin());
 		hl_hdrs.pop_back();
-std::cout<<"now sz="<<hl_hdrs.size()<<" len="<<hl_len<<"\n";
 		return;
 	}
 	
@@ -367,7 +364,6 @@ size_t	 buflen = 0;
 vector<header *, pt_allocator<header *> >::iterator	it, end;
 	for (it = hl_hdrs.begin(), end = hl_hdrs.end(); it != end; ++it) {
 	int	incr;
-std::cout<<(format("build [%s]=[%s]\n")%(*it)->hr_name%(*it)->hr_value).str();
 		incr = strlen((*it)->hr_name);
 		memcpy(buf + buflen, (*it)->hr_name, incr);
 		buflen += incr;

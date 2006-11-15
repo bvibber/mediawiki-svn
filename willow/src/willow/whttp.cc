@@ -662,7 +662,6 @@ bool	cache = false;
 		 * If we're caching, always dechunk.
 		 */
 		if (_backend_headers->_flags.f_chunked) {
-std::cout<<"dechunk\n";
 			_dechunking_filter = new dechunking_filter;
 			_chunking_filter = new chunking_filter;
 			*_backend_spigot >> *_dechunking_filter >> *_cache_filter 

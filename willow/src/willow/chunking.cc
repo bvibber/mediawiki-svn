@@ -61,7 +61,6 @@ char const	*rn;
 int		 i;
 ssize_t		 s;
 	while (len) {
-std::cout<<"dechunk: buf=["<<string(buf, buf + len).substr(0, 10)<<"]\n";
 		switch (_state) {
 		case s_start:	/* expect a chunk, <digits>\r\n */
 			if ((rn = header_parser::find_rn(buf, buf + len)) == NULL) {
@@ -76,7 +75,6 @@ std::cout<<"dechunk: buf=["<<string(buf, buf + len).substr(0, 10)<<"]\n";
 			if (i + strlen(_cbuf) > 15)
 				return io::sink_result_error;
 			strncat(_cbuf, buf, i);
-std::cout<<"got chunk size ["<<_cbuf<<"]\n";
 			_current_chunk_size = str16toint(_cbuf, strlen(_cbuf));
 			discard += i + 2;
 			len -= i + 2;
@@ -93,7 +91,6 @@ std::cout<<"got chunk size ["<<_cbuf<<"]\n";
 		case s_data:	/* expect to read _current_chunk_size bytes */
 			s = min((ssize_t)len, _current_chunk_size);			
 			_current_chunk_size -= s;
-std::cout<<"queue: "<<s<<" ["<<string(buf, buf + s).substr(0, 10)<<"\n";
 			_buf.add(buf, s, false);
 			discard += s;
 			len -= s;
@@ -115,7 +112,6 @@ std::cout<<"queue: "<<s<<" ["<<string(buf, buf + s).substr(0, 10)<<"\n";
 			len--;
 			buf++;
 			discard++;
-std::cout<<"got end of chunk\n";
 			_state = s_start;
 			break;
 		case s_trailers:
@@ -132,7 +128,6 @@ std::cout<<"got end of chunk\n";
 			len--;
 			buf++;
 			discard++;
-std::cout<<"got end of buf\n";
 			return io::sink_result_finished;
 		}
 	}
