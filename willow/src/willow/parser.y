@@ -62,8 +62,8 @@ time_t conf_find_time(string const &name)
 
   for (i = 0; conf_times[i].name; i++)
     {
-      if (conf_times[i].name ==name ||
-	  (conf_times[i].plural && conf_times[i].plural == name))
+      if (!strcasecmp(conf_times[i].name, name.c_str()) ||
+	  (conf_times[i].plural && !strcasecmp(conf_times[i].plural, name.c_str())))
 	return conf_times[i].val;
     }
 

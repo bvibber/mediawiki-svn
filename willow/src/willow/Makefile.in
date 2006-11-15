@@ -3,19 +3,19 @@ BINDIR = @bindir@
 CPPFLAGS = -I../include
 
 BASESRCS =	 		\
-	willow.cc 		\
+	cache.cc		\
+	chunking.cc		\
+	confparse.cc		\
+	flowio.cc		\
+	format.cc		\
+	radix.cc		\
+	wbackend.cc		\
 	wconfig.cc		\
 	whttp.cc		\
-	chunking.cc		\
-	wbackend.cc		\
-	wcache.cc		\
-	confparse.cc		\
-	wnet.cc			\
-	wlog.cc			\
 	whttp_header.cc		\
-	radix.cc		\
-	format.cc		\
-	flowio.cc
+	willow.cc 		\
+	wlog.cc			\
+	wnet.cc			\
 
 OBJS=	$(BASESRCS:.cc=.o)
 

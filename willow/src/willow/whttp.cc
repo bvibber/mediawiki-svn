@@ -48,11 +48,11 @@ using std::endl;
 #include "wlogwriter.h"
 #include "whttp_entity.h"
 #include "wlog.h"
-#include "wcache.h"
 #include "radix.h"
 #include "chunking.h"
 #include "flowio.h"
 #include "format.h"
+#include "cache.h"
 
 using namespace wnet;
 
@@ -164,6 +164,9 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	error_transform_filter		*_error_filter;
 	chunking_filter			*_chunking_filter;
 	io::size_limiting_filter	*_size_limit;
+	cachedentity			*_cachedent;
+	caching_filter			*_cache_filter;
+	cached_spigot			*_cache_spigot;
 
 	backend_list	*_blist;
 	bool		 _denied;
@@ -193,6 +196,9 @@ httpcllr::httpcllr(wsocket *s, int gr)
 	, _error_filter(NULL)
 	, _chunking_filter(NULL)
 	, _size_limit(NULL)
+	, _cachedent(NULL)
+	, _cache_filter(NULL)
+	, _cache_spigot(NULL)
 	, _blist(NULL)
 	, _denied(false)
 	, _group(gr)
@@ -265,6 +271,13 @@ bool	can_keepalive = false;
 	_size_limit = NULL;
 	delete _header_parser;
 	_header_parser = NULL;
+	delete _cache_filter;
+	_cache_filter = NULL;
+	delete _cache_spigot;
+	_cache_spigot = NULL;
+	if (_cachedent)
+		entitycache.release(_cachedent);
+	_cachedent = NULL;
 
 	/*
 	 * Return the backend to the keepalive pool, if we can.
@@ -331,6 +344,41 @@ httpcllr::header_read_complete(void)
 	}
 
 	_client_spigot->sp_disconnect();
+
+	/*
+	 * See if this entity has been cached.
+	 */
+	if (_header_parser->_http_reqtype != REQTYPE_POST) {
+	bool	created = false;
+	string	url = format("http://%s%s") % _header_parser->_http_host
+			% _header_parser->_http_path;
+		_cachedent = entitycache.find_cached(imstring(url), true, created);
+		if (_cachedent && _cachedent->complete()) {
+			/* yes - complete object is available */
+			_cache_spigot = new cached_spigot(_cachedent);
+			if (_header_parser->_force_keepalive)
+				_cache_spigot->keepalive(true);
+
+			if (!_client_sink)
+				_client_sink = new io::socket_sink(_client_socket);
+			_client_socket->cork();
+			_cache_spigot->error_callee(this, &httpcllr::send_body_to_client_error);
+			_cache_spigot->completed_callee(this, &httpcllr::send_body_to_client_done);
+			_cache_spigot->sp_connect(_client_sink);
+			_cache_spigot->sp_uncork();
+			return;
+		}
+
+		/*
+		 * If the entity already exists but is not complete, we don't care
+		 * about it.
+		 */
+		if (_cachedent && !created && !_cachedent->complete()) {
+			entitycache.release(_cachedent);
+			_cachedent = NULL;
+		}
+	}
+
 map<string,int>::iterator	it;
 map<imstring,int>::iterator	mit;
 pair<bool, uint16_t> acheck;
@@ -469,7 +517,6 @@ void
 httpcllr::backend_write_headers_done(void)
 {
 	if (_header_parser->_http_reqtype == REQTYPE_POST) {
-std::cout<<"POST "<<_header_parser->_content_length<<" bytes\n";
 		/*
 		 * Connect the client to the backend and read the POST data.
 		 */
@@ -515,7 +562,6 @@ httpcllr::backend_read_headers_done(void)
 	 * Check for X-Willow-Follow-Redirect header, which means we should
 	 * follow the redirect.
 	 */
-
 	if (config.x_follow &&
 	    _backend_headers->_follow_redirect &&
 	    _backend_headers->_location.size() &&
@@ -528,6 +574,15 @@ httpcllr::backend_read_headers_done(void)
 
 		start_backend_request(_backend_headers->_location);
 		return;
+	}
+
+	/*
+	 * If we're caching this entity, store the headers.
+	 */
+	if (_cachedent) {
+	string	status = format("HTTP/1.1 %s\r\n") % _backend_headers->_http_path;
+		_cachedent->store_status(status);
+		_cachedent->store_headers(_backend_headers->_headers);
 	}
 
 	if (_backend_headers->_content_length == -1 && !_backend_headers->_flags.f_chunked
@@ -572,11 +627,20 @@ httpcllr::backend_read_headers_error(void)
 void
 httpcllr::send_headers_to_client_done(void)
 {
+bool	cache = false;
 	/*
 	 * Now connect the backend directly to the client.
 	 */ 
 	_backend_spigot->error_callee(this, &httpcllr::send_body_to_client_error);
 	_backend_spigot->completed_callee(this, &httpcllr::send_body_to_client_done);
+
+	/*
+	 * See if we can cache this entity.
+	 */
+	if (_cachedent) {
+		cache = true;
+		_cache_filter = new caching_filter(_cachedent);
+	}
 
 	/*
 	 * If the server is sending chunked data and the client is
@@ -593,7 +657,11 @@ httpcllr::send_headers_to_client_done(void)
 	if (_backend_headers->_flags.f_chunked && _header_parser->_http_vers == http10) {
 		_dechunking_filter = new dechunking_filter;
 		_backend_spigot->sp_connect(_dechunking_filter);
-		_dechunking_filter->sp_connect(_client_sink);
+		if (cache) {
+			_dechunking_filter->sp_connect(_cache_filter);
+			_cache_filter->sp_connect(_client_sink);
+		} else
+			_dechunking_filter->sp_connect(_client_sink);
 	} else if (_backend_headers->_content_length == -1 && !_backend_headers->_flags.f_chunked
 		   && _header_parser->_http_vers == http11 && !(config.msie_hack && _header_parser->_is_msie)) {
 		/*
@@ -602,12 +670,20 @@ httpcllr::send_headers_to_client_done(void)
 		 * didn't send enough data.
 		 */
 		_chunking_filter = new chunking_filter;
-		_backend_spigot->sp_connect(_chunking_filter);
+		if (cache) {
+			_backend_spigot->sp_connect(_cache_filter);
+			_cache_filter->sp_connect(_chunking_filter);
+		} else
+			_backend_spigot->sp_connect(_chunking_filter);
 		_chunking_filter->sp_connect(_client_sink);
 	} else if (_backend_headers->_flags.f_chunked && config.msie_hack && _header_parser->_is_msie) {
 		_dechunking_filter = new dechunking_filter;
 		_backend_spigot->sp_connect(_dechunking_filter);
-		_dechunking_filter->sp_connect(_client_sink);
+		if (cache) {
+			_dechunking_filter->sp_connect(_cache_filter);
+			_cache_filter->sp_connect(_client_sink);
+		} else
+			_dechunking_filter->sp_connect(_client_sink);
 	} else {
 		/*
 		 * For a keep-alive request, we need a size limiting filter to prevent
@@ -617,9 +693,17 @@ httpcllr::send_headers_to_client_done(void)
 			delete _size_limit;
 			_size_limit = new io::size_limiting_filter(_backend_headers->_content_length);
 			_backend_spigot->sp_connect(_size_limit);
-			_size_limit->sp_connect(_client_sink);
+			if (cache) {
+				_size_limit->sp_connect(_cache_filter);
+				_cache_filter->sp_connect(_client_sink);
+			} else
+				_size_limit->sp_connect(_client_sink);
 		} else {
-			_backend_spigot->sp_connect(_client_sink);
+			if (cache) {
+				_backend_spigot->sp_connect(_cache_filter);
+				_cache_filter->sp_connect(_client_sink);
+			} else
+				_backend_spigot->sp_connect(_client_sink);
 		}
 		_client_sink->_counter = 0;
 	}

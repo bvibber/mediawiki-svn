@@ -471,7 +471,7 @@ struct size_limiting_filter : sink, spigot, freelist_allocator<size_limiting_fil
 			return res;
 
 		if (_left == 0)
-			return sink_result_finished;
+			return _sp_sink->data_empty();
 		return res;		
 	}
 
@@ -485,7 +485,7 @@ struct size_limiting_filter : sink, spigot, freelist_allocator<size_limiting_fil
 			return res;
 
 		if (_left == 0)
-			return sink_result_finished;
+			return _sp_sink->data_empty();
 		return res;		
 	}
 

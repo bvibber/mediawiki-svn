@@ -58,10 +58,6 @@ extern struct configuration {
 	bool		 udp_log;
 	string		 udplog_host;
 	int		 udplog_port;
-struct	cachedir	*caches;
-	int		 ncaches;
-	time_t		 cache_expevery;
-	int		 cache_expthresh;
 	string		 suid, sgid;
 	bool		 compress;
 	int		 complevel;
@@ -78,6 +74,8 @@ struct	cachedir	*caches;
 	bool		 x_follow;
 	int		 max_redirects;
 	bool		 use_dio;
+	long		 cache_memory;
+	long		 max_entity_size;
 	vector<pair<string, string> >		 stats_hosts;
 } config;
 

@@ -116,15 +116,27 @@ struct atomic {
 		v ^= o;
 		return *this;
 	}
-	atomic &operator++ (void) {
+	atomic &operator++ (void) {	/* prefix */
 		HOLDING(m);
 		v++;
 		return *this;
 	}
-	T operator++ (int) {
-	atomic	u (*this);
-		u.v++;
-		return u;
+	T operator++ (int) {	/* postfix */
+		HOLDING(m);
+	T	u = v;
+		v++;
+		return v;
+	}
+	atomic &operator-- (void) {
+		HOLDING(m);
+		v--;
+		return *this;
+	}
+	T operator-- (int) {
+		HOLDING(m);
+	T	u = v;
+		v--;
+		return v;
 	}
 };
 
@@ -217,6 +229,7 @@ T1 operator ! (atomic<T1> const &v1) {
 	HOLDING(v1.m);
 	return !v1.v;
 }
+
 template<typename T1>
 T1 operator ~ (atomic<T1> const &v1) {
 	HOLDING(v1.m);

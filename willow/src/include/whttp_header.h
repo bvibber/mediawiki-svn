@@ -122,6 +122,13 @@ struct header_list {
 	char	*build		(void);
 
 	/*
+	 * Return the length of the string build() would return.
+	 */
+	int	 length		(void) const {
+		return hl_len;
+	}
+
+	/*
 	 * Find a specific header in the list.  Returns NULL if no such header
 	 * exists.
 	 */

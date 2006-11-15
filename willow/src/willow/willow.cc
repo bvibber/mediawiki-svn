@@ -71,7 +71,6 @@ usage(void)
 	fprintf(stderr, "usage: %s [-hfzv] [-D cond[=value]]\n"
 "      -h                    print this message\n"
 "      -f                    run in foreground (don't detach)\n"
-"      -z                    create cache directory structure and exit\n"
 "      -v                    print version number and exit\n"
 "      -D cond[=value]       set 'cond' to 'value' (which should be 'true' or\n"
 "                            'false') in the configuration parser.  if 'value'\n"
@@ -104,20 +103,16 @@ int
 main(int argc, char *argv[])
 {
 int	 i;
-int	 zflag = 0;
 char	*cfg = NULL;
 char	*dval;
 
 	progname = argv[0];
 	
-	while ((i = getopt(argc, argv, "fzvc:D:h")) != -1) {
+	while ((i = getopt(argc, argv, "fvc:D:h")) != -1) {
 		switch (i) {
 			case 'h':
 				usage();
 				return 0;
-			case 'z':
-				zflag++;
-			/*FALLTHRU*/
 			case 'f':
 				config.foreground = 1;
 				break;
@@ -186,16 +181,11 @@ char	*dval;
 	}
 
 	wlog_init();
-	if (zflag) {
-		wcache_setupfs();
-		exit(0);
-	}
 
 	make_event_base();
 	ioloop = new ioloop_t;		
 	checkexit_sched();
 	whttp_init();
-	wcache_init(1);
 	stats_init();
 
 	wlog(WLOG_NOTICE, "running");
@@ -206,7 +196,6 @@ char	*dval;
 	ioloop->run();
 	wlog(WLOG_NOTICE, "shutting down");
 	wlog_close();
-	wcache_shutdown();
 	whttp_shutdown();
 
 	pthread_exit(NULL);	

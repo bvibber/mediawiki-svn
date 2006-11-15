@@ -155,20 +155,6 @@ set_log_facility(tree_entry &, value &)
 {
 }
 
-static void
-set_cache(tree_entry &e)
-{
-value	*v;
-	v = e/"size";
-	config.caches = (cachedir *)wrealloc(config.caches, sizeof(*config.caches) * (config.ncaches + 1));
-	config.caches[config.ncaches].dir = wstrdup(e.item_key.c_str());
-	config.caches[config.ncaches].maxsize = v->cv_values[0].av_intval;
-	wlog(WLOG_NOTICE, format("cache dir \"%s\", size %d bytes")
-			% config.caches[config.ncaches].dir
-			% config.caches[config.ncaches].maxsize);
-	config.ncaches++;
-}
-
 static bool
 v_udp_log(tree_entry &e, value &v)
 {
@@ -377,8 +363,8 @@ conf
 		.value("udp-host",	nonempty_qstring,		set_string(config.udplog_host))
 
 	.block("cache")
-		.value("expire-every",		simple_time,		set_time(config.cache_expevery))
-		.value("expire-threshold",	simple_range(0, 100),	set_int(config.cache_expthresh))
+		.value("cache-memory",		simple_time,		set_long(config.cache_memory))
+		.value("max-entity-size",	simple_time,		set_long(config.max_entity_size))
 
 	.block("http")
 		.value("compress",		simple_yesno,		set_yesno(config.compress))
@@ -404,10 +390,6 @@ conf
 		.value("allow",		func(radix_prefix),		func(stats_access))
 		.value("enable",	simple_yesno,			set_yesno(config.udp_stats))
 		.value("listen",	ip_address_list,		add_ip(config.stats_hosts))
-
-	.block("cache-dir", require_name)
-		.end(func(set_cache))
-		.value("size", simple_time, ignore)
 
 	.block("listen", require_name)
 		.end(func(set_listen))
@@ -453,6 +435,7 @@ conf
 	config.max_redirects = 1;
 	config.use_dio = false;
 	config.x_follow = false;
+	config.cache_memory = 0;
 
 	conf.set(*t);
 	whttp_reconfigure();

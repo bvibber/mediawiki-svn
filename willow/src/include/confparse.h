@@ -226,6 +226,7 @@ struct simple_value : callable<bool> {
 typedef simple_value<cv_int> simple_int_t;
 typedef simple_value<cv_yesno> simple_yesno_t;
 typedef simple_value<cv_time> simple_time_t;
+
 extern simple_int_t simple_int;
 extern simple_yesno_t simple_yesno;
 extern simple_time_t simple_time;
@@ -332,6 +333,7 @@ typedef set_astring		set_qstring;
 typedef set_simple<time_t>	set_time;
 typedef set_simple<bool>	set_yesno;
 typedef set_simple<int>		set_int;
+typedef set_simple<long>	set_long;
 typedef set_simple<atomic<time_t> >	set_atime;
 typedef set_simple<atomic<bool> >	set_abool;
 typedef set_simple<atomic<int> >	set_aint;

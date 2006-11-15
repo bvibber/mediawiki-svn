@@ -131,13 +131,20 @@ server {
  */
 cache {
 	/*
-	 * Every expire_every seconds, the oldest expire_threshold%
-	 * objects will be removed from the cache, using an LRU
-	 * algorithm.  This only occurs if the cache is more than
-	 * (100 - expire_theshold)% full.
+	 * How much memory to reserve for entity caching.  Once this
+	 * much memory has been used, old objects will be removed from
+	 * the cache to make room for new ones.
+	 *
+	 * Set to 0 to disable caching.
 	 */
-	expire-every = 1 hour;
-	expire-threshold = 5;
+	cache-memory = 5MB;
+
+	/*
+	 * The largest object to cache.  An object larger than this
+	 * will never be cached.  Set to 0 (the default) to cache
+	 * objects of any size up to cache-memory.
+	 */
+	max-entity-size = 256KB;
 };
 
 /*
@@ -217,19 +224,6 @@ http {
 	 */
 	x-follow-redirect = true;
 	max-redirects = 1;
-};
-
-/*
- * For now, only one cache directory is allowed.
- * Run "willow -z" to create the initial directory.  Make sure it
- * doesn't exist first.
- *
- * If you specify no cache directories, Willow will switch to a more
- * efficient proxy-only mode.  This is most useful in combination with
- * CARP hashing in front of another cache.
- */
-cache-dir "/home/kate/mediawiki/willow/cache" {
-	size = 10 mb;
 };
 
 log {

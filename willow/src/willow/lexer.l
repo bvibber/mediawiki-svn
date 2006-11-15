@@ -150,7 +150,7 @@ from		{ conf::curpos += yyleng; return FROM; }
 			return STRING;
 		}
 {number}	{
-			yylval.number = atoi(yytext);
+			yylval.number = strtol(yytext, NULL, 0);
 			conf::curpos += yyleng;
 			return NUMBER;
 		}
