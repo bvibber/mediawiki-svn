@@ -182,7 +182,7 @@ struct cached_spigot : io::buffering_spigot {
 		if (_keepalive)
 			_buf.add(ke_header, sizeof(ke_header) - 1, false);
 		_buf.add("\r\n", 2, false);
-		_buf.add(_ent->_data.data(), _ent->_data.size(), false);
+		_buf.add(&_ent->_data[0], _ent->_data.size(), false);
 		return true;
 	}
 
