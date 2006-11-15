@@ -666,6 +666,9 @@ bool	cache = false;
 			_chunking_filter = new chunking_filter;
 			*_backend_spigot >> *_dechunking_filter >> *_cache_filter 
 				>> *_chunking_filter >> *_client_sink;
+		} else if (_backend_headers->_content_length != -1) {
+			_size_limit = new io::size_limiting_filter(_backend_headers->_content_length);
+			*_backend_spigot >> *_size_limit >> *_cache_filter >> *_client_sink;
 		} else
 			*_backend_spigot >> *_cache_filter >> *_client_sink;
 	} else if (_backend_headers->_flags.f_chunked && _header_parser->_http_vers == http10) {
