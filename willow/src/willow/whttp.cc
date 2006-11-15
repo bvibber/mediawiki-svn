@@ -585,11 +585,10 @@ httpcllr::backend_read_headers_done(void)
 		_cachedent->store_headers(_backend_headers->_headers);
 	}
 
-	if (_backend_headers->_content_length == -1 && !_backend_headers->_flags.f_chunked
-		   && _header_parser->_http_vers == http11 && !(config.msie_hack && _header_parser->_is_msie))
-		/* we will chunk the request later */
-		_backend_headers->_headers.add("Transfer-Encoding", "chunked");
-	else if (_backend_headers->_flags.f_chunked && _header_parser->_http_vers == http10)
+	/*
+	 * If the client is HTTP/1.0 or MSIE, we need to dechunk.
+	 */
+	if (_backend_headers->_flags.f_chunked && _header_parser->_http_vers == http10)
 		_backend_headers->_headers.remove("Transfer-Encoding");
 	else if (_backend_headers->_flags.f_chunked && config.msie_hack && _header_parser->_is_msie)
 		_backend_headers->_headers.remove("Transfer-Encoding");
@@ -630,7 +629,11 @@ httpcllr::backend_read_headers_error(void)
 void
 httpcllr::send_headers_to_client_done(void)
 {
-bool	cache = false;
+bool		 cache = false;
+io::spigot	*cur = _backend_spigot;
+bool		 rechunk = false;
+bool		 chunked;
+
 	/*
 	 * Now connect the backend directly to the client.
 	 */ 
@@ -645,10 +648,6 @@ bool	cache = false;
 		_cache_filter = new caching_filter(_cachedent);
 	}
 
-	/*
-	 * If the server is sending chunked data and the client is
-	 * HTTP 1.0, insert a dechunking filter.
-	 */
 	_backend_spigot->sp_disconnect();
 
 	if (_backend_headers->_response == 304 && _backend_headers->_content_length < 0) {
@@ -657,72 +656,45 @@ bool	cache = false;
 		return;
 	}
 
-	if (cache) {
-		/*
-		 * If we're caching, always dechunk.
-		 */
-		if (_backend_headers->_flags.f_chunked) {
-			_dechunking_filter = new dechunking_filter;
-			_chunking_filter = new chunking_filter;
-			*_backend_spigot >> *_dechunking_filter >> *_cache_filter 
-				>> *_chunking_filter >> *_client_sink;
-		} else if (_backend_headers->_content_length != -1) {
-			_size_limit = new io::size_limiting_filter(_backend_headers->_content_length);
-			*_backend_spigot >> *_size_limit >> *_cache_filter >> *_client_sink;
-		} else
-			*_backend_spigot >> *_cache_filter >> *_client_sink;
-	} else if (_backend_headers->_flags.f_chunked && _header_parser->_http_vers == http10) {
-		_dechunking_filter = new dechunking_filter;
-		*_backend_spigot >> *_dechunking_filter;
-		if (cache) {
-			*_dechunking_filter >> *_cache_filter >> *_client_sink;
-		} else
-			*_dechunking_filter >> *_client_sink;
-	} else if (_backend_headers->_content_length == -1 && !_backend_headers->_flags.f_chunked
-		   && _header_parser->_http_vers == http11 && !(config.msie_hack && _header_parser->_is_msie)) {
-		/*
-		 * Unchunked request without Content-Length.  Insert a chunking filter
-		 * between the backend and the client so the client at least knows if we
-		 * didn't send enough data.
-		 */
-		_chunking_filter = new chunking_filter;
-		if (cache) {
-			*_backend_spigot >> *_cache_filter >> *_chunking_filter;
-		} else
-			*_backend_spigot >> *_chunking_filter;
-		_chunking_filter->sp_connect(_client_sink);
-	} else if (_backend_headers->_flags.f_chunked && config.msie_hack && _header_parser->_is_msie) {
-		_dechunking_filter = new dechunking_filter;
-		*_backend_spigot >> *_dechunking_filter;
+	cur = _backend_spigot;
+	chunked = _backend_headers->_flags.f_chunked;
 
-		if (cache) {
-			*_dechunking_filter >> *_cache_filter >> *_client_sink;
-		} else
-			*_dechunking_filter >> *_client_sink;
-	} else {
-		/*
-		 * For a keep-alive request, we need a size limiting filter to prevent
-		 * hanging forever on the backend.
-		 */
-		if (_backend_headers->_content_length != -1) {
-			delete _size_limit;
-			_size_limit = new io::size_limiting_filter(_backend_headers->_content_length);
-			_backend_spigot->sp_connect(_size_limit);
-			if (cache) {
-				_size_limit->sp_connect(_cache_filter);
-				_cache_filter->sp_connect(_client_sink);
-			} else
-				_size_limit->sp_connect(_client_sink);
-		} else {
-			if (cache) {
-				_backend_spigot->sp_connect(_cache_filter);
-				_cache_filter->sp_connect(_client_sink);
-			} else
-				_backend_spigot->sp_connect(_client_sink);
+	/*
+	 * If the client is HTTP/1.0 or MSIE, we need to dechunk.
+	 */
+	if (chunked) {
+		if (_header_parser->_http_vers == http10 ||
+		     (config.msie_hack && _header_parser->_is_msie)) {
+			_dechunking_filter = new dechunking_filter;
+			cur = &(*cur >> *_dechunking_filter);
+		} else if (cache) {
+			_dechunking_filter = new dechunking_filter;
+			cur = &(*cur >> *_dechunking_filter);
+			rechunk = true;
 		}
-		_client_sink->_counter = 0;
 	}
 
+	/* if we got a content-length, insert a size limit */
+	if (!chunked && _backend_headers->_content_length != -1) {
+		_size_limit = new io::size_limiting_filter(
+			_backend_headers->_content_length);
+		cur = &(*cur >> *_size_limit);
+	}
+
+	/* if we're caching, insert the caching filter */
+	if (cache) {
+		cur = &(*cur >> *_cache_filter);
+		/* if we dechunked it to cache, rechunk now */
+		if (rechunk) {
+			_chunking_filter = new chunking_filter;
+			cur = &(*cur >> *_chunking_filter);
+		}
+	}
+
+	/* finally, connect to the client */
+	*cur >> *_client_sink;
+
+	_client_sink->_counter = 0;
 	_backend_spigot->sp_uncork();
 }
 
