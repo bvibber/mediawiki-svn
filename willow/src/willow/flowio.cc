@@ -225,6 +225,7 @@ sink_result
 socket_sink::dio_ready(int fd, off_t off, size_t len, ssize_t &discard)
 {
 ssize_t	wrote;
+	WDEBUG((WLOG_DEBUG, format("dio_ready: starting off %d") % off));
 	if ((wrote = _socket->sendfile(fd, &off, len)) == -1) {
 		if (errno == EAGAIN) {
 			_sink_spigot->sp_cork();
@@ -240,6 +241,9 @@ ssize_t	wrote;
 	}
 	discard += wrote;
 	_counter += wrote;
+
+	WDEBUG((WLOG_DEBUG, format("dio_ready: len %d off %d wrote %d fileoff=%d")
+		% len % off % wrote % lseek(fd, 0, SEEK_CUR)));
 
 	if ((ssize_t)len == wrote) {
 		return sink_result_okay;

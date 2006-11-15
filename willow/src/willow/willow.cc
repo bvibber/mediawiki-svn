@@ -490,12 +490,15 @@ diobuf::resize(size_t newsize)
 
 	if (_fd != -1) {
 		munmap(_buf, _size);
-		_size = _reserved = newsize;
-		lseek(_fd, _size, SEEK_SET);
+		_size = newsize;
+		_reserved = newsize + (newsize % 4096);
+		WDEBUG((WLOG_DEBUG, format("new size %d reserved %d") % _size % _reserved));
+		lseek(_fd, _reserved, SEEK_SET);
 		write(_fd, "", 1);
-		_buf = (char *)mmap(0, _size, PROT_READ | PROT_WRITE, MAP_SHARED, _fd, 0);
+		_buf = (char *)mmap(0, _reserved, PROT_READ | PROT_WRITE, MAP_SHARED, _fd, 0);
 		if (_buf == MAP_FAILED)
 			abort();
+		lseek(_fd, 0, SEEK_SET);
 	} else {
 	char	*n;
 		n = new char[newsize];
@@ -520,8 +523,10 @@ diobuf::diobuf(size_t size)
 	: _buf(0)
 	, _fd(-1)
 	, _size(0)
-	, _reserved(size)
+	, _reserved(size + (size % 4096))
 {
+	WDEBUG((WLOG_DEBUG, format("reserved: %d") % _reserved));
+
 	if (size == 0)
 		_reserved = size = 4096;
 
@@ -539,7 +544,7 @@ diobuf::diobuf(size_t size)
 	}
 	unlink(path);
 
-	if (lseek(_fd, _size, SEEK_SET) == -1) {
+	if (lseek(_fd, _reserved, SEEK_SET) == -1) {
 		wlog(WLOG_WARNING, format("seeking diobuf %s: %e") % path);
 		close(_fd);
 		_fd = -1;
@@ -563,4 +568,5 @@ diobuf::diobuf(size_t size)
 		_buf = new char[size];
 		return;
 	}
+	lseek(_fd, 0, SEEK_SET);
 }

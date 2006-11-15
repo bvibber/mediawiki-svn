@@ -323,6 +323,7 @@ struct cached_spigot : io::spigot {
 				_sp_error_callee();
 				return;
 			case io::sink_result_blocked:
+				sp_cork();
 				WDEBUG((WLOG_DEBUG, "blocked"));
 				return;
 			}
