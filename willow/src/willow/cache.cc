@@ -66,6 +66,7 @@ cachedentity *ret;
 void
 httpcache::release(cachedentity *ent)
 {
+	HOLDING(_lock);
 	if (ent->isvoid()) {
 		/* don't keep void objects around */
 		ent->deref();
@@ -75,14 +76,20 @@ httpcache::release(cachedentity *ent)
 }
 
 void
-httpcache::_remove(cachedentity *ent)
+httpcache::_remove_unlocked(cachedentity *ent)
 {
-	HOLDING(_lock);
 map<imstring, cachedentity *>::iterator it;
 	if ((it = _entities.find(ent->url())) != _entities.end()) {
 		_lru.erase(it);
 		_entities.erase(it);
 	}
+}
+
+void
+httpcache::_remove(cachedentity *ent)
+{
+	HOLDING(_lock);
+	_remove_unlocked(ent);
 }
 
 void
@@ -106,8 +113,8 @@ httpcache::cache_mem_increase(size_t n)
 			if ((it = _lru.begin()) == _lru.end())
 				return false;
 			ent = (*it)->second;
-		}
 		ent->deref();
+		}
 	}
 
 	HOLDING(_memlock);
@@ -127,9 +134,9 @@ cachedentity *ent;
 			return false;
 		}
 		ent = it->second;
+		ent->deref();
 	}
 
-	ent->deref();
 
 	return true;
 }
@@ -142,6 +149,8 @@ cachedentity::cachedentity(imstring const &url, size_t hint)
 	, _builtsz(0)
 	, _void(false)
 	, _lastuse(time(0))
+	, _expires(0)
+	, _modified(0)
 {
 	if (hint)
 		_data.reserve(hint);
@@ -149,7 +158,7 @@ cachedentity::cachedentity(imstring const &url, size_t hint)
 
 cachedentity::~cachedentity()
 {
-	entitycache._remove(this);
+	entitycache._remove_unlocked(this);
 	entitycache.cache_mem_reduce(_data.size());
 	delete[] _builthdrs;
 }
@@ -171,4 +180,14 @@ cachedentity::_append(char const *data, size_t size)
 		return;
 	}
 	_data.insert(_data.end(), data, data + size);
+}
+
+time_t
+cachedentity::parse_date(char const *date)
+{
+struct tm	tm;
+	memset(&tm, 0, sizeof(tm));
+	if (strptime(date, "%a, %d %b %Y %H:%M:%S GMT", &tm) == NULL)
+		return (time_t) -1;
+	return mktime(&tm);
 }

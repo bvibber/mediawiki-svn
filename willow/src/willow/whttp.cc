@@ -146,6 +146,7 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	void error_send_done			(void);
 
 	void send_error(int, char const *, int, char const *);
+	void send_cached(void);
 	void log_request (void);
 
 	wsocket		*_client_socket;
@@ -175,6 +176,7 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	imstring	 _request_host;
 	imstring	 _request_path;
 	int		 _nredir;
+	bool		 _validating;
 
 private:
 	httpcllr(const httpcllr &);
@@ -204,6 +206,7 @@ httpcllr::httpcllr(wsocket *s, int gr)
 	, _group(gr)
 	, _response(0)
 	, _nredir(0)
+	, _validating(false)
 {
 	/*
 	 * Check access controls.
@@ -321,6 +324,24 @@ httpcllr::~httpcllr(void)
 }
 
 void
+httpcllr::send_cached(void)
+{
+	_cache_spigot = new cached_spigot(_cachedent);
+	if (_header_parser->_force_keepalive)
+		_cache_spigot->keepalive(true);
+
+	if (!_client_sink)
+		_client_sink = new io::socket_sink(_client_socket);
+
+	_client_socket->cork();
+	_cache_spigot->error_callee(this, &httpcllr::send_body_to_client_error);
+	_cache_spigot->completed_callee(this, &httpcllr::send_body_to_client_done);
+	_cache_spigot->sp_connect(_client_sink);
+	_cache_spigot->sp_uncork();
+	return;
+}
+
+void
 httpcllr::header_read_complete(void)
 {
 	if (_denied) {
@@ -353,29 +374,32 @@ httpcllr::header_read_complete(void)
 	string	url = format("http://%s%s") % _header_parser->_http_host
 			% _header_parser->_http_path;
 		_cachedent = entitycache.find_cached(imstring(url), true, created);
-		if (_cachedent && _cachedent->complete()) {
-			/* yes - complete object is available */
-			_cache_spigot = new cached_spigot(_cachedent);
-			if (_header_parser->_force_keepalive)
-				_cache_spigot->keepalive(true);
-
-			if (!_client_sink)
-				_client_sink = new io::socket_sink(_client_socket);
-			_client_socket->cork();
-			_cache_spigot->error_callee(this, &httpcllr::send_body_to_client_error);
-			_cache_spigot->completed_callee(this, &httpcllr::send_body_to_client_done);
-			_cache_spigot->sp_connect(_client_sink);
-			_cache_spigot->sp_uncork();
-			return;
-		}
-
-		/*
-		 * If the entity already exists but is not complete, we don't care
-		 * about it.
-		 */
-		if (_cachedent && !created && !_cachedent->complete()) {
-			entitycache.release(_cachedent);
-			_cachedent = NULL;
+		if (_cachedent) {
+			if (_cachedent->complete()) {
+				/* yes - complete object is available */
+				if (_cachedent->expired()) {
+				char		 dstr[64];
+				struct tm	 tm;
+				time_t		 mod = _cachedent->modified();
+					gmtime_r(&mod, &tm);
+					/* need to revalidate */
+					_validating = true;
+					strftime(dstr, sizeof(dstr),
+						"%a, %d %b %Y %H:%M:%S GMT", &tm);
+					_header_parser->_headers.add(
+						"If-Modified-Since", dstr);
+				} else {
+					send_cached();
+					return;
+				}
+			} else if (!created) {
+				/*
+				 * If the entity already exists but is not complete, we don't care
+				 * about it.
+				 */
+				entitycache.release(_cachedent);
+				_cachedent = NULL;
+			}
 		}
 	}
 
@@ -557,6 +581,13 @@ void
 httpcllr::backend_read_headers_done(void)
 {
 	_response = _backend_headers->_response;
+
+	if (_validating && _response == 304) {
+		/* Our cached entity was still valid */
+		_cachedent->revalidated();
+		send_cached();
+		return;
+	}
 
 	/*
 	 * Check for X-Willow-Follow-Redirect header, which means we should

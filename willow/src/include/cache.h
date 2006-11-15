@@ -45,7 +45,40 @@ struct cachedentity {
 		_lastuse = time(0);
 	}
 
+	time_t modified(void) const {
+		return _modified;
+	}
+
+	time_t expires(void) const {
+		return _expires;
+	}
+
+	bool expired(void) const {
+		/*
+		 * Does the entity have an Expires: header?
+		 */
+		if (_expires)
+			return _expires < time(0);
+
+		/*
+		 * Assume it's valid if the time it was last validated is
+		 * less than 25% greater than its age.
+		 */
+		WDEBUG((WLOG_DEBUG, format("expired: now=%d, revalidating at %d")
+			% time(0) % _revalidate_at));
+		return _revalidate_at <= time(0);
+	}
+
+	void revalidated(void) {
+		/*
+		 * If the object is still valid, its lifetime can increase.
+		 */
+		_lifetime = (time(0) - _modified) * 1.25;
+		_revalidate_at = time(0) + _lifetime;
+	}
+
 	void set_complete(void) {
+	header	*h;
 		WDEBUG((WLOG_DEBUG, format("set_complete: void=%d") % _void));
 		if (_void)
 			return;
@@ -56,6 +89,32 @@ struct cachedentity {
 				(unsigned long) _data.size());
 			_headers.add("Content-Length", lenstr);
 		}
+
+		if ((h = _headers.find("Expires")) != NULL) {
+			if ((_expires = parse_date(h->value())) == -1) {
+				_expires = time(0);
+			}
+		} else {
+			_expires = 0;
+		}
+
+		if ((h = _headers.find("Last-Modified")) != NULL) {
+			if ((_modified = parse_date(h->value())) == -1) {
+				_modified = time(0);
+			}
+		} else {
+			if ((h = _headers.find("Date")) != NULL) {
+				if ((_modified = parse_date(h->value())) == -1) {
+					_modified = time(0);
+				}
+			} else {
+				_modified = time(0);
+			}
+		}
+
+		_lifetime = (time(0) - _modified) * 1.25;
+		WDEBUG((WLOG_DEBUG, format("object lifetime=%d sec.") % _lifetime));
+		revalidated();
 		_builthdrs = _headers.build();
 		_builtsz = _headers.length();
 		_complete = true;
@@ -74,6 +133,8 @@ struct cachedentity {
 	time_t lastuse(void) const {
 		return _lastuse;
 	}
+
+	static time_t parse_date(char const *date);
 
 private:
 	friend struct httpcache;
@@ -103,6 +164,7 @@ private:
 	int		 _builtsz;
 	bool		 _void;
 	time_t		 _lastuse;
+	time_t		 _expires, _modified, _lifetime, _revalidate_at;
 };
 
 struct httpcache {
@@ -128,6 +190,7 @@ private:
 	typedef multiset<entmap::iterator, lru_comparator> lruset;
 
 	void _remove(cachedentity *ent);
+	void _remove_unlocked(cachedentity *ent);
 
 	entmap		 _entities;
 	lruset		 _lru;
