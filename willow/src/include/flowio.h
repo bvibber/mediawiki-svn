@@ -306,7 +306,7 @@ struct buffering_filter : sink, spigot {
 	sink_result data_ready(char const *buf, size_t len, ssize_t &discard) {
 	sink_result	result;
 	ssize_t		d = discard;
-		while ((discard - d) < len) {
+		while ((size_t)(discard - d) < len) {
 			result = bf_transform(buf + (discard - d), len - (discard - d), discard);
 			if (result != sink_result_okay &&
 			    result != sink_result_finished)

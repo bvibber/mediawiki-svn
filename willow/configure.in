@@ -120,6 +120,7 @@ AC_SEARCH_LIBS(log10, m)
 AC_SEARCH_LIBS(sendfile, sendfile)
 AC_SEARCH_LIBS(zlibVersion, z,,AC_MSG_ERROR([zlib not found]))
 AC_SEARCH_LIBS(pthread_key_create, pthread)
+AC_SEARCH_LIBS(db_create, db-4.3)
 
 AC_CHECK_FUNC(strlcat,AC_DEFINE([HAVE_STRLCAT],,[Define this if you have strlcat()]),[AC_LIBOBJ(strlcat)])
 AC_CHECK_FUNC(strlcpy,AC_DEFINE([HAVE_STRLCPY],,[Define this if you have strlcpy()]),[AC_LIBOBJ(strlcpy)])

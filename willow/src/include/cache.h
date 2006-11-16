@@ -22,9 +22,25 @@ using std::multiset;
 #include "flowio.h"
 #include "whttp_header.h"
 #include "format.h"
+#include "dbwrap.h"
 
 struct caching_filter;
 struct cached_spigot;
+
+namespace db {
+	template<>
+	struct marshaller<imstring> {
+		pair<char const *, uint32_t> marshall(imstring const &s) {
+		char	*b = new char[s.size()];
+			memcpy(b, s.data(), s.size());
+			return pair<char const *, uint32_t>(b, s.size());
+		}
+
+		imstring *unmarhall(pair<char const *, uint32_t> const &d) {
+			return new imstring(d.first, d.second);
+		}
+	};
+};
 
 struct cachedentity {
 	~cachedentity(void);
@@ -73,55 +89,11 @@ struct cachedentity {
 		/*
 		 * If the object is still valid, its lifetime can increase.
 		 */
-		_lifetime = (time(0) - _modified) * 1.25;
+		_lifetime = (time_t) ((time(0) - _modified) * 1.25);
 		_revalidate_at = time(0) + _lifetime;
 	}
 
-	void set_complete(void) {
-	header	*h;
-		WDEBUG((WLOG_DEBUG, format("set_complete: void=%d") % _void));
-		if (_void)
-			return;
-		_headers.remove("transfer-encoding");
-		if (!_headers.find("content-length")) {
-		char	lenstr[64];
-			snprintf(lenstr, sizeof lenstr, "%lu", 
-				(unsigned long) _data.size());
-			_headers.add("Content-Length", lenstr);
-		}
-
-		if ((h = _headers.find("Expires")) != NULL) {
-			if ((_expires = parse_date(h->value())) == -1) {
-				_expires = time(0);
-			}
-		} else {
-			_expires = 0;
-		}
-
-		if ((h = _headers.find("Last-Modified")) != NULL) {
-			if ((_modified = parse_date(h->value())) == -1) {
-				_modified = time(0);
-			}
-		} else {
-			if ((h = _headers.find("Date")) != NULL) {
-				if ((_modified = parse_date(h->value())) == -1) {
-					_modified = time(0);
-				}
-			} else {
-				_modified = time(0);
-			}
-		}
-
-		_lifetime = (time(0) - _modified) * 1.25;
-		WDEBUG((WLOG_DEBUG, format("object lifetime=%d sec.") % _lifetime));
-		revalidated();
-		_builthdrs = _headers.build();
-		_builtsz = _headers.length();
-		_data.finished();
-
-		_complete = true;
-	}
-
+	void set_complete(void);
 	void store_status(imstring const &status) {
 		_status = status;
 	}
@@ -137,6 +109,9 @@ struct cachedentity {
 	}
 
 	static time_t parse_date(char const *date);
+
+	pair<char const *, uint32_t> marshall(void) const;
+	static cachedentity *unmarshall(char const *, uint32_t);
 
 private:
 	friend struct httpcache;
@@ -173,9 +148,13 @@ struct httpcache {
 	httpcache();
 	~httpcache();
 
-	cachedentity *find_cached(imstring const &url, bool create, bool& wasnew);
-	void release(cachedentity *);
-	bool purge(imstring const &url);
+	bool open(void);
+	void close(void);
+	bool create(void);
+
+	cachedentity	 *find_cached(imstring const &url, bool create, bool& wasnew);
+	void		release(cachedentity *);
+	bool		purge(imstring const &url);
 
 private:
 	friend struct cachedentity;
@@ -191,16 +170,22 @@ private:
 
 	typedef multiset<entmap::iterator, lru_comparator> lruset;
 
-	void _remove(cachedentity *ent);
-	void _remove_unlocked(cachedentity *ent);
+	void		 _remove(cachedentity *ent);
+	void		 _remove_unlocked(cachedentity *ent);
+	void		 _swap_out(cachedentity *);
+	cachedentity	*_swap_in(imstring const &url);
 
 	entmap		 _entities;
 	lruset		 _lru;
 	lockable	 _lock, _memlock;
 	size_t		 _cache_mem;
 
+	db::environment	*_env;
+	db::database<imstring, cachedentity>
+			*_db;
+
 	void	cache_mem_reduce(size_t);
-	bool	cache_mem_increase(size_t);
+	bool	cache_mem_increase(size_t, cachedentity *);
 };
 
 struct caching_filter : io::sink, io::spigot {
@@ -239,8 +224,8 @@ struct cached_spigot : io::spigot {
 		, _done(false)
 		, _keepalive(false)
 		, _doneheaders(false)
-		, _inited(false)
 		, _corked(true)
+		, _inited(false)
 		, _off(0) {}
 
 	~cached_spigot() {
@@ -314,7 +299,7 @@ struct cached_spigot : io::spigot {
 				WDEBUG((WLOG_DEBUG, "all finished"));
 				return;
 			case io::sink_result_okay:
-				if (_off = _ent->_data.size()) {
+				if (_off == _ent->_data.size()) {
 					_sp_completed_callee();
 					return;
 				}

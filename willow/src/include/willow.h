@@ -476,15 +476,15 @@ struct diobuf : freelist_allocator<diobuf> {
 
 	void resize(size_t newsize);
 
-	char *ptr(void) {
+	char *ptr(void) const {
 		return _buf;
 	}
 
-	size_t size(void) {
+	size_t size(void) const {
 		return _size;
 	}
 
-	int fd(void) {
+	int fd(void) const {
 		return _fd;
 	}
 

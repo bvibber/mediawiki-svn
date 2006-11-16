@@ -29,7 +29,7 @@
 #include "wconfig.h"
 #include "willow.h"
 #include "whttp.h"
-#include "wcache.h"
+#include "cache.h"
 #include "confparse.h"
 #include "radix.h"
 #include "format.h"
@@ -76,6 +76,7 @@ usage(void)
 "      -h                    print this message\n"
 "      -f                    run in foreground (don't detach)\n"
 "      -v                    print version number and exit\n"
+"      -z                    create initial cache directories and exit\n"
 "      -D cond[=value]       set 'cond' to 'value' (which should be 'true' or\n"
 "                            'false') in the configuration parser.  if 'value'\n"
 "                            is not specified, defaults to true\n"
@@ -109,11 +110,11 @@ main(int argc, char *argv[])
 int	 i;
 char	*cfg = NULL;
 char	*dval;
-
+bool	 zflag = false;
 	progname = argv[0];
 	pagesize = sysconf(_SC_PAGESIZE);
 
-	while ((i = getopt(argc, argv, "fvc:D:h")) != -1) {
+	while ((i = getopt(argc, argv, "fvc:D:hz")) != -1) {
 		switch (i) {
 			case 'h':
 				usage();
@@ -126,6 +127,10 @@ char	*dval;
 				exit(0);
 			case 'c':
 				cfg = optarg;
+				break;
+			case 'z':
+				zflag = true;
+				config.foreground = true;
 				break;
 			case 'D':
 				dval = NULL;
@@ -187,9 +192,18 @@ char	*dval;
 
 	wlog_init();
 
+	if (zflag) {
+		if (!entitycache.create())
+			return 1;
+		return 0;
+	}
+		
 	make_event_base();
 	ioloop = new ioloop_t;		
 	checkexit_sched();
+	if (!entitycache.open())
+		return 1;
+
 	whttp_init();
 	stats_init();
 
@@ -202,6 +216,7 @@ char	*dval;
 	wlog(WLOG_NOTICE, "shutting down");
 	wlog_close();
 	whttp_shutdown();
+	entitycache.close();
 
 	pthread_exit(NULL);	
 	return EXIT_SUCCESS;
@@ -513,8 +528,6 @@ diobuf::resize(size_t newsize)
 void
 diobuf::finished(void)
 {
-	munmap(_buf, _reserved);
-	_buf = NULL;
 }
 
 diobuf::~diobuf(void)
@@ -529,8 +542,8 @@ diobuf::~diobuf(void)
 }
 
 diobuf::diobuf(size_t size)
-	: _buf(0)
-	, _fd(-1)
+	: _fd(-1)
+	, _buf(0)
 	, _size(0)
 	, _reserved(pagesize * (size / pagesize + 1))
 {

@@ -45,11 +45,11 @@ chunking_filter::bf_eof(void)
 }
 
 dechunking_filter::dechunking_filter()
-	: _current_chunk_size(0)
+	: _state(s_start)
+	, _current_chunk_size(0)
 	, _counter(0)
 	, _atend(false)
 	, _first(true)
-	, _state(s_start)
 {
 	_cbuf[0] = '\0';
 }

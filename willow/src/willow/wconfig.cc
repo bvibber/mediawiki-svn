@@ -365,6 +365,7 @@ conf
 	.block("cache")
 		.value("cache-memory",		simple_time,		set_long(config.cache_memory))
 		.value("max-entity-size",	simple_time,		set_long(config.max_entity_size))
+		.value("master-state",		nonempty_qstring,	set_string(config.cache_master))
 
 	.block("http")
 		.value("compress",		simple_yesno,		set_yesno(config.compress))

@@ -6,6 +6,7 @@ BASESRCS =	 		\
 	cache.cc		\
 	chunking.cc		\
 	confparse.cc		\
+	dbwrap.cc		\
 	flowio.cc		\
 	format.cc		\
 	radix.cc		\

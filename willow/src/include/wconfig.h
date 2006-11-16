@@ -76,6 +76,7 @@ extern struct configuration {
 	bool		 use_dio;
 	long		 cache_memory;
 	long		 max_entity_size;
+	string		 cache_master;
 	vector<pair<string, string> >		 stats_hosts;
 } config;
 
