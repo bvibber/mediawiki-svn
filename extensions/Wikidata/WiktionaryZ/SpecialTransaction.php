@@ -30,6 +30,12 @@ function wfSpecialTransaction() {
 			$userName = $wgRequest->getText('user-name');
 			$showRollBackOptions = $wgRequest->getBool('show-roll-back-options');
 			
+			if (isset($_POST['roll-back']) && $fromTransactionId != 0) {
+				$recordSet = getTransactionRecordSet($fromTransactionId, $transactionCount, $userName);	
+				rollBackTransactions($recordSet);
+				$fromTransactionId = 0;
+			}
+
 			if ($fromTransactionId == 0)
 				$fromTransactionId = getLatestTransactionId();
 				
@@ -46,9 +52,6 @@ function wfSpecialTransaction() {
 
 			$recordSet = getTransactionRecordSet($fromTransactionId, $transactionCount, $userName);	
 			
-			if (isset($_POST['roll-back']))
-				rollBackTransactions($recordSet);
-
 			$wgOut->addHTML(getTransactionOverview($recordSet, $showRollBackOptions));
 			
 			if ($showRollBackOptions)
@@ -163,10 +166,12 @@ function initializeAttributes() {
 	$classMemberAttribute = new Attribute('class-member', 'Class member', new RecordType($definedMeaningReferenceStructure));
 	
 	$updatedClassMembershipStructure = new Structure(
+		$rollbackAttribute,
 		$classMembershipIdAttribute,
 		$classAttribute,
 		$classMemberAttribute,
-		$operationAttribute
+		$operationAttribute,
+		$isLatestAttribute
 	);
 	
 	$updatedClassMembershipAttribute = new Attribute('updated-class-membership', 'Class membership', new RecordSetType($updatedClassMembershipStructure));
@@ -249,7 +254,7 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($updatedDefinitionAttribute));
 	$valueEditor->addEditor(getUpdatedSyntransesEditor($updatedSyntransesAttribute));
 	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute));
+	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($updatedCollectionMembershipAttribute));
 	
 	$editor = new RecordSetListEditor(null, new SimplePermissionController(false), false, false, false, null, 4, false);
@@ -353,6 +358,16 @@ function getUpdatedSyntransesRecordSet($transactionId) {
 	return $recordSet;
 }
 
+function getIsLatestSelectColumn($table, $idField, $transactionId) {
+	return 
+		"($table.add_transaction_id=$transactionId AND $table.remove_transaction_id IS NULL) OR (remove_transaction_id=$transactionId AND NOT EXISTS(" .
+			"SELECT latest_$table.$idField " .
+			" FROM $table AS latest_$table" .
+			" WHERE $table.$idField=latest_$table.$idField" .
+			" AND (latest_$table.add_transaction_id > $transactionId) " .
+		")) AS is_latest ";
+}
+
 function getUpdatedRelationsRecordSet($transactionId) {
 	global
 		$updatedRelationsStructure, $relationIdAttribute, $firstMeaningAttribute, $secondMeaningAttribute, 
@@ -360,13 +375,9 @@ function getUpdatedRelationsRecordSet($transactionId) {
 
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT relation_id, meaning1_mid, meaning2_mid, relationtype_mid, " . getOperationSelectColumn('uw_meaning_relations', $transactionId) . 
-		", (add_transaction_id=$transactionId AND remove_transaction_id IS NULL) OR (remove_transaction_id=$transactionId AND NOT EXISTS(" .
-			"SELECT latest_relations.relation_id " .
-			" FROM uw_meaning_relations AS latest_relations" .
-			" WHERE relation_id=latest_relations.relation_id" .
-			" AND (latest_relations.add_transaction_id > $transactionId) " .
-		")) AS is_latest " .  
+		"SELECT relation_id, meaning1_mid, meaning2_mid, relationtype_mid, " . 
+			getOperationSelectColumn('uw_meaning_relations', $transactionId) . ', ' .
+			getIsLatestSelectColumn('uw_meaning_relations', 'relation_id', $transactionId) . 
 		" FROM uw_meaning_relations " .
 		" WHERE " . getInTransactionRestriction('uw_meaning_relations', $transactionId)
 	);
@@ -392,11 +403,13 @@ function getUpdatedRelationsRecordSet($transactionId) {
 function getUpdatedClassMembershipRecordSet($transactionId) {
 	global
 		$updatedClassMembershipStructure, $classMembershipIdAttribute, $classAttribute, $classMemberAttribute, 
-		$operationAttribute;
+		$operationAttribute, $isLatestAttribute, $rollbackAttribute;
 	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT class_membership_id, class_mid, class_member_mid, " . getOperationSelectColumn('uw_class_membership', $transactionId) . 
+		"SELECT class_membership_id, class_mid, class_member_mid, " . 
+		getOperationSelectColumn('uw_class_membership', $transactionId) . ', ' .
+		getIsLatestSelectColumn('uw_class_membership', 'class_membership_id', $transactionId) . 
 		" FROM uw_class_membership " .
 		" WHERE " . getInTransactionRestriction('uw_class_membership', $transactionId)
 	);
@@ -409,6 +422,8 @@ function getUpdatedClassMembershipRecordSet($transactionId) {
 		$record->setAttributeValue($classAttribute, getDefinedMeaningReferenceRecord($row->class_mid));
 		$record->setAttributeValue($classMemberAttribute, getDefinedMeaningReferenceRecord($row->class_member_mid));
 		$record->setAttributeValue($operationAttribute, $row->operation);
+		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		$record->setAttributeValue($rollbackAttribute, $row->is_latest);
 		
 		$recordSet->add($record);	
 	}
@@ -492,14 +507,19 @@ function getUpdatedRelationsEditor($attribute, $showRollBackOptions) {
 	return $editor;
 }
 
-function getUpdatedClassMembershipEditor($attribute) {
+function getUpdatedClassMembershipEditor($attribute, $showRollBackOptions) {
 	global
-		$classAttribute, $classMemberAttribute, $operationAttribute;
+		$classAttribute, $classMemberAttribute, $operationAttribute, $isLatestAttribute, $rollbackAttribute;
 		
 	$editor = createTableViewer($attribute);
+	
+	if ($showRollBackOptions)
+		$editor->addEditor(new RollbackEditor($rollbackAttribute));
+		
 	$editor->addEditor(createDefinedMeaningReferenceViewer($classAttribute));
 	$editor->addEditor(createDefinedMeaningReferenceViewer($classMemberAttribute));
 	$editor->addEditor(createShortTextViewer($operationAttribute));
+	$editor->addEditor(createBooleanViewer($isLatestAttribute));
 	
 	return $editor;
 }
@@ -527,7 +547,8 @@ function simpleRecord($structure, $attribute, $value) {
 function rollBackTransactions($recordSet) {
 	global
 		$wgRequest, $wgUser,
-		$transactionIdAttribute, $updatesInTransactionAttribute, $updatedRelationsAttribute;
+		$transactionIdAttribute, $updatesInTransactionAttribute, 
+		$updatedRelationsAttribute, $updatedClassMembershipAttribute;
 		
 	$summary = $wgRequest->getText('summary');
 	startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
@@ -549,6 +570,11 @@ function rollBackTransactions($recordSet) {
 		rollBackRelations($idStack, $updatedRelations);
 		$idStack->popAttribute();
 		
+		$updatedClassMemberships = $updatesInTransaction->getAttributeValue($updatedClassMembershipAttribute);
+		$idStack->pushAttribute($updatedClassMembershipAttribute);
+		rollBackClassMemberships($idStack, $updatedClassMemberships);
+		$idStack->popAttribute();
+
 		$idStack->popAttribute();
 		$idStack->popKey();
 	}
@@ -609,14 +635,44 @@ function rollBackRelation($relationId, $firstMeaningId, $relationTypeId, $second
 		removeRelationWithId($relationId);
 	else	
 		addRelation($firstMeaningId, $relationTypeId, $secondMeaningId, $operation);	
+}
+
+function rollBackClassMemberships($idStack, $classMemberships) {
+	global
+		$classMemebrshipIdAttribute, $isLatestAttribute, $classAttribute, $classMemberAttribute,
+		$operationAttribute, $classMembershipIdAttribute;
 	
-//	echo(
-//		"Relation ID: " . $relationId . "\n" .
-//		"First meaning ID: ". $firstMeaningId . "\n" .
-//		"Relation type ID: ". $relationTypeId . "\n" .
-//		"Second meaning ID: ". $secondMeaningId . "\n" . 
-//		"Operation: " . $operation . "\n" 
-//	);
+	$classMembershipsKeyStructure = $classMemberships->getKey();
+	
+	for ($i = 0; $i < $classMemberships->getRecordCount(); $i++) {
+		$classMembershipRecord = $classMemberships->getRecord($i);
+
+		$classMembershipId = $classMembershipRecord->getAttributeValue($classMembershipIdAttribute);
+		$isLatest = $classMembershipRecord->getAttributeValue($isLatestAttribute);
+
+		if ($isLatest) {
+			$idStack->pushKey(simpleRecord($classMembershipsKeyStructure, $classMembershipIdAttribute, $classMembershipId));
+			
+			if (shouldRollBack($idStack)) 
+				rollBackClassMembership(
+					$classMembershipId,
+					getMeaningId($classMembershipRecord, $classAttribute),
+					getMeaningId($classMembershipRecord, $classMemberAttribute),
+					$classMembershipRecord->getAttributeValue($operationAttribute)
+				);
+				
+			$idStack->popKey();
+		}
+	}	
+}
+
+function rollBackClassMembership($classMembershipId, $classId, $classMemberId, $operation) {
+	$dbr = &wfGetDB(DB_MASTER);
+	
+	if ($operation == 'Added')
+		removeClassMembershipWithId($classMembershipId);
+	else	
+		addClassMembership($classMemberId, $classId, $operation);	
 }
 
 ?>
