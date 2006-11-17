@@ -14,8 +14,10 @@
 
 #include <map>
 #include <set>
+#include <fstream>
 using std::map;
 using std::multiset;
+using std::fstream;
 
 #include "willow.h"
 #include "wthread.h"
@@ -26,6 +28,7 @@ using std::multiset;
 
 struct caching_filter;
 struct cached_spigot;
+struct cachefile;
 
 namespace db {
 	template<>
@@ -41,6 +44,9 @@ namespace db {
 		}
 	};
 };
+
+struct cachedir_data_store;
+struct a_cachedir;
 
 struct cachedentity {
 	~cachedentity(void);
@@ -113,10 +119,21 @@ struct cachedentity {
 	pair<char const *, uint32_t> marshall(void) const;
 	static cachedentity *unmarshall(char const *, uint32_t);
 
+	void cachedfile(imstring const &file) {
+		_cachedfile = file;
+	}
+	
+	imstring const &cachedfile(void) const {
+		return _cachedfile;
+	}
+	
+	bool loadcachefile();
+	bool savecachefile(cachefile *);
 private:
 	friend struct httpcache;
 	friend struct caching_filter;
 	friend struct cached_spigot;
+	friend struct cachedir_data_store;
 
 	void ref(void) {
 		++_refs;
@@ -131,8 +148,12 @@ private:
 	cachedentity(imstring const &url, size_t hint = 0);
 	void _append(char const *data, size_t size);
 
+	/*
+	 * Remember to add marshallers when adding new data here.
+	 */
 	imstring	 _url;
 	imstring	 _status;
+	imstring	 _cachedfile;
 	diobuf		 _data;
 	atomic<int>	 _refs;
 	atomic<bool>	 _complete;
@@ -142,6 +163,155 @@ private:
 	bool		 _void;
 	time_t		 _lastuse;
 	time_t		 _expires, _modified, _lifetime, _revalidate_at;
+	int		 _cachedir;
+	uint64_t	 _cachefile;
+};
+
+/*
+ * Represents a single cached file in the filesystem.
+ */
+struct cachefile {
+	/*
+	 * True if the file was opened successfully.
+	 */
+	bool	okay(void) const {
+		return _file.is_open();
+	}
+	
+	/*
+	 * Remove this cached file from disk.
+	 */
+	bool	remove(void) {
+		return std::remove(_path.c_str()) == 0;
+	}
+	
+	/*
+	 * Return the path of this file on disk.
+	 */
+	imstring	filename(void) const {
+		return _path;
+	}
+	
+	/*
+	 * Return the size of this cached file.
+	 */
+	size_t size(void) const {
+		return _size;
+	}
+	
+	/*
+	 * Write data to this cachefile.
+	 */
+	void	write(char const *buf, size_t len);
+	
+	/*
+	 * Return the on-disk file.
+	 */
+	fstream &file(void) {
+		return _file;
+	}
+	
+	fstream const &file(void) const {
+		return _file;
+	}
+	
+	~cachefile(void) {
+	}
+	
+	uint64_t filenum(void) const {
+		return _num;
+	}
+private:
+	friend struct cachedir_data_store;
+	friend struct a_cachedir;	
+	cachefile(imstring path, uint64_t num, bool create)
+	: _path(path)
+	, _size(0)
+	, _num(num)
+	{
+	struct stat	sb;
+		if (create) {
+			_file.open(path.c_str(), ios::out | ios::binary | ios::trunc);
+			if (!_file)
+				wlog(WLOG_WARNING, format("creating cache file %s: %e")
+						% path);
+		}else {
+			if (stat(path.c_str(), &sb) == -1) {
+				wlog(WLOG_WARNING, format("cache file %s: %e")
+						% path);
+					return;
+			}
+			_size = sb.st_size;
+			_file.open(path.c_str(), ios::in | ios::binary);
+		}
+	}
+	
+	fstream		_file;
+	imstring	_path;
+	size_t		_size;
+	uint64_t	_num;
+};
+
+/*
+ * A single cache directory.
+ */
+struct a_cachedir {
+	a_cachedir(imstring const &path);
+	
+	/*
+	 * Return a cachefile opened for output, referring to a new file, or
+	 * NULL if opening failed.
+	 */
+	cachefile	*nextfile(void);
+		
+	/*
+	 * Locate an existing file and return it opened for reading, or NULL
+	 * if opening failed.
+	 */
+	cachefile	*open(uint64_t num);
+	
+private:
+	imstring		_path;		/* root of this cachedir on disk	*/
+	atomic<uint64_t>	_curfnum;	/* next file number to use		*/
+};
+
+/*
+ * Represents an overview of all cache dirs, and abstracts the creation
+ * of new cached files.
+ */
+struct cachedir_data_store {
+	cachedir_data_store();
+	
+	/*
+	 * Store an entity's contents in the cachedir and return the serialised
+	 * entity.
+	 */
+	pair<char const *, uint32_t> store(cachedentity &o);
+	
+	/*
+	 * Delete a cached entity from disk.
+	 */
+	void unstore(cachedentity const &o) {}
+	
+	/*
+	 * Retrieve the cached data from the cachedir and return an entity
+	 * referring to it.
+	 */
+	cachedentity *retrieve(pair<char const *, uint32_t> const &d);
+
+	/*
+	 * Create a new file in the next available cache directory.
+	 */
+	cachefile *nextfile(void);
+	
+	/*
+	 * Open the file given by this filenumber.
+	 */
+	cachefile *open(uint64_t);
+	
+private:
+	uint64_t	 curfile;
+	a_cachedir	*cachedir;
 };
 
 struct httpcache {
@@ -153,8 +323,13 @@ struct httpcache {
 	bool create(void);
 
 	cachedentity	 *find_cached(imstring const &url, bool create, bool& wasnew);
-	void		release(cachedentity *);
-	bool		purge(imstring const &url);
+	void		  release(cachedentity *);
+	bool		  purge(imstring const &url);
+	
+	/*
+	 * Return the on-disk cached file represented by this file number.
+	 */
+	cachefile	 *get_cachefile(uint64_t fnum);
 
 private:
 	friend struct cachedentity;
@@ -175,13 +350,14 @@ private:
 	void		 _swap_out(cachedentity *);
 	cachedentity	*_swap_in(imstring const &url);
 
-	entmap		 _entities;
-	lruset		 _lru;
-	lockable	 _lock, _memlock;
-	size_t		 _cache_mem;
-
+	entmap			 _entities;
+	lruset			 _lru;
+	lockable		 _lock, _memlock;
+	size_t			 _cache_mem;
+	cachedir_data_store	*_store;
+	
 	db::environment	*_env;
-	db::database<imstring, cachedentity>
+	db::database<imstring, cachedentity, cachedir_data_store>
 			*_db;
 
 	void	cache_mem_reduce(size_t);

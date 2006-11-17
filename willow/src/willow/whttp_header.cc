@@ -29,7 +29,6 @@ using std::vector;
 #include "flowio.h"
 #include "wconfig.h"
 #include "format.h"
-#include "wcache.h"
 
 using namespace wnet;
 

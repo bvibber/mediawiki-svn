@@ -40,8 +40,7 @@
 #include <unistd.h>
 
 int
-daemon(nochdir, noclose)
-	int nochdir, noclose;
+daemon(int nochdir, int noclose)
 {
 	int fd;
 

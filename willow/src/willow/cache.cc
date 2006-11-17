@@ -10,7 +10,9 @@
 #endif
 
 #include <utility>
+#include <iostream>
 using std::make_pair;
+using std::ostream;
 
 #include "cache.h"
 #include "format.h"
@@ -74,7 +76,8 @@ cachedentity *ret;
 	 */
 	ret = _db->get(url);
 	if (ret != NULL) {
-		WDEBUG((WLOG_DEBUG, format("found [%s] in disk cache") %url));
+		WDEBUG((WLOG_DEBUG, format("found [%s] in disk cache complete %d void %d") 
+				% url % ret->complete() % ret->isvoid()));
 		ret->ref();
 		_lru.insert(_entities.insert(make_pair(url, ret)).first);
 		wasnew = false;
@@ -199,6 +202,8 @@ httpcache::open(void)
 	if (config.cache_master.empty())
 		return true;
 
+	_store = new cachedir_data_store;
+	
 	_env = db::environment::open(config.cache_master);
 	if (_env->error()) {
 		wlog(WLOG_ERROR, 
@@ -209,7 +214,8 @@ httpcache::open(void)
 		return false;
 	}
 
-	_db = _env->open_database<imstring, cachedentity>("objects");
+	_db = _env->open_database<imstring, cachedentity,
+		cachedir_data_store>("objects", _store);
 	if (_db->error()) {
 		wlog(WLOG_ERROR, 
 			format("cannot open cache master database \"%s\": %s")
@@ -232,6 +238,8 @@ httpcache::create(void)
 		return false;
 	}
 
+	_store = new cachedir_data_store;
+	
 	if (mkdir(config.cache_master.c_str(), 0700) < 0) {
 		wlog(WLOG_ERROR, format("cannot create cache master \"%s\": %e")
 			% config.cache_master);
@@ -248,7 +256,8 @@ httpcache::create(void)
 		return false;
 	}
 
-	_db = _env->create_database<imstring, cachedentity>("objects");
+	_db = _env->create_database<imstring, cachedentity,
+		cachedir_data_store>("objects", _store);
 	if (_db->error()) {
 		wlog(WLOG_ERROR,
 			format("cannot create cache master database \"%s\": %s")
@@ -289,6 +298,9 @@ cachedentity::cachedentity(imstring const &url, size_t hint)
 	, _expires(0)
 	, _modified(0)
 {
+	WDEBUG((WLOG_DEBUG, format("CACHE: creating cached entity with URL %s")
+			% url));
+	assert(_url.size());
 }
 
 cachedentity::~cachedentity()
@@ -365,13 +377,13 @@ header	*h;
 	}
 
 	_lifetime = (time_t) ((time(0) - _modified) * 1.25);
-	WDEBUG((WLOG_DEBUG, format("object lifetime=%d sec.") % _lifetime));
+	WDEBUG((WLOG_DEBUG, format("CACHE: object lifetime=%d sec.") % _lifetime));
 	revalidated();
 	_builthdrs = _headers.build();
 	_builtsz = _headers.length();
 	_data.finished();
-	entitycache._swap_out(this);
 	_complete = true;
+	entitycache._swap_out(this);
 }
 
 pair<char const *, uint32_t>
@@ -381,13 +393,12 @@ db::marshalling_buffer	buf;
 	buf.reserve(
 		sizeof(size_t) + _url.size() +
 		sizeof(size_t) + _status.size() +
-		sizeof(size_t) + _data.size() +
 		sizeof(size_t) + _builtsz +
-		sizeof(time_t) * 5);
+		sizeof(time_t) * 5 +
+		sizeof(int) +
+		sizeof(uint64_t));
 	buf.append<imstring>(_url);
 	buf.append<imstring>(_status);
-	buf.append<size_t>(_data.size());
-	buf.append_bytes(_data.ptr(), _data.size());
 	buf.append<size_t>(_builtsz);
 	buf.append_bytes(_builthdrs, _builtsz);
 	buf.append<time_t>(_lastuse);
@@ -395,6 +406,8 @@ db::marshalling_buffer	buf;
 	buf.append<time_t>(_modified);
 	buf.append<time_t>(_lifetime);
 	buf.append<time_t>(_revalidate_at);
+	buf.append<int>(_cachedir);
+	buf.append<uint64_t>(_cachefile);
 	return make_pair(buf.buffer(), buf.size());
 }
 
@@ -408,6 +421,8 @@ char			*hdrbuf;
 size_t			 bufsz;
 	if (!buf.extract<imstring>(url))
 		return NULL;
+	WDEBUG((WLOG_DEBUG, format("unmarshall: URL [%s], len %d")
+			% url % url.size()));
 	ret = new cachedentity(url);
 	if (!buf.extract<imstring>(ret->_status)) {
 		delete ret;
@@ -419,20 +434,8 @@ size_t			 bufsz;
 		return NULL;
 	}
 
-	ret->_data.resize(bufsz);
-
-	if (!buf.extract_bytes(ret->_data.ptr(), bufsz)) {
-		delete ret;
-		return NULL;
-	}
-
-	if (!buf.extract<size_t>(bufsz)) {
-		delete ret;
-		return NULL;
-	}
-
 	ret->_builthdrs = new char[bufsz + 1];
-
+	ret->_builtsz = bufsz;
 	if (!buf.extract_bytes(ret->_builthdrs, bufsz)) {
 		delete ret;
 		return NULL;
@@ -462,6 +465,136 @@ size_t			 bufsz;
 		delete ret;
 		return NULL;
 	}
+	
+	if (!buf.extract<int>(ret->_cachedir)) {
+		delete ret;
+		return NULL;
+	}
+	
+	if (!buf.extract<uint64_t>(ret->_cachefile)) {
+		delete ret;
+		return NULL;
+	}
+	
 	ret->_refs = 1;
+	/*
+	 * An incomplete or void entity will never be written to the disk cache.
+	 */
+	ret->_complete = true;
+	ret->_void = false;
 	return ret;
+}
+
+bool
+cachedentity::loadcachefile(void)
+{
+cachefile	*f;
+struct stat	 sb;
+	if ((f = entitycache.get_cachefile(_cachefile)) == NULL)
+		return false;
+	return _data.loadfile(f->file(), f->size());
+}
+
+bool
+cachedentity::savecachefile(cachefile *f)
+{
+ostream	&sm = f->file();
+	assert(f);
+	WDEBUG((WLOG_DEBUG, format("CACHE: writing cached data to %s")
+			% f->filename()));
+	if (!sm.write(_data.ptr(), _data.size())) {
+		wlog(WLOG_WARNING, format("writing cached data to %s: %e")
+				% f->filename());
+		return false;
+	}
+	_cachefile = f->filenum();
+	return true;
+}
+
+pair<char const *, uint32_t>
+cachedir_data_store::store(cachedentity &o)
+{
+db::marshaller<cachedentity>	m;
+pair<char const *, uint32_t>	ret;
+	assert(o.complete() && !o.isvoid());
+	
+	WDEBUG((WLOG_DEBUG, format("CACHE: storing %s") % o.url()));
+	
+	ret = m.marshall(o);
+	/*
+	 * Write the cached data to the cachedir.
+	 */
+cachefile	*f = nextfile();
+	o.savecachefile(f);
+	ret = m.marshall(o);
+	delete f;
+	return ret;
+}
+
+cachedentity *
+cachedir_data_store::retrieve(pair<char const *, uint32_t> const &d)
+{
+db::marshaller<cachedentity>	m;
+cachedentity	*ent;
+	/*
+	 * Read the cached data from the cachedir.
+	 */
+	WDEBUG((WLOG_DEBUG, "CACHE: unmarshalling a cached entity"));
+	ent = m.unmarshall(d);
+	if (ent == NULL)
+		return NULL;
+	WDEBUG((WLOG_DEBUG, format("CACHE: loading cache data for %s") % ent->url()));
+	ent->loadcachefile();
+	return ent;
+}
+
+cachefile *
+cachedir_data_store::nextfile(void)
+{
+	return cachedir->nextfile();
+}
+
+cachefile *
+a_cachedir::open(uint64_t num)
+{
+imstring	path = (format("%s/%d") % _path % num).str();
+	return new cachefile(path, num, false);
+}
+
+cachefile *
+a_cachedir::nextfile(void)
+{
+int		n = _curfnum++;
+imstring	path = (format("%s/%d") % _path % n).str();
+	return new cachefile(path, n, true);
+}	
+
+void
+cachefile::write(char const *buf, size_t n)
+{
+	_file.write(buf, n);
+}
+
+cachefile *
+httpcache::get_cachefile(uint64_t num)
+{
+	return _store->open(num);
+}
+
+cachefile *
+cachedir_data_store::open(uint64_t num)
+{
+	return cachedir->open(num);
+}
+
+a_cachedir::a_cachedir(imstring const &path)
+	: _path(path)
+{
+	assert(_path.size());
+}
+
+cachedir_data_store::cachedir_data_store(void)
+{
+	assert(config.cachedirs.size());
+	cachedir = new a_cachedir(config.cachedirs[0].dir);
 }

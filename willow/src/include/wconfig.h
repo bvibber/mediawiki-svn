@@ -41,8 +41,11 @@ extern vector<listener *> listeners;
 extern map<wsocket *, int> lsn2group;
 
 struct cachedir {
-	char	*dir;
-	size_t	 maxsize;
+	cachedir(string const &dir_)
+	: dir(dir_)
+	{}
+	
+	string	dir;
 };
 
 #define DEFAULT_STATS_INTERVAL	300
@@ -77,6 +80,7 @@ extern struct configuration {
 	long		 cache_memory;
 	long		 max_entity_size;
 	string		 cache_master;
+	vector<cachedir>	cachedirs;
 	vector<pair<string, string> >		 stats_hosts;
 } config;
 

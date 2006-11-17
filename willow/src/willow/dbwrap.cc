@@ -132,12 +132,13 @@ bool
 marshalling_buffer::extract<imstring>(imstring &s)
 {
 size_t	sz = 0;
+	WDEBUG((WLOG_DEBUG, "DB: extracting an imstring"));
 	if (!extract<size_t>(sz))
 		return false;
 	if (_size + sz > _bufsz)
 		return false;
 	s.reserve(sz);
-	memcpy(s.data(), _buf + _size + sz, sz);
+	memcpy(s.data(), _buf + _size, sz);
 	_size += sz;
 	return true;
 }

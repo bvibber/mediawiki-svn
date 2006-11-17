@@ -344,7 +344,12 @@ vector<avalue>::iterator it = v.cv_values.begin(), end = v.cv_values.end();
 	return true;
 }
 
-	
+void
+set_cache_dir(tree_entry &e)
+{
+	config.cachedirs.push_back(cachedir(e.item_key));
+}
+
 bool
 read_config(string const &file)
 {
@@ -366,6 +371,9 @@ conf
 		.value("cache-memory",		simple_time,		set_long(config.cache_memory))
 		.value("max-entity-size",	simple_time,		set_long(config.max_entity_size))
 		.value("master-state",		nonempty_qstring,	set_string(config.cache_master))
+
+	.block("cache-dir", require_name)
+		.end(func(set_cache_dir))
 
 	.block("http")
 		.value("compress",		simple_yesno,		set_yesno(config.compress))

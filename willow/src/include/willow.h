@@ -27,6 +27,7 @@ using std::basic_string;
 using std::char_traits;
 using std::vector;
 using std::basic_ostream;
+using std::istream;
 
 #include "wlog.h"
 #include "radix.h"
@@ -496,6 +497,10 @@ struct diobuf : freelist_allocator<diobuf> {
 
 	void finished(void);
 
+	/*
+	 * Load data from the given file into the buffer.
+	 */
+	bool loadfile(istream &, size_t);
 private:
 	int	 _fd;
 	char	*_buf;

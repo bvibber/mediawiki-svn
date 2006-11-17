@@ -12,17 +12,18 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <stdarg.h>
-#include <string.h>
+#include <cstdio>
+#include <cstdlib>
+#include <csignal>
+#include <cstdarg>
+#include <cstring>
 #include <unistd.h>
-#include <errno.h>
+#include <cerrno>
 #include <pwd.h>
 #include <grp.h>
-#include <strings.h>
-#include <ctype.h>
+#include <cctype>
+#include <iostream>
+using std::streamsize;
 
 #include "wlog.h"
 #include "wnet.h"
@@ -591,4 +592,13 @@ diobuf::diobuf(size_t size)
 		return;
 	}
 	lseek(_fd, 0, SEEK_SET);
+}
+
+bool
+diobuf::loadfile(istream &f, size_t n)
+{
+	resize(n);
+	if (!f.read(_buf, n) || f.gcount() != (streamsize)n)
+		return false;
+	return true;
 }

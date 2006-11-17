@@ -72,7 +72,7 @@ struct marshaller<string> {
 
 template<typename T>
 struct inline_data_store {
-	pair<char const *, uint32_t> store(T const &o) {
+	pair<char const *, uint32_t> store(T &o) {
 	marshaller<T>	m;
 		return m.marshall(o);
 	}
@@ -134,8 +134,8 @@ struct database : noncopyable {
 
 	~database();
 
-	bool	 put(Key const &key, Value const &value, transaction *);
-	bool	 put(Key const &key, Value const &value);
+	bool	 put(Key const &key, Value &value, transaction *);
+	bool	 put(Key const &key, Value &value);
 	Value	*get(Key const &key, transaction *);
 	Value	*get(Key const &key);
 
@@ -193,7 +193,7 @@ struct marshalling_buffer {
 
 	template<typename T>
 	void append(T const &);
-
+	
 	template<typename charT, typename traits, typename allocator>
 	void append(basic_string<charT, traits, allocator> const &);
 
@@ -216,7 +216,7 @@ struct marshalling_buffer {
 
 	template<typename charT, typename traits, typename allocator>
 	bool extract(basic_string<charT, traits, allocator> &);
-
+	
 	bool extract_bytes(char *b, size_t s) {
 		if (_size + s > _bufsz)
 			return false;
@@ -231,6 +231,14 @@ private:
 	size_t	 _bufsz;
 	bool	 _delete;
 };
+
+template<>
+void
+marshalling_buffer::append<imstring>(imstring const &);
+
+template<>
+bool
+marshalling_buffer::extract<imstring>(imstring &);
 
 template<typename T>
 void
@@ -347,14 +355,14 @@ database<Key, Value, Datastore>::~database(void)
 
 template<typename Key, typename Value, typename Datastore>
 bool
-database<Key, Value, Datastore>::put(Key const &key, Value const &value)
+database<Key, Value, Datastore>::put(Key const &key, Value &value)
 {
 	return put (key, value, NULL);
 }
 
 template<typename Key, typename Value, typename Datastore>
 bool
-database<Key, Value, Datastore>::put(Key const &key, Value const &value, transaction *txn)
+database<Key, Value, Datastore>::put(Key const &key, Value &value, transaction *txn)
 {
 pair<char const *, uint32_t>	mkey, mvalue;
 DBT				dbkey, dbvalue;
