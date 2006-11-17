@@ -77,6 +77,8 @@ struct inline_data_store {
 		return m.marshall(o);
 	}
 
+	void unstore(T const &o) {}
+
 	T *retrieve(pair<char const *, uint32_t> const &d) {
 	marshaller<T>	m;
 		return m.unmarshall(d);
@@ -96,12 +98,16 @@ struct environment : noncopyable {
 	template<typename Key, typename Value>
 	database<Key, Value>  *open_database(string const &path);
 	template<typename Key, typename Value, typename Datastore>
-	database<Key, Value, Datastore>  *open_database(string const &path);
+	database<Key, Value, Datastore>  *open_database(string const &);
+	template<typename Key, typename Value, typename Datastore>
+	database<Key, Value, Datastore>  *open_database(string const &, Datastore *);
 
 	template<typename Key, typename Value>
 	database<Key, Value> *create_database(string const &path);
 	template<typename Key, typename Value, typename Datastore>
 	database<Key, Value, Datastore> *create_database(string const &path);
+	template<typename Key, typename Value, typename Datastore>
+	database<Key, Value, Datastore> *create_database(string const &, Datastore *);
 
 	int	error		(void) const;
 	string	strerror	(void) const;
@@ -136,12 +142,13 @@ struct database : noncopyable {
 private:
 	friend struct environment;
 
-	explicit database(environment *env, string const &path, uint32_t flags);
+	explicit database(environment *, string const &, uint32_t, Datastore *);
 	static void errcall(DB_ENV const *, char const *pfx, char const *msg);
 
 	DB		*_db;
 	environment	*_env;
 	int		 _error;
+	Datastore	*_store;
 };
 
 struct transaction {
@@ -243,33 +250,50 @@ template<typename Key, typename Value>
 database<Key, Value> *
 environment::open_database(string const &name)
 {
-	return new database<Key, Value>(this, name, 0);
+	return new database<Key, Value>(this, name, 0, new inline_data_store<Value>);
 }
 
 template<typename Key, typename Value, typename Datastore>
 database<Key, Value, Datastore> *
 environment::open_database(string const &name)
 {
-	return new database<Key, Value, Datastore>(this, name, 0);
+	return new database<Key, Value, Datastore>(this, name, 0, new Datastore);
+}
+
+template<typename Key, typename Value, typename Datastore>
+database<Key, Value, Datastore> *
+environment::open_database(string const &name, Datastore *d)
+{
+	return new database<Key, Value, Datastore>(this, name, 0, d);
 }
 
 template<typename Key, typename Value>
 database<Key, Value> *
 environment::create_database(string const &name)
 {
-	return new database<Key, Value>(this, name, DB_CREATE);
+	return new database<Key, Value>(this, name, DB_CREATE, new inline_data_store<Value>);
 }
 
 template<typename Key, typename Value, typename Datastore>
 database<Key, Value, Datastore> *
 environment::create_database(string const &name)
 {
-	return new database<Key, Value, Datastore>(this, name, DB_CREATE);
+	return new database<Key, Value, Datastore>(this, name, DB_CREATE,
+		new Datastore);
 }
 
 template<typename Key, typename Value, typename Datastore>
-database<Key, Value, Datastore>::database(environment *env, string const &path, uint32_t flags)
+database<Key, Value, Datastore> *
+environment::create_database(string const &name, Datastore *d)
+{
+	return new database<Key, Value, Datastore>(this, name, DB_CREATE, d);
+}
+
+template<typename Key, typename Value, typename Datastore>
+database<Key, Value, Datastore>::database(environment *env, string const &path,
+		uint32_t flags, Datastore *d)
 	: _env(env)
+	, _store(d)
 {
 	_error = db_create(&_db, env->_env, 0);
 	if (_error != 0) {
@@ -316,6 +340,7 @@ database<Key, Value, Datastore>::strerror(void) const
 template<typename Key, typename Value, typename Datastore>
 database<Key, Value, Datastore>::~database(void)
 {
+	delete _store;
 	if (_db)
 		_db->close(_db, 0);
 }
@@ -334,11 +359,10 @@ database<Key, Value, Datastore>::put(Key const &key, Value const &value, transac
 pair<char const *, uint32_t>	mkey, mvalue;
 DBT				dbkey, dbvalue;
 marshaller<Key>			keymarsh;
-marshaller<Value>		valuemarsh;
 	memset(&dbkey, 0, sizeof(dbkey));
 	memset(&dbvalue, 0, sizeof(dbvalue));
 	mkey = keymarsh.marshall(key);
-	mvalue = valuemarsh.marshall(value);
+	mvalue = _store->store(value);
 	dbkey.data = (void *) mkey.first;
 	dbkey.size = mkey.second;
 	dbvalue.data = (void *) mvalue.first;
@@ -348,8 +372,10 @@ marshaller<Value>		valuemarsh;
 		DB_NOOVERWRITE | (txn ? 0 : DB_AUTO_COMMIT));
 	delete[] mkey.first;
 	delete[] mvalue.first;
-	if (_error != 0)
+	if (_error != 0) {
+		_store->unstore(value);
 		return false;
+	}
 	return true;
 }
 
@@ -367,7 +393,6 @@ database<Key, Value, Datastore>::get(Key const &key, transaction *txn)
 pair<char const *, uint32_t>	mkey;
 DBT				dbkey, dbvalue;
 marshaller<Key>			keymarsh;
-marshaller<Value>		vmarsh;
 	memset(&dbkey, 0, sizeof(dbkey));
 	memset(&dbvalue, 0, sizeof(dbvalue));
 	mkey = keymarsh.marshall(key);
@@ -378,7 +403,7 @@ marshaller<Value>		vmarsh;
 	if (_error != 0)
 		return NULL;
 Value	*ret;
-	ret = vmarsh.unmarshall(pair<char const *, uint32_t>(
+	ret = _store->retrieve(pair<char const *, uint32_t>(
 			(char const *) dbvalue.data, dbvalue.size));
 	free(dbvalue.data);
 	return ret;
