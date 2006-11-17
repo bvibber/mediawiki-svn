@@ -28,6 +28,7 @@ function wfSpecialTransaction() {
 			$fromTransactionId = $wgRequest->getInt('from-transaction');
 			$transactionCount = $wgRequest->getInt('transaction-count');
 			$userName = $wgRequest->getText('user-name');
+			$showRollBackOptions = $wgRequest->getBool('show-roll-back-options');
 			
 			if ($fromTransactionId == 0)
 				$fromTransactionId = getLatestTransactionId();
@@ -37,12 +38,33 @@ function wfSpecialTransaction() {
 			else
 				$transactionCount = min($transactionCount, 20);
 			
-			if (isset($_GET['roll-back']))
-				rollBackTransactions($fromTransactionId, $transactionCount, $userName);
-			
 			$wgOut->addHTML('<h1>Recent changes</h1>');
-			$wgOut->addHTML(getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName));
-			$wgOut->addHTML(getTransactionOverview($fromTransactionId, $transactionCount, $userName));
+			$wgOut->addHTML(getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName, $showRollBackOptions));
+
+			if ($showRollBackOptions)
+				$wgOut->addHTML('<form method="post" action="">');
+
+			$recordSet = getTransactionRecordSet($fromTransactionId, $transactionCount, $userName);	
+			
+			if (isset($_POST['roll-back']))
+				rollBackTransactions($recordSet);
+
+			$wgOut->addHTML(getTransactionOverview($recordSet, $showRollBackOptions));
+			
+			if ($showRollBackOptions)
+				$wgOut->addHTML(
+					'<div class="option-panel">'.
+						'<table cellpadding="0" cellspacing="0">' .
+							'<tr>' .
+								'<th>' . wfMsg('summary') . ': </th>' .
+								'<td class="option-field">' . getTextBox("summary") .'</td>' .
+							'</tr>' .
+							'<tr><th/><td>'. getSubmitButton("roll-back", "Roll back") .'</td></tr>'.
+						'</table>' .
+					'</div>'.
+					'</form>'
+				);
+			
 			$wgOut->addHTML(DefaultEditor::getExpansionCss());
 			$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 		}
@@ -51,7 +73,7 @@ function wfSpecialTransaction() {
 	SpecialPage::addPage(new SpecialTransaction());
 }
 
-function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName) {
+function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName, $showRollBackOptions) {
 	$countOptions = array();
 	
 	for ($i = 1; $i <= 20; $i++)
@@ -72,23 +94,22 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName)
 					$countOptions,
 					$transactionCount 
 				),
-			"User name" =>
-				getTextBox('user-name', $userName)
+			"User name" => getTextBox('user-name', $userName),
+			"Show roll back controls" => getCheckBox('show-roll-back-options', $showRollBackOptions)
 		),
 		'',
-		array(
-			"show" => "Show",
-//			"roll-back" => "Roll back"
-		)
+		array("show" => "Show")
 	); 
 }
 
 function initializeAttributes() {
 	global
-		$operationAttribute, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, $languageAttribute, $textAttribute,
-		$definedMeaningReferenceStructure;
+		$operationAttribute, $isLatestAttribute, $rollbackAttribute, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
+		$languageAttribute, $textAttribute, $definedMeaningReferenceStructure;
 
 	$operationAttribute = new Attribute('operation', 'Operation', 'text');
+	$isLatestAttribute = new Attribute('is-latest', 'Is latest', 'boolean');
+	$rollbackAttribute = new Attribute('roll-back', 'Roll back', 'boolean');
 
 	global
 		$updatedDefinitionStructure, $updatedDefinitionAttribute;
@@ -124,11 +145,13 @@ function initializeAttributes() {
 	$secondMeaningAttribute = new Attribute('second-meaning', "Second defined meaning", new RecordType($definedMeaningReferenceStructure));
 
 	$updatedRelationsStructure = new Structure(
+		$rollbackAttribute,
 		$relationIdAttribute,
 		$firstMeaningAttribute, 
 		$relationTypeAttribute, 
 		$secondMeaningAttribute,
-		$operationAttribute
+		$operationAttribute,
+		$isLatestAttribute
 	);
 	
 	$updatedRelationsAttribute = new Attribute('updated-relations', 'Relations', new RecordSetType($updatedRelationsStructure));
@@ -179,13 +202,10 @@ function initializeAttributes() {
 	$updatesInTransactionAttribute = new Attribute('updates-in-transaction', 'Updates in transaction', new RecordType($updatesInTransactionStructure));
 }
 
-function getTransactionOverview($fromTransactionId, $transactionCount, $userName) {
+function getTransactionRecordSet($fromTransactionId, $transactionCount, $userName) {
 	global
-		$transactionsTable, $transactionAttribute, $transactionIdAttribute, $userAttribute, $userIPAttribute, 
-		$timestampAttribute, $summaryAttribute, $updatesInTransactionAttribute, $updatedDefinitionAttribute,
-		$updatedSyntransesAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute,
-		$updatedCollectionMembershipAttribute;
-
+		$transactionAttribute, $transactionIdAttribute, $transactionsTable, $updatesInTransactionAttribute;
+		
 	$queryTransactionInformation = new QueryLatestTransactionInformation();
 
 	$restrictions = array("transaction_id <= $fromTransactionId");
@@ -211,6 +231,15 @@ function getTransactionOverview($fromTransactionId, $transactionCount, $userName
 	$recordSet->getStructure()->attributes[] = $updatesInTransactionAttribute;
 	expandUpdatesInTransactionInRecordSet($recordSet);
 
+	return $recordSet;	
+}
+
+function getTransactionOverview($recordSet, $showRollBackOptions) {
+	global
+		$transactionAttribute, $userAttribute,  $timestampAttribute, $summaryAttribute, 
+		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, 
+		$updatedRelationsAttribute, $updatedClassMembershipAttribute, $updatedCollectionMembershipAttribute;
+
 	$captionEditor = new RecordSpanEditor($transactionAttribute, ': ', ', ', false);
 	$captionEditor->addEditor(new TimestampEditor($timestampAttribute, new SimplePermissionController(false), false));
 	$captionEditor->addEditor(new UserEditor($userAttribute, new SimplePermissionController(false), false));
@@ -219,7 +248,7 @@ function getTransactionOverview($fromTransactionId, $transactionCount, $userName
 	$valueEditor = new RecordUnorderedListEditor($updatesInTransactionAttribute, 5);
 	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($updatedDefinitionAttribute));
 	$valueEditor->addEditor(getUpdatedSyntransesEditor($updatedSyntransesAttribute));
-	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute));
+	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute));
 	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($updatedCollectionMembershipAttribute));
 	
@@ -327,11 +356,17 @@ function getUpdatedSyntransesRecordSet($transactionId) {
 function getUpdatedRelationsRecordSet($transactionId) {
 	global
 		$updatedRelationsStructure, $relationIdAttribute, $firstMeaningAttribute, $secondMeaningAttribute, 
-		$relationTypeAttribute, $operationAttribute;
-	
+		$relationTypeAttribute, $operationAttribute, $isLatestAttribute, $rollbackAttribute;
+
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT relation_id, meaning1_mid, meaning2_mid, relationtype_mid, " . getOperationSelectColumn('uw_meaning_relations', $transactionId) . 
+		", (add_transaction_id=$transactionId AND remove_transaction_id IS NULL) OR (remove_transaction_id=$transactionId AND NOT EXISTS(" .
+			"SELECT latest_relations.relation_id " .
+			" FROM uw_meaning_relations AS latest_relations" .
+			" WHERE relation_id=latest_relations.relation_id" .
+			" AND (latest_relations.add_transaction_id > $transactionId) " .
+		")) AS is_latest " .  
 		" FROM uw_meaning_relations " .
 		" WHERE " . getInTransactionRestriction('uw_meaning_relations', $transactionId)
 	);
@@ -345,6 +380,8 @@ function getUpdatedRelationsRecordSet($transactionId) {
 		$record->setAttributeValue($secondMeaningAttribute, getDefinedMeaningReferenceRecord($row->meaning2_mid));
 		$record->setAttributeValue($relationTypeAttribute, getDefinedMeaningReferenceRecord($row->relationtype_mid));
 		$record->setAttributeValue($operationAttribute, $row->operation);
+		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		$record->setAttributeValue($rollbackAttribute, $row->is_latest);
 		
 		$recordSet->add($record);	
 	}
@@ -436,15 +473,21 @@ function getUpdatedSyntransesEditor($attribute) {
 	return $editor;
 }
 
-function getUpdatedRelationsEditor($attribute) {
+function getUpdatedRelationsEditor($attribute, $showRollBackOptions) {
 	global
-		$firstMeaningAttribute, $relationTypeAttribute, $secondMeaningAttribute, $operationAttribute;
+		$firstMeaningAttribute, $relationTypeAttribute, $secondMeaningAttribute, $operationAttribute, 
+		$isLatestAttribute, $rollbackAttribute;
 		
 	$editor = createTableViewer($attribute);
+	
+	if ($showRollBackOptions)
+		$editor->addEditor(new RollbackEditor($rollbackAttribute));
+		
 	$editor->addEditor(createDefinedMeaningReferenceViewer($firstMeaningAttribute));
 	$editor->addEditor(createDefinedMeaningReferenceViewer($relationTypeAttribute));
 	$editor->addEditor(createDefinedMeaningReferenceViewer($secondMeaningAttribute));
 	$editor->addEditor(createShortTextViewer($operationAttribute));
+	$editor->addEditor(createBooleanViewer($isLatestAttribute));
 	
 	return $editor;
 }
@@ -474,8 +517,106 @@ function getUpdatedCollectionMembershipEditor($attribute) {
 	return $editor;
 }
 
-function rollBackTransactions($fromTransactionId, $transactionCount, $userName) {
+function simpleRecord($structure, $attribute, $value) {
+	$result = new ArrayRecord($structure);
+	$result->setAttributeValue($attribute, $value);
 	
+	return $result;
+}
+
+function rollBackTransactions($recordSet) {
+	global
+		$wgRequest, $wgUser,
+		$transactionIdAttribute, $updatesInTransactionAttribute, $updatedRelationsAttribute;
+		
+	$summary = $wgRequest->getText('summary');
+	startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
+		
+	$idStack = new IdStack('update-transaction');
+	$transactionKeyStructure = $recordSet->getKey();
+	
+	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
+		$transactionRecord = $recordSet->getRecord($i);
+
+		$transactionId = $transactionRecord->getAttributeValue($transactionIdAttribute);
+		$idStack->pushKey(simpleRecord($transactionKeyStructure, $transactionIdAttribute, $transactionId));
+
+		$updatesInTransaction = $transactionRecord->getAttributeValue($updatesInTransactionAttribute);
+		$idStack->pushAttribute($updatesInTransactionAttribute);
+
+		$updatedRelations = $updatesInTransaction->getAttributeValue($updatedRelationsAttribute);
+		$idStack->pushAttribute($updatedRelationsAttribute);
+		rollBackRelations($idStack, $updatedRelations);
+		$idStack->popAttribute();
+		
+		$idStack->popAttribute();
+		$idStack->popKey();
+	}
+}
+
+function shouldRollBack($idStack) {
+	global
+		$rollbackAttribute;
+	
+	$idStack->pushAttribute($rollbackAttribute);				
+	$result = isset($_POST[$idStack->getId()]);
+	$idStack->popAttribute();		
+	
+	return $result;
+}
+
+function getMeaningId($record, $referenceAttribute) {
+	global
+		$definedMeaningIdAttribute;
+	
+	return $record->getAttributeValue($referenceAttribute)->getAttributeValue($definedMeaningIdAttribute);
+}
+
+function rollBackRelations($idStack, $relations) {
+	global
+		$relationIdAttribute, $isLatestAttribute, $firstMeaningAttribute, $secondMeaningAttribute, $relationTypeAttribute,
+		$operationAttribute;
+	
+	$relationsKeyStructure = $relations->getKey();
+	
+	for ($i = 0; $i < $relations->getRecordCount(); $i++) {
+		$relationRecord = $relations->getRecord($i);
+
+		$relationId = $relationRecord->getAttributeValue($relationIdAttribute);
+		$isLatest = $relationRecord->getAttributeValue($isLatestAttribute);
+
+		if ($isLatest) {
+			$idStack->pushKey(simpleRecord($relationsKeyStructure, $relationIdAttribute, $relationId));
+			
+			if (shouldRollBack($idStack)) 
+				rollBackRelation(
+					$relationId,
+					getMeaningId($relationRecord, $firstMeaningAttribute),
+					getMeaningId($relationRecord, $relationTypeAttribute),
+					getMeaningId($relationRecord, $secondMeaningAttribute),
+					$relationRecord->getAttributeValue($operationAttribute)
+				);
+				
+			$idStack->popKey();
+		}
+	}	
+}
+
+function rollBackRelation($relationId, $firstMeaningId, $relationTypeId, $secondMeaningId, $operation) {
+	$dbr = &wfGetDB(DB_MASTER);
+	
+	if ($operation == 'Added')
+		removeRelationWithId($relationId);
+	else	
+		addRelation($firstMeaningId, $relationTypeId, $secondMeaningId, $operation);	
+	
+//	echo(
+//		"Relation ID: " . $relationId . "\n" .
+//		"First meaning ID: ". $firstMeaningId . "\n" .
+//		"Relation type ID: ". $relationTypeId . "\n" .
+//		"Second meaning ID: ". $secondMeaningId . "\n" . 
+//		"Operation: " . $operation . "\n" 
+//	);
 }
 
 ?>

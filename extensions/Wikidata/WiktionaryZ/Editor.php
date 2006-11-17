@@ -854,7 +854,7 @@ class BooleanEditor extends ScalarEditor {
 	}
 
 	public function getEditHTML($idPath, $value) {
-			return getCheckBox($this->updateId($idPath->getId()), $value);
+		return getCheckBox($this->updateId($idPath->getId()), $value);
 	}
 
 	public function add($idPath) {
@@ -1455,6 +1455,29 @@ class TimestampEditor extends ScalarEditor {
 	}
 	
 	public function add($idPath) {
+	}
+}
+
+// The roll back editor is tricked. It shows a checkbox when its value is 'true', meaning that the record is the latest
+// so it can be rolled back. However, when requesting the input value it returns the value of the roll back check box.
+// This can possibly be solved better later on when we choose to let editors fetch the value(s) of the attribute(s) they're
+// viewing within their parent. The roll back editor could then inspect the value of the $isLatestAttribute to decide whether
+// to show the roll back check box. 
+
+class RollbackEditor extends BooleanEditor {
+	public function __construct($attribute)  {
+		parent::__construct($attribute, new SimplePermissionController(false), false, false);
+	}
+
+	public function getViewHTML($idPath, $value) {
+		if ($value)
+			return $this->getEditHTML($idPath, false);
+		else
+			return "";
+	}
+
+	public function shouldRollBack($id, $value) {
+		return $value && isset($_POST[$id]);
 	}
 }
 

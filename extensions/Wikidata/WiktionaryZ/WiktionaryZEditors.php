@@ -305,6 +305,10 @@ function createShortTextViewer($attribute) {
 	return new ShortTextEditor($attribute, new SimplePermissionController(false), false);
 }
 
+function createBooleanViewer($attribute) {
+	return new BooleanEditor($attribute, new SimplePermissionController(false), false, false);
+}
+
 function createDefinedMeaningReferenceViewer($attribute) {
 	return new DefinedMeaningReferenceEditor($attribute, new SimplePermissionController(false), false);
 }
