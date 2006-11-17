@@ -236,12 +236,48 @@ function removeRelationWithId($relationId) {
 				" AND remove_transaction_id IS NULL");
 }
 
-function addClassAttribute($definedMeaningId, $attibuteMeaningId) {
-//TODO: addClassAttribute	
+function addClassAttribute($classMeaningId, $attibuteMeaningId) {
+	if (!classAttributeExists($classMeaningId, $attibuteMeaningId)) 
+		createClassAttribute($classMeaningId, $attibuteMeaningId);		
+}
+
+function classAttributeExists($classMeaningId, $attibuteMeaningId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT object_id FROM uw_class_attributes " .
+								"WHERE class_mid=$classMeaningId AND attribute_mid=$attibuteMeaningId " .
+								"AND " . getLatestTransactionRestriction('uw_class_attributes'));
+	
+	return $dbr->numRows($queryResult) > 0;		
+}
+
+function createClassAttribute($classMeaningId, $attibuteMeaningId) {
+	$objectId = getClassAttributeId($classMeaningId, $attibuteMeaningId);
+	
+	if ($objectId == 0)
+		$objectId = newObjectId('uw_class_attributes');
+		
+	$dbr =& wfGetDB(DB_MASTER);
+	$sql = "INSERT INTO uw_class_attributes(object_id, class_mid, attribute_mid, add_transaction_id) " .
+			" VALUES ($objectId, $classMeaningId, $attibuteMeaningId, ". getUpdateTransactionId() .")";
+	$dbr->query($sql);	
+}
+
+function getClassAttributeId($classMeaningId, $attibuteMeaningId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT object_id FROM uw_class_attributes " .
+								"WHERE class_mid=$classMeaningId AND attribute_mid=$attibuteMeaningId");
+
+	if ($classAttribute = $dbr->fetchObject($queryResult))
+		return $classAttribute->object_id;
+	else
+		return 0;
 }
 
 function removeClassAttributeWithId($classAttributeId) {
-//TODO: removeClassAttributeWithId
+	$dbr =& wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE uw_class_attributes SET remove_transaction_id=" . getUpdateTransactionId() .
+				" WHERE object_id=$classAttributeId " .
+				" AND remove_transaction_id IS NULL");
 }			
 
 function getClassMembershipId($classMemberId, $classId) {
