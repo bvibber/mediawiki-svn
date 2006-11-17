@@ -141,7 +141,7 @@ function findOrCreateExpression($spelling, $languageId) {
 function getSynonymId($definedMeaningId, $expressionId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT syntrans_sid FROM uw_syntrans " .
-								"WHERE defined_meaning_id=$definedMeaningId AND expression_id=$expressionId");
+								"WHERE defined_meaning_id=$definedMeaningId AND expression_id=$expressionId LIMIT 1");
 
 	if ($synonym = $dbr->fetchObject($queryResult))
 		return $synonym->syntrans_sid;
@@ -188,7 +188,7 @@ function getMaximum($field, $table) {
 function getRelationId($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT relation_id FROM uw_meaning_relations " .
-								"WHERE meaning1_mid=$definedMeaning1Id AND meaning2_mid=$definedMeaning2Id AND relationtype_mid=$relationTypeId");
+								"WHERE meaning1_mid=$definedMeaning1Id AND meaning2_mid=$definedMeaning2Id AND relationtype_mid=$relationTypeId LIMIT 1");
 
 	if ($relation = $dbr->fetchObject($queryResult))
 		return $relation->relation_id;
@@ -283,7 +283,7 @@ function removeClassAttributeWithId($classAttributeId) {
 function getClassMembershipId($classMemberId, $classId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT class_membership_id FROM uw_class_membership " .
-								"WHERE class_mid=$classId AND class_member_mid=$classMemberId");
+								"WHERE class_mid=$classId AND class_member_mid=$classMemberId LIMIT 1");
 
 	if ($classMembership = $dbr->fetchObject($queryResult))
 		return $classMembership->class_membership_id;
