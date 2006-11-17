@@ -681,6 +681,18 @@ function getDefinedMeaningDefinition($definedMeaningId) {
 	return $result;
 }
 
+function isClass($objectId) {
+	$dbr = & wfGetDB(DB_SLAVE);	
+	$query = "SELECT uw_collection_ns.collection_id " .
+			 "FROM (uw_collection_contents INNER JOIN uw_collection_ns ON uw_collection_ns.collection_id = uw_collection_contents.collection_id) " .
+			 "WHERE uw_collection_contents.member_mid = $objectId AND uw_collection_ns.collection_type = 'CLAS' " .
+			 	"AND " . getLatestTransactionRestriction('uw_collection_contents') . " ".
+			 	"AND " .getLatestTransactionRestriction('uw_collection_ns');
+	$queryResult = $dbr->query($query);
+
+	return $dbr->numRows($queryResult) > 0;	 
+}
+
 function findCollection($name) {
 	$dbr = & wfGetDB(DB_SLAVE);
 	$query = "SELECT collection_id, collection_mid, collection_type FROM uw_collection_ns" .

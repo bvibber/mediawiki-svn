@@ -133,7 +133,11 @@ function getRecordAsEditTableCells($record, $idPath, $editor, &$startColumn = 0)
 		if (is_a($childEditor, RecordTableCellEditor))			
 			$result .= getRecordAsEditTableCells($value, $idPath, $childEditor, $startColumn); 
 		else {	
-			$displayValue = $childEditor->edit($idPath, $value);
+			if($childEditor->showEditField($idPath))
+				$displayValue = $childEditor->edit($idPath, $value);
+			else
+				$displayValue = "";
+			
 			$result .= '<td class="'. getHTMLClassForType($type) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
 				
 			$startColumn++;

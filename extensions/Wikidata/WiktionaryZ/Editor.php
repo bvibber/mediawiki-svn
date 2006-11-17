@@ -92,6 +92,7 @@ interface Editor {
 
 	public function showsData($value);
 	public function view($idPath, $value);
+	public function showEditField($idPath);
 	public function edit($idPath, $value);
 	public function add($idPath);
 	public function save($idPath, $value);
@@ -180,16 +181,18 @@ abstract class Viewer extends DefaultEditor {
 
 abstract class RecordSetEditor extends DefaultEditor {
 	protected $permissionController;
-	protected $allowAdd;
+	protected $showEditFieldChecker;
+	protected $allowAddController;
 	protected $allowRemove;
 	protected $isAddField;
 	protected $controller;
 
-	public function __construct($attribute, $permissionController, $allowAdd, $allowRemove, $isAddField, $controller) {
+	public function __construct($attribute, $permissionController, $showEditFieldChecker, $allowAddController, $allowRemove, $isAddField, $controller) {
 		parent::__construct($attribute);
 
 		$this->permissionController = $permissionController;
-		$this->allowAdd = $allowAdd;
+		$this->showEditFieldChecker = $showEditFieldChecker;
+		$this->allowAddController = $allowAddController;
 		$this->allowRemove = $allowRemove;
 		$this->isAddField = $isAddField;
 		$this->controller = $controller;
@@ -328,7 +331,7 @@ abstract class RecordSetEditor extends DefaultEditor {
 	}
 
 	public function save($idPath, $value) {
-		if ($this->allowAdd && $this->controller != null) {
+		if ($this->allowAddController->check($idPath) && $this->controller != null) {
 			$addStructure = $this->getAddStructure();
 
 			if (count($addStructure->attributes) > 0) {
@@ -376,6 +379,10 @@ abstract class RecordSetEditor extends DefaultEditor {
 	public function showsData($value) {
 		return $value->getRecordCount() > 0;
 	}
+	
+	public function showEditField($idPath) {
+		return $this->showEditFieldChecker->check($idPath);
+	}
 }
 
 class RecordSetTableEditor extends RecordSetEditor {
@@ -404,7 +411,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 	public function edit($idPath, $value) {
 		global
 			$wgStylePath;
-			
+
 		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
 		$key = $value->getKey();
 
@@ -452,8 +459,8 @@ class RecordSetTableEditor extends RecordSetEditor {
 
 			$result .= '</tr>';
 		}
-
-		if ($this->allowAdd)
+		
+		if ($this->allowAddController->check($idPath))
 			$result .= $this->getAddRowAsHTML($idPath, $this->repeatInput, $this->allowRemove);
 
 		$result .= '</table>';
@@ -598,6 +605,10 @@ abstract class RecordEditor extends DefaultEditor {
 	public function showsData($value) {
 		return true;
 	}
+	
+	public function showEditField($idPath) {
+		return true;
+	}
 }
 
 class RecordTableCellEditor extends RecordEditor {
@@ -674,6 +685,10 @@ abstract class ScalarEditor extends DefaultEditor {
 	}
 	
 	public function showsData($value) {
+		return true;
+	}
+	
+	public function showEditField($idPath) {
 		return true;
 	}
 }
@@ -985,18 +1000,24 @@ class RecordListEditor extends RecordEditor {
 		return $result;
 	}
 
+	public function showEditField($idPath) {
+		return true;
+	}
+
 	public function edit($idPath, $value) {
 		foreach ($this->editors as $editor) {
 			$attribute = $editor->getAttribute();
 			$idPath->pushAttribute($attribute);
-			$class = $idPath->getClass();
-			$attributeId = $idPath->getId();
-
-			$result .= 	'<' . $this->htmlTag . '>'.
-				        	$this->childHeader($editor, $attribute, $class, $attributeId) .
-						    $this->editChild($editor, $idPath, $value,  $attribute, $class, $attributeId) .
-					 	'</' . $this->htmlTag . '>';
-
+			
+			if($editor->showEditField($idPath)) {
+				$class = $idPath->getClass();
+				$attributeId = $idPath->getId();
+	
+				$result .= 	'<' . $this->htmlTag . '>'.
+					        	$this->childHeader($editor, $attribute, $class, $attributeId) .
+							    $this->editChild($editor, $idPath, $value,  $attribute, $class, $attributeId) .
+						 	'</' . $this->htmlTag . '>';
+			}
 			$idPath->popAttribute();
 		}
 		return $result;
@@ -1123,6 +1144,10 @@ class WrappingEditor implements Editor {
 		return $this->wrappedEditor->showsData($value);
 	}
 	
+	public function showEditField($idPath) {
+		return $this->wrappedEditor->showEditField($idPath);
+	}
+	
 	public function view($idPath, $value) {
 		return $this->wrappedEditor->view($idPath, $value);
 	}
@@ -1192,8 +1217,8 @@ class RecordSetListEditor extends RecordSetEditor {
 	protected $captionEditor;
 	protected $valueEditor;
 
-	public function __construct($attribute, $permissionController, $allowAdd, $allowRemove, $isAddField, $controller, $headerLevel, $childrenExpanded) {
-		parent::__construct($attribute, $permissionController, $allowAdd, $allowRemove, $isAddField, $controller);
+	public function __construct($attribute, $permissionController, $showEditFieldChecker, $allowAddController, $allowRemove, $isAddField, $controller, $headerLevel, $childrenExpanded) {
+		parent::__construct($attribute, $permissionController, $showEditFieldChecker, $allowAddController, $allowRemove, $isAddField, $controller);
 
 		$this->headerLevel = $headerLevel;
 		$this->childrenExpanded = $childrenExpanded;
@@ -1255,7 +1280,7 @@ class RecordSetListEditor extends RecordSetEditor {
 		
 		$recordCount = $value->getRecordCount();
 		
-		if ($recordCount > 0 || $this->allowAdd) {
+		if ($recordCount > 0 || $this->allowAddController->check($idPath)) {
 			$result = '<ul class="collapsable-items">';
 			$key = $value->getKey();
 			$captionAttribute = $this->captionEditor->getAttribute();
@@ -1285,7 +1310,7 @@ class RecordSetListEditor extends RecordSetEditor {
 				$idPath->popKey();
 			}
 	
-			if ($this->allowAdd) {
+			if ($this->allowAddController->check($idPath)) {
 				$recordId = 'add-' . $idPath->getId();
 				$idPath->pushAttribute($captionAttribute);
 				$class = $idPath->getClass();
@@ -1347,6 +1372,10 @@ class AttributeLabelViewer extends Viewer {
 	}
 	
 	public function showsData($value) {
+		return true;
+	}
+	
+	public function showEditField($idPath){
 		return true;
 	}
 }
@@ -1456,6 +1485,44 @@ class TimestampEditor extends ScalarEditor {
 	
 	public function add($idPath) {
 	}
+}
+
+//added the "allow add controller" to be able to control the usage of the add field in different circumstances
+//instances of this class are used instead of the boolean "allowAdd" in the editors
+class AllowAddController {
+	protected $value;
+	
+	public function __construct($value){
+		$this->value = $value;
+	}
+	public function check($idPath){
+		return $this->value;
+	}
+}
+
+class ShowEditFieldChecker {
+	protected $value;
+	
+	public function __construct($value){
+		$this->value = $value;
+	}
+	public function check($idPath){
+		return $this->value;
+	}
+}
+
+class ShowEditFieldForClassesChecker extends ShowEditFieldChecker{
+	protected $objectIdAttributeLevel;
+	protected $objectIdAttribute;
+	
+	public function __construct($objectIdAttributeLevel, $objectIdAttribute) {
+		$this->objectIdAttributeLevel = $objectIdAttributeLevel;
+		$this->objectIdAttribute = $objectIdAttribute;
+	}
+	public function check($idPath) {
+		$objectId = $idPath->getKeyStack()->peek($this->objectIdAttributeLevel)->getAttributeValue($this->objectIdAttribute);
+		return isClass($objectId);			
+	}	
 }
 
 // The roll back editor is tricked. It shows a checkbox when its value is 'true', meaning that the record is the latest

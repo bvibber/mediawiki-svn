@@ -68,7 +68,7 @@ function getTranslatedTextEditor($attribute, $controller, $showRecordLifeSpan) {
 	global
 		$languageAttribute, $textAttribute;
 
-	$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(true), true, true, true, $controller);
+	$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, true, $controller);
 	$editor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new TextEditor($textAttribute, new SimplePermissionController(true), true));
 
@@ -86,8 +86,8 @@ function getAlternativeDefinitionsEditor($showRecordLifeSpan) {
 	global
 		$alternativeDefinitionsAttribute, $alternativeDefinitionAttribute, $sourceAttribute;
 
-	$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningAlternativeDefinitionsController());
-//		$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new AlternativeDefinitionsPermissionController(), true, true, false, new DefinedMeaningAlternativeDefinitionsController());
+	$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new DefinedMeaningAlternativeDefinitionsController());
+//		$editor = new RecordSetTableEditor($alternativeDefinitionsAttribute, new AlternativeDefinitionsPermissionController(), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new DefinedMeaningAlternativeDefinitionsController());
 	$editor->addEditor(getTranslatedTextEditor($alternativeDefinitionAttribute, new DefinedMeaningAlternativeDefinitionController(), $showRecordLifeSpan));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($sourceAttribute, new SimplePermissionController(false), true));
 	
@@ -109,9 +109,9 @@ function getExpressionTableCellEditor($attribute) {
 
 function getClassAttributesEditor($showRecordLifeSpan) {
 	global
-		$classAttributesAttribute, $classAttributeAttributeAttribute;
+		$definedMeaningIdAttribute, $classAttributesAttribute, $classAttributeAttributeAttribute;
 
-	$tableEditor = new RecordSetTableEditor($classAttributesAttribute, new SimplePermissionController(true), true, true, false, new ClassAttributesController());
+	$tableEditor = new RecordSetTableEditor($classAttributesAttribute, new SimplePermissionController(true), new ShowEditFieldForClassesChecker(0, $definedMeaningIdAttribute), new AllowAddController(true), true, false, new ClassAttributesController());
 	$tableEditor->addEditor(new DefinedMeaningReferenceEditor($classAttributeAttributeAttribute, new SimplePermissionController(false), true));
 	addTableLifeSpanEditor($tableEditor, $showRecordLifeSpan);
 	return $tableEditor;
@@ -122,7 +122,7 @@ function getSynonymsAndTranslationsEditor($showRecordLifeSpan) {
 		$synonymsAndTranslationsAttribute, $identicalMeaningAttribute, $expressionIdAttribute, 
 		$expressionAttribute, $synonymsAndTranslationsObjectAttributesEditor;
 
-	$tableEditor = new RecordSetTableEditor($synonymsAndTranslationsAttribute, new SimplePermissionController(true), true, true, false, new SynonymTranslationController());
+	$tableEditor = new RecordSetTableEditor($synonymsAndTranslationsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new SynonymTranslationController());
 	$tableEditor->addEditor(getExpressionTableCellEditor($expressionAttribute));
 	$tableEditor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(true), true, true));
 	$tableEditor->addEditor(new PopUpEditor($synonymsAndTranslationsObjectAttributesEditor, 'Annotation'));
@@ -137,7 +137,7 @@ function getDefinedMeaningRelationsEditor($showRecordLifeSpan) {
 		$relationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute,
 		$relationsObjectAttributesEditor;
 
-	$editor = new RecordSetTableEditor($relationsAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningRelationController());
+	$editor = new RecordSetTableEditor($relationsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new DefinedMeaningRelationController());
 	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new PopUpEditor($relationsObjectAttributesEditor, 'Annotation'));
@@ -152,7 +152,7 @@ function getDefinedMeaningReciprocalRelationsEditor($showRecordLifeSpan) {
 		$reciprocalRelationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute,
 		$relationsObjectAttributesEditor;
 
-	$editor = new RecordSetTableEditor($reciprocalRelationsAttribute, new SimplePermissionController(false), false, false, false, null);
+	$editor = new RecordSetTableEditor($reciprocalRelationsAttribute, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new PopUpEditor($relationsObjectAttributesEditor, 'Annotation'));
@@ -166,7 +166,7 @@ function getDefinedMeaningClassMembershipEditor($showRecordLifeSpan) {
 	global
 		$classMembershipAttribute, $classAttribute;
 
-	$editor = new RecordSetTableEditor($classMembershipAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningClassMembershipController());
+	$editor = new RecordSetTableEditor($classMembershipAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new DefinedMeaningClassMembershipController());
 	$editor->addEditor(new ClassReferenceEditor($classAttribute, new SimplePermissionController(false), true));
 
 	addTableLifeSpanEditor($editor, $showRecordLifeSpan);
@@ -178,7 +178,7 @@ function getDefinedMeaningCollectionMembershipEditor($showRecordLifeSpan) {
 	global
 		$collectionMembershipAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute;
 
-	$editor = new RecordSetTableEditor($collectionMembershipAttribute, new SimplePermissionController(true), true, true, false, new DefinedMeaningCollectionController());
+	$editor = new RecordSetTableEditor($collectionMembershipAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new DefinedMeaningCollectionController());
 	$editor->addEditor(new CollectionReferenceEditor($collectionMeaningAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new ShortTextEditor($sourceIdentifierAttribute, new SimplePermissionController(true), true));
 
@@ -191,7 +191,7 @@ function getTextAttributeValuesEditor($showRecordLifeSpan, $controller) {
 	global
 		$textAttributeAttribute, $textAttribute, $textAttributeValuesAttribute, $textValueObjectAttributesEditor;
 
-	$editor = new RecordSetTableEditor($textAttributeValuesAttribute, new SimplePermissionController(true), true, true, false, $controller);
+	$editor = new RecordSetTableEditor($textAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new TextAttributeEditor($textAttributeAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new TextEditor($textAttribute, new SimplePermissionController(true), true));
 	$editor->addEditor(new PopUpEditor($textValueObjectAttributesEditor, 'Annotation'));
@@ -205,7 +205,7 @@ function getTranslatedTextAttributeValuesEditor($showRecordLifeSpan, $controller
 	global
 		$translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, $translatedTextValueObjectAttributesEditor;
 
-	$editor = new RecordSetTableEditor($translatedTextAttributeValuesAttribute, new SimplePermissionController(true), true, true, false, $controller);
+	$editor = new RecordSetTableEditor($translatedTextAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new TranslatedTextAttributeEditor($translatedTextAttributeAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(getTranslatedTextEditor($translatedTextValueAttribute, new TranslatedTextAttributeValueController(), $showRecordLifeSpan));
 	$editor->addEditor(new PopUpEditor($translatedTextValueObjectAttributesEditor, 'Annotation'));
@@ -224,7 +224,7 @@ function getExpressionMeaningsEditor($attribute, $allowAdd, $showRecordLifeSpan)
 	$definedMeaningCaptionEditor = new DefinedMeaningHeaderEditor($definedMeaningIdAttribute, new SimplePermissionController(false), true, 75);
 	$definedMeaningCaptionEditor->setAddText("New exact meaning");
 
-	$expressionMeaningsEditor = new RecordSetListEditor($attribute, new SimplePermissionController(true), $allowAdd, false, $allowAdd, new ExpressionMeaningController(), 3, false);
+	$expressionMeaningsEditor = new RecordSetListEditor($attribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController($allowAdd), false, $allowAdd, new ExpressionMeaningController(), 3, false);
 	$expressionMeaningsEditor->setCaptionEditor($definedMeaningCaptionEditor);
 	$expressionMeaningsEditor->setValueEditor($definedMeaningEditor);
 	
@@ -246,7 +246,7 @@ function getExpressionsEditor($spelling, $showRecordLifeSpan) {
 	$expressionEditor = new RecordSpanEditor($expressionAttribute, ': ', ' - ');
 	$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
 
-	$expressionsEditor = new RecordSetListEditor($expressionsAttribute, new SimplePermissionController(true), true, false, false, new ExpressionController($spelling), 2, true);
+	$expressionsEditor = new RecordSetListEditor($expressionsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), false, false, new ExpressionController($spelling), 2, true);
 	$expressionsEditor->setCaptionEditor($expressionEditor);
 	$expressionsEditor->setValueEditor($expressionMeaningsRecordEditor);
 
@@ -290,7 +290,7 @@ function getDefinedMeaningEditor($showRecordLifeSpan) {
 }
 
 function createTableViewer($attribute) {
-	return new RecordSetTableEditor($attribute, new SimplePermissionController(false), false, false, false, null);
+	return new RecordSetTableEditor($attribute, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 }
 
 function createLanguageViewer($attribute) {

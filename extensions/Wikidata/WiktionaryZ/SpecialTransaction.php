@@ -257,7 +257,7 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($updatedCollectionMembershipAttribute));
 	
-	$editor = new RecordSetListEditor(null, new SimplePermissionController(false), false, false, false, null, 4, false);
+	$editor = new RecordSetListEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null, 4, false);
 	$editor->setCaptionEditor($captionEditor);
 	$editor->setValueEditor($valueEditor);
 	

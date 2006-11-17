@@ -88,7 +88,7 @@
 				$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
 				$expressionEditor->addEditor(new SpellingEditor($spellingAttribute, new SimplePermissionController(false), false));
 
-				$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+				$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 				$editor->addEditor($expressionEditor);
 				$editor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 

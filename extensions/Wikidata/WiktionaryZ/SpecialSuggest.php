@@ -176,7 +176,7 @@ function getRelationTypeAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 	$editor->addEditor(new ShortTextEditor($relationTypeAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 	
@@ -214,7 +214,7 @@ function getTextAttributeAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 	$editor->addEditor(new ShortTextEditor($textAttributeAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 
@@ -234,7 +234,7 @@ function getTranslatedTextAttributeAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 	$editor->addEditor(new ShortTextEditor($translatedTextAttributeAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 
@@ -267,7 +267,7 @@ function getDefinedMeaningAsRecordSet($queryResult) {
 	$expressionEditor->addEditor(new ShortTextEditor($spellingAttribute, new SimplePermissionController(false), false));
 	$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 	$editor->addEditor($expressionEditor);
 	$editor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 
@@ -286,7 +286,7 @@ function getCollectionAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->collection_id, $row->spelling));			
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
 
 	return array($recordSet, $editor);		
@@ -304,7 +304,7 @@ function getLanguageAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->row_id, $row->language_name));			
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 	$editor->addEditor(new ShortTextEditor($languageAttribute, new SimplePermissionController(false), false));
 
 	return array($recordSet, $editor);		
@@ -324,7 +324,7 @@ function getTransactionAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->transaction_id, getUserLabel($row->user_id, $row->user_ip), $row->time, $row->comment));			
 	
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 	$editor->addEditor(new ShortTextEditor($timestampAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new ShortTextEditor($idAttribute, new SimplePermissionController(false), false));
 	$editor->addEditor(new ShortTextEditor($userAttribute, new SimplePermissionController(false), false));

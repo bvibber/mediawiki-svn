@@ -78,7 +78,7 @@ function getDefinedMeaningAsRelation($queryResult) {
 	$meaningEditor->addEditor(new DefinedMeaningReferenceEditor($definedMeaningAttribute, new SimplePermissionController(false), false));
 	$meaningEditor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new AllowAddController(false), false, false, null);
 	$editor->addEditor($expressionEditor);
 	$editor->addEditor($meaningEditor);
 
