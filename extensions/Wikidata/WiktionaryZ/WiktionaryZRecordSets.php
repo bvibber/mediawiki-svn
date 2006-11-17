@@ -576,7 +576,7 @@ function getDefinedMeaningRelationsRecordSet($definedMeaningId, $queryTransactio
 		),
 		$meaningRelationsTable,
 		array("meaning1_mid=$definedMeaningId"),
-		array('relationtype_mid')
+		array('add_transaction_id')
 	);
 	
 //	echo "<!--" . (microtime(true) - $startTime). " -->";
