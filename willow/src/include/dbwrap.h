@@ -138,6 +138,8 @@ struct database : noncopyable {
 	bool	 put(Key const &key, Value &value);
 	Value	*get(Key const &key, transaction *);
 	Value	*get(Key const &key);
+	bool	 del(Key const &key, transaction *);
+	bool	 del(Key const &key);
 
 private:
 	friend struct environment;
@@ -415,6 +417,30 @@ Value	*ret;
 			(char const *) dbvalue.data, dbvalue.size));
 	free(dbvalue.data);
 	return ret;
+}
+
+template<typename Key, typename Value, typename Datastore>
+bool
+database<Key, Value, Datastore>::del(Key const &key)
+{
+	return del(key, NULL);
+}
+
+template<typename Key, typename Value, typename Datastore>
+bool
+database<Key, Value, Datastore>::del(Key const &key, transaction *txn)
+{
+pair<char const *, uint32_t>	mkey;
+DBT				dbkey;
+marshaller<Key>			keymarsh;
+	memset(&dbkey, 0, sizeof(dbkey));
+	mkey = keymarsh.marshall(key);
+	dbkey.data = (void *)mkey.first;
+	dbkey.size = mkey.second;
+	_error = _db->get(_db, txn ? txn->_txn : NULL, &dbkey, 0);
+	if (_error != 0)
+		return false;
+	return true;
 }
 
 template<typename Key, typename Value, typename Datastore>
