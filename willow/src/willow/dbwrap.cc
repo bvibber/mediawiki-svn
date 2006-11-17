@@ -139,6 +139,7 @@ size_t	sz = 0;
 		return false;
 	s.reserve(sz);
 	memcpy(s.data(), _buf + _size, sz);
+	*(s.data() + sz) = '\0';
 	_size += sz;
 	return true;
 }

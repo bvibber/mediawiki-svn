@@ -3,7 +3,10 @@ BINDIR = @bindir@
 CPPFLAGS = -I../include
 
 BASESRCS =	 		\
+	a_cachedir.cc		\
 	cache.cc		\
+	cachedentity.cc		\
+	cachedir_data_store.cc	\
 	chunking.cc		\
 	confparse.cc		\
 	dbwrap.cc		\

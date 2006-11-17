@@ -129,6 +129,10 @@ struct cachedentity {
 	
 	bool loadcachefile();
 	bool savecachefile(cachefile *);
+
+	int cachedir(void) const {
+		return _cachedir;
+	}
 private:
 	friend struct httpcache;
 	friend struct caching_filter;
@@ -170,7 +174,7 @@ private:
 /*
  * Represents a single cached file in the filesystem.
  */
-struct cachefile {
+struct cachefile : noncopyable {
 	/*
 	 * True if the file was opened successfully.
 	 */
@@ -221,13 +225,19 @@ struct cachefile {
 	uint64_t filenum(void) const {
 		return _num;
 	}
+	
+	int dirnum(void) const {
+		return _dnum;
+	}
+	
 private:
 	friend struct cachedir_data_store;
 	friend struct a_cachedir;	
-	cachefile(imstring path, uint64_t num, bool create)
+	cachefile(imstring path, int dnum, uint64_t num, bool create)
 	: _path(path)
 	, _size(0)
 	, _num(num)
+	, _dnum(dnum)
 	{
 	struct stat	sb;
 		if (create) {
@@ -250,13 +260,14 @@ private:
 	imstring	_path;
 	size_t		_size;
 	uint64_t	_num;
+	int		_dnum;
 };
 
 /*
  * A single cache directory.
  */
-struct a_cachedir {
-	a_cachedir(imstring const &path);
+struct a_cachedir : noncopyable {
+	a_cachedir(imstring const &, int);
 	
 	/*
 	 * Return a cachefile opened for output, referring to a new file, or
@@ -273,13 +284,14 @@ struct a_cachedir {
 private:
 	imstring		_path;		/* root of this cachedir on disk	*/
 	atomic<uint64_t>	_curfnum;	/* next file number to use		*/
+	int			_dnum;
 };
 
 /*
  * Represents an overview of all cache dirs, and abstracts the creation
  * of new cached files.
  */
-struct cachedir_data_store {
+struct cachedir_data_store : noncopyable {
 	cachedir_data_store();
 	
 	/*
@@ -307,11 +319,12 @@ struct cachedir_data_store {
 	/*
 	 * Open the file given by this filenumber.
 	 */
-	cachefile *open(uint64_t);
+	cachefile *open(int, uint64_t);
 	
 private:
-	uint64_t	 curfile;
-	a_cachedir	*cachedir;
+	uint64_t		 _curdir;
+	vector<a_cachedir *>	 _cachedirs;
+	lockable		 _lock;
 };
 
 struct httpcache {
@@ -329,7 +342,7 @@ struct httpcache {
 	/*
 	 * Return the on-disk cached file represented by this file number.
 	 */
-	cachefile	 *get_cachefile(uint64_t fnum);
+	cachefile	 *get_cachefile(int dnum, uint64_t fnum);
 
 private:
 	friend struct cachedentity;
@@ -513,6 +526,21 @@ private:
 	bool		 _inited;
 	size_t		 _off;
 };
+
+namespace db {
+
+template<>
+struct marshaller<cachedentity> {
+	pair<char const *, uint32_t> marshall(cachedentity const &e) {
+		return e.marshall();
+	}
+
+	cachedentity *unmarshall(pair<char const *, uint32_t> const &d) {
+		return cachedentity::unmarshall(d.first, d.second);
+	}
+};
+
+} // namespace db
 
 extern httpcache entitycache;
 

@@ -174,6 +174,9 @@ struct basic_imstring {
 	iterator	begin		(void);
 	iterator	end		(void);
 
+	charT		&operator[]	(size_type n);
+	charT const	&operator[]	(size_type n) const;
+
 	basic_ostream<charT, char_traits<charT> >
 		&print		(basic_ostream<charT, char_traits<charT> > &) const;
 
@@ -465,6 +468,24 @@ bool
 basic_imstring<charT, allocator>::empty(void) const
 {
 	return size() == 0;
+}
+
+template<typename charT, typename allocator>
+charT &
+basic_imstring<charT, allocator>::operator[] (
+	basic_imstring<charT, allocator>::size_type n)
+{
+	assert(n < size());
+	return _buf[n];
+}
+
+template<typename charT, typename allocator>
+charT const &
+basic_imstring<charT, allocator>::operator[] (
+	basic_imstring<charT, allocator>::size_type n) const
+{
+	assert(n < size());
+	return _buf[n];
 }
 
 /*

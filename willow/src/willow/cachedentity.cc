@@ -1,0 +1,241 @@
+/* @(#) $Id$ */
+/* This source code is in the public domain. */
+/*
+ * Willow: Lightweight HTTP reverse-proxy.
+ * cachedentity: a single cached document.
+ */
+
+#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
+# pragma ident "@(#)$Id$"
+#endif
+
+#include <iostream>
+using std::ostream;
+
+#include "cache.h"
+
+cachedentity::cachedentity(imstring const &url, size_t hint)
+	: _url(url)
+	, _data(hint ? hint : 4096)
+	, _refs(0)
+	, _complete(false)
+	, _builthdrs(NULL)
+	, _builtsz(0)
+	, _void(false)
+	, _lastuse(time(0))
+	, _expires(0)
+	, _modified(0)
+{
+	WDEBUG((WLOG_DEBUG, format("CACHE: creating cached entity with URL %s")
+			% url));
+	assert(_url.size());
+}
+
+cachedentity::~cachedentity()
+{
+	entitycache._remove_unlocked(this);
+	entitycache.cache_mem_reduce(_data.size());
+	delete[] _builthdrs;
+}
+
+void
+cachedentity::_append(char const *data, size_t size)
+{
+	if (_void)
+		return;
+
+	if ((long) (_data.size() + size) > config.max_entity_size) {
+		_void = true;
+		return;
+	}
+
+	if (!entitycache.cache_mem_increase(size, this)) {
+		WDEBUG((WLOG_DEBUG, "object is too large, voiding cache"));
+		_void = true;
+		return;
+	}
+	_data.append(data, size);
+}
+
+time_t
+cachedentity::parse_date(char const *date)
+{
+struct tm	tm;
+	memset(&tm, 0, sizeof(tm));
+	if (strptime(date, "%a, %d %b %Y %H:%M:%S GMT", &tm) == NULL)
+		return (time_t) -1;
+	return mktime(&tm);
+}
+
+void
+cachedentity::set_complete(void)
+{
+header	*h;
+	WDEBUG((WLOG_DEBUG, format("set_complete: void=%d") % _void));
+	if (_void)
+		return;
+	_headers.remove("transfer-encoding");
+	if (!_headers.find("content-length")) {
+	char	lenstr[64];
+		snprintf(lenstr, sizeof lenstr, "%lu", 
+			(unsigned long) _data.size());
+		_headers.add("Content-Length", lenstr);
+	}
+
+	if ((h = _headers.find("Expires")) != NULL) {
+		if ((_expires = parse_date(h->value())) == -1) {
+			_expires = time(0);
+		}
+	} else {
+		_expires = 0;
+	}
+
+	if ((h = _headers.find("Last-Modified")) != NULL) {
+		if ((_modified = parse_date(h->value())) == -1) {
+			_modified = time(0);
+		}
+	} else {
+		if ((h = _headers.find("Date")) != NULL) {
+			if ((_modified = parse_date(h->value())) == -1) {
+				_modified = time(0);
+			}
+		} else {
+			_modified = time(0);
+		}
+	}
+
+	_lifetime = (time_t) ((time(0) - _modified) * 1.25);
+	WDEBUG((WLOG_DEBUG, format("CACHE: object lifetime=%d sec.") % _lifetime));
+	revalidated();
+	_builthdrs = _headers.build();
+	_builtsz = _headers.length();
+	_data.finished();
+	_complete = true;
+	entitycache._swap_out(this);
+}
+
+pair<char const *, uint32_t>
+cachedentity::marshall(void) const
+{
+db::marshalling_buffer	buf;
+	buf.reserve(
+		sizeof(size_t) + _url.size() +
+		sizeof(size_t) + _status.size() +
+		sizeof(size_t) + _builtsz +
+		sizeof(time_t) * 5 +
+		sizeof(int) +
+		sizeof(uint64_t));
+	buf.append<imstring>(_url);
+	buf.append<imstring>(_status);
+	buf.append<size_t>(_builtsz);
+	buf.append_bytes(_builthdrs, _builtsz);
+	buf.append<time_t>(_lastuse);
+	buf.append<time_t>(_expires);
+	buf.append<time_t>(_modified);
+	buf.append<time_t>(_lifetime);
+	buf.append<time_t>(_revalidate_at);
+	buf.append<int>(_cachedir);
+	buf.append<uint64_t>(_cachefile);
+	return make_pair(buf.buffer(), buf.size());
+}
+
+cachedentity *
+cachedentity::unmarshall(char const *d, uint32_t s)
+{
+cachedentity		*ret;
+db::marshalling_buffer	 buf(d, s);
+imstring		 url;
+char			*hdrbuf;
+size_t			 bufsz;
+	if (!buf.extract<imstring>(url))
+		return NULL;
+	WDEBUG((WLOG_DEBUG, format("unmarshall: URL [%s], len %d")
+			% url % url.size()));
+	ret = new cachedentity(url);
+	if (!buf.extract<imstring>(ret->_status)) {
+		delete ret;
+		return NULL;
+	}
+
+	if (!buf.extract<size_t>(bufsz)) {
+		delete ret;
+		return NULL;
+	}
+
+	ret->_builthdrs = new char[bufsz + 1];
+	ret->_builtsz = bufsz;
+	if (!buf.extract_bytes(ret->_builthdrs, bufsz)) {
+		delete ret;
+		return NULL;
+	}
+
+	if (!buf.extract<time_t>(ret->_lastuse)) {
+		delete ret;
+		return NULL;
+	}
+
+	if (!buf.extract<time_t>(ret->_expires)) {
+		delete ret;
+		return NULL;
+	}
+
+	if (!buf.extract<time_t>(ret->_modified)) {
+		delete ret;
+		return NULL;
+	}
+
+	if (!buf.extract<time_t>(ret->_lifetime)) {
+		delete ret;
+		return NULL;
+	}
+
+	if (!buf.extract<time_t>(ret->_revalidate_at)) {
+		delete ret;
+		return NULL;
+	}
+	
+	if (!buf.extract<int>(ret->_cachedir)) {
+		delete ret;
+		return NULL;
+	}
+	
+	if (!buf.extract<uint64_t>(ret->_cachefile)) {
+		delete ret;
+		return NULL;
+	}
+	
+	ret->_refs = 1;
+	/*
+	 * An incomplete or void entity will never be written to the disk cache.
+	 */
+	ret->_complete = true;
+	ret->_void = false;
+	return ret;
+}
+
+bool
+cachedentity::loadcachefile(void)
+{
+cachefile	*f;
+struct stat	 sb;
+	if ((f = entitycache.get_cachefile(_cachedir, _cachefile)) == NULL)
+		return false;
+	return _data.loadfile(f->file(), f->size());
+}
+
+bool
+cachedentity::savecachefile(cachefile *f)
+{
+ostream	&sm = f->file();
+	assert(f);
+	WDEBUG((WLOG_DEBUG, format("CACHE: writing cached data to %s")
+			% f->filename()));
+	if (!sm.write(_data.ptr(), _data.size())) {
+		wlog(WLOG_WARNING, format("writing cached data to %s: %e")
+				% f->filename());
+		return false;
+	}
+	_cachedir = f->dirnum();
+	_cachefile = f->filenum();
+	return true;
+}
