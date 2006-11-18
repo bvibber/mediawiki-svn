@@ -1,6 +1,6 @@
 <?php
 
-$basedir = '/mnt/static';
+$baseDir = '/mnt/static';
 
 $wgNoDBParam = true;
 require_once( '/home/wikipedia/common/php/maintenance/commandLine.inc' );
@@ -24,7 +24,7 @@ fwrite( $queueSock, "clear\n" );
 fgets( $queueSock );
 
 # Fetch wiki stats
-$wikiSizes = @file_get_contents( "$basedir/checkpoints/wikiSizes" );
+$wikiSizes = @file_get_contents( "$baseDir/checkpoints/wikiSizes" );
 if ( $wikiSizes ) {
 	$wikiSizes = unserialize( $wikiSizes );
 } else {
@@ -38,7 +38,7 @@ if ( $wikiSizes ) {
 
 		$wikiSizes[$wiki] = $db->selectField( "`$wiki`.site_stats", 'ss_total_pages' );
 	}
-	file_put_contents( "$basedir/checkpoints/wikiSizes", serialize( $wikiSizes ) );
+	file_put_contents( "$baseDir/checkpoints/wikiSizes", serialize( $wikiSizes ) );
 }
 
 # Compute job array
@@ -59,6 +59,7 @@ foreach ( $wikiSizes as $wiki => $size ) {
 		$jobs[] = array(
 			'id' => $jobID,
 			'cmd' => "$jobID $wiki articles $i/$numJobs",
+			'wiki'=> $wiki,
 			'trigger' => $trigger
 		);
 	}
@@ -74,6 +75,7 @@ foreach ( $wikiSizes as $wiki => $size ) {
 			'id' => $jobID,
 			'gate' => "$wiki articles",
 			'cmd' => "$jobID $wiki shared $i/$numSharedJobs",
+			'wiki' => $wiki,
 			'trigger' => $trigger
 		);
 	}
@@ -84,14 +86,15 @@ foreach ( $wikiSizes as $wiki => $size ) {
 		'id' => $jobID,
 		'gate' => "$wiki shared",
 		'cmd' => "$jobID $wiki finish 1/1",
+		'wiki' => $wiki,
 		'trigger' => 'everything',
 	);
 }
 
 # Write job list
-$file = fopen( "$basedir/jobs/list", 'w' );
+$file = fopen( "$baseDir/jobs/list", 'w' );
 if ( !$file ) {
-	print "Unable to open $basedir/jobs/list for writing\n";
+	print "Unable to open $baseDir/jobs/list for writing\n";
 	exit( 1 );
 }
 foreach ( $jobs as $job ) {
@@ -144,11 +147,13 @@ while ( $gates['everything'] ) {
 			$queueing = true;
 		} elseif ( isTerminated( $job ) ) {
 			print "Job $i died, requeueing: {$job['cmd']}\n";
+			removeJobStatus( $job );
 			$queueing = true;
 		} else {
 			$queueing = false;
 		}
 		if ( $queueing ) {
+			$wiki = $job['wiki'];
 			if ( !isset( $initialisedWikis[$wiki] ) ) {
 				startWiki( $wiki );
 				$initialisedWikis[$wiki] = true;
@@ -179,14 +184,21 @@ function getQueueSize() {
 }
 
 function getJobStatus( $job ) {
-	global $basedir;
-	$jobStatusFile = "$basedir/jobs/{$job['id']}";
-	$lines = @file( $jobCpFile );
+	global $baseDir;
+	$jobStatusFile = "$baseDir/jobs/{$job['id']}";
+	$lines = @file( $jobStatusFile );
+	
 	if ( !isset( $lines[1] ) ) {
 		return false;
 	} else {
 		return trim( $lines[1] );
 	}
+}
+
+function removeJobStatus( $job ) {
+	global $baseDir;
+	$jobStatusFile = "$baseDir/jobs/{$job['id']}";
+	@unlink( $jobStatusFile );
 }
 
 function isDone( $job ) {
@@ -199,7 +211,7 @@ function isTerminated( $job ) {
 
 function enqueue( $job ) {
 	global $queueSock;
-	if ( false === fwrite( $queueSock, "enq $job\n" ) ) {
+	if ( false === fwrite( $queueSock, "enq {$job['cmd']}\n" ) ) {
 		die( "Unable to write to queue server\n" );
 	}
 	
@@ -208,10 +220,10 @@ function enqueue( $job ) {
 }
 
 function startWiki( $wiki ) {
-	global $basedir;
+	global $baseDir;
 	$lang = str_replace( 'wiki', '', $wiki );
 	print "Starting language $lang\n";
-	passthru( "$basedir/scripts/start-lang $lang" );
+	passthru( "$baseDir/scripts/start-lang $lang" );
 }
 
 ?>

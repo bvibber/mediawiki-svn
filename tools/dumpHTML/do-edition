@@ -11,12 +11,11 @@ if len(sys.argv) < 2:
 edition = sys.argv[1]
 
 threads = {
-	"localhost": 1
-	#"srv42": 4,
-	#"srv122": 2,
-	#"srv123": 2,
-	#"srv124": 2,
-	#"srv125": 2
+	"localhost": 4,
+	"srv122": 2,
+	"srv123": 2,
+	"srv124": 2,
+	"srv125": 2
 }
 
 # Create some directories

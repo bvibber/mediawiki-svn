@@ -34,7 +34,7 @@ echo Creating HTML archive...
 rm -f $dest/wikipedia-$lang-html.7z
 
 # Set chunk size to 8MB for faster random access
-7z -l -ms8m a $dest/wikipedia-$lang-html.7z @$dest/html.lst @$dest/skins.lst
+7za -l -ms8m a $dest/wikipedia-$lang-html.7z @$dest/html.lst @$dest/skins.lst
 
 #if [ ! -e $dest/wikipedia-$lang-reduced.7z ];then
 #	echo
