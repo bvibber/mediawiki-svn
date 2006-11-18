@@ -19,6 +19,17 @@ $wgDesysopMessages['en'] = array(
 	'desysop'              => 'Desysop a user',
 	'not_sysop'            => 'This user is not an administrator',
 );
+$wgDesysopMessages['cs'] = array(
+	'desysoptitle'         => 'Odebrat uživateli práva správce',
+	'desysoptext'          => 'Pomocí tohoto formuláře může byrokrat odebrat uživateli práva správce. Napište uživatelovo jméno do rámečku a klikněte na tlačítko, práva budou odebrána.',
+	'desysopname'          => 'Jméno uživatele:',
+	'desysopok'            => '<b>Uživateli „$1“ byla odebrána práva správce.</b>',
+	'set_user_rights'      => 'Nastavit práva',
+	'user_rights_set'      => '<b>Práva uživatele „$1“ upravena</b>',
+	'set_rights_fail'      => '<b>Práva uživatele „$1“ nemohla být nastavena. (Zadali jste správně jméno?)</b>',
+	'desysop'              => 'Odebrat práva',
+	'not_sysop'            => 'Tento uživatel není správce.',
+);
 $wgDesysopMessages['he'] = array(
 	'desysoptitle'         => 'בטל הרשאת מפעיל מערכת למשתמש',
 	'desysoptext'          => "דף זה משמש ביורוקרטים לביטול הרשאת מפעיל מערכת של משתמש. אנא הקישו את שם המשתמש בתיבת הטקסט ולחצו על הכפתור על מנת להפוך את המשתמש למפעיל מערכת.",

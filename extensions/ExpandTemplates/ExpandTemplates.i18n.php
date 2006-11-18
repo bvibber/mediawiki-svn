@@ -21,6 +21,15 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Remove comments',
 );
+$wgExpandTemplatesMessages['cs'] = array(
+	'expandtemplates'                  => 'Testy šablon',
+	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu aplikovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
+	'expand_templates_title'           => 'Název stránky kvůli kontextu pro <code><nowiki>{{</nowiki>PAGENAME}}</code> apod.:',
+	'expand_templates_input'           => 'Vstupní text:',
+	'expand_templates_output'          => 'Výstup:',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Odstranit komentáře',
+);
 $wgExpandTemplatesMessages['de'] = array(
 	'expandtemplates'                  => 'Vorlagen expandieren',
 	'expand_templates_intro'           => 'In diese Spezialseite kann Text eingegeben werden und alle Vorlagen in ihr werden rekursiv expandiert. Auch Parserfunkionen wie <nowiki>{{</nowiki>#if:...}} und Variablen wie <nowiki>{{</nowiki>CURRENTDAY}} werden ausgewertet - faktisch alles was in doppelten geschweiften Klammern enthalten ist. Dies geschieht durch den Aufruf der jeweiligen Parser-Phasen in MediaWiki.',
