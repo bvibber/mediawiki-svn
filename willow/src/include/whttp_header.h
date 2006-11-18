@@ -27,6 +27,7 @@
 #define REQTYPE_HEAD	2
 #define REQTYPE_TRACE	3
 #define REQTYPE_OPTIONS	4
+#define REQTYPE_PURGE	5
 #define REQTYPE_INVALID	-1
 
 #define HDR_BUFSZ	256

@@ -230,6 +230,8 @@ cachedentity::savecachefile(cachefile *f)
 {
 ostream	&sm = f->file();
 	assert(f);
+	if (!f->okay())
+		return false;
 	WDEBUG((WLOG_DEBUG, format("CACHE: writing cached data to %s")
 			% f->filename()));
 	if (!sm.write(_data.ptr(), _data.size())) {
@@ -240,4 +242,10 @@ ostream	&sm = f->file();
 	_cachedir = f->dirnum();
 	_cachefile = f->filenum();
 	return true;
+}
+
+void
+cachedentity::purge(void)
+{
+	entitycache.purge(this);
 }

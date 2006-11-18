@@ -136,6 +136,7 @@ const char *request_string[] = {
 	"HEAD ",
 	"TRACE ",
 	"OPTIONS ",
+	"TRACE ",
 };
 
 struct request_type supported_reqtypes[] = {
@@ -144,6 +145,7 @@ struct request_type supported_reqtypes[] = {
 	{ "HEAD",	4,	REQTYPE_HEAD	},
 	{ "TRACE",	5,	REQTYPE_TRACE	},
 	{ "OPTIONS",	7,	REQTYPE_OPTIONS	},
+	{ "PURGE",	5,	REQTYPE_PURGE	},
 	{ NULL,		0,	REQTYPE_INVALID }
 };
 

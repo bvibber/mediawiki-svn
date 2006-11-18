@@ -178,12 +178,27 @@ cachedentity *ent;
 		if (it == _entities.end()) {
 			return false;
 		}
+
+		if (_db)
+			_db->del(url);
+
 		ent = it->second;
 		ent->deref();
 	}
 
 
 	return true;
+}
+
+void
+httpcache::purge(cachedentity *ent)
+{
+	assert(ent);
+	{	HOLDING(_lock);
+		_remove_unlocked(ent);
+		if (_db)
+			_db->del(ent->url());
+	}
 }
 
 bool

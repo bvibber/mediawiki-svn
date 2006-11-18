@@ -437,7 +437,7 @@ marshaller<Key>			keymarsh;
 	mkey = keymarsh.marshall(key);
 	dbkey.data = (void *)mkey.first;
 	dbkey.size = mkey.second;
-	_error = _db->get(_db, txn ? txn->_txn : NULL, &dbkey, 0);
+	_error = _db->del(_db, txn ? txn->_txn : NULL, &dbkey, 0);
 	if (_error != 0)
 		return false;
 	return true;

@@ -63,6 +63,7 @@ using namespace wnet;
 /*
  * Error handling.
  */
+#define ERR_NONE	-1	/* error with no body			*/
 #define ERR_GENERAL	0	/* unspecified error			*/
 #define ERR_BADREQUEST	1	/* client request invalid		*/
 #define ERR_BADRESPONSE	2	/* backend response invalid		*/
@@ -326,6 +327,12 @@ httpcllr::~httpcllr(void)
 void
 httpcllr::send_cached(void)
 {
+	if (_header_parser->_http_reqtype == REQTYPE_PURGE) {
+		_cachedent->purge();
+		send_error(ERR_NONE, NULL, 200, "Object removed from cache");
+		return;
+	}
+
 	_cache_spigot = new cached_spigot(_cachedent);
 	if (_header_parser->_force_keepalive)
 		_cache_spigot->keepalive(true);
@@ -401,6 +408,15 @@ httpcllr::header_read_complete(void)
 				_cachedent = NULL;
 			}
 		}
+	}
+
+	/*
+	 * If we get here for a PURGE request, it means that the requested
+	 * object was not cached.  So, send an error reply.
+	 */
+	if (_header_parser->_http_reqtype == REQTYPE_PURGE) {
+		send_error(ERR_NONE, NULL, 404, "Object not cached");
+		return;
 	}
 
 map<string,int>::iterator	it;
@@ -1042,12 +1058,14 @@ string	url = "NONE";
 
 	_error_headers->add("Content-Type", "text/html;charset=UTF-8");
 
-	_error_body = io::file_spigot::from_path(error_files[errnum], true);
-	if (_error_body == NULL) {
-		delete this;
-		return;
+	if (errnum != ERR_NONE) {
+		_error_body = io::file_spigot::from_path(error_files[errnum], true);
+		if (_error_body == NULL) {
+			delete this;
+			return;
+		}
+		_error_filter = new error_transform_filter(url, errdata, statstr, status);
 	}
-	_error_filter = new error_transform_filter(url, errdata, statstr, status);
 
 	_error_headers->completed_callee(this, &httpcllr::error_send_headers_done);
 	_error_headers->error_callee(this, &httpcllr::error_send_done);
@@ -1055,10 +1073,13 @@ string	url = "NONE";
 	/*
 	 * Can we chunk the error?
 	 */
-	if (_header_parser->_http_vers != http11)
-		_error_headers->add("Connection", "close");
-	else
-		_error_headers->add("Transfer-Encoding", "chunked");
+	if (_error_body) {
+		if (_header_parser->_http_vers != http11)
+			_error_headers->add("Connection", "close");
+		else
+			_error_headers->add("Transfer-Encoding", "chunked");
+	} else
+		_error_headers->add("Content-Length", "0");
 
 	_error_headers->sp_connect(_client_sink);
 	_error_headers->sp_uncork();
@@ -1067,6 +1088,11 @@ string	url = "NONE";
 void
 httpcllr::error_send_headers_done(void)
 {
+	if (!_error_body) {
+		error_send_done();
+		return;
+	}
+
 	_error_headers->sp_disconnect();
 	_error_body->completed_callee(this, &httpcllr::error_send_done);
 	_error_body->error_callee(this, &httpcllr::error_send_done);

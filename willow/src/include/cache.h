@@ -138,6 +138,9 @@ struct cachedentity {
 	int cachedir(void) const {
 		return _cachedir;
 	}
+
+	void purge(void);
+
 private:
 	friend struct httpcache;
 	friend struct caching_filter;
@@ -347,7 +350,8 @@ struct httpcache {
 	cachedentity	 *find_cached(imstring const &url, bool create, bool& wasnew);
 	void		  release(cachedentity *);
 	bool		  purge(imstring const &url);
-	
+	void		  purge(cachedentity *);
+
 	/*
 	 * Return the on-disk cached file represented by this file number.
 	 */
