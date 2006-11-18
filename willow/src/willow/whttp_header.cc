@@ -19,7 +19,6 @@
 using std::strlen;
 using std::vector;
 
-#include <event.h>
 #include <assert.h>
 
 #include "config.h"

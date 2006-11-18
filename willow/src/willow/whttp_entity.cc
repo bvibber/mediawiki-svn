@@ -58,7 +58,6 @@
 /*LINTED*/
 #include <fcntl.h>
 #include <strings.h>
-#include <event.h>
 #include <ctype.h>
 #include <zlib.h>
 

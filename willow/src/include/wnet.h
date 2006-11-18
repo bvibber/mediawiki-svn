@@ -30,6 +30,25 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 #include <sys/fcntl.h>
 #include <sys/sendfile.h>
 
+/*
+ * libevent needs these
+ */
+#ifndef HAVE_U_INT8_T
+typedef uint8_t u_int8_t;
+#endif
+
+#ifndef HAVE_U_INT16_T
+typedef uint16_t u_int16_t;
+#endif
+
+#ifndef HAVE_U_INT32_T
+typedef uint32_t u_int32_t;
+#endif
+
+#ifndef HAVE_U_INT64_T
+typedef uint64_t u_int64_t;
+#endif
+
 #include <event.h>
 #include <pthread.h>
 #include <vector>
