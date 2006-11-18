@@ -17,7 +17,6 @@
 #include <cstdlib>
 #include <cassert>
 #include <utility>
-using std::sprintf;
 using std::pair;
 using std::make_pair;
 

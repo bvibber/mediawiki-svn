@@ -520,7 +520,7 @@ diobuf::diobuf(size_t size)
 	}
 	char	path[PATH_MAX];
 	snprintf(path, sizeof(path), "/dev/shm/willow.diobuf.%d.%d.%d",
-		getpid(), (int) pthread_self(), rand());
+		(int) getpid(), (int) pthread_self(), rand());
 		if ((_fd = open(path, O_CREAT | O_EXCL | O_RDWR, 0600)) == -1) {
 		wlog(WLOG_WARNING, format("opening diobuf %s: %e") % path);
 		_buf = new char[size];

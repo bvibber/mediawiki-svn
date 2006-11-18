@@ -242,7 +242,7 @@ template<typename T, void dtor (void *) = tss_null_dtor>
 struct tss {
 	mutable pthread_key_t	_key;
 	tss() {
-		pthread_key_create(&_key, &dtor);
+		pthread_key_create(&_key, dtor);
 	}
 	T const& operator* (void) const {
 		return *(T *)pthread_getspecific(_key);
