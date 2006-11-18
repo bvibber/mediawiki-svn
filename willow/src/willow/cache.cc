@@ -59,18 +59,20 @@ cachedentity *ret;
 	/*
 	 * Maybe it's in the disk cache
 	 */
-	ret = _db->get(url);
-	if (ret != NULL) {
-		WDEBUG((WLOG_DEBUG, format("found [%s] in disk cache complete %d void %d") 
-				% url % ret->complete() % ret->isvoid()));
-		ret->ref();
-		_lru.insert(_entities.insert(make_pair(url, ret)).first);
-		wasnew = false;
-		return ret;
-	}
-	if (_db->error()) {
-		wlog(WLOG_WARNING, format("fetching cached data: %s")
-			% _db->strerror());
+	if (_db) {
+		ret = _db->get(url);
+		if (ret != NULL) {
+			WDEBUG((WLOG_DEBUG, format("found [%s] in disk cache complete %d void %d") 
+					% url % ret->complete() % ret->isvoid()));
+			ret->ref();
+			_lru.insert(_entities.insert(make_pair(url, ret)).first);
+			wasnew = false;
+			return ret;
+		}
+		if (_db->error() && _db->error() != DB_NOTFOUND) {
+			wlog(WLOG_WARNING, format("fetching cached data: %s")
+				% _db->strerror());
+		}
 	}
 
 	WDEBUG((WLOG_DEBUG, format("[%s] not cached") % url));
@@ -90,7 +92,10 @@ httpcache::release(cachedentity *ent)
 {
 	HOLDING(_lock);
 	if (ent->isvoid()) {
-		/* don't keep void objects around */
+		/*
+		 * If the entity is void, deref it twice so it disappears from the
+		 * cache.
+		 */
 		ent->deref();
 	}
 

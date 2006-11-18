@@ -161,7 +161,7 @@ wait_event(vector<int> &socks, int maxfd, fd_set &rfds)
 {
 vector<int>::iterator	it, end;
 	for (;;) {
-		bzero(&rfds, sizeof(rfds));
+		memset(&rfds, 0, sizeof(rfds));
 		FD_ZERO(&rfds);
 		for (it = socks.begin(), end = socks.end(); it != end; ++it)
 			FD_SET(*it, &rfds);

@@ -22,6 +22,12 @@ using std::vector;
 #include "willow.h"
 #include "confparse.h"
 
+/*
+ * Certain bison/gcc combinations result in compilation errors in gcc-specific
+ * code.  Work around this by undefining here.
+ */
+#undef __GNUC_MINOR__
+
 #define YY_NO_UNPUT
 
 /* icc emits these with -w2 */
@@ -99,7 +105,7 @@ conf::avalue	 aval;
 char		 tmp[64];
 	ret = new conf::value(conf::declpos::here());
 	aftype = (*args)[0].av_strval.c_str();
-	bzero(&hints, sizeof(hints));
+	memset(&hints, 0, sizeof(hints));
 	if (aftype == "ipv4")
 		hints.ai_family = AF_INET;
 	else if (aftype == "ipv6")

@@ -12,6 +12,9 @@
 #ifndef CACHE_H
 #define CACHE_H
 
+#include <sys/types.h>
+#include <sys/stat.h>
+
 #include <map>
 #include <set>
 #include <fstream>
@@ -96,6 +99,8 @@ struct cachedentity {
 		 * If the object is still valid, its lifetime can increase.
 		 */
 		_lifetime = (time_t) ((time(0) - _modified) * 1.25);
+		if (_lifetime < 0)
+			_lifetime = 0;
 		_revalidate_at = time(0) + _lifetime;
 	}
 
@@ -140,11 +145,15 @@ private:
 	friend struct cachedir_data_store;
 
 	void ref(void) {
+		WDEBUG((WLOG_DEBUG, format("obj @ %d: refs=%d (about to ref)")
+			% (void*)this % (int)_refs));
 		++_refs;
 	}
 
 	void deref(void) {
-		assert(_refs);
+		WDEBUG((WLOG_DEBUG, format("obj @ %d: refs=%d (about to deref)")
+			% (void*)this % (int)_refs));
+		assert((int)_refs);
 		if (--_refs == 0)
 			delete this;
 	}
@@ -178,7 +187,7 @@ struct cachefile : noncopyable {
 	/*
 	 * True if the file was opened successfully.
 	 */
-	bool	okay(void) const {
+	bool	okay(void) {
 		return _file.is_open();
 	}
 	

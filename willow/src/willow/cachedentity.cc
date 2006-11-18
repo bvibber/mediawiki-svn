@@ -105,6 +105,8 @@ header	*h;
 	}
 
 	_lifetime = (time_t) ((time(0) - _modified) * 1.25);
+	if (_lifetime < 0)
+		_lifetime = 0;
 	WDEBUG((WLOG_DEBUG, format("CACHE: object lifetime=%d sec.") % _lifetime));
 	revalidated();
 	_builthdrs = _headers.build();

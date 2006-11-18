@@ -14,6 +14,8 @@
 #include <sys/fcntl.h>
 #include <sys/mman.h>
 
+#include <fcntl.h>
+
 #include <iostream>
 #include <cerrno>
 using std::streamsize;

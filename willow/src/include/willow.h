@@ -48,7 +48,7 @@ typedef unsigned long long w_size_t;
 	void wstrvecfree	(char **);
 
 #ifndef HAVE_DAEMON
-int daemon(int, int);
+extern "C" int daemon(int, int);
 #endif
 
 #ifndef HAVE_SOCKLEN_T
