@@ -17,7 +17,6 @@
 cachedir_data_store::cachedir_data_store(void)
 : _curdir(0)
 {
-	assert(config.cachedirs.size());
 	vector<cachedir>::iterator it = config.cachedirs.begin(), end = config.cachedirs.end();
 	for (; it != end; ++it)
 		_cachedirs.push_back(new a_cachedir(config.cachedirs[0].dir, _cachedirs.size()));

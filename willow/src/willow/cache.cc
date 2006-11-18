@@ -189,7 +189,7 @@ cachedentity *ent;
 bool
 httpcache::open(void)
 {
-	if (config.cache_master.empty())
+	if (config.cache_master.empty() || config.cachedirs.empty())
 		return true;
 
 	_store = new cachedir_data_store;
