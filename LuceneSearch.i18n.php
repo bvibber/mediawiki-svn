@@ -26,6 +26,22 @@ Search for $3 $9",
 This is probably temporary; try again in a few moments,
 or you can search the wiki through an external search service:\n"
 );
+$wgLuceneSearchMessages['cs'] = array(
+	'searchnumber'          => '<strong>Výsledky $1–$2 z $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Předchozí</span>",
+	'searchnext'            => "<span style='font-size: small'>Následující</span> &#x00BB;",
+	'searchscore'           => "Relevance: $1",
+	'searchsize'            => "$1 KB ($2 slov)",
+	'searchdidyoumean'      => 'Nehledáte „<a href="$1">$2</a>“?',
+	'searchnoresults'       => 'Je mi líto, ale vašemu dotazu žádné stránky přesně neodpovídají.',
+	'searchnearmatches'     => "<b>Následující stránky mají nadpis podobný vašemu dotazu:</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+Hledat ve jmenných prostorech:\n
+$1\n
+Hledat $3 $9",
+	'lucenefallback'        => 'Při hledání došlo k chybě. Problém je pravděpodobně dočasný, zkuste hledání později, případně můžete vyzkoušet externí vyhledávač:\n'
+);
 $wgLuceneSearchMessages['de'] = array(
 	'searchnumber'		=> "<strong>Ergebnisse $1–$2 von $3</strong>",
 	'searchprev'            => "&larr; <span style='font-size: smaller'>Vorherige</span>",
