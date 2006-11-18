@@ -48,6 +48,46 @@ $wgExpandTemplatesMessages['id'] = array(
 	'expand_templates_ok'              => 'Jalankan',
 	'expand_templates_remove_comments' => 'Buang komentar',
 );
+$wgExpandTemplatesMessages['kk-kz'] = array(
+	'expandtemplates'                  => 'Үлгілерді ұлғайту',
+	'expand_templates_intro'           => 'Осы құрал арнайы беті әлдебір мәтінді алады да,
+бұның ішіндегі барлық кіріктелген үлгілерді мейлінше ұлғайтады.
+Мына <nowiki>{{</nowiki>#if:...}} сияқты жөңдету функцияларын да, және <nowiki>{{</nowiki>CURRENTDAY}}
+сияқты айнамалыларын да ұлғайтады (нақты айтқанда, қос қабат садақ жақшалар арасындағы барлығын).
+Бұны өз MediaWiki бағдарламасынан қатысты жөңдету сатын шақырып істелінеді.',
+	'expand_templates_title'           => '<nowiki>{{</nowiki>PAGENAME}} т.б. беттер үшін мәтін аралық атауы:',
+	'expand_templates_input'           => 'Кіріс мәтіні:',
+	'expand_templates_output'          => 'Нәтижесі:',
+	'expand_templates_ok'              => 'Жарайды',
+	'expand_templates_remove_comments' => 'Мәндемелерін аластатып?',
+);
+$wgExpandTemplatesMessages['kk-tr'] = array(
+	'expandtemplates'                  => 'Ülgilerdi ulğaýtw',
+	'expand_templates_intro'           => 'Osı qural arnaýı beti äldebir mätindi aladı da,
+bunıñ işindegi barlıq kiriktelgen ülgilerdi meýlinşe ulğaýtadı.
+Mına <nowiki>{{</nowiki>#if:...}} sïyaqtı jöñdetw fwnkcïyaların da, jäne <nowiki>{{</nowiki>CURRENTDAY}}
+sïyaqtı aýnamalıların da ulğaýtadı (naqtı aýtqanda, qos qabat sadaq jaqşalar arasındağı barlığın).
+Bunı öz MediaWiki bağdarlamasınan qatıstı jöñdetw satın şaqırıp istelinedi.',
+	'expand_templates_title'           => '<nowiki>{{</nowiki>PAGENAME}} t.b. better üşin mätin aralıq atawı:',
+	'expand_templates_input'           => 'Kiris mätini:',
+	'expand_templates_output'          => 'Nätïjesi:',
+	'expand_templates_ok'              => 'Jaraýdı',
+	'expand_templates_remove_comments' => 'Mändemelerin alastatıp?',
+);
+$wgExpandTemplatesMessages['kk-cn'] = array(
+	'expandtemplates'                  => 'ٴۇلگٴىلەردٴى ۇلعايتۋ',
+	'expand_templates_intro'           => 'وسى قۇرال ارنايى بەتٴى ٴالدەبٴىر مٴاتٴىندٴى الادى دا,
+بۇنىڭ ٴىشٴىندەگٴى بارلىق كٴىرٴىكتەلگەن ٴۇلگٴىلەردٴى مەيلٴىنشە ۇلعايتادى.
+مىنا <nowiki>{{</nowiki>#if:...}} سيياقتى جٴوڭدەتۋ فۋنكتسييالارىن دا, جٴانە <nowiki>{{</nowiki>CURRENTDAY}}
+سيياقتى اينامالىلارىن دا ۇلعايتادى (ناقتى ايتقاندا, قوس قابات ساداق جاقشالار اراسىنداعى بارلىعىن).
+بۇنى ٴوز MediaWiki باعدارلاماسىنان قاتىستى جٴوڭدەتۋ ساتىن شاقىرىپ ٴىستەلٴىنەدٴى.',
+	'expand_templates_title'           => '<nowiki>{{</nowiki>PAGENAME}} ت.ب. بەتتەر ٴۇشٴىن مٴاتٴىن ارالىق اتاۋى:',
+	'expand_templates_input'           => 'كٴىرٴىس مٴاتٴىنٴى:',
+	'expand_templates_output'          => 'نٴاتيجەسٴى:',
+	'expand_templates_ok'              => 'جارايدى',
+	'expand_templates_remove_comments' => 'مٴاندەمەلەرٴىن الاستاتىپ?',
+);
+$wgExpandTemplatesMessages['kk'] = $wgExpandTemplatesMessages['kk-kz'];
 $wgExpandTemplatesMessages['ksh'] = array(
 	'expandtemplates'                  => 'Schabloone övverprööfe',
 	'expand_templates_intro'           => 'Hee kannß de en Schabloon ußprobėere. Do jiss_enne Oproov_enn, un dann kriß_De dä 

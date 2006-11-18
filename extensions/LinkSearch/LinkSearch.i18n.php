@@ -38,6 +38,25 @@ $wgLinkSearchMessages['ja'] = array(
 	'linksearch-line'  => '$1 が $2 からリンクされています',
 	'linksearch-error' => 'ワイルドカードはホスト名の先頭でのみ使用できます。',
 );
+$wgLinkSearchMessages['kk-kz'] = array(
+	'linksearch'       => 'Веб сілтемелерін іздеу',
+	'linksearch-text'  => '«*.wikipedia.org» атауына ұқсасты бәдел нышандарды қолдануға болады. ',
+	'linksearch-line'  => '$2 дегеннен $1 сілтеген',
+	'linksearch-error' => 'Бәдел нышандар тек сервер жайы атауының бастауында болуы мүмкін.',
+);
+$wgLinkSearchMessages['kk-tr'] = array(
+	'linksearch'       => 'Veb siltemelerin izdew',
+	'linksearch-text'  => '«*.wikipedia.org» atawına uqsastı bädel nışandardı qoldanwğa boladı. ',
+	'linksearch-line'  => '$2 degennen $1 siltegen',
+	'linksearch-error' => 'Bädel nışandar tek server jaýı atawınıñ bastawında bolwı mümkin.',
+);
+$wgLinkSearchMessages['kk-cn'] = array(
+	'linksearch'       => 'ۆەب سٴىلتەمەلەرٴىن ٴىزدەۋ',
+	'linksearch-text'  => '«*.wikipedia.org» اتاۋىنا ۇقساستى بٴادەل نىشانداردى قولدانۋعا بولادى. ',
+	'linksearch-line'  => '$2 دەگەننەن $1 سٴىلتەگەن',
+	'linksearch-error' => 'بٴادەل نىشاندار تەك سەرۆەر جايى اتاۋىنىڭ باستاۋىندا بولۋى مٴۇمكٴىن.',
+);
+$wgLinkSearchMessages['kk'] = $wgLinkSearchMessages['kk-kz'];
 $wgLinkSearchMessages['nl'] = array(
 	'linksearch'       => 'Zoek externe links',
 	'linksearch-text'  => 'Wildcards zoals "*.wikipedia.org" of "*.org" zijn toegestaan.',

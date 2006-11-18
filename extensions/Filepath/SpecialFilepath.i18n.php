@@ -43,6 +43,22 @@ $wgFilepathMessages['ja'] = array(
 	'filepath_page'   => 'ファイル名:',
 	'filepath_submit' => 'パスを取得',
 );
+$wgFilepathMessages['kk-kz'] = array(
+	'filepath'        => 'Файл орналасуын табу ',
+	'filepath_page'   => 'Файл аты:',
+	'filepath_submit' => 'Орналасуын табу ',
+);
+$wgFilepathMessages['kk-tr'] = array(
+	'filepath'        => 'Faýl ornalaswın tabw ',
+	'filepath_page'   => 'Faýl atı:',
+	'filepath_submit' => 'Ornalaswın tabw ',
+);
+$wgFilepathMessages['kk-cn'] = array(
+	'filepath'        => 'فايل ورنالاسۋىن تابۋ ',
+	'filepath_page'   => 'فايل اتى:',
+	'filepath_submit' => 'ورنالاسۋىن تابۋ ',
+);
+$wgFilepathMessages['kk'] = $wgFilepathMessages['kk-kz'];
 $wgFilepathMessages['nl'] = array(
 	'filepath'        => 'Bestandslocatie',
 	'filepath_page'   => 'Bestand:',

@@ -26,6 +26,16 @@ $wgSiteMatrixMessages['id'] = array(
 $wgSiteMatrixMessages['ja'] = array(
 	"sitematrix" => "Wikimediaウィキの一覧",
 );
+$wgSiteMatrixMessages['kk-kz'] = array(
+	"sitematrix" => "Барлық Wikimedia уики-жобалар тізімі",
+);
+$wgSiteMatrixMessages['kk-tr'] = array(
+	"sitematrix" => "Barlıq Wikimedia wïkï-jobalar tizimi",
+);
+$wgSiteMatrixMessages['kk-cn'] = array(
+	"sitematrix" => "بارلىق Wikimedia ۋيكي-جوبالار تٴىزٴىمٴى",
+);
+$wgSiteMatrixMessages['kk'] = $wgSiteMatrixMessages['kk-kz'];
 $wgSiteMatrixMessages['nl'] = array(
 	"sitematrix" => "Lijst met Wikimedia wiki's",
 );

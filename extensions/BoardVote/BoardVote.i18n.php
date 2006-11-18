@@ -54,7 +54,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 
 [[Special:Boardvote/entry|Back]]",
 	'boardvote_notloggedin'   => "You are not logged in. To vote, you must use an account with at least $1 contributions before $2, and with a first edit before $3.",
-	'boardvote_notqualified'  => "You are not qualified to vote in this election. You need to have made $3 edits before $2, you have made $1. Also, your first edit was at $4, it needs to be before $5. ",
+	'boardvote_notqualified'  => "You are not qualified to vote in this election. You need to have made $3 edits before $2, you have made $1. Also, your first edit was at $4, it needs to be before $5.",
 	'boardvote_novotes'       => "Nobody has voted yet.",
 	'boardvote_time'          => "Time",
 	'boardvote_user'          => "User",
@@ -76,7 +76,6 @@ to date. $1 for the encrypted data.</p>",
 	'group-boardvote'         => 'Board vote admins',
 	'group-boardvote-member'  => 'Board vote admin',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
-	'boardvote_submit' => 'OK',
 );
 $wgBoardVoteMessages['cs'] = array(
 	'boardvote'               => "Volby do Správní rady nadace Wikimedia",
@@ -244,6 +243,142 @@ Berikut adalah hasil dari enkripsi. Data tersebut akan ditampilkan untuk publik 
 	'group-boardvote-member'  => 'Pengurus pemilihan anggota dewan',
 	'grouppage-boardvote'     => '{{ns:project}}:Pengurus pemilihan anggota dewan',
 );
+$wgBoardVoteMessages['kk-kz'] = array(
+	'boardvote'               => "Wikimedia Жебеушілер Кеңесінің сайлауы ",
+	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Дауыс беру]]
+* [[{{ns:Special}}:Boardvote/list|Күн бойынша дауыс беру тізімі]]
+* [[{{ns:Special}}:Boardvote/dump|Мұқамдалған сайлау жазбаларының арқауы]]",
+	'boardvote_intro_change'  => "<p>Даусыңызды әуелде беріпсіз.
+  Дегенмен, төмендегі үлгітті пайдаланып даусыңызды өзгертей аласыз.
+  Сіз таңдаған әрбір ұсынылған тұлғалар қасына белгі қойңыз.</p>",
+	'boardvote_entered'       => "Рахмет, дауысыңыз жазылыпп алынды.
+
+Егер дітте болсаңыз, келесі егжей-тегжейлерін жазуыңызға болады. Дауыс беруіңіздің жазбасы:
+
+<pre>$1</pre>
+
+Бұл Сайлау Әкімшілігінің жариялы електронды кілтімен мұқамдалған:
+
+<pre>$2</pre>
+
+Нәтижелі мұқамдалған нұсқасы келесіде көрсетіледі. Бұл [[{{ns:special}}:Boardvote/dump]] бетінде баршаға жарияланады.
+
+<pre>$3</pre>
+
+[[{{ns:special}}:Boardvote/entry|Кері қайту]]",
+	'boardvote_notloggedin'   => "Осы жобаға кірмепсіз. Дауыс беру үшін $2 кезіне дейін ең кемінде $2 үлес берген тіркелгініз болу қажет, және де бірінші түзетуіңіз $3 кезіне дейін болу қажет.",
+	'boardvote_notqualified'  => "Осы сайлауда дауыс беруге жуытылмайсыз. Сізге $2 кезіне дейін ең кемінде $3 түзету істеу қажет; сіз $1 істепсіз. Тағы да, осы уикиде бірінші түзетуіңіз $4 кезінде істеліпті; бұл $5 кезіне дейін болу қажет.",
+	'boardvote_novotes'       => "Ешкім дауысын берген жоқ.",
+	'boardvote_time'          => "Уақыт",
+	'boardvote_user'          => "Қатысушы",
+	'boardvote_edits'         => "Түзету",
+	'boardvote_days'          => "Күн",
+	'boardvote_ip'            => "IP жай",
+	'boardvote_ua'            => "Пайдаланушы әрекеткіші",
+	'boardvote_listintro'     => "<p>Осында жазылып алынған барлық дауыс берушілердің күн-айы бойынша тізімі беріліп тұр.
+Мұқамдалған деректер үшін $1.</p>",
+	'boardvote_dumplink'      => "мынаны нұқыңыз",
+	'boardvote_submit'        => 'Жарайды',
+	'boardvote_strike'        => "Сызып тастау",
+	'boardvote_unstrike'      => "Сызуды өшіру",
+	'boardvote_needadmin'     => "Бұл әрекетті тек сайлау әкімшілер орындай алады.",
+	'boardvote_notstarted'    => 'Дауыс беру әлі басталмаған',
+	'boardvote_edits_many'    => 'көп',
+	'group-boardvote'         => 'Кеңес сайлау әкімшілері',
+	'group-boardvote-member'  => 'Кеңес сайлау әкімші',
+	'grouppage-boardvote'     => '{{ns:project}}:Кеңес сайлау әкімшілері',
+);
+$wgBoardVoteMessages['kk-tr'] = array(
+	'boardvote'               => "Wikimedia Jebewşiler Keñesiniñ saýlawı ",
+	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Dawıs berw]]
+* [[{{ns:Special}}:Boardvote/list|Kün boýınşa dawıs berw tizimi]]
+* [[{{ns:Special}}:Boardvote/dump|Muqamdalğan saýlaw jazbalarınıñ arqawı]]",
+	'boardvote_intro_change'  => "<p>Dawsıñızdı äwelde beripsiz.
+  Degenmen, tömendegi ülgitti paýdalanıp dawsıñızdı özgerteý alasız.
+  Siz tañdağan ärbir usınılğan tulğalar qasına belgi qoýñız.</p>",
+	'boardvote_entered'       => "Raxmet, dawısıñız jazılıpp alındı.
+
+Eger ditte bolsañız, kelesi egjeý-tegjeýlerin jazwıñızğa boladı. Dawıs berwiñizdiñ jazbası:
+
+<pre>$1</pre>
+
+Bul Saýlaw Äkimşiliginiñ jarïyalı elektrondı kiltimen muqamdalğan:
+
+<pre>$2</pre>
+
+Nätïjeli muqamdalğan nusqası keleside körsetiledi. Bul [[{{ns:special}}:Boardvote/dump]] betinde barşağa jarïyalanadı.
+
+<pre>$3</pre>
+
+[[{{ns:special}}:Boardvote/entry|Keri qaýtw]]",
+	'boardvote_notloggedin'   => "Osı jobağa kirmepsiz. Dawıs berw üşin $2 kezine deýin eñ keminde $2 üles bergen tirkelginiz bolw qajet, jäne de birinşi tüzetwiñiz $3 kezine deýin bolw qajet.",
+	'boardvote_notqualified'  => "Osı saýlawda dawıs berwge jwıtılmaýsız. Sizge $2 kezine deýin eñ keminde $3 tüzetw istew qajet; siz $1 istepsiz. Tağı da, osı wïkïde birinşi tüzetwiñiz $4 kezinde istelipti; bul $5 kezine deýin bolw qajet.",
+	'boardvote_novotes'       => "Eşkim dawısın bergen joq.",
+	'boardvote_time'          => "Waqıt",
+	'boardvote_user'          => "Qatıswşı",
+	'boardvote_edits'         => "Tüzetw",
+	'boardvote_days'          => "Kün",
+	'boardvote_ip'            => "IP jaý",
+	'boardvote_ua'            => "Paýdalanwşı äreketkişi",
+	'boardvote_listintro'     => "<p>Osında jazılıp alınğan barlıq dawıs berwşilerdiñ kün-aýı boýınşa tizimi berilip tur.
+Muqamdalğan derekter üşin $1.</p>",
+	'boardvote_dumplink'      => "mınanı nuqıñız",
+	'boardvote_submit'        => 'Jaraýdı',
+	'boardvote_strike'        => "Sızıp tastaw",
+	'boardvote_unstrike'      => "Sızwdı öşirw",
+	'boardvote_needadmin'     => "Bul äreketti tek saýlaw äkimşiler orındaý aladı.",
+	'boardvote_notstarted'    => 'Dawıs berw äli bastalmağan',
+	'boardvote_edits_many'    => 'köp',
+	'group-boardvote'         => 'Keñes saýlaw äkimşileri',
+	'group-boardvote-member'  => 'Keñes saýlaw äkimşi',
+	'grouppage-boardvote'     => '{{ns:project}}:Keñes saýlaw äkimşileri',
+);
+$wgBoardVoteMessages['kk-cn'] = array(
+	'boardvote'               => "Wikimedia جەبەۋشٴىلەر كەڭەسٴىنٴىڭ سايلاۋى ",
+	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|داۋىس بەرۋ]]
+* [[{{ns:Special}}:Boardvote/list|كٴۇن بويىنشا داۋىس بەرۋ تٴىزٴىمٴى]]
+* [[{{ns:Special}}:Boardvote/dump|مۇقامدالعان سايلاۋ جازبالارىنىڭ ارقاۋى]]",
+	'boardvote_intro_change'  => "<p>داۋسىڭىزدى ٴاۋەلدە بەرٴىپسٴىز.
+  دەگەنمەن, تٴومەندەگٴى ٴۇلگٴىتتٴى پايدالانىپ داۋسىڭىزدى ٴوزگەرتەي الاسىز.
+  سٴىز تاڭداعان ٴاربٴىر ۇسىنىلعان تۇلعالار قاسىنا بەلگٴى قويڭىز.</p>",
+	'boardvote_entered'       => "راحمەت, داۋىسىڭىز جازىلىپپ الىندى.
+
+ەگەر دٴىتتە بولساڭىز, كەلەسٴى ەگجەي-تەگجەيلەرٴىن جازۋىڭىزعا بولادى. داۋىس بەرۋٴىڭٴىزدٴىڭ جازباسى:
+
+<pre>$1</pre>
+
+بۇل سايلاۋ ٴاكٴىمشٴىلٴىگٴىنٴىڭ جارييالى ەلەكتروندى كٴىلتٴىمەن مۇقامدالعان:
+
+<pre>$2</pre>
+
+نٴاتيجەلٴى مۇقامدالعان نۇسقاسى كەلەسٴىدە كٴورسەتٴىلەدٴى. بۇل [[{{ns:special}}:Boardvote/dump]] بەتٴىندە بارشاعا جارييالانادى.
+
+<pre>$3</pre>
+
+[[{{ns:special}}:Boardvote/entry|كەرٴى قايتۋ]]",
+	'boardvote_notloggedin'   => "وسى جوباعا كٴىرمەپسٴىز. داۋىس بەرۋ ٴۇشٴىن $2 كەزٴىنە دەيٴىن ەڭ كەمٴىندە $2 ٴۇلەس بەرگەن تٴىركەلگٴىنٴىز بولۋ قاجەت, جٴانە دە بٴىرٴىنشٴى تٴۇزەتۋٴىڭٴىز $3 كەزٴىنە دەيٴىن بولۋ قاجەت.",
+	'boardvote_notqualified'  => "وسى سايلاۋدا داۋىس بەرۋگە جۋىتىلمايسىز. سٴىزگە $2 كەزٴىنە دەيٴىن ەڭ كەمٴىندە $3 تٴۇزەتۋ ٴىستەۋ قاجەت; سٴىز $1 ٴىستەپسٴىز. تاعى دا, وسى ۋيكيدە بٴىرٴىنشٴى تٴۇزەتۋٴىڭٴىز $4 كەزٴىندە ٴىستەلٴىپتٴى; بۇل $5 كەزٴىنە دەيٴىن بولۋ قاجەت.",
+	'boardvote_novotes'       => "ەشكٴىم داۋىسىن بەرگەن جوق.",
+	'boardvote_time'          => "ۋاقىت",
+	'boardvote_user'          => "قاتىسۋشى",
+	'boardvote_edits'         => "تٴۇزەتۋ",
+	'boardvote_days'          => "كٴۇن",
+	'boardvote_ip'            => "IP جاي",
+	'boardvote_ua'            => "پايدالانۋشى ٴارەكەتكٴىشٴى",
+	'boardvote_listintro'     => "<p>وسىندا جازىلىپ الىنعان بارلىق داۋىس بەرۋشٴىلەردٴىڭ كٴۇن-ايى بويىنشا تٴىزٴىمٴى بەرٴىلٴىپ تۇر.
+مۇقامدالعان دەرەكتەر ٴۇشٴىن $1.</p>",
+	'boardvote_dumplink'      => "مىنانى نۇقىڭىز",
+	'boardvote_submit'        => 'جارايدى',
+	'boardvote_strike'        => "سىزىپ تاستاۋ",
+	'boardvote_unstrike'      => "سىزۋدى ٴوشٴىرۋ",
+	'boardvote_needadmin'     => "بۇل ٴارەكەتتٴى تەك سايلاۋ ٴاكٴىمشٴىلەر ورىنداي الادى.",
+	'boardvote_notstarted'    => 'داۋىس بەرۋ ٴالٴى باستالماعان',
+	'boardvote_edits_many'    => 'كٴوپ',
+	'group-boardvote'         => 'كەڭەس سايلاۋ ٴاكٴىمشٴىلەرٴى',
+	'group-boardvote-member'  => 'كەڭەس سايلاۋ ٴاكٴىمشٴى',
+	'grouppage-boardvote'     => '{{ns:project}}:كەڭەس سايلاۋ ٴاكٴىمشٴىلەرٴى',
+);
+$wgBoardVoteMessages['kk'] = $wgBoardVoteMessages['kk-kz'];
 $wgBoardVoteMessages['nl'] = array(
 	"boardvote"               => "Wikimedia Board of Trustees-verkiezing",
 	"boardvote_entry"         => "* [[Special:Boardvote/vote|Vote]]

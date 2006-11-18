@@ -46,6 +46,25 @@ $wgNewuserlogMessages['ja'] = array(
 	'newuserlog-create-entry'  => '新規利用者',
 	'newuserlog-create2-entry' => 'が新規に $1 を作成しました',
 );
+$wgNewuserlogMessages['kk-kz'] = array(
+	'newuserlogpage'           => 'Тіркелу журналы',
+	'newuserlogpagetext'       => 'Бұл қатысушы тіркелгі жасау журналы',
+	'newuserlog-create-entry'  => 'Жаңа қатысушы',
+	'newuserlog-create2-entry' => 'жаңа тіркелгі жасады — $1',
+);
+$wgNewuserlogMessages['kk-tr'] = array(
+	'newuserlogpage'           => 'Tirkelw jwrnalı',
+	'newuserlogpagetext'       => 'Bul qatıswşı tirkelgi jasaw jwrnalı',
+	'newuserlog-create-entry'  => 'Jaña qatıswşı',
+	'newuserlog-create2-entry' => 'jaña tirkelgi jasadı — $1',
+);
+$wgNewuserlogMessages['kk-cn'] = array(
+	'newuserlogpage'           => 'تٴىركەلۋ جۋرنالى',
+	'newuserlogpagetext'       => 'بۇل قاتىسۋشى تٴىركەلگٴى جاساۋ جۋرنالى',
+	'newuserlog-create-entry'  => 'جاڭا قاتىسۋشى',
+	'newuserlog-create2-entry' => 'جاڭا تٴىركەلگٴى جاسادى — $1',
+);
+$wgNewuserlogMessages['kk'] = $wgNewuserlogMessages['kk-kz'];
 $wgNewuserlogMessages['nl'] = array(
 	'newuserlogpage'           => 'Logboek nieuwe gebruikers',
 	'newuserlogpagetext'       => 'Hieronder staan de nieuw ingeschreven gebruikers',
