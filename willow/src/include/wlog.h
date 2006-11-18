@@ -14,6 +14,7 @@
 
 #include <cstdio>
 #include <string>
+using std::FILE;
 
 #include "willow.h"
 #include "config.h"

@@ -41,6 +41,9 @@
 /* $Id$ */
 
 #include <iostream>
+#include <cstring>
+using std::memcpy;
+
 #include "acl.h"
 
 static uint8_t maskbit[] = {0x00, 0x80, 0xc0, 0xe0, 0xf0,

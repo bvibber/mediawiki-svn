@@ -119,7 +119,10 @@ struct sink : noncopyable {
 	 * fd, beginning at offset.  discard and size are used as normal.
 	 */
 	virtual bool		dio_supported	(dio_source) const { return false; }
-	virtual sink_result	dio_ready	(int, off_t, size_t, ssize_t&) { abort(); }
+	virtual sink_result	dio_ready	(int, off_t, size_t, ssize_t&) { 
+		abort();
+		return io::sink_result_error;
+	}
 
 protected:
 	friend class spigot;

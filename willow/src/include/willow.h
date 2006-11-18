@@ -22,6 +22,7 @@
 #include <string>
 #include <cmath>
 #include <vector>
+#include <strings.h>
 using std::runtime_error;
 using std::basic_string;
 using std::char_traits;
@@ -317,7 +318,7 @@ basic_imstring<charT, allocator>::basic_imstring(
 template<typename charT, typename allocator>
 void
 basic_imstring<charT, allocator>::reserve(
-		basic_imstring<charT, allocator>::size_type s)
+		typename basic_imstring<charT, allocator>::size_type s)
 {
 	if (_buf)
 		_alloc.deallocate(_buf, _len);
@@ -343,7 +344,7 @@ basic_imstring<charT, allocator>::append(charT const *s, charT const *e)
 template<typename charT, typename allocator>
 void
 basic_imstring<charT, allocator>::append(charT const *s,
-		basic_imstring<charT, allocator>::size_type len)
+		typename basic_imstring<charT, allocator>::size_type len)
 {
 	memcpy(_end, s, len);
 	_end += len;
@@ -473,7 +474,7 @@ basic_imstring<charT, allocator>::empty(void) const
 template<typename charT, typename allocator>
 charT &
 basic_imstring<charT, allocator>::operator[] (
-	basic_imstring<charT, allocator>::size_type n)
+	typename basic_imstring<charT, allocator>::size_type n)
 {
 	assert(n < size());
 	return _buf[n];
@@ -482,7 +483,7 @@ basic_imstring<charT, allocator>::operator[] (
 template<typename charT, typename allocator>
 charT const &
 basic_imstring<charT, allocator>::operator[] (
-	basic_imstring<charT, allocator>::size_type n) const
+	typename basic_imstring<charT, allocator>::size_type n) const
 {
 	assert(n < size());
 	return _buf[n];

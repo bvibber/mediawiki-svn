@@ -17,6 +17,7 @@ using std::memset;
 
 #include "wthread.h"
 
+#ifndef __SUNPRO_CC
 template<typename T>
 void
 flalloc_dtor(void *p)
@@ -61,5 +62,10 @@ static  tss<T, flalloc_dtor<T> >		 _freelist;
 
 template<typename T>
 tss<T, flalloc_dtor<T> > freelist_allocator<T>::_freelist;
+#else	/* !__SUNPRO_CC */
+template<typename T>
+struct freelist_allocator {
+};
+#endif	/* __SUNPRO_CC */
 
 #endif

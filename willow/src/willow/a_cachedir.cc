@@ -5,7 +5,7 @@
  * a_cache: class representing a single cache directory.
  */
 
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
+#if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Id$"
 #endif
 

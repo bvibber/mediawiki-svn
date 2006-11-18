@@ -12,7 +12,7 @@
 /* From: Id: radix.c,v 1.1.1.1 2005/11/07 20:17:44 pim Exp */
 /* $Id$ */
 
-#include <cstdio>
+#include <stdio.h>
 #include <cstring>
 #include <cstdlib>
 #include <cassert>
@@ -126,28 +126,28 @@ prefix::prefix(string const &s)
 void
 prefix::_from(char const *string)
 {
-char *cp;
+char const *cp;
 char prefixstr[64];
 
-	if (strchr (string, ':')) {
+	if (strchr(string, ':')) {
 		prefixlen = 128;
 		_family = AF_INET6;
-	} else if (strchr (string, '.')) {
+	} else if (strchr(string, '.')) {
 		_family = AF_INET;
 		prefixlen = 32;
 	} else {
 		throw invalid_prefix("cannot parse IP address");
 	}
 
-	if ((cp = strchr (string, '/')) != NULL) {
+	if ((cp = std::strchr(string, '/')) != NULL) {
 		prefixlen = atol (cp+1);
-		memcpy (prefixstr, string, cp-string);
+		memcpy(prefixstr, string, cp-string);
 		prefixstr[cp-string] = '\0';
 	} else {
 		strlcpy (prefixstr, string, sizeof(prefixstr));
 	}
 
-	if (inet_pton (_family, prefixstr, &add) != 1)
+	if (inet_pton(_family, prefixstr, &add) != 1)
 		throw invalid_prefix("IP address is invalid");
 }
 

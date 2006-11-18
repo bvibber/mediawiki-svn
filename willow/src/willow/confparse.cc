@@ -13,6 +13,7 @@
 #include <utility>
 #include <cstdarg>
 #include <cerrno>
+#include <stdio.h>
 using std::vector;
 using std::make_pair;
 

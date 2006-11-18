@@ -9,6 +9,9 @@
 # pragma ident "@(#)$Id$"
 #endif
 
+#define _XOPEN_SOURCE 500
+#define __EXTENSIONS__
+
 #include <sys/types.h>
 #include <sys/socket.h>
 
@@ -24,6 +27,7 @@ using std::memset;
 using std::strchr;
 using std::strerror;
 using std::string;
+using std::exit;
 
 #ifdef __INTEL_COMPILER
 # pragma warning (disable: 383 981 1418)

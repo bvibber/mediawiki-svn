@@ -5,7 +5,7 @@
  * cachedir_data_store: a dbwrap datastore for cache directories.
  */
 
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
+#if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Id$"
 #endif
 		
@@ -17,7 +17,7 @@
 cachedir_data_store::cachedir_data_store(void)
 : _curdir(0)
 {
-	vector<cachedir>::iterator it = config.cachedirs.begin(), end = config.cachedirs.end();
+vector<cachedir>::iterator it = config.cachedirs.begin(), end = config.cachedirs.end();
 	for (; it != end; ++it)
 		_cachedirs.push_back(new a_cachedir(config.cachedirs[0].dir, _cachedirs.size()));
 }

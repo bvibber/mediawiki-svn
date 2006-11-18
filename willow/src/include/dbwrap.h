@@ -31,7 +31,7 @@ struct marshaller {
 template<>
 struct marshaller<char> {
 	pair<char const *, uint32_t> marshall(char c) {
-		return make_pair(&c, sizeof(c));
+		return pair<char const *, uint32_t>(&c, sizeof(c));
 	}
 };
 

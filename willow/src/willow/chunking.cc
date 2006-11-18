@@ -5,11 +5,12 @@
  * dechunking_filter: HTTP 1.1 dechunking filter
  */
 
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
+#if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Id$"
 #endif
 
 #include <algorithm>
+#include <stdio.h>
 using std::min;
 
 #include "chunking.h"

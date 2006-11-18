@@ -5,7 +5,7 @@
  * flowio: stream-based i/o system.
  */
 
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
+#if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Id$"
 #endif
 
@@ -15,7 +15,8 @@
 #include <sys/mman.h>
 
 #include <fcntl.h>
-
+#include <limits.h>
+#include <stdio.h>
 #include <iostream>
 #include <cerrno>
 using std::streamsize;

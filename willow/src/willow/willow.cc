@@ -4,13 +4,16 @@
  * Willow: Lightweight HTTP reverse-proxy.
  */
 
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
+#if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Id$"
 #endif
 
 #include <sys/mman.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <pwd.h>
+#include <grp.h>
+#include <limits.h>
 
 #include <cstdio>
 #include <cstdlib>
@@ -19,8 +22,6 @@
 #include <cstring>
 #include <unistd.h>
 #include <cerrno>
-#include <pwd.h>
-#include <grp.h>
 #include <cctype>
 #include <iostream>
 using std::streamsize;
@@ -235,46 +236,6 @@ outofmemory(void)
 	exit(8);
 }
 
-char **
-wstrvec(const char *str, const char *sep, int lim)
-{
-	char	**result = NULL;
-	int	 nres = 0;
-	char	*s;
-const	char	*st = str;
-
-	while ((!lim || --lim) && (s = strstr(st, sep))) {
-		result = (char **)wrealloc(result, ++nres * sizeof(char *));
-		while (isspace(*st))
-			st++;
-		result[nres - 1] = (char *)wmalloc((s - st) + 1);
-		memcpy(result[nres - 1], st, s - st);
-		result[nres - 1][s - st] = '\0';
-		st = s + strlen(sep);
-	}
-
-	result = (char **)wrealloc(result, ++nres * sizeof(char *));
-	while (isspace(*st))
-		st++;
-	result[nres - 1] = wstrdup(st);
-
-	result = (char **)wrealloc(result, (nres + 1) * sizeof(char *));
-	result[nres] = NULL;
-	return result;
-}
-
-void
-wstrvecfree(char **vec)
-{
-	char **s = vec;
-	while (*s) {
-		wfree(*s);
-		s++;
-	}
-	wfree(vec);
-}
-
-							
 int char_table[256] = {
 	/* 0   */ 0, 0, 0, 0, 0, 0, 0, 0,
 	/* 8   */ 0, 0, 0, 0, 0, 0, 0, 0,
@@ -601,4 +562,15 @@ diobuf::loadfile(istream &f, size_t n)
 	if (!f.read(_buf, n) || f.gcount() != (streamsize)n)
 		return false;
 	return true;
+}
+
+void
+pttsswrapdtor(void *p)
+{
+pta_block	**pt = (pta_block **)p, *n = *pt, *o;
+	while ((o = n) != NULL) {
+		n = n->next;
+		free(o);
+	}
+	delete pt;
 }

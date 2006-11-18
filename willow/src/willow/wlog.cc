@@ -5,7 +5,7 @@
  * wlog: logging.
  */
 
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
+#if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Id$"
 #endif
 
@@ -17,6 +17,9 @@
 #include <cerrno>
 #include <iostream>
 using std::cout;
+using std::fopen;
+using std::fprintf;
+using std::fclose;
 
 #include "config.h"
 

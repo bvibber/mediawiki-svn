@@ -5,7 +5,7 @@
  * whttp_header: header processing implementation.
  */
 
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
+#if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Id$"
 #endif
 
@@ -18,6 +18,7 @@
 #include <cerrno>
 using std::strlen;
 using std::vector;
+using std::sprintf;
 
 #include <assert.h>
 
@@ -80,9 +81,9 @@ hmap_type htypemap;
 vector<pair<char const *, int> > htypemap;
 
 static struct htypent {
-	char 	*name;
-	int	 n;
-	size_t	 len;
+	char const 	*name;
+	int		 n;
+	size_t		 len;
 } list[] = {
 	{ "transfer-encoding",		H_TRANSFER_ENCODING, 0 },
 	{ "content-length",		H_CONTENT_LENGTH, 0 },

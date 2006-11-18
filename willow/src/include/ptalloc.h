@@ -46,16 +46,9 @@ static const int lt256[] =
   7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7
 };
 
-struct pttsswrap {
-	static void pttsswrapdtor(void *p) {
-	pta_block	**pt = (pta_block **)p, *n = *pt, *o;
-		while ((o = n) != NULL) {
-			n = n->next;
-			free(o);
-		}
-		delete pt;
-	}
+extern "C" void pttsswrapdtor(void *);
 
+struct pttsswrap {
 	pttsswrap() {
 		pthread_key_create(&key, pttsswrapdtor);
 	}

@@ -24,6 +24,7 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 
 #include <netinet/in.h>
 #include <netdb.h>
+#include <unistd.h>
 
 #include "config.h"
 #include <sys/time.h>
@@ -62,6 +63,7 @@ using std::vector;
 using std::runtime_error;
 using std::pair;
 using std::make_pair;
+using std::memcpy;
 
 #include "willow.h"
 #include "polycaller.h"

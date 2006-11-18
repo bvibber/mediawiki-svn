@@ -12,11 +12,11 @@
 #include <netdb.h>
 
 #include <vector>
-using std::vector;
-
 #include <cstdlib>
 #include <cstdarg>
 #include <cstdio>
+using std::vector;
+using std::sprintf;
 
 #define NEED_PARSING_TREE
 #include "willow.h"

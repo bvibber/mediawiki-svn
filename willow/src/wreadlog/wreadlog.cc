@@ -5,10 +5,12 @@
  * wreadlog: Read UDP log packets and print human-readable log.
  */
 
-
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Id$"
 #endif
+
+#define _XOPEN_SOURCE 500
+#define __EXTENSIONS__
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -29,6 +31,7 @@
 #include <ctime>
 #include <algorithm>
 #include <vector>
+#include <memory>
 using std::strftime;
 using std::strlen;
 using std::fprintf;
@@ -39,6 +42,15 @@ using std::vector;
 using std::strcpy;
 using std::strchr;
 using std::auto_ptr;
+using std::exit;
+using std::memset;
+using std::atoi;
+using std::memcpy;
+using std::memcmp;
+using std::strerror;
+using std::perror;
+using std::FILE;
+using std::strcmp;
 
 #ifdef __INTEL_COMPILER
 # pragma warning (disable: 1418 383 981)
@@ -178,7 +190,7 @@ vector<int>::iterator	it, end;
 static void
 ioloop(vector<int> &socks)
 {
-int	maxfd;
+int	maxfd = 0;
 fd_set	rfds;
 vector<int>::iterator	it, end;
 
@@ -367,6 +379,8 @@ bool		 daemon = false;
 	}
 
 	hints.ai_socktype = SOCK_DGRAM;
+	hints.ai_flags |= AI_PASSIVE;
+
 	if ((i = getaddrinfo(host, port, &hints, &res)) != 0) {
 		if (host)
 			fprintf(stderr, "%s: resolving [%s]:%s: %s\n", progname, host, port, gai_strerror(i));

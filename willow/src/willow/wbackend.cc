@@ -5,7 +5,7 @@
  * wbackend: HTTP backend handling.
  */
 
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
+#if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
 # pragma ident "@(#)$Id$"
 #endif
 
@@ -22,6 +22,8 @@
 #include <cmath>
 #include <ctime>
 #include <algorithm>
+using std::sort;
+using std::pow;
 using std::rotate;
 
 #include "willow.h"
@@ -257,7 +259,7 @@ backend_pool::_carp_calc(void)
 struct	backend *be, *prev;
 	size_t	 i, j;
 
-	backends[0]->be_carp = (uint32_t) pow((backends.size() * backends[0]->be_load), 1.0 / backends.size());
+	backends[0]->be_carp = (uint32_t) pow((double) (backends.size() * backends[0]->be_load), 1.0 / backends.size());
 	backends[0]->be_carplfm = 1.0;
 	for (i = 1; i < backends.size(); ++i) {
 		float l = 0;
@@ -267,8 +269,8 @@ struct	backend *be, *prev;
 		for (j = 0; j < i; ++j)
 			l *= backends[j]->be_carp;
 		be->be_carp = (uint32_t) (be->be_carp / l);
-		be->be_carp += (uint32_t) pow(prev->be_carp, backends.size()-i+1);
-		be->be_carp = (uint32_t) pow(be->be_carp, 1/(backends.size()-i+1));
+		be->be_carp += (uint32_t) pow(prev->be_carp, (double) backends.size()-i+1);
+		be->be_carp = (uint32_t) pow(be->be_carp, (double) 1/(backends.size()-i+1));
 	}
 }
 
