@@ -45,9 +45,6 @@ typedef unsigned long long w_size_t;
 #define wrealloc realloc
 #define wcalloc calloc
 
-	char **wstrvec		(const char *, const char *, int);
-	void wstrvecfree	(char **);
-
 #ifndef HAVE_DAEMON
 extern "C" int daemon(int, int);
 #endif
@@ -83,16 +80,6 @@ void outofmemory(void);
 #define CHAR_HOST	1
 
 extern int char_table[];
-
-#if defined(__GNUC__) || defined(__INTEL_COMPILER)
-# define likely(c) __builtin_expect((c), true)
-# define unlikely(c) __builtin_expect((c), false)
-# define prefetch_memory(a) __builtin_prefetch(a)
-#else
-# define likely(c) c
-# define unlikely(c) c
-# define prefetch_memory(a) a
-#endif
 
 template<typename T, void (T::*ptmf) (void)>
 void ptmf_transform(void *p)

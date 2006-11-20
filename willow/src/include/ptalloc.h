@@ -12,6 +12,8 @@
 # pragma ident "@(#)$Id$"
 #endif
 
+#include <boost/format.hpp>
+
 #include <string>
 #include <sstream>
 
@@ -200,11 +202,23 @@ struct pt_allocator<void>
 
 typedef std::basic_string<char, char_traits<char>, pt_allocator<char> > ptstring;
 typedef ptstring string;
+typedef std::basic_string<u_char, char_traits<u_char>, pt_allocator<u_char> > ustring;
 typedef std::basic_stringstream<char, std::char_traits<char>, pt_allocator<char > >
 	stringstream;
 typedef std::basic_ostringstream<char, std::char_traits<char>, pt_allocator<char > >
 	ostringstream;
 typedef std::basic_istringstream<char, std::char_traits<char>, pt_allocator<char > >
 	istringstream;
+
+typedef boost::archive::iterators::base64_from_binary<
+		boost::archive::iterators::transform_width<
+			string::const_iterator, 6, 8> > base64_string;
+
+typedef boost::archive::iterators::transform_width<
+		boost::archive::iterators::binary_from_base64<
+			string::const_iterator, char>, 8, 6> unbase64_string;
+
+typedef boost::basic_format<char, std::char_traits<char>, pt_allocator<char> >
+		format;
 
 #endif

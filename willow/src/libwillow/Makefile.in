@@ -1,0 +1,20 @@
+# $Id$
+# Makefile for for src/libwillow
+
+.SUFFIXES: .cc .o .a
+
+LIB=willow
+CPPFLAGS = -I../include
+SRCS=			\
+	htcp.cc		\
+	libwillow.cc	\
+	mbuffer.cc	\
+	md5.cc		\
+
+OBJS=   $(SRCS:.cc=.o)
+EXTRA_DIST=		\
+	Makefile.in	\
+
+default: all
+
+@include@ @q@@top_srcdir@/mk/lib.mk@q@

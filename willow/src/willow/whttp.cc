@@ -378,8 +378,8 @@ httpcllr::header_read_complete(void)
 	 */
 	if (_header_parser->_http_reqtype != REQTYPE_POST) {
 	bool	created = false;
-	string	url = format("http://%s%s") % _header_parser->_http_host
-			% _header_parser->_http_path;
+	string	url = str(format("http://%s%s") % _header_parser->_http_host
+			% _header_parser->_http_path);
 		_cachedent = entitycache.find_cached(imstring(url), true, created);
 		if (_cachedent) {
 			if (_cachedent->complete()) {
@@ -627,7 +627,8 @@ httpcllr::backend_read_headers_done(void)
 	 * If we're caching this entity, store the headers.
 	 */
 	if (_cachedent) {
-	string	status = format("HTTP/1.1 %s\r\n") % _backend_headers->_http_path;
+	string	status = str(format("HTTP/1.1 %s\r\n") 
+			% _backend_headers->_http_path);
 		_cachedent->store_status(status);
 		_cachedent->store_headers(_backend_headers->_headers);
 	}
@@ -827,7 +828,8 @@ wsocket	*socks[2];
 map<wsocket *, int>::iterator lsnit;
 
 	if (s->read((char *)socks, sizeof(socks)) < (int)sizeof(socks)) {
-		wlog(WLOG_ERROR, format("accept_wakeup: reading fd: %e"));
+		wlog(WLOG_ERROR, format("accept_wakeup: reading fd: %s")
+			% strerror(errno));
 		exit(1);
 	}
 	WDEBUG((WLOG_DEBUG, format("accept_wakeup, lsnr = %d") % socks[1]));
@@ -904,8 +906,8 @@ whttp_reconfigure(void)
 	if (config.access_log.size()) {
 		alf.open(config.access_log.c_str(), ofstream::app);
 		if (!alf.good()) {
-			wlog(WLOG_WARNING, format("opening %s: %e")
-				% config.access_log);
+			wlog(WLOG_WARNING, format("opening %s: %s")
+				% config.access_log % strerror(errno));
 		}
 	}
 
@@ -1139,19 +1141,21 @@ size_t	size;
 
 	if (alf.is_open()) {
 	string	line;
-		line = format("[%s] %s %s\"%s\" %d %d %s MISS")
+		line = str(format("[%s] %s %s\"%s\" %d %d %s MISS")
 			% (char *)current_time_short
 			% _client_socket->straddr(false)
 			% request_string[_header_parser->_http_reqtype]
 			% _request_path
 			% size
 			% _response
-			% (_backend ? _backend->be_name : string("-"));
+			% (_backend ? _backend->be_name : string("-")));
 
 		HOLDING(alf_lock);
 
 		if (!(alf << line << endl)) {
-			wlog(WLOG_ERROR, "writing access log: %e; log will be closed");
+			wlog(WLOG_ERROR, 
+				format("writing access log: %s; log will be closed")
+					% strerror(errno));
 			alf.close();
 		}
 	}

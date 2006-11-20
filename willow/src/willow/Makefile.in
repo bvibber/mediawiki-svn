@@ -12,6 +12,7 @@ BASESRCS =	 		\
 	dbwrap.cc		\
 	flowio.cc		\
 	format.cc		\
+	htcp.cc			\
 	radix.cc		\
 	wbackend.cc		\
 	wconfig.cc		\
@@ -31,7 +32,8 @@ EXTRA_DIST= strlcat.c strlcpy.c \
 	daemon.c \
 	Makefile.in
 
-LDFLAGS = $(LIBOBJS)
+LDFLAGS = $(LIBOBJS) -L../libwillow -lwillow
+EXTRADEPS=../libwillow/libwillow.a
 
 .SUFFIXES: .y .l .c .cc .o
 

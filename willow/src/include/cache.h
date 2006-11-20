@@ -26,7 +26,6 @@ using std::fstream;
 #include "wthread.h"
 #include "flowio.h"
 #include "whttp_header.h"
-#include "format.h"
 #include "dbwrap.h"
 
 struct caching_filter;
@@ -89,8 +88,9 @@ struct cachedentity {
 		 * Assume it's valid if the time it was last validated is
 		 * less than 25% greater than its age.
 		 */
-		WDEBUG((WLOG_DEBUG, format("expired: now=%d, revalidating at %d")
-			% time(0) % _revalidate_at));
+		WDEBUG((WLOG_DEBUG, 
+			str(format("expired: now=%d, revalidating at %d")
+				% time(0) % _revalidate_at)));
 		return _revalidate_at <= time(0);
 	}
 
@@ -148,14 +148,10 @@ private:
 	friend struct cachedir_data_store;
 
 	void ref(void) {
-		WDEBUG((WLOG_DEBUG, format("obj @ %d: refs=%d (about to ref)")
-			% (void*)this % (int)_refs));
 		++_refs;
 	}
 
 	void deref(void) {
-		WDEBUG((WLOG_DEBUG, format("obj @ %d: refs=%d (about to deref)")
-			% (void*)this % (int)_refs));
 		assert((int)_refs);
 		if (--_refs == 0)
 			delete this;
@@ -255,12 +251,14 @@ private:
 		if (create) {
 			_file.open(path.c_str(), ios::out | ios::binary | ios::trunc);
 			if (!_file)
-				wlog(WLOG_WARNING, format("creating cache file %s: %e")
-						% path);
+				wlog(WLOG_WARNING, 
+					format("creating cache file %s: %s")
+						% path % strerror(errno));
 		}else {
 			if (stat(path.c_str(), &sb) == -1) {
-				wlog(WLOG_WARNING, format("cache file %s: %e")
-						% path);
+				wlog(WLOG_WARNING, 
+					format("cache file %s: %s")
+						% path % strerror(errno));
 					return;
 			}
 			_size = sb.st_size;
@@ -347,10 +345,11 @@ struct httpcache {
 	void close(void);
 	bool create(void);
 
-	cachedentity	 *find_cached(imstring const &url, bool create, bool& wasnew);
-	void		  release(cachedentity *);
-	bool		  purge(imstring const &url);
-	void		  purge(cachedentity *);
+	cachedentity	*find_cached(imstring const &url, bool create, bool& wasnew);
+	void		 release(cachedentity *);
+	bool		 purge(imstring const &url);
+	void		 purge(cachedentity *);
+	bool		 cached(imstring const &url);
 
 	/*
 	 * Return the on-disk cached file represented by this file number.
@@ -485,8 +484,10 @@ struct cached_spigot : io::spigot {
 	ssize_t		disc = 0;
 	io::sink_result	res;
 		for (;;) {
-			WDEBUG((WLOG_DEBUG, format("cached_spigot: %d left, off %d fd %d")
-				% (_ent->_data.size() - _off) % _off % _ent->_data.fd()));
+			WDEBUG((WLOG_DEBUG, 
+				str(format("cached_spigot: %d left, off %d fd %d")
+					% (_ent->_data.size() - _off) 
+					% _off % _ent->_data.fd())));
 			if (_dio) {		
 				res = _sp_dio_ready(_ent->_data.fd(), _off, 
 					_ent->_data.size() - _off, disc);
@@ -508,7 +509,8 @@ struct cached_spigot : io::spigot {
 				WDEBUG((WLOG_DEBUG, "continuing"));
 				continue;
 			case io::sink_result_error:
-				WDEBUG((WLOG_DEBUG, format("error %e")));
+				WDEBUG((WLOG_DEBUG, str(format("error %s")
+					% strerror(errno))));
 				_sp_error_callee();
 				return;
 			case io::sink_result_blocked:

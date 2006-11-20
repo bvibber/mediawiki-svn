@@ -184,7 +184,9 @@ AC_OUTPUT(
 	mk/Makefile
 	Makefile 
 	src/Makefile 
+	src/libwillow/Makefile
 	src/willow/Makefile
 	src/wreadlog/Makefile
 	src/wgetstats/Makefile
+	src/whtcp/Makefile
 	errors/Makefile)

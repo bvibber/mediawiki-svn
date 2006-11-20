@@ -134,7 +134,8 @@ static atomic<time_t>	 last_nfile = 0;
 		if ((errno != ENFILE && errno != EMFILE) || (now - last_nfile) > 60) {
 			if (errno == ENFILE || errno == EMFILE)
 				last_nfile = now;
-			wlog(WLOG_NOTICE, format("accept error: %e"));
+			wlog(WLOG_NOTICE, format("accept error: %s")
+				% strerror(errno));
 		}
 		s->readback(polycaller<wsocket *, int>(*this, &ioloop_t::_accept), 0);
 		return;
@@ -152,7 +153,8 @@ char	buf[sizeof(wsocket *) * 2];
 	WDEBUG((WLOG_DEBUG, format("_accept, lsnr=%d") % s));
 
 	if (awaks[cawak]->write(buf, sizeof(wsocket *) * 2) < 0) {
-		wlog(WLOG_ERROR, format("writing to thread wakeup socket: %e"));
+		wlog(WLOG_ERROR, format("writing to thread wakeup socket: %s")
+			% strerror(errno));
 		exit(1);
 	}
 	cawak++;
@@ -295,7 +297,7 @@ int	i;
 		    res, sizeof(res), port, sizeof(port), 
 			NI_NUMERICHOST | NI_NUMERICSERV)) != 0)
 			throw resolution_error(i);
-		_straddr = format("[%s]:%s") % res % port;
+		_straddr = str(format("[%s]:%s") % res % port);
 	}
 	return _straddr;
 }

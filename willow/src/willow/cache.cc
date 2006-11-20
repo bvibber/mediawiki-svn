@@ -47,7 +47,8 @@ cachedentity *ret;
 	if (it != _entities.end()) {
 	ret = it->second;
 		/* entity was cached */
-		WDEBUG((WLOG_DEBUG, format("[%s] cached, complete=%d") % url % ret->_complete));
+		WDEBUG((WLOG_DEBUG, str(format("[%s] cached, complete=%d") 
+			% url % ret->_complete)));
 		ret->ref();
 		wasnew = false;
 		_lru.erase(it);
@@ -62,20 +63,21 @@ cachedentity *ret;
 	if (_db) {
 		ret = _db->get(url);
 		if (ret != NULL) {
-			WDEBUG((WLOG_DEBUG, format("found [%s] in disk cache complete %d void %d") 
-					% url % ret->complete() % ret->isvoid()));
+			WDEBUG((WLOG_DEBUG, 
+				str(format("found [%s] in disk cache complete %d void %d") 
+					% url % ret->complete() % ret->isvoid())));
 			ret->ref();
 			_lru.insert(_entities.insert(make_pair(url, ret)).first);
 			wasnew = false;
 			return ret;
 		}
 		if (_db->error() && _db->error() != DB_NOTFOUND) {
-			wlog(WLOG_WARNING, format("fetching cached data: %s")
-				% _db->strerror());
+			wlog(WLOG_WARNING, str(format("fetching cached data: %s")
+				% _db->strerror()));
 		}
 	}
 
-	WDEBUG((WLOG_DEBUG, format("[%s] not cached") % url));
+	WDEBUG((WLOG_DEBUG, str(format("[%s] not cached") % url)));
 	if (!create)
 		return NULL;
 
@@ -85,6 +87,18 @@ cachedentity *ret;
 	_lru.insert(_entities.insert(make_pair(url, ret)).first);
 	ret->_refs = 2; /* one for _entities and one for the caller */
 	return ret;
+}
+
+bool
+httpcache::cached(imstring const &url)
+{
+bool		 wasnew;
+cachedentity	*ent = find_cached(url, false, wasnew);
+	if (ent) {
+		release(ent);
+		return true;
+	}
+	return false;
 }
 
 void
@@ -157,13 +171,13 @@ httpcache::cache_mem_increase(size_t n, cachedentity *self)
 void
 httpcache::_swap_out(cachedentity *ent)
 {
-	WDEBUG((WLOG_DEBUG, format("swapping out %s") % ent->url()));
+	WDEBUG((WLOG_DEBUG, str(format("swapping out %s") % ent->url())));
 	if (!_db)
 		return;
 	_db->put(ent->url(), *ent);
 	if (_db->error()) {
-		wlog(WLOG_WARNING, format("storing cached data: %s")
-			% _db->strerror());
+		wlog(WLOG_WARNING, str(format("storing cached data: %s")
+			% _db->strerror()));
 	}
 }
 
@@ -212,8 +226,8 @@ httpcache::open(void)
 	_env = db::environment::open(config.cache_master);
 	if (_env->error()) {
 		wlog(WLOG_ERROR, 
-			format("cannot open cache master environment \"%s\": %s")
-			% config.cache_master % _env->strerror());
+			str(format("cannot open cache master environment \"%s\": %s")
+			% config.cache_master % _env->strerror()));
 		delete _env;
 		_env = NULL;
 		return false;
@@ -223,8 +237,8 @@ httpcache::open(void)
 		cachedir_data_store>("objects", _store);
 	if (_db->error()) {
 		wlog(WLOG_ERROR, 
-			format("cannot open cache master database \"%s\": %s")
-			% config.cache_master % _db->strerror());
+			str(format("cannot open cache master database \"%s\": %s")
+			% config.cache_master % _db->strerror()));
 		_env->close();
 		delete _env;
 		delete _db;
@@ -246,8 +260,8 @@ httpcache::create(void)
 	_store = new cachedir_data_store;
 	
 	if (mkdir(config.cache_master.c_str(), 0700) < 0) {
-		wlog(WLOG_ERROR, format("cannot create cache master \"%s\": %e")
-			% config.cache_master);
+		wlog(WLOG_ERROR, format("cannot create cache master \"%s\": %s")
+			% config.cache_master % strerror(errno));
 		return false;
 	}
 		

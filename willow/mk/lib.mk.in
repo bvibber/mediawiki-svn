@@ -11,8 +11,6 @@ _LIB=lib$(LIB).a
 
 all: $(_LIB)
 
-OBJS=$(SRCS:.c=.o) $(OBJADD)
-
 $(_LIB): $(OBJS)
 	@echo "	$(_AR) cru $@ $(OBJS)"
 	@$(_AR) cru $@ $(OBJS)

@@ -12,7 +12,7 @@ all: $(_PROGRAM)
 
 _ALLOBJS=$(OBJS) $(OBJADD)
 
-$(_PROGRAM): $(_ALLOBJS)
+$(_PROGRAM): $(_ALLOBJS) $(EXTRADEPS)
 	@echo "	$(_LINK) -o $@"
 	@$(_LINK) -o $@
 	

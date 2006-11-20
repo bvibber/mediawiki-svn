@@ -13,6 +13,7 @@
 using std::ostream;
 
 #include "cache.h"
+#include "mbuffer.h"
 
 cachedentity::cachedentity(imstring const &url, size_t hint)
 	: _url(url)
@@ -119,7 +120,7 @@ header	*h;
 pair<char const *, uint32_t>
 cachedentity::marshall(void) const
 {
-db::marshalling_buffer	buf;
+marshalling_buffer	buf;
 	buf.reserve(
 		sizeof(size_t) + _url.size() +
 		sizeof(size_t) + _status.size() +
@@ -145,7 +146,7 @@ cachedentity *
 cachedentity::unmarshall(char const *d, uint32_t s)
 {
 cachedentity		*ret;
-db::marshalling_buffer	 buf(d, s);
+marshalling_buffer	 buf(d, s);
 imstring		 url;
 char			*hdrbuf;
 size_t			 bufsz;
@@ -235,8 +236,8 @@ ostream	&sm = f->file();
 	WDEBUG((WLOG_DEBUG, format("CACHE: writing cached data to %s")
 			% f->filename()));
 	if (!sm.write(_data.ptr(), _data.size())) {
-		wlog(WLOG_WARNING, format("writing cached data to %s: %e")
-				% f->filename());
+		wlog(WLOG_WARNING, format("writing cached data to %s: %s")
+				% f->filename() % strerror(errno));
 		return false;
 	}
 	_cachedir = f->dirnum();

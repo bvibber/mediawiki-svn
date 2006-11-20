@@ -50,9 +50,10 @@ struct cachedir {
 
 #define DEFAULT_STATS_INTERVAL	300
 #define DEFAULT_STATS_PORT	"4446"
+#define DEFAULT_HTCP_PORT	"4827"
 
 struct radix;
-extern struct configuration {
+extern struct configuration : noncopyable {
 	string		 admin;
 	int		 foreground;
 	int		 nthreads;
@@ -80,8 +81,12 @@ extern struct configuration {
 	long		 cache_memory;
 	long		 max_entity_size;
 	string		 cache_master;
-	vector<cachedir>	cachedirs;
+	bool		 htcp_sigrequired;
+
+	vector<cachedir>			 cachedirs;
 	vector<pair<string, string> >		 stats_hosts;
+	vector<pair<string, string> >		 htcp_hosts;
+	map<string, ustring>			 htcp_keys;
 } config;
 
 void wconfig_init(char const *);

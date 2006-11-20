@@ -11,6 +11,8 @@
 
 #include "format.h"
 
+#if 0
+
 format::format(string const &str)
 	: _fmt(str)
 	, _reserve(0)
@@ -98,4 +100,6 @@ char	**a = &argv[2];
 			o % *a++;
 	std::cout << o.str() << '\n';
 }
+#endif
+
 #endif

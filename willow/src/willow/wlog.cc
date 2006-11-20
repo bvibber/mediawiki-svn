@@ -9,6 +9,8 @@
 # pragma ident "@(#)$Id$"
 #endif
 
+#include <boost/format.hpp>
+
 #include <cstdio>
 #include <cstdarg>
 #include <cstdlib>
@@ -57,8 +59,8 @@ wlog_init(void)
 	/*LINTED unsafe fopen*/
 	logging.fp = fopen(logging.file.c_str(), "a");
 	if (logging.fp == NULL) {
-		wlog(WLOG_ERROR, format("cannot open error log file %s: %e")
-			% logging.file.c_str());
+		wlog(WLOG_ERROR, format("cannot open error log file %s: %s")
+			% logging.file % strerror(errno));
 		exit(8);
 	}
 }
@@ -73,7 +75,7 @@ string	r;
 	if (sev < logging.level)
 		return;
 
-	r = format("%s| %s: %s") % (char *)current_time_short % sev_names[sev] % e;
+	r = str(format("%s| %s: %s") % current_time_short % sev_names[sev] % e);
 
 	HOLDING(log_lock);	
 	if (logging.syslog)
@@ -83,7 +85,8 @@ string	r;
 		if (fprintf(logging.fp, "%s\n", r.c_str()) < 0) {
 			fclose(logging.fp);
 			logging.fp = NULL;
-			wlog(WLOG_ERROR, format("writing to logfile: %e"));
+			wlog(WLOG_ERROR, format("writing to logfile: %s")
+				% strerror(errno));
 			exit(8);
 		}
 	}
@@ -97,7 +100,8 @@ wlog_close(void)
 {
 	if (logging.fp && fclose(logging.fp) == EOF) {
 		logging.fp = NULL;
-		wlog(WLOG_WARNING, format("closing logfile: %e"));
+		wlog(WLOG_WARNING, format("closing logfile: %s")
+			% strerror(errno));
 	}
 	
 	if (logging.syslog)

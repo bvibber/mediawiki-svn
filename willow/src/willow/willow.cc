@@ -35,13 +35,13 @@ using std::streamsize;
 #include "confparse.h"
 #include "radix.h"
 #include "format.h"
+#include "mbuffer.h"
+#include "htcp.h"
 
 static void stats_init(void);
 static int pagesize;
 static const char *progname;
 
-tss<vector<pta_block *>, ptdealloc> ptfreelist;
-pttsswrap pttssw;
 event checkexit_ev;
 timeval checkexit_tv;
 
@@ -83,27 +83,6 @@ usage(void)
 "                            'false') in the configuration parser.  if 'value'\n"
 "                            is not specified, defaults to true\n"
 			, progname);
-}
-
-void
-tss_null_dtor(void *)
-{
-}
-
-void
-ptdealloc(void *p)
-{
-vector<pta_block *> *v = (vector<pta_block *> *)p;
-	for (vector<pta_block *>::iterator it = v->begin(), end = v->end();
-	     it != end; ++it) {
-	pta_block *n = *it, *o;
-		while ((o = n) != NULL) {
-			n = n->next;
-			delete [] (char *)o->addr;
-			free(o);
-		}
-	}
-	delete v;
 }
 
 int 
@@ -208,6 +187,7 @@ bool	 zflag = false;
 
 	whttp_init();
 	stats_init();
+	htcp_init();
 
 	wlog(WLOG_NOTICE, "running");
 
@@ -522,14 +502,16 @@ diobuf::diobuf(size_t size)
 	snprintf(path, sizeof(path), "/dev/shm/willow.diobuf.%d.%d.%d",
 		(int) getpid(), (int) pthread_self(), rand());
 		if ((_fd = open(path, O_CREAT | O_EXCL | O_RDWR, 0600)) == -1) {
-		wlog(WLOG_WARNING, format("opening diobuf %s: %e") % path);
+		wlog(WLOG_WARNING, format("opening diobuf %s: %s") 
+			% path % strerror(errno));
 		_buf = new char[size];
 		return;
 	}
 	unlink(path);
 
 	if (lseek(_fd, _reserved, SEEK_SET) == -1) {
-		wlog(WLOG_WARNING, format("seeking diobuf %s: %e") % path);
+		wlog(WLOG_WARNING, format("seeking diobuf %s: %s") 
+			% path % strerror(errno));
 		close(_fd);
 		_fd = -1;
 		_buf = new char[size];
@@ -537,7 +519,8 @@ diobuf::diobuf(size_t size)
 	}
 
 	if (write(_fd, "", 1) < 1) {
-		wlog(WLOG_WARNING, format("extending diobuf %s: %e") % path);
+		wlog(WLOG_WARNING, format("extending diobuf %s: %s") 
+			% path % strerror(errno));
 		close(_fd);
 		_fd = -1;
 		_buf = new char[size];
@@ -546,7 +529,8 @@ diobuf::diobuf(size_t size)
 
 	_buf = (char *)mmap(0, size, PROT_READ | PROT_WRITE, MAP_SHARED, _fd, 0);
 	if (_buf == MAP_FAILED) {
-		wlog(WLOG_WARNING, format("mapping diobuf %s: %e") % path);
+		wlog(WLOG_WARNING, format("mapping diobuf %s: %s") 
+			% path % strerror(errno));
 		close(_fd);
 		_fd = -1;
 		_buf = new char[size];
@@ -562,15 +546,4 @@ diobuf::loadfile(istream &f, size_t n)
 	if (!f.read(_buf, n) || f.gcount() != (streamsize)n)
 		return false;
 	return true;
-}
-
-void
-pttsswrapdtor(void *p)
-{
-pta_block	**pt = (pta_block **)p, *n = *pt, *o;
-	while ((o = n) != NULL) {
-		n = n->next;
-		free(o);
-	}
-	delete pt;
 }

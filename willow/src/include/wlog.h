@@ -38,6 +38,12 @@ void wlog_init(void);
 /*PRINTFLIKE2*/
 void wlog(int, string const &);
 
+template<typename charT, typename traits, typename allocator>
+void wlog(int lev, basic_format<charT, traits, allocator> const &f)
+{
+	wlog(lev, str(f));
+}
+
 void wlog_close(void);
 
 #ifndef WILLOW_DEBUG

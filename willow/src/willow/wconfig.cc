@@ -24,7 +24,10 @@
 #include <netdb.h>
 #include <pthread.h>
 #include <set>
+#include <fstream>
+using std::ifstream;
 using std::set;
+using std::back_inserter;
 
 #include "willow.h"
 #include "wconfig.h"
@@ -350,6 +353,48 @@ set_cache_dir(tree_entry &e)
 	config.cachedirs.push_back(cachedir(e.item_key));
 }
 
+void
+set_htcp_keys(tree_entry &e, value &v)
+{
+string		file = v.cv_values[0].av_strval;
+ifstream	f(file.c_str());
+	if (!f.is_open()) {
+		v.report_error("cannot open HTCP key file %s: %s",
+			file.c_str(), strerror(errno));
+		return;
+	}
+
+string	s;
+int	line = 0;
+	while (getline(f, s)) {
+	string			name, key;
+	string::size_type	i;
+		++line;
+		if ((i = s.find(' ')) == string::npos) {
+			v.report_error("%s(%d): syntax error",
+				file.c_str(), line);
+			continue;
+		}
+		name = s.substr(0, i);
+		key = s.substr(i + 1);
+
+		if (key.size() != 86) {
+			v.report_error("%s(%d): key has wrong length",
+				file.c_str(), line);
+			continue;
+		}
+
+		WDEBUG((WLOG_DEBUG, format("HTCP key: [%s] data [%s]") %
+			name % key));
+	ustring		bkey;
+	unbase64_string it(key.begin());
+		for (size_t i = 0; i < 64; ++i) {
+			bkey.push_back(*it++);
+		}
+		config.htcp_keys[name] = bkey;
+	}
+}
+
 bool
 read_config(string const &file)
 {
@@ -371,6 +416,9 @@ conf
 		.value("cache-memory",		simple_time,		set_long(config.cache_memory))
 		.value("max-entity-size",	simple_time,		set_long(config.max_entity_size))
 		.value("master-state",		nonempty_qstring,	set_string(config.cache_master))
+		.value("htcp-listen",		ip_address_list,	add_ip(config.htcp_hosts))
+		.value("htcp-keys",		nonempty_qstring,	func(set_htcp_keys))
+		.value("htcp-sig-required",	simple_yesno,		set_yesno(config.htcp_sigrequired))
 
 	.block("cache-dir", require_name)
 		.end(func(set_cache_dir))

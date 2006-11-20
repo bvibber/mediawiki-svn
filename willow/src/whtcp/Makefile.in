@@ -1,0 +1,22 @@
+# $Id$
+PROGRAM		= whtcp
+BINDIR		= @bindir@
+CPPFLAGS	= -I../include
+BASESRCS =	 		\
+	whtcp.cc		\
+
+OBJS=	$(BASESRCS:.cc=.o)
+
+SRCS=$(BASESRCS)
+OBJADD =
+
+EXTRA_DIST= Makefile.in
+
+LDFLAGS = $(LIBOBJS) -L../libwillow -lwillow
+EXTRADEPS=../libwillow/libwillow.a
+
+.SUFFIXES: .y .l .c .cc .o
+
+default: all
+
+@include@ @q@@top_srcdir@/mk/prog.mk@q@

@@ -16,6 +16,7 @@ using std::min;
 #include "chunking.h"
 #include "whttp_header.h"
 #include "flowio.h"
+#include "util.h"
 
 io::sink_result
 chunking_filter::bf_transform(char const *buf, size_t len, ssize_t &discard)
@@ -64,7 +65,7 @@ ssize_t		 s;
 	while (len) {
 		switch (_state) {
 		case s_start:	/* expect a chunk, <digits>\r\n */
-			if ((rn = header_parser::find_rn(buf, buf + len)) == NULL) {
+			if ((rn = find_rn(buf, buf + len)) == NULL) {
 				/* no \r\n yet, need more data */
 				if (len + strlen(_cbuf) > 15)
 					return io::sink_result_error;

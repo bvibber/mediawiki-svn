@@ -65,7 +65,8 @@ parse_file(string const &file)
 
 	if ((yyin = fopen(file.c_str(), "r")) == NULL) {
 		wlog(WLOG_ERROR, 
-			format("could not open configuration file %s: %e") % file);
+			format("could not open configuration file %s: %s") 
+				% file % strerror(errno));
 		return NULL;
 	}
 	if (yyparse() || parse_error)

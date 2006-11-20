@@ -214,21 +214,6 @@ struct header_parser : io::sink, io::spigot
 	void 		set_response		(void);
 	void		sending_restart		(void);
 
-	static inline char const *find_rn(char const *buf, char const *end) {
-	char const	*s;
-		for (s = buf; s < end; s += 2) {
-			prefetch_memory(s + 2);
-			prefetch_memory(s + 3);
-			if (*s != '\r' && *s != '\n')
-				continue;
-			if (s + 1 < end && s[0] == '\r' && s[1] == '\n')
-				return s;
-			if (s > buf && s[-1] == '\r' && s[0] == '\n')
-				return s - 1;
-		}
-		return NULL;
-	}
-
 	polycaller<>	 _completed_callee;
 	polycaller<>	 _error_callee;
 	header_list	 _headers;

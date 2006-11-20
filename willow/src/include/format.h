@@ -25,6 +25,7 @@ using std::strerror;
 
 #include "willow.h"
 
+#if 0
 struct invalid_format_string : runtime_error {
 	invalid_format_string(void) : runtime_error("invalid format string") {}
 };
@@ -91,5 +92,7 @@ format::operator% (T (&s)[i])
 {
 	return *this % (T *)s;
 }
+
+#endif
 
 #endif

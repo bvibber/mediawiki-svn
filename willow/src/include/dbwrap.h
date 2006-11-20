@@ -172,90 +172,6 @@ private:
 	int	 _error;
 };
 
-struct marshalling_buffer {
-	marshalling_buffer()
-		: _buf(NULL)
-		, _size(0)
-		, _bufsz(0)
-	{}
-
-	marshalling_buffer(char const *buf, uint32_t sz)
-		: _buf(const_cast<char *>(buf))
-		, _size(0)
-		, _bufsz(sz)
-	{}
-		
-	~marshalling_buffer(void) {
-	}
-
-	void reserve(size_t size) {
-		_bufsz = size;
-		_buf = new char[size];
-	}
-
-	template<typename T>
-	void append(T const &);
-	
-	template<typename charT, typename traits, typename allocator>
-	void append(basic_string<charT, traits, allocator> const &);
-
-	void append_bytes(char const *buf, size_t s) {
-		assert(_size + s <= _bufsz);
-		memcpy(_buf + _size, buf, s);
-		_size += s;
-	}
-
-	char const *buffer(void) const {
-		return _buf;
-	}
-
-	size_t size(void) const {
-		return _size;
-	}
-
-	template<typename T>
-	bool extract(T &);
-
-	template<typename charT, typename traits, typename allocator>
-	bool extract(basic_string<charT, traits, allocator> &);
-	
-	bool extract_bytes(char *b, size_t s) {
-		if (_size + s > _bufsz)
-			return false;
-		memcpy(b, _buf + _size, s);
-		_size += s;
-		return true;
-	}
-
-private:
-	char	*_buf;
-	size_t	 _size;
-	size_t	 _bufsz;
-	bool	 _delete;
-};
-
-template<>
-void
-marshalling_buffer::append<imstring>(imstring const &);
-
-template<>
-bool
-marshalling_buffer::extract<imstring>(imstring &);
-
-template<typename T>
-void
-marshalling_buffer::append(T const &o)
-{
-	append_bytes((char const *)&o, sizeof(o));
-}
-
-template<typename T>
-bool
-marshalling_buffer::extract(T &o)
-{
-	return extract_bytes((char *) &o, sizeof(o));
-}
-
 template<typename Key, typename Value>
 database<Key, Value> *
 environment::open_database(string const &name)
@@ -328,7 +244,7 @@ void
 database<Key, Value, Datastore>::errcall(DB_ENV const *, char const *pfx, char const *msg)
 {
 	if (pfx)
-		wlog(WLOG_WARNING, format("%s: %s") % pfx % msg);
+		wlog(WLOG_WARNING, str(format("%s: %s") % pfx % msg));
 	else
 		wlog(WLOG_WARNING, msg);
 }
