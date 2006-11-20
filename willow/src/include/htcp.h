@@ -42,6 +42,12 @@ enum {
 	htcp_op_clr = 4
 };
 
+enum {
+	htcp_clr_purged = 0,
+	htcp_clr_refused,
+	htcp_clr_notfound
+};
+
 struct htcp_specifier {
 	bool	decode (marshalling_buffer &);
 	void	build  (marshalling_buffer &) const;
@@ -102,7 +108,6 @@ struct htcp_opdata {
 	virtual void	build  (marshalling_buffer &) const = 0;
 	virtual bool	decode (marshalling_buffer &) = 0;
 	virtual size_t	length (void) const = 0;
-
 };
 
 struct htcp_opdata_nop : htcp_opdata {
@@ -118,6 +123,12 @@ struct htcp_opdata_clr : htcp_opdata {
 
 	int		clr_reason;
 	htcp_specifier	clr_specifier;
+};
+
+struct htcp_opdata_clr_resp : htcp_opdata {
+	void	build(marshalling_buffer &) const {}
+	bool	decode(marshalling_buffer &) { return true; }
+	size_t	length(void) const { return 0; }
 };
 
 struct htcp_opdata_tst : htcp_opdata {

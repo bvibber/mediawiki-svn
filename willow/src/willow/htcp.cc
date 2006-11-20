@@ -119,7 +119,29 @@ htcp_encoder	op;
 
 		op.build_packet(addr.addr(), s->address().addr());
 		s->sendto(op.packet(), op.packet_length(), addr);
+		break;
 	}
+
+	case htcp_op_clr: {
+	htcp_opdata_clr *opd = (htcp_opdata_clr *)ip.opdata();
+	htcp_opdata_clr_resp rd;
+	bool	wascached = entitycache.purge(opd->clr_specifier.hs_url);
+
+		if (!ip.rd())
+			break;
+
+		op.opcode(htcp_op_clr);
+		op.opdata(&rd);
+
+		if (wascached)
+			op.response(htcp_clr_purged);
+		else
+			op.response(htcp_clr_notfound);
+		op.build_packet(addr.addr(), s->address().addr());
+		s->sendto(op.packet(), op.packet_length(), addr);
+		break;
+	}
+
 	}
 }
 

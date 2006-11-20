@@ -159,11 +159,14 @@ usage(const char *progname)
 	fprintf(stderr, 
 "usage: %1$s -n [-S <keyname>] [-K <keystore>] <hostname>[/port]\n"
 "       %1$s -q [-S <keyname>] [-K <keystore>] <hostname>[/port]\n"
-"               <url> [<url>, ...]\n"
+"               <url> [<url> ...]\n"
+"       %1$s -c [-S <keyname>] [-K <keystore>] <hostname>[/port]\n"
+"               <url> [<url> ...]\n"
 "       %1$s -g <keyname>\n"
 "\n"
 "  -n           perform NOP query (tests HTCP functionality and RTT)\n"
 "  -q           query the status of the given url(s) in the cache\n"
+"  -c           remote the given url(s) from the cache\n"
 "  -g           generate an HTCP HMAC-MD5 key of the given name\n"
 "  -S keyname   sign packets with this key and require signed packets\n"
 "               from server\n"
@@ -182,11 +185,11 @@ addrinfo	 hints, *res, *r;
 int		 timeo = 10;
 bool		 nflag = false, qflag = false;
 timeval		 start, finish;
-bool		 gflag = false;
+bool		 gflag = false, cflag = false;
 string		 keystore, keyname;
 ustring		 key;
 
-	while ((i = getopt(argc, argv, "nqgS:K:")) != -1) {
+	while ((i = getopt(argc, argv, "nqgS:K:c")) != -1) {
 		switch (i) {
 		case 'n':
 			nflag = true;
@@ -198,6 +201,10 @@ ustring		 key;
 
 		case 'g':
 			gflag = true;
+			break;
+
+		case 'c':
+			cflag = true;
 			break;
 
 		case 'S':
@@ -216,6 +223,14 @@ ustring		 key;
 	argc -= optind;
 	argv += optind;
 
+	if (nflag + qflag + cflag + gflag > 1) {
+		fprintf(stderr, 
+			"%s: only one of -nqcg may be specified\n",
+			progname);
+		usage(progname);
+		return 1;
+	}
+
 	if (gflag) {
 		if (!argv[0]) {
 			fprintf(stderr, "%s: not enough arguments\n",
@@ -226,14 +241,6 @@ ustring		 key;
 
 		makekey(argv[0]);
 		return 0;
-	}
-
-	if (nflag + qflag > 1) {
-		fprintf(stderr, 
-			"%s: only one of -nq may be specified\n",
-			progname);
-		usage(progname);
-		return 1;
 	}
 
 	if (!argv[0] || (qflag && !argv[1]) || (nflag && argv[1])) {
@@ -258,6 +265,7 @@ ustring		 key;
 htcp_encoder	obuf;
 htcp_opdata_tst	tstdata;
 htcp_opdata_nop	nopdata;
+htcp_opdata_clr	clrdata;
 
 	obuf.rd(true);
 	if (nflag) {		/* NOP */
@@ -269,6 +277,13 @@ htcp_opdata_nop	nopdata;
 		tstdata.tst_specifier.hs_url = argv[1];
 		obuf.opcode(htcp_op_tst);
 		obuf.opdata(&tstdata);
+	} else if (cflag) {	/* CLR */
+		clrdata.clr_reason = 0;
+		clrdata.clr_specifier.hs_method = "GET";
+		clrdata.clr_specifier.hs_version = "1.1";
+		clrdata.clr_specifier.hs_url = argv[1];
+		obuf.opcode(htcp_op_clr);
+		obuf.opdata(&clrdata);
 	}
 
 	if (!keyname.empty()) {
@@ -383,6 +398,29 @@ htcp_decoder	ibuf(rbuf, i);
 
 		return 0;
 	}
+
+	case htcp_op_clr: {
+		cout << "Entity " << argv[1] << ": ";
+		switch (ibuf.response()) {
+		case htcp_clr_purged:
+			cout << "was purged\n";
+			break;
+		case htcp_clr_refused:
+			cout << "cache refused to purge object\n";
+			break;
+		case htcp_clr_notfound:
+			cout << "object not cached\n";
+			break;
+		default:
+			cout << "unknown response code " << ibuf.response() << '\n';
+			break;
+		}
+		return 0;
+	}
+
+	default:
+		fprintf(stderr, "%s: received unknown reply opcode %d\n",
+			progname, ibuf.opcode());
 	}
 
 	freeaddrinfo(res);

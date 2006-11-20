@@ -77,7 +77,10 @@ htcp_decoder::htcp_decoder(char const *buf, size_t sz)
 		break;
 
 	case htcp_op_clr:
-		_opdata = new htcp_opdata_clr;
+		if (rr() == 0)
+			_opdata = new htcp_opdata_clr;
+		else
+			_opdata = new htcp_opdata_clr_resp;
 		break;
 
 	case htcp_op_tst:
@@ -90,6 +93,9 @@ htcp_decoder::htcp_decoder(char const *buf, size_t sz)
 				_opdata = new htcp_opdata_tst_resp_notfound;
 		}
 		break;
+
+	default:
+		return;
 	}
 
 	if (!_opdata->decode(_buf))
