@@ -47,7 +47,7 @@ qstring   \"[^\"\n]*[\"\n]
 string    [a-zA-Z_\~][a-zA-Z0-9_-]*
 include   %{ws}include{ws}(\<.*\>|\".*\")
 pragma    %{ws}pragma[ \t]{ws}.*$
-if        %{ws}if[ \t]{ws}[a-zA-Z_][a-zA-Z0-9_]*$
+if        %{ws}if[ \t]{ws}.*$
 else      %{ws}else{ws}$
 endif     %{ws}endif{ws}$
 

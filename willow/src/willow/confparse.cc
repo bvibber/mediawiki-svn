@@ -25,8 +25,11 @@ using std::make_pair;
 #include "wbackend.h"
 #include "wconfig.h"
 #include "format.h"
+#include "expr.h"
 
 namespace conf {
+
+expression_parser if_parser;
 
 tree global_conf_tree;
 map<string, value> variable_list;
@@ -116,9 +119,9 @@ value	*val;
 }
 
 void
-add_if_entry(string const &name, bool v)
+add_if_entry(string const &name, int64_t v)
 {
-	if_table[name] = v;
+	if_parser.add_variable(name, v);
 }
 
 bool
@@ -130,10 +133,12 @@ char const	*dir;
 	while (isspace(*dir))
 		dir++;
 
-map<string, bool>::iterator it = if_table.find(dir);
-	if (it == if_table.end())
+	try {
+		return if_parser.run(dir);
+	} catch (expression_error &e) {
+		report_parse_error("error in %%if expression: %s", e.what());
 		return false;
-	return it->second;
+	}
 }
 
 void

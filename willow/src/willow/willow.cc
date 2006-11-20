@@ -115,18 +115,11 @@ bool	 zflag = false;
 				break;
 			case 'D':
 				dval = NULL;
-				if ((dval = strchr(optarg, '=')) != NULL) {
+				if ((dval = strchr(optarg, '=')) != NULL)
 					*dval++ = '\0';
-					if (strcmp(dval, "true")
-					    && strcmp(dval, "false")) {
-						fprintf(stderr,
-				   "%s: value in -D must be \"true\" or \"false\"\n",
-							progname);
-						return 8;
-					}
-				}
 
-				conf::add_if_entry(optarg, !dval || !strcmp(dval, "true"));
+				conf::add_if_entry(optarg, 
+					dval ? strtoll(dval, NULL, 0) : 1);
 				break;
 			default:
 				usage();

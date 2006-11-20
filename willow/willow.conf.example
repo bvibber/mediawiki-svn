@@ -12,11 +12,14 @@
  * %if allows a section of the file to be * dependant on a particular condition.
  * There are two built-in conditions: "true" (which is always true) and "false"
  * (which is always false).  You can add new true conditions by passing
- * -Dcond[=value] on the command line (value should be 1 or 0; default is 1).
+ * -Dcond[=value] on the command line (value should be an integer; default is 1).
+ *
+ * The following operators are supported, with the same meaning as their C
+ * counterparts: + - * / % ~ && || ! & | ^ << >> < > <= >= == !=
  *
  * Example:
  *
- *  %if testing_server
+ *  %if testing_server && !use_remote
  *    backend "localhost";
  *  %else
  *    backend "remote.host";
