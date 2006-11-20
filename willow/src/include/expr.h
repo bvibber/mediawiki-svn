@@ -12,6 +12,8 @@
 # pragma ident "@(#)$Id$"
 #endif
 
+#define BOOST_SPIRIT_DEBUG
+
 #include <iostream>
 #include <vector>
 #include <stack>
@@ -290,11 +292,33 @@ atom =    int_p[op_value::add(self.program())]
 	| ( '!' >> expr )[op_not::add(self.program())]
 	| ( '~' >> expr )[op_bnot::add(self.program())]
 	| self.variables[op_value::add(self.program())]
+	| ( str_p("defined") >> '(' >> 
+			self.variables[op_literal<1>::add(self.program())] >> ')' )
 	| ( str_p("defined") >> '(' >>
-		(   self.variables[op_literal<1>::add(self.program())]
-		  | identifier    [op_literal<0>::add(self.program())]
-		) >> ')' )
+			identifier[op_literal<0>::add(self.program())] >> ')')
 	;
+
+BOOST_SPIRIT_DEBUG_RULE(identifier);
+BOOST_SPIRIT_DEBUG_RULE(expr);
+BOOST_SPIRIT_DEBUG_RULE(lor_expr);
+BOOST_SPIRIT_DEBUG_RULE(land_expr);
+BOOST_SPIRIT_DEBUG_RULE(band_expr);
+BOOST_SPIRIT_DEBUG_RULE(bxor_expr);
+BOOST_SPIRIT_DEBUG_RULE(bor_expr);
+BOOST_SPIRIT_DEBUG_RULE(lt_expr);
+BOOST_SPIRIT_DEBUG_RULE(gt_expr);
+BOOST_SPIRIT_DEBUG_RULE(le_expr);
+BOOST_SPIRIT_DEBUG_RULE(ge_expr);
+BOOST_SPIRIT_DEBUG_RULE(neq_expr);
+BOOST_SPIRIT_DEBUG_RULE(eq_expr);
+BOOST_SPIRIT_DEBUG_RULE(lsht_expr);
+BOOST_SPIRIT_DEBUG_RULE(rsht_expr);
+BOOST_SPIRIT_DEBUG_RULE(add_expr);
+BOOST_SPIRIT_DEBUG_RULE(sub_expr);
+BOOST_SPIRIT_DEBUG_RULE(mul_expr);
+BOOST_SPIRIT_DEBUG_RULE(mod_expr);
+BOOST_SPIRIT_DEBUG_RULE(div_expr);
+BOOST_SPIRIT_DEBUG_RULE(atom);
 
 		}
 	};

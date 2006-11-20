@@ -2,6 +2,7 @@
  * $Id$
  */
 
+#include <sys/utsname.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/socket.h>
@@ -62,8 +63,11 @@ parse_file(string const &file)
 	parsing_tree.reset();
 	
 	if (if_table.empty()) {
-		add_if_entry("true", true);
-		add_if_entry("false", false);
+	utsname	un;
+		uname(&un);
+		add_if_entry("true", 1);
+		add_if_entry("false", 0);
+		add_if_entry(un.sysname, 1);
 	}
 
 	if ((yyin = fopen(file.c_str(), "r")) == NULL) {
