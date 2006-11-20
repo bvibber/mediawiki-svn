@@ -157,6 +157,8 @@ extern tree parsing_tree;
 
 tree	*parse_file	(string const &file);
 void	 add_if_entry	(string const &name, int64_t v);
+bool	 if_defined	(string const &name);
+void	 define_if	(string const &name);
 
 string type_name(cv_type);
 

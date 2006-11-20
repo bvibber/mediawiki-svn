@@ -212,6 +212,10 @@ struct expression_parser : public grammar<expression_parser> {
 		variables.add(name.begin(), name.end(), val);
 	}
 
+	bool variable_defined(string const &name) const {
+		return boost::spirit::find(variables, name.c_str()) != NULL;
+	}
+
 	int64_t run(string const &str) {
 		if (!boost::spirit::parse(str.begin(), str.end(), *this, space_p).full)
 			throw syntax_error();

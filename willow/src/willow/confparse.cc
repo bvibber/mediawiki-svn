@@ -141,6 +141,34 @@ char const	*dir;
 	}
 }
 
+bool
+if_defined(string const &if_)
+{
+char const	*dir;
+	dir = if_.c_str();
+	while (isspace(*dir))
+		dir++;
+
+	WDEBUG((WLOG_DEBUG, format("PARSE: if[n]def %s") % dir));
+	return if_parser.variable_defined(dir);
+}
+
+void
+define_if(string const &str)
+{
+string			name, value;
+string::size_type	i;
+	if ((i = str.find(' ')) == string::npos) {
+		report_parse_error("syntax error");
+		return;
+	}
+	name = str.substr(0, i);
+	value = str.substr(i + 1);
+
+	WDEBUG((WLOG_DEBUG, format("add var: [%s] = [%s]") % name % value));
+	if_parser.add_variable(name, strtoll(value.c_str(), NULL, 0));
+}
+
 void
 add_ipath(string const &path)
 {

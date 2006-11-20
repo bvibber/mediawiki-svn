@@ -40,17 +40,20 @@ static bool in_if;
 
 %}
 
-ws        [ ]*
+ws        [ \t]*
+space     [ \t]{ws}
 digit     [0-9]
 number    {digit}{digit}*
 qstring   \"[^\"\n]*[\"\n]
-string    [a-zA-Z_\~][a-zA-Z0-9_-]*
-include   %{ws}include{ws}(\<.*\>|\".*\")
-pragma    %{ws}pragma[ \t]{ws}.*$
-if        %{ws}if[ \t]{ws}.*$
+string    [a-zA-Z_][a-zA-Z0-9_-]*
+include   %{ws}include{space}(\<.*\>|\".*\")
+pragma    %{ws}pragma{space}.*$
+if        %{ws}if{space}.*$
 else      %{ws}else{ws}$
 endif     %{ws}endif{ws}$
-
+define    %{ws}define{space}{string}{space}.*$
+ifdef     %{ws}ifdef{space}{string}{ws}$
+ifndef    %{ws}ifndef{space}{string}{ws}$
 
 %x COMMENT IGNORING
 %%
@@ -75,6 +78,17 @@ endif     %{ws}endif{ws}$
 \n		conf::lineno++;
 {pragma}	{ conf::handle_pragma(yytext); }
 {if}		{ if (!conf::if_true(yytext))
+			BEGIN IGNORING;
+		  else
+			in_if = true;
+		}
+{define}        { conf::define_if(yytext + 8); }
+{ifdef}         { if (conf::if_defined(yytext + 6))
+			in_if = true;
+		  else
+			BEGIN IGNORING;
+		}
+{ifndef}	{ if (conf::if_defined(yytext + 7))
 			BEGIN IGNORING;
 		  else
 			in_if = true;
