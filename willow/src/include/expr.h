@@ -31,6 +31,8 @@ using boost::spirit::rule;
 using boost::spirit::grammar;
 using boost::spirit::int_p;
 using boost::spirit::space_p;
+using boost::spirit::str_p;
+using boost::spirit::chset;
 using boost::spirit::symbols;
 using boost::shared_ptr;
 
@@ -96,6 +98,30 @@ struct expression_parser : public grammar<expression_parser> {
 	};
 
 	typedef vector<shared_ptr<operation> > program_t;
+
+	template<int64_t value>
+	struct op_literal : operation {
+		virtual void execute(stack_t &s) {
+			s.push(value);
+		}
+
+		struct add {
+		program_t &_program;
+			add(program_t &p)
+				: _program(p)
+			{}
+		
+			void operator() (int64_t) const {
+				_program.push_back(shared_ptr<operation>(
+					new op_literal<value>));
+			}
+			void operator() (string::const_iterator,
+					 string::const_iterator) const {
+				_program.push_back(shared_ptr<operation>(
+					new op_literal<value>));
+			}
+		};
+	};
 
 	template<typename func>
 	struct binary_operator : operation {
@@ -232,9 +258,11 @@ struct expression_parser : public grammar<expression_parser> {
 		rule<scanner>	add_expr, atom, expr, mod_expr, eq_expr, neq_expr,
 			mul_expr, div_expr, sub_expr, land_expr, lor_expr,
 			lt_expr, gt_expr, le_expr, ge_expr, band_expr,
-			bxor_expr, bor_expr, lsht_expr, rsht_expr;
+			bxor_expr, bor_expr, lsht_expr, rsht_expr, identifier;
 
 		definition(expression_parser const &self) {
+identifier = chset<>("a-zA-Z_") >> *chset<>("a-zA-Z0-9_");
+
 expr = lor_expr;
 
 lor_expr  = land_expr >> *(("||" >> land_expr)[ op_lor::add(self.program())]);
@@ -262,6 +290,10 @@ atom =    int_p[op_value::add(self.program())]
 	| ( '!' >> expr )[op_not::add(self.program())]
 	| ( '~' >> expr )[op_bnot::add(self.program())]
 	| self.variables[op_value::add(self.program())]
+	| ( str_p("defined") >> '(' >>
+		(   self.variables[op_literal<1>::add(self.program())]
+		  | identifier    [op_literal<0>::add(self.program())]
+		) >> ')' )
 	;
 
 		}
