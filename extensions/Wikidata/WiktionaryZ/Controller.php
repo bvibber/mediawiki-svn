@@ -181,13 +181,14 @@ class SynonymTranslationController implements Controller {
 class ClassAttributesController implements Controller {
 	public function add($keyPath, $record) {
 		global
-			$definedMeaningIdAttribute, $classAttributeAttributeAttribute;
+			$definedMeaningIdAttribute, $classAttributeLevelAttribute, $classAttributeAttributeAttribute;
 
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
+		$attributeLevelId = $record->getAttributeValue($classAttributeLevelAttribute);
 		$attibuteMeaningId = $record->getAttributeValue($classAttributeAttributeAttribute);
 
-		if ($attibuteMeaningId != 0)
-			addClassAttribute($definedMeaningId, $attibuteMeaningId);
+		if (($attributeLevelId != 0) && ($attibuteMeaningId != 0))
+			addClassAttribute($definedMeaningId, $attributeLevelId, $attibuteMeaningId);
 	}
 
 	public function remove($keyPath) {

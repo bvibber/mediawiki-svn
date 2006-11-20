@@ -62,7 +62,10 @@ function getSuggestions() {
 	            	"WHERE expression.expression_id=syntrans.expression_id AND syntrans.identical_meaning=1 " .
 	            	" AND " . getLatestTransactionRestriction('syntrans').
 	            	" AND " . getLatestTransactionRestriction('expression');
-	        break;	
+	        break;
+	    case 'class-attributes-level':
+	    	$sql = getSQLForCollectionOfType('LEVL');
+	    	break;
 	    case 'collection':
 	    	$sql = "SELECT collection_id, spelling ".
 	    			"FROM uw_expression_ns expression, uw_collection_ns collection, uw_syntrans syntrans ".
@@ -117,7 +120,10 @@ function getSuggestions() {
 			break;
 		case 'defined-meaning':
 			list($recordSet, $editor) = getDefinedMeaningAsRecordSet($queryResult);
-			break;	
+			break;
+		case 'class-attributes-level':
+			list($recordSet, $editor) = getClassAttributeLevelAsRecordSet($queryResult);
+			break;				
 		case 'collection':
 			list($recordSet, $editor) = getCollectionAsRecordSet($queryResult);
 			break;	
@@ -271,6 +277,27 @@ function getDefinedMeaningAsRecordSet($queryResult) {
 	$editor->addEditor($expressionEditor);
 	$editor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 
+	return array($recordSet, $editor);		
+}
+
+function getClassAttributeLevelAsRecordSet($queryResult) {
+	global
+		$idAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	
+	$classAttributeLevelAttribute = new Attribute("class-attribute-level", "Level", "short-text");
+	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
+	
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $classAttributeLevelAttribute, $collectionAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
+
+	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
+	$editor->addEditor(new ShortTextEditor($classAttributeLevelAttribute, new SimplePermissionController(false), false));
+	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
+	
 	return array($recordSet, $editor);		
 }
 

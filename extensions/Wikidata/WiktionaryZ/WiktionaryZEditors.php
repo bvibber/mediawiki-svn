@@ -109,9 +109,10 @@ function getExpressionTableCellEditor($attribute) {
 
 function getClassAttributesEditor($showRecordLifeSpan) {
 	global
-		$definedMeaningIdAttribute, $classAttributesAttribute, $classAttributeAttributeAttribute;
+		$definedMeaningIdAttribute, $classAttributesAttribute, $classAttributeLevelAttribute ,$classAttributeAttributeAttribute;
 
 	$tableEditor = new RecordSetTableEditor($classAttributesAttribute, new SimplePermissionController(true), new ShowEditFieldForClassesChecker(0, $definedMeaningIdAttribute), new AllowAddController(true), true, false, new ClassAttributesController());
+	$tableEditor->addEditor(new ClassAttributesLevelDefinedMeaningEditor($classAttributeLevelAttribute, new SimplePermissionController(false), true));
 	$tableEditor->addEditor(new DefinedMeaningReferenceEditor($classAttributeAttributeAttribute, new SimplePermissionController(false), true));
 	addTableLifeSpanEditor($tableEditor, $showRecordLifeSpan);
 	return $tableEditor;

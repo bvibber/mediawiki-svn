@@ -926,6 +926,23 @@ class DefinedMeaningReferenceEditor extends SuggestEditor {
 	}
 }
 
+class ClassAttributesLevelDefinedMeaningEditor extends SuggestEditor {
+	protected function suggestType() {
+		return "class-attributes-level";
+	}
+
+	public function getViewHTML($idPath, $value) {
+		global
+			$definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute;
+			
+		$definedMeaningId = $value->getAttributeValue($definedMeaningIdAttribute);
+		$definedMeaningLabel = $value->getAttributeValue($definedMeaningLabelAttribute);
+		$definedMeaningDefiningExpression = $value->getAttributeValue($definedMeaningDefiningExpressionAttribute);
+		
+		return definedMeaningReferenceAsLink($definedMeaningId, $definedMeaningDefiningExpression, $definedMeaningLabel);
+	}
+}
+
 class RelationTypeReferenceEditor extends DefinedMeaningReferenceEditor {
 	protected function suggestType() {
 		return "relation-type";
