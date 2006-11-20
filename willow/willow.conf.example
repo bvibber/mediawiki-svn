@@ -15,11 +15,11 @@
  * -Dcond[=value] on the command line (value should be an integer; default is 1).
  *
  * The following operators are supported, with the same meaning as their C
- * counterparts: + - * / % ~ && || ! & | ^ << >> < > <= >= == !=
+ * counterparts: + - * / % ~ && || ! & | ^ << >> < > <= >= == != defined()
  *
  * Example:
  *
- *  %if testing_server && !use_remote
+ *  %if (defined(testing_server) && !use_remote) || (force_localhost == 1)
  *    backend "localhost";
  *  %else
  *    backend "remote.host";
