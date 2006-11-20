@@ -65,6 +65,7 @@ htcp_decoder::htcp_decoder(char const *buf, size_t sz)
 	if (!_header.decode(_buf))
 		return;
 
+size_t	n = _buf.size();
 	if (!_opheader.decode(_buf))
 		return;
 
@@ -99,6 +100,10 @@ htcp_decoder::htcp_decoder(char const *buf, size_t sz)
 	}
 
 	if (!_opdata->decode(_buf))
+		return;
+size_t	pad = _opheader.oh_length - (_buf.size() - n);
+
+	if (!_buf.discard_bytes(pad))
 		return;
 
 	if (!_auth.decode(_buf))
@@ -611,14 +616,8 @@ string	res;
 bool
 htcp_auth::decode(marshalling_buffer &buf)
 {
-	if (!buf.extract<uint16_t>(ha_length) || ha_length == 0) {
-		/*
-		 * Squid sends no auth data at all, instead of an empty auth
-		 * block as required by the RFC...
-		 */
-		ha_length = 2;
-		return true;
-	}
+	if (!buf.extract<uint16_t>(ha_length))
+		return false;
 	ha_length = ntohs(ha_length);
 
 	if (ha_length < 2)
@@ -641,7 +640,7 @@ htcp_auth::decode(marshalling_buffer &buf)
 size_t
 htcp_auth::length(void) const
 {
-	if (ha_keyname.empty())
+	if (ha_signature.empty())
 		return 2;
 	return 2 + 4 + 4 + 2 + ha_keyname.size() + 2 + 16;
 }

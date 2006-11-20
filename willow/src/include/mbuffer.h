@@ -92,6 +92,13 @@ struct marshalling_buffer {
 		return true;
 	}
 
+	bool discard_bytes(size_t n) {
+		if (_size + n > _bufsz)
+			return false;
+		_size += n;
+		return true;
+	}
+
 private:
 	char	*_buf;
 	size_t	 _size;

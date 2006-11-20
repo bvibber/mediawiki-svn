@@ -111,9 +111,19 @@ struct htcp_opdata {
 };
 
 struct htcp_opdata_nop : htcp_opdata {
-	void	build(marshalling_buffer &) const {}
-	bool	decode(marshalling_buffer &) { return true; }
-	size_t	length(void) const { return 0; }
+	void	build(marshalling_buffer &buf) const {
+		buf.append<uint16_t>(htons(2));
+	}
+	bool	decode(marshalling_buffer &buf) { 
+	uint16_t	len;
+		if (!buf.extract<uint16_t>(len))
+			return false;
+		if (!buf.discard_bytes(ntohs(len) - 2))
+			return false;
+		return true;
+	}
+
+	size_t	length(void) const { return 2; }
 };
 
 struct htcp_opdata_clr : htcp_opdata {
@@ -126,9 +136,19 @@ struct htcp_opdata_clr : htcp_opdata {
 };
 
 struct htcp_opdata_clr_resp : htcp_opdata {
-	void	build(marshalling_buffer &) const {}
-	bool	decode(marshalling_buffer &) { return true; }
-	size_t	length(void) const { return 0; }
+	void	build(marshalling_buffer &buf) const {
+		buf.append<uint16_t>(htons(2));
+	}
+
+	bool	decode(marshalling_buffer &buf) { 
+	uint16_t	len;
+		if (!buf.extract<uint16_t>(len))
+			return false;
+		if (!buf.discard_bytes(ntohs(len) - 2))
+			return false;
+		return true;
+	}
+	size_t	length(void) const { return 2; }
 };
 
 struct htcp_opdata_tst : htcp_opdata {
