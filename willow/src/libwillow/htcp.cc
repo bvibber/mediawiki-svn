@@ -611,9 +611,16 @@ string	res;
 bool
 htcp_auth::decode(marshalling_buffer &buf)
 {
-	if (!buf.extract<uint16_t>(ha_length))
-		return false;
+	if (!buf.extract<uint16_t>(ha_length) || ha_length == 0) {
+		/*
+		 * Squid sends no auth data at all, instead of an empty auth
+		 * block as required by the RFC...
+		 */
+		ha_length = 2;
+		return true;
+	}
 	ha_length = ntohs(ha_length);
+
 	if (ha_length < 2)
 		return false;
 	if (ha_length == 2)
