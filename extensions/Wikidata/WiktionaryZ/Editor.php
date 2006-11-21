@@ -1565,20 +1565,68 @@ class ShowEditFieldForClassesChecker extends ShowEditFieldChecker{
 // viewing within their parent. The roll back editor could then inspect the value of the $isLatestAttribute to decide whether
 // to show the roll back check box. 
 
-class RollbackEditor extends BooleanEditor {
-	public function __construct($attribute)  {
-		parent::__construct($attribute, new SimplePermissionController(false), false, false);
-	}
+//class RollbackEditor extends BooleanEditor {
+//	public function __construct($attribute)  {
+//		parent::__construct($attribute, new SimplePermissionController(false), false, false);
+//	}
+//
+//	public function getViewHTML($idPath, $value) {
+//		if ($value)
+//			return $this->getEditHTML($idPath, false);
+//		else
+//			return "";
+//	}
+//
+//	public function shouldRollBack($id, $value) {
+//		return $value && isset($_POST[$id]);
+//	}
+//}
 
+class RollBackEditor extends ScalarEditor {
+	protected $hasValueFields;
+	
+	public function __construct($attribute, $hasValueFields)  {
+		parent::__construct($attribute, new SimplePermissionController(false), false, false);
+		
+		$this->hasValueFields = $hasValueFields;
+	}
+	
 	public function getViewHTML($idPath, $value) {
-		if ($value)
-			return $this->getEditHTML($idPath, false);
+		global
+			$isLatestAttribute, $operationAttribute;
+			
+		$isLatest = $value->getAttributeValue($isLatestAttribute);
+		$operation = $value->getAttributeValue($operationAttribute);
+		
+		if ($isLatest) {
+			$options = array('do-nothing' => 'Do nothing');
+			
+			if ($this->hasValueFields)
+				$previousVersionLabel = 'Previous version';
+			else
+				$previousVersionLabel = 'Restore';
+				
+			if ($this->hasValueFields || $operation != 'Added')
+				$options['previous-version'] = $previousVersionLabel;
+			
+			if ($operation != 'Removed')
+				$options['remove'] = 'Remove';
+		
+			return getSelect($idPath->getId(), $options);
+		}
 		else
 			return "";
 	}
 
-	public function shouldRollBack($id, $value) {
-		return $value && isset($_POST[$id]);
+	public function getEditHTML($idPath, $value) {
+		return $this->getViewHTML($idPath, $value);
+	}
+
+	public function getInputValue($id) {
+		return "";
+	}
+
+	public function add($idPath) {
 	}
 }
 

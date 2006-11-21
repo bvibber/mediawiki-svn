@@ -387,21 +387,27 @@ function createTranslatedContent($translatedContentId, $languageId, $textId) {
 	return $dbr->insertId();
 }
 
-function translatedTextExists($definitionId, $languageId) {
+function translatedTextExists($textId, $languageId) {
 	$dbr = &wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT translated_content_id FROM translated_content WHERE translated_content_id=$definitionId AND language_id=$languageId AND " . getLatestTransactionRestriction('translated_content'));
+	$queryResult = $dbr->query(
+		"SELECT translated_content_id" .
+		" FROM translated_content" .
+		" WHERE translated_content_id=$textId" .
+		" AND language_id=$languageId" .
+		" AND " . getLatestTransactionRestriction('translated_content')
+	);
 
 	return $dbr->numRows($queryResult) > 0;	
 }
 
-function addTranslatedText($definitionId, $languageId, $definition) {
-	$textId = createText($definition);
-	createTranslatedContent($definitionId, $languageId, $textId);
+function addTranslatedText($translatedContentId, $languageId, $text) {
+	$textId = createText($text);
+	createTranslatedContent($translatedContentId, $languageId, $textId);
 }
 
-function addTranslatedTextIfNotPresent($definitionId, $languageId, $definition) {
-	if (!translatedTextExists($definitionId, $languageId)) 	
-		addTranslatedText($definitionId, $languageId, $definition);
+function addTranslatedTextIfNotPresent($translatedContentId, $languageId, $text) {
+	if (!translatedTextExists($translatedContentId, $languageId)) 	
+		addTranslatedText($translatedContentId, $languageId, $text);
 }
 
 function getDefinedMeaningDefinitionId($definedMeaningId) {
