@@ -41,13 +41,34 @@ function wfSpecialDatasearch() {
 			}
 		}
 		
+		function getSpellingRestriction($spelling) {
+			if (trim($spelling) != '')
+				return " AND spelling LIKE " . $dbr->addQuotes("%$text%");
+			else
+				return "";
+		}
+		
+		function getSpellingOrderBy($spelling) {
+			if (trim($spelling) != '')
+				return "position ASC, ";
+			else
+				return "";
+		}
+		
+		function getPositionSelectColumn($spelling) {
+			if (trim($spelling) != '')
+				return "INSTR(LCASE(uw_expression_ns.spelling), LCASE(". $dbr->addQuotes("$text") .")) as position, ";
+			else
+				return "";
+		}
+		
 		function searchText($text, $collectionId) {
 			require_once("Search.php");			
 			
 			$dbr = &wfGetDB(DB_SLAVE);
 			
 			$sql = 
-				"SELECT INSTR(LCASE(uw_expression_ns.spelling), LCASE(". $dbr->addQuotes("$text") .")) as position, uw_syntrans.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS spelling, uw_expression_ns.language_id AS language_id ".
+				"SELECT ". $this->getPositionSelectColumn($text) ." uw_syntrans.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS spelling, uw_expression_ns.language_id AS language_id ".
 				"FROM uw_expression_ns, uw_syntrans ";
 					
 			if ($collectionId > 0)
@@ -57,7 +78,7 @@ function wfSpecialDatasearch() {
 		    	"WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id AND uw_syntrans.identical_meaning=1 " .
 				" AND " . getLatestTransactionRestriction('uw_syntrans').
 				" AND " . getLatestTransactionRestriction('uw_expression_ns').
-				" AND spelling LIKE " . $dbr->addQuotes("%$text%");
+				$this->getSpellingRestriction($text);
 				
 			if ($collectionId > 0)
 				$sql .= 
@@ -66,7 +87,7 @@ function wfSpecialDatasearch() {
 					" AND " . getLatestTransactionRestriction('uw_collection_contents');
 			
 			$sql .=
-				" ORDER BY position ASC, uw_expression_ns.spelling ASC limit 100";
+				" ORDER BY " . $this->getSpellingOrderBy($text) . "uw_expression_ns.spelling ASC limit 100";
 			
 			$queryResult = $dbr->query($sql);
 			list($relation, $editor) = getSearchResultAsRecordSet($queryResult);
