@@ -77,7 +77,7 @@ makekey(string const &name)
 {
 using	boost::archive::iterators::base64_from_binary;
 using	boost::archive::iterators::transform_width;
-u_char	key[64];	/* 64 bytes for HMAC-MD5 */
+u_char	key[512];	/* 64 bytes for HMAC-MD5 */
 string	b64key;
 int	fd;
 typedef base64_from_binary<transform_width<u_char const *, 6, 8> > base64_text;
@@ -132,7 +132,7 @@ int	line = 0;
 		name = s.substr(0, i);
 		key = s.substr(i + 1);
 
-		if (key.size() != 86) {
+		if (key.size() != 683) {
 			fprintf(stderr, "%s(%d): key has wrong length\n",
 				keystore.c_str(), line);
 			continue;

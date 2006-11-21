@@ -380,14 +380,12 @@ int	line = 0;
 		name = s.substr(0, i);
 		key = s.substr(i + 1);
 
-		if (key.size() != 86) {
+		if (key.size() != 683) {
 			v.report_error("%s(%d): key has wrong length",
 				file.c_str(), line);
 			continue;
 		}
 
-		WDEBUG((WLOG_DEBUG, format("HTCP key: [%s] data [%s]") %
-			name % key));
 	ustring		bkey;
 	unbase64_string it(key.begin());
 		for (size_t i = 0; i < 64; ++i) {

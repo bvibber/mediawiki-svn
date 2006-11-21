@@ -640,7 +640,7 @@ htcp_auth::decode(marshalling_buffer &buf)
 size_t
 htcp_auth::length(void) const
 {
-	if (ha_signature.empty())
+	if (ha_keyname.empty())
 		return 2;
 	return 2 + 4 + 4 + 2 + ha_keyname.size() + 2 + 16;
 }
@@ -648,7 +648,7 @@ htcp_auth::length(void) const
 void
 htcp_auth::build(marshalling_buffer &buf) const
 {
-	if (ha_signature.empty()) {
+	if (ha_keyname.empty()) {
 		buf.append<uint16_t>(htons(2));
 		return;
 	}

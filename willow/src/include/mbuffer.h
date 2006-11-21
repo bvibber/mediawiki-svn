@@ -28,12 +28,14 @@ struct marshalling_buffer {
 		: _buf(NULL)
 		, _size(0)
 		, _bufsz(0)
+		, _delete(false)
 	{}
 
 	marshalling_buffer(char const *buf, uint32_t sz)
 		: _buf(const_cast<char *>(buf))
 		, _size(0)
 		, _bufsz(sz)
+		, _delete(false)
 	{}
 		
 	~marshalling_buffer(void) {
