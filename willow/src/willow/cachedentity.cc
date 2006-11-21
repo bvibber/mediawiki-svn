@@ -107,7 +107,7 @@ header	*h;
 	 * lifetime of 0 means the object shouldn't be cached.
 	 */
 	_lifetime = (time_t) ((time(0) - _modified) * 1.25);
-	if (_lifetime <= 0) {
+	if (_expires == _modified || _lifetime <= 0) {
 		_void = true;
 		return;
 	}

@@ -77,7 +77,9 @@ struct cachedentity {
 		return _expires;
 	}
 
-	bool expired(void) const {
+	bool expired(void) {
+		HOLDING(_lock);
+
 		/*
 		 * Does the entity have an Expires: header?
 		 */
@@ -91,13 +93,18 @@ struct cachedentity {
 		WDEBUG((WLOG_DEBUG, 
 			str(format("expired: now=%d, revalidating at %d")
 				% time(0) % _revalidate_at)));
-		return _revalidate_at <= time(0);
+		if (_revalidate_at <= time(0)) {
+			_complete = false;
+			return true;
+		}
+		return false;
 	}
 
 	void revalidated(void) {
 		/*
 		 * If the object is still valid, its lifetime can increase.
 		 */
+		HOLDING(_lock);
 		_lifetime = (time_t) ((time(0) - _modified) * 1.25);
 		if (_lifetime < 0)
 			_lifetime = 0;
@@ -139,6 +146,10 @@ struct cachedentity {
 		return _cachedir;
 	}
 
+	int refs(void) {
+		return _refs;
+	}
+
 private:
 	friend struct httpcache;
 	friend struct caching_filter;
@@ -148,9 +159,18 @@ private:
 	cachedentity(imstring const &url, size_t hint = 0);
 	void _append(char const *data, size_t size);
 
+	void ref(void) {
+		++_refs;
+	}
+
+	void deref(void) {
+		--_refs;
+	}
+
 	/*
 	 * Remember to add marshallers when adding new data here.
 	 */
+	lockable	 _lock;
 	imstring	 _url;
 	imstring	 _status;
 	imstring	 _cachedfile;

@@ -37,13 +37,13 @@ httpcache::find_cached(imstring const &url, bool create, bool &wasnew)
 {
 map<imstring, shared_ptr<cachedentity> >::iterator it;
 	if (!config.cache_memory)
-		return shared_ptr<cachedentity>((cachedentity *) 0);
+		return shared_ptr<cachedentity>();
 
 	HOLDING(_lock);
 	it = _entities.find(url);
 
 	if (it != _entities.end()) {
-	shared_ptr<cachedentity> ret = it->second;
+	shared_ptr<cachedentity> ret(it->second);
 		/* entity was cached */
 		WDEBUG((WLOG_DEBUG, str(format("[%s] cached, complete=%d") 
 			% url % ret->_complete)));
@@ -51,6 +51,7 @@ map<imstring, shared_ptr<cachedentity> >::iterator it;
 		_lru.erase(it);
 		it->second->reused();
 		_lru.insert(it);
+		ret->ref();
 		return ret;
 	}
 
@@ -67,6 +68,7 @@ map<imstring, shared_ptr<cachedentity> >::iterator it;
 					% url % e->complete() % e->isvoid())));
 			_lru.insert(_entities.insert(make_pair(url, ret)).first);
 			wasnew = false;
+			ret->ref();
 			return ret;
 		}
 		if (_db->error() && _db->error() != DB_NOTFOUND) {
@@ -77,7 +79,7 @@ map<imstring, shared_ptr<cachedentity> >::iterator it;
 
 	WDEBUG((WLOG_DEBUG, str(format("[%s] not cached") % url)));
 	if (!create)
-		return shared_ptr<cachedentity>((cachedentity *) 0);
+		return shared_ptr<cachedentity>();
 
 	/* need to create new entity */
 cachedentity		 *e;
@@ -85,6 +87,7 @@ cachedentity		 *e;
 shared_ptr<cachedentity> ret(e);
 	wasnew = true;
 	_lru.insert(_entities.insert(make_pair(url, ret)).first);
+	ret->ref();
 	return ret;
 }
 
@@ -117,6 +120,7 @@ map<imstring, shared_ptr<cachedentity> >::iterator it;
 		_lru.erase(it);
 		_entities.erase(it);
 	}
+	ent->deref();
 }
 
 void
@@ -165,6 +169,7 @@ void
 httpcache::_swap_out(cachedentity *ent)
 {
 	WDEBUG((WLOG_DEBUG, str(format("swapping out %s") % ent->url())));
+	HOLDING(_lock);
 	if (!_db)
 		return;
 	_db->put(ent->url(), *ent);

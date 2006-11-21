@@ -387,13 +387,21 @@ httpcllr::header_read_complete(void)
 				char		 dstr[64];
 				struct tm	 tm;
 				time_t		 mod = _cachedent->modified();
+					WDEBUG((WLOG_DEBUG, 
+				format("HTTP: need to revalidate, %d refs")
+					% _cachedent->refs()));
 					gmtime_r(&mod, &tm);
 					/* need to revalidate */
-					_validating = true;
-					strftime(dstr, sizeof(dstr),
-						"%a, %d %b %Y %H:%M:%S GMT", &tm);
-					_header_parser->_headers.add(
-						"If-Modified-Since", dstr);
+					if (_cachedent->refs() == 1) {
+						_validating = true;
+						strftime(dstr, sizeof(dstr),
+							"%a, %d %b %Y %H:%M:%S GMT", &tm);
+						_header_parser->_headers.add(
+							"If-Modified-Since", dstr);
+					} else {
+						entitycache.release(_cachedent);
+						_cachedent.reset();
+					}
 				} else {
 					send_cached();
 					return;
