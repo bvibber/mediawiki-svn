@@ -69,7 +69,7 @@ function wfSpecialDatasearch() {
 				" ORDER BY position ASC, uw_expression_ns.spelling ASC limit 100";
 			
 			$queryResult = $dbr->query($sql);
-			list($relation, $editor) = getDefinedMeaningAsRelation($queryResult);
+			list($relation, $editor) = getSearchResultAsRecordSet($queryResult);
 			return $editor->view(new IdStack("expression"), $relation);
 		}			
 	}

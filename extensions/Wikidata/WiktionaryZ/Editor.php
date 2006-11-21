@@ -386,10 +386,26 @@ abstract class RecordSetEditor extends DefaultEditor {
 }
 
 class RecordSetTableEditor extends RecordSetEditor {
+	protected $rowHTMLAttributes = array();
+	
+	protected function getRowAttributesText() {
+		$result = array();
+		
+		foreach ($this->rowHTMLAttributes as $name => $value) 
+			$result[] = $name . '="' . $value . '"';
+		
+		return implode(' ', $result);
+	}
+	
+	public function setRowHTMLAttributes($rowHTMLAttributes) {
+		$this->rowHTMLAttributes = $rowHTMLAttributes;
+	}
+	
 	public function view($idPath, $value) {
 		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
 		$structure = $value->getStructure();
 		$key = $value->getKey();
+		$rowAttributes = $this->getRowAttributesText();
 
 		foreach(getStructureAsTableHeaderRows($this->getTableStructure($this), 0) as $headerRow)
 			$result .= '<tr>' . $headerRow . '</tr>';
@@ -399,7 +415,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		for($i = 0; $i < $recordCount; $i++) {
 			$record = $value->getRecord($i);
 			$idPath->pushKey(project($record, $key));
-			$result .= '<tr id="'. $idPath->getId() .'">' . getRecordAsTableCells($idPath, $this, $record) .'</tr>';
+			$result .= '<tr id="'. $idPath->getId() .'" '.  $rowAttributes . '>' . getRecordAsTableCells($idPath, $this, $record) .'</tr>';
 			$idPath->popKey();
 		}
 
@@ -414,6 +430,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 
 		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
 		$key = $value->getKey();
+		$rowAttributes = $this->getRowAttributesText();
 
 		if ($this->allowRemove)
 			$columnOffset = 1;
@@ -429,7 +446,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 			$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
 
 		foreach ($headerRows as $headerRow)
-			$result .= '<tr>' . $headerRow . '</tr>';
+			$result .= '<tr id="'. $idPath->getId() .'" '.  $rowAttributes . '>' . $headerRow . '</tr>';
 
 		$recordCount = $value->getRecordCount();
 
@@ -809,7 +826,7 @@ class TextEditor extends ScalarEditor {
 	}
 
 	public function getEditHTML($idPath, $value) {
-			return getTextArea($this->updateId($idPath->getId()), $value, 3);
+		return getTextArea($this->updateId($idPath->getId()), $value, 3);
 	}
 
 	public function add($idPath) {
@@ -1219,7 +1236,7 @@ class PopUpEditor extends WrappingEditor {
 
 	protected function startToggleCode($attributeId) {
 		return 	
-			'<a id="popup-' . $attributeId . '-link" style="cursor: pointer; font-weight: bolder; font-size: 90%;" onclick="togglePopup(this, event);">'. $this->linkCaption .' &raquo;</a>' . 
+			'<a id="popup-' . $attributeId . '-link" style="cursor: pointer; font-weight: bolder; font-size: 90%; white-space: nowrap" onclick="togglePopup(this, event);">'. $this->linkCaption .' &raquo;</a>' . 
 			'<div style="absolute"><div id="popup-' . $attributeId . '-toggleable" style="position: absolute; border: 1px solid #000000; display: none; background-color: white; padding: 4px;">';
 	}
 
@@ -1562,6 +1579,12 @@ class RollbackEditor extends BooleanEditor {
 
 	public function shouldRollBack($id, $value) {
 		return $value && isset($_POST[$id]);
+	}
+}
+
+class RecordSetRecordSelector extends WrappingEditor {
+	public function view($idPath, $value) {
+		return getStaticSuggest($idPath->getId(), $this->wrappedEditor->view($idPath, $value), count($value->getKey()->attributes));
 	}
 }
 

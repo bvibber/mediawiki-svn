@@ -22,7 +22,9 @@ function wfSpecialSuggest() {
 			require_once("Editor.php");
 			require_once("HTMLtable.php");
 			require_once("Expression.php");
-			require_once("Transaction.php");			
+			require_once("Transaction.php");
+			require_once("WiktionaryZEditors.php");
+						
 			echo getSuggestions();
 		}
 	}
@@ -135,7 +137,7 @@ function getSuggestions() {
 			break;
 	}
 	
-	return getRelationAsSuggestionTable($editor, new IdStack($prefix .'table'), $recordSet);
+	return $editor->view(new IdStack($prefix . 'table'), $recordSet);
 }
 
 function getSQLForCollectionOfType($collectionType) {
@@ -182,9 +184,9 @@ function getRelationTypeAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
-	$editor->addEditor(new ShortTextEditor($relationTypeAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($relationTypeAttribute));
+	$editor->addEditor(createShortTextViewer($collectionAttribute));
 	
 	return array($recordSet, $editor);		
 }
@@ -202,9 +204,9 @@ function getClassAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), false, false, false, null);
-	$editor->addEditor(new ShortTextEditor($classAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($classAttribute));
+	$editor->addEditor(createShortTextViewer($collectionAttribute));
 
 	return array($recordSet, $editor);		
 }
@@ -220,9 +222,9 @@ function getTextAttributeAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
-	$editor->addEditor(new ShortTextEditor($textAttributeAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($textAttributeAttribute));
+	$editor->addEditor(createShortTextViewer($collectionAttribute));
 
 	return array($recordSet, $editor);		
 }
@@ -240,9 +242,9 @@ function getTranslatedTextAttributeAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
-	$editor->addEditor(new ShortTextEditor($translatedTextAttributeAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($translatedTextAttributeAttribute));
+	$editor->addEditor(createShortTextViewer($collectionAttribute));
 
 	return array($recordSet, $editor);		
 }
@@ -270,10 +272,10 @@ function getDefinedMeaningAsRecordSet($queryResult) {
 	}			
 
 	$expressionEditor = new RecordTableCellEditor($definedMeaningAttribute);
-	$expressionEditor->addEditor(new ShortTextEditor($spellingAttribute, new SimplePermissionController(false), false));
-	$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
+	$expressionEditor->addEditor(createShortTextViewer($spellingAttribute));
+	$expressionEditor->addEditor(createLanguageViewer($languageAttribute));
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
+	$editor = createSuggestionsTableViewer(null);
 	$editor->addEditor($expressionEditor);
 	$editor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 
@@ -294,9 +296,9 @@ function getClassAttributeLevelAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
-	$editor->addEditor(new ShortTextEditor($classAttributeLevelAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($classAttributeLevelAttribute));
+	$editor->addEditor(createShortTextViewer($collectionAttribute));
 	
 	return array($recordSet, $editor);		
 }
@@ -313,8 +315,8 @@ function getCollectionAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->collection_id, $row->spelling));			
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
-	$editor->addEditor(new ShortTextEditor($collectionAttribute, new SimplePermissionController(false), false));
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($collectionAttribute));
 
 	return array($recordSet, $editor);		
 }
@@ -331,8 +333,8 @@ function getLanguageAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->row_id, $row->language_name));			
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
-	$editor->addEditor(new ShortTextEditor($languageAttribute, new SimplePermissionController(false), false));
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($languageAttribute));
 
 	return array($recordSet, $editor);		
 }
@@ -351,11 +353,11 @@ function getTransactionAsRecordSet($queryResult) {
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->transaction_id, getUserLabel($row->user_id, $row->user_ip), $row->time, $row->comment));			
 	
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
-	$editor->addEditor(new ShortTextEditor($timestampAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new ShortTextEditor($idAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new ShortTextEditor($userAttribute, new SimplePermissionController(false), false));
-	$editor->addEditor(new ShortTextEditor($summaryAttribute, new SimplePermissionController(false), false));
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($timestampAttribute));
+	$editor->addEditor(createShortTextViewer($idAttribute));
+	$editor->addEditor(createShortTextViewer($userAttribute));
+	$editor->addEditor(createShortTextViewer($summaryAttribute));
 
 	return array($recordSet, $editor);		
 }

@@ -71,6 +71,14 @@ function suggestTextChanged(suggestText) {
 	scheduleUpdateSuggestions(getSuggestPrefix(suggestText, "text"));
 }
 
+function mouseOverRow(row) {
+	row.className = "suggestion-row active";
+}
+
+function mouseOutRow(row) {
+	row.className = "suggestion-row inactive";
+}
+
 function stopEventHandling(event) {
 	event.cancelBubble = true;
 
@@ -90,9 +98,12 @@ function suggestLinkClicked(event, suggestLink) {
 	var suggestDiv = document.getElementById(suggestPrefix + "div");
 	var suggestField = document.getElementById(suggestPrefix + "text");
 	suggestDiv.style.display = 'block';
-	suggestField.focus();
 
-	updateSuggestions(suggestPrefix);
+	if (suggestField != null) {
+		suggestField.focus();
+		updateSuggestions(suggestPrefix);
+	}
+	
 	stopEventHandling(event);
 }
 
@@ -123,6 +134,7 @@ function suggestCloseClicked(event, suggestClose) {
 
 function suggestRowClicked(event, suggestRow) {
 	var suggestPrefix = getSuggestPrefix(suggestRow.parentNode.parentNode.parentNode.parentNode, "div"); 
+	var idColumnsField = document.getElementById(suggestPrefix + "id-columns");
 	var displayLabelField = document.getElementById(suggestPrefix + "label-columns");
 	var displayLabelColumnIndices = displayLabelField.value.split(", ");
 	var labels = new Array();
@@ -134,16 +146,19 @@ function suggestRowClicked(event, suggestRow) {
 			labels.push(columnValue);
 	} 
 	
-	updateSuggestValue(suggestPrefix, suggestRow.id, labels.join(', '));
+	var idColumns = 1;
+	
+	if (idColumnsField != null)
+		idColumns = idColumnsField.value;
+	
+	var values = suggestRow.id.split('-');
+	var ids = new Array();
+	
+	for (var i = idColumns - 1; i >= 0; i--) 
+		ids.push(values[values.length - i - 1]);
+	
+	updateSuggestValue(suggestPrefix, ids.join('-'), labels.join(', '));
 	stopEventHandling(event);
-}
-
-function mouseOverRow(row) {
-	row.className = "suggestion-row active";
-}
-
-function mouseOutRow(row) {
-	row.className = "suggestion-row inactive";
 }
 
 function enableChildNodes(node, enabled) {

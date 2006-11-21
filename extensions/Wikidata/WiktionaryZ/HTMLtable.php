@@ -149,29 +149,6 @@ function getRecordAsEditTableCells($record, $idPath, $editor, &$startColumn = 0)
 	return $result;
 }
 
-function getRelationAsSuggestionTable($editor, $idPath, $relation) {
-	$result = '<table id="' . $idPath->getId() .'" class="wiki-data-table">';	
-	$structure = $editor->getStructure();
-	$key = $relation->getKey();
-	
-	foreach(getStructureAsTableHeaderRows($structure, 0) as $headerRow)
-		$result .= '<tr>' . $headerRow . '</tr>';
-	
-	$recordCount = $relation->getRecordCount();
-	
-	for($i = 0; $i < $recordCount; $i++) {
-		$record = $relation->getRecord($i);
-		$idPath->pushKey(project($record, $key));
-		$id = getRecordKeyName($relation->getRecord($i), $key);
-		$result .= '<tr id="'. $id .'" class="suggestion-row inactive" onclick="suggestRowClicked(event, this)" onmouseover="mouseOverRow(this)" onmouseout="mouseOutRow(this)">' . getRecordAsTableCells($idPath, $editor, $record) .'</tr>';
-		$idPath->popKey();
-	}
-	
-	$result .= '</table>';
-
-	return $result;
-}
-
 function getStructureAsAddCells($idPath, $editor, &$startColumn = 0) {
 	$result = '';
 	

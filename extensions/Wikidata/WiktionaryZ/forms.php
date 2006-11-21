@@ -66,6 +66,34 @@ function getSuggest($name, $query, $value=0, $label='', $displayLabelColumns = a
 	return $result;
 }
 
+function getStaticSuggest($name, $suggestions, $idColumns = 1, $value=0, $label='', $displayLabelColumns = array(0)) {
+	if ($label == "")
+		$label = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+
+	$result = 
+		'<span class="suggest">' .
+//			'<input type="hidden" id="'. $name .'-suggest-query" value="'. $query .'"/>' .
+			'<input type="hidden" id="'. $name .'-suggest-label-columns" value="'. implode(', ', $displayLabelColumns) .'"/>' .
+			'<input type="hidden" id="'. $name .'" name="'. $name .'" value="'. $value .'"/>';
+
+	if ($idColumns > 1)
+		$result .= '<input type="hidden" id="'. $name .'-suggest-id-columns" value="' . $idColumns. '"/>';
+
+	$result .=
+			'<a id="'. $name .'-suggest-link" class="suggest-link" onclick="suggestLinkClicked(event, this);" title="Click to change selection">' . $label . '</a>' .
+		'</span>'.
+        '<div class="suggest-drop-down" style="position: relative"><div id="'. $name .'-suggest-div" style="position: absolute; left: 0px; top: 0px; border: 1px solid #000000; display: none; background-color: white; padding: 4px">' .
+        	'<div><table><tr><td>' .
+//        	'<input type="text" id="'. $name .'-suggest-text" autocomplete="off" onkeyup="suggestTextChanged(this)" style="width: 300px"></input>' .
+        	'</td><td><a id="'. $name .'-suggest-clear" href="#'. $name . '-suggest-link" onclick="suggestClearClicked(event, this)">Clear</a></td><td><a id="'. $name .'-suggest-close" href="#'. $name . '-suggest-link" onclick="suggestCloseClicked(event, this)">[X]</a></td></tr></table></div>' .
+        	'<div>' . $suggestions .
+        	//<table id="'. $name .'-suggest-table"><tr><td></td></tr></table>
+        	'</div>'.
+        '</div></div>';
+	
+	return $result;
+}
+
 function getLanguageOptions($languageIdsToExclude = array()) {
 	global 
 		$wgUser;

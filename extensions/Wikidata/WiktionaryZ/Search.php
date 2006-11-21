@@ -7,6 +7,7 @@ require_once("Editor.php");
 require_once("Expression.php");
 require_once("WiktionaryZAttributes.php");
 require_once("WiktionaryZRecordSets.php");
+require_once("WiktionaryZEditors.php");
 
 class Search extends DefaultWikidataApplication {
 	function view() {
@@ -33,13 +34,13 @@ class Search extends DefaultWikidataApplication {
 				" ORDER BY position ASC, uw_expression_ns.spelling ASC limit 100";
 		
 		$queryResult = $dbr->query($sql);
-		list($relation, $editor) = getDefinedMeaningAsRelation($queryResult);
+		list($recordSet, $editor) = getSearchResultAsRecordSet($queryResult);
 //		return $sql;
-		return $editor->view(new IdStack("expression"), $relation);
+		return $editor->view(new IdStack("expression"), $recordSet);
 	}
 }
 
-function getDefinedMeaningAsRelation($queryResult) {
+function getSearchResultAsRecordSet($queryResult) {
 	global
 		$idAttribute, $definedMeaningReferenceType;
 
@@ -78,7 +79,7 @@ function getDefinedMeaningAsRelation($queryResult) {
 	$meaningEditor->addEditor(new DefinedMeaningReferenceEditor($definedMeaningAttribute, new SimplePermissionController(false), false));
 	$meaningEditor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
 
-	$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new AllowAddController(false), false, false, null);
+	$editor = createTableViewer(null);
 	$editor->addEditor($expressionEditor);
 	$editor->addEditor($meaningEditor);
 

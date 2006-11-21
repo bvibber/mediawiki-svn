@@ -40,17 +40,23 @@ function getTransactionEditor($attribute) {
 	return $transactionEditor;
 }
 
+function createTableLifeSpanEditor($attribute) {
+	global
+		$addTransactionAttribute, $removeTransactionAttribute;
+	
+	$result = new RecordTableCellEditor($attribute);
+	$result->addEditor(getTransactionEditor($addTransactionAttribute));
+	$result->addEditor(getTransactionEditor($removeTransactionAttribute));
+	
+	return $result;
+}
+
 function addTableLifeSpanEditor($editor, $showRecordLifeSpan) {
 	global
 		$recordLifeSpanAttribute, $addTransactionAttribute, $removeTransactionAttribute, $wgRequest;
 
-	if ($wgRequest->getText('action') == 'history' && $showRecordLifeSpan) {
-		$lifeSpanEditor = new RecordTableCellEditor($recordLifeSpanAttribute);
-		$lifeSpanEditor->addEditor(getTransactionEditor($addTransactionAttribute));
-		$lifeSpanEditor->addEditor(getTransactionEditor($removeTransactionAttribute));
-
-		$editor->addEditor($lifeSpanEditor);
-	}
+	if ($wgRequest->getText('action') == 'history' && $showRecordLifeSpan) 
+		$editor->addEditor(createTableLifeSpanEditor($recordLifeSpanAttribute));
 }
 
 function getDefinitionEditor($attribute, $controller, $showRecordLifeSpan) {
@@ -299,7 +305,9 @@ function createLanguageViewer($attribute) {
 }
 
 function createLongTextViewer($attribute) {
-	return new TextEditor($attribute, new SimplePermissionController(false), false);
+	$result = new TextEditor($attribute, new SimplePermissionController(false), false);
+	
+	return $result;
 }
 
 function createShortTextViewer($attribute) {
@@ -312,6 +320,18 @@ function createBooleanViewer($attribute) {
 
 function createDefinedMeaningReferenceViewer($attribute) {
 	return new DefinedMeaningReferenceEditor($attribute, new SimplePermissionController(false), false);
+}
+
+function createSuggestionsTableViewer($attribute) {
+	$result = createTableViewer($attribute);
+	$result->setRowHTMLAttributes(array(
+		"class" => "suggestion-row",
+		"onclick" => "suggestRowClicked(event, this)",
+		"onmouseover" => "mouseOverRow(this)",
+		"onmouseout" => "mouseOutRow(this)"
+	));
+	
+	return $result;
 }
 
 ?>

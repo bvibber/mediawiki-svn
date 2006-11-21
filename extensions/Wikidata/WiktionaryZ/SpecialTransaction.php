@@ -34,6 +34,7 @@ function wfSpecialTransaction() {
 				$recordSet = getTransactionRecordSet($fromTransactionId, $transactionCount, $userName);	
 				rollBackTransactions($recordSet);
 				$fromTransactionId = 0;
+//				print_r($_POST);
 			}
 
 			if ($fromTransactionId == 0)
@@ -115,14 +116,32 @@ function initializeAttributes() {
 	$rollbackAttribute = new Attribute('roll-back', 'Roll back', 'boolean');
 
 	global
+		$translatedContentHistoryStructure, $translatedContentHistoryKeyStructure, $translatedContentHistoryAttribute, $recordLifeSpanAttribute, 
+		$addTransactionIdAttribute;
+	
+	$addTransactionIdAttribute = new Attribute('add-transaction-id', 'Add transaction ID', 'identifier');
+		
+	$translatedContentHistoryStructure = new Structure($addTransactionIdAttribute, $textAttribute, $recordLifeSpanAttribute);
+	$translatedContentHistoryKeyStructure = new Structure($addTransactionIdAttribute);
+	$translatedContentHistoryAttribute = new Attribute('translated-content-history', 'History', new RecordSetType($translatedContentHistoryStructure));
+
+	global
+		$updatedTextStructure, $updatedTextAttribute;
+		
+	$updatedTextStructure = new Structure($textAttribute, $translatedContentHistoryAttribute);
+	$updatedTextAttribute = new Attribute('updated-text', 'Text', new RecordType($updatedTextStructure));
+
+	global
 		$updatedDefinitionStructure, $updatedDefinitionAttribute;
 	
 	$updatedDefinitionStructure = new Structure(
+		$rollbackAttribute,
 		$definedMeaningIdAttribute, 
 		$definedMeaningReferenceAttribute, 
 		$languageAttribute, 
-		$textAttribute,
-		$operationAttribute
+		$updatedTextAttribute,
+		$operationAttribute,
+		$isLatestAttribute
 	);		
 	
 	$updatedDefinitionAttribute = new Attribute('updated-definition', 'Definition', new RecordSetType($updatedDefinitionStructure));
@@ -251,7 +270,7 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 	$captionEditor->addEditor(new TextEditor($summaryAttribute, new SimplePermissionController(false), false));
 	
 	$valueEditor = new RecordUnorderedListEditor($updatesInTransactionAttribute, 5);
-	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($updatedDefinitionAttribute));
+	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($updatedDefinitionAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedSyntransesEditor($updatedSyntransesAttribute));
 	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute, $showRollBackOptions));
@@ -292,14 +311,59 @@ function getUpdatesInTransactionRecord($transactionId) {
 	return $record;
 }
 
+function getTranslatedContentHistory($translatedContentId, $languageId, $isLatest) {
+	global
+		$translatedContentHistoryStructure, $translatedContentHistoryKeyStructure,
+		$textAttribute, $addTransactionIdAttribute, $recordLifeSpanAttribute;
+		
+	$recordSet = new ArrayRecordSet($translatedContentHistoryStructure, $translatedContentHistoryKeyStructure);
+	
+	if ($isLatest) {
+		$dbr = &wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query(
+			"SELECT old_text, add_transaction_id, remove_transaction_id " .
+			" FROM translated_content, text" .
+			" WHERE translated_content.translated_content_id=$translatedContentId" .
+			" AND translated_content.language_id=$languageId " .
+			" AND translated_content.text_id=text.old_id " .
+			" ORDER BY add_transaction_id DESC"
+		);
+		
+		while ($row = $dbr->fetchObject($queryResult)) {
+			$record = new ArrayRecord($translatedContentHistoryStructure);
+			$record->setAttributeValue($textAttribute, $row->old_text);
+			$record->setAttributeValue($addTransactionIdAttribute, (int) $row->add_transaction_id);
+			$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple((int) $row->add_transaction_id, (int) $row->remove_transaction_id));
+			
+			$recordSet->add($record);	
+		}
+	}
+	
+	return $recordSet;
+}
+
+function getUpdatedTextRecord($text, $history) {
+	global
+		$updatedTextStructure, $textAttribute, $translatedContentHistoryAttribute;
+		
+	$result = new ArrayRecord($updatedTextStructure);
+	$result->setAttributeValue($textAttribute, $text);	
+	$result->setAttributeValue($translatedContentHistoryAttribute, $history);
+	
+	return $result;
+}
+
 function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 	global
-		$languageAttribute, $textAttribute, $definedMeaningIdAttribute, 
-		$definedMeaningReferenceAttribute, $updatedDefinitionStructure, $operationAttribute;
+		$languageAttribute, $updatedTextAttribute, $definedMeaningIdAttribute, 
+		$definedMeaningReferenceAttribute, $updatedDefinitionStructure, 
+		$operationAttribute, $isLatestAttribute, $rollbackAttribute;
 		
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT defined_meaning_id, language_id, old_text, " . getOperationSelectColumn('translated_content', $transactionId) . 
+		"SELECT defined_meaning_id, translated_content_id, language_id, old_text, " . 
+			getOperationSelectColumn('translated_content', $transactionId) . ', ' .
+			getIsLatestSelectColumn('translated_content', array('translated_content_id', 'language_id'), $transactionId) . 
 		" FROM uw_defined_meaning, translated_content, text " .
 		" WHERE uw_defined_meaning.meaning_text_tcid=translated_content.translated_content_id ".
 		" AND translated_content.text_id=text.old_id " .
@@ -307,15 +371,17 @@ function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 		" AND " . getAtTransactionRestriction('uw_defined_meaning', $transactionId)
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedDefinitionStructure, new Structure($definedMeaningIdAttribute));
+	$recordSet = new ArrayRecordSet($updatedDefinitionStructure, new Structure($definedMeaningIdAttribute, $languageAttribute));
 	
-	while ($definition = $dbr->fetchObject($queryResult)) {
+	while ($row = $dbr->fetchObject($queryResult)) {
 		$record = new ArrayRecord($updatedDefinitionStructure);
-		$record->setAttributeValue($definedMeaningIdAttribute, $definition->defined_meaning_id);
-		$record->setAttributeValue($definedMeaningReferenceAttribute, getDefinedMeaningReferenceRecord($definition->defined_meaning_id));
-		$record->setAttributeValue($languageAttribute, $definition->language_id);
-		$record->setAttributeValue($textAttribute, $definition->old_text);
-		$record->setAttributeValue($operationAttribute, $definition->operation);
+		$record->setAttributeValue($definedMeaningIdAttribute, $row->defined_meaning_id);
+		$record->setAttributeValue($definedMeaningReferenceAttribute, getDefinedMeaningReferenceRecord($row->defined_meaning_id));
+		$record->setAttributeValue($languageAttribute, $row->language_id);
+		$record->setAttributeValue($updatedTextAttribute, getUpdatedTextRecord($row->old_text, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest)));
+		$record->setAttributeValue($operationAttribute, $row->operation);
+		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		$record->setAttributeValue($rollbackAttribute, $row->is_latest);
 		
 		$recordSet->add($record);	
 	}
@@ -358,13 +424,21 @@ function getUpdatedSyntransesRecordSet($transactionId) {
 	return $recordSet;
 }
 
-function getIsLatestSelectColumn($table, $idField, $transactionId) {
+function getIsLatestSelectColumn($table, $idFields, $transactionId) {
+	$idSelectColumns = array();
+	$idRestrictions = array();
+	
+	foreach ($idFields as $idField) {
+		$idSelectColumns[] = "latest_$table.$idField";
+		$idRestrictions[] = "$table.$idField=latest_$table.$idField";
+	}
+	
 	return 
-		"($table.add_transaction_id=$transactionId AND $table.remove_transaction_id IS NULL) OR (remove_transaction_id=$transactionId AND NOT EXISTS(" .
-			"SELECT latest_$table.$idField " .
+		"($table.add_transaction_id=$transactionId AND $table.remove_transaction_id IS NULL) OR ($table.remove_transaction_id=$transactionId AND NOT EXISTS(" .
+			"SELECT " . implode(', ', $idSelectColumns) .
 			" FROM $table AS latest_$table" .
-			" WHERE $table.$idField=latest_$table.$idField" .
-			" AND (latest_$table.add_transaction_id > $transactionId) " .
+			" WHERE " . implode(' AND ', $idRestrictions) .
+			" AND (latest_$table.add_transaction_id >= $transactionId) " .
 		")) AS is_latest ";
 }
 
@@ -377,7 +451,7 @@ function getUpdatedRelationsRecordSet($transactionId) {
 	$queryResult = $dbr->query(
 		"SELECT relation_id, meaning1_mid, meaning2_mid, relationtype_mid, " . 
 			getOperationSelectColumn('uw_meaning_relations', $transactionId) . ', ' .
-			getIsLatestSelectColumn('uw_meaning_relations', 'relation_id', $transactionId) . 
+			getIsLatestSelectColumn('uw_meaning_relations', array('relation_id'), $transactionId) . 
 		" FROM uw_meaning_relations " .
 		" WHERE " . getInTransactionRestriction('uw_meaning_relations', $transactionId)
 	);
@@ -409,7 +483,7 @@ function getUpdatedClassMembershipRecordSet($transactionId) {
 	$queryResult = $dbr->query(
 		"SELECT class_membership_id, class_mid, class_member_mid, " . 
 		getOperationSelectColumn('uw_class_membership', $transactionId) . ', ' .
-		getIsLatestSelectColumn('uw_class_membership', 'class_membership_id', $transactionId) . 
+		getIsLatestSelectColumn('uw_class_membership', array('class_membership_id'), $transactionId) . 
 		" FROM uw_class_membership " .
 		" WHERE " . getInTransactionRestriction('uw_class_membership', $transactionId)
 	);
@@ -462,15 +536,45 @@ function getUpdatedCollectionMembershipRecordSet($transactionId) {
 	return $recordSet;
 }
 
-function getUpdatedDefinedMeaningDefinitionEditor($attribute) {
+function getTranslatedContentHistorySelector($attribute) {
 	global
-		$definedMeaningReferenceAttribute, $languageAttribute, $textAttribute, $operationAttribute;
+		$textAttribute, $recordLifeSpanAttribute;
+	
+	$result = createSuggestionsTableViewer($attribute);
+	$result->addEditor(createLongTextViewer($textAttribute));
+	$result->addEditor(createTableLifeSpanEditor($recordLifeSpanAttribute));
+
+	$result = new RecordSetRecordSelector($result);
+	
+	return $result;
+}
+
+function createUpdatedTextViewer($attribute) {
+	global
+		$textAttribute, $translatedContentHistoryAttribute;
+	
+	$result = new RecordDivListEditor($attribute);
+	$result->addEditor(createLongTextViewer($textAttribute));
+//	$result->addEditor(getTranslatedContentHistorySelector($translatedContentHistoryAttribute));
+	
+	return $result;
+}
+
+function getUpdatedDefinedMeaningDefinitionEditor($attribute, $showRollBackOptions) {
+	global
+		$definedMeaningReferenceAttribute, $languageAttribute, $updatedTextAttribute, 
+		$operationAttribute, $isLatestAttribute, $rollbackAttribute, $translatedContentHistoryAttribute;
 	
 	$editor = createTableViewer($attribute);
+	
+//	if ($showRollBackOptions) 
+//		$editor->addEditor(new RollbackEditor($rollbackAttribute));
+		
 	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
 	$editor->addEditor(createLanguageViewer($languageAttribute));
-	$editor->addEditor(createLongTextViewer($textAttribute));
+	$editor->addEditor(createUpdatedTextViewer($updatedTextAttribute));
 	$editor->addEditor(createShortTextViewer($operationAttribute));
+	$editor->addEditor(createBooleanViewer($isLatestAttribute));
 	
 	return $editor;
 }
