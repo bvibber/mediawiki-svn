@@ -27,18 +27,19 @@ using std::map;
 using namespace wnet;
 
 struct listener {
-	string		 name;
-	string		 host;
-	int		 port;
-	int		 group;
-	wnet::socket	*sock;
+	string			 name;
+	string			 host;
+	int			 port;
+	int			 group;
+	wnet::socket		*sock;
+	atomic<uint64_t>	 nconns;
 
 	~listener() {
 		delete sock;
 	}
 };
 extern vector<listener *> listeners;
-extern map<wsocket *, int> lsn2group;
+extern map<wsocket *, listener *> sock2lsn;
 
 struct cachedir {
 	cachedir(string const &dir_)

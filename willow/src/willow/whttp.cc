@@ -166,7 +166,7 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	error_transform_filter		*_error_filter;
 	chunking_filter			*_chunking_filter;
 	io::size_limiting_filter	*_size_limit;
-	cachedentity			*_cachedent;
+	shared_ptr<cachedentity>	 _cachedent;
 	caching_filter			*_cache_filter;
 	cached_spigot			*_cache_spigot;
 
@@ -199,7 +199,6 @@ httpcllr::httpcllr(wsocket *s, int gr)
 	, _error_filter(NULL)
 	, _chunking_filter(NULL)
 	, _size_limit(NULL)
-	, _cachedent(NULL)
 	, _cache_filter(NULL)
 	, _cache_spigot(NULL)
 	, _blist(NULL)
@@ -281,7 +280,7 @@ bool	can_keepalive = false;
 	_cache_spigot = NULL;
 	if (_cachedent)
 		entitycache.release(_cachedent);
-	_cachedent = NULL;
+	_cachedent.reset();
 
 	/*
 	 * Return the backend to the keepalive pool, if we can.
@@ -328,7 +327,7 @@ void
 httpcllr::send_cached(void)
 {
 	if (_header_parser->_http_reqtype == REQTYPE_PURGE) {
-		_cachedent->purge();
+		entitycache.purge(_cachedent);
 		send_error(ERR_NONE, NULL, 200, "Object removed from cache");
 		return;
 	}
@@ -405,7 +404,7 @@ httpcllr::header_read_complete(void)
 				 * about it.
 				 */
 				entitycache.release(_cachedent);
-				_cachedent = NULL;
+				_cachedent.reset();
 			}
 		}
 	}
@@ -825,7 +824,7 @@ void
 http_thread::accept_wakeup(wsocket *s, int)
 {
 wsocket	*socks[2];
-map<wsocket *, int>::iterator lsnit;
+map<wsocket *, listener *>::iterator lsnit;
 
 	if (s->read((char *)socks, sizeof(socks)) < (int)sizeof(socks)) {
 		wlog(WLOG_ERROR, format("accept_wakeup: reading fd: %s")
@@ -835,10 +834,11 @@ map<wsocket *, int>::iterator lsnit;
 	WDEBUG((WLOG_DEBUG, format("accept_wakeup, lsnr = %d") % socks[1]));
 	s->readback(polycaller<wsocket *, int>(*this, 
 		&http_thread::accept_wakeup), 0);
-	if ((lsnit = lsn2group.find(socks[1])) == lsn2group.end())
+	if ((lsnit = sock2lsn.find(socks[1])) == sock2lsn.end())
 		throw runtime_error("listener not found");
 
-	new httpcllr(socks[0], lsnit->second);
+	++lsnit->second->nconns;
+	new httpcllr(socks[0], lsnit->second->group);
 }
 
 static

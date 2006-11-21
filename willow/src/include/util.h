@@ -12,6 +12,7 @@
 # pragma ident "@(#)$Id$"
 #endif
 
+#include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/archive/iterators/base64_from_binary.hpp>
@@ -52,6 +53,7 @@ using boost::noncopyable;
 using boost::lexical_cast;
 using boost::io::str;
 using boost::basic_format;
+using boost::shared_ptr;
 
 #if 0
 struct bad_lexical_cast : runtime_error {

@@ -176,5 +176,40 @@ uint8_t		*vers;
 	fprintf(stderr, "\tBackend requests:      % 10lu (% 6d/sec) Invalid: % 6lu (% 6d/sec)\n",
 		(unsigned long) *trespok, (int) *respoks, (unsigned long) *trespfail, (int) *respfails);
 	
+	/*
+	 * Now there is a series of (listener,nconns) pairs.
+	 */
+	bufp++;
+	for (;;) {
+	uint16_t	 nlen;
+	char		*name;
+	uint32_t	 hi, lo;
+	uint64_t	 nc;
+		if (bufp + 2 > end)
+			break;
+		nlen = *(uint16_t *) bufp;
+		bufp += 2;
+		if (bufp + nlen > end) {
+			fprintf(stderr, 
+			"%s: warning: truncated packet? (no name, nlen = %d)\n",
+				progname, (int) nlen);
+			break;
+		}
+		name = bufp;
+		bufp += nlen;
+		if (bufp + 8 > end) {
+			fprintf(stderr, "%s: warning: truncated packet? (no nc)\n",
+				progname);
+			break;
+		}
+		lo = *(uint32_t *) bufp;
+		bufp += 4;
+		hi = *(uint32_t *) bufp;		
+		bufp += 4;
+		nc = hi << 32 | lo;
+		fprintf(stderr, "\tListener %.*s: %llu connections\n",
+			nlen, name, nc);
+	}
+
 	freeaddrinfo(res);
 }

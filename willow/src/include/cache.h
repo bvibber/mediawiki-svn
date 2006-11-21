@@ -139,23 +139,11 @@ struct cachedentity {
 		return _cachedir;
 	}
 
-	void purge(void);
-
 private:
 	friend struct httpcache;
 	friend struct caching_filter;
 	friend struct cached_spigot;
 	friend struct cachedir_data_store;
-
-	void ref(void) {
-		++_refs;
-	}
-
-	void deref(void) {
-		assert((int)_refs);
-		if (--_refs == 0)
-			delete this;
-	}
 
 	cachedentity(imstring const &url, size_t hint = 0);
 	void _append(char const *data, size_t size);
@@ -345,10 +333,11 @@ struct httpcache {
 	void close(void);
 	bool create(void);
 
-	cachedentity	*find_cached(imstring const &url, bool create, bool& wasnew);
-	void		 release(cachedentity *);
+	shared_ptr<cachedentity>
+			 find_cached(imstring const &url, bool create, bool& wasnew);
+	void		 release(shared_ptr<cachedentity>);
 	bool		 purge(imstring const &url);
-	void		 purge(cachedentity *);
+	void		 purge(shared_ptr<cachedentity>);
 	bool		 cached(imstring const &url);
 
 	/*
@@ -360,7 +349,7 @@ private:
 	friend struct cachedentity;
 	friend struct caching_filter;
 
-	typedef map<imstring, cachedentity *> entmap;
+	typedef map<imstring, shared_ptr<cachedentity> > entmap;
 	struct lru_comparator {
 		bool operator() (entmap::iterator a,
 				 entmap::iterator b) const {
@@ -370,10 +359,11 @@ private:
 
 	typedef multiset<entmap::iterator, lru_comparator> lruset;
 
-	void		 _remove(cachedentity *ent);
-	void		 _remove_unlocked(cachedentity *ent);
+	void		 _remove(shared_ptr<cachedentity> ent);
+	void		 _remove_unlocked(shared_ptr<cachedentity> ent);
 	void		 _swap_out(cachedentity *);
-	cachedentity	*_swap_in(imstring const &url);
+	shared_ptr<cachedentity>	
+			 _swap_in(imstring const &url);
 
 	entmap			 _entities;
 	lruset			 _lru;
@@ -382,15 +372,14 @@ private:
 	cachedir_data_store	*_store;
 	
 	db::environment	*_env;
-	db::database<imstring, cachedentity, cachedir_data_store>
-			*_db;
+	db::database<imstring, cachedentity, cachedir_data_store> *_db;
 
 	void	cache_mem_reduce(size_t);
 	bool	cache_mem_increase(size_t, cachedentity *);
 };
 
 struct caching_filter : io::sink, io::spigot {
-	caching_filter(cachedentity *ent)
+	caching_filter(shared_ptr<cachedentity> ent)
 		: _entity(ent) {
 	}
 
@@ -416,11 +405,11 @@ struct caching_filter : io::sink, io::spigot {
 	}
 
 private:
-	cachedentity	*_entity;
+	shared_ptr<cachedentity>	_entity;
 };
 
 struct cached_spigot : io::spigot {
-	cached_spigot(cachedentity *ent)
+	cached_spigot(shared_ptr<cachedentity> ent)
 		: _ent(ent)
 		, _done(false)
 		, _keepalive(false)
@@ -531,7 +520,8 @@ struct cached_spigot : io::spigot {
 	}
 
 private:
-	cachedentity	*_ent;
+	shared_ptr<cachedentity>
+			 _ent;
 	bool		 _done;
 	bool		 _keepalive;
 	bool		 _doneheaders;

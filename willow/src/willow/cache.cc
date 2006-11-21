@@ -32,24 +32,21 @@ httpcache::~httpcache(void)
 	close();
 }
 
-cachedentity *
+shared_ptr<cachedentity>
 httpcache::find_cached(imstring const &url, bool create, bool &wasnew)
 {
-map<imstring, cachedentity *>::iterator it;
-cachedentity *ret;
-
+map<imstring, shared_ptr<cachedentity> >::iterator it;
 	if (!config.cache_memory)
-		return NULL;
+		return shared_ptr<cachedentity>((cachedentity *) 0);
 
 	HOLDING(_lock);
 	it = _entities.find(url);
 
 	if (it != _entities.end()) {
-	ret = it->second;
+	shared_ptr<cachedentity> ret = it->second;
 		/* entity was cached */
 		WDEBUG((WLOG_DEBUG, str(format("[%s] cached, complete=%d") 
 			% url % ret->_complete)));
-		ret->ref();
 		wasnew = false;
 		_lru.erase(it);
 		it->second->reused();
@@ -61,12 +58,13 @@ cachedentity *ret;
 	 * Maybe it's in the disk cache
 	 */
 	if (_db) {
-		ret = _db->get(url);
-		if (ret != NULL) {
+	cachedentity		 *e;
+		e = _db->get(url);
+		if (e != NULL) {
+		shared_ptr<cachedentity>  ret(e);
 			WDEBUG((WLOG_DEBUG, 
 				str(format("found [%s] in disk cache complete %d void %d") 
-					% url % ret->complete() % ret->isvoid())));
-			ret->ref();
+					% url % e->complete() % e->isvoid())));
 			_lru.insert(_entities.insert(make_pair(url, ret)).first);
 			wasnew = false;
 			return ret;
@@ -79,13 +77,14 @@ cachedentity *ret;
 
 	WDEBUG((WLOG_DEBUG, str(format("[%s] not cached") % url)));
 	if (!create)
-		return NULL;
+		return shared_ptr<cachedentity>((cachedentity *) 0);
 
 	/* need to create new entity */
-	ret = new cachedentity(url);
+cachedentity		 *e;
+	e = new cachedentity(url);
+shared_ptr<cachedentity> ret(e);
 	wasnew = true;
 	_lru.insert(_entities.insert(make_pair(url, ret)).first);
-	ret->_refs = 2; /* one for _entities and one for the caller */
 	return ret;
 }
 
@@ -93,7 +92,7 @@ bool
 httpcache::cached(imstring const &url)
 {
 bool		 wasnew;
-cachedentity	*ent = find_cached(url, false, wasnew);
+shared_ptr<cachedentity>	ent = find_cached(url, false, wasnew);
 	if (ent) {
 		release(ent);
 		return true;
@@ -102,32 +101,26 @@ cachedentity	*ent = find_cached(url, false, wasnew);
 }
 
 void
-httpcache::release(cachedentity *ent)
+httpcache::release(shared_ptr<cachedentity> ent)
 {
 	HOLDING(_lock);
-	if (ent->isvoid()) {
-		/*
-		 * If the entity is void, deref it twice so it disappears from the
-		 * cache.
-		 */
-		ent->deref();
-	}
-
-	ent->deref();
+	if (ent->isvoid())
+		_remove_unlocked(ent);
 }
 
 void
-httpcache::_remove_unlocked(cachedentity *ent)
+httpcache::_remove_unlocked(shared_ptr<cachedentity> ent)
 {
-map<imstring, cachedentity *>::iterator it;
+map<imstring, shared_ptr<cachedentity> >::iterator it;
 	if ((it = _entities.find(ent->url())) != _entities.end()) {
+		cache_mem_reduce(it->second->_data.size());
 		_lru.erase(it);
 		_entities.erase(it);
 	}
 }
 
 void
-httpcache::_remove(cachedentity *ent)
+httpcache::_remove(shared_ptr<cachedentity> ent)
 {
 	HOLDING(_lock);
 	_remove_unlocked(ent);
@@ -148,17 +141,17 @@ httpcache::cache_mem_increase(size_t n, cachedentity *self)
 			if ((long) (_cache_mem + n) <= config.cache_memory)
 				break;
 		}
-	cachedentity		*ent;
+	shared_ptr<cachedentity> ent;
 		{	HOLDING(_lock);
 		lruset::iterator	 it = _lru.begin();
 			for (; it != _lru.end(); ++it) {
 				ent = (*it)->second;
-				if (ent == self)
+				if (ent.get() == self)
 					continue;
-				ent->deref();
+				_remove_unlocked(ent);
 				break;
 			}
-			if (ent == self)
+			if (ent.get() == self)
 				return false;
 		}
 	}
@@ -184,8 +177,7 @@ httpcache::_swap_out(cachedentity *ent)
 bool
 httpcache::purge(imstring const &url)
 {
-map<imstring, cachedentity *>::iterator it;
-cachedentity *ent;
+map<imstring, shared_ptr<cachedentity> >::iterator it;
 	{	HOLDING(_lock);
 		it = _entities.find(url);
 
@@ -195,9 +187,7 @@ cachedentity *ent;
 
 		if (_db)
 			_db->del(url);
-
-		ent = it->second;
-		ent->deref();
+		_remove_unlocked(it->second);
 	}
 
 
@@ -205,14 +195,12 @@ cachedentity *ent;
 }
 
 void
-httpcache::purge(cachedentity *ent)
+httpcache::purge(shared_ptr<cachedentity> ent)
 {
-	assert(ent);
-	{	HOLDING(_lock);
-		_remove_unlocked(ent);
-		if (_db)
-			_db->del(ent->url());
-	}
+	HOLDING(_lock);
+	_remove_unlocked(ent);
+	if (_db)
+		_db->del(ent->url());
 }
 
 bool

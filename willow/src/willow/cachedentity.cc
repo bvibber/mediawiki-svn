@@ -34,8 +34,6 @@ cachedentity::cachedentity(imstring const &url, size_t hint)
 
 cachedentity::~cachedentity()
 {
-	entitycache._remove_unlocked(this);
-	entitycache.cache_mem_reduce(_data.size());
 	delete[] _builthdrs;
 }
 
@@ -105,9 +103,15 @@ header	*h;
 		}
 	}
 
+	/*
+	 * lifetime of 0 means the object shouldn't be cached.
+	 */
 	_lifetime = (time_t) ((time(0) - _modified) * 1.25);
-	if (_lifetime < 0)
-		_lifetime = 0;
+	if (_lifetime <= 0) {
+		_void = true;
+		return;
+	}
+
 	WDEBUG((WLOG_DEBUG, format("CACHE: object lifetime=%d sec.") % _lifetime));
 	revalidated();
 	_builthdrs = _headers.build();
@@ -243,10 +247,4 @@ ostream	&sm = f->file();
 	_cachedir = f->dirnum();
 	_cachefile = f->filenum();
 	return true;
-}
-
-void
-cachedentity::purge(void)
-{
-	entitycache.purge(this);
 }

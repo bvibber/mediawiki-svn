@@ -338,8 +338,19 @@ address		addr;
 		ADD_UINT32(bufp, stats.n_httpresp_oks, endp);
 		ADD_UINT32(bufp, stats.n_httpreq_fails, endp);
 		ADD_UINT32(bufp, stats.n_httpresp_fails, endp);
-		s->sendto(buf, bufp - buf, addr);
 	}
+	/*
+	 * Listener stats: <name><ncons>
+	 */
+vector<listener *>::iterator lit = listeners.begin(), lend = listeners.end();
+	for (; lit != lend; ++lit) {
+	uint64_t	c = (*lit)->nconns;
+		ADD_STRING(bufp, (*lit)->sock->straddr(), endp);
+		ADD_UINT32(bufp, c & (uint32_t)-1, endp);
+		ADD_UINT32(bufp, c >> 32, endp);
+	}
+
+	s->sendto(buf, bufp - buf, addr);
 }
 
 static void

@@ -41,7 +41,7 @@ using std::back_inserter;
 
 using namespace conf;
 
-map<wsocket *, int> lsn2group;
+map<wsocket *, listener *> sock2lsn;
 set<int> used_pools;
 
 #define CONFIGFILE SYSCONFDIR "/willow.conf"
@@ -123,6 +123,8 @@ addrlist	*res;
 addrlist::iterator	it = res->begin(), end = res->end();
 	for (; it != end; ++it) {
 		nl = new listener;
+		nl->nconns = 0;
+
 		try {
 			nl->sock = it->makesocket("HTTP listener", prio_accept);
 		} catch (socket_error &ex) {
@@ -134,7 +136,7 @@ addrlist::iterator	it = res->begin(), end = res->end();
 		}
 		WDEBUG((WLOG_DEBUG, format("listener %d has group %d")
 			% nl->sock % gn));
-		lsn2group[nl->sock] = gn;
+		sock2lsn[nl->sock] = nl;
 		used_pools.insert(gn);
 
 		nl->port = port;
