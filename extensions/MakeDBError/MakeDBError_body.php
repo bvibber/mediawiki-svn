@@ -16,7 +16,8 @@ class MakeDBErrorPage extends UnlistedSpecialPage
 			$db =& wfGetDB( 1234 );
 			$wgOut->addHTML("<pre>" . var_export( $db, true ) . "</pre>" );
 		} else {
-			wfQuery( "test", DB_READ );
+			$db =& wfGetDB( DB_SLAVE );
+			$db->query( "test" );
 		}
 	}
 }

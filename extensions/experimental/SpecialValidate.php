@@ -23,6 +23,9 @@
  * @subpackage SpecialPage
  */
 
+# Need legacy database functions
+require_once("DatabaseFunctions.php");
+
 /**
  *
  * @package MediaWiki

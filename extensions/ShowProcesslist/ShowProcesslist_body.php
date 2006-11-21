@@ -14,11 +14,12 @@ class ShowProcesslistPage extends UnlistedSpecialPage {
 			return;
 		}
 
-		$res = wfQuery( 'SHOW FULL PROCESSLIST' , DB_READ );
+		$dbr =& wfGetDB( DB_SLAVE );
+		$res = $dbr->query( 'SHOW FULL PROCESSLIST' );
 		$output = array();
 		$output = '<table border="1" cellspacing="0">'."\n";
 		$output .= '<tr><th>Id</th><th>User</th><th>Host</th><th>db</th><th>Command</th><th>Time</th><th>State</th><th>Info</th>'."\n";
-		while ( $row = wfFetchObject($res) ) {
+		while ( $row = $dbr->fetchObject($res) ) {
 			$output .= '<tr>';
 			$fields = get_object_vars($row);
 			foreach ($fields as $value ) {

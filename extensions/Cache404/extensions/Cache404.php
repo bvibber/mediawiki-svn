@@ -32,6 +32,7 @@ if (defined('MEDIAWIKI')) {
 	require_once("Skin.php");
 	require_once("skins/MonoBook.php");
 	require_once("SkinPHPTal.php");
+	require_once("DatabaseFunctions.php");
 
 	define("CACHE404_VERSION", "0.6");
 

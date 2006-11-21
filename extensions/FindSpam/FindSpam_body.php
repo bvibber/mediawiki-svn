@@ -41,7 +41,7 @@ class FindSpamPage extends SpecialPage {
 			$s  = '';
 
 			foreach ( $wgLocalDatabases as $db ) {
-				$sql = "SELECT rc_namespace,rc_title,rc_timestamp,rc_user_text,rc_last_oldid FROM $db.recentchanges WHERE rc_ip='" . wfStrencode( $ip ) . 
+				$sql = "SELECT rc_namespace,rc_title,rc_timestamp,rc_user_text,rc_last_oldid FROM $db.recentchanges WHERE rc_ip='" . $dbr->strencode( $ip ) . 
 				  "' AND rc_this_oldid=0";
 				$res = $dbr->query( $sql, "findspam.php" );
 				list( $site, $lang ) = $wgConf->siteFromDB( $db );

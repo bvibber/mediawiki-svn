@@ -346,14 +346,25 @@ function wfStableVersion() {
 		
 		
 		function fixNoWiki( &$state ) {
-			if( !is_array( $state ) ) {
+			if ( is_object( $state ) ) {
+				# MW 1.9 version
+				$array = $state->nowiki->getArray();
+			} elseif is_array( $state ) {
+				$array = $state['nowiki'];
+			} else {
 				return;
 			}
-	
+			
 			# Surround nowiki content with <nowiki> again
-			for( $content = end( $state['nowiki'] ); $content !== false; $content = prev( $state['nowiki'] ) ) {
-				$key = key( $state['nowiki'] );
-				$state['nowiki'][$key] = "<nowiki>" . $content . "</nowiki>";
+			for( $content = end( $array ); $content !== false; $content = prev( $array ) ) {
+				$key = key( $array );
+				$array[$key] = "<nowiki>" . $content . "</nowiki>";
+			}
+
+			if ( is_object( $state ) ) {
+				$state->nowiki->setArray( $array );
+			} else {
+				$state['nowiki'] = $array;
 			}
 		}
 
