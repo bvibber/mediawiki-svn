@@ -112,14 +112,23 @@ struct cachedentity {
 	}
 
 	void set_complete(void);
-	void store_status(imstring const &status) {
+	void store_status(imstring const &status, int code) {
 		_status = status;
+		_statuscode = code;
 	}
 
 	void store_headers(header_list const &h) {
 		_headers = h;
 		_headers.add("X-Cache", cache_hit_hdr);
 		_headers.add("Via", via_hdr);
+	}
+
+	imstring const &status(void) const {
+		return _status;
+	}
+
+	uint16_t status_code(void) const {
+		return _statuscode;
 	}
 
 	time_t lastuse(void) const {
@@ -173,6 +182,7 @@ private:
 	lockable	 _lock;
 	imstring	 _url;
 	imstring	 _status;
+	uint16_t	 _statuscode;
 	imstring	 _cachedfile;
 	diobuf		 _data;
 	atomic<int>	 _refs;

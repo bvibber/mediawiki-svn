@@ -143,6 +143,7 @@ marshalling_buffer	buf;
 	buf.append<time_t>(_revalidate_at);
 	buf.append<int>(_cachedir);
 	buf.append<uint64_t>(_cachefile);
+	buf.append<uint16_t>(_statuscode);
 	return make_pair(buf.buffer(), buf.size());
 }
 
@@ -211,7 +212,11 @@ size_t			 bufsz;
 		return NULL;
 	}
 	
-	ret->_refs = 1;
+	if (!buf.extract<uint16_t>(ret->_statuscode)) {
+		delete ret;
+		return NULL;
+	}
+
 	/*
 	 * An incomplete or void entity will never be written to the disk cache.
 	 */

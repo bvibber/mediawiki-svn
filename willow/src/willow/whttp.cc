@@ -332,6 +332,8 @@ httpcllr::send_cached(void)
 		return;
 	}
 
+	_response = _cachedent->status_code();
+
 	_cache_spigot = new cached_spigot(_cachedent);
 	if (_header_parser->_force_keepalive)
 		_cache_spigot->keepalive(true);
@@ -350,6 +352,9 @@ httpcllr::send_cached(void)
 void
 httpcllr::header_read_complete(void)
 {
+	_request_host = _header_parser->_http_host;
+	_request_path = _header_parser->_http_path;
+
 	if (_denied) {
 		send_error(ERR_BLOCKED, "You are not permitted to access this server.",
 				403, "Forbidden");
@@ -636,7 +641,7 @@ httpcllr::backend_read_headers_done(void)
 	if (_cachedent) {
 	string	status = str(format("HTTP/1.1 %s\r\n") 
 			% _backend_headers->_http_path);
-		_cachedent->store_status(status);
+		_cachedent->store_status(status, _backend_headers->_response);
 		_cachedent->store_headers(_backend_headers->_headers);
 	}
 
@@ -759,6 +764,7 @@ httpcllr::send_body_to_client_done(void)
 {
 	_client_socket->uncork();
 	stats.tcur->n_httpreq_ok++;
+
 	log_request();
 	end_request();
 }
