@@ -32,6 +32,9 @@
 #include <algorithm>
 #include <vector>
 #include <memory>
+#include <map>
+#include <set>
+#include <iostream>
 using std::strftime;
 using std::strlen;
 using std::fprintf;
@@ -51,6 +54,15 @@ using std::strerror;
 using std::perror;
 using std::FILE;
 using std::strcmp;
+using std::map;
+using std::multiset;
+using std::cout;
+
+#include <boost/format.hpp>
+using boost::format;
+using boost::io::str;
+
+#include <curses.h>
 
 #ifdef __INTEL_COMPILER
 # pragma warning (disable: 1418 383 981)
@@ -58,11 +70,69 @@ using std::strcmp;
 
 #include "acl.h"
 
-static FILE *outfile = stdout;
-static void handle_packet(int fd);
-static const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS" };
-static const int nreqtypes = sizeof(reqtypes) / sizeof(*reqtypes);
-static bool usegmt = true, dodns = true;
+namespace {
+struct top_url {
+	uint64_t	count;
+	uint64_t	size;
+	string		url;
+	int		status;
+	bool		cached;
+};
+
+struct topurlptr_compare
+{
+	bool operator() (top_url const* const &a, top_url const* const &b) const
+	{
+		return a->count < b->count;
+	}
+};
+
+map<string, top_url *>		top_urls;
+multiset<top_url *, topurlptr_compare>	url_counts;
+
+void
+url_hit(string const &url, uint64_t size, int status, bool cached)
+{
+map<string, top_url *>::iterator it = top_urls.find(url);
+	if (it == top_urls.end()) {
+	top_url	*t = new top_url;
+		t->count = 1;
+		t->url = url;
+		t->size = size;
+		t->status = status;
+		t->cached = cached;
+		top_urls.insert(make_pair(url, t));
+		url_counts.insert(t);
+		return;
+	}
+
+	it->second->count++;
+	it->second->size = size;
+	it->second->status = status;
+	it->second->cached = cached;
+	url_counts.erase(it->second);
+	url_counts.insert(it->second);
+}
+
+vector<top_url *>
+get_topn(int n)
+{
+vector<top_url *>	ret;
+multiset<top_url *, topurlptr_compare>::iterator
+	it = url_counts.begin(),
+	end = url_counts.end();
+	for (; it != end && n--; ++it)
+		ret.push_back(*it);
+	return ret;
+}
+
+bool Tflag;
+int interval = 5;
+FILE *outfile = stdout;
+void handle_packet(int fd);
+const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS", "PURGE" };
+const int nreqtypes = sizeof(reqtypes) / sizeof(*reqtypes);
+bool usegmt = true, dodns = true;
 
 static acl acl4(AF_INET, "IPv4 ACL")
 #ifdef AF_INET6
@@ -187,7 +257,7 @@ vector<int>::iterator	it, end;
 	}
 }
 
-static void
+void
 ioloop(vector<int> &socks)
 {
 int	maxfd = 0;
@@ -197,6 +267,9 @@ vector<int>::iterator	it, end;
 	for (it = socks.begin(), end = socks.end(); it != end; ++it)
 		maxfd = max(maxfd, *it);
 
+	if (Tflag)
+		initscr();
+
 	for (;;) {
 		wait_event(socks, maxfd, rfds);
 		for (it = socks.begin(), end = socks.end(); it != end; ++it)
@@ -205,7 +278,7 @@ vector<int>::iterator	it, end;
 	}
 }
 
-static void
+void
 handle_packet(int sfd)
 {
 sockaddr_storage	cliaddr;
@@ -213,6 +286,7 @@ socklen_t		clilen;
 int	n;
 char	buf[65535], *end, *bufp = buf;
 const aclnode	*an;
+static time_t lastprint;
 	clilen = sizeof(cliaddr);
 	bufp = buf;
 	if ((n = recvfrom(sfd, buf, 65535, 0, (sockaddr *)&cliaddr, &clilen)) < 0) {
@@ -247,14 +321,57 @@ logent	e;
 	e.r_docsize = (uint32_t *)bufp;
 	if (*e.r_reqtype >= nreqtypes)
 		return;
-	doprint(e);
+
+	if (Tflag) {
+		if (!lastprint)
+			time(&lastprint);
+
+		url_hit(string(e.r_path, *e.r_pathlen), *e.r_docsize,
+			*e.r_status, *e.r_cached);
+
+		if (lastprint + 5 <= time(0)) {
+		vector<top_url *>	urls;
+		int	 i = 2;
+		char	 timestr[64];
+		time_t	 now;
+		tm	*tm;
+			time(&now);
+			tm = localtime(&now);
+			strftime(timestr, sizeof(timestr), 
+				"%a, %d %b %Y %H:%M:%S GMT", tm);
+			urls = get_topn(LINES - 2);
+			clear();
+			move(0, 0);
+			addstr(timestr);
+			move(1, 0);
+			addstr("    # Hits  Cached       Size  URL");
+			move(2, 0);
+			for (vector<top_url *>::iterator it = urls.begin(),
+			     end = urls.end(); it != end; ++it) {
+				addstr(str(format("%10d  ") % (*it)->count).c_str());
+				if ((*it)->cached)
+					addstr("   YES  ");
+				else
+					addstr("    NO  ");
+				addstr(str(format("%9d  ") % (*it)->size).c_str());
+				addstr((*it)->url.c_str());
+				move(i + 1, 0);
+				++i;
+			}
+			refresh();
+			time(&lastprint);
+		}
+	} else {
+		doprint(e);
+	}
 }
 
 void
 usage(const char *progname)
 {
 	fprintf(stderr,
-"usage: %s [-46] [-a addr] [-p port] [-s mask] [-f format]\n"
+"usage: %1$s [-46dn] [-F file] [-a addr] [-p port] [-s mask] [-f format]\n"
+"usage: %1$s -T [-46] [-a addr] [-p port] [-s mask] [interval]\n"
 "\t-4           listen on IPv4 socket\n"
 "\t-6           listen on IPv6 socket\n"
 "\t           (default: listen on both)\n"
@@ -272,8 +389,12 @@ usage(const char *progname)
 "\t-d           become a daemon after startup\n"
 "\t-L           print timestamps in local time, not GMT\n"
 "\t-n           don't try to resolve client IPs to names\n"
+"\t-T           produce top-like output showing most requested URLs,\n"
+"\t             outputting every [interval] seconds (default 5)\n"
 		, progname);
 }
+
+} // anonymous namespace
 
 int
 main(int argc, char *argv[])
@@ -286,7 +407,7 @@ struct addrinfo hints, *res;
 bool		 daemon = false;
 	memset(&hints, 0, sizeof(hints));
 	doprint = doprint_willow;
-	while ((i = getopt(argc, argv, "h46a:p:f:s:F:dLn")) != -1) {
+	while ((i = getopt(argc, argv, "h46a:p:f:s:F:dLnT")) != -1) {
                 switch (i) {
 		case '4':
 			hints.ai_family = AF_INET;
@@ -360,6 +481,10 @@ bool		 daemon = false;
 				return 1;
 			}
 			break;
+		case 'T':
+			Tflag = true;
+			break;
+
 		default:
 			usage(argv[0]);
 			return 1;
@@ -367,6 +492,13 @@ bool		 daemon = false;
 	}
 	argc -= optind;
 	argv += optind;
+
+	if (Tflag && ((outfile != stdout) || daemon)) {
+		fprintf(stderr, "%s: -T cannot be used with -F or -d\n",
+			progname);
+		usage(progname);
+		return 1;
+	}
 
 	if (argc) {
 		usage(progname);

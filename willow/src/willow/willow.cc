@@ -531,7 +531,7 @@ diobuf::diobuf(size_t size)
 		return;
 	}
 
-	_buf = (char *)mmap(0, size, PROT_READ | PROT_WRITE, MAP_SHARED, _fd, 0);
+	_buf = (char *)mmap(0, _reserved, PROT_READ | PROT_WRITE, MAP_SHARED, _fd, 0);
 	if (_buf == MAP_FAILED) {
 		wlog(WLOG_WARNING, format("mapping diobuf %s: %s") 
 			% path % strerror(errno));

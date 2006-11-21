@@ -13,7 +13,7 @@ OBJADD =
 
 EXTRA_DIST= Makefile.in
 
-LDFLAGS = $(LIBOBJS)
+LDFLAGS = $(LIBOBJS) -lcurses
 
 .SUFFIXES: .y .l .c .cc .o
 

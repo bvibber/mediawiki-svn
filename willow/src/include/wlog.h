@@ -14,7 +14,8 @@
 
 #include <cstdio>
 #include <string>
-using std::FILE;
+#include <fstream>
+using std::ofstream;
 
 #include "willow.h"
 #include "config.h"
@@ -27,15 +28,14 @@ using std::FILE;
 #define WLOG_MAX 3
 
 extern struct log_variables {
-	string	 file;
-	int	 level;
-	FILE	*fp;
-	bool	 syslog;
-	int	 facility;
+	string		file;
+	int		level;
+	ofstream	fp;
+	bool		syslog;
+	int		facility;
 } logging;
 
 void wlog_init(void);
-/*PRINTFLIKE2*/
 void wlog(int, string const &);
 
 template<typename charT, typename traits, typename allocator>

@@ -56,9 +56,8 @@ wlog_init(void)
 	if (logging.file.empty())
 		return;
 
-	/*LINTED unsafe fopen*/
-	logging.fp = fopen(logging.file.c_str(), "a");
-	if (logging.fp == NULL) {
+	logging.fp.open(logging.file.c_str(), ios::app);
+	if (!logging.fp.is_open()) {
 		wlog(WLOG_ERROR, format("cannot open error log file %s: %s")
 			% logging.file % strerror(errno));
 		exit(8);
@@ -81,10 +80,9 @@ string	r;
 	if (logging.syslog)
 		syslog(syslog_pri[sev], "%s", e.c_str());
 
-	if (logging.fp) {
-		if (fprintf(logging.fp, "%s\n", r.c_str()) < 0) {
-			fclose(logging.fp);
-			logging.fp = NULL;
+	if (logging.fp.is_open()) {
+		if (!(logging.fp << r << '\n')) {
+			logging.fp.close();
 			wlog(WLOG_ERROR, format("writing to logfile: %s")
 				% strerror(errno));
 			exit(8);
@@ -98,11 +96,8 @@ string	r;
 void
 wlog_close(void)
 {
-	if (logging.fp && fclose(logging.fp) == EOF) {
-		logging.fp = NULL;
-		wlog(WLOG_WARNING, format("closing logfile: %s")
-			% strerror(errno));
-	}
+	if (logging.fp.is_open())
+		logging.fp.close();
 	
 	if (logging.syslog)
 		closelog();

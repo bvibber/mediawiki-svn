@@ -519,6 +519,8 @@ pair<wsocket *, backend *> ke;
 void
 httpcllr::header_read_error(void)
 {
+	WDEBUG((WLOG_DEBUG, format("header read error errno=%s") % strerror(errno)));
+
 	if (_header_parser->_eof) {
 		force_end_request();
 		return;
@@ -1155,14 +1157,15 @@ size_t	size;
 
 	if (alf.is_open()) {
 	string	line;
-		line = str(format("[%s] %s %s\"%s\" %d %d %s MISS")
+		line = str(format("[%s] %s %s\"%s\" %d %d %s %s")
 			% (char *)current_time_short
 			% _client_socket->straddr(false)
 			% request_string[_header_parser->_http_reqtype]
 			% _request_path
 			% size
 			% _response
-			% (_backend ? _backend->be_name : string("-")));
+			% (_backend ? _backend->be_name : string("-"))
+			% ((_cachedent && !_backend) ? "HIT" : "MISS"));
 
 		HOLDING(alf_lock);
 
@@ -1203,7 +1206,7 @@ size_t	size;
 		ADD_STRING(bufp, _request_path, endp);
 		ADD_UINT16(bufp, _response, endp);
 		ADD_STRING(bufp, string(_backend ? _backend->be_name : "-"), endp);
-		ADD_UINT8(bufp, 0, endp);
+		ADD_UINT8(bufp, (_cachedent && !_backend) ? 1 : 0, endp);
 		ADD_UINT32(bufp, size, endp);
 		udplog_sock->write(buf, bufp - buf);
 	}

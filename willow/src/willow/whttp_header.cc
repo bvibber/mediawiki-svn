@@ -390,10 +390,15 @@ char const	*rn, *value, *name, *bufp = buf;
 size_t		 vlen, nlen, rnpos;
 int		 htype;
 
+	WDEBUG((WLOG_DEBUG, format("header parser: got [%s]")
+		% string(buf, buf + len)));
 	while ((rn = find_rn(bufp, bufp + len)) != NULL) {
+		WDEBUG((WLOG_DEBUG, format("processing: [%s]")
+			% string(bufp, rn)));
 		for (char const *c = bufp; c < rn; ++c)
 			if (*(unsigned char *)c > 0x7f || !*c)
 				return io::sink_result_error;
+		WDEBUG((WLOG_DEBUG, "chars all okay"));
 
 		if (rn == bufp) {
 			_sink_spigot->sp_cork();
