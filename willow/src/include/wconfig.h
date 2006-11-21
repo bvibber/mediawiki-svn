@@ -86,6 +86,7 @@ extern struct configuration : noncopyable {
 	vector<cachedir>			 cachedirs;
 	vector<pair<string, string> >		 stats_hosts;
 	vector<pair<string, string> >		 htcp_hosts;
+	vector<pair<string, string> >		 htcp_maddrs;
 	map<string, ustring>			 htcp_keys;
 } config;
 

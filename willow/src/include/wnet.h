@@ -213,6 +213,9 @@ struct address : freelist_allocator<address> {
 	int	  socktype(void) const {	return _stype;			}
 	int	  protocol(void) const {	return _prot;			}
 
+	static address	from_ifname(int s, string const &ifname);
+	static u_int	ifname_to_index(string const &ifname);
+
 private:
 	friend struct addrlist;
 	address(addrinfo *ai);
@@ -286,6 +289,9 @@ struct socket : noncopyable, freelist_allocator<socket> {
 	void		 uncork		(void);
 	int		 error		(void) const;
 	char const	*description	(void) const;
+
+	void		 mcast_join	(string const &ifname);
+	void		 mcast_leave	(string const &ifname);
 
 	wnet::address const	&address	(void) const {
 		return _addr;

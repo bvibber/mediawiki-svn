@@ -152,6 +152,25 @@ cache {
 	 * objects of any size up to cache-memory.
 	 */
 	max-entity-size = 256KB;
+
+	/*
+	 * Listen for HTCP queries.  A list of IP[:port].  If %intf is
+	 * present, this HTCP listener will join the specified multicast
+	 * group.
+	 */
+	#htcp-listen = "127.0.0.1", "all-systems.mcast.net%bge0";
+
+	/*
+	 * Keys for HTCP authentication.  Use "whtcp -g" to generate this file.
+	 * The keys should be considered confidential.
+	 */
+	#htcp-keys = "/etc/willow/htcp-keys";
+
+	/*
+	 * Refuse to reply to HTCP queries unless they're signed with a key
+	 * we recognise.
+	 */
+	#htcp-sig-required = no;
 };
 
 /*

@@ -11,6 +11,7 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/ioctl.h>
 
 #include "config.h"
 #ifdef HAVE_SYS_SENDFILE_H
@@ -18,6 +19,7 @@
 #endif
 
 #include <netinet/tcp.h>
+#include <net/if.h>
 #include <arpa/inet.h>
 
 #include <cstdio>
@@ -563,6 +565,62 @@ void
 socket::clearbacks(void)
 {
 	event_del(&ev);
+}
+
+void
+socket::mcast_join(string const &ifname)
+{
+	switch (_addr.family()) {
+	case AF_INET: {
+	struct address	 ifaddr = address::from_ifname(_s, ifname);
+	sockaddr_in	*inbind = (sockaddr_in *)_addr.addr();
+	sockaddr_in	*inif   = (sockaddr_in *)ifaddr.addr();
+	ip_mreq		 mr;
+		memset(&mr, 0, sizeof(mr));
+		mr.imr_multiaddr.s_addr = inbind->sin_addr.s_addr;
+		mr.imr_interface.s_addr = inif->sin_addr.s_addr;
+		WDEBUG((WLOG_DEBUG, format("NET: %s joins mcast on if %s")
+			% straddr() % ifaddr.straddr()));
+		setopt(IPPROTO_IP, IP_ADD_MEMBERSHIP, &mr, sizeof(mr));
+		break;
+	}
+
+	case AF_INET6: {
+	u_int		 ifindex = address::ifname_to_index(ifname);
+	sockaddr_in6	*inbind = (sockaddr_in6 *)_addr.addr();
+	ipv6_mreq	 mr;
+		memset(&mr, 0, sizeof(mr));
+		memcpy(&mr.ipv6mr_multiaddr, &inbind->sin6_addr,
+			sizeof(mr.ipv6mr_multiaddr));
+		mr.ipv6mr_interface = ifindex;
+		setopt(IPPROTO_IPV6, IPV6_ADD_MEMBERSHIP, &mr, sizeof(mr));
+		break;
+	}
+
+	default:
+		throw socket_error("multicast join not applicable for this socket type");
+	}
+}
+
+u_int
+address::ifname_to_index(string const &ifname)
+{
+u_int	ret = if_nametoindex(ifname.c_str());
+	if (ret == 0)
+		throw socket_error("named interface does not exist");
+	return ret;
+}
+
+address
+address::from_ifname(int s, string const &ifname)
+{
+ifreq	ifr;
+	memset(&ifr, 0, sizeof(ifr));
+	strncpy(ifr.ifr_name, ifname.c_str(), IFNAMSIZ);
+	if (ioctl(s, SIOCGIFADDR, &ifr) < 0)
+		throw socket_error();
+address	ret(&ifr.ifr_addr, sizeof(sockaddr_in));
+	return ret;
 }
 
 } // namespace wnet

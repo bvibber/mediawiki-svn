@@ -19,12 +19,15 @@ using std::pair;
 #include "htcp.h"
 #include "cache.h"
 
-static void add_htcp_listener(pair<string,string> const &ip);
+
+namespace {
+
+void add_htcp_listener(pair<string,string> const &ip);
 
 struct htcp_handler_stru : noncopyable {
 	void	callback (wsocket *, int);
 };
-static htcp_handler_stru htcp_handler;
+htcp_handler_stru htcp_handler;
 
 void
 htcp_handler_stru::callback(wsocket *s, int)
@@ -145,18 +148,8 @@ htcp_encoder	op;
 	}
 }
 
-bool
-htcp_init(void)
-{
-vector<pair<string,string> >::iterator	it = config.htcp_hosts.begin(),
-					end = config.htcp_hosts.end();
-	for (; it != end; ++it)
-		add_htcp_listener(*it);
-	return true;
-}
-
-static void
-add_htcp_listener(pair<string,string> const &ip)
+void
+add_htcp_listener(pair<string,string> const &ip, string const &mif = "")
 {
 addrlist	*alist;
 const char	*hstr = "", *pstr = DEFAULT_HTCP_PORT;
@@ -197,9 +190,36 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 			continue;
 		}
 
+		if (!mif.empty())
+			sock->mcast_join(mif);
+
 		sock->readback(polycaller<wsocket *, int>(htcp_handler, 
 			&htcp_handler_stru::callback), 0);
 		wlog(WLOG_NOTICE, format("HTCP listener: %s")
 			% sock->straddr());
 	}
+}
+
+} // anonymous namespace
+
+bool
+htcp_init(void)
+{
+vector<pair<string,string> >::iterator	it = config.htcp_hosts.begin(),
+					end = config.htcp_hosts.end();
+	for (; it != end; ++it) {
+	string::size_type	i;
+	string			addr, ifn;
+		if ((i = it->second.find('%')) != string::npos) {
+			ifn = it->second.substr(i + 1);
+			it->second = it->second.substr(0, i);
+		} else if ((i = it->first.find('%')) != string::npos) {
+			ifn = it->first.substr(i + 1);
+			it->first = it->first.substr(0, i);
+		}
+		WDEBUG((WLOG_DEBUG, format("HTCP: mcast if: %s") % ifn));
+		add_htcp_listener(*it, ifn);
+	}
+
+	return true;
 }
