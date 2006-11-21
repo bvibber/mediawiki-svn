@@ -349,7 +349,7 @@ function wfStableVersion() {
 			if ( is_object( $state ) ) {
 				# MW 1.9 version
 				$array = $state->nowiki->getArray();
-			} elseif is_array( $state ) {
+			} elseif ( is_array( $state ) ) {
 				$array = $state['nowiki'];
 			} else {
 				return;
