@@ -58,9 +58,21 @@ using std::map;
 using std::multiset;
 using std::cout;
 
+#include <boost/multi_index_container.hpp>
+#include <boost/multi_index/identity.hpp>
+#include <boost/multi_index/member.hpp>
+#include <boost/multi_index/ordered_index.hpp>
+#include <boost/multi_index/tag.hpp>
 #include <boost/format.hpp>
 using boost::format;
 using boost::io::str;
+using boost::multi_index_container;
+using boost::multi_index::indexed_by;
+using boost::multi_index::ordered_unique;
+using boost::multi_index::ordered_non_unique;
+using boost::multi_index::member;
+using boost::multi_index::identity;
+using boost::multi_index::tag;
 
 #include <curses.h>
 
@@ -72,55 +84,61 @@ using boost::io::str;
 
 namespace {
 struct top_url {
-	uint64_t	count;
+	uint32_t	count;
 	uint64_t	size;
 	string		url;
 	int		status;
 	bool		cached;
 };
 
-struct topurlptr_compare
-{
-	bool operator() (top_url const* const &a, top_url const* const &b) const
-	{
-		return a->count < b->count;
-	}
-};
+struct url{};
+struct count{};
+typedef multi_index_container<top_url,
+	indexed_by<
+		ordered_unique<tag<url>,
+			member<top_url, string, &top_url::url> >,
+		ordered_non_unique<tag<count>,
+			member<top_url, uint32_t, &top_url::count> >
+	>
+> url_set;
 
-map<string, top_url *>		top_urls;
-multiset<top_url *, topurlptr_compare>	url_counts;
+url_set	top_urls;
 
 void
-url_hit(string const &url, uint64_t size, int status, bool cached)
+url_hit(string const &url_, uint64_t size, int status, bool cached)
 {
-map<string, top_url *>::iterator it = top_urls.find(url);
-	if (it == top_urls.end()) {
-	top_url	*t = new top_url;
-		t->count = 1;
-		t->url = url;
-		t->size = size;
-		t->status = status;
-		t->cached = cached;
-		top_urls.insert(make_pair(url, t));
-		url_counts.insert(t);
+url_set::index<url>::type::const_iterator
+	it = top_urls.get<url>().find(url_)
+,
+	end = top_urls.get<url>().end();
+
+	if (it == top_urls.get<url>().end()) {
+	top_url	t;
+		t.count = 1;
+		t.url = url_;
+		t.size = size;
+		t.status = status;
+		t.cached = cached;
+		top_urls.insert(t);
 		return;
 	}
 
-	it->second->count++;
-	it->second->size = size;
-	it->second->status = status;
-	it->second->cached = cached;
-	url_counts.erase(it->second);
-	url_counts.insert(it->second);
+top_url	n = *it;
+	n.count++;
+	n.size = size;
+	n.status = status;
+	n.cached = cached;
+	top_urls.replace(it, n);
 }
 
-vector<top_url *>
+vector<top_url>
 get_topn(int n)
 {
-vector<top_url *>	ret;
-multiset<top_url *, topurlptr_compare>::iterator
-	it = url_counts.begin(),
-	end = url_counts.end();
+vector<top_url>	ret;
+url_set::index<count>::type::const_reverse_iterator 
+	it = top_urls.get<count>().rbegin(),
+	end = top_urls.get<count>().rend();
+
 	for (; it != end && n--; ++it)
 		ret.push_back(*it);
 	return ret;
@@ -330,7 +348,7 @@ logent	e;
 			*e.r_status, *e.r_cached);
 
 		if (lastprint + 5 <= time(0)) {
-		vector<top_url *>	urls;
+		vector<top_url>	urls;
 		int	 i = 2;
 		char	 timestr[64];
 		time_t	 now;
@@ -346,15 +364,15 @@ logent	e;
 			move(1, 0);
 			addstr("    # Hits  Cached       Size  URL");
 			move(2, 0);
-			for (vector<top_url *>::iterator it = urls.begin(),
+			for (vector<top_url>::iterator it = urls.begin(),
 			     end = urls.end(); it != end; ++it) {
-				addstr(str(format("%10d  ") % (*it)->count).c_str());
-				if ((*it)->cached)
+				addstr(str(format("%10d  ") % it->count).c_str());
+				if (it->cached)
 					addstr("   YES  ");
 				else
 					addstr("    NO  ");
-				addstr(str(format("%9d  ") % (*it)->size).c_str());
-				addstr((*it)->url.c_str());
+				addstr(str(format("%9d  ") % it->size).c_str());
+				addstr(it->url.c_str());
 				move(i + 1, 0);
 				++i;
 			}
