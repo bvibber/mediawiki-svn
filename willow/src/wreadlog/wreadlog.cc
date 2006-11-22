@@ -64,6 +64,9 @@ using std::cout;
 #include <boost/multi_index/ordered_index.hpp>
 #include <boost/multi_index/tag.hpp>
 #include <boost/format.hpp>
+#include <boost/ref.hpp>
+using boost::cref;
+using boost::reference_wrapper;
 using boost::format;
 using boost::io::str;
 using boost::multi_index_container;
@@ -102,6 +105,8 @@ typedef multi_index_container<top_url,
 	>
 > url_set;
 
+typedef vector<reference_wrapper<top_url const> > toplist;
+
 url_set	top_urls;
 
 void
@@ -131,16 +136,16 @@ top_url	n = *it;
 	top_urls.replace(it, n);
 }
 
-vector<top_url>
+toplist
 get_topn(int n)
 {
-vector<top_url>	ret;
+toplist	ret;
 url_set::index<count>::type::const_reverse_iterator 
 	it = top_urls.get<count>().rbegin(),
 	end = top_urls.get<count>().rend();
 
 	for (; it != end && n--; ++it)
-		ret.push_back(*it);
+		ret.push_back(cref(*it));
 	return ret;
 }
 
@@ -348,7 +353,7 @@ logent	e;
 			*e.r_status, *e.r_cached);
 
 		if (lastprint + 5 <= time(0)) {
-		vector<top_url>	urls;
+		toplist	urls;
 		int	 i = 2;
 		char	 timestr[64];
 		time_t	 now;
@@ -364,15 +369,16 @@ logent	e;
 			move(1, 0);
 			addstr("    # Hits  Cached       Size  URL");
 			move(2, 0);
-			for (vector<top_url>::iterator it = urls.begin(),
+			for (toplist::iterator it = urls.begin(),
 			     end = urls.end(); it != end; ++it) {
-				addstr(str(format("%10d  ") % it->count).c_str());
-				if (it->cached)
+			top_url const	&u = it->get();
+				addstr(str(format("%10d  ") % u.count).c_str());
+				if (u.cached)
 					addstr("   YES  ");
 				else
 					addstr("    NO  ");
-				addstr(str(format("%9d  ") % it->size).c_str());
-				addstr(it->url.c_str());
+				addstr(str(format("%9d  ") % u.size).c_str());
+				addstr(u.url.c_str());
 				move(i + 1, 0);
 				++i;
 			}
