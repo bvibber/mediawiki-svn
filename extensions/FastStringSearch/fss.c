@@ -147,7 +147,7 @@ PHP_FUNCTION(fss_exec_search)
 	int argc = ZEND_NUM_ARGS();
 	int handle_id = -1;
 	int haystack_len;
-	int offset = 0;
+	long offset = 0;
 	zval *handle = NULL, *temp;
 	fss_resource_t * res;
 	struct kwsmatch m;
@@ -155,6 +155,10 @@ PHP_FUNCTION(fss_exec_search)
 
 	if (zend_parse_parameters(argc TSRMLS_CC, "rs|l", &handle, &haystack, &haystack_len, &offset) == FAILURE) 
 		return;
+
+	if (offset >= haystack_len || offset < 0) {
+		RETURN_FALSE;
+	}
 
 	ZEND_FETCH_RESOURCE(res, fss_resource_t*, &handle, handle_id, "fss", le_fss);
 	match_pos = kwsexec(res->set, haystack + offset, haystack_len - offset, &m);
