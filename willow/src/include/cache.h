@@ -90,9 +90,8 @@ struct cachedentity {
 		 * Assume it's valid if the time it was last validated is
 		 * less than 25% greater than its age.
 		 */
-		WDEBUG((WLOG_DEBUG, 
-			str(format("expired: now=%d, revalidating at %d")
-				% time(0) % _revalidate_at)));
+		WDEBUG((format("expired: now=%d, revalidating at %d")
+				% time(0) % _revalidate_at));
 		if (_revalidate_at <= time(0)) {
 			_complete = false;
 			return true;
@@ -269,13 +268,11 @@ private:
 		if (create) {
 			_file.open(path.c_str(), ios::out | ios::binary | ios::trunc);
 			if (!_file)
-				wlog(WLOG_WARNING, 
-					format("creating cache file %s: %s")
+				wlog.warn(format("creating cache file %s: %s")
 						% path % strerror(errno));
 		}else {
 			if (stat(path.c_str(), &sb) == -1) {
-				wlog(WLOG_WARNING, 
-					format("cache file %s: %s")
+				wlog.warn(format("cache file %s: %s")
 						% path % strerror(errno));
 					return;
 			}
@@ -503,10 +500,9 @@ struct cached_spigot : io::spigot {
 	ssize_t		disc = 0;
 	io::sink_result	res;
 		for (;;) {
-			WDEBUG((WLOG_DEBUG, 
-				str(format("cached_spigot: %d left, off %d fd %d")
+			WDEBUG(format("cached_spigot: %d left, off %d fd %d")
 					% (_ent->_data.size() - _off) 
-					% _off % _ent->_data.fd())));
+					% _off % _ent->_data.fd());
 			if (_dio) {		
 				res = _sp_dio_ready(_ent->_data.fd(), _off, 
 					_ent->_data.size() - _off, disc);
@@ -518,23 +514,22 @@ struct cached_spigot : io::spigot {
 			switch (res) {
 			case io::sink_result_finished:
 				_sp_completed_callee();
-				WDEBUG((WLOG_DEBUG, "all finished"));
+				WDEBUG("all finished");
 				return;
 			case io::sink_result_okay:
 				if (_off == _ent->_data.size()) {
 					_sp_completed_callee();
 					return;
 				}
-				WDEBUG((WLOG_DEBUG, "continuing"));
+				WDEBUG("continuing");
 				continue;
 			case io::sink_result_error:
-				WDEBUG((WLOG_DEBUG, str(format("error %s")
-					% strerror(errno))));
+				WDEBUG(format("error %s") % strerror(errno));
 				_sp_error_callee();
 				return;
 			case io::sink_result_blocked:
 				sp_cork();
-				WDEBUG((WLOG_DEBUG, "blocked"));
+				WDEBUG("blocked");
 				return;
 			}
 		}

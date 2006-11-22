@@ -27,8 +27,7 @@ cachedentity::cachedentity(imstring const &url, size_t hint)
 	, _expires(0)
 	, _modified(0)
 {
-	WDEBUG((WLOG_DEBUG, format("CACHE: creating cached entity with URL %s")
-			% url));
+	WDEBUG(format("CACHE: creating cached entity with URL %s") % url);
 	assert(_url.size());
 }
 
@@ -49,7 +48,7 @@ cachedentity::_append(char const *data, size_t size)
 	}
 
 	if (!entitycache.cache_mem_increase(size, this)) {
-		WDEBUG((WLOG_DEBUG, "object is too large, voiding cache"));
+		WDEBUG("object is too large, voiding cache");
 		_void = true;
 		return;
 	}
@@ -70,7 +69,7 @@ void
 cachedentity::set_complete(void)
 {
 header	*h;
-	WDEBUG((WLOG_DEBUG, format("set_complete: void=%d") % _void));
+	WDEBUG(format("set_complete: void=%d") % _void);
 	if (_void)
 		return;
 	_headers.remove("transfer-encoding");
@@ -112,7 +111,7 @@ header	*h;
 		return;
 	}
 
-	WDEBUG((WLOG_DEBUG, format("CACHE: object lifetime=%d sec.") % _lifetime));
+	WDEBUG(format("CACHE: object lifetime=%d sec.") % _lifetime);
 	revalidated();
 	_builthdrs = _headers.build();
 	_builtsz = _headers.length();
@@ -157,8 +156,7 @@ char			*hdrbuf;
 size_t			 bufsz;
 	if (!buf.extract<imstring>(url))
 		return NULL;
-	WDEBUG((WLOG_DEBUG, format("unmarshall: URL [%s], len %d")
-			% url % url.size()));
+	WDEBUG(format("unmarshall: URL [%s], len %d") % url % url.size());
 	ret = new cachedentity(url);
 	if (!buf.extract<imstring>(ret->_status)) {
 		delete ret;
@@ -242,10 +240,9 @@ ostream	&sm = f->file();
 	assert(f);
 	if (!f->okay())
 		return false;
-	WDEBUG((WLOG_DEBUG, format("CACHE: writing cached data to %s")
-			% f->filename()));
+	WDEBUG(format("CACHE: writing cached data to %s") % f->filename());
 	if (!sm.write(_data.ptr(), _data.size())) {
-		wlog(WLOG_WARNING, format("writing cached data to %s: %s")
+		wlog.warn(format("writing cached data to %s: %s")
 				% f->filename() % strerror(errno));
 		return false;
 	}

@@ -80,21 +80,21 @@ char	*ret;
 	snprintf(path, sizeof(path), "/dev/shm/willow.diobuf.%d.%d.%d",
 		getpid(), (int) pthread_self(), rand());
 	if ((_diofd = open(path, O_CREAT | O_EXCL | O_RDWR, 0600)) == -1) {
-		wlog(WLOG_WARNING, format("opening diobuf %s: %s") 
+		wlog.warn(format("opening diobuf %s: %s") 
 			% path % strerror(errno));
 		return new char[DIOBUFSZ];
 	}
 	unlink(path);
 
 	if (lseek(_diofd, DIOBUFSZ, SEEK_SET) == -1) {
-		wlog(WLOG_WARNING, format("seeking diobuf %s: %s") 
+		wlog.warn(format("seeking diobuf %s: %s") 
 			% path % strerror(errno));
 		close(_diofd);
 		_diofd = -1;
 		return new char[DIOBUFSZ];
 	}
 	if (write(_diofd, "", 1) < 1) {
-		wlog(WLOG_WARNING, format("extending diobuf %s: %s") 
+		wlog.warn(format("extending diobuf %s: %s") 
 			% path % strerror(errno));
 		close(_diofd);
 		_diofd = -1;
@@ -102,7 +102,7 @@ char	*ret;
 	}
 	ret = (char *)mmap(0, DIOBUFSZ, PROT_READ | PROT_WRITE, MAP_SHARED, _diofd, 0);
 	if (ret == MAP_FAILED) {
-		wlog(WLOG_WARNING, format("mapping diobuf %s: %s") 
+		wlog.warn(format("mapping diobuf %s: %s") 
 			% path % strerror(errno));
 		close(_diofd);
 		_diofd = -1;
@@ -232,7 +232,7 @@ sink_result
 socket_sink::dio_ready(int fd, off_t off, size_t len, ssize_t &discard)
 {
 ssize_t	wrote;
-	WDEBUG((WLOG_DEBUG, format("dio_ready: starting off %d") % off));
+	WDEBUG(format("dio_ready: starting off %d") % off);
 	if ((wrote = _socket->sendfile(fd, &off, len)) == -1) {
 		if (errno == EAGAIN) {
 			_sink_spigot->sp_cork();
@@ -249,8 +249,8 @@ ssize_t	wrote;
 	discard += wrote;
 	_counter += wrote;
 
-	WDEBUG((WLOG_DEBUG, format("dio_ready: len %d off %d wrote %d fileoff=%d")
-		% len % off % wrote % lseek(fd, 0, SEEK_CUR)));
+	WDEBUG(format("dio_ready: len %d off %d wrote %d fileoff=%d")
+		% len % off % wrote % lseek(fd, 0, SEEK_CUR));
 
 	if ((ssize_t)len == wrote) {
 		return sink_result_okay;
@@ -308,7 +308,7 @@ struct stat		sb;
 
 	if (cache) {
 		if (stat(file, &sb) == -1) {
-			wlog(WLOG_WARNING, format("cannot open %s: %s") 
+			wlog.warn(format("cannot open %s: %s") 
 				% file % strerror(errno));
 			return false;
 		}
@@ -327,7 +327,7 @@ struct stat		sb;
 
 		_file.open(file);
 		if (!_file.is_open()) {
-			wlog(WLOG_WARNING, format("cannot open %s: %s") 
+			wlog.warn(format("cannot open %s: %s") 
 				% file % strerror(errno));
 			return false;
 		}
@@ -349,8 +349,7 @@ struct stat		sb;
 
 	_file.open(file);
 	if (!_file.is_open())
-		wlog(WLOG_WARNING, format("cannot open %s: %s") 
-			% file % strerror(errno));
+		wlog.warn(format("cannot open %s: %s") % file % strerror(errno));
 	return _file.is_open();
 }
 

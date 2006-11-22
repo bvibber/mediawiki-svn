@@ -390,15 +390,13 @@ char const	*rn, *value, *name, *bufp = buf;
 size_t		 vlen, nlen, rnpos;
 int		 htype;
 
-	WDEBUG((WLOG_DEBUG, format("header parser: got [%s]")
-		% string(buf, buf + len)));
+	WDEBUG(format("header parser: got [%s]") % string(buf, buf + len));
 	while ((rn = find_rn(bufp, bufp + len)) != NULL) {
-		WDEBUG((WLOG_DEBUG, format("processing: [%s]")
-			% string(bufp, rn)));
+		WDEBUG(format("processing: [%s]") % string(bufp, rn));
 		for (char const *c = bufp; c < rn; ++c)
 			if (*(unsigned char *)c > 0x7f || !*c)
 				return io::sink_result_error;
-		WDEBUG((WLOG_DEBUG, "chars all okay"));
+		WDEBUG("chars all okay");
 
 		if (rn == bufp) {
 			_sink_spigot->sp_cork();
@@ -556,9 +554,9 @@ int		 codelen, desclen;
 		_http_vers = http11;
 	else	return -1;
 
-	WDEBUG((WLOG_DEBUG, format("parse_response: codelen=%d [%s] desclen=%d [%s]")
+	WDEBUG(format("parse_response: codelen=%d [%s] desclen=%d [%s]")
 		% codelen % string(errcode, errcode + codelen)
-		% desclen % string(errdesc, errdesc + desclen)));
+		% desclen % string(errdesc, errdesc + desclen));
 
 	_response = str10toint(errcode, codelen);
 	_http_path.reserve(codelen + desclen + 1);

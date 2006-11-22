@@ -392,9 +392,9 @@ httpcllr::header_read_complete(void)
 				char		 dstr[64];
 				struct tm	 tm;
 				time_t		 mod = _cachedent->modified();
-					WDEBUG((WLOG_DEBUG, 
-				format("HTTP: need to revalidate, %d refs")
-					% _cachedent->refs()));
+					WDEBUG(format(
+					"HTTP: need to revalidate, %d refs")
+					% _cachedent->refs());
 					gmtime_r(&mod, &tm);
 					/* need to revalidate */
 					if (_cachedent->refs() == 1) {
@@ -519,7 +519,7 @@ pair<wsocket *, backend *> ke;
 void
 httpcllr::header_read_error(void)
 {
-	WDEBUG((WLOG_DEBUG, format("header read error errno=%s") % strerror(errno)));
+	WDEBUG(format("header read error errno=%s") % strerror(errno));
 
 	if (_header_parser->_eof) {
 		force_end_request();
@@ -821,7 +821,7 @@ whttp_init(void)
 	snprintf(cache_hit_hdr, hsize, "HIT from %s", my_hostname);
 	snprintf(cache_miss_hdr, hsize, "MISS from %s", my_hostname);
 
-	wlog(WLOG_NOTICE, format("whttp: starting %d worker threads")
+	wlog.notice(format("whttp: starting %d worker threads")
 		% config.nthreads);
 	for (int i = 0; i < config.nthreads; ++i) {
 	http_thread	*t = new http_thread;
@@ -843,11 +843,11 @@ wsocket	*socks[2];
 map<wsocket *, listener *>::iterator lsnit;
 
 	if (s->read((char *)socks, sizeof(socks)) < (int)sizeof(socks)) {
-		wlog(WLOG_ERROR, format("accept_wakeup: reading fd: %s")
+		wlog.error(format("accept_wakeup: reading fd: %s")
 			% strerror(errno));
 		exit(1);
 	}
-	WDEBUG((WLOG_DEBUG, format("accept_wakeup, lsnr = %d") % socks[1]));
+	WDEBUG(format("accept_wakeup, lsnr = %d") % socks[1]);
 	s->readback(polycaller<wsocket *, int>(*this, 
 		&http_thread::accept_wakeup), 0);
 	if ((lsnit = sock2lsn.find(socks[1])) == sock2lsn.end())
@@ -922,7 +922,7 @@ whttp_reconfigure(void)
 	if (config.access_log.size()) {
 		alf.open(config.access_log.c_str(), ofstream::app);
 		if (!alf.good()) {
-			wlog(WLOG_WARNING, format("opening %s: %s")
+			wlog.warn(format("opening %s: %s")
 				% config.access_log % strerror(errno));
 		}
 	}
@@ -937,14 +937,14 @@ whttp_reconfigure(void)
 				config.udplog_port, st_dgram, "UDP logger", prio_norm);
 			udplog_sock->connect();
 		} catch (socket_error &e) {
-			wlog(WLOG_WARNING, 
-		format("connecting to UDP log host %s: %s; disabling UDP logging")
+			wlog.warn(format(
+		"connecting to UDP log host %s: %s; disabling UDP logging")
 				% config.udplog_host % e.what());
 			return;
 		}
 
 		do_udplog = true;
-		wlog(WLOG_NOTICE, format("UDP logging to %s%s, sample rate 1/%d")
+		wlog.notice(format("UDP logging to %s%s, sample rate 1/%d")
 			% config.udplog_host
 			% udplog_sock->straddr()
 			% config.log_sample);
@@ -1170,8 +1170,8 @@ size_t	size;
 		HOLDING(alf_lock);
 
 		if (!(alf << line << endl)) {
-			wlog(WLOG_ERROR, 
-				format("writing access log: %s; log will be closed")
+			wlog.error(format(
+				"writing access log: %s; log will be closed")
 					% strerror(errno));
 			alf.close();
 		}

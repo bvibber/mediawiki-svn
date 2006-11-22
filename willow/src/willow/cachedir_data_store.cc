@@ -30,12 +30,12 @@ cachedir_data_store::open(int dirn, uint64_t num)
 {
 	assert(dirn >= 0);
 	if (dirn > (int)_cachedirs.size()) {
-		wlog(WLOG_WARNING,
-		     format("trying to open cachedir %d, but only %d configured")
+		wlog.warn(format(
+			"trying to open cachedir %d, but only %d configured")
 			     % dirn % _cachedirs.size());
-		wlog(WLOG_WARNING, 
+		wlog.warn( 
 		     "this probably means the cachedir configuration has been "
-				     "changed but old cache-master data is being used");
+		     "changed but old cache-master data is being used");
 		return NULL;
 	}
 	return _cachedirs[dirn]->open(num);
@@ -51,7 +51,7 @@ cachedir_data_store::nextfile(void)
 int	d;
 	{	HOLDING(_lock);
 		d = _curdir++;
-		WDEBUG((WLOG_DEBUG, format("got cachedir %d of %d") % d % _cachedirs.size()));
+		WDEBUG(format("got cachedir %d of %d") % d % _cachedirs.size());
 		if (_curdir == _cachedirs.size())
 			_curdir = 0;
 	}
@@ -71,11 +71,11 @@ cachedentity	*ent;
 	 * Read the cached data from the cachedir.
 	 */
 	ent = m.unmarshall(d);
-	WDEBUG((WLOG_DEBUG, format("CACHE: unmarshalling a cached entity, dir=%d")
-		% ent->cachedir()));
+	WDEBUG(format("CACHE: unmarshalling a cached entity, dir=%d")
+		% ent->cachedir());
 	if (ent == NULL)
 		return NULL;
-	WDEBUG((WLOG_DEBUG, format("CACHE: loading cache data for %s") % ent->url()));
+	WDEBUG(format("CACHE: loading cache data for %s") % ent->url());
 	assert(ent->complete() && !ent->isvoid());
 	ent->loadcachefile();
 	return ent;
@@ -97,8 +97,7 @@ pair<char const *, uint32_t>	ret;
 	 */
 cachefile	*f = nextfile();
 	o.savecachefile(f);
-	WDEBUG((WLOG_DEBUG, format("CACHE: storing %s, dir=%d")
-		% o.url() % o.cachedir()));
+	WDEBUG(format("CACHE: storing %s, dir=%d") % o.url() % o.cachedir());
 		ret = m.marshall(o);
 	delete f;
 	return ret;

@@ -99,7 +99,7 @@ ioloop_t::prepare(void)
 {
 size_t	 i;
 
-	wlog(WLOG_NOTICE, format("maximum number of open files: %d")
+	wlog.notice(format("maximum number of open files: %d")
 		% getdtablesize());
 	
 	signal(SIGPIPE, SIG_IGN);
@@ -112,14 +112,14 @@ size_t	 i;
 			lns->sock->bind();
 			lns->sock->listen();
 		} catch (socket_error &e) {
-			wlog(WLOG_ERROR, format("creating listener %s: %s")
+			wlog.error(format("creating listener %s: %s")
 				% lns->sock->straddr() % e.what());
 			exit(8);
 		}
 
 		lns->sock->readback(polycaller<wsocket *, int>(*this, &ioloop_t::_accept), 0);
 	}
-	wlog(WLOG_NOTICE, format("wnet: initialised, using libevent %s (%s)")
+	wlog.notice(format("wnet: initialised, using libevent %s (%s)")
 		% event_get_version() % event_get_method());
 	secondly_sched();
 }
@@ -135,8 +135,7 @@ static atomic<time_t>	 last_nfile = 0;
 		if ((errno != ENFILE && errno != EMFILE) || (now - last_nfile) > 60) {
 			if (errno == ENFILE || errno == EMFILE)
 				last_nfile = now;
-			wlog(WLOG_NOTICE, format("accept error: %s")
-				% strerror(errno));
+			wlog.warn(format("accept error: %s") % strerror(errno));
 		}
 		s->readback(polycaller<wsocket *, int>(*this, &ioloop_t::_accept), 0);
 		return;
@@ -151,10 +150,10 @@ static atomic<time_t>	 last_nfile = 0;
 char	buf[sizeof(wsocket *) * 2];
 	memcpy(buf, &newe, sizeof(newe));
 	memcpy(buf + sizeof(newe), &s, sizeof(s));
-	WDEBUG((WLOG_DEBUG, format("_accept, lsnr=%d") % s));
+	WDEBUG(format("_accept, lsnr=%d") % s);
 
 	if (awaks[cawak]->write(buf, sizeof(wsocket *) * 2) < 0) {
-		wlog(WLOG_ERROR, format("writing to thread wakeup socket: %s")
+		wlog.error(format("writing to thread wakeup socket: %s")
 			% strerror(errno));
 		exit(1);
 	}
@@ -188,10 +187,10 @@ socket::_ev_callback(int fd, short ev, void *d)
 {
 wsocket	*s = (wsocket *)d;
 
-	WDEBUG((WLOG_DEBUG, format("_ev_callback: %s%son %d (%s)")
+	WDEBUG(format("_ev_callback: %s%son %d (%s)")
 		% ((ev & EV_READ) ? "read " : "")
 		% ((ev & EV_WRITE) ? "write " : "")
-		% fd % s->_desc));
+		% fd % s->_desc);
 
 	if (ev & EV_READ)
 		s->_read_handler(s);
@@ -204,10 +203,10 @@ socket::_register(int what, polycallback<wsocket *> handler)
 {
 	int	 ev_flags = 0;
 
-	WDEBUG((WLOG_DEBUG, format("_register: %s%son %d (%s)")
+	WDEBUG(format("_register: %s%son %d (%s)")
 		% ((what & FDE_READ) ? "read " : "")
 		% ((what & FDE_WRITE) ? "write " : "")
-		% _s % _desc));
+		% _s % _desc);
 
 	if (event_pending(&ev, EV_READ | EV_WRITE, NULL))
 		event_del(&ev);
@@ -441,7 +440,7 @@ socklen_t		addrlen = sizeof(addr);
 int			i;
 	if ((i = ::recvfrom(_s, buf, count, 0, (sockaddr *)&saddr, &addrlen)) < 0)
 		return i;
-	WDEBUG((WLOG_DEBUG, format("recvfrom: fam=%d") % saddr.ss_family));
+	WDEBUG(format("recvfrom: fam=%d") % saddr.ss_family);
 	addr = wnet::address((sockaddr *)&saddr, addrlen);
 	return i;
 }
@@ -578,8 +577,8 @@ socket::mcast_join(string const &ifname)
 		memset(&mr, 0, sizeof(mr));
 		mr.imr_multiaddr.s_addr = inbind->sin_addr.s_addr;
 		mr.imr_interface.s_addr = inif->sin_addr.s_addr;
-		WDEBUG((WLOG_DEBUG, format("NET: %s joins mcast on if %s")
-			% straddr() % ifaddr.straddr()));
+		WDEBUG(format("NET: %s joins mcast on if %s")
+			% straddr() % ifaddr.straddr());
 		setopt(IPPROTO_IP, IP_ADD_MEMBERSHIP, &mr, sizeof(mr));
 		break;
 	}

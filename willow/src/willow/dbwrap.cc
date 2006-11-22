@@ -82,7 +82,7 @@ transaction::transaction(environment *env)
 {
 	_error = env->_env->txn_begin(env->_env, NULL, &_txn, 0);
 	if (_error != 0) {
-		wlog(WLOG_WARNING, format("error starting transaction: %s")
+		wlog.warn(format("error starting transaction: %s")
 			% strerror());
 		_txn = NULL;
 	}

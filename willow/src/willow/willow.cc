@@ -164,7 +164,8 @@ bool	 zflag = false;
 		}
 	}
 
-	wlog_init();
+	if (!wlog.open())
+		return 1;
 
 	if (zflag) {
 		if (!entitycache.create())
@@ -182,14 +183,14 @@ bool	 zflag = false;
 	stats_init();
 	htcp_init();
 
-	wlog(WLOG_NOTICE, "running");
+	wlog.notice("running");
 
 	if (!config.foreground)
 		daemon(0, 0);
 
 	ioloop->run();
-	wlog(WLOG_NOTICE, "shutting down");
-	wlog_close();
+	wlog.notice("shutting down");
+	wlog.close();
 	whttp_shutdown();
 	entitycache.close();
 
@@ -205,7 +206,7 @@ outofmemory(void)
 	if (count++)
 		abort();
 	
-	wlog(WLOG_ERROR, "fatal: out of memory. exiting.");
+	wlog.error("fatal: out of memory. exiting.");
 	exit(8);
 }
 
@@ -393,7 +394,7 @@ const char	*hstr = NULL, *pstr = DEFAULT_STATS_PORT;
 	try {
 		alist = addrlist::resolve(hstr, pstr, st_dgram);
 	} catch (socket_error &e) {
-		wlog(WLOG_WARNING, format("resolving [%s]:%s: %s")
+		wlog.warn(format("resolving [%s]:%s: %s")
 			% hstr % pstr % e.what());
 		return;
 	}
@@ -405,8 +406,7 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 			sock = it->makesocket("statistics listener", prio_stats);
 			sock->nonblocking(true);
 		} catch (socket_error &e) {
-			wlog(WLOG_WARNING,
-				format("creating statistics listener: %s:%s: %s")
+			wlog.warn(format("creating statistics listener: %s:%s: %s")
 				% ip.first % ip.second % e.what());
 			delete sock;
 			continue;
@@ -415,8 +415,7 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 		try {
 			sock->bind();
 		} catch (socket_error &e) {
-			wlog(WLOG_WARNING,
-				format("binding statistics listener %s: %s")
+			wlog.warn(format("binding statistics listener %s: %s")
 				% it->straddr() % e.what());
 			delete sock;
 			continue;
@@ -424,7 +423,7 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 
 		sock->readback(polycaller<wsocket *, int>(stats_handler, 
 			&stats_handler_stru::callback), 0);
-		wlog(WLOG_NOTICE, format("statistics listener: %s")
+		wlog.notice(format("statistics listener: %s")
 			% sock->straddr());
 	}
 }
@@ -454,7 +453,7 @@ diobuf::resize(size_t newsize)
 		munmap(_buf, _size);
 		_size = newsize;
 		_reserved = pagesize * (newsize / pagesize + 1);
-		WDEBUG((WLOG_DEBUG, format("new size %d reserved %d") % _size % _reserved));
+		WDEBUG(format("new size %d reserved %d") % _size % _reserved);
 		lseek(_fd, _reserved, SEEK_SET);
 		write(_fd, "", 1);
 		_buf = (char *)mmap(0, _reserved, PROT_READ | PROT_WRITE, MAP_SHARED, _fd, 0);
@@ -493,7 +492,7 @@ diobuf::diobuf(size_t size)
 	, _size(0)
 	, _reserved(pagesize * (size / pagesize + 1))
 {
-	WDEBUG((WLOG_DEBUG, format("reserved: %d") % _reserved));
+	WDEBUG(format("reserved: %d") % _reserved);
 
 	if (size == 0)
 		_reserved = size = pagesize;
@@ -506,7 +505,7 @@ diobuf::diobuf(size_t size)
 	snprintf(path, sizeof(path), "/dev/shm/willow.diobuf.%d.%d.%d",
 		(int) getpid(), (int) pthread_self(), rand());
 		if ((_fd = open(path, O_CREAT | O_EXCL | O_RDWR, 0600)) == -1) {
-		wlog(WLOG_WARNING, format("opening diobuf %s: %s") 
+		wlog.warn(format("opening diobuf %s: %s") 
 			% path % strerror(errno));
 		_buf = new char[size];
 		return;
@@ -514,7 +513,7 @@ diobuf::diobuf(size_t size)
 	unlink(path);
 
 	if (lseek(_fd, _reserved, SEEK_SET) == -1) {
-		wlog(WLOG_WARNING, format("seeking diobuf %s: %s") 
+		wlog.warn(format("seeking diobuf %s: %s") 
 			% path % strerror(errno));
 		close(_fd);
 		_fd = -1;
@@ -523,7 +522,7 @@ diobuf::diobuf(size_t size)
 	}
 
 	if (write(_fd, "", 1) < 1) {
-		wlog(WLOG_WARNING, format("extending diobuf %s: %s") 
+		wlog.warn(format("extending diobuf %s: %s") 
 			% path % strerror(errno));
 		close(_fd);
 		_fd = -1;
@@ -533,7 +532,7 @@ diobuf::diobuf(size_t size)
 
 	_buf = (char *)mmap(0, _reserved, PROT_READ | PROT_WRITE, MAP_SHARED, _fd, 0);
 	if (_buf == MAP_FAILED) {
-		wlog(WLOG_WARNING, format("mapping diobuf %s: %s") 
+		wlog.warn(format("mapping diobuf %s: %s") 
 			% path % strerror(errno));
 		close(_fd);
 		_fd = -1;

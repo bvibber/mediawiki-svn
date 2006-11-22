@@ -162,7 +162,7 @@ struct socket_sink : freelist_allocator<socket_sink>, sink {
 
 	sink_result data_ready(char const *buf, size_t len, ssize_t &discard);
 	sink_result data_empty(void) {
-		WDEBUG((WLOG_DEBUG, "socket_sink::data_empty"));
+		WDEBUG("socket_sink::data_empty");
 		_reg = false;
 		return sink_result_finished;
 	}
@@ -323,7 +323,7 @@ struct buffering_filter : sink, spigot {
 
 	sink_result data_empty () {
 	sink_result	res;
-		WDEBUG((WLOG_DEBUG, "buffering_filter: data_empty"));
+		WDEBUG("buffering_filter: data_empty");
 		res = bf_eof();
 		if (res != sink_result_finished)
 			return res;

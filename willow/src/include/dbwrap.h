@@ -244,9 +244,9 @@ void
 database<Key, Value, Datastore>::errcall(DB_ENV const *, char const *pfx, char const *msg)
 {
 	if (pfx)
-		wlog(WLOG_WARNING, str(format("%s: %s") % pfx % msg));
+		wlog.warn(format("%s: %s") % pfx % msg);
 	else
-		wlog(WLOG_WARNING, msg);
+		wlog.warn(msg);
 }
 
 template<typename Key, typename Value, typename Datastore>

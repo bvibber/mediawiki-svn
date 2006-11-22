@@ -56,8 +56,8 @@ backend::backend(
 	, be_hash(_carp_hosthash(be_straddr))
 	, be_load(1.)
 {
-	WDEBUG((WLOG_DEBUG, format("adding backend with straddr [%s], hash %s")
-		% be_straddr % be_hash));
+	WDEBUG(format("adding backend with straddr [%s], hash %s")
+		% be_straddr % be_hash);
 }
 
 backend_pool::backend_pool(string const &name, lb_type lbt, int failgroup)
@@ -65,7 +65,7 @@ backend_pool::backend_pool(string const &name, lb_type lbt, int failgroup)
 	, _name(name)
 	, _failgroup(failgroup)
 {
-	WDEBUG((WLOG_DEBUG, format("creating backend_pool, lbt=%d") % (int) lbt));
+	WDEBUG(format("creating backend_pool, lbt=%d") % (int) lbt);
 }
 
 void
@@ -75,8 +75,7 @@ addrlist	*list;
 	try {
 		list = addrlist::resolve(addr, port, st_stream, family);
 	} catch (resolution_error &e) {
-		wlog(WLOG_ERROR, format("resolving %s: %s")
-			% addr % e.what());
+		wlog.error(format("resolving %s: %s") % addr % e.what());
 		return;
 	}
 
@@ -84,7 +83,7 @@ addrlist::iterator	it = list->begin(), end = list->end();
 
 	for (; it != end; ++it) {
 		backends.push_back(new backend(addr, *it));
-		wlog(WLOG_NOTICE, format("backend server: %s%s") 
+		wlog.notice(format("backend server: %s%s") 
 		     % addr % it->straddr());
 	}
 
@@ -131,8 +130,7 @@ static	time_t		 last_nfile;
 			s->nonblocking(true);
 		} catch (socket_error &e) {
 			if (e.err() != ENFILE || now - last_nfile > 60) 
-				wlog(WLOG_WARNING,
-					format("opening backend socket: %s")
+				wlog.warn(format("opening backend socket: %s")
 					% e.what());
 			if (e.err() == ENFILE)
 				last_nfile = now;
@@ -146,7 +144,7 @@ static	time_t		 last_nfile;
 			cs = s->connect();
 		} catch (socket_error &e) {
 			time_t retry = time(NULL) + config.backend_retry;
-			wlog(WLOG_WARNING, format("%s: %s; retry in %d seconds")
+			wlog.warn(format("%s: %s; retry in %d seconds")
 				% cbd->bc_backend->be_name 
 				% e.what() % config.backend_retry);
 			cbd->bc_backend->be_dead = 1;
@@ -174,7 +172,7 @@ int		 error = s->error();
 
 	if (error && error != EINPROGRESS) {
 		time_t retry = time(NULL) + config.backend_retry;
-		wlog(WLOG_WARNING, format("%s: %s; retry in %d seconds")
+		wlog.warn(format("%s: %s; retry in %d seconds")
 			% cbd->bc_backend->be_name
 			% strerror(error)
 			% config.backend_retry);
@@ -205,7 +203,7 @@ backend_list::backend_list(
 	, _failgroup(failgroup)
 	, _delegate(NULL)
 {
-	WDEBUG((WLOG_DEBUG, format("lbt = %d") % (int)lbt));
+	WDEBUG(format("lbt = %d") % (int)lbt);
 	rotate(backends.begin(), backends.begin() + cur, backends.end());
 	if (lbt == lb_carp || lbt == lb_carp_hostonly)
 		_carp_recalc(url, host, lbt);
@@ -331,7 +329,8 @@ backend_list::_carp_recalc(imstring const &url, imstring const &host, lb_type lb
 		hash = rotl(hash, 21);
 		hash *= (uint32_t) backends[i]->be_carplfm;
 		backends[i]->be_carp = hash;
-		WDEBUG((WLOG_DEBUG, format("host for CARP: [%s] -> %d, be hash %d") % s % hash % backends[i]->be_hash));
+		WDEBUG(format("host for CARP: [%s] -> %d, be hash %d") 
+			% s % hash % backends[i]->be_hash);
 	}
 	sort(backends.begin(), backends.end(), _becarp_cmp);
 }

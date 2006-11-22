@@ -41,7 +41,7 @@ int	i;
 io::sink_result
 chunking_filter::bf_eof(void)
 {
-	WDEBUG((WLOG_DEBUG, "chunking_filter: EOF"));
+	WDEBUG("chunking_filter: EOF");
 	_buf.add("\r\n0\r\n\r\n", 7, false);
 	return io::sink_result_finished;
 }

@@ -71,8 +71,7 @@ parse_file(string const &file)
 	}
 
 	if ((yyin = fopen(file.c_str(), "r")) == NULL) {
-		wlog(WLOG_ERROR, 
-			format("could not open configuration file %s: %s") 
+		wlog.error(format("could not open configuration file %s: %s") 
 				% file % strerror(errno));
 		return NULL;
 	}
@@ -153,7 +152,7 @@ char const	*dir;
 	while (isspace(*dir))
 		dir++;
 
-	WDEBUG((WLOG_DEBUG, format("PARSE: if[n]def %s") % dir));
+	WDEBUG(format("PARSE: if[n]def %s") % dir);
 	return if_parser.variable_defined(dir);
 }
 
@@ -169,7 +168,7 @@ string::size_type	i;
 	name = str.substr(0, i);
 	value = str.substr(i + 1);
 
-	WDEBUG((WLOG_DEBUG, format("add var: [%s] = [%s]") % name % value));
+	WDEBUG(format("add var: [%s] = [%s]") % name % value);
 	if_parser.add_variable(name, strtoll(value.c_str(), NULL, 0));
 }
 
@@ -379,8 +378,7 @@ char	msg[1024] = { 0 };
 	vsnprintf(msg, sizeof msg, fmt, ap);
 	va_end(ap);
 
-	wlog(WLOG_ERROR, format("%s(%d): %s")	
-		% current_file % lineno % msg);
+	wlog.error(format("%s(%d): %s")	% current_file % lineno % msg);
 }
 
 void
@@ -388,7 +386,7 @@ value::vreport_error(const char *fmt, va_list ap) const
 {
 char	msg[1024] = { 0 };
 	vsnprintf(msg, sizeof msg, fmt, ap);
-	wlog(WLOG_ERROR, format("%s: %s") % cv_pos.format() % msg);
+	wlog.error(format("%s: %s") % cv_pos.format() % msg);
 }
 
 void
@@ -417,7 +415,7 @@ tree_entry::vreport_error(const char *fmt, va_list ap) const
 {
 char	msg[1024] = { 0 };
 	vsnprintf(msg, sizeof msg, fmt, ap);
-	wlog(WLOG_ERROR, format("%s: %s") % item_pos.format() % msg);
+	wlog.error(format("%s: %s") % item_pos.format() % msg);
 }
 
 void
@@ -437,7 +435,7 @@ va_list	ap;
 	va_start(ap, fmt);
 	vsnprintf(msg, sizeof msg, fmt, ap);
 	va_end(ap);
-	wlog(WLOG_ERROR, format("%s(%d): catastrophic error: %s")
+	wlog.error(format("%s(%d): catastrophic error: %s")
 		% current_file % lineno % msg);
 	parse_error = true;
 }
@@ -446,8 +444,7 @@ extern "C" void
 yyerror(const char *err)
 {
 	parse_error = true;
-	wlog(WLOG_ERROR, format("%s(%d): %s")
-		% current_file % lineno % err);
+	wlog.error(format("%s(%d): %s")	% current_file % lineno % err);
 }
 
 void

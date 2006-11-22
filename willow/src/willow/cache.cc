@@ -45,8 +45,8 @@ map<imstring, shared_ptr<cachedentity> >::iterator it;
 	if (it != _entities.end()) {
 	shared_ptr<cachedentity> ret(it->second);
 		/* entity was cached */
-		WDEBUG((WLOG_DEBUG, str(format("[%s] cached, complete=%d") 
-			% url % ret->_complete)));
+		WDEBUG(format("[%s] cached, complete=%d") 
+			% url % ret->_complete);
 		wasnew = false;
 		_lru.erase(it);
 		it->second->reused();
@@ -63,21 +63,20 @@ map<imstring, shared_ptr<cachedentity> >::iterator it;
 		e = _db->get(url);
 		if (e != NULL) {
 		shared_ptr<cachedentity>  ret(e);
-			WDEBUG((WLOG_DEBUG, 
-				str(format("found [%s] in disk cache complete %d void %d") 
-					% url % e->complete() % e->isvoid())));
+			WDEBUG(format("found [%s] in disk cache complete %d void %d") 
+					% url % e->complete() % e->isvoid());
 			_lru.insert(_entities.insert(make_pair(url, ret)).first);
 			wasnew = false;
 			ret->ref();
 			return ret;
 		}
 		if (_db->error() && _db->error() != DB_NOTFOUND) {
-			wlog(WLOG_WARNING, str(format("fetching cached data: %s")
-				% _db->strerror()));
+			wlog.warn(format("fetching cached data: %s")
+				% _db->strerror());
 		}
 	}
 
-	WDEBUG((WLOG_DEBUG, str(format("[%s] not cached") % url)));
+	WDEBUG(format("[%s] not cached") % url);
 	if (!create)
 		return shared_ptr<cachedentity>();
 
@@ -168,14 +167,14 @@ httpcache::cache_mem_increase(size_t n, cachedentity *self)
 void
 httpcache::_swap_out(cachedentity *ent)
 {
-	WDEBUG((WLOG_DEBUG, str(format("swapping out %s") % ent->url())));
+	WDEBUG(format("swapping out %s") % ent->url());
 	HOLDING(_lock);
 	if (!_db)
 		return;
 	_db->put(ent->url(), *ent);
 	if (_db->error()) {
-		wlog(WLOG_WARNING, str(format("storing cached data: %s")
-			% _db->strerror()));
+		wlog.warn(format("storing cached data: %s")
+			% _db->strerror());
 	}
 }
 
@@ -218,9 +217,8 @@ httpcache::open(void)
 	
 	_env = db::environment::open(config.cache_master);
 	if (_env->error()) {
-		wlog(WLOG_ERROR, 
-			str(format("cannot open cache master environment \"%s\": %s")
-			% config.cache_master % _env->strerror()));
+		wlog.error(format("cannot open cache master environment \"%s\": %s")
+			% config.cache_master % _env->strerror());
 		delete _env;
 		_env = NULL;
 		return false;
@@ -229,9 +227,8 @@ httpcache::open(void)
 	_db = _env->open_database<imstring, cachedentity,
 		cachedir_data_store>("objects", _store);
 	if (_db->error()) {
-		wlog(WLOG_ERROR, 
-			str(format("cannot open cache master database \"%s\": %s")
-			% config.cache_master % _db->strerror()));
+		wlog.error(format("cannot open cache master database \"%s\": %s")
+			% config.cache_master % _db->strerror());
 		_env->close();
 		delete _env;
 		delete _db;
@@ -246,22 +243,22 @@ bool
 httpcache::create(void)
 {
 	if (config.cache_master.empty()) {
-		wlog(WLOG_ERROR, "no cache master to create");
+		wlog.error("no cache master to create");
 		return false;
 	}
 
 	_store = new cachedir_data_store;
 	
 	if (mkdir(config.cache_master.c_str(), 0700) < 0) {
-		wlog(WLOG_ERROR, format("cannot create cache master \"%s\": %s")
+		wlog.error(format("cannot create cache master \"%s\": %s")
 			% config.cache_master % strerror(errno));
 		return false;
 	}
 		
 	_env = db::environment::create(config.cache_master);
 	if (_env->error()) {
-		wlog(WLOG_ERROR,
-			format("cannot create cache master environmet \"%s\": %s")
+		wlog.error(format(
+			"cannot create cache master environmet \"%s\": %s")
 			% config.cache_master % _env->strerror());
 		delete _env;
 		_env = NULL;
@@ -271,8 +268,8 @@ httpcache::create(void)
 	_db = _env->create_database<imstring, cachedentity,
 		cachedir_data_store>("objects", _store);
 	if (_db->error()) {
-		wlog(WLOG_ERROR,
-			format("cannot create cache master database \"%s\": %s")
+		wlog.error(format(
+			"cannot create cache master database \"%s\": %s")
 			% config.cache_master % _db->strerror());
 		_env->close();
 		delete _env;

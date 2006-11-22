@@ -30,8 +30,7 @@ using std::fclose;
 #include "wconfig.h"
 #include "format.h"
 
-struct log_variables logging;
-static lockable log_lock;
+logger wlog;
 
 static const char *sev_names[] = {
 	"Debug",
@@ -47,43 +46,45 @@ static const int syslog_pri[] = {
 	LOG_ERR,
 };
 
-void
-wlog_init(void)
+bool
+logger::open(void)
 {
-	if (logging.syslog)
-		openlog("willow", LOG_PID, logging.facility);
+	if (_syslog)
+		openlog("willow", LOG_PID, _facility);
 
-	if (logging.file.empty())
-		return;
+	if (_file.empty())
+		return true;
 
-	logging.fp.open(logging.file.c_str(), ios::app);
-	if (!logging.fp.is_open()) {
-		wlog(WLOG_ERROR, format("cannot open error log file %s: %s")
-			% logging.file % strerror(errno));
-		exit(8);
+	_fp = new ofstream(_file.c_str(), ios::app);
+	if (!_fp->is_open()) {
+		wlog.error(format("cannot open error log file %s: %s")
+			% _file % strerror(errno));
+		delete _fp;
+		_fp = NULL;
+		return false;
 	}
+
+	return true;
 }
 
 void
-wlog(int sev, string const &e)
+logger::_log(log_level sev, string const &e)
 {
 string	r;
 
-	if (sev > WLOG_MAX)
-		sev = WLOG_NOTICE;
-	if (sev < logging.level)
+	if (sev < _level)
 		return;
 
 	r = str(format("%s| %s: %s") % current_time_short % sev_names[sev] % e);
 
-	HOLDING(log_lock);	
-	if (logging.syslog)
-		syslog(syslog_pri[sev], "%s", e.c_str());
+	HOLDING(_lock);
+	if (_syslog)
+		::syslog(syslog_pri[sev], "%s", e.c_str());
 
-	if (logging.fp.is_open()) {
-		if (!(logging.fp << r << '\n')) {
-			logging.fp.close();
-			wlog(WLOG_ERROR, format("writing to logfile: %s")
+	if (_fp) {
+		if (!(*_fp << r << '\n')) {
+			_fp->close();
+			wlog.error(format("writing to logfile: %s")
 				% strerror(errno));
 			exit(8);
 		}
@@ -94,11 +95,40 @@ string	r;
 }
 
 void
-wlog_close(void)
+logger::close(void)
 {
-	if (logging.fp.is_open())
-		logging.fp.close();
+	HOLDING(_lock);
+
+	if (_fp)
+		_fp->close();
 	
-	if (logging.syslog)
+	if (_syslog)
 		closelog();
+}
+
+void
+logger::syslog(bool do_, int facility)
+{
+	_syslog = do_;
+	_facility = facility;
+}
+
+bool
+logger::file(string const &file)
+{
+	_file = file;
+	return true;
+}
+
+void
+logger::level(log_level l)
+{
+	_level = l;
+}
+
+logger::logger(void)
+	: _syslog(false)
+	, _facility(0)
+	, _level(ll_notice)
+{
 }

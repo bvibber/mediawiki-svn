@@ -41,25 +41,25 @@ size_t		len;
 	if ((len = s->recvfrom(buf, sizeof(buf), addr)) < 1)
 		return;
 
-	WDEBUG((WLOG_DEBUG, format("HTCP: received packet from %s, len %d")
-		% s->straddr() % len));
+	WDEBUG(format("HTCP: received packet from %s, len %d")
+		% s->straddr() % len);
 
 htcp_decoder	ip(buf, len);
 htcp_encoder	op;
 	if (!ip.okay()) {
 		if (ip.major() != 0 || ip.minor() != 1) {
 			/* send an appropriate error */
-			WDEBUG((WLOG_DEBUG, format("HTCP: wrong version, %d %d")
-				% ip.major() % ip.minor()));
+			WDEBUG(format("HTCP: wrong version, %d %d")
+				% ip.major() % ip.minor());
 		} else
 			/* packet was too malformed to send an error */
-			WDEBUG((WLOG_DEBUG, "HTCP: packet mangled"));
+			WDEBUG("HTCP: packet mangled");
 		return;
 	}
 
-	WDEBUG((WLOG_DEBUG, 
-		format("HTCP: packet length %d, packet declares length %d and data length %d")
-			% len % ip.length() % ip.opdata()->length()));
+	WDEBUG(format(
+	"HTCP: packet length %d, packet declares length %d and data length %d")
+			% len % ip.length() % ip.opdata()->length());
 
 	/*
 	 * If the packet is signed, verify the signature.
@@ -67,18 +67,18 @@ htcp_encoder	op;
 	if (!ip.keyname().empty()) {
 	map<string,ustring>::iterator it;
 		if ((it = config.htcp_keys.find(ip.keyname())) == config.htcp_keys.end()) {
-			WDEBUG((WLOG_DEBUG, format("HTCP: unknown key %s")
-				% ip.keyname()));
+			WDEBUG(format("HTCP: unknown key %s")
+				% ip.keyname());
 			return;
 		}
 
 		if (!ip.verify_signature(ip.keyname(), it->second,
 			addr.addr(), s->address().addr())) {
-			WDEBUG((WLOG_DEBUG, "HTCP: sig verify failed"));
+			WDEBUG("HTCP: sig verify failed");
 			return;
 		}
 
-		WDEBUG((WLOG_DEBUG, "HTCP: sig okay"));
+		WDEBUG("HTCP: sig okay");
 	} else if (config.htcp_sigrequired) {
 		return;
 	}
@@ -92,7 +92,7 @@ htcp_encoder	op;
 			break;
 
 	htcp_opdata_nop odp;
-		WDEBUG((WLOG_DEBUG, "HTCP: NOP"));
+		WDEBUG("HTCP: NOP");
 		op.opcode(htcp_op_nop);
 		op.opdata(&odp);
 		op.build_packet(addr.addr(), s->address().addr());
@@ -105,8 +105,8 @@ htcp_encoder	op;
 			break;
 
 	htcp_opdata_tst	*opd = (htcp_opdata_tst *)ip.opdata();
-		WDEBUG((WLOG_DEBUG, format("HTCP: TST: url=[%s]")
-			% opd->tst_specifier.hs_url));
+		WDEBUG(format("HTCP: TST: url=[%s]")
+			% opd->tst_specifier.hs_url);
 	bool	cached = entitycache.cached(opd->tst_specifier.hs_url);
 	htcp_opdata_tst_resp_found tf;
 	htcp_opdata_tst_resp_notfound tnf;
@@ -161,7 +161,7 @@ const char	*hstr = "", *pstr = DEFAULT_HTCP_PORT;
 	try {
 		alist = addrlist::resolve(hstr, pstr, st_dgram);
 	} catch (socket_error &e) {
-		wlog(WLOG_WARNING, format("resolving [%s]:%s: %s")
+		wlog.warn(format("resolving [%s]:%s: %s")
 			% hstr % pstr % e.what());
 		return;
 	}
@@ -173,8 +173,7 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 			sock = it->makesocket("HTCP listener", prio_stats);
 			sock->nonblocking(true);
 		} catch (socket_error &e) {
-			wlog(WLOG_WARNING,
-				format("creating HTCP listener: %s:%s: %s")
+			wlog.warn(format("creating HTCP listener: %s:%s: %s")
 				% ip.first % ip.second % e.what());
 			delete sock;
 			continue;
@@ -183,8 +182,7 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 		try {
 			sock->bind();
 		} catch (socket_error &e) {
-			wlog(WLOG_WARNING,
-				format("binding HTCP listener %s: %s")
+			wlog.warn(format("binding HTCP listener %s: %s")
 				% it->straddr() % e.what());
 			delete sock;
 			continue;
@@ -195,8 +193,7 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 
 		sock->readback(polycaller<wsocket *, int>(htcp_handler, 
 			&htcp_handler_stru::callback), 0);
-		wlog(WLOG_NOTICE, format("HTCP listener: %s")
-			% sock->straddr());
+		wlog.notice(format("HTCP listener: %s")	% sock->straddr());
 	}
 }
 
@@ -217,7 +214,7 @@ vector<pair<string,string> >::iterator	it = config.htcp_hosts.begin(),
 			ifn = it->first.substr(i + 1);
 			it->first = it->first.substr(0, i);
 		}
-		WDEBUG((WLOG_DEBUG, format("HTCP: mcast if: %s") % ifn));
+		WDEBUG(format("HTCP: mcast if: %s") % ifn);
 		add_htcp_listener(*it, ifn);
 	}
 

@@ -268,19 +268,17 @@ log {
 	file = "/var/log/willow/willow.log";
 
 	/*
-	 * Log to system.
-	 */
-	syslog = yes;
-
-	/*
-	 * Facilities:
+	 * Log to syslog.
 	 *
-	 * user, mail, daemon, auth, lpr, news, uucp,
-	 * cron, audit, local0 .. local7.
+	 * Available facilities:
 	 *
-	 * If not specified, defaults to 'daemon'.
+	 * user, mail, daemon, auth, lpr, news, uucp, * cron, audit,
+	 * local0 .. local7; plus some OS-specific ones that you probably
+	 * con'f want to use.
+	 *
+	 * If not specified, syslog is not used.
 	 */
-	facility = daemon;
+	syslog-facility = daemon;
 
 	/*
 	 * Log client requests.  Every 1/log-sample requests are logged.
@@ -323,7 +321,7 @@ log {
  * access blocks, with or without apply-at; they will be merged.
  */
 
-access-v4 {
+access {
 	/* allow localhost and the local network */
 	allow = "127.0.0.1/32", "10.0.0.0/8";
 

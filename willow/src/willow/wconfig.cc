@@ -115,8 +115,7 @@ addrlist	*res;
 	try {
 		res = addrlist::resolve(e.item_key, port, st_stream, fam);
 	} catch (socket_error &ex) {
-		wlog(WLOG_ERROR, format("resolving %s: %s")
-		    % e.item_key % ex.what());
+		wlog.error(format("resolving %s: %s") % e.item_key % ex.what());
 		return;
 	}
 
@@ -128,14 +127,13 @@ addrlist::iterator	it = res->begin(), end = res->end();
 		try {
 			nl->sock = it->makesocket("HTTP listener", prio_accept);
 		} catch (socket_error &ex) {
-			wlog(WLOG_DEBUG, format("creating listener %s: %s")
+			wlog.error(format("creating listener %s: %s")
 				% e.item_key % ex.what());
 			delete nl;
 			delete res;
 			return;
 		}
-		WDEBUG((WLOG_DEBUG, format("listener %d has group %d")
-			% nl->sock % gn));
+		WDEBUG(format("listener %d has group %d") % nl->sock % gn);
 		sock2lsn[nl->sock] = nl;
 		used_pools.insert(gn);
 
@@ -143,7 +141,7 @@ addrlist::iterator	it = res->begin(), end = res->end();
 		nl->name = e.item_key;
 		nl->group = gn;
 		listeners.push_back(nl);
-		wlog(WLOG_NOTICE, format("listening on %s%s (group %d)")
+		wlog.notice(format("listening on %s%s (group %d)")
 		     % e.item_key % it->straddr() % gn);
 	}
 	delete res;
@@ -191,8 +189,7 @@ validate_log_facility(tree_entry &, value &v)
 static void
 set_log_facility(tree_entry &, value &v)
 {
-	logging.syslog = true;
-	logging.facility = log_levels.find(v.cv_values[0].av_strval)->second;
+	wlog.syslog(true, log_levels.find(v.cv_values[0].av_strval)->second);
 }
 
 static bool
@@ -361,7 +358,7 @@ value	*v;
 		}
 	}
 
-	WDEBUG((WLOG_DEBUG, format("adding backend %d type = %d") % gn % (int) lbtype));
+	WDEBUG(format("adding backend %d type = %d") % gn % (int) lbtype);
 	bpools.insert(make_pair(gn, backend_pool(e.item_key, lbtype, fogroup)));
 
 	if ((v = e/"hosts") != NULL) {
@@ -430,6 +427,18 @@ int	line = 0;
 	}
 }
 
+void
+set_log_level(tree_entry &e, value &v)
+{
+	wlog.level(log_level(v.cv_values[0].av_intval));
+}
+
+void
+set_log_file(tree_entry &e, value &v)
+{
+	wlog.file(v.cv_values[0].av_strval);
+}
+
 bool
 read_config(string const &file)
 {
@@ -437,10 +446,10 @@ conf_definer	 conf;
 tree		*t;
 conf
 	.block("log")
-		.value("level",		simple_range(0, 3),		set_int(logging.level))
-		.value("file",		nonempty_qstring,		set_qstring(logging.file))
-		.value("syslog",	simple_yesno,			set_yesno(logging.syslog))
-		.value("facility",	func(validate_log_facility),	func(set_log_facility))
+		.value("level",		simple_range(0, 3),		func(set_log_level))
+		.value("file",		nonempty_qstring,		func(set_log_file))
+		.value("syslog-facility",	
+					func(validate_log_facility),	func(set_log_facility))
 		.value("access-log",	nonempty_qstring,		set_qstring(config.access_log))
 		.value("log-sample",	simple_range(1, INT_MAX),	set_int(config.log_sample))
 		.value("udp-log",	func(v_udp_log),		set_yesno(config.udp_log))
@@ -543,35 +552,36 @@ int	nerrors = 0;
 		file = CONFIGFILE;
 	conf::current_file = file;
 
-	wlog(WLOG_NOTICE, format("loading configuration from %s")
+	wlog.notice(format("loading configuration from %s")
 		% conf::current_file);
 
 	if (!read_config(file)) {
-		wlog(WLOG_ERROR, "cannot load configuration");
+		wlog.error("cannot load configuration");
 		nerrors++;
 	}
 	
 	if (!listeners.size()) {
-		wlog(WLOG_ERROR, "no listeners defined");
+		wlog.error("no listeners defined");
 		nerrors++;
 	}
 	if (!bpools.size()) {
-		wlog(WLOG_ERROR, "no backends defined");
+		wlog.error("no backends defined");
 		nerrors++;
 	}
 
 	for (map<int, backend_pool>::iterator it = bpools.begin(), end = bpools.end();
 	     it != end; ++it) {
 		if (!it->second.size() && used_pools.find(it->first) != used_pools.end()) {
-			wlog(WLOG_ERROR, format("backend group \"%s\" is used but has no backends")
+			wlog.error(format(
+				"backend group \"%s\" is used but has no backends")
 				% it->second.name());
 			nerrors++;
 		}
 	}
 
 	if (nerrors) {
-		wlog(WLOG_ERROR, 
-			format("%d error(s) in configuration file.  cannot continue.")
+		wlog.error(format(
+			"%d error(s) in configuration file.  cannot continue.")
 			% nerrors);
 		exit(8);
 	}

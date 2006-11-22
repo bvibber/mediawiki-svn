@@ -23,7 +23,7 @@ bool
 marshalling_buffer::extract<imstring>(imstring &s)
 {
 size_t	sz = 0;
-	WDEBUG((WLOG_DEBUG, "DB: extracting an imstring"));
+	WDEBUG("DB: extracting an imstring");
 	if (!extract<size_t>(sz))
 		return false;
 	if (_size + sz > _bufsz)
