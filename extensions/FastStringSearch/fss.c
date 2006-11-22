@@ -291,8 +291,12 @@ PHP_FUNCTION(fss_exec_replace)
 		smart_str_appendl(&result, subject, subject_len);
 	}
 	/* Return the result */
-	smart_str_0(&result);
-	RETVAL_STRINGL(result.c, result.len, 0);
+	if (result.c) {
+		smart_str_0(&result);
+		RETURN_STRINGL(result.c, result.len, 0);
+	} else {
+		RETURN_EMPTY_STRING();
+	}
 }
 /* }}} */
 
