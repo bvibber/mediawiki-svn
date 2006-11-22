@@ -12,7 +12,7 @@ function wfSpecialTransaction() {
 		
 		function execute($parameter) {
 			global
-				$wgOut, $wgRequest;
+				$wgOut;
 			
 			require_once("WikiDataTables.php");
 			require_once("WiktionaryZAttributes.php");
@@ -25,15 +25,22 @@ function wfSpecialTransaction() {
 			
 			initializeAttributes();
 			
-			$fromTransactionId = $wgRequest->getInt('from-transaction');
-			$transactionCount = $wgRequest->getInt('transaction-count');
-			$userName = $wgRequest->getText('user-name');
-			$showRollBackOptions = $wgRequest->getBool('show-roll-back-options');
+			$fromTransactionId = (int) $_GET['from-transaction'];
+			$transactionCount = (int) $_GET['transaction-count'];
+			$userName = "" . $_GET['user-name'];
+			$showRollBackOptions = isset($_GET['show-roll-back-options']);
 			
-			if (isset($_POST['roll-back']) && $fromTransactionId != 0) {
-				$recordSet = getTransactionRecordSet($fromTransactionId, $transactionCount, $userName);	
-				rollBackTransactions($recordSet);
-				$fromTransactionId = 0;
+			if (isset($_POST['roll-back'])) {
+				$fromTransactionId = (int) $_POST['from-transaction'];
+				$transactionCount = (int) $_POST['transaction-count'];
+				$userName = "" . $_POST['user-name'];
+				
+				if ($fromTransactionId != 0) {
+					$recordSet = getTransactionRecordSet($fromTransactionId, $transactionCount, $userName);	
+					rollBackTransactions($recordSet);
+					$fromTransactionId = 0;
+					$userName = "";
+				}
 			}
 
 			if ($fromTransactionId == 0)
@@ -47,8 +54,13 @@ function wfSpecialTransaction() {
 			$wgOut->addHTML('<h1>Recent changes</h1>');
 			$wgOut->addHTML(getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName, $showRollBackOptions));
 
-			if ($showRollBackOptions)
-				$wgOut->addHTML('<form method="post" action="">');
+			if ($showRollBackOptions) 
+				$wgOut->addHTML(
+					'<form method="post" action="">' .
+					'<input type="hidden" name="from-transaction" value="'. $fromTransactionId .'"/>'. 
+					'<input type="hidden" name="transaction-count" value="'. $transactionCount .'"/>'. 
+					'<input type="hidden" name="user-name" value="'. $userName .'"/>' 
+				);
 
 			$recordSet = getTransactionRecordSet($fromTransactionId, $transactionCount, $userName);	
 			
@@ -107,18 +119,18 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName,
 
 function initializeAttributes() {
 	global
-		$operationAttribute, $isLatestAttribute, $rollbackAttribute, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
-		$languageAttribute, $textAttribute, $definedMeaningReferenceStructure, $rollbackStructure;
+		$operationAttribute, $isLatestAttribute, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
+		$languageAttribute, $textAttribute, $definedMeaningReferenceStructure, $rollBackStructure, $rollBackAttribute;
 
 	$operationAttribute = new Attribute('operation', 'Operation', 'text');
 	$isLatestAttribute = new Attribute('is-latest', 'Is latest', 'boolean');
-	
-	$rollbackStructure = new Structure($isLatestAttribute, $operationAttribute);
-	$rollbackAttribute = new Attribute('roll-back', 'Roll back', new RecordType($rollbackStructure));
 
+	$rollBackStructure = new Structure($isLatestAttribute, $operationAttribute);
+	$rollBackAttribute = new Attribute('roll-back', 'Roll back', new RecordType($rollBackStructure));
+	
 	global
-		$translatedContentHistoryStructure, $translatedContentHistoryKeyStructure, $translatedContentHistoryAttribute, $recordLifeSpanAttribute, 
-		$addTransactionIdAttribute, $translatedContentIdAttribute;
+		$translatedContentHistoryStructure, $translatedContentHistoryKeyStructure, $translatedContentHistoryAttribute, 
+		$recordLifeSpanAttribute, $addTransactionIdAttribute, $translatedContentIdAttribute;
 	
 	$addTransactionIdAttribute = new Attribute('add-transaction-id', 'Add transaction ID', 'identifier');
 		
@@ -128,21 +140,21 @@ function initializeAttributes() {
 	$translatedContentIdAttribute = new Attribute('translated-content-id', 'Translated content ID', 'object-id');
 
 	global
-		$updatedTextStructure, $updatedTextAttribute;
-		
-	$updatedTextStructure = new Structure($textAttribute, $translatedContentHistoryAttribute);
-	$updatedTextAttribute = new Attribute('updated-text', 'Text', new RecordType($updatedTextStructure));
+		$rollBackTranslatedContentStructure, $rollBackTranslatedContentAttribute;
+
+	$rollBackTranslatedContentStructure = new Structure($isLatestAttribute, $operationAttribute, $translatedContentHistoryAttribute);
+	$rollBackTranslatedContentAttribute = new Attribute('roll-back', 'Roll back', new RecordType($rollBackTranslatedContentStructure));
 
 	global
 		$updatedDefinitionStructure, $updatedDefinitionAttribute;
 	
 	$updatedDefinitionStructure = new Structure(
-		$rollbackAttribute,
+		$rollBackTranslatedContentAttribute,
 		$definedMeaningIdAttribute, 
 		$definedMeaningReferenceAttribute, 
 		$translatedContentIdAttribute,
 		$languageAttribute, 
-		$updatedTextAttribute,
+		$textAttribute,
 		$operationAttribute,
 		$isLatestAttribute
 	);		
@@ -170,7 +182,7 @@ function initializeAttributes() {
 	$secondMeaningAttribute = new Attribute('second-meaning', "Second defined meaning", new RecordType($definedMeaningReferenceStructure));
 
 	$updatedRelationsStructure = new Structure(
-		$rollbackAttribute,
+		$rollBackAttribute,
 		$relationIdAttribute,
 		$firstMeaningAttribute, 
 		$relationTypeAttribute, 
@@ -188,7 +200,7 @@ function initializeAttributes() {
 	$classMemberAttribute = new Attribute('class-member', 'Class member', new RecordType($definedMeaningReferenceStructure));
 	
 	$updatedClassMembershipStructure = new Structure(
-		$rollbackAttribute,
+		$rollBackAttribute,
 		$classMembershipIdAttribute,
 		$classAttribute,
 		$classMemberAttribute,
@@ -358,9 +370,9 @@ function getUpdatedTextRecord($text, $history) {
 
 function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 	global
-		$languageAttribute, $updatedTextAttribute, $definedMeaningIdAttribute, 
+		$languageAttribute, $textAttribute, $definedMeaningIdAttribute, 
 		$definedMeaningReferenceAttribute, $updatedDefinitionStructure, $translatedContentIdAttribute,
-		$operationAttribute, $isLatestAttribute, $rollbackAttribute, $rollbackStructure;
+		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure;
 		
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -382,11 +394,10 @@ function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 		$record->setAttributeValue($definedMeaningReferenceAttribute, getDefinedMeaningReferenceRecord($row->defined_meaning_id));
 		$record->setAttributeValue($translatedContentIdAttribute, $row->translated_content_id);
 		$record->setAttributeValue($languageAttribute, $row->language_id);
-		$record->setAttributeValue($updatedTextAttribute, getUpdatedTextRecord($row->old_text, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest)));
+		$record->setAttributeValue($textAttribute, $row->old_text);
 		$record->setAttributeValue($operationAttribute, $row->operation);
 		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollbackAttribute, simpleRecord($rollbackStructure, array($row->is_latest, $row->operation)));
-		
+		$record->setAttributeValue($rollBackTranslatedContentAttribute, simpleRecord($rollBackTranslatedContentStructure, array($row->is_latest, $row->operation, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest))));
 		$recordSet->add($record);	
 	}
 	
@@ -449,7 +460,7 @@ function getIsLatestSelectColumn($table, $idFields, $transactionId) {
 function getUpdatedRelationsRecordSet($transactionId) {
 	global
 		$updatedRelationsStructure, $relationIdAttribute, $firstMeaningAttribute, $secondMeaningAttribute, 
-		$relationTypeAttribute, $operationAttribute, $isLatestAttribute, $rollbackAttribute, $rollbackStructure;
+		$relationTypeAttribute, $operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
 
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -470,7 +481,7 @@ function getUpdatedRelationsRecordSet($transactionId) {
 		$record->setAttributeValue($relationTypeAttribute, getDefinedMeaningReferenceRecord($row->relationtype_mid));
 		$record->setAttributeValue($operationAttribute, $row->operation);
 		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollbackAttribute, simpleRecord($rollbackStructure, array($row->is_latest, $row->operation)));
+		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
 		
 		$recordSet->add($record);	
 	}
@@ -481,7 +492,7 @@ function getUpdatedRelationsRecordSet($transactionId) {
 function getUpdatedClassMembershipRecordSet($transactionId) {
 	global
 		$updatedClassMembershipStructure, $classMembershipIdAttribute, $classAttribute, $classMemberAttribute, 
-		$operationAttribute, $isLatestAttribute, $rollbackAttribute, $rollbackStructure;
+		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
 	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -501,7 +512,7 @@ function getUpdatedClassMembershipRecordSet($transactionId) {
 		$record->setAttributeValue($classMemberAttribute, getDefinedMeaningReferenceRecord($row->class_member_mid));
 		$record->setAttributeValue($operationAttribute, $row->operation);
 		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollbackAttribute, simpleRecord($rollbackStructure, array($row->is_latest, $row->operation)));
+		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
 		
 		$recordSet->add($record);	
 	}
@@ -553,32 +564,23 @@ function getTranslatedContentHistorySelector($attribute) {
 	return $result;
 }
 
-function createUpdatedTextViewer($attribute, $showRollBackOptions) {
-	global
-		$textAttribute, $translatedContentHistoryAttribute;
-	
-	$result = new RecordDivListEditor($attribute);
-	$result->addEditor(createLongTextViewer($textAttribute));
-	
-	if ($showRollBackOptions)
-		$result->addEditor(getTranslatedContentHistorySelector($translatedContentHistoryAttribute));
-	
-	return $result;
-}
-
 function getUpdatedDefinedMeaningDefinitionEditor($attribute, $showRollBackOptions) {
 	global
-		$definedMeaningReferenceAttribute, $languageAttribute, $updatedTextAttribute, 
-		$operationAttribute, $isLatestAttribute, $rollbackAttribute, $translatedContentHistoryAttribute;
+		$definedMeaningReferenceAttribute, $languageAttribute, $textAttribute, 
+		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
 	
 	$editor = createTableViewer($attribute);
 	
-	if ($showRollBackOptions) 
-		$editor->addEditor(new RollbackEditor($rollbackAttribute, true));
+	if ($showRollBackOptions) {
+		$rollBackEditor = new RollbackEditor($rollBackTranslatedContentAttribute, true);
+		$rollBackEditor->setSuggestionsEditor(getTranslatedContentHistorySelector($translatedContentHistoryAttribute));
+		
+		$editor->addEditor($rollBackEditor);
+	}
 		
 	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
 	$editor->addEditor(createLanguageViewer($languageAttribute));
-	$editor->addEditor(createUpdatedTextViewer($updatedTextAttribute, $showRollBackOptions));
+	$editor->addEditor(createLongTextViewer($textAttribute));
 	$editor->addEditor(createShortTextViewer($operationAttribute));
 	$editor->addEditor(createBooleanViewer($isLatestAttribute));
 	
@@ -601,12 +603,12 @@ function getUpdatedSyntransesEditor($attribute) {
 function getUpdatedRelationsEditor($attribute, $showRollBackOptions) {
 	global
 		$firstMeaningAttribute, $relationTypeAttribute, $secondMeaningAttribute, $operationAttribute, 
-		$isLatestAttribute, $rollbackAttribute;
+		$isLatestAttribute, $rollBackAttribute;
 		
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions)
-		$editor->addEditor(new RollbackEditor($rollbackAttribute, false));
+		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
 		
 	$editor->addEditor(createDefinedMeaningReferenceViewer($firstMeaningAttribute));
 	$editor->addEditor(createDefinedMeaningReferenceViewer($relationTypeAttribute));
@@ -619,12 +621,12 @@ function getUpdatedRelationsEditor($attribute, $showRollBackOptions) {
 
 function getUpdatedClassMembershipEditor($attribute, $showRollBackOptions) {
 	global
-		$classAttribute, $classMemberAttribute, $operationAttribute, $isLatestAttribute, $rollbackAttribute;
+		$classAttribute, $classMemberAttribute, $operationAttribute, $isLatestAttribute, $rollBackAttribute;
 		
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions)
-		$editor->addEditor(new RollbackEditor($rollbackAttribute, false));
+		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
 		
 	$editor->addEditor(createDefinedMeaningReferenceViewer($classAttribute));
 	$editor->addEditor(createDefinedMeaningReferenceViewer($classMemberAttribute));
@@ -698,11 +700,8 @@ function rollBackTransactions($recordSet) {
 	}
 }
 
-function getRollBackAction($idStack) {
-	global
-		$rollbackAttribute;
-	
-	$idStack->pushAttribute($rollbackAttribute);				
+function getRollBackAction($idStack, $rollBackAttribute) {
+	$idStack->pushAttribute($rollBackAttribute);				
 	$result = $_POST[$idStack->getId()];
 	$idStack->popAttribute();		
 	
@@ -719,7 +718,7 @@ function getMeaningId($record, $referenceAttribute) {
 function rollBackDefinitions($idStack, $definitions) {
 	global
 		$definedMeaningIdAttribute,	$languageAttribute, $translatedContentIdAttribute, 
-		$isLatestAttribute, $operationAttribute;
+		$isLatestAttribute, $operationAttribute, $rollBackTranslatedContentAttribute;
 	
 	$definitionsKeyStructure = $definitions->getKey();
 	
@@ -735,7 +734,7 @@ function rollBackDefinitions($idStack, $definitions) {
 
 			rollBackTranslatedContent(
 				$idStack, 
-				getRollBackAction($idStack), 
+				getRollBackAction($idStack, $rollBackTranslatedContentAttribute), 
 				$definitionRecord->getAttributeValue($translatedContentIdAttribute),
 				$languageId,
 				$definitionRecord->getAttributeValue($operationAttribute)
@@ -748,10 +747,10 @@ function rollBackDefinitions($idStack, $definitions) {
 
 function rollBackTranslatedContent($idStack, $rollBackAction, $translatedContentId, $languageId, $operation) {
 	global	
-		$updatedTextAttribute, $translatedContentHistoryAttribute;
+		$rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
 	
 	if ($rollBackAction == 'previous-version') {
-		$idStack->pushAttribute($updatedTextAttribute);
+		$idStack->pushAttribute($rollBackTranslatedContentAttribute);
 		$idStack->pushAttribute($translatedContentHistoryAttribute);
 
 		$version = (int) $_POST[$idStack->getId()];
@@ -792,7 +791,7 @@ function rollBackTranslatedContentToVersion($translatedContentId, $languageId, $
 function rollBackRelations($idStack, $relations) {
 	global
 		$relationIdAttribute, $isLatestAttribute, $firstMeaningAttribute, $secondMeaningAttribute, $relationTypeAttribute,
-		$operationAttribute;
+		$operationAttribute, $rollBackAttribute;
 	
 	$relationsKeyStructure = $relations->getKey();
 	
@@ -806,7 +805,7 @@ function rollBackRelations($idStack, $relations) {
 			$idStack->pushKey(simpleRecord($relationsKeyStructure, array($relationId)));
 			
 			rollBackRelation(
-				getRollBackAction($idStack),
+				getRollBackAction($idStack, $rollBackAttribute),
 				$relationId,
 				getMeaningId($relationRecord, $firstMeaningAttribute),
 				getMeaningId($relationRecord, $relationTypeAttribute),
@@ -837,7 +836,7 @@ function rollBackRelation($rollBackAction, $relationId, $firstMeaningId, $relati
 function rollBackClassMemberships($idStack, $classMemberships) {
 	global
 		$classMemebrshipIdAttribute, $isLatestAttribute, $classAttribute, $classMemberAttribute,
-		$operationAttribute, $classMembershipIdAttribute;
+		$operationAttribute, $classMembershipIdAttribute, $rollBackAttribute;
 	
 	$classMembershipsKeyStructure = $classMemberships->getKey();
 	
@@ -851,7 +850,7 @@ function rollBackClassMemberships($idStack, $classMemberships) {
 			$idStack->pushKey(simpleRecord($classMembershipsKeyStructure, array($classMembershipId)));
 			
 			rollBackClassMembership(
-				getRollBackAction($idStack),
+				getRollBackAction($idStack, $rollBackAttribute),
 				$classMembershipId,
 				getMeaningId($classMembershipRecord, $classAttribute),
 				getMeaningId($classMembershipRecord, $classMemberAttribute),

@@ -30,8 +30,13 @@ function getRemoveCheckBox($name) {
 }
   
 # $options is an array of [value => text] pairs
-function getSelect($name, $options, $selectedValue="") {
-	$result = '<select name="'. $name . '">';	  
+function getSelect($name, $options, $selectedValue="", $onChangeHandler="") {
+	if ($onChangeHandler != "")
+		$onChangeAttribute = ' onchange="'. $onChangeHandler . '"';
+	else
+		$onChangeAttribute = '';
+	
+	$result = '<select name="'. $name . '"' . $onChangeAttribute . '>';	  
  
 	asort($options);
 

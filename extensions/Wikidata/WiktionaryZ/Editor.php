@@ -1584,6 +1584,7 @@ class ShowEditFieldForClassesChecker extends ShowEditFieldChecker{
 
 class RollBackEditor extends ScalarEditor {
 	protected $hasValueFields;
+	protected $suggestionsEditor;
 	
 	public function __construct($attribute, $hasValueFields)  {
 		parent::__construct($attribute, new SimplePermissionController(false), false, false);
@@ -1601,10 +1602,14 @@ class RollBackEditor extends ScalarEditor {
 		if ($isLatest) {
 			$options = array('do-nothing' => 'Do nothing');
 			
-			if ($this->hasValueFields)
+			if ($this->hasValueFields) {
 				$previousVersionLabel = 'Previous version';
-			else
+				$rollBackChangeHandler = 'rollBackOptionChanged(this);';
+			}
+			else {
 				$previousVersionLabel = 'Restore';
+				$rollBackChangeHandler = '';
+			}
 				
 			if ($this->hasValueFields || $operation != 'Added')
 				$options['previous-version'] = $previousVersionLabel;
@@ -1612,7 +1617,15 @@ class RollBackEditor extends ScalarEditor {
 			if ($operation != 'Removed')
 				$options['remove'] = 'Remove';
 		
-			return getSelect($idPath->getId(), $options);
+			$result = getSelect($idPath->getId(), $options, 'do-nothing', $rollBackChangeHandler);
+		
+			if ($this->suggestionsEditor != null)
+				$result .=
+					'<div id="' . $idPath->getId() . '-version-selector" style="display: none; padding-top: 4px;">' . 
+						$this->getSuggestionsHTML($idPath, $value) . 
+					'</div>';
+				
+			return $result;
 		}
 		else
 			return "";
@@ -1622,11 +1635,24 @@ class RollBackEditor extends ScalarEditor {
 		return $this->getViewHTML($idPath, $value);
 	}
 
+	protected function getSuggestionsHTML($idPath, $value) {
+		$attribute = $this->suggestionsEditor->getAttribute();
+		$idPath->pushAttribute($attribute);
+		$result = $this->suggestionsEditor->view($idPath, $value->getAttributeValue($attribute));
+		$idPath->popAttribute();
+		
+		return $result;
+	}
+
 	public function getInputValue($id) {
 		return "";
 	}
 
 	public function add($idPath) {
+	}
+	
+	public function setSuggestionsEditor($suggestionsEditor) {
+		$this->suggestionsEditor = $suggestionsEditor;
 	}
 }
 

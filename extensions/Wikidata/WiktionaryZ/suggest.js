@@ -561,3 +561,12 @@ function togglePopup(popupLink, event) {
  		changePopupLinkArrow(popupLink, '&raquo;');
 	}
 }
+
+function rollBackOptionChanged(rollBackSelect) {
+	var versionSelector = document.getElementById(rollBackSelect.name + '-version-selector');
+	
+	if (rollBackSelect.value == 'previous-version')
+		versionSelector.style.display = 'block';
+	else
+		versionSelector.style.display = 'none';
+}
