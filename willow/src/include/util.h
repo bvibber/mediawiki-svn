@@ -23,10 +23,14 @@
 #include <string>
 #include <stdexcept>
 #include <vector>
+#include <cstddef>
+#include <utility>
+#include <map>
 using std::runtime_error;
 using std::basic_string;
 using std::char_traits;
 using std::vector;
+using std::map;
 
 #ifdef __INTEL_COMPILER
 # pragma warning (disable: 869 981 304 383 1418 1469 810 444)
@@ -140,5 +144,76 @@ charT const	*s;
 	}
 	return NULL;
 }
+
+namespace smap_detail {
+
+	template<typename Key, typename Value>
+	struct inner {
+		Key k;
+		Value v;
+		mutable inner const	*next;
+
+		inner(Key k_, Value v_)
+		: k(k_), v(v_), next(0) {
+		}
+
+		inner const& operator, (inner const &other) const {
+			other.next = this;
+			return other;
+		}
+	};
+
+} // namespace smap_detail
+
+template<typename Key, typename Value>
+smap_detail::inner<Key, Value>
+smap_pair(Key k, Value v)
+{
+	return smap_detail::inner<Key, Value>(k, v);
+}
+
+template<typename Key, typename Value>
+struct static_map
+{
+	struct inner {
+		Key	first;
+		Value	second;
+	};
+	typedef std::map<Key, Value> map_type;
+	typedef map_type value_type;
+	typedef typename map_type::iterator iterator;
+	typedef typename map_type::const_iterator const_iterator;
+
+	iterator begin(void) {
+		return elems.begin();
+	}
+	iterator end(void) {
+		return elems.end();
+	}
+	const_iterator begin(void) const {
+		return elems.begin();
+	}
+	const_iterator end(void) const {
+		return elems.end();
+	}
+	iterator find(Key const &k) {
+		return elems.find(k);
+	}
+	const_iterator find(Key const &k) const {
+		return elems.find(k);
+	}
+
+	template<typename NK, typename NV>
+	static_map(smap_detail::inner<NK, NV> const &init) {
+	smap_detail::inner<NK, NV> const *it = &init;
+		while (it) {
+			elems.insert(std::pair<Key, Value>(Key(it->k), Value(it->v)));
+			it = it->next;
+		}
+	}
+
+private:
+	map_type	elems;
+};
 
 #endif

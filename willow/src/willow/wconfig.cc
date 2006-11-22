@@ -149,15 +149,50 @@ addrlist::iterator	it = res->begin(), end = res->end();
 	delete res;
 }
 
+static_map<string, int> log_levels = (
+	smap_pair("auth", LOG_AUTH),
+	smap_pair("authpriv", LOG_AUTHPRIV),
+	smap_pair("cron", LOG_CRON),
+	smap_pair("daemon", LOG_DAEMON),
+	smap_pair("ftp", LOG_FTP),
+	smap_pair("kern", LOG_KERN),
+	smap_pair("local0", LOG_LOCAL0),
+	smap_pair("local1", LOG_LOCAL1),
+	smap_pair("local2", LOG_LOCAL2),
+	smap_pair("local3", LOG_LOCAL3),
+	smap_pair("local4", LOG_LOCAL4),
+	smap_pair("local5", LOG_LOCAL5),
+	smap_pair("local6", LOG_LOCAL6),
+	smap_pair("local7", LOG_LOCAL7),
+	smap_pair("lpr", LOG_LPR),
+	smap_pair("mail", LOG_MAIL),
+	smap_pair("news", LOG_NEWS),
+	smap_pair("syslog", LOG_SYSLOG),
+	smap_pair("user", LOG_USER),
+	smap_pair("uucp", LOG_UUCP)
+);
+
 static bool
-validate_log_facility(tree_entry &, value &)
+validate_log_facility(tree_entry &, value &v)
 {
+	if (!v.is_single(cv_qstring)) {
+		v.report_error("expected single quoted string");
+		return false;
+	}
+
+	if (log_levels.find(v.cv_values[0].av_strval) == log_levels.end()) {
+		v.report_error("log level does not exist");
+		return false;
+	}
+
 	return true;
 }
 
 static void
-set_log_facility(tree_entry &, value &)
+set_log_facility(tree_entry &, value &v)
 {
+	logging.syslog = true;
+	logging.facility = log_levels.find(v.cv_values[0].av_strval)->second;
 }
 
 static bool
