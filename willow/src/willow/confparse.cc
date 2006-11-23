@@ -38,7 +38,7 @@ using std::make_pair;
 
 namespace conf {
 
-expression_parser if_parser;
+expr::expression_parser if_parser;
 
 tree global_conf_tree;
 map<string, value> variable_list;
@@ -146,7 +146,7 @@ char const	*dir;
 
 	try {
 		return if_parser.run(dir);
-	} catch (expression_error &e) {
+	} catch (expr::expression_error &e) {
 		report_parse_error("error in %%if expression: %s", e.what());
 		return false;
 	}

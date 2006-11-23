@@ -22,6 +22,7 @@ BASESRCS =	 		\
 	config.cc		\
 	confparse.cc		\
 	dbwrap.cc		\
+	expr.cc			\
 	flowio.cc		\
 	format.cc		\
 	htcp.cc			\
