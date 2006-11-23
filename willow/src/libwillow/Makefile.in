@@ -13,6 +13,7 @@
 LIB=willow
 CPPFLAGS = -I../include
 SRCS=			\
+	acl.cc		\
 	htcp.cc		\
 	libwillow.cc	\
 	mbuffer.cc	\

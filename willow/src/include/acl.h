@@ -71,13 +71,37 @@ struct acl;
 #define ACLFL_NONE      0x00000000
 #define ACLFL_LOG       0x00000001
 
+/**
+ * A prefix in an ACL entry.  Stores the address family, address and prefix
+ * length.  Both IPv4 and IPv6 prefixes are supported.
+ *
+ * The ACL does not distinguish between IPv4 and IPv6 addresses.  To match
+ * on both address families, two ACLs should be used.
+ *
+ * This ACL implementation is O(n) for lookups.  For a an unordered, but
+ * much faster, access list, see radix.h
+ */
 struct aclprefix
 {
-	bool	match	(const sockaddr *) const;
-	bool	match	(const aclprefix *) const;
+	/**
+	 * Match the provided socket address against this ACL entry.  The prefix
+	 * length is assumed to be 32 bits (for IPv4) or 128 bits (for IPv6).
+	 *
+	 * \param addr address to match
+	 * \returns true if the address matches, otherwise false
+	 */
+	bool	match	(const sockaddr *addr) const;
 
-	uint8_t family;
-	uint8_t prefixlen;
+	/**
+	 * Match another ACE against this one.
+	 *
+	 * \param pfx prefix to match
+	 * \returns true if the prefix matches, otherwise false
+	 */
+	bool	match	(const aclprefix *pfx) const;
+
+	uint8_t family;		/**< Address family, AF_INET or AF_INET6 */
+	uint8_t prefixlen;	/**< Prefix length of this ACE */
 	union {
 		uint8_t val[16];
 		in_addr prefix4;
@@ -87,20 +111,64 @@ struct aclprefix
 	} u;
 };
 
+/**
+ * One entry (ACE) in an ACL.
+ */
 struct aclnode {
-        aclprefix	prefix;
-        uint32_t	action;
-        uint32_t	flags;
+        aclprefix	prefix; /**< This entry's prefix */
+        uint32_t	action; /**< Action to take, ACL_NONE, ACL_PASS or ACL_BLOCK */
+        uint32_t	flags;  /**< Can be ACLFL_LOG to log this match. */
 };
 
+/**
+ * An ACL.  Call add() to add entries to the ACL, then match() addresses
+ * against the list.
+ */
 struct acl {
-			acl	(int family, string const &name = "");
+	/**
+	 * Create a new ACL with the given address family and name.
+	 *
+	 * \param family address family, AF_INET or AF_INET6
+	 * \param name name of this ACL.  The ACL itself never uses this value.
+	 */
+	acl	(int family, string const &name = "");
+
+	/**
+	 * Return the name of this ACL.
+	 */
 	string const &	name	(void) const;
-	void		name	(string const &);
+
+	/**
+	 * Rename this ACL.
+	 * \param newname new name for the ACL
+	 */
+	void		name	(string const &newname);
+
+	/**
+	 * Return this ACL's address family.
+	 */
 	int		family	(void) const;
-	void		family	(int);
+
+	/**
+	 * Add a new entry to this ACL.
+	 *
+	 * \param prefix IP prefix to add, without the mask
+	 * \param prefixlen length of the prefix to add, in bits
+	 * \param action action to take on this entry, one of ACL_NONE,
+	 * ACL_PASS or ACP_BLOCK
+	 * \param flags flags for this entry, 0 or ACLFL_LOG
+	 *
+	 * \return true if the entry was added, false if the prefix could
+	 * not be parsed.
+	 */
 	bool		add	(const char *prefix, const uint8_t prefixlen,
 				 const uint32_t action, const uint32_t flags);
+
+	/**
+	 * Match an IP address against this ACL.
+	 *
+	 * \return the matching ACE if any, otherwise NULL.
+	 */
 const	aclnode *	match	(const sockaddr *sa);
 
         uint8_t		_family;
@@ -108,4 +176,4 @@ const	aclnode *	match	(const sockaddr *sa);
 	string		_name;
 };
 
-#endif /* __ACL_H */
+#endif /* ACL_H */

@@ -12,7 +12,6 @@ PROGRAM		= wreadlog
 BINDIR		= @bindir@
 CPPFLAGS	= -I../include
 BASESRCS =	 		\
-	acl.cc			\
 	packet_decoder.cc	\
 	topurl_printer.cc	\
 	wreadlog.cc		\
@@ -24,7 +23,7 @@ OBJADD =
 
 EXTRA_DIST= Makefile.in
 
-LDFLAGS = $(LIBOBJS) -lcurses
+LDFLAGS = $(LIBOBJS) -lcurses -L../libwillow -lwillow
 
 .SUFFIXES: .y .l .c .cc .o
 
