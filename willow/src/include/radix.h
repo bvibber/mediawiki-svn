@@ -1,19 +1,19 @@
+/* Copyright (c) 2005, IPng, Pim van Pelt <pim@ipng.nl>	*/
+/* Copyright (c) 2006 River Tarnell.			*/
 /*
- *
  * This file implements a 128 bit deep Patricia Trie, to facilitate very
  * fast best-match route lookup. Parts from this (and its accompanying C
  * file) were taken from the Merit MRTd project:
-   This product includes software developed by the University of Michigan,
-   Merit Network, Inc., and their contributors. 
- * 
- * Copyright (c) 2005, IPng, Pim van Pelt <pim@ipng.nl>
- * Copyright 2006 River Tarnell.
+ *
+ *  This product includes software developed by the University of Michigan,
+ *  Merit Network, Inc., and their contributors. 
  */
+
 /* From: Id: radix.h,v 1.1.1.1 2005/11/07 20:17:44 pim Exp */
 /* $Id$ */
 
-#ifndef _RADIX_H
-#define _RADIX_H
+#ifndef RADIX_H
+#define RADIX_H
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -156,4 +156,4 @@ private:
 	radix			_v6;
 };
 
-#endif /* _RADIX_H */
+#endif /* RADIX_H */

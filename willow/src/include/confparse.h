@@ -1,19 +1,20 @@
+/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* confparse: configuration parser.					*/
+/* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
+/*
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
+ */
+
 /* @(#) $Id$ */
 /* From: $Nightmare: nightmare/include/config.h,v 1.32.2.2.2.2 2002/07/02 03:41:28 ejb Exp $ */
 /* From: newconf.h,v 7.36 2005/03/21 22:42:10 leeh Exp */
 /* From: newconf.h 2651 2006-10-13 18:54:49Z river */
-/* This source code is in the public domain. */
-/*
- * Willow: Lightweight HTTP reverse-proxy.
- * confparse: configuration parser.
- */
 
 #ifndef CONFPARSE_H
 #define CONFPARSE_H
-
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
-#endif
 
 #include <string>
 #include <map>

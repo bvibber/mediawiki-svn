@@ -1,16 +1,16 @@
-/* @(#) $Id$ */
-/* This source code is in the public domain. */
+/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
- * Willow: Lightweight HTTP reverse-proxy.
- * willow: General utility functions.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
  */
+
+/* @(#) $Id$ */
 
 #ifndef WILLOW_H
 #define WILLOW_H
-
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
-#endif
 
 #include "autoconf.h"
 

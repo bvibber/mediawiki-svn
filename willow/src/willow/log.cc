@@ -1,13 +1,14 @@
-/* @(#) $Id: wlog.cc 17805 2006-11-20 14:07:17Z river $ */
-/* This source code is in the public domain. */
+/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* log: logging.							*/
+/* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
- * Willow: Lightweight HTTP reverse-proxy.
- * log: logging.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
  */
 
-#if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id: wlog.cc 17805 2006-11-20 14:07:17Z river $"
-#endif
+/* @(#) $Id$ */
 
 #include <boost/format.hpp>
 

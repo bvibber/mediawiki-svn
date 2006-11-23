@@ -1,8 +1,7 @@
+/* Willow: Lightweight HTTP reverse-proxy.	*/
+/* md5: MD5 digest implementation.		*/
+
 /* @(#) $Id$ */
-/*
- * Willow: Lightweight HTTP reverse-proxy.
- * md5: MD5 digest implementation.
- */
 
 #ifndef MD5_H
 #define MD5_H

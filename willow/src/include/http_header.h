@@ -1,16 +1,17 @@
-/* @(#) $Id: whttp_header.h 17805 2006-11-20 14:07:17Z river $ */
-/* This source code is in the public domain. */
+/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* http_header: header processing implementation.			*/
+/* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
- * Willow: Lightweight HTTP reverse-proxy.
- * http_header: header processing implementation.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
  */
+
+/* @(#) $Id$ */
 
 #ifndef WHTTP_HEADER
 #define WHTTP_HEADER
-
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id: whttp_header.h 17805 2006-11-20 14:07:17Z river $"
-#endif
 
 #include "autoconf.h"
 #include "http.h"

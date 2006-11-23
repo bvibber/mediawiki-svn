@@ -1,16 +1,17 @@
-/* @(#) $Id$ */
-/* This source code is in the public domain. */
+/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* htcp: HTCP handling helpers.						*/
+/* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
- * Willow: Lightweight HTTP reverse-proxy.
- * htcp: HTCP handling helpers.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
  */
+
+/* @(#) $Id$ */
 
 #ifndef HTCP_H
 #define HTCP_H
-
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
-#endif
 
 #include <sys/types.h>
 #include <limits>

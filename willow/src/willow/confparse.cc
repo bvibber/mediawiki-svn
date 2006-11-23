@@ -1,6 +1,14 @@
-/* This code is in the public domain.
- * $Id$
+/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* confparse: configuration file parser					*/
+/* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
+/*
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
  */
+
+/* $Id$ */
 
 #include <sys/utsname.h>
 #include <sys/types.h>

@@ -1,20 +1,20 @@
-/* @(#) $Id: whttp.h 17692 2006-11-15 05:12:33Z river $ */
-/* This source code is in the public domain. */
+/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* http: HTTP implementation.						*/
+/* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
- * Willow: Lightweight HTTP reverse-proxy.
- * whttp: HTTP implementation.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
  */
+
+/* @(#) $Id$ */
 
 #ifndef WHTTP_H
 #define WHTTP_H
 
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id: whttp.h 17692 2006-11-15 05:12:33Z river $"
-#endif
-
 static const int whttp_deny_connect = 0x1;
 
-struct fde;
 struct event_base;
 
 void http_new(struct fde *);

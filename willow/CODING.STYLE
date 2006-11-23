@@ -1,36 +1,41 @@
-@(#) $Header$
+@(#) $Id$
 
                          Source code style guidelines
                          ============================
 
 Use 8-space tabs.  Don't indent with spaces.
 
-The '*' of a pointer is attached to the variable name, not the type.
+The '*' or '&' of a pointer or reference is attached to the variable name, not
+the type.
 
-Functions are formatted with 'static' (if applicable), followed by
-the return type, a newline, the function name and arguments, another
-newline, and the argument types.  Do declare 'int' arguments.  For
-example:
+All lines are wrapped at 80 characters.
 
-static void *
-my_function(buf, size)
-	int buf;
-	void *buf;
+Functions are formatted with the return type, a newline, the function name
+and argument types, another newline, and the opening '{'.  For example:
+
+void *
+my_function(int buf, void *size)
 {
 
-Local variables have their names aligned.  Use the first (empty) column
-for 'const', 'struct' or 'union':
+Do not declare functions "static"; use the anonymous namespace;
 
-	int	 i, j;
-	char	*s;
-struct	foo	 S;
+Local variables have their names aligned.  Align the type on the left edge
+of the page (no indentation):
+
+int	 i, j;
+char	*s;
+foo	 S;
 
 Braces attach to the end of the opening statement.  Don't use braces unless
-they're required. Function names are not followed by a space, but keywords
-are:
+they're required, or leaving them out would be ambiguous. Function names are 
+not followed by a space, but keywords other than 'sizeof' and 'typeid' are:
 
 	if (foo)
-		f(arg);
+		if (bar) {
+			f(arg);
+		} else {
+			g(arg);
+		}
 
 Operators are surrounded by whitespace except for "->" and ".".  Use
 "for (;;)", not "while (1)".
@@ -53,13 +58,14 @@ Use if (!strcmp(...)), not if (strcmp(...) == 0).
 
 The standard source code header is:
 
-/* @(#) $Header$ */
-/* This source code is in the public domain. */
+/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* <module>: <description>						*/
+/* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
- * Willow: Lightweight HTTP reverse-proxy.
- * <module>: <description>
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
  */
 
-#if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Header$"
-#endif
+/* @(#) $Id$ */

@@ -1,14 +1,17 @@
+/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Copyright (c) 2005, IPng, Pim van Pelt <pim@ipng.nl>			*/
+/* Copyright (c) 2006 River Tarnell <river@attenuate.org>		*/
 /* 
  * This file implements a 128 bit deep Patricia Trie, to facilitate very
  * fast best-match route lookup. Parts from this (and its accompanying C
  * file) were taken from the Merit MRTd project:
-	This product includes software developed by the University of Michigan,
-	Merit Network, Inc., and their contributors. 
+ *
+ *	This product includes software developed by the University of Michigan,
+ *	Merit Network, Inc., and their contributors. 
  * 
  * See the radix.h header for more information.
- * Copyright (c) 2005, IPng, Pim van Pelt <pim@ipng.nl>
- * Copyright 2006 River Tarnell.
  */
+
 /* From: Id: radix.c,v 1.1.1.1 2005/11/07 20:17:44 pim Exp */
 /* $Id$ */
 

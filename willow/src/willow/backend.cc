@@ -1,13 +1,14 @@
-/* @(#) $Id: wbackend.cc 17869 2006-11-23 01:05:44Z river $ */
-/* This source code is in the public domain. */
+/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* backend: HTTP backend handling.					*/
+/* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
- * Willow: Lightweight HTTP reverse-proxy.
- * backend: HTTP backend handling.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
  */
 
-#if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id: wbackend.cc 17869 2006-11-23 01:05:44Z river $"
-#endif
+/* @(#) $Id$ */
 
 #include <sys/types.h>
 #include <sys/socket.h>

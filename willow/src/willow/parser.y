@@ -1,7 +1,14 @@
-/* This code is in the public domain.
- * $Nightmare: nightmare/src/main/parser.y,v 1.2.2.1.2.1 2002/07/02 03:42:10 ejb Exp $
- * $Id$
+/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
+/*
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
  */
+
+/* From: $Nightmare: nightmare/src/main/parser.y,v 1.2.2.1.2.1 2002/07/02 03:42:10 ejb Exp $ */
+/* $Id$ */
 
 %{
 #include <sys/types.h>
