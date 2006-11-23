@@ -541,6 +541,11 @@ conf
 
 	conf.set(*t);
 	whttp_reconfigure();
+	if (config.access.empty()) {
+		WDEBUG("access is empty...");
+		config.access.allow("0.0.0.0/0");
+		config.access.allow("::0/0");
+	}
 	global_conf_tree = *t;
 	return true;
 }

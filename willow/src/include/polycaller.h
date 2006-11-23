@@ -61,7 +61,9 @@ struct polycaller {
 	}
 
 	template<typename T>
-	polycaller(T &o, void (T::*f) (arg1, arg2, arg3)) {
+	polycaller(T &o, void (T::*f) (arg1, arg2, arg3)) 
+		: tid(NULL)
+		, impl(NULL) {
 		assign(o, f);
 	}
 

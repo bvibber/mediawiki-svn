@@ -35,7 +35,6 @@ using std::istream;
 namespace mpl = boost::mpl;
 
 #include "log.h"
-#include "radix.h"
 #include "ptalloc.h"
 #include "format.h"
 #include "config.h"

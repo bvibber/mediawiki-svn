@@ -25,6 +25,7 @@ using std::vector;
 using std::map;
 
 #include "net.h"
+#include "radix.h"
 using namespace wnet;
 
 struct listener {
@@ -54,7 +55,6 @@ struct cachedir {
 #define DEFAULT_STATS_PORT	"4446"
 #define DEFAULT_HTCP_PORT	"4827"
 
-struct radix;
 extern struct configuration : noncopyable {
 	string		 admin;
 	int		 foreground;

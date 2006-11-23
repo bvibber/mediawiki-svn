@@ -21,6 +21,7 @@
 #include <boost/archive/iterators/transform_width.hpp>
 #include <boost/assign/list_of.hpp>
 #include <boost/format.hpp>
+#include <boost/mpl/int.hpp>
 
 #include <iostream>
 #include <string>
@@ -31,11 +32,13 @@
 #include <map>
 
 using namespace boost::assign;
+namespace mpl = boost::mpl;
 using boost::noncopyable;
 using boost::lexical_cast;
 using boost::io::str;
 using boost::basic_format;
 using boost::shared_ptr;
+using boost::enable_if;
 
 using std::runtime_error;
 using std::basic_string;
@@ -64,58 +67,8 @@ typedef boost::archive::iterators::binary_from_base64<
 		boost::archive::iterators::transform_width<
 			u_char const *, 8, 6> > unbase64_text;
 
-struct true_pred {
-	template<typename T>
-	struct test {
-		typedef T type;
-	};
-};
-
-/**
- * Metaprogramming predicate for testing whether a type is a kind of char.
- * Inherits from true_pred if so.
- */
 template<typename T>
-struct is_char_type;
-
-template<>
-struct is_char_type<char> : true_pred {};
-
-template<>
-struct is_char_type<unsigned char> : true_pred {};
-
-template<>
-struct is_char_type<signed char> : true_pred {};
-
-template<>
-struct is_char_type<char const> : true_pred {};
-
-template<>
-struct is_char_type<unsigned char const> : true_pred {};
-
-template<>
-struct is_char_type<signed char const> : true_pred {};
-
-/**
- * Metafunction to enable a function if a template argument meets a particular
- * property.  Use it like this:
- *
- * \code
- * template<typename T>
- * enable_if<is_char_type<T>, bool>::type
- * f(T f) {
- *    ...
- * }
- * \endcode
- *
- * This definition of f() will only be used when is_char_type<T> is true.
- *
- * \param Pred predicate to test
- * \param Ret the return type the function should have if the predicate is true.
- */
-template<typename Pred, typename Ret>
-struct enable_if {
-	typedef typename Pred::template test<Ret>::type type;
+struct is_char_type : mpl::int_<sizeof(T) == 1> {
 };
 
 /**
