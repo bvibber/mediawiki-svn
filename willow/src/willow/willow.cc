@@ -26,11 +26,11 @@
 #include <iostream>
 using std::streamsize;
 
-#include "wlog.h"
-#include "wnet.h"
-#include "wconfig.h"
+#include "log.h"
+#include "net.h"
+#include "config.h"
 #include "willow.h"
-#include "whttp.h"
+#include "http.h"
 #include "cache.h"
 #include "confparse.h"
 #include "radix.h"

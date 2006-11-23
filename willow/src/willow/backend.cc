@@ -1,12 +1,12 @@
-/* @(#) $Id$ */
+/* @(#) $Id: wbackend.cc 17869 2006-11-23 01:05:44Z river $ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
- * wbackend: HTTP backend handling.
+ * backend: HTTP backend handling.
  */
 
 #if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
+# pragma ident "@(#)$Id: wbackend.cc 17869 2006-11-23 01:05:44Z river $"
 #endif
 
 #include <sys/types.h>
@@ -27,11 +27,11 @@ using std::pow;
 using std::rotate;
 
 #include "willow.h"
-#include "wbackend.h"
-#include "wnet.h"
-#include "wlog.h"
+#include "backend.h"
+#include "net.h"
+#include "log.h"
 #include "confparse.h"
-#include "wconfig.h"
+#include "config.h"
 #include "format.h"
 
 map<imstring, int> host_to_bpool;

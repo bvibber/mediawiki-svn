@@ -22,9 +22,9 @@ using std::make_pair;
 
 #include "confparse.h"
 #include "willow.h"
-#include "wlog.h"
-#include "wbackend.h"
-#include "wconfig.h"
+#include "log.h"
+#include "backend.h"
+#include "config.h"
 #include "format.h"
 #include "expr.h"
 

@@ -1,4 +1,4 @@
-/* @(#) $Id$ */
+/* @(#) $Id: wconfig.h 17765 2006-11-17 19:12:23Z river $ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
@@ -9,7 +9,7 @@
 #define WCONFIG_H
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
+# pragma ident "@(#)$Id: wconfig.h 17765 2006-11-17 19:12:23Z river $"
 #endif
 
 #include <sys/types.h>
@@ -23,7 +23,7 @@ using std::pair;
 using std::vector;
 using std::map;
 
-#include "wnet.h"
+#include "net.h"
 using namespace wnet;
 
 struct listener {

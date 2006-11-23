@@ -1,4 +1,4 @@
-/* @(#) $Id$ */
+/* @(#) $Id: whttp.h 17692 2006-11-15 05:12:33Z river $ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
@@ -9,7 +9,7 @@
 #define WHTTP_H
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
+# pragma ident "@(#)$Id: whttp.h 17692 2006-11-15 05:12:33Z river $"
 #endif
 
 static const int whttp_deny_connect = 0x1;

@@ -4,23 +4,23 @@ CPPFLAGS = -I../include
 
 BASESRCS =	 		\
 	a_cachedir.cc		\
+	backend.cc		\
 	cache.cc		\
 	cachedentity.cc		\
 	cachedir_data_store.cc	\
 	chunking.cc		\
+	config.cc		\
 	confparse.cc		\
 	dbwrap.cc		\
 	flowio.cc		\
 	format.cc		\
 	htcp.cc			\
+	http.cc			\
+	http_header.cc		\
+	log.cc			\
+	net.cc			\
 	radix.cc		\
-	wbackend.cc		\
-	wconfig.cc		\
-	whttp.cc		\
-	whttp_header.cc		\
 	willow.cc 		\
-	wlog.cc			\
-	wnet.cc			\
 
 OBJS=	$(BASESRCS:.cc=.o)
 

@@ -1,4 +1,4 @@
-/* @(#) $Id$ */
+/* @(#) $Id: wbackend.h 17684 2006-11-14 22:40:31Z river $ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
@@ -9,7 +9,7 @@
 #define WBACKEND_H
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
+# pragma ident "@(#)$Id: wbackend.h 17684 2006-11-14 22:40:31Z river $"
 #endif
 
 #include <sys/types.h>
@@ -22,7 +22,7 @@ using std::vector;
 using std::map;
 
 #include "polycaller.h"
-#include "wnet.h"
+#include "net.h"
 using namespace wnet;
 
 enum lb_type {

@@ -13,8 +13,8 @@
 using std::pair;
 
 #include "willow.h"
-#include "wnet.h"
-#include "wconfig.h"
+#include "net.h"
+#include "config.h"
 #include "mbuffer.h"
 #include "htcp.h"
 #include "cache.h"

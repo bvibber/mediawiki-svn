@@ -16,7 +16,7 @@ using std::ostream;
 
 #include "cache.h"
 #include "format.h"
-#include "wconfig.h"
+#include "config.h"
 
 httpcache entitycache;
 

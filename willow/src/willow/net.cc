@@ -1,19 +1,19 @@
-/* @(#) $Id$ */
+/* @(#) $Id: wnet.cc 17829 2006-11-21 16:41:15Z river $ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
- * wnet: Networking.
+ * net: Networking.
  */
 
 #if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
+# pragma ident "@(#)$Id: wnet.cc 17829 2006-11-21 16:41:15Z river $"
 #endif
 
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 
-#include "config.h"
+#include "autoconf.h"
 #ifdef HAVE_SYS_SENDFILE_H
 # include <sys/sendfile.h>
 #endif
@@ -37,10 +37,10 @@ using std::signal;
 #include <fcntl.h>
 
 #include "willow.h"
-#include "wnet.h"
-#include "wconfig.h"
-#include "wlog.h"
-#include "whttp.h"
+#include "net.h"
+#include "config.h"
+#include "log.h"
+#include "http.h"
 #include "format.h"
 
 #define RDBUF_INC	8192	/* buffer in 8 KiB incrs		*/

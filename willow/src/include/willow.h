@@ -12,7 +12,7 @@
 # pragma ident "@(#)$Id$"
 #endif
 
-#include "config.h"
+#include "autoconf.h"
 
 #include <sstream>
 #include <cstddef>
@@ -30,11 +30,11 @@ using std::vector;
 using std::basic_ostream;
 using std::istream;
 
-#include "wlog.h"
+#include "log.h"
 #include "radix.h"
 #include "ptalloc.h"
 #include "format.h"
-#include "wconfig.h"
+#include "config.h"
 
 typedef unsigned long long w_size_t;
 

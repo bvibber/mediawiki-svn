@@ -14,7 +14,7 @@
 using std::min;
 
 #include "chunking.h"
-#include "whttp_header.h"
+#include "http_header.h"
 #include "flowio.h"
 #include "util.h"
 

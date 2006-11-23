@@ -1,15 +1,15 @@
-/* @(#) $Id$ */
+/* @(#) $Id: wnet.h 17869 2006-11-23 01:05:44Z river $ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
- * wnet: Networking.
+ * net: Networking.
  */
 
 #ifndef WNET_H
 #define WNET_H
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
+# pragma ident "@(#)$Id: wnet.h 17869 2006-11-23 01:05:44Z river $"
 #endif
 
 #if defined __digital__ && defined __unix__
@@ -26,7 +26,7 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 #include <netdb.h>
 #include <unistd.h>
 
-#include "config.h"
+#include "autoconf.h"
 #include <sys/time.h>
 #include <sys/fcntl.h>
 #include <sys/sendfile.h>

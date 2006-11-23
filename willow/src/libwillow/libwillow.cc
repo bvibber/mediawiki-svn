@@ -6,7 +6,7 @@
  */
 
 #include "ptalloc.h"
-#include "wthread.h"
+#include "thread.h"
 
 void
 pttsswrapdtor(void *p)

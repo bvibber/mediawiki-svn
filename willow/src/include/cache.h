@@ -23,9 +23,9 @@ using std::multiset;
 using std::fstream;
 
 #include "willow.h"
-#include "wthread.h"
+#include "thread.h"
 #include "flowio.h"
-#include "whttp_header.h"
+#include "http_header.h"
 #include "dbwrap.h"
 
 struct caching_filter;

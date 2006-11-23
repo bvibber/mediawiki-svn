@@ -1,12 +1,12 @@
-/* @(#) $Id$ */
+/* @(#) $Id: whttp.cc 17805 2006-11-20 14:07:17Z river $ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
- * whttp: HTTP implementation.
+ * http: HTTP implementation.
  */
 
 #if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
+# pragma ident "@(#)$Id: whttp.cc 17805 2006-11-20 14:07:17Z river $"
 #endif
 
 /*
@@ -41,13 +41,11 @@ using std::ofstream;
 using std::endl;
 
 #include "willow.h"
-#include "whttp.h"
-#include "wnet.h"
-#include "wbackend.h"
-#include "wconfig.h"
-#include "wlogwriter.h"
-#include "whttp_entity.h"
-#include "wlog.h"
+#include "http.h"
+#include "net.h"
+#include "backend.h"
+#include "config.h"
+#include "log.h"
 #include "radix.h"
 #include "chunking.h"
 #include "flowio.h"

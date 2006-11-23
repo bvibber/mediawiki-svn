@@ -15,7 +15,7 @@
 #include <cstdlib>
 using std::memset;
 
-#include "wthread.h"
+#include "thread.h"
 
 #ifndef __SUNPRO_CC
 template<typename T>

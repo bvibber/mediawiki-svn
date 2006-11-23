@@ -1,12 +1,12 @@
-/* @(#) $Id$ */
+/* @(#) $Id: wconfig.cc 17855 2006-11-22 14:35:17Z river $ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
- * wconfig: configuration.
+ * config: configuration.
  */
 
 #if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
+# pragma ident "@(#)$Id: wconfig.cc 17855 2006-11-22 14:35:17Z river $"
 #endif
 
 #include <sys/types.h>
@@ -30,11 +30,11 @@ using std::set;
 using std::back_inserter;
 
 #include "willow.h"
-#include "wconfig.h"
-#include "wbackend.h"
-#include "wlog.h"
-#include "whttp.h"
-#include "wnet.h"
+#include "config.h"
+#include "backend.h"
+#include "log.h"
+#include "http.h"
+#include "net.h"
 #include "confparse.h"
 #include "radix.h"
 #include "format.h"

@@ -1,15 +1,15 @@
-/* @(#) $Id$ */
+/* @(#) $Id: wlog.h 17869 2006-11-23 01:05:44Z river $ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
- * wlog: logging.
+ * log: logging.
  */
 
 #ifndef WLOG_H
 #define WLOG_H
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
+# pragma ident "@(#)$Id: wlog.h 17869 2006-11-23 01:05:44Z river $"
 #endif
 
 #include <cstdio>
@@ -18,7 +18,7 @@
 using std::ofstream;
 
 #include "willow.h"
-#include "config.h"
+#include "autoconf.h"
 #include "ptalloc.h"
 
 enum log_level {

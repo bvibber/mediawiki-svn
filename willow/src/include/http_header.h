@@ -1,21 +1,21 @@
-/* @(#) $Id$ */
+/* @(#) $Id: whttp_header.h 17805 2006-11-20 14:07:17Z river $ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
- * whttp_header: header processing implementation.
+ * http_header: header processing implementation.
  */
 
 #ifndef WHTTP_HEADER
 #define WHTTP_HEADER
 
 #if defined __SUNPRO_C || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
+# pragma ident "@(#)$Id: whttp_header.h 17805 2006-11-20 14:07:17Z river $"
 #endif
 
-#include "config.h"
-#include "whttp.h"
+#include "autoconf.h"
+#include "http.h"
 #include "willow.h"
-#include "wnet.h"
+#include "net.h"
 #include "flowio.h"
 
 /*

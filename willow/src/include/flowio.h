@@ -23,7 +23,7 @@ using std::map;
 using std::min;
 
 #include "willow.h"
-#include "wnet.h"
+#include "net.h"
 using namespace wnet;
 
 namespace io {

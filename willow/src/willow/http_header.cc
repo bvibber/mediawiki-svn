@@ -1,12 +1,12 @@
-/* @(#) $Id$ */
+/* @(#) $Id: whttp_header.cc 17774 2006-11-18 03:48:27Z river $ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
- * whttp_header: header processing implementation.
+ * http_header: header processing implementation.
  */
 
 #if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
+# pragma ident "@(#)$Id: whttp_header.cc 17774 2006-11-18 03:48:27Z river $"
 #endif
 
 #if 0
@@ -22,12 +22,11 @@ using std::sprintf;
 
 #include <assert.h>
 
-#include "config.h"
-#include "whttp_entity.h"
-#include "whttp_header.h"
-#include "wnet.h"
+#include "autoconf.h"
+#include "http_header.h"
+#include "net.h"
 #include "flowio.h"
-#include "wconfig.h"
+#include "config.h"
 #include "format.h"
 
 using namespace wnet;

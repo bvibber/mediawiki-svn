@@ -4,7 +4,7 @@ AC_INIT(willow, 1.0-cvs, river@attenuate.org)
 
 USER_CXXFLAGS="$CXXFLAGS"
 CPPFLAGS="-D_REENTRANT $CPPFLAGS"
-AC_CONFIG_HEADER(src/include/config.h)
+AC_CONFIG_HEADER(src/include/autoconf.h)
 
 echo ""
 echo "examining environment..."

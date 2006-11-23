@@ -1,12 +1,12 @@
-/* @(#) $Id$ */
+/* @(#) $Id: wlog.cc 17805 2006-11-20 14:07:17Z river $ */
 /* This source code is in the public domain. */
 /*
  * Willow: Lightweight HTTP reverse-proxy.
- * wlog: logging.
+ * log: logging.
  */
 
 #if defined __SUNPRO_CC || defined __DECC || defined __HP_cc
-# pragma ident "@(#)$Id$"
+# pragma ident "@(#)$Id: wlog.cc 17805 2006-11-20 14:07:17Z river $"
 #endif
 
 #include <boost/format.hpp>
@@ -23,11 +23,11 @@ using std::fopen;
 using std::fprintf;
 using std::fclose;
 
-#include "config.h"
+#include "autoconf.h"
 
-#include "wlog.h"
-#include "wnet.h"
-#include "wconfig.h"
+#include "log.h"
+#include "net.h"
+#include "config.h"
 #include "format.h"
 
 logger wlog;
