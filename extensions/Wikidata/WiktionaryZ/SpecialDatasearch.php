@@ -42,8 +42,10 @@ function wfSpecialDatasearch() {
 		}
 		
 		function getSpellingRestriction($spelling) {
+			$dbr = &wfGetDB(DB_SLAVE);
+			
 			if (trim($spelling) != '')
-				return " AND spelling LIKE " . $dbr->addQuotes("%$text%");
+				return " AND spelling LIKE " . $dbr->addQuotes("%$spelling%");
 			else
 				return "";
 		}
@@ -56,8 +58,10 @@ function wfSpecialDatasearch() {
 		}
 		
 		function getPositionSelectColumn($spelling) {
+			$dbr = &wfGetDB(DB_SLAVE);
+			
 			if (trim($spelling) != '')
-				return "INSTR(LCASE(uw_expression_ns.spelling), LCASE(". $dbr->addQuotes("$text") .")) as position, ";
+				return "INSTR(LCASE(uw_expression_ns.spelling), LCASE(". $dbr->addQuotes("$spelling") .")) as position, ";
 			else
 				return "";
 		}
