@@ -48,7 +48,7 @@ struct expression_parser_impl;
  *
  * ! - + ~ * / % << >> < <= > >= == != & ^ | && || defined
  *
- * All have the same meaning as their C equivalets.  defined() is used to
+ * All have the same meaning as their C equivalents.  defined() is used to
  * test whether a variable exists: defined(x) has the value '1' if 'x' is
  * defined.
  */
