@@ -62,9 +62,34 @@ extern "C" size_t strlcpy(char *dst, const char *src, size_t siz);
 
 #define rotl(i,r) (((i) << (r)) | ((i) >> (sizeof(i)*CHAR_BIT-(r))))
 
+/**
+ * Convert the buffer src, which is len bytes long, need not be NUL
+ * terminated, and contains a base-10 integer to an int.
+ *
+ * \param src buffer to convert
+ * \param len length of src
+ * \returns the converted integer, or -1 if the entire buffer could not be
+ * parsed.
+ */
 int str10toint(char const *src, int len);
+
+/**
+ * Convert the buffer src, which is len bytes long, need not be NUL
+ * terminated, and contains a base-16 integer to an int.  The buffer should not
+ * have an "0x" prefix.
+ *
+ * \param src buffer to convert
+ * \param len length of src
+ * \returns the converted integer, or -1 if the entire buffer could not be
+ * parsed.
+ */
 int str16toint(char const *src, int len);
 
+/**
+ * Compare a to b, ignoring case.
+ *
+ * \returns true if they are equal, or false if not.
+ */
 static inline bool
 httpcompare(string const &a, string const &b)
 {
@@ -126,59 +151,215 @@ extern struct stats_stru : noncopyable {
 	atomic<uint32_t>	n_httpresp_fails;	/* httpresp_fail per sec	*/
 } stats;
 
-template<typename charT, typename allocator>
+/**
+ * A string whose size doesn't change after it's constructed.  This is much
+ * more efficient for such strings than GNU's implementation of std::string.
+ *
+ * An imstring's size should be given before anything is added to it.  For
+ * example:
+ *
+ * \code
+ * imstring s;
+ * s.reserve(6);
+ * s.assign("foo");
+ * s.assign("bar");
+ * \endcode
+ *
+ * If assign() is called without reserving anything, it will reserve the length
+ * of the assigned data.  Nothing more can be added to the string in this case.
+ *
+ * imstring contents (returned by data() or c_str()) can be modified directly
+ * without calling imstring members.  The string is always nul-terminated.
+ *
+ * \param charT char type to store in this string
+ * \param allocator allocator to use for string allocations.  defaults to
+ * std::allocator<charT>.
+ */
+template<typename charT, typename allocator = std::allocator<charT> >
 struct basic_imstring {
 	typedef typename allocator::size_type	size_type;
 	typedef charT 		*iterator;
 	typedef charT const	*const_iterator;
 
+	/**
+	 * Construct an empty imstring.
+	 */
 	basic_imstring(void);
-	basic_imstring(charT const *);
-	basic_imstring(charT const *, size_type);
-	basic_imstring(basic_imstring const &);
+
+	/**
+	 * Construct an imstring from the given nul-terminated C string s.
+	 */
+	basic_imstring(charT const *s);
+
+	/**
+	 * Construct an imstring from the char array s, which is len bytes n
+	 * length and need not be nul-terminated.
+	 */
+	basic_imstring(charT const *s, size_type n);
+
+	/**
+	 * Construct an imstring as a copy of the string s.
+	 */
+	basic_imstring(basic_imstring const &s);
 	~basic_imstring(void);
 
+	/**
+	 * Construct an imstring from the basic_string s.
+	 */
 	template<typename Sallocator>
-	basic_imstring(basic_string<charT, char_traits<charT>, Sallocator> const &);
+	basic_imstring(basic_string<charT, char_traits<charT>, Sallocator> 
+		const &s);
 
-	basic_imstring& operator= (basic_imstring const &);
+	/**
+	 * Release the contents of this imstring and replace them with the
+	 * contents of the string s.
+	 */
+	basic_imstring& operator= (basic_imstring const &s);
 
+	/**
+	 * Return a pointer to this string's buffer.  The buffer is
+	 * nul-terminated.
+	 */
 	charT		*c_str		(void)	const;
+
+	/**
+	 * Return a pointer to this string's buffer.  The buffer is
+	 * nul-terminated.
+	 */
 	charT 		*data		(void)	const;
+
+	/**
+	 * Convert this imstring to a basic_string.
+	 */
 	std::basic_string<charT, char_traits<charT>, allocator >
 			 string		(void)	const;
-	
-	void	 reserve	(size_type len);
-	void	 assign		(charT const *);
-	void	 assign		(charT const *, size_type);
-	void	 assign		(charT const *, charT const *);
-	void	 append		(charT const *);
-	void	 append		(charT const *, size_type);
-	void	 append		(charT const *, charT const *);
 
+	/**
+	 * Reserve len bytes of storage for this string.  If the string has
+	 * any existing contents, reserve invalidates them.  The string's
+	 * length is set to len.
+	 */	
+	void	 reserve	(size_type len);
+
+	/**
+	 * Assign the C string s, which must be nul-terminated, to this string.
+	 */
+	void	 assign		(charT const *s);
+
+	/**
+	 * Assign the char array s, which need not be nul-terminated and is
+	 * len bytes in length, to this string.
+	 */
+	void	 assign		(charT const *s, size_type len);
+
+	/**
+	 * Assign the char array s, which extends until one char before end,
+	 * and need not be nul-terminated, to this string.
+	 */
+	void	 assign		(charT const *s, charT const *end);
+
+	/**
+	 * Append the C string s, which must be nul-terminated, to this string.
+	 */
+	void	 append		(charT const *s);
+
+	/**
+	 * Append the char array s, which need not be nul-terminated and is len
+	 * bytes in length, to this string.
+	 */
+	void	 append		(charT const *s, size_type len);
+
+	/**
+	 * Append the char array s, which ends one character before end and need
+	 * not be nul-terminated, to this string.
+	 */
+	void	 append		(charT const *s, charT const *end);
+
+	/**
+	 * Return the length of this string, not including the nul terminator.
+	 */
 	size_type	length	(void) const;
+
+	/**
+	 * Returns length().
+	 */
 	size_type	size	(void) const;
+
+	/**
+	 * Returns true if length()==0.
+	 */
 	bool		empty	(void) const;
 
+	/**
+	 * Return a const (immutable) iterator referring to the start of this
+	 * string.
+	 */
 	const_iterator	begin		(void) const;
+
+	/**
+	 * Return a const (immutable) iterator referring to one byte past the
+	 * end of this string.
+	 */
 	const_iterator	end		(void) const;
+
+	/**
+	 * Return a mutable iterator referring to the start of this string.
+	 */
 	iterator	begin		(void);
+
+	/**
+	 * Return a mutable iterator referring to the end of this string.
+	 */
 	iterator	end		(void);
 
+	/**
+	 * Return the character at position n.
+	 */
 	charT		&operator[]	(size_type n);
+
+	/**
+	 * Return the character at position n.
+	 */
 	charT const	&operator[]	(size_type n) const;
 
+	/**
+	 * Print the contents of this string to the given ostream.
+	 */
 	basic_ostream<charT, char_traits<charT> >
 		&print		(basic_ostream<charT, char_traits<charT> > &) const;
 
-	bool	operator<	(basic_imstring const &) const;
-	bool	operator>	(basic_imstring const &) const;
-	bool	operator==	(basic_imstring const &) const;
-	bool	operator!=	(basic_imstring const &) const;
+	/**
+	 * \returns true if this string is lexicographically less than s.
+	 */
+	bool	operator<	(basic_imstring const &s) const;
+
+	/**
+	 * \returns true if this string is lexicographically greater than s.
+	 */
+	bool	operator>	(basic_imstring const &s) const;
+
+	/**
+	 * \returns true if this string is lexicographically equal to s.
+	 */
+	bool	operator==	(basic_imstring const &s) const;
+
+	/**
+	 * \returns true if this string's contents differ from s's.
+	 */
+	bool	operator!=	(basic_imstring const &s) const;
 
 private:
+	/**
+	 * Prevent construction from an imstring of differing chartype or
+	 * allocator.
+	 */
 	template<typename charT2, typename allocator2>
 	basic_imstring(basic_imstring<charT2, allocator2> const &);
+
+	/**
+	 * Prevent assignment from an imstring of differing chartype or
+	 * allocator.
+	 */
 	template<typename charT2, typename allocator2>
 	basic_imstring &
 	operator=(basic_imstring<charT2, allocator2> const &);
@@ -479,40 +660,71 @@ basic_imstring<charT, allocator>::operator[] (
 	return _buf[n];
 }
 
-/*
+/**
  * A buffer which uses /dev/shm buffers if possible (on Linux), so we can use
  * sendfile() on the buffer.
  */
 struct diobuf : noncopyable, freelist_allocator<diobuf> {
+	/**
+	 * Create a new diobuf.
+	 *
+	 * \param size initial size of the buffer.  will be rounded to a
+	 * multiple of page size for allocation.
+	 */
 	diobuf(size_t size = 4096);
 	~diobuf(void);
 
+	/**
+	 * Resize this buffer, preserving the contents.
+	 */
 	void resize(size_t newsize);
 
+	/**
+	 * Return a pointer to the start of this buffer.
+	 */
 	char *ptr(void) const {
 		return _buf;
 	}
 
+	/**
+	 * Returns the size of this buffer, not including any allocation
+	 * rounding.
+	 */
 	size_t size(void) const {
 		return _size;
 	}
 
+	/**
+	 * Return the file description to the shm file for this buffer.
+	 */
 	int fd(void) const {
 		return _fd;
 	}
 
+	/**
+	 * Append the buffer buf, of len bytes, to the end of this buffer.
+	 * Automatically resizes the buffer to fit.
+	 */
 	void append(char const *buf, size_t len) {
 	size_t	osize = _size;
 		resize(_size + len);
 		memcpy(_buf + osize, buf, len);
 	}
 
+	/**
+	 * Indicate that this buffer will not be written to again (reading is
+	 * still allowed.)
+	 */
 	void finished(void);
 
-	/*
-	 * Load data from the given file into the buffer.
+	/**
+	 * Load n bytes of data from the file f nto this buffer.
+	 *
+	 * \return true if the data was loaded successfully, or false if an
+	 * error occured.
 	 */
-	bool loadfile(istream &, size_t);
+	bool loadfile(istream &f, size_t n);
+
 private:
 	int	 _fd;
 	char	*_buf;

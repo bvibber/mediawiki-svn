@@ -457,29 +457,39 @@ int		 htype;
 			if (!strncasecmp(value, "chunked", vlen))
 				_flags.f_chunked = 1;
 			break;
+
 		case H_CONTENT_LENGTH:
-			_content_length = str10toint(value, vlen);
+			if ((_content_length = str10toint(value, vlen)) == -1) {
+				_sink_spigot->sp_cork();
+				return io::sink_result_error;
+			}
 			break;
+
 		case H_USER_AGENT:
 			if (config.msie_hack &&
 			    std::search(value, value + vlen, msie, msie + 4) != value + vlen)
 				_is_msie = true;
 			break;
+
 		case H_HOST:
 			_http_host.assign(value, value + vlen);
 			break;
+
 		case H_CONNECTION:
 			if (!strncasecmp(value, "close", vlen))
 				_no_keepalive = true;
 			else if (!strncasecmp(value, "keep-alive", vlen))
 				_force_keepalive = true;
 			goto next;
+
 		case H_LOCATION:
 			_location.assign(value, value + vlen);
 			break;
+
 		case H_X_WILLOW_BACKEND_GROUP:
 			_http_backend.assign(value, value + vlen);
 			break;
+
 		case H_X_WILLOW_FOLLOW_REDIRECT:
 			_follow_redirect = true;
 			break;
@@ -554,7 +564,9 @@ int		 codelen, desclen;
 		% codelen % string(errcode, errcode + codelen)
 		% desclen % string(errdesc, errdesc + desclen));
 
-	_response = str10toint(errcode, codelen);
+	if ((_response = str10toint(errcode, codelen)) == -1)
+		return -1;
+
 	_http_path.reserve(codelen + desclen + 1);
 	_http_path.assign(errcode, errcode + codelen);
 	_http_path.append(" ", 1);

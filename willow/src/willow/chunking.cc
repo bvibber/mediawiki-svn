@@ -79,12 +79,14 @@ ssize_t		 s;
 				return io::sink_result_error;
 			strncat(_cbuf, buf, i);
 			_current_chunk_size = str16toint(_cbuf, strlen(_cbuf));
+
+			if (_current_chunk_size == -1)
+				return io::sink_result_error;
+
 			discard += i + 2;
 			len -= i + 2;
 			buf += i + 2;
 			_cbuf[0] = '\0';
-			if (_current_chunk_size == -1)
-				return io::sink_result_error;
 			if (_current_chunk_size == 0) {
 				_state = s_trailers;
 				break;;

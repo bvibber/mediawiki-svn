@@ -286,7 +286,7 @@ int     res = 0;
         char    c = src[len - 1];
                 if (c >= '0' && c <= '9')
                         tval = c - '0';
-                else    return res;
+                else    return -1;
                 res += tval * mult;
                 mult *= 10;
         }

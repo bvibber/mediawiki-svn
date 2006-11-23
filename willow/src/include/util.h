@@ -71,6 +71,10 @@ struct true_pred {
 	};
 };
 
+/**
+ * Metaprogramming predicate for testing whether a type is a kind of char.
+ * Inherits from true_pred if so.
+ */
 template<typename T>
 struct is_char_type;
 
@@ -92,11 +96,35 @@ struct is_char_type<unsigned char const> : true_pred {};
 template<>
 struct is_char_type<signed char const> : true_pred {};
 
+/**
+ * Metafunction to enable a function if a template argument meets a particular
+ * property.  Use it like this:
+ *
+ * \code
+ * template<typename T>
+ * enable_if<is_char_type<T>, bool>::type
+ * f(T f) {
+ *    ...
+ * }
+ * \endcode
+ *
+ * This definition of f() will only be used when is_char_type<T> is true.
+ *
+ * \param Pred predicate to test
+ * \param Ret the return type the function should have if the predicate is true.
+ */
 template<typename Pred, typename Ret>
 struct enable_if {
 	typedef typename Pred::template test<Ret>::type type;
 };
 
+/**
+ * Find a "\r\n" sequence in a string.
+ *
+ * \param buf buffer to search
+ * \param end pointer to one past the end of the buffer (buf + size)
+ * \returns the position of the '\\r' character, if any, otherwise NULL
+ */
 template<typename charT>
 inline typename enable_if<is_char_type<charT>, charT const *>::type
 find_rn(charT const *buf, charT const *end) 

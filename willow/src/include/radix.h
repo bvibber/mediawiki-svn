@@ -311,7 +311,7 @@ struct radix {
 	 * the given address will be returned.  The address is considered to have
 	 * a /32 mask.
 	 *
-	 * \param pfx address to search for
+	 * \param addr address to search for
 	 * \returns matching node, or NULL if no match was found.
 	 */
 	radix_node	*search		(sockaddr const *addr) const;
