@@ -44,6 +44,20 @@ testflag -Wall
 testflag -Wno-unused
 testflag -g
 testflag -mt
+dnl testflag -Weffc++ 
+testflag -Woverloaded-virtual 
+testflag -Wformat=2 
+testflag -Winit-self 
+testflag -Wswitch-enum 
+testflag -Wundef
+#testflag -Wshadow 
+testflag -Wpointer-arith 
+testflag -Wcast-qual 
+testflag -Wcast-align 
+testflag -Wwrite-strings 
+testflag -Wredundant-decls 
+testflag 
+-Wunreachable-code
 if test ! "$ac_cv_cxx_compiler_gnu" = "yes"; then
 	testflag -errtags
 fi

@@ -515,18 +515,18 @@ map<string, value_definer *>::iterator	vit, vend;
 }
 
 block_definer &
-block_definer::block(string const &name, int flags)
+block_definer::block(string const &name_, int flags_)
 {
-	return parent.block(name, flags);
+	return parent.block(name_, flags_);
 }
 
 bool
 block_definer::validate(tree_entry &e)
 {
-map<string, conf::value>::iterator	it, end;
+map<string, conf::value>::iterator	it, end_;
 map<string, value_definer *>::iterator	vit;
 bool ret = true;
-	for (it = e.item_values.begin(), end = e.item_values.end(); it != end; ++it) {
+	for (it = e.item_values.begin(), end_ = e.item_values.end(); it != end_; ++it) {
 		vit = values.find(it->first);
 		if (vit == values.end())
 			continue;
@@ -545,9 +545,9 @@ bool ret = true;
 void
 block_definer::set(tree_entry &e)
 {
-map<string, conf::value>::iterator	it, end;
+map<string, conf::value>::iterator	it, end_;
 map<string, value_definer *>::iterator	vit;
-	for (it = e.item_values.begin(), end = e.item_values.end(); it != end; ++it) {
+	for (it = e.item_values.begin(), end_ = e.item_values.end(); it != end_; ++it) {
 		vit = values.find(it->first);
 		if (vit == values.end())
 			continue;

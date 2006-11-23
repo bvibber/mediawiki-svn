@@ -28,7 +28,7 @@ enum log_level {
 	ll_error
 };
 
-struct logger {
+struct logger : noncopyable {
 	logger();
 
 	void syslog	(bool, int facility = 0);

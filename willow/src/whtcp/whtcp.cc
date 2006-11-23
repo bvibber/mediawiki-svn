@@ -143,7 +143,7 @@ int	line = 0;
 
 	ustring		bkey;
 	unbase64_string it(key.begin());
-		for (size_t i = 0; i < 64; ++i) {
+		for (size_t n = 0; n < 512; ++n) {
 			bkey.push_back(*it++);
 		}
 
@@ -187,7 +187,6 @@ bool		 nflag = false, qflag = false;
 timeval		 start, finish;
 bool		 gflag = false, cflag = false;
 string		 keystore, keyname;
-ustring		 key;
 
 	while ((i = getopt(argc, argv, "nqgS:K:c")) != -1) {
 		switch (i) {

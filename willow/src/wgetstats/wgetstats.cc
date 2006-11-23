@@ -206,7 +206,7 @@ uint8_t		*vers;
 		bufp += 4;
 		hi = *(uint32_t *) bufp;		
 		bufp += 4;
-		nc = hi << 32 | lo;
+		nc = (uint64_t)hi << 32 | lo;
 		fprintf(stderr, "\tListener %.*s: %llu connections\n",
 			nlen, name, nc);
 	}

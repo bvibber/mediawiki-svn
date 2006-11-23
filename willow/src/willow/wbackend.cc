@@ -60,9 +60,9 @@ backend::backend(
 		% be_straddr % be_hash);
 }
 
-backend_pool::backend_pool(string const &name, lb_type lbt, int failgroup)
+backend_pool::backend_pool(string const &name_, lb_type lbt, int failgroup)
 	: _lbtype(lbt)
-	, _name(name)
+	, _name(name_)
 	, _failgroup(failgroup)
 {
 	WDEBUG(format("creating backend_pool, lbt=%d") % (int) lbt);

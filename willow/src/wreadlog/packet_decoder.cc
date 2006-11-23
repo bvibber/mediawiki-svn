@@ -22,11 +22,11 @@ using boost::lexical_cast;
 struct logent_buf {
 	uint32_t	*r_reqtime;
 	uint16_t	*r_clilen, *r_pathlen, *r_belen;
-	char		*r_cliaddr;
+	char const	*r_cliaddr;
 	uint8_t		*r_reqtype;
-	char		*r_path;
+	char const	*r_path;
 	uint16_t	*r_status;
-	char		*r_beaddr;
+	char const	*r_beaddr;
 	uint8_t		*r_cached;
 	uint32_t	*r_docsize;
 };
@@ -62,16 +62,16 @@ const aclnode	*an;
 				bufp += (s);		\
 			}
 logent_buf	b;
-	b.r_reqtime = (uint32_t *) bufp;	GET_BYTES(4);
-	b.r_clilen  = (uint16_t *) bufp;	GET_BYTES(2);
-	b.r_cliaddr = (char *)     bufp;	GET_BYTES(*b.r_clilen);
-	b.r_reqtype = (uint8_t *)  bufp;	GET_BYTES(1);
-	b.r_pathlen = (uint16_t *) bufp;	GET_BYTES(2);
-	b.r_path    = (char *)     bufp;	GET_BYTES(*b.r_pathlen);
-	b.r_status  = (uint16_t *) bufp;	GET_BYTES(2);
-	b.r_belen   = (uint16_t *) bufp;	GET_BYTES(2);
-	b.r_beaddr  = (char *)     bufp;	GET_BYTES(*b.r_belen);
-	b.r_cached =  (uint8_t *)  bufp;	GET_BYTES(1);
+	b.r_reqtime = (uint32_t *)    bufp;	GET_BYTES(4);
+	b.r_clilen  = (uint16_t *)    bufp;	GET_BYTES(2);
+	b.r_cliaddr = (char const *)  bufp;	GET_BYTES(*b.r_clilen);
+	b.r_reqtype = (uint8_t *)     bufp;	GET_BYTES(1);
+	b.r_pathlen = (uint16_t *)    bufp;	GET_BYTES(2);
+	b.r_path    = (char const *)  bufp;	GET_BYTES(*b.r_pathlen);
+	b.r_status  = (uint16_t *)    bufp;	GET_BYTES(2);
+	b.r_belen   = (uint16_t *)    bufp;	GET_BYTES(2);
+	b.r_beaddr  = (char const*)   bufp;	GET_BYTES(*b.r_belen);
+	b.r_cached =  (uint8_t *)     bufp;	GET_BYTES(1);
 	if (buf + 4 >= end)
 		return false;
 	b.r_docsize = (uint32_t *)bufp;

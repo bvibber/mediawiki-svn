@@ -18,10 +18,16 @@
 #include <cassert>
 #include <string>
 #include <cstddef>
+#include <stdexcept>
 using std::size_t;
 using std::basic_string;
+using std::logic_error;
 
 #include "willow.h"
+
+struct marshalling_buffer_overflow : logic_error {
+	marshalling_buffer_overflow() : logic_error("marshalling buffer overflow") {}
+};
 
 struct marshalling_buffer {
 	marshalling_buffer()
@@ -37,13 +43,33 @@ struct marshalling_buffer {
 		, _bufsz(sz)
 		, _delete(false)
 	{}
-		
-	~marshalling_buffer(void) {
+
+	marshalling_buffer&
+	operator= (marshalling_buffer const &other) {
+		_delete = other._delete;
+		_bufsz = other._bufsz;
+		_size = other._size;
+		_buf = NULL;
+		if (_delete) {
+			_buf = new char[_bufsz];
+			memcpy(_buf, other._buf, _bufsz);
+		} else {
+			_buf = other._buf;
+		}
+		return *this;
 	}
 
-	void reserve(size_t size) {
-		_bufsz = size;
-		_buf = new char[size];
+	~marshalling_buffer(void) {
+		if (_delete)
+			delete[] _buf;
+	}
+
+	void reserve(size_t nsize) {
+		_bufsz = nsize;
+		if (_delete)
+			delete[] _buf;
+		_delete = true;
+		_buf = new char[nsize];
 	}
 
 	template<typename T>
@@ -55,7 +81,9 @@ struct marshalling_buffer {
 	template<typename T>
 	typename enable_if<is_char_type<T>, void>::type
 	append_bytes(T const *buf, size_t s) {
-		assert(_size + s <= _bufsz);
+		if (_size + s > _bufsz)
+			throw marshalling_buffer_overflow();
+
 		memcpy(_buf + _size, buf, s);
 		_size += s;
 	}

@@ -14,6 +14,7 @@
 
 #include <stdexcept>
 #include <typeinfo>
+using std::type_info;
 
 #include "willow.h"
 
@@ -23,16 +24,6 @@ struct polycaller_type_mismatch : std::logic_error {
 
 struct polycaller_object_missing : std::logic_error {
 	polycaller_object_missing() : std::logic_error("polycaller called with no object") {}
-};
-
-template<typename thistype, typename impltype>
-struct polycaller_base {
-	std::type_info const	*tid;
-	impltype		*impl;
-	polycaller_base() : tid(NULL), impl(NULL) {}
-	virtual ~polycaller_base() {
-		delete impl;
-	}
 };
 
 template<typename arg1, typename arg2, typename arg3>
@@ -59,36 +50,46 @@ struct polycaller_impl3 : polycaller_impl_base3<arg1,arg2,arg3>,
 };
 
 template<typename arg1 = void, typename arg2 = void, typename arg3 = void>
-struct polycaller : polycaller_base<polycaller<arg1,arg2,arg3>, polycaller_impl_base3<arg1,arg2,arg3> > {
-        polycaller(void) {}
+struct polycaller {
+	type_info const *tid;
+	polycaller_impl_base3<arg1, arg2, arg3> *impl;
+
+        polycaller(void) : tid(NULL), impl(NULL) {}
+	~polycaller() {
+		delete impl;
+	}
 
 	template<typename T>
 	polycaller(T &o, void (T::*f) (arg1, arg2, arg3)) {
 		assign(o, f);
 	}
 
-	polycaller& operator= (polycaller<arg1,arg2,arg3> &other) {
-		this->impl = other.impl->clone();
+	polycaller& operator= (polycaller<arg1,arg2,arg3> const &other) {
+		delete impl;
+		impl = NULL;
+		tid = other.tid;
+		if (other.impl)
+			impl = other.impl->clone();
 		return *this;
 	}
 
 	polycaller(polycaller<arg1,arg2,arg3> const &other)
-		: polycaller_base<polycaller<arg1,arg2,arg3>,polycaller_impl_base3<arg1,arg2,arg3> >() {
-		this->tid = other.tid;
+		: tid(other.tid)
+		, impl(NULL) {
 		if (other.impl)
-			this->impl = other.impl->clone();
+			impl = other.impl->clone();
 	}
 
         template<typename T>
         polycaller& assign (T &o, void (T::*f) (arg1, arg2, arg3)) {
-                delete this->impl;
-                this->impl = new polycaller_impl3<T,arg1,arg2,arg3>(&o, f);
-                this->tid = &typeid(T);
+                delete impl;
+                impl = new polycaller_impl3<T,arg1,arg2,arg3>(&o, f);
+                tid = &typeid(T);
                 return *this;
         }
 
         void operator() (arg1 a, arg2 b, arg3 c) const {
-                this->impl->call(a, b, c);
+                impl->call(a, b, c);
         }
 };
 
@@ -116,25 +117,36 @@ struct polycaller_impl2 : polycaller_impl_base2<arg1,arg2>,
 };
 
 template<typename arg1, typename arg2>
-struct polycaller<arg1,arg2,void> : polycaller_base<polycaller<arg1,arg2>, polycaller_impl_base2<arg1,arg2> > {
-        polycaller(void) {}
+struct polycaller<arg1,arg2,void> {
+	type_info const *tid;
+	polycaller_impl_base2<arg1, arg2> *impl;
+
+        polycaller(void) : tid(NULL), impl(NULL) {}
+	~polycaller() {
+		delete impl;
+	}
 
 	template<typename T>
-	polycaller(T &o, void (T::*f) (arg1, arg2)) {
+	polycaller(T &o, void (T::*f) (arg1, arg2)) 
+		: tid(NULL)
+		, impl(NULL) {
 		assign(o, f);
 	}
 
-	polycaller& operator= (polycaller<arg1,arg2> &other) {
-		delete this->impl;
-		this->impl = other.impl->clone();
+	polycaller& operator= (polycaller<arg1,arg2> const &other) {
+		delete impl;
+		tid = other.tid;
+		impl = NULL;
+		if (other.impl)
+			impl = other.impl->clone();
 		return *this;
 	}
 
 	polycaller(polycaller<arg1,arg2> const &other)
-		: polycaller_base<polycaller<arg1,arg2>,polycaller_impl_base2<arg1,arg2> >() {
-		this->tid = other.tid;
+		: tid(other.tid)
+		, impl(NULL) {
 		if (other.impl)
-			this->impl = other.impl->clone();
+			impl = other.impl->clone();
 	}
 
         template<typename T>
@@ -174,36 +186,44 @@ struct polycaller_impl1 : polycaller_impl_base1<arg1>,
 };
 
 template<typename arg1>
-struct polycaller<arg1,void,void> : polycaller_base<polycaller<arg1,void>, polycaller_impl_base1<arg1> > {
-        polycaller(void) {}
+struct polycaller<arg1,void,void> {
+	type_info const *tid;
+	polycaller_impl_base1<arg1> *impl;
+
+        polycaller(void) : tid(NULL), impl(NULL) {}
+	~polycaller() {
+		delete impl;
+	}
 
 	template<typename T>
 	polycaller(T &o, void (T::*f) (arg1)) {
 		assign(o, f);
 	}
 	polycaller(polycaller<arg1> const &other)
-		: polycaller_base<polycaller<arg1,void>, polycaller_impl_base1<arg1> >() {
-		this->tid = other.tid;
+		: tid(other.tid)
+		, impl(NULL) {
 		if (other.impl)
 			this->impl = other.impl->clone();
 	}
 
-	polycaller& operator= (polycaller<arg1> &other) {
-		delete this->impl;
-		this->impl = other.impl->clone();
+	polycaller& operator= (polycaller<arg1> const &other) {
+		delete impl;
+		impl = NULL;
+		if (other.impl)
+			impl = other.impl->clone();
 		return *this;
 	}
 
         template<typename T>
         polycaller& assign (T &o, void (T::*f) (arg1)) {
-                delete this->impl;
-                this->impl = new polycaller_impl1<T,arg1>(&o, f);
-                this->tid = &typeid(T);
-                return *this;
+                delete impl;
+		impl = new polycaller_impl1<T,arg1>(&o, f);
+		tid = &typeid(T);
+		return *this;
         }
 
         void operator() (arg1 a) const {
-                this->impl->call(a);
+                impl->call(a);
         }
 };
 
@@ -230,27 +250,36 @@ struct polycaller_impl0 : polycaller_impl_base0,
 };
 
 template<>
-struct polycaller<void,void,void> : polycaller_base<polycaller<void,void,void>,polycaller_impl_base0> {
-        polycaller(void) {
-		tid = NULL;
-		impl = NULL;
+struct polycaller<void,void,void> {
+	type_info const *tid;
+	polycaller_impl_base0 *impl;
+
+        polycaller(void)
+		: tid(NULL)
+		, impl(NULL) {
+	}
+
+	~polycaller() {
+		delete impl;
 	}
 
 	template<typename T>
-	polycaller(T &o, void (T::*f) (void)) {
-		impl = NULL;
+	polycaller(T &o, void (T::*f) (void))
+		: tid(NULL)
+		, impl(NULL) {
 		assign(o, f);
 	}
-	polycaller& operator= (polycaller<void,void,void> &other) {
-		impl = other.impl->clone();
+	polycaller& operator= (polycaller<void,void,void> const &other) {
+		tid = other.tid;
+		if (other.impl)
+			other.impl->clone();
 		return *this;
 	}
 	polycaller(polycaller<void> const &other)
-		: polycaller_base<polycaller<void,void>,polycaller_impl_base0> () {
-		tid = other.tid;
+		: tid(other.tid)
+		, impl(NULL) {
 		if (other.impl)
 			impl = other.impl->clone();
-		else	impl = NULL;
 	}
 
         template<typename T>
@@ -442,10 +471,10 @@ struct polycallback<void,void> {
 
 	polycallback() : binder(NULL), _null(true) {}
 	polycallback(polycallback<> const &other) 
-		: _null(other._null) {
+		: binder(NULL)
+		, _null(other._null) {
 		if (other.binder)
 			binder = other.binder->clone();
-		else	binder = NULL;
 	}
 
 	polycallback& operator=(polycallback<> const &other) {

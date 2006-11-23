@@ -228,11 +228,11 @@ htcp_encoder::transid(void) const
 }
 
 void
-htcp_encoder::key(string const &keyname, ustring const &key)
+htcp_encoder::key(string const &keyname, ustring const &nkey)
 {
 	_sign = true;
 	_auth.ha_keyname = keyname;
-	_key = key;
+	_key = nkey;
 }
 
 htcp_opdata *
@@ -294,12 +294,15 @@ int		headerlen, oplen, authlen;
 }
 
 bool
-htcp_decoder::verify_signature(string const &keyname, ustring const &key,
+htcp_decoder::verify_signature(string const &nkeyname, ustring const &key,
 		sockaddr *src, sockaddr *dst)
 {
 marshalling_buffer	buf;
-ustring			signature;
+ustring			sig;
 int			oplen = _opheader.length() + _opdata->length();
+
+	if (nkeyname != _auth.ha_keyname)
+		return false;
 
 	buf.reserve(22 + oplen + socklen(src) + socklen(dst));
 	htcp_encoder::encode_sockaddr(buf, src);
@@ -313,12 +316,12 @@ hmac<md5>	mac(key.data(), key.size());
 	mac.run(buf.buffer(), buf.size());
 
 hmac<md5>::digest_t digest = mac.digest();
-	signature.assign(digest, digest + sizeof(digest));
+	sig.assign(digest, digest + sizeof(digest));
 
-	if (signature != _auth.ha_signature)
+	if (sig != _auth.ha_signature)
 		return false;
 
-	if (_auth.ha_sigexpire <= time(0))
+	if ((time_t)_auth.ha_sigexpire <= time(0))
 		return false;
 
 	return true;

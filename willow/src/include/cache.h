@@ -111,8 +111,8 @@ struct cachedentity {
 	}
 
 	void set_complete(void);
-	void store_status(imstring const &status, int code) {
-		_status = status;
+	void store_status(imstring const &nstatus, int code) {
+		_status = nstatus;
 		_statuscode = code;
 	}
 

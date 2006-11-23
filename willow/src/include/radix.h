@@ -74,19 +74,31 @@ private:
 };
 
 struct radix_node {
-		radix_node() { memset(this, 0, sizeof(*this)); }
-	uint32_t		 bit;
-	struct prefix 		*prefix;
-	struct radix_node 	*l, *r;
-	struct radix_node 	*parent;
-	void 			*data;
-	int			 flags;
+		radix_node() 
+			: bit(0)
+			, pfx(0)
+			, l(0)
+			, r(0)
+			, parent(0)
+			, data(0)
+			, flags(0)
+		{}
+		radix_node(radix_node const &);
+
+	uint32_t	 bit;
+	prefix 		*pfx;
+	radix_node 	*l, *r;
+	radix_node 	*parent;
+	void 		*data;
+	int		 flags;
 };
 
 class radix {
 public:
 		radix();
-		~radix();
+		virtual ~radix();
+		radix(radix const &);
+		radix &operator= (radix const &);
 
 	void		 set_dtor	(void_fn_t);
 	radix_node	*add		(char const *);

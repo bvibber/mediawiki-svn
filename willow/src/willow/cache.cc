@@ -33,7 +33,7 @@ httpcache::~httpcache(void)
 }
 
 shared_ptr<cachedentity>
-httpcache::find_cached(imstring const &url, bool create, bool &wasnew)
+httpcache::find_cached(imstring const &url, bool createnew, bool &wasnew)
 {
 map<imstring, shared_ptr<cachedentity> >::iterator it;
 	if (!config.cache_memory)
@@ -77,7 +77,7 @@ map<imstring, shared_ptr<cachedentity> >::iterator it;
 	}
 
 	WDEBUG(format("[%s] not cached") % url);
-	if (!create)
+	if (!createnew)
 		return shared_ptr<cachedentity>();
 
 	/* need to create new entity */

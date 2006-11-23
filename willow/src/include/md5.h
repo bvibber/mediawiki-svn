@@ -129,13 +129,13 @@ struct hmac {
 		memset(_opad, 0x5C, sizeof(_opad));
 	}
 
-	void key(unsigned char const *key, size_t keylen) {
+	void key(unsigned char const *nkey, size_t keylen) {
 		if (keylen > block_size) {
-		hash	h(key, keylen);
+		hash	h(nkey, keylen);
 			memcpy(_key, h.digest(), digest_size);
 			_keylen = digest_size;
 		} else {
-			memcpy(_key, key, keylen);
+			memcpy(_key, nkey, keylen);
 			_keylen = keylen;
 		}
 

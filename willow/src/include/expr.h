@@ -39,7 +39,7 @@ using boost::spirit::symbols;
 using boost::shared_ptr;
 
 struct expression_error : runtime_error {
-	expression_error(char const *what) : runtime_error(what) {}
+	expression_error(char const *err) : runtime_error(err) {}
 };
 
 struct stack_underflow : expression_error {

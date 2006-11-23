@@ -175,16 +175,7 @@ T1 operator | (atomic<T1> const &v1, T2 v2) {
 	HOLDING(v1.m);
 	return v1.v | v2;
 }
-template<typename T1, typename T2>
-T1 operator && (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v && v2;
-}
-template<typename T1, typename T2>
-T1 operator || (atomic<T1> const &v1, T2 v2) {
-	HOLDING(v1.m);
-	return v1.v || v2;
-}
+
 template<typename T1, typename T2>
 T1 operator == (atomic<T1> const &v1, T2 v2) {
 	HOLDING(v1.m);

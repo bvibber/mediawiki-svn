@@ -124,10 +124,20 @@ struct buffer_item : freelist_allocator<buffer_item> {
 		, free(free_) {
 	}
 	buffer_item(buffer_item const &o)
-		: len(o.len)
+		: buf(NULL)
+		, len(o.len)
 		, off(o.off)
 		, free(true) {
 		buf = (const char *)memcpy(new char[len], o.buf, len);
+	}
+	buffer_item&
+	operator=(buffer_item const &other) {
+		buf = NULL;
+		len = other.len;
+		off = other.off;
+		free = true;
+		buf = (const char *)memcpy(new char[len], other.buf, len);
+		return *this;
 	}
 
 	~buffer_item() {

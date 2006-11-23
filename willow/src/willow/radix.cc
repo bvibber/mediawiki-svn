@@ -29,7 +29,7 @@ using std::make_pair;
         struct radix_node **Xsp = Xstack; \
         struct radix_node *Xrn = (Xhead); \
         while ((Xnode = Xrn)) { \
-            if (Xnode->prefix)
+            if (Xnode->pfx)
 
 #define RADIX_WALK_ALL(Xhead, Xnode) \
 do { \
@@ -171,6 +171,15 @@ sockaddr_in6	*in6;
 	}
 }
 
+radix::radix(radix const &o)
+	: head(NULL)
+	, maxbits(o.maxbits)
+	, num_active_node(o.num_active_node)
+	, dtor(o.dtor)
+{
+	head = new radix_node(*o.head);
+}
+
 radix::radix(void)
 	: head(NULL)
 	, maxbits(128)
@@ -178,6 +187,17 @@ radix::radix(void)
 	, dtor(NULL)
 {
 }
+
+radix&
+radix::operator=(radix const &other)
+{
+	head = new radix_node(*other.head);
+	maxbits = other.maxbits;
+	num_active_node = other.num_active_node;
+	dtor = other.dtor;
+	return *this;
+}
+
 
 radix::~radix(void)
 {
@@ -223,11 +243,11 @@ int		 cnt = 0;
 	addr = prefix->tochar();
 
 	while (node->bit < prefix->prefixlen) {
-		if (node->prefix) {
+		if (node->pfx) {
 			stack[cnt++] = node;
 		}
 
-		if (BIT_TEST (addr[node->bit >> 3], 0x80 >> (node->bit & 0x07))) {
+		if (BIT_TEST(addr[node->bit >> 3], 0x80 >> (node->bit & 0x07))) {
 			node = node->r;
 		} else {
 			node = node->l;
@@ -237,16 +257,16 @@ int		 cnt = 0;
 			break;
 	}
 
-	if (inclusive && node && node->prefix)
+	if (inclusive && node && node->pfx)
 		stack[cnt++] = node;
 
 	if (cnt <= 0) {
-		return (NULL);
+		return NULL;
 	}
 
 	while (--cnt >= 0) {
 		node = stack[cnt];
-		if (comp_with_mask(node->prefix->tochar(), prefix->tochar(), node->prefix->prefixlen)) { 
+		if (comp_with_mask(node->pfx->tochar(), prefix->tochar(), node->pfx->prefixlen)) { 
 			return node;
 		}
 	}
@@ -265,14 +285,14 @@ radix::clear (void_fn_t func)
 		radix_node *l = Xrn->l;
 		radix_node *r = Xrn->r;
 
-			if (Xrn->prefix) {
-				delete Xrn->prefix;
+			if (Xrn->pfx) {
+				delete Xrn->pfx;
 				if (Xrn->data && func)
 					((void (*)(void *))func) (Xrn->data);
 			} else {
 				assert (NULL == Xrn->data);
 			}
-			Xrn->prefix = NULL;
+			Xrn->pfx = NULL;
 			delete Xrn;
 			num_active_node--;
 			if (l) {
@@ -302,7 +322,7 @@ radix_node *node;
 		return;
 
 	RADIX_WALK (head, node) {
-		((void (*)(prefix *, void *)) func) (node->prefix, node->data);
+		((void (*)(prefix *, void *)) func) (node->pfx, node->data);
 	} RADIX_WALK_END;
 }
 
@@ -350,11 +370,11 @@ uint8_t const	*addr;
 		if (node == NULL)
 			return NULL;
 	}
-	if (node->bit > pfx->prefixlen || node->prefix == NULL)
+	if (node->bit > pfx->prefixlen || node->pfx == NULL)
 		return NULL;
 	assert(node->bit == pfx->prefixlen);
-	assert(node->bit == node->prefix->prefixlen);
-	if (comp_with_mask(node->prefix->tochar(), pfx->tochar(), pfx->prefixlen))
+	assert(node->bit == node->pfx->prefixlen);
+	if (comp_with_mask(node->pfx->tochar(), pfx->tochar(), pfx->prefixlen))
 		return node;
 	
 	return NULL;
@@ -388,7 +408,7 @@ int		 i, j, r;
 	if (head == NULL) {
 		node = new radix_node;
 		node->bit = pfx->prefixlen;
-		node->prefix = pfx;
+		node->pfx = pfx;
 		node->parent = NULL;
 		node->l = node->r = NULL;
 		node->data = NULL;
@@ -401,7 +421,7 @@ int		 i, j, r;
 	prefixlen = pfx->prefixlen;
 	node = head;
 
-	while (node->bit < prefixlen || node->prefix == NULL) {
+	while (node->bit < prefixlen || node->pfx == NULL) {
 		if (node->bit < maxbits && BIT_TEST(addr[node->bit >> 3], 0x80 >> (node->bit & 0x07))) {
 			if (node->r == NULL)
 				break;
@@ -413,9 +433,9 @@ int		 i, j, r;
 		}
 		assert (node);
 	}
-	assert(node->prefix);
+	assert(node->pfx);
 
-	test_addr = node->prefix->tochar();
+	test_addr = node->pfx->tochar();
 	/* find the first bit different */
 	check_bit = (node->bit < prefixlen)? node->bit: prefixlen;
 	differ_bit = 0;
@@ -445,17 +465,17 @@ int		 i, j, r;
 	}
 
 	if (differ_bit == prefixlen && node->bit == prefixlen) {
-		if (node->prefix) {
+		if (node->pfx) {
 			return node;
 		}
-		node->prefix = pfx;
+		node->pfx = pfx;
 		assert(node->data == NULL);
 		return node;
 	}
 
 	new_node = new radix_node;
 	new_node->bit = pfx->prefixlen;
-	new_node->prefix = pfx;
+	new_node->pfx = pfx;
 	new_node->parent = NULL;
 	new_node->l = new_node->r = NULL;
 	new_node->data = NULL;
@@ -492,7 +512,7 @@ int		 i, j, r;
 	} else {
 		glue = new radix_node;
 		glue->bit = differ_bit;
-		glue->prefix = NULL;
+		glue->pfx = NULL;
 		glue->parent = node->parent;
 		glue->data = NULL;
 		num_active_node++;
@@ -525,16 +545,16 @@ radix_node *parent, *child;
 	assert (node);
 
 	if (node->r && node->l) {
-		delete node->prefix;
-		node->prefix = NULL;
+		delete node->pfx;
+		node->pfx = NULL;
 		node->data = NULL;
 		return;
 	}
 
 	if (node->r == NULL && node->l == NULL) {
 		parent = node->parent;
-		delete node->prefix;
-		node->prefix = NULL;
+		delete node->pfx;
+		node->pfx = NULL;
 		delete node;
 		num_active_node--;
 		if (parent == NULL) {
@@ -552,7 +572,7 @@ radix_node *parent, *child;
 			child = parent->r;
 		}
 
-		if (parent->prefix)
+		if (parent->pfx)
 			return;
 
 		/* we need to remove parent too */
@@ -580,8 +600,8 @@ radix_node *parent, *child;
 	parent = node->parent;
 	child->parent = parent;
 
-	delete node->prefix;
-	node->prefix = NULL;
+	delete node->pfx;
+	node->pfx = NULL;
 	delete node;
 	num_active_node--;
 
@@ -617,6 +637,21 @@ radix_node *node;
 		return -1;
 	remove(node);
 	return 0;
+}
+
+radix_node::radix_node(radix_node const &o)
+	: bit(o.bit)
+	, pfx(NULL)
+	, l(NULL)
+	, r(NULL)
+	, parent(NULL)
+	, data(o.data)
+	, flags(o.flags)
+{
+	pfx = new prefix(*o.pfx);
+	l = new radix_node(*o.l);
+	r = new radix_node(*o.r);
+	parent = new radix_node(*o.parent);
 }
 
 /*

@@ -103,8 +103,11 @@ extern struct stats_stru : noncopyable {
 	 * Absolute values.
 	 */
 	struct abs_t {
-			abs_t() {
-				memset(this, 0, sizeof(*this));
+			abs_t() 
+				: n_httpreq_ok(0)
+				, n_httpreq_fail(0)
+				, n_httpresp_ok(0)
+				, n_httpresp_fail(0) {
 			}
 		uint64_t	n_httpreq_ok;		/* requests which were sent to a backend		*/
 		uint64_t	n_httpreq_fail;		/* requests which did not reach a backend		*/
@@ -246,9 +249,9 @@ int	slen = strlen(str);
 
 template<typename charT, typename allocator>
 void
-basic_imstring<charT, allocator>::assign(charT const *str, charT const *end)
+basic_imstring<charT, allocator>::assign(charT const *str, charT const *send)
 {
-	assign(str, end - str);
+	assign(str, send - str);
 }
 
 template<typename charT, typename allocator>
@@ -480,7 +483,7 @@ basic_imstring<charT, allocator>::operator[] (
  * A buffer which uses /dev/shm buffers if possible (on Linux), so we can use
  * sendfile() on the buffer.
  */
-struct diobuf : freelist_allocator<diobuf> {
+struct diobuf : noncopyable, freelist_allocator<diobuf> {
 	diobuf(size_t size = 4096);
 	~diobuf(void);
 

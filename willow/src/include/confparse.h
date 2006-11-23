@@ -384,21 +384,23 @@ struct value_definer {
 
 extern const int require_name;
 
-struct block_definer {
+struct block_definer : noncopyable {
 	block_definer(conf_definer &parent_, string const &name, int flags);
 	~block_definer();
 
 	template<typename Vt, typename St>
-	block_definer &value(string const &name, Vt const &v, St const &s) {
-		values.insert(make_pair(name, new value_definer(name, v, s)));
+	block_definer &value(string const &name_, Vt const &v, St const &s) {
+		values.insert(make_pair(name_, new value_definer(name_, v, s)));
 		return *this;
 	}
+
 	template<typename Vt, typename St>
 	block_definer &end(Vt vefn_, St sefn_) {
 		vefn = new Vt(vefn_);
 		sefn = new St(sefn_);
 		return *this;
 	}
+
 	template<typename St>
 	block_definer &end(St sefn_) {
 		sefn = new St(sefn_);
@@ -408,6 +410,9 @@ struct block_definer {
 	block_definer &block(string const &name, int flags = 0);
 	bool validate(tree_entry &e);
 	void set(tree_entry &e); 
+
+private:
+	friend class conf_definer;
 
 	conf_definer			&parent;
 	string				 name;
