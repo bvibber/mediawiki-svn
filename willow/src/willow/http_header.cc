@@ -459,7 +459,7 @@ int		 htype;
 			break;
 
 		case H_CONTENT_LENGTH:
-			if ((_content_length = str10toint(value, vlen)) == -1) {
+			if ((_content_length = strNtoint<10>(value, vlen)) == -1) {
 				_sink_spigot->sp_cork();
 				return io::sink_result_error;
 			}
@@ -564,7 +564,7 @@ int		 codelen, desclen;
 		% codelen % string(errcode, errcode + codelen)
 		% desclen % string(errdesc, errdesc + desclen));
 
-	if ((_response = str10toint(errcode, codelen)) == -1)
+	if ((_response = strNtoint<10>(errcode, codelen)) == -1)
 		return -1;
 
 	_http_path.reserve(codelen + desclen + 1);

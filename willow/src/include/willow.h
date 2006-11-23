@@ -30,6 +30,10 @@ using std::vector;
 using std::basic_ostream;
 using std::istream;
 
+#include <boost/utility.hpp>
+#include <boost/mpl/int.hpp>
+namespace mpl = boost::mpl;
+
 #include "log.h"
 #include "radix.h"
 #include "ptalloc.h"
@@ -64,26 +68,40 @@ extern "C" size_t strlcpy(char *dst, const char *src, size_t siz);
 
 /**
  * Convert the buffer src, which is len bytes long, need not be NUL
- * terminated, and contains a base-10 integer to an int.
+ * terminated, and contains an integer in base, to an int.
  *
+ * \param base the base of the integer to convert; must be between 2 and 16 or
+ * a compile-time error will occur.
  * \param src buffer to convert
  * \param len length of src
  * \returns the converted integer, or -1 if the entire buffer could not be
  * parsed.
  */
-int str10toint(char const *src, int len);
+template<int base>
+typename boost::enable_if<mpl::int_<(base >= 2 && base <= 16)>, int>::type
+strNtoint(char const *src, int len)
+{
+int     mult = 1;
+int     res = 0;
+        for (; len; len--) {
+        int     tval;
+        char    c = src[len - 1];
+                if (c >= '0' && c <= '9')
+                        tval = c - '0';
+                else if (c >= 'a' && c <= 'f')
+                        tval = 10 + c - 'a';
+                else if (c >= 'A' && c <= 'F')
+                        tval = 10 + c - 'A';
+                else    return -1;
 
-/**
- * Convert the buffer src, which is len bytes long, need not be NUL
- * terminated, and contains a base-16 integer to an int.  The buffer should not
- * have an "0x" prefix.
- *
- * \param src buffer to convert
- * \param len length of src
- * \returns the converted integer, or -1 if the entire buffer could not be
- * parsed.
- */
-int str16toint(char const *src, int len);
+                if (tval >= base)
+                        return -1;
+                res += tval * mult;
+                mult *= base;
+        }
+        return res;
+}
+
 
 /**
  * Compare a to b, ignoring case.

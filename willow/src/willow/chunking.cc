@@ -78,7 +78,7 @@ ssize_t		 s;
 			if (i + strlen(_cbuf) > 15)
 				return io::sink_result_error;
 			strncat(_cbuf, buf, i);
-			_current_chunk_size = str16toint(_cbuf, strlen(_cbuf));
+			_current_chunk_size = strNtoint<16>(_cbuf, strlen(_cbuf));
 
 			if (_current_chunk_size == -1)
 				return io::sink_result_error;
