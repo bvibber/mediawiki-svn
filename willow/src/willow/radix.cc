@@ -67,11 +67,11 @@ do { \
     } while (0)
 
 string
-prefix::tostring (void)
+prefix::tostring (void) const
 {
-static char	ret[100];
-char		ipstr[100];
-	inet_ntop(_family, (void*)&add, ipstr, sizeof(ipstr));
+char	ret[100];
+char	ipstr[100];
+	inet_ntop(_family, (void const*) &add, ipstr, sizeof(ipstr));
 	snprintf(ret, 100, "%s/%d", ipstr, prefixlen);
 	return ret;
 }
@@ -106,14 +106,6 @@ prefix::tochar(void)
 	return ((uint8_t *) &add.sin4);
 }
 
-
-prefix::prefix(void)
-	: _family(0)
-	, prefixlen(0)
-	, ref_count(0)
-{
-	memset(&add, 0, sizeof(add));
-}
 
 prefix::prefix(char const *s)
 {
