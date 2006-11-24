@@ -177,13 +177,13 @@ tm	*tm;
 	for (url_counter::toplist::iterator it = urls.begin(),
 	     end = urls.end(); it != end; ++it) {
 	url_counter::url_entry const	&u = it->get();
-		addstr(str(format("%10d  ") % u.count).c_str());
+		addstr((char *)str(format("%10d  ") % u.count).c_str());
 		if (u.cached)
 			addstr("   YES  ");
 		else
 			addstr("    NO  ");
-		addstr(str(format("%9d  ") % u.size).c_str());
-		addstr(u.url.c_str());
+		addstr((char *)str(format("%9d  ") % u.size).c_str());
+		addstr((char *)u.url.c_str());
 		move(i + 1, 0);
 		++i;
 	}

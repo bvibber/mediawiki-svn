@@ -150,10 +150,14 @@ addrlist::iterator	it = res->begin(), end = res->end();
 
 map<string, int> log_levels = map_list_of
 	("auth", LOG_AUTH)
+#ifdef LOG_AUTHPRIV
 	("authpriv", LOG_AUTHPRIV)
+#endif
 	("cron", LOG_CRON)
 	("daemon", LOG_DAEMON)
+#ifdef LOG_FTP
 	("ftp", LOG_FTP)
+#endif
 	("kern", LOG_KERN)
 	("local0", LOG_LOCAL0)
 	("local1", LOG_LOCAL1)

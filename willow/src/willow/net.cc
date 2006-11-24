@@ -20,7 +20,6 @@
 #endif
 
 #include <netinet/tcp.h>
-#include <net/if.h>
 #include <arpa/inet.h>
 
 #include <cstdio>
@@ -45,6 +44,10 @@ using std::signal;
 #include "format.h"
 
 #define RDBUF_INC	8192	/* buffer in 8 KiB incrs		*/
+
+/* see ifname_to_address.cc */
+int ifname_to_address(int, sockaddr_in *, char const *);
+unsigned int if_nametoindex_wrap(const char *);
 
 struct event ev_sigint;
 struct event ev_sigterm;
@@ -604,7 +607,7 @@ socket::mcast_join(string const &ifname)
 u_int
 address::ifname_to_index(string const &ifname)
 {
-u_int	ret = if_nametoindex(ifname.c_str());
+u_int	ret = if_nametoindex_wrap(ifname.c_str());
 	if (ret == 0)
 		throw socket_error("named interface does not exist");
 	return ret;
@@ -613,12 +616,10 @@ u_int	ret = if_nametoindex(ifname.c_str());
 address
 address::from_ifname(int s, string const &ifname)
 {
-ifreq	ifr;
-	memset(&ifr, 0, sizeof(ifr));
-	strncpy(ifr.ifr_name, ifname.c_str(), IFNAMSIZ);
-	if (ioctl(s, SIOCGIFADDR, &ifr) < 0)
+sockaddr_in	addr;
+	if (ifname_to_address(s, &addr, ifname.c_str()) < 0)
 		throw socket_error();
-address	ret(&ifr.ifr_addr, sizeof(sockaddr_in));
+address	ret((sockaddr *)&addr, sizeof(sockaddr_in));
 	return ret;
 }
 

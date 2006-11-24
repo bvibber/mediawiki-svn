@@ -71,11 +71,11 @@ parse_file(string const &file)
 	parsing_tree.reset();
 	
 	if (if_table.empty()) {
-	utsname	un;
-		uname(&un);
+	struct utsname	unm;
+		uname(&unm);
 		add_if_entry("true", 1);
 		add_if_entry("false", 0);
-		add_if_entry(un.sysname, 1);
+		add_if_entry(unm.sysname, 1);
 	}
 
 	if ((yyin = fopen(file.c_str(), "r")) == NULL) {

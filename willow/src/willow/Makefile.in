@@ -29,6 +29,7 @@ BASESRCS =	 		\
 	htcp.cc			\
 	http.cc			\
 	http_header.cc		\
+	ifname_to_address.cc	\
 	log.cc			\
 	net.cc			\
 	radix.cc		\
