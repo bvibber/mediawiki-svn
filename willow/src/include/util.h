@@ -89,6 +89,9 @@ struct is_char_type : mpl::int_<sizeof(T) == 1> {
 };
 
 #ifdef WILLOW_DEBUG
+/*
+ * Helper classes for sockaddr_caster, see below.
+ */
 typedef mpl::map<
         mpl::pair<sockaddr_in, mpl::int_<AF_INET> >,
         mpl::pair<sockaddr_in6, mpl::int_<AF_INET6> >,
@@ -130,12 +133,33 @@ struct sockaddr_caster<sockaddr const *, From> {
 
 #endif
 
+/**
+ * Cast from one sockaddr type to another.  If the conversion can be proved
+ * invalid at compile time (e.g. the from type is not a sockaddr), a compile
+ * time error will be generated.  Otherwise an assertion failure will be
+ * triggered at runtime if the sa_family of the type being cast does not match
+ * the destination type.
+ *
+ * Usage:
+ *
+ * \code
+ * void f(sockaddr *s) {
+ *   sockaddr_in *sin = sockaddr_cast<sockaddr_in *>(s);
+ *   ...
+ * }
+ * \endcode
+ *
+ * \param To sockaddr type to cast to
+ * \param From sockaddr type to cast from
+ * \param f sockaddr struct to cast
+ * \returns the result of the cast
+ */
 template<typename To, typename From>
-To sockaddr_cast(From from) {
+To sockaddr_cast(From f) {
 #ifdef WILLOW_DEBUG
-	return sockaddr_caster<To, From>::cast(from);
+	return sockaddr_caster<To, From>::cast(f);
 #else
-	return reinterpret_cast<To>(from);
+	return reinterpret_cast<To>(f);
 #endif
 }
 
