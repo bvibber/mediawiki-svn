@@ -34,7 +34,7 @@ using std::streamsize;
 #include "http.h"
 #include "cache.h"
 #include "confparse.h"
-#include "radix.h"
+#include "access.h"
 #include "format.h"
 #include "mbuffer.h"
 #include "htcp.h"

@@ -14,6 +14,7 @@ CPPFLAGS = -I../include
 
 BASESRCS =	 		\
 	a_cachedir.cc		\
+	access.cc		\
 	backend.cc		\
 	cache.cc		\
 	cachedentity.cc		\

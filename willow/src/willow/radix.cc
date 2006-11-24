@@ -66,6 +66,22 @@ do { \
         } \
     } while (0)
 
+namespace radix_detail {
+
+int 
+comp_with_mask (void const *addr, void const *dest, uint32_t mask)
+{
+	if ( /* mask/8 == 0 || */ memcmp (addr, dest, mask / 8) == 0) {
+		int n = mask / 8;
+		int m = ((-1) << (8 - (mask % 8)));
+		if (mask % 8 == 0 || (((uint8_t const*)addr)[n] & m) == (((uint8_t const*)dest)[n] & m))
+			return (1);
+	}
+	return (0);
+}
+
+}
+
 string
 prefix::tostring (void) const
 {
@@ -80,18 +96,6 @@ int
 prefix::family(void) const
 {
 	return _family;
-}
-
-static int 
-comp_with_mask (void const *addr, void const *dest, uint32_t mask)
-{
-	if ( /* mask/8 == 0 || */ memcmp (addr, dest, mask / 8) == 0) {
-		int n = mask / 8;
-		int m = ((-1) << (8 - (mask % 8)));
-		if (mask % 8 == 0 || (((uint8_t const*)addr)[n] & m) == (((uint8_t const*)dest)[n] & m))
-			return (1);
-	}
-	return (0);
 }
 
 uint8_t const *
@@ -166,114 +170,3 @@ sockaddr_in6	*in6;
 	}
 }
 
-/*
- * Lower 16 bits are reserved for consumers.
- */
-const int access_list::_denyflg		= 0x10000;
-const int access_list::_allowflg	= 0x20000;
-
-pair<bool,uint16_t>
-access_list::allowed(char const *s) const
-{
-	return allowed(prefix(s));
-}
-
-pair<bool,uint16_t>
-access_list::allowed(string const &s) const
-{
-	return allowed(prefix(s.c_str()));
-}
-
-pair<bool,uint16_t>
-access_list::allowed(sockaddr const *addr) const
-{
-	return allowed(prefix(addr));
-}
-
-pair<bool,uint16_t>
-access_list::allowed(prefix const &p) const
-{
-	if (empty())
-		return make_pair(false, 0);
-
-radix<uint32_t>::const_iterator	r;
-	if ((r = _get(p)) == _end(p))
-		return make_pair(false, 0);
-
-	if (*r & _denyflg)
-		return make_pair(false, *r & 0xFFFF);
-	else if (*r & _allowflg)
-		return make_pair(true, *r & 0xFFFF);
-	else
-		abort();
-}
-
-radix<uint32_t>::const_iterator
-access_list::_end(prefix const &p) const
-{
-	switch (p.family()) {
-	case AF_INET:
-		return _v4.end();
-	case AF_INET6:
-		return _v6.end();
-	}
-	abort();
-}
-
-radix<uint32_t>::const_iterator
-access_list::_get(prefix const &p) const
-{
-	switch (p.family()) {
-	case AF_INET:
-		return _v4.search(p);
-	case AF_INET6:
-		return _v6.search(p);
-	}
-	abort();
-}
-
-bool
-access_list::empty(void) const
-{
-	return _v4.empty() && _v6.empty();
-}
-
-radix<uint32_t>::iterator
-access_list::_add(prefix const &p, int flags)
-{
-radix<uint32_t>::iterator	r;
-	switch (p.family()) {
-	case AF_INET:
-		return _v4.insert(p, flags).first;
-		break;
-	case AF_INET6:
-		return _v6.insert(p, flags).first;
-		break;
-	default:
-		abort();
-	}
-}
-
-void
-access_list::allow(char const *s, uint16_t flags)
-{
-	_add(prefix(s), _allowflg | (flags & 0xFFFF));
-}
-
-void
-access_list::allow(string const &s, uint16_t flags)
-{
-	allow(s.c_str(), flags);
-}
-
-void
-access_list::deny(char const *s, uint16_t flags)
-{
-	_add(prefix(s), _denyflg | (flags & 0xFFFF));
-}
-
-void
-access_list::deny(string const &s, uint16_t flags)
-{
-	deny(s.c_str(), flags);
-}

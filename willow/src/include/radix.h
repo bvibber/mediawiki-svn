@@ -30,100 +30,16 @@ using std::pair;
 
 #include "ptalloc.h"
 #include "willow.h"
+#include "prefix.h"
 
 #define RADIX_MAXBITS 128
 #define BIT_TEST(f, b)  ((f) & (b))
 
-struct prefix;
-template<typename> struct radix_node;
-template<typename, typename> struct radix_iterator;
-template<typename> struct radix;
+namespace radix_detail {
 
-/**
- * Exception thrown when a prefix is invalid, e.g. the IP could not be parsed.
- */
-struct invalid_prefix : public invalid_argument {
-	invalid_prefix(const char *_what) : invalid_argument(_what) {}
-};
+int comp_with_mask (void const *, void const *, uint32_t);
 
-/**
- * Stores an IPv4 or IPv6 prefix, for use in searching radix trees.  Not
- * intended as a general-purpose IP prefix class; see socket.h for that.
- */
-struct prefix {
-	/**
-	 * Construct a new prefix from the given string, in the form
-	 * "10.0.0.0/24".  If the mask is not present, /32 is assumed.
-	 *
-	 * \param pfx prefix string
-	 * \throws invalid_prefix if the prefix could not be parsed.
-	 */
-	 prefix		(char const *pfx);
-
-	/**
-	 * Construct a new prefix from the given string, in the form
-	 * "10.0.0.0/24".  If the mask is not present, /32 is assumed.
-	 *
-	 * \param pfx prefix string
-	 * \throws invalid_prefix if the prefix could not be parsed.
-	 */
-	 prefix		(string const &pfx);
-
-	/**
-	 * Construct a new prefix from the given string, in the form
-	 * "10.0.0.0/24".  The mask is assumed to be /32.
-	 *
-	 * \param addr address to create prefix from
-	 */
-	 prefix		(sockaddr const *addr);
-
-	/**
-	 * Return this prefix formatted as a normalised string.
-	 */
-	string	 tostring	(void) const;
-
-	/**
-	 * Return the address family of this prefix: AF_INET or AF_INET6.
-	 */
-	int	 family		(void) const;
-
-private:
-	template<typename T>
-	friend struct radix_node;
-	template<typename T>
-	friend struct radix;
-
-	/**
-	 * Internal function to construct a prefix from various string types.
-	 *
-	 * \pfx prefix string, with or without mask
-	 * \throws invalid_prefix if the prefix could not be parsed.
-	 */
-	void	_from(char const *pfx);
-
-	/**
-	 * Return this prefix as an array of octets.
-	 */
-	const uint8_t	*tochar		(void) const;
-
-	/**
-	 * Return this prefix as an array of octets.
-	 */
-	uint8_t		*tochar		(void);
-
-	uint16_t _family;	/**< Address family; AF_INET or AF_INET6 */
-	uint16_t prefixlen;	/**< Length of the prefix in bits */
-	uint32_t ref_count;	/**< Number of radix nodes that refer to this
-					prefix */
-
-	/**
-	 * Actual address of the prefix.
-	 */
-	union {
-		struct in_addr 	sin4;
-		struct in6_addr sin6;
-	} add;
-};
+}
 
 /**
  * A node in the radix tree.  The radix tree contains many of these; end nodes
@@ -258,13 +174,9 @@ struct radix {
 	radix &operator= (radix<T> const &other);
 
 	/**
-	 * Add a new prefix to the tree and return the node.  If the node
-	 * already exists, the existing node is returned.
-	 *
-	 * \param pfx prefix to add, with or without /mask
-	 * \returns the new node if one was added, otherwise the existing node
-	 * matching this prefix.
+	 * Equivalent to insert(prefix(pfx), value).
 	 * \throws invalid_prefix if the prefix could not be parsed.
+	 * \sa insert(prefix const &, T const&)
 	 */
 	pair<iterator, bool>	insert		(char const *pfx, T const &value);
 
@@ -273,19 +185,17 @@ struct radix {
 	 * already exists, the existing node is returned.
 	 *
 	 * \param pfx prefix to add
-	 * \returns the new node if one was added, otherwise the existing node
-	 * matching this prefix.
+	 * \returns a pair P.  P.first is the iterator to the inserted prefix.
+	 * P.second is true if the prefix was actually inserted, or false if it
+	 * already existed.
 	 */
 	pair<iterator, bool>	insert		(prefix const &pfx, T const &value);
 
+	 */
 	/**
-	 * Add a new prefix to the tree, and return the node.  If the node
-	 * already exists, the existing node is returned.
-	 *
-	 * \param pfx prefix to add, with or without /mask
-	 * \returns the new node if one was added, otherwise the existing node
-	 * matching this prefix.
+	 * Equivalent to insert(prefix(pfx), value).
 	 * \throws invalid_prefix if the prefix could not be parsed.
+	 * \sa insert(prefix const &, T const&)
 	 */
 	pair<iterator, bool>	insert		(string const &pfx, T const &value);
 
@@ -319,12 +229,9 @@ struct radix {
 	void		 remove		(radix_node<T> *n);
 
 	/**
-	 * Search the tree for the specified prefix.  The longest prefix matching
-	 * the given string will be returned.
-	 *
-	 * \param pfx prefix to search for, with or without /mask
-	 * \returns matching node, or NULL if no match was found.
+	 * Equivalent to search(prefix(pfx)).
 	 * \throws invalid_prefix if the prefix could not be parsed.
+	 * \sa search(prefix const &) const
 	 */
 	const_iterator	 search		(char const *pfx) const {
 		return _search<const_iterator>(pfx);
@@ -338,55 +245,71 @@ struct radix {
 	 * the given prefix will be returned.
 	 *
 	 * \param pfx prefix to search for
-	 * \returns matching node, or NULL if no match was found.
+	 * \returns matching node, or end() if no match was found.
 	 */
 	const_iterator	search		(prefix const &pfx) const {
 		return _search<const_iterator>(pfx);
 	}
+
+	/**
+	 * Search the tree for the specified prefix.  The longest prefix matching
+	 * the given prefix will be returned.
+	 *
+	 * \param pfx prefix to search for
+	 * \returns matching node, or end() if no match was found.
+	 */
 	iterator	search		(prefix const &pfx) {
 		return _search<iterator>(pfx);
 	}
 
 	/**
-	 * Search the tree for the specified prefix.  The longest prefix matching
-	 * the given string will be returned.
-	 *
-	 * \param pfx prefix to search for, with or without /mask
-	 * \returns matching node, or NULL if no match was found.
+	 * Equivalent to search(prefix(pfx)).
 	 * \throws invalid_prefix if the prefix could not be parsed.
+	 * \sa search(prefix const &) const
 	 */
 	const_iterator	search		(string const &pfx) const {
 		return _search<const_iterator>(pfx);
 	}
+
+	/**
+	 * Equivalent to search(prefix(pfx)).
+	 * \throws invalid_prefix if the prefix could not be parsed.
+	 * \sa search(prefix const &) const
+	 */
 	iterator	search		(string const &pfx) {
 		return _search<iterator>(pfx);
 	}
 
 	/**
-	 * Search the tree for the specified address.  The longest prefix matching
-	 * the given address will be returned.  The address is considered to have
-	 * a /32 mask.
-	 *
-	 * \param addr address to search for
-	 * \returns matching node, or NULL if no match was found.
+	 * Equivalent to search(prefix(addr)).
+	 * \sa search(prefix const &) const
 	 */
 	const_iterator	search		(sockaddr const *addr) const {
 		return _search<const_iterator>(addr);
 	}
+
+	/**
+	 * Equivalent to search(prefix(addr)).
+	 * \sa search(prefix const &) const
+	 */
 	iterator	search		(sockaddr const *addr) {
 		return _search<iterator>(addr);
 	}
 
 	/**
-	 * Search the tree for the specified address.  A matching prefix will
-	 * only be returned if it is the same length as the prefix searched for.
-	 *
-	 * \param pfx prefix to search for, with or without /mask
-	 * \returns matching node, or NULL if no match was found.
+	 * Equivalent to search_exact(prefix(pfx)).
+	 * \throws invalid_prefix if the prefix could not be parsed.
+	 * \sa search_exact(prefix const &) const
 	 */
 	const_iterator	search_exact	(char const *pfx) const {
 		return _search_exact<const_iterator>(pfx);
 	}
+
+	/**
+	 * Equivalent to search_exact(prefix(pfx)).
+	 * \throws invalid_prefix if the prefix could not be parsed.
+	 * \sa search_exact(prefix const &) const
+	 */
 	iterator	search_exact	(char const *pfx) {
 		return _search_exact<iterator>(pfx);
 	}
@@ -396,48 +319,67 @@ struct radix {
 	 * only be returned if it is the same length as the prefix searched for.
 	 *
 	 * \param pfx prefix to search for
-	 * \returns matching node, or NULL if no match was found.
+	 * \returns matching node, or end() if no match was found.
 	 */
 	const_iterator	search_exact	(prefix const &pfx) const {
 		return _search_exact<const_iterator>(pfx);
 	}
+
+	/**
+	 * Search the tree for the specified address.  A matching prefix will
+	 * only be returned if it is the same length as the prefix searched for.
+	 *
+	 * \param pfx prefix to search for
+	 * \returns matching node, or end() if no match was found.
+	 */
 	iterator	search_exact	(prefix const &pfx) {
 		return _search_exact<iterator>(pfx);
 	}
 
 	/**
-	 * Search the ree for the specified address.  A matching prefix will
-	 * only be returned if it is the same length as the prefix searched for.
-	 *
-	 * \param pfx prefix to search for, with or without /mask
-	 * \returns matching node, or NULL if no match was found.
+	 * Equivalent to search_exact(prefix(pfx)).
 	 * \throws invalid_prefix if the prefix could not be parsed.
+	 * \sa search_exact(prefix const &) const
 	 */
 	const_iterator	search_exact	(string const &pfx) const {
 		return _search_exact<const_iterator>(pfx);
 	}
+
+	/**
+	 * Equivalent to search_exact(prefix(pfx)).
+	 * \throws invalid_prefix if the prefix could not be parsed.
+	 * \sa search_exact(prefix const &) const
+	 */
 	iterator	search_exact	(string const &pfx) {
 		return _search_exact<iterator>(pfx);
 	}
 
 	/**
-	 * Search thetfree for the specified address.  A matching prefix will
-	 * only be returned if it is the same length as the prefix searched for.
-	 * The address is considered to have a /32 mask.
-	 *
-	 * \param addr address to search for
-	 * \returns matching node, or NULL if no match was found.
+	 * Equivalent to search_exact(prefix(addr)).
+	 * \sa search_exact(prefix const &) const
 	 */
 	const_iterator search_exact	(sockaddr const *addr) const {
 		return _search_exact<const_iterator>(addr);
 	}
+
+	/**
+	 * Equivalent to search_exact(prefix(addr)).
+	 * \sa search_exact(prefix const &) const
+	 */
 	iterator search_exact	(sockaddr const *addr) {
 		return _search_exact<iterator>(addr);
 	}
 
+	/**
+	 * Returns one past the last prefix in the tree.
+	 */
 	const_iterator end (void) const {
 		return const_iterator();
 	}
+
+	/**
+	 * Returns one past the last prefix in the tree.
+	 */
 	iterator end (void) {
 		return iterator();
 	}
@@ -464,127 +406,6 @@ private:
 	mutable radix_node<T> 	*head;	/**< Head of the tree */
 	uint32_t	 maxbits; /**< Longest node in this tree */
 	uint32_t	 num_active_node; /**< Number of nodes in this tree */
-};
-
-/**
- * An IP access list based on a radix tree, giving very fast lookups even for
- * large lists.
- *
- * IP addresses or prefixes should be added to the list using allow() or deny().
- * The former allows an IP access; the latter denies it.  The most-specific
- * match is used when testing whether a client has access.  For example, if
- * 10.0.0.0/8 is allowed access, but 10.0.1.0/24 is not, 10.0.1.10/32 will not
- * be allowed access, because 10.0.1.0/24 is the most specific match.
- *
- * After prefixes have been added to the list, use allowed() to query the
- * status of a particular IP.  allowed() returns a bool indicating whether the
- * given prefix is allowed access, and a flags argument containing the contents
- * of the flags argument to allow().
- *
- * If the access list is empty, no clients are allowed.  If the list contains
- * entries but no match is found, the client is allowed access.
- *
- * The access list maintains two entirely separate access lists for IPv4
- * and IPv6 clients transparently to the user; any addresses provided may be
- * either family, and the access list will add them to the correct internal
- * list.
- */
-struct access_list {
-	/**
-	 * Test whether the given prefix is allowed to connect.
-	 * \param pfx prefix string, with or without /mask (/32 default)
-	 * \returns see class description
-	 * \throws invalid_prefix if the prefix could not be parsed.
-	 */
-	pair<bool,uint16_t>	allowed	(char const *pfx) const;
-
-	/**
-	 * Test whether the given prefix is allowed to connect.
-	 * \param pfx prefix string, with or without /mask (/32 default)
-	 * \returns see class description
-	 * \throws invalid_prefix if the prefix could not be parsed.
-	 */
-	pair<bool,uint16_t>	allowed	(string const &pfx) const;
-
-	/**
-	 * Test whether the given IP address is allowed to connect.
-	 * \param pfx address to test; /32 mask is assumed
-	 * \returns see class description
-	 */
-	pair<bool,uint16_t>	allowed	(sockaddr const *pfx) const;
-
-	/**
-	 * Test whether the given prefix is allowed to connect.
-	 * \param pfx prefix to test
-	 * \returns see class description
-	 */
-	pair<bool,uint16_t>	allowed	(prefix const &pfx) const;
-
-	/**
-	 * Allow the given prefix to connect. 
-	 * \param pfx the prefix to allow.  if the prefix has no mask, /32
-	 * is assumed.
-	 * \param flags flags value; returned verbatim by allowed()
-	 * \throws invalid_prefix if the prefix could not be parsed.
-	 */
-	void	allow	(char const *pfx, uint16_t flags = 0);
-
-	/**
-	 * Allow the given prefix to connect. 
-	 * \param pfx the prefix to allow.  if the prefix has no mask, /32
-	 * is assumed.
-	 * \param flags flags value; returned verbatim by allowed()
-	 * \throws invalid_prefix if the prefix could not be parsed.
-	 */
-	void	allow	(string const &pfx, uint16_t flags = 0);
-
-	/**
-	 * Disallow the given prefix from connecting. 
-	 * \param pfx the prefix to deny.  if the prefix has no mask, /32
-	 * is assumed.
-	 * \param flags flags value; returned verbatim by allowed()
-	 * \throws invalid_prefix if the prefix could not be parsed.
-	 */
-	void	deny	(char const *pfx, uint16_t flags = 0);
-
-	/**
-	 * Disallow the given prefix from connecting. 
-	 * \param pfx the prefix to deny.  if the prefix has no mask, /32
-	 * is assumed.
-	 * \param flags flags value; returned verbatim by allowed()
-	 * \throws invalid_prefix if the prefix could not be parsed.
-	 */
-	void	deny	(string const &pfx, uint16_t flags = 0);
-
-	/**
-	 * Test if the tree is empty.
-	 * \returns true if empty, otherwise false
-	 */
-	bool	empty	(void) const;
-
-private:
-	/**
-	 * Add an entry to the base radix tree.
-	 * \returns new entry, or existing entry if duplicate.
-	 */
-	radix<uint32_t>::iterator _add	(prefix const &, int);
-
-	/**
-	 * Search the tree for an address.
-	 * \returns the prefix node if found, else NULL
-	 */
-	radix<uint32_t>::const_iterator _get	(prefix const &) const;
-
-	/**
-	 * \returns an end() for the appropriate address family
-	 */
-	radix<uint32_t>::const_iterator _end	(prefix const &) const;
-
-	static const int	_denyflg;	/**< Flag value for denied pfxs */
-	static const int	_allowflg;	/**< Flag value for allowed pfxs */
-
-	radix<uint32_t>		_v4;	/**< Access list for v4 prefixes */
-	radix<uint32_t>		_v6;	/**< Access list for v6 prefixes */
 };
 
 template<typename T>
@@ -688,7 +509,8 @@ int		 cnt = 0;
 
 	while (--cnt >= 0) {
 		node = stack[cnt];
-		if (comp_with_mask(node->pfx->tochar(), prefix.tochar(), node->pfx->prefixlen)) { 
+		if (radix_detail::comp_with_mask(node->pfx->tochar(), 
+		    prefix.tochar(), node->pfx->prefixlen)) { 
 			return iterT(node);
 		}
 	}
@@ -786,7 +608,8 @@ uint8_t const	*addr;
 		return iterT();
 	assert(node->bit == pfx.prefixlen);
 	assert(node->bit == node->pfx->prefixlen);
-	if (comp_with_mask(node->pfx->tochar(), pfx.tochar(), pfx.prefixlen))
+	if (radix_detail::comp_with_mask(node->pfx->tochar(), pfx.tochar(), 
+	    pfx.prefixlen))
 		return iterT(node);
 	
 	return iterT();

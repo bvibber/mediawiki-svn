@@ -37,7 +37,7 @@ namespace mpl = boost::mpl;
 #include "log.h"
 #include "ptalloc.h"
 #include "format.h"
-#include "config.h"
+#include "autoconf.h"
 
 typedef unsigned long long w_size_t;
 
@@ -136,6 +136,8 @@ struct ptmf_transform2 {
 		(static_cast<T*>(p)->*ptmf)(a, b);
 	}
 };
+
+#include "access.h"
 
 extern struct stats_stru : noncopyable {
 	atomic<int>	interval;	/* update interval	*/
