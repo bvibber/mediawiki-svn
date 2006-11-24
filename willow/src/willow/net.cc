@@ -287,7 +287,7 @@ char	res[NI_MAXHOST];
 int	i;
 	if (!lng) {
 		if (_shortaddr.empty()) {
-			if ((i = getnameinfo(reinterpret_cast<sockaddr const *>(&_addr),
+			if ((i = getnameinfo(sockaddr_cast<sockaddr const *>(&_addr),
 			    _addrlen, res, sizeof(res), NULL, 0, NI_NUMERICHOST)) != 0)
 				throw resolution_error(i);
 			_shortaddr = res; 
@@ -297,7 +297,7 @@ int	i;
 
 	if (_straddr.empty()) {
 	char	port[NI_MAXSERV];
-		if ((i = getnameinfo(reinterpret_cast<sockaddr const *>(&_addr),
+		if ((i = getnameinfo(sockaddr_cast<sockaddr const *>(&_addr),
 		    _addrlen, res, sizeof(res), port, sizeof(port), 
 			NI_NUMERICHOST | NI_NUMERICSERV)) != 0)
 			throw resolution_error(i);

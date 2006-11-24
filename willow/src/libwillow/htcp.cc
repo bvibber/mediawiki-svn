@@ -669,14 +669,14 @@ htcp_encoder::encode_sockaddr(marshalling_buffer &buf, sockaddr const *addr)
 {
 	switch (addr->sa_family) {
 	case AF_INET: {
-	sockaddr_in const *in = reinterpret_cast<sockaddr_in const *>(addr);
+	sockaddr_in const *in = sockaddr_cast<sockaddr_in const *>(addr);
 		buf.append<uint32_t>(in->sin_addr.s_addr);
 		buf.append<uint16_t>(in->sin_port);
 		return;
 	}
 
 	case AF_INET6: {
-	sockaddr_in6 const *in = reinterpret_cast<sockaddr_in6 const *>(addr);
+	sockaddr_in6 const *in = sockaddr_cast<sockaddr_in6 const *>(addr);
 		buf.append_bytes(in->sin6_addr.s6_addr, 16);
 		buf.append<uint16_t>(in->sin6_port);
 		return;

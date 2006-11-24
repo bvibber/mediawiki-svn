@@ -13,6 +13,11 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#include <sys/socket.h>
+#include <sys/un.h>
+
+#include <netinet/in.h>
+
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
 #include <boost/lexical_cast.hpp>
@@ -22,6 +27,14 @@
 #include <boost/assign/list_of.hpp>
 #include <boost/format.hpp>
 #include <boost/mpl/int.hpp>
+#include <boost/mpl/map.hpp>
+#include <boost/mpl/set.hpp>
+#include <boost/mpl/at.hpp>
+#include <boost/mpl/pair.hpp>
+#include <boost/mpl/vector.hpp>
+#include <boost/mpl/find.hpp>
+#include <boost/mpl/has_key.hpp>
+#include <boost/type_traits.hpp>
 
 #include <iostream>
 #include <string>
@@ -39,12 +52,16 @@ using boost::io::str;
 using boost::basic_format;
 using boost::shared_ptr;
 using boost::enable_if;
+using boost::remove_pointer;
+using boost::remove_const;
 
 using std::runtime_error;
 using std::basic_string;
 using std::char_traits;
 using std::vector;
 using std::map;
+
+#include "autoconf.h"
 
 #ifdef __INTEL_COMPILER
 # pragma warning (disable: 869 981 304 383 1418 1469 810 444)
@@ -70,6 +87,57 @@ typedef boost::archive::iterators::binary_from_base64<
 template<typename T>
 struct is_char_type : mpl::int_<sizeof(T) == 1> {
 };
+
+#ifdef WILLOW_DEBUG
+typedef mpl::map<
+        mpl::pair<sockaddr_in, mpl::int_<AF_INET> >,
+        mpl::pair<sockaddr_in6, mpl::int_<AF_INET6> >,
+        mpl::pair<sockaddr_un, mpl::int_<AF_UNIX> >,
+	mpl::pair<sockaddr_storage, mpl::int_<AF_UNSPEC> >
+> aftypes;
+
+template<typename T>
+struct is_sockaddr : mpl::has_key<aftypes::type, 
+	typename remove_const<typename remove_pointer<T>::type>::type> {
+};
+
+template<typename To, typename From>
+struct sockaddr_caster {
+	static To cast(From f) {
+		assert((mpl::at<aftypes::type, typename remove_const<typename 
+			remove_pointer<To>::type>::type>::type::value == f->sa_family));
+		return reinterpret_cast<To>(f);
+	}
+};
+
+template<typename From>
+struct sockaddr_caster<sockaddr *, From> {
+	typedef typename enable_if<is_sockaddr<From>, int>::type type;
+
+	static sockaddr *cast(From f) {
+		return reinterpret_cast<sockaddr *>(f);
+	}
+};
+
+template<typename From>
+struct sockaddr_caster<sockaddr const *, From> {
+	typedef typename enable_if<is_sockaddr<From>, int>::type type;
+
+	static sockaddr const *cast(From f) {
+		return reinterpret_cast<sockaddr const *>(f);
+	}
+};
+
+#endif
+
+template<typename To, typename From>
+To sockaddr_cast(From from) {
+#ifdef WILLOW_DEBUG
+	return sockaddr_caster<To, From>::cast(from);
+#else
+	return reinterpret_cast<To>(from);
+#endif
+}
 
 /**
  * Find a "\r\n" sequence in a string.

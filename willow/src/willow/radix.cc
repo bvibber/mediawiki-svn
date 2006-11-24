@@ -157,12 +157,12 @@ sockaddr_in6 const	*in6;
 	switch (_family) {
 	case AF_INET:
 		prefixlen = 32;
-		in = reinterpret_cast<sockaddr_in const *>(addr);
+		in = sockaddr_cast<sockaddr_in const *>(addr);
 		memcpy(&add.sin4, &in->sin_addr, sizeof(in->sin_addr));
 		break;
 	case AF_INET6:
 		prefixlen = 128;
-		in6 = reinterpret_cast<sockaddr_in6 const *>(addr);
+		in6 = sockaddr_cast<sockaddr_in6 const *>(addr);
 		memcpy(&add.sin6, &in6->sin6_addr, sizeof(in6->sin6_addr));
 		break;
 	default:

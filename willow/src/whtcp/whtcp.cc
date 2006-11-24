@@ -320,8 +320,8 @@ timeval	tv;
 
 	sockaddr_storage	 local;
 	socklen_t		 loclen = sizeof(local);
-		getsockname(sfd, reinterpret_cast<sockaddr *>(&local), &loclen);
-		obuf.build_packet(reinterpret_cast<sockaddr *>(&local), r->ai_addr);
+		getsockname(sfd, sockaddr_cast<sockaddr *>(&local), &loclen);
+		obuf.build_packet(sockaddr_cast<sockaddr *>(&local), r->ai_addr);
 
 	char const		*buf = obuf.packet();
 	size_t			 len = obuf.packet_length();
