@@ -229,23 +229,29 @@ static void
 radix_from_list(tree_entry &e, access_list &rad)
 {
 value		*val;
-int		 immed = 0;
+int		 flags = 0;
 	if ((val = e/"apply-at") != NULL)
 		if (val->cv_values[0].av_strval == "connect")
-			immed = whttp_deny_connect;
+			flags |= http_deny_connect;
+
+	if ((val = e/"log") != NULL)
+		if (val->cv_values[0].av_intval)
+			flags |= http_log_denied;
+
+	WDEBUG(format("radix_from_list: flags=%d") % flags);
 
 	if ((val = e/"allow") != NULL) {
 	vector<avalue>::iterator	it = val->cv_values.begin(),
 					end = val->cv_values.end();
 		for (; it != end; ++it)
-			rad.allow(it->av_strval, immed);
+			rad.allow(it->av_strval, flags);
 	}
 
 	if ((val = e/"deny") != NULL) {
 	vector<avalue>::iterator	it = val->cv_values.begin(),
 					end = val->cv_values.end();
 		for (; it != end; ++it)
-			rad.deny(it->av_strval, immed);
+			rad.deny(it->av_strval, flags);
 	}
 }
 
@@ -516,6 +522,7 @@ conf
 		.value("allow",		func(radix_prefix),	ignore)
 		.value("deny",		func(radix_prefix),	ignore)
 		.value("apply-at",	func(v_apply_at),	ignore)
+		.value("log",		simple_yesno,		ignore)
 	;
 
 	if ((t = conf::parse_file(file)) == NULL)

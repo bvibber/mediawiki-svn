@@ -312,8 +312,9 @@ log {
  * match prefix for the client's address is used to decide whether they are
  * given access.
  *
- * There is no default-deny.  To deny access by default, add a deny entry for
- * all addresses (0.0.0.0/0 in IPv4 or ::0/0 in IPv6).
+ * If no access block is specified, all clients are allowed access.  If anyone
+ * is allowed access or denied explicitly, all other clients are denied.  To
+ * overrule this, add an allow entry for ::0/0 or 0.0.0.0/0.
  *
  * If "apply-at = connect;" is set in an access block, clients matching a
  * deny rule in that block will be disconnected immediately, without waiting
@@ -331,6 +332,12 @@ access {
 	/* allow everyone via IPv6 except localhost */
 	allow = "::0/0";
 	deny = "::1/128";
+
+	/*
+	 * Log denied connections.  This only works for explicitly denied hosts;
+	 * to log all denied connections, add a deny for ::0/0 or 0.0.0.0/0.
+	 */
+	log = no;
 };
 
 /*

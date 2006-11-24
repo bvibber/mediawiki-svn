@@ -641,6 +641,8 @@ iterator	 it;
 		return make_pair(it, false);
 	}
 
+	WDEBUG(format("RADIX: insert: value = %s") % value);
+
 	if (head == NULL) {
 		node = new radix_node<T>;
 		node->bit = pfx.prefixlen;

@@ -10,10 +10,11 @@
 
 /* @(#) $Id$ */
 
-#ifndef WHTTP_H
-#define WHTTP_H
+#ifndef HTTP_H
+#define HTTP_H
 
-static const int whttp_deny_connect = 0x1;
+static const int http_deny_connect = 0x1;
+static const int http_log_denied = 0x2;
 
 struct event_base;
 

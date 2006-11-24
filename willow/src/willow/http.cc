@@ -166,7 +166,11 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	cached_spigot			*_cache_spigot;
 
 	backend_list	*_blist;
-	bool		 _denied;
+	enum {
+		denied_no = 0,
+		denied_log,
+		denied_yes
+	}		 _denied;
 	int		 _group;
 	int		 _response;
 	imstring	 _request_host;
@@ -197,7 +201,7 @@ httpcllr::httpcllr(wsocket *s, int gr)
 	, _cache_filter(NULL)
 	, _cache_spigot(NULL)
 	, _blist(NULL)
-	, _denied(false)
+	, _denied(denied_no)
 	, _group(gr)
 	, _response(0)
 	, _nredir(0)
@@ -208,11 +212,19 @@ httpcllr::httpcllr(wsocket *s, int gr)
 	 */
 pair<bool, uint16_t>	acc = config.access.allowed(s->address().addr());
 	if (!acc.first) {
-		if (acc.second & whttp_deny_connect) {
+		WDEBUG(format("HTTP: client denied, flags = %d") % acc.second);
+		if (acc.second & http_deny_connect) {
+			if (acc.second & http_log_denied)
+				wlog.notice(format("denied connection from %s")
+					% s->straddr());
 			delete this;
 			return;
 		}
-		_denied = true;
+
+		if (acc.second & http_log_denied)
+			_denied = denied_log;
+		else
+			_denied = denied_yes;
 	}
 
 	_client_spigot = new io::socket_spigot(_client_socket);
@@ -350,7 +362,13 @@ httpcllr::header_read_complete(void)
 	_request_host = _header_parser->_http_host;
 	_request_path = _header_parser->_http_path;
 
-	if (_denied) {
+	if (_denied != denied_no) {
+		if (_denied == denied_log)
+			wlog.notice(format("denied %s \"http://%s/%s\" from %s")
+				% request_string[_header_parser->_http_reqtype]
+				% _request_host % _request_path
+				% _client_socket->straddr());
+
 		send_error(ERR_BLOCKED, "You are not permitted to access this server.",
 				403, "Forbidden");
 		return;

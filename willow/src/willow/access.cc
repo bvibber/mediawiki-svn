@@ -22,10 +22,10 @@ struct access_list_impl {
 	pair<bool,uint16_t>	allowed	(string const &pfx) const;
 	pair<bool,uint16_t>	allowed	(sockaddr const *pfx) const;
 	pair<bool,uint16_t>	allowed	(prefix const &pfx) const;
-	void	allow	(char const *pfx, uint16_t flags = 0);
-	void	allow	(string const &pfx, uint16_t flags = 0);
-	void	deny	(char const *pfx, uint16_t flags = 0);
-	void	deny	(string const &pfx, uint16_t flags = 0);
+	void	allow	(char const *pfx, uint16_t flags);
+	void	allow	(string const &pfx, uint16_t flags);
+	void	deny	(char const *pfx, uint16_t flags);
+	void	deny	(string const &pfx, uint16_t flags);
 	bool	empty	(void) const;
 
 	radix<uint32_t>::iterator _add	(prefix const &, int);
@@ -42,7 +42,7 @@ struct access_list_impl {
 /*
  * Lower 16 bits are reserved for consumers.
  */
-const int access_list_impl::_denyflg		= 0x10000;
+const int access_list_impl::_denyflg	= 0x10000;
 const int access_list_impl::_allowflg	= 0x20000;
 
 pair<bool,uint16_t>
@@ -142,6 +142,7 @@ access_list_impl::allow(string const &s, uint16_t flags)
 void
 access_list_impl::deny(char const *s, uint16_t flags)
 {
+	WDEBUG(format("deny: flags = %d") % flags);
 	_add(prefix(s), _denyflg | (flags & 0xFFFF));
 }
 
