@@ -11,12 +11,13 @@
 /* @(#) $Id$ */
 		
 #include "cache.h"
+#include "config.h"
 
 /*
  * Create the cachedir list.
  */
 cachedir_data_store::cachedir_data_store(void)
-: _curdir(0)
+	: _curdir(0)
 {
 vector<cachedir>::iterator it = config.cachedirs.begin(), end = config.cachedirs.end();
 	for (; it != end; ++it)

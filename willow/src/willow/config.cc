@@ -59,7 +59,7 @@ string		 group = "<default>";
 map<string, int>::iterator it;
 
 	if ((val = e/"port") != NULL)
-		port = CONF_AINTVAL(*val);
+		port = val->cv_values[0].av_intval;
 	if ((val = e/"aftype") != NULL)
 		if (val->cv_values[0].av_strval == "ipv6")
 			family = AF_INET6;
@@ -93,7 +93,7 @@ int		 fam = AF_UNSPEC;
 addrlist	*res;
 
 	if ((val = e/"port") != NULL)
-		port = CONF_AINTVAL(*val);
+		port = val->cv_values[0].av_intval;
 
 	if ((val = e/"aftype") != NULL)
 		if (val->cv_values[0].av_strval == "ipv6")

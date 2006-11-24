@@ -15,6 +15,7 @@ using std::ostream;
 
 #include "cache.h"
 #include "mbuffer.h"
+#include "config.h"
 
 cachedentity::cachedentity(imstring const &url, size_t hint)
 	: _url(url)

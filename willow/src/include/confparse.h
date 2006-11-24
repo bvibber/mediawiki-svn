@@ -25,6 +25,7 @@
 using std::map;
 using std::vector;
 using std::pair;
+using std::multimap;
 
 #include "willow.h"
 #include "util.h"
@@ -114,7 +115,7 @@ struct tree_entry {
 
         string			item_name;     /* e.g. "oper"                          */
         string			item_key;      /* e.g. "bar"                           */
-        map<string, value>	item_values;
+        multimap<string, value>	item_values;
 	declpos			item_pos;
         bool			item_unnamed;
         bool			item_touched;
@@ -141,12 +142,16 @@ struct tree {
 	 * touched.
 	 *
 	 */
-	bool		add		(tree_entry const &);
+	bool		 add		(tree_entry const &);
 	tree_entry	*find_item	(tree_entry const &);
 	tree_entry	*find		(string const &key);
 	tree_entry	*find		(string const &key, string const &name);
-	tree_entry	*find_or_new	(string const &block, string const &name, declpos const &pos,
-					 bool unnamed, bool is_template);
+	tree_entry	*find_or_new	(string const &block, string const &name,
+					 declpos const &pos,  bool unnamed,
+					 bool is_template);
+	tree_entry	*create		(string const &block, string const &name,
+					 declpos const &pos,  bool unnamed,
+					 bool is_template);
 
 	vector<tree_entry>	entries;
 };
@@ -423,21 +428,9 @@ private:
 	int				 flags;
 };
 
-/* get the first string or int value from an avalue */
-#define CONF_FIRST(value) ((value).cv_values[0])
-#define CONF_ASTRVAL(value) (				\
-        assert((value).is_single(cv_string)		\
-	       || (value).is_single(cv_qstring)),	\
-        CONF_FIRST(value).av_strval)
-
-#define CONF_AINTVAL(value) (				\
-	assert((value).is_single(cv_int)		\
-	       || (value).is_single(cv_time)		\
-	       || (value).is_single(cv_yesno)),		\
-	CONF_FIRST(value).av_intval)
 
 /*
- * these are mostly internal to the configuration parser.
+ * These are mostly internal to the configuration parser.
  */
 
 tree_entry	*new_tree_entry_from_template(tree &t, string const &,

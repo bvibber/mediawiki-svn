@@ -240,6 +240,24 @@ tree_entry	*f, n(pos);
 }
 
 tree_entry *
+tree::create(
+	string const	&block,
+	string const	&name,
+	declpos const	&pos,
+	bool		 unnamed,
+	bool		 is_template
+) {
+tree_entry	n(pos);
+	n.item_unnamed = unnamed;
+	n.item_name = block;
+	n.item_key = name;
+	n.item_pos = pos;
+	n.item_is_template = is_template;
+	entries.push_back(n);
+	return &*entries.rbegin();
+}
+
+tree_entry *
 tree::find_item(tree_entry const &e)
 {
 	if (e.item_unnamed)
@@ -271,7 +289,7 @@ find_untouched(tree &t)
 {
 int		 i = 0;
 vector<tree_entry>::const_iterator	it, end;
-map<string, value>::const_iterator	vit, vend;
+multimap<string, value>::const_iterator	vit, vend;
 	for (it = t.entries.begin(), end = t.entries.end(); it != end; ++it) {
 		if (it->item_is_template)
 			continue;
@@ -298,7 +316,7 @@ map<string, value>::const_iterator	vit, vend;
 value *
 tree_entry::operator/(string const &name)
 {
-map<string, value>::iterator	it;
+multimap<string, value>::iterator	it;
 	it = item_values.find(name);
 	if (it == item_values.end())
 		return NULL;
@@ -531,7 +549,7 @@ block_definer::block(string const &name_, int flags_)
 bool
 block_definer::validate(tree_entry &e)
 {
-map<string, conf::value>::iterator	it, end_;
+multimap<string, conf::value>::iterator	it, end_;
 map<string, value_definer *>::iterator	vit;
 bool ret = true;
 	for (it = e.item_values.begin(), end_ = e.item_values.end(); it != end_; ++it) {
@@ -553,7 +571,7 @@ bool ret = true;
 void
 block_definer::set(tree_entry &e)
 {
-map<string, conf::value>::iterator	it, end_;
+multimap<string, conf::value>::iterator	it, end_;
 map<string, value_definer *>::iterator	vit;
 	for (it = e.item_values.begin(), end_ = e.item_values.end(); it != end_; ++it) {
 		vit = values.find(it->first);

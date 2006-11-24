@@ -151,6 +151,16 @@ access_list_impl::deny(string const &s, uint16_t flags)
 	deny(s.c_str(), flags);
 }
 
+access_list::access_list(void)
+{
+	impl = new access_list_impl;
+}
+
+access_list::~access_list(void)
+{
+	delete impl;
+}
+
 pair<bool,uint16_t>
 access_list::allowed(char const *pfx) const
 {

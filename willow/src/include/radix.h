@@ -191,7 +191,6 @@ struct radix {
 	 */
 	pair<iterator, bool>	insert		(prefix const &pfx, T const &value);
 
-	 */
 	/**
 	 * Equivalent to insert(prefix(pfx), value).
 	 * \throws invalid_prefix if the prefix could not be parsed.

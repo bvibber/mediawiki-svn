@@ -16,6 +16,9 @@
 #include <sys/types.h>
 
 #include <algorithm>
+#include <utility>
+using std::pair;
+using std::make_pair;
 using std::back_inserter;
 
 #include <db.h>

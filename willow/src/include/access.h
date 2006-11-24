@@ -41,6 +41,9 @@ struct access_list_impl;
  * list.
  */
 struct access_list {
+	access_list();
+	~access_list();
+
 	/**
 	 * Test whether the given prefix is allowed to connect.
 	 * \param pfx prefix string, with or without /mask (/32 default)

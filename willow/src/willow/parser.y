@@ -340,12 +340,14 @@ block:	template_clause string key_clause from_clause optional_block semicolon
 				goto end;
 			}
 		} else {
+#if 0
 			if ((e = conf::parsing_tree.find(*$2, block_key)) != NULL) {
 				conf::report_parse_error("%s \"%s\" already defined at %s",
 					$2->c_str(), block_key, e->item_pos.format().c_str());
 				goto end;
 			}
-			e = conf::parsing_tree.find_or_new(*$2, block_key, conf::declpos::here(), unnamed, $1);
+#endif
+			e = conf::parsing_tree.create(*$2, block_key, conf::declpos::here(), unnamed, $1);
 		}
 		
 		if ($5) for (it = $5->begin(), end = $5->end(); it != end; ++it) {
