@@ -372,8 +372,8 @@ htcp_decoder	ibuf(rbuf, i);
 		cout << "Entity: " << argv[1];
 
 		if (ibuf.response() == 0) { /* entity found */
-		htcp_opdata_tst_resp_found *opd =
-			(htcp_opdata_tst_resp_found *) ibuf.opdata();
+		htcp_opdata_tst_resp_found const *opd =
+			static_cast<htcp_opdata_tst_resp_found const *>(ibuf.opdata());
 			cout << " is cached;\n";
 			cout << "Response headers:\n";
 			copy(opd->tf_detail.hd_resphdrs.begin(),
@@ -390,8 +390,8 @@ htcp_decoder	ibuf(rbuf, i);
 			     opd->tf_detail.hd_cachehdrs.end(),
 			     tab_outputter<string>(cout));
 		} else {
-		htcp_opdata_tst_resp_notfound *opd =
-			(htcp_opdata_tst_resp_notfound *) ibuf.opdata();
+		htcp_opdata_tst_resp_notfound const *opd =
+			static_cast<htcp_opdata_tst_resp_notfound const *>(ibuf.opdata());
 			cout << " is not cached;\n";
 			cout << "Cache headers:\n";
 			copy(opd->tn_cachehdrs.begin(),

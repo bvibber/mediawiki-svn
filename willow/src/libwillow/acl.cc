@@ -57,8 +57,8 @@ aclprefix::match (const aclprefix *p) const
 int	offset;
 int	shift;
 
-	uint8_t *np = (uint8_t *)&this->u.val;
-	uint8_t *pp = (uint8_t *)&p->u.val;
+	uint8_t const *np = (uint8_t const *)&this->u.val;
+	uint8_t const *pp = (uint8_t const *)&p->u.val;
 
 	/* If n's prefix is longer than p's one return 0. */
  	if (this->prefixlen > p->prefixlen)
@@ -81,7 +81,7 @@ aclprefix::match (const sockaddr *sa) const
 aclprefix	a;
 	switch (sa->sa_family) {
 	case AF_INET: {
-	sockaddr_in      *mysin = (sockaddr_in *) sa;
+	sockaddr_in const	*mysin = (sockaddr_in const *) sa;
 		a.family = AF_INET;
 		a.prefixlen = 32;
 		memcpy (&a.u.val, &mysin->sin_addr, sizeof(in_addr));
@@ -89,7 +89,7 @@ aclprefix	a;
 	}
 #ifdef AF_INET6
 	case AF_INET6: {
-	sockaddr_in6     *mysin6 = (sockaddr_in6 *) sa;
+	sockaddr_in6 const	*mysin6 = (sockaddr_in6 const *) sa;
 		a.family = AF_INET6;
 		a.prefixlen = 128;
 		memcpy (&a.u.val, &mysin6->sin6_addr, sizeof(in6_addr));

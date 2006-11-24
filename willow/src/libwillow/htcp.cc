@@ -24,7 +24,7 @@ get_transid(void)
 }
 
 size_t
-socklen(sockaddr *addr)
+socklen(sockaddr const *addr)
 {
 	switch (addr->sa_family) {
 	case AF_INET:
@@ -243,7 +243,7 @@ htcp_encoder::opdata(void)
 }
 
 bool
-htcp_encoder::build_packet(sockaddr *src, sockaddr *dest)
+htcp_encoder::build_packet(sockaddr const *src, sockaddr const *dest)
 {
 int		headerlen, oplen, authlen;
 
@@ -296,7 +296,7 @@ int		headerlen, oplen, authlen;
 
 bool
 htcp_decoder::verify_signature(string const &nkeyname, ustring const &key,
-		sockaddr *src, sockaddr *dst)
+		sockaddr const *src, sockaddr const *dst)
 {
 marshalling_buffer	buf;
 ustring			sig;
@@ -665,18 +665,18 @@ htcp_auth::build(marshalling_buffer &buf) const
 }
 
 void
-htcp_encoder::encode_sockaddr(marshalling_buffer &buf, sockaddr *addr)
+htcp_encoder::encode_sockaddr(marshalling_buffer &buf, sockaddr const *addr)
 {
 	switch (addr->sa_family) {
 	case AF_INET: {
-	sockaddr_in *in = reinterpret_cast<sockaddr_in *>(addr);
+	sockaddr_in const *in = reinterpret_cast<sockaddr_in const *>(addr);
 		buf.append<uint32_t>(in->sin_addr.s_addr);
 		buf.append<uint16_t>(in->sin_port);
 		return;
 	}
 
 	case AF_INET6: {
-	sockaddr_in6 *in = reinterpret_cast<sockaddr_in6 *>(addr);
+	sockaddr_in6 const *in = reinterpret_cast<sockaddr_in6 const *>(addr);
 		buf.append_bytes(in->sin6_addr.s6_addr, 16);
 		buf.append<uint16_t>(in->sin6_port);
 		return;

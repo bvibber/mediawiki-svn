@@ -293,9 +293,9 @@ marshaller<Key>			keymarsh;
 	memset(&dbvalue, 0, sizeof(dbvalue));
 	mkey = keymarsh.marshall(key);
 	mvalue = _store->store(value);
-	dbkey.data = (void *) mkey.first;
+	dbkey.data = const_cast<void *>(static_cast<void const *>(mkey.first));
 	dbkey.size = mkey.second;
-	dbvalue.data = (void *) mvalue.first;
+	dbvalue.data = const_cast<void *>(static_cast<void const *>(mvalue.first));
 	dbvalue.size = mvalue.second;
 	
 	_error = _db->put(_db, txn ? txn->_txn : NULL, &dbkey, &dbvalue,
@@ -326,7 +326,7 @@ marshaller<Key>			keymarsh;
 	memset(&dbkey, 0, sizeof(dbkey));
 	memset(&dbvalue, 0, sizeof(dbvalue));
 	mkey = keymarsh.marshall(key);
-	dbkey.data = (void *) mkey.first;
+	dbkey.data = const_cast<void *>(static_cast<void const *>(mkey.first));
 	dbkey.size = mkey.second;
 	dbvalue.flags = DB_DBT_MALLOC;
 	_error = _db->get(_db, txn ? txn->_txn : NULL, &dbkey, &dbvalue, 0);
@@ -334,7 +334,7 @@ marshaller<Key>			keymarsh;
 		return NULL;
 Value	*ret;
 	ret = _store->retrieve(pair<char const *, uint32_t>(
-			(char const *) dbvalue.data, dbvalue.size));
+			static_cast<char const *>(dbvalue.data), dbvalue.size));
 	free(dbvalue.data);
 	return ret;
 }
@@ -355,7 +355,7 @@ DBT				dbkey;
 marshaller<Key>			keymarsh;
 	memset(&dbkey, 0, sizeof(dbkey));
 	mkey = keymarsh.marshall(key);
-	dbkey.data = (void *)mkey.first;
+	dbkey.data = const_cast<void *>(static_cast<void const *>(mkey.first));
 	dbkey.size = mkey.second;
 	_error = _db->del(_db, txn ? txn->_txn : NULL, &dbkey, 0);
 	if (_error != 0)

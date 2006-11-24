@@ -105,7 +105,7 @@ htcp_encoder	op;
 		if (!ip.rd())
 			break;
 
-	htcp_opdata_tst	*opd = (htcp_opdata_tst *)ip.opdata();
+	htcp_opdata_tst	const *opd = static_cast<htcp_opdata_tst const *>(ip.opdata());
 		WDEBUG(format("HTCP: TST: url=[%s]")
 			% opd->tst_specifier.hs_url);
 	bool	cached = entitycache.cached(opd->tst_specifier.hs_url);
@@ -127,7 +127,7 @@ htcp_encoder	op;
 	}
 
 	case htcp_op_clr: {
-	htcp_opdata_clr *opd = (htcp_opdata_clr *)ip.opdata();
+	htcp_opdata_clr const *opd = static_cast<htcp_opdata_clr const *>(ip.opdata());
 	htcp_opdata_clr_resp rd;
 	bool	wascached = entitycache.purge(opd->clr_specifier.hs_url);
 

@@ -390,7 +390,7 @@ int		 htype;
 	while ((rn = find_rn(bufp, bufp + len)) != NULL) {
 		WDEBUG(format("processing: [%s]") % string(bufp, rn));
 		for (char const *c = bufp; c < rn; ++c)
-			if (*(unsigned char *)c > 0x7f || !*c)
+			if (*reinterpret_cast<unsigned char const *>(c) > 0x7f || !*c)
 				return io::sink_result_error;
 		WDEBUG("chars all okay");
 

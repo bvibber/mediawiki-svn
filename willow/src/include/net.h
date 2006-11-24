@@ -219,7 +219,8 @@ struct address : freelist_allocator<address> {
 
 	socket 	 *makesocket  (char const *, sprio) const;
 	int	  length  (void) const {	return _addrlen;		}
-	sockaddr *addr    (void) const {	return (sockaddr *)&_addr;	}
+	sockaddr const *addr    (void) const {	return (sockaddr const *)&_addr;	}
+	sockaddr *addr    (void)       {	return (sockaddr *)&_addr;	}
 	int	  family  (void) const {	return _fam;			}
 	int	  socktype(void) const {	return _stype;			}
 	int	  protocol(void) const {	return _prot;			}

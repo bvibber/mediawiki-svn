@@ -21,15 +21,15 @@ using boost::lexical_cast;
 #include "packet_decoder.h"
 
 struct logent_buf {
-	uint32_t	*r_reqtime;
-	uint16_t	*r_clilen, *r_pathlen, *r_belen;
+	uint32_t const	*r_reqtime;
+	uint16_t const	*r_clilen, *r_pathlen, *r_belen;
 	char const	*r_cliaddr;
-	uint8_t		*r_reqtype;
+	uint8_t	const	*r_reqtype;
 	char const	*r_path;
-	uint16_t	*r_status;
+	uint16_t const	*r_status;
 	char const	*r_beaddr;
-	uint8_t		*r_cached;
-	uint32_t	*r_docsize;
+	uint8_t	const	*r_cached;
+	uint32_t const	*r_docsize;
 };
 
 const char *reqtypes[] = { "GET", "POST", "HEAD", "TRACE", "OPTIONS", "PURGE" };
@@ -63,19 +63,19 @@ const aclnode	*an;
 				bufp += (s);		\
 			}
 logent_buf	b;
-	b.r_reqtime = (uint32_t *)    bufp;	GET_BYTES(4);
-	b.r_clilen  = (uint16_t *)    bufp;	GET_BYTES(2);
-	b.r_cliaddr = (char const *)  bufp;	GET_BYTES(*b.r_clilen);
-	b.r_reqtype = (uint8_t *)     bufp;	GET_BYTES(1);
-	b.r_pathlen = (uint16_t *)    bufp;	GET_BYTES(2);
-	b.r_path    = (char const *)  bufp;	GET_BYTES(*b.r_pathlen);
-	b.r_status  = (uint16_t *)    bufp;	GET_BYTES(2);
-	b.r_belen   = (uint16_t *)    bufp;	GET_BYTES(2);
-	b.r_beaddr  = (char const*)   bufp;	GET_BYTES(*b.r_belen);
-	b.r_cached =  (uint8_t *)     bufp;	GET_BYTES(1);
+	b.r_reqtime = reinterpret_cast<uint32_t const *>(bufp);	GET_BYTES(4);
+	b.r_clilen  = reinterpret_cast<uint16_t const *>(bufp);	GET_BYTES(2);
+	b.r_cliaddr = reinterpret_cast<char const *>(bufp);	GET_BYTES(*b.r_clilen);
+	b.r_reqtype = reinterpret_cast<uint8_t const *>(bufp);	GET_BYTES(1);
+	b.r_pathlen = reinterpret_cast<uint16_t const *>(bufp);	GET_BYTES(2);
+	b.r_path    = reinterpret_cast<char const *>(bufp);	GET_BYTES(*b.r_pathlen);
+	b.r_status  = reinterpret_cast<uint16_t const *>(bufp);	GET_BYTES(2);
+	b.r_belen   = reinterpret_cast<uint16_t const *>(bufp);	GET_BYTES(2);
+	b.r_beaddr  = reinterpret_cast<char const *>(bufp);	GET_BYTES(*b.r_belen);
+	b.r_cached =  reinterpret_cast<uint8_t const *>(bufp);	GET_BYTES(1);
 	if (buf + 4 >= end)
 		return false;
-	b.r_docsize = (uint32_t *)bufp;
+	b.r_docsize = reinterpret_cast<uint32_t const *>(bufp);
 	if (*b.r_reqtype >= nreqtypes)
 		return false;
 

@@ -151,18 +151,18 @@ char prefixstr[64];
 
 prefix::prefix(sockaddr const *addr)
 {
-sockaddr_in	*in;
-sockaddr_in6	*in6;
+sockaddr_in const	*in;
+sockaddr_in6 const	*in6;
 	_family = addr->sa_family;
 	switch (_family) {
 	case AF_INET:
 		prefixlen = 32;
-		in = (sockaddr_in *)addr;
+		in = reinterpret_cast<sockaddr_in const *>(addr);
 		memcpy(&add.sin4, &in->sin_addr, sizeof(in->sin_addr));
 		break;
 	case AF_INET6:
 		prefixlen = 128;
-		in6 = (sockaddr_in6 *)addr;
+		in6 = reinterpret_cast<sockaddr_in6 const *>(addr);
 		memcpy(&add.sin6, &in6->sin6_addr, sizeof(in6->sin6_addr));
 		break;
 	default:

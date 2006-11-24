@@ -204,7 +204,7 @@ struct htcp_encoder {
 	void		 opdata	 (htcp_opdata *);
 	void		 key	 (string const &, ustring const &);
 
-	bool		 build_packet	(sockaddr *, sockaddr *);
+	bool		 build_packet	(sockaddr const *, sockaddr const *);
 	char const	*packet		(void) const;
 	size_t		 packet_length	(void) const;
 
@@ -214,7 +214,7 @@ struct htcp_encoder {
 			basic_string<charT, traits, alloc> const &);
 
 	static void encode_headerlist(marshalling_buffer &, vector<string> const &);
-	static void encode_sockaddr(marshalling_buffer &, sockaddr *);
+	static void encode_sockaddr(marshalling_buffer &, sockaddr const *);
 
 private:
 	marshalling_buffer	 _buf;
@@ -263,7 +263,7 @@ struct htcp_decoder {
 	int		minor	(void) const;
 	
 	bool verify_signature(string const &keyname, ustring const &key,
-			sockaddr *source, sockaddr *dest);
+			sockaddr const *source, sockaddr const *dest);
 
 	template<typename charT, typename traits, typename allocator>
 	static bool decode_countstr(marshalling_buffer &,

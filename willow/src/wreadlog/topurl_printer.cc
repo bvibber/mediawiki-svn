@@ -172,18 +172,18 @@ tm	*tm;
 	move(0, 0);
 	addstr(timestr);
 	move(1, 0);
-	addstr("    # Hits  Cached       Size  URL");
+	addstr(const_cast<char *>("    # Hits  Cached       Size  URL"));
 	move(2, 0);
 	for (url_counter::toplist::iterator it = urls.begin(),
 	     end = urls.end(); it != end; ++it) {
 	url_counter::url_entry const	&u = it->get();
-		addstr((char *)str(format("%10d  ") % u.count).c_str());
+		addstr(const_cast<char *>(str(format("%10d  ") % u.count).c_str()));
 		if (u.cached)
-			addstr("   YES  ");
+			addstr(const_cast<char *>("   YES  "));
 		else
-			addstr("    NO  ");
-		addstr((char *)str(format("%9d  ") % u.size).c_str());
-		addstr((char *)u.url.c_str());
+			addstr(const_cast<char *>("    NO  "));
+		addstr(const_cast<char *>(str(format("%9d  ") % u.size).c_str()));
+		addstr(const_cast<char *>(u.url.c_str()));
 		move(i + 1, 0);
 		++i;
 	}
