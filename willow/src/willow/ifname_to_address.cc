@@ -22,8 +22,10 @@
 #include <string>
 #include <cstring>
 
+#include <sys/socket.h>
 #include <sys/ioctl.h>
 #include <net/if.h>
+#include <netinet/in.h>
 
 int
 ifname_to_address(int s, sockaddr_in *addr, char const *ifname)
