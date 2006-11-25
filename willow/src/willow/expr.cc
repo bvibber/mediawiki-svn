@@ -87,10 +87,8 @@ struct expression_parser_impl :
 			const &start(void) const { return top; }
 
 		rule<scanner, expr_closure::context_t>
-			add_expr, atom, mod_expr, eq_expr, neq_expr,
-			mul_expr, div_expr, sub_expr, land_expr, lor_expr,
-			lt_expr, gt_expr, le_expr, ge_expr, band_expr,
-			bxor_expr, bor_expr, lsht_expr, rsht_expr, expr;
+			add_expr, atom, eq_expr, mul_expr, land_expr, lor_expr,
+			lt_expr, band_expr, bxor_expr, bor_expr, lsht_expr, expr;
 		rule<scanner> top, identifier;
 
 		definition(expression_parser_impl const &self) {
@@ -112,47 +110,36 @@ band_expr = bxor_expr[band_expr.val = arg1]
 bxor_expr =  bor_expr[bxor_expr.val = arg1]
 		>> *('^'  >>  bor_expr[bxor_expr.val ^= arg1]);
 
-bor_expr  =   lt_expr[bor_expr.val = arg1]
-		>> *('|'  >>   lt_expr[bor_expr.val |= arg1]);
+bor_expr  =   eq_expr[bor_expr.val = arg1]
+		>> *('|'  >>   eq_expr[bor_expr.val |= arg1]);
 
-lt_expr   =   gt_expr[lt_expr.val = arg1]
-		>> *('<'  >>   gt_expr[lt_expr.val = lt_expr.val < arg1]);
+eq_expr   = lt_expr[eq_expr.val = arg1]
+		>> *( ("==" >> lt_expr[eq_expr.val = (eq_expr.val == arg1)])
+		    | ("!=" >> lt_expr[eq_expr.val = (eq_expr.val != arg1)])
+		    );
 
-gt_expr   =   le_expr[gt_expr.val = arg1]
-		>> *('>'  >>   le_expr[gt_expr.val = gt_expr.val > arg1]);
+lt_expr   =   lsht_expr[lt_expr.val = arg1]
+		>> *( ('<'  >> lsht_expr[lt_expr.val = (lt_expr.val < arg1)])
+		    | ('>'  >> lsht_expr[lt_expr.val = (lt_expr.val > arg1)])
+		    | ("<=" >> lsht_expr[lt_expr.val = (lt_expr.val <= arg1)])
+		    | (">=" >> lsht_expr[lt_expr.val = (lt_expr.val >= arg1)])
+		    );
 
-le_expr   =   ge_expr[le_expr.val = arg1]
-		>> *("<=" >>   ge_expr[le_expr.val = le_expr.val <= arg1]);
+lsht_expr = add_expr[lsht_expr.val = arg1]
+		>> *( ("<<" >> add_expr[lsht_expr.val <<= arg1])
+		    | (">>" >> add_expr[lsht_expr.val >>= arg1])
+		    );
 
-ge_expr   =  neq_expr[ge_expr.val = arg1]
-		>> *(">=" >>  neq_expr[ge_expr.val = ge_expr.val >= arg1]);
+add_expr  =  mul_expr[add_expr.val = arg1]
+		>> *( ('+'  >>  mul_expr[add_expr.val += arg1])
+		    | ('-'  >>  mul_expr[add_expr.val -= arg1])
+		    );
 
-neq_expr  =   eq_expr[neq_expr.val = arg1]
-		>> *("!=" >>   eq_expr[neq_expr.val = neq_expr.val != arg1]);
-
-eq_expr   = lsht_expr[eq_expr.val = arg1]
-		>> *("==" >> lsht_expr[eq_expr.val = eq_expr.val == arg1]);
-
-lsht_expr = rsht_expr[lsht_expr.val = arg1]
-		>> *("<<" >> rsht_expr[lsht_expr.val <<= arg1]);
-
-rsht_expr =  add_expr[rsht_expr.val = arg1]
-		>> *(">>" >>  add_expr[rsht_expr.val >>= arg1]);
-
-add_expr  =  sub_expr[add_expr.val = arg1]
-		>> *('+'  >>  sub_expr[add_expr.val += arg1]);
-
-sub_expr  =  mul_expr[sub_expr.val = arg1]
-		>> *('-'  >>  mul_expr[sub_expr.val -= arg1]);
-
-mul_expr  =  mod_expr[mul_expr.val = arg1]
-		>> *('*'  >>  mod_expr[mul_expr.val *= arg1]);
-
-mod_expr  =  div_expr[mod_expr.val = arg1]
-		>> *('%'  >>  div_expr[mod_expr.val %= arg1]);
-
-div_expr  =      atom[div_expr.val = arg1]
-		>> *('/'  >>      atom[div_expr.val /= arg1]);
+mul_expr  =  atom[mul_expr.val = arg1]
+		>> *( ('*'  >>  atom[mul_expr.val *= arg1])
+		    | ('%'  >>  atom[mul_expr.val %= arg1])
+		    | ('/'  >>  atom[mul_expr.val /= arg1])
+		    );
 
 atom =    int_p[atom.val = arg1]
 	| ( '(' >> expr[atom.val = arg1] >> ')' )
@@ -174,18 +161,10 @@ BOOST_SPIRIT_DEBUG_RULE(band_expr);
 BOOST_SPIRIT_DEBUG_RULE(bxor_expr);
 BOOST_SPIRIT_DEBUG_RULE(bor_expr);
 BOOST_SPIRIT_DEBUG_RULE(lt_expr);
-BOOST_SPIRIT_DEBUG_RULE(gt_expr);
-BOOST_SPIRIT_DEBUG_RULE(le_expr);
-BOOST_SPIRIT_DEBUG_RULE(ge_expr);
-BOOST_SPIRIT_DEBUG_RULE(neq_expr);
 BOOST_SPIRIT_DEBUG_RULE(eq_expr);
 BOOST_SPIRIT_DEBUG_RULE(lsht_expr);
-BOOST_SPIRIT_DEBUG_RULE(rsht_expr);
 BOOST_SPIRIT_DEBUG_RULE(add_expr);
-BOOST_SPIRIT_DEBUG_RULE(sub_expr);
 BOOST_SPIRIT_DEBUG_RULE(mul_expr);
-BOOST_SPIRIT_DEBUG_RULE(mod_expr);
-BOOST_SPIRIT_DEBUG_RULE(div_expr);
 BOOST_SPIRIT_DEBUG_RULE(atom);
 
 		}
