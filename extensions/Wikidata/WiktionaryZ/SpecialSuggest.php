@@ -55,7 +55,9 @@ function getSuggestions() {
 			$sql = getSQLForCollectionOfType('TATT');
 			break;
 		case 'language':
-			$sql = getSQLForLanguage();
+			require_once('languages.php');
+			global $wgUser;
+			$sql = getSQLForLanguageNames($wgUser->getOption('language'));
 			$rowText = 'language_name';
 			break;
 		case 'defined-meaning':
@@ -150,24 +152,6 @@ function getSQLForCollectionOfType($collectionType) {
             "AND " . getLatestTransactionRestriction('syntrans') .
             "AND " . getLatestTransactionRestriction('expression') .
             "AND " . getLatestTransactionRestriction('uw_collection_contents');
-}
-
-function getSQLForLanguage() {
-	global
-		$wgUser;
-	
-	$userLanguage = $wgUser->getOption('language');
-
-	if ($userLanguage == 'en')
-		return "SELECT language.language_id AS row_id,language_names.language_name " .
-			"FROM language " .
-			"JOIN language_names ON language.language_id = language_names.language_id " .
-			"WHERE language_names.name_language_id = " . getLanguageIdForCode('en');
-	else
-		return "SELECT language.language_id AS row_id,COALESCE(ln1.language_name,ln2.language_name) AS language_name " .
-			"FROM language " .
-			"LEFT JOIN language_names AS ln1 ON language.language_id = ln1.language_id AND ln1.name_language_id = " . getLanguageIdForCode($userLanguage) . " " .
-			"JOIN language_names AS ln2 ON language.language_id = ln2.language_id AND ln2.name_language_id = " . getLanguageIdForCode('en');
 }
 
 function getRelationTypeAsRecordSet($queryResult) {

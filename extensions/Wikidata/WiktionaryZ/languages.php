@@ -5,20 +5,16 @@ global
 
 $wgLanguageNames = getLangNames($wgUser->getOption('language'));
 
-# Falls back to English if no language name translations available for chosen languages
+/* Return an array containing all language names translated into the language
+	indicated by $code, with fallbacks in English where the language names
+	aren't present in that language. */
 function getLangNames($code) {
-	$id = getLanguageIdForCode($code);
-	
-	if(!$id) 
-		$id = getLanguageIdForCode('en');
-		
-	$names = getLanguageNamesForId($id);
-	
-	if (empty($names)) {
-		$id = getLanguageIdForCode('en');
-		$names = getLanguageNamesForId($id);
-	}
-	
+	$dbr = &wfGetDB(DB_SLAVE);
+	$names = array();
+	$sql = getSQLForLanguageNames($code);
+	$lang_res = $dbr->query($sql);
+	while ($lang_row = $dbr->fetchObject($lang_res))
+		$names[$lang_row->row_id] = $lang_row->language_name;
 	return $names;
 }
 
@@ -29,14 +25,21 @@ function getLanguageIdForCode($code) {
 	return $id_row->language_id;
 }
 
-function getLanguageNamesForId($id) {
-	$dbr = &wfGetDB(DB_SLAVE);
-	$langs = array();
-	$lang_res = $dbr->query("select language_names.language_id,language_names.language_name,language.wikimedia_key from language,language_names where language_names.name_language_id=".$id." and language.language_id=language_names.name_language_id");
-	while($lang_row=$dbr->fetchObject($lang_res)) {
-		$langs[$lang_row->language_id]=$lang_row->language_name;
-	}
-	return $langs;
+/* Return SQL query string for fetching language names. */
+function getSQLForLanguageNames($lang_code) {
+	/* Use a simpler query if the user's language is English. */
+	if ($lang_code == 'en')
+		return "SELECT language.language_id AS row_id,language_names.language_name" .
+			" FROM language" .
+			" JOIN language_names ON language.language_id = language_names.language_id" .
+			" WHERE language_names.name_language_id = " . getLanguageIdForCode('en');
+	/* Fall back on English in cases where a language name is not present in the
+		user's preferred language. */
+	else
+		return "SELECT language.language_id AS row_id,COALESCE(ln1.language_name,ln2.language_name) AS language_name" .
+			" FROM language" .
+			" LEFT JOIN language_names AS ln1 ON language.language_id = ln1.language_id AND ln1.name_language_id = " . getLanguageIdForCode($lang_code) .
+			" JOIN language_names AS ln2 ON language.language_id = ln2.language_id AND ln2.name_language_id = " . getLanguageIdForCode('en');
 }
 
 function getLanguageIdForName($name) {
