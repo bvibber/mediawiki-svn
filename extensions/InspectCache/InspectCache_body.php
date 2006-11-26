@@ -48,8 +48,8 @@ class InspectCache extends SpecialPage
 
 		$wgOut->addHTML( <<<END
 <form name="ucf" method="post" action="$action">
-<div>$radios</div>
 <input type="text" size="80" name="key" value="$encQ"/><br />
+<div>$radios</div>
 <input type="submit" name="submit" value="Get" />
 <input type="submit" name="delete" value="Delete" /><br /><br />
 </form>
