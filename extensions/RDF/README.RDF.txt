@@ -1,7 +1,7 @@
 MediaWiki RDF extension
 
-version 0.6
-24 May 2006
+version 0.7
+26 Nov 2006
 
 This is the README file for the RDF extension for MediaWiki
 software. The extension is only useful if you've got a MediaWiki

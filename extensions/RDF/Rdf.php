@@ -32,7 +32,7 @@ if (defined('MEDIAWIKI')) {
 	require_once(RDFAPI_INCLUDE_DIR . PACKAGE_VOCABULARY);
 	require_once('SpecialPage.php');
 
-	define('MWRDF_VERSION', '0.6');
+	define('MWRDF_VERSION', '0.7');
 	define('MWRDF_XML_TYPE_PREFS',
 		   "application/rdf+xml,text/xml;q=0.7," .
 		   "application/xml;q=0.5,text/rdf;q=0.1");
@@ -368,20 +368,9 @@ if (defined('MEDIAWIKI')) {
 
 	function MwRdfInPage($article) {
 		$text = $article->getContent(true);
-		# Strip comments and <nowiki>
-		$text = preg_replace("/<!--.*?-->/s", "", $text);
-		$text = preg_replace("@<nowiki>.*?</nowiki>@s", "", $text);
-		# change template usage to substitution; note that this is WRONG
-		$tchars = Title::legalChars();
-		$text = preg_replace("/(?<!{){{([$tchars]+)(\|.*?)?}}(?!})/", "{{subst:$1$2}}", $text);
 		$parser = new Parser();
-		# so the magic variables work out right
-		$parser->mOptions = new ParserOptions();
-		$parser->mTitle = $article->mTitle;
-		$parser->mOutputType = OT_WIKI;
-		$parser->initialiseVariables();
-		$parser->clearState();
-		$text = $parser->replaceVariables($text);
+		$text = $parser->preprocess($text, $article->mTitle, new ParserOptions());
+
 		preg_match_all("@<rdf>(.*?)</rdf>@s", $text, $matches, PREG_PATTERN_ORDER);
 		$content = $matches[1];
 		$rdf = implode(' ', array_values($content));
@@ -697,11 +686,8 @@ if (defined('MEDIAWIKI')) {
 		$text = $article->getContent(true);
 
 		$parser = new Parser();
-		$parser->mTitle = $nt;
 
-		$parser->initialiseVariables();
-		$parser->clearState();
-		$text = $parser->replaceVariables($text);
+		$text = $parser->preprocess($text, $article->mTitle, new ParserOptions());
 		# XXX: this sucks
 		# Ignore <nowiki> blocks
 		$text = preg_replace("|(<nowiki>.*</nowiki>)|", "", $text);
