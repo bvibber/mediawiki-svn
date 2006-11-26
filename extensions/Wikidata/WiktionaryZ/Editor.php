@@ -951,7 +951,7 @@ class ClassAttributesLevelDefinedMeaningEditor extends SuggestEditor {
 	public function getViewHTML($idPath, $value) {
 		global
 			$definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute;
-			
+
 		$definedMeaningId = $value->getAttributeValue($definedMeaningIdAttribute);
 		$definedMeaningLabel = $value->getAttributeValue($definedMeaningLabelAttribute);
 		$definedMeaningDefiningExpression = $value->getAttributeValue($definedMeaningDefiningExpressionAttribute);
@@ -978,13 +978,41 @@ class CollectionReferenceEditor extends DefinedMeaningReferenceEditor {
 	}
 }
 
-class TextAttributeEditor extends DefinedMeaningReferenceEditor {
+class AttributeEditor extends DefinedMeaningReferenceEditor {
+	protected $attributesLevelName;
+	protected $objectIdFetcher;
+
+	public function __construct($attribute, $permissionController, $isAddField, $attributesLevelName, $objectIdFetcher) {
+		parent::__construct($attribute, $permissionController, $isAddField);
+
+		$this->attributesLevelName = $attributesLevelName;
+		$this->objectIdFetcher = $objectIdFetcher;
+	}
+
+	public function add($idPath) {
+		if ($this->isAddField){
+				$parameters = array("attributesLevel" => $this->attributesLevelName, 
+									"attributesObjectId" => $this->objectIdFetcher->fetch($idPath->getKeyStack()));
+								
+			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);			
+		}
+		else
+			return "";
+	}
+	
+	public function getEditHTML($idPath, $value) {
+		$parameters = array("attributesLevel" => $this->attributesLevelName);
+		return getSuggest($this->updateId($idPath->getId()), $this->suggestType(), $parameters); 
+	}
+}
+
+class TextAttributeEditor extends AttributeEditor {
 	protected function suggestType() {
 		return "text-attribute";
 	}
 }
 
-class TranslatedTextAttributeEditor extends DefinedMeaningReferenceEditor {
+class TranslatedTextAttributeEditor extends AttributeEditor {
 	protected function suggestType() {
 		return "translated-text-attribute";
 	}

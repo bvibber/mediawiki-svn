@@ -35,13 +35,20 @@ function updateSuggestions(suggestPrefix) {
 	suggestText = document.getElementById(suggestPrefix + "text");
 	suggestText.className = "suggest-loading";
 
+	var suggestAttributesLevel = document.getElementById(suggestPrefix + "parameter-attributesLevel");
+	var suggestObjectId = document.getElementById(suggestPrefix + "parameter-attributesObjectId");
+
 	var URL = 'index.php';
 	var location = "" + document.location;
 	
 	if (location.indexOf('index.php/') > 0)
 		URL = '../' + URL;
-		
-	http.open('GET', URL + '/Special:Suggest?search-text=' + encodeURI(suggestText.value) + '&prefix=' + encodeURI(suggestPrefix) + '&query=' + encodeURI(suggestQuery), true);
+
+	if((suggestAttributesLevel != null) && (suggestObjectId != null)) 
+		http.open('GET', URL + '/Special:Suggest?search-text=' + encodeURI(suggestText.value) + '&prefix=' + encodeURI(suggestPrefix) + '&query=' + encodeURI(suggestQuery) + '&attributesLevel=' + encodeURI(suggestAttributesLevel.value) + '&objectId=' + encodeURI(suggestObjectId.value), true);
+	else
+		http.open('GET', URL + '/Special:Suggest?search-text=' + encodeURI(suggestText.value) + '&prefix=' + encodeURI(suggestPrefix) + '&query=' + encodeURI(suggestQuery), true);
+
 	http.onreadystatechange = function() {
 		if (http.readyState == 4) {
 			var newTable = document.createElement('div');

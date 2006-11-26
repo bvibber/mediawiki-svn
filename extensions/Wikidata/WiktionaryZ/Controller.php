@@ -366,26 +366,6 @@ class ExpressionController implements Controller {
 	}
 }
 
-class ObjectIdFetcher {
-	protected $objectIdAttributeLevel;
-	protected $objectIdAttribute;
-	
-	public function __construct($objectIdAttributeLevel, $objectIdAttribute) {
-		$this->objectIdAttributeLevel = $objectIdAttributeLevel;
-		$this->objectIdAttribute = $objectIdAttribute;
-	}
-	public function fetch($keyPath, $record) {
-		return $keyPath->peek($this->objectIdAttributeLevel)->getAttributeValue($this->objectIdAttribute);			
-	}
-}
-
-class DefinitionObjectIdFetcher extends ObjectIdFetcher {
-	public function fetch($keyPath, $record) {
-		$definedMeaningId = $keyPath->peek($this->objectIdAttributeLevel)->getAttributeValue($this->objectIdAttribute);
-		return getDefinedMeaningDefinitionId($definedMeaningId);
-	}	
-}
-
 class ObjectAttributeValuesController {
 	protected $objectIdFetcher;
 	
@@ -398,7 +378,7 @@ class TextAttributeValuesController extends ObjectAttributeValuesController {
 	public function add($keyPath, $record)  {
 		global
 			$textAttribute, $textAttributeAttribute;
-		$objectId = $this->objectIdFetcher->fetch($keyPath, $record);
+		$objectId = $this->objectIdFetcher->fetch($keyPath);
 		$textAttributeId = $record->getAttributeValue($textAttributeAttribute);
 		$text = $record->getAttributeValue($textAttribute);
 		if ($textAttributeId != 0 && $text != '')		
@@ -428,7 +408,7 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 			$translatedTextValueAttribute, $languageAttribute,
 			$textAttribute, $translatedTextAttributeAttribute;
 
-		$objectId = $this->objectIdFetcher->fetch($keyPath, $record);
+		$objectId = $this->objectIdFetcher->fetch($keyPath);
 		$textValue = $record->getAttributeValue($translatedTextValueAttribute);
 		$textAttributeId = $record->getAttributeValue($translatedTextAttributeAttribute);
 
@@ -445,11 +425,10 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 
 	public function remove($keyPath) {
 		global
-			$translatedTextValueIdAttribute;
+			$translatedTextAttributeIdAttribute;
 
-		$textId = $keyPath->peek(0)->getAttributeValue($translatedTextValueIdAttribute);
-
-		removeTranslatedTextAttributeValue($textId);
+		$valueId = $keyPath->peek(0)->getAttributeValue($translatedTextAttributeIdAttribute);
+		removeTranslatedTextAttributeValue($valueId);
 	}
 
 	public function update($keyPath, $record) {
@@ -459,36 +438,39 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 class TranslatedTextAttributeValueController implements Controller {
 	public function add($keyPath, $record) {
 		global
-			$translatedTextValueIdAttribute, $languageAttribute, $textAttribute;
+			$translatedTextAttributeIdAttribute, $languageAttribute, $textAttribute;
 
-		$textId = $keyPath->peek(0)->getAttributeValue($translatedTextValueIdAttribute);
+		$valueId = $keyPath->peek(0)->getAttributeValue($translatedTextAttributeIdAttribute);
 		$languageId = $record->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);
+		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
 
 		if ($languageId != 0 && $text != "")
-			addTranslatedTextIfNotPresent($textId, $languageId, $text);
+			addTranslatedTextIfNotPresent($translatedTextAttribute->value_tcid, $languageId, $text);
 	}
 
 	public function remove($keyPath) {
 		global
-			$translatedTextValueIdAttribute, $languageAttribute;
+			$translatedTextAttributeIdAttribute, $languageAttribute;
 
-		$textId = $keyPath->peek(1)->getAttributeValue($translatedTextValueIdAttribute);
+		$valueId = $keyPath->peek(1)->getAttributeValue($translatedTextAttributeIdAttribute);
 		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
+		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
 
-		removeTranslatedText($textId, $languageId);
+		removeTranslatedText($translatedTextAttribute->value_tcid, $languageId);
 	}
 
 	public function update($keyPath, $record) {
 		global
-			$translatedTextValueIdAttribute, $languageAttribute, $textAttribute;
+			$translatedTextAttributeIdAttribute, $languageAttribute, $textAttribute;
 
-		$textId = $keyPath->peek(1)->getAttributeValue($translatedTextValueIdAttribute);
+		$valueId = $keyPath->peek(1)->getAttributeValue($translatedTextAttributeIdAttribute);
 		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);
+		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
 
 		if ($text != "")
-			updateTranslatedText($textId, $languageId, $text);
+			updateTranslatedText($translatedTextAttribute->value_tcid, $languageId, $text);
 	}
 }
 

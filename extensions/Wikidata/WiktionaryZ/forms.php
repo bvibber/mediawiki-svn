@@ -52,15 +52,22 @@ function getSelect($name, $options, $selectedValue="", $onChangeHandler="") {
 	return $result . '</select>';
 }
 
-function getSuggest($name, $query, $value=0, $label='', $displayLabelColumns = array(0)) {
+function getSuggest($name, $query, $parameters = array(), $value=0, $label='', $displayLabelColumns = array(0)) {
 	if ($label == "")
 		$label = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-	 
+	
 	$result = 
 		'<span class="suggest">' .
 			'<input type="hidden" id="'. $name .'-suggest-query" value="'. $query .'"/>' .
 			'<input type="hidden" id="'. $name .'-suggest-label-columns" value="'. implode(', ', $displayLabelColumns) .'"/>' .
-			'<input type="hidden" id="'. $name .'" name="'. $name .'" value="'. $value .'"/>' .
+			'<input type="hidden" id="'. $name .'" name="'. $name .'" value="'. $value .'"/>';
+
+	foreach($parameters as $parameter => $parameterValue){
+		$result .= 
+			'<input type="hidden" id="'. $name .'-suggest-parameter-'. $parameter .'" name="'. $parameter .'" value="'. $parameterValue .'"/>';
+	}
+
+	$result .=		
 			'<a id="'. $name .'-suggest-link" class="suggest-link" onclick="suggestLinkClicked(event, this);" title="Click to change selection">' . $label . '</a>' .
 		'</span>'.
         '<div class="suggest-drop-down" style="position: relative"><div id="'. $name .'-suggest-div" style="position: absolute; left: 0px; top: 0px; border: 1px solid #000000; display: none; background-color: white; padding: 4px">' .

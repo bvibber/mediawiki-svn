@@ -39,6 +39,8 @@ function getSuggestions() {
 	$search = ltrim($_GET['search-text']);
 	$prefix = $_GET['prefix'];
 	$query = $_GET['query'];
+	$objectId = $_GET['objectId'];
+	$attributesLevel = $_GET['attributesLevel'];
 	
 	$dbr =& wfGetDB( DB_SLAVE );
 	$rowText = 'spelling';
@@ -52,7 +54,8 @@ function getSuggestions() {
 			break;
 		case 'translated-text-attribute':
 		case 'text-attribute':	
-			$sql = getSQLForCollectionOfType('TATT');
+//			$sql = getSQLForCollectionOfType('TATT');
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel);
 			break;
 		case 'language':
 			require_once('languages.php');
@@ -142,6 +145,16 @@ function getSuggestions() {
 	return $editor->view(new IdStack($prefix . 'table'), $recordSet);
 }
 
+function getSQLToSelectPossibleAttributes($objectId, $attributesLevel) {
+	$dbr = & wfGetDB(DB_SLAVE);
+	return 'SELECT attribute_mid, spelling
+	 		FROM ((uw_class_membership INNER JOIN (uw_class_attributes INNER JOIN bootstrapped_defined_meanings ON uw_class_attributes.level_mid = bootstrapped_defined_meanings.defined_meaning_id)ON uw_class_membership.class_mid = uw_class_attributes.class_mid)
+	      	INNER JOIN uw_syntrans ON uw_class_attributes.attribute_mid = uw_syntrans.defined_meaning_id)
+	      	INNER JOIN uw_expression_ns ON uw_syntrans.expression_id = uw_expression_ns.expression_id 
+			WHERE bootstrapped_defined_meanings.name = ' . $dbr->addQuotes($attributesLevel) .
+		  ' AND uw_class_membership.class_member_mid = ' . $objectId;
+}
+
 function getSQLForCollectionOfType($collectionType) {
 	return "SELECT member_mid, spelling, collection_mid " .
             "FROM uw_collection_contents, uw_collection_ns, uw_syntrans syntrans, uw_expression_ns expression " .
@@ -197,38 +210,42 @@ function getClassAsRecordSet($queryResult) {
 
 function getTextAttributeAsRecordSet($queryResult) {
 	global
-		$idAttribute, $textAttributeAttribute, $collectionAttribute;
+		$idAttribute, $textAttributeAttribute;
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute), new Structure($idAttribute));
+//	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
+//		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
+		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
 
 	$editor = createSuggestionsTableViewer(null);
 	$editor->addEditor(createShortTextViewer($textAttributeAttribute));
-	$editor->addEditor(createShortTextViewer($collectionAttribute));
+//	$editor->addEditor(createShortTextViewer($collectionAttribute));
 
 	return array($recordSet, $editor);		
 }
 
 function getTranslatedTextAttributeAsRecordSet($queryResult) {
 	global
-		$idAttribute, $translatedTextAttributeAttribute, $collectionAttribute;
+		$idAttribute, $translatedTextAttributeAttribute;
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 //	$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", "Translated text attribute", "short-text");
 //	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $translatedTextAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $translatedTextAttributeAttribute), new Structure($idAttribute));
+//	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $translatedTextAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
+//		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
+		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
 
 	$editor = createSuggestionsTableViewer(null);
 	$editor->addEditor(createShortTextViewer($translatedTextAttributeAttribute));
-	$editor->addEditor(createShortTextViewer($collectionAttribute));
+//	$editor->addEditor(createShortTextViewer($collectionAttribute));
 
 	return array($recordSet, $editor);		
 }

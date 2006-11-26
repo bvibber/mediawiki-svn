@@ -627,12 +627,21 @@ function addTranslatedTextAttributeValue($objectId, $attributeId, $languageId, $
 	addTranslatedText($translatedContentId, $languageId, $text);
 }
 
-function removeTranslatedTextAttributeValue($textId) {
-	removeTranslatedTexts($textId);
+function getTranslatedTextAttribute($valueId) {
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT value_id, object_id, attribute_mid, value_tcid FROM uw_translated_content_attribute_values WHERE value_id=$valueId " .
+								" AND " . getLatestTransactionRestriction('uw_translated_content_attribute_values'));
+
+	return $dbr->fetchObject($queryResult);
+}
+
+function removeTranslatedTextAttributeValue($valueId) {
+	$translatedTextAttribute = getTranslatedTextAttribute($valueId);
+	removeTranslatedTexts($translatedTextAttribute->value_tcid);
 
 	$dbr = &wfGetDB(DB_MASTER);
 	$dbr->query("UPDATE uw_translated_content_attribute_values SET remove_transaction_id=". getUpdateTransactionId() .
-				" WHERE value_tcid=$textId" .
+				" WHERE value_id=$valueId" .
 				" AND remove_transaction_id IS NULL");
 }
 

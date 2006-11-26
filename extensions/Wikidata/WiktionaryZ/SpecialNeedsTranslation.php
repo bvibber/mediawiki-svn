@@ -23,9 +23,9 @@
 
 				$wgOut->addHTML(getOptionPanel(
 					array(
-						'Destination language' => getSuggest('to-lang', 'language', $destinationLanguageId, languageIdAsText($destinationLanguageId)),
-						'Source language' => getSuggest('from-lang', 'language', $sourceLanguageId, languageIdAsText($sourceLanguageId)),
-						'Collection' => getSuggest('collection', 'collection', $collectionId, collectionIdAsText($collectionId))
+						'Destination language' => getSuggest('to-lang', 'language', array(), $destinationLanguageId, languageIdAsText($destinationLanguageId)),
+						'Source language' => getSuggest('from-lang', 'language', array(), $sourceLanguageId, languageIdAsText($sourceLanguageId)),
+						'Collection' => getSuggest('collection', 'collection', array(), $collectionId, collectionIdAsText($collectionId))
 					)
 				));
 

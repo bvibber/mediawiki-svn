@@ -99,7 +99,8 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName,
 			"From transaction" => 
 				getSuggest(
 					'from-transaction', 
-					'transaction', 
+					'transaction',
+					array(), 
 					$fromTransactionId, 
 					getTransactionLabel($fromTransactionId), 
 					array(0, 2, 3)

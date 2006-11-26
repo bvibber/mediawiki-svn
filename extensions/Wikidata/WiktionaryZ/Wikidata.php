@@ -97,7 +97,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 		$wgOut->addHTML($this->getLanguageSelector());
 		$wgOut->addHTML(getOptionPanel(
 			array(
-				'Transaction' => getSuggest('transaction','transaction', $transactionId, getTransactionLabel($transactionId), array(0, 2, 3)),
+				'Transaction' => getSuggest('transaction','transaction', array(), $transactionId, getTransactionLabel($transactionId), array(0, 2, 3)),
 				'Show record life span' => getCheckBox('show-record-life-span',$this->showRecordLifeSpan)
 			),
 			'history'
