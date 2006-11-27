@@ -29,6 +29,7 @@ using std::make_pair;
 #define NEED_PARSING_TREE
 
 #include "confparse.h"
+#include "confgrammar.h"
 #include "willow.h"
 #include "log.h"
 #include "backend.h"
@@ -38,7 +39,7 @@ using std::make_pair;
 
 namespace conf {
 
-expr::expression_parser if_parser;
+expr::parser if_parser;
 
 tree global_conf_tree;
 map<string, value> variable_list;
@@ -78,6 +79,7 @@ parse_file(string const &file)
 		add_if_entry(unm.sysname, 1);
 	}
 
+#if 0
 	if ((yyin = fopen(file.c_str(), "r")) == NULL) {
 		wlog.error(format("could not open configuration file %s: %s") 
 				% file % strerror(errno));
@@ -85,6 +87,77 @@ parse_file(string const &file)
 	}
 	if (yyparse() || parse_error)
 		return NULL;
+#endif
+
+	confgrammar g(if_parser);
+	vector<block> result;
+
+	try {
+		result = g.parse(file);
+	} catch (parser_error &e) {
+		wlog.error(format("cannot parse configuration file: %s")
+			% e.what());
+		return NULL;
+	}
+
+	vector<block>::iterator blockit, blockend;
+	vector<value_t>::iterator valueit, valueend;
+	vector<avalue_t>::iterator avalueit, avalueend;
+
+	for (blockit = result.begin(), blockend = result.end();
+             blockit != blockend; ++blockit) {
+	tree_entry	e = declpos();
+		e.item_name = blockit->name;
+		e.item_key = blockit->key;
+		
+		for (valueit = blockit->values.begin(),
+		        valueend = blockit->values.end();
+		        valueit != valueend; ++valueit) {
+		value	v = declpos();
+			v.cv_name = valueit->name;
+			
+			for (avalueit = valueit->values.begin(),
+			        avalueend = valueit->values.end();
+			        avalueit != avalueend; ++avalueit) {
+			avalue	av;
+				switch (avalueit->which()) {
+				case 0: // bare string
+					av.av_type = cv_string;
+					av.av_strval = boost::get<u_string>(*avalueit).value();
+					break;
+
+				case 1:	// quoted string
+					av.av_type = cv_qstring;
+					av.av_strval = boost::get<q_string>(*avalueit).value();
+					break;
+
+				case 2:	// yesno
+					av.av_type = cv_yesno;
+					av.av_intval = boost::get<bool>(*avalueit);
+					break;
+
+				case 3:	// int
+					av.av_type = cv_int;
+					av.av_intval = boost::get<int>(*avalueit);
+					break;
+
+				case 4:	// time
+					av.av_type = cv_time;
+					av.av_intval = boost::get<time_q>(*avalueit).value();
+					break;
+
+				case 5:	// size
+					av.av_type = cv_time;
+					av.av_intval = boost::get<size_q>(*avalueit).value();
+					break;
+				}
+				v.cv_values.push_back(av);
+			}
+			e.add(v);
+		}
+		parsing_tree.add(e);
+	}
+
 	return &parsing_tree;
 }
 
@@ -146,7 +219,7 @@ char const	*dir;
 
 	try {
 		return if_parser.run(dir);
-	} catch (expr::expression_error &e) {
+	} catch (expr::error &e) {
 		report_parse_error("error in %%if expression: %s", e.what());
 		return false;
 	}

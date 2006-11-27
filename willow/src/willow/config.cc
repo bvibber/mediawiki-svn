@@ -574,7 +574,7 @@ int	nerrors = 0;
 
 	if (!read_config(file)) {
 		wlog.error("cannot load configuration");
-		nerrors++;
+		exit(8);
 	}
 	
 	if (!listeners.size()) {

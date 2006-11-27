@@ -12,7 +12,7 @@
 
 #include "autoconf.h"
 
-#ifdef WILLOW_DEBUG
+#if defined(WILLOW_DEBUG) && 0
 # define BOOST_SPIRIT_DEBUG
 #endif
 
@@ -175,33 +175,30 @@ BOOST_SPIRIT_DEBUG_RULE(atom);
 
 namespace expr {
 
-using expr::expression_parser;
-using expr::expression_error;
-
-expression_parser::expression_parser()
+expr::parser::parser()
 {
 	impl = new expression_parser_impl;
 }
 
-expression_parser::~expression_parser()
+expr::parser::~parser()
 {
 	delete impl;
 }
 
 void
-expression_parser::add_variable(string const &name, int64_t val)
+expr::parser::add_variable(string const &name, int64_t val)
 {
 	impl->add_variable(name, val);
 }
 
 bool
-expression_parser::variable_defined(string const &name) const
+expr::parser::variable_defined(string const &name) const
 {
 	return impl->variable_defined(name);
 }
 
 int64_t
-expression_parser::run(string const &str) const
+expr::parser::run(string const &str) const
 {
 	return impl->run(str);
 }

@@ -15,16 +15,16 @@
 
 namespace expr {
 
-struct expression_error : runtime_error {
-	expression_error(char const *err) : runtime_error(err) {}
+struct error : runtime_error {
+	error(char const *err) : runtime_error(err) {}
 };
 
-struct stack_underflow : expression_error {
-	stack_underflow() : expression_error("stack underflow in expression parser") {}
+struct stack_underflow : error {
+	stack_underflow() : error("stack underflow in expression parser") {}
 };
 
-struct syntax_error : expression_error {
-	syntax_error() : expression_error("syntax error in expression parser") {}
+struct syntax_error : error {
+	syntax_error() : error("syntax error in expression parser") {}
 };
 
 struct expression_parser_impl;
@@ -52,16 +52,16 @@ struct expression_parser_impl;
  * test whether a variable exists: defined(x) has the value '1' if 'x' is
  * defined.
  */
-struct expression_parser {
+struct parser {
 	/**
 	 * Construct a new parser.
 	 */
-	expression_parser();
+	parser();
 
 	/**
 	 * Destructor.
 	 */
-	~expression_parser();
+	~parser();
 
 	/**
 	 * Add a new variable to this parser.

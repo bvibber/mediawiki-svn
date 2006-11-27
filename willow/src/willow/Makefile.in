@@ -21,6 +21,7 @@ BASESRCS =	 		\
 	cachedir_data_store.cc	\
 	chunking.cc		\
 	config.cc		\
+	confgrammar.cc		\
 	confparse.cc		\
 	dbwrap.cc		\
 	expr.cc			\
@@ -32,36 +33,24 @@ BASESRCS =	 		\
 	ifname_to_address.cc	\
 	log.cc			\
 	net.cc			\
+	preprocessor.cc		\
 	radix.cc		\
 	willow.cc 		\
 
 OBJS=	$(BASESRCS:.cc=.o)
 
 SRCS=$(BASESRCS)
-OBJADD = @LIBOBJS@ y.tab.o lex.yy.o
+OBJADD = @LIBOBJS@
 
 EXTRA_DIST= strlcat.c strlcpy.c \
-	lexer.l parser.y \
 	daemon.c \
 	Makefile.in
 
 LDFLAGS = $(LIBOBJS) -L../libwillow -lwillow
 EXTRADEPS=../libwillow/libwillow.a
 
-.SUFFIXES: .y .l .c .cc .o
+.SUFFIXES: .c .cc .o
 
 default: all
-
-y.tab.o: y.tab.cc ../include/confparse.h ../include/willow.h
-lex.yy.o: lex.yy.cc y.tab.h ../include/confparse.h ../include/willow.h
-
-y.tab.cc y.tab.h: parser.y
-	@echo "	$(_YACC) -d parser.y"
-	@$(_YACC) -d parser.y
-	@mv y.tab.c y.tab.cc
-lex.yy.cc: lexer.l y.tab.h
-	@echo "	$(_LEX) lexer.l"
-	@$(_LEX) lexer.l || rm -f lex.yy.c
-	@test -f lex.yy.c && mv lex.yy.c lex.yy.cc
 
 @include@ @q@@top_srcdir@/mk/prog.mk@q@

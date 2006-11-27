@@ -92,7 +92,7 @@ string	r;
 	}
 	
 	if (config.foreground)
-		cout << r << '\n';
+		cout << sev_names[sev] << ": " << e << '\n';
 }
 
 void
