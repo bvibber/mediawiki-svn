@@ -126,7 +126,7 @@ class ImageMap {
 					$coord = strtok( " \t" );
 					while ( $coord !== false ) {
 						$coords[] = $coord;
-						strtok( " \t" );
+						$coord = strtok( " \t" );
 					}
 					if ( !count( $coords ) ) {
 						return self::error( 'imagemap_missing_coord', $lineNum );
