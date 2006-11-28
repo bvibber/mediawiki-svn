@@ -26,6 +26,7 @@ a:hover {color: #003A0B; text-decoration: underline}
 .pl_link {color: #81A18F; text-decoration: none}
 .it_link {color: #81A18F; text-decoration: none}
 .pt_link {color: #81A18F; text-decoration: none}
+.cs_link {color: #81A18F; text-decoration: none}
 .link {color: #326241}
 -->
 </style>
@@ -35,8 +36,8 @@ a:hover {color: #003A0B; text-decoration: underline}
 
 <!-- Begin
 
-var subs_array = new Array ("en","fr","de","zh","ja","es","pl","it","sv","nl","pt","en_head","fr_head","de_head","zh_head","ja_head","es_head","pl_head","it_head","sv_head","nl_head","pt_head");// Put the id's of your hidden divs in this array
-var links_array = new Array (".nl_link",".sv_link",".es_link",".zh_link",".fr_link",".en_link",".de_link",".ja_link",".pl_link",".it_link",".pt_link");// Make sure these link classes are in the order, left-to-right, that they are on the page
+var subs_array = new Array ("en","fr","de","zh","ja","es","pl","it","sv","nl","pt","cs","en_head","fr_head","de_head","zh_head","ja_head","es_head","pl_head","it_head","sv_head","nl_head","pt_head","cs_head");// Put the id's of your hidden divs in this array
+var links_array = new Array (".nl_link",".sv_link",".es_link",".zh_link",".fr_link",".en_link",".de_link",".ja_link",".pl_link",".it_link",".pt_link",".cs_link");// Make sure these link classes are in the order, left-to-right, that they are on the page
 
 function displaySubs(the_sub){
 
@@ -94,6 +95,10 @@ function displaySubs(the_sub){
     document.title = "Erro - Fundação Wikimedia";
     linkcolours('10')
    }
+  else if (the_sub == 'cs') {
+    document.title = "Chyba - Wikimedia Foundation";
+    linkcolours('11')
+   }
 
   }
 
@@ -115,6 +120,7 @@ function startup(){
  else if (language.indexOf('sv') > -1) displaySubs('sv');
  else if (language.indexOf('nl') > -1) displaySubs('nl');
  else if (language.indexOf('pt') > -1) displaySubs('pt');
+ else if (language.indexOf('cs') > -1) displaySubs('cs');
  else displaySubs('en');
 
 }
@@ -164,7 +170,7 @@ function linkcolours(subnum) {
 </h1>
 
 <h2>
-<a href="#Dutch" class="nl_link" onclick="displaySubs('nl')">Fout</a> <a href="#Swedish" class="sv_link" onclick="displaySubs('sv')">Fel</a> <a href="#Spanish" class="es_link" onclick="displaySubs('es')">Fallo</a> <a href="#Chinese" class="zh_link" onclick="displaySubs('zh')">错误</a> <a href="#Chinese" class="zh_link" onclick="displaySubs('zh')">錯誤</a> <a href="#French" class="fr_link" onclick="displaySubs('fr')">Erreur</a> <a href="#English" class="en_link" onclick="displaySubs('en')">Error</a> <a href="#German" class="de_link" onclick="displaySubs('de')">Fehler</a> <a href="#Japanese" class="ja_link" onclick="displaySubs('ja')">エラー</a> <a href="#Polish" class="pl_link" onclick="displaySubs('pl')">Błąd</a> <a href="#Italian" class="it_link" onclick="displaySubs('it')">Errore</a> <a href="#Portuguese" class="pt_link" onclick="displaySubs('pt')">Erro</a>
+<a href="#Dutch" class="nl_link" onclick="displaySubs('nl')">Fout</a> <a href="#Swedish" class="sv_link" onclick="displaySubs('sv')">Fel</a> <a href="#Spanish" class="es_link" onclick="displaySubs('es')">Fallo</a> <a href="#Chinese" class="zh_link" onclick="displaySubs('zh')">错误</a> <a href="#Chinese" class="zh_link" onclick="displaySubs('zh')">錯誤</a> <a href="#French" class="fr_link" onclick="displaySubs('fr')">Erreur</a> <a href="#English" class="en_link" onclick="displaySubs('en')">Error</a> <a href="#German" class="de_link" onclick="displaySubs('de')">Fehler</a> <a href="#Japanese" class="ja_link" onclick="displaySubs('ja')">エラー</a> <a href="#Polish" class="pl_link" onclick="displaySubs('pl')">Błąd</a> <a href="#Italian" class="it_link" onclick="displaySubs('it')">Errore</a> <a href="#Portuguese" class="pt_link" onclick="displaySubs('pt')">Erro</a> <a href="#Czech" class="cs_link" onclick="displaySubs('cs')">Chyba</a>
 </h2>
 
 <div id="en" lang="en"><h3 id="en_head"><a name="English">English</a></h3><p>The Wikimedia Foundation servers are currently experiencing technical difficulties.</p><p>The problem is most likely temporary and will hopefully be fixed soon. Please <a href="%U" class="link">check back</a> in a few minutes.</p><p>For further information, you can visit the <a href="irc://irc.freenode.net/wikipedia" class="link">#wikipedia</a> channel on the <a href="http://www.freenode.net" class="link">Freenode</a> IRC network.</p><p>In the meantime, you may be able to view <a href="http://www.google.com/search?q=%U" class="link">Google's cached version of this page</a>.</p><p>Wikipedia is now one of the <a href="http://www.alexa.com/data/details/traffic_details?q=&amp;url=http://wikipedia.org" class="link">most visited</a> sites on the Internet by traffic and continues to grow, and as a result the Wikimedia Foundation has a constant need to purchase new hardware. If you would like to help, please <a href="http://wikimediafoundation.org/wiki/Fundraising" class="link">donate</a>.</p></div>
@@ -189,8 +195,10 @@ function linkcolours(subnum) {
 
 <div id="pt" lang="pt"><h3 id="pt_head"><a name="Portuguese">Português</a></h3><p>Os servidores da Fundação Wikimedia estão com dificuldades técnicas.</p><p>Provavelmente, o problema é temporário e será corrigido brevemente. Por favor, <a href="%U" class="link">tente dentro</a> de alguns minutos.</p><p>Para mais informações, pode tentar o canal <a href="irc://irc.freenode.net/wikipedia" class="link">#wikipedia</a> na rede de IRC <a href="http://www.freenode.net" class="link">Freenode</a>.</p><p>A Wikipedia é, actualmente, um dos sites <a href="http://www.alexa.com/data/details/traffic_details?q=&amp;url=http://wikipedia.org" class="link">mais visitados</a> o que impõe à Fundação Wikimedia crescentes aquisições de hardware. Se puder ajudar, <a href="http://wikimediafoundation.org/wiki/Coleta_de_fundos" class="link">faça uma doação</a>.</p></div>
 
+<div id="cs" lang="cs"><h3 id="cs_head"><a name="Czech">Česky</a></h3><p>Servery nadace Wikimedia Foundation mají momentálně technické problémy.</p><p>Ty jsou s největší pravděpodobností jen dočasné a&nbsp;budou, doufejme, brzy vyřešeny. Prosíme, zkuste <a href="%U" class="link">stránku nahrát znovu</a> za několik minut.</p><p>Další informace můžete získat na kanále <a href="irc://irc.freenode.net/wikipedia-cs" class="link">#wikipedia-cs</a> v&nbsp;IRC síti <a href="http://www.freenode.net" class="link">Freenode</a>.</p><p>Po dobu čekání můžete zkusit <a href="http://www.google.com/search?q=%U" class="link">cachovanou verzi požadované stránky na Googlu</a>.</p><p>Wikipedie je co do provozu jedním z&nbsp;<a href="http://www.alexa.com/data/details/traffic_details?q=&amp;url=http://wikipedia.org" class="link">nejnavštěvovanějších</a> míst na Internetu a&nbsp;stále roste, což má za následek neustálou potřebu nového hardwaru pro provoz serverů nadace Wikimedia Foundation. Pokud chcete pomoci, prosíme, <a href="http://wikimediafoundation.org/wiki/Sponzorstv%C3%AD" class="link">věnujte finanční dar</a>.</p></div>
+
 <h2 style="font-size: 80%;">
-<a href="#Dutch" class="nl_link" onclick="displaySubs('nl')">Nederlands</a> <a href="#Swedish" class="sv_link" onclick="displaySubs('sv')">Svenska</a> <a href="#Spanish" class="es_link" onclick="displaySubs('es')">Español</a> <a href="#Chinese" class="zh_link" onclick="displaySubs('zh')">中文</a> <a href="#French" class="fr_link" onclick="displaySubs('fr')">Français</a> <a href="#English" class="en_link" onclick="displaySubs('en')">English</a> <a href="#German" class="de_link" onclick="displaySubs('de')">Deutsch</a> <a href="#Japanese" class="ja_link" onclick="displaySubs('ja')">日本語</a> <a href="#Polish" class="pl_link" onclick="displaySubs('pl')">Polski</a> <a href="#Italian" class="it_link" onclick="displaySubs('it')">Italiano</a> <a href="#Portuguese" class="pt_link" onclick="displaySubs('pt')">Português</a>
+<a href="#Dutch" class="nl_link" onclick="displaySubs('nl')">Nederlands</a> <a href="#Swedish" class="sv_link" onclick="displaySubs('sv')">Svenska</a> <a href="#Spanish" class="es_link" onclick="displaySubs('es')">Español</a> <a href="#Chinese" class="zh_link" onclick="displaySubs('zh')">中文</a> <a href="#French" class="fr_link" onclick="displaySubs('fr')">Français</a> <a href="#English" class="en_link" onclick="displaySubs('en')">English</a> <a href="#German" class="de_link" onclick="displaySubs('de')">Deutsch</a> <a href="#Japanese" class="ja_link" onclick="displaySubs('ja')">日本語</a> <a href="#Polish" class="pl_link" onclick="displaySubs('pl')">Polski</a> <a href="#Italian" class="it_link" onclick="displaySubs('it')">Italiano</a> <a href="#Portuguese" class="pt_link" onclick="displaySubs('pt')">Português</a> <a href="#Czech" class="cs_link" onclick="displaySubs('cs')">Česky</a>
 </h2>
 
 <div style="text-align: center; font-size: 60%">
