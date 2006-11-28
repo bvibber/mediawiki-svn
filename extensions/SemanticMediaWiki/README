@@ -1,0 +1,44 @@
+== About ==
+
+Semantic MediaWiki is a project for extending MediaWiki with "semantic"
+functions that enable machine-reading of wiki-content. For details and
+further links, see http://ontoworld.org/wiki/SMW
+
+Notes on installing Semantic MediaWiki are found in the file INSTALL.
+
+== Credits ==
+
+* After installation, a list of past and current developers is accessible
+  via MediaWiki's Special:Version.
+
+* The German company Doccheck (doccheck.com) helped to get the implementation
+  going at the early stages of the project, and set up the first testing wiki.
+
+* Some icons used by Semantic MediaWiki are derived from the "Crystal Clear"
+  icon theme for KDE, which was created by Everaldo (everaldo.com).
+
+* The sorttable java script function was developed by Stuart Langridge,
+  and taken from http://www.kryogenix.org/code/browser/sorttable
+
+* The JavaScript upon which the Timeline format of inline queries is based is
+  provided by Simile (http://simile.mit.edu). Note that it is distributed with 
+  a BSD-style license, and not under the GPL that applies to most parts of 
+  Semantic MediaWiki.
+
+* The Jurispedia project (www.jurispedia.org) has initiated and supported
+  some of the translations:
+
+** Translation to French has been contributed by Pierre Matringe.
+
+** Translation to Spanish has been contributed by Javier Calzada Prado and
+   Carmen Jorge García-Reyes of Universidad Carlos III de Madrid.
+
+* Many people have contributed to the project by providing helpful comments and
+  suggestions. Among them are the members of the Semantic Wiki Interest Group
+  (swikig@aifb.uni-karlsruhe.de; see ontoworld.org), the people at the project
+  mailing lists, and, of course, a number of anonymous reviewers. Thanks a lot!
+
+=== Contact ===
+
+If you have remarks, questions, or bug reports, please please send them
+to semediawiki-users@lists.sourceforge.net

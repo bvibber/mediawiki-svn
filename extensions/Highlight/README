@@ -1,0 +1,23 @@
+This extension allows source code to be syntax highlighted on the wiki pages.
+
+== Installation ==
+* Download the latest stable build from http://geshi.org/, and unzip it into extensions/Highlight/ directory.
+  (Note: the zip file creates a sub-directory called geshi/, and places a file geshi.php there)
+
+* Add this line to your LocalSettings.php:  
+    require_once("extensions/Highlight/SyntaxHighlight.php");
+
+
+== Usage ==
+On the wiki page, you can now use "source" elements:
+
+<source lang="php">
+<?php
+    v = "string";    // sample initialization
+?>
+html text
+<?
+    echo v;         // end of php code
+?>
+</source>
+   

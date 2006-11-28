@@ -1,0 +1,74 @@
+RANDOM IMAGE EXTENSION
+
+	Version 1.0
+	© 2006 Rob Church
+
+This is free software licenced under the GNU General Public Licence. Please
+see http://www.gnu.org/copyleft/gpl.html for further details, including the
+full text and terms of the licence.
+
+== Overview ==
+
+	1. Introduction
+	2. Requirements
+	3. Installing the extension
+	4. Inserting a random image
+	5. Change log
+	6. Feedback
+
+== 1. Introduction ==
+
+The Random Image extension adds a <randomimage> tag to the MediaWiki parser
+which allows for randomisation of multimedia content on a page.
+
+When the tag is rendered, a random image is selected from those uploaded and
+inserted at the location of the tag. Users can select a custom size, float
+and provide a caption for the resulting image.
+
+At present, the output is cached in the parser cache alongside other parsed
+content. This is advantageous in some cases, since it will prevent the database
+from being crippled through repeated requests; however, it does mean that
+the content is not 100% dynamic. The image will change when the parser cache is
+expired, either automatically or by purging the page, allowing for rotation
+of content.
+
+== 2. Requirements ==
+
+The Random Image extension has been tested against MediaWiki 1.7alpha and 1.6 and
+should work with MediaWiki 1.5.
+
+== 3. Installing the extension ==
+
+To install the Random Image extension, first upload/copy the extension file 
+RandomImage.php into your MediaWiki extensions directory. Then edit your
+LocalSettings.php file and add the following line:
+
+	require_once( 'extensions/RandomImage.php' );
+	
+Save the file (uploading if applicable) to complete the installation.
+
+== 4. Inserting a random image ==
+
+The tag supports two basic forms:
+	
+* Single, i.e. <randomimage />, which produces an image without a caption
+* Container, i.e. <randomimage></randomimage>, where text inside the tags
+  is used as a caption
+  
+In addition, both tags support two additional attributes; size and float.
+The default size is the user's thumbnail size. Provide a numerical value
+to override the size, e.g.
+
+	<randomimage size="300" />
+	
+Float allows overriding the float direction. You can combine attributes as
+with most normal HTML-style tags.
+
+== 5. Change log ==
+
+1.0
+	Initial release
+	
+== 6. Feedback ==
+
+All feedback, bug reports, etc. welcome via <robchur@gmail.com>.
