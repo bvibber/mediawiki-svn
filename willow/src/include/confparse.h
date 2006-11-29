@@ -54,33 +54,19 @@ using std::multimap;
 
 namespace conf {
 
-struct declpos {
-		declpos(string const &file_, int line_, int pos_)
-			: file(file_), line(line_), pos(pos_) {}
-		declpos() : file(""), line(0), pos(0) {}
-
-	string	format(void) const {
-		return file + "(" + lexical_cast<string>(line) + ")";
-	}
-
-	static declpos here() {
-		return declpos("", 0, 0);
-	}
-
-	string	file;
-	int	line, pos;
-};
-
 template<typename T>
 bool is_type(avalue_t const &v) {
 	return boost::get<T>(&v) != NULL;
 }
 
 struct value {
-			 value(declpos const &pos);
+			 value(file_position const &pos);
 
-	void	report_error	(const char *, ...) const;
-	void	vreport_error	(const char *, va_list) const;
+	void	report_error	(string const &err) const;
+	void	report_error	(format const &err) const {
+		return report_error(str(err));
+	}
+
 	size_t	nvalues		(void) const;
 	template<typename T>
 	bool	is_single(void) {
@@ -100,12 +86,12 @@ struct value {
 
 	string           cv_name;
         vector<avalue_t> cv_values;     /* list of conf_avalue_t                */
-        bool             cv_touched;       /* 1 if someone touched this item       */
-	declpos		 cv_pos;
+        bool             cv_touched;    /* 1 if someone touched this item       */
+	file_position	 cv_pos;
 };
 
 struct tree_entry {
-				tree_entry(declpos const &);
+				tree_entry(file_position const &);
 	void	 report_error	(const char *, ...) const;
 	void	 vreport_error	(const char *, va_list) const;
 	value 	*operator/	(string const &value);
@@ -114,7 +100,7 @@ struct tree_entry {
         string			item_name;     /* e.g. "oper"                          */
         string			item_key;      /* e.g. "bar"                           */
         multimap<string, value>	item_values;
-	declpos			item_pos;
+	file_position		item_pos;
         bool			item_unnamed;
         bool			item_touched;
         bool			item_is_template;
@@ -145,10 +131,10 @@ struct tree {
 	tree_entry	*find		(string const &key);
 	tree_entry	*find		(string const &key, string const &name);
 	tree_entry	*find_or_new	(string const &block, string const &name,
-					 declpos const &pos,  bool unnamed,
+					 file_position const &pos,  bool unnamed,
 					 bool is_template);
 	tree_entry	*create		(string const &block, string const &name,
-					 declpos const &pos,  bool unnamed,
+					 file_position const &pos,  bool unnamed,
 					 bool is_template);
 
 	vector<tree_entry>	entries;
@@ -263,7 +249,7 @@ template<typename type>
 struct simple_value : callable<bool> {
 	bool operator() (tree_entry &, value &v) const {
 		if (!v.is_single<type>()) {
-			v.report_error("expected single %s", type_name<type>());
+			v.report_error(format("expected single %s") % type_name<type>());
 			return false;
 		}
 		return true;
@@ -288,7 +274,8 @@ struct simple_range : callable<bool> {
 		}
 		int i = boost::get<int>(v.cv_values[0]);
 		if (i < min || i > max) {
-			v.report_error("value must be between %d and %d", min, max);
+			v.report_error(format("value must be between %d and %d")
+				% min % max);
 			return false;
 		}
 		return true;
@@ -489,9 +476,9 @@ private:
 
 tree_entry	*new_tree_entry_from_template(tree &t, string const &,
 					      string const &, string const &,
-					      declpos const &, bool unnamed, bool is_template);
+					      file_position const &, bool unnamed, bool is_template);
 value		*value_from_variable(string const &name, string const &varname, 
-				     declpos const &);
+				     file_position const &);
 
 void	report_parse_error	(const char *, ...);
 void	catastrophic_error	(const char *, ...);

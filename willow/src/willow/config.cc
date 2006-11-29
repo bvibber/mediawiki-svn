@@ -70,8 +70,8 @@ map<string, int>::iterator it;
 
 		it = poolnames.find(group);
 		if (it == poolnames.end()) {
-			val->report_error("backend group %s does not exist",
-				group.c_str());
+			val->report_error(format("backend group %s does not exist")
+				% group);
 			return;
 		} else
 			gn = it->second;
@@ -106,8 +106,8 @@ addrlist	*res;
 
 		it = poolnames.find(group);
 		if (it == poolnames.end()) {
-			val->report_error("backend group %s does not exist",
-				group.c_str());
+			val->report_error(format("backend group %s does not exist")
+				% group);
 			return;
 		} else
 			gn = it->second;
@@ -183,8 +183,9 @@ validate_log_facility(tree_entry &, value &v)
 		return false;
 	}
 
-	if (log_levels.find(boost::get<u_string>(v.cv_values[0]).value()) == log_levels.end()) {
-		v.report_error("log level does not exist");
+string	lev = v.get<u_string>(0).value();
+	if (log_levels.find(lev) == log_levels.end()) {
+		v.report_error(format("log level \"%s\" does not exist") % lev);
 		return false;
 	}
 
@@ -297,8 +298,9 @@ vector<avalue_t>::iterator	it = v.cv_values.begin(),
 		try {
 		prefix	p(boost::get<q_string>(*it).value());
 		} catch (invalid_prefix& e) {
-			v.report_error("%s: %s", 
-				boost::get<q_string>(*it).value().c_str());
+			v.report_error(format("%s: %s")
+				% boost::get<q_string>(*it).value()
+				% e.what());
 			return false;
 		}
 	}
@@ -405,8 +407,8 @@ set_htcp_keys(tree_entry &e, value &v)
 string const 	&file = v.get<q_string>(0).value();
 ifstream	f(file.c_str());
 	if (!f.is_open()) {
-		v.report_error("cannot open HTCP key file %s: %s",
-			file.c_str(), strerror(errno));
+		v.report_error(format("cannot open HTCP key file %s: %s")
+			% file % strerror(errno));
 		return;
 	}
 
@@ -417,16 +419,16 @@ int	line = 0;
 	string::size_type	i;
 		++line;
 		if ((i = s.find(' ')) == string::npos) {
-			v.report_error("%s(%d): syntax error",
-				file.c_str(), line);
+			v.report_error(format("%s(%d): syntax error")
+				% file % line);
 			continue;
 		}
 		name = s.substr(0, i);
 		key = s.substr(i + 1);
 
 		if (key.size() != 683) {
-			v.report_error("%s(%d): key has wrong length",
-				file.c_str(), line);
+			v.report_error(format("%s(%d): key has wrong length")
+				% file % line);
 			continue;
 		}
 

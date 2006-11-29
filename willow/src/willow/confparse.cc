@@ -26,6 +26,8 @@
 using std::vector;
 using std::make_pair;
 
+#include <boost/bind.hpp>
+
 #define NEED_PARSING_TREE
 
 #include "confparse.h"
@@ -112,14 +114,14 @@ parse_file(string const &file)
 	for (blockit = result.begin(), blockend = result.end();
              blockit != blockend; ++blockit)
 	{
-	tree_entry	e = declpos();
+	tree_entry	e = file_position();
 		e.item_name = blockit->name;
 		e.item_key = blockit->key;
 		
 		for (valueit = blockit->values.begin(), valueend = blockit->values.end();
 		        valueit != valueend; ++valueit)
 		{
-		value	v = declpos();
+		value	v(valueit->pos);
 			v.cv_name = valueit->name;
 			v.cv_values = valueit->values;
 		
@@ -150,7 +152,7 @@ map<string, value>::iterator	it;
 void
 add_variable_simple(string const &name, string const &vval)
 {
-value		var = declpos();
+value		var = file_position();
 avalue_t	aval;
 	var.cv_name = name;
 	aval = q_string(vval);
@@ -159,7 +161,7 @@ avalue_t	aval;
 }
 
 value *
-value_from_variable(string const &, string const &varname, declpos const &pos)
+value_from_variable(string const &, string const &varname, file_position const &pos)
 {
 map<string, value>::iterator	it;
 value	*val;
@@ -264,7 +266,7 @@ tree_entry *
 tree::find_or_new(
 	string const	&block,
 	string const	&name,
-	declpos const	&pos,
+	file_position const	&pos,
 	bool		 unnamed,
 	bool		 is_template
 ) {
@@ -285,7 +287,7 @@ tree_entry *
 tree::create(
 	string const	&block,
 	string const	&name,
-	declpos const	&pos,
+	file_position const	&pos,
 	bool		 unnamed,
 	bool		 is_template
 ) {
@@ -313,7 +315,7 @@ new_tree_entry_from_template(
 	string const		&block,
 	string const		&name,
 	string const		&templatename,
-	declpos const		&pos,
+	file_position const		&pos,
 	bool			 unnamed,
 	bool
 ) {
@@ -348,7 +350,7 @@ multimap<string, value>::const_iterator	vit, vend;
 				name = "/" + it->item_name + "=" + it->item_key + "/" + vit->second.cv_name;
 			else
 				name = "/" + it->item_name + "/" + vit->second.cv_name;
-			vit->second.report_error("%s was not recognised", name.c_str());
+			vit->second.report_error(format("%s was not recognised") % name);
 			i++;
 		}
 	}
@@ -412,13 +414,13 @@ char	*mp, *op, *ap;
 	wfree(op);
 }
 
-value::value(declpos const &pos)
+value::value(file_position const &pos)
 	: cv_touched(false)
 	, cv_pos(pos)
 {
 }
 
-tree_entry::tree_entry(declpos const &pos)
+tree_entry::tree_entry(file_position const &pos)
 	: item_pos(pos)
 	, item_unnamed(false)
 	, item_touched(false)
@@ -444,20 +446,12 @@ char	msg[1024] = { 0 };
 }
 
 void
-value::vreport_error(const char *fmt, va_list ap) const
+value::report_error(string const &err) const
 {
-char	msg[1024] = { 0 };
-	vsnprintf(msg, sizeof msg, fmt, ap);
-	wlog.error(format("%s: %s") % cv_pos.format() % msg);
-}
-
-void
-value::report_error(const char *fmt, ...) const
-{
-va_list	ap;
-	va_start(ap, fmt);
-	vreport_error(fmt, ap);
-	va_end(ap);
+	cv_pos.error(
+		boost::bind(
+			static_cast<void (logger::*) (string const &)>(
+				&logger::error), &wlog, _1), err);
 }
 
 size_t

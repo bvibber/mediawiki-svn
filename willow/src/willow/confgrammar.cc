@@ -82,10 +82,12 @@ struct file_closure : spirit::closure<file_closure, vector<block> > {
 struct value_closure : spirit::closure<
 		value_closure,
 		string,
+		file_position,
 		vector<avalue_t>
 	> {
 	member1	name;
-	member2	values;
+	member2	declpos;
+	member3	values;
 };
 
 struct avalue_closure : spirit::closure<
@@ -266,11 +268,18 @@ block	=  (tstring[block.name = construct_<string>(arg1, arg2)]
 						        block.key,
 						        block.values))];
 
-value	=  tstring [value.name = construct_<string>(arg1, arg2)]
+value	=  tstring [value.name = construct_<string>(arg1, arg2),
+		    value.declpos = construct_<file_position>(
+					phoenix::bind(&preprocessor::iterator::get_position) (arg1))]
+
 	>> errguard(equals)[err]
 	>> errguard(list_p(avalue, ','))[err]
-	>> errguard(semicolon)[err] [push_back(block.values, 
-				construct_<value_t>(value.name, value.values))];
+	>> errguard(semicolon)[err] 
+		[push_back(block.values, 
+			   construct_<value_t>(
+				value.name,
+				value.declpos,
+				value.values))];
 
 avalue	= (size  [push_back(value.values, avalue.value)])
 	| (time  [push_back(value.values, avalue.value)])

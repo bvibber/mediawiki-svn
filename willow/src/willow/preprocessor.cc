@@ -22,13 +22,14 @@ file_position::file_position(string const &f, int l, int p)
 	: file(f), line(l), col(p) {}
 
 file_position::file_position(file_position const &o)
-	: file(o.file), line(o.line), col(o.col) {}
+	: file(o.file), line(o.line), col(o.col), linetext(o.linetext) {}
 
 file_position &
 file_position::operator= (file_position const &o) {
 	file = o.file;
 	line = o.line;
 	col = o.col;
+	linetext = o.linetext;
 	return *this;
 }
 
@@ -176,6 +177,7 @@ vector<char>::const_iterator	lit = it;
 			p.col += 8;
 		else
 			++p.col;
+	p.linetext = get_line(p.line);
 	return p;
 }
 

@@ -33,13 +33,26 @@ private:
 };
 
 struct file_position {
+	file_position() : file("<unknown>"), line(0), col(0) {}
 	file_position(string const &f, int l, int p);
 	file_position(file_position const &o);
 	file_position &operator= (file_position const &o);
 
+	string format(void) const {
+		return str(::format("%s(%d:%d)") % file % line % col);
+	}
+
+	template<typename printer>
+	void error(printer p, string const &error) const {
+		p(static_cast<string const &>(str(::format("%s: %s") % format() % error)));
+		p(linetext);
+		p(static_cast<string const &>(string(col - 1, '-') + '^'));
+	}
+
 	string file;
 	int line;
 	int col;
+	string linetext;
 };
 
 ostream& operator<< (ostream &o, file_position const &p);

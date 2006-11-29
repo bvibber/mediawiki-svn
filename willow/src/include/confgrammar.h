@@ -192,10 +192,13 @@ typedef variant<u_string, q_string, bool, int, time_q, size_q> avalue_t;
 
 struct value_t {
 	string		 name;
+	file_position	 pos;
 	vector<avalue_t> values;
 
-	value_t(string const &name_, vector<avalue_t> const &vals_) 
-		: name(name_), values(vals_) {}
+	value_t(string const &name_,
+		file_position const &pos_,
+		vector<avalue_t> const &vals_) 
+		: name(name_), pos(pos_), values(vals_) {}
 };
 
 struct block {
