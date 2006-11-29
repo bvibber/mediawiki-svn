@@ -39,6 +39,13 @@ using std::make_pair;
 
 namespace conf {
 
+char const *type_namer<int>::type = "integer value";
+char const *type_namer<bool>::type = "boolean value";
+char const *type_namer<time_q>::type = "time value";
+char const *type_namer<size_q>::type = "size value";
+char const *type_namer<u_string>::type = "unquoted string";
+char const *type_namer<q_string>::type = "quoted string";
+
 expr::parser if_parser;
 
 tree global_conf_tree;
@@ -49,10 +56,6 @@ vector<string> ipaths;
 static void add_ipath(string const &);
 bool parse_error;
 
-int curpos = 0;
-int lineno = 1;
-string linebuf;
-string current_file;
 tree parsing_tree;
 
 const int require_name = 0x1;
@@ -60,6 +63,8 @@ const int require_name = 0x1;
 simple_int_t simple_int;
 simple_yesno_t simple_yesno;
 simple_time_t simple_time;
+simple_size_t simple_size;
+
 nonempty_string_t nonempty_string;
 nonempty_qstring_t nonempty_qstring;
 ignore_t ignore;
@@ -105,54 +110,19 @@ parse_file(string const &file)
 	vector<avalue_t>::iterator avalueit, avalueend;
 
 	for (blockit = result.begin(), blockend = result.end();
-             blockit != blockend; ++blockit) {
+             blockit != blockend; ++blockit)
+	{
 	tree_entry	e = declpos();
 		e.item_name = blockit->name;
 		e.item_key = blockit->key;
 		
-		for (valueit = blockit->values.begin(),
-		        valueend = blockit->values.end();
-		        valueit != valueend; ++valueit) {
+		for (valueit = blockit->values.begin(), valueend = blockit->values.end();
+		        valueit != valueend; ++valueit)
+		{
 		value	v = declpos();
 			v.cv_name = valueit->name;
-			
-			for (avalueit = valueit->values.begin(),
-			        avalueend = valueit->values.end();
-			        avalueit != avalueend; ++avalueit) {
-			avalue	av;
-				switch (avalueit->which()) {
-				case 0: // bare string
-					av.av_type = cv_string;
-					av.av_strval = boost::get<u_string>(*avalueit).value();
-					break;
-
-				case 1:	// quoted string
-					av.av_type = cv_qstring;
-					av.av_strval = boost::get<q_string>(*avalueit).value();
-					break;
-
-				case 2:	// yesno
-					av.av_type = cv_yesno;
-					av.av_intval = boost::get<bool>(*avalueit);
-					break;
-
-				case 3:	// int
-					av.av_type = cv_int;
-					av.av_intval = boost::get<int>(*avalueit);
-					break;
-
-				case 4:	// time
-					av.av_type = cv_time;
-					av.av_intval = boost::get<time_q>(*avalueit).value();
-					break;
-
-				case 5:	// size
-					av.av_type = cv_time;
-					av.av_intval = boost::get<size_q>(*avalueit).value();
-					break;
-				}
-				v.cv_values.push_back(av);
-			}
+			v.cv_values = valueit->values;
+		
 			e.add(v);
 		}
 		parsing_tree.add(e);
@@ -180,11 +150,10 @@ map<string, value>::iterator	it;
 void
 add_variable_simple(string const &name, string const &vval)
 {
-value	var = declpos();
-avalue	aval;
+value		var = declpos();
+avalue_t	aval;
 	var.cv_name = name;
-	aval.av_type = cv_qstring;
-	aval.av_strval = vval;
+	aval = q_string(vval);
 	var.cv_values.push_back(aval);
 	variable_list.insert(make_pair(var.cv_name, var));
 }
@@ -457,12 +426,6 @@ tree_entry::tree_entry(declpos const &pos)
 {
 }
 
-avalue::avalue()
-	: av_intval(0)
-	, av_type(0)
-{
-}
-
 /* public functions */
 
 void
@@ -477,7 +440,7 @@ char	msg[1024] = { 0 };
 	vsnprintf(msg, sizeof msg, fmt, ap);
 	va_end(ap);
 
-	wlog.error(format("%s(%d): %s")	% current_file % lineno % msg);
+	wlog.error(format("%s(%d): %s")	% "" % 0 % msg);
 }
 
 void
@@ -495,12 +458,6 @@ va_list	ap;
 	va_start(ap, fmt);
 	vreport_error(fmt, ap);
 	va_end(ap);
-}
-
-bool
-value::is_single(cv_type t) const
-{
-	return nvalues() == 1 && cv_values[0].av_type == t;
 }
 
 size_t
@@ -535,7 +492,7 @@ va_list	ap;
 	vsnprintf(msg, sizeof msg, fmt, ap);
 	va_end(ap);
 	wlog.error(format("%s(%d): catastrophic error: %s")
-		% current_file % lineno % msg);
+		% "" % 0 % msg);
 	parse_error = true;
 }
 
@@ -543,7 +500,7 @@ extern "C" void
 yyerror(const char *err)
 {
 	parse_error = true;
-	wlog.error(format("%s(%d): %s")	% current_file % lineno % err);
+	wlog.error(format("%s(%d): %s")	% "" % 0 % err);
 }
 
 void
@@ -654,25 +611,6 @@ map<string, value_definer *>::iterator	vit;
 	}
 	if (sefn)
 		(*sefn)(e);
-}
-
-string
-type_name(cv_type t)
-{
-	switch (t) {
-	case cv_string:
-		return "string";
-	case cv_qstring:
-		return "quoted string";
-	case cv_yesno:
-		return "boolean";
-	case cv_int:
-		return "integer";
-	case cv_time:
-		return "time or size";
-	default:
-		return "unknown type";
-	}
 }
 
 bool

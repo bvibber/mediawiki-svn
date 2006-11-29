@@ -80,8 +80,8 @@ extern struct configuration : noncopyable {
 	bool		 x_follow;
 	int		 max_redirects;
 	bool		 use_dio;
-	long		 cache_memory;
-	long		 max_entity_size;
+	size_t		 cache_memory;
+	size_t		 max_entity_size;
 	string		 cache_master;
 	bool		 htcp_sigrequired;
 

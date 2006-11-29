@@ -59,14 +59,14 @@ string		 group = "<default>";
 map<string, int>::iterator it;
 
 	if ((val = e/"port") != NULL)
-		port = val->cv_values[0].av_intval;
+		port = boost::get<int>(val->cv_values[0]);
 	if ((val = e/"aftype") != NULL)
-		if (val->cv_values[0].av_strval == "ipv6")
+		if (boost::get<u_string>(val->cv_values[0]).value() == "ipv6")
 			family = AF_INET6;
 		else	family = AF_INET;
 
 	if ((val = e/"group") != NULL) {
-		group = val->cv_values[0].av_strval;
+		group = boost::get<q_string>(val->cv_values[0]).value();
 
 		it = poolnames.find(group);
 		if (it == poolnames.end()) {
@@ -93,16 +93,16 @@ int		 fam = AF_UNSPEC;
 addrlist	*res;
 
 	if ((val = e/"port") != NULL)
-		port = val->cv_values[0].av_intval;
+		port = boost::get<int>(val->cv_values[0]);
 
 	if ((val = e/"aftype") != NULL)
-		if (val->cv_values[0].av_strval == "ipv6")
+		if (boost::get<u_string>(val->cv_values[0]).value() == "ipv6")
 			fam = AF_INET6;
 		else	fam = AF_INET;
 
 	if ((val = e/"group") != NULL) {
 	map<string, int>::iterator	it;
-		group = val->cv_values[0].av_strval;
+		group = boost::get<q_string>(val->cv_values[0]).value();
 
 		it = poolnames.find(group);
 		if (it == poolnames.end()) {
@@ -178,12 +178,12 @@ map<string, int> log_levels = map_list_of
 static bool
 validate_log_facility(tree_entry &, value &v)
 {
-	if (!v.is_single(cv_string)) {
+	if (!v.is_single<u_string>()) {
 		v.report_error("expected single unquoted string");
 		return false;
 	}
 
-	if (log_levels.find(v.cv_values[0].av_strval) == log_levels.end()) {
+	if (log_levels.find(boost::get<u_string>(v.cv_values[0]).value()) == log_levels.end()) {
 		v.report_error("log level does not exist");
 		return false;
 	}
@@ -194,7 +194,7 @@ validate_log_facility(tree_entry &, value &v)
 static void
 set_log_facility(tree_entry &, value &v)
 {
-	wlog.syslog(true, log_levels.find(v.cv_values[0].av_strval)->second);
+	wlog.syslog(true, log_levels.find(v.get<u_string>(0).value())->second);
 }
 
 static bool
@@ -206,7 +206,7 @@ bool	 ret = true;
 		ret = false;
 	}
 
-	if (!v.is_single(cv_yesno)) {
+	if (!v.is_single<bool>()) {
 		v.report_error("udp-log must be yes/no");
 		ret = false;
 	}
@@ -217,11 +217,11 @@ bool	 ret = true;
 static bool
 v_aftype(tree_entry &, value &v)
 {
-	if (!v.is_single(cv_string)) {
+	if (!v.is_single<u_string>()) {
 		v.report_error("aftype must be single unquoted string");
 		return false;
 	}
-string	&s = v.cv_values[0].av_strval;
+string const	&s = v.get<u_string>(0).value();
 	if (s != "ipv4" && s != "ipv6") {
 		v.report_error("aftype must be \"ipv4\" or \"ipv6\"");
 		return false;
@@ -235,27 +235,27 @@ radix_from_list(tree_entry &e, access_list &rad)
 value		*val;
 int		 flags = 0;
 	if ((val = e/"apply-at") != NULL)
-		if (val->cv_values[0].av_strval == "connect")
+		if (val->get<u_string>().value() == "connect")
 			flags |= http_deny_connect;
 
 	if ((val = e/"log") != NULL)
-		if (val->cv_values[0].av_intval)
+		if (val->get<bool>())
 			flags |= http_log_denied;
 
 	WDEBUG(format("radix_from_list: flags=%d") % flags);
 
 	if ((val = e/"allow") != NULL) {
-	vector<avalue>::iterator	it = val->cv_values.begin(),
+	vector<avalue_t>::iterator	it = val->cv_values.begin(),
 					end = val->cv_values.end();
 		for (; it != end; ++it)
-			rad.allow(it->av_strval, flags);
+			rad.allow(boost::get<q_string>(*it).value(), flags);
 	}
 
 	if ((val = e/"deny") != NULL) {
-	vector<avalue>::iterator	it = val->cv_values.begin(),
+	vector<avalue_t>::iterator	it = val->cv_values.begin(),
 					end = val->cv_values.end();
 		for (; it != end; ++it)
-			rad.deny(it->av_strval, flags);
+			rad.deny(boost::get<q_string>(*it).value(), flags);
 	}
 }
 
@@ -268,36 +268,37 @@ set_access(tree_entry &e)
 static void
 stats_access(tree_entry &, value &v)
 {
-vector<avalue>::iterator	it = v.cv_values.begin(),
+vector<avalue_t>::iterator	it = v.cv_values.begin(),
 				end = v.cv_values.end();
 	for (; it != end; ++it)
-		stats.access.allow(it->av_strval);
+		stats.access.allow(boost::get<q_string>(*it).value());
 }
 
 static void
 force_backend_access(tree_entry &, value &v)
 {
-vector<avalue>::iterator	it = v.cv_values.begin(),
+vector<avalue_t>::iterator	it = v.cv_values.begin(),
 				end = v.cv_values.end();
 	for (; it != end; ++it)
-		config.force_backend.allow(it->av_strval, 1);
+		config.force_backend.allow(boost::get<q_string>(*it).value(), 1);
 }
 
 static bool
 radix_prefix(tree_entry &, value &v)
 {
-vector<avalue>::iterator	it = v.cv_values.begin(),
+vector<avalue_t>::iterator	it = v.cv_values.begin(),
 				end = v.cv_values.end();
 	for (; it != end; ++it) {
-		if (it->av_type != cv_qstring) {
+		if (!is_type<q_string>(*it)) {
 			v.report_error("access prefix must be a list of quoted strings");
 			return false;
 		}
 
 		try {
-		prefix	p(it->av_strval);
+		prefix	p(boost::get<q_string>(*it).value());
 		} catch (invalid_prefix& e) {
-			v.report_error("%s: %s", it->av_strval.c_str(), e.what());
+			v.report_error("%s: %s", 
+				boost::get<q_string>(*it).value().c_str());
 			return false;
 		}
 	}
@@ -307,11 +308,11 @@ vector<avalue>::iterator	it = v.cv_values.begin(),
 bool
 v_apply_at(tree_entry &, value &v)
 {
-	if (!v.is_single(cv_string)) {
+	if (!v.is_single<u_string>()) {
 		v.report_error("apply-at must be single unquoted string");
 		return false;
 	}
-string	&s = v.cv_values[0].av_strval;
+string const	&s = boost::get<u_string>(v.cv_values[0]).value();
 	if (s != "connect" && s != "request") {
 		v.report_error("expected \"connect\" or \"request\"");
 		return false;
@@ -322,11 +323,11 @@ string	&s = v.cv_values[0].av_strval;
 bool
 v_lb_type(tree_entry &, value &v)
 {
-	if (!v.is_single(cv_string)) {
+	if (!v.is_single<u_string>()) {
 		v.report_error("lb-type must be single unquoted string");
 		return false;
 	}
-string	&s = v.cv_values[0].av_strval;
+string const	&s = boost::get<u_string>(v.cv_values[0]).value();
 	if (s != "rr" && s != "carp" && s != "carp-host") {
 		v.report_error("expected \"rr\", \"carp\" or \"carp-host\"");
 		return false;
@@ -352,7 +353,7 @@ map<string, int>::iterator	it;
 lb_type	 lbtype = lb_rr;
 value	*v;
 	if ((v = e/"lb-type") != NULL) {
-	string	&s = v->cv_values[0].av_strval;
+	string const	&s = v->get<u_string>(0).value();
 		if (s == "rr")
 			lbtype = lb_rr;
 		else if (s == "carp")
@@ -362,7 +363,7 @@ value	*v;
 	}
 
 	if ((v = e/"failover-group") != NULL) {
-		if ((it = poolnames.find(v->cv_values[0].av_strval)) == poolnames.end()) {
+		if ((it = poolnames.find(v->get<q_string>(0).value())) == poolnames.end()) {
 			v->report_error("failover-group does not exist");
 		} else {
 			fogroup = it->second;
@@ -373,9 +374,9 @@ value	*v;
 	bpools.insert(make_pair(gn, backend_pool(e.item_key, lbtype, fogroup)));
 
 	if ((v = e/"hosts") != NULL) {
-	vector<avalue>::iterator hit = v->cv_values.begin(), hend = v->cv_values.end();
+	vector<avalue_t>::iterator hit = v->cv_values.begin(), hend = v->cv_values.end();
 		for (; hit != hend; ++hit)
-			host_to_bpool[imstring(hit->av_strval)] = gn;
+			host_to_bpool[imstring(boost::get<q_string>(*hit).value())] = gn;
 		used_pools.insert(gn);
 	}
 }
@@ -383,9 +384,9 @@ value	*v;
 bool
 v_hosts(tree_entry &, value &v)
 {
-vector<avalue>::iterator it = v.cv_values.begin(), end = v.cv_values.end();
+vector<avalue_t>::iterator it = v.cv_values.begin(), end = v.cv_values.end();
 	for (; it != end; ++it)
-		if (it->av_type != cv_qstring) {
+		if (!is_type<q_string>(*it)) {
 			v.report_error("hosts must be a list of quoted strings");
 			return false;
 		}
@@ -401,7 +402,7 @@ set_cache_dir(tree_entry &e)
 void
 set_htcp_keys(tree_entry &e, value &v)
 {
-string		file = v.cv_values[0].av_strval;
+string const 	&file = v.get<q_string>(0).value();
 ifstream	f(file.c_str());
 	if (!f.is_open()) {
 		v.report_error("cannot open HTCP key file %s: %s",
@@ -441,13 +442,13 @@ int	line = 0;
 void
 set_log_level(tree_entry &e, value &v)
 {
-	wlog.level(log_level(v.cv_values[0].av_intval));
+	wlog.level(log_level(v.get<int>(0)));
 }
 
 void
 set_log_file(tree_entry &e, value &v)
 {
-	wlog.file(v.cv_values[0].av_strval);
+	wlog.file(v.get<q_string>(0).value());
 }
 
 bool
@@ -465,12 +466,12 @@ conf
 		.value("log-sample",	simple_range(1, INT_MAX),	set_int(config.log_sample))
 		.value("udp-log",	func(v_udp_log),		set_yesno(config.udp_log))
 		.value("udp-port",	simple_range(0, 65535),		set_int(config.udplog_port))
-		.value("udp-host",	nonempty_qstring,		set_string(config.udplog_host))
+		.value("udp-host",	nonempty_qstring,		set_qstring(config.udplog_host))
 
 	.block("cache")
-		.value("cache-memory",		simple_time,		set_long(config.cache_memory))
-		.value("max-entity-size",	simple_time,		set_long(config.max_entity_size))
-		.value("master-state",		nonempty_qstring,	set_string(config.cache_master))
+		.value("cache-memory",		simple_size,		set_size(config.cache_memory))
+		.value("max-entity-size",	simple_size,		set_size(config.max_entity_size))
+		.value("master-state",		nonempty_qstring,	set_qstring(config.cache_master))
 		.value("htcp-listen",		ip_address_list,	add_ip(config.htcp_hosts))
 		.value("htcp-keys",		nonempty_qstring,	func(set_htcp_keys))
 		.value("htcp-sig-required",	simple_yesno,		set_yesno(config.htcp_sigrequired))
@@ -484,7 +485,7 @@ conf
 		.value("backend-retry",		simple_time,		set_time(config.backend_retry))
 		.value("cache-private",		simple_yesno,		set_yesno(config.cache_private))
 		.value("msie-http11-hack",	simple_yesno,		set_yesno(config.msie_hack))
-		.value("default-host",		nonempty_qstring,	set_string(config.default_host))
+		.value("default-host",		nonempty_qstring,	set_qstring(config.default_host))
 		.value("force-backend",		func(radix_prefix),	func(force_backend_access))
 		.value("backend-keepalive",	simple_yesno,		set_yesno(config.backend_keepalive))
 		.value("client-keepalive",	simple_yesno,		set_yesno(config.client_keepalive))
@@ -494,7 +495,7 @@ conf
 
 	.block("server")
 		.value("threads",	simple_range(1, 1024),	set_int(config.nthreads))
-		.value("admin",		nonempty_qstring,	set_string(config.admin))
+		.value("admin",		nonempty_qstring,	set_qstring(config.admin))
 		.value("use-dio",	simple_yesno,		set_yesno(config.use_dio))
 
 	.block("stats")
@@ -567,10 +568,8 @@ wconfig_init(const char *file)
 int	nerrors = 0;
 	if (file == NULL)
 		file = CONFIGFILE;
-	conf::current_file = file;
 
-	wlog.notice(format("loading configuration from %s")
-		% conf::current_file);
+	wlog.notice(format("loading configuration from %s") % file);
 
 	if (!read_config(file)) {
 		wlog.error("cannot load configuration");

@@ -72,6 +72,11 @@ struct tagged_string {
 	string &value(void) {
 		return v;
 	}
+
+	operator string const& (void) const {
+		return v;
+	}
+
 private:
 	string	v;
 };

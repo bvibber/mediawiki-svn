@@ -29,6 +29,7 @@ using std::multimap;
 
 #include "willow.h"
 #include "util.h"
+#include "confgrammar.h"
 
 /*
  * the config tree.
@@ -53,12 +54,6 @@ using std::multimap;
 
 namespace conf {
 
-extern string linebuf;
-extern int curpos;
-extern string current_file;
-extern int lineno;
-extern int conf_parse_error;
-
 struct declpos {
 		declpos(string const &file_, int line_, int pos_)
 			: file(file_), line(line_), pos(pos_) {}
@@ -69,28 +64,17 @@ struct declpos {
 	}
 
 	static declpos here() {
-		return declpos(current_file, lineno, curpos);
+		return declpos("", 0, 0);
 	}
 
 	string	file;
 	int	line, pos;
 };
 
-enum cv_type {
-	cv_int	= 1,
-	cv_string,
-	cv_qstring,
-	cv_time,
-	cv_yesno
-};
-
-struct avalue {
-		avalue();
-
-	string	av_strval;
-	long	av_intval;
-	int	av_type;
-};
+template<typename T>
+bool is_type(avalue_t const &v) {
+	return boost::get<T>(&v) != NULL;
+}
 
 struct value {
 			 value(declpos const &pos);
@@ -98,10 +82,24 @@ struct value {
 	void	report_error	(const char *, ...) const;
 	void	vreport_error	(const char *, va_list) const;
 	size_t	nvalues		(void) const;
-	bool	is_single	(cv_type) const;
+	template<typename T>
+	bool	is_single(void) {
+		return cv_values.size() == 1 &&
+			boost::get<T>(&cv_values[0]) != NULL;
+	}
+
+	template<typename T>
+	bool	is_type(int n) {
+		return boost::get<T>(&cv_values[n]) != NULL;
+	}
+
+	template<typename T>
+	T const& get(int n = 0) {
+		return boost::get<T>(cv_values[n]);
+	}
 
 	string           cv_name;
-        vector<avalue>   cv_values;     /* list of conf_avalue_t                */
+        vector<avalue_t> cv_values;     /* list of conf_avalue_t                */
         bool             cv_touched;       /* 1 if someone touched this item       */
 	declpos		 cv_pos;
 };
@@ -166,7 +164,47 @@ void	 add_if_entry	(string const &name, int64_t v);
 bool	 if_defined	(string const &name);
 void	 define_if	(string const &name);
 
-string type_name(cv_type);
+template<typename T>
+struct type_namer {
+	static char const *type;
+};
+template<typename T>
+const char *type_namer<T>::type = "unknown type";
+
+template<>
+struct type_namer<int> {
+	static char const *type;
+};
+
+template<>
+struct type_namer<bool> {
+	static char const *type;
+};
+
+template<>
+struct type_namer<time_q> {
+	static char const *type;
+};
+
+template<>
+struct type_namer<size_q> {
+	static char const *type;
+};
+
+template<>
+struct type_namer<q_string> {
+	static char const *type;
+};
+
+template<>
+struct type_namer<u_string> {
+	static char const *type;
+};
+
+template<typename T>
+char const *type_name(void) {
+	return type_namer<T>::type;
+}
 
 typedef bool (*function) (tree_entry &, value &);
 
@@ -221,32 +259,34 @@ function_ender<ret> func(ret (*f)(tree_entry &)) {
 	return function_ender<ret>(f);
 }
 
-template<cv_type type>
+template<typename type>
 struct simple_value : callable<bool> {
 	bool operator() (tree_entry &, value &v) const {
-		if (!v.is_single(type)) {
-			v.report_error("expected single %s", type_name(type).c_str());
+		if (!v.is_single<type>()) {
+			v.report_error("expected single %s", type_name<type>());
 			return false;
 		}
 		return true;
 	}
 };
-typedef simple_value<cv_int> simple_int_t;
-typedef simple_value<cv_yesno> simple_yesno_t;
-typedef simple_value<cv_time> simple_time_t;
+typedef simple_value<int> simple_int_t;
+typedef simple_value<bool> simple_yesno_t;
+typedef simple_value<time_q> simple_time_t;
+typedef simple_value<size_q> simple_size_t;
 
 extern simple_int_t simple_int;
 extern simple_yesno_t simple_yesno;
 extern simple_time_t simple_time;
+extern simple_size_t simple_size;
 
 struct simple_range : callable<bool> {
 	simple_range(int min_, int max_ = INT_MAX) : min(min_), max(max_) {}
 	bool operator() (tree_entry &, value &v) const {
-		if (!v.is_single(cv_int)) {
+		if (!v.is_single<int>()) {
 			v.report_error("expected single integer");
 			return false;
 		}
-		int i = v.cv_values[0].av_intval;
+		int i = boost::get<int>(v.cv_values[0]);
 		if (i < min || i > max) {
 			v.report_error("value must be between %d and %d", min, max);
 			return false;
@@ -256,36 +296,36 @@ struct simple_range : callable<bool> {
 	int	min, max;
 };
 
-template<cv_type string_type>
+template<typename string_type>
 struct nonempty_astring : callable<bool> {
 	bool operator() (tree_entry &, value &v) const {
-		if (!v.is_single(string_type)) {
+		if (!v.is_single<string_type>()) {
 			v.report_error("expected single string");
 			return false;
 		}
-		if (v.cv_values[0].av_strval.empty()) {
+		if (v.get<string_type>(0).value().empty()) {
 			v.report_error("expected non-empty string");
 			return false;
 		}
 		return true;
 	}
 };
-typedef nonempty_astring<cv_string> nonempty_string_t;
-typedef nonempty_astring<cv_qstring> nonempty_qstring_t;
+typedef nonempty_astring<u_string> nonempty_string_t;
+typedef nonempty_astring<q_string> nonempty_qstring_t;
 extern nonempty_string_t nonempty_string;
 extern nonempty_qstring_t nonempty_qstring;
 
 struct ip_address_list_t : callable<bool> {
 	bool operator() (tree_entry &, value &v) const {
 	pair<string,string>	ip;
-	vector<avalue>::iterator	it = v.cv_values.begin(),
+	vector<avalue_t>::iterator	it = v.cv_values.begin(),
 					end = v.cv_values.end();
 		for (; it != end; ++it) {
-			if (it->av_type != cv_qstring) {
+			if (!is_type<q_string>(*it)) {
 				v.report_error("IP address must be quoted string");
 				return false;
 			}
-			if (!parse_ip(it->av_strval, ip)) {
+			if (!parse_ip(boost::get<q_string>(*it).value(), ip)) {
 				v.report_error("could not parse IP address");
 				return false;
 			}
@@ -302,49 +342,63 @@ struct add_ip : callable<void> {
 
 	void operator() (tree_entry &, value &v) const {
 	pair<string,string>	ip;
-	vector<avalue>::iterator	it = v.cv_values.begin(),
+	vector<avalue_t>::iterator	it = v.cv_values.begin(),
 					end = v.cv_values.end();
 		for (; it != end; ++it) {
-			parse_ip(it->av_strval, ip);
+			parse_ip(boost::get<q_string>(*it).value(), ip);
 			list.push_back(ip);
 		}
 	}
 };
 
-template<typename T>
+template<typename T, typename U = T>
 struct set_simple : callable<void> {
-	set_simple(T& sv_) : sv(sv_) {}
+	set_simple(U& sv_) : sv(sv_) {}
 	void operator() (tree_entry &, value &v) const {
-		sv = v.cv_values[0].av_intval;
+		sv = v.get<T>(0);
 	}
-	T& sv;
+	U& sv;
 };
-template<typename T>
-struct set_simple<atomic<T> > : callable<void> {
+
+template<typename T, typename U = T>
+struct set_quantity : callable<void> {
+	set_quantity(U& sv_) : sv(sv_) {}
+	void operator() (tree_entry &, value &v) const {
+		sv = v.get<T>(0).value();
+	}
+	U& sv;
+};
+
+template<typename T, typename U>
+struct set_simple<U, atomic<T> > : callable<void> {
 	atomic<T>	&sv;
 	set_simple(atomic<T>& sv_) : sv(sv_) {}
 	void operator() (tree_entry &, value &v) const {
-		sv = v.cv_values[0].av_intval;
+		sv = v.get<U>(0);
 	}
 };
 
+template<typename T>
 struct set_astring : callable<void> {
 	set_astring(string& sv_) : sv(sv_) {}
 	void operator() (tree_entry &, value &v) const {
-		sv = v.cv_values[0].av_strval;
+		sv = v.get<T>(0).value();
 	}
 	string& sv;
 };
 
-typedef set_astring		set_string;
-typedef set_astring		set_qstring;
-typedef set_simple<time_t>	set_time;
-typedef set_simple<bool>	set_yesno;
-typedef set_simple<int>		set_int;
-typedef set_simple<long>	set_long;
-typedef set_simple<atomic<time_t> >	set_atime;
-typedef set_simple<atomic<bool> >	set_abool;
-typedef set_simple<atomic<int> >	set_aint;
+
+typedef set_astring<u_string>			set_string;
+typedef set_astring<q_string>			set_qstring;
+typedef set_quantity<time_q, time_t>		set_time;
+typedef set_quantity<size_q, size_t>		set_size;
+typedef set_simple<bool>			set_yesno;
+typedef set_simple<int>				set_int;
+typedef set_simple<int, long>			set_long;
+typedef set_simple<time_q, atomic<time_t> >	set_atime;
+typedef set_simple<size_q, atomic<size_t> >	set_asize;
+typedef set_simple<bool, atomic<bool> >		set_abool;
+typedef set_simple<int, atomic<int> >		set_aint;
 
 struct accept_any_t : callable<bool> {
 	bool operator() (tree_entry &, value &) const {
@@ -449,10 +503,5 @@ void	add_variable_simple	(const char *, const char *);
 bool	find_include		(string &);
 
 } // namespace conf
-
-extern FILE *yyin;      /* same         */
-extern "C" int yylex(void);        /* same         */
-extern "C" int yyparse(void);      /* from parser  */
-extern "C" void yyerror(const char *);
 
 #endif
