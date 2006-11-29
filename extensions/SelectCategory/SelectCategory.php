@@ -45,7 +45,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'		=> 'SelectCategory',
 	'author'	=> 'Leon Weber & Manuel Schneider',
 	'url'		=> 'http://www.mediawiki.org/wiki/SelectCategory',
-	'description'	=> 'Allows the user to select from existing categories when editing a page.'
+	'description'	=> 'Allows the user to select from existing categories when editing a page'
 );
 
 ## Set Hook:
@@ -56,9 +56,16 @@ function fnSelectCategory() {
 	$wgHooks['EditPage::showEditForm:initial'][] = 'fnSelectCategoryEditHook';
 	# Hook when saving page:
 	$wgHooks['ArticleSave'][] = 'fnSelectCategorySaveHook';
+	# Hook for the upload page:
+	$wgHooks['UploadForm:initial'][] = 'fnSelectCategoryUploadHook';
+	# Hook when saving the upload:
+	$wgHooks['UploadForm:BeforeProcessing'][] = 'fnSelectCategoryUplSaveHook';
+	# Hook our own CSS:
+	$wgHooks['OutputPageParserOutput'][] = 'fnSelectCategoryOutputHook';
+	# Hook up local messages:
+	$wgHooks['LoadAllMessages'][] = 'fnSelectCategoryMessageHook';
 }
 
-## Load the two files containing the hook functions:
-require_once( 'SelectCategoryEdit.php' );
-require_once( 'SelectCategorySave.php' );
+## Load the file containing the hook functions:
+require_once( 'SelectCategoryFunctions.php' );
 ?>
