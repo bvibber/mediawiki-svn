@@ -146,7 +146,6 @@ config.status:
 	--enable-useragent-log \
 	--enable-auth="basic,digest,ntlm" \
 	--enable-carp \
-	--enable-gnuregex \
 	--disable-icmp \
 	--with-large-files \
 	--with-maxfd=16384 \

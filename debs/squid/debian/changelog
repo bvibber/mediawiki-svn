@@ -1,3 +1,11 @@
+squid (2.6.5-1wm4) edgy; urgency=low
+
+  * Do not build with GNU regexes, as this seems to be the major
+    cause for malloc() cpu load due to memory fragmentation
+  * Clean all COSS cache dirs in parallel
+
+ -- Mark Bergsma <mark@wikimedia.org>  Wed, 29 Nov 2006 13:39:40 +0000
+
 squid (2.6.5-1wm3) edgy; urgency=low
 
   * Fix 'dd' line in initscript 'clean'
