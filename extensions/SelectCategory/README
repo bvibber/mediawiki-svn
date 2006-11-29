@@ -1,0 +1,30 @@
+--------------------------------------------------------------------------
+README for the CategoryTree extension
+Copyright © 2006 by Leon Weber & Manuel Schneider
+Licenses: GNU General Public Licence (GPL)
+          GNU Free Documentation License (GFDL)
+--------------------------------------------------------------------------
+
+The SelectCategory extensions provides three functions:
+- It shows a list of all categories (unless a custom root category is con-
+  figured) in their hierarchical structure on the edit page.
+
+- It strips all categories linked within a page upon editing and selects 
+  them in the category list list.
+
+- It adds selected categories from the list to the text body of the page
+  on saving.
+
+
+INSTALLING
+--------------------------------------------------------------------------
+
+Copy the SelectCategory directory into the extensions folder of your
+MediaWiki installation. Then add the following lines to your
+LocalSettings.php file (near the end):
+
+  require_once( 'extensions/SelectCategory/SelectCategory.php' );
+
+USAGE
+--------------------------------------------------------------------------
+
