@@ -361,7 +361,7 @@ class MakesysopStewardForm extends UserrightsForm {
 		} else {
 			global $wgDBuser, $wgDBpassword;
 			$server = $this->getMaster( $database );
-			$db =& new Database( $server, $wgDBuser, $wgDBpassword, $database );
+			$db = new Database( $server, $wgDBuser, $wgDBpassword, $database );
 		}
 		return $db;
 	}
