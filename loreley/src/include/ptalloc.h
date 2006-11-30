@@ -95,7 +95,6 @@ struct pt_allocator {
 			ret = (pta_block *)malloc(sizeof(*ret));
 		}
 #endif
-		HOLDING(_lock);
 		if (_ptafl) {
 			ret = _ptafl;
 			_ptafl = ret->next;
@@ -110,8 +109,6 @@ struct pt_allocator {
 #if 0
 	pta_block	**ptfl = (pta_block **)pthread_getspecific(pttssw.key);
 #endif
-		HOLDING(_lock);
-
 		ptb->next = _ptafl;
 		_ptafl = ptb;
 	}
