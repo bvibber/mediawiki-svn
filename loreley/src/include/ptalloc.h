@@ -110,6 +110,8 @@ struct pt_allocator {
 #if 0
 	pta_block	**ptfl = (pta_block **)pthread_getspecific(pttssw.key);
 #endif
+		HOLDING(_lock);
+
 		ptb->next = _ptafl;
 		_ptafl = ptb;
 	}
@@ -126,6 +128,7 @@ struct pt_allocator {
 	size_t			 sz = sizeof(T) * n;
 	int			 exp = ilog2(sz) + 1;
 	void			*ret;
+		HOLDING(_lock);
 
 	vector<pta_block *>	&fl = _ptfreelist;
 
@@ -146,6 +149,7 @@ struct pt_allocator {
 	size_t			 sz = sizeof(T) * n;
 	int			 exp = ilog2(sz) + 1;
 	pta_block		*ptb = get_ptb();
+		HOLDING(_lock);
 
 	vector<pta_block *>	&fl = _ptfreelist;
 
