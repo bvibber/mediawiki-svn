@@ -8,6 +8,6 @@
 # @copyright © 2006 by Leon Weber & Manuel Schneider
 # @licence GNU General Public Licence 2.0 or later
 
-$messages['selectcategory-title']	= 'Select categories';
-$messages['selectcategory-subtitle']	= 'Shift-mouse to select multiple contiguous entries, Ctrl-mouse to select non-contiguous entries.';
+$messages['selectcategory-title']       = 'Choix de catégories';
+$messages['selectcategory-subtitle']    = 'Shift+Souris afin de (de)sélectionner plusieurs catégories d\'affilées, Ctrl+Souris afin de (de)sélectionner des catégories.';
 ?>

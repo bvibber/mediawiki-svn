@@ -33,12 +33,15 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 
 			# Never ever use editFormTextTop here as it resides outside the <form> so we will never get contents
 			$m_place = editFormTextAfterWarn;
+			# Print the localised title for the select box:
 			$m_textBefore = wfMsgReal( 'selectcategory-title' ) . ":";
 		} else	{
 			# No need to get categories:
 			$m_pageCats = array();
 			
+			# Place output at the right place:
 			$m_place = uploadFormTextAfterSummary;
+			# Print the part of the table including the localised title for the select box:
 			$m_textBefore = "\n</td></tr><tr><td align='right'><label for='wpSelectCategory'>" . wfMsgReal( 'selectcategory-title' ) .":</label></td><td align='left'>";
 		}
 
@@ -59,10 +62,12 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 		}
 		# Close select box:
 		$m_pageObj->$m_place .= "</select>\n";
+		# Print localised help string:
 		$m_pageObj->$m_place .= wfMsgReal( 'selectcategory-subtitle' ) . "<br/>\n";
 		$m_pageObj->$m_place .= "<!-- SelectCategory end -->\n";
 
 	}	
+	
 	# Return true to let the rest work:
 	return true;
 }
@@ -83,6 +88,7 @@ function fnSelectCategorySaveHook( $m_isUpload, &$m_pageObj, $void, &$m_text, $v
 	if ( $m_isUpload ) {
 		$m_pageObj->mUploadDescription .= $m_text;
 	}
+	
 	# Return to the let MediaWiki do the rest of the work:
 	return true;
 }
@@ -114,8 +120,6 @@ function fnSelectCategoryMessageHook() {
 	include( 'SelectCategory.i18n.' . $wgLang->getCode() . '.php' );
 	# Put messages into message cache:
 	$wgMessageCache->addMessages( $messages );
-	
-	return true;
 }
 
 ## Get all categories from the wiki - starting with a given root or otherwise detect root automagically (expensive):
@@ -215,7 +219,7 @@ function fnSelectCategoryGetPageCategories( $m_pageObj ) {
 	# Place the cleaned text into the text box:
 	$m_pageObj->textbox1 = trim( $m_cleanText );
 	
-	# Return the list of categories as an array without dupes:
+	# Return the list of categories as an array:
 	return $m_catLinks;
 }
 ?>
