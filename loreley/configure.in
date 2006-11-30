@@ -198,8 +198,8 @@ AC_OUTPUT(
 	Makefile 
 	src/Makefile 
 	src/libloreley/Makefile
-	src/libloreley/Makefile
-	src/wreadlog/Makefile
-	src/wgetstats/Makefile
-	src/whtcp/Makefile
+	src/loreley/Makefile
+	src/lreadlog/Makefile
+	src/lgetstats/Makefile
+	src/lhtcp/Makefile
 	errors/Makefile)

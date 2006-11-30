@@ -9,7 +9,7 @@
 # @(#) $Id$
 
 
-SUBDIRS=libloreley loreley lreadlog lgetstats whtcp
+SUBDIRS=libloreley loreley lreadlog lgetstats lhtcp
 
 @include@ @q@@top_srcdir@/mk/subdir.mk@q@
 
