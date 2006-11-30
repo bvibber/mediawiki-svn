@@ -152,7 +152,7 @@ private:
 #if DB_VERSION_MINOR > 2
 	static void errcall(DB_ENV const *, char const *pfx, char const *msg);
 #else
-	static void errcall(char const *pfx, char const *msg);
+	static void errcall(char const *pfx, char *msg);
 #endif
 	DB		*_db;
 	environment	*_env;
@@ -251,7 +251,7 @@ void
 #if DB_VERSION_MINOR > 2
 database<Key, Value, Datastore>::errcall(DB_ENV const *, char const *pfx, char const *msg)
 #else
-database<Key, Value, Datastore>::errcall(char const *pfx, char const *msg)
+database<Key, Value, Datastore>::errcall(char const *pfx, char *msg)
 #endif
 {
 	if (pfx)
