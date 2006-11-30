@@ -8,8 +8,8 @@
 # @copyright © 2006 by Leon Weber & Manuel Schneider
 # @licence GNU General Public Licence 2.0 or later
 
-# translation done by Marius Engler <marius.engler@coop.ch>
+# translation done by Manuel Schneider <manuel.schneider@wikimedia.ch>
 
-$messages['selectcategory-title']       = 'Choix de catégories';
-$messages['selectcategory-subtitle']    = 'Shift+Souris afin de (de)sélectionner plusieurs catégories d\'affilées, Ctrl+Souris afin de (de)sélectionner des catégories.';
+$messages['selectcategory-title']	= 'Kategorien auswählen';
+$messages['selectcategory-subtitle']	= 'Shift-Maus um mehrere nachfolgende Einträge zu (de-)selektieren, Strg-Maus um einzelne Einträge zu (de-)selektieren.';
 ?>
