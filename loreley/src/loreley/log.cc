@@ -71,6 +71,13 @@ logger::open(void)
 void
 logger::_log(log_level sev, string const &e)
 {
+	HOLDING(_lock);
+	_log_unlocked(sev, e);
+}
+
+void
+logger::_log_unlocked(log_level sev, string const &e)
+{
 string	r;
 
 	if (sev < _level)
@@ -78,15 +85,17 @@ string	r;
 
 	r = str(format("%s| %s: %s") % current_time_short % sev_names[sev] % e);
 
-	HOLDING(_lock);
 	if (_syslog)
 		::syslog(syslog_pri[sev], "%s", e.c_str());
 
 	if (_fp) {
 		if (!(*_fp << r << '\n')) {
 			_fp->close();
-			wlog.error(format("writing to logfile: %s")
-				% strerror(errno));
+			delete _fp;
+			_fp = NULL;
+			_log_unlocked(ll_error, 
+				str(format("writing to logfile: %s")
+					% strerror(errno)));
 			exit(8);
 		}
 	}

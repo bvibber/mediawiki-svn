@@ -59,6 +59,7 @@ private:
 	lockable	 _lock;
 
 	void _log(log_level l, string const &);
+	void _log_unlocked(log_level l, string const &);
 };
 
 extern logger wlog;

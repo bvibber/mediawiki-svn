@@ -962,7 +962,6 @@ whttp_reconfigure(void)
 			% udplog_sock->straddr()
 			% config.log_sample);
 	}
-
 }
 
 void
