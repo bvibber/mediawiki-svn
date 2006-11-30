@@ -42,4 +42,4 @@
 - for just-a-hostname OpenIDs, if the first element is not
   www, use the first element as a proposed ID
 - configurable regexps for finding a user ID from an OpenID.
-
+- Make the OpenID login page more prominent. A personal toolbox link for each page?
