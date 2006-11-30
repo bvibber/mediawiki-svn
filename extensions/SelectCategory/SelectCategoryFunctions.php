@@ -115,9 +115,9 @@ function fnSelectCategoryMessageHook() {
 	# Initialize array of all messages:
 	$messages=array();
 	# Load default messages (english):
-	include( 'SelectCategory.i18n.php' );
+	include( 'i18n/SelectCategory.i18n.php' );
 	# Load localised messages:
-	include( 'SelectCategory.i18n.' . $wgLang->getCode() . '.php' );
+	include( 'i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' );
 	# Put messages into message cache:
 	$wgMessageCache->addMessages( $messages );
 }
