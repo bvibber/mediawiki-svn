@@ -19,6 +19,7 @@
 #include <sstream>
 
 #include "flalloc.h"
+#include "util.h"
 
 /*
  * A fast, thread-specific power of two allocator.  Backended by

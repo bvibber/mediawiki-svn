@@ -33,9 +33,14 @@ T	*n = (T *)p, *o;
 template<typename T>
 struct freelist_allocator {
 	T		*_freelist_next;
+#if 0
 static  tss<T, flalloc_dtor<T> >		 _freelist;
+#endif
+	static T	*_freelist;
+	static lockable	 _lock;
 
         void *operator new(std::size_t size) {
+		HOLDING(_lock);
                 if (_freelist) {
                 T       *n = _freelist;
                         _freelist = _freelist->_freelist_next;
@@ -55,14 +60,22 @@ static  tss<T, flalloc_dtor<T> >		 _freelist;
 	}
 
         void operator delete (void *p) {
+		HOLDING(_lock);
         T       *o = (T *)p;
                 o->_freelist_next = _freelist;
                 _freelist = o;
         }
 };
 
+#if 0
 template<typename T>
 tss<T, flalloc_dtor<T> > freelist_allocator<T>::_freelist;
+#endif
+template<typename T>
+T *freelist_allocator<T>::_freelist;
+template<typename T>
+lockable freelist_allocator<T>::_lock;
+
 #else	/* !__SUNPRO_CC */
 template<typename T>
 struct freelist_allocator {

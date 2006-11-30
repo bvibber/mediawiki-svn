@@ -13,8 +13,9 @@
 #ifndef WTHREAD_H
 #define WTHREAD_H
 
+#include <boost/noncopyable.hpp>
 #include <pthread.h>
-#include "util.h"
+using boost::noncopyable;
 
 #define HOLDING(l) locker _l(l)
 

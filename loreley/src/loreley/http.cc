@@ -269,9 +269,6 @@ bool	can_keepalive = false;
 		 */
 		can_keepalive = false;
 
-	if (!config.client_keepalive)
-		can_keepalive = false;
-
 	delete _backend_spigot;
 	_backend_spigot = NULL;
 	delete _backend_sink;
@@ -338,6 +335,20 @@ bool	can_keepalive = false;
 
 httpcllr::~httpcllr(void)
 {				
+	delete _backend_spigot;
+	delete _backend_sink;
+	delete _client_sink;
+	delete _dechunking_filter;
+	delete _error_headers;
+	delete _error_filter;
+	delete _error_body;
+	delete _chunking_filter;
+	delete _size_limit;
+	delete _header_parser;
+	delete _cache_filter;
+	delete _blist;
+	delete _backend_headers;
+	delete _cache_spigot;
 	delete _client_spigot;
 	delete _client_socket;
 }
