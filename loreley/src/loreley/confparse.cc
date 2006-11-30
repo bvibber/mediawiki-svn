@@ -375,8 +375,8 @@ bool
 tree::add(tree_entry const &item)
 {
 	/* if the entry already exists, do nothing */
-	if (find_item(item) != NULL)
-		return false;
+//	if (find_item(item) != NULL)
+//		return false;
 	entries.push_back(item);
 	return true;
 }
