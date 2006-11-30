@@ -21,7 +21,7 @@ class DeletedcontribsPage extends ContributionsPage {
 
 	// no hax please
 	function newbiesTargetName() {
-		return 'newbies';
+		return false;
 	}
 
 	function getPageHeader() {
