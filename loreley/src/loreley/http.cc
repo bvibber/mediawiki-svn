@@ -269,6 +269,9 @@ bool	can_keepalive = false;
 		 */
 		can_keepalive = false;
 
+	if (!config.client_keepalive)
+		can_keepalive = false;
+
 	delete _backend_spigot;
 	_backend_spigot = NULL;
 	delete _backend_sink;
@@ -300,7 +303,8 @@ bool	can_keepalive = false;
 	/*
 	 * Return the backend to the keepalive pool, if we can.
 	 */
-	if (_backend_socket && _backend_headers && !_backend_headers->_no_keepalive &&
+	if (config.backend_keepalive &&
+	    _backend_socket && _backend_headers && !_backend_headers->_no_keepalive &&
 	    _backend_headers->_http_vers == http11 && (!_blist || !_blist->failed())) {
 		bpools.find(_group)->second.add_keptalive(
 			make_pair(_backend_socket, _backend));
