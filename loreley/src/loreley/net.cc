@@ -546,6 +546,8 @@ socket::socket(wnet::address const &a, char const *desc, sprio p)
 void
 socket::bind(void)
 {
+int	one = 1;
+	setopt(SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
 	if (::bind(_s, _addr.addr(), _addr.length()) == -1)
 		throw socket_error();
 }
