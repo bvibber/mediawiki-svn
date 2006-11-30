@@ -561,6 +561,7 @@ socket::listen(int bl)
 
 socket::~socket(void)
 {
+	WDEBUG("closing socket");
 	event_del(&ev);
 	close(_s);
 }

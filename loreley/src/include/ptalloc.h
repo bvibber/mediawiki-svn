@@ -20,6 +20,7 @@
 
 #include "flalloc.h"
 #include "util.h"
+#include "thread.h"
 
 /*
  * A fast, thread-specific power of two allocator.  Backended by
@@ -50,6 +51,7 @@ static const int lt256[] =
   7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7
 };
 
+#if 0
 extern "C" void pttsswrapdtor(void *);
 
 struct pttsswrap {
@@ -63,6 +65,7 @@ void ptdealloc(void *);
 
 extern tss<vector<pta_block *>, ptdealloc> ptfreelist;
 extern pttsswrap pttssw;
+#endif
 
 template<typename T>
 struct pt_allocator {
@@ -74,32 +77,41 @@ struct pt_allocator {
 	typedef size_t			 size_type;
 	typedef ptrdiff_t		 difference_type;
 
+	static lockable			 _lock;
+	static vector<pta_block *>	 _ptfreelist;
+	static pta_block		*_ptafl;
 	pta_block *get_ptb(void) {
-	pta_block	**ptfl = (pta_block **)pthread_getspecific(pttssw.key);
 	pta_block	 *ret;
+#if 0
+	pta_block	**ptfl = (pta_block **)pthread_getspecific(pttssw.key);
 		if (!ptfl) {
 			ptfl = new pta_block *(NULL);
 			pthread_setspecific(pttssw.key, ptfl);
 		}
-
 		if (*ptfl) {
 			ret = *ptfl;
 			(*ptfl) = ret->next;
 		} else {
 			ret = (pta_block *)malloc(sizeof(*ret));
 		}
+#endif
+		HOLDING(_lock);
+		if (_ptafl) {
+			ret = _ptafl;
+			_ptafl = ret->next;
+		} else {
+			ret = (pta_block *)malloc(sizeof(*ret));
+		}
+		
 		return ret;
 	}
 
 	void lose_ptb(pta_block *ptb) {
+#if 0
 	pta_block	**ptfl = (pta_block **)pthread_getspecific(pttssw.key);
-		if (!ptfl) {
-			ptfl = new pta_block *(NULL);
-			pthread_setspecific(pttssw.key, ptfl);
-		}
-
-		ptb->next = *ptfl;
-		*ptfl = ptb;
+#endif
+		ptb->next = _ptafl;
+		_ptafl = ptb;
 	}
 
 	pointer address (reference x) const {
@@ -115,9 +127,7 @@ struct pt_allocator {
 	int			 exp = ilog2(sz) + 1;
 	void			*ret;
 
-		if (!ptfreelist)
-			ptfreelist = new vector<pta_block *>;
-	vector<pta_block *>	&fl = *ptfreelist;
+	vector<pta_block *>	&fl = _ptfreelist;
 
 		/* do we have a free block of this size? */
 		if (exp < (int) fl.size() && fl[exp]) {
@@ -137,9 +147,7 @@ struct pt_allocator {
 	int			 exp = ilog2(sz) + 1;
 	pta_block		*ptb = get_ptb();
 
-		if (!ptfreelist)
-			ptfreelist = new vector<pta_block *>;
-	vector<pta_block *>	&fl = *ptfreelist;
+	vector<pta_block *>	&fl = _ptfreelist;
 
 		if ((int)fl.size() <= exp)
 			fl.resize(exp + 1);
@@ -188,6 +196,11 @@ struct pt_allocator {
 		return r;
 	}
 };
+
+template<typename T>
+vector<pta_block *> pt_allocator<T>::_ptfreelist;
+template<typename T>
+pta_block *pt_allocator<T>::_ptafl;
 
 template<>
 struct pt_allocator<void>
