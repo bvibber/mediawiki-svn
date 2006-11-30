@@ -75,7 +75,7 @@ checkexit_sched(void)
 static void
 usage(void)
 {
-	fprintf(stderr, "usage: %s [-hfzv] [-D cond[=value]]\n"
+	fprintf(stderr, "usage: %s [-hfzv] [-F cfg] [-D cond[=value]]\n"
 "      -h                    print this message\n"
 "      -f                    run in foreground (don't detach)\n"
 "      -v                    print version number and exit\n"
@@ -83,7 +83,9 @@ usage(void)
 "      -D cond[=value]       set 'cond' to 'value' (which should be 'true' or\n"
 "                            'false') in the configuration parser.  if 'value'\n"
 "                            is not specified, defaults to true\n"
-			, progname);
+"      -F cfg                load configuration from this file, instead of default\n"
+"                            (%s)\n"                          
+			, progname, SYSCONFDIR "/loreley.conf");
 }
 
 int 
@@ -96,24 +98,33 @@ bool	 zflag = false;
 	progname = argv[0];
 	pagesize = sysconf(_SC_PAGESIZE);
 
-	while ((i = getopt(argc, argv, "fvc:D:hz")) != -1) {
+	while ((i = getopt(argc, argv, "fvc:D:hzF:")) != -1) {
 		switch (i) {
 			case 'h':
 				usage();
 				return 0;
+
 			case 'f':
 				config.foreground = 1;
 				break;
+
 			case 'v':
 				fprintf(stderr, "%s\n", PACKAGE_VERSION);
 				exit(0);
+
 			case 'c':
 				cfg = optarg;
 				break;
+
 			case 'z':
 				zflag = true;
 				config.foreground = true;
 				break;
+
+			case 'F':
+				cfg = optarg;
+				break;
+
 			case 'D':
 				dval = NULL;
 				if ((dval = strchr(optarg, '=')) != NULL)
@@ -122,6 +133,7 @@ bool	 zflag = false;
 				conf::add_if_entry(optarg, 
 					dval ? strtoll(dval, NULL, 0) : 1);
 				break;
+
 			default:
 				usage();
 				return 8;

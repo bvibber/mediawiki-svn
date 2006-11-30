@@ -408,8 +408,9 @@ set_htcp_keys(tree_entry &e, value &v)
 string const 	&file = v.get<q_string>(0).value();
 ifstream	f(file.c_str());
 	if (!f.is_open()) {
-		v.report_error(format("cannot open HTCP key file %s: %s")
-			% file % strerror(errno));
+		conf::report_error(v.get<q_string>(0),
+			format("cannot open HTCP key file %s: %s")
+				% file % strerror(errno));
 		return;
 	}
 

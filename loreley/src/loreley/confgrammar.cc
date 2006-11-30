@@ -260,10 +260,13 @@ require_value = value;
 
 block	=  (tstring[block.name = construct_<string>(arg1, arg2)] 
 	>> !confix_p('"', (*c_escape_ch_p)[block.key = construct_<string>(arg1, arg2)], '"')
-	>> errguard(open_brace)[err]
-	>> *errguard(require_value)[err]
-	>> errguard(close_brace)[err]
-	>> errguard(semicolon)[err])[push_back(self.blocks,
+	>>  ( ch_p(';')
+	    | !(   errguard(open_brace)[err]
+	        >> *errguard(require_value)[err]
+	        >> errguard(close_brace)[err]
+	        >> errguard(semicolon)[err])
+	       )
+	    ) [push_back(self.blocks,
 			       construct_<struct block>(block.name, 
 						        block.key,
 						        block.values))];

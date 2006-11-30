@@ -248,7 +248,7 @@ http {
 	 * (default: 1, 0: unlimmited) redirects will be followed, to prevent
 	 * infinite redirect loops.
 	 */
-	x-follow-redirect = true;
+	x-follow-redirect = yes;
 	max-redirects = 1;
 };
 
@@ -349,7 +349,7 @@ stats {
 	enable = yes;
 
 	/* Addresses to listen on */
-	listen = "127.0.0.1";	/* port defaults to 4446 */;
+	listen = "127.0.0.1";	/* port defaults to 4446 */
 	listen = "[::1]:4447";
 
 	/* How often to re-calculate averages (default: 300) */
