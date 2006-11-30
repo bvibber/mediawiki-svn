@@ -55,7 +55,7 @@ testflag -Wcast-qual
 testflag -Wcast-align 
 testflag -Wwrite-strings 
 testflag -Wredundant-decls 
-testflag -Wunreachable-code
+dnltestflag -Wunreachable-code
 if test ! "$ac_cv_cxx_compiler_gnu" = "yes"; then
 	testflag -errtags
 fi
