@@ -27,7 +27,7 @@ class ContributionsPage extends QueryPage {
 		if ( $this->user )
 			$this->target = $this->user->getName();
 
-		// ugly hack :(
+		// This is an ugly hack.  I don't know who came up with it.
 		$newbies = $this->newbiesTargetName();
 		if ( $newbies && $target == $newbies )
 			$this->newbies = true;
@@ -144,7 +144,7 @@ class ContributionsPage extends QueryPage {
 		$this->setSubtitle();
 
 		// hook for Contributionseditcount extension
-		if ( $this->user )
+		if ( $this->user && $this->user->getId() )
 			wfRunHooks( 'SpecialContributionsBeforeMainOutput', $this->user->getId() );
 		
 		return $this->getDeletedcontribsLink() . $this->getNamespaceForm();
@@ -220,7 +220,7 @@ class ContributionsPage extends QueryPage {
 		$rev = new Revision( array(
 			'comment'   => $row->comment,
 			'deleted'   => $row->deleted,
-			'user_text' => $this->username,
+			'user_text' => $this->target,
 			'user'      => 0,  // whatever, just don't default to $wgUser->getId();
 		) );
 		$rev->setTitle( $page );
