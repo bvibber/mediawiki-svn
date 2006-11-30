@@ -95,7 +95,7 @@ class DeletedcontribsPage extends ContributionsPage {
 		 */
 		static $ut;
 		if( !isset( $utu ) )
-			$ut =& SpecialPage::getTitleFor( 'Undelete' );
+			$ut = SpecialPage::getTitleFor( 'Undelete' );
 		
 		$page = Title::makeTitle( $row->namespace, $row->title );
 
