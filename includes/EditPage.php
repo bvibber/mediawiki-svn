@@ -119,6 +119,10 @@ class EditPage {
 						#Give a warning
 						$this->editFormPageTop .= "<h2>" . wfMsg('undofailed') . "</h2>\n" .
 									'<p><strong class="error">'.wfMsg('explainundofailed').'</strong></p>';
+					} else {
+						$this->editFormPageTop .= '<h2>'.wfMsg('undosucceeded')."</h2>\n" .
+										'<p>'.wfMsg('explainundosucceeded').'</p>';
+						$this->summary = wfMsgForContent('undo-summary', $undo, $undorev->getUserText());
 					}
 				}
 			}
@@ -844,8 +848,8 @@ class EditPage {
 	 */
 	function initialiseForm() {
 		$this->edittime = $this->mArticle->getTimestamp();
-		$this->textbox1 = $this->getContent();
 		$this->summary = '';
+		$this->textbox1 = $this->getContent();
 		if ( !$this->mArticle->exists() && $this->mArticle->mTitle->getNamespace() == NS_MEDIAWIKI )
 			$this->textbox1 = wfMsgWeirdKey( $this->mArticle->mTitle->getText() ) ;
 		wfProxyCheck();
@@ -1621,15 +1625,15 @@ END
 		 */
 		$toolarray=array(
 			array(	'image'=>'button_bold.png',
-					'open'	=>	"\'\'\'",
-					'close'	=>	"\'\'\'",
+					'open'	=>	'\\\'\\\'\\\'',
+					'close'	=>	'\\\'\\\'\\\'',
 					'sample'=>	wfMsg('bold_sample'),
 					'tip'	=>	wfMsg('bold_tip'),
 					'key'	=>	'B'
 				),
 			array(	'image'=>'button_italic.png',
-					'open'	=>	"\'\'",
-					'close'	=>	"\'\'",
+					'open'	=>	'\\\'\\\'',
+					'close'	=>	'\\\'\\\'',
 					'sample'=>	wfMsg('italic_sample'),
 					'tip'	=>	wfMsg('italic_tip'),
 					'key'	=>	'I'

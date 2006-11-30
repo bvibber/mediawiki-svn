@@ -224,12 +224,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   This is triggered by including &undo=revid in an edit URL. A link to a URL
   that will undo a given edit is shown on NEW NON-CURRENT revision headers on diff pages.
 * Fix display of link in "already rolled back" message for image/category pages
+* (bug 6016) Left-aligned images should stack vertically, like right-aligned
+  images, not horizontally.
+* Patch from LeonWP: added UploadForm:BeforeProcessing hook in SpecialUpload.php
 * New special page Special:Deletedcontribs for browsing deleted edits made by a user.
 
 == Languages updated ==
 
 * Bishnupriya Manipuri (bpy)
 * Cantonese (zh-yue)
+* Frisian (fy)
 * German (de)
 * Hebrew (he)
 * Indonesian (id)
@@ -247,6 +251,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Slovak (sk)
 * Swedish (sv)
 * Upper Sorbian (hsb)
+* Vietnamese (vi)
 
 == Compatibility ==
 

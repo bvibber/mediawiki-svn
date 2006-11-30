@@ -25,7 +25,7 @@ class ProfilerSimple extends Profiler {
 			$entry =& $this->mCollated["-setup"];
 			if (!is_array($entry)) {
 				$entry = array('cpu'=> 0.0, 'cpu_sq' => 0.0, 'real' => 0.0, 'real_sq' => 0.0, 'count' => 0);
-				$this->mCollated[$functionname] =& $entry;
+				$this->mCollated["-setup"] =& $entry;
 				
 			}
 			$entry['cpu'] += $elapsedcpu;
@@ -61,15 +61,13 @@ class ProfilerSimple extends Profiler {
 	}
 
 	function profileOut($functionname) {
-		$memory = memory_get_usage();
-
 		global $wgDebugFunctionEntry;
 
 		if ($wgDebugFunctionEntry) {
 			$this->debug(str_repeat(' ', count($this->mWorkStack) - 1).'Exiting '.$functionname."\n");
 		}
 
-		list($ofname,$ocount,$ortime,$octime) = array_pop($this->mWorkStack);
+		list($ofname, /* $ocount */ ,$ortime,$octime) = array_pop($this->mWorkStack);
 
 		if (!$ofname) {
 			$this->debug("Profiling error: $functionname\n");

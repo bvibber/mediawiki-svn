@@ -2330,7 +2330,11 @@ class Article {
 	 */
 	function isFileCacheable() {
 		global $wgUser, $wgUseFileCache, $wgShowIPinHeader, $wgRequest;
-		extract( $wgRequest->getValues( 'action', 'oldid', 'diff', 'redirect', 'printable' ) );
+		$action    = $wgRequest->getVal( 'action'    );
+		$oldid     = $wgRequest->getVal( 'oldid'     );
+		$diff      = $wgRequest->getVal( 'diff'      );
+		$redirect  = $wgRequest->getVal( 'redirect'  );
+		$printable = $wgRequest->getVal( 'printable' );
 
 		return $wgUseFileCache
 			and (!$wgShowIPinHeader)
@@ -2420,7 +2424,7 @@ class Article {
 		$hitcounterTable = $dbw->tableName( 'hitcounter' );
 		$acchitsTable = $dbw->tableName( 'acchits' );
 
-		if( $wgHitcounterUpdateFreq <= 1 ){ //
+		if( $wgHitcounterUpdateFreq <= 1 ) {
 			$dbw->query( "UPDATE $pageTable SET page_counter = page_counter + 1 WHERE page_id = $id" );
 			return;
 		}
@@ -2451,10 +2455,15 @@ class Article {
 				"SELECT hc_id,COUNT(*) AS hc_n FROM $hitcounterTable ".
 				'GROUP BY hc_id');
 			$dbw->query("DELETE FROM $hitcounterTable");
-			if ($wgDBtype == 'mysql')
+			if ($wgDBtype == 'mysql') {
 				$dbw->query('UNLOCK TABLES');
-			$dbw->query("UPDATE $pageTable,$acchitsTable SET page_counter=page_counter + hc_n ".
-				'WHERE page_id = hc_id');
+				$dbw->query("UPDATE $pageTable,$acchitsTable SET page_counter=page_counter + hc_n ".
+					'WHERE page_id = hc_id');
+			}
+			else {
+				$dbw->query("UPDATE $pageTable SET page_counter=page_counter + hc_n ".
+					"FROM $acchitsTable WHERE page_id = hc_id");
+			}
 			$dbw->query("DROP TABLE $acchitsTable");
 
 			ignore_user_abort( $old_user_abort );
@@ -2694,8 +2703,6 @@ class Article {
 
 		# This code is UGLY UGLY UGLY.
 		# Somebody PLEASE come up with a more elegant way to do it.
-
-		$summary = '';
 
 		#Redirect autosummaries
 		$summary = self::getRedirectAutosummary( $newtext );

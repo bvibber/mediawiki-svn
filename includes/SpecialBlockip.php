@@ -281,7 +281,7 @@ class IPBlockForm {
 		$wgOut->addWikiText( $text );
 	}
 	
-	function showLogFragment( &$out, &$title ) {
+	function showLogFragment( $out, $title ) {
 		$out->addHtml( wfElement( 'h2', NULL, LogPage::logName( 'block' ) ) );
 		$request = new FauxRequest( array( 'page' => $title->getPrefixedText(), 'type' => 'block' ) );
 		$viewer = new LogViewer( new LogReader( $request ) );

@@ -348,7 +348,6 @@ class PageArchive {
 		}
 		
 		$revision = null;
-		$newRevId = $previousRevId;
 		$restored = 0;
 
 		while( $row = $dbw->fetchObject( $result ) ) {
@@ -375,7 +374,7 @@ class PageArchive {
 				'minor_edit' => $row->ar_minor_edit,
 				'text_id'    => $row->ar_text_id,
 				) );
-			$newRevId = $revision->insertOn( $dbw );
+			$revision->insertOn( $dbw );
 			$restored++;
 		}
 
@@ -498,7 +497,7 @@ class UndeleteForm {
 		$wgOut->addWikiText( wfMsg( "undeletepagetext" ) );
 
 		$sk = $wgUser->getSkin();
-		$undelete =& SpecialPage::getTitleFor( 'Undelete' );
+		$undelete = SpecialPage::getTitleFor( 'Undelete' );
 		$wgOut->addHTML( "<ul>\n" );
 		while( $row = $result->fetchObject() ) {
 			$title = Title::makeTitleSafe( $row->ar_namespace, $row->ar_title );
@@ -594,8 +593,8 @@ class UndeleteForm {
 		}
 
 		$archive = new PageArchive( $this->mTargetObj );
-		$text = $archive->getLastRevisionText();
 		/*
+		$text = $archive->getLastRevisionText();
 		if( is_null( $text ) ) {
 			$wgOut->addWikiText( wfMsg( "nohistory" ) );
 			return;
@@ -739,7 +738,6 @@ class UndeleteForm {
 		global $wgOut, $wgUser;
 		if( !is_null( $this->mTargetObj ) ) {
 			$archive = new PageArchive( $this->mTargetObj );
-			$ok = true;
 			
 			$ok = $archive->undelete(
 				$this->mTargetTimestamp,

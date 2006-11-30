@@ -46,10 +46,10 @@ class ChangesList {
 	 * @param $user User to fetch the list class for
 	 * @return ChangesList derivative
 	 */
-	function newFromUser( &$user ) {
+	public static function newFromUser( &$user ) {
 		$sk =& $user->getSkin();
 		$list = NULL;
-		if( wfRunHooks( 'FetchChangesList', array( &$user, &$skin, &$list ) ) ) {
+		if( wfRunHooks( 'FetchChangesList', array( &$user, &$sk, &$list ) ) ) {
 			return $user->getOption( 'usenewrc' ) ? new EnhancedChangesList( $sk ) : new OldChangesList( $sk );
 		} else {
 			return $list;
@@ -184,7 +184,7 @@ class ChangesList {
 		$s .= ' '.$articlelink;
 	}
 
-	function insertTimestamp(&$s, &$rc) {
+	function insertTimestamp(&$s, $rc) {
 		global $wgLang;
 		# Timestamp
 		$s .= '; ' . $wgLang->time( $rc->mAttribs['rc_timestamp'], true, true ) . ' . . ';
@@ -233,7 +233,6 @@ class OldChangesList extends ChangesList {
 
 		# Extract DB fields into local scope
 		extract( $rc->mAttribs );
-		$curIdEq = 'curid=' . $rc_cur_id;
 
 		# Should patrol-related stuff be shown?
 		$unpatrolled = $this->usePatrol() && $rc_patrolled == 0;
@@ -413,7 +412,6 @@ class EnhancedChangesList extends ChangesList {
 		$userlinks = array();
 		foreach( $block as $rcObj ) {
 			$oldid = $rcObj->mAttribs['rc_last_oldid'];
-			$newid = $rcObj->mAttribs['rc_this_oldid'];
 			if( $rcObj->mAttribs['rc_new'] ) {
 				$isnew = true;
 			}
@@ -643,7 +641,7 @@ class EnhancedChangesList extends ChangesList {
 			return '';
 		}
 		$blockOut = '';
-		foreach( $this->rc_cache as $secureName => $block ) {
+		foreach( $this->rc_cache as $block ) {
 			if( count( $block ) < 2 ) {
 				$blockOut .= $this->recentChangesBlockLine( array_shift( $block ) );
 			} else {

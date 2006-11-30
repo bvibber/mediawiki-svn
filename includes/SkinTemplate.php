@@ -148,7 +148,8 @@ class SkinTemplate extends Skin {
 		// adding of CSS or Javascript by extensions.
 		wfRunHooks( 'BeforePageDisplay', array( &$out ) );
 
-		extract( $wgRequest->getValues( 'oldid', 'diff' ) );
+		$oldid = $wgRequest->getVal( 'oldid' );
+		$diff = $wgRequest->getVal( 'diff' );
 
 		wfProfileIn( "$fname-init" );
 		$this->initPage( $out );
@@ -193,8 +194,9 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'displaytitle', $wgOut->mPageLinkTitle );
 		$tpl->set( 'pageclass', Sanitizer::escapeClass( 'page-'.$wgTitle->getPrefixedText() ) );
 
-		$nsname = @$wgCanonicalNamespaceNames[ $this->mTitle->getNamespace() ];
-		if ( $nsname === NULL ) $nsname = $this->mTitle->getNsText();
+		$nsname = isset( $wgCanonicalNamespaceNames[ $this->mTitle->getNamespace() ] ) ? 
+		          $wgCanonicalNamespaceNames[ $this->mTitle->getNamespace() ] :
+		          $this->mTitle->getNsText();
 
 		$tpl->set( 'nscanonical', $nsname );
 		$tpl->set( 'nsnumber', $this->mTitle->getNamespace() );
@@ -236,8 +238,11 @@ class SkinTemplate extends Skin {
 		} else {
 			$tpl->set( 'feeds', false );
 		}
-		if ($wgUseTrackbacks && $out->isArticleRelated())
-			$tpl->set( 'trackbackhtml', $wgTitle->trackbackRDF());
+		if ($wgUseTrackbacks && $out->isArticleRelated()) {
+			$tpl->set( 'trackbackhtml', $wgTitle->trackbackRDF() );
+		} else {
+			$tpl->set( 'trackbackhtml', null );
+		}
 
 		$tpl->setRef( 'mimetype', $wgMimeType );
 		$tpl->setRef( 'jsmimetype', $wgJsMimeType );
@@ -513,14 +518,17 @@ class SkinTemplate extends Skin {
 			$href = self::makeSpecialUrl( "Contributions/$this->username" );
 			$personal_urls['mycontris'] = array(
 				'text' => wfMsg( 'mycontris' ),
-				'href' => $href
-				# FIXME #  'active' => ( $href == $pageurl . '/' . $this->username )
+				'href' => $href,
+				// FIXME #  'active' was disabed in r11346 with message: "disable bold link to my contributions; link was bold on all
+				// Special:Contributions, not just current user's (fix me please!)". Until resolved, explicitly setting active to false.
+				'active' => false # ( ( $href == $pageurl . '/' . $this->username ) 
 			);
 			$personal_urls['logout'] = array(
 				'text' => wfMsg( 'userlogout' ),
 				'href' => self::makeSpecialUrl( 'Userlogout',
 					$wgTitle->isSpecial( 'Preferences' ) ? '' : "returnto={$this->thisurl}"
-				)
+				),
+				'active' => false
 			);
 		} else {
 			if( $wgShowIPinHeader && isset(  $_COOKIE[ini_get("session.name")] ) ) {
@@ -761,9 +769,6 @@ class SkinTemplate extends Skin {
 		$variants = $wgContLang->getVariants();
 		if( !$wgDisableLangConversion && sizeof( $variants ) > 1 ) {
 			$preferred = $wgContLang->getPreferredVariant();
-			$actstr = '';
-			if( $action )
-				$actstr = 'action=' . $action . '&';
 			$vcount=0;
 			foreach( $variants as $code ) {
 				$varname = $wgContLang->getVariantname( $code );
@@ -803,7 +808,6 @@ class SkinTemplate extends Skin {
 
 		$action = $wgRequest->getText( 'action' );
 		$oldid = $wgRequest->getVal( 'oldid' );
-		$diff = $wgRequest->getVal( 'diff' );
 
 		$nav_urls = array();
 		$nav_urls['mainpage'] = array( 'href' => self::makeI18nUrl( 'mainpage') );
@@ -821,7 +825,9 @@ class SkinTemplate extends Skin {
 		}
 		$nav_urls['specialpages'] = array( 'href' => self::makeSpecialUrl( 'Specialpages' ) );
 
-
+		// default permalink to being off, will override it as required below.
+		$nav_urls['permalink'] = false;
+		
 		// A print stylesheet is attached to all pages, but nobody ever
 		// figures that out. :)  Add a link...
 		if( $this->iscontent && ($action == '' || $action == 'view' || $action == 'purge' ) ) {
@@ -859,6 +865,8 @@ class SkinTemplate extends Skin {
 				$nav_urls['recentchangeslinked'] = array(
 					'href' => $rclTitle->getLocalUrl()
 				);
+			} else {
+				$nav_urls['recentchangeslinked'] = false;
 			}
 			if ($wgUseTrackbacks)
 				$nav_urls['trackbacklink'] = array(
@@ -878,12 +886,16 @@ class SkinTemplate extends Skin {
 			$nav_urls['contributions'] = array(
 				'href' => self::makeSpecialUrl( 'Contributions/' . $this->mTitle->getText() )
 			);
-			if ( $wgUser->isAllowed( 'block' ) )
+			if ( $wgUser->isAllowed( 'block' ) ) {
 				$nav_urls['blockip'] = array(
 					'href' => self::makeSpecialUrl( 'Blockip/' . $this->mTitle->getText() )
-				);
+				); 
+			} else {
+				$nav_urls['blockip'] = false;
+			}
 		} else {
 			$nav_urls['contributions'] = false;
+			$nav_urls['blockip'] = false;
 		}
 		$nav_urls['emailuser'] = false;
 		if( $this->showEmailUser( $id ) ) {
@@ -1141,7 +1153,7 @@ class QuickTemplate {
 	 * @private
 	 */
 	function haveData( $str ) {
-		return $this->data[$str];
+		return isset( $this->data[$str] );
 	}
 
 	/**
