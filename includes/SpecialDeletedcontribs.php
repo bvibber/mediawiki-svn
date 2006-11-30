@@ -15,31 +15,31 @@
  */
 class DeletedcontribsPage extends ContributionsPage {
 
-	function DeletedcontribsPage( $target ) {
-		$this->user = User::newFromName( $target );
-		if ( $this->user )
-			$this->target = $this->user->getName();
-	}
-
 	function getName() {
 		return 'Deletedcontribs';
 	}
 
+	// no hax please
+	function newbiesTargetName() {
+		return 'newbies';
+	}
+
 	function getPageHeader() {
+		$this->setSubtitle();
 		return $this->getNamespaceForm();
 	}
 
-	function makeSQLCond( &$dbr ) {
-		$cond = ' ar_user_text = ' . $dbr->addQuotes( $this->user->getName() );
+	function makeSQLCond( $dbr ) {
+		$cond = ' ar_user_text = ' . $dbr->addQuotes( $this->target );
 		if ( isset($this->namespace) )
 			$cond .= ' AND ar_namespace = ' . (int)$this->namespace;
 		return $cond;
 	}
 
 	function getSQL() {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
-		list( $archive ) = $dbr->tableNamesN( 'archive' );
+		$archive = $dbr->tableName( 'archive' );
 
 		$cond = $this->makeSQLCond( $dbr );
 
@@ -54,7 +54,7 @@ class DeletedcontribsPage extends ContributionsPage {
 			WHERE {$cond}";
 	}
 
-	function preprocessResults( &$dbr, &$res ) {
+	function preprocessResults( $dbr, $res ) {
 		# Do a batch existence check
 		$linkBatch = new LinkBatch();
 		while( $row = $dbr->fetchObject( $res ) ) {
@@ -112,7 +112,7 @@ class DeletedcontribsPage extends ContributionsPage {
 		$undel = $sk->makeKnownLinkObj( $ut, $messages['deletedcontribs-undelete'], "target=$pg" );
 		$show  = $sk->makeKnownLinkObj( $ut, $messages['deletedcontribs-show'], "target=$pg&timestamp=$ts" );
 
-		$pglink  = $sk->makeLinkObj( $page, $page->getPrefixedText() );
+		$pglink  = $sk->makeLinkObj( $page );
 		$comment = $sk->commentBlock( $row->comment );
 
 		return "{$time} ({$undel}) ({$show}) {$mflag} {$dm}{$pglink} {$comment}";
@@ -125,7 +125,15 @@ class DeletedcontribsPage extends ContributionsPage {
 function wfSpecialDeletedcontribs( $par = null ) {
 	global $wgRequest;
 
-	$page = new DeletedcontribsPage( isset($par) ? $par : $wgRequest->getVal( 'target' ) );
+	$username = ( isset($par) ? $par : $wgRequest->getVal( 'target' ) );
+
+	if( !isset($username) || $username == '' ) {
+		global $wgOut;
+		$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
+		return;
+	}
+
+	$page = new DeletedcontribsPage( $username );
 
 	$page->namespace = $wgRequest->getIntOrNull( 'namespace' );
 	

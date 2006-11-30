@@ -19,21 +19,26 @@ class ContributionsPage extends QueryPage {
 	var $newbies = false;
 	var $botmode = false;
 
-	function ContributionsPage( $target ) {
-		// This is an ugly hack.  I don't know who came up with it.
-		if ( $target == 'newbies' ) {
-			$this->newbies = true;
-			$this->target = 'newbies';
-			return;
-		}
+	function __construct( $target ) {
+		$this->target = $target;
+		$this->user = User::newFromName( $target, false );
 
-		$this->user = User::newFromName( $target );
+		// canonicalize
 		if ( $this->user )
 			$this->target = $this->user->getName();
+
+		// ugly hack :(
+		$newbies = $this->newbiesTargetName();
+		if ( $newbies && $target == $newbies )
+			$this->newbies = true;
 	}
 
 	function getName() {
 		return 'Contributions';
+	}
+
+	function newbiesTargetName() {
+		return 'newbies';
 	}
 
 	/**
@@ -94,27 +99,13 @@ class ContributionsPage extends QueryPage {
 			$wgOut->setSubtitle( wfMsgHtml( 'contribsub', $this->subtitleLinks() ) );
 	}
 
-	function doQuery( $offset, $limit ) {
-		// This needs to be checked before doing anything else
-		if ( !$this->user && !$this->newbies ) {
-			$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
-			return;
-		}
-
-		// Set output page subtitle
-		$this->setSubtitle();
-
-		// OK, everything checks out, let's get on with it
-		return parent::doQuery( $offset, $limit );
-	}
-
 	function getDeletedcontribsLink() {
 		global $wgUser;
 
 		if( $this->newbies || !$wgUser->isAllowed( 'deletedhistory' ) )
 			return '';
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$n = $dbr->selectField( 'archive', 'count(*)', array( 'ar_user_text' => $this->target ), __METHOD__ );
 
 		if ( $n == 0 )
@@ -150,6 +141,8 @@ class ContributionsPage extends QueryPage {
 	}
 
 	function getPageHeader() {
+		$this->setSubtitle();
+
 		// hook for Contributionseditcount extension
 		if ( $this->user )
 			wfRunHooks( 'SpecialContributionsBeforeMainOutput', $this->user->getId() );
@@ -157,14 +150,14 @@ class ContributionsPage extends QueryPage {
 		return $this->getDeletedcontribsLink() . $this->getNamespaceForm();
 	}
 
-	function makeSQLCond( &$dbr ) {
+	function makeSQLCond( $dbr ) {
 		$cond = '';
 
 		if ( $this->newbies ) {
 			$max = $dbr->selectField( 'user', 'max(user_id)', false, 'make_sql' );
 			$cond .= ' AND rev_user > ' . (int)($max - $max / 100);
 		} else {
-			$cond .= ' AND rev_user_text = ' . $dbr->addQuotes( $this->user->getName() );
+			$cond .= ' AND rev_user_text = ' . $dbr->addQuotes( $this->target );
 		}
 
 		if ( isset($this->namespace) )
@@ -174,7 +167,7 @@ class ContributionsPage extends QueryPage {
 	}
 
 	function getSQL() {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		list( $page, $revision ) = $dbr->tableNamesN( 'page', 'revision' );
 
@@ -273,7 +266,15 @@ class ContributionsPage extends QueryPage {
 function wfSpecialContributions( $par = null ) {
 	global $wgRequest, $wgUser;
 
-	$page = new ContributionsPage( isset($par) ? $par : $wgRequest->getVal( 'target' ) );
+	$username = ( isset($par) ? $par : $wgRequest->getVal( 'target' ) );
+
+	if( !isset($username) || $username == '' ) {
+		global $wgOut;
+		$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
+		return;
+	}
+
+	$page = new ContributionsPage( $username );
 
 	$page->namespace = $wgRequest->getIntOrNull( 'namespace' );
 	$page->botmode   = ( $wgUser->isAllowed( 'rollback' ) && $wgRequest->getBool( 'bot' ) );
