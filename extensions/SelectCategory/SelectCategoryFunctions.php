@@ -32,7 +32,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 			$m_pageCats = fnSelectCategoryGetPageCategories( $m_pageObj );
 
 			# Never ever use editFormTextTop here as it resides outside the <form> so we will never get contents
-			$m_place = editFormTextAfterWarn;
+			$m_place = 'editFormTextAfterWarn';
 			# Print the localised title for the select box:
 			$m_textBefore = wfMsgReal( 'selectcategory-title' ) . ":";
 		} else	{
@@ -40,7 +40,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 			$m_pageCats = array();
 			
 			# Place output at the right place:
-			$m_place = uploadFormTextAfterSummary;
+			$m_place = 'uploadFormTextAfterSummary';
 			# Print the part of the table including the localised title for the select box:
 			$m_textBefore = "\n</td></tr><tr><td align='right'><label for='wpSelectCategory'>" . wfMsgReal( 'selectcategory-title' ) .":</label></td><td align='left'>";
 		}
