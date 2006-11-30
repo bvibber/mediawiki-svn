@@ -149,8 +149,11 @@ private:
 	friend struct environment;
 
 	explicit database(environment *, string const &, uint32_t, Datastore *);
+#if DB_VERSION_MINOR > 2
 	static void errcall(DB_ENV const *, char const *pfx, char const *msg);
-
+#else
+	static void errcall(char const *pfx, char const *msg);
+#endif
 	DB		*_db;
 	environment	*_env;
 	int		 _error;
@@ -245,7 +248,11 @@ database<Key, Value, Datastore>::database(environment *env, string const &path,
 
 template<typename Key, typename Value, typename Datastore>
 void
+#if DB_VERSION_MINOR > 2
 database<Key, Value, Datastore>::errcall(DB_ENV const *, char const *pfx, char const *msg)
+#else
+database<Key, Value, Datastore>::errcall(char const *pfx, char const *msg)
+#endif
 {
 	if (pfx)
 		wlog.warn(format("%s: %s") % pfx % msg);
