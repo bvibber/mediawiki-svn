@@ -105,6 +105,9 @@ function fnSelectCategoryOutputHook( &$m_pageObj, &$m_parserOutput ) {
 			'href'	=> $wgScriptPath . '/extensions/SelectCategory/SelectCategory.css'
 		)
 	);
+	
+	# Be nice:
+	return true;
 }
 
 ## Entry point for the hook for our localised messages:
@@ -120,6 +123,9 @@ function fnSelectCategoryMessageHook() {
 	include( 'i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' );
 	# Put messages into message cache:
 	$wgMessageCache->addMessages( $messages );
+	
+	# Be nice:
+	return true;
 }
 
 ## Get all categories from the wiki - starting with a given root or otherwise detect root automagically (expensive):
