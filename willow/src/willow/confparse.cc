@@ -41,8 +41,8 @@ using std::make_pair;
 
 namespace conf {
 
-char const *type_namer<int>::type = "integer value";
-char const *type_namer<bool>::type = "boolean value";
+char const *type_namer<scalar_q>::type = "integer value";
+char const *type_namer<bool_q>::type = "boolean value";
 char const *type_namer<time_q>::type = "time value";
 char const *type_namer<size_q>::type = "size value";
 char const *type_namer<u_string>::type = "unquoted string";

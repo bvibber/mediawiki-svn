@@ -12,9 +12,11 @@
 
 #include <utility>
 #include <boost/spirit.hpp>
+#include <boost/algorithm/string.hpp>
 using std::pair;
 using std::make_pair;
 using boost::spirit::file_iterator;
+using boost::ireplace_all_copy;
 
 #include "preprocessor.h"
 
@@ -177,7 +179,7 @@ vector<char>::const_iterator	lit = it;
 			p.col += 8;
 		else
 			++p.col;
-	p.linetext = get_line(p.line);
+	p.linetext = ireplace_all_copy(get_line(p.line), "\t", "        ");
 	return p;
 }
 

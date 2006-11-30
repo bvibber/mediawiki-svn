@@ -21,7 +21,8 @@
 #include <vector>
 #include <utility>
 #include <cassert>
-
+#include <limits>
+using std::numeric_limits;
 using std::map;
 using std::vector;
 using std::pair;
@@ -158,12 +159,12 @@ template<typename T>
 const char *type_namer<T>::type = "unknown type";
 
 template<>
-struct type_namer<int> {
+struct type_namer<scalar_q> {
 	static char const *type;
 };
 
 template<>
-struct type_namer<bool> {
+struct type_namer<bool_q> {
 	static char const *type;
 };
 
@@ -255,8 +256,8 @@ struct simple_value : callable<bool> {
 		return true;
 	}
 };
-typedef simple_value<int> simple_int_t;
-typedef simple_value<bool> simple_yesno_t;
+typedef simple_value<scalar_q> simple_int_t;
+typedef simple_value<bool_q> simple_yesno_t;
 typedef simple_value<time_q> simple_time_t;
 typedef simple_value<size_q> simple_size_t;
 
@@ -266,13 +267,14 @@ extern simple_time_t simple_time;
 extern simple_size_t simple_size;
 
 struct simple_range : callable<bool> {
-	simple_range(int min_, int max_ = INT_MAX) : min(min_), max(max_) {}
+	simple_range(int64_t min_, int64_t max_ = numeric_limits<int64_t>::max())
+		: min(min_), max(max_) {}
 	bool operator() (tree_entry &, value &v) const {
-		if (!v.is_single<int>()) {
+		if (!v.is_single<scalar_q>()) {
 			v.report_error("expected single integer");
 			return false;
 		}
-		int i = boost::get<int>(v.cv_values[0]);
+		int64_t i = boost::get<scalar_q>(v.cv_values[0]).value();
 		if (i < min || i > max) {
 			v.report_error(format("value must be between %d and %d")
 				% min % max);
@@ -280,7 +282,7 @@ struct simple_range : callable<bool> {
 		}
 		return true;
 	}
-	int	min, max;
+	int64_t	min, max;
 };
 
 template<typename string_type>
@@ -361,7 +363,7 @@ struct set_simple<U, atomic<T> > : callable<void> {
 	atomic<T>	&sv;
 	set_simple(atomic<T>& sv_) : sv(sv_) {}
 	void operator() (tree_entry &, value &v) const {
-		sv = v.get<U>(0);
+		sv = v.get<U>(0).value();
 	}
 };
 
@@ -379,13 +381,13 @@ typedef set_astring<u_string>			set_string;
 typedef set_astring<q_string>			set_qstring;
 typedef set_quantity<time_q, time_t>		set_time;
 typedef set_quantity<size_q, size_t>		set_size;
-typedef set_simple<bool>			set_yesno;
-typedef set_simple<int>				set_int;
-typedef set_simple<int, long>			set_long;
+typedef set_quantity<bool_q, bool>		set_yesno;
+typedef set_quantity<scalar_q, int>		set_int;
+typedef set_quantity<scalar_q, long>		set_long;
 typedef set_simple<time_q, atomic<time_t> >	set_atime;
 typedef set_simple<size_q, atomic<size_t> >	set_asize;
-typedef set_simple<bool, atomic<bool> >		set_abool;
-typedef set_simple<int, atomic<int> >		set_aint;
+typedef set_simple<bool_q, atomic<bool> >	set_abool;
+typedef set_simple<scalar_q, atomic<int> >	set_aint;
 
 struct accept_any_t : callable<bool> {
 	bool operator() (tree_entry &, value &) const {

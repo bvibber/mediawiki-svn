@@ -97,7 +97,7 @@ struct avalue_closure : spirit::closure<
 	member1	value;
 };
 
-struct expr_closure : spirit::closure<expr_closure, int> {
+struct expr_closure : spirit::closure<expr_closure, int64_t> {
 	member1	val;
 };
 
@@ -283,10 +283,10 @@ value	=  tstring [value.name = construct_<string>(arg1, arg2),
 
 avalue	= (size  [push_back(value.values, avalue.value)])
 	| (time  [push_back(value.values, avalue.value)])
-	| str_p("yes") [push_back(value.values, true)]
-	| str_p("no")  [push_back(value.values, false)]
-	| int_p      [push_back(value.values, arg1)]
-	| tstring     [push_back(value.values, construct_<u_string>(arg1, arg2))]
+	| str_p("yes") [push_back(value.values, construct_<bool_q>(true))]
+	| str_p("no")  [push_back(value.values, construct_<bool_q>(false))]
+	| int_p        [push_back(value.values, construct_<scalar_q>(arg1))]
+	| tstring      [push_back(value.values, construct_<u_string>(arg1, arg2))]
 	| confix_p('"', (*c_escape_ch_p)
 			[push_back(value.values, construct_<q_string>(arg1, arg2))], '"')
 	;

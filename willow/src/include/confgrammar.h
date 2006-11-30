@@ -84,9 +84,9 @@ private:
 typedef tagged_string<string_tag> u_string;
 typedef tagged_string<quoted_string_tag> q_string;
 
-typedef mpl::vector_c<int, 0, 0> scalar_d;
-typedef mpl::vector_c<int, 1, 0> time_d;
-typedef mpl::vector_c<int, 0, 1> size_d;
+typedef mpl::vector_c<int64_t, 0, 0> scalar_d;
+typedef mpl::vector_c<int64_t, 1, 0> time_d;
+typedef mpl::vector_c<int64_t, 0, 1> size_d;
 
 template<typename T, typename D>
 struct quantity {
@@ -184,11 +184,12 @@ operator<< (ostream &o, quantity<T, D> q)
 	return o;
 }
 
-typedef quantity<int, scalar_d> scalar_q;
-typedef quantity<int, time_d> time_q;
-typedef quantity<int, size_d> size_q;
+typedef quantity<bool, scalar_d> bool_q;
+typedef quantity<int64_t, scalar_d> scalar_q;
+typedef quantity<int64_t, time_d> time_q;
+typedef quantity<int64_t, size_d> size_q;
 
-typedef variant<u_string, q_string, bool, int, time_q, size_q> avalue_t;
+typedef variant<u_string, q_string, bool_q, scalar_q, time_q, size_q> avalue_t;
 
 struct value_t {
 	string		 name;

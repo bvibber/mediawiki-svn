@@ -207,7 +207,7 @@ bool	 ret = true;
 		ret = false;
 	}
 
-	if (!v.is_single<bool>()) {
+	if (!v.is_single<bool_q>()) {
 		v.report_error("udp-log must be yes/no");
 		ret = false;
 	}
