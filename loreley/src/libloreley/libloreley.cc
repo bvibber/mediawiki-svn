@@ -24,12 +24,14 @@ pta_block	**pt = (pta_block **)p, *n = *pt, *o;
 	}
 	delete pt;
 }
+#endif
 
 void
 tss_null_dtor(void *)
 {
 }
 
+#if 0
 void
 ptdealloc(void *p)
 {
