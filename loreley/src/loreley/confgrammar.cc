@@ -174,8 +174,8 @@ BOOST_SPIRIT_DEBUG_RULE(comment);
 		rule<> comment;
 	};
 
-	symbols<int>	times;
-	symbols<int>	sizes;
+	symbols<int64_t>	times;
+	symbols<int64_t>	sizes;
 
 	conf_parser_impl() {
 		times.add("second", 1);

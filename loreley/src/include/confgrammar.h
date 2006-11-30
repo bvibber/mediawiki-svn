@@ -25,6 +25,7 @@
 #include <boost/mpl/placeholders.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/variant.hpp>
+#include <boost/spirit.hpp>
 using std::vector;
 using std::ostream;
 using std::exception;
@@ -202,7 +203,15 @@ typedef quantity<int64_t, scalar_d> scalar_q;
 typedef quantity<int64_t, time_d> time_q;
 typedef quantity<int64_t, size_d> size_q;
 
-typedef variant<u_string, q_string, bool_q, scalar_q, time_q, size_q> avalue_t;
+typedef variant<
+		u_string,
+		q_string,
+		bool_q,
+		scalar_q,
+		time_q,
+		size_q,
+		boost::spirit::nil_t /* needed for parse failures */
+	> avalue_t;
 
 struct value_t {
 	string		 name;

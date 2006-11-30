@@ -203,7 +203,7 @@ md5::_md5init(md5::ctx_t *mdContext)
 }
 
 void
-md5::_md5update (md5::ctx_t *mdContext, unsigned char const *inBuf, unsigned int inLen)
+md5::_md5update (md5::ctx_t *mdContext, unsigned char const *inBuf, size_t inLen)
 {
   uint32_t in[16];
   int mdi;
