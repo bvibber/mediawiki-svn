@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                              */
 /* net: Networking.							*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -66,7 +66,7 @@ using std::pair;
 using std::make_pair;
 using std::memcpy;
 
-#include "willow.h"
+#include "loreley.h"
 #include "polycaller.h"
 
 extern bool wnet_exit;

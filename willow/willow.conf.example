@@ -42,7 +42,7 @@
  *
  * Example:
  *
- *  %pragma include_path "/etc/willow/conf.d"
+ *  %pragma include_path "/etc/loreley/conf.d"
  *
  */
 
@@ -164,7 +164,7 @@ cache {
 	 * Keys for HTCP authentication.  Use "whtcp -g" to generate this file.
 	 * The keys should be considered confidential.
 	 */
-	#htcp-keys = "/etc/willow/htcp-keys";
+	#htcp-keys = "/etc/loreley/htcp-keys";
 
 	/*
 	 * Refuse to reply to HTCP queries unless they're signed with a key
@@ -224,7 +224,7 @@ http {
 
 	/*
 	 * These clients will be able to override the usual backend by
-	 * sending a header of the form "X-Willow-Backend-Group: <name>"
+	 * sending a header of the form "X-Loreley-Backend-Group: <name>"
 	 * with their request.
 	 */
 	force-backend = "127.0.0.0/8";
@@ -241,9 +241,9 @@ http {
 	keepalive-max = 0;
 
 	/*
-	 * Honour X-Willow-Follow-Redirect in backend replies.  If this
+	 * Honour X-Loreley-Follow-Redirect in backend replies.  If this
 	 * enabled and a backend response with a 3xx status contains such
-	 * a header, Willow will follow the redirect and deliver the
+	 * a header, Loreley will follow the redirect and deliver the
 	 * referred-to document to the client.  Only max-redirects
 	 * (default: 1, 0: unlimmited) redirects will be followed, to prevent
 	 * infinite redirect loops.
@@ -265,7 +265,7 @@ log {
 	/*
 	 * Log to a file on the filesystem.
 	 */
-	file = "/var/log/willow/willow.log";
+	file = "/var/log/loreley/loreley.log";
 
 	/*
 	 * Log to syslog.
@@ -287,7 +287,7 @@ log {
 	 * that disabling it or increasing the sample rate improves performance
 	 * significantly.
 	 */
-	access-log = "/var/log/willow/access.log";
+	access-log = "/var/log/loreley/access.log";
 	log-sample = 2;
 
 	/*

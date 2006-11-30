@@ -1,9 +1,8 @@
-/* 
- * Willow: Lightweight HTTP reverse-proxy.
- * acl: ACL definitions.
- * Copyright (C) 2001, 2002 Pim van Pelt <pim@ipng.nl>
- * Copyright 2006 River Tarnell <river@attenuate.org>
- *
+/* Loreley: Lightweight HTTP reverse-proxy.			*/
+/* acl: ACL definitions.					*/
+/* Copyright (C) 2001, 2002 Pim van Pelt <pim@ipng.nl>		*/
+/* Copyright 2006 River Tarnell <river@attenuate.org>		*/
+/*
  * This is from DAPd package (http://dapd.sourceforge.net).  It was
  * released under the GPL and relicensed with permission from 
  * Pim van Pelt.

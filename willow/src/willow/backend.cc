@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* backend: HTTP backend handling.					*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -27,7 +27,7 @@ using std::sort;
 using std::pow;
 using std::rotate;
 
-#include "willow.h"
+#include "loreley.h"
 #include "backend.h"
 #include "net.h"
 #include "log.h"

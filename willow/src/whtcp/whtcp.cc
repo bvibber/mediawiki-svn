@@ -1,5 +1,5 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
-/* whtcp: command-line HTCP client.					*/
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
+/* lhtcp: command-line HTCP client.					*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
  * Permission is granted to anyone to use this software for any purpose,

@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* expr: simple expression parser.					*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -12,7 +12,7 @@
 
 #include "autoconf.h"
 
-#if defined(WILLOW_DEBUG) && 0
+#if defined(LORELEY_DEBUG) && 0
 # define BOOST_SPIRIT_DEBUG
 #endif
 
@@ -30,7 +30,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include "util.h"
-#include "willow.h"
+#include "loreley.h"
 #include "expr.h"
 
 namespace expr {

@@ -1,5 +1,5 @@
 # $Id$ 
-PROJECT_NAME           = Willow
+PROJECT_NAME           = Loreley
 PROJECT_NUMBER         = $Id$
 OUTPUT_DIRECTORY       = doxygen/
 CREATE_SUBDIRS         = NO

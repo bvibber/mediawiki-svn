@@ -1,5 +1,5 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
-/* wbackend: HTTP backend handling.					*/
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
+/* backend: HTTP backend handling.					*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
  * Permission is granted to anyone to use this software for any purpose,

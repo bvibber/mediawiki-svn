@@ -1,4 +1,4 @@
-# Willow: Lightweight HTTP reverse-proxy.
+# Loreley: Lightweight HTTP reverse-proxy.
 # Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.
 #
 # Permission is granted to anyone to use this software for any purpose,
@@ -8,13 +8,13 @@
 
 # $Id$
 
-PROGRAM		= wreadlog
+PROGRAM		= lreadlog
 BINDIR		= @bindir@
 CPPFLAGS	= -I../include
 BASESRCS =	 		\
 	packet_decoder.cc	\
 	topurl_printer.cc	\
-	wreadlog.cc		\
+	lreadlog.cc		\
 
 OBJS=	$(BASESRCS:.cc=.o)
 
@@ -23,9 +23,9 @@ OBJADD =
 
 EXTRA_DIST= Makefile.in
 
-LDFLAGS = $(LIBOBJS) -lcurses -L../libwillow -lwillow
+LDFLAGS = $(LIBOBJS) -lcurses -L../libloreley -lloreley
 
-.SUFFIXES: .y .l .c .cc .o
+.SUFFIXES: .cc .o
 
 default: all
 

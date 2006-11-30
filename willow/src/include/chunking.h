@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* chunking: HTTP 1.1 (de)chunking filters				*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -13,7 +13,7 @@
 #ifndef DECHUNKING_FILTER_H
 #define DECHUNKING_FILTER_H
 
-#include "willow.h"
+#include "loreley.h"
 #include "flowio.h"
 
 /*

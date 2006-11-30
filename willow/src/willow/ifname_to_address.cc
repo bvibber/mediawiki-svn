@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* ifname_to_address: convert an interface name to a sockaddr		*/
 /* Copyright (c) 2006 River Tarnell <river@attenuate.org>.              */
 /*
@@ -13,7 +13,7 @@
 /*
  * On Solaris, the header required for this function, <net/if.h>, defines
  * a struct ::map which conflicts with "using std::map".  Rather than
- * change all uses of map in Willow, we define a function here which
+ * change all uses of map in Loreley, we define a function here which
  * performs the required function without including <map>.
  */
 

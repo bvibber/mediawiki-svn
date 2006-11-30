@@ -46,7 +46,7 @@ a {
 Error loading page: %C %S
 </div>
 
-<p>This is the Willow proxy-cache at server <span class="ms">%H</span>.
+<p>This is the Loreley proxy-cache at server <span class="ms">%H</span>.
 I am sorry to inform you that I was unable to retrieve the URL you requested:</p>
 
 <ul><li><a href="%U"><span class="ms">%U</span></a></li></ul>

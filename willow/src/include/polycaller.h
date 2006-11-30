@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                              */
 /* polycaller: a polymorphic callback proxy				*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -17,7 +17,7 @@
 #include <typeinfo>
 using std::type_info;
 
-#include "willow.h"
+#include "loreley.h"
 
 struct polycaller_type_mismatch : std::logic_error {
         polycaller_type_mismatch() : std::logic_error("polycaller called type does not match stored type") {}

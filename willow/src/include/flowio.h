@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                              */
 /* flowio: stream-based i/o system.					*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -23,7 +23,7 @@ using std::ifstream;
 using std::map;
 using std::min;
 
-#include "willow.h"
+#include "loreley.h"
 #include "net.h"
 using namespace wnet;
 

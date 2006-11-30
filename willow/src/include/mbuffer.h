@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                              */
 /* mbuffer: helper buffer for data marshalling.				*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -24,7 +24,7 @@ using std::size_t;
 using std::basic_string;
 using std::logic_error;
 
-#include "willow.h"
+#include "loreley.h"
 
 struct marshalling_buffer_overflow : logic_error {
 	marshalling_buffer_overflow() : logic_error("marshalling buffer overflow") {}

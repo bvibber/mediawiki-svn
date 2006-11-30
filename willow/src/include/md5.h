@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.	*/
+/* Loreley: Lightweight HTTP reverse-proxy.	*/
 /* md5: MD5 digest implementation.		*/
 
 /* @(#) $Id$ */
@@ -49,7 +49,7 @@
 #include <inttypes.h>
 using std::size_t;
 
-#include "willow.h"
+#include "loreley.h"
 #include "mbuffer.h"
 
 /*

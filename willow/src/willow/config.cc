@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* config: configuration.						*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -30,7 +30,7 @@ using std::ifstream;
 using std::set;
 using std::back_inserter;
 
-#include "willow.h"
+#include "loreley.h"
 #include "config.h"
 #include "backend.h"
 #include "log.h"
@@ -45,7 +45,7 @@ using namespace conf;
 map<wsocket *, listener *> sock2lsn;
 set<int> used_pools;
 
-#define CONFIGFILE SYSCONFDIR "/willow.conf"
+#define CONFIGFILE SYSCONFDIR "/loreley.conf"
 
 vector<listener *> listeners;
 struct configuration config;

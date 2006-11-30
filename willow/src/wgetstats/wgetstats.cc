@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* wgetstats: Read statistics information from server.			*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -170,7 +170,7 @@ uint8_t		*vers;
 		exit(1);
 	}
 
-	fprintf(stderr, "%s (Willow %.*s), report interval %d seconds:\n", host, 
+	fprintf(stderr, "%s (Loreley %.*s), report interval %d seconds:\n", host, 
 		(int)*wverslen, wvers, (int) *repint);
 	fprintf(stderr, "\tTotal requests served: % 10lu (% 6d/sec)  Errors: % 6lu (% 6d/sec)\n",
 		(unsigned long) *treqok, (int) *reqoks, (unsigned long) *treqfail, (int) *reqfails);

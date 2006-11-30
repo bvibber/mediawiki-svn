@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* Copyright (c) 2005, IPng, Pim van Pelt <pim@ipng.nl>			*/
 /* Copyright (c) 2006 River Tarnell <river@attenuate.org>		*/
 /* 
@@ -23,7 +23,7 @@
 using std::pair;
 using std::make_pair;
 
-#include "willow.h"
+#include "loreley.h"
 #include "radix.h"
 
 #define RADIX_WALK(Xhead, Xnode) \

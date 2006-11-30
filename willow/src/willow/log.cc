@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* log: logging.							*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -51,7 +51,7 @@ bool
 logger::open(void)
 {
 	if (_syslog)
-		openlog("willow", LOG_PID, _facility);
+		openlog("loreley", LOG_PID, _facility);
 
 	if (_file.empty())
 		return true;

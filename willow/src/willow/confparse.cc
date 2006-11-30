@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* confparse: configuration file parser					*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -32,7 +32,7 @@ using std::make_pair;
 
 #include "confparse.h"
 #include "confgrammar.h"
-#include "willow.h"
+#include "loreley.h"
 #include "log.h"
 #include "backend.h"
 #include "config.h"

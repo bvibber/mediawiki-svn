@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* htcp: HTCP server support.						*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -13,7 +13,7 @@
 #include <utility>
 using std::pair;
 
-#include "willow.h"
+#include "loreley.h"
 #include "net.h"
 #include "config.h"
 #include "mbuffer.h"

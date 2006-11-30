@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* cache: HTTP entity caching.						*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -23,7 +23,7 @@ using std::map;
 using std::multiset;
 using std::fstream;
 
-#include "willow.h"
+#include "loreley.h"
 #include "thread.h"
 #include "flowio.h"
 #include "http_header.h"

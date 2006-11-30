@@ -1,4 +1,4 @@
-Until SVN revision 17873 (2006-11-23), the core Willow source ode was ostensibly
+Until SVN revision 17873 (2006-11-23), the core Loreley source code was ostensibly
 in the public domain.  Due to copyright vagueries, it is now subject to the
 following copyright:
 
@@ -14,14 +14,14 @@ the license information for these files can be found in their individual headers
 
 	src/include/radix.h
 	src/include/acl.h
-	src/libwillow/radix.cc
-	src/willow/daemon.c
-	src/willow/strlcpy.c
-	src/willow/strlcat.c
-	src/wreadlog/acl.cc
+	src/libloreley/radix.cc
+	src/loreley/daemon.c
+	src/loreley/strlcpy.c
+	src/loreley/strlcat.c
+	src/lreadlog/acl.cc
 
 In general, it's fine to import source code which is copyrighted, so long as
-the copyright terms permit free (re)use, and do not require Willow itself to 
+the copyright terms permit free (re)use, and do not require Loreley itself to 
 be restricted; e.g., do not import GPL-licensed source code.  Don't require
 external dependencies that are not under similar licences.  The Berkeley DB
 code is acceptable, because it can be licenced for commercial use.

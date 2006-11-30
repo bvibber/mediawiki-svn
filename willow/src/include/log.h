@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                              */
 /* log: logging.							*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -18,7 +18,7 @@
 #include <fstream>
 using std::ofstream;
 
-#include "willow.h"
+#include "loreley.h"
 #include "autoconf.h"
 #include "ptalloc.h"
 
@@ -63,7 +63,7 @@ private:
 
 extern logger wlog;
 
-#ifndef WILLOW_DEBUG
+#ifndef LORELEY_DEBUG
 # define WDEBUG(x) ((void)0)
 #else
 # define WDEBUG(x) wlog.debug(x)

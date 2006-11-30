@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                              */
 /* confgrammar: Spirit grammar for confparse				*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -20,7 +20,7 @@ using std::exception;
 using std::ostream;
 using std::random_access_iterator_tag;
 
-#include "willow.h"
+#include "loreley.h"
 #include "expr.h"
 
 struct preprocessor_exception : exception {

@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                              */
 /* util: miscellaneous utilities.					*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -88,7 +88,7 @@ template<typename T>
 struct is_char_type : mpl::int_<sizeof(T) == 1> {
 };
 
-#ifdef WILLOW_DEBUG
+#ifdef LORELEY_DEBUG
 /*
  * Helper classes for sockaddr_caster, see below.
  */
@@ -156,7 +156,7 @@ struct sockaddr_caster<sockaddr const *, From> {
  */
 template<typename To, typename From>
 To sockaddr_cast(From f) {
-#ifdef WILLOW_DEBUG
+#ifdef LORELEY_DEBUG
 	return sockaddr_caster<To, From>::cast(f);
 #else
 	return reinterpret_cast<To>(f);

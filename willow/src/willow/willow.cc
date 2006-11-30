@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.				*/
+/* Loreley: Lightweight HTTP reverse-proxy.				*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.	*/
 /*
  * Permission is granted to anyone to use this software for any purpose,
@@ -30,7 +30,7 @@ using std::streamsize;
 #include "log.h"
 #include "net.h"
 #include "config.h"
-#include "willow.h"
+#include "loreley.h"
 #include "http.h"
 #include "cache.h"
 #include "confparse.h"
@@ -503,7 +503,7 @@ diobuf::diobuf(size_t size)
 		return;
 	}
 	char	path[PATH_MAX];
-	snprintf(path, sizeof(path), "/dev/shm/willow.diobuf.%d.%d.%d",
+	snprintf(path, sizeof(path), "/dev/shm/loreley.diobuf.%d.%d.%d",
 		(int) getpid(), (int) pthread_self(), rand());
 		if ((_fd = open(path, O_CREAT | O_EXCL | O_RDWR, 0600)) == -1) {
 		wlog.warn(format("opening diobuf %s: %s") 

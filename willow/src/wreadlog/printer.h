@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* printer: log format printers.					*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -26,8 +26,8 @@ struct entry_printer {
 	virtual void update(void) {}
 };
 
-struct willow_printer : entry_printer {
-	willow_printer(ostream &of_) : of(of_) {}
+struct loreley_printer : entry_printer {
+	loreley_printer(ostream &of_) : of(of_) {}
 
 	void print(logent const &e) {
 		of << format("[%s] %s %s \"%.*s\" %lu %d %.*s %s\n")

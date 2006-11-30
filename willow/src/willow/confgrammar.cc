@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* confgrammar: Spirit grammar for confparse				*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -33,7 +33,7 @@
 #include <boost/mpl/placeholders.hpp>
 
 #include "util.h"
-#include "willow.h"
+#include "loreley.h"
 #include "confgrammar.h"
 #include "preprocessor.h"
 

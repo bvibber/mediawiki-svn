@@ -58,7 +58,7 @@ Use if (!strcmp(...)), not if (strcmp(...) == 0).
 
 The standard source code header is:
 
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* <module>: <description>						*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*

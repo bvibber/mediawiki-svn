@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                              */
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
  * Permission is granted to anyone to use this software for any purpose,
@@ -9,8 +9,8 @@
 
 /* @(#) $Id$ */
 
-#ifndef WILLOW_H
-#define WILLOW_H
+#ifndef LORELEY_H
+#define LORELEY_H
 
 #include "autoconf.h"
 

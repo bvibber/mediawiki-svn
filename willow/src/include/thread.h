@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                              */
 /* wthread: threading primitives.					*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -8,7 +8,7 @@
  * warranty.
  */
 
-/* @(#) $Id: willow.h 17571 2006-11-12 15:44:30Z river $ */
+/* @(#) $Id: loreley.h 17571 2006-11-12 15:44:30Z river $ */
 
 #ifndef WTHREAD_H
 #define WTHREAD_H

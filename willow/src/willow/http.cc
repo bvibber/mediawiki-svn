@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* http: HTTP implementation.						*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -37,7 +37,7 @@ using std::min;
 using std::ofstream;
 using std::endl;
 
-#include "willow.h"
+#include "loreley.h"
 #include "http.h"
 #include "net.h"
 #include "backend.h"
@@ -633,7 +633,7 @@ httpcllr::backend_read_headers_done(void)
 	}
 
 	/*
-	 * Check for X-Willow-Follow-Redirect header, which means we should
+	 * Check for X-Loreley-Follow-Redirect header, which means we should
 	 * follow the redirect.
 	 */
 	if (config.x_follow &&
@@ -821,7 +821,7 @@ whttp_init(void)
 		exit(8);
 	}
 
-	(void)strlcpy(my_version, "Willow/" PACKAGE_VERSION, 64);
+	(void)strlcpy(my_version, "Loreley/" PACKAGE_VERSION, 64);
 	snprintf(via_hdr, sizeof(via_hdr), "1.1 %s (%s)", my_hostname, my_version);
 
 	hsize = sizeof("MISS from ") + strlen(my_hostname);
@@ -834,7 +834,7 @@ whttp_init(void)
 	snprintf(cache_hit_hdr, hsize, "HIT from %s", my_hostname);
 	snprintf(cache_miss_hdr, hsize, "MISS from %s", my_hostname);
 
-	wlog.notice(format("whttp: starting %d worker threads")
+	wlog.notice(format("http: starting %d worker threads")
 		% config.nthreads);
 	for (int i = 0; i < config.nthreads; ++i) {
 	http_thread	*t = new http_thread;

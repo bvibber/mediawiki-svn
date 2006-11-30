@@ -1,5 +1,5 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
-/* wreadlog: Read UDP log packets and print human-readable log.		*/
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
+/* lreadlog: Read UDP log packets and print human-readable log.		*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
  * Permission is granted to anyone to use this software for any purpose,
@@ -218,7 +218,7 @@ usage(const char *progname)
 "\t             this option can be specified multiple times\n"
 "\t           (default: allow all addresses)\n"
 "\t-f <format>  output logs in this format\n"
-"\t           (one of: \"willow\" (default), \"clf\", \"squid\")\n"
+"\t           (one of: \"loreley\" (default), \"clf\", \"squid\")\n"
 "\t-F <file>    write to this file instead of stdout\n"
 "\t-d           become a daemon after startup\n"
 "\t-L           print timestamps in local time, not GMT\n"
@@ -231,11 +231,11 @@ usage(const char *progname)
 } // anonymous namespace
 
 enum logfmt_t {
-	lf_willow,
+	lf_loreley,
 	lf_clf,
 	lf_squid,
 	lf_topurl
-} logfmt = lf_willow;
+} logfmt = lf_loreley;
 
 int
 main(int argc, char *argv[])
@@ -250,7 +250,7 @@ bool		 Tflag = false, dodns;
 int		 interval = 5;
 
 map<string, logfmt_t> logfmt_names = map_list_of
-	("willow",	lf_willow)
+	("loreley",	lf_loreley)
 	("clf",		lf_clf)
 	("squid",	lf_squid)
 	("topurl",	lf_topurl)
@@ -358,8 +358,8 @@ map<string, logfmt_t> logfmt_names = map_list_of
 	}
 
 	switch (logfmt) {
-	case lf_willow:
-		printer = shared_ptr<entry_printer>(new willow_printer(*outfile));
+	case lf_loreley:
+		printer = shared_ptr<entry_printer>(new loreley_printer(*outfile));
 		break;
 
 	case lf_clf:

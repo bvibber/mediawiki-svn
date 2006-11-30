@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                              /
 /* http_header: header processing implementation.			*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -36,8 +36,8 @@ enum {
 	H_HOST,
 	H_CONNECTION,
 	H_LOCATION,
-	H_X_WILLOW_BACKEND_GROUP,
-	H_X_WILLOW_FOLLOW_REDIRECT
+	H_X_LORELEY_BACKEND_GROUP,
+	H_X_LORELEY_FOLLOW_REDIRECT
 };
 
 #if 0
@@ -87,8 +87,8 @@ static struct htypent {
 	{ "host",			H_HOST, 0 },
 	{ "connection",			H_CONNECTION, 0 },
 	{ "location",			H_LOCATION, 0 },
-	{ "x-willow-backend-group",	H_X_WILLOW_BACKEND_GROUP, 0 },
-	{ "x-willow-follow-redirect",	H_X_WILLOW_FOLLOW_REDIRECT, 0 },
+	{ "x-loreley-backend-group",	H_X_LORELEY_BACKEND_GROUP, 0 },
+	{ "x-loreley-follow-redirect",	H_X_LORELEY_FOLLOW_REDIRECT, 0 },
 	{ "keep-alive",			H_IGNORE, 0 },
 	{ "te",				H_IGNORE, 0 },
 	{ "trailers",			H_IGNORE, 0 },
@@ -486,11 +486,11 @@ int		 htype;
 			_location.assign(value, value + vlen);
 			break;
 
-		case H_X_WILLOW_BACKEND_GROUP:
+		case H_X_LORELEY_BACKEND_GROUP:
 			_http_backend.assign(value, value + vlen);
 			break;
 
-		case H_X_WILLOW_FOLLOW_REDIRECT:
+		case H_X_LORELEY_FOLLOW_REDIRECT:
 			_follow_redirect = true;
 			break;
 		}

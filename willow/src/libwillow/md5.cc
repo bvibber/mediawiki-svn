@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.	*/
+/* Loreley: Lightweight HTTP reverse-proxy.	*/
 /* md5: MD5 digest implementation.		*/
 
 /* @(#) $Id$ */

@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.				*/
+/* Loreley: Lightweight HTTP reverse-proxy.				*/
 /* access: IP access control						*/
 /* Copyright (c) 2006 River Tarnell <river@attenuate.org>.		*/
 /*

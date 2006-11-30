@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                              */
 /* http_header: header processing implementation.			*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -15,7 +15,7 @@
 
 #include "autoconf.h"
 #include "http.h"
-#include "willow.h"
+#include "loreley.h"
 #include "net.h"
 #include "flowio.h"
 

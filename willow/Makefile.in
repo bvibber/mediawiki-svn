@@ -1,4 +1,4 @@
-# Willow: Lightweight HTTP reverse-proxy.
+# Loreley: Lightweight HTTP reverse-proxy.
 # Top-level makefile.
 # Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.
 #
@@ -21,7 +21,7 @@ DISTFILES=\
 	configure configure.in \
 	acinclude.m4 aclocal.m4 \
 	config.h.in \
-	install-sh missing mkinstalldirs willow.conf.example
+	install-sh missing mkinstalldirs loreley.conf.example
 
 DISTNAME=$(PACKAGE)-$(VERSION)
 dist: 
@@ -33,7 +33,7 @@ dist:
 
 svr4-package:
 	$(_RMF) -r stage-install
-	./configure --prefix=/opt/willow
+	./configure --prefix=/opt/loreley
 	$(MAKE) all
 	mkdir stage-install
 	$(MAKE) install ALTROOT=`pwd`/stage-install
@@ -41,5 +41,5 @@ svr4-package:
 	cd svr4 && \
 	(find ../stage-install | pkgproto ../stage-install=/ ; cat proto.suffix) >prototype && \
 	pkgmk -o && \
-	pkgtrans -s /var/spool/pkg `pwd`/../WMFwillow-@PACKAGE_VERSION@.pkg WMFwillow
+	pkgtrans -s /var/spool/pkg `pwd`/../WMFloreley-@PACKAGE_VERSION@.pkg WMFloreley
 	

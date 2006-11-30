@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                             */
 /* flowio: stream-based i/o system.					*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -78,7 +78,7 @@ char	*ret;
 		return ret;
 	}
 
-	snprintf(path, sizeof(path), "/dev/shm/willow.diobuf.%d.%d.%d",
+	snprintf(path, sizeof(path), "/dev/shm/loreley.diobuf.%d.%d.%d",
 		getpid(), (int) pthread_self(), rand());
 	if ((_diofd = open(path, O_CREAT | O_EXCL | O_RDWR, 0600)) == -1) {
 		wlog.warn(format("opening diobuf %s: %s") 

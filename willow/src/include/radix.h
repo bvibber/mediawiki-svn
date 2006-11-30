@@ -29,7 +29,7 @@ using std::invalid_argument;
 using std::pair;
 
 #include "ptalloc.h"
-#include "willow.h"
+#include "loreley.h"
 #include "prefix.h"
 
 #define RADIX_MAXBITS 128

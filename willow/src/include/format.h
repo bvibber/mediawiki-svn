@@ -1,4 +1,4 @@
-/* Willow: Lightweight HTTP reverse-proxy.                              */
+/* Loreley: Lightweight HTTP reverse-proxy.                              */
 /* format: typesafe printf-style string formatter.			*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
@@ -24,7 +24,7 @@ using std::ios;
 using std::runtime_error;
 using std::strerror;
 
-#include "willow.h"
+#include "loreley.h"
 
 #if 0
 struct invalid_format_string : runtime_error {

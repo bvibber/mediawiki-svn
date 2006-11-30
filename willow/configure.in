@@ -1,6 +1,6 @@
 # @(#) $Header$
 
-AC_INIT(willow, 1.0-cvs, river@attenuate.org)
+AC_INIT(loreley, 1.0-cvs, river@attenuate.org)
 
 USER_CXXFLAGS="$CXXFLAGS"
 CPPFLAGS="-D_REENTRANT $CPPFLAGS"
@@ -63,7 +63,7 @@ testflag -mc
 
 AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug],[Compile with debug support]),
 [	if test $enableval = yes; then
-		AC_DEFINE([WILLOW_DEBUG], [], [Compile with debug support])
+		AC_DEFINE([LORELEY_DEBUG], [], [Compile with debug support])
 		testflag -xs
 		testflag -xO0
 		testflag -ggdb
@@ -173,7 +173,7 @@ AC_CHECK_HEADER([sys/sendfile.h],AC_DEFINE([HAVE_SYS_SENDFILE_H],,[Define this i
 AC_CHECK_HEADER([zlib.h],,AC_MSG_ERROR([zlib not found]))
 
 
-datadir="${datadir}/willow"
+datadir="${datadir}/loreley"
 CXXFLAGS="$USE_CXXFLAGS"
 
 
@@ -197,8 +197,8 @@ AC_OUTPUT(
 	mk/Makefile
 	Makefile 
 	src/Makefile 
-	src/libwillow/Makefile
-	src/willow/Makefile
+	src/libloreley/Makefile
+	src/libloreley/Makefile
 	src/wreadlog/Makefile
 	src/wgetstats/Makefile
 	src/whtcp/Makefile
