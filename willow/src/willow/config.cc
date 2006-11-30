@@ -59,7 +59,7 @@ string		 group = "<default>";
 map<string, int>::iterator it;
 
 	if ((val = e/"port") != NULL)
-		port = boost::get<int>(val->cv_values[0]);
+		port = boost::get<scalar_q>(val->cv_values[0]).value();
 	if ((val = e/"aftype") != NULL)
 		if (boost::get<u_string>(val->cv_values[0]).value() == "ipv6")
 			family = AF_INET6;
@@ -70,7 +70,8 @@ map<string, int>::iterator it;
 
 		it = poolnames.find(group);
 		if (it == poolnames.end()) {
-			val->report_error(format("backend group %s does not exist")
+			conf::report_error(boost::get<q_string>(val->cv_values[0]),
+				format("backend group %s does not exist")
 				% group);
 			return;
 		} else
@@ -93,7 +94,7 @@ int		 fam = AF_UNSPEC;
 addrlist	*res;
 
 	if ((val = e/"port") != NULL)
-		port = boost::get<int>(val->cv_values[0]);
+		port = boost::get<scalar_q>(val->cv_values[0]).value();
 
 	if ((val = e/"aftype") != NULL)
 		if (boost::get<u_string>(val->cv_values[0]).value() == "ipv6")
@@ -240,7 +241,7 @@ int		 flags = 0;
 			flags |= http_deny_connect;
 
 	if ((val = e/"log") != NULL)
-		if (val->get<bool>())
+		if (val->get<bool_q>().value())
 			flags |= http_log_denied;
 
 	WDEBUG(format("radix_from_list: flags=%d") % flags);
@@ -444,7 +445,7 @@ int	line = 0;
 void
 set_log_level(tree_entry &e, value &v)
 {
-	wlog.level(log_level(v.get<int>(0)));
+	wlog.level(log_level(v.get<scalar_q>(0).value()));
 }
 
 void

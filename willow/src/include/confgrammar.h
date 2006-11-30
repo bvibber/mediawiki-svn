@@ -56,12 +56,20 @@ enum string_type {
 template<string_type tag>
 struct tagged_string {
 	tagged_string() {}
-	tagged_string(string const &s) : v(s) {}
-	tagged_string(tagged_string const &other) : v(other.v) {}
+	tagged_string(string const &s, file_position const &pos_)
+		: v(s), pos(pos_) {}
+
+	tagged_string(tagged_string const &other)
+		: v(other.v), pos(other.pos) {}
+
 	template<typename iter>
-	tagged_string(iter begin, iter end) : v(begin, end) {}
+	tagged_string(iter begin, iter end)
+		: v(begin, end)
+		, pos(begin.get_position()) {}
+
 	tagged_string &operator= (tagged_string const &other) {
 		v = other.v;
+		pos = other.pos;
 		return *this;
 	}
 
@@ -73,12 +81,17 @@ struct tagged_string {
 		return v;
 	}
 
+	file_position const &position(void) const {
+		return pos;
+	}
+
 	operator string const& (void) const {
 		return v;
 	}
 
 private:
-	string	v;
+	string		v;
+	file_position	pos;
 };
 
 typedef tagged_string<string_tag> u_string;

@@ -155,7 +155,7 @@ add_variable_simple(string const &name, string const &vval)
 value		var = file_position();
 avalue_t	aval;
 	var.cv_name = name;
-	aval = q_string(vval);
+	aval = q_string(vval, file_position());
 	var.cv_values.push_back(aval);
 	variable_list.insert(make_pair(var.cv_name, var));
 }

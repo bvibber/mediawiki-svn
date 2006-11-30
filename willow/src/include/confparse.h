@@ -22,6 +22,8 @@
 #include <utility>
 #include <cassert>
 #include <limits>
+
+#include <boost/bind.hpp>
 using std::numeric_limits;
 using std::map;
 using std::vector;
@@ -59,6 +61,24 @@ template<typename T>
 bool is_type(avalue_t const &v) {
 	return boost::get<T>(&v) != NULL;
 }
+
+template<typename T>
+void
+report_error(T &av, string const &err)
+{
+	av.position().error(
+		boost::bind(
+			static_cast<void (logger::*) (string const &)>(
+				&logger::error), &wlog, _1), err);
+}
+
+template<typename T>
+void
+report_error(T &av, format const &err)
+{
+	report_error(av, str(err));
+}
+
 
 struct value {
 			 value(file_position const &pos);
