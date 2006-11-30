@@ -34,7 +34,7 @@ if (defined('MEDIAWIKI')) {
 
 	require_once("SpecialPage.php");
 
-	define('MEDIAWIKI_OPENID_VERSION', '0.5');
+	define('MEDIAWIKI_OPENID_VERSION', '0.6');
 
 	$wgExtensionFunctions[] = 'setupOpenID';
 
@@ -117,7 +117,7 @@ if (defined('MEDIAWIKI')) {
 		    // the X-XRDS-Location.  See the OpenIDXRDS
 		    // special page for the XRDS output / generation
 		    // logic.
-		    if ($nt && 
+		    if ($nt &&
 				($nt->getNamespace() == NS_USER) &&
 				strpos($nt->getText(), '/') === false)
 			{
@@ -125,10 +125,11 @@ if (defined('MEDIAWIKI')) {
 				if ($user && $user->getID() != 0) {
 					$openid = OpenIdGetUserUrl($user);
 					if (isset($openid) && strlen($openid) != 0) {
+						$url = OpenIDToUrl($openid);
 						$disp = htmlspecialchars($openid);
 						$wgOut->setSubtitle("<span class='subpages'>" .
 											"<img src='http://openid.net/login-bg.gif' alt='OpenID' />" .
-											"<a href='$disp'>$disp</a>" .
+											"<a href='$url'>$disp</a>" .
 											"</span>");
 					} else {
 						$wgOut->addLink(array('rel' => 'openid.server',
@@ -169,6 +170,27 @@ if (defined('MEDIAWIKI')) {
 		 default:
 			$wgOut->errorPage('openidconfigerror', 'openidconfigerrortext');
 	    }
+	}
+
+	function OpenIDXriBase($xri) {
+		if (substr($xri, 0, 6) == 'xri://') {
+			return substr($xri, 6);
+		} else {
+			return $xri;
+		}
+	}
+
+	function OpenIDXriToUrl($xri) {
+		return 'http://xri.net/' . OpenIDXriBase($xri);
+	}
+
+	function OpenIDToUrl($openid) {
+		/* ID is either an URL already or an i-name */
+        if (Services_Yadis_identifierScheme($openid) == 'XRI') {
+			return OpenIDXriToUrl($openid);
+		} else {
+			return $openid;
+		}
 	}
 }
 

@@ -1,7 +1,7 @@
 MediaWiki OpenID extension
 
-version 0.5
-9 Sep 2006
+version 0.6
+29 Nov 2006
 
 This is the README file for the OpenID extension for MediaWiki
 software. The extension is only useful if you've got a MediaWiki
@@ -69,10 +69,10 @@ available here:
 	  http://www.openidenabled.com/openid/libraries/php
 	  http://www.openidenabled.com/yadis/libraries/php
 
-There are also some required extensions; see the OpenIDEnabled
-documentation for details. This software has been tested with the gmp
-and curl extension installed, and it's recommended that you install
-them, too.
+The last version tested with is 1.2.0. There are also some required
+extensions; see the OpenIDEnabled documentation for details. This
+software has been tested with the gmp and curl extension installed,
+and it's recommended that you install them, too.
 
 Note that some versions of MediaWiki overwrite the PHP library path in
 LocalSettings.php. You may need to add the path to your PHP library

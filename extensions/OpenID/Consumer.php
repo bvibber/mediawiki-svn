@@ -529,13 +529,22 @@ if (defined('MEDIAWIKI')) {
 		}
 	}
 
-	# We try to use an OpenID as a legal MediaWiki user name in this order
+	function OpenIDToUserName($openid) {
+        if (Services_Yadis_identifierScheme($openid) == 'XRI') {
+			wfDebug("OpenID: Handling an XRI: $openid\n");
+			return OpenIDToUserNameXri($openid);
+		} else {
+			wfDebug("OpenID: Handling an URL: $openid\n");
+			return OpenIDToUserNameUrl($openid);
+		}
+	}
+
+	# We try to use an OpenID URL as a legal MediaWiki user name in this order
 	# 1. Plain hostname, like http://evanp.myopenid.com/
 	# 2. One element in path, like http://profile.typekey.com/EvanProdromou/
 	#    or http://getopenid.com/evanprodromou
 
-	function OpenIDToUserName($openid) {
-
+    function OpenIDToUserNameUrl($openid) {
 		static $bad = array('query', 'user', 'password', 'port', 'fragment');
 
 	    $parts = parse_url($openid);
@@ -579,6 +588,19 @@ if (defined('MEDIAWIKI')) {
 		}
 
 		return NULL;
+	}
+
+	function OpenIDToUserNameXri($xri) {
+		$base = OpenIDXriBase($xri);
+
+		if (!$base) {
+			return NULL;
+		} else {
+			# =evan.prodromou
+			# or @gratis*evan.prodromou
+			$parts = explode('*', substr($base, 1));
+			return array_pop($parts);
+		}
 	}
 
 	# Is this name OK to use as a user name?
