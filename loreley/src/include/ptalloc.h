@@ -201,6 +201,8 @@ template<typename T>
 vector<pta_block *> pt_allocator<T>::_ptfreelist;
 template<typename T>
 pta_block *pt_allocator<T>::_ptafl;
+template<typename T>
+lockable pt_allocator<T>::_lock;
 
 template<>
 struct pt_allocator<void>

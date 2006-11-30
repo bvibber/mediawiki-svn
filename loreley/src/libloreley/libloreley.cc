@@ -13,6 +13,7 @@
 #include "ptalloc.h"
 #include "thread.h"
 
+#if 0
 void
 pttsswrapdtor(void *p)
 {
@@ -47,3 +48,4 @@ vector<pta_block *> *v = (vector<pta_block *> *)p;
 
 tss<vector<pta_block *>, ptdealloc> ptfreelist;
 pttsswrap pttssw;
+#endif
