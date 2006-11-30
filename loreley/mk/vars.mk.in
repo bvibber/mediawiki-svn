@@ -5,7 +5,7 @@
 # Warning! don't use top_srcdir in this file, use abs_top_srcdir (or, better,
 # use $(SRCROOT).)
 
-PACKAGE=	willow
+PACKAGE=	loreley
 VERSION=	@PACKAGE_VERSION@
 
 _LEX=		@LEX@
