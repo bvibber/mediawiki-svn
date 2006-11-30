@@ -190,6 +190,9 @@ preprocessor::preprocessor(string const &file, expr::parser const &expr)
 	, _expr(expr)
 {
 	file_iterator<> first(file.c_str());
+	if (!first)
+		throw preprocessor_exception(strerror(errno));
+
 	file_iterator<> last = first.make_end();
 	process(first, last);
 	_end = iterator(*this, _data.end());
