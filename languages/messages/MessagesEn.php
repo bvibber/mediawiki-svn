@@ -1743,7 +1743,8 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 
 # Deleted contributions
 'deletedcontribs' => 'Deleted contributions',
-'undel' => 'undelete',
+'deletedcontribs-undelete' => 'undel',
+'deletedcontribs-show' => 'show',
 
 # Namespace form on various pages
 'namespace' => 'Namespace:',
