@@ -531,7 +531,19 @@ size_t		 plen, vlen;
 	if ((_http_reqtype = find_reqtype(buf, path - buf - 1)) == REQTYPE_INVALID)
 		return -1;
 
-	_http_path.assign(path, path + plen);
+	if (plen > 7 && !strncasecmp(path, "http://", 7)) {
+	char const	*host, *slash;
+		host = path + 7;
+		slash = (char const *)memchr(path + 7, '/', plen - 7);
+		WDEBUG(format("slash: [%s]") % string(slash, plen - (slash - path)));
+		if (slash == NULL)
+			_http_path.assign("/");
+		else
+			_http_path.assign(slash, plen - (slash - path));
+		_http_host.assign(host, slash - host);
+	} else {
+		_http_path.assign(path, path + plen);
+	}
 	return 0;
 }
 
