@@ -16,24 +16,30 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 ## Entry point for the hook and main worker function for editing the page:
-function fnSelectCategoryEditHook( &$m_pageObj, $m_isUpload = false ) {
+function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 	global $wgSelectCategoryNamespaces;
 	global $wgTitle;
 
 	# Run only if we are in an enabled namespace:
 	if ( $wgSelectCategoryNamespaces[ $wgTitle->getNamespace() ] || $m_isUpload ) {
-		# Extract all categorylinks from page:
-		$m_pageCats = fnSelectCategoryGetPageCategories( $m_pageObj );
 		# Get all categories from wiki:
 		$m_allCats = fnSelectCategoryGetAllCategories();
+		# Load system messages:
+		fnSelectCategoryMessageHook();
 		# Get the right member variables, depending on if we're on an upload form or not:
 		if( !$m_isUpload ) {
+			# Extract all categorylinks from page:
+			$m_pageCats = fnSelectCategoryGetPageCategories( $m_pageObj );
+
 			# Never ever use editFormTextTop here as it resides outside the <form> so we will never get contents
 			$m_place = editFormTextAfterWarn;
-			$m_textBefore = "";
+			$m_textBefore = wfMsgReal( 'selectcategory-title' ) . ":";
 		} else	{
+			# No need to get categories:
+			$m_pageCats = array();
+			
 			$m_place = uploadFormTextAfterSummary;
-			$m_textBefore = "\n</td></tr><tr><td align='right'><label for='wpSelectCategory'>Select category:</label></td><td align='left'>";
+			$m_textBefore = "\n</td></tr><tr><td align='right'><label for='wpSelectCategory'>" . wfMsgReal( 'selectcategory-title' ) .":</label></td><td align='left'>";
 		}
 
 		# Print the select box:
@@ -47,12 +53,13 @@ function fnSelectCategoryEditHook( &$m_pageObj, $m_isUpload = false ) {
 			else $m_selected = '';
 			# Print the entry:
 			$m_pageObj->$m_place .= "\t<option $m_selected value=\"". htmlspecialchars( $m_cat ) . "\">";
-			for ( $m_i = 0; $m_i < $m_prefix; $m_i++ ) $m_pageObj->$m_place .= '&nbsp;';
+			for ( $m_i = 0; $m_i < $m_prefix; $m_i++ ) $m_pageObj->$m_place .= '&nbsp;&nbsp;';
 			$m_pageObj->$m_place .= htmlspecialchars( $m_cat );
 			$m_pageObj->$m_place .= "</option>\n";
 		}
 		# Close select box:
 		$m_pageObj->$m_place .= "</select>\n";
+		$m_pageObj->$m_place .= wfMsgReal( 'selectcategory-subtitle' ) . "<br/>\n";
 		$m_pageObj->$m_place .= "<!-- SelectCategory end -->\n";
 
 	}	
@@ -61,7 +68,7 @@ function fnSelectCategoryEditHook( &$m_pageObj, $m_isUpload = false ) {
 }
 
 ## Entry point for the hook and main worker function for saving the page:
-function fnSelectCategorySaveHook( &$article, &$user, &$m_text, &$summary, $minor, $watch, $sectionanchor, &$flags ) {
+function fnSelectCategorySaveHook( $m_isUpload, &$m_pageObj, $void, &$m_text, $void, $void, $void, $void, $void ) {
 	global $wgContLang;
 	
 	# Get localised namespace string:
@@ -72,23 +79,10 @@ function fnSelectCategorySaveHook( &$article, &$user, &$m_text, &$summary, $mino
 	foreach( $_POST['SelectCategoryList'] as $m_cat ) {
 		$m_text .= "\n[[$m_catString:$m_cat]]";
 	}
-
-	# Return to the let MediaWiki do the rest of the work:
-	return true;
-}
-
-function fnSelectCategoryUplSaveHook( &$obj )
-{
-	global $wgContLang;
-	
-	# Get localised namespace string:
-	$m_catString = $wgContLang->getNsText( NS_CATEGORY );
-	# Get some distance from the rest of the content:
-	$m_text .= "\n";
-	foreach( $_POST['SelectCategoryList'] as $m_cat ) {
-		$m_text .= "\n[[$m_catString:$m_cat]]";
+	# If it is an upload we don't have pointers but have to call a method:
+	if ( $m_isUpload ) {
+		$m_pageObj->mUploadDescription .= $m_text;
 	}
-	$obj->mUploadDescription .= $m_text;
 	# Return to the let MediaWiki do the rest of the work:
 	return true;
 }
@@ -108,27 +102,20 @@ function fnSelectCategoryOutputHook( &$m_pageObj, &$m_parserOutput ) {
 }
 
 ## Entry point for the hook for our localised messages:
-function SelectCategoryMessageHook() {
-}
-
-function msg( $msg /*, ...*/ ) {
-	static $initialized = false;
+function fnSelectCategoryMessageHook() {
+	global $wgLang;
 	global $wgMessageCache;
-
-	if ( !$initialized ) {
-                        $wgMessageCache->addMessages( self::loadMessages() );
-                        $initialized = true;
-                }
-                if ( $msg === false ) {
-                        return null;
-                }
-                $args = func_get_args();
-                $msg = array_shift( $args );
-                if ( $msg == '' ) {
-                        return wfMsgReal( $msg, $args );
-                } else {
-                        return wfMsgReal( "categorytree-$msg", $args );
-                }
+	
+	# Initialize array of all messages:
+	$messages=array();
+	# Load default messages (english):
+	include( 'SelectCategory.i18n.php' );
+	# Load localised messages:
+	include( 'SelectCategory.i18n.' . $wgLang->getCode() . '.php' );
+	# Put messages into message cache:
+	$wgMessageCache->addMessages( $messages );
+	
+	return true;
 }
 
 ## Get all categories from the wiki - starting with a given root or otherwise detect root automagically (expensive):
@@ -158,9 +145,8 @@ function fnSelectCategoryGetAllCategories() {
 		$m_res = $m_dbObj->query( $m_sql, __METHOD__ );
 		# Process the resulting rows:
 		while ( $m_row = $m_dbObj->fetchRow( $m_res ) ) {
-			# Attach the entry to our array:
-			$m_allCats = array_merge( $m_allCats, array( $m_row['title'] => 0 ) );
-			$m_allCats = array_merge( $m_allCats, fnSelectCategoryGetChildren( $m_row['title'] ) );
+			$m_allCats += array( $m_row['title'] => 0 );
+			$m_allCats += fnSelectCategoryGetChildren( $m_row['title'] );
 		}	
 		# Free result:
 		$m_dbObj->freeResult( $m_res );
@@ -190,7 +176,8 @@ function fnSelectCategoryGetChildren( $m_root, $m_prefix = 1 ) {
 	# Process the resulting rows:
 	while ( $m_row = $m_dbObj->fetchRow( $m_res ) ) {
 		# Add current entry to array:
-		$m_allCats = array_merge( array( $m_row['title'] => $m_prefix ), fnSelectCategoryGetChildren( $m_row['title'], ++$m_prefix ) );
+		$m_allCats += array( $m_row['title'] => $m_prefix );
+		$m_allCats += fnSelectCategoryGetChildren( $m_row['title'], $m_prefix + 1 );
 	}	
 	# Free result:
 	$m_dbObj->freeResult( $m_res );
@@ -231,12 +218,4 @@ function fnSelectCategoryGetPageCategories( $m_pageObj ) {
 	# Return the list of categories as an array without dupes:
 	return $m_catLinks;
 }
-
-# Pseudo function. Passes all the work to fnSelectCategoryEditHook(), 
-# but tells it we're on the upload page.
-function fnSelectCategoryUploadHook( &$upload_obj )
-{
-	return fnSelectCategoryEditHook( &$upload_obj, true );
-}
-
 ?>

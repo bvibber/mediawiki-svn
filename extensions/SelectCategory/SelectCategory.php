@@ -15,6 +15,9 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die();
 }
 
+## Prevent warnings about missing parameters on overloaded functions and missing localisation files:
+error_reporting(0);
+
 ## Options:
 # $wgSelectCategoryNamespaces	- list of namespaces in which this extension should be active
 $wgSelectCategoryNamespaces	= array(
@@ -44,7 +47,7 @@ $wgExtensionFunctions[]	= 'fnSelectCategory';
 $wgExtensionCredits['parserhook'][] = array(
 	'name'		=> 'SelectCategory',
 	'author'	=> 'Leon Weber & Manuel Schneider',
-	'url'		=> 'http://www.mediawiki.org/wiki/SelectCategory',
+	'url'		=> 'http://www.mediawiki.org/wiki/Extension:SelectCategory',
 	'description'	=> 'Allows the user to select from existing categories when editing a page'
 );
 
@@ -52,14 +55,19 @@ $wgExtensionCredits['parserhook'][] = array(
 function fnSelectCategory() {
 	global $wgHooks;
 	
+	## Showing the boxes
 	# Hook when starting editing:
-	$wgHooks['EditPage::showEditForm:initial'][] = 'fnSelectCategoryEditHook';
-	# Hook when saving page:
-	$wgHooks['ArticleSave'][] = 'fnSelectCategorySaveHook';
+	$wgHooks['EditPage::showEditForm:initial'][] = array( 'fnSelectCategoryShowHook', false );
 	# Hook for the upload page:
-	$wgHooks['UploadForm:initial'][] = 'fnSelectCategoryUploadHook';
+	$wgHooks['UploadForm:initial'][] = array( 'fnSelectCategoryShowHook', true );
+
+	## Saving the data
+	# Hook when saving page:
+	$wgHooks['ArticleSave'][] = array( 'fnSelectCategorySaveHook', false );
 	# Hook when saving the upload:
-	$wgHooks['UploadForm:BeforeProcessing'][] = 'fnSelectCategoryUplSaveHook';
+	$wgHooks['UploadForm:BeforeProcessing'][] = array( 'fnSelectCategorySaveHook', true );
+
+	## Infrastructure
 	# Hook our own CSS:
 	$wgHooks['OutputPageParserOutput'][] = 'fnSelectCategoryOutputHook';
 	# Hook up local messages:
