@@ -8,26 +8,21 @@
  * @subpackage Special pages
  */
 class ContributionsPage extends QueryPage {
-	var $target, $user;
+	var $user = null;
 	var $namespace = null;
 	var $newbies = false;
 	var $botmode = false;
 
 	/**
 	 * Constructor.
-	 * @param $target username to list contribs for (or "newbies" for extra magic)
+	 * @param $username username to list contribs for (or "newbies" for extra magic)
 	 */
-	function __construct( $target ) {
-		$this->target = $target;
-		$this->user = User::newFromName( $target, false );
-
-		// canonicalize
-		if ( $this->user )
-			$this->target = $this->user->getName();
-
+	function __construct( $username ) {
 		// This is an ugly hack.  I don't know who came up with it.
-		if ( $target == 'newbies' )
+		if ( $username == 'newbies' && $this->newbiesModeEnabled() )
 			$this->newbies = true;
+		else
+			$this->user = User::newFromName( $username, false );
 	}
 
 	/**
@@ -48,10 +43,15 @@ class ContributionsPage extends QueryPage {
 	function isSyndicated() { return false; }
 
 	/**
+	 * Special handling of "newbies" username.  May be disabled in subclasses.
+	 */
+	function newbiesModeEnabled() { return true; }
+
+	/**
 	 * @return array Extra URL params for self-links.
 	 */
 	function linkParameters() {
-		$params['target'] = $this->target;
+		$params['target'] = ( $this->newbies ? "newbies" : $this->user->getName() );
 
 		if ( isset($this->namespace) )
 			$params['namespace'] = $this->namespace;
@@ -71,17 +71,18 @@ class ContributionsPage extends QueryPage {
 
 		$skin = $wgUser->getSkin();
 
+		$username = $this->user->getName();
 		$userpage = $this->user->getUserPage();
-		$userlink = $skin->makeLinkObj( $userpage, $this->target );
+		$userlink = $skin->makeLinkObj( $userpage, $username );
 
 		// talk page link
 		$tools[] = $skin->makeLinkObj( $userpage->getTalkPage(), $wgLang->getNsText( NS_TALK ) );
 
 		// block or block log link
 		$id = $this->user->getId();
-		if ( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && User::isIP( $this->target ) ) ) {
+		if ( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && User::isIP( $username ) ) ) {
 			if( $wgUser->isAllowed( 'block' ) )
-				$tools[] = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Blockip', $this->target ),
+				$tools[] = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Blockip', $username ),
 								  wfMsgHtml( 'blocklink' ) );
 			else
 				$tools[] = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ),
@@ -121,14 +122,14 @@ class ContributionsPage extends QueryPage {
 			return '';
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$n = $dbr->selectField( 'archive', 'count(*)', array( 'ar_user_text' => $this->target ), __METHOD__ );
+		$n = $dbr->selectField( 'archive', 'count(*)', array( 'ar_user_text' => $this->user->getName() ), __METHOD__ );
 
 		if ( $n == 0 )
 			return '';
 
 		$msg = wfMsg( ( $wgUser->isAllowed( 'delete' ) ? 'thisisdeleted' : 'viewdeleted' ),
 			      $wgUser->getSkin()->makeKnownLinkObj(
-				      SpecialPage::getTitleFor( 'DeletedContributions', $this->target ),
+				      SpecialPage::getTitleFor( 'DeletedContributions', $this->user->getName() ),
 				      wfMsgExt( 'restorelink', array( 'parsemag', 'escape' ), $n ) ) );
 
 		return "<p>$msg</p>";
@@ -161,7 +162,7 @@ class ContributionsPage extends QueryPage {
 		$form .= Xml::submitButton( wfMsg( 'allpagessubmit' ) );
 		$form .= Xml::hidden( 'offset', $this->offset );
 		$form .= Xml::hidden( 'limit',  $this->limit );
-		$form .= Xml::hidden( 'target', $this->target );
+		$form .= Xml::hidden( 'target', ( $this->newbies ? "newbies" : $this->user->getName() ) );
 		if ( $this->botmode )
 			$form .= Xml::hidden( 'bot', 1 );
 		$form .= '</form>';
@@ -189,7 +190,7 @@ class ContributionsPage extends QueryPage {
 			$max = $dbr->selectField( 'user', 'max(user_id)', false, 'make_sql' );
 			$cond .= ' AND rev_user > ' . (int)($max - $max / 100);
 		} else {
-			$cond .= ' AND rev_user_text = ' . $dbr->addQuotes( $this->target );
+			$cond .= ' AND rev_user_text = ' . $dbr->addQuotes( $this->user->getName() );
 		}
 		if ( isset($this->namespace) )
 			$cond .= ' AND page_namespace = ' . (int)$this->namespace;
@@ -275,8 +276,8 @@ class ContributionsPage extends QueryPage {
 		$rev = new Revision( array(
 			'comment'   => $row->comment,
 			'deleted'   => $row->deleted,
-			'user_text' => $this->target,
-			'user'      => 0,  // whatever, just don't default to $wgUser->getId();
+			'user_text' => $row->username,
+			'user'      => $row->userid,
 		) );
 		$rev->setTitle( $page );
 

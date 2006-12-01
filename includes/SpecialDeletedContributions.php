@@ -9,13 +9,12 @@
  */
 class DeletedContributionsPage extends ContributionsPage {
 
-	function __construct( $username ) {
-		parent::__construct( $username );
-		$this->newbies = false;  // no hax please
-	}
-
 	function getName() {
 		return 'DeletedContributions';
+	}
+
+	function newbiesModeEnabled() {
+		return false;  // no hax please
 	}
 
 	function getDeletedContributionsLink() {
