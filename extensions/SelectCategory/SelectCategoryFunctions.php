@@ -73,22 +73,25 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 }
 
 ## Entry point for the hook and main worker function for saving the page:
-function fnSelectCategorySaveHook( $m_isUpload, &$m_pageObj, $void, &$m_text, $void, $void, $void, $void, $void ) {
+function fnSelectCategorySaveHook( $m_isUpload, &$m_pageObj ) {
 	global $wgContLang;
 	
 	# Get localised namespace string:
 	$m_catString = $wgContLang->getNsText( NS_CATEGORY );
 	# Get some distance from the rest of the content:
-	$m_text .= "\n";
+	$m_text = "\n";
 	# Iterate through all selected category entries:
 	foreach( $_POST['SelectCategoryList'] as $m_cat ) {
 		$m_text .= "\n[[$m_catString:$m_cat]]";
 	}
-	# If it is an upload we don't have pointers but have to call a method:
+	# If it is an upload we have to call a different method:
 	if ( $m_isUpload ) {
 		$m_pageObj->mUploadDescription .= $m_text;
+	} else
+	{
+		$m_pageObj->textbox1 .= $m_text;
 	}
-	
+
 	# Return to the let MediaWiki do the rest of the work:
 	return true;
 }

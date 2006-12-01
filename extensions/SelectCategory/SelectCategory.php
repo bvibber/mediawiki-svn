@@ -63,7 +63,7 @@ function fnSelectCategory() {
 
 	## Saving the data
 	# Hook when saving page:
-	$wgHooks['ArticleSave'][] = array( 'fnSelectCategorySaveHook', false );
+	$wgHooks['EditPage::attemptSave'][] = array( 'fnSelectCategorySaveHook', false );
 	# Hook when saving the upload:
 	$wgHooks['UploadForm:BeforeProcessing'][] = array( 'fnSelectCategorySaveHook', true );
 
