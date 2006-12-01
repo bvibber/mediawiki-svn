@@ -55,7 +55,7 @@ function project($record, $structure) {
 		$type = $attribute->type;
 		$value = $record->getAttributeValue($attribute);
 		
-		if (is_a($type, RecordType))
+		if ($type instanceof RecordType)
 			$result->setAttributeValue($attribute, project($record, $type->getStructure()));
 		else
 			$result->setAttributeValue($attribute, $value);

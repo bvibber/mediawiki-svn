@@ -73,7 +73,7 @@ $otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other de
 //$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", "defined-meaning");
 
 global
-	$relationsAttribute, $relationStructure, $relationKeyStructure, $reciprocalRelationsAttribute;
+	$relationsAttribute, $relationStructure, $relationKeyStructure, $reciprocalRelationsAttribute, $objectAttributesAttribute;
 	
 $relationStructure = new Structure($relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $objectAttributesAttribute);
 $relationKeyStructure = new Structure($relationIdAttribute);	
@@ -125,7 +125,7 @@ $textAttributeValuesStructure = new Structure($textAttributeIdAttribute, $textAt
 $textAttributeValuesAttribute = new Attribute("text-attribute-values", "Text attribute values", new RecordSetType($textAttributeValuesStructure));
 
 global
-	$definitionAttribute, $definedMeaningAttribute, $translatedTextAttribute;
+	$definitionAttribute, $definedMeaningAttribute, $translatedTextAttribute, $classAttributesAttribute;
 
 $translatedTextAttribute = new Attribute("translated-text", "Translated text", new RecordSetType($translatedTextStructure));
 $definitionAttribute = new Attribute("definition", "Definition", new RecordType(new Structure($translatedTextAttribute, $objectAttributesAttribute)));
@@ -139,7 +139,7 @@ $expressionExactMeaningsAttribute = new Attribute("expression-exact-meanings", "
 $expressionApproximateMeaningsAttribute = new Attribute("expression-approximate-meanings", "Approximate meanings", new RecordSetType($expressionMeaningStructure));
 
 global
-	$expressionMeaningsAttribute, $expressionMeaningsStructure;
+	$expressionMeaningsAttribute, $expressionMeaningsStructure, $expressionApproximateMeaningAttribute;
 
 $expressionMeaningsStructure = new Structure($expressionExactMeaningsAttribute, $expressionApproximateMeaningAttribute);
 $expressionMeaningsAttribute = new Attribute("expression-meanings", "Expression meanings", new RecordType($expressionMeaningsStructure));
@@ -147,7 +147,7 @@ $expressionMeaningsAttribute = new Attribute("expression-meanings", "Expression 
 $expressionsAttribute = new Attribute("expressions", "Expressions", new RecordSetType(new Structure($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute)));
 
 global
-	$objectIdAttribute, $objectAttributesStructure, $objectAttributesAttribute;
+	$objectIdAttribute, $objectAttributesStructure;
 
 $objectIdAttribute = new Attribute("object-id", "Object identifier", "object-id");
 $objectAttributesStructure = new Structure($objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute);
@@ -155,7 +155,6 @@ $objectAttributesAttribute = new Attribute("object-attributes", "Annotation", ne
 
 global
 	$classAttributesStructure,
-	$classAttributesAttribute,
 //	$classAttributeClassAttribute, 
 	$classAttributeIdAttribute, $classAttributeAttributeAttribute, $classAttributeLevelAttribute;	
 	

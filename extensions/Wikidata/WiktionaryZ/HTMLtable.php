@@ -33,7 +33,7 @@ function getTableHeaderNode($structure, &$currentColumn=0) {
 	foreach($structure->attributes as $attribute) {
 		$type = $attribute->type;
 		
-		if (is_a($type, RecordType)) 
+		if ($type instanceof RecordType) 
 			$childNode = getTableHeaderNode($type->getStructure(), $currentColumn);
 		else { 
 			$childNode = new TableHeaderNode();
@@ -60,7 +60,7 @@ function addChildNodesToRows($headerNode, &$rows, $currentDepth, $columnOffset) 
 		$attribute = $childNode->attribute;
 		$type = $attribute->type;
 		
-		if (!is_a($type, RecordType) && !is_a($type, RecordSetType))
+		if (!$type instanceof RecordType && !$type instanceof RecordSetType)
 			$class = ' class="'. $type .' sortable" onclick="sortTable(this, '. count($rows) .', '. ($childNode->column + $columnOffset) .')"';	
 		else		
 			$class = '';
@@ -85,10 +85,10 @@ function getStructureAsTableHeaderRows($structure, $columnOffset) {
 	return $result;
 }
 
-function getHTMLClassForType($type) {
-	if (is_a($type, RecordSetType))  
+function getHTMLClassForType($type,$attribute) {
+	if ($type instanceof RecordSetType)  
 		return "relation";
-	else if (is_a($type, RecordType)) 
+	else if ($type instanceof RecordType) 
 		return $attribute->id;
 	else 
 		return $type;
@@ -104,14 +104,14 @@ function getRecordAsTableCells($idPath, $editor, $record, &$startColumn = 0) {
 		$idPath->pushAttribute($attribute);
 		$attributeId = $idPath->getId();
 		
-		if (is_a($childEditor, RecordTableCellEditor)) 
+		if ($childEditor instanceof RecordTableCellEditor) 
 			$result .= getRecordAsTableCells($idPath, $childEditor, $value, $startColumn);	
 		else {
 			if($childEditor->showsData($value))
 				$displayValue = $childEditor->view($idPath, $value);
 			else
 				$displayValue = "";
-			$result .= '<td class="'. getHTMLClassForType($type) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
+			$result .= '<td class="'. getHTMLClassForType($type,$attribute) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
 			$startColumn++;
 		}
 		
@@ -130,7 +130,7 @@ function getRecordAsEditTableCells($record, $idPath, $editor, &$startColumn = 0)
 		$value = $record->getAttributeValue($attribute);
 		$idPath->pushAttribute($attribute);
 			
-		if (is_a($childEditor, RecordTableCellEditor))			
+		if ($childEditor instanceof RecordTableCellEditor)			
 			$result .= getRecordAsEditTableCells($value, $idPath, $childEditor, $startColumn); 
 		else {	
 			if($childEditor->showEditField($idPath))
@@ -138,7 +138,7 @@ function getRecordAsEditTableCells($record, $idPath, $editor, &$startColumn = 0)
 			else
 				$displayValue = "";
 			
-			$result .= '<td class="'. getHTMLClassForType($type) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
+			$result .= '<td class="'. getHTMLClassForType($type,$attribute) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
 				
 			$startColumn++;
 		}
@@ -157,10 +157,10 @@ function getStructureAsAddCells($idPath, $editor, &$startColumn = 0) {
 		$type = $attribute->type;
 		$idPath->pushAttribute($attribute);
 		
-		if (is_a($childEditor, RecordTableCellEditor))
+		if ($childEditor instanceof RecordTableCellEditor)
 			$result .= getStructureAsAddCells($idPath, $childEditor, $startColumn);
 		else {
-			$result .= '<td class="'. getHTMLClassForType($type) .' column-'. parityClass($startColumn) . '">' . $childEditor->add($idPath) . '</td>';
+			$result .= '<td class="'. getHTMLClassForType($type,$attribute) .' column-'. parityClass($startColumn) . '">' . $childEditor->add($idPath) . '</td>';
 			$startColumn++;
 		}
 		

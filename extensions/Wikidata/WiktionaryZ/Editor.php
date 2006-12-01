@@ -533,7 +533,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		foreach($editor->getEditors() as $childEditor) {
 			$childAttribute = $childEditor->getAttribute();
 
-			if (is_a($childEditor, RecordTableCellEditor))
+			if ($childEditor instanceof RecordTableCellEditor)
 				$type = new RecordType($this->getTableStructure($childEditor));
 			else
 				$type = 'short-text';
@@ -1044,6 +1044,7 @@ class RecordListEditor extends RecordEditor {
 	}
 	
 	public function view($idPath, $value) {
+		$result = '';
 		foreach ($this->editors as $editor) {
 			$attribute = $editor->getAttribute();
 			$idPath->pushAttribute($attribute);
@@ -1127,7 +1128,7 @@ class RecordListEditor extends RecordEditor {
 	}
 
 	public function setExpansionByEditor($editor, $elementType) {
-		$this->setExpansion(in_array($editor, $this->expandedEditors), $elementType);
+		$this->setExpansion(in_array($editor, $this->expandedEditors, true), $elementType);
 	}
 }
 
