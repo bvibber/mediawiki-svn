@@ -163,7 +163,7 @@ function __autoload($className) {
 		'CategoriesPage' => 'includes/SpecialCategories.php',
 		'EmailConfirmation' => 'includes/SpecialConfirmemail.php',
 		'ContributionsPage' => 'includes/SpecialContributions.php',
-		'DeletedcontribsPage' => 'includes/SpecialDeletedcontribs.php',
+		'DeletedContributionsPage' => 'includes/SpecialDeletedContributions.php',
 		'DeadendPagesPage' => 'includes/SpecialDeadendpages.php',
 		'DisambiguationsPage' => 'includes/SpecialDisambiguations.php',
 		'DoubleRedirectsPage' => 'includes/SpecialDoubleRedirects.php',

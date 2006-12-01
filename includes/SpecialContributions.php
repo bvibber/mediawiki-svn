@@ -60,7 +60,7 @@ class ContributionsPage extends QueryPage {
 		return $params;
 	}
 
-	function subtitleLinks() {
+	function getTargetUserLinks() {
 		global $wgSysopUserBans, $wgLang, $wgUser;
 
 		$sk = $wgUser->getSkin();
@@ -91,15 +91,15 @@ class ContributionsPage extends QueryPage {
 		return $userlink . ' (' . implode( ' | ', $tools ) . ')';
 	}
 
-	function setSubtitle() {
-		global $wgOut;
+	function getSubtitleForTarget() {
 		if ( $this->newbies )
-			$wgOut->setSubtitle( wfMsgHtml( 'sp-contributions-newbies-sub' ) );
+			$subtitle = wfMsgHtml( 'sp-contributions-newbies-sub' );
 		else
-			$wgOut->setSubtitle( wfMsgHtml( 'contribsub', $this->subtitleLinks() ) );
+			$subtitle = wfMsgHtml( 'contribsub', $this->getTargetUserLinks() );
+		return $subtitle;
 	}
 
-	function getDeletedcontribsLink() {
+	function getDeletedContributionsLink() {
 		global $wgUser;
 
 		if( $this->newbies || !$wgUser->isAllowed( 'deletedhistory' ) )
@@ -113,10 +113,17 @@ class ContributionsPage extends QueryPage {
 
 		$msg = wfMsg( ( $wgUser->isAllowed( 'delete' ) ? 'thisisdeleted' : 'viewdeleted' ),
 			      $wgUser->getSkin()->makeKnownLinkObj(
-				      SpecialPage::getTitleFor( 'Deletedcontribs', $this->target ),
+				      SpecialPage::getTitleFor( 'DeletedContributions', $this->target ),
 				      wfMsgExt( 'restorelink', array( 'parsemag', 'escape' ), $n ) ) );
 
-		return '<p>' . $msg . '</p>';
+		return "<p>$msg</p>";
+	}
+
+	function outputSubtitle() {
+		global $wgOut;
+		$subtitle = $this->getSubtitleForTarget();
+		$subtitle .= $this->getDeletedContributionsLink();
+		$wgOut->setSubtitle( $subtitle );
 	}
 
 	function getNamespaceForm() {
@@ -141,13 +148,8 @@ class ContributionsPage extends QueryPage {
 	}
 
 	function getPageHeader() {
-		$this->setSubtitle();
-
-		// hook for Contributionseditcount extension
-		if ( $this->user && $this->user->getId() )
-			wfRunHooks( 'SpecialContributionsBeforeMainOutput', $this->user->getId() );
-		
-		return $this->getDeletedcontribsLink() . $this->getNamespaceForm();
+		$this->outputSubtitle();
+		return $this->getNamespaceForm();
 	}
 
 	function makeSQLCond( $dbr ) {
@@ -276,6 +278,10 @@ function wfSpecialContributions( $par = null ) {
 
 	$page = new ContributionsPage( $username );
 
+	// hook for Contributionseditcount extension
+	if ( $page->user && $page->user->isLoggedIn() )
+		wfRunHooks( 'SpecialContributionsBeforeMainOutput', $page->user->getId() );
+		
 	$page->namespace = $wgRequest->getIntOrNull( 'namespace' );
 	$page->botmode   = ( $wgUser->isAllowed( 'rollback' ) && $wgRequest->getBool( 'bot' ) );
 	

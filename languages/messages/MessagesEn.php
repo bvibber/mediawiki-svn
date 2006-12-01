@@ -380,6 +380,7 @@ $specialPageAliases = array(
 	'Ipblocklist'               => array( 'Ipblocklist' ),
 	'Specialpages'              => array( 'Specialpages' ),
 	'Contributions'             => array( 'Contributions' ),
+	'DeletedContributions'      => array( 'DeletedContributions' ),
 	'Emailuser'                 => array( 'Emailuser' ),
 	'Whatlinkshere'             => array( 'Whatlinkshere' ),
 	'Recentchangeslinked'       => array( 'Recentchangeslinked' ),
@@ -1745,7 +1746,7 @@ revision may have been restored or removed from the archive.",
 Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions and restorations.",
 
 # Deleted contributions
-'deletedcontribs' => 'Deleted contributions',
+'deletedcontributions' => 'Deleted contributions',
 'deletedcontribs-undelete' => 'undel',
 'deletedcontribs-show' => 'show',
 

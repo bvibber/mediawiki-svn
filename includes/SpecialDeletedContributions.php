@@ -13,10 +13,10 @@
  * @package MediaWiki
  * @subpackage SpecialPage
  */
-class DeletedcontribsPage extends ContributionsPage {
+class DeletedContributionsPage extends ContributionsPage {
 
 	function getName() {
-		return 'Deletedcontribs';
+		return 'DeletedContributions';
 	}
 
 	// no hax please
@@ -24,9 +24,8 @@ class DeletedcontribsPage extends ContributionsPage {
 		return false;
 	}
 
-	function getPageHeader() {
-		$this->setSubtitle();
-		return $this->getNamespaceForm();
+	function getDeletedContributionsLink() {
+		return '';  // no self-links please
 	}
 
 	function makeSQLCond( $dbr ) {
@@ -43,7 +42,7 @@ class DeletedcontribsPage extends ContributionsPage {
 
 		$cond = $this->makeSQLCond( $dbr );
 
-		return "SELECT 'Deletedcontribs' as type,
+		return "SELECT 'DeletedContributions' as type,
 				ar_namespace  AS namespace,
 				ar_title      AS title,
 				ar_timestamp  AS value,
@@ -122,7 +121,7 @@ class DeletedcontribsPage extends ContributionsPage {
 /**
  *
  */
-function wfSpecialDeletedcontribs( $par = null ) {
+function wfSpecialDeletedContributions( $par = null ) {
 	global $wgRequest;
 
 	$username = ( isset($par) ? $par : $wgRequest->getVal( 'target' ) );
@@ -133,7 +132,7 @@ function wfSpecialDeletedcontribs( $par = null ) {
 		return;
 	}
 
-	$page = new DeletedcontribsPage( $username );
+	$page = new DeletedContributionsPage( $username );
 
 	$page->namespace = $wgRequest->getIntOrNull( 'namespace' );
 	

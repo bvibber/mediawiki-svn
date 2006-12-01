@@ -16,7 +16,7 @@ $wgQueryPages = array(
 	array( 'CategoriesPage',		'Categories'			),
 	array( 'ContributionsPage',		'Contributions'			),
 	array( 'DeadendPagesPage',		'Deadendpages'			),
-	array( 'DeletedcontribsPage',		'Deletedcontribs'		),
+	array( 'DeletedContributionsPage',	'DeletedContributions'		),
 	array( 'DisambiguationsPage',		'Disambiguations'		),
 	array( 'DoubleRedirectsPage',		'DoubleRedirects'		),
 	array( 'ListUsersPage',			'Listusers'			),
