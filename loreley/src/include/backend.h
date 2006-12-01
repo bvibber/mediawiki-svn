@@ -22,7 +22,6 @@
 using std::vector;
 using std::map;
 
-#include "polycaller.h"
 #include "net.h"
 using namespace wnet;
 
@@ -62,7 +61,7 @@ struct backend_list : freelist_allocator<backend_list> {
 			int failgroup,
 			lb_type, int start);
 
-	int		 _get_impl	(polycallback<backend *, wsocket *>);
+	int		 _get_impl	(function<void (backend *, wsocket *)>);
 	void		 _backend_read	(wsocket *e, int, backend_cb_data *);
 	struct backend 	*_next_backend	(void);
 	void		 _carp_recalc	(imstring const &, imstring const &, lb_type);
@@ -82,8 +81,8 @@ struct backend_list : freelist_allocator<backend_list> {
 
 
 	template<typename T>
-	int	get	(polycaller<backend *, wsocket *, T> cb, T t) {
-		return _get_impl(polycallback<backend *, wsocket *>(cb, t));
+	int	get	(T cb) {
+		return _get_impl(cb);
 	}
 
 	~backend_list() {

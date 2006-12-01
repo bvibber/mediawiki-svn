@@ -38,7 +38,6 @@ using std::back_inserter;
 #include "net.h"
 #include "confparse.h"
 #include "access.h"
-#include "format.h"
 
 using namespace conf;
 

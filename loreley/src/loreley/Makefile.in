@@ -26,7 +26,6 @@ BASESRCS =	 		\
 	dbwrap.cc		\
 	expr.cc			\
 	flowio.cc		\
-	format.cc		\
 	htcp.cc			\
 	http.cc			\
 	http_header.cc		\

@@ -67,7 +67,6 @@ using std::make_pair;
 using std::memcpy;
 
 #include "loreley.h"
-#include "polycaller.h"
 
 extern bool wnet_exit;
 

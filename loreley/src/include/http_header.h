@@ -215,8 +215,6 @@ struct header_parser : io::sink, io::spigot
 	void 		set_response		(void);
 	void		sending_restart		(void);
 
-	polycaller<>	 _completed_callee;
-	polycaller<>	 _error_callee;
 	header_list	 _headers;
 	bool		 _got_reqtype;
 	http_version	 _http_vers;

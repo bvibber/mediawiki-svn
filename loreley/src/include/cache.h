@@ -19,9 +19,11 @@
 #include <map>
 #include <set>
 #include <fstream>
+#include <ios>
 using std::map;
 using std::multiset;
 using std::fstream;
+using std::ios;
 
 #include "loreley.h"
 #include "thread.h"

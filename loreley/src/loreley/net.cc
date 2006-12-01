@@ -45,7 +45,6 @@ using std::signal;
 #include "config.h"
 #include "log.h"
 #include "http.h"
-#include "format.h"
 
 #define RDBUF_INC	8192	/* buffer in 8 KiB incrs		*/
 

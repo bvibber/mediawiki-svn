@@ -11,6 +11,8 @@
 /* $Id$ */
 
 #include <utility>
+#include <cerrno>
+
 #include <boost/spirit.hpp>
 #include <boost/algorithm/string.hpp>
 using std::pair;

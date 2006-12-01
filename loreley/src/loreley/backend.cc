@@ -33,7 +33,6 @@ using std::rotate;
 #include "log.h"
 #include "confparse.h"
 #include "config.h"
-#include "format.h"
 
 map<imstring, int> host_to_bpool;
 map<int, backend_pool> bpools;
@@ -41,8 +40,8 @@ map<string, int> poolnames;
 int nbpools = 1;
 
 struct backend_cb_data : freelist_allocator<backend_cb_data> {
-struct	backend		*bc_backend;
-	polycallback<backend *, wsocket *> bc_func;
+	backend		*bc_backend;
+	function<void (backend *, wsocket *)> bc_func;
 	void		*bc_data;
 };
 
@@ -93,7 +92,7 @@ addrlist::iterator	it = list->begin(), end = list->end();
 }
 
 int
-backend_list::_get_impl(polycallback<backend *, wsocket *> cb)
+backend_list::_get_impl(function<void (backend *, wsocket *)> cb)
 {
 struct	backend_cb_data	*cbd;
 	wsocket		*s = NULL;

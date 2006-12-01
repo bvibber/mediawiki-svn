@@ -16,7 +16,6 @@ using std::make_pair;
 using std::ostream;
 
 #include "cache.h"
-#include "format.h"
 #include "config.h"
 
 httpcache entitycache;

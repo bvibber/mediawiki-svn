@@ -19,17 +19,18 @@
 #include <syslog.h>
 #include <cerrno>
 #include <iostream>
+#include <ios>
 using std::cout;
 using std::fopen;
 using std::fprintf;
 using std::fclose;
+using std::ios;
 
 #include "autoconf.h"
 
 #include "log.h"
 #include "net.h"
 #include "config.h"
-#include "format.h"
 
 logger wlog;
 

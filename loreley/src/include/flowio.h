@@ -72,13 +72,13 @@ struct spigot : noncopyable {
 	virtual void sp_uncork(void) = 0;
 
 	template<typename T>
-	void completed_callee(T *o, void (T::*f)(void)) {
-		_sp_completed_callee.assign(*o, f);
+	void completed_callee(T cb) {
+		_sp_completed_callee = cb;
 	}
 
 	template<typename T>
-	void error_callee(T *o, void (T::*f)(void)) {
-		_sp_error_callee.assign(*o, f);
+	void error_callee(T cb) {
+		_sp_error_callee = cb;
 	}
 
 protected:
@@ -86,9 +86,9 @@ protected:
 	sink_result 	 _sp_dio_ready (int fd, off_t off, size_t s, ssize_t &discard);
 	sink_result	 _sp_data_empty (void);
 
-	polycaller<>	 _sp_completed_callee;
-	polycaller<>	 _sp_error_callee;
-	sink		*_sp_sink;
+	function<void ()>	 _sp_completed_callee;
+	function<void ()>	 _sp_error_callee;
+	sink			*_sp_sink;
 };
 
 enum dio_source {

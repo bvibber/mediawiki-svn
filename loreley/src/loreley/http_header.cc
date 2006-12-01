@@ -24,7 +24,6 @@ using std::sprintf;
 #include "net.h"
 #include "flowio.h"
 #include "config.h"
-#include "format.h"
 
 using namespace wnet;
 

@@ -30,12 +30,10 @@ using std::streamsize;
 #include "log.h"
 #include "net.h"
 #include "config.h"
-#include "loreley.h"
 #include "http.h"
 #include "cache.h"
 #include "confparse.h"
 #include "access.h"
-#include "format.h"
 #include "mbuffer.h"
 #include "htcp.h"
 

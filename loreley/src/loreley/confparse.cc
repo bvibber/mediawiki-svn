@@ -36,7 +36,6 @@ using std::make_pair;
 #include "log.h"
 #include "backend.h"
 #include "config.h"
-#include "format.h"
 #include "expr.h"
 
 namespace conf {

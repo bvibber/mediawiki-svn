@@ -46,7 +46,6 @@ using std::endl;
 #include "access.h"
 #include "chunking.h"
 #include "flowio.h"
-#include "format.h"
 #include "cache.h"
 
 using namespace wnet;
@@ -124,7 +123,7 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	void header_read_complete		(void);
 	void header_read_error			(void);
 		/* sending request to backend */
-	void backend_ready			(backend *, wsocket *, int);
+	void backend_ready			(backend *, wsocket *);
 	void backend_write_headers_done		(void);
 	void backend_write_body_done		(void);
 	void backend_write_error		(void);
@@ -239,8 +238,8 @@ httpcllr::start_request(void)
 	 */
 	_header_parser = new header_parser;
 
-	_client_spigot->completed_callee(this, &httpcllr::header_read_complete);
-	_client_spigot->error_callee(this, &httpcllr::header_read_error);
+	_client_spigot->completed_callee(bind(&httpcllr::header_read_complete, this));
+	_client_spigot->error_callee(bind(&httpcllr::header_read_error, this));
 
 	_client_spigot->sp_connect(_header_parser);
 	_client_spigot->sp_uncork();
@@ -373,8 +372,8 @@ httpcllr::send_cached(void)
 		_client_sink = new io::socket_sink(_client_socket);
 
 	_client_socket->cork();
-	_cache_spigot->error_callee(this, &httpcllr::send_body_to_client_error);
-	_cache_spigot->completed_callee(this, &httpcllr::send_body_to_client_done);
+	_cache_spigot->error_callee(bind(&httpcllr::send_body_to_client_error, this));
+	_cache_spigot->completed_callee(bind(&httpcllr::send_body_to_client_done, this));
 	_cache_spigot->sp_connect(_client_sink);
 	_cache_spigot->sp_uncork();
 	return;
@@ -542,7 +541,7 @@ pair<wsocket *, backend *> ke;
 	_blist = NULL;
 
 	if (ke.first) {
-		backend_ready(ke.second, ke.first, 0);
+		backend_ready(ke.second, ke.first);
 		return;
 	}
 
@@ -550,9 +549,8 @@ pair<wsocket *, backend *> ke;
 		_blist = bpools.find(_group)->second.get_list(
 				_request_path, _request_host);
 	
-	if (_blist->get(polycaller<backend *, wsocket *, int>(*this, 
-		    &httpcllr::backend_ready), 0) == -1)
-		backend_ready(NULL, NULL, 0);
+	if (_blist->get(bind(&httpcllr::backend_ready, this, _1, _2)) == -1)
+		backend_ready(NULL, NULL);
 }
 
 void
@@ -570,7 +568,7 @@ httpcllr::header_read_error(void)
 }
 
 void
-httpcllr::backend_ready(backend *be, wsocket *s, int)
+httpcllr::backend_ready(backend *be, wsocket *s)
 {
 	if (be == NULL) {
 		stats.tcur->n_httpreq_fail++;
@@ -594,8 +592,8 @@ httpcllr::backend_ready(backend *be, wsocket *s, int)
 		_header_parser->_http_path = _request_path;
 
 	_header_parser->sending_restart();
-	_header_parser->completed_callee(this, &httpcllr::backend_write_headers_done);
-	_header_parser->error_callee(this, &httpcllr::backend_write_error);
+	_header_parser->completed_callee(bind(&httpcllr::backend_write_headers_done, this));
+	_header_parser->error_callee(bind(&httpcllr::backend_write_error, this));
 	_header_parser->sp_connect(_backend_sink);
 	_header_parser->sp_uncork();
 }
@@ -617,8 +615,8 @@ httpcllr::backend_write_headers_done(void)
 		_client_spigot->sp_connect(_size_limit);
 		_size_limit->sp_connect(_backend_sink);
 
-		_client_spigot->completed_callee(this, &httpcllr::backend_write_body_done);
-		_client_spigot->error_callee(this, &httpcllr::backend_write_error);
+		_client_spigot->completed_callee(bind(&httpcllr::backend_write_body_done, this));
+		_client_spigot->error_callee(bind(&httpcllr::backend_write_error, this));
 
 		_client_spigot->sp_uncork();
 		return;
@@ -640,8 +638,8 @@ httpcllr::backend_write_body_done(void)
 	_backend_headers->set_response();
 
 	_backend_spigot = new io::socket_spigot(_backend_socket);
-	_backend_spigot->completed_callee(this, &httpcllr::backend_read_headers_done);
-	_backend_spigot->error_callee(this, &httpcllr::backend_read_headers_error);
+	_backend_spigot->completed_callee(bind(&httpcllr::backend_read_headers_done, this));
+	_backend_spigot->error_callee(bind(&httpcllr::backend_read_headers_error, this));
 	_backend_spigot->sp_connect(_backend_headers);
 	_backend_spigot->sp_uncork();
 }
@@ -711,8 +709,8 @@ httpcllr::backend_read_headers_done(void)
 
 	_client_socket->cork();
 	_client_sink = new io::socket_sink(_client_socket);
-	_backend_headers->completed_callee(this, &httpcllr::send_headers_to_client_done);
-	_backend_headers->error_callee(this, &httpcllr::send_headers_to_client_error);
+	_backend_headers->completed_callee(bind(&httpcllr::send_headers_to_client_done, this));
+	_backend_headers->error_callee(bind(&httpcllr::send_headers_to_client_error, this));
 
 	_backend_headers->sp_connect(_client_sink);
 	_backend_headers->sp_uncork();
@@ -738,8 +736,8 @@ bool		 chunked;
 	/*
 	 * Now connect the backend directly to the client.
 	 */ 
-	_backend_spigot->error_callee(this, &httpcllr::send_body_to_client_error);
-	_backend_spigot->completed_callee(this, &httpcllr::send_body_to_client_done);
+	_backend_spigot->error_callee(bind(&httpcllr::send_body_to_client_error, this));
+	_backend_spigot->completed_callee(bind(&httpcllr::send_body_to_client_done, this));
 
 	/*
 	 * See if we can cache this entity.
@@ -1121,8 +1119,8 @@ string	url = "NONE";
 		_error_filter = new error_transform_filter(url, errdata, statstr, status);
 	}
 
-	_error_headers->completed_callee(this, &httpcllr::error_send_headers_done);
-	_error_headers->error_callee(this, &httpcllr::error_send_done);
+	_error_headers->completed_callee(bind(&httpcllr::error_send_headers_done, this));
+	_error_headers->error_callee(bind(&httpcllr::error_send_done, this));
 
 	/*
 	 * Can we chunk the error?
@@ -1148,8 +1146,8 @@ httpcllr::error_send_headers_done(void)
 	}
 
 	_error_headers->sp_disconnect();
-	_error_body->completed_callee(this, &httpcllr::error_send_done);
-	_error_body->error_callee(this, &httpcllr::error_send_done);
+	_error_body->completed_callee(bind(&httpcllr::error_send_done, this));
+	_error_body->error_callee(bind(&httpcllr::error_send_done, this));
 
 	_error_body->sp_connect(_error_filter);
 	if (_header_parser->_http_vers == http11) {

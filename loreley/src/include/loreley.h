@@ -36,7 +36,6 @@ namespace mpl = boost::mpl;
 
 #include "log.h"
 #include "ptalloc.h"
-#include "format.h"
 #include "autoconf.h"
 
 typedef unsigned long long w_size_t;

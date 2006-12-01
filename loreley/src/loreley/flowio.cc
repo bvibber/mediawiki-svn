@@ -24,7 +24,6 @@ using std::streamsize;
 
 #include "flowio.h"
 #include "net.h"
-#include "format.h"
 #include "config.h"
 
 namespace io {
