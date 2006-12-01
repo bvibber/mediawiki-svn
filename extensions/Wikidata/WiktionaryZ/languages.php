@@ -28,18 +28,18 @@ function getLanguageIdForCode($code) {
 /* Return SQL query string for fetching language names. */
 function getSQLForLanguageNames($lang_code) {
 	/* Use a simpler query if the user's language is English. */
-	if ($lang_code == 'en')
-		return "SELECT language.language_id AS row_id,language_names.language_name" .
-			" FROM language" .
-			" JOIN language_names ON language.language_id = language_names.language_id" .
-			" WHERE language_names.name_language_id = " . getLanguageIdForCode('en');
+	if ($lang_code == 'en' || !($lang_id = getLanguageIdForCode($lang_code)))
+		return 'SELECT language.language_id AS row_id,language_names.language_name' .
+			' FROM language' .
+			' JOIN language_names ON language.language_id = language_names.language_id' .
+			' WHERE language_names.name_language_id = ' . getLanguageIdForCode('en');
 	/* Fall back on English in cases where a language name is not present in the
 		user's preferred language. */
 	else
-		return "SELECT language.language_id AS row_id,COALESCE(ln1.language_name,ln2.language_name) AS language_name" .
-			" FROM language" .
-			" LEFT JOIN language_names AS ln1 ON language.language_id = ln1.language_id AND ln1.name_language_id = " . getLanguageIdForCode($lang_code) .
-			" JOIN language_names AS ln2 ON language.language_id = ln2.language_id AND ln2.name_language_id = " . getLanguageIdForCode('en');
+		return 'SELECT language.language_id AS row_id,COALESCE(ln1.language_name,ln2.language_name) AS language_name' .
+			' FROM language' .
+			' LEFT JOIN language_names AS ln1 ON language.language_id = ln1.language_id AND ln1.name_language_id = ' . $lang_id .
+			' JOIN language_names AS ln2 ON language.language_id = ln2.language_id AND ln2.name_language_id = ' . getLanguageIdForCode('en');
 }
 
 function getLanguageIdForName($name) {
