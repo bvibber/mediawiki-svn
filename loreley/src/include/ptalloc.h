@@ -66,7 +66,7 @@ void ptdealloc(void *);
 extern tss<vector<pta_block *>, ptdealloc> ptfreelist;
 extern pttsswrap pttssw;
 #endif
-
+#if 0
 template<typename T>
 struct pt_allocator {
 	typedef T			 value_type;
@@ -211,6 +211,20 @@ struct pt_allocator<void>
 	typedef void		 value_type;
 	typedef void		*pointer;
 	typedef void const	*const_pointer;
+
+	template<typename U>
+	struct rebind {
+		typedef pt_allocator<U>	other;
+	};
+};
+#endif
+template<typename T>
+struct pt_allocator : std::allocator<T> {
+	pt_allocator (void) {}
+	~pt_allocator (void) {}
+
+	template<typename U>
+	pt_allocator (const pt_allocator<U>& other) {}
 
 	template<typename U>
 	struct rebind {

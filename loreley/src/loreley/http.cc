@@ -261,7 +261,8 @@ bool	can_keepalive = false;
 		can_keepalive = true;
 	}
 
-	if (can_keepalive && _backend_headers->_content_length == -1 &&
+	if (can_keepalive && _backend_headers && 
+	    _backend_headers->_content_length == -1 &&
 	    !_backend_headers->_flags.f_chunked)
 		/*
 		 * impossible to support keepalive with a non-chunked reply and
