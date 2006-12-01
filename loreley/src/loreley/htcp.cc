@@ -26,18 +26,19 @@ namespace {
 void add_htcp_listener(pair<string,string> const &ip);
 
 struct htcp_handler_stru : noncopyable {
-	void	callback (wsocket *, int);
+	void	callback (wsocket *, int, int);
 };
 htcp_handler_stru htcp_handler;
 
 void
-htcp_handler_stru::callback(wsocket *s, int)
+htcp_handler_stru::callback(wsocket *s, int, int)
 {
 char		buf[65535];
 address		addr;
 size_t		len;
 
-	s->readback(polycaller<wsocket *, int>(*this, &htcp_handler_stru::callback), 0);
+	s->readback(polycaller<wsocket *, int, int>(*this, 
+		&htcp_handler_stru::callback), -1, 0);
 
 	if ((len = s->recvfrom(buf, sizeof(buf), addr)) < 1)
 		return;
@@ -192,8 +193,8 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 		if (!mif.empty())
 			sock->mcast_join(mif);
 
-		sock->readback(polycaller<wsocket *, int>(htcp_handler, 
-			&htcp_handler_stru::callback), 0);
+		sock->readback(polycaller<wsocket *, int, int>(htcp_handler, 
+			&htcp_handler_stru::callback), -1, 0);
 		wlog.notice(format("HTCP listener: %s")	% sock->straddr());
 	}
 }

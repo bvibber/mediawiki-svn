@@ -116,7 +116,7 @@ int	 n = smallbuf;
 }
 
 void
-socket_spigot::_socketcall(wsocket *s, int) {
+socket_spigot::_socketcall(wsocket *s, int flags, int) {
 ssize_t		read;
 int		sz = _smallbuf ? DIOBUFSZ_SMALL : DIOBUFSZ_LARGE;
 	/*
@@ -170,8 +170,8 @@ int		sz = _smallbuf ? DIOBUFSZ_SMALL : DIOBUFSZ_LARGE;
 	}
 
 	if (read == -1 && errno == EAGAIN) {
-		_socket->readback(polycaller<wsocket *, int>(*this,
-			&socket_spigot::_socketcall), 0);
+		_socket->readback(polycaller<wsocket *, int, int>(*this,
+			&socket_spigot::_socketcall), -1, 0);
 		return;
 	}
 
@@ -194,7 +194,8 @@ int		sz = _smallbuf ? DIOBUFSZ_SMALL : DIOBUFSZ_LARGE;
 		return;
 	}
 	if (!_corked)
-		_socket->readback(polycaller<wsocket *, int>(*this, &socket_spigot::_socketcall), 0);
+		_socket->readback(polycaller<wsocket *, int, int>(*this, 
+			&socket_spigot::_socketcall), -1, 0);
 	return;
 }
 
@@ -206,8 +207,8 @@ ssize_t	wrote;
 		if (errno == EAGAIN) {
 			_sink_spigot->sp_cork();
 			if (!_reg) {
-				_socket->writeback(polycaller<wsocket *, int>(
-					*this, &socket_sink::_socketcall), 0);
+				_socket->writeback(polycaller<wsocket *, int, int>(
+					*this, &socket_sink::_socketcall), -1, 0);
 				_reg = true;
 			}
 			return sink_result_blocked;
@@ -224,8 +225,8 @@ ssize_t	wrote;
 	} else {
 		_sink_spigot->sp_cork();
 		if (!_reg) {
-			_socket->writeback(polycaller<wsocket *, int>(
-				*this, &socket_sink::_socketcall), 0);
+			_socket->writeback(polycaller<wsocket *, int, int>(
+				*this, &socket_sink::_socketcall), -1, 0);
 			_reg = true;
 		}
 		return sink_result_blocked;
@@ -241,8 +242,8 @@ ssize_t	wrote;
 		if (errno == EAGAIN) {
 			_sink_spigot->sp_cork();
 			if (!_reg) {
-				_socket->writeback(polycaller<wsocket *, int>(
-					*this, &socket_sink::_socketcall), 0);
+				_socket->writeback(polycaller<wsocket *, int, int>(
+					*this, &socket_sink::_socketcall), -1, 0);
 				_reg = true;
 			}
 			return sink_result_blocked;
@@ -261,8 +262,8 @@ ssize_t	wrote;
 	} else {
 		_sink_spigot->sp_cork();
 		if (!_reg) {
-			_socket->writeback(polycaller<wsocket *, int>(
-				*this, &socket_sink::_socketcall), 0);
+			_socket->writeback(polycaller<wsocket *, int, int>(
+				*this, &socket_sink::_socketcall), -1, 0);
 			_reg = true;
 		}
 		return sink_result_blocked;

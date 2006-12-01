@@ -95,7 +95,7 @@ extern struct ioloop_t {
 	void	prepare	(void);
 	void	run	(void);
 
-	void	_accept		(wnet::socket *, int);
+	void	_accept		(wnet::socket *, int, int);
 } *ioloop;
 
 /*
@@ -313,10 +313,10 @@ struct socket : noncopyable, freelist_allocator<socket> {
 	}
 
 	template<typename T>
-	void	readback (polycaller<wnet::socket *, T> cb, T ud);
+	void	readback (polycaller<wnet::socket *, int, T> cb, int64_t, T ud);
 
 	template<typename T>
-	void	writeback (polycaller<wnet::socket *, T> cb, T ud);
+	void	writeback (polycaller<wnet::socket *, int, T> cb, int64_t, T ud);
 
 	void	clearbacks	(void);
 
@@ -327,16 +327,17 @@ protected:
 	explicit socket (int, wnet::address const &, char const *, sprio);
 	explicit socket (wnet::address const &, char const *, sprio);
 
-	void		_register	(int, polycallback<wsocket *>);
+	void		_register	(int, int64_t, polycallback<wsocket *, int>);
 	static void	_ev_callback	(int fd, short ev, void *d);
 
-	polycallback<wsocket *>	_read_handler, _write_handler;
+	polycallback<wsocket *, int>	_read_handler, _write_handler;
 
 	int		 _s;
 	wnet::address	 _addr;
 	char const	*_desc;
 	sprio		 _prio;
 	event		 ev;
+	int		 _ev_flags;
 };
 
 	vector<addrinfo>	nametoaddrs(string const &name, int port);
@@ -344,14 +345,14 @@ protected:
 
 template<typename T>
 void
-socket::readback (polycaller<wnet::socket *, T> cb, T ud) {
-	_register(FDE_READ, polycallback<wnet::socket *>(cb, ud));
+socket::readback (polycaller<wnet::socket *, int, T> cb, int64_t to, T ud) {
+	_register(FDE_READ, to, polycallback<wnet::socket *, int>(cb, ud));
 }
 
 template<typename T>
 void
-socket::writeback (polycaller<wnet::socket *, T> cb, T ud) {
-	_register(FDE_WRITE, polycallback<wnet::socket *>(cb, ud));
+socket::writeback (polycaller<wnet::socket *, int, T> cb, int64_t to, T ud) {
+	_register(FDE_WRITE, to, polycallback<wnet::socket *, int>(cb, ud));
 }
 
 } // namespace wnet

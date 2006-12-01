@@ -250,6 +250,13 @@ http {
 	 */
 	x-follow-redirect = yes;
 	max-redirects = 1;
+
+	/*
+	 * How long we wait for a connetion to a backend to complete.  If
+	 * a connection takes longer than this, the backend is considered
+	 * down.
+	 */
+	connect-timeout = 10 seconds;
 };
 
 log {

@@ -121,7 +121,8 @@ size_t	 i;
 			exit(8);
 		}
 
-		lns->sock->readback(polycaller<wsocket *, int>(*this, &ioloop_t::_accept), 0);
+		lns->sock->readback(polycaller<wsocket *, int, int>(*this, 
+			&ioloop_t::_accept), -1, 0);
 	}
 	wlog.notice(format("wnet: initialised, using libevent %s (%s)")
 		% event_get_version() % event_get_method());
@@ -129,7 +130,7 @@ size_t	 i;
 }
 
 void
-ioloop_t::_accept(wsocket *s, int)
+ioloop_t::_accept(wsocket *s, int, int)
 {
 	wsocket		*newe;
 static atomic<time_t>	 last_nfile = 0;
@@ -141,11 +142,13 @@ static atomic<time_t>	 last_nfile = 0;
 				last_nfile = now;
 			wlog.warn(format("accept error: %s") % strerror(errno));
 		}
-		s->readback(polycaller<wsocket *, int>(*this, &ioloop_t::_accept), 0);
+		s->readback(polycaller<wsocket *, int, int>(*this,
+			&ioloop_t::_accept), -1, 0);
 		return;
 	}
 
-	s->readback(polycaller<wsocket *, int>(*this, &ioloop_t::_accept), 0);
+	s->readback(polycaller<wsocket *, int, int>(*this,
+		&ioloop_t::_accept), -1, 0);
 
 	newe->nonblocking(true);
 
@@ -197,15 +200,22 @@ wsocket	*s = (wsocket *)d;
 		% fd % s->_desc);
 
 	if (ev & EV_READ)
-		s->_read_handler(s);
+		s->_read_handler(s, ev);
 	if (ev & EV_WRITE)
-		s->_write_handler(s);
+		s->_write_handler(s, ev);
+	if (ev & EV_TIMEOUT) {
+		if (s->_ev_flags & EV_READ) {
+			s->_read_handler(s, ev);
+		} else if (s->_ev_flags & EV_WRITE) {
+			s->_write_handler(s, ev);
+		}
+	}
 }
 
 void
-socket::_register(int what, polycallback<wsocket *> handler)
+socket::_register(int what, int64_t to, polycallback<wsocket *, int> handler)
 {
-	int	 ev_flags = 0;
+	_ev_flags = 0;
 
 	WDEBUG(format("_register: %s%son %d (%s)")
 		% ((what & FDE_READ) ? "read " : "")
@@ -217,17 +227,29 @@ socket::_register(int what, polycallback<wsocket *> handler)
 
 	if (what & FDE_READ) {
 		_read_handler = handler;
-		ev_flags |= EV_READ;
+		_ev_flags |= EV_READ;
 	}
 	if (what & FDE_WRITE) {
 		_write_handler = handler;
-		ev_flags |= EV_WRITE;
+		_ev_flags |= EV_WRITE;
 	}
 
-	event_set(&ev, _s, ev_flags, _ev_callback, this);
+	event_set(&ev, _s, _ev_flags, _ev_callback, this);
 	event_base_set(evb, &ev);
 	event_priority_set(&ev, (int) _prio);
-	event_add(&ev, NULL);
+
+	WDEBUG(format("timeout = %d") % to);
+
+	if (to == -1) {
+		event_add(&ev, NULL);
+	} else {
+	timeval	tv;
+	int64_t	usec = to * 1000;
+		tv.tv_sec = usec / 1000000;
+		tv.tv_usec = usec % 1000000;
+		WDEBUG(format("timeout: %d %d") % tv.tv_sec % tv.tv_usec);
+		event_add(&ev, &tv);
+	}
 }
 
 address::address(void)

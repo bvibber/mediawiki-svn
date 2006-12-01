@@ -63,7 +63,7 @@ struct backend_list : freelist_allocator<backend_list> {
 			lb_type, int start);
 
 	int		 _get_impl	(polycallback<backend *, wsocket *>);
-	void		 _backend_read	(wsocket *e, backend_cb_data *);
+	void		 _backend_read	(wsocket *e, int, backend_cb_data *);
 	struct backend 	*_next_backend	(void);
 	void		 _carp_recalc	(imstring const &, imstring const &, lb_type);
 	static int	 _becarp_cmp	(backend const *a, backend const *b);

@@ -84,6 +84,7 @@ extern struct configuration : noncopyable {
 	size_t		 max_entity_size;
 	string		 cache_master;
 	bool		 htcp_sigrequired;
+	int		 backend_timeo;
 
 	vector<cachedir>			 cachedirs;
 	vector<pair<string, string> >		 stats_hosts;

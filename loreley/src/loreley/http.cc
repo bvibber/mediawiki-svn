@@ -833,7 +833,7 @@ struct http_thread : freelist_allocator<http_thread> {
 			sv;
 
 	void	execute		(void);
-	void	accept_wakeup	(wsocket *, int);
+	void	accept_wakeup	(wsocket *, int, int);
 };
 vector<http_thread *> threads;
 
@@ -876,7 +876,7 @@ whttp_init(void)
 }
 
 void
-http_thread::accept_wakeup(wsocket *s, int)
+http_thread::accept_wakeup(wsocket *s, int, int)
 {
 wsocket	*socks[2];
 map<wsocket *, listener *>::iterator lsnit;
@@ -887,8 +887,8 @@ map<wsocket *, listener *>::iterator lsnit;
 		exit(1);
 	}
 	WDEBUG(format("accept_wakeup, lsnr = %d") % socks[1]);
-	s->readback(polycaller<wsocket *, int>(*this, 
-		&http_thread::accept_wakeup), 0);
+	s->readback(polycaller<wsocket *, int, int>(*this, 
+		&http_thread::accept_wakeup), -1, 0);
 	if ((lsnit = sock2lsn.find(socks[1])) == sock2lsn.end())
 		throw runtime_error("listener not found");
 
@@ -924,8 +924,8 @@ http_thread::execute(void)
 	memset(merge_ev, 0, sizeof(*merge_ev));
 	merge_sched();
 
-	sv.second->readback(polycaller<wsocket *, int>(*this, 
-		&http_thread::accept_wakeup), 0);
+	sv.second->readback(polycaller<wsocket *, int, int>(*this, 
+		&http_thread::accept_wakeup), -1, 0);
 	event_base_loop(evb, 0);
 	delete merge_ev;
 	delete stats.tcur;

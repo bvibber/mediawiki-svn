@@ -156,8 +156,9 @@ static	time_t		 last_nfile;
 
 		if (cs == connect_later) {
 			s->writeback(
-				polycaller<wsocket *, backend_cb_data*>(*this, 
-					&backend_list::_backend_read), cbd);
+				polycaller<wsocket *, int, backend_cb_data*>(*this, 
+					&backend_list::_backend_read),
+					config.backend_timeo * 1000, cbd);
 		} else {
 			cb(cbd->bc_backend, s);
 			delete cbd;
@@ -167,9 +168,12 @@ static	time_t		 last_nfile;
 }
 
 void
-backend_list::_backend_read(wsocket *s, backend_cb_data *cbd)
+backend_list::_backend_read(wsocket *s, int flags, backend_cb_data *cbd)
 {
 int		 error = s->error();
+
+	if (flags & EV_TIMEOUT)
+		error = ETIMEDOUT;
 
 	if (error && error != EINPROGRESS) {
 		time_t retry = time(NULL) + config.backend_retry;
