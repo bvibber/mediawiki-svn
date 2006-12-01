@@ -21,10 +21,8 @@
 #include <iostream>
 #include <ios>
 using std::cout;
-using std::fopen;
-using std::fprintf;
-using std::fclose;
 using std::ios;
+using std::endl;
 
 #include "autoconf.h"
 
@@ -90,7 +88,7 @@ string	r;
 		::syslog(syslog_pri[sev], "%s", e.c_str());
 
 	if (_fp) {
-		if (!(*_fp << r << '\n')) {
+		if (!(*_fp << r << endl)) {
 			_fp->close();
 			delete _fp;
 			_fp = NULL;
