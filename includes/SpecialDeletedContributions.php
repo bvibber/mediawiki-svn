@@ -46,13 +46,14 @@ class DeletedContributionsPage extends ContributionsPage {
 	}
 
 	function preprocessResults( $dbr, $res ) {
-		# Do a batch existence check
+		// Do a batch existence check
 		$linkBatch = new LinkBatch();
 		while( $row = $dbr->fetchObject( $res ) ) {
-			$linkBatch->addObj( Title::makeTitle( $row->namespace, $row->title ) );
+			$linkBatch->add( $row->namespace, $row->title );
 		}
 		$linkBatch->execute();
-		# Seek to start
+
+		// Seek to start
 		if( $dbr->numRows( $res ) > 0 )
 			$dbr->dataSeek( $res, 0 );
 	}

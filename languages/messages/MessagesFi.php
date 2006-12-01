@@ -1149,6 +1149,12 @@ Palaute ja lisäapu osoitteessa:
 'sp-contributions-older'  => '$1 vanhempaa →',
 'sp-contributions-newbies-sub' => 'Uusien tulokkaiden muokkaukset',
 
+# Deleted contributions
+#
+'deletedcontributions' => 'Poistetut muokkaukset',
+'deletedcontribs-list' => 'lista',
+'deletedcontribs-view' => 'näytä',
+
 # What links here
 #
 'whatlinkshere'       => 'Tänne viittaavat sivut',

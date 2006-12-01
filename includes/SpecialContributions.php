@@ -209,6 +209,8 @@ class ContributionsPage extends QueryPage {
 				page_namespace AS namespace,
 				page_title     AS title,
 				rev_timestamp  AS value,
+				rev_user       AS userid,
+				rev_user_text  AS username,
 				rev_minor_edit AS is_minor,
 				page_is_new    AS is_new,
 				page_latest    AS cur_id,
@@ -217,6 +219,27 @@ class ContributionsPage extends QueryPage {
 				rev_deleted    AS deleted
 			FROM $page, $revision
 			WHERE " . $this->makeSQLCond( $dbr );
+	}
+
+	/**
+	 * If in newbies mode, do a batch existence check for any user
+	 * and user talk pages that will be shown in the list.
+	 */
+	function preprocessResults( $dbr, $res ) {
+		if ( !$self->newbies )
+			return;
+
+		// Do a batch existence check for user and talk pages
+		$linkBatch = new LinkBatch();
+		while( $row = $dbr->fetchObject( $res ) ) {
+			$linkBatch->add( NS_USER, $row->username );
+			$linkBatch->add( NS_USER_TALK, $row->username );
+		}
+		$linkBatch->execute();
+
+		// Seek to start
+		if( $dbr->numRows( $res ) > 0 )
+			$dbr->dataSeek( $res, 0 );
 	}
 
 	/**
@@ -274,6 +297,13 @@ class ContributionsPage extends QueryPage {
 		$link    = $skin->makeKnownLinkObj( $page );
 		$comment = $skin->revComment( $rev );
 
+		if ( $this->newbies ) {
+			$user = ' . . ' . $skin->userLink( $row->userid, $row->username )
+				. $skin->userToolLinks( $row->userid, $row->username );
+		} else {
+			$user = '';
+		}
+
 		$notes = '';
 
 		if( $row->rev_id == $row->cur_id ) {
@@ -288,7 +318,7 @@ class ContributionsPage extends QueryPage {
 			$notes .= ' ' . wfMsgHtml( 'deletedrev' );
 		}
 		
-		return "{$time} ({$hist}) ({$diff}) {$mflag} {$dm}{$link} {$comment}{$notes}";
+		return "{$time} ({$hist}) ({$diff}) {$mflag} {$dm}{$link}{$user} {$comment}{$notes}";
 	}
 
 	/**
