@@ -1,3 +1,9 @@
+squid (2.6.5-1wm5) edgy; urgency=low
+
+  * Insert a 'ulimit -c unlimited' in the startup script, so Squid dumps core
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 30 Nov 2006 23:52:52 +0000
+
 squid (2.6.5-1wm4) edgy; urgency=low
 
   * Do not build with GNU regexes, as this seems to be the major

@@ -115,6 +115,7 @@ start () {
 
 	maxfds
 	umask 027
+	ulimit -c unlimited	# Do create core files, so we can fix bugs
 	cd /var/spool/$NAME
 	start-stop-daemon --quiet --start \
 		--pidfile $PIDFILE \
