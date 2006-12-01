@@ -87,8 +87,7 @@ function fnSelectCategorySaveHook( $m_isUpload, &$m_pageObj ) {
 	# If it is an upload we have to call a different method:
 	if ( $m_isUpload ) {
 		$m_pageObj->mUploadDescription .= $m_text;
-	} else
-	{
+	} else{
 		$m_pageObj->textbox1 .= $m_text;
 	}
 
