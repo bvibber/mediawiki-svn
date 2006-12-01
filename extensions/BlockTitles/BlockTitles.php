@@ -7,7 +7,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @package MediaWiki
  * @subpackage Extensions
  *
- * @link http://www.mediawiki.org/wiki/BlockTitles_Extension Documentation
+ * @link http://www.mediawiki.org/wiki/Extension:BlockTitles Documentation
  *
  *
  * @author Travis Derouin <travis@wikihow.com>
@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'BlockTitles',
 	'author' => 'Travis Derouin',
 	'description' => 'Provides a basic way of preventing articles with certain titles from being saved or created',
-	'url' => 'http://www.mediawiki.org/wiki/BlockTitles_Extension',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:BlockTitles',
 );
 
 // CONFIGURE - place any regular expressions you want here.  
