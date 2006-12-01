@@ -37,6 +37,12 @@ if (defined('MEDIAWIKI')) {
 	define('MEDIAWIKI_OPENID_VERSION', '0.6');
 
 	$wgExtensionFunctions[] = 'setupOpenID';
+	$wgExtensionCredits['other'][] = array('name' => 'OpenID',
+										   'version' => MEDIAWIKI_OPENID_VERSION,
+										   'author' => 'Evan Prodromou',
+										   'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
+										   'description' => 'lets users login to the wiki with an [http://openid.net/ OpenID] ' .
+										   'and login to other OpenID-aware Web sites with their wiki user account');
 
 	function setupOpenID() {
 		global $wgMessageCache, $wgOut, $wgRequest;
