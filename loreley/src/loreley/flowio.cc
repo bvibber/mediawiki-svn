@@ -59,19 +59,22 @@ spigot::sp_disconnect(void) {
 	_sp_sink = NULL;
 }
 
-tss<diocache> socket_spigot::_diocache;
+tss<diocache> socket_spigot::_diocache[2];
 
 char *
-socket_spigot::_get_dio_buf(void)
+socket_spigot::_get_dio_buf(bool smallbuf)
 {
 char	 path[PATH_MAX + 1];
 char	*ret;
+int	 sz = smallbuf ? DIOBUFSZ_SMALL : DIOBUFSZ_LARGE;
+int	 n = smallbuf;
+
 	if (!config.use_dio)
-		return new char[DIOBUFSZ];
+		return new char[sz];
 
 	if (_diocache) {
-	diocache	*d = _diocache;
-		_diocache = d->next;
+	diocache	*d = _diocache[n];
+		_diocache[n] = d->next;
 		_diofd = d->fd;
 		ret = d->addr;
 		delete d;
@@ -83,31 +86,31 @@ char	*ret;
 	if ((_diofd = open(path, O_CREAT | O_EXCL | O_RDWR, 0600)) == -1) {
 		wlog.warn(format("opening diobuf %s: %s") 
 			% path % strerror(errno));
-		return new char[DIOBUFSZ];
+		return new char[sz];
 	}
 	unlink(path);
 
-	if (lseek(_diofd, DIOBUFSZ, SEEK_SET) == -1) {
+	if (lseek(_diofd, sz, SEEK_SET) == -1) {
 		wlog.warn(format("seeking diobuf %s: %s") 
 			% path % strerror(errno));
 		close(_diofd);
 		_diofd = -1;
-		return new char[DIOBUFSZ];
+		return new char[sz];
 	}
 	if (write(_diofd, "", 1) < 1) {
 		wlog.warn(format("extending diobuf %s: %s") 
 			% path % strerror(errno));
 		close(_diofd);
 		_diofd = -1;
-		return new char[DIOBUFSZ];
+		return new char[sz];
 	}
-	ret = (char *)mmap(0, DIOBUFSZ, PROT_READ | PROT_WRITE, MAP_SHARED, _diofd, 0);
+	ret = (char *)mmap(0, sz, PROT_READ | PROT_WRITE, MAP_SHARED, _diofd, 0);
 	if (ret == MAP_FAILED) {
 		wlog.warn(format("mapping diobuf %s: %s") 
 			% path % strerror(errno));
 		close(_diofd);
 		_diofd = -1;
-		return new char[DIOBUFSZ];
+		return new char[sz];
 	}
 	return ret;
 }
@@ -115,7 +118,7 @@ char	*ret;
 void
 socket_spigot::_socketcall(wsocket *s, int) {
 ssize_t		read;
-
+int		sz = _smallbuf ? DIOBUFSZ_SMALL : DIOBUFSZ_LARGE;
 	/*
 	 * _off is the offset of the start of _savebuf
 	 * _saved is the number of bytes past _off that are usable.
@@ -148,7 +151,7 @@ ssize_t		read;
 	if (_off >= (ssize_t)_saved)
 		_off = _saved = 0;
 
-	read = s->read(_savebuf + _off + _saved, DIOBUFSZ - (_off + _saved));
+	read = s->read(_savebuf + _off + _saved, sz - (_off + _saved));
 	if (read == 0) {
 		sp_cork();
 		switch (this->_sp_data_empty()) {

@@ -227,7 +227,7 @@ pair<bool, uint16_t>	acc = config.access.allowed(s->address().addr());
 			_denied = denied_yes;
 	}
 
-	_client_spigot = new io::socket_spigot(_client_socket);
+	_client_spigot = new io::socket_spigot(_client_socket, true);
 	start_request();
 }
 
@@ -270,12 +270,12 @@ bool	can_keepalive = false;
 		 */
 		can_keepalive = false;
 
+	delete _header_parser;
+	_header_parser = NULL;
 	delete _backend_spigot;
 	_backend_spigot = NULL;
 	delete _backend_sink;
 	_backend_sink = NULL;
-	delete _client_sink;
-	_client_sink = NULL;
 	delete _dechunking_filter;
 	_dechunking_filter = NULL;
 	delete _error_headers;
@@ -288,8 +288,6 @@ bool	can_keepalive = false;
 	_chunking_filter = NULL;
 	delete _size_limit;
 	_size_limit = NULL;
-	delete _header_parser;
-	_header_parser = NULL;
 	delete _cache_filter;
 	_cache_filter = NULL;
 	delete _cache_spigot;
@@ -315,6 +313,8 @@ bool	can_keepalive = false;
 	_backend_socket = NULL;
 	delete _backend_headers;
 	_backend_headers = NULL;
+	delete _client_sink;
+	_client_sink = NULL;
 
 	_client_spigot->sp_disconnect();
 	_client_spigot->sp_cork();
@@ -336,6 +336,8 @@ bool	can_keepalive = false;
 
 httpcllr::~httpcllr(void)
 {				
+	delete _header_parser;
+	delete _backend_headers;
 	delete _backend_spigot;
 	delete _backend_sink;
 	delete _client_sink;
@@ -345,10 +347,8 @@ httpcllr::~httpcllr(void)
 	delete _error_body;
 	delete _chunking_filter;
 	delete _size_limit;
-	delete _header_parser;
 	delete _cache_filter;
 	delete _blist;
-	delete _backend_headers;
 	delete _cache_spigot;
 	delete _client_spigot;
 	delete _client_socket;
@@ -524,12 +524,14 @@ pair<wsocket *, backend *> ke;
 	_request_host = host;
 	_request_path = path;
 
-	delete _backend_socket;
-	_backend_socket = NULL;
+	delete _backend_headers;
+	_backend_headers = NULL;
 	delete _backend_sink;
 	_backend_sink = NULL;
 	delete _backend_spigot;
 	_backend_spigot = NULL;
+	delete _backend_socket;
+	_backend_socket = NULL;
 	delete _size_limit;
 	_size_limit = NULL;
 	delete _dechunking_filter;
@@ -538,8 +540,6 @@ pair<wsocket *, backend *> ke;
 	_chunking_filter = NULL;
 	delete _blist;
 	_blist = NULL;
-	delete _backend_headers;
-	_backend_headers = NULL;
 
 	if (ke.first) {
 		backend_ready(ke.second, ke.first, 0);

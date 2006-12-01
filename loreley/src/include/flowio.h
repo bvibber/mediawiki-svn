@@ -221,7 +221,8 @@ struct string_spigot : freelist_allocator<string_spigot>, spigot {
 	bool			 _corked;
 };
 
-#define DIOBUFSZ 65535
+#define DIOBUFSZ_LARGE 65535
+#define DIOBUFSZ_SMALL 2048
 struct diocache : freelist_allocator<diocache> {
 	int	 fd;
 	char	*addr;
@@ -237,24 +238,26 @@ struct socket_spigot : freelist_allocator<socket_spigot>, spigot {
 	 * socket should not have any existing callbacks or odd
 	 * things will happen.
 	 */ 
-	socket_spigot(wsocket *s)
+	socket_spigot(wsocket *s, bool smallbuf = false)
 		: _socket(s)
 		, _savebuf(NULL) 
 		, _saved(0)
 		, _off(0)
 		, _corked(true)
-		, _diofd(-1) {
-		_savebuf = _get_dio_buf();
+		, _diofd(-1)
+		, _smallbuf(smallbuf) {
+		_savebuf = _get_dio_buf(smallbuf);
 	}
 
 	~socket_spigot() {
 		_socket->clearbacks();
 		if (_diofd > -1) {
 		diocache	*d = new diocache;
+		int		 n = _smallbuf;
 			d->fd = _diofd;
 			d->addr = _savebuf;
-			d->next = _diocache;
-			_diocache = d;	
+			d->next = _diocache[n];
+			_diocache[n] = d;	
 		} else {
 			delete[] _savebuf;
 		}
@@ -281,7 +284,7 @@ private:
 	}
 
 	void _socketcall(wsocket *e, int);
-	char *_get_dio_buf(void);
+	char *_get_dio_buf(bool);
 
 	wsocket	*_socket;
 	char	*_savebuf;
@@ -290,8 +293,8 @@ private:
 	bool	 _corked;
 	bool	 _dio;
 	int	 _diofd;
-
-	static tss<diocache> _diocache;
+	bool	 _smallbuf;
+	static tss<diocache> _diocache[2];
 };
 
 /*
