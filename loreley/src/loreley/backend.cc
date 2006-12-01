@@ -155,10 +155,9 @@ static	time_t		 last_nfile;
 		}
 
 		if (cs == connect_later) {
-			s->writeback(
-				polycaller<wsocket *, int, backend_cb_data*>(*this, 
-					&backend_list::_backend_read),
-					config.backend_timeo * 1000, cbd);
+			s->writeback(bind(&backend_list::_backend_read,
+					  this, _1, _2, cbd),
+				     config.backend_timeo * 1000);
 		} else {
 			cb(cbd->bc_backend, s);
 			delete cbd;

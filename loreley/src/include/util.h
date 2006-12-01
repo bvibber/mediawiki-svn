@@ -35,6 +35,8 @@
 #include <boost/mpl/find.hpp>
 #include <boost/mpl/has_key.hpp>
 #include <boost/type_traits.hpp>
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
 
 #include <iostream>
 #include <string>
@@ -54,6 +56,8 @@ using boost::shared_ptr;
 using boost::enable_if;
 using boost::remove_pointer;
 using boost::remove_const;
+using boost::function;
+using boost::bind;
 
 using std::runtime_error;
 using std::basic_string;

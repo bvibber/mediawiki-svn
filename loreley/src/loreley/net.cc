@@ -14,6 +14,10 @@
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 
+namespace sfun {
+	using ::bind;	/* because of conflict with boost::bind from util.h */
+};
+
 #include "autoconf.h"
 #ifdef HAVE_SYS_SENDFILE_H
 # include <sys/sendfile.h>
@@ -121,8 +125,7 @@ size_t	 i;
 			exit(8);
 		}
 
-		lns->sock->readback(polycaller<wsocket *, int, int>(*this, 
-			&ioloop_t::_accept), -1, 0);
+		lns->sock->readback(bind(&ioloop_t::_accept, this, _1, _2), -1);
 	}
 	wlog.notice(format("wnet: initialised, using libevent %s (%s)")
 		% event_get_version() % event_get_method());
@@ -130,7 +133,7 @@ size_t	 i;
 }
 
 void
-ioloop_t::_accept(wsocket *s, int, int)
+ioloop_t::_accept(wsocket *s, int)
 {
 	wsocket		*newe;
 static atomic<time_t>	 last_nfile = 0;
@@ -142,13 +145,11 @@ static atomic<time_t>	 last_nfile = 0;
 				last_nfile = now;
 			wlog.warn(format("accept error: %s") % strerror(errno));
 		}
-		s->readback(polycaller<wsocket *, int, int>(*this,
-			&ioloop_t::_accept), -1, 0);
+		s->readback(bind(&ioloop_t::_accept, this, _1, _2), -1);
 		return;
 	}
 
-	s->readback(polycaller<wsocket *, int, int>(*this,
-		&ioloop_t::_accept), -1, 0);
+	s->readback(bind(&ioloop_t::_accept, this, _1, _2), -1);
 
 	newe->nonblocking(true);
 
@@ -213,7 +214,7 @@ wsocket	*s = (wsocket *)d;
 }
 
 void
-socket::_register(int what, int64_t to, polycallback<wsocket *, int> handler)
+socket::_register(int what, int64_t to, socket::call_type handler)
 {
 	_ev_flags = 0;
 
@@ -570,7 +571,7 @@ socket::bind(void)
 {
 int	one = 1;
 	setopt(SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
-	if (::bind(_s, _addr.addr(), _addr.length()) == -1)
+	if (sfun::bind(_s, _addr.addr(), _addr.length()) == -1)
 		throw socket_error();
 }
 

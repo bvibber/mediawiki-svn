@@ -148,7 +148,7 @@ struct socket_sink : freelist_allocator<socket_sink>, sink {
 		_socket->clearbacks();
 	}
 
-	void _socketcall(wsocket *, int, int) {
+	void _socketcall(wsocket *, int) {
 		_reg = false;
 		_sink_spigot->sp_uncork();
 	}
@@ -271,7 +271,7 @@ struct socket_spigot : freelist_allocator<socket_spigot>, spigot {
 
 		if (_corked) {
 			_corked = false;
-			_socketcall(_socket, 0, 0);
+			_socketcall(_socket, 0);
 		}
 	}
 
@@ -283,7 +283,7 @@ private:
 			return _sp_data_ready(bf + off, sz, disc);
 	}
 
-	void _socketcall(wsocket *e, int, int);
+	void _socketcall(wsocket *e, int);
 	char *_get_dio_buf(bool);
 
 	wsocket	*_socket;

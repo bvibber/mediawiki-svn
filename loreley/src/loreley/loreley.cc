@@ -312,19 +312,18 @@ static void stats_sched(void);
 static void add_stats_listener(pair<string,string> const &ip);
 
 struct stats_handler_stru : noncopyable {
-	void	callback (wsocket *, int, int);
+	void	callback (wsocket *, int);
 };
 static stats_handler_stru stats_handler;
  
 void
-stats_handler_stru::callback(wsocket *s, int, int)
+stats_handler_stru::callback(wsocket *s, int)
 {
 char		buf[65535], *bufp = buf, *endp = buf + sizeof(buf);
 char		rdata[3];
 address		addr;
 
-	s->readback(polycaller<wsocket *, int, int>(stats_handler, 
-		&stats_handler_stru::callback), -1, 0);
+	s->readback(bind(&stats_handler_stru::callback, &stats_handler, _1, _2), -1);
 
 	if (s->recvfrom(rdata, sizeof(rdata), addr) != 2)
 		return;
@@ -434,8 +433,7 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 			continue;
 		}
 
-		sock->readback(polycaller<wsocket *, int, int>(stats_handler, 
-			&stats_handler_stru::callback), -1, 0);
+		sock->readback(bind(&stats_handler_stru::callback, &stats_handler, _1, _2), -1);
 		wlog.notice(format("statistics listener: %s")
 			% sock->straddr());
 	}
