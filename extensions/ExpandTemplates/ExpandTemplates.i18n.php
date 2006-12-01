@@ -22,8 +22,8 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_remove_comments' => 'Remove comments',
 );
 $wgExpandTemplatesMessages['cs'] = array(
-	'expandtemplates'                  => 'Testy šablon',
-	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu aplikovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
+	'expandtemplates'                  => 'Substituovat šablony',
+	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
 	'expand_templates_title'           => 'Název stránky kvůli kontextu pro <code><nowiki>{{</nowiki>PAGENAME}}</code> apod.:',
 	'expand_templates_input'           => 'Vstupní text:',
 	'expand_templates_output'          => 'Výstup:',
