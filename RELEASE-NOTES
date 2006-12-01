@@ -227,7 +227,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 6016) Left-aligned images should stack vertically, like right-aligned
   images, not horizontally.
 * Patch from LeonWP: added UploadForm:BeforeProcessing hook in SpecialUpload.php
+* Add AuthPluginSetup hook to override $wgAuth after configuration
+* Fix regression in authentication hook auto-creation on login
+* Special:Contributions now inherits from QueryPage
 * New special page Special:DeletedContributions for browsing deleted edits made by a user.
+
 
 == Languages updated ==
 
