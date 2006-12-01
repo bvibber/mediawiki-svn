@@ -523,6 +523,8 @@ pair<wsocket *, backend *> ke;
 	_request_host = host;
 	_request_path = path;
 
+	delete _backend_socket;
+	_backend_socket = NULL;
 	delete _backend_sink;
 	_backend_sink = NULL;
 	delete _backend_spigot;
