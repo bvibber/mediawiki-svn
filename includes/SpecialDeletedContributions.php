@@ -7,21 +7,15 @@
  * @package MediaWiki
  * @subpackage Special pages
  */
-
-/**
- *
- * @package MediaWiki
- * @subpackage SpecialPage
- */
 class DeletedContributionsPage extends ContributionsPage {
+
+	function __construct( $username ) {
+		parent::__construct( $username );
+		$this->newbies = false;  // no hax please
+	}
 
 	function getName() {
 		return 'DeletedContributions';
-	}
-
-	// no hax please
-	function newbiesTargetName() {
-		return false;
 	}
 
 	function getDeletedContributionsLink() {
@@ -40,8 +34,6 @@ class DeletedContributionsPage extends ContributionsPage {
 
 		$archive = $dbr->tableName( 'archive' );
 
-		$cond = $this->makeSQLCond( $dbr );
-
 		return "SELECT 'DeletedContributions' as type,
 				ar_namespace  AS namespace,
 				ar_title      AS title,
@@ -50,7 +42,7 @@ class DeletedContributionsPage extends ContributionsPage {
 				ar_rev_id     AS rev_id,
 				ar_comment    AS comment
 			FROM $archive
-			WHERE {$cond}";
+			WHERE " . $this->makeSQLCond( $dbr );
 	}
 
 	function preprocessResults( $dbr, $res ) {
@@ -69,31 +61,26 @@ class DeletedContributionsPage extends ContributionsPage {
 	 * Format a row, providing the timestamp, links to the
 	 * page/diff/history and a comment
 	 *
-	 * @param $sk Skin to use
+	 * @param $skin Skin to use
 	 * @param $row Result row
 	 * @return string
 	 */
-	function formatResult( $sk, $row ) {
+	function formatResult( $skin, $row ) {
 		global $wgLang, $wgContLang, $wgUser;
 
 		$dm = $wgContLang->getDirMark();
 
-		/*
-		 * Cache UI messages in a static array so we don't
-		 * have to regenerate them for each row.
-		 */
+		// Cache UI messages in a static array so we don't
+		// have to regenerate them for each row.
 		static $messages;
 		if( !isset( $messages ) ) {
-			foreach( explode( ' ', 'deletedcontribs-undelete deletedcontribs-show minoreditletter' ) as $msg ) {
+			foreach( explode( ' ', 'deletedcontribs-list deletedcontribs-view minoreditletter' ) as $msg ) {
 				$messages[$msg] = wfMsgExt( $msg, array( 'escape') );
 			}
 		}
-
-		/*
-		 * Cache Special:Undelete page title.
-		 */
+		// Cache Special:Undelete page title
 		static $ut;
-		if( !isset( $utu ) )
+		if( !isset( $ut ) )
 			$ut = SpecialPage::getTitleFor( 'Undelete' );
 		
 		$page = Title::makeTitle( $row->namespace, $row->title );
@@ -108,13 +95,13 @@ class DeletedContributionsPage extends ContributionsPage {
 		else
 			$mflag = '';
 
-		$undel = $sk->makeKnownLinkObj( $ut, $messages['deletedcontribs-undelete'], "target=$pg" );
-		$show  = $sk->makeKnownLinkObj( $ut, $messages['deletedcontribs-show'], "target=$pg&timestamp=$ts" );
+		$list = $skin->makeKnownLinkObj( $ut, $messages['deletedcontribs-list'], "target=$pg" );
+		$view = $skin->makeKnownLinkObj( $ut, $messages['deletedcontribs-view'], "target=$pg&timestamp=$ts" );
 
-		$pglink  = $sk->makeLinkObj( $page );
-		$comment = $sk->commentBlock( $row->comment );
+		$pglink  = $skin->makeLinkObj( $page );
+		$comment = $skin->commentBlock( $row->comment );
 
-		return "{$time} ({$undel}) ({$show}) {$mflag} {$dm}{$pglink} {$comment}";
+		return "{$time} ({$list}) ({$view}) {$mflag} {$dm}{$pglink} {$comment}";
 	}
 }
 
