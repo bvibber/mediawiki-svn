@@ -34,27 +34,6 @@ using std::multimap;
 #include "util.h"
 #include "confgrammar.h"
 
-/*
- * the config tree.
- *
- * it's structured as a tree, e.g. this config file:
- *
- * server {
- *   name = "foo";
- * };
- * oper "bar" {
- *   class = "opers";
- * };
- *
- * would produce the keys:
- *
- *  /server/name    = "foo"
- *  /oper=bar/class = "opers"
- *
- * consumers can either look up a key by name, or traverse the tree
- * and receive all keys below a certain point.
- */
-
 namespace conf {
 
 template<typename T>
@@ -79,9 +58,8 @@ report_error(T &av, format const &err)
 	report_error(av, str(err));
 }
 
-
 struct value {
-			 value(file_position const &pos);
+		value(file_position const &pos);
 
 	void	report_error	(string const &err) const;
 	void	report_error	(format const &err) const {
@@ -112,51 +90,24 @@ struct value {
 };
 
 struct tree_entry {
-				tree_entry(file_position const &);
+		 tree_entry(file_position const &);
 	void	 report_error	(const char *, ...) const;
 	void	 vreport_error	(const char *, va_list) const;
 	value 	*operator/	(string const &value);
 	void	 add		(value const &);
 
-        string			item_name;     /* e.g. "oper"                          */
-        string			item_key;      /* e.g. "bar"                           */
-        multimap<string, value>	item_values;
-	file_position		item_pos;
-        bool			item_unnamed;
-        bool			item_touched;
-        bool			item_is_template;
+	string		item_name;
+	string		item_key;
+	vector<value>	item_values;
+	file_position	item_pos;
+	bool		item_unnamed;
+	bool		item_touched;
+	bool		item_is_template;
 };
 
 struct tree {
-	void	reset();
-	/*
-	 * lookup a key by name.  warning, this is slow!  it should only
-	 * be called once per rehash, cache the value somewhere (for the
-	 * core ircd this is done in ConfigFileEntry etc.)
-	 *
-	 * conf_find_tree_entry only finds keys with no name.
-	 * conf_find_named_tree_entry finds a key with a name (e.g.
-	 * conf_find_named_tree_entry("operator", "god")).
-	 *
-	 * if found, the key is touched.
-	 * if the key doesn't exist, returns NULL.
-	 *
-	 * conf_iterate_tree_entries() finds all the entries of a certain type.  the
-	 * void* parameter is used to store state; pass it in as NULL on the first call.
-	 * NULL is returned after the last matching entry.  all iterated entries are
-	 * touched.
-	 *
-	 */
-	bool		 add		(tree_entry const &);
-	tree_entry	*find_item	(tree_entry const &);
-	tree_entry	*find		(string const &key);
-	tree_entry	*find		(string const &key, string const &name);
-	tree_entry	*find_or_new	(string const &block, string const &name,
-					 file_position const &pos,  bool unnamed,
-					 bool is_template);
-	tree_entry	*create		(string const &block, string const &name,
-					 file_position const &pos,  bool unnamed,
-					 bool is_template);
+	void	 reset();
+	bool	 add		(tree_entry const &);
 
 	vector<tree_entry>	entries;
 };
@@ -173,10 +124,7 @@ void	 define_if	(string const &name);
 
 template<typename T>
 struct type_namer {
-	static char const *type;
 };
-template<typename T>
-const char *type_namer<T>::type = "unknown type";
 
 template<>
 struct type_namer<scalar_q> {

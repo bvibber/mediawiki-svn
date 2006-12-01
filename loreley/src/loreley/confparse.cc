@@ -239,100 +239,15 @@ value	*existing;
 			v.cv_values.begin(), v.cv_values.end());
 		return;
 	}
-	item_values.insert(make_pair(v.cv_name, v));
+	item_values.push_back(v);
 }
-
-tree_entry *
-tree::find(string const &block, string const &name)
-{
-vector<tree_entry>::iterator	it, end;
-	for (it = entries.begin(), end = entries.end(); it != end; ++it) {
-		if (it->item_name == block && (name.empty() || (name == it->item_key))) {
-			it->item_touched = true;
-			return &*it;
-		}
-	}
-	return NULL;
-}
-
-tree_entry *
-tree::find(string const &block)
-{
-	return find(block, "");
-}
-
-tree_entry *
-tree::find_or_new(
-	string const	&block,
-	string const	&name,
-	file_position const	&pos,
-	bool		 unnamed,
-	bool		 is_template
-) {
-tree_entry	*f, n(pos);
-	if ((f = find(block, name)) != NULL)
-		return f;
-
-	n.item_unnamed = unnamed;
-	n.item_name = block;
-	n.item_key = name;
-	n.item_pos = pos;
-	n.item_is_template = is_template;
-	entries.push_back(n);
-	return &*entries.rbegin();
-}
-
-tree_entry *
-tree::create(
-	string const	&block,
-	string const	&name,
-	file_position const	&pos,
-	bool		 unnamed,
-	bool		 is_template
-) {
-tree_entry	n(pos);
-	n.item_unnamed = unnamed;
-	n.item_name = block;
-	n.item_key = name;
-	n.item_pos = pos;
-	n.item_is_template = is_template;
-	entries.push_back(n);
-	return &*entries.rbegin();
-}
-
-tree_entry *
-tree::find_item(tree_entry const &e)
-{
-	if (e.item_unnamed)
-		return find(e.item_name);
-	else	return find(e.item_name, e.item_key);
-}
-
-tree_entry *
-new_tree_entry_from_template(
-	tree			&t,
-	string const		&block,
-	string const		&name,
-	string const		&templatename,
-	file_position const		&pos,
-	bool			 unnamed,
-	bool
-) {
-tree_entry	*n, *e;
-	if ((e = t.find(block, templatename)) == NULL)
-		return e;
-	n = t.find_or_new(block, name, pos, unnamed, true);
-	n->item_values = e->item_values;
-	return n;
-}
-
 
 int
 find_untouched(tree &t)
 {
 int		 i = 0;
 vector<tree_entry>::const_iterator	it, end;
-multimap<string, value>::const_iterator	vit, vend;
+vector<value>::const_iterator		vit, vend;
 	for (it = t.entries.begin(), end = t.entries.end(); it != end; ++it) {
 		if (it->item_is_template)
 			continue;
@@ -343,13 +258,13 @@ multimap<string, value>::const_iterator	vit, vend;
 		}
 		for (vit = it->item_values.begin(), vend = it->item_values.end(); vit != vend; ++vit) {
 		string	name;
-			if (vit->second.cv_touched)
+			if (vit->cv_touched)
 				continue;
 			if (!it->item_unnamed)
-				name = "/" + it->item_name + "=" + it->item_key + "/" + vit->second.cv_name;
+				name = "/" + it->item_name + "=" + it->item_key + "/" + vit->cv_name;
 			else
-				name = "/" + it->item_name + "/" + vit->second.cv_name;
-			vit->second.report_error(format("%s was not recognised") % name);
+				name = "/" + it->item_name + "/" + vit->cv_name;
+			vit->report_error(format("%s was not recognised") % name);
 			i++;
 		}
 	}
@@ -359,12 +274,13 @@ multimap<string, value>::const_iterator	vit, vend;
 value *
 tree_entry::operator/(string const &name)
 {
-multimap<string, value>::iterator	it;
-	it = item_values.find(name);
-	if (it == item_values.end())
-		return NULL;
-	it->second.cv_touched = true;
-	return &it->second;
+vector<value>::iterator	it, end;
+	for (it = item_values.begin(), end = item_values.end(); it != end; ++it)
+		if (it->cv_name == name) {
+			it->cv_touched = true;
+			return &*it;
+		}
+	return NULL;
 }
 
 /*
@@ -373,9 +289,6 @@ multimap<string, value>::iterator	it;
 bool
 tree::add(tree_entry const &item)
 {
-	/* if the entry already exists, do nothing */
-//	if (find_item(item) != NULL)
-//		return false;
 	entries.push_back(item);
 	return true;
 }
@@ -572,15 +485,15 @@ block_definer::block(string const &name_, int flags_)
 bool
 block_definer::validate(tree_entry &e)
 {
-multimap<string, conf::value>::iterator	it, end_;
+vector<conf::value>::iterator	it, end_;
 map<string, value_definer *>::iterator	vit;
 bool ret = true;
 	for (it = e.item_values.begin(), end_ = e.item_values.end(); it != end_; ++it) {
-		vit = values.find(it->first);
+		vit = values.find(it->cv_name);
 		if (vit == values.end())
 			continue;
-		it->second.cv_touched = true;
-		ret = vit->second->validate(e, it->second) && ret;
+		it->cv_touched = true;
+		ret = vit->second->validate(e, *it) && ret;
 	}
 	if (vefn)
 		ret = (*vefn)(e) && ret;
@@ -594,13 +507,13 @@ bool ret = true;
 void
 block_definer::set(tree_entry &e)
 {
-multimap<string, conf::value>::iterator	it, end_;
+vector<conf::value>::iterator	it, end_;
 map<string, value_definer *>::iterator	vit;
 	for (it = e.item_values.begin(), end_ = e.item_values.end(); it != end_; ++it) {
-		vit = values.find(it->first);
+		vit = values.find(it->cv_name);
 		if (vit == values.end())
 			continue;
-		vit->second->set(e, it->second);
+		vit->second->set(e, *it);
 	}
 	if (sefn)
 		(*sefn)(e);

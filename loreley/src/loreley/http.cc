@@ -84,11 +84,11 @@ tss<event> merge_ev;
 char my_hostname[MAXHOSTNAMELEN + 1];
 static char my_version[64];
 static ofstream alf;
-lockable alf_lock;
+lockable log_lock;
 
 static int const default_udplog_port = 4445;
 wnet::socket *udplog_sock;
-static atomic<int> log_count;
+static int log_count;
 static bool do_udplog;
 
 struct error_transform_filter : io::buffering_filter, freelist_allocator<error_transform_filter>
@@ -1178,6 +1178,8 @@ size_t	size;
 	if (_header_parser->_http_reqtype == REQTYPE_INVALID)
 		return;
 
+	HOLDING(log_lock);
+
 	if (++log_count != config.log_sample)
 		return;
 	log_count = 0;
@@ -1200,8 +1202,6 @@ size_t	size;
 			% _response
 			% (_backend ? _backend->be_name : string("-"))
 			% ((_cachedent && !_backend) ? "HIT" : "MISS"));
-
-		HOLDING(alf_lock);
 
 		if (!(alf << line << endl)) {
 			wlog.error(format(
