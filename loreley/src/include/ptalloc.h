@@ -140,15 +140,18 @@ struct pt_allocator {
 			return (pointer) ret;
 		}
 		/* no, need a new block */
-		ret = new char[2 << exp];
+		ret = new char[1 << exp];
+std::cout << "need " << sz << " bytes, allocated " << (1 << exp) << "\n";
+		assert(size_t(1 << exp) >= sz);
 		return (pointer) ret;		
 	}
 
 	void deallocate(pointer p, size_type n) {
 	size_t			 sz = sizeof(T) * n;
 	int			 exp = ilog2(sz) + 1;
-	pta_block		*ptb = get_ptb();
+	pta_block		*ptb;
 		HOLDING(_lock);
+		ptb = get_ptb();
 
 	vector<pta_block *>	&fl = _ptfreelist;
 
@@ -188,7 +191,7 @@ struct pt_allocator {
 	}
 
 	/* from http://graphics.stanford.edu/~seander/bithacks.html#IntegerLogLookup */
-	int ilog2(int i) {
+	static int ilog2(int i) {
 	unsigned r = 0; // r will be lg(v)
 	register unsigned int t, tt; // temporaries
 
