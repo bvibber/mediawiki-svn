@@ -121,7 +121,6 @@
 				/* Don't do anything if the old content is the same as the new. */
 				$sql = 'SELECT old_text FROM text' .
 					' JOIN revision ON rev_text_id = old_id' .
-					' JOIN page ON page_latest = rev_id' .
 					' WHERE rev_page = ' . $page_id .
 					' LIMIT 1';
 				$current_res = $dbr->query($sql);
