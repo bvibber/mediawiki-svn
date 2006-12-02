@@ -722,7 +722,6 @@ socket::listen(int bl)
 socket::~socket(void)
 {
 	WDEBUG("closing socket");
-	delete ev;
 	HOLDING(ev_lock);
 	multimap<int, ev_pending>::iterator it;
 	it = ev_pending_list.find(_s);
@@ -730,6 +729,7 @@ socket::~socket(void)
 		ev_pending_list.erase(it);
 
 	event_del(ev);
+	delete ev;
 	close(_s);
 }
 
