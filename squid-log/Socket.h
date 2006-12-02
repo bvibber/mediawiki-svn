@@ -104,15 +104,15 @@ public:
 		return length;
 	}
 
-	/*
-	 * TODO
-	ssize_t RecvFrom(void *buf, size_t len, SocketAddress & to, int flags = 0) {
-		ssize_t length = recvfrom(fd, buf, len, flags, to.GetBinaryData(), to.GetBinaryLength());
+	ssize_t RecvFrom(void *buf, size_t len, boost::shared_ptr<SocketAddress> & to, int flags = 0) {
+		socklen_t addrLength = SocketAddress::GetBufferLength();
+		ssize_t length = recvfrom(fd, buf, len, flags, SocketAddress::GetBuffer(), &addrLength);
 		if (length == (ssize_t)-1) {
 			RaiseError("Socket::RecvFrom");
 		}
+		to = SocketAddress::NewFromBuffer();
 		return length;
-	}*/
+	}
 
 	// Ignore a given set of errors
 	void Ignore(boost::shared_ptr<std::set<int> > s) {

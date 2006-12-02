@@ -77,10 +77,11 @@ int main(int argc, char** argv)
 
 		// buffer size ~= max UDP packet size
 		const size_t outBufferSize = 65535;
-		const size_t prefixLength = 21;
-		size_t inBufferSize = outBufferSize - prefixLength;
+		size_t prefixLength;
+		size_t inBufferSize = outBufferSize;
 		char outBuffer[outBufferSize];
-		char * inBuffer = (char*)malloc(inBufferSize);
+		//char * inBuffer = (char*)malloc(inBufferSize);
+		char inBuffer[outBufferSize];
 
 		// Start the main loop
 		for (;; counter++) {
@@ -108,12 +109,13 @@ int main(int argc, char** argv)
 
 			
 			if (counter % sampleFactor == 0) {
+				// Write the sequence number
+				prefixLength = sprintf(outBuffer, "%llu ", counter);
 				// Truncate the input buffer so that it fits in the output buffer
 				if ((size_t)bytesRead > outBufferSize - prefixLength) {
 					bytesRead = (ssize_t)(outBufferSize - prefixLength);
 				}
-				// Write the sequence number
-				sprintf(outBuffer, "%20llu ", counter);
+				// Copy the line
 				memcpy(outBuffer + prefixLength, inBuffer, bytesRead);
 				socket.Send(outBuffer, prefixLength + bytesRead);
 			}
@@ -145,6 +147,9 @@ int OpenFifo(const char * path)
 		if (errno == ENOENT) {
 			if (mkfifo(path, 0666)) {
 				throw libc_error("Error creating fifo");
+			}
+			if (chmod(path, 0666)) {
+				throw libc_error("chmod");
 			}
 			fd = open(path, O_RDONLY);
 			if (fd == -1) {
