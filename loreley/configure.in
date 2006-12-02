@@ -49,13 +49,13 @@ testflag -Woverloaded-virtual
 testflag -Wformat=2 
 testflag -Winit-self 
 testflag -Wswitch-enum 
-dnltestflag -Wshadow 
+dnl testflag -Wshadow 
 testflag -Wpointer-arith 
 testflag -Wcast-qual 
 testflag -Wcast-align 
 testflag -Wwrite-strings 
 testflag -Wredundant-decls 
-dnltestflag -Wunreachable-code
+dnl testflag -Wunreachable-code
 if test ! "$ac_cv_cxx_compiler_gnu" = "yes"; then
 	testflag -errtags
 fi
@@ -148,6 +148,13 @@ AC_ARG_WITH(zlib, AC_HELP_STRING([--with-zlib=PATH],[prefix where zlib is instal
 	CPPFLAGS="$CPPFLAGS -I${withval}/include" LDFLAGS="$LDFLAGS -L${withval}/lib"],)
 AC_ARG_WITH(bdb, AC_HELP_STRING([--with-bdb=PATH],[prefix where Oracle Berkeley DB is installed]),[
 	CPPFLAGS="$CPPFLAGS -I${withval}/include" LDFLAGS="$LDFLAGS -L${withval}/lib"],)
+AC_ARG_ENABLE(allocators,
+	AC_HELP_STRING([--disable-allocators],[disable built-in optimised allocators]),
+	,[
+if test "$enableval" = "no"; then
+	AC_DEFINE([DISABLE_ALLOCS], [], [Don't use ptalloc or flalloc])
+fi
+])
 
 echo ""
 echo "looking for required C functions..."

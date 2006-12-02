@@ -16,10 +16,12 @@
 #include <cstdlib>
 using std::memset;
 
+#include "autoconf.h"
 #include "thread.h"
 
+#if !defined(DISABLE_ALLOCS) && !defined(__SUNPRO_CC)
+
 #if 0
-#ifndef __SUNPRO_CCx
 template<typename T>
 void
 flalloc_dtor(void *p)
@@ -30,6 +32,7 @@ T	*n = (T *)p, *o;
 		::operator delete(o);
 	}
 }
+#endif
 
 template<typename T>
 struct freelist_allocator {
@@ -77,15 +80,10 @@ T *freelist_allocator<T>::_freelist;
 template<typename T>
 lockable freelist_allocator<T>::_lock;
 
-#else	/* !__SUNPRO_CC */
+#else	/* !DISABLE_ALLOCS && !__SUNPRO_CC */
 template<typename T>
 struct freelist_allocator {
 };
-#endif	/* __SUNPRO_CC */
-#else
-template<typename T>
-struct freelist_allocator {
-};
-#endif
+#endif	/* !DISABLEALLOCS && !__SUNPRO_CC */
 
 #endif

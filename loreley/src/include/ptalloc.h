@@ -21,6 +21,7 @@
 #include "flalloc.h"
 #include "util.h"
 #include "thread.h"
+#include "autoconf.h"
 
 /*
  * A fast, thread-specific power of two allocator.  Backended by
@@ -51,6 +52,7 @@ static const int lt256[] =
   7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7
 };
 
+#if !defined(DISABLE_ALLOCS)
 #if 0
 extern "C" void pttsswrapdtor(void *);
 
@@ -66,7 +68,7 @@ void ptdealloc(void *);
 extern tss<vector<pta_block *>, ptdealloc> ptfreelist;
 extern pttsswrap pttssw;
 #endif
-#if 0
+
 template<typename T>
 struct pt_allocator {
 	typedef T			 value_type;
@@ -217,7 +219,8 @@ struct pt_allocator<void>
 		typedef pt_allocator<U>	other;
 	};
 };
-#endif
+#else /* !DISABLE_ALLOCS */
+
 template<typename T>
 struct pt_allocator : std::allocator<T> {
 	pt_allocator (void) {}
@@ -231,6 +234,8 @@ struct pt_allocator : std::allocator<T> {
 		typedef pt_allocator<U>	other;
 	};
 };
+
+#endif /* DISABLE_ALLOCS */
 
 typedef std::basic_string<char, char_traits<char>, pt_allocator<char> > ptstring;
 typedef ptstring string;
