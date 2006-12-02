@@ -74,8 +74,8 @@ using std::multimap;
 int ifname_to_address(int, sockaddr_in *, char const *);
 unsigned int if_nametoindex_wrap(const char *);
 
-struct event ev_sigint;
-struct event ev_sigterm;
+::event ev_sigint;
+::event ev_sigterm;
 //tss<event_base> evb;
 lockable ev_lock;
 
