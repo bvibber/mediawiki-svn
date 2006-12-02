@@ -34,8 +34,10 @@ namespace sfun {
 #include <cassert>
 #include <ctime>
 #include <deque>
+#include <map>
 using std::deque;
 using std::signal;
+using std::multimap;
 
 #include <unistd.h>
 #include <fcntl.h>
@@ -54,7 +56,68 @@ unsigned int if_nametoindex_wrap(const char *);
 
 struct event ev_sigint;
 struct event ev_sigterm;
-tss<event_base> evb;
+//tss<event_base> evb;
+lockable ev_lock;
+
+enum evtype_t {
+	evtype_timer,
+	evtype_event
+};
+
+struct ev_pending {
+	ev_pending(::event *ev, int64_t to, evtype_t type)
+		: ep_event(ev)
+		, ep_timeout(to)
+		, ep_type(type) {}
+
+	::event	*ep_event;
+	int64_t	 ep_timeout;
+	evtype_t ep_type;
+};
+
+multimap<int, ev_pending> ev_pending_list;
+
+pthread_t io_loop_thread;
+
+struct eq_entry {
+	eq_entry (net::socket *s, net::event *ev, int flags)
+		: ee_sock(s)
+		, ee_event(ev)
+		, ee_flags(flags) {}
+
+	net::socket	*ee_sock;
+	net::event	*ee_event;
+	int		 ee_flags;
+};
+
+struct event_queue {
+	event_queue() {
+		pthread_mutex_init(&eq_lock, NULL);
+		pthread_cond_init(&eq_cond, NULL);
+	}
+
+	void add(net::socket *sock, net::event *event, int flags) {
+		struct lvars {
+			lvars(pthread_mutex_t *l) 
+				: lock(l) {
+				pthread_mutex_lock(lock);
+			}
+			~lvars() {
+				pthread_mutex_unlock(lock);
+			}
+			pthread_mutex_t *lock;
+		} v(&eq_lock);
+		WDEBUG("event_queue::add: adding event");
+		eq_events.push_back(new eq_entry(sock, event, flags));
+		pthread_cond_signal(&eq_cond);
+	}
+
+	pthread_mutex_t	eq_lock;
+	pthread_cond_t	eq_cond;
+	deque<eq_entry *>	eq_events;
+};
+
+tss<event_queue> ev_queue;
 
 static void sig_exit(int, short, void *);
 
@@ -76,12 +139,12 @@ wnet_add_accept_wakeup(wsocket *s)
 	awaks.push_back(s);
 }
 
-event	secondly_ev;
-timeval	secondly_tv;
+net::event	secondly_ev;
 
 static void
-secondly_update(int, short, void *)
+secondly_update(void)
 {
+	WDEBUG("secondly_update");
 	wnet_set_time();
 	secondly_sched();
 }
@@ -89,12 +152,38 @@ secondly_update(int, short, void *)
 static void
 secondly_sched(void)
 {
-	secondly_tv.tv_usec = 0;
-	secondly_tv.tv_sec = 1;
-	evtimer_set(&secondly_ev, secondly_update, NULL);
-	event_base_set(evb, &secondly_ev);
-	event_add(&secondly_ev, &secondly_tv);
+	secondly_ev.ev_func = secondly_update;
+	secondly_ev.schedule(1000);
 }
+
+pthread_cond_t iot_ready;
+pthread_mutex_t iot_ready_m;
+
+pthread_t io_thread;
+void usr2_handler(int, short, void *)
+{
+	WDEBUG("got USR2");
+	event_loopexit(NULL);
+}
+
+::event ev_sigusr2;
+
+void *
+io_start(void *)
+{
+	signal_set(&ev_sigusr2, SIGUSR2, usr2_handler, NULL);
+	signal_add(&ev_sigusr2, NULL);
+
+	io_loop_thread = pthread_self();
+	pthread_mutex_lock(&iot_ready_m);
+	pthread_cond_signal(&iot_ready);
+	pthread_mutex_unlock(&iot_ready_m);
+
+	ioloop->run();
+	return NULL;
+}
+
+
 
 ioloop_t::ioloop_t(void)
 {
@@ -105,6 +194,16 @@ void
 ioloop_t::prepare(void)
 {
 size_t	 i;
+
+	event_init();
+	signal(SIGUSR2, SIG_IGN);
+	pthread_mutex_init(&iot_ready_m, NULL);
+	pthread_cond_init(&iot_ready, NULL);
+
+	pthread_mutex_lock(&iot_ready_m);
+	pthread_create(&io_thread, NULL, io_start, NULL);
+	pthread_cond_wait(&iot_ready, &iot_ready_m);
+	pthread_mutex_unlock(&iot_ready_m);
 
 	wlog.notice(format("maximum number of open files: %d")
 		% getdtablesize());
@@ -190,37 +289,53 @@ struct	tm	*now;
 namespace net {
 
 void
-socket::_ev_callback(int fd, short ev, void *d)
+socket_callback(int fd, short ev, void *d)
 {
 wsocket	*s = (wsocket *)d;
 
-	WDEBUG(format("_ev_callback: %s%son %d (%s)")
+	HOLDING(ev_lock);
+	WDEBUG(format("[%d] _ev_callback: %s%son %d (%s) queue %p")
+		% pthread_self()
 		% ((ev & EV_READ) ? "read " : "")
 		% ((ev & EV_WRITE) ? "write " : "")
-		% fd % s->_desc);
+		% fd % s->_desc
+		% s->_queue);
 
-	if (ev & EV_READ)
-		s->_read_handler(s, ev);
-	if (ev & EV_WRITE)
-		s->_write_handler(s, ev);
-	if (ev & EV_TIMEOUT) {
-		if (s->_ev_flags & EV_READ) {
-			s->_read_handler(s, ev);
-		} else if (s->_ev_flags & EV_WRITE) {
-			s->_write_handler(s, ev);
-		}
-	}
+	s->_queue->add(s, NULL, ev);
+}
+
+void
+timer_callback(int, short, void *d)
+{
+net::event	*ev = (net::event *)d;
+	HOLDING(ev_lock);
+	ev->ev_queue->add(NULL, ev, 0);
+}
+
+void
+event::schedule(int64_t when)
+{
+	HOLDING(ev_lock);
+	WDEBUG(format("schedule, when=%d") % when);
+	this->ev_when = when;
+	this->ev_queue = (event_queue *)::ev_queue;
+	evtimer_set(&ev_event, timer_callback, this);
+	ev_pending_list.insert(make_pair(0, ev_pending(&ev_event, ev_when, evtype_timer)));
+	pthread_kill(io_loop_thread, SIGUSR2);
 }
 
 void
 socket::_register(int what, int64_t to, socket::call_type handler)
 {
 	_ev_flags = 0;
+	_queue = (event_queue *)ev_queue;
 
-	WDEBUG(format("_register: %s%son %d (%s)")
+	WDEBUG(format("_register: %s%son %d (%s), queue %p")
 		% ((what & FDE_READ) ? "read " : "")
 		% ((what & FDE_WRITE) ? "write " : "")
-		% _s % _desc);
+		% _s % _desc % _queue);
+
+	HOLDING(ev_lock);
 
 	if (event_pending(&ev, EV_READ | EV_WRITE, NULL))
 		event_del(&ev);
@@ -234,22 +349,13 @@ socket::_register(int what, int64_t to, socket::call_type handler)
 		_ev_flags |= EV_WRITE;
 	}
 
-	event_set(&ev, _s, _ev_flags, _ev_callback, this);
-	event_base_set(evb, &ev);
+	event_set(&ev, _s, _ev_flags, socket_callback, this);
 	event_priority_set(&ev, (int) _prio);
 
 	WDEBUG(format("timeout = %d") % to);
 
-	if (to == -1) {
-		event_add(&ev, NULL);
-	} else {
-	timeval	tv;
-	int64_t	usec = to * 1000;
-		tv.tv_sec = usec / 1000000;
-		tv.tv_usec = usec % 1000000;
-		WDEBUG(format("timeout: %d %d") % tv.tv_sec % tv.tv_usec);
-		event_add(&ev, &tv);
-	}
+	ev_pending_list.insert(make_pair(_s, ev_pending(&ev, to, evtype_event)));
+	pthread_kill(io_loop_thread, SIGUSR2);
 }
 
 address::address(void)
@@ -584,6 +690,12 @@ socket::listen(int bl)
 socket::~socket(void)
 {
 	WDEBUG("closing socket");
+	HOLDING(ev_lock);
+	multimap<int, ev_pending>::iterator it;
+	it = ev_pending_list.find(_s);
+	if (it != ev_pending_list.end())
+		ev_pending_list.erase(it);
+
 	event_del(&ev);
 	close(_s);
 }
@@ -653,16 +765,18 @@ address	ret((sockaddr *)&addr, sizeof(sockaddr_in));
 void
 make_event_base(void)
 {
-static lockable meb_lock;
-	if (evb == NULL) {
-		HOLDING(meb_lock);
-		evb = (event_base *)event_init();
-		event_base_priority_init(evb, prio_max);
-		signal_set(&ev_sigint, SIGINT, sig_exit, NULL);
-		signal_add(&ev_sigint, NULL);
-		signal_set(&ev_sigterm, SIGTERM, sig_exit, NULL);
-		signal_add(&ev_sigterm, NULL);
-	}
+//static lockable meb_lock;
+//	if (evb == NULL) {
+//		HOLDING(meb_lock);
+//		evb = (event_base *)event_init();
+//		event_base_priority_init(evb, prio_max);
+//		signal_set(&ev_sigint, SIGINT, sig_exit, NULL);
+//		signal_add(&ev_sigint, NULL);
+//		signal_set(&ev_sigterm, SIGTERM, sig_exit, NULL);
+//		signal_add(&ev_sigterm, NULL);
+//	}
+	io_loop_thread = pthread_self();
+	ev_queue = new event_queue;
 }
 
 void
@@ -674,11 +788,90 @@ sig_exit(int sig, short what, void *d)
 void
 ioloop_t::run(void)
 {
+	WDEBUG(format("[%d] ioloop run: running") % pthread_self());
 	while (!wnet_exit) {
-		event_base_loop(evb, EVLOOP_ONCE);
+		event_loop(EVLOOP_ONCE);
+		WDEBUG("ioloop thread: got event");
+
+	{
+
+		HOLDING(ev_lock);
+	multimap<int, ev_pending>::iterator  it = ev_pending_list.begin(),
+						end = ev_pending_list.end();
+		for (; it != end; ++it) {
+			WDEBUG("ioloop thread: processing new event");
+			if (it->second.ep_type == evtype_event) {
+				if (it->second.ep_timeout == -1) {
+					event_add(it->second.ep_event, NULL);
+				} else {
+				timeval	tv;
+				int64_t	usec = it->second.ep_timeout * 1000;
+					tv.tv_sec = usec / 1000000;
+					tv.tv_usec = usec % 1000000;
+					WDEBUG(format("timeout: %d %d") % tv.tv_sec % tv.tv_usec);
+					event_add(it->second.ep_event, &tv);
+				}
+			} else if (it->second.ep_type == evtype_timer) {
+				timeval	tv;
+				int64_t	usec = it->second.ep_timeout * 1000;
+					tv.tv_sec = usec / 1000000;
+					tv.tv_usec = usec % 1000000;
+					WDEBUG(format("timeout: %d %d") % tv.tv_sec % tv.tv_usec);
+					evtimer_add(it->second.ep_event, &tv);
+			} else
+				abort();
+		}
+		ev_pending_list.clear();
+	}
 	}
 
 size_t	 i;
 	for (i = 0; i < listeners.size(); ++i)
 		delete listeners[i];
 }
+
+void
+ioloop_t::thread_run(void)
+{
+	/*
+	 * ioloop for a single thread.  uses a condition variable and a queue.
+	 */
+event_queue	*eq = (event_queue *)ev_queue;
+
+	for (;;) {
+	deque<eq_entry *> evs;
+		WDEBUG(format("[%d] thread_run: waiting for event, eq=%p")
+			% pthread_self() % eq);
+		pthread_mutex_lock(&eq->eq_lock);
+		if (eq->eq_events.empty())
+			pthread_cond_wait(&eq->eq_cond, &eq->eq_lock);
+		WDEBUG(format("[%d] thread_run: got event") % pthread_self());
+		evs = eq->eq_events;
+		eq->eq_events.clear();
+		pthread_mutex_unlock(&eq->eq_lock);
+		for (deque<eq_entry *>::iterator
+		     it = evs.begin(),
+		     end = evs.end(); it != end; ++it) {
+			if ((*it)->ee_sock) {
+				WDEBUG(format("[%d] thread_run: got event on %s")
+					% pthread_self() % (*it)->ee_sock->_desc);
+				if ((*it)->ee_flags & EV_READ)
+					(*it)->ee_sock->_read_handler((*it)->ee_sock, (*it)->ee_flags);
+				if ((*it)->ee_flags & EV_WRITE)
+					(*it)->ee_sock->_write_handler((*it)->ee_sock, (*it)->ee_flags);
+				if ((*it)->ee_flags & EV_TIMEOUT) {
+					if ((*it)->ee_sock->_ev_flags & EV_READ) {
+						(*it)->ee_sock->_read_handler((*it)->ee_sock, (*it)->ee_flags);
+					} else if ((*it)->ee_sock->_ev_flags & EV_WRITE) {
+						(*it)->ee_sock->_write_handler((*it)->ee_sock, (*it)->ee_flags);
+					}
+				}
+			} else {
+				WDEBUG("event thread");
+				(*it)->ee_event->ev_func();
+			}
+			delete *it;
+		}
+	}
+}
+

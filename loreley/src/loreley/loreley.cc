@@ -41,34 +41,7 @@ static void stats_init(void);
 static int pagesize;
 static const char *progname;
 
-event checkexit_ev;
-timeval checkexit_tv;
-
 #define min(x,y) ((x) < (y) ? (x) : (y))
-
-static void checkexit_sched(void);
-
-static void
-checkexit_update(int, short, void *)
-{
-timeval	tv = {0, 0};
-	if (wnet_exit) {
-		event_del(&checkexit_ev);
-		event_base_loopexit(evb, &tv);
-		return;
-	}
-	checkexit_sched();
-}
-
-static void
-checkexit_sched(void)
-{
-	checkexit_tv.tv_usec = 0;
-	checkexit_tv.tv_sec = 1;
-	evtimer_set(&checkexit_ev, checkexit_update, NULL);
-	event_base_set(evb, &checkexit_ev);
-	event_add(&checkexit_ev, &checkexit_tv);
-}
 
 static void
 usage(void)
@@ -185,8 +158,7 @@ bool	 zflag = false;
 	}
 
 	make_event_base();
-	ioloop = new ioloop_t;		
-	checkexit_sched();
+	ioloop = new ioloop_t;
 	if (!entitycache.open())
 		return 1;
 
@@ -199,7 +171,7 @@ bool	 zflag = false;
 	if (!config.foreground)
 		daemon(0, 0);
 
-	ioloop->run();
+	ioloop->thread_run();
 	wlog.notice("shutting down");
 	wlog.close();
 	whttp_shutdown();
@@ -304,8 +276,7 @@ int     res = 0;
 }
 
 stats_stru stats;
-static struct event stats_ev;
-static struct timeval stats_tv;
+static net::event stats_ev;
 static void stats_sched(void);
 static void add_stats_listener(pair<string,string> const &ip);
 
@@ -365,8 +336,9 @@ vector<listener *>::iterator lit = listeners.begin(), lend = listeners.end();
 }
 
 static void
-stats_update(int, short, void *)
+stats_update(void)
 {
+	WDEBUG("stats_update");
 	{	HOLDING(stats.cur_lock);
 		stats.n_httpreq_oks = (stats.cur.n_httpreq_ok - stats.last.n_httpreq_ok) / stats.interval;
 		stats.n_httpreq_fails = (stats.cur.n_httpreq_fail - stats.last.n_httpreq_fail) / stats.interval;
@@ -443,11 +415,8 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 static void
 stats_sched(void)
 {
-	stats_tv.tv_usec = 0;
-	stats_tv.tv_sec = stats.interval;
-	evtimer_set(&stats_ev, stats_update, NULL);
-	event_base_set(evb, &stats_ev);
-	event_add(&stats_ev, &stats_tv);
+	stats_ev.ev_func = stats_update;
+	stats_ev.schedule(stats.interval * 1000);
 }
 
 void

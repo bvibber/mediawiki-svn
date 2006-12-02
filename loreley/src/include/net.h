@@ -69,12 +69,15 @@ using std::memcpy;
 #include "loreley.h"
 
 extern bool wnet_exit;
+struct event_queue;
 
 namespace net {
-	struct addrlist;
-	struct address;
-	struct socket;
-	typedef socket wsocket;
+
+struct addrlist;
+struct address;
+struct socket;
+typedef socket wsocket;
+
 }
 
 enum sprio {
@@ -93,7 +96,7 @@ extern struct ioloop_t {
 
 	void	prepare	(void);
 	void	run	(void);
-
+	void	thread_run (void);
 	void	_accept		(net::socket *, int);
 } *ioloop;
 
@@ -166,7 +169,7 @@ struct buffer {
 } // namespace net
 
 extern lockable		 acceptq_lock;
-extern tss<event_base>	 evb;
+//extern tss<event_base>	 evb;
 
 struct client_data {
 	sockaddr_storage	cdat_addr;
@@ -265,6 +268,15 @@ private:
 	vector<value_type>	 _addrs;
 };
 
+struct event {
+	void schedule(int64_t when);
+
+	int64_t			 ev_when;
+	event_queue		*ev_queue;
+	function<void (void)>	 ev_func;
+	::event			 ev_event;
+};
+
 struct socket : noncopyable, freelist_allocator<socket> {
 	~socket();
 
@@ -322,6 +334,7 @@ struct socket : noncopyable, freelist_allocator<socket> {
 protected:
 	friend struct net::address;
 	friend struct ::ioloop_t;
+	friend void socket_callback(int fd, short ev, void *d);
 	typedef function<void (wsocket *, int)> call_type;
 
 	explicit socket (int, net::address const &, char const *, sprio);
@@ -336,8 +349,9 @@ protected:
 	net::address	 _addr;
 	char const	*_desc;
 	sprio		 _prio;
-	event		 ev;
+	::event		 ev;
 	int		 _ev_flags;
+	event_queue	*_queue;
 };
 
 	vector<addrinfo>	nametoaddrs(string const &name, int port);

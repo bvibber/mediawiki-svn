@@ -73,13 +73,13 @@ static const char *error_files[] = {
 };
 
 static void *client_thread(void *);
-static void stats_merge(int, short, void *);
+static void stats_merge(void);
 
 char via_hdr[1024];
 char *cache_hit_hdr;
 char *cache_miss_hdr;
 
-tss<event> merge_ev;
+tss<net::event> merge_ev;
 
 char my_hostname[MAXHOSTNAMELEN + 1];
 static char my_version[64];
@@ -896,12 +896,9 @@ map<wsocket *, listener *>::iterator lsnit;
 static
 void merge_sched(void)
 {
-timeval	 tv;
-	tv.tv_usec = 250000;
-	tv.tv_sec = 0;
-	evtimer_set(merge_ev, stats_merge, NULL);
-	event_base_set(evb, merge_ev);
-	event_add(merge_ev, &tv);
+	WDEBUG("merge_sched");
+	merge_ev->ev_func = stats_merge;
+	merge_ev->schedule(250);
 }
 
 static void *
@@ -917,25 +914,20 @@ http_thread::execute(void)
 {
 	make_event_base();
 	stats.tcur = new stats_stru::abs_t;
-	merge_ev = new event;
-	memset(merge_ev, 0, sizeof(*merge_ev));
+	merge_ev = new net::event;
 	merge_sched();
 
 	sv.second->readback(bind(&http_thread::accept_wakeup, this, _1, _2), -1);
-	event_base_loop(evb, 0);
+	ioloop->thread_run();
 	delete merge_ev;
 	delete stats.tcur;
 	return;
 }
 
 static void
-stats_merge(int, short, void *)
+stats_merge(void)
 {
-timeval	tv = {0, 0};
-	if (wnet_exit) {
-		event_base_loopexit(evb, &tv);
-		return;
-	}
+	WDEBUG("stats_merge");
 
 	{	HOLDING(stats.cur_lock);
 		stats.cur.n_httpreq_ok += stats.tcur->n_httpreq_ok;
