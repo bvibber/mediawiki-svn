@@ -15,7 +15,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	require_once( 'UserMailer.php' );
 
 	$wgExtensionFunctions[] = 'efNewUserNotifSetup';
-	$wgExtensionCredits['other'][] = array( 'name' => 'New User Email Notification', 'author' => 'Rob Church', 'url' => 'http://www.mediawiki.org/wiki/New_User_Email_Notification' );
+	$wgExtensionCredits['other'][] = array( 'name' => 'New User Email Notification', 'author' => 'Rob Church', 'url' => 'http://www.mediawiki.org/wiki/Extension:New_User_Email_Notification' );
 
 	$wgNewUserNotifSender = $wgPasswordSender;
 	$wgNewUserNotifTargets[] = 1;

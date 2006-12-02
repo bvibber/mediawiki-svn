@@ -3,28 +3,17 @@
 /**
  * Parser hook extension adds a <sort> tag to wiki markup
  *
- * <sort>
- * <sort order="asc" class="ol">
- *
- * Both attributes are optional; the default is for an ascending
- * sort using an unordered list. Order can be ASC or DESC, case
- * insensitive. Class can be OL or UL, also case insensitive.
- *
  * @package MediaWiki
  * @subpackage Extensions
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church
  * @licence GNU General Public Licence 2.0
- *
- * @todo Profile this to see how it copes with larger lists; might need to
- * 			re-think a sizeable portion of the main sort function so we don't
- *			flood the application server(s) with multiple parse operations
  */
  
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efSort';
-	$wgExtensionCredits['parserhook'][] = array( 'name' => 'Sort', 'author' => 'Rob Church', 'url' => 'http://www.mediawiki.org/wiki/Sort' );
+	$wgExtensionCredits['parserhook'][] = array( 'name' => 'Sort', 'author' => 'Rob Church', 'url' => 'http://www.mediawiki.org/wiki/Extension:Sort' );
 	
 	function efSort() {
 		global $wgParser;
