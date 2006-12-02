@@ -150,11 +150,11 @@ AC_ARG_WITH(bdb, AC_HELP_STRING([--with-bdb=PATH],[prefix where Oracle Berkeley 
 	CPPFLAGS="$CPPFLAGS -I${withval}/include" LDFLAGS="$LDFLAGS -L${withval}/lib"],)
 AC_ARG_ENABLE(allocators,
 	AC_HELP_STRING([--disable-allocators],[disable built-in optimised allocators]),
-	,[
+	[
 if test "$enableval" = "no"; then
 	AC_DEFINE([DISABLE_ALLOCS], [], [Don't use ptalloc or flalloc])
 fi
-])
+],[])
 
 echo ""
 echo "looking for required C functions..."
