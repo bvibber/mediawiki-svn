@@ -42,6 +42,8 @@
 					' WHERE collection_id = ' . $collection_id .
 					' AND ' . getLatestTransactionRestriction('uw_collection_contents');
 				$lang_res = $dbr->query($sql);
+				$editable = '';
+				$first = true;
 				while ($lang_row = $dbr->fetchRow($lang_res)) {
 					$iso_code = $lang_row['internal_member_id'];
 					$dm_id = $lang_row['member_mid'];
@@ -51,10 +53,30 @@
 						' WHERE iso639_3 LIKE ' . $dbr->addQuotes($iso_code) .
 						' LIMIT 1';
 					$lang_id_res = $dbr->query($sql);
-					if ($dbr->numRows($lang_id_res))
-						$wgOut->addHTML('Language names for "' . $iso_code . '" added. <br />');
+					if ($dbr->numRows($lang_id_res)) {
+						if (!$first)
+							$wgOut->addHTML('<br />' . "\n");
+						else
+							$first = false;
+						$wgOut->addHTML('Language names for "' . $iso_code . '" added.');
+
+						/* Add current language to list of portals/DMs. */
+						$sql = 'SELECT spelling FROM uw_expression_ns' .
+							' JOIN uw_defined_meaning ON uw_defined_meaning.expression_id = uw_expression_ns.expression_id' .
+							' WHERE defined_meaning_id = ' . $dm_id .
+							' LIMIT 1';
+						$dm_expr_res = $dbr->query($sql);
+						$dm_expr = $this->fetchResult($dbr->fetchRow($dm_expr_res));
+						if ($editable != '')
+							$editable .= "\n";
+						$editable .= '*[[Portal:' . $iso_code . ']] - [[DefinedMeaning:' . $dm_expr . ' (' . $dm_id . ')]]';
+					}
 					else {
-						$wgOut->addHTML('<strong>No language entry for "' . $iso_code . '" found! </strong><br />');
+						if (!$first)
+							$wgOut->addHTML('<br />' . "\n");
+						else
+							$first = false;
+						$wgOut->addHTML('<strong>No language entry for "' . $iso_code . '" found! </strong>');
 						continue;
 					}
 					$lang_id = $this->fetchResult($dbr->fetchRow($lang_id_res));
@@ -82,8 +104,54 @@
 						$dbr->query($sql);
 					}
 				}
+				$this->addDMsListToPage($editable,'Editable_languages');
 			}
 
+			/* XXX: This is probably NOT the proper way to do this. It should be refactored. */
+			function addDMsListToPage($content,$page) {
+				$dbr = &wfGetDB(DB_MASTER);
+
+				/* Get ID of the page we want to put the list on. */
+				$sql = 'SELECT page_id FROM page' .
+					' WHERE page_title LIKE ' . $dbr->addQuotes($page) .
+					' LIMIT 1';
+				$page_res = $dbr->query($sql);
+				$page_id = $this->fetchResult($dbr->fetchRow($page_res));
+
+				/* Don't do anything if the old content is the same as the new. */
+				$sql = 'SELECT old_text FROM text' .
+					' JOIN revision ON rev_text_id = old_id' .
+					' JOIN page ON page_latest = rev_id' .
+					' WHERE rev_page = ' . $page_id .
+					' LIMIT 1';
+				$current_res = $dbr->query($sql);
+				$current = $this->fetchResult($dbr->fetchRow($current_res));
+				if ($content == $current)
+					return;
+
+				/* Insert new text and grab new row ID. */
+				$sql = 'INSERT INTO text (`old_text`,`old_flags`)' .
+					' VALUES(' . $dbr->addQuotes($content) . ',' .
+					$dbr->addQuotes('utf-8') . ')';
+				$dbr->query($sql);
+				$text_id = $dbr->insertId();
+
+				/* Add new revision to database and update page entry. */
+				$time = wfTimestamp(TS_MW);
+				$sql = 'INSERT INTO revision (`rev_page`,`rev_text_id`,' .
+					'`rev_comment`,`rev_user_text`,`rev_timestamp`)' .
+					' VALUES(' . $page_id . ',' . $text_id . ',' .
+					$dbr->addQuotes('Set to latest DefinedMeanings list') .
+					',' . $dbr->addQuotes('ImportLangNames') . ','. $time . ')';
+				$dbr->query($sql);
+				$rev_id = $dbr->insertId();
+				$sql = 'UPDATE page SET page_latest = ' . $rev_id . ',page_touched = ' .
+					$time . ',page_is_new = 0,page_len = ' . strlen($content) .
+					' WHERE page_id = ' . $page_id;
+				$dbr->query($sql);
+			}
+
+			/* Return first field in row. */
 			function fetchResult($row) {
 				return $row[0];
 			}
