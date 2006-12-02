@@ -472,7 +472,7 @@ struct cached_spigot : io::spigot {
 
 		if (!_doneheaders) {
 			while (!_corked && _buf.items.size()) {
-			wnet::buffer_item	&b = *_buf.items.begin();
+			net::buffer_item	&b = *_buf.items.begin();
 			ssize_t			 discard = 0;
 			io::sink_result		 res;
 				res = _sp_sink->data_ready(b.buf + b.off, b.len, discard);
@@ -554,7 +554,7 @@ private:
 	bool		 _keepalive;
 	bool		 _doneheaders;
 	bool		 _dio;
-	wnet::buffer	 _buf;
+	net::buffer	 _buf;
 	bool		 _corked;
 	bool		 _inited;
 	size_t		 _off;

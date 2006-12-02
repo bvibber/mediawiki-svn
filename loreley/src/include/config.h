@@ -26,14 +26,14 @@ using std::map;
 
 #include "access.h"
 #include "net.h"
-using namespace wnet;
+using namespace net;
 
 struct listener {
 	string			 name;
 	string			 host;
 	int			 port;
 	int			 group;
-	wnet::socket		*sock;
+	net::socket		*sock;
 	atomic<uint64_t>	 nconns;
 
 	~listener() {

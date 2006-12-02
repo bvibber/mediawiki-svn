@@ -175,7 +175,7 @@ private:
 	bool		_built;
 	string		_first;
 	string		_body;
-	wnet::buffer	_buf;
+	net::buffer	_buf;
 	bool		_corked;
 };
 
@@ -234,7 +234,7 @@ struct header_parser : io::sink, io::spigot
 	imstring	 _location;
 
 	bool		 _eof;
-	wnet::buffer	 _buf;
+	net::buffer	 _buf;
 
 	struct {
 		unsigned int	f_chunked:1;

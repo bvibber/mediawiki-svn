@@ -169,7 +169,7 @@ const char	*hstr = "", *pstr = DEFAULT_HTCP_PORT;
 
 addrlist::iterator	it = alist->begin(), end = alist->end();
 	for (; it != end; ++it) {
-	wnet::socket	*sock = NULL;
+	net::socket	*sock = NULL;
 		try {
 			sock = it->makesocket("HTCP listener", prio_stats);
 			sock->nonblocking(true);

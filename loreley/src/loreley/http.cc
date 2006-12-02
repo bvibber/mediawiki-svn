@@ -48,7 +48,7 @@ using std::endl;
 #include "flowio.h"
 #include "cache.h"
 
-using namespace wnet;
+using namespace net;
 
 #ifndef MAXHOSTNAMELEN
 # define MAXHOSTNAMELEN HOST_NAME_MAX /* SysV / BSD disagreement */
@@ -87,7 +87,7 @@ static ofstream alf;
 lockable log_lock;
 
 static int const default_udplog_port = 4445;
-wnet::socket *udplog_sock;
+net::socket *udplog_sock;
 static int log_count;
 static bool do_udplog;
 
@@ -827,7 +827,7 @@ httpcllr::send_headers_to_client_error(void)
  */
 struct http_thread : freelist_allocator<http_thread> {
 	pthread_t	thr;
-	pair<wnet::socket *, wnet::socket *>
+	pair<net::socket *, net::socket *>
 			sv;
 
 	void	execute		(void);
@@ -865,7 +865,7 @@ whttp_init(void)
 	pthread_attr_t	 attr;
 		pthread_attr_init(&attr);
 		pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-		t->sv = wnet::socket::socketpair(st_dgram);
+		t->sv = net::socket::socketpair(st_dgram);
 		wnet_add_accept_wakeup(t->sv.first);
 		threads.push_back(t);
 		pthread_create(&t->thr, &attr, client_thread, t);
@@ -968,7 +968,7 @@ whttp_reconfigure(void)
 			config.udplog_port = default_udplog_port;
 
 		try {
-			udplog_sock = wnet::socket::create(config.udplog_host,
+			udplog_sock = net::socket::create(config.udplog_host,
 				config.udplog_port, st_dgram, "UDP logger", prio_norm);
 			udplog_sock->connect();
 		} catch (socket_error &e) {

@@ -25,7 +25,7 @@ using std::sprintf;
 #include "flowio.h"
 #include "config.h"
 
-using namespace wnet;
+using namespace net;
 
 enum {
 	H_IGNORE,
@@ -647,7 +647,7 @@ header_parser::sp_uncork(void)
 
 	_corked = false;
 	while (!_corked && _buf.items.size()) {
-	wnet::buffer_item	&b = *_buf.items.begin();
+	net::buffer_item	&b = *_buf.items.begin();
 	ssize_t			 discard = 0;
 	io::sink_result		 res;
 		res = _sp_sink->data_ready(b.buf + b.off, b.len - b.off, discard);

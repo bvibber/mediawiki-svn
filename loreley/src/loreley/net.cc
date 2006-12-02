@@ -126,7 +126,7 @@ size_t	 i;
 
 		lns->sock->readback(bind(&ioloop_t::_accept, this, _1, _2), -1);
 	}
-	wlog.notice(format("wnet: initialised, using libevent %s (%s)")
+	wlog.notice(format("net: initialised, using libevent %s (%s)")
 		% event_get_version() % event_get_method());
 	secondly_sched();
 }
@@ -187,7 +187,7 @@ struct	tm	*now;
 	assert(n);
 }
 
-namespace wnet {
+namespace net {
 
 void
 socket::_ev_callback(int fd, short ev, void *d)
@@ -426,9 +426,9 @@ socket	*s1 = NULL, *s2 = NULL;
 int	 sv[2];
 	if (::socketpair(AF_UNIX, (int) st, 0, sv) == -1)
 		throw socket_error();
-	s1 = new socket(sv[0], wnet::address(), "socketpair", prio_norm);
+	s1 = new socket(sv[0], net::address(), "socketpair", prio_norm);
 	try {
-		s2 = new socket(sv[1], wnet::address(), "socketpair", prio_norm);
+		s2 = new socket(sv[1], net::address(), "socketpair", prio_norm);
 	} catch (...) {
 		delete s1;
 		throw;
@@ -455,11 +455,11 @@ sockaddr_storage	addr;
 socklen_t		addrlen = sizeof(addr);
 	if ((ns = ::accept(_s, (sockaddr *)&addr, &addrlen)) == -1)
 		return NULL;
-	return new socket(ns, wnet::address((sockaddr *)&addr, addrlen), desc, p);
+	return new socket(ns, net::address((sockaddr *)&addr, addrlen), desc, p);
 }
 
 int
-socket::recvfrom(char *buf, size_t count, wnet::address &addr)
+socket::recvfrom(char *buf, size_t count, net::address &addr)
 {
 sockaddr_storage	saddr;
 socklen_t		addrlen = sizeof(addr);
@@ -467,12 +467,12 @@ int			i;
 	if ((i = ::recvfrom(_s, buf, count, 0, (sockaddr *)&saddr, &addrlen)) < 0)
 		return i;
 	WDEBUG(format("recvfrom: fam=%d") % saddr.ss_family);
-	addr = wnet::address((sockaddr *)&saddr, addrlen);
+	addr = net::address((sockaddr *)&saddr, addrlen);
 	return i;
 }
 
 int
-socket::sendto(char const *buf, size_t count, wnet::address const &addr)
+socket::sendto(char const *buf, size_t count, net::address const &addr)
 {
 	return ::sendto(_s, buf, count, 0, addr.addr(), addr.length());
 }
@@ -545,7 +545,7 @@ socklen_t	len = sizeof(error);
 	}
 }
 
-socket::socket(int s, wnet::address const &a, char const *desc, sprio p)
+socket::socket(int s, net::address const &a, char const *desc, sprio p)
 	: _addr(a)
 	, _desc(desc)
 	, _prio(p)
@@ -554,7 +554,7 @@ socket::socket(int s, wnet::address const &a, char const *desc, sprio p)
 	_s = s;
 }
 
-socket::socket(wnet::address const &a, char const *desc, sprio p)
+socket::socket(net::address const &a, char const *desc, sprio p)
 	: _addr(a)
 	, _desc(desc)
 	, _prio(p)
@@ -648,7 +648,7 @@ address	ret((sockaddr *)&addr, sizeof(sockaddr_in));
 	return ret;
 }
 
-} // namespace wnet
+} // namespace net
 
 void
 make_event_base(void)

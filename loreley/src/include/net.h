@@ -70,7 +70,7 @@ using std::memcpy;
 
 extern bool wnet_exit;
 
-namespace wnet {
+namespace net {
 	struct addrlist;
 	struct address;
 	struct socket;
@@ -94,7 +94,7 @@ extern struct ioloop_t {
 	void	prepare	(void);
 	void	run	(void);
 
-	void	_accept		(wnet::socket *, int);
+	void	_accept		(net::socket *, int);
 } *ioloop;
 
 /*
@@ -112,7 +112,7 @@ extern struct ioloop_t {
 					}					\
 				} while (0)
 
-namespace wnet {
+namespace net {
 
 struct buffer;
 
@@ -163,7 +163,7 @@ struct buffer {
 	deque<buffer_item, pt_allocator<buffer_item> > items;
 };
 
-} // namespace wnet
+} // namespace net
 
 extern lockable		 acceptq_lock;
 extern tss<event_base>	 evb;
@@ -177,11 +177,11 @@ extern char current_time_str[];
 extern char current_time_short[];
 extern time_t current_time;
 
-	void	wnet_add_accept_wakeup	(wnet::socket *);
+	void	wnet_add_accept_wakeup	(net::socket *);
 	void 	wnet_set_time		(void);
 	void	make_event_base		(void);
 
-namespace wnet {	/* things above should move here eventually */
+namespace net {	/* things above should move here eventually */
 
 struct socket_error : runtime_error {
 	int	_err;
@@ -281,8 +281,8 @@ struct socket : noncopyable, freelist_allocator<socket> {
 	int		 read		(char *buf, size_t count) {
 		return ::read(_s, buf, count);
 	}
-	int		 recvfrom	(char *, size_t, wnet::address &);
-	int		 sendto		(char const *, size_t, wnet::address const &);
+	int		 recvfrom	(char *, size_t, net::address &);
+	int		 sendto		(char const *, size_t, net::address const &);
 	int		 write		(char const *buf, size_t count) {
 		return ::write(_s, buf, count);
 	}
@@ -304,7 +304,7 @@ struct socket : noncopyable, freelist_allocator<socket> {
 	void		 mcast_join	(string const &ifname);
 	void		 mcast_leave	(string const &ifname);
 
-	wnet::address const	&address	(void) const {
+	net::address const	&address	(void) const {
 		return _addr;
 	}
 	string const 	&straddr	(bool lng = true) const {
@@ -320,12 +320,12 @@ struct socket : noncopyable, freelist_allocator<socket> {
 	void	clearbacks	(void);
 
 protected:
-	friend struct wnet::address;
+	friend struct net::address;
 	friend struct ::ioloop_t;
 	typedef function<void (wsocket *, int)> call_type;
 
-	explicit socket (int, wnet::address const &, char const *, sprio);
-	explicit socket (wnet::address const &, char const *, sprio);
+	explicit socket (int, net::address const &, char const *, sprio);
+	explicit socket (net::address const &, char const *, sprio);
 
 	void		_register	(int, int64_t, call_type);
 	static void	_ev_callback	(int fd, short ev, void *d);
@@ -333,7 +333,7 @@ protected:
 	function<void (wsocket *, int)>	_read_handler, _write_handler;
 
 	int		 _s;
-	wnet::address	 _addr;
+	net::address	 _addr;
 	char const	*_desc;
 	sprio		 _prio;
 	event		 ev;
@@ -355,6 +355,6 @@ socket::writeback (T cb, int64_t to) {
 	_register(FDE_WRITE, to, call_type(cb));
 }
 
-} // namespace wnet
+} // namespace net
 
 #endif

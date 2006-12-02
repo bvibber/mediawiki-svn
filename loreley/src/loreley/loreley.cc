@@ -411,7 +411,7 @@ const char	*hstr = NULL, *pstr = DEFAULT_STATS_PORT;
 
 addrlist::iterator	it = alist->begin(), end = alist->end();
 	for (; it != end; ++it) {
-	wnet::socket	*sock = NULL;
+	net::socket	*sock = NULL;
 		try {
 			sock = it->makesocket("statistics listener", prio_stats);
 			sock->nonblocking(true);

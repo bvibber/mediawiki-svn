@@ -25,7 +25,7 @@ using std::min;
 
 #include "loreley.h"
 #include "net.h"
-using namespace wnet;
+using namespace net;
 
 namespace io {
 
@@ -350,7 +350,7 @@ struct buffering_filter : sink, spigot {
 
 	sink_result _bf_push_data(void) {
 		while (!_corked && _buf.items.size()) {
-		wnet::buffer_item	&b = *_buf.items.begin();
+		net::buffer_item	&b = *_buf.items.begin();
 		ssize_t			 discard = 0;
 		sink_result		 res;
 			res = _sp_sink->data_ready(b.buf + b.off, b.len, discard);
@@ -376,7 +376,7 @@ struct buffering_filter : sink, spigot {
 	}
 
 	bool		_corked;
-	wnet::buffer	_buf;
+	net::buffer	_buf;
 };
 
 struct buffering_spigot : spigot
@@ -411,7 +411,7 @@ struct buffering_spigot : spigot
 
 	sink_result _bs_push_data(void) {
 		while (!_corked && _buf.items.size()) {
-		wnet::buffer_item	&b = *_buf.items.begin();
+		net::buffer_item	&b = *_buf.items.begin();
 		ssize_t			 discard = 0;
 		sink_result		 res;
 			res = _sp_sink->data_ready(b.buf + b.off, b.len, discard);
@@ -428,7 +428,7 @@ struct buffering_spigot : spigot
 	}
 
 	bool		_corked;
-	wnet::buffer	_buf;
+	net::buffer	_buf;
 };
 
 /*

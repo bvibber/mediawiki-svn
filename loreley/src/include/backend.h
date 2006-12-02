@@ -23,7 +23,7 @@ using std::vector;
 using std::map;
 
 #include "net.h"
-using namespace wnet;
+using namespace net;
 
 enum lb_type {
 	lb_rr,
