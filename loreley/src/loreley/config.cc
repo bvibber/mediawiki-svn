@@ -563,6 +563,10 @@ conf
 		config.access.allow("0.0.0.0/0");
 		config.access.allow("::0/0");
 	}
+	if (stats.access.empty()) {
+		stats.access.allow("0.0.0.0/0");
+		stats.access.allow("::0/0");
+	}
 	global_conf_tree = *t;
 	return true;
 }

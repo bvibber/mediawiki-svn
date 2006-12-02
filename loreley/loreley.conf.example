@@ -365,6 +365,7 @@ stats {
 	/*
 	 * Only allow stats requests from certain networks.  If you specify
 	 * either any IPv4 or IPv6 entries, *both* will be set to default-deny.
+	 * If no addresses are specified, everyone is allowed access.
 	 */
 	allow = "127.0.0.0/8";
 	allow = "::0/0";
