@@ -32,26 +32,6 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 #include <sys/fcntl.h>
 #include <sys/sendfile.h>
 
-/*
- * libevent needs these
- */
-#ifndef HAVE_U_INT8_T
-typedef uint8_t u_int8_t;
-#endif
-
-#ifndef HAVE_U_INT16_T
-typedef uint16_t u_int16_t;
-#endif
-
-#ifndef HAVE_U_INT32_T
-typedef uint32_t u_int32_t;
-#endif
-
-#ifndef HAVE_U_INT64_T
-typedef uint64_t u_int64_t;
-#endif
-
-#include <event.h>
 #include <pthread.h>
 #include <vector>
 #include <deque>
@@ -70,6 +50,8 @@ using std::memcpy;
 
 extern bool wnet_exit;
 struct event_queue;
+
+struct event;
 
 namespace net {
 
@@ -268,13 +250,14 @@ private:
 	vector<value_type>	 _addrs;
 };
 
-struct event {
-	void schedule(int64_t when);
+struct event_impl;
 
-	int64_t			 ev_when;
-	event_queue		*ev_queue;
-	function<void (void)>	 ev_func;
-	::event			 ev_event;
+struct event {
+	event();
+	~event();
+
+	void schedule(function<void (void)>, int64_t when);
+	event_impl	*impl;
 };
 
 struct socket : noncopyable, freelist_allocator<socket> {
@@ -335,7 +318,7 @@ protected:
 	friend struct net::address;
 	friend struct ::ioloop_t;
 	friend void socket_callback(int fd, short ev, void *d);
-	typedef function<void (wsocket *, int)> call_type;
+	typedef function<void (wsocket *, bool)> call_type;
 
 	explicit socket (int, net::address const &, char const *, sprio);
 	explicit socket (net::address const &, char const *, sprio);
@@ -349,7 +332,7 @@ protected:
 	net::address	 _addr;
 	char const	*_desc;
 	sprio		 _prio;
-	::event		 ev;
+	::event		*ev;
 	int		 _ev_flags;
 	event_queue	*_queue;
 };

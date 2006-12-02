@@ -23,6 +23,25 @@ namespace sfun {
 # include <sys/sendfile.h>
 #endif
 
+/*
+ * libevent needs these
+ */
+#ifndef HAVE_U_INT8_T
+typedef uint8_t u_int8_t;
+#endif
+
+#ifndef HAVE_U_INT16_T
+typedef uint16_t u_int16_t;
+#endif
+
+#ifndef HAVE_U_INT32_T
+typedef uint32_t u_int32_t;
+#endif
+
+#ifndef HAVE_U_INT64_T
+typedef uint64_t u_int64_t;
+#endif
+
 #include <netinet/tcp.h>
 #include <arpa/inet.h>
 
@@ -39,6 +58,7 @@ using std::deque;
 using std::signal;
 using std::multimap;
 
+#include <event.h>
 #include <unistd.h>
 #include <fcntl.h>
 
@@ -152,8 +172,7 @@ secondly_update(void)
 static void
 secondly_sched(void)
 {
-	secondly_ev.ev_func = secondly_update;
-	secondly_ev.schedule(1000);
+	secondly_ev.schedule(secondly_update, 1000);
 }
 
 pthread_cond_t iot_ready;
@@ -304,16 +323,42 @@ wsocket	*s = (wsocket *)d;
 	s->_queue->add(s, NULL, ev);
 }
 
+struct event_impl {
+	void schedule(int64_t);
+
+	int64_t			 ev_when;
+	event_queue		*ev_queue;
+	function<void (void)>	 ev_func;
+	::event			 ev_event;
+};
+
+event::event(void)
+{
+	impl = new event_impl;
+}
+
+event::~event(void)
+{
+	delete impl;
+};
+
+void
+event::schedule(function<void (void)> f, int64_t t)
+{
+	impl->ev_func = f;
+	impl->schedule(t);
+}
+
 void
 timer_callback(int, short, void *d)
 {
 net::event	*ev = (net::event *)d;
 	HOLDING(ev_lock);
-	ev->ev_queue->add(NULL, ev, 0);
+	ev->impl->ev_queue->add(NULL, ev, 0);
 }
 
 void
-event::schedule(int64_t when)
+event_impl::schedule(int64_t when)
 {
 	HOLDING(ev_lock);
 	WDEBUG(format("schedule, when=%d") % when);
@@ -337,8 +382,8 @@ socket::_register(int what, int64_t to, socket::call_type handler)
 
 	HOLDING(ev_lock);
 
-	if (event_pending(&ev, EV_READ | EV_WRITE, NULL))
-		event_del(&ev);
+	if (event_pending(ev, EV_READ | EV_WRITE, NULL))
+		event_del(ev);
 
 	if (what & FDE_READ) {
 		_read_handler = handler;
@@ -349,12 +394,12 @@ socket::_register(int what, int64_t to, socket::call_type handler)
 		_ev_flags |= EV_WRITE;
 	}
 
-	event_set(&ev, _s, _ev_flags, socket_callback, this);
-	event_priority_set(&ev, (int) _prio);
+	event_set(ev, _s, _ev_flags, socket_callback, this);
+	event_priority_set(ev, (int) _prio);
 
 	WDEBUG(format("timeout = %d") % to);
 
-	ev_pending_list.insert(make_pair(_s, ev_pending(&ev, to, evtype_event)));
+	ev_pending_list.insert(make_pair(_s, ev_pending(ev, to, evtype_event)));
 	pthread_kill(io_loop_thread, SIGUSR2);
 }
 
@@ -656,6 +701,7 @@ socket::socket(int s, net::address const &a, char const *desc, sprio p)
 	, _desc(desc)
 	, _prio(p)
 {
+	ev = new ::event;
 	memset(&ev, 0, sizeof(ev));
 	_s = s;
 }
@@ -690,20 +736,21 @@ socket::listen(int bl)
 socket::~socket(void)
 {
 	WDEBUG("closing socket");
+	delete ev;
 	HOLDING(ev_lock);
 	multimap<int, ev_pending>::iterator it;
 	it = ev_pending_list.find(_s);
 	if (it != ev_pending_list.end())
 		ev_pending_list.erase(it);
 
-	event_del(&ev);
+	event_del(ev);
 	close(_s);
 }
 
 void
 socket::clearbacks(void)
 {
-	event_del(&ev);
+	event_del(ev);
 }
 
 void
@@ -856,19 +903,19 @@ event_queue	*eq = (event_queue *)ev_queue;
 				WDEBUG(format("[%d] thread_run: got event on %s")
 					% pthread_self() % (*it)->ee_sock->_desc);
 				if ((*it)->ee_flags & EV_READ)
-					(*it)->ee_sock->_read_handler((*it)->ee_sock, (*it)->ee_flags);
+					(*it)->ee_sock->_read_handler((*it)->ee_sock, false);
 				if ((*it)->ee_flags & EV_WRITE)
-					(*it)->ee_sock->_write_handler((*it)->ee_sock, (*it)->ee_flags);
+					(*it)->ee_sock->_write_handler((*it)->ee_sock, false);
 				if ((*it)->ee_flags & EV_TIMEOUT) {
 					if ((*it)->ee_sock->_ev_flags & EV_READ) {
-						(*it)->ee_sock->_read_handler((*it)->ee_sock, (*it)->ee_flags);
+						(*it)->ee_sock->_read_handler((*it)->ee_sock, true);
 					} else if ((*it)->ee_sock->_ev_flags & EV_WRITE) {
-						(*it)->ee_sock->_write_handler((*it)->ee_sock, (*it)->ee_flags);
+						(*it)->ee_sock->_write_handler((*it)->ee_sock, true);
 					}
 				}
 			} else {
 				WDEBUG("event thread");
-				(*it)->ee_event->ev_func();
+				(*it)->ee_event->impl->ev_func();
 			}
 			delete *it;
 		}

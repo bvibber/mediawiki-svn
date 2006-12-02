@@ -415,8 +415,7 @@ addrlist::iterator	it = alist->begin(), end = alist->end();
 static void
 stats_sched(void)
 {
-	stats_ev.ev_func = stats_update;
-	stats_ev.schedule(stats.interval * 1000);
+	stats_ev.schedule(stats_update, stats.interval * 1000);
 }
 
 void

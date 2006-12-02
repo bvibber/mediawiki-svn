@@ -166,11 +166,11 @@ static	time_t		 last_nfile;
 }
 
 void
-backend_list::_backend_read(wsocket *s, int flags, backend_cb_data *cbd)
+backend_list::_backend_read(wsocket *s, bool timeout, backend_cb_data *cbd)
 {
 int		 error = s->error();
 
-	if (flags & EV_TIMEOUT)
+	if (timeout)
 		error = ETIMEDOUT;
 
 	if (error && error != EINPROGRESS) {

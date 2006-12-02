@@ -897,8 +897,7 @@ static
 void merge_sched(void)
 {
 	WDEBUG("merge_sched");
-	merge_ev->ev_func = stats_merge;
-	merge_ev->schedule(250);
+	merge_ev->schedule(stats_merge, 250);
 }
 
 static void *
