@@ -141,7 +141,6 @@ struct pt_allocator {
 		}
 		/* no, need a new block */
 		ret = new char[1 << exp];
-std::cout << "need " << sz << " bytes, allocated " << (1 << exp) << "\n";
 		assert(size_t(1 << exp) >= sz);
 		return (pointer) ret;		
 	}
