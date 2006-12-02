@@ -97,6 +97,8 @@ extern struct ioloop_t {
 					}					\
 				} while (0)
 
+struct event_impl;
+
 namespace net {
 
 struct buffer;
@@ -249,8 +251,6 @@ private:
 
 	vector<value_type>	 _addrs;
 };
-
-struct event_impl;
 
 struct event {
 	event();

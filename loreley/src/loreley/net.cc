@@ -84,6 +84,15 @@ enum evtype_t {
 	evtype_event
 };
 
+struct event_impl {
+	void schedule(int64_t);
+
+	int64_t			 ev_when;
+	event_queue		*ev_queue;
+	function<void (void)>	 ev_func;
+	::event			 ev_event;
+};
+
 struct ev_pending {
 	ev_pending(::event *ev, int64_t to, evtype_t type)
 		: ep_event(ev)
@@ -100,13 +109,13 @@ multimap<int, ev_pending> ev_pending_list;
 pthread_t io_loop_thread;
 
 struct eq_entry {
-	eq_entry (net::socket *s, net::event *ev, int flags)
+	eq_entry (net::socket *s, event_impl *ev, int flags)
 		: ee_sock(s)
 		, ee_event(ev)
 		, ee_flags(flags) {}
 
 	net::socket	*ee_sock;
-	net::event	*ee_event;
+	event_impl	*ee_event;
 	int		 ee_flags;
 };
 
@@ -116,7 +125,7 @@ struct event_queue {
 		pthread_cond_init(&eq_cond, NULL);
 	}
 
-	void add(net::socket *sock, net::event *event, int flags) {
+	void add(net::socket *sock, event_impl *event, int flags) {
 		struct lvars {
 			lvars(pthread_mutex_t *l) 
 				: lock(l) {
@@ -323,15 +332,6 @@ wsocket	*s = (wsocket *)d;
 	s->_queue->add(s, NULL, ev);
 }
 
-struct event_impl {
-	void schedule(int64_t);
-
-	int64_t			 ev_when;
-	event_queue		*ev_queue;
-	function<void (void)>	 ev_func;
-	::event			 ev_event;
-};
-
 event::event(void)
 {
 	impl = new event_impl;
@@ -352,21 +352,9 @@ event::schedule(function<void (void)> f, int64_t t)
 void
 timer_callback(int, short, void *d)
 {
-net::event	*ev = (net::event *)d;
+event_impl	*ev = (event_impl *)d;
 	HOLDING(ev_lock);
-	ev->impl->ev_queue->add(NULL, ev, 0);
-}
-
-void
-event_impl::schedule(int64_t when)
-{
-	HOLDING(ev_lock);
-	WDEBUG(format("schedule, when=%d") % when);
-	this->ev_when = when;
-	this->ev_queue = (event_queue *)::ev_queue;
-	evtimer_set(&ev_event, timer_callback, this);
-	ev_pending_list.insert(make_pair(0, ev_pending(&ev_event, ev_when, evtype_timer)));
-	pthread_kill(io_loop_thread, SIGUSR2);
+	ev->ev_queue->add(NULL, ev, 0);
 }
 
 void
@@ -381,9 +369,6 @@ socket::_register(int what, int64_t to, socket::call_type handler)
 		% _s % _desc % _queue);
 
 	HOLDING(ev_lock);
-
-	if (event_pending(ev, EV_READ | EV_WRITE, NULL))
-		event_del(ev);
 
 	if (what & FDE_READ) {
 		_read_handler = handler;
@@ -702,7 +687,7 @@ socket::socket(int s, net::address const &a, char const *desc, sprio p)
 	, _prio(p)
 {
 	ev = new ::event;
-	memset(&ev, 0, sizeof(ev));
+	memset(ev, 0, sizeof(*ev));
 	_s = s;
 }
 
@@ -711,7 +696,8 @@ socket::socket(net::address const &a, char const *desc, sprio p)
 	, _desc(desc)
 	, _prio(p)
 {
-	memset(&ev, 0, sizeof(ev));
+	ev = new ::event;
+	memset(ev, 0, sizeof(*ev));
 	_s = ::socket(_addr.family(), _addr.socktype(), _addr.protocol());
 	if (_s == -1)
 		throw socket_error();
@@ -847,6 +833,9 @@ ioloop_t::run(void)
 						end = ev_pending_list.end();
 		for (; it != end; ++it) {
 			WDEBUG("ioloop thread: processing new event");
+			if (event_pending(it->second.ep_event, EV_READ | EV_WRITE, NULL))
+				event_del(it->second.ep_event);
+
 			if (it->second.ep_type == evtype_event) {
 				if (it->second.ep_timeout == -1) {
 					event_add(it->second.ep_event, NULL);
@@ -915,10 +904,22 @@ event_queue	*eq = (event_queue *)ev_queue;
 				}
 			} else {
 				WDEBUG("event thread");
-				(*it)->ee_event->impl->ev_func();
+				(*it)->ee_event->ev_func();
 			}
 			delete *it;
 		}
 	}
 }
 
+
+void
+event_impl::schedule(int64_t when)
+{
+	HOLDING(ev_lock);
+	WDEBUG(format("schedule, when=%d") % when);
+	this->ev_when = when;
+	this->ev_queue = (event_queue *)::ev_queue;
+	evtimer_set(&ev_event, timer_callback, this);
+	ev_pending_list.insert(make_pair(0, ev_pending(&ev_event, ev_when, evtype_timer)));
+	pthread_kill(io_loop_thread, SIGUSR2);
+}
