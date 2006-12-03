@@ -937,7 +937,7 @@ stats_merge(void)
 		stats.cur.n_httpreq_fail += stats.tcur->n_httpreq_fail;
 		stats.tcur->n_httpreq_fail = 0;
 		stats.cur.n_httpresp_ok += stats.tcur->n_httpresp_ok;
-		stats.tcur->n_httpreq_ok = 0;
+		stats.tcur->n_httpresp_ok = 0;
 		stats.cur.n_httpresp_fail += stats.tcur->n_httpresp_fail;
 		stats.tcur->n_httpresp_fail = 0;
 	}
