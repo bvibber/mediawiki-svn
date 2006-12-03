@@ -30,6 +30,10 @@ $wgCrossNamespaceLinksMessages['id'] = array(
 	'crossnamespacelinks'     => 'Pranala antar-namespace',
 	'crossnamespacelinkstext' => '$1: $2 terpaut ke $3'
 );
+$wgCrossNamespaceLinksMessages['it'] = array(
+	'crossnamespacelinks'     => 'Collegamenti tra namespace',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|collegamento|collegamenti}} al namespace $3'
+);
 $wgCrossNamespaceLinksMessages['kk-kz'] = array(
 	'crossnamespacelinks'         => 'Басқа есім аясына сілтейтін беттер',
 	'crossnamespacelinks-summary' => 'Бұл бетте негізгі есім аясындағы беттегі басқа есім аялырындағы ({{ns:special}}, {{ns:talk}}, {{ns:project}} және {{ns:template}} есім аяларынан тыс) беттерге сілтеме тізімі беріледі. Осындай сілтемелерді қолдануға ұсынылмайды.',

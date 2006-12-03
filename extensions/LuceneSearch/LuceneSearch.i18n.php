@@ -112,6 +112,24 @@ Pencarian terhadap $3 $9",
 Masalah ini mungkin hanya sementara; silakan coba lagi dalam beberapa saat,
 atau gunakan layanan pencari eksternal:\n"
 );
+$wgLuceneSearchMessages['it'] = array(
+	'searchnumber'          => "<strong>Risultati da $1 a $2 su un totale di $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Precedente</span>",
+	'searchnext'            => "<span style='font-size: small'>Successivo</span> &#x00BB;",
+	'searchscore'           => "Pertinenza: $1",
+	'searchsize'            => "$1 KB ($2 parole)",
+	'searchdidyoumean'      => "Forse stavi cercando: \"<a href=\"$1\">$2</a>\"?",
+	'searchnoresults'       => "La funzione di ricerca non ha trovato corrispondenze esatte con il testo cercato.",
+	'searchnearmatches'     => "<b>Le pagine elencate di seguito hanno titoli simili al testo cercato:</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+Cerca nei namespace selezionati:\n
+$1\n
+Testo da ricercare $3 $9",
+	'lucenefallback'        => "Il motore di ricerca interno ha un problema. 
+	Probabilmente si tratta di un errore temporaneo, destinato a risolversi in breve tempo. 
+	Nel frattempo, si consiglia di riprovare tra qualche istante o di utilizzare un motore di ricerca esterno:\n"
+);
 $wgLuceneSearchMessages['kk-kz'] = array(
 	'searchnumber'          => "<strong>$3 дегеннен табылған $1—$2 нәтиже</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Алдыңғыға</span>",

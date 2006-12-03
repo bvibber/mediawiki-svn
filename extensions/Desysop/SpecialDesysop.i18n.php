@@ -52,6 +52,17 @@ $wgDesysopMessages['id'] = array(
 	'desysop'              => 'Mencabut hak pengurus pengguna',
 	'not_sysop'            => 'Pengguna ini bukan pengurus',
 );
+$wgDesysopMessages['it'] = array(
+	'desysoptitle'         => "Revoca dei privilegi di amministratore",
+	'desysoptext'          => "Questo modulo consente ai burocrati di revocare i privilegi di amministratore a un utente. Inserire il nome utente nella casella di testo e premere il pulsante per revocarne l'accesso come amministratore.",
+	'desysopname'          => "Nome utente:",
+	'desysopok'            => "<b>L'utente \"$1\" è stato privato dei privilegi di amministratore</b>",
+	'set_user_rights'      => "Imposta permessi utente",
+	'user_rights_set'      => "<b>I permessi per l'utente \"$1\" sono stati aggiornati</b>",
+	'set_rights_fail'      => "<b>Impossibile impostare i permessi per l'utente \"$1\". Assicurarsi che il nome sia stato digitato correttamente.</b>",
+	'desysop'              => "Revoca i privilegi di amministratore",
+	'not_sysop'            => "L'utente specificato non è un amministratore",
+);
 $wgDesysopMessages['nl'] = array(
 	'desysoptitle'         => 'Beheerdersrechten voor een gebruiker intrekken',
 	'desysoptext'          => "Bureaucraten gebruiken dit formulier om beheerdersrechten voor een gebruiker in te trekken. Voer de gebruikersnaam in het veld in en klik op de knop om de beheerdersrechten in te trekken.",

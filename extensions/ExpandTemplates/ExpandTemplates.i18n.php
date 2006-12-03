@@ -57,6 +57,15 @@ $wgExpandTemplatesMessages['id'] = array(
 	'expand_templates_ok'              => 'Jalankan',
 	'expand_templates_remove_comments' => 'Buang komentar',
 );
+$wgExpandTemplatesMessages['it'] = array(
+	'expandtemplates'                  => 'Espansione dei template',
+	'expand_templates_intro'           => 'Questa pagina speciale elabora un testo espandendo tutti i template presenti. Calcola inoltre il risultato delle funzioni supportate dal parser come <nowiki>{{</nowiki>#if:...}} e delle variabili di sistema quali <nowiki>{{</nowiki>CURRENTDAY}}, ovvero praticamente tutto ciò che si trova tra doppie parentesi graffe. Funziona richiamando le opportune funzioni del parser di MediaWiki.',
+	'expand_templates_title'           => 'Contesto (per <nowiki>{{</nowiki>PAGENAME}} ecc.):',
+	'expand_templates_input'           => 'Testo da espandere:',
+	'expand_templates_output'          => 'Risultato:',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Ignora i commenti',
+);
 $wgExpandTemplatesMessages['kk-kz'] = array(
 	'expandtemplates'                  => 'Үлгілерді ұлғайту',
 	'expand_templates_intro'           => 'Осы құрал арнайы беті әлдебір мәтінді алады да,

@@ -40,6 +40,12 @@ $wgNewuserlogMessages['id'] = array(
 	'newuserlog-create-entry'  => 'Pengguna baru',
 	'newuserlog-create2-entry' => 'membuat akun untuk $1',
 );
+$wgNewuserlogMessages['it'] = array(
+	'newuserlogpage'           => 'Registro nuovi utenti',
+	'newuserlogpagetext'       => 'Di seguito viene riportato il registro dei nomi utente di nuova creazione',
+	'newuserlog-create-entry'  => 'si è registrato',
+	'newuserlog-create2-entry' => 'ha registrato il nome utente $1',
+);
 $wgNewuserlogMessages['ja'] = array(
 	'newuserlogpage'           => 'アカウント作成記録',
 	'newuserlogpagetext'       => '以下は最近作成されたアカウントの一覧です。',
