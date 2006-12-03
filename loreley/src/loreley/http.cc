@@ -649,7 +649,7 @@ void
 httpcllr::backend_read_headers_done(void)
 {
 	_response = _backend_headers->_response;
-	stats.tcur->n_httpreq_ok++;
+	stats.tcur->n_httpresp_ok++;
 
 	if (_validating && _response == 304) {
 		/* Our cached entity was still valid */
