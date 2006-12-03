@@ -34,7 +34,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 			# Never ever use editFormTextTop here as it resides outside the <form> so we will never get contents
 			$m_place = 'editFormTextAfterWarn';
 			# Print the localised title for the select box:
-			$m_textBefore = wfMsgReal( 'selectcategory-title' ) . ":";
+			$m_textBefore = wfMsg( 'selectcategory-title' ) . ":";
 		} else	{
 			# No need to get categories:
 			$m_pageCats = array();
@@ -52,7 +52,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 		# Populate box with categories:
 		foreach( $m_allCats as $m_cat => $m_prefix ) {
 			# Check if the category is in the list of category links on the page then select the entry:
-			if ( $m_pageCats[ $m_cat ] ) $m_selected = 'selected="selected"';
+			if ( @$m_pageCats[ $m_cat ] ) $m_selected = 'selected="selected"';
 			else $m_selected = '';
 			# Print the entry:
 			$m_pageObj->$m_place .= "\t<option $m_selected value=\"". htmlspecialchars( $m_cat ) . "\">";
@@ -63,7 +63,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 		# Close select box:
 		$m_pageObj->$m_place .= "</select>\n";
 		# Print localised help string:
-		$m_pageObj->$m_place .= wfMsgReal( 'selectcategory-subtitle' ) . "<br/>\n";
+		$m_pageObj->$m_place .= wfMsg( 'selectcategory-subtitle' ) . "<br/>\n";
 		$m_pageObj->$m_place .= "<!-- SelectCategory end -->\n";
 
 	}	
@@ -122,7 +122,9 @@ function fnSelectCategoryMessageHook() {
 	# Load default messages (english):
 	include( 'i18n/SelectCategory.i18n.php' );
 	# Load localised messages:
-	include( 'i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' );
+	if( file_exists( 'i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' ) ) { // avoid warnings
+		include( 'i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' );
+	}
 	# Put messages into message cache:
 	$wgMessageCache->addMessages( $messages );
 	

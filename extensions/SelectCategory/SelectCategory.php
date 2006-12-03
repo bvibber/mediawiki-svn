@@ -15,9 +15,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die();
 }
 
-## Prevent warnings about missing parameters on overloaded functions and missing localisation files:
-error_reporting(0);
-
 ## Options:
 # $wgSelectCategoryNamespaces	- list of namespaces in which this extension should be active
 $wgSelectCategoryNamespaces	= array(
