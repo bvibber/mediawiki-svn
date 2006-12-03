@@ -601,6 +601,7 @@ httpcllr::backend_ready(backend *be, wsocket *s)
 void
 httpcllr::backend_write_error(void)
 {
+	stats.tcur->n_httpresp_fail++;
 	start_backend_request(_request_host, _request_path);
 }
 
@@ -648,6 +649,7 @@ void
 httpcllr::backend_read_headers_done(void)
 {
 	_response = _backend_headers->_response;
+	stats.tcur->n_httpreq_ok++;
 
 	if (_validating && _response == 304) {
 		/* Our cached entity was still valid */
@@ -722,6 +724,7 @@ httpcllr::backend_read_headers_error(void)
 	/*
 	 * Try another backend...
 	 */
+	stats.tcur->n_httpresp_fail++;
 	start_backend_request(_request_host, _request_path);
 }
 
