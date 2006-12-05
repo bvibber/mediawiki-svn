@@ -144,7 +144,7 @@ class ContributionsPage extends QueryPage {
 	function outputSubtitle() {
 		global $wgOut;
 		$subtitle = $this->getSubtitleForTarget();
-		// $subtitle .= $this->getDeletedContributionsLink();  NOT YET...
+		$subtitle .= $this->getDeletedContributionsLink();
 		$wgOut->setSubtitle( $subtitle );
 	}
 

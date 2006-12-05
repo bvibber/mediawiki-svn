@@ -18,9 +18,11 @@ class DeletedContributionsPage extends ContributionsPage {
 	}
 
 	function makeSQLCond( $dbr ) {
-		$cond = ' ar_user_text = ' . $dbr->addQuotes( $this->target );
+		$cond = ' ar_user_text = ' . $dbr->addQuotes( $this->getUsername() );
+
 		if ( isset($this->namespace) )
 			$cond .= ' AND ar_namespace = ' . (int)$this->namespace;
+
 		return $cond;
 	}
 
