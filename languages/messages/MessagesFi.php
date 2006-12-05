@@ -64,8 +64,8 @@ $namespaceNames = array(
 	NS_PROJECT_TALK     => 'Keskustelu_{{grammar:elative|$1}}',
 	NS_IMAGE            => 'Kuva',
 	NS_IMAGE_TALK       => 'Keskustelu_kuvasta',
-	NS_MEDIAWIKI        => 'MediaWiki',
-	NS_MEDIAWIKI_TALK   => 'MediaWiki_talk',
+	NS_MEDIAWIKI        => 'Järjestelmäviesti',
+	NS_MEDIAWIKI_TALK   => 'Keskustelu_järjestelmäviestistä',
 	NS_TEMPLATE         => 'Malline',
 	NS_TEMPLATE_TALK    => 'Keskustelu_mallineesta',
 	NS_HELP             => 'Ohje',
@@ -1137,17 +1137,11 @@ Palaute ja lisäapu osoitteessa:
 'contributions'       => 'Käyttäjän muokkaukset',
 'mycontris'           => 'Muokkaukset',
 'contribsub'          => 'Käyttäjän $1 muokkaukset',
-'nocontribs'          => 'Näihin ehtoihin sopivia muokkauksia ei löytynyt.',
-'ucnote'              => 'Alla on \'\'\'$1\'\'\' viimeisintä tämän käyttäjän tekemää muokkausta viimeisten \'\'\'$2\'\'\' päivän aikana.',
-'uclinks'             => 'Katso $1 viimeisintä muokkausta; katso $2 viimeisintä päivää.',
 'uctop'               => ' (uusin)' ,
-'newbies'             => 'tulokkaat',
 
-'sp-contributions-newest' => 'Uusimmat',
-'sp-contributions-oldest' => 'Vanhimmat',
-'sp-contributions-newer'  => '← $1 uudempaa',
-'sp-contributions-older'  => '$1 vanhempaa →',
-'sp-contributions-newbies-sub' => 'Uusien tulokkaiden muokkaukset',
+# Newbie contributions
+#
+'newbiecontributions' => 'Uusien tulokkaiden muokkaukset',
 
 # Deleted contributions
 #

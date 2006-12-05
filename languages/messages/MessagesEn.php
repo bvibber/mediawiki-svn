@@ -381,6 +381,7 @@ $specialPageAliases = array(
 	'Specialpages'              => array( 'Specialpages' ),
 	'Contributions'             => array( 'Contributions' ),
 	'DeletedContributions'      => array( 'DeletedContributions' ),
+	'NewbieContributions'       => array( 'NewbieContributions' ),
 	'Emailuser'                 => array( 'Emailuser' ),
 	'Whatlinkshere'             => array( 'Whatlinkshere' ),
 	'Recentchangeslinked'       => array( 'Recentchangeslinked' ),
@@ -482,6 +483,7 @@ parent class in order maintain consistency across languages.
 'tog-watchlisthideown' => 'Hide my edits from the watchlist',
 'tog-watchlisthidebots' => 'Hide bot edits from the watchlist',
 'tog-nolangconversion'		=> 'Disable variants conversion',
+'tog-ccmeonemails' => 'Send me copies of emails I send to other users',
 
 'underline-always' => 'Always',
 'underline-never' => 'Never',
@@ -1759,19 +1761,11 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'contributions' => 'User contributions',
 'mycontris'     => 'My contributions',
 'contribsub'    => "For $1",
-'nocontribs'    => 'No changes were found matching these criteria.',
-'ucnote'        => "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
-'uclinks'       => "View the last $1 changes; view the last $2 days.",
 'uctop'         => ' (top)' ,
-'newbies'       => 'newbies',
 
-'sp-newimages-showfrom' => 'Show new images starting from $1',
-
-'sp-contributions-newest' => 'Newest',
-'sp-contributions-oldest' => 'Oldest',
-'sp-contributions-newer'  => 'Newer $1',
-'sp-contributions-older'  => 'Older $1',
-'sp-contributions-newbies-sub' => 'For newbies',
+# Newbie contributions
+#
+'newbiecontributions' => 'Newbie contributions',
 
 
 # What links here
@@ -2173,6 +2167,7 @@ ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');',
 'newimages-summary' => '',
 'showhidebots' => '($1 bots)',
 'noimages'  => 'Nothing to see.',
+'sp-newimages-showfrom' => 'Show new images starting from $1',
 
 # short names for language variants used for language conversion links.
 # to disable showing a particular link, set it to 'disable', e.g.

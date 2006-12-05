@@ -13,10 +13,6 @@ class DeletedContributionsPage extends ContributionsPage {
 		return 'DeletedContributions';
 	}
 
-	function newbiesModeEnabled() {
-		return false;  // no hax please
-	}
-
 	function getDeletedContributionsLink() {
 		return '';  // no self-links please
 	}
@@ -109,17 +105,16 @@ class DeletedContributionsPage extends ContributionsPage {
  *
  */
 function wfSpecialDeletedContributions( $par = null ) {
-	global $wgRequest;
+	global $wgRequest, $wgOut;
 
 	$username = ( isset($par) ? $par : $wgRequest->getVal( 'target' ) );
 
-	if( !isset($username) || $username == '' ) {
-		global $wgOut;
+	$page = new DeletedContributionsPage( $username );
+
+	if( !$page->user ) {
 		$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
 		return;
 	}
-
-	$page = new DeletedContributionsPage( $username );
 
 	$page->namespace = $wgRequest->getIntOrNull( 'namespace' );
 	

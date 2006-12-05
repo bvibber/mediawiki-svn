@@ -29,6 +29,7 @@ $wgQueryPages = array(
 	array( 'MostlinkedPage',		'Mostlinked'			),
 	array( 'MostrevisionsPage',		'Mostrevisions'			),
 	array( 'NewPagesPage',			'Newpages'			),
+	array( 'NewbieContributionsPage',	'NewbieContributions'		),
 	array( 'ShortPagesPage',		'Shortpages'			),
 	array( 'UncategorizedCategoriesPage',	'Uncategorizedcategories'	),
 	array( 'UncategorizedPagesPage',	'Uncategorizedpages'		),
@@ -341,7 +342,7 @@ class QueryPage {
 		if ( $num > 0 ) {
 			$s = array();
 			if ( ! $this->listoutput )
-				$s[] = "<ol start='" . ( $offset + 1 ) . "' class='special'>";
+				$s[] = $this->openList( $offset );
 
 			# Only read at most $num rows, because $res may contain the whole 1000
 			for ( $i = 0; $i < $num && $obj = $dbr->fetchObject( $res ); $i++ ) {
@@ -366,7 +367,7 @@ class QueryPage {
 
 			$dbr->freeResult( $res );
 			if ( ! $this->listoutput )
-				$s[] = '</ol>';
+				$s[] = $this->closeList();
 			$str = $this->listoutput ? $wgContLang->listToText( $s ) : implode( '', $s );
 			$wgOut->addHTML( $str );
 		}
@@ -374,6 +375,14 @@ class QueryPage {
 			$wgOut->addHTML( "<p>{$sl}</p>\n" );
 		}
 		return $num;
+	}
+	
+	function openList( $offset ) {
+		return "<ol start='" . ( $offset + 1 ) . "' class='special'>";
+	}
+	
+	function closeList() {
+		return '</ol>';
 	}
 
 	/**

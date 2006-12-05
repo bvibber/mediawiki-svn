@@ -203,8 +203,10 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'titleprefixeddbkey', $this->mTitle->getPrefixedDBKey() );
 		$tpl->set( 'titletext', $this->mTitle->getText() );
 		$tpl->set( 'articleid', $this->mTitle->getArticleId() );
+		$tpl->set( 'currevisionid', isset( $wgArticle ) ? $wgArticle->getLatest() : 0 );
+
 		$tpl->set( 'isarticle', $wgOut->isArticle() );
-		                
+
 		$tpl->setRef( "thispage", $this->thispage );
 		$subpagestr = $this->subPageSubtitle();
 		$tpl->set(
@@ -810,7 +812,7 @@ class SkinTemplate extends Skin {
 		$oldid = $wgRequest->getVal( 'oldid' );
 
 		$nav_urls = array();
-		$nav_urls['mainpage'] = array( 'href' => self::makeI18nUrl( 'mainpage') );
+		$nav_urls['mainpage'] = array( 'href' => self::makeMainPageUrl() );
 		if( $wgEnableUploads ) {
 			if ($wgUploadNavigationUrl) {
 				$nav_urls['upload'] = array( 'href' => $wgUploadNavigationUrl );

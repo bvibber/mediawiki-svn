@@ -765,9 +765,9 @@ class Linker {
 	function userLink( $userId, $userText ) {
 		$encName = htmlspecialchars( $userText );
 		if( $userId == 0 ) {
-			$contribsPage = SpecialPage::getTitleFor( 'Contributions' );
+			$contribsPage = SpecialPage::getTitleFor( 'Contributions', $userText );
 			return $this->makeKnownLinkObj( $contribsPage,
-				$encName, 'target=' . urlencode( $userText ) );
+				$encName);
 		} else {
 			$userPage = Title::makeTitle( NS_USER, $userText );
 			return $this->makeLinkObj( $userPage, $encName );
@@ -790,9 +790,9 @@ class Linker {
 			$items[] = $this->userTalkLink( $userId, $userText );
 		}
 		if( $userId ) {
-			$contribsPage = SpecialPage::getTitleFor( 'Contributions' );
-			$items[] = $this->makeKnownLinkObj( $contribsPage,
-				wfMsgHtml( 'contribslink' ), 'target=' . urlencode( $userText ) );
+			$contribsPage = SpecialPage::getTitleFor( 'Contributions', $userText );
+			$items[] = $this->makeKnownLinkObj( $contribsPage ,
+				wfMsgHtml( 'contribslink' ) );
 		}
 		if( $blockable && $wgUser->isAllowed( 'block' ) ) {
 			$items[] = $this->blockLink( $userId, $userText );
@@ -827,9 +827,9 @@ class Linker {
 	 * @private
 	 */
 	function blockLink( $userId, $userText ) {
-		$blockPage = SpecialPage::getTitleFor( 'Blockip' );
+		$blockPage = SpecialPage::getTitleFor( 'Blockip', $userText );
 		$blockLink = $this->makeKnownLinkObj( $blockPage,
-			wfMsgHtml( 'blocklink' ), 'ip=' . urlencode( $userText ) );
+			wfMsgHtml( 'blocklink' ) );
 		return $blockLink;
 	}
 	
@@ -931,7 +931,8 @@ class Linker {
 
 		# format regular and media links - all other wiki formatting
 		# is ignored
-		$medians = $wgContLang->getNsText( NS_MEDIA ) . ':';
+		$medians = '(?:' . preg_quote( Namespace::getCanonicalName( NS_MEDIA ), '/' ) . '|';
+		$medians .= preg_quote( $wgContLang->getNsText( NS_MEDIA ), '/' ) . '):';
 		while(preg_match('/\[\[(.*?)(\|(.*?))*\]\](.*)$/',$comment,$match)) {
 			# Handle link renaming [[foo|text]] will show link as "text"
 			if( "" != $match[3] ) {

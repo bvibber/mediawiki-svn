@@ -278,27 +278,28 @@ class Skin extends Linker {
 			var wgArticlePath = "' . Xml::escapeJsString( $data['articlepath'] ) . '";
 			var wgScriptPath = "' . Xml::escapeJsString( $data['scriptpath'] ) . '";
 			var wgServer = "' . Xml::escapeJsString( $data['serverurl'] ) . '";
-                        
+
 			var wgCanonicalNamespace = "' . Xml::escapeJsString( $data['nscanonical'] ) . '";
 			var wgNamespaceNumber = ' . (int)$data['nsnumber'] . ';
 			var wgPageName = "' . Xml::escapeJsString( $data['titleprefixeddbkey'] ) . '";
 			var wgTitle = "' . Xml::escapeJsString( $data['titletext'] ) . '";
 			var wgArticleId = ' . (int)$data['articleid'] . ';
+			var wgCurRevisionId = ' . ( int ) $data['currevisionid'] . ';
 			var wgIsArticle = ' . ( $data['isarticle'] ? 'true' : 'false' ) . ';
-                        
+		
 			var wgUserName = ' . ( $data['username'] == NULL ? 'null' : ( '"' . Xml::escapeJsString( $data['username'] ) . '"' ) ) . ';
 			var wgUserLanguage = "' . Xml::escapeJsString( $data['userlang'] ) . '";
 			var wgContentLanguage = "' . Xml::escapeJsString( $data['lang'] ) . '";
 		</script>
 		';
-		
+
 		return $r;
 	}
 
 	function getHeadScripts() {
 		global $wgStylePath, $wgUser, $wgAllowUserJs, $wgJsMimeType, $wgStyleVersion;
 		global $wgArticlePath, $wgScriptPath, $wgServer, $wgContLang, $wgLang;
-		global $wgTitle, $wgCanonicalNamespaceNames, $wgOut;
+		global $wgTitle, $wgCanonicalNamespaceNames, $wgOut, $wgArticle;
 
 		$ns = $wgTitle->getNamespace();
 		$nsname = isset( $wgCanonicalNamespaceNames[ $ns ] ) ? $wgCanonicalNamespaceNames[ $ns ] : $wgTitle->getNsText();
@@ -315,6 +316,7 @@ class Skin extends Linker {
 			'titleprefixeddbkey' => $wgTitle->getPrefixedDBKey(),
 			'titletext' => $wgTitle->getText(),
 			'articleid' => $wgTitle->getArticleId(),
+			'currevisionid' => isset( $wgArticle ) ? $wgArticle->getLatest() : 0,
 			'isarticle' => $wgOut->isArticle(),
 			'username' => $wgUser->isAnon() ? NULL : $wgUser->getName(),
 			'userlang' => $wgLang->getCode(),
@@ -1127,12 +1129,8 @@ END;
 		else { $a = ''; }
 
 		$mp = wfMsg( 'mainpage' );
-		$titleObj = Title::newFromText( $mp );
-		if ( is_object( $titleObj ) ) {
-			$url = $titleObj->escapeLocalURL();
-		} else {
-			$url = '';
-		}
+		$mptitle = Title::newMainPage();
+		$url = ( is_object($mptitle) ? $mptitle->escapeLocalURL() : '' );
 
 		$logourl = $this->getLogo();
 		$s = "<a href='{$url}'><img{$a} src='{$logourl}' alt='[{$mp}]' /></a>";
@@ -1170,9 +1168,7 @@ END;
 	}
 
 	function mainPageLink() {
-		$mp = wfMsgForContent( 'mainpage' );
-		$mptxt = wfMsg( 'mainpage');
-		$s = $this->makeKnownLink( $mp, $mptxt );
+		$s = $this->makeKnownLinkObj( Title::newMainPage(), wfMsg( 'mainpage' ) );
 		return $s;
 	}
 
@@ -1495,6 +1491,12 @@ END;
 	}
 
 	/* these are used extensively in SkinTemplate, but also some other places */
+	static function makeMainPageUrl( $urlaction = '' ) {
+		$title = Title::newMainPage();
+		self::checkTitle( $title, $name );
+		return $title->getLocalURL( $urlaction );
+	}
+
 	static function makeSpecialUrl( $name, $urlaction = '' ) {
 		$title = SpecialPage::getTitleFor( $name );
 		return $title->getLocalURL( $urlaction );
