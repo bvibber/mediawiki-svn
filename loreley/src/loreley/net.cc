@@ -262,15 +262,13 @@ void
 ioloop_t::_accept(wsocket *s, int)
 {
 	wsocket		*newe;
-static atomic<time_t>	 last_nfile = 0;
-	time_t		 now = time(NULL);
+static rate_limited_logger enfile_log(60, ll_warn, "accept error: %s");
 
 	if ((newe = s->accept("HTTP client", prio_norm)) == NULL) {
-		if ((errno != ENFILE && errno != EMFILE) || (now - last_nfile) > 60) {
-			if (errno == ENFILE || errno == EMFILE)
-				last_nfile = now;
+		if (errno == ENFILE || errno == EMFILE)
+			enfile_log.log(strerror(errno));
+		else
 			wlog.warn(format("accept error: %s") % strerror(errno));
-		}
 		s->readback(bind(&ioloop_t::_accept, this, _1, _2), -1);
 		return;
 	}

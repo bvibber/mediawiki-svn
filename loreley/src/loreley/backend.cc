@@ -96,8 +96,6 @@ backend_list::_get_impl(function<void (backend *, wsocket *)> cb)
 {
 struct	backend_cb_data	*cbd;
 	wsocket		*s = NULL;
-static	time_t		 last_nfile;
-	time_t		 now = time(NULL);
 
 	/*
 	 * If we're delegating (for failover), pass this request off.
@@ -129,11 +127,13 @@ static	time_t		 last_nfile;
 				"backend connection", prio_backend);
 			s->nonblocking(true);
 		} catch (socket_error &e) {
-			if (e.err() != ENFILE || now - last_nfile > 60) 
+		static rate_limited_logger enfile_msg(5, ll_warn,
+				"opening backend socket: %s");
+			if (e.err() == ENFILE || e.err() == EMFILE)
+				enfile_msg.log(e.what());
+			else
 				wlog.warn(format("opening backend socket: %s")
 					% e.what());
-			if (e.err() == ENFILE)
-				last_nfile = now;
 			delete cbd;
 			delete s;
 			return -1;

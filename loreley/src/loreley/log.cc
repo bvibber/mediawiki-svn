@@ -68,7 +68,7 @@ logger::open(void)
 }
 
 void
-logger::_log(log_level sev, string const &e)
+logger::log(log_level sev, string const &e)
 {
 	HOLDING(_lock);
 	_log_unlocked(sev, e);
