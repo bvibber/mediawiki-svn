@@ -23,6 +23,9 @@ $wgSiteMatrixMessages['he'] = array(
 $wgSiteMatrixMessages['id'] = array(
 	"sitematrix" => "Daftar wiki Wikimedia",
 );
+$wgSiteMatrixMessages['it'] = array(
+	"sitematrix" => "Elenco dei progetti wiki Wikimedia",
+);
 $wgSiteMatrixMessages['ja'] = array(
 	"sitematrix" => "Wikimediaウィキの一覧",
 );

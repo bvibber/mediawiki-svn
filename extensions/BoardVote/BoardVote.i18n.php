@@ -243,6 +243,70 @@ Berikut adalah hasil dari enkripsi. Data tersebut akan ditampilkan untuk publik 
 	'group-boardvote-member'  => 'Pengurus pemilihan anggota dewan',
 	'grouppage-boardvote'     => '{{ns:project}}:Pengurus pemilihan anggota dewan',
 );
+$wgBoardVoteMessages['it'] = array(
+	'boardvote'               => "Elezioni del Consiglio direttivo della Wikimedia Foundation",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vota]]
+* [[Special:Boardvote/list|Visualizza i voti espressi sinora]]
+* [[Special:Boardvote/dump|Scarica i voti in forma cifrata]]",
+	'boardvote_intro'         => "
+<p>Benvenuti alla seconda elezione per il Consiglio direttivo della Wikimedia Foundation. 
+Si vota per eleggere due rappresentanti della comunità degli utenti sui vari progetti 
+Wikimedia. Queste persone daranno un contributo nelle scelte sugli indirizzi futuri dei
+progetti Wikimedia, sia individualmente che come gruppo. Essi rappresentano i <em>vostri</em> 
+interessi e preoccupazioni nei confronti del Consiglio direttivo; decideranno inoltre con
+quali mezzi procurare le risorse finanziarie e come gestire i frutti della raccolta fondi.</p>
+
+<p>Si prega di leggere con attenzione le presentazioni dei candidati e le risposte alle domande
+prima di votare. Tutti i candidati sono utenti stimati che si sono dedicati in modo considerevole,
+in termini di tempo e di impegno personale, per fare di questi progetti un ambiente accogliente e
+impegnato nella ricerca e la distribuzione libera della conoscenza umana.</p>
+
+<p>È possibile votare per un qualsiasi numero di candidati. Verrà eletto il candidato con il 
+maggior numero di voti per ciascun seggio. In caso di parità si terrà un turno di ballottaggio.</p>
+
+<p>Per maggiori informazioni, si rimanda ai seguenti documenti:</p>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">FAQ su questa elezione</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Presentazione dei candidati</a></li></ul>
+",
+	'boardvote_intro_change'  => "<p>Il voto è già stato espresso. Per cambiarlo, usare il modulo sottostante. Spuntare la casella a fianco di ciascuno dei candidati che si desidera sostenere.</p>",
+	'boardvote_entered'       => "Il voto è stato registrato. Grazie.
+
+Se lo si desidera, è possibile registrare i dettagli del proprio voto, riportati di seguito:
+
+<pre>$1</pre>
+
+Il voto è stato cifrato con la chiave pubblica della commissione elettorale:
+
+<pre>$2</pre>
+
+Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile al pubblico all'indirizzo [[Special:Boardvote/dump]]. 
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Indietro]]",
+	'boardvote_notloggedin'   => "Accesso non effettuato. Per esprimere un voto è necessario disporre di un'utenza che abbia effettuato almeno $1 contributi prima del $2; la prima modifica registrata deve essere precedente al $3.",
+	'boardvote_notqualified'  => "Questa utenza non possiede i requisiti necessari per votare. È necessario aver effettuato $3 modifiche prima del $2, ne risultano registrate $1. Inoltre, la prima modifica registrata è del $4, mentre deve essere precedente al $5.",
+	'boardvote_novotes'       => "Non ha ancora votato nessuno.",
+	'boardvote_time'          => "Data e ora",
+	'boardvote_user'          => "Utente",
+	'boardvote_edits'         => "Modifiche",
+	'boardvote_days'          => "Giorni",
+	'boardvote_ip'            => "IP",
+	'boardvote_ua'            => "User agent",
+	'boardvote_listintro'     => "<p>Di seguito viene riportato l'elenco dei voti registrati sinora. $1 per scaricare i dati in forma cifrata.</p>",
+	'boardvote_dumplink'      => "Fare clic qui",
+	'boardvote_submit'        => 'OK',
+	'boardvote_strike'        => "Annulla questo voto",
+	'boardvote_unstrike'      => "Elimina annullamento",
+	'boardvote_needadmin'     => "Operazione riservata ai componenti della commissione elettorale.",
+	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Elezioni del Consiglio direttivo Wikimedia</a>: è possibile votare fino al 12 luglio",
+	'boardvote_notstarted'    => 'La votazione non è ancora iniziata',
+	'boardvote_closed'        => 'La votazione è conclusa, si invita a consultare  [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/It la pagina dei risultati].',
+	'boardvote_edits_many'    => 'molti',
+	'group-boardvote'         => 'Commissione elettorale',
+	'group-boardvote-member'  => 'Commissario elettorale',
+	'grouppage-boardvote'     => '{{ns:project}}:Commissario elettorale',
+);
 $wgBoardVoteMessages['kk-kz'] = array(
 	'boardvote'               => "Wikimedia Жебеушілер Кеңесінің сайлауы ",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Дауыс беру]]

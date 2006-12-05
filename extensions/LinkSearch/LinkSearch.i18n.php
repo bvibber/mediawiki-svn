@@ -38,6 +38,12 @@ $wgLinkSearchMessages['id'] = array(
 	'linksearch-line'  => '$1 terpaut dari $2',
 	'linksearch-error' => '\'\'Wildcards\'\' hanya dapat digunakan di bagian awal dari nama host.'
 );
+$wgLinkSearchMessages['it'] = array(
+	'linksearch'       => 'Ricerca collegamenti esterni',
+	'linksearch-text'  => 'È possibile fare uso di metacaratteri, ad es. "*.example.org".',
+	'linksearch-line'  => '$1 presente nella pagina $2',
+	'linksearch-error' => 'I metacaratteri possono essere usati solo all\'inizio del nome dell\'host.',
+);
 $wgLinkSearchMessages['ja'] = array(
 	'linksearch'       => '外部リンクの検索',
 	'linksearch-text'  => '"*.wikipedia.org" のようにワイルドカードを使うことができます。',
