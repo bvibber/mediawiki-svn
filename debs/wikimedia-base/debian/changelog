@@ -1,8 +1,14 @@
+wikimedia-base (0.13) dapper; urgency=low
+
+  * Depend on traceroute
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue,  5 Dec 2006 20:44:41 +0000
+
 wikimedia-base (0.12) dapper; urgency=low
 
   * Depend on vim
 
- -- Mark Bergsma <mark@ragweed.knams.wikimedia.org>  Tue,  5 Dec 2006 20:32:22 +0000
+ -- Mark Bergsma <mark@wikimedia.org>  Tue,  5 Dec 2006 20:32:22 +0000
 
 wikimedia-base (0.11) dapper; urgency=low
 
