@@ -1,3 +1,9 @@
+wikimedia-base (0.12) dapper; urgency=low
+
+  * Depend on vim
+
+ -- Mark Bergsma <mark@ragweed.knams.wikimedia.org>  Tue,  5 Dec 2006 20:32:22 +0000
+
 wikimedia-base (0.11) dapper; urgency=low
 
   * Restart ntpd on upgrade again, it wasn't the cause of problems
