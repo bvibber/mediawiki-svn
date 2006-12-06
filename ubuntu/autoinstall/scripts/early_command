@@ -31,4 +31,4 @@ for PID in $(pidof nc); do
 	fi
 done
 rm /var/lib/httpd_stop
-httpd
+#httpd
