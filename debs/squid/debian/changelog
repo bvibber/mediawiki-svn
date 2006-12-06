@@ -1,3 +1,10 @@
+squid (2.6.5-1wm6) edgy; urgency=low
+
+  * Build against Google's tcmalloc to solve memory fragmentation issues
+  * Actually pass CFLAGS on to ./configure so they get used
+
+ -- Mark Bergsma <mark@wikimedia.org>  Wed,  6 Dec 2006 20:50:09 +0000
+
 squid (2.6.5-1wm5) edgy; urgency=low
 
   * Insert a 'ulimit -c unlimited' in the startup script, so Squid dumps core

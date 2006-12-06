@@ -123,7 +123,7 @@ build: patch config.status
 # Configure the package.
 config.status: 
 
-	$(opt_ac_cv_func_setresuid) \
+	$(opt_ac_cv_func_setresuid) CFLAGS="$(CFLAGS)" \
 	./configure \
 	--prefix=/usr \
 	--exec_prefix=/usr \
@@ -150,6 +150,7 @@ config.status:
 	--with-large-files \
 	--with-maxfd=16384 \
 	--enable-stacktraces \
+	--enable-dlmalloc=-ltcmalloc \
 	$(DEB_HOST_ARCH_CPU)-debian-$(DEB_HOST_ARCH_OS)
 ifeq ($(DEB_HOST_ARCH_OS), linux)
 endif
