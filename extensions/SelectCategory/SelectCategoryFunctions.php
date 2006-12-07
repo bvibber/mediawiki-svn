@@ -152,7 +152,7 @@ function fnSelectCategoryGetAllCategories() {
 		# Automagically detect root categories:
 		$m_sql = "	SELECT tmpSelectCat1.cl_to AS title
 				FROM $m_tblCatLink AS tmpSelectCat1 
-				LEFT JOIN $m_tblPage AS tmpSelectCatPage ON tmpSelectCat1.cl_to = tmpSelectCatPage.page_title 
+				LEFT JOIN $m_tblPage AS tmpSelectCatPage ON (tmpSelectCat1.cl_to = tmpSelectCatPage.page_title AND tmpSelectCatPage.page_namespace = 14)
 				LEFT JOIN $m_tblCatLink AS tmpSelectCat2 ON tmpSelectCatPage.page_id = tmpSelectCat2.cl_from 
 				WHERE tmpSelectCat2.cl_from IS NULL GROUP BY tmpSelectCat1.cl_to";
 		# Run the query:
