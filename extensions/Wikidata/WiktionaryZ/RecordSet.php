@@ -1,14 +1,5 @@
 <?php
 
-/* Copyright (C) 2006 by Charta Software
- *   http://www.charta.org/
- * Licensed under the GNU General Public License
- * Note: Based on the relational model; we use the following terminology:
- *         Relation=RecordSet
- *         Structure=RecordDefinition
- *         Record=Record
- */ 
-
 require_once('forms.php');
 require_once('converter.php');
 require_once('Attribute.php');

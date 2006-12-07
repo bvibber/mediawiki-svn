@@ -1,9 +1,5 @@
 <?php
 
-/* Copyright (C) 2006 by Charta Software
- *   http://www.charta.org/
- */ 
-
 class ScalarType {
 	protected $id;
 	
