@@ -34,7 +34,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 			# Never ever use editFormTextTop here as it resides outside the <form> so we will never get contents
 			$m_place = 'editFormTextAfterWarn';
 			# Print the localised title for the select box:
-			$m_textBefore = wfMsg( 'selectcategory-title' ) . ":";
+			$m_textBefore = '<b>'. wfMsg( 'selectcategory-title' ) . '</b>:';
 		} else	{
 			# No need to get categories:
 			$m_pageCats = array();
@@ -42,7 +42,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 			# Place output at the right place:
 			$m_place = 'uploadFormTextAfterSummary';
 			# Print the part of the table including the localised title for the select box:
-			$m_textBefore = "\n</td></tr><tr><td align='right'><label for='wpSelectCategory'>" . wfMsgReal( 'selectcategory-title' ) .":</label></td><td align='left'>";
+			$m_textBefore = "\n</td></tr><tr><td align='right'><label for='wpSelectCategory'>" . wfMsg( 'selectcategory-title' ) .":</label></td><td align='left'>";
 		}
 
 		# Print the select box:
@@ -122,7 +122,7 @@ function fnSelectCategoryMessageHook() {
 	# Load default messages (english):
 	include( 'i18n/SelectCategory.i18n.php' );
 	# Load localised messages:
-	if( file_exists( 'i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' ) ) { // avoid warnings
+	if( file_exists( dirname( __FILE__ ) . 'i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' ) ) { // avoid warnings
 		include( 'i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' );
 	}
 	# Put messages into message cache:
