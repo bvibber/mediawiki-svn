@@ -122,7 +122,7 @@ function fnSelectCategoryMessageHook() {
 	# Load default messages (english):
 	include( 'i18n/SelectCategory.i18n.php' );
 	# Load localised messages:
-	if( file_exists( dirname( __FILE__ ) . 'i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' ) ) { // avoid warnings
+	if( file_exists( dirname( __FILE__ ) . '/i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' ) ) { // avoid warnings
 		include( 'i18n/SelectCategory.i18n.' . $wgLang->getCode() . '.php' );
 	}
 	# Put messages into message cache:
