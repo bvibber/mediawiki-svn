@@ -13,6 +13,10 @@ class DefaultWikidataApplication implements WikidataApplication {
 	protected $showRecordLifeSpan;
 	protected $transaction;
 	protected $queryTransactionInformation;
+	protected $viewQueryTransactionInformation;
+	protected $shouldShowAuthorities;
+	
+	protected $availableAuthorities = array();
 
 	public function __construct() {
 		global 
@@ -44,6 +48,30 @@ class DefaultWikidataApplication implements WikidataApplication {
 			
 		$wgOut->enableClientCache(false);
 		$wgOut->addHTML($this->getLanguageSelector());
+
+		$authorities = array();
+		
+		if (count($this->availableAuthorities) > 0) {
+			$authorityOptions = array();
+			
+			foreach($this->availableAuthorities as $authority) {
+				$showAuthority = isset($_GET['authority-' . $authority]); 
+				
+				if ($showAuthority)
+					$authorities[] = $authority;
+
+				$authorityOptions["Show " . getUserName($authority) . " version"] = getCheckBox('authority-' . $authority, $showAuthority);
+			}
+	
+			$wgOut->addHTML(getOptionPanel($authorityOptions));
+		}
+		
+		$this->shouldShowAuthorities = count($authorities) > 0; 
+		
+		if ($this->shouldShowAuthorities) 
+			$this->viewQueryTransactionInformation = new QueryAuthoritativeTransactionInformation($authorities);
+		else
+			$this->viewQueryTransactionInformation = new QueryLatestTransactionInformation();
 	}
 	
 	protected function save($referenceTransaction) {

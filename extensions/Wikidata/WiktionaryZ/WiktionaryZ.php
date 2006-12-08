@@ -25,7 +25,7 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		parent::view();
 
 		$spelling = $wgTitle->getText();
-		$wgOut->addHTML(getExpressionsEditor($spelling, false)->view(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryLatestTransactionInformation())));
+		$wgOut->addHTML(getExpressionsEditor($spelling, false, $this->shouldShowAuthorities)->view(new IdStack("expression"), getExpressionsRecordSet($spelling, $this->viewQueryTransactionInformation)));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 
@@ -40,7 +40,7 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		parent::history();
 
 		$spelling = $wgTitle->getText();
-		$wgOut->addHTML(getExpressionsEditor($spelling, $this->showRecordLifeSpan)->view(new IdStack("expression"), getExpressionsRecordSet($spelling, $this->queryTransactionInformation)));
+		$wgOut->addHTML(getExpressionsEditor($spelling, $this->showRecordLifeSpan, false)->view(new IdStack("expression"), getExpressionsRecordSet($spelling, $this->queryTransactionInformation)));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 
@@ -54,7 +54,7 @@ class WiktionaryZ extends DefaultWikidataApplication {
 			$wgTitle;
 
 		$spelling = $wgTitle->getText();
-		getExpressionsEditor($spelling, false)->save(new IdStack("expression"), getExpressionsRecordSet($spelling, $referenceTransaction));
+		getExpressionsEditor($spelling, false, false)->save(new IdStack("expression"), getExpressionsRecordSet($spelling, $referenceTransaction));
 	}
 
 	public function edit() {
@@ -66,7 +66,7 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		$spelling = $wgTitle->getText();
 
 		$this->outputEditHeader();
-		$wgOut->addHTML(getExpressionsEditor($spelling, false)->edit(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryLatestTransactionInformation())));
+		$wgOut->addHTML(getExpressionsEditor($spelling, false, false)->edit(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryLatestTransactionInformation())));
 		$this->outputEditFooter();
 	}
 }

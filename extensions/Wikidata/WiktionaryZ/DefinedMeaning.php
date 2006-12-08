@@ -13,7 +13,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 //		$definedMeaningId = $wgTitle->getText();
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		$wgOut->addHTML(getDefinedMeaningEditor(false)->view($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, new QueryLatestTransactionInformation())));
+		$wgOut->addHTML(getDefinedMeaningEditor(false, $this->shouldShowAuthorities)->view($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, $this->viewQueryTransactionInformation)));
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 	}
@@ -28,7 +28,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 
 		$this->outputEditHeader();
-		$wgOut->addHTML(getDefinedMeaningEditor(false)->edit($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, new QueryLatestTransactionInformation())));
+		$wgOut->addHTML(getDefinedMeaningEditor(false, false)->edit($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, new QueryLatestTransactionInformation())));
 		$this->outputEditFooter();
 	}
 	
@@ -40,7 +40,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 //		$definedMeaningId = $wgTitle->getText();
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		$wgOut->addHTML(getDefinedMeaningEditor($this->showRecordLifeSpan)->view(
+		$wgOut->addHTML(getDefinedMeaningEditor($this->showRecordLifeSpan, false)->view(
 			new IdStack("defined-meaning"), 
 			getDefinedMeaningRecord($definedMeaningId, $this->queryTransactionInformation))
 		);
@@ -59,7 +59,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 //		$definedMeaningId = $wgTitle->getText();
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		getDefinedMeaningEditor(false)->save($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, $referenceTransaction));
+		getDefinedMeaningEditor(false, false)->save($this->getIdStack($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, $referenceTransaction));
 	}
 	
 	protected function getIdStack($definedMeaningId) {

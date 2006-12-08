@@ -12,22 +12,30 @@ function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeM
 	
 	$selectFields = array_keys($fieldAttributeMapping);
 	$attributes = array_values($fieldAttributeMapping);
+	$tableNames = array($table->name);
 
 	if ($table->isVersioned) {
-		$restrictions[] = $transactionInformation->getRestriction($table->name);
+		$restrictions[] = $transactionInformation->getRestriction($table);
+		$tableNames = array_merge($tableNames, $transactionInformation->getTables());
 		$orderBy = array_merge($orderBy, $transactionInformation->versioningOrderBy());
+		$groupBy = $transactionInformation->versioningGroupBy($table);
 		$selectFields = array_merge($selectFields, $transactionInformation->versioningFields($table->name));
 		$allAttributes = array_merge($attributes, $transactionInformation->versioningAttributes());
 	}
-	else
+	else {
 		$allAttributes = $attributes;
+		$groupBy = array();
+	}
 	
 	$query = "SELECT ". implode(", ", $selectFields) . 
-			" FROM ". $table->name;
+			" FROM ". implode(", ", $tableNames);
 
 	if (count($restrictions) > 0)
 		$query .= " WHERE ". implode(' AND ', $restrictions);
 	
+	if (count($groupBy) > 0)
+		$query .= " GROUP BY " . implode(', ', $groupBy);
+
 	if (count($orderBy) > 0)
 		$query .= " ORDER BY " . implode(', ', $orderBy);
 		

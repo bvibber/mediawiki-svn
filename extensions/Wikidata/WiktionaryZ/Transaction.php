@@ -5,18 +5,24 @@ require_once('Record.php');
 require_once('RecordSet.php');
 
 interface QueryTransactionInformation {
-	public function getRestriction($tableName);
+	public function getRestriction($table);
+	public function getTables();
 	public function versioningAttributes();
 	public function versioningFields($tableName);
 	public function versioningOrderBy();
+	public function versioningGroupBy($table);
 	public function setVersioningAttributes($record, $row);
 }
 
-class QueryLatestTransactionInformation implements QueryTransactionInformation {
-	public function getRestriction($tableName) {
-		return getLatestTransactionRestriction($tableName);
+class DefaultQueryTransactionInformation {
+	public function getRestriction($table) {
+		return "1";
 	}
 	
+	public function getTables() {
+		return array();
+	}
+
 	public function versioningAttributes() {
 		return array();
 	}
@@ -29,15 +35,24 @@ class QueryLatestTransactionInformation implements QueryTransactionInformation {
 		return array();
 	}
 	
+	public function versioningGroupBy($table) {
+		return array();
+	}
+	
 	public function setVersioningAttributes($record, $row) {
 	}
 }
 
-class QueryHistoryTransactionInformation implements QueryTransactionInformation {
-	public function getRestriction($tableName) {
-		return "1";
+class QueryLatestTransactionInformation extends DefaultQueryTransactionInformation {
+	public function getRestriction($table) {
+		return getLatestTransactionRestriction($table->name);
 	}
 	
+	public function setVersioningAttributes($record, $row) {
+	}
+}
+
+class QueryHistoryTransactionInformation extends DefaultQueryTransactionInformation {
 	public function versioningAttributes() {
 		global
 			$recordLifeSpanAttribute;
@@ -61,15 +76,15 @@ class QueryHistoryTransactionInformation implements QueryTransactionInformation 
 	}
 }
 
-class QueryAtTransactionInformation implements QueryTransactionInformation {
+class QueryAtTransactionInformation extends DefaultQueryTransactionInformation {
 	protected $transactionId;
 	
 	public function __construct($transactionId) {
 		$this->transactionId = $transactionId;
 	}
 	
-	public function getRestriction($tableName) {
-		return getAtTransactionRestriction($tableName, $this->transactionId);
+	public function getRestriction($table) {
+		return getAtTransactionRestriction($table->name, $this->transactionId);
 	}
 	
 	public function versioningAttributes() {
@@ -83,10 +98,6 @@ class QueryAtTransactionInformation implements QueryTransactionInformation {
 		return array($tableName . '.add_transaction_id', $tableName . '.remove_transaction_id', $tableName . '.remove_transaction_id IS NULL AS is_live');
 	}
 	
-	public function versioningOrderBy() {
-		return array();
-	}
-	
 	public function setVersioningAttributes($record, $row) {
 		global
 			$recordLifeSpanAttribute;
@@ -95,38 +106,107 @@ class QueryAtTransactionInformation implements QueryTransactionInformation {
 	}
 }
 
-class QueryUpdateTransactionInformation implements QueryTransactionInformation {
+class QueryUpdateTransactionInformation extends DefaultQueryTransactionInformation {
 	protected $transactionId;
 	
 	public function __construct($transactionId) {
 		$this->transactionId = $transactionId;
 	}
 	
-	public function getRestriction($tableName) {
-		return " $tableName.add_transaction_id = $this->transactionId OR $tableName.removeTransactionId = $this->transactionId ";
+	public function getRestriction($table) {
+		return 
+			" " . $table->name . ".add_transaction_id =". $this->transactionId . 
+			" OR " . $table->name . ".removeTransactionId =" . $this->transactionId;
 	}
 	
-	public function versioningAttributes() {
+//	public function versioningAttributes() {
 //		global
 //			$recordLifeSpanAttribute;
-			
-		return array();
-	}
+//			
+//		return array();
+//	}
 	
-	public function versioningFields($tableName) {
+//	public function versioningFields($tableName) {
 //		return array($tableName . '.add_transaction_id', $tableName . '.remove_transaction_id', $tableName . '.remove_transaction_id IS NULL AS is_live');
-		return array();
-	}
+//	}
 	
-	public function versioningOrderBy() {
-		return array();
-	}
-	
-	public function setVersioningAttributes($record, $row) {
+//	public function setVersioningAttributes($record, $row) {
 //		global
 //			$recordLifeSpanAttribute;
 //			
 //		$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']));
+//	}
+}
+
+class QueryAuthoritativeTransactionInformation extends DefaultQueryTransactionInformation {
+	protected $authorities;
+	
+	public function __construct($authorities) {
+		$this->authorities = $authorities;
+	}
+	
+	protected function getKeyFieldRestrictions($table, $prefix) {
+		$result = array();
+		
+		foreach ($table->keyFields as $keyField)
+			$result[] = $table->name . "." . $keyField . "=" . $prefix . $table->name . "." . $keyField; 
+		
+		return implode(" AND ", $result);
+	}
+	
+	public function getRestriction($table) {
+		return 
+			$table->name . ".add_transaction_id=transactions.transaction_id" .
+			" AND (" .
+				getLatestTransactionRestriction($table->name) . 
+				" OR (" .
+					" transactions.user_id IN (" . implode(", ", $this->authorities) . ") " .
+					" AND " .$table->name . ".add_transaction_id=(" .
+						" SELECT max(add_transaction_id) " .
+						" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
+						" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
+						" AND latest_transactions.transaction_id=latest_" . $table->name . ".add_transaction_id" .
+						" AND latest_transactions.user_id=transactions.user_id" .
+						")" .
+					" AND NOT EXISTS (" .
+						" SELECT * " .
+						" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
+						" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
+						" AND latest_transactions.transaction_id=latest_" . $table->name . ".remove_transaction_id" .
+						" AND latest_transactions.user_id=transactions.user_id" .
+						" AND latest_" . $table->name . ".remove_transaction_id > " . $table->name . ".add_transaction_id" .
+					")" . 
+				" )" .
+			" )";
+	}
+	
+	public function getTables() {
+		return array("transactions");
+	}
+	
+	public function versioningAttributes() {
+		global
+			$authorityAttribute;
+			
+		return array($authorityAttribute);
+	}
+
+	public function versioningFields($tableName) {
+		return array('transactions.user_id', $tableName . '.add_transaction_id');
+	}
+
+	public function setVersioningAttributes($record, $row) {
+		global
+			$authorityAttribute;
+			
+		$userID = $row['user_id'];
+		
+		if (in_array($userID, $this->authorities))
+			$userName = getUserName($userID);
+		else
+			$userName = "";	
+			
+		$record->setAttributeValue($authorityAttribute, $userName);
 	}
 }
 
@@ -196,10 +276,12 @@ global
 	$transactionIdAttribute, $userAttribute, $userIPAttribute, $timestampAttribute,
 	$transactionStructure, $summaryAttribute, 
 	$addTransactionAttribute, $removeTransactionAttribute, 
-	$recordLifeSpanAttribute, $recordLifeSpanStructure;
+	$recordLifeSpanAttribute, $recordLifeSpanStructure,
+	$authorityAttribute;
 	
 $transactionIdAttribute = new Attribute('transaction-id', 'Transaction ID', 'integer');
 $userAttribute = new Attribute('user', 'User', 'user');
+$authorityAttribute = new Attribute('authority', 'Authority', 'authority');
 $userIPAttribute = new Attribute('user-ip', 'User IP', 'IP');
 $timestampAttribute = new Attribute('timestamp', 'Time', 'timestamp');
 $summaryAttribute = new Attribute('summary', 'Summary', 'text');
