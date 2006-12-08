@@ -16,7 +16,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  */
 
 $wgExtensionFunctions[] = 'wfImportFreeImages';
-$wgFlickrAPIKey = '43000ba217bff99960c3bb07843d74b3';
+$wgFlickrAPIKey = '';
 $wgResultsPerPage = 20;
 $wgResultsPerRow = 5;
 // see the flickr api page for more information on these params
