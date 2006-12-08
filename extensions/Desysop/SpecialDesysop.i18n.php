@@ -96,5 +96,39 @@ $wgDesysopMessages['sk'] = array(
 	'desysop'              => 'Odobrať privilégiá správcu používateľovi',
 	'not_sysop'            => 'Tento používateľ nie je správca',
 );
-
+$wgDesysopMessages['zh-cn'] = array(
+	'desysoptitle'         => '撤销一位用户的操作员权限',
+	'desysoptext'          => "这个表格供行政员使用以撤销一位用户的操作员权限。在下面的框中输入用户名并按下按钮以撤销该用户的操作员权限。",
+	'desysopname'          => '用户名称：',
+	'desysopok'            => "<b>用户\"$1\"已经不再是操作员了</b>",
+	'set_user_rights'      => '设置用户权限',
+	'user_rights_set'      => "<b>\"$1\"的用户权限已经更新</b>",
+	'set_rights_fail'      => "<b>\"$1\"的用户权限无法设置。（您是否已经输入正确的名称？）</b>",
+	'desysop'              => '解除一位用户的操作员权限',
+	'not_sysop'            => '这位用户不是一位管理员',
+);
+$wgDesysopMessages['zh-tw'] = array(
+	'desysoptitle'         => '撤銷一位用戶的操作員權限',
+	'desysoptext'          => "這個表格供行政員使用以撤銷一位用戶的操作員權限。在下面的框中輸入用戶名並按下按鈕以撤銷該用戶的操作員權限。",
+	'desysopname'          => '用戶名稱：',
+	'desysopok'            => "<b>用戶\"$1\"已經不再是操作員了</b>",
+	'set_user_rights'      => '設定用戶權限',
+	'user_rights_set'      => "<b>\"$1\"的用戶權限已經更新</b>",
+	'set_rights_fail'      => "<b>\"$1\"的用戶權限無法設定。（您是否已經輸入正確的名稱？）</b>",
+	'desysop'              => '解除一位用戶的操作員權限',
+	'not_sysop'            => '這位用戶不是一位管理員',
+);
+$wgDesysopMessages['zh-yue'] = array(
+	'desysoptitle'         => '撤銷一位用戶嘅操作員權限',
+	'desysoptext'          => "呢個表格係畀事務員用以撤銷一位用戶嘅操作員權限。響下面嘅框度輸入用戶名並撳一下個掣去撤銷嗰位用戶嘅操作員權限。",
+	'desysopname'          => '用戶名：',
+	'desysopok'            => "<b>用戶\"$1\"已經唔再係操作員喇</b>",
+	'set_user_rights'      => '設定用戶權限',
+	'user_rights_set'      => "<b>\"$1\"嘅用戶權限已經更新</b>",
+	'set_rights_fail'      => "<b>\"$1\"嘅用戶權限無法設定。（您係咪已經輸入咗正確嘅名？）</b>",
+	'desysop'              => '解除一位用戶嘅操作員權限',
+	'not_sysop'            => '呢位用戶唔係一位管理員',
+);
+$wgDesysopMessages['zh-hk'] = $wgDesysopMessages['zh-tw'];
+$wgDesysopMessages['zh-sg'] = $wgDesysopMessages['zh-cn'];
 ?>
