@@ -96,7 +96,7 @@ function wfSpecialImportFreeImages( $par )
 		fclose($r);
 		chmod( $name, 0777 );
 		if (!empty($wgTemplateName)) {
-			$caption = "{{" . $wgTemplateName . "|{$_POST['id']}|" . urldecode($_POST['owner']) . "|{$_POST['name']}" . "}}";
+			$caption = "{{" . $wgTemplateName . "|{$_POST['id']}|" . urldecode($_POST['owner']) . "|" . urldecode($_POST['name']). "}}";
 		} else {
 			$caption = wfMsg('importfreeimages_filefromflickr', $_POST['t'], "http://www.flickr.com/people/" . urlencode($_POST['owner']) . " " . $_POST['name']) . " <nowiki>$import</nowiki>. {{CC by 2.0}} ";
 		}
