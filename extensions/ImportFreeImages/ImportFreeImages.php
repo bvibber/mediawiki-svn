@@ -16,7 +16,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  */
 
 $wgExtensionFunctions[] = 'wfImportFreeImages';
-$wgFlickrAPIKey = '';
+$wgFlickrAPIKey  = '';
 $wgTemplateName = 'flickr'; // use this to format the image content with some key parameters
 
 $wgResultsPerPage = 20;
@@ -96,7 +96,7 @@ function wfSpecialImportFreeImages( $par )
 		fclose($r);
 		chmod( $name, 0777 );
 		if (!empty($wgTemplateName)) {
-			$caption = "{{" . $wgTemplateName . "|{$_POST['id']}|{$_POST['owner']}|{$_POST['name']}" . "}}";
+			$caption = "{{" . $wgTemplateName . "|{$_POST['id']}|" . urldecode($_POST['owner']) . "|{$_POST['name']}" . "}}";
 		} else {
 			$caption = wfMsg('importfreeimages_filefromflickr', $_POST['t'], "http://www.flickr.com/people/" . urlencode($_POST['owner']) . " " . $_POST['name']) . " <nowiki>$import</nowiki>. {{CC by 2.0}} ";
 		}
