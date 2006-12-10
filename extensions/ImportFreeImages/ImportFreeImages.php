@@ -17,6 +17,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 $wgExtensionFunctions[] = 'wfImportFreeImages';
 $wgFlickrAPIKey = '';
+$wgTemplateName = 'flickr'; // use this to format the image content with some key parameters
+
 $wgResultsPerPage = 20;
 $wgResultsPerRow = 5;
 // see the flickr api page for more information on these params
@@ -24,7 +26,6 @@ $wgResultsPerRow = 5;
 // default 4 is CC Attribution License
 $wgFlickrLicense = 4;
 $wgFlickrSort = "interestingness-desc";
-
 require_once("SpecialPage.php");
 
 
@@ -63,7 +64,7 @@ function wfImportFreeImages() {
 function wfSpecialImportFreeImages( $par )
 {
 	global $wgUser, $wgOut, $wgScriptPath, $wgRequest, $wgLang, $wgFlickrAPIKey, $wgTmpDirectory;
-	global $wgResultsPerPage, $wgFlickrSort, $wgFlickrLicense, $wgResultsPerRow;
+	global $wgResultsPerPage, $wgFlickrSort, $wgFlickrLicense, $wgResultsPerRow, $wgTemplateName;
 	
 	$fname = "wfSpecialImportFreeImages";
 
@@ -94,7 +95,11 @@ function wfSpecialImportFreeImages( $par )
 		$size = fwrite ( $r, $pageContents);	
 		fclose($r);
 		chmod( $name, 0777 );
-		$caption = wfMsg('importfreeimages_filefromflickr', $_POST['t'], "http://www.flickr.com/people/" . urlencode($_POST['owner']) . " " . $_POST['name']) . " <nowiki>$import</nowiki>. {{CC by 2.0}} ";
+		if (!empty($wgTemplateName)) {
+			$caption = "{{" . $wgTemplateName . "|{$_POST['id']}|{$_POST['owner']}|{$_POST['name']}" . "}}";
+		} else {
+			$caption = wfMsg('importfreeimages_filefromflickr', $_POST['t'], "http://www.flickr.com/people/" . urlencode($_POST['owner']) . " " . $_POST['name']) . " <nowiki>$import</nowiki>. {{CC by 2.0}} ";
+		}
 		$caption = trim($caption);
 		$t = $_POST['title'];
 
@@ -126,7 +131,7 @@ function wfSpecialImportFreeImages( $par )
 		$u->mUploadDescription = $caption;
 		$u->mRemoveTempFile = true;
 		$u->mIgnoreWarning =  true;
-        $u->mOname = $_POST['title'] . ".jpg";
+        $u->mOname = urldecode($_POST['title']) . ".jpg";
 
 		$u->execute();
 	}
@@ -154,6 +159,7 @@ function wfSpecialImportFreeImages( $par )
 		$wgOut->addHTML("<table cellpadding=4>
 			<form method='POST' name='uploadphotoform'>
 				<input type=hidden name='url' value=''>
+				<input type=hidden name='id' value=''>
 				<input type=hidden name='action' value='submit'>
 				<input type=hidden name='owner' value=''>
 				<input type=hidden name='name' value=''>
@@ -161,8 +167,9 @@ function wfSpecialImportFreeImages( $par )
 
 	<script type=\"text/javascript\">
 
-		function s2 (url, owner, name, title) {
+		function s2 (url, id, owner, name, title) {
 			document.uploadphotoform.url.value = url;
+			document.uploadphotoform.id.value = id;
 			document.uploadphotoform.owner.value = owner;
 			document.uploadphotoform.name.value = name;
 			document.uploadphotoform.title.value = title;
@@ -184,7 +191,7 @@ function wfSpecialImportFreeImages( $par )
                 	//$wgOut->addHTML( "<img  src=http://static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . "." . "jpg>" );
                 	$url="http://static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . "." . "jpg";
                 	$wgOut->addHTML( "<img src=http://static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . "_s." . "jpg>" );
-			$wgOut->addHTML( "<br/>(<a href='#' onclick=\"s2('$url', '{$photo['owner']}', '" 
+			$wgOut->addHTML( "<br/>(<a href='#' onclick=\"s2('$url', '{$photo['id']}','{$photo['owner']}', '" 
 						. urlencode($owner['username']  ) . "', '" . urlencode($photo['title']) . "');\">" . 
 								wfMsg('importfreeimages_importthis') . "</a>)\n" );
 			$wgOut->addHTML("</td>");
@@ -194,7 +201,7 @@ function wfSpecialImportFreeImages( $par )
 		$wgOut->addHTML("</form></table>");
 		$page = $page + 1;
 
-		$wgOut->addHTML("<br/>" .  $sk->makeLinkObj($importPage, wfMsg('importfreeimages_next', $wgResultsPerPage) ) );
+		$wgOut->addHTML("<br/>" .  $sk->makeLinkObj($importPage, wfMsg('importfreeimages_next', $wgResultsPerPage), "p=$page" ) );
                 //print_r($photo);
 	}
 }
