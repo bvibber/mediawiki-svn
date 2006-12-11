@@ -37,7 +37,7 @@ This extension was tested with Mediawiki 1.8.2.
 <pre>
 require_once('extensions/ImportFreeImages/ImportFreeImages.php');
 </pre>
-* Get yourself an API Key from [http://www.flickr.com/services/api/misc.api_keys.html here] and set $wgFlickrAPIKey to this key in ImportFreeImages.php.
+* Get yourself an API Key from [http://www.flickr.com/services/api/misc.api_keys.html here] and set $wgIFI_FlickrAPIKey to this key in ImportFreeImages.php.
 
 == Options == 
 * Configure $wgResultsPerPage and $wgResultsPerRow if you desire. 
