@@ -201,7 +201,7 @@ function wfSpecialImportFreeImages( $par )
 		$wgOut->addHTML("</form></table>");
 		$page = $page + 1;
 
-		$wgOut->addHTML("<br/>" .  $sk->makeLinkObj($importPage, wfMsg('importfreeimages_next', $wgResultsPerPage), "p=$page" ) );
+		$wgOut->addHTML("<br/>" .  $sk->makeLinkObj($importPage, wfMsg('importfreeimages_next', $wgResultsPerPage), "p=$page&q=" . urlencode($q) ) );
                 //print_r($photo);
 	}
 }
