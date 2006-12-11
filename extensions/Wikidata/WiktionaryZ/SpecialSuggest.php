@@ -147,12 +147,15 @@ function getSuggestions() {
 
 function getSQLToSelectPossibleAttributes($objectId, $attributesLevel) {
 	$dbr = & wfGetDB(DB_SLAVE);
-	return 'SELECT attribute_mid, spelling
+	$sql = 'SELECT attribute_mid, spelling
 	 		FROM ((uw_class_membership INNER JOIN (uw_class_attributes INNER JOIN bootstrapped_defined_meanings ON uw_class_attributes.level_mid = bootstrapped_defined_meanings.defined_meaning_id)ON uw_class_membership.class_mid = uw_class_attributes.class_mid)
 	      	INNER JOIN uw_syntrans ON uw_class_attributes.attribute_mid = uw_syntrans.defined_meaning_id)
 	      	INNER JOIN uw_expression_ns ON uw_syntrans.expression_id = uw_expression_ns.expression_id 
 			WHERE bootstrapped_defined_meanings.name = ' . $dbr->addQuotes($attributesLevel) .
-		  ' AND uw_class_membership.class_member_mid = ' . $objectId;
+			' AND ' . getLatestTransactionRestriction('uw_class_membership') .
+			' AND ' . getLatestTransactionRestriction('uw_class_attributes') .
+			' AND uw_class_membership.class_member_mid = ' . $objectId;
+	return $sql;
 }
 
 function getSQLForCollectionOfType($collectionType) {
