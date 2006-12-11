@@ -16,16 +16,16 @@ if ( ! defined( 'MEDIAWIKI' ) )
  */
 
 $wgExtensionFunctions[] = 'wfImportFreeImages';
-$wgFlickrAPIKey  = '';
-$wgTemplateName = 'flickr'; // use this to format the image content with some key parameters
+$wgIFI_FlickrAPIKey  = '';
+$wgIFI_CreditsTemplate = 'flickr'; // use this to format the image content with some key parameters
 
-$wgResultsPerPage = 20;
-$wgResultsPerRow = 5;
+$wgIFI_ResultsPerPage = 20;
+$wgIFI_ResultsPerRow = 5;
 // see the flickr api page for more information on these params
 // for licnese info http://www.flickr.com/services/api/flickr.photos.licenses.getInfo.html
 // default 4 is CC Attribution License
-$wgFlickrLicense = 4;
-$wgFlickrSort = "interestingness-desc";
+$wgIFI_FlickrLicense = 4;
+$wgIFI_FlickrSort = "interestingness-desc";
 require_once("SpecialPage.php");
 
 
@@ -63,13 +63,19 @@ function wfImportFreeImages() {
 
 function wfSpecialImportFreeImages( $par )
 {
-	global $wgUser, $wgOut, $wgScriptPath, $wgRequest, $wgLang, $wgFlickrAPIKey, $wgTmpDirectory;
-	global $wgResultsPerPage, $wgFlickrSort, $wgFlickrLicense, $wgResultsPerRow, $wgTemplateName;
+	global $wgUser, $wgOut, $wgScriptPath, $wgRequest, $wgLang, $wgIFI_FlickrAPIKey, $wgTmpDirectory;
+	global $wgIFI_ResultsPerPage, $wgIFI_FlickrSort, $wgIFI_FlickrLicense, $wgIFI_ResultsPerRow, $wgIFI_CreditsTemplate;
 	
 	$fname = "wfSpecialImportFreeImages";
+	$importPage = Title::makeTitle(NS_SPECIAL, "ImportFreeImages");
 
-	if (empty($wgFlickrAPIKey)) {
-		// error - need to set $wgFlickrAPIKey to use this extension
+    if( $wgUser->isAnon() ) {
+        $wgOut->showErrorPage( 'uploadnologin', 'uploadnologintext' );
+        return;
+     } 
+
+	if (empty($wgIFI_FlickrAPIKey)) {
+		// error - need to set $wgIFI_FlickrAPIKey to use this extension
 		$wgOut->showErrorPage('error', 'importfreeimages_noapikey');
 		return;
 	}	
@@ -78,7 +84,8 @@ function wfSpecialImportFreeImages( $par )
 		$q = $_GET['q'];
 	}
 
-	$wgOut->addHTML(wfMsg ('importfreeimages_description') . "<br/><br/><form method=GET>".wfMsg('search').
+	$wgOut->addHTML(wfMsg ('importfreeimages_description') . "<br/><br/>
+		<form method=GET action='" . $importPage->getFullURL() . "'>".wfMsg('search').
 		": <input type=text name=q value='" . htmlspecialchars($q) . "'><input type=submit value=".wfMsg('search')."></form>");
 
 	$import = '';
@@ -95,8 +102,8 @@ function wfSpecialImportFreeImages( $par )
 		$size = fwrite ( $r, $pageContents);	
 		fclose($r);
 		chmod( $name, 0777 );
-		if (!empty($wgTemplateName)) {
-			$caption = "{{" . $wgTemplateName . "|{$_POST['id']}|" . urldecode($_POST['owner']) . "|" . urldecode($_POST['name']). "}}";
+		if (!empty($wgIFI_CreditsTemplate)) {
+			$caption = "{{" . $wgIFI_CreditsTemplate . "|{$_POST['id']}|" . urldecode($_POST['owner']) . "|" . urldecode($_POST['name']). "}}";
 		} else {
 			$caption = wfMsg('importfreeimages_filefromflickr', $_POST['t'], "http://www.flickr.com/people/" . urlencode($_POST['owner']) . " " . $_POST['name']) . " <nowiki>$import</nowiki>. {{CC by 2.0}} ";
 		}
@@ -139,21 +146,20 @@ function wfSpecialImportFreeImages( $par )
 		$page = $_GET['p'];
 		if ($page == '') $page = 1;
         	require_once("phpFlickr-2.0.0/phpFlickr.php");
-        	$f = new phpFlickr($wgFlickrAPIKey);
+        	$f = new phpFlickr($wgIFI_FlickrAPIKey);
         	$q = $_GET['q'];
 		// TODO: get the right licenses
         	$photos = $f->photos_search(array(
 				"tags"=>"$q", "tag_mode"=>"any", 
 				"page" => $page, 
-				"per_page" => $wgResultsPerPage, "license" => $wgFlickrLicense, 
-				"sort" => $wgFlickrSort  ));
+				"per_page" => $wgIFI_ResultsPerPage, "license" => $wgIFI_FlickrLicense, 
+				"sort" => $wgIFI_FlickrSort  ));
 
 		$i = 0;
 		if ($photos == null || !is_array($photos) || sizeof($photos) == 0 || !isset($photos['photo']) ) {
 			$wgOut->addHTML(wfMsg("importfreeimages_nophotosfound",$q));
 			return;
 		}
-		$importPage = Title::makeTitle(NS_SPECIAL, "ImportFreeImages");
 		$sk = $wgUser->getSkin();
 
 		$wgOut->addHTML("<table cellpadding=4>
@@ -180,7 +186,7 @@ function wfSpecialImportFreeImages( $par )
  
 			");
         	foreach ($photos['photo'] as $photo) {
-			if ($i % $wgResultsPerRow == 0) $wgOut->addHTML("<tr>");
+			if ($i % $wgIFI_ResultsPerRow == 0) $wgOut->addHTML("<tr>");
                 	$owner = $f->people_getInfo($photo['owner']);
                 	$wgOut->addHTML( "<td align=center style='padding-top: 15px; border-bottom: 1px solid #ccc;'><font size=-2><a href='http://www.flickr.com/photos/" . $photo['owner'] . "/" . $photo['id'] . "/'>" );
                 	$wgOut->addHTML( $photo['title'] );
@@ -195,13 +201,13 @@ function wfSpecialImportFreeImages( $par )
 						. urlencode($owner['username']  ) . "', '" . urlencode($photo['title']) . "');\">" . 
 								wfMsg('importfreeimages_importthis') . "</a>)\n" );
 			$wgOut->addHTML("</td>");
-			if ($i % $wgResultsPerRow == ($wgResultsPerRow - 1) ) $wgOut->addHTML("</tr>");
+			if ($i % $wgIFI_ResultsPerRow == ($wgIFI_ResultsPerRow - 1) ) $wgOut->addHTML("</tr>");
 			$i++;
 		}
 		$wgOut->addHTML("</form></table>");
 		$page = $page + 1;
 
-		$wgOut->addHTML("<br/>" .  $sk->makeLinkObj($importPage, wfMsg('importfreeimages_next', $wgResultsPerPage), "p=$page&q=" . urlencode($q) ) );
+		$wgOut->addHTML("<br/>" .  $sk->makeLinkObj($importPage, wfMsg('importfreeimages_next', $wgIFI_ResultsPerPage), "p=$page&q=" . urlencode($q) ) );
                 //print_r($photo);
 	}
 }
