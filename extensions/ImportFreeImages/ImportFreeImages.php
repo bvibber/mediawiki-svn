@@ -163,7 +163,7 @@ function wfSpecialImportFreeImages( $par )
 		$sk = $wgUser->getSkin();
 
 		$wgOut->addHTML("<table cellpadding=4>
-			<form method='POST' name='uploadphotoform'>
+			<form method='POST' name='uploadphotoform' action='" . $importPage->getFullURL() . "'>
 				<input type=hidden name='url' value=''>
 				<input type=hidden name='id' value=''>
 				<input type=hidden name='action' value='submit'>
