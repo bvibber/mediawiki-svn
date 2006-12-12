@@ -10,9 +10,6 @@
 
 /* @(#) $Id$ */
 
-#define _XOPEN_SOURCE 500
-#define __EXTENSIONS__
-
 #include <string>
 #include <vector>
 #include <iostream>

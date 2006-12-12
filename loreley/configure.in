@@ -143,7 +143,7 @@ AC_SUBST(M_FLAGS)
 AC_SUBST(dependstyle)
 
 AC_ARG_WITH(boost, AC_HELP_STRING([--with-boost=PATH],[path to Boost headers]),[
-	CPPFLAGS="$CPPFLAGS -I${withval}/include"],)
+	CPPFLAGS="$CPPFLAGS -I${withval}"],)
 AC_ARG_WITH(libevent, AC_HELP_STRING([--with-libevent=PATH],[prefix where libevent is installed]),[
 	CPPFLAGS="$CPPFLAGS -I${withval}/include" LDFLAGS="$LDFLAGS -L${withval}/lib"],)
 AC_ARG_WITH(zlib, AC_HELP_STRING([--with-zlib=PATH],[prefix where zlib is installed]),[
