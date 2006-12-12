@@ -589,6 +589,17 @@ sockaddr_storage	addr;
 socklen_t		addrlen = sizeof(addr);
 	if ((ns = ::accept(_s, (sockaddr *)&addr, &addrlen)) == -1)
 		return NULL;
+
+	/*
+	 * If TCP_CORK is not supported, disable Nagle's algorithm on the
+	 * socket to prevent delays in HTTP keepalive (at the expense of
+	 * sending more packets).
+	 */
+#if !defined(TCP_CORK) && defined(TCP_NODELAY)
+int	one = 1;
+	setsockopt(ns, IPPROTO_TCP, TCP_NODELAY, &one, sizeof(one));
+#endif
+
 	return new socket(ns, net::address((sockaddr *)&addr, addrlen), desc, p);
 }
 
@@ -637,15 +648,19 @@ int	len = sizeof(i);
 void
 socket::cork(void)
 {
+#ifdef TCP_CORK
 int	one = 1;
 	setopt(IPPROTO_TCP, TCP_CORK, &one, sizeof(one));
+#endif
 }
 
 void
 socket::uncork(void)
 {
+#ifdef TCP_CORK
 int	zero = 0;
 	setopt(IPPROTO_TCP, TCP_CORK, &zero, sizeof(zero));
+#endif
 }
 
 int
@@ -756,6 +771,7 @@ socket::mcast_join(string const &ifname)
 	}
 
 	case AF_INET6: {
+#ifdef IPV6_ADD_MEMBERSHIP
 	u_int		 ifindex = address::ifname_to_index(ifname);
 	sockaddr_in6	*inbind = (sockaddr_in6 *)_addr.addr();
 	ipv6_mreq	 mr;
@@ -764,6 +780,9 @@ socket::mcast_join(string const &ifname)
 			sizeof(mr.ipv6mr_multiaddr));
 		mr.ipv6mr_interface = ifindex;
 		setopt(IPPROTO_IPV6, IPV6_ADD_MEMBERSHIP, &mr, sizeof(mr));
+#else
+		wlog.warning("IPv6 multicast not supported on this platform");
+#endif
 		break;
 	}
 
