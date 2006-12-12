@@ -781,7 +781,7 @@ socket::mcast_join(string const &ifname)
 		mr.ipv6mr_interface = ifindex;
 		setopt(IPPROTO_IPV6, IPV6_ADD_MEMBERSHIP, &mr, sizeof(mr));
 #else
-		wlog.warning("IPv6 multicast not supported on this platform");
+		wlog.warn("IPv6 multicast not supported on this platform");
 #endif
 		break;
 	}
