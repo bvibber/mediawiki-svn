@@ -131,6 +131,12 @@ server {
 	 * The owner of this server.  Will be used in error messages.
 	 */
 	admin = "nobody@example.com";
+
+	/*
+	 * Use /dev/shm + sendfile on Linux.  This may or may not be
+	 * faster than read() / write().  Not supported on other platforms.
+	 */
+	use-dio = no;
 };
 	
 /*
