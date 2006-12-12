@@ -156,10 +156,12 @@ struct socket_sink : freelist_allocator<socket_sink>, sink {
 		_socket->clearbacks();
 	}
 
+#ifdef HAVE_SYS_SENDFILE_H
 	virtual bool dio_supported(dio_source s) const {
 		return s == dio_source_fd;
 	}
 	virtual sink_result dio_ready(int, off_t, size_t, ssize_t&);
+#endif
 
 	sink_result data_ready(char const *buf, size_t len, ssize_t &discard);
 	sink_result data_empty(void) {

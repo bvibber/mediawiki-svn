@@ -30,7 +30,9 @@ ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
 #include "autoconf.h"
 #include <sys/time.h>
 #include <sys/fcntl.h>
-#include <sys/sendfile.h>
+#ifdef HAVE_SYS_SENDFILE_H
+# include <sys/sendfile.h>
+#endif
 
 #include <pthread.h>
 #include <vector>
@@ -281,9 +283,11 @@ struct socket : noncopyable, freelist_allocator<socket> {
 	int		 write		(char const *buf, size_t count) {
 		return ::write(_s, buf, count);
 	}
+#if defined(HAVE_SENDFILE) && defined(__linux__)
 	int		 sendfile	(int to, off_t *off, size_t n) {
 		return ::sendfile(_s, to, off, n);
 	}
+#endif
 
 	void		 nonblocking	(bool);
 	void		 reuseaddr	(bool);

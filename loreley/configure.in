@@ -173,7 +173,7 @@ AC_CHECK_TYPES([u_int8_t, u_int16_t, u_int32_t, u_int64_t])
 
 AC_CHECK_FUNC(strlcat,AC_DEFINE([HAVE_STRLCAT],,[Define this if you have strlcat()]),[AC_LIBOBJ(strlcat)])
 AC_CHECK_FUNC(strlcpy,AC_DEFINE([HAVE_STRLCPY],,[Define this if you have strlcpy()]),[AC_LIBOBJ(strlcpy)])
-AC_CHECK_FUNC(sendfilev,AC_DEFINE([HAVE_SENDFILE],,[Define this if you have sendfile()]))
+AC_CHECK_FUNC(sendfile,AC_DEFINE([HAVE_SENDFILE],,[Define this if you have sendfile()]))
 AC_CHECK_FUNC(daemon,AC_DEFINE([HAVE_DAEMON],,[Define this if you have daemon()]),[AC_LIBOBJ(daemon)])
 AC_CHECK_FUNC(setproctitle,AC_DEFINE([HAVE_SETPROCTITLE],,[Define this if you have setproctitle()]))
 AC_CHECK_TYPE(socklen_t, AC_DEFINE([HAVE_SOCKLEN_T],,[Define this if you have socklen_t]),,[#include <sys/socket.h>])

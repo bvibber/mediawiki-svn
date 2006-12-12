@@ -229,6 +229,7 @@ ssize_t	wrote;
 	}
 }
 
+#if defined(HAVE_SENDFILE) && defined(__linux__)
 sink_result
 socket_sink::dio_ready(int fd, off_t off, size_t len, ssize_t &discard)
 {
@@ -263,6 +264,7 @@ ssize_t	wrote;
 		return sink_result_blocked;
 	}
 }
+#endif	/* HAVE_SENDFILE && __linux__ */
 
 tss<file_spigot::cache_map> file_spigot::_cache;
 
