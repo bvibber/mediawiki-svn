@@ -10,9 +10,6 @@
 
 /* @(#) $Id$ */
 
-#define _XOPEN_SOURCE 500
-#define __EXTENSIONS__
-
 #include <boost/archive/iterators/base64_from_binary.hpp>
 #include <boost/archive/iterators/transform_width.hpp>
 
