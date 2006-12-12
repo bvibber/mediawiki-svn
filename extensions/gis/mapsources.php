@@ -40,9 +40,8 @@ class map_sources {
 	var $p;
 	var $mapsources;
 
-	function map_sources( $coor, $title ) {
-		$this->p = new geo_param( $coor, $title );
-		$this->p->title = $title;
+	function map_sources() {
+		$this->p = new geo_param();
 
 		$this->mapsources = "Map sources";
 		# FIXME: translate via wfMsg( "mapsources" )

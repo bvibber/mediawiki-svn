@@ -20,6 +20,7 @@
  *  ----------------------------------------------------------------------
  *
  *  Copyright 2005, Egil Kvaleberg <egil@kvaleberg.no>
+ *  Copyright 2006, Jens Frank <jeluf@wikimedia.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -36,6 +37,12 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+        echo "Geo extension\n";
+        exit( 1 ) ;
+}
+
+
 $wgExtensionFunctions[] = "wfGeoExtension";
 
 /**
@@ -46,12 +53,25 @@ function wfGeoExtension () {
 	$wgParser->setHook ( 'geo' , 'parse_geo' ) ;
 }
 
+if ( !function_exists( 'extAddSpecialPage' ) ) {
+        require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
+}
+extAddSpecialPage( dirname(__FILE__) . '/Specialgeo_body.php', 'Geo', 'GeoPage' );
+
+$wgExtensionCredits['specialpage'][] = array(
+        'name' => 'Geo',
+        'description' => 'Enables rich geotagging functionality',
+        'author' => 'Egil Kvaleberg, Jens Frank'
+);
+
+
 /**
  *  Called whenever a <geo> needs to be parsed
  *
  *  Return markup, but also a pointer to Map sources
  */
 function parse_geo ( $text, $params, &$parser ) {
+	global $wgUser;
 
 	$geo = new geo_param( $text );
 
@@ -75,6 +95,13 @@ function parse_geo ( $text, $params, &$parser ) {
 		$wgOut->addMeta( "geo.region", $r);
 	}
 
+	$skin = $wgUser->getSkin();
+
+	// !JF1 Replace Special: by NS call.
+	return $skin->makeKnownLink( 'Special:Geo', $geo->get_markup(), $geo->get_param_string() );
+
+	// !JF1
+	/*
 	global $wgMapsourcesURL;
 	if ( isset ( $wgMapsourcesURL ) ) {
 		return '<a href="'
@@ -87,6 +114,7 @@ function parse_geo ( $text, $params, &$parser ) {
 		# Mapsources extension not present, so just do the markup
 		return $geo->get_markup();
 	}
+	*/
 }
 
 /**
@@ -110,9 +138,23 @@ class geo_param {
 	 *   Constructor:
 	 *   Read coordinates, and if there is a range, read the range
 	 */
-	function geo_param( $param )
+	function geo_param( $param = false )
 	{
-		$this->pieces = explode(" ", str_replace( '_', ' ', $param ));
+		$this->pieces=array();
+		if ( is_string( $param ) ) {
+			$this->fillFromString( $param );
+		} else {
+			$this->fillFromWgRequest();
+		}
+	}
+
+	/**
+	 * Helper function for the constructor.
+	 * Fills the strutctures from a string
+	 * Expects a string like 51 17 32 N 11 7 42 E
+	 */
+	function fillFromString( $param ) {
+		$this->pieces = explode(" ", str_replace( '_', ' ', trim( $param ) ));
 		$this->get_coor( );
 
 		$this->latdeg_min = $this->latdeg_max = $this->latdeg;
@@ -135,80 +177,99 @@ class geo_param {
 			$this->coor = array();
 		}
 	}
+	/**
+	 * Helper function for the constructor.
+	 * Fills the strutctures from a web request
+	 * Expects a request like latdeg=60&latmin=0&latsec=0&latns=N&londeg=0&lonmin=0&lonsec=0&lonew=E
+	 */
+	function fillFromWgRequest() {
+		global $wgRequest;
+		$this->coor = array(
+			'latdeg' =>  $wgRequest->getVal('latdeg'),
+			'latmin' =>  $wgRequest->getVal('latmin'),
+			'latsec' =>  $wgRequest->getVal('latsec'),
+			'latns' =>   $wgRequest->getVal('latns'),
+			'londeg' =>  $wgRequest->getVal('londeg'),
+			'lonmin' =>  $wgRequest->getVal('lonmin'),
+			'lonsec' =>  $wgRequest->getVal('lonsec'),
+			'lonew' =>   $wgRequest->getVal('lonew') );
+		$this->title = $wgRequest->getVal('pagetitle');
+		$this->latdeg_min = $this->latdeg_max = $this->latdeg;
+		$this->londeg_min = $this->londeg_max = $this->londeg;
+		$this->updateInternal();
+	}
 
 	/**
 	 *  Private:
 	 *  Get a set of coordinates from parameters
 	 */
-	function get_coor( ) {
+	function get_coor() {
 		if ($i = strpos($this->pieces[0],';')) {
 			/* two values seperated by a semicolon */
 			$this->coor = array(
-				$this->latdeg = substr($this->pieces[0],0,$i),
-				$this->londeg = substr($this->pieces[0],$i+1));
+				'latdeg' => substr($this->pieces[0],0,$i),
+				'londeg' => substr($this->pieces[0],$i+1),
+				'latns'  => 'N',
+				'lonew'  => 'E' );
 			array_shift($this->pieces);
-			$latNS = 'N';
-			$lonEW = 'E';
-			$latmin = $lonmin = $latsec = $lonsec = 0;
 		} elseif ($this->is_coor($this->pieces[1],$this->pieces[3])) {
 			$this->coor = array(
-				$this->latdeg = array_shift($this->pieces),
-				$latNS        = array_shift($this->pieces),
-				$this->londeg = array_shift($this->pieces),
-				$lonEW        = array_shift($this->pieces));
-			$latmin = $lonmin = $latsec = $lonsec = 0;
+				'latdeg' => array_shift($this->pieces),
+				'latns'  => array_shift($this->pieces),
+				'londeg' => array_shift($this->pieces),
+				'lonew'  => array_shift($this->pieces) );
 		} elseif ($this->is_coor($this->pieces[2],$this->pieces[5])) {
 			$this->coor = array(
-				$this->latdeg = array_shift($this->pieces),
-				$latmin       = array_shift($this->pieces),
-				$latNS        = array_shift($this->pieces),
-				$this->londeg = array_shift($this->pieces),
-				$lonmin       = array_shift($this->pieces),
-				$lonEW        = array_shift($this->pieces));
-			$latsec = $lonsec = 0;
+				'latdeg' => array_shift($this->pieces),
+				'latmin' => array_shift($this->pieces),
+				'latns'  => array_shift($this->pieces),
+				'londeg' => array_shift($this->pieces),
+				'lonmin' => array_shift($this->pieces),
+				'lonew'  => array_shift($this->pieces));
 		} elseif ($this->is_coor($this->pieces[3],$this->pieces[7])) {
 			$this->coor = array(
-				$this->latdeg = array_shift($this->pieces),
-				$latmin       = array_shift($this->pieces),
-				$latsec       = array_shift($this->pieces),
-				$latNS        = array_shift($this->pieces),
-				$this->londeg = array_shift($this->pieces),
-				$lonmin       = array_shift($this->pieces),
-				$lonsec       = array_shift($this->pieces),
-				$lonEW        = array_shift($this->pieces));
+				'latdeg' => array_shift($this->pieces),
+				'latmin' => array_shift($this->pieces),
+				'latsec' => array_shift($this->pieces),
+				'latns'  => array_shift($this->pieces),
+				'londeg' => array_shift($this->pieces),
+				'lonmin' => array_shift($this->pieces),
+				'lonsec' => array_shift($this->pieces),
+				'lonew'  => array_shift($this->pieces));
 		} else {
 			# support decimal, signed lat, lon
 			$this->error = "Unrecognized format";
 		}
+		$this->updateInternal();
+	}
 
+/*
 		if ($this->latdeg >  90 or $this->latdeg <  -90
 		 or $this->londeg > 180 or $this->londeg < -180
 		 or $latmin       >  60 or $latmin       <    0
 		 or $lonmin       >  60 or $lonmin       <    0
 		 or $latsec       >  60 or $latsec       <    0
 		 or $lonsec       >  60 or $lonsec       <    0) {
-			$this->error = "Out of range";
+			$this->error = "Out of range {$this->latdeg} $latmin $latsec, {$this->londeg} $lonmin $lonsec ";
 		}
 
-		if (strtoupper($latNS) == "S") {
+*/
+	/**
+	 * Helper function.
+	 * Updates alternative internal representations, e.g. decimal degrees.
+	 */
+	function updateInternal() {
+		# Make decimal degree, if not already
+		$latmin = $this->coor['latmin'] + $this->coor['latsec']/60.0;
+		$lonmin = $this->coor['lonmin'] + $this->coor['lonsec']/60.0;
+		$this->latdeg = $this->coor['latdeg'] + $latmin/60.0;
+		$this->londeg = $this->coor['londeg'] + $lonmin/60.0;
+
+		if ( $this->coor['latns'] == 'S' ) {
 			$this->latdeg = -$this->latdeg;
 		}
-		if (strtoupper($lonEW) == "W") {
+		if ( $this->coor['lonew'] == 'W' ) {
 			$this->londeg = -$this->londeg;
-		}
-
-		# Make decimal degree, if not already
-		$latmin += $latsec/60.0;
-		$lonmin += $lonsec/60.0;
-		if ($this->latdeg < 0) {
-			$this->latdeg -= $latmin/60.0;
-		} else {
-			$this->latdeg += $latmin/60.0;
-		}
-		if ($this->londeg < 0) {
-			$this->londeg -= $lonmin/60.0;
-		} else {
-			$this->londeg += $lonmin/60.0;
 		}
 	}
 
@@ -216,8 +277,7 @@ class geo_param {
 	 *   Given decimal degrees, convert to 
 	 *   minutes, seconds and direction
 	 */
-	function make_minsec( $deg )
-	{
+	function make_minsec( $deg ) {
 		if ( $deg >= 0) {
 			$NS = "N";
 			$EW = "E";
@@ -245,8 +305,7 @@ class geo_param {
 	 *   Given decimal degrees latitude and longitude, convert to
 	 *   string
 	 */
-	function make_position( $lat, $lon )
-	{
+	function make_position( $lat, $lon ) {
 		$latdms = geo_param::make_minsec( $lat );
 		$londms = geo_param::make_minsec( $lon );
 		$outlat = intval(abs($latdms['deg'])) . "&deg;&nbsp;";
@@ -266,8 +325,7 @@ class geo_param {
 	/**
 	 *  Get the additional attributes in an associative array
 	 */
-	function get_attr()
-	{
+	function get_attr() {
 		$a = array();
 		while (($s = array_shift($this->pieces))) {
 			if (($i = strpos($s,":")) >= 1) {
@@ -288,36 +346,43 @@ class geo_param {
 		return $a;
 	}
 
-	function is_coor( $ns,$ew )
-	{
-		$ns = strtoupper($ns);
-		$ew = strtoupper($ew);
+	function is_coor( $ns, $ew ) {
+		$ns = trim(strtoupper($ns));
+		$ew = trim(strtoupper($ew));
 		return (($ns=="N" or $ns=="S") and
 			($ew=="E" or $ew=="W"));
 	}
 
-	function frac( $f)
-	{
+	function frac( $f) {
 		return abs($f) - abs(intval($f));
 	}
 
 	/**
 	 *  Get composite position in RFC2045 format
 	 */
-	function get_position( )
-	{
+	function get_position( ) {
 		return $this->latdeg.";".$this->londeg;
 	}
 
 	/**
 	 *  Get error message that applies, or "" of all is well
 	 */
-	function get_error()
-	{
+	function get_error() {
 		if ($this->error != "") {
 			return "Error:".$this->error;
 		}
 		return "";
+	}
+
+	/**
+	 * Produce markup suitable for use in a link
+	 */
+	function get_param_string() {
+		$res='';
+		foreach ( $this->coor as $key => $value ) {
+			$res .= ( $res == '' ? '' : '&' ) . "$key=$value";
+		}
+		return $res."&pagetitle={$this->title}";
 	}
 
 	/**
@@ -336,32 +401,32 @@ class geo_param {
 			     . $this->make_position( $this->latdeg_max,
 						     $this->londeg_max );
 		} elseif ($n == 2) {
-			return $this->coor[0].';'.
-			       $this->coor[1];
+			return $this->coor['latdeg'].';'.
+			       $this->coor['londeg'];
 
 		} elseif ($n == 4) {
-			return $this->coor[0].'&deg;&nbsp;'.
-			       $this->coor[1].' '.
-			       $this->coor[2].'&deg;&nbsp;'.
-			       $this->coor[3];
+			return $this->coor['latdeg'].'&deg;&nbsp;'.
+			       $this->coor['latns'].' '.
+			       $this->coor['londeg'].'&deg;&nbsp;'.
+			       $this->coor['lonew'];
 
 		} elseif ($n == 6) {
-			return $this->coor[0].'&deg;'.
-			       $this->coor[1].'&prime;&nbsp;'.
-			       $this->coor[2].' '.
-			       $this->coor[3].'&deg;'.
-			       $this->coor[4].'&prime;&nbsp;'.
-			       $this->coor[5];
+			return $this->coor['latdeg'].'&deg;'.
+			       $this->coor['latmin'].'&prime;&nbsp;'.
+			       $this->coor['latns'].' '.
+			       $this->coor['londeg'].'&deg;'.
+			       $this->coor['lonmin'].'&prime;&nbsp;'.
+			       $this->coor['lonew'];
 
 		} elseif ($n == 8) {
-			return $this->coor[0].'&deg;'.
-			       $this->coor[1].'&prime;'.
-			       $this->coor[2].'&Prime;&nbsp;'.
-			       $this->coor[3].' '.
-			       $this->coor[4].'&deg;'.
-			       $this->coor[5].'&prime;'.
-			       $this->coor[6].'&Prime;&nbsp;'.
-			       $this->coor[7];
+			return $this->coor['latdeg'].'&deg;'.
+			       $this->coor['latmin'].'&prime;'.
+			       $this->coor['latsec'].'&Prime;&nbsp;'.
+			       $this->coor['latns'].' '.
+			       $this->coor['londeg'].'&deg;'.
+			       $this->coor['lonmin'].'&prime;'.
+			       $this->coor['lonsec'].'&Prime;&nbsp;'.
+			       $this->coor['lonew'];
 		} else {
 			return $this->get_error();
 		}

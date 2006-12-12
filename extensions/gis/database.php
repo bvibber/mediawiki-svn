@@ -58,8 +58,17 @@ function article_save_geo ( $article, $user, $text )
 
 	$tag = 'geo';
 	$gis_content = array();
-	$text = Parser::extractTags( $tag, $text, $gis_content );
-	foreach( $gis_content as $marker => $content ) {
+// !JF1
+	$text = Parser::extractTagsAndParams( array( $tag ), $text, $gis_content );
+	foreach( $gis_content as $marker => $tagresult ) {
+		$tagname = $tagresult[0];
+		$content = $tagresult[1];
+		$params = $tagresult[2];
+		$full = $tagresult[3];
+		
+		if ( $tagname != 'geo' ) {
+			continue;
+		}
 
 		$p = new geo_param( $content );
 		$attr = $p->get_attr();
@@ -180,7 +189,7 @@ class gis_database {
 	 */
 	 function select_area( $latmin, $lonmin, $latmax, $lonmax, 
 			       $globe, $type, $type_arg )
-	 {
+	 { 
 		if (!$globe) $globe = "";
 
 		$condition = "gis_globe = '" . $globe . "'";
@@ -227,7 +236,7 @@ class gis_database {
 				'gis_type_arg',
 				'page_title',
 				'page_namespace' ),
-			      array_merge($condition , array( 'page_id = gis_page' ) ),
+			      array( 'page_id = gis_page', $condition ),
 			      $fname );
 	}
 

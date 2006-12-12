@@ -35,9 +35,9 @@ class maparea {
 	var $p;
 	var $attr;
 
-	function maparea( $coor )
+	function maparea()
 	{
-		$this->p = new geo_param( $coor );
+		$this->p = new geo_param();
 		$this->attr = $this->p->get_attr();
 	}
 
@@ -74,8 +74,15 @@ class maparea {
 	function make_output()
 	{
 		$g = new gis_database();
+/*
 		$g->select_area( $this->p->latdeg_min, $this->p->londeg_min,
 				 $this->p->latdeg_max, $this->p->londeg_max,
+				 $this->attr['globe'], $this->attr['type'],
+				 $this->attr['arg:type'] );
+*/
+		// !JF1 Todo: fix min/max range. Hardcode for testing only
+		$g->select_area( $this->p->latdeg-30, $this->p->londeg-30,
+				 $this->p->latdeg+30, $this->p->londeg+30,
 				 $this->attr['globe'], $this->attr['type'],
 				 $this->attr['arg:type'] );
 

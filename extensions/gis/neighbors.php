@@ -39,12 +39,12 @@ class neighbors {
 	var $title;
 	var $attr;
 
-	function neighbors( $coor, $dist, $title ) 
+	function neighbors( $dist ) 
 	{
-		$this->p = new geo_param( $coor );
+		$this->p = new geo_param();
 		$this->d = $dist;
 		if ($this->d <= 0) $this->d = 1000; /* default to 1000 km */
-		$this->title = $title;
+		$this->title = $this->p->title;
 		$this->attr = $this->p->get_attr();
 	}
 
