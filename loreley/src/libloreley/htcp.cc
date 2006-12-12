@@ -121,13 +121,13 @@ htcp_decoder::okay(void) const
 }
 
 int
-htcp_decoder::major(void) const 
+htcp_decoder::majorver(void) const 
 {
 	return _header.hh_major;
 }
 
 int
-htcp_decoder::minor(void) const 
+htcp_decoder::minorver(void) const 
 {
 	return _header.hh_minor;
 }

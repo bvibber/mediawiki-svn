@@ -48,10 +48,10 @@ size_t		len;
 htcp_decoder	ip(buf, len);
 htcp_encoder	op;
 	if (!ip.okay()) {
-		if (ip.major() != 0 || ip.minor() != 1) {
+		if (ip.majorver() != 0 || ip.minorver() != 1) {
 			/* send an appropriate error */
 			WDEBUG(format("HTCP: wrong version, %d %d")
-				% ip.major() % ip.minor());
+				% ip.majorver() % ip.minorver());
 		} else
 			/* packet was too malformed to send an error */
 			WDEBUG("HTCP: packet mangled");

@@ -258,9 +258,9 @@ struct htcp_decoder {
 	string			 keyname   (void) const;
 	ustring			 signature (void) const;
 
-	bool		okay	(void) const;
-	int		major	(void) const;
-	int		minor	(void) const;
+	bool		okay		(void) const;
+	int		majorver	(void) const;
+	int		minorver	(void) const;
 	
 	bool verify_signature(string const &keyname, ustring const &key,
 			sockaddr const *source, sockaddr const *dest);
