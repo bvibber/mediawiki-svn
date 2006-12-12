@@ -66,6 +66,10 @@ $wgSelectCategoryRoot
  - Example
   $wgSelectCategoryRoot = "Main Category";
 
+$wgSelectCategoryEnableSubpages
+ - Defines if the extension should be active when editing subpages.
+  Default is true, as subpages are disabled in MediaWiki by default.
+
 APPEARANCE
 --------------------------------------------------------------------------
 

@@ -1,6 +1,6 @@
 <?php
 
-# Setup and Hooks for the SelectCategory extension, an extension of the
+# Implementation of the SelectCategory extension, an extension of the
 # edit box of MediaWiki to provide an easy way to add category links
 # to a specific page.
 
@@ -18,10 +18,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 ## Entry point for the hook and main worker function for editing the page:
 function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 	global $wgSelectCategoryNamespaces;
+	global $wgSelectCategoryEnableSubpages;
 	global $wgTitle;
 
-	# Run only if we are in an enabled namespace:
-	if ( $wgSelectCategoryNamespaces[ $wgTitle->getNamespace() ] || $m_isUpload ) {
+	# Check if page is subpage once to save method calls later:
+	$m_isSubpage = $wgTitle->isSubpage();
+	# Run only if we are in an upload, a activated namespace or if page is a subpage and subpages are enabled (unfortunately we can't use implication in PHP):
+	if ( $m_isUpload || ( $wgSelectCategoryNamespaces[$wgTitle->getNamespace()] && ( !$m_isSubpage || ( $m_isSubpage && $wgSelectCategoryEnableSubpages ) ) ) ) {
 		# Get all categories from wiki:
 		$m_allCats = fnSelectCategoryGetAllCategories();
 		# Load system messages:
