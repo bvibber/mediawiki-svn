@@ -1,0 +1,47 @@
+                         Loreley installation
+                         ====================
+
+Requirements:
+
+1. zlib (http://www.zlib.net/)
+2. Oracle Berkeley DB (http://www.oracle.com/database/berkeley-db.html)
+3. libevent (http://monkey.org/~provos/libevent/)
+4. Boost (http://www.boost.org/)
+5. A reasonably good C++ compiler (gcc4 is fine, gcc3.4 is okay, 2.95
+   is right out).
+
+Boost only needs the header files, it does not have to be compiled.
+After you extract the archive, use "--with-boost=/path/to/boost_1_33_1".
+
+To prepare (only if building from SVN):
+
+$ sh autogen.sh
+
+To build:
+
+$ ./configure [--with-zlib=<path>] [--with-bdb=<path>] [--with-libevelt=<path>] \
+               [--with-boost=<path>] [--prefix=<path>]
+$ make
+$ make install
+
+The file src/loreley/confgrammar.cc can be a problem for some compilers.
+GCC 3.4 will use ~350MB RAM and take several minutes to compile it.  If
+possible use GCC 4.1, which is much faster and uses less memory.  Intel
+C/C++ 9.1 is also good.  This file also emits a long warning when compiled
+which can be ignored.
+
+GNU "make" is not required.  However, "make" must be in your path at the
+time you run configure, otherwise use "MAKE=/path/to/make ./configure".
+
+Other variables:
+
+CC		C compiler
+CXX		C++ compiler
+CPPFLAGS	Additional flags for compilation
+CFLAGS		Additional flags for compilation and linking
+LDFLAGS		Additional flags for linking
+
+An example configuration is provided as "loreley.conf.example".  Copy that to
+<prefix>/etc/loreley.conf and edit as needed.
+
+Problems/questions/comments: <river@attenuate.org>.
