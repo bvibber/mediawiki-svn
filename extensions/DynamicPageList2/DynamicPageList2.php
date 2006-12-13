@@ -63,7 +63,7 @@ $wgDPL2Options = array(
 	'addfirstcategorydate' => array('default' => 'false', 'false', 'true'),
 	'addpagetoucheddate' => array('default' => 'false', 'false', 'true'),
 	/**
-	 * PAGE TRANSCLUSION: include=...
+	 * PAGE TRANSCLUSION: includepage=...
 	 * To include the whole page, use a wildcard:
 	 * To include sections labeled 'name1' or 'name2' or... from the page (see the doc of the LabeledSectionTransclusion extension for more info):
 	 * includepage = name1,name2,..
