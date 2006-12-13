@@ -68,7 +68,7 @@ $wgDPL2Messages['en'] = array(
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "WARNING: Wrong '$0' parameter: '$1'! Using default: '$2' (no limit). Help: <code>$0= <i>empty string</i> (no limit) | n</code>, with <code>n</code> a positive integer.",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'WARNING: No results!',
-	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "WARNING: Add* parameters ('adduser', 'addeditdate', etc.)' have no effect with 'mode=category'. Only the page namespace/title can be viewed in this mode.",
+	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "WARNING: Add* parameters ('adduser', 'addeditdate', etc.)' and 'includepage' have no effect with 'mode=category'. Only the page namespace/title can be viewed in this mode.",
 	/**
 	 * $0: 'headingmode' value given by user
 	 * $1: value used instead by program (which means no heading)
