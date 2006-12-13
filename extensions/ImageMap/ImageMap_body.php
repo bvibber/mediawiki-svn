@@ -2,7 +2,6 @@
 
 /**
  * Image map extension. 
- * TODO: image description link (icon)
  *
  * Syntax:
  * <imagemap>
@@ -10,7 +9,8 @@
  *
  * rect    0  0  50 50  [[Foo type A]]
  * circle  50 50 20     [[Foo type B]]
- *
+ * 
+ * desc bottom-left
  * </imagemap>
  *
  * Coordinates are relative to the source image, not the thumbnail
@@ -28,22 +28,35 @@ $wgMessageCache->addMessages( array(
 	                                   'default, rect, circle or poly',
 	'imagemap_no_areas'             => '&lt;imagemap&gt;: at least one area specification must be given',
 	'imagemap_invalid_coord'        => '&lt;imagemap&gt;: invalid coordinate at line $1, must be a number',
+	'imagemap_invalid_desc'         => '&lt;imagemap&gt;: invalid desc specification, must be one of: $1',
+	'imagemap_description'          => 'About this image',
+	# Note to translators: keep the same order
+	'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ));
 class ImageMap {
 	static public $id = 0;
 
+	const TOP_RIGHT = 0;
+	const BOTTOM_RIGHT = 1;
+	const BOTTOM_LEFT = 2;
+	const TOP_LEFT = 3;
+	const NONE = 4;
+
 	static function render( $input, $params, $parser ) {
+		global $wgScriptPath;
+
 		$lines = explode( "\n", $input );
 
 		$first = true;
 		$lineNum = 0;
 		$output = '';
 		$links = array();
+		$descType = self::BOTTOM_RIGHT;
 		foreach ( $lines as $line ) {
 			++$lineNum;
 
 			$line = trim( $line );
-			if ( $line == '' ) {
+			if ( $line == '' || $line[0] == '#' ) {
 				continue;
 			}
 
@@ -65,14 +78,15 @@ class ImageMap {
 				}
 				$imageHTML = $parser->makeImage( $imageTitle, $options );
 
-				$sx = simplexml_load_string( $imageHTML );
-				$imgs = $sx->xpath( '//img' );
-				if ( !count( $imgs ) ) {
+				$domDoc = DOMDocument::loadXML( $imageHTML );
+				$xpath = new DOMXPath( $domDoc );
+				$imgs = $xpath->query( '//img' );
+				if ( !$imgs->length ) {
 					return self::error( 'imagemap_invalid_image' );
 				}
-				$imageNode = $imgs[0];
-				$thumbWidth = $imageNode['width'];
-				$thumbHeight = $imageNode['height'];
+				$imageNode = $imgs->item(0);
+				$thumbWidth = $imageNode->getAttribute('width');
+				$thumbHeight = $imageNode->getAttribute('height');
 
 				$imageObj = new Image( $imageTitle );
 				# Add the linear dimensions to avoid inaccuracy in the scale 
@@ -87,6 +101,19 @@ class ImageMap {
 				continue;
 			}
 
+			# Handle desc spec
+			$cmd = strtok( $line, " \t" );
+			if ( $cmd == 'desc' ) {
+				$typesText = wfMsgForContent( 'imagemap_desc_types' );
+				$types = array_map( 'trim', explode( ',', $typesText ) );
+				$type = trim( strtok( '' ) );
+				$descType = array_search( $type, $types );
+				if ( $descType === false ) {
+					return self::error( 'imagemap_invalid_desc', $typesText );
+				}
+				continue;
+			}
+
 			# Find the link
 			$link = trim( strstr( $line, '[[' ) );
 			if ( preg_match( '/^ \[\[  ([^|]*+)  \|  ([^\]]*+)  \]\] \w* $ /x', $link, $m ) ) {
@@ -94,7 +121,7 @@ class ImageMap {
 				$alt = trim( $m[2] );
 			} elseif ( preg_match( '/^ \[\[  ([^\]]*+) \]\] \w* $ /x', $link, $m ) ) {
 				$title = Title::newFromText( $m[1] );
-				$alt = false;
+				$alt = $title->getFullText();
 			} else {
 				return self::error( 'imagemap_no_link', $lineNum );
 			}
@@ -144,14 +171,15 @@ class ImageMap {
 			# Construct the area tag
 			$attribs = array( 
 				'shape' => $shape,
-				'href' => $title->escapeLocalURL()
+				'href' => $title->escapeLocalURL(),
 			);
 			if ( $coords ) {
 				$attribs['coords'] = implode( ',', $coords );
 			}
 			if ( $alt != '' ) {
 				$attribs['alt'] = $alt;
-			}
+				$attribs['title'] = $alt;
+			} 
 			$output .= Xml::element( 'area', $attribs ) . "\n";
 			$links[] = $title;
 		}
@@ -168,15 +196,55 @@ class ImageMap {
 		$mapName = "ImageMap_" . ++self::$id;
 		$output = "<map name=\"$mapName\">\n$output</map>\n";
 		
-		# Alter the image tag and output it
-		$imageNode['usemap'] = $mapName;
-		$output .= $imageNode->asXML();
+		# Alter the image tag
+		$imageNode->setAttribute( 'usemap', "#$mapName" );
+		
+		# Add a surrounding div, remove the default link to the description page
+		$anchor = $imageNode->parentNode;
+		$parent = $anchor->parentNode;
+		$div = $parent->insertBefore( new DOMElement( 'div' ), $anchor );
+		$div->setAttribute( 'style', 'position: relative;' );
+		$div->appendChild( $imageNode->cloneNode( true ) );
+		$parent->removeChild( $anchor );
+
+		# Determine whether a "magnify" link is present
+		$xpath = new DOMXPath( $domDoc );
+		$magnify = $xpath->query( '//div[@class="magnify"]' );
+		if ( !$magnify->length && $descType != self::NONE ) {
+			# Add image description link
+			if ( $descType == self::TOP_LEFT || $descType == self::BOTTOM_LEFT ) {
+				$descLeft = 0;
+			} else {
+				$descLeft = $thumbWidth - 20;
+			}
+			if ( $descType == self::TOP_LEFT || $descType == self::TOP_RIGHT ) {
+				$descTop = 0;
+			} else {
+				$descTop = $thumbHeight - 20;
+			}
+			$descAnchor = $div->appendChild( new DOMElement( 'a' ) );
+			$descAnchor->setAttribute( 'href', $imageTitle->escapeLocalURL() );
+			$descAnchor->setAttribute( 'title', wfMsgForContent( 'imagemap_description' ) );
+			$descAnchor->setAttribute( 'style', "position:absolute; top: {$descTop}px; left: {$descLeft}px;" );
+			$descImg = $descAnchor->appendChild( new DOMElement( 'img' ) );
+			$descImg->setAttribute( 'alt', wfMsgForContent( 'imagemap_description' ) );
+			$descImg->setAttribute( 'src', "$wgScriptPath/extensions/ImageMap/desc-20.png" );
+			$descImg->setAttribute( 'style', 'border: none;' );
+		}
+
+		# Output the result
+		# We use saveXML() not saveHTML() because then we get XHTML-compliant output.
+		# The disadvantage is that we have to strip out the DTD
+		$output .= preg_replace( '/<\?xml[^?]*\?>/', '', $domDoc->saveXML() );
 
 		# Register links
 		$parser->mOutput->addImage( $imageTitle->getDBkey() );
 		foreach ( $links as $title ) {
 			$parser->mOutput->addLink( $title );
 		}
+
+		# Armour output against broken parser
+		$output = str_replace( "\n", '', $output );
 		return $output;
 	}
 
