@@ -65,10 +65,11 @@ $wgDPL2Options = array(
 	/**
 	 * PAGE TRANSCLUSION: includepage=...
 	 * To include the whole page, use a wildcard:
+	 * includepage =*
 	 * To include sections labeled 'name1' or 'name2' or... from the page (see the doc of the LabeledSectionTransclusion extension for more info):
 	 * includepage = name1,name2,..
 	 * To include nothing from the page (no transclusion), leave empty:
-	 * includepage=
+	 * includepage =
 	 */
     'includepage' => array('default' => ''),
 	'adduser' => array('default' => 'false', 'false', 'true'),
