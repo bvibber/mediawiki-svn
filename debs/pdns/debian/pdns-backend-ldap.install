@@ -1,0 +1,5 @@
+debian/tmp/usr/lib/powerdns/libldapbackend.so* usr/lib/powerdns/
+debian/tmp/usr/lib/powerdns/libldapbackend.a usr/lib/powerdns/
+debian/tmp/usr/bin/zone2ldap usr/bin/
+debian/lintian-overrides/pdns-backend-ldap usr/share/lintian/overrides/
+debian/config/dnsdomain2.schema etc/ldap/schema/

@@ -1,0 +1,22 @@
+Notes about Debian's PowerDNS package
+-------------------------------------
+
+ + Introduction
+
+PowerDNS is a powerful DNS server, it has the ability to communicate
+with several backends, including MySQL, PostgreSQL, LDAP etc.
+
+ + Configure
+
+The configuration for PowerDNS is separated in different files. In
+/etc/powerdns/pdns.conf are the default settings and in
+/etc/powerdns/pdns.d/pdns.local are the user changes. The configuration for
+specific backends can go into /etc/powerdns/pdns.d/pdns.local
+
+ + Chroot
+
+PowerDNS can run in a chrooted environment but this has some disadvantages.
+It is not easy to connect via a socket to another service like MySQL. And when
+using the sqlite backend you need to move the database in your chroot. If you
+don't have this restrictions you can easily enable the chroot option.
+

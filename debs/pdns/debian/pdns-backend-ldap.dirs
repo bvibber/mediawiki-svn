@@ -1,0 +1,4 @@
+etc/ldap/schema
+usr/lib/powerdns
+usr/bin
+usr/share/doc/pdns-backend-ldap

@@ -1,0 +1,8 @@
+debian/tmp/usr/bin/pdns_control usr/bin/
+debian/tmp/usr/bin/zone2sql usr/bin/
+debian/tmp/usr/sbin/pdns_server usr/sbin/
+debian/config/pdns.conf usr/share/pdns-server/
+debian/config/pdns.local usr/share/pdns-server/
+debian/default/pdns usr/share/pdns-server/
+debian/init.d/pdns etc/init.d/
+debian/resolvconf/pdns etc/resolvconf/update.d/

@@ -1,0 +1,101 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## addconfigdir.dpatch by Matthijs Mohlmann <matthijs@cacholong.nl>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Add include option to include files from directories
+
+@DPATCH@
+diff -urNad pdns-2.9.20~/pdns/arguments.cc pdns-2.9.20/pdns/arguments.cc
+--- pdns-2.9.20~/pdns/arguments.cc	2006-03-16 21:54:57.000000000 +0100
++++ pdns-2.9.20/pdns/arguments.cc	2006-03-16 21:55:05.318533464 +0100
+@@ -217,9 +217,12 @@
+     if(pos && pos!=string::npos) 
+       val=val.substr(pos);
+ 
+-    if(parmIsset(var))
++    if(parmIsset(var)) {
+       params[var]=val;
+-    else
++      if (var == "include") { // include directory
++        preParseDir(val, arg, lax);
++      }
++    } else
+       if(!lax)
+ 	throw ArgException("Trying to set unexisting parameter '"+var+"'");
+   }
+@@ -246,6 +249,31 @@
+   }
+ }
+ 
++bool ArgvMap::preParseDir(const string dir, const string &arg, bool lax)
++{
++  DIR *dir_p;
++  string filename;
++  struct dirent *dir_entry_p;
++
++  if (dir_p = opendir(dir.c_str())) {
++    while((dir_entry_p = readdir(dir_p)))
++    {
++      if (strcmp(dir_entry_p->d_name, ".") == 0 ||
++          strcmp(dir_entry_p->d_name, "..") == 0)
++        continue;
++
++      filename = dir + "/" + dir_entry_p->d_name;
++      file(filename.c_str(), lax);
++    }
++    closedir(dir_p);
++  } else {
++    // Could be a file.
++    file(dir.c_str(), lax);
++  }
++
++  return true;
++}
++
+ bool ArgvMap::preParseFile(const char *fname, const string &arg)
+ {
+   ifstream f(fname);
+diff -urNad pdns-2.9.20~/pdns/arguments.hh pdns-2.9.20/pdns/arguments.hh
+--- pdns-2.9.20~/pdns/arguments.hh	2006-03-16 21:54:57.000000000 +0100
++++ pdns-2.9.20/pdns/arguments.hh	2006-03-16 21:55:26.854259536 +0100
+@@ -24,6 +24,7 @@
+ #include <vector>
+ #include <fstream>
+ #include <iostream>
++#include <dirent.h>
+ #include "misc.hh"
+ #include "ahuexception.hh"
+ 
+@@ -78,6 +79,7 @@
+   }
+   void preParse(int &argc, char **argv, const string &arg); //!< use this to preparse a single var
+   bool preParseFile(const char *fname, const string &arg); //!< use this to preparse a single var in configuration
++  bool preParseDir(const string dir, const string &arg, bool lax); //!< use this to include a directory
+ 
+   bool file(const char *fname, bool lax=false); //!< Parses a file with parameters
+   bool laxFile(const char *fname) 
+diff -urNad pdns-2.9.20~/pdns/common_startup.cc pdns-2.9.20/pdns/common_startup.cc
+--- pdns-2.9.20~/pdns/common_startup.cc	2006-03-16 21:54:57.000000000 +0100
++++ pdns-2.9.20/pdns/common_startup.cc	2006-03-16 21:55:05.319533312 +0100
+@@ -62,6 +62,7 @@
+   arg().set("fancy-records","Process URL and MBOXFW records")="no";
+   arg().set("wildcard-url","Process URL and MBOXFW records")="no";
+   arg().set("wildcards","Honor wildcards in the database")="";
++  arg().set("include", "Directory with config files to include")="@@SYSCONFDIR@@/pdns.d"; // Add directory with config files
+   arg().set("loglevel","Amount of logging. Higher is more. Do not set below 3")="4";
+   arg().set("default-soa-name","name to insert in the SOA record if none set in the backend")="a.misconfigured.powerdns.server";
+   arg().set("distributor-threads","Default number of Distributor (backend) threads to start")="3";
+diff -urNad pdns-2.9.20~/pdns/docs/pdns.sgml pdns-2.9.20/pdns/docs/pdns.sgml
+--- pdns-2.9.20~/pdns/docs/pdns.sgml	2006-03-16 21:54:57.000000000 +0100
++++ pdns-2.9.20/pdns/docs/pdns.sgml	2006-03-16 21:55:05.329531792 +0100
+@@ -6319,6 +6319,10 @@
+ 	    <listitem><para>
+ 		Provide a helpful message
+ 	      </para></listitem></varlistentry>
++	  <varlistentry><term>include</term>
++	    <listitem><para>
++		Include a directory with configuration files. This adds support for pdns.d or config.d constructions.
++	      </para></listitem></varlistentry>
+ 	  <varlistentry><term>launch=...</term>
+ 	    <listitem><para>
+ 		Which backends to launch and order to query them in. See <xref linkend="modules">.

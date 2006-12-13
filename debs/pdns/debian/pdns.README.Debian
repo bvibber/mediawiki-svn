@@ -1,0 +1,9 @@
+Notes about the 'pdns' package
+------------------------------
+
+Please note that the 'pdns' package has been replaced by the 'pdns-server'
+and 'pdns-recursor' packages. This package has just survived for compatibility
+reasons but does not serve a purpose any longer. It is safe to be removed.
+
+ The PowerDNS maintainers <powerdns-debian@workaround.org>
+

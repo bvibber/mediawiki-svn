@@ -1,0 +1,11 @@
+For the MySQL database setup.
+
+In /usr/share/doc/pdns-backend-mysql/ is the file mysql.sql. This contains
+a basic setup for PowerDNS.
+
+You can add this with:
+- Create first a database in MySQL (For example: pdns)
+- Add this file: mysql -u root -p <database> < mysql.sql
+
+And then add the records to the database.
+

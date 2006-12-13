@@ -1,0 +1,131 @@
+#!/usr/bin/make -f
+# 
+# debian/rules file
+
+# Environment
+#export DH_VERBOSE=1
+export DH_COMPAT=4
+
+# These are used for cross-compiling and for saving the configure script
+# from having to guess our platform (since we know it already)
+DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+
+CXXFLAGS = -Wall -g
+CFLAGS = -Wall -g
+
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+	CFLAGS += -O0
+	CXXFLAGS += -O0
+else
+	CFLAGS += -O2
+	CXXFLAGS += -O2
+endif
+
+backends := ldap pipe gmysql gpgsql gsqlite geo
+
+# Targets
+config.status:
+	dh_testdir
+	# Add here commands to configure the package.
+	CFLAGS="$(CFLAGS)" CXXFLAGS="$(CXXFLAGS)" ./configure \
+		--host=$(DEB_HOST_GNU_TYPE) \
+		--build=$(DEB_BUILD_GNU_TYPE) \
+		--prefix=/usr \
+		--sysconfdir=/etc/powerdns \
+		--mandir=\$${prefix}/share/man \
+		--infodir=\$${prefix}/share/info \
+		--libdir='$${prefix}/lib/powerdns' \
+		--libexecdir='$${prefix}/lib' \
+		--with-dynmodules="$(backends)" \
+		--with-modules="" \
+		--with-pgsql-includes=`pg_config --includedir` \
+		--disable-recursor
+
+build: patch build-stamp
+build-stamp: config.status
+
+	# Add here commands to compile the arch part of the package.
+	-$(MAKE) 
+
+	touch build-stamp
+
+clean: clean1 unpatch
+clean1:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp config.log
+
+	# Add here commands to clean up after the build process.
+	-$(MAKE) -C modules/db2backend/ distclean
+	-$(MAKE) -C modules/pdnsbackend/ distclean
+	-$(MAKE) -C modules/xdbbackend/ distclean
+	-$(MAKE) distclean
+	-$(MAKE) -C pdns/docs clean
+ifneq "$(wildcard /usr/share/misc/config.sub)" ""
+	cp -f /usr/share/misc/config.sub config.sub
+endif
+ifneq "$(wildcard /usr/share/misc/config.guess)" ""
+	cp -f /usr/share/misc/config.guess config.guess
+endif
+
+	dh_clean 
+
+install:
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	# Install the stuff
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
+	$(MAKE) -C pdns/docs html/index.html
+
+	dh_install
+
+# Build architecture independant packages.
+binary-indep: build install
+	dh_testdir -i
+	dh_testroot -i
+	dh_installchangelogs -i ChangeLog
+	dh_installdocs -i
+	dh_link -i
+	dh_compress -i -X changelog.html
+	dh_fixperms -i
+	dh_installdeb -i
+	dh_gencontrol -i
+	dh_md5sums -i
+	dh_builddeb -i
+
+# Build architecture dependant packages.
+binary-arch: build install
+	dh_testdir -a
+	dh_testroot -a
+	dh_installchangelogs -a ChangeLog
+	dh_installdocs -a
+	dh_installdebconf -a
+	dh_installman -a
+	dh_installexamples -a
+	dh_link -a
+	dh_strip -a
+	dh_compress -a
+	dh_fixperms -a
+	chmod 755 $(CURDIR)/debian/pdns-server/etc/resolvconf/update.d/pdns
+	dh_installdeb -a
+	dh_shlibdeps -a
+	dh_gencontrol -a
+	dh_md5sums -a
+	dh_builddeb -a
+
+patch: patch-stamp
+patch-stamp:
+	dpatch apply-all
+	touch patch-stamp
+
+unpatch:
+	dpatch deapply-all
+	rm -rf patch-stamp debian/patched
+
+binary: binary-arch binary-indep
+.PHONY: build clean binary-indep binary-arch binary install
