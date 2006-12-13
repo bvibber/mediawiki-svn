@@ -41,23 +41,8 @@
 #ifndef ACL_H
 #define ACL_H
 
-#include <sys/types.h>
-#include <sys/socket.h>
-
-#include <netinet/in.h>
-#include <arpa/inet.h>
-
-#include <cstdlib>
-#include <cstdarg>
-#include <cstdio>
-#include <cstring>
-#include <cctype>
-#include <vector>
-#include <string>
 using std::string;
 using std::vector;
-
-#include <unistd.h>
 
 struct aclprefix;
 struct aclnode;

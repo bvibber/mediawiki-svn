@@ -10,6 +10,7 @@
 
 /* @(#) $Id$ */
 
+#include "stdinc.h"
 #include "cache.h"
 
 a_cachedir::a_cachedir(imstring const &path, int num)

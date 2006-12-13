@@ -13,15 +13,9 @@
 #ifndef PTALLOC_H
 #define PTALLOC_H
 
-#include <boost/format.hpp>
-
-#include <string>
-#include <sstream>
-
 #include "flalloc.h"
 #include "util.h"
 #include "thread.h"
-#include "autoconf.h"
 
 /*
  * A fast, thread-specific power of two allocator.  Backended by

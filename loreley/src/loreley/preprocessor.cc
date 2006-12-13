@@ -10,11 +10,8 @@
 
 /* $Id$ */
 
-#include <utility>
-#include <cerrno>
-
-#include <boost/spirit.hpp>
-#include <boost/algorithm/string.hpp>
+#include "stdinc.h"
+#include <boost/spirit/iterator/file_iterator.hpp>
 using std::pair;
 using std::make_pair;
 using boost::spirit::file_iterator;

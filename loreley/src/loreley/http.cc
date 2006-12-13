@@ -10,28 +10,7 @@
 
 /* @(#) $Id$ */
 
-#ifndef _GNU_SOURCE
-# define _GNU_SOURCE	/* glibc strptime */
-#endif
-
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/param.h>
-
-#include <cstdlib>
-#include <cstdio>
-#include <cstring>
-#include <unistd.h>
-#include <cerrno>
-#include <netdb.h>
-#include <fcntl.h>
-#include <cassert>
-#include <ctime>
-#include <fstream>
-#include <pthread.h>
-
-#include <utility>
-#include <deque>
+#include "stdinc.h"
 using std::deque;
 using std::min;
 using std::ofstream;

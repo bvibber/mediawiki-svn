@@ -13,10 +13,8 @@
 #ifndef FLALLOC_H
 #define FLALLOC_H
 
-#include <cstdlib>
 using std::memset;
 
-#include "autoconf.h"
 #include "thread.h"
 
 #if !defined(DISABLE_ALLOCS) && !defined(__SUNPRO_CC)

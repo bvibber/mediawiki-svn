@@ -10,27 +10,13 @@
 
 /* $Id$ */
 
-#include <iostream>
-#include <iterator>
-#include <string>
-#include <map>
-#include <exception>
+#include "stdinc.h"
 
 #include <boost/spirit.hpp>
 #include <boost/spirit/attribute.hpp>
 #include <boost/spirit/phoenix.hpp>
 #include <boost/spirit/phoenix/casts.hpp>
 #include <boost/spirit/phoenix/closures.hpp>
-
-#include <boost/variant.hpp>
-#include <boost/static_assert.hpp>
-
-#include <boost/mpl/vector_c.hpp>
-#include <boost/mpl/equal.hpp>
-#include <boost/mpl/plus.hpp>
-#include <boost/mpl/minus.hpp>
-#include <boost/mpl/transform.hpp>
-#include <boost/mpl/placeholders.hpp>
 
 #include "util.h"
 #include "loreley.h"

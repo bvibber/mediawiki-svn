@@ -13,19 +13,6 @@
 #ifndef CONFGRAMMAR_H
 #define CONFGRAMMAR_H
 
-#include <iostream>
-#include <vector>
-#include <exception>
-
-#include <boost/mpl/vector_c.hpp>
-#include <boost/mpl/equal.hpp>
-#include <boost/mpl/plus.hpp>
-#include <boost/mpl/minus.hpp>
-#include <boost/mpl/transform.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/variant.hpp>
-#include <boost/spirit.hpp>
 using std::vector;
 using std::ostream;
 using std::exception;

@@ -10,8 +10,7 @@
 
 /* @(#) $Id$ */
 
-#include <utility>
-#include <iostream>
+#include "stdinc.h"
 using std::make_pair;
 using std::ostream;
 

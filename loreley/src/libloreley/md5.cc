@@ -36,7 +36,7 @@
  **********************************************************************
  */
 
-#include <stdexcept>
+#include "stdinc.h"
 using std::logic_error;
 
 #include "md5.h"

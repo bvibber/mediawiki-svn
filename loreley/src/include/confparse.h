@@ -16,14 +16,6 @@
 #ifndef CONFPARSE_H
 #define CONFPARSE_H
 
-#include <string>
-#include <map>
-#include <vector>
-#include <utility>
-#include <cassert>
-#include <limits>
-
-#include <boost/bind.hpp>
 using std::numeric_limits;
 using std::map;
 using std::vector;

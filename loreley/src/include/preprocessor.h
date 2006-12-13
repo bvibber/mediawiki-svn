@@ -13,9 +13,6 @@
 #ifndef PREPROCESSOR_H
 #define PREPROCESSOR_H
 
-#include <iterator>
-#include <iostream>
-#include <exception>
 using std::exception;
 using std::ostream;
 using std::random_access_iterator_tag;

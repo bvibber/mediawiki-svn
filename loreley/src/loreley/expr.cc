@@ -10,17 +10,11 @@
 
 /* @(#) $Id$ */
 
-#include "autoconf.h"
+#include "stdinc.h"
 
 #if defined(LORELEY_DEBUG) && 0
 # define BOOST_SPIRIT_DEBUG
 #endif
-
-#include <iostream>
-#include <vector>
-#include <stack>
-#include <functional>
-#include <stdexcept>
 
 #include <boost/spirit.hpp>
 #include <boost/spirit/attribute.hpp>

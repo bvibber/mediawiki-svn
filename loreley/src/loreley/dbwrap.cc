@@ -10,6 +10,7 @@
 
 /* @(#) $Id$ */
 
+#include "stdinc.h"
 #include "dbwrap.h"
 #include "mbuffer.h"
 

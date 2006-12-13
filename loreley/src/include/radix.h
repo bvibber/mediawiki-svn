@@ -15,16 +15,6 @@
 #ifndef _RADIX_H
 #define _RADIX_H
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-
-#include <netdb.h>
-#include <inttypes.h>
-
-#include <stdexcept>
-#include <utility>
 using std::invalid_argument;
 using std::pair;
 

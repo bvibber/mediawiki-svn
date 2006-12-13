@@ -10,9 +10,7 @@
 
 /* @(#) $Id$ */
 
-#include <vector>
-#include <cstring>
-#include <cerrno>
+#include "stdinc.h"
 using std::strlen;
 using std::vector;
 using std::sprintf;

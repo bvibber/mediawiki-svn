@@ -10,6 +10,7 @@
 
 /* @(#) $Id$ */
 
+#include "stdinc.h"
 #include "ptalloc.h"
 #include "thread.h"
 

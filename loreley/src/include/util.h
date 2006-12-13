@@ -13,40 +13,6 @@
 #ifndef UTIL_H
 #define UTIL_H
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/un.h>
-
-#include <netinet/in.h>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/utility.hpp>
-#include <boost/lexical_cast.hpp>
-#include <boost/archive/iterators/base64_from_binary.hpp>
-#include <boost/archive/iterators/binary_from_base64.hpp>
-#include <boost/archive/iterators/transform_width.hpp>
-#include <boost/assign/list_of.hpp>
-#include <boost/format.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/map.hpp>
-#include <boost/mpl/set.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/pair.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/find.hpp>
-#include <boost/mpl/has_key.hpp>
-#include <boost/type_traits.hpp>
-#include <boost/bind.hpp>
-#include <boost/function.hpp>
-
-#include <iostream>
-#include <string>
-#include <stdexcept>
-#include <vector>
-#include <cstddef>
-#include <utility>
-#include <map>
-
 using namespace boost::assign;
 namespace mpl = boost::mpl;
 using boost::noncopyable;
@@ -65,8 +31,6 @@ using std::basic_string;
 using std::char_traits;
 using std::vector;
 using std::map;
-
-#include "autoconf.h"
 
 #ifdef __INTEL_COMPILER
 # pragma warning (disable: 869 981 304 383 1418 1469 810 444)

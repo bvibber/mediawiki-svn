@@ -10,19 +10,7 @@
 
 /* @(#) $Id$ */
 
-#include <sys/types.h>
-#include <sys/socket.h>
-
-#include <arpa/inet.h>
-
-#include <cstdlib>
-#include <cstdio>
-#include <cstring>
-#include <cerrno>
-#include <climits>
-#include <cmath>
-#include <ctime>
-#include <algorithm>
+#include "stdinc.h"
 using std::sort;
 using std::pow;
 using std::rotate;

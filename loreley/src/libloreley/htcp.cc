@@ -10,6 +10,7 @@
 
 /* @(#) $Id$ */
 
+#include "stdinc.h"
 #include "htcp.h"
 #include "md5.h"
 

@@ -13,7 +13,6 @@
 #ifndef WHTTP_HEADER
 #define WHTTP_HEADER
 
-#include "autoconf.h"
 #include "http.h"
 #include "loreley.h"
 #include "net.h"

@@ -9,22 +9,7 @@
 
 /* @(#) $Id$ */
 
-#include <sys/mman.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <pwd.h>
-#include <grp.h>
-#include <limits.h>
-
-#include <cstdio>
-#include <cstdlib>
-#include <csignal>
-#include <cstdarg>
-#include <cstring>
-#include <unistd.h>
-#include <cerrno>
-#include <cctype>
-#include <iostream>
+#include "stdinc.h"
 using std::streamsize;
 
 #include "log.h"

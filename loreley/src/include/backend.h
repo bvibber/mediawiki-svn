@@ -13,12 +13,6 @@
 #ifndef WBACKEND_H
 #define WBACKEND_H
 
-#include <sys/types.h>
-#include <netinet/in.h>
-
-#include <string>
-#include <vector>
-#include <map>
 using std::vector;
 using std::map;
 

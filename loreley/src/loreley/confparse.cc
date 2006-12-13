@@ -10,23 +10,9 @@
 
 /* $Id$ */
 
-#include <sys/utsname.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-
-#include <vector>
-#include <string>
-#include <utility>
-#include <cstdarg>
-#include <cerrno>
-#include <stdio.h>
+#include "stdinc.h"
 using std::vector;
 using std::make_pair;
-
-#include <boost/bind.hpp>
 
 #define NEED_PARSING_TREE
 

@@ -10,9 +10,7 @@
 
 /* @(#) $Id$ */
 
-#include <netdb.h>
-
-#include <boost/lexical_cast.hpp>
+#include "stdinc.h"
 using boost::lexical_cast;
 
 #include "packet_decoder.h"

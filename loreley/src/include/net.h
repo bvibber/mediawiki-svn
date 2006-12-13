@@ -13,34 +13,6 @@
 #ifndef WNET_H
 #define WNET_H
 
-#if defined __digital__ && defined __unix__
-/* sendfile prototype is missing on Tru64 UNIX */
-# include <sys/uio.h>
-
-ssize_t sendfile(int, int, off_t, size_t, const struct iovec *, int);
-#endif
-
-#include <sys/types.h>
-#include <sys/socket.h>
-
-#include <netinet/in.h>
-#include <netdb.h>
-#include <unistd.h>
-
-#include "autoconf.h"
-#include <sys/time.h>
-#include <sys/fcntl.h>
-#ifdef HAVE_SYS_SENDFILE_H
-# include <sys/sendfile.h>
-#endif
-
-#include <pthread.h>
-#include <vector>
-#include <deque>
-#include <cassert>
-#include <stdexcept>
-#include <cerrno>
-#include <utility>
 using std::deque;
 using std::vector;
 using std::runtime_error;

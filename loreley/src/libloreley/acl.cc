@@ -39,8 +39,7 @@
 /* From: Id: acl.c,v 1.10 2004/04/15 07:29:57 pim Exp */
 /* $Id$ */
 
-#include <iostream>
-#include <cstring>
+#include "stdinc.h"
 using std::memcpy;
 
 #include "acl.h"

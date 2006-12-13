@@ -15,11 +15,7 @@
 /* From: Id: radix.c,v 1.1.1.1 2005/11/07 20:17:44 pim Exp */
 /* $Id$ */
 
-#include <stdio.h>
-#include <cstring>
-#include <cstdlib>
-#include <cassert>
-#include <utility>
+#include "stdinc.h"
 using std::pair;
 using std::make_pair;
 

@@ -8,10 +8,11 @@
 
 # @(#) $Id$
 
+all: @PCHHDR@
+clean:
+depend:
 
-SUBDIRS=include libloreley loreley lreadlog lgetstats lhtcp
+stdinc.h.gch:
+	$(_COMPILEXX) stdinc.h -o stdinc.h.gch
 
-@include@ @q@@top_srcdir@/mk/subdir.mk@q@
-
-DISTFILES=\
-	Makefile.in 
+@include@ @q@@top_srcdir@/mk/vars.mk@q@

@@ -13,11 +13,6 @@
 #ifndef HTCP_H
 #define HTCP_H
 
-#include <sys/types.h>
-#include <limits>
-#include <cstddef>
-#include <algorithm>
-#include <stdexcept>
 using std::size_t;
 using std::numeric_limits;
 using std::min;

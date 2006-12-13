@@ -13,13 +13,6 @@
 #ifndef WCONFIG_H
 #define WCONFIG_H
 
-#include <sys/types.h>
-#include <netinet/in.h>
-
-#include <string>
-#include <vector>
-#include <utility>
-#include <map>
 using std::pair;
 using std::vector;
 using std::map;

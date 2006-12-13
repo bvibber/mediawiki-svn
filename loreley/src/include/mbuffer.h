@@ -13,13 +13,6 @@
 #ifndef MBUFFER_H
 #define MBUFFER_H
 
-#include <sys/types.h>
-
-#include <inttypes.h>
-#include <cassert>
-#include <string>
-#include <cstddef>
-#include <stdexcept>
 using std::size_t;
 using std::basic_string;
 using std::logic_error;

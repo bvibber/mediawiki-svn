@@ -10,8 +10,7 @@
 
 /* @(#) $Id$ */
 
-#include <algorithm>
-#include <stdio.h>
+#include "stdinc.h"
 using std::min;
 
 #include "chunking.h"

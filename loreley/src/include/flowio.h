@@ -13,12 +13,6 @@
 #ifndef FLOWIO_H
 #define FLOWIO_H
 
-#include <sys/mman.h>
-
-#include <fstream>
-#include <string>
-#include <algorithm>
-#include <map>
 using std::ifstream;
 using std::map;
 using std::min;

@@ -13,13 +13,9 @@
 #ifndef WLOG_H
 #define WLOG_H
 
-#include <cstdio>
-#include <string>
-#include <fstream>
 using std::ofstream;
 
 #include "loreley.h"
-#include "autoconf.h"
 #include "ptalloc.h"
 
 enum log_level {

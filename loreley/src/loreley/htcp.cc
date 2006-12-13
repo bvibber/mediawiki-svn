@@ -10,7 +10,7 @@
 
 /* @(#) $Id$ */
 
-#include <utility>
+#include "stdinc.h"
 using std::pair;
 
 #include "loreley.h"

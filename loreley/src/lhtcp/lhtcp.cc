@@ -10,25 +10,7 @@
 
 /* @(#) $Id$ */
 
-#include <boost/archive/iterators/base64_from_binary.hpp>
-#include <boost/archive/iterators/transform_width.hpp>
-
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/stat.h>
-#include <sys/time.h>
-
-#include <fcntl.h>
-#include <netdb.h>
-#include <unistd.h>
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <cerrno>
-#include <string>
-#include <iterator>
-#include <fstream>
+#include "stdinc.h"
 using std::fprintf;
 using std::memset;
 using std::strchr;

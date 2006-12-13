@@ -10,22 +10,7 @@
 
 /* @(#) $Id$ */
 
-#include <sys/types.h>
-#include <sys/socket.h>
-
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <syslog.h>
-
-#include <cstdlib>
-#include <cstdio>
-#include <cstring>
-#include <cerrno>
-#include <climits>
-#include <netdb.h>
-#include <pthread.h>
-#include <set>
-#include <fstream>
+#include "stdinc.h"
 using std::ifstream;
 using std::set;
 using std::back_inserter;

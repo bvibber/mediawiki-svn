@@ -10,7 +10,7 @@
 
 /* @(#) $Id$ */
 
-#include <iostream>
+#include "stdinc.h"
 using std::ostream;
 
 #include "cache.h"

@@ -10,30 +10,7 @@
 
 /* @(#) $Id$ */
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/select.h>
-#include <sys/stat.h>
-
-#include <netinet/in.h>
-
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <fcntl.h>
-
-#include <cerrno>
-#include <cstdio>
-#include <unistd.h>
-#include <cstdlib>
-#include <cstring>
-#include <ctime>
-#include <algorithm>
-#include <vector>
-#include <memory>
-#include <map>
-#include <set>
-#include <iostream>
-#include <fstream>
+#include "stdinc.h"
 using std::ofstream;
 using std::strftime;
 using std::strlen;
@@ -60,10 +37,6 @@ using std::ios;
 using std::max_element;
 using std::exception;
 
-#include <boost/format.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/assign.hpp>
-#include <boost/lexical_cast.hpp>
 using boost::format;
 using boost::io::str;
 using boost::shared_ptr;

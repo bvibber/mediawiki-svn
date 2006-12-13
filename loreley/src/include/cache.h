@@ -13,13 +13,6 @@
 #ifndef CACHE_H
 #define CACHE_H
 
-#include <sys/types.h>
-#include <sys/stat.h>
-
-#include <map>
-#include <set>
-#include <fstream>
-#include <ios>
 using std::map;
 using std::multiset;
 using std::fstream;

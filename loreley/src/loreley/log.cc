@@ -10,21 +10,10 @@
 
 /* @(#) $Id$ */
 
-#include <boost/format.hpp>
-
-#include <cstdio>
-#include <cstdarg>
-#include <cstdlib>
-#include <cstring>
-#include <syslog.h>
-#include <cerrno>
-#include <iostream>
-#include <ios>
+#include "stdinc.h"
 using std::cout;
 using std::ios;
 using std::endl;
-
-#include "autoconf.h"
 
 #include "log.h"
 #include "net.h"

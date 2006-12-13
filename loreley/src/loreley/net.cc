@@ -10,18 +10,10 @@
 
 /* @(#) $Id$ */
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/ioctl.h>
-
+#include "stdinc.h"
 namespace sfun {
 	using ::bind;	/* because of conflict with boost::bind from util.h */
 };
-
-#include "autoconf.h"
-#ifdef HAVE_SYS_SENDFILE_H
-# include <sys/sendfile.h>
-#endif
 
 /*
  * libevent needs these
@@ -42,25 +34,11 @@ typedef uint32_t u_int32_t;
 typedef uint64_t u_int64_t;
 #endif
 
-#include <netinet/tcp.h>
-#include <arpa/inet.h>
-
-#include <cstdio>
-#include <cstring>
-#include <cstdlib>
-#include <cerrno>
-#include <csignal>
-#include <cassert>
-#include <ctime>
-#include <deque>
-#include <map>
 using std::deque;
 using std::signal;
 using std::multimap;
 
 #include <event.h>
-#include <unistd.h>
-#include <fcntl.h>
 
 #include "loreley.h"
 #include "net.h"

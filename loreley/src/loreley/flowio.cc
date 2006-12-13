@@ -10,16 +10,7 @@
 
 /* @(#) $Id$ */
 
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/fcntl.h>
-#include <sys/mman.h>
-
-#include <fcntl.h>
-#include <limits.h>
-#include <stdio.h>
-#include <iostream>
-#include <cerrno>
+#include "stdinc.h"
 using std::streamsize;
 
 #include "flowio.h"

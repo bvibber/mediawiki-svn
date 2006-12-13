@@ -10,21 +10,11 @@
 
 /* @(#) $Id$ */
 
-#include <string>
-#include <vector>
-#include <iostream>
+#include "stdinc.h"
 using std::string;
 using std::vector;
 using std::ostream;
 
-#include <boost/multi_index_container.hpp>
-#include <boost/multi_index/identity.hpp>
-#include <boost/multi_index/member.hpp>
-#include <boost/multi_index/ordered_index.hpp>
-#include <boost/multi_index/tag.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/format.hpp>
-#include <boost/ref.hpp>
 using boost::cref;
 using boost::reference_wrapper;
 using boost::multi_index_container;

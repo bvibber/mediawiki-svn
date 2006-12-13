@@ -45,8 +45,6 @@
  **********************************************************************
  */
 
-#include <cstdlib>
-#include <inttypes.h>
 using std::size_t;
 
 #include "loreley.h"

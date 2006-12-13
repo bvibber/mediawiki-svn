@@ -12,17 +12,6 @@
 #ifndef LORELEY_H
 #define LORELEY_H
 
-#include "autoconf.h"
-
-#include <sstream>
-#include <cstddef>
-#include <iostream>
-#include <typeinfo>
-#include <stdexcept>
-#include <string>
-#include <cmath>
-#include <vector>
-#include <strings.h>
 using std::runtime_error;
 using std::basic_string;
 using std::char_traits;
@@ -30,8 +19,6 @@ using std::vector;
 using std::basic_ostream;
 using std::istream;
 
-#include <boost/utility.hpp>
-#include <boost/mpl/int.hpp>
 namespace mpl = boost::mpl;
 
 #include "log.h"
@@ -40,7 +27,6 @@ namespace mpl = boost::mpl;
 
 typedef unsigned long long w_size_t;
 
-#include <stdlib.h>
 #define wmalloc malloc
 #define wfree free
 #define wstrdup strdup
