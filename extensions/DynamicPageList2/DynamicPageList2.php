@@ -19,13 +19,13 @@
  * @author w:de:Benutzer:Unendlich 
  * @author m:User:Dangerman <cyril.dangerville@gmail.com>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version 0.7.8
+ * @version 0.8.0
  */
 
 /*
  * Current version
  */
-define('DPL2_VERSION', '0.7.8');
+define('DPL2_VERSION', '0.8.0');
 
 /**
  * Register the extension with MediaWiki
@@ -62,6 +62,15 @@ $wgDPL2Options = array(
 	'addeditdate' => array('default' => 'false', 'false', 'true'),
 	'addfirstcategorydate' => array('default' => 'false', 'false', 'true'),
 	'addpagetoucheddate' => array('default' => 'false', 'false', 'true'),
+	/**
+	 * PAGE TRANSCLUSION: include=...
+	 * To include the whole page, use a wildcard:
+	 * To include sections labeled 'name1' or 'name2' or... from the page (see the doc of the LabeledSectionTransclusion extension for more info):
+	 * includepage = name1,name2,..
+	 * To include nothing from the page (no transclusion), leave empty:
+	 * includepage=
+	 */
+    'includepage' => array('default' => ''),
 	'adduser' => array('default' => 'false', 'false', 'true'),
 	/**
 	 * category= Cat11 | Cat12 | ...
@@ -180,13 +189,21 @@ $wgDPL2Options = array(
 	 * - only: lists only redirect pages in lists (page_is_redirect = 1 only)
 	 */
 	'redirects' => array('default' => 'exclude', 'exclude', 'include', 'only'),
+	/**
+	 * secseparators  is a sequence of html texts used to separate sections (see "includepage=name1, name2, ..") 
+	 *              there are four items which must be separated by "," as delimiter
+	 *              t1 and t4 define an outer frame for sections of an article
+	 *              t2 and t3 build an inner frame for each section
+	 *   example:   secseparators=<table><tr>,<td>,</td>,</tr></table>
+	 */
+	'secseparators'  => array('default' => ',,,'),
 	'shownamespace' => array('default' => 'true', 'false', 'true'),
 	/**
 	 * Max # characters of page title to display.
 	 * Empty value (default) means no limit.
 	 * Not applicable to mode=category.
 	 */
-	 'titlemaxlength' => array('default' => '', 'pattern' => '/^\d*$/'),
+	'titlemaxlength' => array('default' => '', 'pattern' => '/^\d*$/'),
 );
 
 /**
@@ -243,8 +260,6 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	
 	// INVALIDATE CACHE
 	$parser->disableCache();
-
-	$aParams = array();
 	
 	/**
 	 * Initialization
@@ -288,6 +303,13 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$bAddEditDate = $wgDPL2Options['addeditdate']['default'] == 'true';
 	$bAddUser = $wgDPL2Options['adduser']['default'] == 'true';
 	$bAddCategories = $wgDPL2Options['addcategories']['default'] == 'true';
+	$_incpage = $wgDPL2Options['includepage']['default'];
+	$bIncPage =  is_string($_incpage) && $_incpage !== '';
+	$aSecLabels = array();
+	if($bIncPage && $_incpage != '*')
+		$aSecLabels = explode(',', $_incpage);
+	$aSecSeparators = array();
+    $aSecSeparators  = explode(',', $wgDPL2Options['secseparators']['default']);
 	$_sCount = $wgDPL2Options['count']['default'];
 	$iCount = ($_sCount == '') ? NULL: intval($_sCount);
 	$sListHtmlAttr = $wgDPL2Options['listattr']['default'];
@@ -445,6 +467,12 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				else
 					$output .= $logger->msgWrongParam('addpagetoucheddate', $sArg);
 				break;
+			
+			case 'includepage':
+				$bIncPage =  $sArg !== '';
+				if($bIncPage && $sArg != '*')
+					$aSecLabels= explode(',', $sArg);
+				break;
 
 			case 'adduser':
 				if( in_array($sArg, $wgDPL2Options['adduser']))
@@ -495,8 +523,12 @@ function DynamicPageList2( $input, $params, &$parser ) {
 				
 			case 'inlinetext':
 				//parse wiki text and get HTML output
-				$pOutput = $localParser->parse($sArg, $pTitle, $pOptions, false);
-				$sInlTxt = $pOutput->getText();
+				$sInlTxt = $parser->recursiveTagParse($sArg);
+				break;
+			
+			case 'secseparators':
+				//parse wiki text and get HTML output
+				$aSecSeparators = explode (',', $parser->recursiveTagParse($sArg), 4);
 				break;
 			
 			case 'shownamespace':
@@ -617,7 +649,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	}
 	
 	//add*** parameters have no effect with 'mode=category' (only namespace/title can be viewed in this mode)
-	if( $sPageListMode == 'category' && ($bAddCategories || $bAddEditDate || $bAddFirstCategoryDate || $bAddPageTouchedDate || $bAddUser) )
+	if( $sPageListMode == 'category' && ($bAddCategories || $bAddEditDate || $bAddFirstCategoryDate || $bAddPageTouchedDate || $bIncPage || $bAddUser) )
 		$output .= $logger->escapeMsg(DPL2_WARN_CATOUTPUTBUTWRONGPARAMS);
 		
 	//headingmode has effects with ordermethod on multiple components only
@@ -859,8 +891,10 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	
 	$iArticle = 0;
 	while( $row = $dbr->fetchObject ( $res ) ) {
-		//PAGE LINK
+		//PAGE TITLE
 		$title = Title::makeTitle($row->page_namespace, $row->page_title);
+		$dplArticle = new DPL2Article( $title );
+		//PAGE LINK
 		$sTitleText = $title->getText();
 		//chop off title if "too long"
 		if( isset($iTitleMaxLen) && (strlen($sTitleText) > $iTitleMaxLen) )
@@ -869,7 +903,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			//Adapted from Title::getPrefixedText()
             $sTitleText = str_replace( '_', ' ', $title->prefix($sTitleText) );
 		$articleLink = $sk->makeKnownLinkObj( $title, htmlspecialchars( $wgContLang->convert( $sTitleText ) ) );
-		$dplArticle = new DPL2Article( $articleLink );
+		$dplArticle->mLink = $articleLink;
 		
 		//get first char used for category-style output
 		if( isset($row->sortkey) )
@@ -943,6 +977,26 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			}
 		}
 		
+		// PAGE TRANSCLUSION
+		if ($bIncPage) {
+			if(empty($aSecLabels)) {
+				// Uses wfLst_fetch_() from LabeledSectionTransclusion extension to include the whole page
+				$dplArticle->mIncludedTexts[] = wfLst_fetch_($parser, $title->getPrefixedText());
+			} else {
+				foreach ($aSecLabels as $sSecLabel) {
+					if ($sSecLabel == '') break;
+					// Uses wfLstInclude() from LabeledSectionTransclusion extension to include labeled sections of the page
+					$secPiece = wfLstInclude($parser, $title->getPrefixedText(), $sSecLabel);
+					/**
+					*wfLstInclude() returns 2 types of values: 
+					* - array($text, 'title'=>$title, 'replaceHeadings'=>true, 'headingOffset'=>$skiphead)
+					* - "[[" . $title->getPrefixedText() . "]]<!-- WARNING: LST loop detected -->";
+					*/
+					$dplArticle->mIncludedTexts[] = is_array($secPiece) ? $secPiece[0] : $secPiece;
+				}
+			}
+		}
+		
 		$aArticles[] = $dplArticle;
 		$iArticle++;
 	}
@@ -956,15 +1010,16 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	DPL2UpdateArticleMemberLinks($aUncheckedCatTitles, $linkCache, $aArticles, 'mCategoryLinks');
 
 // ###### SHOW OUTPUT ######
-	$listMode = new DPL2ListMode($sPageListMode, $sInlTxt, $sListHtmlAttr, $sItemHtmlAttr);
-	$hListMode = new DPL2ListMode($sHListMode, '', $sHListHtmlAttr, $sHItemHtmlAttr);
-	$dpl = new DPL2($aHeadings, $aArticles, $aOrderMethods[0], $hListMode, $listMode, $localParser, $pOptions, $pTitle);
+	$listMode = new DPL2ListMode($sPageListMode, $aSecSeparators, $sInlTxt, $sListHtmlAttr, $sItemHtmlAttr);
+	$hListMode = new DPL2ListMode($sHListMode, $aSecSeparators, '', $sHListHtmlAttr, $sHItemHtmlAttr);
+	$dpl = new DPL2($aHeadings, $aArticles, $aOrderMethods[0], $hListMode, $listMode, $parser);
 	return $output . $dpl->getText();
 }
 
 
 // Simple Article/Page class with properties used in the DPL
 class DPL2Article {
+	var $mTitle = ''; // title
 	var $mLink = ''; // html link to page
 	var $mStartChar = ''; // page title first char
 	var $mParentHLink = ''; // heading (link to the associated page) that page belongs to in the list (default '' means no heading)
@@ -972,9 +1027,10 @@ class DPL2Article {
 	var $mCounter = ''; // Number of times this page has been viewed
 	var $mDate = ''; // timestamp depending on the user's request (can be first/last edit, page_touched, ...)
 	var $mUserLink = ''; // link to editor (first/last, depending on user's request) 's page or contributions if not registered
+	var $mIncludedTexts = array(); // sections from page to include or the whole page (only one element in that case) in wiki text
 	
-	function DPL2Article($link) {
-		$this->mLink = $link;
+	function DPL2Article($title) {
+		$this->mTitle = $title;
 	}
 }
 
@@ -999,56 +1055,71 @@ function DPL2UpdateArticleMemberLinks($titles, $linkcache, &$articles, $member) 
 
 class DPL2ListMode {
 	var $name;
-	var $sStartList = '';
-	var $sEndList = '';
-	var $sStartHeading = '';
-	var $sEndHeading = '';
-	var $sStartItem = '';
-	var $sEndItem = '';
+	var $sListStart = '';
+	var $sListEnd = '';
+	var $sHeadingStart = '';
+	var $sHeadingEnd = '';
+	var $sItemStart = '';
+	var $sItemEnd = '';
 	var $sInline = '';
+	var $sSecStartAll = '';
+	var $sSecStart = '';
+	var $sSecEnd = '';
+	var $sSecEndAll = '';
 	
-	function DPL2ListMode($listmode, $inlinetext = '&nbsp;-&nbsp', $listattr = '', $itemattr = '') {
+	function DPL2ListMode($listmode, $secseparators, $inlinetext = '&nbsp;-&nbsp', $listattr = '', $itemattr = '') {
 		$this->name = $listmode;
 		$_listattr = ($listattr == '') ? '' : ' ' . Sanitizer::fixTagAttributes( $listattr, 'ul' );
 		$_itemattr = ($itemattr == '') ? '' : ' ' . Sanitizer::fixTagAttributes( $itemattr, 'li' );
+		
+		switch(count($secseparators)) {
+			case 4:
+				$this->sSecEndAll = $secseparators[3];
+			case 3:
+				$this->sSecEnd = $secseparators[2];
+			case 2:
+				$this->sSecStart = $secseparators[1];
+			case 1:
+				$this->sSecStartAll = $secseparators[0];
+		}
 
 		switch ($listmode) {
 			case 'inline':
 				if( stristr($inlinetext, '<BR />') ) { //one item per line (pseudo-inline)
-					$this->sStartList = '<DIV'. $_listattr . '>';
-					$this->sEndList = '</DIV>';
+					$this->sListStart = '<DIV'. $_listattr . '>';
+					$this->sListEnd = '</DIV>';
 				}
-				$this->sStartItem = '<SPAN' . $_itemattr . '>';
-				$this->sEndItem = '</SPAN>';
+				$this->sItemStart = '<SPAN' . $_itemattr . '>';
+				$this->sItemEnd = '</SPAN>';
 				$this->sInline = $inlinetext;
 				break;
 			case 'ordered':
-				$this->sStartList = '<OL' . $_listattr . '>';
-				$this->sEndList = '</OL>';
-				$this->sStartItem = '<LI'. $_itemattr . '>';
-				$this->sEndItem = '</LI>';
+				$this->sListStart = '<OL' . $_listattr . '>';
+				$this->sListEnd = '</OL>';
+				$this->sItemStart = '<LI'. $_itemattr . '>';
+				$this->sItemEnd = '</LI>';
 				break;
 			case 'unordered':
-				$this->sStartList = '<UL' . $_listattr . '>';
-				$this->sEndList = '</UL>';
-				$this->sStartItem = '<LI' . $_itemattr . '>';
-				$this->sEndItem = '</LI>';
+				$this->sListStart = '<UL' . $_listattr . '>';
+				$this->sListEnd = '</UL>';
+				$this->sItemStart = '<LI' . $_itemattr . '>';
+				$this->sItemEnd = '</LI>';
 				break;
 			case 'definition':
-				$this->sStartList = '<DL' . $_listattr . '>';
-				$this->sEndList = '</DL>';
+				$this->sListStart = '<DL' . $_listattr . '>';
+				$this->sListEnd = '</DL>';
 				// item html attributes on dt element or dd element ?
-				$this->sStartHeading = '<DT>';
-				$this->sEndHeading = '</DT><DD>';
-				$this->sEndItem = '</DD>';
+				$this->sHeadingStart = '<DT>';
+				$this->sHeadingEnd = '</DT><DD>';
+				$this->sItemEnd = '</DD>';
 				break;
 			case 'H2':
 			case 'H3':
 			case 'H4':
-				$this->sStartList = '<DIV' . $_listattr . '>';
-				$this->sEndList = '</DIV>';
-				$this->sStartHeading = '<' . $listmode .'>';
-				$this->sEndHeading = '</' . $listmode . '>';
+				$this->sListStart = '<DIV' . $_listattr . '>';
+				$this->sListEnd = '</DIV>';
+				$this->sHeadingStart = '<' . $listmode .'>';
+				$this->sHeadingEnd = '</' . $listmode . '>';
 				break;
 		}
 	}
@@ -1066,28 +1137,28 @@ class DPL2 {
 	var $mParserTitle;
 	var $mOutput;
 	
-	function DPL2($headings, $articles, $headingtype, $hlistmode, $listmode, $parser, $poptions, $ptitle) {
+	function DPL2($headings, $articles, $headingtype, $hlistmode, $listmode, &$parser) {
 		$this->mArticles = $articles;
 		$this->mListMode = $listmode;
 		$this->mParser = $parser;
-		$this->mParserOptions = $poptions;
-		$this->mParserTitle = $ptitle;
+		$this->mParserOptions = $parser->mOptions;
+		$this->mParserTitle = $parser->mTitle;
 		
 		if(!empty($headings)) {
 			$this->mHeadingType = $headingtype;
 			$this->mHListMode = $hlistmode;
-			$this->mOutput .= $hlistmode->sStartList;
+			$this->mOutput .= $hlistmode->sListStart;
 			$headingStart = 0;
 			foreach($headings as $heading => $headingCount) {
 				$headingLink = $articles[$headingStart]->mParentHLink;
-				$this->mOutput .= $hlistmode->sStartItem;
-				$this->mOutput .= $hlistmode->sStartHeading . $headingLink . $hlistmode->sEndHeading;
+				$this->mOutput .= $hlistmode->sItemStart;
+				$this->mOutput .= $hlistmode->sHeadingStart . $headingLink . $hlistmode->sHeadingEnd;
 				$this->mOutput .= $this->formatCount($headingCount);
 				$this->mOutput .= $this->formatList($headingStart, $headingCount);
-				$this->mOutput .= $hlistmode->sEndItem;
+				$this->mOutput .= $hlistmode->sItemEnd;
 				$headingStart += $headingCount;
 			}
-			$this->mOutput .= $hlistmode->sEndList;
+			$this->mOutput .= $hlistmode->sListEnd;
 		} else
 			$this->mOutput .= $this->formatList(0, count($articles));
 	}
@@ -1098,7 +1169,7 @@ class DPL2 {
 			$message = 'categoryarticlecount';
 		else 
 			$message = 'dpl2_articlecount';
-		return $this->msgExt( $message, array( 'parse' ), $numart);
+		return '<p>' . $this->msgExt( $message, array( 'parse' ), $numart) . '</p>';
 	}
 	
 	function formatList($iStart, $iCount) {
@@ -1117,11 +1188,11 @@ class DPL2 {
 		
 		//process results of query, outputing equivalent of <li>[[Article]]</li> for each result,
 		//or something similar if the list uses other startlist/endlist;
-		$r = $mode->sStartList;
+		$r = $mode->sListStart;
 		for ($i = $iStart; $i < $iStart+$iCount; $i++) {
 			if($i > $iStart)
 				$r .= $mode->sInline; //If mode is not 'inline', sInline attribute is empty, so does nothing
-			$r .= $mode->sStartItem;
+			$r .= $mode->sItemStart;
 			$article = $this->mArticles[$i];
 			if($article->mDate != '')
 				$r .=  $wgLang->timeanddate($article->mDate, true) . ': ';
@@ -1135,13 +1206,29 @@ class DPL2 {
 				$r .= ' . . ' . $article->mUserLink;
 			if( !empty($article->mCategoryLinks) )
 				$r .= ' . . <SMALL>' . $sSpecCatsLnk . ': ' . implode(' | ', $article->mCategoryLinks) . '</SMALL>';
-			$r .= $mode->sEndItem;
+			
+			// Transcluded pages or transcluded "labeled sections" of pages (see LabeledSectionTransclusion extension for more info)
+			if (!empty($article->mIncludedTexts)) {
+				$r .= '<p>';
+				if(count($article->mIncludedTexts) == 1)
+					$wiki = $article->mIncludedTexts[0];
+				else {
+					$wiki = $mode->sSecStartAll;
+					foreach ($article->mIncludedTexts as $wikitext)
+							$wiki .= $mode->sSecStart . $wikitext . $mode->sSecEnd;
+					$wiki .= $mode->sSecEndAll;
+				}
+				$r .= $this->mParser->recursiveTagParse($wiki);
+				$r .= '</p>';
+			}
+	
+			$r .= $mode->sItemEnd;
 		}
-		$r .= $mode->sEndList;
+		$r .= $mode->sListEnd;
 		return $r;
 	}
 	
-	//slightly different from CategoryPage::formatList() (no need to instantiate a CategoryPage object)
+	//slightly different from CategoryViewer::formatList() (no need to instantiate a CategoryViewer object)
 	function formatCategoryList($iStart, $iCount) {
 		global $wgDPL2CategoryStyleListCutoff;
 		
@@ -1151,10 +1238,10 @@ class DPL2 {
 		}
 		require_once ('CategoryPage.php');
 		if ( count ( $aArticles ) > $wgDPL2CategoryStyleListCutoff ) {
-			return CategoryPage::columnList( $aArticles, $aArticles_start_char );
+			return CategoryViewer::columnList( $aArticles, $aArticles_start_char );
 		} elseif ( count($aArticles) > 0) {
 			// for short lists of articles in categories.
-			return CategoryPage::shortList( $aArticles, $aArticles_start_char );
+			return CategoryViewer::shortList( $aArticles, $aArticles_start_char );
 		}
 		return '';
 	}
@@ -1178,10 +1265,9 @@ class DPL2 {
 	
 		if( in_array('parse', $options) ) {
 			$this->mParserOptions->setInterfaceMessage(true);
-			$parserOutput = $this->mParser->parse( $string, $this->mParserTitle, $this->mParserOptions,
-				true, true );
+			$string = $this->mParser->recursiveTagParse( $string );
 			$this->mParserOptions->setInterfaceMessage(false);
-			$string = $parserOutput->getText();
+			//$string = $parserOutput->getText();
 		} elseif ( in_array('parsemag', $options) ) {
 			$parser = new Parser();
 			$parserOptions = new ParserOptions();
