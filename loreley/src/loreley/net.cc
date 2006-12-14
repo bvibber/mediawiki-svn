@@ -166,7 +166,8 @@ pthread_cond_t iot_ready;
 pthread_mutex_t iot_ready_m;
 
 pthread_t io_thread;
-void usr2_handler(int, short, void *)
+void
+usr2_handler(int, short, void *)
 {
 	WDEBUG("got USR2");
 	event_loopexit(NULL);

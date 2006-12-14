@@ -17,6 +17,7 @@ using std::vector;
 using std::map;
 
 #include "net.h"
+#include "thread.h"
 using namespace net;
 
 enum lb_type {
@@ -43,6 +44,8 @@ struct backend : freelist_allocator<backend> {
 	uint32_t	 be_carp;	/* carp hash for the last url	*/
 	float		 be_load;	/* carp load factor		*/
 	float		 be_carplfm;	/* carp LFM after calculation	*/
+	lockable	 be_lock;
+	int		 be_errno;	/* last connect error		*/
 
 	template<typename stringT>
 	static uint32_t _carp_hosthash(stringT const &str);

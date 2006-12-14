@@ -43,6 +43,7 @@ backend::backend(
 	, be_dead(false)
 	, be_hash(_carp_hosthash(be_straddr))
 	, be_load(1.)
+	, be_errno(0)
 {
 	WDEBUG(format("adding backend with straddr [%s], hash %s")
 		% be_straddr % be_hash);
@@ -163,18 +164,33 @@ int		 error = s->error();
 
 	if (error && error != EINPROGRESS) {
 		time_t retry = time(NULL) + config.backend_retry;
-		wlog.warn(format("%s: %s; retry in %d seconds")
-			% cbd->bc_backend->be_name
-			% strerror(error)
-			% config.backend_retry);
-		cbd->bc_backend->be_dead = 1;
-		cbd->bc_backend->be_time = retry;
+		{	HOLDING(cbd->bc_backend->be_lock);
+
+			if (cbd->bc_backend->be_errno != error)
+				wlog.warn(format("%s: %s; retry in %d seconds")
+					% cbd->bc_backend->be_name
+					% strerror(error)
+					% config.backend_retry);
+
+			cbd->bc_backend->be_errno = error;
+			cbd->bc_backend->be_dead = 1;
+			cbd->bc_backend->be_time = retry;
+		}
+
 		delete s;
 		if (_get_impl(cbd->bc_func) == -1) {
 			cbd->bc_func(NULL, NULL);
 		}
 		delete cbd;
 		return;
+	}
+
+	{	HOLDING(cbd->bc_backend->be_lock);
+		if (cbd->bc_backend->be_dead) {
+			wlog.notice(format("%s: revived") % cbd->bc_backend->be_name);
+			cbd->bc_backend->be_dead = 0;
+			cbd->bc_backend->be_errno = 0;
+		}
 	}
 
 	cbd->bc_func(cbd->bc_backend, s);
@@ -227,6 +243,8 @@ size_t			tried = 0;
 
 		if (_cur >= backends.size())
 			_cur = 0;
+
+		HOLDING(backends[_cur]->be_lock);
 
 		if (backends[_cur]->be_dead && now >= backends[_cur]->be_time)
 			backends[_cur]->be_dead = 0;
