@@ -58,8 +58,10 @@ install: build
 	# Add here commands to install the package into debian/wikimedia-base.
 	#$(MAKE) install DESTDIR=$(CURDIR)/debian/wikimedia-base
 	install -d $(CURDIR)/debian/wikimedia-base/usr/share/doc/wikimedia-base
-	install -m 0644 debian/apt_preferences $(CURDIR)/debian/wikimedia-base/usr/share/doc/wikimedia-base/apt_preferences
-	install -m 0644 debian/sysctl.conf $(CURDIR)/debian/wikimedia-base/usr/share/doc/wikimedia-base/sysctl.conf
+	install -m 0644 apt_preferences $(CURDIR)/debian/wikimedia-base/usr/share/doc/wikimedia-base/apt_preferences
+	install -m 0644 sysctl.conf $(CURDIR)/debian/wikimedia-base/usr/share/doc/wikimedia-base/sysctl.conf
+	install -d $(CURDIR)/debian/wikimedia-base/etc/vim
+	install -m 0644 vimrc.local $(CURDIR)/debian/wikimedia-base/etc/vim/vimrc.local
 
 # Build architecture-independent files here.
 binary-indep: build install

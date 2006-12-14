@@ -91,6 +91,13 @@ case "$1" in
 		sed -i -e '/^#start_smartd=yes/s/^#//' /etc/default/smartmontools
 		invoke-rc.d smartmontools start || true
 	fi
+
+	# Enable some aliases in /root/.bashrc
+	sed -i '
+		/^#alias ll=/ s/^#//
+		/^#alias la=/ s/^#//
+	' /root/.bashrc
+	
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
@@ -109,5 +116,4 @@ esac
 #DEBHELPER#
 
 exit 0
-
 

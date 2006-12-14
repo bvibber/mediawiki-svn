@@ -1,3 +1,10 @@
+wikimedia-base (0.14) dapper; urgency=low
+
+  * Added configuration for vim and bash
+  * Moved configuration files from debian/ to package root
+
+ -- Tim Starling <tstarling@yf1012.yaseo.wikimedia.org>  Thu, 14 Dec 2006 15:24:09 +0000
+
 wikimedia-base (0.13) dapper; urgency=low
 
   * Depend on traceroute
