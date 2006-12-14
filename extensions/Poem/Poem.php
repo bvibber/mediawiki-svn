@@ -21,16 +21,28 @@
 $wgExtensionFunctions[]="wfPoemExtension";
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Poem',
-	'author' => 'Nikola Smolenski',
+	'author' => 'Nikola Smolenski, Brion Vibber, Steve Sanbeg',
 	'description' => 'adds <nowiki><poem></nowiki> tag for poem formatting',
 	'url' => 'http://meta.wikimedia.org/wiki/Poem_Extension'
 );
+$wgParserTestFiles[] = dirname( __FILE__ ) . "/poemParserTests.txt";
 
 function wfPoemExtension() {
 	$GLOBALS['wgParser']->setHook("poem","PoemExtension");
 }
 
 function PoemExtension( $in, $param=array(), $parser=null ) {
+
+    if (method_exists($parser, 'recursiveTagParse')) {
+    	//new methods in 1.8 allow nesting <nowiki> in <poem>.
+        $tag = $parser->insertStripItem("<br />", $parser->mStripState);
+	$text = preg_replace(
+		array("/^\n/","/\n$/D","/\n/",    "/^( +)/me"),
+		array("",     "",      "$tag\n","str_replace(' ','&nbsp;','\\1')"),
+		$in );
+		$text = $parser->recursiveTagParse($text);
+     } else {
+  
 	$text = preg_replace(
 		array("/^\n/","/\n$/D","/\n/",    "/^( +)/me"),
 		array("",     "",      "<br />\n","str_replace(' ','&nbsp;','\\1')"),
@@ -48,6 +60,9 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 		false
 	);
 	
+	$text = $ret->getText();
+    }
+  
 	global $wgVersion;
 	if( version_compare( $wgVersion, "1.7alpha" ) >= 0 ) {
 		// Pass HTML attributes through to the output.
@@ -66,7 +81,7 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 	
 	return wfOpenElement( 'div', $attribs ) .
 		"\n" .
-		trim( $ret->getText() ) .
+		trim( $text ) .
 		"\n</div>";
 }
 
