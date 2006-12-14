@@ -31,7 +31,8 @@ static const char *progname;
 static void
 usage(void)
 {
-	fprintf(stderr, "usage: %s [-hfzv] [-F cfg] [-D cond[=value]]\n"
+	fprintf(stderr,
+"usage: %s [-hfzv] [-F cfg] [-D cond[=value]] [-p pidfile]\n"
 "      -h                    print this message\n"
 "      -f                    run in foreground (don't detach)\n"
 "      -v                    print version number and exit\n"
@@ -41,7 +42,16 @@ usage(void)
 "                            is not specified, defaults to true\n"
 "      -F cfg                load configuration from this file, instead of default\n"
 "                            (%s)\n"                          
+"      -p file               write PID to this file on startup\n"
 			, progname, SYSCONFDIR "/loreley.conf");
+}
+
+static void
+remove_pidfile(void)
+{
+	if (config.pidfile.empty())
+		return;
+	std::remove(config.pidfile.c_str());
 }
 
 int 
@@ -51,10 +61,11 @@ int	 i;
 char	*cfg = NULL;
 char	*dval;
 bool	 zflag = false;
+string	 pidfile;
 	progname = argv[0];
 	pagesize = sysconf(_SC_PAGESIZE);
 
-	while ((i = getopt(argc, argv, "fvc:D:hzF:")) != -1) {
+	while ((i = getopt(argc, argv, "fvc:D:hzF:p:")) != -1) {
 		switch (i) {
 			case 'h':
 				usage();
@@ -88,6 +99,10 @@ bool	 zflag = false;
 
 				conf::add_if_entry(optarg, 
 					dval ? strtoll(dval, NULL, 0) : 1);
+				break;
+
+			case 'p':
+				pidfile = optarg;
 				break;
 
 			default:
@@ -133,6 +148,9 @@ bool	 zflag = false;
 		}
 	}
 
+	if (!pidfile.empty())
+		config.pidfile = pidfile;
+
 	if (!wlog.open())
 		return 1;
 
@@ -140,6 +158,34 @@ bool	 zflag = false;
 		if (!entitycache.create())
 			return 1;
 		return 0;
+	}
+
+	if (!config.pidfile.empty()) {
+	struct stat	sb;
+		if (stat(config.pidfile.c_str(), &sb) != -1) {
+		int		pid;
+		ifstream	f(config.pidfile.c_str());
+			if (!f || !(f >> pid)) {
+				fprintf(stderr, "pidfile %s appears corrupt, "
+					"cannot extract PID\n", 
+					config.pidfile.c_str());
+				return 1;
+			}
+
+			if (kill(pid, 0) == 0 || (errno != ESRCH)) {
+				fprintf(stderr, "Loreley is already running "
+					"(PID %d)\n", pid);
+				return 1;
+			}
+
+			f.close();
+			if (std::remove(config.pidfile.c_str()) == -1) {
+				wlog.warn(format("cannot remove stale pidfile "
+					"%s: %s") % config.pidfile.c_str()
+					% strerror(errno));
+				return 1;
+			}
+		}
 	}
 
 	make_event_base();
@@ -155,6 +201,17 @@ bool	 zflag = false;
 
 	if (!config.foreground)
 		daemon(0, 0);
+
+	if (!config.pidfile.empty()) {
+		atexit(remove_pidfile);
+
+		ofstream	of(config.pidfile.c_str());
+		if (!of || !(of << getpid() << '\n')) {
+			wlog.warn(format("cannot write pidfile %s: %s")
+				% config.pidfile.c_str()
+				% strerror(errno));
+		}
+	}
 
 	ioloop->thread_run();
 	wlog.notice("shutting down");

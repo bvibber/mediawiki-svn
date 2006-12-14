@@ -51,6 +51,7 @@ struct cachedir {
 extern struct configuration : noncopyable {
 	string		 admin;
 	int		 foreground;
+	string		 pidfile;
 	int		 nthreads;
 	int		 log_sample;
 	string		 access_log;

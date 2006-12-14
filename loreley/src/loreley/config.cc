@@ -486,6 +486,7 @@ conf
 		.value("threads",	simple_range(1, 1024),	set_int(config.nthreads))
 		.value("admin",		nonempty_qstring,	set_qstring(config.admin))
 		.value("use-dio",	simple_yesno,		set_yesno(config.use_dio))
+		.value("pid-file",	nonempty_qstring,	set_qstring(config.pidfile))
 
 	.block("stats")
 		.value("interval",	simple_range(1, INT_MAX),	set_aint(stats.interval))
@@ -495,9 +496,10 @@ conf
 
 	.block("listen", require_name)
 		.end(func(set_listen))
-		.value("port",		simple_range(1, 65535), ignore)
-		.value("aftype",	func(v_aftype),		ignore)
-		.value("group",		nonempty_qstring,	ignore)
+		.value("port",			simple_range(1, 65535), ignore)
+		.value("aftype",		func(v_aftype),		ignore)
+		.value("group",			nonempty_qstring,	ignore)
+//		.value("max-connections",	simple_range(0),	ignore)
 
 	.block("backend-group", require_name)
 		.end(func(set_backend_group))
