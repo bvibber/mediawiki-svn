@@ -137,6 +137,12 @@ server {
 	 * faster than read() / write().  Not supported on other platforms.
 	 */
 	use-dio = no;
+
+	/*
+	 * Write pid to this file on startup.  If -p is given on the
+	 * command line, it overrides any value given here.
+	 */
+	#pidfile = "/var/run/loreley.pid";
 };
 	
 /*
