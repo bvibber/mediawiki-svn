@@ -9,7 +9,7 @@
 # $Id$
 
 PROGRAM		= lhtcp
-BINDIR		= @bindir@
+BINDIR		= $(_BINDIR)
 CPPFLAGS	= -I../include
 BASESRCS =	 		\
 	lhtcp.cc		\

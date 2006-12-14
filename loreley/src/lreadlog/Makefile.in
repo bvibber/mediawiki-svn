@@ -9,7 +9,7 @@
 # $Id$
 
 PROGRAM		= lreadlog
-BINDIR		= @bindir@
+BINDIR		= $(_BINDIR)
 CPPFLAGS	= -I../include
 BASESRCS =	 		\
 	packet_decoder.cc	\

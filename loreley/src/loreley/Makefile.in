@@ -9,7 +9,7 @@
 # $Id$
 
 PROGRAM = loreley 
-BINDIR = @bindir@
+BINDIR = $(_BINDIR)
 CPPFLAGS = -I../include
 
 BASESRCS =	 		\

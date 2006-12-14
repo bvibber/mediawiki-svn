@@ -9,7 +9,7 @@
 # $Id$
 
 PROGRAM		= lgetstats
-BINDIR		= @bindir@
+BINDIR		= $(_BINDIR)
 CPPFLAGS	= -I../include
 BASESRCS	= lgetstats.cc
 
