@@ -21,7 +21,10 @@ if( defined( 'MEDIAWIKI' ) ) {
 			SpecialPage::SpecialPage( 'Patrol', 'patroller' );
 		}
 
-		public function execute() {
+		/**
+		 * @param $par Not used. It is present to be compatible with SpecialPage::execute()
+		 */
+		public function execute( $par ) {
 			global $wgUser, $wgRequest, $wgOut;
 			$this->setHeaders();
 			
