@@ -229,6 +229,7 @@ $wgDPL2DebugCodes = array(
 	'DPL2_WARN_CATOUTPUTBUTWRONGPARAMS' => 2,
 	'DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD' => 2,
 	'DPL2_WARN_DEBUGPARAMNOTFIRST' => 2,
+	'DPL2_WARN_TRANSCLUSIONLOOP' => 2,
 	// OTHERS
 	'DPL2_QUERY' => 3
 );
@@ -258,6 +259,14 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	error_reporting(E_ALL);
 	
 	global  $wgUser, $wgContLang, $wgDPL2AllowedNamespaces, $wgDPL2Options, $wgDPL2MaxCategoryCount, $wgDPL2MinCategoryCount, $wgDPL2MaxResultCount, $wgDPL2AllowUnlimitedCategories, $wgDPL2AllowUnlimitedResults;
+	
+	//logger (display of debug messages)
+	$logger = new DPL2Logger();
+	
+	//check that we are not in an infinite transclusion loop
+	if ( isset( $parser->mTemplatePath[$parser->mTitle->getPrefixedText()] ) ) {
+		return $logger->escapeMsg(DPL2_WARN_TRANSCLUSIONLOOP, $parser->mTitle->getPrefixedText());
+	}
 	
 	// INVALIDATE CACHE
 	$parser->disableCache();
@@ -329,9 +338,6 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	
 	// Output
 	$output = '';
-	
-	//logger (display of debug messages)
-	$logger = new DPL2Logger();
 
 // ###### PARSE PARAMETERS ######
 	$aParams = explode("\n", $input);
@@ -978,26 +984,6 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			}
 		}
 		
-		// PAGE TRANSCLUSION
-		if ($bIncPage) {
-			if(empty($aSecLabels)) {
-				// Uses wfLst_fetch_() from LabeledSectionTransclusion extension to include the whole page
-				$dplArticle->mIncludedTexts[] = wfLst_fetch_($parser, $title->getPrefixedText());
-			} else {
-				foreach ($aSecLabels as $sSecLabel) {
-					if ($sSecLabel == '') break;
-					// Uses wfLstInclude() from LabeledSectionTransclusion extension to include labeled sections of the page
-					$secPiece = wfLstInclude($parser, $title->getPrefixedText(), $sSecLabel);
-					/**
-					*wfLstInclude() returns 2 types of values: 
-					* - array($text, 'title'=>$title, 'replaceHeadings'=>true, 'headingOffset'=>$skiphead)
-					* - "[[" . $title->getPrefixedText() . "]]<!-- WARNING: LST loop detected -->";
-					*/
-					$dplArticle->mIncludedTexts[] = is_array($secPiece) ? $secPiece[0] : $secPiece;
-				}
-			}
-		}
-		
 		$aArticles[] = $dplArticle;
 		$iArticle++;
 	}
@@ -1013,7 +999,7 @@ function DynamicPageList2( $input, $params, &$parser ) {
 // ###### SHOW OUTPUT ######
 	$listMode = new DPL2ListMode($sPageListMode, $aSecSeparators, $sInlTxt, $sListHtmlAttr, $sItemHtmlAttr);
 	$hListMode = new DPL2ListMode($sHListMode, $aSecSeparators, '', $sHListHtmlAttr, $sHItemHtmlAttr);
-	$dpl = new DPL2($aHeadings, $aArticles, $aOrderMethods[0], $hListMode, $listMode, $parser);
+	$dpl = new DPL2($aHeadings, $aArticles, $aOrderMethods[0], $hListMode, $listMode, $bIncPage, $aSecLabels, $parser, $logger);
 	return $output . $dpl->getText();
 }
 
@@ -1028,7 +1014,6 @@ class DPL2Article {
 	var $mCounter = ''; // Number of times this page has been viewed
 	var $mDate = ''; // timestamp depending on the user's request (can be first/last edit, page_touched, ...)
 	var $mUserLink = ''; // link to editor (first/last, depending on user's request) 's page or contributions if not registered
-	var $mIncludedTexts = array(); // sections from page to include or the whole page (only one element in that case) in wiki text
 	
 	function DPL2Article($title) {
 		$this->mTitle = $title;
@@ -1133,17 +1118,24 @@ class DPL2 {
 	var $mHeadingType; // type of heading: category, user, etc. (depends on 'ordermethod' param)
 	var $mHListMode; // html list mode for headings
 	var $mListMode; // html list mode for pages
+	var $mIncPage; // true only if page transclusion is enabled
+	var $mIncSecLabels = array(); // array of labels of sections to transclude
 	var $mParser;
 	var $mParserOptions;
 	var $mParserTitle;
+	var $mLogger; // DPL2Logger
 	var $mOutput;
 	
-	function DPL2($headings, $articles, $headingtype, $hlistmode, $listmode, &$parser) {
+	function DPL2($headings, $articles, $headingtype, $hlistmode, $listmode, $includepage, $includeseclabels,&$parser, $logger) {
 		$this->mArticles = $articles;
 		$this->mListMode = $listmode;
+		$this->mIncPage = $includepage;
+		if($includepage)
+			$this->mIncSecLabels = $includeseclabels;
 		$this->mParser = $parser;
 		$this->mParserOptions = $parser->mOptions;
 		$this->mParserTitle = $parser->mTitle;
+		$this->mLogger = $logger;
 		
 		if(!empty($headings)) {
 			$this->mHeadingType = $headingtype;
@@ -1208,19 +1200,31 @@ class DPL2 {
 			if( !empty($article->mCategoryLinks) )
 				$r .= ' . . <SMALL>' . $sSpecCatsLnk . ': ' . implode(' | ', $article->mCategoryLinks) . '</SMALL>';
 			
-			// Transcluded pages or transcluded "labeled sections" of pages (see LabeledSectionTransclusion extension for more info)
-			if (!empty($article->mIncludedTexts)) {
-				$r .= '<p>';
-				if(count($article->mIncludedTexts) == 1)
-					$wiki = $article->mIncludedTexts[0];
-				else {
-					$wiki = $mode->sSecStartAll;
-					foreach ($article->mIncludedTexts as $wikitext)
-							$wiki .= $mode->sSecStart . $wikitext . $mode->sSecEnd;
-					$wiki .= $mode->sSecEndAll;
+			// Page transclusion or "labeled section transclusion" (see LabeledSectionTransclusion extension for more info)
+			if ($this->mIncPage) {
+				if(empty($this->mIncSecLabels)) {
+					// Uses wfLst_fetch_() from LabeledSectionTransclusion extension to include the whole page
+					$incwiki = wfLst_fetch_($this->mParser, $article->mTitle->getPrefixedText());
+				} else {
+					$incwiki = $mode->sSecStartAll;
+					foreach ($this->mIncSecLabels as $sSecLabel) {
+						if ($sSecLabel == '') break;
+						$incwiki .= $mode->sSecStart;
+						// Uses wfLstInclude() from LabeledSectionTransclusion extension to include labeled sections of the page
+						$secPiece = wfLstInclude($this->mParser, $article->mTitle->getPrefixedText(), $sSecLabel);
+						/**
+						*wfLstInclude() returns 2 types of values: 
+						* - array($text, 'title'=>$title, 'replaceHeadings'=>true, 'headingOffset'=>$skiphead)
+						* - "[[" . $title->getPrefixedText() . "]]<!-- WARNING: LST loop detected -->";
+						*/
+						$incwiki .= is_array($secPiece) ? $secPiece[0] : $secPiece;
+						$incwiki .= $mode->sSecEnd;
+					}
+					$incwiki .= $mode->sSecEndAll;
 				}
-				$r .= $this->mParser->recursiveTagParse($wiki);
-				$r .= '</p>';
+				wfLst_open_($this->mParser, $this->mParserTitle->getPrefixedText());
+				$r .= '<p>' . $this->mParser->recursiveTagParse($incwiki) . '</p>';
+				wfLst_close_($this->mParser, $this->mParserTitle->getPrefixedText());
 			}
 	
 			$r .= $mode->sItemEnd;
@@ -1311,7 +1315,7 @@ class DPL2Logger {
 			/**
 			 * @todo add a DPL id to identify the DPL tag that generates the message, in case of multiple DPLs in the page
 			 */
-			return '%DPL2-' . DPL2_VERSION . '-' .  wfMsg('dpl2_debug_' . $msgid, $args) . '<BR/>';
+			return '<p>%DPL2-' . DPL2_VERSION . '-' .  wfMsg('dpl2_debug_' . $msgid, $args) . '</p>';
 		}
 		return '';
 	}
