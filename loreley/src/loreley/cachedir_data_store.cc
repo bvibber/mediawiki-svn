@@ -11,6 +11,10 @@
 /* @(#) $Id$ */
 		
 #include "stdinc.h"
+#ifdef __INTEL_COMPILER
+# pragma hdrstop
+#endif
+
 #include "cache.h"
 #include "config.h"
 

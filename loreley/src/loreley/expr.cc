@@ -11,6 +11,9 @@
 /* @(#) $Id$ */
 
 #include "stdinc.h"
+#ifdef __INTEL_COMPILER
+# pragma hdrstop
+#endif
 
 #if defined(LORELEY_DEBUG) && 0
 # define BOOST_SPIRIT_DEBUG

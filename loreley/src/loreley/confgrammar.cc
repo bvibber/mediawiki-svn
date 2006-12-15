@@ -11,6 +11,9 @@
 /* $Id$ */
 
 #include "stdinc.h"
+#ifdef __INTEL_COMPILER
+# pragma hdrstop
+#endif
 
 #include <boost/spirit.hpp>
 #include <boost/spirit/attribute.hpp>
@@ -49,6 +52,7 @@ using spirit::error_status;
 using spirit::lexeme_d;
 using spirit::as_lower_d;
 using spirit::symbols;
+using spirit::list_p;
 using phoenix::var;
 using phoenix::arg1;
 using phoenix::arg2;

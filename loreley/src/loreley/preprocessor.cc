@@ -11,6 +11,10 @@
 /* $Id$ */
 
 #include "stdinc.h"
+#ifdef __INTEL_COMPILER
+# pragma hdrstop
+#endif
+
 #include <boost/spirit/iterator/file_iterator.hpp>
 using std::pair;
 using std::make_pair;
@@ -233,7 +237,7 @@ iterT	lbegin = begin;
 		case '%': {
 			/* everything until the end of the line is a directive */
 			if (ateol) {
-				iterT eol = find(begin, end, '\n');
+				iterT eol = std::find(begin, end, '\n');
 			string	expr(begin, eol);
 				ignoring = evaluate_expr(begin, eol, ignoring);
 				lines.push_back(string(lbegin, begin));
@@ -276,7 +280,7 @@ template<typename iterT>
 bool
 preprocessor::evaluate_expr(iterT begin, iterT end, bool ignoring)
 {
-iterT	space = find(begin, end, ' ');
+iterT	space = std::find(begin, end, ' ');
 	if (itercmp(begin, space, "%if")) {
 		if (space == end)
 			return false;
@@ -312,7 +316,7 @@ bool
 preprocessor::itercmp(iterT begin, iterT end, char const *s)
 {
 int	len = strlen(s);
-	if (distance(begin, end) != len)
+	if (std::distance(begin, end) != len)
 		return false;
-	return equal(begin, end, s);
+	return std::equal(begin, end, s);
 }

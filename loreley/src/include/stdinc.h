@@ -101,8 +101,4 @@
 
 #include <db.h>
 
-#ifdef __INTEL_COMPILERx
-# pragma hdrstop
-#endif
-
 #endif	/* STDINC_H */

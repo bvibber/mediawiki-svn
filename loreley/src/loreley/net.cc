@@ -11,6 +11,10 @@
 /* @(#) $Id$ */
 
 #include "stdinc.h"
+#ifdef __INTEL_COMPILER
+# pragma hdrstop
+#endif
+
 namespace sfun {
 	using ::bind;	/* because of conflict with boost::bind from util.h */
 };

@@ -11,6 +11,10 @@
 /* @(#) $Id$ */
 
 #include "stdinc.h"
+#ifdef __INTEL_COMPILER
+# pragma hdrstop
+#endif
+
 using std::cout;
 using std::ios;
 using std::endl;
@@ -71,7 +75,7 @@ string	r;
 	if (sev < _level)
 		return;
 
-	r = str(format("%s| %s: %s") % current_time_short % sev_names[sev] % e);
+	r = str(format("%s| %s: %s") % (char *)current_time_short % sev_names[sev] % e);
 
 	if (_syslog)
 		::syslog(syslog_pri[sev], "%s", e.c_str());

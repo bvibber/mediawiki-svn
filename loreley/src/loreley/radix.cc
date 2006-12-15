@@ -16,6 +16,10 @@
 /* $Id$ */
 
 #include "stdinc.h"
+#ifdef __INTEL_COMPILER
+# pragma hdrstop
+#endif
+
 using std::pair;
 using std::make_pair;
 
