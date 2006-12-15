@@ -78,6 +78,10 @@ $wgDPL2Messages['en'] = array(
 	 * $0: 'debug' value
 	*/
 	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "WARNING: 'debug=$0' is not in first position in the DPL element. The new debug settings are not applied before all previous parameters have been parsed and checked.",
+	/**
+	 * $0: title of page that creates an infinite transclusion loop
+	*/
+	'dpl2_debug_' . DPL2_WARN_TRANSCLUSIONLOOP => "WARNING: An infinite transclusion loop is created by page '$0'.",
 
 	// OTHERS
 	/**
