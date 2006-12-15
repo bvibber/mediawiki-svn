@@ -109,13 +109,15 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 */
 		function buildBlacklist() {
 			$blacklist = wfMsgForContent( 'usernameblacklist' );
+			$groups = array();
 			if( $blacklist != '&lt;usernameblacklist&gt;' ) {
 				$lines = explode( "\n", $blacklist );
 				foreach( $lines as $line ) {
-					if( !$this->isComment( $line ) )
+					$line = rtrim( $line );
+					if( !empty( $line ) && !$this->isComment( $line ) )
 						$groups[] = $this->transform( $line );
 				}
-				return count( $groups ) ? '/(' . implode( '|', $groups ) . ')/' : false;
+				return count( $groups ) ? '/(' . implode( '|', $groups ) . ')/u' : false;
 			} else {
 				return false;
 			}
