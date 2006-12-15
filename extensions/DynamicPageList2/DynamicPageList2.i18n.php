@@ -162,6 +162,10 @@ $wgDPL2Messages['he'] = array(
 	 * $0: 'debug' value
 	*/
 	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "אזהרה: 'debug=$0w הוא לא במקום הראשון ברכיב ה־DPL. הגדרות ניפוי השגיאות החדשות לא יחולו לפני שכל הפרמטרים הקודמים ינותחו וייבדקו.",
+	/**
+	 * $0: title of page that creates an infinite transclusion loop
+	*/
+	'dpl2_debug_' . DPL2_WARN_TRANSCLUSIONLOOP => "אזהרה: לולאת הכללה אינסופית נוצרה בדף '$0'.",
 
 	// OTHERS
 	/**
