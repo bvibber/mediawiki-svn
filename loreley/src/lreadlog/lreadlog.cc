@@ -216,7 +216,7 @@ const char	*port = "4445", *host = NULL;
 char		*progname = argv[0];
 bool		 daemon = false;
 ostream		*outfile = NULL;
-bool		 Tflag = false, dodns;
+bool		 Tflag = false;
 int		 interval = 5;
 
 map<string, logfmt_t> logfmt_names = map_list_of
@@ -313,8 +313,6 @@ map<string, logfmt_t> logfmt_names = map_list_of
 
 	if (!outfile)
 		outfile = &cout;
-
-	decoder = shared_ptr<packet_decoder>(new packet_decoder(dodns));
 
 	if ((!Tflag && argc) || (Tflag && argc > 1)) {
 		usage(progname);
