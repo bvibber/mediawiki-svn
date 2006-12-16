@@ -62,16 +62,6 @@ $wgDPL2Options = array(
 	'addeditdate' => array('default' => 'false', 'false', 'true'),
 	'addfirstcategorydate' => array('default' => 'false', 'false', 'true'),
 	'addpagetoucheddate' => array('default' => 'false', 'false', 'true'),
-	/**
-	 * PAGE TRANSCLUSION: includepage=...
-	 * To include the whole page, use a wildcard:
-	 * includepage =*
-	 * To include sections labeled 'name1' or 'name2' or... from the page (see the doc of the LabeledSectionTransclusion extension for more info):
-	 * includepage = name1,name2,..
-	 * To include nothing from the page (no transclusion), leave empty:
-	 * includepage =
-	 */
-    'includepage' => array('default' => ''),
 	'adduser' => array('default' => 'false', 'false', 'true'),
 	/**
 	 * category= Cat11 | Cat12 | ...
@@ -116,6 +106,20 @@ $wgDPL2Options = array(
 	 * Example: hlistattr= class="topmenul" id="dmenu"
 	 */
 	'hlistattr' => array('default' => ''),
+	/**
+	 * PAGE TRANSCLUSION: includepage=...
+	 * To include the whole page, use a wildcard:
+	 * includepage =*
+	 * To include sections labeled 'sec1' or 'sec2' or... from the page (see the doc of the LabeledSectionTransclusion extension for more info):
+	 * includepage = sec1,sec2,..
+	 * To include from the first occurance of 'heading1' (resp. 'heading2') until the next heading of the same or lower level. Note that this comparison is case insensitive. (See http://www.mediawiki.org/wiki/Extension:Labeled_Section_Transclusion#Transcluding_visual_headings.) :
+	 * includepage = #heading1,#heading2,....
+	 * You can combine:
+	 * includepage= sec1,#heading1,...
+	 * To include nothing from the page (no transclusion), leave empty:
+	 * includepage =
+	 */
+    'includepage' => array('default' => ''),
 	/** 
 	 * Inline text is some wiki text used to separate list items with 'mode=inline'.
 	 */
@@ -1208,12 +1212,18 @@ class DPL2 {
 				} else {
 					$incwiki = $mode->sSecStartAll;
 					foreach ($this->mIncSecLabels as $sSecLabel) {
+						$sSecLabel = trim($sSecLabel);
 						if ($sSecLabel == '') break;
 						$incwiki .= $mode->sSecStart;
-						// Uses wfLstInclude() from LabeledSectionTransclusion extension to include labeled sections of the page
-						$secPiece = wfLstInclude($this->mParser, $article->mTitle->getPrefixedText(), $sSecLabel);
+						if($sSecLabel[0] == '#') {
+							// Uses wfLstIncludeHeading2() from LabeledSectionTransclusion extension to include headings from the page
+							$secPiece = wfLstIncludeHeading2($this->mParser, $article->mTitle->getPrefixedText(), substr($sSecLabel, 1));
+						} else {
+							// Uses wfLstInclude() from LabeledSectionTransclusion extension to include labeled sections from the page
+							$secPiece = wfLstInclude($this->mParser, $article->mTitle->getPrefixedText(), $sSecLabel);
+						}
 						/**
-						*wfLstInclude() returns 2 types of values: 
+						* $secPiece can be: 
 						* - array($text, 'title'=>$title, 'replaceHeadings'=>true, 'headingOffset'=>$skiphead)
 						* - "[[" . $title->getPrefixedText() . "]]<!-- WARNING: LST loop detected -->";
 						*/
