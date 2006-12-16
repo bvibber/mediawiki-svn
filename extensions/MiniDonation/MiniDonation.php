@@ -3,15 +3,16 @@
 $wgExtensionFunctions[] = 'wfSetupMiniDonation';
 
 function wfSetupMiniDonation() {
-	global $wgParser;
+	global $wgParser, $wgMessageCache;
 	$wgParser->setHook( 'donationform', 'wfMiniDonationHook' );
+	$wgMessageCache->addMessage( 'donationform-submit', 'Donate via PayPal' );
 }
 
 function wfMiniDonationHook( $text, $params, $parser ) {
 	$default = "10";
 	$fontSize = "90%";
 	$encDefault = htmlspecialchars( $default );
-	$encDonate = htmlspecialchars( 'Donate via PayPal' );
+	$encDonate = htmlspecialchars( wfMsg( 'donationform-submit' ) );
 	return <<<END
 <span class="wikimedia-mini-donation"><form style="display: inline" action="https://www.paypal.com/cgi-bin/webscr" method="post" onsubmit="if(document.getElementById('don-amount-pp').value.indexOf('.') &gt;= 0 &amp;&amp; document.getElementById('don-amount-pp').value.indexOf('.00') &lt; 0) {alert('Sorry, but we can only accept donations in whole amounts.'); return false;}">
 <!-- hidden data -->
