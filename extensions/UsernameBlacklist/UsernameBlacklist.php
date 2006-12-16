@@ -13,7 +13,7 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efUsernameBlacklistSetup';
-	$wgExtensionCredits['other'][] = array( 'name' => 'Username Blacklist', 'author' => 'Rob Church', 'url' => 'http://meta.wikimedia.org/wiki/Username_Blacklist' );
+	$wgExtensionCredits['other'][] = array( 'name' => 'Username Blacklist', 'author' => 'Rob Church', 'url' => 'http://www.mediawiki.org/wiki/Extension:Username_Blacklist' );
 
 	$wgAvailableRights[] = 'uboverride';
 	$wgGroupPermissions['sysop']['uboverride'] = true;

@@ -1,6 +1,6 @@
 USERNAME BLACKLIST EXTENSION
 
-	Version 1.4
+	Version 1.5
 	© 2006 Rob Church
 
 This is free software licensed under the GNU General Public License. Please
@@ -104,10 +104,17 @@ example above), but I'll provide a couple of useful links:
 	
 1.4
 	Fix fatal error due to calling an undefined function
+
+1.5
+	Don't block all usernames when the blacklist contains blank lines
+	Use Unicode-friendly regular expressions
+	Don't show errors when the blacklist contains only comments
+	(Above fixes from Brion Vibber)
 	
 == 8. Thanks... ==
 
 	* Avar; whose other extensions provide better reference than the docs
 	* To the poster on mediawiki-l who inspired it
+	* Brion, for fixing a couple of bugs
 
 	All feedback welcome via <robchur@gmail.com>.
