@@ -44,10 +44,11 @@ $wgSpecialPages['Makebot'] = 'Makebot';
  */
 function efMakeBot() {
 	global $wgMessageCache, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
-
+	
 	require_once( 'Makebot.i18n.php' );
-	$wgMessageCache->addMessages( efMakeBotMessages() );
-
+	foreach( efMakeBotMessages() as $lang => $messages )
+		$wgMessageCache->addMessages( $messages, $lang );
+	
 	$wgLogTypes[] = 'makebot';
 	$wgLogNames['makebot'] = 'makebot-logpage';
 	$wgLogHeaders['makebot'] = 'makebot-logpagetext';
