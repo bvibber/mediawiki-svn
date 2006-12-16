@@ -75,10 +75,14 @@ EOT;
 }
 
 function wfInitSiteNoticeMessage() {
-	global $wgMessageCache;
-	$wgMessageCache->addMessage( 'sitenotice_id', '0' );
-	$wgMessageCache->addMessage( 'sitenotice_close', 'dismiss' );
+	global $wgMessageCache, $wgDismissableSiteNoticeMessages;
+	foreach( $wgDismissableSiteNoticeMessages as $key => $value ) {
+		$wgMessageCache->addMessages( $wgDismissableSiteNoticeMessages[$key], $key );
+	}
 }
+
+# Internationalisation file
+require_once( 'DismissableSiteNotice.i18n.php' );
 
 $wgHooks['SiteNoticeAfter'][] = 'wfDismissableSiteNotice';
 $wgHooks['LoadAllMessages'][] = 'wfInitSiteNoticeMessage';
