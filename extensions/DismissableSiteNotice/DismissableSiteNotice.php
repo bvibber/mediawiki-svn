@@ -77,7 +77,7 @@ EOT;
 function wfInitSiteNoticeMessage() {
 	global $wgMessageCache;
 	$wgMessageCache->addMessage( 'sitenotice_id', '0' );
-	$wgMessageCache->addMessage( 'sitenotice_close', 'close' );
+	$wgMessageCache->addMessage( 'sitenotice_close', 'dismiss' );
 }
 
 $wgHooks['SiteNoticeAfter'][] = 'wfDismissableSiteNotice';
