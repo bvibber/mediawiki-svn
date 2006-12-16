@@ -19,13 +19,13 @@
  * @author w:de:Benutzer:Unendlich 
  * @author m:User:Dangerman <cyril.dangerville@gmail.com>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version 0.8.0
+ * @version 0.8.1
  */
 
 /*
  * Current version
  */
-define('DPL2_VERSION', '0.8.0');
+define('DPL2_VERSION', '0.8.1');
 
 /**
  * Register the extension with MediaWiki
@@ -112,7 +112,7 @@ $wgDPL2Options = array(
 	 * includepage =*
 	 * To include sections labeled 'sec1' or 'sec2' or... from the page (see the doc of the LabeledSectionTransclusion extension for more info):
 	 * includepage = sec1,sec2,..
-	 * To include from the first occurance of 'heading1' (resp. 'heading2') until the next heading of the same or lower level. Note that this comparison is case insensitive. (See http://www.mediawiki.org/wiki/Extension:Labeled_Section_Transclusion#Transcluding_visual_headings.) :
+	 * To include from the first occurrence of the heading 'heading1' (resp. 'heading2') until the next heading of the same or lower level. Note that this comparison is case insensitive. (See http://www.mediawiki.org/wiki/Extension:Labeled_Section_Transclusion#Transcluding_visual_headings.) :
 	 * includepage = #heading1,#heading2,....
 	 * You can combine:
 	 * includepage= sec1,#heading1,...
