@@ -22,7 +22,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-	die( 1 );
+	exit( 1 );
 }
 
 ?>
