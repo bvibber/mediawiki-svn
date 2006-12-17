@@ -16,6 +16,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'efUserImages';
 	
 	/**
+	 * Set this to true to disable the parser cache for pages which
+	 * contain a <userimages> tag; this keeps the galleries up to date
+	 * at the cost of a performance overhead on page views
+	 */
+	$wgUserImagesNoCache = false;
+	
+	/**
 	 * Extension initialisation function
 	 */
 	function efUserImages() {
@@ -35,6 +42,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 * @return string
 	 */
 	function efUserImagesRender( $text, $args, &$parser ) {
+		global $wgUserImagesNoCache;
+		if( $wgUserImagesNoCache )
+			$parser->disableCache();
 		$uig = new UserImagesGallery( $args, $parser );
 		return $uig->render();
 	}
