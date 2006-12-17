@@ -66,13 +66,13 @@ $wgSelectCategoryRoot
  - Example
   $wgSelectCategoryRoot = array(
        NS_MEDIA                => false,
-       NS_MAIN                 => false,
+       NS_MAIN                 => "My Article Root Category",
        NS_TALK                 => false,
        NS_USER                 => false,
        NS_USER_TALK            => false,
        NS_PROJECT              => false,
        NS_PROJECT_TALK         => false,
-       NS_IMAGE                => false,
+       NS_IMAGE                => "My Image Root Category",
        NS_IMAGE_TALK           => false,
        NS_MEDIAWIKI            => false,
        NS_MEDIAWIKI_TALK       => false,
@@ -87,6 +87,8 @@ $wgSelectCategoryRoot
 $wgSelectCategoryEnableSubpages
  - Defines if the extension should be active when editing subpages.
   Default is true, as subpages are disabled in MediaWiki by default.
+ - Example
+  $wgSelectCategoryEnableSubpages = false;
 
 APPEARANCE
 --------------------------------------------------------------------------
