@@ -447,6 +447,11 @@ parent class in order maintain consistency across languages.
 ** helppage|help
 ** sitesupport-url|sitesupport',
 
+# This is used for the optional second sidebar block
+# - as above, this should be left alone (the default will
+# show no additional blocks)
+'sidebar2' => '-',
+
 # User preference toggles
 'tog-underline' => 'Underline links:',
 'tog-highlightbroken' => 'Format broken links <a href="" class="new">like this</a> (alternative: like this<a href="" class="internal">?</a>).',

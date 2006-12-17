@@ -171,6 +171,20 @@ class MonoBookTemplate extends QuickTemplate {
 			</div></form>
 		</div>
 	</div>
+	<?php foreach ($this->data['sidebar2'] as $bar => $cont) { ?>
+	<div class='portlet' id='p-<?php echo Sanitizer::escapeId($bar) ?>'>
+		<h5><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo $bar; else echo $out; ?></h5>
+		<div class='pBody'>
+			<ul>
+<?php 			foreach($cont as $key => $val) { ?>
+				<li id="<?php echo Sanitizer::escapeId($val['id']) ?>"<?php
+					if ( $val['active'] ) { ?> class="active" <?php }
+				?>><a href="<?php echo htmlspecialchars($val['href']) ?>"><?php echo htmlspecialchars($val['text']) ?></a></li>
+<?php			} ?>
+			</ul>
+		</div>
+	</div>
+	<?php } ?>
 	<div class="portlet" id="p-tb">
 		<h5><?php $this->msg('toolbox') ?></h5>
 		<div class="pBody">

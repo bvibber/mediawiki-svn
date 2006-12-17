@@ -1569,27 +1569,35 @@ END;
 	 * @private
 	 */
 	function buildSidebar() {
-		global $parserMemc, $wgEnableSidebarCache;
-		global $wgLang, $wgContLang;
-
-		$fname = 'SkinTemplate::buildSidebar';
-
-		wfProfileIn( $fname );
-
-		$key = wfMemcKey( 'sidebar' );
-		$cacheSidebar = $wgEnableSidebarCache &&
-			($wgLang->getCode() == $wgContLang->getCode());
+		return $this->buildRawSidebar( 'sidebar' );
+	}
+	
+	/**
+	 * Build a sidebar from a given message, loading from cache if possible
+	 * and saving to cache if appropriate
+	 *
+	 * @param $message Sidebar message
+	 * @return array
+	 */
+	function buildRawSidebar( $message ) {
+		global $parserMemc, $wgEnableSidebarCache, $wgLang, $wgContLang;
+		wfProfileIn( __METHOD__ );
 		
-		if ($cacheSidebar) {
-			$cachedsidebar = $parserMemc->get( $key );
-			if ($cachedsidebar!="") {
-				wfProfileOut($fname);
-				return $cachedsidebar;
+		$key = wfMemcKey( 'sb-' . $message );
+		$useCache = $wgEnableSidebarCache && ( $wgLang->getCode() == $wgContLang->getCode() );
+		
+		# Use the cache if we can
+		if( $useCache ) {
+			$cached = $parserMemc->get( $key );
+			if( $cached != '' ) {
+				wfProfileOut( __METHOD__ );
+				return $cached;
 			}
 		}
-
+		
+		# No cache? Build it as normal
 		$bar = array();
-		$lines = explode( "\n", wfMsgForContent( 'sidebar' ) );
+		$lines = explode( "\n", wfMsgForContent( $message ) );
 		foreach ($lines as $line) {
 			if (strpos($line, '*') !== 0)
 				continue;
@@ -1628,10 +1636,14 @@ END;
 				} else { continue; }
 			}
 		}
-		if ($cacheSidebar)
+		
+		# Cache it for next time, if applicable
+		if( $useCache )
 			$parserMemc->set( $key, $bar, 86400 );
-		wfProfileOut( $fname );
+		
+		wfProfileOut( __METHOD__ );
 		return $bar;
 	}
+		
 }
 ?>

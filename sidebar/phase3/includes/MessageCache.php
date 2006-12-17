@@ -363,7 +363,11 @@ class MessageCache {
 
 		$this->lock();
 		$this->load();
-		$parserMemc->delete(wfMemcKey('sidebar'));
+		
+		# Invalidate other special caches, like the sidebar cache
+		foreach( array( 'sidebar', 'sidebar2' ) as $sidebar )
+			$parserMemc->delete( wfMemcKey( 'sb-' . $sidebar ) );
+		
 		if ( is_array( $this->mCache ) ) {
 			$this->mCache[$title] = $text;
 			$this->mMemc->set( $this->mMemcKey, $this->mCache, $this->mExpiry );

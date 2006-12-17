@@ -453,6 +453,15 @@ class SkinTemplate extends Skin {
 			$tpl->set( 'body_onload', false );
 		}
 		$tpl->set( 'sidebar', $this->buildSidebar() );
+		
+		# Second sidebar block
+		$sidebarTwo = wfMsgForContent( 'sidebar2' );
+		if( !wfEmptyMsg( 'sidebar2', $sidebarTwo ) ) {
+			$tpl->set( 'sidebar2', $this->buildRawSidebar( 'sidebar2' ) );
+		} else {
+			$tpl->set( 'sidebar2', array() );
+		}
+
 		$tpl->set( 'nav_urls', $this->buildNavUrls() );
 
 		// execute template
