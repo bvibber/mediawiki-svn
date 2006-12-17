@@ -71,7 +71,7 @@ function equalRecords($structure, $lhs, $rhs) {
 		$lhsValue = $lhs->getAttributeValue($attribute);
 		$rhsValue = $rhs->getAttributeValue($attribute);
 		
-		if (is_a($type, RecordType))
+		if ($type instanceof RecordType)
 			$result = equalRecords($type->getStructure(), $lhsValue, $rhsValue);
 		else
 			$result = $lhsValue == $rhsValue;
