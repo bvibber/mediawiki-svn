@@ -58,13 +58,31 @@ $wgSelectCategoryNamespaces
   );
 
 $wgSelectCategoryRoot
- - Set a specific root category. Only categories within this root will be
-  displayed.
+ - Set a specific root category depending the namespace. Only categories within
+  this root will be displayed when editing a page in a certain namespace.
   Useful on big wiki sites to keep the database load down.
   If not set (default) the extension searches for all root categories and
   displays them including all children.
  - Example
-  $wgSelectCategoryRoot = "Main Category";
+  $wgSelectCategoryRoot = array(
+       NS_MEDIA                => false,
+       NS_MAIN                 => false,
+       NS_TALK                 => false,
+       NS_USER                 => false,
+       NS_USER_TALK            => false,
+       NS_PROJECT              => false,
+       NS_PROJECT_TALK         => false,
+       NS_IMAGE                => false,
+       NS_IMAGE_TALK           => false,
+       NS_MEDIAWIKI            => false,
+       NS_MEDIAWIKI_TALK       => false,
+       NS_TEMPLATE             => false,
+       NS_TEMPLATE_TALK        => false,
+       NS_HELP                 => false,
+       NS_HELP_TALK            => false,
+       NS_CATEGORY             => false,
+       NS_CATEGORY_TALK        => false
+  );
 
 $wgSelectCategoryEnableSubpages
  - Defines if the extension should be active when editing subpages.

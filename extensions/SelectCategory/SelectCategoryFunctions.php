@@ -142,11 +142,14 @@ function fnSelectCategoryMessageHook() {
 
 ## Get all categories from the wiki - starting with a given root or otherwise detect root automagically (expensive):
 function fnSelectCategoryGetAllCategories() {
+	global $wgTitle;
 	global $wgSelectCategoryRoot;
 
-	if( $wgSelectCategoryRoot ) {
+	# Get current namespace (save duplicate call of method):
+	$m_namespace = $wgTitle->getNamespace();
+	if( $wgSelectCategoryRoot[$m_namespace] ) {
 		# Include root and step into the recursion:
-		$m_allCats = array_merge( array( $wgSelectCategoryRoot => 0 ), fnSelectCategoryGetChildren( $wgSelectCategoryRoot ) );
+		$m_allCats = array_merge( array( $wgSelectCategoryRoot[$m_namespace] => 0 ), fnSelectCategoryGetChildren( $wgSelectCategoryRoot[$m_namespace] ) );
 	} else {
 		# Initialize return value:
 		$m_allCats = array();
