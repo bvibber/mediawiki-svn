@@ -10,18 +10,43 @@
  
 class UserImagesGallery {
 
+	/**
+	 * Parent parser
+	 */
 	private $parser = NULL;
+	
+	/**
+	 * User object representing the queried user
+	 */
 	private $user = NULL;
 	
+	/**
+	 * Custom caption for output
+	 */
 	private $caption = '';
+	
+	/**
+	 * Maximum number of images to show
+	 */
 	private $limit = 10;
 	
+	/**
+	 * Constructor
+	 *
+	 * @param $args Tag arguments
+	 * @param $parser Parent parser
+	 */
 	public function __construct( $args, &$parser ) {
 		$this->parser =& $parser;
 		$this->loadOptions( $args );
 		$this->setUser( $args );
 	}
 	
+	/**
+	 * Load options from the tag arguments
+	 *
+	 * @param $options Tag arguments
+	 */
 	private function loadOptions( $options ) {
 		if( isset( $options['caption'] ) )
 			$this->title = $options['caption'];
@@ -29,12 +54,22 @@ class UserImagesGallery {
 			$this->limit = min( $options['limit'], 50 );
 	}
 	
+	/**
+	 * Initialise the user object, if possible
+	 *
+	 * @param $options Tag arguments
+	 */
 	private function setUser( $options ) {
 		if( isset( $options['user'] ) ) {
 			$this->user = User::newFromName( $options['user'] );
 		}
 	}
 	
+	/**
+	 * Obtain an HTML image gallery to output, or else an error message
+	 *
+	 * @return string
+	 */
 	public function render() {
 		if( is_object( $this->user ) ) {
 			$this->user->load();
@@ -53,19 +88,21 @@ class UserImagesGallery {
 					}
 					return $gallery->toHtml();
 				} else {
-					# no images
 					return '<p>' . wfMsgForContent( 'userimages-noimages', $this->user->getName() ) . '</p>';
 				}
 			} else {
-				# no such user
 				return '<p>' . wfMsgForContent( 'nosuchusershort', $this->user->getName() ) . '</p>';
 			}
 		} else {
-			# invalid username
 			return '<p>' . wfMsgForContent( 'userimages-noname' ) . '</p>';
 		}
 	}
 	
+	/**
+	 * Retrieve the last X uploads from the queried user, respecting the limit
+	 *
+	 * @return array
+	 */
 	private function getImages() {
 		$dbr =& wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'image', '*', array( 'img_user' => $this->user->getId() ), __METHOD__, array( 'ORDER BY' => 'img_timestamp', 'LIMIT' => $this->limit ) );
@@ -80,6 +117,11 @@ class UserImagesGallery {
 		}
 	}
 	
+	/**
+	 * Return the caption that should be used for output
+	 *
+	 * @return string
+	 */
 	private function getCaption() {
 		return $this->caption ? $this->caption : wfMsgForContent( 'userimages-caption', $this->user->getName() );
 	}

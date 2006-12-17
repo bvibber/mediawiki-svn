@@ -26,6 +26,14 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgParser->setHook( 'userimages', 'efUserImagesRender' );
 	}
 	
+	/**
+	 * Extension rendering function
+	 *
+	 * @param $text Text inside <userimages> tags
+	 * @param $args Tag arguments
+	 * @param $parser Parent parser
+	 * @return string
+	 */
 	function efUserImagesRender( $text, $args, &$parser ) {
 		$uig = new UserImagesGallery( $args, $parser );
 		return $uig->render();
