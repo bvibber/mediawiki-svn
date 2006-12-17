@@ -156,13 +156,14 @@ $objectAttributesAttribute = new Attribute("object-attributes", "Annotation", ne
 global
 	$classAttributesStructure,
 //	$classAttributeClassAttribute, 
-	$classAttributeIdAttribute, $classAttributeAttributeAttribute, $classAttributeLevelAttribute;	
-	
+	$classAttributeIdAttribute, $classAttributeAttributeAttribute, $classAttributeLevelAttribute, $classAttributeTypeAttribute;
+
 $classAttributeIdAttribute = new Attribute("class-attribute-id", "Class attribute identifier", "object-id");
 //$classAttributeClassAttribute = new Attribute("class-attribute-class", "Class", "defined-meaning-id");
 $classAttributeAttributeAttribute = new Attribute("class-attribute-attribute", "Attribute", new RecordType($definedMeaningReferenceStructure));
 $classAttributeLevelAttribute = new Attribute("class-attribute-level", "Level", new RecordType($definedMeaningReferenceStructure));
-$classAttributesStructure = new Structure($classAttributeIdAttribute, $classAttributeAttributeAttribute, $classAttributeLevelAttribute);
+$classAttributeTypeAttribute = new Attribute("class-attribute-type", "Type", "short-text");
+$classAttributesStructure = new Structure($classAttributeIdAttribute, $classAttributeAttributeAttribute, $classAttributeLevelAttribute, $classAttributeTypeAttribute);
 $classAttributesAttribute = new Attribute("class-attributes", "Class attributes", new RecordSetType($classAttributesStructure));
 
 ?>

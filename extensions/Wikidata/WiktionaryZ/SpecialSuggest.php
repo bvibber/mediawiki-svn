@@ -52,9 +52,12 @@ function getSuggestions() {
 		case 'class':
 			$sql = getSQLForCollectionOfType('CLAS');
 			break;
+		case 'option-attribute':
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN');
+			break;
 		case 'translated-text-attribute':
 		case 'text-attribute':	
-			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel);
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT');
 			break;
 		case 'language':
 			require_once('languages.php');
@@ -144,7 +147,7 @@ function getSuggestions() {
 	return $editor->view(new IdStack($prefix . 'table'), $recordSet);
 }
 
-function getSQLToSelectPossibleAttributes($objectId, $attributesLevel) {
+function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType) {
 	global $wgDefaultClassMids;
 
 	$dbr = & wfGetDB(DB_SLAVE);
@@ -156,6 +159,7 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel) {
 		' JOIN uw_class_membership ON uw_class_membership.class_mid = uw_class_attributes.class_mid' .
 		' WHERE bootstrapped_defined_meanings.name LIKE ' . $dbr->addQuotes($attributesLevel) .
 		' AND ' . getLatestTransactionRestriction('uw_class_attributes') .
+		' AND uw_class_attributes.attribute_type LIKE ' . $dbr->addQuotes($attributesType) .
 		' AND ((uw_class_membership.class_member_mid = ' . $objectId .
 		' AND ' . getLatestTransactionRestriction('uw_class_membership') . ')';
 	foreach ($wgDefaultClassMids as $mid)

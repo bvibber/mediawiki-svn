@@ -434,7 +434,7 @@ function getDefinedMeaningRecord($definedMeaningId, $queryTransactionInformation
 
 function getClassAttributesRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global
-		$classAttributesTable, $classAttributeIdAttribute, $classAttributeLevelAttribute, $classAttributeAttributeAttribute;
+		$classAttributesTable, $classAttributeIdAttribute, $classAttributeLevelAttribute, $classAttributeAttributeAttribute, $classAttributeTypeAttribute;
 
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
@@ -442,7 +442,8 @@ function getClassAttributesRecordSet($definedMeaningId, $queryTransactionInforma
 		array(
 			'object_id' => $classAttributeIdAttribute,
 			'level_mid' => $classAttributeLevelAttribute,
-			'attribute_mid' => $classAttributeAttributeAttribute
+			'attribute_mid' => $classAttributeAttributeAttribute,
+			'attribute_type' => $classAttributeTypeAttribute
 		),
 		$classAttributesTable,
 		array("class_mid=$definedMeaningId")

@@ -99,6 +99,7 @@ interface Editor {
 	public function getEditors();
 }
 
+/* XXX: Basic Editor class. */
 abstract class DefaultEditor implements Editor {
 	protected $editors = array();
 	protected $attribute;
@@ -383,6 +384,7 @@ abstract class RecordSetEditor extends DefaultEditor {
 
 class RecordSetTableEditor extends RecordSetEditor {
 	protected $rowHTMLAttributes = array();
+	protected $repeatInput = false;
 	
 	protected function getRowAttributesText() {
 		$result = array();
@@ -638,6 +640,7 @@ class RecordTableCellEditor extends RecordEditor {
 	}
 }
 
+/* XXX: What is this for? */
 abstract class ScalarEditor extends DefaultEditor {
 	protected $permissionController;
 	protected $isAddField;
@@ -956,6 +959,43 @@ class ClassAttributesLevelDefinedMeaningEditor extends SuggestEditor {
 	}
 }
 
+abstract class SelectEditor extends ScalarEditor {
+	protected abstract function getOptions();
+
+	public function add($idPath) {
+		if ($this->isAddField)
+			return getSelect($this->addId($idPath->getId()), $this->getOptions());
+		else
+			return "";
+	}
+
+	public function getViewHTML($idPath, $value) {
+		global
+			$classAttributeTypeAttribute;
+
+		$options = $this->getOptions();
+		return $options[$value];
+	}
+
+	public function getEditHTML($idPath, $value) {
+		return getSelect($this->addId($idPath->getId()), $this->getOptions());
+	}
+
+	public function getInputValue($id) {
+		global
+			$wgRequest;
+
+		return trim($wgRequest->getText($id));
+	}
+}
+
+/* XXX: Should these options be stored somewhere else? */
+class ClassAttributesTypeEditor extends SelectEditor {
+	protected function getOptions() {
+		return array('TEXT' => 'Text', 'OPTN' => 'Option');
+	}
+}
+
 class RelationTypeReferenceEditor extends DefinedMeaningReferenceEditor {
 	protected function suggestType() {
 		return "relation-type";
@@ -1064,6 +1104,7 @@ class RecordListEditor extends RecordEditor {
 	}
 
 	public function edit($idPath, $value) {
+		$result = '';
 		foreach ($this->editors as $editor) {
 			$attribute = $editor->getAttribute();
 			$idPath->pushAttribute($attribute);
@@ -1083,6 +1124,7 @@ class RecordListEditor extends RecordEditor {
 	}
 	
 	public function add($idPath) {
+		$result = '';
 		foreach($this->editors as $editor) {
 			if ($attribute = $editor->getAddAttribute()) {
 				$idPath->pushAttribute($attribute);

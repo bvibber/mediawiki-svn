@@ -133,12 +133,13 @@ function getExpressionTableCellEditor($attribute) {
 
 function getClassAttributesEditor($showRecordLifeSpan, $showAuthority) {
 	global
-		$definedMeaningIdAttribute, $classAttributesAttribute, $classAttributeLevelAttribute ,$classAttributeAttributeAttribute;
+		$definedMeaningIdAttribute, $classAttributesAttribute, $classAttributeLevelAttribute, $classAttributeAttributeAttribute, $classAttributeTypeAttribute;
 
 	$tableEditor = new RecordSetTableEditor($classAttributesAttribute, new SimplePermissionController(true), new ShowEditFieldForClassesChecker(0, $definedMeaningIdAttribute), new AllowAddController(true), true, false, new ClassAttributesController());
 	$tableEditor->addEditor(new ClassAttributesLevelDefinedMeaningEditor($classAttributeLevelAttribute, new SimplePermissionController(false), true));
 	$tableEditor->addEditor(new DefinedMeaningReferenceEditor($classAttributeAttributeAttribute, new SimplePermissionController(false), true));
-	
+	$tableEditor->addEditor(new ClassAttributesTypeEditor($classAttributeTypeAttribute, new SimplePermissionController(false), true));
+
 	addTableMedataEditors($tableEditor, $showRecordLifeSpan, $showAuthority);
 	
 	return $tableEditor;
