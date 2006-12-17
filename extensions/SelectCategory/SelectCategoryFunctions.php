@@ -47,10 +47,14 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 			# Print the part of the table including the localised title for the select box:
 			$m_textBefore = "\n</td></tr><tr><td align='right'><label for='wpSelectCategory'>" . wfMsg( 'selectcategory-title' ) .":</label></td><td align='left'>";
 		}
-
-		# Print the select box:
+		# Introduce the output:
 		$m_pageObj->$m_place .= "<!-- SelectCategory begin -->\n";
+		# Print the select box:
 		$m_pageObj->$m_place .= "\n$m_textBefore";
+#		# First come up with the JavaScript version of the select boxes:
+#		$m_pageObj->$m_place .= "<script type=\"text/javascript\" src=\"'/extensions/SelectCategory/SelectCategory.js\"></script>\n";
+#		# Then the "old-style" select box for those without JavaScript:
+#		$m_pageObj->$m_place .= "<noscript>\n";
 		$m_pageObj->$m_place .= "<select id=\"SelectCategoryBox\" size=\"10\" name=\"SelectCategoryList[]\" multiple=\"multiple\">\n";
 		# Populate box with categories:
 		foreach( $m_allCats as $m_cat => $m_prefix ) {
@@ -65,6 +69,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 		}
 		# Close select box:
 		$m_pageObj->$m_place .= "</select>\n";
+#		$m_pageObj->$m_place .= "</noscript>\n";
 		# Print localised help string:
 		$m_pageObj->$m_place .= wfMsg( 'selectcategory-subtitle' ) . "<br/>\n";
 		$m_pageObj->$m_place .= "<!-- SelectCategory end -->\n";

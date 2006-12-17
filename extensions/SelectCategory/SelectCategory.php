@@ -17,7 +17,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 ## Options:
 # $wgSelectCategoryNamespaces - list of namespaces in which this extension should be active
-$wgSelectCategoryNamespaces	= array(
+if( !isset( $wgSelectCategoryNamespaces	) ) $wgSelectCategoryNamespaces = array(
 	NS_MEDIA		=> true,
 	NS_MAIN			=> true,
 	NS_TALK			=> false,
@@ -37,9 +37,9 @@ $wgSelectCategoryNamespaces	= array(
 	NS_CATEGORY_TALK	=> false
 );
 # $wgSelectCategoryRoot	- root category to use, otherwise self detection (expensive)
-$wgSelectCategoryRoot = false;
+if( !isset( $wgSelectCategoryRoot ) ) $wgSelectCategoryRoot = false;
 # $wgSelectCategoryEnableSubpages - if the extension should be active on subpages or not (true, as subpages are disabled by default)
-$wgSelectCategoryEnableSubpages = true;
+if( !isset( $wgSelectCategoryEnableSubpages ) ) $wgSelectCategoryEnableSubpages = true;
 
 ## Register extension setup hook and credits:
 $wgExtensionFunctions[]	= 'fnSelectCategory';
