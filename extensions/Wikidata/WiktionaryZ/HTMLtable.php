@@ -87,7 +87,7 @@ function getHTMLClassForType($type,$attribute) {
 	else if ($type instanceof RecordType) 
 		return $attribute->id;
 	else 
-		return $type;
+		return '';
 }
 
 function getRecordAsTableCells($idPath, $editor, $record, &$startColumn = 0) {
