@@ -23,8 +23,8 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 
 	# Check if page is subpage once to save method calls later:
 	$m_isSubpage = $wgTitle->isSubpage();
-	# Run only if we are in an upload, a activated namespace or if page is a subpage and subpages are enabled (unfortunately we can't use implication in PHP):
-	if ( $m_isUpload || ( $wgSelectCategoryNamespaces[$wgTitle->getNamespace()] && ( !$m_isSubpage || ( $m_isSubpage && $wgSelectCategoryEnableSubpages ) ) ) ) {
+	# Run only if we are in an upload, a activated namespace or if page is a subpage and subpages are enabled (unfortunately we can't use implication in PHP) but not if we do a sectionedit:
+	if ( $m_isUpload || ( $wgSelectCategoryNamespaces[$wgTitle->getNamespace()] && ( !$m_isSubpage || ( $m_isSubpage && $wgSelectCategoryEnableSubpages ) ) ) && $m_pageObj->section == false ) {
 		# Get all categories from wiki:
 		$m_allCats = fnSelectCategoryGetAllCategories();
 		# Load system messages:
