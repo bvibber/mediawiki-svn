@@ -2,10 +2,15 @@
 
 $wgExtensionFunctions[] = 'wfSetupMiniDonation';
 
+# Internationalisation file
+require_once( 'MiniDonation.i18n.php' );
+
 function wfSetupMiniDonation() {
-	global $wgParser, $wgMessageCache;
+	global $wgParser, $wgMessageCache, $wgMiniDonationMessages;
 	$wgParser->setHook( 'donationform', 'wfMiniDonationHook' );
-	$wgMessageCache->addMessage( 'donationform-submit', 'Donate via PayPal' );
+	foreach( $wgMiniDonationMessages as $key => $value ) {
+		$wgMessageCache->addMessages( $wgMiniDonationMessages[$key], $key );
+	}
 }
 
 function wfMiniDonationHook( $text, $params, $parser ) {
