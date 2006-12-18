@@ -108,7 +108,7 @@ global
 	$translatedTextAttributeIdAttribute, $translatedTextValueIdAttribute, $translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, $translatedTextAttributeValuesStructure;
 
 $translatedTextAttributeIdAttribute = new Attribute("translated-text-attribute-id", "Attribute identifier", "object-id");
-$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", "Attribute", $definedMeaningReferenceStructure);
+$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", "Attribute", $definedMeaningReferenceType);
 $translatedTextValueIdAttribute = new Attribute("translated-text-value-id", "Translated text value identifier", "translated-text-value-id");
 $translatedTextValueAttribute = new Attribute("translated-text-value", "Value", new RecordSetType($translatedTextStructure));
 
@@ -120,7 +120,7 @@ global
 
 $textAttributeIdAttribute = new Attribute("text-attribute-id", "Attribute identifier", "object-id");
 $textAttributeObjectAttribute = new Attribute("text-attribute-object-id", "Attribute object", "object-id");
-$textAttributeAttribute = new Attribute("text-attribute", "Attribute", $definedMeaningReferenceStructure);
+$textAttributeAttribute = new Attribute("text-attribute", "Attribute", new RecordSetType($definedMeaningReferenceStructure));
 $textAttributeValuesStructure = new Structure($textAttributeIdAttribute, $textAttributeObjectAttribute, $textAttributeAttribute, $textAttribute, $objectAttributesAttribute);	
 $textAttributeValuesAttribute = new Attribute("text-attribute-values", "Text attribute values", new RecordSetType($textAttributeValuesStructure));
 
