@@ -12,6 +12,11 @@ $wgMathStatFunctionsMessages['en'] = array(
         'msfunc_inf' => "Resulting value is infinity" , 
         'msfunc_div_zero' => "Division by zero",
 );
+$wgMathStatFunctionsMessages['ja'] = array(
+        'msfunc_nan' => "返り値が数値ではありませんResulting value is not a number" ,
+        'msfunc_inf' => "返り値が無限大です" , 
+        'msfunc_div_zero' => "0で割り算しました",
+);
 
 $wgMathStatFunctionsMagic['en'] = array(
         'const'         => array( 0, 'const' ),

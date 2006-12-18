@@ -66,6 +66,17 @@ $wgExpandTemplatesMessages['it'] = array(
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Ignora i commenti',
 );
+$wgExpandTemplatesMessages['ja'] = array(
+	'expandtemplates'                  => 'テンプレートを展開',
+	'expand_templates_intro'           => '入力したウィキ構文に含まれている全てのテンプレートを再帰的に展開します。
+<nowiki>{{</nowiki>#if:...}} のようなパーサ関数や、<nowiki>{{</nowiki>CURRENTDAY}} のような変数など、
+<nowiki>{{</nowiki> ～ }} で囲まれているものが展開されます。',
+	'expand_templates_title'           => '<nowiki>{{</nowiki>PAGENAME}} 等に使用するページ名: ',
+	'expand_templates_input'           => '展開するテキスト',
+	'expand_templates_output'          => '展開結果',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'コメントを除去',
+);
 $wgExpandTemplatesMessages['kk-kz'] = array(
 	'expandtemplates'                  => 'Үлгілерді ұлғайту',
 	'expand_templates_intro'           => 'Осы құрал арнайы беті әлдебір мәтінді алады да,

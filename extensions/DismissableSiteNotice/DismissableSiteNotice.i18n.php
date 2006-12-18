@@ -15,5 +15,8 @@ $wgDismissableSiteNoticeMessages['en'] = array(
 $wgDismissableSiteNoticeMessages['he'] = array(
 	'sitenotice_close' => 'הסתר',
 );
+$wgDismissableSiteNoticeMessages['ja'] = array(
+	'sitenotice_close' => '非表示',
+);
 
 ?>

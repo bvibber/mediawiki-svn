@@ -63,6 +63,17 @@ $wgDesysopMessages['it'] = array(
 	'desysop'              => "Revoca i privilegi di amministratore",
 	'not_sysop'            => "L'utente specificato non è un amministratore",
 );
+$wgDesysopMessages['ja'] = array(
+	'desysoptitle'         => '利用者から管理者権限を取り消す',
+	'desysoptext'          => "このフォームはビューロクラットが利用者から管理者権限を取り消すために使用されます。下欄に利用者名を入力し、ボタンをクリックすると取り消しが実行されます。",
+	'desysopname'          => '取り消す利用者の名前: ',
+	'desysopok'            => "<b>利用者 \"$1\" の管理者権限は取り除かれました</b>",
+	'set_user_rights'      => '利用者権限の設定',
+	'user_rights_set'      => "<b>利用者 \"$1\" の権限が更新されました</b>",
+	'set_rights_fail'      => "<b>利用者 \"$1\" の権限を設定できませんでした。利用者名を正しく入力したか確認してください。</b>",
+	'desysop'              => '管理者権限の取り消し',
+	'not_sysop'            => 'この利用者は管理者ではありません',
+);
 $wgDesysopMessages['nl'] = array(
 	'desysoptitle'         => 'Beheerdersrechten voor een gebruiker intrekken',
 	'desysoptext'          => "Bureaucraten gebruiken dit formulier om beheerdersrechten voor een gebruiker in te trekken. Voer de gebruikersnaam in het veld in en klik op de knop om de beheerdersrechten in te trekken.",
