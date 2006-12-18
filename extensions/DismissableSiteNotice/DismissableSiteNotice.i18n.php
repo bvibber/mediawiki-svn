@@ -18,5 +18,16 @@ $wgDismissableSiteNoticeMessages['he'] = array(
 $wgDismissableSiteNoticeMessages['ja'] = array(
 	'sitenotice_close' => '非表示',
 );
+$wgDismissableSiteNoticeMessages['zh-cn'] = array(
+	'sitenotice_close' => '关闭',
+);
+$wgDismissableSiteNoticeMessages['zh-tw'] = array(
+	'sitenotice_close' => '關閉',
+);
+$wgDismissableSiteNoticeMessages['zh-yue'] = array(
+	'sitenotice_close' => '閂咗佢',
+);
+$wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-tw'];
+$wgDismissableSiteNoticeMessages['zh-sg'] = $wgDismissableSiteNoticeMessages['zh-cn'];
 
 ?>
