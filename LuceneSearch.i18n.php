@@ -130,6 +130,22 @@ Testo da ricercare $3 $9",
 	Probabilmente si tratta di un errore temporaneo, destinato a risolversi in breve tempo. 
 	Nel frattempo, si consiglia di riprovare tra qualche istante o di utilizzare un motore di ricerca esterno:\n"
 );
+$wgLuceneSearchMessages['ja'] = array(
+	'searchnumber'          => "<strong>$3 件中 $1 - $2 件目</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>前へ</span>",
+	'searchnext'            => "<span style='font-size: small'>次へ</span> &#x00BB;",
+	'searchscore'           => "関連性：$1",
+	'searchsize'            => "$1 kB（$2語）",
+	'searchdidyoumean'      => "もしかして: \"<a href=\"$1\">$2</a>\"",
+	'searchnoresults'       => "該当するページが見つかりませんでした。",
+	'searchnearmatches'     => "<b>タイトルが検索語に近い項目:</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+検索する名前空間:\n
+$1\n
+検索語: $3 $9",
+	'lucenefallback'        => "検索中に一時的な問題が発生しました。しばらく経ってから再度検索するか、外部の検索サービスを使用してください:\n"
+);
 $wgLuceneSearchMessages['kk-kz'] = array(
 	'searchnumber'          => "<strong>$3 дегеннен табылған $1—$2 нәтиже</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Алдыңғыға</span>",
