@@ -32,7 +32,7 @@ class MakeBot extends SpecialPage {
 						? $par
 						: $wgRequest->getText( 'username', '' );
 
-		$wgOut->addWikiText( wfMsg( 'makebot-header' ) );
+		$wgOut->addWikiText( wfMsgNoTrans( 'makebot-header' ) );
 		$wgOut->addHtml( $this->makeSearchForm() );
 		
 		if( $this->target != '' ) {
