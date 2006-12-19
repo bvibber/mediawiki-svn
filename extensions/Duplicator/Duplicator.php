@@ -20,7 +20,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	/**
 	 * Pages with more than this number of revisions can't be duplicated
 	 */
-	$wgDuplicatorRevisionLimit = 1000;
+	$wgDuplicatorRevisionLimit = 250;
 	
 	/**
 	 * Extension setup function
