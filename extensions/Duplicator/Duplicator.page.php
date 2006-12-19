@@ -84,14 +84,6 @@ class SpecialDuplicator extends SpecialPage {
 								# Something went wrong, abort the entire operation
 								$wgOut->addWikiText( wfMsgNoTrans( 'duplicator-failed' ) );
 							}
-							$success = 
-						
-							# All seems well, so perform the actual operation
-							# FIXME: How about some error reporting?
-							$this->duplicate( $this->sourceTitle, $this->destTitle );
-							# FIXME: What if the main page doesn't exist but the dest talk does?
-							if( $this->talk )
-								$this->duplicate( $this->sourceTitle->getTalkPage(), $this->destTitle->getTalkPage() );
 						} else {
 							# Revision count exceeds limit
 							$limit = $wgLang->formatNum( $wgDuplicatorRevisionLimit );
