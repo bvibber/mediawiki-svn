@@ -1,0 +1,19 @@
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+colo murphy
+set viminfo='50,%,:50
+set backup writebackup
+filetype plugin indent on
+
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+  " When editing a file, always jump to the last cursor position
+  autocmd BufReadPost *
+  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+  \   exe "normal! g'\"" |
+  \ endif
+endif
+
