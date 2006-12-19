@@ -40,16 +40,15 @@ class SpecialDuplicator extends SpecialPage {
 	 * @param $title Title passed to the page
 	 */
 	public function execute( $title = false ) {
-		global $wgOut, $wgRequest, $wgLang, $wgDuplicatorRevisionLimit;
+		global $wgUser, $wgOut, $wgRequest, $wgLang, $wgDuplicatorRevisionLimit;
 		$this->setHeaders();
 		$this->setOptions( $wgRequest, $title );
 		$wgOut->addWikiText( wfMsgNoTrans( 'duplicator-header' ) );
 		$wgOut->addHtml( $this->buildForm() );
 		
-		# If we haven't been asked to do anything, stop here
-		# FIXME: Token
-		if( !$wgRequest->wasPosted() )
-			return;
+		# If the token doesn't match or the form wasn't POSTed, stop
+		if( !$wgRequest->wasPosted() || !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), 'duplicator' ) )
+		return;
 		
 		# Check we've got a valid source title
 		if( is_object( $this->sourceTitle ) ) {
@@ -62,13 +61,10 @@ class SpecialDuplicator extends SpecialPage {
 						# Check there aren't a hideous number of revisions
 						$dbr =& wfGetDB( DB_SLAVE );
 						$num = $dbr->selectField( 'revision', 'COUNT(*)', array( 'rev_page' => $this->sourceTitle->getArticleId() ), __METHOD__ );
-						# WHAT THE FLYING FUCK IS WRONG WITH THE =< OPERATOR?
-						if( $num == $wgDuplicatorRevisionLimit || $num < $wgDuplicatorRevisionLimit ) {
+						if( $num <= $wgDuplicatorRevisionLimit ) {
 							# Attempt to perform the main duplicate op. first
 							if( $this->duplicate( $this->sourceTitle, $this->destTitle ) ) {
-								$success = wfMsgNoTrans( 'duplicator-success',
-														$this->sourceTitle->getPrefixedText(),
-														$this->destTitle->getPrefixedText() );
+								$success  = wfMsgNoTrans( 'duplicator-success', $this->sourceTitle->getPrefixedText(), $this->destTitle->getPrefixedText() );
 								$success .= '* ' . wfMsgNoTrans( 'duplicator-success-revisions', $wgLang->formatNum( $num ) ) . "\n";
 								# If there is a talk page and we've been asked to duplicate it, do so
 								if( $this->dealWithTalk() && $this->talk ) {
@@ -150,6 +146,7 @@ class SpecialDuplicator extends SpecialPage {
 	 * @return string
 	 */
 	private function buildForm() {
+		global $wgUser;
 		$self = SpecialPage::getTitleFor( 'Duplicator' );
 		$form  = '<form method="post" action="' . $self->getLocalUrl() . '">';
 		$form .= '<fieldset><legend>' . wfMsg( 'duplicator-options' ) . '</legend>';
@@ -167,7 +164,8 @@ class SpecialDuplicator extends SpecialPage {
 		$form .= '<td>&nbsp;</td>';
 		$form .= '<td>' . Xml::submitButton( wfMsg( 'duplicator-submit' ) ) . '</td>';
 		$form .= '</tr>';
-		$form .= '</table>';		
+		$form .= '</table>';
+		$form .= Xml::hidden( 'token', $wgUser->editToken( 'duplicator' ) );
 		$form .= '</fieldset></form>';
 		return $form;
 	}
