@@ -244,14 +244,14 @@ function addClassAttribute($classMeaningId, $levelMeaningId, $attributeMeaningId
 function classAttributeExists($classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query('SELECT object_id FROM uw_class_attributes' .
-								" WHERE class_mid=$classMeaningId AND level_mid=$levelMeaningId AND attribute_mid=$attributeMeaningId AND attribute_type = $attributeType" .
+								" WHERE class_mid=$classMeaningId AND level_mid=$levelMeaningId AND attribute_mid=$attributeMeaningId AND attribute_type = " . $dbr->addQuotes($attributeType) .
 								' AND ' . getLatestTransactionRestriction('uw_class_attributes'));
 	
 	return $dbr->numRows($queryResult) > 0;		
 }
 
 function createClassAttribute($classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType) {
-	$objectId = getClassAttributeId($classMeaningId, $levelMeaningId, $attributeMeaningId);
+	$objectId = getClassAttributeId($classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType);
 	
 	if ($objectId == 0)
 		$objectId = newObjectId('uw_class_attributes');
@@ -262,10 +262,10 @@ function createClassAttribute($classMeaningId, $levelMeaningId, $attributeMeanin
 	$dbr->query($sql);	
 }
 
-function getClassAttributeId($classMeaningId, $levelMeaningId, $attributeMeaningId) {
+function getClassAttributeId($classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT object_id FROM uw_class_attributes " .
-								"WHERE class_mid=$classMeaningId AND level_mid =$levelMeaningId AND attribute_mid=$attributeMeaningId");
+								"WHERE class_mid=$classMeaningId AND level_mid =$levelMeaningId AND attribute_mid=$attributeMeaningId AND attribute_type = " . $dbr->addQuotes($attributeType));
 
 	if ($classAttribute = $dbr->fetchObject($queryResult))
 		return $classAttribute->object_id;
