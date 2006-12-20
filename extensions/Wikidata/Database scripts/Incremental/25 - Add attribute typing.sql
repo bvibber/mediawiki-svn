@@ -11,6 +11,7 @@ CREATE TABLE `uw_option_attribute_options` (
 CREATE TABLE `uw_option_attribute_values` (
 	`value_id`				int(11) NOT NULL DEFAULT 0,
 	`object_id`				int(11) NOT NULL DEFAULT 0,
+	`attribute_mid`			int(11) NOT NULL DEFAULT 0,
 	`option_mid`			int(11) NOT NULL DEFAULT 0,
 	`add_transaction_id`	int(11) NOT NULL DEFAULT 0,
 	`remove_transaction_id`	int(11) NULL
