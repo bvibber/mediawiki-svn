@@ -149,13 +149,13 @@ class SpecialDuplicator extends SpecialPage {
 		global $wgUser;
 		$self = SpecialPage::getTitleFor( 'Duplicator' );
 		$form  = '<form method="post" action="' . $self->getLocalUrl() . '">';
-		$form .= '<fieldset><legend>' . wfMsg( 'duplicator-options' ) . '</legend>';
+		$form .= '<fieldset><legend>' . wfMsgHtml( 'duplicator-options' ) . '</legend>';
 		$form .= '<table>';
 		$form .= '<tr>';
-		$form .= '<td><label for="source">' . wfMsg( 'duplicator-source' ) . '</label></td>';
+		$form .= '<td><label for="source">' . wfMsgHtml( 'duplicator-source' ) . '</label></td>';
 		$form .= '<td>' . Xml::input( 'source', 40, $this->source, array( 'id' => 'source' ) ) . '</td>';
 		$form .= '</tr><tr>';
-		$form .= '<td><label for="dest">' . wfMsg( 'duplicator-dest' ) . '</label></td>';
+		$form .= '<td><label for="dest">' . wfMsgHtml( 'duplicator-dest' ) . '</label></td>';
 		$form .= '<td>' . Xml::input( 'dest', 40, $this->dest, array( 'id' => 'dest' ) ) . '</td>';
 		$form .= '</tr><tr>';
 		$form .= '<td>&nbsp;</td>';

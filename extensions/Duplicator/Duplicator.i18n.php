@@ -37,7 +37,8 @@ copies of all histories. This is useful for article forking, etc.',
 'duplicator-dest-exists' => '[[$1]] already exists. Please provide a destination title which doesn\'t exist.',
 'duplicator-toomanyrevisions' => '[[$1]] has too many ($2) revisions and cannot be copied. The current limit is $3.',
 ),
-	
+
+/* German (Leon Weber) */
 'de' => array(
 	'duplicator' => 'Einen Artikel duplizieren',
 	'duplicator-header' => 'Mit dieser Spezialseite können Artikel komplett dupliziert werden. Dabei wird die gesamte ' .
@@ -65,7 +66,7 @@ copies of all histories. This is useful for article forking, etc.',
 					'maximal $3 Versionen dupliziert werden können.',
 ),
 	
-);
+	);
 }
 
 ?>
