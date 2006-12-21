@@ -14,6 +14,7 @@ function efDuplicatorMessages() {
 /* English (Rob Church) */
 'en' => array(
 'duplicator' => 'Duplicate an article',
+'duplicator-toolbox' => 'Duplicate this article',
 'duplicator-header' => 'This page allows the complete duplication of an article, creating independent
 copies of all histories. This is useful for article forking, etc.',
 

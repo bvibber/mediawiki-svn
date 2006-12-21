@@ -148,15 +148,17 @@ class SpecialDuplicator extends SpecialPage {
 	private function buildForm() {
 		global $wgUser;
 		$self = SpecialPage::getTitleFor( 'Duplicator' );
+		$source = is_object( $this->sourceTitle ) ? $this->sourceTitle->getPrefixedText() : $this->source;
+		$dest = is_object( $this->destTitle ) ? $this->destTitle->getPrefixedText() : $this->dest;
 		$form  = '<form method="post" action="' . $self->getLocalUrl() . '">';
 		$form .= '<fieldset><legend>' . wfMsgHtml( 'duplicator-options' ) . '</legend>';
 		$form .= '<table>';
 		$form .= '<tr>';
 		$form .= '<td><label for="source">' . wfMsgHtml( 'duplicator-source' ) . '</label></td>';
-		$form .= '<td>' . Xml::input( 'source', 40, $this->source, array( 'id' => 'source' ) ) . '</td>';
+		$form .= '<td>' . Xml::input( 'source', 40, $source, array( 'id' => 'source' ) ) . '</td>';
 		$form .= '</tr><tr>';
 		$form .= '<td><label for="dest">' . wfMsgHtml( 'duplicator-dest' ) . '</label></td>';
-		$form .= '<td>' . Xml::input( 'dest', 40, $this->dest, array( 'id' => 'dest' ) ) . '</td>';
+		$form .= '<td>' . Xml::input( 'dest', 40, $dest, array( 'id' => 'dest' ) ) . '</td>';
 		$form .= '</tr><tr>';
 		$form .= '<td>&nbsp;</td>';
 		$form .= '<td>' . Xml::checkLabel( wfMsg( 'duplicator-dotalk' ), 'talk', 'talk', $this->talk ) . '</td>';
