@@ -15,7 +15,7 @@ function wfDismissableSiteNotice( &$notice ) {
 	// No dismissal for anons
 	if ( $wgUser->isAnon() ) {
 		$notice = <<<EOT
-<script language="JavaScript">
+<script type="text/javascript" language="JavaScript">
 <!--
 document.writeln("$encNotice");
 -->
@@ -25,7 +25,7 @@ EOT;
 	}
 
 	$notice = <<<EOT
-<script language="JavaScript">
+<script type="text/javascript" language="JavaScript">
 <!--
 var cookieName = "dismissSiteNotice=";
 var cookiePos = document.cookie.indexOf(cookieName);
