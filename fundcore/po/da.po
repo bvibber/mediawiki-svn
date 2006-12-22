@@ -1,0 +1,147 @@
+# LANGUAGE translation of Drupal (../fundraising/modules/fundcore.module)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# No version information was available in the source files.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2006-12-18 13:47+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+#"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: ../fundraising/modules/fundcore.module:10
+msgid "Discloses fundraising data while preserving requested donor privacy."
+msgstr "Viser indsamlingsdata uden at kompromittere ønsket donoranonymitet."
+
+#: ../fundraising/modules/fundcore.module:35
+msgid "Fundraising C.O.R.E."
+msgstr "Fundraising C.O.R.E."
+
+#: ../fundraising/modules/fundcore.module:41
+msgid "Live contributions"
+msgstr "Live bidrag"
+
+#: ../fundraising/modules/fundcore.module:47
+msgid "Browse by date"
+msgstr "Gennemse efter dato"
+
+#: ../fundraising/modules/fundcore.module:100
+msgid "Count"
+msgstr "Antal"
+
+#: ../fundraising/modules/fundcore.module:101
+msgid "Minimum"
+msgstr "Minimum"
+
+#: ../fundraising/modules/fundcore.module:102
+msgid "Mean"
+msgstr "Betyder"
+
+#: ../fundraising/modules/fundcore.module:103
+msgid "Maximum"
+msgstr "Maksimum"
+
+#: ../fundraising/modules/fundcore.module:104
+msgid "Total"
+msgstr "I alt"
+
+#: ../fundraising/modules/fundcore.module:105
+msgid "Standard Deviation"
+msgstr "Standard Afvigelse"
+
+#: ../fundraising/modules/fundcore.module:109
+msgid "Statistical breakdown (%currency)"
+msgstr "Statistisk analyse (%currency)"
+
+#: ../fundraising/modules/fundcore.module:188
+msgid "Currency"
+msgstr "Valuta"
+
+#: ../fundraising/modules/fundcore.module:189;475
+msgid "Amount"
+msgstr "Antal"
+
+#: ../fundraising/modules/fundcore.module:190
+msgid "Equivalent in %currency"
+msgstr "Tilsvarende beløb i %currency"
+
+#: ../fundraising/modules/fundcore.module:194
+msgid "Breakdown by currency"
+msgstr "Analyse efter valuta"
+
+#: ../fundraising/modules/fundcore.module:218
+msgid "Browsing contributions"
+msgstr "Gennemser bidrag"
+
+#: ../fundraising/modules/fundcore.module:223
+msgid "Browsing year %year"
+msgstr "Gennemser år %year"
+
+#: ../fundraising/modules/fundcore.module:230
+msgid "Browsing month %year-%month"
+msgstr "Gennemser måned %month-%year"
+
+#: ../fundraising/modules/fundcore.module:237
+msgid "Browsing day %year-%month-%day"
+msgstr "Gennemser dag %day-%month-%year"
+
+#: ../fundraising/modules/fundcore.module:279
+msgid "Year"
+msgstr "År"
+
+#: ../fundraising/modules/fundcore.module:281
+msgid "Month"
+msgstr "Måned"
+
+#: ../fundraising/modules/fundcore.module:283
+msgid "Day"
+msgstr "Dag"
+
+#: ../fundraising/modules/fundcore.module:325
+msgid "Filter contribution results"
+msgstr "Filtrer bidragsresultater"
+
+#: ../fundraising/modules/fundcore.module:348
+msgid "On or after"
+msgstr "På eller efter"
+
+#: ../fundraising/modules/fundcore.module:353
+msgid "On or before"
+msgstr "På eller før"
+
+#msgid "Total in %currency"
+#msgstr ""
+
+#: ../fundraising/modules/fundcore.module:359
+msgid "Restrict to a specific currency"
+msgstr "Begræns til en bestemt valuta"
+
+#: ../fundraising/modules/fundcore.module:373
+msgid "Only show contributions with comments"
+msgstr "Vis kun bidrag med kommentarer"
+
+#: ../fundraising/modules/fundcore.module:379
+msgid "View results"
+msgstr "Vis resultater"
+
+#: ../fundraising/modules/fundcore.module:444
+msgid "Anonymous"
+msgstr "Anonym"
+
+#: ../fundraising/modules/fundcore.module:467
+msgid "Sorry, there are no matching contributions."
+msgstr "Beklager, der er ingen sådanne bidrag."
+
+#: ../fundraising/modules/fundcore.module:473
+msgid "Name and Comment"
+msgstr "Navn og Kommentar"
+
+#: ../fundraising/modules/fundcore.module:474
+msgid "Time (%timezone)"
+msgstr "Tid (%timezone)"
