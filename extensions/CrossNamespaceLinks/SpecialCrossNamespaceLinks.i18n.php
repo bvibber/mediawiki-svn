@@ -19,7 +19,8 @@ $wgCrossNamespaceLinksMessages['cs'] = array(
 );
 $wgCrossNamespaceLinksMessages['de'] = array(
 	'crossnamespacelinks'     => 'Artikel mit Links in andere Namensräume',
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Link|Links}} auf $3'
+	'crossnamespacelinks-summary' => 'Diese Liste zeigt Artikel, die Verweise auf Seiten anderer Namensräume enthalten. Ausgenommen sind dabei die Namensräume {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}}.',
+ 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Link|Links}} auf $3'
 );
 $wgCrossNamespaceLinksMessages['he'] = array(
 	'crossnamespacelinks'         => 'קישורים מדפי תוכן למרחבי שם אחרים',

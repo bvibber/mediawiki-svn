@@ -21,9 +21,9 @@ $wgLinkSearchMessages['cs'] = array(
 	'linksearch-error' => 'Zástupné znaky lze použít jen na začátku doménového jména.',
 );
 $wgLinkSearchMessages['de'] = array(
-	'linksearch'       => 'Weblinks suchen',
-	'linksearch-text'  => 'Wildcards wie "*.wikipedia.org" können verwendet werden.',
-	'linksearch-line'  => '$1 linked from $2',
+	'linksearch'       => 'Weblink-Suche',
+	'linksearch-text'  => 'Diese Spezialseite ermöglicht die Suche nach Seiten, in denen bestimmte Weblinks enthalten sind. Dabei können Wildcards wie beispielsweise <tt>*.example.com</tt> benutzt werden. ',
+	'linksearch-line'  => '$1 ist verlinkt von $2',
 	'linksearch-error' => 'Wildcards können nur am Anfang der URL verwendet werden.',
 );
 $wgLinkSearchMessages['he'] = array(
