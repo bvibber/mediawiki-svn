@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2006-12-20 00:56-0500\n"
+"PO-Revision-Date: 2006-12-21 15:44-0500\n"
 "Last-Translator: Rory Stolzenberg <rory096@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -10,101 +10,104 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Discloses fundraising data while preserving requested donor privacy."
-msgstr "Les données fournies pour la collecte de fonds respectent la vie privée du donateur."
+msgstr "Viser innsamlingsdata mens man beholder donorens ønske om anonymitet."
 
 msgid "Fundraising C.O.R.E."
-msgstr "Collecte d'argent C.O.R.E."
+msgstr "Innsamlingsaksjon C.O.R.E."
 
 msgid "Live contributions"
-msgstr "Les dons en direct"
+msgstr "Bidrag i realtid"
 
 msgid "Browse by date"
-msgstr "Tri par date"
+msgstr "Naviger etter dato"
 
 msgid "Count"
-msgstr "Nombre de dons"
+msgstr "Antall"
 
 msgid "Minimum"
 msgstr "Minimum"
 
 msgid "Mean"
-msgstr "Moyenne"
+msgstr "Snitt"
 
 msgid "Maximum"
-msgstr "Maximum"
+msgstr "Maksimum"
 
 msgid "Total"
 msgstr "Total"
 
 msgid "Standard Deviation"
-msgstr "Écart-type"
+msgstr "Standardavvik"
 
 msgid "Statistical breakdown (%currency)"
-msgstr "Statistiques en (%currency)"
+msgstr "Statistisk oversikt (%currency)"
 
 msgid "Currency"
-msgstr "Monnaie"
+msgstr "Valuta"
 
 msgid "Amount"
-msgstr "Montant"
+msgstr "Sum"
 
 msgid "Equivalent in %currency"
-msgstr "Équivalence en %currency"
+msgstr "Sum i %currency"
 
 msgid "Breakdown by currency"
-msgstr "Classement par monnaie"
+msgstr "Vis valuta for valuta"
 
 msgid "Browsing contributions"
-msgstr "Trier par don"
+msgstr "Naviger etter bidrag"
 
 msgid "Browsing year %year"
-msgstr "Trier par année %year"
+msgstr "Naviger etter år %year"
 
 msgid "Browsing month %year-%month"
-msgstr "Trier par mois %month-%year"
+msgstr "Naviger etter måned %year-%month"
 
 msgid "Browsing day %year-%month-%day"
-msgstr "Trier par jour %day-%month-%year"
+msgstr "Naviger etter dag %year-%month-%day"
 
 msgid "Year"
-msgstr "Année"
+msgstr "År"
 
 msgid "Month"
-msgstr "Mois"
+msgstr "Måned"
 
 msgid "Day"
-msgstr "Jour"
+msgstr "Dag"
 
 msgid "Filter contribution results"
-msgstr "Filtrer les résultats"
+msgstr "Filtrer bidragsresultater"
 
 msgid "On or after"
-msgstr "À partir du"
+msgstr "På eller etter"
 
 msgid "On or before"
-msgstr "Jusqu'au"
+msgstr "På eller før"
 
 msgid "Total in %currency"
-msgstr "Total en %currency"
+msgstr "Sum i %currency"
 
 msgid "Restrict to a specific currency"
-msgstr "Filtrer sur une monnaie"
+msgstr "Begrens til en spesifikk valuta"
 
 msgid "Only show contributions with comments"
-msgstr "Ne montrer que les dons avec commentaires"
+msgstr "Vis bare bidrag med kommentarer"
 
 msgid "View results"
-msgstr "Voir les résultats"
+msgstr "Vis resultater"
 
 msgid "Anonymous"
-msgstr "Anonyme"
+msgstr "Anonym"
 
 msgid "Sorry, there are no matching contributions."
-msgstr "Désolé, il n'y a pas de don correspondant à vos critères."
+msgstr "Beklager, ingen bidrag passer med søket."
 
 msgid "Name and Comment"
-msgstr "Nom et commentaire"
+msgstr "Navn og kommentar"
 
 msgid "Time (%timezone)"
-msgstr "Heure (%timezone)"
+msgstr "Tid (%timezone)"
+
+msgid "Make a Donation"
+msgstr "Doner"
 

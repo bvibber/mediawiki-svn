@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2006-12-20 00:56-0500\n"
+"PO-Revision-Date: 2006-12-20 19:40-0500\n"
 "Last-Translator: Rory Stolzenberg <rory096@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -10,101 +10,104 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Discloses fundraising data while preserving requested donor privacy."
-msgstr "Les données fournies pour la collecte de fonds respectent la vie privée du donateur."
+msgstr "Informa sobre les donacions de fons, preservant la privadesa del donant."
 
 msgid "Fundraising C.O.R.E."
-msgstr "Collecte d'argent C.O.R.E."
+msgstr "Fundació C.O.R.E."
 
 msgid "Live contributions"
-msgstr "Les dons en direct"
+msgstr "Donacions en directe"
 
 msgid "Browse by date"
-msgstr "Tri par date"
+msgstr "Navega per data"
 
 msgid "Count"
-msgstr "Nombre de dons"
+msgstr "Donatius"
 
 msgid "Minimum"
-msgstr "Minimum"
+msgstr "Mínim"
 
 msgid "Mean"
-msgstr "Moyenne"
+msgstr "Mitjana"
 
 msgid "Maximum"
-msgstr "Maximum"
+msgstr "Màxim"
 
 msgid "Total"
 msgstr "Total"
 
 msgid "Standard Deviation"
-msgstr "Écart-type"
+msgstr "Desviació estàndard"
 
 msgid "Statistical breakdown (%currency)"
-msgstr "Statistiques en (%currency)"
+msgstr "Estadístiques globals (%currency)"
 
 msgid "Currency"
-msgstr "Monnaie"
+msgstr "Moneda"
 
 msgid "Amount"
-msgstr "Montant"
+msgstr "Quantitat"
 
 msgid "Equivalent in %currency"
-msgstr "Équivalence en %currency"
+msgstr "Equivalent en %currency"
 
 msgid "Breakdown by currency"
-msgstr "Classement par monnaie"
+msgstr "Estadístiques per divisa"
 
 msgid "Browsing contributions"
-msgstr "Trier par don"
+msgstr "Navegant per donacions"
 
 msgid "Browsing year %year"
-msgstr "Trier par année %year"
+msgstr "Navegant per any %year"
 
 msgid "Browsing month %year-%month"
-msgstr "Trier par mois %month-%year"
+msgstr "Navegant per mes %month/%year"
 
 msgid "Browsing day %year-%month-%day"
-msgstr "Trier par jour %day-%month-%year"
+msgstr "Navegant per dia %day/%month/%year"
 
 msgid "Year"
-msgstr "Année"
+msgstr "Any"
 
 msgid "Month"
-msgstr "Mois"
+msgstr "Mes"
 
 msgid "Day"
-msgstr "Jour"
+msgstr "Dia"
 
 msgid "Filter contribution results"
-msgstr "Filtrer les résultats"
+msgstr "Filtra resultats de donació"
 
 msgid "On or after"
-msgstr "À partir du"
+msgstr "Després del"
 
 msgid "On or before"
-msgstr "Jusqu'au"
+msgstr "Abans del"
 
 msgid "Total in %currency"
 msgstr "Total en %currency"
 
 msgid "Restrict to a specific currency"
-msgstr "Filtrer sur une monnaie"
+msgstr "Restringir-ho a una divisa"
 
 msgid "Only show contributions with comments"
-msgstr "Ne montrer que les dons avec commentaires"
+msgstr "Només donacions amb comentaris"
 
 msgid "View results"
-msgstr "Voir les résultats"
+msgstr "Mostra resultats"
 
 msgid "Anonymous"
-msgstr "Anonyme"
+msgstr "Anònim"
 
 msgid "Sorry, there are no matching contributions."
-msgstr "Désolé, il n'y a pas de don correspondant à vos critères."
+msgstr "Ho sentim, no hi ha donacions que coincideixin."
 
 msgid "Name and Comment"
-msgstr "Nom et commentaire"
+msgstr "Nom i comentari"
 
 msgid "Time (%timezone)"
-msgstr "Heure (%timezone)"
+msgstr "Hora (%timezone)"
+
+msgid "Make a Donation"
+msgstr "Feu un donatiu"
 
