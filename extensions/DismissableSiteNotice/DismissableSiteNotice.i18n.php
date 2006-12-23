@@ -12,6 +12,11 @@ $wgDismissableSiteNoticeMessages['en'] = array(
 	'sitenotice_id'    => '0', # Don't translate this
 	'sitenotice_close' => 'dismiss',
 );
+
+$wgDismissableSiteNoticeMessages['fi'] = array(
+	'sitenotice_close' => 'piilota',
+);
+
 $wgDismissableSiteNoticeMessages['he'] = array(
 	'sitenotice_close' => 'הסתר',
 );

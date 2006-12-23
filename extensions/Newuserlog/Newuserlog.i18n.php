@@ -28,6 +28,12 @@ $wgNewuserlogMessages['de'] = array(
 	'newuserlog-create-entry'  => 'Neues Benutzerkonto',
 	'newuserlog-create2-entry' => 'Benutzerkonto für $1 erstellt',
 );
+$wgNewuserlogMessages['fi'] = array(
+	'newuserlogpage'           => 'Uudet käyttäjät',
+	'newuserlogpagetext'       => 'Tämä on loki luoduista käyttäjätunnuksista.',
+	'newuserlog-create-entry'  => 'Uusi käyttäjät',
+	'newuserlog-create2-entry' => 'loi käyttäjätunnuksen tunnukselle $1',
+);
 $wgNewuserlogMessages['he'] = array(
 	'newuserlogpage'           => 'יומן הרשמת משתמשים',
 	'newuserlogpagetext'       => 'זהו יומן המכיל הרשמות של משתמשים.',

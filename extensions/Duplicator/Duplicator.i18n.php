@@ -66,6 +66,33 @@ copies of all histories. This is useful for article forking, etc.',
 	'duplicator-toomanyrevisions' => 'Der Artikel [[$1]] hat zu viele ($2) Versionen, um dupliziert zu werden, da nur Artikel mit ' .
 					'maximal $3 Versionen dupliziert werden können.',
 ),
+
+/* Finnish (Niklas Laxström) */
+'fi' => array(
+'duplicator' => 'Monista sivu',
+'duplicator-toolbox' => 'Monista tämä sivu',
+'duplicator-header' => 'Tällä sivulla voit luoda artikkelista täydellisen kopion historioineen.',
+
+'duplicator-options' => 'Asetukset',
+'duplicator-source' => 'Lähdesivu:',
+'duplicator-dest' => 'Kohdesivu:',
+'duplicator-dotalk' => 'Monista myös keskustelusivu, jos mahdollista',
+'duplicator-submit' => 'Monista',
+
+'duplicator-summary' => 'Täydellinen kopio sivusta [[$1]]',
+
+'duplicator-success' => "<big>'''[[$1]] monistettiin sivulle [[$2]].'''</big>\n\n",
+'duplicator-success-revisions' => '$1 muutosta kopioitiin.',
+'duplicator-success-talkcopied' => 'Myös keskustelusivu monistettiin.',
+'duplicator-success-talknotcopied' => 'Keskustelusivua ei monistettu.',
+'duplicator-failed' => 'Sivun monistaminen ei onnistunut.',
+
+'duplicator-source-invalid' => 'Lähdesivun nimi ei kelpaa.',
+'duplicator-source-notexist' => 'Sivua [[$1]] ei ole olemassa.',
+'duplicator-dest-invalid' => 'Kohdesivun nimi ei kelpaa.',
+'duplicator-dest-exists' => '[[$1]] on jo olemassa. Anna nimi, joka ei ole vielä käytössä.',
+'duplicator-toomanyrevisions' => 'Sivu [[$1]] koostuu liian monesta muutoksesta ($2), minkä takia sitä ei voi monistaa. Nykyinen raja on $3.',
+),
 	
 	);
 }

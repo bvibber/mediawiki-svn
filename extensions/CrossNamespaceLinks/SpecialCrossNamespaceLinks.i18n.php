@@ -22,6 +22,11 @@ $wgCrossNamespaceLinksMessages['de'] = array(
 	'crossnamespacelinks-summary' => 'Diese Liste zeigt Artikel, die Verweise auf Seiten anderer Namensräume enthalten. Ausgenommen sind dabei die Namensräume {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}}.',
  	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Link|Links}} auf $3'
 );
+$wgCrossNamespaceLinksMessages['fi'] = array(
+	'crossnamespacelinks'         => 'Nimiavaruuksienväliset linkit',
+	'crossnamespacelinks-summary' => 'Alla on lista linkeistä, jotka osoittavat päänimiavaruudesta toiseen nimiavaruuteen — pois lukien linkit {{ns:special}}-, {{ns:talk}}-, {{ns:project}}- ja {{ns:template}}nimiavaruuksiin. Linkkejä muihin nimiavaruuksiin tulisi välttää.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|linkki|linkkiä}} nimiavaruuteen $3'
+);
 $wgCrossNamespaceLinksMessages['he'] = array(
 	'crossnamespacelinks'         => 'קישורים מדפי תוכן למרחבי שם אחרים',
 	'crossnamespacelinks-summary' => 'דף זה מספק רשימה של קישורים מדפים במרחב השם הראשי לדפים במרחבי שם אחרים (למעט מרחבי השם {{ns:special}}, {{ns:talk}}, {{ns:project}} ו{{ns:template}}), שאינם רצויים לשימוש.',
