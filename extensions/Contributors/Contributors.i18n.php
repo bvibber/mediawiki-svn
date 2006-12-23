@@ -24,6 +24,19 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'The article $1 doesn\'t exist.',
 ),
 
+'de' => array(
+'contributors' => 'Hauptautoren',
+'contributors-toolbox' => 'Liste der Hauptautoren',
+'contributors-legend' => 'Zeige die Hauptautoren einer Seite',
+'contributors-target' => 'Seite:',
+'contributors-submit' => 'Zeige',
+'contributors-subtitle' => 'Hauptautoren von $1',
+'contributors-others-long' => 'Daneben gibt es noch $1 weitere Autoren dieser Seite.',
+'contributors-others' => 'und $1 weitere',
+'contributors-badtitle' => 'Ungültige Seite',
+'contributors-nosuchpage' => 'Die Seite $1 ist nicht vorhanden.',
+),
+
 	);
 }
 
