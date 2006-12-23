@@ -48,7 +48,8 @@ class ApiMain extends ApiBase {
 		'login' => 'ApiLogin',
 		'opensearch' => 'ApiOpenSearch',
 		'feedwatchlist' => 'ApiFeedWatchlist',
-		'query' => 'ApiQuery'
+		'query' => 'ApiQuery',
+		'instantcommons' => 'ApiInstantCommons',
 	);
 
 	/**
