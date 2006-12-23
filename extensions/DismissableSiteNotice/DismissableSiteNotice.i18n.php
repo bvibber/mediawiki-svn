@@ -13,6 +13,10 @@ $wgDismissableSiteNoticeMessages['en'] = array(
 	'sitenotice_close' => 'dismiss',
 );
 
+$wgDismissableSiteNoticeMessages['de'] = array(
+	'sitenotice_close' => 'Schließen',
+);
+
 $wgDismissableSiteNoticeMessages['fi'] = array(
 	'sitenotice_close' => 'piilota',
 );
