@@ -127,6 +127,9 @@ function getSuggestions() {
 		case 'translated-text-attribute':
 			list($recordSet, $editor) = getTranslatedTextAttributeAsRecordSet($queryResult);
 			break;
+		case 'option-attribute':
+			list($recordSet, $editor) = getOptionAttributeAsRecordSet($queryResult);
+			break;
 		case 'defined-meaning':
 			list($recordSet, $editor) = getDefinedMeaningAsRecordSet($queryResult);
 			break;
@@ -259,6 +262,23 @@ function getTranslatedTextAttributeAsRecordSet($queryResult) {
 	$editor = createSuggestionsTableViewer(null);
 	$editor->addEditor(createShortTextViewer($translatedTextAttributeAttribute));
 //	$editor->addEditor(createShortTextViewer($collectionAttribute));
+
+	return array($recordSet, $editor);		
+}
+
+function getOptionAttributeAsRecordSet($queryResult) {
+	global
+		$idAttribute, $optionAttributeAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $optionAttributeAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
+
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($optionAttributeAttribute));
 
 	return array($recordSet, $editor);		
 }

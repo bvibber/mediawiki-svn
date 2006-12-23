@@ -475,6 +475,53 @@ class TranslatedTextAttributeValueController implements Controller {
 	}
 }
 
+class OptionAttributeValuesController extends ObjectAttributeValuesController {
+	public function add($keyPath, $record) {
+		global
+			$optionAttributeOptionAttribute;
+
+		$objectId = $this->objectIdFetcher->fetch($keyPath);
+		$optionId = $record->getAttributeValue($optionAttributeOptionAttribute);
+
+		if ($optionId)
+			addOptionAttributeValue($objectId,$optionId);
+	}
+
+	public function remove($keyPath) {
+		global
+			$optionAttributeIdAttribute;
+
+		$valueId = $keyPath->peek(0)->getAttributeValue($optionAttributeIdAttribute);
+		removeOptionAttributeValue($valueId);
+	}
+
+	public function update($keyPath, $record) {}
+}
+
+class OptionAttributeOptionsController implements Controller {
+	public function add($keyPath, $record) {
+		global
+			$classAttributeIdAttribute, $optionAttributeOptionAttribute, $languageAttribute;
+
+		$attributeId = $keyPath->peek(0)->getAttributeValue($classAttributeIdAttribute);
+		$optionMeaningId = $record->getAttributeValue($optionAttributeOptionAttribute);
+		$languageId = $record->getAttributeValue($languageAttribute);
+
+		if ($optionMeaningId)
+			addOptionAttributeOption($attributeId, $optionMeaningId, $languageId);
+	}
+
+	public function remove($keyPath) {
+		global
+			$optionAttributeOptionIdAttribute;
+
+		$optionId = $keyPath->peek(0)->getAttributeValue($optionAttributeOptionIdAttribute);
+		removeOptionAttributeOption($optionId);
+	}
+
+	public function update($keyPath, $record) {}
+}
+
 class AlternativeDefinitionsPermissionController implements PermissionController {
 	public function allowUpdateOfAttribute($attribute) {
 		return true;	

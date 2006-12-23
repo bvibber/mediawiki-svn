@@ -125,6 +125,22 @@ $textAttributeValuesStructure = new Structure($textAttributeIdAttribute, $textAt
 $textAttributeValuesAttribute = new Attribute("text-attribute-values", "Text attribute values", new RecordSetType($textAttributeValuesStructure));
 
 global
+	$optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionAttribute, $optionAttributeValuesAttribute;
+
+$optionAttributeIdAttribute = new Attribute('option-attribute-id', 'Attribute identifier', 'object-id');
+$optionAttributeObjectAttribute = new Attribute('option-attribute-object-id', 'Attribute object', 'object-id');
+$optionAttributeAttribute = new Attribute('option-attribute', 'Attribute', $definedMeaningReferenceType);
+$optionAttributeOptionAttribute = new Attribute('option-attribute-option', 'Option', $definedMeaningReferenceType);
+$optionAttributeValuesStructure = new Structure($optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionAttribute, $objectAttributesAttribute);
+$optionAttributeValuesAttribute = new Attribute('option-attribute-values', 'Option attribute values', new RecordSetType($optionAttributeValuesStructure));
+
+global
+	$optionAttributeOptionIdAttribute, $optionAttributeOptionsAttribute;
+$optionAttributeOptionIdAttribute = new Attribute('option-attribute-option-id', 'Option identifier', 'object-id');
+$optionAttributeOptionsStructure = new Structure($optionAttributeOptionIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute, $languageAttribute);
+$optionAttributeOptionsAttribute = new Attribute('option-attribute-options', 'Options', new RecordSetType($optionAttributeOptionsStructure));
+
+global
 	$definitionAttribute, $definedMeaningAttribute, $translatedTextAttribute, $classAttributesAttribute;
 
 $translatedTextAttribute = new Attribute("translated-text", "Translated text", new RecordSetType($translatedTextStructure));
@@ -150,7 +166,7 @@ global
 	$objectIdAttribute, $objectAttributesStructure;
 
 $objectIdAttribute = new Attribute("object-id", "Object identifier", "object-id");
-$objectAttributesStructure = new Structure($objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute);
+$objectAttributesStructure = new Structure($objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute, $optionAttributeValuesAttribute);
 $objectAttributesAttribute = new Attribute("object-attributes", "Annotation", new RecordType($objectAttributesStructure));
 
 global
@@ -163,7 +179,7 @@ $classAttributeIdAttribute = new Attribute("class-attribute-id", "Class attribut
 $classAttributeAttributeAttribute = new Attribute("class-attribute-attribute", "Attribute", new RecordType($definedMeaningReferenceStructure));
 $classAttributeLevelAttribute = new Attribute("class-attribute-level", "Level", new RecordType($definedMeaningReferenceStructure));
 $classAttributeTypeAttribute = new Attribute("class-attribute-type", "Type", "short-text");
-$classAttributesStructure = new Structure($classAttributeIdAttribute, $classAttributeAttributeAttribute, $classAttributeLevelAttribute, $classAttributeTypeAttribute);
+$classAttributesStructure = new Structure($classAttributeIdAttribute, $classAttributeAttributeAttribute, $classAttributeLevelAttribute, $classAttributeTypeAttribute, $optionAttributeOptionsAttribute);
 $classAttributesAttribute = new Attribute("class-attributes", "Class attributes", new RecordSetType($classAttributesStructure));
 
 ?>

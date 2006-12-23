@@ -15,6 +15,7 @@ function initializeObjectAttributeEditors($showRecordLifeSpan, $showAuthority) {
 		$relationsObjectAttributesEditor, $relationIdAttribute,
 		$textValueObjectAttributesEditor, $textAttributeIdAttribute,
 		$translatedTextValueObjectAttributesEditor, $translatedTextAttributeIdAttribute,
+		$optionValueObjectAttributesEditor, $optionAttributeIdAttribute,
 		$definedMeaningMeaningName, $definitionMeaningName,
 		$relationMeaningName, $synTransMeaningName,
 		$annotationMeaningName;
@@ -25,13 +26,15 @@ function initializeObjectAttributeEditors($showRecordLifeSpan, $showAuthority) {
 	$relationsObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$textValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$translatedTextValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
+	$optionValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	
 	setObjectAttributesEditor($definedMeaningObjectAttributesEditor, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $definedMeaningIdAttribute), $definedMeaningMeaningName, new ObjectIdFetcher(0, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($definitionObjectAttributesEditor, $showRecordLifeSpan, $showAuthority, new DefinitionObjectIdFetcher(0, $definedMeaningIdAttribute), $definitionMeaningName, new ObjectIdFetcher(0, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($synonymsAndTranslationsObjectAttributesEditor, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $syntransIdAttribute), $synTransMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($relationsObjectAttributesEditor, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $relationIdAttribute), $relationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($textValueObjectAttributesEditor, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $textAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
-	setObjectAttributesEditor($translatedTextValueObjectAttributesEditor, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $translatedTextAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));	
+	setObjectAttributesEditor($translatedTextValueObjectAttributesEditor, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $translatedTextAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
+	setObjectAttributesEditor($optionValueObjectAttributesEditor, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $optionAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 }
 
 function getTransactionEditor($attribute) {
@@ -104,6 +107,7 @@ function getTranslatedTextEditor($attribute, $controller, $showRecordLifeSpan, $
 function setObjectAttributesEditor($objectAttributesEditor, $showRecordLifeSpan, $showAuthority, $objectIdFetcher, $levelDefinedMeaningName, $dmObjectIdFetcher) {
 	$objectAttributesEditor->addEditor(getTextAttributeValuesEditor($showRecordLifeSpan, $showAuthority, new TextAttributeValuesController($objectIdFetcher), $levelDefinedMeaningName, $dmObjectIdFetcher));
 	$objectAttributesEditor->addEditor(getTranslatedTextAttributeValuesEditor($showRecordLifeSpan, $showAuthority, new TranslatedTextAttributeValuesController($objectIdFetcher), $levelDefinedMeaningName, $dmObjectIdFetcher));
+	$objectAttributesEditor->addEditor(getOptionAttributeValuesEditor($showRecordLifeSpan, $showAuthority, new OptionAttributeValuesController($objectIdFetcher), $levelDefinedMeaningName, $dmObjectIdFetcher));
 }
 
 function getAlternativeDefinitionsEditor($showRecordLifeSpan, $showAuthority) {
@@ -139,6 +143,7 @@ function getClassAttributesEditor($showRecordLifeSpan, $showAuthority) {
 	$tableEditor->addEditor(new ClassAttributesLevelDefinedMeaningEditor($classAttributeLevelAttribute, new SimplePermissionController(false), true));
 	$tableEditor->addEditor(new DefinedMeaningReferenceEditor($classAttributeAttributeAttribute, new SimplePermissionController(false), true));
 	$tableEditor->addEditor(new ClassAttributesTypeEditor($classAttributeTypeAttribute, new SimplePermissionController(false), true));
+	$tableEditor->addEditor(new PopupEditor(getOptionAttributeOptionsEditor(), 'Options'));
 
 	addTableMedataEditors($tableEditor, $showRecordLifeSpan, $showAuthority);
 	
@@ -239,6 +244,32 @@ function getTranslatedTextAttributeValuesEditor($showRecordLifeSpan, $showAuthor
 	$editor->addEditor(new PopUpEditor($translatedTextValueObjectAttributesEditor, 'Annotation'));
 
 	addTableMedataEditors($editor, $showRecordLifeSpan, $showAuthority);
+
+	return $editor;
+}
+
+function getOptionAttributeValuesEditor($showRecordLifeSpan, $showAuthority, $controller, $levelDefinedMeaningName, $objectIdFetcher) {
+	global
+		$optionAttributeAttribute, $optionAttributeOptionAttribute, $optionAttributeValuesAttribute, $optionValueObjectAttributesEditor;
+
+	$editor = new RecordSetTableEditor($optionAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
+
+	$editor->addEditor(new OptionAttributeEditor($optionAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
+	$editor->addEditor(new OptionSelectEditor($optionAttributeOptionAttribute, new SimplePermissionController(false), true));
+	$editor->addEditor(new PopUpEditor($optionValueObjectAttributesEditor, 'Annotation'));
+
+	addTableMedataEditors($editor, $showRecordLifeSpan, $showAuthority);
+
+	return $editor;
+}
+
+function getOptionAttributeOptionsEditor() {
+	global
+		$optionAttributeAttribute, $optionAttributeOptionAttribute, $languageAttribute, $optionAttributeOptionsAttribute;
+
+	$editor = new RecordSetTableEditor($optionAttributeOptionsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new OptionAttributeOptionsController());
+	$editor->addEditor(new DefinedMeaningReferenceEditor($optionAttributeOptionAttribute, new SimplePermissionController(false), true)); 
+	$editor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
 
 	return $editor;
 }

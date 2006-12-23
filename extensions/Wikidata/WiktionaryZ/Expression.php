@@ -645,6 +645,78 @@ function removeTranslatedTextAttributeValue($valueId) {
 				" AND remove_transaction_id IS NULL");
 }
 
+function optionAttributeValueExists($objectId, $optionId) {
+	$dbr =& wfGetDb(DB_SLAVE);
+	$queryResult = $dbr->query('SELECT value_id FROM uw_option_attribute_values' .
+								' WHERE object_id = ' . $objectId .
+								' AND option_id = ' . $optionId .
+								' AND ' . getLatestTransactionRestriction('uw_option_attribute_values'));
+	return $dbr->numRows($queryResult) > 0;
+}
+
+function addOptionAttributeValue($objectId, $optionId) {
+	if (!optionAttributeValueExists($objectId, $optionId))
+		createOptionAttributeValue($objectId, $optionId);
+}
+
+function createOptionAttributeValue($objectId, $optionId) {
+	$valueId = newObjectId('uw_option_attribute_values');
+
+	$dbr =& wfGetDb(DB_MASTER);
+	$sql = 'INSERT INTO uw_option_attribute_values(value_id,object_id,option_id,add_transaction_id)' .
+			' VALUES(' . $valueId .
+			',' . $objectId .
+			',' . $optionId .
+			',' . getUpdateTransactionId() . ')';
+	$dbr->query($sql);
+}
+
+function removeOptionAttributeValue($valueId) {
+	$dbr =& wfGetDB(DB_MASTER);
+	$sql = 'UPDATE uw_option_attribute_values' .
+			' SET remove_transaction_id = ' . getUpdateTransactionId() .
+			' WHERE value_id = ' . $valueId .
+			' AND ' . getLatestTransactionRestriction('uw_option_attribute_values');
+	$dbr->query($sql);
+}
+
+function optionAttributeOptionExists($attributeId, $optionMeaningId, $languageId) {
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query('SELECT option_id FROM uw_option_attribute_options' .
+								' WHERE attribute_id = ' . $attributeId .
+								' AND option_mid = ' . $optionMeaningId .
+								' AND language_id = ' . $languageId .
+								' AND ' . getLatestTransactionRestriction('uw_option_attribute_options'));
+	return $dbr->numRows($queryResult) > 0;		
+}
+
+function addOptionAttributeOption($attributeId, $optionMeaningId, $languageId) {
+	if (!optionAttributeOptionExists($attributeId, $optionMeaningId, $languageId))
+		createOptionAttributeOption($attributeId, $optionMeaningId, $languageId);
+}
+
+function createOptionAttributeOption($attributeId, $optionMeaningId, $languageId) {
+	$optionId = newObjectId('uw_option_attribute_options');
+
+	$dbr =& wfGetDB(DB_MASTER);
+	$sql = 'INSERT INTO uw_option_attribute_options(option_id,attribute_id,option_mid,language_id,add_transaction_id)' .
+			' VALUES(' . $optionId .
+			',' . $attributeId .
+			',' . $optionMeaningId .
+			',' . $languageId .
+			',' . getUpdateTransactionId() . ')';
+	$dbr->query($sql);
+}
+
+function removeOptionAttributeOption($optionId) {
+	$dbr =& wfGetDB(DB_MASTER);
+	$sql = 'UPDATE uw_option_attribute_options' .
+			' SET remove_transaction_id = ' . getUpdateTransactionId() .
+			' WHERE option_id = ' . $optionId .
+			' AND ' . getLatestTransactionRestriction('uw_option_attribute_options');
+	$dbr->query($sql);
+}
+
 function getDefinedMeaningDefinitionForLanguage($definedMeaningId, $languageId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT old_text FROM uw_defined_meaning as dm, translated_content as tc, text as t ".

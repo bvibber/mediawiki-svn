@@ -434,7 +434,7 @@ function getDefinedMeaningRecord($definedMeaningId, $queryTransactionInformation
 
 function getClassAttributesRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global
-		$classAttributesTable, $classAttributeIdAttribute, $classAttributeLevelAttribute, $classAttributeAttributeAttribute, $classAttributeTypeAttribute;
+		$classAttributesTable, $classAttributeIdAttribute, $classAttributeLevelAttribute, $classAttributeAttributeAttribute, $classAttributeTypeAttribute, $optionAttributeOptionsAttribute;
 
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
@@ -450,7 +450,20 @@ function getClassAttributesRecordSet($definedMeaningId, $queryTransactionInforma
 	);
 	
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($classAttributeLevelAttribute ,$classAttributeAttributeAttribute));
+	expandOptionAttributeOptionsInRecordSet($recordSet, $classAttributeIdAttribute, $queryTransactionInformation);
+
 	return $recordSet;
+}
+
+function expandOptionAttributeOptionsInRecordSet($recordSet, $attributeIdAttribute, $queryTransactionInformation) {
+	global
+		$definedMeaningIdAttribute, $optionAttributeOptionsAttribute;
+
+	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
+		$record = $recordSet->getRecord($i);
+
+		$record->setAttributeValue($optionAttributeOptionsAttribute, getOptionAttributeOptionsRecordSet($record->getAttributeValue($attributeIdAttribute), $queryTransactionInformation));
+	}
 }
 
 function getAlternativeDefinitionsRecordSet($definedMeaningId, $queryTransactionInformation) {
@@ -490,13 +503,14 @@ function getDefinedMeaningDefinitionRecord($definedMeaningId, $queryTransactionI
 
 function getObjectAttributesRecord($objectId, $queryTransactionInformation) {
 	global
-		$objectAttributesAttribute, $objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute; 
+		$objectAttributesAttribute, $objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute, $optionAttributeValuesAttribute; 
 		
 	$record = new ArrayRecord($objectAttributesAttribute->type->getStructure());
 	
 	$record->setAttributeValue($objectIdAttribute, $objectId);
 	$record->setAttributeValue($textAttributeValuesAttribute, getTextAttributesValuesRecordSet($objectId, $queryTransactionInformation));
-	$record->setAttributeValue($translatedTextAttributeValuesAttribute, getTranslatedTextAttributeValuesRecordSet($objectId, $queryTransactionInformation));	
+	$record->setAttributeValue($translatedTextAttributeValuesAttribute, getTranslatedTextAttributeValuesRecordSet($objectId, $queryTransactionInformation));
+	$record->setAttributeValue($optionAttributeValuesAttribute, getOptionAttributeValuesRecordSet($objectId, $queryTransactionInformation));	
 
 	return $record;
 }
@@ -555,7 +569,6 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $queryT
 		$record->setAttributeValue($objectAttributesAttribute, getObjectAttributesRecord($record->getAttributeValue($objectIdAttribute), $queryTransactionInformation));		
 	}
 }
-
 
 function getDefinedMeaningReferenceRecord($definedMeaningId) {
 	global
@@ -711,6 +724,96 @@ function getTranslatedTextAttributeValuesRecordSet($objectId, $queryTransactionI
 	$recordSet->getStructure()->attributes[] = $objectAttributesAttribute;
 	expandObjectAttributesAttribute($recordSet, $translatedTextAttributeIdAttribute, $queryTransactionInformation);
 	return $recordSet;
+}
+
+function getOptionAttributeOptionsRecordSet($attributeId, $queryTransactionInformation) {
+	global
+		$optionAttributeOptionIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute, $languageAttribute, $optionAttributeOptionsTable;
+
+	$recordSet = queryRecordSet(
+		$queryTransactionInformation,
+		$optionAttributeOptionIdAttribute,
+		array(
+			'option_id' => $optionAttributeOptionIdAttribute,
+			'attribute_id' => $optionAttributeAttribute,
+			'option_mid' => $optionAttributeOptionAttribute,
+			'language_id' => $languageAttribute
+		),
+		$optionAttributeOptionsTable,
+		array('attribute_id = ' . $attributeId)
+	);
+
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($optionAttributeOptionAttribute));
+
+	return $recordSet;
+}
+
+function getOptionAttributeValuesRecordSet($objectId, $queryTransactionInformation) {
+	global
+		$optionAttributeIdAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionIdAttribute, $optionAttributeAttribute,$optionAttributeOptionAttribute, $optionAttributeValuesTable, $objectAttributesAttribute;
+
+	$recordSet = queryRecordSet(
+		$queryTransactionInformation,
+		$optionAttributeIdAttribute,
+		array(
+			'value_id' => $optionAttributeIdAttribute,
+			'object_id' => $optionAttributeObjectAttribute,
+			'option_id' => $optionAttributeOptionIdAttribute
+		),
+		$optionAttributeValuesTable,
+		array('object_id = ' . $objectId)
+	);
+
+	expandOptionsInRecordSet($recordSet, $queryTransactionInformation);
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($optionAttributeAttribute, $optionAttributeOptionAttribute));
+
+	/* Add object attributes attribute to the generated structure
+		and expand the records. */
+	$recordSet->getStructure()->attributes[] = $objectAttributesAttribute;
+	expandObjectAttributesAttribute($recordSet, $optionAttributeIdAttribute, $queryTransactionInformation);
+
+	return $recordSet;
+}
+
+/* XXX: This can probably be combined with other functions. In fact, it probably should be. Do it. */
+function expandOptionsInRecordSet($recordSet, $queryTransactionInformation) {
+	global
+		$optionAttributeOptionIdAttribute, $optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute, $optionAttributeOptionsTable, $classAttributesTable;
+
+	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
+		$record = $recordSet->getRecord($i);
+
+		$optionRecordSet = queryRecordSet(
+			$queryTransactionInformation,
+			$optionAttributeOptionIdAttribute,
+			array(
+				'attribute_id' => $optionAttributeIdAttribute,
+				'option_mid' => $optionAttributeOptionAttribute
+			),
+			$optionAttributeOptionsTable,
+			array('option_id = ' . $record->getAttributeValue($optionAttributeOptionIdAttribute))
+		);
+
+		$optionRecord = $optionRecordSet->getRecord(0);
+		$record->setAttributeValue(
+			$optionAttributeOptionAttribute, 
+			$optionRecord->getAttributeValue($optionAttributeOptionAttribute)
+		);
+
+		$optionRecordSet = queryRecordSet(
+			$queryTransactionInformation,
+			$optionAttributeIdAttribute,
+			array('attribute_mid' => $optionAttributeAttribute),
+			$classAttributesTable,
+			array('object_id = ' . $optionRecord->getAttributeValue($optionAttributeIdAttribute))
+		);
+
+		$optionRecord = $optionRecordSet->getRecord(0);
+		$record->setAttributeValue(
+			$optionAttributeAttribute,
+			$optionRecord->getAttributeValue($optionAttributeAttribute)
+		);
+	} 
 }
 
 function getDefinedMeaningClassMembershipRecordSet($definedMeaningId, $queryTransactionInformation) {

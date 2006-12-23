@@ -15,7 +15,7 @@ class Table {
 global
 	$tables, $meaningRelationsTable, $classMembershipsTable, $collectionMembershipsTable, $syntransTable, 
 	$translatedContentTable, $alternativeDefinitionsTable, $translatedContentAttributeValuesTable, $transactionsTable,
-	$textAttributeValuesTable, $classAttributesTable;
+	$textAttributeValuesTable, $optionAttributeOptionsTable, $optionAttributeValuesTable, $classAttributesTable;
 	
 $transactionsTable = new Table('transactions', false, array('transaction_id'));
 $meaningRelationsTable = new Table('uw_meaning_relations', true, array('relation_id'));
@@ -28,6 +28,8 @@ $classAttributesTable = new Table('uw_class_attributes', true, array('object_id'
 
 $translatedContentAttributeValuesTable = new Table('uw_translated_content_attribute_values', true, array('value_id'));
 $textAttributeValuesTable = new Table('uw_text_attribute_values', true, array('value_id'));
+$optionAttributeOptionsTable = new Table('uw_option_attribute_options', true, array('attribute_mid', 'option_mid'));
+$optionAttributeValuesTable = new Table('uw_option_attribute_values', true, array('value_id'));
 $urlAttributeValuesTable = new Table('uw_url_attribute_values', true, array('value_id'));
 
 ?>

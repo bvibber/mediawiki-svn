@@ -114,6 +114,31 @@ function suggestLinkClicked(event, suggestLink) {
 	stopEventHandling(event);
 }
 
+function updateSelectOptions(id,objectId,value) {
+	var http = getHTTPObject();
+	var URL = 'index.php';
+	var location = "" + document.location;
+
+	if (location.indexOf('index.php/') > 0)
+		URL = '../' + URL;
+
+	http.open('GET', URL + '/Special:Select?option-attribute=' + encodeURI(value) + '&attribute-object=' + encodeURI(objectId), true);
+	http.send(null);
+
+	http.onreadystatechange = function() {
+		if (http.readyState == 4) {
+			var select = document.getElementById(id);
+			select.options.length = 0;
+			var options = http.responseText.split("\n");
+
+			for (idx in options) {
+				option = options[idx].split(";");
+				select.add(new Option(option[1],option[0]),null);
+			}
+		}
+	};
+}
+
 function updateSuggestValue(suggestPrefix, value, displayValue) {
 	var suggestLink = document.getElementById(suggestPrefix + "link");
 	var suggestValue = document.getElementById(suggestPrefix + "value");
@@ -125,6 +150,10 @@ function updateSuggestValue(suggestPrefix, value, displayValue) {
 	suggestLink.innerHTML = displayValue;
 	suggestDiv.style.display = 'none';
 	suggestLink.focus();
+
+	var suggestOnUpdate = document.getElementById(suggestPrefix + "parameter-onUpdate");
+	if(suggestOnUpdate != null) 
+		eval(suggestOnUpdate.value + "," + value + ")");
 }
 
 function suggestClearClicked(event, suggestClear) {
@@ -163,7 +192,7 @@ function suggestRowClicked(event, suggestRow) {
 	
 	for (var i = idColumns - 1; i >= 0; i--) 
 		ids.push(values[values.length - i - 1]);
-	
+
 	updateSuggestValue(suggestPrefix, ids.join('-'), labels.join(', '));
 	stopEventHandling(event);
 }

@@ -36,7 +36,7 @@ function getSelect($name, $options, $selectedValue="", $onChangeHandler="") {
 	else
 		$onChangeAttribute = '';
 	
-	$result = '<select name="'. $name . '"' . $onChangeAttribute . '>';	  
+	$result = '<select id="' . $name . '" name="'. $name . '"' . $onChangeAttribute . '>';	  
  
 	asort($options);
 

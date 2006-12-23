@@ -933,7 +933,7 @@ class DefinedMeaningReferenceEditor extends SuggestEditor {
 	public function getViewHTML($idPath, $value) {
 		global
 			$definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute;
-			
+
 		$definedMeaningId = $value->getAttributeValue($definedMeaningIdAttribute);
 		$definedMeaningLabel = $value->getAttributeValue($definedMeaningLabelAttribute);
 		$definedMeaningDefiningExpression = $value->getAttributeValue($definedMeaningDefiningExpressionAttribute);
@@ -970,9 +970,6 @@ abstract class SelectEditor extends ScalarEditor {
 	}
 
 	public function getViewHTML($idPath, $value) {
-		global
-			$classAttributeTypeAttribute;
-
 		$options = $this->getOptions();
 		return $options[$value];
 	}
@@ -993,6 +990,23 @@ abstract class SelectEditor extends ScalarEditor {
 class ClassAttributesTypeEditor extends SelectEditor {
 	protected function getOptions() {
 		return array('TEXT' => 'Text', 'OPTN' => 'Option');
+	}
+}
+
+class OptionSelectEditor extends SelectEditor {
+	protected function getOptions() {
+		return array();
+	}
+
+	public function getViewHTML($idPath, $value) {
+		global
+			$definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute;
+
+		$definedMeaningId = $value->getAttributeValue($definedMeaningIdAttribute);
+		$definedMeaningLabel = $value->getAttributeValue($definedMeaningLabelAttribute);
+		$definedMeaningDefiningExpression = $value->getAttributeValue($definedMeaningDefiningExpressionAttribute);
+		
+		return definedMeaningReferenceAsLink($definedMeaningId, $definedMeaningDefiningExpression, $definedMeaningLabel);
 	}
 }
 
@@ -1051,6 +1065,33 @@ class TextAttributeEditor extends AttributeEditor {
 class TranslatedTextAttributeEditor extends AttributeEditor {
 	protected function suggestType() {
 		return "translated-text-attribute";
+	}
+}
+
+class OptionAttributeEditor extends AttributeEditor {
+	protected function suggestType() {
+		return 'option-attribute';
+	}
+
+	public function add($idPath) {
+		if ($this->isAddField) {
+			global
+				$syntransIdAttribute;
+
+			$syntransId = $idPath->getKeyStack()->peek(0)->getAttributeValue($syntransIdAttribute);
+			$parameters = array('attributesLevel' => $this->attributesLevelName, 
+								'attributesObjectId' => $this->objectIdFetcher->fetch($idPath->getKeyStack()),
+								'onUpdate' => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $syntransId);
+			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);
+		}
+		else
+			return '';
+	}
+
+	public function getEditHTML($idPath, $value) {
+		$parameters = array('attributesLevel' => $this->attributesLevelName,
+							'onUpdate' => 'updateSelectOptions(\'' . $this->updateId($idPath->getId()) . '-option\'');
+		return getSuggest($this->updateId($idPath->getId()), $this->suggestType(), $parameters); 
 	}
 }
 
