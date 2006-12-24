@@ -20,7 +20,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function efProfileMonitor() {
 		global $wgMessageCache, $wgHooks;
 		require_once( dirname( __FILE__ ) . '/ProfileMonitor.i18n.php' );
-		$wgMessageCache->addMessages( efProfileMonitorMessages() );
+		foreach( efProfileMonitorMessages() as $lang => $messages )
+			$wgMessageCache->addMessages( $messages, $lang );
 		$wgHooks['SkinTemplateSetupPageCss'][] = 'efProfileMonitorCss';
 	}
 	
