@@ -12,8 +12,9 @@
 
 function efBadImageMessages() {
 	return array(
-
-# Special page messages
+	
+/* English (Rob Church) */
+'en' => array(
 'badimages' => 'Bad image list',
 'badimages-add-btn' => 'Add',
 'badimages-added' => '$1 was added to the list.',
@@ -28,12 +29,11 @@ function efBadImageMessages() {
 'badimages-removed' => '$1 was removed from the list.',
 'badimages-subheading' => 'Current items',
 'badimages-unprivileged' => '(You do not have sufficient permission to alter the list)',
-
-# Auditing messages
 'badimages-log-name' => 'Bad image list',
 'badimages-log-header' => 'This is a log of changes to the [[Help:Bad image list|bad image list]].',
 'badimages-log-add' => 'added [[$1]] to the bad image list',
 'badimages-log-remove' => 'removed [[$1]] from the bad image list',
+),
 
 	);
 }

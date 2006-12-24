@@ -59,8 +59,7 @@ class BadImageList {
 	}
 	
 	function key( $name ) {
-		global $wgDBname;
-		return "{$wgDBname}:badimage:{$name}";	
+		return wfMemcKey( 'badimage', $name );
 	}
 
 }
