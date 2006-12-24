@@ -18,7 +18,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgSpecialPages['Giverollback'] = 'GiveRollback';
 	$wgAvailableRights[] = 'giverollback';
 
-	require_once( 'GiveRollback.i18n.php' );
 	$wgExtensionFunctions[] = 'efGiveRollback';
 	
 	/**
@@ -35,8 +34,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 * Populate the message cache, set up the auditing and register the special page
 	 */
 	function efGiveRollback() {
-		global $wgMessageCache, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
-		$wgMessageCache->addMessages( efGiveRollbackMessages() );
+		global $wgMessageCache;
+		require_once( dirname( __FILE__ ) . '/GiveRollback.i18n.php' );
+		foreach( efGiveRollbackMessages() as $lang => $messages )
+			$wgMessageCache->addMessages( $messages, $lang );
+		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
 		$wgLogTypes[] = 'gvrollback';
 		$wgLogNames['gvrollback'] = 'giverollback-logpage';
 		$wgLogHeaders['gvrollback'] = 'giverollback-logpagetext';
