@@ -97,6 +97,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'entfernte den Botstatus von [[$1]]',
 ),
 
+/* Portuguese (Lugusto) */
+'en' => array(
+'makebot' => 'Conceder ou remover estatuto de bot',
+'makebot-header' => "'''Um burocrata local poderá a partir desta página conceder ou remover [[Help:Bot|estatutos de bot]] em outras contas de utilizador.'''<br />Um estatuto de bot faz com que as edições do utilizador sejam ocultadas da página de [[Special:Recentchanges|mudanças recentes]] e listagens similares, sendo bastante útil para marcar contas de utilizadores que façam edições automatizadas. Isso deverá ser feito de acordo com as políticas aplicáveis.",
+'makebot-username' => 'Utilizador:',
+'makebot-search' => 'Ir',
+'makebot-isbot' => '[[User:$1|$1]] possui estatuto de bot.',
+'makebot-notbot' => '[[User:$1|$1]] não possui estatuto de bot.',
+'makebot-privileged' => '[[User:$1|$1]] possui [[Special:Listadmins|privilégios de administrador ou burocrata]], não podendo que o estatuto de bot seja a ele concedido.',
+'makebot-change' => 'Alterar estado:',
+'makebot-grant' => 'Conceder',
+'makebot-revoke' => 'Remover',
+'makebot-comment' => 'Comentário:',
+'makebot-granted' => '[[User:$1|$1]] agora possui estatuto de bot.',
+'makebot-revoked' => '[[User:$1|$1]] deixou de ter estatuto de bot.',
+'makebot-logpage' => 'Registo de estatutos de bot',
+'makebot-logpagetext' => 'Este é um registo de alterações quanto ao\' estatuto de [[Help:Bot|bot]].',
+'makebot-logentrygrant' => 'concedido estatuto de bot para [[$1]]',
+'makebot-logentryrevoke' => 'removido estatuto de bot para [[$1]]',
+),
+
 	);
 	return $messages;
 }

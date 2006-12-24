@@ -32,6 +32,10 @@ $wgDismissableSiteNoticeMessages['lt'] = array(
 $wgDismissableSiteNoticeMessages['ja'] = array(
 	'sitenotice_close' => '非表示',
 );
+$wgDismissableSiteNoticeMessages['pt'] = array(
+	'sitenotice_close' => 'ignorar',
+);
+$wgDismissableSiteNoticeMessages['pt-br'] = $wgDismissableSiteNoticeMessages['pt'];
 $wgDismissableSiteNoticeMessages['zh-cn'] = array(
 	'sitenotice_close' => '关闭',
 );

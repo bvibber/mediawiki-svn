@@ -645,30 +645,30 @@ $wgMakesysopMessages['zh-yue'] = array(
 $wgMakesysopMessages['zh-sg'] = $wgMakesysopMessages['zh-cn'];
 
 $wgMakesysopMessages['fr'] = array(
-	'makesysoptitle' => 'Donner les droits d’administrateur à un utilisateur',
-	'makesysoptext' => 'Ce formulaire est utilisé par les bureaucrates ' .
-		'pour donner les droits d\'administrateur à un utilisateur ordinaire. Inscrivez ' .
-		'le nom de l\'utilisateur dans le cadre et appuyer sur le bouton pour donner les ' .
-		'droits en question.',
-	'makesysopname' => 'Nom de l\'utilisateur:',
-	'makesysopsubmit' => 'Donner les droit d\'administrateur',
-	'makesysopok' => "<b>Utilisateur \"$1\" est maintenant " .
-		"administrateur</b>",
-	'makesysopfail' => "<b>Utilisateur \"$1\" ne peut être nommé " .
-		"administrateur. (Avez vous entré correctement le nom ?)</b>",
-	'setbureaucratflag' => 'Donne les pouvoirs de Bureaucrate',
-	'rights' => 'Droits:',
-	'set_user_rights' => 'Donne les droits d\'utilisateur',
-	'user_rights_set' => "<b>Les droit d'utilisateur pour \"$1\" mis à " .
-		"jour</b>",
-	'set_rights_fail' => "<b>Les droit d'utilisateur pour \"$1\" ne peuvent " .
-		"être donnés. (Avez vous entré correctement le nom ?)</b>",
-	'makesysop' => 'Donner les droit d\'administrateur à un utilisateur',
-	'already_sysop' => 'Cet utilisateur est déjà administrateur',
-	'already_bureaucrat' => 'Cet utilisateur est déjà bureaucrate',
-	'makesysop-nodatabase' => 'Mauvais nom d\'utilisateur interwiki: $1',
-	'group-steward' => 'Stewards',
-	'group-steward-member' => 'Steward',
-	'grouppage-steward' => '{{ns:project}}:Stewards',
+	'makesysoptitle'	=> 'Donner les droits d’administrateur à un utilisateur',
+	'makesysoptext'		=> 'Ce formulaire est utilisé par les bureaucrates ' .
+					'pour donner les droits d\'administrateur à un utilisateur ordinaire. Inscrivez ' .
+					'le nom de l\'utilisateur dans le cadre et appuyer sur le bouton pour donner les ' .
+					'droits en question.',
+	'makesysopname'		=> 'Nom de l\'utilisateur:',
+	'makesysopsubmit'	=> 'Donner les droit d\'administrateur',
+	'makesysopok'		=> "<b>Utilisateur \"$1\" est maintenant " .
+					"administrateur</b>",
+	'makesysopfail'		=> "<b>Utilisateur \"$1\" ne peut être nommé " .
+					"administrateur. (Avez vous entré correctement le nom ?)</b>",
+	'setbureaucratflag'	=> 'Donne les pouvoirs de Bureaucrate',
+	'rights'		=> 'Droits:',
+	'set_user_rights'	=> 'Donne les droits d\'utilisateur',
+	'user_rights_set'	=> "<b>Les droit d'utilisateur pour \"$1\" mis à " .
+					"jour</b>",
+	'set_rights_fail'	=> "<b>Les droit d'utilisateur pour \"$1\" ne peuvent " .
+					"être donnés. (Avez vous entré correctement le nom ?)</b>",
+	'makesysop'		=> 'Donner les droit d\'administrateur à un utilisateur',
+	'already_sysop'		=> 'Cet utilisateur est déjà administrateur',
+	'already_bureaucrat'	=> 'Cet utilisateur est déjà bureaucrate',
+	'makesysop-nodatabase' 	=> 'Mauvais nom d\'utilisateur interwiki: $1',
+	'group-steward'		=> 'Stewards',
+	'group-steward-member' 	=> 'Steward',
+	'grouppage-steward'	=> '{{ns:project}}:Stewards',
 );
 ?>

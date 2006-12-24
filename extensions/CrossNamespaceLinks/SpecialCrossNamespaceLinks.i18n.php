@@ -69,6 +69,12 @@ $wgCrossNamespaceLinksMessages['pl'] = array(
 	'crossnamespacelinks'     => 'Linki między przestrzeniami nazw',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|linki}} do $3'
 );
+$wgCrossNamespaceLinksMessages['pt'] = array(
+	'crossnamespacelinks'         => 'Saltos de Espaços Nominais',
+	'crossnamespacelinks-summary' => 'Esta página proporciona uma lista de links provenientes a partir de uma página no espaço nominal principal para outra alocada em outro espaço nominal (exceção feita para os espaços nominais {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), os quais costuma-se não ser aconselhável de existirem.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|linca|lincam}} para $3'
+);
+$wgCrossNamespaceLinksMessages['pt-br'] = $wgCrossNamespaceLinksMessages['pt'];
 $wgCrossNamespaceLinksMessages['sk'] = array(
 	'crossnamespacelinks'     => 'Odkazy medzi mennými priestormi',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazov}} na $3'
