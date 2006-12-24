@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * Internationalisation file for the Patroller extension
@@ -71,6 +71,26 @@ function efPatrollerMessages() {
 'patrol-another' => 'Voir une nouvelle édition, si elle est disponible.',
 'patrol-stopped' => 'Vous avez choisi pour ne plus vérifier une autre édition. $1',
 'patrol-resume' => 'Cliquer ici pour reprendre.',
+),
+
+/* Spanish (Titoxd) */
+'es' => array(
+'patrol' => 'Revisar ediciones',
+'patrol-endorse' => 'Aprovar',
+'patrol-revert' => 'Revertir',
+'patrol-revert-reason' => 'Razón:',
+'patrol-skip' => 'Omitir',
+'patrol-reverting' => 'Revirtiendo: $1',	
+'patrol-nonefound' => 'No hay ediciones disponibles para revisar.',
+'patrol-endorsed-ok' => 'La edición fue marcada como revisada.',
+'patrol-endorsed-failed' => 'La edición no se pudo marcar como revisada.',
+'patrol-reverted-ok' => 'The edición fue revertida.',
+'patrol-reverted-failed' => 'La edición no pudo ser revertida.',
+'patrol-skipped-ok' => 'Ignorando la edición.',
+'patrol-reasons' => "*Vandalismo simple\n* Prueba de usuario novato\n* Ver la página de discusión",
+'patrol-another' => 'Mostrar otra edición (si disponible).',
+'patrol-stopped' => 'Has optado no marcar otra edición como revisada. $1',
+'patrol-resume' => 'Haz click aquí para continuar.',
 ),
 
 	);
