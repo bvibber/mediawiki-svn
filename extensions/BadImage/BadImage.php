@@ -28,8 +28,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgBadImageCache = true;
 	
 	function efBadImageSetup() {
-		global $wgMessageCache
-		require_once( dirname( __FILE__ ) '/BadImage.i18n.php' ) );
+		global $wgMessageCache;
+		require_once( dirname( __FILE__ ) . '/BadImage.i18n.php' );
 		foreach( efBadImageMessages() as $lang => $messages )
 			$wgMessageCache->addMessages( $messages, $lang );
 		global $wgHooks, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
