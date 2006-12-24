@@ -42,6 +42,19 @@ class SpecialDuplicator extends SpecialPage {
 	public function execute( $title = false ) {
 		global $wgUser, $wgOut, $wgRequest, $wgLang, $wgDuplicatorRevisionLimit;
 		$this->setHeaders();
+		
+		# Check permissions
+		if( !$wgUser->isAllowed( 'duplicate' ) ) {
+			$wgOut->permissionRequired( 'duplicate' );
+			return;
+		}
+		
+		# Check for database lock
+		if( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		}
+		
 		$this->setOptions( $wgRequest, $title );
 		$wgOut->addWikiText( wfMsgNoTrans( 'duplicator-header' ) );
 		$wgOut->addHtml( $this->buildForm() );

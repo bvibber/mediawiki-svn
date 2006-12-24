@@ -18,6 +18,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgSpecialPages['Duplicator'] = 'SpecialDuplicator';
 	
 	/**
+	 * User permissions
+	 */
+	$wgGroupPermissions['user']['duplicate'] = true;
+	
+	/**
 	 * Pages with more than this number of revisions can't be duplicated
 	 */
 	$wgDuplicatorRevisionLimit = 250;
@@ -34,9 +39,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgHooks['MonoBookTemplateToolboxEnd'][] = 'efDuplicatorToolbox';
 	}
 
+	/**
+	 * Build the link to be shown in the toolbox if appropriate
+	 */
 	function efDuplicatorNavigation( &$skin, &$nav_urls, &$oldid, &$revid ) {
+		global $wgUser;
 		$ns = $skin->mTitle->getNamespace();
-		if( $ns === NS_MAIN || $ns === NS_TALK ) {
+		if( ( $ns === NS_MAIN || $ns === NS_TALK ) && $wgUser->isAllowed( 'duplicate' ) ) {
 			$nav_urls['duplicator'] = array(
 				'text' => wfMsg( 'duplicator-toolbox' ),
 				'href' => $skin->makeSpecialUrl( 'Duplicator', "source=" . wfUrlEncode( "{$skin->thispage}" ) )
@@ -45,6 +54,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 		return true;
 	}
 
+	/**
+	 * Output the toolbox link if available
+	 */
 	function efDuplicatorToolbox( &$monobook ) {
 		if ( isset( $monobook->data['nav_urls']['duplicator'] ) ) {
 			if ( $monobook->data['nav_urls']['duplicator']['href'] == '' ) {
