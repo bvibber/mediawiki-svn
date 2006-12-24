@@ -11,9 +11,10 @@
 function efContributorsMessages() {
 	return array(
 	
+/* English (Rob Church) */
 'en' => array(
 'contributors' => 'Contributors',
-'contributors-toolbox' => 'List main contributors',
+'contributors-toolbox' => 'Main contributors',
 'contributors-legend' => 'List main contributors to an article',
 'contributors-target' => 'Title:',
 'contributors-submit' => 'Show',
@@ -24,9 +25,10 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'The article $1 doesn\'t exist.',
 ),
 
+/* German (Raymond) */
 'de' => array(
 'contributors' => 'Hauptautoren',
-'contributors-toolbox' => 'Liste der Hauptautoren',
+'contributors-toolbox' => 'Hauptautoren',
 'contributors-legend' => 'Zeige die Hauptautoren einer Seite',
 'contributors-target' => 'Seite:',
 'contributors-submit' => 'Zeige',
