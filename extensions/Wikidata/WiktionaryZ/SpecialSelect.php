@@ -80,7 +80,7 @@ function getSelectOptions() {
 						' FROM uw_syntrans' .
 						' JOIN uw_expression_ns ON uw_expression_ns.expression_id = uw_syntrans.expression_id' .
 						' WHERE uw_syntrans.defined_meaning_id = ' . $options_row->option_mid .
-						' AND uw_expression_ns.language_id = ' . getLanguageIdForCode .
+						' AND uw_expression_ns.language_id = ' . getLanguageIdForCode('en') .
 						' AND ' . getLatestTransactionRestriction('uw_expression_ns');
 		}
 
