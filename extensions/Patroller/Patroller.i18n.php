@@ -52,7 +52,27 @@ function efPatrollerMessages() {
 'patrol-stopped' => 'Si è scelto di non verificare altre modifiche. $1',
 'patrol-resume' => 'Fare clic qui per riprendere.',
 ),
-	
+
+/* French (BrokenArrow) */
+'fr' => array(
+'patrol' => 'Vérification des modifications',
+'patrol-endorse' => 'Accepter',
+'patrol-revert' => 'Annuler',
+'patrol-revert-reason' => 'Motif:',
+'patrol-skip' => 'Sauter',
+'patrol-reverting' => 'Annulation: $1',	
+'patrol-nonefound' => 'Aucune édition suivie n\'a pu être trouvée pour la vérification.',
+'patrol-endorsed-ok' => 'L\'édition a été marquée comme vérifiée.',
+'patrol-endorsed-failed' => 'L\'édition n\'a pu être vérifiée.',
+'patrol-reverted-ok' => 'L\'édition a été annulée.',
+'patrol-reverted-failed' => 'L\'édition n\'a pu être annulée.',
+'patrol-skipped-ok' => 'Ignorer l`édition.',
+'patrol-reasons' => "* Simple vandalisme\n* Test de débutant\n* Voir page de discussion",
+'patrol-another' => 'Voir une nouvelle édition, si elle est disponible.',
+'patrol-stopped' => 'Vous avez choisi pour ne plus vérifier une autre édition. $1',
+'patrol-resume' => 'Cliquer ici pour reprendre.',
+),
+
 	);
 	return $messages;
 }
