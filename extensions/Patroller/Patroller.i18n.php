@@ -11,7 +11,7 @@
  */
 
 function efPatrollerMessages() {
-	$messages = array(
+	return array(
 
 /* English (Rob Church) */
 'en' => array(
@@ -94,7 +94,6 @@ function efPatrollerMessages() {
 ),
 
 	);
-	return $messages;
 }
 
 ?>
