@@ -155,21 +155,22 @@ void MainFrame::OnChooseDir(wxCommandEvent &event)
     dir_line->SetValue ( newdir ) ;
 }
 
-ZenoArticle MainFrame::GetPage ( wxString title )
+ZenoArticle MainFrame::GetPage ( wxString title , bool va )
 {
-    return GetArticle ( title , zf_main ) ;
+    return GetArticle ( title , zf_main , va ) ;
 }
 
-ZenoArticle MainFrame::GetImage ( wxString title )
+ZenoArticle MainFrame::GetImage ( wxString title , bool va )
 {
-    return GetArticle ( title , zf_images ) ;
+    return GetArticle ( title , zf_images , va ) ;
 }
 
-ZenoArticle MainFrame::GetArticle ( wxString title , ZenoFile &file )
+ZenoArticle MainFrame::GetArticle ( wxString title , ZenoFile &file , bool va )
 {
     ZenoArticle art ;
     unsigned long l = file.FindPageID ( title ) ;
     if ( l == 0 ) { art.ok = false ; return art ; }
+    if ( va ) l++ ;
     art = file.ReadSingleArticle ( l ) ;
     return art ;
 }
