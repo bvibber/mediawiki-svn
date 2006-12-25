@@ -53,50 +53,10 @@ function hrSetup() {
 	$GLOBALS['wgHooks']['DiffViewHeader'][] = 'hrDiffViewHeaderHook';
 	$GLOBALS['wgHooks']['UndeleteShowRevision'][] = 'hrUndeleteShowRevisionHook';
 	
-	$GLOBALS['wgMessageCache']->addMessages(
-		array(
-			'hiderevision' => 'Permanently hide revisions',
-			
-			// Empty form
-			'hiderevision-prompt' => 'Revision number to remove:',
-			'hiderevision-continue' => 'Continue',
-			
-			// Confirmation form
-			'hiderevision-text' =>
-"This should '''only''' be used for the following cases:
-* Inappropriate personal information
-*: ''home addresses and telephone numbers, social security numbers, etc''
-
-'''Abuse of this system will result in loss of privileges.'''
-
-Removed items will not be visible to anyone through the web site,
-but the deletions are logged and can be restored manually by a
-database administrator if you make a mistake.",
-			'hiderevision-reason' => 'Reason (will be logged privately):',
-			'hiderevision-submit' => 'Hide this data permanently',
-			
-			// Tab displayed to allowed users on old revision display
-			'hiderevision-tab' => 'Hide revision',
-			
-			// Status & errors on action
-			'hiderevision-norevisions' => 'No revisions specified to delete.',
-			'hiderevision-noreason' => 'You must decribe the reason for this removal.',
-			
-			'hiderevision-status' => 'Revision $1: $2',
-			'hiderevision-success' => 'Archived and deleted successfully.',
-			'hiderevision-error-missing' => 'Not found in database.',
-			'hiderevision-error-current' => 'Cannot delete the latest edit to a page. Revert this change first.',
-			'hiderevision-error-delete' => 'Could not archive; was it previously deleted?',
-			
-			'hiderevision-archive-status' => 'Deleted revision from $1: $2',
-			
-			// Logging
-			'oversight-log-hiderev' => 'removed an edit from $1',
-			
-			// Oversight review page
-			'oversight' => 'Oversight',
-			'oversight-view' => 'details',
-		) );
+	require_once( dirname( __FILE__ ) . '/HideRevision.i18n.php' );
+	foreach( hrHideRevisionMessages() as $lang => $messages )
+		$GLOBALS['wgMessageCache']->addMessages( $messages, $lang );
+	
 }
 
 
