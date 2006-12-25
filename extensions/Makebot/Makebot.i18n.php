@@ -98,7 +98,7 @@ function efMakeBotMessages() {
 ),
 
 /* Portuguese (Lugusto) */
-'en' => array(
+'pt' => array(
 'makebot' => 'Conceder ou remover estatuto de bot',
 'makebot-header' => "'''Um burocrata local poderá a partir desta página conceder ou remover [[Help:Bot|estatutos de bot]] em outras contas de utilizador.'''<br />Um estatuto de bot faz com que as edições do utilizador sejam ocultadas da página de [[Special:Recentchanges|mudanças recentes]] e listagens similares, sendo bastante útil para marcar contas de utilizadores que façam edições automatizadas. Isso deverá ser feito de acordo com as políticas aplicáveis.",
 'makebot-username' => 'Utilizador:',
