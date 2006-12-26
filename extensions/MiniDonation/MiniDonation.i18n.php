@@ -14,6 +14,9 @@ $wgMiniDonationMessages['en'] = array(
 $wgMiniDonationMessages['he'] = array(
 	'donationform-submit' => 'תרומה באמצעות PayPal',
 );
+$wgMiniDonationMessages['lt'] = array(
+	'donationform-submit' => 'Aukoti per PayPal',
+);
 $wgMiniDonationMessages['zh-cn'] = array(
 	'donationform-submit' => '经PayPal捐款',
 );

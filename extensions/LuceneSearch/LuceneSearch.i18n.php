@@ -198,6 +198,24 @@ $1\n
 نەمەسە وسى ۋيكيدەن ٴىزدەۋ ٴۇشٴىن سىرتقى قىزمەتتەرٴىن قولدانىڭىز:\n"
 );
 $wgLuceneSearchMessages['kk'] = $wgLuceneSearchMessages['kk-kz'];
+$wgLuceneSearchMessages['lt'] = array(
+	'searchnumber'          => "<strong>Rezultatai $1-$2 iš $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Atgal</span>",
+	'searchnext'            => "<span style='font-size: small'>Pirmyn</span> &#x00BB;",
+	'searchscore'           => "Panašumas: $1",
+	'searchsize'            => "$1 KB ($2 žodžiai)",
+	'searchdidyoumean'      => "Galbūt norėjote: \"<a href=\"$1\">$2</a>\"?",
+	'searchnoresults'       => "Atsiprašome, jūsų užklausai nėra jokių tikslių atitikmenų.",
+	'searchnearmatches'     => "<b>Šie puslapiai turi panašius pavadinimus į jūsų užklausą:</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+Ieškoti vardų srityse:\n
+$1\n
+Ieškoma $3 $9",
+	'lucenefallback'        => "Buvo problemų su projekto paieška.
+Tai turbūt laikina; pamėginkite šiek tiek vėliau,
+arba galite mėginti ieškoti projekte per išorines paieškos paslaugas:\n"
+);
 $wgLuceneSearchMessages['nl'] = array(
 	'searchnumber'          => "<strong>Resultaten $1-$2 van de $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Vorige</span>",
