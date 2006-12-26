@@ -34,6 +34,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'removed bot status from [[$1]]',
 ),
 
+/* French (Bertrand Grondin) */
+'fr' => array(
+'makebot' => 'Accorder ou révoquer le statut de Bot',
+'makebot-header' => "'''Un Bureaucrate local peut utiliser cette page pour accorder ou révoquer le [[Aide:Bot|Statut de Bot]] à un autre compte d'utilisateur.'''<br />Le Statut de Bot a pour particularité de cacher les éditions des utilisateurs dans la page des [[Special:Recentchanges|modification récentes]] et de toutes autres listes similaires. Ceci est très utile pour « flagger » les utilisateurs qui veulent faire des éditions automatiques. Ceci ne doit être fait que conformément aux règles édictées au sein de chaque projet.",
+'makebot-username' => 'Nom utilisateur:',
+'makebot-search' => 'Valider',
+'makebot-isbot' => '[[User:$1|$1]] a le statut de Bot.',
+'makebot-notbot' => '[[User:$1|$1]] ne doit pas avoir le statut de Bot.',
+'makebot-privileged' => '[[User:$1|$1]] dispose [[Special:Listadmins|des privilèges d\'administrateur ou de bureaucrate]], et il n\'est pas possible de lui donner le statut de Bot.',
+'makebot-change' => 'Change le statut:',
+'makebot-grant' => 'Accorder',
+'makebot-revoke' => 'Retirer',
+'makebot-comment' => 'Commentaire:',
+'makebot-granted' => '[[User:$1|$1]] a maintenant le statut de bot.',
+'makebot-revoked' => '[[User:$1|$1]] ne dispose plus désormais du statut de bot.',
+'makebot-logpage' => 'Journal du statut de Bot',
+'makebot-logpagetext' => 'Ceci est le journal des changements du statut de bot pour les utilisateurs concernés',
+'makebot-logentrygrant' => 'a accordé le statut de bot à [[$1]]',
+'makebot-logentryrevoke' => 'a retiré le statut de bot à [[$1]]',
+),
+
 /* Italian (BrokenArrow) */
 'it' => array(
 'makebot' => 'Assegna o revoca lo status di bot',
