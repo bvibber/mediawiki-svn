@@ -23,6 +23,21 @@ function efCountEditsMessages( $single = false ) {
 'countedits-mostactive' => 'Most active contributors',
 'countedits-nocontribs' => 'There have been no contributions to this wiki.',
 ),
+
+/* French (Bertrand Grondin) */
+'fr' => array(
+'countedits' => 'Compteur d\'éditions',
+'countedits-warning' => 'Avertissement : ne jugez pas un livre par sa couverture. Ne jugez pas non plus un utilisateur en fonction du nombre de ses contributions.',
+'countedits-username' => 'Utilisateur',
+'countedits-ok' => 'OK',
+'countedits-nosuchuser' => 'Il n\'y a aucun utilisateur correspondant à $1',
+'countedits-resultheader' => 'Resultats pour $1',
+'countedits-resulttext' => '$1 a fait $2 éditions',
+'countedits-userpage' => 'Page Utilisateur',
+'countedits-usertalk' => 'Page de discussion',
+'countedits-contribs' => 'Contributions',
+'countedits-mostactive' => 'Contributeurs les plus actifs',
+),
 	
 	);
 	return $single ? $messages['en'] : $messages;
