@@ -74,6 +74,7 @@ function getSelectOptions() {
 					' JOIN uw_expression_ns ON uw_expression_ns.expression_id = uw_syntrans.expression_id' .
 					' WHERE uw_syntrans.defined_meaning_id = ' . $options_row->option_mid .
 					' AND uw_expression_ns.language_id = ' . $lang_id .
+					' AND ' . getLatestTransactionRestriction('uw_syntrans') .
 					' AND ' . getLatestTransactionRestriction('uw_expression_ns');
 			$res = $dbr->query($sql);
 			if (!$dbr->fetchObject($res)->spelling)
@@ -82,6 +83,7 @@ function getSelectOptions() {
 						' JOIN uw_expression_ns ON uw_expression_ns.expression_id = uw_syntrans.expression_id' .
 						' WHERE uw_syntrans.defined_meaning_id = ' . $options_row->option_mid .
 						' AND uw_expression_ns.language_id = ' . getLanguageIdForCode('en') .
+						' AND ' . getLatestTransactionRestriction('uw_syntrans') .
 						' AND ' . getLatestTransactionRestriction('uw_expression_ns');
 		}
 
