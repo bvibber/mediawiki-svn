@@ -1,25 +1,50 @@
 <?php
 
 /**
- * Simple edit counter special page for small wikis
+ * Simple edit counter for small wikis
  *
- * @author Rob Church <robchur@gmail.com>
  * @package MediaWiki
  * @subpackage Extensions
- * @copyright Copyright © 2006 Rob Church
- * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0
+ * @author Rob Church <robchur@gmail.com>
  */
-if ( !defined( 'MEDIAWIKI' ) ) {
+
+if( defined( 'MEDIAWIKI' ) ) {
+
+	$wgExtensionCredits['specialpage'][] = array( 'name' => 'Count Edits', 'author' => 'Rob Church' );
+	$wgExtensionFunctions[] = 'efCountEdits';
+	
+	/* This line will have no effect on pre-1.7 wikis */
+	$wgAutoloadClasses['SpecialCountEdits'] = dirname( __FILE__ ) . '/CountEdits.page.php';
+	/* However, on pre-1.7 wikis, we can't afford to mess this up */
+	if( version_compare( $wgVersion, '1.7alpha', '>=' ) )
+		$wgSpecialPages['CountEdits'] = 'SpecialCountEdits';
+
+	/**
+	 * Should we show the "most active contributors" list?
+	 * This could be expensive for larger wikis
+	 */
+	$wgCountEditsMostActive = true;
+
+	/**
+	 * Extension setup function
+	 */
+	function efCountEdits() {
+		global $wgVersion, $wgMessageCache;
+		require_once( dirname( __FILE__ ) . '/CountEdits.i18n.php' );
+		if( version_compare( $wgVersion, '1.7alpha', '>=' ) ) {
+			foreach( efCountEditsMessages() as $lang => $messages )
+				$wgMessageCache->addMessages( $messages, $lang );
+		} else {
+			$wgMessageCache->addMessages( efCountEditsMessages( true ) );
+			require_once( 'SpecialPage.php' );
+			require_once( dirname( __FILE__ ) . '/CountEdits.page.php' );
+			SpecialPage::addPage( new SpecialCountEdits() );
+		}
+	}
+
+} else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-	die( 1 );
+	exit( 1 );
 }
-
-$wgExtensionCredits['other'][] = array( 'name' => 'Count Edits', 'author' => 'Rob Church' );
-$wgCountEditsMostActive = true;
-
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
-extAddSpecialPage( dirname(__FILE__) . '/CountEdits_body.php', 'CountEdits', 'CountEdits' );
 
 ?>
