@@ -6,6 +6,8 @@
  * @package MediaWiki
  * @subpackage Extensions
  * @author Rob Church <robchur@gmail.com>
+ * @todo Allow obtaining counts for users that don't exist
+ * @todo Use the user.user_editcount column in 1.9alpha and up
  */
 
 if( defined( 'MEDIAWIKI' ) ) {
