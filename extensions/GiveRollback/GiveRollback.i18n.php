@@ -35,6 +35,28 @@ function efGiveRollbackMessages() {
 'giverollback-logentryrevoke' => 'removed rollback rights from [[$1]]',
 ),
 
+/* German (Raymond) */
+'de' => array(
+'giverollback' => 'Zurücksetzen-Recht erteilen oder entziehen',
+'giverollback-header' => "'''Ein lokaler Bürokrat kann auf dieser Seite anderen Benutzern das Recht zum Zurücksetzen ''(Rollback)'' erteilen oder entziehen.<br />Dadurch können auch Benutzer ohne Administratoren-Status Vandalismus schnell rückgängig machen. Dies sollte in Übereinstimmung mit den anwendbaren Richtlinien geschehen.",
+'giverollback-username' => 'Benutzername:',
+'giverollback-search' => 'Ok',
+'giverollback-hasrb' => '[[User:$1|$1]] hat das Zurücksetzen-Recht.',
+'giverollback-norb' => '[[User:$1|$1]] hat das Zurücksetzen-Recht nicht.',
+'giverollback-toonew' => '[[User:$1|$1]] ist zu neu, ihm kann das Zurücksetzen-Recht nicht gegeben werden.',
+'giverollback-sysop' => '[[User:$1|$1]] ist ein Administrator und hat bereits das Zurücksetzen-Recht.',
+'giverollback-change' => 'Ändere den Status:',
+'giverollback-grant' => 'Erteile',
+'giverollback-revoke' => 'Entziehe',
+'giverollback-comment' => 'Kommentar:',
+'giverollback-granted' => '[[User:$1|$1]] wurde das Zurücksetzen-Recht erteilt.',
+'giverollback-revoked' => '[[User:$1|$1]] wurde das Zurücksetzen-Recht entzogen.',
+'giverollback-logpage' => 'Zurücksetzen-Rechte Logbuch',
+'giverollback-logpagetext' => 'Dies ist das Logbuch der Zurücksetzen-Rechtevergabe für Nicht-Administratoren.',
+'giverollback-logentrygrant' => 'erteilte das Zurücksetzen-Recht an [[$1]]',
+'giverollback-logentryrevoke' => 'entzog das Zurücksetzen-Recht von [[$1]]',
+),
+
 	);
 }
 

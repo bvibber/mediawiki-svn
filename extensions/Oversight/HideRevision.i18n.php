@@ -44,6 +44,42 @@ database administrator if you make a mistake.",
 'oversight-view' => 'details',
 ),
 
+/* German (Raymond) */
+'de' => array(
+'hiderevision' => 'Versionen dauerhaft entfernen',
+// Empty form
+'hiderevision-prompt' => 'Zu entfernende Versionsnummer:',
+'hiderevision-continue' => 'Weiter',
+// Confirmation form
+'hiderevision-text' =>
+"Dies darf '''ausschließlich''' in den folgenden Fällen geschehen:
+* Persönliche Informationen:
+*: ''Realname, Adresse, Telefonnummer und ähnlicher privater Details''
+
+'''Der Missbrauch dieses Systems zieht den Verlust dieser Rechte nach sich!'''
+
+Entfernte Versionen sind durch Niemanden mehr über die Website einzusehen. 
+Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbankadministrator wiederhergestellt werden",
+'hiderevision-reason' => 'Grund (wird unsichtbar protokolliert):',
+'hiderevision-submit' => 'Entferne diese Daten dauerhaft',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => 'Entferne Versionen',
+// Status & errors on action
+'hiderevision-norevisions' => 'Es wurde keine Version zum Entfernen angegeben.',
+'hiderevision-noreason' => 'Sie müssen einen Grund für die Entfernung angeben.',
+'hiderevision-status' => 'Version $1: $2',
+'hiderevision-success' => 'Erfolgreich archiviert und entfernt.',
+'hiderevision-error-missing' => 'In der Datenbank nicht gefunden.',
+'hiderevision-error-current' => 'Die letzte Bearbeitung einer Seite kann nicht entfernt werden. Setze die Bearbeitung erst zurück.',
+'hiderevision-error-delete' => 'Archivierung nicht möglich. Wurde sie zuvor gelöscht?',
+'hiderevision-archive-status' => 'Gelöschte Versionen von $1: $2',
+// Logging
+'oversight-log-hiderev' => 'Entfernte eine Bearbeitung von $1',
+// Oversight review page
+'oversight' => 'Oversight',
+'oversight-view' => 'Details',
+),
+
 /* French (Bertrand Grondin) */
 'fr' => array(
 'hiderevision' => 'Cacher définitivement les révisions',

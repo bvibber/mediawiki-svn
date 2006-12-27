@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * Internationalisation file for the Patroller extension
@@ -33,24 +33,44 @@ function efPatrollerMessages() {
 'patrol-resume' => 'Click here to resume.',
 ),
 
-/* Italian (BrokenArrow) */
-'it' => array(
-'patrol' => 'Verifica delle modifiche',
-'patrol-endorse' => 'Approva',
-'patrol-revert' => 'Ripristina',
-'patrol-revert-reason' => 'Motivo:',
-'patrol-skip' => 'Salta',
-'patrol-reverting' => 'Ripristino: $1',	
-'patrol-nonefound' => 'Non vi sono modifiche da verificare.',
-'patrol-endorsed-ok' => 'La modifica è stata segnata come verificata.',
-'patrol-endorsed-failed' => 'Impossibile segnare la modifica come verificata.',
-'patrol-reverted-ok' => 'La modifica è stata annullata.',
-'patrol-reverted-failed' => 'Impossibile annullare la modifica.',
-'patrol-skipped-ok' => 'Modifica ignorata.',
-'patrol-reasons' => "* Vandalismo semplice\n* Prova di nuovo utente\n* Vedi pagina di discussione",
-'patrol-another' => 'Mostra un\'altra modifica, se disponibile.',
-'patrol-stopped' => 'Si è scelto di non verificare altre modifiche. $1',
-'patrol-resume' => 'Fare clic qui per riprendere.',
+/* German (Raymond) */
+'en' => array(
+'patrol' => 'Kontrolle der Bearbeitungen',
+'patrol-endorse' => 'Bestätigen',
+'patrol-revert' => 'Zurücksetzen',
+'patrol-revert-reason' => 'Grund:',
+'patrol-skip' => 'Überspringen',
+'patrol-reverting' => 'Zurücksetzen: $1',	
+'patrol-nonefound' => 'Es wurden keine passenden Bearbeitungen zum Kontrollieren gefunden.',
+'patrol-endorsed-ok' => 'Diese Bearbeitung wurde bereits als kontrolliert markiert.',
+'patrol-endorsed-failed' => 'Diese Bearbeitung kann nicht als kontrolliert markiert werden.',
+'patrol-reverted-ok' => 'Die Bearbeitung wurde zurückgesetzt.',
+'patrol-reverted-failed' => 'Die Bearbeitung kann nicht zurückgesetzt werden.',
+'patrol-skipped-ok' => 'Bearbeitung wird ignoriert.',
+'patrol-reasons' => "* Einfacher Vandalismus\n* Test eines Neulings\n* Siese Diskussionsseite",
+'patrol-another' => 'Zeige eine weitere Bearbeitung, sofern verfügbar.',
+'patrol-stopped' => 'Sie haben entschieden, keine weitere Bearbeitung zu kontrollieren. $1',
+'patrol-resume' => 'Klicken Sie hier zum fortsetzen.',
+),
+
+/* Spanish (Titoxd) */
+'es' => array(
+'patrol' => 'Revisar ediciones',
+'patrol-endorse' => 'Aprovar',
+'patrol-revert' => 'Revertir',
+'patrol-revert-reason' => 'Razón:',
+'patrol-skip' => 'Omitir',
+'patrol-reverting' => 'Revirtiendo: $1',	
+'patrol-nonefound' => 'No hay ediciones disponibles para revisar.',
+'patrol-endorsed-ok' => 'La edición fue marcada como revisada.',
+'patrol-endorsed-failed' => 'La edición no se pudo marcar como revisada.',
+'patrol-reverted-ok' => 'The edición fue revertida.',
+'patrol-reverted-failed' => 'La edición no pudo ser revertida.',
+'patrol-skipped-ok' => 'Ignorando la edición.',
+'patrol-reasons' => "*Vandalismo simple\n* Prueba de usuario novato\n* Ver la página de discusión",
+'patrol-another' => 'Mostrar otra edición (si disponible).',
+'patrol-stopped' => 'Has optado no marcar otra edición como revisada. $1',
+'patrol-resume' => 'Haz click aquí para continuar.',
 ),
 
 /* French (BrokenArrow) */
@@ -73,24 +93,24 @@ function efPatrollerMessages() {
 'patrol-resume' => 'Cliquer ici pour reprendre.',
 ),
 
-/* Spanish (Titoxd) */
-'es' => array(
-'patrol' => 'Revisar ediciones',
-'patrol-endorse' => 'Aprovar',
-'patrol-revert' => 'Revertir',
-'patrol-revert-reason' => 'Razón:',
-'patrol-skip' => 'Omitir',
-'patrol-reverting' => 'Revirtiendo: $1',	
-'patrol-nonefound' => 'No hay ediciones disponibles para revisar.',
-'patrol-endorsed-ok' => 'La edición fue marcada como revisada.',
-'patrol-endorsed-failed' => 'La edición no se pudo marcar como revisada.',
-'patrol-reverted-ok' => 'The edición fue revertida.',
-'patrol-reverted-failed' => 'La edición no pudo ser revertida.',
-'patrol-skipped-ok' => 'Ignorando la edición.',
-'patrol-reasons' => "*Vandalismo simple\n* Prueba de usuario novato\n* Ver la página de discusión",
-'patrol-another' => 'Mostrar otra edición (si disponible).',
-'patrol-stopped' => 'Has optado no marcar otra edición como revisada. $1',
-'patrol-resume' => 'Haz click aquí para continuar.',
+/* Italian (BrokenArrow) */
+'it' => array(
+'patrol' => 'Verifica delle modifiche',
+'patrol-endorse' => 'Approva',
+'patrol-revert' => 'Ripristina',
+'patrol-revert-reason' => 'Motivo:',
+'patrol-skip' => 'Salta',
+'patrol-reverting' => 'Ripristino: $1',	
+'patrol-nonefound' => 'Non vi sono modifiche da verificare.',
+'patrol-endorsed-ok' => 'La modifica è stata segnata come verificata.',
+'patrol-endorsed-failed' => 'Impossibile segnare la modifica come verificata.',
+'patrol-reverted-ok' => 'La modifica è stata annullata.',
+'patrol-reverted-failed' => 'Impossibile annullare la modifica.',
+'patrol-skipped-ok' => 'Modifica ignorata.',
+'patrol-reasons' => "* Vandalismo semplice\n* Prova di nuovo utente\n* Vedi pagina di discussione",
+'patrol-another' => 'Mostra un\'altra modifica, se disponibile.',
+'patrol-stopped' => 'Si è scelto di non verificare altre modifiche. $1',
+'patrol-resume' => 'Fare clic qui per riprendere.',
 ),
 
 	);

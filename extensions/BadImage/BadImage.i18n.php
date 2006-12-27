@@ -35,6 +35,28 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'removed [[$1]] from the bad image list',
 ),
 
+/* German (Raymond) */
+'de' => array(
+'badimages' => 'Liste unerwünschter Bilder',
+'badimages-add-btn' => 'Füge hinzu',
+'badimages-added' => '$1 wurde der Liste hinzugefügt',
+'badimages-count' => "Die Liste unerwünschter Bilder enthält '''$1''' Einträge",
+'badimages-name' => 'Name:',
+'badimages-not-added' => 'Das Bild konnte nicht hinzugefügt werden.',
+'badimages-not-removed' => 'Das Bild konnte nicht entfernt werden.',
+'badimages-reason' => 'Grund:',
+'badimages-remove' => '(entferne)',
+'badimages-remove-btn' => 'Entferne',
+'badimages-remove-confirm' => 'Bitte bestätigen Sie, dass Sie $1 von der Liste  entfernen möchten.',
+'badimages-removed' => '$1 wurde aus der Liste entfernt.',
+'badimages-subheading' => 'Aktuelle Einträge',
+'badimages-unprivileged' => '(Sie haben keine Berechtigung, die Liste zu ändern)',
+'badimages-log-name' => 'Liste unerwünschter Bilder',
+'badimages-log-header' => 'Dies ist das Logbuch der Änderungen an der Liste unerwünschter Bilder.', # [[Help:Bad image list]] anpassen und einfügen, sobald Seite übersetzt wurde.
+'badimages-log-add' => 'fügte [[$1]] zu der Liste unerwünschter Bilder hinzu',
+'badimages-log-remove' => 'entfernte [[$1]] von der Liste unerwünschter Bilder',
+),
+
 	);
 }
 
