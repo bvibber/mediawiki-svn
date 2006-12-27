@@ -33,9 +33,6 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nosuchuser' => 'Il n\'y a aucun utilisateur correspondant à $1',
 'countedits-resultheader' => 'Resultats pour $1',
 'countedits-resulttext' => '$1 a fait $2 éditions',
-'countedits-userpage' => 'Page Utilisateur',
-'countedits-usertalk' => 'Page de discussion',
-'countedits-contribs' => 'Contributions',
 'countedits-mostactive' => 'Contributeurs les plus actifs',
 ),
 	
