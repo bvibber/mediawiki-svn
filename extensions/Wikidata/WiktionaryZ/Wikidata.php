@@ -49,27 +49,34 @@ class DefaultWikidataApplication implements WikidataApplication {
 		$wgOut->enableClientCache(false);
 		$wgOut->addHTML($this->getLanguageSelector());
 
-		$authorities = array();
-		
-		if (count($this->availableAuthorities) > 0) {
-			$authorityOptions = array();
+		$this->shouldShowAuthorities = count($this->availableAuthorities) > 0; 
+
+		if ($this->shouldShowAuthorities) {
+			$showCommunityContribution = isset($_GET['authority-community']);
+			
+			$authoritiesToShow = array();
+			$authorityOptions = array(
+				"Show contribution by the community" => getCheckBox('authority-community', $showCommunityContribution)
+			);
 			
 			foreach($this->availableAuthorities as $authority) {
 				$showAuthority = isset($_GET['authority-' . $authority]); 
 				
 				if ($showAuthority)
-					$authorities[] = $authority;
+					$authoritiesToShow[] = $authority;
 
-				$authorityOptions["Show " . getUserName($authority) . " version"] = getCheckBox('authority-' . $authority, $showAuthority);
+				$authorityOptions["Show contribution by " . getUserName($authority)] = getCheckBox('authority-' . $authority, $showAuthority);
 			}
 	
 			$wgOut->addHTML(getOptionPanel($authorityOptions));
 		}
+		else
+			$showCommunityContribution = false;
 		
-		$this->shouldShowAuthorities = count($authorities) > 0; 
+		$this->shouldShowAuthorities = count($authoritiesToShow) > 0 || $showCommunityContribution;
 		
 		if ($this->shouldShowAuthorities) 
-			$this->viewQueryTransactionInformation = new QueryAuthoritativeTransactionInformation($authorities);
+			$this->viewQueryTransactionInformation = new QueryAuthoritativeContributorTransactionInformation($this->availableAuthorities, $authoritiesToShow, $showCommunityContribution);
 		else
 			$this->viewQueryTransactionInformation = new QueryLatestTransactionInformation();
 	}

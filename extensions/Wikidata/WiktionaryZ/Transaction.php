@@ -138,11 +138,15 @@ class QueryUpdateTransactionInformation extends DefaultQueryTransactionInformati
 //	}
 }
 
-class QueryAuthoritativeTransactionInformation extends DefaultQueryTransactionInformation {
-	protected $authorities;
+class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTransactionInformation {
+	protected $availableAuthorities;
+	protected $authoritiesToShow;
+	protected $showCommunityContribution;
 	
-	public function __construct($authorities) {
-		$this->authorities = $authorities;
+	public function __construct($availableAuthorities, $authoritiesToShow, $showCommunityContribution) {
+		$this->availableAuthorities = $availableAuthorities;
+		$this->authoritiesToShow = $authoritiesToShow;
+		$this->showCommunityContribution = $showCommunityContribution;
 	}
 	
 	protected function getKeyFieldRestrictions($table, $prefix) {
@@ -155,29 +159,68 @@ class QueryAuthoritativeTransactionInformation extends DefaultQueryTransactionIn
 	}
 	
 	public function getRestriction($table) {
-		return 
-			$table->name . ".add_transaction_id=transactions.transaction_id" .
-			" AND (" .
-				getLatestTransactionRestriction($table->name) . 
-				" OR (" .
-					" transactions.user_id IN (" . implode(", ", $this->authorities) . ") " .
-					" AND " .$table->name . ".add_transaction_id=(" .
-						" SELECT max(add_transaction_id) " .
-						" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
-						" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
-						" AND latest_transactions.transaction_id=latest_" . $table->name . ".add_transaction_id" .
-						" AND latest_transactions.user_id=transactions.user_id" .
-						")" .
-					" AND NOT EXISTS (" .
-						" SELECT * " .
-						" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
-						" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
-						" AND latest_transactions.transaction_id=latest_" . $table->name . ".remove_transaction_id" .
-						" AND latest_transactions.user_id=transactions.user_id" .
-						" AND latest_" . $table->name . ".remove_transaction_id > " . $table->name . ".add_transaction_id" .
-					")" . 
-				" )" .
-			" )";
+		$result =  
+			$table->name . ".add_transaction_id=transactions.transaction_id";
+
+		$showAnyAuthorities = count($this->authoritiesToShow) > 0;
+
+		if ($this->showCommunityContribution || $showAnyAuthorities) {
+			$availableAuthoritiesSet = "(" . implode(", ", $this->availableAuthorities) . ")";
+			
+			$result =  
+				$table->name . ".add_transaction_id=transactions.transaction_id" .
+				" AND (";
+				
+			if ($this->showCommunityContribution)
+				$result .=	
+					"(" .
+						" transactions.user_id NOT IN " . $availableAuthoritiesSet . 
+						" AND " .$table->name . ".add_transaction_id=(" .
+							" SELECT max(add_transaction_id) " .
+							" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
+							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
+							" AND latest_transactions.transaction_id=latest_" . $table->name . ".add_transaction_id" .
+							" AND latest_transactions.user_id NOT IN (" . implode(", ", $this->availableAuthorities) . ")" .
+							")" .
+						" AND NOT EXISTS (" .
+							" SELECT * " .
+							" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
+							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
+							" AND latest_transactions.transaction_id=latest_" . $table->name . ".remove_transaction_id" .
+							" AND latest_transactions.user_id NOT IN " . $availableAuthoritiesSet .
+							" AND latest_" . $table->name . ".remove_transaction_id > " . $table->name . ".add_transaction_id" .
+						")" . 
+					" )";
+			else 
+				$result .= " 0 "; 
+			
+			if ($showAnyAuthorities)
+				$result .=
+					" OR (" .
+						" transactions.user_id IN (" . implode(", ", $this->authoritiesToShow) . ") " .
+						" AND " .$table->name . ".add_transaction_id=(" .
+							" SELECT max(add_transaction_id) " .
+							" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
+							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
+							" AND latest_transactions.transaction_id=latest_" . $table->name . ".add_transaction_id" .
+							" AND latest_transactions.user_id=transactions.user_id" .
+							")" .
+						" AND NOT EXISTS (" .
+							" SELECT * " .
+							" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
+							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
+							" AND latest_transactions.transaction_id=latest_" . $table->name . ".remove_transaction_id" .
+							" AND latest_transactions.user_id=transactions.user_id" .
+							" AND latest_" . $table->name . ".remove_transaction_id > " . $table->name . ".add_transaction_id" .
+						")" . 
+					" )";
+			
+			$result .= " )";
+		}
+		else 
+			$result .= " AND 0";
+			
+		return $result;
 	}
 	
 	public function getTables() {
@@ -201,10 +244,10 @@ class QueryAuthoritativeTransactionInformation extends DefaultQueryTransactionIn
 			
 		$userID = $row['user_id'];
 		
-		if (in_array($userID, $this->authorities))
+		if (in_array($userID, $this->availableAuthorities))
 			$userName = getUserName($userID);
 		else
-			$userName = "";	
+			$userName = "Community";	
 			
 		$record->setAttributeValue($authorityAttribute, $userName);
 	}
