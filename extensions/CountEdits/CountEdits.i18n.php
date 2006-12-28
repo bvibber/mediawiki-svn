@@ -24,6 +24,19 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'There have been no contributions to this wiki.',
 ),
 
+/* German (Raymond) */
+'de' => array(
+'countedits' => 'Beitragszähler',
+'countedits-warning' => 'Hinweis: Sie beurteilen ein Buch nicht nur nach seinem Umschlag, beurteilen Sie einen Autor daher auch nicht nur nach seinem Beitragszähler.',
+'countedits-username' => 'Benutzername:',
+'countedits-ok' => 'OK',
+'countedits-nosuchuser' => 'Es gibt keinen Benutzer mit dem Namen $1.',
+'countedits-resultheader' => 'Ergebnis für $1',
+'countedits-resulttext' => '$1 hat $2 Bearbeitungen',
+'countedits-mostactive' => 'Die aktivsten Benutzer',
+'countedits-nocontribs' => 'In {{ns:project}} sind keine Bearbeitungen vorhanden.',
+),
+
 /* French (Bertrand Grondin) */
 'fr' => array(
 'countedits' => 'Compteur d\'éditions',
