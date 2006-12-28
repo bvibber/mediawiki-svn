@@ -1,0 +1,11 @@
+Source: ganglia
+Section: unknown
+Priority: optional
+Maintainer: Tim Starling <tstarling@wikimedia.org>
+Build-Depends: debhelper (>= 5), autotools-dev, g++
+Standards-Version: 3.7.2
+
+Package: gmond
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: Ganglia gmond
