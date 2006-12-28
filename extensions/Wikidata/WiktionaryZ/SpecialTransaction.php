@@ -216,7 +216,7 @@ function initializeAttributes() {
 		$updatedCollectionMembershipStructure, $updatedCollectionMembershipAttribute, $collectionMemberIdAttribute;
 		
 	$collectionMemberAttribute = new Attribute('collection-member', 'Collection member', new RecordType($definedMeaningReferenceStructure));
-	$collectionMemberAttribute = new Attribute('collection-member-id', 'Collection member identifier', 'defined-meaning-id');
+	$collectionMemberIdAttribute = new Attribute('collection-member-id', 'Collection member identifier', 'defined-meaning-id');
 	
 	$updatedCollectionMembershipStructure = new Structure(
 		$collectionIdAttribute,
