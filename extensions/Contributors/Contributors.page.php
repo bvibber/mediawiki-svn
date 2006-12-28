@@ -17,6 +17,7 @@ class SpecialContributors extends IncludableSpecialPage {
 	}
 	
 	public function execute( $target = false ) {
+		wfProfileIn( __METHOD__ );
 		global $wgOut, $wgRequest;
 		$this->setHeaders();
 		$this->determineTarget( $wgRequest, $target );
@@ -33,9 +34,11 @@ class SpecialContributors extends IncludableSpecialPage {
 				$this->showNormal();
 		}
 		
+		wfProfileOut( __METHOD__ );	
 	}
 	
 	private function showInclude() {
+		wfProfileIn( __METHOD__ );
 		global $wgOut;
 		if( is_object( $this->target ) ) {
 			if( $this->target->exists() ) {
@@ -53,12 +56,14 @@ class SpecialContributors extends IncludableSpecialPage {
 		} else {
 			$wgOut->addHtml( '<p>' . htmlspecialchars( wfMsgForContent( 'contributors-badtitle' ) ) . '</p>' );
 		}
+		wfProfileOut( __METHOD__ );	
 	}
 	
 	/**
 	 * Output a machine-readable form of the raw information
 	 */
 	private function showRaw() {
+		wfProfileIn( __METHOD__ );
 		global $wgOut;
 		$wgOut->disable();
 		if( is_object( $this->target ) && $this->target->exists() ) {
@@ -71,9 +76,11 @@ class SpecialContributors extends IncludableSpecialPage {
 			header( 'Status: 404 Not Found', true, 404 );
 			echo( 'The requested target page does not exist.' );
 		}
+		wfProfileOut( __METHOD__ );	
 	}
 	
 	private function showNormal() {
+		wfProfileIn( __METHOD__ );
 		global $wgOut, $wgUser, $wgLang;
 		if( $this->target->exists() ) {
 			$total = 0;
@@ -96,6 +103,7 @@ class SpecialContributors extends IncludableSpecialPage {
 		} else {
 			$wgOut->addHtml( '<p>' . htmlspecialchars( wfMsg( 'contributors-nosuchpage', $this->target->getPrefixedText() ) ) . '</p>' );
 		}
+		wfProfileOut( __METHOD__ );	
 	}
 	
 	/**
@@ -108,6 +116,7 @@ class SpecialContributors extends IncludableSpecialPage {
 	 * @return array
 	 */
 	private function getMainContributors() {
+		wfProfileIn( __METHOD__ );
 		global $wgContributorsLimit, $wgContributorsThreshold;
 		$total = 0;
 		$ret = array();
@@ -120,6 +129,7 @@ class SpecialContributors extends IncludableSpecialPage {
 			$total++;
 		}
 		$others = count( $all ) - count( $ret );
+		wfProfileOut( __METHOD__ );	
 		return array( $ret, $others );
 	}
 	
