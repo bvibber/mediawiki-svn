@@ -27,7 +27,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	
 	function efProfileMonitorCss( &$css ) {
 		$file = dirname( __FILE__ ) . '/ProfileMonitor.css';
-		$css = "/*<![CDATA[*/\n" . htmlspecialchars( file_get_contents( $file ) ) . "\n/*]]>*/";
+		$css .= "/*<![CDATA[*/\n" . htmlspecialchars( file_get_contents( $file ) ) . "\n/*]]>*/";
 		return false;
 	}
 	
