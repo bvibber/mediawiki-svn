@@ -111,6 +111,7 @@ function getSuggestions() {
 		$orderBy = $rowText;
 	
 	$sql .= $searchCondition . " ORDER BY $orderBy LIMIT 10";
+	
 	$queryResult = $dbr->query($sql);
 	$idAttribute = new Attribute("id", "ID", "id");
 	
@@ -151,7 +152,7 @@ function getSuggestions() {
 }
 
 function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType) {
-	global $wgDefaultClassMids;
+//	global $wgDefaultClassMids;
 
 	$dbr = & wfGetDB(DB_SLAVE);
 	$sql = 'SELECT attribute_mid,spelling' .
@@ -165,8 +166,8 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 		' AND uw_class_attributes.attribute_type LIKE ' . $dbr->addQuotes($attributesType) .
 		' AND ((uw_class_membership.class_member_mid = ' . $objectId .
 		' AND ' . getLatestTransactionRestriction('uw_class_membership') . ')';
-	foreach ($wgDefaultClassMids as $mid)
-		$sql .= ' OR uw_class_attributes.class_mid = ' . $mid;
+//	foreach ($wgDefaultClassMids as $mid)
+//		$sql .= ' OR uw_class_attributes.class_mid = ' . $mid;
 	$sql .= ')';
 	return $sql;
 }
