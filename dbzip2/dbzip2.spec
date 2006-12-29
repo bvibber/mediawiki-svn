@@ -23,26 +23,8 @@ by default but can be started from init scripts.
 make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-install -d "$RPM_BUILD_ROOT/usr/lib/dbzip2"
-install -m 0644 \
-  BitShifter.py \
-  DistBits.py \
-  dbzutil.so \
-  sigcheck.py \
-  "$RPM_BUILD_ROOT/usr/lib/dbzip2/"
-install -m 0755 \
-  dbzip2 \
-  dbzip2d \
-  "$RPM_BUILD_ROOT/usr/lib/dbzip2/"
-install -d "$RPM_BUILD_ROOT/usr/bin"
-ln -s ../lib/dbzip2/dbzip2 "$RPM_BUILD_ROOT/usr/bin/dbzip2"
-ln -s ../lib/dbzip2/dbzip2d "$RPM_BUILD_ROOT/usr/bin/dbzip2d"
-install -d "$RPM_BUILD_ROOT/etc"
-install -m 0644 dbzip2.conf "$RPM_BUILD_ROOT/etc/dbzip2.conf"
-install -d "$RPM_BUILD_ROOT/etc/init.d"
-install -m 0755 dbzip2d.service "$RPM_BUILD_ROOT/etc/init.d/dbzip2d"
-install -d "$RPM_BUILD_ROOT/var/log"
+rm -rf "$RPM_BUILD_ROOT"
+make INSTALL_ROOT="$RPM_BUILD_ROOT" install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
