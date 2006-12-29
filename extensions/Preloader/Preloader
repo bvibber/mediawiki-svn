@@ -43,7 +43,7 @@ Installation can be verified through the Special:Version page on your wiki.
 Configuration of the boilerplate sources is done via the $wgPreloaderSource
 configuration variable, which takes the following format:
 
-	$wgPreloaderSource[ NAMESPACE ] = PAGE TITLE;
+	$wgPreloaderSource[ <namespace index> ] = PAGE TITLE;
 	
 For instance
 
