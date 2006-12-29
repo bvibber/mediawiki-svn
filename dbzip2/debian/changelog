@@ -1,3 +1,6 @@
 dbzip2 (0.0.3-1) unstable; urgency=low
-  * initial deb package
- -- Brion Vibber <brion@pobox.com>  Fri, 29 Dec 2006 16:06:24 +0000
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- brion <brion@pobox.com>  Fri, 29 Dec 2006 23:49:31 +0000
+
