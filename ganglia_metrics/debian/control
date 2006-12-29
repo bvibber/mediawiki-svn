@@ -1,0 +1,11 @@
+Source: ganglia-metrics
+Section: unknown
+Priority: optional
+Maintainer: Tim Starling <tstarling@wikimedia.org>
+Build-Depends: debhelper (>= 5), python (>= 2.3)
+Standards-Version: 3.7.2
+
+Package: ganglia-metrics
+Architecture: all
+Depends: python (>= 2.3)
+Description: Ganglia metric collection in python

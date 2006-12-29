@@ -1,2 +1,4 @@
 #!/usr/bin/python
-import ganglia_metrics.gmetricd
+import sys
+sys.path.append('/usr/lib/ganglia-metrics')
+import gmetricd
