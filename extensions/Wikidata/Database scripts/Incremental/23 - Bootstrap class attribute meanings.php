@@ -4,8 +4,6 @@
 // Script create several defined meanings, which are used to set class attribute levels
 // CAUTION: Script is updated to correct definitions and create an extra table to store the
 // bootstrapped meanings. Re-run wil create duplicate meanings.
-// CAUTION: Namespace::getIndexForName() does not seem to work from a script, 
-// therfore replace these by hardcoded indices where pages are created (probably expression.php)
 //
 
 define('MEDIAWIKI', true );

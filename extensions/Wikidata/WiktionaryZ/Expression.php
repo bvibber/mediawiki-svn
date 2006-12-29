@@ -1,6 +1,7 @@
 <?php
 
 require_once('Transaction.php');
+require_once('WikidataNamespaces.php');
 
 class Expression {
 	public $id;
@@ -20,8 +21,10 @@ class Expression {
 	}
 	
 	function createPage() {
-		return createPage(Namespace::getIndexForName("WiktionaryZ"), getPageTitle($this->spelling));
-//		return createPage(16, getPageTitle($this->spelling));
+		global
+			$expressionNameSpaceId;
+			
+		return createPage($expressionNameSpaceId, getPageTitle($this->spelling));
 	}
 	
 	function isBoundToDefinedMeaning($definedMeaningId) {
@@ -560,14 +563,16 @@ function addCollection($definedMeaningId, $collectionType) {
 }
 
 function addDefinedMeaning($definingExpressionId) {
+	global
+		$definedMeaningNameSpaceId;
+	
 	$definedMeaningId = newObjectId('uw_defined_meaning'); 
 	
 	$dbr = &wfGetDB(DB_MASTER);
 	$dbr->query("INSERT INTO uw_defined_meaning(defined_meaning_id, expression_id, add_transaction_id) values($definedMeaningId, $definingExpressionId, ". getUpdateTransactionId() .")");
 
 	$expression = getExpression($definingExpressionId);
-	$pageId = createPage(Namespace::getIndexForName("DefinedMeaning"), getPageTitle("$expression->spelling ($definedMeaningId)"));
-//	$pageId = createPage(22, getPageTitle("$expression->spelling ($definedMeaningId)"));
+	$pageId = createPage($definedMeaningNameSpaceId, getPageTitle("$expression->spelling ($definedMeaningId)"));
 	createInitialRevisionForPage($pageId, 'Created by adding defined meaning');
 	
 	return $definedMeaningId;
