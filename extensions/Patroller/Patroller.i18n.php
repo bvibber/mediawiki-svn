@@ -34,7 +34,7 @@ function efPatrollerMessages() {
 ),
 
 /* German (Raymond) */
-'en' => array(
+'de' => array(
 'patrol' => 'Kontrolle der Bearbeitungen',
 'patrol-endorse' => 'Bestätigen',
 'patrol-revert' => 'Zurücksetzen',
