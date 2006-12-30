@@ -2,7 +2,24 @@
 
 VERSION=0.0.3
 
+PACKAGE=dbzip2-$(VERSION)
+TARBALL=$(PACKAGE).tar.gz
+
 DESTDIR?=
+
+DEBFILES=\
+debian/changelog\
+debian/compat\
+debian/control\
+debian/copyright\
+debian/dbzip2.substvars\
+debian/dirs\
+debian/docs\
+debian/README.Debian\
+debian/rules
+
+DISTDIRS=\
+debian
 
 DISTFILES=\
 BitShifter.py\
@@ -18,14 +35,17 @@ dbzutil-module.c\
 dbzutil-setup.py\
 dbzutil-test.py\
 piperate\
-sigcheck.py
+sigcheck.py\
+$(DEBFILES)
 
 all: dbzutil.so
 
 clean:
 	rm -rf build
+	rm -rf debbuild
+	rm -rf tarbuild
 	rm -f dbzutil.so
-	rm -f dbzip2-$(VERSION).tar.gz
+	rm -f $(TARBALL)
 
 test: dbzutil.so
 	python dbzutil-test.py
@@ -34,14 +54,15 @@ test: dbzutil.so
 dbzutil.so: dbzutil-module.c dbzutil-setup.py
 	python dbzutil-setup.py build_ext -i
 
-dist: dbzip2-$(VERSION).tar.gz
+dist: $(TARBALL)
 
-dbzip2-$(VERSION).tar.gz: $(DISTFILES)
+$(TARBALL): $(DISTFILES)
 	rm -rf tarbuild
 	mkdir tarbuild
-	mkdir tarbuild/dbzip2-$(VERSION)
-	cp -p $(DISTFILES) tarbuild/dbzip2-$(VERSION)
-	cd tarbuild && tar zcvf ../dbzip2-$(VERSION).tar.gz dbzip2-$(VERSION)/
+	mkdir tarbuild/$(PACKAGE)
+	cd tarbuild/$(PACKAGE) && mkdir $(DISTDIRS)
+	for x in $(DISTFILES); do cp -p $$x tarbuild/$(PACKAGE)/$$x; done
+	cd tarbuild && tar zcvf ../$(TARBALL) $(PACKAGE)/
 	rm -rf tarbuild
 
 install:
@@ -65,13 +86,15 @@ install:
 	install -m 0755 dbzip2d.service "$(DESTDIR)/etc/init.d/dbzip2d"
 	install -d "$(DESTDIR)/var/log"
 
-rpm: dist dbzip2d.spec
-	cp -p dbzip2-$(VERSION).tar.gz /usr/src/redhat/SOURCES/
+rpm: $(TARBALL) dbzip2d.spec
+	cp -p $(TARBALL) /usr/src/redhat/SOURCES/
 	rpmbuild -ba dbzip2.spec
 
-deb: dist debian/control debian/rules
-	dpkg-buildpackage -rfakeroot
+deb: $(TARBALL) $(DEBFILES)
+	rm -rf debbuild
+	mkdir debbuild
+	cd debbuild && tar zxvf ../$(TARBALL)
+	cd debbuild/$(PACKAGE) && dpkg-buildpackage -rfakeroot
+	rm -rf debbuild/$(PACKAGE)
 
 debclean: clean
-	rm -rf debian/dbzip2
-	rm -rf debian/tmp
