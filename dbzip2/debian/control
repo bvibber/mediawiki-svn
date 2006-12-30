@@ -1,12 +1,15 @@
 Source: dbzip2
 Section: unknown
 Priority: optional
-Maintainer: brion <brion@pobox.com>
-Build-Depends: debhelper (>= 5)
+Maintainer: Brion Vibber <brion@pobox.com>
+Build-Depends: debhelper (>= 5), gcc-4.0, python-dev, libbz2-dev
 Standards-Version: 3.7.2
 
 Package: dbzip2
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: ${shlibs:Depends}, python, bzip2
+Description: Distributed bzip2 file compression client and server.
+ dbzip2 is a utility for compressing files in bzip2 format using
+ multiple local and network threads. It provides a client command,
+ dbzip2, and a network server dbzip2d. The server is not enabled
+ by default but can be started from init scripts.
