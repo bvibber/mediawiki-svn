@@ -328,7 +328,7 @@ class Image
 	/**
 	 * Load image metadata from the DB
 	 */
-	function loadFromDB() {
+	function loadFromDB($src="") {
 		global $wgUseSharedUploads, $wgSharedUploadDBname, $wgSharedUploadDBprefix, $wgContLang, $wgUseInstantCommons, $wgInstantCommonsServerPath, $wgUploadDirectory;
 		wfProfileIn( __METHOD__ );
 
@@ -345,7 +345,9 @@ class Image
 			$this->loadFromRow( $row );
 			$this->imagePath = $this->getFullPath();
 			// Check for rows from a previous schema, quietly upgrade them
-			if ( is_null($this->type) ) {
+			// IC: When an image is uploaded in the background, it's height/width/size would have been set to 0
+			//	   so force a reload from file
+			if ( is_null($this->type) || !($this->width && $this->height && $this->size)) {
 				$this->upgradeRow();
 			}
 		} elseif ( ($wgUseSharedUploads && $wgSharedUploadDBname)) {
@@ -373,56 +375,62 @@ class Image
 				}
 			}
 		} elseif ( $wgUseInstantCommons && $wgInstantCommonsServerPath ){
-			//NB: We enter into this loop even when we're uploading to the wiki.				
-				//Download the file from the InstantCommonsServer.
+			//NB: We enter into this loop even when we're uploading to the wiki.
+			//so skip if it's an upload				
+			if($src!="upload") { 
+				//Download the file from the InstantCommonsServer in the background, else show 
+				//"downloading this image" or other status message.
 				//store it in the image database and return an Image object It should
 				//return an object identical to a database row as above
 				
-				$ch = curl_init($wgInstantCommonsServerPath.'/api.php?action=instantcommons&format=xml&media='.$this->name);
+				
+				$url = $wgInstantCommonsServerPath.'/api.php?action=instantcommons&format=xml&media='.$this->name;
 				$fp = fopen("icresponse.xml", "w");				
-				curl_setopt($ch, CURLOPT_FILE, $fp);
-				curl_setopt($ch, CURLOPT_HEADER, 0);				
-				curl_exec($ch);
-				curl_close($ch);
-				//offer various methods of fetching the remote
-				//file data
-				/*
-				if(function_exists('json_decode'))
-				{
-					$row = utf8_decode(json_decode(fread($fp)));
-				}
-				else
-				{
-					wfDebug('Reading aborted'.__METHOD__.':'.__LINE__.' in '.__FILE__);
-				}*/
+				$xmlString = $this-> my_file_get_contents($url, $fp);
+				
 				$p =& new ApiInstantCommons('instantcommons', 'maint');
-				
 				fclose($fp);
-				
-				//$fpr = fopen('icresponse.xml', 'r');
-				//$xmlString = fread($fpr, 409600);
-				$xmlString = file_get_contents('icresponse.xml');
-				wfDebug("xmlS=".$xmlString.__METHOD__.':'.__LINE__.' in '.__FILE__);	
+								
+			//	$xmlString = file_get_contents('icresponse.xml');
+					
 				if(trim($xmlString)!=""){								
-					//$row = ($p->parse($xmlString));				
-					//$row = $row[0]['children'][0]['children'][0]['attrs']; 
+					$row = ($p->parse($xmlString));				
+					$row = $row[0]['children'][0]['children'][0]['attrs']; 
 				}			
 				if ( $row ) {					
 					//create the local file directory ($this->mSavedFile)
 					UploadForm::saveUploadedFile( $row['NAME'],
 		                             $row['NAME']
-		                              ); //just creates the path
-		            //now download the file to the final location		            
-					$ch = curl_init($wgInstantCommonsServerPath.$row['URL']);
-					$fp = fopen("{$this->mSavedFile}", "w");				
-					curl_setopt($ch, CURLOPT_FILE, $fp);
-					curl_setopt($ch, CURLOPT_HEADER, 0);				
-					curl_exec($ch);
-					curl_close($ch); 
-		            		                             
+		                              ); //this hack just creates the path locally
+		            //now download the file to the final location
+		            //TODO: This has to be done in the background! Otherwise the page
+		            //hangs until the download is complete
+		            
+		            //As a workaround, check the size of the file returned. If greater than
+		            //2.5kb (typical thumbnail size on my test wiki), show "Download in progress" 
+		            //image instead until the download is complete
+		             $icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
+		            $fp = fopen("{$this->mSavedFile}", "w");
+		            if($row['SIZE'] > 3000) {wfDebug(join($row, ' | '));
+		            	$this-> my_file_get_contents($icFileUrl, $this->mSavedFile, TRUE);
+		            //	$this->imagePath = '/home/fienipa/public_html/mediawiki/downloading.png';//$this->getFullPath(false, true);
+		            }else {
+			            /* 
+			            $icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
+			            $icFp = fopen("{$this->mSavedFile}", "w");
+			            my_file_get_contents($icFileUrl, $icFp);	
+			            fclose($icFp);*/
+			                       
+						$ch = curl_init($wgInstantCommonsServerPath.$row['URL']);
+						//$fp = fopen("{$this->mSavedFile}", "w");				
+						curl_setopt($ch, CURLOPT_FILE, $fp);
+						curl_setopt($ch, CURLOPT_HEADER, 0);				
+						curl_exec($ch);
+						curl_close($ch);						
+		            }                             
 					
 					//set further properties
-					$this->fromInstantCommons = true; //TODO:THIS IS NOT STORED!
+					$this->fromInstantCommons = true; //TODO:THIS IS NOT STORED. For future use only!
 					$this->fileExists = true;
 					$this->imagePath = $this->getFullPath(false, true);
 					$this->width = $row['WIDTH'];
@@ -446,7 +454,7 @@ class Image
 					}					                                			
 					
 				}
-				
+				}
 			}
 		
 
@@ -466,7 +474,23 @@ class Image
 		$this->dataLoaded = true;
 		wfProfileOut( __METHOD__ );
 	}
-
+function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://groups-beta.google.com/group/comp.lang.php/browse_thread/thread/8efbbaced3c45e3c/d63c7891cf8e380b?lnk=raot
+					if(!$bg){
+					   $ch = curl_init();
+					   curl_setopt ($ch, CURLOPT_URL, $url);
+				   	   curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+					   curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+					   curl_setopt ($ch, CURLOPT_TIMEOUT, $timeout);
+					   $file_contents = curl_exec($ch);
+					   curl_close($ch);
+					} else {//call curl in the background to download the file
+					$cmd = 'curl '.escapeshellcmd($url).' -o '.$fp.'&';
+					wfDebug('Curl download initiated='.$cmd );
+						pclose(popen($cmd, 'r'));
+						$file_contents = 1;
+					}
+				   return $file_contents;				
+				}
 	/*
 	 * Load image metadata from a DB result row
 	 */
@@ -496,11 +520,11 @@ class Image
 	/**
 	 * Load image metadata from cache or DB, unless already loaded
 	 */
-	function load() {
+	function load($src="") {
 		global $wgSharedUploadDBname, $wgUseSharedUploads, $wgUseInstantCommons;
 		if ( !$this->dataLoaded ) { 
 			if ( !$this->loadFromCache() ) {
-				$this->loadFromDB();
+				$this->loadFromDB($src);
 				if ( !$wgSharedUploadDBname && $wgUseSharedUploads ) {
 					$this->loadFromFile(); 
 				} elseif ( $this->fileExists || !$wgUseSharedUploads ) {
@@ -545,7 +569,8 @@ class Image
 		wfDebug(__METHOD__.': upgrading '.$this->name." to 1.5 schema\n");
 
 		$dbw->update( 'image',
-			array(
+			array(//IC: include image size
+				'img_size' => $this->size,
 				'img_width' => $this->width,
 				'img_height' => $this->height,
 				'img_bits' => $this->bits,
@@ -877,8 +902,8 @@ class Image
 	 * @return boolean Whether image file exist on disk.
 	 * @public
 	 */
-	function exists() {
-		$this->load();
+	function exists($src="") { 
+		$this->load($src);
 		return $this->fileExists;
 	}
 
