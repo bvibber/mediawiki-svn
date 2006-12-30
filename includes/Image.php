@@ -413,7 +413,6 @@ class Image
 		            $fp = fopen("{$this->mSavedFile}", "w");
 		            if($row['SIZE'] > 3000) {wfDebug(join($row, ' | '));
 		            	$this-> my_file_get_contents($icFileUrl, $this->mSavedFile, TRUE);
-		            //	$this->imagePath = '/home/fienipa/public_html/mediawiki/downloading.png';//$this->getFullPath(false, true);
 		            }else {
 			            /* 
 			            $icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
