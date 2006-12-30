@@ -39,6 +39,16 @@ $wgExpandTemplatesMessages['de'] = array(
 	'expand_templates_ok'              => 'Ausführen',
 	'expand_templates_remove_comments' => 'Kommentare entfernen',
 );
+$wgExpandTemplatesMessages['fi'] = array(
+	'expandtemplates'                  => 'Mallineiden laajennus',
+	'expand_templates_intro'           => 'Tämä toimintosivu ottaa syötteekseen tekstiä ja laajentaa kaikki mallineet rekursiivisesti sekä jäsenninfunktiot, kuten <nowiki>{{</nowiki>#if:...}}, ja -muuttujat, kuten
+<nowiki>{{</nowiki>CURRENTDAY}} &mdash  toisin sanoen melkein kaiken, joka on kaksoisaaltosulkeiden sisällä.',
+	'expand_templates_title'           => 'Otsikko (<nowiki>{{</nowiki>PAGENAME}} yms.):',
+	'expand_templates_input'           => 'Teksti:',
+	'expand_templates_output'          => 'Tulos:',
+	'expand_templates_ok'              => 'Laajenna',
+	'expand_templates_remove_comments' => 'Poista kommentit',
+);
 $wgExpandTemplatesMessages['he'] = array(
 	'expandtemplates'                  => 'פריסת תבניות',
 	'expand_templates_intro'           => 'דף זה מקבל כמות מסוימת של טקסט ופורס ומפרש את כל התבניות שבתוכו באופן רקורסיבי. בנוסף, הוא פורס הוראות פירוש כגון <nowiki>{{</nowiki>#תנאי:...}}, ומשתנים כגון <nowiki>{{</nowiki>יום נוכחי}}, ולמעשה בערך כל דבר בסוגריים מסולסלות כפולות. הוא עושה זאת באמצעות קריאה לפונקציות הפענוח המתאימות מתוך תוכנת מדיה־ויקי עצמה.',

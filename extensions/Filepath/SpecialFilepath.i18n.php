@@ -23,6 +23,11 @@ $wgFilepathMessages['de'] = array(
 	'filepath_page'   => 'Datei:',
 	'filepath_submit' => 'Pfad',
 );
+$wgFilepathMessages['fi'] = array(
+	'filepath'        => 'Tiedoston osoite',
+	'filepath_page'   => 'Tiedosto:',
+	'filepath_submit' => 'Osoite',
+);
 $wgFilepathMessages['fr'] = array(
 	'filepath'        => 'Chemin complet',
 	'filepath_page'   => 'Fichier:',

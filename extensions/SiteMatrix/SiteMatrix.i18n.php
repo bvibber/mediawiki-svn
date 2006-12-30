@@ -17,6 +17,9 @@ $wgSiteMatrixMessages['cs'] = array(
 $wgSiteMatrixMessages['de'] = array(
 	"sitematrix" => "Liste der Wikimedia Wikis",
 );
+$wgSiteMatrixMessages['fi'] = array(
+	"sitematrix" => "Luettelo Wikimedian wikeistä",
+);
 $wgSiteMatrixMessages['he'] = array(
 	"sitematrix" => "רשימת אתרי ויקי של ויקימדיה",
 );

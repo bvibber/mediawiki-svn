@@ -34,6 +34,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'removed bot status from [[$1]]',
 ),
 
+/* Finnish (Niklas Laxström) */
+'fi' => array(
+'makebot' => 'Anna tai poista botti-merkintä',
+'makebot-header' => "'''Paikallinen byrokraatti voi antaa tai poista [[Ohje:Botti|botti-merkinnän]] toiselle käyttäjätunnukselle.'''<br />Botti-merkintä piilottaa botti-tunnuksella tehdyt muokkaukset [[Special:Recentchanges|tuoreista muutoksista]] ja vastaavista listoista. Merkintä on hyödyllinen, jos tunnuksella tehdään automaattisia muutoksia. Merkinnän antaminen tai poistaminen tulee tapahtua voimassa olevien käytäntöjen mukaan.",
+'makebot-username' => 'Tunnus:',
+'makebot-search' => 'Hae',
+'makebot-isbot' => '[[User:$1|$1]] on botti.',
+'makebot-notbot' => '[[User:$1|$1]] ei ole botti.',
+'makebot-privileged' => '[[User:$1|$1]] on [[Special:Listadmins|ylläpitäjä tai byrokraatti]], eikä hänelle voida myöntää botti-merkintää.',
+'makebot-change' => 'Muuta merkintää:',
+'makebot-grant' => 'Anna',
+'makebot-revoke' => 'Poista',
+'makebot-comment' => 'Kommentti:',
+'makebot-granted' => '[[User:$1|$1]] on nyt botti.',
+'makebot-revoked' => '[[User:$1|$1]] ei ole enää botti.',
+'makebot-logpage' => 'Botti-loki',
+'makebot-logpagetext' => 'Tämä on loki muutoksista käyttäjätunnusten [[Ohje:Botti|botti-merkintään]].',
+'makebot-logentrygrant' => 'antoi botti-merkinnän tunnukselle [[$1]]',
+'makebot-logentryrevoke' => 'poisti botti-merkinnän tunnukselta [[$1]]',
+),
+
 /* French (Bertrand Grondin) */
 'fr' => array(
 'makebot' => 'Accorder ou révoquer le statut de Bot',
