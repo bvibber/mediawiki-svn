@@ -27,7 +27,6 @@
 include_once ( "gissettings.php" ) ;
 
 require_once( "geo.php" );
-require_once( "database.php" );
 require_once( 'greatcircle.php' );
 
 /**

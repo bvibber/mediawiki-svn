@@ -48,8 +48,10 @@ $wgExtensionFunctions[] = "wfGeoExtension";
  *  Installer
  */
 function wfGeoExtension () {
-	global $wgParser ;
-	$wgParser->setHook ( 'geo' , 'ParseGeo' ) ;
+	global $wgParser, $wgHooks ;
+	$wgParser->setHook ( 'geo' , 'parseGeo' ) ;
+	$wgHooks['ArticleSaveComplete'][] = 'articleSaveGeo';
+	$wgHooks['ArticleDelete'][] = 'articleDeleteGeo';
 }
 
 if ( !function_exists( 'extAddSpecialPage' ) ) {
@@ -65,6 +67,61 @@ $wgExtensionCredits['specialpage'][] = array(
 
 global $wgAutoloadClasses;
 $wgAutoloadClasses['GeoParam'] = dirname(__FILE__) . '/GeoParam.php';
+$wgAutoloadClasses['GisDatabase'] = dirname(__FILE__) . '/GisDatabase.php';
+
+
+/**
+ *  Hook function called every time a page is saved
+ *  Use the ArticleSaveComplete instead of ArticleSave since the ID is
+ *  not available upon ArticleSave for new articles
+ */
+function articleSaveGeo ( $article, $user, $text ) 
+{
+	$id = $article->getID();
+
+	$g = new GisDatabase();
+
+	$g->delete_position( $id );
+
+	$tag = 'geo';
+	$gis_content = array();
+// !JF1
+	$text = Parser::extractTagsAndParams( array( $tag ), $text, $gis_content );
+	foreach( $gis_content as $marker => $tagresult ) {
+		$tagname = $tagresult[0];
+		$content = $tagresult[1];
+		$params = $tagresult[2];
+		$full = $tagresult[3];
+		
+		if ( $tagname != 'geo' ) {
+			continue;
+		}
+
+		$p = new GeoParam( $content );
+		$attr = $p->get_attr();
+
+		$g->add_position( $id,
+				   $p->latdeg_min, $p->londeg_min,
+				   $p->latdeg_max, $p->londeg_max,
+				   $attr['globe'],
+				   $attr['type'], $attr['arg:type'] );
+	}
+	return true;
+}
+
+/**
+ *  Hook function called every time a page is deleted
+ */
+function articleDeleteGeo ( $article ) 
+{
+	$id = $article->getID();
+
+	$g = new GisDatabase();
+
+	$g->delete_position( $id );
+
+	return true;
+}
 
 
 /**
@@ -72,7 +129,7 @@ $wgAutoloadClasses['GeoParam'] = dirname(__FILE__) . '/GeoParam.php';
  *
  *  Return markup, but also a pointer to Map sources
  */
-function ParseGeo ( $text, $params, &$parser ) {
+function parseGeo ( $text, $params, &$parser ) {
 	global $wgUser;
 
 	$geo = new GeoParam( $text );
@@ -102,21 +159,6 @@ function ParseGeo ( $text, $params, &$parser ) {
 	// !JF1 Replace Special: by NS call.
 	return $skin->makeKnownLink( 'Special:Geo', $geo->get_markup(), $geo->get_param_string() );
 
-	// !JF1
-	/*
-	global $wgMapsourcesURL;
-	if ( isset ( $wgMapsourcesURL ) ) {
-		return '<a href="'
-			. $wgMapsourcesURL . "?geo=" . urlencode($text)
-			. '&title=' . $geo->title
-			. '">'
-			. $geo->get_markup()
-			. '</a>';
-	} else {
-		# Mapsources extension not present, so just do the markup
-		return $geo->get_markup();
-	}
-	*/
 }
 
 ?>

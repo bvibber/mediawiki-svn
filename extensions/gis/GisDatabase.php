@@ -2,11 +2,6 @@
 /*
  *  Maintain a database of articles containing the <GEO> tag
  *
- *  To install, put the following in your LocalSettings.php
- *
-
-include( "extensions/gis/database.php" );
-
  *
  *  The database also needs the table given in "gisdb.sql" to be added.
  *
@@ -28,73 +23,6 @@ include( "extensions/gis/database.php" );
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-
-$wgExtensionFunctions[] = "wfGISDatabaseExtension";
-
-require_once( "geo.php" );
-
-/**
- *  Hook up
- */
-function wfGISDatabaseExtension ()
-{
-	global $wgHooks ;
-	$wgHooks['ArticleSaveComplete'][] = 'article_save_geo';
-	$wgHooks['ArticleDelete'][] = 'article_delete_geo';
-}
-
-/**
- *  Hook function called every time a page is saved
- *  Use the ArticleSaveComplete instead of ArticleSave since the ID is
- *  not available upon ArticleSave for new articles
- */
-function article_save_geo ( $article, $user, $text ) 
-{
-	$id = $article->getID();
-
-	$g = new GisDatabase();
-
-	$g->delete_position( $id );
-
-	$tag = 'geo';
-	$gis_content = array();
-// !JF1
-	$text = Parser::extractTagsAndParams( array( $tag ), $text, $gis_content );
-	foreach( $gis_content as $marker => $tagresult ) {
-		$tagname = $tagresult[0];
-		$content = $tagresult[1];
-		$params = $tagresult[2];
-		$full = $tagresult[3];
-		
-		if ( $tagname != 'geo' ) {
-			continue;
-		}
-
-		$p = new GeoParam( $content );
-		$attr = $p->get_attr();
-
-		$g->add_position( $id,
-				   $p->latdeg_min, $p->londeg_min,
-				   $p->latdeg_max, $p->londeg_max,
-				   $attr['globe'],
-				   $attr['type'], $attr['arg:type'] );
-	}
-	return true;
-}
-
-/**
- *  Hook function called every time a page is deleted
- */
-function article_delete_geo ( $article ) 
-{
-	$id = $article->getID();
-
-	$g = new GisDatabase();
-
-	$g->delete_position( $id );
-
-	return true;
-}
 
 /**
  *

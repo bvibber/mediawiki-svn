@@ -17,7 +17,7 @@ en:User:Egil
 
 Installation
 
-   The gis extension is compatible with both version 1.4 and 1.5 of
+   The gis extension is compatible with both version 1.9 of
    MediaWiki.
 
    The extension can be found under extensions/gis in the MediaWiki CVS
@@ -27,7 +27,6 @@ Installation
 
    $wgMapsourcesURL = "extensions/gis/index.php";
    include( "extensions/gis/geo.php" );
-   include( "extensions/gis/database.php" );
 
    If the $wgMapsourcesURL definition is omitted, the geo tag will not
    include a link to the map sources.
