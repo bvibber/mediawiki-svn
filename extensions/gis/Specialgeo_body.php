@@ -5,7 +5,7 @@
  *
  *  This extension was designed to work together with the geo tag 
  *  extension (geo.php). It can be useful in its own right also, but
- *  class geo_param from geo.php needs to be avalibale
+ *  class GeoParam from geo.php needs to be avalibale
  *
  *  To install, remember to tune the settings in "gissettings.php".
  *
@@ -32,7 +32,7 @@
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-        echo "DeSysop extension\n";
+        echo "GIS extension\n";
         exit( 1 );
 }
 
@@ -52,16 +52,39 @@ class GeoPage extends SpecialPage {
         }
 
 	function execute( $subpage ) {
-		global $wgOut, $wgRequest;
-		$wgOut->addHTML( '<form><select name="type"><option>Map sources</option>
-<option value="near">Nearby places</option>
-<option value="maparea">Not yet sure what this is</option></select></form>' );
-		if ( $wgRequest->getVal( 'type' ) == 'near' ) {
+		global $wgOut, $wgRequest, $wgCookiePrefix;
+		$params = $wgRequest->getValues();
+
+		$wgOut->addHTML( '<form><select name="subaction"><option>Map sources</option>
+<option value="near" ' . ( $params['subaction'] == 'near' ? ' selected' : '' )  .'>Nearby places</option>
+</select>' );
+# <option value="maparea">Not yet sure what this is</option></select>' );
+		if ( $params['subaction'] == 'near' ) {
+			$wgOut->addHTML( '<select name="dist">' );
+			if ( isset( $params['dist'] ) ) {
+				$wgOut->addHTML( "<option value=\"{$params['dist']}\">{$params['dist']} km</option>" );
+			}
+			$distances = array(1000,100,10,1);
+			foreach ( $distances as $d ) {
+				$wgOut->addHTML( "<option value=\"{$d}\">{$d} km</option>" );
+			}
+			$wgOut->addHTML( '</select>' );
+			unset( $params['dist'] );
+		}
+		unset( $params['subaction'] );
+		unset( $params[$wgCookiePrefix.'_session'] );
+		
+		foreach ( $params as $key => $val ) {
+			$wgOut->addHTML( "<input type=\"hidden\" name=\"$key\" value=\"$val\">\n" );
+		}
+		$wgOut->addHTML( "<input type=\"submit\" /></form>\n" );
+
+		if ( $wgRequest->getVal( 'subaction' ) == 'near' ) {
 			require_once('neighbors.php');
 			$dist = $wgRequest->getVal( 'dist', 1000 );
 			$bsl = new neighbors( $dist );
 			$bsl->show();
-		} elseif ( $wgRequest->getVal( 'type' ) == 'maparea' ) {
+		} elseif ( $wgRequest->getVal( 'subaction' ) == 'maparea' ) {
 			require_once('maparea.php');
 			$action = $wgRequest->getVal( 'action' );
 			$bsl = new maparea();

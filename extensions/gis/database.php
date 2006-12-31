@@ -52,7 +52,7 @@ function article_save_geo ( $article, $user, $text )
 {
 	$id = $article->getID();
 
-	$g = new gis_database();
+	$g = new GisDatabase();
 
 	$g->delete_position( $id );
 
@@ -70,7 +70,7 @@ function article_save_geo ( $article, $user, $text )
 			continue;
 		}
 
-		$p = new geo_param( $content );
+		$p = new GeoParam( $content );
 		$attr = $p->get_attr();
 
 		$g->add_position( $id,
@@ -89,7 +89,7 @@ function article_delete_geo ( $article )
 {
 	$id = $article->getID();
 
-	$g = new gis_database();
+	$g = new GisDatabase();
 
 	$g->delete_position( $id );
 
@@ -99,14 +99,14 @@ function article_delete_geo ( $article )
 /**
  *
  */
-class gis_database {
+class GisDatabase {
 
 	var $db;
 	var $result;
 
 	var $version;
 
-	function gis_database()
+	function GisDatabase()
 	{
 		$this->db =& wfGetDB( DB_MASTER );
 
@@ -120,7 +120,7 @@ class gis_database {
 	 */
 	function delete_position( $id )
 	{
-		$fname = 'gis_database::delete_positions';
+		$fname = 'GisDatabase::delete_positions';
 
 		$this->db->delete( 'gis', array( 'gis_page' => $id ), $fname);
 	}
@@ -131,7 +131,7 @@ class gis_database {
 	function add_position( $id, $latmin, $lonmin, 
 			       $latmax, $lonmax, $globe, $type, $type_arg )
 	{
-		$fname = 'gis_database::add_position';
+		$fname = 'GisDatabase::add_position';
 
 		if ($id == 0) return; # should not happen...
 
@@ -221,7 +221,7 @@ class gis_database {
 	 */
 	 function select_position( $condition )
 	 {
-		$fname = 'gis_database::select_position';
+		$fname = 'GisDatabase::select_position';
 
 		# BUG: use selectRow instead
 		$this->result = $this->db->select( array( 'gis', 'page' ),

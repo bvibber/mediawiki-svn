@@ -37,7 +37,7 @@ class maparea {
 
 	function maparea()
 	{
-		$this->p = new geo_param();
+		$this->p = new GeoParam();
 		$this->attr = $this->p->get_attr();
 	}
 
@@ -73,7 +73,7 @@ class maparea {
 
 	function make_output()
 	{
-		$g = new gis_database();
+		$g = new GisDatabase();
 /*
 		$g->select_area( $this->p->latdeg_min, $this->p->londeg_min,
 				 $this->p->latdeg_max, $this->p->londeg_max,
@@ -139,8 +139,8 @@ class maparea {
 		#  NOTE: This is the existing wikmap format
 		#  Simplify when wikmaps understand decimal degrees
 		#
-		$a = geo_param::make_minsec( $lat );
-		$b = geo_param::make_minsec( $lon );
+		$a = GeoParam::make_minsec( $lat );
+		$b = GeoParam::make_minsec( $lon );
 		$out = "";
 		if ($lat < 0) $out .= "-";
 		if (intval(abs( $a['deg'])) <= 9) $out .= "0";

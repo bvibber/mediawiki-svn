@@ -5,7 +5,7 @@
  *
  *  This extension was designed to work together with the geo tag 
  *  extension (geo.php). It can be useful in its own right also, but
- *  class geo_param from geo.php needs to be avalibale
+ *  class GeoParam from geo.php needs to be avalibale
  *
  *  To install, remember to tune the settings in "gissettings.php".
  *
@@ -101,7 +101,7 @@ if ( $wgRequest->getVal('BBOX', '') ==  '' ) {
 	$tr_lon = $coords[2];
 	$tr_lat = $coords[3];
 
-	$geodb = new gis_database();
+	$geodb = new GisDatabase();
 	$geodb->select_area( $bl_lat, $bl_lon, $tr_lat, $tr_lon );
 	while (($place = $geodb->fetch_position())) {
 		$nt = Title::makeTitle( $place->page_namespace, $place->page_title );

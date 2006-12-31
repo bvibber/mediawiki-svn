@@ -41,7 +41,7 @@ class neighbors {
 
 	function neighbors( $dist ) 
 	{
-		$this->p = new geo_param();
+		$this->p = new GeoParam();
 		$this->d = $dist;
 		if ($this->d <= 0) $this->d = 1000; /* default to 1000 km */
 		$this->title = $this->p->title;
@@ -73,14 +73,14 @@ class neighbors {
 		$lat0 = $this->p->latdeg;
 		$lon0 = $this->p->londeg;
 
-		$g = new gis_database();
-		@$g->select_radius_m( $lat0, $lon0, $this->d * 1000,
+		$g = new GisDatabase();
+		$g->select_radius_m( $lat0, $lon0, $this->d * 1000,
 				     $this->attr['globe'], $this->attr['type'],
 				     $this->attr['arg:type'] );
 		$all = array();
 		$all_pos = array(); /* temporary store reqd due to sort */
 
-		while (($x = $g->fetch_position())) {
+		while ( ( $x = $g->fetch_position() ) ) {
 			$id = $x->gis_page;
 			$lat = ($x->gis_latitude_min+$x->gis_latitude_max)/2;
 			$lon = ($x->gis_longitude_min+$x->gis_longitude_max)/2;
@@ -115,39 +115,40 @@ class neighbors {
 		       . $this->p->make_position($lat0,$lon0)
 		       . "''<br /><hr />\r\n";
 
+		$table="";
 		while (list($id, $d) = each($all)) {
-			$out .= $this->show_location($id, $d, $all_pos[$id]);
+			$table .= $this->show_location($id, $d, $all_pos[$id]);
 		}
-		return $out;
+		return "$out\n<table class=\"gisneighbourtable\">$table</table>\n";
 	}
 	
 	function show_location( $id, $d, $pos )
 	{
 		$id = $pos->gis_page;
 
-		$out = "'''[[".$pos['name']."]]''' ";
+		$out = "<tr><th>[[{$pos['name']}]]</th>";
 
 		$type = $pos['type'];
-		if ($type != "" and $type != "unknown") {
-			$out .= "(".$type .") ";
-		}
+		
+		$out .= "<td>$type</td>";
 		if ($d < 1000) {
-			$out .= round($d)." m ";
+			$out .= '<td>'.round($d).' m</td>';
 		} elseif ($d < 10000) {
-			$out .= round($d/100)/10 ." km ";
+			$out .= "<td>".round($d/100)/10 ." km</td>";
 		} else {
 			$d = round($d/1000);
+			$dx = "";
 			if ($d >= 1000) {
 				$m = floor($d/1000);
-				$out .= $m.",";
+				$dx .= $m.",";
 				$d -= $m*1000;
 			}
-			$out .= $d." km ";
+			$out .= "<td>$dx$d km</td>";
 		}
-		return $out . $pos['octant'] . " (bearing "
+		return "$out<td>{$pos['octant']}</td><td>bearing "
 		       . round($pos['heading']) . "&deg; towards "
 		       . $this->p->make_position($pos['lat'],$pos['lon'])
-		       . ")<br />\r\n";
+		       . "</td></tr>\r\n";
 	}
 }
 ?>

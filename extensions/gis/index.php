@@ -5,7 +5,7 @@
  *
  *  This extension was designed to work together with the geo tag 
  *  extension (geo.php). It can be useful in its own right also, but
- *  class geo_param from geo.php needs to be avalibale
+ *  class GeoParam from geo.php needs to be avalibale
  *
  *  To install, remember to tune the settings in "gissettings.php".
  *
