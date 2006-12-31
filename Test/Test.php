@@ -181,13 +181,13 @@ function diag($message)
 function include_ok( $file, $desc = '' )
 {
     $pass = include $file;
-    return proclaim( $pass, $desc );
+    return proclaim( $pass, $desc == '' ? "include $file" : $desc );
 }
 
 function require_ok( $file, $desc = '' )
 {
     $pass = require $file;
-    return proclaim( $pass, $desc );
+    return proclaim( $pass, $desc == '' ? "require $file" : $desc );
 } 
 
 function is_deeply( $got, $expected, $desc = '' )
