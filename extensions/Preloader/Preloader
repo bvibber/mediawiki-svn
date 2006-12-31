@@ -1,6 +1,6 @@
 PRELOADER EXTENSION
 
-	Version 1.0
+	Version 1.1
 	© 2006 Rob Church
 
 == Overview ==
@@ -63,4 +63,9 @@ Please submit comments, suggestions and bug reports to <robchur@gmail.com>.
 
 17/12/2006
 Version 1.0
-	 * Initial release
+	* Initial release
+
+31/12/2006
+Version 1.1
+	* Trim preloaded text
+	* Fix newlines in <nopreload></nopreload> tags

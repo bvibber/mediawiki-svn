@@ -81,13 +81,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 		
 		/**
-		 * Remove <nopreload> sections from the text
+		 * Remove <nopreload> sections from the text and trim whitespace
 		 *
 		 * @param $text
 		 * @return string
 		 */
 		function transform( $text ) {
-			return preg_replace( '/<nopreload>.*<\/nopreload>/', '', $text );
+			return trim( preg_replace( '/<nopreload>.*<\/nopreload>/s', '', $text ) );
 		}
 		
 		/** Register the hook functions with MediaWiki */
