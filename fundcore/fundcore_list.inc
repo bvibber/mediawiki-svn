@@ -39,12 +39,6 @@ function _fundcore_filter($params)
 	  ),
 	);
 	
-	$fields['filter']['commented'] = array(
-	 '#type' => 'checkbox',
-	 '#title' => t('Only show contributions with comments'),
-	 '#default_value' => $params['commented'],
-	);	
-
 	$fields['filter']['minimum'] = array(
 	 '#type' => 'textfield',
 	 '#size' => 5,
@@ -52,6 +46,12 @@ function _fundcore_filter($params)
 	 '#default_value' => $params['minimum'],
 	);
 	
+	$fields['filter']['commented'] = array(
+	 '#type' => 'checkbox',
+	 '#title' => t('Only show contributions with comments'),
+	 '#default_value' => $params['commented'],
+	);	
+
 	$fields['filter']['submit'] = array(
 	 '#type' => 'submit',
 	 '#value' => t('View results'),
