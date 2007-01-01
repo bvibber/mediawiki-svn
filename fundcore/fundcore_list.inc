@@ -60,6 +60,12 @@ function _fundcore_filter($start_param, $end_param, $commented, $currency, $mini
 	 '#title' => t('Only show contributions with comments'),
 	 '#default_value' => $commented,
 	);	
+
+	$fields['filter']['minimum'] = array(
+	 '#type' => 'textfield',
+	 '#title' => t('Minimum value (%currency or equivalent)', array('%currency' => 'USD')),
+	 '#default_value' => $minimum,
+	);
 	
 	$fields['filter']['submit'] = array(
 	 '#type' => 'submit',
@@ -71,7 +77,7 @@ function _fundcore_filter($start_param, $end_param, $commented, $currency, $mini
 
 function fundcore_filter_submit($form_id, $edit)
 {
-	drupal_goto('fundcore/list/' . $edit['start']['year'] . '-' . $edit['start']['month'] . '-' . $edit['start']['day'] . '/' .$edit['end']['year'] . '-' . $edit['end']['month'] . '-' . $edit['end']['day'] . '/' . $edit['only_with_comments'] . '/' . $edit['currency'] . '/');
+	drupal_goto('fundcore/list/' . $edit['start']['year'] . '-' . $edit['start']['month'] . '-' . $edit['start']['day'] . '/' .$edit['end']['year'] . '-' . $edit['end']['month'] . '-' . $edit['end']['day'] . '/' . $edit['only_with_comments'] . '/' . $edit['currency'] . '/' . $edit['minimum'] . '/');
 }
 
 function _fundcore_results($start_param, $end_param, $commented, $currency, $minimum)
@@ -105,10 +111,15 @@ function _fundcore_results($start_param, $end_param, $commented, $currency, $min
 	{
 		$sql .= ' AND (c.source LIKE "s%%") ';
 	}
+
+	if ($minimum != '')
+	{
+		$sql .= ' AND total_amount >= %d';
+	}
 	
 	$sql .= ' ORDER BY receive_date DESC ';
 	db_set_active('fundcore_civicrm');
-	$res =& pager_query($sql, 25, 0, NULL, $sql_start, $sql_end, $currency);
+	$res =& pager_query($sql, 25, 0, NULL, $sql_start, $sql_end, $currency, $minimum);
 	db_set_active();
 
 	//$res =& db_queryd($sql, $sql_start, $sql_end);
