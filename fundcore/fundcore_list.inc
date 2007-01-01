@@ -113,7 +113,8 @@ function _fundcore_results($params)
 	drupal_set_message($params['minimum']);
 	drupal_set_message($sql);
 	db_set_active('fundcore_civicrm');
-	$res =& pager_query($sql, 25, 0, NULL, $sql_start, $sql_end, $params['currency'], $params['minimum']);
+	//$res =& pager_query($sql, 25, 0, NULL, $sql_start, $sql_end, $params['currency'], $params['minimum']);
+	$res =& db_queryd($sql, $sql_start, $sql_end, $params['currency'], $params['minimum']);
 	db_set_active();
 
 	//$res =& db_queryd($sql, $sql_start, $sql_end);
