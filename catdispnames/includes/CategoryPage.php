@@ -157,11 +157,10 @@ class CategoryViewer {
 	/**
 	 * Add a miscellaneous page
 	 */
-	function addPage( $title, $sortkey, $pageLength ) {
+	function addPage( $title, $sortkey, $pageLength, $dispTitle = '' ) {
 		global $wgContLang;
-		$this->articles[] = $this->getSkin()->makeSizeLinkObj( 
-			$pageLength, $title, $wgContLang->convert( $title->getPrefixedText() ) 
-		);
+		$disp = $this->getDisplayTitle( $title, $dispTitle );
+		$this->articles[] = $this->getSkin()->makeSizeLinkObj( $pageLength, $title, $disp );
 		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $sortkey ) );
 	}
 
@@ -188,7 +187,7 @@ class CategoryViewer {
 		}
 		$res = $dbr->select(
 			array( 'page', 'categorylinks' ),
-			array( 'page_title', 'page_namespace', 'page_len', 'cl_sortkey' ),
+			array( 'page_title', 'page_namespace', 'page_len', 'cl_sortkey', 'cl_dispname' ),
 			array( $pageCondition,
 			       'cl_from          =  page_id',
 			       'cl_to'           => $this->title->getDBKey()),
@@ -215,7 +214,7 @@ class CategoryViewer {
 			} elseif( $title->getNamespace() == NS_IMAGE ) {
 				$this->addImage( $title, $x->cl_sortkey, $x->page_len );
 			} else {
-				$this->addPage( $title, $x->cl_sortkey, $x->page_len );
+				$this->addPage( $title, $x->cl_sortkey, $x->page_len, $x->cl_dispname );
 			}
 		}
 		$dbr->freeResult( $res );
@@ -407,6 +406,20 @@ class CategoryViewer {
 
 		return "($prevLink) ($nextLink)";
 	}
+	
+	/**
+	 * Determine whether the page title or the display title
+	 * should be used, and return appropriately
+	 *
+	 * @param $title Title
+	 * @param $disp Possible display title
+	 * @return string
+	 */
+	private function getDisplayTitle( $title, $disp ) {
+		global $wgContLang;
+		return $wgContLang->convert( strlen( $disp ) > 0 ? $disp : $title->getPrefixedText() );
+	}
+	
 }
 
 

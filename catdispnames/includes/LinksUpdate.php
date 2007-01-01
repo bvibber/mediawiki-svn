@@ -19,7 +19,7 @@ class LinksUpdate {
 		$mImages,        //!< DB keys of the images used, in the array key only
 		$mTemplates,     //!< Map of title strings to IDs for the template references, including broken ones
 		$mExternals,     //!< URLs of external links, array key only
-		$mCategories,    //!< Map of category names to sort keys
+		$mCategories,    //!< Map of category names to sort keys and display titles
 		$mInterlangs,    //!< Map of language codes to titles
 		$mDb,            //!< Database connection reference
 		$mOptions,       //!< SELECT options to be used (array)
@@ -397,11 +397,13 @@ class LinksUpdate {
 	function getCategoryInsertions( $existing = array() ) {
 		$diffs = array_diff_assoc( $this->mCategories, $existing );
 		$arr = array();
-		foreach ( $diffs as $name => $sortkey ) {
+		foreach ( $diffs as $name => $extra ) {
+			list( $sort, $disp ) = $extra;
 			$arr[] = array(
 				'cl_from'    => $this->mId,
 				'cl_to'      => $name,
-				'cl_sortkey' => $sortkey,
+				'cl_sortkey' => $sort,
+				'cl_dispname' => $disp,
 				'cl_timestamp' => $this->mDb->timestamp()
 			);
 		}
@@ -567,16 +569,17 @@ class LinksUpdate {
 	}
 
 	/**
-	 * Get an array of existing categories, with the name in the key and sort key in the value.
+	 * Get an array of existing categories, with the name in the key and
+	 * and the sort key and display titles in the value.
 	 * @private
 	 */
 	function getExistingCategories() {
 		$fname = 'LinksUpdate::getExistingCategories';
-		$res = $this->mDb->select( 'categorylinks', array( 'cl_to', 'cl_sortkey' ),
+		$res = $this->mDb->select( 'categorylinks', array( 'cl_to', 'cl_sortkey', 'cl_dispname' ),
 			array( 'cl_from' => $this->mId ), $fname, $this->mOptions );
 		$arr = array();
 		while ( $row = $this->mDb->fetchObject( $res ) ) {
-			$arr[$row->cl_to] = $row->cl_sortkey;
+			$arr[$row->cl_to] = array( $row->cl_sortkey, $row->cl_dispname );
 		}
 		$this->mDb->freeResult( $res );
 		return $arr;

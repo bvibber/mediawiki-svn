@@ -1753,13 +1753,26 @@ class Parser
 
 					if ( $wasblank ) {
 						$sortkey = $this->getDefaultSort();
+						$disptitle = '';
 					} else {
-						$sortkey = $text;
+						if( strpos( $text, '|' ) !== false ) {
+							$parts = explode( '|', $text, 2 );
+							$parts[0] = trim( $parts[0] );
+							# Sanity check for blank sort key
+							$sortkey = strlen( $parts[0] ) > 0 ? $parts[0] : $this->getDefaultSort();
+							$disptitle = trim( $parts[1] );
+						} else {
+							# Sort key only
+							$sortkey = $text;
+							$disptitle = '';
+						}
 					}
+					$disptitle = Sanitizer::decodeCharReferences( $disptitle );
+					$disptitle = str_replace( "\n", '', $disptitle );
 					$sortkey = Sanitizer::decodeCharReferences( $sortkey );
 					$sortkey = str_replace( "\n", '', $sortkey );
 					$sortkey = $wgContLang->convertCategoryKey( $sortkey );
-					$this->mOutput->addCategory( $nt->getDBkey(), $sortkey );
+					$this->mOutput->addCategory( $nt->getDBkey(), $sortkey, $disptitle );
 
 					/**
 					 * Strip the whitespace Category links produce, see bug 87
@@ -4692,7 +4705,7 @@ class ParserOutput
 {
 	var $mText,             # The output text
 		$mLanguageLinks,    # List of the full text of language links, in the order they appear
-		$mCategories,       # Map of category names to sort keys
+		$mCategories,       # Map of category names to sort keys and display titles
 		$mContainsOldMagic, # Boolean variable indicating if the input contained variables like {{CURRENTDAY}}
 		$mCacheTime,        # Time when this object was generated, or -1 for uncacheable. Used in ParserCache.
 		$mVersion,          # Compatibility check
@@ -4748,7 +4761,7 @@ class ParserOutput
 	function setTitleText( $t )          { return wfSetVar($this->mTitleText, $t); }
 	function setSubtitle( $st )          { return wfSetVar( $this->mSubtitle, $st ); }
 
-	function addCategory( $c, $sort )    { $this->mCategories[$c] = $sort; }
+	function addCategory( $c, $sort, $disp )    { $this->mCategories[$c] = array( $sort, $disp ); }
 	function addImage( $name )           { $this->mImages[$name] = 1; }
 	function addLanguageLink( $t )       { $this->mLanguageLinks[] = $t; }
 	function addExternalLink( $url )     { $this->mExternalLinks[$url] = 1; }
