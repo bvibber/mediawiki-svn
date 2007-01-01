@@ -78,13 +78,11 @@ function fundcore_page_browser()
 
 function fundcore_page_main()
 {
-	$content .= '<p><img src="http://upload.wikimedia.org/fundraising/2006/meter.png" alt="..." style="margin-bottom: 2px;" />';
-	$content .= '<br /><a href="http://wikimediafoundation.org/wiki/' . t('Fundraising') . '/"><strong>' . t('Make a Donation') . '</strong></a></p>';
-	$content .= '<p><strong>Q:</strong> Why did the meter jump up over $200,000?';
-	$content .= '<br /><strong>A:</strong> We added the anonymous matching donation.</p>';
+	$content .= '<p><img src="' . variable_get('fundcore_meter_url', '') . '" alt="..." style="margin-bottom: 2px;" />';
+	$content .= '<br /><a href="' . variable_get('fundcore_contribution_url', '') . '"><strong>' . t(variable_get('fundcore_contribution_request', '')) . '</strong></a></p>';
 
-	$content .= '<p><strong>Coming soon:</strong> RSS feeds, maybe an IRC bot, and ';
-	$content .= '<a href="http://meta.wikimedia.org/wiki/Fundraising_C.O.R.E.">more translations</a>.</p>';
+	$content .= variable_get('fundcore_message', '');
+
 	$content .= _fundcore_filter();
 	$content .= _fundcore_results();
 	return $content;
@@ -103,14 +101,14 @@ function fundcore_settings()
 	  '#type' => 'textfield',
 	  '#title' => t('Contribution request text'),
 	  '#default_value' => variable_get('fundcore_contribution_request', ''),
-	  '#description' => t('Short solicitation linked below meter.'),
+	  '#description' => t('Short solicitation linked below meter (internationalized).'),
 	);
 
 	$form['fundcore_contribution_url'] = array(
 	  '#type' => 'textfield',
 	  '#title' => t('Contribution URL'),
 	  '#default_value' => variable_get('fundcore_contribution_url', ''),
-	  '#description' => t('URL for contribution form.'),
+	  '#description' => t('URL for contribution form (not internationalized).'),
 	);
 
 	$form['fundcore_message'] = array(
