@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		91467CB40B415412004424B1 /* base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91467CAD0B415412004424B1 /* base.cpp */; };
+		91467CB50B415412004424B1 /* wxWebServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91467CAF0B415412004424B1 /* wxWebServer.cpp */; };
+		91467CB60B415412004424B1 /* wxWikiServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91467CB10B415412004424B1 /* wxWikiServer.cpp */; };
+		91467CB70B415412004424B1 /* ZenoFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91467CB20B415412004424B1 /* ZenoFile.cpp */; };
+		91467CD80B417CE0004424B1 /* libwx_macu-2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91467CD20B417CE0004424B1 /* libwx_macu-2.6.a */; };
+		91467CD90B417CE0004424B1 /* libwxexpat-2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91467CD30B417CE0004424B1 /* libwxexpat-2.6.a */; };
+		91467CDA0B417CE0004424B1 /* libwxjpeg-2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91467CD40B417CE0004424B1 /* libwxjpeg-2.6.a */; };
+		91467CDB0B417CE0004424B1 /* libwxpng-2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91467CD50B417CE0004424B1 /* libwxpng-2.6.a */; };
+		91467CDC0B417CE0004424B1 /* libwxregexu-2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91467CD60B417CE0004424B1 /* libwxregexu-2.6.a */; };
+		91467CDD0B417CE0004424B1 /* libwxtiff-2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91467CD70B417CE0004424B1 /* libwxtiff-2.6.a */; };
+		91467CE90B41974D004424B1 /* base.html in Resources */ = {isa = PBXBuildFile; fileRef = 91467CE70B41974D004424B1 /* base.html */; };
+		91467CEA0B41974D004424B1 /* qunicode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 91467CE80B41974D004424B1 /* qunicode.txt */; };
+		91D948F60B4586C000AAAC75 /* wxWikiServerSearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91D948F50B4586C000AAAC75 /* wxWikiServerSearch.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		91467C9F0B41537F004424B1 /* YAWR-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "YAWR-Info.plist"; sourceTree = "<group>"; };
+		91467CA80B4153E7004424B1 /* YAWR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YAWR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		91467CAD0B415412004424B1 /* base.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = base.cpp; path = ../base.cpp; sourceTree = SOURCE_ROOT; };
+		91467CAE0B415412004424B1 /* base.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = base.h; path = ../base.h; sourceTree = SOURCE_ROOT; };
+		91467CAF0B415412004424B1 /* wxWebServer.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = wxWebServer.cpp; path = ../wxWebServer.cpp; sourceTree = SOURCE_ROOT; };
+		91467CB00B415412004424B1 /* wxWebServer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = wxWebServer.h; path = ../wxWebServer.h; sourceTree = SOURCE_ROOT; };
+		91467CB10B415412004424B1 /* wxWikiServer.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = wxWikiServer.cpp; path = ../wxWikiServer.cpp; sourceTree = SOURCE_ROOT; };
+		91467CB20B415412004424B1 /* ZenoFile.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = ZenoFile.cpp; path = ../ZenoFile.cpp; sourceTree = SOURCE_ROOT; };
+		91467CB30B415412004424B1 /* ZenoFile.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ZenoFile.h; path = ../ZenoFile.h; sourceTree = SOURCE_ROOT; };
+		91467CB80B41543C004424B1 /* libwx_macu-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_macu-2.6.a"; path = "../../wxMac-2.6.3/lib/libwx_macu-2.6.a"; sourceTree = SOURCE_ROOT; };
+		91467CB90B41543C004424B1 /* libwxexpat-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxexpat-2.6.a"; path = "../../wxMac-2.6.3/lib/libwxexpat-2.6.a"; sourceTree = SOURCE_ROOT; };
+		91467CBA0B41543C004424B1 /* libwxjpeg-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxjpeg-2.6.a"; path = "../../wxMac-2.6.3/lib/libwxjpeg-2.6.a"; sourceTree = SOURCE_ROOT; };
+		91467CBB0B41543C004424B1 /* libwxpng-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxpng-2.6.a"; path = "../../wxMac-2.6.3/lib/libwxpng-2.6.a"; sourceTree = SOURCE_ROOT; };
+		91467CBC0B41543C004424B1 /* libwxregexu-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxregexu-2.6.a"; path = "../../wxMac-2.6.3/lib/libwxregexu-2.6.a"; sourceTree = SOURCE_ROOT; };
+		91467CBD0B41543C004424B1 /* libwxtiff-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxtiff-2.6.a"; path = "../../wxMac-2.6.3/lib/libwxtiff-2.6.a"; sourceTree = SOURCE_ROOT; };
+		91467CD20B417CE0004424B1 /* libwx_macu-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_macu-2.6.a"; path = "/usr/local/lib/libwx_macu-2.6.a"; sourceTree = "<absolute>"; };
+		91467CD30B417CE0004424B1 /* libwxexpat-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxexpat-2.6.a"; path = "/usr/local/lib/libwxexpat-2.6.a"; sourceTree = "<absolute>"; };
+		91467CD40B417CE0004424B1 /* libwxjpeg-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxjpeg-2.6.a"; path = "/usr/local/lib/libwxjpeg-2.6.a"; sourceTree = "<absolute>"; };
+		91467CD50B417CE0004424B1 /* libwxpng-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxpng-2.6.a"; path = "/usr/local/lib/libwxpng-2.6.a"; sourceTree = "<absolute>"; };
+		91467CD60B417CE0004424B1 /* libwxregexu-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxregexu-2.6.a"; path = "/usr/local/lib/libwxregexu-2.6.a"; sourceTree = "<absolute>"; };
+		91467CD70B417CE0004424B1 /* libwxtiff-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxtiff-2.6.a"; path = "/usr/local/lib/libwxtiff-2.6.a"; sourceTree = "<absolute>"; };
+		91467CE70B41974D004424B1 /* base.html */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; name = base.html; path = ../base.html; sourceTree = SOURCE_ROOT; };
+		91467CE80B41974D004424B1 /* qunicode.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = qunicode.txt; path = ../qunicode.txt; sourceTree = SOURCE_ROOT; };
+		91D948F50B4586C000AAAC75 /* wxWikiServerSearch.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = wxWikiServerSearch.cpp; path = ../wxWikiServerSearch.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		91467CA60B4153E7004424B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91467CD80B417CE0004424B1 /* libwx_macu-2.6.a in Frameworks */,
+				91467CD90B417CE0004424B1 /* libwxexpat-2.6.a in Frameworks */,
+				91467CDA0B417CE0004424B1 /* libwxjpeg-2.6.a in Frameworks */,
+				91467CDB0B417CE0004424B1 /* libwxpng-2.6.a in Frameworks */,
+				91467CDC0B417CE0004424B1 /* libwxregexu-2.6.a in Frameworks */,
+				91467CDD0B417CE0004424B1 /* libwxtiff-2.6.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		91467C890B415361004424B1 = {
+			isa = PBXGroup;
+			children = (
+				91467CE70B41974D004424B1 /* base.html */,
+				91467CE80B41974D004424B1 /* qunicode.txt */,
+				91467CD20B417CE0004424B1 /* libwx_macu-2.6.a */,
+				91467CD30B417CE0004424B1 /* libwxexpat-2.6.a */,
+				91467CD40B417CE0004424B1 /* libwxjpeg-2.6.a */,
+				91467CD50B417CE0004424B1 /* libwxpng-2.6.a */,
+				91467CD60B417CE0004424B1 /* libwxregexu-2.6.a */,
+				91467CD70B417CE0004424B1 /* libwxtiff-2.6.a */,
+				91467CB80B41543C004424B1 /* libwx_macu-2.6.a */,
+				91467CB90B41543C004424B1 /* libwxexpat-2.6.a */,
+				91467CBA0B41543C004424B1 /* libwxjpeg-2.6.a */,
+				91467CBB0B41543C004424B1 /* libwxpng-2.6.a */,
+				91467CBC0B41543C004424B1 /* libwxregexu-2.6.a */,
+				91467CBD0B41543C004424B1 /* libwxtiff-2.6.a */,
+				91467CAD0B415412004424B1 /* base.cpp */,
+				91467CAE0B415412004424B1 /* base.h */,
+				91D948F50B4586C000AAAC75 /* wxWikiServerSearch.cpp */,
+				91467CAF0B415412004424B1 /* wxWebServer.cpp */,
+				91467CB00B415412004424B1 /* wxWebServer.h */,
+				91467CB10B415412004424B1 /* wxWikiServer.cpp */,
+				91467CB20B415412004424B1 /* ZenoFile.cpp */,
+				91467CB30B415412004424B1 /* ZenoFile.h */,
+				91467C9D0B41537F004424B1 /* Products */,
+				91467C9F0B41537F004424B1 /* YAWR-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		91467C9D0B41537F004424B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				91467CA80B4153E7004424B1 /* YAWR.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		91467CA70B4153E7004424B1 /* YAWR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91467CAA0B415405004424B1 /* Build configuration list for PBXNativeTarget "YAWR" */;
+			buildPhases = (
+				91467CA40B4153E7004424B1 /* Resources */,
+				91467CA50B4153E7004424B1 /* Sources */,
+				91467CA60B4153E7004424B1 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YAWR;
+			productName = YAWR;
+			productReference = 91467CA80B4153E7004424B1 /* YAWR.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		91467C8B0B415361004424B1 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 91467C8C0B415361004424B1 /* Build configuration list for PBXProject "YAWR" */;
+			hasScannedForEncodings = 0;
+			mainGroup = 91467C890B415361004424B1;
+			productRefGroup = 91467C9D0B41537F004424B1 /* Products */;
+			projectDirPath = "";
+			targets = (
+				91467CA70B4153E7004424B1 /* YAWR */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		91467CA40B4153E7004424B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91467CE90B41974D004424B1 /* base.html in Resources */,
+				91467CEA0B41974D004424B1 /* qunicode.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		91467CA50B4153E7004424B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91467CB40B415412004424B1 /* base.cpp in Sources */,
+				91467CB50B415412004424B1 /* wxWebServer.cpp in Sources */,
+				91467CB60B415412004424B1 /* wxWikiServer.cpp in Sources */,
+				91467CB70B415412004424B1 /* ZenoFile.cpp in Sources */,
+				91D948F60B4586C000AAAC75 /* wxWikiServerSearch.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		91467C8D0B415361004424B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		91467C8E0B415361004424B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+			};
+			name = Release;
+		};
+		91467CAB0B415405004424B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/lib/wx/include/mac-unicode-release-static-2.6",
+					"/usr/local/include/wx-2.6",
+				);
+				INFOPLIST_FILE = "YAWR-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../wxMac-2.6.3/lib\"";
+				OTHER_CFLAGS = (
+					"-D__WXMAC__",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D_LARGE_FILES",
+					"-DNO_GCC_PRAGMA\n",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Carbon,
+					"-framework",
+					IOKit,
+					"-framework",
+					System,
+					"-liconv",
+					"-lz",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = YAWR;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		91467CAC0B415405004424B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/lib/wx/include/mac-unicode-release-static-2.6",
+					"/usr/local/include/wx-2.6",
+				);
+				INFOPLIST_FILE = "YAWR-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../../wxMac-2.6.3/lib\"";
+				OTHER_CFLAGS = (
+					"-D__WXMAC__",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D_LARGE_FILES",
+					"-DNO_GCC_PRAGMA\n",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Carbon,
+					"-framework",
+					IOKit,
+					"-framework",
+					System,
+					"-liconv",
+					"-lz",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = YAWR;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		91467C8C0B415361004424B1 /* Build configuration list for PBXProject "YAWR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91467C8D0B415361004424B1 /* Debug */,
+				91467C8E0B415361004424B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91467CAA0B415405004424B1 /* Build configuration list for PBXNativeTarget "YAWR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91467CAB0B415405004424B1 /* Debug */,
+				91467CAC0B415405004424B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 91467C8B0B415361004424B1 /* Project object */;
+}

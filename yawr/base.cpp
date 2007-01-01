@@ -10,14 +10,18 @@
 #include "base.h"
 #include <wx/filename.h>
 
+// Outcomment the following to turn loging off
+// Note : Logging may significantly increase runtime!!
+//#define LOGIT
+
 IMPLEMENT_APP(MainApp)
 
 bool MainApp::OnInit()
 {
-   MainFrame *win = new MainFrame(_("Yet Another Wikipedia Reader"), wxPoint (100, 100),
+   frame = new MainFrame(_("Yet Another Wikipedia Reader"), wxPoint (100, 100),
      wxSize(450, 340));
-   win->Show(TRUE);
-   SetTopWindow(win);
+   frame->Show(TRUE);
+   SetTopWindow(frame);
    
    return TRUE;
 }
@@ -33,11 +37,18 @@ BEGIN_EVENT_TABLE(MainFrame, wxFrame)
 END_EVENT_TABLE()
 
 MainFrame::MainFrame(const wxString &title, const wxPoint &pos, const wxSize &size)
-    : wxFrame((wxFrame *) NULL, -1, title, pos, size)
+    : wxFrame((wxFrame *) NULL, -1, title, pos, size, wxDEFAULT_FRAME_STYLE|wxMINIMIZE|wxMINIMIZE_BOX)
 {
     sep = wxFileName::GetPathSeparator() ;
     project = _T("wikipedia") ;
     dirbase = wxGetCwd() + sep ;
+#ifdef __WXMAC__
+	if ( !wxFileExists ( dirbase + _T("qunicode.txt") ) )
+	{
+		dirbase += _T("YAWR.app/Contents/Resources/") ;
+	}
+
+#endif
     config = new wxConfig(_T("YAWR"));
     wxStaticBoxSizer *v0 = new wxStaticBoxSizer ( wxVERTICAL , this , _T("Einstellungen") ) ;
     wxBoxSizer *h_dir = new wxBoxSizer ( wxHORIZONTAL ) ;
@@ -48,7 +59,7 @@ MainFrame::MainFrame(const wxString &title, const wxPoint &pos, const wxSize &si
     start_server_automatically = new wxCheckBox ( this , -1 , _T("Server automatisch starten") ) ;
     minimize_automatically = new wxCheckBox ( this , -1 , _T("YAWR automatisch minimieren") ) ;
     start_browser_automatically = new wxCheckBox ( this , -1 , _T("Webbrowser automatisch starten") ) ;
-    dir_line = new wxTextCtrl ( this , -1 , config->Read ( _T("DefaultDir") , wxGetCwd() ) ) ;
+    dir_line = new wxTextCtrl ( this , -1 , config->Read ( _T("DefaultDir") , dirbase ) ) ;
     port_line = new wxTextCtrl ( this , -1 , config->Read ( _T("DefaultPort") , _T("8080") ) ) ;
     
     b_start_server = new wxButton ( this , ID_START_SERVER , _T("Server st&arten") ) ;
@@ -74,8 +85,13 @@ MainFrame::MainFrame(const wxString &title, const wxPoint &pos, const wxSize &si
     v0->Add ( minimize_automatically , 0 , wxALL , 5 ) ;
     v0->Add ( start_browser_automatically , 0 , wxALL , 5 ) ;
     v0->Add ( h_buttons , 0 , wxALL , 5 ) ;
+
+#ifdef LOGIT
+	log_output = new wxTextCtrl ( this , -1 , _T("") , wxDefaultPosition , wxDefaultSize , wxTE_MULTILINE ) ;
+    v0->Add ( log_output , 1 , wxEXPAND|wxALL , 5 ) ;
+#endif
     
-    CreateStatusBar(1);
+    CreateStatusBar(3);
     SetStatusText(_("Bereit"));
 
     SetBackgroundColour ( *wxWHITE ) ;
@@ -95,17 +111,41 @@ MainFrame::MainFrame(const wxString &title, const wxPoint &pos, const wxSize &si
     b_start_server->Enable ( !server.IsRunning() ) ;
     b_stop_server->Enable ( server.IsRunning() ) ;
     
-    if ( zf_main.Open ( dir_line->GetValue() + sep + project + _T(".zeno") ) ) SetStatusText(_("Main loaded"));
-    else SetStatusText(_("Main failed"));
+    if ( zf_main.Open ( dir_line->GetValue() + sep + project + _T(".zeno") ) ) SetStatusText(_T("Texte OK"),0);
+    else SetStatusText(_T("Texte failed"),0);
     
-    if ( zf_images.Open ( dir_line->GetValue() + sep + project + _T(".images.zeno") ) ) SetStatusText(_("Images loaded"));
-    else SetStatusText(_("Images failed"));
-/*
-    ZenoArticle art ;
-    int a = zf_main.FindPageID ( _T("A/Elektrizität") ) ;
-    art = zf_main.ReadSingleArticle ( a ) ; // 42 // 337285
-    if ( art.ok ) wxMessageBox ( art.title ) ;
-*/
+    if ( zf_images.Open ( dir_line->GetValue() + sep + project + _T(".images.zeno") ) ) SetStatusText(_T("Bilder OK"),1);
+    else SetStatusText(_T("Bilder failed"),1);
+	
+    if ( zf_index.Open ( dir_line->GetValue() + sep + project + _T(".index.zeno") ) ) SetStatusText(_T("Index OK"),2);
+    else SetStatusText(_T("Index failed"),2);
+	
+	UpdateEnDis() ;
+	
+	if ( minimize_automatically->GetValue() ) Iconize() ;
+}
+
+wxLongLong lasttime ( 0 ) ;
+
+void  MainFrame::Log ( wxString message , wxString function )
+{
+#ifdef LOGIT
+	if ( !function.IsEmpty() ) message = function + _T(" : ") + message ;
+	wxLongLong diff = wxGetLocalTimeMillis() - lasttime ;
+	lasttime += diff ;
+	message = diff.ToString() + _T(" : ") + message ;
+	(*log_output) << message << _T("\n") ;
+#endif
+}
+
+void MainFrame::UpdateEnDis ()
+{
+    b_start_server->Enable ( !server.IsRunning() ) ;
+    b_stop_server->Enable ( server.IsRunning() ) ;
+	answer_local_only->Enable ( !server.IsRunning() ) ;
+	dir_line->Enable ( !server.IsRunning() ) ;
+	port_line->Enable ( !server.IsRunning() ) ;
+	b_choose_dir->Enable ( !server.IsRunning() ) ;
 }
 
 void MainFrame::OnClose(wxCloseEvent &event)
@@ -128,16 +168,16 @@ void MainFrame::OnStartServer(wxCommandEvent &event)
     long l ;
     port_line->GetValue().ToLong ( &l ) ;
     server.Start ( l ) ;
-    b_start_server->Enable ( !server.IsRunning() ) ;
-    b_stop_server->Enable ( server.IsRunning() ) ;
+	UpdateEnDis() ;
+	Log ( _T("Server started" ) ) ;
 }
 
 void MainFrame::OnStopServer(wxCommandEvent &event)
 {
     if ( !server.IsRunning() ) return ;
     server.Stop() ;
-    b_start_server->Enable ( !server.IsRunning() ) ;
-    b_stop_server->Enable ( server.IsRunning() ) ;
+	UpdateEnDis() ;
+	Log ( _T("Server stopped" ) ) ;
 }
 
 void MainFrame::OnStartBrowser(wxCommandEvent &event)
@@ -177,6 +217,7 @@ ZenoArticle MainFrame::GetArticle ( wxString title , ZenoFile &file , bool va )
 
 wxString MainFrame::GetIP() { return _T("127.0.0.1") ; }
 wxString MainFrame::GetPort() { return port_line->GetValue() ; }
+ZenoFile *MainFrame::GetIndexPointer() { return &zf_index() ; }
 
 ZenoArticle MainFrame::RandomArticle ( wxString begin )
 {

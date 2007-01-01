@@ -17,6 +17,7 @@ class ZenoArticle
     wxString GetText() ;
     char *GetBlob() ;
     int Compare ( wxString s ) ;
+    int Compare ( wxArrayInt t ) ;
     
     wxLongLong rFilePos ;
     unsigned long rFileLen ;
@@ -29,6 +30,7 @@ class ZenoArticle
     
     ZenoFile *zfile ;
     bool ok ;
+	char *data ;
 
     private:
     wxString GetTextFromZip() ;
@@ -52,8 +54,11 @@ class ZenoFile
     wxLongLong rIndexPtrPos ;
     unsigned long rIndexPtrLen ;
     unsigned long rUnused[4] ;
+
+	void SetCacheData ( long number , char *data ) ;
+	void Log ( wxString message , wxString function = _T("") ) ;
     
-    ArrayOfZenoArticles articles ;
+    ArrayOfZenoArticles articles , cache ;
     unsigned long *indexlist ;
 
     private:
@@ -65,6 +70,12 @@ class ZenoFile
     void Seek ( wxFile &f , wxLongLong pos ) ;
     void ReadArticleData ( wxFile &f , ZenoArticle &art ) ;
     void ReadSingleArticle ( unsigned long number , wxFile &f , ZenoArticle &art ) ;
+	unsigned long ReadLong ( wxFile &f ) ;
+	wxUint16 ReadWord ( wxFile &f ) ;
+	int LookInCache ( wxString page ) ;
+	ZenoArticle LookInCache ( unsigned long number ) ;
+	void AddToCache ( ZenoArticle art ) ;
+	char *GetCacheData ( wxLongLong pos , unsigned long length ) ;
 };
 
 

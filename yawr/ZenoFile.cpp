@@ -8,12 +8,16 @@
 #endif
 
 #include "ZenoFile.h"
+#include "base.h"
 #include <wx/wfstream.h>
 #include <wx/zstream.h>
 #include <wx/sstream.h>
 
 #include <wx/arrimpl.cpp> // this is a magic incantation which must be done!
 WX_DEFINE_OBJARRAY(ArrayOfZenoArticles);
+
+#define NODATACACHE
+#define NOARTICLECACHE
 
 char *qunicode = NULL ;
 
@@ -47,15 +51,15 @@ wxArrayInt ZenoToArray ( char *s )
         {
             ret.Add ( (unsigned char) *t ) ;
         } else if ( *t == 1 ) {
-            long l1 = (unsigned char) *(t+1) ;
-            long l2 = (unsigned char) *(t+2) ;
-            long l = l1 << 8 + l2 ;
+            wxUint16 l1 = (unsigned char) *(t+1) ;
+            wxUint16 l2 = (unsigned char) *(t+2) ;
+            wxUint16 l = l1 << 8 + l2 ;
             t += 2 ;
             ret.Add ( (wxChar) l ) ;
         } else {
-            long l1 = (unsigned char) *(t+1) ;
-            long l = l1 << 8 ;
-            t += 2 ;
+            wxUint16 l1 = (unsigned char) *(t+1) ;
+            wxUint16 l = l1 << 8 ;
+			t += 2 ;
             ret.Add ( (wxChar) l ) ;
         }
     }
@@ -75,6 +79,7 @@ ZenoArticle::ZenoArticle ()
 {
     ok = false ;
     rExtra = NULL ;
+	data = NULL ;
     index = -1 ;
     load_qunicode() ;
 }
@@ -86,12 +91,16 @@ ZenoArticle::~ZenoArticle ()
 
 int ZenoArticle::Compare ( wxString s )
 {
+    wxArrayInt t = StringToArray ( s ) ;
+	return Compare ( t ) ;
+}
+
+int ZenoArticle::Compare ( wxArrayInt t )
+{
     if ( !ok ) return 1 ; // Paranoia
     
     int ret = -2 ; // Not set
-//    char *t = StringToZeno ( s ) ;
     wxArrayInt orig = ZenoToArray ( rExtra ) ;
-    wxArrayInt t = StringToArray ( s ) ;
     
     orig.Add ( 0 ) ;
     t.Add ( 0 ) ;
@@ -151,7 +160,7 @@ int ZenoArticle::Compare ( wxString s )
 void ZenoArticle::load_qunicode()
 {
     if ( qunicode ) return ;
-    wxFile f ( _T("qunicode.txt") ) ;
+    wxFile f ( ((MainApp*)wxTheApp)->frame->dirbase + _T("qunicode.txt") ) ;
     long length = f.Length() ;
     qunicode = new char[length] ;
     f.Read ( qunicode , length ) ;
@@ -161,6 +170,7 @@ char *ZenoArticle::GetBlob()
 {
     if ( !ok ) return NULL ;
     char *data = zfile->GetBlob ( rFilePos , rFileLen ) ;
+	zfile->SetCacheData ( index , data ) ;
     return data ;
 }
 
@@ -230,6 +240,22 @@ ZenoFile::ZenoFile ()
     indexlist = NULL ;
 }
 
+unsigned long ZenoFile::ReadLong ( wxFile &f )
+{
+	unsigned long ret ;
+	f.Read ( &ret , 4 ) ;
+	ret = wxUINT32_SWAP_ON_BE ( ret ) ;
+	return ret ;
+}
+
+wxUint16 ZenoFile::ReadWord ( wxFile &f )
+{
+	wxUint16 ret ;
+	f.Read ( &ret , 2 ) ;
+	ret = wxUINT16_SWAP_ON_BE ( ret ) ;
+	return ret ;
+}
+
 bool ZenoFile::Open ( wxString filename )
 {
     m_success = false ;
@@ -239,29 +265,29 @@ bool ZenoFile::Open ( wxString filename )
     unsigned long dummy ;
     long l1 , l2 ;
     wxFile f ( filename ) ;
-    f.Read ( &rMagicNumber , 4 ) ;
-    f.Read ( &rVersion , 4 ) ;
-    f.Read ( &rCount , 4 ) ;
-    f.Read ( &dummy , 4 ) ;
+	rMagicNumber = ReadLong ( f ) ;
+    rVersion = ReadLong ( f ) ;
+    rCount = ReadLong ( f ) ;
+    dummy = ReadLong ( f ) ;
 
     // rIndexPos
-    f.Read ( &l1 , 4 ) ;
-    f.Read ( &l2 , 4 ) ;
+	l1 = ReadLong ( f ) ;
+	l2 = ReadLong ( f ) ;
     rIndexPos = wxLongLong ( l2 , l1 ) ;
 
-    f.Read ( &rIndexLen , 4 ) ;
-    f.Read ( &rFlags , 4 ) ;
+	rIndexLen = ReadLong ( f ) ;
+	rFlags = ReadLong ( f ) ;
     
     // rIndexPtrPos
-    f.Read ( &l1 , 4 ) ;
-    f.Read ( &l2 , 4 ) ;
+	l1 = ReadLong ( f ) ;
+	l2 = ReadLong ( f ) ;
     rIndexPtrPos = wxLongLong ( l2 , l1 ) ;
 
-    f.Read ( &rIndexPtrLen , 4 ) ;
-    f.Read ( &rUnused[0] , 4 ) ;
-    f.Read ( &rUnused[1] , 4 ) ;
-    f.Read ( &rUnused[2] , 4 ) ;
-    f.Read ( &rUnused[3] , 4 ) ;
+    rIndexPtrLen  = ReadLong ( f ) ;
+    rUnused[0] = ReadLong ( f ) ;
+	rUnused[1] = ReadLong ( f ) ;
+    rUnused[2] = ReadLong ( f ) ;
+    rUnused[3] = ReadLong ( f ) ;
     
     if ( 1439867043 != rMagicNumber ) return false ;
     
@@ -285,14 +311,17 @@ bool ZenoFile::Ok ()
  */
 void ZenoFile::Seek ( wxFile &f , wxLongLong pos )
 {
-    wxLongLong chunk = 1024*1024*1024 ; // 1GB
-    f.Seek ( 0 , wxFromStart) ;
+    wxLongLong chunk = 1024*1024*1024*1 ; // 1GB
+	bool first = true ;
     while ( pos > chunk )
     {
-        f.Seek ( chunk.ToLong() , wxFromCurrent ) ;
+		if ( first ) f.Seek ( chunk.ToLong() , wxFromStart) ;
+        else f.Seek ( chunk.ToLong() , wxFromCurrent ) ;
         pos -= chunk ;
+		first = false ;
     }
-    f.Seek ( pos.ToLong() , wxFromCurrent ) ;
+    if ( first ) f.Seek ( pos.ToLong() , wxFromStart ) ;
+	else f.Seek ( pos.ToLong() , wxFromCurrent ) ;
 }
 
 void ZenoFile::ReadIndexList ( wxFile &f )
@@ -302,29 +331,41 @@ void ZenoFile::ReadIndexList ( wxFile &f )
     Seek ( f , rIndexPtrPos ) ;
     indexlist = new unsigned long [rCount+5] ;
     f.Read ( indexlist , rIndexPtrLen ) ;
+	for ( unsigned long l = 0 ; l < rCount ; l++ ) indexlist[l] = wxUINT32_SWAP_ON_BE ( indexlist[l] ) ;
 }
 
 ZenoArticle ZenoFile::ReadSingleArticle ( unsigned long number )
 {
     ZenoArticle art ;
     if ( !Ok() ) return art ;
+	
+	art = LookInCache ( number ) ;
+	if ( art.ok ) return art ;
+	
     wxFile f ( m_filename ) ;
     ReadSingleArticle ( number , f , art ) ;
+	AddToCache ( art ) ;
 }
 
 void ZenoFile::ReadSingleArticle ( unsigned long number , wxFile &f , ZenoArticle &art )
 {
-    if ( number == 0 || number >= rCount )
-    {
-        art.ok = false ;
-        return ;
-    }
-    unsigned long l = indexlist[number] ;
-    wxLongLong pos = rIndexPos ;
-    pos += l ;
-    Seek ( f , pos ) ;
-    ReadArticleData ( f , art ) ;
-    art.index = number ;
+	art.ok = false ;
+    if ( number == 0 || number >= rCount ) return ;
+	
+	art = LookInCache ( number ) ;
+	if ( !art.ok )
+	{
+		Log ( _T("Hard-looking for ") + art.title , _T("ZenoFile::ReadSingleArticle") ) ;
+		unsigned long l = indexlist[number] ;
+		wxLongLong pos = rIndexPos ;
+		pos += l ;
+		Seek ( f , pos ) ;
+		ReadArticleData ( f , art ) ;
+		art.index = number ;
+		if ( art.ok ) AddToCache ( art ) ;
+	}
+	if ( art.ok ) Log ( art.title + _T(" loaded successful") , _T("ZenoFile::ReadSingleArticle") ) ;
+	else Log ( wxString::Format ( _T("ARTICLE #%d NOT FOUND!") , number ) , _T("ZenoFile::ReadSingleArticle") ) ;
 }
 
 void ZenoFile::ReadIndex ( wxFile &f )
@@ -351,18 +392,18 @@ void ZenoFile::ReadArticleData ( wxFile &f , ZenoArticle &art )
     art.rExtraLen = 0 ;
 
     // rFilePos
-    f.Read ( &l1 , 4 ) ;
-    f.Read ( &l2 , 4 ) ;
+	l1 = ReadLong ( f ) ;
+	l2 = ReadLong ( f ) ;
     art.rFilePos = wxLongLong ( l2 , l1 ) ;
 
-    f.Read ( &art.rFileLen , 4 ) ;
+    art.rFileLen = ReadLong ( f ) ;
     f.Read ( &art.rCompression , 1 ) ;
     f.Read ( &art.rMime , 1 ) ;
     f.Read ( &art.rSubtype , 1 ) ;
     f.Read ( &art.rSearchFlag , 1 ) ;
-    f.Read ( &art.rSubtypeParent , 4 ) ;
-    f.Read ( &art.rLogicalNumber , 4 ) ;
-    f.Read ( &art.rExtraLen , 2 ) ;
+    art.rSubtypeParent = ReadLong ( f ) ;
+    art.rLogicalNumber = ReadLong ( f ) ;
+    art.rExtraLen = ReadWord ( f ) ;
 
     if ( art.rExtra ) delete art.rExtra ; // Clear last entry
     art.rExtra = new char[art.rExtraLen+5] ;
@@ -381,6 +422,14 @@ void ZenoFile::ReadArticleData ( wxFile &f , ZenoArticle &art )
 unsigned long ZenoFile::FindPageID ( wxString page )
 {
     if ( !Ok() ) return 0 ;
+	
+	Log ( page , _T("ZenoFile::FindPageID") ) ;
+	
+	int cc = LookInCache ( page ) ;
+	if ( cc != -1 ) return cc ;
+	
+    wxArrayInt page_array = StringToArray ( page ) ;
+
 
     unsigned long min = 0 ;
     unsigned long max = rCount - 1 ;
@@ -402,12 +451,9 @@ unsigned long ZenoFile::FindPageID ( wxString page )
         if ( mid == lastmid ) break ; // Oh-oh...
         lastmid = mid ;
         
-//        int i = art.title.CmpNoCase ( page ) ;
-        int i = art.Compare ( page ) ;
+        int i = art.Compare ( page_array ) ;
         show += wxString::Format ( _T("%d:%d (%d) EQ %d : ") , min , max , mid , i ) + art.title + _T(" seek ") + page + _T("\n\r") ;
-//        if ( rCount < 300000 ) wxMessageBox ( show ) ;
         
-//        if ( i == 0 ) { wxMessageBox ( show , _T("Found ") + art.title ) ; return mid ; }
         if ( i == 0 ) return mid ;
         if ( min == max ) break ; // Oh-oh...
         if ( min+1 == max ) max = min ;
@@ -415,17 +461,117 @@ unsigned long ZenoFile::FindPageID ( wxString page )
         else if ( i < 0 ) min = mid ;
     }
     
-//    wxMessageBox ( show , _T("NOT FOUND : ") + page ) ;
+	Log ( _T("NOT FOUND : ") + page + _T("\n") + show , _T("ZenoFile::FindPageID") ) ;
     return 0 ; // Oh-oh...
 }
 
 char *ZenoFile::GetBlob ( wxLongLong pos , unsigned long length )
 {
     if ( !Ok() ) return 0 ;
+	
+    char *data = GetCacheData ( pos , length ) ;
+	if ( data ) return data ;
+	
     
     wxFile file ( m_filename ) ;
     Seek ( file , pos ) ;
-    char *data = new char[length] ;
+	data = new char[length] ;
     file.Read ( data , length ) ;
     return data ;
+}
+
+void ZenoFile::Log ( wxString message , wxString function )
+{
+	((MainApp*)wxTheApp)->frame->Log ( message , function ) ;
+}
+
+
+// Caching stuff
+
+int ZenoFile::LookInCache ( wxString page )
+{
+#ifdef NOARTICLECACHE
+	return -1 ;
+#else
+    if ( !Ok() ) return -1 ;
+	
+	int a ;
+	for ( a = 0 ; a < cache.GetCount() ; a++ )
+	{
+        int i = cache[a].Compare ( page ) ;
+		if ( i == 0 ) { Log ( page , _T("ZenoFile::LookInCache") ) ; return cache[a].index ; }
+	}
+	return -1 ;
+#endif
+}
+
+ZenoArticle ZenoFile::LookInCache ( unsigned long number )
+{
+	ZenoArticle art ;
+#ifdef NOARTICLECACHE
+	return art ;
+#else
+    if ( !Ok() ) return art ;
+	
+	int a ;
+	for ( a = 0 ; a < cache.GetCount() ; a++ )
+	{
+		if ( cache[a].index == number ) { Log ( cache[a].title , _T("ZenoFile::LookInCache") ) ; return cache[a] ; }
+	}
+	return art ;	
+#endif
+}
+
+void ZenoFile::AddToCache ( ZenoArticle art )
+{
+#ifndef NOARTICLECACHE
+    if ( !Ok() ) return ;
+	if ( LookInCache ( art.index ) . ok ) return ; // Already in cache
+	cache.Add ( art ) ;
+#endif
+}
+
+void ZenoFile::SetCacheData ( long number , char *data )
+{
+#ifdef NODATACACHE
+	return ;  // Data caching deactivated; seems to have no significant effect except wasting memory
+#else
+    if ( !Ok() ) return ;
+	
+	int a ;
+	for ( a = 0 ; a < cache.GetCount() ; a++ )
+	{
+		if ( cache[a].index == number ) break ;
+	}
+	if ( a == cache.GetCount() ) return ; // No such article in cache
+	if ( cache[a].data ) return ; // Already cached
+	if ( cache[a].rFileLen > 10*1024 ) return ; // Do not cache data over 10KB
+	
+	char *d = new char[cache[a].rFileLen] ;
+	memcpy ( d , data , cache[a].rFileLen ) ;
+	cache[a].data = d ;
+	Log ( _T("Storing cache data") , _T("ZenoFile::SetCacheData")  ) ;
+#endif
+}
+
+char *ZenoFile::GetCacheData ( wxLongLong pos , unsigned long length )
+{
+#ifdef NODATACACHE
+	return NULL ; // Data caching deactivated; seems to have no significant effect except wasting memory
+#else
+    if ( !Ok() ) return NULL ;
+	
+	int a ;
+	for ( a = 0 ; a < cache.GetCount() ; a++ )
+	{
+		if ( cache[a].rFilePos == pos && cache[a].rFileLen == length ) break ;
+	}
+	if ( a == cache.GetCount() ) return NULL ; // No such article in cache
+	if ( !cache[a].data ) return NULL ;
+	
+	char *ret = new char[length] ;
+	memcpy ( ret , cache[a].data , length ) ;
+	Log ( _T("Returning cached data") , _T("ZenoFile::GetCacheData")  ) ;
+	return ret ;
+#endif
 }

@@ -94,7 +94,8 @@ void wxWebServer::OnServerEvent(wxSocketEvent& event)
 	wxSocketBase *pSocket = socket_server->Accept( true );
 	if ( !pSocket ) return ; // Paranoia
 
-    pSocket->SetFlags(wxSOCKET_BLOCK|wxSOCKET_WAITALL);// block gui, fix reentrancy problem.
+    pSocket->SetFlags(wxSOCKET_BLOCK);// block gui, fix reentrancy problem.
+//    pSocket->SetFlags(wxSOCKET_BLOCK|wxSOCKET_WAITALL);// block gui, fix reentrancy problem.
 	pSocket->SetEventHandler(*this, WX_HTTP_SOCKET_ID);
 	pSocket->SetNotify(wxSOCKET_INPUT_FLAG | wxSOCKET_LOST_FLAG);
 	pSocket->Notify(true);

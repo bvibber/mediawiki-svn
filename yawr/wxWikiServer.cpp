@@ -10,6 +10,8 @@
 #include "base.h"
 #include <wx/wfstream.h>
 #include <wx/sstream.h>
+#include <wx/datetime.h>
+#include <wx/uri.h>
 
 enum
 {
@@ -33,11 +35,31 @@ void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
         ZenoArticle art = frame->RandomArticle ( begin + _T("/") ) ;
         HandleSimpleGetRequest ( _T("/Wikipedia/") + art.title , hr ) ;
         return ;
-    }
+    } else if ( page == _T("search") ) {
+		wxURI uri;
+		wxString query = GetValue ( _T("e") ) ;
+		query.Replace ( _T("+") , _T(" ") ) ;
+		query = uri.Unescape ( query ) ;
+
+		wxString mode ;
+		if ( GetValue ( _T("e") ) != _T("") ) mode = _T("titles") ;
+		if ( GetValue ( _T("ft") ) != _T("") ) mode = _T("fulltext") ;
+
+		hr.SetRC(wxT("200 OK"));
+		hr.AddHeader(wxT("Content-Type: text/html; charset=UTF8") );
+		wxString html = Search ( query , mode ) ;
+		hr.AddDataLine ( _T("SEARCH!") );
+		hr.AddDataLine ( query + _T("<br/>") );
+		hr.AddDataLine ( html );
+	}
 }
+
+bool busy = false ;
 
 void wxWikiServer::HandleSimpleGetRequest(const wxString &page,HttpResponse &hr)
 {
+//	while ( busy ) wxMilliSleep ( 500 ) ; // De-threading, probably not useful
+	busy = true ;
     ZenoArticle art ;
     wxString article = page ;
     if ( article.IsEmpty() || article == _T("/") ) article = _T("/Wikipedia/-/Hauptseite");
@@ -52,6 +74,7 @@ void wxWikiServer::HandleSimpleGetRequest(const wxString &page,HttpResponse &hr)
             article = article.Mid ( 2 ) ;
             article = article.Lower() ;
             SpecialPage ( article , hr ) ;
+			busy = false ;
             return ;
         } else { // Normal page
             if ( article.Left ( 1 ) == _T("$") )
@@ -71,8 +94,35 @@ void wxWikiServer::HandleSimpleGetRequest(const wxString &page,HttpResponse &hr)
         hr.SetRC(wxT("404 Not Found"));
         hr.AddHeader(wxT("Content-Type: text/plain; charset=UTF8") );
         hr.AddDataLine( _T("Not found : ") + page );
+		busy = false ;
         return ;
     }
+
+/*
+	// Cache headers don't seem to work...
+	int expire = 15;  // Lebensdauer der Seite im Cache in Minuten
+    wxDateTime now = wxDateTime::Now();
+	wxString mod_gmt = now.Format ( _T("D, d M Y H:i:s") ) + _T(" GMT") ;
+	now += wxTimeSpan ( 0 , expire , 0 , 0 ) ;
+	wxString exp_gmt = now.Format ( _T("D, d M Y H:i:s") ) + _T(" GMT") ;
+
+	// HTTP 1.0
+	hr.AddHeader ( _T("Expires: ") + exp_gmt ) ;
+	hr.AddHeader ( _T("Last-Modified: ") + mod_gmt ) ;
+
+	// HTTP 1.1
+	hr.AddHeader ( wxString::Format ( _T("Cache-Control: public, max-age=%d") , expire * 60 ) ) ;
+
+
+
+	// Alternate; doesn't work either
+    wxDateTime now = wxDateTime::Now();
+	now += wxTimeSpan ( 48 , 0 , 0 , 0 ) ;
+	wxString exp_gmt = now.Format ( _T("D, d M Y H:i:s") ) + _T(" GMT") ;
+	hr.AddHeader ( _T("Expires: ") + exp_gmt ) ;
+	hr.AddHeader ( wxString::Format ( _T("Cache-Control: public, max-age=%d") , 24*3600*10 ) ) ;
+
+*/
 
     switch ( art.rMime )
     {
@@ -86,6 +136,7 @@ void wxWikiServer::HandleSimpleGetRequest(const wxString &page,HttpResponse &hr)
         case zenoMimeImageGif:  ReturnBinary ( article , art , hr , _T("image/gif") ) ; break ;
         default : hr.SetRC(wxT("404 Not Found"));
     }
+	busy = false ;
 }
 
 void wxWikiServer::ReturnPlainText ( wxString article , ZenoArticle &art , HttpResponse &hr )

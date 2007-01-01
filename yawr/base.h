@@ -20,6 +20,7 @@ class wxWikiServer : public wxWebServer
     virtual void ReturnCSS ( wxString article , ZenoArticle &art , HttpResponse &hr ) ;
     virtual void ReturnBinary ( wxString article , ZenoArticle &art , HttpResponse &hr , wxString content_type ) ;
     virtual void SpecialPage (const wxString &page,HttpResponse &hr);
+	virtual wxString Search ( wxString query , wxString type ) ;
     MainFrame *frame ;
     bool va ;
 } ;
@@ -28,6 +29,7 @@ class MainApp: public wxApp
 {
   public:
       virtual bool OnInit();
+	  MainFrame *frame ;
 };
 
 class MainFrame: public wxFrame
@@ -46,6 +48,9 @@ class MainFrame: public wxFrame
       wxString GetIP() ;
       wxString GetPort() ;
       ZenoArticle RandomArticle ( wxString begin ) ;
+	  ZenoFile *GetIndexPointer() ;
+	  
+	  void Log ( wxString message , wxString function = _T("") ) ;
       
       wxString sep , project , dirbase ;
       
@@ -53,6 +58,7 @@ class MainFrame: public wxFrame
       DECLARE_EVENT_TABLE()
       
       ZenoArticle GetArticle ( wxString title , ZenoFile &file , bool va = false ) ;
+	  void UpdateEnDis () ;
       
       wxWikiServer server;
       ZenoFile zf_main , zf_index , zf_images ;
@@ -63,6 +69,7 @@ class MainFrame: public wxFrame
       wxTextCtrl *port_line , *dir_line ;
       wxButton *b_start_server , *b_stop_server, *b_start_browser , *b_choose_dir ;
       wxConfig *config ;
+	  wxTextCtrl *log_output ;
 };
 
 enum
