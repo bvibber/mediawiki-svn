@@ -25,12 +25,12 @@ function _fundcore_statistics($year, $month, $day)
 	while ($row = db_fetch_object($res))
 	{
 			$srow = array();
-			$srow[] = number_format($row->num);
-			$srow[] = number_format($row->minimum, 2);
-			$srow[] = number_format($row->average, 2);
-			$srow[] = number_format($row->maximum, 2);
-			$srow[] = number_format($row->total, 2);
-			$srow[] = number_format($row->sd, 2);
+			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($row->num));
+			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($row->minimum, 2));
+			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($row->average, 2));
+			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($row->maximum, 2));
+			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($row->total, 2));
+			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($row->sd, 2));
 			$srows[] = $srow;
 	}
 
@@ -38,12 +38,12 @@ function _fundcore_statistics($year, $month, $day)
 
 	// Finish table
 	$header = array();
-	$header[] = t('Count');
-	$header[] = t('Minimum');
-	$header[] = t('Mean');
-	$header[] = t('Maximum');
-	$header[] = t('Total');
-	$header[] = t('Standard Deviation');
+	$header[] = array('style' => 'text-align: right;', 'data' => t('Count'));
+	$header[] = array('style' => 'text-align: right;', 'data' => t('Minimum'));
+	$header[] = array('style' => 'text-align: right;', 'data' => t('Mean'));
+	$header[] = array('style' => 'text-align: right;', 'data' => t('Maximum'));
+	$header[] = array('style' => 'text-align: right;', 'data' => t('Total'));
+	$header[] = array('style' => 'text-align: right;', 'data' => t('Standard Deviation'));
 	
 	$fields['currencies'] = array(
 		'#type' => 'fieldset',
@@ -93,8 +93,8 @@ function _fundcore_currency_summary($year, $month, $day)
 		{		
 			$srow = array();
 			$srow[] = $last_currency;
-			$srow[] = number_format($sum, 2);
-			$srow[] = number_format($sum_usd, 2);
+			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($sum, 2));
+			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($sum_usd, 2));
 			$srows[] = $srow;
 			$sum = 0;
 			$sum_usd = 0;
@@ -118,8 +118,8 @@ function _fundcore_currency_summary($year, $month, $day)
 	{
 		$srow = array();
 		$srow[] = $currency;
-		$srow[] = $sum;
-		$srow[] = $sum_usd;
+		$srow[] = array('style' => 'text-align: right;', 'data' => $sum);
+		$srow[] = array('style' => 'text-align: right;', 'data' => $sum_usd);
 		$srows[] = $srow;
 	}
 
@@ -127,8 +127,8 @@ function _fundcore_currency_summary($year, $month, $day)
 	// Finish table
 	$header = array();
 	$header[] = t('Currency');
-	$header[] = t('Amount');
-	$header[] = t('Equivalent in %currency', array('%currency' => 'USD'));
+	$header[] = array('style' => 'text-align: right;', 'data' => t('Amount'));
+	$header[] = array('style' => 'text-align: right;', 'data' => t('Equivalent in %currency', array('%currency' => 'USD')));
 	
 	$fields['currencies'] = array(
 		'#type' => 'fieldset',
@@ -200,7 +200,7 @@ function _fundcore_browse($year, $month, $day)
 		{
 			$trow = array();
 			$trow[] = l($row->choice, $base_link . $row->choice);
-			$trow[] = number_format($row->total, 2);
+			$trow[] = array('style' => 'text-align: right;', 'data' => number_format($row->total, 2));
 			$trows[] = $trow;		
 		}
 
@@ -216,7 +216,7 @@ function _fundcore_browse($year, $month, $day)
 			else if ($day == '')
 				$header[] = t('Day');
 		
-			$header[] = t('Total in %currency', array('%currency' => 'USD'));
+			$header[] = array('style' => 'text-align: right;', 'data' => t('Total in %currency', array('%currency' => 'USD')));
 			
 			$output .= theme('table', $header, $trows, array('style' => 'width: 100%;'));
 		}
