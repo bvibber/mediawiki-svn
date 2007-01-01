@@ -217,7 +217,7 @@ ZenoArticle MainFrame::GetArticle ( wxString title , ZenoFile &file , bool va )
 
 wxString MainFrame::GetIP() { return _T("127.0.0.1") ; }
 wxString MainFrame::GetPort() { return port_line->GetValue() ; }
-ZenoFile *MainFrame::GetIndexPointer() { return &zf_index() ; }
+ZenoFile *MainFrame::GetIndexPointer() { return &zf_index ; }
 
 ZenoArticle MainFrame::RandomArticle ( wxString begin )
 {
