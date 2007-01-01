@@ -74,15 +74,15 @@ function fundcore_page_browser($year = NULL, $month = NULL, $day = NULL)
 
 function fundcore_page_main()
 {
-	drupal_set_message(print_r($_GET, TRUE));
+	drupal_set_message(print_r($_GET['edit'], TRUE));
 	
 	$content .= '<p><img src="' . variable_get('fundcore_meter_url', '') . '" alt="..." style="margin-bottom: 2px;" />';
 	$content .= '<br /><a href="' . variable_get('fundcore_contribution_url', '') . '"><strong>' . t(variable_get('fundcore_contribution_request', '')) . '</strong></a></p>';
 
 	$content .= variable_get('fundcore_message', '');
 
-	$content .= _fundcore_filter($start, $end, $commented, $currency, $minimum);
-	$content .= _fundcore_results($start, $end, $commented, $currency, $minimum);
+	$content .= _fundcore_filter($_GET['edit']);
+	$content .= _fundcore_results($_GET['edit']);
 	return $content;
 }
 

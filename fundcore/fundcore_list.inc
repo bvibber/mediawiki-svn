@@ -5,7 +5,7 @@ function _fundcore_default_start()
 	return array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y') - 1);
 }
 
-function _fundcore_filter($start_param, $end_param, $commented, $currency, $minimum)
+function _fundcore_filter($params)
 {
 	$fields['#action'] = url('fundcore/list');
 	$fields['#method'] = 'get';
@@ -19,18 +19,20 @@ function _fundcore_filter($start_param, $end_param, $commented, $currency, $mini
 
 	$start = _fundcore_default_start();
 
-	if ($start_param != '')
+	if ($params['start'])
 	{
-		$split = explode('-', $start_param);
-		$start = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
+		$start = $params['start'];
+		//$split = explode('-', $params['start']);
+		//$start = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
 	}
 
 	$end = array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y'));
 
-	if ($end_param != '')
+	if ($params['end'])
 	{
-		$split = explode('-', $end_param);
-		$end = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
+		$end = $params['end'];
+		//$split = explode('-', $params['end']);
+		//$end = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
 	}
 
 	$fields['filter']['start'] = array(
@@ -47,7 +49,7 @@ function _fundcore_filter($start_param, $end_param, $commented, $currency, $mini
 	 $fields['filter']['currency'] = array(
 	  '#type' => 'select',
 	  '#title' => t('Restrict to a specific currency'),
-	  '#default_value' => $currency,
+	  '#default_value' => $params['currency'],
 	  '#options' => array(
 	    '' => '',
 	    'USD' => 'U.S. Dollars',
@@ -61,13 +63,13 @@ function _fundcore_filter($start_param, $end_param, $commented, $currency, $mini
 	$fields['filter']['only_with_comments'] = array(
 	 '#type' => 'checkbox',
 	 '#title' => t('Only show contributions with comments'),
-	 '#default_value' => $commented,
+	 '#default_value' => $params['commented'],
 	);	
 
 	$fields['filter']['minimum'] = array(
 	 '#type' => 'textfield',
 	 '#title' => t('Minimum value (%currency or equivalent)', array('%currency' => 'USD')),
-	 '#default_value' => $minimum,
+	 '#default_value' => $params['minimum'],
 	);
 	
 	$fields['filter']['submit'] = array(
@@ -85,21 +87,23 @@ function fundcore_filter_submit($form_id, $edit)
 }
 */
 
-function _fundcore_results($start_param, $end_param, $commented, $currency, $minimum)
+function _fundcore_results($params)
 {
 	// Set bounding dates
 	$start = _fundcore_default_start();	
-	if ($start_param != '')
+	if ($params['start'] != '')
 	{
-		$split = explode('-', $start_param);
-		$start = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
+		$start = $params['start'];
+		//$split = explode('-', $start_param);
+		//$start = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
 	}
 	
 	$end = array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y'));
-	if ($end_param != '')
+	if ($params['end'] != '')
 	{
-		$split = explode('-', $end_param);
-		$end = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
+		$end = $params['end'];
+		//$split = explode('-', $end_param);
+		//$end = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
 	}
 	$sql_start = $start['year'] . '-' . $start['month'] . '-' . $start['day'];
 	$sql_end = $end['year'] . '-' . $end['month'] . '-' . $end['day'] . ' 23:59';
@@ -107,24 +111,24 @@ function _fundcore_results($start_param, $end_param, $commented, $currency, $min
 	// Query contributions
 	$sql = 'SELECT receive_date, total_amount, c.source, note, display_name, do_not_trade FROM civicrm_contribution c INNER JOIN civicrm_contact p ON contact_id = p.id WHERE total_amount > 0 AND receive_date >= "%s" AND receive_date <= "%s" ';
 	
-	if ($commented == '1')
+	if ($params['commented'] == '1')
 	{
 		$sql .= ' AND (note <> "" AND note IS NOT NULL) ';
 	}
 
-	if ($currency != '')
+	if ($params['currency'] != '')
 	{
 		$sql .= ' AND (c.source LIKE "s%%") ';
 	}
 
-	if ($minimum != '')
+	if ($params['minimum'] != '')
 	{
 		$sql .= ' AND total_amount >= %d';
 	}
 	
 	$sql .= ' ORDER BY receive_date DESC ';
 	db_set_active('fundcore_civicrm');
-	$res =& pager_query($sql, 25, 0, NULL, $sql_start, $sql_end, $currency, $minimum);
+	$res =& pager_query($sql, 25, 0, NULL, $sql_start, $sql_end, $params['currency'], $params['minimum']);
 	db_set_active();
 
 	//$res =& db_queryd($sql, $sql_start, $sql_end);
@@ -134,7 +138,6 @@ function _fundcore_results($start_param, $end_param, $commented, $currency, $min
 		drupal_set_message('Contribution query error.', 'error');
 		return '';
 	}
-
 
 	// Construct output rows
 	$rows = array();
