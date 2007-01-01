@@ -42,16 +42,37 @@ void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
 		query = uri.Unescape ( query ) ;
 
 		wxString mode ;
-		if ( GetValue ( _T("e") ) != _T("") ) mode = _T("titles") ;
-		if ( GetValue ( _T("ft") ) != _T("") ) mode = _T("fulltext") ;
-
-		hr.SetRC(wxT("200 OK"));
-		hr.AddHeader(wxT("Content-Type: text/html; charset=UTF8") );
-		wxString html = Search ( query , mode ) ;
-		hr.AddDataLine ( _T("SEARCH!") );
-		hr.AddDataLine ( query + _T("<br/>") );
-		hr.AddDataLine ( html );
+		bool fulltext = GetValue ( _T("ft") ) != _T("") ;
+		if ( !fulltext ) mode = _T("titles") ;
+		else mode = _T("fulltext") ;
+		
+		wxArrayString titles = Search ( query , mode ) ;
+		wxString html = FormatList ( titles , 1 , 100 , fulltext ) ;
+		ReturnHTML ( _T("-/Suche") , html , hr ) ;
 	}
+}
+
+wxString wxWikiServer::FormatList ( const wxArrayString &titles , int from , int howmany , bool fulltext )
+{
+    wxString html ;
+//    if ( fulltext )
+    {
+//    } else {
+        html = _T("<table class=\"z_lemtab\">") ;
+        int a , b = 1 ;
+        for ( a = 0 ; a < howmany && titles.GetCount() > from+a ; a++ )
+        {
+            wxString nicetitle = titles[from+a].Mid(2) ;
+            nicetitle.Replace ( _T("_") , _T(" ") ) ;
+            wxURI uri ( titles[from+a] ) ;
+            wxString s = _T("<a href=\"/Wikipedia/") + uri.BuildURI() + _T("\">") + nicetitle + _T("</a>");
+            if ( a % 3 == 0 ) html += _T("<tr>") ;
+            html += _T("<td>") + s + _T("</td>") ;
+            if ( a % 3 == 2 ) html += _T("</tr>") ;
+        }
+        html += _T("</table>") ;
+    }
+    return html ;
 }
 
 bool busy = false ;
@@ -166,6 +187,15 @@ void wxWikiServer::ReturnHTML ( wxString article , ZenoArticle &art , HttpRespon
         ZenoArticle va_page = frame->GetPage ( orig_article , true ) ;
         text = va_page.GetText() ;
     } else text = art.GetText() ;
+    ReturnHTML ( orig_article , text , hr ) ;
+}
+
+void wxWikiServer::ReturnHTML ( wxString article , wxString text , HttpResponse &hr )
+{
+    wxString orig_article = article ;
+    wxString ns = article.BeforeFirst('/').Upper() ;
+    wxString title = article.AfterFirst ( '/' ) ;
+
     wxString nicetitle = title ;
     title.Replace ( _T(" ") , _T("_") ) ;
     nicetitle.Replace ( _T("_") , _T(" ") ) ;

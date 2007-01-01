@@ -16,11 +16,13 @@ class wxWikiServer : public wxWebServer
     public :
     virtual void HandleSimpleGetRequest(const wxString &page,HttpResponse &hr);
     virtual void ReturnHTML ( wxString article , ZenoArticle &art , HttpResponse &hr ) ;
+    virtual void ReturnHTML ( wxString article , wxString text , HttpResponse &hr ) ;
     virtual void ReturnPlainText ( wxString article , ZenoArticle &art , HttpResponse &hr ) ;
     virtual void ReturnCSS ( wxString article , ZenoArticle &art , HttpResponse &hr ) ;
     virtual void ReturnBinary ( wxString article , ZenoArticle &art , HttpResponse &hr , wxString content_type ) ;
     virtual void SpecialPage (const wxString &page,HttpResponse &hr);
-	virtual wxString Search ( wxString query , wxString type ) ;
+	virtual wxArrayString Search ( wxString query , wxString mode ) ;
+	virtual wxString FormatList ( const wxArrayString &titles , int from = 1 , int howmany = 100 , bool fulltext = false ) ;
     MainFrame *frame ;
     bool va ;
 } ;
@@ -48,6 +50,7 @@ class MainFrame: public wxFrame
       wxString GetIP() ;
       wxString GetPort() ;
       ZenoArticle RandomArticle ( wxString begin ) ;
+      ZenoFile *GetMainPointer() ;
 	  ZenoFile *GetIndexPointer() ;
 	  
 	  void Log ( wxString message , wxString function = _T("") ) ;

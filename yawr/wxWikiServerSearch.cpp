@@ -10,8 +10,12 @@
 #include "base.h"
 
 class TSearchWordTree ;
+class TSearchWordTreeTableLine ;
 
 WX_DECLARE_OBJARRAY(TSearchWordTree*, ArrayOfTSearchWordTree);
+WX_DECLARE_OBJARRAY(TSearchWordTreeTableLine, ArrayOfTSearchWordTreeTableLine);
+
+#define MAX_RETURN 20
 
 enum
 {
@@ -23,6 +27,32 @@ enum
 
 // CAUTON : The whole search section has no user input sanity checks; eg unmatching () in the search string might bring it down
 
+class TSearchWordTreeTableLine
+{
+    public :
+    unsigned long article_id ;
+    unsigned long word_pos ;
+    
+    bool operator == ( const TSearchWordTreeTableLine &x )
+    {
+        return article_id == x.article_id && word_pos == x.word_pos ;
+    }
+    bool operator < ( const TSearchWordTreeTableLine &x )
+    {
+        return article_id < x.article_id || ( article_id == x.article_id && word_pos < x.word_pos ) ;
+    }
+} ;
+
+int CMPFUNCtable ( TSearchWordTreeTableLine **first, TSearchWordTreeTableLine **second)
+{
+    if ( (*first)->article_id < (*second)->article_id ) return -1 ;
+    if ( (*first)->article_id > (*second)->article_id ) return 1 ;
+    if ( (*first)->word_pos < (*second)->word_pos ) return -1 ;
+    if ( (*first)->word_pos > (*second)->word_pos ) return 1 ;
+    return 0 ;
+}
+
+
 class TSearchWordTree
 {
 	public :
@@ -32,17 +62,28 @@ class TSearchWordTree
 	int ScanKeyword ( int start , const wxArrayString &wordlist , TSearchWordTree &child ) ;
 	wxString GetHTMLtree ( int depth = 0 ) ;
 	bool IsUsingWildcards() ;
-	wxString Process ( ZenoFile *index , int depth = 0 ) ;
+	wxArrayString Process ( ZenoFile *index , int depth = 0 ) ;
 	bool StringHasWildcards ( wxString s ) ;
+	void CreateSingleWordTable ( wxString word , ZenoFile *index ) ;
+	void ProcessList () ;
+	void ProcessAND () ;
+	void ProcessOR () ;
+	TSearchWordTree *GetRoot() ;
+	void FilterTitleAgainstTable ( wxString word ) ;
+	void Explode ( wxString query , wxArrayString &words , bool is_parameter = true ) ;
+	bool DoesMatchTitle ( wxString word , wxString title ) ;
 	
 	ArrayOfTSearchWordTree children ;
 	TSearchWordTree *_parent ;
 	int type ;
+	bool title_only , fuzzy ;
 	wxString word ;
+	ArrayOfTSearchWordTreeTableLine table ;
 } ;
 
 #include <wx/arrimpl.cpp> // this is a magic incantation which must be done!
 WX_DEFINE_OBJARRAY(ArrayOfTSearchWordTree);
+WX_DEFINE_OBJARRAY(ArrayOfTSearchWordTreeTableLine);
 
 
 
@@ -51,6 +92,14 @@ TSearchWordTree::TSearchWordTree ( TSearchWordTree *parent )
 {
 	_parent = parent ;
 	type = TREE_NORMAL_LIST ;
+	title_only = false ;
+	fuzzy = false ;
+}
+
+TSearchWordTree *TSearchWordTree::GetRoot()
+{
+    if ( _parent ) return _parent->GetRoot() ;
+    else return this ;
 }
 
 void TSearchWordTree::Parse ( wxArrayString words )
@@ -131,7 +180,7 @@ wxString TSearchWordTree::GetHTMLtree ( int depth )
 {
 	int a ;
 	wxString ret ;
-	ret = word ;
+	if ( type == TREE_WORD ) ret = _T("{") + word + _T("}") ;
 	for ( a = 0 ; a < children.GetCount() ; a++ )
 	{
 		if ( a > 0 )
@@ -150,12 +199,14 @@ wxString TSearchWordTree::GetHTMLtree ( int depth )
 bool TSearchWordTree::StringHasWildcards ( wxString s )
 {
 	int a ;
+	wxString against = _T("abcdefghijklmnopqrstuvwxyz") ;
 	for ( a = 0 ; a < s.Length() ; a++ )
 	{
 		wxChar c = s.GetChar(a) ;
-		if ( c >= 'a' && c <= 'z' ) continue ;
+		if ( against.Find ( c ) > -1 ) continue ;
+/*		if ( c >= 'a' && c <= 'z' ) continue ;
 		if ( c >= '0' && c <= '9' ) continue ;
-		if ( c == 'Š' || c == 'š' || c == 'Ÿ' || c == '§' ) continue ;
+		if ( c == 'Š' || c == 'š' || c == 'Ÿ' || c == '§' ) continue ;*/
 		return true ; // Something else, assumed wildcard
 	}
 	return false ;
@@ -171,55 +222,217 @@ bool TSearchWordTree::IsUsingWildcards()
 	return false ;
 }
 
-wxString TSearchWordTree::Process ( ZenoFile *index , int depth )
+wxArrayString TSearchWordTree::Process ( ZenoFile *index , int depth )
 {
 	int a ;
+	wxArrayString ret ;
 	
 	// Process children first
 	for ( a = 0 ; a < children.GetCount() ; a++ )
 		children[a]->Process ( index , depth+1 ) ;
 
-	if ( !word.IsEmpty() )
+	if ( type == TREE_WORD || !word.IsEmpty() ) // Search entry
 	{
-		
-	}
+        CreateSingleWordTable ( word , index ) ;
+        ProcessList() ; 
+	} else { // Group / AND / OR / NEAR / whatnot
+        switch ( type )
+	    {
+            case TREE_NORMAL_LIST : ProcessList() ; break ;
+            case TREE_AND : ProcessAND() ; break ;
+            case TREE_OR : ProcessOR() ; break ;
+            default : return ret ;
+        }
+    }
+    
+    // Return by root element
+    if ( depth > 0 ) return ret ;
+    
+    wxArrayInt ids ;
+    for ( a = 0 ; ids.GetCount() < MAX_RETURN && a < table.GetCount() ; a++ )
+    {
+        if ( ids.IsEmpty() ) ids.Add ( table[a].article_id ) ;
+        else if ( ids.Last() != table[a].article_id ) ids.Add ( table[a].article_id ) ;
+    }
+    
+    ZenoFile *main = ((MainApp*)wxTheApp)->frame->GetMainPointer() ;
+    for ( a = 0 ; a < ids.GetCount() ; a++ )
+    {
+        ZenoArticle art = main->ReadSingleArticle ( ids[a] ) ;
+        ret.Add ( art.title ) ;
+    }
+    return ret ;
 }
 
-
-//________________________________________________________________________________________________________________________
-
-
-wxString wxWikiServer::Search ( wxString query , wxString type )
+void TSearchWordTree::ProcessList ()
 {
-	// Break parse string indo words and ()
-	query = query.Lower() ;
+    ProcessOR () ;
+}
+
+void TSearchWordTree::ProcessAND ()
+{
+    if ( children.GetCount() == 0 ) return ;
+    if ( children.GetCount() == 1 )
+    {
+        table = children[0]->table ;
+        children[0]->table.Clear() ;
+        return ;
+    }
+    int a , b , cp ;
+    for ( cp = 1 ; cp < children.GetCount() ; cp++ )
+    {
+        ArrayOfTSearchWordTreeTableLine *t1 , *t2 ;
+        t1 = &children[0]->table ;
+        t2 = &children[cp]->table ;
+        a = 0 ;
+        b = 0 ;
+        table.Clear() ;
+        while ( a < t1->GetCount() && b < t2->GetCount() )
+        {
+            if ( (*t1)[a].article_id < (*t2)[b].article_id ) { a++ ; continue ; }
+            if ( (*t1)[a].article_id > (*t2)[b].article_id ) { b++ ; continue ; }
+            if ( (*t1)[a] < (*t2)[b] ) { table.Add((*t1)[a]) ; a++ ; continue ; }
+            if ( (*t2)[b] < (*t1)[a] ) { table.Add((*t2)[b]) ; b++ ; continue ; }
+            table.Add((*t1)[a]) ; // Both equal ??
+            a++; b++;
+        }
+        t2->Clear() ;
+        *t1 = table ;
+    }
+    table = children[0]->table ;
+    children[0]->table.Clear() ;
+//    table.Sort ( CMPFUNCtable ) ;
+}
+
+void TSearchWordTree::ProcessOR ()
+{
+    if ( children.GetCount() == 0 ) return ; // No need to run this
+    int a ;
+    table.Clear() ;
+    for ( a = 0 ; a < children.GetCount() ; a++ )
+    {
+        WX_APPEND_ARRAY ( table , children[a]->table ) ;
+        children[a]->table.Clear() ;
+    }
+    if ( children.GetCount() > 1 ) table.Sort ( CMPFUNCtable ) ; // Otherwise, no sorting necessary
+}
+
+void TSearchWordTree::CreateSingleWordTable ( wxString word , ZenoFile *index )
+{
+    table.Clear () ;
+    if ( word.IsEmpty() ) return ;
+    int i = index->FindPageID ( _T("X/") + word ) ;
+    if ( i <= 0 ) return ;
+    ZenoArticle art = index->ReadSingleArticle ( i ) ;
+    if ( !art.ok ) return ;
+    char *data = index->GetBlob ( art.rFilePos , art.rFileLen ) ;
+    if ( !data ) return ;
+    
+    // Table data is now in *data
+    unsigned long *x = (unsigned long*) data ;
+    unsigned long cnt = 0 ;
+    while ( cnt < art.rFileLen )
+    {
+        TSearchWordTreeTableLine line ;
+        line.article_id = *x++ ;
+        line.word_pos = *x++ ;
+        table.Add ( line ) ;
+        cnt += 8 ;
+    }
+    
+    if ( GetRoot()->title_only ) FilterTitleAgainstTable ( word ) ;
+}
+
+void TSearchWordTree::FilterTitleAgainstTable ( wxString word )
+{
+    unsigned long number = 0 ;
+    bool ok = false ;
+    ArrayOfTSearchWordTreeTableLine table2 ;
+    ZenoFile *main = ((MainApp*)wxTheApp)->frame->GetMainPointer() ;
+    for ( int a = 0 ; a < table.GetCount() ; a++ )
+    {
+        if ( number == table[a].article_id )
+        {
+            if ( ok ) table2.Add ( table[a] ) ;
+            continue ;
+        }
+        // New article in list
+        number = table[a].article_id ;
+        ok = false ;
+        ZenoArticle art = main->ReadSingleArticle ( number ) ;
+        if ( !art.ok ) continue ;
+        wxString t = art.title ; // Needs to be qunicode-treated!!!!!!!!!!
+        if ( !DoesMatchTitle ( word , t ) ) continue ;
+        ok = true ;
+        table2.Add ( table[a] ) ;
+    }
+    table = table2 ;
+}
+
+void TSearchWordTree::Explode ( wxString query , wxArrayString &words , bool is_parameter )
+{
+	// Break parse string into words and ()
 	wxString temp ;
-	wxArrayString words ;
 	while ( !query.IsEmpty() )
 	{
 		wxString l = query.Left ( 1 ) ;
 		query = query.Mid ( 1 ) ;
-		if ( l == _T(" ") || l == _T("(") || l == _T(")") )
+		bool doit = false ;
+		if ( is_parameter && ( l == _T(" ") || l == _T("(") || l == _T(")") ) ) doit = true ;
+//		if ( !is_parameter && 
+		if ( doit )
 		{
-			if ( !temp.IsEmpty() ) words.Add ( temp ) ;
+			if ( !temp.IsEmpty() ) words.Add ( String2Q ( temp ) ) ;
 			temp.Empty() ;
-			if ( l == _T(" ") ) continue ;
-			words.Add ( l ) ;
+			if ( is_parameter && l == _T(" ") ) continue ;
+			words.Add ( String2Q ( l ) ) ;
 		} else temp += l ;
 	}
-	if ( !temp.IsEmpty() ) words.Add ( temp ) ;
-	temp.Empty() ;
-	// At this point, "query" is empty, and "words[]" contains words and "()"
+	if ( !temp.IsEmpty() ) words.Add ( String2Q ( temp ) ) ;
+}
+
+bool TSearchWordTree::DoesMatchTitle ( wxString word , wxString title )
+{
+    int a ;
+    wxString letters = _T("abcdefghijklmnopqrstuvwxyz") ;
+    letters += 'ä' ;
+    letters += 'Ä' ;
+    title = title.Lower() ;
+    for ( a = 0 ; a < title.Length() ; a++ )
+    {
+        if ( -1 == letters.Find ( title[a] ) ) title[a] = ' ' ;
+        else title[a] = CharToQ ( title[a] ) ;
+    }
+    title = title.Lower() ;
+    title = _T(" ") + title + _T(" ") ;
+    word = _T(" ") + word + _T(" ") ;
+//    wxMessageBox ( title , word ) ;
+    if ( -1 == title.Find ( word ) ) return false ;
+    return true ;
+}
+
+//________________________________________________________________________________________________________________________
+
+
+wxArrayString wxWikiServer::Search ( wxString query , wxString mode )
+{
+    // Fun pre-processing
+	query = query.Lower() ;
+	query.Replace ( _T("_") , _T(" ") ) ;
+	query.Replace ( _T("&") , _T(" and ") ) ;
+	query.Replace ( _T("|") , _T(" or ") ) ;
+	query.Replace ( _T(" und ") , _T(" and ") ) ; // German 
+	query.Replace ( _T(" oder ") , _T(" or ") ) ; // German
+	query.Replace ( _T("%") , _T("{0;1}") ) ;
+	query.Replace ( _T("@") , _T("{1;}") ) ;
 	
+	wxArrayString words ;
 	TSearchWordTree root ;
+	root.Explode ( query , words ) ;
+	root.title_only = mode == _T("titles") ;
 	root.Parse ( words ) ;
 	bool wildcards = root.IsUsingWildcards() ;
 	// MISSING : Load index if wildcards==true
 	
-	wxString ret ;
-	ret = root.GetHTMLtree() ;
-	ret += _T("<hr/>") ;
-	ret += wildcards ? _T("Using wildcards<br/>") : _T("Not using wildcards<hr/>") ;
-	ret += root.Process ( frame->GetIndexPointer() ) ;
-	return ret ;
+	return root.Process ( frame->GetIndexPointer() ) ;
 }

@@ -21,6 +21,19 @@ WX_DEFINE_OBJARRAY(ArrayOfZenoArticles);
 
 char *qunicode = NULL ;
 
+wxChar CharToQ ( wxChar c )
+{
+    return qunicode[(int)c] ;
+}
+
+wxString String2Q ( wxString s )
+{
+    int a ;
+    for ( a = 0 ; a < s.Length() ; a++ ) s[a] = qunicode[(int)s[a]] ;
+    s = s.Lower() ;
+    return s ;
+}
+
 wxString ArrayToString ( const wxArrayInt &array )
 {
     wxString ret ;

@@ -9,6 +9,9 @@ class ZenoFile ;
 
 WX_DECLARE_OBJARRAY(ZenoArticle, ArrayOfZenoArticles);
 
+wxChar CharToQ ( wxChar c ) ;
+wxString String2Q ( wxString s ) ;
+
 class ZenoArticle
 {
     public :

@@ -187,6 +187,7 @@ void wxWebServer::ProcessRequest(const wxString &reqstr,HttpResponse &hr)
             page = page.BeforeFirst ( ' ' ) ;
             page = page.BeforeLast ( '?' ) ;
         }
+        page.Replace ( _T("%20") , _T("_") ) ;
         page = uri.Unescape ( page ) ;
         HandleSimpleGetRequest ( page , hr ) ;
         return ;
