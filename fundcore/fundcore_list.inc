@@ -8,6 +8,7 @@ function _fundcore_default_start()
 function _fundcore_filter($start_param, $end_param, $commented, $currency, $minimum)
 {
 	$fields['#action'] = url('fundcore/list');
+	$fields['#method'] = 'get';
 	$fields['filter'] = array(
 		'#type' => 'fieldset',
 		'#title' => t('Filter contribution results'),
