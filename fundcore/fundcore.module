@@ -81,9 +81,7 @@ function fundcore_page_main()
 	$content .= '<p><img src="http://upload.wikimedia.org/fundraising/2006/meter.png" alt="..." style="margin-bottom: 2px;" />';
 	$content .= '<br /><a href="http://wikimediafoundation.org/wiki/' . t('Fundraising') . '/"><strong>' . t('Make a Donation') . '</strong></a></p>';
 	$content .= '<p><strong>Q:</strong> Why did the meter jump up over $200,000?';
-	$content .= '<br /><strong>A:</strong> We added the anonymous matching donation. You will not see it here.</p>';
-	$content .= '<p><strong>Q:</strong> Why not?';
-	$content .= '<br /><strong>A:</strong> It\'s anonymous.</p>';
+	$content .= '<br /><strong>A:</strong> We added the anonymous matching donation.</p>';
 
 	$content .= '<p><strong>Coming soon:</strong> RSS feeds, maybe an IRC bot, and ';
 	$content .= '<a href="http://meta.wikimedia.org/wiki/Fundraising_C.O.R.E.">more translations</a>.</p>';

@@ -94,7 +94,7 @@ function _fundcore_results()
 	$sql_end = $end['year'] . '-' . $end['month'] . '-' . $end['day'] . ' 23:59';
 	
 	// Query contributions
-	$sql = 'SELECT receive_date, total_amount, c.source, note, display_name, do_not_trade, test_note FROM civicrm_contribution c INNER JOIN civicrm_contact p ON contact_id = p.id WHERE total_amount > 0 AND receive_date >= "%s" AND receive_date <= "%s" ';
+	$sql = 'SELECT receive_date, total_amount, c.source, note, display_name, do_not_trade FROM civicrm_contribution c INNER JOIN civicrm_contact p ON contact_id = p.id WHERE total_amount > 0 AND receive_date >= "%s" AND receive_date <= "%s" ';
 	
 	if (arg(4) == '1')
 	{
