@@ -118,8 +118,8 @@ function _fundcore_currency_summary($year, $month, $day)
 	{
 		$srow = array();
 		$srow[] = $currency;
-		$srow[] = array('style' => 'text-align: right;', 'data' => $sum);
-		$srow[] = array('style' => 'text-align: right;', 'data' => $sum_usd);
+		$srow[] = array('style' => 'text-align: right;', 'data' => number_format($sum, 2));
+		$srow[] = array('style' => 'text-align: right;', 'data' => number_format($sum_usd, 2));
 		$srows[] = $srow;
 	}
 
