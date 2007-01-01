@@ -89,3 +89,15 @@ function fundcore_page_main()
 	$content .= _fundcore_results();
 	return $content;
 }
+
+function fundcore_settings()
+{
+	$form['message'] = array(
+	  '#type' => 'textarea',
+	  '#title' => t('Message'),
+	  '#default_value' => variable_get('fundcore_message'),
+	  '#description' => t('Public message displayed to visitors.'),
+	);
+	
+	return $form;	
+}
