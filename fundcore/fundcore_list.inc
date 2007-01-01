@@ -102,12 +102,16 @@ function _fundcore_results($params)
 		$sql .= ' AND (note <> "" AND note IS NOT NULL) ';
 	}
 
-	$sql .= ' AND c.source LIKE "%s%%" ';
 	$sql .= ' AND total_amount >= %f ';
+
+	if ($params['currency'] != '')
+	{
+		$sql .= ' AND c.source LIKE "%s%%" ';
+	}
 	$sql .= ' ORDER BY receive_date DESC ';
 	
 	db_set_active('fundcore_civicrm');
-	$res =& pager_query($sql, 25, 0, NULL, $sql_start, $sql_end, $params['currency'], $params['minimum']);
+	$res =& pager_query($sql, 25, 0, NULL, $sql_start, $sql_end, $params['minimum'], $params['currency']);
 	//$res =& db_queryd($sql, $sql_start, $sql_end, $params['currency'], $params['minimum']);
 	db_set_active();
 
