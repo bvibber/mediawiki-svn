@@ -25,12 +25,12 @@ function _fundcore_statistics($year, $month, $day)
 	while ($row = db_fetch_object($res))
 	{
 			$srow = array();
-			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($row->num));
-			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($row->minimum, 2));
-			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($row->average, 2));
-			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($row->maximum, 2));
-			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($row->total, 2));
-			$srow[] = array('style' => 'text-align: right;', 'data' => number_format($row->sd, 2));
+			$srow[] = array('data' => number_format($row->num));
+			$srow[] = array('data' => number_format($row->minimum, 2));
+			$srow[] = array('data' => number_format($row->average, 2));
+			$srow[] = array('data' => number_format($row->maximum, 2));
+			$srow[] = array('data' => number_format($row->total, 2));
+			$srow[] = array('data' => number_format($row->sd, 2));
 			$srows[] = $srow;
 	}
 
@@ -38,12 +38,12 @@ function _fundcore_statistics($year, $month, $day)
 
 	// Finish table
 	$header = array();
-	$header[] = array('style' => 'text-align: right;', 'data' => t('Count'));
-	$header[] = array('style' => 'text-align: right;', 'data' => t('Minimum'));
-	$header[] = array('style' => 'text-align: right;', 'data' => t('Mean'));
-	$header[] = array('style' => 'text-align: right;', 'data' => t('Maximum'));
-	$header[] = array('style' => 'text-align: right;', 'data' => t('Total'));
-	$header[] = array('style' => 'text-align: right;', 'data' => t('Standard Deviation'));
+	$header[] = array('data' => t('Count'));
+	$header[] = array('data' => t('Minimum'));
+	$header[] = array('data' => t('Mean'));
+	$header[] = array('data' => t('Maximum'));
+	$header[] = array('data' => t('Total'));
+	$header[] = array('data' => t('Standard Deviation'));
 	
 	$fields['currencies'] = array(
 		'#type' => 'fieldset',
