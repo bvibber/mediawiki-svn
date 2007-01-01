@@ -22,8 +22,6 @@ function _fundcore_filter($params)
 	if ($params['start'])
 	{
 		$start = $params['start'];
-		//$split = explode('-', $params['start']);
-		//$start = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
 	}
 
 	$end = array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y'));
@@ -31,8 +29,6 @@ function _fundcore_filter($params)
 	if ($params['end'])
 	{
 		$end = $params['end'];
-		//$split = explode('-', $params['end']);
-		//$end = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
 	}
 
 	$fields['filter']['start'] = array(
@@ -94,16 +90,12 @@ function _fundcore_results($params)
 	if ($params['start'] != '')
 	{
 		$start = $params['start'];
-		//$split = explode('-', $start_param);
-		//$start = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
 	}
 	
 	$end = array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y'));
 	if ($params['end'] != '')
 	{
 		$end = $params['end'];
-		//$split = explode('-', $end_param);
-		//$end = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
 	}
 	$sql_start = $start['year'] . '-' . $start['month'] . '-' . $start['day'];
 	$sql_end = $end['year'] . '-' . $end['month'] . '-' . $end['day'] . ' 23:59';
@@ -127,7 +119,6 @@ function _fundcore_results($params)
 	}
 	
 	$sql .= ' ORDER BY receive_date DESC ';
-	drupal_set_message($sql);
 	
 	db_set_active('fundcore_civicrm');
 	$res =& pager_query($sql, 25, 0, NULL, $sql_start, $sql_end, $params['currency'], $params['minimum']);
@@ -155,11 +146,8 @@ function _fundcore_results($params)
 		
 		if ($row->note != '')
 		{
-			//$name .= '<br />' . htmlentities($row->note);
-			//$name .= '<br />' . htmlentities(mb_convert_encoding($row->test_note, 'windows-1252', 'UTF-8'));
-			//$name .= '<br />' . htmlentities(mb_convert_encoding($row->note, 'windows-1252', 'UTF-8'));
 			$name .= '<br />' . htmlentities($row->note, ENT_QUOTES, 'UTF-8');
-			$name .= '<!-- ' . mb_convert_encoding($row->note, 'UTF-16', 'UTF-8') . ' -->';
+			//$name .= '<!-- ' . mb_convert_encoding($row->note, 'UTF-16', 'UTF-8') . ' -->';
 		}
 
 		$trow = array();
