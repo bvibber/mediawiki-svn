@@ -34,6 +34,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'removed bot status from [[$1]]',
 ),
 
+/* Czech (bug 8455) */
+'cs' => array(
+'makebot' => 'Přidat nebo odebrat příznak bot',
+'makebot-header' => "'''Místní byrokraté používají tuto stránku pro přidělení nebo odebrání příznaku [[{{ns:help}}:Bot|bot]] uživatelskému účtu.\'\'\'<br />Příznak bot zajisti, že editace uživatele jsou skryty ze stránky [[Special:Recentchanges|posledních změn]] a podobných seznamů. Jsou užitečné pro roboty provádějící automatické editace.",
+'makebot-username' => 'Uživatelské jméno:',
+'makebot-search' => 'Provést',
+'makebot-isbot' => '[[User:$1|$1]] má příznak bot.',
+'makebot-notbot' => '[[User:$1|$1]] nemá příznak bot.',
+'makebot-privileged' => '[[User:$1|$1]] má [[Special:Listadmins|práva správce nebo byrokrata]], proto mu nemůže být přidělen příznak bot.',
+'makebot-change' => 'Změnit stav:',
+'makebot-grant' => 'Přidělit',
+'makebot-revoke' => 'Odebrat',
+'makebot-comment' => 'Komentář:',
+'makebot-granted' => '[[User:$1|$1]] nyní má příznak bot.',
+'makebot-revoked' => '[[User:$1|$1]] již nemá příznak bot.',
+'makebot-logpage' => 'Kniha příznaků bot',
+'makebot-logpagetext' => 'Tato kniha zobrazuje změny v udělovaných příznacích [[{{ns:help}}:Bot|bot]].',
+'makebot-logentrygrant' => 'přiděluje účtu [[$1]] příznak bot',
+'makebot-logentryrevoke' => 'odebírá účtu [[$1]] příznak bot',
+),
+
 /* Finnish (Niklas Laxström) */
 'fi' => array(
 'makebot' => 'Anna tai poista botti-merkintä',
