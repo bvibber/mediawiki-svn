@@ -9,6 +9,7 @@ function _fundcore_filter($start_param, $end_param, $commented, $currency, $mini
 {
 	$fields['#action'] = url('fundcore/list');
 	$fields['#method'] = 'get';
+	$fields['#redirect'] = FALSE;
 	$fields['filter'] = array(
 		'#type' => 'fieldset',
 		'#title' => t('Filter contribution results'),
