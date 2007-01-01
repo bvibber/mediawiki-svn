@@ -1,10 +1,5 @@
 <?php
 
-function _fundcore_default_start()
-{
-	return array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y') - 1);
-}
-
 function _fundcore_filter($params)
 {
 	$fields['#action'] = url('fundcore/list');
@@ -17,29 +12,17 @@ function _fundcore_filter($params)
 		'#collapsed' => TRUE,
 	);
 
-	$start = _fundcore_default_start();
-
-	if ($params['start'])
-	{
-		$start = $params['start'];
-	}
-
-	$end = array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y'));
-
-	if ($params['end'])
-	{
-		$end = $params['end'];
-	}
+	$params = _fundcore_list_set_defaults($params);
 
 	$fields['filter']['start'] = array(
 	 '#type' => 'date',
 	 '#title' => t('On or after'),
-	 '#default_value' => $start,
+	 '#default_value' => $params['start'],
 	);
 	$fields['filter']['end'] = array(
 	 '#type' => 'date',
 	 '#title' => t('On or before'),
-	 '#default_value' => $end,
+	 '#default_value' => $params['end'],
 	);
 	
 	 $fields['filter']['currency'] = array(
@@ -83,22 +66,32 @@ function fundcore_filter_submit($form_id, $edit)
 }
 */
 
+function _fundcore_list_set_defaults($params)
+{
+	if ($params['minimum'] == '' || $params['minimum'] < 0)
+	{
+		$params['minimum'] = variable_get('fundcore_default_minimum', '0');	
+	}
+
+	if ($params['start'] == '')
+	{
+		$params['start'] = array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y') - 1);
+	}
+
+	if ($params['end'] == '')
+	{
+		$params['end'] = array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y'));
+	}
+
+	return $params;
+}
+
 function _fundcore_results($params)
 {
-	// Set bounding dates
-	$start = _fundcore_default_start();	
-	if ($params['start'] != '')
-	{
-		$start = $params['start'];
-	}
-	
-	$end = array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y'));
-	if ($params['end'] != '')
-	{
-		$end = $params['end'];
-	}
-	$sql_start = $start['year'] . '-' . $start['month'] . '-' . $start['day'];
-	$sql_end = $end['year'] . '-' . $end['month'] . '-' . $end['day'] . ' 23:59';
+	$params = _fundcore_list_set_defaults($params);
+
+	$sql_start = $params['start']['year'] . '-' . $params['start']['month'] . '-' . $params['start']['day'];
+	$sql_end = $params['end']['year'] . '-' . $params['end']['month'] . '-' . $params['end']['day'] . ' 23:59';
 	
 	// Query contributions
 	$sql = 'SELECT receive_date, total_amount, c.source, note, display_name, do_not_trade FROM civicrm_contribution c INNER JOIN civicrm_contact p ON contact_id = p.id WHERE total_amount > 0 AND receive_date >= "%s" AND receive_date <= "%s" ';
@@ -113,11 +106,7 @@ function _fundcore_results($params)
 		$sql .= ' AND (c.source LIKE "%s%%") ';
 	}
 
-	if ($params['minimum'] != '')
-	{
-		$sql .= ' AND total_amount >= %d';
-	}
-	
+	$sql .= ' AND total_amount >= %d ';
 	$sql .= ' ORDER BY receive_date DESC ';
 	
 	db_set_active('fundcore_civicrm');

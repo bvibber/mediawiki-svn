@@ -114,5 +114,12 @@ function fundcore_settings()
 	  '#description' => t('Message displayed to visitors (not internationalized).'),
 	);
 	
+	$form['fundcore_default_minimum'] = array(
+	  '#type' => 'textfield',
+	  '#title' => t('Default minimum for contribution listing'),
+	  '#default_value' => variable_get('fundcore_default_minimum', '0'),
+	  '#description' => t('Default minimum for contribution listing in default currency.'),
+	);
+	
 	return $form;	
 }
