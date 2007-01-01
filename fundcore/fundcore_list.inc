@@ -160,8 +160,8 @@ function _fundcore_results($params)
 	
 	$header[] = t('Name and Comment');
 	$header[] = array('data' => t('Time (%timezone)', array('%timezone' => 'UTC')), 'style' => 'width: 60px;');
-	$header[] = t('Amount');
-	$header[] = t('Equivalent in %currency', array('%currency' => 'USD'));
+	$header[] = array('data' => t('Amount'), 'style' => 'text-align: right;');
+	$header[] = array('data' => t('Equivalent in %currency', array('%currency' => 'USD')), 'style' => 'text-align: right;');
 	//$header[] = t('Comment');
 	
 	$output .= theme('table', $header, $rows, array('style' => 'width: 100%;'));
