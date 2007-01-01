@@ -452,6 +452,9 @@ CREATE TABLE /*$wgDBprefix*/categorylinks (
   -- the same shortness.
   cl_sortkey varchar(86) binary NOT NULL default '',
   
+  -- Track variants on the title to be used for display
+  cl_dispname varchar(255) binary NOT NULL default '',
+  
   -- This isn't really used at present. Provided for an optional
   -- sorting method by approximate addition time.
   cl_timestamp timestamp NOT NULL,

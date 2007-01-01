@@ -63,6 +63,7 @@ $wgNewFields = array(
 	array( 'ipblocks',      'ipb_anon_only',    'patch-ipb_anon_only.sql' ),
 	array( 'user',          'user_newpass_time','patch-user_newpass_time.sql' ),
 	array( 'user',          'user_editcount',   'patch-user_editcount.sql' ),
+	array( 'categorylinks',	'cl_dispname',		'patch-cl_dispname.sql' ),
 );
 
 function rename_table( $from, $to, $patch ) {
