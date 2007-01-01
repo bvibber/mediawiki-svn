@@ -118,7 +118,7 @@ function _fundcore_results($params)
 
 	if ($params['currency'] != '')
 	{
-		$sql .= ' AND (c.source LIKE "s%%") ';
+		$sql .= ' AND (c.source LIKE "%s%%") ';
 	}
 
 	if ($params['minimum'] != '')
