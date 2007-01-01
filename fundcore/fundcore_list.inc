@@ -127,6 +127,8 @@ function _fundcore_results($params)
 	}
 	
 	$sql .= ' ORDER BY receive_date DESC ';
+	drupal_set_message($sql);
+	
 	db_set_active('fundcore_civicrm');
 	$res =& pager_query($sql, 25, 0, NULL, $sql_start, $sql_end, $params['currency'], $params['minimum']);
 	db_set_active();
