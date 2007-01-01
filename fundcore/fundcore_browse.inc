@@ -89,7 +89,7 @@ function _fundcore_currency_summary($year, $month, $day)
 	{
 		$currency = substr($row->currency, 0, 3);
 			
-		if ($last_currency !== NULL && $currency != $last_currency)
+		if ($last_currency !== NULL && $currency != $last_currency && $sum > 0)
 		{		
 			$srow = array();
 			$srow[] = $last_currency;
@@ -114,7 +114,7 @@ function _fundcore_currency_summary($year, $month, $day)
 		$last_currency = $currency;
 	}
 	
-	if ($last_currency !== NULL)
+	if ($last_currency !== NULL && $sum > 0)
 	{
 		$srow = array();
 		$srow[] = $currency;
