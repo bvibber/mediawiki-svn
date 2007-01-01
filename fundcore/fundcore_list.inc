@@ -7,6 +7,7 @@ function _fundcore_default_start()
 
 function _fundcore_filter($start_param, $end_param, $commented, $currency, $minimum)
 {
+	$fields['#action'] = url('fundcore/list');
 	$fields['filter'] = array(
 		'#type' => 'fieldset',
 		'#title' => t('Filter contribution results'),
@@ -75,10 +76,12 @@ function _fundcore_filter($start_param, $end_param, $commented, $currency, $mini
 	return drupal_get_form('fundcore_filter', $fields);
 }
 
+/*
 function fundcore_filter_submit($form_id, $edit)
 {
 	drupal_goto('fundcore/list/' . $edit['start']['year'] . '-' . $edit['start']['month'] . '-' . $edit['start']['day'] . '/' .$edit['end']['year'] . '-' . $edit['end']['month'] . '-' . $edit['end']['day'] . '/' . $edit['only_with_comments'] . '/' . $edit['currency'] . '/' . $edit['minimum'] . '/');
 }
+*/
 
 function _fundcore_results($start_param, $end_param, $commented, $currency, $minimum)
 {
