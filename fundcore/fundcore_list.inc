@@ -2,17 +2,18 @@
 
 function _fundcore_filter($params)
 {
+	$params = _fundcore_list_set_defaults($params);
+
 	$fields['#action'] = url('fundcore/list');
 	$fields['#method'] = 'get';
 	$fields['#redirect'] = FALSE;
+
 	$fields['filter'] = array(
 		'#type' => 'fieldset',
 		'#title' => t('Filter contribution results'),
 		'#collapsible' => TRUE,
 		'#collapsed' => TRUE,
 	);
-
-	$params = _fundcore_list_set_defaults($params);
 
 	$fields['filter']['start'] = array(
 	 '#type' => 'date',
@@ -39,7 +40,7 @@ function _fundcore_filter($params)
 	);	
 	
 	
-	$fields['filter']['only_with_comments'] = array(
+	$fields['filter']['commented'] = array(
 	 '#type' => 'checkbox',
 	 '#title' => t('Only show contributions with comments'),
 	 '#default_value' => $params['commented'],
@@ -47,6 +48,7 @@ function _fundcore_filter($params)
 
 	$fields['filter']['minimum'] = array(
 	 '#type' => 'textfield',
+	 '#size' => 5,
 	 '#title' => t('Minimum value (%currency or equivalent)', array('%currency' => 'USD')),
 	 '#default_value' => $params['minimum'],
 	);
