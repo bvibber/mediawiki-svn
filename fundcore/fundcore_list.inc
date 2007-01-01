@@ -37,8 +37,7 @@ function _fundcore_filter($params)
 	    'JPY' => 'Japanese Yen',
 	    'CZK' => 'CZK',
 	  ),
-	);	
-	
+	);
 	
 	$fields['filter']['commented'] = array(
 	 '#type' => 'checkbox',
@@ -143,9 +142,9 @@ function _fundcore_results($params)
 
 		$trow = array();
 		$trow[] = array('data' => $name, 'style' => 'width: 300px');
-		$trow[] = array('data' => check_plain($row->receive_date), 'style' => 'width: 180px');
-		$trow[] = check_plain($row->source);
-		$trow[] = check_plain($row->total_amount);
+		$trow[] = array('data' => check_plain($row->receive_date), 'style' => 'width: 180px;');
+		$trow[] = array('data' => check_plain($row->source), 'style' => 'text-align: right;');
+		$trow[] = array('data' => check_plain($row->total_amount), 'style' => 'text-align: right;');
 
 		$rows[] = $trow;
 	}
