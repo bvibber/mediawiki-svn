@@ -75,7 +75,7 @@ function _fundcore_currency_summary($year, $month, $day)
 	{		
 		$where .= ' AND DAY(receive_date) = %d ';
 	}
-	$sql = 'SELECT IF(source = "" OR source IS NULL, "USD", source) AS currency, total_amount FROM civicrm_contribution WHERE total_amount > 0 ' . $where . ' ORDER BY currency';
+	$sql = 'SELECT UPPER(IF(source = "" OR source IS NULL, "USD", source)) AS currency, total_amount FROM civicrm_contribution WHERE total_amount > 0 ' . $where . ' ORDER BY currency';
 	
 	db_set_active('fundcore_civicrm');
 	$res =& db_query($sql, $year, $month, $day);
