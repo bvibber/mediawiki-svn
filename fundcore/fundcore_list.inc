@@ -107,7 +107,7 @@ function _fundcore_results($params)
 		$sql .= ' AND c.source LIKE "%s%%" ';
 	}
 
-	$sql .= ' AND total_amount >= %d ';
+	$sql .= ' AND total_amount >= %s ';
 	$sql .= ' ORDER BY receive_date DESC ';
 	
 	drupal_set_message($params['minimum']);
