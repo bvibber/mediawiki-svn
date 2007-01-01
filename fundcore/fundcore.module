@@ -63,12 +63,8 @@ function fundcore_page_redirect()
 	drupal_goto('fundcore/list');
 }
 
-function fundcore_page_browser()
+function fundcore_page_browser($year, $month, $day)
 {
-	$year = arg(2);
-	$month = arg(3);
-	$day = arg(4);
-
 	$output .= _fundcore_currency_summary($year, $month, $day);
 	$output .= _fundcore_statistics($year, $month, $day);
 	$output .= _fundcore_browse($year, $month, $day);
@@ -76,15 +72,15 @@ function fundcore_page_browser()
 	return $output;	
 }
 
-function fundcore_page_main()
+function fundcore_page_main($start, $end, $commented, $currency, $minimum)
 {
 	$content .= '<p><img src="' . variable_get('fundcore_meter_url', '') . '" alt="..." style="margin-bottom: 2px;" />';
 	$content .= '<br /><a href="' . variable_get('fundcore_contribution_url', '') . '"><strong>' . t(variable_get('fundcore_contribution_request', '')) . '</strong></a></p>';
 
 	$content .= variable_get('fundcore_message', '');
 
-	$content .= _fundcore_filter();
-	$content .= _fundcore_results();
+	$content .= _fundcore_filter($start, $end, $commented, $currency, $minimum);
+	$content .= _fundcore_results($start, $end, $commented, $currency, $minimum);
 	return $content;
 }
 

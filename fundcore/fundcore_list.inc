@@ -5,7 +5,7 @@ function _fundcore_default_start()
 	return array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y') - 1);
 }
 
-function _fundcore_filter()
+function _fundcore_filter($start_param, $end_param, $commented, $currency, $minimum)
 {
 	$fields['filter'] = array(
 		'#type' => 'fieldset',
@@ -16,17 +16,17 @@ function _fundcore_filter()
 
 	$start = _fundcore_default_start();
 
-	if (arg(2) != '')
+	if ($start_param != '')
 	{
-		$split = explode('-', arg(2));
+		$split = explode('-', $start_param);
 		$start = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
 	}
 
 	$end = array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y'));
 
-	if (arg(3) != '')
+	if ($end_param != '')
 	{
-		$split = explode('-', arg(3));
+		$split = explode('-', $end_param);
 		$end = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
 	}
 
@@ -44,7 +44,7 @@ function _fundcore_filter()
 	 $fields['filter']['currency'] = array(
 	  '#type' => 'select',
 	  '#title' => t('Restrict to a specific currency'),
-	  '#default_value' => arg(5),
+	  '#default_value' => $currency,
 	  '#options' => array(
 	    '' => '',
 	    'USD' => 'U.S. Dollars',
@@ -58,7 +58,7 @@ function _fundcore_filter()
 	$fields['filter']['only_with_comments'] = array(
 	 '#type' => 'checkbox',
 	 '#title' => t('Only show contributions with comments'),
-	 '#default_value' => arg(4),
+	 '#default_value' => $commented,
 	);	
 	
 	$fields['filter']['submit'] = array(
@@ -74,20 +74,20 @@ function fundcore_filter_submit($form_id, $edit)
 	drupal_goto('fundcore/list/' . $edit['start']['year'] . '-' . $edit['start']['month'] . '-' . $edit['start']['day'] . '/' .$edit['end']['year'] . '-' . $edit['end']['month'] . '-' . $edit['end']['day'] . '/' . $edit['only_with_comments'] . '/' . $edit['currency'] . '/');
 }
 
-function _fundcore_results()
+function _fundcore_results($start_param, $end_param, $commented, $currency, $minimum)
 {
 	// Set bounding dates
 	$start = _fundcore_default_start();	
-	if (arg(2) != '')
+	if ($start_param != '')
 	{
-		$split = explode('-', arg(2));
+		$split = explode('-', $start_param);
 		$start = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
 	}
 	
 	$end = array('day'=> date('d'),'month'=>date('m'),'year'=>date('Y'));
-	if (arg(3) != '')
+	if ($end_param != '')
 	{
-		$split = explode('-', arg(3));
+		$split = explode('-', $end_param);
 		$end = array('day'=> $split[2],'month'=>$split[1],'year'=> $split[0]);
 	}
 	$sql_start = $start['year'] . '-' . $start['month'] . '-' . $start['day'];
@@ -96,19 +96,19 @@ function _fundcore_results()
 	// Query contributions
 	$sql = 'SELECT receive_date, total_amount, c.source, note, display_name, do_not_trade FROM civicrm_contribution c INNER JOIN civicrm_contact p ON contact_id = p.id WHERE total_amount > 0 AND receive_date >= "%s" AND receive_date <= "%s" ';
 	
-	if (arg(4) == '1')
+	if ($commented == '1')
 	{
-		$sql .= 'AND (note <> "" AND note IS NOT NULL) ';
+		$sql .= ' AND (note <> "" AND note IS NOT NULL) ';
 	}
 
-	if (arg(5) != '')
+	if ($currency != '')
 	{
-		$sql .= 'AND (c.source LIKE "%s%%") ';
+		$sql .= ' AND (c.source LIKE "s%%") ';
 	}
 	
-	$sql .= 'ORDER BY receive_date DESC';
+	$sql .= ' ORDER BY receive_date DESC ';
 	db_set_active('fundcore_civicrm');
-	$res =& pager_query($sql, 25, 0, NULL, $sql_start, $sql_end, arg(5));
+	$res =& pager_query($sql, 25, 0, NULL, $sql_start, $sql_end, $currency);
 	db_set_active();
 
 	//$res =& db_queryd($sql, $sql_start, $sql_end);
