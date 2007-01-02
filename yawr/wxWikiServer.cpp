@@ -47,9 +47,30 @@ void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
 		else mode = _T("fulltext") ;
 		
 		wxArrayString titles = Search ( query , mode ) ;
+//		wxMessageBox ( wxString::Format ( _T("%d titles") , titles.GetCount() ) ) ;
+
+        // If only one article results, open it directly
+        if ( titles.GetCount() == 1 )
+        {
+            HandleSimpleGetRequest ( _T("/Wikipedia/") + titles[0] , hr ) ;
+            return ;
+        }
+
 		wxString html = FormatList ( titles , 1 , 100 , fulltext ) ;
 		ReturnHTML ( _T("-/Suche") , html , hr ) ;
 	}
+}
+
+/**
+ * This is so broken (for unicode chars)
+ */
+wxString EscapeURI ( wxString s )
+{
+    wxString ret ;
+    wxURI uri ;
+    uri.Create ( s ) ;
+    ret = uri.BuildURI() ;
+    return ret ;
 }
 
 wxString wxWikiServer::FormatList ( const wxArrayString &titles , int from , int howmany , bool fulltext )
@@ -60,12 +81,13 @@ wxString wxWikiServer::FormatList ( const wxArrayString &titles , int from , int
 //    } else {
         html = _T("<table class=\"z_lemtab\">") ;
         int a , b = 1 ;
-        for ( a = 0 ; a < howmany && titles.GetCount() > from+a ; a++ )
+        for ( a = 0 ; a < howmany && titles.GetCount() > from+a-1 ; a++ )
         {
-            wxString nicetitle = titles[from+a].Mid(2) ;
+            int pos = from + a - 1 ;
+            wxString nicetitle = titles[pos].Mid(2) ;
             nicetitle.Replace ( _T("_") , _T(" ") ) ;
-            wxURI uri ( titles[from+a] ) ;
-            wxString s = _T("<a href=\"/Wikipedia/") + uri.BuildURI() + _T("\">") + nicetitle + _T("</a>");
+            wxString s = wxString::Format ( _T("#%d: ") , a+from ) ;
+            s += _T("<a href=\"/Wikipedia/") + EscapeURI ( titles[pos] ) + _T("\">") + nicetitle + _T("</a>");
             if ( a % 3 == 0 ) html += _T("<tr>") ;
             html += _T("<td>") + s + _T("</td>") ;
             if ( a % 3 == 2 ) html += _T("</tr>") ;
@@ -238,7 +260,12 @@ void wxWikiServer::ReturnHTML ( wxString article , wxString text , HttpResponse 
     }
     
     // Create HTML
+    wxURI uri;
     wxString html = sop.GetString() ;
+    wxString lastsearch = GetValue ( _T("e") ) ;
+    lastsearch.Replace ( _T("+") , _T(" ") ) ;
+    lastsearch.Replace ( _T("_") , _T(" ") ) ;
+    lastsearch = uri.Unescape ( lastsearch ) ;
     html.Replace ( _T("%%BODY%%") , text ) ;
     html.Replace ( _T("%%IP%%") , frame->GetIP() ) ;
     html.Replace ( _T("%%PORT%%") , frame->GetPort() ) ;
@@ -247,6 +274,7 @@ void wxWikiServer::ReturnHTML ( wxString article , wxString text , HttpResponse 
     html.Replace ( _T("%%PAGE_FULL%%") , page_full ) ;
     html.Replace ( _T("%%PAGE_DISCUSSION%%") , page_discussion ) ;
     html.Replace ( _T("%%TABLINKS%%") , tablinks ) ;
+    html.Replace ( _T("%%LASTSEARCH%%") , lastsearch ) ;
     hr.AddDataLine( html );
 }
 

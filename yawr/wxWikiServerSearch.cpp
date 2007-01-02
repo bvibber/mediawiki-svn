@@ -15,8 +15,6 @@ class TSearchWordTreeTableLine ;
 WX_DECLARE_OBJARRAY(TSearchWordTree*, ArrayOfTSearchWordTree);
 WX_DECLARE_OBJARRAY(TSearchWordTreeTableLine, ArrayOfTSearchWordTreeTableLine);
 
-#define MAX_RETURN 20
-
 enum
 {
 	TREE_NORMAL_LIST = 0 ,
@@ -72,6 +70,7 @@ class TSearchWordTree
 	void FilterTitleAgainstTable ( wxString word ) ;
 	void Explode ( wxString query , wxArrayString &words , bool is_parameter = true ) ;
 	bool DoesMatchTitle ( wxString word , wxString title ) ;
+	void DumpTable ( wxString filename ) ;
 	
 	ArrayOfTSearchWordTree children ;
 	TSearchWordTree *_parent ;
@@ -231,30 +230,33 @@ wxArrayString TSearchWordTree::Process ( ZenoFile *index , int depth )
 	for ( a = 0 ; a < children.GetCount() ; a++ )
 		children[a]->Process ( index , depth+1 ) ;
 
-	if ( type == TREE_WORD || !word.IsEmpty() ) // Search entry
+	if ( !word.IsEmpty() ) // Search entry
 	{
         CreateSingleWordTable ( word , index ) ;
-        ProcessList() ; 
+//        DumpTable ( _T("C:\\") + word + _T(".txt") ) ;
 	} else { // Group / AND / OR / NEAR / whatnot
         switch ( type )
 	    {
-            case TREE_NORMAL_LIST : ProcessList() ; break ;
+            case TREE_WORD : ProcessList() ; break ; // This should never be the case, but it sometimes is. Bad programmer!
+            case TREE_NORMAL_LIST : ProcessList() ; break ; // Calls OR to merge
             case TREE_AND : ProcessAND() ; break ;
             case TREE_OR : ProcessOR() ; break ;
-            default : return ret ;
+            default : wxMessageBox ( _T("BAD TYPE!") ) ; return ret ;
         }
     }
     
-    // Return by root element
+    // Return is done by root element only
     if ( depth > 0 ) return ret ;
     
+//    wxMessageBox ( wxString::Format ( _T("Processing %d table entries") , table.GetCount() ) ) ;
     wxArrayInt ids ;
-    for ( a = 0 ; ids.GetCount() < MAX_RETURN && a < table.GetCount() ; a++ )
+    for ( a = 0 ; a < table.GetCount() ; a++ )
     {
         if ( ids.IsEmpty() ) ids.Add ( table[a].article_id ) ;
         else if ( ids.Last() != table[a].article_id ) ids.Add ( table[a].article_id ) ;
     }
     
+//    wxMessageBox ( wxString::Format ( _T("Processing %d ids") , ids.GetCount() ) ) ;
     ZenoFile *main = ((MainApp*)wxTheApp)->frame->GetMainPointer() ;
     for ( a = 0 ; a < ids.GetCount() ; a++ )
     {
@@ -302,6 +304,7 @@ void TSearchWordTree::ProcessAND ()
     table = children[0]->table ;
     children[0]->table.Clear() ;
 //    table.Sort ( CMPFUNCtable ) ;
+//    wxMessageBox ( wxString::Format ( _T("AND operation : %d left") , table.GetCount() ) ) ;
 }
 
 void TSearchWordTree::ProcessOR ()
@@ -315,6 +318,31 @@ void TSearchWordTree::ProcessOR ()
         children[a]->table.Clear() ;
     }
     if ( children.GetCount() > 1 ) table.Sort ( CMPFUNCtable ) ; // Otherwise, no sorting necessary
+//    wxMessageBox ( wxString::Format ( _T("OR operation : %d left") , table.GetCount() ) ) ;
+}
+
+void TSearchWordTree::DumpTable ( wxString filename )
+{
+    unsigned long a , number = 0 ;
+    wxFile out ( filename , wxFile::write ) ;
+    ZenoFile *main = ((MainApp*)wxTheApp)->frame->GetMainPointer() ;
+    wxString s ;
+    for ( a = 0 ; a < table.GetCount() ; a++ )
+    {
+        if ( number == table[a].article_id )
+        {
+            s = wxString::Format ( _T(", %d") , table[a].word_pos ) ;
+            out.Write ( s ) ;
+            continue ;
+        }
+        number = table[a].article_id ;
+        ZenoArticle art = main->ReadSingleArticle ( number ) ;
+        if ( !art.ok ) s = _T("Couldn't access article\n") ;
+        else s = _T("\n") + wxString::Format ( _T("%d: ") , number ) + art.title ;
+        out.Write ( s ) ;
+        s = wxString::Format ( _T(", %d") , table[a].word_pos ) ;
+        out.Write ( s ) ;
+    }
 }
 
 void TSearchWordTree::CreateSingleWordTable ( wxString word , ZenoFile *index )
@@ -379,7 +407,6 @@ void TSearchWordTree::Explode ( wxString query , wxArrayString &words , bool is_
 		query = query.Mid ( 1 ) ;
 		bool doit = false ;
 		if ( is_parameter && ( l == _T(" ") || l == _T("(") || l == _T(")") ) ) doit = true ;
-//		if ( !is_parameter && 
 		if ( doit )
 		{
 			if ( !temp.IsEmpty() ) words.Add ( String2Q ( temp ) ) ;

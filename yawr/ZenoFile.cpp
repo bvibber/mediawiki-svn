@@ -36,12 +36,9 @@ wxString String2Q ( wxString s )
 
 wxString ArrayToString ( const wxArrayInt &array )
 {
-    wxString ret ;
-    ret.Alloc ( array.GetCount() ) ;
+    wxString ret ( ' ' , array.GetCount() ) ;
     for ( int a = 0 ; a < array.GetCount() ; a++ )
-    {
-        ret += (wxChar) array[a] ;
-    }
+        ret[a] = (wxUint16) array[a] ;
     return ret ;
 }
 
@@ -66,7 +63,7 @@ wxArrayInt ZenoToArray ( char *s )
         } else if ( *t == 1 ) {
             wxUint16 l1 = (unsigned char) *(t+1) ;
             wxUint16 l2 = (unsigned char) *(t+2) ;
-            wxUint16 l = l1 << 8 + l2 ;
+            wxUint16 l = ( l2 << 8 ) | l1 ;
             t += 2 ;
             ret.Add ( (wxChar) l ) ;
         } else {
