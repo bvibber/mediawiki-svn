@@ -42,6 +42,7 @@ class DateParser {
 	 * @return string
 	 */
 	public function reformat( $text ) {
+		wfProfileIn( __METHOD__ );
 		if( $this->pref > self::PREF_NONE ) {
 			$this->initialise( $text );
 			foreach( $this->getRegexes() as $regex => $extract ) {
@@ -54,6 +55,7 @@ class DateParser {
 			}
 			$text = $this->unstrip( $text );
 		}
+		wfProfileOut( __METHOD__ );
 		return $text;
 	}
 	
@@ -136,8 +138,10 @@ class DateParser {
 	 * @return string
 	 */
 	private function unstrip( $text ) {
+		wfProfileIn( __METHOD__ );
 		foreach( $this->holders as $placeholder => $value )
 			$text = str_replace( $placeholder, $value, $text );
+		wfProfileOut( __METHOD__ );
 		return $text;
 	}
 	
