@@ -181,6 +181,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'removido estatuto de bot para [[$1]]',
 ),
 
+/* Indonesian (Ivan Lanin) */
+'id' => array(
+'makebot' => 'Pemberian atau penarikan status bot',
+'makebot-header' => "'''Birokrat lokal dapat menggunakan halaman ini untuk memberikan atau menarik [[Help:Bot|status bot]] untuk akun pengguna lain.'''<br />Status bot akan menyembunyikan suntingan pengguna dari [[Special:Recentchanges|perubahan terbaru]] dan daftar serupa lainnya, dan berguna untuk menandai pengguna yang melakukan penyuntingan otomatis. Hal ini harus dilakukan sesuai dengan kebijakan yang telah digariskan.",
+'makebot-username' => 'Nama pengguna:',
+'makebot-search' => 'Cari',
+'makebot-isbot' => '[[User:$1|$1]] mempunyai status bot..',
+'makebot-notbot' => '[[User:$1|$1]] tak mempunyai status bot.',
+'makebot-privileged' => '[[User:$1|$1]] mempunyai [[Special:Listadmins|berstatus pengurus atau birokrat]], karenanya tak bisa mendapat status bot.',
+'makebot-change' => 'Ganti status:',
+'makebot-grant' => 'Berikan',
+'makebot-revoke' => 'Tarik ',
+'makebot-comment' => 'Komentar:',
+'makebot-granted' => '[[User:$1|$1]] sekarang mempunyai status bot.',
+'makebot-revoked' => '[[User:$1|$1]] sekarantidak lagi mempunyai status bot.',
+'makebot-logpage' => 'Log status bot',
+'makebot-logpagetext' => 'Berikut adalah log perubahan status [[Help:Bot|bot]] pengguna.',
+'makebot-logentrygrant' => 'memberikan status bot untuk [[$1]]',
+'makebot-logentryrevoke' => 'menarik status bot dari [[$1]]',
+),
+
 	);
 	return $messages;
 }

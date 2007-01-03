@@ -49,6 +49,19 @@ function efCountEditsMessages( $single = false ) {
 'countedits-mostactive' => 'Contributeurs les plus actifs',
 ),
 	
+/* Indonesian (Ivan Lanin) */
+'id' => array(
+'countedits' => 'Jumlah suntingan',
+'countedits-warning' => 'Peringatan: Jangan menilai suatu buku dari sampulnya. Jangan menilai seorang kontributor berdasarkan jumlah suntingannya.',
+'countedits-username' => 'Nama pengguna:',
+'countedits-ok' => 'OK',
+'countedits-nosuchuser' => 'Tidak ada pengguna dengan nama $1.',
+'countedits-resultheader' => 'Hasil untuk $1',
+'countedits-resulttext' => '$1 telah membuat $2 suntingan',
+'countedits-mostactive' => 'Kontributor paling aktif',
+'countedits-nocontribs' => 'Belum ada kontribusi untuk wiki ini.',
+),
+	
 	);
 	return $single ? $messages['en'] : $messages;
 }

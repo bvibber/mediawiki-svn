@@ -56,6 +56,28 @@ function efBadImageMessages() {
 'badimages-log-add' => 'fügte [[$1]] zu der Liste unerwünschter Bilder hinzu',
 'badimages-log-remove' => 'entfernte [[$1]] von der Liste unerwünschter Bilder',
 ),
+	
+/* Indonesian (Ivan Lanin) */
+'id' => array(
+'badimages' => 'Daftar berkas tidak sah',
+'badimages-add-btn' => 'Tambahkan',
+'badimages-added' => '$1 ditambahkan dalam daftar.',
+'badimages-count' => "Ada '''$1''' berkas dalam daftar berkas tidak sah.",
+'badimages-name' => 'Nama:',
+'badimages-not-added' => 'Berkas tidak dapat ditambahkan.',
+'badimages-not-removed' => 'Berkas tidak dapat dihapus.',
+'badimages-reason' => 'Alasan:',
+'badimages-remove' => '(hapus)',
+'badimages-remove-btn' => 'Hapus',
+'badimages-remove-confirm' => 'Harap konfirmasi bahwa Anda ingin menghapus $1 dari daftar:',
+'badimages-removed' => '$1 dihapus dari daftar.',
+'badimages-subheading' => 'Daftar sekarang',
+'badimages-unprivileged' => '(Anda tidak memiliki cukup hak untuk mengubah daftar)',
+'badimages-log-name' => 'Daftar berkas tidak sah',
+'badimages-log-header' => 'Berikut ini adalah log perubahanan untuk [[Help:Daftar berkas tidak sah|daftar berkas tidak sah]].',
+'badimages-log-add' => 'menambahkan [[$1]] ke daftar berkas tidak sah',
+'badimages-log-remove' => 'menghapus [[$1]] dari daftar berkas tidak sah',
+),
 
 	);
 }

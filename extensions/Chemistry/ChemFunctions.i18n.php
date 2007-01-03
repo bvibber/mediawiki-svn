@@ -122,6 +122,32 @@ $wgChemFunctions_Messages['de'] = array(
 );
 
 /**
+ * id
+ */
+
+$wgChemFunctions_Messages['id'] = array(
+	'chemicalsources' => 'Rujukan kimia',
+	'ChemFunctions_ListPage' => 'Rujukan kimia',
+	'ChemFunctions_ChemicalDataList' => 'Berikut adalah daftar pranala ke situs yang mungkin menyediakan informasi mengenai zat kimia yang Anda cari.<br /><br />
+	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Senyawa $MIXCASNameFormula di NIST</a><br />
+	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS di Oxford University (UK) (tanpa fasilitas pencarian)</a><br />',
+	'ChemFunctions_CAS' => 'Nomor CAS',
+	'ChemFunctions_EINECS' => 'Einecs',
+	'ChemFunctions_CHEBI' => 'CHEBI',
+	'ChemFunctions_PubChem' => 'PubChem',
+	'ChemFunctions_SMILES' => 'SMILES',
+	'ChemFunctions_InChI' => 'InChI',
+	'ChemFunctions_RTECS' => 'RTECS',
+	'ChemFunctions_KEGG' => 'KEGG',
+	'ChemFunctions_ATCCode' => 'ATCCode',
+	'ChemFunctions_DrugBank' => 'DrugBank',
+	'ChemFunctions_ECNumber' => 'ECNumber',
+	'ChemFunctions_Formula' => 'Formula',
+	'ChemFunctions_Name' => 'Nama IUPAC',
+	'ChemFunctions_ChemFormInputError' => 'Chemform: Kesalahan pada masukan!',
+);
+
+/**
  * it
  */
 
