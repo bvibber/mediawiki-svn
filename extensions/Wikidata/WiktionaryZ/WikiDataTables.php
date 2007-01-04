@@ -28,7 +28,7 @@ $classAttributesTable = new Table('uw_class_attributes', true, array('object_id'
 
 $translatedContentAttributeValuesTable = new Table('uw_translated_content_attribute_values', true, array('value_id'));
 $textAttributeValuesTable = new Table('uw_text_attribute_values', true, array('value_id'));
-$optionAttributeOptionsTable = new Table('uw_option_attribute_options', true, array('attribute_mid', 'option_mid'));
+$optionAttributeOptionsTable = new Table('uw_option_attribute_options', true, array('attribute_id', 'option_mid'));
 $optionAttributeValuesTable = new Table('uw_option_attribute_values', true, array('value_id'));
 $urlAttributeValuesTable = new Table('uw_url_attribute_values', true, array('value_id'));
 
