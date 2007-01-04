@@ -81,10 +81,16 @@ class DateParser {
 		return array(
 			# DMY
 			'!(\d{1,2}) (' . $this->getMonths() . '),? (\d{4})!iu' => array( 'd' => 1, 'F' => 2, 'y' => 3 ),
+			# YDM
+			'!(\d{4}),? (\d{1,2}) (' . $this->getMonths() . ')!iu' => array( 'y' => 1, 'd' => 2, 'F' => 3 ),
 			# MDY
 			'!(' . $this->getMonths() . ') (\d{1,2}),? (\d{4})!iu' => array( 'd' => 2, 'F' => 1, 'y' => 3 ),
 			# YMD
 			'!(\d{4}),? (' . $this->getMonths() . ') (\d{1,2})!iu' => array( 'd' => 3, 'F' => 2, 'y' => 1 ),
+			# DM
+			'!(\d{1,2}) (' . $this->getMonths() . ')!iu' => array( 'd' => 1, 'F' => 2 ),
+			# MD
+			'!(' . $this->getMonths() . ') (\d{1,2})!iu' => array( 'F' => 1, 'd' => 2 ),
 			# ISO
 			'!(\d{4})-(\d{2})-(\d{2})!iu' => array( 'd' => 3, 'm' => 2, 'y' => 1 ),
 		);
