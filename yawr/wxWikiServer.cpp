@@ -37,9 +37,9 @@ void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
         return ;
     } else if ( page == _T("search") ) {
 		wxURI uri;
-		wxString query = GetValue ( _T("e") ) ;
-		query.Replace ( _T("+") , _T(" ") ) ;
-		query = uri.Unescape ( query ) ;
+		wxString query = Unescape ( GetValue ( _T("e") ) ) ;
+//		query.Replace ( _T("+") , _T(" ") ) ;
+//		query = uri.Unescape ( query ) ;
 
 		wxString mode ;
 		bool fulltext = GetValue ( _T("ft") ) != _T("") ;
@@ -208,7 +208,9 @@ void wxWikiServer::ReturnHTML ( wxString article , ZenoArticle &art , HttpRespon
     {
         ZenoArticle va_page = frame->GetPage ( orig_article , true ) ;
         text = va_page.GetText() ;
-    } else text = art.GetText() ;
+    } else {
+        text = art.GetText() ;
+    }
     ReturnHTML ( orig_article , text , hr ) ;
 }
 
@@ -223,7 +225,7 @@ void wxWikiServer::ReturnHTML ( wxString article , wxString text , HttpResponse 
     nicetitle.Replace ( _T("_") , _T(" ") ) ;
 
     hr.SetRC(wxT("200 OK"));
-    hr.AddHeader(wxT("Content-Type: text/html; charset=UTF8") );
+    hr.AddHeader(wxT("Content-Type: text/html; charset=UTF-8") );
 
     // Load HTML template
     wxFFileInputStream in ( frame->dirbase + _T("base.html") ) ;
@@ -252,7 +254,8 @@ void wxWikiServer::ReturnHTML ( wxString article , wxString text , HttpResponse 
         page_full += title ;
         page_discussion += title ;
         name2 = _T("Versionen/Autoren") ;
-        target = title ;
+        wxURI uri ( title ) ;
+        target = uri.BuildURI() ;
         if ( va ) class2 = _T(" class=\"selected\"") ;
         else class1 = _T(" class=\"selected\"") ;
         tablinks += _T("<li id=\"ca-nstab-special\"") + class1 + _T("><a href=\"") + ns1 + _T("/") + target + _T("\">") + name1 + _T("</a></li>\n") ;
@@ -260,13 +263,11 @@ void wxWikiServer::ReturnHTML ( wxString article , wxString text , HttpResponse 
     }
     
     // Create HTML
-    wxURI uri;
     wxString html = sop.GetString() ;
-    wxString lastsearch = GetValue ( _T("e") ) ;
-    lastsearch.Replace ( _T("+") , _T(" ") ) ;
-    lastsearch.Replace ( _T("_") , _T(" ") ) ;
-    lastsearch = uri.Unescape ( lastsearch ) ;
-    html.Replace ( _T("%%BODY%%") , text ) ;
+    wxString lastsearch = Unescape ( GetValue ( _T("e") ) ) ;
+    text = _T("\n<!--BEGIN INSERTION-->\n") + text + _T("\n<!--END INSERTION-->\n") ;
+    
+    // Replace some stuff
     html.Replace ( _T("%%IP%%") , frame->GetIP() ) ;
     html.Replace ( _T("%%PORT%%") , frame->GetPort() ) ;
     html.Replace ( _T("%%TITLE%%") , nicetitle ) ;
@@ -275,6 +276,9 @@ void wxWikiServer::ReturnHTML ( wxString article , wxString text , HttpResponse 
     html.Replace ( _T("%%PAGE_DISCUSSION%%") , page_discussion ) ;
     html.Replace ( _T("%%TABLINKS%%") , tablinks ) ;
     html.Replace ( _T("%%LASTSEARCH%%") , lastsearch ) ;
+    
+    // Insert the text
+    html.Replace ( _T("%%BODY%%") , text ) ;
     hr.AddDataLine( html );
 }
 

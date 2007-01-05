@@ -11,6 +11,13 @@
 #include "wxWebServer.h"
 #include <wx/uri.h>
 
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+   
+#define SPC_BASE16_TO_10(x) (((x) >= '0' && (x) <= '9') ? ((x) - '0') : \
+                             (toupper((x)) - 'A' + 10))
+
 enum
 {
   // id for sockets
@@ -78,6 +85,41 @@ int wxWebServer::GetPort()
 
 
 //____________________________________________ PRIVATE
+
+char *wxWebServer::spc_decode_url(const char *url, size_t *nbytes) {
+  char       *out, *ptr;
+  const char *c;
+   
+  if (!(out = ptr = strdup(url))) return 0;
+  for (c = url;  *c;  c++) {
+    if (*c != '%' || !isxdigit(c[1]) || !isxdigit(c[2])) *ptr++ = *c;
+    else {
+      *ptr++ = (SPC_BASE16_TO_10(c[1]) * 16) + (SPC_BASE16_TO_10(c[2]));
+      c += 2;
+    }
+  }
+  *ptr = 0;
+  if (nbytes) *nbytes = (ptr - out); /* does not include null byte */
+  return out;
+}
+
+wxString wxWebServer::Unescape ( wxString s )
+{
+    int a ;
+    char *u = new char[s.length()+5] ;
+    for ( a = 0 ; a < s.length() ; a++ )
+    {
+        int b = s[a] ;
+        u[a] = (char) b ;
+    }
+    u[a] = 0 ;
+    
+    
+    char *t = spc_decode_url ( u , NULL ) ;
+    wxString ret ( (const char*) t , wxConvUTF8  ) ;
+    return ret ;
+}
+
 
 void wxWebServer::OnServerEvent(wxSocketEvent& event)
 {

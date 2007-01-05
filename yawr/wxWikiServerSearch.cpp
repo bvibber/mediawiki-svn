@@ -71,6 +71,7 @@ class TSearchWordTree
 	void Explode ( wxString query , wxArrayString &words , bool is_parameter = true ) ;
 	bool DoesMatchTitle ( wxString word , wxString title ) ;
 	void DumpTable ( wxString filename ) ;
+//	static wxString unescape ( wxString s ) ;
 	
 	ArrayOfTSearchWordTree children ;
 	TSearchWordTree *_parent ;
@@ -345,6 +346,7 @@ void TSearchWordTree::DumpTable ( wxString filename )
     }
 }
 
+
 void TSearchWordTree::CreateSingleWordTable ( wxString word , ZenoFile *index )
 {
     table.Clear () ;
@@ -367,7 +369,7 @@ void TSearchWordTree::CreateSingleWordTable ( wxString word , ZenoFile *index )
         table.Add ( line ) ;
         cnt += 8 ;
     }
-    
+    delete data ;
     if ( GetRoot()->title_only ) FilterTitleAgainstTable ( word ) ;
 }
 
@@ -421,14 +423,14 @@ void TSearchWordTree::Explode ( wxString query , wxArrayString &words , bool is_
 bool TSearchWordTree::DoesMatchTitle ( wxString word , wxString title )
 {
     int a ;
-    wxString letters = _T("abcdefghijklmnopqrstuvwxyz") ;
-    letters += 'ä' ;
-    letters += 'Ä' ;
+    wxString spec = _T("<>^-_()[]{}/\\=!;: \"$%&,.?~#'") ;
     title = title.Lower() ;
     for ( a = 0 ; a < title.Length() ; a++ )
+        title[a] = CharToQ ( title[a] ) ;
+    for ( a = 0 ; a < spec.length() ; a++ )
     {
-        if ( -1 == letters.Find ( title[a] ) ) title[a] = ' ' ;
-        else title[a] = CharToQ ( title[a] ) ;
+        wxString s = spec.Mid ( a , 1 ) ;
+        title.Replace ( s , _T(" ") ) ;
     }
     title = title.Lower() ;
     title = _T(" ") + title + _T(" ") ;

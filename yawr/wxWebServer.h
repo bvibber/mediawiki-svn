@@ -29,6 +29,8 @@ class wxWebServer : public wxEvtHandler
     virtual bool IsRunning();
     virtual int GetPort();
     virtual wxString GetValue ( wxString key , wxString def = _T("") ) ;
+    virtual wxString Unescape ( wxString s ) ;
+    virtual char *spc_decode_url(const char *url, size_t *nbytes) ;
     
     class HttpResponse // Response class
     {
@@ -65,7 +67,7 @@ class wxWebServer : public wxEvtHandler
 	virtual void WriteLine(wxSocketBase*pSocket,const wxString &str);
 
     virtual void HandleSimpleGetRequest(const wxString &page,HttpResponse &hr);
-
+    
 } ;
 
 

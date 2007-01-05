@@ -195,7 +195,7 @@ wxString ZenoArticle::GetTextFromPlain()
 {
     if ( !ok ) return _T("") ;
     char *data = zfile->GetBlob ( rFilePos , rFileLen ) ;
-    wxString ret ( data , wxConvUTF8 ) ;
+    wxString ret ( data , wxConvLocal ) ; // wxConvUTF8
     delete data ;
     return ret ;
 }
@@ -432,7 +432,7 @@ void ZenoFile::ReadArticleData ( wxFile &f , ZenoArticle &art )
 unsigned long ZenoFile::FindPageID ( wxString page )
 {
     if ( !Ok() ) return 0 ;
-	
+//	page.Replace ( _T(" ") , _T("_") ) ;
 	Log ( page , _T("ZenoFile::FindPageID") ) ;
 	
 	int cc = LookInCache ( page ) ;
@@ -454,6 +454,7 @@ unsigned long ZenoFile::FindPageID ( wxString page )
         ReadSingleArticle ( mid , file , art ) ;
         if ( art.rSubtype > 0 )
         {
+//            mid = art.rSubtypeParent ;
             mid -= art.rSubtype ;
             if ( min > mid ) min = mid ;
             ReadSingleArticle ( mid , file , art ) ;
@@ -471,7 +472,8 @@ unsigned long ZenoFile::FindPageID ( wxString page )
         else if ( i < 0 ) min = mid ;
     }
     
-	Log ( _T("NOT FOUND : ") + page + _T("\n") + show , _T("ZenoFile::FindPageID") ) ;
+//	wxMessageBox ( _T("NOT FOUND : ") + page + _T("\n") + show ) ;
+    Log ( _T("NOT FOUND : ") + page + _T("\n") + show , _T("ZenoFile::FindPageID") ) ;
     return 0 ; // Oh-oh...
 }
 

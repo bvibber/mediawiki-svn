@@ -83,5 +83,6 @@ enum
    ID_CHOOSE_DIR
 };
 
+//wxString unescape ( wxString s ) ;
 
 #endif
