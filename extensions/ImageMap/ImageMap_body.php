@@ -52,6 +52,7 @@ class ImageMap {
 		$output = '';
 		$links = array();
 		$descType = self::BOTTOM_RIGHT;
+		$defaultLinkAttribs = false;
 		foreach ( $lines as $line ) {
 			++$lineNum;
 
@@ -170,17 +171,25 @@ class ImageMap {
 
 			# Construct the area tag
 			$attribs = array( 
-				'shape' => $shape,
 				'href' => $title->escapeLocalURL(),
 			);
+			if ( $shape != 'default' ) {
+				$attribs['shape'] = $shape;
+			}
 			if ( $coords ) {
 				$attribs['coords'] = implode( ',', $coords );
 			}
 			if ( $alt != '' ) {
-				$attribs['alt'] = $alt;
+				if ( $shape != 'default' ) {
+					$attribs['alt'] = $alt;
+				}
 				$attribs['title'] = $alt;
 			} 
-			$output .= Xml::element( 'area', $attribs ) . "\n";
+			if ( $shape == 'default' ) {
+				$defaultLinkAttribs = $attribs;
+			} else {
+				$output .= Xml::element( 'area', $attribs ) . "\n";
+			}
 			$links[] = $title;
 		}
 
@@ -204,7 +213,17 @@ class ImageMap {
 		$parent = $anchor->parentNode;
 		$div = $parent->insertBefore( new DOMElement( 'div' ), $anchor );
 		$div->setAttribute( 'style', 'position: relative;' );
-		$div->appendChild( $imageNode->cloneNode( true ) );
+		if ( $defaultLinkAttribs ) {
+			$defaultAnchor = $div->appendChild( new DOMElement( 'a' ) );
+			foreach ( $defaultLinkAttribs as $name => $value ) {
+				$defaultAnchor->setAttribute( $name, $value );
+			}
+			$imageParent = $defaultAnchor;
+		} else {
+			$imageParent = $div;
+		}
+
+		$imageParent->appendChild( $imageNode->cloneNode( true ) );
 		$parent->removeChild( $anchor );
 
 		# Determine whether a "magnify" link is present
