@@ -227,10 +227,11 @@ function getClassAsRecordSet($queryResult) {
 
 function getTextAttributeAsRecordSet($queryResult) {
 	global
-		$idAttribute, $textAttributeAttribute;
+		$idAttribute;
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
+	$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "short-text");
 	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute), new Structure($idAttribute));
 //	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
@@ -247,17 +248,14 @@ function getTextAttributeAsRecordSet($queryResult) {
 
 function getTranslatedTextAttributeAsRecordSet($queryResult) {
 	global
-		$idAttribute, $translatedTextAttributeAttribute;
+		$idAttribute;
 	
 	$dbr =& wfGetDB(DB_SLAVE);
-//	$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", "Translated text attribute", "short-text");
-//	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
+	$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", "Translated text attribute", "short-text");
 	
 	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $translatedTextAttributeAttribute), new Structure($idAttribute));
-//	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $translatedTextAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-//		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
 
 	$editor = createSuggestionsTableViewer(null);
@@ -269,10 +267,11 @@ function getTranslatedTextAttributeAsRecordSet($queryResult) {
 
 function getOptionAttributeAsRecordSet($queryResult) {
 	global
-		$idAttribute, $optionAttributeAttribute;
+		$idAttribute;
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
+	$optionAttributeAttribute = new Attribute("option-attribute", "Option attribute", "short-text");
 	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $optionAttributeAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
@@ -376,10 +375,11 @@ function getLanguageAsRecordSet($queryResult) {
 
 function getTransactionAsRecordSet($queryResult) {
 	global
-		$idAttribute, $userAttribute;
+		$idAttribute;
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
+	$userAttribute = new Attribute("user", "User", "short-text");
 	$timestampAttribute = new Attribute("timestamp", "Time", "timestamp");
 	$summaryAttribute = new Attribute("summary", "Summary", "short-text");
 	

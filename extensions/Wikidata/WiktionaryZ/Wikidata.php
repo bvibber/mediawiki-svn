@@ -2,11 +2,13 @@
 
 require_once("forms.php");
 require_once("Transaction.php");
+require_once("WiktionaryZAttributes.php");
 
 interface WikidataApplication {
 	public function view();
 	public function edit();
 	public function history();
+	public function getTitle();
 }
 
 class DefaultWikidataApplication implements WikidataApplication {
@@ -16,7 +18,11 @@ class DefaultWikidataApplication implements WikidataApplication {
 	protected $viewQueryTransactionInformation;
 	protected $shouldShowAuthorities;
 	
-	protected $availableAuthorities = array();
+	// The following member variables control some application specific preferences
+	protected $availableAuthorities = array();  // A map containing (userId => displayName) combination for authoritative contribution view 
+	protected $filterLanguageId = 0;            // Filter pages on this languageId, set to 0 to show all languages
+	protected $showLanguageSelector = false;    // Show language selector at the top of each wiki data page
+	protected $showClassicPageTitles = true;    // Show classic page titles instead of prettier page titles
 
 	public function __construct() {
 		global 
@@ -38,16 +44,27 @@ class DefaultWikidataApplication implements WikidataApplication {
 		
 		$userlang=$wgUser->getOption('language');
 		$skin = $wgUser->getSkin();
-		
+			
 		return wfMsg('wz_uilang',"<b>$userlang</b>").  " &mdash; " . $skin->makeLink("Special:Preferences", wfMsg('wz_uilang_set'));
 	}
 
 	public function view() {
 		global
-			$wgOut;
+			$wgOut, $wgTitle;
 			
 		$wgOut->enableClientCache(false);
-		$wgOut->addHTML($this->getLanguageSelector());
+		
+		$titleArray = $wgTitle->getTitleArray();
+
+		if (!$this->showClassicPageTitles) {
+			$titleArray["mainpart"] = $this->getTitle();
+			$titleArray["namespace"] = ""; 
+		}
+
+		$wgOut->setPageTitleArray($titleArray);
+
+		if ($this->showLanguageSelector)
+			$wgOut->addHTML($this->getLanguageSelector());
 
 		$this->shouldShowAuthorities = count($this->availableAuthorities) > 0; 
 
@@ -74,6 +91,8 @@ class DefaultWikidataApplication implements WikidataApplication {
 			$showCommunityContribution = false;
 		
 		$this->shouldShowAuthorities = count($authoritiesToShow) > 0 || $showCommunityContribution;
+		initializeWiktionaryZAttributes($this->filterLanguageId != 0, $this->shouldShowAuthorities);	
+		initializeObjectAttributeEditors($this->filterLanguageId, false, $this->shouldShowAuthorities);
 		
 		if ($this->shouldShowAuthorities) 
 			$this->viewQueryTransactionInformation = new QueryAuthoritativeContributorTransactionInformation($this->availableAuthorities, $authoritiesToShow, $showCommunityContribution);
@@ -82,6 +101,8 @@ class DefaultWikidataApplication implements WikidataApplication {
 	}
 	
 	protected function save($referenceTransaction) {
+		initializeWiktionaryZAttributes($this->filterLanguageId != 0, false);	
+		initializeObjectAttributeEditors($this->filterLanguageId, false, false);
 	}
 	
 	public function saveWithinTransaction() {
@@ -92,7 +113,6 @@ class DefaultWikidataApplication implements WikidataApplication {
 
 		startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
 		$this->save(new QueryAtTransactionInformation($wgRequest->getInt('transaction')));
-
 
 		Title::touchArray(array($wgTitle));
 		$now = wfTimestampNow();
@@ -106,13 +126,27 @@ class DefaultWikidataApplication implements WikidataApplication {
 		if ($wgRequest->getText('save') != '') 
 			$this->saveWithinTransaction();
 
-		$wgOut->addHTML($this->getLanguageSelector());
+		if ($this->showLanguageSelector)
+			$wgOut->addHTML($this->getLanguageSelector());
+			
+		initializeWiktionaryZAttributes($this->filterLanguageId != 0, false);	
+		initializeObjectAttributeEditors($this->filterLanguageId, false, false);
 	}
 	
 	public function history() {
 		global
 			$wgOut, $wgTitle, $wgRequest;
 			
+		$titleArray = $wgTitle->getTitleArray();
+		$titleArray["actionprefix"] = wfMsg('wz_history');
+
+		if (!$this->showClassicPageTitles) {
+			$titleArray["mainpart"] = $this->getTitle();
+			$titleArray["namespace"] = ""; 
+		}
+
+		$wgOut->setPageTitleArray($titleArray);
+		
 		if (isset($_GET['show'])) {
 			$this->showRecordLifeSpan = isset($_GET["show-record-life-span"]);
 			$this->transaction = (int) $_GET["transaction"];
@@ -129,7 +163,9 @@ class DefaultWikidataApplication implements WikidataApplication {
 			
 		$transactionId = $wgRequest->getInt('transaction');
 
-		$wgOut->addHTML($this->getLanguageSelector());
+		if ($this->showLanguageSelector)
+			$wgOut->addHTML($this->getLanguageSelector());
+			
 		$wgOut->addHTML(getOptionPanel(
 			array(
 				'Transaction' => getSuggest('transaction','transaction', array(), $transactionId, getTransactionLabel($transactionId), array(0, 2, 3)),
@@ -137,12 +173,24 @@ class DefaultWikidataApplication implements WikidataApplication {
 			),
 			'history'
 		));
+
+		initializeWiktionaryZAttributes($this->filterLanguageId != 0, true);	
+		initializeObjectAttributeEditors($this->filterLanguageId, $this->showRecordLifeSpan, false);
 	}
 	
 	protected function outputEditHeader() {
 		global
-			$wgOut;
+			$wgOut, $wgTitle;
 			
+		$titleArray = $wgTitle->getTitleArray();
+		if (!$this->showClassicPageTitles) {
+			$titleArray["mainpart"] = $this->getTitle();
+			$titleArray["namespace"] = ""; 
+		}
+			 
+		$titleArray["actionprefix"] = wfMsg('editing');
+		$wgOut->setPageTitleArray($titleArray);
+
 		$wgOut->addHTML(
 			'<form method="post" action="">' .
 				'<input type="hidden" name="transaction" value="'. getLatestTransactionId() .'"/>'
@@ -151,7 +199,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 	
 	protected function outputEditFooter() {
 		global
-			$wgOut, $wgTitle;
+			$wgOut;
 		
 		$wgOut->addHTML(
 			'<div class="option-panel">'.
@@ -166,10 +214,13 @@ class DefaultWikidataApplication implements WikidataApplication {
 		$wgOut->addHTML('</form>');
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
-
-		$titleArray = $wgTitle->getTitleArray();
-		$titleArray["actionprefix"] = wfMsg('editing');
-		$wgOut->setPageTitleArray($titleArray);
+	}
+	
+	public function getTitle() {
+		global
+			$wgTitle;
+			
+		return $wgTitle->getText();
 	}
 }
 

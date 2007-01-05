@@ -19,6 +19,9 @@ function wfSpecialDatasearch() {
 			require_once("forms.php");
 			require_once("type.php");
 			require_once("Expression.php");
+			require_once("WiktionaryZAttributes.php");
+
+			initializeWiktionaryZAttributes(false, false);
 
 			if (isset($_GET['go'])) {
 				global

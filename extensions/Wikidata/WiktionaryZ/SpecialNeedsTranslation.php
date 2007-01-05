@@ -14,8 +14,10 @@
 
 				require_once("forms.php");
 				require_once("type.php");
+				require_once("WiktionaryZAttributes.php");
 
-				$wgOut->setPageTitle('Expressions Needing Translation');
+				initializeWiktionaryZAttributes(false, false);
+				$wgOut->setPageTitle('Expressions needing translation');
 
 				$sourceLanguageId = $_GET['from-lang'];
 				$destinationLanguageId = $_GET['to-lang'];

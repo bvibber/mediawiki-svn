@@ -25,12 +25,18 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		parent::view();
 
 		$spelling = $wgTitle->getText();
-		$wgOut->addHTML(getExpressionsEditor($spelling, false, $this->shouldShowAuthorities)->view(new IdStack("expression"), getExpressionsRecordSet($spelling, $this->viewQueryTransactionInformation)));
+		$expressionsValue = getExpressionsValue($spelling, $this->filterLanguageId, $this->viewQueryTransactionInformation);
+		
+		if ($expressionsValue != null) 
+			$wgOut->addHTML(
+				getExpressionsEditor($spelling, $this->filterLanguageId, false, $this->shouldShowAuthorities)->view(
+					new IdStack("expression"), 
+					$expressionsValue
+				)
+			);
+		
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
-
-		# We may later want to disable the regular page component
-		# $wgOut->setPageTitleArray($this->mTitle->getTitleArray());
 	}
 
 	public function history() {
@@ -40,21 +46,34 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		parent::history();
 
 		$spelling = $wgTitle->getText();
-		$wgOut->addHTML(getExpressionsEditor($spelling, $this->showRecordLifeSpan, false)->view(new IdStack("expression"), getExpressionsRecordSet($spelling, $this->queryTransactionInformation)));
+		$expressionsValue = getExpressionsValue($spelling, $this->filterLanguageId, $this->queryTransactionInformation);
+		
+		if ($expressionsValue != null)
+			$wgOut->addHTML(
+				getExpressionsEditor($spelling, $this->filterLanguageId, $this->showRecordLifeSpan, false)->view(
+					new IdStack("expression"), 
+					$expressionsValue
+				)
+			);
+		
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
-
-		$titleArray = $wgTitle->getTitleArray();
-		$titleArray["actionprefix"] = wfMsg('wz_history');
-		$wgOut->setPageTitleArray($titleArray);
 	}
 
 	protected function save($referenceTransaction) {
 		global
 			$wgTitle;
 
+		parent::save($referenceTransaction);
+
 		$spelling = $wgTitle->getText();
-		getExpressionsEditor($spelling, false, false)->save(new IdStack("expression"), getExpressionsRecordSet($spelling, $referenceTransaction));
+		$expressionsValue = getExpressionsValue($spelling, $this->filterLanguageId, $referenceTransaction);
+		
+		if ($expressionsValue != null)
+			getExpressionsEditor($spelling, $this->filterLanguageId, false, false)->save(
+				new IdStack("expression"), 
+				$expressionsValue
+			);
 	}
 
 	public function edit() {
@@ -62,12 +81,27 @@ class WiktionaryZ extends DefaultWikidataApplication {
 			$wgOut, $wgTitle, $wgUser;
 
 		parent::edit();
+		$this->outputEditHeader();
 
 		$spelling = $wgTitle->getText();
+		$expressionsValue = getExpressionsValue($spelling, $this->filterLanguageId, new QueryLatestTransactionInformation());
 
-		$this->outputEditHeader();
-		$wgOut->addHTML(getExpressionsEditor($spelling, false, false)->edit(new IdStack("expression"), getExpressionsRecordSet($spelling, new QueryLatestTransactionInformation())));
+		if ($expressionsValue != null)
+			$wgOut->addHTML(
+				getExpressionsEditor($spelling, $this->filterLanguageId, false, false)->edit(
+					new IdStack("expression"), 
+					$expressionsValue
+				)
+			);
+
 		$this->outputEditFooter();
+	}
+	
+	public function getTitle() {
+		global
+			$wgTitle;
+			
+		return "Disambiguation: " . $wgTitle->getText();
 	}
 }
 

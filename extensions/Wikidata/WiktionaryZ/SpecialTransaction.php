@@ -18,11 +18,13 @@ function wfSpecialTransaction() {
 			require_once("WiktionaryZAttributes.php");
 			require_once("WiktionaryZRecordSets.php");
 			require_once("WiktionaryZEditors.php");
+			require_once("RecordSetQueries.php");
 			require_once("Transaction.php");
 			require_once("Editor.php");
 			require_once("Controller.php");
 			require_once("type.php");
 			
+			initializeWiktionaryZAttributes(false, false);
 			initializeAttributes();
 			
 			$fromTransactionId = (int) $_GET['from-transaction'];
@@ -594,7 +596,7 @@ function getUpdatedSyntransesEditor($attribute) {
 		
 	$editor = createTableViewer($attribute);
 	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
-	$editor->addEditor(getExpressionTableCellEditor($expressionAttribute));
+	$editor->addEditor(getExpressionTableCellEditor($expressionAttribute, 0));
 	$editor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(false), false, false));
 	$editor->addEditor(createShortTextViewer($operationAttribute));
 	
