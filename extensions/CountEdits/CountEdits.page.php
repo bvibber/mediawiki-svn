@@ -59,12 +59,19 @@ class SpecialCountEdits extends SpecialPage {
 	}
 	
 	function countEditsReal( $id, $text = false ) {
-		$conds = array( 'rev_user' => $id );
-		if( $text ) { $conds['rev_user_text'] = $text; }
+		global $wgVersion;
 		$dbr =& wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'revision', 'COUNT(rev_id) AS count', $conds, 'CountEdits::countEditsReal' );
-		$row = $dbr->fetchObject( $res );
-		return $row->count;
+		# MediaWiki 1.9.x has a user.user_editcount column we can use,
+		# but this is not useful for older versions or anon. checks
+		if( $text === false && version_compare( $wgVersion, '1.9alpha', '>=' ) ) {
+			$conds = array( 'user_id' => $id );
+			return $dbr->selectField( 'user', 'user_editcount', $conds, 'CountEdits::countEditsReal' );
+		} else {
+			$conds = array( 'rev_user' => $id );
+			if( $text )
+				$conds['rev_user_text'] = $text;
+			return $dbr->selectField( 'revision', 'COUNT(rev_id)', $conds, 'CountEdits::countEditsReal' );
+		}
 	}
 	
 	function showResults( $count ) {
@@ -73,7 +80,7 @@ class SpecialCountEdits extends SpecialPage {
 		$wgOut->addHtml( '<h2>' . wfMsgHtml( 'countedits-resultheader', htmlspecialchars( $this->target ) ) . '</h2>' );
 		$links = $skin->userLink( 1, $this->target ) . $skin->userToolLinks( 1, $this->target );
 		$wgOut->addHtml( '<p>' . wfMsgHtml( 'countedits-resulttext', $links, $count ) . '</p>' );
-		$wgOut->addHtml( '<p>' . wfMsgHtml( 'countedits-warning' ) . '</p>' );
+		$wgOut->addWikiText( wfMsg( 'countedits-warning' ) );
 	}
 	
 	function showTopTen( &$out ) {

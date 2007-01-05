@@ -14,7 +14,7 @@ function efCountEditsMessages( $single = false ) {
 /* English (Rob Church) */
 'en' => array(
 'countedits' => 'Count edits',
-'countedits-warning' => 'Warning: Do not judge a book by its cover. Do not judge a contributor by their edit count.',
+'countedits-warning' => "'''Warning:''' Do not judge a book by its cover. Do not judge a contributor by their edit count.",
 'countedits-username' => 'Username:',
 'countedits-ok' => 'OK',
 'countedits-nosuchuser' => 'There is no user with the name $1.',
