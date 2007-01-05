@@ -44,7 +44,7 @@ INSERT INTO revision(rev_page, rev_comment, rev_user, rev_user_text, rev_timesta
 (
 	SELECT page.page_id as rev_page,
 	"Automated addition of defined meaning pages" as rev_comment,
-	0 as rev_user,	"" as rev_user_text,
+	0 as rev_user,	"" as rev_user_text,
 	@timeStamp as rev_timestamp
 
 	FROM page
