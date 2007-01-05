@@ -28,7 +28,7 @@ class SpecialCountEdits extends SpecialPage {
 			} else {
 				$id = User::idFromName( $this->target );
 				if( $id ) {
-					$this->showResults( $this->countEditsReal( $id, false ) );
+					$this->showResults( $this->countEditsReal( $id, false ), $id );
 				} else {
 					$wgOut->addHtml( '<p>' . wfMsg( 'countedits-nosuchuser', htmlspecialchars( $this->target ) ) . '</p>' );
 				}
@@ -74,11 +74,11 @@ class SpecialCountEdits extends SpecialPage {
 		}
 	}
 	
-	function showResults( $count ) {
+	function showResults( $count, $id = 0 ) {
 		global $wgOut, $wgUser, $wgLang;
 		$skin =& $wgUser->getSkin();
 		$wgOut->addHtml( '<h2>' . wfMsgHtml( 'countedits-resultheader', htmlspecialchars( $this->target ) ) . '</h2>' );
-		$links = $skin->userLink( 1, $this->target ) . $skin->userToolLinks( 1, $this->target );
+		$links = $skin->userLink( $id, $this->target ) . $skin->userToolLinks( $id, $this->target );
 		$wgOut->addHtml( '<p>' . wfMsgHtml( 'countedits-resulttext', $links, $count ) . '</p>' );
 		$wgOut->addWikiText( wfMsg( 'countedits-warning' ) );
 	}
