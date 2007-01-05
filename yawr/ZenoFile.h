@@ -20,7 +20,7 @@ class ZenoArticle
     wxString GetText() ;
     char *GetBlob() ;
     int Compare ( wxString s ) ;
-    int Compare ( wxArrayInt t ) ;
+    int Compare ( wxArrayInt t , bool anything_starting_with = false ) ;
     
     wxLongLong rFilePos ;
     unsigned long rFileLen ;
@@ -48,8 +48,12 @@ class ZenoFile
     bool Open ( wxString filename ) ;
     bool Ok () ;
     ZenoArticle ReadSingleArticle ( unsigned long number ) ;
-    unsigned long FindPageID ( wxString page ) ;
+    unsigned long FindPageID ( wxString page , bool anything_starting_with = false ) ;
     char *GetBlob ( wxLongLong pos , unsigned long length ) ;
+    
+    unsigned long GetFirstArticleStartingWith ( wxString start ) ;
+    unsigned long SeekArticleRelative ( unsigned long start , long diff ) ;
+    wxArrayString GetArticleTitles ( unsigned long start , unsigned long number ) ;
 
     unsigned long rMagicNumber , rVersion , rCount ;
     wxLongLong rIndexPos ;

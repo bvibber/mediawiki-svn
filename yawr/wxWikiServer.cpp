@@ -27,6 +27,33 @@ enum
     zenoMimeImageIcon
 } ;
 
+void wxWikiServer::Browse ( HttpResponse &hr )
+{
+    wxString pn = GetValue ( _T("n") , _T("A") ) ; // The namespace, I or A
+    wxString ps = GetValue ( _T("s") , _T("0") ) ; // Start / offset
+    wxString pc = GetValue ( _T("c") , _T("100") ) ; // Count (per page)
+    wxString pa = GetValue ( _T("a") , _T("A") ) ; // The start
+    long ns , nc ;
+    ps.ToLong ( &ns ) ;
+    pc.ToLong ( &nc ) ;
+    wxString start = pn + _T("/") + pa ;
+    
+    wxString html ;
+    html += start + _T(" / " ) ;
+    ZenoFile *main = frame->GetMainPointer() ;
+    unsigned long id = main->GetFirstArticleStartingWith ( start ) ; // Find article starting with "start"
+    html += wxString::Format ( _T("(%d) ") , id ) ;
+    id = main->SeekArticleRelative ( id , ns ) ; // Add the offset
+    html += wxString::Format ( _T("(%d) ") , id ) ;
+    wxArrayString titles = main->GetArticleTitles ( id , nc ) ;
+
+    html += wxString::Format ( _T("%d titles") , titles.GetCount() ) ;
+    html += _T("<br/>\n") ;
+        
+	html += FormatList ( titles , 1 , titles.GetCount() , false ) ;
+	ReturnHTML ( _T("-/Bl&auml;ttern") , html , hr ) ;
+}
+
 void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
 {
     if ( page == _T("random") )
@@ -35,6 +62,8 @@ void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
         ZenoArticle art = frame->RandomArticle ( begin + _T("/") ) ;
         HandleSimpleGetRequest ( _T("/Wikipedia/") + art.title , hr ) ;
         return ;
+    } else if ( page == _T("browse") ) {
+        Browse ( hr ) ;
     } else if ( page == _T("search") ) {
 		wxURI uri;
 		wxString query = Unescape ( GetValue ( _T("e") ) ) ;
@@ -64,7 +93,7 @@ void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
 /**
  * This is so broken (for unicode chars)
  */
-wxString EscapeURI ( wxString s )
+wxString wxWikiServer::EscapeURI ( wxString s )
 {
     wxString ret ;
     wxURI uri ;
@@ -81,21 +110,38 @@ wxString wxWikiServer::FormatList ( const wxArrayString &titles , int from , int
 //    } else {
         html = _T("<table class=\"z_lemtab\">") ;
         int a , b = 1 ;
-        for ( a = 0 ; a < howmany && titles.GetCount() > from+a-1 ; a++ )
+        for ( a = 0 ; a < howmany /*&& titles.GetCount() > from+a-1*/ ; a++ )
         {
             int pos = from + a - 1 ;
-            wxString nicetitle = titles[pos].Mid(2) ;
-            nicetitle.Replace ( _T("_") , _T(" ") ) ;
+            if ( pos > titles.GetCount() ) break ;
+            wxString nicetitle = GetHTMLtitle ( titles[pos].Mid(2) ) ;
             wxString s = wxString::Format ( _T("#%d: ") , a+from ) ;
             s += _T("<a href=\"/Wikipedia/") + EscapeURI ( titles[pos] ) + _T("\">") + nicetitle + _T("</a>");
             if ( a % 3 == 0 ) html += _T("<tr>") ;
             html += _T("<td>") + s + _T("</td>") ;
-            if ( a % 3 == 2 ) html += _T("</tr>") ;
+            if ( a % 3 == 2 ) html += _T("</tr>\n") ;
         }
         html += _T("</table>") ;
     }
     return html ;
 }
+
+wxString wxWikiServer::GetHTMLtitle ( wxString s )
+{
+    s.Replace ( _T("_") , _T(" ") ) ;
+    return s ;
+/*    int a ;
+    wxString ret ;
+    for ( a = 0 ; a < s.length() ; a++ )
+    {
+        wxChar c = s[a] ;
+        if ( c == '_' ) ret += _T(" ") ;
+        else if ( c > 127 ) ret += wxString::Format ( _T("&#%d;") , (int)c ) ;
+        else ret += c ;
+    }
+    return ret ;*/
+}
+
 
 bool busy = false ;
 

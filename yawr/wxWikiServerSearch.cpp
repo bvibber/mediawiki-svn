@@ -234,7 +234,7 @@ wxArrayString TSearchWordTree::Process ( ZenoFile *index , int depth )
 	if ( !word.IsEmpty() ) // Search entry
 	{
         CreateSingleWordTable ( word , index ) ;
-//        DumpTable ( _T("C:\\") + word + _T(".txt") ) ;
+        DumpTable ( _T("C:\\") + word + _T(".txt") ) ;
 	} else { // Group / AND / OR / NEAR / whatnot
         switch ( type )
 	    {

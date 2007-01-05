@@ -105,12 +105,17 @@ int ZenoArticle::Compare ( wxString s )
 	return Compare ( t ) ;
 }
 
-int ZenoArticle::Compare ( wxArrayInt t )
+int ZenoArticle::Compare ( wxArrayInt t , bool anything_starting_with )
 {
     if ( !ok ) return 1 ; // Paranoia
     
     int ret = -2 ; // Not set
     wxArrayInt orig = ZenoToArray ( rExtra ) ;
+    
+    if ( anything_starting_with )
+    {
+        while ( orig.GetCount() > t.GetCount() ) orig.RemoveAt ( orig.GetCount()-1 ) ;
+    }
     
     orig.Add ( 0 ) ;
     t.Add ( 0 ) ;
@@ -195,7 +200,7 @@ wxString ZenoArticle::GetTextFromPlain()
 {
     if ( !ok ) return _T("") ;
     char *data = zfile->GetBlob ( rFilePos , rFileLen ) ;
-    wxString ret ( data , wxConvLocal ) ; // wxConvUTF8
+    wxString ret ( data , wxConvLocal ) ;
     delete data ;
     return ret ;
 }
@@ -398,7 +403,7 @@ void ZenoFile::ReadIndex ( wxFile &f )
 
 void ZenoFile::ReadArticleData ( wxFile &f , ZenoArticle &art )
 {
-    long l1 , l2 ;
+    unsigned long l1 , l2 ;
     art.rExtraLen = 0 ;
 
     // rFilePos
@@ -420,6 +425,7 @@ void ZenoFile::ReadArticleData ( wxFile &f , ZenoArticle &art )
     f.Read ( art.rExtra , art.rExtraLen ) ;
     
     art.title = ZenoToString ( art.rExtra ) ;
+//    if ( art.rSubtype == 0 && art.title.Length()==2 ) wxMessageBox ( _T("OH NO!") , wxString::Format ( _T("%d:%d") , art.rExtraLen , art.rExtra[0] ) ) ;
     
     art.zfile = this ;
     art.ok = true ;
@@ -429,18 +435,17 @@ void ZenoFile::ReadArticleData ( wxFile &f , ZenoArticle &art )
 /**
  * Binary search
  */
-unsigned long ZenoFile::FindPageID ( wxString page )
+unsigned long ZenoFile::FindPageID ( wxString page , bool anything_starting_with )
 {
     if ( !Ok() ) return 0 ;
-//	page.Replace ( _T(" ") , _T("_") ) ;
 	Log ( page , _T("ZenoFile::FindPageID") ) ;
 	
+	// Trying cache, if it is turned on
 	int cc = LookInCache ( page ) ;
 	if ( cc != -1 ) return cc ;
 	
+	// OK, we'll have to look for this the hard way
     wxArrayInt page_array = StringToArray ( page ) ;
-
-
     unsigned long min = 0 ;
     unsigned long max = rCount - 1 ;
     wxFile file ( m_filename ) ;
@@ -459,22 +464,21 @@ unsigned long ZenoFile::FindPageID ( wxString page )
             if ( min > mid ) min = mid ;
             ReadSingleArticle ( mid , file , art ) ;
         }
-        if ( mid == lastmid ) break ; // Oh-oh...
+        if ( mid == lastmid ) break ; // Not found
         lastmid = mid ;
         
-        int i = art.Compare ( page_array ) ;
+        int i = art.Compare ( page_array , anything_starting_with ) ;
         show += wxString::Format ( _T("%d:%d (%d) EQ %d : ") , min , max , mid , i ) + art.title + _T(" seek ") + page + _T("\n\r") ;
         
         if ( i == 0 ) return mid ;
-        if ( min == max ) break ; // Oh-oh...
+        if ( min == max ) break ; // Not found
         if ( min+1 == max ) max = min ;
         else if ( i > 0 ) max = mid ;
         else if ( i < 0 ) min = mid ;
     }
     
-//	wxMessageBox ( _T("NOT FOUND : ") + page + _T("\n") + show ) ;
     Log ( _T("NOT FOUND : ") + page + _T("\n") + show , _T("ZenoFile::FindPageID") ) ;
-    return 0 ; // Oh-oh...
+    return 0 ; // Not found
 }
 
 char *ZenoFile::GetBlob ( wxLongLong pos , unsigned long length )
@@ -498,6 +502,108 @@ void ZenoFile::Log ( wxString message , wxString function )
 }
 
 
+unsigned long ZenoFile::GetFirstArticleStartingWith ( wxString start )
+{
+    // Trying shortcut
+    unsigned long l , l2 , step ;
+    l = FindPageID ( start ) ;
+    if ( l > 0 ) return l ;
+    
+    wxArrayInt page_array = StringToArray ( start ) ;
+    wxString s2 = String2Q ( start ) ;
+    wxFile file ( m_filename ) ;
+    ZenoArticle art ;
+    
+    //OK, the long way...
+    l = rCount - 1 ;
+    step = l / 2 ;
+    while ( step > 0 )
+    {
+        l2 = l - step ;
+        ReadSingleArticle ( l2 , file , art ) ;
+        if ( art.rLogicalNumber > 0 )
+        {
+            l2 -= art.rLogicalNumber ;
+            ReadSingleArticle ( l2 , file , art ) ;
+        }
+
+        wxString t2 = String2Q ( art.title ) ;
+        int i = t2 < s2 ? 1 : 0 ;
+        
+//        int i = art.Compare ( page_array , true ) ;
+//        wxMessageBox ( s2 + _T(":") + t2 , wxString::Format ( _T("%d") , i ) ) ;
+        if ( i > 0 )
+        {
+            l2 = l ;
+            step /= 2 ;
+        }
+        
+        l = l2 ;
+        if ( step > l ) step = l ;
+    }
+    return l ;
+
+
+
+/*
+    unsigned long l = FindPageID ( start , true ) , l2 ;
+    if ( l == 0 ) return 0 ; // No entry starting with the start word
+    wxArrayInt orig = StringToArray ( start ) ;
+    start = String2Q ( start.Mid(0,3) ) ;
+    
+    // Backwards search until start doesn't match anymore
+    int step = l / 4 ; // Just some starting size
+    if ( step == 0 ) step = 1 ;
+    while ( step > 0 ) 
+    {
+        l2 = SeekArticleRelative ( l , -step ) ;
+        ZenoArticle art = ReadSingleArticle ( l2 ) ;
+        wxString nt = String2Q ( art.title.Mid(0,3) ) ;
+        if ( !art.ok || nt != start )
+        {
+            if ( step == 1 ) return l ;
+            step /= 2 ; // Try again, with smaller steps
+            l2 = l ;
+        }
+        l = l2 ;
+    }
+    return 0 ;*/
+}
+
+unsigned long ZenoFile::SeekArticleRelative ( unsigned long start , long diff )
+{
+    if ( diff == 0 ) return start ; // You're a funny guy
+    long dir = diff > 0 ? 1 : -1 ;
+    diff *= dir ;
+    for ( start += dir ; diff > 0 ; start += dir )
+    {
+        ZenoArticle art = ReadSingleArticle ( start ) ;
+        if ( !art.ok ) return start-dir ; // Paranoia
+        if ( art.rLogicalNumber == 0 ) diff-- ;
+    }
+    return start ;
+}
+
+wxArrayString ZenoFile::GetArticleTitles ( unsigned long start , unsigned long number )
+{
+    wxArrayString ret ;
+    ZenoArticle art ;
+    start-- ; // Assuming you'll never try 0!
+    while ( number > 0 )
+    {
+        do {
+            art = ReadSingleArticle ( ++start ) ;
+        } while ( art.ok && ( art.rLogicalNumber != 0 || art.rExtraLen < 3 ) ) ;
+        if ( art.ok ) ret.Add ( art.title ) ;
+        else return ret ; // Paranoia
+        number-- ;
+    }
+    return ret ;
+}
+
+
+
+// __________________________________________________________________________________________
 // Caching stuff
 
 int ZenoFile::LookInCache ( wxString page )
@@ -587,3 +693,4 @@ char *ZenoFile::GetCacheData ( wxLongLong pos , unsigned long length )
 	return ret ;
 #endif
 }
+

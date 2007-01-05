@@ -21,8 +21,12 @@ class wxWikiServer : public wxWebServer
     virtual void ReturnCSS ( wxString article , ZenoArticle &art , HttpResponse &hr ) ;
     virtual void ReturnBinary ( wxString article , ZenoArticle &art , HttpResponse &hr , wxString content_type ) ;
     virtual void SpecialPage (const wxString &page,HttpResponse &hr);
+    virtual void Browse (HttpResponse &hr);
 	virtual wxArrayString Search ( wxString query , wxString mode ) ;
 	virtual wxString FormatList ( const wxArrayString &titles , int from = 1 , int howmany = 100 , bool fulltext = false ) ;
+	virtual wxString GetHTMLtitle ( wxString s ) ;
+	virtual wxString EscapeURI ( wxString s ) ;
+	
     MainFrame *frame ;
     bool va ;
 } ;
