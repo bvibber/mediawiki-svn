@@ -1,0 +1,153 @@
+#!/usr/bin/perl -w
+
+# Script to pull bug info from SourceForce and MediaZilla mails and dump them
+# to a log to be used for IRC bot.
+
+# Original version by Brion Vibber, 2004-08-02, 2004-08-10 and 2004-08-15
+# Entirely rewritten by Timwi, 2004-09-06
+# Some cleanups and fixes by AzaToth, 2006-12-20
+
+use strict;
+use utf8;
+
+$/ = undef;
+my $contents = <STDIN>;
+$contents =~ s/\r\n/\n/g;
+my $output;
+
+my $shash = { 
+	'enhancement' => "\00315enhancement\003",
+	'trivial' => 'trivial',
+	'minor' => "minor",
+	'normal' => "normal",
+	'major' => "major",
+	'critical' => "\00304CRIT\003",
+	'blocker' => "\00304\002BLOCKER\002\003"
+};
+
+my $phash = { 
+	'Highest' => "highest",
+	'High' => "high",
+	'Normal' => "normal", 
+	'Low' => "low",
+	'Lowest' => "lowest"
+};
+
+my $rhash = {
+	'WORKSFORME' => "\00314(WFM)\003", 
+	'INVALID' => "\00314(INVALID)\003",
+	'DUPLICATE' => "\00314(DUP)\003",
+	'FIXED' => "\00303(FIXED)\003",
+	'WONTFIX' => "\00303(WONTFIX)\003", 
+	'LATER' => "\00306(LATER)\003",
+	'REMIND' => "\00306(REMIND)\003" 
+};
+
+if ($contents =~ /^Content-Transfer-Encoding: base64/m) {
+	use MIME::Base64;
+	$contents =~ s/\n\n(\n?([[:alnum:]\=+]{1,76}\n)+)/decode_base64($1)/seg;
+}
+
+if ($contents =~ /^From: bugzilla-daemon/m)
+{
+	# E-mail is from MediaZilla
+
+	$/ = "";
+	# extract and remove the comment section
+	my ($haschanges, $user);
+	my $comment = $contents =~ s/\-{7}\s*Additional\s+Comments\s+From\s+(.*?)\@.*//s;
+	if($comment) {
+	$user = $1;
+	} else {
+		$user = 'N/A' # shouldn't be possible'
+	}
+
+
+	# Check if this is a dependency e-mail. If so, ignore it.
+	# We have removed the comment section to prevent people from using
+	# this by adding the right text to a comment.
+	if ($contents !~ /^Bug \d+ depends on bug \d+, which changed state/m)
+	{
+
+		my ($bug, $summary, $st);
+		if ($contents =~ /\nSubject: \[Bug (\d+)\]\s+New:\s+(.*?)\nX-Bugzilla-Reason/s) {
+			($bug, $summary, $st) = ($1, $2, "\00303(NEW)\003");
+		} elsif ($contents =~ /Subject: \[Bug (\d+)\] (.*?)\nX-Bugzilla-Reason/s) {
+			($bug, $summary, $st) = ($1, $2, "\00303(mod)\003");
+		}
+		my $url = $contents =~ /^http.*show_bug\.cgi.*$/m ? $& : "http://bugzilla.wikimedia.org/show_bug.cgi?id=$bug";
+
+		$summary =~ s/\s+/ /g; 
+
+		# We are going to append stuff to the beginning of $output later.
+		# This stuff is going to contain $st. But we want a chance of changing it first.
+		$output = "";
+
+		if ($st eq "\00303(NEW)\003")
+		{
+			my $product = $1 if $contents =~ /Product: (.*)$/m;
+			my $component = $1 if $contents =~ /Component: (.*)$/m;
+			my $severity = $shash->{$1} if $contents =~ /Severity: (.*)$/m;
+			my $priority = $phash->{$1} if $contents =~ /Priority: (.*)$/m;
+			my $reporter = $1 if $contents =~ /ReportedBy: (.*)\@.*$/m;
+
+			$output .= "$severity; $priority; \002$product\002\: $component; (\002$reporter\002)\n";
+		}
+		else
+		{
+			($haschanges, $user) = (1, $1) if $contents =~ /^(\S+)\@\S+ changed:$/m;
+
+			if ($haschanges) {
+				my @outputs;
+				if ($contents =~ /Status\|(\w+)\s+\|(\w+)/m) {
+					$st = $2 eq 'NEW'       ? "\00303(mod)\003" :
+					$2 eq 'REOPENED'  ? "\00304(REOPENED)\003" :
+					"\00303($2)\003";
+				}
+				if ($st eq "\00303(RESOLVED)\003" && $contents =~ /Resolution\|\s+\|(\w+)/m) {
+					$st = $rhash->{$1};
+				}
+				if ($contents =~ /Severity\|(\w+)\s+\|(\w+)/m) {
+					push @outputs, "$shash->{$1}\->$shash->{$2}";
+				}
+				if ($contents =~ /Priority\|(\w+)\s+\|(\w+)/m) {
+					push @outputs, "$phash->{$1}\->$phash->{$2}";
+				}
+				if ($contents =~ /Keywords\|.*$/s) {
+					my @lines = split (/\n/, $&);
+					my $added = '';
+					my $removed = '';
+					foreach my $a ( @lines )
+					{
+						last unless $a =~ /^(Keywords|\s+)\|(.*?)\s*\|(.*?)\s*$/;
+						$removed .= $2;
+						$added .= $3;
+					}
+					push @outputs, join ' ', (
+						($removed =~ /\S/ ? join (' ', map { "-$_" } split (/\s*,\s*/, $removed)) : ''),
+						($added   =~ /\S/ ? join (' ', map { "+$_" } split (/\s*,\s*/, $added  )) : '')
+					);
+				}
+
+				push @outputs, 'summary' if $contents =~ /Summary\|.*?\|.*?/;
+
+				push @outputs, 'deps' if $contents =~ /OtherBugs\w+\|.*?\|.*?$/m;
+
+				push @outputs, "+comment" if $comment;
+
+				$output .= " " . join ('; ', @outputs) if @outputs;
+
+			}
+			$output .= " (\002\00310$user\003\002)\n";
+		}
+		$output = "$st $summary - \00310$url\003 " . $output;
+	}
+}
+
+if ($output)
+{
+	open (OUT, ">>/var/wikibugs/wikibugs.log");
+	#print $output;
+	print OUT $output;
+	close OUT;
+}
