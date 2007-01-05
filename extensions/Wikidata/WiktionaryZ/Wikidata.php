@@ -21,7 +21,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 	// The following member variables control some application specific preferences
 	protected $availableAuthorities = array();  // A map containing (userId => displayName) combination for authoritative contribution view 
 	protected $filterLanguageId = 0;            // Filter pages on this languageId, set to 0 to show all languages
-	protected $showLanguageSelector = false;    // Show language selector at the top of each wiki data page
+	protected $showLanguageSelector = true;     // Show language selector at the top of each wiki data page
 	protected $showClassicPageTitles = true;    // Show classic page titles instead of prettier page titles
 
 	public function __construct() {
