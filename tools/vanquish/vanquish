@@ -81,7 +81,7 @@ done
 
 gnubuild
 cd ..
-pkgproto `pwd`/install=/ >prototype || errexit "$0: cannot generate prototype"
+{ pkgproto `pwd`/install=/ | grep -v /opt/wmf/share/info/dir >prototype } || errexit "$0: cannot generate prototype"
 echo "i pkginfo" >>prototype
 cat >pkginfo <<EOF
 PKG=$pkg_name
