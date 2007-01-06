@@ -378,6 +378,8 @@ class MakesysopStewardForm extends UserrightsForm {
 	}
 	
 	function getUserId( $database, $name ) {
+		if( $name === '' )
+			return 0;
 		return ( $name{0} == "#" )
 			? IntVal( substr( $name, 1 ) )
 			: IntVal( $this->db->selectField( 'user',
