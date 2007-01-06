@@ -70,7 +70,7 @@ binary-arch:	checkroot build
 		icondir=$$(pwd)/debian/mailman/usr/share/images/mailman \
 		ICONDIR=$$(pwd)/debian/mailman/usr/share/images/mailman
 
-	rmdir debian/$(package)/var/lib/mailman/pythonlib
+#	rmdir debian/$(package)/var/lib/mailman/pythonlib
 
 # move the nonchanging directories to /usr/lib/mailman, except for
 # cgi-bin, which goes to /usr/lib/cgi-bin/mailman

@@ -1,42 +1,28 @@
-#! /bin/sh -e
-## 53_disable_addons.dpatch by Tollef Fog Heen <tfheen@debian.org>
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 53_disable_addons.dpatch by  <mark@hawthorn.knams.wikimedia.org>
 ##
 ## All lines beginning with `## DP:' are a description of the patch.
-## DP: Disable some modules which are pulled in from other Debian
-## DP: packages.
+## DP: No description.
 
-[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
-patch_opts="${patch_opts:--f --no-backup-if-mismatch ${2:+-d $2}}"
-
-if [ $# -lt 1 ]; then
-    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
-    exit 1
-fi
-case "$1" in
-    -patch) patch $patch_opts -p1 < $0;;
-    -unpatch) patch $patch_opts -p1 -R < $0;;
-    *)
-        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
-        exit 1;;
-esac
-
-exit 0
 @DPATCH@
-diff -urNad mailman-2.1.7~/misc/Makefile.in mailman-2.1.7/misc/Makefile.in
---- mailman-2.1.7~/misc/Makefile.in	2006-01-29 16:20:52.000000000 +0100
-+++ mailman-2.1.7/misc/Makefile.in	2006-01-29 16:21:13.931406954 +0100
-@@ -56,7 +56,7 @@
+diff -urNad mailman-2.1.8~/misc/Makefile.in mailman-2.1.8/misc/Makefile.in
+--- mailman-2.1.8~/misc/Makefile.in	2007-01-06 12:56:05.000000000 +0000
++++ mailman-2.1.8/misc/Makefile.in	2007-01-06 12:58:19.000000000 +0000
+@@ -57,7 +57,10 @@
  JACODECSPKG=	JapaneseCodecs-1.4.11
  KOCODECSPKG=	KoreanCodecs-2.0.5
  
 -PACKAGES= $(EMAILPKG) $(JACODECSPKG) $(KOCODECSPKG)
-+PACKAGES=  
++#Debian note (LEM): we take the Japanese and Korean codecs from other
++#Debian packages, but not email because the one in Python 2.4 doesn't work
++#with Mailman; when Mailman upgrades to email 3.0.x, we can try again.
++PACKAGES= $(EMAILPKG)
  
  # Modes for directories and executables created by the install
  # process.  Default to group-writable directories but
-diff -urNad mailman-2.1.7~/misc/paths.py.in mailman-2.1.7/misc/paths.py.in
---- mailman-2.1.7~/misc/paths.py.in	2006-01-29 16:20:52.000000000 +0100
-+++ mailman-2.1.7/misc/paths.py.in	2006-01-29 16:23:12.481780992 +0100
+diff -urNad mailman-2.1.8~/misc/paths.py.in mailman-2.1.8/misc/paths.py.in
+--- mailman-2.1.8~/misc/paths.py.in	2007-01-06 12:56:05.000000000 +0000
++++ mailman-2.1.8/misc/paths.py.in	2007-01-06 12:58:19.000000000 +0000
 @@ -53,12 +53,18 @@
  # In a normal interactive Python environment, the japanese.pth and korean.pth
  # files would be imported automatically.  But because we inhibit the importing

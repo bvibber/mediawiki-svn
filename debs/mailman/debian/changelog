@@ -1,3 +1,9 @@
+mailman (1:2.1.8-2ubuntu2wm2) edgy; urgency=high
+
+  * Fix TypeError: us-ascii problem fixed in debian 2.1.8-3 (#387737)
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sat,  6 Jan 2007 12:53:58 +0000
+
 mailman (1:2.1.8-2ubuntu2wm1) edgy; urgency=low
 
   * htdig integration
