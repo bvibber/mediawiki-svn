@@ -47,8 +47,9 @@ function efCountEditsMessages( $single = false ) {
 'countedits-resultheader' => 'Resultats pour $1',
 'countedits-resulttext' => '$1 a fait $2 éditions',
 'countedits-mostactive' => 'Contributeurs les plus actifs',
+'countedits-nocontribs' => 'Ils n\'ont eu aucune contribution sur ce wiki.',
 ),
-	
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'countedits' => 'Jumlah suntingan',
@@ -61,7 +62,7 @@ function efCountEditsMessages( $single = false ) {
 'countedits-mostactive' => 'Kontributor paling aktif',
 'countedits-nocontribs' => 'Belum ada kontribusi untuk wiki ini.',
 ),
-	
+
 	);
 	return $single ? $messages['en'] : $messages;
 }
