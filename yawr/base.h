@@ -2,8 +2,8 @@
  * (c) 2006 by Magnus Manske
  * Released under the terms of the GNU public license (GPL)
 */
-#ifndef __BASE_H
-#define __BASE_H
+#ifndef BASE_H
+#define BASE_H
 
 #include "wxWebServer.h"
 #include "ZenoFile.h"
@@ -11,26 +11,7 @@
 
 class MainFrame;
 
-class wxWikiServer : public wxWebServer
-{
-    public :
-    virtual void HandleSimpleGetRequest(const wxString &page,HttpResponse &hr);
-    virtual void ReturnHTML ( wxString article , ZenoArticle &art , HttpResponse &hr ) ;
-    virtual void ReturnHTML ( wxString article , wxString text , HttpResponse &hr ) ;
-    virtual void ReturnPlainText ( wxString article , ZenoArticle &art , HttpResponse &hr ) ;
-    virtual void ReturnCSS ( wxString article , ZenoArticle &art , HttpResponse &hr ) ;
-    virtual void ReturnBinary ( wxString article , ZenoArticle &art , HttpResponse &hr , wxString content_type ) ;
-    virtual void SpecialPage (const wxString &page,HttpResponse &hr);
-    virtual void Browse (HttpResponse &hr);
-	virtual wxArrayString Search ( wxString query , wxString mode ) ;
-	virtual wxString FormatList ( const wxArrayString &titles , int from = 1 , int howmany = 100 , bool fulltext = false ) ;
-	virtual wxString GetHTMLtitle ( wxString s ) ;
-	virtual wxString EscapeURI ( wxString s ) ;
-	
-    MainFrame *frame ;
-    bool va ;
-} ;
-
+#include "wxWikiServer.h"
 class MainApp: public wxApp
 {
   public:

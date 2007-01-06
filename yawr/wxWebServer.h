@@ -3,8 +3,8 @@
  * Released under the terms of the GNU public license (GPL)
  * Based on sources in wxMusic
 */
-#ifndef __WXWEBSERVER_H_
-#define __WXWEBSERVER_H_
+#ifndef WXWEBSERVER_H
+#define WXWEBSERVER_H
 
 #include <wx/socket.h>
 

@@ -1,5 +1,5 @@
-#ifndef _ZENO_FILE_H_
-#define _ZENO_FILE_H_
+#ifndef ZENO_FILE_H
+#define ZENO_FILE_H
 
 #include <wx/file.h>
 #include <wx/dynarray.h>

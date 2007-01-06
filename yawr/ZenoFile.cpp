@@ -239,7 +239,7 @@ wxString ZenoArticle::GetTextFromZip()
         f3.Close() ;
         wxRemoveFile ( fn2 ) ; // Deleting temporary file
         n[len] = 0 ; // Paranoia
-        ret = wxString ( n , *wxConvCurrent ) ;
+        ret = wxString ( n , wxConvISO8859_1 ) ; // Why oh why isn't that UTF-8???
     }
     
     wxRemoveFile ( fn ) ; // Deleting temporary file

@@ -234,7 +234,7 @@ wxArrayString TSearchWordTree::Process ( ZenoFile *index , int depth )
 	if ( !word.IsEmpty() ) // Search entry
 	{
         CreateSingleWordTable ( word , index ) ;
-        DumpTable ( _T("C:\\") + word + _T(".txt") ) ;
+//        DumpTable ( _T("C:\\") + word + _T(".txt") ) ;
 	} else { // Group / AND / OR / NEAR / whatnot
         switch ( type )
 	    {
@@ -325,7 +325,7 @@ void TSearchWordTree::ProcessOR ()
 void TSearchWordTree::DumpTable ( wxString filename )
 {
     unsigned long a , number = 0 ;
-    wxFile out ( filename , wxFile::write ) ;
+//    wxFile out ( filename , wxFile::write ) ;
     ZenoFile *main = ((MainApp*)wxTheApp)->frame->GetMainPointer() ;
     wxString s ;
     for ( a = 0 ; a < table.GetCount() ; a++ )
@@ -333,16 +333,16 @@ void TSearchWordTree::DumpTable ( wxString filename )
         if ( number == table[a].article_id )
         {
             s = wxString::Format ( _T(", %d") , table[a].word_pos ) ;
-            out.Write ( s ) ;
+//            out.Write ( s ) ;
             continue ;
         }
         number = table[a].article_id ;
         ZenoArticle art = main->ReadSingleArticle ( number ) ;
         if ( !art.ok ) s = _T("Couldn't access article\n") ;
         else s = _T("\n") + wxString::Format ( _T("%d: ") , number ) + art.title ;
-        out.Write ( s ) ;
+//        out.Write ( s ) ;
         s = wxString::Format ( _T(", %d") , table[a].word_pos ) ;
-        out.Write ( s ) ;
+//        out.Write ( s ) ;
     }
 }
 
@@ -462,6 +462,6 @@ wxArrayString wxWikiServer::Search ( wxString query , wxString mode )
 	root.Parse ( words ) ;
 	bool wildcards = root.IsUsingWildcards() ;
 	// MISSING : Load index if wildcards==true
-	
+
 	return root.Process ( frame->GetIndexPointer() ) ;
 }
