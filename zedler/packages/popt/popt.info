@@ -1,0 +1,5 @@
+name WMFpopt
+desc libpopt built for WMF
+version 1.6.4
+src popt-1.6.4.tar.gz
+srcdir popt-1.6.4
