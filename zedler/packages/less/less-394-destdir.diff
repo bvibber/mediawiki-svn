@@ -1,0 +1,29 @@
+diff -u less-394/Makefile.in less-394-wmf/Makefile.in
+--- less-394/Makefile.in	Wed Sep 14 02:21:38 2005
++++ less-394-wmf/Makefile.in	Sat Jan  6 21:04:00 2007
+@@ -60,18 +60,18 @@
+ ${OBJ}: ${srcdir}/less.h ${srcdir}/funcs.h defines.h 
+ 
+ install: all ${srcdir}/less.nro ${srcdir}/lesskey.nro ${srcdir}/lessecho.nro installdirs
+-	${INSTALL_PROGRAM} less ${bindir}/${binprefix}less
+-	${INSTALL_PROGRAM} lesskey ${bindir}/${binprefix}lesskey
+-	${INSTALL_PROGRAM} lessecho ${bindir}/${binprefix}lessecho
+-	${INSTALL_DATA} ${srcdir}/less.nro ${mandir}/man${manext}/${manprefix}less.${manext}
+-	${INSTALL_DATA} ${srcdir}/lesskey.nro ${mandir}/man${manext}/${manprefix}lesskey.${manext}
+-	${INSTALL_DATA} ${srcdir}/lessecho.nro ${mandir}/man${manext}/${manprefix}lessecho.${manext}
++	${INSTALL_PROGRAM} less $(DESTDIR)${bindir}/${binprefix}less
++	${INSTALL_PROGRAM} lesskey $(DESTDIR)${bindir}/${binprefix}lesskey
++	${INSTALL_PROGRAM} lessecho $(DESTDIR)${bindir}/${binprefix}lessecho
++	${INSTALL_DATA} ${srcdir}/less.nro $(DESTDIR)${mandir}/man${manext}/${manprefix}less.${manext}
++	${INSTALL_DATA} ${srcdir}/lesskey.nro $(DESTDIR)${mandir}/man${manext}/${manprefix}lesskey.${manext}
++	${INSTALL_DATA} ${srcdir}/lessecho.nro $(DESTDIR)${mandir}/man${manext}/${manprefix}lessecho.${manext}
+ 
+ install-strip:
+ 	${MAKE} INSTALL_PROGRAM='${INSTALL_PROGRAM} -s' install
+ 
+ installdirs: mkinstalldirs
+-	${srcdir}/mkinstalldirs ${bindir} ${mandir}/man${manext}
++	${srcdir}/mkinstalldirs $(DESTDIR)${bindir} $(DESTDIR)${mandir}/man${manext}
+ 
+ uninstall:
+ 	rm -f ${bindir}/${binprefix}less ${bindir}/${binprefix}lesskey ${bindir}/${binprefix}lessecho

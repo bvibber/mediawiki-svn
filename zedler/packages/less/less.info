@@ -1,0 +1,6 @@
+name WMFless
+desc less built for WMF
+version 394
+src less-394.tar.gz
+srcdir less-394
+patch less-394-destdir.diff
