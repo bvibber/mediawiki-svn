@@ -1,0 +1,5 @@
+name WMFautoconf
+desc GNU autoconf built for WMF
+version 2.61
+src autoconf-2.61.tar.gz
+srcdir autoconf-2.61
