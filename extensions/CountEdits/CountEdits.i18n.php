@@ -37,6 +37,19 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'In {{ns:project}} sind keine Bearbeitungen vorhanden.',
 ),
 
+/* Finnish (Niklas Laxström) */
+'fi' => array(
+'countedits' => 'Muokkausmäärälaskuri',
+'countedits-warning' => 'Älä arvioi kirjaa kannen perusteella. Älä arvioi käyttäjää muokkausten lukumäärän perusteella.',
+'countedits-username' => 'Käyttäjä:',
+'countedits-ok' => 'Hae',
+'countedits-nosuchuser' => 'Käyttäjää $1 ei ole.',
+'countedits-resultheader' => 'Tulos:',
+'countedits-resulttext' => '$1 on tehnyt $2 muokkausta.',
+'countedits-mostactive' => 'Aktiivisimmat käyttäjät',
+'countedits-nocontribs' => 'Tätä wikiä ei ole muokattu.',
+),
+
 /* French (Bertrand Grondin) */
 'fr' => array(
 'countedits' => 'Compteur d\'éditions',
