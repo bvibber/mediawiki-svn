@@ -16,8 +16,8 @@ errexit() {
 
 gnubuild() {
 	CC=cc CXX=CC ./configure --prefix=/opt/wmf || errexit "$0: configure failed"
-	make DESTDIR=$TMPDIR/install || errexit "$0: build failed"
-	make DESTDIR=$TMPDIR/install install || errexit "$0: install failed"
+	gmake DESTDIR=$TMPDIR/install || errexit "$0: build failed"
+	gmake DESTDIR=$TMPDIR/install install || errexit "$0: install failed"
 }
 
 if ! [ $# = 1 ]; then
