@@ -1,0 +1,99 @@
+#! /usr/bin/zsh
+# vanquish: build Solaris packages from simple spec files
+# Copyright (C) 2007 River Tarnell <river@attenuate.org>.
+#
+# Permission is granted to anyone to use this software for any purpose,
+# including commercial applications, and to alter it and redistribute it
+# freely. This software is provided 'as-is', without any express or implied
+# warranty.
+
+# $Id$
+
+errexit() {
+	echo $* >&2
+	exit 1
+}
+
+gnubuild() {
+	CC=cc CXX=CC ./configure --prefix=/opt/wmf || errexit "$0: configure failed"
+	make DESTDIR=$TMPDIR/install || errexit "$0: build failed"
+	make DESTDIR=$TMPDIR/install install || errexit "$0: install failed"
+}
+
+if ! [ $# = 1 ]; then
+	echo "$0: wrong number of arguments" >&2
+	echo "$0: usage: $0 <pkginfo>" >&2
+	exit 1
+fi
+
+ROOT=`pwd`
+TMPDIR=`pwd`/buildpkg.$$
+INFO=$1
+
+cleanup() {
+	cd $ROOT
+	rm -rf $TMPDIR
+}
+
+trap cleanup 0 
+
+{ mkdir $TMPDIR && cd $TMPDIR } || errexit "$0: cannot create $TMPDIR"
+
+if ! [ "$INFO[0]" = / ]; then
+	INFO="$ROOT/$INFO"
+fi
+
+[ -r "$INFO" ] || errexit "$0: cannot read $INFO" 
+
+< $INFO while read cmd rest; do
+	case $cmd in
+		name) pkg_name="$rest";;
+		desc) pkg_desc="$rest";;
+		version) pkg_version="$rest";;
+		src) pkg_src="$rest";;
+		srcdir) pkg_srcdir="$rest";;
+		patch) pkg_patches="$pkg_patches $rest";;
+		*)
+			errexit "$0: $INFO: unknown directive \"$cmd\""
+			;;
+	esac
+done
+
+[ -z "$pkg_name" ] && errexit "$0: $INFO: no name given"
+[ -z "$pkg_desc" ] && errexit "$0: $INFO: no description given"
+[ -z "$pkg_version" ] && errexit "$0: $INFO: no version given"
+[ -z "$pkg_src" ] && errexit "$0: $INFO: no src given"
+[ -z "$pkg_srcdir" ] && errexit "$0: $INFO: no srcdir given"
+
+echo "+ extract $pkg_src..." >&2
+if [ "$pkg_src[-4,$#pkg_src]" = ".bz2" -o "$pkg_src[-5,$#pkg_src]" = ".tbz2" ]; then
+	{ bzip2 -dc $ROOT/$pkg_src | gtar xf - } || errexit "$0: cannot extract"
+else
+	{ gzip -dc $ROOT/$pkg_src | gtar xf - } || errexit "$0: cannot extract"
+fi
+
+cd $pkg_srcdir || errexit "$0: cannot chdir"
+
+for patch in ${=pkg_patches}; do
+	echo "+ apply $patch..." >&2
+	/usr/local/bin/patch -p1 <$ROOT/$patch || errexit "$0: cannot apply $patch"
+done
+
+gnubuild
+cd ..
+pkgproto `pwd`/install=/ >prototype || errexit "$0: cannot generate prototype"
+echo "i pkginfo" >>prototype
+cat >pkginfo <<EOF
+PKG=$pkg_name
+ARCH=`uname -m`
+VERSION=$pkg_version
+NAME=$pkg_desc
+CATEGORY=application
+BASEDIR=/
+EOF
+pkgmk -o || errexit "$0: cannot build package"
+ds="${pkg_name}-${pkg_version}.`uname -m`.pkg"
+pkgtrans -s /var/spool/pkg "`pwd`/$ds" $pkg_name || errexit "$0: cannot transfer package to datastream"
+mv $ds ..
+cd ..
+ls -l $ds
