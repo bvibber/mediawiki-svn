@@ -1,0 +1,5 @@
+name WMFgettext
+desc GNU gettext built for WMF
+version 0.16.1
+src gettext-0.16.1.tar.gz
+srcdir gettext-0.16.1
