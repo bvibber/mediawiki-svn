@@ -1,0 +1,16 @@
+Common subdirectories: screen-4.0.2/doc and screen-4.0.2-wmf/doc
+Common subdirectories: screen-4.0.2/etc and screen-4.0.2-wmf/etc
+diff -u screen-4.0.2/misc.c screen-4.0.2-wmf/misc.c
+--- screen-4.0.2/misc.c	Fri Dec  5 13:45:41 2003
++++ screen-4.0.2-wmf/misc.c	Sat Jan  6 20:07:47 2007
+@@ -613,7 +613,7 @@
+    */
+ # endif /* NEEDSETENV */
+ #else /* USESETENV */
+-# if defined(linux) || defined(__convex__) || (BSD >= 199103)
++# if defined(linux) || defined(__convex__) || (BSD >= 199103) || (defined(__sun) && defined(__SVR4))
+   setenv(var, value, 1);
+ # else
+   setenv(var, value);
+Common subdirectories: screen-4.0.2/terminfo and screen-4.0.2-wmf/terminfo
+Common subdirectories: screen-4.0.2/utf8encodings and screen-4.0.2-wmf/utf8encodings

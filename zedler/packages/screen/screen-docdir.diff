@@ -1,0 +1,12 @@
+diff -u screen-4.0.2-wmf/Makefile.in screen-4.0.2/Makefile.in
+--- screen-4.0.2-wmf/Makefile.in	Fri Dec  5 13:59:39 2003
++++ screen-4.0.2/Makefile.in	Sat Jan  6 20:20:21 2007
+@@ -83,7 +83,7 @@
+ 
+ ###############################################################################
+ install: installdirs install_bin
+-	cd doc ; $(MAKE) install
++	cd doc ; $(MAKE) DESTDIR=$(DESTDIR) install
+ 	-if [ -d /usr/lib/terminfo ]; then \
+ 		PATH="$$PATH:/usr/5bin" tic ${srcdir}/terminfo/screeninfo.src; \
+ 		chmod 644 /usr/lib/terminfo/s/screen*; \

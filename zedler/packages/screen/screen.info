@@ -1,0 +1,7 @@
+name WMFscreen
+desc GNU screen built for WMF
+version 4.0.2
+src screen-4.0.2.tar.gz
+srcdir screen-4.0.2
+patch screen-setenv.diff
+patch screen-docdir.diff
