@@ -1,0 +1,6 @@
+name WMFrsync
+desc rsync built for WMF
+version 2.6.9
+src rsync-2.6.9.tar.gz
+srcdir rsync-2.6.9
+patch rsync-2.6.9-inet6.diff
