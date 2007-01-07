@@ -11,9 +11,6 @@ foreach( $wgMakesysopMessages as $key => $value ) {
 	$wgMessageCache->addMessages( $wgMakesysopMessages[$key], $key );
 }
 
-require_once( 'SpecialUserrights.php' );
-require_once( "LinksUpdate.php" );
-
 class MakeSysopPage extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'Makesysop', 'makesysop' );
