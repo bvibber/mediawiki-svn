@@ -11,6 +11,7 @@
 
 #include "parsetree.h"
 #include "fb_defines.h"
+#include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 

@@ -11,6 +11,7 @@
  **                 Originally written 2004 by Timwi
  **/
 
+#include <string.h>
 #include <stdio.h>
 #include "parsetree.h"
 #include "fb_defines.h"
@@ -633,7 +634,7 @@ int main() {
 //    printf ("Parsing... ");
 
     result = yyparse();
-    if (!result) printf ( outputXML (articlenode, 1024) ) ;
+    if (!result) printf ("%s", outputXML (articlenode, 1024) ) ;
 //        printf ("\n\nXML output:\n\n%s\n\n", outputXML (articlenode, 1024));
     freeRecursively (articlenode);
     return result;
