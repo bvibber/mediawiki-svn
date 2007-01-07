@@ -22,9 +22,10 @@
  */ 
 $wgExtensionFunctions[] = 'registerInputboxExtension';
 $wgExtensionCredits['parserhook'][] = array(
-'name' => 'Inputbox',
-'author' => 'Erik Moeller',
-'url' => 'http://meta.wikimedia.org/wiki/Help:Inputbox',
+	'name' => 'Inputbox',
+	'author' => 'Erik Moeller',
+	'url' => 'http://meta.wikimedia.org/wiki/Help:Inputbox',
+	'description' => 'Allow inclusion of predefined HTML forms.',
 );
 
 /**

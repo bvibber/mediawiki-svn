@@ -52,7 +52,8 @@ if (!defined('MEDIAWIKI')) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'LuceneSearch',
-	'author' => array( 'Brion Vibber' )
+	'author' => array( 'Brion Vibber' ),
+	'description' => 'Interface for the Apache Lucene search engine',
 );
 
 # Internationalisation file

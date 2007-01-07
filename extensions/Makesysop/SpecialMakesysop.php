@@ -14,8 +14,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'author' => 'Tim Starling',
 	'name' => 'Makesysop',
-	'description' => 'gives bureaucrats/stewards the ability to modify user levels'
+	'description' => 'Gives bureaucrats/stewards the ability to modify user levels'
 );
 
 # Internationalisation file

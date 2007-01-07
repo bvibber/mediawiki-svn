@@ -21,7 +21,12 @@ define( 'MW_MAKEBOT_REVOKE', 2 );
 
 $wgExtensionFunctions[] = 'efMakeBot';
 $wgAvailableRights[] = 'makebot';
-$wgExtensionCredits['specialpage'][] = array( 'name' => 'MakeBot', 'author' => 'Rob Church', 'url' => 'http://www.mediawiki.org/wiki/Extension:MakeBot' );
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'MakeBot',
+	'author' => 'Rob Church',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:MakeBot',
+	'description' => 'Allow users bot flag granting and revoking',
+ );
 
 /**
  * Determines who can use the extension; as a default, bureaucrats are permitted
