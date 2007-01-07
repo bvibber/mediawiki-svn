@@ -32,6 +32,7 @@ wxWikiServer::wxWikiServer ()
     :wxWebServer()
 {
     busy = false ;
+    search_offset = 0 ;
 }
 
 void wxWikiServer::Browse ( HttpResponse &hr )
@@ -43,26 +44,21 @@ void wxWikiServer::Browse ( HttpResponse &hr )
     long ns , nc ;
     ps.ToLong ( &ns ) ;
     pc.ToLong ( &nc ) ;
+    search_offset = ns ;
     wxString start = pn + _T("/") + pa ;
     
     wxString html ;
-//    html += start + _T(" / " ) ;
     ZenoFile *main = frame->GetMainPointer() ;
     unsigned long id ;
-    if ( pa.IsEmpty() )
-    {
-        id = 0 ;
-        ZenoArticle art ;
-        do {
-            id++ ;
-            art = main->ReadSingleArticle ( id ) ;
-        } while ( art.title.Mid(0,2) != _T("A/") ) ;
-    } else id = main->GetFirstArticleStartingWith ( start ) ; // Find article starting with "start"
-    id = main->SeekArticleRelative ( id , ns ) ; // Add the offset
-    wxArrayString titles = main->GetArticleTitles ( id , nc ) ;
+    if ( pa.IsEmpty() ) id = main->GetFirstArticleStartingWith ( pn + _T("/!") ) ;
+    else id = main->GetFirstArticleStartingWith ( start ) ;
+    id = main->SeekArticleRelative ( id , ns==0?0:ns-1 ) ; // Add the offset
+    wxArrayString titles = main->GetArticleTitles ( id , nc+1 ) ;
 
-	html += FormatList ( titles , 1 , titles.GetCount() , false ) ;
-	ReturnHTML ( _T("-/Bl&auml;ttern") , html , hr ) ;
+    wxString url = _T("/Wikipedia/~/browse?n=")+pn+_T("&s=%%OFFSET%%&c=")+pc+_T("&a=")+pa ;
+    if ( titles.GetCount() < nc ) nc = titles.GetCount() ;
+	html += FormatList ( titles , 1 , nc , url , false ) ;
+	ReturnHTML ( _T("-/") + txt("browse_page_title") , html , hr ) ;
 }
 
 void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
@@ -82,7 +78,7 @@ void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
 //		query = uri.Unescape ( query ) ;
 
 		wxString mode ;
-		bool fulltext = GetValue ( _T("ft") ) != _T("") ;
+		fulltext = GetValue ( _T("ft") ) != _T("") ;
 		if ( !fulltext ) mode = _T("titles") ;
 		else mode = _T("fulltext") ;
 		
@@ -97,15 +93,15 @@ void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
         }
 
 		wxString html ;
-        if ( titles.GetCount() > 0 ) html = FormatList ( titles , 1 , 100 , fulltext ) ;
+        if ( titles.GetCount() > 0 ) html = FormatList ( titles , 1 , 100 , _T("") , fulltext ) ;
         else if ( !fulltext ) {
             fulltext = true ;
             SpecialPage ( page , hr ) ;
             return ;
         } else {
-            html = _T("<h2>Nix gefunden!</h2>") ; // Should rarely be the case...
+            html = _T("<h2>") + txt("search_not_found") + _T("</h2>") ; // Should rarely be the case...
         }
-		ReturnHTML ( _T("-/Suche") , html , hr ) ;
+		ReturnHTML ( _T("-/")+txt("search_page_title") , html , hr ) ;
 	}
 }
 
@@ -123,14 +119,27 @@ wxString wxWikiServer::GetSearchHeader()
     int a ;
     wxString ret ;
     wxString pa = GetValue ( _T("a") , _T("") ) ;
+    wxString pn = GetValue ( _T("n") , _T("A") ) ; // The namespace, I or A
+    wxString pc = GetValue ( _T("c") , _T("100") ) ; // Count (per page)
+    wxString lastsearch = Unescape ( GetValue ( _T("e") ) ) ;
+
     
-    ret += _T("Bl&auml;ttern : ") ;
+    ret += _T("<form method=\"get\" action=\"~/search\" id=\"searchform\" enctype=\"multipart/form-data\" accept-charset=\"utf-8\"><p>") ;
+    ret += txt("article_search_line_start") ;
+    ret += _T("<input type=\"hidden\" name=\"n\" value=\"A\" />") ;
+    ret += _T("<input type=\"text\" name=\"e\" value=\"") + lastsearch + _T("\" size=\"30\" /> ") ;
+    ret += _T("<input type=\"submit\" class=\"searchButton\" id=\"searchGoButton\" name=\"go\" value=\"") + txt("button_search_article") + _T("\" /> ") ;
+    ret += _T("<input type=\"submit\" class=\"searchButton\" name=\"ft\" value=\"") + txt("button_search_fulltext") + _T("\" /> ") ;
+//    ret += _T("<input type="checkbox" name="h" value="1" />  Schreibweisentolerant") ;
+    ret += _T("</p></form>") ;
+    
+    ret += txt("browse_line_start") ;
     for ( a = 'A' - 1 ; a <= 'Z' ; a++ )
     {
         wxString label ;
         if ( a == 'A'-1 ) label = _T("A..Z") ;
         else label += (char) a ;
-        wxString link = _T("~/browse?n=A&s=0&c=100") ;
+        wxString link = _T("~/browse?n=") + pn + _T("&s=0&c=") + pc  ;
         if ( a != 'A'-1 ) link += _T("&a=") + label ;
         if ( pa == label || ( a == 'A'-1 && pa.IsEmpty() ) )
         {
@@ -155,7 +164,8 @@ wxString wxWikiServer::GetSearchResultsLink ( wxString title )
     if ( title.Mid(0,2) == _T("I/") )
     {
         wxString img_url = _T("/wikipedia.images/") + esc ;
-        ret = _T("<center><a href=\"/Wikipedia/") + esc + _T("\"><img src=\"") + img_url + _T("\"/></a><br/>");
+        if ( img_url.AfterLast('.').Lower() == _T("svg") ) img_url += _T(".png") ;
+        ret = _T("<center><a href=\"/Wikipedia/") + esc + _T("\"><img width=\"120px\" src=\"") + img_url + _T("\"/></a><br/>");
         ret += _T("<a href=\"/Wikipedia/") + esc + _T("\">") + nicetitle + _T("</a></center>");
     } else { // Default; should always be "A/"
         ret = _T("<a href=\"/Wikipedia/") + esc + _T("\">") + nicetitle + _T("</a>");
@@ -163,14 +173,52 @@ wxString wxWikiServer::GetSearchResultsLink ( wxString title )
     return ret ;
 }
 
-wxString wxWikiServer::FormatList ( const wxArrayString &titles , int from , int howmany , bool fulltext )
+wxString wxWikiServer::FormatList ( const wxArrayString &titles , int from , int howmany , wxString url , bool fulltext )
 {
     wxString html = GetSearchHeader() ;
     if ( titles.GetCount() == 0 ) return html ;
 
+    int orig_howmany = howmany ;
     if ( from+howmany-1 > titles.GetCount() ) howmany = 1 + titles.GetCount() - from ;
     if ( howmany < 1 ) return html ; // Paranoia
+    
+    // Before/After links
+    if ( !url.IsEmpty() )
+    {
+        int a ;
+        wxString before , after ;
+        wxString u , num , num2 ;
+        html += _T("<table border=\"0\" id=\"z_browsenum\" width=\"100%\"><tr><td width=\"100%\">") ;
+        for ( a = 1 ; a < search_offset+from ; a += orig_howmany )
+        {
+            num = wxString::Format ( _T("%d") , a ) ;
+            num2 = wxString::Format ( _T("%d") , a-1 ) ;
+            u = url ;
+            u.Replace ( _T("%%OFFSET%%") , num2 ) ;
+            before = u ;
+            html += _T("<a href=\"") + u + _T("\">") + num + _T("</a> ") ;
+        }
+        num = wxString::Format ( _T("%d-%d") , search_offset+from , search_offset+from+orig_howmany-1 ) ;
+        html += _T("<span class=\"z_azact\">") + num + _T("</span> ") ;
+        if ( from+howmany-1 < titles.GetCount() )
+        {
+            num = wxString::Format ( _T("%d") , search_offset+from+orig_howmany ) ;
+            num2 = wxString::Format ( _T("%d") , search_offset+from+orig_howmany-1 ) ;
+            u = url ;
+            u.Replace ( _T("%%OFFSET%%") , num2 ) ;
+            after = u ;
+            html += _T("<a href=\"") + u + _T("\">") + num + _T("</a> ...") ;
+        }
+        html += _T("</td><td align=\"right\">") ;
+        if ( before.IsEmpty() ) html += txt("browse_back") ;
+        else html += _T("<a href=\"") + before + _T("\">") + txt("browse_back") + _T("</a>") ;
+        html += _T("&nbsp;") ;
+        if ( after.IsEmpty() ) html += txt("browse_forward") ;
+        else html += _T("<a href=\"") + after + _T("\">") + txt("browse_forward") + _T("</a>") ;
+        html += _T("</td></tr></table><hr/>") ;
+    }
 
+    // Now show the link list
 //    if ( fulltext )
     {
 //    } else {
@@ -227,14 +275,15 @@ wxString wxWikiServer::GetHTMLtitle ( wxString s )
 void wxWikiServer::HandleSimpleGetRequest(const wxString &page,HttpResponse &hr)
 {
 //	while ( busy ) wxMilliSleep ( 100 ) ; // De-threading, probably not useful
+    wxStartTimer() ;
 	busy = true ;
     ZenoArticle art ;
     wxString article = page ;
-    if ( article.IsEmpty() || article == _T("/") ) article = _T("/Wikipedia/-/Hauptseite");
-    if ( article == _T("/Wikipedia/") ) article += _T("-/Hauptseite") ;
+    if ( article.IsEmpty() || article == _T("/") ) article = _T("/Wikipedia/-/")+txt("main_page_title");
+    if ( article == _T("/Wikipedia/") ) article += _T("-/")+txt("main_page_title") ;
     va = false ; // Versions/Authors
-    
-    if ( article.Left(11) == _T("/Wikipedia/") ) // Article or the like
+
+    if ( article.Left(11).Lower() == _T("/wikipedia/") ) // Article or the like
     {
         article = article.Mid ( 11 ) ;
         if ( article.Left ( 2 ) == _T("~/") ) // Special page
@@ -249,10 +298,10 @@ void wxWikiServer::HandleSimpleGetRequest(const wxString &page,HttpResponse &hr)
             {
                 article = article.Mid ( 1 ) ;
                 va = true ;
-            }
+            } else AddVisited ( article ) ;
             art = frame->GetPage ( article ) ;
         }
-    } else if ( article.Left ( 18 ) == _T("/wikipedia.images/") ) { // Image
+    } else if ( article.Left(18).Lower() == _T("/wikipedia.images/") ) { // Image
         article = article.Mid ( 18 ) ;
         art = frame->GetImage ( article ) ;
     }
@@ -389,7 +438,7 @@ void wxWikiServer::ReturnHTML ( wxString article , wxString text , HttpResponse 
     
     if ( ns == _T("-") || ns == _T("~") )
     {
-        name1 = _T("Spezialseite") ;
+        name1 = txt("special_page") ;
         target = ns + _T("/") + title ;
         tablinks += _T("<li id=\"ca-nstab-special\" class=\"selected\"><a href=\"") + target + _T("\">") + name1 + _T("</a></li>\n") ;
     } else {
@@ -398,12 +447,12 @@ void wxWikiServer::ReturnHTML ( wxString article , wxString text , HttpResponse 
         ns1 = ns ;
         ns2.Replace ( _T("$") , _T("") ) ;
         ns2 = _T("$") + ns1 ;
-        if ( ns1 == _T("A") ) { name1 = _T("Artikel") ; page_full = _T("") ; page_discussion = _T("Diskussion:") ; }
-        if ( ns1 == _T("P") ) { name1 = _T("Portal") ; page_full = _T("Portal:") ; page_discussion = _T("Portal_Diskussion:") ; }
-        if ( ns1 == _T("I") ) { name1 = _T("Bild") ; page_full = _T("Bild:") ; page_discussion = _T("Bild_Diskussion:") ; }
+        if ( ns1 == _T("A") ) { name1 = txt("namespace_article") ; page_full = _T("") ; page_discussion = txt("namespace_article_talk") ; }
+        if ( ns1 == _T("P") ) { name1 = txt("namespace_portal") ; page_full = name1+_T(":") ; page_discussion = txt("namespace_portal_talk") ; }
+        if ( ns1 == _T("I") ) { name1 = txt("namespace_image") ; page_full = name1+_T(":") ; page_discussion = txt("namespace_image_talk") ; }
         page_full += title ;
         page_discussion += title ;
-        name2 = _T("Versionen/Autoren") ;
+        name2 = txt("versions_authors") ;
         wxURI uri ( title ) ;
         target = uri.BuildURI() ;
         if ( va ) class2 = _T(" class=\"selected\"") ;
@@ -416,6 +465,8 @@ void wxWikiServer::ReturnHTML ( wxString article , wxString text , HttpResponse 
     wxString html = sop.GetString() ;
     wxString lastsearch = Unescape ( GetValue ( _T("e") ) ) ;
     text = _T("\n<!--BEGIN INSERTION-->\n") + text + _T("\n<!--END INSERTION-->\n") ;
+    wxString time = wxString::Format ( _T("%d ms") , wxGetElapsedTime() ) ;
+    wxString sidebar = GetSidebar() ;
     
     // Replace some stuff
     html.Replace ( _T("%%IP%%") , frame->GetIP() ) ;
@@ -426,6 +477,8 @@ void wxWikiServer::ReturnHTML ( wxString article , wxString text , HttpResponse 
     html.Replace ( _T("%%PAGE_DISCUSSION%%") , page_discussion ) ;
     html.Replace ( _T("%%TABLINKS%%") , tablinks ) ;
     html.Replace ( _T("%%LASTSEARCH%%") , lastsearch ) ;
+    html.Replace ( _T("%%TIME%%") , time ) ;
+    html.Replace ( _T("%%SIDEBAR%%") , sidebar ) ;
     
     // Insert the text
     html.Replace ( _T("%%BODY%%") , text ) ;
@@ -438,4 +491,39 @@ void wxWikiServer::ReturnBinary ( wxString article , ZenoArticle &art , HttpResp
     hr.SetRC(wxT("200 OK"));
     hr.AddHeader(wxT("Content-Type: ") + content_type );
     hr.SetBinaryData ( data , art.rFileLen ) ;
+}
+
+wxString wxWikiServer::GetSidebar()
+{
+    int a ;
+    wxString ret ;
+    
+    if ( visited_pages.GetCount() > 0 )
+    {
+        ret += _T("<div class=\"portlet\" id=\"p-visited\">\n") ;
+        ret += _T("<h5>") + txt("visited_pages") + _T("</h5>\n") ;
+		ret += _T("<div class=\"pBody\">\n<ul>\n") ;
+        for ( a = visited_pages.GetCount() - 1 ; a >= 0 ; a-- )
+        {
+            wxString nicetitle = GetHTMLtitle ( visited_pages[a].Mid ( 2 ) ) ;
+            wxString url = _T("/Wikipedia/") + EscapeURI ( visited_pages[a] ) ;
+            ret += _T("<li><a href=\"") + url + _T("\">") + nicetitle + _T("</a></li>\n") ;
+        }
+        ret += _T("</ul>\n</div>\n</div>\n") ;
+    }
+    
+    return ret ;
+}
+
+void wxWikiServer::AddVisited ( wxString article )
+{
+    // Only articles, portals, and images
+    if ( article.Left(2) != _T("A/") && 
+        article.Left(2) != _T("I/")  &&
+        article.Left(2) != _T("P/") ) return ;
+    
+    visited_pages.Remove ( article ) ; // In case it was already in there...
+    visited_pages.Add ( article ) ;
+    if ( visited_pages.GetCount() < 30 ) return ; // Limit
+    visited_pages.RemoveAt ( 0 ) ; // Remove oldest one
 }

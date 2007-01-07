@@ -1,3 +1,7 @@
+/*
+ * (c) 2006 by Magnus Manske
+ * Released under the terms of the GNU public license (GPL)
+*/
 #ifndef ZENO_FILE_H
 #define ZENO_FILE_H
 

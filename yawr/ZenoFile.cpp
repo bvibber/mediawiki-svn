@@ -390,14 +390,14 @@ void ZenoFile::ReadIndex ( wxFile &f )
     articles.Clear() ;
     Seek ( f , rIndexPos ) ;
     
-    wxFile out ( _T("C:\\text.txt") , wxFile::write ) ;
+//    wxFile out ( _T("C:\\text.txt") , wxFile::write ) ;
 
     for ( unsigned long count = 0 ; count < rCount ; count++ )
     {
         ZenoArticle art ;
         ReadArticleData ( f , art ) ;
         count += 26 + art.rExtraLen ;
-        out.Write ( art.title + _T("\n") ) ;
+//        out.Write ( art.title + _T("\n") ) ;
     }
 }
 
@@ -579,7 +579,7 @@ unsigned long ZenoFile::SeekArticleRelative ( unsigned long start , long diff )
     {
         ZenoArticle art = ReadSingleArticle ( start ) ;
         if ( !art.ok ) return start-dir ; // Paranoia
-        if ( art.rLogicalNumber == 0 ) diff-- ;
+        if ( art.rLogicalNumber == 0 && !art.title.IsEmpty() ) diff-- ;
     }
     return start ;
 }

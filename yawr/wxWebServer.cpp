@@ -106,6 +106,7 @@ char *wxWebServer::spc_decode_url(const char *url, size_t *nbytes) {
 wxString wxWebServer::Unescape ( wxString s )
 {
     int a ;
+    s.Replace ( _T("+") , _T(" ") ) ;
     char *u = new char[s.length()+5] ;
     for ( a = 0 ; a < s.length() ; a++ )
     {

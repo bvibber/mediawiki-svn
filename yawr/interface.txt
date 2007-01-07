@@ -1,0 +1,42 @@
+"","en","de"
+
+# List of language names
+"language_en","English","Englisch"
+"language_de","German","Deutsch"
+
+
+# Window element labels
+"start_server_automatically","Start server automatically","Server automatisch starten"
+"minimize_automatically","Minimize YAWR on startup","YAWR automatisch minimieren"
+"start_browser_automatically","Start browser automatically","Webbrowser automatisch starten"
+"answer_local_only","Answer only to requests from this computer","Nur auf Anforderungen von diesem Rechner antworten"
+"b_start_server","&Start server","Server st&arten"
+"b_stop_server","St&op server","Server b&eenden"
+"b_start_browser","Start &browser","Web&browser starten"
+"data_dir_text","Data directory","Datenverzeichnis"
+"port_number_text","Port number","Portnummer"
+"chose_data_dir","Zeno data directory","Verzeichnis mit Zeno-Daten"
+"language_text","Language","Sprache"
+"minimize_to_tray","Minimize to tray","In den Tray minimieren"
+
+
+# Web browser interface
+"browse_page_title","Browse","Blättern"
+"search_not_found","No results found!","Nix gefunden!"
+"search_page_title","Search","Suche"
+"browse_line_start","Browse : ","Blättern : "
+"browse_back","Back","Zurück"
+"browse_forward","Forward","Vorwärts"
+"main_page_title","Main Page","Hauptseite"
+"special_page","Special page","Spezialseite"
+"namespace_article","Article","Artikel"
+"namespace_portal","Portal","Portal"
+"namespace_image","Image","Bild"
+"namespace_article_talk","Talk","Diskussion"
+"namespace_portal_talk","Portal_talk","Portal_Diskussion"
+"namespace_image_talk","Image_talk","Bild_Diskussion"
+"versions_authors","Versions/authors","Versionen/Autoren"
+"article_search_line_start","Article search : ","Artikelsuche : "
+"button_search_article","Article","Artikel"
+"button_search_fulltext","Full text","Volltext"
+"visited_pages","Visited pages","Besuchte Seiten"
