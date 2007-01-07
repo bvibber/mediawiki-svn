@@ -1,0 +1,6 @@
+name WMFlighttpd
+desc lighttpd built for WMF
+version 1.4.13
+src lighttpd-1.4.13.tar.gz
+srcdir lighttpd-1.4.13
+configure --sysconfdir=/etc
