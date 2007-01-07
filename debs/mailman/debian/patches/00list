@@ -35,6 +35,7 @@
 85_indexing_htdig
 86_htdig
 87_htdig_cron
+90_i18n_valueerror
 99_js_templates
 security-CVE-2006-3636-XSS
 security-CVE-2006-2941
