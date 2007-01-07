@@ -398,7 +398,7 @@ void MainFrame::SwitchLanguage ( wxString nl )
     language_text->SetLabel ( txt("language_text") ) ;
     minimize_to_tray->SetLabel ( txt("minimize_to_tray") ) ;
     
-    GetSizer()->Layout() ;
+    GetSizer()->Fit ( this ) ;
 }
 
 void MainFrame::OnIconize(wxIconizeEvent& event)

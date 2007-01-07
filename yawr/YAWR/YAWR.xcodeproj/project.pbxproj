@@ -19,10 +19,14 @@
 		91467CDD0B417CE0004424B1 /* libwxtiff-2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91467CD70B417CE0004424B1 /* libwxtiff-2.6.a */; };
 		91467CE90B41974D004424B1 /* base.html in Resources */ = {isa = PBXBuildFile; fileRef = 91467CE70B41974D004424B1 /* base.html */; };
 		91467CEA0B41974D004424B1 /* qunicode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 91467CE80B41974D004424B1 /* qunicode.txt */; };
+		919E286E0B51933000EA4878 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 919E286C0B51933000EA4878 /* Icon.png */; };
+		919E286F0B51933000EA4878 /* interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = 919E286D0B51933000EA4878 /* interface.txt */; };
 		91D948F60B4586C000AAAC75 /* wxWikiServerSearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91D948F50B4586C000AAAC75 /* wxWikiServerSearch.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		911E0DD60B51919F00636C76 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		911E0DD70B51919F00636C76 /* interface.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = interface.txt; sourceTree = "<group>"; };
 		91467C9F0B41537F004424B1 /* YAWR-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "YAWR-Info.plist"; sourceTree = "<group>"; };
 		91467CA80B4153E7004424B1 /* YAWR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YAWR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91467CAD0B415412004424B1 /* base.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = base.cpp; path = ../base.cpp; sourceTree = SOURCE_ROOT; };
@@ -46,6 +50,9 @@
 		91467CD70B417CE0004424B1 /* libwxtiff-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwxtiff-2.6.a"; path = "/usr/local/lib/libwxtiff-2.6.a"; sourceTree = "<absolute>"; };
 		91467CE70B41974D004424B1 /* base.html */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; name = base.html; path = ../base.html; sourceTree = SOURCE_ROOT; };
 		91467CE80B41974D004424B1 /* qunicode.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = qunicode.txt; path = ../qunicode.txt; sourceTree = SOURCE_ROOT; };
+		919E286C0B51933000EA4878 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = SOURCE_ROOT; };
+		919E286D0B51933000EA4878 /* interface.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = interface.txt; path = ../interface.txt; sourceTree = SOURCE_ROOT; };
+		91A2F66E0B5131CB002DDA6E /* wxWikiServer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = wxWikiServer.h; path = ../wxWikiServer.h; sourceTree = SOURCE_ROOT; };
 		91D948F50B4586C000AAAC75 /* wxWikiServerSearch.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = wxWikiServerSearch.cpp; path = ../wxWikiServerSearch.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -69,6 +76,11 @@
 		91467C890B415361004424B1 = {
 			isa = PBXGroup;
 			children = (
+				919E286C0B51933000EA4878 /* Icon.png */,
+				919E286D0B51933000EA4878 /* interface.txt */,
+				911E0DD60B51919F00636C76 /* Icon.png */,
+				911E0DD70B51919F00636C76 /* interface.txt */,
+				91A2F66E0B5131CB002DDA6E /* wxWikiServer.h */,
 				91467CE70B41974D004424B1 /* base.html */,
 				91467CE80B41974D004424B1 /* qunicode.txt */,
 				91467CD20B417CE0004424B1 /* libwx_macu-2.6.a */,
@@ -147,6 +159,8 @@
 			files = (
 				91467CE90B41974D004424B1 /* base.html in Resources */,
 				91467CEA0B41974D004424B1 /* qunicode.txt in Resources */,
+				919E286E0B51933000EA4878 /* Icon.png in Resources */,
+				919E286F0B51933000EA4878 /* interface.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
