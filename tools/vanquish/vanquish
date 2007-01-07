@@ -15,7 +15,8 @@ errexit() {
 }
 
 gnubuild() {
-	CC=cc CXX=CC ./configure --prefix=/opt/wmf || errexit "$0: configure failed"
+	CC=cc CXX=CC CFLAGS='-xO3' CPPFLAGS='-I/opt/wmf/include' LDFLAGS='-L/opt/wmf/lib -R/opt/wmf/lib' \
+		./configure --prefix=/opt/wmf ${=pkg_confargs} || errexit "$0: configure failed"
 	gmake DESTDIR=$TMPDIR/install || errexit "$0: build failed"
 	gmake DESTDIR=$TMPDIR/install install || errexit "$0: install failed"
 }
@@ -45,6 +46,9 @@ fi
 
 [ -r "$INFO" ] || errexit "$0: cannot read $INFO" 
 
+pkg_patches=""
+pkg_confargs=""
+
 < $INFO while read cmd rest; do
 	case $cmd in
 		name) pkg_name="$rest";;
@@ -53,6 +57,7 @@ fi
 		src) pkg_src="$rest";;
 		srcdir) pkg_srcdir="$rest";;
 		patch) pkg_patches="$pkg_patches $rest";;
+		configure) pkg_confargs="$pkg_confargs $rest";;
 		*)
 			errexit "$0: $INFO: unknown directive \"$cmd\""
 			;;
