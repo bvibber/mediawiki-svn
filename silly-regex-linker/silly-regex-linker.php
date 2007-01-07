@@ -77,6 +77,7 @@ class SillyRegexLinker {
 		$map = array(
 			'wikipedia' => 'http://en.wikipedia.org/wiki/$1',
 			'meta' => 'http://meta.wikimedia.org/wiki/$1',
+			'mw' => 'http://www.mediawiki.org/wiki/$1',
 		);
 		if( isset( $map[$prefix] ) ) {
 			return $map[$prefix];
