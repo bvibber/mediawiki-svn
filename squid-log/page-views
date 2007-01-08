@@ -1,0 +1,53 @@
+#!/usr/bin/python
+import sys, re, urlparse, time, ipaddr
+
+localNetworkSet = ipaddr.ip_set_from_list([
+    ipaddr.network('66.230.200.0', 24),
+    ipaddr.network('145.97.39.128', 26),
+    ipaddr.network('211.115.107.128', 26),
+	ipaddr.network('10.0.0.0', 16) ])
+
+reportTime = time.time()
+numPageViews = 0
+numRequests = 0
+interval = 5
+line = sys.stdin.readline()
+while line != '':
+	line = line.rstrip("\n")
+	fields = line.split()
+	if len(fields) != 11:
+		sys.stderr.write("Invalid line, got %d fields, expecting 11\n" % len(fields))
+		sys.stderr.write(line + "\n")
+		sys.stderr.flush()
+		line = sys.stdin.readline()
+		continue
+	try:
+		delta = int(fields[0])
+	except:
+		delta = -1
+	if delta < 0 or delta > 1000000:
+		sys.stderr.write("Invalid delta\n")
+		sys.stderr.flush()
+	
+	url = urlparse.urlsplit(fields[7])
+	if fields[6] == "GET" and \
+			url[2].startswith('/wiki/') and \
+			url[4] == '' and \
+			fields[4].endswith('/200') and \
+			ipaddr.ipaddr(fields[3]) not in localNetworkSet:
+		numPageViews += delta
+	numRequests += delta
+
+	currentTime = time.time()
+	if currentTime - reportTime > interval:
+		elapsed = currentTime - reportTime
+		print "req/s: %.2f, pages/s: %.2f" % (
+				numRequests / elapsed,
+				numPageViews / elapsed)
+		reportTime = currentTime
+		numPageViews = 0
+		numRequests = 0
+	
+	line = sys.stdin.readline()
+
+# vim: set ts=4 sw=4:

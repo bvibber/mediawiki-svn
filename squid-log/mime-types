@@ -1,0 +1,51 @@
+#!/usr/bin/python
+import sys, re, urlparse, time, ipaddr
+
+localNetworkSet = ipaddr.ip_set_from_list([
+    ipaddr.network('66.230.200.0', 24),
+    ipaddr.network('145.97.39.128', 26),
+    ipaddr.network('211.115.107.128', 26),
+	ipaddr.network('10.0.0.0', 16) ])
+
+reportTime = time.time()
+interval = 60
+line = sys.stdin.readline()
+mimeTypeCounts = {}
+total = 0
+while line != '':
+	line = line.rstrip("\n")
+	fields = line.split()
+	if len(fields) != 11:
+		sys.stderr.write("Invalid line, got %d fields, expecting 11\n" % len(fields))
+		sys.stderr.flush()
+		line = sys.stdin.readline()
+		continue
+	try:
+		delta = int(fields[0])
+	except:
+		delta = -1
+	if delta < 0 or delta > 1000000:
+		sys.stderr.write("Invalid delta\n")
+		sys.stderr.flush()
+
+	if fields[10] not in mimeTypeCounts:
+		mimeTypeCounts[fields[10]] = 0
+	mimeTypeCounts[fields[10]] += delta
+	total += delta
+
+	currentTime = time.time()
+	if currentTime - reportTime > interval:
+		elapsed = currentTime - reportTime
+		reportTime = currentTime
+
+		print "\x0c",
+		s = list(mimeTypeCounts.items())
+		s.sort(cmp=lambda x,y:cmp(y[1],x[1]))
+		for type, count in s:
+			print "%-30s %2.1f" % (type, float(count)/total*100)
+		mimeTypeCounts = {}
+		total = 0
+	
+	line = sys.stdin.readline()
+
+# vim: set ts=4 sw=4:

@@ -1,7 +1,7 @@
-all: log2udp udprecv
+all: log2udp udprecv delta
 
 clean:
-	rm -f *.o log2udp host
+	rm -f *.o log2udp host udprecv delta
 
 HOST_OBJS = host.o HostEntry.o IPAddress.o
 LOG2UDP_OBJS = log2udp.o HostEntry.o IPAddress.o Socket.o SocketAddress.o
@@ -20,3 +20,5 @@ log2udp: $(LOG2UDP_OBJS)
 udprecv: $(UDPRECV_OBJS)
 	g++ $(CFLAGS) -Wall $(UDPRECV_OBJS) -o udprecv
 
+delta: delta.cpp
+	g++ $(CFLAGS) -o delta delta.cpp

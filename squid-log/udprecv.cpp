@@ -43,6 +43,7 @@ int main(int argc, char** argv)
 			if (buffer[bytesRead - 1] != '\n') {
 				cout << "\n";
 			}
+			cout.flush();
 		}
 	}
 }
