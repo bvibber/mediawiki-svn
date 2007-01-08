@@ -2215,6 +2215,10 @@ class Article {
 		# Update the links tables
 		$u = new LinksUpdate( $this->mTitle, $poutput );
 		$u->doUpdate();
+		
+		# Update the metadata table
+		$mdu = new MetadataUpdate( $this->mTitle, $poutput );
+		$mdu->save();
 
 		if ( wfRunHooks( 'ArticleEditUpdatesDeleteFromRecentchanges', array( &$this ) ) ) {
 			wfSeedRandom();

@@ -1776,6 +1776,22 @@ class Parser
 					wfProfileOut( "$fname-category" );
 					continue;
 				}
+				
+				# Handle things like [[Metadata:Blah...]]
+				if( $ns == NS_METADATA ) {
+					wfDebugLog( 'metadata', "\$nt is " . $nt->getPrefixedText() . ", \$text is {$text}" );
+					$mdp = new MetadataParser( $nt, $text );
+					if( $mdp->hasItems() ) {
+						$subject = $mdp->getSubject();
+						foreach( $mdp->getItems() as $name => $value )
+							$this->mOutput->addMetadata( $subject, $name, $value );
+					}
+					# As above, we trim whitespace
+					$s = trim( $s, "\n" );
+					$s .= trim( $prefix . $trail, "\n" ) == '' ? '' : $prefix . $trail;		
+					continue;
+				}
+								
 			}
 
 			if( ( in_array( $nt->getPrefixedText(), $selflink ) ) &&
@@ -4717,6 +4733,12 @@ class ParserOutput
 		$mSubtitle,			# Additional subtitle
 		$mNewSection,		# Show a new section link?
 		$mNoGallery;		# No gallery on category page? (__NOGALLERY__)
+		
+		/**
+		 * Metadata items
+		 * Stored as $metadata[subject] = array( name => value );
+		 */
+		private $metadata = array();
 
 	function ParserOutput( $text = '', $languageLinks = array(), $categoryLinks = array(),
 		$containsOldMagic = false, $titletext = '' )
@@ -4810,6 +4832,28 @@ class ParserOutput
 		       !isset( $this->mVersion ) ||
 		       version_compare( $this->mVersion, MW_PARSER_VERSION, "lt" );
 	}
+	
+	public function getAllMetadata() {
+		return $this->metadata;
+	}
+	
+	public function getMetadata( $subject ) {
+		$subject = strtolower( $subject );
+		return isset( $this->metadata[$subject] ) ? $this->metadata[$subject] : array();
+	}
+	
+	public function addMetadata( $subject, $name, $value ) {
+		$subject = strtolower( $subject );
+		$name = strtolower( $name );
+		if( !isset( $this->metadata[$subject] ) )
+			$this->metadata[$subject] = array();
+		$this->metadata[$subject][$name] = $value;
+	}
+	
+	public function clearMetadata() {
+		$this->metadata = array();
+	}
+	
 }
 
 /**

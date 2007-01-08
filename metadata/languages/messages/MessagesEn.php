@@ -85,6 +85,7 @@ $linkPrefixExtension = false;
  * parser features are available. 
  */
 $namespaceNames = array(
+	NS_METADATA			=> 'Metadata',
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Special',
 	NS_MAIN	            => '',

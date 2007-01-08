@@ -34,6 +34,7 @@ define( 'DB_WRITE', -2 );
 /**#@+
  * Virtual namespaces; don't appear in the page database
  */
+define( 'NS_METADATA', -3 );
 define('NS_MEDIA', -2);
 define('NS_SPECIAL', -1);
 /**#@-*/

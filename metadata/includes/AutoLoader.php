@@ -272,6 +272,8 @@ function __autoload($className) {
 		'ApiQuerySiteinfo' => 'includes/api/ApiQuerySiteinfo.php',
 		'ApiQueryWatchlist' => 'includes/api/ApiQueryWatchlist.php',
 		'ApiResult' => 'includes/api/ApiResult.php',
+		'MetadataUpdate' => 'includes/MetadataUpdate.php',
+		'MetadataParser' => 'includes/MetadataParser.php',
 	);
 	
 	if ( isset( $localClasses[$className] ) ) {
