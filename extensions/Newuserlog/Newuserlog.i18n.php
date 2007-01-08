@@ -25,8 +25,8 @@ $wgNewuserlogMessages['cs'] = array(
 $wgNewuserlogMessages['de'] = array(
 	'newuserlogpage'           => 'Neuanmeldungs-Logbuch',
 	'newuserlogpagetext'       => 'Dies ist ein Logbuch für neu erstellte Benutzerkonten.',
-	'newuserlog-create-entry'  => 'Neues Benutzerkonto',
-	'newuserlog-create2-entry' => 'Benutzerkonto für $1 erstellt',
+	'newuserlog-create-entry'  => 'Benutzer wurde neu registriert',
+	'newuserlog-create2-entry' => 'erstellte Benutzerkonto für $1',
 );
 $wgNewuserlogMessages['fi'] = array(
 	'newuserlogpage'           => 'Uudet käyttäjät',

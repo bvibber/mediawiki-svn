@@ -11,6 +11,9 @@ $wgMiniDonationMessages = array();
 $wgMiniDonationMessages['en'] = array(
 	'donationform-submit' => 'Donate via PayPal',
 );
+$wgMiniDonationMessages['de'] = array(
+	'donationform-submit' => 'Spenden über PayPal',
+);
 $wgMiniDonationMessages['he'] = array(
 	'donationform-submit' => 'תרומה באמצעות PayPal',
 );

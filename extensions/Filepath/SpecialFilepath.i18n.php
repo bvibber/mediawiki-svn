@@ -21,7 +21,7 @@ $wgFilepathMessages['cs'] = array(
 $wgFilepathMessages['de'] = array(
 	'filepath'        => 'Dateipfad',
 	'filepath_page'   => 'Datei:',
-	'filepath_submit' => 'Pfad',
+	'filepath_submit' => 'Pfad suchen',
 );
 $wgFilepathMessages['fi'] = array(
 	'filepath'        => 'Tiedoston osoite',
