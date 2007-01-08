@@ -1311,29 +1311,27 @@ class Title {
 
 	/**
 	 * Loads a string into mRestrictions array
-	 * @param string $res restrictions in string format
+	 * @param resource $res restrictions as an SQL result.
 	 * @access public
 	 */
 	function loadRestrictions( $res ) {
-		$this->mRestrictions['edit'] = array();
-		$this->mRestrictions['move'] = array();
-		
-		if( !$res ) {
-			# No restrictions (page_restrictions blank)
+		$dbr =& wfGetDb( DB_SLAVE );
+
+		if (!$dbr->numRows( $res ) ) {
+			# No restrictions
 			$this->mRestrictionsLoaded = true;
 			return;
 		}
-	
-		foreach( explode( ':', trim( $res ) ) as $restrict ) {
-			$temp = explode( '=', trim( $restrict ) );
-			if(count($temp) == 1) {
-				// old format should be treated as edit/move restriction
-				$this->mRestrictions["edit"] = explode( ',', trim( $temp[0] ) );
-				$this->mRestrictions["move"] = explode( ',', trim( $temp[0] ) );
-			} else {
-				$this->mRestrictions[$temp[0]] = explode( ',', trim( $temp[1] ) );
-			}
+
+		$this->mRestrictions['edit'] = array();
+		$this->mRestrictions['move'] = array();
+
+		while ($row = $dbr->fetchObject( $res ) ) {
+			# Cycle through all the restrictions.
+
+			$this->mRestrictions[$row->pr_type] = explode( ',', trim( $row->pr_level ) );
 		}
+
 		$this->mRestrictionsLoaded = true;
 	}
 
@@ -1348,7 +1346,9 @@ class Title {
 		if( $this->exists() ) {
 			if( !$this->mRestrictionsLoaded ) {
 				$dbr =& wfGetDB( DB_SLAVE );
-				$res = $dbr->selectField( 'page', 'page_restrictions', array( 'page_id' => $this->getArticleId() ) );
+
+				$res = $dbr->select( 'page_restrictions', '*',
+					array ( 'pr_page' => $this->getArticleId() ), __METHOD__ );
 				$this->loadRestrictions( $res );
 			}
 			return isset( $this->mRestrictions[$action] )

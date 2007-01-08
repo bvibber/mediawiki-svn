@@ -252,7 +252,6 @@ class Article {
 				'page_id',
 				'page_namespace',
 				'page_title',
-				'page_restrictions',
 				'page_counter',
 				'page_is_redirect',
 				'page_is_new',
@@ -305,8 +304,6 @@ class Article {
 			$lc->addGoodLinkObj( $data->page_id, $this->mTitle );
 
 			$this->mTitle->mArticleID = $data->page_id;
-			$this->mTitle->loadRestrictions( $data->page_restrictions );
-			$this->mTitle->mRestrictionsLoaded = true;
 
 			$this->mCounter     = $data->page_counter;
 			$this->mTouched     = wfTimestamp( TS_MW, $data->page_touched );
@@ -970,7 +967,6 @@ class Article {
 			'page_namespace'    => $this->mTitle->getNamespace(),
 			'page_title'        => $this->mTitle->getDBkey(),
 			'page_counter'      => 0,
-			'page_restrictions' => $restrictions,
 			'page_is_redirect'  => 0, # Will set this shortly...
 			'page_is_new'       => 1,
 			'page_random'       => wfRandom(),
@@ -1669,17 +1665,20 @@ class Article {
 					$comment .= " [$updated]";
 				$nullRevision = Revision::newNullRevision( $dbw, $id, $comment, true );
 				$nullRevId = $nullRevision->insertOn( $dbw );
+
+				# Update restrictions table
+				foreach( $limit as $action => $restrictions ) {
+					if ($restrictions != '' ) {
+						$dbw->replace( 'page_restrictions', array( 'pr_pagetype'),
+							array( 'pr_page' => $id, 'pr_type' => $action
+								, 'pr_level' => $restrictions ), __METHOD__ 
+);
+					} else {
+						$dbw->delete( 'page_restrictions', array( 'pr_page' => $id,
+							'pr_type' => $action ), __METHOD__ );
+					}
+				}
 			
-				# Update page record
-				$dbw->update( 'page',
-					array( /* SET */
-						'page_touched' => $dbw->timestamp(),
-						'page_restrictions' => $updated,
-						'page_latest' => $nullRevId
-					), array( /* WHERE */
-						'page_id' => $id
-					), 'Article::protect'
-				);
 				wfRunHooks( 'ArticleProtectComplete', array( &$this, &$wgUser, $limit, $reason ) );
 	
 				# Update the protection log
@@ -2009,6 +2008,9 @@ class Article {
 				'page_id = rev_page'
 			), __METHOD__
 		);
+
+		# Delete restrictions for it
+		$dbw->delete( 'page_restrictions', array ( 'pr_page' => $id ), __METHOD__ );
 
 		# Now that it's safely backed up, delete it
 		$dbw->delete( 'page', array( 'page_id' => $id ), __METHOD__);
