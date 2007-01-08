@@ -2,8 +2,8 @@
 
 # Add messages
 global $wgMessageCache, $wgExpandTemplatesMessages;
-foreach( $wgExpandTemplatesMessages as $key => $value ) {
-	$wgMessageCache->addMessages( $wgExpandTemplatesMessages[$key], $key );
+foreach( $wgExpandTemplatesMessages as $lang => $messages ) {
+	$wgMessageCache->addMessages( $messages, $lang );
 }
 
 class ExpandTemplates extends SpecialPage {
