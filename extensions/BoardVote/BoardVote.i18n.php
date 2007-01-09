@@ -145,6 +145,53 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [
 	'group-boardvote-member'  => 'Volební správce',
 	'grouppage-boardvote'     => '{{ns:project}}:Volební správce',
 );
+$wgBoardVoteMessages['de'] = array(
+	'boardvote'               => "Wahlen zum Wikimedia-Kuratorium",
+	'boardvote_entry'         => "* [[meta:Election candidates 2006/De|Kandidatenvorstellungen]] 
+* [[{{ns:special}}:Boardvote/vote|Abstimmen]]
+* [[{{ns:special}}:Boardvote/list|Bislang abgegebene Stimmen]]
+* [[{{ns:special}}:Boardvote/dump|Verschlüsselte Wahleinträge]]", # to be updated before the next election
+	'boardvote_intro'         => '',                          # to be updated before the next election
+	'boardvote_intro_change'  => "<p>Du hast bereits abgestimmt. Jedoch kannst du deine Stimme(n) mit dem folgenden Formular ändern. Markiere dazu die Kästchen der Kandidaten, die du befürwortest.</p>",
+	'boardvote_footer'        => "&nbsp;",                    # Don't translate this
+	'boardvote_entered'       => "Danke, deine Stimme wurde gespeichert.
+
+Wenn du möchtest, kannst du folgende Details festhalten. Deine Abstimmungsaufzeichnung ist:
+
+<pre>$1</pre>
+
+Diese wurde mit dem Public Key der Wahladministratoren verschlüsselt:
+
+<pre>$2</pre>
+
+Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich auf [[{{ns:special}}:Boardvote/dump]] angezeigt. 
+
+<pre>$3</pre>
+
+[[{{ns:special}}:Boardvote/entry|Zurück]]",
+	'boardvote_notloggedin'   => "Du bist nicht eingeloggt. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem bereits vor dem Stichtag ($2) mindestens $1 Bearbeitungen gemacht wurden.",
+	'boardvote_notqualified'  => "Du bist nicht berechtigt an dieser Wahl teilzunehmen. Du musst $3 Bearbeitungen vor $2 gemacht haben, du hast $1 Bearbeitungen. Deine erste Bearbeitung erfolgte $4, sie muss vor $5 erfolgt sein. Alle Bedingungen müssen zur Wahlteilnahme erfüllt sein.",
+	'boardvote_novotes'       => "Bislang hat noch keiner abgestimmt.",
+	'boardvote_time'          => "Zeit",
+	'boardvote_user'          => "Benutzer",
+	'boardvote_edits'         => "Bearbeitungen",
+	'boardvote_days'          => "Tage",
+	'boardvote_ip'            => "IP",
+	'boardvote_ua'            => "User-Agent",
+	'boardvote_listintro'     => "<p>Dies ist eine Liste aller Stimmen, die bisher abgegeben wurden. $1 für die verschlüsselten Daten.</p>",
+	'boardvote_dumplink'      => "Hier klicken",
+	'boardvote_submit'        => 'Abstimmen',
+	'boardvote_strike'        => "Stimme streichen",
+	'boardvote_unstrike'      => "Stimmstreichung zurücknehmen",
+	'boardvote_needadmin'     => "Nur Wahladministratoren können diese Aktion durchführen.",
+	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wahlen zum Wikimedia-Kuratorium</a>:  ", # to be updated before the next election
+	'boardvote_notstarted'    => 'Die Wahl hat noch nicht begonnen',
+	'boardvote_closed'        => 'Die Wahl ist beendet. Das Ergebnis ist [http://meta.wikimedia.org/wiki/Election_results_2006/De im Meta-Wiki] einsehbar.', # to be updated before the next election
+	'boardvote_edits_many'    => 'viele',
+	'group-boardvote'         => 'Wahl-Administratoren',
+	'group-boardvote-member'  => 'Wahl-Administrator',
+	'grouppage-boardvote'     => '{{ns:project}}:Wahl-Administrator',
+);
 $wgBoardVoteMessages['he'] = array(
 	'boardvote'               => "בחירות לחבר הנאמנים של ויקימדיה",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|הצבעה]]
