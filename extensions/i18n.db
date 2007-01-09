@@ -1,0 +1,90 @@
+# This is a list of i18n files and their message array.
+# It is used by ./maintenance/languages/checkExtensioni18n.php
+#
+# Format is:
+# <path to file> <message array name>
+#
+# Lines starting with '#' will be ignored
+#
+# Generated at revision r18990 using:
+#   $ find -name '*i18*php'
+#
+# Ashar Voultoiz Tue, 09 Jan 2007 04:55:47 +0100
+#
+./AntiSpoof/AntiSpoof_i18n.php wgAntiSpoofMessages
+./BadImage/BadImage.i18n.php
+./BoardVote/BoardVote.i18n.php
+#./CategoryTree/CategoryTree.i18n.ca.php messages
+#./CategoryTree/CategoryTree.i18n.cs.php messages
+#./CategoryTree/CategoryTree.i18n.da.php messages
+#./CategoryTree/CategoryTree.i18n.de.php messages
+#./CategoryTree/CategoryTree.i18n.es.php messages
+#./CategoryTree/CategoryTree.i18n.fi.php messages
+#./CategoryTree/CategoryTree.i18n.fr.php messages
+#./CategoryTree/CategoryTree.i18n.he.php messages
+#./CategoryTree/CategoryTree.i18n.hr.php messages
+#./CategoryTree/CategoryTree.i18n.hu.php messages
+#./CategoryTree/CategoryTree.i18n.id.php messages
+#./CategoryTree/CategoryTree.i18n.it.php messages
+#./CategoryTree/CategoryTree.i18n.ja.php messages
+#./CategoryTree/CategoryTree.i18n.kk-cn.php messages
+#./CategoryTree/CategoryTree.i18n.kk-kz.php messages
+#./CategoryTree/CategoryTree.i18n.kk.php messages
+#./CategoryTree/CategoryTree.i18n.kk-tr.php messages
+#./CategoryTree/CategoryTree.i18n.lt.php messages
+#./CategoryTree/CategoryTree.i18n.nl.php messages
+#./CategoryTree/CategoryTree.i18n.no.php messages
+#./CategoryTree/CategoryTree.i18n.php messages
+#./CategoryTree/CategoryTree.i18n.pl.php messages
+#./CategoryTree/CategoryTree.i18n.pt.php messages
+#./CategoryTree/CategoryTree.i18n.ru.php messages
+#./CategoryTree/CategoryTree.i18n.sk.php messages
+#./CategoryTree/CategoryTree.i18n.sq.php messages
+#./CategoryTree/CategoryTree.i18n.sv.php messages
+#./CategoryTree/CategoryTree.i18n.th.php messages
+#./CategoryTree/CategoryTree.i18n.tr.php messages
+#./CategoryTree/CategoryTree.i18n.vi.php messages
+#./CategoryTree/CategoryTree.i18n.zh-cn.php messages
+#./CategoryTree/CategoryTree.i18n.zh.php messages
+#./CategoryTree/CategoryTree.i18n.zh-yue.php messages
+./CentralAuth/CentralAuth.i18n.php
+./CheckUser/CheckUser.i18n.php
+./Chemistry/ChemFunctions.i18n.php wgChemFunctions_Messages
+./Cite/Cite.i18n.php wgCiteMessages
+./Cite/SpecialCite.i18n.php wgSpecialCiteMessages
+./ConfirmEdit/ConfirmEdit.i18n.php wgConfirmEditMessages
+./ConfirmEdit/FancyCaptcha.i18n.php
+./Contributors/Contributors.i18n.php
+./CountEdits/CountEdits.i18n.php
+./CrossNamespaceLinks/SpecialCrossNamespaceLinks.i18n.php
+./Desysop/SpecialDesysop.i18n.php
+./DismissableSiteNotice/DismissableSiteNotice.i18n.php
+./Duplicator/Duplicator.i18n.php
+./DynamicPageList2/DynamicPageList2.i18n.php
+./Editcount/SpecialEditcount.i18n.php
+./ExpandTemplates/ExpandTemplates.i18n.php
+./Filepath/SpecialFilepath.i18n.php
+./GiveRollback/GiveRollback.i18n.php
+./LinkSearch/LinkSearch.i18n.php
+./LuceneSearch/LuceneSearch.i18n.php
+./Makebot/Makebot.i18n.php
+./Makesysop/SpecialMakesysop.i18n.php
+./MathStatFunctions/MathStatFunctions.i18n.php wgMathStatFunctionsMessages
+./MiniDonation/MiniDonation.i18n.php wgMiniDonationMessages
+./NewestPages/NewestPages.i18n.php
+./Newuserlog/Newuserlog.i18n.php wgNewuserlogMessages
+./Oversight/HideRevision.i18n.php
+./Patroller/Patroller.i18n.php
+./ProfileMonitor/ProfileMonitor.i18n.php
+./Renameuser/SpecialRenameuser.i18n.php wgRenameuserMessages
+#./SelectCategory/i18n/SelectCategory.i18n.gsw.php
+#./SelectCategory/i18n/SelectCategory.i18n.php
+#./SelectCategory/i18n/SelectCategory.i18n.fr.php
+#./SelectCategory/i18n/SelectCategory.i18n.de.php
+#./SelectCategory/i18n/SelectCategory.i18n.it.php
+#./SelectCategory/i18n/SelectCategory.i18n.sk.php
+./SiteMatrix/SiteMatrix.i18n.php wgSiteMatrixMessages
+./Translate/SpecialTranslate.i18n.php wgTranslateMessages
+./UserImages/UserImages.i18n.php
+./Vote/Vote.i18n.php
+./Wikidata/SpecialLanguages.i18n.php wgLanguageManagerMessages
