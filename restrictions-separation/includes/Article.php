@@ -1631,7 +1631,7 @@ class Article {
 	 * @param string $reason
 	 * @return bool true on success
 	 */
-	function updateRestrictions( $limit = array(), $reason = '' ) {
+	function updateRestrictions( $limit = array(), $reason = '', $cascade = 0 ) {
 		global $wgUser, $wgRestrictionTypes, $wgContLang;
 		
 		$id = $this->mTitle->getArticleID();
@@ -1671,7 +1671,7 @@ class Article {
 					if ($restrictions != '' ) {
 						$dbw->replace( 'page_restrictions', array( 'pr_pagetype'),
 							array( 'pr_page' => $id, 'pr_type' => $action
-								, 'pr_level' => $restrictions ), __METHOD__ 
+								, 'pr_level' => $restrictions, 'pr_cascade' => $cascade ), __METHOD__ 
 );
 					} else {
 						$dbw->delete( 'page_restrictions', array( 'pr_page' => $id,
@@ -1683,8 +1683,15 @@ class Article {
 	
 				# Update the protection log
 				$log = new LogPage( 'protect' );
+
+				$cascade_description = '';
+
+				if ($cascade) {
+					$cascade_description = ' ['.wfMsg('protect-summary-cascade').']';
+				}
+
 				if( $protect ) {
-					$log->addEntry( 'protect', $this->mTitle, trim( $reason . " [$updated]" ) );
+					$log->addEntry( 'protect', $this->mTitle, trim( $reason . " [$updated]$cascade_description" ) );
 				} else {
 					$log->addEntry( 'unprotect', $this->mTitle, $reason );
 				}

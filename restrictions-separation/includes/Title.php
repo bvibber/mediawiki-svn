@@ -50,7 +50,7 @@ class Title {
 	var $mArticleID;          # Article ID, fetched from the link cache on demand
 	var $mLatestID;         # ID of most recent revision
 	var $mRestrictions;       # Array of groups allowed to edit this article
-	                        # Only null or "sysop" are supported
+	var $mCascadeRestrictions;
 	var $mRestrictionsLoaded; # Boolean for initialisation on demand
 	var $mPrefixedText;       # Text form including namespace/interwiki, initialised on demand
 	var $mDefaultNamespace;   # Namespace index when there is no namespace
@@ -1333,10 +1333,10 @@ class Title {
 		$dbr = wfGetDb( DB_SLAVE );
 
 		$cols = array( 'tl_namespace', 'tl_title'/*, 'pr_level', 'pr_type'*/ );
-		$join_clauses = array ('inner join page_restrictions on templatelinks.tl_from=pr_page');
-		$where_clauses = array( 'tl_namespace' => $this->getNamespace(), 'tl_title' => $this->getText() );
+		$tables = array ('templatelinks', 'page_restrictions');
+		$where_clauses = array( 'tl_namespace' => $this->getNamespace(), 'tl_title' => $this->getText(), 'tl_from=pr_page', 'pr_cascade' => 1 );
 
-		$res = $dbr->select( 'templatelinks', $cols, $where_clauses, __METHOD, $join_clauses );
+		$res = $dbr->select( $tables, $cols, $where_clauses, __METHOD);
 
 		if ($dbr->numRows($res)) {
 			wfProfileOut(__METHOD__);
@@ -1345,6 +1345,14 @@ class Title {
 			wfProfileOut(__METHOD__);
 			return false;
 		}
+	}
+
+	function areRestrictionsCascading() {
+		if (!$this->mRestrictionsLoaded) {
+			$this->getRestrictions();
+		}
+
+		return $this->mCascadeRestrictions;
 	}
 
 	/**
@@ -1368,6 +1376,10 @@ class Title {
 			# Cycle through all the restrictions.
 
 			$this->mRestrictions[$row->pr_type] = explode( ',', trim( $row->pr_level ) );
+
+			if ($row->pr_cascade) {
+				$this->mCascadeRestrictions = true;
+			}
 		}
 
 		$this->mRestrictionsLoaded = true;
