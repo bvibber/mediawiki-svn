@@ -1310,6 +1310,27 @@ class Title {
 	}
 
 	/**
+	* Cascading protects: Get a list of pages which
+	*  are protected due to a cascading restriction.
+	*
+	* @return array Pages which are protected due to a cascading restriction
+	* @access public
+	*/
+	function isCascadeProtectedPage() {
+		$dbr = wfGetDb( DB_SLAVE );
+
+		$cols = array( 'tl_namespace', 'tl_title', 'pr_level', 'pr_type' );
+		$join_clauses = array ('inner join page_restrictions on templatelinks.tl_from=pr_page');
+		$where_clauses array( 'tl_namespace' => $this->getNamespace(), 'tl_title' => $this->getText() );
+
+		$res = $dbr->select( 'templatelinks', $cols, $where_clauses, __METHOD, $join_clauses );
+
+		if ($dbr->numRows) {
+			return true;
+		}
+	}
+
+	/**
 	 * Loads a string into mRestrictions array
 	 * @param resource $res restrictions as an SQL result.
 	 * @access public
