@@ -1117,6 +1117,17 @@ class Title {
 			return false;
 		}
 
+		if ($this->isCascadeProtectedPage()) {
+			# We /could/ use the protection level on the source page, but it's fairly ugly
+			#  as we have to establish a precedence hierarchy for pages included by multiple
+			#  cascade-protected pages. So just restrict it to people with 'protect' permission,
+			#  as they could remove the protection anyway.
+			if ( !$wgUser->isAllowed('protect') ) {
+				wfProfileOut( $fname );
+				return false;
+			}
+		}
+
 		foreach( $this->getRestrictions($action) as $right ) {
 			// Backwards compatibility, rewrite sysop -> protect
 			if ( $right == 'sysop' ) {
@@ -1317,16 +1328,22 @@ class Title {
 	* @access public
 	*/
 	function isCascadeProtectedPage() {
+		wfProfileIn(__METHOD__);
+
 		$dbr = wfGetDb( DB_SLAVE );
 
-		$cols = array( 'tl_namespace', 'tl_title', 'pr_level', 'pr_type' );
+		$cols = array( 'tl_namespace', 'tl_title'/*, 'pr_level', 'pr_type'*/ );
 		$join_clauses = array ('inner join page_restrictions on templatelinks.tl_from=pr_page');
-		$where_clauses array( 'tl_namespace' => $this->getNamespace(), 'tl_title' => $this->getText() );
+		$where_clauses = array( 'tl_namespace' => $this->getNamespace(), 'tl_title' => $this->getText() );
 
 		$res = $dbr->select( 'templatelinks', $cols, $where_clauses, __METHOD, $join_clauses );
 
-		if ($dbr->numRows) {
+		if ($dbr->numRows($res)) {
+			wfProfileOut(__METHOD__);
 			return true;
+		} else {
+			wfProfileOut(__METHOD__);
+			return false;
 		}
 	}
 
