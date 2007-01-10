@@ -1085,6 +1085,10 @@ CREATE TABLE /*$wgDBprefix*/page_restrictions (
   pr_level varchar(255) NOT NULL,
   -- Whether or not to cascade the protection down to pages transcluded.
   pr_cascade tinyint(4) NOT NULL,
+  -- Field for future support of per-user restriction.
+  pr_user int(8) NULL,
+  -- Field for future support of time-limited protection.
+  pr_expiry char(14) binary NULL,
 
   PRIMARY KEY  (pr_page,pr_type),
 
