@@ -1388,7 +1388,7 @@ class Title {
 	 * @param resource $res restrictions as an SQL result.
 	 * @access public
 	 */
-	function loadRestrictions( $res ) {
+	function loadRestrictionsFromRow( $res ) {
 		$dbr =& wfGetDb( DB_SLAVE );
 
 		if (!$dbr->numRows( $res ) ) {
@@ -1413,6 +1413,16 @@ class Title {
 		$this->mRestrictionsLoaded = true;
 	}
 
+	function loadRestrictions() {
+		if( !$this->mRestrictionsLoaded ) {
+			$dbr =& wfGetDB( DB_SLAVE );
+		
+			$res = $dbr->select( 'page_restrictions', '*',
+				array ( 'pr_page' => $this->getArticleId() ), __METHOD__ );
+			$this->loadRestrictionsFromRow( $res );
+		}
+	}
+
 	/**
 	 * Accessor/initialisation for mRestrictions
 	 *
@@ -1423,11 +1433,7 @@ class Title {
 	function getRestrictions( $action ) {
 		if( $this->exists() ) {
 			if( !$this->mRestrictionsLoaded ) {
-				$dbr =& wfGetDB( DB_SLAVE );
-
-				$res = $dbr->select( 'page_restrictions', '*',
-					array ( 'pr_page' => $this->getArticleId() ), __METHOD__ );
-				$this->loadRestrictions( $res );
+				$this->loadRestrictions();
 			}
 			return isset( $this->mRestrictions[$action] )
 					? $this->mRestrictions[$action]

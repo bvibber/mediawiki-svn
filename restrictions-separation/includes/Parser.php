@@ -94,7 +94,8 @@ class Parser
 	 * @private
 	 */
 	# Persistent:
-	var $mTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables, $mTlUpdatePages;
+	var $mTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables;
+	var $mTlDoneUpdateFor;
 
 	# Cleared with clearState():
 	var $mOutput, $mAutonumber, $mDTopen, $mStripState;
@@ -3064,17 +3065,18 @@ class Parser
 			$title = Title::newFromText( $part1, $ns );
 
 			# If this page is subject to cascading restrictions, check that the template is included in templatelinks
-			if ($this->mTitle->areRestrictionsCascading()) {
+			if ( $this->mTitle->areRestrictionsCascading( ) ) {
 				# Subject to cascading restrictions. Check for templatelinks entry
 
-				# Use mTlUpdatePages to avoid recursion.
-				if (!$this->mTlUpdatePages) {
-					$this->mTlUpdatePages = array ();
+				$res = in_array( $part1, $this->mTlTemplates );
+
+				if ( !is_array( $this->mTlDoneUpdateFor ) ) {
+					$this->mTlDoneUpdateFor = array ();
 				}
 
-				$res = in_array($part1, $this->mTlTemplates);
+				if ( !$res && !in_array( $this->mTitle->getPrefixedText(), $this->mTlDoneUpdateFor ) )  {
+					$this->mTlDoneUpdateFor[] = $this->mTitle->getPrefixedText();
 
-				if (!$res && !in_array($this->mTitle->getPrefixedText(), $this->mTlUpdatePages)) {
 					$cc_article = new Article( $this->mTitle );
 
 					# This title needs a templatelinks refresh. Do it now.
