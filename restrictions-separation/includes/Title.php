@@ -1349,7 +1349,7 @@ class Title {
 
 	function areRestrictionsCascading() {
 		if (!$this->mRestrictionsLoaded) {
-			$this->getRestrictions();
+			$this->loadRestrictions();
 		}
 
 		return $this->mCascadeRestrictions;
