@@ -2818,35 +2818,38 @@ class Article {
 			$parserCache->save( $parserOutput, $article, $wgUser );
 		}
 
-		# Get templates from templatelinks
-		$tlTemplates_titles = $this->getUsedTemplates();
+		if ( !wfReadOnly() ) {
 
-		$tlTemplates = array ();
-		foreach( $tlTemplates_titles as $template_title) {
-			$tlTemplates[] = $template_title->getDBkey();
-		}
+			# Get templates from templatelinks
+			$tlTemplates_titles = $this->getUsedTemplates();
 
-		# Get templates from parser output.
-		$poTemplates_allns = $parserOutput->getTemplates();
+			$tlTemplates = array ();
+			foreach( $tlTemplates_titles as $template_title) {
+				$tlTemplates[] = $template_title->getDBkey();
+			}
 
-		$poTemplates = array ();
-		foreach ( $poTemplates_allns as $ns_templates ) {
-			$poTemplates = array_merge( $poTemplates, $ns_templates );
-		}
+			# Get templates from parser output.
+			$poTemplates_allns = $parserOutput->getTemplates();
 
-		# Get the diff
-		$templates_diff = array_diff( $poTemplates, $tlTemplates );
+			$poTemplates = array ();
+			foreach ( $poTemplates_allns as $ns_templates ) {
+				$poTemplates = array_merge( $poTemplates, $ns_templates );
+			}
 
-		if (count( $templates_diff ) > 0 && !wfReadOnly()) {
-			# Whee, link updates time.
-			$u = new LinksUpdate( $this->mTitle, $parserOutput );
+			# Get the diff
+			$templates_diff = array_diff( $poTemplates, $tlTemplates );
 
-			$dbw =& wfGetDb( DB_MASTER );
-			$dbw->begin();
+			if ( count( $templates_diff ) > 0 ) {
+				# Whee, link updates time.
+				$u = new LinksUpdate( $this->mTitle, $parserOutput );
+	
+				$dbw =& wfGetDb( DB_MASTER );
+				$dbw->begin();
+	
+				$u->doUpdate();
 
-			$u->doUpdate();
-
-			$dbw->commit();
+				$dbw->commit();
+			}
 		}
 
 		$wgOut->addParserOutput( $parserOutput );
