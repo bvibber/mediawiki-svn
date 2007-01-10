@@ -1117,8 +1117,8 @@ class Title {
 			return false;
 		}
 
-		if (($this->mNamespace == NS_TEMPLATE && $this->isCascadeProtectedPage()) || 
-				($this->mNamespace == NS_MEDIA && $this->isCascadeProtectedImage())) {
+		if ( ( $this->isCascadeProtectedPage() ) || 
+				( $this->isCascadeProtectedImage() ) ) {
 			# We /could/ use the protection level on the source page, but it's fairly ugly
 			#  as we have to establish a precedence hierarchy for pages included by multiple
 			#  cascade-protected pages. So just restrict it to people with 'protect' permission,
@@ -1328,6 +1328,10 @@ class Title {
 	* @access public
 	*/
 	function isCascadeProtectedImage() {
+		global $wgEnableCascadingProtection;
+		if (!$wgEnableCascadingProtection)
+			return;
+
 		wfProfileIn(__METHOD__);
 
 		$dbr =& wfGetDb( DB_SLAVE );
@@ -1356,6 +1360,10 @@ class Title {
 	* @access public
 	*/
 	function isCascadeProtectedPage() {
+		global $wgEnableCascadingProtection;
+		if (!$wgEnableCascadingProtection)
+			return;
+
 		wfProfileIn(__METHOD__);
 
 		$dbr =& wfGetDb( DB_SLAVE );

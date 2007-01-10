@@ -151,7 +151,8 @@ class ProtectionForm {
 		$out .= "</tbody>\n";
 		$out .= "</table>\n";
 
-		$out .= $this->buildCascadeInput();
+		if ($wgEnableCascadingProtection)
+			$out .= $this->buildCascadeInput();
 
 		if( !$this->disabled ) {
 			$out .= "<table>\n";
