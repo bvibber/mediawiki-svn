@@ -94,7 +94,7 @@ class Parser
 	 * @private
 	 */
 	# Persistent:
-	var $mTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables;
+	var $mTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables, $mTlUpdatePages;
 
 	# Cleared with clearState():
 	var $mOutput, $mAutonumber, $mDTopen, $mStripState;
@@ -3048,6 +3048,45 @@ class Parser
 			}
 			$title = Title::newFromText( $part1, $ns );
 
+			# If this page is subject to cascading restrictions, check that the template is included in templatelinks
+			if ($this->mTitle->areRestrictionsCascading()) {
+				# Subject to cascading restrictions. Check for templatelinks entry
+				$cc_article = new Article( $this->mTitle );
+
+				$cc_dbr =& wfGetDB( DB_SLAVE );
+	
+				$cc_res = $cc_dbr->selectField( 'templatelinks', 'tl_from',
+					array( 'tl_from' => $cc_article->getID(), 'tl_namespace' => $ns, 'tl_title' => $part1 ),
+					__METHOD__ );
+
+				# Use mTlUpdatePages to avoid recursion.
+				if (!$this->mTlUpdatePages) {
+					$this->mTlUpdatePages = array ();
+				}
+
+				if (!$res && !in_array($this->mTitle->getPrefixedText(), $this->mTlUpdatePages)) {
+					# This title needs a templatelinks refresh. Do it now.
+					wfDebug("Needs templatelinks refresh.");
+
+					$this->mTlUpdatePages[] = $this->mTitle->getPrefixedText();
+
+					global $wgParser;
+
+					# Get content.
+					$cc_text = $cc_article->getContent();
+					$cc_newid = $cc_article->getRevIdFetched();
+
+					# Parse the text
+					$cc_options = new ParserOptions;
+					$cc_options->setTidy(true);
+					# The below is what I'm worried about recursion in.
+					$cc_poutput = $wgParser->parse( $cc_text, $this->mTitle, $cc_options, true, true, $cc_newid );
+			
+					# Update the links tables
+					$u = new LinksUpdate( $this->mTitle, $cc_poutput );
+					$u->doUpdate();
+				}
+			}
 
 			if ( !is_null( $title ) ) {
 				$titleText = $title->getPrefixedText();
