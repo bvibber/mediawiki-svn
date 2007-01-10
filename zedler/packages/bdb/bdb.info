@@ -1,0 +1,6 @@
+name WMFbdb
+desc Oracle Berkeley DB built for WMF
+version 4.5.20
+src db-4.5.20.tar.gz
+srcdir db-4.5.20/build_unix
+confprog ../dist/configure
