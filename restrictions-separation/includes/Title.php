@@ -1117,7 +1117,8 @@ class Title {
 			return false;
 		}
 
-		if ($this->isCascadeProtectedPage() || $this->isCascadeProtectedImage()) {
+		if (($this->mNamespace == NS_TEMPLATE && $this->isCascadeProtectedPage()) || 
+				($this->mNamespace == NS_MEDIA && $this->isCascadeProtectedImage())) {
 			# We /could/ use the protection level on the source page, but it's fairly ugly
 			#  as we have to establish a precedence hierarchy for pages included by multiple
 			#  cascade-protected pages. So just restrict it to people with 'protect' permission,
