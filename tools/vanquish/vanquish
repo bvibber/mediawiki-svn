@@ -14,13 +14,26 @@ errexit() {
 	exit 1
 }
 
+tryrun() {
+	if [ -x $ROOT/rc.$1 ]; then
+		echo "+ rc.$1 ..."
+		$ROOT/rc.$1 $TMPDIR/install || errexit "$0: failed to run rc.$1"
+	fi
+}
+
 gnubuild() {
+	tryrun preconfigure
 	CC=cc CXX=CC CFLAGS="-xO3 $pkg_cflags" 					\
 		CPPFLAGS="-I/opt/wmf/include $pkg_cppflags"			\
 		LDFLAGS="-L/opt/wmf/lib -R/opt/wmf/lib $pkg_ldflags"		\
 		$pkg_confprog --prefix=/opt/wmf ${=pkg_confargs} || errexit "$0: configure failed"
+	tryrun postconfigure
+	tryrun prebuild
 	gmake DESTDIR=$TMPDIR/install || errexit "$0: build failed"
+	tryrun postbuild
+	tryrun preinstall
 	gmake DESTDIR=$TMPDIR/install install || errexit "$0: install failed"
+	tryrun postinstall
 }
 
 if ! [ $# = 1 ]; then
@@ -77,7 +90,7 @@ done
 [ -z "$pkg_src" ] && errexit "$0: $INFO: no src given"
 [ -z "$pkg_srcdir" ] && errexit "$0: $INFO: no srcdir given"
 
-echo "+ extract $pkg_src..." >&2
+echo "+ extract $pkg_src ..." >&2
 if [ "$pkg_src[-4,$#pkg_src]" = ".bz2" -o "$pkg_src[-5,$#pkg_src]" = ".tbz2" ]; then
 	{ bzip2 -dc $ROOT/$pkg_src | gtar xf - } || errexit "$0: cannot extract"
 else
@@ -87,7 +100,7 @@ fi
 cd $pkg_srcdir || errexit "$0: cannot chdir"
 
 for patch in ${=pkg_patches}; do
-	echo "+ apply $patch..." >&2
+	echo "+ apply $patch ..." >&2
 	/usr/local/bin/patch -p1 <$ROOT/$patch || errexit "$0: cannot apply $patch"
 done
 
