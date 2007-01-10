@@ -2837,7 +2837,7 @@ class Article {
 		# Get the diff
 		$templates_diff = array_diff( $poTemplates, $tlTemplates );
 
-		if (count( $templates_diff ) > 0) {
+		if (count( $templates_diff ) > 0 && !wfReadOnly()) {
 			# Whee, link updates time.
 			$u = new LinksUpdate( $this->mTitle, $parserOutput );
 
