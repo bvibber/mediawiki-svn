@@ -1,0 +1,6 @@
+name WMFexpat
+desc Expat XML parser built for WMF
+version 2.0.0
+src expat-2.0.0.tar.gz
+srcdir expat-2.0.0
+url http://downloads.sourceforge.net/expat/expat-2.0.0.tar.gz?modtime=1136972148&big_mirror=0
