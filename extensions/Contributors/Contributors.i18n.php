@@ -41,7 +41,7 @@ function efContributorsMessages() {
 
 /* Indonesian (Ivan Lanin) */
 'id' => array(
-'contributors' => 'Kontributor',
+'contributors' => 'Kontributor utama',
 'contributors-toolbox' => 'Kontributor utama',
 'contributors-legend' => 'Daftar kontributor utama untuk suatu artikel',
 'contributors-target' => 'Judul:',

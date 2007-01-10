@@ -56,6 +56,28 @@ function efGiveRollbackMessages() {
 'giverollback-logentrygrant' => 'erteilte das Zurücksetzen-Recht an [[$1]]',
 'giverollback-logentryrevoke' => 'entzog das Zurücksetzen-Recht von [[$1]]',
 ),
+	
+/* Indonesian (Ivan Lanin) */
+'id' => array(
+'giverollback' => 'Pemberian atau penarikan hak pengembalian',
+'giverollback-header' => "'''Seorang birokrat lokal dapat menggunakan halaman ini untuk memberikan atau menarik  [[{{NS:HELP}}:Pengembalian|hak pengembalian]] ke akun pengguna lain.'''<br />Hal ini dapat dilakukan untuk mengizinkan non-pengurus untuk mengembalikan vandalisme dengan cepat. Hal ini harus dilakukan sesuai dengan kebijakan yang ada.",
+'giverollback-username' => 'Nama pengguna:',
+'giverollback-search' => 'Cari',
+'giverollback-hasrb' => '[[User:$1|$1]] memiliki hak pengembalian.',
+'giverollback-norb' => '[[User:$1|$1]] tidak memiliki hak pengembalian.',
+'giverollback-toonew' => '[[User:$1|$1]] terlalu baru, sehingga tak dapat diberikan hak pengembalian.',
+'giverollback-sysop' => '[[User:$1|$1]] adalah pengurs, dan telah memiliki hak pengembalian.',
+'giverollback-change' => 'Ganti status:',
+'giverollback-grant' => 'Berikan',
+'giverollback-revoke' => 'Tarik',
+'giverollback-comment' => 'Komentar:',
+'giverollback-granted' => '[[User:$1|$1]] sekarang memiliki hak pengembalian.',
+'giverollback-revoked' => '[[User:$1|$1]] sekarang tidak lagi memiliki hak pengembalian.',
+'giverollback-logpage' => 'Log perubahan hak pengembalian',
+'giverollback-logpagetext' => 'Di bawah ini adalah log perubahan [[{{NS:HELP}}:Pengembalian|hak pengembalian]] untuk non-pengurus.',
+'giverollback-logentrygrant' => 'memberikan hak pengembalian ke untuk [[$1]]',
+'giverollback-logentryrevoke' => 'menarik hak pengembalian ke untuk [[$1]]',
+),
 
 	);
 }

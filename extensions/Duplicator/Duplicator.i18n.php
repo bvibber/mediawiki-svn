@@ -93,6 +93,33 @@ copies of all histories. This is useful for article forking, etc.',
 'duplicator-dest-exists' => '[[$1]] on jo olemassa. Anna nimi, joka ei ole vielä käytössä.',
 'duplicator-toomanyrevisions' => 'Sivu [[$1]] koostuu liian monesta muutoksesta ($2), minkä takia sitä ei voi monistaa. Nykyinen raja on $3.',
 ),
+
+/* Indonesia (Ivan Lanin) */
+'id' => array(
+'duplicator' => 'Duplikasikan suatu artikel',
+'duplicator-toolbox' => 'Duplikasikan artikel ini',
+'duplicator-header' => 'Halaman ini menyediakan fasilitas untuk membuat duplikat lengkap suatu artikel, membuat salinan independen dari semua versi terdahulu. Hal ini berguna untuk mencabangkan artikel, dll.',
+
+'duplicator-options' => 'Opsi',
+'duplicator-source' => 'Sumber:',
+'duplicator-dest' => 'Tujuan:',
+'duplicator-dotalk' => 'Duplikasikan halaman pembicaraan (jika tersedia)',
+'duplicator-submit' => 'Duplikasi',
+
+'duplicator-summary' => 'Disalin dari [[$1]]',
+
+'duplicator-success' => "<big>'''[[$1]] telah disalin ke [[$2]].'''</big>\n\n",
+'duplicator-success-revisions' => '$1 revisi telah disalin.',
+'duplicator-success-talkcopied' => 'Halamaan pembicaraan juga telah disalin.',
+'duplicator-success-talknotcopied' => 'Halaman pembicaraan tidak dapat disalin.',
+'duplicator-failed' => 'Halaman tidak dapat diduplikasi. Telah terjadi suatu kesalahan yang tak dikenal.',
+
+'duplicator-source-invalid' => 'Harap masukkan judul sumber yang sah.',
+'duplicator-source-notexist' => '[[$1]] tidak ditemukan. Harap masukkan judul halaman yang sudah ada.',
+'duplicator-dest-invalid' => 'Harap masukkan judul tujuan yang say.',
+'duplicator-dest-exists' => '[[$1]] telah ada. Harap berikan judul tujuan yang halamannya belum ada.',
+'duplicator-toomanyrevisions' => '[[$1]] memiliki terlalu banyak ($2) revisi dan tidak dapat disalin. Limit saat ini adalah.',
+),
 	
 	);
 }

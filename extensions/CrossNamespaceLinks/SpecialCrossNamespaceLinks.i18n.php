@@ -33,7 +33,7 @@ $wgCrossNamespaceLinksMessages['he'] = array(
 	'crossnamespacelinkstext'     => '$1: {{plural:$2|קישור אחד|$2 קישורים}} למרחב $3'
 );
 $wgCrossNamespaceLinksMessages['id'] = array(
-	'crossnamespacelinks'     => 'Pranala antar-namespace',
+	'crossnamespacelinks'     => 'Pranala lintas ruang nama',
 	'crossnamespacelinks-summary' => 'Halaman ini memberikan daftar pranala dari suatu halaman di ruang nama utama ke halaman lain di ruang nama lain (kecuali {{ns:special}}, {{ns:talk}}, {{ns:project}} dan {{ns:template}} namespaces), yang tidak dianjurkan untuk digunakan.',
 	'crossnamespacelinkstext' => '$1: $2 terpaut ke $3'
 );

@@ -93,6 +93,26 @@ function efPatrollerMessages() {
 'patrol-resume' => 'Cliquer ici pour reprendre.',
 ),
 
+/* Indonesian (Ivan Lanin) */
+'id' => array(
+'patrol' => 'Patroli suntingan',
+'patrol-endorse' => 'Setujui',
+'patrol-revert' => 'Kembalikan',
+'patrol-revert-reason' => 'Alasan:',
+'patrol-skip' => 'Lewati',
+'patrol-reverting' => 'Mengembalikan: $1',	
+'patrol-nonefound' => 'Tidak ada suntingan yang dapat dipatroli.',
+'patrol-endorsed-ok' => 'Suntingan ini ditandai telah dipatroli.',
+'patrol-endorsed-failed' => 'Suntingan ini tidak dapat ditandai telah dipatroli.',
+'patrol-reverted-ok' => 'Suntingan dikembalikan.',
+'patrol-reverted-failed' => 'Suntingan tidak dapat dikembalikan.',
+'patrol-skipped-ok' => 'Suntingan diabaikan.',
+'patrol-reasons' => "* Vandalisme sederhana\n* Pengujian pemula\n* Lihat halaman pembicaraan",
+'patrol-another' => 'Tampilakn suntingan lain jika tersedia.',
+'patrol-stopped' => 'Anda telah memilih untuk tidak mengontrol suntingan lain. $1',
+'patrol-resume' => 'Klik di sini untuk melanjutkan.',
+),
+
 /* Italian (BrokenArrow) */
 'it' => array(
 'patrol' => 'Verifica delle modifiche',

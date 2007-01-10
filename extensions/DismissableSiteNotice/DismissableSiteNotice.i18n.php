@@ -29,6 +29,10 @@ $wgDismissableSiteNoticeMessages['he'] = array(
 	'sitenotice_close' => 'הסתר',
 );
 
+$wgDismissableSiteNoticeMessages['id'] = array(
+	'sitenotice_close' => 'tutup',
+);
+
 $wgDismissableSiteNoticeMessages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',
 );
