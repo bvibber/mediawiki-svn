@@ -792,7 +792,7 @@ class Article {
 				$wgOut->addParserOutputNoText( $parseout );
 			} else if ( $pcache ) {
 				# Display content and save to parser cache
-				$this->outputWikitext( $text );
+				$this->outputWikiText( $text );
 			} else {
 				# Display content, don't attempt to save to parser cache
 				# Don't show section-edit links on old revisions... this way lies madness.
@@ -800,7 +800,7 @@ class Article {
 					$oldEditSectionSetting = $wgOut->parserOptions()->setEditSection( false );
 				}
 				# Display content and don't save to parser cache
-				$this->outputWikitext( $text, false );
+				$this->outputWikiText( $text, false );
 
 				if( !$this->isCurrent() ) {
 					$wgOut->parserOptions()->setEditSection( $oldEditSectionSetting );
