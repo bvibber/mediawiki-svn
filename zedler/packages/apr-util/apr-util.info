@@ -3,4 +3,4 @@ desc Apache Portable Runtime (apr), utility library built for WMF
 version 1.2.8
 src apr-util-1.2.8.tar.bz2
 srcdir apr-util-1.2.8
-configure --with-apr=/opt/wmf/bin/apr-1-config
+configure --with-apr=/opt/wmf/bin/apr-1-config --with-berkeley-db=/opt/wmf
