@@ -1,0 +1,6 @@
+name WMFvim
+desc vim built for WMF
+version 7.0
+src vim-7.0.tar.bz2
+srcdir vim70
+configure --with-features=huge
