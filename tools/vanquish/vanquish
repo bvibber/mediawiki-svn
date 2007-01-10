@@ -15,7 +15,9 @@ errexit() {
 }
 
 gnubuild() {
-	CC=cc CXX=CC CFLAGS='-xO3' CPPFLAGS='-I/opt/wmf/include' LDFLAGS='-L/opt/wmf/lib -R/opt/wmf/lib' \
+	CC=cc CXX=CC CFLAGS="-xO3 $pkg_cflags" 					\
+		CPPFLAGS="-I/opt/wmf/include $pkg_cppflags"			\
+		LDFLAGS="-L/opt/wmf/lib -R/opt/wmf/lib $pkg_ldflags"		\
 		$pkg_confprog --prefix=/opt/wmf ${=pkg_confargs} || errexit "$0: configure failed"
 	gmake DESTDIR=$TMPDIR/install || errexit "$0: build failed"
 	gmake DESTDIR=$TMPDIR/install install || errexit "$0: install failed"
@@ -60,6 +62,9 @@ pkg_confprog="./configure"
 		patch) pkg_patches="$pkg_patches $rest";;
 		configure) pkg_confargs="$pkg_confargs $rest";;
 		confprog) pkg_confprog="$rest";;
+		ldflags) pkg_ldflags="$rest";;
+		cflags) pkg_cflags="$rest";;
+		cppflags) pkg_cppflags="$rest";;
 		*)
 			errexit "$0: $INFO: unknown directive \"$cmd\""
 			;;
