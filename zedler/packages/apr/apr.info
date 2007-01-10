@@ -1,0 +1,5 @@
+name WMFapr
+desc Apache Portable Runtime (apr) built for WMF
+version 1.2.8
+src apr-1.2.8.tar.bz2
+srcdir apr-1.2.8
