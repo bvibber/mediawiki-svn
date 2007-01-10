@@ -1649,6 +1649,7 @@ class Article {
 		$updated = Article::flattenRestrictions( $limit );
 		
 		$changed = ( $current != $updated );
+		$changed = $changed || ($this->mTitle->getRestrictionCascadingFlags() != $cascade);
 		$protect = ( $updated != '' );
 		
 		# If nothing's changed, do nothing
@@ -1671,8 +1672,7 @@ class Article {
 					if ($restrictions != '' ) {
 						$dbw->replace( 'page_restrictions', array( 'pr_pagetype'),
 							array( 'pr_page' => $id, 'pr_type' => $action
-								, 'pr_level' => $restrictions, 'pr_cascade' => $cascade ), __METHOD__ 
-);
+								, 'pr_level' => $restrictions, 'pr_cascade' => $cascade ), __METHOD__  );
 					} else {
 						$dbw->delete( 'page_restrictions', array( 'pr_page' => $id,
 							'pr_type' => $action ), __METHOD__ );

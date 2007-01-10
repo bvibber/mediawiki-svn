@@ -20,7 +20,3 @@ CREATE TABLE /*$wgDBprefix*/page_restrictions (
 	KEY pr_level (pr_level),
 	KEY pr_cascade (pr_cascade)
 ) TYPE=InnoDB;
-
-ALTER TABLE /*$wgDBprefix*/page
-	ALTER COLUMN page_restrictions
-	SET DEFAULT '';

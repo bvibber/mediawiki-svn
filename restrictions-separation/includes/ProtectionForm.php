@@ -25,7 +25,7 @@
 class ProtectionForm {
 	var $mRestrictions = array();
 	var $mReason = '';
-	var $mCascade = 0;
+	var $mCascade = false;
 
 	function ProtectionForm( &$article ) {
 		global $wgRequest, $wgUser;
@@ -151,6 +151,8 @@ class ProtectionForm {
 		$out .= "</tbody>\n";
 		$out .= "</table>\n";
 
+		global $wgEnableCascadingProtection;
+
 		if ($wgEnableCascadingProtection)
 			$out .= $this->buildCascadeInput();
 
@@ -214,8 +216,8 @@ class ProtectionForm {
 	function buildCascadeInput() {
 		$id = 'mwProtect-cascade';
 		$ci = wfCheckLabel( wfMsg( 'protect-cascade' ), $id, $id, $this->mCascade, array ());
-		$id = 'mwProtect-cascadeonly';
-		$ci .= wfCheckLabel( wfMsg( 'protect-cascadeonly' ), $id, $id, $this->mCascade, array ());
+		
+		return $ci;
 	}
 
 	function buildSubmit() {

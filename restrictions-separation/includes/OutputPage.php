@@ -319,7 +319,7 @@ class OutputPage {
 		addWikiTextTitle( $text, $title, $linestart, true );
 	}
 
-	private function addWikiTextTitle($text, &$title, $linestart, $tidy = false) {
+	public function addWikiTextTitle($text, &$title, $linestart, $tidy = false) {
 		global $wgParser;
 
 		$fname = 'OutputPage:addWikiTextTitle';
