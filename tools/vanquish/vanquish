@@ -91,11 +91,11 @@ done
 [ -z "$pkg_src" ] && errexit "$0: $INFO: no src given"
 [ -z "$pkg_srcdir" ] && errexit "$0: $INFO: no srcdir given"
 
-if ! [ -r $pkg_src ]; then
+[ -r "$ROOT/$pkg_src" ] || {
 	[ -z "$pkg_url" ] && errexit "$0: source archive $pkg_src does not exist and no URL given"
 	echo "+ download $pkg_src ..." >&2
 	/usr/sfw/bin/wget "-O$ROOT/$pkg_src" "$pkg_url" || errexit "$0: cannot download"
-fi
+}
 
 echo "+ extract $pkg_src ..." >&2
 if [ "$pkg_src[-4,$#pkg_src]" = ".bz2" -o "$pkg_src[-5,$#pkg_src]" = ".tbz2" ]; then
