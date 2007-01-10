@@ -1117,7 +1117,7 @@ class Title {
 			return false;
 		}
 
-		if ($this->isCascadeProtectedPage()) {
+		if ($this->isCascadeProtectedPage() || $this->isCascadeProtectedImage()) {
 			# We /could/ use the protection level on the source page, but it's fairly ugly
 			#  as we have to establish a precedence hierarchy for pages included by multiple
 			#  cascade-protected pages. So just restrict it to people with 'protect' permission,
@@ -1321,20 +1321,47 @@ class Title {
 	}
 
 	/**
-	* Cascading protects: Get a list of pages which
-	*  are protected due to a cascading restriction.
+	* Cascading protects: Check if the current image is protected due to a cascading restriction
 	*
-	* @return array Pages which are protected due to a cascading restriction
+	* @return bool If the current page is protected due to a cascading restriction.
+	* @access public
+	*/
+	function isCascadeProtectedImage() {
+		wfProfileIn(__METHOD__);
+
+		$dbr =& wfGetDb( DB_SLAVE );
+
+		$cols = array( 'il_to' );
+		$tables = array ('imagelinks', 'page_restrictions');
+		$where_clauses = array( 'il_to' => $this->getDBkey(), 'il_from=pr_page', 'pr_cascade' => 1 );
+
+		$res = $dbr->select( $tables, $cols, $where_clauses, __METHOD__);
+
+		//die($dbr->numRows($res));
+
+		if ($dbr->numRows($res)) {
+			wfProfileOut(__METHOD__);
+			return true;
+		} else {
+			wfProfileOut(__METHOD__);
+			return false;
+		}
+	}
+
+	/**
+	* Cascading protects: Check if the current page is protected due to a cascading restriction.
+	*
+	* @return bool if the current page is protected due to a cascading restriction
 	* @access public
 	*/
 	function isCascadeProtectedPage() {
 		wfProfileIn(__METHOD__);
 
-		$dbr = wfGetDb( DB_SLAVE );
+		$dbr =& wfGetDb( DB_SLAVE );
 
 		$cols = array( 'tl_namespace', 'tl_title'/*, 'pr_level', 'pr_type'*/ );
 		$tables = array ('templatelinks', 'page_restrictions');
-		$where_clauses = array( 'tl_namespace' => $this->getNamespace(), 'tl_title' => $this->getText(), 'tl_from=pr_page', 'pr_cascade' => 1 );
+		$where_clauses = array( 'tl_namespace' => $this->getNamespace(), 'tl_title' => $this->getDBkey(), 'tl_from=pr_page', 'pr_cascade' => 1 );
 
 		$res = $dbr->select( $tables, $cols, $where_clauses, __METHOD);
 
