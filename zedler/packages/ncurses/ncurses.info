@@ -1,0 +1,6 @@
+name WMFncurses
+desc ncurses built for WMF
+version 5.6
+src ncurses-5.6.tar.gz
+srcdir ncurses-5.6
+url ftp://ftp.gnu.org/gnu/ncurses/ncurses-5.6.tar.gz
