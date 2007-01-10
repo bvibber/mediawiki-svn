@@ -23,7 +23,7 @@ tryrun() {
 
 gnubuild() {
 	tryrun preconfigure
-	CC=cc CXX=CC CFLAGS="-xO3 $pkg_cflags" 					\
+	MAKE=gmake CC=cc CXX=CC CFLAGS="-xO3 $pkg_cflags" 					\
 		CPPFLAGS="-I/opt/wmf/include $pkg_cppflags"			\
 		LDFLAGS="-L/opt/wmf/lib -R/opt/wmf/lib $pkg_ldflags"		\
 		$pkg_confprog --prefix=/opt/wmf ${=pkg_confargs} || errexit "$0: configure failed"
