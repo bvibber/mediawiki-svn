@@ -978,14 +978,16 @@ function do_restrictions_update() {
 
 				$restrictions[$restriction_type] = $restriction_level;
 
-				$wgDatabase->insert( 'page_restrictions', array ( 'pr_page' => $id,
-											'pr_type' => $restriction_type,
-											'pr_level' => $restriction_level,
-											'pr_cascade' => 0 ), __METHOD );
-			}
+				if ($restriction_level != '') {
 
-			echo "ok\n";
+					$wgDatabase->insert( 'page_restrictions', array ( 'pr_page' => $id,
+												'pr_type' => $restriction_type,
+												'pr_level' => $restriction_level,
+												'pr_cascade' => 0 ), __METHOD );
+				}
+			}
 		}
+		print "ok\n";
 	}
 	
 }
