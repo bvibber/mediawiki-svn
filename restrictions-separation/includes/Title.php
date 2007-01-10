@@ -50,7 +50,7 @@ class Title {
 	var $mArticleID;          # Article ID, fetched from the link cache on demand
 	var $mLatestID;         # ID of most recent revision
 	var $mRestrictions;       # Array of groups allowed to edit this article
-	var $mCascadeRestrictions;
+	var $mCascadeRestrictionFlags;
 	var $mRestrictionsLoaded; # Boolean for initialisation on demand
 	var $mPrefixedText;       # Text form including namespace/interwiki, initialised on demand
 	var $mDefaultNamespace;   # Namespace index when there is no namespace
@@ -1383,12 +1383,12 @@ class Title {
 		}
 	}
 
-	function areRestrictionsCascading() {
+	function getRestrictionCascadingFlags() {
 		if (!$this->mRestrictionsLoaded) {
 			$this->loadRestrictions();
 		}
 
-		return $this->mCascadeRestrictions;
+		return $this->mCascadeRestrictionFlags;
 	}
 
 	/**
@@ -1413,9 +1413,7 @@ class Title {
 
 			$this->mRestrictions[$row->pr_type] = explode( ',', trim( $row->pr_level ) );
 
-			if ($row->pr_cascade) {
-				$this->mCascadeRestrictions = true;
-			}
+			$this->mCascadeRestrictionFlags |= $row->pr_cascade;
 		}
 
 		$this->mRestrictionsLoaded = true;

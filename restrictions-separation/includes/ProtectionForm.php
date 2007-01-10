@@ -39,7 +39,7 @@ class ProtectionForm {
 				// but the db allows multiples separated by commas.
 				$this->mRestrictions[$action] = implode( '', $this->mTitle->getRestrictions( $action ) );
 			}
-			$this->mCascade = $this->mTitle->areRestrictionsCascading();
+			$this->mCascade = $this->mTitle->getRestrictionCascadingFlags() & 1;
 		}
 
 		// The form will be available in read-only to show levels.
@@ -213,7 +213,9 @@ class ProtectionForm {
 
 	function buildCascadeInput() {
 		$id = 'mwProtect-cascade';
-		return wfCheckLabel( wfMsg( 'protect-cascade' ), $id, $id, $this->mCascade, array ());
+		$ci = wfCheckLabel( wfMsg( 'protect-cascade' ), $id, $id, $this->mCascade, array ());
+		$id = 'mwProtect-cascadeonly';
+		$ci .= wfCheckLabel( wfMsg( 'protect-cascadeonly' ), $id, $id, $this->mCascade, array ());
 	}
 
 	function buildSubmit() {
