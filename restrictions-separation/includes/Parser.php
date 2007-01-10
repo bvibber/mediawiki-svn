@@ -105,6 +105,7 @@ class Parser
 		                // multiple SQL queries for the same string
 	    $mTemplatePath;	// stores an unsorted hash of all the templates already loaded
 		                // in this path. Used for loop detection.
+	var $mTlTemplates;
 
 	# Temporary
 	# These are variables reset at least once per parse regardless of $clearState
@@ -234,6 +235,8 @@ class Parser
 		);
 		$this->mDefaultSort = false;
 
+		$this->mTlTemplates = array ();
+
 		wfRunHooks( 'ParserClearState', array( &$this ) );
 		wfProfileOut( __METHOD__ );
 	}
@@ -288,6 +291,18 @@ class Parser
 
 		$this->mOptions = $options;
 		$this->mTitle =& $title;
+
+		if ($this->mTitle->areRestrictionsCascading()) {
+			$article = new Article($this->mTitle);
+			$template_titles = $article->getUsedTemplates();
+
+			$this->mTlTemplates = array ();
+
+			foreach ($this->mTlTemplates as $template) {
+				$this->mTlTemplates[] = $template->getPrefixedText();
+			}
+		}
+
 		$oldRevisionId = $this->mRevisionId;
 		$oldRevisionTimestamp = $this->mRevisionTimestamp;
 		if( $revid !== null ) {
@@ -3051,22 +3066,19 @@ class Parser
 			# If this page is subject to cascading restrictions, check that the template is included in templatelinks
 			if ($this->mTitle->areRestrictionsCascading()) {
 				# Subject to cascading restrictions. Check for templatelinks entry
-				$cc_article = new Article( $this->mTitle );
-
-				$cc_dbr =& wfGetDB( DB_SLAVE );
-	
-				$cc_res = $cc_dbr->selectField( 'templatelinks', 'tl_from',
-					array( 'tl_from' => $cc_article->getID(), 'tl_namespace' => $ns, 'tl_title' => $part1 ),
-					__METHOD__ );
 
 				# Use mTlUpdatePages to avoid recursion.
 				if (!$this->mTlUpdatePages) {
 					$this->mTlUpdatePages = array ();
 				}
 
+				$res = in_array($part1, $this->mTlTemplates);
+
 				if (!$res && !in_array($this->mTitle->getPrefixedText(), $this->mTlUpdatePages)) {
+					$cc_article = new Article( $this->mTitle );
+
 					# This title needs a templatelinks refresh. Do it now.
-					wfDebug("Needs templatelinks refresh.");
+					wfDebug("Needs templatelinks refresh.\n");
 
 					$this->mTlUpdatePages[] = $this->mTitle->getPrefixedText();
 
@@ -3079,6 +3091,7 @@ class Parser
 					# Parse the text
 					$cc_options = new ParserOptions;
 					$cc_options->setTidy(true);
+
 					# The below is what I'm worried about recursion in.
 					$cc_poutput = $wgParser->parse( $cc_text, $this->mTitle, $cc_options, true, true, $cc_newid );
 			
