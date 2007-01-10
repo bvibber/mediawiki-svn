@@ -1,0 +1,6 @@
+#! /usr/bin/zsh
+
+TMPROOT=$1
+mkdir -m 755 -p $TMPROOT/opt/wmf/share/doc
+mv $TMPROOT/opt/wmf/docs $TMPROOT/opt/wmf/share/doc/bdb
+chown -R root:root $TMPROOT/opt/wmf/share/doc/bdb
