@@ -1,0 +1,5 @@
+name WMFneon
+desc libneon built for WMF
+version 0.26.2
+src neon-0.26.2.tar.gz
+srcdir neon-0.26.2
