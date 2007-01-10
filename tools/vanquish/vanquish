@@ -16,7 +16,7 @@ errexit() {
 
 gnubuild() {
 	CC=cc CXX=CC CFLAGS='-xO3' CPPFLAGS='-I/opt/wmf/include' LDFLAGS='-L/opt/wmf/lib -R/opt/wmf/lib' \
-		./configure --prefix=/opt/wmf ${=pkg_confargs} || errexit "$0: configure failed"
+		$pkg_confprog --prefix=/opt/wmf ${=pkg_confargs} || errexit "$0: configure failed"
 	gmake DESTDIR=$TMPDIR/install || errexit "$0: build failed"
 	gmake DESTDIR=$TMPDIR/install install || errexit "$0: install failed"
 }
@@ -48,6 +48,7 @@ fi
 
 pkg_patches=""
 pkg_confargs=""
+pkg_confprog="./configure"
 
 < $INFO while read cmd rest; do
 	case $cmd in
@@ -58,6 +59,7 @@ pkg_confargs=""
 		srcdir) pkg_srcdir="$rest";;
 		patch) pkg_patches="$pkg_patches $rest";;
 		configure) pkg_confargs="$pkg_confargs $rest";;
+		confprog) pkg_confprog="$rest";;
 		*)
 			errexit "$0: $INFO: unknown directive \"$cmd\""
 			;;
@@ -85,7 +87,7 @@ for patch in ${=pkg_patches}; do
 done
 
 gnubuild
-cd ..
+cd $TMPDIR
 { pkgproto `pwd`/install=/ | grep -v /opt/wmf/share/info/dir >prototype } || errexit "$0: cannot generate prototype"
 echo "i pkginfo" >>prototype
 cat >pkginfo <<EOF
