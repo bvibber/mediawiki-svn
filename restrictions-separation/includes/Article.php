@@ -792,7 +792,7 @@ class Article {
 				$wgOut->addParserOutputNoText( $parseout );
 			} else if ( $pcache ) {
 				# Display content and save to parser cache
-				$wgOut->addPrimaryWikiText( $text, $this );
+				$this->outputWikitext( $text );
 			} else {
 				# Display content, don't attempt to save to parser cache
 				# Don't show section-edit links on old revisions... this way lies madness.
@@ -800,7 +800,7 @@ class Article {
 					$oldEditSectionSetting = $wgOut->parserOptions()->setEditSection( false );
 				}
 				# Display content and don't save to parser cache
-				$wgOut->addPrimaryWikiText( $text, $this, false );
+				$this->outputWikitext( $text, false );
 
 				if( !$this->isCurrent() ) {
 					$wgOut->parserOptions()->setEditSection( $oldEditSectionSetting );
@@ -2794,6 +2794,64 @@ class Article {
 
 		return $summary;
 	}
+
+	/**
+	 * Add the primary page-view wikitext to the output buffer
+	 * Saves the text into the parser cache if possible.
+	 *
+	 * @param string  $text
+	 * @param Article $article
+	 * @param bool    $cache
+	 */
+	public function outputWikiText( $text, $cache = true ) {
+		global $wgParser, $wgUser, $wgOut;
+
+		$article = $this;
+
+		$popts = $wgOut->parserOptions();
+		$popts->setTidy(true);
+		$parserOutput = $wgParser->parse( $text, $article->mTitle,
+			$popts, true, true, $this->mRevisionId );
+		$popts->setTidy(false);
+		if ( $cache && $article && $parserOutput->getCacheTime() != -1 ) {
+			$parserCache =& ParserCache::singleton();
+			$parserCache->save( $parserOutput, $article, $wgUser );
+		}
+
+		# Get templates from templatelinks
+		$tlTemplates_titles = $this->getUsedTemplates();
+
+		$tlTemplates = array ();
+		foreach( $tlTemplates_titles as $template_title) {
+			$tlTemplates[] = $template_title->getDBkey();
+		}
+
+		# Get templates from parser output.
+		$poTemplates_allns = $parserOutput->getTemplates();
+
+		$poTemplates = array ();
+		foreach ( $poTemplates_allns as $ns_templates ) {
+			$poTemplates = array_merge( $poTemplates, $ns_templates );
+		}
+
+		# Get the diff
+		$templates_diff = array_diff( $poTemplates, $tlTemplates );
+
+		if (count( $templates_diff ) > 0) {
+			# Whee, link updates time.
+			$u = new LinksUpdate( $this->mTitle, $parserOutput );
+
+			$dbw =& wfGetDb( DB_MASTER );
+			$dbw->begin();
+
+			$u->doUpdate();
+
+			$dbw->commit();
+		}
+
+		$wgOut->addParserOutput( $parserOutput );
+	}
+
 }
 
 ?>

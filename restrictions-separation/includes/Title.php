@@ -1364,7 +1364,7 @@ class Title {
 		$tables = array ('templatelinks', 'page_restrictions');
 		$where_clauses = array( 'tl_namespace' => $this->getNamespace(), 'tl_title' => $this->getDBkey(), 'tl_from=pr_page', 'pr_cascade' => 1 );
 
-		$res = $dbr->select( $tables, $cols, $where_clauses, __METHOD);
+		$res = $dbr->select( $tables, $cols, $where_clauses, __METHOD__);
 
 		if ($dbr->numRows($res)) {
 			wfProfileOut(__METHOD__);
