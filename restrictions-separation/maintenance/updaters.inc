@@ -906,6 +906,8 @@ function do_all_updates( $shared = false, $purge = true ) {
 	
 	do_backlinking_indices_update(); flush();
 
+	do_restrictions_update(); flush ();
+
 	echo "Deleting old default messages..."; flush();
 	deleteDefaultMessages();
 	echo "Done\n"; flush();
