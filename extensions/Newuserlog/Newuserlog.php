@@ -16,6 +16,7 @@ $wgExtensionFunctions[] = 'wfNewuserlog';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Newuserlog',
 	'description' => 'adds a [[Special:Log/newusers|log of account creations]] to [[Special:Log]]',
+	'url' => 'http://meta.wikimedia.org/wiki/Newuserlog',
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
