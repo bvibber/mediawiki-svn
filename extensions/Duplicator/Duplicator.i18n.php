@@ -7,7 +7,7 @@
  * @subpackage Extensions
  * @author Rob Church <robchur@gmail.com>
  */
- 
+
 function efDuplicatorMessages() {
 	return array(
 
@@ -50,7 +50,7 @@ copies of all histories. This is useful for article forking, etc.',
 	'duplicator-dest' => 'Ziel:',
 	'duplicator-dotalk' => 'Diskussionsseite mitkopieren (wenn möglich)',
 	'duplicator-submit' => 'Artikel duplizieren',
-	
+
 	'duplicator-summary' => '[[$1]] wurde dupliziert',
 
 	'duplicator-success' => "<big>'''[[$1]] wurde nach [[$2]] kopiert.'''</big>\n\n",
@@ -58,7 +58,7 @@ copies of all histories. This is useful for article forking, etc.',
 	'duplicator-success-talkcopied' => 'Die Diskussionsseite wurde auch dupliziert.',
 	'duplicator-success-talknotcopied' => 'Die Diskussionsseite konnte nicht dupliziert werden.',
 	'duplicator-failed' => 'Der Artikel konnte nicht dupliziert werden, da ein unbekannter Fehler auftrat.',
-	
+
 	'duplicator-source-invalid' => 'Bitte geben Sie einen gültigen Quell-Artikel an.',
 	'duplicator-source-notexist' => 'Der Artikel [[$1]] existiert nicht. Bitte geben Sie einen existierenden Artikel an.',
 	'duplicator-dest-invalid' => 'Bitte geben Sie einen gültigen Ziel-Artikel an.',
@@ -110,17 +110,17 @@ copies of all histories. This is useful for article forking, etc.',
 
 'duplicator-success' => "<big>'''[[$1]] telah disalin ke [[$2]].'''</big>\n\n",
 'duplicator-success-revisions' => '$1 revisi telah disalin.',
-'duplicator-success-talkcopied' => 'Halamaan pembicaraan juga telah disalin.',
+'duplicator-success-talkcopied' => 'Halaman pembicaraan juga telah disalin.',
 'duplicator-success-talknotcopied' => 'Halaman pembicaraan tidak dapat disalin.',
 'duplicator-failed' => 'Halaman tidak dapat diduplikasi. Telah terjadi suatu kesalahan yang tak dikenal.',
 
 'duplicator-source-invalid' => 'Harap masukkan judul sumber yang sah.',
 'duplicator-source-notexist' => '[[$1]] tidak ditemukan. Harap masukkan judul halaman yang sudah ada.',
-'duplicator-dest-invalid' => 'Harap masukkan judul tujuan yang say.',
+'duplicator-dest-invalid' => 'Harap masukkan judul tujuan yang sah.',
 'duplicator-dest-exists' => '[[$1]] telah ada. Harap berikan judul tujuan yang halamannya belum ada.',
-'duplicator-toomanyrevisions' => '[[$1]] memiliki terlalu banyak ($2) revisi dan tidak dapat disalin. Limit saat ini adalah.',
+'duplicator-toomanyrevisions' => '[[$1]] memiliki terlalu banyak ($2) revisi dan tidak dapat disalin. Limit saat ini adalah $3.',
 ),
-	
+
 	);
 }
 

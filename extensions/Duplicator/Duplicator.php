@@ -8,25 +8,30 @@
  * @subpackage Extensions
  * @author Rob Church <robchur@gmail.com>
  */
- 
+
 if( defined( 'MEDIAWIKI' ) ) {
 
-	$wgExtensionCredits['specialpage'][] = array( 'name' => 'Duplicator', 'author' => 'Rob Church' );
+	$wgExtensionCredits['specialpage'][] = array(
+		'name' => 'Duplicator',
+		'author' => 'Rob Church',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Duplicator',
+		'description' => 'Creates [[Special:Duplicator|independent copies]] of articles, retaining separate histories, and adds toolbox link',
+	);
 	$wgExtensionFunctions[] = 'efDuplicator';
-	
+
 	$wgAutoloadClasses['SpecialDuplicator'] = dirname( __FILE__ ) . '/Duplicator.page.php';
 	$wgSpecialPages['Duplicator'] = 'SpecialDuplicator';
-	
+
 	/**
 	 * User permissions
 	 */
 	$wgGroupPermissions['user']['duplicate'] = true;
-	
+
 	/**
 	 * Pages with more than this number of revisions can't be duplicated
 	 */
 	$wgDuplicatorRevisionLimit = 250;
-	
+
 	/**
 	 * Extension setup function
 	 */
