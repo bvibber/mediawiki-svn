@@ -58,6 +58,7 @@ class ZenoFile
     unsigned long GetFirstArticleStartingWith ( wxString start ) ;
     unsigned long SeekArticleRelative ( unsigned long start , long diff ) ;
     wxArrayString GetArticleTitles ( unsigned long start , unsigned long number ) ;
+    void ReadIndex () ;
 
     unsigned long rMagicNumber , rVersion , rCount ;
     wxLongLong rIndexPos ;
@@ -83,6 +84,8 @@ class ZenoFile
     void ReadSingleArticle ( unsigned long number , wxFile &f , ZenoArticle &art ) ;
 	unsigned long ReadLong ( wxFile &f ) ;
 	wxUint16 ReadWord ( wxFile &f ) ;
+	unsigned char *ReadLongFromBuffer ( unsigned char *pos , unsigned long &l ) ;
+	unsigned char *ReadWordFromBuffer ( unsigned char *pos , wxUint16 &l ) ;
 	int LookInCache ( wxString page ) ;
 	ZenoArticle LookInCache ( unsigned long number ) ;
 	void AddToCache ( ZenoArticle art ) ;

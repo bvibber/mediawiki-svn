@@ -211,7 +211,8 @@ wxString ZenoArticle::GetTextFromZip()
     char *data = zfile->GetBlob ( rFilePos , rFileLen ) ;
     wxString fn = wxGetTempFileName ( _T("YAWR") ) ;
     wxString ret ;
-    
+
+
     // Write temporary file
     if ( 1 )
     {
@@ -241,7 +242,39 @@ wxString ZenoArticle::GetTextFromZip()
         n[len] = 0 ; // Paranoia
         ret = wxString ( n , wxConvISO8859_1 ) ; // Why oh why isn't that UTF-8???
     }
+
+
+/*
+    // Write temporary file
+    if ( 1 )
+    {
+        wxFile file ( fn , wxFile::write ) ;
+        file.Write ( data , rFileLen ) ;
+        file.Close() ;
+    }
+    delete data ;
     
+    // Read temporary file
+    if ( 1 )
+    {
+        wxFFileInputStream in ( fn ) ;
+        wxZlibInputStream zin ( in ) ;
+        
+        wxString fn2 = wxGetTempFileName ( _T("YAWR") ) ;
+        wxFileOutputStream f2 ( fn2 ) ;
+        zin.Read ( f2 ) ;
+        f2.Close() ;
+        
+        wxFile f3 ( fn2 ) ;
+        int len = f3.Length() ;
+        char *n = new char[len+2] ;
+        f3.Read ( n , len ) ;
+        f3.Close() ;
+        wxRemoveFile ( fn2 ) ; // Deleting temporary file
+        n[len] = 0 ; // Paranoia
+        ret = wxString ( n , wxConvISO8859_1 ) ; // Why oh why isn't that UTF-8???
+    }
+*/    
     wxRemoveFile ( fn ) ; // Deleting temporary file
     return ret ;
 }
@@ -383,22 +416,45 @@ void ZenoFile::ReadSingleArticle ( unsigned long number , wxFile &f , ZenoArticl
 	else Log ( wxString::Format ( _T("ARTICLE #%d NOT FOUND!") , number ) , _T("ZenoFile::ReadSingleArticle") ) ;
 }
 
+void ZenoFile::ReadIndex ()
+{
+    wxFile f ( m_filename ) ;
+    ReadIndex ( f ) ;
+}
+
 void ZenoFile::ReadIndex ( wxFile &f )
 {
     if ( !Ok() ) return ;
-
-    articles.Clear() ;
-    Seek ( f , rIndexPos ) ;
     
-//    wxFile out ( _T("C:\\text.txt") , wxFile::write ) ;
+    if ( articles.GetCount() > 0 ) return ; // Already read this one
 
+    articles.Alloc ( rCount+5 ) ;
+    Seek ( f , rIndexPos ) ;
+
+    wxStartTimer() ;
+    ZenoArticle art ;
     for ( unsigned long count = 0 ; count < rCount ; count++ )
     {
-        ZenoArticle art ;
-        ReadArticleData ( f , art ) ;
-        count += 26 + art.rExtraLen ;
-//        out.Write ( art.title + _T("\n") ) ;
+        articles.Add ( art ) ;
+        ReadArticleData ( f , articles[count] ) ;
     }
+    
+    long l = wxGetElapsedTime() ;
+    wxMessageBox ( wxString::Format ( _T("%d ms") , l ) ) ;
+}
+
+unsigned char *ZenoFile::ReadLongFromBuffer ( unsigned char *pos , unsigned long &l )
+{
+    unsigned long *u = (unsigned long *) pos ;
+    l = *u ;
+    return pos+4 ;
+}
+
+unsigned char *ZenoFile::ReadWordFromBuffer ( unsigned char *pos , wxUint16 &l )
+{
+    wxUint16 *u = (wxUint16 *) pos ;
+    l = *u ;
+    return pos+2 ;
 }
 
 void ZenoFile::ReadArticleData ( wxFile &f , ZenoArticle &art )
@@ -406,6 +462,29 @@ void ZenoFile::ReadArticleData ( wxFile &f , ZenoArticle &art )
     unsigned long l1 , l2 ;
     art.rExtraLen = 0 ;
 
+    unsigned char *y , z[26] ;
+    f.Read ( z , 26 ) ;
+    y = z ;
+    
+    // rFilePos
+    y = ReadLongFromBuffer ( y , l1 ) ;
+    y = ReadLongFromBuffer ( y , l2 ) ;
+    art.rFilePos = wxLongLong ( l2 , l1 ) ;
+    
+    y = ReadLongFromBuffer ( y , art.rFileLen ) ;
+    art.rCompression = *y++ ;
+    art.rMime = *y++ ;
+    art.rSubtype = *y++ ;
+    art.rSearchFlag = *y++ ;
+    y = ReadLongFromBuffer ( y , art.rSubtypeParent ) ;
+    y = ReadLongFromBuffer ( y , art.rLogicalNumber ) ;
+    
+    wxUint16 w ;
+    y = ReadWordFromBuffer ( y , w ) ;
+    art.rExtraLen = w ;
+
+
+/*
     // rFilePos
 	l1 = ReadLong ( f ) ;
 	l2 = ReadLong ( f ) ;
@@ -419,7 +498,7 @@ void ZenoFile::ReadArticleData ( wxFile &f , ZenoArticle &art )
     art.rSubtypeParent = ReadLong ( f ) ;
     art.rLogicalNumber = ReadLong ( f ) ;
     art.rExtraLen = ReadWord ( f ) ;
-
+*/
     if ( art.rExtra ) delete art.rExtra ; // Clear last entry
     art.rExtra = new char[art.rExtraLen+5] ;
     f.Read ( art.rExtra , art.rExtraLen ) ;

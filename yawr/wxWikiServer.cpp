@@ -61,7 +61,7 @@ void wxWikiServer::Browse ( HttpResponse &hr )
 	ReturnHTML ( _T("-/") + txt("browse_page_title") , html , hr ) ;
 }
 
-void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
+void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr, bool again )
 {
     if ( page == _T("random") )
     {
@@ -74,16 +74,14 @@ void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
     } else if ( page == _T("search") ) {
 		wxURI uri;
 		wxString query = Unescape ( GetValue ( _T("e") ) ) ;
-//		query.Replace ( _T("+") , _T(" ") ) ;
-//		query = uri.Unescape ( query ) ;
 
 		wxString mode ;
-		fulltext = GetValue ( _T("ft") ) != _T("") ;
+		if ( again ) fulltext = GetValue ( _T("ft") ) != _T("") ;
 		if ( !fulltext ) mode = _T("titles") ;
 		else mode = _T("fulltext") ;
 		
 		wxArrayString titles = Search ( query , mode ) ;
-//		wxMessageBox ( wxString::Format ( _T("%d titles") , titles.GetCount() ) ) ;
+//		wxMessageBox ( _T("!") ) ;
 
         // If only one article results, open it directly
         if ( titles.GetCount() == 1 )
@@ -94,9 +92,9 @@ void wxWikiServer::SpecialPage (const wxString &page,HttpResponse &hr)
 
 		wxString html ;
         if ( titles.GetCount() > 0 ) html = FormatList ( titles , 1 , 100 , _T("") , fulltext ) ;
-        else if ( !fulltext ) {
+        else if ( !fulltext && again ) {
             fulltext = true ;
-            SpecialPage ( page , hr ) ;
+            SpecialPage ( page , hr , false ) ;
             return ;
         } else {
             html = _T("<h2>") + txt("search_not_found") + _T("</h2>") ; // Should rarely be the case...

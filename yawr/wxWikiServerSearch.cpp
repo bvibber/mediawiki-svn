@@ -63,6 +63,7 @@ class TSearchWordTree
 	wxArrayString Process ( ZenoFile *index , int depth = 0 ) ;
 	bool StringHasWildcards ( wxString s ) ;
 	void CreateSingleWordTable ( wxString word , ZenoFile *index ) ;
+	void CreateSingleWildcardTable ( wxString word , ZenoFile *index ) ;
 	void ProcessList () ;
 	void ProcessAND () ;
 	void ProcessOR () ;
@@ -233,7 +234,8 @@ wxArrayString TSearchWordTree::Process ( ZenoFile *index , int depth )
 
 	if ( !word.IsEmpty() ) // Search entry
 	{
-        CreateSingleWordTable ( word , index ) ;
+        if ( IsUsingWildcards() ) CreateSingleWildcardTable ( word , index ) ;
+        else CreateSingleWordTable ( word , index ) ;
 //        DumpTable ( _T("C:\\") + word + _T(".txt") ) ;
 	} else { // Group / AND / OR / NEAR / whatnot
         switch ( type )
@@ -372,6 +374,15 @@ void TSearchWordTree::CreateSingleWordTable ( wxString word , ZenoFile *index )
     delete data ;
     if ( GetRoot()->title_only ) FilterTitleAgainstTable ( word ) ;
 }
+
+void TSearchWordTree::CreateSingleWildcardTable ( wxString word , ZenoFile *index )
+{
+    table.Clear () ;
+    if ( word.IsEmpty() ) return ;
+    index->ReadIndex() ;
+    
+}
+
 
 void TSearchWordTree::FilterTitleAgainstTable ( wxString word )
 {
