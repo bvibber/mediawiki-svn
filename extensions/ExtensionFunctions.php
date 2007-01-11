@@ -30,7 +30,7 @@ if ( !defined( 'MW_SPECIALPAGE_VERSION' ) ) {
 			case 6:
 				return new $name( $p[0], $p[1], $p[2], $p[3], $p[4], $p[5] );
 			default:
-				wfDebugDieBacktrace( "Too many arguments to construtor in extCreateObject" );
+				wfDebugDieBacktrace( "Too many arguments to constructor in extCreateObject" );
 		}
 	}
 
