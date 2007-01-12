@@ -192,6 +192,65 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
 	'group-boardvote-member'  => 'Wahl-Administrator',
 	'grouppage-boardvote'     => '{{ns:project}}:Wahl-Administrator',
 );
+$wgBoardVoteMessages['fr'] = array(
+	'boardvote'               => "Élections au conseil d’administration de la Wikimedia Foundation",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
+* [[Special:Boardvote/list|Liste des votes enregistrés]]
+* [[Special:Boardvote/dump|Enregistrements cryptés]]",
+	'boardvote_intro'         => "
+<p>Bienvenue aux troisièmes élections du conseil d'administration de <i><a href=\"http://wikimediafoundation.org/wiki/Accueil\" class=\"extiw\" title=\"foundation:Accueil\">Wikimedia Foundation Inc.</a></i>. 
+Nous votons pour une personne qui représentera la communauté des utilisateurs sur les différents projets Wikimedia. 
+Cette personne et le conseil d'administration contribueront à orienter la direction de ces projets et représenteront <i>vos</i> intérêts et préoccupations auprès du conseil d'administration. 
+Ils décideront des moyens de financement et de l'affectation des fonds.</p>
+
+<p>Lisez attentivement les déclarations des candidats et leurs réponses aux questions avant de voter. 
+Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de temps et d'effort pour faire de ces projets un endroit accueillant dédié au développement de la libre diffusion du savoir humain.</p>
+
+<p>Vous pouvez voter pour autant de candidats que vous le souhaitez. Celui qui remportera le plus de voix sera déclaré élu pour le poste auquel il s'est présenté. En cas de ballotage, il y aura un vote de départage.</p>
+
+<p>Pour plus d'information, voyez :</p>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006/Fr\" class=\"extiw\" title=\"meta:Election_FAQ_2006/Fr\">FAQ sur les élections</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_candidates_2006/Fr\" class=\"extiw\" title=\"meta:Election_candidates_2006/Fr\">Candidat-e-s</a></li></ul>
+",
+	'boardvote_intro_change'  => "<p>Vous avez déjà voté. Cependant vous pouvez modifier votre vote en utilisant le formulaire ci-dessous. Merci de cocher les cases en regard de chaque candidat qui a votre support.</p></p>",
+	'boardvote_entered'       => "Merci, votre vote a été enregistré. 
+	
+Si vous le souhaitez, vous pouvez enregistrer les détails suivants. Votre historique de vote est :
+
+<pre>$1</pre>
+
+Il a été crypté avec la clé publique des scrutateurs officiels pour l’élection :
+
+<pre>$2</pre>
+
+La version cryptée suit. Elle sera affichée publiquement sur [[Special:Boardvote/dump]]. 
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Retour]]",
+	'boardvote_notloggedin'   => "Vous n’êtes actuellement pas authentifié. Pour voter, vous devez utiliser un compte comportant au moins $1 contributions avant le $2, et dont la première remonte au $3.",
+	'boardvote_notqualified'  => "Vous ne répondez pas à l’une des conditions requises pour voter lors de ce scrutin. Il est nécessaire d’avoir $3 contributions avant le $2,  et vous en avez effectuées $1. En outre, votre première modification date du $4, et elle doit avoir été faite avant le $5.",
+	'boardvote_novotes'       => "Personne n’a encore voté.",
+	'boardvote_time'          => "Heure ",
+	'boardvote_user'          => "Utilisateur",
+	'boardvote_edits'         => "Modifications ",
+	'boardvote_days'          => "Jours",
+	'boardvote_ip'            => "IP",
+	'boardvote_ua'            => "Représentant de l’utilisateur",
+	'boardvote_listintro'     => "Liste des personnes ayant voté :<br /><br />",
+	'boardvote_dumplink'      => "Cliquez ici",
+	'boardvote_submit'        => 'OK',
+	'boardvote_strike'        => "biffer ",
+	'boardvote_unstrike'      => "débiffer ",
+	'boardvote_needadmin'     => "Seuls les administrateurs du vote peuvent effectuer cette opération.",
+	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Élections au conseil d’administration Wikimedia</a> :  Vote ouvert jusqu’au 12 juillet",
+	'boardvote_notstarted'    => 'Le vote n’est pas encore commencé.',
+	'boardvote_closed'        => 'L’élection est désormais close. Le résultat est proclamé sur [[meta:Election results 2006/fr|la page de résultats]] (fr).',
+	'boardvote_edits_many'    => 'plusieurs ',
+	'group-boardvote'         => 'Membres votants du conseil d’administration',
+	'group-boardvote-member'  => 'Membre votant du conseil d’administration',
+	'grouppage-boardvote'     => '{{ns:project}}:membre votant du conseil d’administration',
+);
 $wgBoardVoteMessages['he'] = array(
 	'boardvote'               => "בחירות לחבר הנאמנים של ויקימדיה",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|הצבעה]]

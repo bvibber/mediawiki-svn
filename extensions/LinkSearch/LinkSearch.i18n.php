@@ -75,6 +75,13 @@ $wgLinkSearchMessages['nl'] = array(
 	'linksearch-line'  => '$1 gelinkt vanaf $2',
 	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.'
 );
+$wgLinkSearchMessages['pt'] = array(
+	'linksearch'       => 'Procurar por links da web',
+	'linksearch-text'  => 'É possível utilizar "caracteres mágicos" como em "*.wikipedia.org".',
+	'linksearch-line'  => '$1 está lincado em $2',
+	'linksearch-error' => '"Caracteres mágicos" Wildcards podem ser utilizados apenas no início do endereço.',
+);
+$wgLinkSearchMessages['pt'] = $wgLinkSearchMessages['pt-br'];
 $wgLinkSearchMessages['fr'] = array(
 	'linksearch'	   => 'Rechercher des liens internet',
 	'linksearch-text'  => 'Des caractères joker peuvent être utilisés, par exemple "*.wikipedia.org".',

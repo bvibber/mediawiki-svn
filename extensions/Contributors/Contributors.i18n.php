@@ -53,6 +53,20 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'Artikel $1 tidak ditemukan.',
 ),
 
+/* Portuguese (Lugusto) */
+'pt' => array(
+'contributors' => 'Contribuidores',
+'contributors-toolbox' => 'Principais contribuidores',
+'contributors-legend' => 'Listagem dos principais contribuidores de um artigo',
+'contributors-target' => 'Título:',
+'contributors-submit' => 'Exibir',
+'contributors-subtitle' => 'Principais contribuidores de $1',
+'contributors-others-long' => 'Existem ainda outros $1 contribuidores para esta página.',
+'contributors-others' => 'e $1 outros',
+'contributors-badtitle' => 'Título inválido.',
+'contributors-nosuchpage' => 'O artigo $1 não existe.',
+),
+
 	);
 }
 

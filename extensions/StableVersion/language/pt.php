@@ -9,15 +9,15 @@ global $wgMessageCache;
 // Add messages
 $wgMessageCache->addMessages(
 	array(
-			'stableversion_this_is_stable' => 'Esta é a versão estável para este artigo ou página. Você também pode ver a <a href="$1">mais recente versão de rascunho</a>.',
-			'stableversion_this_is_stable_nourl' => 'Esta é a versão estável para este artigo ou página.',
-			'stableversion_this_is_draft_no_stable' => 'Você está acessando a versão de rascunho deste artigo ou página; não há até o momento uma versão estável para este artigo ou página.',
-			'stableversion_this_is_draft' => 'Você está acessando a versão de rascunho deste artigo ou página. Você também pode ver a <a href="$1">versão estável</a>.',
-			'stableversion_this_is_old' => 'Esta é uma versão anterior para este artigo ou página. Você também pode ver tanto a <a href="$1">versão estável</a>, quanto <a href="$2">o rascunho mais recente</a>.',
+			'stableversion_this_is_stable' => 'Esta é a versão estável para este artigo. Você também pode ver a <a href="$1">mais recente versão de rascunho</a>.',
+			'stableversion_this_is_stable_nourl' => 'Esta é a versão estável para este artigo.',
+			'stableversion_this_is_draft_no_stable' => 'Você está acessando a versão de rascunho deste artigo; não há até o momento uma versão estável para este artigo.',
+			'stableversion_this_is_draft' => 'Você está acessando a versão de rascunho deste artigo. Você também pode ver a <a href="$1">versão estável</a>.',
+			'stableversion_this_is_old' => 'Esta é uma versão anterior para este artigo. Você também pode ver tanto a <a href="$1">versão estável</a>, quanto <a href="$2">o rascunho mais recente</a>.',
 			'stableversion_reset_stable_version' => 'Clique <a href="$1">aqui</a> para que esta deixe de ser a versão estável.',
 			'stableversion_set_stable_version' => 'Clique <a href="$1">aqui</a> para que esta seja identificada como a versão estável',
 			'stableversion_set_ok' => 'A versão estável foi definida com êxito.',
-			'stableversion_reset_ok' => 'A versão estável foi removida com êxito. Com isto, este artigo ou página deixou de ter uma versão estável.',
+			'stableversion_reset_ok' => 'A versão estável foi removida com êxito. Com isto, este artigo deixou de ter uma versão estável.',
 			'stableversion_return' => 'Voltar para <a href="$1">$2</a>',
 			
 			'stableversion_reset_log' => 'A versão estável foi removida com êxito.',

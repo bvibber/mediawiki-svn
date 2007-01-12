@@ -74,6 +74,16 @@ $wgFilepathMessages['nl'] = array(
 	'filepath_page'   => 'Bestand:',
 	'filepath_submit' => 'Zoeken',
 );
+$wgFilepathMessages['pt'] = array(
+	'filepath'        => 'Diretório do ficheiro',
+	'filepath_page'   => 'Ficheiro:',
+	'filepath_submit' => 'Diretório',
+);
+$wgFilepathMessages['pt-br'] = array(
+	'filepath'        => 'Diretório do arquivo',
+	'filepath_page'   => 'Arquivo:',
+	'filepath_submit' => 'Diretório',
+);
 $wgFilepathMessages['ru'] = array(
 	'filepath'        => 'Путь к файлу',
 	'filepath_page'   => 'Файл:',

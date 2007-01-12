@@ -79,6 +79,28 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'menghapus [[$1]] dari daftar berkas tidak sah',
 ),
 
+/* Portuguese (Lugusto) */
+'pt' => array(
+'badimages' => 'Imagens com problemas',
+'badimages-add-btn' => 'Adicionar',
+'badimages-added' => '$1 foi adicionado à lista.',
+'badimages-count' => "Atualmente existem '''$1''' imagens na lista de imagens com problemas.",
+'badimages-name' => 'Nome:',
+'badimages-not-added' => 'Não foi possível adicionar a imagem.',
+'badimages-not-removed' => 'Não foi possível remover a imagem.',
+'badimages-reason' => 'Motivo:',
+'badimages-remove' => '(remover)',
+'badimages-remove-btn' => 'Remover',
+'badimages-remove-confirm' => 'Confirme a remoção $1 da listagem:',
+'badimages-removed' => '$1 foi removido da lista.',
+'badimages-subheading' => 'Itens atuais',
+'badimages-unprivileged' => '(Você não possui permissões suficientes para alterar a listagem)',
+'badimages-log-name' => 'Registo de imagens com problemas',
+'badimages-log-header' => 'Este é um registo das alterações feitas na [[Help:Lista de imagens com problemas|lista de imagens com problemas]].',
+'badimages-log-add' => 'adicionada [[$1]] na lista de imagens com problemas',
+'badimages-log-remove' => 'removida [[$1]] da lista de imagens com problemas',
+),
+
 	);
 }
 
