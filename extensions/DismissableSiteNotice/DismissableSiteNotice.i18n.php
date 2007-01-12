@@ -25,6 +25,10 @@ $wgDismissableSiteNoticeMessages['fi'] = array(
 	'sitenotice_close' => 'piilota',
 );
 
+$wgDismissableSiteNoticeMessages['fiu-vro'] = array(
+	'sitenotice_close' => 'Käkiq ärq',
+);
+
 $wgDismissableSiteNoticeMessages['he'] = array(
 	'sitenotice_close' => 'הסתר',
 );
