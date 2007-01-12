@@ -78,9 +78,11 @@ class QueryHistoryTransactionInformation extends DefaultQueryTransactionInformat
 
 class QueryAtTransactionInformation extends DefaultQueryTransactionInformation {
 	protected $transactionId;
+	protected $addAttributes;
 	
-	public function __construct($transactionId) {
+	public function __construct($transactionId, $addAttributes) {
 		$this->transactionId = $transactionId;
+		$this->addAttributes = $addAttributes;
 	}
 	
 	public function getRestriction($table) {
@@ -90,8 +92,11 @@ class QueryAtTransactionInformation extends DefaultQueryTransactionInformation {
 	public function versioningAttributes() {
 		global
 			$recordLifeSpanAttribute;
-			
-		return array($recordLifeSpanAttribute);
+		
+		if ($this->addAttributes)	
+			return array($recordLifeSpanAttribute);
+		else
+			return array();
 	}
 	
 	public function versioningFields($tableName) {
@@ -102,7 +107,8 @@ class QueryAtTransactionInformation extends DefaultQueryTransactionInformation {
 		global
 			$recordLifeSpanAttribute;
 			
-		$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']));
+		if ($this->addAttributes)	
+			$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']));
 	}
 }
 

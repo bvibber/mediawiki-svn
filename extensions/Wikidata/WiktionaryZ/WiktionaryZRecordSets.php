@@ -390,17 +390,14 @@ function getExpressionsRecordSet($spelling, $filterLanguageId, $queryTransaction
 	return $result;
 }
 
-function getExpressionRecord($spelling, $filterLanguageId, $queryTransactionInformation) {
-	global
-		$expressionIdAttribute, $expressionAttribute, $languageAttribute, $expressionMeaningsAttribute;
-
+function getExpressionIdThatHasSynonyms($spelling, $languageId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT expression_id, language_id " .
 		" FROM uw_expression_ns" .
 		" WHERE spelling=BINARY " . $dbr->addQuotes($spelling) .
 		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
-		" AND language_id=$filterLanguageId" .
+		" AND language_id=$languageId" .
 		" AND EXISTS (" .
 			"SELECT expression_id " .
 			" FROM uw_syntrans " .
@@ -409,22 +406,19 @@ function getExpressionRecord($spelling, $filterLanguageId, $queryTransactionInfo
 		.")"
 	);
 	
-	if ($expression = $dbr->fetchObject($queryResult)) {
-//		$expressionStructure = new Structure($languageAttribute);
-//		
-//		$expressionRecord = new ArrayRecord($expressionStructure);
-//		$expressionRecord->setAttributeValue($languageAttribute, $expression->language_id);
-//
-//		$result = new ArrayRecord(new Structure($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute));
-//		$result->setAttributeValue($expressionIdAttribute, $expression->expression_id);
-//		$result->setAttributeValue($expressionAttribute, $expressionRecord);
-//		$result->setAttributeValue($expressionMeaningsAttribute, getExpressionMeaningsRecord($expression->expression_id, $filterLanguageId, $queryTransactionInformation));
-		$result = getExpressionMeaningsRecord($expression->expression_id, $filterLanguageId, $queryTransactionInformation);
-	}
+	if ($expression = $dbr->fetchObject($queryResult)) 
+		return $expression->expression_id;
+	else
+		return 0;
+}
+ 
+function getExpressionRecord($spelling, $filterLanguageId, $queryTransactionInformation) {
+	$expressionId = getExpressionIdThatHasSynonyms($spelling, $filterLanguageId);
+	
+	if ($expressionId != 0) 
+		return getExpressionMeaningsRecord($expressionId, $filterLanguageId, $queryTransactionInformation);
 	else 
-		$result = null;
-
-	return $result;
+		return null;
 }
 
 function getExpressionsValue($spelling, $filterLanguageId, $queryTransactionInformation) {

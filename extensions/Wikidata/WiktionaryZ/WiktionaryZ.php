@@ -30,7 +30,7 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		if ($expressionsValue != null) 
 			$wgOut->addHTML(
 				getExpressionsEditor($spelling, $this->filterLanguageId, false, $this->shouldShowAuthorities)->view(
-					new IdStack("expression"), 
+					$this->getIdStack($spelling, $this->filterLanguageId), 
 					$expressionsValue
 				)
 			);
@@ -51,7 +51,7 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		if ($expressionsValue != null)
 			$wgOut->addHTML(
 				getExpressionsEditor($spelling, $this->filterLanguageId, $this->showRecordLifeSpan, false)->view(
-					new IdStack("expression"), 
+					$this->getIdStack($spelling, $this->filterLanguageId), 
 					$expressionsValue
 				)
 			);
@@ -71,7 +71,7 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		
 		if ($expressionsValue != null)
 			getExpressionsEditor($spelling, $this->filterLanguageId, false, false)->save(
-				new IdStack("expression"), 
+				$this->getIdStack($spelling, $this->filterLanguageId), 
 				$expressionsValue
 			);
 	}
@@ -89,7 +89,7 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		if ($expressionsValue != null)
 			$wgOut->addHTML(
 				getExpressionsEditor($spelling, $this->filterLanguageId, false, false)->edit(
-					new IdStack("expression"), 
+					$this->getIdStack($spelling, $this->filterLanguageId), 
 					$expressionsValue
 				)
 			);
@@ -102,6 +102,27 @@ class WiktionaryZ extends DefaultWikidataApplication {
 			$wgTitle;
 			
 		return "Disambiguation: " . $wgTitle->getText();
+	}
+	
+	protected function getIdStack($spelling, $filterLanguageId) {
+		global
+			$expressionIdAttribute;
+			
+		$idStack = new IdStack("expression");
+
+		if ($filterLanguageId != 0) {
+			$expressionId = getExpressionIdThatHasSynonyms($spelling, $filterLanguageId);
+			
+			if ($expressionId != 0) {
+				$expressionIdStructure = new Structure($expressionIdAttribute);
+				$expressionIdRecord = new ArrayRecord($expressionIdStructure, $expressionIdStructure);
+				$expressionIdRecord->setAttributeValue($expressionIdAttribute, $expressionId);
+			}	
+			
+			$idStack->pushKey($expressionIdRecord);
+		}
+		
+		return $idStack;
 	}
 }
 

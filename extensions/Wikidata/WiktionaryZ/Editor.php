@@ -804,12 +804,14 @@ class TextEditor extends ScalarEditor {
 	protected $truncate;
 	protected $truncateAt;
 	protected $addText = "";
+	protected $controller;
 
-	public function __construct($attribute, $permissionController, $isAddField, $truncate=false, $truncateAt=0) {
+	public function __construct($attribute, $permissionController, $isAddField, $truncate=false, $truncateAt=0, $controller=null) {
 		parent::__construct($attribute, $permissionController, $isAddField);
 
 		$this->truncate = $truncate;
 		$this->truncateAt = $truncateAt;
+		$this->controller = $controller;
 	}
 
 	public function getViewHTML($idPath, $value) {
@@ -844,6 +846,15 @@ class TextEditor extends ScalarEditor {
 
 	public function setAddText($addText) {
 		$this->addText = $addText;
+	}
+	
+	public function save($idPath, $value) {
+		if ($this->controller != null) {
+			$inputValue = $this->getInputValue($this->updateId($idPath->getId()));
+
+			if ($inputValue != $value)
+				$this->controller->update($idPath->getKeyStack(), $inputValue);
+		}
 	}
 }
 

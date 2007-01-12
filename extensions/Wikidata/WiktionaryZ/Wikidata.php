@@ -112,7 +112,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 		$summary = $wgRequest->getText('summary');
 
 		startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
-		$this->save(new QueryAtTransactionInformation($wgRequest->getInt('transaction')));
+		$this->save(new QueryAtTransactionInformation($wgRequest->getInt('transaction'), false));
 
 		Title::touchArray(array($wgTitle));
 		$now = wfTimestampNow();
@@ -159,7 +159,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 		if ($this->transaction == 0)
 			$this->queryTransactionInformation = new QueryHistoryTransactionInformation();
 		else
-			$this->queryTransactionInformation = new QueryAtTransactionInformation($this->transaction);
+			$this->queryTransactionInformation = new QueryAtTransactionInformation($this->transaction, $this->showRecordLifeSpan);
 			
 		$transactionId = $wgRequest->getInt('transaction');
 

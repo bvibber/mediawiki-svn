@@ -368,6 +368,15 @@ function updateDefinedMeaningDefinition($definedMeaningId, $languageId, $text) {
 		updateTranslatedText($definitionId, $languageId, $text);	
 }
 
+function updateOrAddDefinedMeaningDefinition($definedMeaningId, $languageId, $text) {
+	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
+	
+	if ($definitionId != 0)
+		updateTranslatedText($definitionId, $languageId, $text);
+	else
+		addDefinedMeaningDefiningDefinition($definedMeaningId, $languageId, $text);	
+}
+
 function updateTranslatedText($setId, $languageId, $text) {
 	removeTranslatedText($setId, $languageId);
 	addTranslatedText($setId, $languageId, $text);
