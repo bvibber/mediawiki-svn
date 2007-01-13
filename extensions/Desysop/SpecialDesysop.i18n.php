@@ -30,6 +30,17 @@ $wgDesysopMessages['cs'] = array(
 	'desysop'              => 'Odebrat práva',
 	'not_sysop'            => 'Tento uživatel není správce.',
 );
+$wgDesysopMessages['fr'] = array(
+	'desysoptitle'         => 'Enlever les droits d’administrateur à cet utilisateur',
+	'desysoptext'          => "Ce formulaire est utilisé par les bureaucrates pour enlever ses droits à un administrateur. Entrez le nom d’un administrateur ci-dessous et pressez le bouton pour enlever les droits.",
+	'desysopname'          => 'Nom de l’utilisateur :',
+	'desysopok'            => "<b>L’utilisateur « $1 » n’est plus administrateur</b>",
+	'set_user_rights'      => 'Appliquer les droits utilisateur',
+	'user_rights_set'      => "<b>Les droits utilisateur ont été mis à jour pour « $1 »</b>",
+	'set_rights_fail'      => "<b>Les droits utilisateur n’ont pas pu être mis à jour pour « $1 ». (Vérifiez que le nom est correct)</b>",
+	'desysop'              => 'Enlever les droits d’administrateur',
+	'not_sysop'            => 'Cet utilisateur n’est pas un administrateur',
+);
 $wgDesysopMessages['he'] = array(
 	'desysoptitle'         => 'בטל הרשאת מפעיל מערכת למשתמש',
 	'desysoptext'          => "דף זה משמש ביורוקרטים לביטול הרשאת מפעיל מערכת של משתמש. אנא הקישו את שם המשתמש בתיבת הטקסט ולחצו על הכפתור על מנת להפוך את המשתמש למפעיל מערכת.",

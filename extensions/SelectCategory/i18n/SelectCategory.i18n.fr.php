@@ -11,5 +11,5 @@
 # translation done by Marius Engler <marius.engler@coop.ch>
 
 $messages['selectcategory-title']       = 'Choix de catégories';
-$messages['selectcategory-subtitle']    = 'Shift+Souris afin de (de)sélectionner plusieurs catégories d\'affilées, Ctrl+Souris afin de (de)sélectionner des catégories.';
+$messages['selectcategory-subtitle']    = 'Shift+click afin de (dé)sélectionner plusieurs catégories d’affilée, Ctrl+click afin de (dé)sélectionner des catégories individuellement.';
 ?>

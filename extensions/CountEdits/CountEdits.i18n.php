@@ -52,15 +52,15 @@ function efCountEditsMessages( $single = false ) {
 
 /* French (Bertrand Grondin) */
 'fr' => array(
-'countedits' => 'Compteur d\'éditions',
+'countedits' => 'Compteur d’éditions',
 'countedits-warning' => 'Avertissement : ne jugez pas un livre par sa couverture. Ne jugez pas non plus un utilisateur en fonction du nombre de ses contributions.',
 'countedits-username' => 'Utilisateur',
 'countedits-ok' => 'OK',
-'countedits-nosuchuser' => 'Il n\'y a aucun utilisateur correspondant à $1',
+'countedits-nosuchuser' => 'Il n’y a aucun utilisateur correspondant à $1',
 'countedits-resultheader' => 'Resultats pour $1',
 'countedits-resulttext' => '$1 a fait $2 éditions',
 'countedits-mostactive' => 'Contributeurs les plus actifs',
-'countedits-nocontribs' => 'Ils n\'ont eu aucune contribution sur ce wiki.',
+'countedits-nocontribs' => 'Aucune contribution sur ce wiki.',
 ),
 
 /* Indonesian (Ivan Lanin) */

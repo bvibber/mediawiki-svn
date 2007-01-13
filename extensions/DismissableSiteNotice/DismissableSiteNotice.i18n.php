@@ -29,6 +29,10 @@ $wgDismissableSiteNoticeMessages['fiu-vro'] = array(
 	'sitenotice_close' => 'Käkiq ärq',
 );
 
+$wgDismissableSiteNoticeMessages['fr'] = array(
+	'sitenotice_close' => 'cacher',
+);
+
 $wgDismissableSiteNoticeMessages['he'] = array(
 	'sitenotice_close' => 'הסתר',
 );

@@ -17,6 +17,12 @@ function efUserImagesMessages() {
 'userimages-noname' => 'Invalid username or none provided.',
 'userimages-noimages' => '$1 has no image uploads.',
 ),
+/* French */
+'fr' => array(
+'userimages-caption' => 'Images importées par $1',
+'userimages-noname' => 'Nom d’utilisateur invalide ou manquant.',
+'userimages-noimages' => '$1 n’a importé aucune image.',
+),
 
 	);
 	return $messages;

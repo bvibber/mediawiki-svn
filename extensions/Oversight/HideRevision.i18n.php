@@ -84,7 +84,7 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 'fr' => array(
 'hiderevision' => 'Cacher définitivement les révisions',
 // Empty form
-'hiderevision-prompt' => 'Numéro d\'édition à supprimer:',
+'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
 'hiderevision-continue' => 'Continuer',
 // Confirmation form
 'hiderevision-text' =>
@@ -94,20 +94,20 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 
 ''' L'abus de cette fonctionnalité impliquera la perte de ces privilèges.
 
-Les articles effacés ne sont plus visible dans ce système, mais ces suppression sont journalisées et peuvent être restaurées manuellement par un administrateur de la base de donnée si vous avez fait une erreur.",
-'hiderevision-reason' => 'Motif (Sera journalisé séparément):',
+Les articles effacés ne sont plus visible dans ce système, mais ces suppressions sont journalisées et peuvent être restaurées manuellement par un administrateur de la base de données si vous avez fait une erreur.",
+'hiderevision-reason' => 'Motif (sera enregistré séparément) :',
 'hiderevision-submit' => 'Cacher cette donnée de manière permanente',
 // Tab displayed to allowed users on old revision display
 'hiderevision-tab' => 'Cacher la modification',
 // Status & errors on action
 'hiderevision-norevisions' => 'Aucune modification indiquée à supprimer.',
 'hiderevision-noreason' => 'Vous devez indiquer la raison précise de cette suppression.',
-'hiderevision-status' => 'Modification $1: $2',
+'hiderevision-status' => 'Modification $1 : $2',
 'hiderevision-success' => 'Archivé et supprimé avec succès.',
-'hiderevision-error-missing' => 'Non trouvé dans la base de donnée.',
-'hiderevision-error-current' => 'Ne peux supprimer la dernière révision dans une page. Faites une annulation d\'édition auparavant.',
-'hiderevision-error-delete' => 'Ne peut être archivé ; A-t-elle été déjà supprimée ?',
-'hiderevision-archive-status' => 'Modification supprimée de $1: $2',
+'hiderevision-error-missing' => 'Non trouvé dans la base de données.',
+'hiderevision-error-current' => 'Ne peut supprimer la dernière révision dans une page. Faites une annulation d’édition auparavant.',
+'hiderevision-error-delete' => 'Ne peut être archivé ; la page a peut-être été supprimée ?',
+'hiderevision-archive-status' => 'Modification supprimée de $1 : $2',
 // Logging
 'oversight-log-hiderev' => 'a supprimé une édition de $1',
 // Oversight review page

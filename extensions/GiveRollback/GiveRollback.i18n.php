@@ -56,6 +56,29 @@ function efGiveRollbackMessages() {
 'giverollback-logentrygrant' => 'erteilte das Zurücksetzen-Recht an [[$1]]',
 'giverollback-logentryrevoke' => 'entzog das Zurücksetzen-Recht von [[$1]]',
 ),
+
+/* French */
+'fr' => array(
+'giverollback' => 'Donner ou enlever les droits de révocation',
+'giverollback-header' => "'''Un bureaucrate local peut utiliser cette page pour donner ou enlever les droits de révocation (« revert ») à un compte utilisateur.'''<br />
+On peut l’utiliser pour autoriser des non-administrateurs à révoquer des vandalismes plus rapidement. Les bureaucrates ne devraient le faire qu’en accord avec les règles en vigueur.",
+'giverollback-username' => 'Nom d’utilisateur :',
+'giverollback-search' => 'Chercher',
+'giverollback-hasrb' => '[[User:$1|$1]] a les droits de révocation.',
+'giverollback-norb' => '[[User:$1|$1]] n’a pas les droits de révocation.',
+'giverollback-toonew' => '[[User:$1|$1]] est trop récent, et ne peut pas recevoir les droits de révocation.',
+'giverollback-sysop' => '[[User:$1|$1]] est un administrateur, et peut déjà révoquer les articles.',
+'giverollback-change' => 'Changer le statut :',
+'giverollback-grant' => 'Donner',
+'giverollback-revoke' => 'Enlever',
+'giverollback-comment' => 'Commentaire :',
+'giverollback-granted' => '[[User:$1|$1]] possède maintenant les droits de révocation.',
+'giverollback-revoked' => '[[User:$1|$1]] ne possède plus les droits de révocation.',
+'giverollback-logpage' => 'Historique des droits de révocation',
+'giverollback-logpagetext' => 'Cette page présente un journal du changement des droits de révocation.',
+'giverollback-logentrygrant' => 'a donné les droits de révocation à [[$1]]',
+'giverollback-logentryrevoke' => 'a enlevé les droits de révocation de [[$1]]',
+),
 	
 /* Indonesian (Ivan Lanin) */
 'id' => array(

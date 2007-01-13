@@ -35,11 +35,10 @@ $wgNewuserlogMessages['fi'] = array(
 	'newuserlog-create2-entry' => 'loi käyttäjätunnuksen tunnukselle $1',
 );
 $wgNewuserlogMessages['fr'] = array(
-	'newuserlogpage'           => 'Journal des nouveaux utilisateurs',
+	'newuserlogpage'           => 'Historique des créations de comptes',
 	'newuserlogpagetext'       => 'Voici le journal de création des nouveaux comptes utilisateurs',
-	'newuserlogentry'          => '', # For compatibility, don't translate this
 	'newuserlog-create-entry'  => 'Nouvel utilisateur',
-	'newuserlog-create2-entry' => 'Compte créé pour $1',
+	'newuserlog-create2-entry' => 'compte créé pour $1',
 );
 $wgNewuserlogMessages['he'] = array(
 	'newuserlogpage'           => 'יומן הרשמת משתמשים',

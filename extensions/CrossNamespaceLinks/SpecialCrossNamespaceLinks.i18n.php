@@ -27,6 +27,11 @@ $wgCrossNamespaceLinksMessages['fi'] = array(
 	'crossnamespacelinks-summary' => 'Alla on lista linkeistä, jotka osoittavat päänimiavaruudesta toiseen nimiavaruuteen — pois lukien linkit {{ns:special}}-, {{ns:talk}}-, {{ns:project}}- ja {{ns:template}}nimiavaruuksiin. Linkkejä muihin nimiavaruuksiin tulisi välttää.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|linkki|linkkiä}} nimiavaruuteen $3'
 );
+$wgCrossNamespaceLinksMessages['fr'] = array(
+	'crossnamespacelinks'         => 'Pages contenant des liens vers un autre espace de nom',
+	'crossnamespacelinks-summary' => 'Cette page fournit une liste des pages de l’espace de nom principal qui ont un lien vers un autre espace de nom (excepté pour les espaces de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), ce qui n’est recommandé.',
+	'crossnamespacelinkstext'     => '$1 : possède $2 {{PLURAL:$2|lien|liens}} vers l’espace « $3 »'
+);
 $wgCrossNamespaceLinksMessages['he'] = array(
 	'crossnamespacelinks'         => 'קישורים מדפי תוכן למרחבי שם אחרים',
 	'crossnamespacelinks-summary' => 'דף זה מספק רשימה של קישורים מדפים במרחב השם הראשי לדפים במרחבי שם אחרים (למעט מרחבי השם {{ns:special}}, {{ns:talk}}, {{ns:project}} ו{{ns:template}}), שאינם רצויים לשימוש.',

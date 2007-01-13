@@ -97,6 +97,90 @@ $wgDPL2Messages['en'] = array(
 	*/
 	'dpl2_articlecount' => 'There {{PLURAL:$1|is one article|are $1 articles}} in this heading.'
 );
+$wgDPL2Messages['fr'] = array(
+	/*
+		Debug
+	*/
+	// (FATAL) ERRORS
+	/**
+	 * $0: 'namespace' or 'notnamespace'
+	 * $1: wrong parameter given by user
+	 * $3: list of possible titles of namespaces (except pseudo-namespaces: Media, Special)
+	 */
+	'dpl2_debug_' . DPL2_ERR_WRONGNS => "ERREUR : Mauvais paramètre '$0' : '$1'! Aide :  <code>$0= <i>chaîne vide</i> (Principal)$3</code>. (Les équivalents avec des mots magiques sont aussi autorisés.)",
+	/**
+	 * $0: 'linksto' (left as $0 just in case the parameter is renamed in the future)
+	 * $1: wrong parameter given by user
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGLINKSTO => "ERREUR : Mauvais paramètre '$0' : '$1'! Aide :  <code>$0= <i>Nom complet de la page</i></code>. (Les mots magiques sont autorisés.)",
+	/**
+	 * $0: max number of categories that can be included
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOMANYCATS => 'ERREUR : Trop de catégories ! Maximum : $0. Aide : accroître <code>$wgDPL2MaxCategoryCount</code> pour autoriser plus de catégories ou régler <code>$wgDPL2AllowUnlimitedCategories=true</code> pour aucune limite. (À régler dans <code>LocalSettings.php</code>, après avoir inclus <code>DynamicPageList2.php</code>.)',
+	/**
+	 * $0: min number of categories that have to be included
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOFEWCATS => 'ERREUR : Pas assez de catégories ! Minimum : $0. Aide : décroître <code>$wgDPL2MinCategoryCount</code> pour autoriser moins de catégories. (À régler dans <code>LocalSettings.php</code> de préférence, après avoir inclus <code>DynamicPageList2.php</code>.)',
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTNOINCLUDEDCATS => "ERREUR : Vous devez inclure au moins une catégorie si vous voulez utiliser 'addfirstcategorydate=true' ou 'ordermethod=categoryadd' !",
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTMORETHAN1CAT => "ERREUR : Si vous incluez plus d’une catégorie, vous ne pouvez pas utiliser 'addfirstcategorydate=true' ou 'ordermethod=categoryadd' !",
+	'dpl2_debug_' . DPL2_ERR_MORETHAN1TYPEOFDATE => 'ERREUR : Vous ne pouvez pas utiliser plus d’un type de date à la fois !',
+	/**
+	 * $0: param=val that is possible only with $1 as last 'ordermethod' parameter
+	 * $1: last 'ordermethod' parameter required for $0
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "ERREUR : Vous ne pouvez utiliser '$0' qu’avec 'ordermethod=[...,]$1' !",
+	/**
+	 * $0: prefix_dpl_clview where 'prefix' is the prefix of your mediawiki table names
+	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
+	*/
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "ERREUR : Ne peut pas effectuer d’opérations logiques sur les pages sans catégories (avec la paramètre 'category') car la vue $0 n’existe pas dans la base de données ! Aide : demander à un administrateur de la base de données d'effectuer : <code>$1</code>.",
+	
+	// WARNINGS
+	/**
+	 * $0: unknown parameter given by user
+	 * $1: list of DPL2 available parameters separated by ', '
+	*/
+	'dpl2_debug_' . DPL2_WARN_UNKNOWNPARAM => "AVERTISSEMENT : Le paramètre inconnu '$0' est ignoré. Aide : paramètres disponibles : <code>$1</code>.",
+	/**
+	 * $3: list of valid param values separated by ' | '
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "AVERTISSEMENT : Mauvais paramètre '$0' : '$1'! Utilisation de la valeur par défaut : '$2'. Aide : <code>$0= $3</code>.",
+	/**
+	 * $0: param name
+	 * $1: wrong param value given by user
+	 * $2: default param value used instead by program
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "AVERTISSEMENT : Mauvais paramètre '$0' : '$1'! Utilisattion de la valeur par défaut : '$2' (aucune limite). Aide : <code>$0= <i>chaîne vide</i> (aucune limite) | n</code>, avec <code>n</code> un entier positif.",
+	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'AVERTISSEMENT : No results!',
+	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "AVERTISSEMENT : Les paramètres Add* ('adduser', 'addeditdate', etc.)' et 'includepage' n’ont aucun effet avec 'mode=category'. Seuls l’espace de nom et le titre de la page peuvent être vus dans ce mode..",
+	/**
+	 * $0: 'headingmode' value given by user
+	 * $1: value used instead by program (which means no heading)
+	*/
+	'dpl2_debug_' . DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD => "AVERTISSEMENT : 'headingmode=$0' has no effect with 'ordermethod' on a single component. Using: '$1'. Help: you can use not-$1 'headingmode' values with 'ordermethod' on multiple components. The first component is used for headings. E.g. 'ordermethod=category,<i>comp</i>' (<i>comp</i> is another component) for category headings.",
+	/**
+	 * $0: 'debug' value
+	*/
+	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "AVERTISSEMENT : 'debug=$0' n’est pas en première position dans l’élément DPL. Les nouveaux réglages de débuggage ne seront appliqués qu’après que les paramètres précédents aient été vérifiés.",
+	/**
+	 * $0: title of page that creates an infinite transclusion loop
+	*/
+	'dpl2_debug_' . DPL2_WARN_TRANSCLUSIONLOOP => "AVERTISSEMENT : Une boucle d’inclusion infinie est créée par la page '$0'.",
+
+	// OTHERS
+	/**
+	 * $0: SQL query executed to generate the dynamic page list
+	*/
+	'dpl2_debug_' . DPL2_QUERY => 'REQUÊTE : <code>$0</code>',
+
+	/*
+	   Output formatting
+	*/
+	/**
+	 * $1: number of articles
+	*/
+	'dpl2_articlecount' => 'Il y a {{PLURAL:$1|un article|$1 articles}} dans cette section.'
+);
 $wgDPL2Messages['he'] = array(
 	/*
 		Debug

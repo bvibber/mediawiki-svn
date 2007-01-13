@@ -84,9 +84,9 @@ $wgLinkSearchMessages['pt'] = array(
 $wgLinkSearchMessages['pt'] = $wgLinkSearchMessages['pt-br'];
 $wgLinkSearchMessages['fr'] = array(
 	'linksearch'	   => 'Rechercher des liens internet',
-	'linksearch-text'  => 'Des caractères joker peuvent être utilisés, par exemple "*.wikipedia.org".',
-	'linksearch-line'  => '$1 lié depuis $2',
-	'linksearch-error' => 'Les jokers ne peuvent être utilisés qu\'au début du nom de domaine.'
+	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères « jokers » peuvent être utilisés, par exemple "*.wikipedia.org".',
+	'linksearch-line'  => '$1 avec un lien à partir de $2',
+	'linksearch-error' => 'Les caractères « jokers » ne peuvent être utilisés qu’au début du nom de domaine.'
 );
 $wgLinkSearchMessages['ru'] = array(
 	'linksearch'       => 'Поиск внешних ссылок',

@@ -29,8 +29,8 @@ $wgFilepathMessages['fi'] = array(
 	'filepath_submit' => 'Osoite',
 );
 $wgFilepathMessages['fr'] = array(
-	'filepath'        => 'Chemin complet',
-	'filepath_page'   => 'Fichier:',
+	'filepath'        => 'Chemin d’un fichier',
+	'filepath_page'   => 'Fichier :',
 	'filepath_submit' => 'Chemin',
 );
 $wgFilepathMessages['he'] = array(

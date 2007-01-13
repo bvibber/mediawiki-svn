@@ -39,6 +39,20 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'Die Seite $1 ist nicht vorhanden.',
 ),
 
+/* French */
+'fr' => array(
+'contributors' => 'Contributeurs',
+'contributors-toolbox' => 'Principaux contributeurs',
+'contributors-legend' => 'Lister les principaux contributeurs de l’article',
+'contributors-target' => 'Titre :',
+'contributors-submit' => 'Montrer',
+'contributors-subtitle' => 'Principaux contributeurs de $1',
+'contributors-others-long' => 'Il y a $1 autres contributeurs pour cette page.',
+'contributors-others' => 'et $1 autres',
+'contributors-badtitle' => 'Titre incorrect.',
+'contributors-nosuchpage' => 'L’article $1 n’existe pas.',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'contributors' => 'Kontributor utama',
