@@ -1,10 +1,13 @@
-#include "LogProcessor.h"
 #include <stdio.h>
+#include <iostream>
+#include "LogProcessor.h"
+#include "Udp2LogConfig.h"
+
 //---------------------------------------------------------------------------
 // FileProcessor
 //---------------------------------------------------------------------------
 
-virtual LogProcessor * FileProcessor::NewFromConfig(char * params)
+LogProcessor * FileProcessor::NewFromConfig(char * params)
 {
 	char * strFactor = strtok(params, " \t");
 	if (strFactor == NULL) {
@@ -18,20 +21,21 @@ virtual LogProcessor * FileProcessor::NewFromConfig(char * params)
 			"Invalid sample factor in file specification, must be a number greater than zero"
 		);
 	}
-	char * filename = strtok(params, "");
-	FileProcessor * fp = new FileProcessor(filename);
+	char * filename = strtok(NULL, "");
+	FileProcessor * fp = new FileProcessor(filename, factor);
 	if (!fp->IsOpen()) {
 		delete fp;
 		throw ConfigError("Unable to open file");
 	}
+	std::cerr << "Opened log file " << filename << " with sampling factor " << factor << std::endl;
 	return (LogProcessor*)fp;
 }
 
-virtual void FileProcessor::ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address)
+void FileProcessor::ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address)
 {
 	if (Sample()) {
-		buffer[size] = '\n';
-		f.write(buffer, size + 1);
+		f.write(buffer, size);
+		f.flush();
 	}
 }
 
@@ -39,7 +43,7 @@ virtual void FileProcessor::ProcessLine(char *buffer, size_t size, boost::shared
 // PipeProcessor
 //---------------------------------------------------------------------------
 
-virtual LogProcessor * PipeProcessor::NewFromConfig(char * params)
+LogProcessor * PipeProcessor::NewFromConfig(char * params)
 {
 	char * strFactor = strtok(params, " \t");
 	if (strFactor == NULL) {
@@ -53,20 +57,21 @@ virtual LogProcessor * PipeProcessor::NewFromConfig(char * params)
 			"Invalid sample factor in pipe specification, must be a number greater than zero"
 		);
 	}
-	char * command = strtok(params, "");
-	PipeProcessor * pp = new PipeProcessor(command);
+	char * command = strtok(NULL, "");
+	PipeProcessor * pp = new PipeProcessor(command, factor);
 	if (!pp->IsOpen()) {
 		delete pp;
 		throw ConfigError("Unable to open pipe");
 	}
+	std::cerr << "Opened pipe with factor " << factor << ": " << command << std::endl;
 	return (LogProcessor*)pp;
 }
 
-virtual void PipeProcessor::ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address)
+void PipeProcessor::ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address)
 {
 	if (Sample()) {
-		buffer[size] = '\n';
 		fwrite(buffer, 1, size, f);
+		fflush(f);
 	}
 }
 

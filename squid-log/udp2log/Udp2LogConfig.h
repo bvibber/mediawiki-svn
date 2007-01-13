@@ -2,7 +2,7 @@
 #define UDP2LOGCONFIG_H
 
 #include <string>
-#include <boost/ptr_vector.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
 #include <stdexcept>
 #include "LogProcessor.h"
 
@@ -10,19 +10,14 @@ class Udp2LogConfig
 {
 public:
 	Udp2LogConfig();
-	~Udp2LogConfig();
 	void Open(const std::string & name);
 	void Load();
+	void Reload();
 	void ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address);
 
 	std::string fileName;
 	boost::ptr_vector<LogProcessor> processors;
-	std::auto_ptr<boost::thread> watcherThread;
 	bool reload;
-	bool die;
-protected:
-	void WatchConfig();
-	void StartWatcherThread();
 };
 
 class ConfigWatcher
@@ -36,9 +31,10 @@ public:
 
 class ConfigError : public std::runtime_error
 {
+public:
 	ConfigError(const char * s) 
 		: runtime_error(s)
 	{}
-}
+};
 
 #endif

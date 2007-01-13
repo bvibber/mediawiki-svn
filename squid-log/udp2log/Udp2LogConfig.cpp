@@ -1,29 +1,18 @@
-#include <inotifytools/inotifytools.h>
-#include <inotifytools/inotify.h>
 #include <fstream>
 #include <cstring>
-#include <functional>
 #include <sstream>
 
 #include "Udp2LogConfig.h"
 
 Udp2LogConfig::Udp2LogConfig() 
-	: reload(false), die(false)
+	: reload(false)
 {}
-
-Udp2LogConfig::~Udp2LogConfig() {
-	die = true;
-	if (watcherThread.get()) {
-		watcherThread->join();
-	}
-}
 
 void Udp2LogConfig::Open(const std::string & name)
 {	
 	using namespace std;
 	fileName = name;
 	Load();
-	StartWatcherThread();
 }
 
 void Udp2LogConfig::Load()
@@ -43,7 +32,7 @@ void Udp2LogConfig::Load()
 	int lineNum = 1;
 	try {
 		// Parse all lines
-		for (f.get(line, maxLineSize); f.good(); f.get(line, maxLineSize), lineNum++) {
+		for (f.getline(line, maxLineSize); f.good(); f.getline(line, maxLineSize), lineNum++) {
 			if (line[0] == '#') {
 				continue;
 			}
@@ -93,23 +82,3 @@ void Udp2LogConfig::ProcessLine(char *buffer, size_t size, boost::shared_ptr<Soc
 	}
 }
 
-void Udp2LogConfig::StartWatcherThread() 
-{
-	watcherThread = new boost::thread(
-		std::bind1st(std::mem_fun(&Udp2LogConfig::WatchConfig), this));
-}
-
-void Udp2LogConfig::WatchConfig()
-{
-	static inotifyInitialised = false;
-	if (!inotifyInitialised) {
-		inotifytools_initialize();
-	}
-	inotifytools_watch_file(fileName.c_str(), IN_CLOSE_WRITE);
-	
-	while (!die) {
-		if (inotifytools_next_event(1)) {
-			reload = true;
-		}
-	}
-}

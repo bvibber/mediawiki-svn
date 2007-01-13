@@ -1,21 +1,26 @@
 #ifndef LOGPROCESSOR_H
 #define LOGPROCESSOR_H
 
+#include <fstream>
+#include <boost/shared_ptr.hpp>
+#include "../Socket.h"
+
 class LogProcessor
 {
 public:
-	virtual LogProcessor * NewFromConfig(char * params) = 0;
 	virtual void ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address) = 0;
+	virtual ~LogProcessor() {}
 
 protected:
-	LogProcessor()
-		: counter(0), factor(1)
+	LogProcessor(int factor_)
+		: counter(0), factor(factor_)
 	{}
+
 
 	bool Sample() {
 		if (factor != 1) {
 			counter++;
-			if (counter == factor) {
+			if (counter >= factor) {
 				counter = 0;
 				return true;
 			} else {
@@ -33,27 +38,30 @@ protected:
 class FileProcessor : public LogProcessor
 {
 public:
-	virtual void LogProcessor * NewFromConfig(char * params);
+	static LogProcessor * NewFromConfig(char * params);
 	virtual void ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address);
 
-	FileProcessor(char * filename) {
-		f.open(filename, std::ios::ate | std::ios::out);
+	FileProcessor(char * filename, int factor_) 
+		: LogProcessor(factor_)
+	{
+		f.open(filename, std::ios::app | std::ios::out);
 	}
 	
 	bool IsOpen() {
 		return f.good();
 	}
 
-	ofstream f;
+	std::ofstream f;
 };
 
 class PipeProcessor : public LogProcessor
 {
 public:
-	virtual void LogProcessor * NewFromConfig(char * params);
+	static LogProcessor * NewFromConfig(char * params);
 	virtual void ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address);
 
-	PipeProcessor(char * command) 
+	PipeProcessor(char * command, int factor_) 
+		: LogProcessor(factor_)
 	{
 		f = popen(command, "w");
 	}

@@ -5,26 +5,35 @@
 #include <boost/program_options.hpp>
 #include <string>
 #include <boost/shared_ptr.hpp>
-#include "Socket.h"
+#include <signal.h>
+#include "../Socket.h"
+#include "Udp2LogConfig.h"
+
 
 std::string configFileName("/etc/udp2log");
 
 Udp2LogConfig config;
 
+void OnHangup(int) 
+{
+	config.reload = true;
+}
+
 int main(int argc, char** argv)
 {
 	using namespace std;
+	using namespace boost::program_options;
 	unsigned int port = 8420;
 	
 	options_description optDesc;
 	optDesc.add_options()
 		("port,p", value<unsigned int>(&port)->default_value(port), "port")
 		("config-file,f", value<string>(&configFileName)->default_value(configFileName), 
-		 	"config file location" )
+		 	"config file location" );
 
 	try {
 		variables_map vm;
-		store(command_line_parser(argc, argv).options(optDesc).positional(posDesc).run(), vm);
+		store(command_line_parser(argc, argv).options(optDesc).run(), vm);
 		notify(vm);   
 	} catch (exception & e) {
 		cerr << e.what() << endl;
@@ -43,6 +52,8 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
+	signal(SIGHUP, OnHangup);
+
 	IPAddress any(INADDR_ANY);
 	SocketAddress saddr(any, (unsigned short int)port);
 	UDPSocket socket;
@@ -53,14 +64,22 @@ int main(int argc, char** argv)
 	socket.Bind(saddr);
 
 	boost::shared_ptr<SocketAddress> address;
-	const size_t bufSize = 65535;
+	const size_t bufSize = 70000;
 	char buffer[bufSize];
 	for (;;) {
 		ssize_t bytesRead = socket.RecvFrom(buffer, bufSize, address);
 		if (bytesRead > 0) {
+			string prefix = address->ToString() + " ";
+			if (prefix.size() + bytesRead >= bufSize - 1) {
+				cerr << "udp2log: Packet too large" << endl;
+				continue;
+			}
+
+			memmove(buffer + prefix.size(), buffer, bytesRead);
+			memcpy(buffer, prefix.data(), prefix.size());
 			try {
 				config.Reload();
-				config.ProcessPacket(buffer, bytesRead, address);
+				config.ProcessLine(buffer, bytesRead + prefix.size(), address);
 			} catch (runtime_error & e) {
 				cerr << e.what() << endl;
 			}
