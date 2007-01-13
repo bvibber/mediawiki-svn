@@ -197,6 +197,7 @@ class CheckStorage
 					array( 'old_id IN (' . implode( ',', $objectRevs ) . ')' ), $fname );
 				while ( $row = $dbr->fetchObject( $res ) ) {
 					$oldId = $row->old_id;
+					$matches = array();
 					if ( !preg_match( '/^O:(\d+):"(\w+)"/', $row->header, $matches ) ) {
 						$this->error( 'restore text', "Error: invalid object header", $oldId );
 						continue;
@@ -454,6 +455,7 @@ class CheckStorage
 		$flags = Revision::compressRevisionText( $text );
 
 		// Update the text row
+		$dbw =& wfGetDB( DB_MASTER );
 		$dbw->update( 'text', 
 			array( 'old_flags' => $flags, 'old_text' => $text ),
 			array( 'old_id' => $oldId ),

@@ -70,9 +70,8 @@ class WatchlistCleanup extends FiveUpgrade {
 		$estimatedTotalTime = $delta / $portion;
 		$eta = $this->startTime + $estimatedTotalTime;
 
-		global $wgDBname;
 		printf( "%s %s: %6.2f%% done on %s; ETA %s [%d/%d] %.2f/sec <%.2f%% updated>\n",
-			$wgDBname,
+			wfWikiID(),
 			wfTimestamp( TS_DB, intval( $now ) ),
 			$portion * 100.0,
 			$this->table,
@@ -96,15 +95,13 @@ class WatchlistCleanup extends FiveUpgrade {
 		$result = $this->dbr->query( $sql, $fname );
 
 		while( $row = $this->dbr->fetchObject( $result ) ) {
-			$updated = call_user_func( $callback, $row );
+			call_user_func( $callback, $row );
 		}
 		$this->log( "Finished $table... $this->updated of $this->processed rows updated" );
 		$this->dbr->freeResult( $result );
 	}
 
 	function processEntry( $row ) {
-		global $wgContLang;
-
 		$current = Title::makeTitle( $row->wl_namespace, $row->wl_title );
 		$display = $current->getPrefixedText();
 

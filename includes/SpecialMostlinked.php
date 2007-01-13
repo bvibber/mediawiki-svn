@@ -13,9 +13,6 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-/* */
-require_once 'QueryPage.php';
-
 /**
  * @package MediaWiki
  * @subpackage SpecialPage
@@ -31,7 +28,7 @@ class MostlinkedPage extends QueryPage {
 	 */
 	function getSQL() {
 		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'pagelinks', 'page' ) );
+		list( $pagelinks, $page ) = $dbr->tableNamesN( 'pagelinks', 'page' );
 		return
 			"SELECT 'Mostlinked' AS type,
 				pl_namespace AS namespace,
@@ -40,19 +37,19 @@ class MostlinkedPage extends QueryPage {
 				page_namespace
 			FROM $pagelinks
 			LEFT JOIN $page ON pl_namespace=page_namespace AND pl_title=page_title
-			GROUP BY pl_namespace,pl_title
+			GROUP BY 1,2,3,5
 			HAVING COUNT(*) > 1";
 	}
 
 	/**
 	 * Pre-fill the link cache
 	 */
-	function preprocessResults( &$dbr, $res ) {
-		if( $dbr->numRows( $res ) > 0 ) {
+	function preprocessResults( &$db, &$res ) {
+		if( $db->numRows( $res ) > 0 ) {
 			$linkBatch = new LinkBatch();
-			while( $row = $dbr->fetchObject( $res ) )
+			while( $row = $db->fetchObject( $res ) )
 				$linkBatch->addObj( Title::makeTitleSafe( $row->namespace, $row->title ) );
-			$dbr->dataSeek( $res, 0 );
+			$db->dataSeek( $res, 0 );
 			$linkBatch->execute();
 		}
 	}
@@ -65,8 +62,8 @@ class MostlinkedPage extends QueryPage {
 	 * @return string
 	 */
 	function makeWlhLink( &$title, $caption, &$skin ) {
-		$wlh = Title::makeTitle( NS_SPECIAL, 'Whatlinkshere' );
-		return $skin->makeKnownLinkObj( $wlh, $caption, 'target=' . $title->getPrefixedUrl() );
+		$wlh = SpecialPage::getTitleFor( 'Whatlinkshere', $title->getPrefixedDBkey() );
+		return $skin->makeKnownLinkObj( $wlh, $caption );
 	}
 
 	/**
@@ -80,8 +77,9 @@ class MostlinkedPage extends QueryPage {
 		global $wgLang;
 		$title = Title::makeTitleSafe( $result->namespace, $result->title );
 		$link = $skin->makeLinkObj( $title );
-		$wlh = $this->makeWlhLink( $title, wfMsgHtml( 'nlinks',
-			$wgLang->formatNum( $result->value ) ), $skin );
+		$wlh = $this->makeWlhLink( $title,
+			wfMsgExt( 'nlinks', array( 'parsemag', 'escape'),
+				$wgLang->formatNum( $result->value ) ), $skin );
 		return wfSpecialList( $link, $wlh );
 	}
 }

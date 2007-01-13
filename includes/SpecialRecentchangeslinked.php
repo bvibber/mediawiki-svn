@@ -44,11 +44,9 @@ function wfSpecialRecentchangeslinked( $par = NULL ) {
 	$wgOut->setSubtitle( htmlspecialchars( wfMsg( 'rclsub', $nt->getPrefixedText() ) ) );
 
 	if ( ! $days ) {
-		$days = $wgUser->getOption( 'rcdays' );
-		if ( ! $days ) { $days = 7; }
+		$days = (int)$wgUser->getOption( 'rcdays', 7 );
 	}
-	$days = (int)$days;
-	list( $limit, $offset ) = wfCheckLimits( 100, 'rclimit' );
+	list( $limit, /* offset */ ) = wfCheckLimits( 100, 'rclimit' );
 
 	$dbr =& wfGetDB( DB_SLAVE );
 	$cutoff = $dbr->timestamp( time() - ( $days * 86400 ) );
@@ -67,9 +65,18 @@ function wfSpecialRecentchangeslinked( $par = NULL ) {
 		$cmq = 'AND rc_minor=0';
 	} else { $cmq = ''; }
 
-	extract( $dbr->tableNames( 'recentchanges', 'categorylinks', 'pagelinks', 'revision', 'page' , "watchlist" ) );
+	list($recentchanges, $categorylinks, $pagelinks, $watchlist) = 
+	    $dbr->tableNamesN( 'recentchanges', 'categorylinks', 'pagelinks', "watchlist" );
 
 	$uid = $wgUser->getID();
+
+	$GROUPBY = "
+	GROUP BY rc_cur_id,rc_namespace,rc_title,
+		rc_user,rc_comment,rc_user_text,rc_timestamp,rc_minor,
+		rc_new, rc_id, rc_this_oldid, rc_last_oldid, rc_bot, rc_patrolled, rc_type, rc_old_len, rc_new_len
+" . ($uid ? ",wl_user" : "") . "
+		ORDER BY rc_timestamp DESC
+	LIMIT {$limit}";
 
 	// If target is a Category, use categorylinks and invert from and to
 	if( $nt->getNamespace() == NS_CATEGORY ) {
@@ -86,9 +93,12 @@ function wfSpecialRecentchangeslinked( $par = NULL ) {
 				rc_user_text,
 				rc_timestamp,
 				rc_minor,
+				rc_bot,
 				rc_new,
 				rc_patrolled,
-				rc_type
+				rc_type,
+				rc_old_len,
+				rc_new_len
 " . ($uid ? ",wl_user" : "") . "
 	    FROM $categorylinks, $recentchanges
 " . ($uid ? "LEFT OUTER JOIN $watchlist ON wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace " : "") . "
@@ -96,11 +106,7 @@ function wfSpecialRecentchangeslinked( $par = NULL ) {
 	     {$cmq}
 	     AND cl_from=rc_cur_id
 	     AND cl_to=$catkey
-	GROUP BY rc_cur_id,rc_namespace,rc_title,
-	 	rc_user,rc_comment,rc_user_text,rc_timestamp,rc_minor,
-	 	rc_new
-		ORDER BY rc_timestamp DESC
-	LIMIT {$limit};
+$GROUPBY
  ";
 	} else {
 		$sql =
@@ -116,9 +122,12 @@ function wfSpecialRecentchangeslinked( $par = NULL ) {
 			rc_last_oldid,
 			rc_timestamp,
 			rc_minor,
+			rc_bot,
 			rc_new,
 			rc_patrolled,
-			rc_type
+			rc_type,
+			rc_old_len,
+			rc_new_len
 " . ($uid ? ",wl_user" : "") . "
    FROM $pagelinks, $recentchanges
 " . ($uid ? " LEFT OUTER JOIN $watchlist ON wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace " : "") . "
@@ -127,11 +136,8 @@ function wfSpecialRecentchangeslinked( $par = NULL ) {
      AND pl_namespace=rc_namespace
      AND pl_title=rc_title
      AND pl_from=$id
-GROUP BY rc_cur_id,rc_namespace,rc_title,
-	 rc_user,rc_comment,rc_user_text,rc_timestamp,rc_minor,
-	 rc_new
-ORDER BY rc_timestamp DESC
-   LIMIT {$limit}";
+$GROUPBY
+";
 	}
 	$res = $dbr->query( $sql, $fname );
 
@@ -154,9 +160,6 @@ ORDER BY rc_timestamp DESC
 		if ( 0 == $count ) { break; }
 		$obj = $dbr->fetchObject( $res );
 		--$count;
-#		print_r ( $obj ) ;
-#		print "<br/>\n" ;
-
 		$rc = RecentChange::newFromRow( $obj );
 		$rc->counter = $counter++;
 		$s .= $list->recentChangesLine( $rc , !empty( $obj->wl_user) );

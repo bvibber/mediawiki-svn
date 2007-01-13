@@ -65,9 +65,10 @@ function showDiffs( $a, $b ) {
 	$ota = explode( "\n", str_replace( "\r\n", "\n", $a ) );
 	$nta = explode( "\n", str_replace( "\r\n", "\n", $b ) );
 
-	$diffs =& new Diff( $ota, $nta );
-	$formatter =& new TableDiffFormatter();
+	$diffs = new Diff( $ota, $nta );
+	$formatter = new TableDiffFormatter();
 	$funky = $formatter->format( $diffs );
+	$matches = array();
 	preg_match_all( '/<span class="diffchange">(.*?)<\/span>/', $funky, $matches );
 	foreach( $matches[1] as $bit ) {
 		$hex = bin2hex( $bit );

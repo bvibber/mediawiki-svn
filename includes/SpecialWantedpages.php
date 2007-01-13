@@ -7,11 +7,6 @@
 
 /**
  *
- */
-require_once 'QueryPage.php';
-
-/**
- *
  * @package MediaWiki
  * @subpackage SpecialPage
  */
@@ -49,8 +44,9 @@ class WantedPagesPage extends QueryPage {
 			 LEFT JOIN $page AS pg2
 			 ON pl_from = pg2.page_id
 			 WHERE pg1.page_namespace IS NULL
+			 AND pl_namespace NOT IN ( 2, 3 )
 			 AND pg2.page_namespace != 8
-			 GROUP BY pl_namespace, pl_title
+			 GROUP BY 1,2,3
 			 HAVING COUNT(*) > $count";
 	}
 
@@ -81,8 +77,8 @@ class WantedPagesPage extends QueryPage {
 				# Make a redlink
 				$pageLink = $skin->makeBrokenLinkObj( $title );
 			} else {
-				# Make a struck-out blue link
-				$pageLink = "<s>" . $skin->makeKnownLinkObj( $title ) . "</s>";
+				# Make a a struck-out normal link
+				$pageLink = "<s>" . $skin->makeLinkObj( $title ) . "</s>";
 			}		
 		} else {
 			# Not cached? Don't bother checking existence; it can't
@@ -91,8 +87,9 @@ class WantedPagesPage extends QueryPage {
 		
 		# Make a link to "what links here" if it's required
 		$wlhLink = $this->nlinks
-					? $this->makeWlhLink( $title, $skin, wfMsgHtml( 'nlinks',
-							$wgLang->formatNum( $result->value ) ) )
+					? $this->makeWlhLink( $title, $skin,
+							wfMsgExt( 'nlinks', array( 'parsemag', 'escape'),
+								$wgLang->formatNum( $result->value ) ) )
 					: null;
 					
 		return wfSpecialList($pageLink, $wlhLink);
@@ -106,7 +103,7 @@ class WantedPagesPage extends QueryPage {
 	 * @return string
 	 */
 	function makeWlhLink( &$title, &$skin, $text ) {
-		$wlhTitle = Title::makeTitle( NS_SPECIAL, 'Whatlinkshere' );
+		$wlhTitle = SpecialPage::getTitleFor( 'Whatlinkshere' );
 		return $skin->makeKnownLinkObj( $wlhTitle, $text, 'target=' . $title->getPrefixedUrl() );
 	}
 	

@@ -43,13 +43,13 @@ class WhatLinksHerePage {
 		$targetString = isset($this->par) ? $this->par : $this->request->getVal( 'target' );
 
 		if (is_null($targetString)) {
-			$wgOut->errorpage( 'notargettitle', 'notargettext' );
+			$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
 			return;
 		}
 
 		$this->target = Title::newFromURL( $targetString );
 		if( !$this->target ) {
-			$wgOut->errorpage( 'notargettitle', 'notargettext' );
+			$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
 			return;
 		}
 		$this->selfTitle = Title::makeTitleSafe( NS_SPECIAL,
@@ -57,9 +57,7 @@ class WhatLinksHerePage {
 		$wgOut->setPagetitle( $this->target->getPrefixedText() );
 		$wgOut->setSubtitle( wfMsg( 'linklistsub' ) );
 
-		$isredir = ' (' . wfMsg( 'isredirect' ) . ")\n";
-
-		$wgOut->addHTML('&lt; '.$this->skin->makeLinkObj($this->target, '', 'redirect=no' )."<br />\n");
+		$wgOut->addHTML( wfMsg( 'whatlinkshere-barrow' ) . ' '  .$this->skin->makeLinkObj($this->target, '', 'redirect=no' )."<br />\n");
 
 		$this->showIndirectLinks( 0, $this->target, $this->limit, $this->from, $this->dir );
 	}
@@ -70,15 +68,13 @@ class WhatLinksHerePage {
 	 * @param int       $limit      Number of entries to display
 	 * @param Title     $from       Display from this article ID
 	 * @param string    $dir        'next' or 'prev', whether $fromTitle is the start or end of the list
-	 * @access private
+	 * @private
 	 */
 	function showIndirectLinks( $level, $target, $limit, $from = 0, $dir = 'next' ) {
 		global $wgOut;
 		$fname = 'WhatLinksHerePage::showIndirectLinks';
 
 		$dbr =& wfGetDB( DB_READ );
-
-		extract( $dbr->tableNames( 'pagelinks', 'templatelinks', 'page' ) );
 
 		// Some extra validation
 		$from = intval( $from );
@@ -128,7 +124,7 @@ class WhatLinksHerePage {
 
 		if ( !$dbr->numRows( $plRes ) && !$dbr->numRows( $tlRes ) ) {
 			if ( 0 == $level ) {
-				$wgOut->addWikiText( wfMsg( 'nolinkshere' ) );
+				$wgOut->addWikiText( wfMsg( 'nolinkshere', $this->target->getPrefixedText() ) );
 			}
 			return;
 		}
@@ -187,7 +183,7 @@ class WhatLinksHerePage {
 		}
 
 		if ( 0 == $level ) {
-			$wgOut->addWikiText( wfMsg( 'linkshere' ) );
+			$wgOut->addWikiText( wfMsg( 'linkshere', $this->target->getPrefixedText() ) );
 		}
 		$isredir = wfMsg( 'isredirect' );
 		$istemplate = wfMsg( 'istemplate' );

@@ -25,6 +25,7 @@
 class ProtectionForm {
 	var $mRestrictions = array();
 	var $mReason = '';
+	var $mCascade = false;
 
 	function ProtectionForm( &$article ) {
 		global $wgRequest, $wgUser;
@@ -38,6 +39,8 @@ class ProtectionForm {
 				// but the db allows multiples separated by commas.
 				$this->mRestrictions[$action] = implode( '', $this->mTitle->getRestrictions( $action ) );
 			}
+
+			$this->mCascade = $this->mTitle->areRestrictionsCascading();
 		}
 
 		// The form will be available in read-only to show levels.
@@ -48,6 +51,7 @@ class ProtectionForm {
 
 		if( $wgRequest->wasPosted() ) {
 			$this->mReason = $wgRequest->getText( 'mwProtect-reason' );
+			$this->mCascade = $wgRequest->getBool( 'mwProtect-cascade' );
 			foreach( $wgRestrictionTypes as $action ) {
 				$val = $wgRequest->getVal( "mwProtect-level-$action" );
 				if( isset( $val ) && in_array( $val, $wgRestrictionLevels ) ) {
@@ -65,8 +69,22 @@ class ProtectionForm {
 		if( is_null( $this->mTitle ) ||
 			!$this->mTitle->exists() ||
 			$this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
-			$wgOut->fatalError( wfMsg( 'badarticleerror' ) );
+			$wgOut->showFatalError( wfMsg( 'badarticleerror' ) );
 			return;
+		}
+
+		$cascadeSources = $this->mTitle->getCascadeProtectionSources();
+
+		if ( $cascadeSources && count($cascadeSources) > 0 ) {
+			$titles = '';
+
+			foreach ( $cascadeSources as $title ) {
+				$titles .= '* [[:' . $title->getPrefixedText() . "]]\n";
+			}
+
+			$notice = wfMsg( 'protect-cascadeon' ) . "\r\n$titles";
+
+			$wgOut->addWikiText( $notice );
 		}
 
 		if( $this->save() ) {
@@ -79,7 +97,7 @@ class ProtectionForm {
 
 		$wgOut->addWikiText(
 			wfMsg( $this->disabled ? "protect-viewtext" : "protect-text",
-				$this->mTitle->getPrefixedText() ) );
+				wfEscapeWikiText( $this->mTitle->getPrefixedText() ) ) );
 
 		$wgOut->addHTML( $this->buildForm() );
 
@@ -98,13 +116,12 @@ class ProtectionForm {
 
 		$token = $wgRequest->getVal( 'wpEditToken' );
 		if( !$wgUser->matchEditToken( $token ) ) {
-			$wgOut->fatalError( wfMsg( 'sessionfailure' ) );
-			return false;
+			throw new FatalError( wfMsg( 'sessionfailure' ) );
 		}
 
-		$ok = $this->mArticle->updateRestrictions( $this->mRestrictions, $this->mReason );
+		$ok = $this->mArticle->updateRestrictions( $this->mRestrictions, $this->mReason, $this->mCascade );
 		if( !$ok ) {
-			$wgOut->fatalError( "Unknown error at restriction save time." );
+			throw new FatalError( "Unknown error at restriction save time." );
 		}
 		return $ok;
 	}
@@ -148,6 +165,11 @@ class ProtectionForm {
 
 		$out .= "</tbody>\n";
 		$out .= "</table>\n";
+
+		global $wgEnableCascadingProtection;
+
+		if ($wgEnableCascadingProtection)
+			$out .= $this->buildCascadeInput();
 
 		if( !$this->disabled ) {
 			$out .= "<table>\n";
@@ -206,6 +228,13 @@ class ProtectionForm {
 				'id' => $id ) );
 	}
 
+	function buildCascadeInput() {
+		$id = 'mwProtect-cascade';
+		$ci = wfCheckLabel( wfMsg( 'protect-cascade' ), $id, $id, $this->mCascade, $this->disabledAttrib);
+		
+		return $ci;
+	}
+
 	function buildSubmit() {
 		return wfElement( 'input', array(
 			'type' => 'submit',
@@ -213,9 +242,9 @@ class ProtectionForm {
 	}
 
 	function buildScript() {
-		global $wgStylePath;
+		global $wgStylePath, $wgStyleVersion;
 		return '<script type="text/javascript" src="' .
-			htmlspecialchars( $wgStylePath . "/common/protect.js" ) .
+			htmlspecialchars( $wgStylePath . "/common/protect.js?$wgStyleVersion" ) .
 			'"></script>';
 	}
 
@@ -231,7 +260,6 @@ class ProtectionForm {
 	function showLogExtract( &$out ) {
 		# Show relevant lines from the deletion log:
 		$out->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'protect' ) ) . "</h2>\n" );
-		require_once( 'SpecialLog.php' );
 		$logViewer = new LogViewer(
 			new LogReader(
 				new FauxRequest(

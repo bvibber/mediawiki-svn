@@ -28,11 +28,11 @@
  */
 function wfSpecialLog( $par = '' ) {
 	global $wgRequest;
-	$logReader =& new LogReader( $wgRequest );
+	$logReader = new LogReader( $wgRequest );
 	if( $wgRequest->getVal( 'type' ) == '' && $par != '' ) {
 		$logReader->limitType( $par );
 	}
-	$logViewer =& new LogViewer( $logReader );
+	$logViewer = new LogViewer( $logReader );
 	$logViewer->show();
 }
 
@@ -56,7 +56,7 @@ class LogReader {
 	/**
 	 * Basic setup and applies the limiting factors from the WebRequest object.
 	 * @param WebRequest $request
-	 * @access private
+	 * @private
 	 */
 	function setupQuery( $request ) {
 		$page = $this->db->tableName( 'page' );
@@ -78,7 +78,7 @@ class LogReader {
 	/**
 	 * Set the log reader to return only entries of the given type.
 	 * @param string $type A log type ('upload', 'delete', etc)
-	 * @access private
+	 * @private
 	 */
 	function limitType( $type ) {
 		if( empty( $type ) ) {
@@ -92,12 +92,12 @@ class LogReader {
 	/**
 	 * Set the log reader to return only entries by the given user.
 	 * @param string $name (In)valid user name
-	 * @access private
+	 * @private
 	 */
 	function limitUser( $name ) {
 		if ( $name == '' )
 			return false;
-		$usertitle = Title::makeTitle( NS_USER, $name );
+		$usertitle = Title::makeTitleSafe( NS_USER, $name );
 		if ( is_null( $usertitle ) )
 			return false;
 		$this->user = $usertitle->getText();
@@ -116,7 +116,7 @@ class LogReader {
 	 * Set the log reader to return only entries affecting the given page.
 	 * (For the block and rights logs, this is a user page.)
 	 * @param string $page Title name as text
-	 * @access private
+	 * @private
 	 */
 	function limitTitle( $page ) {
 		$title = Title::newFromText( $page );
@@ -133,7 +133,7 @@ class LogReader {
 	 * Set the log reader to return only entries in a given time range.
 	 * @param string $time Timestamp of one endpoint
 	 * @param string $direction either ">=" or "<=" operators
-	 * @access private
+	 * @private
 	 */
 	function limitTime( $time, $direction ) {
 		# Direction should be a comparison operator
@@ -147,11 +147,10 @@ class LogReader {
 	/**
 	 * Build an SQL query from all the set parameters.
 	 * @return string the SQL query
-	 * @access private
+	 * @private
 	 */
 	function getQuery() {
 		$logging = $this->db->tableName( "logging" );
-		$user = $this->db->tableName( 'user' );
 		$sql = "SELECT /*! STRAIGHT_JOIN */ log_type, log_action, log_timestamp,
 			log_user, user_name,
 			log_namespace, log_title, page_id,
@@ -253,8 +252,8 @@ class LogViewer {
 		$batch = new LinkBatch;
 		while ( $s = $result->fetchObject() ) {
 			// User link
-			$title = Title::makeTitleSafe( NS_USER, $s->user_name );
-			$batch->addObj( $title );
+			$batch->addObj( Title::makeTitleSafe( NS_USER, $s->user_name ) );
+			$batch->addObj( Title::makeTitleSafe( NS_USER_TALK, $s->user_name ) );
 
 			// Move destination link
 			if ( $s->log_type == 'move' ) {
@@ -299,12 +298,11 @@ class LogViewer {
 	/**
 	 * @param Object $s a single row from the result set
 	 * @return string Formatted HTML list item
-	 * @access private
+	 * @private
 	 */
 	function logLine( $s ) {
 		global $wgLang;
 		$title = Title::makeTitle( $s->log_namespace, $s->log_title );
-		$user = Title::makeTitleSafe( NS_USER, $s->user_name );
 		$time = $wgLang->timeanddate( wfTimestamp(TS_MW, $s->log_timestamp), true );
 
 		// Enter the existence or non-existence of this page into the link cache,
@@ -316,12 +314,12 @@ class LogViewer {
 			$linkCache->addBadLinkObj( $title );
 		}
 
-		$userLink = $this->skin->makeLinkObj( $user, htmlspecialchars( $s->user_name ) );
+		$userLink = $this->skin->userLink( $s->log_user, $s->user_name ) . $this->skin->userToolLinks( $s->log_user, $s->user_name );
 		$comment = $this->skin->commentBlock( $s->log_comment );
 		$paramArray = LogPage::extractParams( $s->log_params );
 		$revert = '';
 		if ( $s->log_type == 'move' && isset( $paramArray[0] ) ) {
-			$specialTitle = Title::makeTitle( NS_SPECIAL, 'Movepage' );
+			$specialTitle = SpecialPage::getTitleFor( 'Movepage' );
 			$destTitle = Title::newFromText( $paramArray[0] );
 			if ( $destTitle ) {
 				$revert = '(' . $this->skin->makeKnownLinkObj( $specialTitle, wfMsg( 'revertmove' ),
@@ -339,7 +337,7 @@ class LogViewer {
 
 	/**
 	 * @param OutputPage &$out where to send output
-	 * @access private
+	 * @private
 	 */
 	function showHeader( &$out ) {
 		$type = $this->reader->queryType();
@@ -351,12 +349,12 @@ class LogViewer {
 
 	/**
 	 * @param OutputPage &$out where to send output
-	 * @access private
+	 * @private
 	 */
 	function showOptions( &$out ) {
 		global $wgScript;
 		$action = htmlspecialchars( $wgScript );
-		$title = Title::makeTitle( NS_SPECIAL, 'Log' );
+		$title = SpecialPage::getTitleFor( 'Log' );
 		$special = htmlspecialchars( $title->getPrefixedDBkey() );
 		$out->addHTML( "<form action=\"$action\" method=\"get\">\n" .
 			"<input type='hidden' name='title' value=\"$special\" />\n" .
@@ -369,7 +367,7 @@ class LogViewer {
 
 	/**
 	 * @return string Formatted HTML
-	 * @access private
+	 * @private
 	 */
 	function getTypeMenu() {
 		$out = "<select name='type'>\n";
@@ -384,7 +382,7 @@ class LogViewer {
 
 	/**
 	 * @return string Formatted HTML
-	 * @access private
+	 * @private
 	 */
 	function getUserInput() {
 		$user = htmlspecialchars( $this->reader->queryUser() );
@@ -393,7 +391,7 @@ class LogViewer {
 
 	/**
 	 * @return string Formatted HTML
-	 * @access private
+	 * @private
 	 */
 	function getTitleInput() {
 		$title = htmlspecialchars( $this->reader->queryTitle() );
@@ -402,7 +400,7 @@ class LogViewer {
 
 	/**
 	 * @param OutputPage &$out where to send output
-	 * @access private
+	 * @private
 	 */
 	function showPrevNext( &$out ) {
 		global $wgContLang,$wgRequest;

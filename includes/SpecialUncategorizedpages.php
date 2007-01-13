@@ -7,11 +7,6 @@
 
 /**
  *
- */
-require_once( "QueryPage.php" );
-
-/**
- *
  * @package MediaWiki
  * @subpackage SpecialPage
  */
@@ -33,7 +28,7 @@ class UncategorizedPagesPage extends PageQueryPage {
 
 	function getSQL() {
 		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'page', 'categorylinks' ) );
+		list( $page, $categorylinks ) = $dbr->tableNamesN( 'page', 'categorylinks' );
 		$name = $dbr->addQuotes( $this->getName() );
 
 		return

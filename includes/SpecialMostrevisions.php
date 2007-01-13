@@ -10,9 +10,6 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-/* */
-require_once 'QueryPage.php';
-
 /**
  * @package MediaWiki
  * @subpackage SpecialPage
@@ -25,7 +22,7 @@ class MostrevisionsPage extends QueryPage {
 
 	function getSQL() {
 		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'revision', 'page' ) );
+		list( $revision, $page ) = $dbr->tableNamesN( 'revision', 'page' );
 		return
 			"
 			SELECT
@@ -34,9 +31,9 @@ class MostrevisionsPage extends QueryPage {
 				page_title as title,
 				COUNT(*) as value
 			FROM $revision
-			LEFT JOIN $page ON page_id = rev_page
+			JOIN $page ON page_id = rev_page
 			WHERE page_namespace = " . NS_MAIN . "
-			GROUP BY rev_page
+			GROUP BY 1,2,3
 			HAVING COUNT(*) > 1
 			";
 	}
@@ -49,7 +46,8 @@ class MostrevisionsPage extends QueryPage {
 
 		$plink = $skin->makeKnownLinkObj( $nt, $text );
 
-		$nl = wfMsg( 'nrevisions', $wgLang->formatNum( $result->value ) );
+		$nl = wfMsgExt( 'nrevisions', array( 'parsemag', 'escape'),
+			$wgLang->formatNum( $result->value ) );
 		$nlink = $skin->makeKnownLinkObj( $nt, $nl, 'action=history' );
 
 		return wfSpecialList($plink, $nlink);

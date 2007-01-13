@@ -22,7 +22,8 @@
  */
 
 /**
- *
+ * TODO: Perhaps make this file into a Metadata class, with static methods (declared 
+ * as private where indicated), to move these functions out of the global namespace?
  */
 define('RDF_TYPE_PREFS', "application/rdf+xml,text/xml;q=0.7,application/xml;q=0.5,text/rdf;q=0.1");
 
@@ -68,7 +69,7 @@ function wfCreativeCommonsRdf($article) {
 }
 
 /**
- * @access private
+ * @private
  */
 function rdfSetup() {
 	global $wgOut, $_SERVER;
@@ -87,7 +88,7 @@ function rdfSetup() {
 }
 
 /**
- * @access private
+ * @private
  */
 function dcPrologue($url) {
 	global $wgOutputEncoding;
@@ -104,7 +105,7 @@ function dcPrologue($url) {
 }
 
 /**
- * @access private
+ * @private
  */
 function dcEpilogue() {
 	print "
@@ -114,7 +115,7 @@ function dcEpilogue() {
 }
 
 /**
- * @access private
+ * @private
  */
 function dcBasics($article) {
 	global $wgContLanguageCode, $wgSitename;
@@ -142,11 +143,11 @@ function dcBasics($article) {
 		dcPerson('contributor', $user_parts[0], $user_parts[1], $user_parts[2]);
 	}
 
-	dcRights($article);
+	dcRights();
 }
 
 /**
- * @access private
+ * @private
  */
 function ccPrologue() {
 	global $wgOutputEncoding;
@@ -160,7 +161,7 @@ function ccPrologue() {
 }
 
 /**
- * @access private
+ * @private
  */
 function ccSubPrologue($type, $url) {
 	$url = htmlspecialchars( $url );
@@ -168,14 +169,14 @@ function ccSubPrologue($type, $url) {
 }
 
 /**
- * @access private
+ * @private
  */
 function ccSubEpilogue($type) {
 	echo "  </cc:{$type}>\n";
 }
 
 /**
- * @access private
+ * @private
  */
 function ccLicense($terms) {
 
@@ -202,21 +203,21 @@ function ccLicense($terms) {
 }
 
 /**
- * @access private
+ * @private
  */
 function ccTerm($term, $name) {
 	print "    <cc:{$term} rdf:resource=\"http://web.resource.org/cc/{$name}\" />\n";
 }
 
 /**
- * @access private
+ * @private
  */
 function ccEpilogue() {
 	echo "</rdf:RDF>\n";
 }
 
 /**
- * @access private
+ * @private
  */
 function dcElement($name, $value) {
 	$value = htmlspecialchars( $value );
@@ -224,7 +225,7 @@ function dcElement($name, $value) {
 }
 
 /**
- * @access private
+ * @private
  */
 function dcDate($timestamp) {
 	return substr($timestamp, 0, 4) . '-'
@@ -233,14 +234,14 @@ function dcDate($timestamp) {
 }
 
 /**
- * @access private
+ * @private
  */
 function dcReallyFullUrl($title) {
 	return $title->getFullURL();
 }
 
 /**
- * @access private
+ * @private
  */
 function dcPageOrString($name, $page, $str) {
 	$nt = Title::newFromText($page);
@@ -253,14 +254,14 @@ function dcPageOrString($name, $page, $str) {
 }
 
 /**
- * @access private
+ * @private
  */
 function dcPage($name, $title) {
 	dcUrl($name, dcReallyFullUrl($title));
 }
 
 /**
- * @access private
+ * @private
  */
 function dcUrl($name, $url) {
 	$url = htmlspecialchars( $url );
@@ -268,7 +269,7 @@ function dcUrl($name, $url) {
 }
 
 /**
- * @access private
+ * @private
  */
 function dcPerson($name, $id, $user_name='', $user_real_name='') {
 	global $wgContLang;
@@ -289,9 +290,9 @@ function dcPerson($name, $id, $user_name='', $user_real_name='') {
 /**
  * Takes an arg, for future enhancement with different rights for
  * different pages.
- * @access private
+ * @private
  */
-function dcRights($article) {
+function dcRights() {
 
 	global $wgRightsPage, $wgRightsUrl, $wgRightsText;
 
@@ -307,7 +308,7 @@ function dcRights($article) {
 }
 
 /**
- * @access private
+ * @private
  */
 function ccGetTerms($url) {
 	global $wgLicenseTerms;
@@ -316,12 +317,16 @@ function ccGetTerms($url) {
 		return $wgLicenseTerms;
 	} else {
 		$known = getKnownLicenses();
-		return $known[$url];
+		if( isset( $known[$url] ) ) {
+			return $known[$url];
+		} else {
+			return array();
+		}
 	}
 }
 
 /**
- * @access private
+ * @private
  */
 function getKnownLicenses() {
 

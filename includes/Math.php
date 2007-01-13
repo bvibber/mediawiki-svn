@@ -39,6 +39,9 @@ class MathRenderer {
 			# No need to render or parse anything more!
 			return ('$ '.htmlspecialchars( $this->tex ).' $');
 		}
+		if( $this->tex == '' ) {
+			return; # bug 8372
+		}
 
 		if( !$this->_recall() ) {
 			# Ensure that the temp and output directories are available before continuing...
@@ -73,13 +76,15 @@ class MathRenderer {
 			}
 
 			$retval = substr ($contents, 0, 1);
+			$errmsg = '';
 			if (($retval == 'C') || ($retval == 'M') || ($retval == 'L')) {
-				if ($retval == 'C')
+				if ($retval == 'C') {
 					$this->conservativeness = 2;
-				else if ($retval == 'M')
+				} else if ($retval == 'M') {
 					$this->conservativeness = 1;
-				else
+				} else {
 					$this->conservativeness = 0;
+				}
 				$outdata = substr ($contents, 33);
 
 				$i = strpos($outdata, "\000");
@@ -88,12 +93,13 @@ class MathRenderer {
 				$this->mathml = substr($outdata, $i+1);
 			} else if (($retval == 'c') || ($retval == 'm') || ($retval == 'l'))  {
 				$this->html = substr ($contents, 33);
-				if ($retval == 'c')
+				if ($retval == 'c') {
 					$this->conservativeness = 2;
-				else if ($retval == 'm')
+				} else if ($retval == 'm') {
 					$this->conservativeness = 1;
-				else
+				} else {
 					$this->conservativeness = 0;
+				}
 				$this->mathml = NULL;
 			} else if ($retval == 'X') {
 				$this->html = NULL;
@@ -106,14 +112,23 @@ class MathRenderer {
 			} else {
 				$errbit = htmlspecialchars( substr($contents, 1) );
 				switch( $retval ) {
-					case 'E': return $this->_error( 'math_lexing_error', $errbit );
-					case 'S': return $this->_error( 'math_syntax_error', $errbit );
-					case 'F': return $this->_error( 'math_unknown_function', $errbit );
-					default:  return $this->_error( 'math_unknown_error', $errbit );
+					case 'E': $errmsg = $this->_error( 'math_lexing_error', $errbit );
+					case 'S': $errmsg = $this->_error( 'math_syntax_error', $errbit );
+					case 'F': $errmsg = $this->_error( 'math_unknown_function', $errbit );
+					default:  $errmsg = $this->_error( 'math_unknown_error', $errbit );
 				}
 			}
 
-			$this->hash = substr ($contents, 1, 32);
+			if ( !$errmsg ) {
+				 $this->hash = substr ($contents, 1, 32);
+			}
+
+			wfRunHooks( 'MathAfterTexvc', array( &$this, &$errmsg ) );
+
+			if ( $errmsg ) {
+				 return $errmsg;
+			}
+
 			if (!preg_match("/^[a-f0-9]{32}$/", $this->hash)) {
 				return $this->_error( 'math_unknown_error' );
 			}
@@ -249,14 +264,11 @@ class MathRenderer {
 		return $path;
 	}
 
-
+	public static function renderMath( $tex ) {
+		global $wgUser;
+		$math = new MathRenderer( $tex );
+		$math->setOutputMode( $wgUser->getOption('math'));
+		return $math->render();
+	}
 }
-
-function renderMath( $tex ) {
-	global $wgUser;
-	$math = new MathRenderer( $tex );
-	$math->setOutputMode( $wgUser->getOption('math'));
-	return $math->render();
-}
-
 ?>

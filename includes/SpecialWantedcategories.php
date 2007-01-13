@@ -10,9 +10,6 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-/* */
-require_once 'QueryPage.php';
-
 /**
  * @package MediaWiki
  * @subpackage SpecialPage
@@ -25,7 +22,7 @@ class WantedCategoriesPage extends QueryPage {
 
 	function getSQL() {
 		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'categorylinks', 'page' ) );
+		list( $categorylinks, $page ) = $dbr->tableNamesN( 'categorylinks', 'page' );
 		$name = $dbr->addQuotes( $this->getName() );
 		return
 			"
@@ -37,7 +34,7 @@ class WantedCategoriesPage extends QueryPage {
 			FROM $categorylinks
 			LEFT JOIN $page ON cl_to = page_title AND page_namespace = ". NS_CATEGORY ."
 			WHERE page_title IS NULL
-			GROUP BY cl_to
+			GROUP BY 1,2,3
 			";
 	}
 
@@ -68,7 +65,8 @@ class WantedCategoriesPage extends QueryPage {
 			$skin->makeLinkObj( $nt, htmlspecialchars( $text ) ) :
 			$skin->makeBrokenLinkObj( $nt, htmlspecialchars( $text ) );
 
-		$nlinks = wfMsg( 'members', $wgLang->formatNum( $result->value ) );
+		$nlinks = wfMsgExt( 'nmembers', array( 'parsemag', 'escape'),
+			$wgLang->formatNum( $result->value ) );
 		return wfSpecialList($plink, $nlinks);
 	}
 }

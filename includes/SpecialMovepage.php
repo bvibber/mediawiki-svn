@@ -9,14 +9,21 @@
  * Constructor
  */
 function wfSpecialMovepage( $par = null ) {
-	global $wgUser, $wgOut, $wgRequest, $action, $wgOnlySysopMayMove;
+	global $wgUser, $wgOut, $wgRequest, $action;
 
-	# check rights. We don't want newbies to move pages to prevents possible attack
-	if ( !$wgUser->isAllowed( 'move' ) or $wgUser->isBlocked() or ($wgOnlySysopMayMove and $wgUser->isNewbie())) {
-		$wgOut->errorpage( "movenologin", "movenologintext" );
+	# Check rights
+	if ( !$wgUser->isAllowed( 'move' ) ) {
+		$wgOut->showErrorPage( 'movenologin', 'movenologintext' );
 		return;
 	}
-	# We don't move protected pages
+
+	# Don't allow blocked users to move pages
+	if ( $wgUser->isBlocked() ) {
+		$wgOut->blockedPage();
+		return;
+	}
+
+	# Check for database lock
 	if ( wfReadOnly() ) {
 		$wgOut->readOnlyPage();
 		return;
@@ -42,6 +49,8 @@ function wfSpecialMovepage( $par = null ) {
 class MovePageForm {
 	var $oldTitle, $newTitle, $reason; # Text input
 	var $moveTalk, $deleteAndMove;
+	
+	private $watch = false;
 
 	function MovePageForm( $par ) {
 		global $wgRequest;
@@ -49,8 +58,13 @@ class MovePageForm {
 		$this->oldTitle = $wgRequest->getText( 'wpOldTitle', $target );
 		$this->newTitle = $wgRequest->getText( 'wpNewTitle' );
 		$this->reason = $wgRequest->getText( 'wpReason' );
-		$this->moveTalk = $wgRequest->getBool( 'wpMovetalk', true );
+		if ( $wgRequest->wasPosted() ) {
+			$this->moveTalk = $wgRequest->getBool( 'wpMovetalk', false );
+		} else {
+			$this->moveTalk = $wgRequest->getBool( 'wpMovetalk', true );
+		}
 		$this->deleteAndMove = $wgRequest->getBool( 'wpDeleteAndMove' ) && $wgRequest->getBool( 'wpConfirm' );
+		$this->watch = $wgRequest->getCheck( 'wpWatch' );
 	}
 
 	function showForm( $err ) {
@@ -60,7 +74,7 @@ class MovePageForm {
 
 		$ot = Title::newFromURL( $this->oldTitle );
 		if( is_null( $ot ) ) {
-			$wgOut->errorpage( 'notargettitle', 'notargettext' );
+			$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
 			return;
 		}
 		$oldTitle = $ot->getPrefixedText();
@@ -119,7 +133,7 @@ class MovePageForm {
 		$movetalk = wfMsgHtml( 'movetalk' );
 		$movereason = wfMsgHtml( 'movereason' );
 
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'Movepage' );
+		$titleObj = SpecialPage::getTitleFor( 'Movepage' );
 		$action = $titleObj->escapeLocalURL( 'action=submit' );
 		$token = htmlspecialchars( $wgUser->editToken() );
 
@@ -160,6 +174,14 @@ class MovePageForm {
 			<td><label for=\"wpMovetalk\">{$movetalk}</label></td>
 		</tr>" );
 		}
+		
+		$watchChecked = $this->watch || $wgUser->getBoolOption( 'watchmoves' ) || $ot->userIsWatching();
+		$watch  = '<tr>';
+		$watch .= '<td align="right">' . Xml::check( 'wpWatch', $watchChecked, array( 'id' => 'watch' ) ) . '</td>';
+		$watch .= '<td>' . Xml::label( wfMsg( 'move-watch' ), 'watch' ) . '</td>';
+		$watch .= '</tr>';
+		$wgOut->addHtml( $watch );
+		
 		$wgOut->addHTML( "
 		{$confirm}
 		<tr>
@@ -172,11 +194,12 @@ class MovePageForm {
 	<input type='hidden' name='wpEditToken' value=\"{$token}\" />
 </form>\n" );
 
+	$this->showLogFragment( $ot, $wgOut );
+
 	}
 
 	function doSubmit() {
 		global $wgOut, $wgUser, $wgRequest;
-		$fname = "MovePageForm::doSubmit";
 
 		if ( $wgUser->pingLimiter( 'move' ) ) {
 			$wgOut->rateLimited();
@@ -212,7 +235,7 @@ class MovePageForm {
 		# Move the talk page if relevant, if it exists, and if we've been told to
 		$ott = $ot->getTalkPage();
 		if( $ott->exists() ) {
-			if( $wgRequest->getVal( 'wpMovetalk' ) == 1 && !$ot->isTalkPage() && !$nt->isTalkPage() ) {
+			if( $this->moveTalk && !$ot->isTalkPage() && !$nt->isTalkPage() ) {
 				$ntt = $nt->getTalkPage();
 	
 				# Attempt the move
@@ -230,9 +253,18 @@ class MovePageForm {
 		} else {
 			$talkmoved = 'notalkpage';
 		}
+		
+		# Deal with watches
+		if( $this->watch ) {
+			$wgUser->addWatch( $ot );
+			$wgUser->addWatch( $nt );
+		} else {
+			$wgUser->removeWatch( $ot );
+			$wgUser->removeWatch( $nt );
+		}
 
 		# Give back result to user.
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'Movepage' );
+		$titleObj = SpecialPage::getTitleFor( 'Movepage' );
 		$success = $titleObj->getFullURL(
 		  'action=success&oldtitle=' . wfUrlencode( $ot->getPrefixedText() ) .
 		  '&newtitle=' . wfUrlencode( $nt->getPrefixedText() ) .
@@ -247,8 +279,8 @@ class MovePageForm {
 		$wgOut->setPagetitle( wfMsg( 'movepage' ) );
 		$wgOut->setSubtitle( wfMsg( 'pagemovedsub' ) );
 
-		$oldText = $wgRequest->getVal('oldtitle');
-		$newText = $wgRequest->getVal('newtitle');
+		$oldText = wfEscapeWikiText( $wgRequest->getVal('oldtitle') );
+		$newText = wfEscapeWikiText( $wgRequest->getVal('newtitle') );
 		$talkmoved = $wgRequest->getVal('talkmoved');
 
 		$text = wfMsg( 'pagemovedtext', $oldText, $newText );
@@ -264,10 +296,18 @@ class MovePageForm {
 			$wgOut->addWikiText( wfMsg( 'talkexists' ) );
 		} else {
 			$oldTitle = Title::newFromText( $oldText );
-			if ( !$oldTitle->isTalkPage() && $talkmoved != 'notalkpage' ) {
+			if ( isset( $oldTitle ) && !$oldTitle->isTalkPage() && $talkmoved != 'notalkpage' ) {
 				$wgOut->addWikiText( wfMsg( 'talkpagenotmoved', wfMsg( $talkmoved ) ) );
 			}
 		}
 	}
+	
+	function showLogFragment( $title, &$out ) {
+		$out->addHtml( wfElement( 'h2', NULL, LogPage::logName( 'move' ) ) );
+		$request = new FauxRequest( array( 'page' => $title->getPrefixedText(), 'type' => 'move' ) );
+		$viewer = new LogViewer( new LogReader( $request ) );
+		$viewer->showList( $out );
+	}
+	
 }
 ?>

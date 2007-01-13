@@ -37,9 +37,8 @@ class SearchUpdate {
 		$fname = 'SearchUpdate::doUpdate';
 		wfProfileIn( $fname );
 
-		require_once( 'SearchEngine.php' );
 		$search = SearchEngine::create();
-		$lc = $search->legalSearchChars() . '&#;';
+		$lc = SearchEngine::legalSearchChars() . '&#;';
 
 		if( $this->mText === false ) {
 			$search->updateTitle($this->mId,

@@ -75,9 +75,9 @@ class ImageBuilder extends FiveUpgrade {
 			$portion * 100.0,
 			$this->table,
 			wfTimestamp( TS_DB, intval( $eta ) ),
-			$completed,
+			$completed,   // $completed does not appear to be defined.
 			$this->count,
-			$rate,
+			$rate,        // $rate does not appear to be defined.
 			$updateRate * 100.0 );
 		flush();
 	}
@@ -125,8 +125,8 @@ class ImageBuilder extends FiveUpgrade {
 		// Fill in the new image info fields
 		$info = $this->imageInfo( $row->img_name );
 
-		global $wgMemc, $wgDBname;
-		$key = $wgDBname . ":Image:" . md5( $row->img_name );
+		global $wgMemc;
+		$key = wfMemcKey( "Image", md5( $row->img_name ) );
 		$wgMemc->delete( $key );
 
 		return array(

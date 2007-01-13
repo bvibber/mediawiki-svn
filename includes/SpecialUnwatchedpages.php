@@ -10,9 +10,6 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-/* */
-require_once 'QueryPage.php';
-
 /**
  * @package MediaWiki
  * @subpackage SpecialPage
@@ -25,7 +22,7 @@ class UnwatchedpagesPage extends QueryPage {
 
 	function getSQL() {
 		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'page', 'watchlist' ) );
+		list( $page, $watchlist ) = $dbr->tableNamesN( 'page', 'watchlist' );
 		$mwns = NS_MEDIAWIKI;
 		return
 			"

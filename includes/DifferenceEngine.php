@@ -5,12 +5,6 @@
  * @subpackage DifferenceEngine
  */
 
-/** */
-require_once( 'Revision.php' );
-
-define( 'MAX_DIFF_LINE', 10000 );
-define( 'MAX_DIFF_XREF_LENGTH', 10000 );
-
 /**
  * @todo document
  * @public
@@ -69,8 +63,8 @@ class DifferenceEngine {
 		$this->mRcidMarkPatrolled = intval($rcid);  # force it to be an integer
 	}
 
-	function showDiffPage() {
-		global $wgUser, $wgOut, $wgContLang, $wgUseExternalEditor, $wgUseRCPatrol;
+	function showDiffPage( $diffOnly = false ) {
+		global $wgUser, $wgOut, $wgUseExternalEditor, $wgUseRCPatrol;
 		$fname = 'DifferenceEngine::showDiffPage';
 		wfProfileIn( $fname );
 
@@ -103,17 +97,18 @@ CONTROL;
 			return;
 		}
 
-		$t = $this->mTitle->getPrefixedText() . " (Diff: {$this->mOldid}, " .
-		  "{$this->mNewid})";
-		$mtext = wfMsg( 'missingarticle', "<nowiki>$t</nowiki>" );
-
 		$wgOut->setArticleFlag( false );
 		if ( ! $this->loadRevisionData() ) {
+			$t = $this->mTitle->getPrefixedText() . " (Diff: {$this->mOldid}, {$this->mNewid})";
+			$mtext = wfMsg( 'missingarticle', "<nowiki>$t</nowiki>" );
 			$wgOut->setPagetitle( wfMsg( 'errorpagetitle' ) );
 			$wgOut->addWikitext( $mtext );
 			wfProfileOut( $fname );
 			return;
 		}
+		
+		wfRunHooks( 'DiffViewHeader', array( $this, $this->mOldRev, $this->mNewRev ) );
+
 		if ( $this->mNewRev->isCurrent() ) {
 			$wgOut->setArticleFlag( true );
 		}
@@ -123,6 +118,7 @@ CONTROL;
 		# is the first version of that article. In that case, V' does not exist.
 		if ( $this->mOldid === false ) {
 			$this->showFirstRevision();
+			$this->renderNewRevision();  // should we respect $diffOnly here or not?
 			wfProfileOut( $fname );
 			return;
 		}
@@ -137,7 +133,7 @@ CONTROL;
 			$wgOut->setPageTitle( $oldTitle . ', ' . $newTitle );
 		}
 		$wgOut->setSubtitle( wfMsg( 'difference' ) );
-		$wgOut->setRobotpolicy( 'noindex,follow' );
+		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
 		if ( !( $this->mOldPage->userCanRead() && $this->mNewPage->userCanRead() ) ) {
 			$wgOut->loginToUse();
@@ -147,15 +143,9 @@ CONTROL;
 		}
 
 		$sk = $wgUser->getSkin();
-		$talk = $wgContLang->getNsText( NS_TALK );
-		$contribs = wfMsg( 'contribslink' );
 
 		if ( $this->mNewRev->isCurrent() && $wgUser->isAllowed('rollback') ) {
-			$username = $this->mNewRev->getUserText();
-			$rollback = '&nbsp;&nbsp;&nbsp;<strong>[' . $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'rollbacklink' ),
-				'action=rollback&from=' . urlencode( $username ) .
-				'&token=' . urlencode( $wgUser->editToken( array( $this->mTitle->getPrefixedText(), $username ) ) ) ) .
-				']</strong>';
+			$rollback = '&nbsp;&nbsp;&nbsp;' . $sk->generateRollback( $this->mNewRev );
 		} else {
 			$rollback = '';
 		}
@@ -168,36 +158,65 @@ CONTROL;
 		$prevlink = $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'previousdiff' ),
 			'diff=prev&oldid='.$this->mOldid, '', '', 'id="differences-prevlink"' );
 		if ( $this->mNewRev->isCurrent() ) {
-			$nextlink = '';
+			$nextlink = '&nbsp;';
 		} else {
 			$nextlink = $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'nextdiff' ),
 				'diff=next&oldid='.$this->mNewid, '', '', 'id="differences-nextlink"' );
 		}
 
+		$oldminor = '';
+		$newminor = '';
+
+		if ($this->mOldRev->mMinorEdit == 1) {
+			$oldminor = wfElement( 'span', array( 'class' => 'minor' ),
+				wfMsg( 'minoreditletter') ) . ' ';
+		}
+
+		if ($this->mNewRev->mMinorEdit == 1) {
+			$newminor = wfElement( 'span', array( 'class' => 'minor' ),
+			wfMsg( 'minoreditletter') ) . ' ';
+		}
+
 		$oldHeader = "<strong>{$this->mOldtitle}</strong><br />" .
 			$sk->revUserTools( $this->mOldRev ) . "<br />" .
-			$sk->revComment( $this->mOldRev ) . "<br />" .
+			$oldminor . $sk->revComment( $this->mOldRev, true ) . "<br />" .
 			$prevlink;
 		$newHeader = "<strong>{$this->mNewtitle}</strong><br />" .
 			$sk->revUserTools( $this->mNewRev ) . " $rollback<br />" .
-			$sk->revComment( $this->mNewRev ) . "<br />" .
+			$newminor . $sk->revComment( $this->mNewRev, true ) . "<br />" .
 			$nextlink . $patrol;
 
 		$this->showDiff( $oldHeader, $newHeader );
+
+		if ( !$diffOnly )
+			$this->renderNewRevision();
+
+		wfProfileOut( $fname );
+	}
+
+	/**
+	 * Show the new revision of the page.
+	 */
+	function renderNewRevision() {
+		global $wgOut;
+		$fname = 'DifferenceEngine::renderNewRevision';
+		wfProfileIn( $fname );
+
 		$wgOut->addHTML( "<hr /><h2>{$this->mPagetitle}</h2>\n" );
 
 		if( !$this->mNewRev->isCurrent() ) {
-			$oldEditSectionSetting = $wgOut->mParserOptions->setEditSection( false );
+			$oldEditSectionSetting = $wgOut->parserOptions()->setEditSection( false );
 		}
 
 		$this->loadNewText();
 		if( is_object( $this->mNewRev ) ) {
 			$wgOut->setRevisionId( $this->mNewRev->getId() );
 		}
+
 		$wgOut->addSecondaryWikiText( $this->mNewtext );
 
 		if( !$this->mNewRev->isCurrent() ) {
-			$wgOut->mParserOptions->setEditSection( $oldEditSectionSetting );
+			$wgOut->parserOptions()->setEditSection( $oldEditSectionSetting );
 		}
 
 		wfProfileOut( $fname );
@@ -252,15 +271,6 @@ CONTROL;
 		$wgOut->setSubtitle( wfMsg( 'difference' ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-
-		# Show current revision
-		#
-		$wgOut->addHTML( "<hr /><h2>{$this->mPagetitle}</h2>\n" );
-		if( is_object( $this->mNewRev ) ) {
-			$wgOut->setRevisionId( $this->mNewRev->getId() );
-		}
-		$wgOut->addSecondaryWikiText( $this->mNewtext );
-
 		wfProfileOut( $fname );
 	}
 
@@ -290,7 +300,8 @@ CONTROL;
 		if ( $body === false ) {
 			return false;
 		} else {
-			return $this->addHeader( $body, $otitle, $ntitle );
+			$multi = $this->getMultiNotice();
+			return $this->addHeader( $body, $otitle, $ntitle, $multi );
 		}
 	}
 
@@ -300,7 +311,7 @@ CONTROL;
 	 * Returns false on error
 	 */
 	function getDiffBody() {
-		global $wgMemc, $wgDBname;
+		global $wgMemc;
 		$fname = 'DifferenceEngine::getDiffBody';
 		wfProfileIn( $fname );
 		
@@ -308,7 +319,7 @@ CONTROL;
 		$key = false;
 		if ( $this->mOldid && $this->mNewid ) {
 			// Try cache
-			$key = "$wgDBname:diff:oldid:{$this->mOldid}:newid:{$this->mNewid}";
+			$key = wfMemcKey( 'diff', 'oldid', $this->mOldid, 'newid', $this->mNewid );
 			$difftext = $wgMemc->get( $key );
 			if ( $difftext ) {
 				wfIncrStats( 'diff_cache_hit' );
@@ -410,8 +421,8 @@ CONTROL;
 		# Native PHP diff
 		$ota = explode( "\n", $wgContLang->segmentForDiff( $otext ) );
 		$nta = explode( "\n", $wgContLang->segmentForDiff( $ntext ) );
-		$diffs =& new Diff( $ota, $nta );
-		$formatter =& new TableDiffFormatter();
+		$diffs = new Diff( $ota, $nta );
+		$formatter = new TableDiffFormatter();
 		return $wgContLang->unsegmentForDiff( $formatter->format( $diffs ) );
 	}
 		
@@ -426,23 +437,52 @@ CONTROL;
 
 	function localiseLineNumbersCb( $matches ) {
 		global $wgLang;
-		return wfMsg( 'lineno', $wgLang->formatNum( $matches[1] ) );
+		return wfMsgExt( 'lineno', array('parseinline'), $wgLang->formatNum( $matches[1] ) );
 	}
+
+	
+	/**
+	 * If there are revisions between the ones being compared, return a note saying so.
+	 */
+	function getMultiNotice() {
+		if ( !is_object($this->mOldRev) || !is_object($this->mNewRev) )
+			return '';
+		
+		if( !$this->mOldPage->equals( $this->mNewPage ) ) {
+			// Comparing two different pages? Count would be meaningless.
+			return '';
+		}
+		
+		$oldid = $this->mOldRev->getId();
+		$newid = $this->mNewRev->getId();
+		if ( $oldid > $newid ) {
+			$tmp = $oldid; $oldid = $newid; $newid = $tmp;
+		}
+
+		$n = $this->mTitle->countRevisionsBetween( $oldid, $newid );
+		if ( !$n )
+			return '';
+
+		return wfMsgExt( 'diff-multi', array( 'parseinline' ), $n );
+	}
+
 
 	/**
 	 * Add the header to a diff body
 	 */
-	function addHeader( $diff, $otitle, $ntitle ) {
-		$out = "
+	function addHeader( $diff, $otitle, $ntitle, $multi = '' ) {
+		$header = "
 			<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>
 			<tr>
 				<td colspan='2' width='50%' align='center' class='diff-otitle'>{$otitle}</td>
 				<td colspan='2' width='50%' align='center' class='diff-ntitle'>{$ntitle}</td>
 			</tr>
-			$diff
-			</table>
 		";
-		return $out;
+
+		if ( $multi != '' )
+			$header .= "<tr><td colspan='4' align='center' class='diff-multi'>{$multi}</td></tr>";
+
+		return $header . $diff . "</table>";
 	}
 
 	/**
@@ -485,17 +525,27 @@ CONTROL;
 		}
 
 		// Set assorted variables
+		$timestamp = $wgLang->timeanddate( $this->mNewRev->getTimestamp(), true );
+		$this->mNewPage = $this->mNewRev->getTitle();
 		if( $this->mNewRev->isCurrent() ) {
-			$this->mPagetitle = htmlspecialchars( wfMsg( 'currentrev' ) );
-			$this->mNewPage = $this->mTitle;
 			$newLink = $this->mNewPage->escapeLocalUrl();
-			$this->mNewtitle = "<a href='$newLink'>{$this->mPagetitle}</a>";
+			$this->mPagetitle = htmlspecialchars( wfMsg( 'currentrev' ) );
+			$newEdit = $this->mNewPage->escapeLocalUrl( 'action=edit' );
+			$newUndo = $this->mNewPage->escapeLocalUrl( 'action=edit&undo=' . $this->mNewid );
+
+			$this->mNewtitle = "<a href='$newLink'>{$this->mPagetitle}</a> ($timestamp)"
+				. " (<a href='$newEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)"
+				. " (<a href='$newUndo'>" . htmlspecialchars( wfMsg( 'editundo' ) ) . "</a>)";
+
 		} else {
-			$this->mNewPage = $this->mNewRev->getTitle();
-			$newLink = $this->mNewPage->escapeLocalUrl ('oldid=' . $this->mNewid );
-			$t = $wgLang->timeanddate( $this->mNewRev->getTimestamp(), true );
-			$this->mPagetitle = htmlspecialchars( wfMsg( 'revisionasof', $t ) );
-			$this->mNewtitle = "<a href='$newLink'>{$this->mPagetitle}</a>";
+			$newLink = $this->mNewPage->escapeLocalUrl( 'oldid=' . $this->mNewid );
+			$newEdit = $this->mNewPage->escapeLocalUrl( 'action=edit&oldid=' . $this->mNewid );
+			$newUndo = $this->mNewPage->escapeLocalUrl( 'action=edit&undo=' . $this->mNewid );
+			$this->mPagetitle = htmlspecialchars( wfMsg( 'revisionasof', $timestamp ) );
+
+			$this->mNewtitle = "<a href='$newLink'>{$this->mPagetitle}</a>"
+				. " (<a href='$newEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)"
+				. " (<a href='$newUndo'>" . htmlspecialchars( wfMsg( 'editundo' ) ) . "</a>)";
 		}
 
 		// Load the old revision object
@@ -523,7 +573,9 @@ CONTROL;
 
 			$t = $wgLang->timeanddate( $this->mOldRev->getTimestamp(), true );
 			$oldLink = $this->mOldPage->escapeLocalUrl( 'oldid=' . $this->mOldid );
-			$this->mOldtitle = "<a href='$oldLink'>" . htmlspecialchars( wfMsg( 'revisionasof', $t ) ) . '</a>';
+			$oldEdit = $this->mOldPage->escapeLocalUrl( 'action=edit&oldid=' . $this->mOldid );
+			$this->mOldtitle = "<a href='$oldLink'>" . htmlspecialchars( wfMsg( 'revisionasof', $t ) )
+				. "</a> (<a href='$oldEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)";
 		}
 
 		return true;
@@ -715,6 +767,8 @@ class _DiffOp_Change extends _DiffOp {
  */
 class _DiffEngine
 {
+	const MAX_XREF_LENGTH =  10000;
+
 	function diff ($from_lines, $to_lines) {
 		$fname = '_DiffEngine::diff';
 		wfProfileIn( $fname );
@@ -812,7 +866,7 @@ class _DiffEngine
 	 * Returns the whole line if it's small enough, or the MD5 hash otherwise
 	 */
 	function _line_hash( $line ) {
-		if ( strlen( $line ) > MAX_DIFF_XREF_LENGTH ) {
+		if ( strlen( $line ) > self::MAX_XREF_LENGTH ) {
 			return md5( $line );
 		} else {
 			return $line;
@@ -883,7 +937,7 @@ class _DiffEngine
 						$ymids[$k] = $ymids[$k-1];
 						break;
 					}
-				while (list ($junk, $y) = each($matches)) {
+				while (list ( /* $junk */, $y) = each($matches)) {
 					if ($y > $this->seq[$k-1]) {
 						USE_ASSERTS && assert($y < $this->seq[$k]);
 						// Optimization: this is a common case:
@@ -1567,6 +1621,8 @@ class _HWLDF_WordAccumulator {
  */
 class WordLevelDiff extends MappedDiff
 {
+	const MAX_LINE_LENGTH = 10000;
+
 	function WordLevelDiff ($orig_lines, $closing_lines) {
 		$fname = 'WordLevelDiff::WordLevelDiff';
 		wfProfileIn( $fname );
@@ -1595,10 +1651,11 @@ class WordLevelDiff extends MappedDiff
 				$words[] = "\n";
 				$stripped[] = "\n";
 			}
-			if ( strlen( $line ) > MAX_DIFF_LINE ) {
+			if ( strlen( $line ) > self::MAX_LINE_LENGTH ) {
 				$words[] = $line;
 				$stripped[] = $line;
 			} else {
+				$m = array();
 				if (preg_match_all('/ ( [^\S\n]+ | [0-9_A-Za-z\x80-\xff]+ | . ) (?: (?!< \n) [^\S\n])? /xs',
 					$line, $m))
 				{

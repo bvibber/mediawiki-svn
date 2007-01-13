@@ -7,11 +7,6 @@
 
 /**
  *
- */
-require_once("QueryPage.php");
-
-/**
- *
  * @package MediaWiki
  * @subpackage SpecialPage
  */
@@ -35,13 +30,14 @@ class CategoriesPage extends QueryPage {
 		$NScat = NS_CATEGORY;
 		$dbr =& wfGetDB( DB_SLAVE );
 		$categorylinks = $dbr->tableName( 'categorylinks' );
+		$implicit_groupby = $dbr->implicitGroupby() ? '1' : 'cl_to';
 		$s= "SELECT 'Categories' as type,
 				{$NScat} as namespace,
 				cl_to as title,
-				1 as value,
+				$implicit_groupby as value,
 				COUNT(*) as count
 			   FROM $categorylinks
-			   GROUP BY cl_to";
+			   GROUP BY 1,2,3,4";
 		return $s;
 	}
 
@@ -53,7 +49,8 @@ class CategoriesPage extends QueryPage {
 		global $wgLang;
 		$title = Title::makeTitle( NS_CATEGORY, $result->title );
 		$plink = $skin->makeLinkObj( $title, $title->getText() );
-		$nlinks = wfMsg( 'members', $wgLang->formatNum( $result->count ) );
+		$nlinks = wfMsgExt( 'nmembers', array( 'parsemag', 'escape'),
+			$wgLang->formatNum( $result->count ) );
 		return wfSpecialList($plink, $nlinks);
 	}
 }

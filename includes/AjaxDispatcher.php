@@ -1,23 +1,13 @@
 <?php
 
-//$wgRequestTime = microtime();
-
-// unset( $IP );
-// @ini_set( 'allow_url_fopen', 0 ); # For security...
-
-# Valid web server entry point, enable includes.
-# Please don't move this line to includes/Defines.php. This line essentially defines
-# a valid entry point. If you put it in includes/Defines.php, then any script that includes
-# it becomes an entry point, thereby defeating its purpose.
-// define( 'MEDIAWIKI', true );
-// require_once( './includes/Defines.php' );
-// require_once( './LocalSettings.php' );
-// require_once( 'includes/Setup.php' );
-require_once( 'AjaxFunctions.php' );
+if( !defined( 'MEDIAWIKI' ) )
+        die( 1 );
 
 if ( ! $wgUseAjax ) {
-	die ( -1 );
+	die( 1 );
 }
+
+require_once( 'AjaxFunctions.php' );
 
 class AjaxDispatcher {
 	var $mode;
@@ -25,11 +15,7 @@ class AjaxDispatcher {
 	var $args;
 
 	function AjaxDispatcher() {
-		global $wgAjaxCachePolicy;
-
-		wfProfileIn( 'AjaxDispatcher::AjaxDispatcher' );
-
-		$wgAjaxCachePolicy = new AjaxCachePolicy();
+		wfProfileIn( __METHOD__ );
 
 		$this->mode = "";
 
@@ -42,41 +28,63 @@ class AjaxDispatcher {
 		}
 
 		if ($this->mode == "get") {
-			$this->func_name = $_GET["rs"];
+			$this->func_name = isset( $_GET["rs"] ) ? $_GET["rs"] : '';
 			if (! empty($_GET["rsargs"])) {
 				$this->args = $_GET["rsargs"];
 			} else {
 				$this->args = array();
 			}
 		} else {
-			$this->func_name = $_POST["rs"];
+			$this->func_name = isset( $_POST["rs"] ) ? $_POST["rs"] : '';
 			if (! empty($_POST["rsargs"])) {
 				$this->args = $_POST["rsargs"];
 			} else {
 				$this->args = array();
 			}
 		}
-		wfProfileOut( 'AjaxDispatcher::AjaxDispatcher' );
+		wfProfileOut( __METHOD__ );
 	}
 
 	function performAction() {
-		global $wgAjaxCachePolicy, $wgAjaxExportList;
+		global $wgAjaxExportList, $wgOut;
+
 		if ( empty( $this->mode ) ) {
 			return;
 		}
-		wfProfileIn( 'AjaxDispatcher::performAction' );
+		wfProfileIn( __METHOD__ );
 
 		if (! in_array( $this->func_name, $wgAjaxExportList ) ) {
-			echo "-:{$this->func_name} not callable";
+			header( 'Status: 400 Bad Request', true, 400 );
+			print "unknown function " . htmlspecialchars( (string) $this->func_name );
 		} else {
-			echo "+:";
-			$result = call_user_func_array($this->func_name, $this->args);
-			header( 'Content-Type: text/html; charset=utf-8', true );
-			$wgAjaxCachePolicy->writeHeader();
-			echo $result;
+			try {
+				$result = call_user_func_array($this->func_name, $this->args);
+
+				if ( $result === false || $result === NULL ) {
+					header( 'Status: 500 Internal Error', true, 500 );
+					echo "{$this->func_name} returned no data";
+				}
+				else {
+					if ( is_string( $result ) ) {
+						$result= new AjaxResponse( $result );
+					}
+
+					$result->sendHeaders();
+					$result->printText();
+				}
+
+			} catch (Exception $e) {
+				if (!headers_sent()) {
+					header( 'Status: 500 Internal Error', true, 500 );
+					print $e->getMessage();
+				} else {
+					print $e->getMessage();
+				}
+			}
 		}
-		wfProfileOut( 'AjaxDispatcher::performAction' );
-		exit;
+
+		wfProfileOut( __METHOD__ );
+		$wgOut = null;
 	}
 }
 

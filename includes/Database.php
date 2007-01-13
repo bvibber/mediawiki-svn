@@ -5,18 +5,6 @@
  * @package MediaWiki
  */
 
-/**
- * Depends on the CacheManager
- */
-require_once( 'CacheManager.php' );
-
-/** See Database::makeList() */
-define( 'LIST_COMMA', 0 );
-define( 'LIST_AND', 1 );
-define( 'LIST_SET', 2 );
-define( 'LIST_NAMES', 3);
-define( 'LIST_OR', 4);
-
 /** Number of times to re-try an operation in case of deadlock */
 define( 'DEADLOCK_TRIES', 4 );
 /** Minimum time to wait before retry, in microseconds */
@@ -24,8 +12,12 @@ define( 'DEADLOCK_DELAY_MIN', 500000 );
 /** Maximum time to wait before retry */
 define( 'DEADLOCK_DELAY_MAX', 1500000 );
 
+/******************************************************************************
+ * Utility classes
+ *****************************************************************************/
+
 class DBObject {
-	var $mData;
+	public $mData;
 
 	function DBObject($data) {
 		$this->mData = $data;
@@ -40,6 +32,201 @@ class DBObject {
 	}
 };
 
+/******************************************************************************
+ * Error classes
+ *****************************************************************************/
+
+/**
+ * Database error base class
+ */
+class DBError extends MWException {
+	public $db;
+
+	/**
+	 * Construct a database error
+	 * @param Database $db The database object which threw the error
+	 * @param string $error A simple error message to be used for debugging
+	 */
+	function __construct( Database &$db, $error ) {
+		$this->db =& $db;
+		parent::__construct( $error );
+	}
+}
+
+class DBConnectionError extends DBError {
+	public $error;
+	
+	function __construct( Database &$db, $error = 'unknown error' ) {
+		$msg = 'DB connection error';
+		if ( trim( $error ) != '' ) {
+			$msg .= ": $error";
+		}
+		$this->error = $error;
+		parent::__construct( $db, $msg );
+	}
+
+	function useOutputPage() {
+		// Not likely to work
+		return false;
+	}
+
+	function useMessageCache() {
+		// Not likely to work
+		return false;
+	}
+	
+	function getText() {
+		return $this->getMessage() . "\n";
+	}
+
+	function getLogMessage() {
+		# Don't send to the exception log
+		return false;
+	}
+
+	function getPageTitle() {
+		global $wgSitename;
+		return "$wgSitename has a problem";
+	}
+
+	function getHTML() {
+		global $wgTitle, $wgUseFileCache, $title, $wgInputEncoding;
+		global $wgSitename, $wgServer, $wgMessageCache;
+
+		# I give up, Brion is right. Getting the message cache to work when there is no DB is tricky.
+		# Hard coding strings instead.
+
+		$noconnect = "<p><strong>Sorry! This site is experiencing technical difficulties.</strong></p><p>Try waiting a few minutes and reloading.</p><p><small>(Can't contact the database server: $1)</small></p>";
+		$mainpage = 'Main Page';
+		$searchdisabled = <<<EOT
+<p style="margin: 1.5em 2em 1em">$wgSitename search is disabled for performance reasons. You can search via Google in the meantime.
+<span style="font-size: 89%; display: block; margin-left: .2em">Note that their indexes of $wgSitename content may be out of date.</span></p>',
+EOT;
+
+		$googlesearch = "
+<!-- SiteSearch Google -->
+<FORM method=GET action=\"http://www.google.com/search\">
+<TABLE bgcolor=\"#FFFFFF\"><tr><td>
+<A HREF=\"http://www.google.com/\">
+<IMG SRC=\"http://www.google.com/logos/Logo_40wht.gif\"
+border=\"0\" ALT=\"Google\"></A>
+</td>
+<td>
+<INPUT TYPE=text name=q size=31 maxlength=255 value=\"$1\">
+<INPUT type=submit name=btnG VALUE=\"Google Search\">
+<font size=-1>
+<input type=hidden name=domains value=\"$wgServer\"><br /><input type=radio name=sitesearch value=\"\"> WWW <input type=radio name=sitesearch value=\"$wgServer\" checked> $wgServer <br />
+<input type='hidden' name='ie' value='$2'>
+<input type='hidden' name='oe' value='$2'>
+</font>
+</td></tr></TABLE>
+</FORM>
+<!-- SiteSearch Google -->";
+		$cachederror = "The following is a cached copy of the requested page, and may not be up to date. ";
+
+		# No database access
+		if ( is_object( $wgMessageCache ) ) {
+			$wgMessageCache->disable();
+		}
+
+		if ( trim( $this->error ) == '' ) {
+			$this->error = $this->db->getProperty('mServer');
+		}
+
+		$text = str_replace( '$1', $this->error, $noconnect );
+		$text .= wfGetSiteNotice();
+
+		if($wgUseFileCache) {
+			if($wgTitle) {
+				$t =& $wgTitle;
+			} else {
+				if($title) {
+					$t = Title::newFromURL( $title );
+				} elseif (@/**/$_REQUEST['search']) {
+					$search = $_REQUEST['search'];
+					return $searchdisabled .
+					  str_replace( array( '$1', '$2' ), array( htmlspecialchars( $search ),
+					  $wgInputEncoding ), $googlesearch );
+				} else {
+					$t = Title::newFromText( $mainpage );
+				}
+			}
+
+			$cache = new HTMLFileCache( $t );
+			if( $cache->isFileCached() ) {
+				// FIXME: $msg is not defined on the next line.
+				$msg = '<p style="color: red"><b>'.$msg."<br />\n" .
+					$cachederror . "</b></p>\n";
+
+				$tag = '<div id="article">';
+				$text = str_replace(
+					$tag,
+					$tag . $msg,
+					$cache->fetchPageText() );
+			}
+		}
+
+		return $text;
+	}
+}
+
+class DBQueryError extends DBError {
+	public $error, $errno, $sql, $fname;
+	
+	function __construct( Database &$db, $error, $errno, $sql, $fname ) {
+		$message = "A database error has occurred\n" .
+		  "Query: $sql\n" .
+		  "Function: $fname\n" .
+		  "Error: $errno $error\n";
+
+		parent::__construct( $db, $message );
+		$this->error = $error;
+		$this->errno = $errno;
+		$this->sql = $sql;
+		$this->fname = $fname;
+	}
+
+	function getText() {
+		if ( $this->useMessageCache() ) {
+			return wfMsg( 'dberrortextcl', htmlspecialchars( $this->getSQL() ),
+			  htmlspecialchars( $this->fname ), $this->errno, htmlspecialchars( $this->error ) ) . "\n";
+		} else {
+			return $this->getMessage();
+		}
+	}
+	
+	function getSQL() {
+		global $wgShowSQLErrors;
+		if( !$wgShowSQLErrors ) {
+			return $this->msg( 'sqlhidden', 'SQL hidden' );
+		} else {
+			return $this->sql;
+		}
+	}
+	
+	function getLogMessage() {
+		# Don't send to the exception log
+		return false;
+	}
+
+	function getPageTitle() {
+		return $this->msg( 'databaseerror', 'Database error' );
+	}
+
+	function getHTML() {
+		if ( $this->useMessageCache() ) {
+			return wfMsgNoDB( 'dberrortext', htmlspecialchars( $this->getSQL() ),
+			  htmlspecialchars( $this->fname ), $this->errno, htmlspecialchars( $this->error ) );
+		} else {
+			return nl2br( htmlspecialchars( $this->getMessage() ) );
+		}
+	}
+}
+
+class DBUnexpectedError extends DBError {}
+
+/******************************************************************************/
+
 /**
  * Database abstraction object
  * @package MediaWiki
@@ -49,21 +236,21 @@ class Database {
 #------------------------------------------------------------------------------
 # Variables
 #------------------------------------------------------------------------------
-	/**#@+
-	 * @private
-	 */
-	var $mLastQuery = '';
 
-	var $mServer, $mUser, $mPassword, $mConn = null, $mDBname;
-	var $mOut, $mOpened = false;
+	protected $mLastQuery = '';
 
-	var $mFailFunction;
-	var $mTablePrefix;
-	var $mFlags;
-	var $mTrxLevel = 0;
-	var $mErrorCount = 0;
-	var $mLBInfo = array();
-	/**#@-*/
+	protected $mServer, $mUser, $mPassword, $mConn = null, $mDBname;
+	protected $mOut, $mOpened = false;
+
+	protected $mFailFunction;
+	protected $mTablePrefix;
+	protected $mFlags;
+	protected $mTrxLevel = 0;
+	protected $mErrorCount = 0;
+	protected $mLBInfo = array();
+	protected $mCascadingDeletes = false;
+	protected $mCleanupTriggers = false;
+	protected $mStrictIPs = false;
 
 #------------------------------------------------------------------------------
 # Accessors
@@ -82,8 +269,8 @@ class Database {
 	 * Output page, used for reporting errors
 	 * FALSE means discard output
 	 */
-	function &setOutputPage( &$out ) {
-		$this->mOut =& $out;
+	function setOutputPage( $out ) {
+		$this->mOut = $out;
 	}
 
 	/**
@@ -109,7 +296,7 @@ class Database {
 	 * Turns on (false) or off (true) the automatic generation and sending
 	 * of a "we're sorry, but there has been a database error" page on
 	 * database errors. Default is on (false). When turned off, the
-	 * code should use wfLastErrno() and wfLastError() to handle the
+	 * code should use lastErrno() and lastError() to handle the
 	 * situation as appropriate.
 	 */
 	function ignoreErrors( $ignoreErrors = NULL ) {
@@ -154,6 +341,42 @@ class Database {
 		}
 	}
 
+	/**
+	 * Returns true if this database supports (and uses) cascading deletes
+	 */
+	function cascadingDeletes() {
+		return $this->mCascadingDeletes;
+	}
+
+	/**
+	 * Returns true if this database supports (and uses) triggers (e.g. on the page table)
+	 */
+	function cleanupTriggers() {
+		return $this->mCleanupTriggers;
+	}
+
+	/**
+	 * Returns true if this database is strict about what can be put into an IP field.
+	 * Specifically, it uses a NULL value instead of an empty string.
+	 */
+	function strictIPs() {
+		return $this->mStrictIPs;
+	}
+
+	/**
+	 * Returns true if this database uses timestamps rather than integers
+	*/
+	function realTimestamps() {
+		return false;
+	}
+
+	/**
+	 * Returns true if this database does an implicit sort when doing GROUP BY
+	 */
+	function implicitGroupby() {
+		return true;
+	}
+
 	/**#@+
 	 * Get function
 	 */
@@ -173,6 +396,13 @@ class Database {
 		return !!($this->mFlags & $flag);
 	}
 
+	/**
+	 * General read-only accessor
+	 */
+	function getProperty( $name ) {
+		return $this->$name;
+	}
+
 #------------------------------------------------------------------------------
 # Other functions
 #------------------------------------------------------------------------------
@@ -189,7 +419,7 @@ class Database {
 	 * @param $flags
 	 * @param $tablePrefix String: database table prefixes. By default use the prefix gave in LocalSettings.php
 	 */
-	function Database( $server = false, $user = false, $password = false, $dbName = false,
+	function __construct( $server = false, $user = false, $password = false, $dbName = false,
 		$failFunction = false, $flags = 0, $tablePrefix = 'get from global' ) {
 
 		global $wgOut, $wgDBprefix, $wgCommandLineMode;
@@ -234,7 +464,7 @@ class Database {
 	 * @param failFunction
 	 * @param $flags
 	 */
-	function newFromParams( $server, $user, $password, $dbName,
+	static function newFromParams( $server, $user, $password, $dbName,
 		$failFunction = false, $flags = 0 )
 	{
 		return new Database( $server, $user, $password, $dbName, $failFunction, $flags );
@@ -246,6 +476,7 @@ class Database {
 	 */
 	function open( $server, $user, $password, $dbName ) {
 		global $wguname;
+		wfProfileIn( __METHOD__ );
 
 		# Test for missing mysql.so
 		# First try to load it
@@ -253,9 +484,10 @@ class Database {
 			@dl('mysql.so');
 		}
 
+		# Fail now
 		# Otherwise we get a suppressed fatal error, which is very hard to track down
 		if ( !function_exists( 'mysql_connect' ) ) {
-			wfDie( "MySQL functions missing, have you compiled PHP with the --with-mysql option?\n" );
+			throw new DBConnectionError( $this, "MySQL functions missing, have you compiled PHP with the --with-mysql option?\n" );
 		}
 
 		$this->close();
@@ -266,19 +498,28 @@ class Database {
 
 		$success = false;
 
-		if ( $this->mFlags & DBO_PERSISTENT ) {
-			@/**/$this->mConn = mysql_pconnect( $server, $user, $password );
-		} else {
-			# Create a new connection...
-			if( version_compare( PHP_VERSION, '4.2.0', 'ge' ) ) {
-				@/**/$this->mConn = mysql_connect( $server, $user, $password, true );
+		wfProfileIn("dbconnect-$server");
+		
+		# LIVE PATCH by Tim, ask Domas for why: retry loop
+		$this->mConn = false;
+		$max = 3;
+		for ( $i = 0; $i < $max && !$this->mConn; $i++ ) {
+			if ( $i > 1 ) {
+				usleep( 1000 );
+			}
+			if ( $this->mFlags & DBO_PERSISTENT ) {
+				@/**/$this->mConn = mysql_pconnect( $server, $user, $password );
 			} else {
-				# On PHP 4.1 the new_link parameter is not available. We cannot
-				# guarantee that we'll actually get a new connection, and this
-				# may cause some operations to fail possibly.
-				@/**/$this->mConn = mysql_connect( $server, $user, $password );
+				# Create a new connection...
+				@/**/$this->mConn = mysql_connect( $server, $user, $password, true );
+			}
+			if ($this->mConn === false) {
+				$iplus = $i + 1;
+				wfLogDBError("Connect loop error $iplus of $max ($server): " . mysql_errno() . " - " . mysql_error()."\n"); 
 			}
 		}
+		
+		wfProfileOut("dbconnect-$server");
 
 		if ( $dbName != '' ) {
 			if ( $this->mConn !== false ) {
@@ -286,6 +527,7 @@ class Database {
 				if ( !$success ) {
 					$error = "Error selecting database $dbName on server {$this->mServer} " .
 						"from client host {$wguname['nodename']}\n";
+					wfLogDBError(" Error selecting database $dbName on server {$this->mServer} \n");
 					wfDebug( $error );
 				}
 			} else {
@@ -299,18 +541,19 @@ class Database {
 			$success = (bool)$this->mConn;
 		}
 
-		if ( !$success ) {
+		if ( $success ) {
+			global $wgDBmysql5;
+			if( $wgDBmysql5 ) {
+				// Tell the server we're communicating with it in UTF-8.
+				// This may engage various charset conversions.
+				$this->query( 'SET NAMES utf8' );
+			}
+		} else {
 			$this->reportConnectionError();
 		}
 
-		global $wgDBmysql5;
-		if( $wgDBmysql5 ) {
-			// Tell the server we're communicating with it in UTF-8.
-			// This may engage various charset conversions.
-			$this->query( 'SET NAMES utf8' );
-		}
-
 		$this->mOpened = $success;
+		wfProfileOut( __METHOD__ );
 		return $success;
 	}
 	/**@}}*/
@@ -335,7 +578,6 @@ class Database {
 	}
 
 	/**
-	 * @private
 	 * @param string $error fallback error message, used if none is given by MySQL
 	 */
 	function reportConnectionError( $error = 'Unknown error' ) {
@@ -345,12 +587,15 @@ class Database {
 		}
 
 		if ( $this->mFailFunction ) {
+			# Legacy error handling method
 			if ( !is_int( $this->mFailFunction ) ) {
 				$ff = $this->mFailFunction;
 				$ff( $this, $error );
 			}
 		} else {
-			wfEmergencyAbort( $this, $error );
+			# New method
+			wfLogDBError( "Connection error: $error\n" );
+			throw new DBConnectionError( $this, $error );
 		}
 	}
 
@@ -383,13 +628,15 @@ class Database {
 
 		# Add a comment for easy SHOW PROCESSLIST interpretation
 		if ( $fname ) {
-			$commentedSql = preg_replace("/\s/", " /* $fname */ ", $sql, 1);
+			$commentedSql = preg_replace('/\s/', " /* $fname */ ", $sql, 1);
 		} else {
 			$commentedSql = $sql;
 		}
 
 		# If DBO_TRX is set, start a transaction
-		if ( ( $this->mFlags & DBO_TRX ) && !$this->trxLevel() && $sql != 'BEGIN' ) {
+		if ( ( $this->mFlags & DBO_TRX ) && !$this->trxLevel() && 
+			$sql != 'BEGIN' && $sql != 'COMMIT' && $sql != 'ROLLBACK' 
+		) {
 			$this->begin();
 		}
 
@@ -447,36 +694,20 @@ class Database {
 	 * @param bool $tempIgnore
 	 */
 	function reportQueryError( $error, $errno, $sql, $fname, $tempIgnore = false ) {
-		global $wgCommandLineMode, $wgFullyInitialised, $wgColorErrors;
+		global $wgCommandLineMode;
 		# Ignore errors during error handling to avoid infinite recursion
 		$ignore = $this->ignoreErrors( true );
 		++$this->mErrorCount;
 
 		if( $ignore || $tempIgnore ) {
 			wfDebug("SQL ERROR (ignored): $error\n");
+			$this->ignoreErrors( $ignore );
 		} else {
 			$sql1line = str_replace( "\n", "\\n", $sql );
 			wfLogDBError("$fname\t{$this->mServer}\t$errno\t$error\t$sql1line\n");
 			wfDebug("SQL ERROR: " . $error . "\n");
-			if ( $wgCommandLineMode || !$this->mOut || empty( $wgFullyInitialised ) ) {
-				$message = "A database error has occurred\n" .
-				  "Query: $sql\n" .
-				  "Function: $fname\n" .
-				  "Error: $errno $error\n";
-				if ( !$wgCommandLineMode ) {
-					$message = nl2br( $message );
-				}
-				if( $wgCommandLineMode && $wgColorErrors && !wfIsWindows() && posix_isatty(1) ) {
-					$color = 31; // bright red!
-					$message = "\x1b[1;{$color}m{$message}\x1b[0m";
-				}
-				wfDebugDieBacktrace( $message );
-			} else {
-				// this calls wfAbruptExit()
-				$this->mOut->databaseError( $fname, $sql, $error, $errno );
-			}
+			throw new DBQueryError( $this, $error, $errno, $sql, $fname );
 		}
-		$this->ignoreErrors( $ignore );
 	}
 
 
@@ -562,15 +793,15 @@ class Database {
 			case '\\!': return '!';
 			case '\\&': return '&';
 		}
-		list( $n, $arg ) = each( $this->preparedArgs );
+		list( /* $n */ , $arg ) = each( $this->preparedArgs );
 		switch( $matches[1] ) {
 			case '?': return $this->addQuotes( $arg );
 			case '!': return $arg;
 			case '&':
 				# return $this->addQuotes( file_get_contents( $arg ) );
-				wfDebugDieBacktrace( '& mode is not implemented. If it\'s really needed, uncomment the line above.' );
+				throw new DBUnexpectedError( $this, '& mode is not implemented. If it\'s really needed, uncomment the line above.' );
 			default:
-				wfDebugDieBacktrace( 'Received invalid match. This should never happen!' );
+				throw new DBUnexpectedError( $this, 'Received invalid match. This should never happen!' );
 		}
 	}
 
@@ -582,7 +813,7 @@ class Database {
 	 */
 	function freeResult( $res ) {
 		if ( !@/**/mysql_free_result( $res ) ) {
-			wfDebugDieBacktrace( "Unable to free MySQL result\n" );
+			throw new DBUnexpectedError( $this, "Unable to free MySQL result" );
 		}
 	}
 
@@ -591,8 +822,8 @@ class Database {
 	 */
 	function fetchObject( $res ) {
 		@/**/$row = mysql_fetch_object( $res );
-		if( mysql_errno() ) {
-			wfDebugDieBacktrace( 'Error in fetchObject(): ' . htmlspecialchars( mysql_error() ) );
+		if( $this->lastErrno() ) {
+			throw new DBUnexpectedError( $this, 'Error in fetchObject(): ' . htmlspecialchars( $this->lastError() ) );
 		}
 		return $row;
 	}
@@ -603,8 +834,8 @@ class Database {
 	 */
  	function fetchRow( $res ) {
 		@/**/$row = mysql_fetch_array( $res );
-		if (mysql_errno() ) {
-			wfDebugDieBacktrace( 'Error in fetchRow(): ' . htmlspecialchars( mysql_error() ) );
+		if ( $this->lastErrno() ) {
+			throw new DBUnexpectedError( $this, 'Error in fetchRow(): ' . htmlspecialchars( $this->lastError() ) );
 		}
 		return $row;
 	}
@@ -614,8 +845,8 @@ class Database {
 	 */
 	function numRows( $res ) {
 		@/**/$n = mysql_num_rows( $res );
-		if( mysql_errno() ) {
-			wfDebugDieBacktrace( 'Error in numRows(): ' . htmlspecialchars( mysql_error() ) );
+		if( $this->lastErrno() ) {
+			throw new DBUnexpectedError( $this, 'Error in numRows(): ' . htmlspecialchars( $this->lastError() ) );
 		}
 		return $n;
 	}
@@ -765,6 +996,7 @@ class Database {
 		if ( isset( $noKeyOptions['DISTINCT'] ) && isset( $noKeyOptions['DISTINCTROW'] ) ) $startOpts .= 'DISTINCT';
 
 		# Various MySQL extensions
+		if ( isset( $noKeyOptions['STRAIGHT_JOIN'] ) ) $startOpts .= ' /*! STRAIGHT_JOIN */';
 		if ( isset( $noKeyOptions['HIGH_PRIORITY'] ) ) $startOpts .= ' HIGH_PRIORITY';
 		if ( isset( $noKeyOptions['SQL_BIG_RESULT'] ) ) $startOpts .= ' SQL_BIG_RESULT';
 		if ( isset( $noKeyOptions['SQL_BUFFER_RESULT'] ) ) $startOpts .= ' SQL_BUFFER_RESULT';
@@ -784,6 +1016,14 @@ class Database {
 
 	/**
 	 * SELECT wrapper
+	 *
+	 * @param mixed  $table   Array or string, table name(s) (prefix auto-added)
+	 * @param mixed  $vars    Array or string, field name(s) to be retrieved
+	 * @param mixed  $conds   Array or string, condition(s) for WHERE
+	 * @param string $fname   Calling function name (use __METHOD__) for logs/profiling
+	 * @param array  $options Associative array of options (e.g. array('GROUP BY' => 'page_title')),
+	 *                        see Database::makeSelectOptions code for list of supported stuff
+	 * @return mixed Database result resource (feed to Database::fetchObject or whatever), or false on failure
 	 */
 	function select( $table, $vars, $conds='', $fname = 'Database::select', $options = array() )
 	{
@@ -794,7 +1034,7 @@ class Database {
 			$options = array( $options );
 		}
 		if( is_array( $table ) ) {
-			if ( @is_array( $options['USE INDEX'] ) )
+			if ( isset( $options['USE INDEX'] ) && is_array( $options['USE INDEX'] ) )
 				$from = ' FROM ' . $this->tableNamesWithUseIndex( $table, $options['USE INDEX'] );
 			else
 				$from = ' FROM ' . implode( ',', array_map( array( &$this, 'tableName' ), $table ) );
@@ -854,7 +1094,7 @@ class Database {
 	 * @param string $sql A SQL Query
 	 * @static
 	 */
-	function generalizeSQL( $sql ) {
+	static function generalizeSQL( $sql ) {
 		# This does the same as the regexp below would do, but in such a way
 		# as to avoid crashing php on some large strings.
 		# $sql = preg_replace ( "/'([^\\\\']|\\\\.)*'|\"([^\\\\\"]|\\\\.)*\"/", "'X'", $sql);
@@ -866,7 +1106,7 @@ class Database {
 		$sql = preg_replace ('/".*"/s', "'X'", $sql);
 
 		# All newlines, tabs, etc replaced by single space
-		$sql = preg_replace ( "/\s+/", ' ', $sql);
+		$sql = preg_replace ( '/\s+/', ' ', $sql);
 
 		# All numbers => N
 		$sql = preg_replace ('/-?[0-9]+/s', 'N', $sql);
@@ -927,12 +1167,15 @@ class Database {
 			return NULL;
 		}
 
+		$result = array();
 		while ( $row = $this->fetchObject( $res ) ) {
 			if ( $row->Key_name == $index ) {
-				return $row;
+				$result[] = $row;
 			}
 		}
-		return false;
+		$this->freeResult($res);
+		
+		return empty($result) ? false : $result;
 	}
 
 	/**
@@ -986,7 +1229,7 @@ class Database {
 		if ( !$indexInfo ) {
 			return NULL;
 		}
-		return !$indexInfo->Non_unique;
+		return !$indexInfo[0]->Non_unique;
 	}
 
 	/**
@@ -1076,7 +1319,7 @@ class Database {
 	}
 
 	/**
-	 * Makes a wfStrencoded list from an array
+	 * Makes an encoded list of strings from an array
 	 * $mode:
 	 *        LIST_COMMA         - comma separated, no field names
 	 *        LIST_AND           - ANDed WHERE clause (without the WHERE)
@@ -1086,7 +1329,7 @@ class Database {
 	 */
 	function makeList( $a, $mode = LIST_COMMA ) {
 		if ( !is_array( $a ) ) {
-			wfDebugDieBacktrace( 'Database::makeList called with incorrect parameters' );
+			throw new DBUnexpectedError( $this, 'Database::makeList called with incorrect parameters' );
 		}
 
 		$first = true;
@@ -1105,6 +1348,8 @@ class Database {
 			}
 			if ( ($mode == LIST_AND || $mode == LIST_OR) && is_numeric( $field ) ) {
 				$list .= "($value)";
+			} elseif ( ($mode == LIST_SET) && is_numeric( $field ) ) {
+				$list .= "$value";
 			} elseif ( ($mode == LIST_AND || $mode == LIST_OR) && is_array ($value) ) {
 				$list .= $field." IN (".$this->makeList($value).") ";
 			} else {
@@ -1163,11 +1408,29 @@ class Database {
 	 * $sql = "SELECT wl_namespace,wl_title FROM $watchlist,$user
 	 *         WHERE wl_user=user_id AND wl_user=$nameWithQuotes";
 	 */
-	function tableNames() {
+	public function tableNames() {
 		$inArray = func_get_args();
 		$retVal = array();
 		foreach ( $inArray as $name ) {
 			$retVal[$name] = $this->tableName( $name );
+		}
+		return $retVal;
+	}
+	
+	/**
+	 * @desc: Fetch a number of table names into an zero-indexed numerical array
+	 * This is handy when you need to construct SQL for joins
+	 *
+	 * Example:
+	 * list( $user, $watchlist ) = $dbr->tableNames('user','watchlist');
+	 * $sql = "SELECT wl_namespace,wl_title FROM $watchlist,$user
+	 *         WHERE wl_user=user_id AND wl_user=$nameWithQuotes";
+	 */
+	public function tableNamesN() {
+		$inArray = func_get_args();
+		$retVal = array();
+		foreach ( $inArray as $name ) {
+			$retVal[] = $this->tableName( $name );
 		}
 		return $retVal;
 	}
@@ -1193,7 +1456,7 @@ class Database {
 	 * @return string slashed string.
 	 */
 	function strencode( $s ) {
-		return addslashes( $s );
+		return mysql_real_escape_string( $s, $this->mConn );
 	}
 
 	/**
@@ -1289,7 +1552,7 @@ class Database {
 	 */
 	function deleteJoin( $delTable, $joinTable, $delVar, $joinVar, $conds, $fname = 'Database::deleteJoin' ) {
 		if ( !$conds ) {
-			wfDebugDieBacktrace( 'Database::deleteJoin() called with empty $conds' );
+			throw new DBUnexpectedError( $this, 'Database::deleteJoin() called with empty $conds' );
 		}
 
 		$delTable = $this->tableName( $delTable );
@@ -1312,7 +1575,8 @@ class Database {
 		$row = $this->fetchObject( $res );
 		$this->freeResult( $res );
 
-		if ( preg_match( "/\((.*)\)/", $row->Type, $m ) ) {
+		$m = array();
+		if ( preg_match( '/\((.*)\)/', $row->Type, $m ) ) {
 			$size = $m[1];
 		} else {
 			$size = -1;
@@ -1334,7 +1598,7 @@ class Database {
 	 */
 	function delete( $table, $conds, $fname = 'Database::delete' ) {
 		if ( !$conds ) {
-			wfDebugDieBacktrace( 'Database::delete() called with no conditions' );
+			throw new DBUnexpectedError( $this, 'Database::delete() called with no conditions' );
 		}
 		$table = $this->tableName( $table );
 		$sql = "DELETE FROM $table";
@@ -1386,7 +1650,7 @@ class Database {
 	 */
 	function limitResult($sql, $limit, $offset=false) {
 		if( !is_numeric($limit) ) {
-			wfDie( "Invalid non-numeric limit passed to limitResult()\n" );
+			throw new DBUnexpectedError( $this, "Invalid non-numeric limit passed to limitResult()\n" );
 		}
 		return " $sql LIMIT "
 				. ( (is_numeric($offset) && $offset != 0) ? "{$offset}," : "" )
@@ -1527,26 +1791,19 @@ class Database {
 	}
 
 	/**
-	 * Begin a transaction, or if a transaction has already started, continue it
+	 * Begin a transaction, committing any previously open transaction
 	 */
 	function begin( $fname = 'Database::begin' ) {
-		if ( !$this->mTrxLevel ) {
-			$this->immediateBegin( $fname );
-		} else {
-			$this->mTrxLevel++;
-		}
+		$this->query( 'BEGIN', $fname );
+		$this->mTrxLevel = 1;
 	}
 
 	/**
-	 * End a transaction, or decrement the nest level if transactions are nested
+	 * End a transaction
 	 */
 	function commit( $fname = 'Database::commit' ) {
-		if ( $this->mTrxLevel ) {
-			$this->mTrxLevel--;
-		}
-		if ( !$this->mTrxLevel ) {
-			$this->immediateCommit( $fname );
-		}
+		$this->query( 'COMMIT', $fname );
+		$this->mTrxLevel = 0;
 	}
 
 	/**
@@ -1559,18 +1816,18 @@ class Database {
 
 	/**
 	 * Begin a transaction, committing any previously open transaction
+	 * @deprecated use begin()
 	 */
 	function immediateBegin( $fname = 'Database::immediateBegin' ) {
-		$this->query( 'BEGIN', $fname );
-		$this->mTrxLevel = 1;
+		$this->begin();
 	}
 
 	/**
 	 * Commit transaction, if one is open
+	 * @deprecated use commit()
 	 */
 	function immediateCommit( $fname = 'Database::immediateCommit' ) {
-		$this->query( 'COMMIT', $fname );
-		$this->mTrxLevel = 0;
+		$this->commit();
 	}
 
 	/**
@@ -1620,7 +1877,7 @@ class Database {
 	 * @return string Version information from the database
 	 */
 	function getServerVersion() {
-		return mysql_get_server_info();
+		return mysql_get_server_info( $this->mConn );
 	}
 
 	/**
@@ -1643,16 +1900,25 @@ class Database {
 		$res = $this->query( 'SHOW PROCESSLIST' );
 		# Find slave SQL thread. Assumed to be the second one running, which is a bit
 		# dubious, but unfortunately there's no easy rigorous way
-		$slaveThreads = 0;
 		while ( $row = $this->fetchObject( $res ) ) {
-			if ( $row->User == 'system user' ) {
-				if ( ++$slaveThreads == 2 ) {
-					# This is it, return the time (except -ve)
-					if ( $row->Time > 0x7fffffff ) {
-						return false;
-					} else {
-						return $row->Time;
-					}
+			/* This should work for most situations - when default db 
+			 * for thread is not specified, it had no events executed, 
+			 * and therefore it doesn't know yet how lagged it is.
+			 *
+			 * Relay log I/O thread does not select databases.
+			 */
+			if ( $row->User == 'system user' && 
+				$row->State != 'Waiting for master to send event' &&
+				$row->State != 'Connecting to master' && 
+				$row->State != 'Queueing master event to the relay log' &&
+				$row->State != 'Waiting for master update' &&
+				$row->State != 'Requesting binlog dump'
+				) {
+				# This is it, return the time (except -ve)
+				if ( $row->Time > 0x7fffffff ) {
+					return false;
+				} else {
+					return $row->Time;
 				}
 			}
 		}
@@ -1682,6 +1948,10 @@ class Database {
 		return $b;
 	}
 
+	function decodeBlob($b) {
+		return $b;
+	}
+
 	/**
 	 * Read and execute SQL commands from a file.
 	 * Returns true on success, error string on failure
@@ -1689,7 +1959,7 @@ class Database {
 	function sourceFile( $filename ) {
 		$fp = fopen( $filename, 'r' );
 		if ( false === $fp ) {
-			return "Could not open \"{$fname}\".\n";
+			return "Could not open \"{$filename}\".\n";
 		}
 
 		$cmd = "";
@@ -1744,7 +2014,7 @@ class Database {
 	/**
 	 * Replace variables in sourced SQL
 	 */
-	function replaceVars( $ins ) {
+	protected function replaceVars( $ins ) {
 		$varnames = array(
 			'wgDBserver', 'wgDBname', 'wgDBintlname', 'wgDBuser',
 			'wgDBpassword', 'wgDBsqluser', 'wgDBsqlpassword',
@@ -1754,7 +2024,7 @@ class Database {
 		// Ordinary variables
 		foreach ( $varnames as $var ) {
 			if( isset( $GLOBALS[$var] ) ) {
-				$val = addslashes( $GLOBALS[$var] );
+				$val = addslashes( $GLOBALS[$var] ); // FIXME: safety check?
 				$ins = str_replace( '{$' . $var . '}', $val, $ins );
 				$ins = str_replace( '/*$' . $var . '*/`', '`' . $val, $ins );
 				$ins = str_replace( '/*$' . $var . '*/', $val, $ins );
@@ -1771,7 +2041,7 @@ class Database {
 	 * Table name callback
 	 * @private
 	 */
-	function tableNameCallback( $matches ) {
+	protected function tableNameCallback( $matches ) {
 		return $this->tableName( $matches[1] );
 	}
 
@@ -1822,7 +2092,7 @@ class ResultWrapper {
 	/**
 	 * @todo document
 	 */
-	function &fetchRow() {
+	function fetchRow() {
 		return $this->db->fetchRow( $this->result );
 	}
 
@@ -1839,108 +2109,6 @@ class ResultWrapper {
 		$this->db->dataSeek( $this->result, $row );
 	}
 
-}
-
-
-#------------------------------------------------------------------------------
-# Global functions
-#------------------------------------------------------------------------------
-
-/**
- * Standard fail function, called by default when a connection cannot be
- * established.
- * Displays the file cache if possible
- */
-function wfEmergencyAbort( &$conn, $error ) {
-	global $wgTitle, $wgUseFileCache, $title, $wgInputEncoding, $wgOutputEncoding;
-	global $wgSitename, $wgServer, $wgMessageCache, $wgLogo;
-
-	# I give up, Brion is right. Getting the message cache to work when there is no DB is tricky.
-	# Hard coding strings instead.
-
-	$noconnect = "<h1><img src='$wgLogo' style='float:left;margin-right:1em' alt=''>$wgSitename has a problem</h1><p><strong>Sorry! This site is experiencing technical difficulties.</strong></p><p>Try waiting a few minutes and reloading.</p><p><small>(Can't contact the database server: $1)</small></p>";
-	$mainpage = 'Main Page';
-	$searchdisabled = <<<EOT
-<p style="margin: 1.5em 2em 1em">$wgSitename search is disabled for performance reasons. You can search via Google in the meantime.
-<span style="font-size: 89%; display: block; margin-left: .2em">Note that their indexes of $wgSitename content may be out of date.</span></p>',
-EOT;
-
-	$googlesearch = "
-<!-- SiteSearch Google -->
-<FORM method=GET action=\"http://www.google.com/search\">
-<TABLE bgcolor=\"#FFFFFF\"><tr><td>
-<A HREF=\"http://www.google.com/\">
-<IMG SRC=\"http://www.google.com/logos/Logo_40wht.gif\"
-border=\"0\" ALT=\"Google\"></A>
-</td>
-<td>
-<INPUT TYPE=text name=q size=31 maxlength=255 value=\"$1\">
-<INPUT type=submit name=btnG VALUE=\"Google Search\">
-<font size=-1>
-<input type=hidden name=domains value=\"$wgServer\"><br /><input type=radio name=sitesearch value=\"\"> WWW <input type=radio name=sitesearch value=\"$wgServer\" checked> $wgServer <br />
-<input type='hidden' name='ie' value='$2'>
-<input type='hidden' name='oe' value='$2'>
-</font>
-</td></tr></TABLE>
-</FORM>
-<!-- SiteSearch Google -->";
-	$cachederror = "The following is a cached copy of the requested page, and may not be up to date. ";
-
-
-	if( !headers_sent() ) {
-		header( 'HTTP/1.0 500 Internal Server Error' );
-		header( 'Content-type: text/html; charset='.$wgOutputEncoding );
-		/* Don't cache error pages!  They cause no end of trouble... */
-		header( 'Cache-control: none' );
-		header( 'Pragma: nocache' );
-	}
-
-	# No database access
-	if ( is_object( $wgMessageCache ) ) {
-		$wgMessageCache->disable();
-	}
-
-	if ( trim( $error ) == '' ) {
-		$error = $this->mServer;
-	}
-
-	wfLogDBError( "Connection error: $error\n" );
-
-	$text = str_replace( '$1', $error, $noconnect );
-	$text .= wfGetSiteNotice();
-
-	if($wgUseFileCache) {
-		if($wgTitle) {
-			$t =& $wgTitle;
-		} else {
-			if($title) {
-				$t = Title::newFromURL( $title );
-			} elseif (@/**/$_REQUEST['search']) {
-				$search = $_REQUEST['search'];
-				echo $searchdisabled;
-				echo str_replace( array( '$1', '$2' ), array( htmlspecialchars( $search ),
-				  $wgInputEncoding ), $googlesearch );
-				wfErrorExit();
-			} else {
-				$t = Title::newFromText( $mainpage );
-			}
-		}
-
-		$cache = new CacheManager( $t );
-		if( $cache->isFileCached() ) {
-			$msg = '<p style="color: red"><b>'.$msg."<br />\n" .
-				$cachederror . "</b></p>\n";
-
-			$tag = '<div id="article">';
-			$text = str_replace(
-				$tag,
-				$tag . $msg,
-				$cache->fetchPageText() );
-		}
-	}
-
-	echo $text;
-	wfErrorExit();
 }
 
 ?>

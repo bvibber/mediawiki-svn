@@ -23,9 +23,6 @@
  * @subpackage Search
  */
 
-/** */
-require_once( 'SearchEngine.php' );
-
 /**
  * @todo document
  * @package MediaWiki
@@ -36,7 +33,6 @@ class SearchTsearch2 extends SearchEngine {
 
 	function SearchTsearch2( &$db ) {
 		$this->db =& $db;
-		$this->db->setSchema('tsearch');
 		$this->mRanking = true;
 	}
 
@@ -51,6 +47,7 @@ class SearchTsearch2 extends SearchEngine {
 		$this->searchTerms = array();
 
 		# FIXME: This doesn't handle parenthetical expressions.
+		$m = array();
 		if( preg_match_all( '/([-+<>~]?)(([' . $lc . ']+)(\*?)|"[^"]*")/',
 			  $filteredText, $m, PREG_SET_ORDER ) ) {
 			foreach( $m as $terms ) {
@@ -68,7 +65,7 @@ class SearchTsearch2 extends SearchEngine {
 				$this->searchTerms[] = $regexp;
 			}
 			wfDebug( "Would search with '$searchon'\n" );
-			wfDebug( "Match with /\b" . implode( '\b|\b', $this->searchTerms ) . "\b/\n" );
+			wfDebug( 'Match with /\b' . implode( '\b|\b', $this->searchTerms ) . "\b/\n" );
 		} else {
 			wfDebug( "Can't understand search query '{$this->filteredText}'\n" );
 		}
@@ -116,7 +113,7 @@ class SearchTsearch2 extends SearchEngine {
 	        $dbw=& wfGetDB(DB_MASTER);
 	        $searchindex = $dbw->tableName( 'searchindex' );
 	        $sql = "UPDATE $searchindex SET si_title=to_tsvector('" .
-	                  $db->strencode( $title ) .
+	                  $dbw->strencode( $title ) .
 	                  "') WHERE si_page={$id}";
 
 	        $dbw->query( $sql, "SearchMySQL4::updateTitle" );

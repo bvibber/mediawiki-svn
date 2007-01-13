@@ -46,6 +46,13 @@ class IPBlockForm {
 		$this->BlockReason = $wgRequest->getText( 'wpBlockReason' );
 		$this->BlockExpiry = $wgRequest->getVal( 'wpBlockExpiry', wfMsg('ipbotheroption') );
 		$this->BlockOther = $wgRequest->getVal( 'wpBlockOther', '' );
+
+		# Unchecked checkboxes are not included in the form data at all, so having one 
+		# that is true by default is a bit tricky
+		$byDefault = !$wgRequest->wasPosted();
+		$this->BlockAnonOnly = $wgRequest->getBool( 'wpAnonOnly', $byDefault );
+		$this->BlockCreateAccount = $wgRequest->getBool( 'wpCreateAccount', $byDefault );
+		$this->BlockEnableAutoblock = $wgRequest->getBool( 'wpEnableAutoblock', $byDefault );
 	}
 
 	function showForm( $err ) {
@@ -64,7 +71,7 @@ class IPBlockForm {
 		$mIpbothertime = wfMsgHtml( 'ipbotheroption' );
 		$mIpbreason = wfMsgHtml( 'ipbreason' );
 		$mIpbsubmit = wfMsgHtml( 'ipbsubmit' );
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'Blockip' );
+		$titleObj = SpecialPage::getTitleFor( 'Blockip' );
 		$action = $titleObj->escapeLocalURL( "action=submit" );
 
 		if ( "" != $err ) {
@@ -73,7 +80,6 @@ class IPBlockForm {
 		}
 
 		$scBlockAddress = htmlspecialchars( $this->BlockAddress );
-		$scBlockExpiry = htmlspecialchars( $this->BlockExpiry );
 		$scBlockReason = htmlspecialchars( $this->BlockReason );
 		$scBlockOtherTime = htmlspecialchars( $this->BlockOther );
 		$scBlockExpiryOptions = htmlspecialchars( wfMsgForContent( 'ipboptions' ) );
@@ -102,7 +108,7 @@ class IPBlockForm {
 		<tr>
 			<td align=\"right\">{$mIpaddress}:</td>
 			<td align=\"left\">
-				<input tabindex='1' type='text' size='20' name=\"wpBlockAddress\" value=\"{$scBlockAddress}\" />
+				<input tabindex='1' type='text' size='40' name=\"wpBlockAddress\" value=\"{$scBlockAddress}\" />
 			</td>
 		</tr>
 		<tr>");
@@ -133,13 +139,44 @@ class IPBlockForm {
 		<tr>
 			<td>&nbsp;</td>
 			<td align=\"left\">
-				<input tabindex='4' type='submit' name=\"wpBlock\" value=\"{$mIpbsubmit}\" />
+				" . wfCheckLabel( wfMsg( 'ipbanononly' ),
+					'wpAnonOnly', 'wpAnonOnly', $this->BlockAnonOnly,
+					array( 'tabindex' => 4 ) ) . "
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td align=\"left\">
+				" . wfCheckLabel( wfMsg( 'ipbcreateaccount' ),
+					'wpCreateAccount', 'wpCreateAccount', $this->BlockCreateAccount,
+					array( 'tabindex' => 5 ) ) . "
+			</td>
+		</tr>
+                <tr>
+                        <td>&nbsp;</td>
+                        <td align=\"left\">
+                                " . wfCheckLabel( wfMsg( 'ipbenableautoblock' ),
+                                        'wpEnableAutoblock', 'wpEnableAutoblock', $this->BlockEnableAutoblock,
+                                        array( 'tabindex' => 6 ) ) . "
+                        </td>
+                </tr>
+		<tr>
+			<td style='padding-top: 1em'>&nbsp;</td>
+			<td style='padding-top: 1em' align=\"left\">
+				<input tabindex='7' type='submit' name=\"wpBlock\" value=\"{$mIpbsubmit}\" />
 			</td>
 		</tr>
 	</table>
 	<input type='hidden' name='wpEditToken' value=\"{$token}\" />
 </form>\n" );
 
+		$user = User::newFromName( $this->BlockAddress );
+		if( is_object( $user ) ) {
+			$this->showLogFragment( $wgOut, $user->getUserPage() );
+		} elseif( preg_match( '/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/', $this->BlockAddress ) ) {
+			$this->showLogFragment( $wgOut, Title::makeTitle( NS_USER, $this->BlockAddress ) );
+		}
+	
 	}
 
 	function doSubmit() {
@@ -151,6 +188,7 @@ class IPBlockForm {
 
 		# Check for invalid specifications
 		if ( ! preg_match( "/^$rxIP$/", $this->BlockAddress ) ) {
+			$matches = array();
 		  	if ( preg_match( "/^($rxIP)\\/(\\d{1,2})$/", $this->BlockAddress, $matches ) ) {
 				if ( $wgSysopRangeBans ) {
 					if ( $matches[2] > 31 || $matches[2] < 16 ) {
@@ -166,8 +204,12 @@ class IPBlockForm {
 			} else {
 				# Username block
 				if ( $wgSysopUserBans ) {
-					$userId = User::idFromName( $this->BlockAddress );
-					if ( $userId == 0 ) {
+					$user = User::newFromName( $this->BlockAddress );
+					if( !is_null( $user ) && $user->getID() ) {
+						# Use canonical name
+						$this->BlockAddress = $user->getName();
+						$userId = $user->getID();
+					} else {
 						$this->showForm( wfMsg( 'nosuchusershort', htmlspecialchars( $this->BlockAddress ) ) );
 						return;
 					}
@@ -188,7 +230,7 @@ class IPBlockForm {
 		}
 
 		if ( $expirestr == 'infinite' || $expirestr == 'indefinite' ) {
-			$expiry = '';
+			$expiry = Block::infinity();
 		} else {
 			# Convert GNU-style date, on error returns -1 for PHP <5.1 and false for PHP >=5.1
 			$expiry = strtotime( $expirestr );
@@ -199,28 +241,37 @@ class IPBlockForm {
 			}
 
 			$expiry = wfTimestamp( TS_MW, $expiry );
-
 		}
 
 		# Create block
 		# Note: for a user block, ipb_address is only for display purposes
 
-		$ban = new Block( $this->BlockAddress, $userId, $wgUser->getID(),
-			$this->BlockReason, wfTimestampNow(), 0, $expiry );
+		$block = new Block( $this->BlockAddress, $userId, $wgUser->getID(),
+			$this->BlockReason, wfTimestampNow(), 0, $expiry, $this->BlockAnonOnly, 
+			$this->BlockCreateAccount, $this->BlockEnableAutoblock );
 
-		if (wfRunHooks('BlockIp', array(&$ban, &$wgUser))) {
+		if (wfRunHooks('BlockIp', array(&$block, &$wgUser))) {
 
-			$ban->insert();
+			if ( !$block->insert() ) {
+				$this->showForm( wfMsg( 'ipb_already_blocked', 
+					htmlspecialchars( $this->BlockAddress ) ) );
+				return;
+			}
 
-			wfRunHooks('BlockIpComplete', array($ban, $wgUser));
+			wfRunHooks('BlockIpComplete', array($block, $wgUser));
+
+			# Prepare log parameters
+			$logParams = array();
+			$logParams[] = $expirestr;
+			$logParams[] = $this->blockLogFlags();
 
 			# Make log entry
 			$log = new LogPage( 'block' );
 			$log->addEntry( 'block', Title::makeTitle( NS_USER, $this->BlockAddress ),
-			  $this->BlockReason, $expirestr );
+			  $this->BlockReason, $logParams );
 
 			# Report to the user
-			$titleObj = Title::makeTitle( NS_SPECIAL, 'Blockip' );
+			$titleObj = SpecialPage::getTitleFor( 'Blockip' );
 			$wgOut->redirect( $titleObj->getFullURL( 'action=success&ip=' .
 				urlencode( $this->BlockAddress ) ) );
 		}
@@ -234,6 +285,31 @@ class IPBlockForm {
 		$text = wfMsg( 'blockipsuccesstext', $this->BlockAddress );
 		$wgOut->addWikiText( $text );
 	}
+	
+	function showLogFragment( $out, $title ) {
+		$out->addHtml( wfElement( 'h2', NULL, LogPage::logName( 'block' ) ) );
+		$request = new FauxRequest( array( 'page' => $title->getPrefixedText(), 'type' => 'block' ) );
+		$viewer = new LogViewer( new LogReader( $request ) );
+		$viewer->showList( $out );
+	}
+
+	/**
+	 * Return a comma-delimited list of "flags" to be passed to the log
+	 * reader for this block, to provide more information in the logs
+	 *
+	 * @return array
+	 */
+	private function blockLogFlags() {
+		$flags = array();
+		if( $this->BlockAnonOnly )
+			$flags[] = 'anononly';
+		if( $this->BlockCreateAccount )
+			$flags[] = 'nocreate';
+		if( $this->BlockEnableAutoblock )
+			$flags[] = 'autoblock';
+		return implode( ',', $flags );
+	}
+	
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'MEDIAWIKI' ) )
-	die( -1 );
+	die( 1 );
 
 /**
  * @package MediaWiki
@@ -16,6 +16,13 @@ if ( ! defined( 'MEDIAWIKI' ) )
 class ImageGallery
 {
 	var $mImages, $mShowBytes, $mShowFilename;
+	var $mCaption = false;
+	var $mSkin = false;
+	
+	/**
+	 * Is the gallery on a wiki page (i.e. not a special page)
+	 */
+	var $mParsing;
 
 	/**
 	 * Create a new image gallery object.
@@ -24,6 +31,56 @@ class ImageGallery
 		$this->mImages = array();
 		$this->mShowBytes = true;
 		$this->mShowFilename = true;
+		$this->mParsing = false;
+	}
+
+	/**
+	 * Set the "parse" bit so we know to hide "bad" images
+	 */
+	function setParsing( $val = true ) {
+		$this->mParsing = $val;
+	}
+	
+	/**
+	 * Set the caption (as plain text)
+	 *
+	 * @param $caption Caption
+	 */
+	function setCaption( $caption ) {
+		$this->mCaption = htmlspecialchars( $caption );
+	}
+	
+	/**
+	 * Set the caption (as HTML)
+	 *
+	 * @param $caption Caption
+	 */
+	function setCaptionHtml( $caption ) {
+		$this->mCaption = $caption;
+	}
+
+	/**
+	 * Instruct the class to use a specific skin for rendering
+	 *
+	 * @param $skin Skin object
+	 */
+	function useSkin( $skin ) {
+		$this->mSkin =& $skin;
+	}
+	
+	/**
+	 * Return the skin that should be used
+	 *
+	 * @return Skin object
+	 */
+	function getSkin() {
+		if( !$this->mSkin ) {
+			global $wgUser;
+			$skin =& $wgUser->getSkin();
+		} else {
+			$skin =& $this->mSkin;
+		}
+		return $skin;
 	}
 
 	/**
@@ -34,6 +91,7 @@ class ImageGallery
 	 */
 	function add( $image, $html='' ) {
 		$this->mImages[] = array( &$image, $html );
+		wfDebug( "ImageGallery::add " . $image->getName() . "\n" );
 	}
 
 	/**
@@ -85,29 +143,38 @@ class ImageGallery
 	 *
 	 */
 	function toHTML() {
-		global $wgLang, $wgUser;
+		global $wgLang, $wgGenerateThumbnailOnParse;
 
-		$sk = $wgUser->getSkin();
+		$sk = $this->getSkin();
 
 		$s = '<table class="gallery" cellspacing="0" cellpadding="0">';
+		if( $this->mCaption )
+			$s .= '<td class="galleryheader" colspan="4"><big>' . $this->mCaption . '</big></td>';
+		
 		$i = 0;
 		foreach ( $this->mImages as $pair ) {
 			$img =& $pair[0];
 			$text = $pair[1];
 
-			$name = $img->getName();
 			$nt = $img->getTitle();
 
-			// Not an image. Just print the name and skip.
-			if ( $nt->getNamespace() != NS_IMAGE ) {
-				$s .=
-					(($i%4==0) ? "<tr>\n" : '') .
-					'<td><div class="gallerybox" style="height: 152px;">' .
-					htmlspecialchars( $nt->getText() ) . '</div></td>' .  
-					(($i%4==3) ? "</tr>\n" : '');
-				$i++;
-
-				continue;
+			if( $nt->getNamespace() != NS_IMAGE ) {
+				# We're dealing with a non-image, spit out the name and be done with it.
+				$thumbhtml = '<div style="height: 152px;">' . htmlspecialchars( $nt->getText() ) . '</div>';
+ 			}
+			else if( $this->mParsing && wfIsBadImage( $nt->getDBkey() ) ) {
+				# The image is blacklisted, just show it as a text link.
+				$thumbhtml = '<div style="height: 152px;">'
+					. $sk->makeKnownLinkObj( $nt, htmlspecialchars( $nt->getText() ) ) . '</div>';
+			} else if( !( $thumb = $img->getThumbnail( 120, 120, $wgGenerateThumbnailOnParse ) ) ) {
+				# Error generating thumbnail.
+				$thumbhtml = '<div style="height: 152px;">'
+					. htmlspecialchars( $img->getLastError() ) . '</div>';
+			}
+			else {
+				$vpad = floor( ( 150 - $thumb->height ) /2 ) - 2;
+				$thumbhtml = '<div class="thumb" style="padding: ' . $vpad . 'px 0;">'
+					. $sk->makeKnownLinkObj( $nt, $thumb->toHtml() ) . '</div>';
 			}
 
 			//TODO
@@ -129,18 +196,14 @@ class ImageGallery
 				$sk->makeKnownLinkObj( $nt, htmlspecialchars( $wgLang->truncate( $nt->getText(), 20, '...' ) ) ) . "<br />\n" :
 				'' ;
 
-			$s .= ($i%4==0) ? '<tr>' : '';
-			$thumb = $img->getThumbnail( 120, 120 );
-			$vpad = floor( ( 150 - $thumb->height ) /2 ) - 2;
-			$s .= '<td><div class="gallerybox">' . '<div class="thumb" style="padding: ' . $vpad . 'px 0;">';
-
 			# ATTENTION: The newline after <div class="gallerytext"> is needed to accommodate htmltidy which
 			# in version 4.8.6 generated crackpot html in its absence, see:
 			# http://bugzilla.wikimedia.org/show_bug.cgi?id=1765 -Ævar
-			$s .= $sk->makeKnownLinkObj( $nt, $thumb->toHtml() ) . '</div><div class="gallerytext">' . "\n" .
-				$textlink . $text . $nb .
-				'</div>';
-			$s .= "</div></td>\n";
+
+			$s .= ($i%4==0) ? '<tr>' : '';
+			$s .= '<td><div class="gallerybox">' . $thumbhtml
+				. '<div class="gallerytext">' . "\n" . $textlink . $text . $nb
+				. "</div></div></td>\n";
 			$s .= ($i%4==3) ? '</tr>' : '';
 			$i++;
 		}
@@ -150,6 +213,13 @@ class ImageGallery
 		$s .= '</table>';
 
 		return $s;
+	}
+	
+	/**
+	 * @return int Number of images in the gallery
+	 */
+	public function count() {
+		return count( $this->mImages );
 	}
 
 } //class

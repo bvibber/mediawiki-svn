@@ -8,9 +8,6 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-/* */
-require_once 'QueryPage.php';
-
 /**
  * @package MediaWiki
  * @subpackage SpecialPage
@@ -23,7 +20,7 @@ class MostcategoriesPage extends QueryPage {
 
 	function getSQL() {
 		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'categorylinks', 'page' ) );
+		list( $categorylinks, $page) = $dbr->tableNamesN( 'categorylinks', 'page' );
 		return
 			"
 			SELECT
@@ -34,26 +31,17 @@ class MostcategoriesPage extends QueryPage {
 			FROM $categorylinks
 			LEFT JOIN $page ON cl_from = page_id
 			WHERE page_namespace = " . NS_MAIN . "
-			GROUP BY cl_from
+			GROUP BY 1,2,3
 			HAVING COUNT(*) > 1
 			";
 	}
 
 	function formatResult( $skin, $result ) {
-		global $wgContLang, $wgLang;
-
-		$nt = Title::makeTitle( $result->namespace, $result->title );
-		$text = $wgContLang->convert( $nt->getPrefixedText() );
-
-		$plink = $skin->makeKnownLink( $nt->getPrefixedText(), $text );
-
-		$nl = wfMsgExt( 'ncategories', array( 'parsemag', 'escape' ),
-			$wgLang->formatNum( $result->value ) );
-
-		$nlink = $skin->makeKnownLink( $wgContLang->specialPage( 'Categories' ),
-			$nl, 'article=' . $nt->getPrefixedURL() );
-
-		return wfSpecialList($plink, $nlink);
+		global $wgLang;
+		$title = Title::makeTitleSafe( $result->namespace, $result->title );
+		$count = wfMsgExt( 'ncategories', array( 'parsemag', 'escape' ), $wgLang->formatNum( $result->value ) );
+		$link = $skin->makeKnownLinkObj( $title, $title->getText() );
+		return wfSpecialList( $link, $count );
 	}
 }
 

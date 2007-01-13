@@ -1,9 +1,7 @@
 <?php
 
 if( !defined( 'MEDIAWIKI' ) )
-        die( -1 );
-
-require_once('WebRequest.php');
+        die( 1 );
 
 /**
  * Function converts an Javascript escaped string back into a string with
@@ -47,7 +45,7 @@ function js_unescape($source, $iconv_to = 'UTF-8') {
    if ($iconv_to != "UTF-8") {
        $decodedStr = iconv("UTF-8", $iconv_to, $decodedStr);
    }
-  
+ 
    return $decodedStr;
 }
 
@@ -70,37 +68,10 @@ function code2utf($num){
    return '';
 }
 
-class AjaxCachePolicy {
-	var $policy;
-
-	function AjaxCachePolicy( $policy = null ) {
-		$this->policy = $policy;
-	}
-
-	function setPolicy( $policy ) {
-		$this->policy = $policy;
-	}
-
-	function writeHeader() {
-		header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-		if ( is_null( $this->policy ) ) {
-			// Bust cache in the head
-			header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");    // Date in the past
-			// always modified
-			header ("Cache-Control: no-cache, must-revalidate");  // HTTP/1.1
-			header ("Pragma: no-cache");                          // HTTP/1.0
-		} else {
-			header ("Expires: " . gmdate( "D, d M Y H:i:s", time() + $this->policy ) . " GMT");
-			header ("Cache-Control: s-max-age={$this->policy},public,max-age={$this->policy}");
-		}
-	}
-}
-			
-
 function wfSajaxSearch( $term ) {
-	global $wgContLang, $wgAjaxCachePolicy;
+	global $wgContLang, $wgOut;
 	$limit = 16;
-	
+
 	$l = new Linker;
 
 	$term = str_replace( ' ', '_', $wgContLang->ucfirst( 
@@ -109,8 +80,6 @@ function wfSajaxSearch( $term ) {
 
 	if ( strlen( str_replace( '_', '', $term ) )<3 )
 		return;
-
-	$wgAjaxCachePolicy->setPolicy( 30*60 );
 
 	$db =& wfGetDB( DB_SLAVE );
 	$res = $db->select( 'page', 'page_title',
@@ -136,11 +105,14 @@ function wfSajaxSearch( $term ) {
 		$more = '';
 	}
 
+	$subtitlemsg = ( Title::newFromText($term) ? 'searchsubtitle' : 'searchsubtitleinvalid' );
+	$subtitle = $wgOut->parse( wfMsg( $subtitlemsg, wfEscapeWikiText($term) ) ); #FIXME: parser is missing mTitle !
+
 	$term = htmlspecialchars( $term );
-	return '<div style="float:right; border:solid 1px black;background:gainsboro;padding:2px;"><a onclick="Searching_Hide_Results();">' 
+	$html = '<div style="float:right; border:solid 1px black;background:gainsboro;padding:2px;"><a onclick="Searching_Hide_Results();">'
 		. wfMsg( 'hideresults' ) . '</a></div>'
 		. '<h1 class="firstHeading">'.wfMsg('search')
-		. '</h1><div id="contentSub">'.wfMsg('searchquery', $term) . '</div><ul><li>'
+		. '</h1><div id="contentSub">'. $subtitle . '</div><ul><li>'
 		. $l->makeKnownLink( $wgContLang->specialPage( 'Search' ),
 					wfMsg( 'searchcontaining', $term ),
 					"search=$term&fulltext=Search" )
@@ -149,6 +121,51 @@ function wfSajaxSearch( $term ) {
 					"search=$term&go=Go" )
 		. "</li></ul><h2>" . wfMsg( 'articletitles', $term ) . "</h2>"
 		. '<ul>' .$r .'</ul>'.$more;
+
+	$response = new AjaxResponse( $html );
+
+	$response->setCacheDuration( 30*60 );
+
+	return $response;
 }
 
+/**
+ * Called for AJAX watch/unwatch requests.
+ * @param $pageID Integer ID of the page to be watched/unwatched
+ * @param $watch String 'w' to watch, 'u' to unwatch
+ * @return String '<w#>' or '<u#>' on successful watch or unwatch, respectively, or '<err#>' on error (invalid XML in case we want to add HTML sometime)
+ */
+function wfAjaxWatch($pageID = "", $watch = "") {
+	if(wfReadOnly())
+		return '<err#>'; // redirect to action=(un)watch, which will display the database lock message
+
+	if(('w' !== $watch && 'u' !== $watch) || !is_numeric($pageID))
+		return '<err#>';
+	$watch = 'w' === $watch;
+	$pageID = intval($pageID);
+
+	$title = Title::newFromID($pageID);
+	if(!$title)
+		return '<err#>';
+	$article = new Article($title);
+	$watching = $title->userIsWatching();
+
+	if($watch) {
+		if(!$watching) {
+			$dbw =& wfGetDB(DB_MASTER);
+			$dbw->begin();
+			$article->doWatch();
+			$dbw->commit();
+		}
+	} else {
+		if($watching) {
+			$dbw =& wfGetDB(DB_MASTER);
+			$dbw->begin();
+			$article->doUnwatch();
+			$dbw->commit();
+		}
+	}
+
+	return $watch ? '<w#>' : '<u#>';
+}
 ?>

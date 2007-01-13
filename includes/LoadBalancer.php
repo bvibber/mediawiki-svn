@@ -4,26 +4,6 @@
  * @package MediaWiki
  */
 
-/**
- * Depends on the database object
- */
-require_once( 'Database.php' );
-
-# Valid database indexes
-# Operation-based indexes
-define( 'DB_SLAVE', -1 );     # Read from the slave (or only server)
-define( 'DB_MASTER', -2 );    # Write to master (or only server)
-define( 'DB_LAST', -3 );     # Whatever database was used last
-
-# Obsolete aliases
-define( 'DB_READ', -1 );
-define( 'DB_WRITE', -2 );
-
-
-# Scale polling time so that under overload conditions, the database server
-# receives a SHOW STATUS query at an average interval of this many microseconds
-define( 'AVG_STATUS_POLL', 2000 );
-
 
 /**
  * Database load balancing object
@@ -38,26 +18,13 @@ class LoadBalancer {
 	/* private */ var $mWaitForFile, $mWaitForPos, $mWaitTimeout;
 	/* private */ var $mLaggedSlaveMode, $mLastError = 'Unknown error';
 
-	function LoadBalancer()
-	{
-		$this->mServers = array();
-		$this->mConnections = array();
-		$this->mFailFunction = false;
-		$this->mReadIndex = -1;
-		$this->mForce = -1;
-		$this->mLastIndex = -1;
-		$this->mErrorConnection = false;
-		$this->mAllowLag = false;
-	}
+	/**
+	 * Scale polling time so that under overload conditions, the database server
+	 * receives a SHOW STATUS query at an average interval of this many microseconds
+	 */
+	const AVG_STATUS_POLL = 2000;
 
-	function newFromParams( $servers, $failFunction = false, $waitTimeout = 10 )
-	{
-		$lb = new LoadBalancer;
-		$lb->initialise( $servers, $failFunction, $waitTimeout );
-		return $lb;
-	}
-
-	function initialise( $servers, $failFunction = false, $waitTimeout = 10 )
+	function LoadBalancer( $servers, $failFunction = false, $waitTimeout = 10, $waitForMasterNow = false )
 	{
 		$this->mServers = $servers;
 		$this->mFailFunction = $failFunction;
@@ -71,6 +38,8 @@ class LoadBalancer {
 		$this->mWaitForPos = false;
 		$this->mWaitTimeout = $waitTimeout;
 		$this->mLaggedSlaveMode = false;
+		$this->mErrorConnection = false;
+		$this->mAllowLag = false;
 
 		foreach( $servers as $i => $server ) {
 			$this->mLoads[$i] = $server['load'];
@@ -83,6 +52,14 @@ class LoadBalancer {
 				}
 			}
 		}
+		if ( $waitForMasterNow ) {
+			$this->loadMasterPos();
+		}
+	}
+
+	static function newFromParams( $servers, $failFunction = false, $waitTimeout = 10 )
+	{
+		return new LoadBalancer( $servers, $failFunction, $waitTimeout );
 	}
 
 	/**
@@ -164,6 +141,9 @@ class LoadBalancer {
 		$i = false;
 		if ( $this->mForce >= 0 ) {
 			$i = $this->mForce;
+		} elseif ( count( $this->mServers ) == 1 )  {
+			# Skip the load balancing if there's only one server
+			$i = 0;
 		} else {
 			if ( $this->mReadIndex >= 0 ) {
 				$i = $this->mReadIndex;
@@ -180,7 +160,7 @@ class LoadBalancer {
 						$i = $this->getRandomNonLagged( $loads );
 						if ( $i === false && count( $loads ) != 0 )  {
 							# All slaves lagged. Switch to read-only mode
-							$wgReadOnly = wfMsgNoDB( 'readonly_lag' );
+							$wgReadOnly = wfMsgNoDBForContent( 'readonly_lag' );
 							$i = $this->pickRandom( $loads );
 						}
 					}
@@ -194,20 +174,23 @@ class LoadBalancer {
 							unset( $loads[$i] );
 							$sleepTime = 0;
 						} else {
-							$status = $this->mConnections[$i]->getStatus("Thread%");
-							if ( isset( $this->mServers[$i]['max threads'] ) &&
-							  $status['Threads_running'] > $this->mServers[$i]['max threads'] )
-							{
+							if ( isset( $this->mServers[$i]['max threads'] ) ) {
+							    $status = $this->mConnections[$i]->getStatus("Thread%");
+							    if ( $status['Threads_running'] > $this->mServers[$i]['max threads'] ) {
 								# Too much load, back off and wait for a while.
 								# The sleep time is scaled by the number of threads connected,
 								# to produce a roughly constant global poll rate.
-								$sleepTime = AVG_STATUS_POLL * $status['Threads_connected'];
+								$sleepTime = self::AVG_STATUS_POLL * $status['Threads_connected'];
 
 								# If we reach the timeout and exit the loop, don't use it
 								$i = false;
-							} else {
+							    } else {
 								$done = true;
 								$sleepTime = 0;
+							    }
+							} else {
+							    $done = true;
+							    $sleepTime = 0;
 							}
 						}
 					} else {
@@ -436,15 +419,12 @@ class LoadBalancer {
 	 */
 	function reallyOpenConnection( &$server ) {
 		if( !is_array( $server ) ) {
-			wfDebugDieBacktrace( 'You must update your load-balancing configuration. See DefaultSettings.php entry for $wgDBservers.' );
+			throw new MWException( 'You must update your load-balancing configuration. See DefaultSettings.php entry for $wgDBservers.' );
 		}
 
 		extract( $server );
 		# Get class for this database type
 		$class = 'Database' . ucfirst( $type );
-		if ( !class_exists( $class ) ) {
-			require_once( "$class.php" );
-		}
 
 		# Create object
 		$db = new $class( $host, $user, $password, $dbname, 1, $flags );
@@ -469,7 +449,7 @@ class LoadBalancer {
 					$conn->reportConnectionError( $this->mLastError );
 				} else {
 					// If all servers were busy, mLastError will contain something sensible
-					wfEmergencyAbort( $conn, $this->mLastError );
+					throw new DBConnectionError( $conn, $this->mLastError );
 				}
 			} else {
 				if ( $this->mFailFunction ) {
@@ -477,26 +457,40 @@ class LoadBalancer {
 				} else {
 					$conn->failFunction( false );
 				}
-				$conn->reportConnectionError( "{$this->mLastError} ({$conn->mServer})" );
+				$server = $conn->getProperty( 'mServer' );
+				$conn->reportConnectionError( "{$this->mLastError} ({$server})" );
 			}
 			$reporting = false;
 		}
 		wfProfileOut( $fname );
 	}
 
-	function getWriterIndex()
-	{
+	function getWriterIndex() {
 		return 0;
 	}
 
-	function force( $i )
-	{
+	/**
+	 * Force subsequent calls to getConnection(DB_SLAVE) to return the 
+	 * given index. Set to -1 to restore the original load balancing
+	 * behaviour. I thought this was a good idea when I originally 
+	 * wrote this class, but it has never been used.
+	 */
+	function force( $i ) {
 		$this->mForce = $i;
 	}
 
-	function haveIndex( $i )
-	{
+	/**
+	 * Returns true if the specified index is a valid server index
+	 */
+	function haveIndex( $i ) {
 		return array_key_exists( $i, $this->mServers );
+	}
+
+	/**
+	 * Returns true if the specified index is valid and has non-zero load
+	 */
+	function isNonZeroLoad( $i ) {
+		return array_key_exists( $i, $this->mServers ) && $this->mLoads[$i] != 0;
 	}
 
 	/**
@@ -611,21 +605,24 @@ class LoadBalancer {
 	 * Results are cached for a short time in memcached
 	 */
 	function getLagTimes() {
-		global $wgDBname;
-
+		wfProfileIn( __METHOD__ );
 		$expiry = 5;
 		$requestRate = 10;
 
 		global $wgMemc;
-		$times = $wgMemc->get( "$wgDBname:lag_times" );
+		$times = $wgMemc->get( wfMemcKey( 'lag_times' ) );
 		if ( $times ) {
 			# Randomly recache with probability rising over $expiry
 			$elapsed = time() - $times['timestamp'];
 			$chance = max( 0, ( $expiry - $elapsed ) * $requestRate );
 			if ( mt_rand( 0, $chance ) != 0 ) {
 				unset( $times['timestamp'] );
+				wfProfileOut( __METHOD__ );
 				return $times;
 			}
+			wfIncrStats( 'lag_cache_miss_expired' );
+		} else {
+			wfIncrStats( 'lag_cache_miss_absent' );
 		}
 
 		# Cache key missing or expired
@@ -641,10 +638,11 @@ class LoadBalancer {
 
 		# Add a timestamp key so we know when it was cached
 		$times['timestamp'] = time();
-		$wgMemc->set( "$wgDBname:lag_times", $times, $expiry );
+		$wgMemc->set( wfMemcKey( 'lag_times' ), $times, $expiry );
 
 		# But don't give the timestamp to the caller
 		unset($times['timestamp']);
+		wfProfileOut( __METHOD__ );
 		return $times;
 	}
 }

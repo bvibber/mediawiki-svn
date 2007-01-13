@@ -7,11 +7,6 @@
 
 /**
  *
- */
-require_once('QueryPage.php');
-
-/**
- *
  * @package MediaWiki
  * @subpackage SpecialPage
  */
@@ -31,7 +26,7 @@ class DoubleRedirectsPage extends PageQueryPage {
 
 	function getSQLText( &$dbr, $namespace = null, $title = null ) {
 		
-		extract( $dbr->tableNames( 'page', 'pagelinks' ) );
+		list( $page, $pagelinks ) = $dbr->tableNamesN( 'page', 'pagelinks' );
 
 		$limitToTitle = !( $namespace === null && $title === null );
 		$sql = $limitToTitle ? "SELECT" : "SELECT 'DoubleRedirects' as type," ;
@@ -92,7 +87,7 @@ class DoubleRedirectsPage extends PageQueryPage {
 		$edit = $skin->makeBrokenLinkObj( $titleA, "(".wfMsg("qbedit").")" , 'redirect=no');
 		$linkB = $skin->makeKnownLinkObj( $titleB, '', 'redirect=no' );
 		$linkC = $skin->makeKnownLinkObj( $titleC );
-		$arr = $wgContLang->isRTL() ? '&larr;' : '&rarr;';
+		$arr = $wgContLang->getArrow() . $wgContLang->getDirMark();
 
 		return( "{$linkA} {$edit} {$arr} {$linkB} {$arr} {$linkC}" );
 	}

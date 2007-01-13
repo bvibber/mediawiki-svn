@@ -22,6 +22,11 @@
  * @subpackage SpecialPage
  */
 
+class DumpDBZip2Output extends DumpPipeOutput {
+	function DumpDBZip2Output( $file ) {
+		parent::DumpPipeOutput( "dbzip2", $file );
+	}
+}
 
 class BackupDumper {
 	var $reportingInterval = 100;
@@ -44,6 +49,7 @@ class BackupDumper {
 		$this->registerOutput( 'file', 'DumpFileOutput' );
 		$this->registerOutput( 'gzip', 'DumpGZipOutput' );
 		$this->registerOutput( 'bzip2', 'DumpBZip2Output' );
+		$this->registerOutput( 'dbzip2', 'DumpDBZip2Output' );
 		$this->registerOutput( '7zip', 'Dump7ZipOutput' );
 
 		$this->registerFilter( 'latest', 'DumpLatestFilter' );
@@ -92,8 +98,9 @@ class BackupDumper {
 		$sink = null;
 		$sinks = array();
 		foreach( $args as $arg ) {
+			$matches = array();
 			if( preg_match( '/^--(.+?)(?:=(.+?)(?::(.+?))?)?$/', $arg, $matches ) ) {
-				@list( $full, $opt, $val, $param ) = $matches;
+				@list( /* $full */ , $opt, $val, $param ) = $matches;
 				switch( $opt ) {
 				case "plugin":
 					$this->loadPlugin( $val, $param );
@@ -162,9 +169,6 @@ class BackupDumper {
 	}
 
 	function dump( $history, $text = MW_EXPORT_TEXT ) {
-		# This shouldn't happen if on console... ;)
-		header( 'Content-type: text/html; charset=UTF-8' );
-
 		# Notice messages will foul up your XML output even if they're
 		# relatively harmless.
 		ini_set( 'display_errors', false );
@@ -172,7 +176,7 @@ class BackupDumper {
 		$this->initProgress( $history );
 
 		$db =& $this->backupDb();
-		$exporter = new WikiExporter( $db, $history, MW_EXPORT_STREAM, $text );
+		$exporter = new WikiExporter( $db, $history, WikiExporter::STREAM, $text );
 
 		$wrapper = new ExportProgressFilter( $this->sink, $this );
 		$exporter->setOutputSink( $wrapper );
@@ -200,11 +204,11 @@ class BackupDumper {
 	 * Initialise starting time and maximum revision count.
 	 * We'll make ETA calculations based an progress, assuming relatively
 	 * constant per-revision rate.
-	 * @param int $history MW_EXPORT_CURRENT or MW_EXPORT_FULL
+	 * @param int $history WikiExporter::CURRENT or WikiExporter::FULL
 	 */
-	function initProgress( $history = MW_EXPORT_FULL ) {
-		$table = ($history == MW_EXPORT_CURRENT) ? 'page' : 'revision';
-		$field = ($history == MW_EXPORT_CURRENT) ? 'page_id' : 'rev_id';
+	function initProgress( $history = WikiExporter::FULL ) {
+		$table = ($history == WikiExporter::CURRENT) ? 'page' : 'revision';
+		$field = ($history == WikiExporter::CURRENT) ? 'page_id' : 'rev_id';
 		
 		$dbr =& wfGetDB( DB_SLAVE );
 		$this->maxCount = $dbr->selectField( $table, "MAX($field)", '', 'BackupDumper::dump' );
@@ -215,7 +219,7 @@ class BackupDumper {
 		global $wgDBadminuser, $wgDBadminpassword;
 		global $wgDBname, $wgDebugDumpSql;
 		$flags = ($wgDebugDumpSql ? DBO_DEBUG : 0) | DBO_DEFAULT; // god-damn hack
-		$db =& new Database( $this->backupServer(), $wgDBadminuser, $wgDBadminpassword, $wgDBname, false, $flags );
+		$db = new Database( $this->backupServer(), $wgDBadminuser, $wgDBadminpassword, $wgDBname, false, $flags );
 		$timeout = 3600 * 24;
 		$db->query( "SET net_read_timeout=$timeout" );
 		$db->query( "SET net_write_timeout=$timeout" );
@@ -259,9 +263,8 @@ class BackupDumper {
 				$revrate = '-';
 				$etats = '-';
 			}
-			global $wgDBname;
 			$this->progress( sprintf( "%s: %s %d pages (%0.3f/sec), %d revs (%0.3f/sec), ETA %s [max %d]",
-				$now, $wgDBname, $this->pageCount, $rate, $this->revCount, $revrate, $etats, $this->maxCount ) );
+				$now, wfWikiID(), $this->pageCount, $rate, $this->revCount, $revrate, $etats, $this->maxCount ) );
 		}
 	}
 

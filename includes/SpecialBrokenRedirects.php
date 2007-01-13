@@ -7,11 +7,6 @@
 
 /**
  *
- */
-require_once('QueryPage.php');
-
-/**
- *
  * @package MediaWiki
  * @subpackage SpecialPage
  */
@@ -32,7 +27,7 @@ class BrokenRedirectsPage extends PageQueryPage {
 
 	function getSQL() {
 		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'page', 'pagelinks' ) );
+		list( $page, $pagelinks ) = $dbr->tableNamesN( 'page', 'pagelinks' );
 
 		$sql = "SELECT 'BrokenRedirects'  AS type,
 		                p1.page_namespace AS namespace,
@@ -51,6 +46,8 @@ class BrokenRedirectsPage extends PageQueryPage {
 	}
 
 	function formatResult( $skin, $result ) {
+		global $wgContLang;
+		
 		$fromObj = Title::makeTitle( $result->namespace, $result->title );
 		if ( isset( $result->pl_title ) ) {
 			$toObj = Title::makeTitle( $result->pl_namespace, $result->pl_title );
@@ -71,8 +68,9 @@ class BrokenRedirectsPage extends PageQueryPage {
 		$from = $skin->makeKnownLinkObj( $fromObj ,'', 'redirect=no' );
 		$edit = $skin->makeBrokenLinkObj( $fromObj , "(".wfMsg("qbedit").")" , 'redirect=no');
 		$to   = $skin->makeBrokenLinkObj( $toObj );
+		$arr = $wgContLang->getArrow();
 
-		return "$from $edit &rarr; $to";
+		return "$from $edit $arr $to";
 	}
 }
 

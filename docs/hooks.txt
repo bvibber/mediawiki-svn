@@ -286,8 +286,19 @@ $isminor: minor flag
 $iswatch: watch flag
 $section: section #
 
+'AuthPluginSetup': update or replace authentication plugin object ($wgAuth)
+Gives a chance for an extension to set it programattically to a variable class.
+&$auth: the $wgAuth object, probably a stub
+
 'AutoAuthenticate': called to authenticate users on external/environmental means
 $user: writes user object to this parameter
+
+'BadImage': When checking against the bad image list
+$name: Image name being checked
+&$bad: Whether or not the image is "bad"
+
+Change $bad and return false to override. If an image is "bad", it is not
+rendered inline in wiki pages or galleries in category pages.
 
 'BlockIp': before an IP address or user is blocked
 $block: the Block object about to be saved
@@ -296,6 +307,19 @@ $user: the user _doing_ the block (not the one being blocked)
 'BlockIpComplete': after an IP address or user is blocked
 $block: the Block object that was saved
 $user: the user who did the block (not the one being blocked)
+
+'DiffViewHeader': called before diff display
+$diff: DifferenceEngine object that's calling
+$oldRev: Revision object of the "old" revision (may be null/invalid)
+$newRev: Revision object of the "new" revision
+
+'EditPage::attemptSave': called before an article is
+saved, that is before insertNewArticle() is called
+&$editpage_Obj: the current EditPage object
+
+'EditFormPreloadText': Allows population of the edit form when creating new pages
+&$text: Text to preload with
+&$title: Title object representing the page being created
 
 'EditFilter': Perform checks on an edit
 $editor: Edit form (see includes/EditPage.php)
@@ -326,6 +350,12 @@ $from: address of sending user
 $subject: subject of the mail
 $text: text of the mail
 
+'FetchChangesList': When fetching the ChangesList derivative for a particular user
+&$user: User the list is being fetched for
+&$skin: Skin object to be used with the list
+&$list: List object (defaults to NULL, change it to an object instance and return
+false override the list derivative used)
+
 'GetInternalURL': modify fully-qualified URLs used for squid cache purging
 $title: Title object of page
 $url: string value as output (out parameter, can modify)
@@ -341,14 +371,17 @@ $title: Title object of page
 $url: string value as output (out parameter, can modify)
 $query: query options passed to Title::getFullURL()
 
-'LogPageValidTypes': action being logged.
-$type: array of strings
+'LogPageValidTypes': action being logged. DEPRECATED: Use $wgLogTypes
+&$type: array of strings
 
-'LogPageLogName': name of the logging page(s).
-$typeText: array of strings
+'LogPageLogName': name of the logging page(s). DEPRECATED: Use $wgLogNames
+&$typeText: array of strings
 
-'LogPageLogHeader': strings used by wfMsg as a header.
-$headerText: array of strings
+'LogPageLogHeader': strings used by wfMsg as a header. DEPRECATED: Use $wgLogHeaders
+&$headerText: array of strings
+
+'LogPageActionText': strings used by wfMsg as a header. DEPRECATED: Use $wgLogActions
+&$actionText: array of strings
 
 'MarkPatrolled': before an edit is marked patrolled
 $rcid: ID of the revision to be marked patrolled
@@ -361,6 +394,11 @@ $rcid: ID of the revision marked as patrolled
 $user: user (object) who marked the edit patrolled
 $wcOnlySysopsCanPatrol: config setting indicating whether the user
  must be a sysop to patrol the edit
+
+'MathAfterTexvc': after texvc is executed when rendering mathematics
+$mathRenderer: instance of MathRenderer
+$errmsg: error message, in HTML (string). Nonempty indicates failure
+ of rendering the formula
 
 'OutputPageBeforeHTML': a page has been processed by the parser and
 the resulting HTML is about to be displayed.  
@@ -376,7 +414,35 @@ $hash: reference to a hash key string which can be modified
 my talk page, my contributions" etc).
 
 &$personal_urls: Array of link specifiers (see SkinTemplate.php)
-$title: Title object representing the current page
+&$title: Title object representing the current page
+
+'PingLimiter': Allows extensions to override the results of User::pingLimiter()
+&$user : User performing the action
+$action : Action being performed
+&$result : Whether or not the action should be prevented
+Change $result and return false to give a definitive answer, otherwise
+the built-in rate limiting checks are used, if enabled.
+
+'PreferencesUserInformationPanel': Add HTML bits to user information list in preferences form
+$form : PreferencesForm object
+&$html : HTML to append to
+
+'RawPageViewBeforeOutput': Right before the text is blown out in action=raw
+&$obj: RawPage object
+&$text: The text that's going to be the output
+
+'SiteNoticeBefore': Before the sitenotice/anonnotice is composed
+&$siteNotice: HTML returned as the sitenotice
+Return true to allow the normal method of notice selection/rendering to work,
+or change the value of $siteNotice and return false to alter it.
+
+'SiteNoticeAfter': After the sitenotice/anonnotice is composed
+&$siteNotice: HTML sitenotice
+Alter the contents of $siteNotice to add to/alter the sitenotice/anonnotice.
+
+'SkinTemplateOutputPageBeforeExec': Before SkinTemplate::outputPage() starts page output
+&$sktemplate: SkinTemplate object
+&$tpl: Template engine object
 
 'TitleMoveComplete': after moving an article (title)
 $old: old title
@@ -397,6 +463,17 @@ $article: article object to be removed
 'UnwatchArticle': after a watch is removed from an article
 $user: user that was watching
 $article: article object removed
+
+'UploadForm:initial': before the upload form is generated
+$form: UploadForm object
+You might set the member-variables $uploadFormTextTop and 
+$uploadFormTextAfterSummary to inject text (HTML) either before
+or after the editform.
+
+'UploadForm:BeforeProcessing': at the beginning of processUpload()
+$form: UploadForm object
+Lets you poke at member variables like $mUploadDescription before the
+file is saved.
 
 'UploadVerification': additional chances to reject an uploaded file
 string $saveName: destination file name
@@ -449,11 +526,16 @@ $article: article object that was watched
 $catpage: CategoryPage instance
 
 'SkinTemplateContentActions': after building the $content_action array right
-                              before returning it, see content_action.php in
-			      the extension module for a demonstration of how
-			      to use this hook.
+                              before returning it, see Content_action.php in
+                              the extensions/examples/ directory
+                              ( http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/examples/ )
+                              for a demonstration of how to use this hook.
 $content_actions: The array of content actions
 
+'BeforePageDisplay': Called just before outputting a page (all kinds of,
+		     articles, special, history, preview, diff, edit, ...)
+		     Can be used to set custom CSS/JS
+$out: OutputPage object
 
 More hooks might be available but undocumented, you can execute
 ./maintenance/findhooks.php to find hidden one.

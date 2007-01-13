@@ -8,9 +8,6 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-/* */
-require_once 'QueryPage.php';
-
 /**
  * @package MediaWiki
  * @subpackage SpecialPage
@@ -23,7 +20,7 @@ class MostimagesPage extends QueryPage {
 
 	function getSQL() {
 		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'imagelinks' ) );
+		$imagelinks = $dbr->tableName( 'imagelinks' );
 		return
 			"
 			SELECT
@@ -32,7 +29,7 @@ class MostimagesPage extends QueryPage {
 				il_to as title,
 				COUNT(*) as value
 			FROM $imagelinks
-			GROUP BY il_to
+			GROUP BY 1,2,3
 			HAVING COUNT(*) > 1
 			";
 	}
@@ -45,7 +42,8 @@ class MostimagesPage extends QueryPage {
 
 		$plink = $skin->makeKnownLink( $nt->getPrefixedText(), $text );
 
-		$nl = wfMsg( 'nlinks', $wgLang->formatNum ( $result->value ) );
+		$nl = wfMsgExt( 'nlinks', array( 'parsemag', 'escape'),
+			$wgLang->formatNum ( $result->value ) );
 		$nlink = $skin->makeKnownLink( $nt->getPrefixedText() . '#filelinks', $nl );
 
 		return wfSpecialList($plink, $nlink);

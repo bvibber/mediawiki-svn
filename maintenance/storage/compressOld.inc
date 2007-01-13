@@ -16,7 +16,6 @@ function compressOldPages( $start = 0, $extdb = '' ) {
 	print "Starting from old_id $start...\n";
 	$dbw =& wfGetDB( DB_MASTER );
 	do {
-		$end = $start + $chunksize;
 		$res = $dbw->select( 'text', array( 'old_id','old_flags','old_namespace','old_title','old_text' ),
 			"old_id>=$start", $fname, array( 'ORDER BY' => 'old_id', 'LIMIT' => $chunksize, 'FOR UPDATE' ) );
 		if( $dbw->numRows( $res ) == 0 ) {
@@ -133,9 +132,6 @@ function compressWithConcat( $startId, $maxChunkSize, $maxChunkFactor, $factorTh
 	#$tables[] = 'page';
 	#$conds[] = 'page_id=rev_page AND rev_id != page_latest';
 
-	$oldReadsSinceLastSlaveWait = 0;	#check slave lag periodically
-	$totalMatchingRevisions = 0;
-	$masterPos = false;
 	for ( $pageId = $startId; $pageId <= $maxPageId; $pageId++ ) {
 		wfWaitForSlaves( 5 );
 
@@ -154,6 +150,17 @@ function compressWithConcat( $startId, $maxChunkSize, $maxChunkFactor, $factorTh
 		# Display progress
 		$titleObj = Title::makeTitle( $pageRow->page_namespace, $pageRow->page_title );
 		print "$pageId\t" . $titleObj->getPrefixedDBkey() . " ";
+
+		print_r(
+			array( 
+				'rev_page' => $pageRow->page_id, 
+				# Don't operate on the current revision
+				# Use < instead of <> in case the current revision has changed 
+				# since the page select, which wasn't locking
+				'rev_id < ' . $pageRow->page_latest
+			) + $conds
+		);
+		exit; // FIXME: is this "exit" supposed to be here? If no, delete, else delete dead code below.
 
 		# Load revisions
 		$revRes = $dbw->select( $tables, $fields,

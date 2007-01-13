@@ -7,7 +7,6 @@
  * - recent changes
  */
 
-require_once("RecentChange.php");
 /**
  * @todo document
  * @package MediaWiki
@@ -40,12 +39,20 @@ class ChangesList {
 		$this->preCacheMessages();
 	}
 
-	function newFromUser( &$user ) {
+	/**
+	 * Fetch an appropriate changes list class for the specified user
+	 * Some users might want to use an enhanced list format, for instance
+	 *
+	 * @param $user User to fetch the list class for
+	 * @return ChangesList derivative
+	 */
+	public static function newFromUser( &$user ) {
 		$sk =& $user->getSkin();
-		if( $user->getOption('usenewrc') ) {
-			return new EnhancedChangesList( $sk );
+		$list = NULL;
+		if( wfRunHooks( 'FetchChangesList', array( &$user, &$sk, &$list ) ) ) {
+			return $user->getOption( 'usenewrc' ) ? new EnhancedChangesList( $sk ) : new OldChangesList( $sk );
 		} else {
-			return new OldChangesList( $sk );
+			return $list;
 		}
 	}
 
@@ -57,7 +64,7 @@ class ChangesList {
 		// Precache various messages
 		if( !isset( $this->message ) ) {
 			foreach( explode(' ', 'cur diff hist minoreditletter newpageletter last '.
-				'blocklink changes history' ) as $msg ) {
+				'blocklink changes history boteditletter' ) as $msg ) {
 				$this->message[$msg] = wfMsgExt( $msg, array( 'escape') );
 			}
 		}
@@ -65,13 +72,14 @@ class ChangesList {
 
 
 	/**
-	 * Returns the appropiate flags for new page, minor change and patrolling
+	 * Returns the appropriate flags for new page, minor change and patrolling
 	 */
-	function recentChangesFlags( $new, $minor, $patrolled, $nothing = '&nbsp;' ) {
+	function recentChangesFlags( $new, $minor, $patrolled, $nothing = '&nbsp;', $bot = false ) {
 		$f = $new ? '<span class="newpage">' . $this->message['newpageletter'] . '</span>'
 				: $nothing;
 		$f .= $minor ? '<span class="minor">' . $this->message['minoreditletter'] . '</span>'
 				: $nothing;
+		$f .= $bot ? '<span class="bot">' . $this->message['boteditletter'] . '</span>' : $nothing;
 		$f .= $patrolled ? '<span class="unpatrolled">!</span>' : $nothing;
 		return $f;
 	}
@@ -170,11 +178,13 @@ class ChangesList {
 			: '';
 		$articlelink = ' '. $this->skin->makeKnownLinkObj( $rc->getTitle(), '', $params );
 		if($watched) $articlelink = '<strong>'.$articlelink.'</strong>';
+		global $wgContLang;
+		$articlelink .= $wgContLang->getDirMark();
 
 		$s .= ' '.$articlelink;
 	}
 
-	function insertTimestamp(&$s, &$rc) {
+	function insertTimestamp(&$s, $rc) {
 		global $wgLang;
 		# Timestamp
 		$s .= '; ' . $wgLang->time( $rc->mAttribs['rc_timestamp'], true, true ) . ' . . ';
@@ -202,8 +212,6 @@ class ChangesList {
 		global $wgUseRCPatrol, $wgUser;
 		return( $wgUseRCPatrol && $wgUser->isAllowed( 'patrol' ) );
 	}
-
-
 }
 
 
@@ -215,15 +223,14 @@ class OldChangesList extends ChangesList {
 	 * Format a line using the old system (aka without any javascript).
 	 */
 	function recentChangesLine( &$rc, $watched = false ) {
-		global $wgContLang;
+		global $wgContLang, $wgRCShowChangedSize;
 
 		$fname = 'ChangesList::recentChangesLineOld';
 		wfProfileIn( $fname );
 
-
 		# Extract DB fields into local scope
+		// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 		extract( $rc->mAttribs );
-		$curIdEq = 'curid=' . $rc_cur_id;
 
 		# Should patrol-related stuff be shown?
 		$unpatrolled = $this->usePatrol() && $rc_patrolled == 0;
@@ -236,16 +243,21 @@ class OldChangesList extends ChangesList {
 		if( $rc_type == RC_MOVE || $rc_type == RC_MOVE_OVER_REDIRECT ) {
 			$this->insertMove( $s, $rc );
 		// log entries
-		} elseif( $rc_namespace == NS_SPECIAL && preg_match( '!^Log/(.*)$!', $rc_title, $matches ) ) {
-			$this->insertLog($s, $rc->getTitle(), $matches[1]);
+		} elseif ( $rc_namespace == NS_SPECIAL ) {
+			list( $specialName, $specialSubpage ) = SpecialPage::resolveAliasWithSubpage( $rc_title );
+			if ( $specialName == 'Log' ) {
+				$this->insertLog( $s, $rc->getTitle(), $specialSubpage );
+			} else {
+				wfDebug( "Unexpected special page in recentchanges\n" );
+			}
 		// all other stuff
 		} else {
 			wfProfileIn($fname.'-page');
 
 			$this->insertDiffHist($s, $rc, $unpatrolled);
 
-			# M, N and ! (minor, new and unpatrolled)
-			$s .= ' ' . $this->recentChangesFlags( $rc_type == RC_NEW, $rc_minor, $unpatrolled, '' );
+			# M, N, b and ! (minor, new, bot and unpatrolled)
+			$s .= ' ' . $this->recentChangesFlags( $rc_type == RC_NEW, $rc_minor, $unpatrolled, '', $rc_bot );
 			$this->insertArticleLink($s, $rc, $unpatrolled, $watched);
 
 			wfProfileOut($fname.'-page');
@@ -254,6 +266,11 @@ class OldChangesList extends ChangesList {
 		wfProfileIn( $fname.'-rest' );
 
 		$this->insertTimestamp($s,$rc);
+
+		if( $wgRCShowChangedSize ) {
+			$s .= ( $rc->getCharacterDifference() == '' ? '' : $rc->getCharacterDifference() . ' . . ' );
+		}
+
 		$this->insertUserRelatedLinks($s,$rc);
 		$this->insertComment($s, $rc);
 
@@ -285,6 +302,7 @@ class EnhancedChangesList extends ChangesList {
 		$rc = RCCacheEntry::newFromParent( $baseRC );
 
 		# Extract fields from DB into the function scope (rc_xxxx variables)
+		// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 		extract( $rc->mAttribs );
 		$curIdEq = 'curid=' . $rc_cur_id;
 
@@ -311,11 +329,16 @@ class EnhancedChangesList extends ChangesList {
 			$msg = ( $rc_type == RC_MOVE ) ? "1movedto2" : "1movedto2_redir";
 			$clink = wfMsg( $msg, $this->skin->makeKnownLinkObj( $rc->getTitle(), '', 'redirect=no' ),
 			  $this->skin->makeKnownLinkObj( $rc->getMovedToTitle(), '' ) );
-		} elseif( $rc_namespace == NS_SPECIAL && preg_match( '!^Log/(.*)$!', $rc_title, $matches ) ) {
-			# Log updates, etc
-			$logtype = $matches[1];
-			$logname = LogPage::logName( $logtype );
-			$clink = '(' . $this->skin->makeKnownLinkObj( $rc->getTitle(), $logname ) . ')';
+		} elseif( $rc_namespace == NS_SPECIAL ) {
+			list( $specialName, $logtype ) = SpecialPage::resolveAliasWithSubpage( $rc_title );
+			if ( $specialName == 'Log' ) {
+				# Log updates, etc
+				$logname = LogPage::logName( $logtype );
+				$clink = '(' . $this->skin->makeKnownLinkObj( $rc->getTitle(), $logname ) . ')';
+			} else {
+				wfDebug( "Unexpected special page in recentchanges\n" );
+				$clink = '';
+			}
 		} elseif( $rc->unpatrolled && $rc_type == RC_NEW ) {
 			# Unpatrolled new page, give rc_id in query
 			$clink = $this->skin->makeKnownLinkObj( $rc->getTitle(), '', "rcid={$rc_id}" );
@@ -384,6 +407,7 @@ class EnhancedChangesList extends ChangesList {
 	 * Enhanced RC group
 	 */
 	function recentChangesBlockGroup( $block ) {
+		global $wgContLang, $wgRCShowChangedSize;
 		$r = '';
 
 		# Collate list of users
@@ -392,7 +416,6 @@ class EnhancedChangesList extends ChangesList {
 		$userlinks = array();
 		foreach( $block as $rcObj ) {
 			$oldid = $rcObj->mAttribs['rc_last_oldid'];
-			$newid = $rcObj->mAttribs['rc_this_oldid'];
 			if( $rcObj->mAttribs['rc_new'] ) {
 				$isnew = true;
 			}
@@ -403,6 +426,7 @@ class EnhancedChangesList extends ChangesList {
 			if( $rcObj->unpatrolled ) {
 				$unpatrolled = true;
 			}
+			$bot = $rcObj->mAttribs['rc_bot'];
 			$userlinks[$u]++;
 		}
 
@@ -412,6 +436,7 @@ class EnhancedChangesList extends ChangesList {
 		$users = array();
 		foreach( $userlinks as $userlink => $count) {
 			$text = $userlink;
+			$text .= $wgContLang->getDirMark();
 			if( $count > 1 ) {
 				$text .= ' ('.$count.'&times;)';
 			}
@@ -431,27 +456,39 @@ class EnhancedChangesList extends ChangesList {
 
 		# Main line
 		$r .= '<tt>';
-		$r .= $this->recentChangesFlags( $isnew, false, $unpatrolled );
+		$r .= $this->recentChangesFlags( $isnew, false, $unpatrolled, '&nbsp;', $bot );
 
 		# Timestamp
-		$r .= ' '.$block[0]->timestamp.' ';
-		$r .= '</tt>';
+		$r .= ' '.$block[0]->timestamp.' </tt>';
 
 		# Article link
 		$r .= $this->maybeWatchedLink( $block[0]->link, $block[0]->watched );
+		$r .= $wgContLang->getDirMark();
 
 		$curIdEq = 'curid=' . $block[0]->mAttribs['rc_cur_id'];
 		$currentRevision = $block[0]->mAttribs['rc_this_oldid'];
 		if( $block[0]->mAttribs['rc_type'] != RC_LOG ) {
 			# Changes
 			$r .= ' ('.count($block).' ';
+
 			if( $isnew ) {
 				$r .= $this->message['changes'];
 			} else {
 				$r .= $this->skin->makeKnownLinkObj( $block[0]->getTitle(),
 					$this->message['changes'], $curIdEq."&diff=$currentRevision&oldid=$oldid" );
 			}
-			$r .= '; ';
+
+			$r .= ') . . ';
+
+			# Character difference
+			$chardiff = $rcObj->getCharacterDifference( $block[ count( $block ) - 1 ]->mAttribs['rc_old_len'],
+					$block[0]->mAttribs['rc_new_len'] );
+			if( $chardiff == '' ) {
+				$r .= ' (';
+			} else {
+				$r .= ' ' . $chardiff. ' . . (';
+			}
+			
 
 			# History
 			$r .= $this->skin->makeKnownLinkObj( $block[0]->getTitle(),
@@ -471,11 +508,12 @@ class EnhancedChangesList extends ChangesList {
 		$r .= '<div id="'.$rci.'" style="display:none">';
 		foreach( $block as $rcObj ) {
 			# Get rc_xxxx variables
+			// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 			extract( $rcObj->mAttribs );
 
 			$r .= $this->spacerArrow();
 			$r .= '<tt>&nbsp; &nbsp; &nbsp; &nbsp;';
-			$r .= $this->recentChangesFlags( $rc_new, $rc_minor, $rcObj->unpatrolled );
+			$r .= $this->recentChangesFlags( $rc_new, $rc_minor, $rcObj->unpatrolled, '&nbsp;', $rc_bot );
 			$r .= '&nbsp;</tt>';
 
 			$o = '';
@@ -494,7 +532,14 @@ class EnhancedChangesList extends ChangesList {
 			$r .= $rcObj->curlink;
 			$r .= '; ';
 			$r .= $rcObj->lastlink;
-			$r .= ') . . '.$rcObj->userlink;
+			$r .= ') . . ';
+
+			# Character diff
+			if( $wgRCShowChangedSize ) {
+				$r .= ( $rcObj->getCharacterDifference() == '' ? '' : $rcObj->getCharacterDifference() . ' . . ' ) ;
+			}
+
+			$r .= $rcObj->userlink;
 			$r .= $rcObj->usertalklink;
 			$r .= $this->skin->commentBlock( $rc_comment, $rcObj->getTitle() );
 			$r .= "<br />\n";
@@ -564,9 +609,10 @@ class EnhancedChangesList extends ChangesList {
 	 * @return string a HTML formated line (generated using $r)
 	 */
 	function recentChangesBlockLine( $rcObj ) {
-		global $wgContLang;
+		global $wgContLang, $wgRCShowChangedSize;
 
 		# Get rc_xxxx variables
+		// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 		extract( $rcObj->mAttribs );
 		$curIdEq = 'curid='.$rc_cur_id;
 
@@ -581,7 +627,7 @@ class EnhancedChangesList extends ChangesList {
 		if( $rc_type == RC_MOVE || $rc_type == RC_MOVE_OVER_REDIRECT ) {
 			$r .= '&nbsp;&nbsp;&nbsp;';
 		} else {
-			$r .= $this->recentChangesFlags( $rc_type == RC_NEW, $rc_minor, $rcObj->unpatrolled );
+			$r .= $this->recentChangesFlags( $rc_type == RC_NEW, $rc_minor, $rcObj->unpatrolled, '&nbsp;', $rc_bot );
 		}
 		$r .= ' '.$rcObj->timestamp.' </tt>';
 
@@ -592,10 +638,15 @@ class EnhancedChangesList extends ChangesList {
 		$r .= ' ('. $rcObj->difflink .'; ';
 
 		# Hist
-		$r .= $this->skin->makeKnownLinkObj( $rcObj->getTitle(), wfMsg( 'hist' ), $curIdEq.'&action=history' );
+		$r .= $this->skin->makeKnownLinkObj( $rcObj->getTitle(), wfMsg( 'hist' ), $curIdEq.'&action=history' ) . ') . . ';
+
+		# Character diff
+		if( $wgRCShowChangedSize ) {
+			$r .= ( $rcObj->getCharacterDifference() == '' ? '' : '&nbsp;' . $rcObj->getCharacterDifference() . ' . . ' ) ;
+		}
 
 		# User/talk
-		$r .= ') . . '.$rcObj->userlink . $rcObj->usertalklink;
+		$r .= $rcObj->userlink . $rcObj->usertalklink;
 
 		# Comment
 		if( $rc_type != RC_MOVE && $rc_type != RC_MOVE_OVER_REDIRECT ) {
@@ -619,7 +670,7 @@ class EnhancedChangesList extends ChangesList {
 			return '';
 		}
 		$blockOut = '';
-		foreach( $this->rc_cache as $secureName => $block ) {
+		foreach( $this->rc_cache as $block ) {
 			if( count( $block ) < 2 ) {
 				$blockOut .= $this->recentChangesBlockLine( array_shift( $block ) );
 			} else {
