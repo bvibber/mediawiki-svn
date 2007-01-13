@@ -26,6 +26,12 @@ $wgLinkSearchMessages['de'] = array(
 	'linksearch-line'  => '$1 ist verlinkt von $2',
 	'linksearch-error' => 'Wildcards können nur am Anfang der URL verwendet werden.',
 );
+$wgLinkSearchMessages['fi'] = array(
+	'linksearch'       => 'Etsi ulkoisia linkkejä',
+	'linksearch-text'  => 'Asteriskia (*) voi käyttää jokerimerkkinä, esimerkiksi ”*.wikipedia.org”.',
+	'linksearch-line'  => '$1 on linkitetty sivulta $2',
+	'linksearch-error' => 'Jokerimerkkiä voi käyttää ainoastaan osoitteen alussa.',
+);
 $wgLinkSearchMessages['he'] = array(
 	'linksearch'       => 'חיפוש קישורים חיצוניים',
 	'linksearch-text'  => 'ניתן להשתמש בתווים כללים, לדוגמה "‎*.wikipedia.org".',
