@@ -81,7 +81,9 @@ $wgLinkSearchMessages['pt'] = array(
 	'linksearch-line'  => '$1 está lincado em $2',
 	'linksearch-error' => '"Caracteres mágicos" Wildcards podem ser utilizados apenas no início do endereço.',
 );
-$wgLinkSearchMessages['pt'] = $wgLinkSearchMessages['pt-br'];
+// Brazillian portuguese inherits portuguese.
+$wgLinkSearchMessages['pt-br'] = $wgLinkSearchMessages['pt'];
+
 $wgLinkSearchMessages['fr'] = array(
 	'linksearch'	   => 'Rechercher des liens internet',
 	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères « jokers » peuvent être utilisés, par exemple "*.wikipedia.org".',
