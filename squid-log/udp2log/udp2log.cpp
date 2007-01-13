@@ -53,6 +53,7 @@ int main(int argc, char** argv)
 	}
 
 	signal(SIGHUP, OnHangup);
+	signal(SIGPIPE, SIG_IGN);
 
 	IPAddress any(INADDR_ANY);
 	SocketAddress saddr(any, (unsigned short int)port);

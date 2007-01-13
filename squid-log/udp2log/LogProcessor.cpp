@@ -69,9 +69,23 @@ LogProcessor * PipeProcessor::NewFromConfig(char * params)
 
 void PipeProcessor::ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address)
 {
+	if (!f) {
+		return;
+	}
+
 	if (Sample()) {
 		fwrite(buffer, 1, size, f);
-		fflush(f);
+		if (ferror(f)) {
+			if (errno == EPIPE) {
+				std::cerr << "Pipe terminated, suspending output." << std::endl;
+			} else {
+				std::cerr << "Error writing to pipe: " << strerror(errno) << std::endl;
+			}
+			pclose(f);
+			f = NULL;
+		} else {
+			fflush(f);
+		}
 	}
 }
 
