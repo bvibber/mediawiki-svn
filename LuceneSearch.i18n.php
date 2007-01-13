@@ -77,6 +77,23 @@ Serĉo de $3 $9",
 Estas verŝajne nur portempa; bonvolu provi denove post iom da tempo
 aŭ vi povas esplori la vikion per eksteraj serĉservoj.\n"
 );
+$wgLuceneSearchMessages['fr'] = array(
+	'searchnumber'          => "<strong>Résultats $1-$2 sur $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Préc.</span>",
+	'searchnext'            => "<span style='font-size: small'>Suiv.</span> &#x00BB;",
+	'searchscore'           => "Pertinence : $1",
+	'searchsize'            => "$1 ko ($2 mots)",
+	'searchdidyoumean'      => "Pensiez-vous à : « <a href=\"$1\">$2</a> » ?",
+	'searchnoresults'       => "Désolé, il n’existe aucune correspondance exacte à votre requête.",
+	'searchnearmatches'     => "<strong>Ces pages ont un titre similaire à votre requête.</strong>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+Rechercher dans les espaces : $1 <br/>
+Texte à rechercher : $3 $9",
+	'lucenefallback'        => "
+Un problème est survenu avec la recherche wiki. 
+Ce souci est probablement temporaire ; merci de réessayer dans un instant ou d’utiliser un service de recherche externe."
+);
 $wgLuceneSearchMessages['he'] = array(
 	'searchnumber'          => "<strong>תוצאות $1-$2 מתוך $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prev</span>",
