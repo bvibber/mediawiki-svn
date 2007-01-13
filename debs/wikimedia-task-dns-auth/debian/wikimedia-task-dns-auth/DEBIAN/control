@@ -1,0 +1,12 @@
+Package: wikimedia-task-dns-auth
+Version: 0.01
+Section: unknown
+Priority: optional
+Architecture: all
+Depends: pdns-server, pdns-backend-geo, python, rsync
+Installed-Size: 2524
+Maintainer: Mark Bergsma <mark@wikimedia.org>
+Description: Provides a Wikimedia authoritative DNS server
+ Package wikimedia-task-dns-auth depends on the appropriate packages
+ that need to be installed on a Wikimedia authoritative DNS server,
+ and provides the relevant management scripts.

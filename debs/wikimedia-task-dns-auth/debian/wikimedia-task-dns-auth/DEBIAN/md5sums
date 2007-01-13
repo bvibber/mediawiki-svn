@@ -1,0 +1,7 @@
+145f992991564143b2f89926b4730fd0  usr/sbin/authdns-update
+09faba920ae061aa846adfdd9a7a6236  usr/sbin/authdns-scenario
+9286659ec8443fd3ce6c68f88ee20cf5  usr/lib/wikimedia-task-dns-auth/bin/gen-zones
+b072c16728ce870b146dd174a16d0996  usr/lib/wikimedia-task-dns-auth/bin/gen-bind.conf
+983d337efda975364d2cce5d486cb05d  usr/share/doc/wikimedia-task-dns-auth/README.Debian
+486a6c6f67afb8cd6fd4806b09d6cff0  usr/share/doc/wikimedia-task-dns-auth/copyright
+fa529bf7a47dbbfa3fbf855f13e07e8a  usr/share/doc/wikimedia-task-dns-auth/changelog.gz

@@ -1,0 +1,88 @@
+#!/bin/bash
+#
+# Shell script that takes care of regenerating zonefiles from templates,
+# Regenerating language subdomain CNAMEs and replicating the zonefiles
+# to the slave DNS servers
+#
+# Written on 2005/06/19 by Mark Bergsma <mark@nedworks.org>
+
+set -e
+
+CONFFILE=/etc/default/wikimedia-task-dns-auth
+NAMESERVERS=""
+SKIP=$(awk -F = '/^default-soa-name/ { print $2 }' /etc/powerdns/pdns.conf)
+POWERDNSDIR=/etc/powerdns
+SCRIPTDIR=/usr/lib/wikimedia-task-dns-auth/bin
+LANGLIST=$POWERDNSDIR/langlist
+LANGLISTSOURCE=""
+
+PATH=/bin:/usr/bin:/usr/local/bin
+
+# Source the configuration file
+[ -f $CONFFILE ] && source $CONFFILE
+
+# Check parameters
+while [ -n "$1" ]; do
+	if [ "$1" = "-s" ]; then
+		# Skip the following slaves
+		if [ -z $SKIP ]; then
+			SKIP=$2
+		else
+			SKIP="$SKIP $2"
+		fi
+	fi
+	shift
+done
+
+echo "Will skip slave(s) $SKIP."
+
+# First, remove backup files that might be read as zonefiles
+echo "Removing backup files"
+rm -f $POWERDNSDIR/templates/*~ $POWERDNSDIR/geomaps/*~ 
+
+# Do some sanity checks
+echo "Doing sanity checks"
+if [ ! -h $POWERDNSDIR/geomaps ] || [ ! -d $(readlink $POWERDNSDIR/geomaps) ]
+then
+	echo "$POWERDNSDIR/geomaps does not exist or is not a symlink to a directory."
+	exit 1
+fi
+
+# Generate a new list of language CNAMEs
+echo "Syncing langlist"
+rsync -t $LANGLISTSOURCE $LANGLIST || true
+echo "Generating language subdomains CNAME file from $LANGLIST"
+[ $LANGLIST -nt $POWERDNSDIR/langlist-cnames ] && < $LANGLIST awk '{ print $1"\t\t\t1H\tIN CNAME\trr.wikimedia.org."; print"www."$1"\t\t\t1H\tIN CNAME\trr.wikimedia.org." }' > $POWERDNSDIR/langlist-cnames
+
+# Generate the zonefiles from the templates
+echo "Generating zonefiles from zone templates"
+$SCRIPTDIR/gen-zones
+
+# Generate a new bind.conf
+echo "Generating bind.conf from zone template structure in templates/"
+$SCRIPTDIR/gen-bind.conf
+
+# Update the local pdns
+echo "Reloading zones in PowerDNS"
+pdns_control reload
+# Try to avoid the pdns deadlock
+sleep 5
+pdns_control rediscover
+
+# Sync the zone templates to the slave servers
+for slave in $NAMESERVERS; do
+    for skip in $SKIP
+    do
+        if [ $skip = $slave ]
+        then
+	    echo "Skipping $slave."
+            continue 2
+        fi
+    done
+ 
+    echo "Updating $slave..."
+    rsync -e ssh --delete -av $POWERDNSDIR/langlist-cnames $POWERDNSDIR/templates $POWERDNSDIR/scenarios $POWERDNSDIR/geomaps $slave:$POWERDNSDIR/
+    ssh $slave "$SCRIPTDIR/gen-zones && $SCRIPTDIR/gen-bind.conf && pdns_control reload && pdns_control rediscover"
+done
+
+echo "Done!"
