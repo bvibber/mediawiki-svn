@@ -238,6 +238,22 @@ function wfAjaxShowEditors( $articleId, $username ) {
 	$unix_now = wfTimestamp(TS_UNIX);
 	$first = 1;
 	while( $editor = $dbr->fetchObject( $res ) ) {
+
+		// Check idling time
+		$idle = $unix_now - wfTimestamp( TS_UNIX, $editor->editings_touched );
+
+		global $wgAjaxShowEditorsTimeout ;
+		if( $idle >= $wgAjaxShowEditorsTimeout ) {
+			$dbw->delete('editings',
+				array(
+					'editings_page' => $title->getArticleID(),
+					'editings_user' => $editor->editings_user,
+				),
+				__METHOD__
+			);
+			continue; // we will not show the user
+		}
+
 		if( $first ) { $first = 0; }
 		else { $wikitext .= ' ~  '; }
 
@@ -250,7 +266,6 @@ function wfAjaxShowEditors( $articleId, $username ) {
 			);
 
 
-		$idle = $unix_now - wfTimestamp( TS_UNIX, $editor->editings_touched );
 		$wikitext .= ' ' . wfMsg( 'ajax-se-idling', $idle );
 	}
 	return $wikitext ;

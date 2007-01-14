@@ -2332,6 +2332,10 @@ $wgAjaxWatch = false;
  * Let you show other peoples editing an article.
  */
 $wgAjaxShowEditors = false;
+/**
+ * Number of seconds before an user is considered as no more editing
+ */
+$wgAjaxShowEditorsTimeout = 60;
 
 /**
  * Allow DISPLAYTITLE to change title display
