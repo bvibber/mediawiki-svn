@@ -2761,6 +2761,8 @@ Please confirm that really want to recreate this page.',
 # Ajax show editors
 'ajax-se-title' => 'Currently editing:',
 'ajax-se-pending' => 'pending refresh ... (just click)',
+'ajax-se-selfeditor' => '<b>$1 (you)</b>',
+'ajax-se-idling' => '($1 s)',
 
 );
 

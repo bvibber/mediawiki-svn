@@ -190,6 +190,7 @@ function wfAjaxShowEditors( $articleId, $username ) {
 		$user  = User::newFromName( $username );
 	}
 	if( !$user ) { return 'ERR: user invalid'; }
+	$username = $user->getName();
 
 	// Save current requests
 	$dbw =& wfGetDB(DB_MASTER);
@@ -198,7 +199,7 @@ function wfAjaxShowEditors( $articleId, $username ) {
 		null ,
 		array(
 			'editings_page' => $title->getArticleID() ,
-			'editings_user' => $user->getName() ,
+			'editings_user' => $username,
 			'editings_touched' => $dbw->timestamp(),
 		), __METHOD__
 	);
@@ -215,18 +216,21 @@ function wfAjaxShowEditors( $articleId, $username ) {
 
 	$wikitext = '';
 	$unix_now = wfTimestamp(TS_UNIX);
-
 	$first = 1;
 	while( $editor = $dbr->fetchObject( $res ) ) {
 		if( $first ) { $first = 0; }
 		else { $wikitext .= ' ~  '; }
 
-		$wikitext .= $l->makeKnownLinkObj(
-				Title::makeTitle( NS_USER, $editor->editings_user ),
-				$editor->editings_user
-			);
-		$idle = $unix_now - wfTimeStamp( TS_UNIX, $editor->editings_touched );
-		$wikitext .= " ($idle s) ";
+		if( $editor->editings_user == $username ) {
+			$wikitext .= wfMsg( 'ajax-se-selfeditor', $username );
+		} else {
+			$wikitext .= $l->makeLinkObj(
+					Title::makeTitle( NS_USER, $editor->editings_user ),
+					$editor->editings_user
+				);
+			$idle = $unix_now - wfTimeStamp( TS_UNIX, $editor->editings_touched );
+			$wikitext .= wfMsg( 'ajax-se-idling', $idle );
+		}
 	}
 	return $wikitext ;
 }
