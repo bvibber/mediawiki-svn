@@ -180,10 +180,16 @@ function wfAjaxShowEditors( $articleId, $username ) {
 	global $wgOut;
 	$articleId = intval($articleId);
 
-	$user  = User::newFromName( $username );
 	$title = Title::newFromID( $articleId );
-	if( !($title or $user) ) { return ''; }
+	if( !($title) ) { return 'ERR: page id invalid'; }
 
+	// Handle anon user
+	if( $username == '' ) {
+		$user = new User();
+	} else {
+		$user  = User::newFromName( $username );
+	}
+	if( !$user ) { return 'ERR: user invalid'; }
 
 	// Save current requests
 	$dbw =& wfGetDB(DB_MASTER);
@@ -208,11 +214,19 @@ function wfAjaxShowEditors( $articleId, $username ) {
 	$l = new Linker();
 
 	$wikitext = '';
+	$unix_now = wfTimestamp(TS_UNIX);
+
+	$first = 1;
 	while( $editor = $dbr->fetchObject( $res ) ) {
+		if( $first ) { $first = 0; }
+		else { $wikitext .= ' ~  '; }
+
 		$wikitext .= $l->makeKnownLinkObj(
 				Title::makeTitle( NS_USER, $editor->editings_user ),
 				$editor->editings_user
 			);
+		$idle = $unix_now - wfTimeStamp( TS_UNIX, $editor->editings_touched );
+		$wikitext .= " ($idle s) ";
 	}
 	return $wikitext ;
 }

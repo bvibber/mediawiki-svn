@@ -15,6 +15,10 @@ wgAjaxShowEditors.refresh = function() {
 	// Load the editors list element, it will get rewrote
 	var elEditorsList = document.getElementById( 'ajax-se-editors' );
 
+	if( wgUserName == null ) {
+		wgUserName = '';
+	}
+
 	// Do the ajax call to the server
 	sajax_do_call( "wfAjaxShowEditors", [ wgArticleId, wgUserName ], elEditorsList );
 }
