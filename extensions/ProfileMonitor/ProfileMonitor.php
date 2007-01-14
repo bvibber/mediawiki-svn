@@ -6,7 +6,7 @@
  *
  * @package MediaWiki
  * @subpackage Extensions
- * @author Rob Church <rob.church@mintrasystems.com>
+ * @author Rob Church <robchur@gmail.com>
  */
  
 if( defined( 'MEDIAWIKI' ) ) {
@@ -26,8 +26,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 	}
 	
 	function efProfileMonitorCss( &$css ) {
-		$file = dirname( __FILE__ ) . '/ProfileMonitor.css';
-		$css .= "/*<![CDATA[*/\n" . htmlspecialchars( file_get_contents( $file ) ) . "\n/*]]>*/";
+		global $wgTitle;
+		if( $wgTitle->isSpecial( 'Profiling' ) ) {
+			$file = dirname( __FILE__ ) . '/ProfileMonitor.css';
+			$css .= "/*<![CDATA[*/\n" . htmlspecialchars( file_get_contents( $file ) ) . "\n/*]]>*/";
+		}
 		return true;
 	}
 	

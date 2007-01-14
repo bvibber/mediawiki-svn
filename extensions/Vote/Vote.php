@@ -42,8 +42,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 * Add extra CSS to the skin
 	 */
 	function efVoteCss( &$css ) {
-		$file = dirname( __FILE__ ) . '/Vote.css';
-		$css .= "/*<![CDATA[*/\n" . htmlspecialchars( file_get_contents( $file ) ) . "\n/*]]>*/";
+		global $wgTitle;
+		if( $wgTitle->isSpecial( 'Vote' ) ) {
+			$file = dirname( __FILE__ ) . '/Vote.css';
+			$css .= "/*<![CDATA[*/\n" . htmlspecialchars( file_get_contents( $file ) ) . "\n/*]]>*/";
+		}
 		return true;
 	}
 
