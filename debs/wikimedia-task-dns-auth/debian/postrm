@@ -24,7 +24,7 @@ case "$1" in
 		--divert /etc/powerdns/pdns.conf.default /etc/powerdns/pdns.conf
 
 	rm -f /etc/powerdns/{bind.conf,langlist,langlist-cnames}
-	rm -rf /etc/powerdns/{templates,zones,geomaps}
+	rm -rf /etc/powerdns/{templates,zones,scenarios,geomaps}
 	;;
        remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
 

@@ -42,7 +42,7 @@ rm -f $POWERDNSDIR/templates/*~ $POWERDNSDIR/geomaps/*~
 
 # Do some sanity checks
 echo "Doing sanity checks"
-if [ ! -h $POWERDNSDIR/geomaps ] || [ ! -d $(readlink $POWERDNSDIR/geomaps) ]
+if [ ! -h $POWERDNSDIR/geomaps ] || [ ! -d $POWERDNSDIR/$(readlink $POWERDNSDIR/geomaps) ]
 then
 	echo "$POWERDNSDIR/geomaps does not exist or is not a symlink to a directory."
 	exit 1

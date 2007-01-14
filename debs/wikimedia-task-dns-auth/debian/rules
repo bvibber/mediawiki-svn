@@ -68,7 +68,13 @@ install: build
 	install gen-bind.conf $(DESTDIR)/usr/lib/wikimedia-task-dns-auth/bin/
 	install authdns-update authdns-scenario $(DESTDIR)/usr/sbin/
 	install -m 0644 zz.countries.nerd.dk.rbldnsd $(DESTDIR)/etc/powerdns/
-	cp -R scenarios $(DESTDIR)/etc/powerdns/
+	install -d $(DESTDIR)/etc/powerdns/scenarios/
+	install -d $(DESTDIR)/etc/powerdns/scenarios/normal
+	install -d $(DESTDIR)/etc/powerdns/scenarios/knams-down
+	install -d $(DESTDIR)/etc/powerdns/scenarios/yaseo-down
+	install scenarios/normal/* $(DESTDIR)/etc/powerdns/scenarios/normal/
+	install scenarios/knams-down/* $(DESTDIR)/etc/powerdns/scenarios/knams-down/
+	install scenarios/yaseo-down/* $(DESTDIR)/etc/powerdns/scenarios/yaseo-down/
 
 
 # Build architecture-independent files here.
