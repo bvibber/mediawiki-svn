@@ -192,22 +192,39 @@ function wfAjaxShowEditors( $articleId, $username ) {
 	if( !$user ) { return 'ERR: user invalid'; }
 	$username = $user->getName();
 
-	// Save current requests
-	$dbw =& wfGetDB(DB_MASTER);
+	// When did the user started editing ?
+	$dbr =& wfGetDB(DB_SLAVE);
+	$userStarted = $dbr->selectField( 'editings',
+		'editings_started',
+		array(
+			'editings_user' => $username,
+			'editings_page' => $title->getArticleID(),
+		),
+		__METHOD__
+	);
 
+	// He just started editing, assume NOW
+	if(!$userStarted) { $userStarted = $dbr->timestamp(); }
+
+	# Either create a new entry or update the touched timestamp.
+	# This is done using a unique index on the database :
+	# `editings_page_started` (`editings_page`,`editings_user`,`editings_started`)
+
+	$dbw =& wfGetDB(DB_MASTER);
 	$dbw->replace( 'editings',
-		null ,
+		array( 'editings_page', 'editings_user', 'editings_started' ),
 		array(
 			'editings_page' => $title->getArticleID() ,
 			'editings_user' => $username,
+			'editings_started' => $userStarted ,
 			'editings_touched' => $dbw->timestamp(),
 		), __METHOD__
 	);
 
-	// Get watching users
+	// Now we get the list of all watching users
 	$dbr = & wfGetDB(DB_SLAVE);
 	$res = $dbr->select( 'editings',
-		array( 'editings_user','editings_touched' ),
+		array( 'editings_user','editings_started','editings_touched' ),
 		array( 'editings_page' => $title->getArticleID() ),
 		__METHOD__
 	);
@@ -221,16 +238,17 @@ function wfAjaxShowEditors( $articleId, $username ) {
 		if( $first ) { $first = 0; }
 		else { $wikitext .= ' ~  '; }
 
-		if( $editor->editings_user == $username ) {
-			$wikitext .= wfMsg( 'ajax-se-selfeditor', $username );
-		} else {
-			$wikitext .= $l->makeLinkObj(
-					Title::makeTitle( NS_USER, $editor->editings_user ),
-					$editor->editings_user
-				);
-			$idle = $unix_now - wfTimeStamp( TS_UNIX, $editor->editings_touched );
-			$wikitext .= wfMsg( 'ajax-se-idling', $idle );
-		}
+		$since = wfTimestamp( TS_DB, $editor->editings_started );
+		$wikitext .= $since;
+
+		$wikitext .= ' ' . $l->makeLinkObj(
+				Title::makeTitle( NS_USER, $editor->editings_user ),
+				$editor->editings_user
+			);
+
+
+		$idle = $unix_now - wfTimestamp( TS_UNIX, $editor->editings_touched );
+		$wikitext .= ' ' . wfMsg( 'ajax-se-idling', $idle );
 	}
 	return $wikitext ;
 }
