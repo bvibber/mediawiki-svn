@@ -1123,6 +1123,8 @@ class EditPage {
 
 		global $wgAjaxShowEditors ;
 		if ( $wgAjaxShowEditors ) {
+			global $wgJsMimeType, $wgStylePath, $wgStyleVersion;
+			$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxshoweditors.js?$wgStyleVersion\"></script>\n" );
 			$wgOut->addWikiText(
 				'<div id="ajax-se"><p id="ajax-se-title">'.wfMsg('ajax-se-title').'</p>'
 				. '<p id="ajax-se-editors">'. wfMsg('ajax-se-pending') . '</p>'
