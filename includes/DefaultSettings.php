@@ -2329,6 +2329,11 @@ $wgAjaxExportList = array( );
 $wgAjaxWatch = false;
 
 /**
+ * Let you show other peoples editing an article.
+ */
+$wgAjaxShowEditors = false;
+
+/**
  * Allow DISPLAYTITLE to change title display
  */
 $wgAllowDisplayTitle = false ;

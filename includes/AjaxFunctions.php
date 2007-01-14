@@ -168,4 +168,52 @@ function wfAjaxWatch($pageID = "", $watch = "") {
 
 	return $watch ? '<w#>' : '<u#>';
 }
+
+/**
+ * Return a list of Editors currently editing the article.
+ * Based on an idea by Tim Starling.
+ *
+ * @author Ashar Voultoiz <hashar@altern.org>
+ * @author Tim Starling
+ */
+function wfAjaxShowEditors( $articleId, $username ) {
+	global $wgOut;
+	$articleId = intval($articleId);
+
+	$user  = User::newFromName( $username );
+	$title = Title::newFromID( $articleId );
+	if( !($title or $user) ) { return ''; }
+
+
+	// Save current requests
+	$dbw =& wfGetDB(DB_MASTER);
+
+	$dbw->replace( 'editings',
+		null ,
+		array(
+			'editings_page' => $title->getArticleID() ,
+			'editings_user' => $user->getName() ,
+			'editings_touched' => $dbw->timestamp(),
+		), __METHOD__
+	);
+
+	// Get watching users
+	$dbr = & wfGetDB(DB_SLAVE);
+	$res = $dbr->select( 'editings',
+		array( 'editings_user','editings_touched' ),
+		array( 'editings_page' => $title->getArticleID() ),
+		__METHOD__
+	);
+
+	$l = new Linker();
+
+	$wikitext = '';
+	while( $editor = $dbr->fetchObject( $res ) ) {
+		$wikitext .= $l->makeKnownLinkObj(
+				Title::makeTitle( NS_USER, $editor->editings_user ),
+				$editor->editings_user
+			);
+	}
+	return $wikitext ;
+}
 ?>

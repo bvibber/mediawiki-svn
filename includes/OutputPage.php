@@ -557,6 +557,12 @@ class OutputPage {
 			if( $wgAjaxWatch && $wgUser->isLoggedIn() ) {
 				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxwatch.js\"></script>\n" );
 			}
+
+			global $wgAjaxShowEditors;
+			if( $wgAjaxShowEditors ) {
+				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxshoweditors.js?$wgStyleVersion\"></script>\n" );
+			}
+
 		}
 
 		if ( '' != $this->mRedirect ) {

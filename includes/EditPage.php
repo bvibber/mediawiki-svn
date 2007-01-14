@@ -1120,6 +1120,16 @@ class EditPage {
 		$templates = ($this->preview || $this->section) ? $this->mPreviewTemplates : $this->mArticle->getUsedTemplates();
 		$formattedtemplates = $sk->formatTemplates( $templates, $this->preview, $this->section != '');
 
+
+		global $wgAjaxShowEditors ;
+		if ( $wgAjaxShowEditors ) {
+			$wgOut->addWikiText(
+				'<div id="ajax-se"><p id="ajax-se-title">'.wfMsg('ajax-se-title').'</p>'
+				. '<p id="ajax-se-editors">'. wfMsg('ajax-se-pending') . '</p>'
+				. '</div>'
+				);
+		}
+
 		global $wgUseMetadataEdit ;
 		if ( $wgUseMetadataEdit ) {
 			$metadata = $this->mMetaData ;
