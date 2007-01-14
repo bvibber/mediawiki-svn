@@ -190,7 +190,10 @@ function wfAjaxShowEditors( $articleId, $username ) {
 		$user  = User::newFromName( $username );
 	}
 	if( !$user ) { return 'ERR: user invalid'; }
+
+	// We only want valid users.
 	$username = $user->getName();
+	if( !(  $user->isLoggedIn() or User::isIP( $username )  ) ) { return 'ERR: user not found'; }
 
 	// When did the user started editing ?
 	$dbr =& wfGetDB(DB_SLAVE);
