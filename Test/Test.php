@@ -223,6 +223,7 @@ function proclaim(
 
 	# Everything after the first # is special, so escape user-supplied messages
 	$desc = str_replace( '#', '\\#', $desc );
+	$desc = str_replace( "\n", '\\n', $desc );
 
 	$ok = $cond ? "ok" : "not ok";
 	$directive = $todo === false ? '' : '# TODO aoeu';
