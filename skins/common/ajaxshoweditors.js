@@ -1,5 +1,6 @@
 var sajax_debug_mode = false;
 var canRefresh = null;
+var ShowEditorsCounting = false;
 var wgAjaxShowEditors = {} ;
 
 // The loader. Look at bottom for the sajax hook registration
@@ -32,6 +33,24 @@ wgAjaxShowEditors.refresh = function() {
 
 	// Do the ajax call to the server
 	sajax_do_call( "wfAjaxShowEditors", [ wgArticleId, wgUserName ], elEditorsList );
+	if(!ShowEditorsCounting) {
+		wgAjaxShowEditors.countup();
+	}
+}
+
+wgAjaxShowEditors.countup = function() {
+	ShowEditorsCounting = true;
+
+	var elEditorsList = document.getElementById( 'ajax-se-editors' );
+	for(var i=0;i<elEditorsList.childNodes.length;i++) {
+		var item = elEditorsList.childNodes[i];
+		if (item.nodeName == 'SPAN') {
+			var value = parseInt( item.innerHTML );
+			value++;
+			item.innerHTML = value ;
+		}
+	}
+	setTimeout( "wgAjaxShowEditors.countup()", 1000 );
 }
 
 // callback to allow refresh

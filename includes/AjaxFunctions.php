@@ -262,7 +262,7 @@ function wfAjaxShowEditors( $articleId, $username ) {
 			);
 
 
-		$wikitext .= ' ' . wfMsg( 'ajax-se-idling', $idle );
+		$wikitext .= ' ' . wfMsg( 'ajax-se-idling', '<span>'.$idle.'</span>' );
 	}
 	return $wikitext ;
 }
