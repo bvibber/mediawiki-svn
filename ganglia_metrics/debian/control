@@ -7,5 +7,5 @@ Standards-Version: 3.7.2
 
 Package: ganglia-metrics
 Architecture: all
-Depends: python (>= 2.3)
+Depends: gmond, python (>= 2.3)
 Description: Ganglia metric collection in python

@@ -1,3 +1,14 @@
+ganglia-metrics (1.0-2) edgy; urgency=medium
+
+  * Add dependency on gmond so install doesn't fail
+  * gmetricd doesn't remove the pid file in all cases, so add --oknodo
+    to start-stop-daemon to gracefully fail stopping the daemon if it's
+    not running
+  * The executable path is not /usr/sbin/gmetricd but python, so
+    use --name instead of --exec in the restart init script action
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 14 Jan 2007 14:42:59 +0000
+
 ganglia-metrics (1.0-1) unstable; urgency=low
 
   * Initial release 
