@@ -77,7 +77,7 @@ class SpecialDuplicator extends SpecialPage {
 						if( $num <= $wgDuplicatorRevisionLimit ) {
 							# Attempt to perform the main duplicate op. first
 							if( $this->duplicate( $this->sourceTitle, $this->destTitle ) ) {
-								$success  = wfMsgNoTrans( 'duplicator-success', $this->sourceTitle->getPrefixedText(), $this->destTitle->getPrefixedText() );
+								$success  = wfMsgNoTrans( 'duplicator-success', $this->sourceTitle->getPrefixedText(), $this->destTitle->getPrefixedText() ) . "\n\n";
 								$success .= '* ' . wfMsgNoTrans( 'duplicator-success-revisions', $wgLang->formatNum( $num ) ) . "\n";
 								# If there is a talk page and we've been asked to duplicate it, do so
 								if( $this->dealWithTalk() && $this->talk ) {

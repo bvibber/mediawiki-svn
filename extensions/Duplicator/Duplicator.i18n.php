@@ -26,7 +26,7 @@ copies of all histories. This is useful for article forking, etc.',
 
 'duplicator-summary' => 'Copied from [[$1]]',
 
-'duplicator-success' => "<big>'''[[$1]] was copied to [[$2]].'''</big>\n\n",
+'duplicator-success' => "<big>'''[[$1]] was copied to [[$2]].'''</big>",
 'duplicator-success-revisions' => '$1 revisions were copied.',
 'duplicator-success-talkcopied' => 'The discussion page was also copied.',
 'duplicator-success-talknotcopied' => 'The talk page could not be copied.',
@@ -53,7 +53,7 @@ copies of all histories. This is useful for article forking, etc.',
 
 	'duplicator-summary' => '[[$1]] wurde dupliziert',
 
-	'duplicator-success' => "<big>'''[[$1]] wurde nach [[$2]] kopiert.'''</big>\n\n",
+	'duplicator-success' => "<big>'''[[$1]] wurde nach [[$2]] kopiert.'''</big>",
 	'duplicator-success-revisions' => '$1 Versionen wurden dupliziert.',
 	'duplicator-success-talkcopied' => 'Die Diskussionsseite wurde auch dupliziert.',
 	'duplicator-success-talknotcopied' => 'Die Diskussionsseite konnte nicht dupliziert werden.',
@@ -81,7 +81,7 @@ copies of all histories. This is useful for article forking, etc.',
 
 'duplicator-summary' => 'Täydellinen kopio sivusta [[$1]]',
 
-'duplicator-success' => "<big>'''[[$1]] monistettiin sivulle [[$2]].'''</big>\n\n",
+'duplicator-success' => "<big>'''[[$1]] monistettiin sivulle [[$2]].'''</big>",
 'duplicator-success-revisions' => '$1 muutosta kopioitiin.',
 'duplicator-success-talkcopied' => 'Myös keskustelusivu monistettiin.',
 'duplicator-success-talknotcopied' => 'Keskustelusivua ei monistettu.',
@@ -136,7 +136,7 @@ indépendantes de l’historique complet. Il sert par exemple à séparer un art
 
 'duplicator-summary' => 'Disalin dari [[$1]]',
 
-'duplicator-success' => "<big>'''[[$1]] telah disalin ke [[$2]].'''</big>\n\n",
+'duplicator-success' => "<big>'''[[$1]] telah disalin ke [[$2]].'''</big>",
 'duplicator-success-revisions' => '$1 revisi telah disalin.',
 'duplicator-success-talkcopied' => 'Halaman pembicaraan juga telah disalin.',
 'duplicator-success-talknotcopied' => 'Halaman pembicaraan tidak dapat disalin.',
