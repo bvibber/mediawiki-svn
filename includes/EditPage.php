@@ -1122,7 +1122,8 @@ class EditPage {
 
 
 		global $wgAjaxShowEditors ;
-		if ( $wgAjaxShowEditors ) {
+		if ( $wgAjaxShowEditors && isset( $this->mArticle )
+                 && isset( $this->mArticle->mRevision ) ) {
 			global $wgJsMimeType, $wgStylePath, $wgStyleVersion;
 			$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxshoweditors.js?$wgStyleVersion\"></script>\n" );
 			$wgOut->addWikiText(
