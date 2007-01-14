@@ -180,20 +180,16 @@ function wfAjaxShowEditors( $articleId, $username ) {
 	global $wgOut;
 	$articleId = intval($articleId);
 
+	// Validate request
 	$title = Title::newFromID( $articleId );
 	if( !($title) ) { return 'ERR: page id invalid'; }
 
-	// Handle anon user
-	if( $username == '' ) {
-		$user = new User();
-	} else {
-		$user  = User::newFromName( $username );
-	}
+	$user = User::newFromSession() ;
 	if( !$user ) { return 'ERR: user invalid'; }
 
-	// We only want valid users.
 	$username = $user->getName();
 	if( !(  $user->isLoggedIn() or User::isIP( $username )  ) ) { return 'ERR: user not found'; }
+
 
 	// When did the user started editing ?
 	$dbr =& wfGetDB(DB_SLAVE);
