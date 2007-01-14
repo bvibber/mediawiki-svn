@@ -15,7 +15,7 @@ all templates in it recursively. It also expands parser functions like
 <nowiki>{{</nowiki>#if:...}}, and variables like 
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;in fact pretty much everything in double-braces.
 It does this by calling the relevant parser stage from MediaWiki itself.',
-	'expand_templates_title'           => 'Context title, for <nowiki>{{</nowiki>PAGENAME}} etc.:',
+	'expand_templates_title'           => 'Context title, for {{PAGENAME}} etc.:',
 	'expand_templates_input'           => 'Input text:',
 	'expand_templates_output'          => 'Result:',
 	'expand_templates_ok'              => 'OK',
