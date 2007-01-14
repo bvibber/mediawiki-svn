@@ -144,7 +144,7 @@ function getOptionPanel($fields, $action = '', $buttons = array("show" => "Show"
 		'<div class="option-panel">' .
 			'<form method="GET" action="">' .
 				'<table cellpadding="0" cellspacing="0">' .
-					'<input type="hidden" name="title" value="' . $wgTitle->getNsText() . ':' . $wgTitle->getText() . '"/>';
+					'<input type="hidden" name="title" value="' . $wgTitle->getNsText() . ':' . htmlspecialchars($wgTitle->getText()) . '"/>';
 
 	if ($action && $action != '')
 		$result .= '<input type="hidden" name="action" value="' . $action . '"/>';

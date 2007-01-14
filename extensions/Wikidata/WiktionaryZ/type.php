@@ -33,7 +33,7 @@ function createLink($nameSpace, $title, $text) {
 	global
 		$wgUser, $wgScript;
 		
-	return '<a href="'. $wgScript. '/' . $nameSpace . ':' . $title . '">' . htmlspecialchars($text) . '</a>';	
+	return '<a href="'. $wgScript. '/' . $nameSpace . ':' . htmlspecialchars($title) . '">' . htmlspecialchars($text) . '</a>';	
 //	return $wgUser->getSkin()->makeLink("$nameSpace:$tag", htmlspecialchars($text));
 } 
 
