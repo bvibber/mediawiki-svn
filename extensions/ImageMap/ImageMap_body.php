@@ -155,7 +155,7 @@ class ImageMap {
 
 			# Scale the coords using the size of the source image
 			foreach ( $coords as $i => $c ) {
-				$coords[$i] *= $scale;
+				$coords[$i] = intval( round( $coords[$i] * $scale ) );
 			}
 
 			# Construct the area tag
