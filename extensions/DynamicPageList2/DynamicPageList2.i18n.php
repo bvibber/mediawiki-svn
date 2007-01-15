@@ -575,6 +575,175 @@ $wgDPL2Messages['sk'] = array(
 	*/
 	'dpl2_articlecount' => 'V tomto nadpise {{PLURAL:$1|je jeden článok|sú $1 články|je $1 článkov}}.'
 );
+$wgDPL2Messages['sr-ec'] = array(
+	/*
+		Debug
+	*/
+	// (FATAL) ERRORS
+	/**
+	 * $0: 'namespace' или 'notnamespace'
+	 * $1: корисник је унео погрешан параметар
+	 * $3: списак могућих наслова за именски простор (сем именских простора: Медија, Посебно)
+	 */
+	'dpl2_debug_' . DPL2_ERR_WRONGNS => "ГРЕШКА: Погреан '$0' параметар: '$1'! Помоћ:  <code>$0= <i>погрешан стринг</i> (Главно)$3</code>. (Еквиваленти са магичним речима су такође дозвољени.)",
+	/**
+	 * $0: 'linksto' (остављено као $0 у случају да се параметар промени у будућности)
+	 * $1: корисник је унео погрешан параметар
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGLINKSTO => "ГРЕШКА: Погрешан '$0' параметар: '$1'! Помоћ:  <code>$0= <i>пуно име странице</i></code>. (Магичне речи су дозвољене.)",
+	/**
+	 * $0: максималан број категорија које се могу укључити
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOMANYCATS => 'ГРЕШКА: Превише категорија! Максимум је: $0. Помоћ: повећајте <code>$wgDPL2MaxCategoryCount</code> како бисте поставили више категорија или промените <code>$wgDPL2AllowUnlimitedCategories=true</code> за без граница. (Подесите варијаблу у <code>LocalSettings.php</code>, након укључивања <code>DynamicPageList2.php</code>.)',
+	/**
+	 * $0: минималан број категорија који се могу укључити
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOFEWCATS => 'ГРЕШКА: Премало категорија! Минимум је: $0. Помоћ: повећајте <code>$wgDPL2MinCategoryCount</code> како бисте поставили мање категорија. (Подесите варијаблу у <code>LocalSettings.php</code>, након укључивања <code>DynamicPageList2.php</code>.)',
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTNOINCLUDEDCATS => "ГРЕШКА: Морате укључити бар једну категорију уколико желите да користите 'addfirstcategorydate=true' или 'ordermethod=categoryadd'!",
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTMORETHAN1CAT => "ГРЕШКА: Уколико укључујете више од једне категорије, не можете користити 'addfirstcategorydate=true' или 'ordermethod=categoryadd'!",
+	'dpl2_debug_' . DPL2_ERR_MORETHAN1TYPEOFDATE => 'ГРЕШКА: Не можете додати више од једног типа датума!',
+	/**
+	 * $0: param=val је могућ само са $1 на мање 'ordermethod' параметром
+	 * $1: последњи 'ordermethod' параметар је потребан за $0
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "ГРЕШКА: Можете користити '$0' са 'ordermethod=[...,]$1' искључиво!",
+	/**
+	 * $0: prefix_dpl_clview где је 'prefix' префикс имена медијавики табела
+	 * $1: SQL упит за креирање prefix_dpl_clview на бази података вашег МедијаВикија
+	*/
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "ГРЕШКА: Немогуће извршити операцију на некатегоризованим страницама (нпр. са 'category' параметром) зато што $0 преглед не постоји у бази података! Помоћ: нека администратор базе изврши овај упит: <code>$1</code>.",
+	
+	// WARNINGS
+	/**
+	 * $0: корисник је унео непознат параметар
+	 * $1: списак DPL2 могућих параметара одвојених са ', '
+	*/
+	'dpl2_debug_' . DPL2_WARN_UNKNOWNPARAM => "ПАЖЊА: Непознат параметар '$0' је игнорисан. Помоћ: доступни параметри су: <code>$1</code>.",
+	/**
+	 * $3: списак валидних података параметара одвојених са ' | '
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "ПАЖЊА: Погрешан '$0' параметар: '$1'! Користи се основни: '$2'. Помоћ: <code>$0= $3</code>.",
+	/**
+	 * $0: име параметра
+	 * $1: корисник је унео непознат параметар
+	 * $2: користи се основни податак параметра уместо програмски
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "ПАЖЊА: Погрешан '$0' параметар: '$1'! Користи се основни: '$2' (без границе). Помоћ: <code>$0= <i>празан стринг</i> (без границе) | n</code>, с <code>n</code> је позитиван интегер.",
+	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'ПАЖЊА: Нема резултата!',
+	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "ПАЖЊА: Додавање* параметара ('adduser', 'addeditdate', итд.)' и 'includepage' нема ефекта са 'mode=category'. Искључиво име странице/именски простор могу да се виде у овом моду.",
+	/**
+	 * $0: 'headingmode' податак који је унео корисник
+	 * $1: подаци кориштени уместо програма (што значи без наслова)
+	*/
+	'dpl2_debug_' . DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD => "ПАЖЊА: 'headingmode=$0' нема ефекта са 'ordermethod' на једној компоненти. Користи се: '$1'. Помоћ: не морате користити-$1 'headingmode' податке 'ordermethod' на више компоненти. Прва компонента се користи за наслов. Нпр. 'ordermethod=category,<i>компонента</i>' (<i>компонента</i> је друга компонента) за наслове категорија.",
+	/**
+	 * $0: 'debug' value
+	*/
+	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "ПАЖЊА: 'debug=$0' није на првом месту у DPL елементу. Нова дебаг подешавања нису примењена пре свих параметара који су проверени",
+	/**
+	 * $0: наслов странице која прави бесконачну петљу.
+	*/
+	'dpl2_debug_' . DPL2_WARN_TRANSCLUSIONLOOP => "ПАЖЊА: Бесконачна петљаса странице '$0'.",
+
+	// OTHERS
+	/**
+	 * $0: SQL упит за генерисање динамичног списка страница
+	*/
+	'dpl2_debug_' . DPL2_QUERY => 'УПИТ: <code>$0</code>',
+
+	/*
+	   Output formatting
+	*/
+	/**
+	 * $1: број чланака
+	*/
+	'dpl2_articlecount' => 'У овом наслову се тренутно налази {{PLURAL:$1|један чланак|$1 чланка|$1 чланака}}.'
+);
+$wgDPL2Messages['sr-el'] = array(
+	/*
+		Debug
+	*/
+	// (FATAL) ERRORS
+	/**
+	 * $0: 'namespace' ili 'notnamespace'
+	 * $1: korisnik je uneo pogrešan parametar
+	 * $3: spisak mogućih naslova za imenski prostor (sem imenskih prostora: Medija, Posebno)
+	 */
+	'dpl2_debug_' . DPL2_ERR_WRONGNS => "GREŠKA: Pogrean '$0' parametar: '$1'! Pomoć:  <code>$0= <i>pogrešan string</i> (Glavno)$3</code>. (Ekvivalenti sa magičnim rečima su takođe dozvoljeni.)",
+	/**
+	 * $0: 'linksto' (ostavljeno kao $0 u slučaju da se parametar promeni u budućnosti)
+	 * $1: korisnik je uneo pogrešan parametar
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGLINKSTO => "GREŠKA: Pogrešan '$0' parametar: '$1'! Pomoć:  <code>$0= <i>puno ime stranice</i></code>. (Magične reči su dozvoljene.)",
+	/**
+	 * $0: maksimalan broj kategorija koje se mogu uključiti
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOMANYCATS => 'GREŠKA: Previše kategorija! Maksimum je: $0. Pomoć: povećajte <code>$wgDPL2MaxCategoryCount</code> kako biste postavili više kategorija ili promenite <code>$wgDPL2AllowUnlimitedCategories=true</code> za bez granica. (Podesite varijablu u <code>LocalSettings.php</code>, nakon uključivanja <code>DynamicPageList2.php</code>.)',
+	/**
+	 * $0: minimalan broj kategorija koji se mogu uključiti
+	*/
+	'dpl2_debug_' . DPL2_ERR_TOOFEWCATS => 'GREŠKA: Premalo kategorija! Minimum je: $0. Pomoć: povećajte <code>$wgDPL2MinCategoryCount</code> kako biste postavili manje kategorija. (Podesite varijablu u <code>LocalSettings.php</code>, nakon uključivanja <code>DynamicPageList2.php</code>.)',
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTNOINCLUDEDCATS => "GREŠKA: Morate uključiti bar jednu kategoriju ukoliko želite da koristite 'addfirstcategorydate=true' ili 'ordermethod=categoryadd'!",
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTMORETHAN1CAT => "GREŠKA: Ukoliko uključujete više od jedne kategorije, ne možete koristiti 'addfirstcategorydate=true' ili 'ordermethod=categoryadd'!",
+	'dpl2_debug_' . DPL2_ERR_MORETHAN1TYPEOFDATE => 'GREŠKA: Ne možete dodati više od jednog tipa datuma!',
+	/**
+	 * $0: param=val je moguć samo sa $1 na manje 'ordermethod' parametrom
+	 * $1: poslednji 'ordermethod' parametar je potreban za $0
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "GREŠKA: Možete koristiti '$0' sa 'ordermethod=[...,]$1' isključivo!",
+	/**
+	 * $0: prefix_dpl_clview gde je 'prefix' prefiks imena medijaviki tabela
+	 * $1: SQL upit za kreiranje prefix_dpl_clview na bazi podataka vašeg MedijaVikija
+	*/
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "GREŠKA: Nemoguće izvršiti operaciju na nekategorizovanim stranicama (npr. sa 'category' parametrom) zato što $0 pregled ne postoji u bazi podataka! Pomoć: neka administrator baze izvrši ovaj upit: <code>$1</code>.",
+	
+	// WARNINGS
+	/**
+	 * $0: korisnik je uneo nepoznat parametar
+	 * $1: spisak DPL2 mogućih parametara odvojenih sa ', '
+	*/
+	'dpl2_debug_' . DPL2_WARN_UNKNOWNPARAM => "PAŽNJA: Nepoznat parametar '$0' je ignorisan. Pomoć: dostupni parametri su: <code>$1</code>.",
+	/**
+	 * $3: spisak validnih podataka parametara odvojenih sa ' | '
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "PAŽNJA: Pogrešan '$0' parametar: '$1'! Koristi se osnovni: '$2'. Pomoć: <code>$0= $3</code>.",
+	/**
+	 * $0: ime parametra
+	 * $1: korisnik je uneo nepoznat parametar
+	 * $2: koristi se osnovni podatak parametra umesto programski
+	*/
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "PAŽNJA: Pogrešan '$0' parametar: '$1'! Koristi se osnovni: '$2' (bez granice). Pomoć: <code>$0= <i>prazan string</i> (bez granice) | n</code>, s <code>n</code> je pozitivan integer.",
+	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'PAŽNJA: Nema rezultata!',
+	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "PAŽNJA: Dodavanje* parametara ('adduser', 'addeditdate', itd.)' i 'includepage' nema efekta sa 'mode=category'. Isključivo ime stranice/imenski prostor mogu da se vide u ovom modu.",
+	/**
+	 * $0: 'headingmode' podatak koji je uneo korisnik
+	 * $1: podaci korišteni umesto programa (što znači bez naslova)
+	*/
+	'dpl2_debug_' . DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD => "PAŽNJA: 'headingmode=$0' nema efekta sa 'ordermethod' na jednoj komponenti. Koristi se: '$1'. Pomoć: ne morate koristiti-$1 'headingmode' podatke 'ordermethod' na više komponenti. Prva komponenta se koristi za naslov. Npr. 'ordermethod=category,<i>komponenta</i>' (<i>komponenta</i> je druga komponenta) za naslove kategorija.",
+	/**
+	 * $0: 'debug' value
+	*/
+	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "PAŽNJA: 'debug=$0' nije na prvom mestu u DPL elementu. Nova debag podešavanja nisu primenjena pre svih parametara koji su provereni",
+	/**
+	 * $0: naslov stranice koja pravi beskonačnu petlju.
+	*/
+	'dpl2_debug_' . DPL2_WARN_TRANSCLUSIONLOOP => "PAŽNJA: Beskonačna petljasa stranice '$0'.",
+
+	// OTHERS
+	/**
+	 * $0: SQL upit za generisanje dinamičnog spiska stranica
+	*/
+	'dpl2_debug_' . DPL2_QUERY => 'UPIT: <code>$0</code>',
+
+	/*
+	   Output formatting
+	*/
+	/**
+	 * $1: broj članaka
+	*/
+	'dpl2_articlecount' => 'U ovom naslovu se trenutno nalazi {{PLURAL:$1|jedan članak|$1 članka|$1 članaka}}.'
+);
+$wgDPL2Messages['sr'] = $wgDPL2Messages['sr-ec'];
 $wgDPL2Messages['zh-cn'] = array(
 	/*
 		Debug

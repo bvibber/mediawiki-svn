@@ -108,12 +108,19 @@ $wgLinkSearchMessages['sk'] = array(
 	'linksearch-line'  => 'Na $1 odkazuje $2',
 	'linksearch-error' => 'Zástupné znaky je možné použiť iba na začiatku názvu domény.',
 );
-$wgLinkSearchMessages['sr'] = array(
+$wgLinkSearchMessages['sr-ec'] = array(
 	'linksearch'	   => 'Претрага интернет веза',
 	'linksearch-text'  => 'Џокери као што су "*.wikipedia.org" могу да се користе.',
 	'linksearch-line'  => '$1 повезана са $2',
 	'linksearch-error' => 'Џокери могу да се појављују само на почетку домена.'
 );
+$wgLinkSearchMessages['sr-el'] = array(
+	'linksearch'	   => 'Pretraga internet veza',
+	'linksearch-text'  => 'Džokeri kao što su "*.wikipedia.org" mogu da se koriste.',
+	'linksearch-line'  => '$1 povezana sa $2',
+	'linksearch-error' => 'Džokeri mogu da se pojavljuju samo na početku domena.'
+);
+$wgLinkSearchMessages['sr'] = $wgLinkSearchMessages['sr-ec'];
 $wgLinkSearchMessages['zh-cn'] = array(
 	'linksearch'       => '搜索网页链接',
 	'linksearch-text'  => '可能使用了类似"*.wikipedia.org"的通配符。',

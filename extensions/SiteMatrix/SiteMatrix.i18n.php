@@ -66,6 +66,13 @@ $wgSiteMatrixMessages['ru'] = array(
 $wgSiteMatrixMessages['sk'] = array(
 	"sitematrix" => "Zoznam wiki projektov Nadácie Wikimedia",
 );
+$wgSiteMatrixMessages['sr-ec'] = array(
+	"sitematrix" => "Табела свих викија",
+);
+$wgSiteMatrixMessages['sr-el'] = array(
+	"sitematrix" => "Tabela svih vikija",
+);
+$wgSiteMatrixMessages['sr'] = $wgSiteMatrixMessages['sr-ec'];
 $wgSiteMatrixMessages['zh-cn'] = array(
 	"sitematrix" => "维基媒体站点列表",
 );

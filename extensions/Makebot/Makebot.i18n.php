@@ -202,6 +202,69 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'menarik status bot dari [[$1]]',
 ),
 
+/* Serbian default (Sasa Stefanovic) */
+'sr' => array(
+'makebot' => 'Давање или одузимање статуса бота',
+'makebot-header' => "'''Локални бирократа може користити ову страну да даје или одузима [[Помоћ:Бот|статус бота]] неком другом корисничком налогу.'''<br />Статус бота скрива измене корисника са [[Посебно:Recentchanges|скорашњих измена]] и сличних листа и користан је за обележавање корисника који врше аутоматске измене. Ово треба да се ради у складу са одговарајућим политикама.",
+'makebot-username' => 'Корисничко име:',
+'makebot-search' => 'Иди',
+'makebot-isbot' => '[[User:$1|$1]] има статус бота.',
+'makebot-notbot' => '[[User:$1|$1]] нема статус бота.',
+'makebot-privileged' => '[[Корисник:$1|$1]] има [[Посебно:Listadmins|администраторске или бирократске привилегије]], и не може му се доделити статус бота.',
+'makebot-change' => 'Промени статус:',
+'makebot-grant' => 'Дај',
+'makebot-revoke' => 'Одузми',
+'makebot-comment' => 'Коментар:',
+'makebot-granted' => '[[Корисник:$1|$1]] сада има статус бота.',
+'makebot-revoked' => '[[Корисник:$1|$1]] више нема статус бота.',
+'makebot-logpage' => 'историја статуса бота',
+'makebot-logpagetext' => 'Ово је историја измена статуса [[Помоћ:Бот|бота]] корисника.',
+'makebot-logentrygrant' => 'дао статус бота: [[$1]]',
+'makebot-logentryrevoke' => 'уклонио статус бота: [[$1]]',
+),
+
+/* Serbian cyrillic (Sasa Stefanovic) */
+'sr-ec' => array(
+'makebot' => 'Давање или одузимање статуса бота',
+'makebot-header' => "'''Локални бирократа може користити ову страну да даје или одузима [[Помоћ:Бот|статус бота]] неком другом корисничком налогу.'''<br />Статус бота скрива измене корисника са [[Посебно:Recentchanges|скорашњих измена]] и сличних листа и користан је за обележавање корисника који врше аутоматске измене. Ово треба да се ради у складу са одговарајућим политикама.",
+'makebot-username' => 'Корисничко име:',
+'makebot-search' => 'Иди',
+'makebot-isbot' => '[[User:$1|$1]] има статус бота.',
+'makebot-notbot' => '[[User:$1|$1]] нема статус бота.',
+'makebot-privileged' => '[[Корисник:$1|$1]] има [[Посебно:Listadmins|администраторске или бирократске привилегије]], и не може му се доделити статус бота.',
+'makebot-change' => 'Промени статус:',
+'makebot-grant' => 'Дај',
+'makebot-revoke' => 'Одузми',
+'makebot-comment' => 'Коментар:',
+'makebot-granted' => '[[Корисник:$1|$1]] сада има статус бота.',
+'makebot-revoked' => '[[Корисник:$1|$1]] више нема статус бота.',
+'makebot-logpage' => 'историја статуса бота',
+'makebot-logpagetext' => 'Ово је историја измена статуса [[Помоћ:Бот|бота]] корисника.',
+'makebot-logentrygrant' => 'дао статус бота: [[$1]]',
+'makebot-logentryrevoke' => 'уклонио статус бота: [[$1]]',
+),
+
+/* Serbian latin (Sasa Stefanovic) */
+'sr-el' => array(
+'makebot' => 'Davanje ili oduzimanje statusa bota',
+'makebot-header' => "'''Lokalni birokrata može koristiti ovu stranu da daje ili oduzima [[Pomoć:Bot|status bota]] nekom drugom korisničkom nalogu.'''<br />Status bota skriva izmene korisnika sa [[Posebno:Recentchanges|skorašnjih izmena]] i sličnih lista i koristan je za obeležavanje korisnika koji vrše automatske izmene. Ovo treba da se radi u skladu sa odgovarajućim politikama.",
+'makebot-username' => 'Korisničko ime:',
+'makebot-search' => 'Idi',
+'makebot-isbot' => '[[User:$1|$1]] ima status bota.',
+'makebot-notbot' => '[[User:$1|$1]] nema status bota.',
+'makebot-privileged' => '[[Korisnik:$1|$1]] ima [[Posebno:Listadmins|administratorske ili birokratske privilegije]], i ne može mu se dodeliti status bota.',
+'makebot-change' => 'Promeni status:',
+'makebot-grant' => 'Daj',
+'makebot-revoke' => 'Oduzmi',
+'makebot-comment' => 'Komentar:',
+'makebot-granted' => '[[Korisnik:$1|$1]] sada ima status bota.',
+'makebot-revoked' => '[[Korisnik:$1|$1]] više nema status bota.',
+'makebot-logpage' => 'istorija statusa bota',
+'makebot-logpagetext' => 'Ovo je istorija izmena statusa [[Pomoć:Bot|bota]] korisnika.',
+'makebot-logentrygrant' => 'dao status bota: [[$1]]',
+'makebot-logentryrevoke' => 'uklonio status bota: [[$1]]',
+),
+
 	);
 	return $messages;
 }

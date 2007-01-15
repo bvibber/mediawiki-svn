@@ -189,6 +189,31 @@ volania relevantnej fázy parsera samotného MediaWiki.',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Odstrániť komentáre',
 );
+$wgExpandTemplatesMessages['sr-ec'] = array(
+	'expandtemplates'                  => 'Замена шаблона',
+	'expand_templates_intro'           => 'Ова посебна страница узима неки текст и мења све шаблоне у њему рекурзивно. 
+Такође мења функције парсера као што је <nowiki>{{</nowiki>#if:...}}, и променљиве као што је 
+<nowiki>{{</nowiki>ТРЕНУТНИДАН}}&mdash;заправо практично све што се налази између витичастих заграда. 
+До овога долази тако што се зове одговарајуће стање парсера из самог МедијаВикија.',
+	'expand_templates_title'           => 'Назив контекста; за <nowiki>{{</nowiki>СТРАНИЦА}} итд.:',
+	'expand_templates_input'           => 'Унос:',
+	'expand_templates_output'          => 'Резултат:',
+	'expand_templates_ok'              => 'У реду',
+	'expand_templates_remove_comments' => 'Уклони коментаре',
+);
+$wgExpandTemplatesMessages['sr-el'] = array(
+	'expandtemplates'                  => 'Zamena šablona',
+	'expand_templates_intro'           => 'Ova posebna stranica uzima neki tekst i menja sve šablone u njemu rekurzivno. 
+Takođe menja funkcije parsera kao što je <nowiki>{{</nowiki>#if:...}}, i promenljive kao što je 
+<nowiki>{{</nowiki>TRENUTNIDAN}}&mdash;zapravo praktično sve što se nalazi između vitičastih zagrada. 
+Do ovoga dolazi tako što se zove odgovarajuće stanje parsera iz samog MedijaVikija.',
+	'expand_templates_title'           => 'Naziv konteksta; za <nowiki>{{</nowiki>STRANICA}} itd.:',
+	'expand_templates_input'           => 'Unos:',
+	'expand_templates_output'          => 'Rezultat:',
+	'expand_templates_ok'              => 'U redu',
+	'expand_templates_remove_comments' => 'Ukloni komentare',
+);
+$wgExpandTemplatesMessages['sr'] = $wgExpandTemplatesMessages['sr-ec'];
 $wgExpandTemplatesMessages['zh-cn'] = array(
 	'expandtemplates'                  => '展开模板',
 	'expand_templates_intro'           => '本特殊页面用于将一些文字中的模板展开，包括模板中引用的模板。同时也展开解释器函数如<nowiki>{{</nowiki>#if:...}}，以及变量如<nowiki>{{</nowiki>CURRENTDAY}}&mdash;实际上，几乎所有在双括号中的内容都被展开。本特殊页面是通过调用MediaWiki的相关解释阶段的功能完成的。',

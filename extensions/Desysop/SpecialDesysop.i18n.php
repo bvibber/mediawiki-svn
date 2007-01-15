@@ -118,6 +118,29 @@ $wgDesysopMessages['sk'] = array(
 	'desysop'              => 'Odobrať privilégiá správcu používateľovi',
 	'not_sysop'            => 'Tento používateľ nie je správca',
 );
+$wgDesysopMessages['sr-ec'] = array(
+	'desysoptitle'         => 'Одузимање администраторских права',
+	'desysoptext'          => "Ову страницу користе бирократе како би одузели администраторска права кориснику. Унестите корисничко име у поље испод и притисните дугме како би одузели корисничка администраторска права.",
+	'desysopname'          => 'Корисник:',
+	'desysopok'            => "<b>Кориснику \"$1\" су одузета администраторска права</b>",
+	'set_user_rights'      => 'Постави корисничка права',
+	'user_rights_set'      => "<b>Корисничка права за корисника \"$1\" освежена</b>",
+	'set_rights_fail'      => "<b>Корисничка права за корисника \"$1\" је немогуће поставити. (Да ли сте унели корисничко име исправно??)</b>",
+	'desysop'              => 'Одузми админ права кориснику',
+	'not_sysop'            => 'Овај корисник није администратор',
+);
+$wgDesysopMessages['sr-el'] = array(
+	'desysoptitle'         => 'Oduzimanje administratorskih prava',
+	'desysoptext'          => "Ovu stranicu koriste birokrate kako bi oduzeli administratorska prava korisniku. Unestite korisničko ime u polje ispod i pritisnite dugme kako bi oduzeli korisnička administratorska prava.",
+	'desysopname'          => 'Korisnik:',
+	'desysopok'            => "<b>Korisniku \"$1\" su oduzeta administratorska prava</b>",
+	'set_user_rights'      => 'Postavi korisnička prava',
+	'user_rights_set'      => "<b>Korisnička prava za korisnika \"$1\" osvežena</b>",
+	'set_rights_fail'      => "<b>Korisnička prava za korisnika \"$1\" je nemoguće postaviti. (Da li ste uneli korisničko ime ispravno??)</b>",
+	'desysop'              => 'Oduzmi admin prava korisniku',
+	'not_sysop'            => 'Ovaj korisnik nije administrator',
+);
+$wgDesysopMessages['sr'] = $wgDesysopMessages['sr-ec'];
 $wgDesysopMessages['zh-cn'] = array(
 	'desysoptitle'         => '撤销一位用户的操作员权限',
 	'desysoptext'          => "这个表格供行政员使用以撤销一位用户的操作员权限。在下面的框中输入用户名并按下按钮以撤销该用户的操作员权限。",

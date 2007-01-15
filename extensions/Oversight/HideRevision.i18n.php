@@ -151,6 +151,118 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 'oversight' => 'Oversight',
 'oversight-view' => 'detalhes',
 ),
+
+/* Serbian default (Sasa Stefanovic) */
+'sr' => array(
+'hiderevision' => 'Трајно сакриј ревизије',
+// Empty form
+'hiderevision-prompt' => 'Број ревизије за уклањање:',
+'hiderevision-continue' => 'Настави',
+// Confirmation form
+'hiderevision-text' =>
+"Ова опција треба да се користи '''само''' у следећим случајевима: 
+
+* Неумесне личне информације 
+*: ''кућне адресе, бројеви телефона, матични бројеви и сл.'' 
+
+'''Злоупотреба овог система ће довести до губитка ових привилегија.'''
+
+Уклоњене ставке неће бити видљиве никоме преко сајта, али се брисања записују 
+и администратори базе података их могу ручно вратити ако направите грешку.",
+'hiderevision-reason' => 'Разлог (биће записан приватно)::',
+'hiderevision-submit' => 'Сакриј ове податке заувек',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => 'Сакриј ревизију',
+// Status & errors on action
+'hiderevision-norevisions' => 'Није назначена ниједна ревизија за брисање.',
+'hiderevision-noreason' => 'Морате дати разлог за ово уклањање.',
+'hiderevision-status' => 'Ревизија $1: $2',
+'hiderevision-success' => 'Успешно архивирање и брисање.',
+'hiderevision-error-missing' => 'Није пронађено у бази података.',
+'hiderevision-error-current' => 'Не могу да обришем најскорију измену на страници. Прво вратите измену.',
+'hiderevision-error-delete' => 'Не могу да архивирам; да ли је претходно обрисана?',
+'hiderevision-archive-status' => 'Обрисана ревизија из $1: $2',
+// Logging
+'oversight-log-hiderev' => 'уклоњена измена из $1',
+// Oversight review page
+'oversight' => 'Пропуст',
+'oversight-view' => 'детаљи',
+),
+
+/* Serbian cyrillic (Sasa Stefanovic) */
+'sr-ec' => array(
+'hiderevision' => 'Трајно сакриј ревизије',
+// Empty form
+'hiderevision-prompt' => 'Број ревизије за уклањање:',
+'hiderevision-continue' => 'Настави',
+// Confirmation form
+'hiderevision-text' =>
+"Ова опција треба да се користи '''само''' у следећим случајевима: 
+
+* Неумесне личне информације 
+*: ''кућне адресе, бројеви телефона, матични бројеви и сл.'' 
+
+'''Злоупотреба овог система ће довести до губитка ових привилегија.'''
+
+Уклоњене ставке неће бити видљиве никоме преко сајта, али се брисања записују 
+и администратори базе података их могу ручно вратити ако направите грешку.",
+'hiderevision-reason' => 'Разлог (биће записан приватно)::',
+'hiderevision-submit' => 'Сакриј ове податке заувек',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => 'Сакриј ревизију',
+// Status & errors on action
+'hiderevision-norevisions' => 'Није назначена ниједна ревизија за брисање.',
+'hiderevision-noreason' => 'Морате дати разлог за ово уклањање.',
+'hiderevision-status' => 'Ревизија $1: $2',
+'hiderevision-success' => 'Успешно архивирање и брисање.',
+'hiderevision-error-missing' => 'Није пронађено у бази података.',
+'hiderevision-error-current' => 'Не могу да обришем најскорију измену на страници. Прво вратите измену.',
+'hiderevision-error-delete' => 'Не могу да архивирам; да ли је претходно обрисана?',
+'hiderevision-archive-status' => 'Обрисана ревизија из $1: $2',
+// Logging
+'oversight-log-hiderev' => 'уклоњена измена из $1',
+// Oversight review page
+'oversight' => 'Пропуст',
+'oversight-view' => 'детаљи',
+),
+
+/* Serbian latin (Sasa Stefanovic) */
+'sr-el' => array(
+'hiderevision' => 'Trajno sakrij revizije',
+// Empty form
+'hiderevision-prompt' => 'Broj revizije za uklanjanje:',
+'hiderevision-continue' => 'Nastavi',
+// Confirmation form
+'hiderevision-text' =>
+"Ova opcija treba da se koristi '''samo''' u sledećim slučajevima: 
+
+* Neumesne lične informacije 
+*: ''kućne adrese, brojevi telefona, matični brojevi i sl.'' 
+
+'''Zloupotreba ovog sistema će dovesti do gubitka ovih privilegija.'''
+
+Uklonjene stavke neće biti vidljive nikome preko sajta, ali se brisanja zapisuju 
+i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
+'hiderevision-reason' => 'Razlog (biće zapisan privatno)::',
+'hiderevision-submit' => 'Sakrij ove podatke zauvek',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => 'Sakrij reviziju',
+// Status & errors on action
+'hiderevision-norevisions' => 'Nije naznačena nijedna revizija za brisanje.',
+'hiderevision-noreason' => 'Morate dati razlog za ovo uklanjanje.',
+'hiderevision-status' => 'Revizija $1: $2',
+'hiderevision-success' => 'Uspešno arhiviranje i brisanje.',
+'hiderevision-error-missing' => 'Nije pronađeno u bazi podataka.',
+'hiderevision-error-current' => 'Ne mogu da obrišem najskoriju izmenu na stranici. Prvo vratite izmenu.',
+'hiderevision-error-delete' => 'Ne mogu da arhiviram; da li je prethodno obrisana?',
+'hiderevision-archive-status' => 'Obrisana revizija iz $1: $2',
+// Logging
+'oversight-log-hiderev' => 'uklonjena izmena iz $1',
+// Oversight review page
+'oversight' => 'Propust',
+'oversight-view' => 'detalji',
+),
+
 	);
 }
 

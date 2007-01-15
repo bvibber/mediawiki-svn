@@ -85,6 +85,17 @@ $wgCrossNamespaceLinksMessages['sk'] = array(
 	'crossnamespacelinks'     => 'Odkazy medzi mennými priestormi',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazov}} na $3'
 );
+$wgCrossNamespaceLinksMessages['sr-ec'] = array(
+	'crossnamespacelinks'         => 'Везе ка именским просторима',
+	'crossnamespacelinks-summary' => 'Ова страница пружа списак веза са странице у главном именском простору ка страници у неком другом именском простору (осим за {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}} именске просторе), чија се употреба не препоручује.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|веза|везе|веза}} ка $3 именском простору'
+);
+$wgCrossNamespaceLinksMessages['sr-el'] = array(
+	'crossnamespacelinks'         => 'Veze ka imenskim prostorima',
+	'crossnamespacelinks-summary' => 'Ova stranica pruža spisak veza sa stranice u glavnom imenskom prostoru ka stranici u nekom drugom imenskom prostoru (osim za {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}} imenske prostore), čija se upotreba ne preporučuje.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|veza|veze|veza}} ka $3 imenskom prostoru'
+);
+$wgCrossNamespaceLinksMessages['sr'] = $wgCrossNamespaceLinksMessages['sr-ec'];
 $wgCrossNamespaceLinksMessages['zh-cn'] = array(
 	'crossnamespacelinks'     => '跨名字空间的链接',
 	'crossnamespacelinkstext' => '$1: $2 个链接到 $3'

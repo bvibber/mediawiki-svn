@@ -518,9 +518,26 @@ $wgMakesysopMessages['sr-ec'] = array(
 	'grouppage-steward'    => '{{ns:project}}:стјуарди',
 );
 $wgMakesysopMessages['sr-el'] = array(
+	'makesysoptitle'       => 'Pretvorite korisnika u administratora',
+	'makesysoptext'        => 'Ovaj formular se koristi od strane birokrata da se obični korisnici pretvore u administratore. Unesite ime korisnika u kutiju i pritisnite dugme da bi korisnik postao administrator',
+	'makesysopname'        => 'Ime korisnika:',
+	'makesysopsubmit'      => 'Dodaj ovom korisniku administratorska ovlašćenja',
+	'makesysopok'          => "<b>Korisnik \"$1\" je sada administrator</b>",
+	'makesysopfail'        => "<b>Korisnik \"$1\" ne može da postane administrator. (Da li ste pravilno uneli ime?)</b>",
+	'setbureaucratflag'    => 'Postavi prava birokrate',
+	'rights'               => 'Prava:',
+	'set_user_rights'      => 'Postavi prava korisnika',
+	'user_rights_set'      => "<b>Prava za korisnika \"$1\" promenjena</b>",
+	'set_rights_fail'      => "<b>Korisnička prava za \"$1\" nisu mogla da se podese. (Da li ste pravilno uneli ime?)</b>",
+	'makesysop'            => 'Davanje administrativnih ovlašćenja korisniku',
+	'already_sysop'        => 'Ovaj korisnik je već administrator',
+	'already_bureaucrat'   => 'Ovaj korisnik je već birokrata',
+	'makesysop-nodatabase' => 'Loše interviki korisničko ime: $1',
 	'group-steward'        => 'stjuardi',
 	'group-steward-member' => 'stjuard',
+	'grouppage-steward'    => '{{ns:project}}:stjuardi',
 );
+$wgMakesysopMessages['sr'] = $wgMakesysopMessages['sr-ec'];
 $wgMakesysopMessages['sv'] = array(
 	'makesysoptitle'       => 'Gör en användare till administratör',
 	'makesysoptext'        => 'Det här formuläret används av byråkrater för att göra vanliga användare till administratörer. Skriv användarens namn i rutan och tryck på knappen för att göra användaren till administratör',

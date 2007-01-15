@@ -81,6 +81,48 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'O artigo $1 não existe.',
 ),
 
+/* Serbian default (Sasa Stefanovic) */
+'sr' => array(
+'contributors' => 'Доприносиоци',
+'contributors-toolbox' => 'Главни доприносиоци',
+'contributors-legend' => 'Списак главних доприносиоца у чланку',
+'contributors-target' => 'Наслов:',
+'contributors-submit' => 'Прикажи',
+'contributors-subtitle' => 'Главни доприносиоци на $1',
+'contributors-others-long' => 'Такође постоји још $1 других доприносиоца на овој страници.',
+'contributors-others' => 'и $1 других',
+'contributors-badtitle' => 'Грешка у наслову.',
+'contributors-nosuchpage' => 'Чланак $1 не постоји.',
+),
+
+/* Serbian cyrillyc (Sasa Stefanovic) */
+'sr-ec' => array(
+'contributors' => 'Доприносиоци',
+'contributors-toolbox' => 'Главни доприносиоци',
+'contributors-legend' => 'Списак главних доприносиоца у чланку',
+'contributors-target' => 'Наслов:',
+'contributors-submit' => 'Прикажи',
+'contributors-subtitle' => 'Главни доприносиоци на $1',
+'contributors-others-long' => 'Такође постоји још $1 других доприносиоца на овој страници.',
+'contributors-others' => 'и $1 других',
+'contributors-badtitle' => 'Грешка у наслову.',
+'contributors-nosuchpage' => 'Чланак $1 не постоји.',
+),
+
+/* Serbian latin (Sasa Stefanovic) */
+'sr-el' => array(
+'contributors' => 'Doprinosioci',
+'contributors-toolbox' => 'Glavni doprinosioci',
+'contributors-legend' => 'Spisak glavnih doprinosioca u članku',
+'contributors-target' => 'Naslov:',
+'contributors-submit' => 'Prikaži',
+'contributors-subtitle' => 'Glavni doprinosioci na $1',
+'contributors-others-long' => 'Takođe postoji još $1 drugih doprinosioca na ovoj stranici.',
+'contributors-others' => 'i $1 drugih',
+'contributors-badtitle' => 'Greška u naslovu.',
+'contributors-nosuchpage' => 'Članak $1 ne postoji.',
+),
+
 	);
 }
 

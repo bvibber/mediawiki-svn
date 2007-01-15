@@ -94,6 +94,17 @@ $wgFilepathMessages['sk'] = array(
 	'filepath_page'   => 'Súbor:',
 	'filepath_submit' => 'Cesta',
 );
+$wgFilepathMessages['sr-ec'] = array(
+	'filepath'        => 'Путања фајла',
+	'filepath_page'   => 'Фајл:',
+	'filepath_submit' => 'Путања',
+);
+$wgFilepathMessages['sr-el'] = array(
+	'filepath'        => 'Putanja fajla',
+	'filepath_page'   => 'Fajl:',
+	'filepath_submit' => 'Putanja',
+);
+$wgFilepathMessages['sr'] = $wgFilepathMessages['sr-ec'];
 $wgFilepathMessages['zh-cn'] = array(
 	'filepath'        => '文件路径',
 	'filepath_page'   => '文件名：',

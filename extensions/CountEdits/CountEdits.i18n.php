@@ -89,6 +89,45 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Não possui contribuições neste wiki.',
 ),
 
+/* Serbian default (Sasa Stefanovic) */
+'sr' => array(
+'countedits' => 'Бројач измена',
+'countedits-warning' => "'''Упозорење:''' Не судите о књизи по њеном омоту. Не судите о кориснику по његовом броју измена.",
+'countedits-username' => 'Корисник:',
+'countedits-ok' => 'У реду',
+'countedits-nosuchuser' => 'Не постоји корисник са именом $1.',
+'countedits-resultheader' => 'Резултати за $1',
+'countedits-resulttext' => '$1 има $2 измена',
+'countedits-mostactive' => 'Најактивнији корисници',
+'countedits-nocontribs' => 'Не постоје прилози на овој вики.',
+),
+
+/* Serbian cyrillic (Sasa Stefanovic) */
+'sr-ec' => array(
+'countedits' => 'Бројач измена',
+'countedits-warning' => "'''Упозорење:''' Не судите о књизи по њеном омоту. Не судите о кориснику по његовом броју измена.",
+'countedits-username' => 'Корисник:',
+'countedits-ok' => 'У реду',
+'countedits-nosuchuser' => 'Не постоји корисник са именом $1.',
+'countedits-resultheader' => 'Резултати за $1',
+'countedits-resulttext' => '$1 има $2 измена',
+'countedits-mostactive' => 'Најактивнији корисници',
+'countedits-nocontribs' => 'Не постоје прилози на овој вики.',
+),
+
+/* Serbian latin (Sasa Stefanovic) */
+'sr-el' => array(
+'countedits' => 'Brojač izmena',
+'countedits-warning' => "'''Upozorenje:''' Ne sudite o knjizi po njenom omotu. Ne sudite o korisniku po njegovom broju izmena.",
+'countedits-username' => 'Korisnik:',
+'countedits-ok' => 'U redu',
+'countedits-nosuchuser' => 'Ne postoji korisnik sa imenom $1.',
+'countedits-resultheader' => 'Rezultati za $1',
+'countedits-resulttext' => '$1 ima $2 izmena',
+'countedits-mostactive' => 'Najaktivniji korisnici',
+'countedits-nocontribs' => 'Ne postoje prilozi na ovoj viki.',
+),
+
 	);
 	return $single ? $messages['en'] : $messages;
 }

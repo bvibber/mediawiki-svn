@@ -233,6 +233,60 @@ $wgChemFunctions_Messages['sk'] = array(
 );
 
 /**
+ *  sr
+ */
+
+$wgChemFunctions_Messages['sr-ec'] = array(
+	'chemicalsources' => 'Хемијски извори',
+	'ChemFunctions_ListPage' => 'Хемијски извори',
+	'ChemFunctions_SearchExplanation' => '',
+	'ChemFunctions_DataList' => 'Овде се налази списак веза ка сајтовима који прожају информације о хемојском једињењу коју тражите.<br /><br />
+	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Једињење $MIXCASNameFormula на NIST</a><br />
+	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS на Оксфордском универзитету (УК) (немогућа претрага)</a><br />',
+	'ChemFunctions_CAS' => 'CAS број',
+	'ChemFunctions_EINECS' => 'Einecs',
+	'ChemFunctions_CHEBI' => 'CHEBI',
+	'ChemFunctions_PubChem' => 'PubChem',
+	'ChemFunctions_SMILES' => 'SMILES',
+	'ChemFunctions_InChI' => 'InChI',
+	'ChemFunctions_RTECS' => 'RTECS',
+	'ChemFunctions_KEGG' => 'KEGG',
+	'ChemFunctions_ATCCode' => 'ATCCode',
+	'ChemFunctions_DrugBank' => 'DrugBank',
+	'ChemFunctions_ECNumber' => 'ECNumber',
+	'ChemFunctions_Formula' => 'Formula',
+	'ChemFunctions_Name' => 'IUPAC Name',
+
+	'ChemFunctions_ChemFormInputError' => 'ХемФормула: грешка!'
+);
+
+$wgChemFunctions_Messages['sr-el'] = array(
+	'chemicalsources' => 'Hemijski izvori',
+	'ChemFunctions_ListPage' => 'Hemijski izvori',
+	'ChemFunctions_SearchExplanation' => '',
+	'ChemFunctions_DataList' => 'Ovde se nalazi spisak veza ka sajtovima koji prožaju informacije o hemojskom jedinjenju koju tražite.<br /><br />
+	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Jedinjenje $MIXCASNameFormula na NIST</a><br />
+	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Oksfordskom univerzitetu (UK) (nemoguća pretraga)</a><br />',
+	'ChemFunctions_CAS' => 'CAS broj',
+	'ChemFunctions_EINECS' => 'Einecs',
+	'ChemFunctions_CHEBI' => 'CHEBI',
+	'ChemFunctions_PubChem' => 'PubChem',
+	'ChemFunctions_SMILES' => 'SMILES',
+	'ChemFunctions_InChI' => 'InChI',
+	'ChemFunctions_RTECS' => 'RTECS',
+	'ChemFunctions_KEGG' => 'KEGG',
+	'ChemFunctions_ATCCode' => 'ATCCode',
+	'ChemFunctions_DrugBank' => 'DrugBank',
+	'ChemFunctions_ECNumber' => 'ECNumber',
+	'ChemFunctions_Formula' => 'Formula',
+	'ChemFunctions_Name' => 'IUPAC Name',
+
+	'ChemFunctions_ChemFormInputError' => 'HemFormula: greška!'
+);
+
+$wgChemFunctions_Messages['sr'] = $wgChemFunctions_Messages['sr-ec'];
+
+/**
  *  vi
  */
 

@@ -766,6 +766,136 @@ $wgBoardVoteMessages['ru'] = array(
 	'group-boardvote-member'  => 'член избиркома',
 	'grouppage-boardvote'     => '{{ns:project}}:Член избиркома',
 );
+$wgBoardVoteMessages['sr-ec'] = array(
+	'boardvote'               => "Избор за Одбор повереника Викимедија Фондације",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
+* [[Special:Boardvote/list|Списак гласова до датума]]
+* [[Special:Boardvote/dump|Енкриптован запис гласања]]",
+	'boardvote_intro'         => "
+<p>Добро дошли на треће изборе за Викимедијин Одбор повереника. 
+Гласамо за једну особу која би представљала заједницу корисника разних Викимедијиних пројеката. 
+Она ће помоћи да се утврди будући смер којим ће Викимедијини пројекти да се крећу, 
+индивидуално и као група, и представљаће <em>ваше</em> интересе и бриге Одбору повереника. 
+Одлучиће како да се стварају приноси и како да се расподели прикупљен новац.</p>
+
+<p>Молимо прочитајте изјаве кандидата и одговоре на претраге пажљиво пре него што гласате. 
+Сваки од кандидата је поштовани корисник, који је допринео значајним временом и напорима да 
+ови пројекти буду добродошло окружење са слободном дистрибуцијом људског знања као циљем.</p>
+
+<p>Можете гласати за онолико кандидата за колико желите. Кандидат са највише гласова у сваком положају 
+ће бити проглашени победником тог положаја. У случају нерешеног, ново гласање ће бити одржано.</p>
+
+<p>За више информација, погледајте:</p>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">Најчешће постављена питања избора</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Кандидати</a></li></ul>
+",
+	'boardvote_intro_change'  => "<p>Гласали сте раније. Међутим, можете променити ваш глас користећи формулар испод. 
+Молимо одаберите кандидате за које гласате.</p>",
+	'boardvote_footer'        => "&nbsp;", # Don't translate this
+	'boardvote_entered'       => "Хвала вам, ваш глас је снимљен.
+
+Уколико желите, можете сачувати следеће детаље. Ваше гласачки снимак је:
+
+<pre>$1</pre>
+
+Шифриран је јавним кључем администратора гласања:
+
+<pre>$2</pre>
+
+Следи резултујућа шифрирана верзија. Биће јавно представљена на [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Назад]]",
+	'boardvote_notloggedin'   => "Нисте пријављени. Да бисте гласали, морате да имате налог са бар $1 измена пре $2, где је прва измена пре $3.",
+	'boardvote_notqualified'  => "Жао нам је, нисте квалификовани да гласате на овом избору. Морате да имате овде бар $3 измена пре $2, а ви имате $1. Такође, ваша прва измена на овом викију је била у $4, а треба да буде пре $5.",
+	'boardvote_novotes'       => "Још нико није гласао.",
+	'boardvote_time'          => "Време",
+	'boardvote_user'          => "Корисник",
+	'boardvote_edits'         => "Измена",
+	'boardvote_days'          => "Дана",
+	'boardvote_ip'            => "ИП",
+	'boardvote_ua'            => "Кориснички агент",
+	'boardvote_listintro'     => "<p>Ово је списак свих гласова који су снимљени до сада. $1 за шифриране податке.</p>",
+	'boardvote_dumplink'      => "Кликните овде",
+	'boardvote_submit'        => 'У реду',
+	'boardvote_strike'        => "Прецртано",
+	'boardvote_unstrike'      => "Непрецртано",
+	'boardvote_needadmin'     => "Само администратори гласања могу да изводе ову операцију.",
+	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Избори за Викимедијин Одбор</a>:  Гласање отворено до 21. септембра",
+	'boardvote_notstarted'    => 'Гласање још није почело',
+	'boardvote_closed'        => 'Гласање је завршено, погледајте [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En страницу за гласање за резултате] ускоро.',
+	'boardvote_edits_many'    => 'много',
+	'group-boardvote'         => 'изборна комисија',
+	'group-boardvote-member'  => 'изборна комисија',
+	'grouppage-boardvote'     => '{{ns:project}}:Администратор гласања за Одбор',
+);
+$wgBoardVoteMessages['sr-el'] = array(
+	'boardvote'               => "Izbor za Odbor poverenika Vikimedija Fondacije",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
+* [[Special:Boardvote/list|Spisak glasova do datuma]]
+* [[Special:Boardvote/dump|Enkriptovan zapis glasanja]]",
+	'boardvote_intro'         => "
+<p>Dobro došli na treće izbore za Vikimedijin Odbor poverenika. 
+Glasamo za jednu osobu koja bi predstavljala zajednicu korisnika raznih Vikimedijinih projekata. 
+Ona će pomoći da se utvrdi budući smer kojim će Vikimedijini projekti da se kreću, 
+individualno i kao grupa, i predstavljaće <em>vaše</em> interese i brige Odboru poverenika. 
+Odlučiće kako da se stvaraju prinosi i kako da se raspodeli prikupljen novac.</p>
+
+<p>Molimo pročitajte izjave kandidata i odgovore na pretrage pažljivo pre nego što glasate. 
+Svaki od kandidata je poštovani korisnik, koji je doprineo značajnim vremenom i naporima da 
+ovi projekti budu dobrodošlo okruženje sa slobodnom distribucijom ljudskog znanja kao ciljem.</p>
+
+<p>Možete glasati za onoliko kandidata za koliko želite. Kandidat sa najviše glasova u svakom položaju 
+će biti proglašeni pobednikom tog položaja. U slučaju nerešenog, novo glasanje će biti održano.</p>
+
+<p>Za više informacija, pogledajte:</p>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">Najčešće postavljena pitanja izbora</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Kandidati</a></li></ul>
+",
+	'boardvote_intro_change'  => "<p>Glasali ste ranije. Međutim, možete promeniti vaš glas koristeći formular ispod. 
+Molimo odaberite kandidate za koje glasate.</p>",
+	'boardvote_footer'        => "&nbsp;", # Don't translate this
+	'boardvote_entered'       => "Hvala vam, vaš glas je snimljen.
+
+Ukoliko želite, možete sačuvati sledeće detalje. Vaše glasački snimak je:
+
+<pre>$1</pre>
+
+Šifriran je javnim ključem administratora glasanja:
+
+<pre>$2</pre>
+
+Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Nazad]]",
+	'boardvote_notloggedin'   => "Niste prijavljeni. Da biste glasali, morate da imate nalog sa bar $1 izmena pre $2, gde je prva izmena pre $3.",
+	'boardvote_notqualified'  => "Žao nam je, niste kvalifikovani da glasate na ovom izboru. Morate da imate ovde bar $3 izmena pre $2, a vi imate $1. Takođe, vaša prva izmena na ovom vikiju je bila u $4, a treba da bude pre $5.",
+	'boardvote_novotes'       => "Još niko nije glasao.",
+	'boardvote_time'          => "Vreme",
+	'boardvote_user'          => "Korisnik",
+	'boardvote_edits'         => "Izmena",
+	'boardvote_days'          => "Dana",
+	'boardvote_ip'            => "IP",
+	'boardvote_ua'            => "Korisnički agent",
+	'boardvote_listintro'     => "<p>Ovo je spisak svih glasova koji su snimljeni do sada. $1 za šifrirane podatke.</p>",
+	'boardvote_dumplink'      => "Kliknite ovde",
+	'boardvote_submit'        => 'U redu',
+	'boardvote_strike'        => "Precrtano",
+	'boardvote_unstrike'      => "Neprecrtano",
+	'boardvote_needadmin'     => "Samo administratori glasanja mogu da izvode ovu operaciju.",
+	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Izbori za Vikimedijin Odbor</a>:  Glasanje otvoreno do 21. septembra",
+	'boardvote_notstarted'    => 'Glasanje još nije počelo',
+	'boardvote_closed'        => 'Glasanje je završeno, pogledajte [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En stranicu za glasanje za rezultate] uskoro.',
+	'boardvote_edits_many'    => 'mnogo',
+	'group-boardvote'         => 'izborna komisija',
+	'group-boardvote-member'  => 'izborna komisija',
+	'grouppage-boardvote'     => '{{ns:project}}:Administrator glasanja za Odbor',
+);
+
+$wgBoardVoteMessages['sr'] = $wgBoardVoteMessages['sr-ec'];
 $wgBoardVoteMessages['sv'] = array(
 	'boardvote'               => "Val till Wikimedias styrelse (Wikimedia Board of Trustees)",
 	'boardvote_entry'         => "* [[m:Election_candidates_2006/Sv|Kandidaternas presentationer]]

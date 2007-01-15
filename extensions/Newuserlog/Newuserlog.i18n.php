@@ -118,6 +118,24 @@ $wgNewuserlogMessages['sk'] = array(
 	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # Don't translate this
 );
 
+$wgNewuserlogMessages['sr-ec'] = array(
+	'newuserlogpage'           => 'историја креирања корисника',
+	'newuserlogpagetext'       => 'Ово је историја скорашњих креација корисника',
+	'newuserlogentry'          => '', # For compatibility, don't translate this
+	'newuserlog-create-entry'  => 'Нови корисник',
+	'newuserlog-create2-entry' => 'направио налог за $1',
+	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # Don't translate this
+);
+
+$wgNewuserlogMessages['sr-el'] = array(
+	'newuserlogpage'           => 'istorija kreiranja korisnika',
+	'newuserlogpagetext'       => 'Ovo je istorija skorašnjih kreacija korisnika',
+	'newuserlogentry'          => '', # For compatibility, don't translate this
+	'newuserlog-create-entry'  => 'Novi korisnik',
+	'newuserlog-create2-entry' => 'napravio nalog za $1',
+	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # Don't translate this
+);
+$wgNewuserlogMessages['sr'] = $wgNewuserlogMessages['sr-ec'];
 $wgNewuserlogMessages['wa'] = array(
 	'newuserlogpage'           => 'Djournå des noveas uzeus',
 	'newuserlogpagetext'       => 'Chal pa dzo c\' est ene djivêye des uzeus novelmint eredjîstrés.',

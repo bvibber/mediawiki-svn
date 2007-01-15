@@ -22,7 +22,17 @@ $wgMathStatFunctionsMessages['ja'] = array(
         'msfunc_inf' => "返り値が無限大です" , 
         'msfunc_div_zero' => "0で割り算しました",
 );
-
+$wgMathStatFunctionsMessages['sr-ec'] = array(
+        'msfunc_nan' => "Резултат није број" ,
+        'msfunc_inf' => "Резултат је бесконачан" , 
+        'msfunc_div_zero' => "Дељиво са нулом",
+);
+$wgMathStatFunctionsMessages['sr-el'] = array(
+        'msfunc_nan' => "Rezultat nije broj" ,
+        'msfunc_inf' => "Rezultat je beskonačan" , 
+        'msfunc_div_zero' => "Deljivo sa nulom",
+);
+$wgMathStatFunctionsMagic['sr'] = $wgMathStatFunctionsMagic['sr-ec'];
 $wgMathStatFunctionsMagic['en'] = array(
         'const'         => array( 0, 'const' ),
         'median'        => array( 0, 'median' ),

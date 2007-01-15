@@ -102,6 +102,72 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 'giverollback-logentryrevoke' => 'menarik hak pengembalian ke untuk [[$1]]',
 ),
 
+/* Serbian default (Sasa Stefanovic) */
+'sr' => array(
+'giverollback' => 'Додај или одузми права враћања',
+'giverollback-header' => "'''Локални бирократа може да користи ову страницу да додели или одузме права враћања другим корисницима.'''<br />Ова права се могу користити како бисте доделили обичним корисницима могућност брзог враћања вандализама. Ово мора да се уради са тренутним правилима пројекта.",
+'giverollback-username' => 'Корисник:',
+'giverollback-search' => 'Иди',
+'giverollback-hasrb' => '[[User:$1|$1]] има права враћања.',
+'giverollback-norb' => '[[User:$1|$1]] нема права враћања.',
+'giverollback-toonew' => '[[User:$1|$1]] је превише нов, и не могу му се доделити права враћања.',
+'giverollback-sysop' => '[[User:$1|$1]] је администратор, и већ има права враћања.',
+'giverollback-change' => 'Промени статус:',
+'giverollback-grant' => 'Додели',
+'giverollback-revoke' => 'Одузми',
+'giverollback-comment' => 'Коментар:',
+'giverollback-granted' => '[[User:$1|$1]] сад има права враћања.',
+'giverollback-revoked' => '[[User:$1|$1]] више нема права враћања.',
+'giverollback-logpage' => 'Историја права враћања',
+'giverollback-logpagetext' => 'Ово је историја промена обичних корисника са [[Помоћ:Права враћања|правом враћања]] ',
+'giverollback-logentrygrant' => 'доделио права враћања кориснику [[$1]]',
+'giverollback-logentryrevoke' => 'одузео права враћања кориснику [[$1]]',
+),
+
+/* Serbian cyrillic (Sasa Stefanovic) */
+'sr-ec' => array(
+'giverollback' => 'Додај или одузми права враћања',
+'giverollback-header' => "'''Локални бирократа може да користи ову страницу да додели или одузме права враћања другим корисницима.'''<br />Ова права се могу користити како бисте доделили обичним корисницима могућност брзог враћања вандализама. Ово мора да се уради са тренутним правилима пројекта.",
+'giverollback-username' => 'Корисник:',
+'giverollback-search' => 'Иди',
+'giverollback-hasrb' => '[[User:$1|$1]] има права враћања.',
+'giverollback-norb' => '[[User:$1|$1]] нема права враћања.',
+'giverollback-toonew' => '[[User:$1|$1]] је превише нов, и не могу му се доделити права враћања.',
+'giverollback-sysop' => '[[User:$1|$1]] је администратор, и већ има права враћања.',
+'giverollback-change' => 'Промени статус:',
+'giverollback-grant' => 'Додели',
+'giverollback-revoke' => 'Одузми',
+'giverollback-comment' => 'Коментар:',
+'giverollback-granted' => '[[User:$1|$1]] сад има права враћања.',
+'giverollback-revoked' => '[[User:$1|$1]] више нема права враћања.',
+'giverollback-logpage' => 'Историја права враћања',
+'giverollback-logpagetext' => 'Ово је историја промена обичних корисника са [[Помоћ:Права враћања|правом враћања]] ',
+'giverollback-logentrygrant' => 'доделио права враћања кориснику [[$1]]',
+'giverollback-logentryrevoke' => 'одузео права враћања кориснику [[$1]]',
+),
+
+/* Serbian latin (Sasa Stefanovic) */
+'sr-el' => array(
+'giverollback' => 'Dodaj ili oduzmi prava vraćanja',
+'giverollback-header' => "'''Lokalni birokrata može da koristi ovu stranicu da dodeli ili oduzme prava vraćanja drugim korisnicima.'''<br />Ova prava se mogu koristiti kako biste dodelili običnim korisnicima mogućnost brzog vraćanja vandalizama. Ovo mora da se uradi sa trenutnim pravilima projekta.",
+'giverollback-username' => 'Korisnik:',
+'giverollback-search' => 'Idi',
+'giverollback-hasrb' => '[[User:$1|$1]] ima prava vraćanja.',
+'giverollback-norb' => '[[User:$1|$1]] nema prava vraćanja.',
+'giverollback-toonew' => '[[User:$1|$1]] je previše nov, i ne mogu mu se dodeliti prava vraćanja.',
+'giverollback-sysop' => '[[User:$1|$1]] je administrator, i već ima prava vraćanja.',
+'giverollback-change' => 'Promeni status:',
+'giverollback-grant' => 'Dodeli',
+'giverollback-revoke' => 'Oduzmi',
+'giverollback-comment' => 'Komentar:',
+'giverollback-granted' => '[[User:$1|$1]] sad ima prava vraćanja.',
+'giverollback-revoked' => '[[User:$1|$1]] više nema prava vraćanja.',
+'giverollback-logpage' => 'Istorija prava vraćanja',
+'giverollback-logpagetext' => 'Ovo je istorija promena običnih korisnika sa [[Pomoć:Prava vraćanja|pravom vraćanja]] ',
+'giverollback-logentrygrant' => 'dodelio prava vraćanja korisniku [[$1]]',
+'giverollback-logentryrevoke' => 'oduzeo prava vraćanja korisniku [[$1]]',
+),
+
 	);
 }
 

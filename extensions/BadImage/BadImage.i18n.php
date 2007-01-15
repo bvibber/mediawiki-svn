@@ -101,6 +101,72 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'removida [[$1]] da lista de imagens com problemas',
 ),
 
+/* Serbian default (Sasa Stefanovic) */
+'sr' => array(
+'badimages' => 'Списак лоших слика',
+'badimages-add-btn' => 'додај',
+'badimages-added' => '$1 је додата у списак.',
+'badimages-count' => "Тренутно се '''$1''' слика налази на списку лоших слика.",
+'badimages-name' => 'Име:',
+'badimages-not-added' => 'Ову слику је немогуће додати.',
+'badimages-not-removed' => 'Ову слику је немогуће уклонити.',
+'badimages-reason' => 'Разлог:',
+'badimages-remove' => '(уклони)',
+'badimages-remove-btn' => 'Уклони',
+'badimages-remove-confirm' => 'Молимо вас потврдите да желите да уклоните $1 са списка:',
+'badimages-removed' => '$1 је уклоњена са списка.',
+'badimages-subheading' => 'Тренутно у списку',
+'badimages-unprivileged' => '(Немате овлашћења за мењање списка)',
+'badimages-log-name' => 'Списак лоших слика',
+'badimages-log-header' => 'Ово је историја промена за [[Помоћ:Списак лоших слика|списак лоших слика]].',
+'badimages-log-add' => 'додата [[$1]] у списак лоших слика',
+'badimages-log-remove' => 'уклоњена [[$1]] са списка лоших слика',
+),
+
+/* Serbian cyrillic (Sasa Stefanovic) */
+'sr-ec' => array(
+'badimages' => 'Списак лоших слика',
+'badimages-add-btn' => 'додај',
+'badimages-added' => '$1 је додата у списак.',
+'badimages-count' => "Тренутно се '''$1''' слика налази на списку лоших слика.",
+'badimages-name' => 'Име:',
+'badimages-not-added' => 'Ову слику је немогуће додати.',
+'badimages-not-removed' => 'Ову слику је немогуће уклонити.',
+'badimages-reason' => 'Разлог:',
+'badimages-remove' => '(уклони)',
+'badimages-remove-btn' => 'Уклони',
+'badimages-remove-confirm' => 'Молимо вас потврдите да желите да уклоните $1 са списка:',
+'badimages-removed' => '$1 је уклоњена са списка.',
+'badimages-subheading' => 'Тренутно у списку',
+'badimages-unprivileged' => '(Немате овлашћења за мењање списка)',
+'badimages-log-name' => 'Списак лоших слика',
+'badimages-log-header' => 'Ово је историја промена за [[Помоћ:Списак лоших слика|списак лоших слика]].',
+'badimages-log-add' => 'додата [[$1]] у списак лоших слика',
+'badimages-log-remove' => 'уклоњена [[$1]] са списка лоших слика',
+),
+
+/* Serbian latin (Sasa Stefanovic) */
+'sr-el' => array(
+'badimages' => 'Spisak loših slika',
+'badimages-add-btn' => 'dodaj',
+'badimages-added' => '$1 je dodata u spisak.',
+'badimages-count' => "Trenutno se '''$1''' slika nalazi na spisku loših slika.",
+'badimages-name' => 'Ime:',
+'badimages-not-added' => 'Ovu sliku je nemoguće dodati.',
+'badimages-not-removed' => 'Ovu sliku je nemoguće ukloniti.',
+'badimages-reason' => 'Razlog:',
+'badimages-remove' => '(ukloni)',
+'badimages-remove-btn' => 'Ukloni',
+'badimages-remove-confirm' => 'Molimo vas potvrdite da želite da uklonite $1 sa spiska:',
+'badimages-removed' => '$1 je uklonjena sa spiska.',
+'badimages-subheading' => 'Trenutno u spisku',
+'badimages-unprivileged' => '(Nemate ovlašćenja za menjanje spiska)',
+'badimages-log-name' => 'Spisak loših slika',
+'badimages-log-header' => 'Ovo je istorija promena za [[Pomoć:Spisak loših slika|spisak loših slika]].',
+'badimages-log-add' => 'dodata [[$1]] u spisak loših slika',
+'badimages-log-remove' => 'uklonjena [[$1]] sa spiska loših slika',
+),
+
 	);
 }
 
