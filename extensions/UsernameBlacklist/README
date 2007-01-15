@@ -38,13 +38,11 @@ The username blacklist extension requires MediaWiki 1.5.8 or above.
 
 == 3. Installing the Extension ==
 
-To install the username blacklist extension, first upload/copy the extension 
-file UsernameBlacklist.php into your MediaWiki extensions directory. Then edit
-your LocalSettings.php file and add the following line:
+To install the extension, place all extension files in a "UsernameBlacklist"
+directory within your MediaWiki extensions directory, then edit
+LocalSettings.php and add the following line:
 
-	require_once( 'extensions/UsernameBlacklist.php' );
-	
-Save the file (uploading if applicable) to complete the installation.
+	require_once( "{$IP}/extensions/UsernameBlacklist.php" );
 
 == 4. Editing the Blacklist ==
 
@@ -55,7 +53,7 @@ it as a bulleted list with each blocked username or regular expression as a new
 list item. For example:
 
 * Foo
-* ((B|b)ar)
+* [Bb]ar
 
 The example above would prevent creation of the user account "Foo", and any
 account where the username contains "Bar" or "bar".
