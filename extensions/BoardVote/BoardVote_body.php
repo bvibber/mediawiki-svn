@@ -6,8 +6,8 @@ if (!defined('MEDIAWIKI')) {
 
 # Add messages
 global $wgMessageCache, $wgBoardVoteMessages;
-foreach( $wgBoardVoteMessages as $key => $value ) {
-	$wgMessageCache->addMessages( $wgBoardVoteMessages[$key], $key );
+foreach( $wgBoardVoteMessages as $lang => $messages ) {
+	$wgMessageCache->addMessages( $messages, $lang );
 }
 
 class BoardVotePage extends SpecialPage {
