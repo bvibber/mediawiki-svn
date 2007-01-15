@@ -10,7 +10,11 @@
  
 if( defined( 'MEDIAWIKI' ) ) {
 
-	$wgExtensionCredits['specialpage'][] = array( 'name' => 'Contributors', 'author' => 'Rob Church' );
+	$wgExtensionCredits['specialpage'][] = array(
+		'name' => 'Contributors',
+		'author' => 'Rob Church',
+		'description' => 'Lists the ten most prominent [[Special:Contributors|contributors]] to an article and adds toolbox link',
+	);
 	$wgExtensionFunctions[] = 'efContributors';
 	
 	$wgAutoloadClasses['SpecialContributors'] = dirname( __FILE__ ) . '/Contributors.page.php';
