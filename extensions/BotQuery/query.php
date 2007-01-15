@@ -1717,11 +1717,8 @@ class BotQueryProcessor {
 			$fields[] = 'old_id';
 			$fields[] = 'old_text';
 			$fields[] = 'old_flags';
-			if( $rvuniqusr ) {
-				$conds2[] = 'rev_text_id=old_id';
-			} else {
-				$conds[] = 'rev_text_id=old_id';
-			}
+			$conds2[] = 'rev_text_id=old_id';
+			$conds[] = 'rev_text_id=old_id';
 		} else {
 			$this->validateLimit( 'rvlimit * pages + revids',
 								  $rvlimit * count($this->existingPageIds) + count($this->revIdsArray), 200, 2000 );
