@@ -2,7 +2,6 @@
 
 /**
  * Parser hook extension to add a <randomimage> tag
- * Affected by caching, but that's probably acceptable (and useful) here
  *
  * @package MediaWiki
  * @subpackage Extensions
@@ -16,12 +15,33 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'efRandomImage';
 	$wgExtensionCredits['parserhook'][] = array( 'name' => 'RandomImage', 'author' => 'Rob Church', 'url' => 'http://meta.wikimedia.org/wiki/RandomImage' );
 	
+	/**
+	 * Set this to true to disable the parser cache for pages which
+	 * contain a <randomimage> tag; this keeps the galleries up to date
+	 * at the cost of a performance overhead on page views
+	 */
+	$wgRandomImageNoCache = false;
+	
+	/**
+	 * Extension initialisation function
+	 */
 	function efRandomImage() {
 		global $wgParser;
 		$wgParser->setHook( 'randomimage', 'efRenderRandomImage' );
 	}
 	
+	/**
+	 * Extension rendering function
+	 *
+	 * @param $text Text inside tags
+	 * @param $args Tag arguments
+	 * @param $parser Parent parser
+	 * @return string
+	 */
 	function efRenderRandomImage( $input, $args, &$parser ) {
+		global $wgRandomImageNoCache;
+		if( $wgRandomImageNoCache )
+			$parser->disableCache();
 		$image = new RandomImage( $args, $parser );
 		return $image->render( $input );
 	}
@@ -46,9 +66,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 			}
 			if( isset( $options['float'] ) ) {
 				$f = strtolower( $options['float'] );
-				wfDebugLog( 'randomimage', 'Float is ' . $f );
 				# FIXME: Get the real magic words
-				if( array_search( $f, array( 'left', 'right', 'centre' ) ) !== false )
+				if( in_array( $float, array( 'left', 'right', 'centre' ) ) )
 					$this->float = $f;
 			}
 		}
@@ -89,7 +108,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 				$output = $this->parser->parse( $wiki, $this->parser->mTitle, $this->parser->mOptions, false, false );
 				return $output->getText();
 			} else {
-				wfDebugLog( 'randomimage', 'Image picker returned false.' );
 				return '';
 			}
 		}

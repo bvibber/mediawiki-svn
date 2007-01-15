@@ -1,6 +1,6 @@
 RANDOM IMAGE EXTENSION
 
-	Version 1.0
+	Version 1.1
 	© 2006 Rob Church
 
 This is free software licenced under the GNU General Public Licence. Please
@@ -13,8 +13,9 @@ full text and terms of the licence.
 	2. Requirements
 	3. Installing the extension
 	4. Inserting a random image
-	5. Change log
-	6. Feedback
+	5. Caching
+	6. Change log
+	7. Feedback
 
 == 1. Introduction ==
 
@@ -25,17 +26,10 @@ When the tag is rendered, a random image is selected from those uploaded and
 inserted at the location of the tag. Users can select a custom size, float
 and provide a caption for the resulting image.
 
-At present, the output is cached in the parser cache alongside other parsed
-content. This is advantageous in some cases, since it will prevent the database
-from being crippled through repeated requests; however, it does mean that
-the content is not 100% dynamic. The image will change when the parser cache is
-expired, either automatically or by purging the page, allowing for rotation
-of content.
-
 == 2. Requirements ==
 
-The Random Image extension has been tested against MediaWiki 1.7alpha and 1.6 and
-should work with MediaWiki 1.5.
+The Random Image extension should be compatible with MediaWiki 1.5 upwards,
+including the 1.10alpha development version.
 
 == 3. Installing the extension ==
 
@@ -64,11 +58,28 @@ to override the size, e.g.
 Float allows overriding the float direction. You can combine attributes as
 with most normal HTML-style tags.
 
-== 5. Change log ==
+== 5. Caching ==
 
-1.0
+By default, the output is cached in the regular parser cache. This can be
+advantageous on larger sites which need to use caching to reduce the effects
+of load, however, it means that content is not 100% dynamic.
+
+To disable the parser cache on pages which use the <randomimage> tag, set
+$wgRandomImageNoCache = true; in LocalSettings.php (after the call to include
+the extension file). This will affect all users, and might incur additional
+overhead on pageviews.
+
+== 6. Change log ==
+
+09/06/2006
+Version 1.0
 	Initial release
 	
-== 6. Feedback ==
+17/12/2006
+Version 1.1
+	Introduced $wgRandomImageNoCache to disable parser cache on pages using
+	the tag; defaults to off
+	
+== 7. Feedback ==
 
 All feedback, bug reports, etc. welcome via <robchur@gmail.com>.
