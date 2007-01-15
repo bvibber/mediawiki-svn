@@ -302,7 +302,7 @@ Hľadanie $3 $9",
 Je možné, že je to dočasné; o chvíľu to skúste znova
 alebo vyhľadávajte na wiki pomocou externej indexovacej služby:\n"
 );
-$wgLuceneSearchMessages['sr'] = array(
+$wgLuceneSearchMessages['sr-ec'] = array(
 	'searchnumber'          => "<strong>Резултати $1-$2 од $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Претходна</span>",
 	'searchnext'            => "<span style='font-size: small'>Следећа</span> &#x00BB;",
@@ -320,6 +320,25 @@ $1\n
 Ово је вероватно привремено; покушајте поново након неколико момената,
 или претражите вики преко неког од спољних претраживачких сервиса:\n"
 );
+$wgLuceneSearchMessages['sr-el'] = array(
+	'searchnumber'          => "<strong>Rezultati $1-$2 od $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prethodna</span>",
+	'searchnext'            => "<span style='font-size: small'>Sledeća</span> &#x00BB;",
+	'searchscore'           => "Sličnost: $1",
+	'searchsize'            => "$1 KB ($2 words)",
+	'searchdidyoumean'      => "Da li ste mislili: \"<a href=\"$1\">$2</a>\"?",
+	'searchnoresults'       => "Izvinjavamo se, ne postoje rezultati za vaš upit.",
+	'searchnearmatches'     => "<b>Sledeće stranice imaju slične nazive kao što ste tražili:</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+Pretraga u imenskim prostorima:\n
+$1\n
+Pretraga za $3 $9",
+	'lucenefallback'        => "Došlo je do problema u viki pretrazi...
+Ovo je verovatno privremeno; pokušajte ponovo nakon nekoliko momenata,
+ili pretražite viki preko nekog od spoljnih pretraživačkih servisa:\n"
+);
+$wgLuceneSearchMessages['sr'] = $wgLuceneSearchMessages['sr-ec'];
 $wgLuceneSearchMessages['wa'] = array(
 	'searchnumber'          => '<strong>Rizultats: $1-$2 di $3</strong>',
 	'searchprev'            => '← <span style=\'font-size: small\'>Div.</span>',
