@@ -14,8 +14,8 @@ require_once( 'LinkSearch.i18n.php' );
 function wfLinkSearchSetup() {
 	# Add messages
 	global $wgMessageCache, $wgLinkSearchMessages;
-	foreach( $wgLinkSearchMessages as $key => $value ) {
-		$wgMessageCache->addMessages( $wgLinkSearchMessages[$key], $key );
+	foreach( $wgLinkSearchMessages as $lang => $messages ) {
+		$wgMessageCache->addMessages( $messages, $lang );
 	}
 
 	$GLOBALS['wgSpecialPages']['Linksearch'] = array( /*class*/ 'SpecialPage', 
