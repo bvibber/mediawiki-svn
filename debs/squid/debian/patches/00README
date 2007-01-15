@@ -26,9 +26,6 @@ Upstream patches:
 
 nozerobufs		Do not bzero() new buffers to save cpu
 			(by Adrian Chadd)
-htcp-xassert		Fail gracefully on buffer overflow in htcp.c,
-			instead of xassert
-coss-rebuild		Fix crash bug during COSS rebuild (Squid bug #1818)
 
 Wikimedia:
 

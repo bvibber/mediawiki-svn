@@ -3,7 +3,5 @@
 03-no-append-domain-localhost
 04-smb-auth
 06-unlinkd
-10-htcp-xassert
-10-coss-rebuild
 20-wikimedia-errors
 21-nomanglerequestheaders
