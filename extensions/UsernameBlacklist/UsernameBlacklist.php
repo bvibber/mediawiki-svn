@@ -17,7 +17,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'name' => 'Username Blacklist',
 		'author' => 'Rob Church',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Username_Blacklist',
-		'description' => 'Restrict the creation of user accounts',
+		'description' => 'Restrict the creation of user accounts matching one or more regular expressions',
 		);
 
 	$wgAvailableRights[] = 'uboverride';
@@ -27,11 +27,16 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 * Register the extension
 	 */
 	function efUsernameBlacklistSetup() {
-		global $wgMessageCache, $wgHooks;
+		global $wgHooks, $wgVersion, $wgMessageCache;
+		require_once( dirname( __FILE__ ) . '/UsernameBlacklist.i18n.php' );
 		$wgHooks['AbortNewAccount'][] = 'efUsernameBlacklist';
 		$wgHooks['ArticleSave'][] = 'efUsernameBlacklistInvalidate';
-		$wgMessageCache->addMessage( 'blacklistedusername', 'Blacklisted username' );
-		$wgMessageCache->addMessage( 'blacklistedusernametext', 'The username you have chosen matches the [[MediaWiki:Usernameblacklist|list of blacklisted usernames]]. Please choose another.' );
+		if( version_compare( $wgVersion, '1.9alpha', '>=' ) ) {
+			foreach( efUsernameBlacklistMessages() as $lang => $messages )
+				$wgMessageCache->addMessages( $messages, $lang );
+		} else {
+			$wgMessageCache->addMessages( efUsernameBlacklistMessages( true ) );
+		}
 	}
 
 	/**

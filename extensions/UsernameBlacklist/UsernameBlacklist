@@ -1,6 +1,6 @@
 USERNAME BLACKLIST EXTENSION
 
-	Version 1.5
+	Version 1.6
 	© 2006 Rob Church
 
 This is free software licensed under the GNU General Public License. Please
@@ -110,6 +110,9 @@ example above), but I'll provide a couple of useful links:
 	Use Unicode-friendly regular expressions
 	Don't show errors when the blacklist contains only comments
 	(Above fixes from Brion Vibber)
+	
+1.6
+	Support multiple language translations
 	
 == 8. Thanks... ==
 
