@@ -1,0 +1,160 @@
+= MediaWiki release notes =
+
+Security reminder: MediaWiki does not require PHP's register_globals
+setting since version 1.2.0. If you have it on, turn it *off* if you can.
+
+== MediaWiki 1.10 ==
+
+THIS IS NOT A RELEASE YET.
+
+MediaWiki is now using a "continuous integration" development model with
+quarterly snapshot releases. The latest development code is always kept
+"ready to run", and in fact runs our own sites on Wikipedia.
+
+Release branches will continue to receive security updates for about a year
+from first release, but nonessential bugfixes and feature development happen
+will be made on the development trunk and appear in the next quarterly release.
+
+Those wishing to use the latest code instead of a branch release can obtain
+it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
+
+== Configuration changes ==
+
+== Major new features ==
+
+== Changes since 1.9 ==
+
+* (bug 7292) Fix site statistics when moving pages in/out of content namespaces
+* (bug 6937) Introduce "statistics-footer" message, appended to Special:Statistics
+* (bug 8531) Correct local name of Lingála (patch by Raymond)
+* (bug 6638) List block flags in block log entries
+* New script maintenance/language/checkExtensioni18n.php used to check i18n
+  progress in the extension repository.
+* Running maintenance/parserTests.php with '--record' option, will now automaticly
+  tries to create its database tables.
+* Made the PLURAL: parser function return singular on -1 per default.
+* Fixed up the AjaxSearch
+* (bugs 5051, 5376) Tooltips and accesskeys no longer require JavaScript
+* Added SkinTemplateOutputPageBeforeExec hook before SkinTemplate::outputPage()
+  starts page output (http://lists.wikimedia.org/pipermail/wikitech-l/2007-January/028554.html)
+* Fix SpecialVersion->formatCredits input. Version and Url parameters should be null
+  to be treated properly with isset.
+* Branch page_restrictions column out into its own table, also creating a "cascading protection"
+   feature, which automagically disallows edits to pages transcluded into a page protected with
+   this new option. Various other code tidiness fixes and refactoring in the log messages of
+   branches/werdna/restrictions-separation.
+* The minimum permissions needed to edit a page in each namespace can
+  now be customized via the $wgNamespaceProtection array.  By default,
+  editing pages in the MediaWiki namespace requires "editinterface"
+  permissions, just as before.
+* (bug 8567) Added hook RawPageViewBeforeOutput just before the text is blown out in action=raw,
+             so extensions might influence the output.
+* Correct tooltip accesskey hint for Opera on the Macintosh (it uses Shift-Esc-, not Ctrl-).
+* (bug 3446) Add user preference to hide page content below diffs, can be overridden by adding
+             diffonly=1 or diffonly=0 to the URL of the diff page
+* (bug 8002) Math should render left-to-right even in right-to-left wikis
+* Pass e-mail and real name fields to AuthPlugin::addUser, as additional
+  optional fields, which may be considered useful at registration time.
+* Fixed Postgres upgrade script.
+* (bug 8613) Fix error when viewing "Recent Changes" and using Postgres.
+* Initialise site_stats table at upgrade time if data was missing
+* (bug 7250) Updated Unicode normalization tables to Unicode 5.0
+* Add 'purge' privilege to replace the hardcoded check for login state in
+  determining whether action=purge can be done via GET. Switching the
+  permission on for anons can be helpful for benchmarking.
+* Unmaintained Oracle support files have been removed.
+* Made Linker::userToolLinks() show the contribs link red when the user has zero edits
+* Use browser default for printing size, don't force to 11pt
+* (bug 8632) Fix regression in page protection null edit update
+* (bug 7842) Link back to deleted revision list from deleted revision preview
+* (bug 8619) Add user-aware "unblock" link to Special:Blockip
+* (bug 8407) Disallow indexing of "printable" versions
+* (bug 8522) Provide a "delete" link on Special:Brokenredirects for users with
+  the appropriate permission
+* (bug 8628) Add user-aware block list link to Special:Blockip
+* (bug 8643) Correctly escape the page-specific CSS class for non-Monobook skins
+* (bug 8629) Document $wgFilterCallback
+
+== Languages updated ==
+
+* Belarusian (be)
+* Breton (br)
+* Finnish (fi)
+* French (fr)
+* German (de)
+* Hebrew (he)
+* Indonesian (id)
+* Lithuanian (lt)
+* Polish (pl)
+* Sicilian (scn)
+* Swedish (sv)
+
+== Compatibility ==
+
+MediaWiki 1.10 requires PHP 5 (5.1 recommended). PHP 4 is no longer supported.
+
+PHP 5.0.x fails on 64-bit systems due to serious bugs with array processing:
+http://bugs.php.net/bug.php?id=34879
+Upgrade affected systems to PHP 5.1 or higher.
+
+MySQL 3.23.x is no longer supported; some older hosts may need to upgrade.
+At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.
+
+
+== Upgrading ==
+
+Some minor database changes have been made since 1.7:
+* new fields and indexes on ipblocks
+* index change on recentchanges
+
+Several changes from 1.5 and 1.6 do require updates to be run on upgrade.
+To ensure that these tables are filled with data, run refreshLinks.php after
+the upgrade.
+
+If you are upgrading from MediaWiki 1.4.x or earlier, some major database
+changes are made, and there is a slightly higher chance that things could
+break. Don't forget to always back up your database before upgrading!
+
+See the file UPGRADE for more detailed upgrade instructions.
+
+
+
+=== Caveats ===
+
+Some output, particularly involving user-supplied inline HTML, may not
+produce 100% valid or well-formed XHTML output. Testers are welcome to
+set $wgMimeType = "application/xhtml+xml"; to test for remaining problem
+cases, but this is not recommended on live sites. (This must be set for
+MathML to display properly in Mozilla.)
+
+
+For notes on 1.9.x and older releases, see HISTORY.
+
+
+=== Online documentation ===
+
+Documentation for both end-users and site administrators is currently being
+built up on Meta-Wikipedia, and is covered under the GNU Free Documentation
+License:
+
+  http://www.mediawiki.org/wiki/Documentation
+
+
+=== Mailing list ===
+
+A MediaWiki-l mailing list has been set up distinct from the Wikipedia
+wikitech-l list:
+
+  http://lists.wikimedia.org/mailman/listinfo/mediawiki-l
+
+A low-traffic announcements-only list is also available:
+
+  http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce
+
+It's highly recommended that you sign up for one of these lists if you're
+going to run a public MediaWiki, so you can be notified of security fixes.
+
+
+=== IRC help ===
+
+There's usually someone online in #mediawiki on irc.freenode.net
