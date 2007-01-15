@@ -24,9 +24,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 	}
 	
 	function efFormatDate( $text, $args, &$parser ) {
-		global $wgContLang;
-		$dp = new DateParser( $wgContLang, DateParser::convertPref( $parser->mOptions->getDateFormat() ) );
-		return $dp->reformat( $text );
+		global $wgUseDynamicDates, $wgContLang;
+		if( $wgUseDynamicDates ) {
+			$dp = new DateParser( $wgContLang, DateParser::convertPref( $parser->mOptions->getDateFormat() ) );
+			return $dp->reformat( $text );
+		} else {
+			return $text;
+		}
 	}
 
 } else {
