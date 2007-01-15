@@ -41,6 +41,23 @@ function efImageMapMessages() {
 'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
+/* Hebrew (Rotem Liss) */
+'he' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: יש לציין תמונה בשורה הראשונה',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: התמונה שגויה או שאינה קיימת',
+'imagemap_no_link'              => '&lt;imagemap&gt;: לא נמצא קישור תקף בסוף שורה $1',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: כותרת שגויה בקישור בשורה $1',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: לא מספיק קוארדינאטות לצורה בשורה $1',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: צורה בלתי מזוהה בשורה $1, כל שורה חייבת להתחיל עם אחת האפשרויות הבאות: '.
+								   'default, rect, circle or poly',
+'imagemap_no_areas'             => '&lt;imagemap&gt;: יש לציין לפחות אזור אחד',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: קוארדינאטה שגויה בשורה $1, היא חייבת להיות מספר',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: הגדרת פרמטר desc שגויה, צריך להיות אחד מהבאים: $1',
+'imagemap_description'          => 'אודות התמונה',
+# Note to translators: keep the same order
+'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: harus memberikan suatu gambar di baris pertama',
