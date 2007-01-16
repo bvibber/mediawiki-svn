@@ -1,22 +1,17 @@
 <?php
 
-if (!defined('MEDIAWIKI'))
+if (!defined('MEDIAWIKI')) {
 	exit;
+}
 
+/** Load up the internationalization stuff */
 global $wgMessageCache;
+require_once( 'Asksql.i18n.php' );
+foreach( efAsksqlMessages() as $lang => $messages ) {
+	$wgMessageCache->addMessages( $messages, $lang );
+}
 
-$wgMessageCache->addMessage('asksql', 'SQL query');
-$wgMessageCache->addMessage('asksqltext', "Use the form below to make a direct query of the
-database.
-Use single quotes ('like this') to delimit string literals.
-This can often add considerable load to the server, so please use
-this function sparingly.");
-$wgMessageCache->addMessage('sqlislogged', 'Please note that all queries are logged.');
-$wgMessageCache->addMessage('sqlquery', 'Enter query');
-$wgMessageCache->addMessage('querybtn', 'Submit query');
-$wgMessageCache->addMessage('selectonly', 'Only read-only queries are allowed.');
-$wgMessageCache->addMessage('querysuccessful', 'Query successful');
-
+/** Main class that define a new special page*/
 class SpecialAsksql extends SpecialPage {
 
 	function SpecialAsksql() {
@@ -34,7 +29,7 @@ class SpecialAsksql extends SpecialPage {
 			$wgOut->permissionRequired( 'asksql' );
 			return;
 		}
-	
+
 		if( $wgRequest->wasPosted() ) {
 			$query = $wgRequest->getVal( 'wpSqlQuery' );
 			$action = $wgRequest->getVal( 'action' );
