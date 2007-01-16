@@ -132,40 +132,6 @@ tss<event_queue> ev_queue;
 
 static void sig_exit(int, short, void *);
 
-ioloop_t *ioloop;
-
-char current_time_str[30];
-char current_time_short[30];
-time_t current_time;
-
-static void secondly_sched(void);
-
-bool wnet_exit;
-vector<wsocket *>	awaks;
-size_t			cawak;
-
-void
-wnet_add_accept_wakeup(wsocket *s)
-{
-	awaks.push_back(s);
-}
-
-net::event	secondly_ev;
-
-static void
-secondly_update(void)
-{
-	WDEBUG("secondly_update");
-	wnet_set_time();
-	secondly_sched();
-}
-
-static void
-secondly_sched(void)
-{
-	secondly_ev.schedule(secondly_update, 1000);
-}
-
 pthread_cond_t iot_ready;
 pthread_mutex_t iot_ready_m;
 
@@ -192,13 +158,6 @@ io_start(void *)
 
 	ioloop->run();
 	return NULL;
-}
-
-
-
-ioloop_t::ioloop_t(void)
-{
-	prepare();
 }
 
 void
@@ -238,61 +197,6 @@ size_t	 i;
 	}
 	wlog.notice(format("net: initialised, using libevent %s (%s)")
 		% event_get_version() % event_get_method());
-	secondly_sched();
-}
-
-void
-ioloop_t::_accept(wsocket *s, int)
-{
-	wsocket		*newe;
-static rate_limited_logger enfile_log(60, ll_warn, "accept error: %s");
-
-	if ((newe = s->accept("HTTP client", prio_norm)) == NULL) {
-		if (errno == ENFILE || errno == EMFILE)
-			enfile_log.log(strerror(errno));
-		else
-			wlog.warn(format("accept error: %s") % strerror(errno));
-		s->readback(bind(&ioloop_t::_accept, this, _1, _2), -1);
-		return;
-	}
-
-	s->readback(bind(&ioloop_t::_accept, this, _1, _2), -1);
-
-	newe->nonblocking(true);
-
-	if (cawak == awaks.size())
-		cawak = 0;
-char	buf[sizeof(wsocket *) * 2];
-	memcpy(buf, &newe, sizeof(newe));
-	memcpy(buf + sizeof(newe), &s, sizeof(s));
-	WDEBUG(format("_accept, lsnr=%d") % s);
-
-	if (awaks[cawak]->write(buf, sizeof(wsocket *) * 2) < 0) {
-		wlog.error(format("writing to thread wakeup socket: %s")
-			% strerror(errno));
-		exit(1);
-	}
-	cawak++;
-	return;
-}
-
-void
-wnet_set_time(void)
-{
-struct	tm	*now;
-	time_t	 old = current_time;
-	size_t	 n;
-	
-	current_time = time(NULL);
-	if (current_time == old)
-		return;
-
-	now = gmtime(&current_time);
-
-	n = strftime(current_time_str, sizeof(current_time_str), "%a, %d %b %Y %H:%M:%S GMT", now);
-	assert(n);
-	n = strftime(current_time_short, sizeof(current_time_short), "%Y-%m-%d %H:%M:%S", now);
-	assert(n);
 }
 
 namespace net {
