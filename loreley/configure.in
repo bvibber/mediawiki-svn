@@ -203,7 +203,7 @@ AC_SEARCH_LIBS(pthread_key_create, pthread)
 if test "$solio" = "no"; then
 	AC_SEARCH_LIBS(event_add, event,,AC_MSG_ERROR([libevent not found (maybe you need --with-libevent)]))
 fi
-AC_SEARCH_LIBS(db_create, db-4.5 db-4.4 db-4.3 db-4.2,,AC_MSG_ERROR([Berkeley DB not found]))
+AC_SEARCH_LIBS(db_create, db-4.5 db-4.4 db-4.3 db-4.2,,[AC_DEFINE([NO_BDB],,[Berkeley DB is not available])])
 
 AC_CHECK_TYPES([u_int8_t, u_int16_t, u_int32_t, u_int64_t])
 

@@ -24,6 +24,7 @@ using std::ios;
 #include "http_header.h"
 #include "dbwrap.h"
 
+#ifndef NO_BDB
 struct caching_filter;
 struct cached_spigot;
 struct cachefile;
@@ -570,4 +571,5 @@ struct marshaller<cachedentity> {
 
 extern httpcache entitycache;
 
-#endif
+#endif	/* !NO_BDB */
+#endif	/* CACHE_H */

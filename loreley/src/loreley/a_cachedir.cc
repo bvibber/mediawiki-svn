@@ -17,6 +17,8 @@
 
 #include "cache.h"
 
+#ifndef NO_BDB
+
 a_cachedir::a_cachedir(imstring const &path, int num)
 	: _path(path)
 	, _dnum(num)
@@ -38,3 +40,5 @@ int		n = _curfnum++;
 imstring	path = (format("%s/%d") % _path % n).str();
 	return new cachefile(path, _dnum, n, true);
 }	
+
+#endif	/* NO_BDB */

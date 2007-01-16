@@ -17,6 +17,8 @@ using std::pair;
 using std::make_pair;
 using std::back_inserter;
 
+#ifndef NO_BDB
+
 #include <db.h>
 
 #include "loreley.h"
@@ -376,4 +378,5 @@ database<Key, Value, Datastore>::close(void)
 
 } // namespace db
 
-#endif
+#endif	/* !NO_BDB */
+#endif	/* !DBWRAP_H */

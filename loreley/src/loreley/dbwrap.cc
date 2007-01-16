@@ -18,6 +18,7 @@
 #include "dbwrap.h"
 #include "mbuffer.h"
 
+#ifndef NO_BDB
 namespace db {
 
 environment *
@@ -128,3 +129,4 @@ transaction::strerror(void) const
 }
 
 } // namespace db
+#endif	/* NO_BDB */

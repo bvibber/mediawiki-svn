@@ -99,6 +99,8 @@
 #include <pwd.h>
 #include <grp.h>
 
-#include <db.h>
+#ifndef NO_BDB
+# include <db.h>
+#endif
 
 #endif	/* STDINC_H */

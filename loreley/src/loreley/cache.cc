@@ -21,6 +21,8 @@ using std::ostream;
 #include "cache.h"
 #include "config.h"
 
+#ifndef NO_BDB
+
 httpcache entitycache;
 
 httpcache::httpcache(void)
@@ -310,3 +312,4 @@ httpcache::get_cachefile(int dirn, uint64_t num)
 	return _store->open(dirn, num);
 }
 
+#endif	/* NO_BDB */

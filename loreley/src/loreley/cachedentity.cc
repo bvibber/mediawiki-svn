@@ -21,6 +21,8 @@ using std::ostream;
 #include "mbuffer.h"
 #include "config.h"
 
+#ifndef NO_BDB
+
 cachedentity::cachedentity(imstring const &url, size_t hint)
 	: _url(url)
 	, _data(hint ? hint : 4096)
@@ -256,3 +258,5 @@ ostream	&sm = f->file();
 	_cachefile = f->filenum();
 	return true;
 }
+
+#endif	/* NO_BDB */

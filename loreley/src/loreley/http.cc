@@ -124,7 +124,6 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	void error_send_done			(void);
 
 	void send_error(int, char const *, int, char const *);
-	void send_cached(void);
 	void log_request (void);
 
 	wsocket		*_client_socket;
@@ -143,9 +142,15 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	error_transform_filter		*_error_filter;
 	chunking_filter			*_chunking_filter;
 	io::size_limiting_filter	*_size_limit;
+
+#ifndef NO_BDB
+	void send_cached(void);
+
 	shared_ptr<cachedentity>	 _cachedent;
 	caching_filter			*_cache_filter;
 	cached_spigot			*_cache_spigot;
+	bool		 _validating;
+#endif
 
 	backend_list	*_blist;
 	enum {
@@ -158,7 +163,6 @@ struct httpcllr : freelist_allocator<httpcllr> {
 	imstring	 _request_host;
 	imstring	 _request_path;
 	int		 _nredir;
-	bool		 _validating;
 
 private:
 	httpcllr(const httpcllr &);
@@ -180,14 +184,16 @@ httpcllr::httpcllr(wsocket *s, int gr)
 	, _error_filter(NULL)
 	, _chunking_filter(NULL)
 	, _size_limit(NULL)
+#ifndef NO_BDB
 	, _cache_filter(NULL)
 	, _cache_spigot(NULL)
+	, _validating(false)
+#endif
 	, _blist(NULL)
 	, _denied(denied_no)
 	, _group(gr)
 	, _response(0)
 	, _nredir(0)
-	, _validating(false)
 {
 	/*
 	 * Check access controls.
@@ -270,6 +276,7 @@ bool	can_keepalive = false;
 	_chunking_filter = NULL;
 	delete _size_limit;
 	_size_limit = NULL;
+#ifndef NO_BDB
 	delete _cache_filter;
 	_cache_filter = NULL;
 	delete _cache_spigot;
@@ -277,6 +284,7 @@ bool	can_keepalive = false;
 	if (_cachedent)
 		entitycache.release(_cachedent);
 	_cachedent.reset();
+#endif
 
 	/*
 	 * Return the backend to the keepalive pool, if we can.
@@ -329,13 +337,16 @@ httpcllr::~httpcllr(void)
 	delete _error_body;
 	delete _chunking_filter;
 	delete _size_limit;
-	delete _cache_filter;
 	delete _blist;
+#ifndef NO_BDB
+	delete _cache_filter;
 	delete _cache_spigot;
+#endif
 	delete _client_spigot;
 	delete _client_socket;
 }
 
+#ifndef NO_BDB
 void
 httpcllr::send_cached(void)
 {
@@ -361,6 +372,7 @@ httpcllr::send_cached(void)
 	_cache_spigot->sp_uncork();
 	return;
 }
+#endif
 
 void
 httpcllr::header_read_complete(void)
@@ -399,6 +411,7 @@ httpcllr::header_read_complete(void)
 	/*
 	 * See if this entity has been cached.
 	 */
+#ifndef NO_BDB
 	if (_header_parser->_http_reqtype != REQTYPE_POST) {
 	bool	created = false;
 	string	url = str(format("http://%s%s") % _header_parser->_http_host
@@ -440,6 +453,7 @@ httpcllr::header_read_complete(void)
 			}
 		}
 	}
+#endif
 
 	/*
 	 * If we get here for a PURGE request, it means that the requested
@@ -634,12 +648,14 @@ httpcllr::backend_read_headers_done(void)
 	_response = _backend_headers->_response;
 	stats.tcur->n_httpresp_ok++;
 
+#ifndef NO_BDB
 	if (_validating && _response == 304) {
 		/* Our cached entity was still valid */
 		_cachedent->revalidated();
 		send_cached();
 		return;
 	}
+#endif
 
 	/*
 	 * Check for X-Loreley-Follow-Redirect header, which means we should
@@ -659,6 +675,7 @@ httpcllr::backend_read_headers_done(void)
 		return;
 	}
 
+#ifndef NO_BDB
 	/*
 	 * If we're caching this entity, store the headers.
 	 */
@@ -668,6 +685,7 @@ httpcllr::backend_read_headers_done(void)
 		_cachedent->store_status(status, _backend_headers->_response);
 		_cachedent->store_headers(_backend_headers->_headers);
 	}
+#endif
 
 	/*
 	 * If the client is HTTP/1.0 or MSIE, we need to dechunk.
@@ -728,10 +746,12 @@ bool		 chunked;
 	/*
 	 * See if we can cache this entity.
 	 */
+#ifndef NO_BDB
 	if (_cachedent) {
 		cache = true;
 		_cache_filter = new caching_filter(_cachedent);
 	}
+#endif
 
 	_backend_spigot->sp_disconnect();
 
@@ -767,6 +787,7 @@ bool		 chunked;
 	}
 
 	/* if we're caching, insert the caching filter */
+#ifndef NO_BDB
 	if (cache) {
 		cur = &(*cur >> *_cache_filter);
 		/* if we dechunked it to cache, rechunk now */
@@ -775,6 +796,7 @@ bool		 chunked;
 			cur = &(*cur >> *_chunking_filter);
 		}
 	}
+#endif
 
 	/* finally, connect to the client */
 	*cur >> *_client_sink;
@@ -1178,7 +1200,11 @@ size_t	size;
 			% size
 			% _response
 			% (_backend ? _backend->be_name : string("-"))
+#ifndef NO_BDB
 			% ((_cachedent && !_backend) ? "HIT" : "MISS"));
+#else
+			% "MISS");
+#endif
 
 		if (!(alf << line << endl)) {
 			wlog.error(format(
@@ -1217,7 +1243,11 @@ size_t	size;
 		ADD_STRING(bufp, _request_path, endp);
 		ADD_UINT16(bufp, _response, endp);
 		ADD_STRING(bufp, string(_backend ? _backend->be_name : "-"), endp);
+#ifndef NO_BDB
 		ADD_UINT8(bufp, (_cachedent && !_backend) ? 1 : 0, endp);
+#else
+		ADD_UINT8(bufp, 0, endp);
+#endif
 		ADD_UINT32(bufp, size, endp);
 		udplog_sock->write(buf, bufp - buf);
 	}

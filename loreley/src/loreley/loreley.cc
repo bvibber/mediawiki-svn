@@ -158,11 +158,13 @@ string	 pidfile;
 	if (!wlog.open())
 		return 1;
 
+#ifndef NO_BDB
 	if (zflag) {
 		if (!entitycache.create())
 			return 1;
 		return 0;
 	}
+#endif
 
 	if (!config.pidfile.empty()) {
 	struct stat	sb;
@@ -194,8 +196,10 @@ string	 pidfile;
 
 	make_event_base();
 	ioloop = new ioloop_t;
+#ifndef NO_BDB
 	if (!entitycache.open())
 		return 1;
+#endif
 
 	whttp_init();
 	stats_init();
@@ -221,7 +225,9 @@ string	 pidfile;
 	wlog.notice("shutting down");
 	wlog.close();
 	whttp_shutdown();
+#ifndef NO_BDB
 	entitycache.close();
+#endif
 
 	pthread_exit(NULL);	
 	return EXIT_SUCCESS;

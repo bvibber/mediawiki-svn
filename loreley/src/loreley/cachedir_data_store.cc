@@ -18,6 +18,8 @@
 #include "cache.h"
 #include "config.h"
 
+#ifndef NO_BDB
+
 /*
  * Create the cachedir list.
  */
@@ -109,3 +111,5 @@ cachefile	*f = nextfile();
 	delete f;
 	return ret;
 }
+
+#endif	/* !NO_BDB */

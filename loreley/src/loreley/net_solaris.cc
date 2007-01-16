@@ -585,6 +585,7 @@ socket::socket(int s, net::address const &a, char const *desc, sprio p)
 	: _addr(a)
 	, _desc(desc)
 	, _prio(p)
+	, _queue(0)
 {
 	_s = s;
 }
@@ -593,6 +594,7 @@ socket::socket(net::address const &a, char const *desc, sprio p)
 	: _addr(a)
 	, _desc(desc)
 	, _prio(p)
+	, _queue(0)
 {
 	_s = ::socket(_addr.family(), _addr.socktype(), _addr.protocol());
 	if (_s == -1)
@@ -618,7 +620,8 @@ socket::listen(int bl)
 socket::~socket(void)
 {
 	WDEBUG("closing socket");
-	port_dissociate(_queue->portfd, PORT_SOURCE_FD, _s);
+	if (_queue)
+		port_dissociate(_queue->portfd, PORT_SOURCE_FD, _s);
 	close(_s);
 }
 
@@ -730,7 +733,7 @@ event_queue	*eq = *ev_queue;
 port_event_t	 ev;
 net::socket	*sk;
 
-	while (port_get(eq->portfd, &ev, NULL)) {
+	while (port_get(eq->portfd, &ev, NULL) == 0) {
 		WDEBUG(format("[%d] thread_run: waiting for event, eq=%p")
 			% pthread_self() % eq);
 
