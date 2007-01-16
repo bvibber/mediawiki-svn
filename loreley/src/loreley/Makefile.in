@@ -33,6 +33,7 @@ BASESRCS =	 		\
 	log.cc			\
 	net.cc			\
 	net_solaris.cc		\
+	net_unix.cc		\
 	preprocessor.cc		\
 	radix.cc		\
 	loreley.cc 		\
