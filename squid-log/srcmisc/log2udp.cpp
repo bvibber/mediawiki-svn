@@ -7,8 +7,8 @@
 #include <sys/stat.h>
 #include <boost/program_options.hpp>
 #include <memory>
-#include "HostEntry.h"
-#include "Socket.h"
+#include "../srclib/HostEntry.h"
+#include "../srclib/Socket.h"
 
 int OpenFifo(const char * path);
 

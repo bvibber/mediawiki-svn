@@ -1,4 +1,4 @@
-#include "HostEntry.h"
+#include "../srclib/HostEntry.h"
 #include <iostream>
 
 // Simple test program for IP address stuff

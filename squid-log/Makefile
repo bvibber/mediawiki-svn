@@ -1,4 +1,4 @@
-TARGETS = log2udp udprecv delta udp2log
+TARGETS = log2udp udprecv delta udp2log/udp2log
 HOST_OBJS = srcmisc/host.o srclib/HostEntry.o srclib/IPAddress.o
 LOG2UDP_OBJS = srcmisc/log2udp.o srclib/HostEntry.o srclib/IPAddress.o srclib/Socket.o srclib/SocketAddress.o
 UDPRECV_OBJS = srcmisc/udprecv.o srclib/IPAddress.o srclib/Socket.o srclib/SocketAddress.o
@@ -22,12 +22,12 @@ log2udp: $(LOG2UDP_OBJS)
 udprecv: $(UDPRECV_OBJS)
 	g++ $(CFLAGS) -Wall $(UDPRECV_OBJS) -o udprecv
 
-delta: delta.cpp
-	g++ $(CFLAGS) -o delta delta.cpp
+delta: srcmisc/delta.cpp
+	g++ $(CFLAGS) -o delta srcmisc/delta.cpp
 
-udp2log: $(UDP2LOG_OBJS)
-	g++ $(CFLAGS) -o udp2log -lboost_program_options $(UDP2LOG_OBJS) 
+udp2log/udp2log: $(UDP2LOG_OBJS)
+	g++ $(CFLAGS) -o udp2log/udp2log -lboost_program_options $(UDP2LOG_OBJS) 
 
 install:
 	install log2udp $(DESTDIR)/usr/bin/log2udp
-	install udp2log $(DESTDIR)/usr/bin/udp2log
+	install udp2log/udp2log $(DESTDIR)/usr/bin/udp2log

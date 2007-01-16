@@ -6,7 +6,7 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include <signal.h>
-#include "../Socket.h"
+#include "../srclib/Socket.h"
 #include "Udp2LogConfig.h"
 
 

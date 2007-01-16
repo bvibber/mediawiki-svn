@@ -3,7 +3,7 @@
 
 #include <fstream>
 #include <boost/shared_ptr.hpp>
-#include "../Socket.h"
+#include "../srclib/Socket.h"
 
 class LogProcessor
 {
