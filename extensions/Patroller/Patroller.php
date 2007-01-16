@@ -18,7 +18,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionCredits['specialpage'][] = array(
 		'name' => 'Patroller',
 		'author' => 'Rob Church',
-		'description' => 'Enhanced patrolling interface.',
+		'description' => 'Enhanced patrolling interface with workload sharing',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Patroller',
 	);
 
