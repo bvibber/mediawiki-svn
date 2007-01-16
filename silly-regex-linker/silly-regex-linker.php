@@ -28,7 +28,7 @@ class SillyRegexLinker {
 	private static function fetchRegexes () {
 		return array(
 			'/r(\d+)/' => 'svnLink',
-			'/bug (\d)+/' => 'bugLink',
+			'/bug\s+(\d+)/' => 'bugLink',
 			'/\[\[([^]]+)\|([^]]+)\]\]/' => 'wikiLink',
 			'/\[\[([^]|]+)\]\]/' => 'wikiLinkNoText',
 		);
