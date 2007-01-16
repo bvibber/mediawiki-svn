@@ -1,7 +1,7 @@
 <?php
 /**
  * OpenID.php -- Make MediaWiki and OpenID consumer and server
- * Copyright 2006 Internet Brands (http://www.internetbrands.com/)
+ * Copyright 2006,2007 Internet Brands (http://www.internetbrands.com/)
  * By Evan Prodromou <evan@wikitravel.org>
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -34,7 +34,7 @@ if (defined('MEDIAWIKI')) {
 
 	require_once("SpecialPage.php");
 
-	define('MEDIAWIKI_OPENID_VERSION', '0.6');
+	define('MEDIAWIKI_OPENID_VERSION', '0.6.1');
 
 	$wgExtensionFunctions[] = 'setupOpenID';
 	$wgExtensionCredits['other'][] = array('name' => 'OpenID',

@@ -1,7 +1,7 @@
 <?php
 /**
  * testMemcStore.php -- Command-line test tool for MemcStore
- * Copyright 2006 Internet Brands (http://www.internetbrands.com/)
+ * Copyright 2006,2007 Internet Brands (http://www.internetbrands.com/)
  * By Evan Prodromou <evan@wikitravel.org>
  *
  *  This program is free software; you can redistribute it and/or modify
