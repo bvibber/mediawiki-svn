@@ -484,7 +484,7 @@ conf
 		.value("keepalive-max",		simple_range(0),	set_int(config.keepalive_max))
 		.value("x-follow-redirect",	simple_yesno,		set_yesno(config.x_follow))
 		.value("max-redirects",		simple_range(1),	set_int(config.max_redirects))
-		.value("connect-timeout",	simple_range(0),	set_int(config.backend_timeo))
+		.value("connect-timeout",	simple_time,		set_time(config.backend_timeo))
 
 	.block("server")
 		.value("threads",	simple_range(1, 1024),	set_int(config.nthreads))
