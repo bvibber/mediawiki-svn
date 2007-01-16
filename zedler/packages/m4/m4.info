@@ -3,3 +3,4 @@ desc GNU m4 built for WMF
 version 1.4.8
 src m4-1.4.8.tar.gz
 srcdir m4-1.4.8
+url ftp://ftp.gnu.org/gnu/m4/m4-1.4.8.tar.gz

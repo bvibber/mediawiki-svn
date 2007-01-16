@@ -1,0 +1,6 @@
+name WMFautomake
+desc GNU automake built for WMF
+version 1.10
+src automake-1.10.tar.bz2
+srcdir automake-1.10
+url ftp://ftp.gnu.org/gnu/automake/automake-1.10.tar.bz2
