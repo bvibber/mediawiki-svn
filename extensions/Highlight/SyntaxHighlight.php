@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Syntax highlighting extension for MediaWiki 1.5 using GeSHi
  * Copyright (C) 2005 Brion Vibber <brion@pobox.com>
