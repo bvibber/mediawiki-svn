@@ -427,13 +427,16 @@ if (defined('MEDIAWIKI')) {
 
 	function OpenIDGetUser($openid) {
 		global $wgSharedDB, $wgDBprefix;
-		$tableName = "${wgDBprefix}user_openid";
+
 		if (isset($wgSharedDB)) {
-			$tableName = "`$wgSharedDB`.$tableName";
+			$tableName = "`$wgSharedDB`.${wgDBprefix}user_openid";
+		} else {
+			$tableName = 'user_openid';
 		}
+
 		$dbr =& wfGetDB( DB_SLAVE );
 		$id = $dbr->selectField($tableName, 'uoi_user',
-								array("uoi_openid = '${openid}'"));
+								array('uoi_openid' => $openid));
 		if ($id) {
 			$name = User::whoIs($id);
 			return User::newFromName($name);
@@ -638,15 +641,16 @@ if (defined('MEDIAWIKI')) {
 
 		if (isset($user) && $user->getId() != 0) {
 			global $wgSharedDB, $wgDBprefix;
-
-			$tableName = "${wgDBprefix}user_openid";
 			if (isset($wgSharedDB)) {
-				$tableName = "`${wgSharedDB}`.$tableName";
+				$tableName = "`${wgSharedDB}`.${wgDBprefix}user_openid";
+			} else {
+				$tableName = 'user_openid';
 			}
+
 			$dbr =& wfGetDB( DB_SLAVE );
 			$res = $dbr->select(array($tableName),
 								array('uoi_openid'),
-								array('uoi_user = ' . $user->getId()),
+								array('uoi_user' => $user->getId()),
 								'OpenIDGetUserUrl');
 
 			# This should return 0 or 1 result, since user is unique
