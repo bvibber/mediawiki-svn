@@ -22,6 +22,11 @@ using std::memcpy;
 
 #include "loreley.h"
 
+#if defined(HAVE_SENDFILE) && (defined(__linux__) || (defined(__SVR4) && defined(__sun)))
+# define DO_SENDFILE
+# define SOLARIS_SENDFILE
+#endif
+
 extern bool wnet_exit;
 struct event_queue;
 
@@ -255,7 +260,7 @@ struct socket : noncopyable, freelist_allocator<socket> {
 	int		 write		(char const *buf, size_t count) {
 		return ::write(_s, buf, count);
 	}
-#if defined(HAVE_SENDFILE) && defined(__linux__)
+#ifdef DO_SENDFILE
 	int		 sendfile	(int to, off_t *off, size_t n) {
 		return ::sendfile(_s, to, off, n);
 	}

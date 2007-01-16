@@ -150,7 +150,7 @@ struct socket_sink : freelist_allocator<socket_sink>, sink {
 		_socket->clearbacks();
 	}
 
-#ifdef HAVE_SYS_SENDFILE_H
+#ifdef DO_SENDFILE
 	virtual bool dio_supported(dio_source s) const {
 		return s == dio_source_fd;
 	}

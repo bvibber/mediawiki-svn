@@ -1,5 +1,5 @@
 /* Loreley: Lightweight HTTP reverse-proxy.                             */
-/* net: Networking.							*/
+/* net_solaris: Solaris-specific networking.				*/
 /* Copyright (c) 2005, 2006 River Tarnell <river@attenuate.org>.        */
 /*
  * Permission is granted to anyone to use this software for any purpose,
@@ -15,36 +15,17 @@
 # pragma hdrstop
 #endif
 
-#ifndef SOLARIS_IO
+#ifdef SOLARIS_IO
+
+#include <port.h>
 
 namespace sfun {
 	using ::bind;	/* because of conflict with boost::bind from util.h */
 };
 
-/*
- * libevent needs these
- */
-#ifndef HAVE_U_INT8_T
-typedef uint8_t u_int8_t;
-#endif
-
-#ifndef HAVE_U_INT16_T
-typedef uint16_t u_int16_t;
-#endif
-
-#ifndef HAVE_U_INT32_T
-typedef uint32_t u_int32_t;
-#endif
-
-#ifndef HAVE_U_INT64_T
-typedef uint64_t u_int64_t;
-#endif
-
 using std::deque;
 using std::signal;
 using std::multimap;
-
-#include <event.h>
 
 #include "loreley.h"
 #include "net.h"
@@ -58,11 +39,6 @@ using std::multimap;
 int ifname_to_address(int, sockaddr_in *, char const *);
 unsigned int if_nametoindex_wrap(const char *);
 
-::event ev_sigint;
-::event ev_sigterm;
-//tss<event_base> evb;
-lockable ev_lock;
-
 enum evtype_t {
 	evtype_timer,
 	evtype_event
@@ -74,7 +50,6 @@ struct event_impl {
 	int64_t			 ev_when;
 	event_queue		*ev_queue;
 	function<void (void)>	 ev_func;
-	::event			 ev_event;
 };
 
 struct ev_pending {
@@ -88,51 +63,14 @@ struct ev_pending {
 	evtype_t ep_type;
 };
 
-multimap<int, ev_pending> ev_pending_list;
-
 pthread_t io_loop_thread;
 
-struct eq_entry {
-	eq_entry (net::socket *s, event_impl *ev, int flags)
-		: ee_sock(s)
-		, ee_event(ev)
-		, ee_flags(flags) {}
-
-	net::socket	*ee_sock;
-	event_impl	*ee_event;
-	int		 ee_flags;
-};
-
 struct event_queue {
-	event_queue() {
-		pthread_mutex_init(&eq_lock, NULL);
-		pthread_cond_init(&eq_cond, NULL);
-	}
-
-	void add(net::socket *sock, event_impl *event, int flags) {
-		struct lvars {
-			lvars(pthread_mutex_t *l) 
-				: lock(l) {
-				pthread_mutex_lock(lock);
-			}
-			~lvars() {
-				pthread_mutex_unlock(lock);
-			}
-			pthread_mutex_t *lock;
-		} v(&eq_lock);
-		WDEBUG("event_queue::add: adding event");
-		eq_events.push_back(new eq_entry(sock, event, flags));
-		pthread_cond_signal(&eq_cond);
-	}
-
-	pthread_mutex_t	eq_lock;
-	pthread_cond_t	eq_cond;
-	deque<eq_entry *>	eq_events;
+	event_queue(int p) : portfd(p) {}
+	int	portfd;
 };
 
-tss<event_queue> ev_queue;
-
-static void sig_exit(int, short, void *);
+tss<event_queue *> ev_queue;
 
 ioloop_t *ioloop;
 
@@ -172,21 +110,14 @@ pthread_cond_t iot_ready;
 pthread_mutex_t iot_ready_m;
 
 pthread_t io_thread;
-void
-usr2_handler(int, short, void *)
-{
-	WDEBUG("got USR2");
-	event_loopexit(NULL);
-}
-
-::event ev_sigusr2;
 
 void *
 io_start(void *)
 {
+#if 0
 	signal_set(&ev_sigusr2, SIGUSR2, usr2_handler, NULL);
 	signal_add(&ev_sigusr2, NULL);
-
+#endif
 	io_loop_thread = pthread_self();
 	pthread_mutex_lock(&iot_ready_m);
 	pthread_cond_signal(&iot_ready);
@@ -195,8 +126,6 @@ io_start(void *)
 	ioloop->run();
 	return NULL;
 }
-
-
 
 ioloop_t::ioloop_t(void)
 {
@@ -208,8 +137,6 @@ ioloop_t::prepare(void)
 {
 size_t	 i;
 
-	event_init();
-	signal(SIGUSR2, SIG_IGN);
 	pthread_mutex_init(&iot_ready_m, NULL);
 	pthread_cond_init(&iot_ready, NULL);
 
@@ -238,8 +165,7 @@ size_t	 i;
 
 		lns->sock->readback(bind(&ioloop_t::_accept, this, _1, _2), -1);
 	}
-	wlog.notice(format("net: initialised, using libevent %s (%s)")
-		% event_get_version() % event_get_method());
+	wlog.notice("net: initialised, using Solaris I/O");
 	secondly_sched();
 }
 
@@ -299,22 +225,6 @@ struct	tm	*now;
 
 namespace net {
 
-void
-socket_callback(int fd, short ev, void *d)
-{
-wsocket	*s = (wsocket *)d;
-
-	HOLDING(ev_lock);
-	WDEBUG(format("[%d] _ev_callback: %s%son %d (%s) queue %p")
-		% pthread_self()
-		% ((ev & EV_READ) ? "read " : "")
-		% ((ev & EV_WRITE) ? "write " : "")
-		% fd % s->_desc
-		% s->_queue);
-
-	s->_queue->add(s, NULL, ev);
-}
-
 event::event(void)
 {
 	impl = new event_impl;
@@ -332,6 +242,7 @@ event::schedule(function<void (void)> f, int64_t t)
 	impl->schedule(t);
 }
 
+#if 0
 void
 timer_callback(int, short, void *d)
 {
@@ -339,36 +250,27 @@ event_impl	*ev = (event_impl *)d;
 	HOLDING(ev_lock);
 	ev->ev_queue->add(NULL, ev, 0);
 }
+#endif
 
 void
 socket::_register(int what, int64_t to, socket::call_type handler)
 {
 	_ev_flags = 0;
-	_queue = (event_queue *)ev_queue;
+	_queue = *(event_queue **)ev_queue;
 
 	WDEBUG(format("_register: %s%son %d (%s), queue %p")
 		% ((what & FDE_READ) ? "read " : "")
 		% ((what & FDE_WRITE) ? "write " : "")
 		% _s % _desc % _queue);
 
-	HOLDING(ev_lock);
-
-	if (what & FDE_READ) {
+	if (what & FDE_READ)
 		_read_handler = handler;
-		_ev_flags |= EV_READ;
-	}
-	if (what & FDE_WRITE) {
+	if (what & FDE_WRITE)
 		_write_handler = handler;
-		_ev_flags |= EV_WRITE;
-	}
 
-	event_set(ev, _s, _ev_flags, socket_callback, this);
-	event_priority_set(ev, (int) _prio);
-
-	WDEBUG(format("timeout = %d") % to);
-
-	ev_pending_list.insert(make_pair(_s, ev_pending(ev, to, evtype_event)));
-	pthread_kill(io_loop_thread, SIGUSR2);
+	port_associate(_queue->portfd, PORT_SOURCE_FD, _s, 
+			(what & FDE_READ ? POLLRDNORM : 0) |
+			(what & FDE_WRITE ? POLLWRNORM : 0), this);
 }
 
 address::address(void)
@@ -684,8 +586,6 @@ socket::socket(int s, net::address const &a, char const *desc, sprio p)
 	, _desc(desc)
 	, _prio(p)
 {
-	ev = new ::event;
-	memset(ev, 0, sizeof(*ev));
 	_s = s;
 }
 
@@ -694,8 +594,6 @@ socket::socket(net::address const &a, char const *desc, sprio p)
 	, _desc(desc)
 	, _prio(p)
 {
-	ev = new ::event;
-	memset(ev, 0, sizeof(*ev));
 	_s = ::socket(_addr.family(), _addr.socktype(), _addr.protocol());
 	if (_s == -1)
 		throw socket_error();
@@ -720,21 +618,14 @@ socket::listen(int bl)
 socket::~socket(void)
 {
 	WDEBUG("closing socket");
-	HOLDING(ev_lock);
-	multimap<int, ev_pending>::iterator it;
-	it = ev_pending_list.find(_s);
-	if (it != ev_pending_list.end())
-		ev_pending_list.erase(it);
-
-	event_del(ev);
-	delete ev;
+	port_dissociate(_queue->portfd, PORT_SOURCE_FD, _s);
 	close(_s);
 }
 
 void
 socket::clearbacks(void)
 {
-	event_del(ev);
+	port_dissociate(_queue->portfd, PORT_SOURCE_FD, _s);
 }
 
 void
@@ -811,7 +702,7 @@ make_event_base(void)
 //		signal_add(&ev_sigterm, NULL);
 //	}
 	io_loop_thread = pthread_self();
-	ev_queue = new event_queue;
+	ev_queue = new event_queue * (new event_queue(port_create()));
 }
 
 void
@@ -823,80 +714,38 @@ sig_exit(int sig, short what, void *d)
 void
 ioloop_t::run(void)
 {
-	WDEBUG(format("[%d] ioloop run: running") % pthread_self());
-	while (!wnet_exit) {
-		event_loop(EVLOOP_ONCE);
-		WDEBUG("ioloop thread: got event");
-
-	{
-
-		HOLDING(ev_lock);
-	multimap<int, ev_pending>::iterator  it = ev_pending_list.begin(),
-						end = ev_pending_list.end();
-		for (; it != end; ++it) {
-			WDEBUG("ioloop thread: processing new event");
-			if (event_pending(it->second.ep_event, EV_READ | EV_WRITE, NULL))
-				event_del(it->second.ep_event);
-
-			if (it->second.ep_type == evtype_event) {
-				if (it->second.ep_timeout == -1) {
-					event_add(it->second.ep_event, NULL);
-				} else {
-				timeval	tv;
-				int64_t	usec = it->second.ep_timeout * 1000;
-					tv.tv_sec = usec / 1000000;
-					tv.tv_usec = usec % 1000000;
-					WDEBUG(format("timeout: %d %d") % tv.tv_sec % tv.tv_usec);
-					event_add(it->second.ep_event, &tv);
-				}
-			} else if (it->second.ep_type == evtype_timer) {
-				timeval	tv;
-				int64_t	usec = it->second.ep_timeout * 1000;
-					tv.tv_sec = usec / 1000000;
-					tv.tv_usec = usec % 1000000;
-					WDEBUG(format("timeout: %d %d") % tv.tv_sec % tv.tv_usec);
-					evtimer_add(it->second.ep_event, &tv);
-			} else
-				abort();
-		}
-		ev_pending_list.clear();
-	}
-	}
-
+	for (;;)
+		sleep(INT_MAX);
+#if 0
 size_t	 i;
 	for (i = 0; i < listeners.size(); ++i)
 		delete listeners[i];
+#endif
 }
 
 void
 ioloop_t::thread_run(void)
 {
-	/*
-	 * ioloop for a single thread.  uses a condition variable and a queue.
-	 */
-event_queue	*eq = (event_queue *)ev_queue;
+event_queue	*eq = *ev_queue;
+port_event_t	 ev;
+net::socket	*sk;
 
-	for (;;) {
-	deque<eq_entry *> evs;
+	while (port_get(eq->portfd, &ev, NULL)) {
 		WDEBUG(format("[%d] thread_run: waiting for event, eq=%p")
 			% pthread_self() % eq);
-		pthread_mutex_lock(&eq->eq_lock);
-		if (eq->eq_events.empty())
-			pthread_cond_wait(&eq->eq_cond, &eq->eq_lock);
-		WDEBUG(format("[%d] thread_run: got event") % pthread_self());
-		evs = eq->eq_events;
-		eq->eq_events.clear();
-		pthread_mutex_unlock(&eq->eq_lock);
-		for (deque<eq_entry *>::iterator
-		     it = evs.begin(),
-		     end = evs.end(); it != end; ++it) {
-			if ((*it)->ee_sock) {
-				WDEBUG(format("[%d] thread_run: got event on %s")
-					% pthread_self() % (*it)->ee_sock->_desc);
-				if ((*it)->ee_flags & EV_READ)
-					(*it)->ee_sock->_read_handler((*it)->ee_sock, false);
-				if ((*it)->ee_flags & EV_WRITE)
-					(*it)->ee_sock->_write_handler((*it)->ee_sock, false);
+
+		switch (ev.portev_source) {
+		case PORT_SOURCE_FD:
+			sk = static_cast<net::socket *>(ev.portev_user);
+			WDEBUG(format("[%d] thread_run: got event on %s")
+				% pthread_self() % sk->_desc);
+			if (ev.portev_events & POLLRDNORM)
+				sk->_read_handler(sk, false);
+			if (ev.portev_events & POLLWRNORM)
+				sk->_write_handler(sk, false);
+			break;
+
+#if 0
 				if ((*it)->ee_flags & EV_TIMEOUT) {
 					if ((*it)->ee_sock->_ev_flags & EV_READ) {
 						(*it)->ee_sock->_read_handler((*it)->ee_sock, true);
@@ -904,11 +753,11 @@ event_queue	*eq = (event_queue *)ev_queue;
 						(*it)->ee_sock->_write_handler((*it)->ee_sock, true);
 					}
 				}
-			} else {
+#endif
+#if 0
 				WDEBUG("event thread");
 				(*it)->ee_event->ev_func();
-			}
-			delete *it;
+#endif
 		}
 	}
 }
@@ -917,6 +766,7 @@ event_queue	*eq = (event_queue *)ev_queue;
 void
 event_impl::schedule(int64_t when)
 {
+#if 0
 	HOLDING(ev_lock);
 	WDEBUG(format("schedule, when=%d") % when);
 	this->ev_when = when;
@@ -924,6 +774,7 @@ event_impl::schedule(int64_t when)
 	evtimer_set(&ev_event, timer_callback, this);
 	ev_pending_list.insert(make_pair(0, ev_pending(&ev_event, ev_when, evtype_timer)));
 	pthread_kill(io_loop_thread, SIGUSR2);
+#endif
 }
 
-#endif	/* !SOLARIS_IO */
+#endif

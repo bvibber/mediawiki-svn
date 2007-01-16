@@ -75,8 +75,8 @@ int	 n = smallbuf;
 		return ret;
 	}
 
-	snprintf(path, sizeof(path), "/dev/shm/loreley.diobuf.%d.%d.%d",
-		getpid(), (int) pthread_self(), rand());
+	snprintf(path, sizeof(path), "/dev/shm/loreley.diobuf.%lu.%lu.%d",
+		(unsigned long) getpid(), (unsigned long) pthread_self(), rand());
 	if ((_diofd = open(path, O_CREAT | O_EXCL | O_RDWR, 0600)) == -1) {
 		wlog.warn(format("opening diobuf %s: %s") 
 			% path % strerror(errno));
@@ -224,13 +224,17 @@ ssize_t	wrote;
 	}
 }
 
-#if defined(HAVE_SENDFILE) && defined(__linux__)
+#if defined(DO_SENDFILE)
 sink_result
 socket_sink::dio_ready(int fd, off_t off, size_t len, ssize_t &discard)
 {
 ssize_t	wrote;
 	WDEBUG(format("dio_ready: starting off %d") % off);
+#ifdef SOLARIS_SENDFILE	/* also linux */
 	if ((wrote = _socket->sendfile(fd, &off, len)) == -1) {
+#else
+# error shouldn't get here, no sendfile
+#endif
 		if (errno == EAGAIN) {
 			_sink_spigot->sp_cork();
 			if (!_reg) {

@@ -32,6 +32,7 @@ BASESRCS =	 		\
 	ifname_to_address.cc	\
 	log.cc			\
 	net.cc			\
+	net_solaris.cc		\
 	preprocessor.cc		\
 	radix.cc		\
 	loreley.cc 		\
