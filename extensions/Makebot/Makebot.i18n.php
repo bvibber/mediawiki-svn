@@ -34,6 +34,11 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'removed bot status from [[$1]]',
 ),
 
+/* Old Church Slavonic (language file) */
+'cu' => array(
+'makebot-search' => 'Прѣиди',
+),
+
 /* Czech (bug 8455) */
 'cs' => array(
 'makebot' => 'Přidat nebo odebrat příznak bot',
@@ -263,6 +268,27 @@ function efMakeBotMessages() {
 'makebot-logpagetext' => 'Ovo je istorija izmena statusa [[Pomoć:Bot|bota]] korisnika.',
 'makebot-logentrygrant' => 'dao status bota: [[$1]]',
 'makebot-logentryrevoke' => 'uklonio status bota: [[$1]]',
+),
+
+/* Walloon (language file) */
+'wa' => array(
+'makebot' => 'Diner ou rsaetchî l\' livea d\' robot',
+'makebot-header' => '\'\'\'On mwaisse-manaedjeu sol wiki pout eployî cisse pådje ci po dner ou rsaetchî l\' [[{{ns:help}}:Robots|livea d\' robot]] a èn ôte conte d\' uzeu.\'\'\'<br />El livea d\' robot fwait ki les candjmints da cist uzeu la si polèt catchî dins l\' pådje des [[{{special}}:Recentchanges|dierins candjmints]] et des sfwaitès djivêyes, çou k\' est ahessåve po mårker les uzeus ki fjhèt des candjmints otomatikes. Çoula doet esse fwait tot shuvant les rîles ki s\' aplikèt.',
+'makebot-username' => 'No d\' uzeu:',
+'makebot-search' => 'I va',
+'makebot-change' => 'Candjî l\' livea:',
+'makebot-grant' => 'Diner',
+'makebot-revoke' => 'Rissaetchî',
+'makebot-comment' => 'Comintaire:',
+'makebot-logpage' => 'Djournå des liveas d\' robot',
+'makebot-granted' => '[[{{ns:user}}:$1|$1]] a-st asteure li livea d\' robot.',
+'makebot-isbot' => '[[{{ns:user}}:$1|$1]] a l\' livea d\' robot.',
+'makebot-logentrygrant' => 'a dné l\' livea d\' robot a [[$1]]',
+'makebot-logentryrevoke' => 'a rsaetchî l\' livea d\' robot da [[$1]]',
+'makebot-logpagetext' => 'Çouchal, c\' est on djournå des dinaedjes eyet rsaetchaedjes do [[{{ns:help}}:Robots|livea d\' robot]] a des uzeus.',
+'makebot-notbot' => '[[{{ns:user}}:$1|$1]] n\' a nén l\' livea d\' robot',
+'makebot-privileged' => '[[{{ns:user}}:$1|$1]] a ddja on livea d\' [[{{ns:special}}:Listadmins|manaedjeu ou mwaisse-manaedjeu]], ça fwait k\' i n\' pout nén eployî ç\' conte la po on robot.',
+'makebot-revoked' => '[[{{ns:user}}:$1|$1]] n\' a pus d\' livea d\' robot.',
 ),
 
 	);
