@@ -11,7 +11,7 @@
 
 SUBDIRS=include libloreley loreley lreadlog lgetstats lhtcp
 
-@include@ @q@@top_srcdir@/mk/subdir.mk@q@
+@include@ @q@@top_builddir@/mk/subdir.mk@q@
 
 DISTFILES=\
 	Makefile.in 

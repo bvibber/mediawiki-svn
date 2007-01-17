@@ -6,8 +6,8 @@ THISDIR=	@srcdir@
 
 default: all
 
-@include@ @q@@abs_top_srcdir@/mk/vars.mk@q@
-@include@ @q@@abs_top_srcdir@/mk/rules.mk@q@
+@include@ @q@@abs_top_builddir@/mk/vars.mk@q@
+@include@ @q@@abs_top_builddir@/mk/rules.mk@q@
 
 all install lint clean depend _extradist:
 	@for dir in $(SUBDIRS); do \

@@ -10,6 +10,7 @@
 # @(#) $Id$
 
 DATADIR=errors
+THISDIR=@srcdir@
 DATAFILES=\
 	ERR_BADREQUEST	\
 	ERR_BADRESPONSE	\
@@ -17,4 +18,4 @@ DATAFILES=\
 	ERR_GENERAL	\
 	ERR_BLOCKED
 
-@include@ @q@@top_srcdir@/mk/data.mk@q@
+@include@ @q@@top_builddir@/mk/data.mk@q@

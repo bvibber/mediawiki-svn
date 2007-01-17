@@ -2,8 +2,8 @@
 #
 # Build a program.
 
-@include@ @q@@abs_top_srcdir@/mk/vars.mk@q@
-@include@ @q@@abs_top_srcdir@/mk/rules.mk@q@
+@include@ @q@@abs_top_builddir@/mk/vars.mk@q@
+@include@ @q@@abs_top_builddir@/mk/rules.mk@q@
 
 default: all
 
@@ -31,10 +31,10 @@ lint:
 		-errhdr -errsecurity=extended -errtags -o$(LIB) \
 		-u -Xc99=all -Nlevel=4 -errfmt=src \
 		$(_LDFLAGS) $(LDFLAGS) \
-		$(CPPFLAGS) $(_CPPFLAGS) -I @top_srcdir@ \
+		$(CPPFLAGS) $(_CPPFLAGS) -I @abs_top_srcdir@ \
 		$(SRCS)
 
 _MYDISTFILES=$(SRCS) $(EXTRA_DIST)
 _extradist:
 
-@include@ @q@@abs_top_srcdir@/mk/depend.@dependstyle@.mk@q@
+@include@ @q@@abs_top_builddir@/mk/depend.@dependstyle@.mk@q@

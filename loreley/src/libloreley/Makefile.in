@@ -10,8 +10,10 @@
 
 .SUFFIXES: .cc .o .a
 
+THISDIR=@srcdir@
+
 LIB=loreley
-CPPFLAGS = -I../include
+CPPFLAGS = -I@top_srcdir@/src/include
 SRCS=			\
 	acl.cc		\
 	htcp.cc		\
@@ -25,4 +27,4 @@ EXTRA_DIST=		\
 
 default: all
 
-@include@ @q@@top_srcdir@/mk/lib.mk@q@
+@include@ @q@@top_builddir@/mk/lib.mk@q@

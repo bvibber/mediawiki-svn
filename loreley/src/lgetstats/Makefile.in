@@ -10,7 +10,8 @@
 
 PROGRAM		= lgetstats
 BINDIR		= $(_BINDIR)
-CPPFLAGS	= -I../include
+THISDIR		= @srcdir@
+CPPFLAGS	= -I@top_srcdir@/src/include
 BASESRCS	= lgetstats.cc
 
 OBJS=	$(BASESRCS:.cc=.o)
@@ -26,4 +27,4 @@ LDFLAGS = $(LIBOBJS)
 
 default: all
 
-@include@ @q@@top_srcdir@/mk/prog.mk@q@
+@include@ @q@@top_builddir@/mk/prog.mk@q@

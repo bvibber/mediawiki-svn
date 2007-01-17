@@ -10,7 +10,8 @@
 
 PROGRAM		= lreadlog
 BINDIR		= $(_BINDIR)
-CPPFLAGS	= -I../include
+THISDIR		= @srcdir@
+CPPFLAGS	= -I@top_srcdir@/src/include
 BASESRCS =	 		\
 	packet_decoder.cc	\
 	topurl_printer.cc	\
@@ -29,4 +30,4 @@ LDFLAGS = $(LIBOBJS) -lcurses -L../libloreley -lloreley
 
 default: all
 
-@include@ @q@@top_srcdir@/mk/prog.mk@q@
+@include@ @q@@top_builddir@/mk/prog.mk@q@

@@ -16,4 +16,4 @@ install:
 stdinc.h.gch:
 	$(_COMPILEXX) stdinc.h -o stdinc.h.gch
 
-@include@ @q@@top_srcdir@/mk/vars.mk@q@
+@include@ @q@@top_builddir@/mk/vars.mk@q@

@@ -8,7 +8,7 @@
 
 # @(#) $Id$
 
-@include@ @q@@top_srcdir@/mk/rules.mk@q@
+@include@ @q@@top_builddir@/mk/rules.mk@q@
 
 all depend clean lint install:
 

@@ -2,7 +2,7 @@
 #
 # General build rules.
 
-@include@ @q@@abs_top_srcdir@/mk/vars.mk@q@
+@include@ @q@@abs_top_builddir@/mk/vars.mk@q@
 
 .PHONY: all clean install depend distclean dist _dist
 

@@ -13,8 +13,8 @@ default: all
 
 SUBDIRS=src errors mk
 
-@include@ @q@@top_srcdir@/mk/subdir.mk@q@
-@include@ @q@@top_srcdir@/mk/vars.mk@q@
+@include@ @q@mk/subdir.mk@q@
+@include@ @q@mk/vars.mk@q@
 
 DISTFILES=\
 	Makefile.in \

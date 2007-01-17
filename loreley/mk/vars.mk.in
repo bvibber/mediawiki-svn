@@ -8,6 +8,8 @@
 PACKAGE=	loreley
 VERSION=	@PACKAGE_VERSION@
 
+VPATH=		$(THISDIR)
+
 _LEX=		@LEX@
 _YACC=		@YACC@
 

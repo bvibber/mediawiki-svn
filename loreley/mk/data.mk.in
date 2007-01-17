@@ -2,8 +2,8 @@
 #
 # Install data files.
 
-@include@ @q@@top_srcdir@/mk/vars.mk@q@
-@include@ @q@@top_srcdir@/mk/rules.mk@q@
+@include@ @q@@top_builddir@/mk/vars.mk@q@
+@include@ @q@@top_builddir@/mk/rules.mk@q@
 
 all clean depend lint:
 
@@ -13,8 +13,8 @@ install:
 	@echo "	$(_MKDIR) $(_DEST)"
 	@$(_MKDIR) $(_DEST)
 	@for file in $(DATAFILES); do \
-		echo "	$(_INSTALLDATA) $$file $(_DEST)" ;\
-		$(_INSTALLDATA) $$file $(_DEST) ;\
+		echo "	$(_INSTALLDATA) $(THISDIR)/$$file $(_DEST)" ;\
+		$(_INSTALLDATA) $(THISDIR)/$$file $(_DEST) ;\
 	done
 
 _MYDISTFILES=Makefile.in $(DATAFILES)

@@ -10,7 +10,8 @@
 
 PROGRAM = loreley 
 BINDIR = $(_BINDIR)
-CPPFLAGS = -I../include
+THISDIR = @srcdir@
+CPPFLAGS = -I@top_srcdir@/src/include
 
 BASESRCS =	 		\
 	a_cachedir.cc		\
@@ -54,4 +55,4 @@ EXTRADEPS=../libloreley/libloreley.a
 
 default: all
 
-@include@ @q@@top_srcdir@/mk/prog.mk@q@
+@include@ @q@@top_builddir@/mk/prog.mk@q@
