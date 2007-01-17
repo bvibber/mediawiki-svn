@@ -1,3 +1,10 @@
+squid (2.6.7-1wm3) edgy; urgency=low
+
+  * Added pipe logging patch
+  * Added log2udp_wm helper script
+
+ -- Tim Starling <tstarling@wikimedia.org>  Wed, 17 Jan 2007 02:11:40 +0000
+
 squid (2.6.7-1wm2) edgy; urgency=low
 
   * Raise max FD limit to 64k, default stays the same at 16k

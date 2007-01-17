@@ -304,12 +304,15 @@ binary-arch:	build checkroot
 	po2debconf debian/templates > debian/templates.merged
 	$(INSTALL_FILE) debian/templates.merged $(tmp)/DEBIAN/templates
 	$(INSTALL_SCRIPT) debian/config $(tmp)/DEBIAN/config
-
+	#
 	# overrides file
 	$(INSTALL_DIR) $(tmp)/usr/share/lintian/overrides/
 	$(INSTALL_FILE) debian/squid.overrides \
 		$(tmp)/usr/share/lintian/overrides/squid
-	
+	#
+	# Wikimedia-specific configuration
+	$(INSTALL_PROGRAM) debian/log2udp_wm $(tmp)/usr/bin/log2udp_wm
+	#
 	dpkg-shlibdeps $(tmp)/usr/sbin/* $(tmp)$(libexecdir)/*
 	dpkg-gencontrol -isp -p$(package)
 	dpkg --build $(tmp) ..
