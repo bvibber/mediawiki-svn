@@ -328,15 +328,20 @@ function getExpressionsEditor($spelling, $filterLanguageId, $showRecordLifeSpan,
 	if ($filterLanguageId == 0) {
 		$expressionEditor = new RecordSpanEditor($expressionAttribute, ': ', ' - ');
 		$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
-	
-		$expressionsEditor = new RecordSetListEditor($expressionsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), false, false, new ExpressionController($spelling), 2, true);
+
+		$expressionsEditor = new RecordSetListEditor($expressionsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), false, false, new ExpressionController($spelling, $filterLanguageId), 2, true);
 		$expressionsEditor->setCaptionEditor($expressionEditor);
 		$expressionsEditor->setValueEditor($expressionMeaningsRecordEditor);
-	
-		return $expressionsEditor;
 	}
-	else 
-		return $expressionMeaningsRecordEditor;
+	else {
+		$expressionEditor = new RecordSubRecordEditor($expressionAttribute);
+		$expressionEditor->setSubRecordEditor($expressionMeaningsRecordEditor);
+		
+		$expressionsEditor = new RecordSetFirstRecordEditor($expressionsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), false, false, new ExpressionController($spelling, $filterLanguageId));
+		$expressionsEditor->setRecordEditor($expressionEditor);
+	}
+
+	return $expressionsEditor;
 }
 
 function getDefinedMeaningEditor($filterLanguageId, $showRecordLifeSpan, $showAuthority) {

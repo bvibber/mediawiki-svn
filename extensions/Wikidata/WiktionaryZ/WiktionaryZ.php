@@ -25,15 +25,13 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		parent::view();
 
 		$spelling = $wgTitle->getText();
-		$expressionsValue = getExpressionsValue($spelling, $this->filterLanguageId, $this->viewQueryTransactionInformation);
 		
-		if ($expressionsValue != null) 
-			$wgOut->addHTML(
-				getExpressionsEditor($spelling, $this->filterLanguageId, false, $this->shouldShowAuthorities)->view(
-					$this->getIdStack($spelling, $this->filterLanguageId), 
-					$expressionsValue
-				)
-			);
+		$wgOut->addHTML(
+			getExpressionsEditor($spelling, $this->filterLanguageId, false, $this->shouldShowAuthorities)->view(
+				$this->getIdStack(), 
+				getExpressionsRecordSet($spelling, $this->filterLanguageId, $this->viewQueryTransactionInformation)
+			)
+		);
 		
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
@@ -46,15 +44,13 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		parent::history();
 
 		$spelling = $wgTitle->getText();
-		$expressionsValue = getExpressionsValue($spelling, $this->filterLanguageId, $this->queryTransactionInformation);
 		
-		if ($expressionsValue != null)
-			$wgOut->addHTML(
-				getExpressionsEditor($spelling, $this->filterLanguageId, $this->showRecordLifeSpan, false)->view(
-					$this->getIdStack($spelling, $this->filterLanguageId), 
-					$expressionsValue
-				)
-			);
+		$wgOut->addHTML(
+			getExpressionsEditor($spelling, $this->filterLanguageId, $this->showRecordLifeSpan, false)->view(
+				$this->getIdStack(), 
+				getExpressionsRecordSet($spelling, $this->filterLanguageId, $this->queryTransactionInformation)
+			)
+		);
 		
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
@@ -67,13 +63,11 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		parent::save($referenceTransaction);
 
 		$spelling = $wgTitle->getText();
-		$expressionsValue = getExpressionsValue($spelling, $this->filterLanguageId, $referenceTransaction);
 		
-		if ($expressionsValue != null)
-			getExpressionsEditor($spelling, $this->filterLanguageId, false, false)->save(
-				$this->getIdStack($spelling, $this->filterLanguageId), 
-				$expressionsValue
-			);
+		getExpressionsEditor($spelling, $this->filterLanguageId, false, false)->save(
+			$this->getIdStack(), 
+			getExpressionsRecordSet($spelling, $this->filterLanguageId, $referenceTransaction)
+		);
 	}
 
 	public function edit() {
@@ -84,15 +78,13 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		$this->outputEditHeader();
 
 		$spelling = $wgTitle->getText();
-		$expressionsValue = getExpressionsValue($spelling, $this->filterLanguageId, new QueryLatestTransactionInformation());
 
-		if ($expressionsValue != null)
-			$wgOut->addHTML(
-				getExpressionsEditor($spelling, $this->filterLanguageId, false, false)->edit(
-					$this->getIdStack($spelling, $this->filterLanguageId), 
-					$expressionsValue
-				)
-			);
+		$wgOut->addHTML(
+			getExpressionsEditor($spelling, $this->filterLanguageId, false, false)->edit(
+				$this->getIdStack(), 
+				getExpressionsRecordSet($spelling, $this->filterLanguageId, new QueryLatestTransactionInformation())
+			)
+		);
 
 		$this->outputEditFooter();
 	}
@@ -104,25 +96,8 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		return "Disambiguation: " . $wgTitle->getText();
 	}
 	
-	protected function getIdStack($spelling, $filterLanguageId) {
-		global
-			$expressionIdAttribute;
-			
-		$idStack = new IdStack("expression");
-
-		if ($filterLanguageId != 0) {
-			$expressionId = getExpressionIdThatHasSynonyms($spelling, $filterLanguageId);
-			
-			if ($expressionId != 0) {
-				$expressionIdStructure = new Structure($expressionIdAttribute);
-				$expressionIdRecord = new ArrayRecord($expressionIdStructure, $expressionIdStructure);
-				$expressionIdRecord->setAttributeValue($expressionIdAttribute, $expressionId);
-			}	
-			
-			$idStack->pushKey($expressionIdRecord);
-		}
-		
-		return $idStack;
+	protected function getIdStack() {
+		return new IdStack("expression");
 	}
 }
 

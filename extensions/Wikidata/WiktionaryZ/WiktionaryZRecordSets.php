@@ -421,13 +421,6 @@ function getExpressionRecord($spelling, $filterLanguageId, $queryTransactionInfo
 		return null;
 }
 
-function getExpressionsValue($spelling, $filterLanguageId, $queryTransactionInformation) {
-	if ($filterLanguageId == 0)
-		return getExpressionsRecordSet($spelling, $filterLanguageId, $queryTransactionInformation);
-	else 
-		return getExpressionRecord($spelling, $filterLanguageId, $queryTransactionInformation);
-}
-
 function getDefinedMeaningRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation) {
 	global
 		$definedMeaningAttribute, $definitionAttribute, $classAttributesAttribute, 

@@ -1781,4 +1781,90 @@ class RecordSetRecordSelector extends WrappingEditor {
 	}
 }
 
+class RecordSubRecordEditor extends RecordEditor {
+	protected $subRecordEditor;
+	
+	public function view($idPath, $value) {
+		$attribute = $this->subRecordEditor->getAttribute();
+		$idPath->pushAttribute($attribute);
+		$result = $this->subRecordEditor->view($idPath, $value->getAttributeValue($attribute));
+		$idPath->popAttribute();
+
+		return $result;
+	}
+
+	public function edit($idPath, $value) {
+		$attribute = $this->subRecordEditor->getAttribute();
+		$idPath->pushAttribute($attribute);
+		$result = $this->subRecordEditor->edit($idPath, $value->getAttributeValue($attribute));
+		$idPath->popAttribute();
+
+		return $result;
+	}
+	
+	public function add($idPath) {
+		$attribute = $this->subRecordEditor->getAttribute();
+		$idPath->pushAttribute($attribute);
+		$result = $this->subRecordEditor->add($idPath);
+		$idPath->popAttribute();
+		
+		return $result;
+	}
+	
+	public function setSubRecordEditor($subRecordEditor) {
+		$this->subRecordEditor = $subRecordEditor;
+		$this->editors[0] = $subRecordEditor;
+	}
+}
+
+class RecordSetFirstRecordEditor extends RecordSetEditor {
+	protected $recordEditor;
+		
+	public function view($idPath, $value) {
+		if ($value->getRecordCount() > 0) {
+			$record = $value->getRecord(0);
+			$idPath->pushKey(project($record, $value->getKey()));
+			$result = $this->recordEditor->view($idPath, $record);
+			$idPath->popKey();
+			
+			return $result;
+		}
+		else
+			return "";
+	}
+
+	public function edit($idPath, $value) {
+		if ($value->getRecordCount() > 0) {
+			$record = $value->getRecord(0);
+			$idPath->pushKey(project($record, $value->getKey()));
+			$result = $this->recordEditor->edit($idPath, $record);
+			$idPath->popKey();
+		}
+		else
+			$result = $this->recordEditor->add($idPath);
+
+		return $result;
+	}
+	
+	public function add($idPath) {
+		return "";
+	}
+	
+	public function save($idPath, $value) {
+		if ($value->getRecordCount() > 0) { 
+			$record = $value->getRecord(0);
+			$idPath->pushKey(project($record, $value->getKey()));
+			$this->recordEditor->save($idPath, $record);
+			$idPath->popKey();
+		}
+		else 
+			$this->controller->add($idPath->getKeyStack(), $this->recordEditor->getAddValue($idPath));
+	}
+
+	public function setRecordEditor($recordEditor) {
+		$this->recordEditor = $recordEditor;
+		$this->editors[0] = $recordEditor;
+	}
+}
+
 ?>

@@ -398,9 +398,11 @@ class ExpressionMeaningController implements UpdateController {
 
 class ExpressionController implements UpdateController {
 	protected $spelling;
+	protected $filterLanguageId;
 
-	public function __construct($spelling) {
+	public function __construct($spelling, $filterLanguageId) {
 		$this->spelling = $spelling;
+		$this->filterLanguageId = $filterLanguageId;
 	}
 
 	public function add($keyPath, $record) {
@@ -409,7 +411,11 @@ class ExpressionController implements UpdateController {
 			$definedMeaningAttribute, $definitionAttribute, 
 			$languageAttribute, $textAttribute, $translatedTextAttribute;
 
-		$expressionLanguageId = $record->getAttributeValue($expressionAttribute)->getAttributeValue($languageAttribute);
+		if ($this->filterLanguageId == 0)
+			$expressionLanguageId = $record->getAttributeValue($expressionAttribute)->getAttributeValue($languageAttribute);
+		else
+			$expressionLanguageId = $this->filterLanguageId; 
+				
 		$expressionMeanings = $record->getAttributeValue($expressionMeaningsAttribute)->getAttributeValue($expressionExactMeaningsAttribute);
 
 		if ($expressionLanguageId != 0 && $expressionMeanings->getRecordCount() > 0) {
@@ -417,17 +423,23 @@ class ExpressionController implements UpdateController {
 
 			$definition = $expressionMeaning->getAttributeValue($definedMeaningAttribute)->getAttributeValue($definitionAttribute);
 			$translatedContent = $definition->getAttributeValue($translatedTextAttribute);
-
-			if ($translatedContent->getRecordCount() > 0) {
-				$definitionRecord = $translatedContent->getRecord(0);
-
-				$text = $definitionRecord->getAttributeValue($textAttribute);
-				$languageId = $definitionRecord->getAttributeValue($languageAttribute);
-
-				if ($languageId != 0 && $text != "") {
-					$expression = findOrCreateExpression($this->spelling, $expressionLanguageId);
-					createNewDefinedMeaning($expression->id, $languageId, $text);
+			
+ 			if ($this->filterLanguageId == 0) {					
+				if ($translatedContent->getRecordCount() > 0) {
+					$definitionRecord = $translatedContent->getRecord(0);
+	
+					$text = $definitionRecord->getAttributeValue($textAttribute);
+					$languageId = $definitionRecord->getAttributeValue($languageAttribute);
+	
+					if ($languageId != 0 && $text != "") {
+						$expression = findOrCreateExpression($this->spelling, $expressionLanguageId);
+						createNewDefinedMeaning($expression->id, $languageId, $text);
+					}
 				}
+			}
+			else if ($translatedContent != "") {
+				$expression = findOrCreateExpression($this->spelling, $expressionLanguageId);
+				createNewDefinedMeaning($expression->id, $this->filterLanguageId, $translatedContent);
 			}
 		}
 	}
