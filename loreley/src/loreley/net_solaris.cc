@@ -33,6 +33,8 @@ using std::multimap;
 #include "log.h"
 #include "http.h"
 
+static void sig_exit(int);
+
 struct event_impl {
 	event_impl();
 	~event_impl();
@@ -61,6 +63,8 @@ size_t	 i;
 		% getdtablesize());
 	
 	signal(SIGPIPE, SIG_IGN);
+	signal(SIGINT, sig_exit);
+	signal(SIGTERM, sig_exit);
 
 	for (i = 0; i < listeners.size(); ++i) {
 	listener	*lns = listeners[i];
@@ -149,10 +153,11 @@ make_event_base(void)
 	ev_queue = new event_queue * (new event_queue(port_create()));
 }
 
-void
-sig_exit(int sig, short what, void *d)
+static void
+sig_exit(int)
 {
 	wnet_exit = true;
+	std::exit(0);
 }
 
 void
