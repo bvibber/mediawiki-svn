@@ -81,7 +81,7 @@ class BookInformationAmazon implements BookInformationDriver {
 			} else {
 				return false;
 			}		
-		} catch( $ex ) {
+		} catch( Exception $ex ) {
 			return false;
 		}
 	}
