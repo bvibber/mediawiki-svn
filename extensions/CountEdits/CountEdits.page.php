@@ -30,7 +30,7 @@ class SpecialCountEdits extends SpecialPage {
 				if( $id ) {
 					$this->showResults( $this->countEditsReal( $id, false ), $id );
 				} else {
-					$wgOut->addHtml( '<p>' . wfMsg( 'countedits-nosuchuser', htmlspecialchars( $this->target ) ) . '</p>' );
+					$wgOut->addHtml( '<p>' . wfMsgHtml( 'countedits-nosuchuser', htmlspecialchars( $this->target ) ) . '</p>' );
 				}
 			}
 		}
