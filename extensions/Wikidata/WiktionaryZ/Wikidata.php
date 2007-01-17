@@ -19,10 +19,10 @@ class DefaultWikidataApplication implements WikidataApplication {
 	protected $shouldShowAuthorities;
 	
 	// The following member variables control some application specific preferences
-	protected $availableAuthorities = array();  // A map containing (userId => displayName) combination for authoritative contribution view 
-	protected $filterLanguageId = 0;            // Filter pages on this languageId, set to 0 to show all languages
-	protected $showLanguageSelector = true;     // Show language selector at the top of each wiki data page
-	protected $showClassicPageTitles = true;    // Show classic page titles instead of prettier page titles
+	protected $availableAuthorities = array();	// A map containing (userId => displayName) combination for authoritative contribution view
+	protected $filterLanguageId = 0;			// Filter pages on this languageId, set to 0 to show all languages
+	protected $showLanguageSelector = true;		// Show language selector at the top of each wiki data page
+	protected $showClassicPageTitles = true;	// Show classic page titles instead of prettier page titles
 
 	public function __construct() {
 		global 
@@ -76,13 +76,13 @@ class DefaultWikidataApplication implements WikidataApplication {
 				"Show contribution by the community" => getCheckBox('authority-community', $showCommunityContribution)
 			);
 			
-			foreach($this->availableAuthorities as $authority) {
-				$showAuthority = isset($_GET['authority-' . $authority]); 
+			foreach($this->availableAuthorities as $authorityId => $authorityName) {
+				$showAuthority = isset($_GET['authority-' . $authorityId]); 
 				
 				if ($showAuthority)
-					$authoritiesToShow[] = $authority;
+					$authoritiesToShow[] = $authorityId;
 
-				$authorityOptions["Show contribution by " . getUserName($authority)] = getCheckBox('authority-' . $authority, $showAuthority);
+				$authorityOptions["Show contribution by " . $authorityName] = getCheckBox('authority-' . $authorityId, $showAuthority);
 			}
 	
 			$wgOut->addHTML(getOptionPanel($authorityOptions));

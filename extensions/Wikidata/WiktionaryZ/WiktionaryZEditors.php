@@ -71,7 +71,7 @@ function addTableAuthorityEditor($editor, $showAuthority) {
 		$authorityAttribute;
 	
 	if ($showAuthority)
-		$editor->addEditor(createUserViewer($authorityAttribute));
+		$editor->addEditor(createShortTextViewer($authorityAttribute));
 } 
 
 function addTableMetadataEditors($editor, $showRecordLifeSpan, $showAuthority) {

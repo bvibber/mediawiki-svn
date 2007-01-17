@@ -412,15 +412,6 @@ function getExpressionIdThatHasSynonyms($spelling, $languageId) {
 		return 0;
 }
  
-function getExpressionRecord($spelling, $filterLanguageId, $queryTransactionInformation) {
-	$expressionId = getExpressionIdThatHasSynonyms($spelling, $filterLanguageId);
-	
-	if ($expressionId != 0) 
-		return getExpressionMeaningsRecord($expressionId, $filterLanguageId, $queryTransactionInformation);
-	else 
-		return null;
-}
-
 function getDefinedMeaningRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation) {
 	global
 		$definedMeaningAttribute, $definitionAttribute, $classAttributesAttribute, 

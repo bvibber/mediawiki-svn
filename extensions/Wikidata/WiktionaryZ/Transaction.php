@@ -171,7 +171,8 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 		$showAnyAuthorities = count($this->authoritiesToShow) > 0;
 
 		if ($this->showCommunityContribution || $showAnyAuthorities) {
-			$availableAuthoritiesSet = "(" . implode(", ", $this->availableAuthorities) . ")";
+			$availableAuthorityIds = array_keys($this->availableAuthorities);
+			$availableAuthoritiesSet = "(" . implode(", ", $availableAuthorityIds) . ")";
 			
 			$result =  
 				$table->name . ".add_transaction_id=transactions.transaction_id" .
@@ -186,7 +187,7 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 							" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
 							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
 							" AND latest_transactions.transaction_id=latest_" . $table->name . ".add_transaction_id" .
-							" AND latest_transactions.user_id NOT IN (" . implode(", ", $this->availableAuthorities) . ")" .
+							" AND latest_transactions.user_id NOT IN (" . implode(", ", $availableAuthorityIds) . ")" .
 							")" .
 						" AND NOT EXISTS (" .
 							" SELECT * " .
@@ -250,8 +251,8 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 			
 		$userID = $row['user_id'];
 		
-		if (in_array($userID, $this->availableAuthorities))
-			$userName = getUserName($userID);
+		if (array_key_exists($userID, $this->availableAuthorities))
+			$userName = $this->availableAuthorities[$userID]; //getUserName($userID);
 		else
 			$userName = "Community";	
 			
