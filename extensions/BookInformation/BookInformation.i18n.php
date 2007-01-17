@@ -9,7 +9,7 @@
  */
  
 function efBookInformationMessages() {
-	return array(
+	$messages = array(
 
 /* English (Rob Church) */
 'en' => array(
@@ -26,6 +26,7 @@ function efBookInformationMessages() {
 ),
 	
 	);
+	return $messages;
 }
 
 ?>
