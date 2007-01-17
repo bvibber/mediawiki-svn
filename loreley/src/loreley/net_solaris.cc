@@ -33,28 +33,16 @@ using std::multimap;
 #include "log.h"
 #include "http.h"
 
-enum evtype_t {
-	evtype_timer,
-	evtype_event
-};
-
 struct event_impl {
+	event_impl();
+	~event_impl();
+
 	void schedule(int64_t);
 
-	int64_t			 ev_when;
-	event_queue		*ev_queue;
-	function<void (void)>	 ev_func;
-};
-
-struct ev_pending {
-	ev_pending(::event *ev, int64_t to, evtype_t type)
-		: ep_event(ev)
-		, ep_timeout(to)
-		, ep_type(type) {}
-
-	::event	*ep_event;
-	int64_t	 ep_timeout;
-	evtype_t ep_type;
+	itimerspec		 ei_when;
+	timer_t			 ei_tmr;
+	event_queue		*ei_queue;
+	function<void (void)>	 ei_func;
 };
 
 struct event_queue {
@@ -72,10 +60,6 @@ pthread_t io_thread;
 void *
 io_start(void *)
 {
-#if 0
-	signal_set(&ev_sigusr2, SIGUSR2, usr2_handler, NULL);
-	signal_add(&ev_sigusr2, NULL);
-#endif
 	pthread_mutex_lock(&iot_ready_m);
 	pthread_cond_signal(&iot_ready);
 	pthread_mutex_unlock(&iot_ready_m);
@@ -121,33 +105,6 @@ size_t	 i;
 }
 
 namespace net {
-
-event::event(void)
-{
-	impl = new event_impl;
-}
-
-event::~event(void)
-{
-	delete impl;
-};
-
-void
-event::schedule(function<void (void)> f, int64_t t)
-{
-	impl->ev_func = f;
-	impl->schedule(t);
-}
-
-#if 0
-void
-timer_callback(int, short, void *d)
-{
-event_impl	*ev = (event_impl *)d;
-	HOLDING(ev_lock);
-	ev->ev_queue->add(NULL, ev, 0);
-}
-#endif
 
 void
 socket::_register(int what, int64_t to, socket::call_type handler)
@@ -209,16 +166,6 @@ socket::clearbacks(void)
 void
 make_event_base(void)
 {
-//static lockable meb_lock;
-//	if (evb == NULL) {
-//		HOLDING(meb_lock);
-//		evb = (event_base *)event_init();
-//		event_base_priority_init(evb, prio_max);
-//		signal_set(&ev_sigint, SIGINT, sig_exit, NULL);
-//		signal_add(&ev_sigint, NULL);
-//		signal_set(&ev_sigterm, SIGTERM, sig_exit, NULL);
-//		signal_add(&ev_sigterm, NULL);
-//	}
 	ev_queue = new event_queue * (new event_queue(port_create()));
 }
 
@@ -244,6 +191,7 @@ void
 ioloop_t::thread_run(void)
 {
 event_queue	*eq = *ev_queue;
+event_impl	*ei;
 port_event_t	 ev;
 net::socket	*sk;
 
@@ -261,36 +209,66 @@ net::socket	*sk;
 			if (ev.portev_events & POLLWRNORM)
 				sk->_write_handler(sk, false);
 			break;
-
-#if 0
-				if ((*it)->ee_flags & EV_TIMEOUT) {
-					if ((*it)->ee_sock->_ev_flags & EV_READ) {
-						(*it)->ee_sock->_read_handler((*it)->ee_sock, true);
-					} else if ((*it)->ee_sock->_ev_flags & EV_WRITE) {
-						(*it)->ee_sock->_write_handler((*it)->ee_sock, true);
-					}
-				}
-#endif
-#if 0
-				WDEBUG("event thread");
-				(*it)->ee_event->ev_func();
-#endif
+		case PORT_SOURCE_TIMER:
+			WDEBUG("timer fires");
+			ei = static_cast<event_impl *>(ev.portev_user);
+			ei->ei_func();
+			break;
 		}
 	}
 }
 
+event_impl::event_impl(void)
+{
+sigevent	se;
+port_notify_t	pn;
+	ei_queue = *(event_queue **)ev_queue;
+	memset(&pn, 0, sizeof(pn));
+	memset(&se, 0, sizeof(se));
+	pn.portnfy_port = ei_queue->portfd;
+	pn.portnfy_user = this;
+	se.sigev_notify = SIGEV_PORT;
+	se.sigev_value.sival_ptr = &pn;
+	
+	timer_create(CLOCK_REALTIME, &se, &ei_tmr);
+}
+
+event_impl::~event_impl(void)
+{
+	timer_delete(ei_tmr);
+}
 
 void
 event_impl::schedule(int64_t when)
 {
-#if 0
-	HOLDING(ev_lock);
 	WDEBUG(format("schedule, when=%d") % when);
-	this->ev_when = when;
-	this->ev_queue = (event_queue *)::ev_queue;
-	evtimer_set(&ev_event, timer_callback, this);
-	ev_pending_list.insert(make_pair(0, ev_pending(&ev_event, ev_when, evtype_timer)));
-#endif
+	memset(&ei_when, 0, sizeof(ei_when));
+	ei_when.it_value.tv_sec = (when / 1000);
+	ei_when.it_value.tv_nsec = (when % 1000) * 1000000;
+	timer_settime(ei_tmr, 0, &ei_when, NULL);
 }
+
+namespace net {
+
+event::event(void)
+	: impl(0)
+{
+}
+
+event::~event(void)
+{
+	delete impl;
+}
+
+void
+event::schedule(function<void (void)> f, int64_t t)
+{
+	if (!impl)
+		impl = new event_impl;
+	impl->ei_func = f;
+	impl->schedule(t);
+}
+
+} // namespace net
 
 #endif

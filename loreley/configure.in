@@ -196,6 +196,7 @@ echo ""
 echo "looking for required C functions..."
 AC_SEARCH_LIBS(socket, socket)
 AC_SEARCH_LIBS(inet_addr, nsl)
+AC_SEARCH_LIBS(timer_create, rt)
 AC_SEARCH_LIBS(log10, m)
 AC_SEARCH_LIBS(sendfile, sendfile)
 AC_SEARCH_LIBS(zlibVersion, z,,AC_MSG_ERROR([zlib not found]))
