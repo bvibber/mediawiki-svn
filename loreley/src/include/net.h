@@ -274,6 +274,8 @@ struct socket : noncopyable, freelist_allocator<socket> {
 	int		 setopt		(int, int, void *, socklen_t);
 	void		 cork		(void);
 	void		 uncork		(void);
+	void		 nodelay	(bool);
+	bool		 nodelay	(void) const;
 	int		 error		(void) const;
 	char const	*description	(void) const;
 

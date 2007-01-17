@@ -119,6 +119,9 @@ struct	backend_cb_data	*cbd;
 			s = cbd->bc_backend->be_addr.makesocket(
 				"backend connection", prio_backend);
 			s->nonblocking(true);
+#ifndef TCP_CORK
+			s->nodelay(true);
+#endif
 		} catch (socket_error &e) {
 		static rate_limited_logger enfile_msg(5, ll_warn,
 				"opening backend socket: %s");

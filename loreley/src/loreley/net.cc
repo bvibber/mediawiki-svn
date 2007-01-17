@@ -327,9 +327,10 @@ socket::connect(void)
 socket *
 socket::accept(char const *desc, sprio p)
 {
-int			ns;
-sockaddr_storage	addr;
-socklen_t		addrlen = sizeof(addr);
+int			 ns;
+sockaddr_storage	 addr;
+socklen_t		 addrlen = sizeof(addr);
+net::socket		*s;
 	if ((ns = ::accept(_s, (sockaddr *)&addr, &addrlen)) == -1)
 		return NULL;
 
@@ -338,12 +339,29 @@ socklen_t		addrlen = sizeof(addr);
 	 * socket to prevent delays in HTTP keepalive (at the expense of
 	 * sending more packets).
 	 */
-#if !defined(TCP_CORK) && defined(TCP_NODELAY)
-int	one = 1;
-	setsockopt(ns, IPPROTO_TCP, TCP_NODELAY, &one, sizeof(one));
-#endif
+	s = new socket(ns, net::address((sockaddr *)&addr, addrlen), desc, p);
+	s->nodelay(true);
+	return s;
+}
 
-	return new socket(ns, net::address((sockaddr *)&addr, addrlen), desc, p);
+void
+socket::nodelay(bool v)
+{
+int	val = v;
+	setopt(IPPROTO_TCP, TCP_NODELAY, &val, sizeof(val));
+}
+
+bool
+socket::nodelay(void) const
+{
+int	 	val;
+socklen_t	len = sizeof(val);
+	try {
+		getopt(IPPROTO_TCP, TCP_NODELAY, &val, &len);
+	} catch (socket_error &) {
+		return false;
+	}
+	return val;
 }
 
 int
