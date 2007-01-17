@@ -324,7 +324,7 @@ class ScanSet {
 				$query = '';
 			}
 			return "<a href=\"" . 
-				$this->parser->mTitle->escapeLocalUrl( $query ) .
+				$this->parser->getTitle()->escapeLocalUrl( $query ) .
 				"\">$description</a>";
 		}
 	}
@@ -348,7 +348,7 @@ class ScanSet {
 				$query = 'vol=' . urlencode( $vol );
 			}
 			return "<li><a href=\"" . 
-				$this->parser->mTitle->escapeLocalUrl( $query ) .
+				$this->parser->getTitle()->escapeLocalUrl( $query ) .
 				"\">$description</a></li>\n";
 		}
 	}

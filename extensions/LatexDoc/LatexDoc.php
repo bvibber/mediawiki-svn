@@ -118,10 +118,10 @@ class LatexDoc {
 	function onParserBeforeStrip( &$parser, &$text, &$stripState ) {
 		// If the article looks vaguely like TeX, render it as a pre, with a button for DVI generation
 		if ( strpos( $text, '\begin{document}' ) !== false ) {
-			$sk =& $parser->mOptions->getSkin();
-			$dviLink = $sk->makeKnownLinkObj( $parser->mTitle, wfMsg( 'latexdoc_get_dvi' ), 
+			$sk =& $parser->getOptions()->getSkin();
+			$dviLink = $sk->makeKnownLinkObj( $parser->getTitle(), wfMsg( 'latexdoc_get_dvi' ), 
 			  'action=latexdoc&ext=dvi' );
-			$pdfLink = $sk->makeKnownLinkObj( $parser->mTitle, wfMsg( 'latexdoc_get_pdf' ), 
+			$pdfLink = $sk->makeKnownLinkObj( $parser->getTitle(), wfMsg( 'latexdoc_get_pdf' ), 
 			  'action=latexdoc&ext=pdf' );
 			$htmlLatex = nl2br( htmlspecialchars( $text ) );
 			

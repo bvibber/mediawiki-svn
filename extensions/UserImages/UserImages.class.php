@@ -79,7 +79,7 @@ class UserImagesGallery {
 					$gallery = new ImageGallery();
 					$gallery->setParsing( true );
 					$gallery->setCaption( $this->getCaption() );
-					$gallery->useSkin( $this->parser->mOptions->getSkin() );
+					$gallery->useSkin( $this->parser->getOptions()->getSkin() );
 					foreach( $images as $image ) {
 						$object = new Image( Title::makeTitleSafe( NS_IMAGE, $image->img_name ) );
 						$object->loadFromFile();

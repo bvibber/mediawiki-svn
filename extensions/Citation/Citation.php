@@ -85,7 +85,7 @@ function parse_citation ( $text , $params , $parser ) {
 	// Adding to footer list or showing inline
 	$localParser = new Parser ;
 	$wgCitationRunning = true ;
-	$ret = $localParser->parse ( $ret , $parser->mTitle , $parser->mOptions, false ) ;
+	$ret = $localParser->parse ( $ret , $parser->getTitle(), $parser->getOptions(), false ) ;
 	$wgCitationRunning = false ;
 	$ret = $ret->getText();
 

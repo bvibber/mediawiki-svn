@@ -81,7 +81,7 @@ function parse_footnote( $text, $params, &$parser ) {
 	}
 
 	$footnoteRecursionGuard = true;
-	$ret = $footnoteParserObj->parse( $text , $parser->mTitle , $parser->mOptions, false ) ;
+	$ret = $footnoteParserObj->parse( $text , $parser->getTitle() , $parser->getOptions(), false ) ;
 	$ret = $ret->getText();
 	$footnoteRecursionGuard = false;
 

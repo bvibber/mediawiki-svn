@@ -35,7 +35,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		
 		function SubpageList( &$parser ) {
 			$this->parser =& $parser;
-			$this->title =& $parser->mTitle;
+			$this->title =& $parser->getTitle();
 		}
 		
 		function options( $options ) {
@@ -105,7 +105,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		
 		function parse( $text ) {
 			wfProfileIn( 'SubpageList::parse' );
-			$options =& $this->parser->mOptions;
+			$options =& $this->parser->getOptions();
 			$output = $this->parser->parse( $text, $this->title, $options, true, false );
 			wfProfileOut( 'SubpageList::parse' );
 			return $output->getText();

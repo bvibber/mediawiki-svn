@@ -49,8 +49,8 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 		$in );
 	$ret = $parser->parse(
 		$text,
-		$parser->mTitle,
-		$parser->mOptions,
+		$parser->getTitle(),
+		$parser->getOptions(),
 		// We begin at line start
 		true,
 		// Important, otherwise $this->clearState()

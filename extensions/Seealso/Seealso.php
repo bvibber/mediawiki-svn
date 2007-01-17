@@ -31,7 +31,7 @@ function parse_seealso ( $text, $params, &$parser ) {
 		$ret .= "* [[" . $x . "]]\n" ;
 	}
 	$p = new Parser ;
-	$ret = $p->parse ( $ret , $parser->mTitle , $parser->mOptions, false ) ;
+	$ret = $p->parse ( $ret , $parser->getTitle() , $parser->getOptions(), false ) ;
 	$ret = $ret->getText();
 	return $ret ;
 }

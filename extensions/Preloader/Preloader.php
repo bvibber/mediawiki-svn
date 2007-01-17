@@ -44,7 +44,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		
 		/** Hook function for the parser */
 		function parserHook( $input, $args, &$parser ) {
-			$output = $parser->parse( $input, $parser->mTitle, $parser->mOptions, false, false );
+			$output = $parser->parse( $input, $parser->getTitle(), $parser->getOptions(), false, false );
 			return $output->getText();
 		}
 		

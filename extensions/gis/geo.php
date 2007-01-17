@@ -143,7 +143,7 @@ function parseGeo ( $text, $params, &$parser ) {
 	$wgOut->addMeta( "geo.position", $geo->latdeg.";".$geo->londeg );
 
 	if ( !isset( $geo->title ) || $geo->title == "") {
-		$geo->title = $parser->mTitle->getDBkey();
+		$geo->title = $parser->getTitle()->getDBkey();
 	}
 	$geo->title = str_replace(' ', '_', $geo->title );
 	if ($geo->title != "" && $geo->title != " ") {

@@ -26,7 +26,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function efFormatDate( $text, $args, &$parser ) {
 		global $wgUseDynamicDates, $wgContLang;
 		if( $wgUseDynamicDates ) {
-			$dp = new DateParser( $wgContLang, DateParser::convertPref( $parser->mOptions->getDateFormat() ) );
+			$dp = new DateParser( $wgContLang, DateParser::convertPref( $parser->getOptions()->getDateFormat() ) );
 			return $dp->reformat( $text );
 		} else {
 			return $text;

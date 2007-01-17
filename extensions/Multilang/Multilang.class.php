@@ -46,9 +46,9 @@ class Multilang {
 	public function outputBlock( $text, $args, &$parser ) {
 		# This is a bit of a hack; the fact that the cache hash stores
 		# the language code implies that this should be better exposed
-		$lang = $parser->mOptions->mUser->getOption( 'language' );
+		$lang = $parser->getOptions()->mUser->getOption( 'language' );
 		$text = $this->getText( $lang );
-		$output = $parser->parse( $text, $parser->mTitle, $parser->mOptions, true, false );
+		$output = $parser->parse( $text, $parser->getTitle(), $parser->getOptions(), true, false );
 		return $output->getText();
 	}
 	

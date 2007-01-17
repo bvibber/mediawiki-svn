@@ -65,7 +65,7 @@ function renderInputbox($input, $params, &$parser)
 	
 	$boxhtml=$inputbox->render();
 	# Maybe support other useful magic words here
-	$boxhtml=str_replace("{{PAGENAME}}",$parser->mTitle->getText(),$boxhtml);
+	$boxhtml=str_replace("{{PAGENAME}}",$parser->getTitle()->getText(),$boxhtml);
 	if($boxhtml) {
 		return $boxhtml;
 	} else {
@@ -185,7 +185,7 @@ ENDFORM2;
 		}
 
 		$output = $this->parser->parse( $this->labeltext,
-			$this->parser->mTitle, $this->parser->mOptions, false, false );
+			$this->parser->getTitle(), $this->parser->getOptions(), false, false );
 		$this->labeltext = $output->getText();
 		$this->labeltext = str_replace('<p>', '', $this->labeltext);
 		$this->labeltext = str_replace('</p>', '', $this->labeltext);

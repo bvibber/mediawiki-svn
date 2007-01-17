@@ -95,8 +95,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 		/** Pass text through the parser */
 		function parse( $text ) {
 			wfProfileIn( 'Sorter::parse' );
-			$title =& $this->parser->mTitle;
-			$options =& $this->parser->mOptions;
+			$title =& $this->parser->getTitle();
+			$options =& $this->parser->getOptions();
 			$output = $this->parser->parse( $text, $title, $options, true, false );
 			wfProfileOut( 'Sorter::parse' );
 			return $output->getText();

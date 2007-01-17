@@ -105,7 +105,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$title = $this->pickImage();
 			if( $title ) {
 				$wiki = $this->imageMarkup( $title, $caption );
-				$output = $this->parser->parse( $wiki, $this->parser->mTitle, $this->parser->mOptions, false, false );
+				$output = $this->parser->parse( $wiki, $this->parser->getTitle(), $this->parser->getOptions(), false, false );
 				return $output->getText();
 			} else {
 				return '';

@@ -268,8 +268,8 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	$logger = new DPL2Logger();
 	
 	//check that we are not in an infinite transclusion loop
-	if ( isset( $parser->mTemplatePath[$parser->mTitle->getPrefixedText()] ) ) {
-		return $logger->escapeMsg(DPL2_WARN_TRANSCLUSIONLOOP, $parser->mTitle->getPrefixedText());
+	if ( isset( $parser->mTemplatePath[$parser->getTitle()->getPrefixedText()] ) ) {
+		return $logger->escapeMsg(DPL2_WARN_TRANSCLUSIONLOOP, $parser->getTitle()->getPrefixedText());
 	}
 	
 	// INVALIDATE CACHE
@@ -280,8 +280,8 @@ function DynamicPageList2( $input, $params, &$parser ) {
 	 */
 	 // Local parser created. See http://meta.wikimedia.org/wiki/MediaWiki_extensions_FAQ#How_do_I_render_wikitext_in_my_extension.3F
 	$localParser = new Parser();
-	$pOptions = $parser->mOptions;
-	$pTitle = $parser->mTitle;
+	$pOptions = $parser->getOptions();
+	$pTitle = $parser->getTitle();
 	
 	// Extension variables
 	// Allowed namespaces for DPL2: all namespaces except the first 2: Media (-2) and Special (-1), because we cannot use the DB for these to generate dynamic page lists.
@@ -1137,8 +1137,8 @@ class DPL2 {
 		if($includepage)
 			$this->mIncSecLabels = $includeseclabels;
 		$this->mParser = $parser;
-		$this->mParserOptions = $parser->mOptions;
-		$this->mParserTitle = $parser->mTitle;
+		$this->mParserOptions = $parser->getOptions();
+		$this->mParserTitle = $parser->getTitle();
 		$this->mLogger = $logger;
 		
 		if(!empty($headings)) {
