@@ -14,11 +14,11 @@ function wfSetupMiniDonation() {
 }
 
 function wfMiniDonationHook( $text, $params, $parser ) {
-	$default = "10";
+	$default = "25";
 	$fontSize = "90%";
 	$encDefault = htmlspecialchars( $default );
 	$encDonate = htmlspecialchars( wfMsg( 'donationform-submit' ) );
-	return <<<END
+	return <<<EOT
 <span class="wikimedia-mini-donation"><form style="display: inline" action="https://www.paypal.com/cgi-bin/webscr" method="post" onsubmit="if(document.getElementById('don-amount-pp').value.indexOf('.') &gt;= 0 &amp;&amp; document.getElementById('don-amount-pp').value.indexOf('.00') &lt; 0) {alert('Sorry, but we can only accept donations in whole amounts.'); return false;}">
 <!-- hidden data -->
 <input type="hidden" name="business" value="donation@wikipedia.org" />
@@ -62,7 +62,7 @@ function wfMiniDonationHook( $text, $params, $parser ) {
 <input type="hidden" name="os0" value="Don't mention my name" />
 <input type="submit" value="$encDonate" style="font-size: $fontSize" />
 </form></span>
-END;
+EOT;
 }
 
 ?>
