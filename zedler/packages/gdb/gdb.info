@@ -7,3 +7,4 @@ url ftp://ftp.gnu.org/gnu/gdb/gdb-6.6.tar.gz
 cc gcc
 cxx g++
 configure --disable-tui
+cflags -m64
