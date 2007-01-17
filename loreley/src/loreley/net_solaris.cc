@@ -134,8 +134,11 @@ socket::~socket(void)
 void
 socket::clearbacks(void)
 {
-	if (_queue)
+	if (_queue && (_read_handler || _write_handler)) {
+		_read_handler = 0;
+		_write_handler = 0;
 		port_dissociate(_queue->portfd, PORT_SOURCE_FD, _s);
+	}
 }
 
 } // namespace net
@@ -159,6 +162,7 @@ event_queue	*eq = *ev_queue;
 event_impl	*ei;
 port_event_t	 ev;
 net::socket	*sk;
+function<void (net::socket *, bool)> tmph;
 
 	while (port_get(eq->portfd, &ev, NULL) == 0) {
 		WDEBUG(format("[%d] thread_run: waiting for event, eq=%p")
@@ -169,10 +173,17 @@ net::socket	*sk;
 			sk = static_cast<net::socket *>(ev.portev_user);
 			WDEBUG(format("[%d] thread_run: got event on %s")
 				% pthread_self() % sk->_desc);
-			if (ev.portev_events & POLLRDNORM)
-				sk->_read_handler(sk, false);
-			if (ev.portev_events & POLLWRNORM)
-				sk->_write_handler(sk, false);
+			if (ev.portev_events & POLLRDNORM) {
+				tmph = sk->_read_handler;
+				sk->_read_handler = 0;
+				tmph(sk, false);
+			}
+
+			if (ev.portev_events & POLLWRNORM) {
+				tmph = sk->_write_handler;
+				sk->_write_handler = 0;
+				tmph(sk, false);
+			}
 			break;
 		case PORT_SOURCE_TIMER:
 			WDEBUG("timer fires");
