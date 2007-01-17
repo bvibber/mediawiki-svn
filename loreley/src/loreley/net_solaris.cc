@@ -52,34 +52,10 @@ struct event_queue {
 
 tss<event_queue *> ev_queue;
 
-pthread_cond_t iot_ready;
-pthread_mutex_t iot_ready_m;
-
-pthread_t io_thread;
-
-void *
-io_start(void *)
-{
-	pthread_mutex_lock(&iot_ready_m);
-	pthread_cond_signal(&iot_ready);
-	pthread_mutex_unlock(&iot_ready_m);
-
-	ioloop->run();
-	return NULL;
-}
-
 void
 ioloop_t::prepare(void)
 {
 size_t	 i;
-
-	pthread_mutex_init(&iot_ready_m, NULL);
-	pthread_cond_init(&iot_ready, NULL);
-
-	pthread_mutex_lock(&iot_ready_m);
-	pthread_create(&io_thread, NULL, io_start, NULL);
-	pthread_cond_wait(&iot_ready, &iot_ready_m);
-	pthread_mutex_unlock(&iot_ready_m);
 
 	wlog.notice(format("maximum number of open files: %d")
 		% getdtablesize());
@@ -173,18 +149,6 @@ void
 sig_exit(int sig, short what, void *d)
 {
 	wnet_exit = true;
-}
-
-void
-ioloop_t::run(void)
-{
-	for (;;)
-		sleep(INT_MAX);
-#if 0
-size_t	 i;
-	for (i = 0; i < listeners.size(); ++i)
-		delete listeners[i];
-#endif
 }
 
 void
