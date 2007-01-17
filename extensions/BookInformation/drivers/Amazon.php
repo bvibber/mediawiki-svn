@@ -24,9 +24,6 @@ class BookInformationAmazon implements BookInformationDriver {
 		if( isset( $wgBookInformationService['accesskeyid'] ) ) {
 			$this->isbn = $isbn;
 			$aki = $wgBookInformationService['accesskeyid'];
-			$loc = isset( $wgBookInformationServices['locale'] )
-					? $wgBookInformationServices['locale']
-					: 'us';
 			$uri = self::buildRequestURI( $aki, $isbn );
 			if( ( $xml = Http::get( $uri ) ) !== false ) {
 				return $this->parseResponse( $xml );
@@ -70,10 +67,10 @@ class BookInformationAmazon implements BookInformationDriver {
 				$items =& $xml->Items[0];
 				if( $items->Request[0]->IsValid == 'True' && isset( $items->Item[0] ) ) {
 					$item =& $items->Item[0]->ItemAttributes[0];
-					$this->title = $item->Title;
-					$this->author = $item->Author;
-					$this->publisher = $item->Manufacturer;
-					$this->purchase = $items->Item[0]->DetailPageURL;
+					$this->title = (string)$item->Title;
+					$this->author = (string)$item->Author;
+					$this->publisher = (string)$item->Manufacturer;
+					$this->purchase = (string)$items->Item[0]->DetailPageURL;
 					return true;
 				} else {
 					return false;
