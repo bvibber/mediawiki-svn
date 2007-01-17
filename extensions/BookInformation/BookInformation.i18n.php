@@ -24,6 +24,20 @@ function efBookInformationMessages() {
 'bookinfo-purchase' => 'Purchase this book from $1',
 'bookinfo-provider' => 'Data provider: $1',
 ),
+
+/* Finnish (Niklas Laxström) */
+'fi' => array(
+'bookinfo-header' => 'Kirjan tiedot',
+'bookinfo-result-title' => 'Nimi:',
+'bookinfo-result-author' => 'Tekijä:',
+'bookinfo-result-publisher' => 'Kustantaja:',
+'bookinfo-result-year' => 'Vuosi:',
+'bookinfo-error-invalidisbn' => 'Kelpaamaton ISBN.',
+'bookinfo-error-nodriver' => 'Kirjatietoajurin alustus ei onnistunut.',
+'bookinfo-error-noresponse' => 'Ei vastausta tai pyyntö aikakatkaistiin.',
+'bookinfo-purchase' => 'Osta tämä kirja: $1',
+'bookinfo-provider' => 'Tietolähde: $1',
+),
 	
 	);
 	return $messages;
