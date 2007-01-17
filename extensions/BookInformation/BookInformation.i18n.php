@@ -25,6 +25,20 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Data provider: $1',
 ),
 
+/* Dutch (Dirk Beetstra) */ 
+'nl' => array( 
+'bookinfo-header' => 'Boek informatie', 
+'bookinfo-result-title' => 'Titel:', 
+'bookinfo-result-author' => 'Auteur:', 
+'bookinfo-result-publisher' => 'Uitgever:', 
+'bookinfo-result-year' => 'Jaar:', 
+'bookinfo-error-invalidisbn' => 'Incorrect ISBN ingegeven.', 
+'bookinfo-error-nodriver' => 'Kon de juiste Boek Informatie Driver niet initialiseren.', 
+'bookinfo-error-noresponse' => 'Geen respons of een time-out.', 
+'bookinfo-purchase' => 'Koop dit boek bij $1', 
+'bookinfo-provider' => 'Data geleverd door: $1', 
+), 
+
 /* Finnish (Niklas Laxström) */
 'fi' => array(
 'bookinfo-header' => 'Kirjan tiedot',
