@@ -1,0 +1,11 @@
+Source: udplog
+Section: unknown
+Priority: optional
+Maintainer: Tim Starling <tstarling@wikimedia.org>
+Build-Depends: debhelper (>= 5), g++, libboost-dev, libboost-program-options-dev
+Standards-Version: 3.7.2
+
+Package: udplog
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Utilities for UDP logging
