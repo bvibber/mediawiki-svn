@@ -67,7 +67,8 @@ class CrossNamespaceLinksPage extends QueryPage {
 	function isSyndicated() { return false; }
 
 	function getPageHeader() {
-		return '<p>' . wfMsg('crossnamespacelinks-summary') . '</p>';
+		global $wgOut;
+		return $wgOut->parse( wfMsg( 'crossnamespacelinks-summary' ) );
 	}
 
 	/**
