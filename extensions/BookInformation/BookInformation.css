@@ -11,7 +11,7 @@ div.bookinfo-result, div.bookinfo-error {
 	margin: 2px;
 	float: right;
 	padding: 4px;
-	width: 25%;
+	width: 40%;
 }
 
 div.bookinfo-result h2, div.bookinfo-error h2 {
