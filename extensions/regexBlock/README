@@ -44,3 +44,6 @@
 			KEY `stats_timestamp` (`stats_timestamp`)
 			) ;
 
+
+# More details can be found in the included RegexBlock.xml (mediawiki XML
+# dump format) or RegexBlock.html files
