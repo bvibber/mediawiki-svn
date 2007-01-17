@@ -11,7 +11,7 @@
 PROGRAM		= lreadlog
 BINDIR		= $(_BINDIR)
 THISDIR		= @srcdir@
-CPPFLAGS	= -I@top_srcdir@/src/include
+CPPFLAGS	= -I@top_srcdir@/src/include -I@top_builddir@/src/include
 BASESRCS =	 		\
 	packet_decoder.cc	\
 	topurl_printer.cc	\

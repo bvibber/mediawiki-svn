@@ -13,7 +13,7 @@
 THISDIR=@srcdir@
 
 LIB=loreley
-CPPFLAGS = -I@top_srcdir@/src/include
+CPPFLAGS = -I@top_srcdir@/src/include -I@top_builddir@/src/include
 SRCS=			\
 	acl.cc		\
 	htcp.cc		\

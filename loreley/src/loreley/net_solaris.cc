@@ -134,7 +134,8 @@ socket::~socket(void)
 void
 socket::clearbacks(void)
 {
-	port_dissociate(_queue->portfd, PORT_SOURCE_FD, _s);
+	if (_queue)
+		port_dissociate(_queue->portfd, PORT_SOURCE_FD, _s);
 }
 
 } // namespace net
