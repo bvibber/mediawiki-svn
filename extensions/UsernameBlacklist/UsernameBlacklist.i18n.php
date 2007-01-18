@@ -18,6 +18,12 @@ function efUsernameBlacklistMessages( $single = false ) {
 list of blacklisted usernames]]. Please choose another name.',
 ),
 
+/* German (Raymond) */
+'de' => array(
+'blacklistedusername' => 'Benutzername auf der Sperrliste',
+'blacklistedusernametext' => 'Der gewählte Benutzername steht auf der [[MediaWiki:Usernameblacklist|Liste der gesperrten Benutzernamen]]. Bitte einen anderen wählen.',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'blacklistedusername' => 'Daftar hitam nama pengguna',
