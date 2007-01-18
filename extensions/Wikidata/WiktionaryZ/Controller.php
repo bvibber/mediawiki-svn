@@ -293,6 +293,37 @@ class DefinedMeaningRelationController implements UpdateController {
 	}
 }
 
+class GroupedRelationTypeController implements UpdateController {
+	protected $relationTypeId;
+	protected $groupedRelationIdAttribute;
+	protected $otherDefinedMeaningAttribute;
+	
+	public function __construct($relationTypeId, $groupedRelationIdAttribute, $otherDefinedMeaningAttribute) {
+		$this->relationTypeId = $relationTypeId;
+		$this->groupedRelationIdAttribute = $groupedRelationIdAttribute;
+		$this->otherDefinedMeaningAttribute = $otherDefinedMeaningAttribute;
+	}
+	
+	public function add($keyPath, $record) {
+		global
+			$definedMeaningIdAttribute;
+
+		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
+		$otherDefinedMeaningId = $record->getAttributeValue($this->otherDefinedMeaningAttribute);
+
+		if ($otherDefinedMeaningId != 0)
+			addRelation($definedMeaningId, $this->relationTypeId, $otherDefinedMeaningId);
+	}
+
+	public function remove($keyPath) {
+		$relationId = $keyPath->peek(0)->getAttributeValue($this->groupedRelationIdAttribute);
+		removeRelationWithId($relationId);
+	}
+
+	public function update($keyPath, $record) {
+	}
+}
+
 class DefinedMeaningClassMembershipController implements UpdateController {
 	public function add($keyPath, $record) {
 		global

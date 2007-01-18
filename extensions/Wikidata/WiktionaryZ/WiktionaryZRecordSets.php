@@ -318,7 +318,7 @@ function expandTextReferencesInRecordSet($recordSet, $textAttributes) {
 	} 
 }
 
-function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, $filterLanguageId, $queryTransactionInformation) {
+function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
 	global
 		$expressionMeaningStructure, $definedMeaningIdAttribute;
 
@@ -336,24 +336,30 @@ function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, $filterLan
 
 	while($definedMeaning = $dbr->fetchObject($queryResult)) {
 		$definedMeaningId = $definedMeaning->defined_meaning_id;
-		$recordSet->addRecord(array($definedMeaningId, getDefinedMeaningDefinition($definedMeaningId), getDefinedMeaningRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation)));
+		$recordSet->addRecord(
+			array(
+				$definedMeaningId, 
+				getDefinedMeaningDefinition($definedMeaningId), 
+				getDefinedMeaningRecord($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation)
+			)
+		);
 	}
 
 	return $recordSet;
 }
 
-function getExpressionMeaningsRecord($expressionId, $filterLanguageId, $queryTransactionInformation) {
+function getExpressionMeaningsRecord($expressionId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
 	global
 		$expressionMeaningsStructure, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute;
 		
 	$record = new ArrayRecord($expressionMeaningsStructure);
-	$record->setAttributeValue($expressionExactMeaningsAttribute, getExpressionMeaningsRecordSet($expressionId, true, $filterLanguageId, $queryTransactionInformation));
-	$record->setAttributeValue($expressionApproximateMeaningsAttribute, getExpressionMeaningsRecordSet($expressionId, false, $filterLanguageId, $queryTransactionInformation));
+	$record->setAttributeValue($expressionExactMeaningsAttribute, getExpressionMeaningsRecordSet($expressionId, true, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation));
+	$record->setAttributeValue($expressionApproximateMeaningsAttribute, getExpressionMeaningsRecordSet($expressionId, false, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation));
 	
 	return $record;
 }
 
-function getExpressionsRecordSet($spelling, $filterLanguageId, $queryTransactionInformation) {
+function getExpressionsRecordSet($spelling, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
 	global
 		$expressionIdAttribute, $expressionAttribute, $languageAttribute, $expressionMeaningsAttribute;
 
@@ -384,7 +390,11 @@ function getExpressionsRecordSet($spelling, $filterLanguageId, $queryTransaction
 		$expressionRecord = new ArrayRecord($expressionStructure);
 		$expressionRecord->setAttributeValue($languageAttribute, $expression->language_id);
 
-		$result->addRecord(array($expression->expression_id, $expressionRecord, getExpressionMeaningsRecord($expression->expression_id, $filterLanguageId, $queryTransactionInformation)));
+		$result->addRecord(array(
+			$expression->expression_id, 
+			$expressionRecord, 
+			getExpressionMeaningsRecord($expression->expression_id, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation)
+		));
 	}
 
 	return $result;
@@ -412,19 +422,28 @@ function getExpressionIdThatHasSynonyms($spelling, $languageId) {
 		return 0;
 }
  
-function getDefinedMeaningRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation) {
+function getDefinedMeaningRecord($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
 	global
 		$definedMeaningAttribute, $definitionAttribute, $classAttributesAttribute, 
 		$alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
 		$relationsAttribute, $reciprocalRelationsAttribute,
-		$classMembershipAttribute, $collectionMembershipAttribute, $objectAttributesAttribute;
+		$classMembershipAttribute, $collectionMembershipAttribute, $objectAttributesAttribute,
+		$possiblySynonymousAttribute;
 
 	$record = new ArrayRecord($definedMeaningAttribute->type->getStructure());
 	$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
 	$record->setAttributeValue($classAttributesAttribute, getClassAttributesRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
 	$record->setAttributeValue($synonymsAndTranslationsAttribute, getSynonymAndTranslationRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
-	$record->setAttributeValue($relationsAttribute, getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
+	
+	$filterRelationTypes = array();
+
+	if ($possiblySynonymousRelationTypeId != 0) {
+		$record->setAttributeValue($possiblySynonymousAttribute, getPossiblySynonymousRecordSet($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation));
+		$filterRelationTypes[] = $possiblySynonymousRelationTypeId;
+	}
+	
+	$record->setAttributeValue($relationsAttribute, getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterLanguageId, $filterRelationTypes, $queryTransactionInformation));
 	$record->setAttributeValue($reciprocalRelationsAttribute, getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
 	$record->setAttributeValue($classMembershipAttribute, getDefinedMeaningClassMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($collectionMembershipAttribute, getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
@@ -652,12 +671,16 @@ function getDefinedMeaningReferenceRecord($definedMeaningId) {
 	return $record;
 }
 
-function getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation) {
+function getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterLanguageId, $filterRelationTypes, $queryTransactionInformation) {
 	global
 		$meaningRelationsTable, $relationIdAttribute, $relationTypeAttribute, 
 		$objectAttributesAttribute, $otherDefinedMeaningAttribute;
 
-//	$startTime = microtime(true);
+	$restrictions = array("meaning1_mid=$definedMeaningId");
+
+	if (count($filterRelationTypes) > 0) 
+		$restrictions[] = "relationtype_mid NOT IN (". implode(", ", $filterRelationTypes) .")";
+
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
 		$relationIdAttribute,
@@ -667,11 +690,9 @@ function getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterLanguageI
 			'meaning2_mid' => $otherDefinedMeaningAttribute
 		),
 		$meaningRelationsTable,
-		array("meaning1_mid=$definedMeaningId"),
+		$restrictions,
 		array('add_transaction_id')
 	);
-	
-//	echo "<!--" . (microtime(true) - $startTime). " -->";
 	
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($relationTypeAttribute, $otherDefinedMeaningAttribute));
 
@@ -707,6 +728,36 @@ function getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $filte
 	//and expand the records
 	$recordSet->getStructure()->attributes[] = $objectAttributesAttribute;
 	expandObjectAttributesAttribute($recordSet, $relationIdAttribute, $filterLanguageId, $queryTransactionInformation);
+	
+	return $recordSet;
+}
+
+function getPossiblySynonymousRecordSet($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
+	global
+		$meaningRelationsTable, $possiblySynonymousIdAttribute, $possibleSynonymAttribute, 
+		$objectAttributesAttribute, $otherDefinedMeaningAttribute;
+
+	$recordSet = queryRecordSet(
+		$queryTransactionInformation,
+		$possiblySynonymousIdAttribute,
+		array(
+			'relation_id' => $possiblySynonymousIdAttribute, 
+			'meaning2_mid' => $possibleSynonymAttribute
+		),
+		$meaningRelationsTable,
+		array(
+			"meaning1_mid=$definedMeaningId",
+			"relationtype_mid=" . $possiblySynonymousRelationTypeId
+		),
+		array('add_transaction_id')
+	);
+	
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($possibleSynonymAttribute));
+
+	//add object attributes attribute to the generated structure 
+	//and expand the records
+	$recordSet->getStructure()->attributes[] = $objectAttributesAttribute;
+	expandObjectAttributesAttribute($recordSet, $possiblySynonymousIdAttribute, $filterLanguageId, $queryTransactionInformation);
 	
 	return $recordSet;
 }

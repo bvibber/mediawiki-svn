@@ -69,6 +69,19 @@ function initializeWiktionaryZAttributes($filterOnLanguage, $hasMetaDataAttribut
 	$classMembershipAttribute = new Attribute("class-membership", "Class membership", new RecordSetType($classMembershipStructure));
 	
 	global
+		 $possiblySynonymousIdAttribute, $possibleSynonymAttribute;
+		 
+	$possiblySynonymousIdAttribute = new Attribute("possibly-synonymous-id", "Possibly synonymous id", "integer");	 
+	$possibleSynonymAttribute = new Attribute("possible-synonym", "Possible synonym", new RecordType($definedMeaningReferenceStructure));
+		
+	global
+		$possiblySynonymousStructure, $possiblySynonymousKeyStructure, $possiblySynonymousAttribute;
+	
+	$possiblySynonymousStructure = new Structure($possiblySynonymousIdAttribute, $possiblySynonymousAttribute);
+	$possiblySynonymousKeyStructure = new Structure($possiblySynonymousIdAttribute);
+	$possiblySynonymousAttribute = new Attribute("possibly-synonymous", "Possibly synonymous", new RecordSetType($possiblySynonymousStructure));
+
+	global
 		$relationIdAttribute, $relationTypeAttribute, $relationTypeType, $otherDefinedMeaningAttribute;
 	
 	$relationIdAttribute = new Attribute("relation-id", "Relation identifier", "object-id");

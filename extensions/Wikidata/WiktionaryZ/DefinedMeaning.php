@@ -14,9 +14,15 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		
 		$wgOut->addHTML(
-			getDefinedMeaningEditor($this->filterLanguageId, false, $this->shouldShowAuthorities)->view(
+			getDefinedMeaningEditor(
+				$this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, $this->shouldShowAuthorities)->view(
 				$this->getIdStack($definedMeaningId), 
-				getDefinedMeaningRecord($definedMeaningId, $this->filterLanguageId, $this->viewQueryTransactionInformation)
+				getDefinedMeaningRecord(
+					$definedMeaningId, 
+					$this->filterLanguageId,
+					$this->possiblySynonymousRelationTypeId, 
+					$this->viewQueryTransactionInformation
+				)
 			)
 		);
 		
@@ -34,9 +40,14 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		$this->outputEditHeader();
 		$wgOut->addHTML(
-			getDefinedMeaningEditor($this->filterLanguageId, false, false)->edit(
+			getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->edit(
 				$this->getIdStack($definedMeaningId), 
-				getDefinedMeaningRecord($definedMeaningId, $this->filterLanguageId, new QueryLatestTransactionInformation())
+				getDefinedMeaningRecord(
+					$definedMeaningId, 
+					$this->filterLanguageId, 
+					$this->possiblySynonymousRelationTypeId, 
+					new QueryLatestTransactionInformation()
+				)
 			)
 		);
 		$this->outputEditFooter();
@@ -50,9 +61,14 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		$wgOut->addHTML(
-			getDefinedMeaningEditor($this->filterLanguageId, $this->showRecordLifeSpan, false)->view(
+			getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, $this->showRecordLifeSpan, false)->view(
 				new IdStack("defined-meaning"), 
-				getDefinedMeaningRecord($definedMeaningId, $this->filterLanguageId, $this->queryTransactionInformation)
+				getDefinedMeaningRecord(
+					$definedMeaningId, 
+					$this->filterLanguageId, 
+					$this->possiblySynonymousRelationTypeId, 
+					$this->queryTransactionInformation
+				)
 			)
 		);
 		
@@ -67,9 +83,14 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		parent::save($referenceTransaction);
 
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		getDefinedMeaningEditor($this->filterLanguageId, false, false)->save(
+		getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->save(
 			$this->getIdStack($definedMeaningId), 
-			getDefinedMeaningRecord($definedMeaningId, $this->filterLanguageId, $referenceTransaction)
+			getDefinedMeaningRecord(
+				$definedMeaningId, 
+				$this->filterLanguageId, 
+				$this->possiblySynonymousRelationTypeId, 
+				$referenceTransaction
+			)
 		);
 	}
 	

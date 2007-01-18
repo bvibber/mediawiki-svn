@@ -27,9 +27,14 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		$spelling = $wgTitle->getText();
 		
 		$wgOut->addHTML(
-			getExpressionsEditor($spelling, $this->filterLanguageId, false, $this->shouldShowAuthorities)->view(
+			getExpressionsEditor($spelling, $this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, $this->shouldShowAuthorities)->view(
 				$this->getIdStack(), 
-				getExpressionsRecordSet($spelling, $this->filterLanguageId, $this->viewQueryTransactionInformation)
+				getExpressionsRecordSet(
+					$spelling, 
+					$this->filterLanguageId, 
+					$this->possiblySynonymousRelationTypeId, 
+					$this->viewQueryTransactionInformation
+				)
 			)
 		);
 		
@@ -46,9 +51,14 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		$spelling = $wgTitle->getText();
 		
 		$wgOut->addHTML(
-			getExpressionsEditor($spelling, $this->filterLanguageId, $this->showRecordLifeSpan, false)->view(
+			getExpressionsEditor($spelling, $this->filterLanguageId, $this->possiblySynonymousRelationTypeId, $this->showRecordLifeSpan, false)->view(
 				$this->getIdStack(), 
-				getExpressionsRecordSet($spelling, $this->filterLanguageId, $this->queryTransactionInformation)
+				getExpressionsRecordSet(
+					$spelling, 
+					$this->filterLanguageId, 
+					$this->possiblySynonymousRelationTypeId, 
+					$this->queryTransactionInformation
+				)
 			)
 		);
 		
@@ -64,9 +74,14 @@ class WiktionaryZ extends DefaultWikidataApplication {
 
 		$spelling = $wgTitle->getText();
 		
-		getExpressionsEditor($spelling, $this->filterLanguageId, false, false)->save(
+		getExpressionsEditor($spelling, $this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->save(
 			$this->getIdStack(), 
-			getExpressionsRecordSet($spelling, $this->filterLanguageId, $referenceTransaction)
+			getExpressionsRecordSet(
+				$spelling, 
+				$this->filterLanguageId, 
+				$this->possiblySynonymousRelationTypeId, 
+				$referenceTransaction
+			)
 		);
 	}
 
@@ -80,9 +95,14 @@ class WiktionaryZ extends DefaultWikidataApplication {
 		$spelling = $wgTitle->getText();
 
 		$wgOut->addHTML(
-			getExpressionsEditor($spelling, $this->filterLanguageId, false, false)->edit(
+			getExpressionsEditor($spelling, $this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->edit(
 				$this->getIdStack(), 
-				getExpressionsRecordSet($spelling, $this->filterLanguageId, new QueryLatestTransactionInformation())
+				getExpressionsRecordSet(
+					$spelling, 
+					$this->filterLanguageId, 
+					$this->possiblySynonymousRelationTypeId, 
+					new QueryLatestTransactionInformation()
+				)
 			)
 		);
 

@@ -12,6 +12,7 @@ function initializeObjectAttributeEditors($filterLanguageId, $showRecordLifeSpan
 		$definitionObjectAttributesEditor, $definedMeaningIdAttribute,
 		$synonymsAndTranslationsObjectAttributesEditor, $syntransIdAttribute,
 		$relationsObjectAttributesEditor, $relationIdAttribute,
+		$possiblySynonymousObjectAttributesEditor, $possiblySynonymousIdAttribute,
 		$textValueObjectAttributesEditor, $textAttributeIdAttribute,
 		$urlValueObjectAttributesEditor, $urlAttributeIdAttribute,
 		$translatedTextValueObjectAttributesEditor, $translatedTextAttributeIdAttribute,
@@ -23,6 +24,7 @@ function initializeObjectAttributeEditors($filterLanguageId, $showRecordLifeSpan
 	$definedMeaningObjectAttributesEditor =	new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$definitionObjectAttributesEditor =	new RecordUnorderedListEditor($objectAttributesAttribute, 5); 
 	$synonymsAndTranslationsObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
+	$possiblySynonymousObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$relationsObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$textValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$urlValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
@@ -32,6 +34,7 @@ function initializeObjectAttributeEditors($filterLanguageId, $showRecordLifeSpan
 	setObjectAttributesEditor($definedMeaningObjectAttributesEditor, $filterLanguageId, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $definedMeaningIdAttribute), $definedMeaningMeaningName, new ObjectIdFetcher(0, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($definitionObjectAttributesEditor, $filterLanguageId, $showRecordLifeSpan, $showAuthority, new DefinitionObjectIdFetcher(0, $definedMeaningIdAttribute), $definitionMeaningName, new ObjectIdFetcher(0, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($synonymsAndTranslationsObjectAttributesEditor, $filterLanguageId, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $syntransIdAttribute), $synTransMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
+	setObjectAttributesEditor($possiblySynonymousObjectAttributesEditor, $filterLanguageId, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $possiblySynonymousIdAttribute), $relationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($relationsObjectAttributesEditor, $filterLanguageId, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $relationIdAttribute), $relationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($textValueObjectAttributesEditor, $filterLanguageId, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $textAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($urlValueObjectAttributesEditor, $filterLanguageId, $showRecordLifeSpan, $showAuthority, new ObjectIdFetcher(0, $textAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
@@ -229,6 +232,27 @@ function getDefinedMeaningClassMembershipEditor($showRecordLifeSpan, $showAuthor
 	return $editor;
 }
 
+function getGroupedRelationTypeEditor($groupedRelationsAttribute, $groupedRelationIdAttribute, $otherDefinedMeaningAttribute, $relationTypeId, $showRecordLifeSpan, $showAuthority, $objectAttributesEditor) {
+	$editor = new RecordSetTableEditor(
+		$groupedRelationsAttribute, 
+		new SimplePermissionController(true), 
+		new ShowEditFieldChecker(true), 
+		new AllowAddController(true), 
+		true, 
+		false, 
+		new GroupedRelationTypeController($relationTypeId, $groupedRelationIdAttribute, $otherDefinedMeaningAttribute)
+	);
+
+	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
+	
+	if ($objectAttributesEditor != null)
+		$editor->addEditor(new PopUpEditor($objectAttributesEditor, 'Annotation'));
+
+	addTableMetadataEditors($editor, $showRecordLifeSpan, $showAuthority);
+
+	return $editor;
+}
+
 function getDefinedMeaningCollectionMembershipEditor($showRecordLifeSpan, $showAuthority) {
 	global
 		$collectionMembershipAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute;
@@ -315,11 +339,11 @@ function getOptionAttributeOptionsEditor() {
 	return $editor;
 }
 
-function getExpressionMeaningsEditor($attribute, $allowAdd, $filterLanguageId, $showRecordLifeSpan, $showAuthority) {
+function getExpressionMeaningsEditor($attribute, $allowAdd, $filterLanguageId, $possiblySynonymousRelationTypeId, $showRecordLifeSpan, $showAuthority) {
 	global
 		$definedMeaningIdAttribute;
 	
-	$definedMeaningEditor = getDefinedMeaningEditor($filterLanguageId, $showRecordLifeSpan, $showAuthority);
+	$definedMeaningEditor = getDefinedMeaningEditor($filterLanguageId, $possiblySynonymousRelationTypeId, $showRecordLifeSpan, $showAuthority);
 
 	$definedMeaningCaptionEditor = new DefinedMeaningHeaderEditor($definedMeaningIdAttribute, new SimplePermissionController(false), true, 75);
 	$definedMeaningCaptionEditor->setAddText("New exact meaning");
@@ -331,15 +355,15 @@ function getExpressionMeaningsEditor($attribute, $allowAdd, $filterLanguageId, $
 	return $expressionMeaningsEditor;
 }
 
-function getExpressionsEditor($spelling, $filterLanguageId, $showRecordLifeSpan, $showAuthority) {
+function getExpressionsEditor($spelling, $filterLanguageId, $possiblySynonymousRelationTypeId, $showRecordLifeSpan, $showAuthority) {
 	global
 		$expressionMeaningsAttribute, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute, $expressionAttribute, $languageAttribute, $expressionsAttribute;
 
 	$expressionMeaningsRecordEditor = new RecordUnorderedListEditor($expressionMeaningsAttribute, 3);
 	
-	$exactMeaningsEditor = getExpressionMeaningsEditor($expressionExactMeaningsAttribute, true, $filterLanguageId, $showRecordLifeSpan, $showAuthority);
+	$exactMeaningsEditor = getExpressionMeaningsEditor($expressionExactMeaningsAttribute, true, $filterLanguageId, $possiblySynonymousRelationTypeId, $showRecordLifeSpan, $showAuthority);
 	$expressionMeaningsRecordEditor->addEditor($exactMeaningsEditor);
-	$expressionMeaningsRecordEditor->addEditor(getExpressionMeaningsEditor($expressionApproximateMeaningsAttribute, false, $filterLanguageId, $showRecordLifeSpan, $showAuthority));
+	$expressionMeaningsRecordEditor->addEditor(getExpressionMeaningsEditor($expressionApproximateMeaningsAttribute, false, $filterLanguageId, $possiblySynonymousRelationTypeId, $showRecordLifeSpan, $showAuthority));
 	
 	$expressionMeaningsRecordEditor->expandEditor($exactMeaningsEditor);
 	
@@ -362,9 +386,10 @@ function getExpressionsEditor($spelling, $filterLanguageId, $showRecordLifeSpan,
 	return $expressionsEditor;
 }
 
-function getDefinedMeaningEditor($filterLanguageId, $showRecordLifeSpan, $showAuthority) {
+function getDefinedMeaningEditor($filterLanguageId, $possiblySynonymousRelationTypeId, $showRecordLifeSpan, $showAuthority) {
 	global
-		$definedMeaningAttribute, $definedMeaningObjectAttributesEditor;
+		$definedMeaningAttribute, $possiblySynonymousIdAttribute, $possiblySynonymousAttribute, 
+		$possibleSynonymAttribute, $definedMeaningObjectAttributesEditor, $possiblySynonymousObjectAttributesEditor;
 	
 	$definitionEditor = getDefinitionEditor($filterLanguageId, $showRecordLifeSpan, $showAuthority);
 	$classAttributesEditor = getClassAttributesEditor($showRecordLifeSpan, $showAuthority);		
@@ -379,6 +404,20 @@ function getDefinedMeaningEditor($filterLanguageId, $showRecordLifeSpan, $showAu
 	$definedMeaningEditor->addEditor($classAttributesEditor);
 	$definedMeaningEditor->addEditor(getAlternativeDefinitionsEditor($filterLanguageId, $showRecordLifeSpan, $showAuthority));
 	$definedMeaningEditor->addEditor($synonymsAndTranslationsEditor);
+
+	if ($possiblySynonymousRelationTypeId != 0)
+		$definedMeaningEditor->addEditor(
+			getGroupedRelationTypeEditor(
+				$possiblySynonymousAttribute, 
+				$possiblySynonymousIdAttribute, 
+				$possibleSynonymAttribute, 
+				$possiblySynonymousRelationTypeId, 
+				$showRecordLifeSpan, 
+				$showAuthority, 
+				$possiblySynonymousObjectAttributesEditor
+			)
+		);
+		
 	$definedMeaningEditor->addEditor($relationsEditor);
 	$definedMeaningEditor->addEditor($reciprocalRelationsEditor);
 	$definedMeaningEditor->addEditor($classMembershipEditor);
