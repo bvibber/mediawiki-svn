@@ -22,7 +22,6 @@ class BookInformationAmazon implements BookInformationDriver {
 	public function submitRequest( $isbn ) {
 		global $wgBookInformationService;
 		if( isset( $wgBookInformationService['accesskeyid'] ) ) {
-			$this->isbn = $isbn;
 			$aki = $wgBookInformationService['accesskeyid'];
 			$uri = self::buildRequestURI( $aki, $isbn );
 			if( ( $xml = Http::get( $uri ) ) !== false ) {
