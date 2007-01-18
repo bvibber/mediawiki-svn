@@ -7,6 +7,6 @@ depend: $(SRCS)
 	@mv Makefile Makefile.depend
 	@sed -e '/#DO NOT DELETE/,$$d' <Makefile.depend >Makefile
 	@echo "#DO NOT DELETE -- make depend needs it" >>Makefile
-	@-@CXX@ $(_CPPFLAGS) $(CPPFLAGS) $(_CFLAGS) $(CFLAGS) @dashMflag@ $(SRCS) >>Makefile
+	@-@CXX@ $(_CPPFLAGS) $(CPPFLAGS) $(_CFLAGS) $(CFLAGS) @dashMflag@ $< >>Makefile
 	@rm -f Makefile.depend
 
