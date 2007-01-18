@@ -11,9 +11,14 @@
  
 if( defined( 'MEDIAWIKI' ) ) {
 
-	$wgExtensionCredits['parserhook'][] = array( 'name' => 'User Image Gallery', 'author' => 'Rob Church' );
 	$wgAutoloadClasses['UserImagesGallery'] = dirname( __FILE__ ) . '/UserImages.class.php';
 	$wgExtensionFunctions[] = 'efUserImages';
+
+	$wgExtensionCredits['parserhook'][] = array(
+		'name' => 'User Image Gallery',
+		'author' => 'Rob Church',
+		'description' => 'Generate galleries of user-uploaded images with <code><nowiki><userimage /></nowiki></code>',
+	);
 	
 	/**
 	 * Set this to true to disable the parser cache for pages which
