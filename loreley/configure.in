@@ -176,22 +176,28 @@ AC_ARG_WITH(zlib, AC_HELP_STRING([--with-zlib=PATH],[prefix where zlib is instal
 	CPPFLAGS="$CPPFLAGS -I${withval}/include" LDFLAGS="$LDFLAGS -L${withval}/lib"],)
 AC_ARG_WITH(bdb, AC_HELP_STRING([--with-bdb=PATH],[prefix where Oracle Berkeley DB is installed]),[
 	CPPFLAGS="$CPPFLAGS -I${withval}/include" LDFLAGS="$LDFLAGS -L${withval}/lib"],)
-solio=no
-AC_ARG_ENABLE(solaris-io, AC_HELP_STRING([--enable-solaris-io],[enable Solaris 10 (or greater) specific I/O mechanism]),
+solio=yes
+AC_ARG_ENABLE(solaris-ecp, AC_HELP_STRING([--disable-solaris-ecp],[don't use Solaris event completion ports even if available]),
 	[
-if test "$enableval" = "yes"; then
-	AC_DEFINE([SOLARIS_IO], [], [Use Solaris-specific I/O mechanism])
-	solio=yes
+if test "$enableval" = "no"; then
+	solio=no
 fi
 ],[])
-linio=no
-AC_ARG_ENABLE(linux-io, AC_HELP_STRING([--enable-linux-io],[enable Linux 2.6.9 (or greater) specific I/O mechanism]),
+if test "$solio" = "yes"; then
+	AC_CHECK_FUNC(port_getn,[AC_DEFINE([SOLARIS_IO], [], [Use Solaris-specific I/O mechanism])],solio=no)
+fi
+linio=yes
+AC_ARG_ENABLE(epoll, AC_HELP_STRING([--disable-epoll],[don't use epoll even if found (for kernels < 2.6.9)]),
 	[
-if test "$enableval" = "yes"; then
-	AC_DEFINE([LINUX_IO], [], [Use Linux-specific I/O mechanism])
-	linio=yes
+if test "$enableval" = "no"; then
+	linio=no
 fi
 ],[])
+
+if test "$linio" != "no"; then
+	AC_CHECK_FUNC(epoll_create,[AC_DEFINE([LINUX_IO], [], [Use Linux-specific I/O mechanism])],linio=no)
+fi
+
 AC_ARG_ENABLE(allocators,
 	AC_HELP_STRING([--disable-allocators],[disable built-in optimised allocators]),
 	[
