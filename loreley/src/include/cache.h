@@ -42,7 +42,7 @@ namespace db {
 			return new imstring(d.first, d.second);
 		}
 	};
-};
+}
 
 struct cachedir_data_store;
 struct a_cachedir;
