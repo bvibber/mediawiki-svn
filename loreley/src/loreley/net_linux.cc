@@ -21,7 +21,7 @@
 
 using std::deque;
 using std::signal;
-using std::multimap;
+using std::multiset;
 
 #include "loreley.h"
 #include "net.h"
@@ -37,8 +37,15 @@ struct event_impl {
 
 	void schedule(int64_t);
 
+	uint64_t		 ei_when;	/* milliseconds */
 	event_queue		*ei_queue;
 	function<void (void)>	 ei_func;
+};
+
+struct evtp_cmp {
+	bool operator() (event_impl const *a, event_impl const *b) const {
+		return a->ei_when < b->ei_when;
+	}
 };
 
 struct event_queue {
@@ -47,6 +54,41 @@ struct event_queue {
 };
 
 tss<event_queue *> ev_queue;
+tss<multiset<event_impl *, evtp_cmp> > ev_threadevents;
+
+static event_impl *
+next_event(void)
+{
+multiset<event_impl *, evtp_cmp> &evt = *ev_threadevents;
+timeval		tod;
+uint64_t	now;
+	gettimeofday(&tod, 0);
+	now = tod.tv_sec * 1000 + tod.tv_usec / 1000;
+	while (!evt.empty()) {
+	event_impl	*r;
+		r = *evt.begin();
+		if (r->ei_when <= now) {
+			evt.erase(evt.begin());
+			return r;
+		}
+		break;
+	}
+	return NULL;
+}
+
+static int64_t
+next_evt_time(void)
+{
+	WDEBUG(format("empty=%d") % ev_threadevents->empty());
+	if (ev_threadevents->empty())
+		return -1;
+
+uint64_t	now;
+timeval		tod;
+	gettimeofday(&tod, 0);
+	now = tod.tv_sec * 1000 + tod.tv_usec / 1000;
+	return (*ev_threadevents->begin())->ei_when - now;
+}
 
 void
 ioloop_t::prepare(void)
@@ -155,7 +197,9 @@ socket::clearbacks(void)
 void
 make_event_base(void)
 {
+	assert(!ev_queue);
 	ev_queue = new event_queue * (new event_queue(epoll_create(getdtablesize() / config.nthreads)));
+	ev_threadevents = new multiset<event_impl *, evtp_cmp>;
 }
 
 static void
@@ -169,76 +213,60 @@ void
 ioloop_t::thread_run(void)
 {
 event_queue	*eq = *ev_queue;
-#if 0
-event_impl	*ei;
-#endif
 epoll_event	 ev;
 net::socket	*sk;
+event_impl	*ei;
 function<void (net::socket *, bool)> tmph;
 
-	while (epoll_wait(eq->epfd, &ev, 1, -1) == 0) {
+	for (;;) {
+	int	r;
+	
 		WDEBUG(format("[%d] thread_run: waiting for event, eq=%p")
 			% pthread_self() % eq);
-
-		sk = static_cast<net::socket *>(ev.data.ptr);
-		WDEBUG(format("[%d] thread_run: got event on %s")
-			% pthread_self() % sk->_desc);
-		if (ev.events & EPOLLIN) {
-			tmph = sk->_read_handler;
-			sk->_read_handler = 0;
-			tmph(sk, false);
-		}
-
-		if (ev.events & EPOLLOUT) {
-			tmph = sk->_write_handler;
-			sk->_write_handler = 0;
-			tmph(sk, false);
-		}
-		break;
-#if 0
-		case PORT_SOURCE_TIMER:
-			WDEBUG("timer fires");
-			ei = static_cast<event_impl *>(ev.portev_user);
-			ei->ei_func();
+		r = epoll_wait(eq->epfd, &ev, 1, next_evt_time());
+		if (r == -1 && errno != EINTR)
 			break;
-#endif
+
+		if (r == 1) {
+			sk = static_cast<net::socket *>(ev.data.ptr);
+			WDEBUG(format("[%d] thread_run: got event on %s")
+				% pthread_self() % sk->_desc);
+			if (ev.events & EPOLLIN) {
+				tmph = sk->_read_handler;
+				sk->_read_handler = 0;
+				tmph(sk, false);
+			}
+
+			if (ev.events & EPOLLOUT) {
+				tmph = sk->_write_handler;
+				sk->_write_handler = 0;
+				tmph(sk, false);
+			}
+		}
+
+		while ((ei = next_event()) != 0) {
+			ei->ei_func();
+		}
 	}
 }
 
 event_impl::event_impl(void)
 {
-#if 0
-sigevent	se;
-port_notify_t	pn;
-	ei_queue = *(event_queue **)ev_queue;
-	memset(&pn, 0, sizeof(pn));
-	memset(&se, 0, sizeof(se));
-	pn.portnfy_port = ei_queue->portfd;
-	pn.portnfy_user = this;
-	se.sigev_notify = SIGEV_PORT;
-	se.sigev_value.sival_ptr = &pn;
-	
-	timer_create(CLOCK_REALTIME, &se, &ei_tmr);
-#endif
 }
 
 event_impl::~event_impl(void)
 {
-#if 0
-	timer_delete(ei_tmr);
-#endif
+	ev_threadevents->erase(this);
 }
 
 void
 event_impl::schedule(int64_t when)
 {
-#if 0
-	WDEBUG(format("schedule, when=%d") % when);
-	memset(&ei_when, 0, sizeof(ei_when));
-	ei_when.it_value.tv_sec = (when / 1000);
-	ei_when.it_value.tv_nsec = (when % 1000) * 1000000;
-	timer_settime(ei_tmr, 0, &ei_when, NULL);
-#endif
+timeval	tod;
+	WDEBUG(format("[%d] schedule") % pthread_self());
+	gettimeofday(&tod, 0);
+	ei_when = (tod.tv_sec * 1000 + tod.tv_usec / 1000) + when;
+	ev_threadevents->insert(this);
 }
 
 namespace net {
