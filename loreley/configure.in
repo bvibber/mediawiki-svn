@@ -170,8 +170,6 @@ AC_SUBST(dependstyle)
 
 AC_ARG_WITH(boost, AC_HELP_STRING([--with-boost=PATH],[path to Boost headers]),[
 	CPPFLAGS="$CPPFLAGS -I${withval}"],)
-AC_ARG_WITH(libevent, AC_HELP_STRING([--with-libevent=PATH],[prefix where libevent is installed]),[
-	CPPFLAGS="$CPPFLAGS -I${withval}/include" LDFLAGS="$LDFLAGS -L${withval}/lib"],)
 AC_ARG_WITH(zlib, AC_HELP_STRING([--with-zlib=PATH],[prefix where zlib is installed]),[
 	CPPFLAGS="$CPPFLAGS -I${withval}/include" LDFLAGS="$LDFLAGS -L${withval}/lib"],)
 AC_ARG_WITH(bdb, AC_HELP_STRING([--with-bdb=PATH],[prefix where Oracle Berkeley DB is installed]),[
@@ -215,9 +213,6 @@ AC_SEARCH_LIBS(log10, m)
 AC_SEARCH_LIBS(sendfile, sendfile)
 AC_SEARCH_LIBS(zlibVersion, z,,AC_MSG_ERROR([zlib not found]))
 AC_SEARCH_LIBS(pthread_key_create, pthread)
-if test "$solio" = "no"; then
-	AC_SEARCH_LIBS(event_add, event,,AC_MSG_ERROR([libevent not found (maybe you need --with-libevent)]))
-fi
 AC_SEARCH_LIBS(db_create, db-4.5 db-4.4 db-4.3 db-4.2,,[AC_DEFINE([NO_BDB],,[Berkeley DB is not available])])
 
 AC_CHECK_TYPES([u_int8_t, u_int16_t, u_int32_t, u_int64_t])
