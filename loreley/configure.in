@@ -184,6 +184,14 @@ if test "$enableval" = "yes"; then
 	solio=yes
 fi
 ],[])
+linio=no
+AC_ARG_ENABLE(linux-io, AC_HELP_STRING([--enable-linux-io],[enable Linux 2.6.9 (or greater) specific I/O mechanism]),
+	[
+if test "$enableval" = "yes"; then
+	AC_DEFINE([LINUX_IO], [], [Use Linux-specific I/O mechanism])
+	linio=yes
+fi
+],[])
 AC_ARG_ENABLE(allocators,
 	AC_HELP_STRING([--disable-allocators],[disable built-in optimised allocators]),
 	[

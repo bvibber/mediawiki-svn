@@ -13,6 +13,8 @@
 #ifndef WTHREAD_H
 #define WTHREAD_H
 
+#include "util.h"
+
 using boost::noncopyable;
 
 #define HOLDING(l) locker _l(l)

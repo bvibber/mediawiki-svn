@@ -33,6 +33,7 @@ BASESRCS =	 		\
 	ifname_to_address.cc	\
 	log.cc			\
 	net.cc			\
+	net_linux.cc		\
 	net_solaris.cc		\
 	net_unix.cc		\
 	preprocessor.cc		\

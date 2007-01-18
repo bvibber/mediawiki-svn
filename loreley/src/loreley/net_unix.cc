@@ -15,7 +15,7 @@
 # pragma hdrstop
 #endif
 
-#ifndef SOLARIS_IO
+#if !defined(SOLARIS_IO) && !defined(LINUX_IO)
 
 namespace sfun {
 	using ::bind;	/* because of conflict with boost::bind from util.h */
@@ -448,4 +448,4 @@ event_impl::schedule(int64_t when)
 	pthread_kill(io_loop_thread, SIGUSR2);
 }
 
-#endif	/* !SOLARIS_IO */
+#endif	/* !SOLARIS_IO && !LINUX_IO */
