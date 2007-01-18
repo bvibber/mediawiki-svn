@@ -79,7 +79,6 @@ uint64_t	now;
 static int64_t
 next_evt_time(void)
 {
-	WDEBUG(format("empty=%d") % ev_threadevents->empty());
 	if (ev_threadevents->empty())
 		return -1;
 
@@ -158,6 +157,7 @@ socket::socket(int s, net::address const &a, char const *desc, sprio p)
 	, _desc(desc)
 	, _prio(p)
 	, _queue(0)
+	, _ev_flags(0)
 {
 	_s = s;
 }
@@ -167,6 +167,7 @@ socket::socket(net::address const &a, char const *desc, sprio p)
 	, _desc(desc)
 	, _prio(p)
 	, _queue(0)
+	, _ev_flags(0)
 {
 	_s = ::socket(_addr.family(), _addr.socktype(), _addr.protocol());
 	if (_s == -1)
@@ -176,7 +177,6 @@ socket::socket(net::address const &a, char const *desc, sprio p)
 socket::~socket(void)
 {
 	WDEBUG("closing socket");
-	clearbacks();
 	if (_queue)
 		epoll_ctl(_queue->epfd, EPOLL_CTL_DEL, _s, NULL);
 	close(_s);
@@ -186,9 +186,12 @@ void
 socket::clearbacks(void)
 {
 	if (_queue && (_read_handler || _write_handler)) {
+	epoll_event	ev;
 		_read_handler = 0;
 		_write_handler = 0;
-		epoll_ctl(_queue->epfd, EPOLL_CTL_DEL, _s, NULL);
+		memset(&ev, 0, sizeof(ev));
+		ev.events = 0;
+		epoll_ctl(_queue->epfd, EPOLL_CTL_MOD, _s, &ev);
 	}
 }
 
@@ -263,7 +266,6 @@ void
 event_impl::schedule(int64_t when)
 {
 timeval	tod;
-	WDEBUG(format("[%d] schedule") % pthread_self());
 	gettimeofday(&tod, 0);
 	ei_when = (tod.tv_sec * 1000 + tod.tv_usec / 1000) + when;
 	ev_threadevents->insert(this);
