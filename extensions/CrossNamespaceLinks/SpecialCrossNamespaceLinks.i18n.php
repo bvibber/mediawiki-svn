@@ -19,7 +19,7 @@ $wgCrossNamespaceLinksMessages['cs'] = array(
 );
 $wgCrossNamespaceLinksMessages['de'] = array(
 	'crossnamespacelinks'     => 'Artikel mit Links in andere Namensräume',
-	'crossnamespacelinks-summary' => 'Diese Liste zeigt Artikel, die Verweise auf Seiten anderer Namensräume enthalten. Ausgenommen sind dabei die Namensräume {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}}.',
+	'crossnamespacelinks-summary' => 'Diese Liste zeigt Artikel, die Verweise auf Seiten anderer Namensräume enthalten. Ausgenommen sind dabei die Namensräume {{ns:special}}, {{ns:talk}}, {{ns:project}} und {{ns:template}}.',
  	'crossnamespacelinkstext' => '$1: {{PLURAL:$2|1 Link verweist|$2 Links verweisen}} in den $3-Namensraum'
 );
 $wgCrossNamespaceLinksMessages['fi'] = array(
