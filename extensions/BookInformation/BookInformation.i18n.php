@@ -25,6 +25,20 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Data provider: $1',
 ),
 
+/* German (Raymond) */
+'de' => array(
+'bookinfo-header' => 'Informationen über Bücher',
+'bookinfo-result-title' => 'Titel:',
+'bookinfo-result-author' => 'Autor:',
+'bookinfo-result-publisher' => 'Verlag:',
+'bookinfo-result-year' => 'Jahr:',
+'bookinfo-error-invalidisbn' => 'ISBN ungültig.',
+'bookinfo-error-nodriver' => 'Es war nicht möglich, die entsprechende Buchinformations-Schnittstelle zu initialisieren.',
+'bookinfo-error-noresponse' => 'Keine Antwort oder Zeitüberschreitung.',
+'bookinfo-purchase' => 'Dieses Buch kann von $1 bezogen werden.',
+'bookinfo-provider' => 'Daten-Lieferant: $1',
+),
+
 /* Dutch (Dirk Beetstra) */ 
 'nl' => array( 
 'bookinfo-header' => 'Boek informatie', 
