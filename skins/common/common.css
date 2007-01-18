@@ -268,15 +268,6 @@ span.updatedmarker {
 	color:black;
 	background-color:#00FF00;
 }
-span.newpageletter {
-	font-weight:bold;
-	color:black;
-	background-color:yellow;
-}
-span.minoreditletter {
-	color:black;
-	background-color:#C5FFE6;
-}
 
 table.gallery {
         border:  1px solid #cccccc;
@@ -461,6 +452,12 @@ table.multipageimage td {
 .imagelist th.TablePager_sort { background-color: #ccccff }
 
 .templatesUsed { margin-top: 1em; }
+
+/* Convenience links on Special:Ipblocklist */
+p.mw-ipb-conveniencelinks {
+	font-size: 90%;
+	float: right;
+}
 
 /**
  * Here is some stuff that's ACTUALLY COMMON TO ALL SKINS.

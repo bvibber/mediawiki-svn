@@ -548,11 +548,31 @@ class User {
 	 */
 	static function edits( $uid ) {
 		$dbr =& wfGetDB( DB_SLAVE );
-		return $dbr->selectField(
-			'revision', 'count(*)',
-			array( 'rev_user' => $uid ),
+
+		// check if the user_editcount field has been initialized
+		$field = $dbr->selectField(
+			'user', 'user_editcount',
+			array( 'user_id' => $uid ),
 			__METHOD__
 		);
+
+		if( $field === null ) { // it has not been initialized. do so.
+			$dbw =& wfGetDb( DB_MASTER );
+			$count = $dbr->selectField(
+				'revision', 'count(*)',
+				array( 'rev_user' => $uid ),
+				__METHOD__
+			);
+			$dbw->update(
+				'user',
+				array( 'user_editcount' => $count ),
+				array( 'user_id' => $uid ),
+				__METHOD__
+			);
+			return $count;
+		} else {
+			return $field;
+		}
 	}
 
 	/**
@@ -1547,9 +1567,11 @@ class User {
 			if( $this->mId ) {
 				$this->mEffectiveGroups[] = 'user';
 				
-				global $wgAutoConfirmAge;
+				global $wgAutoConfirmAge, $wgAutoConfirmCount;
+
 				$accountAge = time() - wfTimestampOrNull( TS_UNIX, $this->mRegistration );
-				if( $accountAge >= $wgAutoConfirmAge ) {
+				$accountEditCount = User::edits( $this->mId );
+				if( $accountAge >= $wgAutoConfirmAge && $accountEditCount >= $wgAutoConfirmCount ) {
 					$this->mEffectiveGroups[] = 'autoconfirmed';
 				}
 				
@@ -2456,7 +2478,7 @@ class User {
 		if( $title ) {
 			global $wgUser;
 			$sk = $wgUser->getSkin();
-			return $sk->makeLinkObj( $title, $text );
+			return $sk->makeLinkObj( $title, htmlspecialchars( $text ) );
 		} else {
 			return $text;
 		}

@@ -48,12 +48,6 @@ class ParserTest {
 	var $color;
 
 	/**
-	 * boolean $lightcolor whereas output should use light colors
-	 * @private
-	 */
-	var $lightcolor;
-
-	/**
 	 * boolean $showOutput Show test output
 	 */
 	var $showOutput;
@@ -68,7 +62,6 @@ class ParserTest {
 		global $options;
 
 		# Only colorize output if stdout is a terminal.
-		$this->lightcolor = false;
 		$this->color = !wfIsWindows() && posix_isatty(1);
 
 		if( isset( $options['color'] ) ) {
@@ -76,9 +69,6 @@ class ParserTest {
 			case 'no':
 				$this->color = false;
 				break;
-			case 'light':
-				$this->lightcolor = true;
-				# Fall through
 			case 'yes':
 			default:
 				$this->color = true;
@@ -86,14 +76,15 @@ class ParserTest {
 			}
 		}
 		$this->term = $this->color
-			? new AnsiTermColorer( $this->lightcolor )
+			? new AnsiTermColorer()
 			: new DummyTermColorer();
 
 		$this->showDiffs = !isset( $options['quick'] );
 		$this->showProgress = !isset( $options['quiet'] );
 		$this->showFailure = !(
 			isset( $options['quiet'] )
-			&& isset( $options['record'] ) ); // redundant output
+			&& ( isset( $options['record'] )
+				|| isset( $options['compare'] ) ) ); // redundant output
 		
 		$this->showOutput = isset( $options['show-output'] );
 
@@ -107,6 +98,8 @@ class ParserTest {
 
 		if( isset( $options['record'] ) ) {
 			$this->recorder = new DbTestRecorder( $this->term );
+		} elseif( isset( $options['compare'] ) ) {
+			$this->recorder = new DbTestPreviewer( $this->term );
 		} else {
 			$this->recorder = new TestRecorder( $this->term );
 		}
@@ -146,8 +139,8 @@ class ParserTest {
 		foreach( $filenames as $filename ) {
 			$ok = $this->runFile( $filename ) && $ok;
 		}
-		$this->recorder->end();
 		$this->recorder->report();
+		$this->recorder->end();
 		return $ok;
 	}
 
@@ -679,7 +672,7 @@ class ParserTest {
 				# test, in case it succeeded. Show it now:
 				$this->showTesting( $desc );
 			}
-			print $this->term->color( '1;31' ) . 'FAILED!' . $this->term->reset() . "\n";
+			print $this->term->color( '31' ) . 'FAILED!' . $this->term->reset() . "\n";
 			if ( $this->showOutput ) {
 				print "--- Expected ---\n$result\n--- Actual ---\n$html\n";
 			}
@@ -870,8 +863,7 @@ class ParserTest {
 }
 
 class AnsiTermColorer {
-	function __construct( $light ) {
-		$this->light = $light;
+	function __construct() {
 	}
 
 	/**
@@ -882,7 +874,8 @@ class AnsiTermColorer {
 	 * @private
 	 */
 	function color( $color ) {
-		$light = $this->light ? "1;" : "";
+		global $wgCommandLineDarkBg;
+		$light = $wgCommandLineDarkBg ? "1;" : "0;";
 		return "\x1b[{$light}{$color}m";
 	}
 
@@ -893,7 +886,7 @@ class AnsiTermColorer {
 	 * @private
 	 */
 	function reset() {
-		return "\x1b[0m";
+		return $this->color( 0 );
 	}
 }
 
@@ -949,9 +942,9 @@ class TestRecorder {
 }
 
 class DbTestRecorder extends TestRecorder  {
-	private $db;      ///< Database connection to the main DB
-	private $curRun;  ///< run ID number for the current run
-	private $prevRun; ///< run ID number for the previous run, if any
+	protected $db;      ///< Database connection to the main DB
+	protected $curRun;  ///< run ID number for the current run
+	protected $prevRun; ///< run ID number for the previous run, if any
 
 	function __construct( $term ) {
 		parent::__construct( $term );
@@ -1090,6 +1083,16 @@ class DbTestRecorder extends TestRecorder  {
 		}
 	}
 
+}
+
+class DbTestPreviewer extends DbTestRecorder  {
+	/**
+	 * Commit transaction and clean up for result recording
+	 */
+	function end() {
+		$this->db->rollback();
+		TestRecorder::end();
+	}
 }
 
 ?>

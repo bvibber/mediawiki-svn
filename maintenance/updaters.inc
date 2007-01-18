@@ -36,7 +36,6 @@ $wgNewTables = array(
 	array( 'langlinks',     'patch-langlinks.sql' ),
 	array( 'querycache_info', 'patch-querycacheinfo.sql' ),
 	array( 'filearchive',   'patch-filearchive.sql' ),
-	array( 'redirect',      'patch-redirect.sql' ),
 	array( 'querycachetwo',	'patch-querycachetwo.sql' ),
 );
 
@@ -44,7 +43,6 @@ $wgNewFields = array(
 #           table            field             patch file (in maintenance/archives)
 	array( 'ipblocks',      'ipb_id',           'patch-ipblocks.sql' ),
 	array( 'ipblocks',      'ipb_expiry',       'patch-ipb_expiry.sql' ),
-	array( 'ipblocks',	'ipb_enable_autoblock', 'patch-ipb_optional_autoblock.sql' ),
 	array( 'recentchanges', 'rc_type',          'patch-rc_type.sql' ),
 	array( 'recentchanges', 'rc_ip',            'patch-rc_ip.sql' ),
 	array( 'recentchanges', 'rc_id',            'patch-rc_id.sql' ),
@@ -67,6 +65,7 @@ $wgNewFields = array(
 	array( 'ipblocks',      'ipb_range_start',  'patch-ipb_range_start.sql' ),
 	array( 'site_stats',    'ss_images',        'patch-ss_images.sql' ),
 	array( 'ipblocks',      'ipb_anon_only',    'patch-ipb_anon_only.sql' ),
+	array( 'ipblocks',	'ipb_enable_autoblock', 'patch-ipb_optional_autoblock.sql' ),
 	array( 'user',          'user_newpass_time','patch-user_newpass_time.sql' ),
 	array( 'user',          'user_editcount',   'patch-user_editcount.sql' ),
 );
@@ -323,7 +322,7 @@ function do_schema_restructuring() {
 		echo "...page table already exists.\n";
 	} else {
 		echo "...converting from cur/old to page/revision/text DB structure.\n"; flush();
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......checking for duplicate entries.\n"; flush();
 
 		list ($cur, $old, $page, $revision, $text) = $wgDatabase->tableNamesN( 'cur', 'old', 'page', 'revision', 'text' );
@@ -332,7 +331,7 @@ function do_schema_restructuring() {
 				FROM $cur GROUP BY cur_title, cur_namespace HAVING c>1", $fname );
 
 		if ( $wgDatabase->numRows( $rows ) > 0 ) {
-			echo wfTimestamp();
+			echo wfTimestamp( TS_DB );
 			echo "......<b>Found duplicate entries</b>\n";
 			echo ( sprintf( "<b>      %-60s %3s %5s</b>\n", 'Title', 'NS', 'Count' ) );
 			while ( $row = $wgDatabase->fetchObject( $rows ) ) {
@@ -380,12 +379,12 @@ function do_schema_restructuring() {
 			}
 			$sql = "DELETE FROM $cur WHERE cur_id IN ( " . join( ',', $deleteId ) . ')';
 			$rows = $wgDatabase->query( $sql, $fname );
-			echo wfTimestamp();
+			echo wfTimestamp( TS_DB );
 			echo "......<b>Deleted</b> ".$wgDatabase->affectedRows()." records.\n";
 		}
 
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......Creating tables.\n";
 		$wgDatabase->query("CREATE TABLE $page (
   			page_id int(8) unsigned NOT NULL auto_increment,
@@ -423,15 +422,15 @@ function do_schema_restructuring() {
   			INDEX usertext_timestamp (rev_user_text,rev_timestamp)
 			) TYPE=InnoDB", $fname );
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......Locking tables.\n";
 		$wgDatabase->query( "LOCK TABLES $page WRITE, $revision WRITE, $old WRITE, $cur WRITE", $fname );
 
 		$maxold = intval( $wgDatabase->selectField( 'old', 'max(old_id)', '', $fname ) );
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......maxold is {$maxold}\n";
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		global $wgLegacySchemaConversion;
 		if( $wgLegacySchemaConversion ) {
 			// Create HistoryBlobCurStub entries.
@@ -451,7 +450,7 @@ function do_schema_restructuring() {
   			SELECT cur_namespace, cur_title, $cur_text, cur_comment, cur_user, cur_user_text, cur_timestamp, cur_minor_edit, $cur_flags
   			FROM $cur", $fname );
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......Setting up revision table.\n";
 		$wgDatabase->query( "INSERT INTO $revision (rev_id, rev_page, rev_comment, rev_user, rev_user_text, rev_timestamp,
     				rev_minor_edit)
@@ -459,7 +458,7 @@ function do_schema_restructuring() {
     				old_timestamp, old_minor_edit
 			FROM $old,$cur WHERE old_namespace=cur_namespace AND old_title=cur_title", $fname );
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......Setting up page table.\n";
 		$wgDatabase->query( "INSERT INTO $page (page_id, page_namespace, page_title, page_restrictions, page_counter,
     				page_is_redirect, page_is_new, page_random, page_touched, page_latest, page_len)
@@ -468,15 +467,15 @@ function do_schema_restructuring() {
   			FROM $cur,$revision
   			WHERE cur_id=rev_page AND rev_timestamp=cur_timestamp AND rev_id > {$maxold}", $fname );
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......Unlocking tables.\n";
 		$wgDatabase->query( "UNLOCK TABLES", $fname );
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......Renaming old.\n";
 		$wgDatabase->query( "ALTER TABLE $old RENAME TO $text", $fname );
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "...done.\n";
 	}
 }
@@ -918,7 +917,9 @@ function do_all_updates( $shared = false, $purge = true ) {
 	do_page_random_update(); flush();
 	
 	do_rc_indices_update(); flush();
-	
+
+	add_table( 'redirect', 'patch-redirect.sql' );
+
 	do_backlinking_indices_update(); flush();
 
 	do_restrictions_update(); flush ();
@@ -1044,13 +1045,13 @@ function do_postgres_updates() {
 		die ("Sorry, could not figure out what version \"$version\" means");
 	}
 	$oldversion = $version;
-	$version = sprintf("%03d%03d",$thisver[1],$thisver[2]);
+	$version = sprintf("%d%03d",$thisver[1],$thisver[2]);
 	print " Standardized version: $version\n";
 
 	$upgrade = '';
 
 	## 1.8 Updater
-	if ($version < 001008) {
+	if ($version < 1008) {
 		$upgrade .= <<<PGEND
 
 -- Type tweaking:
@@ -1140,7 +1141,7 @@ PGEND;
 	} ## end version 1.8
 
 	## 1.9 Updater
-	if ($version < 001009) {
+	if ($version < 1009) {
 		$upgrade = <<<PGEND
 
 -- Tighten up restrictions on the revision table so we don't lose data:
@@ -1191,7 +1192,7 @@ PGEND;
 	} ## end version 1.9
 
 	## 1.10 updater
-	if ($version <= 001010) {
+	if ($version <= 1010) {
 		$upgrade = <<<PGEND
 
 CREATE TABLE page_restrictions (
@@ -1203,6 +1204,9 @@ CREATE TABLE page_restrictions (
   pr_expiry TIMESTAMPTZ      NULL
 );
 ALTER TABLE page_restrictions ADD CONSTRAINT page_restrictions_pk PRIMARY KEY (pr_page,pr_type);
+
+-- Add a new index to help with full-text searches
+CREATE INDEX rev_text_id_idx ON revision (rev_text_id);
 
 -- Note this upgrade
 INSERT INTO mediawiki_version (type,mw_version,notes)

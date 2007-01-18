@@ -1228,7 +1228,6 @@ containing all of the search terms will appear in the result).",
 'userrights-lookup-user' => 'Manage user groups',
 'userrights-user-editname' => 'Enter a username:',
 'editusergroup' => 'Edit User Groups',
-
 'userrights-editusergroup' => 'Edit user groups',
 'saveusergroups' => 'Save User Groups',
 'userrights-groupsmember' => 'Member of:',
@@ -1250,6 +1249,12 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'grouppage-bot' => '{{ns:project}}:Bots',
 'grouppage-sysop' => '{{ns:project}}:Administrators',
 'grouppage-bureaucrat' => '{{ns:project}}:Bureaucrats',
+
+# User rights log
+'rightslog'      => 'User rights log',
+'rightslogtext'  => 'This is a log of changes to user rights.',
+'rightslogentry' => 'changed group membership for $1 from $2 to $3',
+'rightsnone'     => '(none)',
 
 # Recent changes
 #
@@ -1449,7 +1454,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'disambiguations'	=> 'Disambiguation pages',
 'disambiguations-summary'	=> '',
 'disambiguationspage'	=> 'Template:disambig',
-'disambiguationstext'	=> "The following pages link to a <i>disambiguation page</i>. They should link to the appropriate topic instead.<br />A page is treated as disambiguation if it is linked from $1.<br />Links from other namespaces are <i>not</i> listed here.",
+'disambiguations-text'	=> "The following pages link to a '''disambiguation page'''. They should link to the appropriate topic instead.<br />A page is treated as disambiguation page if it uses a template which is linked from [[MediaWiki:disambiguationspage]]",
 
 'doubleredirects'	=> 'Double redirects',
 'doubleredirects-summary'	=> '',
@@ -1458,7 +1463,8 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'brokenredirects'	=> 'Broken redirects',
 'brokenredirects-summary'	=> '',
 'brokenredirectstext'	=> 'The following redirects link to non-existent pages:',
-
+'brokenredirects-edit' => '(edit)',
+'brokenredirects-delete' => '(delete)',
 
 # Miscellaneous special pages
 #
@@ -1546,7 +1552,7 @@ further information about books you are looking for:',
 'groups' => 'User groups',
 
 'isbn'	=> 'ISBN',
-'rfcurl' =>  'http://www.ietf.org/rfc/rfc$1.txt',
+'rfcurl' =>  'http://tools.ietf.org/html/rfc$1',
 'pubmedurl' =>  'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1',
 'alphaindexline' => "$1 to $2",
 'version'		=> 'Version',
@@ -1767,7 +1773,7 @@ click '''''Restore'''''. To perform a selective restoration, check the boxes cor
 revisions to be restored, and click '''''Restore'''''. Clicking '''''Reset''''' will clear the
 comment field and all checkboxes.",
 'undeletearticle' => 'Restore deleted page',
-'undeleterevisions' => "$1 revisions archived",
+'undeleterevisions' => "$1 {{PLURAL:$1|revision|revisions}} archived",
 'undeletehistory' => 'If you restore the page, all revisions will be restored to the history.
 If a new page with the same name has been created since the deletion, the restored
 revisions will appear in the prior history, and the current revision of the live page
@@ -1775,7 +1781,7 @@ will not be automatically replaced.',
 'undeletehistorynoadmin' => 'This article has been deleted. The reason for deletion is
 shown in the summary below, along with details of the users who had edited this page
 before deletion. The actual text of these deleted revisions is only available to administrators.',
-'undeleterevision' => "Deleted revision as of $1",
+'undelete-revision' => 'Deleted revision of $1 from $2:',
 'undeleterevision-missing' => "Invalid or missing revision. You may have a bad link, or the
 revision may have been restored or removed from the archive.",
 'undeletebtn' => 'Restore',
@@ -1789,6 +1795,11 @@ revision may have been restored or removed from the archive.",
 'undeletedpage' => "<big>'''$1 has been restored'''</big>
 
 Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions and restorations.",
+'undelete-header' => 'See [[Special:Log/delete|the deletion log]] for recently deleted pages.',
+'undelete-search-box' => 'Search deleted pages',
+'undelete-search-prefix' => 'Show pages starting with:',
+'undelete-search-submit' => 'Search',
+'undelete-no-results' => 'No matching pages found in the deletion archive.',
 
 # Namespace form on various pages
 'namespace' => 'Namespace:',
@@ -1852,6 +1863,10 @@ pages that were vandalized).",
 'blockipsuccesssub' => 'Block succeeded',
 'blockipsuccesstext' => '[[{{ns:Special}}:Contributions/$1|$1]] has been blocked.
 <br />See [[{{ns:Special}}:Ipblocklist|IP block list]] to review blocks.',
+'ipb-unblock-addr' => 'Unblock $1',
+'ipb-unblock' => 'Unblock a username or IP address',
+'ipb-blocklist-addr' => 'View existing blocks for $1',
+'ipb-blocklist' => 'View existing blocks',
 'unblockip'		=> 'Unblock user',
 'unblockiptext'	=> 'Use the form below to restore write access
 to a previously blocked IP address or username.',
@@ -1917,27 +1932,6 @@ Please confirm that this is what you intend to do.',
 'unlockdbsuccesstext' => 'The database has been unlocked.',
 'lockfilenotwritable' => 'The database lock file is not writable. To lock or unlock the database, this needs to be writable by the web server.',
 'databasenotlocked' => 'The database is not locked.',
-
-# Make sysop
-'makesysoptitle'	=> 'Make a user into a sysop',
-'makesysoptext'		=> 'This form is used by bureaucrats to turn ordinary users into administrators.
-Type the name of the user in the box and press the button to make the user an administrator',
-'makesysopname'		=> 'Name of the user:',
-'makesysopsubmit'	=> 'Make this user into a sysop',
-'makesysopok'		=> "<b>User \"$1\" is now a sysop</b>",
-'makesysopfail'		=> "<b>User \"$1\" could not be made into a sysop. (Did you enter the name correctly?)</b>",
-'setbureaucratflag' => 'Set bureaucrat flag',
-'rightslog'		=> 'User rights log',
-'rightslogtext'		=> 'This is a log of changes to user rights.',
-'rightslogentry'	=> 'changed group membership for $1 from $2 to $3',
-'rights'			=> 'Rights:',
-'set_user_rights'	=> 'Set user rights',
-'user_rights_set'	=> "<b>User rights for \"$1\" updated</b>",
-'set_rights_fail'	=> "<b>User rights for \"$1\" could not be set. (Did you enter the name correctly?)</b>",
-'makesysop'         => 'Make a user into a sysop',
-'already_sysop'     => 'This user is already an administrator',
-'already_bureaucrat' => 'This user is already a bureaucrat',
-'rightsnone' 		=> '(none)',
 
 # Move page
 #
@@ -2246,6 +2240,13 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'markedaspatrollederror'  => "Cannot mark as patrolled",
 'markedaspatrollederrortext' => "You need to specify a revision to mark as patrolled.",
 'markedaspatrollederror-noautopatrol' => 'You are not allowed to mark your own changes as patrolled.',
+
+# Patrol log
+'patrol-log-page' => 'Patrol log',
+'patrol-log-header' => '',
+'patrol-log-line' => 'marked $1 of $2 patrolled $3',
+'patrol-log-auto' => '(automatic)',
+'patrol-log-diff' => 'r$1',
 
 # image deletion
 'deletedrevision' => 'Deleted old revision $1.',

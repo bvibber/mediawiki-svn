@@ -1241,24 +1241,9 @@ stî vandalijheyes).',
 #
 
 # Make sysop
-'makesysoptitle' => 'Diner a èn uzeu on livea di manaedjeu',
-'makesysoptext' => 'Cisse pådje ci c\' est po les mwaisses-manaedjeus («burocrates») poleur hôssî l\' livea d\' èn uzeu do livea d\' simpe uzeu eredjîstré, å ci d\' manaedjeu.
-Tapez l\' no d\' l\' uzeu dins l\' boesse di tecse poy clitchîz sol boton po ndè fé on manaedjeu.',
-'makesysopname' => 'Li no d\' l\' uzeu:',
-'makesysopsubmit' => 'Endè fé on manaedjeu',
-'makesysopok' => '<b>Asteure l\' uzeu «$1» a l\' livea d\' manaedjeu</b>',
-'makesysopfail' => '<b>L\' uzeu «$1» èn pout nén esse fwait on manaedjeu. (Avoz vs tapé l\' no bén comifåt?)</b>',
-'setbureaucratflag' => 'Mete li drapea mwaisse-manaedjeu',
 'rightslog' => 'Djournå des droets des uzeus',
 'rightslogtext' => 'Çouchal, c\' est on djournå des candjmints des droets des uzeus.',
 'rightslogentry' => 'l\' uzeu «$1» a stî candjî do groupe «$2» viè «$3»',
-'rights' => 'Droets:',
-'set_user_rights' => 'Defini les droets d\' l\' uzeu',
-'user_rights_set' => '<b>Les droets po l\' uzeu «$1» ont stî metous a djoû</b>',
-'set_rights_fail' => '<b>Les droets po l\' uzeu «$1» n\' ont nén polou esse definis. (Avoz vs tapé l\' no bén comifåt?)</b>',
-'makesysop' => 'Diner a èn uzeu on livea di manaedjeu',
-'already_sysop' => 'Cist uzeu ci a ddja l\' livea di manaedjeu',
-'already_bureaucrat' => 'Cist uzeu ci a ddja l\' livea di mwaisse-manaedjeu',
 'rightsnone' => '(nouk)',
 
 # Move page
@@ -1790,25 +1775,6 @@ $1',
 'searchnamed' =>  'Cweri après des årtikes lomés «\'\'$1\'\'».',
 'articletitles' =>  'Årtikes ki cmincèt avou «\'\'$1\'\'»',
 'hideresults' => 'Catchî les rzultats',
-
-# Makebot - FIXME move to the extension
-'makebot' => 'Diner ou rsaetchî l\' livea d\' robot',
-'makebot-header' => '\'\'\'On mwaisse-manaedjeu sol wiki pout eployî cisse pådje ci po dner ou rsaetchî l\' [[{{ns:help}}:Robots|livea d\' robot]] a èn ôte conte d\' uzeu.\'\'\'<br />El livea d\' robot fwait ki les candjmints da cist uzeu la si polèt catchî dins l\' pådje des [[{{special}}:Recentchanges|dierins candjmints]] et des sfwaitès djivêyes, çou k\' est ahessåve po mårker les uzeus ki fjhèt des candjmints otomatikes. Çoula doet esse fwait tot shuvant les rîles ki s\' aplikèt.',
-'makebot-username' => 'No d\' uzeu:',
-'makebot-search' => 'I va',
-'makebot-change' => 'Candjî l\' livea:',
-'makebot-grant' => 'Diner',
-'makebot-revoke' => 'Rissaetchî',
-'makebot-comment' => 'Comintaire:',
-'makebot-logpage' => 'Djournå des liveas d\' robot',
-'makebot-granted' => '[[{{ns:user}}:$1|$1]] a-st asteure li livea d\' robot.',
-'makebot-isbot' => '[[{{ns:user}}:$1|$1]] a l\' livea d\' robot.',
-'makebot-logentrygrant' => 'a dné l\' livea d\' robot a [[$1]]',
-'makebot-logentryrevoke' => 'a rsaetchî l\' livea d\' robot da [[$1]]',
-'makebot-logpagetext' => 'Çouchal, c\' est on djournå des dinaedjes eyet rsaetchaedjes do [[{{ns:help}}:Robots|livea d\' robot]] a des uzeus.',
-'makebot-notbot' => '[[{{ns:user}}:$1|$1]] n\' a nén l\' livea d\' robot',
-'makebot-privileged' => '[[{{ns:user}}:$1|$1]] a ddja on livea d\' [[{{ns:special}}:Listadmins|manaedjeu ou mwaisse-manaedjeu]], ça fwait k\' i n\' pout nén eployî ç\' conte la po on robot.',
-'makebot-revoked' => '[[{{ns:user}}:$1|$1]] n\' a pus d\' livea d\' robot.',
 
 );
 

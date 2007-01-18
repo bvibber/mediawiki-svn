@@ -493,13 +493,23 @@ var tooltipAccessKeyRegexp = /\[(ctrl-)?(alt-)?(shift-)?(esc-)?.\]$/;
 
 /**
  * Add the appropriate prefix to the accesskey shown in the tooltip.
- * If the nodeList parameter is given, only those nodes are updated.
+ * If the nodeList parameter is given, only those nodes are updated;
+ * otherwise, all the nodes that will probably have accesskeys by
+ * default are updated.
  *
  * @param Array nodeList -- list of elements to update
  */
 function updateTooltipAccessKeys( nodeList ) {
-	if ( !nodeList )
-		nodeList = document.getElementsByTagName("*");
+	if ( !nodeList ) {
+		// skins without a "column-one" element don't seem to have links with accesskeys either
+		var columnOne = document.getElementById("column-one");
+		if ( columnOne )
+			updateTooltipAccessKeys( columnOne.getElementsByTagName("a") );
+		// these are rare enough that no such optimization is needed
+		updateTooltipAccessKeys( document.getElementsByTagName("input") );
+		updateTooltipAccessKeys( document.getElementsByTagName("label") );
+		return;
+	}
 
 	for ( var i = 0; i < nodeList.length; i++ ) {
 		var element = nodeList[i];
@@ -562,10 +572,14 @@ function addPortletLink(portlet, href, text, id, tooltip, accesskey, nextnode) {
 	if ( tooltip ) {
 		link.setAttribute( "title", tooltip );
 	}
-	updateTooltipAccessKeys( new Array( link ) );
+	if ( accesskey && tooltip ) {
+		updateTooltipAccessKeys( new Array( link ) );
+	}
 
-	if ( nextnode && nextnode.parentNode != node ) nextnode = null;
-	node.insertBefore( item, nextnode );
+	if ( nextnode && nextnode.parentNode == node )
+		node.insertBefore( item, nextnode );
+	else
+		node.appendChild( item );  // IE compatibility (?)
 
 	return item;
 }
@@ -596,6 +610,7 @@ function akeytt( doId ) {
 	}
 
 	// Now deal with evil deprecated ta
+	var watchCheckboxExists = document.getElementById( 'wpWatchthis' ) ? true : false;
 	for (var id in ta) {
 		var n = document.getElementById(id);
 		if (n) {
@@ -612,8 +627,7 @@ function akeytt( doId ) {
 				}
 			 	// Don't add an accesskey for the watch tab if the watch
 			 	// checkbox is also available.
-				if (a && ((id != 'ca-watch' && id != 'ca-unwatch') ||
-				!(window.location.search.match(/[\?&](action=edit|action=submit)/i)))) {
+				if (a && ((id != 'ca-watch' && id != 'ca-unwatch') || !watchCheckboxExists)) {
 					a.accessKey = ta[id][0];
 					ak = ' ['+tooltipAccessKeyPrefix+ta[id][0]+']';
 				}
@@ -677,48 +691,35 @@ function addRightClickEditHandler(el) {
 	}
 }
 
+var checkboxes;
+var lastCheckbox;
+
 function setupCheckboxShiftClick() {
-	if (document.getElementsByTagName) {
-		var uls = document.getElementsByTagName('ul');
-		var len = uls.length;
-		for (var i = 0; i < len; ++i) {
-			addCheckboxClickHandlers(uls[i]);
-		}
-	}
+	checkboxes = [];
+	lastCheckbox = null;
+	var inputs = document.getElementsByTagName('input');
+	addCheckboxClickHandlers(inputs);
 }
 
-function addCheckboxClickHandlers(ul, start, finish) {
-	if (ul.checkboxHandlersTimer) {
-		clearInterval(ul.checkboxHandlersTimer);
+function addCheckboxClickHandlers(inputs, start) {
+	if ( !start) start = 0;
+
+	var finish = start + 250;
+	if ( finish > inputs.length )
+		finish = inputs.length;
+
+	for ( var i = start; i < finish; i++ ) {
+		var cb = inputs[i];
+		if ( !cb.type || cb.type.toLowerCase() != 'checkbox' )
+			continue;
+		cb.index = checkboxes.push(cb) - 1;
+		cb.onmouseup = checkboxMouseupHandler;
 	}
-	if ( !ul.childNodes ) {
-		return;
-	}
-	var len = ul.childNodes.length;
-	if (len < 2) {
-		return;
-	}
-	start = start || 0;
-	finish = finish || start + 250;
-	if ( finish > len ) { finish = len; }
-	ul.checkboxes = ul.checkboxes || [];
-	ul.lastCheckbox = ul.lastCheckbox || null;
-	for (var i = start; i<finish; ++i) {
-		var child = ul.childNodes[i];
-		if ( child && child.childNodes && child.childNodes[0] ) {
-			var cb = child.childNodes[0];
-			if ( !cb.nodeName || cb.nodeName.toLowerCase() != 'input' ||
-			     !cb.type || cb.type.toLowerCase() != 'checkbox' ) {
-				return;
-			}
-			cb.index = ul.checkboxes.push(cb) - 1;
-			cb.container = ul;
-			cb.onmouseup = checkboxMouseupHandler;
-		}
-	}
-	if (finish < len) {
-	  var f=function(){ addCheckboxClickHandlers(ul, finish, finish+250); };
-	  ul.checkboxHandlersTimer=setInterval(f, 200);
+
+	if ( finish < inputs.length ) {
+		setTimeout( function () {
+			addCheckboxClickHandlers(inputs, finish);
+		}, 200 );
 	}
 }
 
@@ -726,8 +727,8 @@ function checkboxMouseupHandler(e) {
 	if (typeof e == 'undefined') {
 		e = window.event;
 	}
-	if ( !e.shiftKey || this.container.lastCheckbox === null ) {
-		this.container.lastCheckbox = this.index;
+	if ( !e.shiftKey || lastCheckbox === null ) {
+		lastCheckbox = this.index;
 		return true;
 	}
 	var endState = !this.checked;
@@ -735,17 +736,17 @@ function checkboxMouseupHandler(e) {
 		endState = !endState;
 	}
 	var start, finish;
-	if ( this.index < this.container.lastCheckbox ) {
+	if ( this.index < lastCheckbox ) {
 		start = this.index + 1;
-		finish = this.container.lastCheckbox;
+		finish = lastCheckbox;
 	} else {
-		start = this.container.lastCheckbox;
+		start = lastCheckbox;
 		finish = this.index - 1;
 	}
 	for (var i = start; i <= finish; ++i ) {
-		this.container.checkboxes[i].checked = endState;
+		checkboxes[i].checked = endState;
 	}
-	this.container.lastCheckbox = this.index;
+	lastCheckbox = this.index;
 	return true;
 }
 

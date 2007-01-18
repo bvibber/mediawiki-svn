@@ -29,59 +29,62 @@ class ImagePage extends Article {
 	}
 
 	function view() {
-		global $wgOut, $wgShowEXIF;
+		global $wgOut, $wgShowEXIF, $wgRequest, $wgUser;
 
 		$this->img = new Image( $this->mTitle );
 
-		if( $this->mTitle->getNamespace() == NS_IMAGE  ) {
-			if ($wgShowEXIF && $this->img->exists()) {
-				$exif = $this->img->getExifData();
-				$showmeta = count($exif) ? true : false;
-			} else {
-				$exif = false;
-				$showmeta = false;
-			}
+		$diff = $wgRequest->getVal( 'diff' );
+		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
 
-			if ($this->img->exists())
-				$wgOut->addHTML($this->showTOC($showmeta));
+		if ( $this->mTitle->getNamespace() != NS_IMAGE || ( isset( $diff ) && $diffOnly ) )
+			return Article::view();
 
-			$this->openShowImage();
-
-			# No need to display noarticletext, we use our own message, output in openShowImage()
-			if( $this->getID() ) {
-				Article::view();
-			} else {
-				# Just need to set the right headers
-				$wgOut->setArticleFlag( true );
-				$wgOut->setRobotpolicy( 'index,follow' );
-				$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
-				$this->viewUpdates();
-			}
-
-			# Show shared description, if needed
-			if( $this->mExtraDescription ) {
-				$fol = wfMsg( 'shareddescriptionfollows' );
-				if( $fol != '-' ) {
-					$wgOut->addWikiText( $fol );
-				}
-				$wgOut->addHTML( '<div id="shared-image-desc">' . $this->mExtraDescription . '</div>' );
-			}
-
-			$this->closeShowImage();
-			$this->imageHistory();
-			$this->imageLinks();
-			if( $exif ) {
-				global $wgStylePath, $wgStyleVersion;
-				$expand = htmlspecialchars( wfEscapeJsString( wfMsg( 'metadata-expand' ) ) );
-				$collapse = htmlspecialchars( wfEscapeJsString( wfMsg( 'metadata-collapse' ) ) );
-				$wgOut->addHTML( "<h2 id=\"metadata\">" . wfMsgHtml( 'metadata' ) . "</h2>\n" );
-				$wgOut->addWikiText( $this->makeMetadataTable( $exif ) );
-				$wgOut->addHTML(
-					"<script type=\"text/javascript\" src=\"$wgStylePath/common/metadata.js?$wgStyleVersion\"></script>\n" .
-					"<script type=\"text/javascript\">attachMetadataToggle('mw_metadata', '$expand', '$collapse');</script>\n" );
-			}
+		if ($wgShowEXIF && $this->img->exists()) {
+			$exif = $this->img->getExifData();
+			$showmeta = count($exif) ? true : false;
 		} else {
+			$exif = false;
+			$showmeta = false;
+		}
+
+		if ($this->img->exists())
+			$wgOut->addHTML($this->showTOC($showmeta));
+
+		$this->openShowImage();
+
+		# No need to display noarticletext, we use our own message, output in openShowImage()
+		if ( $this->getID() ) {
 			Article::view();
+		} else {
+			# Just need to set the right headers
+			$wgOut->setArticleFlag( true );
+			$wgOut->setRobotpolicy( 'index,follow' );
+			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+			$this->viewUpdates();
+		}
+
+		# Show shared description, if needed
+		if ( $this->mExtraDescription ) {
+			$fol = wfMsg( 'shareddescriptionfollows' );
+			if( $fol != '-' ) {
+				$wgOut->addWikiText( $fol );
+			}
+			$wgOut->addHTML( '<div id="shared-image-desc">' . $this->mExtraDescription . '</div>' );
+		}
+
+		$this->closeShowImage();
+		$this->imageHistory();
+		$this->imageLinks();
+
+		if ( $exif ) {
+			global $wgStylePath, $wgStyleVersion;
+			$expand = htmlspecialchars( wfEscapeJsString( wfMsg( 'metadata-expand' ) ) );
+			$collapse = htmlspecialchars( wfEscapeJsString( wfMsg( 'metadata-collapse' ) ) );
+			$wgOut->addHTML( Xml::element( 'h2', array( 'id' => 'metadata' ), wfMsg( 'metadata' ) ). "\n" );
+			$wgOut->addWikiText( $this->makeMetadataTable( $exif ) );
+			$wgOut->addHTML(
+				"<script type=\"text/javascript\" src=\"$wgStylePath/common/metadata.js?$wgStyleVersion\"></script>\n" .
+				"<script type=\"text/javascript\">attachMetadataToggle('mw_metadata', '$expand', '$collapse');</script>\n" );
 		}
 	}
 
@@ -393,7 +396,7 @@ END
 		}
 		
 		# External editing link
-		$elink = $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'edit-externally' ), 'action=edit&externaledit=true&mode=file' );
+		$elink = $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'edit-externally' ), 'action=edit&externaledit=true&mode=file' );
 		$wgOut->addHtml( '<li>' . $elink . '<div>' . wfMsgWikiHtml( 'edit-externally-help' ) . '</div></li>' );
 		
 		$wgOut->addHtml( '</ul>' );
@@ -449,7 +452,7 @@ END
 	{
 		global $wgUser, $wgOut;
 
-		$wgOut->addHTML( '<h2 id="filelinks">' . wfMsg( 'imagelinks' ) . "</h2>\n" );
+		$wgOut->addHTML( Xml::element( 'h2', array( 'id' => 'filelinks' ), wfMsg( 'imagelinks' ) ) . "\n" );
 
 		$dbr =& wfGetDB( DB_SLAVE );
 		$page = $dbr->tableName( 'page' );
@@ -699,8 +702,9 @@ class ImageHistoryList {
 	}
 
 	function beginImageHistoryList() {
-		$s = "\n<h2 id=\"filehistory\">" . wfMsg( 'imghistory' ) . "</h2>\n" .
-		  "<p>" . wfMsg( 'imghistlegend' ) . "</p>\n".'<ul class="special">';
+		$s = "\n" .
+			Xml::element( 'h2', array( 'id' => 'filehistory' ), wfMsg( 'imghistory' ) ) .
+			"\n<p>" . wfMsg( 'imghistlegend' ) . "</p>\n".'<ul class="special">';
 		return $s;
 	}
 
@@ -713,9 +717,9 @@ class ImageHistoryList {
 		global $wgUser, $wgLang, $wgTitle, $wgContLang;
 
 		$datetime = $wgLang->timeanddate( $timestamp, true );
-		$del = wfMsg( 'deleteimg' );
-		$delall = wfMsg( 'deleteimgcompletely' );
-		$cur = wfMsg( 'cur' );
+		$del = wfMsgHtml( 'deleteimg' );
+		$delall = wfMsgHtml( 'deleteimgcompletely' );
+		$cur = wfMsgHtml( 'cur' );
 
 		if ( $iscur ) {
 			$url = Image::imageUrl( $img );
@@ -734,7 +738,7 @@ class ImageHistoryList {
 			if( $wgUser->getID() != 0 && $wgTitle->userCanEdit() ) {
 				$token = urlencode( $wgUser->editToken( $img ) );
 				$rlink = $this->skin->makeKnownLinkObj( $wgTitle,
-				           wfMsg( 'revertimg' ), 'action=revert&oldimage=' .
+				           wfMsgHtml( 'revertimg' ), 'action=revert&oldimage=' .
 				           urlencode( $img ) . "&wpEditToken=$token" );
 				$dlink = $this->skin->makeKnownLinkObj( $wgTitle,
 				           $del, 'action=delete&oldimage=' . urlencode( $img ) .
@@ -743,7 +747,7 @@ class ImageHistoryList {
 				# Having live active links for non-logged in users
 				# means that bots and spiders crawling our site can
 				# inadvertently change content. Baaaad idea.
-				$rlink = wfMsg( 'revertimg' );
+				$rlink = wfMsgHtml( 'revertimg' );
 				$dlink = $del;
 			}
 		}
@@ -751,7 +755,7 @@ class ImageHistoryList {
 		$userlink = $this->skin->userLink( $user, $usertext ) . $this->skin->userToolLinks( $user, $usertext );
 		$nbytes = wfMsgExt( 'nbytes', array( 'parsemag', 'escape' ),
 			$wgLang->formatNum( $size ) );
-		$widthheight = wfMsg( 'widthheight', $width, $height );
+		$widthheight = wfMsgHtml( 'widthheight', $width, $height );
 		$style = $this->skin->getInternalLinkAttributes( $url, $datetime );
 
 		$s = "<li> ({$dlink}) ({$rlink}) <a href=\"{$url}\"{$style}>{$datetime}</a> . . {$userlink} . . {$widthheight} ({$nbytes})";

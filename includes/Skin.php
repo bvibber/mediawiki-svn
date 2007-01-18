@@ -518,7 +518,7 @@ END;
 			$a['onload'] .= 'setupRightClickEdit()';
 		}
 		$a['class'] = 'ns-'.$wgTitle->getNamespace().' '.($wgContLang->isRTL() ? "rtl" : "ltr").
-		' '.Sanitizer::escapeId( 'page-'.$wgTitle->getPrefixedText() );
+		' '.Sanitizer::escapeClass( 'page-'.$wgTitle->getPrefixedText() );
 		return $a;
 	}
 
@@ -782,13 +782,6 @@ END;
 	function printableLink() {
 		global $wgOut, $wgFeedClasses, $wgRequest;
 
-		$baseurl = $_SERVER['REQUEST_URI'];
-		if( strpos( '?', $baseurl ) == false ) {
-			$baseurl .= '?';
-		} else {
-			$baseurl .= '&';
-		}
-		$baseurl = htmlspecialchars( $baseurl );
 		$printurl = $wgRequest->escapeAppendQuery( 'printable=yes' );
 
 		$s = "<a href=\"$printurl\">" . wfMsg( 'printableversion' ) . '</a>';

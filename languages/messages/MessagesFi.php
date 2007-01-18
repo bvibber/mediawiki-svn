@@ -358,7 +358,7 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'otherlanguages'      => 'Muut kielet',
 'redirectedfrom'      => 'Uudelleenohjattu sivulta $1',
 'redirectpagesub'     => 'Uudelleenohjaussivu',
-'lastmodifiedat'      => 'Sivua on viimeksi muutettu $2 kello $1.',
+'lastmodifiedat'      => 'Sivua on viimeksi muutettu $1 kello $2.',
 'viewcount'           => 'Tämä sivu on näytetty {{PLURAL:$1|yhden kerran|$1 kertaa}}.',
 'copyright'           => 'Sisältö on käytettävissä lisenssillä $1.',
 'protectedpage'       => 'Suojattu sivu',
@@ -572,10 +572,10 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'missingsummary'      => 'Et ole antanut yhteenvetoa. Jos valitset Tallenna uudelleen, niin muokkauksesi tallennetaan ilman yhteenvetoa.',
 'missingcommenttext'  => 'Anna yhteenveto alle.',
 'missingcommentheader'=> 'Et ole antanut otsikkoa kommentillesi. Valitse <em>Tallenna</em>, jos et halua antaa otsikkoa.',
-'summary-preview'     => 'Yhteenvedon esikatelu',
+'summary-preview'     => 'Yhteenvedon esikatselu',
 'subject-preview'     => 'Otsikon esikatselu',
 'blockedtitle'        => 'Pääsy estetty',
-'blockedtext'         => 'Yritit muokata sivua tai luoda uuden sivun. $1 on estänyt pääsysi {{GRAMMAR:illative|{{SITENAME}}}} joko käyttäjänimesi tai IP-osoitteesi perusteella. Annettu syy estolle on: <br />\'\'$2\'\'<br />Jos olet sitä mieltä, että sinut on estetty syyttä, voit keskustella asiasta [[Project:Ylläpitäjät|ylläpitäjän]] kanssa. Huomaa, ettet voi lähettää sähköpostia {{GRAMMAR:genitive|{{SITENAME}}}} kautta, ellet ole asettanut olemassaolevaa sähköpostiosoitetta [[Special:Preferences|asetuksissa]]. Jos IP-osoitteesi on dynaaminen, eli se voi toisinaan vaihtua, olet saattanut saada estetyn osoitteen käyttöösi, ja esto vaikuttaa nyt sinuun. Jos tämä ongelma toistuu jatkuvasti, ota yhteyttä Internet-palveluntarjoajaasi tai {{GRAMMAR:genitive|{{SITENAME}}}} ylläpitäjään. IP-osoitteesi on $3 ja estotunnus on #$5.',
+'blockedtext'         => 'Yritit muokata sivua tai luoda uuden sivun. $1 on estänyt pääsysi {{GRAMMAR:illative|{{SITENAME}}}} joko käyttäjänimesi tai IP-osoitteesi perusteella. Annettu syy estolle on: <br />\'\'$2\'\'<br />Jos olet sitä mieltä, että sinut on estetty syyttä, voit keskustella asiasta [[Project:Ylläpitäjät|ylläpitäjän]] kanssa. Huomaa, ettet voi lähettää sähköpostia {{GRAMMAR:genitive|{{SITENAME}}}} kautta, ellet ole asettanut olemassa olevaa sähköpostiosoitetta [[Special:Preferences|asetuksissa]]. Jos IP-osoitteesi on dynaaminen, eli se voi toisinaan vaihtua, olet saattanut saada estetyn osoitteen käyttöösi, ja esto vaikuttaa nyt sinuun. Jos tämä ongelma toistuu jatkuvasti, ota yhteyttä Internet-palveluntarjoajaasi tai {{GRAMMAR:genitive|{{SITENAME}}}} ylläpitäjään. IP-osoitteesi on $3 ja estotunnus on #$5.',
 'blockedoriginalsource' => 'Sivun ”$1” lähdekoodi:',
 'blockededitsource'   => 'Muokkauksesi sivuun ”$1”:',
 'whitelistedittitle'  => 'Sisäänkirjautuminen vaaditaan muokkaamiseen',
@@ -975,28 +975,30 @@ Huomaa, että {{GRAMMAR:inessive|{{SITENAME}}}} muut voivat muokata tai poistaa 
 
 # Statistics
 #
-'statistics'          => 'Tilastoja',
-'sitestats'           => 'Sivuston tilastoja',
-'userstats'           => 'Käyttäjätilastoja',
-'sitestatstext'       => 'Tietokannassa on yhteensä \'\'\'$1\'\'\' sivua. Tähän on laskettu mukaan keskustelusivut, {{GRAMMAR:genitive|{{SITENAME}}}} erikoissivut, hyvin lyhyet sivut, uudelleenohjaukset sekä muita sivuja, joita ei voi pitää kunnollisina sivuina. Nämä poislukien tietokannassa on \'\'\'$2\'\'\' sivua.
+'statistics'          => 'Tilastot',
+'sitestats'           => 'Sivuston tilastot',
+'userstats'           => 'Käyttäjätilastot',
+'sitestatstext'       => 'Tietokannassa on yhteensä $1 sivua. Tähän on laskettu mukaan keskustelusivut, {{GRAMMAR:genitive|{{SITENAME}}}} projektisivut, hyvin lyhyet sivut, uudelleenohjaukset sekä muita sivuja, joita ei voi pitää kunnollisina sivuina. Nämä poislukien tietokannassa on \'\'\'$2\'\'\' sivua.
 
 {{GRAMMAR:illative|{{SITENAME}}}} on tallennettu \'\'\'$8\'\'\' tiedostoa.
 
 Sivuja on katsottu yhteensä \'\'\'$3\'\'\' kertaa ja muokattu \'\'\'$4\'\'\' kertaa. Keskimäärin yhtä sivua on muokattu \'\'\'$5\'\'\' kertaa, ja muokkausta kohden sivua on katsottu keskimäärin \'\'\'$6\'\'\' kertaa.
 
-Ohjelmiston ylläpitotöitä on jonossa \'\'\'$7\'\'\' kappaletta.',
+Ohjelmiston suorittamia ylläpitotöitä on jonossa \'\'\'$7\'\'\' kappaletta.',
 'userstatstext'       => 'Rekisteröityneitä käyttäjiä on \'\'\'$1\'\'\'. Näistä \'\'\'$2\'\'\' ($4%) on ylläpitäjiä ($5).',
-'statistics-mostpopular' => 'Eniten katsellut sivut',
+'statistics-mostpopular' => 'Katsotuimmat sivut',
 
 'disambiguations'     => 'Linkit täsmennyssivuihin',
 'disambiguationspage' => 'Project:Linkkejä_täsmennyssivuihin',
-'disambiguationstext' => 'Seuraavat artikkelit linkittävät <i>täsmennyssivuun</i>. Sen sijasta niiden pitäisi linkittää asianomaiseen aiheeseen.<br />Sivua kohdellaan täsmennyssivuna jos siihen on linkki sivulta $1.<br />Linkkejä muihin nimiavaruuksiin <i>ei</i> ole listattu tässä.',
+'disambiguations-text' => 'Seuraavat artikkelit linkittävät <i>täsmennyssivuun</i>. Täsmennyssivun sijaan niiden pitäisi linkittää asianomaiseen aiheeseen.<br />Sivua kohdellaan täsmennyssivuna jos se käyttää mallinetta, johon on linkki sivulta [[MediaWiki:disambiguationspage]].',
 
 'doubleredirects'     => 'Kaksinkertaiset uudelleenohjaukset',
 'doubleredirectstext' => '<b>Huomio:</b> Tässä listassa saattaa olla virheitä. Yleensä kyseessä on sivu, jossa ensimmäisen #REDIRECTin jälkeen on tekstiä.<br />\nJokaisella rivillä on linkit ensimmäiseen ja toiseen uudelleenohjaukseen sekä toisen uudelleenohjauksen kohteen ensimmäiseen riviin, eli yleensä ”oikeaan” kohteeseen, johon ensimmäisen uudelleenohjauksen pitäisi osoittaa.',
 
 'brokenredirects'     => 'Virheelliset uudelleenohjaukset',
 'brokenredirectstext' => 'Seuraavat uudelleenohjaukset on linkitetty artikkeleihin, joita ei ole olemassa.',
+'brokenredirects-edit'   => '(muokkaa)',
+'brokenredirects-delete' => '(poista)',
 
 # Miscellaneous special pages
 #
@@ -1064,7 +1066,7 @@ Ohjelmiston ylläpitotöitä on jonossa \'\'\'$7\'\'\' kappaletta.',
 # No reason to overwrite
 'alphaindexline'      => '$1…$2',
 'version'             => 'Versio',
-'log'                 => 'lokit',
+'log'                 => 'Lokit',  # XXX: don't make this lowercase, it messed up the sorting on Special:Specialpages
 'alllogstext'         => 'Yhdistetty lokien näyttö. Voit rajoittaa listaa valitsemalla lokityypin, käyttäjän tai sivun johon muutos on kohdistunut.',
 'logempty'            => 'Ei tapahtumia lokissa.',
 
@@ -1111,7 +1113,7 @@ Ohjelmiston ylläpitotöitä on jonossa \'\'\'$7\'\'\' kappaletta.',
 'watchlistfor'        => 'käyttäjälle <b>$1</b>',
 'nowatchlist'         => 'Tarkkailulistallasi ei ole sivuja.',
 'watchlistanontext'   => 'Sinun täytyy $1, jos haluat käyttää tarkkailulistaa.',
-'watchlistcount'      => 'Tarkkailulistallasi on <b>$1</b> sivua, keskustelusivut mukaanlukien.',
+'watchlistcount'      => 'Tarkkailulistallasi on <b>$1</b> sivua, keskustelusivut mukaan lukien.',
 'clearwatchlist'      => 'Tarkkailulistan tyhjentäminen',
 'watchlistcleartext'  => 'Haluatko tyhjentää tarkkailulistan?',
 'watchlistclearbutton'=> 'Tyhjennä tarkkailusta',
@@ -1249,10 +1251,10 @@ Palaute ja lisäapu osoitteessa:
 'undeletepagetext'    => 'Seuraavat sivut on poistettu, mutta ne löytyvät vielä arkistosta, joten ne ovat palautettavissa. Arkisto saatetaan tyhjentää aika ajoin.',
 'undeleteextrahelp'  => 'Palauta sivu valitsemalla <b><i>Palauta</i></b>. Voit palauttaa versiota valikoivasti valitsemalla vain niiden versioiden valintalaatikot, jotka haluat palauttaa.',
 'undeletearticle'     => 'Palauta poistettu sivu',
-'undeleterevisions'   => '$1 versiota arkistoitu.',
+'undeleterevisions'   => '{{PLURAL:$1|yksi versio|$1 versiota}} arkistoitu.',
 'undeletehistory'     => 'Jos palautat sivun, kaikki versiot lisätään sivun historiaan. Jos uusi sivu samalla nimellä on luotu poistamisen jälkeen, palautetut versiot lisätään sen historiaan, ja olemassa olevaa versiota ei korvata automaattisesti.',
 'undeletehistorynoadmin' => 'Tämä sivu on poistettu. Syy sivun poistamiseen näkyy yhteenvedossa, jossa on myös tiedot, ketkä ovat muokanneet tätä sivua ennen poistamista. Sivujen varsinainen sisältö on vain ylläpitäjien luettavissa.',
-'undeleterevision'    => 'Poistettu versio hetkellä $1',
+'undelete-revision'    => 'Poistettu sivu $1 hetkellä $2',
 'undeleterevision-missing' => 'Virheellinen tai puuttuva versio. Se on saatettu palauttaa tai poistaa arkistosta.',
 'undeletebtn'         => 'Palauta',
 'undeletereset'       => 'Tyhjennä',
@@ -1265,6 +1267,12 @@ Palaute ja lisäapu osoitteessa:
 'undeletedpage'       => '<big>\'\'\'”$1” on palautettu.\'\'\'</big>
 
 [[Special:Log/delete|Poistolokista]] löydät listan viimeisimmistä poistoista ja palautuksista.',
+'undelete-header'     => '[[Special:Log/delete|poistolokissa]] on lista viimeisimmistä poistoista.',
+'undelete-search-box' => 'Etsi poistettuja sivuja',
+'undelete-search-prefix' => 'Näytä sivut, jotka alkavat merkkijonolla:',
+'undelete-search-submit' => 'Hae',
+'undelete-no-results' => 'Poistoarkistosta ei löytynyt haettuja sivuja.',
+
 
 'namespace'           => 'Nimiavaruus:',
 'invert'              => 'Käännä nimiavaruusvalinta päinvastaiseksi',
@@ -1316,6 +1324,10 @@ Palaute ja lisäapu osoitteessa:
 'badipaddress'        => 'IP-osoite on väärin muotoiltu.',
 'blockipsuccesssub'   => 'Esto onnistui',
 'blockipsuccesstext'  => 'Käyttäjä tai IP-osoite \'\'\'$1\'\'\' on estetty.<br />Nykyiset estot löytyvät [[Special:Ipblocklist|estolistalta]].',
+'ipb-unblock-addr'    => 'Poista käyttäjän $1 esto',
+'ipb-unblock'         => 'Poista käyttäjän tai IP-osoitteen muokkausesto',
+'ipb-blocklist-addr'  => 'Näytä käyttäjän $1 estot',
+'ipb-blocklist'       => 'Näytä estot',
 'unblockip'           => 'Muokkauseston poisto',
 'unblockiptext'       => 'Tällä lomakkeella voit poistaa käyttäjän tai IP-osoitteen muokkauseston.',
 'ipusubmit'           => 'Poista esto',
@@ -1333,7 +1345,7 @@ Palaute ja lisäapu osoitteessa:
 'contribslink'        => 'muokkaukset',
 'autoblocker'         => 'Olet automaattisesti estetty, koska jaat IP-osoitteen käyttäjän $1 kanssa. Eston syy: $2.', // TODO: IS WIKIMARKUP?
 'blocklogpage'        => 'Estoloki',
-'blocklogentry'       => 'esti käyttäjän tai IP-osoitteen $1. Eston kesto: $2 $3',
+'blocklogentry'       => 'esti käyttäjän tai IP-osoitteen $1. Eston kesto $2 ($3)',
 'blocklogtext'        => 'Tässä on loki muokkausestoista ja niiden purkamisista. Automaattisesti estettyjä IP-osoitteita ei kirjata. Tutustu [[Special:Ipblocklist|estolistaan]] nähdäksesi listan tällä hetkellä voimassa olevista estoista.',
 'unblocklogentry'     => 'poisti käyttäjältä $1 muokkauseston',
 'block-log-flags-anononly' => 'vain kirjautumattomat käyttäjät',
@@ -1372,30 +1384,16 @@ Palaute ja lisäapu osoitteessa:
 
 
 # Make sysop
-'makesysoptitle'      => 'Tee käyttäjästä ylläpitäjä',
-'makesysoptext'       => 'Byrokraatit voivat tällä lomakkeella tehdä käyttäjistä ylläpitäjiä ja byrokraatteja. Kirjoita laatikkoon sen käyttäjän nimi, jolle haluat antaa oikeuksia.',
-'makesysopname'       => 'Käyttäjän nimi:',
-'makesysopsubmit'     => 'Tee käyttäjästä ylläpitäjä',
-'makesysopok'         => 'Käyttäjä <b>$1</b> on nyt ylläpitäjä.',
-'makesysopfail'       => 'Käyttäjästä <b>$1</b> ei voitu tehdä ylläpitäjää. Kirjoititko nimen oikein?', // TODO: NOWIKIMARKUP
-'setbureaucratflag'   => 'Tee käyttäjästä myös byrokraatti',
 'rightslog'           => 'Käyttöoikeusloki',
 'rightslogtext'       => 'Alla on loki on käyttäjien käyttöoikeuksien muutoksista.',
 'rightslogentry'      => 'Käyttäjän [[$1]] oikeudet muutettiin ryhmistä $2 ryhmiin $3',
-'rights'              => 'Oikeudet:',
-'set_user_rights'     => 'Aseta käyttäjän oikeudet',
-'user_rights_set'     => 'Käyttäjän <b>$1</b> oikeudet päivitetty.',
-'set_rights_fail'     => 'Käyttäjän <b>$1</b> oikeuksia ei voita asettaa. Kirjoititko nimen oikein?',
-'makesysop'           => 'Tee käyttäjästä ylläpitäjä',
-'already_sysop'       => 'Käyttäjä on jo ylläpitäjä',
-'already_bureaucrat'  => 'Käyttäjä on jo byrokraatti',
 'rightsnone'          => '(ei oikeuksia)',
 
 
 # Move page
 #
 'movepage'            => 'Siirrä sivu',
-'movepagetext'        => 'Alla olevalla lomakkeella voit nimetä uudelleen sivuja, jolloin niiden koko historia siirtyy uuden nimen alle. Vanhasta sivusta tulee uudelleenohjaussivu, joka osoittaa uuteen sivuun. Vanhaan sivuun suunnattuja linkkejä ei muuteta, joten muista tehdä tarkistukset kaksinkertaisten tai rikkinäisten uudellenohjausten varalta. \'\'\'Olet vastuussa siitä, että linkit osoittavat sinne, mihin niiden on tarkoituskin osoittaa.\'\'\'<br \>Huomaa, että sivua \'\'\'ei\'\'\' siirretä mikäli uusi otsikko on olemassaolevan sivun käytössä, paitsi milloin kyseessä on tyhjä sivu tai uudelleenohjaus, jolla ei ole muokkaushistoriaa. Tämä tarkoittaa sitä, että voit siirtää sivun takaisin vanhalle nimelleen mikäli teit virheen, mutta et voi kirjoittaa olemassa olevan sivun päälle. Jos sivu tarvitsee siirtää olemassa olevan sivun päälle, ota yhteyttä [[Special:Listusers/sysop|ylläpitäjään]].',
+'movepagetext'        => 'Alla olevalla lomakkeella voit nimetä uudelleen sivuja, jolloin niiden koko historia siirtyy uuden nimen alle. Vanhasta sivusta tulee uudelleenohjaussivu, joka osoittaa uuteen sivuun. Vanhaan sivuun suunnattuja linkkejä ei muuteta, joten muista tehdä tarkistukset kaksinkertaisten tai rikkinäisten uudelleenohjausten varalta. \'\'\'Olet vastuussa siitä, että linkit osoittavat sinne, mihin niiden on tarkoituskin osoittaa.\'\'\'<br \>Huomaa, että sivua \'\'\'ei\'\'\' siirretä mikäli uusi otsikko on olemassa olevan sivun käytössä, paitsi milloin kyseessä on tyhjä sivu tai uudelleenohjaus, jolla ei ole muokkaushistoriaa. Tämä tarkoittaa sitä, että voit siirtää sivun takaisin vanhalle nimelleen mikäli teit virheen, mutta et voi kirjoittaa olemassa olevan sivun päälle. Jos sivu tarvitsee siirtää olemassa olevan sivun päälle, ota yhteyttä [[Special:Listusers/sysop|ylläpitäjään]].',
 'movepagetalktext'    => 'Sivuun mahdollisesti kytketty keskustelusivu siirretään automaattisesti, \'\'\'paitsi jos\'\'\':
 *Siirrät sivua nimiavaruudesta toiseen
 *Kohdesivulla on olemassa keskustelusivu, joka ei ole tyhjä, tai
@@ -1613,6 +1611,12 @@ Näissä tapauksissa sivut täytyy siirtää tai yhdistää käsin.',
 'tooltip-save'                    => 'Tallenna muokkaukset',
 'tooltip-search'                  => 'Etsi {{GRAMMAR:elative|{{SITENAME}}}}',
 'tooltip-watch'                   => 'Lisää tämä sivu tarkkailulistaan',
+
+# Patrol log
+'patrol-log-page' => 'Muutostentarkastusloki',
+'patrol-log-line' => 'merkitsi sivun $2 muutoksen $1 tarkastetuksi $3',
+'patrol-log-auto' => '(automaattinen)',
+'patrol-log-diff' => 'r$1',
 
 
 # image deletion

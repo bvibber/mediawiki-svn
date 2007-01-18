@@ -920,6 +920,12 @@ $messages = array(
 'grouppage-sysop'      => '{{ns:project}}:מפעיל מערכת',
 'grouppage-bureaucrat' => '{{ns:project}}:ביורוקרט',
 
+# User rights log
+'rightslog'      => 'יומן תפקידים',
+'rightslogtext'  => 'זהו יומן השינויים בתפקידי המשתמשים.',
+'rightslogentry' => 'שינה את ההרשאות של "$1" מההרשאות $2 להרשאות $3',
+'rightsnone'     => '(ללא הרשאות)',
+
 # Recent changes
 'changes'                           => 'שינויים',
 'recentchanges'                     => 'שינויים אחרונים',
@@ -1089,21 +1095,19 @@ $messages = array(
 'userstatstext'          => "ישנם '''$1''' [[{{ns:special}}:Listusers|משתמשים רשומים]] באתר, '''$2''' (או $4%) מתוכם הם $5.",
 'statistics-mostpopular' => 'הדפים הנצפים ביותר',
 
-'disambiguations'     => 'דפי פירושונים',
-'disambiguationspage' => '{{ns:template}}:פירושונים',
-'disambiguationstext' => '<p>הדפים שלהלן מקשרים אל <b>דפי פירושונים</b>. תפקיד דפים אלה הוא להפנות לדף הנושא הרלוונטי.</p>
-
-<p>אנו מתייחסים לדף כדף פירושונים אם הוא מקושר לדף $1.</p>
-
-<p>קישורים המגיעים לדף ממרחבי שם אחרים <b>אינם</b> מוצגים כאן.</p>',
+'disambiguations'      => 'דפי פירושונים',
+'disambiguationspage'  => '{{ns:template}}:פירושונים',
+'disambiguations-text' => "הדפים הבאים מקשרים ל'''דפי פירושונים'''. עליהם לקשר לדף הנושא הרלוונטי במקום זאת.<br />הדף נחשב לדף פירושונים אם הוא משתמש בתבנית המקושרת מההודעה [[{{ns:mediawiki}}:Disambiguationspage|disambiguationspage]].",
 
 'doubleredirects'     => 'הפניות כפולות',
 'doubleredirectstext' => '<p><b>שימו לב</b>: רשימה זו עלולה לכלול דפים שנמצאו בטעות – כלומר, דפים שיש בהם טקסט נוסף הכולל קישורים מתחת ל־#REDIRECT הראשון.</p>
 
 <p>כל שורה מכילה קישור להפניות הראשונה והשנייה, וכן את שורת הטקסט הראשונה של ההפניה השנייה, שלרוב נמצא בה היעד האמיתי של ההפניה, אליו אמורה ההפניה הראשונה להצביע.</p>',
 
-'brokenredirects'     => 'הפניות לא תקינות',
-'brokenredirectstext' => 'ההפניות שלהלן מפנות לדפים שאינם קיימים:',
+'brokenredirects'        => 'הפניות לא תקינות',
+'brokenredirectstext'    => 'ההפניות שלהלן מפנות לדפים שאינם קיימים:',
+'brokenredirects-edit'   => '(עריכה)',
+'brokenredirects-delete' => '(מחיקה)',
 
 # Miscellaneous special pages
 'nbytes'                  => '{{plural:$1|בית אחד|$1 בתים}}',
@@ -1361,7 +1365,7 @@ $NEWPAGE
 
 אם כבר יש דף חדש באותו השם, הגרסאות והשינויים יופיעו רק בדף ההיסטוריה שלו, והגרסה הנוכחית של הדף לא תוחלף אוטומטית.',
 'undeletehistorynoadmin'   => 'דף זה נמחק. הסיבה למחיקה מוצגת בתקציר מטה, ביחד עם פרטים על המשתמשים שערכו את הדף לפני מחיקתו. הטקסט של גרסאות אלו זמין רק למפעילי מערכת.',
-'undeleterevision'         => 'נמחקו גרסאות החל מ־$1.',
+'undelete-revision'        => 'גרסה שנמחקה מהדף $1 מתאריך $2:',
 'undeleterevision-missing' => 'הגרסה שגויה או חסרה. ייתכן שמדובר בקישור שבור, או שהגרסה שוחזרה או הוסרה מהארכיון.',
 'undeletebtn'              => 'שיחזור',
 'undeletereset'            => 'איפוס',
@@ -1374,6 +1378,11 @@ $NEWPAGE
 'undeletedpage'            => "'''הדף $1 שוחזר בהצלחה.'''
 
 ראו את [[{{ns:special}}:Log/delete|יומן המחיקות]] לרשימה של מחיקות ושיחזורים אחרונים.",
+'undelete-header'          => 'ראו את [[{{ns:special}}:Log/delete|יומן המחיקות]] לדפים שנמחקו לאחרונה.',
+'undelete-search-box'      => 'חיפושפ דפים שנמחקו',
+'undelete-search-prefix'   => 'הצגת דפים החל מ:',
+'undelete-search-submit'   => 'חיפוש',
+'undelete-no-results'      => 'לא נמצאו דפים תואמים בארכיון המחיקות.',
 
 # Namespace form on various pages
 'namespace' => 'מרחב שם:',
@@ -1431,6 +1440,10 @@ $NEWPAGE
 'blockipsuccesstext'          => 'המשתמש [[{{ns:special}}:Contributions/$1|$1]] נחסם.
 
 ראו את [[{{ns:special}}:Ipblocklist|רשימת המשתמשים החסומים]] כדי לצפות בחסימות.',
+'ipb-unblock-addr'            => 'הסרת חסימה של $1',
+'ipb-unblock'                 => 'הסרת חסימה של שם משתמש או כתובת IP',
+'ipb-blocklist-addr'          => 'הצגת החסימות הנוכחיות של $1',
+'ipb-blocklist'               => 'הצגת החסימות הנוכחיות',
 'unblockip'                   => 'שחרר משתמש',
 'unblockiptext'               => 'השתמשו בטופס שלהלן כדי להחזיר את הרשאות הכתיבה למשתמש או כתובת IP חסומים.',
 'ipusubmit'                   => 'שחרר משתמש זה',
@@ -1489,26 +1502,6 @@ $NEWPAGE
 'unlockdbsuccesstext' => 'שוחררה הנעילה של בסיס הנתונים',
 'lockfilenotwritable' => 'קובץ נעילת מסד הנתונים אינו ניתן לכתיבה. כדי שאפשר יהיה לנעול את מסד הנתונים או לבטל את נעילתו, שרת האינטרנט צריך לקבל הרשאות לכתוב אליו.',
 'databasenotlocked'   => 'מסד הנתונים אינו נעול.',
-
-# Make sysop
-'makesysoptitle'     => 'הפוך משתמש למפעיל מערכת',
-'makesysoptext'      => 'דף זה משמש ביורוקרטים להפיכת משתמש רגיל למפעיל מערכת. אנא הקישו את שם המשתמש בתיבת הטקסט ולחצו על הכפתור על מנת להפוך את המשתמש למפעיל מערכת.',
-'makesysopname'      => 'שם המשתמש:',
-'makesysopsubmit'    => 'הפוך משתמש זה למפעיל מערכת',
-'makesysopok'        => "'''המשתמש \"\$1\" הוא עכשיו מפעיל מערכת.'''",
-'makesysopfail'      => "'''לא ניתן היה למנות את המשתמש \"\$1\" למפעיל מערכת.''' (האם הקלדתם נכונה את שם המשתמש?)",
-'setbureaucratflag'  => 'הפוך משתמש זה לביורוקרט.',
-'rightslog'          => 'יומן תפקידים',
-'rightslogtext'      => 'זהו יומן השינויים בתפקידי המשתמשים.',
-'rightslogentry'     => 'שינה את ההרשאות של "$1" מההרשאות $2 להרשאות $3',
-'rights'             => 'הרשאות:',
-'set_user_rights'    => 'קבע הרשאות משתמש',
-'user_rights_set'    => "'''הרשאות המשתמש \"\$1\" עודכנו.'''",
-'set_rights_fail'    => "'''שינוי הרשאות המשתמש \"\$1\" נכשל.''' (האם הקלדתם נכונה את שם המשתמש?)",
-'makesysop'          => 'הפוך משתמש למפעיל מערכת',
-'already_sysop'      => 'משתמש זה הוא כבר מפעיל מערכת',
-'already_bureaucrat' => 'משתמש זה הוא כבר ביורוקרט',
-'rightsnone'         => '(ללא הרשאות)',
 
 # Move page
 'movepage'                => 'העברת דף',
@@ -1741,6 +1734,12 @@ $NEWPAGE
 'markedaspatrollederror'              => 'לא יכול לסמן כבדוק',
 'markedaspatrollederrortext'          => 'עליכם לציין גרסה שתציינו כבדוקה.',
 'markedaspatrollederror-noautopatrol' => 'אינכם מורשים לסמן את השינויים של עצמכם כבדוקים.',
+
+# Patrol log
+'patrol-log-page' => 'יומן שינויים בדוקים',
+'patrol-log-line' => 'סימן את  $1 בדף $2 כבדוקה $3',
+'patrol-log-auto' => '(אוטומטית)',
+'patrol-log-diff' => 'גרסה $1',
 
 # Image deletion
 'deletedrevision' => 'מחק גרסה ישנה $1.',

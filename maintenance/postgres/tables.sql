@@ -95,6 +95,7 @@ CREATE TABLE revision (
   rev_deleted     CHAR         NOT NULL  DEFAULT '0'
 );
 CREATE UNIQUE INDEX revision_unique ON revision (rev_page, rev_id);
+CREATE INDEX rev_text_id_idx        ON revision (rev_text_id);
 CREATE INDEX rev_timestamp_idx      ON revision (rev_timestamp);
 CREATE INDEX rev_user_idx           ON revision (rev_user);
 CREATE INDEX rev_user_text_idx      ON revision (rev_user_text);
@@ -438,7 +439,6 @@ CREATE INDEX job_cmd_namespace_title ON job (job_cmd, job_namespace, job_title);
 -- Tsearch2 2 stuff. Will fail if we don't have proper access to the tsearch2 tables
 
 ALTER TABLE page ADD titlevector tsvector;
-CREATE INDEX ts2_page_title ON page USING gist(titlevector);
 CREATE FUNCTION ts2_page_title() RETURNS TRIGGER LANGUAGE plpgsql AS
 $mw$
 BEGIN
@@ -456,7 +456,6 @@ CREATE TRIGGER ts2_page_title BEFORE INSERT OR UPDATE ON page
 
 
 ALTER TABLE pagecontent ADD textvector tsvector;
-CREATE INDEX ts2_page_text ON pagecontent USING gist(textvector);
 CREATE FUNCTION ts2_page_text() RETURNS TRIGGER LANGUAGE plpgsql AS
 $mw$
 BEGIN
@@ -471,6 +470,11 @@ $mw$;
 
 CREATE TRIGGER ts2_page_text BEFORE INSERT OR UPDATE ON pagecontent
   FOR EACH ROW EXECUTE PROCEDURE ts2_page_text();
+
+-- These are added by the setup script due to version compatibility issues
+-- If using 8.1, switch from "gin" to "gist"
+-- CREATE INDEX ts2_page_title ON page USING gin(titlevector);
+-- CREATE INDEX ts2_page_text ON pagecontent USING gin(textvector);
 
 CREATE FUNCTION add_interwiki (TEXT,INT,CHAR) RETURNS INT LANGUAGE SQL AS
 $mw$

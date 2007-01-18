@@ -240,6 +240,7 @@ function __autoload($className) {
 		'UserloginTemplate' => 'includes/templates/Userlogin.php',
 		'Language' => 'languages/Language.php',
 		'PasswordResetForm' => 'includes/SpecialResetpass.php',
+		'PatrolLog' => 'includes/PatrolLog.php',
 
 		// API classes
 		'ApiBase' => 'includes/api/ApiBase.php',
@@ -272,6 +273,7 @@ function __autoload($className) {
 		'ApiResult' => 'includes/api/ApiResult.php',
 	);
 	
+	wfProfileIn( __METHOD__ );
 	if ( isset( $localClasses[$className] ) ) {
 		$filename = $localClasses[$className];
 	} elseif ( isset( $wgAutoloadClasses[$className] ) ) {
@@ -288,6 +290,7 @@ function __autoload($className) {
 		}
 		if ( !$filename ) {
 			# Give up
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 	}
@@ -298,6 +301,7 @@ function __autoload($className) {
 		$filename = "$IP/$filename";
 	}
 	require( $filename );
+	wfProfileOut( __METHOD__ );
 }
 
 function wfLoadAllExtensions() {

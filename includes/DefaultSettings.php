@@ -1055,6 +1055,11 @@ $wgAutoConfirmAge = 0;
 //$wgAutoConfirmAge = 600;     // ten minutes
 //$wgAutoConfirmAge = 3600*24; // one day
 
+# Number of edits an account requires before it is autoconfirmed
+# Passing both this AND the time requirement is needed
+$wgAutoConfirmCount = 0;
+//$wgAutoConfirmCount = 50;
+
 
 
 # Proxy scanner settings
@@ -1106,7 +1111,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '44';
+$wgStyleVersion = '51';
 
 
 # Server-side caching:
@@ -1514,6 +1519,8 @@ if( !isset( $wgCommandLineMode ) ) {
 	$wgCommandLineMode = false;
 }
 
+/** For colorized maintenance script output, is your terminal background dark ? */
+$wgCommandLineDarkBg = false;
 
 #
 # Recent changes settings
@@ -1623,7 +1630,17 @@ $wgExportAllowListContributors = false ;
 /** Text matching this regular expression will be recognised as spam
  * See http://en.wikipedia.org/wiki/Regular_expression */
 $wgSpamRegex = false;
-/** Similarly if this function returns true */
+/** Similarly you can get a function to do the job. The function will be given
+ * the following args:
+ *   - a Title object for the article the edit is made on
+ *   - the text submitted in the textarea (wpTextbox1)
+ *   - the section number.
+ * The return should be boolean indicating whether the edit matched some evilness:
+ *  - true : block it
+ *  - false : let it through
+ *
+ * For a complete example, have a look at the SpamBlacklist extension.
+ */
 $wgFilterCallback = false;
 
 /** Go button goes straight to the edit screen if the article doesn't exist. */
@@ -1670,7 +1687,7 @@ $wgDefaultSkin = 'monobook';
  * Settings added to this array will override the default globals for the user
  * preferences used by anonymous visitors and newly created accounts.
  * For instance, to disable section editing links:
- *  $wgDefaultUserOptions ['editsection'] = 0;
+ * $wgDefaultUserOptions ['editsection'] = 0;
  *
  */
 $wgDefaultUserOptions = array( 
@@ -1995,7 +2012,9 @@ $wgLogTypes = array( '',
 	'delete',
 	'upload',
 	'move',
-	'import' );
+	'import',
+	'patrol',
+);
 
 /**
  * Lists the message key string for each log type. The localized messages
@@ -2011,7 +2030,9 @@ $wgLogNames = array(
 	'delete'  => 'dellogpage',
 	'upload'  => 'uploadlogpage',
 	'move'    => 'movelogpage',
-	'import'  => 'importlogpage' );
+	'import'  => 'importlogpage',
+	'patrol'  => 'patrol-log-page',
+);
 
 /**
  * Lists the message key string for descriptive text to be shown at the
@@ -2027,7 +2048,9 @@ $wgLogHeaders = array(
 	'delete'  => 'dellogpagetext',
 	'upload'  => 'uploadlogpagetext',
 	'move'    => 'movelogpagetext',
-	'import'  => 'importlogpagetext', );
+	'import'  => 'importlogpagetext',
+	'patrol'  => 'patrol-log-header',
+);
 
 /**
  * Lists the message key string for formatting individual events of each
@@ -2049,7 +2072,8 @@ $wgLogActions = array(
 	'move/move'         => '1movedto2',
 	'move/move_redir'   => '1movedto2_redir',
 	'import/upload'     => 'import-logentry-upload',
-	'import/interwiki'  => 'import-logentry-interwiki' );
+	'import/interwiki'  => 'import-logentry-interwiki',
+);
 
 /**
  * Experimental preview feature to fetch rendered text
@@ -2247,7 +2271,7 @@ $wgTrustedMediaFormats= array(
 	MEDIATYPE_VIDEO,  //all plain video formats
 	"image/svg",  //svg (only needed if inline rendering of svg is not supported)
 	"application/pdf",  //PDF files
-	#"application/x-shockwafe-flash", //flash/shockwave movie
+	#"application/x-shockwave-flash", //flash/shockwave movie
 );
 
 /**
