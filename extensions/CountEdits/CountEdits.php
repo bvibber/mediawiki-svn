@@ -10,8 +10,12 @@
 
 if( defined( 'MEDIAWIKI' ) ) {
 
-	$wgExtensionCredits['specialpage'][] = array( 'name' => 'Count Edits', 'author' => 'Rob Church' );
 	$wgExtensionFunctions[] = 'efCountEdits';
+	$wgExtensionCredits['specialpage'][] = array(
+			'name' => 'Count Edits',
+			'author' => 'Rob Church',
+			'description' => 'Special page that counts user edits and provides a top-ten contributor list',
+	);
 	
 	/* This line will have no effect on pre-1.7 wikis */
 	$wgAutoloadClasses['SpecialCountEdits'] = dirname( __FILE__ ) . '/CountEdits.page.php';

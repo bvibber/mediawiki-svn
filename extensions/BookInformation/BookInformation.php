@@ -23,7 +23,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'Book Information',
 		'author' => 'Rob Church',
-		'desc' => 'Expands [[Special:Booksources]] with information from a web service',
+		'description' => 'Expands [[Special:Booksources]] with information from a web service',
 	);
 	
 	/**

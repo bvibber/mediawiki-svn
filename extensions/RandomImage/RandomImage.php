@@ -13,7 +13,12 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efRandomImage';
-	$wgExtensionCredits['parserhook'][] = array( 'name' => 'RandomImage', 'author' => 'Rob Church', 'url' => 'http://meta.wikimedia.org/wiki/RandomImage' );
+	$wgExtensionCredits['parserhook'][] = array(
+		'name' => 'RandomImage',
+		'author' => 'Rob Church',
+		'url' => 'http://meta.wikimedia.org/wiki/RandomImage',
+		'description' => 'Provides a random media picker using <code><nowiki><randomimage /></nowiki></code>',
+	);
 	
 	/**
 	 * Set this to true to disable the parser cache for pages which

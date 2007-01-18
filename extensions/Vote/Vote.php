@@ -12,10 +12,14 @@
  
 if( defined( 'MEDIAWIKI' ) ) {
 
-	$wgExtensionCredits['specialpage'][] = array( 'name' => 'Vote', 'author' => 'Rob Church' );
-	$wgExtensionFunctions[] = 'efVote';
 	$wgAutoloadClasses['SpecialVote'] = dirname( __FILE__ ) . '/Vote.page.php';
 	$wgSpecialPages['Vote'] = 'SpecialVote';
+	$wgExtensionFunctions[] = 'efVote';
+	$wgExtensionCredits['specialpage'][] = array(
+			'name' => 'Vote',
+			'author' => 'Rob Church',
+			'description' => 'Provides simple polling capabilities',
+	);
 	
 	/**
 	 * Users who can vote

@@ -14,8 +14,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgAutoloadClasses['ProfileMonitor'] = dirname( __FILE__ ) . '/ProfileMonitor.class.php';
 	$wgSpecialPages['Profiling'] = 'ProfileMonitor';
 	
-	$wgExtensionCredits['specialpage'][] = array( 'name' => 'ProfileMonitor', 'author' => 'Rob Church' );
 	$wgExtensionFunctions[] = 'efProfileMonitor';
+	$wgExtensionCredits['specialpage'][] = array(
+			'name' => 'ProfileMonitor',
+			'author' => 'Rob Church',
+			'description' => 'Special page to expose profiling data',
+	);
 	
 	function efProfileMonitor() {
 		global $wgMessageCache, $wgHooks;
