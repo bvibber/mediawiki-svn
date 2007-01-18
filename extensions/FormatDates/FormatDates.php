@@ -14,9 +14,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgAutoloadClasses['DateParser'] = dirname( __FILE__ ) . '/DateParser.php';
 	$wgAutoloadClasses['FormattableDate'] = dirname( __FILE__ ) . '/FormattableDate.php';
-	
-	$wgExtensionCredits['other'][] = array( 'name' => 'Date Formatter', 'author' => 'Rob Church' );
 	$wgExtensionFunctions[] = 'efFormatDates';
+	
+	$wgExtensionCredits['parserhook'][] = array(
+		'name' => 'Date Formatter',
+		'author' => 'Rob Church',
+		'description' => 'Supports refactoring of unlinked dates through the <code><nowiki><date></nowiki></code> tag',
+	);
 
 	function efFormatDates() {
 		global $wgParser;

@@ -15,7 +15,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'name' => 'Duplicator',
 		'author' => 'Rob Church',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Duplicator',
-		'description' => 'Creates [[Special:Duplicator|independent copies]] of articles, retaining separate histories, and adds toolbox link',
+		'description' => 'Create independent copies of articles with distinct edit histories',
 	);
 	$wgExtensionFunctions[] = 'efDuplicator';
 
