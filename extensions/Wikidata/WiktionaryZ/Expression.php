@@ -603,7 +603,7 @@ function addTextAttributeValue($objectId, $textAttributeId, $text) {
 function createTextAttributeValue($objectId, $textAttributeId, $text, $textValueAttributeId) {
 	$dbr = &wfGetDB(DB_MASTER);
 	$dbr->query("INSERT INTO uw_text_attribute_values (value_id, object_id, attribute_mid, text, add_transaction_id) " .
-			    "VALUES ($textValueAttributeId, $objectId, $textAttributeId, '$text', ". getUpdateTransactionId() .")");	
+			    "VALUES ($textValueAttributeId, $objectId, $textAttributeId, " . $dbr->addQuotes($text) . ", ". getUpdateTransactionId() .")");	
 }
 
 function removeTextAttributeValue($textValueAttributeId) {
@@ -623,6 +623,38 @@ function getTextValueAttribute($textValueAttributeId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT object_id, attribute_mid, text FROM uw_text_attribute_values WHERE value_id=$textValueAttributeId " .
 								" AND " . getLatestTransactionRestriction('uw_text_attribute_values'));
+
+	return $dbr->fetchObject($queryResult);
+}
+
+function addURLAttributeValue($objectId, $urlAttributeId, $text) {
+	$urlValueAttributeId = newObjectId('uw_url_attribute_values');
+	createURLAttributeValue($objectId, $urlAttributeId, $text, $urlValueAttributeId);
+}
+
+function createURLAttributeValue($objectId, $urlAttributeId, $url, $urlValueAttributeId) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("INSERT INTO uw_url_attribute_values (value_id, object_id, attribute_mid, url, label, add_transaction_id) " .
+			    "VALUES ($urlValueAttributeId, $objectId, $urlAttributeId, " . $dbr->addQuotes($url) . ", " . $dbr->addQuotes($url) . ", ". getUpdateTransactionId() .")");	
+}
+
+function removeURLAttributeValue($urlValueAttributeId) {
+	$dbr = &wfGetDB(DB_MASTER);
+	$dbr->query("UPDATE uw_url_attribute_values SET remove_transaction_id=". getUpdateTransactionId() .
+				" WHERE value_id=$urlValueAttributeId" .
+				" AND remove_transaction_id IS NULL");	
+}
+
+function updateURLAttributeValue($url, $urlValueAttributeId) {
+	$urlValueAttribute = getURLValueAttribute($urlValueAttributeId);
+	removeURLAttributeValue($urlValueAttributeId);
+	createURLAttributeValue($urlValueAttribute->object_id, $urlValueAttribute->attribute_mid, $url, $urlValueAttributeId);
+}
+
+function getURLValueAttribute($urlValueAttributeId) {
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT object_id, attribute_mid, url FROM uw_url_attribute_values WHERE value_id=$urlValueAttributeId " .
+								" AND " . getLatestTransactionRestriction('uw_url_attribute_values'));
 
 	return $dbr->fetchObject($queryResult);
 }

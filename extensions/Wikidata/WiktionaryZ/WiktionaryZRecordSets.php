@@ -504,13 +504,16 @@ function getDefinedMeaningDefinitionRecord($definedMeaningId, $filterLanguageId,
 
 function getObjectAttributesRecord($objectId, $filterLanguageId, $queryTransactionInformation) {
 	global
-		$objectAttributesAttribute, $objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute, $optionAttributeValuesAttribute; 
+		$objectAttributesAttribute, $objectIdAttribute, 
+		$urlAttributeValuesAttribute, $textAttributeValuesAttribute, 
+		$translatedTextAttributeValuesAttribute, $optionAttributeValuesAttribute; 
 		
 	$record = new ArrayRecord($objectAttributesAttribute->type->getStructure());
 	
 	$record->setAttributeValue($objectIdAttribute, $objectId);
 	$record->setAttributeValue($textAttributeValuesAttribute, getTextAttributesValuesRecordSet($objectId, $filterLanguageId, $queryTransactionInformation));
 	$record->setAttributeValue($translatedTextAttributeValuesAttribute, getTranslatedTextAttributeValuesRecordSet($objectId, $filterLanguageId, $queryTransactionInformation));
+	$record->setAttributeValue($urlAttributeValuesAttribute, getURLAttributeValuesRecordSet($objectId, $filterLanguageId, $queryTransactionInformation));	
 	$record->setAttributeValue($optionAttributeValuesAttribute, getOptionAttributeValuesRecordSet($objectId, $filterLanguageId, $queryTransactionInformation));	
 
 	return $record;
@@ -759,6 +762,34 @@ function getTextAttributesValuesRecordSet($objectId, $filterLanguageId, $queryTr
 	//and expand the records
 	$recordSet->getStructure()->attributes[] = $objectAttributesAttribute;
 	expandObjectAttributesAttribute($recordSet, $textAttributeIdAttribute, $filterLanguageId, $queryTransactionInformation);	
+	
+	return $recordSet;
+}
+
+function getURLAttributeValuesRecordSet($objectId, $filterLanguageId, $queryTransactionInformation) {
+	global
+		$urlAttributeValuesTable, $urlAttributeIdAttribute, $urlAttributeObjectAttribute,
+		$urlAttributeAttribute, $urlAttribute, $objectAttributesAttribute;
+
+	$recordSet = queryRecordSet(
+		$queryTransactionInformation,
+		$urlAttributeIdAttribute,
+		array(
+			'value_id' => $urlAttributeIdAttribute,
+			'object_id' => $urlAttributeObjectAttribute,
+			'attribute_mid' => $urlAttributeAttribute,
+			'url' => $urlAttribute
+		),
+		$urlAttributeValuesTable,
+		array("object_id=$objectId")
+	);
+	
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($urlAttributeAttribute));
+
+	//add object attributes attribute to the generated structure 
+	//and expand the records
+	$recordSet->getStructure()->attributes[] = $objectAttributesAttribute;
+	expandObjectAttributesAttribute($recordSet, $urlAttributeIdAttribute, $filterLanguageId, $queryTransactionInformation);	
 	
 	return $recordSet;
 }

@@ -864,7 +864,7 @@ class ShortTextEditor extends ScalarEditor {
 	}
 
 	public function getEditHTML($idPath, $value) {
-			return getTextBox($this->updateId($idPath->getId()), $value);
+		return getTextBox($this->updateId($idPath->getId()), $value);
 	}
 
 	public function add($idPath) {
@@ -879,6 +879,17 @@ class ShortTextEditor extends ScalarEditor {
 			$wgRequest;
 
 		return trim($wgRequest->getText($id));
+	}
+}
+
+class URLEditor extends ShortTextEditor {
+	public function getViewHTML($idPath, $value) {
+		global
+			$escapedValue;
+		
+		$escapedValue = htmlspecialchars($value);
+			
+		return '<a href="' . $escapedValue . '">' . $escapedValue . '</a>';
 	}
 }
 

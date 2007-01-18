@@ -142,6 +142,16 @@ function initializeWiktionaryZAttributes($filterOnLanguage, $hasMetaDataAttribut
 	$textAttributeAttribute = new Attribute("text-attribute", "Attribute", new RecordSetType($definedMeaningReferenceStructure));
 	$textAttributeValuesStructure = new Structure($textAttributeIdAttribute, $textAttributeObjectAttribute, $textAttributeAttribute, $textAttribute, $objectAttributesAttribute);	
 	$textAttributeValuesAttribute = new Attribute("text-attribute-values", "Text attribute values", new RecordSetType($textAttributeValuesStructure));
+
+	global
+		$urlAttribute, $urlAttributeIdAttribute, $urlAttributeObjectAttribute, $urlAttributeAttribute, $urlAttributeValuesStructure, $urlAttributeValuesAttribute;
+		
+	$urlAttribute = new Attribute("url", "URL", "url");
+	$urlAttributeIdAttribute = new Attribute("url-attribute-id", "Attribute identifier", "object-id");
+	$urlAttributeObjectAttribute = new Attribute("url-attribute-object-id", "Attribute object", "object-id");
+	$urlAttributeAttribute = new Attribute("url-attribute", "Attribute", new RecordSetType($definedMeaningReferenceStructure));
+	$urlAttributeValuesStructure = new Structure($urlAttributeIdAttribute, $urlAttributeObjectAttribute, $urlAttributeAttribute, $urlAttribute, $objectAttributesAttribute);	
+	$urlAttributeValuesAttribute = new Attribute("url-attribute-values", "URL attribute values", new RecordSetType($urlAttributeValuesStructure));
 	
 	global
 		$optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionAttribute, $optionAttributeValuesAttribute;

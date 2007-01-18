@@ -488,6 +488,38 @@ class TextAttributeValuesController extends ObjectAttributeValuesController {
 	}
 }
 
+class URLAttributeValuesController extends ObjectAttributeValuesController {
+	public function add($keyPath, $record)  {
+		global
+			$urlAttribute, $urlAttributeAttribute;
+			
+		$objectId = $this->objectIdFetcher->fetch($keyPath);
+		$urlAttributeId = $record->getAttributeValue($urlAttributeAttribute);
+		$url = $record->getAttributeValue($urlAttribute);
+		
+		if ($urlAttributeId != 0 && $url != '')		
+			addURLAttributeValue($objectId, $urlAttributeId, $url);
+	}
+
+	public function remove($keyPath) {
+		global
+			$urlAttributeIdAttribute;
+			
+		$urlId = $keyPath->peek(0)->getAttributeValue($urlAttributeIdAttribute);
+		removeURLAttributeValue($urlId);
+	}
+
+	public function update($keyPath, $record) {
+		global
+			$urlAttributeIdAttribute, $urlAttribute;
+			
+		$urlId = $keyPath->peek(0)->getAttributeValue($urlAttributeIdAttribute);
+		$url = $record->getAttributeValue($urlAttribute);		
+		
+		updateURLAttributeValue($url, $urlId);
+	}
+}
+
 class TranslatedTextAttributeValuesController extends ObjectAttributeValuesController {
 	protected $filterLanguageId;
 	
