@@ -8,7 +8,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @package MediaWiki
  * @subpackage Extensions
  *
- * @link http://www.wikihow.com/WikiHow:MultipleUpload-Extension Documentation
+ * @link http://www.mediawiki.org/wiki/Extension:MultiUpload
  *
  *
  * @author Travis Derouin <travis@wikihow.com>
@@ -21,7 +21,6 @@ $wgMaxUploadFiles = 5;
 require_once("SpecialPage.php");
 
 
-SpecialPage::AddPage(new SpecialPage('MultipleUpload'));
 
 $wgExtensionFunctions[] = 'wfMultipleUpload';
 
@@ -29,10 +28,11 @@ $wgExtensionCredits['parserhook'][] = array(
     'name' => 'MultipleUpload',
     'author' => 'Travis Derouin',
     'description' => 'Allows users to upload several files at once.',
-    'url' => 'http://www.wikihow.com/WikiHow:MultipleUpload-Extension',
+    'url' => 'http://www.mediawiki.org/wiki/Extension:MultiUpload',
 );
 
 function wfMultipleUpload() {
+	SpecialPage::AddPage(new SpecialPage('MultipleUpload'));
     global $wgMessageCache, $wgMaxUploadFiles;
     $wgMaxUploadFiles = intval( $wgMaxUploadFiles );
     $wgMessageCache->addMessages(
