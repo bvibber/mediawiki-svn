@@ -67,6 +67,9 @@ $wgCrossNamespaceLinksMessages['kk-cn'] = array(
 	'crossnamespacelinkstext'     => '«$1» بەتٴى: «$3» ەسٴىم اياسىنا $2 سٴىلتەمە '
 );
 $wgCrossNamespaceLinksMessages['kk'] = $wgCrossNamespaceLinksMessages['kk-kz'];
+$wgCrossNamespaceLinksMessages['ksh'] = array(
+	'crossnamespacelinks-summary' => 'Die Sigg hee enthält en Liss met Links vun en Sigg em Appachtemeng vun de Atikkele, die en ander Appachtemengs jonn (usser de Toiminnot, Keskustelu, Betawiki and Malline Appachtemengs) - su jet sollte mer nit han.',
+);
 $wgCrossNamespaceLinksMessages['nl'] = array(
 	'crossnamespacelinks'     => 'Pagina\'s met verwijzingen naar andere naamruimten',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|verwijzing|verwijzingen}} naar $3'

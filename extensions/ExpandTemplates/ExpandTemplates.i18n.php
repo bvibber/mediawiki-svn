@@ -139,17 +139,17 @@ $wgExpandTemplatesMessages['kk-cn'] = array(
 );
 $wgExpandTemplatesMessages['kk'] = $wgExpandTemplatesMessages['kk-kz'];
 $wgExpandTemplatesMessages['ksh'] = array(
-	'expandtemplates'                  => 'Schabloone övverprööfe',
-	'expand_templates_intro'           => 'Hee kannß de en Schabloon ußprobėere. Do jiss_enne Oproov_enn, un dann kriß_De dä 
-komplädd_oppjelööß, och all di innedren widdo opjeroofene Schabloone, Parrameeter, Funkzjohne, shpezjälle Nahme, 
-unn_esu, beß nix mieh övverish eß, wat mer noch oplööse künnt. Wänn jedd_en <nowiki>{{ … }}</nowiki> Klammere 
-övverbliet, dann wohr_et unnbikanndt. Do passėet jenau et_sellve wi söns_em Wikki och, nur dat_De hee tirägk_ze 
-sinn_krißß wadd_erruß kütt.',
-	'expand_templates_title'           => 'Dä Sigge_Tittel, also wat för {{PAGENAME}} uew. ennjefölldt weed:',
-	'expand_templates_input'           => 'Wat_De övverprööfe wellß:',
-	'expand_templates_output'          => 'Wadd_erruß küdd_eß:',
+	'expandtemplates'                  => 'Schablone üvverpröfe',
+	'expand_templates_intro'           => 'Hee kanns de en Schablon usprobeere. Do jiss ene Oprof en, un dann kriss De dä 
+komplett opjelös, och all die ennedren widder opjerofe Schablone, Parameter, Funktione, speziell Name, 
+un esu, bes nix mieh üvverich es, wat mer noch oplöse künnt. Wann jet en <nowiki>{{ â€¦ }} Klammere 
+üvverbliet, dann wor et unbekannt. Do passeet jenau et selve wie söns em Wiki och, nor dat De hee tirek ze 
+sinn kriss wat erus kütt.',
+	'expand_templates_title'           => 'Dä Siggetitel, also wat för {{PAGENAME}} uew. enjeföllt weed:',
+	'expand_templates_input'           => 'Wat De üvverpröfe wells:',
+	'expand_templates_output'          => 'Wat erus kütt es:',
 	'expand_templates_ok'              => 'OK',
-	'expand_templates_remove_comments' => 'De ennere Kommëntaare fott_loohße',
+	'expand_templates_remove_comments' => 'De ennere Kommentare fottlooße',
 );
 $wgExpandTemplatesMessages['nl'] = array(
 	'expandtemplates'                  => 'Sjablonen substitueren',
