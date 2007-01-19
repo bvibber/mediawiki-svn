@@ -14,6 +14,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgAutoloadClasses['BookInformation'] = dirname( __FILE__ ) . '/drivers/Worker.php';
 	$wgAutoloadClasses['BookInformationCache'] = dirname( __FILE__ ) . '/drivers/Cache.php';
 	$wgAutoloadClasses['BookInformationDriver'] = dirname( __FILE__ ) . '/drivers/Driver.php';
+	$wgAutoloadClasses['BookInformationResult'] = dirname( __FILE__ ) . '/drivers/Result.php';
 	$wgAutoloadClasses['BookInformationAmazon'] = dirname( __FILE__ ) . '/drivers/Amazon.php';
 
 	$wgExtensionFunctions[] = 'efBookInformationSetup';
@@ -30,6 +31,11 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 * Enables caching of results when the "bookinfo" table is available
 	 */
 	$wgBookInformationCache = false;
+	
+	/**
+	 * Remove bad results from the cache
+	 */
+	$wgBookInformationProactiveCache = true;
 	
 	/**
 	 * The book information driver in use

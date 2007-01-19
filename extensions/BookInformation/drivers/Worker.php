@@ -19,20 +19,23 @@ class BookInformation {
 	public static function show( $isbn, $output ) {
 		if( self::isValidISBN( $isbn ) ) {
 			$result = BookInformationCache::get( $isbn );
-			if( $result !== false ) {
-				$output->addHtml( self::makeResult( $result ) );
-			} else {
+			if( $result === false ) {
 				$driver = self::getDriver();
 				if( $driver !== false ) {
-					if( $driver->submitRequest( $isbn ) ) {
-						BookInformationCache::set( $isbn, $driver );
-						$output->addHtml( self::makeResult( $driver ) );
-					} else {
-						$output->addHtml( self::makeError( 'noresponse' ) );
-					}
+					$result = $driver->submitRequest( $isbn );
+					if( $result->isCacheable() )
+						BookInformationCache::set( $isbn, $result );
 				} else {
 					$output->addHtml( self::makeError( 'nodriver' ) );
+					return;
 				}
+			}
+			if( $result->getResponseCode() == BookInformationResult::RESPONSE_OK ) {
+				$output->addHtml( self::makeResult( $result ) );
+			} elseif( $result->getResponseCode() == BookInformationResult::RESPONSE_NOSUCHITEM ) {
+				$output->addHtml( self::makeError( 'nosuchitem' ) );
+			} else {
+				$output->addHtml( self::makeError( 'noresponse' ) );
 			}
 		} else {
 			$output->addHtml( self::makeError( 'invalidisbn' ) );
