@@ -33,11 +33,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgBookInformationCache = false;
 	
 	/**
-	 * Remove bad results from the cache
-	 */
-	$wgBookInformationProactiveCache = true;
-	
-	/**
 	 * The book information driver in use
 	 * (Please see docs/drivers.htm for more information)
 	 */
