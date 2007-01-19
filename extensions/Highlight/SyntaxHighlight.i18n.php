@@ -17,6 +17,13 @@ function efSyntaxHighlightMessages() {
 'syntaxhighlight-err-loading' => '(error loading support language list)',
 ),
 
+/* French */
+'fr' => array(
+'syntaxhighlight-specify' => 'Vous devez spécifier un langage comme ceci :',
+'syntaxhighlight-supported' => 'Langages supportés pour la coloration syntaxique :',
+'syntaxhighlight-err-loading' => '(erreur en chargeant la liste des langages supportés)',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'syntaxhighlight-specify' => 'Anda harus menentukan suatu bahasa seperti ini:',

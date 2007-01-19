@@ -227,17 +227,17 @@ $wgMakesysopMessages['fr'] = array(
 	'makesysoptitle'	=> 'Donner les droits d’administrateur à un utilisateur',
 	'makesysoptext'		=> 'Ce formulaire est utilisé par les bureaucrates ' .
 					'pour donner les droits d’administrateur à un utilisateur ordinaire. Inscrivez ' .
-					'le nom de l’utilisateur dans le cadre et appuyer sur le bouton pour donner les ' .
+					'le nom de l’utilisateur dans le cadre et appuyez sur le bouton pour donner les ' .
 					'droits en question.',
 	'makesysopname'		=> 'Nom de l’utilisateur :',
-	'makesysopsubmit'	=> 'Donner les droits d’administrateur',
-	'makesysopok'		=> "<b>Utilisateur « $1 » est maintenant administrateur</b>",
-	'makesysopfail'		=> "<b>Utilisateur « $1 » ne peut être nommé administrateur. (Avez vous entré correctement le nom ?)</b>",
-	'setbureaucratflag'	=> 'Donner les pouvoirs de Bureaucrate',
+	'makesysopsubmit'	=> 'Donner les droits d’administrateur à cet utilisateur',
+	'makesysopok'		=> "<b>L’utilisateur « $1 » est désormais administrateur.</b>",
+	'makesysopfail'		=> "<b>L’utilisateur « $1 » ne peut être nommé administrateur. (Avez vous entré correctement le nom ?)</b>",
+	'setbureaucratflag'	=> 'Ajouter le statut de bureaucrate',
 	'rights'		=> 'Droits :',
-	'set_user_rights'	=> 'Donner les droits d’utilisateur',
-	'user_rights_set'	=> "<b>Les droit d’utilisateur pour « $1 » mis à jour</b>",
-	'set_rights_fail'	=> "<b>Les droit d’utilisateur pour « $1 » ne peuvent être donnés. (Avez vous entré correctement le nom ?)</b>",
+	'set_user_rights'	=> 'Appliquer les droits à l’utilisateur',
+	'user_rights_set'	=> "<b>Les droits de l’utilisateur « $1 » ont été mis à jour.</b>",
+	'set_rights_fail'	=> "<b>Les droits de l’utilisateur « $1 » n’ont pas pu être mis à jour. (Avez-vous saisi le nom correctement ?)<b>",
 	'makesysop'		=> 'Donner les droits d’administrateur à un utilisateur',
 	'already_sysop'		=> 'Cet utilisateur est déjà administrateur',
 	'already_bureaucrat'	=> 'Cet utilisateur est déjà bureaucrate',

@@ -40,6 +40,21 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Daten-Lieferant: $1',
 ),
 
+/* French */
+'fr' => array(
+'bookinfo-header' => 'Informations sur les ouvrages',
+'bookinfo-result-title' => 'Titre :',
+'bookinfo-result-author' => 'Auteur :',
+'bookinfo-result-publisher' => 'Éditeur :',
+'bookinfo-result-year' => 'Année :',
+'bookinfo-error-invalidisbn' => 'ISBN invalide.',
+'bookinfo-error-nosuchitem' => 'Cet élément n’existe pas ou n’a pas pu être trouvé.',
+'bookinfo-error-nodriver' => 'Impossible d’initialiser un moteur d’information sur les ouvrages.',
+'bookinfo-error-noresponse' => 'Aucune réponse ou dépassement du délai.',
+'bookinfo-purchase' => 'Acheter ce livre sur $1',
+'bookinfo-provider' => 'Fournisseur des données : $1',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'bookinfo-header' => 'Informasi buku',

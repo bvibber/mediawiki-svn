@@ -24,6 +24,13 @@ list of blacklisted usernames]]. Please choose another name.',
 'blacklistedusernametext' => 'Der gewählte Benutzername steht auf der [[MediaWiki:Usernameblacklist|Liste der gesperrten Benutzernamen]]. Bitte einen anderen wählen.',
 ),
 
+/* French */
+'fr' => array(
+'blacklistedusername' => 'Noms d’utilisateurs en liste noire',
+'blacklistedusernametext' => 'Le nom d’utilisateur que vous avez choisi se trouve sur la 
+[[MediaWiki:Usernameblacklist|liste des noms interdits]]. Veuillez choisir un autre nom.',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'blacklistedusername' => 'Daftar hitam nama pengguna',
