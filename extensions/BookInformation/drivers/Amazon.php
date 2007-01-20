@@ -31,7 +31,7 @@ class BookInformationAmazon implements BookInformationDriver {
 	}
 	
 	/**
-	 * Build the URI to an Amazon Web Service request
+	 * Build the URI for an Amazon Web Service request
 	 *
 	 * @param string $aki Access Key ID
 	 * @param string $isbn ISBN to be queried
