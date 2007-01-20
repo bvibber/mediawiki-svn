@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for LuceneSearch extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgLuceneSearchMessages = array();
