@@ -30,13 +30,11 @@ This extension requires MediaWiki 1.5.0 or later.
 
 == 3. Installing the extension ==
 
-To install the new user email notification extension, first upload/copy the
-extension file NewUserNotif.php into your MediaWiki extensions directory. Then
-edit your LocalSettings.php file and add the following line:
+To install the extension, place all extension files into a NewUserNotif
+directory within your MediaWiki extensions/ directory, then edit
+LocalSettings.php and add the following line
 
 	require_once( "{$IP}/extensions/NewUserNotif.php" );
-
-Save the file (uploading if applicable) to complete the installation.
 
 == 4. Editing the notification email ==
 
