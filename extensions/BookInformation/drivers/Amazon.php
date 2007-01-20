@@ -52,7 +52,7 @@ class BookInformationAmazon implements BookInformationDriver {
 	 * the information we require
 	 *
 	 * @param string $response XML response
-	 * @return bool Success
+	 * @return bool BookInformationResult
 	 */
 	private function parseResponse( $response ) {
 		try {
@@ -90,8 +90,8 @@ class BookInformationAmazon implements BookInformationDriver {
 	private function prepareResult( $title, $author, $publisher, $purchase ) {
 		$result = new BookInformationResult( BookInformationResult::RESPONSE_OK,
 			$title, $author, $publisher );
-		$result->setProviderData( $this->buildProviderLink(),
-			$this->buildPurchaseLink( $purchase ) );
+		$result->setProviderData( self::buildProviderLink(),
+			self::buildPurchaseLink( $purchase ) );
 		return $result;
 	}
 	
@@ -100,7 +100,7 @@ class BookInformationAmazon implements BookInformationDriver {
 	 *
 	 * @return string
 	 */
-	private function buildProviderLink() {
+	private static function buildProviderLink() {
 		return '<a href="http://www.amazon.com/webservices">Amazon Web Services</a>';
 	}
 
@@ -110,7 +110,7 @@ class BookInformationAmazon implements BookInformationDriver {
 	 * @param string $purchase Purchase URL
 	 * @return string
 	 */
-	private function buildPurchaseLink( $purchase ) {
+	private static function buildPurchaseLink( $purchase ) {
 		return '<a href="' . $purchase . '">Amazon.com</a>';
 	}
 	

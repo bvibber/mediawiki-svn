@@ -14,7 +14,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgAutoloadClasses['BookInformationCache'] = dirname( __FILE__ ) . '/drivers/Cache.php';
 	$wgAutoloadClasses['BookInformationDriver'] = dirname( __FILE__ ) . '/drivers/Driver.php';
 	$wgAutoloadClasses['BookInformationResult'] = dirname( __FILE__ ) . '/drivers/Result.php';
+
 	$wgAutoloadClasses['BookInformationAmazon'] = dirname( __FILE__ ) . '/drivers/Amazon.php';
+	$wgAutoloadClasses['BookInformationIsbnDb'] = dirname( __FILE__ ) . '/drivers/IsbnDb.php';
 
 	$wgExtensionFunctions[] = 'efBookInformationSetup';
 	$wgHooks['BookInformation'][] = 'efBookInformation';
