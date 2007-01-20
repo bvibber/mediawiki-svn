@@ -1323,9 +1323,9 @@ class BotQueryProcessor {
 
 			foreach( $titles as $key => &$title ) {
 				$page =& $pages[$key];
-				$page['canEdit'] = $title->userCanEdit() ? 'true' : 'false';
+				$page['canEdit'] = $title->userCan( 'edit' ) ? 'true' : 'false';
 				if( $prcanmove ) {
-					$page['canMove'] = $title->userCanMove() ? 'true' : 'false';
+					$page['canMove'] = $title->userCan( 'move' ) ? 'true' : 'false';
 				}
 			}
 		}

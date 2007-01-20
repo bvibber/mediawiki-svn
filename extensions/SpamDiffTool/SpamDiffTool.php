@@ -58,7 +58,7 @@ function wfSpamDiffLink($title) {
 	global $wgUser, $wgRequest, $wgSpamBlacklistArticle;
 	$sk = $wgUser->getSkin();
 	$sb = Title::newFromDBKey($wgSpamBlacklistArticle);
-	if (!$sb->userCanEdit()) {
+	if (!$sb->userCan( 'edit' )) {
 		return '';
 	}
 	$link = '[' . $sk->makeKnownLinkObj( Title::newFromText("SpamDiffTool", NS_SPECIAL), wfMsg('spamdifftool_spam_link_text'),
@@ -83,7 +83,7 @@ function wfSpecialSpamDiffTool() {
 
 		// can the user even edit this?
 		$sb = Title::newFromDBKey($wgSpamBlacklistArticle);
-		if (!$sb->userCanEdit()) {
+		if (!$sb->userCan( 'edit' )) {
 			$wgOut->addHTML(wfMsg('spamdifftool_cantedit'));
 			return;
 		}
