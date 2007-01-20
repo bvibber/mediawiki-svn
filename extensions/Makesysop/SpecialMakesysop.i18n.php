@@ -404,8 +404,23 @@ $wgMakesysopMessages['kk-cn'] = array(
 );
 $wgMakesysopMessages['kk'] = $wgMakesysopMessages['kk-kz'];
 $wgMakesysopMessages['ko'] = array(
+	'makesysoptitle'       => '사용자에게 관리자 권한 주기',
+	'makesysoptext'        => '이 양식은 뷰로크랫 권한이 있는 사용자가 다른 사용자에게 관리자 권한을 줄 때 사용됩니다. 사용자 이름을 입력하고 확인을 눌러 관리자 권한을 줄 수 있습니다.',
+	'makesysopname'        => '사용자 이름:',
+	'makesysopsubmit'      => '이 사용자에게 관리자 권한을 줍니다',
+	'makesysopok'          => "'''사용자 \"\$1\"에게 관리자 권한을 주었습니다.'''",
+	'makesysopfail'        => "'''사용자 \"\$1\"에게 관리자 권한을 줄 수 없습니다. (철자를 맞게 입력했는지 확인해주세요)'''",
+	'setbureaucratflag'    => '뷰로크랫 권한 주기',
+	'rights'               => '권한:',
+	'set_user_rights'      => '사용자 권한 설정',
+	'user_rights_set'      => "'''\"\$1\"의 권한이 변경되었습니다.'''",
+	'makesysop'            => '사용자에게 관리자 권한을 주기',
+	'already_bureaucrat'   => '이 사용자는 이미 뷰로크랫입니다.',
+	'already_sysop'        => '이 사용자는 이미 관리자입니다.',
+
 	'group-steward'        => '스튜워드',
 	'group-steward-member' => '스튜워드',
+
 );
 $wgMakesysopMessages['lt'] = array(
 	'makesysoptitle'     => 'Padaryti naudotoją administratoriumi',
