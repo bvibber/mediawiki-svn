@@ -56,6 +56,28 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'entfernte [[$1]] von der Liste unerwünschter Bilder',
 ),
 	
+/* French (Bertrand Grondin) */
+'fr' => array(
+'badimages' => 'Liste des images indésirables',
+'badimages-add-btn' => 'Ajouter',
+'badimages-added' => '$1 a été ajoutée à la liste.',
+'badimages-count' => "Il y a '''$1''' images dans la liste des images indésirables.",
+'badimages-name' => 'Nom:',
+'badimages-not-added' => 'L\'image n\'a pas pu être ajoutée.',
+'badimages-not-removed' => 'L\'image n\'a pas pu être retirée.',
+'badimages-reason' => 'Motif:',
+'badimages-remove' => '(retirer)',
+'badimages-remove-btn' => 'Retirer',
+'badimages-remove-confirm' => 'Confirmez, s\'il vous plait, votre volonté de retirer $1 de la liste:',
+'badimages-removed' => '$1 a été retirée de la liste.',
+'badimages-subheading' => 'Liste actuelle',
+'badimages-unprivileged' => '(Vous n\'avez pas les permissions suffisantes pour modifier la liste)',
+'badimages-log-name' => 'Liste des images indésirables',
+'badimages-log-header' => 'Voici le journal des modification de la [[Aide:Liste des images indésirables|liste des images indésirables]].',
+'badimages-log-add' => 'a ajouté [[$1]] à la liste des images indésirables',
+'badimages-log-remove' => 'a retiré [[$1]] de la liste des images indésirables',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'badimages' => 'Daftar berkas tidak sah',
