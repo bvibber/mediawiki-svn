@@ -39,8 +39,9 @@ if( !isset( $wgDBadminuser ) || !isset( $wgDBadminpassword ) ) {
 }
 
 # Get a connection
-$dbclass = 'Database' . ucfirst( $wgDBtype ) ;
-require_once( $dbclass . '.php' );
+$dbclass = $wgDBtype == 'MySql'
+			? 'Database'
+			: 'Database' . ucfirst( strtolower( $wgDBtype ) );
 $dbc = new $dbclass;
 $dba =& $dbc->newFromParams( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname, 1 );
 
