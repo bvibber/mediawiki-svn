@@ -65,22 +65,14 @@ int main(int argc, char** argv)
 	socket.Bind(saddr);
 
 	boost::shared_ptr<SocketAddress> address;
-	const size_t bufSize = 70000;
+	const size_t bufSize = 65536;
 	char buffer[bufSize];
 	for (;;) {
 		ssize_t bytesRead = socket.RecvFrom(buffer, bufSize, address);
 		if (bytesRead > 0) {
-			string prefix = address->ToString() + " ";
-			if (prefix.size() + bytesRead >= bufSize - 1) {
-				cerr << "udp2log: Packet too large" << endl;
-				continue;
-			}
-
-			memmove(buffer + prefix.size(), buffer, bytesRead);
-			memcpy(buffer, prefix.data(), prefix.size());
 			try {
 				config.Reload();
-				config.ProcessLine(buffer, bytesRead + prefix.size(), address);
+				config.ProcessLine(buffer, bytesRead, address);
 			} catch (runtime_error & e) {
 				cerr << e.what() << endl;
 			}
