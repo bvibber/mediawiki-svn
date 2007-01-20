@@ -31,7 +31,7 @@ $wgNewuserlogMessages['de'] = array(
 $wgNewuserlogMessages['fi'] = array(
 	'newuserlogpage'           => 'Uudet käyttäjät',
 	'newuserlogpagetext'       => 'Tämä on loki luoduista käyttäjätunnuksista.',
-	'newuserlog-create-entry'  => 'Uusi käyttäjät',
+	'newuserlog-create-entry'  => 'Uusi käyttäjä',
 	'newuserlog-create2-entry' => 'loi käyttäjätunnuksen tunnukselle $1',
 );
 $wgNewuserlogMessages['fr'] = array(
