@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for Language Manager extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgLanguageManagerMessages = array();

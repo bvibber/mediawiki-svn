@@ -23,8 +23,7 @@
  * such forth.
  *
  * @author Brion Vibber <brion at pobox.com>
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  */
 
 if( !defined( 'MEDIAWIKI' ) ) {

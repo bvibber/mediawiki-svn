@@ -49,8 +49,7 @@ class SpecialAsksql extends SpecialPage {
 
 /**
  * @access private
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class SqlQueryForm {
 	var $query = '';

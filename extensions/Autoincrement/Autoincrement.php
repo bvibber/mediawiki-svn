@@ -4,8 +4,7 @@ if (!defined('MEDIAWIKI')) die();
  * An example parser hook that defines a new variable, {{AUTOINCREMENT}},
  * useful for maintaining a citation count with {{ref|}} and {{note|}} pairs
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason

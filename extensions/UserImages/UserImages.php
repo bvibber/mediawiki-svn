@@ -4,8 +4,7 @@
  * Parser hook which generates a gallery of the last X images
  * uploaded by a particular user
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

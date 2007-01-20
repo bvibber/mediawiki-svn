@@ -4,8 +4,7 @@
  * Extension allows Special:Booksource to obtain basic details
  * about a book from available web services
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

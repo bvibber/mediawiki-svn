@@ -20,8 +20,7 @@
  *
  * To protect a text, enclose use in a <protect> </protect> block.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @author ThomasV <thomasv1@gmx.de>
  * @copyright Copyright © 2006, ThomasV 

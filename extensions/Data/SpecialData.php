@@ -1,6 +1,5 @@
 <?php
 /**
- * @package MediaWiki
  */
 
 /* You'll need to run these CREATEs :

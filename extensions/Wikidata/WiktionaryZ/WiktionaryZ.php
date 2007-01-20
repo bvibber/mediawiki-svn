@@ -15,7 +15,6 @@ require_once('WiktionaryZEditors.php');
  * Load and modify content in a WiktionaryZ-enabled
  * namespace.
  *
- * @package MediaWiki
  */
 class WiktionaryZ extends DefaultWikidataApplication {
 	public function view() {

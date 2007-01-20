@@ -3,8 +3,7 @@
 /**
  * Extension allows adding a global site notice, editable on one wiki
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

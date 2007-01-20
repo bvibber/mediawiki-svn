@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for Desysop extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgDesysopMessages = array();

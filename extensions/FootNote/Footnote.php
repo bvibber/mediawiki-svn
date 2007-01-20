@@ -26,8 +26,7 @@
 * <footnote>This text is placed at the end of the page.</footnote>
 *
 * @author Anders Wegge Jakobsen <awegge@gmail.com>
-* @package MediaWiki
-* @subpackage Extensions
+* @addtogroup Extensions
  */
 
 if( !defined( 'MEDIAWIKI' ) ) {

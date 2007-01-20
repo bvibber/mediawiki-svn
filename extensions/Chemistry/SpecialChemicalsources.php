@@ -12,9 +12,8 @@
  * Class SpecialChemicalsources is an extension of SpecialPage
  * Parameter checking is performed in the function "TransposeAndCheckParams"
  *
- * @package MediaWiki
- * @subpackage SpecialPage
- * @subpackage Extensions
+ * @addtogroup SpecialPage
+ * @addtogroup Extensions
  *
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */

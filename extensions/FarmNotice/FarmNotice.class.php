@@ -3,8 +3,7 @@
 /**
  * Main class file for the FarmNotice extension
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

@@ -13,7 +13,6 @@
  *  Leonardo Pimenta <leo.lns@gmail.com> 
  * @copyright Public domain
  * @license Public domain
- * @package MediaWikiExtensions
  * @version 0.1.1
  */
  

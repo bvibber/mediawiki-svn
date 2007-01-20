@@ -3,8 +3,7 @@
 /**
  * Adapted form of the MultiLang extension from Arnomane
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

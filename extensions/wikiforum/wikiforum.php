@@ -17,8 +17,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @author Guillaume Blanchard <aoineko@free.fr>
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  */
 
 /**
@@ -64,8 +63,7 @@ include($lang); // include the local language file (if any)
 /**
  * Get language text value
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  */
 function WF_Msg( $index ) {
 	global $wf_language, $wf_language_default;
@@ -88,8 +86,7 @@ $wgExtraNamespaces[NS_THREAD+1] = WF_Msg('ThreadTalk');
 /**
  * New thread class
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  */
 class NewThread {
 	
@@ -157,8 +154,7 @@ class NewThread {
 /**
  * Thread class
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 class Thread {
 	var $title;
@@ -171,8 +167,7 @@ class Thread {
 /**
  * Forum class
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  */
 class Forum {
 	var $mMaxThread;
@@ -511,8 +506,7 @@ $wgForum = new Forum();
 /**
  * Forum special page
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  */
 function wfForum() {
 	global $IP, $wgMessageCache, $wgAllMessagesEn, $wgNavigationLinks, $wgTitle;

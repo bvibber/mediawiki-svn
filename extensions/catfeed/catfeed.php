@@ -47,7 +47,6 @@ function setupCatRSSExtension() {
 		/**
 		* Feed for recently-added members of a category based on cl_timestamp
 		* Uses bits of the recentchanges feeds (caching and formatting)
-		* @package MediaWiki
 		*/
 		
 		var $mLimit = 50;

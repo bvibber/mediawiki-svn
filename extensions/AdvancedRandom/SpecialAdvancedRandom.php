@@ -10,8 +10,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  *
  * Note: This is neat, but way too expensive to run on any serious site
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason

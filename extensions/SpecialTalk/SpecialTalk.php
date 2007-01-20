@@ -3,8 +3,7 @@ if ( ! defined( 'MEDIAWIKI' ) ) die();
 /**
  * A hook that adds a talk tab to Special Pages
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @bug 4078
  *

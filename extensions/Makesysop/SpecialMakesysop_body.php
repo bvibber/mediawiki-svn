@@ -50,8 +50,7 @@ class MakeSysopPage extends SpecialPage {
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class MakesysopForm {
 	var $mTarget, $mAction, $mRights, $mUser, $mSubmit, $mSetBureaucrat;
@@ -224,8 +223,7 @@ class MakesysopForm {
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class MakesysopStewardForm extends UserrightsForm {
 	function MakesysopStewardForm( $request ) {

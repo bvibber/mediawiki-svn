@@ -19,8 +19,7 @@
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 # Need legacy database functions
@@ -28,8 +27,7 @@ require_once("DatabaseFunctions.php");
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class Validation {
 	

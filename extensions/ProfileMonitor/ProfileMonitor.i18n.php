@@ -3,8 +3,7 @@
 /**
  * Messages file for ProfileMonitor extension
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <rob.church@mintrasystems.com>
  */
  

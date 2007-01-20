@@ -4,8 +4,7 @@
  * Encapsulates the result of a book information request
  * including response status and the book information itself
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 class BookInformationResult {

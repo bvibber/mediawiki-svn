@@ -3,8 +3,7 @@
 /**
  * Provide email notification of user rights changes
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church

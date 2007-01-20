@@ -4,8 +4,7 @@
  * Special page allows users to register votes for a particular
  * option in a predefined list
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * Please see the LICENCE file for terms of use and redistribution
  */

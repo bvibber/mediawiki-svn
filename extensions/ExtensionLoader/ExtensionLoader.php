@@ -19,8 +19,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * ) or die( "Failed to load" );
  * </code>
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2006, Ævar Arnfjörð Bjarmason

@@ -4,8 +4,7 @@
  * Extension to provide a global "bad username" list
  *
  * @author Rob Church <robchur@gmail.com>
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @copyright © 2006 Rob Church
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0
  */

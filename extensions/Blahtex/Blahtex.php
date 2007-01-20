@@ -3,8 +3,7 @@
 /**
  * Extension to enable MathML output for <math> tags
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author David Harvey <dmharvey@math.harvard.edu>
  * @author Jitse Niesen <j.niesen@latrobe.edu.au>
  * @copyright 2005, 2006 David Harvey and Jitse Niesen

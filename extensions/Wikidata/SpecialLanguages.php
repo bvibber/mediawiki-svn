@@ -2,8 +2,7 @@
 if (!defined('MEDIAWIKI')) die();
 /**
  * A Special Page extension to add languages, runnable by users with the 'addlanguage' right.
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @author Erik Moeller <Eloquence@gmail.com>
  * @license public domain

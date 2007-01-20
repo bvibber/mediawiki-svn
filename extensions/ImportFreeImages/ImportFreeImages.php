@@ -5,8 +5,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 /**#@+
  *  Provides a way of importing properly licensed photos from flickr
  * 
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:ImportFreeImages Documentation
  *

@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for LinkSearch extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgLinkSearchMessages = array();

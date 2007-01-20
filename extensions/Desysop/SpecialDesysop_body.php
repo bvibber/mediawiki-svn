@@ -48,8 +48,7 @@ class DeSysopPage extends SpecialPage {
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class DesysopForm {
 	var $mTarget, $mAction, $mRights, $mUser, $mSubmit, $mSetBureaucrat;

@@ -3,8 +3,7 @@
 /**#@+
 *      Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a special page to add/manage blocks
 *
-* @package MediaWiki
-* @subpackage SpecialPage
+* @addtogroup SpecialPage
 *
 * @author Bartek
 * @copyright Copyright © 2007, Wikia Inc.

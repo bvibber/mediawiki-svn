@@ -11,8 +11,7 @@
  * Usage:
  * 	require_once("extensions/DynamicPageList2.php"); in LocalSettings.php
  * 
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @link http://meta.wikimedia.org/wiki/DynamicPageList2 Documentation
  * @author n:en:User:IlyaHaykinson 
  * @author n:en:User:Amgine 

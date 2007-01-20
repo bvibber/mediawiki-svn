@@ -3,8 +3,7 @@ if (!defined('MEDIAWIKI')) die();
 /**
  * A Special Page to replace Special:Imagelist and Special:Newimages
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @author Magnus Manske <magnus.manske@web.de>
  * @copyright Copyright © 2006, Magnus Manske

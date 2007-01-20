@@ -3,8 +3,7 @@
 /**
  * Add a <subpages /> tag which produces a linked list of all subpages of the current page
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church
  * @licence GNU General Public Licence 2.0 or later

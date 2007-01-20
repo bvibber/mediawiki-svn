@@ -4,8 +4,7 @@
 *	A special page with the interface for blocking, viewing and unblocking 
 	user names and IP addresses
 *
-* @package MediaWiki
-* @subpackage SpecialPage
+* @addtogroup SpecialPage
 *
 * @author Bartek
 * @copyright Copyright © 2007, Wikia Inc.

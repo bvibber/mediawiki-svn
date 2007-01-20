@@ -4,8 +4,7 @@
  * Special page used to wipe the OBJECTCACHE table
  * I use it on test wikis when I'm fiddling about with things en masse that could be cached
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @licence Public domain
  */

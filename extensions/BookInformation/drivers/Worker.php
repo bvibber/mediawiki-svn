@@ -3,8 +3,7 @@
 /**
  * Class processes book information requests
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 class BookInformation {

@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for CrossNamespaceLinks extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgCrossNamespaceLinksMessages = array();

@@ -4,8 +4,7 @@
  * Special page to retrieve profiling information about a particular
  * profiling task; acts as a convenient access point for casual queries
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

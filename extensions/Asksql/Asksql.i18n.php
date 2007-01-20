@@ -3,8 +3,7 @@
 /**
  * Internationalisation file for CountEdits extension
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Bertrand Grondin <bertrand.grondin@tiscali.fr>
  */
 

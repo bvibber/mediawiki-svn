@@ -2,8 +2,7 @@
 /**
  * Internationalization file for DynamicPageList2 extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author m:User:Dangerman <cyril.dangerville@gmail.com>
 */
 

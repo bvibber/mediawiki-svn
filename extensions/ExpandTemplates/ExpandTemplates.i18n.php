@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for ExpandTemplates extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgExpandTemplatesMessages = array();

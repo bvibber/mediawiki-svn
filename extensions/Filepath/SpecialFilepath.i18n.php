@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for Filepath extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgFilepathMessages = array();

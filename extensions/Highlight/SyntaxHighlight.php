@@ -21,8 +21,7 @@
  */
 
 /**
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Brion Vibber
  *
  * This extension wraps the GeSHi highlighter: http://qbnz.com/highlighter/

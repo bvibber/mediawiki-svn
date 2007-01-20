@@ -4,8 +4,7 @@
  * Internationalisation file for the Username Blacklist extension
  *
  * @author Rob Church <robchur@gmail.com>
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  */
 
 function efUsernameBlacklistMessages( $single = false ) {

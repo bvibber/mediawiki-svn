@@ -5,8 +5,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 /**#@+
  * An extension that allows users to rate articles. 
  * 
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/SpamDiffTool_Extension Documentation
  *

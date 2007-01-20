@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for Makesysop extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgMakesysopMessages = array();

@@ -3,8 +3,7 @@
 /**
  * Internationalisation file for the SyntaxHighlight extension
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  */
 
 function efSyntaxHighlightMessages() {

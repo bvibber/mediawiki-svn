@@ -3,8 +3,7 @@
 /**
  * User image gallery generator
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

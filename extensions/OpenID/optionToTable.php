@@ -19,8 +19,7 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @author Evan Prodromou <evan@wikitravel.org>
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  */
 
 require_once('commandLine.inc');

@@ -3,8 +3,7 @@
 /**
  * Book information driver for Amazon
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 class BookInformationAmazon implements BookInformationDriver {

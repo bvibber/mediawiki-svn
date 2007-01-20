@@ -5,8 +5,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 /**#@+
  * An extension that allows users to upload multiple photos at once.  
  * 
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:MultiUpload
  *
@@ -68,8 +67,7 @@ function wfSpecialMultipleUpload() {
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class MultipleUploadForm extends UploadForm {
 

@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for Newuserlog extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgNewuserlogMessages = array();

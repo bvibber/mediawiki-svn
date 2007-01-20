@@ -2,8 +2,7 @@
 if ( ! defined( 'MEDIAWIKI' ) )
 	die();
 /**
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2006, Ævar Arnfjörð Bjarmason

@@ -3,8 +3,7 @@
 /**
  * Special page class for the Duplicator extension
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

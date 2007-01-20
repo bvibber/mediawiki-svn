@@ -2,8 +2,7 @@
 /**
  * An extension that let your users review article quality.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @todo document
  *
  * @author Magnus Manke <insertemail@here.please>

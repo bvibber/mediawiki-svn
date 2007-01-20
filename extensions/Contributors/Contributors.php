@@ -3,8 +3,7 @@
 /**
  * Special page that lists the ten most prominent contributors to an article
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

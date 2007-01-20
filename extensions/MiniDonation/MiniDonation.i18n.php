@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for MiniDonation extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgMiniDonationMessages = array();

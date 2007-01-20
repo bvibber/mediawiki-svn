@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for BoardVote extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgBoardVoteMessages = array();

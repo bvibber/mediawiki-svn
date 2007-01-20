@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for SiteMatrix extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgSiteMatrixMessages = array();

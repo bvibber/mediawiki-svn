@@ -4,8 +4,7 @@
  * Extension to provide customisable email notification of new user creation
  *
  * @author Rob Church <robchur@gmail.com>
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @copyright © 2006 Rob Church
  * @licence GNU General Public Licence 2.0 or later
  */

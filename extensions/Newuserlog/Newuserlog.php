@@ -4,8 +4,7 @@ if (!defined('MEDIAWIKI')) die();
  * Add a new log to Special:Log that displays account creations in reverse
  * chronological order using the AddNewAccount hook
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason

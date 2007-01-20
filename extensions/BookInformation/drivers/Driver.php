@@ -7,8 +7,7 @@
  * of obtaining information about a given ISBN; see
  * docs/driver-info.htm for more details
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 interface BookInformationDriver {

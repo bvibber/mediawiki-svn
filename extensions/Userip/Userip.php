@@ -4,8 +4,7 @@
  * the wiki from, listing one time per IP which is the latest edit from that
  * address.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  */

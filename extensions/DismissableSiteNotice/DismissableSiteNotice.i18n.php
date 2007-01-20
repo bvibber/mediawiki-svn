@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for DismissableSiteNotice extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgDismissableSiteNoticeMessages = array();

@@ -3,8 +3,7 @@
 /**
  * Internationalisation file for the Contributors extension
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  
