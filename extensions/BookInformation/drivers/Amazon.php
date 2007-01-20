@@ -33,7 +33,6 @@ class BookInformationAmazon implements BookInformationDriver {
 	/**
 	 * Build the URI to an Amazon Web Service request
 	 *
-	 * @param string $base URL base (locale-dependent, etc.)
 	 * @param string $aki Access Key ID
 	 * @param string $isbn ISBN to be queried
 	 * @return string
@@ -78,6 +77,16 @@ class BookInformationAmazon implements BookInformationDriver {
 		}
 	}
 	
+	/**
+	 * Prepare a BookInformationResult corresponding to a successful
+	 * request and containing the available book information
+	 *
+	 * @param string $title Title of the book
+	 * @param string $author Author of the book
+	 * @param string $publisher Publisher of the book
+	 * @param string $purchase Purchasing URL
+	 * @return BookInformationResult
+	 */
 	private function prepareResult( $title, $author, $publisher, $purchase ) {
 		$result = new BookInformationResult( BookInformationResult::RESPONSE_OK,
 			$title, $author, $publisher );
@@ -86,11 +95,22 @@ class BookInformationAmazon implements BookInformationDriver {
 		return $result;
 	}
 	
-	public function buildProviderLink() {
+	/**
+	 * Build a link to Amazon Web Services' web site
+	 *
+	 * @return string
+	 */
+	private function buildProviderLink() {
 		return '<a href="http://www.amazon.com/webservices">Amazon Web Services</a>';
 	}
 
-	public function buildPurchaseLink( $purchase ) {
+	/**
+	 * Build a link to purchase a book given a purchase URL
+	 *
+	 * @param string $purchase Purchase URL
+	 * @return string
+	 */
+	private function buildPurchaseLink( $purchase ) {
 		return '<a href="' . $purchase . '">Amazon.com</a>';
 	}
 	
