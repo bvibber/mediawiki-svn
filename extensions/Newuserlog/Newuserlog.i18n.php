@@ -40,7 +40,7 @@ $wgNewuserlogMessages['fr'] = array(
 	'newuserlog-create2-entry' => 'compte créé pour $1',
 );
 $wgNewuserlogMessages['he'] = array(
-	'newuserlogpage'           => 'יומן הרשמת משתמשים',
+	'newuserlogpage'           => 'יומן רישום משתמשים',
 	'newuserlogpagetext'       => 'זהו יומן המכיל הרשמות של משתמשים.',
 	'newuserlog-create-entry'  => 'משתמש חדש',
 	'newuserlog-create2-entry' => 'יצר חשבון עבור $1',
