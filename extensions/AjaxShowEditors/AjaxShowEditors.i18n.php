@@ -13,4 +13,9 @@ $wgAjaxShowEditorsMessages['fi'] = array(
 	'ajax-se-pending' => 'odotetaan päivitystä… (napsauta tästä tai aloita muokkaaminen)',
 	'ajax-se-idling'  => '($1 s sitten)',
 );
+$wgAjaxShowEditorsMessages['id'] = array(
+	'ajax-se-title'   => 'Sedang menyunting:',
+	'ajax-se-pending' => 'pemuatan ulang ditunda ... (klik kotak ini atau mulai menyunting)',
+	'ajax-se-idling'  => '($1d lalu)',
+);
 ?>
