@@ -8,7 +8,7 @@ CREATE TABLE /*$wgDBprefix*/hidden (
   hidden_title varchar(255) binary NOT NULL default '',
   
   -- Basic revision stuff...
-  hidden_comment tinyblob NOT NULL default '',
+  hidden_comment tinyblob NOT NULL,
   hidden_user int(5) unsigned NOT NULL default '0',
   hidden_user_text varchar(255) binary NOT NULL,
   hidden_timestamp char(14) binary NOT NULL default '',
