@@ -243,7 +243,7 @@ class HideRevisionForm {
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select(
 			array( 'page', 'revision' ),
-			'*, 0 AS rc_id, 1 AS rc_patrolled, 0 AS counter',
+			'*, 0 AS rc_id, 1 AS rc_patrolled, 0 AS counter, 0 AS rc_old_len, 0 AS rc_new_len',
 			array(
 				'rev_id' => $this->mRevisions,
 				'rev_page=page_id',
@@ -294,6 +294,8 @@ class HideRevisionForm {
 				'0 AS counter',
 				'0 AS page_id',
 				'0 AS page_is_new',
+				'0 AS rc_old_len',
+				'0 AS rc_new_len',
 			),
 			array(
 				'ar_namespace' => $this->mTarget->getNamespace(),
@@ -532,7 +534,9 @@ function sosGetRevisions( $db, $condition ) {
 			
 			'0 as page_is_new',
 			'0 as rc_id',
-			'1 as rc_patrolled' ),
+			'1 as rc_patrolled',
+			'0 as rc_old_len',
+			'0 as rc_new_len' ),
 		array_merge(
 			$condition,
 			array( 'hidden_by_user=user_id' ) ),
