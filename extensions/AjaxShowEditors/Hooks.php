@@ -18,6 +18,10 @@ $wgHooks['EditPage::showEditForm:initial'][] = 'wfAjaxShowEditorsShowBox';
 	$section: section #
 */
 function wfAjaxShowEditorsCleanup( $article, $user ) {
+	global $wgCommandLineMode;
+	if( $wgCommandLineMode ) {
+		return true;
+	}
 	$articleId = $article->getID();
 	$userId = $user->getName();
 

@@ -4,6 +4,8 @@ Requires: MediaWiki 1.10 (r19554)
 
 Author: Ashar Voultoiz, based on an idea by Tim Starling
 
+URL: http://www.mediawiki.org/wiki/Extension:Ajax_Show_Editors
+
 == Install ==
 
 You must load up a new table in your database. The schema is available
