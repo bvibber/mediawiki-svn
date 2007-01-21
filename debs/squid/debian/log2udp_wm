@@ -1,3 +1,0 @@
-#!/bin/sh
-# Change this file to change the squid logging host
-exec /usr/bin/log2udp -h henbane.yaseo.wikimedia.org

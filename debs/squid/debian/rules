@@ -310,9 +310,6 @@ binary-arch:	build checkroot
 	$(INSTALL_FILE) debian/squid.overrides \
 		$(tmp)/usr/share/lintian/overrides/squid
 	#
-	# Wikimedia-specific configuration
-	$(INSTALL_PROGRAM) debian/log2udp_wm $(tmp)/usr/bin/log2udp_wm
-	#
 	dpkg-shlibdeps $(tmp)/usr/sbin/* $(tmp)$(libexecdir)/*
 	dpkg-gencontrol -isp -p$(package)
 	dpkg --build $(tmp) ..
