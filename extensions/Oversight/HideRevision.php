@@ -56,9 +56,7 @@ function hrSetup() {
 	require_once( dirname( __FILE__ ) . '/HideRevision.i18n.php' );
 	foreach( hrHideRevisionMessages() as $lang => $messages )
 		$GLOBALS['wgMessageCache']->addMessages( $messages, $lang );
-	
 }
-
 
 /**
  * Hook for article view, giving us a chance to insert a removal
@@ -195,11 +193,11 @@ class HideRevisionForm {
 				'method' => 'post' ) ) .
 			
 			// Visible fields
-			wfInputLabel( wfMsg( 'hiderevision-prompt' ), 'revision[]', 'wpRevision', 10 ) .
+			wfInputLabel( wfMsgHTML( 'hiderevision-prompt' ), 'revision[]', 'wpRevision', 10 ) .
 			"<br />" .
-			wfInputLabel( wfMsg( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60 ) .
+			wfInputLabel( wfMsgHTML( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60 ) .
 			"<br />" .
-			wfSubmitButton( wfMsg( 'hiderevision-continue' ) ) .
+			wfSubmitButton( wfMsgHTML( 'hiderevision-continue' ) ) .
 			
 			wfCloseElement( 'form' ) );
 	}
@@ -224,9 +222,9 @@ class HideRevisionForm {
 			
 			// Visible fields
 			"<br />" .
-			wfInputLabel( wfMsg( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60, $this->mReason ) .
+			wfInputLabel( wfMsgHTML( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60, $this->mReason ) .
 			"<br />" .
-			wfSubmitButton( wfMsg( 'hiderevision-submit' ) ) .
+			wfSubmitButton( wfMsgHTML( 'hiderevision-submit' ) ) .
 			
 			// Hidden fields
 			$this->revisionFields() .
@@ -354,16 +352,16 @@ class HideRevisionForm {
 function hrHideRevisions( $dbw, $title, $revisions, $timestamps, $reason ) {
 	// Live revisions
 	foreach( $revisions as $id ) {
-		$success[] = wfMsg( 'hiderevision-status', $id,
-			wfMsg( hrHideRevision( $dbw, $id, $reason ) ) );
+		$success[] = wfMsgHTML( 'hiderevision-status', $id,
+			wfMsgHTML (hrHideRevision( $dbw, $id, $reason ) ) );
 	}
 	
 	// Archived revisions
 	foreach( $timestamps as $timestamp ) {
 		global $wgLang;
-		$success[] = wfMsg( 'hiderevision-archive-status',
+		$success[] = wfMsgHTML( 'hiderevision-archive-status',
 			$wgLang->timeanddate( $timestamp ),
-			wfMsg( hrHideArchivedRevision( $dbw, $title,
+			wfMsgHTML( hrHideArchivedRevision( $dbw, $title,
 				$timestamp, $reason ) ) );
 	}
 	return $success;
@@ -485,7 +483,9 @@ function hrInsertRevision( $dbw, $title, $rev, $reason ) {
 function wfSpecialOversight( $par=null ) {
 	global $wgRequest, $wgUser;
 	$revision = $wgRequest->getIntOrNull( 'revision' );
-	if( is_null( $revision ) ) {
+	if ( $wgRequest->getCheck( 'diff' ) && !is_null( $revision )) {
+		sosShowDiff( $revision);
+	} else if( is_null( $revision ) ) {
 		sosShowList();
 	} else {
 		sosShowRevision( $revision );
@@ -500,6 +500,7 @@ function sosShowList( $from=null ) {
 		array( 'hidden_on_timestamp < ' . $dbr->addQuotes( $fromTime ) ) );
 	
 	global $wgOut;
+	$wgOut->addWikiText( wfMsgNoTrans( 'oversight-header' ) );
 	$wgOut->addHtml( '<ul>' );
 	while( $row = $dbr->fetchObject( $result ) ) {
 		$wgOut->addHtml( sosListRow( $row ) );
@@ -552,14 +553,18 @@ function sosListRow( $row ) {
 	$userPage = Title::makeTitle( NS_USER, $row->user_name );
 	$victim = Title::makeTitle( $row->page_namespace, $row->page_title );
 	return "<li>(" .
-		$skin->makeLinkObj( $self, wfMsgHtml( 'oversight-view' ),
+		$skin->makeKnownLinkObj( $self, wfMsgHTML( 'oversight-view' ),
 			'revision=' . $row->rev_id ) .
+		") " .
+		"(" .
+		$skin->makeKnownLinkObj( $self, wfMsgHTML( 'diff' ),
+			'revision=' . $row->rev_id . '&diff=1') .
 		") " .
 		$wgLang->timeanddate( $row->hidden_on_timestamp ) .
 		" " .
 		$skin->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) ) .
 		" " .
-		wfMsgHtml( 'oversight-log-hiderev', $skin->makeLinkObj( $victim ) ) .
+		wfMsgHTML( 'oversight-log-hiderev', $skin->makeLinkObj( $victim ) ) .
 		" " .
 		$skin->commentBlock( $row->hidden_reason ) .
 		"</li>\n";
@@ -575,12 +580,16 @@ function sosShowRevision( $revision ) {
 		$info = sosListRow( $row );
 		$list = sosRevisionInfo( $row );
 		$rev = new Revision( $row );
-		
+		$text = $rev->getText();
 		$wgOut->addHtml(
 			"<ul>" .
 			$info .
 			"</ul>\n" .
-			$list .
+			$list );
+	    if ( $text === false ) {
+		$wgOut->addWikiText(wfmsg('hiderevision-error-missing')); 
+		} else {
+		$wgOut->addHtml(
 			"<div>" .
 			wfElement( 'textarea',
 				array(
@@ -588,8 +597,9 @@ function sosShowRevision( $revision ) {
 					'rows' => 25,
 					'wrap' => 'virtual',
 					'readonly' => 'readonly' ),
-				strval( $rev->getText() ) ) .
-			"</div>\n" );
+				$text) .
+			"</div>" );
+		}
 	}
 	$dbr->freeResult( $result );
 }
@@ -605,4 +615,52 @@ function sosRevisionInfo( $row ) {
 	return $out;
 }
 
+function sosShowDiff( $revision )
+{
+	global $wgOut;
+	
+	$dbr = wfGetDB( DB_SLAVE );
+	$result = sosGetRevisions( $dbr, array( 'hidden_rev_id' => $revision ) );
+	
+	while( $row = $dbr->fetchObject( $result ) ) {
+		$info = sosListRow( $row );
+		$list = sosRevisionInfo( $row );
+		$rev = new Revision( $row );
+		$rev->mTitle = Title::makeTitle( $row->page_namespace, $row->page_title );
+		$prevId = $rev->mTitle->getPreviousRevisionID( $row->rev_id );
+		if ( $prevId ) {
+			$prev = Revision::newFromTitle( $rev->mTitle, $prevId );
+			$otext = strval( $prev->getText());
+		} else {
+			$wgOut->addHtml(
+			"<ul>" .
+			$info .
+			"</ul>\n" .
+			$list );
+			$wgOut->addWikiText( wfMsgNoTrans( 'oversight-nodiff' ) );
+			return;
+		}
+		$ntext = strval( $rev->getText());
+		
+		$wgOut->addHtml(
+			"<ul>" .
+			$info .
+			"</ul>\n" .
+			$list .
+			"<p><strong>" .
+			wfMsgHTML('oversight-difference') .
+			"</strong>" . 
+			"</p>" . 
+			"<div>" .
+			"<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>" . 
+			"<tr>" . 
+				"<td colspan='2' width='50%' align='center' class='diff-otitle'>" . wfMsgHTML('oversight-prev') . " (#$prevId)" . "</td>" . 
+				"<td colspan='2' width='50%' align='center' class='diff-ntitle'>" . wfMsgHTML('oversight-hidden') . "</td>" . 
+			"</tr>" .
+			DifferenceEngine::generateDiffBody( $otext, $ntext ) .
+			"</table>" . 
+			"</div>\n" );
+	}
+	$dbr->freeResult( $result );
+}
 ?>

@@ -37,11 +37,19 @@ database administrator if you make a mistake.",
 'hiderevision-error-current' => 'Cannot delete the latest edit to a page. Revert this change first.',
 'hiderevision-error-delete' => 'Could not archive; was it previously deleted?',
 'hiderevision-archive-status' => 'Deleted revision from $1: $2',
+'oversight-nodiff' => 'Unable to track changes as there is currently no previous revision for the page. Either:	
+*The page was deleted
+*This hidden revision was the first revision',
 // Logging
 'oversight-log-hiderev' => 'removed an edit from $1',
 // Oversight review page
 'oversight' => 'Oversight',
 'oversight-view' => 'details',
+'oversight-difference' => '(Difference from previous remaining revision)',
+'oversight-prev' => 'Last previous revision',
+'oversight-hidden' => 'Hidden revision',
+'oversight-header' => 'Below is a list of revisions permanantly hidden from public view.
+Releasing this information can result in permanent loss of Oversight priviledges.',
 ),
 
 /* German (Raymond) */
@@ -108,11 +116,18 @@ Les articles effacés ne sont plus visible dans ce système, mais ces suppressio
 'hiderevision-error-current' => 'Ne peut supprimer la dernière révision dans une page. Faites une annulation d’édition auparavant.',
 'hiderevision-error-delete' => 'Ne peut être archivé ; la page a peut-être été supprimée ?',
 'hiderevision-archive-status' => 'Modification supprimée de $1 : $2',
+'oversight-nodiff' => 'Incapable de dépister des changements en tant que là n\'est actuellement aucune révision précédente pour la page. L\'un ou l\'autre:
+*La page a été supprimée
+*Cette révision cachée était la première révision de la page',
 // Logging
 'oversight-log-hiderev' => 'a supprimé une édition de $1',
 // Oversight review page
 'oversight' => 'Oversight',
 'oversight-view' => 'détails',
+'oversight-difference' => '(Différence de révision restante précédente)',
+'oversight-prev' => 'Dernière révision précédente',
+'oversight-hidden' => 'Révision cachée',
+'oversight-header' => 'Au-dessous de est une liste de révisions cachées de manière permanente de la vue publique. Libérer cette information peut avoir comme conséquence la perte permanente de priviledges d\'Oversight.',
 ),
 
 /* Portuguese (Lugusto) */
