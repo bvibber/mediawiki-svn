@@ -475,6 +475,21 @@ $wgMakesysopMessages['mk'] = array(
 	'group-steward-member' => 'Стјуард',
 	'grouppage-steward'    => '{{ns:project}}:Стјуарди',
 );
+$wgMakesysopMessages['nds'] = array(
+	'makesysoptitle'       => 'Maak en Bruker to en Administrater',
+	'makesysoptext'        => 'Disse Mask warrt vun Bürokraten bruukt, üm normale Bruker to Administratern to maken.',
+	'makesysopname'        => 'Naam vun de Bruker:',
+	'makesysopsubmit'      => 'Maak dissen Bruker to en Administrater',
+	'makesysopok'          => '<b>Bruker „$1“ is nu en Administrater.</b>',
+	'makesysopfail'        => '<b>Bruker „$1“ kunn nich to en Administrater maakt warrn. (Is de Naam richtig schreven?)</b>',
+	'setbureaucratflag'    => 'Bürokraten-Flagg setten',
+	'rights'               => 'Rechten:',
+	'set_user_rights'      => 'Brukerrechten setten',
+	'user_rights_set'      => '<b>Brukerrechten för „$1“ aktualiseert</b>',
+	'set_rights_fail'      => '<b>Brukerrechten för „$1“ kunnen nich sett warrn. (Is de Naam richtig schreven?)</b>',
+	'makesysop'            => 'Maak en Bruker to en Administrater',
+
+);
 $wgMakesysopMessages['nl'] = array(
 	'makesysoptitle'       => 'Maak een gebruiker beheerder',
 	'makesysoptext'        => 'Dit formulier wordt door bureaucraten gebruikt om een gebruiker beheerder te maken. Geef de naam van een gebruiker in het veld in en klik op de knop om de gebruiker beheerder te maken.',
