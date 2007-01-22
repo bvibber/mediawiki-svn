@@ -93,6 +93,25 @@ function efImageMapMessages() {
 'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
+/* Italian (AnyFile) */
+'it' => array(
+'imagemap_no_image'             => "&lt;imagemap&gt;: si deve specificare un'immagine nella prima riga",
+'imagemap_invalid_image'        => "&lt;imagemap&gt;: l'immagine non è valida o non esiste",
+'imagemap_no_link'              => '&lt;imagemap&gt;: non è stato trovato alcun collegamento valido alla fine della riga $1',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: titolo del collegamento non valido nella riga $1',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: non ci sono abbastanza coordinate per la forma specificata nella riga $1',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: Forma (shape) non riconosciuta nella linea $1, ogni riga deve iniziare con uno dei seguenti: default, rect, circle or poly',
+'imagemap_no_areas'             => "&lt;imagemap&gt;: deve essere specificata almeno un'area",
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordinata non valida nella riga $1, deve essere un numero',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: Valore non valido per il parametro desc, deve essere uno dei seguenti: $1',
+'imagemap_description'          => 'About this image',
+# Note to translators: keep the same order
+'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
+#Since, as far I know, the alignment indicator are kept in English in the
+#  image inclusion syntax, I kept in English here too.
+),
+
+
 	);
 }
 
