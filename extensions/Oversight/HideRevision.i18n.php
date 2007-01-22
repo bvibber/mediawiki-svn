@@ -109,7 +109,7 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 
 ''' L'abus de cette fonctionnalité impliquera la perte de ces privilèges.
 
-Les articles effacés ne sont plus visible dans ce système, mais ces suppressions sont journalisées et peuvent être restaurées manuellement par un administrateur de la base de données si vous avez fait une erreur.",
+Les articles effacés ne sont plus visibles dans ce système, mais ces suppressions sont journalisées et peuvent être restaurées manuellement par un administrateur ayant l'accès direct sur la base de données si vous avez fait une erreur.",
 'hiderevision-reason' => 'Motif (sera enregistré séparément) :',
 'hiderevision-submit' => 'Cacher cette donnée de manière permanente',
 // Tab displayed to allowed users on old revision display
@@ -121,20 +121,20 @@ Les articles effacés ne sont plus visible dans ce système, mais ces suppressio
 'hiderevision-success' => 'Archivé et supprimé avec succès.',
 'hiderevision-error-missing' => 'Non trouvé dans la base de données.',
 'hiderevision-error-current' => 'Ne peut supprimer la dernière révision dans une page. Faites une annulation d’édition auparavant.',
-'hiderevision-error-delete' => 'Ne peut être archivé ; la page a peut-être été supprimée ?',
+'hiderevision-error-delete' => 'Ne peut être archivé ; la page aurait-elle été supprimée ?',
 'hiderevision-archive-status' => 'Modification supprimée de $1 : $2',
-'oversight-nodiff' => 'Incapable de dépister des changements en tant que là n\'est actuellement aucune révision précédente pour la page. L\'un ou l\'autre:
-*La page a été supprimée
-*Cette révision cachée était la première révision de la page',
+'oversight-nodiff' => 'Impossible de détecter des changements tant que ne se trouve aucune révision antérieure pour la page. Les raisons peuvent être les suivantes :
+*La page a été supprimée,
+*La révision cachée était la toute première de la page',
 // Logging
 'oversight-log-hiderev' => 'a supprimé une édition de $1',
 // Oversight review page
 'oversight' => 'Oversight',
 'oversight-view' => 'détails',
-'oversight-difference' => '(Différence de révision restante précédente)',
+'oversight-difference' => '(Différence par rapport à la révision précédente)',
 'oversight-prev' => 'Dernière révision précédente',
 'oversight-hidden' => 'Révision cachée',
-'oversight-header' => 'Au-dessous de est une liste de révisions cachées de manière permanente de la vue publique. Libérer cette information peut avoir comme conséquence la perte permanente de priviledges d\'Oversight.',
+'oversight-header' => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d\'Oversight.',
 ),
 
 /* Portuguese (Lugusto) */
