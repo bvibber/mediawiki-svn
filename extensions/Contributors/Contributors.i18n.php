@@ -80,6 +80,20 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'O artigo $1 não existe.',
 ),
 
+/* Slovak (helix84) */
+'sk' => array(
+'contributors' => 'Prispievatelia',
+'contributors-toolbox' => 'Hlavní prispievatelia',
+'contributors-legend' => 'Zobraziť zoznam hlavných prispievateľov článku',
+'contributors-target' => 'Názov:',
+'contributors-submit' => 'Zobraziť',
+'contributors-subtitle' => 'Hlavní prispievatelia článku $1',
+'contributors-others-long' => 'Existuje ďalších $1 prispievateľov tohto článku.',
+'contributors-others' => 'a $1 ďalších',
+'contributors-badtitle' => 'Neplatný názov.',
+'contributors-nosuchpage' => 'Článok $1 neexistuje.',
+),
+
 /* Serbian default (Sasa Stefanovic) */
 'sr' => array(
 'contributors' => 'Доприносиоци',

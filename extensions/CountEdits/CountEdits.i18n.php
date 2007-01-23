@@ -88,6 +88,20 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Não possui contribuições neste wiki.',
 ),
 
+/* Slovak (helix84) */
+'sk' => array(
+'countedits' => 'Počet príspevkov',
+'countedits-warning' => "'''Varovanie:''' Nesúďte knihu podľa obalu. Nesúďte prispievateľa podľa počtu príspevkov.",
+'countedits-username' => 'Používateľské meno:',
+'countedits-ok' => 'OK',
+'countedits-nosuchuser' => 'Používateľ s menom $1 neexistuje.',
+'countedits-resultheader' => 'Výsledky pre $1',
+'countedits-resulttext' => '$1 urobil $2 úprav',
+'countedits-mostactive' => 'Najaktívnejší prispievatelia',
+'countedits-nocontribs' => 'Táto wiki neobsahuje zatiaľ žiadne príspevky.',
+),
+
+
 /* Serbian default (Sasa Stefanovic) */
 'sr' => array(
 'countedits' => 'Бројач измена',

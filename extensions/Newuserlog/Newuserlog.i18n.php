@@ -111,7 +111,6 @@ $wgNewuserlogMessages['ru'] = array(
 $wgNewuserlogMessages['sk'] = array(
 	'newuserlogpage'           => 'Záznam vytvorených používateľov',
 	'newuserlogpagetext'       => 'Toto je záznam naposledy vytvorených používateľských účtov',
-	'newuserlogentry'          => '', # For compatibility, don't translate this
 	'newuserlog-create-entry'  => 'Nový používateľ',
 	'newuserlog-create2-entry' => 'Bol vytvorený účet pre $1',
 	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # Don't translate this

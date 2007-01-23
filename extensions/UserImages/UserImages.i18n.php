@@ -22,6 +22,12 @@ function efUserImagesMessages() {
 'userimages-noname' => 'Nom d’utilisateur invalide ou manquant.',
 'userimages-noimages' => '$1 n’a importé aucune image.',
 ),
+/* Slovak (by helix84) */
+'sk' => array(
+'userimages-caption' => 'Obrázky nahrané používateľom $1',
+'userimages-noname' => 'Neplatné alebo neposkytnuté používateľské meno.',
+'userimages-noimages' => '$1 nenahral žiadne obrázky.',
+),
 /* Serbian default */
 'sr' => array(
 'userimages-caption' => 'Слике које је послао корисник $1',

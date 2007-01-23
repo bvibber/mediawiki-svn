@@ -24,6 +24,19 @@ function efProfileMonitorMessages() {
 'profiling-no-data' => 'No matching data found.',
 ),
 	
+/* Slovak (helix84) */
+'sk' => array(
+'profiling' => 'Profilovacie údaje',
+'profiling-process' => 'Spracovať reťazec:',
+'profiling-wildcard' => 'Použiť zástupné znaky',
+'profiling-ok' => 'OK',
+'profiling-data' => 'Profilovacie údaje pre `$1`',
+'profiling-data-process' => 'Spracovať',
+'profiling-data-count' => 'Počet',
+'profiling-data-time' => 'Čas (všetky)',
+'profiling-data-average' => 'Čas (priemer)',
+'profiling-no-data' => 'Neboli nájdené vyhovujúce údaje.',
+),
 	);
 }
 

@@ -174,6 +174,43 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 'oversight-view' => 'detalhes',
 ),
 
+/* Slovak (helix84) */
+'sk' => array(
+'hiderevision' => 'Natrvalo skryť revízie',
+// Empty form
+'hiderevision-prompt' => 'Číslo revízie, ktorá sa má odstrániť:',
+'hiderevision-continue' => 'Pokračovať',
+// Confirmation form
+'hiderevision-text' =>
+"Táto funkcia by sa mala využívať '''výlučne''' v nasledovných prípadoch:
+* Nevhodné osobné informácie
+*: ''domáce adresy a telefónne čísla, čísla sociálneho poistenia atď.''
+
+'''Zneužitie tohto systému bude potrestané odňatím privilégií.'''
+
+Odstránené položky nebudú viditeľné nikomu prostredníctvom webstránky,
+ale o mazaniach sa vedie záznam a je možné ich obnoviť ručne
+administrátorom databázy v prípade, že spravíte chybu.",
+'hiderevision-reason' => 'Dôvod (bude privátne zaznamenaný):',
+'hiderevision-submit' => 'Natrvalo skryť tieto údaje',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => 'Skryť revíziu',
+// Status & errors on action
+'hiderevision-norevisions' => 'Neboli uvedené revízie, ktoré majú byť skryté.',
+'hiderevision-noreason' => 'Musíte uviesť dôvod odstránenia.',
+'hiderevision-status' => 'Revízia $1: $2',
+'hiderevision-success' => 'Úspešne archivované a zmazané.',
+'hiderevision-error-missing' => 'Nenájdené v databáze.',
+'hiderevision-error-current' => 'Nebolo možné zmazať poslednú úpravu stránky. Najprv túto zmenu vráťte.',
+'hiderevision-error-delete' => 'Nebolo možné archivovať; bolo už predtým zmazané?',
+'hiderevision-archive-status' => 'Zmazané revízie počínajúc $1: $2',
+// Logging
+'oversight-log-hiderev' => 'Odstránená úprava z $1',
+// Oversight review page
+'oversight' => 'Oversight',
+'oversight-view' => 'podrobnosti',
+),
+
 /* Serbian default (Sasa Stefanovic) */
 'sr' => array(
 'hiderevision' => 'Трајно сакриј ревизије',

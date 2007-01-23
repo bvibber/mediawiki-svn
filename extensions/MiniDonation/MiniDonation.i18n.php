@@ -25,6 +25,9 @@ $wgMiniDonationMessages['id'] = array(
 $wgMiniDonationMessages['lt'] = array(
 	'donationform-submit' => 'Aukoti per PayPal',
 );
+$wgMiniDonationMessages['sk'] = array(
+	'donationform-submit' => 'Darujte pomocou PayPal',
+);
 $wgMiniDonationMessages['sr-ec'] = array(
 	'donationform-submit' => 'Донирајте преко PayPal',
 );

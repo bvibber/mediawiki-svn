@@ -196,7 +196,7 @@ function efMakeBotMessages() {
 'makebot-privileged' => '[[User:$1|$1]] mempunyai [[Special:Listadmins|berstatus pengurus atau birokrat]], karenanya tak bisa mendapat status bot.',
 'makebot-change' => 'Ganti status:',
 'makebot-grant' => 'Berikan',
-'makebot-revoke' => 'Tarik ',
+'makebot-revoke' => 'Tarik',
 'makebot-comment' => 'Komentar:',
 'makebot-granted' => '[[User:$1|$1]] sekarang mempunyai status bot.',
 'makebot-revoked' => '[[User:$1|$1]] sekarang tidak lagi mempunyai status bot.',
@@ -204,6 +204,27 @@ function efMakeBotMessages() {
 'makebot-logpagetext' => 'Di bawah adalah log perubahan status [[Help:Bot|bot]] pengguna.',
 'makebot-logentrygrant' => 'memberikan status bot untuk [[$1]]',
 'makebot-logentryrevoke' => 'menarik status bot dari [[$1]]',
+),
+
+/* Slovak (helix84) */
+'sk' => array(
+'makebot' => 'Udeliť alebo odobrať status bota',
+'makebot-header' => "'''Miestny byrokrat m§že použiť túto stránku na udelenie alebo odobranie [[Help:Bot|statusu bot]] inému užívateľskému účtu.'''<br />Status bot skrýva úpravy používateľa z [[Special:Recentchanges|posledných zmien]] a podobných zoznamov, používa sa na označenie používateľov, ktorí robia automatizované úpravy. Využívanie tejto stránky by malo prebiehať v súlade s prijatými zásadami.",
+'makebot-username' => 'Používateľské meno:',
+'makebot-search' => 'Choď',
+'makebot-isbot' => '[[User:$1|$1]] má status bot.',
+'makebot-notbot' => '[[User:$1|$1]] nemá status bot.',
+'makebot-privileged' => '[[User:$1|$1]] má [[Special:Listadmins|privilégiá správcu alebo byrokrata]], a preto mu nemôže byt udelený status bot.',
+'makebot-change' => 'Zmeniť stav:',
+'makebot-grant' => 'Udeliť',
+'makebot-revoke' => 'Odobrať',
+'makebot-comment' => 'Komentár:',
+'makebot-granted' => '[[User:$1|$1]] odteraz má status bot.',
+'makebot-revoked' => '[[User:$1|$1]] odteraz nemá status bot.',
+'makebot-logpage' => 'Záznam statusu bot',
+'makebot-logpagetext' => 'Toto je záznam zmien statusu [[Help:Bot|bot]] používateľov.',
+'makebot-logentrygrant' => 'udelený status bot užívateľovi [[$1]]',
+'makebot-logentryrevoke' => 'odobratý status bot užívateľovi [[$1]]',
 ),
 
 /* Serbian default (Sasa Stefanovic) */

@@ -50,6 +50,9 @@ $wgDismissableSiteNoticeMessages['ja'] = array(
 $wgDismissableSiteNoticeMessages['pt'] = array(
 	'sitenotice_close' => 'ignorar',
 );
+$wgDismissableSiteNoticeMessages['sk'] = array(
+	'sitenotice_close' => 'nezobrazovať',
+);
 $wgDismissableSiteNoticeMessages['pt-br'] = $wgDismissableSiteNoticeMessages['pt'];
 $wgDismissableSiteNoticeMessages['zh-cn'] = array(
 	'sitenotice_close' => '关闭',

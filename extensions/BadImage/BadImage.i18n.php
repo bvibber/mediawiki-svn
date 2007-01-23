@@ -122,6 +122,28 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'removida [[$1]] da lista de imagens com problemas',
 ),
 
+/* Slovak (helix84) */
+'sk' => array(
+'badimages' => 'Zoznam zlých obrázkov',
+'badimages-add-btn' => 'Pridať',
+'badimages-added' => '$1 bol pridaný do zoznamu.',
+'badimages-count' => "V zozname zlých obrázkov je '''$1''' obrázkov.",
+'badimages-name' => 'Názov:',
+'badimages-not-added' => 'Obrázok nebolo možné pridať.',
+'badimages-not-removed' => 'Obrázok nebolo možné odstrániť.',
+'badimages-reason' => 'Dôvod:',
+'badimages-remove' => '(odstrániť)',
+'badimages-remove-btn' => 'Odstrániť',
+'badimages-remove-confirm' => 'Prosím potvrďte odstránenie $1 zo zoznamu:',
+'badimages-removed' => '$1 bol odstránený zo zoznamu.',
+'badimages-subheading' => 'Aktuálne položky',
+'badimages-unprivileged' => '(pre zmenu zoznamu nemáte dostatočné oprávnenie)',
+'badimages-log-name' => 'Zoznam zlých obrázkov',
+'badimages-log-header' => 'Toto je záznam zmien [[Help:Bad image list|Zoznamu zlých obrázkov]].',
+'badimages-log-add' => '[[$1]] pridaný do zoznamu zlých obrázkov',
+'badimages-log-remove' => '[[$1]] odstránený zo zoznamu zlých obrázkov',
+),
+
 /* Serbian default (Sasa Stefanovic) */
 'sr' => array(
 'badimages' => 'Списак лоших слика',

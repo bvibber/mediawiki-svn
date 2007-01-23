@@ -549,7 +549,7 @@ $wgDPL2Messages['sk'] = array(
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "VAROVANIE: Nesprávny parameter  '$0': '$1'! Používam štandardný: '$2' (bez obmedzenia). Pomocník: <code>$0= <i>prázdny reťazec</i> (bez obmedzenia) | n</code>, s kladným celým číslom <code>n</code>.",
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'VAROVANIE: No results!',
-	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "VAROVANIE: Parametre Add* ('adduser', 'addeditdate', atď' nepracujú s mode=category'. V tomto režime je možné prehliadať iba menná priestor/titulok stránky.",
+	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "VAROVANIE: Parametre Add* ('adduser', 'addeditdate', atď' nepracujú s mode=category'. V tomto režime je možné prehliadať iba menný priestor/titulok stránky.",
 	/**
 	 * $0: 'headingmode' value given by user
 	 * $1: value used instead by program (which means no heading)

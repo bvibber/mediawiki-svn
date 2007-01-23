@@ -101,6 +101,28 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 'giverollback-logentryrevoke' => 'menarik hak pengembalian ke untuk [[$1]]',
 ),
 
+/* Slovak (helix84) */
+'sk' => array(
+'giverollback' => 'Udeliť alebo odobrať právo rollback',
+'giverollback-header' => "'''Miestny byrokrat m§že použiť túto stránku na udelenie alebo odobranie [[Help:Rollback|práva rollback]] inému používateľskému účtu.'''<br />Tak je možné napríklad umožniť používateľom, ktorí nie sú správci rýchlejšie vracať vandalské úpravy. Využívanie tejto stránky by malo prebiehať v súlade s prijatými zásadami.",
+'giverollback-username' => 'Používateľské meno:',
+'giverollback-search' => 'Choď',
+'giverollback-hasrb' => '[[User:$1|$1]] má právo rollback.',
+'giverollback-norb' => '[[User:$1|$1]] nemá právo rollback.',
+'giverollback-toonew' => '[[User:$1|$1]] je príliš nový a nie je možné mu udeliť právo rollback.',
+'giverollback-sysop' => '[[User:$1|$1]] je správca a už má povolenie rollback.',
+'giverollback-change' => 'Zmeniť stav:',
+'giverollback-grant' => 'Udeliť',
+'giverollback-revoke' => 'Odobrať',
+'giverollback-comment' => 'Komentár:',
+'giverollback-granted' => '[[User:$1|$1]] odteraz má právo rollback.',
+'giverollback-revoked' => '[[User:$1|$1]] odteraz nemá právo rollback.',
+'giverollback-logpage' => 'Záznam práv rollback',
+'giverollback-logpagetext' => 'Toto je záznam zmien práv používateľov, ktorí nie sú správcovia.\' [[Help:Rollback|rollback]] rights.',
+'giverollback-logentrygrant' => 'udelené právo rollback používateľovi [[$1]]',
+'giverollback-logentryrevoke' => 'odobraté právo rollback používateľovi [[$1]]',
+),
+
 /* Serbian default (Sasa Stefanovic) */
 'sr' => array(
 'giverollback' => 'Додај или одузми права враћања',
