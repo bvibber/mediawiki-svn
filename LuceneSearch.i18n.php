@@ -51,10 +51,7 @@ $wgLuceneSearchMessages['de'] = array(
 	'searchnoresults'       => "Es wurden keine passenden Seiten für Ihre Suchanfrage gefunden.",
 	'searchnearmatches'     => "<b>Diese Seiten haben zu der Suchanfrage ähnliche Titel:</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-Suche in Namensräumen:\n
-$1\n
-Suche nach $3 $9",
+	'lucenepowersearchtext' => "Suche in den Namensräumen $1<br />Suchbegriff: $3 $9",
 	'lucenefallback'        => "Bei der {{SITENAME}}-internen Suche ist ein Problem aufgetreten.
 Dies ist normalerweise ein vorübergehendes Problem. Bitte versuchen Sie es nochmal.
 Alternativ können Sie auch die externen Suchmöglichkeiten nutzen: :\n"
