@@ -65,6 +65,29 @@ $wgMakesysopMessages['br'] = array(
 	'already_sysop'        => 'Merour eo an implijer-mañ dija',
 	'already_bureaucrat'   => 'Penn-bras eo an implijer-mañ dija',
 );
+$wgMakesysopMessages['bs'] = array(
+	'makesysoptitle'       => 'Pretvorite korisnika u administratora',
+	'makesysoptext'        => 'Ovaj formular se koristi sa strane birokrata da se obični korisnici pretvore u administratore.  Unesite ime korisnika u kutiju i pritisnite dugme da bi korisnik postao administrator.',
+	'makesysopname'        => 'Ime korisnika:',
+	'makesysopsubmit'      => 'Dodajte ovom korisniku administratorska prava',
+	'makesysopok'          => '<b>Korisnik "$1" je sad administrator</b>',
+	'makesysopfail'        => '<b>Korisnik "$1" nije mogao dobiti administratorska prava. (Da li ste pravo unijeli ime?)</b>',
+	'setbureaucratflag'    => 'Postavi prava birokrate',
+	'rights'               => 'Prava:',
+	'set_user_rights'      => 'Postavi prava korisnika',
+	'user_rights_set'      => '<b>Prava za korisnika "$1" promjenjena</b>',
+	'set_rights_fail'      => '<b>Korisnička prava za $"1" nisu mogla da se podese.  (Da li ste pravilno unijeli ime?)</b>',
+	'makesysop'            => 'Dodijeli administratorska prava korisniku',
+);
+$wgMakesysopMessages['ca'] = array(
+	'makesysoptitle'       => 'Converteix en administrador',
+	'makesysoptext'        => 'Aquest formulari serveix per a que els buròcrates puguin convertir un usuari en administrador. Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
+	'makesysopname'        => 'Nom de l\'usuari:',
+	'makesysopsubmit'      => 'Converteix aquest usuari en administrador',
+	'makesysopok'          => '<b>L\'usuari "$1" és un administrador a partir d\'ara</b>',
+	'rights'               => 'Permisos:',
+	'already_sysop'        => 'Aquest usuari ja és un administrador',
+);
 $wgMakesysopMessages['cs'] = array(
 	'makesysoptitle'       => 'Učinit uživatele správcem',
 	'makesysoptext'        => 'Pomocí tohoto formuláře mohou byrokraté uživateli přidělit práva správce. Vepište jméno uživatele do políčka a stiskněte tlačítko; zaškrtnutím políčka přidáte uživateli také oprávnění „byrokrat“.',
@@ -280,6 +303,38 @@ $wgMakesysopMessages['he'] = array(
 	'group-steward'        => 'דיילים',
 	'group-steward-member' => 'דייל',
 	'grouppage-steward'    => '{{ns:project}}:דיילים',
+);
+$wgMakesysopMessages['hr'] = array(
+	'makesysoptitle'       => 'Načini suradnika administratorom',
+	'makesysoptext'        => 'Ovaj obrazac služi birokratima za dodjeljivanje administratorskih prava pojedinom suradniku. Utipkajte ime suradnika u kućicu i pritisnite dugme kako biste suradniku dali administratorska prava.',
+	'makesysopname'        => 'Ime suradnika:',
+	'makesysopsubmit'      => 'Učini ovog suradnika administratorom',
+	'makesysopok'          => '<b>Suradnik "$1" je postao administrator</b>',
+	'makesysopfail'        => '<b>Suradnika "$1" nije se moglo učiniti administratorom. (Jeste li pravilno upisali ime?)</b>',
+	'setbureaucratflag'    => 'Postavi oznaku birokrata',
+	'rights'               => 'Prava:',
+	'set_user_rights'      => 'Postavi suradnička prava',
+	'user_rights_set'      => '<b>Prava za suradnika "$1" postavljena</b>',
+	'set_rights_fail'      => '<b>Prava za suradnika "$1" nisu postavljena. (Jeste li pravilno upisali ime?)</b>',
+	'makesysop'            => 'Učini suradnika administratorom',
+	'already_sysop'        => 'Ovaj je suradnik već administrator',
+	'already_bureaucrat'   => 'Ovaj je suradnik već birokrat',
+);
+$wgMakesysopMessages['hsb'] = array(
+	'makesysoptitle'       => 'Wužiwarja k administratorej činić',
+	'makesysoptext'        => 'Tutón formular so wot běrokratow wužiwa, zo bychu so jednori wužiwarjo do administratorow přeměnili. Zadodajće wužiwarske mjeno do wotpowědneho pola a klikńće na tłočatko, zo byšće wužiwarja k administratorej činił(a).',
+	'makesysopname'        => 'Mjeno wužiwarja:',
+	'makesysopsubmit'      => 'Wužiwarja k administratorej činić',
+	'makesysopok'          => '<b>Wužiwar „$1” je nětko administrator.</b>',
+	'makesysopfail'        => '<b>Wužiwar „$1” njeda so k sysopej činić. (Sće mjeno prawje zapisał(a)?)</b>',
+	'setbureaucratflag'    => 'Wužiwarja k běrokratej činić',
+	'rights'               => 'Prawa:',
+	'set_user_rights'      => 'Wužiwarske prawa zrjadować',
+	'user_rights_set'      => '<b>Prawa za wužiwarja „$1” zaktualizowane</b>',
+	'set_rights_fail'      => '<b>Prawa za wužiwarja „$1” njedadźa so nastajić. (Sće mjeno prawje zapisał(a)?)</b>',
+	'makesysop'            => 'Wužiwarja k administratorej činić',
+	'already_sysop'        => 'Tutón wužiwar je hižo administrator.',
+	'already_bureaucrat'   => 'Tutón wužiwar je hižo běrokrat.',
 );
 $wgMakesysopMessages['id'] = array(
 	'makesysoptitle'       => 'Buat seorang pengguna menjadi pengurus',
@@ -781,6 +836,35 @@ $wgMakesysopMessages['tt'] = array(
 );
 $wgMakesysopMessages['tyv'] = array(
 	'makesysopname'		=> 'Ажыглакчыниң ады:',
+);
+$wgMakesysopMessages['vec'] = array(
+	'makesysoptitle'       => 'Rendi aministradore un utente',
+	'makesysoptext'        => 'Sto form xè usà dai burocrati par far diventare amistradori i utenti normali. Scrivi el nome de l\'utente ne la caseła e struca el botón par far diventare aministradore un utente.',
+	'makesysopname'        => 'Nome dell\'utente:',
+	'makesysopsubmit'      => 'Fa diventar sto utente un aministrador',
+	'makesysopok'          => '\'\'\'L\'utente \'$1\' adesso xè un aministrador\'\'\'',
+	'makesysopfail'        => '<b>Impossibiłe far diventare aministrador l\'utente "$1". Verificare che el nome utente sia stà scrito coretamente.</b>',
+	'setbureaucratflag'    => 'Imposta i diritti del burocrate',
+	'set_user_rights'      => 'Imposta diritti utente',
+	'makesysop'            => 'Rendi un utente aministrador',
+	'already_sysop'        => 'Sto utente l\'è xà un aministradór',
+	'already_bureaucrat'   => 'Sto utente l\'è xà un burocrate',
+);
+$wgMakesysopMessages['vi'] = array(
+	'makesysoptitle'       => 'Phong một thành viên làm quản lý',
+	'makesysoptext'        => 'Mẫu này được các tổng quản lý dùng để phong các thành viên bình thường thành người quản lý. Hãy gõ tên của thành viên cần phong quyền quản lý vào ô này và nhấn nút.',
+	'makesysopname'        => 'Tên thành viên:',
+	'makesysopsubmit'      => 'Phong quyền quản lý cho thành viên này',
+	'makesysopok'          => "<b>Thành viên \"$1\" đã thành quản lý</b>",
+	'makesysopfail'        => "<b>Thành viên \"$1\" không thể trở thành quản lý được. (Liệu bạn có nhập tên đúng không?)</b>",
+	'setbureaucratflag'    => 'Đặt cờ tổng quản lý',
+	'rights'               => 'Quyền:',
+	'set_user_rights'      => 'Đặt quyền hạn cho thành viên',
+	'user_rights_set'      => "<b>Quyền hạn thành viên của \"$1\" đã được cập nhật</b>",
+	'set_rights_fail'      => "<b>Quyền hạn thành viên của \"$1\" không thể xác lập được. (Liệu bạn có gõ sai tên không?)</b>",
+	'makesysop'            => 'Phong một thành viên làm quản lý',
+	'already_sysop'        => 'Người này đã là quản lý',
+	'already_bureaucrat'   => 'Người này đã là tổng quản lý',
 );
 $wgMakesysopMessages['wa'] = array(
 	'makesysoptitle'       => 'Diner a èn uzeu on livea di manaedjeu',
