@@ -68,28 +68,39 @@ int main(int argc, char** argv)
 	const size_t bufSize = 65536;
 	char buffer[bufSize];
 	char *line1, *line2;
+	ssize_t bytesRemaining, bytesRead;
 	for (;;) {
-		ssize_t bytesRead = socket.RecvFrom(buffer, bufSize, address);
-		if (bytesRead > 0) {
-			// Reload configuration
-			try {
-				config.Reload();
-			} catch (runtime_error & e) {
-				cerr << e.what() << endl;
-				continue;
-			}
+		bytesRead = socket.RecvFrom(buffer, bufSize, address);
+		if (bytesRead <= 0) {
+			continue;
+		}
 
-			// Split into lines and hand off to the processors
-			line1 = strtok(buffer, "\n");
-			while (line1) {
-				line2 = strtok(NULL, "\n");
-				if (line2) {
-					config.ProcessLine(line1, line2 - line1 - 1);
-				} else {
-					config.ProcessLine(line1, buffer + bytesRead - line1);
-				}
-				line1 = line2;
+		// Reload configuration
+		try {
+			config.Reload();
+		} catch (runtime_error & e) {
+			cerr << e.what() << endl;
+			continue;
+		}
+
+		// Split into lines and hand off to the processors
+		line1 = buffer;
+		bytesRemaining = bytesRead;
+		while (bytesRemaining) {
+			// Find the next line break
+			line2 = (char*)memchr(line1, '\n', bytesRemaining);
+			if (line2) {
+				// advance line2 to the start of the next line
+				line2++;
+				// Process the line
+				config.ProcessLine(line1, line2 - line1);
+				bytesRemaining -= line2 - line1;
+			} else {
+				// no more lines, process the remainder of the buffer
+				config.ProcessLine(line1, bytesRemaining);
+				bytesRemaining = 0;
 			}
+			line1 = line2;
 		}
 	}
 }
