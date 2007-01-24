@@ -13,7 +13,7 @@ public:
 	void Open(const std::string & name);
 	void Load();
 	void Reload();
-	void ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address);
+	void ProcessLine(char *buffer, size_t size);
 
 	std::string fileName;
 	boost::ptr_vector<LogProcessor> processors;

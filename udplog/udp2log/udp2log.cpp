@@ -67,14 +67,28 @@ int main(int argc, char** argv)
 	boost::shared_ptr<SocketAddress> address;
 	const size_t bufSize = 65536;
 	char buffer[bufSize];
+	char *line1, *line2;
 	for (;;) {
 		ssize_t bytesRead = socket.RecvFrom(buffer, bufSize, address);
 		if (bytesRead > 0) {
+			// Reload configuration
 			try {
 				config.Reload();
-				config.ProcessLine(buffer, bytesRead, address);
 			} catch (runtime_error & e) {
 				cerr << e.what() << endl;
+				continue;
+			}
+
+			// Split into lines and hand off to the processors
+			line1 = strtok(buffer, "\n");
+			while (line1) {
+				line2 = strtok(NULL, "\n");
+				if (line2) {
+					config.ProcessLine(line1, line2 - line1 - 1);
+				} else {
+					config.ProcessLine(line1, buffer + bytesRead - line1);
+				}
+				line1 = line2;
 			}
 		}
 	}

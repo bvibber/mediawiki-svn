@@ -31,11 +31,13 @@ LogProcessor * FileProcessor::NewFromConfig(char * params)
 	return (LogProcessor*)fp;
 }
 
-void FileProcessor::ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address)
+void FileProcessor::ProcessLine(char *buffer, size_t size)
 {
 	if (Sample()) {
 		f.write(buffer, size);
-		f.flush();
+		if (factor >= 10) {
+			f.flush();
+		}
 	}
 }
 
@@ -67,7 +69,7 @@ LogProcessor * PipeProcessor::NewFromConfig(char * params)
 	return (LogProcessor*)pp;
 }
 
-void PipeProcessor::ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address)
+void PipeProcessor::ProcessLine(char *buffer, size_t size)
 {
 	if (!f) {
 		return;
@@ -84,7 +86,9 @@ void PipeProcessor::ProcessLine(char *buffer, size_t size, boost::shared_ptr<Soc
 			pclose(f);
 			f = NULL;
 		} else {
-			fflush(f);
+			if (factor >= 10) {
+				fflush(f);
+			}
 		}
 	}
 }

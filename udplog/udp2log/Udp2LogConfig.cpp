@@ -74,11 +74,11 @@ void Udp2LogConfig::Reload()
 	}
 }
 
-void Udp2LogConfig::ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address) 
+void Udp2LogConfig::ProcessLine(char *buffer, size_t size) 
 {
 	boost::ptr_vector<LogProcessor>::iterator i;
 	for (i = processors.begin(); i != processors.end(); i++) {
-		i->ProcessLine(buffer, size, address);
+		i->ProcessLine(buffer, size);
 	}
 }
 

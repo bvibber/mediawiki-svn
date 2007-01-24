@@ -2,13 +2,12 @@
 #define LOGPROCESSOR_H
 
 #include <fstream>
-#include <boost/shared_ptr.hpp>
 #include "../srclib/Socket.h"
 
 class LogProcessor
 {
 public:
-	virtual void ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address) = 0;
+	virtual void ProcessLine(char *buffer, size_t size) = 0;
 	virtual ~LogProcessor() {}
 
 protected:
@@ -39,7 +38,7 @@ class FileProcessor : public LogProcessor
 {
 public:
 	static LogProcessor * NewFromConfig(char * params);
-	virtual void ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address);
+	virtual void ProcessLine(char *buffer, size_t size);
 
 	FileProcessor(char * filename, int factor_) 
 		: LogProcessor(factor_)
@@ -58,7 +57,7 @@ class PipeProcessor : public LogProcessor
 {
 public:
 	static LogProcessor * NewFromConfig(char * params);
-	virtual void ProcessLine(char *buffer, size_t size, boost::shared_ptr<SocketAddress> address);
+	virtual void ProcessLine(char *buffer, size_t size);
 
 	PipeProcessor(char * command, int factor_) 
 		: LogProcessor(factor_)
