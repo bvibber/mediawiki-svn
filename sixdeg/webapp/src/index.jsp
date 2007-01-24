@@ -2,7 +2,8 @@
   Six degrees of Wikipedia: JSP front-end.
   This source code is released into the public domain.
 
-  @(#)index.jsp	1.19 06/10/16 01:17:11
+  From: @(#)index.jsp	1.19 06/10/16 01:17:11
+  $Id$
 --%>
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -129,7 +130,7 @@ href="index.jsp?from=<c:out value='${fn:replace(to, " ", "_")}'/>&amp;to=<c:out 
 <a href="mailto:river@attenuate.org">send feedback...</a><br />
 i'm poor.  if you like <i>six degrees</i>, feel free to <a href="http://www.paypal.com/"
 >PayPal</a> some money to [<tt>river</tt> (at) <tt>attenuate</tt> (dot) <tt>org</tt>].</p>
-<span class='version'>Front-end version: @(#)index.jsp	1.19 06/10/16 01:17:11 [request encoding: <c:out value="${encoding}" />]
+<span class='version'>Front-end version: $Revision$ [request encoding: <c:out value="${encoding}" />]
 </div>
 </body>
 </html>
