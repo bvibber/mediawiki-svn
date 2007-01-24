@@ -38,6 +38,32 @@ copies of all histories. This is useful for article forking, etc.',
 'duplicator-toomanyrevisions' => '[[$1]] has too many ($2) revisions and cannot be copied. The current limit is $3.',
 ),
 
+'br' => array(
+'duplicator'=> 'Eilañ ur pennad',
+'duplicator-toolbox'=> 'Eilañ ar pennad-mañ',
+'duplicator-header'=> 'Dre ar bajenn-mañ e c\'haller eilañ ur pennad penn-da-benn ha sevel stummoù emren evit pep kemm degaset. Talvoudus eo evit diforc\'hañ pennadoù, da skouer.',
+
+'duplicator-options'=> 'Dibarzhioù',
+'duplicator-source'=> 'Mammenn :',
+'duplicator-dest'=> 'Lec\'h-kas :',
+'duplicator-dotalk'=> 'Eilañ ar bajenn gaozeal (mar galler)',
+'duplicator-submit'=> 'Eilañ',
+
+'duplicator-summary'=> 'Eilet eus [[$1]]',
+
+'duplicator-success'=> '<big>\'\'\'Eilet eo bet [[$1]] war [[$2]].\'\'\'</big>',
+'duplicator-success-revisions'=> '$1 kemm zo bet eilet.',
+'duplicator-success-talkcopied'=> 'Eilet eo bet ar bajenn gaozeal ivez.',
+'duplicator-success-talknotcopied'=> 'N\'eus ket bet gallet eilañ ar bajenn gaozeal.',
+'duplicator-failed'=> 'N\'eus ket bet gallet eilañ ar bajenn-mañ. C\'hoarvezet ez eus ur fazi digomprenus.',
+
+'duplicator-source-invalid'=> 'Mar plij, lakait anv ur pennad zo anezhañ c\'hoazh.',
+'duplicator-source-notexist'=> 'N\'eus ket eus [[$1]]. Lakait titl ur pennad zo anezhañ mar plij',
+'duplicator-dest-invalid'=> 'Merkit un titl reizh evel lec\'h-kas, mar plij',
+'duplicator-dest-exists'=> 'Bez\' ez eus eus [[$1]] c\'hoazh. Merkit titl ul lec\'h-kas n\'eo ket bet krouet c\'hoazh.',
+'duplicator-toomanyrevisions'=> 'Re a ($2) gemmoù zo gant [[$1]]. N\'haller ket o eilañ. $3 eo ar vevenn e talvoud.',
+),
+
 /* German (Leon Weber) */
 'de' => array(
 	'duplicator' => 'Einen Artikel duplizieren',
