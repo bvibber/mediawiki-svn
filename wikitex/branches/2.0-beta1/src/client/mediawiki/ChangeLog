@@ -1,0 +1,14 @@
+2007-01-19  Peter Danenberg  <pcd at wikitex dot org>
+
+	* WikitexRequest.php: Check the cache for interesting mime-types;
+	errors are still cached regardless (when $DEBUG is true).  This
+	doesn't seem to make sense for temporary errors such as `connection
+	refused'.  TODO: Distinguish between cacheable and non-cacheable
+	errors.
+	Added username and password to curl-options.
+	Curl should fail on, exempli gratia, bad username/password
+	(CURLOPT_FAILONERROR).
+
+	* Wikitex.php: Added latex function to abstract the details from
+	LaTeX-dependant subrequests (say, amsmath).
+

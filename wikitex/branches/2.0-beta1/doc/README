@@ -1,0 +1,529 @@
+
+
+
+
+
+
+
+
+
+                  WikiTeX 2.0-beta README
+
+          Peter Danenberg <pcd at wikitex dot org>
+                   http://wikisophia.org
+
+
+
+                          ABSTRACT
+
+          README covers hortation and installation.
+
+
+
+23 January 2007
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+README                       -i-            WikiTeX 2.0-beta
+
+
+                     Table of Contents
+
+
+0.  Prerequisites  . . . . . . . . . . . . . . . . . . .   1
+     0.1.  Client  . . . . . . . . . . . . . . . . . . .   1
+     0.2.  Server  . . . . . . . . . . . . . . . . . . .   1
+1.  Installation . . . . . . . . . . . . . . . . . . . .   1
+     1.1.  Client  . . . . . . . . . . . . . . . . . . .   1
+     1.2.  Server  . . . . . . . . . . . . . . . . . . .   2
+     1.3.  Handler . . . . . . . . . . . . . . . . . . .   2
+2.  Execution  . . . . . . . . . . . . . . . . . . . . .   3
+3.  Configuration  . . . . . . . . . . . . . . . . . . .   3
+     3.1.  Directories . . . . . . . . . . . . . . . . .   3
+     3.2.  Users . . . . . . . . . . . . . . . . . . . .   3
+     3.3.  Facilities  . . . . . . . . . . . . . . . . .   3
+     3.4.  Resources . . . . . . . . . . . . . . . . . .   3
+          3.4.1.  Internal . . . . . . . . . . . . . . .   3
+          3.4.2.  Kernel-Enforced  . . . . . . . . . . .   4
+          3.4.3.  Per-User . . . . . . . . . . . . . . .   4
+4.  Chroot . . . . . . . . . . . . . . . . . . . . . . .   4
+     4.1.  teTeX . . . . . . . . . . . . . . . . . . . .   4
+     4.2.  TeX Live  . . . . . . . . . . . . . . . . . .   5
+5.  Architecture . . . . . . . . . . . . . . . . . . . .   6
+6.  Copyright  . . . . . . . . . . . . . . . . . . . . .   6
+7.  Colophon . . . . . . . . . . . . . . . . . . . . . .   6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                       23 January 2007
+
+
+
+
+
+
+README                       -1-            WikiTeX 2.0-beta
+
+
+
+
+
+                  WikiTeX 2.0-beta README
+
+          Peter Danenberg <pcd at wikitex dot org>
+                   http://wikisophia.org
+
+
+0.  Prerequisites
+
+     0.1.  Client
+
+          o    MediaWiki
+
+          o    PHP compiled with curl and xmlrpc[1]
+
+     0.2.  Server
+
+          o    Apache
+
+          o    mod_python
+
+          o    teTeX and dvipng (or TeX Live)
+
+          o    Python 2.5[2]
+
+1.  Installation
+
+          If  you'd  merely  like  to  connect  to a WikiTeX
+     server, read Client Installation and forget  the  rest.
+     If  you'd  like to set up your own server, on the other
+     hand, read it all.
+
+     1.1.  Client
+
+          1.   Copy <wikitex>/src/client/mediawiki to:
+
+                    <mediawiki>/extensions/wikitex
+
+          2.   Copy config/default.php to  config/local.php.
+
+          3.   Edit local.php to satisfaction.
+
+          4.   To <mediawiki>/LocalSettings.php, add:
+
+
+-----------
+  1. We'd  like  to  remove  the curl- and xmlrpc-
+requirements in the future by providing an (albeit
+slower)  XML-RPC  fallback like phpxmlrpc or Incu-
+tio.
+  2. We take advantage  of  with-statements  which
+will become native in 2.6.
+
+
+
+                       23 January 2007
+
+
+
+
+
+README                       -2-            WikiTeX 2.0-beta
+
+
+                    include_once('./extensions/wikitex/main.php');
+
+               There's also an optional install_client  tar-
+          get included in the Python-distribution.
+
+     1.2.  Server
+
+          1.   Copy src/server/wikitex/config/default.py to:
+
+                    src/server/wikitex/config/local.py
+
+          2.   Edit local.py to satisfaction.[3]
+
+          3.   Run:
+
+                    python setup.py build
+
+               and:
+
+                    sudo python setup.py install
+
+          4.   (Optional)  Mount  /usr/local/var/wikitex  on
+               its own partition with NOSUID.
+
+          5.   Set    up    a    chroot    environment    in
+               /usr/local/var/wikitex/latex  for  teTeX  and
+               dvipng.[4]
+
+          6.   Within the chroot, edit texmf.cnf to read:
+
+                    shell_escape = f
+                    openout_any = p
+                    openin_any = p
+
+          7.   ???
+
+          8.   Profit!
+
+     1.3.  Handler
+
+               The   Apache-handler   mediates  between  the
+          client   and   chrooted   daemons;   it   requires
+          mod_python.
+
+          1.   Install mod_python,[5] if necessary.
+
+          2.   You  may need to edit the .htaccess which was
+               installed, by default, in:
+
+
+-----------
+  3. See section 3, Configuration.
+  4. See section 4, Chroot.
+  5. http://www.modpython.org
+
+
+
+                       23 January 2007
+
+
+
+
+
+README                       -3-            WikiTeX 2.0-beta
+
+
+                    /usr/local/apache2/htdocs/wikitex/.htaccess
+
+2.  Execution
+
+          `wikitex'  and  `wikitex-debug'  are  installed by
+     default in /usr/local/bin.  They both take `start'  and
+     `stop'  as arguments, but `wikitex-debug' provides some
+     additional output to the  syslog  and  keeps  all  work
+     directories  intact in /usr/local/var/wikitex/latex/tmp
+     for inspection.
+
+          `wikitex', on  the  other  hand,  cleans  up  work
+     directories  (except  in cases of resource-faults); and
+     prints minimally to syslog.
+
+          `wikitex' and `wikitex-debug' need to  be  run  as
+     root to chroot into the rendering environment, but drop
+     privileges immediately to wikitex:wikitex.
+
+3.  Configuration
+
+     3.1.  Directories
+
+               WikiTeX allows relatively fine-tuned  control
+          over  the install-location, and provides some rea-
+          sonable defaults.
+
+     3.2.  Users
+
+               WikiTeX also allows the  ability  to  specify
+          the  nonprivileged user to whom it will drop after
+          detaching from the console; it should be  distinct
+          from the Apache user, and ideally ad-hoc.
+
+     3.3.  Facilities
+
+               Please inspect the facilities section to make
+          sure that they correspond to your chroot  environ-
+          ment;  in  particular,  you  will  need to specify
+          absolute paths to binaries.
+
+     3.4.  Resources
+
+               WikiTeX's resource managament has three  lay-
+          ers: internal, kernel-enforced and per-user.
+
+          3.4.1.  Internal
+
+                    The  `default_wait'  dictionary provides
+               fine-grained control  over  signals  sent  to
+               runaway  processes; `default_wait' works over
+               and above RLIMIT_CPU, whose  effects  can  be
+               hard to predict.
+
+
+
+
+                       23 January 2007
+
+
+
+
+
+README                       -4-            WikiTeX 2.0-beta
+
+
+          3.4.2.  Kernel-Enforced
+
+                    Read  more  about  kernel-limits in `man
+               setrlimit'; WikiTeX includes fairly Draconian
+               policies  which  may  need  to be relaxed for
+               production-sites.
+
+          3.4.3.  Per-User
+
+                    `ctime_unit'  and   `max_ctime_per_unit'
+               provide  ways  to  limit  resource-usage from
+               particular  users.   WikiTeX  calculates  how
+               much  CPU-time  a user has usurped within one
+               `ctime_unit';   if    its    usage    exceeds
+               `max_ctime_per_unit'  with that unit of time,
+               the request is temporarily denied.
+
+                    The upshot is that  users  may  have  to
+               submit several requests to complete a partic-
+               ularly time-consuming document.
+
+4.  Chroot
+
+          Chrooting is art and science; and can be risky if,
+     for instance, you leave suid-binaries lying around.
+
+          That  said,  jailkit[6] and makejail[7] are useful
+     utilities.
+
+     4.1.  teTeX
+
+               By way of example, the following outlines how
+          dvipng  and  teTeX  were  chrooted  on  our  local
+          machine.
+
+          1.   Install teTeX relative to the chroot, passing
+               the following to configure; where <root> cor-
+               responds to /usr/local/var/wikitex/latex  (or
+               similar):
+
+                    ./configure --disable-multiplatform \
+                    --prefix=<root>/usr/local/teTeX
+
+          2.   Similarly for dvipng:
+
+                    ./configure --prefix=<root>/usr/local
+
+          3.   Finally,  these  libraries  were necessary on
+               Fedora Core 6 (your mileage may vary):
+
+                    /lib/libm.so.6
+-----------
+  6. http://olivier.sessink.nl/jailkit
+  7. http://www.floc.net/makejail
+
+
+
+                       23 January 2007
+
+
+
+
+
+README                       -5-            WikiTeX 2.0-beta
+
+
+                    /lib/libexpat.so.0
+                    /lib/libdl-2.5.so
+                    /lib/libexpat.so.0.5.0
+                    /lib/libgcc_s.so.1
+                    /lib/libstdc++.so.6
+                    /lib/ld-2.5.so
+                    /lib/libm-2.5.so
+                    /lib/libc-2.5.so
+                    /lib/ld-linux.so.2
+                    /lib/libdl.so.2
+                    /lib/libc.so.6
+                    /lib/libtermcap.so.2
+                    /usr/lib/libfontconfig.so.1
+                    /usr/lib/libgd.so.2
+                    /usr/lib/libjpeg.so.62
+                    /usr/lib/libX11.so.6.2.0
+                    /usr/lib/libz.so.1
+                    /usr/lib/libgd.so.2.0.0
+                    /usr/lib/libXpm.so.4.11.0
+                    /usr/lib/libpng12.so.0.10.0
+                    /usr/lib/libXau.so.6.0.0
+                    /usr/lib/libfontconfig.so.1.1.0
+                    /usr/lib/libXau.so.6
+                    /usr/lib/libXpm.so.4
+                    /usr/lib/libXdmcp.so.6.0.0
+                    /usr/lib/libX11.so.6
+                    /usr/lib/libXdmcp.so.6
+                    /usr/lib/libfreetype.so.6.3.10
+                    /usr/lib/libjpeg.so.62.0.0
+                    /usr/lib/libz.so.1.2.3
+                    /usr/lib/libpng12.so.0
+                    /usr/lib/libfreetype.so.6
+                    /etc/ld.so.cache
+
+
+     4.2.  TeX Live
+
+               Alternatively, TeX Live[8] provides a  stati-
+          cally-linked  dvipng in its full installation, and
+          significantly reduces the library-overhead.
+
+               When running `install-tl.sh', supply the fol-
+          lowing (or similar) for TEXDIR:
+
+               /usr/local/var/wikitex/latex/usr/local/texlive
+
+               The latex-facility in local.py may need to be
+          adjusted accordingly; for instance:
+
+               /usr/local/texlive/bin/i386-linux/latex
+
+
+-----------
+  8. http://www.tug.org/texlive
+
+
+
+                       23 January 2007
+
+
+
+
+
+README                       -6-            WikiTeX 2.0-beta
+
+
+          in lieu of /usr/local/teTeX/bin/latex.
+
+5.  Architecture
+
+          In  short, an XML-RPC client (e.g., the MediaWiki-
+     client) connects to the  mod_python  frontend  ("Trader
+     Joe") served by Apache.
+
+          Trader  Joe,  in  turn,  connects  to  autonomous,
+     unprivileged, chrooted  daemons  sitting  on  arbitrary
+     machines, that actually render the content.
+
+          After authentication,[9]  but  before  Trader  Joe
+     befrays the rendering drones, he checks an IP->CPU-time
+     database to see whether the client has  used  up  their
+     allotted rendering time.
+
+                                              LaTeX-daemon
+                                             /
+     client<--(auth)-->traderjoe<--(resource)-->LilyPond-daemon
+                                             \
+                                              ...-daemon
+
+
+          The daemons should not be accessible to the intar-
+     web at large.
+
+6.  Copyright
+
+     WikiTeX: expansible LaTeX module for MediaWiki
+     Copyright (C) 2004-7 Peter Danenberg
+
+          You should have received a copy of the GNU General
+     Public  License  along with this program; if not, write
+     to the Free  Software  Foundation,  Inc.,  51  Franklin
+     Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+7.  Colophon
+
+          This  document was prepared in GNU troff using the
+     ms macro package; preprocessed with tbl, the table for-
+     matter;  and  lastly  filtered  through  col  to remove
+     reverse line feeds and tabs:
+
+          groff -ms -t -Tascii SOURCE | col -bx > OUT
+
+     Automatically generated contents were moved  from  page
+     last to first with an ad-hoc bash-diddy.
+
+
+
+-----------
+  9. Trader  Joe  uses  basic-, but key-based-auth
+should be possible using curl's transport-layer.
+
+
+
+                       23 January 2007
+
+

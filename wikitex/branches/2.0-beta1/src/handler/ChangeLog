@@ -1,0 +1,5 @@
+2007-01-23  Peter Danenberg  <pcd at wikitex dot org>
+
+	* traderjoe.py (handler): do our best to close lock
+	on fault; transition to real database.
+	Solve divide by zero error on new clients.

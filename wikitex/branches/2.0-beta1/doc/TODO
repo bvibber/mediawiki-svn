@@ -1,0 +1,463 @@
+
+
+
+
+
+
+
+
+
+                   WikiTeX 2.0-beta TODO
+
+          Peter Danenberg <pcd at wikitex dot org>
+                   http://wikisophia.org
+
+
+
+                          ABSTRACT
+
+          Things  to  do  (exigenda)  and  things  done
+     (exacta) are recorded here.
+
+
+
+23 January 2007
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TODO                         -i-            WikiTeX 2.0-beta
+
+
+                     Table of Contents
+
+
+1.  Exigenda . . . . . . . . . . . . . . . . . . . . . .   1
+     1.1.  Generic . . . . . . . . . . . . . . . . . . .   1
+     1.2.  Server  . . . . . . . . . . . . . . . . . . .   1
+     1.3.  Client  . . . . . . . . . . . . . . . . . . .   1
+     1.4.  Documentation . . . . . . . . . . . . . . . .   1
+     1.5.  Handler . . . . . . . . . . . . . . . . . . .   1
+2.  Exacta . . . . . . . . . . . . . . . . . . . . . . .   2
+     2.1.  Generic . . . . . . . . . . . . . . . . . . .   2
+          2.1.1.  Cache  . . . . . . . . . . . . . . . .   3
+     2.2.  Server  . . . . . . . . . . . . . . . . . . .   3
+     2.3.  Client  . . . . . . . . . . . . . . . . . . .   4
+          2.3.1.  Cache  . . . . . . . . . . . . . . . .   4
+     2.4.  Documentation . . . . . . . . . . . . . . . .   4
+3.  Copyright  . . . . . . . . . . . . . . . . . . . . .   4
+4.  Colophon . . . . . . . . . . . . . . . . . . . . . .   5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                       23 January 2007
+
+
+
+
+
+
+TODO                         -1-            WikiTeX 2.0-beta
+
+
+
+
+
+                   WikiTeX 2.0-beta TODO
+
+          Peter Danenberg <pcd at wikitex dot org>
+                   http://wikisophia.org
+
+
+1.  Exigenda
+
+     1.1.  Generic
+
+     1.2.  Server
+
+          Crontab
+               Crontab to delete daily cruft (left over from
+               over-ambitious  users who outstrip resources,
+               causing files.
+
+          Actions
+               Plenary Classes
+
+          Install
+               Replace  ad-hoc  installations  by  copytree;
+               fail on directory existence.
+
+     1.3.  Client
+
+     1.4.  Documentation
+
+          Territory
+               Copyright notices, etc.
+
+          Permissions
+               Work   with   MediaWiki   to  restrict  usage
+               (optionally) to certain classes of users.
+
+          XML-RPC-lib
+               Add fallback-support for phpxmlrpc or Incutio
+               for  those  with  little  control  over their
+               installations, willing to take a  performance
+               hit.
+
+     1.5.  Handler
+
+          Database
+               Swap  out  home-brew  lock  system  for  some
+               heavy-duty piece-of-shit (mysql,  say;  post-
+               gre; or even sqlite3).
+
+
+
+
+
+
+
+                       23 January 2007
+
+
+
+
+
+TODO                         -2-            WikiTeX 2.0-beta
+
+
+2.  Exacta
+
+     Packaging
+          Combine both server and client into a common pack-
+          age, or utterly segregated (thus possibly not con-
+          fusing the client-users)?
+
+          Latter:  combined  source;  `src'  directory: con-
+          tains: `client', `server'.
+
+     PHP-client
+          Basic request working; now to do something  useful
+          with it.
+
+     Temp-dir
+          Does  cleanup happen after exceptions? (The object
+          is deleted, after all.)
+
+          Yes.
+
+     Python Apache-handler
+          Trader Joe acts as a  middle-man  between  locally
+          running,  unprivileged,  chrooted  servers and the
+          requesting public.
+
+          More efficient? Possibly; will rebuke  the  prema-
+          ture optimization for now.
+
+     THANKS
+          Get Erik in there. Hephaistos, Hermes Charmophron,
+          Apollon, Hestia, Hera, Athena, dodeka Theoi.
+
+     Footer/Header
+          WikiTeX <VERSION> in footers  or  headers,  across
+          from date
+
+     Honest work in subserver
+          Invocation of latex, dvipng
+
+     Web install
+          Installs into web-root and changes ownership.
+
+     Title page
+          ms-macro  to  institute  title  page (include with
+          .so)
+
+     License
+          Includable ms-file for license (.so)
+
+     2.1.  Generic
+
+
+
+
+
+
+
+                       23 January 2007
+
+
+
+
+
+TODO                         -3-            WikiTeX 2.0-beta
+
+
+          2.1.1.  Cache
+
+               Purview
+                    Client-, server-side or both?
+
+               Failure
+                    Problem: in 1.0+, failed rendering don't
+                    get cached and are rerendered every day.
+
+                    Distinguish, therefore, between  server-
+                    and  syntax-failures;  and cache accord-
+                    ingly.
+
+                    No: a simple flag  PHP  side  will  turn
+                    on/off  error  caching; functioning sys-
+                    tems can turn it  off  for  performance,
+                    and for debugging purposes: back on.
+
+                    It  may be useful to distinguish between
+                    temporary and permanent errors, now that
+                    we have ad-hoc classes.
+
+     2.2.  Server
+
+          Debug
+               build_scripts command which takes --debug and
+               disables optimization in wikitex-main.py
+
+               No: rather a wikitex/main.py, and two trivial
+               wrappers:  wikitex  and wikitex- debug, which
+               are invoked with  `python  -O'  and  `python'
+               respectively.
+
+          IP-throttle
+               Database of author vs. time
+
+          setrlimit
+               Per-request (post droppriv)
+
+          MIME-types
+               Currently  a  non-descript list in Constants;
+               instantiate MIME-wrappers  with  well-defined
+               instance variables.
+
+          Delivery
+               Client-server  contract  for  the delivery of
+               content (keys for XMLRPC response); encode in
+               a format parseable by PHP: XML, say?
+
+               Right now: using an implicit contract (image:
+               content).  A low-tech published API may  suf-
+               fice.
+
+
+
+
+
+                       23 January 2007
+
+
+
+
+
+TODO                         -4-            WikiTeX 2.0-beta
+
+
+     2.3.  Client
+
+          Source
+               `errors' directory to house the manifold.
+
+          Authentication
+               CURL-lib  on  PHP  can  handle basic and key-
+               based.
+
+          Errors
+               Unified error presentation.
+
+          Documentation
+               Own  PHP-client  documentation,  or  combined
+               with server's (current).
+
+          2.3.1.  Cache
+
+               Purview
+                    Use  MediaWiki  mechanism with its over-
+                    head, or some ad-hoc system?
+
+               MediaWiki
+                    MediaWiki mechanism: must be tweaked  to
+                    forbid  arbitrary upload; but can detect
+                    orphaned files: Special:Unusedimages.
+
+                    Must forge, apparently,  a  subclass  of
+                    WebRequest,  filling  in artificial val-
+                    ues.
+
+               Home-brew
+                    Own mechanism: lightweight; but  respon-
+                    sibility (cruft).
+
+     2.4.  Documentation
+
+          README Mon Jan 22 08:36:11 PST 2007
+               Installation
+
+          Build Sun Jan 21 01:46:55 PST 2007
+               Build  target  in  Setup.py which invokes the
+               Makefile in doc.
+
+3.  Copyright
+
+     WikiTeX: expansible LaTeX module for MediaWiki
+     Copyright (C) 2004-7 Peter Danenberg
+
+          You should have received a copy of the GNU General
+     Public  License  along with this program; if not, write
+     to the Free  Software  Foundation,  Inc.,  51  Franklin
+     Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+
+
+
+                       23 January 2007
+
+
+
+
+
+TODO                         -5-            WikiTeX 2.0-beta
+
+
+4.  Colophon
+
+          This  document was prepared in GNU troff using the
+     ms macro package; preprocessed with tbl, the table for-
+     matter;  and  lastly  filtered  through  col  to remove
+     reverse line feeds and tabs:
+
+          groff -ms -t -Tascii SOURCE | col -bx > OUT
+
+     Automatically generated contents were moved  from  page
+     last to first with an ad-hoc bash-diddy.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                       23 January 2007
+
+

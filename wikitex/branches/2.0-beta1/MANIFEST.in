@@ -1,0 +1,10 @@
+##
+# WikiTeX: expansible LaTeX module for MediaWiki
+# Copyright (C) 2004-7 Peter Danenberg
+# See doc/COPYING for details.
+include doc/TODO doc/THANKS doc/README doc/COPYING
+recursive-include doc/src *.ms Makefile.in
+recursive-include doc/dot *.dot *.png
+exclude doc/src/title.ms
+recursive-include src/client *.php
+recursive-include src/handler .htaccess *.py

@@ -1,0 +1,14 @@
+# WikiTeX: expansible LaTeX module for MediaWiki
+# Copyright (C) 2004-7 Peter Danenberg
+# See doc/COPYING for details.
+<Files traderjoe.py>
+    SetHandler mod_python
+</Files>
+DirectoryIndex traderjoe.py
+PythonHandler traderjoe
+PythonDebug off
+
+AuthType Basic
+AuthName "WikiTeX Server"
+AuthUserFile .htpasswd
+Require valid-user

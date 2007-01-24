@@ -1,0 +1,33 @@
+# WikiTeX: expansible LaTeX module for MediaWiki
+# Copyright (C) 2004-7 Peter Danenberg
+# See doc/COPYING for details.
+VERSION=%(version)s
+TARGET=..
+GROFF=groff -ms -Tascii
+GRFLAGS=-ms -Tascii
+COL=col
+COFLAGS=-bx
+CP=cp
+CPFLAGS=-v
+REORDER=./reorder.sh
+DOCS=TODO THANKS README
+ALL=title.ms COPYING ${DOCS}
+
+.SUFFIXES: .ms
+
+all: ${ALL}
+
+title.ms: title.in.ms
+	sed -e "s/@VERSION@/${VERSION}/g" ${?} > ${@}
+
+COPYING: COPYING.ms
+	${GROFF} ${GRFLAGS} ${<} | ${COL} ${COFLAGS} > ${@} && \
+	${CP} ${CPFLAGS} ${@} ${TARGET}
+
+.ms :
+	${GROFF} ${GRFLAGS} ${<} | ${COL} ${COFLAGS} > ${@:=.tmp} && \
+	${REORDER} ${@:=.tmp} > ${@} && \
+	${CP} ${CPFLAGS} ${@} ${TARGET}
+
+clean:
+	rm -vf ${ALL} ${DOCS:=.tmp}

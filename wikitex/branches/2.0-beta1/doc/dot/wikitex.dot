@@ -1,0 +1,33 @@
+#!/usr/bin/env fdp
+// WikiTeX: expansible LaTeX module for MediaWiki
+// Copyright (C) 2004-7 Peter Danenberg
+// See doc/COPYING for details.
+digraph wikitex {
+        graph [splines=true]
+        edge [dir=none]
+        net [label="Das Intarweb", style=dotted]
+        client [label="Other client"]
+        subgraph cluster_php {
+                graph [label="PHP"]
+                mediawiki [label="MediaWiki client"]
+        }
+        subgraph cluster_apache {
+                graph [label="Apache"]
+                handler [label="Trader Joe"]
+        }
+        subgraph cluster_python {
+                graph [label="Python"]
+                latex [label="LaTeX-daemon"]
+                gnuplot [label="gnuplot-daemon"]
+                lilypond [label="LilyPond-daemon"]
+        }
+        daemon [label="Other daemon"]
+        net -> mediawiki [label="http"]
+        net -> client
+        mediawiki -> handler [label="XML-RPC"]
+        client -> handler
+        handler -> latex
+        handler -> gnuplot
+        handler -> lilypond
+        handler -> daemon
+}
