@@ -1,0 +1,286 @@
+#! /usr/sfw/bin/python
+#
+# Six degrees of Wikipedia: Python front-end.
+# This source code is released into the public domain.
+#
+# @(#)six_degrees	1.1 05/11/21 21:00:39
+
+
+
+#import cgitb; cgitb.enable()
+
+execfile("/u01/u/kate/.pydb.cf", globals())
+
+import MySQLdb
+import sys
+import cgi
+import os
+import zlib
+import re
+
+print "Content-Type: text/html; charset=UTF-8"
+print
+
+db = MySQLdb.connect(db="enwiki", host=dbserver, user=dbuser, passwd=dbpassword)
+
+def getlink(fro, to):
+	fro = fro.strip()
+	to = to.strip()
+	result = "<couldn't find link [%s] -> [%s]...>" % (fro, to)
+	c = db.cursor()
+	c.execute("SELECT old_text, old_flags FROM page, revision, text WHERE page_namespace=0 AND page_title=%s AND page_latest=rev_id AND old_id=rev_text_id", fro.strip().replace(' ', '_'))
+	t = c.fetchone()
+	try:
+		if t != None:
+			text = "".join(t[0])
+			flags = "".join(t[1])
+			if flags.find('gzip') != -1:
+				text = zlib.decompress(text, -15)
+			reg = r'\[\['+re.escape(to).replace('\_', '[_ ]') #+r'\]\]'
+			r = re.compile(reg, re.I)
+			res = r.search(text)
+			if res != None:
+				start = res.start() - 40
+				end = res.end() + 40
+				if start < 0:
+					start = 0
+				if end >= len(text):
+					end = len(text) - 1
+				result = "..." + text[start:end] + "..."
+			else:
+				result = "<no text found [%s]...>" % reg
+	except zlib.error, err:
+		result = "<couldn't decompress text: %s...>" % err
+	return cgi.escape(result)
+
+form = cgi.FieldStorage()
+
+fromval = ''
+toval = ''
+
+def safe(s):
+	return cgi.escape(s).replace('"', "&quot;").replace("'", "&apos;")
+
+if form.has_key('from'):
+	fromval = safe(form['from'].value)
+if form.has_key('to'):
+	toval = safe(form['to'].value)
+
+print """
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>six degrees of wikipedia</title>
+<style type="text/css">
+span.link {
+	color: #999999;
+}
+body {
+	background-color: white;
+	padding-right: 0px;
+	margin-right: 0px;
+}
+input { border: solid 1px blue; background: white; color: black; }
+div.error {
+	display: inline;
+	border: solid 1px #ff8888;
+}
+span.error {
+	padding-left: 1em;
+	padding-right: 1em;
+	background-color: #ffdcdc;
+	font-weight: bold;
+	border-right: solid 1px #ff8888;
+}
+span.errtext {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+div.result {
+	border: solid 1px #0000ff;
+	width: 75%;
+	margin-left: auto; margin-right: auto;
+	text-align: center;
+}
+div.answer {
+	width: 100%;
+	text-align: center;
+	border-bottom: solid 1px #0000ff;
+	background-color: #ddddff;
+}
+span.art {
+}
+a {
+	color: #0000C0;
+}
+a:hover {
+	text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<div style="text-align: right; padding: 0px; margin: 0px"><img src="/~kate/6deg.png" alt="" /><br/></div>
+<div style="text-align: center">
+<i>
+<a href="http://en.wikipedia.org/wiki/Iterative_deepening_depth-first_search">iterative deepening</a>
+<a href="http://en.wikipedia.org/wiki/Depth-first_search">depth first search</a>
+<a href="http://en.wikipedia.org/wiki/Shortest_path_problem">shortest path</a>
+query tool for <a href="http://en.wikipedia.org/wiki/Main_Page">Wikipedia</a>...</i><br/>
+<i>six degrees</i> finds the shortest path between any two Wikipedia articles in the
+main namespace using wiki links
+</div>
+<div style="padding-top: 35px;">
+<form method="get" action="six_degrees">
+<center>
+<strong>find path...</strong>
+from: <input type="text" name="from" value=\"""" + fromval + """\"/>
+to: <input type="text" name="to" value=\"""" + toval + """\" />
+<input type="submit" value="go" />
+</center>
+</form>
+"""
+
+def mklink(art):
+	a2 = art.replace('_', ' ')
+	return "<a href=\"http://en.wikipedia.org/wiki/" + safe(art) + "\">" + safe(a2) + "</a>"
+
+def chop(s):
+	if s[-1:] == '\n':
+		return s[:-1]
+	else:
+		return s
+
+def getrecent():
+	try:
+		f = file("/u01/u/kate/rcq", "r")
+	except IOError:
+		return ''
+	i = []
+	while True:
+		s,t,d = f.readline(), f.readline(), f.readline()
+		s = chop(s)
+		t = chop(t)
+		
+		if '' in [s,t,d]:
+			break
+		i = i + [[s,t,d]]
+	i.reverse()
+	s = ''
+	for t in i[:10]:
+		s = s + '<li>' + mklink(t[0]) + ' -> ' + mklink(t[1]) + (" (%d hops)" % (int(t[2]) - 1))
+	return s
+
+footer = """
+<div style="width: 50%; margin-left: auto; margin-right: auto; border-top: solid 1px black; margin-top: 3em">
+<div style="text-align: center">
+<strong>notes:</strong>
+</div>
+<ul>
+<li>redirects are searched as well as articles</li>
+<li>using a redirect as the target will generally produce an inferior result</li>
+<li>article names are case sensitive except for the first letter, which is always capital</li>
+<li>removing year articles is on the TODO list</li>
+<li>it may take a while to process your query at times of high load.  i am working on making the links server more
+efficient...</li>
+<li>six degrees was recently <a href="http://tools.wikimedia.de/~kate/pages/six-degrees-ct">mentioned</a> in the
+German computer magazine <i>c't</i>.  fame!  who'd've thought it ;-)</li>
+</ul>
+</div>
+</div>
+"""
+
+rc = getrecent()
+if rc != '':
+	footer = footer + """
+<div style="width: 50%; margin-left: auto; margin-right: auto; border-top: solid 1px black; margin-top: 3em">
+<div style="text-align: center">
+<strong>recent queries:</strong>
+<ul>"""
+	footer = footer + rc
+	footer = footer + "</ul></div></div>"
+
+footer = footer + """
+<hr/>
+<a href="/"
+><img style="float: right; margin-right: 5px" 
+  src="/images/wikimedia-toolserver-button.png" width="88" heigh="31" id="toolbutton" border="0" /></a><a
+href="http://www.sun.com/"
+><img style="float: right" src="/~kate/sun.gif" border="0" /></a>
+
+kate's tools: 
+ <a href="count_edits">user edit counter</a>
+| <a href="archive_contribs">deleted contribs browser</a>
+| <strong>six degrees of wikipedia</strong>
+| <a href="mailto:keturner@livejournal.com">send feedback...</a>
+</div></body></html>"""
+
+def error(text):
+	print "<center><div class='error'><span class='error'>error:</span><span class='errtext'>%s</span></div></center>" % cgi.escape(text)
+	print footer
+	sys.exit()
+
+if not (form.has_key('from') and form.has_key('to')):
+	print footer
+	sys.exit()
+
+def cfirst(s):
+	return s[0].upper() + s[1:]
+srcname,targname = cfirst(form['from'].value.replace(' ', '_')), cfirst(form['to'].value.replace(' ', '_'))
+
+if len(srcname) > 255:
+	error("source article %s does not exist" % srcname)
+if len(targname) > 255:
+	error("target article %s does not exist" % targname)
+def findlink(src, dst):
+	(sin, sout) = os.popen2("/u01/u/kate/linksc")
+	sin.write(src + '\n')
+	sin.write(dst + '\n')
+	sin.flush()
+	i = sout.readline()
+	if i == "ERROR\n":
+		err = sout.readline()
+		if err == "NO_FROM\n":
+			error("source article %s does not exist" % src)
+		elif err == "NO_TO\n":
+			error("target article %s does not exist" % dst)
+		elif err == "NO_CONNECT\n":
+			error("could not contact links server")
+		else:
+			error("unknown error")
+	i = []
+	while True:
+		nid = sout.readline()
+		if nid == '':
+			return i
+		i = i + [nid]
+
+def mklink(art):
+	a2 = art.replace('_', ' ')
+	return "<a href=\"http://en.wikipedia.org/wiki/" + safe(art) + "\">" + cgi.escape(a2) + "</a>"
+
+def writelog(src, targ, degs):
+	try:
+		f = file("/u01/u/kate/rcq", "a")
+		f.write(src + '\n' + targ + '\n' + str(degs) + '\n')
+	except IOError:
+		return
+	f.close()
+
+answer = findlink(srcname, targname)
+if answer != []:
+	writelog(srcname, targname, len(answer))
+	print "<div class='result'>"
+	print "<div class='answer'>%d degrees of separation</div>" % (len(answer) - 1)
+	print "<span class='art'>%s</span><br/>" % mklink(answer[0]),
+	print "<span class='link'>%s</span><br/>" % getlink(answer[0], answer[1])
+	j = 1
+	for i in answer[1:]:
+		print "<span class='art'>%s</span><br/>" % mklink(i)
+		if j + 1 <= len(answer)-1:
+			print "<span class='link'>%s</span><br/>" % getlink(answer[j], answer[j + 1])
+		j = j + 1
+	#print "<span class='art'>%s</span>" % mklink(targname)
+	print "</div>"
+	print footer
+	sys.exit()
+error("no route found after %d degrees..." % 10)

@@ -1,0 +1,61 @@
+/*
+ * Six degrees of Wikipedia: JSP front-end styling.
+ * This source code is released into the public domain.
+ *
+ * @(#)main.css	1.4 05/11/21 23:40:14
+ */
+span.link {
+	color: #999999;
+}
+body {
+	background-color: white;
+	padding-right: 0px;
+	margin-right: 0px;
+}
+input { border: solid 1px blue; background: white; color: black; }
+div.error {
+	display: inline;
+	border: solid 1px #ff8888;
+}
+span.error {
+	padding-left: 1em;
+	padding-right: 1em;
+	background-color: #ffdcdc;
+	font-weight: bold;
+	border-right: solid 1px #ff8888;
+}
+span.errtext {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+div.result {
+	border: solid 1px #0000ff;
+	width: 75%;
+	margin-left: auto; margin-right: auto;
+	text-align: center;
+	padding: 0em 0 0.5em 0;
+}
+div.answer {
+	width: 100%;
+	text-align: center;
+	border-bottom: solid 1px #0000ff;
+	background-color: #ddddff;
+	margin-bottom: 0.5em;
+}
+span.art {
+}
+a {
+	color: #0000C0;
+}
+a:hover {
+	text-decoration: underline;
+}
+img {
+	border: none;
+}
+.return {
+	text-align: center;
+}
+span.version {
+	color: #999999;
+}
