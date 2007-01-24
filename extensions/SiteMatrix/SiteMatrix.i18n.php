@@ -72,6 +72,9 @@ $wgSiteMatrixMessages['sr-el'] = array(
 	"sitematrix" => "Tabela svih vikija",
 );
 $wgSiteMatrixMessages['sr'] = $wgSiteMatrixMessages['sr-ec'];
+$wgSiteMatrixMessages['sv'] = array(
+	"sitematrix" => "Lista över Wikimedias wikis",
+);
 $wgSiteMatrixMessages['zh-cn'] = array(
 	"sitematrix" => "维基媒体站点列表",
 );

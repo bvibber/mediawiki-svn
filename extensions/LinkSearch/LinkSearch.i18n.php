@@ -120,6 +120,12 @@ $wgLinkSearchMessages['sr-el'] = array(
 	'linksearch-error' => 'Džokeri mogu da se pojavljuju samo na početku domena.'
 );
 $wgLinkSearchMessages['sr'] = $wgLinkSearchMessages['sr-ec'];
+$wgLinkSearchMessages['sv'] = array(
+	'linksearch'       => 'Webblänksökning',
+	'linksearch-text'  => 'Jokertecken kan användas i början av den sökta adressen, exempelvis "*.wikipedia.org".',
+	'linksearch-line'  => '$1 länkas från $2',
+	'linksearch-error' => 'Jokertecken kan bara användas i början av adressen.',
+);
 $wgLinkSearchMessages['zh-cn'] = array(
 	'linksearch'       => '搜索网页链接',
 	'linksearch-text'  => '可能使用了类似"*.wikipedia.org"的通配符。',

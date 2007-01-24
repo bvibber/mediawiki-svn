@@ -134,6 +134,12 @@ $wgNewuserlogMessages['sr-el'] = array(
 	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # Don't translate this
 );
 $wgNewuserlogMessages['sr'] = $wgNewuserlogMessages['sr-ec'];
+$wgNewuserlogMessages['sv'] = array(
+	'newuserlogpage'           => 'Logg över nya användare',
+	'newuserlogpagetext'       => 'Det här är en logg över användarkonton som registrerats',
+	'newuserlog-create-entry'  => 'Ny användare',
+	'newuserlog-create2-entry' => 'skapade användarkontot $1',
+);
 $wgNewuserlogMessages['wa'] = array(
 	'newuserlogpage'           => 'Djournå des noveas uzeus',
 	'newuserlogpagetext'       => 'Chal pa dzo c\' est ene djivêye des uzeus novelmint eredjîstrés.',
