@@ -31,6 +31,7 @@ function updateSuggestions(suggestPrefix) {
 	var http = getHTTPObject();
 	var table = document.getElementById(suggestPrefix + "table");
 	var suggestQuery = document.getElementById(suggestPrefix + "query").value;
+	var suggestOffset = document.getElementById(suggestPrefix + "offset").value;
 
 	suggestText = document.getElementById(suggestPrefix + "text");
 	suggestText.className = "suggest-loading";
@@ -44,10 +45,20 @@ function updateSuggestions(suggestPrefix) {
 	if (location.indexOf('index.php/') > 0)
 		URL = '../' + URL;
 
+	URL = 
+		URL + 
+		'/Special:Suggest?search-text=' + encodeURI(suggestText.value) + 
+		'&prefix=' + encodeURI(suggestPrefix) + 
+		'&query=' + encodeURI(suggestQuery) + 
+		'&offset=' + encodeURI(suggestOffset);
+
 	if((suggestAttributesLevel != null) && (suggestObjectId != null)) 
-		http.open('GET', URL + '/Special:Suggest?search-text=' + encodeURI(suggestText.value) + '&prefix=' + encodeURI(suggestPrefix) + '&query=' + encodeURI(suggestQuery) + '&attributesLevel=' + encodeURI(suggestAttributesLevel.value) + '&objectId=' + encodeURI(suggestObjectId.value), true);
-	else
-		http.open('GET', URL + '/Special:Suggest?search-text=' + encodeURI(suggestText.value) + '&prefix=' + encodeURI(suggestPrefix) + '&query=' + encodeURI(suggestQuery), true);
+		URL = 
+			URL + 
+			'&attributesLevel=' + encodeURI(suggestAttributesLevel.value) + 
+			'&objectId=' + encodeURI(suggestObjectId.value);
+
+	http.open('GET', URL, true);
 
 	http.onreadystatechange = function() {
 		if (http.readyState == 4) {
@@ -71,6 +82,8 @@ function scheduleUpdateSuggestions(suggestPrefix) {
 	if (suggestionTimeOut != null)
 		clearTimeout(suggestionTimeOut);
 
+	var suggestOffset = document.getElementById(suggestPrefix + "offset");
+	suggestOffset.value = 0;
 	suggestionTimeOut = setTimeout("updateSuggestions(\"" + suggestPrefix + "\")", 600);
 }
 
@@ -114,7 +127,7 @@ function suggestLinkClicked(event, suggestLink) {
 	stopEventHandling(event);
 }
 
-function updateSelectOptions(id,objectId,value) {
+function updateSelectOptions(id, objectId, value) {
 	var http = getHTTPObject();
 	var URL = 'index.php';
 	var location = "" + document.location;
@@ -163,8 +176,24 @@ function suggestClearClicked(event, suggestClear) {
 
 function suggestCloseClicked(event, suggestClose) {
 	var suggestPrefix = getSuggestPrefix(suggestClose, 'close');
-	var suggestDiv = document.getElementById(suggestPrefix + "div");
+	var suggestDiv = document.getElementById(suggestPrefix + 'div');
 	suggestDiv.style.display = 'none';
+	stopEventHandling(event);
+}
+
+function suggestNextClicked(event, suggestNext) {
+	var suggestPrefix = getSuggestPrefix(suggestNext, 'next');
+	var suggestOffset = document.getElementById(suggestPrefix + 'offset');
+	suggestOffset.value = parseInt(suggestOffset.value) + 10;
+	updateSuggestions(suggestPrefix);
+	stopEventHandling(event);
+}
+
+function suggestPreviousClicked(event, suggestPrevious) {
+	var suggestPrefix = getSuggestPrefix(suggestPrevious, 'previous');
+	var suggestOffset = document.getElementById(suggestPrefix + 'offset');
+	suggestOffset.value = Math.max(parseInt(suggestOffset.value) - 10, 0);
+	updateSuggestions(suggestPrefix);
 	stopEventHandling(event);
 }
 

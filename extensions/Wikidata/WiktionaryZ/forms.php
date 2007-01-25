@@ -53,25 +53,36 @@ function getSelect($name, $options, $selectedValue="", $onChangeHandler="") {
 }
 
 function getSuggest($name, $query, $parameters = array(), $value=0, $label='', $displayLabelColumns = array(0)) {
+	global
+		$wgScriptPath;
+
 	if ($label == "")
 		$label = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 	
 	$result = 
 		'<span class="suggest">' .
 			'<input type="hidden" id="'. $name .'-suggest-query" value="'. $query .'"/>' .
+			'<input type="hidden" id="'. $name .'-suggest-offset" value="0"/>' .
 			'<input type="hidden" id="'. $name .'-suggest-label-columns" value="'. implode(', ', $displayLabelColumns) .'"/>' .
 			'<input type="hidden" id="'. $name .'" name="'. $name .'" value="'. $value .'"/>';
 
-	foreach($parameters as $parameter => $parameterValue){
+	foreach ($parameters as $parameter => $parameterValue)
 		$result .= 
 			'<input type="hidden" id="'. $name .'-suggest-parameter-'. $parameter .'" name="'. $parameter .'" value="'. $parameterValue .'"/>';
-	}
 
 	$result .=		
 			'<a id="'. $name .'-suggest-link" class="suggest-link" onclick="suggestLinkClicked(event, this);" title="Click to change selection">' . $label . '</a>' .
 		'</span>'.
         '<div class="suggest-drop-down" style="position: relative"><div id="'. $name .'-suggest-div" style="position: absolute; left: 0px; top: 0px; border: 1px solid #000000; display: none; background-color: white; padding: 4px">' .
-        	'<div><table><tr><td><input type="text" id="'. $name .'-suggest-text" autocomplete="off" onkeyup="suggestTextChanged(this)" style="width: 300px"></input></td><td><a id="'. $name .'-suggest-clear" href="#'. $name . '-suggest-link" onclick="suggestClearClicked(event, this)">Clear</a></td><td><a id="'. $name .'-suggest-close" href="#'. $name . '-suggest-link" onclick="suggestCloseClicked(event, this)">[X]</a></td></tr></table></div>' .
+        	'<div><table>' .
+        		'<tr>' .
+        			'<td><input type="text" id="'. $name .'-suggest-text" autocomplete="off" onkeyup="suggestTextChanged(this)" style="width: 300px"></input></td>' .
+        			'<td><a id="'. $name .'-suggest-clear" href="#'. $name . '-suggest-link" onclick="suggestClearClicked(event, this)">Clear</a></td>' .
+        			'<td style="white-space: nowrap"><a id="'. $name .'-suggest-previous" href="#'. $name .'-suggest-table" class="suggest-previous" onclick="suggestPreviousClicked(event, this)"><img src="'.$wgScriptPath.'/extensions/Wikidata/Images/ArrowLeft.png" alt="Previous"/> Previous</a></td>'.
+        			'<td style="white-space: nowrap"><a id="'. $name .'-suggest-next" href="#'. $name .'-suggest-table" class="suggest-next" onclick="suggestNextClicked(event, this)">Next <img src="'.$wgScriptPath.'/extensions/Wikidata/Images/ArrowRight.png" alt="Next"/></a></td>'.
+        			'<td><a id="'. $name .'-suggest-close" href="#'. $name . '-suggest-link" onclick="suggestCloseClicked(event, this)">[X]</a></td>' .
+        		'</tr>' .
+        	'</table></div>' .
         	'<div><table id="'. $name .'-suggest-table"><tr><td></td></tr></table></div>'.
         '</div></div>';
 	

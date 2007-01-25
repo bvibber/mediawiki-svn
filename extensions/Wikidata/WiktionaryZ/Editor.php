@@ -1367,7 +1367,7 @@ class PopUpEditor extends WrappingEditor {
 	protected function startToggleCode($attributeId) {
 		return 	
 			'<a id="popup-' . $attributeId . '-link" style="cursor: pointer; font-weight: bolder; font-size: 90%; white-space: nowrap" onclick="togglePopup(this, event);">'. $this->linkCaption .' &raquo;</a>' . 
-			'<div style="absolute"><div id="popup-' . $attributeId . '-toggleable" style="position: absolute; border: 1px solid #000000; display: none; background-color: white; padding: 4px;">';
+			'<div><div id="popup-' . $attributeId . '-toggleable" style="position: absolute; border: 1px solid #000000; display: none; background-color: white; padding: 4px;">';
 	}
 
 	protected function endToggleCode($attributeId) {

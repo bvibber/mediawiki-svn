@@ -40,6 +40,7 @@ function getSuggestions() {
 	$prefix = $_GET['prefix'];
 	$query = $_GET['query'];
 	$objectId = $_GET['objectId'];
+	$offset = $_GET['offset'];
 	$attributesLevel = $_GET['attributesLevel'];
 	
 	$dbr =& wfGetDB( DB_SLAVE );
@@ -110,7 +111,12 @@ function getSuggestions() {
 	else
 		$orderBy = $rowText;
 	
-	$sql .= $searchCondition . " ORDER BY $orderBy LIMIT 10";
+	$sql .= $searchCondition . " ORDER BY $orderBy LIMIT ";
+	
+	if ($offset > 0)
+		$sql .= " $offset, ";
+		
+	$sql .= "10";
 
 	$queryResult = $dbr->query($sql);
 	$idAttribute = new Attribute("id", "ID", "id");

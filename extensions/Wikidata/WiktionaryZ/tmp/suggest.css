@@ -82,3 +82,13 @@ td .suggest-link, td .suggest-link:hover, td .suggest-link:active, td .suggest-l
 .suggest-loading {
 	background-color: #DDDDDD;
 }
+
+.suggest-next {
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+.suggest-previous {
+	margin-left: 8px;
+	margin-right: 2px;
+}
