@@ -9,27 +9,32 @@ $wgMathStatFunctionsMagic = array();
 
 $wgMathStatFunctionsMessages['en'] = array(
         'msfunc_nan' => "Resulting value is not a number" ,
-        'msfunc_inf' => "Resulting value is infinity" , 
+        'msfunc_inf' => "Resulting value is infinity" ,
         'msfunc_div_zero' => "Division by zero",
 );
 $wgMathStatFunctionsMessages['fr'] = array(
         'msfunc_nan' => "Le résultat n’est pas un nombre" ,
-        'msfunc_inf' => "Le résultat est l’infini" , 
+        'msfunc_inf' => "Le résultat est l’infini" ,
         'msfunc_div_zero' => "Division par zéro",
+);
+$wgMathStatFunctionsMessages['id'] = array(
+        'msfunc_nan' => "Nilai hasil tidak berupa angka" ,
+        'msfunc_inf' => "Nilai hasil tak hingga" ,
+        'msfunc_div_zero' => "Pembagian dengan nol",
 );
 $wgMathStatFunctionsMessages['ja'] = array(
         'msfunc_nan' => "返り値が数値ではありませんResulting value is not a number" ,
-        'msfunc_inf' => "返り値が無限大です" , 
+        'msfunc_inf' => "返り値が無限大です" ,
         'msfunc_div_zero' => "0で割り算しました",
 );
 $wgMathStatFunctionsMessages['sr-ec'] = array(
         'msfunc_nan' => "Резултат није број" ,
-        'msfunc_inf' => "Резултат је бесконачан" , 
+        'msfunc_inf' => "Резултат је бесконачан" ,
         'msfunc_div_zero' => "Дељиво са нулом",
 );
 $wgMathStatFunctionsMessages['sr-el'] = array(
         'msfunc_nan' => "Rezultat nije broj" ,
-        'msfunc_inf' => "Rezultat je beskonačan" , 
+        'msfunc_inf' => "Rezultat je beskonačan" ,
         'msfunc_div_zero' => "Deljivo sa nulom",
 );
 $wgMathStatFunctionsMagic['sr'] = $wgMathStatFunctionsMagic['sr-ec'];

@@ -127,7 +127,7 @@ $wgChemFunctions_Messages['de'] = array(
 $wgChemFunctions_Messages['id'] = array(
 	'chemicalsources' => 'Rujukan kimia',
 	'ChemFunctions_ListPage' => 'Rujukan kimia',
-	'ChemFunctions_ChemicalDataList' => 'Berikut adalah daftar pranala ke situs yang mungkin menyediakan informasi mengenai zat kimia yang Anda cari.<br /><br />
+	'ChemFunctions_DataList' => 'Berikut adalah daftar pranala ke situs yang mungkin menyediakan informasi mengenai zat kimia yang Anda cari.<br /><br />
 	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Senyawa $MIXCASNameFormula di NIST</a><br />
 	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS di Oxford University (UK) (tanpa fasilitas pencarian)</a><br />',
 	'ChemFunctions_CAS' => 'Nomor CAS',
@@ -170,7 +170,7 @@ $wgChemFunctions_Messages['it'] = array(
 	'ChemFunctions_ECNumber' => 'ECNumber',
 	'ChemFunctions_Formula' => 'Formula',
 	'ChemFunctions_Name' => 'Nome IUPAC',
-	
+
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Input non corretto.'
 
 );

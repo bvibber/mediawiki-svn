@@ -22,6 +22,12 @@ function efUserImagesMessages() {
 'userimages-noname' => 'Nom d’utilisateur invalide ou manquant.',
 'userimages-noimages' => '$1 n’a importé aucune image.',
 ),
+/* Indonesian */
+'id' => array(
+'userimages-caption' => 'Berkas yang dimuatkan oleh $1',
+'userimages-noname' => 'Nama pengguna tidak sah atau tidak diberikan.',
+'userimages-noimages' => '$1 tidak pernah memuatkan berkas.',
+),
 /* Slovak (by helix84) */
 'sk' => array(
 'userimages-caption' => 'Obrázky nahrané používateľom $1',
