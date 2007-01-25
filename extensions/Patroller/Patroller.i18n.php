@@ -132,6 +132,26 @@ function efPatrollerMessages() {
 'patrol-resume' => 'Fare clic qui per riprendere.',
 ),
 
+/* nld / Dutch (Siebrand Mazeland) */
+'nl' => array(
+'patrol' => 'Wijzigingen controleren',
+'patrol-endorse' => 'Goedkeuren',
+'patrol-revert' => 'Terugdraaien',
+'patrol-revert-reason' => 'Reden:',
+'patrol-skip' => 'Overslaan',
+'patrol-reverting' => '$1 aan het terugdraaien',	
+'patrol-nonefound' => 'Er zijn geen te controleren wijzigingen gevonden.',
+'patrol-endorsed-ok' => 'De bewerking is gemarkteerd als gecontroleerd.',
+'patrol-endorsed-failed' => 'De bewerking kon niet gemarkeerd worden als gecontroleerd.',
+'patrol-reverted-ok' => 'De bewerking is teruggedraaid.',
+'patrol-reverted-failed' => 'De bewerking kon niet teruggedraaid worden.',
+'patrol-skipped-ok' => 'Bewerking wordt genegeerd.',
+'patrol-reasons' => "* Eenvoudig vandalisme\n* Zandbakken\n* Zie overlegpagina",
+'patrol-another' => 'Toon andere bewerking als beschikbaar.',
+'patrol-stopped' => 'U heeft gekozen geen andere bewerking te controleren. $1',
+'patrol-resume' => 'Klik hier om verder te gaan.',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'patrol' => 'Strážiť úpravy',

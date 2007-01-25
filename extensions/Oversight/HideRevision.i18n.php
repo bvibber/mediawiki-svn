@@ -137,6 +137,49 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 'oversight-header' => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d\'Oversight.',
 ),
 
+/* nld / Dutch (Siebrand Mazeland) */
+'en' => array(
+'hiderevision' => 'Versies permanent verbergen',
+// Empty form
+'hiderevision-prompt' => 'Te verwijderen versienummer:',
+'hiderevision-continue' => 'Doorgaan',
+// Confirmation form
+'hiderevision-text' =>
+"Dit dient '''alleen''' gebruikt te worden in de volgende gevallen:
+* Ontoelaatbare persoonlijke informatie
+*: ''woonadressen en telefoonnummers, sofinummers, enzovoort''
+
+'''Misbruik van dit systeem wordt betreft met het intrekken van rechten.'''
+
+Verwijderde versies zijn niet voor iedereen zichtbaar via de website,
+maar verwijderde objecten worden in logboeken bijgehouden en kunnen handmatig
+teruggeet worden door databasebeheerders als u een fout maakt.",
+'hiderevision-reason' => 'Reden (wordt discreet opgeslaten):',
+'hiderevision-submit' => 'Deze gegevens permanent verbergen',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => 'Verberg versie',
+// Status & errors on action
+'hiderevision-norevisions' => 'Er zijn geen te verwijderen versies opgegeven.',
+'hiderevision-noreason' => 'U moet een reden opgeven voor het verwijderen.',
+'hiderevision-status' => 'Versie $1: $2',
+'hiderevision-success' => 'Archiveren en verwijderen geslaagd.',
+'hiderevision-error-missing' => 'Niet gevonden in database.',
+'hiderevision-error-current' => 'De laatste bewerkin van een pagina kan niet verwijderd worden. Draai de bewerking eerst terug.',
+'hiderevision-error-delete' => 'Archiveren mislukt; waren de gegevens al verwijderd?',
+'hiderevision-archive-status' => 'Verwijder versie van $1: $2',
+'oversight-nodiff' => 'Niet in staat om de wijzigingen weer te geven omdat er geen eerdere versie van de pagina aanwezig is, omdat::	
+*De pagina was verwijderd
+*Deze verborgen versie de eerste versie was',
+// Logging
+'oversight-log-hiderev' => 'verwijderde een bewerking uit $1',
+// Oversight review page
+'oversight-difference' => '(Verschillen met vorige zichtbare versie)',
+'oversight-prev' => 'Laatste vorige versie',
+'oversight-hidden' => 'Verborgen versie',
+'oversight-header' => 'Hieronder staat een lijst met versies die permanent verborgen zijn voor iedereen.
+Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten worden ingenomen.',
+),
+
 /* Portuguese (Lugusto) */
 'pt' => array(
 'hiderevision' => 'Ocultar revisões permanentemente',

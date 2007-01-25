@@ -24,6 +24,20 @@ function efProfileMonitorMessages() {
 'profiling-no-data' => 'No matching data found.',
 ),
 	
+/* nld / Dutch (Siebrand Mazeland) */
+'nl' => array(
+'profiling' => 'Profilinggegevens',
+'profiling-process' => 'Verwerk string:',
+'profiling-wildcard' => 'Gebruik wildcard',
+'profiling-ok' => 'OK',
+'profiling-data' => 'Profilinggegevens voor `$1`',
+'profiling-data-process' => 'Verwerk',
+'profiling-data-count' => 'Aantal',
+'profiling-data-time' => 'Tijd (tot)',
+'profiling-data-average' => 'Tijd (gem)',
+'profiling-no-data' => 'Geen gegevens gevonden.',
+),
+	
 /* Slovak (helix84) */
 'sk' => array(
 'profiling' => 'Profilovacie údaje',

@@ -30,6 +30,13 @@ function efSyntaxHighlightMessages() {
 'syntaxhighlight-err-loading' => '(kesalahan pemuatan daftar bahasa yang didukung)',
 ),
 
+/* nld / Dutch (Siebrand Mazeland) */
+'nl' => array(
+'syntaxhighlight-specify' => 'Geef een taal op zoals:',
+'syntaxhighlight-supported' => 'Ondersteunde talen voor syntaxismarkering:',
+'syntaxhighlight-err-loading' => '(fout bij het laden van de lijst met ondersteunde talen)',
+),
+
 	);
 }
 

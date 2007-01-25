@@ -59,6 +59,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'odebírá účtu [[$1]] příznak bot',
 ),
 
+/* German (Raymond) */
+'de' => array(
+'makebot' => 'Botstatus erteilen oder entziehen',
+'makebot-header' => "'''Ein Bürokrat dieses Projektes kann anderen Benutzern – in Übereinstimmung mit den lokalen Richtlinien – [[Help:Bot|Botstatus]] erteilen oder entziehen.'''<br /> Mit Botstatus werden die Bearbeitungen eines Bot-Benutzerkontos in den [[Special:Recentchanges|Letzten Änderungen]] und ähnlichen Listen versteckt. Die Botmarkierung ist darüberhinaus zur Feststellung automatischer Bearbeitungen nützlich.",
+'makebot-username' => 'Benutzername:',
+'makebot-search' => 'Ausführen',
+'makebot-isbot' => '[[User:$1|$1]] hat Botstatus.',
+'makebot-notbot' => '[[User:$1|$1]] hat keinen Botstatus.',
+'makebot-privileged' => '[[User:$1|$1]] hat [[Special:Listusers/sysop|Administrator- oder Bürokratenrechte]], Botstatus kann nicht erteilt werden.',
+'makebot-change' => 'Status ändern:',
+'makebot-grant' => 'Erteilen',
+'makebot-revoke' => 'Zurücknehmen',
+'makebot-comment' => 'Kommentar:',
+'makebot-granted' => '[[User:$1|$1]] hat nun Botstatus.',
+'makebot-revoked' => '[[User:$1|$1]] hat keinen Botstatus mehr.',
+'makebot-logpage' => 'Botstatus-Logbuch',
+'makebot-logpagetext' => 'Dieses Logbuch protokolliert alle [[Help:Bot|Botstatus]]-Änderungen.',
+'makebot-logentrygrant' => 'erteilte Botstatus für [[$1]]',
+'makebot-logentryrevoke' => 'entfernte den Botstatus von [[$1]]',
+),
+
 /* Finnish (Niklas Laxström) */
 'fi' => array(
 'makebot' => 'Anna tai poista botti-merkintä',
@@ -101,27 +122,6 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'a retiré le statut de bot de [[$1]]',
 ),
 
-/* Italian (BrokenArrow) */
-'it' => array(
-'makebot' => 'Assegna o revoca lo status di bot',
-'makebot-header' => "'''Questa pagina consente ai burocrati di assegnare o revocare lo [[{{ns:help}}:Bot|status di bot]] a un'altra utenza.'''<br /> Tale status nasconde le modifiche effettuate dall'utenza nell'elenco delle [[{{ns:special}}:Recentchanges|ultime modifiche]] e nelle liste simili; è utile per contrassegnare le utenze che effettuano modifiche in automatico. Tale operazione dev'essere effettuata in conformità con le policy del sito.",
-'makebot-username' => 'Nome utente:',
-'makebot-search' => 'Vai',
-'makebot-isbot' => 'L\'utente [[{{ns:user}}:$1|$1]] ha lo status di bot.',
-'makebot-notbot' => 'L\'utente [[{{ns:user}}:$1|$1]] non ha lo status di bot.',
-'makebot-privileged' => 'L\'utente [[{{ns:user}}:$1|$1]] possiede i privilegi di [[Special:Listadmins|amministratore o burocrate privileges]], che sono incompatibili con lo status di bot.',
-'makebot-change' => 'Modifica lo status:',
-'makebot-grant' => 'Concedi',
-'makebot-revoke' => 'Revoca',
-'makebot-comment' => 'Commento:',
-'makebot-granted' => 'L\'utente [[{{ns:user}}:$1|$1]] ha ora lo status di bot.',
-'makebot-revoked' => 'L\'utente [[{{ns:user}}:$1|$1]] non ha più lo status di bot.',
-'makebot-logpage' => 'Registro dei bot',
-'makebot-logpagetext' => 'Qui di seguito viene riportata la lista dei cambiamenti di status dei [[{{ns:help}}:bot]].',
-'makebot-logentrygrant' => 'ha concesso lo status di bot a [[$1]]',
-'makebot-logentryrevoke' => 'ha revocato lo status di bot a [[$1]]',
-),
-
 /* Hebrew (Rotem Liss) */
 'he' => array(
 'makebot'          => 'הענק או בטל הרשאת בוט',
@@ -143,25 +143,46 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'ביטל את הרשאת הבוט למשתמש [[$1]]',
 ),
 
-/* German (Raymond) */
-'de' => array(
-'makebot' => 'Botstatus erteilen oder entziehen',
-'makebot-header' => "'''Ein Bürokrat dieses Projektes kann anderen Benutzern – in Übereinstimmung mit den lokalen Richtlinien – [[Help:Bot|Botstatus]] erteilen oder entziehen.'''<br /> Mit Botstatus werden die Bearbeitungen eines Bot-Benutzerkontos in den [[Special:Recentchanges|Letzten Änderungen]] und ähnlichen Listen versteckt. Die Botmarkierung ist darüberhinaus zur Feststellung automatischer Bearbeitungen nützlich.",
-'makebot-username' => 'Benutzername:',
-'makebot-search' => 'Ausführen',
-'makebot-isbot' => '[[User:$1|$1]] hat Botstatus.',
-'makebot-notbot' => '[[User:$1|$1]] hat keinen Botstatus.',
-'makebot-privileged' => '[[User:$1|$1]] hat [[Special:Listusers/sysop|Administrator- oder Bürokratenrechte]], Botstatus kann nicht erteilt werden.',
-'makebot-change' => 'Status ändern:',
-'makebot-grant' => 'Erteilen',
-'makebot-revoke' => 'Zurücknehmen',
-'makebot-comment' => 'Kommentar:',
-'makebot-granted' => '[[User:$1|$1]] hat nun Botstatus.',
-'makebot-revoked' => '[[User:$1|$1]] hat keinen Botstatus mehr.',
-'makebot-logpage' => 'Botstatus-Logbuch',
-'makebot-logpagetext' => 'Dieses Logbuch protokolliert alle [[Help:Bot|Botstatus]]-Änderungen.',
-'makebot-logentrygrant' => 'erteilte Botstatus für [[$1]]',
-'makebot-logentryrevoke' => 'entfernte den Botstatus von [[$1]]',
+/* Italian (BrokenArrow) */
+'it' => array(
+'makebot' => 'Assegna o revoca lo status di bot',
+'makebot-header' => "'''Questa pagina consente ai burocrati di assegnare o revocare lo [[{{ns:help}}:Bot|status di bot]] a un'altra utenza.'''<br /> Tale status nasconde le modifiche effettuate dall'utenza nell'elenco delle [[{{ns:special}}:Recentchanges|ultime modifiche]] e nelle liste simili; è utile per contrassegnare le utenze che effettuano modifiche in automatico. Tale operazione dev'essere effettuata in conformità con le policy del sito.",
+'makebot-username' => 'Nome utente:',
+'makebot-search' => 'Vai',
+'makebot-isbot' => 'L\'utente [[{{ns:user}}:$1|$1]] ha lo status di bot.',
+'makebot-notbot' => 'L\'utente [[{{ns:user}}:$1|$1]] non ha lo status di bot.',
+'makebot-privileged' => 'L\'utente [[{{ns:user}}:$1|$1]] possiede i privilegi di [[Special:Listadmins|amministratore o burocrate privileges]], che sono incompatibili con lo status di bot.',
+'makebot-change' => 'Modifica lo status:',
+'makebot-grant' => 'Concedi',
+'makebot-revoke' => 'Revoca',
+'makebot-comment' => 'Commento:',
+'makebot-granted' => 'L\'utente [[{{ns:user}}:$1|$1]] ha ora lo status di bot.',
+'makebot-revoked' => 'L\'utente [[{{ns:user}}:$1|$1]] non ha più lo status di bot.',
+'makebot-logpage' => 'Registro dei bot',
+'makebot-logpagetext' => 'Qui di seguito viene riportata la lista dei cambiamenti di status dei [[{{ns:help}}:bot]].',
+'makebot-logentrygrant' => 'ha concesso lo status di bot a [[$1]]',
+'makebot-logentryrevoke' => 'ha revocato lo status di bot a [[$1]]',
+),
+
+/* nld . Dutch (Siebrand Mazeland) */
+'nl' => array(
+'makebot' => 'Botstatus beheren',
+'makebot-header' => "'''Een lokale bureaucraat kan via deze pagina een [[Help:Bot|botstatus]] aan een andere gebruiker verlenen of die status intrekken.'''<br />De botstatus verbergt de bewerkingen van een gebruiker in de [[Special:Recentchanges|recente wijzigingen]] en gelijksoortige lijsten. Het is handig voor gebruikers die automatisch bewerkingen maken. Dit hoort aan de hand van het geldende beleid te gebeuren.",
+'makebot-username' => 'Gebruiker:',
+'makebot-search' => 'OK',
+'makebot-isbot' => '[[User:$1|$1]] heef de botstatus.',
+'makebot-notbot' => '[[User:$1|$1]] heeft geen botstatus.',
+'makebot-privileged' => '[[User:$1|$1]] heeft de rol [[Special:Listadmins|beheerder of bureaucraat]] en kan geen botstatus krijgen.',
+'makebot-change' => 'Status wijzigen:',
+'makebot-grant' => 'Verlenen',
+'makebot-revoke' => 'Intrekken',
+'makebot-comment' => 'Opmerking:',
+'makebot-granted' => '[[User:$1|$1]] heeft nu de botstatus.',
+'makebot-revoked' => '[[User:$1|$1]] heeft niet langer de botstatus.',
+'makebot-logpage' => 'Botstatuslogboek',
+'makebot-logpagetext' => 'Dit is een logboek waarin wijzigingen ten aanzien van de [[Help:Bot|botstatus]] van gebruikers te zien zijn.',
+'makebot-logentrygrant' => 'heeft de botstatus gegeven aan [[$1]]',
+'makebot-logentryrevoke' => 'heeft de botstatus van [[$1]] ingetrokken',
 ),
 
 /* Portuguese (Lugusto) */

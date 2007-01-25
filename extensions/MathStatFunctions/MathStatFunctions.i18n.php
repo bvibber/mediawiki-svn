@@ -27,6 +27,11 @@ $wgMathStatFunctionsMessages['ja'] = array(
         'msfunc_inf' => "返り値が無限大です" ,
         'msfunc_div_zero' => "0で割り算しました",
 );
+$wgMathStatFunctionsMessages['nl'] = array(
+        'msfunc_nan' => "Resulterende waarde is geen getal" ,
+        'msfunc_inf' => "Resulterende waarde is oneindig" ,
+        'msfunc_div_zero' => "Deling door nul",
+);
 $wgMathStatFunctionsMessages['sr-ec'] = array(
         'msfunc_nan' => "Резултат није број" ,
         'msfunc_inf' => "Резултат је бесконачан" ,

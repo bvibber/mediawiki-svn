@@ -37,6 +37,13 @@ list of blacklisted usernames]]. Please choose another name.',
 daftar hitam nama pengguna]]. Harap pilih nama lain.',
 ),
 
+/* nld / Dutch (Siebrand Mazeland) */
+'nl' => array(
+'blacklistedusername' => 'Gebruikersnaam op zwarte lijst',
+'blacklistedusernametext' => 'De gebruikersnaam die u heeft gekozen staat op de [[MediaWiki:Usernameblacklist|
+zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
+),
+
 	);
 	return $single ? $messages['en'] : $messages;
 }

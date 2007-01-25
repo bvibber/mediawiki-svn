@@ -101,6 +101,28 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 'giverollback-logentryrevoke' => 'menarik hak pengembalian ke untuk [[$1]]',
 ),
 
+/* nld / Dutch (Siebrand Mazeland) */
+'nl' => array(
+'giverollback' => 'Rollbackrechten beheren',
+'giverollback-header' => "'''Een lokale bureaucraat kan deze pagina gebruiken om [[Help:Rollback|rollbackrechten]] voor een gebruiker in te stellen of te verwijderen.'''<br />Dit kan gebruikt worden om gebruikers die geen beheerder zijn snel vandalisme terug te laten draaien. Dit hoort uiteraard te gebeuren in overeenstemming met het geldende beleid.",
+'giverollback-username' => 'Gebruiker:',
+'giverollback-search' => 'OK',
+'giverollback-hasrb' => '[[User:$1|$1]] heeft rollbackrechten.',
+'giverollback-norb' => '[[User:$1|$1]] heeft geen rollbackrechten.',
+'giverollback-toonew' => '[[User:$1|$1]] is te nieuw en kan geen rollbackrechten krijgen.',
+'giverollback-sysop' => '[[User:$1|$1]] is beheerder en heeft al rollbackrechten.',
+'giverollback-change' => 'Wijzig status:',
+'giverollback-grant' => 'Toestaan',
+'giverollback-revoke' => 'Intrekken',
+'giverollback-comment' => 'Opmerking:',
+'giverollback-granted' => '[[User:$1|$1]] heeft nu rollbackrechten.',
+'giverollback-revoked' => '[[User:$1|$1]] heeft geen rollbackrechten meer.',
+'giverollback-logpage' => 'Rollbackrechtenlogboek',
+'giverollback-logpagetext' => 'Dit is een logboek van de wijzigingen ten aanzien van \' [[Help:Rollback|rollbackrechten]] voor gebruikers die geen beheerder zijn.',
+'giverollback-logentrygrant' => 'heeft rollbackrechten gegeven aan [[$1]]',
+'giverollback-logentryrevoke' => 'heeft rollbackrechten ingetrokken voor [[$1]]',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'giverollback' => 'Udeliť alebo odobrať právo rollback',
