@@ -31,6 +31,9 @@ $wgMakesysopMessages['az'] = array(
 	'already_sysop'        => 'Bu istifadəçi hazirdə idarəçidir',
 	'already_bureaucrat'   => 'Bu istifadəçi hazirdə bürokratdı',
 );
+$wgMakesysopMessages['ba'] = array(
+	'makesysopname'        => 'Ҡатнашыусы исеме:',
+);
 $wgMakesysopMessages['bg'] = array(
 	'makesysoptitle'       => 'Превръщане на потребител в администратор',
 	'makesysoptext'        => 'Този формуляр се използва от бюрократи за превръщане на обикновени потребители в администратори.
@@ -107,6 +110,9 @@ $wgMakesysopMessages['cs'] = array(
 	'group-steward'        => 'Stevardi',
 	'group-steward-member' => 'Stevard',
 	'grouppage-steward'    => '{{ns:project}}:Stevardi',
+);
+$wgMakesysopMessages['cv'] = array(
+	'rights'               => 'Тума пултарать:',
 );
 $wgMakesysopMessages['cy'] = array(
 	"makesysoptitle"       => "Gwnewch sysop allan o defnyddiwr",
@@ -660,6 +666,9 @@ $wgMakesysopMessages['pt'] = array(
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
+);
+$wgMakesysopMessages['rmy'] = array(
+	'rights'               => 'Chachimata (xakaya):',
 );
 $wgMakesysopMessages['ro'] = array(
 	'makesysoptitle'       => 'Fă dintr-un utilizator un administrator',
