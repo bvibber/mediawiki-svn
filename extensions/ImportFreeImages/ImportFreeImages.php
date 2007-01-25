@@ -17,13 +17,15 @@ if ( ! defined( 'MEDIAWIKI' ) )
 $wgExtensionFunctions[] = 'wfImportFreeImages';
 $wgIFI_FlickrAPIKey  = '';
 $wgIFI_CreditsTemplate = 'flickr'; // use this to format the image content with some key parameters
+$wgIFI_GetOriginal = true; // import the original version of the photo
+$wgIFI_PromptForFilename = true;  // prompt the user through javascript for the destination filename
 
 $wgIFI_ResultsPerPage = 20;
 $wgIFI_ResultsPerRow = 5;
 // see the flickr api page for more information on these params
 // for licnese info http://www.flickr.com/services/api/flickr.photos.licenses.getInfo.html
 // default 4 is CC Attribution License
-$wgIFI_FlickrLicense = 4;
+$wgIFI_FlickrLicense = "4,5";
 $wgIFI_FlickrSort = "interestingness-desc";
 require_once("SpecialPage.php");
 
@@ -53,6 +55,7 @@ function wfImportFreeImages() {
 			'importfreeimages_importthis' => 'import this',
 			'importfreeimages_next' => 'Next $1',
 			'importfreeimages_filefromflickr' => '$1 by user <b>[$2]</b> from flickr. Original URL',
+			'importfreeimages_promptuserforfilename' => 'Please enter a destination filename:',
         )
     );
 
@@ -64,6 +67,8 @@ function wfSpecialImportFreeImages( $par )
 {
 	global $wgUser, $wgOut, $wgScriptPath, $wgRequest, $wgLang, $wgIFI_FlickrAPIKey, $wgTmpDirectory;
 	global $wgIFI_ResultsPerPage, $wgIFI_FlickrSort, $wgIFI_FlickrLicense, $wgIFI_ResultsPerRow, $wgIFI_CreditsTemplate;
+	global $wgIFI_GetOriginal, $wgIFI_PromptForFilename;
+	require_once("phpFlickr-2.0.0/phpFlickr.php");
 	
 	$fname = "wfSpecialImportFreeImages";
 	$importPage = Title::makeTitle(NS_SPECIAL, "ImportFreeImages");
@@ -95,14 +100,31 @@ function wfSpecialImportFreeImages( $par )
 			 echo "not supported.";
 			exit;
 		}
+	
+       	$f = new phpFlickr($wgIFI_FlickrAPIKey);
+		
+		if ($wgIFI_GetOriginal) {
+			// get URL of original :1
+			$sizes = $f->photos_getSizes($_POST['id']);
+			foreach ($sizes as $size) {
+				if ($size['label'] == 'Original') {
+					$import = $size['source'];
+					break;
+				}
+			}
+		}
+
+		// store the contents of the file
 		$pageContents = file_get_contents($import); 	
 		$name =$wgTmpDirectory . "/flickr-" . rand(0,999999);
 		$r = fopen($name, "w");
 		$size = fwrite ( $r, $pageContents);	
 		fclose($r);
 		chmod( $name, 0777 );
+		$info = $f->photos_getInfo($_POST['id']);
+	
 		if (!empty($wgIFI_CreditsTemplate)) {
-			$caption = "{{" . $wgIFI_CreditsTemplate . "|{$_POST['id']}|" . urldecode($_POST['owner']) . "|" . urldecode($_POST['name']). "}}";
+			$caption = "{{" . $wgIFI_CreditsTemplate . $info['license'] . "|{$_POST['id']}|" . urldecode($_POST['owner']) . "|" . urldecode($_POST['name']). "}}";
 		} else {
 			$caption = wfMsg('importfreeimages_filefromflickr', $_POST['t'], "http://www.flickr.com/people/" . urlencode($_POST['owner']) . " " . $_POST['name']) . " <nowiki>$import</nowiki>. {{CC by 2.0}} ";
 		}
@@ -131,20 +153,24 @@ function wfSpecialImportFreeImages( $par )
 				"caption" => $caption,
 				"url" => $import, "title" => $_POST['t'] );
 */
+		$filename = urldecode($_POST['title']) . ".jpg";
+		$filename = str_replace("?", "", $filename);
+		$filename = str_replace(":", "", $filename);
+		$filename = preg_replace('/ [ ]*/', ' ', $filename);
+		if (!class_exists("UploadForm")) 
+			require_once('includes/SpecialUpload.php');
 		$u = new UploadForm($wgRequest);
         $u->mUploadTempName = $name;
         $u->mUploadSize     = $size; 
 		$u->mUploadDescription = $caption;
 		$u->mRemoveTempFile = true;
 		$u->mIgnoreWarning =  true;
-        $u->mOname = urldecode($_POST['title']) . ".jpg";
-
+        $u->mOname = $filename;
 		$u->execute();
 	}
 	if ($q != '') { 
 		$page = $_GET['p'];
 		if ($page == '') $page = 1;
-        	require_once("phpFlickr-2.0.0/phpFlickr.php");
         	$f = new phpFlickr($wgIFI_FlickrAPIKey);
         	$q = $_GET['q'];
 		// TODO: get the right licenses
@@ -178,6 +204,13 @@ function wfSpecialImportFreeImages( $par )
 			document.uploadphotoform.owner.value = owner;
 			document.uploadphotoform.name.value = name;
 			document.uploadphotoform.title.value = title;
+			if (" . ($wgIFI_PromptForFilename ? "true" : "false") . ") {
+				title = title.replace(/\+/g, ' ');
+				document.uploadphotoform.title.value = prompt('" . wfMsg('importfreeimages_promptuserforfilename') . "', unescape(title));
+				if (document.uploadphotoform.title.value == '') {
+					document.uploadphotoform.title.value = title;
+				}
+			}
 			document.uploadphotoform.submit();
 		}
 
@@ -196,6 +229,7 @@ function wfSpecialImportFreeImages( $par )
                 	//$wgOut->addHTML( "<img  src=http://static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . "." . "jpg>" );
                 	$url="http://static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . "." . "jpg";
                 	$wgOut->addHTML( "<img src=http://static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . "_s." . "jpg>" );
+
 			$wgOut->addHTML( "<br/>(<a href='#' onclick=\"s2('$url', '{$photo['id']}','{$photo['owner']}', '" 
 						. urlencode($owner['username']  ) . "', '" . urlencode($photo['title']) . "');\">" . 
 								wfMsg('importfreeimages_importthis') . "</a>)\n" );
