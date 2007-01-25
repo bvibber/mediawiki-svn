@@ -37,6 +37,25 @@ class DefaultWikidataApplication implements WikidataApplication {
 				'wz_history' => 'History'
 			)
 		);
+		
+		global
+			$wgAvailableAuthorities, $wgFilterLanguageId, $wgShowLanguageSelector, 
+			$wgShowClassicPageTitles, $wgPossiblySynonymousRelationTypeId;
+		
+		if (isset($wgAvailableAuthorities))
+			$this->availableAuthorities = $wgAvailableAuthorities;
+			
+		if (isset($wgFilterLanguageId))
+			$this->filterLanguageId = $wgFilterLanguageId;
+			
+		if (isset($wgShowLanguageSelector))
+			$this->showLanguageSelector = $wgShowLanguageSelector;
+			
+		if (isset($wgShowClassicPageTitles))
+			$this->showClassicPageTitles = $wgShowClassicPageTitles;
+			
+		if (isset($wgPossiblySynonymousRelationTypeId))
+			$this->possiblySynonymousRelationTypeId = $wgPossiblySynonymousRelationTypeId; 
 	}
 
 	function getLanguageSelector() {
