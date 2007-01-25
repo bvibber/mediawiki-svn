@@ -66,6 +66,20 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'Artikel $1 tidak ditemukan.',
 ),
 
+/* nld / Dutch (Siebrand Mazeland) */
+'nl' => array(
+'contributors' => 'Contribuanten',
+'contributors-toolbox' => 'Belangrijkste contribuanten',
+'contributors-legend' => 'Toon belangrijkste contribuanten van een pagina',
+'contributors-target' => 'Titel:',
+'contributors-submit' => 'Toon',
+'contributors-subtitle' => 'Belangrijkste contribuanten aan $1',
+'contributors-others-long' => 'Er zijn $1 andere contribuanten aan deze pagina.',
+'contributors-others' => 'en $1 anderen',
+'contributors-badtitle' => 'Onjuiste titel.',
+'contributors-nosuchpage' => 'De pagina $1 bestaat niet.',
+),
+
 /* Portuguese (Lugusto) */
 'pt' => array(
 'contributors' => 'Contribuidores',

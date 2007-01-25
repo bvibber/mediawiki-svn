@@ -75,6 +75,19 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Belum ada kontribusi untuk wiki ini.',
 ),
 
+/* nld / Dutch (Siebrand Mazeland) */
+'nl' => array(
+'countedits' => 'Bewerkingen tellen',
+'countedits-warning' => "'''Waarschuwing:''' Beoordeel het boek niet op de buitenkant. Beoordeel een redacteur niet alleen op het aantal bijdragen.",
+'countedits-username' => 'Gebruiker:',
+'countedits-ok' => 'OK',
+'countedits-nosuchuser' => 'Er is geen gebruiker met de naam $1.',
+'countedits-resultheader' => 'Resulaten voor $1',
+'countedits-resulttext' => '$1 heeft $2 bewerkingen gemaakt',
+'countedits-mostactive' => 'Meest actieve redacteuren',
+'countedits-nocontribs' => 'Er zijn geen bewerkingen op deze wiki.',
+),
+
 /* Portuguese (Lugusto) */
 'pt' => array(
 'countedits' => 'Contador de edições',

@@ -183,10 +183,10 @@ $wgChemFunctions_Messages['nl'] = array(
 	'chemicalsources' => 'Chemicaliën bronnen',
 	'ChemFunctions_ListPage' => 'Chemicaliën bronnen',
 	'ChemFunctions_SearchExplanation' => '',
-	'ChemFunctions_DataList' => 'Hieronder staat een lijst van pagina\'s, die meer informatie over de chemische verbinding kunnen verschaffen.<br /><br />
+	'ChemFunctions_DataList' => 'Hieronder staat een lijst van pagina\'s die meer informatie over de chemische verbinding kunnen verschaffen.<br /><br />
 	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbinding $MIXCASNameFormula op de pagina van het NIST</a><br />
 	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS op de pagina van de Oxford University (UK) (geen zoekresultaten)</a><br />',
-	'ChemFunctions_CAS' => 'CAS nummer',
+	'ChemFunctions_CAS' => 'CAS-nummer',
 	'ChemFunctions_EINECS' => 'Einecs',
 	'ChemFunctions_CHEBI' => 'CHEBI',
 	'ChemFunctions_PubChem' => 'PubChem',
@@ -194,13 +194,13 @@ $wgChemFunctions_Messages['nl'] = array(
 	'ChemFunctions_InChI' => 'InChI',
 	'ChemFunctions_RTECS' => 'RTECS',
 	'ChemFunctions_KEGG' => 'KEGG',
-	'ChemFunctions_ATCCode' => 'ATC Code',
+	'ChemFunctions_ATCCode' => 'ATC-code',
 	'ChemFunctions_DrugBank' => 'DrugBank',
-	'ChemFunctions_ECNumber' => 'EC Nummer',
+	'ChemFunctions_ECNumber' => 'EC-nummer',
 	'ChemFunctions_Formula' => 'Formula',
-	'ChemFunctions_Name' => 'IUPAC Naam',
+	'ChemFunctions_Name' => 'IUPAC-naam',
 
-	'ChemFunctions_ChemFormInputError' => 'Chemform: Input fout!'
+	'ChemFunctions_ChemFormInputError' => 'Chemform: Invoerfout!'
 );
 
 /**

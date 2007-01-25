@@ -354,7 +354,12 @@ $wgDPL2Messages['nl'] = array(
 	 * $1: wrong parameter given by user
 	 * $3: list of possible titles of namespaces (except pseudo-namespaces: Media, Special)
 	 */
-	'dpl2_debug_' . DPL2_ERR_WRONGNS => "FOUT: Verkeerde parameter '$0': '$1'! Hulp:  <code>$0= <i>lege string</i> (Main)$3</code>.",
+	'dpl2_debug_' . DPL2_ERR_WRONGNS => "FOUT: Verkeerde parameter '$0': '$1'! Hulp:  <code>$0= <i>lege string</i> (Main)$3</code>. Equivalenten met magic words zijn ook toegestaan.",
+	/**
+	 * $0: 'linksto' (left as $0 just in case the parameter is renamed in the future)
+	 * $1: wrong parameter given by user
+	*/
+	'dpl2_debug_' . DPL2_ERR_WRONGLINKSTO => "FOUT: Verkeerde paramater'$0': '$1'! Help:  <code>$0= <i>full pagename</i></code>. Magic words zijn toegestaan.",
 	/**
 	 * $0: max number of categories that can be included
 	*/
@@ -394,7 +399,7 @@ $wgDPL2Messages['nl'] = array(
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT],
 	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'WAARSCHUWING: Geen resultaten!',
-	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "WAARSCHUWING: Add* parameters ('adduser', 'addeditdate', etc.)' heeft geen effect bij 'mode=category'. Alleen de paginanaamruimte/titel is in deze modus te bekijken.",
+	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "WAARSCHUWING: Add* parameters ('adduser', 'addeditdate', etc.)' en 'includepage' heeft geen effect bij 'mode=category'. Alleen de paginanaamruimte/titel is in deze modus te bekijken.",
 	/**
 	 * $0: 'headingmode' value given by user
 	 * $1: value used instead by program (which means no heading)
@@ -404,6 +409,10 @@ $wgDPL2Messages['nl'] = array(
 	 * $0: 'debug' value
 	*/
 	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "WAARSCHUWING: 'debug=$0' is niet de eerste positie in het DPL-element. De nieuwe debuginstellingen zijn niet toegepast voor alle voorgaande parameters zijn verwerkt en gecontroleerd.",
+	/**
+	 * $0: title of page that creates an infinite transclusion loop
+	*/
+	'dpl2_debug_' . DPL2_WARN_TRANSCLUSIONLOOP => "WAARSCHUWING: Pagina '$0' veroorzaakt een oneindige transclusie.",
 
 	// OTHERS
 	/**

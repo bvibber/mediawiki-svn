@@ -47,9 +47,14 @@ $wgDismissableSiteNoticeMessages['lt'] = array(
 $wgDismissableSiteNoticeMessages['ja'] = array(
 	'sitenotice_close' => '非表示',
 );
+$wgDismissableSiteNoticeMessages['nl'] = array(
+	'sitenotice_close' => 'sluiten',
+);
+
 $wgDismissableSiteNoticeMessages['pt'] = array(
 	'sitenotice_close' => 'ignorar',
 );
+
 $wgDismissableSiteNoticeMessages['sk'] = array(
 	'sitenotice_close' => 'nezobrazovať',
 );

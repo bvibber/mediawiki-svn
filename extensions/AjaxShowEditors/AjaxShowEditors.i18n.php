@@ -23,4 +23,9 @@ $wgAjaxShowEditorsMessages['id'] = array(
 	'ajax-se-pending' => 'pemuatan ulang ditunda ... (klik kotak ini atau mulai menyunting)',
 	'ajax-se-idling'  => '($1d lalu)',
 );
+$wgAjaxShowEditorsMessages['nl'] = array(
+	'ajax-se-title' => 'Bezig met het bewerken van:',
+	'ajax-se-pending' => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',
+	'ajax-se-idling' => '($1s geleden)',
+);
 ?>

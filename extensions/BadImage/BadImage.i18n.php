@@ -122,6 +122,28 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'removida [[$1]] da lista de imagens com problemas',
 ),
 
+/* nld / Dutch (Siebrand Mazeland) */
+'nl' => array(
+'badimages' => 'Verwijderlijst afbeeldingen',
+'badimages-add-btn' => 'Toevoegen',
+'badimages-added' => '$1 is toegevoegd.',
+'badimages-count' => "Er staan '''$1''' afbeeldingen op de verwijderlijst afbeeldingen.",
+'badimages-name' => 'Naam:',
+'badimages-not-added' => 'De afbeelding kon niet toegevoegd worden.',
+'badimages-not-removed' => 'De afbeelding kon niet verwijderd worden.',
+'badimages-reason' => 'Reden:',
+'badimages-remove' => '(verwijderen)',
+'badimages-remove-btn' => 'Verwijder',
+'badimages-remove-confirm' => 'Bevestig alstublieft dat u $1 uit de lijst wilt verwijderen:',
+'badimages-removed' => '$1 is uit de lijst verwijderd.',
+'badimages-subheading' => 'Huidige inhoud',
+'badimages-unprivileged' => '(U heeft niet de juiste rol om de lijst te kunnen wijzigen)',
+'badimages-log-name' => 'Verwijderlijst afbeeldingen',
+'badimages-log-header' => 'Dit is het logboek van wijzigingen in de [[Help:Verwijderlijst afbeeldingen|verwijderlijst afbeeldingen]].',
+'badimages-log-add' => '[[$1]] is toegevoegd aan de verwijderlijst afbeeldingen',
+'badimages-log-remove' => '[[$1]] is verwijderd uit de verwijderlijst afbeeldingen',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'badimages' => 'Zoznam zlých obrázkov',

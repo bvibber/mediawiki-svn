@@ -174,6 +174,34 @@ indépendantes de l’historique complet. Il sert par exemple à séparer un art
 'duplicator-toomanyrevisions' => '[[$1]] memiliki terlalu banyak ($2) revisi dan tidak dapat disalin. Limit saat ini adalah $3.',
 ),
 
+/* nld / Dutch (Siebrand Mazeland) */
+'nl' => array(
+'duplicator' => 'Kopieer een pagina',
+'duplicator-toolbox' => 'Kopieer deze pagina',
+'duplicator-header' => 'Deze pagina maakt het mogelijk een pagina volledig te kopiëren, waardoor er onafhankelijke
+kopiën ontstaan met een volledige geschiedenis. DIt is handig voor forks, enzovoort.',
+
+'duplicator-options' => 'Opties',
+'duplicator-source' => 'Bron:',
+'duplicator-dest' => 'Doel:',
+'duplicator-dotalk' => 'Kopieer overlegpagina (als van toepassing)',
+'duplicator-submit' => 'Kopiëren',
+
+'duplicator-summary' => 'Gekopieerd van [[$1]]',
+
+'duplicator-success' => "<big>'''[[$1]] is gekopieerd naar [[$2]].'''</big>",
+'duplicator-success-revisions' => '$1 versies gekopieerd.',
+'duplicator-success-talkcopied' => 'De overlegpagina is ook gekopieerd.',
+'duplicator-success-talknotcopied' => 'De overlegpagina kon niet gekopieerd worden.',
+'duplicator-failed' => 'De pagina kon niet gekopieerd worden. Er is een onbekende fout opgetreden.',
+
+'duplicator-source-invalid' => 'Geef alstublieft een geldige bronpagina op.',
+'duplicator-source-notexist' => '[[$1]] bestaat niet. Geef alstublieft een pagina op die bestaat.',
+'duplicator-dest-invalid' => 'Geef alstublieft een geldige doelpagina op.',
+'duplicator-dest-exists' => '[[$1]] bestaat al. Geeft alstublieft een doelpagina op die niet bestaat.',
+'duplicator-toomanyrevisions' => '[[$1]] heeft te veel versies ($2) en kan niet gekopieerd worden. De huidige limiet is $3.',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'duplicator' => 'Duplikácia článku',
