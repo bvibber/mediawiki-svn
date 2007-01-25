@@ -23,7 +23,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 	protected $filterLanguageId = 0;						// Filter pages on this languageId, set to 0 to show all languages
 	protected $showLanguageSelector = true;					// Show language selector at the top of each wiki data page
 	protected $showClassicPageTitles = true;				// Show classic page titles instead of prettier page titles
-	protected $possiblySynonymousRelationTypeId = 0;		// Put this relation type in a special section
+	protected $possiblySynonymousRelationTypeId = 0;		// Put this relation type in a special section "Possibly synonymous"
 
 	public function __construct() {
 		global 
