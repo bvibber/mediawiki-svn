@@ -138,7 +138,7 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 ),
 
 /* nld / Dutch (Siebrand Mazeland) */
-'en' => array(
+'nl' => array(
 'hiderevision' => 'Versies permanent verbergen',
 // Empty form
 'hiderevision-prompt' => 'Te verwijderen versienummer:',
