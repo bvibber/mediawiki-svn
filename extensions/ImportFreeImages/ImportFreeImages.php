@@ -27,6 +27,7 @@ $wgIFI_ResultsPerRow = 5;
 // default 4 is CC Attribution License
 $wgIFI_FlickrLicense = "4,5";
 $wgIFI_FlickrSort = "interestingness-desc";
+$wgIFI_FlickrSearchBy = "tags"; // Can be tags or text. See http://www.flickr.com/services/api/flickr.photos.search.html
 $wgIFI_AppendRandomNumber = true; /// append random # to destination filename
 require_once("SpecialPage.php");
 
@@ -123,7 +124,7 @@ function wfSpecialImportFreeImages( $par )
 {
 	global $wgUser, $wgOut, $wgScriptPath, $wgRequest, $wgLang, $wgIFI_FlickrAPIKey, $wgTmpDirectory;
 	global $wgIFI_ResultsPerPage, $wgIFI_FlickrSort, $wgIFI_FlickrLicense, $wgIFI_ResultsPerRow, $wgIFI_CreditsTemplate;
-	global $wgIFI_GetOriginal, $wgIFI_PromptForFilename, $wgIFI_AppendRandomNumber;
+	global $wgIFI_GetOriginal, $wgIFI_PromptForFilename, $wgIFI_AppendRandomNumber, $wgIFI_FlickrSearchBy;
 	require_once("phpFlickr-2.0.0/phpFlickr.php");
 	
 	$fname = "wfSpecialImportFreeImages";
@@ -158,13 +159,20 @@ function wfSpecialImportFreeImages( $par )
 		
 		if ($wgIFI_GetOriginal) {
 			// get URL of original :1
+	
 			$sizes = $f->photos_getSizes($_POST['id']);
+			$original = '';
 			foreach ($sizes as $size) {
 				if ($size['label'] == 'Original') {
+					$original = $size['source'];
 					$import = $size['source'];
-					break;
+				} else if ($size['label'] == 'Large') {
+					$large = $size['source'];
 				}
 			}
+			//somtimes Large is returned but no Original!
+			if ($original == '' && $large != '') 
+				$import = $large; 
 		}
 
 		// store the contents of the file
@@ -175,6 +183,7 @@ function wfSpecialImportFreeImages( $par )
 		fclose($r);
 		chmod( $name, 0777 );
 		$info = $f->photos_getInfo($_POST['id']);
+
 	
 		if (!empty($wgIFI_CreditsTemplate)) {
 			$caption = "{{" . $wgIFI_CreditsTemplate . $info['license'] . "|{$_POST['id']}|" . urldecode($_POST['owner']) . "|" . urldecode($_POST['name']). "}}";
@@ -246,7 +255,7 @@ function wfSpecialImportFreeImages( $par )
         	$q = $_GET['q'];
 		// TODO: get the right licenses
         	$photos = $f->photos_search(array(
-				"tags"=>"$q", "tag_mode"=>"any", 
+				"$wgIFI_FlickrSearchBy"=>"$q", "tag_mode"=>"any", 
 				"page" => $page, 
 				"per_page" => $wgIFI_ResultsPerPage, "license" => $wgIFI_FlickrLicense, 
 				"sort" => $wgIFI_FlickrSort  ));
