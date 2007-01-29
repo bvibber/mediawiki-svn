@@ -15,7 +15,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  */
 
 $wgExtensionFunctions[] = 'wfImportFreeImages';
-$wgIFI_FlickrAPIKey  = '';
+$wgIFI_FlickrAPIKey = '';
 $wgIFI_CreditsTemplate = 'flickr'; // use this to format the image content with some key parameters
 $wgIFI_GetOriginal = true; // import the original version of the photo
 $wgIFI_PromptForFilename = true;  // prompt the user through javascript for the destination filename
@@ -27,6 +27,7 @@ $wgIFI_ResultsPerRow = 5;
 // default 4 is CC Attribution License
 $wgIFI_FlickrLicense = "4,5";
 $wgIFI_FlickrSort = "interestingness-desc";
+$wgIFI_AppendRandomNumber = true; /// append random # to destination filename
 require_once("SpecialPage.php");
 
 
@@ -56,6 +57,7 @@ function wfImportFreeImages() {
 			'importfreeimages_next' => 'Next $1',
 			'importfreeimages_filefromflickr' => '$1 by user <b>[$2]</b> from flickr. Original URL',
 			'importfreeimages_promptuserforfilename' => 'Please enter a destination filename:',
+			'importfreeimages_returntoform' => 'Or, click <a href=\'$1\'>here</a> to return to return to your search results',
         )
     );
 
@@ -63,11 +65,65 @@ function wfImportFreeImages() {
 }
 
 
+// I wish I didn't have to copy paste most of 
+
+function wfIIF_uploadWarning($u) {
+        global $wgOut;
+        global $wgUseCopyrightUpload;
+
+        $u->mSessionKey = $u->stashSession();
+        if( !$u->mSessionKey ) {
+            # Couldn't save file; an error has been displayed so let's go.
+            return;
+        }
+
+        $wgOut->addHTML( "<h2>" . wfMsgHtml( 'uploadwarning' ) . "</h2>\n" );
+        $wgOut->addHTML( "<ul class='warning'>{$warning}</ul><br />\n" );
+
+        $save = wfMsgHtml( 'savefile' );
+        $reupload = wfMsgHtml( 'reupload' );
+        $iw = wfMsgWikiHtml( 'ignorewarning' );
+        $reup = wfMsgWikiHtml( 'reuploaddesc' );
+        $titleObj = Title::makeTitle( NS_SPECIAL, 'Upload' );
+        $action = $titleObj->escapeLocalURL( 'action=submit' );
+        if ( $wgUseCopyrightUpload )
+        {
+            $copyright =  "
+    <input type='hidden' name='wpUploadCopyStatus' value=\"" . htmlspecialchars( $u->mUploadCopyStatus ) . "\" />
+    <input type='hidden' name='wpUploadSource' value=\"" . htmlspecialchars( $u->mUploadSource ) . "\" />
+    ";
+        } else {
+            $copyright = "";
+        }
+
+        $wgOut->addHTML( "
+    <form id='uploadwarning' method='post' enctype='multipart/form-data' action='$action'>
+        <input type='hidden' name='wpIgnoreWarning' value='1' />
+        <input type='hidden' name='wpSessionKey' value=\"" . htmlspecialchars( $u->mSessionKey ) . "\" />
+        <input type='hidden' name='wpUploadDescription' value=\"" . htmlspecialchars( $u->mUploadDescription ) . "\" />
+        <input type='hidden' name='wpLicense' value=\"" . htmlspecialchars( $u->mLicense ) . "\" />
+        <input type='hidden' name='wpDestFile' value=\"" . htmlspecialchars( $u->mDestFile ) . "\" />
+        <input type='hidden' name='wpWatchu' value=\"" . htmlspecialchars( intval( $u->mWatchu ) ) . "\" />
+    {$copyright}
+    <table border='0'>
+        <tr>
+            <tr>
+                <td align='right'>
+                    <input tabindex='2' type='submit' name='wpUpload' value=\"$save\" />
+                </td>
+                <td align='left'>$iw</td>
+            </tr>
+        </tr>
+    </table></form>\n" . wfMsg('importfreeimages_returntoform',  $_SERVER["HTTP_REFERER"]) );
+//  $_SERVER["HTTP_REFERER"]; -- javascript.back wasn't working for some reason... hmph.
+
+}
+
 function wfSpecialImportFreeImages( $par )
 {
 	global $wgUser, $wgOut, $wgScriptPath, $wgRequest, $wgLang, $wgIFI_FlickrAPIKey, $wgTmpDirectory;
 	global $wgIFI_ResultsPerPage, $wgIFI_FlickrSort, $wgIFI_FlickrLicense, $wgIFI_ResultsPerRow, $wgIFI_CreditsTemplate;
-	global $wgIFI_GetOriginal, $wgIFI_PromptForFilename;
+	global $wgIFI_GetOriginal, $wgIFI_PromptForFilename, $wgIFI_AppendRandomNumber;
 	require_once("phpFlickr-2.0.0/phpFlickr.php");
 	
 	$fname = "wfSpecialImportFreeImages";
@@ -88,9 +144,6 @@ function wfSpecialImportFreeImages( $par )
 		$q = $_GET['q'];
 	}
 
-	$wgOut->addHTML(wfMsg ('importfreeimages_description') . "<br/><br/>
-		<form method=GET action='" . $importPage->getFullURL() . "'>".wfMsg('search').
-		": <input type=text name=q value='" . htmlspecialchars($q) . "'><input type=submit value=".wfMsg('search')."></form>");
 
 	$import = '';
 	if ($wgRequest->wasPosted() && isset($_POST['url'])) {
@@ -153,10 +206,11 @@ function wfSpecialImportFreeImages( $par )
 				"caption" => $caption,
 				"url" => $import, "title" => $_POST['t'] );
 */
-		$filename = urldecode($_POST['title']) . ".jpg";
+		$filename = urldecode($_POST['title']) . ($wgIFI_AppendRandomNumber ? "-" . rand(0, 9999) : "") . ".jpg";
 		$filename = str_replace("?", "", $filename);
 		$filename = str_replace(":", "", $filename);
 		$filename = preg_replace('/ [ ]*/', ' ', $filename);
+
 		if (!class_exists("UploadForm")) 
 			require_once('includes/SpecialUpload.php');
 		$u = new UploadForm($wgRequest);
@@ -166,8 +220,25 @@ function wfSpecialImportFreeImages( $par )
 		$u->mRemoveTempFile = true;
 		$u->mIgnoreWarning =  true;
         $u->mOname = $filename;
-		$u->execute();
+		$t = Title::newFromText($filename, NS_IMAGE);
+		if ($t->getArticleID() > 0) {
+			$sk = $wgUser->getSkin();
+           	$dlink = $sk->makeKnownLinkObj( $t );
+            $warning .= '<li>'.wfMsgHtml( 'fileexists', $dlink ).'</li>';
+			
+			// use our own upload warning as we dont have a 'reupload' feature
+			wfIIF_uploadWarning	($u);
+			return;
+		} else {
+			$u->execute();
+		}
 	}
+
+
+	$wgOut->addHTML(wfMsg ('importfreeimages_description') . "<br/><br/>
+		<form method=GET action='" . $importPage->getFullURL() . "'>".wfMsg('search').
+		": <input type=text name=q value='" . htmlspecialchars($q) . "'><input type=submit value=".wfMsg('search')."></form>");
+
 	if ($q != '') { 
 		$page = $_GET['p'];
 		if ($page == '') $page = 1;
@@ -187,7 +258,8 @@ function wfSpecialImportFreeImages( $par )
 		}
 		$sk = $wgUser->getSkin();
 
-		$wgOut->addHTML("<table cellpadding=4>
+		$wgOut->addHTML("
+			<table cellpadding=4>
 			<form method='POST' name='uploadphotoform' action='" . $importPage->getFullURL() . "'>
 				<input type=hidden name='url' value=''>
 				<input type=hidden name='id' value=''>
