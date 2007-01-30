@@ -48,6 +48,7 @@ function efBookInformationMessages() {
 'bookinfo-result-publisher' => 'Kustantaja:',
 'bookinfo-result-year' => 'Vuosi:',
 'bookinfo-error-invalidisbn' => 'Kelpaamaton ISBN.',
+'bookinfo-error-nosuchitem' => 'Nimikettä ei ole olemassa tai sitä ei löytynyt.',
 'bookinfo-error-nodriver' => 'Kirjatietoajurin alustus ei onnistunut.',
 'bookinfo-error-noresponse' => 'Ei vastausta tai pyyntö aikakatkaistiin.',
 'bookinfo-purchase' => 'Osta tämä kirja: $1',

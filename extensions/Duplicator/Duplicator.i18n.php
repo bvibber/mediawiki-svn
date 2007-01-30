@@ -107,7 +107,7 @@ copies of all histories. This is useful for article forking, etc.',
 'duplicator-summary' => 'Täydellinen kopio sivusta [[$1]]',
 
 'duplicator-success' => "<big>'''[[$1]] monistettiin sivulle [[$2]].'''</big>",
-'duplicator-success-revisions' => '$1 muutosta kopioitiin.',
+'duplicator-success-revisions' => '{{PLURAL:$1|yksi muutos|$1 muutosta}} kopioitiin.',
 'duplicator-success-talkcopied' => 'Myös keskustelusivu monistettiin.',
 'duplicator-success-talknotcopied' => 'Keskustelusivua ei monistettu.',
 'duplicator-failed' => 'Sivun monistaminen ei onnistunut.',

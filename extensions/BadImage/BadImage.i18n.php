@@ -55,7 +55,29 @@ function efBadImageMessages() {
 'badimages-log-add' => 'fügte [[$1]] zu der Liste unerwünschter Bilder hinzu',
 'badimages-log-remove' => 'entfernte [[$1]] von der Liste unerwünschter Bilder',
 ),
-	
+
+/* Finnish (Niklas Laxström) */
+'fi' => array(
+'badimages' => 'Kiellettyjen kuvien luettelo',
+'badimages-add-btn' => 'Lisää',
+'badimages-added' => '”$1” lisättiin luetteloon.',
+'badimages-count' => "Luettelossa on '''$1''' kuvaa.",
+'badimages-name' => 'Nimi:',
+'badimages-not-added' => 'Kuvan lisääminen epäonnistui.',
+'badimages-not-removed' => 'Kuvan poistaminen epäonnistui.',
+'badimages-reason' => 'Syy:',
+'badimages-remove' => '(poista)',
+'badimages-remove-btn' => 'Poista',
+'badimages-remove-confirm' => 'Varmista, että haluat poistaa kuvan ”$1” luettelosta:',
+'badimages-removed' => '”$1” poistettiin luettelosta.',
+'badimages-subheading' => 'Kielletyt kuvat',
+'badimages-unprivileged' => '(Sinulla ei ole oikeuksia muuttaa luetteloa)',
+'badimages-log-name' => 'Kielletyt kuvat',
+'badimages-log-header' => 'Tämä on loki muutoksista kiellettyjen kuvien luetteloon.',
+'badimages-log-add' => 'lisäsi kuvan [[$1]] kiellettyjen kuvien luetteloon',
+'badimages-log-remove' => 'poisti kuvan [[$1]] kiellettyjen kuvien luettelosta',
+),
+
 /* French (Bertrand Grondin) */
 'fr' => array(
 'badimages' => 'Liste des images indésirables',
