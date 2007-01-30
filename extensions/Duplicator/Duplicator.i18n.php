@@ -79,7 +79,7 @@ copies of all histories. This is useful for article forking, etc.',
 	'duplicator-summary' => '[[$1]] wurde dupliziert',
 
 	'duplicator-success' => "<big>'''[[$1]] wurde nach [[$2]] kopiert.'''</big>",
-	'duplicator-success-revisions' => '{{PLURAL:$1|Einer Version wurde|$1 Versionen wurden}} dupliziert.',
+	'duplicator-success-revisions' => '{{PLURAL:$1|Eine Version wurde|$1 Versionen wurden}} dupliziert.',
 	'duplicator-success-talkcopied' => 'Die Diskussionsseite wurde auch dupliziert.',
 	'duplicator-success-talknotcopied' => 'Die Diskussionsseite konnte nicht dupliziert werden.',
 	'duplicator-failed' => 'Der Artikel konnte nicht dupliziert werden, da ein unbekannter Fehler auftrat.',
