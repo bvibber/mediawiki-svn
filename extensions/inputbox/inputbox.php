@@ -68,7 +68,7 @@ function renderInputbox($input, $params, &$parser)
 	if($boxhtml) {
 		return $boxhtml;
 	} else {
-		return "<br /> <font color='red'>Input box '{$inputbox->type}' not defined.</font>";
+		return "<br /> <font color='red'>Input box: type not defined.</font>";
 	}
 }
 
@@ -164,7 +164,7 @@ ENDGO;
 		} 
 		$searchform3=<<<ENDFORM2
 		{$gobutton}
-		<input type='submit' name="searchx" class="searchboxSearchButton" value="{$this->searchbuttonlabel}" />
+		<input type='submit' name="fulltext" class="searchboxSearchButton" value="{$this->searchbuttonlabel}" />
 		</form>
 		</td>
 		</tr>
