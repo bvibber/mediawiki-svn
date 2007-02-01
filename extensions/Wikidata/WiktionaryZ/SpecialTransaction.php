@@ -232,15 +232,146 @@ function initializeAttributes() {
 	$updatedCollectionMembershipAttribute = new Attribute('updated-collection-membership', 'Collection membership', new RecordSetType($updatedCollectionMembershipStructure));
 	
 	global
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute;
+		
+	$objectIdAttribute = new Attribute('object-id', 'Object', 'object-id');
+	$valueIdAttribute = new Attribute('value-id', 'Value identifier', 'object-id');
+	$attributeAttribute = new Attribute('attribute', 'Attribute', new RecordType($definedMeaningReferenceStructure));
+		
+	global
+		$updatedURLAttribute, $updatedURLStructure, $URLAttribute;	
+		
+	$URLAttribute = new Attribute('url', 'URL', 'url');	
+		
+	$updatedURLStructure = new Structure(
+		$valueIdAttribute,
+		$objectIdAttribute,
+		$attributeAttribute,
+		$URLAttribute,
+		$operationAttribute,
+		$isLatestAttribute
+	);
+
+	$updatedURLAttribute = new Attribute('updated-url', 'URL properties', new RecordSetType($updatedURLStructure));
+	
+	global
+		$updatedTextAttribute, $updatedTextStructure, $textAttribute;	
+		
+	$updatedTextStructure = new Structure(
+		$valueIdAttribute,
+		$objectIdAttribute,
+		$attributeAttribute,
+		$textAttribute,
+		$operationAttribute,
+		$isLatestAttribute
+	);
+
+	$updatedTextAttribute = new Attribute('updated-text', 'Unstructured text properties', new RecordSetType($updatedTextStructure));
+	
+	global
+		$translatedTextStructure, 
+		$updatedTranslatedTextPropertyAttribute, $updatedTranslatedTextPropertyStructure, $translatedTextTextAttribute;
+	
+	$translatedTextTextAttribute = new Attribute('translated-text-property-text', 'Text', new RecordSetType($translatedTextStructure)); 
+	
+	$updatedTranslatedTextPropertyStructure = new Structure(
+		$valueIdAttribute,
+		$objectIdAttribute,
+		$attributeAttribute,
+		$translatedContentIdAttribute,
+		$translatedTextTextAttribute, 
+		$operationAttribute,
+		$isLatestAttribute
+	);
+	
+	$updatedTranslatedTextPropertyAttribute = new Attribute('updated-translated-text-property', 'Text properties', new RecordSetType($updatedTranslatedTextPropertyStructure));
+
+	global
+		$updatedTranslatedTextStructure, $updatedTranslatedTextAttribute;
+	
+	$updatedTranslatedTextStructure = new Structure(
+		$rollBackTranslatedContentAttribute,
+		$valueIdAttribute,
+		$objectIdAttribute,
+		$attributeAttribute,
+		$translatedContentIdAttribute,
+		$languageAttribute, 
+		$textAttribute,
+		$operationAttribute,
+		$isLatestAttribute
+	);		
+	
+	$updatedTranslatedTextAttribute = new Attribute('updated-translated-text', 'Texts', new RecordSetType($updatedTranslatedTextStructure));
+
+	global
+		$updatedClassAttributesAttribute, $updatedClassAttributesStructure, $classAttributeId, $levelAttribute, 
+		$typeAttribute;
+
+	$classAttributeId = new Attribute('class-attribute-id', 'Class attribute id', 'object-id');
+	$levelAttribute = new Attribute('level', 'Level', new RecordType($definedMeaningReferenceStructure));
+	$typeAttribute = new Attribute('type', 'Type', 'text');
+
+	$updatedClassAttributesStructure = new Structure(
+		$classAttributeId,
+		$classAttribute,
+		$levelAttribute,
+		$typeAttribute,
+		$attributeAttribute,
+		$operationAttribute,
+		$isLatestAttribute
+	);
+	
+	$updatedClassAttributesAttribute = new Attribute('updated-class-attributes', 'Class attributes', new RecordSetType($updatedClassAttributesStructure));
+
+	global
+		$updatedAlternativeDefinitionsStructure, $updatedAlternativeDefinitionsAttribute, $sourceAttribute, 
+		$alternativeDefinitionTextAttribute;
+
+	$alternativeDefinitionTextAttribute = new Attribute('alternative-definition-text', 'Definition', new RecordSetType($translatedTextStructure));
+	$sourceAttribute = new Attribute('source', 'Source', new RecordType($definedMeaningReferenceStructure));
+
+	$updatedAlternativeDefinitionsStructure = new Structure(
+		$definedMeaningIdAttribute,
+		$translatedContentIdAttribute,
+		$alternativeDefinitionTextAttribute,
+		$definedMeaningReferenceAttribute,
+		$sourceAttribute,
+		$operationAttribute,
+		$isLatestAttribute
+	);	
+
+	$updatedAlternativeDefinitionsAttribute = new Attribute('updated-alternative-definitions', 'Alternative definitions', new RecordSetType($updatedAlternativeDefinitionsStructure));
+
+	global
+		$updatedAlternativeDefinitionTextAttribute, $updatedAlternativeDefinitionTextStructure;
+		
+	$updatedAlternativeDefinitionTextStructure = new Structure(
+		$definedMeaningIdAttribute,
+		$definedMeaningReferenceAttribute,
+		$translatedContentIdAttribute,
+		$sourceAttribute,
+		$languageAttribute,
+		$textAttribute,
+		$operationAttribute,
+		$isLatestAttribute
+	);
+
+	$updatedAlternativeDefinitionTextAttribute = new Attribute('updated-alternative-definition-text', 'Alternative definition text', new RecordSetType($updatedAlternativeDefinitionTextStructure));	
+
+	global
 		$updatesInTransactionAttribute;
 
 	$updatesInTransactionStructure = new Structure(
 		$updatedDefinitionAttribute,
 		$updatedSyntransesAttribute,
 		$updatedRelationsAttribute,
-		$updatedClassMembershipAttribute
+		$updatedClassMembershipAttribute,
+		$updatedURLAttribute,
+		$updatedTextAttribute,
+		$updatedTranslatedTextAttribute,
+		$updatedAlternativeDefinitionsAttribute
 	);
-	
+
 	$updatesInTransactionAttribute = new Attribute('updates-in-transaction', 'Updates in transaction', new RecordType($updatesInTransactionStructure));
 }
 
@@ -280,7 +411,10 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 	global
 		$transactionAttribute, $userAttribute,  $timestampAttribute, $summaryAttribute, 
 		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, 
-		$updatedRelationsAttribute, $updatedClassMembershipAttribute, $updatedCollectionMembershipAttribute;
+		$updatedRelationsAttribute, $updatedClassMembershipAttribute, $updatedCollectionMembershipAttribute,
+		$updatedURLAttribute, $updatedTextAttribute, $updatedTranslatedTextAttribute, $updatedClassAttributesAttribute,
+		$updatedAlternativeDefinitionsAttribute, $updatedAlternativeDefinitionTextAttribute,
+		$updatedTranslatedTextPropertyAttribute;
 
 	$captionEditor = new RecordSpanEditor($transactionAttribute, ': ', ', ', false);
 	$captionEditor->addEditor(new TimestampEditor($timestampAttribute, new SimplePermissionController(false), false));
@@ -289,10 +423,17 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 	
 	$valueEditor = new RecordUnorderedListEditor($updatesInTransactionAttribute, 5);
 	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($updatedDefinitionAttribute, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedAlternativeDefinitionsEditor($updatedAlternativeDefinitionsAttribute));
+	$valueEditor->addEditor(getUpdatedAlternativeDefinitionTextEditor($updatedAlternativeDefinitionTextAttribute));
 	$valueEditor->addEditor(getUpdatedSyntransesEditor($updatedSyntransesAttribute));
 	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedClassAttributesEditor($updatedClassAttributesAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($updatedCollectionMembershipAttribute));
+	$valueEditor->addEditor(getUpdatedURLEditor($updatedURLAttribute));
+	$valueEditor->addEditor(getUpdatedTextEditor($updatedTextAttribute));
+	$valueEditor->addEditor(getUpdatedTranslatedTextPropertyEditor($updatedTranslatedTextPropertyAttribute));
+	$valueEditor->addEditor(getUpdatedTranslatedTextEditor($updatedTranslatedTextAttribute, $showRollBackOptions));
 	
 	$editor = new RecordSetListEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null, 4, false);
 	$editor->setCaptionEditor($captionEditor);
@@ -317,14 +458,24 @@ function expandUpdatesInTransactionInRecordSet($recordSet) {
 function getUpdatesInTransactionRecord($transactionId) {
 	global	
 		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, 
-		$updatedRelationsAttribute, $updatedClassMembershipAttribute, $updatedCollectionMembershipAttribute;
+		$updatedRelationsAttribute, $updatedClassMembershipAttribute, $updatedCollectionMembershipAttribute,
+		$updatedURLAttribute, $updatedTextAttribute, $updatedTranslatedTextAttribute, $updatedClassAttributesAttribute,
+		$updatedAlternativeDefinitionsAttribute, $updatedAlternativeDefinitionTextAttribute,
+		$updatedTranslatedTextPropertyAttribute;
 		
 	$record = new ArrayRecord($updatesInTransactionAttribute->type->getStructure());
 	$record->setAttributeValue($updatedDefinitionAttribute, getUpdatedDefinedMeaningDefinitionRecordSet($transactionId));
+	$record->setAttributeValue($updatedAlternativeDefinitionsAttribute, getUpdatedAlternativeDefinitionsRecordSet($transactionId));
+	$record->setAttributeValue($updatedAlternativeDefinitionTextAttribute, getUpdatedAlternativeDefinitionTextRecordSet($transactionId));
 	$record->setAttributeValue($updatedSyntransesAttribute, getUpdatedSyntransesRecordSet($transactionId));
 	$record->setAttributeValue($updatedRelationsAttribute, getUpdatedRelationsRecordSet($transactionId));
 	$record->setAttributeValue($updatedClassMembershipAttribute, getUpdatedClassMembershipRecordSet($transactionId));
 	$record->setAttributeValue($updatedCollectionMembershipAttribute, getUpdatedCollectionMembershipRecordSet($transactionId));
+	$record->setAttributeValue($updatedURLAttribute, getUpdatedURLRecordSet($transactionId));
+	$record->setAttributeValue($updatedTextAttribute, getUpdatedTextRecordSet($transactionId));
+	$record->setAttributeValue($updatedTranslatedTextPropertyAttribute, getUpdatedTranslatedTextPropertyRecordSet($transactionId));
+	$record->setAttributeValue($updatedTranslatedTextAttribute, getUpdatedTranslatedTextRecordSet($transactionId));
+	$record->setAttributeValue($updatedClassAttributesAttribute, getUpdatedClassAttributesRecordSet($transactionId));
 	
 	return $record;
 }
@@ -401,6 +552,76 @@ function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 		$record->setAttributeValue($operationAttribute, $row->operation);
 		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
 		$record->setAttributeValue($rollBackTranslatedContentAttribute, simpleRecord($rollBackTranslatedContentStructure, array($row->is_latest, $row->operation, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest))));
+		$recordSet->add($record);	
+	}
+	
+	return $recordSet;
+}
+
+function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
+	global
+		$updatedAlternativeDefinitionsStructure, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
+		$translatedContentIdAttribute, $sourceAttribute, $alternativeDefinitionTextAttribute,
+		$operationAttribute, $isLatestAttribute;
+
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT meaning_mid, meaning_text_tcid, source_id, " . 
+			getOperationSelectColumn('uw_alt_meaningtexts', $transactionId) . ', ' .
+			getIsLatestSelectColumn('uw_alt_meaningtexts', array('meaning_text_tcid'), $transactionId) . 
+		" FROM uw_alt_meaningtexts " .
+		" WHERE " . getInTransactionRestriction('uw_alt_meaningtexts', $transactionId)
+	);
+		
+	$recordSet = new ArrayRecordSet($updatedAlternativeDefinitionsStructure, new Structure($definedMeaningIdAttribute, $translatedContentIdAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) {
+		$record = new ArrayRecord($updatedAlternativeDefinitionsStructure);
+		$record->setAttributeValue($definedMeaningIdAttribute, $row->meaning_mid);
+		$record->setAttributeValue($definedMeaningReferenceAttribute, getDefinedMeaningReferenceRecord($row->meaning_mid));
+		$record->setAttributeValue($translatedContentIdAttribute, $row->meaning_text_tcid);
+		$record->setAttributeValue($sourceAttribute, getDefinedMeaningReferenceRecord($row->source_id));
+		$record->setAttributeValue($operationAttribute, $row->operation);
+		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		
+		$recordSet->add($record);	
+	}
+	
+	expandTranslatedContentsInRecordSet($recordSet, $translatedContentIdAttribute, $alternativeDefinitionTextAttribute, 0, new QueryLatestTransactionInformation());
+	
+	return $recordSet;
+}
+
+function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
+	global
+		$languageAttribute, $textAttribute, $definedMeaningIdAttribute, $sourceAttribute,
+		$definedMeaningReferenceAttribute, $updatedAlternativeDefinitionTextStructure, $translatedContentIdAttribute,
+		$operationAttribute, $isLatestAttribute;
+		
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT meaning_mid, translated_content_id, source_id, language_id, old_text, " . 
+			getOperationSelectColumn('translated_content', $transactionId) . ', ' .
+			getIsLatestSelectColumn('translated_content', array('translated_content_id', 'language_id'), $transactionId) . 
+		" FROM uw_alt_meaningtexts, translated_content, text " .
+		" WHERE uw_alt_meaningtexts.meaning_text_tcid=translated_content.translated_content_id ".
+		" AND translated_content.text_id=text.old_id " .
+		" AND " . getInTransactionRestriction('translated_content', $transactionId) .
+		" AND " . getAtTransactionRestriction('uw_alt_meaningtexts', $transactionId)
+	);
+		
+	$recordSet = new ArrayRecordSet($updatedAlternativeDefinitionTextStructure, new Structure($definedMeaningIdAttribute, $languageAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) {
+		$record = new ArrayRecord($updatedAlternativeDefinitionTextStructure);
+		$record->setAttributeValue($definedMeaningIdAttribute, $row->meaning_mid);
+		$record->setAttributeValue($definedMeaningReferenceAttribute, getDefinedMeaningReferenceRecord($row->meaning_mid));
+		$record->setAttributeValue($translatedContentIdAttribute, $row->translated_content_id);
+		$record->setAttributeValue($sourceAttribute, getDefinedMeaningReferenceRecord($row->source_id));
+		$record->setAttributeValue($languageAttribute, $row->language_id);
+		$record->setAttributeValue($textAttribute, $row->old_text);
+		$record->setAttributeValue($operationAttribute, $row->operation);
+		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
 		$recordSet->add($record);	
 	}
 	
@@ -554,6 +775,172 @@ function getUpdatedCollectionMembershipRecordSet($transactionId) {
 	return $recordSet;
 }
 
+function getUpdatedClassAttributesRecordSet($transactionId) {
+	global
+		$updatedClassAttributesStructure, $classAttributeIdAttribute, $classAttribute, $levelAttribute, 
+		$attributeAttribute, $typeAttribute, $operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
+
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT object_id, class_mid, level_mid, attribute_mid, attribute_type, " . 
+			getOperationSelectColumn('uw_class_attributes', $transactionId) . ', ' .
+			getIsLatestSelectColumn('uw_class_attributes', array('object_id'), $transactionId) . 
+		" FROM uw_class_attributes " .
+		" WHERE " . getInTransactionRestriction('uw_class_attributes', $transactionId)
+	);
+		
+	$recordSet = new ArrayRecordSet($updatedClassAttributesStructure, new Structure($classAttributeIdAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) {
+		$record = new ArrayRecord($updatedClassAttributesStructure);
+		$record->setAttributeValue($classAttributeIdAttribute, $row->object_id);
+		$record->setAttributeValue($classAttribute, getDefinedMeaningReferenceRecord($row->class_mid));
+		$record->setAttributeValue($levelAttribute, getDefinedMeaningReferenceRecord($row->level_mid));
+		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
+		$record->setAttributeValue($typeAttribute, $row->attribute_type);
+		$record->setAttributeValue($operationAttribute, $row->operation);
+		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
+		
+		$recordSet->add($record);	
+	}
+	
+	return $recordSet;
+}
+
+function getUpdatedURLRecordSet($transactionId) {
+	global
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, 
+		$updatedURLStructure, $operationAttribute, $isLatestAttribute, $URLAttribute;
+	
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT value_id, object_id, attribute_mid, url, " . 
+		getOperationSelectColumn('uw_url_attribute_values', $transactionId) . ', ' .
+		getIsLatestSelectColumn('uw_url_attribute_values', array('value_id'), $transactionId) . 
+		" FROM uw_url_attribute_values " .
+		" WHERE " . getInTransactionRestriction('uw_url_attribute_values', $transactionId) 
+	);
+		
+	$recordSet = new ArrayRecordSet($updatedURLStructure, new Structure($valueIdAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) {
+		$record = new ArrayRecord($updatedURLStructure);
+		$record->setAttributeValue($valueIdAttribute, $row->value_id);
+		$record->setAttributeValue($objectIdAttribute, $row->object_id);
+		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
+		$record->setAttributeValue($URLAttribute, $row->url);
+		$record->setAttributeValue($operationAttribute, $row->operation);
+		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		
+		$recordSet->add($record);	
+	}
+	
+	return $recordSet;
+}
+
+function getUpdatedTextRecordSet($transactionId) {
+	global
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, 
+		$updatedTextStructure, $operationAttribute, $isLatestAttribute, $textAttribute;
+	
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT value_id, object_id, attribute_mid, text, " . 
+		getOperationSelectColumn('uw_text_attribute_values', $transactionId) . ', ' .
+		getIsLatestSelectColumn('uw_text_attribute_values', array('value_id'), $transactionId) . 
+		" FROM uw_text_attribute_values " .
+		" WHERE " . getInTransactionRestriction('uw_text_attribute_values', $transactionId) 
+	);
+		
+	$recordSet = new ArrayRecordSet($updatedTextStructure, new Structure($valueIdAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) {
+		$record = new ArrayRecord($updatedTextStructure);
+		$record->setAttributeValue($valueIdAttribute, $row->value_id);
+		$record->setAttributeValue($objectIdAttribute, $row->object_id);
+		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
+		$record->setAttributeValue($textAttribute, $row->text);
+		$record->setAttributeValue($operationAttribute, $row->operation);
+		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		
+		$recordSet->add($record);	
+	}
+	
+	return $recordSet;
+}
+
+function getUpdatedTranslatedTextPropertyRecordSet($transactionId) {
+	global
+		$updatedTranslatedTextPropertyStructure, $objectIdAttribute, $valueIdAttribute, 
+		$translatedContentIdAttribute, $attributeAttribute, $translatedTextTextAttribute,
+		$operationAttribute, $isLatestAttribute;
+
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT value_id, object_id, attribute_mid, value_tcid, " . 
+			getOperationSelectColumn('uw_translated_content_attribute_values', $transactionId) . ', ' .
+			getIsLatestSelectColumn('uw_translated_content_attribute_values', array('value_id'), $transactionId) . 
+		" FROM uw_translated_content_attribute_values " .
+		" WHERE " . getInTransactionRestriction('uw_translated_content_attribute_values', $transactionId)
+	);
+		
+	$recordSet = new ArrayRecordSet($updatedTranslatedTextPropertyStructure, new Structure($valueIdAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) {
+		$record = new ArrayRecord($updatedTranslatedTextPropertyStructure);
+		$record->setAttributeValue($valueIdAttribute, $row->value_id);
+		$record->setAttributeValue($objectIdAttribute, $row->object_id);
+		$record->setAttributeValue($translatedContentIdAttribute, $row->value_tcid);
+		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
+		$record->setAttributeValue($operationAttribute, $row->operation);
+		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		
+		$recordSet->add($record);	
+	}
+	
+	expandTranslatedContentsInRecordSet($recordSet, $translatedContentIdAttribute, $translatedTextTextAttribute, 0, new QueryLatestTransactionInformation());
+	
+	return $recordSet;
+}
+
+function getUpdatedTranslatedTextRecordSet($transactionId) {
+	global
+		$languageAttribute, $textAttribute, $objectIdAttribute, $valueIdAttribute, $attributeAttribute,
+		$updatedTranslatedTextStructure, $translatedContentIdAttribute,
+		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure;
+		
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT value_id, object_id, attribute_mid, translated_content_id, language_id, old_text, " . 
+			getOperationSelectColumn('translated_content', $transactionId) . ', ' .
+			getIsLatestSelectColumn('translated_content', array('translated_content_id', 'language_id'), $transactionId) . 
+		" FROM uw_translated_content_attribute_values, translated_content, text " .
+		" WHERE uw_translated_content_attribute_values.value_tcid=translated_content.translated_content_id ".
+		" AND translated_content.text_id=text.old_id " .
+		" AND " . getInTransactionRestriction('translated_content', $transactionId) .
+		" AND " . getAtTransactionRestriction('uw_translated_content_attribute_values', $transactionId)
+	);
+		
+	$recordSet = new ArrayRecordSet($updatedTranslatedTextStructure, new Structure($valueIdAttribute, $languageAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) {
+		$record = new ArrayRecord($updatedTranslatedTextStructure);
+		$record->setAttributeValue($valueIdAttribute, $row->value_id);
+		$record->setAttributeValue($objectIdAttribute, $row->object_id);
+		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
+		$record->setAttributeValue($translatedContentIdAttribute, $row->translated_content_id);
+		$record->setAttributeValue($languageAttribute, $row->language_id);
+		$record->setAttributeValue($textAttribute, $row->old_text);
+		$record->setAttributeValue($operationAttribute, $row->operation);
+		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		$record->setAttributeValue($rollBackTranslatedContentAttribute, simpleRecord($rollBackTranslatedContentStructure, array($row->is_latest, $row->operation, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest))));
+		$recordSet->add($record);	
+	}
+	
+	return $recordSet;
+}
+
 function getTranslatedContentHistorySelector($attribute) {
 	global
 		$textAttribute, $recordLifeSpanAttribute;
@@ -584,6 +971,39 @@ function getUpdatedDefinedMeaningDefinitionEditor($attribute, $showRollBackOptio
 	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
 	$editor->addEditor(createLanguageViewer($languageAttribute));
 	$editor->addEditor(createLongTextViewer($textAttribute));
+	$editor->addEditor(createShortTextViewer($operationAttribute));
+	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	
+	return $editor;
+}
+
+function getUpdatedAlternativeDefinitionsEditor($attribute) {
+	global
+		$definedMeaningReferenceAttribute, $sourceAttribute,
+		$alternativeDefinitionTextAttribute, $operationAttribute, $isLatestAttribute;
+		
+	$editor = createTableViewer($attribute);
+	
+	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
+	$editor->addEditor(createTranslatedTextViewer($alternativeDefinitionTextAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($sourceAttribute));
+	$editor->addEditor(createShortTextViewer($operationAttribute));
+	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	
+	return $editor;
+}
+
+function getUpdatedAlternativeDefinitionTextEditor($attribute) {
+	global
+		$definedMeaningReferenceAttribute, $languageAttribute, $textAttribute, $sourceAttribute, 
+		$operationAttribute, $isLatestAttribute;
+	
+	$editor = createTableViewer($attribute);
+	
+	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
+	$editor->addEditor(createLanguageViewer($languageAttribute));
+	$editor->addEditor(createLongTextViewer($textAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($sourceAttribute));
 	$editor->addEditor(createShortTextViewer($operationAttribute));
 	$editor->addEditor(createBooleanViewer($isLatestAttribute));
 	
@@ -652,6 +1072,94 @@ function getUpdatedCollectionMembershipEditor($attribute) {
 	return $editor;
 }
 
+function getUpdatedURLEditor($attribute) {
+	global
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $URLAttribute, $operationAttribute, $isLatestAttribute;
+		
+	$editor = createTableViewer($attribute);
+	$editor->addEditor(new ObjectPathEditor($objectIdAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
+	$editor->addEditor(createURLViewer($URLAttribute));
+	$editor->addEditor(createShortTextViewer($operationAttribute));
+	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	
+	return $editor;
+}
+
+function getUpdatedTextEditor($attribute) {
+	global
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $textAttribute, $operationAttribute, $isLatestAttribute;
+		
+	$editor = createTableViewer($attribute);
+	$editor->addEditor(new ObjectPathEditor($objectIdAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
+	$editor->addEditor(createLongTextViewer($textAttribute));
+	$editor->addEditor(createShortTextViewer($operationAttribute));
+	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	
+	return $editor;
+}
+
+function getUpdatedTranslatedTextPropertyEditor($attribute) {
+	global
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $translatedTextTextAttribute, 
+		$operationAttribute, $isLatestAttribute;
+	
+	$editor = createTableViewer($attribute);
+	
+	$editor->addEditor(new ObjectPathEditor($objectIdAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
+	$editor->addEditor(createTranslatedTextViewer($translatedTextTextAttribute));
+	$editor->addEditor(createShortTextViewer($operationAttribute));
+	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	
+	return $editor;
+}
+
+function getUpdatedTranslatedTextEditor($attribute, $showRollBackOptions) {
+	global
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $languageAttribute, $textAttribute, 
+		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
+	
+	$editor = createTableViewer($attribute);
+	
+	if ($showRollBackOptions) {
+		$rollBackEditor = new RollbackEditor($rollBackTranslatedContentAttribute, true);
+		$rollBackEditor->setSuggestionsEditor(getTranslatedContentHistorySelector($translatedContentHistoryAttribute));
+		
+		$editor->addEditor($rollBackEditor);
+	}
+		
+	$editor->addEditor(new ObjectPathEditor($objectIdAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
+	$editor->addEditor(createLanguageViewer($languageAttribute));
+	$editor->addEditor(createLongTextViewer($textAttribute));
+	$editor->addEditor(createShortTextViewer($operationAttribute));
+	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	
+	return $editor;
+}
+
+function getUpdatedClassAttributesEditor($attribute, $showRollBackOptions) {
+	global
+		$classAttribute, $levelAttribute, $attributeAttribute, $typeAttribute, $operationAttribute, 
+		$isLatestAttribute, $rollBackAttribute;
+		
+	$editor = createTableViewer($attribute);
+	
+	if ($showRollBackOptions)
+		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		
+	$editor->addEditor(createDefinedMeaningReferenceViewer($classAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($levelAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
+	$editor->addEditor(createShortTextViewer($typeAttribute));
+	$editor->addEditor(createShortTextViewer($operationAttribute));
+	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	
+	return $editor;
+}
+
 function simpleRecord($structure, $values) {
 	$attributes = $structure->attributes;
 	$result = new ArrayRecord($structure);
@@ -666,7 +1174,8 @@ function rollBackTransactions($recordSet) {
 	global
 		$wgRequest, $wgUser,
 		$transactionIdAttribute, $updatesInTransactionAttribute, 
-		$updatedDefinitionAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute;
+		$updatedDefinitionAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute,
+		$updatedTranslatedTextAttribute, $updatedClassAttributesAttribute;
 		
 	$summary = $wgRequest->getText('summary');
 	startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
@@ -696,6 +1205,16 @@ function rollBackTransactions($recordSet) {
 		$updatedClassMemberships = $updatesInTransaction->getAttributeValue($updatedClassMembershipAttribute);
 		$idStack->pushAttribute($updatedClassMembershipAttribute);
 		rollBackClassMemberships($idStack, $updatedClassMemberships);
+		$idStack->popAttribute();
+		
+		$updatedClassAttributes = $updatesInTransaction->getAttributeValue($updatedClassAttributesAttribute);
+		$idStack->pushAttribute($updatedClassAttributesAttribute);
+		rollBackClassAttributes($idStack, $updatedClassAttributes);
+		$idStack->popAttribute();
+		
+		$updatedTranslatedTexts = $updatesInTransaction->getAttributeValue($updatedTranslatedTextAttribute);
+		$idStack->pushAttribute($updatedTranslatedTextAttribute);
+		rollBackTranslatedTexts($idStack, $updatedTranslatedTexts);
 		$idStack->popAttribute();
 
 		$idStack->popAttribute();
@@ -741,6 +1260,36 @@ function rollBackDefinitions($idStack, $definitions) {
 				$definitionRecord->getAttributeValue($translatedContentIdAttribute),
 				$languageId,
 				$definitionRecord->getAttributeValue($operationAttribute)
+			);
+
+			$idStack->popKey();
+		}
+	}	
+}
+
+function rollBackTranslatedTexts($idStack, $translatedTexts) {
+	global
+		$valueIdAttribute, $languageAttribute, $translatedContentIdAttribute, 
+		$isLatestAttribute, $operationAttribute, $rollBackTranslatedContentAttribute;
+	
+	$translatedTextsKeyStructure = $translatedTexts->getKey();
+	
+	for ($i = 0; $i < $translatedTexts->getRecordCount(); $i++) {
+		$translatedTextRecord = $translatedTexts->getRecord($i);
+
+		$valueId = $translatedTextRecord->getAttributeValue($valueIdAttribute);
+		$languageId = $translatedTextRecord->getAttributeValue($languageAttribute);
+		$isLatest = $translatedTextRecord->getAttributeValue($isLatestAttribute);
+
+		if ($isLatest) {
+			$idStack->pushKey(simpleRecord($translatedTextsKeyStructure, array($valueId, $languageId)));
+
+			rollBackTranslatedContent(
+				$idStack, 
+				getRollBackAction($idStack, $rollBackTranslatedContentAttribute), 
+				$translatedTextRecord->getAttributeValue($translatedContentIdAttribute),
+				$languageId,
+				$translatedTextRecord->getAttributeValue($operationAttribute)
 			);
 
 			$idStack->popKey();
@@ -838,8 +1387,8 @@ function rollBackRelation($rollBackAction, $relationId, $firstMeaningId, $relati
 
 function rollBackClassMemberships($idStack, $classMemberships) {
 	global
-		$classMemebrshipIdAttribute, $isLatestAttribute, $classAttribute, $classMemberAttribute,
-		$operationAttribute, $classMembershipIdAttribute, $rollBackAttribute;
+		$classMembershipIdAttribute, $isLatestAttribute, $classAttribute, $classMemberAttribute,
+		$operationAttribute, $rollBackAttribute;
 	
 	$classMembershipsKeyStructure = $classMemberships->getKey();
 	
@@ -870,6 +1419,44 @@ function rollBackClassMembership($rollBackAction, $classMembershipId, $classId, 
 		removeClassMembershipWithId($classMembershipId);
 	else if (shouldRestore($rollBackAction, $operation))	
 		addClassMembership($classMemberId, $classId);	
+}
+
+function rollBackClassAttributes($idStack, $classAttributes) {
+	global
+		$isLatestAttribute, $classAttribute, $levelAttribute, $attributeAttribute, $typeAttribute,
+		$operationAttribute, $classAttributeIdAttribute, $rollBackAttribute;
+	
+	$classAttributesKeyStructure = $classAttributes->getKey();
+	
+	for ($i = 0; $i < $classAttributes->getRecordCount(); $i++) {
+		$classAttributeRecord = $classAttributes->getRecord($i);
+
+		$classAttributeId = $classAttributeRecord->getAttributeValue($classAttributeIdAttribute);
+		$isLatest = $classAttributeRecord->getAttributeValue($isLatestAttribute);
+
+		if ($isLatest) {
+			$idStack->pushKey(simpleRecord($classAttributesKeyStructure, array($classAttributeId)));
+			
+			rollBackClassAttribute(
+				getRollBackAction($idStack, $rollBackAttribute),
+				$classAttributeId,
+				getMeaningId($classAttributeRecord, $classAttribute),
+				getMeaningId($classAttributeRecord, $levelAttribute),
+				getMeaningId($classAttributeRecord, $attributeAttribute),
+				$classAttributeRecord->getAttributeValue($typeAttribute),
+				$classAttributeRecord->getAttributeValue($operationAttribute)
+			);
+				
+			$idStack->popKey();
+		}
+	}	
+}
+
+function rollBackClassAttribute($rollBackAction, $classAttributeId, $classId, $levelId, $attributeId, $type, $operation) {
+	if (shouldRemove($rollBackAction, $operation))
+		removeClassAttributeWithId($classAttributeId);
+	else if (shouldRestore($rollBackAction, $operation))	
+		addClassAttribute($classId, $levelId, $attributeId, $type);	
 }
 
 ?>

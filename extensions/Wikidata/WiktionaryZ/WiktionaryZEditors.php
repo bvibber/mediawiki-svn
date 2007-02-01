@@ -448,6 +448,10 @@ function createShortTextViewer($attribute) {
 	return new ShortTextEditor($attribute, new SimplePermissionController(false), false);
 }
 
+function createURLViewer($attribute) {
+	return new URLEditor($attribute, new SimplePermissionController(false), false);
+}
+
 function createBooleanViewer($attribute) {
 	return new BooleanEditor($attribute, new SimplePermissionController(false), false, false);
 }
@@ -470,6 +474,17 @@ function createSuggestionsTableViewer($attribute) {
 
 function createUserViewer($attribute) {
 	return new UserEditor($attribute, new SimplePermissionController(false), false);
+}
+
+function createTranslatedTextViewer($attribute) {
+	global
+		$languageAttribute, $textAttribute;
+	
+	$result = createTableViewer($attribute);
+	$result->addEditor(createLanguageViewer($languageAttribute));
+	$result->addEditor(createLongTextViewer($textAttribute));
+	
+	return $result;
 }
 
 ?>

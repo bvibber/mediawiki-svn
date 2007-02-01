@@ -174,6 +174,10 @@ abstract class Viewer extends DefaultEditor {
 	public function getAddValue($idPath) {
 		return null;
 	}
+
+	public function showEditField($idPath) {
+		return true;
+	}
 }
 
 abstract class RecordSetEditor extends DefaultEditor {
@@ -1875,6 +1879,110 @@ class RecordSetFirstRecordEditor extends RecordSetEditor {
 	public function setRecordEditor($recordEditor) {
 		$this->recordEditor = $recordEditor;
 		$this->editors[0] = $recordEditor;
+	}
+}
+
+class ObjectPathEditor extends Viewer {	
+	public function view($idPath, $value) {
+		return $this->resolveObject($value);
+	}
+	
+	protected function resolveObject($objectId) {
+		$tableName = getTableNameWithObjectId($objectId);
+		
+		if ($tableName != "") {
+			switch ($tableName) {
+				case "uw_meaning_relations": 
+					$result = $this->resolveRelation($objectId);
+					break;
+				case "uw_text_attribute_values":
+				case "uw_url_attribute_values":
+				case "uw_translated_text_attribute_values":
+				case "uw_option_attribute_values":
+					$result = $this->resolveAttribute($objectId, $tableName);
+					break;
+				case "translated_content":
+					$result = $this->resolveTranslatedContent($objectId);
+					break;
+				case "uw_syntrans":
+					$result = $this->resolveSyntrans($objectId);
+					break;
+				default:
+					$result = $tableName . " - " . $objectId; 
+			}
+		}
+		else
+			$result = "Object $objectId";
+
+		return $result;
+	}
+	
+	protected function resolveRelation($objectId) {
+		$dbr = &wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query(
+			"SELECT meaning1_mid, relationtype_mid, meaning2_mid" .
+			" FROM uw_meaning_relations" .
+			" WHERE relation_id=$objectId"
+		);
+
+		if ($relation = $dbr->fetchObject($queryResult))
+			return
+				definedMeaningAsLink($relation->meaning1_mid) . " - " .
+				definedMeaningAsLink($relation->relationtype_mid) . " - " .
+				definedMeaningAsLink($relation->meaning2_mid);		
+		else	
+			return "Relation " . $objectId;
+	}
+	
+	protected function resolveAttribute($objectId, $tableName) {
+		$dbr = &wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query(
+			"SELECT object_id, attribute_mid" .
+			" FROM " . $tableName .
+			" WHERE value_id=$objectId"
+		);
+
+		if ($attribute = $dbr->fetchObject($queryResult))
+			return
+				$this->resolveObject($attribute->object_id) . " > " .
+				definedMeaningAsLink($attribute->attribute_mid); 
+		else	
+			return "Attribute " . $objectId;
+	}
+
+	protected function resolveTranslatedContent($objectId) {
+		$dbr = &wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query(
+			"SELECT defined_meaning_id" .
+			" FROM uw_defined_meaning" .
+			" WHERE meaning_text_tcid=$objectId"
+		);
+
+		if ($definedMeaning = $dbr->fetchObject($queryResult))
+			return
+				definedMeaningAsLink($definedMeaning->defined_meaning_id) . " > Definition "; 
+		else	
+			return "Translated content " . $objectId;
+	}
+
+	protected function resolveSyntrans($objectId) {
+		$dbr = &wfGetDB(DB_SLAVE);
+		$queryResult = $dbr->query(
+			"SELECT spelling, defined_meaning_id" .
+			" FROM uw_syntrans, uw_expression_ns" .
+			" WHERE syntrans_sid=$objectId" .
+			" AND uw_syntrans.expression_id=uw_expression_ns.expression_id"
+		);
+
+		if ($syntrans = $dbr->fetchObject($queryResult))
+			return
+				 definedMeaningAsLink($syntrans->defined_meaning_id) . " > " . spellingAsLink($syntrans->spelling); 
+		else	
+			return "Syntrans " . $objectId;
+	}
+
+	public function showsData($value) {
+		return true;
 	}
 }
 

@@ -59,6 +59,20 @@ function newObjectId($table) {
 	return $dbr->insertId();
 }
 
+function getTableNameWithObjectId($objectId) {
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT `table`" .
+		" FROM objects" .
+		" WHERE object_id=$objectId"
+	);
+	
+	if ($objectRecord = $dbr->fetchObject($queryResult))
+		return $objectRecord->table;
+	else
+		return "";
+}
+
 function getExpressionId($spelling, $languageId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$sql = 'SELECT expression_id FROM uw_expression_ns ' .
