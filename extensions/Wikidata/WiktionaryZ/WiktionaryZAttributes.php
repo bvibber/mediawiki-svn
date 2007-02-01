@@ -1,6 +1,7 @@
 <?php
 
 require_once("Attribute.php");
+require_once("WikiDataGlobals.php");
 
 function initializeWiktionaryZAttributes($filterOnLanguage, $hasMetaDataAttributes) {
 	global
@@ -62,11 +63,11 @@ function initializeWiktionaryZAttributes($filterOnLanguage, $hasMetaDataAttribut
 	$classAttribute = new Attribute("class", "Class", new RecordType($definedMeaningReferenceStructure));
 		
 	global
-		$classMembershipStructure, $classMembershipKeyStructure, $classMembershipAttribute;
+		$classMembershipStructure, $classMembershipKeyStructure, $classMembershipAttribute, $wgClassMembershipAttributeName;
 	
 	$classMembershipStructure = new Structure($classMembershipIdAttribute, $classAttribute);
 	$classMembershipKeyStructure = new Structure($classMembershipIdAttribute);
-	$classMembershipAttribute = new Attribute("class-membership", "Class membership", new RecordSetType($classMembershipStructure));
+	$classMembershipAttribute = new Attribute("class-membership", $wgClassMembershipAttributeName, new RecordSetType($classMembershipStructure));
 	
 	global
 		 $possiblySynonymousIdAttribute, $possibleSynonymAttribute;
@@ -75,28 +76,30 @@ function initializeWiktionaryZAttributes($filterOnLanguage, $hasMetaDataAttribut
 	$possibleSynonymAttribute = new Attribute("possible-synonym", "Possible synonym", new RecordType($definedMeaningReferenceStructure));
 		
 	global
-		$possiblySynonymousStructure, $possiblySynonymousKeyStructure, $possiblySynonymousAttribute;
+		$possiblySynonymousStructure, $possiblySynonymousKeyStructure, $possiblySynonymousAttribute,
+		$wgPossiblySynonymousAttributeName;
 	
 	$possiblySynonymousStructure = new Structure($possiblySynonymousIdAttribute, $possiblySynonymousAttribute);
 	$possiblySynonymousKeyStructure = new Structure($possiblySynonymousIdAttribute);
-	$possiblySynonymousAttribute = new Attribute("possibly-synonymous", "Possibly synonymous", new RecordSetType($possiblySynonymousStructure));
+	$possiblySynonymousAttribute = new Attribute("possibly-synonymous", $wgPossiblySynonymousAttributeName, new RecordSetType($possiblySynonymousStructure));
 
 	global
-		$relationIdAttribute, $relationTypeAttribute, $relationTypeType, $otherDefinedMeaningAttribute;
+		$relationIdAttribute, $relationTypeAttribute, $relationTypeType, $otherDefinedMeaningAttribute,
+		$wgRelationTypeAttributeName, $wgOtherDefinedMeaningAttributeName;
 	
 	$relationIdAttribute = new Attribute("relation-id", "Relation identifier", "object-id");
 	$relationTypeType = new RecordType($definedMeaningReferenceStructure);	
-	$relationTypeAttribute = new Attribute("relation-type", "Relation type", $relationTypeType); 
-	$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", $definedMeaningReferenceType);
-	//$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", "Other defined meaning", "defined-meaning");
+	$relationTypeAttribute = new Attribute("relation-type", $wgRelationTypeAttributeName, $relationTypeType); 
+	$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", $wgOtherDefinedMeaningAttributeName, $definedMeaningReferenceType);
 	
 	global
-		$relationsAttribute, $relationStructure, $relationKeyStructure, $reciprocalRelationsAttribute, $objectAttributesAttribute;
+		$relationsAttribute, $relationStructure, $relationKeyStructure, $reciprocalRelationsAttribute, $objectAttributesAttribute,
+		$wgRelationsAttributeName, $wgIncomingRelationsAttributeName;
 		
 	$relationStructure = new Structure($relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $objectAttributesAttribute);
 	$relationKeyStructure = new Structure($relationIdAttribute);	
-	$relationsAttribute = new Attribute("relations", "Relations", new RecordSetType($relationStructure));
-	$reciprocalRelationsAttribute = new Attribute("reciprocal-relations", "Incoming relations", new RecordSetType($relationStructure));
+	$relationsAttribute = new Attribute("relations", $wgRelationsAttributeName, new RecordSetType($relationStructure));
+	$reciprocalRelationsAttribute = new Attribute("reciprocal-relations", $wgIncomingRelationsAttributeName, new RecordSetType($relationStructure));
 	
 	global
 		$translatedTextIdAttribute, $translatedTextStructure;
@@ -105,21 +108,22 @@ function initializeWiktionaryZAttributes($filterOnLanguage, $hasMetaDataAttribut
 	$translatedTextStructure = new Structure($languageAttribute, $textAttribute);	
 	
 	global
-		$definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute;
+		$definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute,
+		$wgAlternativeDefinitionAttributeName, $wgSourceAttributeName;
 	
 	$definitionIdAttribute = new Attribute("definition-id", "Definition identifier", "integer");
 
 	if ($filterOnLanguage && !$hasMetaDataAttributes)
-		$alternativeDefinitionAttribute = new Attribute("alternative-definition", "Alternative definition", "text");
+		$alternativeDefinitionAttribute = new Attribute("alternative-definition", $wgAlternativeDefinitionAttributeName, "text");
 	else
-		$alternativeDefinitionAttribute = new Attribute("alternative-definition", "Alternative definition", new RecordSetType($translatedTextStructure));
+		$alternativeDefinitionAttribute = new Attribute("alternative-definition", $wgAlternativeDefinitionAttributeName, new RecordSetType($translatedTextStructure));
 	
-	$sourceAttribute = new Attribute("source-id", "Source", $definedMeaningReferenceType);
+	$sourceAttribute = new Attribute("source-id", $wgSourceAttributeName, $definedMeaningReferenceType);
 	
 	global
-		$alternativeDefinitionsAttribute;
+		$alternativeDefinitionsAttribute, $wgAlternativeDefinitionsAttributeName;
 		
-	$alternativeDefinitionsAttribute = new Attribute("alternative-definitions", "Alternative definitions", new RecordSetType(new Structure($definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute)));
+	$alternativeDefinitionsAttribute = new Attribute("alternative-definitions", $wgAlternativeDefinitionsAttributeName, new RecordSetType(new Structure($definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute)));
 	
 	global
 		$synonymsAndTranslationsAttribute, $syntransIdAttribute;
@@ -133,48 +137,52 @@ function initializeWiktionaryZAttributes($filterOnLanguage, $hasMetaDataAttribut
 	$synonymsAndTranslationsAttribute = new Attribute("synonyms-translations", "$synonymsAndTranslationsCaption", new RecordSetType(new Structure($syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute, $objectAttributesAttribute)));
 	
 	global
-		$translatedTextAttributeIdAttribute, $translatedTextValueIdAttribute, $translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, $translatedTextAttributeValuesStructure;
+		$translatedTextAttributeIdAttribute, $translatedTextValueIdAttribute, $translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, 
+		$translatedTextAttributeValuesStructure, $wgTranslatedTextAttributeValuesAttributeName, $wgTranslatedTextAttributeAttributeName, $wgTranslatedTextAttributeValueAttributeName;
 	
 	$translatedTextAttributeIdAttribute = new Attribute("translated-text-attribute-id", "Attribute identifier", "object-id");
-	$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", "Attribute", $definedMeaningReferenceType);
+	$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", $wgTranslatedTextAttributeAttributeName, $definedMeaningReferenceType);
 	$translatedTextValueIdAttribute = new Attribute("translated-text-value-id", "Translated text value identifier", "translated-text-value-id");
 	
 	if ($filterOnLanguage && !$hasMetaDataAttributes)
-		$translatedTextValueAttribute = new Attribute("translated-text-value", "Value", "text");
+		$translatedTextValueAttribute = new Attribute("translated-text-value", $wgTranslatedTextAttributeValueAttributeName, "text");
 	else
-		$translatedTextValueAttribute = new Attribute("translated-text-value", "Value", new RecordSetType($translatedTextStructure));
+		$translatedTextValueAttribute = new Attribute("translated-text-value", $wgTranslatedTextAttributeValueAttributeName, new RecordSetType($translatedTextStructure));
 	
 	$translatedTextAttributeValuesStructure = new Structure($translatedTextAttributeIdAttribute, $translatedTextAttributeAttribute, $translatedTextValueIdAttribute, $translatedTextValueAttribute, $objectAttributesAttribute);
-	$translatedTextAttributeValuesAttribute = new Attribute("translated-text-attribute-values", "Translated text attribute values", new RecordSetType($translatedTextAttributeValuesStructure));
+	$translatedTextAttributeValuesAttribute = new Attribute("translated-text-attribute-values", $wgTranslatedTextAttributeValuesAttributeName, new RecordSetType($translatedTextAttributeValuesStructure));
 	
 	global
-		$textAttributeIdAttribute, $textAttributeAttribute, $textAttributeValuesStructure, $textAttributeValuesAttribute;
+		$textAttributeIdAttribute, $textAttributeAttribute, $textAttributeValuesStructure, $textAttributeValuesAttribute, 
+		$wgTextAttributeValuesAttributeName, $wgTextAttributeAttributeName;
 	
 	$textAttributeIdAttribute = new Attribute("text-attribute-id", "Attribute identifier", "object-id");
 	$textAttributeObjectAttribute = new Attribute("text-attribute-object-id", "Attribute object", "object-id");
-	$textAttributeAttribute = new Attribute("text-attribute", "Attribute", new RecordSetType($definedMeaningReferenceStructure));
+	$textAttributeAttribute = new Attribute("text-attribute", $wgTextAttributeAttributeName, new RecordSetType($definedMeaningReferenceStructure));
 	$textAttributeValuesStructure = new Structure($textAttributeIdAttribute, $textAttributeObjectAttribute, $textAttributeAttribute, $textAttribute, $objectAttributesAttribute);	
-	$textAttributeValuesAttribute = new Attribute("text-attribute-values", "Text attribute values", new RecordSetType($textAttributeValuesStructure));
+	$textAttributeValuesAttribute = new Attribute("text-attribute-values", $wgTextAttributeValuesAttributeName, new RecordSetType($textAttributeValuesStructure));
 
 	global
-		$urlAttribute, $urlAttributeIdAttribute, $urlAttributeObjectAttribute, $urlAttributeAttribute, $urlAttributeValuesStructure, $urlAttributeValuesAttribute;
+		$urlAttribute, $urlAttributeIdAttribute, $urlAttributeObjectAttribute, $urlAttributeAttribute, $urlAttributeValuesStructure, $urlAttributeValuesAttribute,
+		$wgUrlAttributeValuesAttributeName, $wgUrlAttributeAttributeName;
 		
 	$urlAttribute = new Attribute("url", "URL", "url");
 	$urlAttributeIdAttribute = new Attribute("url-attribute-id", "Attribute identifier", "object-id");
 	$urlAttributeObjectAttribute = new Attribute("url-attribute-object-id", "Attribute object", "object-id");
-	$urlAttributeAttribute = new Attribute("url-attribute", "Attribute", new RecordSetType($definedMeaningReferenceStructure));
+	$urlAttributeAttribute = new Attribute("url-attribute", $wgUrlAttributeAttributeName, new RecordSetType($definedMeaningReferenceStructure));
 	$urlAttributeValuesStructure = new Structure($urlAttributeIdAttribute, $urlAttributeObjectAttribute, $urlAttributeAttribute, $urlAttribute, $objectAttributesAttribute);	
-	$urlAttributeValuesAttribute = new Attribute("url-attribute-values", "URL attribute values", new RecordSetType($urlAttributeValuesStructure));
+	$urlAttributeValuesAttribute = new Attribute("url-attribute-values", $wgUrlAttributeValuesAttributeName, new RecordSetType($urlAttributeValuesStructure));
 	
 	global
-		$optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionAttribute, $optionAttributeValuesAttribute;
+		$optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionAttribute, $optionAttributeValuesAttribute,
+		$wgOptionAttributeAttributeName, $wgOptionAttributeOptionAttributeName, $wgOptionAttributeValuesAttributeName;
 	
 	$optionAttributeIdAttribute = new Attribute('option-attribute-id', 'Attribute identifier', 'object-id');
 	$optionAttributeObjectAttribute = new Attribute('option-attribute-object-id', 'Attribute object', 'object-id');
-	$optionAttributeAttribute = new Attribute('option-attribute', 'Attribute', $definedMeaningReferenceType);
-	$optionAttributeOptionAttribute = new Attribute('option-attribute-option', 'Option', $definedMeaningReferenceType);
+	$optionAttributeAttribute = new Attribute('option-attribute', $wgOptionAttributeAttributeName, $definedMeaningReferenceType);
+	$optionAttributeOptionAttribute = new Attribute('option-attribute-option', $wgOptionAttributeOptionAttributeName, $definedMeaningReferenceType);
 	$optionAttributeValuesStructure = new Structure($optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionAttribute, $objectAttributesAttribute);
-	$optionAttributeValuesAttribute = new Attribute('option-attribute-values', 'Option attribute values', new RecordSetType($optionAttributeValuesStructure));
+	$optionAttributeValuesAttribute = new Attribute('option-attribute-values', $wgOptionAttributeValuesAttributeName, new RecordSetType($optionAttributeValuesStructure));
 	
 	global
 		$optionAttributeOptionIdAttribute, $optionAttributeOptionsAttribute;
@@ -184,22 +192,24 @@ function initializeWiktionaryZAttributes($filterOnLanguage, $hasMetaDataAttribut
 	$optionAttributeOptionsAttribute = new Attribute('option-attribute-options', 'Options', new RecordSetType($optionAttributeOptionsStructure));
 	
 	global
-		$definitionAttribute, $definedMeaningAttribute, $translatedTextAttribute, $classAttributesAttribute;
+		$definitionAttribute, $definedMeaningAttribute, $translatedTextAttribute, $classAttributesAttribute,
+		$wgDefinitionAttributeName;
 	
 	if ($filterOnLanguage && !$hasMetaDataAttributes)
 		$translatedTextAttribute = new Attribute("translated-text", "Text", "text");	
 	else
 		$translatedTextAttribute = new Attribute("translated-text", "Translated text", new RecordSetType($translatedTextStructure));
 		
-	$definitionAttribute = new Attribute("definition", "Definition", new RecordType(new Structure($translatedTextAttribute, $objectAttributesAttribute)));
+	$definitionAttribute = new Attribute("definition", $wgDefinitionAttributeName, new RecordType(new Structure($translatedTextAttribute, $objectAttributesAttribute)));
 	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType(new Structure($definitionAttribute, $classAttributesAttribute, $alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute, $relationsAttribute, $classMembershipAttribute, $collectionMembershipAttribute, $objectAttributesAttribute)));
 	
 	global
-		$expressionsAttribute, $expressionMeaningStructure, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute;
+		$expressionsAttribute, $expressionMeaningStructure, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute,
+		$wgExactMeaningsAttributeName, $wgApproximateMeaningsAttributeName;
 		
 	$expressionMeaningStructure = new Structure($definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute); 	
-	$expressionExactMeaningsAttribute = new Attribute("expression-exact-meanings", "Exact meanings", new RecordSetType($expressionMeaningStructure));
-	$expressionApproximateMeaningsAttribute = new Attribute("expression-approximate-meanings", "Approximate meanings", new RecordSetType($expressionMeaningStructure));
+	$expressionExactMeaningsAttribute = new Attribute("expression-exact-meanings", $wgExactMeaningsAttributeName, new RecordSetType($expressionMeaningStructure));
+	$expressionApproximateMeaningsAttribute = new Attribute("expression-approximate-meanings", $wgApproximateMeaningsAttributeName, new RecordSetType($expressionMeaningStructure));
 	
 	global
 		$expressionMeaningsAttribute, $expressionMeaningsStructure, $expressionApproximateMeaningAttribute;
@@ -210,11 +220,11 @@ function initializeWiktionaryZAttributes($filterOnLanguage, $hasMetaDataAttribut
 	$expressionsAttribute = new Attribute("expressions", "Expressions", new RecordSetType(new Structure($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute)));
 	
 	global
-		$objectIdAttribute, $objectAttributesStructure;
+		$objectIdAttribute, $objectAttributesStructure, $wgAnnotationAttributeName;
 	
 	$objectIdAttribute = new Attribute("object-id", "Object identifier", "object-id");
 	$objectAttributesStructure = new Structure($objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute, $optionAttributeValuesAttribute);
-	$objectAttributesAttribute = new Attribute("object-attributes", "Annotation", new RecordType($objectAttributesStructure));
+	$objectAttributesAttribute = new Attribute("object-attributes", $wgAnnotationAttributeName, new RecordType($objectAttributesStructure));
 	
 	global
 		$classAttributesStructure,

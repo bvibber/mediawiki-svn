@@ -327,11 +327,11 @@ global
 	$transactionStructure, $summaryAttribute, 
 	$addTransactionAttribute, $removeTransactionAttribute, 
 	$recordLifeSpanAttribute, $recordLifeSpanStructure,
-	$authorityAttribute;
+	$authorityAttribute, $wgAuthorityAttributeName;
 	
 $transactionIdAttribute = new Attribute('transaction-id', 'Transaction ID', 'integer');
 $userAttribute = new Attribute('user', 'User', 'user');
-$authorityAttribute = new Attribute('authority', 'Authority', 'authority');
+$authorityAttribute = new Attribute('authority', $wgAuthorityAttributeName, 'authority');
 $userIPAttribute = new Attribute('user-ip', 'User IP', 'IP');
 $timestampAttribute = new Attribute('timestamp', 'Time', 'timestamp');
 $summaryAttribute = new Attribute('summary', 'Summary', 'text');
