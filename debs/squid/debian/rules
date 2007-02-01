@@ -156,7 +156,7 @@ ifeq ($(DEB_HOST_ARCH_OS), linux)
 endif
 
 # Architecture independant files.
-binary-indep:	build checkroot
+binary-indep:	build
 	-rm -rf $(tmp) debian/files
 	$(checkdir)
 	#
@@ -178,6 +178,12 @@ binary-indep:	build checkroot
 	cp -R errors/* ./$(tmp)$(datadir)/errors
 	rm -f ./$(tmp)$(datadir)/errors/Makefile*
 	rm -f ./$(tmp)$(datadir)/errors/list
+	# 
+	# Wikimedia errors
+	$(INSTALL_DIR) $(tmp)$(datadir)/errors/Wikimedia
+	$(INSTALL_FILE) debian/errors/* $(tmp)$(datadir)/errors/Wikimedia
+	dh_link -p squid-common -P $(tmp)
+	#
 	chmod 755 ./$(tmp)$(datadir)/errors/*
 	chmod 644 ./$(tmp)$(datadir)/errors/*/*
 	chown -R root:root ./$(tmp)$(datadir)/errors
@@ -407,12 +413,4 @@ checkroot:
 dist:	binary
 	dpkg-source -b
 
-wmerrors:	patch
-	# Fetch the Wikimedia error page from SVN
-	rm -rf errors/Wikimedia
-	cp -a errors/English errors/Wikimedia
-	wget -qO errors/Wikimedia/error.html http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/errorpage/error.html
-	for page in ERR_ZERO_SIZE_OBJECT ERR_CANNOT_FORWARD; do \
-		cp -f errors/Wikimedia/error.html errors/Wikimedia/$$page; done
-
-.PHONY: binary binary-arch binary-indep clean checkroot clean1 patch unpatch wmerrors
+.PHONY: binary binary-arch binary-indep clean checkroot clean1 patch unpatch
