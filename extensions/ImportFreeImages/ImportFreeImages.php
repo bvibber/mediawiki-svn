@@ -21,7 +21,7 @@ $wgIFI_GetOriginal = true; // import the original version of the photo
 $wgIFI_PromptForFilename = true;  // prompt the user through javascript for the destination filename
 
 $wgIFI_ResultsPerPage = 20;
-$wgIFI_ResultsPerRow = 5;
+$wgIFI_ResultsPerRow = 4;
 // see the flickr api page for more information on these params
 // for licnese info http://www.flickr.com/services/api/flickr.photos.licenses.getInfo.html
 // default 4 is CC Attribution License
@@ -29,6 +29,8 @@ $wgIFI_FlickrLicense = "4,5";
 $wgIFI_FlickrSort = "interestingness-desc";
 $wgIFI_FlickrSearchBy = "tags"; // Can be tags or text. See http://www.flickr.com/services/api/flickr.photos.search.html
 $wgIFI_AppendRandomNumber = true; /// append random # to destination filename
+$wgIFI_ThumbType = "t"; // s for square t for thumbnail
+
 require_once("SpecialPage.php");
 
 
@@ -124,7 +126,7 @@ function wfSpecialImportFreeImages( $par )
 {
 	global $wgUser, $wgOut, $wgScriptPath, $wgRequest, $wgLang, $wgIFI_FlickrAPIKey, $wgTmpDirectory;
 	global $wgIFI_ResultsPerPage, $wgIFI_FlickrSort, $wgIFI_FlickrLicense, $wgIFI_ResultsPerRow, $wgIFI_CreditsTemplate;
-	global $wgIFI_GetOriginal, $wgIFI_PromptForFilename, $wgIFI_AppendRandomNumber, $wgIFI_FlickrSearchBy;
+	global $wgIFI_GetOriginal, $wgIFI_PromptForFilename, $wgIFI_AppendRandomNumber, $wgIFI_FlickrSearchBy, $wgIFI_ThumbType;
 	require_once("phpFlickr-2.0.0/phpFlickr.php");
 	
 	$fname = "wfSpecialImportFreeImages";
@@ -183,7 +185,6 @@ function wfSpecialImportFreeImages( $par )
 		fclose($r);
 		chmod( $name, 0777 );
 		$info = $f->photos_getInfo($_POST['id']);
-
 	
 		if (!empty($wgIFI_CreditsTemplate)) {
 			$caption = "{{" . $wgIFI_CreditsTemplate . $info['license'] . "|{$_POST['id']}|" . urldecode($_POST['owner']) . "|" . urldecode($_POST['name']). "}}";
@@ -309,7 +310,7 @@ function wfSpecialImportFreeImages( $par )
                 	$wgOut->addHTML( "</a><br/>" );
                 	//$wgOut->addHTML( "<img  src=http://static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . "." . "jpg>" );
                 	$url="http://static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . "." . "jpg";
-                	$wgOut->addHTML( "<img src=http://static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . "_s." . "jpg>" );
+                	$wgOut->addHTML( "<img src=http://static.flickr.com/" . $photo['server'] . "/" . $photo['id'] . "_" . $photo['secret'] . "_$wgIFI_ThumbType.jpg>" );
 
 			$wgOut->addHTML( "<br/>(<a href='#' onclick=\"s2('$url', '{$photo['id']}','{$photo['owner']}', '" 
 						. urlencode($owner['username']  ) . "', '" . urlencode($photo['title']) . "');\">" . 
