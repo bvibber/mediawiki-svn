@@ -68,7 +68,7 @@ function renderInputbox($input, $params, &$parser)
 	if($boxhtml) {
 		return $boxhtml;
 	} else {
-		return "<br /> <font color='red'>Input box: type not defined.</font>";
+		return '<div><strong color="error">Input box: type not defined.</strong></div>';
 	}
 }
 
@@ -152,7 +152,7 @@ ENDGO;
 						$name='Main';
 					}
 					if ($usernamespace == $name) {
-						$searchform2 .= "<input type=checkbox name=\"ns{$i}\" value=\"1\"{$checked}>{$usernamespace}";
+						$searchform2 .= "<input type=\"checkbox\" name=\"ns{$i}\" value=\"1\"{$checked}>{$usernamespace}";
 					}
 				}
 			}
