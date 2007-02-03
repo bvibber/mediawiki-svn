@@ -68,7 +68,7 @@ function renderInputbox($input, $params, &$parser)
 	if($boxhtml) {
 		return $boxhtml;
 	} else {
-		return '<div><strong color="error">Input box: type not defined.</strong></div>';
+		return '<div><strong class="error">Input box: type not defined.</strong></div>';
 	}
 }
 
