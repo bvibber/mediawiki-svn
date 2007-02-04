@@ -1,7 +1,7 @@
 <?php
 
 /**
- * See http://www.mediawiki.org/wiki/Hiding_revisions
+ * See http://www.mediawiki.org/wiki/Extension:Oversight
  * - Add a "permanently hide this revision" link on old revision / diff view
  * - Goes to a tool to slurp revisions into an alternate archive table
  * - Add a log for this
