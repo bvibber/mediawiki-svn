@@ -1,0 +1,271 @@
+= MediaWiki release notes =
+
+Security reminder: MediaWiki does not require PHP's register_globals
+setting since version 1.2.0. If you have it on, turn it *off* if you can.
+
+== MediaWiki 1.10 ==
+
+THIS IS NOT A RELEASE YET.
+
+MediaWiki is now using a "continuous integration" development model with
+quarterly snapshot releases. The latest development code is always kept
+"ready to run", and in fact runs our own sites on Wikipedia.
+
+Release branches will continue to receive security updates for about a year
+from first release, but nonessential bugfixes and feature development happen
+will be made on the development trunk and appear in the next quarterly release.
+
+Those wishing to use the latest code instead of a branch release can obtain
+it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
+
+== Configuration changes ==
+
+=== $wgCommandLineDarkBg ==
+
+A new switch used by maintenance scripts (parserTests.php). It lets you specify
+if your terminal use a dark background, the colorized output will be made
+lighter making things easier to read.
+
+== Major new features ==
+
+== Changes since 1.9 ==
+
+* (bug 7292) Fix site statistics when moving pages in/out of content namespaces
+* (bug 6937) Introduce "statistics-footer" message, appended to Special:Statistics
+* (bug 8531) Correct local name of Lingála (patch by Raymond)
+* (bug 6638) List block flags in block log entries
+* New script maintenance/language/checkExtensioni18n.php used to check i18n
+  progress in the extension repository.
+* Running maintenance/parserTests.php with '--record' option, will now
+  automatically attempt to create the required tables
+* Made the PLURAL: parser function return singular on -1 per default
+* Fixed up the AjaxSearch
+* (bugs 5051, 5376) Tooltips and accesskeys no longer require JavaScript
+* Added SkinTemplateOutputPageBeforeExec hook before SkinTemplate::outputPage()
+  starts page output (http://lists.wikimedia.org/pipermail/wikitech-l/2007-January/028554.html)
+* Fix SpecialVersion->formatCredits input. Version and Url parameters should be
+  null to be treated properly with isset.
+* Page restrictions moved into a new, dedicated table
+* Introduce "cascading protection" -- implicit protection on pages transcluded
+  into a page protected with this option enabled
+* The minimum permissions needed to edit a page in each namespace can now be 
+  customized via the $wgNamespaceProtection array. By default, editing pages in
+  the MediaWiki namespace requires "editinterface" permission, as before.
+* (bug 8567) Added hook RawPageViewBeforeOutput just before the text is blown
+  out in action=raw, so extensions might influence the output.
+* Correct tooltip accesskey hint for Opera on the Macintosh
+  (uses Shift-Esc-, not Ctrl-).
+* (bug 3446) Add user preference to hide page content below diffs, can be
+  overridden by adding diffonly=1 or diffonly=0 to the URL of the diff page
+* (bug 8002) Math should render left-to-right even in right-to-left wikis
+* Pass e-mail and real name fields to AuthPlugin::addUser, as additional
+  optional fields, which may be considered useful at registration time.
+* PostgreSQL upgrade scripts fixed and updated
+* (bug 8613) Fix error when viewing "Recent Changes" and using Postgres.
+* Initialise site_stats table at upgrade time if data was missing
+* (bug 7250) Updated Unicode normalization tables to Unicode 5.0
+* Add 'purge' privilege to replace the hardcoded check for login state in
+  determining whether action=purge can be done via GET. Switching the
+  permission on for anons can be helpful for benchmarking.
+* Unmaintained Oracle support files have been removed.
+* Use browser default for printing size, don't force to 11pt
+* (bug 8632) Fix regression in page protection null edit update
+* (bug 7842) Link back to deleted revision list from deleted revision preview
+* (bug 8619) Add user-aware "unblock" link to Special:Blockip
+* (bug 8407) Disallow indexing of "printable" versions
+* (bug 8522) Provide a "delete" link on Special:Brokenredirects for users with
+  the appropriate permission
+* (bug 8628) Add user-aware block list link to Special:Blockip
+* (bug 8643) Correctly escape the page-specific CSS class for non-Monobook skins
+* (bug 8629) Document $wgFilterCallback
+* (bug 1000) Clarify warning about memory_limit in installer
+* Suppress PHP warning about set_time_limit in installer when safe mode is on
+* (bug 3000) Fall back to SCRIPT_NAME plus QUERY_STRING when REQUEST_URI is
+  not available, as on IIS with PHP-CGI
+* (bug 8621) Log revisions marked as patrolled
+* Introduce "BookInformation" hook; see docs/hooks.txt for more details
+* Missing interwiki row for English Wikipedia restored (as "wikipedia:")
+* use configured cache servers for mctest.php
+* bucket details in mcc.php
+* fix input validation and remove debugging code in compressOld
+* full ID range for moveToExternal
+* fix resolveStubs.php for compatibility with older serialized data
+* maximum line length for bar graphs in getLagTimes.php
+* recognize specieswiki in rebuildInterwiki.inc
+* --purge option to do additional parser-cache purging for purgeList.php
+* profile unicode cleanup in Xml
+* log slow parses in Article.php
+* profile wfMsgReal
+* log mkdir failures
+* profile AutoLoader
+* rebuild empty DjVu metadata containing ''
+* security fix for DjVu metadata retrieval
+* Add title prefix search for Special:Undelete
+* Remove full-archive list from Special:Undelete
+* Undelete page list can use plural marker
+* (bug 8638) Fix update from 1.4 and earlier
+* Allow restriction of autoconfirmed permission by edit count. New global setting
+  $wgAutoConfirmCount (defaulting to zero, naturally).
+* (bug 8641) Fix order of updates to ipblocks table
+* (bug 8678) Fix detection of self-links for numeric titles in Parser
+* (bug 6171) Magically close tags in tables when not using Tidy.
+* Fix hardcoded background color in parserTests.php
+* parserTests.php : removed the 'light' option for --color argument, replacing
+  it with a new global switch : $wgCommandLineDarkBg
+* Sanitizer now correctly escapes lonely '>' occurring before the first wikitag.
+* Ignore self closing on closing tags ( '</div />' now gives '</div>') 
+* (bug 8673) Minor fix for web service API content-type header
+* Fix API revision list on PHP 5.2.1; bad reference assignment
+* (bug 8136) Introduce 'ArticleUndelete' hook; see docs/hooks.txt for more info
+* (bug 8688) Handle underscores/spaces in Special:Blockip and Special:Ipblocklist
+  in a consistent manner
+* (bug 8701) Check database lock status when blocking/unblocking users
+* ParserOptions and ParserOutput classes are now in their own files
+* (bug 8708) Namespace translations for Zealandic language
+* Renamed constructor methods to PHP 5 __construct reserved name
+* (bug 8715) Warn users when editing an interface message whether or not the message page exists
+* ar: fix the 'create a new page' on search page when no exact match found
+* (bug 8703) Corrected Talk namespace name for Limburgish (li)
+* (bug 8712) Expose user groups as a JavaScript global
+* Introduce 'CustomEditor' hook; see docs/hooks.txt for more information
+* (bug 8671) Expose "wpDestFile" as a parameter to "uploadtext"
+* (bug 8403) Respect bad image list exceptions in galleries on wiki pages
+* New special page, Special:Protectedpages, which shows all protected pages
+  and their protection status (full protection status is not pulled out due
+  to performance considerations, so it just shows "full protected" or
+  "semi protected".
+* (bug 4133) Allow page protections to be made with an expiry date, in the same format
+  as block expiry dates. Existing protections are assumed to be infinite, as are protections
+  made with the new field left blank. 
+* Allow sending per-user contribution requests to "contributions" query group
+* (bug 3717) Update user count for AuthPlugin account autocreation
+* (bug 8719) Firefox release notes lie! Fix tooltips for Firefox 2 on x11;
+  accesskeys default settings appear to be same as Windows.
+* Added an option to make Linker::userToolLinks() show the contribs link
+  red when the user has no edits. Linker::userToolLinksRedContribs() is an
+  alias to that which should be used to make it more self documentating.
+* (bug 8749) Bring MySQL 5 table defs back into sync
+* (bug 8751) Set session cookies to HTTPS-only to match other cookies
+* (bug 8652) Catch exceptions generated by malformed XML in multipage media
+* (bug 8782) Help text in Makefile
+* (bug 8780) Clarify message for command-line scripts if LocalSettings.php exists but is not readable
+* (bug 8777) Suppress 'previous' link on Special:Allpages when at first page
+* (bug 8774) Fix path for GNU FDL rights icon on new installs
+* Fix multipage selector drop-down for DjVu images to work when title
+  is passed as a query string parameter; we have to pass the title as
+  a form parameter or it gets dropped from the form submission URL
+* (bug 8819) Fix full path disclosure in with skins dependencies
+* Fixed bug affecting HTML formatting in sortable table column titles
+* Merged table sorting code into wikibits.js
+* (bug 8711) Stop floats in previews from spilling into edit area
+* (bug 8535) Allow certain vertical alignment attributes to be used as image
+  keywords
+* (bug 6987) Allow perrow, widths, and heights attributes for <gallery>
+* (bug 8858) Safer handling when $wgImageLimits is changed. Added a note
+  in DefaultSettings to make it clear.
+* (bug 4268) Fixed data-loss bug in compressOld batch text compression
+  affecting pages which had null edits (move, protect, etc) as second
+  edit in a batch group. Isolated and patched by Travis Derouin.
+* Fix for paths in 1.4->1.5 special-case updater script
+* (bug 8789) AJAX search: IE users can now use the return key
+* (bug 6844) Use <ins> and <del> tags to emphase the differences
+* (bug 6684) Fix improper javascript array iteration
+* (bug 4347) use MailAddress object for reply-to
+* Add AlphabeticPager abstract class
+* Use faster AlphabeticPager for Special:Categories
+
+
+== Languages updated ==
+
+* Arabic (ar)
+* Belarusian (be)
+* Breton (br)
+* German (de)
+* Greek (el)
+* Finnish (fi)
+* French (fr)
+* Hebrew (he)
+* Indonesian (id)
+* Italian (it)
+* Japanese (ja)
+* Kazakh (kk)
+* Korean (ko)
+* Ripuarian (ksh)
+* Limburgish (li)
+* Lithuanian (lt)
+* Marathi (mr)
+* Dutch (nl)
+* Polish (pl)
+* Sicilian (scn)
+* Swedish (sv)
+* Zealandic (zea)
+
+== Compatibility ==
+
+MediaWiki 1.10 requires PHP 5 (5.1 recommended). PHP 4 is no longer supported.
+
+PHP 5.0.x fails on 64-bit systems due to serious bugs with array processing:
+http://bugs.php.net/bug.php?id=34879
+Upgrade affected systems to PHP 5.1 or higher.
+
+MySQL 3.23.x is no longer supported; some older hosts may need to upgrade.
+At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.
+
+
+== Upgrading ==
+
+Some minor database changes have been made since 1.7:
+* new fields and indexes on ipblocks
+* index change on recentchanges
+
+Several changes from 1.5 and 1.6 do require updates to be run on upgrade.
+To ensure that these tables are filled with data, run refreshLinks.php after
+the upgrade.
+
+If you are upgrading from MediaWiki 1.4.x or earlier, some major database
+changes are made, and there is a slightly higher chance that things could
+break. Don't forget to always back up your database before upgrading!
+
+See the file UPGRADE for more detailed upgrade instructions.
+
+
+
+=== Caveats ===
+
+Some output, particularly involving user-supplied inline HTML, may not
+produce 100% valid or well-formed XHTML output. Testers are welcome to
+set $wgMimeType = "application/xhtml+xml"; to test for remaining problem
+cases, but this is not recommended on live sites. (This must be set for
+MathML to display properly in Mozilla.)
+
+
+For notes on 1.9.x and older releases, see HISTORY.
+
+
+=== Online documentation ===
+
+Documentation for both end-users and site administrators is currently being
+built up on Meta-Wikipedia, and is covered under the GNU Free Documentation
+License:
+
+  http://www.mediawiki.org/wiki/Documentation
+
+
+=== Mailing list ===
+
+A MediaWiki-l mailing list has been set up distinct from the Wikipedia
+wikitech-l list:
+
+  http://lists.wikimedia.org/mailman/listinfo/mediawiki-l
+
+A low-traffic announcements-only list is also available:
+
+  http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce
+
+It's highly recommended that you sign up for one of these lists if you're
+going to run a public MediaWiki, so you can be notified of security fixes.
+
+
+=== IRC help ===
+
+There's usually someone online in #mediawiki on irc.freenode.net
