@@ -2,7 +2,7 @@
 
 require_once("forms.php");
 require_once("Transaction.php");
-require_once("WiktionaryZAttributes.php");
+require_once("OmegaWikiAttributes.php");
 
 interface WikidataApplication {
 	public function view();
@@ -111,7 +111,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 			$showCommunityContribution = false;
 		
 		$this->shouldShowAuthorities = count($authoritiesToShow) > 0 || $showCommunityContribution;
-		initializeWiktionaryZAttributes($this->filterLanguageId != 0, $this->shouldShowAuthorities);	
+		initializeOmegaWikiAttributes($this->filterLanguageId != 0, $this->shouldShowAuthorities);	
 		initializeObjectAttributeEditors($this->filterLanguageId, false, $this->shouldShowAuthorities);
 		
 		if ($this->shouldShowAuthorities) 
@@ -121,7 +121,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 	}
 	
 	protected function save($referenceTransaction) {
-		initializeWiktionaryZAttributes($this->filterLanguageId != 0, false);	
+		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
 		initializeObjectAttributeEditors($this->filterLanguageId, false, false);
 	}
 	
@@ -149,7 +149,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 		if ($this->showLanguageSelector)
 			$wgOut->addHTML($this->getLanguageSelector());
 			
-		initializeWiktionaryZAttributes($this->filterLanguageId != 0, false);	
+		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
 		initializeObjectAttributeEditors($this->filterLanguageId, false, false);
 	}
 	
@@ -194,7 +194,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 			'history'
 		));
 
-		initializeWiktionaryZAttributes($this->filterLanguageId != 0, true);	
+		initializeOmegaWikiAttributes($this->filterLanguageId != 0, true);	
 		initializeObjectAttributeEditors($this->filterLanguageId, $this->showRecordLifeSpan, false);
 	}
 	

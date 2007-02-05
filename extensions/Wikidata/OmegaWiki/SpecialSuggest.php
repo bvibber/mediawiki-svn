@@ -23,7 +23,7 @@ function wfSpecialSuggest() {
 			require_once("HTMLtable.php");
 			require_once("Expression.php");
 			require_once("Transaction.php");
-			require_once("WiktionaryZEditors.php");
+			require_once("OmegaWikiEditors.php");
 						
 			echo getSuggestions();
 		}

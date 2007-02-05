@@ -3,7 +3,7 @@
 global
 	$expressionNameSpaceId, $definedMeaningNameSpaceId;
 	
-$expressionNameSpaceId = getNameSpaceIDByName('WiktionaryZ');	
+$expressionNameSpaceId = getNameSpaceIDByName('OmegaWiki');	
 $definedMeaningNameSpaceId = getNameSpaceIDByName('DefinedMeaning');	
 	
 function getNameSpaceIDByName($name) {

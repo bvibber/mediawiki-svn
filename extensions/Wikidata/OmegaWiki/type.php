@@ -25,8 +25,8 @@ function spellingAsLink($value) {
 	global
 		$wgUser;
 		
-//	return $wgUser->getSkin()->makeLink("WiktionaryZ:$value", htmlspecialchars($value));
-	return createLink("WiktionaryZ", $value, $value);
+//	return $wgUser->getSkin()->makeLink("OmegaWiki:$value", htmlspecialchars($value));
+	return createLink("OmegaWiki", $value, $value);
 }
 
 function createLink($nameSpace, $title, $text) {

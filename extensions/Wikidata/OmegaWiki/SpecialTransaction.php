@@ -15,16 +15,16 @@ function wfSpecialTransaction() {
 				$wgOut;
 			
 			require_once("WikiDataTables.php");
-			require_once("WiktionaryZAttributes.php");
-			require_once("WiktionaryZRecordSets.php");
-			require_once("WiktionaryZEditors.php");
+			require_once("OmegaWikiAttributes.php");
+			require_once("OmegaWikiRecordSets.php");
+			require_once("OmegaWikiEditors.php");
 			require_once("RecordSetQueries.php");
 			require_once("Transaction.php");
 			require_once("Editor.php");
 			require_once("Controller.php");
 			require_once("type.php");
 			
-			initializeWiktionaryZAttributes(false, false);
+			initializeOmegaWikiAttributes(false, false);
 			initializeAttributes();
 			
 			$fromTransactionId = (int) $_GET['from-transaction'];

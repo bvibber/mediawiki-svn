@@ -3,7 +3,7 @@
 require_once("Attribute.php");
 require_once("WikiDataGlobals.php");
 
-function initializeWiktionaryZAttributes($filterOnLanguage, $hasMetaDataAttributes) {
+function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes) {
 	global
 		$languageAttribute, $spellingAttribute, $textAttribute;
 	

@@ -9,6 +9,7 @@ $wgLanguageManagerMessages = array();
 
 $wgLanguageManagerMessages['en'] = array(
 	'langman_title' => 'Language manager',
+	'languages'=>'Language manager',
 );
 $wgLanguageManagerMessages['de'] = array(
 	'langman_title' => 'Sprachmanager',

@@ -1,6 +1,6 @@
 <?php
 
-require_once('WiktionaryZAttributes.php');
+require_once('OmegaWikiAttributes.php');
 require_once('Record.php');
 require_once('RecordSet.php');
 require_once('Expression.php');

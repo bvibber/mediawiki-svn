@@ -1,8 +1,8 @@
 <?php
 
 require_once('Wikidata.php');
-require_once('WiktionaryZRecordSets.php');
-require_once('WiktionaryZEditors.php');
+require_once('OmegaWikiRecordSets.php');
+require_once('OmegaWikiEditors.php');
 
 class DefinedMeaning extends DefaultWikidataApplication {
 	public function view() {

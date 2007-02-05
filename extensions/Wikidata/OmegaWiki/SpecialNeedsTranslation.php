@@ -14,9 +14,9 @@
 
 				require_once("forms.php");
 				require_once("type.php");
-				require_once("WiktionaryZAttributes.php");
+				require_once("OmegaWikiAttributes.php");
 
-				initializeWiktionaryZAttributes(false, false);
+				initializeOmegaWikiAttributes(false, false);
 				$wgOut->setPageTitle('Expressions needing translation');
 
 				$sourceLanguageId = $_GET['from-lang'];
@@ -42,7 +42,7 @@
 					$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure, $spellingAttribute, $languageAttribute;
 
 				require_once("Transaction.php");
-				require_once("WiktionaryZAttributes.php");
+				require_once("OmegaWikiAttributes.php");
 				require_once("RecordSet.php");
 				require_once("Editor.php");
 				require_once("Expression.php");

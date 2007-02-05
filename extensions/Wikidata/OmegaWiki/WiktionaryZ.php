@@ -8,15 +8,15 @@ require_once('Attribute.php');
 require_once('type.php');
 require_once('languages.php');
 require_once('HTMLtable.php');
-require_once('WiktionaryZRecordSets.php');
-require_once('WiktionaryZEditors.php');
+require_once('OmegaWikiRecordSets.php');
+require_once('OmegaWikiEditors.php');
 
 /**
- * Load and modify content in a WiktionaryZ-enabled
+ * Load and modify content in a OmegaWiki-enabled
  * namespace.
  *
  */
-class WiktionaryZ extends DefaultWikidataApplication {
+class OmegaWiki extends DefaultWikidataApplication {
 	public function view() {
 		global
 			$wgOut, $wgTitle;

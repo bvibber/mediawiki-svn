@@ -27,11 +27,11 @@ function wfSpecialDatasearch() {
 			require_once("forms.php");
 			require_once("type.php");
 			require_once("Expression.php");
-			require_once("WiktionaryZAttributes.php");
-			require_once("WiktionaryZRecordSets.php");
-			require_once("WiktionaryZEditors.php");
+			require_once("OmegaWikiAttributes.php");
+			require_once("OmegaWikiRecordSets.php");
+			require_once("OmegaWikiEditors.php");
 
-			initializeWiktionaryZAttributes(false, false);
+			initializeOmegaWikiAttributes(false, false);
 
 			global
 				$definedMeaningReferenceType;
@@ -63,7 +63,7 @@ function wfSpecialDatasearch() {
 				global
 					$wgScript;
 
-				$wgOut->redirect($wgScript . '/WiktionaryZ:' . $spelling);
+				$wgOut->redirect($wgScript . '/OmegaWiki:' . $spelling);
 			}
 			else {			
 				$fulltext = $_GET['fulltext'];

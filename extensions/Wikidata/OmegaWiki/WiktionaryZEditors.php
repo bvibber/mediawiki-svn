@@ -1,7 +1,7 @@
 <?php
 
 require_once('Editor.php');
-require_once('WiktionaryZAttributes.php');
+require_once('OmegaWikiAttributes.php');
 require_once('WikiDataBootstrappedMeanings.php');
 require_once('Fetcher.php');
 

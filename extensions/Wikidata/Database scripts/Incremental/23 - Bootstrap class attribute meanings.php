@@ -10,9 +10,9 @@ define('MEDIAWIKI', true );
 require_once("../../../../LocalSettings.php");
 require_once("Setup.php");
 require_once("../../WP/ProgressBar.php");
-require_once("../../WiktionaryZ/Expression.php");
-require_once("../../WiktionaryZ/Transaction.php");
-require_once("../../WiktionaryZ/WikiDataBootstrappedMeanings.php");
+require_once("../../OmegaWiki/Expression.php");
+require_once("../../OmegaWiki/Transaction.php");
+require_once("../../OmegaWiki/WikiDataBootstrappedMeanings.php");
 
 ob_end_flush();
 

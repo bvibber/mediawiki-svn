@@ -1,6 +1,6 @@
 <?php
 
-require_once("WiktionaryZAttributes.php");
+require_once("OmegaWikiAttributes.php");
 
 interface UpdateController {
 	public function add($keyPath, $record);
