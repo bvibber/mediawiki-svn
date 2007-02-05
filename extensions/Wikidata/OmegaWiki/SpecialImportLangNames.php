@@ -5,8 +5,11 @@
 	$wgGroupPermissions['bureaucrat']['languagenames'] = true;
 
 	$wgExtensionFunctions[] = 'wfSpecialImportLangNames';
-
 	function wfSpecialImportLangNames() {
+
+	global $wgMessageCache;
+	$wgMessageCache->addMessages(array('importlangnames'=>'Import language names'),'en');
+
 		class SpecialImportLangNames extends SpecialPage {
 			function SpecialImportLangNames() {
 				SpecialPage::SpecialPage('ImportLangNames');

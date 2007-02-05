@@ -156,15 +156,15 @@ class DefaultWikidataApplication implements WikidataApplication {
 		global
 			$wgOut, $wgTitle, $wgRequest;
 			
-		$titleArray = $wgTitle->getTitleArray();
-		$titleArray["actionprefix"] = wfMsg('wz_history');
+
+		$title = $wgTitle->getPrefixedText();
 
 		if (!$this->showClassicPageTitles) {
-			$titleArray["mainpart"] = $this->getTitle();
-			$titleArray["namespace"] = ""; 
+			$title = $this->getTitle()->getText();
 		}
 
-		$wgOut->setPageTitleArray($titleArray);
+		$wgOut->setPageTitle(wfMsg('wz_history',$title));
+
 		
 		if (isset($_GET['show'])) {
 			$this->showRecordLifeSpan = isset($_GET["show-record-life-span"]);
@@ -201,14 +201,14 @@ class DefaultWikidataApplication implements WikidataApplication {
 		global
 			$wgOut, $wgTitle;
 			
-		$titleArray = $wgTitle->getTitleArray();
+		$title = $wgTitle->getPrefixedText();
+
 		if (!$this->showClassicPageTitles) {
-			$titleArray["mainpart"] = $this->getTitle();
-			$titleArray["namespace"] = ""; 
+			$title = $this->getTitle()->getText();
 		}
-			 
-		$titleArray["actionprefix"] = wfMsg('editing');
-		$wgOut->setPageTitleArray($titleArray);
+
+		$wgOut->setPageTitle($title);
+		$wgOut->setPageTitle(wfMsg('editing',$title));
 
 		$wgOut->addHTML(
 			'<form method="post" action="">' .

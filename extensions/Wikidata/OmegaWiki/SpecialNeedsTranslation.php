@@ -4,6 +4,9 @@
 	$wgExtensionFunctions[] = 'wfSpecialNeedsTranslation';
 
 	function wfSpecialNeedsTranslation() {
+	        global $wgMessageCache;
+                $wgMessageCache->addMessages(array('needstranslation'=>'Expressions needing translation'),'en');
+                
 		class SpecialNeedsTranslation extends SpecialPage {
 			function SpecialNeedsTranslation() {
 				SpecialPage::SpecialPage('NeedsTranslation');

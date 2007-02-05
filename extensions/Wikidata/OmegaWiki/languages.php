@@ -1,9 +1,9 @@
 <?php
 
 global
-	$wgLanguageNames, $wgUser;
+	$wgOwLanguageNames, $wgUser;
 
-$wgLanguageNames = getLangNames($wgUser->getOption('language'));
+$wgOwLanguageNames = getLangNames($wgUser->getOption('language'));
 
 /* Return an array containing all language names translated into the language
 	indicated by $code, with fallbacks in English where the language names
@@ -27,6 +27,7 @@ function getLanguageIdForCode($code) {
 
 /* Return SQL query string for fetching language names. */
 function getSQLForLanguageNames($lang_code) {
+	/* Use a simpler query if the user's language is English. */
 	/* Use a simpler query if the user's language is English. */
 	if ($lang_code == 'en' || !($lang_id = getLanguageIdForCode($lang_code)))
 		return 'SELECT language.language_id AS row_id,language_names.language_name' .

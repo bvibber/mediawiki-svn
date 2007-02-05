@@ -2,9 +2,17 @@
 
 if (!defined('MEDIAWIKI')) die();
 
+require_once( 'SpecialDatasearch.i18n.php' );
+
 $wgExtensionFunctions[] = 'wfSpecialDatasearch';
 
 function wfSpecialDatasearch() {
+	# Add messages
+	global $wgMessageCache, $wgDataSearchMessages, $IP;
+	foreach( $wgDataSearchMessages as $key => $value ) {
+		$wgMessageCache->addMessages( $wgDataSearchMessages[$key], $key );
+	}
+
 	class SpecialDatasearch extends SpecialPage {
 		protected $externalIdentifierAttribute;
 		protected $collectionAttribute;

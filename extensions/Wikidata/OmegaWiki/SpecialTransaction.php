@@ -5,6 +5,9 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionFunctions[] = 'wfSpecialTransaction';
 
 function wfSpecialTransaction() {
+        global $wgMessageCache;
+                $wgMessageCache->addMessages(array('transaction'=>'Transaction log'),'en');
+                
 	class SpecialTransaction extends SpecialPage {
 		function SpecialTransaction() {
 			SpecialPage::SpecialPage('Transaction');

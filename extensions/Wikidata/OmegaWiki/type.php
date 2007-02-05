@@ -26,7 +26,7 @@ function spellingAsLink($value) {
 		$wgUser;
 		
 //	return $wgUser->getSkin()->makeLink("OmegaWiki:$value", htmlspecialchars($value));
-	return createLink("OmegaWiki", $value, $value);
+	return createLink("Expression", $value, $value);
 }
 
 function createLink($nameSpace, $title, $text) {
@@ -42,10 +42,8 @@ function definedMeaningReferenceAsLink($definedMeaningId, $definingExpression, $
 }
 
 function languageIdAsText($languageId) {
-	global
-		$wgLanguageNames;	
-
-	return $wgLanguageNames[$languageId];
+	global $wgUser,$wgOwLanguageNames;
+	return $wgOwLanguageNames[$languageId];
 }
 
 function collectionIdAsText($collectionId) {
