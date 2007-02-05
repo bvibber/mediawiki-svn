@@ -116,6 +116,7 @@ function __autoload($className) {
 		'MessageCache' => 'includes/MessageCache.php',
 		'MimeMagic' => 'includes/MimeMagic.php',
 		'Namespace' => 'includes/Namespace.php',
+		'NamespaceStore' => 'includes/NamespaceStore.php',
 		'FakeMemCachedClient' => 'includes/ObjectCache.php',
 		'OutputPage' => 'includes/OutputPage.php',
 		'PageHistory' => 'includes/PageHistory.php',

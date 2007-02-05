@@ -142,6 +142,9 @@ class SpecialPage
 		'Mytalk'                    => array( 'SpecialMytalk' ),
 		'Mycontributions'           => array( 'SpecialMycontributions' ),
 		'Listadmins'                => array( 'SpecialRedirectToSpecial', 'Listadmins', 'Listusers', 'sysop' ),
+
+		'Namespaces'            => array( 'SpecialPage', 'Namespaces', 'namespaces'),
+
 	);
 
 	static public $mAliases;

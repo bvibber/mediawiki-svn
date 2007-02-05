@@ -205,5 +205,44 @@ define( 'LIST_SET', 2 );
 define( 'LIST_NAMES', 3);
 define( 'LIST_OR', 4);
 
+/**#@+
+ * Namespace changes result codes
+ * See Namespace.php
+ */
+define('NS_RESULT',1);
+define('NS_SAVE_ID',2);
+define('NS_ILLEGAL_NAMES',3);
+define('NS_DUPLICATE_NAMES',4);
+define('NS_INTERWIKI_NAMES',5);
+define('NS_PREFIX_NAMES',6);
+/**#@-*/
+
+/**#@+
+ * Namespace changes success codes
+ */
+define('NS_MODIFIED',1);
+define('NS_CREATED',2);
+define('NS_NAME_ISSUES',3);
+define('NS_MISSING',4);
+define('NS_IDENTICAL',5);
+define('NS_DELETED',6);
+define('NS_PROTECTED',7);
+define('NS_HAS_PAGES',8);
+/**#@-*/
+
+/**#@+
+ * Pseudonamespace conversions
+ */
+define('NS_PSEUDO_NOT_FOUND',1);
+define('NS_PSEUDO_CONVERTED',2);
+define('NS_NON_EMPTY',3);
+define('NS_DUPLICATE_TITLES',4);
+define('NS_DUPLICATE_TITLE_LIST',5);
+
+/**#@+
+ * Valid namespace names character class
+ */
+define('NS_CHAR','[ _0-9A-Za-z\x80-\xff]');
+
 
 ?>

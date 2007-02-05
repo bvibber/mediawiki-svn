@@ -1565,6 +1565,20 @@ function &wfGetMimeMagic() {
 	return MimeMagic::singleton();
 }
 
+ /** 
+ * Class factory for NamespaceStore singleton.  NamespaceStore.php
+ * is autoloaded thanks to definition in AutoLoader.php
+ */
+
+function &wfGetNamespaceStore() {
+	static $nsstore = null;
+	if($nsstore == null) {
+		$nsstore = new NamespaceStore();
+		$nsstore->load();
+	}
+	return $nsstore;
+}
+
 /**
  * Tries to get the system directory for temporary files.
  * The TMPDIR, TMP, and TEMP environment variables are checked in sequence,

@@ -1004,6 +1004,9 @@ $wgGroupPermissions['sysop']['ipblock-exempt']	= true;
 
 // Permission to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
+// Permission to change namespace definitions
+$wgGroupPermissions['bureaucrat']['namespaces'] = true;
+
 
 // Experimental permissions, not ready for production use
 //$wgGroupPermissions['sysop']['deleterevision'] = true;

@@ -909,6 +909,14 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			$article->updateRevisionOn( $wgDatabase, $revision );
 		}
 
+		# Namespace defs will be needed for new and existing installations
+		if($wgDatabase->selectField('namespace', 'COUNT(*)')==0) {
+			print "<li>Bootstrapping namespace definitions...";
+			require_once '../maintenance/nsBootstrap.php';
+			print "Done.";
+		}
+
+
 		/* Write out the config file now that all is well */
 		print "<li style=\"list-style: none\">\n";
 		print "<p>Creating LocalSettings.php...</p>\n\n";

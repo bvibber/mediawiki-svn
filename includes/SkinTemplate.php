@@ -653,12 +653,14 @@ class SkinTemplate extends Skin {
 				!$this->mTitle->isTalkPage() && !$prevent_active_tabs,
 				'', true);
 
-			$content_actions['talk'] = $this->tabAction(
-				$talkpage,
-				'talk',
-				$this->mTitle->isTalkPage() && !$prevent_active_tabs,
-				'',
-				true);
+			if(!is_null($talkpage)) {
+				$content_actions['talk'] = $this->tabAction(
+					$talkpage,
+					'talk',
+					$this->mTitle->isTalkPage() && !$prevent_active_tabs,
+					'',
+					true);
+			}
 
 			wfProfileIn( "$fname-edit" );
 			if ( $this->mTitle->quickUserCan( 'edit' ) && ( $this->mTitle->exists() || $this->mTitle->quickUserCan( 'create' ) ) ) {

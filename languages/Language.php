@@ -176,13 +176,51 @@ class Language {
 		return $this->bookstoreList;
 	}
 
-	/**
+	/**#@+ 
+	 * 
+	 * Only used for migrating older version of MediaWiki to the
+	 * current version, and for populating the database in a fresh
+	 * install.
 	 * @return array
-	 */
-	function getNamespaces() {
+	 *
+ 	 */
+	function getNamespaceSynonymsBootstrap() {
+		return array(
+         	NS_IMAGE => array( 'Image', 'Sound', 'Video' ),
+        	NS_IMAGE_TALK => array( 'Image_talk', 'Sound_talk', 'Video_talk' )
+		);
+	}
+
+	function getNamespacesBootstrap() {
 		$this->load();
 		return $this->namespaceNames;
 	}
+
+	/**#@+
+	 * @deprecated
+	 *
+	 */
+	function getNamespaceSynonyms() {	
+		$nsstore = wfGetNamespaceStore();
+		$defns = $nsstore->getDefaultNamespaces();
+		$allns = $nsstore->getAllNamespacesArray();
+		foreach ($defns as $nskey => $nsstring) {
+			$aliases = array_diff($allns[$nskey],array($nsstring));
+			if(empty($aliases)) {
+				unset($allns[$nskey]);
+			}
+			else {
+				$allns[$ns]=$aliases;
+			}
+		}
+		return $allns;
+	}
+
+	function getNamespaces() {
+		$nsstore = wfGetNamespaceStore();
+		return $nsstore->getDefaultNamespaces();
+	}
+
 
 	/**
 	 * A convenience function that returns the same thing as

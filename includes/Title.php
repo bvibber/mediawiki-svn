@@ -648,8 +648,13 @@ class Title {
 	 * @return string
 	 */
 	function getTalkNsText() {
-		global $wgContLang;
-		return( $wgContLang->getNsText( Namespace::getTalk( $this->mNamespace ) ) );
+		$ns = Namespace::getTalk( $this->getNamespace() );
+		if(is_null($ns)) {
+			return null;
+		}
+		else {
+			return Title::makeTitle( $ns, $this->getDBkey() );
+		}
 	}
 	
 	/**
