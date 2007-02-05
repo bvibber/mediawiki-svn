@@ -24,8 +24,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'Lankide_eztabaida',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => '$1_eztabaida',
-	NS_IMAGE          => 'Irudi',
-	NS_IMAGE_TALK     => 'Irudi_eztabaida',
+	NS_FILE          => 'Irudi',
+	NS_FILE_TALK     => 'Irudi_eztabaida',
 	NS_MEDIAWIKI      => 'MediaWiki',
 	NS_MEDIAWIKI_TALK => 'MediaWiki_eztabaida',
 	NS_TEMPLATE       => 'Txantiloi',

@@ -193,7 +193,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		}
 
 		// only image titles are allowed for the root 
-		if (!$this->hasNS && $this->rootTitle->getNamespace() !== NS_IMAGE)
+		if (!$this->hasNS && $this->rootTitle->getNamespace() !== NS_FILE)
 			$this->dieUsage("The title for {$this->getModuleName()} query must be an image", 'bad_image_title');
 	}
 

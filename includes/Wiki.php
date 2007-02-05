@@ -202,11 +202,11 @@ class MediaWiki {
 
 		if( NS_MEDIA == $title->getNamespace() ) {
 			// FIXME: where should this go?
-			$title = Title::makeTitle( NS_IMAGE, $title->getDBkey() );
+			$title = Title::makeTitle( NS_FILE, $title->getDBkey() );
 		}
 
 		switch( $title->getNamespace() ) {
-		case NS_IMAGE:
+		case NS_FILE:
 			return new ImagePage( $title );
 		case NS_CATEGORY:
 			return new CategoryPage( $title );

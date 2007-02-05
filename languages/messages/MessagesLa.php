@@ -22,8 +22,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'Disputatio_Usoris',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => 'Disputatio_{{grammar:genitive|$1}}',
-	NS_IMAGE          => 'Imago',
-	NS_IMAGE_TALK     => 'Disputatio_Imaginis',
+	NS_FILE          => 'Imago',
+	NS_FILE_TALK     => 'Disputatio_Imaginis',
 	NS_MEDIAWIKI      => 'MediaWiki',
 	NS_MEDIAWIKI_TALK => 'Disputatio_MediaWiki',
 	NS_TEMPLATE       => 'Formula',

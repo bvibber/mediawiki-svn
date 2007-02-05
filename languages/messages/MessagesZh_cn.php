@@ -12,8 +12,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'User_talk',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_talk',
-	NS_IMAGE            => 'Image',
-	NS_IMAGE_TALK       => 'Image_talk',
+	NS_FILE            => 'Image',
+	NS_FILE_TALK       => 'Image_talk',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'MediaWiki_talk',
 	NS_TEMPLATE         => 'Template',
@@ -31,8 +31,8 @@ $namespaceAliases = array(
 	"用户对话" => NS_USER_TALK,
 	# This has never worked so it's unlikely to annoy anyone if I disable it -- TS
 	#"{{SITENAME}}_对话" => NS_PROJECT_TALK
-	"图像" => NS_IMAGE,
-	"图像对话" => NS_IMAGE_TALK,
+	"图像" => NS_FILE,
+	"图像对话" => NS_FILE_TALK,
 );
 
 $quickbarSettings = array(

@@ -65,7 +65,7 @@ for ( $linenum = 1; !feof( $file ); $linenum++ ) {
 
 	print $page->getPrefixedText();
 	$dbw->begin();
-	if( $page->getNamespace() == NS_IMAGE ) {
+	if( $page->getNamespace() == NS_FILE ) {
 		$art = new ImagePage( $page );
 	} else {
 		$art = new Article( $page );

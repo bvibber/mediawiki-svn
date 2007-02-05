@@ -585,7 +585,7 @@ class Linker {
 
 		if ( $manual_thumb != '' ) # Use manually specified thumbnail
 		{
-			$manual_title = Title::makeTitleSafe( NS_IMAGE, $manual_thumb ); #new Title ( $manual_thumb ) ;
+			$manual_title = Title::makeTitleSafe( NS_FILE, $manual_thumb ); #new Title ( $manual_thumb ) ;
 			if( $manual_title ) {
 				$manual_img = new Image( $manual_title );
 				$thumbUrl = $manual_img->getViewURL();
@@ -672,7 +672,7 @@ class Linker {
 
 	/** @todo document */
 	function makeMediaLink( $name, /* wtf?! */ $url, $alt = '' ) {
-		$nt = Title::makeTitleSafe( NS_IMAGE, $name );
+		$nt = Title::makeTitleSafe( NS_FILE, $name );
 		return $this->makeMediaLinkObj( $nt, $alt );
 	}
 

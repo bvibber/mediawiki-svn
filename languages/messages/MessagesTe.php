@@ -15,8 +15,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'సభ్యులపై_చర్చ',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_చర్చ',
-	NS_IMAGE            => 'బొమ్మ',
-	NS_IMAGE_TALK       => 'బొమ్మపై_చర్చ',
+	NS_FILE            => 'బొమ్మ',
+	NS_FILE_TALK       => 'బొమ్మపై_చర్చ',
 	NS_MEDIAWIKI        => 'మీడియావికీ',
 	NS_MEDIAWIKI_TALK   => 'మీడియావికీ_చర్చ',
 	NS_TEMPLATE         => 'మూస',
@@ -29,7 +29,7 @@ $namespaceNames = array(
 
 $namespaceAliases = array(
 	'సభ్యునిపై_చర్చ'         => NS_USER_TALK,
-	'బొమ్మపై_చర్చ'          => NS_IMAGE_TALK
+	'బొమ్మపై_చర్చ'          => NS_FILE_TALK
 );
 
 

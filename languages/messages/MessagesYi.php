@@ -14,8 +14,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'באַניצער_רעדן',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => '$1_רעדן',
-	NS_IMAGE          => 'בילד',
-	NS_IMAGE_TALK     => 'בילד_רעדן',
+	NS_FILE          => 'בילד',
+	NS_FILE_TALK     => 'בילד_רעדן',
 	NS_MEDIAWIKI      => 'מעדיעװיקי',
 	NS_MEDIAWIKI_TALK => 'מעדיעװיקי_רעדן',
 	NS_TEMPLATE       => 'מוסטער',

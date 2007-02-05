@@ -112,7 +112,7 @@ class ImageListPager extends TablePager {
 				$name = $this->mCurrentRow->img_name;
 				$ilink = "<a href=\"" . htmlspecialchars( Image::imageUrl( $name ) ) .
 				  "\">" . $this->mMessages['imgfile'] . "</a>";
-				$desc = $this->getSkin()->makeKnownLinkObj( Title::makeTitle( NS_IMAGE, $name ),
+				$desc = $this->getSkin()->makeKnownLinkObj( Title::makeTitle( NS_FILE, $name ),
 					$this->mMessages['imgdesc'] );
 				return "$desc | $ilink";
 			case 'img_timestamp':

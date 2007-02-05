@@ -32,8 +32,8 @@ $namespaceNames = array(
 */
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_Discussão', # 5
-	NS_IMAGE            => 'Imagem', # 6
-	NS_IMAGE_TALK       => 'Imagem_Discussão', # 7
+	NS_FILE            => 'Imagem', # 6
+	NS_FILE_TALK       => 'Imagem_Discussão', # 7
 	NS_MEDIAWIKI        => 'MediaWiki', # 8
 	NS_MEDIAWIKI_TALK   => 'MediaWiki_Discussão', # 9
 	NS_TEMPLATE         => 'Predefinição', # 10

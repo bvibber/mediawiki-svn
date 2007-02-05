@@ -325,7 +325,7 @@ class UploadForm {
 			$this->uploadError( wfMsgWikiHtml( 'illegalfilename', htmlspecialchars( $filtered ) ) );
 			return;
 		}
-		$nt =& Title::makeTitle( NS_IMAGE, $nt->getDBkey() );
+		$nt =& Title::makeTitle( NS_FILE, $nt->getDBkey() );
 		$this->mUploadSaveName = $nt->getDBkey();
 
 		/**
@@ -609,7 +609,7 @@ class UploadForm {
 
 		$sk = $wgUser->getSkin();
 		$ilink = $sk->makeMediaLink( $this->mUploadSaveName, Image::imageUrl( $this->mUploadSaveName ) );
-		$dname = $wgContLang->getNsText( NS_IMAGE ) . ':'.$this->mUploadSaveName;
+		$dname = $wgContLang->getNsText( NS_FILE ) . ':'.$this->mUploadSaveName;
 		$dlink = $sk->makeKnownLink( $dname, $dname );
 
 		$wgOut->addHTML( '<h2>' . wfMsgHtml( 'successfulupload' ) . "</h2>\n" );

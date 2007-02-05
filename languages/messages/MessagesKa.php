@@ -12,8 +12,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'მომხმარებელი_განხილვა',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_განხილვა',
-	NS_IMAGE            => 'სურათი',
-	NS_IMAGE_TALK       => 'სურათი_განხილვა',
+	NS_FILE            => 'სურათი',
+	NS_FILE_TALK       => 'სურათი_განხილვა',
 	NS_MEDIAWIKI        => 'მედიავიკი',
 	NS_MEDIAWIKI_TALK   => 'მედიავიკი_განხილვა',
 	NS_TEMPLATE         => 'თარგი',

@@ -69,8 +69,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'Bruker_Diskuschoon',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_Diskuschoon',
-	NS_IMAGE            => 'Bild',
-	NS_IMAGE_TALK       => 'Bild_Diskuschoon',
+	NS_FILE            => 'Bild',
+	NS_FILE_TALK       => 'Bild_Diskuschoon',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'MediaWiki_Diskuschoon',
 	NS_TEMPLATE         => 'Vörlaag',

@@ -129,8 +129,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'Diskusia_s_redaktorom',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => 'Diskusia_k_{{grammar:datív|$1}}',
-	NS_IMAGE          => 'Obrázok',
-	NS_IMAGE_TALK     => 'Diskusia_k_obrázku',
+	NS_FILE          => 'Obrázok',
+	NS_FILE_TALK     => 'Diskusia_k_obrázku',
 	NS_MEDIAWIKI      => 'MediaWiki',
 	NS_MEDIAWIKI_TALK => 'Diskusia_k_MediaWiki',
 	NS_TEMPLATE       => 'Šablóna',
@@ -146,7 +146,7 @@ $namespaceAliases = array(
 	"Komentár"               => NS_TALK,
 	"Komentár_k_redaktorovi" => NS_USER_TALK,
 	"Komentár_k_Wikipédii"   => NS_PROJECT_TALK,
-	"Komentár_k_obrázku"     => NS_IMAGE_TALK,
+	"Komentár_k_obrázku"     => NS_FILE_TALK,
 	"Komentár_k_MediaWiki"   => NS_MEDIAWIKI_TALK,
 );
 

@@ -28,7 +28,7 @@ class UncategorizedImagesPage extends QueryPage {
 	function getSQL() {
 		$dbr = wfGetDB( DB_SLAVE );
 		list( $page, $categorylinks ) = $dbr->tableNamesN( 'page', 'categorylinks' );
-		$ns = NS_IMAGE;
+		$ns = NS_FILE;
 
 		return "SELECT 'Uncategorizedimages' AS type, page_namespace AS namespace,
 				page_title AS title, page_title AS value
@@ -38,7 +38,7 @@ class UncategorizedImagesPage extends QueryPage {
 
 	function formatResult( $skin, $row ) {
 		global $wgContLang;
-		$title = Title::makeTitleSafe( NS_IMAGE, $row->title );
+		$title = Title::makeTitleSafe( NS_FILE, $row->title );
 		$label = htmlspecialchars( $wgContLang->convert( $title->getText() ) );
 		return $skin->makeKnownLinkObj( $title, $label );
 	}

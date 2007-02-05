@@ -23,8 +23,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'بحث_کاربر',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => 'بحث_$1',
-	NS_IMAGE          => 'تصویر',
-	NS_IMAGE_TALK     => 'بحث_تصویر',
+	NS_FILE          => 'تصویر',
+	NS_FILE_TALK     => 'بحث_تصویر',
 	NS_MEDIAWIKI      => 'مدیاویکی',
 	NS_MEDIAWIKI_TALK	=> 'بحث_مدیاویکی',
 	NS_TEMPLATE       => 'الگو',

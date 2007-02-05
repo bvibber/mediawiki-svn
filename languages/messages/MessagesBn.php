@@ -12,8 +12,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'ব্যবহারকারী_আলাপ',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => '$1_আলাপ',
-	NS_IMAGE          => 'চিত্র',
-	NS_IMAGE_TALK     => 'চিত্র_আলাপ',
+	NS_FILE          => 'চিত্র',
+	NS_FILE_TALK     => 'চিত্র_আলাপ',
 	NS_MEDIAWIKI_TALK => 'MediaWiki_আলাপ'
 );
 $datePreferences = false;

@@ -134,7 +134,7 @@ function wfSpecialNewimages( $par, $specialPage ) {
 		$name = $s->img_name;
 		$ut = $s->img_user_text;
 
-		$nt = Title::newFromText( $name, NS_IMAGE );
+		$nt = Title::newFromText( $name, NS_FILE );
 		$img = new Image( $nt );
 		$ul = $sk->makeLinkObj( Title::makeTitle( NS_USER, $ut ), $ut );
 

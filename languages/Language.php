@@ -186,8 +186,8 @@ class Language {
  	 */
 	function getNamespaceSynonymsBootstrap() {
 		return array(
-         	NS_IMAGE => array( 'Image', 'Sound', 'Video' ),
-        	NS_IMAGE_TALK => array( 'Image_talk', 'Sound_talk', 'Video_talk' )
+         	NS_FILE => array( 'Image', 'Sound', 'Video' ),
+        	NS_FILE_TALK => array( 'Image_talk', 'Sound_talk', 'Video_talk' )
 		);
 	}
 

@@ -15,8 +15,8 @@ $namespaceNames = array(
 	NS_USER_TALK		=> 'Obrolan_pamaké',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK		=> 'Obrolan_$1',
-	NS_IMAGE			=> 'Gambar',
-	NS_IMAGE_TALK		=> 'Obrolan_gambar',
+	NS_FILE			=> 'Gambar',
+	NS_FILE_TALK		=> 'Obrolan_gambar',
 	NS_MEDIAWIKI		=> 'MediaWiki',
 	NS_MEDIAWIKI_TALK	=> 'Obrolan_MediaWiki',
 	NS_TEMPLATE			=> 'Citakan',

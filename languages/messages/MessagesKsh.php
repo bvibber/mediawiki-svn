@@ -51,8 +51,8 @@ $namespaceNames = array(
         NS_USER_TALK        => 'Metmaacher_Klaaf',
         # NS_PROJECT set by $wgMetaNamespace
         NS_PROJECT_TALK     => '$1_Klaaf',
-        NS_IMAGE            => 'Beld',
-        NS_IMAGE_TALK       => 'Belder_Klaaf',
+        NS_FILE            => 'Beld',
+        NS_FILE_TALK       => 'Belder_Klaaf',
         NS_MEDIAWIKI        => 'MediaWiki',
         NS_MEDIAWIKI_TALK   => 'MediaWiki_Klaaf',
         NS_TEMPLATE         => 'Schablon',
@@ -67,8 +67,8 @@ $namespaceNames = array(
  * Array of namespace aliases, mapping from name to NS_xxx index
  */
 $namespaceAliases = array(
-	'Belld'             => NS_IMAGE,
-	'Bellder_Klaaf'     => NS_IMAGE_TALK,
+	'Belld'             => NS_FILE,
+	'Bellder_Klaaf'     => NS_FILE_TALK,
 	'Sachjrop'          => NS_CATEGORY,
 	'Sachjrop_Klaaf'    => NS_CATEGORY_TALK,
 	'Kattejori'         => NS_CATEGORY,

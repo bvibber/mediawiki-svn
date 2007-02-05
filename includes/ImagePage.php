@@ -34,7 +34,7 @@ class ImagePage extends Article {
 		$diff = $wgRequest->getVal( 'diff' );
 		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
 
-		if ( $this->mTitle->getNamespace() != NS_IMAGE || ( isset( $diff ) && $diffOnly ) )
+		if ( $this->mTitle->getNamespace() != NS_FILE || ( isset( $diff ) && $diffOnly ) )
 			return Article::view();
 
 		if ($wgShowEXIF && $this->img->exists()) {
@@ -97,7 +97,7 @@ class ImagePage extends Article {
 	function showTOC( $metadata ) {
 		global $wgLang;
 		$r = '<ul id="filetoc">
-			<li><a href="#file">' . $wgLang->getNsText( NS_IMAGE ) . '</a></li>
+			<li><a href="#file">' . $wgLang->getNsText( NS_FILE ) . '</a></li>
 			<li><a href="#filehistory">' . wfMsgHtml( 'imghistory' ) . '</a></li>
 			<li><a href="#filelinks">' . wfMsgHtml( 'imagelinks' ) . '</a></li>' .
 			($metadata ? '<li><a href="#metadata">' . wfMsgHtml( 'metadata' ) . '</a></li>' : '') . '

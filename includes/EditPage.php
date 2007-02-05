@@ -1689,7 +1689,7 @@ END
 					'key'	=>	'H'
 				),
 			array(	'image'=>'button_image.png',
-					'open'	=>	'[['.$wgContLang->getNsText(NS_IMAGE).":",
+					'open'	=>	'[['.$wgContLang->getNsText(NS_FILE).":",
 					'close'	=>	']]',
 					'sample'=>	wfMsg('image_sample'),
 					'tip'	=>	wfMsg('image_tip'),

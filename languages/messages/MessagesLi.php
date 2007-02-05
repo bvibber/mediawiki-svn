@@ -23,8 +23,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'Euverlèk_gebroeker',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => 'Euverlèk_$1',
-	NS_IMAGE          => 'Aafbeilding',
-	NS_IMAGE_TALK     => 'Euverlèk_afbeelding',
+	NS_FILE          => 'Aafbeilding',
+	NS_FILE_TALK     => 'Euverlèk_afbeelding',
 	NS_MEDIAWIKI      => 'MediaWiki',
 	NS_MEDIAWIKI_TALK => 'Euverlèk_MediaWiki',
 	NS_TEMPLATE       => 'Sjabloon',

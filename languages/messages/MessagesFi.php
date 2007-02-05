@@ -61,8 +61,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'Keskustelu_käyttäjästä',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => 'Keskustelu_{{grammar:elative|$1}}',
-	NS_IMAGE            => 'Kuva',
-	NS_IMAGE_TALK       => 'Keskustelu_kuvasta',
+	NS_FILE            => 'Kuva',
+	NS_FILE_TALK       => 'Keskustelu_kuvasta',
 	NS_MEDIAWIKI        => 'Järjestelmäviesti',
 	NS_MEDIAWIKI_TALK   => 'Keskustelu_järjestelmäviestistä',
 	NS_TEMPLATE         => 'Malline',

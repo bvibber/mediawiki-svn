@@ -133,8 +133,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'Гутаркі_ўдзельніка',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => 'Абмеркаваньне_$1',
-	NS_IMAGE          => 'Выява',
-	NS_IMAGE_TALK     => 'Абмеркаваньне_выявы',
+	NS_FILE          => 'Выява',
+	NS_FILE_TALK     => 'Абмеркаваньне_выявы',
 	NS_MEDIAWIKI      => 'MediaWiki',
 	NS_MEDIAWIKI_TALK => 'Абмеркаваньне_MediaWiki',
 	NS_TEMPLATE       => 'Шаблён',

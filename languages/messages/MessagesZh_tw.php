@@ -14,8 +14,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => "用戶討論",
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1討論',
-	NS_IMAGE            => "圖像",
-	NS_IMAGE_TALK       => "圖像討論",
+	NS_FILE            => "圖像",
+	NS_FILE_TALK       => "圖像討論",
 	NS_MEDIAWIKI        => "媒體維基",
 	NS_MEDIAWIKI_TALK   => "媒體維基討論",
 	NS_TEMPLATE         => "樣板",
@@ -30,7 +30,7 @@ $namespaceAliases = array(
 	"對話" => NS_TALK,
 	"用戶對話" => NS_USER_TALK,
 	"維基百科對話" => NS_PROJECT_TALK,
-	"圖像對話" => NS_IMAGE_TALK,
+	"圖像對話" => NS_FILE_TALK,
 );
 
 $quickbarSettings = array(

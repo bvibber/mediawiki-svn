@@ -37,8 +37,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => "利用者‐会話", /* User_talk */
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => '$1‐ノート', /* Wikipedia_talk */
-	NS_IMAGE          => "画像", /* Image */
-	NS_IMAGE_TALK     => "画像‐ノート", /* Image_talk */
+	NS_FILE          => "画像", /* Image */
+	NS_FILE_TALK     => "画像‐ノート", /* Image_talk */
 	NS_MEDIAWIKI      => "MediaWiki", /* MediaWiki */
 	NS_MEDIAWIKI_TALK => "MediaWiki‐ノート", /* MediaWiki_talk */
 	NS_TEMPLATE       => "Template", /* Template */

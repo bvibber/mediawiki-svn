@@ -117,7 +117,7 @@ class PageArchive {
 	 * @fixme Does this belong in Image for fuller encapsulation?
 	 */
 	function listFiles() {
-		if( $this->title->getNamespace() == NS_IMAGE ) {
+		if( $this->title->getNamespace() == NS_FILE ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select( 'filearchive',
 				array(
@@ -267,7 +267,7 @@ class PageArchive {
 		$restoreText = $restoreAll || !empty( $timestamps );
 		$restoreFiles = $restoreAll || !empty( $fileVersions );
 		
-		if( $restoreFiles && $this->title->getNamespace() == NS_IMAGE ) {
+		if( $restoreFiles && $this->title->getNamespace() == NS_FILE ) {
 			$img = new Image( $this->title );
 			$filesRestored = $img->restore( $fileVersions );
 		} else {

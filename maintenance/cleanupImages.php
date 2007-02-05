@@ -57,7 +57,7 @@ class ImageCleanup extends TableCleanup {
 		// Many of remainder look like non-normalized unicode
 		$cleaned = UtfNormal::cleanUp( $cleaned );
 		
-		$title = Title::makeTitleSafe( NS_IMAGE, $cleaned );
+		$title = Title::makeTitleSafe( NS_FILE, $cleaned );
 		
 		if( is_null( $title ) ) {
 			$this->log( "page $source ($cleaned) is illegal." );
@@ -150,7 +150,7 @@ class ImageCleanup extends TableCleanup {
 			array( $this, 'hexChar' ),
 			$name );
 		
-		$test = Title::makeTitleSafe( NS_IMAGE, $x );
+		$test = Title::makeTitleSafe( NS_FILE, $x );
 		if( is_null( $test ) || $test->getDbKey() !== $x ) {
 			$this->log( "Unable to generate safe title from '$name', got '$x'" );
 			return false;

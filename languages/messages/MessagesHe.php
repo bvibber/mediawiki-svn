@@ -173,8 +173,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'שיחת_משתמש',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => 'שיחת_$1',
-	NS_IMAGE          => 'תמונה',
-	NS_IMAGE_TALK     => 'שיחת_תמונה',
+	NS_FILE          => 'תמונה',
+	NS_FILE_TALK     => 'שיחת_תמונה',
 	NS_MEDIAWIKI      => 'מדיה_ויקי',
 	NS_MEDIAWIKI_TALK => 'שיחת_מדיה_ויקי',
 	NS_TEMPLATE       => 'תבנית',

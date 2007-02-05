@@ -20,8 +20,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'Perbualan_Pengguna',#User_talk
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => 'Perbualan_$1',#Wikipedia_talk
-	NS_IMAGE          => 'Imej',#Image
-	NS_IMAGE_TALK     => 'Imej_Perbualan',#Image_talk
+	NS_FILE          => 'Imej',#Image
+	NS_FILE_TALK     => 'Imej_Perbualan',#Image_talk
 	NS_MEDIAWIKI      => 'MediaWiki',#MediaWiki
 	NS_MEDIAWIKI_TALK => 'MediaWiki_Perbualan',#MediaWiki_talk
 	NS_TEMPLATE       => 'Templat',#Template

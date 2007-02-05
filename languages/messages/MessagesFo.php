@@ -26,8 +26,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'Brúkari_kjak',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_kjak',
-	NS_IMAGE            => 'Mynd',
-	NS_IMAGE_TALK       => 'Mynd_kjak',
+	NS_FILE            => 'Mynd',
+	NS_FILE_TALK       => 'Mynd_kjak',
 	NS_MEDIAWIKI        => 'MidiaWiki',
 	NS_MEDIAWIKI_TALK   => 'MidiaWiki_kjak',
 	NS_TEMPLATE         => 'Fyrimynd',

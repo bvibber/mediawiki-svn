@@ -1671,7 +1671,7 @@ class Parser
 
 			if ($might_be_img) { # if this is actually an invalid link
 				wfProfileIn( "$fname-might_be_img" );
-				if ($ns == NS_IMAGE && $noforce) { #but might be an image
+				if ($ns == NS_FILE && $noforce) { #but might be an image
 					$found = false;
 					while (isset ($a[$k+1]) ) {
 						#look at the next 'line' to see if we can close it there
@@ -1728,7 +1728,7 @@ class Parser
 				}
 				wfProfileOut( "$fname-interwiki" );
 
-				if ( $ns == NS_IMAGE ) {
+				if ( $ns == NS_FILE ) {
 					wfProfileIn( "$fname-image" );
 					if ( !wfIsBadImage( $nt->getDBkey(), $this->mTitle ) ) {
 						# recursively parse links inside the image caption
@@ -1794,7 +1794,7 @@ class Parser
 			} elseif( $ns == NS_SPECIAL ) {
 				$s .= $this->makeKnownLinkHolder( $nt, $text, '', $trail, $prefix );
 				continue;
-			} elseif( $ns == NS_IMAGE ) {
+			} elseif( $ns == NS_FILE ) {
 				$img = new Image( $nt );
 				if( $img->exists() ) {
 					// Force a blue link if the file exists; may be a remote
@@ -4353,7 +4353,7 @@ class Parser
 			$ig->add( new Image( $nt ), $html );
 
 			# Only add real images (bug #5586)
-			if ( $nt->getNamespace() == NS_IMAGE ) {
+			if ( $nt->getNamespace() == NS_FILE ) {
 				$this->mOutput->addImage( $nt->getDBkey() );
 			}
 		}

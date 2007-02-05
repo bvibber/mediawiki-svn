@@ -366,7 +366,7 @@ class Title {
 
 		$t = preg_replace( "/\\s+/", ' ', $t );
 
-		if ( $ns == NS_IMAGE ) {
+		if ( $ns == NS_FILE ) {
 			$t = preg_replace( "/ (png|gif|jpg|jpeg|ogg)$/", "", $t );
 		}
 		return trim( $t );
@@ -1389,7 +1389,7 @@ class Title {
 
 		$dbr = wfGetDb( DB_SLAVE );
 
-		if ( $this->getNamespace() == NS_IMAGE ) {
+		if ( $this->getNamespace() == NS_FILE ) {
 			$tables = array ('imagelinks', 'page_restrictions');
 			$where_clauses = array(
 				'il_to' => $this->getDBkey(),
@@ -1579,7 +1579,7 @@ class Title {
 			$dbr = wfGetDB( DB_SLAVE );
 			$n = $dbr->selectField( 'archive', 'COUNT(*)', array( 'ar_namespace' => $this->getNamespace(),
 				'ar_title' => $this->getDBkey() ), $fname );
-			if( $this->getNamespace() == NS_IMAGE ) {
+			if( $this->getNamespace() == NS_FILE ) {
 				$n += $dbr->selectField( 'filearchive', 'COUNT(*)',
 					array( 'fa_name' => $this->getDBkey() ), $fname );
 			}
@@ -2616,8 +2616,8 @@ class Title {
 			case NS_PROJECT:
 			case NS_PROJECT_TALK:
 				return 'nstab-project';
-			case NS_IMAGE:
-			case NS_IMAGE_TALK:
+			case NS_FILE:
+			case NS_FILE_TALK:
 				return 'nstab-image';
 			case NS_MEDIAWIKI:
 			case NS_MEDIAWIKI_TALK:

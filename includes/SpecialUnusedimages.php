@@ -29,7 +29,7 @@ class UnusedimagesPage extends QueryPage {
 					FROM ((('.$page.' AS I LEFT JOIN '.$categorylinks.' AS L ON I.page_id = L.cl_from)
 						LEFT JOIN '.$imagelinks.' AS P ON I.page_title = P.il_to)
 						INNER JOIN '.$image.' AS G ON I.page_title = G.img_name)
-					WHERE I.page_namespace = '.NS_IMAGE.' AND L.cl_from IS NULL AND P.il_to IS NULL';
+					WHERE I.page_namespace = '.NS_FILE.' AND L.cl_from IS NULL AND P.il_to IS NULL';
 		} else {
 			list( $image, $imagelinks ) = $dbr->tableNamesN( 'image','imagelinks' );
 
@@ -40,7 +40,7 @@ class UnusedimagesPage extends QueryPage {
 
 	function formatResult( $skin, $result ) {
 		global $wgLang, $wgContLang;
-		$title = Title::makeTitle( NS_IMAGE, $result->title );
+		$title = Title::makeTitle( NS_FILE, $result->title );
 
 		$imageUrl = htmlspecialchars( Image::imageUrl( $result->title ) );
 		$dirmark = $wgContLang->getDirMark(); // To keep text in correct order

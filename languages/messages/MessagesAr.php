@@ -24,8 +24,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'نقاش_المستخدم',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => 'نقاش' . '_$1',
-	NS_IMAGE            => 'صورة',
-	NS_IMAGE_TALK       => 'نقاش_الصورة',
+	NS_FILE            => 'صورة',
+	NS_FILE_TALK       => 'نقاش_الصورة',
 	NS_MEDIAWIKI        => 'ميدياويكي',
 	NS_MEDIAWIKI_TALK   => 'نقاش_ميدياويكي',
 	NS_TEMPLATE         => 'قالب',

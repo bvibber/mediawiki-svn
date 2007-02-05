@@ -14,8 +14,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'User_vita',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => '$1_vita',
-	NS_IMAGE          => 'Kép',
-	NS_IMAGE_TALK     => 'Kép_vita',
+	NS_FILE          => 'Kép',
+	NS_FILE_TALK     => 'Kép_vita',
 	NS_MEDIAWIKI      => 'MediaWiki',
 	NS_MEDIAWIKI_TALK => 'MediaWiki_vita',
 	NS_TEMPLATE       => 'Sablon',

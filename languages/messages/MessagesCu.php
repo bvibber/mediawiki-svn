@@ -18,8 +18,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'Польѕевател_бесѣда', 
 	#NS_PROJECT set by $wgMetaNamespace
   	NS_PROJECT_TALK     => '{{grammar:genitive|$1}}_бесѣда',
-	NS_IMAGE            => 'Видъ',
-	NS_IMAGE_TALK       => 'Вида_бесѣда',
+	NS_FILE            => 'Видъ',
+	NS_FILE_TALK       => 'Вида_бесѣда',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'MediaWiki_бесѣда',
 	NS_TEMPLATE         => 'Образьць',

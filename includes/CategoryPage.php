@@ -218,7 +218,7 @@ class CategoryViewer {
 
 			if( $title->getNamespace() == NS_CATEGORY ) {
 				$this->addSubcategory( $title, $x->cl_sortkey, $x->page_len );
-			} elseif( $title->getNamespace() == NS_IMAGE ) {
+			} elseif( $title->getNamespace() == NS_FILE ) {
 				$this->addImage( $title, $x->cl_sortkey, $x->page_len );
 			} else {
 				$this->addPage( $title, $x->cl_sortkey, $x->page_len );

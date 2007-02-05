@@ -727,7 +727,7 @@ END;
 		}
 
 		if ( $wgOut->isArticleRelated() ) {
-			if ( $wgTitle->getNamespace() == NS_IMAGE ) {
+			if ( $wgTitle->getNamespace() == NS_FILE ) {
 				$name = $wgTitle->getDBkey();
 				$image = new Image( $wgTitle );
 				if( $image->exists() ) {
@@ -1452,7 +1452,7 @@ END;
 				case NS_PROJECT:
 					$text = wfMsg( 'projectpage' );
 					break;
-				case NS_IMAGE:
+				case NS_FILE:
 					$text = wfMsg( 'imagepage' );
 					break;
 				case NS_MEDIAWIKI:

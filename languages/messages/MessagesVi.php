@@ -16,8 +16,8 @@ $namespaceNames = array(
 	NS_USER_TALK		=> 'Thảo_luận_Thành_viên',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK		=> 'Thảo_luận_$1',
-	NS_IMAGE			=> 'Hình',
-	NS_IMAGE_TALK		=> 'Thảo_luận_Hình',
+	NS_FILE			=> 'Hình',
+	NS_FILE_TALK		=> 'Thảo_luận_Hình',
 	NS_MEDIAWIKI		=> 'MediaWiki',
 	NS_MEDIAWIKI_TALK	=> 'Thảo_luận_MediaWiki',
 	NS_TEMPLATE			=> 'Tiêu_bản',

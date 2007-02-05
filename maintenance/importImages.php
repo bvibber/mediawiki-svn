@@ -48,7 +48,7 @@ if( count( $args ) > 1 ) {
 		$base = wfBaseName( $file );
 		
 		# Validate a title
-		$title = Title::makeTitleSafe( NS_IMAGE, $base );
+		$title = Title::makeTitleSafe( NS_FILE, $base );
 		if( is_object( $title ) ) {
 			
 			# Check existence

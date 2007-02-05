@@ -57,7 +57,7 @@ class Image
 	 * @public
 	 */
 	public static function newFromName( $name ) {
-		$title = Title::makeTitleSafe( NS_IMAGE, $name );
+		$title = Title::makeTitleSafe( NS_FILE, $name );
 		if ( is_object( $title ) ) {
 			return new Image( $title );
 		} else {
@@ -1383,7 +1383,7 @@ class Image
 	 * but not the current data.
 	 */
 	function purgeDescription() {
-		$page = Title::makeTitle( NS_IMAGE, $this->name );
+		$page = Title::makeTitle( NS_FILE, $this->name );
 		$page->invalidateCache();
 		$page->purgeSquid();
 	}
@@ -1807,7 +1807,7 @@ class Image
 	 * @return bool
 	 */
 	function wasDeleted() {
-		$title = Title::makeTitle( NS_IMAGE, $this->name );
+		$title = Title::makeTitle( NS_FILE, $this->name );
 		return ( $title->isDeleted() > 0 );
 	}
 

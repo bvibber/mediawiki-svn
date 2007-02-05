@@ -14,8 +14,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'Kullanıcı_mesaj',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_tartışma',
-	NS_IMAGE            => 'Resim',
-	NS_IMAGE_TALK       => 'Resim_tartışma',
+	NS_FILE            => 'Resim',
+	NS_FILE_TALK       => 'Resim_tartışma',
 	NS_MEDIAWIKI        => 'MedyaViki',
 	NS_MEDIAWIKI_TALK   => 'MedyaViki_tartışma',
 	NS_TEMPLATE         => 'Şablon',

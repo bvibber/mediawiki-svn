@@ -532,7 +532,7 @@ class NamespaceStore {
 			# Cannot currently be changed through the UI - is
 			# there a need for it to be changeable?
 			$this->nsarray[$id]->setMovable(
-				$id < NS_MAIN || $id==NS_IMAGE || 
+				$id < NS_MAIN || $id==NS_FILE || 
 				$id==NS_CATEGORY ? false : true );
 			$this->nsarray[$id]->setIndex($id);
 			$this->nsarray[$id]->setSystemType($row->ns_system);

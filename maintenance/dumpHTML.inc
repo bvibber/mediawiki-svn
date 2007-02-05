@@ -283,7 +283,7 @@ class DumpHTML {
 						$this->setCheckpoint( 'local image', $row->img_name );
 					}
 				}
-				$title = Title::makeTitle( NS_IMAGE, $row->img_name );
+				$title = Title::makeTitle( NS_FILE, $row->img_name );
 				if ( $title->getArticleID() ) {
 					// Already done by dumpHTML
 					continue;
@@ -330,7 +330,7 @@ class DumpHTML {
 					print "$i\r";
 				}
 
-				$title = Title::makeTitleSafe( NS_IMAGE, $file );
+				$title = Title::makeTitleSafe( NS_FILE, $file );
 				$this->doArticle( $title );
 			}
 			if ( $handle ) {
@@ -635,7 +635,7 @@ class DumpHTML {
 			SpecialPage::executePath( $wgTitle );
 		} else {
 			/** @todo merge with Wiki.php code */
-			if ( $ns == NS_IMAGE ) {
+			if ( $ns == NS_FILE ) {
 				$wgArticle = new ImagePage( $wgTitle );
 			} elseif ( $ns == NS_CATEGORY ) {
 				$wgArticle = new CategoryPage( $wgTitle );

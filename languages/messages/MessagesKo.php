@@ -12,8 +12,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => '사용자토론',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => '$1토론',
-	NS_IMAGE          => '그림',
-	NS_IMAGE_TALK     => '그림토론',
+	NS_FILE          => '그림',
+	NS_FILE_TALK     => '그림토론',
 	NS_MEDIAWIKI      => 'MediaWiki',
 	NS_MEDIAWIKI_TALK => 'MediaWiki토론',
 	NS_TEMPLATE       => '틀',
