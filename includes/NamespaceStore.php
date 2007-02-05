@@ -394,7 +394,7 @@ class NamespaceStore {
 
 	/**
 	 * Maintain index used by getIndexByName
-     */
+        */
 	function refreshReverseIndex() {
 		$this->reverseindex = array();
 		foreach ($this->nsarray as $ns) {
@@ -665,6 +665,15 @@ class NamespaceStore {
 	function getAllNamespaceObjects( ) {
 		return $this->nsarray;
 	}
+
+	function isContent($id) {
+		return $this->nsarray[$id]->isCountable();
+	}
+	function getHandlerForId($id) {
+		return $this->nsarray[$id]->getHandlerClass();
+
+	}
+
 }
 
 

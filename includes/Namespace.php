@@ -640,6 +640,27 @@ class Namespace {
 		return $nsstore->deleteNamespace($this,$deleteSystem);
 	}
 
+	
+	static function isContent($id) {
+		$nsstore= wfGetNamespaceStore();
+		return $nsstore->isContent($id);
+	}
+
+	static function getHandlerForNamespaceId($id) {
+		$nsstore=wfGetNamespaceStore();
+		return $nsstore->getHandlerForId($id);
+	}
+
+	static function getHandlerPathForNamespaceId($id) {
+		global $wgCustomHandlerPath;
+		$handler=Namespace::getHandlerForNamespaceId($id);
+		if(array_key_exists($handler,$wgCustomHandlerPath)) {
+			return $wgCustomHandlerPath[$handler];
+		} else {
+			return $wgCustomHandlerPath['*'];
+		}
+	}
+
 }
 
 ?>

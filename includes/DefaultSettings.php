@@ -1012,6 +1012,7 @@ $wgGroupPermissions['bureaucrat']['namespaces'] = true;
 //$wgGroupPermissions['sysop']['deleterevision'] = true;
 //$wgGroupPermissions['bureaucrat']['hiderevision'] = true;
 
+
 /**
  * The developer group is deprecated, but can be activated if need be
  * to use the 'lockdb' and 'unlockdb' special pages. Those require
@@ -1040,7 +1041,6 @@ $wgRestrictionLevels = array( '', 'autoconfirmed', 'sysop' );
  */
 $wgNamespaceProtection = array();
 $wgNamespaceProtection[ NS_MEDIAWIKI ] = array( 'editinterface' );
-
 
 /**
  * Number of seconds an account is required to age before
@@ -2460,4 +2460,21 @@ $wgDisableQueryPageUpdate = false;
  */
 $wgEnableCascadingProtection = true;
 
+
+/* This will be prepended to all search paths for namespace
+ * handler files,  followed by the name of the handler as a filename. 
+ * Something like:
+ *
+ * /var/www/mywiki/extensions/CustomEditor.php
+ *
+ * You can change this on a per-handler basis, relative to the
+ * path above (begin without slash, terminate with slash).
+ * Use '*' as a HandlerName to define he default path which
+ * will be used for all handlers which are not specifically set.
+ *
+ * Must be slash-terminated.
+ * 
+ */
+$wgCustomHandlerPath = array('*'=>"{$IP}/extensions/");
+ 
 ?>

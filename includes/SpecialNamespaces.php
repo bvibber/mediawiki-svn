@@ -784,7 +784,7 @@ END;
 		$nsobj = $nsstore->getNamespaceObjectByIndex($targetid);
 		
 		$talktargetid=$nsobj->getTalk();
-		$talk4nsobj=$nsstore->getNamespaceObjectByIndex($targettalkid);
+		$talk4nsobj=$nsstore->getNamespaceObjectByIndex($talktargetid);
 
 		if($converttalk && is_null($talktargetid)) {
 			$this->showForm (wfMsg('pseudonamespace_target_talk_not_found'));
@@ -823,8 +823,9 @@ END;
 		$this->showForm();
 	}
 	function showPseudoError($rv,$targetid,$prefix) {
-		global $wgNamespaces;
-		$istalk=$wgNamespaces[$targetid]->isTalk();
+		$nsstore = wfGetNamespaceStore();
+		$targetobj=$nsstore->getNamespaceObjectByIndex($targetid);
+		$istalk=$targetobj->isTalk();
 		# For messages
 		$talk=$istalk ? 'talk_' : '';
 		if($rv[NS_RESULT]==NS_PSEUDO_NOT_FOUND) {
@@ -836,7 +837,7 @@ END;
 		} elseif($rv[NS_RESULT]==NS_DUPLICATE_TITLES) {
 			$this->showForm(
 			wfMsg("pseudonamespace_{$talk}conversion_error",$prefix),
-				$this->pseudoDupes($wgNamespaces[$targetid]->getDefaultName(),$rv[NS_DUPLICATE_TITLE_LIST]));
+				$this->pseudoDupes($targetobj->getDefaultName(),$rv[NS_DUPLICATE_TITLE_LIST]));
 		}
 	}
 

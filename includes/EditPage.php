@@ -290,6 +290,23 @@ class EditPage {
 		wfProfileIn( $fname );
 		wfDebug( "$fname: enter\n" );
 
+		# We may want to edit this page using a handler class
+		$ns=$wgTitle->getNamespace();
+                $handlerClass=Namespace::getHandlerForNamespaceId($ns);
+                if(!empty($handlerClass)) {
+			$handlerPath=Namespace::getHandlerPathForNamespaceId($ns);
+			$hfilename=$handlerPath.$handlerClass.".php"; 
+			if(file_exists($hfilename)) {
+                        	require_once($hfilename);
+	                        $handlerInstance=new $handlerClass();
+        	                $handlerInstance->edit();
+				return;
+			} else {
+				$wgOut->showErrorPage('namespace_handler_not_found','namespace_handler_not_found_error',$hfilename,$wgContLang->getFormattedNsText($ns));
+			}
+                }
+
+
 		// this is not an article
 		$wgOut->setArticleFlag(false);
 

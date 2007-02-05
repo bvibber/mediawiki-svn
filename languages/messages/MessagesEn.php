@@ -2865,6 +2865,8 @@ Please confirm that really want to recreate this page.',
 'namespace_not_deletable'=>'The namespace cannot be deleted.',
 'namespace_has_gone_missing'=>'A namespace with the number $1 was not found.',
 'namespace_not_deletable_system'=>'The namespace with the number $1 is a system namespace which is required for the operation of MediaWiki.',
+'namespace_handler_not_found'=>'Namespace handler not found!',
+'namespace_handler_not_found_error'=>'This page requires a special handler to view, expected in the directory \'$1\'! Please make sure that this file is present before viewing pages of the type \'$2\'.',
 
 );
 

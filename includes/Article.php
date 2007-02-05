@@ -604,13 +604,28 @@ class Article {
 	function view()	{
 		global $wgUser, $wgOut, $wgRequest, $wgContLang;
 		global $wgEnableParserCache, $wgStylePath, $wgUseRCPatrol, $wgParser;
-		global $wgUseTrackbacks, $wgNamespaceRobotPolicies;
+		global $wgUseTrackbacks, $wgNamespaceRobotPolicies, $wgTitle;
 		$sk = $wgUser->getSkin();
 
 		wfProfileIn( __METHOD__ );
 
+		# We may want to view this page using a handler class
+		$ns=$this->mTitle->getNamespace();
+                $handlerClass=Namespace::getHandlerForNamespaceId($ns);
+                if(!empty($handlerClass)) {
+			$handlerPath=Namespace::getHandlerPathForNamespaceId($ns);
+			$hfilename=$handlerPath.$handlerClass.".php"; 
+			if(file_exists($hfilename)) {
+                        	require_once($hfilename);
+	                        $handlerInstance=new $handlerClass();
+        	                $handlerInstance->view();
+				return;
+			} else {
+				$wgOut->showErrorPage('namespace_handler_not_found','namespace_handler_not_found_error',$hfilename,$wgContLang->getFormattedNsText($ns));
+			}
+                }
+
 		$parserCache =& ParserCache::singleton();
-		$ns = $this->mTitle->getNamespace(); # shortcut
 
 		# Get variables from query string
 		$oldid = $this->getOldID();

@@ -745,12 +745,16 @@ class OutputPage {
 	 * Outputs a pretty page to explain why the request exploded.
 	 *
 	 * @param string $title Message key for page title.
-	 * @param string $msg   Message key for page text.
+	 * @param string $msg   Message key for page text. 
+	 * @param string, string .. (optional) substitutions for $1, $2 .. in the error message.
 	 * @return nothing
 	 */
 	public function showErrorPage( $title, $msg ) {
 		global $wgTitle;
-
+		
+	       # Optional error message substitutions $1, $2 ...
+	       $args = func_get_args();
+               array_shift( $args );		
 		$this->mDebugtext .= 'Original title: ' .
 		  $wgTitle->getPrefixedText() . "\n";
 		$this->setPageTitle( wfMsg( $title ) );
@@ -761,7 +765,7 @@ class OutputPage {
 		$this->mRedirect = '';
 
 		$this->mBodytext = '';
-		$this->addWikiText( wfMsg( $msg ) );
+		$this->addWikiText( wfMsg( $msg, $args ) );
 		$this->returnToMain( false );
 	}
 

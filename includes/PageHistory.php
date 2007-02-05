@@ -59,6 +59,22 @@ class PageHistory {
 		$fname = 'PageHistory::history';
 		wfProfileIn( $fname );
 
+		# We may want to view this page using a handler class
+		$ns=$this->mTitle->getNamespace();
+                $handlerClass=Namespace::getHandlerForNamespaceId($ns);
+                if(!empty($handlerClass)) {
+			$handlerPath=Namespace::getHandlerPathForNamespaceId($ns);
+			$hfilename=$handlerPath.$handlerClass.".php"; 
+			if(file_exists($hfilename)) {
+                        	require_once($hfilename);
+	                        $handlerInstance=new $handlerClass();
+        	                $handlerInstance->history();
+				return;
+			} else {
+				$wgOut->showErrorPage('namespace_handler_not_found','namespace_handler_not_found_error',$hfilename,$wgContLang->getFormattedNsText($ns));
+			}
+                }
+
 		/*
 		 * Setup page variables.
 		 */
