@@ -49,7 +49,7 @@ class SearchEngine {
 	 * @private
 	 */
 	function getNearMatch( $searchterm ) {
-		global $wgContLang;
+		global $wgContLang,$wgDefaultGoPrefix;
 
 		$allSearchTerms = array($searchterm);
 
@@ -68,6 +68,10 @@ class SearchEngine {
 				return $title;
 			}
 
+	                if(!empty($wgDefaultGoPrefix) && $title->getNamespace == NS_MAIN ) {
+	                	$term=$wgDefaultGoPrefix.$term;
+			}
+                                                                                
 			# Now try all lower case (i.e. first letter capitalized)
 			#
 			$title = Title::newFromText( $wgContLang->lc( $term ) );

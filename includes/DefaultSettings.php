@@ -2476,5 +2476,11 @@ $wgEnableCascadingProtection = true;
  * 
  */
 $wgCustomHandlerPath = array('*'=>"{$IP}/extensions/");
+
+/*
+ * Prefix to be added before "Go" searches, e.g. point to a different
+ * namespace.
+ */
+$wgDefaultGoPrefix='';
  
 ?>
