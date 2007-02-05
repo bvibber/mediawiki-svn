@@ -1,23 +1,23 @@
-use WiktionaryZ;
+use OmegaWiki;
 use POSIX qw(strftime);
 
 my $startTime = time;
 
-# Example usage to import UMLS completely into an existing WiktionaryZ database:
-# my $importer=new WiktionaryZ('wikidatadb','root','MyPass');
+# Example usage to import UMLS completely into an existing OmegaWiki database:
+# my $importer=new OmegaWiki('wikidatadb','root','MyPass');
 # $importer->setSourceDB('umls');
 # $importer->initialize;
 # $importer->importCompleteUMLS();
 
-# Example usage to import a part of UMLS into an existing WiktionaryZ database:
-# my $importer=new WiktionaryZ('wikidatadb','root','MyPass');
+# Example usage to import a part of UMLS into an existing OmegaWiki database:
+# my $importer=new OmegaWiki('wikidatadb','root','MyPass');
 # $importer->setSourceDB('umls');
 # $importer->initialize;
 # my %sourceAbbreviations = $importer->loadSourceAbbreviations();
 # delete($sourceAbbreviations{"MSH"});
 # $importer->importUMLS(\%sourceAbbreviations);
 
-my $importer=new WiktionaryZ('wikidata_icpc','root','');
+my $importer=new OmegaWiki('wikidata_icpc','root','');
 $importer->setSourceDB('umls');
 #$importer->setSourceDB('swissprot');
 $importer->initialize;

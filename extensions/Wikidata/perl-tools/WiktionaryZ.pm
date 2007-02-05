@@ -1,6 +1,6 @@
-# Example usage to import UMLS into an existing WiktionaryZ database:
-# use WiktionaryZ;
-# my $importer=new WiktionaryZ('wikidatadb','root','MyPass');
+# Example usage to import UMLS into an existing OmegaWiki database:
+# use OmegaWiki;
+# my $importer=new OmegaWiki('wikidatadb','root','MyPass');
 # $importer->setSourceDB('umls');
 # $importer->initialize;
 # $importer->importCompleteUMLS();
@@ -17,7 +17,7 @@
 # Fully deal with alternative definitions referring to the same concept
 # Deal with preferred lexical expressions, primary concepts (general weighting mechanism?)
 
-package WiktionaryZ;
+package OmegaWiki;
 use DBI;
 use Encode;
 use POSIX qw(strftime);
