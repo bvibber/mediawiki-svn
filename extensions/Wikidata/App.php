@@ -20,4 +20,8 @@ function addWikidataHeader() {
   $wgOut->addLink(array('rel'=>'stylesheet','type'=>'text/css','media'=>'screen, projection','href'=>"{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.css"));
   $wgOut->addLink(array('rel'=>'stylesheet','type'=>'text/css','media'=>'screen, projection','href'=>"{$wgScriptPath}/extensions/Wikidata/OmegaWiki/tables.css"));                                                                                                                                                                    
 }
+
+# all DMs will be put in this class by default.
+$wgDefaultClassMids = array(402295);
+
 ?>
