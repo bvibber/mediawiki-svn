@@ -74,14 +74,13 @@ class DefaultWikidataApplication implements WikidataApplication {
 			
 		$wgOut->enableClientCache(false);
 		
-		$titleArray = $wgTitle->getTitleArray();
+		$title = $wgTitle->getPrefixedText();
 
 		if (!$this->showClassicPageTitles) {
-			$titleArray["mainpart"] = $this->getTitle();
-			$titleArray["namespace"] = ""; 
+			$title = $this->getTitle()->getText();
 		}
 
-		$wgOut->setPageTitleArray($titleArray);
+		$wgOut->setPageTitle($title);
 
 		if ($this->showLanguageSelector)
 			$wgOut->addHTML($this->getLanguageSelector());
