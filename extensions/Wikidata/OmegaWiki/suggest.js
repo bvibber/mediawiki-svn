@@ -134,7 +134,6 @@ function updateSelectOptions(id, objectId, value) {
 
 	if (location.indexOf('index.php/') > 0)
 		URL = '../' + URL;
-
 	http.open('GET', URL + '/Special:Select?option-attribute=' + encodeURI(value) + '&attribute-object=' + encodeURI(objectId), true);
 	http.send(null);
 
