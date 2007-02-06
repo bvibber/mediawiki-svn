@@ -762,9 +762,21 @@ function getPossiblySynonymousRecordSet($definedMeaningId, $filterLanguageId, $p
 	return $recordSet;
 }
 
+function getGotoSourceRecord($record) {
+	global
+		$gotoSourceStructure, $collectionIdAttribute, $sourceIdentifierAttribute;	
+		
+	$result = new ArrayRecord($gotoSourceStructure);
+	$result->setAttributeValue($collectionIdAttribute, $record->getAttributeValue($collectionIdAttribute));
+	$result->setAttributeValue($sourceIdentifierAttribute, $record->getAttributeValue($sourceIdentifierAttribute));
+	
+	return $result;
+}
+
 function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global
-		$collectionMembershipsTable, $collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute;
+		$collectionMembershipsTable, $collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute,
+		$gotoSourceAttribute;
 
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
@@ -781,7 +793,8 @@ function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $quer
 
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 		$record = $recordSet->getRecord($i);
-		$record->setAttributeValue($collectionMeaningAttribute, getCollectionMeaningId($record->getAttributeValue($collectionIdAttribute)));	
+		$record->setAttributeValue($collectionMeaningAttribute, getCollectionMeaningId($record->getAttributeValue($collectionIdAttribute)));
+		$record->setAttributeValue($gotoSourceAttribute, getGotoSourceRecord($record));	
 	}
 	
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($collectionMeaningAttribute));

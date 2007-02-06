@@ -4,6 +4,7 @@ require_once('Editor.php');
 require_once('OmegaWikiAttributes.php');
 require_once('WikiDataBootstrappedMeanings.php');
 require_once('Fetcher.php');
+require_once('GotoSourceTemplate.php');
 
 function initializeObjectAttributeEditors($filterLanguageId, $showRecordLifeSpan, $showAuthority) {
 	global
@@ -258,11 +259,15 @@ function getGroupedRelationTypeEditor($groupedRelationsAttribute, $groupedRelati
 
 function getDefinedMeaningCollectionMembershipEditor($showRecordLifeSpan, $showAuthority) {
 	global
-		$collectionMembershipAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute;
+		$collectionMembershipAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute, 
+		$gotoSourceAttribute, $wgGotoSourceTemplates;
 
 	$editor = new RecordSetTableEditor($collectionMembershipAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new DefinedMeaningCollectionController());
 	$editor->addEditor(new CollectionReferenceEditor($collectionMeaningAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new ShortTextEditor($sourceIdentifierAttribute, new SimplePermissionController(true), true));
+	
+	if (count($wgGotoSourceTemplates) > 0)
+		$editor->addEditor(new GotoSourceEditor($gotoSourceAttribute, new SimplePermissionController(true), true));
 
 	addTableMetadataEditors($editor, $showRecordLifeSpan, $showAuthority);
 

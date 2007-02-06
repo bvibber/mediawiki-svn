@@ -22,6 +22,7 @@ global
 	$wgExpressionAttributeName,
 	$wgExpressionMeaningsAttributeName,
 	$wgExpressionsAttributeName,
+	$wgGotoSourceAttributeName,
 	$wgIdenticalMeaningAttributeName,
 	$wgIncomingRelationsAttributeName, 
 	$wgLevelAnnotationAttributeName,
@@ -71,6 +72,7 @@ $wgExpressionMeaningsAttributeName = "Expression meanings";
 $wgExpressionsAttributeName = "Expressions";
 $wgIdenticalMeaningAttributeName = "Identical meaning?";
 $wgIncomingRelationsAttributeName = "Incoming relations";
+$wgGotoSourceAttributeName = "Go to source";
 $wgLanguageAttributeName = "Language";
 $wgLevelAnnotationAttributeName = "Annotation";
 $wgOptionAttributeAttributeName = "Property";
@@ -97,5 +99,12 @@ $wgTranslatedTextAttributeValueAttributeName = "Text";
 $wgTranslatedTextAttributeValuesAttributeName = "Text properties";
 $wgUrlAttributeAttributeName = "Property";
 $wgUrlAttributeValuesAttributeName = "URL properties";
+
+require_once("GotoSourceTemplate.php");
+
+global
+	$wgGotoSourceTemplates;
+
+$wgGotoSourceTemplates = array();	// Map of collection id => GotoSourceTemplate
 
 ?>

@@ -3,6 +3,7 @@
 require_once("HTMLtable.php");
 require_once("Controller.php");
 require_once("type.php");
+require_once("GotoSourceTemplate.php");
 
 function addCollapsablePrefixToClass($class) {
 	return "collapsable-$class";
@@ -1981,6 +1982,30 @@ class ObjectPathEditor extends Viewer {
 			return "Syntrans " . $objectId;
 	}
 
+	public function showsData($value) {
+		return true;
+	}
+}
+
+class GotoSourceEditor extends Viewer {	
+	public function view($idPath, $value) {
+		global
+			$sourceIdentifierAttribute, $collectionIdAttribute, $wgGotoSourceTemplates;
+		
+		$collectionId = $value->getAttributeValue($collectionIdAttribute);			
+		$sourceIdentifier = $value->getAttributeValue($sourceIdentifierAttribute);
+
+		$gotoSourceTemplate = $wgGotoSourceTemplates[$collectionId];
+		
+		if ($gotoSourceTemplate != null) {	
+			$url = $gotoSourceTemplate->getURL($sourceIdentifier);
+			return '<a href="'. htmlspecialchars($url) . '">Go to source</a>';
+		}	
+		else
+			return "";
+		
+	}
+	
 	public function showsData($value) {
 		return true;
 	}

@@ -53,12 +53,15 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	
 	global
 		$collectionIdAttribute, $collectionMeaningType, $collectionMeaningAttribute, $sourceIdentifierAttribute,
-		$wgCollectionAttributeName, $wgSourceIdentifierAttributeName;
+		$gotoSourceStructure, $gotoSourceAttribute,
+		$wgCollectionAttributeName, $wgSourceIdentifierAttributeName, $wgGotoSourceAttributeName;
 	
 	$collectionIdAttribute = new Attribute("collection", "Collection", "collection-id");
 	$collectionMeaningType = new RecordType($definedMeaningReferenceStructure);
 	$collectionMeaningAttribute = new Attribute("collection-meaning", $wgCollectionAttributeName, $collectionMeaningType);
-	$sourceIdentifierAttribute = new Attribute("source-identifier", $wgSourceIdentifierAttributeName, "short-text"); 
+	$sourceIdentifierAttribute = new Attribute("source-identifier", $wgSourceIdentifierAttributeName, "short-text");
+	$gotoSourceStructure = new Structure($collectionIdAttribute, $sourceIdentifierAttribute);
+	$gotoSourceAttribute = new Attribute("goto-source", $wgGotoSourceAttributeName, new RecordType($gotoSourceStructure)); 
 	
 	global
 		$collectionMembershipAttribute, $wgCollectionMembershipAttributeName;
