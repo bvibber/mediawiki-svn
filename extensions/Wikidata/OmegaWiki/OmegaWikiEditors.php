@@ -7,7 +7,7 @@ require_once('Fetcher.php');
 
 function initializeObjectAttributeEditors($filterLanguageId, $showRecordLifeSpan, $showAuthority) {
 	global
-		$objectAttributesAttribute,
+		$objectAttributesAttribute, $definedMeaningAttributesAttribute,
 		$definedMeaningObjectAttributesEditor, $definedMeaningIdAttribute,
 		$definitionObjectAttributesEditor, $definedMeaningIdAttribute,
 		$synonymsAndTranslationsObjectAttributesEditor, $syntransIdAttribute,
@@ -21,7 +21,7 @@ function initializeObjectAttributeEditors($filterLanguageId, $showRecordLifeSpan
 		$relationMeaningName, $synTransMeaningName,
 		$annotationMeaningName;
 		
-	$definedMeaningObjectAttributesEditor =	new RecordUnorderedListEditor($objectAttributesAttribute, 5);
+	$definedMeaningObjectAttributesEditor =	new RecordUnorderedListEditor($definedMeaningAttributesAttribute, 5);
 	$definitionObjectAttributesEditor =	new RecordUnorderedListEditor($objectAttributesAttribute, 5); 
 	$synonymsAndTranslationsObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$possiblySynonymousObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
@@ -87,7 +87,7 @@ function addTableMetadataEditors($editor, $showRecordLifeSpan, $showAuthority) {
 
 function getDefinitionEditor($filterLanguageId, $showRecordLifeSpan, $showAuthority) {
 	global
-		$definitionAttribute, $translatedTextAttribute, $definitionObjectAttributesEditor;
+		$definitionAttribute, $translatedTextAttribute, $definitionObjectAttributesEditor, $wgPopupAnnotationName;
 
 	if ($filterLanguageId == 0)
 		$controller = new DefinedMeaningDefinitionController();
@@ -96,7 +96,7 @@ function getDefinitionEditor($filterLanguageId, $showRecordLifeSpan, $showAuthor
 
 	$editor = new RecordDivListEditor($definitionAttribute);
 	$editor->addEditor(getTranslatedTextEditor($translatedTextAttribute, $controller, $filterLanguageId, $showRecordLifeSpan, $showAuthority));
-	$editor->addEditor(new PopUpEditor($definitionObjectAttributesEditor, 'Annotation'));
+	$editor->addEditor(new PopUpEditor($definitionObjectAttributesEditor, $wgPopupAnnotationName));
 
 	return $editor;		
 }	
@@ -178,12 +178,12 @@ function getClassAttributesEditor($showRecordLifeSpan, $showAuthority) {
 function getSynonymsAndTranslationsEditor($filterLanguageId, $showRecordLifeSpan, $showAuthority) {
 	global
 		$synonymsAndTranslationsAttribute, $identicalMeaningAttribute, $expressionIdAttribute, 
-		$expressionAttribute, $synonymsAndTranslationsObjectAttributesEditor;
+		$expressionAttribute, $synonymsAndTranslationsObjectAttributesEditor, $wgPopupAnnotationName;
 
 	$tableEditor = new RecordSetTableEditor($synonymsAndTranslationsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new SynonymTranslationController($filterLanguageId));
 	$tableEditor->addEditor(getExpressionTableCellEditor($expressionAttribute, $filterLanguageId));
 	$tableEditor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(true), true, true));
-	$tableEditor->addEditor(new PopUpEditor($synonymsAndTranslationsObjectAttributesEditor, 'Annotation'));
+	$tableEditor->addEditor(new PopUpEditor($synonymsAndTranslationsObjectAttributesEditor, $wgPopupAnnotationName));
 
 	addTableMetadataEditors($tableEditor, $showRecordLifeSpan, $showAuthority);
 
@@ -193,12 +193,12 @@ function getSynonymsAndTranslationsEditor($filterLanguageId, $showRecordLifeSpan
 function getDefinedMeaningRelationsEditor($showRecordLifeSpan, $showAuthority) {
 	global
 		$relationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute,
-		$relationsObjectAttributesEditor;
+		$relationsObjectAttributesEditor, $wgPopupAnnotationName;
 
 	$editor = new RecordSetTableEditor($relationsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new DefinedMeaningRelationController());
 	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
-	$editor->addEditor(new PopUpEditor($relationsObjectAttributesEditor, 'Annotation'));
+	$editor->addEditor(new PopUpEditor($relationsObjectAttributesEditor, $wgPopupAnnotationName));
 
 	addTableMetadataEditors($editor, $showRecordLifeSpan, $showAuthority);
 
@@ -208,12 +208,12 @@ function getDefinedMeaningRelationsEditor($showRecordLifeSpan, $showAuthority) {
 function getDefinedMeaningReciprocalRelationsEditor($showRecordLifeSpan, $showAuthority) {
 	global
 		$reciprocalRelationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute,
-		$relationsObjectAttributesEditor;
+		$relationsObjectAttributesEditor, $wgPopupAnnotationName;
 
 	$editor = new RecordSetTableEditor($reciprocalRelationsAttribute, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
-	$editor->addEditor(new PopUpEditor($relationsObjectAttributesEditor, 'Annotation'));
+	$editor->addEditor(new PopUpEditor($relationsObjectAttributesEditor, $wgPopupAnnotationName));
 
 	addTableMetadataEditors($editor, $showRecordLifeSpan, $showAuthority);
 
@@ -233,6 +233,9 @@ function getDefinedMeaningClassMembershipEditor($showRecordLifeSpan, $showAuthor
 }
 
 function getGroupedRelationTypeEditor($groupedRelationsAttribute, $groupedRelationIdAttribute, $otherDefinedMeaningAttribute, $relationTypeId, $showRecordLifeSpan, $showAuthority, $objectAttributesEditor) {
+	global
+		$wgPopupAnnotationName;
+	
 	$editor = new RecordSetTableEditor(
 		$groupedRelationsAttribute, 
 		new SimplePermissionController(true), 
@@ -246,7 +249,7 @@ function getGroupedRelationTypeEditor($groupedRelationsAttribute, $groupedRelati
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
 	
 	if ($objectAttributesEditor != null)
-		$editor->addEditor(new PopUpEditor($objectAttributesEditor, 'Annotation'));
+		$editor->addEditor(new PopUpEditor($objectAttributesEditor, $wgPopupAnnotationName));
 
 	addTableMetadataEditors($editor, $showRecordLifeSpan, $showAuthority);
 
@@ -268,12 +271,13 @@ function getDefinedMeaningCollectionMembershipEditor($showRecordLifeSpan, $showA
 
 function getTextAttributeValuesEditor($showRecordLifeSpan, $showAuthority, $controller, $levelDefinedMeaningName, $objectIdFetcher) {
 	global
-		$textAttributeAttribute, $textAttribute, $textAttributeValuesAttribute, $textValueObjectAttributesEditor;
+		$textAttributeAttribute, $textAttribute, $textAttributeValuesAttribute, $textValueObjectAttributesEditor,
+		$wgPopupAnnotationName;
 
 	$editor = new RecordSetTableEditor($textAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new TextAttributeEditor($textAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
 	$editor->addEditor(new TextEditor($textAttribute, new SimplePermissionController(true), true));
-	$editor->addEditor(new PopUpEditor($textValueObjectAttributesEditor, 'Annotation'));
+	$editor->addEditor(new PopUpEditor($textValueObjectAttributesEditor, $wgPopupAnnotationName));
 
 	addTableMetadataEditors($editor, $showRecordLifeSpan, $showAuthority);
 
@@ -282,12 +286,13 @@ function getTextAttributeValuesEditor($showRecordLifeSpan, $showAuthority, $cont
 
 function getURLAttributeValuesEditor($showRecordLifeSpan, $showAuthority, $controller, $levelDefinedMeaningName, $objectIdFetcher) {
 	global
-		$urlAttributeAttribute, $urlAttribute, $urlAttributeValuesAttribute, $urlValueObjectAttributesEditor;
+		$urlAttributeAttribute, $urlAttribute, $urlAttributeValuesAttribute, $urlValueObjectAttributesEditor, 
+		$wgPopupAnnotationName;
 
 	$editor = new RecordSetTableEditor($urlAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new TextAttributeEditor($urlAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
 	$editor->addEditor(new URLEditor($urlAttribute, new SimplePermissionController(true), true));
-	$editor->addEditor(new PopUpEditor($urlValueObjectAttributesEditor, 'Annotation'));
+	$editor->addEditor(new PopUpEditor($urlValueObjectAttributesEditor, $wgPopupAnnotationName));
 
 	addTableMetadataEditors($editor, $showRecordLifeSpan, $showAuthority);
 
@@ -296,7 +301,8 @@ function getURLAttributeValuesEditor($showRecordLifeSpan, $showAuthority, $contr
 
 function getTranslatedTextAttributeValuesEditor($filterLanguageId, $showRecordLifeSpan, $showAuthority, $controller, $levelDefinedMeaningName, $objectIdFetcher) {
 	global
-		$translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, $translatedTextValueObjectAttributesEditor;
+		$translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, 
+		$translatedTextValueObjectAttributesEditor, $wgPopupAnnotationName;
 
 	if ($filterLanguageId == 0)
 		$translatedTextAttributeValueController = new TranslatedTextAttributeValueController();
@@ -306,7 +312,7 @@ function getTranslatedTextAttributeValuesEditor($filterLanguageId, $showRecordLi
 	$editor = new RecordSetTableEditor($translatedTextAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new TranslatedTextAttributeEditor($translatedTextAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
 	$editor->addEditor(getTranslatedTextEditor($translatedTextValueAttribute, $translatedTextAttributeValueController, $filterLanguageId, $showRecordLifeSpan, $showAuthority));
-	$editor->addEditor(new PopUpEditor($translatedTextValueObjectAttributesEditor, 'Annotation'));
+	$editor->addEditor(new PopUpEditor($translatedTextValueObjectAttributesEditor, $wgPopupAnnotationName));
 
 	addTableMetadataEditors($editor, $showRecordLifeSpan, $showAuthority);
 
@@ -315,13 +321,14 @@ function getTranslatedTextAttributeValuesEditor($filterLanguageId, $showRecordLi
 
 function getOptionAttributeValuesEditor($showRecordLifeSpan, $showAuthority, $controller, $levelDefinedMeaningName, $objectIdFetcher) {
 	global
-		$optionAttributeAttribute, $optionAttributeOptionAttribute, $optionAttributeValuesAttribute, $optionValueObjectAttributesEditor;
+		$optionAttributeAttribute, $optionAttributeOptionAttribute, $optionAttributeValuesAttribute, 
+		$optionValueObjectAttributesEditor, $wgPopupAnnotationName;
 
 	$editor = new RecordSetTableEditor($optionAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
 
 	$editor->addEditor(new OptionAttributeEditor($optionAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
 	$editor->addEditor(new OptionSelectEditor($optionAttributeOptionAttribute, new SimplePermissionController(false), true));
-	$editor->addEditor(new PopUpEditor($optionValueObjectAttributesEditor, 'Annotation'));
+	$editor->addEditor(new PopUpEditor($optionValueObjectAttributesEditor, $wgPopupAnnotationName));
 
 	addTableMetadataEditors($editor, $showRecordLifeSpan, $showAuthority);
 

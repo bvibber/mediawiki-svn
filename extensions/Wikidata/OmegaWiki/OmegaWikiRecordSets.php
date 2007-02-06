@@ -427,7 +427,7 @@ function getDefinedMeaningRecord($definedMeaningId, $filterLanguageId, $possibly
 		$definedMeaningAttribute, $definitionAttribute, $classAttributesAttribute, 
 		$alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
 		$relationsAttribute, $reciprocalRelationsAttribute,
-		$classMembershipAttribute, $collectionMembershipAttribute, $objectAttributesAttribute,
+		$classMembershipAttribute, $collectionMembershipAttribute, $definedMeaningAttributesAttribute,
 		$possiblySynonymousAttribute;
 
 	$record = new ArrayRecord($definedMeaningAttribute->type->getStructure());
@@ -447,7 +447,7 @@ function getDefinedMeaningRecord($definedMeaningId, $filterLanguageId, $possibly
 	$record->setAttributeValue($reciprocalRelationsAttribute, getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
 	$record->setAttributeValue($classMembershipAttribute, getDefinedMeaningClassMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
 	$record->setAttributeValue($collectionMembershipAttribute, getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
-	$record->setAttributeValue($objectAttributesAttribute, getObjectAttributesRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
+	$record->setAttributeValue($definedMeaningAttributesAttribute, getObjectAttributesRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
 
 	return $record;
 }
