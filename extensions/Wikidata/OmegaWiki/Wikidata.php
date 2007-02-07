@@ -17,6 +17,8 @@ class DefaultWikidataApplication implements WikidataApplication {
 	protected $queryTransactionInformation;
 	protected $viewQueryTransactionInformation;
 	protected $shouldShowAuthorities;
+	protected $showCommunityContribution;
+	protected $authoritiesToShow;
 	
 	// The following member variables control some application specific preferences
 	protected $availableAuthorities = array();				// A map containing (userId => displayName) combination for authoritative contribution view
@@ -68,53 +70,78 @@ class DefaultWikidataApplication implements WikidataApplication {
 		return wfMsg('wz_uilang',"<b>$userlang</b>").  " &mdash; " . $skin->makeLink("Special:Preferences", wfMsg('wz_uilang_set'));
 	}
 
+	protected function outputAuthoritativeContributionPanel() {
+		global
+			$wgOut;
+		
+		if (count($this->availableAuthorities) > 0) {
+			$authorityOptions = array(
+				"Show contribution by the community" => getCheckBox('authority-community', $this->showCommunityContribution)
+			);
+			
+			foreach ($this->availableAuthorities as $authorityId => $authorityName) 
+				$authorityOptions["Show contribution by " . $authorityName] = 
+					getCheckBox(
+						'authority-' . $authorityId, 
+						in_array($authorityId, $this->authoritiesToShow)
+					);
+	
+			$wgOut->addHTML(getOptionPanel($authorityOptions));
+		}
+	}
+
+	protected function outputViewHeader() {
+		global
+			$wgOut, $wgShowAuthoritativeContributionPanelAtTop;
+		
+		if ($this->showLanguageSelector)
+			$wgOut->addHTML($this->getLanguageSelector());
+		
+		if ($wgShowAuthoritativeContributionPanelAtTop)
+			$this->outputAuthoritativeContributionPanel();
+	}
+
+	protected function outputViewFooter() {
+		global
+			$wgOut, $wgShowAuthoritativeContributionPanelAtBottom;
+		
+		if ($wgShowAuthoritativeContributionPanelAtBottom)	
+			$this->outputAuthoritativeContributionPanel();
+
+		$wgOut->addHTML(DefaultEditor::getExpansionCss());
+		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
+	} 
+	
 	public function view() {
 		global
 			$wgOut, $wgTitle;
 			
 		$wgOut->enableClientCache(false);
-		
+
 		$title = $wgTitle->getPrefixedText();
 
-		if (!$this->showClassicPageTitles) {
-			$title = $this->getTitle()->getText();
-		}
+		if (!$this->showClassicPageTitles) 
+			$title = $this->getTitle();
 
 		$wgOut->setPageTitle($title);
 
-		if ($this->showLanguageSelector)
-			$wgOut->addHTML($this->getLanguageSelector());
-
-		$this->shouldShowAuthorities = count($this->availableAuthorities) > 0; 
-
-		if ($this->shouldShowAuthorities) {
-			$showCommunityContribution = isset($_GET['authority-community']);
+		if (count($this->availableAuthorities) > 0) {
+			$this->showCommunityContribution = isset($_GET['authority-community']);
+			$this->authoritiesToShow = array();
 			
-			$authoritiesToShow = array();
-			$authorityOptions = array(
-				"Show contribution by the community" => getCheckBox('authority-community', $showCommunityContribution)
-			);
-			
-			foreach($this->availableAuthorities as $authorityId => $authorityName) {
-				$showAuthority = isset($_GET['authority-' . $authorityId]); 
-				
-				if ($showAuthority)
-					$authoritiesToShow[] = $authorityId;
-
-				$authorityOptions["Show contribution by " . $authorityName] = getCheckBox('authority-' . $authorityId, $showAuthority);
-			}
-	
-			$wgOut->addHTML(getOptionPanel($authorityOptions));
+			foreach ($this->availableAuthorities as $authorityId => $authorityName) 
+				if (isset($_GET['authority-' . $authorityId]))
+					$this->authoritiesToShow[] = $authorityId;
 		}
 		else
-			$showCommunityContribution = false;
+			$this->showCommunityContribution = false;
 		
-		$this->shouldShowAuthorities = count($authoritiesToShow) > 0 || $showCommunityContribution;
+		$this->shouldShowAuthorities = count($this->authoritiesToShow) > 0 || $this->showCommunityContribution;
 		initializeOmegaWikiAttributes($this->filterLanguageId != 0, $this->shouldShowAuthorities);	
 		initializeObjectAttributeEditors($this->filterLanguageId, false, $this->shouldShowAuthorities);
 		
 		if ($this->shouldShowAuthorities) 
-			$this->viewQueryTransactionInformation = new QueryAuthoritativeContributorTransactionInformation($this->availableAuthorities, $authoritiesToShow, $showCommunityContribution);
+			$this->viewQueryTransactionInformation = new QueryAuthoritativeContributorTransactionInformation($this->availableAuthorities, $this->authoritiesToShow, $this->showCommunityContribution);
 		else
 			$this->viewQueryTransactionInformation = new QueryLatestTransactionInformation();
 	}
@@ -159,9 +186,8 @@ class DefaultWikidataApplication implements WikidataApplication {
 
 		$title = $wgTitle->getPrefixedText();
 
-		if (!$this->showClassicPageTitles) {
-			$title = $this->getTitle()->getText();
-		}
+		if (!$this->showClassicPageTitles) 
+			$title = $this->getTitle();
 
 		$wgOut->setPageTitle(wfMsg('wz_history',$title));
 
@@ -203,9 +229,8 @@ class DefaultWikidataApplication implements WikidataApplication {
 			
 		$title = $wgTitle->getPrefixedText();
 
-		if (!$this->showClassicPageTitles) {
-			$title = $this->getTitle()->getText();
-		}
+		if (!$this->showClassicPageTitles) 
+			$title = $this->getTitle();
 
 		$wgOut->setPageTitle($title);
 		$wgOut->setPageTitle(wfMsg('editing',$title));

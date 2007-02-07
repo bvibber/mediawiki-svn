@@ -11,6 +11,8 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		parent::view();
 
+		$this->outputViewHeader();
+
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		
 		$wgOut->addHTML(
@@ -26,8 +28,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			)
 		);
 		
-		$wgOut->addHTML(DefaultEditor::getExpansionCss());
-		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
+		$this->outputViewFooter();
 	}
 	
 	public function edit() {

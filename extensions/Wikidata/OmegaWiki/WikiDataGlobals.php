@@ -152,5 +152,12 @@ global
 	
 $wgDefinedMeaningPageTitlePrefix = "";
 $wgExpressionPageTitlePrefix = "Multiple meanings";
+
+global
+	$wgShowAuthoritativeContributionPanelAtBottom,
+	$wgShowAuthoritativeContributionPanelAtTop;
 	
+$wgShowAuthoritativeContributionPanelAtBottom = false;
+$wgShowAuthoritativeContributionPanelAtTop = true;
+
 ?>

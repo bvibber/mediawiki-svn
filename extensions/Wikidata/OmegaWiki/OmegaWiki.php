@@ -24,6 +24,8 @@ class OmegaWiki extends DefaultWikidataApplication {
 
 		parent::view();
 
+		$this->outputViewHeader();
+
 		$spelling = $wgTitle->getText();
 		
 		$wgOut->addHTML(
@@ -38,8 +40,7 @@ class OmegaWiki extends DefaultWikidataApplication {
 			)
 		);
 		
-		$wgOut->addHTML(DefaultEditor::getExpansionCss());
-		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
+		$this->outputViewFooter();
 	}
 
 	public function history() {
