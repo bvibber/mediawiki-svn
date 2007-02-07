@@ -116,10 +116,15 @@ class DefinedMeaning extends DefaultWikidataApplication {
 	}	
 	
 	public function getTitle() {
-		global	
-			$wgTitle;
-		
-		return definedMeaningExpression($this->getDefinedMeaningIdFromTitle($wgTitle->getText()));
+		global
+			$wgTitle, $wgDefinedMeaningPageTitlePrefix;
+	
+		if ($wgDefinedMeaningPageTitlePrefix != "")
+			$prefix = $wgDefinedMeaningPageTitlePrefix . ": ";
+		else
+			$prefix	= "";
+					
+		return $prefix . definedMeaningExpression($this->getDefinedMeaningIdFromTitle($wgTitle->getText()));
 	}
 }
 

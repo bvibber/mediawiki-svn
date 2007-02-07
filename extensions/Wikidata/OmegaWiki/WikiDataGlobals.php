@@ -146,4 +146,11 @@ global
 
 $wgGotoSourceTemplates = array();	// Map of collection id => GotoSourceTemplate
 
+global
+	$wgDefinedMeaningPageTitlePrefix,
+	$wgExpressionPageTitlePrefix;
+	
+$wgDefinedMeaningPageTitlePrefix = "";
+$wgExpressionPageTitlePrefix = "Multiple meanings";
+	
 ?>

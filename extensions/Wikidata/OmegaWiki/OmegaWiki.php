@@ -10,6 +10,7 @@ require_once('languages.php');
 require_once('HTMLtable.php');
 require_once('OmegaWikiRecordSets.php');
 require_once('OmegaWikiEditors.php');
+require_once('WikiDataGlobals.php');
 
 /**
  * Load and modify content in a OmegaWiki-enabled
@@ -110,9 +111,14 @@ class OmegaWiki extends DefaultWikidataApplication {
 	
 	public function getTitle() {
 		global
-			$wgTitle;
-			
-		return "Disambiguation: " . $wgTitle->getText();
+			$wgTitle, $wgExpressionPageTitlePrefix;
+	
+		if ($wgExpressionPageTitlePrefix != "")
+			$prefix = $wgExpressionPageTitlePrefix . ": ";
+		else
+			$prefix	= "";
+					
+		return $prefix . $wgTitle->getText();
 	}
 	
 	protected function getIdStack() {
