@@ -4,6 +4,7 @@ require_once('Editor.php');
 require_once('OmegaWikiAttributes.php');
 require_once('WikiDataBootstrappedMeanings.php');
 require_once('Fetcher.php');
+require_once('WikiDataGlobals.php');
 require_once('GotoSourceTemplate.php');
 
 function initializeObjectAttributeEditors($filterLanguageId, $showRecordLifeSpan, $showAuthority) {
@@ -398,43 +399,65 @@ function getExpressionsEditor($spelling, $filterLanguageId, $possiblySynonymousR
 	return $expressionsEditor;
 }
 
+class AttributeEditorMap {
+	protected $attributeEditorMap = array();
+	
+	public function addEditor($editor) {
+		$attributeId = $editor->getAttribute()->id;
+		$this->attributeEditorMap[$attributeId] = $editor;
+	}
+	
+	public function getEditorForAttributeId($attributeId) {
+		return $this->attributeEditorMap[$attributeId];
+	}
+}
+
 function getDefinedMeaningEditor($filterLanguageId, $possiblySynonymousRelationTypeId, $showRecordLifeSpan, $showAuthority) {
 	global
+		$wgDefinedMeaningAttributesOrder,
 		$definedMeaningAttribute, $possiblySynonymousIdAttribute, $possiblySynonymousAttribute, 
 		$possibleSynonymAttribute, $definedMeaningObjectAttributesEditor, $possiblySynonymousObjectAttributesEditor;
 	
 	$definitionEditor = getDefinitionEditor($filterLanguageId, $showRecordLifeSpan, $showAuthority);
+	$alternativeDefinitionsEditor = getAlternativeDefinitionsEditor($filterLanguageId, $showRecordLifeSpan, $showAuthority);
 	$classAttributesEditor = getClassAttributesEditor($showRecordLifeSpan, $showAuthority);		
 	$synonymsAndTranslationsEditor = getSynonymsAndTranslationsEditor($filterLanguageId, $showRecordLifeSpan, $showAuthority);
 	$relationsEditor = getDefinedMeaningRelationsEditor($showRecordLifeSpan, $showAuthority);
 	$reciprocalRelationsEditor = getDefinedMeaningReciprocalRelationsEditor($showRecordLifeSpan, $showAuthority);
 	$classMembershipEditor = getDefinedMeaningClassMembershipEditor($showRecordLifeSpan, $showAuthority);
 	$collectionMembershipEditor = getDefinedMeaningCollectionMembershipEditor($showRecordLifeSpan, $showAuthority);
+	$possiblySynonymousEditor = getGroupedRelationTypeEditor(
+		$possiblySynonymousAttribute, 
+		$possiblySynonymousIdAttribute, 
+		$possibleSynonymAttribute, 
+		$possiblySynonymousRelationTypeId, 
+		$showRecordLifeSpan, 
+		$showAuthority, 
+		$possiblySynonymousObjectAttributesEditor
+	); 
 	
-	$definedMeaningEditor = new RecordUnorderedListEditor($definedMeaningAttribute, 4);
-	$definedMeaningEditor->addEditor($definitionEditor);
-	$definedMeaningEditor->addEditor($classAttributesEditor);
-	$definedMeaningEditor->addEditor(getAlternativeDefinitionsEditor($filterLanguageId, $showRecordLifeSpan, $showAuthority));
-	$definedMeaningEditor->addEditor($synonymsAndTranslationsEditor);
+	$availableEditors = new AttributeEditorMap();
+	$availableEditors->addEditor($definitionEditor);
+	$availableEditors->addEditor($alternativeDefinitionsEditor);
+	$availableEditors->addEditor($classAttributesEditor);
+	$availableEditors->addEditor($synonymsAndTranslationsEditor);
+	$availableEditors->addEditor($relationsEditor);
+	$availableEditors->addEditor($reciprocalRelationsEditor);
+	$availableEditors->addEditor($classMembershipEditor);
+	$availableEditors->addEditor($collectionMembershipEditor);
+	$availableEditors->addEditor($definedMeaningObjectAttributesEditor);
 
 	if ($possiblySynonymousRelationTypeId != 0)
-		$definedMeaningEditor->addEditor(
-			getGroupedRelationTypeEditor(
-				$possiblySynonymousAttribute, 
-				$possiblySynonymousIdAttribute, 
-				$possibleSynonymAttribute, 
-				$possiblySynonymousRelationTypeId, 
-				$showRecordLifeSpan, 
-				$showAuthority, 
-				$possiblySynonymousObjectAttributesEditor
-			)
-		);
+		$availableEditors->addEditor($possiblySynonymousEditor);
+
+	$definedMeaningEditor = new RecordUnorderedListEditor($definedMeaningAttribute, 4);
+	
+	foreach ($wgDefinedMeaningAttributesOrder as $attributeId) {
+		$editor = $availableEditors->getEditorForAttributeId($attributeId);
 		
-	$definedMeaningEditor->addEditor($relationsEditor);
-	$definedMeaningEditor->addEditor($reciprocalRelationsEditor);
-	$definedMeaningEditor->addEditor($classMembershipEditor);
-	$definedMeaningEditor->addEditor($collectionMembershipEditor);
-	$definedMeaningEditor->addEditor($definedMeaningObjectAttributesEditor);
+		if ($editor != null)
+			$definedMeaningEditor->addEditor($editor);
+	}
 
 	$definedMeaningEditor->expandEditor($definitionEditor);
 	$definedMeaningEditor->expandEditor($synonymsAndTranslationsEditor);

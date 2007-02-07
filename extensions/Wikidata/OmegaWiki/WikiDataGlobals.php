@@ -100,6 +100,45 @@ $wgTranslatedTextAttributeValuesAttributeName = "Text properties";
 $wgUrlAttributeAttributeName = "Property";
 $wgUrlAttributeValuesAttributeName = "URL properties";
 
+global
+	$wgAlternativeDefinitionsAttributeId,
+	$wgClassAttributesAttributeId,
+	$wgClassMembershipAttributeId,
+	$wgCollectionMembershipAttributeId,
+	$wgDefinedMeaningAttributesAttributeId,
+	$wgDefinitionAttributeId,
+	$wgIncomingRelationsAttributeId,
+	$wgPossiblySynonymousAttributeId,
+	$wgRelationsAttributeId, 
+	$wgSynonymsAndTranslationsAttributeId;
+	
+$wgAlternativeDefinitionsAttributeId = "alternative-definitions";
+$wgClassAttributesAttributeId = "class-attributes";
+$wgClassMembershipAttributeId = "class-membership";
+$wgCollectionMembershipAttributeId = "collection-membership";
+$wgDefinedMeaningAttributesAttributeId = "defined-meaning-attributes";
+$wgDefinitionAttributeId = "definition";
+$wgIncomingRelationsAttributeId = "reciprocal-relations";
+$wgPossiblySynonymousAttributeId = "possibly-synonymous";
+$wgRelationsAttributeId = "relations"; 
+$wgSynonymsAndTranslationsAttributeId = "synonyms-translations";
+
+global
+	$wgDefinedMeaningAttributesOrder;
+	
+$wgDefinedMeaningAttributesOrder = array(
+	$wgDefinitionAttributeId,
+	$wgClassAttributesAttributeId,
+	$wgAlternativeDefinitionsAttributeId,
+	$wgSynonymsAndTranslationsAttributeId,
+	$wgPossiblySynonymousAttributeId,
+	$wgRelationsAttributeId, 
+	$wgIncomingRelationsAttributeId,
+	$wgClassMembershipAttributeId,
+	$wgCollectionMembershipAttributeId,
+	$wgDefinedMeaningAttributesAttributeId
+);
+
 require_once("GotoSourceTemplate.php");
 
 global
