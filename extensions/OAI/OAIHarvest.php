@@ -48,7 +48,7 @@ global $oaiAgentExtra;
  * Set to the repository URL,
  */
 $oaiSourceRepository = null;
-$oaiUserAgent = 'MediaWiki/OAI 0.2';
+$oaiAgentExtra = ''; // additional notes optional
 
 class OAIError extends Exception {
 	// whee

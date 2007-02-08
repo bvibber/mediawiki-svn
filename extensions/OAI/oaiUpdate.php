@@ -4,8 +4,8 @@ if( !class_exists( 'DOMAttr' ) ) {
 	die( 'Requires PHP 5 with the DOM module enabled...' );
 }
 
-require_once( 'commandLine.inc' );
-//require_once( "$IP/extensions/OAI/OAIHarvest.php" );
+$base = dirname( dirname( dirname( __FILE__ ) ) );
+require_once( "$base/maintenance/commandLine.inc" );
 
 
 /**
@@ -15,7 +15,7 @@ require_once( 'commandLine.inc' );
  */
 $harvester = new OAIHarvester( $oaiSourceRepository );
 
-$dbr =& wfGetDB( DB_SLAVE );
+$dbr = wfGetDB( DB_SLAVE );
 $highest = $dbr->selectField( 'revision', 'MAX(rev_timestamp)' ); // FIXME!
 if( $highest ) {
 	$lastUpdate = wfTimestamp( TS_MW, $highest );
