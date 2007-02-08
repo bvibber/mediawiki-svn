@@ -197,7 +197,8 @@ class OAIHarvester {
 	}
 	
 	function requestURL( $params ) {
-		return $this->_baseURL . '?' . wfArrayToCGI( $params );
+		$sep = (strpos( $this->_baseURL, '?' ) == false) ? '?' : '&';
+		return $this->_baseURL . $sep . wfArrayToCGI( $params );
 	}
 	
 	function userAgent() {
