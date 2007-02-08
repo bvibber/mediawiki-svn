@@ -36,6 +36,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
  */
 $oaiAgentRegex = false;
 
+/**
+ * To use HTTP authentication for clients in the oaiuser database
+ */
+$oaiAuth = false;
+
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'OAIRepository',
 	'author' => 'Brion Vibber',

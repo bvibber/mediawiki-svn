@@ -30,3 +30,8 @@ CREATE TABLE /*$wgDBprefix*/updates (
 --FROM /*$wgDBprefix*/cur
 --ORDER BY cur_timestamp;
 
+INSERT INTO /*$wgDBprefix*/updates (up_page, up_action, up_timestamp)
+SELECT page_id, IF(page_is_new, 'create', 'modify'), rev_timestamp
+FROM /*$wgDBprefix*/page, /*$wgDBprefix*/revision
+WHERE page_latest=rev_id
+ORDER BY page_latest;

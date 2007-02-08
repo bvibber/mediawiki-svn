@@ -219,17 +219,88 @@ class OAIRepo {
 		}
 	}
 	
+	/**
+	 * Ensure the client is authorized to access the OAI feed.
+	 * Restrictions are optional; a default install is unrestricted.
+	 * HTTP headers may be sent as a side effect for unauthorized clients.
+	 *
+	 * Currently two restrictions are allowed:
+	 * - $oaiAgentRegex whitelists clients matching the User-Agent header
+	 * - $oaiAuth uses HTTP authentication to match usernames and passwords
+	 *   against the oaiuser database.
+	 *
+	 * @return bool true if ok, false if not
+	 */
+	private function authorize() {
+		global $oaiAgentRegex, $oaiAuth;
+		
+		if( $oaiAgentRegex == '' && !$oaiAuth ) {
+			// No authorization required.
+			return true;
+		}
+		
+		if( $oaiAgentRegex != '' 
+			&& isset( $_SERVER['HTTP_USER_AGENT'] )
+			&& preg_match( $oaiAgentRegex, $_SERVER['HTTP_USER_AGENT'] ) ) {
+			// Agent whitelist bypasses users for compatibility
+			return true;
+		}
+		
+		if( $oaiAuth ) {
+			if( isset( $_SERVER['PHP_AUTH_USER'] )
+				&& isset( $_SERVER['PHP_AUTH_PW'] )
+				&& $this->authenticateUser( $_SERVER['PHP_AUTH_USER'],
+					$_SERVER['PHP_AUTH_PW'] ) ) {
+				return true;
+			}
+			
+			header( 'WWW-Authenticate: Basic realm="OAIRepository"' );
+			header( 'HTTP/1.x 401 Unauthorized' );
+		} else {
+    		header( 'HTTP/1.x 403 Unauthorized' );
+		}
+		echo "<p>Sorry, this resource is presently restricted-access.</p>";
+		return false;
+	}
 	
+	/**
+	 * Attempt to authenticate the username and password against
+	 * the repo user table (oaiuser)
+	 * @param string $username
+	 * @param string $password
+	 * @return bool
+	 */
+	private function authenticateUser( $username, $password ) {
+		$db = $this->getAuthDatabase();
+		$found = $db->selectField( 'oaiuser',
+			'ou_id',
+			array(
+				'ou_name' => $username,
+				'ou_password_hash' => md5( $password ),
+			),
+			__METHOD__ );
+		if( $found ) {
+			$this->_clientId = $username;
+			return true;
+		} else {
+			$this->_clientId = null;
+			return false;
+		}
+	}
+	
+	/**
+	 * Return a database connection to the repo authentication and
+	 * audit logging database.
+	 * @fixme currently just grabs master
+	 * @return Database
+	 */
+	private function getAuthDatabase() {
+		return wfGetDB( DB_MASTER );
+	}
 	
 	function respond() {
-		global $oaiAgentRegex;
-		if( $oaiAgentRegex ) {
-			if( !isset( $_SERVER['HTTP_USER_AGENT'] )
-			    || !preg_match( $oaiAgentRegex, $_SERVER['HTTP_USER_AGENT'] ) ) {
-			    	header( 'HTTP/1.x 403 Unauthorized' );
-			    	echo "<p>Sorry, this resource is presently restricted-access.</p>";
-			    	return;
-			}
+		if( !$this->authorize() ) {
+			return;
 		}
 		
 		global $wgUseLatin1;
