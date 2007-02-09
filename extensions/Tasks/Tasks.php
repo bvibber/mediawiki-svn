@@ -86,7 +86,7 @@ $wgHooks['SpecialMovepageAfterMove'][] = 'wfTasksExtensionAfterMove';
 $wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfTasksExtensionAfterToolbox';
 $wgHooks['ArticleViewHeader'][] = 'wfTaskExtensionHeaderHook';
 $wgHooks['EditPage::showEditForm:initial'][] = 'wfTaskExtensionEditFormInitialHook';
-
+$wgHooks['ParserTestTables'][] = 'wfTasksTestTables';
 
 # BEGIN logging functions
 $wgHooks['LogPageValidTypes'][] = 'wfTasksAddLogType';
@@ -1568,6 +1568,14 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 	} # end of class
 
 	SpecialPage::addPage( new SpecialTasks );
+}
+
+/**
+ * Ensure the parser tests don't die; the table must
+ * be duplicated to let the save hooks work.
+ */
+function wfTasksTestTables( &$tables ) {
+	$tables[] = 'tasks';
 }
 
 
