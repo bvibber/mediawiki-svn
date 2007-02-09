@@ -41,6 +41,11 @@ $oaiAgentRegex = false;
  */
 $oaiAuth = false;
 
+/**
+ * Log accesses into the oaiaudit table
+ */
+$oaiAudit = false;
+
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'OAIRepository',
 	'author' => 'Brion Vibber',

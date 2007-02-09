@@ -110,8 +110,9 @@ function oaiTag( $element, $attribs, $contents = NULL) {
 
 class OAIRepo {
 	function OAIRepo( &$request ) {
-		$this->_db =& wfGetDB( DB_SLAVE );
+		$this->_db = wfGetDB( DB_SLAVE );
 		$this->_errors = array();
+		$this->_clientId = 0;
 		$this->_request = $this->initRequest( $request );
 	}
 	
@@ -271,20 +272,38 @@ class OAIRepo {
 	 * @return bool
 	 */
 	private function authenticateUser( $username, $password ) {
-		$db = $this->getAuthDatabase();
-		$found = $db->selectField( 'oaiuser',
+		$db = $this->getAuditDatabase();
+		$id = $db->selectField( 'oaiuser',
 			'ou_id',
 			array(
 				'ou_name' => $username,
 				'ou_password_hash' => md5( $password ),
 			),
 			__METHOD__ );
-		if( $found ) {
-			$this->_clientId = $username;
+		if( $id ) {
+			$this->_clientId = intval( $id );
 			return true;
 		} else {
-			$this->_clientId = null;
+			$this->_clientId = 0;
 			return false;
+		}
+	}
+	
+	private function logRequest( $responseSize ) {
+		global $oaiAudit, $wgDBname;
+		if( $oaiAudit ) {
+			$db = $this->getAuditDatabase();
+			$db->insert( 'oaiaudit',
+				array(
+					'oa_client' => $this->_clientId,
+					'oa_timestamp' => $db->timestamp(),
+					'oa_ip' => wfGetIP(),
+					'oa_agent' => @$_SERVER['HTTP_USER_AGENT'],
+					'oa_dbname' => $wgDBname,
+					'oa_response_size' => $responseSize,
+					'oa_request' => serialize( $this->_request ),
+				),
+				__METHOD__ );
 		}
 	}
 	
@@ -294,7 +313,7 @@ class OAIRepo {
 	 * @fixme currently just grabs master
 	 * @return Database
 	 */
-	private function getAuthDatabase() {
+	private function getAuditDatabase() {
 		return wfGetDB( DB_MASTER );
 	}
 	
@@ -308,6 +327,10 @@ class OAIRepo {
 			# OAI requires UTF-8 output
 			ob_start( create_function( '$s', 'return utf8_encode($s);' ) );
 		}
+		
+		// We want to record the size of requests for auditing's sake.
+		// We'd like compressed size, but that doesn't seem happy. :(
+		ob_start();
 		
 		header( 'Content-type: text/xml' );
 		echo '<' . '?xml version="1.0" encoding="UTF-8" ?' . ">\n";
@@ -324,6 +347,9 @@ class OAIRepo {
 		}
 		$this->showErrors();
 		echo "</OAI-PMH>\n";
+		
+		$size = intval( ob_get_length() );
+		$this->logRequest( $size );
 	}
 	
 	function responseDate() {
@@ -641,8 +667,9 @@ class OAIRepo {
 	}
 	
 	function identifyInfo() {
+		global $wgSitename;
 		return array(
-			'repositoryName' => 'Wikipedia or something',
+			'repositoryName' => $wgSitename,
 			'baseURL' => $this->baseUrl(),
 			'protocolVersion' => '2.0',
 			'adminEmail' => 'brion@pobox.com',
