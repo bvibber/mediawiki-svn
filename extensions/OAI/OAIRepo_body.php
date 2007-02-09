@@ -310,11 +310,10 @@ class OAIRepo {
 	/**
 	 * Return a database connection to the repo authentication and
 	 * audit logging database.
-	 * @fixme currently just grabs master
 	 * @return Database
 	 */
 	private function getAuditDatabase() {
-		return wfGetDB( DB_MASTER );
+		return wfGetDB( DB_MASTER, 'oaiAudit' );
 	}
 	
 	function respond() {
