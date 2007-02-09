@@ -14,7 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 # Internationalisation file
-require_once( 'SiteMatrix.i18n.php' );
+require_once( dirname(__FILE__) . '/SiteMatrix.i18n.php' );
 
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );

@@ -1,7 +1,8 @@
 <?php
 
-require_once( 'LogPage.php' );
-require_once( 'SpecialLog.php' );
+global $IP;
+require_once( "$IP/includes/LogPage.php" );
+require_once( "$IP/includes/SpecialLog.php" );
 
 class MakeBot extends SpecialPage {
 

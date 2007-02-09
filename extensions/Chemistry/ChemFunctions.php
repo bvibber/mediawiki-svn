@@ -51,7 +51,7 @@ function wfChemFormExtension() {
 function RenderChemForm( $input, $argv ) {
     global $wgChemFunctions_Messages, $wgMessageCache;
 
-    require_once( 'ChemFunctions.i18n.php' );
+    require_once( dirname(__FILE__) . '/ChemFunctions.i18n.php' );
 
     # add messages
     global $wgMessageCache, $wgChemFunctions_Messages;

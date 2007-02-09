@@ -45,7 +45,7 @@ $wgExtensionCredits['specialpage'][] = array(
 #Includes
 global $IP;
 require_once ("$IP/includes/SpecialPage.php");
-require_once( 'ChemFunctions.i18n.php' );
+require_once ( dirname(__FILE__) . '/ChemFunctions.i18n.php' );
 
 # Add the page
 function wfSpecialChemicalsources () {

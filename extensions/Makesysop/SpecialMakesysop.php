@@ -19,7 +19,7 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 # Internationalisation file
-require_once( 'SpecialMakesysop.i18n.php' );
+require_once( dirname(__FILE__) . '/SpecialMakesysop.i18n.php' );
 
 // Set groups to the appropriate sysop/bureaucrat structure:
 // * Steward can do 'full' work (makesysop && userrights)
