@@ -23,7 +23,7 @@ function wfHTTPRedirect() {
 		public function __construct() {
 			global $wgHooks;
 
-			$wgHooks['ArticleViewRedirect'][] = array( __CLASS__, 'redirectHook' );
+			$wgHooks['ArticleViewRedirect'][] = array(&$this, 'redirectHook' );
 		}
 
 		
