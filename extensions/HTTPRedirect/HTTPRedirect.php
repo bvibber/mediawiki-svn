@@ -2,16 +2,18 @@
 /**
  * An extension to make the wiki issue HTTP redirects rather than wiki redirects
  *
- * @author Ã†var ArnfjÃ¶rÃ° Bjarmason <avarab@gmail.com>
- * @copyright Copyright Â© 2005, Ã†var ArnfjÃ¶rÃ° Bjarmason
+ * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
+ * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason Bjarmason
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'HTTP redirect',
 	'description' => 'A hook to make the wiki issue HTTP redirects rather than wiki redirects',
-	'author' => 'Ã†var ArnfjÃ¶rÃ° Bjarmason',
+	'author' => 'Ævar Arnfjörð Bjarmason',
 );
+
+$wgExtensionFunctions[] = 'wfHTTPRedirect';
 
 function wfHTTPRedirect() {
 	wfUsePHP( 5.0 );
@@ -21,7 +23,7 @@ function wfHTTPRedirect() {
 		public function __construct() {
 			global $wgHooks;
 
-			$wgHooks['ArticleViewRedirect'][] = array( &$this, 'redirectHook' );
+			$wgHooks['ArticleViewRedirect'][] = array( __CLASS__, 'redirectHook' );
 		}
 
 		
