@@ -868,13 +868,53 @@ function getCollectionContents($collectionId) {
 
 function getCollectionMemberId($collectionId, $sourceIdentifier) {
     $dbr = & wfGetDB(DB_SLAVE);
-    $queryResult = $dbr->query("SELECT member_mid from uw_collection_contents " .
-                               "WHERE collection_id=$collectionId AND internal_member_id=". $dbr->addQuotes($sourceIdentifier));
+    $queryResult = $dbr->query(
+		"SELECT member_mid" .
+		" FROM uw_collection_contents " .
+        " WHERE collection_id=$collectionId" .
+        " AND internal_member_id=". $dbr->addQuotes($sourceIdentifier) .
+        " AND " . getLatestTransactionRestriction('uw_collection_contents')
+    );
 
     if ($collectionEntry = $dbr->fetchObject($queryResult)) 
         return $collectionEntry->member_mid;
     else
-        return null;
+        return 0;
 } 
+
+function getAnyDefinedMeaningWithSourceIdentifier($sourceIdentifier) {
+    $dbr = & wfGetDB(DB_SLAVE);
+    $queryResult = $dbr->query(
+		"SELECT member_mid" .
+		" FROM uw_collection_contents " .
+        " WHERE internal_member_id=". $dbr->addQuotes($sourceIdentifier) .
+        " AND " . getLatestTransactionRestriction('uw_collection_contents') .
+        " LIMIT 1"
+    );
+
+    if ($collectionEntry = $dbr->fetchObject($queryResult)) 
+        return $collectionEntry->member_mid;
+    else
+        return 0;
+}
+
+function getExpressionMeaningIds($spelling) {
+    $dbr = & wfGetDB(DB_SLAVE);
+    $queryResult = $dbr->query(
+		"SELECT defined_meaning_id" .
+		" FROM uw_expression_ns, uw_syntrans " .
+        " WHERE spelling=". $dbr->addQuotes($spelling) .
+        " AND uw_expression_ns.expression_id=uw_syntrans.expression_id" .
+        " AND " . getLatestTransactionRestriction('uw_syntrans') .
+        " AND " . getLatestTransactionRestriction('uw_expression_ns')
+    );
+
+	$result = array();
+	
+	while ($synonymRecord = $dbr->fetchObject($queryResult)) 
+        $result[] = $synonymRecord->defined_meaning_id;
+
+	return $result;
+}
 
 ?>

@@ -32,6 +32,7 @@ function wfSpecialDatasearch() {
 		function SpecialDatasearch() {
 			SpecialPage::SpecialPage('Datasearch');
 
+			require_once("WikiDataGlobals.php");
 			require_once("forms.php");
 			require_once("type.php");
 			require_once("Expression.php");
@@ -61,56 +62,96 @@ function wfSpecialDatasearch() {
 			$this->collectionMemberAttribute = new Attribute("collection-member", "Collection member", $definedMeaningReferenceType);
 		}
 		
-		function execute( $par ) {
+		function execute($parameter) {
 			global
-				$wgOut, $wgTitle, $wgRequest;
+				$wgOut, $wgTitle;
 
-			$spelling = ltrim($_GET['search-text']);
+			$searchText = ltrim($_GET['search-text']);
 			
-			if (isset($_GET['go'])) {
-				global
-					$wgScript;
+			if (isset($_GET['go'])) 
+				$this->go($searchText);	
+			else 			
+				$this->search($searchText); 
+		}
 
-				$wgOut->redirect($wgScript . '/OmegaWiki:' . $spelling);
+		function go($searchText) {
+			global
+				$wgScript, $wgOut;
+
+			$expressionMeaningIds = getExpressionMeaningIds($searchText);
+			
+			if (count($expressionMeaningIds) > 0) {
+				if (count($expressionMeaningIds) == 1)
+					$wgOut->redirect(definedMeaningIdAsURL($expressionMeaningIds[0]));
+				else
+					$wgOut->redirect(spellingAsURL($searchText));
 			}
-			else {			
-				$fulltext = $_GET['fulltext'];
-				$collectionId = $wgRequest->getInt("collection");
-				$languageId = $wgRequest->getInt("language");
-				$withinWords = $wgRequest->getBool('within-words');
-				$withinExternalIdentifiers = $wgRequest->getBool('within-external-identifiers');
+			else {
+				$collectionMemberId = getAnyDefinedMeaningWithSourceIdentifier($searchText);
 				
-				if (!$withinWords && !$withinExternalIdentifiers)
-					$withinWords = true;
+				if ($collectionMemberId != 0)
+					$wgOut->redirect(definedMeaningIdAsURL($collectionMemberId));		
+				else
+					$wgOut->redirect(spellingAsURL($searchText));
+			}
+		}
 				
-				$languageName = languageIdAsText($languageId); 
+		function search($searchText) {
+			global
+				$wgOut, $wgRequest, $wgFilterLanguageId, 
+				$wgSearchWithinWordsDefaultValue, $wgSearchWithinExternalIdentifiersDefaultValue,
+				$wgShowSearchWithinExternalIdentifiersOption, $wgShowSearchWithinWordsOption;
+			
+			$collectionId = $wgRequest->getInt("collection");
+			$languageId = $wgRequest->getInt("language");
+			$withinWords = $wgRequest->getBool("within-words");
+			$withinExternalIdentifiers = $wgRequest->getBool("within-external-identifiers");
+			
+			if (!$withinWords && !$withinExternalIdentifiers) {
+				$withinWords = $wgSearchWithinWordsDefaultValue;
+				$withinExternalIdentifiers = $wgSearchWithinExternalIdentifiersDefaultValue;
+			}
+			
+			$languageName = languageIdAsText($languageId); 
+			$options = array();
+			$options['Search text'] = getTextBox('search-text', $searchText); 
 
-				$wgOut->addHTML(getOptionPanel(array(
-					'Search text' => getTextBox('search-text', $_GET['search-text']),
-					'Language' => getSuggest('language', "language", array(), $languageId, $languageName),
-					'Collection' => getSuggest('collection', 'collection', array(), $collectionId, collectionIdAsText($collectionId)),
-					'Within words' => getCheckBox('within-words', $withinWords),
-					'Within external identifiers' => getCheckBox('within-external-identifiers', $withinExternalIdentifiers)
-				)));
-							
-				if ($withinWords) {
-					if ($languageId != 0)
-						$languageText = " in <i>" . $languageName . "</i> ";
-					else
-						$languageText = " ";
+			if ($wgFilterLanguageId == 0)
+				$options['Language'] = getSuggest('language', "language", array(), $languageId, $languageName);
+			else
+				$languageId = $wgFilterLanguageId;
+				 
+			$options['Collection'] = getSuggest('collection', 'collection', array(), $collectionId, collectionIdAsText($collectionId));
+			
+			if ($wgShowSearchWithinWordsOption)
+				$options['Within words'] = getCheckBox('within-words', $withinWords);
+			else
+				$withinWords = $wgSearchWithinWordsDefaultValue;
+				
+			if ($wgShowSearchWithinExternalIdentifiersOption)	
+				$options['Within external identifiers'] = getCheckBox('within-external-identifiers', $withinExternalIdentifiers);
+			else
+				$withinExternalIdentifiers = $wgSearchWithinExternalIdentifiersDefaultValue; 
+			  
+			$wgOut->addHTML(getOptionPanel($options));
 						
-					$wgOut->addHTML('<h1>Words' . $languageText . 'matching <i>'. $spelling . '</i> and associated meanings</h1>');
-					$wgOut->addHTML('<p>Showing only a maximum of 100 matches.</p>');
-				
-					$wgOut->addHTML($this->searchWords($spelling, $collectionId, $languageId));
-				}
-				
-				if ($withinExternalIdentifiers) {
-					$wgOut->addHTML('<h1>External identifiers matching <i>'. $spelling . '</i></h1>');
-					$wgOut->addHTML('<p>Showing only a maximum of 100 matches.</p>');
+			if ($withinWords) {
+				if ($languageId != 0 && $languageName != "")
+					$languageText = " in <i>" . $languageName . "</i> ";
+				else
+					$languageText = " ";
+					
+				$wgOut->addHTML('<h1>Words' . $languageText . 'matching <i>'. $searchText . '</i> and associated meanings</h1>');
+				$wgOut->addHTML('<p>Showing only a maximum of 100 matches.</p>');
+			
+				$wgOut->addHTML($this->searchWords($searchText, $collectionId, $languageId));
+			}
+			
+			if ($withinExternalIdentifiers) {
+				$wgOut->addHTML('<h1>External identifiers matching <i>'. $searchText . '</i></h1>');
+				$wgOut->addHTML('<p>Showing only a maximum of 100 matches.</p>');
 
-					$wgOut->addHTML($this->searchExternalIdentifiers($spelling, $collectionId));
-				}
+				$wgOut->addHTML($this->searchExternalIdentifiers($searchText, $collectionId));
 			}
 		}
 		

@@ -21,24 +21,35 @@ function booleanAsHTML($value) {
 		return '<input type="checkbox" disabled="disabled"/>';
 }
 
-function spellingAsLink($value) {
+function pageAsURL($nameSpace, $title) {
 	global
-		$wgUser;
-		
-//	return $wgUser->getSkin()->makeLink("OmegaWiki:$value", htmlspecialchars($value));
-	return createLink("Expression", $value, $value);
+		$wgScript;
+	
+	return $wgScript. '/' . $nameSpace . ':' . htmlspecialchars($title);
 }
 
-function createLink($nameSpace, $title, $text) {
-	global
-		$wgUser, $wgScript;
-		
-	return '<a href="'. $wgScript. '/' . $nameSpace . ':' . htmlspecialchars($title) . '">' . htmlspecialchars($text) . '</a>';	
-//	return $wgUser->getSkin()->makeLink("$nameSpace:$tag", htmlspecialchars($text));
+function spellingAsURL($spelling) {
+	return pageAsURL("Expression", $spelling);
+}
+
+function definedMeaningReferenceAsURL($definedMeaningId, $definingExpression) {
+	return pageAsURL("DefinedMeaning", "$definingExpression ($definedMeaningId)");
+}
+
+function definedMeaningIdAsURL($definedMeaningId) {
+	return definedMeaningReferenceAsURL($definedMeaningId, definingExpression($definedMeaningId));
+}
+
+function createLink($url, $text) {
+	return '<a href="'. $url . '">' . htmlspecialchars($text) . '</a>';	
 } 
 
+function spellingAsLink($spelling) {
+	return createLink(spellingAsURL($spelling), $spelling);
+}
+
 function definedMeaningReferenceAsLink($definedMeaningId, $definingExpression, $label) {
-	return createLink("DefinedMeaning", "$definingExpression ($definedMeaningId)", $label);
+	return createLink(definedMeaningReferenceAsURL($definedMeaningId, $definingExpression), $label);
 }
 
 function languageIdAsText($languageId) {
@@ -164,15 +175,8 @@ function definingExpressionAsLink($definedMeaningId) {
 }
 
 function definedMeaningAsLink($definedMeaningId) {
-	global
-		$wgUser;
-
-	if ($definedMeaningId > 0) {
-		$definedMeaningExpression = definedMeaningExpression($definedMeaningId);
-		$definingExpression = definingExpression($definedMeaningId);
-		
-		return createLink("DefinedMeaning", "$definingExpression ($definedMeaningId)", $definedMeaningExpression);
-	}
+	if ($definedMeaningId > 0) 
+		return createLink(definedMeaningIdAsURL($definedMeaningId), definedMeaningExpression($definedMeaningId));
 	else
 		return "";
 }

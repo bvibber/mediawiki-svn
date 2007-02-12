@@ -1,5 +1,7 @@
 <?php
 
+// Attribute names
+
 global
 	$wgAlternativeDefinitionAttributeName,
 	$wgAlternativeDefinitionsAttributeName,
@@ -100,6 +102,8 @@ $wgTranslatedTextAttributeValuesAttributeName = "Text properties";
 $wgUrlAttributeAttributeName = "Property";
 $wgUrlAttributeValuesAttributeName = "URL properties";
 
+// Attribute Ids
+
 global
 	$wgAlternativeDefinitionsAttributeId,
 	$wgClassAttributesAttributeId,
@@ -123,6 +127,8 @@ $wgPossiblySynonymousAttributeId = "possibly-synonymous";
 $wgRelationsAttributeId = "relations"; 
 $wgSynonymsAndTranslationsAttributeId = "synonyms-translations";
 
+// Defined meaning editor
+
 global
 	$wgDefinedMeaningAttributesOrder;
 	
@@ -139,12 +145,16 @@ $wgDefinedMeaningAttributesOrder = array(
 	$wgDefinedMeaningAttributesAttributeId
 );
 
+// Go to source templates
+
 require_once("GotoSourceTemplate.php");
 
 global
 	$wgGotoSourceTemplates;
 
 $wgGotoSourceTemplates = array();	// Map of collection id => GotoSourceTemplate
+
+// Page titles
 
 global
 	$wgDefinedMeaningPageTitlePrefix,
@@ -153,11 +163,26 @@ global
 $wgDefinedMeaningPageTitlePrefix = "";
 $wgExpressionPageTitlePrefix = "Multiple meanings";
 
+// Authoritative versioning
+
 global
 	$wgShowAuthoritativeContributionPanelAtBottom,
 	$wgShowAuthoritativeContributionPanelAtTop;
 	
 $wgShowAuthoritativeContributionPanelAtBottom = false;
 $wgShowAuthoritativeContributionPanelAtTop = true;
+
+// Search page
+
+global
+	$wgSearchWithinExternalIdentifiersDefaultValue,
+	$wgSearchWithinWordsDefaultValue,
+	$wgShowSearchWithinExternalIdentifiersOption,
+	$wgShowSearchWithinWordsOption;
+
+$wgSearchWithinExternalIdentifiersDefaultValue = true;
+$wgSearchWithinWordsDefaultValue = true;
+$wgShowSearchWithinExternalIdentifiersOption = true;
+$wgShowSearchWithinWordsOption = true;
 
 ?>
