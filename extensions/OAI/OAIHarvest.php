@@ -476,7 +476,8 @@ class OAIUpdateRecord {
 			'img_user_text'   => isset( $upload['contributor']['username'] )
 								   ? strval( $upload['contributor']['username'] )
 								   : strval( $upload['contributor']['ip'] ),
-			'img_timestamp'   => $dbw->timestamp( $this->getTimestamp( $upload['timestamp'] ) ) );
+			'img_timestamp'   => $dbw->timestamp( $this->getTimestamp( $upload['timestamp'] ) ),
+			'img_metadata'    => serialize( array() ) );
 		
 		$dbw->begin();
 		echo "REPLACING image row\n";
@@ -522,6 +523,7 @@ class OAIUpdateRecord {
 		if( file_exists( $filename ) ) {
 			unlink( $filename );
 		}
+		wfMkdirParents( dirname( $filename ) );
 		if( !( $output = fopen( $filename, 'xb' ) ) ) {
 			throw new OAIError( 'Could not create local image file "' . $filename . '" for writing.' );
 		}
