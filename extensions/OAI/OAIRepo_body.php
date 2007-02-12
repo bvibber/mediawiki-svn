@@ -301,7 +301,7 @@ class OAIRepo {
 					'oa_agent' => @$_SERVER['HTTP_USER_AGENT'],
 					'oa_dbname' => $wgDBname,
 					'oa_response_size' => $responseSize,
-					'oa_request' => serialize( $this->_request ),
+					'oa_request' => wfArrayToCGI( $this->_request ),
 				),
 				__METHOD__ );
 		}
