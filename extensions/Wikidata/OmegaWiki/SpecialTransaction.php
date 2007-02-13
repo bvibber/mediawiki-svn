@@ -168,11 +168,13 @@ function initializeAttributes() {
 	$updatedDefinitionAttribute = new Attribute('updated-definition', 'Definition', new RecordSetType($updatedDefinitionStructure));
 
 	global
-		$expressionAttribute, $identicalMeaningAttribute, $updatedSyntransesAttribute;
+		$expressionAttribute, $expressionIdAttribute, $identicalMeaningAttribute, $syntransIdAttribute, $updatedSyntransesAttribute;
 
 	$updatedSyntransesStructure = new Structure(
+		$syntransIdAttribute,
 		$definedMeaningIdAttribute, 
-		$definedMeaningReferenceAttribute, 
+		$definedMeaningReferenceAttribute,
+		$expressionIdAttribute, 
 		$expressionAttribute, 
 		$identicalMeaningAttribute,
 		$operationAttribute
@@ -429,7 +431,7 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($updatedDefinitionAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedAlternativeDefinitionsEditor($updatedAlternativeDefinitionsAttribute));
 	$valueEditor->addEditor(getUpdatedAlternativeDefinitionTextEditor($updatedAlternativeDefinitionTextAttribute));
-	$valueEditor->addEditor(getUpdatedSyntransesEditor($updatedSyntransesAttribute));
+	$valueEditor->addEditor(getUpdatedSyntransesEditor($updatedSyntransesAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedClassAttributesEditor($updatedClassAttributesAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute, $showRollBackOptions));
@@ -635,19 +637,22 @@ function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 function getUpdatedSyntransesRecordSet($transactionId) {
 	global
 		$updatedSyntransesStructure, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
-		$operationAttribute, $expressionAttribute, $expressionStructure, $languageAttribute, $spellingAttribute,
-		$identicalMeaningAttribute;
+		$expressionAttribute, $expressionStructure, $languageAttribute, $spellingAttribute, $syntransIdAttribute,
+		$expressionIdAttribute,	$identicalMeaningAttribute, 
+		$isLatestAttribute, $operationAttribute, $rollBackAttribute, $rollBackStructure;
 	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT defined_meaning_id, language_id, spelling, identical_meaning, " . getOperationSelectColumn('uw_syntrans', $transactionId) . 
+		"SELECT syntrans_sid, defined_meaning_id, uw_syntrans.expression_id, language_id, spelling, identical_meaning, " . 
+			getOperationSelectColumn('uw_syntrans', $transactionId) . ', ' .
+			getIsLatestSelectColumn('uw_syntrans', array('syntrans_sid'), $transactionId) . 
 		" FROM uw_syntrans, uw_expression_ns " .
 		" WHERE uw_syntrans.expression_id=uw_expression_ns.expression_id " .
 		" AND " . getInTransactionRestriction('uw_syntrans', $transactionId) .
 		" AND " . getAtTransactionRestriction('uw_expression_ns', $transactionId)
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedSyntransesStructure, new Structure($definedMeaningIdAttribute));
+	$recordSet = new ArrayRecordSet($updatedSyntransesStructure, new Structure($syntransIdAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
 		$expressionRecord = new ArrayRecord($expressionStructure);
@@ -655,11 +660,15 @@ function getUpdatedSyntransesRecordSet($transactionId) {
 		$expressionRecord->setAttributeValue($spellingAttribute, $row->spelling);
 
 		$record = new ArrayRecord($updatedSyntransesStructure);
+		$record->setAttributeValue($syntransIdAttribute, $row->syntrans_sid);
 		$record->setAttributeValue($definedMeaningIdAttribute, $row->defined_meaning_id);
+		$record->setAttributeValue($expressionIdAttribute, $row->expression_id);
 		$record->setAttributeValue($definedMeaningReferenceAttribute, getDefinedMeaningReferenceRecord($row->defined_meaning_id));
 		$record->setAttributeValue($expressionAttribute, $expressionRecord);
 		$record->setAttributeValue($identicalMeaningAttribute, $row->identical_meaning);
+		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
 		$record->setAttributeValue($operationAttribute, $row->operation);
+		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
 		
 		$recordSet->add($record);	
 	}
@@ -1019,15 +1028,21 @@ function getUpdatedAlternativeDefinitionTextEditor($attribute) {
 	return $editor;
 }
 
-function getUpdatedSyntransesEditor($attribute) {
+function getUpdatedSyntransesEditor($attribute, $showRollBackOptions) {
 	global
-		$definedMeaningReferenceAttribute, $expressionAttribute, $identicalMeaningAttribute, $operationAttribute;
+		$definedMeaningReferenceAttribute, $expressionAttribute, $identicalMeaningAttribute, 
+		$isLatestAttribute, $operationAttribute, $rollBackAttribute;
 		
 	$editor = createTableViewer($attribute);
+	
+	if ($showRollBackOptions)
+		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		
 	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
 	$editor->addEditor(getExpressionTableCellEditor($expressionAttribute, 0));
 	$editor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(false), false, false));
 	$editor->addEditor(createShortTextViewer($operationAttribute));
+	$editor->addEditor(createBooleanViewer($isLatestAttribute));
 	
 	return $editor;
 }
@@ -1198,7 +1213,7 @@ function rollBackTransactions($recordSet) {
 		$transactionIdAttribute, $updatesInTransactionAttribute, 
 		$updatedDefinitionAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute,
 		$updatedTranslatedTextAttribute, $updatedClassAttributesAttribute, $updatedTranslatedTextPropertyAttribute,
-		$updatedURLAttribute, $updatedTextAttribute;
+		$updatedURLAttribute, $updatedTextAttribute, $updatedSyntransesAttribute;
 		
 	$summary = $wgRequest->getText('summary');
 	startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
@@ -1253,6 +1268,11 @@ function rollBackTransactions($recordSet) {
 		$updatedTextAttributes = $updatesInTransaction->getAttributeValue($updatedTextAttribute);
 		$idStack->pushAttribute($updatedTextAttribute);
 		rollBackTextAttributes($idStack, $updatedTextAttributes);
+		$idStack->popAttribute();
+
+		$updatedSyntranses = $updatesInTransaction->getAttributeValue($updatedSyntransesAttribute);
+		$idStack->pushAttribute($updatedSyntransesAttribute);
+		rollBackSyntranses($idStack, $updatedSyntranses);
 		$idStack->popAttribute();
 
 		$idStack->popAttribute();
@@ -1606,6 +1626,43 @@ function rollBackTextAttribute($rollBackAction, $valueId, $objectId, $attributeI
 		removeTextAttributeValue($valueId);
 	else if (shouldRestore($rollBackAction, $operation))	
 		createTextAttributeValue($valueId, $objectId, $attributeId, $text);	
+}
+
+function rollBackSyntranses($idStack, $syntranses) {
+	global
+		$isLatestAttribute, $operationAttribute, $rollBackAttribute, $syntransIdAttribute, $identicalMeaningAttribute,
+		$spellingAttribute, $languageAttribute, $expressionAttribute, $definedMeaningIdAttribute, $expressionIdAttribute;
+	
+	$syntransesKeyStructure = $syntranses->getKey();
+	
+	for ($i = 0; $i < $syntranses->getRecordCount(); $i++) {
+		$syntransRecord = $syntranses->getRecord($i);
+
+		$syntransId = $syntransRecord->getAttributeValue($syntransIdAttribute);
+		$isLatest = $syntransRecord->getAttributeValue($isLatestAttribute);
+
+		if ($isLatest) {
+			$idStack->pushKey(simpleRecord($syntransesKeyStructure, array($syntransId)));
+			
+			rollBackSyntrans(
+				getRollBackAction($idStack, $rollBackAttribute),
+				$syntransId,
+				$syntransRecord->getAttributeValue($definedMeaningIdAttribute),
+				$syntransRecord->getAttributeValue($expressionIdAttribute),
+				$syntransRecord->getAttributeValue($identicalMeaningAttribute),
+				$syntransRecord->getAttributeValue($operationAttribute)
+			);
+				
+			$idStack->popKey();
+		}
+	}	
+}
+
+function rollBackSyntrans($rollBackAction, $syntransId, $definedMeaningId, $expressionId, $identicalMeaning, $operation) {
+	if (shouldRemove($rollBackAction, $operation))
+		removeSynonymOrTranslationWithId($syntransId);
+	else if (shouldRestore($rollBackAction, $operation))	
+		createSynonymOrTranslation($definedMeaningId, $expressionId, $identicalMeaning);	
 }
 
 ?>
