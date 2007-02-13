@@ -278,6 +278,7 @@ function initializeAttributes() {
 	$translatedTextTextAttribute = new Attribute('translated-text-property-text', 'Text', new RecordSetType($translatedTextStructure)); 
 	
 	$updatedTranslatedTextPropertyStructure = new Structure(
+		$rollBackAttribute,
 		$valueIdAttribute,
 		$objectIdAttribute,
 		$attributeAttribute,
@@ -435,7 +436,7 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($updatedCollectionMembershipAttribute));
 	$valueEditor->addEditor(getUpdatedURLEditor($updatedURLAttribute));
 	$valueEditor->addEditor(getUpdatedTextEditor($updatedTextAttribute));
-	$valueEditor->addEditor(getUpdatedTranslatedTextPropertyEditor($updatedTranslatedTextPropertyAttribute));
+	$valueEditor->addEditor(getUpdatedTranslatedTextPropertyEditor($updatedTranslatedTextPropertyAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedTranslatedTextEditor($updatedTranslatedTextAttribute, $showRollBackOptions));
 	
 	$editor = new RecordSetListEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null, 4, false);
@@ -877,7 +878,7 @@ function getUpdatedTranslatedTextPropertyRecordSet($transactionId) {
 	global
 		$updatedTranslatedTextPropertyStructure, $objectIdAttribute, $valueIdAttribute, 
 		$translatedContentIdAttribute, $attributeAttribute, $translatedTextTextAttribute,
-		$operationAttribute, $isLatestAttribute;
+		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
 
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -898,6 +899,7 @@ function getUpdatedTranslatedTextPropertyRecordSet($transactionId) {
 		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
 		$record->setAttributeValue($operationAttribute, $row->operation);
 		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
 		
 		$recordSet->add($record);	
 	}
@@ -1103,13 +1105,16 @@ function getUpdatedTextEditor($attribute) {
 	return $editor;
 }
 
-function getUpdatedTranslatedTextPropertyEditor($attribute) {
+function getUpdatedTranslatedTextPropertyEditor($attribute, $showRollBackOptions) {
 	global
 		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $translatedTextTextAttribute, 
-		$operationAttribute, $isLatestAttribute;
+		$operationAttribute, $isLatestAttribute, $rollBackAttribute;
 	
 	$editor = createTableViewer($attribute);
 	
+	if ($showRollBackOptions)
+		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+
 	$editor->addEditor(new ObjectPathEditor($objectIdAttribute));
 	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
 	$editor->addEditor(createTranslatedTextViewer($translatedTextTextAttribute));
@@ -1178,7 +1183,7 @@ function rollBackTransactions($recordSet) {
 		$wgRequest, $wgUser,
 		$transactionIdAttribute, $updatesInTransactionAttribute, 
 		$updatedDefinitionAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute,
-		$updatedTranslatedTextAttribute, $updatedClassAttributesAttribute;
+		$updatedTranslatedTextAttribute, $updatedClassAttributesAttribute, $updatedTranslatedTextPropertyAttribute;
 		
 	$summary = $wgRequest->getText('summary');
 	startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
@@ -1218,6 +1223,11 @@ function rollBackTransactions($recordSet) {
 		$updatedTranslatedTexts = $updatesInTransaction->getAttributeValue($updatedTranslatedTextAttribute);
 		$idStack->pushAttribute($updatedTranslatedTextAttribute);
 		rollBackTranslatedTexts($idStack, $updatedTranslatedTexts);
+		$idStack->popAttribute();
+
+		$updatedTranslatedTextProperties = $updatesInTransaction->getAttributeValue($updatedTranslatedTextPropertyAttribute);
+		$idStack->pushAttribute($updatedTranslatedTextPropertyAttribute);
+		rollBackTranslatedTextProperties($idStack, $updatedTranslatedTextProperties);
 		$idStack->popAttribute();
 
 		$idStack->popAttribute();
@@ -1460,6 +1470,43 @@ function rollBackClassAttribute($rollBackAction, $classAttributeId, $classId, $l
 		removeClassAttributeWithId($classAttributeId);
 	else if (shouldRestore($rollBackAction, $operation))	
 		addClassAttribute($classId, $levelId, $attributeId, $type);	
+}
+
+function rollBackTranslatedTextProperties($idStack, $translatedTextProperties) {
+	global
+		$isLatestAttribute, $operationAttribute, $rollBackAttribute,
+		$valueIdAttribute, $objectIdAttribute, $attributeAttribute, $translatedContentIdAttribute;
+	
+	$translatedTextPropertiesKeyStructure = $translatedTextProperties->getKey();
+	
+	for ($i = 0; $i < $translatedTextProperties->getRecordCount(); $i++) {
+		$translatedTextPropertyRecord = $translatedTextProperties->getRecord($i);
+
+		$valueId = $translatedTextPropertyRecord->getAttributeValue($valueIdAttribute);
+		$isLatest = $translatedTextPropertyRecord->getAttributeValue($isLatestAttribute);
+
+		if ($isLatest) {
+			$idStack->pushKey(simpleRecord($translatedTextPropertiesKeyStructure, array($valueId)));
+			
+			rollBackTranslatedTextProperty(
+				getRollBackAction($idStack, $rollBackAttribute),
+				$valueId,
+				$translatedTextPropertyRecord->getAttributeValue($objectIdAttribute),
+				getMeaningId($translatedTextPropertyRecord, $attributeAttribute),
+				$translatedTextPropertyRecord->getAttributeValue($translatedContentIdAttribute),
+				$translatedTextPropertyRecord->getAttributeValue($operationAttribute)
+			);
+				
+			$idStack->popKey();
+		}
+	}	
+}
+
+function rollBackTranslatedTextProperty($rollBackAction, $valueId, $objectId, $attributeId, $translatedContentId, $operation) {
+	if (shouldRemove($rollBackAction, $operation))
+		removeTranslatedTextAttributeValue($valueId);
+	else if (shouldRestore($rollBackAction, $operation))	
+		createTranslatedTextAttributeValue($valueId, $objectId, $attributeId, $translatedContentId);	
 }
 
 ?>

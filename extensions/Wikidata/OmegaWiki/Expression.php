@@ -697,12 +697,21 @@ function getTranslatedTextAttribute($valueId) {
 
 function removeTranslatedTextAttributeValue($valueId) {
 	$translatedTextAttribute = getTranslatedTextAttribute($valueId);
-	removeTranslatedTexts($translatedTextAttribute->value_tcid);
+	
+	// Dilemma: 
+	// Should we also remove the translated texts when removing a
+	// translated content attribute? There are pros and cons. For
+	// now it is easier to not remove them so they can be rolled
+	// back easier.      
+//	removeTranslatedTexts($translatedTextAttribute->value_tcid);  
 
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("UPDATE uw_translated_content_attribute_values SET remove_transaction_id=". getUpdateTransactionId() .
-				" WHERE value_id=$valueId" .
-				" AND remove_transaction_id IS NULL");
+	$dbr->query(
+		"UPDATE uw_translated_content_attribute_values" .
+		" SET remove_transaction_id=". getUpdateTransactionId() .
+		" WHERE value_id=$valueId" .
+		" AND remove_transaction_id IS NULL"
+	);
 }
 
 function optionAttributeValueExists($objectId, $optionId) {
