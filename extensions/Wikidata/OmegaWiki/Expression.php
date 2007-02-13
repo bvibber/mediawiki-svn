@@ -611,13 +611,15 @@ function createNewDefinedMeaning($definingExpressionId, $languageId, $text) {
 
 function addTextAttributeValue($objectId, $textAttributeId, $text) {
 	$textValueAttributeId = newObjectId('uw_text_attribute_values');
-	createTextAttributeValue($objectId, $textAttributeId, $text, $textValueAttributeId);
+	createTextAttributeValue($textValueAttributeId, $objectId, $textAttributeId, $text);
 }
 
-function createTextAttributeValue($objectId, $textAttributeId, $text, $textValueAttributeId) {
+function createTextAttributeValue($textValueAttributeId, $objectId, $textAttributeId, $text) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("INSERT INTO uw_text_attribute_values (value_id, object_id, attribute_mid, text, add_transaction_id) " .
-			    "VALUES ($textValueAttributeId, $objectId, $textAttributeId, " . $dbr->addQuotes($text) . ", ". getUpdateTransactionId() .")");	
+	$dbr->query(
+		"INSERT INTO uw_text_attribute_values (value_id, object_id, attribute_mid, text, add_transaction_id) " .
+		"VALUES ($textValueAttributeId, $objectId, $textAttributeId, " . $dbr->addQuotes($text) . ", ". getUpdateTransactionId() .")"
+	);	
 }
 
 function removeTextAttributeValue($textValueAttributeId) {
@@ -630,7 +632,7 @@ function removeTextAttributeValue($textValueAttributeId) {
 function updateTextAttributeValue($text, $textValueAttributeId) {
 	$textValueAttribute = getTextValueAttribute($textValueAttributeId);
 	removeTextAttributeValue($textValueAttributeId);
-	createTextAttributeValue($textValueAttribute->object_id, $textValueAttribute->attribute_mid, $text, $textValueAttributeId);
+	createTextAttributeValue($textValueAttributeId, $textValueAttribute->object_id, $textValueAttribute->attribute_mid, $text);
 }
 
 function getTextValueAttribute($textValueAttributeId) {

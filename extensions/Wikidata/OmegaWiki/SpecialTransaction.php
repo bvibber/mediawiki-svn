@@ -435,7 +435,7 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($updatedCollectionMembershipAttribute));
 	$valueEditor->addEditor(getUpdatedURLEditor($updatedURLAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedTextEditor($updatedTextAttribute));
+	$valueEditor->addEditor(getUpdatedTextEditor($updatedTextAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedTranslatedTextPropertyEditor($updatedTranslatedTextPropertyAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedTranslatedTextEditor($updatedTranslatedTextAttribute, $showRollBackOptions));
 	
@@ -847,8 +847,9 @@ function getUpdatedURLRecordSet($transactionId) {
 
 function getUpdatedTextRecordSet($transactionId) {
 	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, 
-		$updatedTextStructure, $operationAttribute, $isLatestAttribute, $textAttribute;
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $textAttribute, 
+		$updatedTextStructure, 
+		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
 	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -869,6 +870,7 @@ function getUpdatedTextRecordSet($transactionId) {
 		$record->setAttributeValue($textAttribute, $row->text);
 		$record->setAttributeValue($operationAttribute, $row->operation);
 		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
 		
 		$recordSet->add($record);	
 	}
@@ -1098,11 +1100,16 @@ function getUpdatedURLEditor($attribute, $showRollBackOptions) {
 	return $editor;
 }
 
-function getUpdatedTextEditor($attribute) {
+function getUpdatedTextEditor($attribute, $showRollBackOptions) {
 	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $textAttribute, $operationAttribute, $isLatestAttribute;
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $textAttribute, 
+		$rollBackAttribute, $operationAttribute, $isLatestAttribute;
 		
 	$editor = createTableViewer($attribute);
+
+	if ($showRollBackOptions)
+		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		
 	$editor->addEditor(new ObjectPathEditor($objectIdAttribute));
 	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
 	$editor->addEditor(createLongTextViewer($textAttribute));
@@ -1191,7 +1198,7 @@ function rollBackTransactions($recordSet) {
 		$transactionIdAttribute, $updatesInTransactionAttribute, 
 		$updatedDefinitionAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute,
 		$updatedTranslatedTextAttribute, $updatedClassAttributesAttribute, $updatedTranslatedTextPropertyAttribute,
-		$updatedURLAttribute;
+		$updatedURLAttribute, $updatedTextAttribute;
 		
 	$summary = $wgRequest->getText('summary');
 	startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
@@ -1241,6 +1248,11 @@ function rollBackTransactions($recordSet) {
 		$updatedURLAttributes = $updatesInTransaction->getAttributeValue($updatedURLAttribute);
 		$idStack->pushAttribute($updatedURLAttribute);
 		rollBackURLAttributes($idStack, $updatedURLAttributes);
+		$idStack->popAttribute();
+
+		$updatedTextAttributes = $updatesInTransaction->getAttributeValue($updatedTextAttribute);
+		$idStack->pushAttribute($updatedTextAttribute);
+		rollBackTextAttributes($idStack, $updatedTextAttributes);
 		$idStack->popAttribute();
 
 		$idStack->popAttribute();
@@ -1557,6 +1569,43 @@ function rollBackURLAttribute($rollBackAction, $valueId, $objectId, $attributeId
 		removeURLAttributeValue($valueId);
 	else if (shouldRestore($rollBackAction, $operation))	
 		createURLAttributeValue($valueId, $objectId, $attributeId, $url);	
+}
+
+function rollBackTextAttributes($idStack, $textAttributes) {
+	global
+		$isLatestAttribute, $operationAttribute, $rollBackAttribute, $textAttribute,
+		$valueIdAttribute, $objectIdAttribute, $attributeAttribute, $translatedContentIdAttribute;
+	
+	$textAttributesKeyStructure = $textAttributes->getKey();
+	
+	for ($i = 0; $i < $textAttributes->getRecordCount(); $i++) {
+		$textAttributeRecord = $textAttributes->getRecord($i);
+
+		$valueId = $textAttributeRecord->getAttributeValue($valueIdAttribute);
+		$isLatest = $textAttributeRecord->getAttributeValue($isLatestAttribute);
+
+		if ($isLatest) {
+			$idStack->pushKey(simpleRecord($textAttributesKeyStructure, array($valueId)));
+			
+			rollBackTextAttribute(
+				getRollBackAction($idStack, $rollBackAttribute),
+				$valueId,
+				$textAttributeRecord->getAttributeValue($objectIdAttribute),
+				getMeaningId($textAttributeRecord, $attributeAttribute),
+				$textAttributeRecord->getAttributeValue($textAttribute),
+				$textAttributeRecord->getAttributeValue($operationAttribute)
+			);
+				
+			$idStack->popKey();
+		}
+	}	
+}
+
+function rollBackTextAttribute($rollBackAction, $valueId, $objectId, $attributeId, $text, $operation) {
+	if (shouldRemove($rollBackAction, $operation))
+		removeTextAttributeValue($valueId);
+	else if (shouldRestore($rollBackAction, $operation))	
+		createTextAttributeValue($valueId, $objectId, $attributeId, $text);	
 }
 
 ?>
