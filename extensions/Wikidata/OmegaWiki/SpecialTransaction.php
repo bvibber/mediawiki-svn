@@ -249,6 +249,7 @@ function initializeAttributes() {
 	$URLAttribute = new Attribute('url', 'URL', 'url');	
 		
 	$updatedURLStructure = new Structure(
+		$rollBackAttribute,
 		$valueIdAttribute,
 		$objectIdAttribute,
 		$attributeAttribute,
@@ -263,6 +264,7 @@ function initializeAttributes() {
 		$updatedTextAttribute, $updatedTextStructure, $textAttribute;	
 		
 	$updatedTextStructure = new Structure(
+		$rollBackAttribute,
 		$valueIdAttribute,
 		$objectIdAttribute,
 		$attributeAttribute,
@@ -318,6 +320,7 @@ function initializeAttributes() {
 	$typeAttribute = new Attribute('type', 'Type', 'text');
 
 	$updatedClassAttributesStructure = new Structure(
+		$rollBackAttribute,
 		$classAttributeId,
 		$classAttribute,
 		$levelAttribute,
@@ -337,6 +340,7 @@ function initializeAttributes() {
 	$sourceAttribute = new Attribute('source', 'Source', new RecordType($definedMeaningReferenceStructure));
 
 	$updatedAlternativeDefinitionsStructure = new Structure(
+		$rollBackAttribute,
 		$definedMeaningIdAttribute,
 		$translatedContentIdAttribute,
 		$alternativeDefinitionTextAttribute,
@@ -430,7 +434,7 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 	
 	$valueEditor = new RecordUnorderedListEditor($updatesInTransactionAttribute, 5);
 	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($updatedDefinitionAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedAlternativeDefinitionsEditor($updatedAlternativeDefinitionsAttribute));
+	$valueEditor->addEditor(getUpdatedAlternativeDefinitionsEditor($updatedAlternativeDefinitionsAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedAlternativeDefinitionTextEditor($updatedAlternativeDefinitionTextAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedSyntransesEditor($updatedSyntransesAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute, $showRollBackOptions));
@@ -569,7 +573,7 @@ function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
 	global
 		$updatedAlternativeDefinitionsStructure, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
 		$translatedContentIdAttribute, $sourceAttribute, $alternativeDefinitionTextAttribute,
-		$operationAttribute, $isLatestAttribute;
+		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
 
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -590,6 +594,7 @@ function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
 		$record->setAttributeValue($sourceAttribute, getDefinedMeaningReferenceRecord($row->source_id));
 		$record->setAttributeValue($operationAttribute, $row->operation);
 		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
 		
 		$recordSet->add($record);	
 	}
@@ -997,13 +1002,16 @@ function getUpdatedDefinedMeaningDefinitionEditor($attribute, $showRollBackOptio
 	return $editor;
 }
 
-function getUpdatedAlternativeDefinitionsEditor($attribute) {
+function getUpdatedAlternativeDefinitionsEditor($attribute, $showRollBackOptions) {
 	global
 		$definedMeaningReferenceAttribute, $sourceAttribute,
-		$alternativeDefinitionTextAttribute, $operationAttribute, $isLatestAttribute;
+		$alternativeDefinitionTextAttribute,  $rollBackAttribute, $operationAttribute,$isLatestAttribute;
 		
 	$editor = createTableViewer($attribute);
 	
+	if ($showRollBackOptions)
+		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		
 	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
 	$editor->addEditor(createTranslatedTextViewer($alternativeDefinitionTextAttribute));
 	$editor->addEditor(createDefinedMeaningReferenceViewer($sourceAttribute));
@@ -1223,7 +1231,7 @@ function rollBackTransactions($recordSet) {
 		$updatedDefinitionAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute,
 		$updatedTranslatedTextAttribute, $updatedClassAttributesAttribute, $updatedTranslatedTextPropertyAttribute,
 		$updatedURLAttribute, $updatedTextAttribute, $updatedSyntransesAttribute,
-		$updatedAlternativeDefinitionTextAttribute;
+		$updatedAlternativeDefinitionTextAttribute, $updatedAlternativeDefinitionsAttribute;
 		
 	$summary = $wgRequest->getText('summary');
 	startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
@@ -1288,6 +1296,11 @@ function rollBackTransactions($recordSet) {
 		$updatedAlternativeDefinitionTexts = $updatesInTransaction->getAttributeValue($updatedAlternativeDefinitionTextAttribute);
 		$idStack->pushAttribute($updatedAlternativeDefinitionTextAttribute);
 		rollBackAlternativeDefinitionTexts($idStack, $updatedAlternativeDefinitionTexts);
+		$idStack->popAttribute();
+
+		$updatedAlternativeDefinitions = $updatesInTransaction->getAttributeValue($updatedAlternativeDefinitionsAttribute);
+		$idStack->pushAttribute($updatedAlternativeDefinitionsAttribute);
+		rollBackAlternativeDefinitions($idStack, $updatedAlternativeDefinitions);
 		$idStack->popAttribute();
 
 		$idStack->popAttribute();
@@ -1708,6 +1721,43 @@ function rollBackAlternativeDefinitionTexts($idStack, $alternativeDefinitionText
 			$idStack->popKey();
 		}
 	}	
+}
+
+function rollBackAlternativeDefinitions($idStack, $alternativeDefinitions) {
+	global
+		$isLatestAttribute, $operationAttribute, $rollBackAttribute,
+		$definedMeaningIdAttribute, $translatedContentIdAttribute, $sourceAttribute;
+	
+	$alternativeDefinitionsKeyStructure = $alternativeDefinitions->getKey();
+	
+	for ($i = 0; $i < $alternativeDefinitions->getRecordCount(); $i++) {
+		$alternativeDefinitionRecord = $alternativeDefinitions->getRecord($i);
+
+		$definedMeaningId = $alternativeDefinitionRecord->getAttributeValue($definedMeaningIdAttribute);
+		$translatedContentId = $alternativeDefinitionRecord->getAttributeValue($translatedContentIdAttribute);
+		$isLatest = $alternativeDefinitionRecord->getAttributeValue($isLatestAttribute);
+
+		if ($isLatest) {
+			$idStack->pushKey(simpleRecord($alternativeDefinitionsKeyStructure, array($definedMeaningId, $translatedContentId)));
+			
+			rollBackAlternativeDefinition(
+				getRollBackAction($idStack, $rollBackAttribute),
+				$definedMeaningId,
+				$translatedContentId, 
+				getMeaningId($alternativeDefinitionRecord, $sourceAttribute),
+				$alternativeDefinitionRecord->getAttributeValue($operationAttribute)
+			);
+				
+			$idStack->popKey();
+		}
+	}	
+}
+
+function rollBackAlternativeDefinition($rollBackAction, $definedMeaningId, $translatedContentId, $sourceId, $operation) {
+	if (shouldRemove($rollBackAction, $operation))
+		removeDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId);
+	else if (shouldRestore($rollBackAction, $operation))	
+		createDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId, $sourceId);	
 }
 
 ?>

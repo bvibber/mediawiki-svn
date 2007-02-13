@@ -495,7 +495,12 @@ function removeTranslatedTexts($translatedContentId) {
 }
 
 function removeDefinedMeaningAlternativeDefinition($definedMeaningId, $definitionId) {
-	removeTranslatedTexts($definitionId);
+	// Dilemma: 
+	// Should we also remove the translated texts when removing an
+	// alternative definition? There are pros and cons. For
+	// now it is easier to not remove them so they can be rolled
+	// back easier.      
+//	removeTranslatedTexts($definitionId);
 
 	$dbr = &wfGetDB(DB_MASTER);
 	$dbr->query("UPDATE uw_alt_meaningtexts SET remove_transaction_id=" . getUpdateTransactionId() .
