@@ -226,6 +226,7 @@ function initializeAttributes() {
 	$collectionMemberIdAttribute = new Attribute('collection-member-id', 'Collection member identifier', 'defined-meaning-id');
 	
 	$updatedCollectionMembershipStructure = new Structure(
+		$rollBackAttribute,
 		$collectionIdAttribute,
 		$collectionMeaningAttribute,
 		$collectionMemberIdAttribute,
@@ -440,7 +441,7 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedClassAttributesEditor($updatedClassAttributesAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($updatedCollectionMembershipAttribute));
+	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($updatedCollectionMembershipAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedURLEditor($updatedURLAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedTextEditor($updatedTextAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedTranslatedTextPropertyEditor($updatedTranslatedTextPropertyAttribute, $showRollBackOptions));
@@ -767,11 +768,14 @@ function getUpdatedClassMembershipRecordSet($transactionId) {
 function getUpdatedCollectionMembershipRecordSet($transactionId) {
 	global
 		$updatedCollectionMembershipStructure, $collectionIdAttribute, $collectionMeaningAttribute, 
-		$collectionMemberAttribute, $sourceIdentifierAttribute, $operationAttribute, $collectionMemberIdAttribute;
+		$collectionMemberAttribute, $sourceIdentifierAttribute, $collectionMemberIdAttribute, 
+		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
 	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT uw_collection_contents.collection_id, collection_mid, member_mid, internal_member_id, " . getOperationSelectColumn('uw_collection_contents', $transactionId) . 
+		"SELECT uw_collection_contents.collection_id, collection_mid, member_mid, internal_member_id, " . 
+			getOperationSelectColumn('uw_collection_contents', $transactionId) . ', ' .
+			getIsLatestSelectColumn('uw_collection_contents', array('collection_id', 'member_mid'), $transactionId) . 
 		" FROM uw_collection_contents, uw_collection_ns " .
 		" WHERE uw_collection_contents.collection_id=uw_collection_ns.collection_id " .
 		" AND " . getInTransactionRestriction('uw_collection_contents', $transactionId) .
@@ -788,6 +792,8 @@ function getUpdatedCollectionMembershipRecordSet($transactionId) {
 		$record->setAttributeValue($collectionMemberAttribute, getDefinedMeaningReferenceRecord($row->member_mid));
 		$record->setAttributeValue($sourceIdentifierAttribute, $row->internal_member_id);
 		$record->setAttributeValue($operationAttribute, $row->operation);
+		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
+		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
 		
 		$recordSet->add($record);	
 	}
@@ -1100,15 +1106,21 @@ function getUpdatedClassMembershipEditor($attribute, $showRollBackOptions) {
 	return $editor;
 }
 
-function getUpdatedCollectionMembershipEditor($attribute) {
+function getUpdatedCollectionMembershipEditor($attribute, $showRollBackOptions) {
 	global
-		$collectionMeaningAttribute, $collectionMemberAttribute, $sourceIdentifierAttribute, $operationAttribute;
+		$collectionMeaningAttribute, $collectionMemberAttribute, $sourceIdentifierAttribute, 
+		$operationAttribute, $rollBackAttribute, $isLatestAttribute;
 		
 	$editor = createTableViewer($attribute);
+
+	if ($showRollBackOptions)
+		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		
 	$editor->addEditor(createDefinedMeaningReferenceViewer($collectionMeaningAttribute));
 	$editor->addEditor(createDefinedMeaningReferenceViewer($collectionMemberAttribute));
 	$editor->addEditor(createShortTextViewer($sourceIdentifierAttribute));
 	$editor->addEditor(createShortTextViewer($operationAttribute));
+	$editor->addEditor(createBooleanViewer($isLatestAttribute));
 	
 	return $editor;
 }
@@ -1231,7 +1243,8 @@ function rollBackTransactions($recordSet) {
 		$updatedDefinitionAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute,
 		$updatedTranslatedTextAttribute, $updatedClassAttributesAttribute, $updatedTranslatedTextPropertyAttribute,
 		$updatedURLAttribute, $updatedTextAttribute, $updatedSyntransesAttribute,
-		$updatedAlternativeDefinitionTextAttribute, $updatedAlternativeDefinitionsAttribute;
+		$updatedAlternativeDefinitionTextAttribute, $updatedAlternativeDefinitionsAttribute,
+		$updatedCollectionMembershipAttribute;
 		
 	$summary = $wgRequest->getText('summary');
 	startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
@@ -1301,6 +1314,11 @@ function rollBackTransactions($recordSet) {
 		$updatedAlternativeDefinitions = $updatesInTransaction->getAttributeValue($updatedAlternativeDefinitionsAttribute);
 		$idStack->pushAttribute($updatedAlternativeDefinitionsAttribute);
 		rollBackAlternativeDefinitions($idStack, $updatedAlternativeDefinitions);
+		$idStack->popAttribute();
+
+		$updatedCollectionMemberships = $updatesInTransaction->getAttributeValue($updatedCollectionMembershipAttribute);
+		$idStack->pushAttribute($updatedCollectionMembershipAttribute);
+		rollBackCollectionMemberships($idStack, $updatedCollectionMemberships);
 		$idStack->popAttribute();
 
 		$idStack->popAttribute();
@@ -1758,6 +1776,44 @@ function rollBackAlternativeDefinition($rollBackAction, $definedMeaningId, $tran
 		removeDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId);
 	else if (shouldRestore($rollBackAction, $operation))	
 		createDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId, $sourceId);	
+}
+
+function rollBackCollectionMemberships($idStack, $collectionMemberships) {
+	global
+		$classMembershipIdAttribute, $isLatestAttribute, $collectionIdAttribute, 
+		$collectionMemberIdAttribute, $sourceIdentifierAttribute, 
+		$operationAttribute, $rollBackAttribute;
+	
+	$collectionMembershipsKeyStructure = $collectionMemberships->getKey();
+	
+	for ($i = 0; $i < $collectionMemberships->getRecordCount(); $i++) {
+		$collectionMembershipRecord = $collectionMemberships->getRecord($i);
+
+		$collectionId = $collectionMembershipRecord->getAttributeValue($collectionIdAttribute);
+		$collectionMemberId = $collectionMembershipRecord->getAttributeValue($collectionMemberIdAttribute);
+		$isLatest = $collectionMembershipRecord->getAttributeValue($isLatestAttribute);
+
+		if ($isLatest) {
+			$idStack->pushKey(simpleRecord($collectionMembershipsKeyStructure, array($collectionId, $collectionMemberId)));
+			
+			rollBackCollectionMembership(
+				getRollBackAction($idStack, $rollBackAttribute),
+				$collectionId,
+				$collectionMemberId, 
+				$collectionMembershipRecord->getAttributeValue($sourceIdentifierAttribute),
+				$collectionMembershipRecord->getAttributeValue($operationAttribute)
+			);
+				
+			$idStack->popKey();
+		}
+	}	
+}
+
+function rollBackCollectionMembership($rollBackAction, $collectionId, $collectionMemberId, $sourceIdentifier, $operation) {
+	if (shouldRemove($rollBackAction, $operation))
+		removeDefinedMeaningFromCollection($collectionMemberId, $collectionId);
+	else if (shouldRestore($rollBackAction, $operation))	
+		addDefinedMeaningToCollection($collectionMemberId, $collectionId, $sourceIdentifier);	
 }
 
 ?>
