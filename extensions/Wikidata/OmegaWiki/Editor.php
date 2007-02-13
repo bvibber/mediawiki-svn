@@ -1908,6 +1908,9 @@ class ObjectPathEditor extends Viewer {
 				case "uw_syntrans":
 					$result = $this->resolveSyntrans($objectId);
 					break;
+				case "uw_defined_meaning":
+					$result = $this->resolveDefinedMeaning($objectId);
+					break;
 				default:
 					$result = $tableName . " - " . $objectId; 
 			}
@@ -1980,6 +1983,10 @@ class ObjectPathEditor extends Viewer {
 				 definedMeaningAsLink($syntrans->defined_meaning_id) . " > " . spellingAsLink($syntrans->spelling); 
 		else	
 			return "Syntrans " . $objectId;
+	}
+	
+	protected function resolveDefinedMeaning($definedMeaningId) {
+		return definedMeaningAsLink($definedMeaningId);
 	}
 
 	public function showsData($value) {
