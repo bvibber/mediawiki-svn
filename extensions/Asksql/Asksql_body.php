@@ -109,9 +109,10 @@ class SqlQueryForm {
 		$this->logQuery( $this->query );
 
 		# Start timer, will kill the DB thread in $wgSqlTimeout seconds
-		$conn->startTimer( $wgSqlTimeout );
+		# FIXME: timer functions needed!
+		#$conn->startTimer( $wgSqlTimeout );
 		$res = $conn->query( $this->query, 'SpecialAsksql::doSubmit' );
-		$conn->stopTimer();
+		#$conn->stopTimer();
 		$this->logFinishedQuery();
 
 		$n = 0;
