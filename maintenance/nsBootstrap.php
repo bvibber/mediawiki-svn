@@ -78,7 +78,7 @@ class NamespaceBootstrap {
 					'ns_target' => null,
 					'ns_parent' => $subject === $id ? null : $subject,
 					'ns_hidden' => null,
-					'ns_count' => $id == NS_MAIN ? true : false,
+					'ns_count' => $id == NS_MAIN ? 1 : 0,
 					'ns_class' => null,
 				),
 				$fname
@@ -98,7 +98,7 @@ class NamespaceBootstrap {
 					'ns_target' => null,
 					'ns_parent' => $subject === $id ? null : $subject,
 					'ns_hidden' => null,
-					'ns_count' => false,
+					'ns_count' => 0,
 					'ns_class' => null,
 				),
 				$fname
