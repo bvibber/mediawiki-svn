@@ -14,10 +14,15 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
+if( !defined( 'MEDIAWIKI' ) ) {
+	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
+	die( 1 );
+}
+
 $wgExtensionCredits['other'][] = array( 
 	'name' => 'HTMLets', 
 	'author' => 'Daniel Kinzler', 
-	'url' => 'http://mediawiki.org/wiki/HTMLets_extension',
+	'url' => 'http://mediawiki.org/wiki/Extension:HTMLets',
 	'description' => 'lets you inline HTML snippets from files',
 );
 
