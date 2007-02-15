@@ -1,0 +1,132 @@
+--------------------------------------------------------------------------
+README for the News extension
+Copyright © 2007 Daniel Kinzler
+Licenses: GNU General Public Licence (GPL)
+          GNU Free Documentation License (GFDL)
+--------------------------------------------------------------------------
+
+The News extension provides a custom tag, <news>, that allows the inclusion of
+an excerpt from the Special:Recentchanges page to be shown on any wiki page.
+It supports several types of filtering as well as full custom formating of
+entries, using template syntax.
+
+<http://mediawiki.org/wiki/Extension:News>
+
+The News extension was originally written by Daniel Kinzler in 2007
+and is released under the GNU General Public Licence (GPL).
+
+Note that the functionality of this extension overlaps with the DynamicPageList
+and DynamicPageList2 extensions - however, this extension has a different focus.
+
+== INSTALLING ==
+
+Copy the News directory into the extensions folder of your 
+MediaWiki installation. Then add the following line to your
+LocalSettings.php file (near the end):
+
+  require_once( "$IP/extensions/News/News.php" );
+
+== USAGE ==
+
+To get the last 10 changes to your wiki on any wiki page, use the
+following:
+
+	<news/>
+
+You can provide options to controll the listing (for example, 20
+entries and no minor edits):
+
+	<news limit="20" nominor/>
+
+To define your own format for the generated list, you can provide a
+pattern that will be used for each entry:
+
+	<news limit="20" nominor>
+	* [[{{{pagename}}}]] ([[User:{{{user}}}]], {{{timeanddate}}})
+	</news>
+
+For a full list of options and template parameters, see below.
+
+=== OPTIONS ===
+The following options (tag attributes) can be used to controll the output of the
+<news> tags:
+
+* unique        show only the most recent change to each page
+
+* limit         the maximum number of entries to show
+
+* categories    limit results to the given categories. Multiple categories can
+                be given separated by "|"; Intersections of categories are not
+                supported. Recursion into subcategories is not supported.
+
+* namespaces    limit results to the given namespaces. Multiple namespaces can
+                be given separated by "|"; you can use "0", "-" or "main" to
+                refer to the default namespace.
+
+* notalk        ignore all "talk" namespaces. Not used if the namespaces option
+                is given.
+
+* nominor       hide minor edits ("true" or "false", default is "false"). If
+                given, the edit shown may not refer to the current revision. 
+
+* nobot         hide bot edits ("true" or "false", default is "false"). If
+                given, the edit shown may not refer to the current revision. 
+
+* noanon        hide anonymous edits ("true" or "false", default is "false"). If
+                given, the edit shown may not refer to the current revision. 
+
+* onlypatrolled show only patrolled edits ("true" or "false", default is
+                "false"). If given, the edit shown may not refer to the current
+                revision. 
+
+* onlynew       show only page creations ("true" or "false", default is
+                "false"). If given, the edit shown may not refer to the current
+                revision. 
+
+=== PARAMETERS ===
+When giving a template text between the <news> tags, the following
+template-parameters are available (use them as {{{xxx}}}):
+
+* rawtime      raw timestamp - can be formated using the parser function "time",
+               e.g. {{#time:j. M.|{{{rawtime}}}}} 
+
+* date         date of the edit, formated per user preference
+
+* time         time of the edit, formated per user preference
+
+* timeanddate  time and date of the edit, formated per user preference
+
+* namespace    numeric namespace id, can be used with {{ns:{{{namespace}}}}}
+
+* title        canonical title (without namespace prefix)
+
+* pagename     full title, with namespace prefix
+
+* type         numerical change type (0 = edit, 1 = new, 2 = move, 3 = log,
+               4 = move-over)
+
+* minor        "true" for minor changes, blank otherwise
+
+* user         user name who made the entry
+
+* comment      edit summary (escaped wikitext, safe to use)
+
+* new_rev      revision id associated with this entry (or zero)
+
+* old_rev      revision id associated with the entry before this one (or zero)
+
+* diff         full diff link for the edit (or blank)
+
+* permalink    full url to the revision created by the edit (may not be the
+               current revision)
+
+* bot          "true" for bot edits, blank otherwise
+
+* new          "true" for newly created pages, blank otherwise
+
+* patrolled    "true" if the edit was patrolled, blank otherwise
+
+* old_len      page length before the edit
+
+* new_len      page length after the edit
+
