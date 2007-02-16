@@ -29,21 +29,21 @@ $wgExtensionCredits['other'][] = array(
 /**
 * Pass file content unchanged. May get mangeled by late server pass.
 **/
-define('HTMLETS_NO_HACK', 0);
+define('HTMLETS_NO_HACK', 'none');
 
 /**
 * Normalize whitespace, apply special stripping and escaping to avoid mangeling.
 * This will break pre-formated text (pre tags), and may interfere with JavaScript
 * code under some circumstances.
 **/
-define('HTMLETS_STRIP_HACK', 1);
+define('HTMLETS_STRIP_HACK', 'strip');
 
 /**
 * bypass late parser pass using ParserAfterTidy. 
 * This will get the file content safely into the final HTML.
 * There's no obvious trouble with it, but it just might interfere with other extensions.
 **/
-define('HTMLETS_BYPASS_HACK', 2);
+define('HTMLETS_BYPASS_HACK', 'bypass');
 
 $wgHTMLetsHack = HTMLETS_BYPASS_HACK; #hack to use to work around bug #8997. see constant declarations.
 
