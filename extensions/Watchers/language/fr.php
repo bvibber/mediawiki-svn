@@ -10,8 +10,8 @@ global $wgMessageCache;
 $wgMessageCache->addMessages(
 	array(
 		'watchers_link_title' => "Qui suit cette page ?",
-		'watchers_error_article' => "<b>Erreur :</b> La page n’existe pas.",
-		'watchers_header' => "Personnes qui suivent « $1 »",
+		'watchers_error_article' => "<b>Erreur :</b> La page nâ€™existe pas.",
+		'watchers_header' => "Personnes qui suivent Â« $1 Â»",
 		'watchers_noone_watches' => "Personne ne suit cette page.",
 		'watchers_x_or_more' => "Au moins $1 utilisateur(s) suit cette page.",
 		'watchers_less_than_x' => "Moins de $1 utilisateurs suivent cette page.",
