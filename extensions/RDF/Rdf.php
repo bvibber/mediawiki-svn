@@ -210,7 +210,7 @@ if (defined('MEDIAWIKI')) {
 		} else {
 
 			$wgOut->disable();
-			header( "Content-type: {$rdftype}" );
+			header( "Content-type: {$rdftype}; charset=utf-8" );
 			$wgOut->sendCacheControl();
 
 			# Make sure serializer is loaded
@@ -245,7 +245,7 @@ if (defined('MEDIAWIKI')) {
 		} else {
 
 			$wgOut->disable();
-			header( "Content-type: {$rdftype}" );
+			header( "Content-type: {$rdftype}; charset=utf-8" );
 			$wgOut->sendCacheControl();
 
 			# Make sure serializer is loaded
@@ -272,7 +272,7 @@ if (defined('MEDIAWIKI')) {
 		} else {
 
 			$wgOut->disable();
-			header( "Content-type: {$rdftype}" );
+			header( "Content-type: {$rdftype}; charset=utf-8" );
 			$wgOut->sendCacheControl();
 
 			# Make sure serializer is loaded

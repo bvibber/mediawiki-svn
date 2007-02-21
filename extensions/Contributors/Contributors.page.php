@@ -68,7 +68,7 @@ class SpecialContributors extends IncludableSpecialPage {
 		if( is_object( $this->target ) && $this->target->exists() ) {
 			foreach( $this->getContributors() as $username => $info ) {
 				list( $userid, $count ) = $info;
-				header( 'Content-type: text/plain', true );
+				header( 'Content-type: text/plain; charset=utf-8', true );
 				echo( htmlspecialchars( "{$username} = {$count}\n" ) );
 			}
 		} else {

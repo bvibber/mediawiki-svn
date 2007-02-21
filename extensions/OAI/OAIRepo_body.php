@@ -33,7 +33,7 @@ class OAIRepository extends UnlistedSpecialPage {
 		$wgOut->disable();
 		
 		# FIXME: Replace the DB error handler
-		header( 'Content-type: text/xml' );
+		header( 'Content-type: text/xml; charset=utf-8' );
 		
 		require_once( 'includes/SpecialExport.php' );
 		
@@ -260,6 +260,7 @@ class OAIRepo {
 		} else {
     		header( 'HTTP/1.x 403 Unauthorized' );
 		}
+		header( 'Content-Type: text/html; charset=utf-8' );
 		echo "<p>Sorry, this resource is presently restricted-access.</p>";
 		return false;
 	}
@@ -331,7 +332,7 @@ class OAIRepo {
 		// We'd like compressed size, but that doesn't seem happy. :(
 		ob_start();
 		
-		header( 'Content-type: text/xml' );
+		header( 'Content-type: text/xml; charset=utf-8' );
 		echo '<' . '?xml version="1.0" encoding="UTF-8" ?' . ">\n";
 		echo oaiTag( 'OAI-PMH', array(
 			'xmlns'              => 'http://www.openarchives.org/OAI/2.0/',
