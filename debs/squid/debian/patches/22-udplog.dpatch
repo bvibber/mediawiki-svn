@@ -5,10 +5,10 @@
 ## DP: No description.
 
 @DPATCH@
-diff -ru squid-2.6.5/src/access_log.c squid-2.6.5-pipelog/src/access_log.c
---- squid-2.6.5/src/access_log.c	2006-09-28 21:55:37.000000000 +0000
-+++ squid-2.6.5-pipelog/src/access_log.c	2007-01-20 03:15:21.000000000 +0000
-@@ -341,6 +341,8 @@
+diff -urNad squid-2.6.9~/src/access_log.c squid-2.6.9/src/access_log.c
+--- squid-2.6.9~/src/access_log.c	2007-02-21 14:29:45.000000000 +0000
++++ squid-2.6.9/src/access_log.c	2007-02-21 14:30:42.000000000 +0000
+@@ -314,6 +314,8 @@
  
      LFT_EXT_LOG,
  
@@ -17,7 +17,7 @@ diff -ru squid-2.6.5/src/access_log.c squid-2.6.5-pipelog/src/access_log.c
      LFT_PERCENT			/* special string cases for escaped chars */
  } logformat_bcode_t;
  
-@@ -443,6 +445,8 @@
+@@ -416,6 +418,8 @@
  /*{ "<sb", LFT_REPLY_SIZE_BODY }, */
  /*{ "<sB", LFT_REPLY_SIZE_BODY_NO_TE }, */
  
@@ -26,7 +26,7 @@ diff -ru squid-2.6.5/src/access_log.c squid-2.6.5-pipelog/src/access_log.c
      {"%", LFT_PERCENT},
  
      {NULL, LFT_NONE}		/* this must be last */
-@@ -457,7 +461,9 @@
+@@ -430,7 +434,9 @@
      static MemBuf mb = MemBufNULL;
      char tmp[1024];
      String sb = StringNull;
@@ -36,7 +36,7 @@ diff -ru squid-2.6.5/src/access_log.c squid-2.6.5-pipelog/src/access_log.c
      memBufReset(&mb);
  
      lf = log->logFormat;
-@@ -678,6 +684,10 @@
+@@ -656,6 +662,10 @@
  	    quote = 1;
  	    break;
  
@@ -47,7 +47,7 @@ diff -ru squid-2.6.5/src/access_log.c squid-2.6.5-pipelog/src/access_log.c
  	case LFT_PERCENT:
  	    out = "%";
  	    break;
-@@ -1151,7 +1161,7 @@
+@@ -1129,7 +1139,7 @@
  	    fatalf("Unknown log format %d\n", log->type);
  	    break;
  	}
@@ -56,10 +56,10 @@ diff -ru squid-2.6.5/src/access_log.c squid-2.6.5-pipelog/src/access_log.c
  	if (!checklist)
  	    break;
      }
-diff -ru squid-2.6.5/src/cache_cf.c squid-2.6.5-pipelog/src/cache_cf.c
---- squid-2.6.5/src/cache_cf.c	2006-09-30 21:01:08.000000000 +0000
-+++ squid-2.6.5-pipelog/src/cache_cf.c	2007-01-20 01:18:26.000000000 +0000
-@@ -2602,42 +2602,16 @@
+diff -urNad squid-2.6.9~/src/cache_cf.c squid-2.6.9/src/cache_cf.c
+--- squid-2.6.9~/src/cache_cf.c	2007-02-21 14:29:45.000000000 +0000
++++ squid-2.6.9/src/cache_cf.c	2007-02-21 14:30:42.000000000 +0000
+@@ -2612,42 +2612,16 @@
      return PEER_SIBLING;
  }
  
@@ -104,9 +104,9 @@ diff -ru squid-2.6.5/src/cache_cf.c squid-2.6.5-pipelog/src/cache_cf.c
  	    self_destruct();
  	while (*head)
  	    head = &(*head)->next;
-diff -ru squid-2.6.5/src/logfile.c squid-2.6.5-pipelog/src/logfile.c
---- squid-2.6.5/src/logfile.c	2007-01-20 00:07:19.000000000 +0000
-+++ squid-2.6.5-pipelog/src/logfile.c	2007-01-20 02:58:19.000000000 +0000
+diff -urNad squid-2.6.9~/src/logfile.c squid-2.6.9/src/logfile.c
+--- squid-2.6.9~/src/logfile.c	2007-02-21 14:29:45.000000000 +0000
++++ squid-2.6.9/src/logfile.c	2007-02-21 14:34:01.000000000 +0000
 @@ -35,6 +35,8 @@
  #include "squid.h"
  
@@ -192,7 +192,17 @@ diff -ru squid-2.6.5/src/logfile.c squid-2.6.5-pipelog/src/logfile.c
  #ifdef S_ISREG
      if (stat(lf->path, &sb) == 0)
  	if (S_ISREG(sb.st_mode) == 0)
-@@ -298,7 +324,100 @@
+@@ -294,11 +320,110 @@
+ logfileWriteWrapper(Logfile * lf, const void *buf, size_t len)
+ {
+     int s;
++    /* Check if FD is still open
++     * UDP sockets may be closed before the final log flush, on shutdown.
++     */
++    if (lf->fd < 0 || !fd_table[lf->fd].flags.open) {
++        return;
++    }
+     s = FD_WRITE_METHOD(lf->fd, buf, len);
      fd_bytes(lf->fd, s, FD_WRITE);
      if (s == len)
  	return;
@@ -293,9 +303,9 @@ diff -ru squid-2.6.5/src/logfile.c squid-2.6.5-pipelog/src/logfile.c
 +}
 +
 +
-diff -ru squid-2.6.5/src/protos.h squid-2.6.5-pipelog/src/protos.h
---- squid-2.6.5/src/protos.h	2006-10-23 11:22:21.000000000 +0000
-+++ squid-2.6.5-pipelog/src/protos.h	2007-01-20 01:17:03.000000000 +0000
+diff -urNad squid-2.6.9~/src/protos.h squid-2.6.9/src/protos.h
+--- squid-2.6.9~/src/protos.h	2007-02-21 14:29:45.000000000 +0000
++++ squid-2.6.9/src/protos.h	2007-02-21 14:30:42.000000000 +0000
 @@ -1198,6 +1198,7 @@
  void setUmask(mode_t mask);
  int xusleep(unsigned int usec);
@@ -304,10 +314,10 @@ diff -ru squid-2.6.5/src/protos.h squid-2.6.5-pipelog/src/protos.h
  
  #if USE_HTCP
  extern void htcpInit(void);
-diff -ru squid-2.6.5/src/structs.h squid-2.6.5-pipelog/src/structs.h
---- squid-2.6.5/src/structs.h	2007-01-20 00:07:19.000000000 +0000
-+++ squid-2.6.5-pipelog/src/structs.h	2007-01-18 22:00:00.000000000 +0000
-@@ -2439,6 +2439,8 @@
+diff -urNad squid-2.6.9~/src/structs.h squid-2.6.9/src/structs.h
+--- squid-2.6.9~/src/structs.h	2007-02-21 14:29:45.000000000 +0000
++++ squid-2.6.9/src/structs.h	2007-02-21 14:30:42.000000000 +0000
+@@ -2445,6 +2445,8 @@
      struct {
  	unsigned int fatal;
  	unsigned int syslog;
@@ -316,9 +326,9 @@ diff -ru squid-2.6.5/src/structs.h squid-2.6.5-pipelog/src/structs.h
      } flags;
      int syslog_priority;
  };
-diff -ru squid-2.6.5/src/tools.c squid-2.6.5-pipelog/src/tools.c
---- squid-2.6.5/src/tools.c	2006-11-01 20:58:52.000000000 +0000
-+++ squid-2.6.5-pipelog/src/tools.c	2007-01-20 03:04:16.000000000 +0000
+diff -urNad squid-2.6.9~/src/tools.c squid-2.6.9/src/tools.c
+--- squid-2.6.9~/src/tools.c	2007-02-21 14:29:45.000000000 +0000
++++ squid-2.6.9/src/tools.c	2007-02-21 14:30:42.000000000 +0000
 @@ -1346,3 +1346,43 @@
      }
  #endif
@@ -363,5 +373,3 @@ diff -ru squid-2.6.5/src/tools.c squid-2.6.5-pipelog/src/tools.c
 +    return TRUE;
 +}
 +
-
-
