@@ -274,7 +274,8 @@ class OAIRepo {
 	 */
 	private function authenticateUser( $username, $password ) {
 		$db = $this->getAuditDatabase();
-		$id = $db->selectField( 'oaiuser',
+		$id = $db->selectField(
+			$this->auditTableName( 'oaiuser' ),
 			'ou_id',
 			array(
 				'ou_name' => $username,
@@ -294,7 +295,8 @@ class OAIRepo {
 		global $oaiAudit, $wgDBname;
 		if( $oaiAudit ) {
 			$db = $this->getAuditDatabase();
-			$db->insert( 'oaiaudit',
+			$db->insert(
+				$this->auditTableName( 'oaiaudit' ),
 				array(
 					'oa_client' => $this->_clientId,
 					'oa_timestamp' => $db->timestamp(),
@@ -315,6 +317,23 @@ class OAIRepo {
 	 */
 	private function getAuditDatabase() {
 		return wfGetDB( DB_MASTER, 'oaiAudit' );
+	}
+	
+	/**
+	 * Would be nice to offload this to the Database class
+	 * in a safe, consistent manner.
+	 * To avoid duplicate connections which confuse something
+	 * in configuration, possibly reuse an existing connection...
+	 * @return string prefixed table name
+	 */
+	private function auditTableName( $table ) {
+		global $oaiAuditDatabase;
+		if( $oaiAuditDatabase ) {
+			// Shared db between wikis?
+			return "`$oaiAuditDatabase`.`$table`";
+		} else {
+			return $table;
+		}
 	}
 	
 	function respond() {

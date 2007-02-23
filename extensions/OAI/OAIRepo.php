@@ -46,6 +46,15 @@ $oaiAuth = false;
  */
 $oaiAudit = false;
 
+/**
+ * The oaiaudit and oaiusers tables are used on the connection
+ * in load group 'oai', or the primary database if none is set.
+ *
+ * If the tables are not in the default database for that connection,
+ * put it here so the system knows where to find them.
+ */
+$oaiAuditDatabase = false;
+
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'OAIRepository',
 	'author' => 'Brion Vibber',
