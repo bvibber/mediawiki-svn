@@ -25,7 +25,7 @@ $wgFilepathMessages['de'] = array(
 $wgFilepathMessages['fi'] = array(
 	'filepath'        => 'Tiedoston osoite',
 	'filepath_page'   => 'Tiedosto:',
-	'filepath_submit' => 'Osoite',
+	'filepath_submit' => 'Selvitä osoite',
 );
 $wgFilepathMessages['fr'] = array(
 	'filepath'        => 'Chemin d’un fichier',
