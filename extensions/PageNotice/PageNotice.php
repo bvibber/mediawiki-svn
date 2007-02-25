@@ -46,11 +46,11 @@ function wfPageNoticeHook( &$out, &$text ) {
 	$footer = wfMsgExt("bottom-notice-$name", $opt);
 	$nsfooter = wfMsgExt("bottom-notice-ns-$ns", $opt);
 	
-	if (!wfEmptyMsg("top-notice-$name", $header)) $text = "<p>$header</p>\n$text";
-	if (!wfEmptyMsg("top-notice-ns-$ns", $nsheader)) $text = "<p>$nsheader</p>\n$text";
+	if (!wfEmptyMsg("top-notice-$name", $header)) $text = "<div>$header</div>\n$text";
+	if (!wfEmptyMsg("top-notice-ns-$ns", $nsheader)) $text = "<div>$nsheader</div>\n$text";
 	
-	if (!wfEmptyMsg("bottom-notice-$name", $footer)) $text = "$text\n<p>$footer</p>";
-	if (!wfEmptyMsg("bottom-notice-ns-$ns", $nsfooter)) $text = "$text\n<p>$nsfooter</p>";
+	if (!wfEmptyMsg("bottom-notice-$name", $footer)) $text = "$text\n<div>$footer</div>";
+	if (!wfEmptyMsg("bottom-notice-ns-$ns", $nsfooter)) $text = "$text\n<div>$nsfooter</div>";
 	
 	return true;
 }
