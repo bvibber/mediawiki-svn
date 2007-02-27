@@ -192,7 +192,7 @@ function wfSpecialImportFreeImages( $par )
 			$caption = wfMsg('importfreeimages_filefromflickr', $_POST['t'], "http://www.flickr.com/people/" . urlencode($_POST['owner']) . " " . $_POST['name']) . " <nowiki>$import</nowiki>. {{CC by 2.0}} ";
 		}
 		$caption = trim($caption);
-		$t = $_POST['title'];
+		$t = $_POST['ititle'];
 
 		// handle duplicate filenames
 		$i = strrpos($import, "/");
@@ -216,7 +216,7 @@ function wfSpecialImportFreeImages( $par )
 				"caption" => $caption,
 				"url" => $import, "title" => $_POST['t'] );
 */
-		$filename = urldecode($_POST['title']) . ($wgIFI_AppendRandomNumber ? "-" . rand(0, 9999) : "") . ".jpg";
+		$filename = urldecode($_POST['ititle']) . ($wgIFI_AppendRandomNumber ? "-" . rand(0, 9999) : "") . ".jpg";
 		$filename = str_replace("?", "", $filename);
 		$filename = str_replace(":", "", $filename);
 		$filename = preg_replace('/ [ ]*/', ' ', $filename);
@@ -276,21 +276,21 @@ function wfSpecialImportFreeImages( $par )
 				<input type=hidden name='action' value='submit'>
 				<input type=hidden name='owner' value=''>
 				<input type=hidden name='name' value=''>
-				<input type=hidden name='title' value=''>
+				<input type=hidden name='ititle' value=''>
 
 	<script type=\"text/javascript\">
 
-		function s2 (url, id, owner, name, title) {
+		function s2 (url, id, owner, name, ititle) {
 			document.uploadphotoform.url.value = url;
 			document.uploadphotoform.id.value = id;
 			document.uploadphotoform.owner.value = owner;
 			document.uploadphotoform.name.value = name;
-			document.uploadphotoform.title.value = title;
+			document.uploadphotoform.ititle.value = ititle;
 			if (" . ($wgIFI_PromptForFilename ? "true" : "false") . ") {
-				title = title.replace(/\+/g, ' ');
-				document.uploadphotoform.title.value = prompt('" . wfMsg('importfreeimages_promptuserforfilename') . "', unescape(title));
-				if (document.uploadphotoform.title.value == '') {
-					document.uploadphotoform.title.value = title;
+				ititle = ititle.replace(/\+/g, ' ');
+				document.uploadphotoform.ititle.value = prompt('" . wfMsg('importfreeimages_promptuserforfilename') . "', unescape(ititle));
+				if (document.uploadphotoform.ititle.value == '') {
+					document.uploadphotoform.ititle.value = ititle;
 				}
 			}
 			document.uploadphotoform.submit();
