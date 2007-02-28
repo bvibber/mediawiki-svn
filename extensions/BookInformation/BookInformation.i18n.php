@@ -25,6 +25,20 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Data provider: $1',
 ),
 
+'ca' => array(
+'bookinfo-header'=> 'Informació del llibre',
+'bookinfo-result-title'=> 'Títol:',
+'bookinfo-result-author'=> 'Autor:',
+'bookinfo-result-publisher'=> 'Editor:',
+'bookinfo-result-year'=> 'Any:',
+'bookinfo-error-invalidisbn'=> 'L\'ISBN introduït no és vàlid.',
+'bookinfo-error-nosuchitem'=> 'L\'element no existeix o no s\'ha pogut trobar.',
+'bookinfo-error-nodriver'=> 'No s\'ha pogut inicialitzar un connector d\'informació de llibres apropiat.',
+'bookinfo-error-noresponse'=> 'No hi ha cap resposta o el temps de sol·licitud s\'ha esgotat.',
+'bookinfo-purchase'=> 'Compra aquest llibre de $1',
+'bookinfo-provider'=> 'Proveïdor de dades: $1',
+),
+
 /* German (Raymond) */
 'de' => array(
 'bookinfo-header' => 'Informationen über Bücher',

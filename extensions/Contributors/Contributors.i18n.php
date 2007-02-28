@@ -24,6 +24,19 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'The article $1 doesn\'t exist.',
 ),
 
+'ca' => array(
+'contributors'=> 'Contribuïdors',
+'contributors-toolbox'=> 'Principals contribuïdors',
+'contributors-legend'=> 'Llista dels principals contribuïdors en un article',
+'contributors-target'=> 'Títol:',
+'contributors-submit'=> 'Mostra',
+'contributors-subtitle'=> 'Principals contribuïdors a $1',
+'contributors-others-long'=> 'Hi ha $1 contribuïdors més en aquesta pàgina.',
+'contributors-others'=> 'i $1 més',
+'contributors-badtitle'=> 'El títol no és vàlid.',
+'contributors-nosuchpage'=> 'L\'article $1 no existeix.',
+),
+
 /* German (Raymond) */
 'de' => array(
 'contributors' => 'Hauptautoren',
