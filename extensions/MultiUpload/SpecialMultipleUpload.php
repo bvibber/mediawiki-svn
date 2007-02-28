@@ -248,7 +248,7 @@ class MultipleUploadForm extends UploadForm {
     }
 
 	function showWarningOptions() {
-		global $wgOut;
+		global $wgOut, $wgMaxUploadFiles;
 		$save = wfMsgHtml( 'saveallfiles' );
 		$reupload = wfMsgHtml( 'reupload' );
 		$iw = wfMsgWikiHtml( 'ignoreallwarnings' );
@@ -266,8 +266,11 @@ class MultipleUploadForm extends UploadForm {
 		<input type='hidden' name='wpIgnoreWarning' value='1' />
 		<input type='hidden' name='wpSessionKey' value=\"" . htmlspecialchars( $this->mSessionKey ) . "\" />
 		<input type='hidden' name='wpLicense' value=\"" . htmlspecialchars( $this->mLicense ) . "\" />
-		<input type='hidden' name='wpDestFile' value=\"" . htmlspecialchars( $this->mDestFile ) . "\" />
-		<input type='hidden' name='wpWatchthis' value=\"" . htmlspecialchars( intval( $this->mWatchthis ) ) . "\" />
+		");
+		        for ($x = 0; $x < $wgMaxUploadFiles; $x++) {
+					$wgOut->addHTML("<input type='hidden' name='wpDestFile_$x' value=\"" . htmlspecialchars( $this->mDestFileArray[$x] ) . "\" />");
+				}
+		$wgOut->addHTML("<input type='hidden' name='wpWatchthis' value=\"" . htmlspecialchars( intval( $this->mWatchthis ) ) . "\" />
 	{$copyright}
 	<table border='0'>
 		<tr>
