@@ -64,6 +64,28 @@ copies of all histories. This is useful for article forking, etc.',
 'duplicator-toomanyrevisions'=> 'Re a ($2) gemmoù zo gant [[$1]]. N\'haller ket o eilañ. $3 eo ar vevenn e talvoud.',
 ),
 
+'ca' => array(
+'duplicator'=> 'Duplica un article',
+'duplicator-toolbox'=> 'Duplica aquest article',
+'duplicator-header'=> 'Aquesta pàgina permet la duplicació completa d\'un article, creant còpies independents de totes les històries. Això és útil per a l\'edició de nous articles a partir d\'altres, etc.',
+'duplicator-options'=> 'Opcions',
+'duplicator-source'=> 'Origen:',
+'duplicator-dest'=> 'Destinació',
+'duplicator-dotalk'=> 'Duplica la pàgina de discussió (quan així es pugui)',
+'duplicator-submit'=> 'Duplica',
+'duplicator-summary'=> 'Copiat des de [[$1]]',
+'duplicator-success'=> '<big>\'\'\'[[$1]] s\'ha copiat a [[$2]].\'\'\'</big>',
+'duplicator-success-revisions'=> '{{PLURAL:$1|S\'ha copiat una revisió|S\'han copiat $1 revisions}}.',
+'duplicator-success-talkcopied'=> 'La pàgina de discussió també s\'ha copiat.',
+'duplicator-success-talknotcopied'=> 'La pàgina de discussió no s\'ha pogut copiar.',
+'duplicator-failed'=> 'La pàgina no s\'ha pogut duplicar. S\'ha produït un error desconegut.',
+'duplicator-source-invalid'=> 'Si us plau, proporcioneu un títol de pàgina original vàlid.',
+'duplicator-source-notexist'=> '[[$1]] no existeix. Proporcioneu un títol d\'una pàgina que existeixi.',
+'duplicator-dest-invalid'=> 'Si us plau, proporcioneu un títol de destinació vàlid.',
+'duplicator-dest-exists'=> '[[$1]] ja existeix. Proporcioneu un títol de destinació que no existeixi.',
+'duplicator-toomanyrevisions'=> 'La pàgina [[$1]] té $2 revisions i no pot ser copiada. EL límit màxim d\'edicions que es poden copiar és de $3.',
+),
+
 /* German (Leon Weber) */
 'de' => array(
 	'duplicator' => 'Einen Artikel duplizieren',
