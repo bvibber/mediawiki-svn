@@ -52,6 +52,10 @@ $wgMakesysopMessages['bg'] = array(
 	'already_sysop'        => 'Този потребител беше вече администратор',
 	'already_bureaucrat'   => 'Този потребител беше вече бюрократ',
 );
+$wgMakesysopMessages['bpy'] = array(
+	'already_sysop'         => 'আতাকুরা এগ এচুদিনে ডান্ডি(প্রশাসক)গ ইয়াপরিলগাহে',
+	'already_bureaucrat'    => 'আতাকুরা এগ এচুদিনে ব্যুরোক্র্যাটগ ইয়াপরিলগাহে',
+);
 $wgMakesysopMessages['br'] = array(
 	'makesysoptitle'       => 'A ro ar gwirioù merañ.',
 	'makesysoptext'        => 'Graet e vez gant ar furmskrid-mañ gant ar Pennoù-bras a-benn reiñ ar gwirioù merañ. Lakait anv an implijer er voest ha pouezit war ar bouton evit reiñ ar gwirioù dezhañ/i.',
@@ -341,6 +345,10 @@ $wgMakesysopMessages['hsb'] = array(
 	'makesysop'            => 'Wužiwarja k administratorej činić',
 	'already_sysop'        => 'Tutón wužiwar je hižo administrator.',
 	'already_bureaucrat'   => 'Tutón wužiwar je hižo běrokrat.',
+);
+$wgMakesysopMessages['hu'] = array(
+	'already_sysop'        => 'Ez a felhasználó már adminisztrátor.',
+	'already_bureaucrat'   => 'Ez a felhasználó már bürokrata.',
 );
 $wgMakesysopMessages['id'] = array(
 	'makesysoptitle'       => 'Buat seorang pengguna menjadi pengurus',
