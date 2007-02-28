@@ -854,6 +854,25 @@ $wgMakesysopMessages['tt'] = array(
 $wgMakesysopMessages['tyv'] = array(
 	'makesysopname'		=> 'Ажыглакчыниң ады:',
 );
+$wgMakesysopMessages['uk'] = array(
+	'makesysoptitle'       => 'Надати користувачу права адміністратора (sysop)',
+	'makesysoptext'        => "Ця форма призначена для бюрократів й дозволяє надавати користувачам статус адміністратора.
+Введіть ім'я користувача й натисніть кнопку, щоб надати користувачу права адміністратора",
+	'makesysopname'        => "Ім'я користувача:",
+	'makesysopsubmit'      => 'Надати користувачу права адміністратора (sysop)',
+	'makesysopok'          => "<strong>Користувачу [[{{ns:user}}:$1|$1]] надано статус адміністратора</strong>",
+	'makesysopfail'        => "<strong>Користувача $1 неможливо надати права адміністратора. (Ви впевнені, що вірно ввели його ім'я?)</strong>",
+	'setbureaucratflag'    => 'Встановити флаг «Бюрократ»',
+	'rights'               => 'Права:',
+	'set_user_rights'      => 'Встановити права користувача',
+	'user_rights_set'      => "<strong>Права користувача $1 оновлено</strong></strong>",
+	'set_rights_fail'      => "<strong>Неможливо встановити права користувача $1. (Перевірте, чи вірно введено його ім'я)</strong>",
+	'makesysop'            => 'Надати користувачу права адміністратора (sysop)',
+	'already_sysop'        => 'Цей користувач вже є адміністратором',
+	'already_bureaucrat'   => 'Цей користувач вже є бюрократом',
+	'group-steward'        => 'Стюарди',
+	'group-steward-member' => 'стюард',
+);
 $wgMakesysopMessages['vec'] = array(
 	'makesysoptitle'       => 'Rendi aministradore un utente',
 	'makesysoptext'        => 'Sto form xè usà dai burocrati par far diventare amistradori i utenti normali. Scrivi el nome de l\'utente ne la caseła e struca el botón par far diventare aministradore un utente.',
