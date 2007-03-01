@@ -3,15 +3,19 @@
 #
 # $URL: file:///home/river/s2s/linksd/Makefile $ %E% %U%
 
-all: linksc liblinksc_jni.so linksc.jar sixdeg.war
+all:
+	$(MAKE) -C libsixdeg all
 	$(MAKE) -C linksd all
+	$(MAKE) all-real
 
-linksc: linksc.o liblinksc.o linksc.h
-	g++ -O2 linksc.o liblinksc.o -o linksc
+all-real: linksc liblinksc_jni.so linksc.jar sixdeg.war
+
+linksc: linksc.o liblinksc.o linksc.h libsixdeg/libsixdeg.a
+	g++ -O2 linksc.o liblinksc.o -o linksc -Llibsixdeg -lsixdeg
 linksc.o: linksc.cc linksc.h
 	g++ -O2 -c linksc.cc 
 liblinksc.o: liblinksc.cc linksc.h
-	g++ -fPIC -O2 -c liblinksc.cc
+	g++ -fPIC -O2 -g -Ilibsixdeg -c liblinksc.cc
 
 liblinksc_jni.so: org/wikimedia/links/linksc.class liblinksc.o linksc_jni.cc
 	javah -classpath . org.wikimedia.links.linksc
@@ -35,6 +39,7 @@ linksc.jar: org/wikimedia/links/linksc.class org/wikimedia/links/NoFromArticleEx
 
 clean:
 	rm -f linksc org/wikimedia/links/*.class linksc_jni.so linkc.jar *.so *.o mkcache org_wikimedia_links_linksc.h sixdeg.war linksc.jar core
+	$(MAKE) -C sixdeg clean
 	$(MAKE) -C linksd clean
 
 sixdeg.war: linksc.jar webapp/src/index.jsp liblinksc_jni.so webapp/src/main.css webapp/src/6deg.png webapp/src/WEB-INF/web.xml

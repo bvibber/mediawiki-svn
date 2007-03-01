@@ -5,7 +5,7 @@
 
 CXX		= g++
 CXXFLAGS	= -g -O2
-CPPFLAGS	= -D_REENTRANT -I.. 
+CPPFLAGS	= -W -Wall -D_REENTRANT -I.. -I../libsixdeg
 MYSQL_CPPFLAGS	= $(shell mysql_config --cflags)
 MYSQL_LIBS	= $(shell mysql_config --libs_r)
 
@@ -14,8 +14,8 @@ LINKSD_OBJS	= $(LINKSD_SRCS:.cc=.o)
 
 all: linksd mkcache
 
-linksd: $(LINKSD_OBJS)
-	$(CXX) -g -O2 -lmysqlclient -lz $(LINKSD_OBJS) -o linksd
+linksd: $(LINKSD_OBJS) ../libsixdeg/libsixdeg.a
+	$(CXX) -g -O2 -lmysqlclient -lz $(LINKSD_OBJS) -o linksd -L../libsixdeg -lsixdeg
 
 mkcache: mkcache.o
 	$(CXX) $(CXXFLAGS) mkcache.o -o mkcache $(MYSQL_LIBS)

@@ -12,25 +12,14 @@
 #include <sys/un.h>
 
 #include <iostream>
-#include <map>
-#include <list>
-#include <set>
-#include <vector>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <cassert>
-#include <queue>
 #include <string>
-#include <algorithm>
-#include <utility>
 #include <fstream>
 #include <sstream>
-#include <exception>
 
 #include <unistd.h>
-#include <mysql.h>
-#include <fcntl.h>
 
 #include "linksc.h"
 #include "pathfinder.h"
@@ -39,7 +28,6 @@
 int
 main(int argc, char *argv[])
 {
-
 	std::ifstream in(CACHE);
 	std::string l;
 	std::printf("retrieving links table...\n");
@@ -97,7 +85,7 @@ main(int argc, char *argv[])
 	for (;;) {
 	int			cli;
 	struct sockaddr_un	cliaddr;
-	size_t			clilen;
+	socklen_t		clilen;
 		clilen = sizeof(addr);
 		std::memset(&cliaddr, 0, clilen);
 		if ((cli = accept(did, (struct sockaddr *)&cliaddr, (socklen_t *)&clilen)) == -1) {

@@ -42,6 +42,9 @@ pathfinder::filter(void)
 boost::optional<int>
 pathfinder::id_for_name(std::string const &name) const
 {
+	if (ids.find(name) == ids.end())
+		return boost::optional<int>();
+
 	return ids.find(name)->second;
 }
 

@@ -17,10 +17,13 @@
 #include <string>
 #include <vector>
 
+#include <boost/tokenizer.hpp>
+
 #include <unistd.h>
 #include <fcntl.h>
 
 #include "linksc.h"
+#include "encode_decode.h"
 
 int
 linksc_findpath(std::vector<std::string>& result, std::string src, std::string dst)
@@ -33,91 +36,56 @@ linksc_findpath(std::vector<std::string>& result, std::string src, std::string d
 	addr.sun_family = AF_LOCAL;
 	std::strcpy(addr.sun_path, DOOR);
 	if ((s = socket(AF_LOCAL, SOCK_STREAM, 0)) == -1) {
-perror("socket");
+		perror("socket");
 		return 3;
 	}
 	if (connect(s, (struct sockaddr *)&addr, sizeof(addr)) == -1) {
-perror("connect");
+		perror("connect");
 		close(s);
 		return 3;
 	}
 
-	uint32_t i;
-	i = src.size();
-	data.resize(4);
-	*(uint32_t*)&data[0] = i;
-	data.insert(data.end(), src.begin(), src.end());
-	
-	i = dst.size();
-	data.resize(data.size() + 4);
-	*(uint32_t*)&data[data.size() - 4] = i;
-	data.insert(data.end(), dst.begin(), dst.end());
-
-	i = data.size();
-	if (write(s, &i, sizeof(i)) < sizeof(i)) {
+	request_encoder enc;
+	enc.set_key("from", src);
+	enc.set_key("to", dst);
+	if (!enc.send_to(s)) {
 		close(s);
 		return 3;
 	}
 
-	if ((l = write(s, &data[0], data.size())) < data.size()) {
+	request_decoder dec;
+	char buf[1024];
+	ssize_t n;
+
+	while ((n = read(s, buf, sizeof buf)) > 0) {
+		dec.add_data(buf, n);
+		if (dec.error()) {
+			close(s);
+			return -1;
+		}
+
+		if (dec.finished())
+			break;
+	}
+
+	if (dec.has_key("error")) {
+		close(s);
+		std::string error = dec.get_key("error");
+		if (error == "no_from")
+			return 0;
+		if (error == "no_to")
+			return 1;
+		return 3;
+	}
+
+	if (!dec.has_key("path")) {
 		close(s);
 		return 3;
 	}
 
-	if (read(s, &i, sizeof(i)) < sizeof(i)) {
-		close(s);
-		return 3;
-	}
-	
-	try {
-		data.resize(i);
-	} catch (std::bad_alloc&) {
-		close(s);
-		return 3;
-	}
-
-	if (read(s, &data[0], i) < i) {
-		close(s);
-		return 3;
-	}
-
-	if (i < 4) {
-		close(s);
-		return 3;
-	}
-	char *buf = &data[0];
-	void *oaddr = &data[0];
-	size_t osize = i;
-	uint32_t status = *(uint32_t*)&data[0];
-	result.resize(0);
-	switch (status) {
-	case 0:
-		close(s);
-		return 0;
-	case 1:
-		close(s);
-		return 1;
-	case 2:
-		close(s);
-		return 3;
-	case 3:
-		break;
-	default:
-		close(s);
-		return 2;
-	}
-	i -= 4;
-	buf += 4;
-	while (i) {
-		std::string h;
-		status = *(uint32_t*)buf;
-		i -= 4;
-		buf += 4;
-		h.assign(buf, status);
-		i -= status;
-		buf += status;
-		result.insert(result.end(), h);
-	}
+	boost::char_separator<char> sep("|");
+	boost::tokenizer<boost::char_separator<char> > tok(dec.get_key("path"), sep);
+	std::copy(tok.begin(), tok.end(), std::back_inserter(result));
 	close(s);
 	return 4;
 }
