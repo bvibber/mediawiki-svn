@@ -3,17 +3,13 @@
 #
 # $URL: file:///home/river/s2s/linksd/Makefile $ %E% %U%
 
-all: linksd linksc liblinksc_jni.so linksc.jar sixdeg.war mkcache
+all: linksc liblinksc_jni.so linksc.jar sixdeg.war
+	$(MAKE) -C linksd all
 
-# do not use -library=stlport4 for linksd! it's broken because of a sun studio 11 bug
-linksd: linksd.cc linksc.h
-	g++ -D_REENTRANT -g -O2 -I/usr/include/mysql -lmysqlclient -lz linksd.cc -o linksd
 linksc: linksc.o liblinksc.o linksc.h
 	g++ -O2 linksc.o liblinksc.o -o linksc
 linksc.o: linksc.cc linksc.h
 	g++ -O2 -c linksc.cc 
-mkcache: mkcache.cc linksc.h
-	g++ -O2 mkcache.cc -o mkcache -I/usr/include/mysql -L/opt/mysql50/lib/mysql -lmysqlclient -lz
 liblinksc.o: liblinksc.cc linksc.h
 	g++ -fPIC -O2 -c liblinksc.cc
 
@@ -38,7 +34,8 @@ linksc.jar: org/wikimedia/links/linksc.class org/wikimedia/links/NoFromArticleEx
 	zip -r linksc.jar  org/wikimedia/links/linksc.class org/wikimedia/links/NoFromArticleException.class org/wikimedia/links/NoToArticleException.class org/wikimedia/links/ConnectException.class org/wikimedia/links/ErrorException.class
 
 clean:
-	rm -f linksc linksd org/wikimedia/links/*.class linksc_jni.so linkc.jar *.so *.o mkcache org_wikimedia_links_linksc.h sixdeg.war linksc.jar core
+	rm -f linksc org/wikimedia/links/*.class linksc_jni.so linkc.jar *.so *.o mkcache org_wikimedia_links_linksc.h sixdeg.war linksc.jar core
+	$(MAKE) -C linksd clean
 
 sixdeg.war: linksc.jar webapp/src/index.jsp liblinksc_jni.so webapp/src/main.css webapp/src/6deg.png webapp/src/WEB-INF/web.xml
 	rm -f sixdeg.war
