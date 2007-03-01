@@ -35,10 +35,8 @@ if (from != null && from.length() > 0 && to != null && to.length() > 0) {
 	boolean ign_date = idp != null && idp.equals("1");
 	String rfrom = from.substring(0, 1).toUpperCase() + from.substring(1, from.length());
 	String rto = to.substring(0, 1).toUpperCase() + to.substring(1, to.length());
-	if (ign_date)
-		rfrom = "#" + rfrom;
 	try {
-		path = lc.findPath(rfrom.replaceAll(" ", "_"), rto.replaceAll(" ", "_"));
+		path = lc.findPath(rfrom.replaceAll(" ", "_"), rto.replaceAll(" ", "_"), ign_date);
 	} catch (org.wikimedia.links.ErrorException e) {
 		error = e.geterror();
 	}
