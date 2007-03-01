@@ -43,7 +43,6 @@ request_encoder::send_to(int s)
 		lend[1] = (len & 0x00FF0000) >> 16;
 		lend[2] = (len & 0x0000FF00) >> 8;
 		lend[3] = (len & 0x000000FF);
-		std::cout << boost::format("send %d/%d/%d/%d\n") % (int)lend[0] % (int)lend[1] % (int)lend[2] % (int)lend[3];
 		buf.insert(buf.end(), lend, lend + 4);
 		buf.insert(buf.end(), kv.begin(), kv.end());
 	}
@@ -113,7 +112,6 @@ request_decoder::decode(void)
 			| ((unsigned int)(unsigned char)data[1] << 16)
 			| ((unsigned int)(unsigned char)data[2] << 8)
 			| ((unsigned int)(unsigned char)data[3]);
-		std::cout << boost::format("len = %d (%d/%d/%d/%s)\n") % len % (int)data[0] % (int)data[1] % (int)data[2] % (int)data[3];
 
 		if (len == 0)
 			return;
@@ -135,7 +133,6 @@ request_decoder::decode(void)
 			key = keyval.substr(0, n);
 			value = keyval.substr(n + 1);
 		}
-		std::cout << boost::format("key = [%s], value = [%s]\n") % key % value;
 		keys[key] = value;
 	}
 }
