@@ -39,7 +39,7 @@ linksc.jar: org/wikimedia/links/linksc.class org/wikimedia/links/NoFromArticleEx
 
 clean:
 	rm -f linksc org/wikimedia/links/*.class linksc_jni.so linkc.jar *.so *.o mkcache org_wikimedia_links_linksc.h sixdeg.war linksc.jar core
-	$(MAKE) -C sixdeg clean
+	$(MAKE) -C libsixdeg clean
 	$(MAKE) -C linksd clean
 
 sixdeg.war: linksc.jar webapp/src/index.jsp liblinksc_jni.so webapp/src/main.css webapp/src/6deg.png webapp/src/WEB-INF/web.xml

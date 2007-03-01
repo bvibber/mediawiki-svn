@@ -14,6 +14,6 @@
 #include <vector>
 #include <string>
 
-int linksc_findpath(std::vector<std::string>& res, std::string from, std::string to);
+int linksc_findpath(std::vector<std::string>& res, std::string const &from, std::string const &to, bool ignore_dates);
 
 #endif

@@ -19,7 +19,7 @@ main(int argc, char *argv[])
 	std::getline(std::cin, src);
 	std::getline(std::cin, dst);
 	std::vector<std::string> result;
-	int status = linksc_findpath(result, src, dst);
+	int status = linksc_findpath(result, src, dst, false);
 	switch (status) {
 	case 0:
 		std::cout << "ERROR\nNO_FROM\n";

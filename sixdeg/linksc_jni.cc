@@ -15,7 +15,7 @@
 #include "org_wikimedia_links_linksc.h"
 
 extern "C" JNIEXPORT jobjectArray JNICALL 
-Java_org_wikimedia_links_linksc_findPath (JNIEnv *env, jobject o, jstring jfrom, jstring jto)
+Java_org_wikimedia_links_linksc_findPath (JNIEnv *env, jobject o, jstring jfrom, jstring jto, jboolean ignore_dates)
 {
 	std::string from, to;
 	from = env->GetStringUTFChars(jfrom, 0);
@@ -26,7 +26,7 @@ Java_org_wikimedia_links_linksc_findPath (JNIEnv *env, jobject o, jstring jfrom,
 	std::vector<std::string> result;
 	jclass error;
 	jobjectArray resultarr;
-	int status = linksc_findpath(result, from, to);
+	int status = linksc_findpath(result, from, to, ignore_dates);
 	const char *errorstr = "An unknown error occured";
 	switch (status) {
 	case 0: errorstr = "Source article does not exist."; break;

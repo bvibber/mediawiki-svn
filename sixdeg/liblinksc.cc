@@ -26,7 +26,7 @@
 #include "encode_decode.h"
 
 int
-linksc_findpath(std::vector<std::string>& result, std::string src, std::string dst)
+linksc_findpath(std::vector<std::string>& result, std::string const &src, std::string const &dst, bool ignore_dates)
 {
 	std::vector<char> data;
 	int s, l;
@@ -48,6 +48,9 @@ linksc_findpath(std::vector<std::string>& result, std::string src, std::string d
 	request_encoder enc;
 	enc.set_key("from", src);
 	enc.set_key("to", dst);
+	if (ignore_dates)
+		enc.set_key("ignore_dates", "1");
+
 	if (!enc.send_to(s)) {
 		close(s);
 		return 3;
