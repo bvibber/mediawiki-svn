@@ -8,7 +8,7 @@
 #include "pathfinder.h"
 
 void
-pathfinder::add_title(std::string const &name, int id)
+pathfinder_mem::add_title(std::string const &name, int id)
 {
 	if (id >= names.size()) {
 		names.resize(id + 1);
@@ -23,7 +23,7 @@ pathfinder::add_title(std::string const &name, int id)
 }
 
 void
-pathfinder::filter(void)
+pathfinder_mem::filter(void)
 {
 	for (int i = 1; i < adjacency.size(); ++i) {
 		if (i >= names.size() || names[i].empty()) {
@@ -40,7 +40,7 @@ pathfinder::filter(void)
 }
 
 boost::optional<int>
-pathfinder::id_for_name(std::string const &name) const
+pathfinder_mem::id_for_name(std::string const &name) const
 {
 	if (ids.find(name) == ids.end())
 		return boost::optional<int>();
@@ -49,7 +49,7 @@ pathfinder::id_for_name(std::string const &name) const
 }
 
 boost::optional<std::string>
-pathfinder::name_for_id(int id) const
+pathfinder_mem::name_for_id(int id) const
 {
 	return names.at(id);
 }
@@ -83,7 +83,7 @@ bool			a, b;
  * it seems to return the right results.  (Credit: ZorbaTHut @ EFnet #c++)
  */
 std::vector<int>
-pathfinder::solve(int src, int dst, bool ign_date) {
+pathfinder_mem::solve(int src, int dst, bool ign_date) {
 	std::vector<int> back;
 	std::deque<int>	next;
 
@@ -127,13 +127,15 @@ pathfinder::pathfinder(void)
 {
 }
 
+pathfinder_mem::pathfinder_mem(void)
+{
+}
+
 void
-pathfinder::add_adjacency(int from, int to)
+pathfinder_mem::add_adjacency(int from, int to)
 {
 	if (from >= adjacency.size())
 		adjacency.resize(from + 1);
 	std::vector<int>& l = adjacency.at(from);
 	l.push_back(to);
 }
-
-

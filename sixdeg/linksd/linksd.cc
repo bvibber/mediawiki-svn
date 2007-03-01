@@ -32,7 +32,7 @@ main(int argc, char *argv[])
 	std::string l;
 	std::printf("retrieving links table...\n");
 
-	pathfinder finder;
+	pathfinder *finder = new pathfinder_mem;
 
 	while (std::getline(in, l)) {
 		if (l.empty())
@@ -40,7 +40,7 @@ main(int argc, char *argv[])
 		int from, to;
 		std::istringstream str(l);
 		str >> from >> to;
-		finder.add_adjacency(from, to);
+		finder->add_adjacency(from, to);
 	}
 
 	std::printf("ok\n");
@@ -53,10 +53,10 @@ main(int argc, char *argv[])
 		std::getline(str, ttl);
 		while (!ttl.empty() && ttl[0] == ' ')
 			ttl.erase(ttl.begin());
-		finder.add_title(ttl, id);
+		finder->add_title(ttl, id);
 	}
 	std::printf("filtering links...\n");
-	finder.filter();
+	finder->filter();
 	std::printf("ok\n");
 
 	request_dispatcher dispatcher(finder);

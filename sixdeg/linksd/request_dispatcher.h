@@ -12,12 +12,12 @@ struct pathfinder;
 struct request_decoder;
 
 struct request_dispatcher {
-	request_dispatcher(pathfinder &);
+	request_dispatcher(pathfinder *);
 
 	void dispatch(int);
 
 private:
-	pathfinder &finder;
+	pathfinder *finder;
 
 	void handle_request(int s, request_decoder &);
 	static void *start_request(void *arg);

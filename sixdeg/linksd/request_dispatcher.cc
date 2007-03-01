@@ -17,7 +17,7 @@
 #include "pathfinder.h"
 #include "encode_decode.h"
 
-request_dispatcher::request_dispatcher(pathfinder &f)
+request_dispatcher::request_dispatcher(pathfinder *f)
 	: finder(f)
 {
 }
@@ -91,7 +91,7 @@ request_dispatcher::handle_request(int s, request_decoder &decoder)
 	to = decoder.get_key("to");
 
 	int fromid, toid;
-	boost::optional<int> fromid_o = finder.id_for_name(from);
+	boost::optional<int> fromid_o = finder->id_for_name(from);
 	if (!fromid_o) {
 		encoder.set_key("error", "no_from");
 		encoder.send_to(s);
@@ -99,7 +99,7 @@ request_dispatcher::handle_request(int s, request_decoder &decoder)
 	}
 	fromid = *fromid_o;
 
-	boost::optional<int> toid_o = finder.id_for_name(to);
+	boost::optional<int> toid_o = finder->id_for_name(to);
 	if (!toid_o) {
 		encoder.set_key("error", "no_to");
 		encoder.send_to(s);
@@ -107,11 +107,11 @@ request_dispatcher::handle_request(int s, request_decoder &decoder)
 	}
 	toid = *toid_o;
 
-	std::vector<int> links = finder.solve(fromid, toid, ign_date);
+	std::vector<int> links = finder->solve(fromid, toid, ign_date);
 	std::string path;
 
 	for (int i = 0, e = links.size(); i < e; ++i) {
-		path += *finder.name_for_id(links[i]);
+		path += *finder->name_for_id(links[i]);
 		path += '|';
 	}
 	encoder.set_key("path", path);
