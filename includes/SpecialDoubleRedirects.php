@@ -1,14 +1,12 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class DoubleRedirectsPage extends PageQueryPage {
 
@@ -26,7 +24,7 @@ class DoubleRedirectsPage extends PageQueryPage {
 
 	function getSQLText( &$dbr, $namespace = null, $title = null ) {
 		
-		extract( $dbr->tableNames( 'page', 'pagelinks' ) );
+		list( $page, $redirect ) = $dbr->tableNamesN( 'page', 'redirect' );
 
 		$limitToTitle = !( $namespace === null && $title === null );
 		$sql = $limitToTitle ? "SELECT" : "SELECT 'DoubleRedirects' as type," ;
@@ -34,14 +32,13 @@ class DoubleRedirectsPage extends PageQueryPage {
 			 " pa.page_namespace as namespace, pa.page_title as title," .
 			 " pb.page_namespace as nsb, pb.page_title as tb," .
 			 " pc.page_namespace as nsc, pc.page_title as tc" .
-		   " FROM $pagelinks AS la, $pagelinks AS lb, $page AS pa, $page AS pb, $page AS pc" .
-		   " WHERE pa.page_is_redirect=1 AND pb.page_is_redirect=1" .
-			 " AND la.pl_from=pa.page_id" .
-			 " AND la.pl_namespace=pb.page_namespace" .
-			 " AND la.pl_title=pb.page_title" .
-			 " AND lb.pl_from=pb.page_id" .
-			 " AND lb.pl_namespace=pc.page_namespace" .
-			 " AND lb.pl_title=pc.page_title";
+		   " FROM $redirect AS ra, $redirect AS rb, $page AS pa, $page AS pb, $page AS pc" .
+		   " WHERE ra.rd_from=pa.page_id" .
+			 " AND ra.rd_namespace=pb.page_namespace" .
+			 " AND ra.rd_title=pb.page_title" .
+			 " AND rb.rd_from=pb.page_id" .
+			 " AND rb.rd_namespace=pc.page_namespace" .
+			 " AND rb.rd_title=pc.page_title";
 
 		if( $limitToTitle ) {
 			$encTitle = $dbr->addQuotes( $title );
@@ -53,7 +50,7 @@ class DoubleRedirectsPage extends PageQueryPage {
 	}
 	
 	function getSQL() {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		return $this->getSQLText( $dbr );
 	}
 
@@ -68,7 +65,7 @@ class DoubleRedirectsPage extends PageQueryPage {
 		$titleA = Title::makeTitle( $result->namespace, $result->title );
 
 		if ( $result && !isset( $result->nsb ) ) {
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$sql = $this->getSQLText( $dbr, $result->namespace, $result->title );
 			$res = $dbr->query( $sql, $fname );
 			if ( $res ) {

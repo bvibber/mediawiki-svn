@@ -1,8 +1,7 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -38,8 +37,7 @@ function wfSpecialLockdb() {
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class DBLockForm {
 	var $reason = '';
@@ -126,7 +124,7 @@ END
 		$wgOut->addWikiText( wfMsg( 'lockdbsuccesstext' ) );
 	}
 	
-	function notWritable() {
+	public static function notWritable() {
 		global $wgOut;
 		$wgOut->errorPage( 'lockdb', 'lockfilenotwritable' );
 	}

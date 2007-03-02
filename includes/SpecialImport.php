@@ -19,8 +19,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -208,7 +207,7 @@ class ImportReporter {
 			$dbw = wfGetDB( DB_MASTER );
 			$nullRevision = Revision::newNullRevision(
 				$dbw, $title->getArticleId(), $comment, true );
-			$nullRevId = $nullRevision->insertOn( $dbw );
+			$nullRevision->insertOn( $dbw );
 		}
 	}
 	
@@ -223,8 +222,7 @@ class ImportReporter {
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class WikiRevision {
 	var $title = null;
@@ -304,8 +302,7 @@ class WikiRevision {
 	}
 
 	function importOldRevision() {
-		$fname = "WikiImporter::importOldRevision";
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		# Sneak a single revision into place
 		$user = User::newFromName( $this->getUser() );
@@ -387,8 +384,7 @@ class WikiRevision {
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class WikiImporter {
 	var $mSource = null;
@@ -509,7 +505,7 @@ class WikiImporter {
 	 * @private
 	 */
 	function importRevision( &$revision ) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->deadlockLoop( array( &$revision, 'importOldRevision' ) );
 	}
 
@@ -775,7 +771,6 @@ class WikiImporter {
 
 }
 
-/** @package MediaWiki */
 class ImportStringSource {
 	function ImportStringSource( $string ) {
 		$this->mString = $string;
@@ -796,7 +791,6 @@ class ImportStringSource {
 	}
 }
 
-/** @package MediaWiki */
 class ImportStreamSource {
 	function ImportStreamSource( $handle ) {
 		$this->mHandle = $handle;
@@ -810,7 +804,7 @@ class ImportStreamSource {
 		return fread( $this->mHandle, 32768 );
 	}
 
-	function newFromFile( $filename ) {
+	static function newFromFile( $filename ) {
 		$file = @fopen( $filename, 'rt' );
 		if( !$file ) {
 			return new WikiErrorMsg( "importcantopen" );
@@ -818,7 +812,7 @@ class ImportStreamSource {
 		return new ImportStreamSource( $file );
 	}
 
-	function newFromUpload( $fieldname = "xmlimport" ) {
+	static function newFromUpload( $fieldname = "xmlimport" ) {
 		$upload =& $_FILES[$fieldname];
 
 		if( !isset( $upload ) || !$upload['name'] ) {
@@ -844,7 +838,7 @@ class ImportStreamSource {
 		return $ret;
 	}
 
-	function newFromInterwiki( $interwiki, $page, $history=false ) {
+	public static function newFromInterwiki( $interwiki, $page, $history=false ) {
 		$link = Title::newFromText( "$interwiki:Special:Export/$page" );
 		if( is_null( $link ) || $link->getInterwiki() == '' ) {
 			return new WikiErrorMsg( 'importbadinterwiki' );

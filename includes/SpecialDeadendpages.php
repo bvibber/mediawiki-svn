@@ -1,14 +1,12 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class DeadendPagesPage extends PageQueryPage {
 
@@ -42,8 +40,8 @@ class DeadendPagesPage extends PageQueryPage {
 	 * @return string an sqlquery
 	 */
 	function getSQL() {
-		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'page', 'pagelinks' ) );
+		$dbr = wfGetDB( DB_SLAVE );
+		list( $page, $pagelinks ) = $dbr->tableNamesN( 'page', 'pagelinks' );
 		return "SELECT 'Deadendpages' as type, page_namespace AS namespace, page_title as title, page_title AS value " .
 	"FROM $page LEFT JOIN $pagelinks ON page_id = pl_from " .
 	"WHERE pl_from IS NULL " .

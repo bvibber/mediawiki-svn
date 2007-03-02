@@ -4,7 +4,6 @@
  * These functions are used for primarily page content:
  * links, embedded images, table of contents. Links are
  * also used in the skin.
- * @package MediaWiki
  */
 
 /**
@@ -13,11 +12,9 @@
  * so that ever other bit of the wiki doesn't have to
  * go loading up Skin to get at it.
  *
- * @package MediaWiki
  */
 class Linker {
-
-	function Linker() {}
+	function __construct() {}
 
 	/**
 	 * @deprecated
@@ -39,7 +36,6 @@ class Linker {
 	function getInterwikiLinkAttributes( $link, $text, $class='' ) {
 		global $wgContLang;
 
-		$same = ($link == $text);
 		$link = urldecode( $link );
 		$link = $wgContLang->checkTitleEncoding( $link );
 		$link = preg_replace( '/[\\x00-\\x1f]/', ' ', $link );
@@ -201,8 +197,6 @@ class Linker {
 			return "<!-- ERROR -->{$prefix}{$text}{$trail}";
 		}
 
-		$ns = $nt->getNamespace();
-		$dbkey = $nt->getDBkey();
 		if ( $nt->isExternal() ) {
 			$u = $nt->getFullURL();
 			$link = $nt->getPrefixedURL();
@@ -211,27 +205,12 @@ class Linker {
 
 			$inside = '';
 			if ( '' != $trail ) {
+				$m = array();
 				if ( preg_match( '/^([a-z]+)(.*)$$/sD', $trail, $m ) ) {
 					$inside = $m[1];
 					$trail = $m[2];
 				}
 			}
-
-			# Check for anchors, normalize the anchor
-
-			$parts = explode( '#', $u, 2 );
-			if ( count( $parts ) == 2 ) {
-				$anchor = urlencode( Sanitizer::decodeCharReferences( str_replace(' ', '_', $parts[1] ) ) );
-				$replacearray = array(
-					'%3A' => ':',
-					'%' => '.'
-				);
-				$u = $parts[0] . '#' .
-				     str_replace( array_keys( $replacearray ),
-				    		 array_values( $replacearray ),
-						 $anchor );
-			}
-
 			$t = "<a href=\"{$u}\"{$style}>{$text}{$inside}</a>";
 
 			wfProfileOut( $fname );
@@ -248,7 +227,7 @@ class Linker {
 			} else {
 				$threshold = $wgUser->getOption('stubthreshold') ;
 				if ( $threshold > 0 ) {
-					$dbr =& wfGetDB( DB_SLAVE );
+					$dbr = wfGetDB( DB_SLAVE );
 					$s = $dbr->selectRow(
 						array( 'page' ),
 						array( 'page_len',
@@ -310,12 +289,7 @@ class Linker {
 					$text = htmlspecialchars( $nt->getFragment() );
 				}
 			}
-			$anchor = urlencode( Sanitizer::decodeCharReferences( str_replace( ' ', '_', $nt->getFragment() ) ) );
-			$replacearray = array(
-				'%3A' => ':',
-				'%' => '.'
-			);
-			$u .= '#' . str_replace(array_keys($replacearray),array_values($replacearray),$anchor);
+			$u .= $nt->getFragmentForURL();
 		}
 		if ( $text == '' ) {
 			$text = htmlspecialchars( $nt->getPrefixedText() );
@@ -382,8 +356,6 @@ class Linker {
 	 *                      the end of the link.
 	 */
 	function makeStubLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
-		$link = $nt->getPrefixedURL();
-
 		$u = $nt->escapeLocalURL( $query );
 
 		if ( '' == $text ) {
@@ -458,7 +430,7 @@ class Linker {
 
 	/** @todo document */
 	function makeImageLinkObj( $nt, $label, $alt, $align = '', $width = false, $height = false, $framed = false,
-	  $thumb = false, $manual_thumb = '', $page = null )
+	  $thumb = false, $manual_thumb = '', $page = null, $valign = '' )
 	{
 		global $wgContLang, $wgUser, $wgThumbLimits, $wgGenerateThumbnailOnParse;
 
@@ -537,6 +509,8 @@ class Linker {
 					$url = $thumb->getUrl();
 				} else {
 					$error = htmlspecialchars( $img->getLastError() );
+					// Do client-side scaling...
+					$height = intval( $img->getHeight() * $width / $img->getWidth() );
 				}
 			}
 		} else {
@@ -557,6 +531,9 @@ class Linker {
 				 ( $width
 				 	? ( 'width="'.$width.'" height="'.$height.'" ' )
 				 	: '' ) .
+				 ( $valign
+					? ( 'style="vertical-align: '.$valign.'" ' )
+					: '' ) .
 				 'longdesc="'.$u.'" /></a>';
 		}
 		if ( '' != $align ) {
@@ -629,10 +606,14 @@ class Linker {
 		$magnifyalign = $wgContLang->isRTL() ? 'left' : 'right';
 		$textalign = $wgContLang->isRTL() ? ' style="text-align:right"' : '';
 
-		$s = "<div class=\"thumb t{$align}\"><div style=\"width:{$oboxwidth}px;\">";
+		$s = "<div class=\"thumb t{$align}\"><div class=\"thumbinner\" style=\"width:{$oboxwidth}px;\">";
 		if( $thumbUrl == '' ) {
 			// Couldn't generate thumbnail? Scale the image client-side.
 			$thumbUrl = $img->getViewURL();
+			if( $boxheight == -1 ) {
+				// Approximate...
+				$boxheight = intval( $height * $boxwidth / $width );
+			}
 		}
 		if ( $error ) {
 			$s .= htmlspecialchars( $error );
@@ -644,14 +625,14 @@ class Linker {
 			$s .= '<a href="'.$u.'" class="internal" title="'.$alt.'">'.
 				'<img src="'.$thumbUrl.'" alt="'.$alt.'" ' .
 				'width="'.$boxwidth.'" height="'.$boxheight.'" ' .
-				'longdesc="'.$u.'" /></a>';
+				'longdesc="'.$u.'" class="thumbimage" /></a>';
 			if ( $framed ) {
 				$zoomicon="";
 			} else {
 				$zoomicon =  '<div class="magnify" style="float:'.$magnifyalign.'">'.
 					'<a href="'.$u.'" class="internal" title="'.$more.'">'.
 					'<img src="'.$wgStylePath.'/common/images/magnify-clip.png" ' .
-					'width="15" height="11" alt="'.$more.'" /></a></div>';
+					'width="15" height="11" alt="" /></a></div>';
 			}
 		}
 		$s .= '  <div class="thumbcaption"'.$textalign.'>'.$zoomicon.$label."</div></div></div>";
@@ -712,7 +693,6 @@ class Linker {
 			### HOTFIX. Instead of breaking, return empty string.
 			return $text;
 		} else {
-			$name = $title->getDBKey();
 			$img  = new Image( $title );
 			if( $img->exists() ) {
 				$url  = $img->getURL();
@@ -765,9 +745,9 @@ class Linker {
 	function userLink( $userId, $userText ) {
 		$encName = htmlspecialchars( $userText );
 		if( $userId == 0 ) {
-			$contribsPage = SpecialPage::getTitleFor( 'Contributions' );
+			$contribsPage = SpecialPage::getTitleFor( 'Contributions', $userText );
 			return $this->makeKnownLinkObj( $contribsPage,
-				$encName, 'target=' . urlencode( $userText ) );
+				$encName);
 		} else {
 			$userPage = Title::makeTitle( NS_USER, $userText );
 			return $this->makeLinkObj( $userPage, $encName );
@@ -777,10 +757,10 @@ class Linker {
 	/**
 	 * @param $userId Integer: user id in database.
 	 * @param $userText String: user name in database.
+	 * @param $redContribsWhenNoEdits Bool: return a red contribs link when the user had no edits and this is true.
 	 * @return string HTML fragment with talk and/or block links
-	 * @private
 	 */
-	function userToolLinks( $userId, $userText ) {
+	public function userToolLinks( $userId, $userText, $redContribsWhenNoEdits = false ) {
 		global $wgUser, $wgDisableAnonTalk, $wgSysopUserBans;
 		$talkable = !( $wgDisableAnonTalk && 0 == $userId );
 		$blockable = ( $wgSysopUserBans || 0 == $userId );
@@ -790,9 +770,15 @@ class Linker {
 			$items[] = $this->userTalkLink( $userId, $userText );
 		}
 		if( $userId ) {
-			$contribsPage = SpecialPage::getTitleFor( 'Contributions' );
-			$items[] = $this->makeKnownLinkObj( $contribsPage,
-				wfMsgHtml( 'contribslink' ), 'target=' . urlencode( $userText ) );
+			// check if the user has an edit
+			if( $redContribsWhenNoEdits && User::edits( $userId ) == 0 ) {
+				$style = "class='new'";
+			} else {
+				$style = '';
+			}
+			$contribsPage = SpecialPage::getTitleFor( 'Contributions', $userText );
+
+			$items[] = $this->makeKnownLinkObj( $contribsPage, wfMsgHtml( 'contribslink' ), '', '', '', '', $style );
 		}
 		if( $blockable && $wgUser->isAllowed( 'block' ) ) {
 			$items[] = $this->blockLink( $userId, $userText );
@@ -804,6 +790,14 @@ class Linker {
 			return '';
 		}
 	}
+
+	/**
+	 * Alias for userToolLinks( $userId, $userText, true );
+	 */
+	public function userToolLinksRedContribs( $userId, $userText ) {
+		return $this->userToolLinks( $userId, $userText, true );
+	}
+
 
 	/**
 	 * @param $userId Integer: user id in database.
@@ -827,19 +821,22 @@ class Linker {
 	 * @private
 	 */
 	function blockLink( $userId, $userText ) {
-		$blockPage = SpecialPage::getTitleFor( 'Blockip' );
+		$blockPage = SpecialPage::getTitleFor( 'Blockip', $userText );
 		$blockLink = $this->makeKnownLinkObj( $blockPage,
-			wfMsgHtml( 'blocklink' ), 'ip=' . urlencode( $userText ) );
+			wfMsgHtml( 'blocklink' ) );
 		return $blockLink;
 	}
 	
 	/**
 	 * Generate a user link if the current user is allowed to view it
 	 * @param $rev Revision object.
+	 * @param $isPublic, bool, show only if all users can see it
 	 * @return string HTML
 	 */
-	function revUserLink( $rev ) {
-		if( $rev->userCan( Revision::DELETED_USER ) ) {
+	function revUserLink( $rev, $isPublic = false ) {
+		if( $rev->isDeleted( Revision::DELETED_USER ) && $isPublic ) {
+			$link = wfMsgHtml( 'rev-deleted-user' );
+		} else if( $rev->userCan( Revision::DELETED_USER ) ) {
 			$link = $this->userLink( $rev->getRawUser(), $rev->getRawUserText() );
 		} else {
 			$link = wfMsgHtml( 'rev-deleted-user' );
@@ -849,43 +846,139 @@ class Linker {
 		}
 		return $link;
 	}
-
+	
 	/**
-	 * Generate a user tool link cluster if the current user is allowed to view it
-	 * @param $rev Revision object.
+	 * Generate a user link if the current user is allowed to view it
+	 * @param $event, log item.
+	 * @param $isPublic, bool, show only if all users can see it
 	 * @return string HTML
 	 */
-	function revUserTools( $rev ) {
-		if( $rev->userCan( Revision::DELETED_USER ) ) {
-			$link = $this->userLink( $rev->getRawUser(), $rev->getRawUserText() ) .
-				' ' .
-				$this->userToolLinks( $rev->getRawUser(), $rev->getRawUserText() );
+	function logUserLink( $event, $isPublic = false ) {
+		if( LogViewer::isDeleted( $event, Revision::DELETED_USER ) && $isPublic ) {
+			$link = wfMsgHtml( 'rev-deleted-user' );
+		} else if( LogViewer::userCan( $event, Revision::DELETED_USER ) ) {
+			if ( isset($event->user_name) ) {
+				$link = $this->userLink( $event->log_user, $event->user_name );
+			} else {
+				$user = $event->log_user;
+				$link = $this->userLink( $event->log_user, User::whoIs( $user ) );
+			}
 		} else {
 			$link = wfMsgHtml( 'rev-deleted-user' );
 		}
-		if( $rev->isDeleted( Revision::DELETED_USER ) ) {
+		if( LogViewer::isDeleted( $event, Revision::DELETED_USER ) ) {
 			return '<span class="history-deleted">' . $link . '</span>';
 		}
 		return $link;
 	}
-	
+
+	/**
+	 * Generate a user link if the current user is allowed to view it
+	 * @param $file, filestore file
+	 * @param $isPublic, bool, show only if all users can see it
+	 * @return string HTML
+	 */
+	function fileUserLink( $file, $isPublic = false ) {
+		if( $file->isDeleted( Revision::DELETED_USER ) && $isPublic ) {
+			$link = wfMsgHtml( 'rev-deleted-user' );
+		} else if( $file->userCan( Revision::DELETED_USER ) ) {
+			$link = $this->userLink( $file->mUser, $file->mUserText );
+		} else {
+			$link = wfMsgHtml( 'rev-deleted-user' );
+		}
+		if( $file->isDeleted( Revision::DELETED_USER ) ) {
+			return '<span class="history-deleted">' . $link . '</span>';
+		}
+		return $link;
+	}
+
+	/**
+	 * Generate a user tool link cluster if the current user is allowed to view it
+	 * @param $rev Revision object.
+	 * @param $isPublic, bool, show only if all users can see it
+	 * @return string HTML
+	 */
+	function revUserTools( $rev, $isPublic = false ) {
+		if( $rev->isDeleted( Revision::DELETED_USER ) && $isPublic ) {
+			$link = wfMsgHtml( 'rev-deleted-user' );
+		} else if( $rev->userCan( Revision::DELETED_USER ) ) {
+			$link = $this->userLink( $rev->getRawUser(), $rev->getRawUserText() ) .
+			' ' . $this->userToolLinks( $rev->getRawUser(), $rev->getRawUserText() );
+		} else {
+			$link = wfMsgHtml( 'rev-deleted-user' );
+		}
+		if( $rev->isDeleted( Revision::DELETED_USER ) ) {
+			return ' <span class="history-deleted">' . $link . '</span>';
+		}
+		return " $link";
+	}
+
+	/**
+	 * Generate a user tool link cluster if the current user is allowed to view it
+	 * @param $event, log item.
+	 * @param $isPublic, bool, show only if all users can see it
+	 * @return string HTML
+	 */
+	function logUserTools( $event, $isPublic = false ) {
+		if( LogViewer::isDeleted( $event, Revision::DELETED_USER ) && $isPublic ) {
+			$link = wfMsgHtml( 'rev-deleted-user' );
+		} else if( LogViewer::userCan( $event, Revision::DELETED_USER ) ) {
+			if ( isset($event->user_name) ) {
+				$link = $this->userLink( $event->log_user, $event->user_name ) . 
+				' ' . $this->userToolLinks( $event->log_user, $event->user_name );
+			} else {
+				$usertext = User::whoIs( $event->log_user );
+				$link = $this->userLink( $event->log_user, $usertext ) . 
+				' ' . $this->userToolLinks( $event->log_user, $usertext );
+			}
+		} else {
+			$link = wfMsgHtml( 'rev-deleted-user' );
+		}
+		if( LogViewer::isDeleted( $event, Revision::DELETED_USER ) ) {
+			return '<span class="history-deleted">' . $link . '</span>';
+		}
+		return $link;
+	}
+
+	/**
+	 * Generate a user tool link cluster if the current user is allowed to view it
+	 * @param $file, filestore file
+	 * @param $isPublic, bool, show only if all users can see it
+	 * @return string HTML
+	 */
+	function fileUserTools( $file, $isPublic = false ) {
+		if( $file->isDeleted( Revision::DELETED_USER ) && $isPublic ) {
+			$link = wfMsgHtml( 'rev-deleted-user' );
+		} else if( $file->userCan( Revision::DELETED_USER ) ) {
+			$link = $this->userLink( $file->mUser, $file->mUserText ) .
+			$this->userToolLinks( $file->mUser, $file->mUserText );
+		} else {
+			$link = wfMsgHtml( 'rev-deleted-user' );
+		}
+		if( $file->isDeleted( Revision::DELETED_USER ) ) {
+			return '<span class="history-deleted">' . $link . '</span>';
+		}
+		return $link;
+	}
+		
 	/**
 	 * This function is called by all recent changes variants, by the page history,
 	 * and by the user contributions list. It is responsible for formatting edit
 	 * comments. It escapes any HTML in the comment, but adds some CSS to format
 	 * auto-generated comments (from section editing) and formats [[wikilinks]].
 	 *
-	 * The $title parameter must be a title OBJECT. It is used to generate a
-	 * direct link to the section in the autocomment.
 	 * @author Erik Moeller <moeller@scireview.de>
 	 *
 	 * Note: there's not always a title to pass to this function.
 	 * Since you can't set a default parameter for a reference, I've turned it
 	 * temporarily to a value pass. Should be adjusted further. --brion
+	 *
+	 * $param string $comment
+	 * @param mixed $title Title object (to generate link to the section in autocomment) or null
+	 * @param bool $local Whether section links should refer to local page
 	 */
-	function formatComment($comment, $title = NULL) {
-		$fname = 'Linker::formatComment';
-		wfProfileIn( $fname );
+	function formatComment($comment, $title = NULL, $local = false) {
+		wfProfileIn( __METHOD__ );
 
 		global $wgContLang;
 		$comment = str_replace( "\n", " ", $comment );
@@ -895,6 +988,7 @@ class Linker {
 		# some nasty regex.
 		# We look for all comments, match any text before and after the comment,
 		# add a separator where needed and format the comment itself with CSS
+		$match = array();
 		while (preg_match('/(.*)\/\*\s*(.*?)\s*\*\/(.*)/', $comment,$match)) {
 			$pre=$match[1];
 			$auto=$match[2];
@@ -911,8 +1005,12 @@ class Linker {
 				$section = str_replace( '[[:', '', $section );
 				$section = str_replace( '[[', '', $section );
 				$section = str_replace( ']]', '', $section );
-				$sectionTitle = wfClone( $title );
-				$sectionTitle->mFragment = $section;
+				if ( $local ) {
+					$sectionTitle = Title::newFromText( '#' . $section);
+				} else {
+					$sectionTitle = wfClone( $title );
+					$sectionTitle->mFragment = $section;
+				}
 				$link = $this->makeKnownLinkObj( $sectionTitle, wfMsg( 'sectionlink' ) );
 			}
 			$sep='-';
@@ -925,14 +1023,16 @@ class Linker {
 
 		# format regular and media links - all other wiki formatting
 		# is ignored
-		$medians = $wgContLang->getNsText( NS_MEDIA ) . ':';
-		while(preg_match('/\[\[(.*?)(\|(.*?))*\]\](.*)$/',$comment,$match)) {
+		$medians = '(?:' . preg_quote( Namespace::getCanonicalName( NS_MEDIA ), '/' ) . '|';
+		$medians .= preg_quote( $wgContLang->getNsText( NS_MEDIA ), '/' ) . '):';
+		while(preg_match('/\[\[:?(.*?)(\|(.*?))*\]\](.*)$/',$comment,$match)) {
 			# Handle link renaming [[foo|text]] will show link as "text"
 			if( "" != $match[3] ) {
 				$text = $match[3];
 			} else {
 				$text = $match[1];
 			}
+			$submatch = array();
 			if( preg_match( '/^' . $medians . '(.*)$/i', $match[1], $submatch ) ) {
 				# Media link; trail not supported.
 				$linkRegexp = '/\[\[(.*?)\]\]/';
@@ -945,13 +1045,13 @@ class Linker {
 					$trail = "";
 				}
 				$linkRegexp = '/\[\[(.*?)\]\]' . preg_quote( $trail, '/' ) . '/';
-				if ($match[1][0] == ':')
+				if (isset($match[1][0]) && $match[1][0] == ':')
 					$match[1] = substr($match[1], 1);
 				$thelink = $this->makeLink( $match[1], $text, "", $trail );
 			}
-			$comment = preg_replace( $linkRegexp, wfRegexReplacement( $thelink ), $comment, 1 );
+			$comment = preg_replace( $linkRegexp, StringUtils::escapeRegexReplacement( $thelink ), $comment, 1 );
 		}
-		wfProfileOut( $fname );
+		wfProfileOut( __METHOD__ );
 		return $comment;
 	}
 
@@ -959,19 +1059,20 @@ class Linker {
 	 * Wrap a comment in standard punctuation and formatting if
 	 * it's non-empty, otherwise return empty string.
 	 *
-	 * @param $comment String: the comment.
-	 * @param $title Title object.
+	 * @param string $comment
+	 * @param mixed $title Title object (to generate link to section in autocomment) or null
+	 * @param bool $local Whether section links should refer to local page
 	 *
 	 * @return string
 	 */
-	function commentBlock( $comment, $title = NULL ) {
+	function commentBlock( $comment, $title = NULL, $local = false ) {
 		// '*' used to be the comment inserted by the software way back
 		// in antiquity in case none was provided, here for backwards
 		// compatability, acc. to brion -ævar
 		if( $comment == '' || $comment == '*' ) {
 			return '';
 		} else {
-			$formatted = $this->formatComment( $comment, $title );
+			$formatted = $this->formatComment( $comment, $title, $local );
 			return " <span class=\"comment\">($formatted)</span>";
 		}
 	}
@@ -979,18 +1080,64 @@ class Linker {
 	/**
 	 * Wrap and format the given revision's comment block, if the current
 	 * user is allowed to view it.
-	 * @param $rev Revision object.
+	 *
+	 * @param Revision $rev
+	 * @param bool $local Whether section links should refer to local page
+	 * @param $isPublic, show only if all users can see it
 	 * @return string HTML
 	 */
-	function revComment( $rev ) {
-		if( $rev->userCan( Revision::DELETED_COMMENT ) ) {
-			$block = $this->commentBlock( $rev->getRawComment(), $rev->getTitle() );
+	function revComment( Revision $rev, $local = false, $isPublic = false ) {
+		if( $rev->isDeleted( Revision::DELETED_COMMENT ) && $isPublic ) {
+			$block = " <span class=\"comment\">" . wfMsgHtml( 'rev-deleted-comment' ) . "</span>";
+		} else if( $rev->userCan( Revision::DELETED_COMMENT ) ) {
+			$block = $this->commentBlock( $rev->getRawComment(), $rev->getTitle(), $local );
 		} else {
-			$block = " <span class=\"comment\">" .
-				wfMsgHtml( 'rev-deleted-comment' ) . "</span>";
+			$block = " <span class=\"comment\">" . wfMsgHtml( 'rev-deleted-comment' ) . "</span>";
 		}
 		if( $rev->isDeleted( Revision::DELETED_COMMENT ) ) {
 			return " <span class=\"history-deleted\">$block</span>";
+		}
+		return $block;
+	}
+		
+	/**
+	 * Wrap and format the given event's comment block, if the current
+	 * user is allowed to view it.
+	 *
+	 * @param Revision $rev
+	 * @return string HTML
+	 */
+	function logComment( $event, $isPublic = false ) {
+		if( LogViewer::isDeleted( $event, Revision::DELETED_COMMENT ) && $isPublic ) {
+			$block = ' ' . wfMsgHtml( 'rev-deleted-comment' );
+		} else if( LogViewer::userCan( $event, Revision::DELETED_COMMENT ) ) {
+			$block = $this->commentBlock( LogViewer::getRawComment( $event ) );
+		} else {
+			$block = ' ' . wfMsgHtml( 'rev-deleted-comment' );
+		}
+		if( LogViewer::isDeleted( $event, Revision::DELETED_COMMENT ) ) {
+			return "<span class=\"history-deleted\">$block</span>";
+		}
+		return $block;
+	}
+
+	/**
+	 * Wrap and format the given file's comment block, if the current
+	 * user is allowed to view it.
+	 *
+	 * @param FileStore file object $file
+	 * @return string HTML
+	 */
+	function fileComment( $file, $isPublic = false ) {
+		if( $file->isDeleted( Revision::DELETED_COMMENT ) && $isPublic ) {
+			$block = ' ' . wfMsgHtml( 'rev-deleted-comment' );
+		} else if( $file->userCan( Revision::DELETED_COMMENT ) ) {
+			$block = $this->commentBlock( $file->mDescription );
+		} else {
+			$block = ' ' . wfMsgHtml( 'rev-deleted-comment' );
+		}
+		if( $file->isDeleted( Revision::DELETED_COMMENT ) ) {
+			return "<span class=\"history-deleted\">$block</span>";
 		}
 		return $block;
 	}
@@ -1041,7 +1188,7 @@ class Linker {
 	}
 
 	/** @todo document */
-	function editSectionLinkForOther( $title, $section ) {
+	public function editSectionLinkForOther( $title, $section ) {
 		global $wgContLang;
 
 		$title = Title::newFromText( $title );
@@ -1057,7 +1204,7 @@ class Linker {
 	 * @param $section Integer: section number.
 	 * @param $hint Link String: title, or default if omitted or empty
 	 */
-	function editSectionLink( $nt, $section, $hint='' ) {
+	public function editSectionLink( $nt, $section, $hint='' ) {
 		global $wgContLang;
 
 		$editurl = '&section='.$section;
@@ -1065,6 +1212,22 @@ class Linker {
 		$url = $this->makeKnownLinkObj( $nt, wfMsg('editsection'), 'action=edit'.$editurl, '', '', '',  $hint );
 
 		return "<span class=\"editsection\">[".$url."]</span>";
+	}
+
+	/**
+	 * Create a headline for content
+	 *
+	 * @param int    $level   The level of the headline (1-6)
+	 * @param string $attribs Any attributes for the headline, starting with a space and ending with '>'
+	 *                        This *must* be at least '>' for no attribs
+	 * @param string $anchor  The anchor to give the headline (the bit after the #)
+	 * @param string $text    The text of the header
+	 * @param string $link    HTML to add for the section edit link
+	 *
+	 * @return string HTML headline
+	 */
+	public function makeHeadline( $level, $attribs, $anchor, $text, $link ) {
+		return "<a name=\"$anchor\"></a><h$level$attribs$link <span class=\"mw-headline\">$text</span></h$level>";
 	}
 
 	/**
@@ -1081,6 +1244,7 @@ class Linker {
 		}
 		$inside = '';
 		if ( '' != $trail ) {
+			$m = array();
 			if ( preg_match( $regex, $trail, $m ) ) {
 				$inside = $m[1];
 				$trail = $m[2];
@@ -1089,5 +1253,165 @@ class Linker {
 		return array( $inside, $trail );
 	}
 
+	/**
+	 * Generate a rollback link for a given revision.  Currently it's the
+	 * caller's responsibility to ensure that the revision is the top one. If
+	 * it's not, of course, the user will get an error message.
+	 *
+	 * If the calling page is called with the parameter &bot=1, all rollback
+	 * links also get that parameter. It causes the edit itself and the rollback
+	 * to be marked as "bot" edits. Bot edits are hidden by default from recent
+	 * changes, so this allows sysops to combat a busy vandal without bothering
+	 * other users.
+	 *
+	 * @param Revision $rev
+	 */
+	function generateRollback( $rev ) {
+		global $wgUser, $wgRequest;
+		$title = $rev->getTitle();
+
+		$extraRollback = $wgRequest->getBool( 'bot' ) ? '&bot=1' : '';
+		$extraRollback .= '&token=' . urlencode(
+			$wgUser->editToken( array( $title->getPrefixedText(), $rev->getUserText() ) ) );
+		return '<span class="mw-rollback-link">['. $this->makeKnownLinkObj( $title,
+		  	wfMsg('rollbacklink'),
+		  	'action=rollback&from=' . urlencode( $rev->getUserText() ) . $extraRollback ) .']</span>';
+	}
+
+	/**
+	 * Returns HTML for the "templates used on this page" list.
+	 *
+	 * @param array $templates Array of templates from Article::getUsedTemplate
+	 * or similar
+	 * @param bool $preview Whether this is for a preview
+	 * @param bool $section Whether this is for a section edit
+	 * @return string HTML output
+	 */
+	public function formatTemplates( $templates, $preview = false, $section = false) {
+		global $wgUser;
+		wfProfileIn( __METHOD__ );
+
+		$sk = $wgUser->getSkin();
+
+		$outText = '';
+		if ( count( $templates ) > 0 ) {
+			# Do a batch existence check
+			$batch = new LinkBatch;
+			foreach( $templates as $title ) {
+				$batch->addObj( $title );
+			}
+			$batch->execute();
+
+			# Construct the HTML
+			$outText = '<div class="mw-templatesUsedExplanation">';
+			if ( $preview ) {
+				$outText .= wfMsgExt( 'templatesusedpreview', array( 'parse' ) );
+			} elseif ( $section ) {
+				$outText .= wfMsgExt( 'templatesusedsection', array( 'parse' ) );
+			} else {
+				$outText .= wfMsgExt( 'templatesused', array( 'parse' ) );
+			}
+			$outText .= '</div><ul>';
+
+			foreach ( $templates as $titleObj ) {
+				$r = $titleObj->getRestrictions( 'edit' );
+				if ( in_array( 'sysop', $r ) ) { 
+					$protected = wfMsgExt( 'template-protected', array( 'parseinline' ) );
+				} elseif ( in_array( 'autoconfirmed', $r ) ) {
+					$protected = wfMsgExt( 'template-semiprotected', array( 'parseinline' ) );
+				} else {
+					$protected = '';
+				}
+				$outText .= '<li>' . $sk->makeLinkObj( $titleObj ) . ' ' . $protected . '</li>';
+			}
+			$outText .= '</ul>';
+		}
+		wfProfileOut( __METHOD__  );
+		return $outText;
+	}
+	
+	/**
+	 * Format a size in bytes for output, using an appropriate
+	 * unit (B, KB, MB or GB) according to the magnitude in question
+	 *
+	 * @param $size Size to format
+	 * @return string
+	 */
+	public function formatSize( $size ) {
+		global $wgLang;
+		// For small sizes no decimal places necessary
+		$round = 0;
+		if( $size > 1024 ) {
+			$size = $size / 1024;
+			if( $size > 1024 ) {
+				$size = $size / 1024;
+				// For MB and bigger two decimal places are smarter
+				$round = 2;
+				if( $size > 1024 ) {
+					$size = $size / 1024;
+					$msg = 'size-gigabytes';
+				} else {
+					$msg = 'size-megabytes';
+				}
+			} else {
+				$msg = 'size-kilobytes';
+			}
+		} else {
+			$msg = 'size-bytes';
+		}
+		$size = round( $size, $round );
+		return wfMsgHtml( $msg, $wgLang->formatNum( $size ) );
+	}
+
+	/**
+	 * Given the id of an interface element, constructs the appropriate title
+	 * and accesskey attributes from the system messages.  (Note, this is usu-
+	 * ally the id but isn't always, because sometimes the accesskey needs to
+	 * go on a different element than the id, for reverse-compatibility, etc.)
+	 *
+	 * @param string $name Id of the element, minus prefixes.
+	 * @return string title and accesskey attributes, ready to drop in an
+	 *   element (e.g., ' title="This does something [x]" accesskey="x"').
+	 */
+	public function tooltipAndAccesskey($name) {
+		$out = '';
+
+		$tooltip = wfMsg('tooltip-'.$name);
+		if (!wfEmptyMsg('tooltip-'.$name, $tooltip) && $tooltip != '-') {
+			// Compatibility: formerly some tooltips had [alt-.] hardcoded
+			$tooltip = preg_replace( "/ ?\[alt-.\]$/", '', $tooltip );
+			$out .= ' title="'.htmlspecialchars($tooltip);
+		}
+		$accesskey = wfMsg('accesskey-'.$name);
+		if ($accesskey && $accesskey != '-' && !wfEmptyMsg('accesskey-'.$name, $accesskey)) {
+			if ($out) $out .= " [$accesskey]\" accesskey=\"$accesskey\"";
+			else $out .= " title=\"[$accesskey]\" accesskey=\"$accesskey\"";
+		} elseif ($out) {
+			$out .= '"';
+		}
+		return $out;
+	}
+
+	/**
+	 * Given the id of an interface element, constructs the appropriate title
+	 * attribute from the system messages.  (Note, this is usually the id but
+	 * isn't always, because sometimes the accesskey needs to go on a different
+	 * element than the id, for reverse-compatibility, etc.)
+	 *
+	 * @param string $name Id of the element, minus prefixes.
+	 * @return string title attribute, ready to drop in an element
+	 * (e.g., ' title="This does something"').
+	 */
+	public function tooltip($name) {
+		$out = '';
+
+		$tooltip = wfMsg('tooltip-'.$name);
+		if (!wfEmptyMsg('tooltip-'.$name, $tooltip) && $tooltip != '-') {
+			$out = ' title="'.htmlspecialchars($tooltip).'"';
+		}
+
+		return $out;
+	}
 }
+
 ?>

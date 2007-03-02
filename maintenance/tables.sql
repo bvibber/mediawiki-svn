@@ -351,6 +351,9 @@ CREATE TABLE /*$wgDBprefix*/archive (
   -- row upon undeletion.
   ar_text_id int(8) unsigned,
   
+  -- rev_deleted for archives
+  ar_deleted tinyint(1) unsigned NOT NULL default '0',
+  
   KEY name_title_timestamp (ar_namespace,ar_title,ar_timestamp)
 
 ) TYPE=InnoDB;
@@ -593,6 +596,8 @@ CREATE TABLE /*$wgDBprefix*/ipblocks (
   -- Size chosen to allow IPv6
   ipb_range_start tinyblob NOT NULL default '',
   ipb_range_end tinyblob NOT NULL default '',
+  -- Flag for entries hidden from users and Sysops
+  ipb_deleted bool NOT NULL default 0,
   
   PRIMARY KEY ipb_id (ipb_id),
 
@@ -734,6 +739,9 @@ CREATE TABLE /*$wgDBprefix*/filearchive (
   fa_user int(5) unsigned default '0',
   fa_user_text varchar(255) binary default '',
   fa_timestamp char(14) binary default '',
+
+  -- Visibility of deleted revisions, bitfield
+  fa_deleted tinyint(1) unsigned NOT NULL default '0',
   
   PRIMARY KEY (fa_id),
   INDEX (fa_name, fa_timestamp),             -- pick out by image name
@@ -783,8 +791,8 @@ CREATE TABLE /*$wgDBprefix*/recentchanges (
   -- rev_id of the prior revision, for generating diff links.
   rc_last_oldid int(10) unsigned NOT NULL default '0',
   
-  -- These may no longer be used, with the new move log.
   rc_type tinyint(3) unsigned NOT NULL default '0',
+  -- These may no longer be used, with the new move log.
   rc_moved_to_ns tinyint(3) unsigned NOT NULL default '0',
   rc_moved_to_title varchar(255) binary NOT NULL default '',
   
@@ -793,11 +801,21 @@ CREATE TABLE /*$wgDBprefix*/recentchanges (
   -- remove a warning flag on the RC list.
   -- A value of 1 indicates the page has been reviewed.
   rc_patrolled tinyint(3) unsigned NOT NULL default '0',
-  
+
   -- Recorded IP address the edit was made from, if the
   -- $wgPutIPinRC option is enabled.
   rc_ip char(15) NOT NULL default '',
   
+  -- Visibility of deleted revisions, bitfield
+  rc_deleted tinyint(1) unsigned NOT NULL default '0',
+  
+  -- Value corresonding to log_id, specific log entries
+  rc_logid int(10) unsigned NOT NULL default '0',
+  -- Store log type info here, or null
+  rc_log_type varchar(255) binary NULL default NULL,
+  -- The action text of logs
+  rc_actiontext varchar(255) binary NULL default NULL,
+
   PRIMARY KEY rc_id (rc_id),
   INDEX rc_timestamp (rc_timestamp),
   INDEX rc_namespace_title (rc_namespace, rc_title),
@@ -963,6 +981,9 @@ CREATE TABLE /*$wgDBprefix*/logging (
   
   -- LF separated list of miscellaneous parameters
   log_params blob NOT NULL default '',
+  
+  -- rev_deleted for logs
+  log_deleted tinyint(1) unsigned NOT NULL default '0',
 
   KEY type_time (log_type, log_timestamp),
   KEY user_time (log_user, log_timestamp),

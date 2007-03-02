@@ -1,8 +1,7 @@
 <?php
 /**
  * Use this special page to get a list of the MediaWiki system messages.
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -28,7 +27,6 @@ function wfSpecialAllmessages() {
 	# Make sure all extension messages are available
 	MessageCache::loadAllMessages();
 
-	$first = true;
 	$sortedArray = array_merge( Language::getMessagesFor( 'en' ), $wgMessageCache->getExtensionMessagesFor( 'en' ) );
 	ksort( $sortedArray );
 	$messages = array();
@@ -75,7 +73,7 @@ function makePhp( $messages ) {
 		} else {
 			$comment = '';
 		}
-		$txt .= "'$key' => '" . preg_replace( "/(?<!\\\\)'/", "\'", $m['msg']) . "',$comment\n";
+		$txt .= "'$key' => '" . preg_replace( '/(?<!\\\\)\'/', "\'", $m['msg']) . "',$comment\n";
 	}
 	$txt .= ');';
 	return $txt;
@@ -90,10 +88,8 @@ function makeHTMLText( $messages ) {
 	global $wgLang, $wgContLang, $wgUser;
 	wfProfileIn( __METHOD__ );
 
-	$sk =& $wgUser->getSkin();
+	$sk = $wgUser->getSkin();
 	$talk = $wgLang->getNsText( NS_TALK );
-	$mwnspace = $wgLang->getNsText( NS_MEDIAWIKI );
-	$mwtalk = $wgLang->getNsText( NS_MEDIAWIKI_TALK );
 
 	$input = wfElement( 'input', array(
 		'type'    => 'text',
@@ -127,7 +123,7 @@ function makeHTMLText( $messages ) {
 		NS_MEDIAWIKI => array(),
 		NS_MEDIAWIKI_TALK => array()
 	);
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$page = $dbr->tableName( 'page' );
 	$sql = "SELECT page_namespace,page_title FROM $page WHERE page_namespace IN (" . NS_MEDIAWIKI . ", " . NS_MEDIAWIKI_TALK . ")";
 	$res = $dbr->query( $sql );

@@ -1,7 +1,6 @@
 <?php
 /**
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -11,7 +10,7 @@
  *               used as e.g. Special:Randompage/Category
  */
 function wfSpecialRandompage( $par = NS_MAIN ) {
-	global $wgOut, $wgExtraRandompageSQL, $wgContLang, $wgLang;
+	global $wgOut, $wgExtraRandompageSQL;
 	$fname = 'wfSpecialRandompage';
 
 	# Determine namespace
@@ -30,7 +29,7 @@ function wfSpecialRandompage( $par = NS_MAIN ) {
 	# interpolation and sprintf() can muck up with locale-specific decimal separator
 	$randstr = wfRandom();
 
-	$db =& wfGetDB( DB_SLAVE );
+	$db = wfGetDB( DB_SLAVE );
 	$use_index = $db->useIndexClause( 'page_random' );
 	$page = $db->tableName( 'page' );
 
@@ -49,7 +48,7 @@ function wfSpecialRandompage( $par = NS_MAIN ) {
 	}
 	if( is_null( $title ) ) {
 		# That's not supposed to happen :)
-		$title = Title::newFromText( wfMsg( 'mainpage' ) );
+		$title = Title::newMainPage();
 	}
 	$wgOut->reportTime(); # for logfile
 	$wgOut->redirect( $title->getFullUrl() );

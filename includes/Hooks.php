@@ -18,7 +18,6 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
  *
  * @author Evan Prodromou <evan@wikitravel.org>
- * @package MediaWiki
  * @see hooks.txt
  */
 
@@ -31,7 +30,6 @@
 function wfRunHooks($event, $args = null) {
 
 	global $wgHooks;
-	$fname = 'wfRunHooks';
 
 	if (!is_array($wgHooks)) {
 		throw new MWException("Global hooks array is not an array!\n");

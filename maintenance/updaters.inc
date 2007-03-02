@@ -1,14 +1,18 @@
 <?php
 /**
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
  /** */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	echo "This file is not a valid entry point\n";
+	exit( 1 );
+}
+
 require_once 'convertLinks.inc';
-require_once 'InitialiseMessages.inc';
 require_once 'userDupes.inc';
+require_once 'deleteDefaultMessages.php';
 
 $wgRenamedTables = array(
 #           from             to                  patch file
@@ -30,7 +34,6 @@ $wgNewTables = array(
 	array( 'langlinks',     'patch-langlinks.sql' ),
 	array( 'querycache_info', 'patch-querycacheinfo.sql' ),
 	array( 'filearchive',   'patch-filearchive.sql' ),
-	array( 'redirect',      'patch-redirect.sql' ),
 	array( 'querycachetwo',	'patch-querycachetwo.sql' ),
 );
 
@@ -38,11 +41,11 @@ $wgNewFields = array(
 #           table            field             patch file (in maintenance/archives)
 	array( 'ipblocks',      'ipb_id',           'patch-ipblocks.sql' ),
 	array( 'ipblocks',      'ipb_expiry',       'patch-ipb_expiry.sql' ),
-	array( 'ipblocks',	'ipb_enable_autoblock', 'patch-ipb_optional_autoblock.sql' ),
 	array( 'recentchanges', 'rc_type',          'patch-rc_type.sql' ),
 	array( 'recentchanges', 'rc_ip',            'patch-rc_ip.sql' ),
 	array( 'recentchanges', 'rc_id',            'patch-rc_id.sql' ),
 	array( 'recentchanges', 'rc_patrolled',     'patch-rc-patrol.sql' ),
+	array( 'recentchanges', 'rc_old_len',       'patch-rc_len.sql' ),
 	array( 'user',          'user_real_name',   'patch-user-realname.sql' ),
 	array( 'user',          'user_token',       'patch-user_token.sql' ),
 	array( 'user',          'user_email_token', 'patch-user_email_token.sql' ),
@@ -60,7 +63,16 @@ $wgNewFields = array(
 	array( 'ipblocks',      'ipb_range_start',  'patch-ipb_range_start.sql' ),
 	array( 'site_stats',    'ss_images',        'patch-ss_images.sql' ),
 	array( 'ipblocks',      'ipb_anon_only',    'patch-ipb_anon_only.sql' ),
+	array( 'ipblocks',		'ipb_enable_autoblock', 'patch-ipb_optional_autoblock.sql' ),
 	array( 'user',          'user_newpass_time','patch-user_newpass_time.sql' ),
+	array( 'user',          'user_editcount',   'patch-user_editcount.sql' ),
+	array( 'recentchanges', 'rc_deleted',		'patch-rc_deleted.sql' ),
+	array( 'logging',		'log_id',			'patch-log_id.sql' ),
+	array( 'logging',		'log_deleted',		'patch-log_deleted.sql' ),
+	array( 'archive',		'ar_deleted',		'patch-ar_deleted.sql' ),
+	array( 'ipblocks',		'ipb_deleted',		'patch-ipb_deleted.sql' ),
+	array( 'filearchive',	'fa_deleted',		'patch-fa_deleted.sql' ),
+	array( 'page_restrictions', 'pr_id',		'patch-page_restrictions_sortkey.sql' ),
 );
 
 function rename_table( $from, $to, $patch ) {
@@ -315,16 +327,16 @@ function do_schema_restructuring() {
 		echo "...page table already exists.\n";
 	} else {
 		echo "...converting from cur/old to page/revision/text DB structure.\n"; flush();
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......checking for duplicate entries.\n"; flush();
 
-		extract( $wgDatabase->tableNames( 'cur', 'old', 'page', 'revision', 'text' ) );
+		list ($cur, $old, $page, $revision, $text) = $wgDatabase->tableNamesN( 'cur', 'old', 'page', 'revision', 'text' );
 
 		$rows = $wgDatabase->query( "SELECT cur_title, cur_namespace, COUNT(cur_namespace) AS c
 				FROM $cur GROUP BY cur_title, cur_namespace HAVING c>1", $fname );
 
 		if ( $wgDatabase->numRows( $rows ) > 0 ) {
-			echo wfTimestamp();
+			echo wfTimestamp( TS_DB );
 			echo "......<b>Found duplicate entries</b>\n";
 			echo ( sprintf( "<b>      %-60s %3s %5s</b>\n", 'Title', 'NS', 'Count' ) );
 			while ( $row = $wgDatabase->fetchObject( $rows ) ) {
@@ -372,18 +384,18 @@ function do_schema_restructuring() {
 			}
 			$sql = "DELETE FROM $cur WHERE cur_id IN ( " . join( ',', $deleteId ) . ')';
 			$rows = $wgDatabase->query( $sql, $fname );
-			echo wfTimestamp();
+			echo wfTimestamp( TS_DB );
 			echo "......<b>Deleted</b> ".$wgDatabase->affectedRows()." records.\n";
 		}
 
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......Creating tables.\n";
 		$wgDatabase->query("CREATE TABLE $page (
   			page_id int(8) unsigned NOT NULL auto_increment,
   			page_namespace int NOT NULL,
   			page_title varchar(255) binary NOT NULL,
-  			page_restrictions tinyblob NOT NULL default '',
+  			page_restrictions tinyblob NOT NULL,
   			page_counter bigint(20) unsigned NOT NULL default '0',
   			page_is_redirect tinyint(1) unsigned NOT NULL default '0',
   			page_is_new tinyint(1) unsigned NOT NULL default '0',
@@ -400,7 +412,7 @@ function do_schema_restructuring() {
 		$wgDatabase->query("CREATE TABLE $revision (
   			rev_id int(8) unsigned NOT NULL auto_increment,
   			rev_page int(8) unsigned NOT NULL,
-  			rev_comment tinyblob NOT NULL default '',
+  			rev_comment tinyblob NOT NULL,
   			rev_user int(5) unsigned NOT NULL default '0',
   			rev_user_text varchar(255) binary NOT NULL default '',
   			rev_timestamp char(14) binary NOT NULL default '',
@@ -415,15 +427,15 @@ function do_schema_restructuring() {
   			INDEX usertext_timestamp (rev_user_text,rev_timestamp)
 			) TYPE=InnoDB", $fname );
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......Locking tables.\n";
 		$wgDatabase->query( "LOCK TABLES $page WRITE, $revision WRITE, $old WRITE, $cur WRITE", $fname );
 
 		$maxold = intval( $wgDatabase->selectField( 'old', 'max(old_id)', '', $fname ) );
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......maxold is {$maxold}\n";
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		global $wgLegacySchemaConversion;
 		if( $wgLegacySchemaConversion ) {
 			// Create HistoryBlobCurStub entries.
@@ -443,7 +455,7 @@ function do_schema_restructuring() {
   			SELECT cur_namespace, cur_title, $cur_text, cur_comment, cur_user, cur_user_text, cur_timestamp, cur_minor_edit, $cur_flags
   			FROM $cur", $fname );
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......Setting up revision table.\n";
 		$wgDatabase->query( "INSERT INTO $revision (rev_id, rev_page, rev_comment, rev_user, rev_user_text, rev_timestamp,
     				rev_minor_edit)
@@ -451,7 +463,7 @@ function do_schema_restructuring() {
     				old_timestamp, old_minor_edit
 			FROM $old,$cur WHERE old_namespace=cur_namespace AND old_title=cur_title", $fname );
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......Setting up page table.\n";
 		$wgDatabase->query( "INSERT INTO $page (page_id, page_namespace, page_title, page_restrictions, page_counter,
     				page_is_redirect, page_is_new, page_random, page_touched, page_latest, page_len)
@@ -460,22 +472,21 @@ function do_schema_restructuring() {
   			FROM $cur,$revision
   			WHERE cur_id=rev_page AND rev_timestamp=cur_timestamp AND rev_id > {$maxold}", $fname );
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......Unlocking tables.\n";
 		$wgDatabase->query( "UNLOCK TABLES", $fname );
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "......Renaming old.\n";
 		$wgDatabase->query( "ALTER TABLE $old RENAME TO $text", $fname );
 
-		echo wfTimestamp();
+		echo wfTimestamp( TS_DB );
 		echo "...done.\n";
 	}
 }
 
 function do_inverse_timestamp() {
 	global $wgDatabase;
-	$fname="do_schema_restructuring";
 	if( $wgDatabase->fieldExists( 'revision', 'inverse_timestamp' ) ) {
 		echo "Removing revision.inverse_timestamp and fixing indexes... ";
 		dbsource( archive( 'patch-inverse_timestamp.sql' ), $wgDatabase );
@@ -779,14 +790,77 @@ function do_rc_indices_update() {
 		dbsource( archive( 'patch-recentchanges-utindex.sql' ) );
 	} else {
 		# Index seems to exist
-		echo( "...seems to be ok\n" );
+		echo( "...index on ( rc_namespace, rc_user_text ) seems to be ok\n" );
+	}
+
+	#Add (rc_user_text, rc_timestamp) index [A. Garrett], November 2006
+	# See if we can find the index we want
+	$info = $wgDatabase->indexInfo( 'recentchanges', 'rc_user_text', __METHOD__ );
+	if( !$info ) {
+		# None, so create
+		echo( "...index on ( rc_user_text, rc_timestamp ) not found; creating\n" );
+		dbsource( archive( 'patch-rc_user_text-index.sql' ) );
+	} else {
+		# Index seems to exist
+		echo( "...index on ( rc_user_text, rc_timestamp ) seems to be ok\n" );
 	}
 }
 
-function do_all_updates( $doShared = false ) {
-	global $wgNewTables, $wgNewFields, $wgRenamedTables, $wgSharedDB, $wgDatabase, $wgDBtype;
+function index_has_field($table, $index, $field) {
+	global $wgDatabase;
+	echo( "Checking if $table index $index includes field $field...\n" );
+	$info = $wgDatabase->indexInfo( $table, $index, __METHOD__ );
+	if( $info ) {
+		foreach($info as $row) {
+			if($row->Column_name == $field) {
+				echo( "...index $index on table $table seems to be ok\n" );
+				return true;
+			}
+		}
+	}
+	echo( "...index $index on table $table has no field $field; adding\n" );
+	return false;
+}
 
-	$doUser = !$wgSharedDB || $doShared;
+function do_backlinking_indices_update() {
+	echo( "Checking for backlinking indices...\n" );
+	if (!index_has_field('pagelinks', 'pl_namespace', 'pl_from') ||
+		!index_has_field('templatelinks', 'tl_namespace', 'tl_from') ||
+		!index_has_field('imagelinks', 'il_to', 'il_from'))
+	{	
+		dbsource( archive( 'patch-backlinkindexes.sql' ) );
+	}
+}
+
+function do_stats_init() {
+	// Sometimes site_stats table is not properly populated.
+	global $wgDatabase;
+	echo "Checking site_stats row...";
+	$row = $wgDatabase->selectRow( 'site_stats', '*', array( 'ss_row_id' => 1 ), __METHOD__ );
+	if( $row === false ) {
+		echo "data is missing! rebuilding...\n";
+		
+		global $IP;
+		require_once "$IP/maintenance/initStats.inc";
+		wfInitStats();
+	} else {
+		echo "ok.\n";
+	}
+}
+
+function purge_cache() {
+	global $wgDatabase;
+	# We can't guarantee that the user will be able to use TRUNCATE,
+	# but we know that DELETE is available to us
+	echo( "Purging caches..." );
+	$wgDatabase->delete( 'objectcache', '*', __METHOD__ );
+	echo( "done.\n" );
+}
+
+function do_all_updates( $shared = false, $purge = true ) {
+	global $wgNewTables, $wgNewFields, $wgRenamedTables, $wgSharedDB, $wgDatabase, $wgDBtype, $IP;
+
+	$doUser = !$wgSharedDB || $shared;
 
 	if ($wgDBtype === 'postgres') {
 		do_postgres_updates();
@@ -849,36 +923,141 @@ function do_all_updates( $doShared = false ) {
 	
 	do_rc_indices_update(); flush();
 
-	initialiseMessages(); flush();
+	add_table( 'redirect', 'patch-redirect.sql' );
+
+	do_backlinking_indices_update(); flush();
+
+	do_restrictions_update(); flush ();
+
+	echo "Deleting old default messages (this may take a long time!)..."; flush();
+	deleteDefaultMessages();
+	echo "Done\n"; flush();
+	
+	do_stats_init(); flush();
+	
+	if( $purge ) {
+		purge_cache();
+		flush();
+	}
 }
 
 function archive($name) {
 	global $wgDBtype, $IP;
 	switch ($wgDBtype) {
-	case "oracle":
-		return "$IP/maintenance/oracle/archives/$name";
+	// @fixme: add mysql5 and postgres items or....?
 	default:
 		return "$IP/maintenance/archives/$name";
 	}
 }
 
+function do_restrictions_update() {
+	# Adding page_restrictions table, obsoleting page.page_restrictions.
+	#  Migrating old restrictions to new table
+	# -- Andrew Garrett, January 2007.
+
+	global $wgDatabase;
+
+	$name = 'page_restrictions';
+	$patch = 'patch-page_restrictions.sql';
+
+	if ( $wgDatabase->tableExists( $name ) ) {
+		echo "...$name table already exists.\n";
+	} else {
+		echo "Creating $name table...";
+		dbsource( archive($patch), $wgDatabase );
+		echo "ok\n";
+
+		echo "Migrating old restrictions to new table...";
+
+		$res = $wgDatabase->select( 'page', array( 'page_id', 'page_restrictions' ), array("page_restrictions!=''", "page_restrictions!='edit=:move='"), __METHOD__ );
+
+		$count = 0;
+
+		while ($row = $wgDatabase->fetchObject($res) ) {
+			$count = ($count + 1) % 100;
+
+			if ($count == 0) {
+				if ( function_exists( 'wfWaitForSlaves' ) ) {
+					wfWaitForSlaves( 10 );
+				} else {
+					sleep( 1 );
+				}
+			}
+
+			# Figure out what the restrictions are..
+			$id = $row->page_id;
+			$flatrestrictions = explode( ':', $row->page_restrictions );
+
+			$restrictions = array ();
+			foreach( $flatrestrictions as $restriction ) {
+				$thisrestriction = explode( '=', $restriction, 2 );
+				if( count( $thisrestriction ) == 1 ) {
+					// Compatibility with old protections from before
+					// separate move protection was added.
+					list( $level ) = $thisrestriction;
+					if( $level ) {
+						$restrictions['edit'] = $level;
+						$restrictions['move'] = $level;
+					}
+				} else {
+					list( $type, $level ) = $thisrestriction;
+					if( $level ) {
+						$restrictions[$type] = $level;
+					}
+				}
+
+			$wgDatabase->update( 'page', array ( 'page_restrictions' => ''), array( 'page_id' => $id ), __METHOD__ );
+
+			}
+			
+			foreach( $restrictions as $type => $level ) {
+				$wgDatabase->insert( 'page_restrictions', array ( 'pr_page' => $id,
+											'pr_type' => $type,
+											'pr_level' => $level,
+											'pr_cascade' => 0 ),
+											__METHOD__ );
+			}
+		}
+		print "ok\n";
+	}
+	
+}
+
 function do_postgres_updates() {
 	global $wgDatabase, $wgVersion, $wgDBmwschema;
-
-	$version = "1.7.1";
 
 	# Just in case their LocalSetings.php does not have this:
 	if ( !isset( $wgDBmwschema ))
 		$wgDBmwschema = 'mediawiki';
 
+	## Default to the oldest supported version
+	$version = 1.7;
+
+	$thisver = array();
 	if ($wgDatabase->tableExists("mediawiki_version")) {
 		$version = "1.8";
+		$sql = "SELECT mw_version FROM mediawiki_version ORDER BY cdate DESC LIMIT 1";
+		$tempversion = pg_fetch_result($wgDatabase->doQuery($sql),0,0);
+		if (preg_match('/(\d+\.\d+)/', $tempversion, $thisver)) {
+			$version = $thisver[1];
+		}
 	}
 
-	if ($version == '1.7.1') {
-		$upgrade = <<<PGEND
+	print " Detected version: $version\n";
 
-BEGIN;
+	## Transform to a standard format
+	if (! preg_match('/(\d+)\.(\d+)/', $version, $thisver)) {
+		die ("Sorry, could not figure out what version \"$version\" means");
+	}
+	$oldversion = $version;
+	$version = sprintf("%d%03d",$thisver[1],$thisver[2]);
+	print " Standardized version: $version\n";
+
+	$upgrade = '';
+
+	## 1.8 Updater
+	if ($version < 1008) {
+		$upgrade .= <<<PGEND
 
 -- Type tweaking:
 ALTER TABLE oldimage ALTER oi_size TYPE INTEGER;
@@ -931,9 +1110,6 @@ CREATE TABLE mediawiki_version (
   cdate        TIMESTAMPTZ  NOT NULL DEFAULT now()
 );
 
-INSERT INTO mediawiki_version (type,mw_version,notes)
-VALUES ('Upgrade','MWVERSION','Upgrade from older version 1.7.1');
-
 -- Special modifications
 ALTER TABLE archive RENAME to archive2;
 CREATE VIEW archive AS 
@@ -961,26 +1137,32 @@ END;
 CREATE TRIGGER page_deleted AFTER DELETE ON page
   FOR EACH ROW EXECUTE PROCEDURE page_deleted();
 
-COMMIT;
+-- Note this upgrade
+INSERT INTO mediawiki_version (type,mw_version,notes)
+VALUES ('Upgrade','MWVERSION','Upgrade from older pre 1.8 version THISVERSION aka SVERSION');
 
 PGEND;
 
-	} ## end version 1.7.1 upgrade
-	else if ($version == '1.8') {
-		$upgrade = <<<PGEND
+	} ## end version 1.8
 
-BEGIN;
+	## 1.9 Updater
+	if ($version < 1009) {
+		$upgrade = <<<PGEND
 
 -- Tighten up restrictions on the revision table so we don't lose data:
 ALTER TABLE revision DROP CONSTRAINT revision_rev_user_fkey;
 ALTER TABLE revision ADD CONSTRAINT revision_rev_user_fkey
   FOREIGN KEY (rev_user) REFERENCES mwuser(user_id) ON DELETE RESTRICT;
 
--- New column for better password tracking:
+-- New columns for better password tracking:
 ALTER TABLE mwuser ADD user_newpass_time TIMESTAMPTZ;
+ALTER TABLE mwuser ADD user_editcount INTEGER;
 
 -- New column for autoblocking problem users
 ALTER TABLE ipblocks ADD ipb_enable_autoblock CHAR NOT NULL DEFAULT '1';
+
+-- Despite it's name, ipb_address does not necessarily contain IP addresses :)
+ALTER TABLE ipblocks ALTER ipb_address TYPE TEXT USING ipb_address::TEXT;
 
 -- New tables:
 CREATE TABLE redirect (
@@ -1002,24 +1184,70 @@ CREATE INDEX querycachetwo_type_value ON querycachetwo (qcc_type, qcc_value);
 CREATE INDEX querycachetwo_title      ON querycachetwo (qcc_type,qcc_namespace,qcc_title);
 CREATE INDEX querycachetwo_titletwo   ON querycachetwo (qcc_type,qcc_namespacetwo,qcc_titletwo);
 
+-- New columns for fancy recentchanges display
+ALTER TABLE recentchanges ADD rc_old_len INT;
+ALTER TABLE recentchanges ADD rc_new_len INT;
+
 -- Note this upgrade
 INSERT INTO mediawiki_version (type,mw_version,notes)
-VALUES ('Upgrade','MWVERSION','Upgrade from older version 1.8');
-
-COMMIT;
+VALUES ('Upgrade','MWVERSION','Upgrade from older pre 1.9 version THISVERSION aka SVERSION');
 
 PGEND;
 
-	}
+	} ## end version 1.9
 
-	else {
-		print "No updates needed for version $version\n";
+	## 1.10 updater
+	if ($version <= 1010) {
+		$upgrade = <<<PGEND
+
+CREATE TABLE page_restrictions (
+  pr_page      INTEGER       NULL  REFERENCES page (page_id) ON DELETE CASCADE,
+  pr_type   TEXT         NOT NULL,
+  pr_level  TEXT         NOT NULL,
+  pr_cascade SMALLINT    NOT NULL,
+  pr_user   INTEGER          NULL,
+  pr_expiry TIMESTAMPTZ      NULL
+);
+ALTER TABLE page_restrictions ADD CONSTRAINT page_restrictions_pk PRIMARY KEY (pr_page,pr_type);
+
+-- Add a new index to help with full-text searches
+CREATE INDEX rev_text_id_idx ON revision (rev_text_id);
+
+-- Fix the archive rule ar_timestamp field
+CREATE OR REPLACE RULE archive_insert AS ON INSERT TO archive
+DO INSTEAD INSERT INTO archive2 VALUES (
+  NEW.ar_namespace, NEW.ar_title, NEW.ar_text, NEW.ar_comment, NEW.ar_user, NEW.ar_user_text, 
+  TO_TIMESTAMP(NEW.ar_timestamp, 'YYYYMMDDHH24MISS'),
+  NEW.ar_minor_edit, NEW.ar_flags, NEW.ar_rev_id, NEW.ar_text_id
+);
+
+-- Allow deletion of archive rows
+CREATE RULE archive_delete AS ON DELETE TO archive
+DO INSTEAD DELETE FROM archive2 a2 WHERE
+  a2.ar_title = OLD.ar_title AND
+  a2.ar_namespace = OLD.ar_namespace AND
+  a2.ar_rev_id = OLD.ar_rev_id;
+
+-- Another misleadingly named column! :)
+ALTER TABLE user_newtalk ALTER user_ip TYPE TEXT USING host(user_ip);
+
+-- Note this upgrade
+INSERT INTO mediawiki_version (type,mw_version,notes)
+VALUES ('Upgrade','MWVERSION','Upgrade from older pre 1.10 version THISVERSION aka SVERSION');
+
+
+PGEND;
+	} ## end version 1.10
+
+	if ( !strlen($upgrade)) {
+		print "No updates needed for this version ($oldversion)\n";
 		return;
 	}
 
 	$upgrade = str_replace( 'MWVERSION', $wgVersion, $upgrade );
-	$res = $wgDatabase->query($upgrade);
-
+	$upgrade = str_replace( 'THISVERSION', $oldversion, $upgrade );
+	$upgrade = str_replace( 'SVERSION', $version, $upgrade );
+	$wgDatabase->query("BEGIN;\n\n $upgrade\n\nCOMMIT;\n");
 
 	return;
 }

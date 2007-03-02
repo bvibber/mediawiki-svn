@@ -3,8 +3,7 @@
 /**
  * Support functions for the nukeArticle script
  *
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  * @author Rob Church <robchur@gmail.com>
  */
 
@@ -12,7 +11,7 @@ require_once( 'purgeOldText.inc' );
 
 function NukePage( $name, $delete = false ) {
 
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 	$dbw->begin();
 	
 	$tbl_pag = $dbw->tableName( 'page' );
@@ -65,7 +64,7 @@ function NukePage( $name, $delete = false ) {
 
 function DeleteRevisions( $ids ) {
 
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 	$dbw->begin();
 	
 	$tbl_rev = $dbw->tableName( 'revision' );

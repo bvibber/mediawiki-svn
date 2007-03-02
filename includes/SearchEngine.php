@@ -1,12 +1,10 @@
 <?php
 /**
  * Contain a class for special pages
- * @package MediaWiki
- * @subpackage Search
+ * @addtogroup Search
  */
 
 /**
- * @package MediaWiki
  */
 class SearchEngine {
 	var $limit = 10;
@@ -126,6 +124,7 @@ class SearchEngine {
 		}
 
 		# Quoted term? Try without the quotes...
+		$matches = array();
 		if( preg_match( '/^"([^"]+)"$/', $searchterm, $matches ) ) {
 			return SearchEngine::getNearMatch( $matches[1] );
 		}
@@ -133,7 +132,7 @@ class SearchEngine {
 		return NULL;
 	}
 
-	function legalSearchChars() {
+	public static function legalSearchChars() {
 		return "A-Za-z_'0-9\\x80-\\xFF\\-";
 	}
 
@@ -192,9 +191,8 @@ class SearchEngine {
 	 * active database backend, and return a configured instance.
 	 *
 	 * @return SearchEngine
-	 * @private
 	 */
-	function create() {
+	public static function create() {
 		global $wgDBtype, $wgSearchType;
 		if( $wgSearchType ) {
 			$class = $wgSearchType;
@@ -236,7 +234,6 @@ class SearchEngine {
     }
 }
 
-/** @package MediaWiki */
 class SearchResultSet {
 	/**
 	 * Fetch an array of regular expression fragments for matching
@@ -311,7 +308,6 @@ class SearchResultSet {
 	}
 }
 
-/** @package MediaWiki */
 class SearchResult {
 	function SearchResult( $row ) {
 		$this->mTitle = Title::makeTitle( $row->page_namespace, $row->page_title );
@@ -334,7 +330,6 @@ class SearchResult {
 }
 
 /**
- * @package MediaWiki
  */
 class SearchEngineDummy {
 	function search( $term ) {

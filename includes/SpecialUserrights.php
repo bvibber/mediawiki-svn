@@ -1,15 +1,14 @@
 <?php
+
 /**
- * Provide an administration interface
- * DO NOT USE: INSECURE.
+ * Special page to allow managing user group membership
  *
- * TODO : remove everything related to group editing (SpecialGrouplevels.php)
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup Special pages
+ * @todo This code is disgusting and needs a total rewrite
  */
 
 /** */
-require_once('HTMLForm.php');
+require_once( dirname(__FILE__) . '/HTMLForm.php');
 
 /** Entry point */
 function wfSpecialUserrights() {
@@ -20,8 +19,7 @@ function wfSpecialUserrights() {
 
 /**
  * A class to manage user levels rights.
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class UserrightsForm extends HTMLForm {
 	var $mPosted, $mRequest, $mSaveprefs;
@@ -89,7 +87,6 @@ class UserrightsForm extends HTMLForm {
 
 		$oldGroups = $u->getGroups();
 		$newGroups = $oldGroups;
-		$logcomment = ' ';
 		// remove then add groups
 		if(isset($removegroup)) {
 			$newGroups = array_diff($newGroups, $removegroup);
@@ -119,22 +116,18 @@ class UserrightsForm extends HTMLForm {
 	}
 
 	/**
-	 * The entry form
-	 * It allows a user to look for a username and edit its groups membership
+	 * Output a form to allow searching for a user
 	 */
 	function switchForm() {
-		global $wgOut;
-
-		// user selection
-		$wgOut->addHTML( "<form name=\"uluser\" action=\"$this->action\" method=\"post\">\n" );
-		$wgOut->addHTML( $this->fieldset( 'lookup-user',
-				$this->textbox( 'user-editname' ) .
-				wfElement( 'input', array(
-					'type'  => 'submit',
-					'name'  => 'ssearchuser',
-					'value' => wfMsg( 'editusergroup' ) ) )
-		));
-		$wgOut->addHTML( "</form>\n" );
+		global $wgOut, $wgRequest;
+		$username = $wgRequest->getText( 'user-editname' );
+		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->action, 'name' => 'uluser' ) );
+		$form .= '<fieldset><legend>' . wfMsgHtml( 'userrights-lookup-user' ) . '</legend>';
+		$form .= '<p>' . Xml::inputLabel( wfMsg( 'userrights-user-editname' ), 'user-editname', 'username', 30, $username ) . '</p>';
+		$form .= '<p>' . Xml::submitButton( wfMsg( 'editusergroup' ), array( 'name' => 'ssearchuser' ) ) . '</p>';
+		$form .= '</fieldset>';
+		$form .= '</form>';
+		$wgOut->addHTML( $form );
 	}
 
 	/**

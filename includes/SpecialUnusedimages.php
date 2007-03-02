@@ -1,13 +1,11 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class UnusedimagesPage extends QueryPage {
 
@@ -22,10 +20,10 @@ class UnusedimagesPage extends QueryPage {
 
 	function getSQL() {
 		global $wgCountCategorizedImagesAsUsed;
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		if ( $wgCountCategorizedImagesAsUsed ) {
-			extract( $dbr->tableNames( 'page', 'image', 'imagelinks', 'categorylinks' ) );
+			list( $page, $image, $imagelinks, $categorylinks ) = $dbr->tableNamesN( 'page', 'image', 'imagelinks', 'categorylinks' );
 
 			return 'SELECT img_name as title, img_user, img_user_text, img_timestamp as value, img_description
 					FROM ((('.$page.' AS I LEFT JOIN '.$categorylinks.' AS L ON I.page_id = L.cl_from)
@@ -33,7 +31,7 @@ class UnusedimagesPage extends QueryPage {
 						INNER JOIN '.$image.' AS G ON I.page_title = G.img_name)
 					WHERE I.page_namespace = '.NS_IMAGE.' AND L.cl_from IS NULL AND P.il_to IS NULL';
 		} else {
-			extract( $dbr->tableNames( 'image','imagelinks' ) );
+			list( $image, $imagelinks ) = $dbr->tableNamesN( 'image','imagelinks' );
 
 			return 'SELECT img_name as title, img_user, img_user_text, img_timestamp as value, img_description' .
 			' FROM '.$image.' LEFT JOIN '.$imagelinks.' ON img_name=il_to WHERE il_to IS NULL ';

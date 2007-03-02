@@ -323,7 +323,7 @@ abstract class IndexPager implements Pager {
 			$next = array( 'offset' => $this->mLastShown, 'limit' => $urlLimit );
 			$last = array( 'dir' => 'prev', 'limit' => $urlLimit );
 		}
-		return compact( 'prev', 'next', 'first', 'last' );
+		return array( 'prev' => $prev, 'next' => $next, 'first' => $first, 'last' => $last );
 	}
 
 	/**
@@ -384,6 +384,41 @@ abstract class IndexPager implements Pager {
 	 * index field.
 	 */
 	abstract function getIndexField();
+}
+
+
+/**
+ * IndexPager with an alphabetic list and a formatted navigation bar
+*/
+abstract class AlphabeticPager extends IndexPager {
+	public $mDefaultDirection = false;
+	
+	function __construct() {
+		parent::__construct();
+	}
+	
+	/** 
+	 * Shamelessly stolen bits from ReverseChronologicalPager, d
+	 * didn't want to do class magic as may be still revamped 
+	 */
+	function getNavigationBar() {
+		global $wgLang;
+		
+		$linkTexts = array(
+			'prev' => wfMsgHtml( "prevn", $this->mLimit ),
+			'next' => wfMsgHtml( 'nextn', $this->mLimit ),
+			'first' => wfMsgHtml('page_first'), /* Introduced the message */
+			'last' => wfMsgHtml( 'page_last' )  /* Introduced the message */
+		);
+		
+		$pagingLinks = $this->getPagingLinks( $linkTexts );
+		$limitLinks = $this->getLimitLinks();
+		$limits = implode( ' | ', $limitLinks );
+		
+		$this->mNavigationBar = "({$pagingLinks['first']} | {$pagingLinks['last']}) " . wfMsgHtml("viewprevnext", $pagingLinks['prev'], $pagingLinks['next'], $limits);
+		return $this->mNavigationBar;
+		
+	}
 }
 
 /**
@@ -487,7 +522,7 @@ abstract class TablePager extends IndexPager {
 	}
 
 	function getEndBody() {
-		return '</tbody></table>';
+		return "</tbody></table>\n";
 	}
 
 	function getEmptyBody() {
@@ -553,7 +588,7 @@ abstract class TablePager extends IndexPager {
 			'next' =>  $wgContLang->isRTL() ? 'arrow_disabled_left_25.png' : 'arrow_disabled_right_25.png',
 			'last' =>  $wgContLang->isRTL() ? 'arrow_disabled_first_25.png' : 'arrow_disabled_last_25.png',
 		);
-			
+
 		$linkTexts = array();
 		$disabledTexts = array();
 		foreach ( $labels as $type => $label ) {
@@ -564,12 +599,12 @@ abstract class TablePager extends IndexPager {
 		$links = $this->getPagingLinks( $linkTexts, $disabledTexts );
 
 		$navClass = htmlspecialchars( $this->getNavClass() );
-		$s = "<table class=\"$navClass\" align=\"center\" cellpadding=\"3\"><tr>";
+		$s = "<table class=\"$navClass\" align=\"center\" cellpadding=\"3\"><tr>\n";
 		$cellAttrs = 'valign="top" align="center" width="' . 100 / count( $links ) . '%"';
 		foreach ( $labels as $type => $label ) {
 			$s .= "<td $cellAttrs>{$links[$type]}</td>\n";
 		}
-		$s .= '</tr></table>';
+		$s .= "</tr></table>\n";
 		return $s;
 	}
 

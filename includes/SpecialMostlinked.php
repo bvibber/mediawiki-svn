@@ -3,8 +3,7 @@
 /**
  * A special page to show pages ordered by the number of pages linking to them
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @author Rob Church <robchur@gmail.com>
@@ -14,8 +13,7 @@
  */
 
 /**
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class MostlinkedPage extends QueryPage {
 
@@ -27,8 +25,8 @@ class MostlinkedPage extends QueryPage {
 	 * Note: Getting page_namespace only works if $this->isCached() is false
 	 */
 	function getSQL() {
-		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'pagelinks', 'page' ) );
+		$dbr = wfGetDB( DB_SLAVE );
+		list( $pagelinks, $page ) = $dbr->tableNamesN( 'pagelinks', 'page' );
 		return
 			"SELECT 'Mostlinked' AS type,
 				pl_namespace AS namespace,
@@ -44,12 +42,12 @@ class MostlinkedPage extends QueryPage {
 	/**
 	 * Pre-fill the link cache
 	 */
-	function preprocessResults( &$dbr, $res ) {
-		if( $dbr->numRows( $res ) > 0 ) {
+	function preprocessResults( &$db, &$res ) {
+		if( $db->numRows( $res ) > 0 ) {
 			$linkBatch = new LinkBatch();
-			while( $row = $dbr->fetchObject( $res ) )
+			while( $row = $db->fetchObject( $res ) )
 				$linkBatch->addObj( Title::makeTitleSafe( $row->namespace, $row->title ) );
-			$dbr->dataSeek( $res, 0 );
+			$db->dataSeek( $res, 0 );
 			$linkBatch->execute();
 		}
 	}

@@ -41,6 +41,7 @@ class FakeTitle {
 	function isProtected() { $this->error(); }
 	function userIsWatching() { $this->error(); }
 	function userCan() { $this->error(); }
+	function userCanCreate() { $this->error(); }
 	function userCanEdit() { $this->error(); }
 	function userCanMove() { $this->error(); }
 	function isMovable() { $this->error(); }
@@ -71,7 +72,6 @@ class FakeTitle {
 	function moveOverExistingRedirect() { $this->error(); }
 	function moveToNewTitle() { $this->error(); }
 	function isValidMoveTarget() { $this->error(); }
-	function createRedirect() { $this->error(); }
 	function getParentCategories() { $this->error(); }
 	function getParentCategoryTree() { $this->error(); }
 	function pageCond() { $this->error(); }

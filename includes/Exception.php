@@ -54,10 +54,11 @@ class MWException extends Exception
 	}
 	
 	function getLogMessage() {
+		global $wgRequest;
 		$file = $this->getFile();
 		$line = $this->getLine();
 		$message = $this->getMessage();
-		return "{$_SERVER['REQUEST_URI']} Exception from line $line of $file: $message";
+		return $wgRequest->getRequestURL() . " Exception from line $line of $file: $message";
 	}
 	
 	function reportHTML() {
@@ -165,7 +166,7 @@ function wfInstallExceptionHandler() {
  * Report an exception to the user
  */
 function wfReportException( Exception $e ) {
-	 if ( is_a( $e, 'MWException' ) ) {
+	 if ( $e instanceof MWException ) {
 		 try {
 			 $e->report();
 		 } catch ( Exception $e2 ) {

@@ -1,12 +1,10 @@
 <?php
 /**
  *
- * @package MediaWiki
  */
 
 /**
  * Pure virtual parent
- * @package MediaWiki
  */
 class HistoryBlob
 {
@@ -50,7 +48,6 @@ class HistoryBlob
 
 /**
  * The real object
- * @package MediaWiki
  */
 class ConcatenatedGzipHistoryBlob extends HistoryBlob
 {
@@ -179,7 +176,6 @@ $wgBlobCache = array();
 
 
 /**
- * @package MediaWiki
  */
 class HistoryBlobStub {
 	var $mOldId, $mHash, $mRef;
@@ -213,12 +209,12 @@ class HistoryBlobStub {
 
 	/** @todo document */
 	function getText() {
-		$fname = 'HistoryBlob::getText';
+		$fname = 'HistoryBlobStub::getText';
 		global $wgBlobCache;
 		if( isset( $wgBlobCache[$this->mOldId] ) ) {
 			$obj = $wgBlobCache[$this->mOldId];
 		} else {
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$row = $dbr->selectRow( 'text', array( 'old_flags', 'old_text' ), array( 'old_id' => $this->mOldId ) );
 			if( !$row ) {
 				return false;
@@ -226,7 +222,7 @@ class HistoryBlobStub {
 			$flags = explode( ',', $row->old_flags );
 			if( in_array( 'external', $flags ) ) {
 				$url=$row->old_text;
-				@list($proto,$path)=explode('://',$url,2);
+				@list( /* $proto */ ,$path)=explode('://',$url,2);
 				if ($path=="") {
 					wfProfileOut( $fname );
 					return false;
@@ -274,7 +270,6 @@ class HistoryBlobStub {
  * Serialized HistoryBlobCurStub objects will be inserted into the text table
  * on conversion if $wgFastSchemaUpgrades is set to true.
  *
- * @package MediaWiki
  */
 class HistoryBlobCurStub {
 	var $mCurId;
@@ -294,7 +289,7 @@ class HistoryBlobCurStub {
 
 	/** @todo document */
 	function getText() {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow( 'cur', array( 'cur_text' ), array( 'cur_id' => $this->mCurId ) );
 		if( !$row ) {
 			return false;

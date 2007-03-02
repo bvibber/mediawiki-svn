@@ -19,14 +19,13 @@
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 class WikiExporter {
 	var $list_authors = false ; # Return distinct author list (when not returning full history)
 	var $author_list = "" ;
-	
+
 	const FULL = 0;
 	const CURRENT = 1;
 
@@ -44,14 +43,14 @@ class WikiExporter {
 	 * main query is still running.
 	 *
 	 * @param Database $db
-	 * @param mixed $history one of WikiExporter::FULL or WikiExporter::CURRENT, or an 
+	 * @param mixed $history one of WikiExporter::FULL or WikiExporter::CURRENT, or an
 	 *                       associative array:
 	 *                         offset: non-inclusive offset at which to start the query
 	 *                         limit: maximum number of rows to return
 	 *                         dir: "asc" or "desc" timestamp order
 	 * @param int $buffer one of WikiExporter::BUFFER or WikiExporter::STREAM
 	 */
-	function WikiExporter( &$db, $history = WikiExporter::CURRENT,
+	function __construct( &$db, $history = WikiExporter::CURRENT,
 			$buffer = WikiExporter::BUFFER, $text = WikiExporter::TEXT ) {
 		$this->db =& $db;
 		$this->history = $history;
@@ -140,7 +139,10 @@ class WikiExporter {
 		$fname = "do_list_authors" ;
 		wfProfileIn( $fname );
 		$this->author_list = "<contributors>";
-		$sql = "SELECT DISTINCT rev_user_text,rev_user FROM {$page},{$revision} WHERE page_id=rev_page AND " . $cond ;
+		//rev_deleted
+		$deleted = '(rev_deleted & '.Revision::DELETED_USER.') !=1 ';
+		
+		$sql = "SELECT DISTINCT rev_user_text,rev_user FROM {$page},{$revision} WHERE page_id=rev_page AND $deleted AND " . $cond ;
 		$result = $this->db->query( $sql, $fname );
 		$resultset = $this->db->resultObject( $result );
 		while( $row = $resultset->fetchObject() ) {
@@ -164,10 +166,10 @@ class WikiExporter {
 		$page     = $this->db->tableName( 'page' );
 		$revision = $this->db->tableName( 'revision' );
 		$text     = $this->db->tableName( 'text' );
-		
+
 		$order = 'ORDER BY page_id';
 		$limit = '';
-		
+
 		if( $this->history == WikiExporter::FULL ) {
 			$join = 'page_id=rev_page';
 		} elseif( $this->history == WikiExporter::CURRENT ) {
@@ -185,7 +187,7 @@ class WikiExporter {
 				$order .= ', rev_timestamp DESC';
 			}
 			if ( !empty( $this->history['offset'] ) ) {
-				$join .= " AND rev_timestamp $op " . $this->db->addQuotes( 
+				$join .= " AND rev_timestamp $op " . $this->db->addQuotes(
 					$this->db->timestamp( $this->history['offset'] ) );
 			}
 			if ( !empty( $this->history['limit'] ) ) {
@@ -229,7 +231,7 @@ class WikiExporter {
 		$result = $this->db->query( $sql, $fname );
 		$wrapper = $this->db->resultObject( $result );
 		$this->outputStream( $wrapper );
-		
+
 		if ( $this->list_authors ) {
 			$this->outputStream( $wrapper );
 		}
@@ -337,8 +339,7 @@ class XmlDumpWriter {
 	}
 
 	function homelink() {
-		$page = Title::newFromText( wfMsgForContent( 'mainpage' ) );
-		return wfElement( 'base', array(), $page->getFullUrl() );
+		return wfElement( 'base', array(), Title::newMainPage()->getFullUrl() );
 	}
 
 	function caseSetting() {
@@ -597,7 +598,7 @@ class DumpFilter {
 	 * Override for page-based filter types.
 	 * @return bool
 	 */
-	function pass( $page, $string ) {
+	function pass( $page ) {
 		return true;
 	}
 }

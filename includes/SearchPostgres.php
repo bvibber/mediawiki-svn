@@ -1,5 +1,5 @@
 <?php
-# Copyright (C) 2006 Greg Sabino Mullane <greg@turnstep.com>
+# Copyright (C) 2006-2007 Greg Sabino Mullane <greg@turnstep.com>
 # http://www.mediawiki.org/
 #
 # This program is free software; you can redistribute it and/or modify
@@ -21,15 +21,13 @@
 
 /**
  * Search engine hook base class for Postgres
- * @package MediaWiki
- * @subpackage Search
+ * @addtogroup Search
  */
 
-/** @package MediaWiki */
 class SearchPostgres extends SearchEngine {
 
-	function SearchPostgres( &$db ) {
-		$this->db =& $db;
+	function SearchPostgres( $db ) {
+		$this->db = $db;
 	}
 
 	/**
@@ -57,17 +55,24 @@ class SearchPostgres extends SearchEngine {
 		global $wgContLang;
 		$lc = SearchEngine::legalSearchChars();
 		$searchon = '';
+		$searchonst = '';
 		$this->searchTerms = array();
 
 		# FIXME: This doesn't handle parenthetical expressions.
+		$m = array();
 		if( preg_match_all( '/([-+<>~]?)(([' . $lc . ']+)(\*?)|"[^"]*")/',
 			  $filteredText, $m, PREG_SET_ORDER ) ) {
 			foreach( $m as $terms ) {
-				if( $searchon !== '' ) $searchon .= ' ';
-				if($terms[1] == '') {
-					$terms[1] = '+';
-				}
-				$searchon .= $terms[1] . $wgContLang->stripForSearch( $terms[2] );
+                switch ($terms[1]) {
+                  case '~':  // negate but do not exclude like "-" for now, simply negate
+                  case '-': $searchconst.= '&!' . $wgContLang->stripForSearch( $terms[2] );
+					break;
+                  case '+': $searchconst.= '&'  . $wgContLang->stripForSearch( $terms[2] );
+					break;
+                  case '<':  // decrease priority of word - not implemented
+                  case '>':  // increase priority of word - not implemented
+                  default : $searchon.=    '|'  . $wgContLang->stripForSearch( $terms[2] );
+                }
 				if( !empty( $terms[3] ) ) {
 					$regexp = preg_quote( $terms[3], '/' );
 					if( $terms[4] ) $regexp .= "[0-9A-Za-z_]+";
@@ -77,11 +82,15 @@ class SearchPostgres extends SearchEngine {
 				$this->searchTerms[] = $regexp;
 			}
 			wfDebug( "Would search with '$searchon'\n" );
-			wfDebug( "Match with /\b" . implode( '\b|\b', $this->searchTerms ) . "\b/\n" );
+			wfDebug( 'Match with /\b' . implode( '\b|\b', $this->searchTerms ) . "\b/\n" );
 		} else {
 			wfDebug( "Can't understand search query '{$this->filteredText}'\n" );
 		}
 
+		if (substr_count($searchon,'|')==1) {
+			$searchon = str_replace ('|','&',$searchon);
+		}
+		$searchon = substr($searchconst . $searchon, 1) ;
 		$searchon = preg_replace('/(\s+)/','&',$searchon);
 		$searchon = $this->db->strencode( $searchon );
 		return $searchon;
@@ -97,7 +106,8 @@ class SearchPostgres extends SearchEngine {
 
 		$match = $this->parseQuery( $filteredTerm, $fulltext );
 
-		$query = "SELECT page_id, page_namespace, page_title, old_text AS page_text ".
+		$query = "SELECT page_id, page_namespace, page_title, old_text AS page_text, ".
+			"rank(titlevector, to_tsquery('default','$match')) AS rnk ".
 			"FROM page p, revision r, pagecontent c WHERE p.page_latest = r.rev_id " .
 			"AND r.rev_text_id = c.old_id AND $fulltext @@ to_tsquery('default','$match')";
 
@@ -113,7 +123,7 @@ class SearchPostgres extends SearchEngine {
 			$query .=  " AND page_namespace IN ($namespaces)";
 		}
 
-		$query .= " ORDER BY rank($fulltext, to_tsquery('default','$fulltext')) DESC";
+		$query .= " ORDER BY rnk DESC, page_id DESC";
 
 		$query .= $this->db->limitResult( '', $this->limit, $this->offset );
 
@@ -122,13 +132,20 @@ class SearchPostgres extends SearchEngine {
 
 	## These two functions are done automatically via triggers
 
-	function update( $id, $title, $text ) { return true; }
+	function update( $pageid, $title, $text ) {
+		$dbw = wfGetDB( DB_MASTER );
+		## We don't want to index older revisions
+		$SQL = "UPDATE pagecontent SET textvector = NULL WHERE old_id = ".
+				"(SELECT rev_text_id FROM revision WHERE rev_page = $pageid ".
+				"ORDER BY rev_text_id DESC LIMIT 1 OFFSET 1)";
+		$dbw->doQuery($SQL);
+		return true;
+	}
     function updateTitle( $id, $title )   { return true; }
 
 } ## end of the SearchPostgres class
 
 
-/** @package MediaWiki */
 class PostgresSearchResultSet extends SearchResultSet {
 	function PostgresSearchResultSet( $resultSet, $terms ) {
 		$this->mResultSet = $resultSet;

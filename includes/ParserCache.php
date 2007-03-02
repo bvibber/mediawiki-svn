@@ -1,13 +1,11 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage Cache
+ * @addtogroup Cache
  */
 
 /**
  *
- * @package MediaWiki
  */
 class ParserCache {
 	/**
@@ -28,14 +26,14 @@ class ParserCache {
 	 *
 	 * @param object $memCached
 	 */
-	function ParserCache( &$memCached ) {
+	function __construct( &$memCached ) {
 		$this->mMemc =& $memCached;
 	}
 
 	function getKey( &$article, &$user ) {
 		global $action;
 		$hash = $user->getPageRenderingHash();
-		if( !$article->mTitle->userCanEdit() ) {
+		if( !$article->mTitle->quickUserCan( 'edit' ) ) {
 			// section edit links are suppressed even if the user has them on
 			$edit = '!edit=0';
 		} else {
@@ -56,8 +54,6 @@ class ParserCache {
 		$fname = 'ParserCache::get';
 		wfProfileIn( $fname );
 
-		$hash = $user->getPageRenderingHash();
-		$pageid = intval( $article->getID() );
 		$key = $this->getKey( $article, $user );
 
 		wfDebug( "Trying parser cache $key\n" );

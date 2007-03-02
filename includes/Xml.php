@@ -50,7 +50,9 @@ class Xml {
 			$attribs = array_map( array( 'UtfNormal', 'cleanUp' ), $attribs );
 		}
 		if( $contents ) {
+			wfProfileIn( __METHOD__ . '-norm' );
 			$contents = UtfNormal::cleanUp( $contents );
+			wfProfileOut( __METHOD__ . '-norm' );
 		}
 		return self::element( $element, $attribs, $contents );
 	}
@@ -67,7 +69,7 @@ class Xml {
 	 * @param $includehidden Bool: include hidden namespaces?
 	 * @return String: Html string containing the namespace selector
 	 */
-	public static function &namespaceSelector($selected = '', $allnamespaces = null, $includehidden=false) {
+	public static function namespaceSelector($selected = '', $allnamespaces = null, $includehidden=false) {
 		global $wgContLang;
 		if( $selected !== '' ) {
 			if( is_null( $selected ) ) {
@@ -128,10 +130,13 @@ class Xml {
 	 * @return string HTML
 	 */
 	public static function check( $name, $checked=false, $attribs=array() ) {
-		return self::element( 'input', array(
-			'name' => $name,
-			'type' => 'checkbox',
-			'value' => 1 ) + self::attrib( 'checked', $checked ) +  $attribs );
+		return self::element( 'input', array_merge(
+			array(
+				'name' => $name,
+				'type' => 'checkbox',
+				'value' => 1 ),
+			self::attrib( 'checked', $checked ),
+			$attribs ) );
 	}
 
 	/**
@@ -255,6 +260,33 @@ class Xml {
 	}
 
 	/**
+	 * Encode a variable of unknown type to JavaScript.
+	 * Doesn't support hashtables just yet.
+	 */
+	public static function encodeJsVar( $value ) {
+		if ( is_bool( $value ) ) {
+			$s = $value ? 'true' : 'false';
+		} elseif ( is_null( $value ) ) {
+			$s = 'null';
+		} elseif ( is_int( $value ) ) {
+			$s = $value;
+		} elseif ( is_array( $value ) ) {
+			$s = '[';
+			foreach ( $value as $name => $elt ) {
+				if ( $s != '[' ) {
+					$s .= ', ';
+				}
+				$s .= self::encodeJsVar( $elt );
+			}
+			$s .= ']';
+		} else {
+			$s = '"' . self::escapeJsString( $value ) . '"';
+		}
+		return $s;
+	}
+	
+
+	/**
 	 * Check if a string is well-formed XML.
 	 * Must include the surrounding tag.
 	 *
@@ -270,8 +302,8 @@ class Xml {
 		xml_parser_set_option( $parser, XML_OPTION_CASE_FOLDING, false );
 
 		if( !xml_parse( $parser, $text, true ) ) {
-			$err = xml_error_string( xml_get_error_code( $parser ) );
-			$position = xml_get_current_byte_index( $parser );
+			//$err = xml_error_string( xml_get_error_code( $parser ) );
+			//$position = xml_get_current_byte_index( $parser );
 			//$fragment = $this->extractFragment( $html, $position );
 			//$this->mXmlError = "$err at byte $position:\n$fragment";
 			xml_parser_free( $parser );
@@ -296,6 +328,20 @@ class Xml {
 			$text .
 			'</html>';
 		return Xml::isWellFormed( $html );
+	}
+
+	/**
+	 * Replace " > and < with their respective HTML entities ( &quot;,
+	 * &gt;, &lt;)
+	 *
+	 * @param $in String: text that might contain HTML tags.
+	 * @return string Escaped string
+	 */
+	public static function escapeTagsOnly( $in ) {
+		return str_replace(
+			array( '"', '>', '<' ),
+			array( '&quot;', '&gt;', '&lt;' ),
+			$in );
 	}
 }
 ?>

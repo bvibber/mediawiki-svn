@@ -25,7 +25,6 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @package MediaWiki
  */
 
 class DjVuImage {
@@ -68,6 +67,7 @@ class DjVuImage {
 	function dump() {
 		$file = fopen( $this->mFilename, 'rb' );
 		$header = fread( $file, 12 );
+		// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 		extract( unpack( 'a4magic/a4chunk/NchunkLength', $header ) );
 		echo "$chunk $chunkLength\n";
 		$this->dumpForm( $file, $chunkLength, 1 );
@@ -83,6 +83,7 @@ class DjVuImage {
 			if( $chunkHeader == '' ) {
 				break;
 			}
+			// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 			extract( unpack( 'a4chunk/NchunkLength', $chunkHeader ) );
 			echo str_repeat( ' ', $indent * 4 ) . "$chunk $chunkLength\n";
 			
@@ -111,6 +112,7 @@ class DjVuImage {
 		if( strlen( $header ) < 16 ) {
 			wfDebug( __METHOD__ . ": too short file header\n" );
 		} else {
+			// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 			extract( unpack( 'a4magic/a4form/NformLength/a4subtype', $header ) );
 			
 			if( $magic != 'AT&T' ) {
@@ -134,6 +136,7 @@ class DjVuImage {
 		if( strlen( $header ) < 8 ) {
 			return array( false, 0 );
 		} else {
+			// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 			extract( unpack( 'a4chunk/Nlength', $header ) );
 			return array( $chunk, $length );
 		}
@@ -192,6 +195,7 @@ class DjVuImage {
 			return false;
 		}
 		
+		// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 		extract( unpack(
 			'nwidth/' .
 			'nheight/' .
@@ -216,8 +220,9 @@ class DjVuImage {
 	function retrieveMetaData() {
 		global $wgDjvuToXML;
 		if ( isset( $wgDjvuToXML ) ) {
-			$cmd = $wgDjvuToXML . ' --without-anno --without-text ' . $this->mFilename;
-			$xml = wfShellExec( $cmd, $retval );
+			$cmd = $wgDjvuToXML . ' --without-anno --without-text ' .
+				wfEscapeShellArg( $this->mFilename );
+			$xml = wfShellExec( $cmd );
 		} else {
 			$xml = null;
 		}

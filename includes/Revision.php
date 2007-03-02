@@ -1,18 +1,17 @@
 <?php
 /**
- * @package MediaWiki
  * @todo document
  */
 
 /**
- * @package MediaWiki
  * @todo document
  */
 class Revision {
-	const DELETED_TEXT 	= 1;
-	const DELETED_COMMENT 	= 2;
-	const DELETED_USER 	= 4;
-	const DELETED_RESTRICTED = 8;
+	const DELETED_TEXT = 1;
+	const DELETED_COMMENT = 2;
+	const DELETED_USER = 4;
+    const DELETED_RESTRICTED = 8;
+    const DELETED_NAME = 16;
 	
 	/**
 	 * Load a page revision from a given revision ID number.
@@ -79,7 +78,7 @@ class Revision {
 	 * @access public
 	 * @static
 	 */
-	public static function loadFromPageId( &$db, $pageid, $id = 0 ) {
+	public static function loadFromPageId( $db, $pageid, $id = 0 ) {
 		$conds=array('page_id=rev_page','rev_page'=>intval( $pageid ), 'page_id'=>intval( $pageid ));
 		if( $id ) {
 			$conds['rev_id']=intval($id);
@@ -145,10 +144,10 @@ class Revision {
 	 * @static
 	 */
 	private static function newFromConds( $conditions ) {
-		$db =& wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$row = Revision::loadFromConds( $db, $conditions );
 		if( is_null( $row ) ) {
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$row = Revision::loadFromConds( $dbw, $conditions );
 		}
 		return $row;
@@ -164,7 +163,7 @@ class Revision {
 	 * @access private
 	 * @static
 	 */
-	private static function loadFromConds( &$db, $conditions ) {
+	private static function loadFromConds( $db, $conditions ) {
 		$res = Revision::fetchFromConds( $db, $conditions );
 		if( $res ) {
 			$row = $res->fetchObject();
@@ -226,7 +225,7 @@ class Revision {
 	 * @access private
 	 * @static
 	 */
-	private static function fetchFromConds( &$db, $conditions ) {
+	private static function fetchFromConds( $db, $conditions ) {
 		$res = $db->select(
 			array( 'page', 'revision' ),
 			array( 'page_namespace',
@@ -332,7 +331,7 @@ class Revision {
 		if( isset( $this->mTitle ) ) {
 			return $this->mTitle;
 		}
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow(
 			array( 'page', 'revision' ),
 			array( 'page_namespace', 'page_title' ),
@@ -459,6 +458,18 @@ class Revision {
 		}
 		return $this->mText;
 	}
+	
+	/**
+	 * Fetch revision text if it's available to THIS user
+	 * @return string
+	 */
+	function revText() {
+		if( !$this->userCan( self::DELETED_TEXT ) ) {
+			return "";
+		} else {
+			return $this->getRawText();
+		}
+	}
 
 	/**
 	 * @return string
@@ -508,7 +519,7 @@ class Revision {
 	  * @param string $prefix table prefix (default 'old_')
 	  * @return string $text|false the text requested
 	  */
-	function getRevisionText( $row, $prefix = 'old_' ) {
+	public static function getRevisionText( $row, $prefix = 'old_' ) {
 		$fname = 'Revision::getRevisionText';
 		wfProfileIn( $fname );
 
@@ -532,7 +543,7 @@ class Revision {
 		# Use external methods for external objects, text in table is URL-only then
 		if ( in_array( 'external', $flags ) ) {
 			$url=$text;
-			@list($proto,$path)=explode('://',$url,2);
+			@list(/* $proto */,$path)=explode('://',$url,2);
 			if ($path=="") {
 				wfProfileOut( $fname );
 				return false;
@@ -706,7 +717,7 @@ class Revision {
 		
 		if( !$row ) {
 			// Text data is immutable; check slaves first.
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$row = $dbr->selectRow( 'text',
 				array( 'old_text', 'old_flags' ),
 				array( 'old_id' => $this->getTextId() ),
@@ -715,7 +726,7 @@ class Revision {
 
 		if( !$row ) {
 			// Possible slave lag!
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$row = $dbw->selectRow( 'text',
 				array( 'old_text', 'old_flags' ),
 				array( 'old_id' => $this->getTextId() ),
@@ -802,11 +813,12 @@ class Revision {
 	 * @param integer $id
 	 */
 	static function getTimestampFromID( $id ) {
+		$dbr = wfGetDB( DB_SLAVE );
 		$timestamp = $dbr->selectField( 'revision', 'rev_timestamp', 
 			array( 'rev_id' => $id ), __METHOD__ );
 		if ( $timestamp === false ) {
 			# Not in slave, try master
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$timestamp = $dbw->selectField( 'revision', 'rev_timestamp', 
 				array( 'rev_id' => $id ), __METHOD__ );
 		}

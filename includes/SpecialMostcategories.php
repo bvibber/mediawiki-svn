@@ -1,7 +1,6 @@
 <?php
 /**
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason
@@ -9,8 +8,7 @@
  */
 
 /**
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class MostcategoriesPage extends QueryPage {
 
@@ -19,8 +17,8 @@ class MostcategoriesPage extends QueryPage {
 	function isSyndicated() { return false; }
 
 	function getSQL() {
-		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'categorylinks', 'page' ) );
+		$dbr = wfGetDB( DB_SLAVE );
+		list( $categorylinks, $page) = $dbr->tableNamesN( 'categorylinks', 'page' );
 		return
 			"
 			SELECT
@@ -37,20 +35,11 @@ class MostcategoriesPage extends QueryPage {
 	}
 
 	function formatResult( $skin, $result ) {
-		global $wgContLang, $wgLang;
-
-		$nt = Title::makeTitle( $result->namespace, $result->title );
-		$text = $wgContLang->convert( $nt->getPrefixedText() );
-
-		$plink = $skin->makeKnownLink( $nt->getPrefixedText(), $text );
-
-		$nl = wfMsgExt( 'ncategories', array( 'parsemag', 'escape' ),
-			$wgLang->formatNum( $result->value ) );
-
-		$nlink = $skin->makeKnownLink( $wgContLang->specialPage( 'Categories' ),
-			$nl, 'article=' . $nt->getPrefixedURL() );
-
-		return wfSpecialList($plink, $nlink);
+		global $wgLang;
+		$title = Title::makeTitleSafe( $result->namespace, $result->title );
+		$count = wfMsgExt( 'ncategories', array( 'parsemag', 'escape' ), $wgLang->formatNum( $result->value ) );
+		$link = $skin->makeKnownLinkObj( $title, $title->getText() );
+		return wfSpecialList( $link, $count );
 	}
 }
 

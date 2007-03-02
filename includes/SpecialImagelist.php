@@ -1,26 +1,26 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
  *
  */
 function wfSpecialImagelist() {
-	global $wgUser, $wgOut, $wgLang, $wgContLang, $wgRequest, $wgMiserMode;
+	global $wgOut;
 
 	$pager = new ImageListPager;
 
 	$limit = $pager->getForm();
 	$body = $pager->getBody();
 	$nav = $pager->getNavigationBar();
-	$wgOut->addHTML( "
+	$wgOut->addHTML(
 		$limit
-		<br/>
-		$body
-		$nav" );
+		. '<br/>'
+		. $body
+		. '<br/>'
+		. $nav );
 }
 
 class ImageListPager extends TablePager {
@@ -39,7 +39,7 @@ class ImageListPager extends TablePager {
 		if ( $search != '' && !$wgMiserMode ) {
 			$nt = Title::newFromUrl( $search );
 			if( $nt ) {
-				$dbr =& wfGetDB( DB_SLAVE );
+				$dbr = wfGetDB( DB_SLAVE );
 				$m = $dbr->strencode( strtolower( $nt->getDBkey() ) );
 				$m = str_replace( "%", "\\%", $m );
 				$m = str_replace( "_", "\\_", $m );
@@ -137,17 +137,14 @@ class ImageListPager extends TablePager {
 	function getForm() {
 		global $wgRequest, $wgMiserMode;
 		$url = $this->getTitle()->escapeLocalURL();
-		$msgSubmit = wfMsgHtml( 'table_pager_limit_submit' );
-		$msgSearch = wfMsgHtml( 'imagelist_search_for' );
 		$search = $wgRequest->getText( 'ilsearch' );
-		$encSearch = htmlspecialchars( $search );
-		$s = "<form method=\"get\" action=\"$url\">\n" . 
+		$s = "<form method=\"get\" action=\"$url\">\n" .
 			wfMsgHtml( 'table_pager_limit', $this->getLimitSelect() );
 		if ( !$wgMiserMode ) {
-			$s .= "<br/>\n" . $msgSearch .
-				" <input type=\"text\" size=\"20\" name=\"ilsearch\" value=\"$encSearch\"/><br/>\n";
+			$s .= "<br/>\n" .
+			Xml::inputLabel( wfMsg( 'imagelist_search_for' ), 'ilsearch', 'mw-ilsearch', 20, $search );
 		}
-		$s .= " <input type=\"submit\" value=\"$msgSubmit\"/>\n" .
+		$s .= " " . Xml::submitButton( wfMsg( 'table_pager_limit_submit' ) ) ." \n" .
 			$this->getHiddenFields( array( 'limit', 'ilsearch' ) ) .
 			"</form>\n";
 		return $s;

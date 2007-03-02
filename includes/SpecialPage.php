@@ -17,8 +17,7 @@
  * SpecialPage::$mList. To remove a core static special page at runtime, use
  * a SpecialPage_initList hook.
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -28,7 +27,6 @@
 /**
  * Parent special page class, also static functions for handling the special
  * page list
- * @package MediaWiki
  */
 class SpecialPage
 {
@@ -109,6 +107,7 @@ class SpecialPage
 		'Newpages'                  => array( 'IncludableSpecialPage', 'Newpages' ),
 		'Ancientpages'              => array( 'SpecialPage', 'Ancientpages' ),
 		'Deadendpages'              => array( 'SpecialPage', 'Deadendpages' ),
+		'Protectedpages'            => array( 'SpecialPage', 'Protectedpages' ),
 		'Allpages'                  => array( 'IncludableSpecialPage', 'Allpages' ),
 		'Prefixindex'               => array( 'IncludableSpecialPage', 'Prefixindex' ) ,
 		'Ipblocklist'               => array( 'SpecialPage', 'Ipblocklist' ),
@@ -119,7 +118,8 @@ class SpecialPage
 		'Recentchangeslinked'       => array( 'UnlistedSpecialPage', 'Recentchangeslinked' ),
 		'Movepage'                  => array( 'UnlistedSpecialPage', 'Movepage' ),
 		'Blockme'                   => array( 'UnlistedSpecialPage', 'Blockme' ),
-		'Booksources'               => array( 'SpecialPage', 'Booksources' ),
+		'Resetpass'                 => array( 'UnlistedSpecialPage', 'Resetpass' ),
+		'Booksources'               => 'SpecialBookSources',
 		'Categories'                => array( 'SpecialPage', 'Categories' ),
 		'Export'                    => array( 'SpecialPage', 'Export' ),
 		'Version'                   => array( 'SpecialPage', 'Version' ),
@@ -348,6 +348,7 @@ class SpecialPage
 				}
 			}
 		}
+		
 		return $pages;
 	}
 
@@ -409,7 +410,7 @@ class SpecialPage
 			$query = $_GET;
 			unset( $query['title'] );
 			$query = wfArrayToCGI( $query );
-			$title = $page->getTitle();
+			$title = $page->getTitle( $par );
 			$url = $title->getFullUrl( $query );
 			$wgOut->redirect( $url );
 			wfProfileOut( __METHOD__ );
@@ -534,7 +535,7 @@ class SpecialPage
 			$this->mFunction = $function;
 		}
 		if ( $file === 'default' ) {
-			$this->mFile = "Special{$name}.php";
+			$this->mFile = dirname(__FILE__) . "/Special{$name}.php";
 		} else {
 			$this->mFile = $file;
 		}
@@ -666,7 +667,7 @@ class SpecialPage
 	 * If the special page is a redirect, then get the Title object it redirects to. 
 	 * False otherwise.
 	 */
-	function getRedirect( $subpage = false ) {
+	function getRedirect( $subpage ) {
 		return false;
 	}
 
@@ -690,7 +691,6 @@ class SpecialPage
 
 /**
  * Shortcut to construct a special page which is unlisted by default
- * @package MediaWiki
  */
 class UnlistedSpecialPage extends SpecialPage
 {
@@ -701,7 +701,6 @@ class UnlistedSpecialPage extends SpecialPage
 
 /**
  * Shortcut to construct an includable special  page
- * @package MediaWiki
  */
 class IncludableSpecialPage extends SpecialPage
 {

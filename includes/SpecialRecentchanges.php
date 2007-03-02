@@ -1,20 +1,19 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
  *
  */
-require_once( 'ChangesList.php' );
+require_once( dirname(__FILE__) . '/ChangesList.php' );
 
 /**
  * Constructor
  */
 function wfSpecialRecentchanges( $par, $specialPage ) {
-	global $wgUser, $wgOut, $wgRequest, $wgUseRCPatrol, $wgDBtype;
+	global $wgUser, $wgOut, $wgRequest, $wgUseRCPatrol;
 	global $wgRCShowWatchingUsers, $wgShowUpdatedMarker;
 	global $wgAllowCategorizedRecentChanges ;
 	$fname = 'wfSpecialRecentchanges';
@@ -43,12 +42,10 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	extract($defaults);
 
 
-	$days = $wgUser->getOption( 'rcdays' );
-	if ( !$days ) { $days = $defaults['days']; }
+	$days = $wgUser->getOption( 'rcdays', $defaults['days']);
 	$days = $wgRequest->getInt( 'days', $days );
 
-	$limit = $wgUser->getOption( 'rclimit' );
-	if ( !$limit ) { $limit = $defaults['limit']; }
+	$limit = $wgUser->getOption( 'rclimit', $defaults['limit'] );
 
 	#	list( $limit, $offset ) = wfCheckLimits( 100, 'rclimit' );
 	$limit = $wgRequest->getInt( 'limit', $limit );
@@ -90,7 +87,8 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 				if ( is_numeric( $bit ) ) {
 					$limit = $bit;
 				}
-
+				
+				$m = array();
 				if ( preg_match( '/^limit=(\d+)$/', $bit, $m ) ) {
 					$limit = $m[1];
 				}
@@ -106,8 +104,8 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 
 
 	# Database connection and caching
-	$dbr =& wfGetDB( DB_SLAVE );
-	extract( $dbr->tableNames( 'recentchanges', 'watchlist' ) );
+	$dbr = wfGetDB( DB_SLAVE );
+	list( $recentchanges, $watchlist ) = $dbr->tableNamesN( 'recentchanges', 'watchlist' );
 
 
 	$cutoff_unixtime = time() - ( $days * 86400 );
@@ -198,7 +196,7 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 
 		// Output header
 		if ( !$specialPage->including() ) {
-			$wgOut->addWikiText( wfMsgForContent( "recentchangestext" ) );
+			$wgOut->addWikiText( wfMsgForContentNoTrans( "recentchangestext" ) );
 
 			// Dump everything here
 			$nondefaults = array();
@@ -222,7 +220,6 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 		}
 
 		// And now for the content
-		$sk = $wgUser->getSkin();
 		$wgOut->setSyndicated( true );
 
 		$list = ChangesList::newFromUser( $wgUser );
@@ -334,7 +331,7 @@ function rcOutputFeed( $rows, $feedFormat, $limit, $hideminor, $lastmod ) {
 		' [' . $wgContLanguageCode . ']';
 	$feed = new $wgFeedClasses[$feedFormat](
 		$feedTitle,
-		htmlspecialchars( wfMsgForContent( 'recentchangestext' ) ),
+		htmlspecialchars( wfMsgForContent( 'recentchanges-feed-description' ) ),
 		$wgTitle->getFullUrl() );
 
 	/**
@@ -397,7 +394,6 @@ function rcDoOutputFeed( $rows, &$feed ) {
 			$sorted[$n] = $obj;
 			$n++;
 		}
-		$first = false;
 	}
 
 	foreach( $sorted as $obj ) {
@@ -408,7 +404,7 @@ function rcDoOutputFeed( $rows, &$feed ) {
 			rcFormatDiff( $obj ),
 			$title->getFullURL(),
 			$obj->rc_timestamp,
-			$obj->rc_user_text,
+			($obj->rc_deleted & Revision::DELETED_USER) ? wfMsgHtml('rev-deleted-user') : $obj->rc_user_text,
 			$talkpage->getFullURL()
 			);
 		$feed->outItem( $item );
@@ -617,18 +613,21 @@ function rcFormatDiff( $row ) {
 	return rcFormatDiffRow( $titleObj,
 		$row->rc_last_oldid, $row->rc_this_oldid,
 		$timestamp,
-		$row->rc_comment );
+		($row->rc_deleted & Revision::DELETED_COMMENT) ? wfMsgHtml('rev-deleted-comment') : $row->rc_comment,
+		($row->rc_deleted & Revision::DELETED_NAME) ? wfMsgHtml('rev-deleted-event') : $row->rc_actiontext );
 }
 
-function rcFormatDiffRow( $title, $oldid, $newid, $timestamp, $comment ) {
+function rcFormatDiffRow( $title, $oldid, $newid, $timestamp, $comment, $actiontext='' ) {
 	global $wgFeedDiffCutoff, $wgContLang, $wgUser;
 	$fname = 'rcFormatDiff';
 	wfProfileIn( $fname );
 
 	$skin = $wgUser->getSkin();
+	# log enties
+	if( $actiontext ) $comment = "$actiontext $comment";
 	$completeText = '<p>' . $skin->formatComment( $comment ) . "</p>\n";
 
-	if( $title->getNamespace() >= 0 ) {
+	if( $title->getNamespace() >= 0 && $title->userCan( 'read' ) ) {
 		if( $oldid ) {
 			wfProfileIn( "$fname-dodiff" );
 
@@ -695,7 +694,7 @@ function rcApplyDiffStyle( $text ) {
 		'diff-addedline'   => 'background: #cfc; font-size: smaller;',
 		'diff-deletedline' => 'background: #ffa; font-size: smaller;',
 		'diff-context'     => 'background: #eee; font-size: smaller;',
-		'diffchange'       => 'color: red; font-weight: bold;',
+		'diffchange'       => 'color: red; font-weight: bold; text-decoration: none;',
 	);
 	
 	foreach( $styles as $class => $style ) {

@@ -18,8 +18,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 class DumpDBZip2Output extends DumpPipeOutput {
@@ -98,8 +97,9 @@ class BackupDumper {
 		$sink = null;
 		$sinks = array();
 		foreach( $args as $arg ) {
+			$matches = array();
 			if( preg_match( '/^--(.+?)(?:=(.+?)(?::(.+?))?)?$/', $arg, $matches ) ) {
-				@list( $full, $opt, $val, $param ) = $matches;
+				@list( /* $full */ , $opt, $val, $param ) = $matches;
 				switch( $opt ) {
 				case "plugin":
 					$this->loadPlugin( $val, $param );
@@ -175,7 +175,7 @@ class BackupDumper {
 		$this->initProgress( $history );
 
 		$db =& $this->backupDb();
-		$exporter = new WikiExporter( $db, $history, MW_EXPORT_STREAM, $text );
+		$exporter = new WikiExporter( $db, $history, WikiExporter::STREAM, $text );
 
 		$wrapper = new ExportProgressFilter( $this->sink, $this );
 		$exporter->setOutputSink( $wrapper );
@@ -209,7 +209,7 @@ class BackupDumper {
 		$table = ($history == WikiExporter::CURRENT) ? 'page' : 'revision';
 		$field = ($history == WikiExporter::CURRENT) ? 'page_id' : 'rev_id';
 		
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$this->maxCount = $dbr->selectField( $table, "MAX($field)", '', 'BackupDumper::dump' );
 		$this->startTime = wfTime();
 	}

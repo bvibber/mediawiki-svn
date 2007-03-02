@@ -21,7 +21,6 @@
 /**
  * Contain log classes
  *
- * @package MediaWiki
  */
 
 /**
@@ -29,7 +28,6 @@
  * The logs are now kept in a table which is easier to manage and trim
  * than ever-growing wiki pages.
  *
- * @package MediaWiki
  */
 class LogPage {
 	/* @access private */
@@ -44,7 +42,7 @@ class LogPage {
 	  *               'upload', 'move'
 	  * @param bool $rc Whether to update recent changes as well as the logging table
 	  */
-	function LogPage( $type, $rc = true ) {
+	function __construct( $type, $rc = true ) {
 		$this->type = $type;
 		$this->updateRecentChanges = $rc;
 	}
@@ -52,13 +50,15 @@ class LogPage {
 	function saveContent() {
 		if( wfReadOnly() ) return false;
 
-		global $wgUser;
+		global $wgUser, $wgLogRestrictions;
 		$fname = 'LogPage::saveContent';
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$uid = $wgUser->getID();
 
 		$this->timestamp = $now = wfTimestampNow();
+		
+		$log_id = $dbw->nextSequenceValue( 'log_log_id_seq' );
 		$dbw->insert( 'logging',
 			array(
 				'log_type' => $this->type,
@@ -71,20 +71,15 @@ class LogPage {
 				'log_params' => $this->params
 			), $fname
 		);
+		$newId = $dbw->insertId();
 
 		# And update recentchanges
 		if ( $this->updateRecentChanges ) {
-			$titleObj = SpecialPage::getTitleFor( 'Log', $this->type );
-			$rcComment = $this->actionText;
-			if( '' != $this->comment ) {
-				if ($rcComment == '')
-					$rcComment = $this->comment;
-				else
-					$rcComment .= ': ' . $this->comment;
+			# Don't add private logs to RC!!!
+			if ( !isset($wgLogRestrictions[$this->type]) || $wgLogRestrictions[$this->type]=='*' ) {
+				RecentChange::notifyLog( $now, $this->target, $wgUser, $this->actionText, '',
+				$this->type, $this->action, $this->target, $this->comment, $this->params, $newId );
 			}
-
-			RecentChange::notifyLog( $now, $titleObj, $wgUser, $rcComment, '',
-				$this->type, $this->action, $this->target, $this->comment, $this->params );
 		}
 		return true;
 	}
@@ -107,7 +102,7 @@ class LogPage {
 	/**
 	 * @static
 	 */
-	function logName( $type ) {
+	public static function logName( $type ) {
 		global $wgLogNames;
 
 		if( isset( $wgLogNames[$type] ) ) {
@@ -124,16 +119,20 @@ class LogPage {
 	 */
 	function logHeader( $type ) {
 		global $wgLogHeaders;
-		return wfMsg( $wgLogHeaders[$type] );
+		return wfMsgHtml( $wgLogHeaders[$type] );
 	}
 
 	/**
 	 * @static
 	 */
-	function actionText( $type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks=false, $translate=false ) {
+	function actionText( $type, $action, $title=NULL, $skin=NULL, $params = array(), $filterWikilinks=false, $translate=false, $forRC=false ) {
 		global $wgLang, $wgContLang, $wgLogActions;
 
 		$key = "$type/$action";
+		
+		if( $key == 'patrol/patrol' )
+			return PatrolLog::makeActionText( $title, $params, $skin );
+		
 		if( isset( $wgLogActions[$key] ) ) {
 			if( is_null( $title ) ) {
 				$rv=wfMsg( $wgLogActions[$key] );
@@ -183,8 +182,16 @@ class LogPage {
 					}
 				} else {
 					array_unshift( $params, $titleLink );
-					if ( $translate && $key == 'block/block' ) {
-						$params[1] = $wgLang->translateBlockExpiry($params[1]);
+					// Oversighted blocks show as normal
+					if ( $translate && ($key == 'block/block' || $key == 'oversight/block') ) {
+						$params[1] = $wgLang->translateBlockExpiry( $params[1] );
+						$params[2] = isset( $params[2] )
+										? self::formatBlockFlags( $params[2] )
+										: '';
+					}
+					if ( $forRC ) {
+						$params[1] = $wgLang->translateBlockExpiry( $params[1], true );
+						$params[2] = self::formatBlockFlags( $params[2] );
 					}
 					$rv = wfMsgReal( $wgLogActions[$key], $params, true, !$skin );
 				}
@@ -217,7 +224,7 @@ class LogPage {
 		$this->comment = $comment;
 		$this->params = LogPage::makeParamBlob( $params );
 
-		$this->actionText = LogPage::actionText( $this->type, $action, $target, NULL, $params );
+		$this->actionText = LogPage::actionText( $this->type, $action, $target, NULL, $params, false, false, true );
 
 		return $this->saveContent();
 	}
@@ -241,6 +248,41 @@ class LogPage {
 			return explode( "\n", $blob );
 		}
 	}
+	
+	/**
+	 * Convert a comma-delimited list of block log flags
+	 * into a more readable (and translated) form
+	 *
+	 * @param $flags Flags to format
+	 * @return string
+	 */
+	public static function formatBlockFlags( $flags ) {
+		$flags = explode( ',', trim( $flags ) );
+		if( count( $flags ) > 0 ) {
+			for( $i = 0; $i < count( $flags ); $i++ )
+				$flags[$i] = self::formatBlockFlag( $flags[$i] );
+			return '(' . implode( ', ', $flags ) . ')';
+		} else {
+			return '';
+		}
+	}
+	
+	/**
+	 * Translate a block log flag if possible
+	 *
+	 * @param $flag Flag to translate
+	 * @return string
+	 */
+	public static function formatBlockFlag( $flag ) {
+		static $messages = array();
+		if( !isset( $messages[$flag] ) ) {
+			$k = 'block-log-flags-' . $flag;
+			$msg = wfMsg( $k );
+			$messages[$flag] = htmlspecialchars( wfEmptyMsg( $k, $msg ) ? $flag : $msg );
+		}
+		return $messages[$flag];
+	}
+	
 }
 
 ?>

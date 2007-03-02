@@ -1,8 +1,7 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -23,7 +22,7 @@ class WhatLinksHerePage {
 	function WhatLinksHerePage( &$request, $par = null ) {
 		global $wgUser;
 		$this->request =& $request;
-		$this->skin =& $wgUser->getSkin();
+		$this->skin = $wgUser->getSkin();
 		$this->par = $par;
 	}
 
@@ -57,8 +56,6 @@ class WhatLinksHerePage {
 		$wgOut->setPagetitle( $this->target->getPrefixedText() );
 		$wgOut->setSubtitle( wfMsg( 'linklistsub' ) );
 
-		$isredir = ' (' . wfMsg( 'isredirect' ) . ")\n";
-
 		$wgOut->addHTML( wfMsg( 'whatlinkshere-barrow' ) . ' '  .$this->skin->makeLinkObj($this->target, '', 'redirect=no' )."<br />\n");
 
 		$this->showIndirectLinks( 0, $this->target, $this->limit, $this->from, $this->dir );
@@ -76,9 +73,7 @@ class WhatLinksHerePage {
 		global $wgOut;
 		$fname = 'WhatLinksHerePage::showIndirectLinks';
 
-		$dbr =& wfGetDB( DB_READ );
-
-		extract( $dbr->tableNames( 'pagelinks', 'templatelinks', 'page' ) );
+		$dbr = wfGetDB( DB_READ );
 
 		// Some extra validation
 		$from = intval( $from );

@@ -26,13 +26,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 require_once 'commandLine.inc';
 
-$dbr =& wfGetDB( DB_SLAVE );
+$dbr = wfGetDB( DB_SLAVE );
 $result = $dbr->select( array( 'pagelinks', 'page' ),
 	array(
 		'page_id',

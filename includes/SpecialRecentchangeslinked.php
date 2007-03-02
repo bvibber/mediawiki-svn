@@ -1,8 +1,7 @@
 <?php
 /**
  * This is to display changes made to all articles linked in an article.
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -44,13 +43,11 @@ function wfSpecialRecentchangeslinked( $par = NULL ) {
 	$wgOut->setSubtitle( htmlspecialchars( wfMsg( 'rclsub', $nt->getPrefixedText() ) ) );
 
 	if ( ! $days ) {
-		$days = $wgUser->getOption( 'rcdays' );
-		if ( ! $days ) { $days = 7; }
+		$days = (int)$wgUser->getOption( 'rcdays', 7 );
 	}
-	$days = (int)$days;
-	list( $limit, $offset ) = wfCheckLimits( 100, 'rclimit' );
+	list( $limit, /* offset */ ) = wfCheckLimits( 100, 'rclimit' );
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$cutoff = $dbr->timestamp( time() - ( $days * 86400 ) );
 
 	$hideminor = ($hideminor ? 1 : 0);
@@ -67,14 +64,15 @@ function wfSpecialRecentchangeslinked( $par = NULL ) {
 		$cmq = 'AND rc_minor=0';
 	} else { $cmq = ''; }
 
-	extract( $dbr->tableNames( 'recentchanges', 'categorylinks', 'pagelinks', 'revision', 'page' , "watchlist" ) );
+	list($recentchanges, $categorylinks, $pagelinks, $watchlist) = 
+	    $dbr->tableNamesN( 'recentchanges', 'categorylinks', 'pagelinks', "watchlist" );
 
 	$uid = $wgUser->getID();
 
 	$GROUPBY = "
 	GROUP BY rc_cur_id,rc_namespace,rc_title,
 		rc_user,rc_comment,rc_user_text,rc_timestamp,rc_minor,
-		rc_new, rc_id, rc_this_oldid, rc_last_oldid, rc_bot, rc_patrolled, rc_type
+		rc_new, rc_id, rc_this_oldid, rc_last_oldid, rc_bot, rc_patrolled, rc_type, rc_old_len, rc_new_len
 " . ($uid ? ",wl_user" : "") . "
 		ORDER BY rc_timestamp DESC
 	LIMIT {$limit}";
@@ -97,7 +95,10 @@ function wfSpecialRecentchangeslinked( $par = NULL ) {
 				rc_bot,
 				rc_new,
 				rc_patrolled,
-				rc_type
+				rc_type,
+				rc_old_len,
+				rc_new_len,
+				rc_deleted
 " . ($uid ? ",wl_user" : "") . "
 	    FROM $categorylinks, $recentchanges
 " . ($uid ? "LEFT OUTER JOIN $watchlist ON wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace " : "") . "
@@ -124,7 +125,10 @@ $GROUPBY
 			rc_bot,
 			rc_new,
 			rc_patrolled,
-			rc_type
+			rc_type,
+			rc_old_len,
+			rc_new_len,
+			rc_deleted
 " . ($uid ? ",wl_user" : "") . "
    FROM $pagelinks, $recentchanges
 " . ($uid ? " LEFT OUTER JOIN $watchlist ON wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace " : "") . "

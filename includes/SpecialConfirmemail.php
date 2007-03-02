@@ -4,8 +4,7 @@
  * Special page allows users to request email confirmation message, and handles
  * processing of the confirmation code when the link in the email is followed
  *
- * @package MediaWiki
- * @subpackage Special pages
+ * @addtogroup Special pages
  * @author Rob Church <robchur@gmail.com>
  */
  
@@ -63,6 +62,9 @@ class EmailConfirmation extends SpecialPage {
 			if( $wgUser->isEmailConfirmed() ) {
 				$time = $wgLang->timeAndDate( $wgUser->mEmailAuthenticated, true );
 				$wgOut->addWikiText( wfMsg( 'emailauthenticated', $time ) );
+			}
+			if( $wgUser->isEmailConfirmationPending() ) {
+				$wgOut->addWikiText( wfMsg( 'confirmemail_pending' ) );
 			}
 			$wgOut->addWikiText( wfMsg( 'confirmemail_text' ) );
 			$self = SpecialPage::getTitleFor( 'Confirmemail' );		

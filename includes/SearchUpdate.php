@@ -1,12 +1,10 @@
 <?php
 /**
  * See deferred.txt
- * @package MediaWiki
  */
 
 /**
  *
- * @package MediaWiki
  */
 class SearchUpdate {
 
@@ -38,7 +36,7 @@ class SearchUpdate {
 		wfProfileIn( $fname );
 
 		$search = SearchEngine::create();
-		$lc = $search->legalSearchChars() . '&#;';
+		$lc = SearchEngine::legalSearchChars() . '&#;';
 
 		if( $this->mText === false ) {
 			$search->updateTitle($this->mId,
@@ -106,7 +104,6 @@ class SearchUpdate {
 
 /**
  * Placeholder class
- * @package MediaWiki
  */
 class SearchUpdateMyISAM extends SearchUpdate {
 	# Inherits everything

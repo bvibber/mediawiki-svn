@@ -1,7 +1,6 @@
 <?php
 /**
  * File for articles
- * @package MediaWiki
  */
 
 /**
@@ -11,7 +10,6 @@
  * Note: edit user interface and cache support functions have been
  * moved to separate EditPage and HTMLFileCache classes.
  *
- * @package MediaWiki
  */
 class Article {
 	/**@{{
@@ -43,12 +41,12 @@ class Article {
 	 * @param $title Reference to a Title object.
 	 * @param $oldId Integer revision ID, null to fetch from request, zero for current
 	 */
-	function Article( &$title, $oldId = null ) {
+	function __construct( &$title, $oldId = null ) {
 		$this->mTitle =& $title;
 		$this->mOldId = $oldId;
 		$this->clear();
 	}
-	
+
 	/**
 	 * Tell the page view functions that this view was redirected
 	 * from another page on the wiki.
@@ -57,14 +55,14 @@ class Article {
 	function setRedirectedFrom( $from ) {
 		$this->mRedirectedFrom = $from;
 	}
-	
+
 	/**
 	 * @return mixed false, Title of in-wiki target, or string with URL
 	 */
 	function followRedirect() {
 		$text = $this->getContent();
 		$rt = Title::newFromRedirect( $text );
-		
+
 		# process if title object is valid and not special:userlogout
 		if( $rt ) {
 			if( $rt->getInterwiki() != '' ) {
@@ -73,18 +71,18 @@ class Article {
 					//
 					// This can be hard to reverse and may produce loops,
 					// so they may be disabled in the site configuration.
-					
+
 					$source = $this->mTitle->getFullURL( 'redirect=no' );
 					return $rt->getFullURL( 'rdfrom=' . urlencode( $source ) );
 				}
 			} else {
 				if( $rt->getNamespace() == NS_SPECIAL ) {
-					// Gotta hand redirects to special pages differently:
+					// Gotta handle redirects to special pages differently:
 					// Fill the HTTP response "Location" header and ignore
 					// the rest of the page we're on.
 					//
 					// This can be hard to reverse, so they may be disabled.
-					
+
 					if( $rt->isSpecial( 'Userlogout' ) ) {
 						// rolleyes
 					} else {
@@ -94,7 +92,7 @@ class Article {
 				return $rt;
 			}
 		}
-		
+
 		// No or invalid redirect
 		return false;
 	}
@@ -139,7 +137,7 @@ class Article {
 	 * @return Return the text of this revision
 	*/
 	function getContent() {
-		global $wgRequest, $wgUser, $wgOut;
+		global $wgUser, $wgOut;
 
 		wfProfileIn( __METHOD__ );
 
@@ -236,9 +234,6 @@ class Article {
 
 		# Pre-fill content with error message so that if something
 		# fails we'll have something telling us what we intended.
-
-		$t = $this->mTitle->getPrefixedText();
-
 		$this->mOldId = $oldid;
 		$this->fetchContent( $oldid );
 	}
@@ -250,7 +245,7 @@ class Article {
 	 * @param array    $conditions
 	 * @private
 	 */
-	function pageData( &$dbr, $conditions ) {
+	function pageData( $dbr, $conditions ) {
 		$fields = array(
 				'page_id',
 				'page_namespace',
@@ -276,7 +271,7 @@ class Article {
 	 * @param Database $dbr
 	 * @param Title $title
 	 */
-	function pageDataFromTitle( &$dbr, $title ) {
+	function pageDataFromTitle( $dbr, $title ) {
 		return $this->pageData( $dbr, array(
 			'page_namespace' => $title->getNamespace(),
 			'page_title'     => $title->getDBkey() ) );
@@ -286,7 +281,7 @@ class Article {
 	 * @param Database $dbr
 	 * @param int $id
 	 */
-	function pageDataFromId( &$dbr, $id ) {
+	function pageDataFromId( $dbr, $id ) {
 		return $this->pageData( $dbr, array( 'page_id' => $id ) );
 	}
 
@@ -299,17 +294,18 @@ class Article {
 	 */
 	function loadPageData( $data = 'fromdb' ) {
 		if ( $data === 'fromdb' ) {
-			$dbr =& $this->getDB();
+			$dbr = $this->getDB();
 			$data = $this->pageDataFromId( $dbr, $this->getId() );
 		}
-			
+
 		$lc =& LinkCache::singleton();
 		if ( $data ) {
 			$lc->addGoodLinkObj( $data->page_id, $this->mTitle );
 
 			$this->mTitle->mArticleID = $data->page_id;
+
+			# Old-fashioned restrictions.
 			$this->mTitle->loadRestrictions( $data->page_restrictions );
-			$this->mTitle->mRestrictionsLoaded = true;
 
 			$this->mCounter     = $data->page_counter;
 			$this->mTouched     = wfTimestamp( TS_MW, $data->page_touched );
@@ -336,7 +332,7 @@ class Article {
 			return $this->mContent;
 		}
 
-		$dbr =& $this->getDB();
+		$dbr = $this->getDB();
 
 		# Pre-fill content with error message so that if something
 		# fails we'll have something telling us what we intended.
@@ -370,6 +366,7 @@ class Article {
 			}
 			$revision = Revision::newFromId( $this->mLatest );
 			if( is_null( $revision ) ) {
+				$data = $this->pageDataFromTitle( $dbr, $this->mTitle );
 				wfDebug( __METHOD__." failed to retrieve current page, rev_id {$data->page_latest}\n" );
 				return false;
 			}
@@ -408,9 +405,8 @@ class Article {
 	 *
 	 * @return Database
 	 */
-	function &getDB() {
-		$ret =& wfGetDB( DB_MASTER );
-		return $ret;
+	function getDB() {
+		return wfGetDB( DB_MASTER );
 	}
 
 	/**
@@ -458,7 +454,7 @@ class Article {
 			if ( $id == 0 ) {
 				$this->mCounter = 0;
 			} else {
-				$dbr =& wfGetDB( DB_SLAVE );
+				$dbr = wfGetDB( DB_SLAVE );
 				$this->mCounter = $dbr->selectField( 'page', 'page_counter', array( 'page_id' => $id ),
 					'Article::getCount', $this->getSelectOptions() );
 			}
@@ -474,12 +470,12 @@ class Article {
 	 * @return bool
 	 */
 	function isCountable( $text ) {
-		global $wgUseCommaCount, $wgContentNamespaces;
+		global $wgUseCommaCount;
 
 		$token = $wgUseCommaCount ? ',' : '[[';
 		return
-			array_search( $this->mTitle->getNamespace(), $wgContentNamespaces ) !== false
-			&& ! $this->isRedirect( $text )
+			$this->mTitle->isContentPage()
+			&& !$this->isRedirect( $text )
 			&& in_string( $token, $text );
 	}
 
@@ -575,13 +571,10 @@ class Article {
 	function getContributors($limit = 0, $offset = 0) {
 		# XXX: this is expensive; cache this info somewhere.
 
-		$title = $this->mTitle;
 		$contribs = array();
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$revTable = $dbr->tableName( 'revision' );
 		$userTable = $dbr->tableName( 'user' );
-		$encDBkey = $dbr->addQuotes( $title->getDBkey() );
-		$ns = $title->getNamespace();
 		$user = $this->getUser();
 		$pageId = $this->getId();
 
@@ -619,7 +612,7 @@ class Article {
 
 		$parserCache =& ParserCache::singleton();
 		$ns = $this->mTitle->getNamespace(); # shortcut
-		
+
 		# Get variables from query string
 		$oldid = $this->getOldID();
 
@@ -633,14 +626,21 @@ class Article {
 		$diff = $wgRequest->getVal( 'diff' );
 		$rcid = $wgRequest->getVal( 'rcid' );
 		$rdfrom = $wgRequest->getVal( 'rdfrom' );
+		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
 
 		$wgOut->setArticleFlag( true );
-		if ( isset( $wgNamespaceRobotPolicies[$ns] ) ) {
+
+		# Discourage indexing of printable versions, but encourage following
+		if( $wgOut->isPrintable() ) {
+			$policy = 'noindex,follow';
+		} elseif( isset( $wgNamespaceRobotPolicies[$ns] ) ) {
+			# Honour customised robot policies for this namespace
 			$policy = $wgNamespaceRobotPolicies[$ns];
 		} else {
+			# Default to encourage indexing and following links
 			$policy = 'index,follow';
 		}
-		$wgOut->setRobotpolicy( $policy );
+		$wgOut->setRobotPolicy( $policy );
 
 		# If we got diff and oldid in the query, we want to see a
 		# diff page instead of the article.
@@ -651,8 +651,8 @@ class Article {
 			$de = new DifferenceEngine( $this->mTitle, $oldid, $diff, $rcid );
 			// DifferenceEngine directly fetched the revision:
 			$this->mRevIdFetched = $de->mNewid;
-			$de->showDiffPage();
-			
+			$de->showDiffPage( $diffOnly );
+
 			// Needed to get the page's current revision
 			$this->loadPageData();
 			if( $diff == 0 || $diff == $this->mLatest ) {
@@ -662,7 +662,7 @@ class Article {
 			wfProfileOut( __METHOD__ );
 			return;
 		}
-		
+
 		if ( empty( $oldid ) && $this->checkTouched() ) {
 			$wgOut->setETag($parserCache->getETag($this, $wgUser));
 
@@ -697,6 +697,12 @@ class Article {
 				$redir = $sk->makeKnownLinkObj( $this->mRedirectedFrom, '', 'redirect=no' );
 				$s = wfMsg( 'redirectedfrom', $redir );
 				$wgOut->setSubtitle( $s );
+
+				// Set the fragment if one was specified in the redirect
+				if ( strval( $this->mTitle->getFragment() ) != '' ) {
+					$fragment = Xml::escapeJsString( $this->mTitle->getFragmentForURL() );
+					$wgOut->addInlineScript( "redirectToFragment(\"$fragment\");" );
+				}
 				$wasRedirected = true;
 			}
 		} elseif ( !empty( $rdfrom ) ) {
@@ -711,7 +717,7 @@ class Article {
 				$wasRedirected = true;
 			}
 		}
-		
+
 		$outputDone = false;
 		if ( $pcache ) {
 			if ( $wgOut->tryParserCache( $this, $wgUser ) ) {
@@ -784,19 +790,16 @@ class Article {
 				if( !$wasRedirected && $this->isCurrent() ) {
 					$wgOut->setSubtitle( wfMsgHtml( 'redirectpagesub' ) );
 				}
-				$targetUrl = $rt->escapeLocalURL();
-				# fixme unused $titleText :
-				$titleText = htmlspecialchars( $rt->getPrefixedText() );
-				$link = $sk->makeLinkObj( $rt );
+				$link = $sk->makeLinkObj( $rt, $rt->getFullText() );
 
-				$wgOut->addHTML( '<img src="'.$imageUrl.'" alt="#REDIRECT" />' .
+				$wgOut->addHTML( '<img src="'.$imageUrl.'" alt="#REDIRECT " />' .
 				  '<span class="redirectText">'.$link.'</span>' );
 
 				$parseout = $wgParser->parse($text, $this->mTitle, ParserOptions::newFromUser($wgUser));
 				$wgOut->addParserOutputNoText( $parseout );
 			} else if ( $pcache ) {
 				# Display content and save to parser cache
-				$wgOut->addPrimaryWikiText( $text, $this );
+				$this->outputWikiText( $text );
 			} else {
 				# Display content, don't attempt to save to parser cache
 				# Don't show section-edit links on old revisions... this way lies madness.
@@ -804,11 +807,21 @@ class Article {
 					$oldEditSectionSetting = $wgOut->parserOptions()->setEditSection( false );
 				}
 				# Display content and don't save to parser cache
-				$wgOut->addPrimaryWikiText( $text, $this, false );
+				# With timing hack -- TS 2006-07-26
+				$time = -wfTime();
+				$this->outputWikiText( $text, false );
+				$time += wfTime();
+
+				# Timing hack
+				if ( $time > 3 ) {
+					wfDebugLog( 'slow-parse', sprintf( "%-5.2f %s", $time,
+						$this->mTitle->getPrefixedDBkey()));
+				}
 
 				if( !$this->isCurrent() ) {
 					$wgOut->parserOptions()->setEditSection( $oldEditSectionSetting );
 				}
+
 			}
 		}
 		/* title may have been set from the cache */
@@ -828,8 +841,9 @@ class Article {
 		if ( $wgUseRCPatrol && !is_null( $rcid ) && $rcid != 0 && $wgUser->isAllowed( 'patrol' ) ) {
 			$wgOut->addHTML(
 				"<div class='patrollink'>" .
-					wfMsg ( 'markaspatrolledlink',
-					$sk->makeKnownLinkObj( $this->mTitle, wfMsg('markaspatrolledtext'), "action=markpatrolled&rcid=$rcid" )
+					wfMsgHtml( 'markaspatrolledlink',
+					$sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml('markaspatrolledtext'),
+						"action=markpatrolled&rcid=$rcid" )
 			 		) .
 				'</div>'
 			 );
@@ -846,7 +860,7 @@ class Article {
 	function addTrackbacks() {
 		global $wgOut, $wgUser;
 
-		$dbr =& wfGetDB(DB_SLAVE);
+		$dbr = wfGetDB(DB_SLAVE);
 		$tbs = $dbr->select(
 				/* FROM   */ 'trackbacks',
 				/* SELECT */ array('tb_id', 'tb_title', 'tb_url', 'tb_ex', 'tb_name'),
@@ -892,7 +906,7 @@ class Article {
 			return;
 		}
 
-		$db =& wfGetDB(DB_MASTER);
+		$db = wfGetDB(DB_MASTER);
 		$db->delete('trackbacks', array('tb_id' => $wgRequest->getInt('tbid')));
 		$wgTitle->invalidateCache();
 		$wgOut->addWikiText(wfMsg('trackbackdeleteok'));
@@ -911,7 +925,7 @@ class Article {
 	function purge() {
 		global $wgUser, $wgRequest, $wgOut;
 
-		if ( $wgUser->isLoggedIn() || $wgRequest->wasPosted() ) {
+		if ( $wgUser->isAllowed( 'purge' ) || $wgRequest->wasPosted() ) {
 			if( wfRunHooks( 'ArticlePurge', array( &$this ) ) ) {
 				$this->doPurge();
 			}
@@ -929,7 +943,7 @@ class Article {
 			$wgOut->addHTML( $msg );
 		}
 	}
-	
+
 	/**
 	 * Perform the actions of a page purging
 	 */
@@ -958,11 +972,10 @@ class Article {
 	 * Best if all done inside a transaction.
 	 *
 	 * @param Database $dbw
-	 * @param string   $restrictions
 	 * @return int     The newly created page_id key
 	 * @private
 	 */
-	function insertOn( &$dbw, $restrictions = '' ) {
+	function insertOn( $dbw ) {
 		wfProfileIn( __METHOD__ );
 
 		$page_id = $dbw->nextSequenceValue( 'page_page_id_seq' );
@@ -971,7 +984,7 @@ class Article {
 			'page_namespace'    => $this->mTitle->getNamespace(),
 			'page_title'        => $this->mTitle->getDBkey(),
 			'page_counter'      => 0,
-			'page_restrictions' => $restrictions,
+			'page_restrictions' => '',
 			'page_is_redirect'  => 0, # Will set this shortly...
 			'page_is_new'       => 1,
 			'page_random'       => wfRandom(),
@@ -997,7 +1010,7 @@ class Article {
 	 *                          when different from the currently set value.
 	 *                          Giving 0 indicates the new page flag should
 	 *                          be set on.
-	 * @param bool $lastRevIsRedirect If given, will optimize adding and 
+	 * @param bool $lastRevIsRedirect If given, will optimize adding and
 	 * 							removing rows in redirect table.
 	 * @return bool true on success, false on failure
 	 * @private
@@ -1007,7 +1020,7 @@ class Article {
 
 		$text = $revision->getText();
 		$rt = Title::newFromRedirect( $text );
-		
+
 		$conditions = array( 'page_id' => $this->getId() );
 		if( !is_null( $lastRevision ) ) {
 			# An extra check against threads stepping on each other
@@ -1029,20 +1042,20 @@ class Article {
 
 		if ($result) {
 			// FIXME: Should the result from updateRedirectOn() be returned instead?
-			$this->updateRedirectOn( $dbw, $rt, $lastRevIsRedirect ); 
+			$this->updateRedirectOn( $dbw, $rt, $lastRevIsRedirect );
 		}
-		
+
 		wfProfileOut( __METHOD__ );
 		return $result;
 	}
 
 	/**
-	 * Add row to the redirect table if this is a redirect, remove otherwise. 
+	 * Add row to the redirect table if this is a redirect, remove otherwise.
 	 *
 	 * @param Database $dbw
 	 * @param $redirectTitle a title object pointing to the redirect target,
-	 * 							or NULL if this is not a redirect  
-	 * @param bool $lastRevIsRedirect If given, will optimize adding and 
+	 * 							or NULL if this is not a redirect
+	 * @param bool $lastRevIsRedirect If given, will optimize adding and
 	 * 							removing rows in redirect table.
 	 * @return bool true on success, false on failure
 	 * @private
@@ -1068,7 +1081,7 @@ class Article {
 
 				$dbw->replace( 'redirect', array( 'rd_from' ), $set, __METHOD__ );
 			} else {
-				// This is not a redirect, remove row from redirect table 
+				// This is not a redirect, remove row from redirect table
 				$where = array( 'rd_from' => $this->getId() );
 				$dbw->delete( 'redirect', $where, __METHOD__);
 			}
@@ -1076,7 +1089,7 @@ class Article {
 			wfProfileOut( __METHOD__ );
 			return ( $dbw->affectedRows() != 0 );
 		}
-		
+
 		return true;
 	}
 
@@ -1120,14 +1133,14 @@ class Article {
 	 */
 	function replaceSection($section, $text, $summary = '', $edittime = NULL) {
 		wfProfileIn( __METHOD__ );
-		
+
 		if( $section == '' ) {
 			// Whole-page edit; let the text through unmolested.
 		} else {
 			if( is_null( $edittime ) ) {
 				$rev = Revision::newFromTitle( $this->mTitle );
 			} else {
-				$dbw =& wfGetDB( DB_MASTER );
+				$dbw = wfGetDB( DB_MASTER );
 				$rev = Revision::loadFromTimestamp( $dbw, $this->mTitle, $edittime );
 			}
 			if( is_null( $rev ) ) {
@@ -1137,13 +1150,18 @@ class Article {
 			}
 			$oldtext = $rev->getText();
 
-			if($section=='new') {
-				if($summary) $subject="== {$summary} ==\n\n";
-				$text=$oldtext."\n\n".$subject.$text;
+			if( $section == 'new' ) {
+				# Inserting a new section
+				$subject = $summary ? "== {$summary} ==\n\n" : '';
+				$text = strlen( trim( $oldtext ) ) > 0
+						? "{$oldtext}\n\n{$subject}{$text}"
+						: "{$subject}{$text}";
 			} else {
+				# Replacing an existing section; roll out the big guns
 				global $wgParser;
 				$text = $wgParser->replaceSection( $oldtext, $section, $text );
 			}
+
 		}
 
 		wfProfileOut( __METHOD__ );
@@ -1154,7 +1172,7 @@ class Article {
 	 * @deprecated use Article::doEdit()
 	 */
 	function insertNewArticle( $text, $summary, $isminor, $watchthis, $suppressRC=false, $comment=false ) {
-		$flags = EDIT_NEW | EDIT_DEFER_UPDATES |
+		$flags = EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
 			( $isminor ? EDIT_MINOR : 0 ) |
 			( $suppressRC ? EDIT_SUPPRESS_RC : 0 );
 
@@ -1162,10 +1180,10 @@ class Article {
 		if ( $comment && $summary != "" ) {
 			$text = "== {$summary} ==\n\n".$text;
 		}
-		
+
 		$this->doEdit( $text, $summary, $flags );
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		if ($watchthis) {
 			if (!$this->mTitle->userIsWatching()) {
 				$dbw->begin();
@@ -1186,13 +1204,13 @@ class Article {
 	 * @deprecated use Article::doEdit()
 	 */
 	function updateArticle( $text, $summary, $minor, $watchthis, $forceBot = false, $sectionanchor = '' ) {
-		$flags = EDIT_UPDATE | EDIT_DEFER_UPDATES |
+		$flags = EDIT_UPDATE | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
 			( $minor ? EDIT_MINOR : 0 ) |
 			( $forceBot ? EDIT_FORCE_BOT : 0 );
 
 		$good = $this->doEdit( $text, $summary, $flags );
 		if ( $good ) {
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			if ($watchthis) {
 				if (!$this->mTitle->userIsWatching()) {
 					$dbw->begin();
@@ -1215,7 +1233,7 @@ class Article {
 	/**
 	 * Article::doEdit()
 	 *
-	 * Change an existing article or create a new article. Updates RC and all necessary caches, 
+	 * Change an existing article or create a new article. Updates RC and all necessary caches,
 	 * optionally via the deferred update array.
 	 *
 	 * $wgUser must be set before calling this function.
@@ -1235,9 +1253,11 @@ class Article {
 	 *          Mark the edit a "bot" edit regardless of user rights
 	 *      EDIT_DEFER_UPDATES
 	 *          Defer some of the updates until the end of index.php
-	 * 
-	 * If neither EDIT_NEW nor EDIT_UPDATE is specified, the status of the article will be detected. 
-	 * If EDIT_UPDATE is specified and the article doesn't exist, the function will return false. If 
+	 *      EDIT_AUTOSUMMARY
+	 *          Fill in blank summaries with generated text where possible
+	 *
+	 * If neither EDIT_NEW nor EDIT_UPDATE is specified, the status of the article will be detected.
+	 * If EDIT_UPDATE is specified and the article doesn't exist, the function will return false. If
 	 * EDIT_NEW is specified and the article does exist, a duplicate key error will cause an exception
 	 * to be thrown from the Database. These two conditions are also possible with auto-detection due
 	 * to MediaWiki's performance-optimised locking strategy.
@@ -1261,7 +1281,7 @@ class Article {
 
 		if( !wfRunHooks( 'ArticleSave', array( &$this, &$wgUser, &$text,
 			&$summary, $flags & EDIT_MINOR,
-			null, null, &$flags ) ) ) 
+			null, null, &$flags ) ) )
 		{
 			wfDebug( __METHOD__ . ": ArticleSave hook aborted save!\n" );
 			wfProfileOut( __METHOD__ );
@@ -1272,11 +1292,19 @@ class Article {
 		$isminor = ( $flags & EDIT_MINOR ) && $wgUser->isAllowed('minoredit');
 		$bot = $wgUser->isAllowed( 'bot' ) || ( $flags & EDIT_FORCE_BOT );
 
-		$text = $this->preSaveTransform( $text );
+		$oldtext = $this->getContent();
+		$oldsize = strlen( $oldtext );
 
-		$dbw =& wfGetDB( DB_MASTER );
+		# Provide autosummaries if one is not provided.
+		if ($flags & EDIT_AUTOSUMMARY && $summary == '')
+			$summary = $this->getAutosummary( $oldtext, $text, $flags );
+
+		$text = $this->preSaveTransform( $text );
+		$newsize = strlen( $text );
+
+		$dbw = wfGetDB( DB_MASTER );
 		$now = wfTimestampNow();
-		
+
 		if ( $flags & EDIT_UPDATE ) {
 			# Update article, but only if changed.
 
@@ -1285,9 +1313,6 @@ class Article {
 				$userAbort = ignore_user_abort( true );
 			}
 
-			$oldtext = $this->getContent();
-			$oldsize = strlen( $oldtext );
-			$newsize = strlen( $text );
 			$lastRevision = 0;
 			$revisionId = 0;
 
@@ -1305,7 +1330,7 @@ class Article {
 					wfProfileOut( __METHOD__ );
 					return false;
 				}
-				
+
 				$revision = new Revision( array(
 					'page'       => $this->getId(),
 					'comment'    => $summary,
@@ -1329,12 +1354,14 @@ class Article {
 						$rcid = RecentChange::notifyEdit( $now, $this->mTitle, $isminor, $wgUser, $summary,
 							$lastRevision, $this->getTimestamp(), $bot, '', $oldsize, $newsize,
 							$revisionId );
-							
-						# Mark as patrolled if the user can do so and has it set in their options
-						if( $wgUser->isAllowed( 'patrol' ) && $wgUser->getOption( 'autopatrol' ) ) {
+
+						# Mark as patrolled if the user can do so
+						if( $GLOBALS['wgUseRCPatrol'] && $wgUser->isAllowed( 'autopatrol' ) ) {
 							RecentChange::markPatrolled( $rcid );
+							PatrolLog::record( $rcid, true );
 						}
 					}
+					$wgUser->incEditCount();
 					$dbw->commit();
 				}
 			} else {
@@ -1350,19 +1377,19 @@ class Article {
 			}
 
 			if ( $good ) {
-				# Invalidate cache of this article and all pages using this article 
+				# Invalidate cache of this article and all pages using this article
 				# as a template. Partly deferred.
 				Article::onArticleEdit( $this->mTitle );
-				
+
 				# Update links tables, site stats, etc.
 				$changed = ( strcmp( $oldtext, $text ) != 0 );
 				$this->editUpdates( $text, $summary, $isminor, $now, $revisionId, $changed );
 			}
 		} else {
 			# Create new article
-			
+
 			# Set statistics members
-			# We work out if it's countable after PST to avoid counter drift 
+			# We work out if it's countable after PST to avoid counter drift
 			# when articles are created with {{subst:}}
 			$this->mGoodAdjustment = (int)$this->isCountable( $text );
 			$this->mTotalAdjustment = 1;
@@ -1390,11 +1417,13 @@ class Article {
 			if( !( $flags & EDIT_SUPPRESS_RC ) ) {
 				$rcid = RecentChange::notifyNew( $now, $this->mTitle, $isminor, $wgUser, $summary, $bot,
 				  '', strlen( $text ), $revisionId );
-				# Mark as patrolled if the user can and has the option set
-				if( $wgUser->isAllowed( 'patrol' ) && $wgUser->getOption( 'autopatrol' ) ) {
+				# Mark as patrolled if the user can
+				if( $GLOBALS['wgUseRCPatrol'] && $wgUser->isAllowed( 'autopatrol' ) ) {
 					RecentChange::markPatrolled( $rcid );
+					PatrolLog::record( $rcid, true );
 				}
 			}
+			$wgUser->incEditCount();
 			$dbw->commit();
 
 			# Update links, etc.
@@ -1416,7 +1445,7 @@ class Article {
 			array( &$this, &$wgUser, $text,
 			$summary, $flags & EDIT_MINOR,
 			null, null, &$flags ) );
-		
+
 		wfProfileOut( __METHOD__ );
 		return $good;
 	}
@@ -1444,40 +1473,66 @@ class Article {
 		}
 		$wgOut->redirect( $this->mTitle->getFullURL( $query ) . $sectionAnchor );
 	}
-		
+
 	/**
 	 * Mark this particular edit as patrolled
 	 */
 	function markpatrolled() {
 		global $wgOut, $wgRequest, $wgUseRCPatrol, $wgUser;
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		# Check RC patrol config. option
 		if( !$wgUseRCPatrol ) {
 			$wgOut->errorPage( 'rcpatroldisabled', 'rcpatroldisabledtext' );
 			return;
 		}
-		
+
 		# Check permissions
 		if( !$wgUser->isAllowed( 'patrol' ) ) {
 			$wgOut->permissionRequired( 'patrol' );
 			return;
 		}
-		
+
+		# If we haven't been given an rc_id value, we can't do anything
 		$rcid = $wgRequest->getVal( 'rcid' );
-		if ( !is_null ( $rcid ) ) {
-			if( wfRunHooks( 'MarkPatrolled', array( &$rcid, &$wgUser, false ) ) ) {
-				RecentChange::markPatrolled( $rcid );
-				wfRunHooks( 'MarkPatrolledComplete', array( &$rcid, &$wgUser, false ) );
-				$wgOut->setPagetitle( wfMsg( 'markedaspatrolled' ) );
-				$wgOut->addWikiText( wfMsg( 'markedaspatrolledtext' ) );
+		if( !$rcid ) {
+			$wgOut->errorPage( 'markedaspatrollederror', 'markedaspatrollederrortext' );
+			return;
+		}
+
+		# Handle the 'MarkPatrolled' hook
+		if( !wfRunHooks( 'MarkPatrolled', array( $rcid, &$wgUser, false ) ) ) {
+			return;
+		}
+
+		$return = SpecialPage::getTitleFor( 'Recentchanges' );
+		# If it's left up to us, check that the user is allowed to patrol this edit
+		# If the user has the "autopatrol" right, then we'll assume there are no
+		# other conditions stopping them doing so
+		if( !$wgUser->isAllowed( 'autopatrol' ) ) {
+			$rc = RecentChange::newFromId( $rcid );
+			# Graceful error handling, as we've done before here...
+			# (If the recent change doesn't exist, then it doesn't matter whether
+			# the user is allowed to patrol it or not; nothing is going to happen
+			if( is_object( $rc ) && $wgUser->getName() == $rc->getAttribute( 'rc_user_text' ) ) {
+				# The user made this edit, and can't patrol it
+				# Tell them so, and then back off
+				$wgOut->setPageTitle( wfMsg( 'markedaspatrollederror' ) );
+				$wgOut->addWikiText( wfMsgNoTrans( 'markedaspatrollederror-noautopatrol' ) );
+				$wgOut->returnToMain( false, $return );
+				return;
 			}
-			$rcTitle = SpecialPage::getTitleFor( 'Recentchanges' );
-			$wgOut->returnToMain( false, $rcTitle->getPrefixedText() );
 		}
-		else {
-			$wgOut->showErrorPage( 'markedaspatrollederror', 'markedaspatrollederrortext' );
-		}
+
+		# Mark the edit as patrolled
+		RecentChange::markPatrolled( $rcid );
+		PatrolLog::record( $rcid );
+		wfRunHooks( 'MarkPatrolledComplete', array( &$rcid, &$wgUser, false ) );
+
+		# Inform the user
+		$wgOut->setPageTitle( wfMsg( 'markedaspatrolled' ) );
+		$wgOut->addWikiText( wfMsgNoTrans( 'markedaspatrolledtext' ) );
+		$wgOut->returnToMain( false, $return );
 	}
 
 	/**
@@ -1496,7 +1551,7 @@ class Article {
 			$wgOut->readOnlyPage();
 			return;
 		}
-		
+
 		if( $this->doWatch() ) {
 			$wgOut->setPagetitle( wfMsg( 'addedwatch' ) );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
@@ -1508,7 +1563,7 @@ class Article {
 
 		$wgOut->returnToMain( true, $this->mTitle->getPrefixedText() );
 	}
-	
+
 	/**
 	 * Add this page to $wgUser's watchlist
 	 * @return bool true on successful watch operation
@@ -1518,13 +1573,13 @@ class Article {
 		if( $wgUser->isAnon() ) {
 			return false;
 		}
-		
+
 		if (wfRunHooks('WatchArticle', array(&$wgUser, &$this))) {
 			$wgUser->addWatch( $this->mTitle );
 
 			return wfRunHooks('WatchArticleComplete', array(&$wgUser, &$this));
 		}
-		
+
 		return false;
 	}
 
@@ -1543,7 +1598,7 @@ class Article {
 			$wgOut->readOnlyPage();
 			return;
 		}
-		
+
 		if( $this->doUnwatch() ) {
 			$wgOut->setPagetitle( wfMsg( 'removedwatch' ) );
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
@@ -1555,7 +1610,7 @@ class Article {
 
 		$wgOut->returnToMain( true, $this->mTitle->getPrefixedText() );
 	}
-	
+
 	/**
 	 * Stop watching a page
 	 * @return bool true on successful unwatch
@@ -1571,7 +1626,7 @@ class Article {
 
 			return wfRunHooks('UnwatchArticleComplete', array(&$wgUser, &$this));
 		}
-		
+
 		return false;
 	}
 
@@ -1580,7 +1635,7 @@ class Article {
 	 */
 	function protect() {
 		$form = new ProtectionForm( $this );
-		$form->show();
+		$form->execute();
 	}
 
 	/**
@@ -1597,13 +1652,20 @@ class Article {
 	 * @param string $reason
 	 * @return bool true on success
 	 */
-	function updateRestrictions( $limit = array(), $reason = '' ) {
+	function updateRestrictions( $limit = array(), $reason = '', $cascade = 0, $expiry = null ) {
 		global $wgUser, $wgRestrictionTypes, $wgContLang;
-		
+
 		$id = $this->mTitle->getArticleID();
 		if( !$wgUser->isAllowed( 'protect' ) || wfReadOnly() || $id == 0 ) {
 			return false;
 		}
+
+		if (!$cascade) {
+			$cascade = false;
+		}
+
+		// Take this opportunity to purge out expired restrictions
+		Title::purgeExpiredRestrictions();
 
 		# FIXME: Same limitations as described in ProtectionForm.php (line 37);
 		# we expect a single selection, but the schema allows otherwise.
@@ -1613,48 +1675,82 @@ class Article {
 
 		$current = Article::flattenRestrictions( $current );
 		$updated = Article::flattenRestrictions( $limit );
-		
+
 		$changed = ( $current != $updated );
+		$changed = $changed || ($this->mTitle->areRestrictionsCascading() != $cascade);
+		$changed = $changed || ($this->mTitle->mRestrictionsExpiry != $expiry);
 		$protect = ( $updated != '' );
-		
+
 		# If nothing's changed, do nothing
 		if( $changed ) {
 			if( wfRunHooks( 'ArticleProtect', array( &$this, &$wgUser, $limit, $reason ) ) ) {
 
-				$dbw =& wfGetDB( DB_MASTER );
-				
+				$dbw = wfGetDB( DB_MASTER );
+
+				$encodedExpiry = Block::encodeExpiry($expiry, $dbw );
+
+				$expiry_description = '';
+
+				if ( $encodedExpiry != 'infinity' ) {
+					$expiry_description = ' (' . wfMsgForContent( 'protect-expiring', $wgContLang->timeanddate( $expiry ) ).')';
+				}
+
 				# Prepare a null revision to be added to the history
 				$comment = $wgContLang->ucfirst( wfMsgForContent( $protect ? 'protectedarticle' : 'unprotectedarticle', $this->mTitle->getPrefixedText() ) );
+
 				if( $reason )
 					$comment .= ": $reason";
 				if( $protect )
 					$comment .= " [$updated]";
+				if ( $expiry_description && $protect )
+					$comment .= "$expiry_description";
+				# FIXME: This can act funky with a deleted rev on top
 				$nullRevision = Revision::newNullRevision( $dbw, $id, $comment, true );
 				$nullRevId = $nullRevision->insertOn( $dbw );
-			
+
+				# Update restrictions table
+				foreach( $limit as $action => $restrictions ) {
+					if ($restrictions != '' ) {
+						$dbw->replace( 'page_restrictions', array( 'pr_pagetype'),
+							array( 'pr_page' => $id, 'pr_type' => $action
+								, 'pr_level' => $restrictions, 'pr_cascade' => $cascade ? 1 : 0
+								, 'pr_expiry' => $encodedExpiry ), __METHOD__  );
+					} else {
+						$dbw->delete( 'page_restrictions', array( 'pr_page' => $id,
+							'pr_type' => $action ), __METHOD__ );
+					}
+				}
+
 				# Update page record
 				$dbw->update( 'page',
 					array( /* SET */
 						'page_touched' => $dbw->timestamp(),
-						'page_restrictions' => $updated,
+						'page_restrictions' => '',
 						'page_latest' => $nullRevId
 					), array( /* WHERE */
 						'page_id' => $id
 					), 'Article::protect'
 				);
 				wfRunHooks( 'ArticleProtectComplete', array( &$this, &$wgUser, $limit, $reason ) );
-	
+
 				# Update the protection log
 				$log = new LogPage( 'protect' );
+
+				$cascade_description = '';
+
+				if ($cascade) {
+					$cascade_description = ' ['.wfMsg('protect-summary-cascade').']';
+				}
+
 				if( $protect ) {
-					$log->addEntry( 'protect', $this->mTitle, trim( $reason . " [$updated]" ) );
+					$log->addEntry( 'protect', $this->mTitle, trim( $reason . " [$updated]$cascade_description$expiry_description" ) );
 				} else {
 					$log->addEntry( 'unprotect', $this->mTitle, $reason );
 				}
-				
+
 			} # End hook
 		} # End "changed" check
-		
+
 		return true;
 	}
 
@@ -1687,6 +1783,8 @@ class Article {
 		$confirm = $wgRequest->wasPosted() &&
 			$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) );
 		$reason = $wgRequest->getText( 'wpReason' );
+		# Flag to hide all contents of the archived revisions
+		$suppress = $wgRequest->getVal( 'wpSuppress' ) && $wgUser->isAllowed('deleterevision');
 
 		# This code desperately needs to be totally rewritten
 
@@ -1707,9 +1805,9 @@ class Article {
 		}
 
 		$wgOut->setPagetitle( wfMsg( 'confirmdelete' ) );
-		
+
 		# Better double-check that it hasn't been deleted yet!
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$conds = $this->mTitle->pageCond();
 		$latest = $dbw->selectField( 'page', 'page_latest', $conds, __METHOD__ );
 		if ( $latest === false ) {
@@ -1718,7 +1816,12 @@ class Article {
 		}
 
 		if( $confirm ) {
-			$this->doDelete( $reason );
+			$this->doDelete( $reason, $suppress );
+			if( $wgRequest->getCheck( 'wpWatch' ) ) {
+				$this->doWatch();
+			} elseif( $this->mTitle->userIsWatching() ) {
+				$this->doUnwatch();
+			}
 			return;
 		}
 
@@ -1726,7 +1829,7 @@ class Article {
 		# and insert a warning if it does
 		$maxRevisions = 20;
 		$authors = $this->getLastNAuthors( $maxRevisions, $latest );
-		
+
 		if( count( $authors ) > 1 && !$confirm ) {
 			$skin=$wgUser->getSkin();
 			$wgOut->addHTML( '<strong>' . wfMsg( 'historywarning' ) . ' ' . $skin->historyLink() . '</strong>' );
@@ -1806,7 +1909,7 @@ class Article {
 		// First try the slave
 		// If that doesn't have the latest revision, try the master
 		$continue = 2;
-		$db =& wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		do {
 			$res = $db->select( array( 'page', 'revision' ),
 				array( 'rev_id', 'rev_user_text' ),
@@ -1825,7 +1928,7 @@ class Article {
 			}
 			$row = $db->fetchObject( $res );
 			if ( $continue == 2 && $revLatest && $row->rev_id != $revLatest ) {
-				$db =& wfGetDB( DB_MASTER );
+				$db = wfGetDB( DB_MASTER );
 				$continue--;
 			} else {
 				$continue = 0;
@@ -1839,7 +1942,7 @@ class Article {
 		wfProfileOut( __METHOD__ );
 		return $authors;
 	}
-	
+
 	/**
 	 * Output deletion confirmation dialog
 	 */
@@ -1858,7 +1961,15 @@ class Article {
 		$confirm = htmlspecialchars( wfMsg( 'deletepage' ) );
 		$delcom = htmlspecialchars( wfMsg( 'deletecomment' ) );
 		$token = htmlspecialchars( $wgUser->editToken() );
-
+		$watch = Xml::checkLabel( wfMsg( 'watchthis' ), 'wpWatch', 'wpWatch', $wgUser->getBoolOption( 'watchdeletion' ) || $this->mTitle->userIsWatching(), array( 'tabindex' => '2' ) );
+		if ( $wgUser->isAllowed( 'deleterevision' ) ) {
+			$supress = "<tr><td>&nbsp;</td><td>";
+			$supress .= Xml::checkLabel( wfMsg( 'revdelete-suppress' ), 'wpSuppress', 'wpSuppress', false, array( 'tabindex' => '2' ) );
+			$supress .= "</td></tr>";
+		} else {
+			$supress = '';
+		}
+		
 		$wgOut->addHTML( "
 <form id='deleteconfirm' method='post' action=\"{$formaction}\">
 	<table border='0'>
@@ -1867,13 +1978,18 @@ class Article {
 				<label for='wpReason'>{$delcom}:</label>
 			</td>
 			<td align='left'>
-				<input type='text' size='60' name='wpReason' id='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" />
+				<input type='text' size='60' name='wpReason' id='wpReason' value=\"" . htmlspecialchars( $reason ) . "\" tabindex=\"1\" />
 			</td>
+		</tr>
+		$supress
+		<tr>
+			<td>&nbsp;</td>
+			<td>$watch</td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
 			<td>
-				<input type='submit' name='wpConfirmB' id='wpConfirmB' value=\"{$confirm}\" />
+				<input type='submit' name='wpConfirmB' id='wpConfirmB' value=\"{$confirm}\" tabindex=\"3\" />
 			</td>
 		</tr>
 	</table>
@@ -1887,12 +2003,12 @@ class Article {
 	/**
 	 * Perform a deletion and output success or failure messages
 	 */
-	function doDelete( $reason ) {
+	function doDelete( $reason, $suppress = false ) {
 		global $wgOut, $wgUser;
 		wfDebug( __METHOD__."\n" );
 
 		if (wfRunHooks('ArticleDelete', array(&$this, &$wgUser, &$reason))) {
-			if ( $this->doDeleteArticle( $reason ) ) {
+			if ( $this->doDeleteArticle( $reason, $suppress ) ) {
 				$deleted = wfEscapeWikiText( $this->mTitle->getPrefixedText() );
 
 				$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
@@ -1915,13 +2031,13 @@ class Article {
 	 * Deletes the article with database consistency, writes logs, purges caches
 	 * Returns success
 	 */
-	function doDeleteArticle( $reason ) {
+	function doDeleteArticle( $reason, $suppress = false ) {
 		global $wgUseSquid, $wgDeferredUpdateList;
-		global $wgPostCommitUpdateList, $wgUseTrackbacks;
+		global $wgUseTrackbacks;
 
 		wfDebug( __METHOD__."\n" );
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$ns = $this->mTitle->getNamespace();
 		$t = $this->mTitle->getDBkey();
 		$id = $this->mTitle->getArticleID();
@@ -1933,6 +2049,17 @@ class Article {
 		$u = new SiteStatsUpdate( 0, 1, -(int)$this->isCountable( $this->getContent() ), -1 );
 		array_push( $wgDeferredUpdateList, $u );
 
+		// Bitfields to further supress the content
+		if ( $suppress ) {
+			$bitfield = 0;
+			$bitfield |= Revision::DELETED_TEXT;
+			$bitfield |= Revision::DELETED_COMMENT;
+			$bitfield |= Revision::DELETED_USER;
+			$bitfield |= Revision::DELETED_RESTRICTED;
+		} else {
+			$bitfield = 'rev_deleted';
+		}
+		
 		// For now, shunt the revision data into the archive table.
 		// Text is *not* removed from the text table; bulk storage
 		// is left intact to avoid breaking block-compression or
@@ -1954,11 +2081,17 @@ class Article {
 				'ar_minor_edit' => 'rev_minor_edit',
 				'ar_rev_id'     => 'rev_id',
 				'ar_text_id'    => 'rev_text_id',
+				'ar_text'       => '\'\'', // Be explicit to appease
+				'ar_flags'      => '\'\'', // MySQL's "strict mode"...
+				'ar_deleted'	=> $bitfield
 			), array(
 				'page_id' => $id,
 				'page_id = rev_page'
 			), __METHOD__
 		);
+
+		# Delete restrictions for it
+		$dbw->delete( 'page_restrictions', array ( 'pr_page' => $id ), __METHOD__ );
 
 		# Now that it's safely backed up, delete it
 		$dbw->delete( 'page', array( 'page_id' => $id ), __METHOD__);
@@ -1991,8 +2124,9 @@ class Article {
 		# Clear caches
 		Article::onArticleDelete( $this->mTitle );
 
-		# Log the deletion
-		$log = new LogPage( 'delete' );
+		# Log the deletion, if the page was suppressed, log it at Oversight instead
+		$logtype = ($suppress) ? 'oversight' : 'delete';
+		$log = new LogPage( $logtype );
 		$log->addEntry( 'delete', $this->mTitle, $reason );
 
 		# Clear the cached article id so the interface doesn't act like we exist
@@ -2028,14 +2162,12 @@ class Article {
 			$wgOut->addWikiText( wfMsg( 'sessionfailure' ) );
 			return;
 		}
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		# Enhanced rollback, marks edits rc_bot=1
 		$bot = $wgRequest->getBool( 'bot' );
 
 		# Replace all this user's current edits with the next one down
-		$tt = $this->mTitle->getDBKey();
-		$n = $this->mTitle->getNamespace();
 
 		# Get the last editor
 		$current = Revision::newFromTitle( $this->mTitle );
@@ -2100,8 +2232,13 @@ class Article {
 			);
 		}
 
-		# Get the edit summary
 		$target = Revision::newFromId( $s->rev_id );
+		# Revision *must* be public and we don't well handle deleted edits on top
+		if ( $target->isDeleted(REVISION::DELETED_TEXT) ) {
+			$wgOut->setPageTitle( wfMsg('rollbackfailed') );
+			$wgOut->addHTML( wfMsg( 'missingarticle' ) );
+		}
+		# Get the edit summary
 		$newComment = wfMsgForContent( 'revertpage', $target->getUserText(), $from );
 		$newComment = $wgRequest->getText( 'summary', $newComment );
 
@@ -2141,7 +2278,7 @@ class Article {
 	 * Do standard deferred updates after page edit.
 	 * Update links tables, site stats, search index and message cache.
 	 * Every 1000th edit, prune the recent changes table.
-	 * 
+	 *
 	 * @private
 	 * @param $text New text of the article
 	 * @param $summary Edit summary
@@ -2174,7 +2311,7 @@ class Article {
 				# Periodically flush old entries from the recentchanges table.
 				global $wgRCMaxAge;
 
-				$dbw =& wfGetDB( DB_MASTER );
+				$dbw = wfGetDB( DB_MASTER );
 				$cutoff = $dbw->timestamp( time() - $wgRCMaxAge );
 				$recentchanges = $dbw->tableName( 'recentchanges' );
 				$sql = "DELETE FROM $recentchanges WHERE rc_timestamp < '{$cutoff}'";
@@ -2221,7 +2358,7 @@ class Article {
 
 		wfProfileOut( __METHOD__ );
 	}
-	
+
 	/**
 	 * Perform article updates on a special page creation.
 	 *
@@ -2251,8 +2388,8 @@ class Article {
 		global $wgLang, $wgOut, $wgUser;
 
 		if ( !wfRunHooks( 'DisplayOldSubtitle', array(&$this, &$oldid) ) ) {
-				return; 
-		}       
+				return;
+		}
 
 		$revision = Revision::newFromId( $oldid );
 
@@ -2262,6 +2399,9 @@ class Article {
 		$lnk = $current
 			? wfMsg( 'currentrevisionlink' )
 			: $lnk = $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'currentrevisionlink' ) );
+		$curdiff = $current
+			? wfMsg( 'diff' )
+			: $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'diff' ), 'diff=cur&oldid='.$oldid );
 		$prev = $this->mTitle->getPreviousRevisionID( $oldid ) ;
 		$prevlink = $prev
 			? $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'previousrevision' ), 'direction=prev&oldid='.$oldid )
@@ -2275,11 +2415,32 @@ class Article {
 		$nextdiff = $current
 			? wfMsg( 'diff' )
 			: $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'diff' ), 'diff=next&oldid='.$oldid );
-		
-		$userlinks = $sk->userLink( $revision->getUser(), $revision->getUserText() )
-						. $sk->userToolLinks( $revision->getUser(), $revision->getUserText() );
-		
-		$r = wfMsg( 'old-revision-navigation', $td, $lnk, $prevlink, $nextlink, $userlinks, $prevdiff, $nextdiff );
+
+		$cdel='';
+		if( $wgUser->isAllowed( 'deleterevision' ) ) {		
+			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
+			if( $revision->isCurrent() ) {
+			// We don't handle top deleted edits too well
+				$cdel = wfMsgHtml('rev-delundel');	
+			} else if( !$revision->userCan( Revision::DELETED_RESTRICTED ) ) {
+			// If revision was hidden from sysops
+				$cdel = wfMsgHtml('rev-delundel');	
+			} else {
+				$cdel = $sk->makeKnownLinkObj( $revdel,
+					wfMsgHtml('rev-delundel'),
+					'target=' . urlencode( $this->mTitle->getPrefixedDbkey() ) .
+					'&oldid=' . urlencode( $oldid ) );
+				// Bolden oversighted content
+				if( $revision->isDeleted( Revision::DELETED_RESTRICTED ) )
+					$cdel = "<strong>$cdel</strong>";
+			}
+			$cdel = "(<small>$cdel</small>)";
+		}
+
+		$userlinks = $sk->revUserTools( $revision );
+
+		$r = "\n\t\t\t\t<div id=\"mw-revision-info\">" . "<tt>$cdel</tt>" . wfMsg( 'revision-info', $td, $userlinks ) . "</div>\n" .
+		     "\n\t\t\t\t<div id=\"mw-revision-nav\">" . wfMsg( 'revision-nav', $prevdiff, $prevlink, $lnk, $curdiff, $nextlink, $nextdiff ) . "</div>\n\t\t\t";
 		$wgOut->setSubtitle( $r );
 	}
 
@@ -2330,7 +2491,11 @@ class Article {
 	 */
 	function isFileCacheable() {
 		global $wgUser, $wgUseFileCache, $wgShowIPinHeader, $wgRequest;
-		extract( $wgRequest->getValues( 'action', 'oldid', 'diff', 'redirect', 'printable' ) );
+		$action    = $wgRequest->getVal( 'action'    );
+		$oldid     = $wgRequest->getVal( 'oldid'     );
+		$diff      = $wgRequest->getVal( 'diff'      );
+		$redirect  = $wgRequest->getVal( 'redirect'  );
+		$printable = $wgRequest->getVal( 'printable' );
 
 		return $wgUseFileCache
 			and (!$wgShowIPinHeader)
@@ -2390,7 +2555,7 @@ class Article {
 	function quickEdit( $text, $comment = '', $minor = 0 ) {
 		wfProfileIn( __METHOD__ );
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
 		$revision = new Revision( array(
 			'page'       => $this->getId(),
@@ -2398,8 +2563,7 @@ class Article {
 			'comment'    => $comment,
 			'minor_edit' => $minor ? 1 : 0,
 			) );
-		# fixme : $revisionId never used
-		$revisionId = $revision->insertOn( $dbw );
+		$revision->insertOn( $dbw );
 		$this->updateRevisionOn( $dbw, $revision );
 		$dbw->commit();
 
@@ -2416,12 +2580,12 @@ class Article {
 		$id = intval( $id );
 		global $wgHitcounterUpdateFreq, $wgDBtype;
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$pageTable = $dbw->tableName( 'page' );
 		$hitcounterTable = $dbw->tableName( 'hitcounter' );
 		$acchitsTable = $dbw->tableName( 'acchits' );
 
-		if( $wgHitcounterUpdateFreq <= 1 ){ //
+		if( $wgHitcounterUpdateFreq <= 1 ) {
 			$dbw->query( "UPDATE $pageTable SET page_counter = page_counter + 1 WHERE page_id = $id" );
 			return;
 		}
@@ -2448,14 +2612,19 @@ class Article {
 			if ($wgDBtype == 'mysql')
 				$dbw->query("LOCK TABLES $hitcounterTable WRITE");
 			$tabletype = $wgDBtype == 'mysql' ? "ENGINE=HEAP " : '';
-			$dbw->query("CREATE TEMPORARY TABLE $acchitsTable $tabletype".
+			$dbw->query("CREATE TEMPORARY TABLE $acchitsTable $tabletype AS ".
 				"SELECT hc_id,COUNT(*) AS hc_n FROM $hitcounterTable ".
 				'GROUP BY hc_id');
 			$dbw->query("DELETE FROM $hitcounterTable");
-			if ($wgDBtype == 'mysql')
+			if ($wgDBtype == 'mysql') {
 				$dbw->query('UNLOCK TABLES');
-			$dbw->query("UPDATE $pageTable,$acchitsTable SET page_counter=page_counter + hc_n ".
-				'WHERE page_id = hc_id');
+				$dbw->query("UPDATE $pageTable,$acchitsTable SET page_counter=page_counter + hc_n ".
+					'WHERE page_id = hc_id');
+			}
+			else {
+				$dbw->query("UPDATE $pageTable SET page_counter=page_counter + hc_n ".
+					"FROM $acchitsTable WHERE page_id = hc_id");
+			}
 			$dbw->query("DROP TABLE $acchitsTable");
 
 			ignore_user_abort( $old_user_abort );
@@ -2495,7 +2664,7 @@ class Article {
 
 		$title->touchLinks();
 		$title->purgeSquid();
-		
+
 		# File cache
 		if ( $wgUseFileCache ) {
 			$cm = new HTMLFileCache( $title );
@@ -2512,8 +2681,6 @@ class Article {
 	 */
 	static function onArticleEdit( $title ) {
 		global $wgDeferredUpdateList, $wgUseFileCache;
-
-		$urls = array();
 
 		// Invalidate caches of articles which include this page
 		$update = new HTMLCacheUpdate( $title, 'templatelinks' );
@@ -2559,7 +2726,7 @@ class Article {
 				$wgOut->addHTML(wfMsg( $wgUser->isLoggedIn() ? 'noarticletext' : 'noarticletextanon' ) );
 			}
 		} else {
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$wl_clause = array(
 				'wl_title'     => $page->getDBkey(),
 				'wl_namespace' => $page->getNamespace() );
@@ -2601,7 +2768,7 @@ class Article {
 			return false;
 		}
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$rev_clause = array( 'rev_page' => $id );
 
@@ -2635,7 +2802,7 @@ class Article {
 			return array();
 		}
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( array( 'templatelinks' ),
 			array( 'tl_namespace', 'tl_title' ),
 			array( 'tl_from' => $id ),
@@ -2650,6 +2817,161 @@ class Article {
 		$dbr->freeResult( $res );
 		return $result;
 	}
+
+	/**
+	 * Return an auto-generated summary if the text provided is a redirect.
+	 *
+	 * @param  string $text The wikitext to check
+	 * @return string '' or an appropriate summary
+	 */
+	public static function getRedirectAutosummary( $text ) {
+		$rt = Title::newFromRedirect( $text );
+		if( is_object( $rt ) )
+			return wfMsgForContent( 'autoredircomment', $rt->getFullText() );
+		else
+			return '';
+	}
+
+	/**
+	 * Return an auto-generated summary if the new text is much shorter than
+	 * the old text.
+	 *
+	 * @param  string $oldtext The previous text of the page
+	 * @param  string $text    The submitted text of the page
+	 * @return string An appropriate autosummary, or an empty string.
+	 */
+	public static function getBlankingAutosummary( $oldtext, $text ) {
+		if ($oldtext!='' && $text=='') {
+			return wfMsgForContent('autosumm-blank');
+		} elseif (strlen($oldtext) > 10 * strlen($text) && strlen($text) < 500) {
+			#Removing more than 90% of the article
+			global $wgContLang;
+			$truncatedtext = $wgContLang->truncate($text, max(0, 200 - strlen(wfMsgForContent('autosumm-replace'))), '...');
+			return wfMsgForContent('autosumm-replace', $truncatedtext);
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	* Return an applicable autosummary if one exists for the given edit.
+	* @param string $oldtext The previous text of the page.
+	* @param string $newtext The submitted text of the page.
+	* @param bitmask $flags A bitmask of flags submitted for the edit.
+	* @return string An appropriate autosummary, or an empty string.
+	*/
+	public static function getAutosummary( $oldtext, $newtext, $flags ) {
+
+		# This code is UGLY UGLY UGLY.
+		# Somebody PLEASE come up with a more elegant way to do it.
+
+		#Redirect autosummaries
+		$summary = self::getRedirectAutosummary( $newtext );
+
+		if ($summary)
+			return $summary;
+
+		#Blanking autosummaries
+		if (!($flags & EDIT_NEW))
+			$summary = self::getBlankingAutosummary( $oldtext, $newtext );
+
+		if ($summary)
+			return $summary;
+
+		#New page autosummaries
+		if ($flags & EDIT_NEW && strlen($newtext)) {
+			#If they're making a new article, give its text, truncated, in the summary.
+			global $wgContLang;
+			$truncatedtext = $wgContLang->truncate(
+				str_replace("\n", ' ', $newtext),
+				max( 0, 200 - strlen( wfMsgForContent( 'autosumm-new') ) ),
+				'...' );
+			$summary = wfMsgForContent( 'autosumm-new', $truncatedtext );
+		}
+
+		if ($summary)
+			return $summary;
+
+		return $summary;
+	}
+
+	/**
+	 * Add the primary page-view wikitext to the output buffer
+	 * Saves the text into the parser cache if possible.
+	 * Updates templatelinks if it is out of date.
+	 *
+	 * @param string  $text
+	 * @param bool    $cache
+	 */
+	public function outputWikiText( $text, $cache = true ) {
+		global $wgParser, $wgUser, $wgOut;
+
+		$popts = $wgOut->parserOptions();
+		$popts->setTidy(true);
+		$parserOutput = $wgParser->parse( $text, $this->mTitle,
+			$popts, true, true, $this->getRevIdFetched() );
+		$popts->setTidy(false);
+		if ( $cache && $this && $parserOutput->getCacheTime() != -1 ) {
+			$parserCache =& ParserCache::singleton();
+			$parserCache->save( $parserOutput, $this, $wgUser );
+		}
+
+		if ( !wfReadOnly() && $this->mTitle->areRestrictionsCascading() ) {
+			// templatelinks table may have become out of sync,
+			// especially if using variable-based transclusions.
+			// For paranoia, check if things have changed and if
+			// so apply updates to the database. This will ensure
+			// that cascaded protections apply as soon as the changes
+			// are visible.
+
+			# Get templates from templatelinks
+			$id = $this->mTitle->getArticleID();
+
+			$tlTemplates = array();
+
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select( array( 'templatelinks' ),
+				array( 'tl_namespace', 'tl_title' ),
+				array( 'tl_from' => $id ),
+				'Article:getUsedTemplates' );
+
+			global $wgContLang;
+
+			if ( false !== $res ) {
+				if ( $dbr->numRows( $res ) ) {
+					while ( $row = $dbr->fetchObject( $res ) ) {
+						$tlTemplates[] = $wgContLang->getNsText( $row->tl_namespace ) . ':' . $row->tl_title ;
+					}
+				}
+			}
+
+			# Get templates from parser output.
+			$poTemplates_allns = $parserOutput->getTemplates();
+
+			$poTemplates = array ();
+			foreach ( $poTemplates_allns as $ns_templates ) {
+				$poTemplates = array_merge( $poTemplates, $ns_templates );
+			}
+
+			# Get the diff
+			$templates_diff = array_diff( $poTemplates, $tlTemplates );
+
+			if ( count( $templates_diff ) > 0 ) {
+				# Whee, link updates time.
+				$u = new LinksUpdate( $this->mTitle, $parserOutput );
+
+				$dbw = wfGetDb( DB_MASTER );
+				$dbw->begin();
+
+				$u->doUpdate();
+
+				$dbw->commit();
+			}
+		}
+
+		$wgOut->addParserOutput( $parserOutput );
+	}
+
 }
 
 ?>

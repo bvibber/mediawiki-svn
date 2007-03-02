@@ -2,8 +2,7 @@
 /**
  * A querypage to list the most wanted categories
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason
@@ -11,8 +10,7 @@
  */
 
 /**
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class WantedCategoriesPage extends QueryPage {
 
@@ -21,8 +19,8 @@ class WantedCategoriesPage extends QueryPage {
 	function isSyndicated() { return false; }
 
 	function getSQL() {
-		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'categorylinks', 'page' ) );
+		$dbr = wfGetDB( DB_SLAVE );
+		list( $categorylinks, $page ) = $dbr->tableNamesN( 'categorylinks', 'page' );
 		$name = $dbr->addQuotes( $this->getName() );
 		return
 			"

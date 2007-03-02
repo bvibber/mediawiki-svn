@@ -2,13 +2,11 @@
 /**
  * This file contain a class to easily build HTML forms as well as custom
  * functions used by SpecialUserrights.php
- * @package MediaWiki
  */
 
 /**
  * Class to build various forms
  *
- * @package MediaWiki
  * @author jeluf, hashar
  */
 class HTMLForm {
@@ -99,7 +97,7 @@ class HTMLForm {
 		if ( $this->mRequest->wasPosted() ) {
 			$arr = $this->mRequest->getArray( $varname );
 			if ( is_array( $arr ) ) {
-				foreach ( $_POST[$varname] as $index => $element ) {
+				foreach ( $_POST[$varname] as $element ) {
 					$s .= htmlspecialchars( $element )."\n";
 				}
 			}

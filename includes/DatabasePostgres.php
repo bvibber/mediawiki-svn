@@ -1,24 +1,24 @@
 <?php
 
 /**
- * This is Postgres database abstraction layer.
+ * This is the Postgres database abstraction layer.
  *
  * As it includes more generic version for DB functions,
  * than MySQL ones, some of them should be moved to parent
  * Database class.
  *
- * @package MediaWiki
  */
 
 class DatabasePostgres extends Database {
 	var $mInsertId = NULL;
 	var $mLastResult = NULL;
+	var $numeric_version = NULL;
 
 	function DatabasePostgres($server = false, $user = false, $password = false, $dbName = false,
 		$failFunction = false, $flags = 0 )
 	{
 
-		global $wgOut, $wgDBprefix, $wgCommandLineMode;
+		global $wgOut;
 		# Can't get a reference if it hasn't been set yet
 		if ( !isset( $wgOut ) ) {
 			$wgOut = NULL;
@@ -31,6 +31,18 @@ class DatabasePostgres extends Database {
 		$this->mFlags = $flags;
 		$this->open( $server, $user, $password, $dbName);
 
+	}
+
+	function realTimestamps() {
+		return true;
+	}
+
+	function implicitGroupby() {
+		return false;
+	}
+
+	function searchableIPs() {
+		return true;
 	}
 
 	static function newFromParams( $server = false, $user = false, $password = false, $dbName = false,
@@ -59,7 +71,6 @@ class DatabasePostgres extends Database {
 		$this->mPassword = $password;
 		$this->mDBname = $dbName;
 
-		$success = false;
 		$hstring="";
 		if ($server!=false && $server!="") {
 			$hstring="host=$server ";
@@ -86,21 +97,16 @@ class DatabasePostgres extends Database {
 		## If this is the initial connection, setup the schema stuff and possibly create the user
 		if (defined('MEDIAWIKI_INSTALL')) {
 			global $wgDBname, $wgDBuser, $wgDBpassword, $wgDBsuperuser, $wgDBmwschema,
-				$wgDBts2schema, $wgDBts2locale;
-			print "OK</li>\n";
+				$wgDBts2schema;
 
 			print "<li>Checking the version of Postgres...";
-			$version = pg_fetch_result($this->doQuery("SELECT version()"),0,0);
-			if (!preg_match("/PostgreSQL (\d+\.\d+)(\S+)/", $version, $thisver)) {
-				print "<b>FAILED</b> (could not determine the version)</li>\n";
-				dieout("</ul>");
-			}
+			$version = $this->getServerVersion();
 			$PGMINVER = "8.1";
-			if ($thisver[1] < $PGMINVER) {
-				print "<b>FAILED</b>. Required version is $PGMINVER. You have $thisver[1]$thisver[2]</li>\n";
+			if ($this->numeric_version < $PGMINVER) {
+				print "<b>FAILED</b>. Required version is $PGMINVER. You have $this->numeric_version ($version)</li>\n";
 				dieout("</ul>");
 			}
-			print "version $thisver[1]$thisver[2] is OK.</li>\n";
+			print "version $this->numeric_version is OK.</li>\n";
 
 			$safeuser = $this->quote_ident($wgDBuser);
 			## Are we connecting as a superuser for the first time?
@@ -241,13 +247,24 @@ class DatabasePostgres extends Database {
 			## Does this user have the rights to the tsearch2 tables?
 			$ctype = pg_fetch_result($this->doQuery("SHOW lc_ctype"),0,0);
 			print "<li>Checking tsearch2 permissions...";
+			## Let's check all four, just to be safe
+			error_reporting( 0 );
+			$ts2tables = array('cfg','cfgmap','dict','parser');
+			foreach ( $ts2tables AS $tname ) {
+				$SQL = "SELECT count(*) FROM $wgDBts2schema.pg_ts_$tname";
+				$res = $this->doQuery($SQL);
+				if (!$res) {
+					print "<b>FAILED</b> to access pg_ts_$tname. Make sure that the user ".
+					"\"$wgDBuser\" has SELECT access to all four tsearch2 tables</li>\n";
+					dieout("</ul>");
+				}
+			}
 			$SQL = "SELECT ts_name FROM $wgDBts2schema.pg_ts_cfg WHERE locale = '$ctype'";
 			$SQL .= " ORDER BY CASE WHEN ts_name <> 'default' THEN 1 ELSE 0 END";
-			error_reporting( 0 );
 			$res = $this->doQuery($SQL);
 			error_reporting( E_ALL );
 			if (!$res) {
-				print "<b>FAILED</b>. Make sure that the user \"$wgDBuser\" has SELECT access to the tsearch2 tables</li>\n";
+				print "<b>FAILED</b>. Could not determine the tsearch2 locale information</li>\n";
 				dieout("</ul>");
 			}
 			print "OK</li>";
@@ -274,7 +291,7 @@ class DatabasePostgres extends Database {
 				$res = $this->doQuery($SQL);
 				if (!$res) {
 					print "<b>FAILED</b>. ";
-					print "Please make sure that the locale in pg_ts_cfg for \"default\" is set to \"ctype\"</li>\n";
+					print "Please make sure that the locale in pg_ts_cfg for \"default\" is set to \"$ctype\"</li>\n";
 					dieout("</ul>");
 				}
 				print "OK</li>";
@@ -317,9 +334,13 @@ class DatabasePostgres extends Database {
 			$result = $this->schemaExists($wgDBmwschema);
 			if (!$result) {
 				print "<li>Creating schema <b>$wgDBmwschema</b> ...";
+				error_reporting( 0 );
 				$result = $this->doQuery("CREATE SCHEMA $wgDBmwschema");
+				error_reporting( E_ALL );
 				if (!$result) {
-					print "<b>FAILED</b>.</li>\n";
+					print "<b>FAILED</b>. The user \"$wgDBuser\" must be able to access the schema. ".
+					"You can try making them the owner of the database, or try creating the schema with a ".
+					"different user, and then grant access to the \"$wgDBuser\" user.</li>\n";
 					dieout("</ul>");
 				}
 				print "OK</li>\n";
@@ -460,6 +481,9 @@ class DatabasePostgres extends Database {
 		while ( $row = $this->fetchObject( $res ) ) {
 			if ( $row->indexname == $index ) {
 				return $row;
+				
+				// BUG: !!!! This code needs to be synced up with database.php
+				
 			}
 		}
 		return false;
@@ -651,9 +675,8 @@ class DatabasePostgres extends Database {
 		return " (CASE WHEN $cond THEN $trueVal ELSE $falseVal END) ";
 	}
 
-	# FIXME: actually detecting deadlocks might be nice
 	function wasDeadlock() {
-		return false;
+		return $this->lastErrno() == '40P01';
 	}
 
 	function timestamp( $ts=0 ) {
@@ -669,11 +692,21 @@ class DatabasePostgres extends Database {
 
 
 	function reportQueryError( $error, $errno, $sql, $fname, $tempIgnore = false ) {
-		$message = "A database error has occurred\n" .
-			"Query: $sql\n" .
-			"Function: $fname\n" .
-			"Error: $errno $error\n";
-		throw new DBUnexpectedError($this, $message);
+		# Ignore errors during error handling to avoid infinite recursion
+		$ignore = $this->ignoreErrors( true );
+		++$this->mErrorCount;
+
+		if ($ignore || $tempIgnore) {
+			wfDebug("SQL ERROR (ignored): $error\n");
+			$this->ignoreErrors( $ignore );
+		}
+		else {
+			$message = "A database error has occurred\n" .
+				"Query: $sql\n" .
+				"Function: $fname\n" .
+				"Error: $errno $error\n";
+			throw new DBUnexpectedError($this, $message);
+		}
 	}
 
 	/**
@@ -687,10 +720,12 @@ class DatabasePostgres extends Database {
 	 * @return string Version information from the database
 	 */
 	function getServerVersion() {
-		$res = $this->query( "SELECT version()" );
-		$row = $this->fetchRow( $res );
-		$version = $row[0];
-		$this->freeResult( $res );
+		$version = pg_fetch_result($this->doQuery("SELECT version()"),0,0);
+		$thisver = array();
+		if (!preg_match('/PostgreSQL (\d+\.\d+)(\S+)/', $version, $thisver)) {
+			die("Could not determine the numeric version from $version!");
+		}
+		$this->numeric_version = $thisver[1];
 		return $version;
 	}
 
@@ -771,9 +806,30 @@ class DatabasePostgres extends Database {
 	}
 
 	function setup_database() {
-		global $wgVersion, $wgDBmwschema, $wgDBts2schema, $wgDBport;
+		global $wgVersion, $wgDBmwschema, $wgDBts2schema, $wgDBport, $wgDBuser;
+
+		## Make sure that we can write to the correct schema
+		## If not, Postgres will happily and silently go to the next search_path item
+		$SQL = "CREATE TABLE $wgDBmwschema.mw_test_table(a int)";
+		error_reporting( 0 );
+		$res = $this->doQuery($SQL);
+		error_reporting( E_ALL );
+		if (!$res) {
+			print "<b>FAILED</b>. Make sure that the user \"$wgDBuser\" can write to the schema \"wgDBmwschema\"</li>\n";
+			dieout("</ul>");
+		}
 
 		dbsource( "../maintenance/postgres/tables.sql", $this);
+
+		## Version-specific stuff
+		if ($this->numeric_version == 8.1) {
+			$this->doQuery("CREATE INDEX ts2_page_text ON pagecontent USING gist(textvector)");
+			$this->doQuery("CREATE INDEX ts2_page_title ON page USING gist(titlevector)");
+		}
+		else {
+			$this->doQuery("CREATE INDEX ts2_page_text ON pagecontent USING gin(textvector)");
+			$this->doQuery("CREATE INDEX ts2_page_title ON page USING gin(titlevector)");
+		}
 
 		## Update version information
 		$mwv = $this->addQuotes($wgVersion);
@@ -800,10 +856,10 @@ class DatabasePostgres extends Database {
 		$SQL = "INSERT INTO interwiki(iw_prefix,iw_url,iw_local) VALUES ";
 		while ( ! feof( $f ) ) {
 			$line = fgets($f,1024);
-			if (!preg_match("/^\s*(\(.+?),(\d)\)/", $line, $matches)) {
+			$matches = array();
+			if (!preg_match('/^\s*(\(.+?),(\d)\)/', $line, $matches)) {
 				continue;
 			}
-			$yesno = $matches[2]; ## ? "'true'" : "'false'";
 			$this->query("$SQL $matches[1],$matches[2])");
 		}
 		print " (table interwiki successfully populated)...\n";
@@ -827,13 +883,66 @@ class DatabasePostgres extends Database {
 			return "E'$s[1]'";
 		}
 		return "'" . pg_escape_string($s) . "'";
-		return "E'" . pg_escape_string($s) . "'";
+		// Unreachable: return "E'" . pg_escape_string($s) . "'";
 	}
 
 	function quote_ident( $s ) {
 		return '"' . preg_replace( '/"/', '""', $s) . '"';
 	}
 
-}
+	/* For now, does nothing */
+	function selectDB( $db ) {
+		return true;
+	}
+
+	/**
+	 * Returns an optional USE INDEX clause to go after the table, and a
+	 * string to go at the end of the query
+	 *
+	 * @private
+	 *
+	 * @param array $options an associative array of options to be turned into
+	 *              an SQL query, valid keys are listed in the function.
+	 * @return array
+	 */
+	function makeSelectOptions( $options ) {
+		$tailOpts = '';
+		$startOpts = '';
+
+		$noKeyOptions = array();
+		foreach ( $options as $key => $option ) {
+			if ( is_numeric( $key ) ) {
+				$noKeyOptions[$option] = true;
+			}
+		}
+
+		if ( isset( $options['GROUP BY'] ) ) $tailOpts .= " GROUP BY {$options['GROUP BY']}";
+		if ( isset( $options['ORDER BY'] ) ) $tailOpts .= " ORDER BY {$options['ORDER BY']}";
+		
+		if (isset($options['LIMIT'])) {
+			$tailOpts .= $this->limitResult('', $options['LIMIT'],
+				isset($options['OFFSET']) ? $options['OFFSET'] : false);
+		}
+
+		if ( isset( $noKeyOptions['FOR UPDATE'] ) ) $tailOpts .= ' FOR UPDATE';
+		if ( isset( $noKeyOptions['LOCK IN SHARE MODE'] ) ) $tailOpts .= ' LOCK IN SHARE MODE';
+		if ( isset( $noKeyOptions['DISTINCT'] ) && isset( $noKeyOptions['DISTINCTROW'] ) ) $startOpts .= 'DISTINCT';
+
+		if ( isset( $options['USE INDEX'] ) && ! is_array( $options['USE INDEX'] ) ) {
+			$useIndex = $this->useIndexClause( $options['USE INDEX'] );
+		} else {
+			$useIndex = '';
+		}
+		
+		return array( $startOpts, $useIndex, $tailOpts );
+	}
+
+	function ping() {
+		wfDebug( "Function ping() not written for DatabasePostgres.php yet");
+		return true;
+	}
+
+
+} // end DatabasePostgres class
 
 ?>

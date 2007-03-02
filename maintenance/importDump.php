@@ -18,8 +18,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
 $optionsWithArgs = array( 'report' );
@@ -48,8 +47,8 @@ class BackupReader {
 			$this->progress( "Got bogus revision with null title!" );
 			return;
 		}
-		$display = $title->getPrefixedText();
-		$timestamp = $rev->getTimestamp();
+		#$timestamp = $rev->getTimestamp();
+		#$display = $title->getPrefixedText();
 		#echo "$display $timestamp\n";
 
 		$this->revCount++;
@@ -136,6 +135,8 @@ if( WikiError::isError( $result ) ) {
 	echo $result->getMessage() . "\n";
 } else {
 	echo "Done!\n";
+	echo "You might want to run rebuildrecentchanges.php to regenerate\n";
+	echo "the recentchanges page.";
 }
 
 ?>

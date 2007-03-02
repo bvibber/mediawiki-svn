@@ -4,8 +4,7 @@ define( 'GS_TALK', -1 );
 /**
  * Creates a Google sitemap for the site
  *
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  *
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason
  * @copyright Copyright © 2005, Jens Frank <jeluf@gmx.de>
@@ -154,7 +153,7 @@ class GenerateSitemap {
 		$this->compress = $compress;
 
 		$this->stderr = fopen( 'php://stderr', 'wt' );
-		$this->dbr =& wfGetDB( DB_SLAVE );
+		$this->dbr = wfGetDB( DB_SLAVE );
 		$this->generateNamespaces();
 		$this->timestamp = wfTimestamp( TS_ISO_8601, wfTimestampNow() );
 		$this->findex = fopen( "{$this->fspath}sitemap-index-" . wfWikiID() . ".xml", 'wb' );

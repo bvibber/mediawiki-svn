@@ -25,7 +25,8 @@ CREATE TABLE mwuser ( -- replace reserved word 'user'
   user_email_authenticated  TIMESTAMPTZ,
   user_options              TEXT,
   user_touched              TIMESTAMPTZ,
-  user_registration         TIMESTAMPTZ
+  user_registration         TIMESTAMPTZ,
+  user_editcount            INTEGER
 );
 CREATE INDEX user_email_token_idx ON mwuser (user_email_token);
 
@@ -41,7 +42,7 @@ CREATE UNIQUE INDEX user_groups_unique ON user_groups (ug_user, ug_group);
 
 CREATE TABLE user_newtalk (
   user_id  INTEGER NOT NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE,
-  user_ip  CIDR        NULL
+  user_ip  TEXT        NULL
 );
 CREATE INDEX user_newtalk_id_idx ON user_newtalk (user_id);
 CREATE INDEX user_newtalk_ip_idx ON user_newtalk (user_ip);
@@ -94,6 +95,7 @@ CREATE TABLE revision (
   rev_deleted     CHAR         NOT NULL  DEFAULT '0'
 );
 CREATE UNIQUE INDEX revision_unique ON revision (rev_page, rev_id);
+CREATE INDEX rev_text_id_idx        ON revision (rev_text_id);
 CREATE INDEX rev_timestamp_idx      ON revision (rev_timestamp);
 CREATE INDEX rev_user_idx           ON revision (rev_user);
 CREATE INDEX rev_user_text_idx      ON revision (rev_user_text);
@@ -107,6 +109,19 @@ CREATE TABLE pagecontent ( -- replaces reserved word 'text'
 );
 
 
+CREATE SEQUENCE pr_id_val;
+CREATE TABLE page_restrictions (
+  pr_id      INTEGER      NOT NULL  UNIQUE DEFAULT nextval('pr_id_val'),
+  pr_page    INTEGER          NULL  REFERENCES page (page_id) ON DELETE CASCADE,
+  pr_type    TEXT         NOT NULL,
+  pr_level   TEXT         NOT NULL,
+  pr_cascade SMALLINT     NOT NULL,
+  pr_user    INTEGER          NULL,
+  pr_expiry  TIMESTAMPTZ      NULL
+);
+CREATE UNIQUE INDEX pr_pagetype ON page_restrictions (pr_page,pr_type);
+
+
 CREATE TABLE archive2 (
   ar_namespace   SMALLINT     NOT NULL,
   ar_title       TEXT         NOT NULL,
@@ -118,7 +133,8 @@ CREATE TABLE archive2 (
   ar_minor_edit  CHAR         NOT NULL  DEFAULT '0',
   ar_flags       TEXT,
   ar_rev_id      INTEGER,
-  ar_text_id     INTEGER
+  ar_text_id     INTEGER,
+  ar_deleted     INTEGER
 );
 CREATE INDEX archive_name_title_timestamp ON archive2 (ar_namespace,ar_title,ar_timestamp);
 
@@ -133,9 +149,15 @@ FROM archive2;
 CREATE RULE archive_insert AS ON INSERT TO archive
 DO INSTEAD INSERT INTO archive2 VALUES (
   NEW.ar_namespace, NEW.ar_title, NEW.ar_text, NEW.ar_comment, NEW.ar_user, NEW.ar_user_text, 
-  TO_DATE(NEW.ar_timestamp, 'YYYYMMDDHH24MISS'),
+  TO_TIMESTAMP(NEW.ar_timestamp, 'YYYYMMDDHH24MISS'),
   NEW.ar_minor_edit, NEW.ar_flags, NEW.ar_rev_id, NEW.ar_text_id
 );
+
+CREATE RULE archive_delete AS ON DELETE TO archive
+DO INSTEAD DELETE FROM archive2 a2 WHERE
+  a2.ar_title = OLD.ar_title AND
+  a2.ar_namespace = OLD.ar_namespace AND
+  a2.ar_rev_id = OLD.ar_rev_id;
 
 
 CREATE TABLE redirect (
@@ -211,7 +233,7 @@ CREATE TABLE hitcounter (
 CREATE SEQUENCE ipblocks_ipb_id_val;
 CREATE TABLE ipblocks (
   ipb_id                INTEGER      NOT NULL  PRIMARY KEY DEFAULT nextval('ipblocks_ipb_id_val'),
-  ipb_address           CIDR             NULL,
+  ipb_address           TEXT             NULL,
   ipb_user              INTEGER          NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL,
   ipb_by                INTEGER      NOT NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE,
   ipb_reason            TEXT         NOT NULL,
@@ -223,6 +245,7 @@ CREATE TABLE ipblocks (
   ipb_expiry            TIMESTAMPTZ  NOT NULL,
   ipb_range_start       TEXT,
   ipb_range_end         TEXT
+  ipb_deleted           INTEGER      NOT NULL, DEFAULT '0',
 );
 CREATE INDEX ipb_address ON ipblocks (ipb_address);
 CREATE INDEX ipb_user    ON ipblocks (ipb_user);
@@ -283,6 +306,7 @@ CREATE TABLE filearchive (
   fa_user               INTEGER          NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL,
   fa_user_text          TEXT         NOT NULL,
   fa_timestamp          TIMESTAMPTZ
+  fa_deleted            INTEGER      NOT NULL DEFAULT '0',
 );
 CREATE INDEX fa_name_time ON filearchive (fa_name, fa_timestamp);
 CREATE INDEX fa_dupe      ON filearchive (fa_storage_group, fa_storage_key);
@@ -310,7 +334,13 @@ CREATE TABLE recentchanges (
   rc_moved_to_ns     SMALLINT,
   rc_moved_to_title  TEXT,
   rc_patrolled       CHAR         NOT NULL  DEFAULT '0',
-  rc_ip              CIDR
+  rc_ip              CIDR,
+  rc_old_len         INTEGER,
+  rc_new_len         INTEGER,
+  rc_deleted         INTEGER      NOT NULL  DEFAULT '0',
+  rc_logid           INTEGER      NOT NULL  DEFAULT '0',
+  rc_log_type      TEXT,
+  rc_action          TEXT
 );
 CREATE INDEX rc_timestamp       ON recentchanges (rc_timestamp);
 CREATE INDEX rc_namespace_title ON recentchanges (rc_namespace, rc_title);
@@ -385,6 +415,7 @@ CREATE TABLE transcache (
 );
 
 
+CREATE SEQUENCE log_log_id_seq;
 CREATE TABLE logging (
   log_type        TEXT         NOT NULL,
   log_action      TEXT         NOT NULL,
@@ -393,7 +424,9 @@ CREATE TABLE logging (
   log_namespace   SMALLINT     NOT NULL,
   log_title       TEXT         NOT NULL,
   log_comment     TEXT,
-  log_params      TEXT
+  log_params      TEXT,
+  log_deleted     INTEGER,
+  log_id          INTEGER      NOT NULL PRIMARY KEY DEFAULT nextval('log_log_id_seq'),
 );
 CREATE INDEX logging_type_name ON logging (log_type, log_timestamp);
 CREATE INDEX logging_user_time ON logging (log_timestamp, log_user);
@@ -424,7 +457,6 @@ CREATE INDEX job_cmd_namespace_title ON job (job_cmd, job_namespace, job_title);
 -- Tsearch2 2 stuff. Will fail if we don't have proper access to the tsearch2 tables
 
 ALTER TABLE page ADD titlevector tsvector;
-CREATE INDEX ts2_page_title ON page USING gist(titlevector);
 CREATE FUNCTION ts2_page_title() RETURNS TRIGGER LANGUAGE plpgsql AS
 $mw$
 BEGIN
@@ -442,7 +474,6 @@ CREATE TRIGGER ts2_page_title BEFORE INSERT OR UPDATE ON page
 
 
 ALTER TABLE pagecontent ADD textvector tsvector;
-CREATE INDEX ts2_page_text ON pagecontent USING gist(textvector);
 CREATE FUNCTION ts2_page_text() RETURNS TRIGGER LANGUAGE plpgsql AS
 $mw$
 BEGIN
@@ -457,6 +488,11 @@ $mw$;
 
 CREATE TRIGGER ts2_page_text BEFORE INSERT OR UPDATE ON pagecontent
   FOR EACH ROW EXECUTE PROCEDURE ts2_page_text();
+
+-- These are added by the setup script due to version compatibility issues
+-- If using 8.1, switch from "gin" to "gist"
+-- CREATE INDEX ts2_page_title ON page USING gin(titlevector);
+-- CREATE INDEX ts2_page_text ON pagecontent USING gin(textvector);
 
 CREATE FUNCTION add_interwiki (TEXT,INT,CHAR) RETURNS INT LANGUAGE SQL AS
 $mw$

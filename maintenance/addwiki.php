@@ -19,7 +19,7 @@ function addWiki( $lang, $site, $dbName )
 
 	$name = $wgLanguageNames[$lang];
 
-	$dbw =& wfGetDB( DB_WRITE );
+	$dbw = wfGetDB( DB_WRITE );
 	$common = "/home/wikipedia/common";
 	$maintenance = "$IP/maintenance";
 
@@ -49,6 +49,7 @@ function addWiki( $lang, $site, $dbName )
 		print "Initialising external storage $store...\n";
 		global $wgDBuser, $wgDBpassword, $wgExternalServers;
 		foreach ( $stores as $storeURL ) {
+			$m = array();
 			if ( !preg_match( '!^DB://(.*)$!', $storeURL, $m ) ) {
 				continue;
 			}

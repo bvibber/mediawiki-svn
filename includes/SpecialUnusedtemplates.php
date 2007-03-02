@@ -1,8 +1,7 @@
 <?php
 
 /**
- * @package MediaWiki
- * @subpackage Special pages
+ * @addtogroup Special pages
  *
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church
@@ -10,8 +9,7 @@
  */
 
 /**
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 class UnusedtemplatesPage extends QueryPage {
@@ -22,8 +20,8 @@ class UnusedtemplatesPage extends QueryPage {
 	function sortDescending() { return false; }
 
 	function getSQL() {
-		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'page', 'templatelinks' ) );
+		$dbr = wfGetDB( DB_SLAVE );
+		list( $page, $templatelinks) = $dbr->tableNamesN( 'page', 'templatelinks' );
 		$sql = "SELECT 'Unusedtemplates' AS type, page_title AS title,
 			page_namespace AS namespace, 0 AS value
 			FROM $page

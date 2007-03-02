@@ -3,8 +3,7 @@
 /**
  * Special page to direct the user to a random redirect page (minus the second redirect)
  *
- * @package MediaWiki
- * @subpackage Special pages
+ * @addtogroup Special pages
  * @author Rob Church <robchur@gmail.com>
  * @licence GNU General Public Licence 2.0 or later
  */
@@ -25,7 +24,7 @@ function wfSpecialRandomredirect( $par = NULL ) {
 	# Same logic as RandomPage
 	$randstr = wfRandom();
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$use_index = $dbr->useIndexClause( 'page_random' );
 	$page = $dbr->tableName( 'page' );
 
@@ -45,7 +44,7 @@ function wfSpecialRandomredirect( $par = NULL ) {
 
 	# Catch dud titles and return to the main page
 	if( is_null( $title ) )
-		$title = Title::newFromText( wfMsg( 'mainpage' ) );
+		$title = Title::newMainPage();
 		
 	$wgOut->reportTime();
 	$wgOut->redirect( $title->getFullUrl( 'redirect=no' ) );

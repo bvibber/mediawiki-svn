@@ -3,15 +3,14 @@
 /**
  * Support functions for cleaning up redundant text records
  *
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  * @author Rob Church <robchur@gmail.com>
  */
 
 function PurgeRedundantText( $delete = false ) {
 	
 	# Data should come off the master, wrapped in a transaction
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 	$dbw->begin();
 	
 	$tbl_arc = $dbw->tableName( 'archive' );

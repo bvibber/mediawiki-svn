@@ -1,35 +1,31 @@
 <?php
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( "This file is part of MediaWiki, it is not a valid entry point" );
+}
+
 /**
  * Global functions used everywhere
- * @package MediaWiki
  */
 
 /**
  * Some globals and requires needed
  */
 
-/**
- * Total number of articles
- * @global integer $wgNumberOfArticles
- */
+/** Total number of articles */
 $wgNumberOfArticles = -1; # Unset
-/**
- * Total number of views
- * @global integer $wgTotalViews
- */
+
+/** Total number of views */
 $wgTotalViews = -1;
-/**
- * Total number of edits
- * @global integer $wgTotalEdits
- */
+
+/** Total number of edits */
 $wgTotalEdits = -1;
 
 
-require_once( 'DatabaseFunctions.php' );
-require_once( 'LogPage.php' );
-require_once( 'normal/UtfNormalUtil.php' );
-require_once( 'XmlFunctions.php' );
+global $IP;
+require_once dirname(__FILE__) . '/LogPage.php';
+require_once dirname(__FILE__) . '/normal/UtfNormalUtil.php';
+require_once dirname(__FILE__) . '/XmlFunctions.php';
 
 /**
  * Compatibility functions
@@ -53,6 +49,7 @@ if( !function_exists('iconv') ) {
 # UTF-8 substr function based on a PHP manual comment
 if ( !function_exists( 'mb_substr' ) ) {
 	function mb_substr( $str, $start ) {
+		$ar = array();
 		preg_match_all( '/./us', $str, $ar );
 
 		if( func_num_args() >= 3 ) {
@@ -72,7 +69,7 @@ if ( !function_exists( 'array_diff_key' ) ) {
 	 */
 	function array_diff_key( $left, $right ) {
 		$result = $left;
-		foreach ( $left as $key => $value ) {
+		foreach ( $left as $key => $unused ) {
 			if ( isset( $right[$key] ) ) {
 				unset( $result[$key] );
 			}
@@ -114,7 +111,7 @@ function wfSeedRandom() {
 function wfRandom() {
 	# The maximum random value is "only" 2^31-1, so get two random
 	# values to reduce the chance of dupes
-	$max = mt_getrandmax();
+	$max = mt_getrandmax() + 1;
 	$rand = number_format( (mt_rand() * $max + mt_rand())
 		/ $max / $max, 12, '.', '' );
 	return $rand;
@@ -237,7 +234,7 @@ function wfLogProfilingData() {
 			$forward .= ' anon';
 		$log = sprintf( "%s\t%04.3f\t%s\n",
 		  gmdate( 'YmdHis' ), $elapsed,
-		  urldecode( $_SERVER['REQUEST_URI'] . $forward ) );
+		  urldecode( $wgRequest->getRequestURL() . $forward ) );
 		if ( '' != $wgDebugLogFile && ( $wgRequest->getVal('action') != 'raw' || $wgDebugRawPage ) ) {
 			error_log( $log . $prof, 3, $wgDebugLogFile );
 		}
@@ -299,7 +296,7 @@ function wfMsg( $key ) {
 function wfMsgNoTrans( $key ) {
 	$args = func_get_args();
 	array_shift( $args );
-	return wfMsgReal( $key, $args, true, false );
+	return wfMsgReal( $key, $args, true, false, false );
 }
 
 /**
@@ -384,9 +381,10 @@ function wfMsgNoDBForContent( $key ) {
  */
 function wfMsgReal( $key, $args, $useDB = true, $forContent=false, $transform = true ) {
 	$fname = 'wfMsgReal';
-
+	wfProfileIn( $fname );
 	$message = wfMsgGetKey( $key, $useDB, $forContent, $transform );
 	$message = wfMsgReplaceArgs( $message, $args );
+	wfProfileOut( $fname );
 	return $message;
 }
 
@@ -528,10 +526,10 @@ function wfMsgWikiHtml( $key ) {
  *  <i>parseinline<i>: parses wikitext to html and removes the surrounding p's added by parser or tidy
  *  <i>escape<i>: filters message trough htmlspecialchars
  *  <i>replaceafter<i>: parameters are substituted after parsing or escaping
- *  <i>parsemag<i>: ??
+ *  <i>parsemag<i>: transform the message using magic phrases
  */
 function wfMsgExt( $key, $options ) {
-	global $wgOut, $wgMsgParserOptions, $wgParser;
+	global $wgOut, $wgParser;
 
 	$args = func_get_args();
 	array_shift( $args );
@@ -556,12 +554,10 @@ function wfMsgExt( $key, $options ) {
 			$string = $m[1];
 		}
 	} elseif ( in_array('parsemag', $options) ) {
-		global $wgTitle;
-		$parser = new Parser();
-		$parserOptions = new ParserOptions();
-		$parserOptions->setInterfaceMessage( true );
-		$parser->startExternalParse( $wgTitle, $parserOptions, OT_MSG );
-		$string = $parser->transformMsg( $string, $parserOptions );
+		global $wgMessageCache;
+		if ( isset( $wgMessageCache ) ) {
+			$string = $wgMessageCache->transform( $string );
+		}
 	}
 
 	if ( in_array('escape', $options) ) {
@@ -590,8 +586,8 @@ function wfAbruptExit( $error = false ){
 	}
 	$called = true;
 
-	if( function_exists( 'debug_backtrace' ) ){ // PHP >= 4.3
-		$bt = debug_backtrace();
+	$bt = wfDebugBacktrace();
+	if( $bt ) {
 		for($i = 0; $i < count($bt) ; $i++){
 			$file = isset($bt[$i]['file']) ? $bt[$i]['file'] : "unknown";
 			$line = isset($bt[$i]['line']) ? $bt[$i]['line'] : "unknown";
@@ -673,18 +669,36 @@ function wfHostname() {
 		return $com;
 	}
 
+/**
+ * Safety wrapper for debug_backtrace().
+ *
+ * With Zend Optimizer 3.2.0 loaded, this causes segfaults under somewhat
+ * murky circumstances, which may be triggered in part by stub objects
+ * or other fancy talkin'.
+ *
+ * Will return an empty array if Zend Optimizer is detected, otherwise
+ * the output from debug_backtrace() (trimmed).
+ *
+ * @return array of backtrace information
+ */
+function wfDebugBacktrace() {
+	if( extension_loaded( 'Zend Optimizer' ) ) {
+		wfDebug( "Zend Optimizer detected; skipping debug_backtrace for safety.\n" );
+		return array();
+	} else {
+		return array_slice( debug_backtrace(), 1 );
+	}
+}
+
 function wfBacktrace() {
 	global $wgCommandLineMode;
-	if ( !function_exists( 'debug_backtrace' ) ) {
-		return false;
-	}
 
 	if ( $wgCommandLineMode ) {
 		$msg = '';
 	} else {
 		$msg = "<ul>\n";
 	}
-	$backtrace = debug_backtrace();
+	$backtrace = wfDebugBacktrace();
 	foreach( $backtrace as $call ) {
 		if( isset( $call['file'] ) ) {
 			$f = explode( DIRECTORY_SEPARATOR, $call['file'] );
@@ -729,7 +743,7 @@ function wfBacktrace() {
  */
 function wfShowingResults( $offset, $limit ) {
 	global $wgLang;
-	return wfMsg( 'showingresults', $wgLang->formatNum( $limit ), $wgLang->formatNum( $offset+1 ) );
+	return wfMsgExt( 'showingresults', array( 'parseinline' ), $wgLang->formatNum( $limit ), $wgLang->formatNum( $offset+1 ) );
 }
 
 /**
@@ -737,7 +751,7 @@ function wfShowingResults( $offset, $limit ) {
  */
 function wfShowingResultsNum( $offset, $limit, $num ) {
 	global $wgLang;
-	return wfMsg( 'showingresultsnum', $wgLang->formatNum( $limit ), $wgLang->formatNum( $offset+1 ), $wgLang->formatNum( $num ) );
+	return wfMsgExt( 'showingresultsnum', array( 'parseinline' ), $wgLang->formatNum( $limit ), $wgLang->formatNum( $offset+1 ), $wgLang->formatNum( $num ) );
 }
 
 /**
@@ -808,6 +822,7 @@ function wfClientAcceptsGzip() {
 	global $wgUseGzip;
 	if( $wgUseGzip ) {
 		# FIXME: we may want to blacklist some broken browsers
+		$m = array();
 		if( preg_match(
 			'/\bgzip(?:;(q)=([0-9]+(?:\.[0-9]+)))?\b/',
 			$_SERVER['HTTP_ACCEPT_ENCODING'],
@@ -973,6 +988,7 @@ function wfEscapeShellArg( ) {
 			}
 			// Double the backslashes before the end of the string, because
 			// we will soon add a quote
+			$m = array();
 			if ( preg_match( '/^(.*?)(\\\\+)$/', $arg, $m ) ) {
 				$arg = $m[1] . str_replace( '\\', '\\\\', $m[2] );
 			}
@@ -1069,14 +1085,79 @@ function wfHttpError( $code, $label, $desc ) {
 	header( "Status: $code $label" );
 	$wgOut->sendCacheControl();
 
-	header( 'Content-type: text/html' );
-	print "<html><head><title>" .
+	header( 'Content-type: text/html; charset=utf-8' );
+	print "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">".
+		"<html><head><title>" .
 		htmlspecialchars( $label ) .
 		"</title></head><body><h1>" .
 		htmlspecialchars( $label ) .
 		"</h1><p>" .
-		htmlspecialchars( $desc ) .
+		nl2br( htmlspecialchars( $desc ) ) .
 		"</p></body></html>\n";
+}
+
+/**
+ * Clear away any user-level output buffers, discarding contents.
+ *
+ * Suitable for 'starting afresh', for instance when streaming
+ * relatively large amounts of data without buffering, or wanting to
+ * output image files without ob_gzhandler's compression.
+ *
+ * The optional $resetGzipEncoding parameter controls suppression of
+ * the Content-Encoding header sent by ob_gzhandler; by default it
+ * is left. See comments for wfClearOutputBuffers() for why it would
+ * be used.
+ *
+ * Note that some PHP configuration options may add output buffer
+ * layers which cannot be removed; these are left in place.
+ *
+ * @parameter bool $resetGzipEncoding
+ */
+function wfResetOutputBuffers( $resetGzipEncoding=true ) {
+	if( $resetGzipEncoding ) {
+		// Suppress Content-Encoding and Content-Length
+		// headers from 1.10+s wfOutputHandler
+		global $wgDisableOutputCompression;
+		$wgDisableOutputCompression = true;
+	}
+	while( $status = ob_get_status() ) {
+		if( $status['type'] == 0 /* PHP_OUTPUT_HANDLER_INTERNAL */ ) {
+			// Probably from zlib.output_compression or other
+			// PHP-internal setting which can't be removed.
+			//
+			// Give up, and hope the result doesn't break
+			// output behavior.
+			break;
+		}
+		if( !ob_end_clean() ) {
+			// Could not remove output buffer handler; abort now
+			// to avoid getting in some kind of infinite loop.
+			break;
+		}
+		if( $resetGzipEncoding ) {
+			if( $status['name'] == 'ob_gzhandler' ) {
+				// Reset the 'Content-Encoding' field set by this handler
+				// so we can start fresh.
+				header( 'Content-Encoding:' );
+			}
+		}
+	}
+}
+
+/**
+ * More legible than passing a 'false' parameter to wfResetOutputBuffers():
+ *
+ * Clear away output buffers, but keep the Content-Encoding header
+ * produced by ob_gzhandler, if any.
+ *
+ * This should be used for HTTP 304 responses, where you need to
+ * preserve the Content-Encoding header of the real result, but
+ * also need to suppress the output of ob_gzhandler to keep to spec
+ * and avoid breaking Firefox in rare cases where the headers and
+ * body are broken over two packets.
+ */
+function wfClearOutputBuffers() {
+	wfResetOutputBuffers( false );
 }
 
 /**
@@ -1096,6 +1177,7 @@ function wfAcceptToPrefs( $accept, $def = '*/*' ) {
 	foreach( $parts as $part ) {
 		# FIXME: doesn't deal with params like 'text/html; level=1'
 		@list( $value, $qpart ) = explode( ';', $part );
+		$match = array();
 		if( !isset( $qpart ) ) {
 			$prefs[$value] = 1;
 		} elseif( preg_match( '/q\s*=\s*(\d*\.\d+)/', $qpart, $match ) ) {
@@ -1290,19 +1372,19 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 	$da = array();
 	if ($ts==0) {
 		$uts=time();
-	} elseif (preg_match("/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)$/D",$ts,$da)) {
+	} elseif (preg_match('/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)$/D',$ts,$da)) {
 		# TS_DB
 		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
 			    (int)$da[2],(int)$da[3],(int)$da[1]);
-	} elseif (preg_match("/^(\d{4}):(\d\d):(\d\d) (\d\d):(\d\d):(\d\d)$/D",$ts,$da)) {
+	} elseif (preg_match('/^(\d{4}):(\d\d):(\d\d) (\d\d):(\d\d):(\d\d)$/D',$ts,$da)) {
 		# TS_EXIF
 		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
 			(int)$da[2],(int)$da[3],(int)$da[1]);
-	} elseif (preg_match("/^(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)$/D",$ts,$da)) {
+	} elseif (preg_match('/^(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)$/D',$ts,$da)) {
 		# TS_MW
 		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
 			    (int)$da[2],(int)$da[3],(int)$da[1]);
-	} elseif (preg_match("/^(\d{1,13})$/D",$ts,$datearray)) {
+	} elseif (preg_match('/^(\d{1,13})$/D',$ts,$da)) {
 		# TS_UNIX
 		$uts = $ts;
 	} elseif (preg_match('/^(\d{1,2})-(...)-(\d\d(\d\d)?) (\d\d)\.(\d\d)\.(\d\d)/', $ts, $da)) {
@@ -1313,7 +1395,11 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 		# TS_ISO_8601
 		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
 			(int)$da[2],(int)$da[3],(int)$da[1]);
-	} elseif (preg_match("/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)[\+\- ](\d\d)$/",$ts,$da)) {
+	} elseif (preg_match('/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)[\+\- ](\d\d)$/',$ts,$da)) {
+		# TS_POSTGRES
+		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
+		(int)$da[2],(int)$da[3],(int)$da[1]);
+	} elseif (preg_match('/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d) GMT$/',$ts,$da)) {
 		# TS_POSTGRES
 		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
 		(int)$da[2],(int)$da[3],(int)$da[1]);
@@ -1390,10 +1476,21 @@ function wfGetCachedNotice( $name ) {
 	wfProfileIn( $fname );
 	
 	$needParse = false;
-	$notice = wfMsgForContent( $name );
-	if( wfEmptyMsg( $name, $notice ) || $notice == '-' ) {
-		wfProfileOut( $fname );
-		return( false );
+	
+	if( $name === 'default' ) {
+		// special case
+		global $wgSiteNotice;
+		$notice = $wgSiteNotice;
+		if( empty( $notice ) ) {
+			wfProfileOut( $fname );
+			return false;
+		}
+	} else {
+		$notice = wfMsgForContentNoTrans( $name );
+		if( wfEmptyMsg( $name, $notice ) || $notice == '-' ) {
+			wfProfileOut( $fname );
+			return( false );
+		}
 	}
 	
 	$cachedNotice = $parserMemc->get( wfMemcKey( $name ) );
@@ -1453,15 +1550,16 @@ function wfGetSiteNotice() {
 	if( wfRunHooks( 'SiteNoticeBefore', array( &$siteNotice ) ) ) {
 		if( is_object( $wgUser ) && $wgUser->isLoggedIn() ) {
 			$siteNotice = wfGetCachedNotice( 'sitenotice' );
-			$siteNotice = !$siteNotice ? $wgSiteNotice : $siteNotice;
 		} else {
 			$anonNotice = wfGetCachedNotice( 'anonnotice' );
 			if( !$anonNotice ) {
 				$siteNotice = wfGetCachedNotice( 'sitenotice' );
-				$siteNotice = !$siteNotice ? $wgSiteNotice : $siteNotice;
 			} else {
 				$siteNotice = $anonNotice;
 			}
+		}
+		if( !$siteNotice ) {
+			$siteNotice = wfGetCachedNotice( 'default' );
 		}
 	}
 
@@ -1539,6 +1637,7 @@ function wfMkdirParents( $fullDir, $mode = 0777 ) {
 	foreach ( $createList as $dir ) {
 		# use chmod to override the umask, as suggested by the PHP manual
 		if ( !mkdir( $dir, $mode ) || !chmod( $dir, $mode ) ) {
+			wfDebugLog( 'mkdir', "Unable to create directory $dir\n" );
 			return false;
 		} 
 	}
@@ -1684,7 +1783,7 @@ function wfShellExec( $cmd, &$retval=null ) {
 	
 	$output = array();
 	$retval = 1; // error by default?
-	$lastline = exec( $cmd, $output, $retval );
+	exec( $cmd, $output, $retval ); // returns the last line of output.
 	return implode( "\n", $output );
 	
 }
@@ -1732,16 +1831,10 @@ function wfUseMW( $req_ver ) {
 }
 
 /**
- * Escape a string to make it suitable for inclusion in a preg_replace()
- * replacement parameter.
- *
- * @param string $string
- * @return string
+ * @deprecated use StringUtils::escapeRegexReplacement
  */
 function wfRegexReplacement( $string ) {
-	$string = str_replace( '\\', '\\\\', $string );
-	$string = str_replace( '$', '\\$', $string );
-	return $string;
+	return StringUtils::escapeRegexReplacement( $string );
 }
 
 /**
@@ -1756,11 +1849,47 @@ function wfRegexReplacement( $string ) {
  * @return string
  */
 function wfBaseName( $path ) {
+	$matches = array();
 	if( preg_match( '#([^/\\\\]*)[/\\\\]*$#', $path, $matches ) ) {
 		return $matches[1];
 	} else {
 		return '';
 	}
+}
+
+/**
+ * Generate a relative path name to the given file.
+ * May explode on non-matching case-insensitive paths,
+ * funky symlinks, etc.
+ *
+ * @param string $path Absolute destination path including target filename
+ * @param string $from Absolute source path, directory only
+ * @return string
+ */
+function wfRelativePath( $path, $from ) {
+	// Normalize mixed input on Windows...
+	$path = str_replace( '/', DIRECTORY_SEPARATOR, $path );
+	$from = str_replace( '/', DIRECTORY_SEPARATOR, $from );
+	
+	$pieces  = explode( DIRECTORY_SEPARATOR, dirname( $path ) );
+	$against = explode( DIRECTORY_SEPARATOR, $from );
+
+	// Trim off common prefix
+	while( count( $pieces ) && count( $against )
+		&& $pieces[0] == $against[0] ) {
+		array_shift( $pieces );
+		array_shift( $against );
+	}
+
+	// relative dots to bump us to the parent
+	while( count( $against ) ) {
+		array_unshift( $pieces, '..' );
+		array_shift( $against );
+	}
+
+	array_push( $pieces, wfBaseName( $path ) );
+
+	return implode( DIRECTORY_SEPARATOR, $pieces );
 }
 
 /**
@@ -1811,41 +1940,11 @@ function wfDoUpdates()
 }
 
 /**
- * More or less "markup-safe" explode()
- * Ignores any instances of the separator inside <...>
- * @param string $separator
- * @param string $text
- * @return array
+ * @deprecated use StringUtils::explodeMarkup
  */
 function wfExplodeMarkup( $separator, $text ) {
-	$placeholder = "\x00";
-	
-	// Just in case...
-	$text = str_replace( $placeholder, '', $text );
-	
-	// Trim stuff
-	$replacer = new ReplacerCallback( $separator, $placeholder );
-	$cleaned = preg_replace_callback( '/(<.*?>)/', array( $replacer, 'go' ), $text );
-	
-	$items = explode( $separator, $cleaned );
-	foreach( $items as $i => $str ) {
-		$items[$i] = str_replace( $placeholder, $separator, $str );
-	}
-	
-	return $items;
+	return StringUtils::explodeMarkup( $separator, $text );
 }
-
-class ReplacerCallback {
-	function ReplacerCallback( $from, $to ) {
-		$this->from = $from;
-		$this->to = $to;
-	}
-	
-	function go( $matches ) {
-		return str_replace( $this->from, $this->to, $matches[1] );
-	}
-}
-
 
 /**
  * Convert an arbitrarily-long digit string from one numeric base
@@ -1974,7 +2073,7 @@ function wfIsLocalURL( $url ) {
  * Initialise php session
  */
 function wfSetupSession() {
-	global $wgSessionsInMemcached, $wgCookiePath, $wgCookieDomain;
+	global $wgSessionsInMemcached, $wgCookiePath, $wgCookieDomain, $wgCookieSecure;
 	if( $wgSessionsInMemcached ) {
 		require_once( 'MemcachedSessions.php' );
 	} elseif( 'files' != ini_get( 'session.save_handler' ) ) {
@@ -1982,7 +2081,7 @@ function wfSetupSession() {
 		# application, it will end up failing. Try to recover.
 		ini_set ( 'session.save_handler', 'files' );
 	}
-	session_set_cookie_params( 0, $wgCookiePath, $wgCookieDomain );
+	session_set_cookie_params( 0, $wgCookiePath, $wgCookieDomain, $wgCookieSecure);
 	session_cache_limiter( 'private, must-revalidate' );
 	@session_start();
 }
@@ -2006,7 +2105,7 @@ function wfGetPrecompiledData( $name ) {
 }
 
 function wfGetCaller( $level = 2 ) {
-	$backtrace = debug_backtrace();
+	$backtrace = wfDebugBacktrace();
 	if ( isset( $backtrace[$level] ) ) {
 		if ( isset( $backtrace[$level]['class'] ) ) {
 			$caller = $backtrace[$level]['class'] . '::' . $backtrace[$level]['function'];
@@ -2027,7 +2126,7 @@ function wfGetAllCallers() {
 				$frame["class"]."::".$frame["function"]:
 				$frame["function"]; 
 			'),
-		array_reverse(debug_backtrace())));
+		array_reverse(wfDebugBacktrace())));
 }
 
 /**
@@ -2070,4 +2169,19 @@ function wfWikiID() {
 	}
 }
 
+/*
+ * Get a Database object
+ * @param integer $db Index of the connection to get. May be DB_MASTER for the 
+ *                master (for write queries), DB_SLAVE for potentially lagged 
+ *                read queries, or an integer >= 0 for a particular server.
+ *
+ * @param mixed $groups Query groups. An array of group names that this query 
+ *              belongs to. May contain a single string if the query is only 
+ *              in one group.
+ */
+function &wfGetDB( $db = DB_LAST, $groups = array() ) {
+	global $wgLoadBalancer;
+	$ret = $wgLoadBalancer->getConnection( $db, true, $groups );
+	return $ret;
+}
 ?>

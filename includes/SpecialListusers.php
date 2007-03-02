@@ -23,8 +23,7 @@
 # http://www.gnu.org/copyleft/gpl.html
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -32,47 +31,94 @@
  * rights (sysop, bureaucrat, developer) will have them displayed
  * next to their names.
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
-class ListUsersPage extends QueryPage {
-	var $requestedGroup = '';
-	var $requestedUser = '';
 
-	function getName() {
-		return 'Listusers';
-	}
-	function isSyndicated() { return false; }
+class UsersPager extends AlphabeticPager {
 
-	/**
-	 * Not expensive, this class won't work properly with the caching system anyway
-	 */
-	function isExpensive() {
-		return false;
+	function __construct($group=null) {
+		global $wgRequest;
+		$this->requestedGroup = $group != "" ? $group : $wgRequest->getVal( 'group' );
+		$this->requestedUser = $wgRequest->getText( 'username', $this->mOffset );
+		
+		parent::__construct();
 	}
 
-	/**
-	 * Fetch user page links and cache their existence
-	 */
-	function preprocessResults( &$db, &$res ) {
+
+	function getIndexField() {
+		return 'user_name';
+	}
+
+	function getQueryInfo() {
+		$conds=array();
+		// don't show hidden names
+		$conds[]='ipb_deleted IS NULL OR ipb_deleted = 0';
+		if ($this->requestedGroup != "") {
+			$conds['ug_group'] = $this->requestedGroup;
+		}
+		if ($this->requestedUser != "") {
+			$conds[] = 'user_name >= ' . wfGetDB()->addQuotes( $this->requestedUser );
+		}
+		
+		list ($user,$user_groups,$ipblocks) = wfGetDB()->tableNamesN('user','user_groups','ipblocks');
+		
+		return array(
+			'tables' => " $user LEFT JOIN $user_groups ON user_id=ug_user LEFT JOIN $ipblocks ON user_id=ipb_user AND ipb_auto=0 ",
+			'fields' => array('user_name',
+				'MAX(user_id) AS user_id',
+				'COUNT(ug_group) AS numgroups', 
+				'MAX(ug_group) AS singlegroup'),
+			'options' => array('GROUP BY' => 'user_name'), 
+			'conds' => $conds
+		);	
+		
+	}
+	
+	function formatRow($row) {
+		$userPage = Title::makeTitle(NS_USER, $row->user_name);
+		$name = $this->getSkin()->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) );
+		$groups = array();
+		if ($row->numgroups > 1 || ( $this->requestedGroup and $row->numgroups == 1) ) {
+			$dbr = wfGetDB(DB_SLAVE);
+			$result = $dbr->select( 'user_groups', 'ug_group',
+				array( 'ug_user' => $row->user_id ),
+				'UsersPager::formatRow' );
+			while ( $group = $dbr->fetchObject($result)) {
+				$groups[$group->ug_group] = User::getGroupMember ( $group->ug_group );
+			}
+			$dbr->freeResult($result);
+		} elseif ($row->numgroups == 1 ) { // MAX hack inside query :)
+			$groups[$row->singlegroup] = User::getGroupMember( $row->singlegroup );
+		}
+		
+		if ( count($groups) > 0 ) {
+			foreach( $groups as $group => $desc ) {
+				$list[] = User::makeGroupLinkHTML( $group, $desc);
+			}
+			$groups = implode( ', ', $list);
+		} else {
+			$groups ='';
+		}
+		return '<li>' . wfSpecialList ($name, $groups) .'</li>';
+	}
+	
+	function getBody() {
+		if (!$this->mQueryDone) {
+			$this->doQuery();
+		}
 		$batch = new LinkBatch;
-		while ( $row = $db->fetchObject( $res ) ) {
-			$batch->addObj( Title::makeTitleSafe( $row->namespace, $row->title ) );
+		$db = $this->mDb;
+	
+		$this->mResult->rewind();
+		
+		while ( $row = $this->mResult->fetchObject() ) {
+			$batch->addObj( Title::makeTitleSafe( NS_USER, $row->user_name ) );
 		}
 		$batch->execute();
-
-		// Back to start for display
-		if( $db->numRows( $res ) > 0 ) {
-			// If there are no rows we get an error seeking.
-			$db->dataSeek( $res, 0 );
-		}
+		$this->mResult->rewind();
+		return parent::getBody();
 	}
-
-	/**
-	 * Show a drop down list to select a group as well as a user name
-	 * search box.
-	 * @todo localize
-	 */
+	
 	function getPageHeader( ) {
 		$self = $this->getTitle();
 
@@ -81,7 +127,7 @@ class ListUsersPage extends QueryPage {
 		
 		# Group drop-down list
 		$out .= wfElement( 'label', array( 'for' => 'group' ), wfMsg( 'group' ) ) . ' ';
-		$out .= wfOpenElement( 'select', array( 'name' => 'group' ) );
+		$out .= wfOpenElement( 'select', array( 'name' => 'group', 'id' => 'group' ) );
 		$out .= wfElement( 'option', array( 'value' => '' ), wfMsg( 'group-all' ) ); # Item for "all groups"
 		$groups = User::getAllGroups();
 		foreach( $groups as $group ) {
@@ -93,15 +139,12 @@ class ListUsersPage extends QueryPage {
 		$out .= wfCloseElement( 'select' ) . ' ';;# . wfElement( 'br' );
 
 		# Username field
-		$out .= wfElement( 'label', array( 'for' => 'username' ), wfMsg( 'listusersfrom' ) ) . ' ';
+		$out .= wfElement( 'label', array( 'for' => 'offset' ), wfMsg( 'listusersfrom' ) ) . ' ';
 		$out .= wfElement( 'input', array( 'type' => 'text', 'id' => 'username', 'name' => 'username',
 							'value' => $this->requestedUser ) ) . ' ';
 
-		# Preserve offset and limit
-		if( $this->offset )
-			$out .= wfElement( 'input', array( 'type' => 'hidden', 'name' => 'offset', 'value' => $this->offset ) );
-		if( $this->limit )
-			$out .= wfElement( 'input', array( 'type' => 'hidden', 'name' => 'limit', 'value' => $this->limit ) );
+		if( $this->mLimit )
+			$out .= wfElement( 'input', array( 'type' => 'hidden', 'name' => 'limit', 'value' => $this->mLimit ) );
 
 		# Submit button and form bottom
 		$out .= wfElement( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'allpagessubmit' ) ) );
@@ -109,99 +152,18 @@ class ListUsersPage extends QueryPage {
 
 		return $out;
 	}
-
-	function getSQL() {
-		global $wgDBtype;
-		$dbr =& wfGetDB( DB_SLAVE );
-		$user = $dbr->tableName( 'user' );
-		$user_groups = $dbr->tableName( 'user_groups' );
-
-		// We need to get an 'atomic' list of users, so that we
-		// don't break the list half-way through a user's group set
-		// and so that lists by group will show all group memberships.
-		//
-		// On MySQL 4.1 we could use GROUP_CONCAT to grab group
-		// assignments together with users pretty easily. On other
-		// versions, it's not so easy to do it consistently.
-		// For now we'll just grab the number of memberships, so
-		// we can then do targetted checks on those who are in
-		// non-default groups as we go down the list.
-
-		$userspace = NS_USER;
-		$sql = "SELECT 'Listusers' as type, $userspace AS namespace, user_name AS title, " .
-			"user_name as value, user_id, COUNT(ug_group) as numgroups " .
-			"FROM $user ".
-			"LEFT JOIN $user_groups ON user_id=ug_user " .
-			$this->userQueryWhere( $dbr ) .
-			" GROUP BY user_name";
-		if ( $wgDBtype != 'mysql' ) {
-			$sql .= ",user_id";
-		}
-		return $sql;
-	}
-
-	function userQueryWhere( &$dbr ) {
-		$conds = $this->userQueryConditions( $dbr );
-		return empty( $conds )
-			? ""
-			: "WHERE " . $dbr->makeList( $conds, LIST_AND );
-	}
-
-	function userQueryConditions( $dbr ) {
-		$conds = array();
-		if( $this->requestedGroup != '' ) {
-			$conds['ug_group'] = $this->requestedGroup;
-		}
-		if( $this->requestedUser != '' ) {
-			$conds[] = 'user_name >= ' . $dbr->addQuotes( $this->requestedUser );
-		}
-		return $conds;
-	}
-
-	function linkParameters() {
-		$conds = array();
-		if( $this->requestedGroup != '' ) {
-			$conds['group'] = $this->requestedGroup;
-		}
-		if( $this->requestedUser != '' ) {
-			$conds['username'] = $this->requestedUser;
-		}
-		return $conds;
-	}
-
-	function sortDescending() {
-		return false;
-	}
-
-	function formatResult( $skin, $result ) {
-		$userPage = Title::makeTitle( $result->namespace, $result->title );
-		$name = $skin->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) );
-		$groups = null;
-
-		if( !isset( $result->numgroups ) || $result->numgroups > 0 ) {
-			$dbr =& wfGetDB( DB_SLAVE );
-			$result = $dbr->select( 'user_groups',
-				array( 'ug_group' ),
-				array( 'ug_user' => $result->user_id ),
-				'ListUsersPage::formatResult' );
-			$groups = array();
-			while( $row = $dbr->fetchObject( $result ) ) {
-				$groups[$row->ug_group] = User::getGroupMember( $row->ug_group );
-			}
-			$dbr->freeResult( $result );
-
-			if( count( $groups ) > 0 ) {
-				foreach( $groups as $group => $desc ) {
-					$list[] = User::makeGroupLinkHTML( $group, $desc );
-				}
-				$groups = implode( ', ', $list );
-			} else {
-				$groups = '';
-			}
-
-		}
-
-		return wfSpecialList( $name, $groups );
+	
+	/**
+	 * Preserve group and username offset parameters when paging
+	 * @return array
+	 */
+	function getDefaultQuery() {
+		$query = parent::getDefaultQuery();
+		if( $this->requestedGroup != '' )
+			$query['group'] = $this->requestedGroup;
+		if( $this->requestedUser != '' )
+			$query['username'] = $this->requestedUser;
+		return $query;
 	}
 }
 
@@ -210,25 +172,25 @@ class ListUsersPage extends QueryPage {
  * $par string (optional) A group to list users from
  */
 function wfSpecialListusers( $par = null ) {
-	global $wgRequest, $wgContLang;
+	global $wgRequest, $wgOut;
 
 	list( $limit, $offset ) = wfCheckLimits();
 
-
-	$slu = new ListUsersPage();
-
-	/**
-	 * Get some parameters
-	 */
 	$groupTarget = isset($par) ? $par : $wgRequest->getVal( 'group' );
-	$slu->requestedGroup = $groupTarget;
 
-	# 'Validate' the username first
-	$username = $wgRequest->getText( 'username', '' );
-	$user = User::newFromName( $username );
-	$slu->requestedUser = is_object( $user ) ? $user->getName() : '';
+	$up = new UsersPager($par);
 
-	return $slu->doQuery( $offset, $limit );
+	# getBody() first to check, if empty
+	$usersbody = $up->getBody();
+	$s = $up->getPageHeader();
+	if( $usersbody ) {
+		$s .=	$up->getNavigationBar();
+		$s .=	'<ul>' . $usersbody . '</ul>';
+		$s .=	$up->getNavigationBar() ;
+	} else {
+		$s .=	'<p>' . wfMsgHTML('listusers-noresult') . '</p>';
+	};
+        $wgOut->addHTML( $s );
 }
 
 ?>

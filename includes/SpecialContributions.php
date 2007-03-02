@@ -1,18 +1,20 @@
 <?php
 /**
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
-/** @package MediaWiki */
 class ContribsFinder {
 	var $username, $offset, $limit, $namespace;
 	var $dbr;
 
+	/**
+	 * Constructor
+	 * @param $username Username as a string
+	*/
 	function ContribsFinder( $username ) {
 		$this->username = $username;
 		$this->namespace = false;
-		$this->dbr =& wfGetDB( DB_SLAVE );
+		$this->dbr = wfGetDB( DB_SLAVE, 'contributions' );
 	}
 
 	function setNamespace( $ns ) {
@@ -27,11 +29,17 @@ class ContribsFinder {
 		$this->offset = $offset;
 	}
 
+	/**
+	 * Get timestamp of either first or last contribution made by the user.
+	 * @todo Maybe it should be private ?
+	 * @param $dir string 'ASC' or 'DESC'.
+	 * @return Revision timestamp (rev_timestamp).
+	*/
 	function getEditLimit( $dir ) {
 		list( $index, $usercond ) = $this->getUserCond();
 		$nscond = $this->getNamespaceCond();
 		$use_index = $this->dbr->useIndexClause( $index );
-		extract( $this->dbr->tableNames( 'revision', 'page' ) );
+		list( $revision, $page) = $this->dbr->tableNamesN( 'revision', 'page' );
 		$sql =	"SELECT rev_timestamp " .
 			" FROM $page,$revision $use_index " .
 			" WHERE rev_page=page_id AND $usercond $nscond" .
@@ -46,6 +54,10 @@ class ContribsFinder {
 		}
 	}
 
+	/**
+	 * Get timestamps of first and last contributions made by the user.
+	 * @return Array containing first rev_timestamp and last rev_timestamp.
+	*/
 	function getEditLimits() {
 		return array(
 			$this->getEditLimit( "ASC" ),
@@ -59,13 +71,18 @@ class ContribsFinder {
 		if ( $this->username == 'newbies' ) {
 			$max = $this->dbr->selectField( 'user', 'max(user_id)', false, 'make_sql' );
 			$condition = '>' . (int)($max - $max / 100);
+		} else if ( preg_match("/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/(24|16)/", $this->username) ) {
+			$abcd = explode( ".", $this->username );
+			if( substr( $this->username, -2 ) == 24 ) $ipmask = $abcd[0] . '.' . $abcd[1] . '.' . $abcd[2] . '.%';
+			else $ipmask=$abcd[0] . '.' . $abcd[1] . '.%';
+			$condition = 'rev_user_text LIKE ' . $this->dbr->addQuotes($ipmask);
 		}
 
 		if ( $condition == '' ) {
 			$condition = ' rev_user_text=' . $this->dbr->addQuotes( $this->username );
 			$index = 'usertext_timestamp';
 		} else {
-			$condition = ' rev_user '.$condition ;
+			#$condition = ' rev_user '.$condition ;
 			$index = 'user_timestamp';
 		}
 		return array( $index, $condition );
@@ -77,12 +94,15 @@ class ContribsFinder {
 		return '';
 	}
 
+	/**
+	 * @return Timestamp of first entry in previous page.
+	*/
 	function getPreviousOffsetForPaging() {
 		list( $index, $usercond ) = $this->getUserCond();
 		$nscond = $this->getNamespaceCond();
 
 		$use_index = $this->dbr->useIndexClause( $index );
-		extract( $this->dbr->tableNames( 'page', 'revision' ) );
+		list( $page, $revision ) = $this->dbr->tableNamesN( 'page', 'revision' );
 
 		$sql =	"SELECT rev_timestamp FROM $page, $revision $use_index " .
 			"WHERE page_id = rev_page AND rev_timestamp > '" . $this->offset . "' AND " .
@@ -90,7 +110,7 @@ class ContribsFinder {
 		$sql .=	" ORDER BY rev_timestamp ASC";
 		$sql = $this->dbr->limitResult( $sql, $this->limit, 0 );
 		$res = $this->dbr->query( $sql );
-		
+
 		$numRows = $this->dbr->numRows( $res );
 		if ( $numRows ) {
 			$this->dbr->dataSeek( $res, $numRows - 1 );
@@ -103,10 +123,13 @@ class ContribsFinder {
 		return $offset;
 	}
 
+	/**
+	 * @return Timestamp of first entry in next page.
+	*/
 	function getFirstOffsetForPaging() {
 		list( $index, $usercond ) = $this->getUserCond();
 		$use_index = $this->dbr->useIndexClause( $index );
-		extract( $this->dbr->tableNames( 'page', 'revision' ) );
+		list( $page, $revision ) = $this->dbr->tableNamesN( 'page', 'revision' );
 		$nscond = $this->getNamespaceCond();
 		$sql =	"SELECT rev_timestamp FROM $page, $revision $use_index " .
 			"WHERE page_id = rev_page AND " .
@@ -114,7 +137,7 @@ class ContribsFinder {
 		$sql .=	" ORDER BY rev_timestamp ASC";
 		$sql = $this->dbr->limitResult( $sql, $this->limit, 0 );
 		$res = $this->dbr->query( $sql );
-		
+
 		$numRows = $this->dbr->numRows( $res );
 		if ( $numRows ) {
 			$this->dbr->dataSeek( $res, $numRows - 1 );
@@ -128,27 +151,32 @@ class ContribsFinder {
 	}
 
 	/* private */ function makeSql() {
-		$userCond = $condition = $index = $offsetQuery = '';
+		$offsetQuery = '';
 
-		extract( $this->dbr->tableNames( 'page', 'revision' ) );
+		list( $page, $revision ) = $this->dbr->tableNamesN( 'page', 'revision' );
 		list( $index, $userCond ) = $this->getUserCond();
 
 		if ( $this->offset )
-			$offsetQuery = "AND rev_timestamp <= '{$this->offset}'";
+			$offsetQuery = "AND rev_timestamp < '{$this->offset}'";
 
 		$nscond = $this->getNamespaceCond();
 		$use_index = $this->dbr->useIndexClause( $index );
-		$sql = "SELECT
-			page_namespace,page_title,page_is_new,page_latest,
-			rev_id,rev_page,rev_text_id,rev_timestamp,rev_comment,rev_minor_edit,rev_user,rev_user_text,
-			rev_deleted
-			FROM $page,$revision $use_index
-			WHERE page_id=rev_page AND $userCond $nscond $offsetQuery
-		 	ORDER BY rev_timestamp DESC";
+		$sql = 'SELECT ' .
+			'page_namespace,page_title,page_is_new,page_latest,'.
+			'rev_id,rev_page,rev_text_id,rev_timestamp,rev_comment,rev_minor_edit,rev_user,rev_user_text,'.
+			'rev_deleted ' .
+			"FROM $page,$revision $use_index " .
+			"WHERE page_id=rev_page AND $userCond $nscond $offsetQuery " .
+		 	'ORDER BY rev_timestamp DESC';
 		$sql = $this->dbr->limitResult( $sql, $this->limit, 0 );
 		return $sql;
 	}
 
+	/**
+	 * This do the search for the user given when creating the object.
+	 * It should probably be the only public function in this class.
+	 * @return Array of contributions.
+	*/
 	function find() {
 		$contribs = array();
 		$res = $this->dbr->query( $this->makeSql(), __METHOD__ );
@@ -168,7 +196,6 @@ class ContribsFinder {
  */
 function wfSpecialContributions( $par = null ) {
 	global $wgUser, $wgOut, $wgLang, $wgRequest;
-	$fname = 'wfSpecialContributions';
 
 	$target = isset( $par ) ? $par : $wgRequest->getVal( 'target' );
 	if ( !strlen( $target ) ) {
@@ -231,6 +258,8 @@ function wfSpecialContributions( $par = null ) {
 
 	if ( $target == 'newbies' ) {
 		$wgOut->setSubtitle( wfMsgHtml( 'sp-contributions-newbies-sub') );
+	} else if (  preg_match( "/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/(24|16)/", $target )  ) {
+		$wgOut->setSubtitle( wfMsgHtml( 'contribsub', $target ) );
 	} else {
 		$wgOut->setSubtitle( wfMsgHtml( 'contribsub', contributionsSub( $nt ) ) );
 	}
@@ -316,14 +345,14 @@ function contributionsSub( $nt ) {
 	}
 	$talk = $nt->getTalkPage();
 	if( $talk ) {
-		# Talk page link	
+		# Talk page link
 		$tools[] = $sk->makeLinkObj( $talk, $wgLang->getNsText( NS_TALK ) );
 		if( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && User::isIP( $nt->getText() ) ) ) {
 			# Block link
 			if( $wgUser->isAllowed( 'block' ) )
 				$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Blockip', $nt->getDBkey() ), wfMsgHtml( 'blocklink' ) );
 			# Block log link
-			$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ), htmlspecialchars( LogPage::logName( 'block' ) ), 'type=block&page=' . $nt->getPrefixedUrl() );
+			$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ), wfMsgHtml( 'sp-contributions-blocklog' ), 'type=block&page=' . $nt->getPrefixedUrl() );
 		}
 		# Other logs link
 		$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ), wfMsgHtml( 'log' ), 'user=' . $nt->getPartialUrl() );
@@ -369,12 +398,6 @@ function contributionsForm( $options ) {
  * privileges. The rollback link restores the most recent version that was not
  * written by the target user.
  *
- * If the contributions page is called with the parameter &bot=1, all rollback
- * links also get that parameter. It causes the edit itself and the rollback
- * to be marked as "bot" edits. Bot edits are hidden by default from recent
- * changes, so this allows sysops to combat a busy vandal without bothering
- * other users.
- *
  * @todo This would probably look a lot nicer in a table.
  */
 function ucListEdit( $sk, $row ) {
@@ -390,7 +413,7 @@ function ucListEdit( $sk, $row ) {
 	}
 
 	$rev = new Revision( $row );
-	
+
 	$page = Title::makeTitle( $row->page_namespace, $row->page_title );
 	$link = $sk->makeKnownLinkObj( $page );
 	$difftext = $topmarktext = '';
@@ -403,12 +426,7 @@ function ucListEdit( $sk, $row ) {
 		}
 
 		if( $wgUser->isAllowed( 'rollback' ) ) {
-			$extraRollback = $wgRequest->getBool( 'bot' ) ? '&bot=1' : '';
-			$extraRollback .= '&token=' . urlencode(
-				$wgUser->editToken( array( $page->getPrefixedText(), $row->rev_user_text ) ) );
-			$topmarktext .= ' ['. $sk->makeKnownLinkObj( $page,
-			  	$messages['rollbacklink'],
-			  	'action=rollback&from=' . urlencode( $row->rev_user_text ) . $extraRollback ) .']';
+			$topmarktext .= ' '.$sk->generateRollback( $rev );
 		}
 
 	}
@@ -421,7 +439,7 @@ function ucListEdit( $sk, $row ) {
 
 	$comment = $sk->revComment( $rev );
 	$d = $wgLang->timeanddate( wfTimestamp( TS_MW, $row->rev_timestamp ), true );
-	
+
 	if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 		$d = '<span class="history-deleted">' . $d . '</span>';
 	}

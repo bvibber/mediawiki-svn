@@ -1,14 +1,12 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class LonelyPagesPage extends PageQueryPage {
 
@@ -29,8 +27,8 @@ class LonelyPagesPage extends PageQueryPage {
 	function isSyndicated() { return false; }
 
 	function getSQL() {
-		$dbr =& wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'page', 'pagelinks' ) );
+		$dbr = wfGetDB( DB_SLAVE );
+		list( $page, $pagelinks ) = $dbr->tableNamesN( 'page', 'pagelinks' );
 
 		return
 		  "SELECT 'Lonelypages'  AS type,

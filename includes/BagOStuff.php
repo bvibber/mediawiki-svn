@@ -19,7 +19,6 @@
 # http://www.gnu.org/copyleft/gpl.html
 /**
  *
- * @package MediaWiki
  */
 
 /**
@@ -32,12 +31,11 @@
  * $bag = new HashBagOStuff();
  * $bag = new MysqlBagOStuff($tablename); # connect to db first
  *
- * @package MediaWiki
  */
 class BagOStuff {
 	var $debugmode;
 
-	function BagOStuff() {
+	function __construct() {
 		$this->set_debug( false );
 	}
 
@@ -163,7 +161,6 @@ class BagOStuff {
 /**
  * Functional versions!
  * @todo document
- * @package MediaWiki
  */
 class HashBagOStuff extends BagOStuff {
 	/*
@@ -218,7 +215,6 @@ CREATE TABLE objectcache (
 /**
  * @todo document
  * @abstract
- * @package MediaWiki
  */
 abstract class SqlBagOStuff extends BagOStuff {
 	var $table;
@@ -240,6 +236,13 @@ abstract class SqlBagOStuff extends BagOStuff {
 		}
 		if($row=$this->_fetchobject($res)) {
 			$this->_debug("get: retrieved data; exp time is " . $row->exptime);
+			if ( $row->exptime != $this->_maxdatetime() && 
+			  wfTimestamp( TS_UNIX, $row->exptime ) < time() ) 
+			{
+				$this->_debug("get: key has expired, deleting");
+				$this->delete($key);
+				return false;
+			}
 			return $this->_unserialize($this->_blobdecode($row->value));
 		} else {
 			$this->_debug('get: no matching rows');
@@ -253,7 +256,7 @@ abstract class SqlBagOStuff extends BagOStuff {
 		if($exptime == 0) {
 			$exp = $this->_maxdatetime();
 		} else {
-			if($exptime < 3600*24*30)
+			if($exptime < 3.16e8) # ~10 years
 				$exptime += time();
 			$exp = $this->_fromunixtime($exptime);
 		}
@@ -379,54 +382,57 @@ abstract class SqlBagOStuff extends BagOStuff {
 
 /**
  * @todo document
- * @package MediaWiki
  */
 class MediaWikiBagOStuff extends SqlBagOStuff {
 	var $tableInitialised = false;
 
 	function _doquery($sql) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->query($sql, 'MediaWikiBagOStuff::_doquery');
 	}
 	function _doinsert($t, $v) {
-		$dbw =& wfGetDB( DB_MASTER );
-		return $dbw->insert($t, $v, 'MediaWikiBagOStuff::_doinsert');
+		$dbw = wfGetDB( DB_MASTER );
+		return $dbw->insert($t, $v, 'MediaWikiBagOStuff::_doinsert',
+			array( 'IGNORE' ) );
 	}
 	function _fetchobject($result) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->fetchObject($result);
 	}
 	function _freeresult($result) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->freeResult($result);
 	}
 	function _dberror($result) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->lastError();
 	}
 	function _maxdatetime() {
-		$dbw =& wfGetDB(DB_MASTER);
-		return $dbw->timestamp('9999-12-31 12:59:59');
+		if ( time() > 0x7fffffff ) {
+			return $this->_fromunixtime( 1<<62 );
+		} else {
+			return $this->_fromunixtime( 0x7fffffff );
+		}
 	}
 	function _fromunixtime($ts) {
-		$dbw =& wfGetDB(DB_MASTER);
+		$dbw = wfGetDB(DB_MASTER);
 		return $dbw->timestamp($ts);
 	}
 	function _strencode($s) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->strencode($s);
 	}
 	function _blobencode($s) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->encodeBlob($s);
 	}
 	function _blobdecode($s) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->decodeBlob($s);
 	}
 	function getTableName() {
 		if ( !$this->tableInitialised ) {
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			/* This is actually a hack, we should be able
 			   to use Language classes here... or not */
 			if (!$dbw)
@@ -451,7 +457,6 @@ class MediaWikiBagOStuff extends SqlBagOStuff {
  * that Turck's serializer is faster, so a possible future extension would be
  * to use it for arrays but not for objects.
  *
- * @package MediaWiki
  */
 class TurckBagOStuff extends BagOStuff {
 	function get($key) {
@@ -486,17 +491,19 @@ class TurckBagOStuff extends BagOStuff {
 /**
  * This is a wrapper for APC's shared memory functions
  *
- * @package MediaWiki
  */
 
 class APCBagOStuff extends BagOStuff {
 	function get($key) {
 		$val = apc_fetch($key);
+		if ( is_string( $val ) ) {
+			$val = unserialize( $val );
+		}
 		return $val;
 	}
 	
 	function set($key, $value, $exptime=0) {
-		apc_store($key, $value, $exptime);
+		apc_store($key, serialize($value), $exptime);
 		return true;
 	}
 	
@@ -513,7 +520,6 @@ class APCBagOStuff extends BagOStuff {
  * This is basically identical to the Turck MMCache version,
  * mostly because eAccelerator is based on Turck MMCache.
  *
- * @package MediaWiki
  */
 class eAccelBagOStuff extends BagOStuff {
 	function get($key) {

@@ -2,18 +2,28 @@
 /**
  * See user.txt
  *
- * @package MediaWiki
  */
 
 # Number of characters in user_token field
 define( 'USER_TOKEN_LENGTH', 32 );
 
 # Serialized record version
-define( 'MW_USER_VERSION', 4 );
+define( 'MW_USER_VERSION', 5 );
+
+# Some punctuation to prevent editing from broken text-mangling proxies.
+# FIXME: this is embedded unescaped into HTML attributes in various
+# places, so we can't safely include ' or " even though we really should.
+define( 'EDIT_TOKEN_SUFFIX', '\\' );
+
+/**
+ * Thrown by User::setPassword() on error
+ */
+class PasswordError extends MWException {
+	// NOP
+}
 
 /**
  *
- * @package MediaWiki
  */
 class User {
 
@@ -38,6 +48,8 @@ class User {
 		'editwidth',
 		'watchcreations',
 		'watchdefault',
+		'watchmoves',
+		'watchdeletion',
 		'minordefault',
 		'previewontop',
 		'previewonfirst',
@@ -52,10 +64,12 @@ class User {
 		'externaldiff',
 		'showjumplinks',
 		'uselivepreview',
-		'autopatrol',
 		'forceeditsummary',
 		'watchlisthideown',
 		'watchlisthidebots',
+		'watchlisthideminor',
+		'ccmeonemails',
+		'diffonly',
 	);
 
 	/**
@@ -79,7 +93,7 @@ class User {
 		'mEmailToken',
 		'mEmailTokenExpires',
 		'mRegistration',
-		
+		'mEditCount',
 		# user_group table
 		'mGroups',
 	);
@@ -173,7 +187,6 @@ class User {
 		# Try cache
 		$key = wfMemcKey( 'user', 'id', $this->mId );
 		$data = $wgMemc->get( $key );
-		
 		if ( !is_array( $data ) || $data['mVersion'] < MW_USER_VERSION ) {
 			# Object is expired, load from DB
 			$data = false;
@@ -255,7 +268,7 @@ class User {
 	 * @static
 	 */
 	static function newFromConfirmationCode( $code ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$id = $dbr->selectField( 'user', 'user_id', array(
 			'user_email_token' => md5( $code ),
 			'user_email_token_expires > ' . $dbr->addQuotes( $dbr->timestamp() ),
@@ -287,7 +300,7 @@ class User {
 	 * @static
 	 */
 	static function whoIs( $id ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		return $dbr->selectField( 'user', 'user_name', array( 'user_id' => $id ), 'User::whoIs' );
 	}
 
@@ -298,7 +311,7 @@ class User {
 	 * @static
 	 */
 	static function whoIsReal( $id ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		return $dbr->selectField( 'user', 'user_real_name', array( 'user_id' => $id ), 'User::whoIsReal' );
 	}
 
@@ -314,7 +327,7 @@ class User {
 			# Illegal name
 			return null;
 		}
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$s = $dbr->selectRow( 'user', array( 'user_id' ), array( 'user_name' => $nt->getText() ), __METHOD__ );
 
 		if ( $s === false ) {
@@ -344,7 +357,7 @@ class User {
 	 * @return bool
 	 */
 	static function isIP( $name ) {
-		return preg_match("/^\d{1,3}\.\d{1,3}\.\d{1,3}\.(?:xxx|\d{1,3})$/",$name);
+		return preg_match('/^\d{1,3}\.\d{1,3}\.\d{1,3}\.(?:xxx|\d{1,3})$/',$name);
 		/*return preg_match("/^
 			(?:[01]?\d{1,2}|2(:?[0-4]\d|5[0-5]))\.
 			(?:[01]?\d{1,2}|2(:?[0-4]\d|5[0-5]))\.
@@ -526,17 +539,40 @@ class User {
 	/**
 	 * Count the number of edits of a user
 	 *
+	 * It should not be static and some day should be merged as proper member function / deprecated -- domas
+	 * 
 	 * @param int $uid The user ID to check
 	 * @return int
 	 * @static
 	 */
 	static function edits( $uid ) {
-		$dbr =& wfGetDB( DB_SLAVE );
-		return $dbr->selectField(
-			'revision', 'count(*)',
-			array( 'rev_user' => $uid ),
+		wfProfileIn( __METHOD__ );
+		$dbr = wfGetDB( DB_SLAVE );
+		// check if the user_editcount field has been initialized
+		$field = $dbr->selectField(
+			'user', 'user_editcount',
+			array( 'user_id' => $uid ),
 			__METHOD__
 		);
+
+		if( $field === null ) { // it has not been initialized. do so.
+			$dbw = wfGetDb( DB_MASTER );
+			$count = $dbr->selectField(
+				'revision', 'count(*)',
+				array( 'rev_user' => $uid ),
+				__METHOD__
+			);
+			$dbw->update(
+				'user',
+				array( 'user_editcount' => $count ),
+				array( 'user_id' => $uid ),
+				__METHOD__
+			);
+		} else {
+			$count = $field;
+		}
+		wfProfileOut( __METHOD__ );
+		return $count;
 	}
 
 	/**
@@ -684,7 +720,7 @@ class User {
 			return false;
 		}
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_MASTER );
 		$s = $dbr->selectRow( 'user', '*', array( 'user_id' => $this->mId ), __METHOD__ );
 
 		if ( $s !== false ) {
@@ -702,6 +738,8 @@ class User {
 			$this->mEmailToken = $s->user_email_token;
 			$this->mEmailTokenExpires = wfTimestampOrNull( TS_MW, $s->user_email_token_expires );
 			$this->mRegistration = wfTimestampOrNull( TS_MW, $s->user_registration );
+			$this->mEditCount = $s->user_editcount; 
+			$this->getEditCount(); // revalidation for nulls
 
 			# Load group data
 			$res = $dbr->select( 'user_groups',
@@ -745,12 +783,12 @@ class User {
 	/**
 	 * Combine the language default options with any site-specific options
 	 * and add the default language variants.
-	 *
+	 * Not really private cause it's called by Language class
 	 * @return array
 	 * @static
 	 * @private
 	 */
-	function getDefaultOptions() {
+	static function getDefaultOptions() {
 		global $wgNamespacesToBeSearchedDefault;
 		/**
 		 * Site defaults will override the global/language defaults
@@ -821,6 +859,11 @@ class User {
 		$this->mBlockedby = 0;
 		$ip = wfGetIP();
 
+		if ($this->isAllowed( 'ipblock-exempt' ) ) {
+			# Exempt from all types of IP-block
+			$ip = '';
+		}
+
 		# User/IP blocking
 		$this->mBlock = new Block();
 		$this->mBlock->fromMaster( !$bFromSlave );
@@ -861,9 +904,10 @@ class User {
 	}
 
 	function inSorbsBlacklist( $ip ) {
-		global $wgEnableSorbs;
+		global $wgEnableSorbs, $wgSorbsUrl;
+
 		return $wgEnableSorbs &&
-			$this->inDnsBlacklist( $ip, 'http.dnsbl.sorbs.net.' );
+			$this->inDnsBlacklist( $ip, $wgSorbsUrl );
 	}
 
 	function inDnsBlacklist( $ip, $base ) {
@@ -872,6 +916,7 @@ class User {
 		$found = false;
 		$host = '';
 
+		$m = array();
 		if ( preg_match( '/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/', $ip, $m ) ) {
 			# Make hostname
 			for ( $i=4; $i>=1; $i-- ) {
@@ -905,6 +950,13 @@ class User {
 	 * @public
 	 */
 	function pingLimiter( $action='edit' ) {
+	
+		# Call the 'PingLimiter' hook
+		$result = false;
+		if( !wfRunHooks( 'PingLimiter', array( &$this, $action, $result ) ) ) {
+			return $result;
+		}
+		
 		global $wgRateLimits, $wgRateLimitsExcludedGroups;
 		if( !isset( $wgRateLimits[$action] ) ) {
 			return false;
@@ -938,6 +990,7 @@ class User {
 			if( isset( $limits['ip'] ) ) {
 				$keys["mediawiki:limiter:$action:ip:$ip"] = $limits['ip'];
 			}
+			$matches = array();
 			if( isset( $limits['subnet'] ) && preg_match( '/^(\d+\.\d+\.\d+)\.\d+$/', $ip, $matches ) ) {
 				$subnet = $matches[1];
 				$keys["mediawiki:limiter:$action:subnet:$subnet"] = $limits['subnet'];
@@ -1091,11 +1144,11 @@ class User {
 				global $wgMemc;
 				$key = wfMemcKey( 'newtalk', 'ip', $this->getName() );
 				$newtalk = $wgMemc->get( $key );
-				if( is_integer( $newtalk ) ) {
+				if( $newtalk != "" ) {
 					$this->mNewtalk = (bool)$newtalk;
 				} else {
 					$this->mNewtalk = $this->checkNewtalk( 'user_ip', $this->getName() );
-					$wgMemc->set( $key, $this->mNewtalk, time() ); // + 1800 );
+					$wgMemc->set( $key, (int)$this->mNewtalk, time() + 1800 );
 				}
 			} else {
 				$this->mNewtalk = $this->checkNewtalk( 'user_id', $this->mId );
@@ -1132,7 +1185,7 @@ class User {
 	 * @private
 	 */
 	function checkNewtalk( $field, $id ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$ok = $dbr->selectField( 'user_newtalk', $field,
 			array( $field => $id ), __METHOD__ );
 		return $ok !== false;
@@ -1149,7 +1202,7 @@ class User {
 			wfDebug( __METHOD__." already set ($field, $id), ignoring\n" );
 			return false;
 		}
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert( 'user_newtalk',
 			array( $field => $id ),
 			__METHOD__,
@@ -1169,7 +1222,7 @@ class User {
 			wfDebug( __METHOD__.": already gone ($field, $id), ignoring\n" );
 			return false;
 		}
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'user_newtalk',
 			array( $field => $id ),
 			__METHOD__ );
@@ -1254,7 +1307,7 @@ class User {
 		if( $this->mId ) {
 			$this->mTouched = self::newTouchedTimestamp();
 			
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$dbw->update( 'user',
 				array( 'user_touched' => $dbw->timestamp( $this->mTouched ) ),
 				array( 'user_id' => $this->mId ),
@@ -1281,14 +1334,51 @@ class User {
 	}
 
 	/**
-	 *  Set the password and reset the random token
+	 * Set the password and reset the random token
+	 * Calls through to authentication plugin if necessary;
+	 * will have no effect if the auth plugin refuses to
+	 * pass the change through or if the legal password
+	 * checks fail.
+	 *
+	 * As a special case, setting the password to null
+	 * wipes it, so the account cannot be logged in until
+	 * a new password is set, for instance via e-mail.
+	 *
+	 * @param string $str
+	 * @throws PasswordError on failure
 	 */
 	function setPassword( $str ) {
+		global $wgAuth;
+		
+		if( $str !== null ) {
+			if( !$wgAuth->allowPasswordChange() ) {
+				throw new PasswordError( wfMsg( 'password-change-forbidden' ) );
+			}
+		
+			if( !$this->isValidPassword( $str ) ) {
+				global $wgMinimalPasswordLength;
+				throw new PasswordError( wfMsg( 'passwordtooshort',
+					$wgMinimalPasswordLength ) );
+			}
+		}
+		
+		if( !$wgAuth->setPassword( $this, $str ) ) {
+			throw new PasswordError( wfMsg( 'externaldberror' ) );
+		}
+		
 		$this->load();
 		$this->setToken();
-		$this->mPassword = $this->encryptPassword( $str );
+		
+		if( $str === null ) {
+			// Save an invalid hash...
+			$this->mPassword = '';
+		} else {
+			$this->mPassword = $this->encryptPassword( $str );
+		}
 		$this->mNewpassword = '';
-		$this->mNewpassTime = NULL;
+		$this->mNewpassTime = null;
+		
+		return true;
 	}
 
 	/**
@@ -1371,17 +1461,23 @@ class User {
 
 	/**
 	 * @param string $oname The option to check
+	 * @param string $defaultOverride A default value returned if the option does not exist
 	 * @return string
 	 */
-	function getOption( $oname ) {
+	function getOption( $oname, $defaultOverride = '' ) {
 		$this->load();
+
 		if ( is_null( $this->mOptions ) ) {
+			if($defaultOverride != '') {
+				return $defaultOverride;
+			}
 			$this->mOptions = User::getDefaultOptions();
 		}
+
 		if ( array_key_exists( $oname, $this->mOptions ) ) {
 			return trim( $this->mOptions[$oname] );
 		} else {
-			return '';
+			return $defaultOverride;
 		}
 	}
 
@@ -1473,12 +1569,12 @@ class User {
 			if( $this->mId ) {
 				$this->mEffectiveGroups[] = 'user';
 				
-				global $wgAutoConfirmAge;
+				global $wgAutoConfirmAge, $wgAutoConfirmCount;
+
 				$accountAge = time() - wfTimestampOrNull( TS_UNIX, $this->mRegistration );
-				if( $accountAge >= $wgAutoConfirmAge ) {
+				if( $accountAge >= $wgAutoConfirmAge && $this->getEditCount() >= $wgAutoConfirmCount ) {
 					$this->mEffectiveGroups[] = 'autoconfirmed';
 				}
-				
 				# Implicit group for users whose email addresses are confirmed
 				global $wgEmailAuthentication;
 				if( self::isValidEmailAddr( $this->mEmail ) ) {
@@ -1493,7 +1589,21 @@ class User {
 		}
 		return $this->mEffectiveGroups;
 	}
-
+	
+	/* Return the edit count for the user. This is where User::edits should have been */
+	function getEditCount() {
+		if ($this->mId) {
+			if ( !isset( $this->mEditCount ) ) {
+				/* Populate the count, if it has not been populated yet */
+				$this->mEditCount = User::edits($this->mId);
+			} 
+			return $this->mEditCount;
+		} else {
+			/* nil */
+			return null;
+		}
+	}
+	
 	/**
 	 * Add the user to the given group.
 	 * This takes immediate effect.
@@ -1501,14 +1611,16 @@ class User {
 	 */
 	function addGroup( $group ) {
 		$this->load();
-		$dbw =& wfGetDB( DB_MASTER );
-		$dbw->insert( 'user_groups',
-			array(
-				'ug_user'  => $this->getID(),
-				'ug_group' => $group,
-			),
-			'User::addGroup',
-			array( 'IGNORE' ) );
+		$dbw = wfGetDB( DB_MASTER );
+		if( $this->getId() ) {
+			$dbw->insert( 'user_groups',
+				array(
+					'ug_user'  => $this->getID(),
+					'ug_group' => $group,
+				),
+				'User::addGroup',
+				array( 'IGNORE' ) );
+		}
 
 		$this->mGroups[] = $group;
 		$this->mRights = User::getGroupPermissions( $this->getEffectiveGroups( true ) );
@@ -1523,7 +1635,7 @@ class User {
 	 */
 	function removeGroup( $group ) {
 		$this->load();
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'user_groups',
 			array(
 				'ug_user'  => $this->getID(),
@@ -1584,7 +1696,7 @@ class User {
 	 * @todo FIXME : need to check the old failback system [AV]
 	 */
 	function &getSkin() {
-		global $IP, $wgRequest;
+		global $wgRequest;
 		if ( ! isset( $this->mSkin ) ) {
 			wfProfileIn( __METHOD__ );
 
@@ -1637,6 +1749,11 @@ class User {
 	function clearNotification( &$title ) {
 		global $wgUser, $wgUseEnotif;
 
+		# Do nothing if the database is locked to writes
+		if( wfReadOnly() ) {
+			return;
+		}
+
 		if ($title->getNamespace() == NS_USER_TALK &&
 			$title->getText() == $this->getName() ) {
 			if (!wfRunHooks('UserClearNewTalkNotification', array(&$this)))
@@ -1670,8 +1787,8 @@ class User {
 		// If the page is watched by the user (or may be watched), update the timestamp on any
 		// any matching rows
 		if ( $watched ) {
-			$dbw =& wfGetDB( DB_MASTER );
-			$success = $dbw->update( 'watchlist',
+			$dbw = wfGetDB( DB_MASTER );
+			$dbw->update( 'watchlist',
 					array( /* SET */
 						'wl_notificationtimestamp' => NULL
 					), array( /* WHERE */
@@ -1701,8 +1818,8 @@ class User {
 		}
 		if( $currentUser != 0 )  {
 
-			$dbw =& wfGetDB( DB_MASTER );
-			$success = $dbw->update( 'watchlist',
+			$dbw = wfGetDB( DB_MASTER );
+			$dbw->update( 'watchlist',
 				array( /* SET */
 					'wl_notificationtimestamp' => NULL
 				), array( /* WHERE */
@@ -1739,6 +1856,7 @@ class User {
 		$this->mOptions = array();
 		$a = explode( "\n", $str );
 		foreach ( $a as $s ) {
+			$m = array();
 			if ( preg_match( "/^(.[^=]*)=(.*)$/", $s, $m ) ) {
 				$this->mOptions[$m[1]] = $m[2];
 			}
@@ -1793,7 +1911,7 @@ class User {
 		
 		$this->mTouched = self::newTouchedTimestamp();
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update( 'user',
 			array( /* SET */
 				'user_name' => $this->mName,
@@ -1818,11 +1936,10 @@ class User {
 	 * Checks if a user with the given name exists, returns the ID
 	 */
 	function idForName() {
-		$gotid = 0;
 		$s = trim( $this->getName() );
 		if ( 0 == strcmp( '', $s ) ) return 0;
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$id = $dbr->selectField( 'user', 'user_id', array( 'user_name' => $s ), __METHOD__ );
 		if ( $id === false ) {
 			$id = 0;
@@ -1853,7 +1970,7 @@ class User {
 			$user->mOptions = $params['options'] + $user->mOptions;
 			unset( $params['options'] );
 		}
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$seqVal = $dbw->nextSequenceValue( 'user_user_id_seq' );
 		$fields = array(
 			'user_id' => $seqVal,
@@ -1867,6 +1984,7 @@ class User {
 			'user_options' => $user->encodeOptions(),
 			'user_token' => $user->mToken,
 			'user_registration' => $dbw->timestamp( $user->mRegistration ),
+			'user_editcount' => 0,
 		);
 		foreach ( $params as $name => $value ) {
 			$fields["user_$name"] = $value;
@@ -1885,7 +2003,7 @@ class User {
 	 */
 	function addToDatabase() {
 		$this->load();
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$seqVal = $dbw->nextSequenceValue( 'user_user_id_seq' );
 		$dbw->insert( 'user',
 			array(
@@ -1900,6 +2018,7 @@ class User {
 				'user_options' => $this->encodeOptions(),
 				'user_token' => $this->mToken,
 				'user_registration' => $dbw->timestamp( $this->mRegistration ),
+				'user_editcount' => 0,
 			), __METHOD__
 		);
 		$this->mId = $dbw->insertId();
@@ -1924,45 +2043,7 @@ class User {
 			return;
 		}
 
-		if ( !$userblock->mEnableAutoblock ) {
-			return;
-		}
-
-		# Check if this IP address is already blocked
-		$ipblock = Block::newFromDB( wfGetIP() );
-		if ( $ipblock ) {
-			# If the user is already blocked. Then check if the autoblock would
-			# excede the user block. If it would excede, then do nothing, else
-			# prolong block time
-			if ($userblock->mExpiry &&
-				($userblock->mExpiry < Block::getAutoblockExpiry($ipblock->mTimestamp))) {
-				return;
-			}
-			# Just update the timestamp
-			$ipblock->updateTimestamp();
-			return;
-		} else {
-			$ipblock = new Block;
-		}
-
-		# Make a new block object with the desired properties
-		wfDebug( "Autoblocking {$this->mName}@" . wfGetIP() . "\n" );
-		$ipblock->mAddress = wfGetIP();
-		$ipblock->mUser = 0;
-		$ipblock->mBy = $userblock->mBy;
-		$ipblock->mReason = wfMsg( 'autoblocker', $this->getName(), $userblock->mReason );
-		$ipblock->mTimestamp = wfTimestampNow();
-		$ipblock->mAuto = 1;
-		# If the user is already blocked with an expiry date, we don't
-		# want to pile on top of that!
-		if($userblock->mExpiry) {
-			$ipblock->mExpiry = min ( $userblock->mExpiry, Block::getAutoblockExpiry( $ipblock->mTimestamp ));
-		} else {
-			$ipblock->mExpiry = Block::getAutoblockExpiry( $ipblock->mTimestamp );
-		}
-
-		# Insert it
-		$ipblock->insert();
+		$userblock->doAutoblock( wfGetIp() );
 
 	}
 
@@ -1980,7 +2061,7 @@ class User {
 	 * @return string
 	 */
 	function getPageRenderingHash() {
-		global $wgContLang, $wgUseDynamicDates;
+		global $wgContLang, $wgUseDynamicDates, $wgLang;
 		if( $this->mHash ){
 			return $this->mHash;
 		}
@@ -1994,7 +2075,7 @@ class User {
 			$confstr .= '!' . $this->getDatePreference();
 		}
 		$confstr .= '!' . ($this->getOption( 'numberheadings' ) ? '1' : '');
-		$confstr .= '!' . $this->getOption( 'language' );
+		$confstr .= '!' . $wgLang->getCode();
 		$confstr .= '!' . $this->getOption( 'thumbsize' );
 		// add in language specific options, if any
 		$extra = $wgContLang->getExtraHashOptions();
@@ -2052,7 +2133,7 @@ class User {
 		if ( isset( $res ) )
 			return $res;
 		else {
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			return $res = $dbr->selectField( 'user', 'max(user_id)', false, 'User::getMaxID' );
 		}
 	}
@@ -2072,7 +2153,7 @@ class User {
 	 * @return bool True if the given password is correct otherwise False.
 	 */
 	function checkPassword( $password ) {
-		global $wgAuth, $wgMinimalPasswordLength;
+		global $wgAuth;
 		$this->load();
 
 		// Even though we stop people from creating passwords that
@@ -2080,7 +2161,7 @@ class User {
 		// to. Certain authentication plugins do NOT want to save
 		// domain passwords in a mysql database, so we should
 		// check this (incase $wgAuth->strict() is false).
-		if( strlen( $password ) < $wgMinimalPasswordLength ) {
+		if( !$this->isValidPassword( $password ) ) {
 			return false;
 		}
 
@@ -2093,8 +2174,6 @@ class User {
 		$ep = $this->encryptPassword( $password );
 		if ( 0 == strcmp( $ep, $this->mPassword ) ) {
 			return true;
-		} elseif ( ($this->mNewpassword != '') && (0 == strcmp( $ep, $this->mNewpassword )) ) {
-			return true;
 		} elseif ( function_exists( 'iconv' ) ) {
 			# Some wikis were converted from ISO 8859-1 to UTF-8, the passwords can't be converted
 			# Check for this with iconv
@@ -2104,6 +2183,16 @@ class User {
 			}
 		}
 		return false;
+	}
+	
+	/**
+	 * Check if the given clear-text password matches the temporary password
+	 * sent by e-mail for password reset operations.
+	 * @return bool
+	 */
+	function checkTemporaryPassword( $plaintext ) {
+		$hash = $this->encryptPassword( $plaintext );
+		return $hash === $this->mNewpassword;
 	}
 
 	/**
@@ -2127,7 +2216,7 @@ class User {
 		if( is_array( $salt ) ) {
 			$salt = implode( '|', $salt );
 		}
-		return md5( $token . $salt );
+		return md5( $token . $salt ) . EDIT_TOKEN_SUFFIX;
 	}
 
 	/**
@@ -2168,6 +2257,7 @@ class User {
 	 */
 	function sendConfirmationMail() {
 		global $wgContLang;
+		$expiration = null; // gets passed-by-ref and defined in next line.
 		$url = $this->confirmationTokenUrl( $expiration );
 		return $this->sendMail( wfMsg( 'confirmemail_subject' ),
 			wfMsg( 'confirmemail_body',
@@ -2219,7 +2309,7 @@ class User {
 		$token = $this->generateToken( $this->mId . $this->mEmail . $expires );
 		$hash = md5( $token );
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update( 'user',
 			array( 'user_email_token'         => $hash,
 			       'user_email_token_expires' => $dbw->timestamp( $expires ) ),
@@ -2295,6 +2385,18 @@ class User {
 		} else {
 			return $confirmed;
 		}
+	}
+	
+	/**
+	 * Return true if there is an outstanding request for e-mail confirmation.
+	 * @return bool
+	 */
+	function isEmailConfirmationPending() {
+		global $wgEmailAuthentication;
+		return $wgEmailAuthentication &&
+			!$this->isEmailConfirmed() &&
+			$this->mEmailToken &&
+			$this->mEmailTokenExpires > wfTimestamp();
 	}
 
 	/**
@@ -2390,7 +2492,7 @@ class User {
 		if( $title ) {
 			global $wgUser;
 			$sk = $wgUser->getSkin();
-			return $sk->makeLinkObj( $title, $text );
+			return $sk->makeLinkObj( $title, htmlspecialchars( $text ) );
 		} else {
 			return $text;
 		}
@@ -2414,6 +2516,50 @@ class User {
 		} else {
 			return $text;
 		}
+	}
+	
+	/**
+	 * Increment the user's edit-count field.
+	 * Will have no effect for anonymous users.
+	 */
+	function incEditCount() {
+		if( !$this->isAnon() ) {
+			$dbw = wfGetDB( DB_MASTER );
+			$dbw->update( 'user',
+				array( 'user_editcount=user_editcount+1' ),
+				array( 'user_id' => $this->getId() ),
+				__METHOD__ );
+			
+			// Lazy initialization check...
+			if( $dbw->affectedRows() == 0 ) {
+				// Pull from a slave to be less cruel to servers
+				// Accuracy isn't the point anyway here
+				$dbr = wfGetDB( DB_SLAVE );
+				$count = $dbr->selectField( 'revision',
+					'COUNT(rev_user)',
+					array( 'rev_user' => $this->getId() ),
+					__METHOD__ );
+				
+				// Now here's a goddamn hack...
+				if( $dbr !== $dbw ) {
+					// If we actually have a slave server, the count is
+					// at least one behind because the current transaction
+					// has not been committed and replicated.
+					$count++;
+				} else {
+					// But if DB_SLAVE is selecting the master, then the
+					// count we just read includes the revision that was
+					// just added in the working transaction.
+				}
+				
+				$dbw->update( 'user',
+					array( 'user_editcount' => $count ),
+					array( 'user_id' => $this->getId() ),
+					__METHOD__ );
+			}
+		}
+		// edit count in user cache too
+		$this->invalidateCache();
 	}
 }
 

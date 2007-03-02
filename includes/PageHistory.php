@@ -3,7 +3,6 @@
  * Page history
  *
  * Split off from Article.php and Skin.php, 2003-12-22
- * @package MediaWiki
  */
 
 /**
@@ -14,7 +13,6 @@
  * Construct it by passing in an Article, and call $h->history() to print the
  * history.
  *
- * @package MediaWiki
  */
 
 class PageHistory {
@@ -33,13 +31,27 @@ class PageHistory {
 	 * @param Article $article
 	 * @returns nothing
 	 */
-	function PageHistory($article) {
+	function __construct($article) {
 		global $wgUser;
 
 		$this->mArticle =& $article;
 		$this->mTitle =& $article->mTitle;
 		$this->mNotificationTimestamp = NULL;
 		$this->mSkin = $wgUser->getSkin();
+		$this->preCacheMessages();
+	}
+	
+	/**
+	 * As we use the same small set of messages in various methods and that
+	 * they are called often, we call them once and save them in $this->message
+	 */
+	function preCacheMessages() {
+		// Precache various messages
+		if( !isset( $this->message ) ) {
+			foreach( explode(' ', 'cur last rev-delundel' ) as $msg ) {
+				$this->message[$msg] = wfMsgExt( $msg, array( 'escape') );
+			}
+		}
 	}
 
 	/**
@@ -106,12 +118,11 @@ class PageHistory {
 		 * Do the list
 		 */
 		$pager = new PageHistoryPager( $this );
-		$navbar = $pager->getNavigationBar();
 		$this->linesonpage = $pager->getNumRows();
 		$wgOut->addHTML(
 			$pager->getNavigationBar() . 
 			$this->beginHistoryList() . 
-			$pager->getBody() . 
+			$pager->getBody() .
 			$this->endHistoryList() .
 			$pager->getNavigationBar()
 		);
@@ -160,13 +171,25 @@ class PageHistory {
 					'class'     => 'historysubmit',
 					'type'      => 'submit',
 					'accesskey' => wfMsg( 'accesskey-compareselectedversions' ),
-					'title'     => wfMsg( 'tooltip-compareselectedversions' ),
+					'title'     => wfMsg( 'tooltip-compareselectedversions' ).' ['.wfMsg( 'accesskey-compareselectedversions' ).']',
 					'value'     => wfMsg( 'compareselectedversions' ),
 				) ) )
 			: '';
 	}
 
-	/** @todo document */
+	/**
+	 * Returns a row from the history printout.
+	 *
+	 * @todo document some more, and maybe clean up the code (some params redundant?)
+	 *
+	 * @param object $row The database row corresponding to the line (or is it the previous line?).
+	 * @param object $next The database row corresponding to the next line (or is it this one?).
+	 * @param int $counter Apparently a counter of what row number we're at, counted from the top row = 1.
+	 * @param $notificationtimestamp
+	 * @param bool $latest Whether this row corresponds to the page's latest revision.
+	 * @param bool $firstInList Whether this row corresponds to the first displayed on this history page.
+	 * @return string HTML output for the row
+	 */
 	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false, $firstInList = false ) {
 		global $wgUser;
 		$rev = new Revision( $row );
@@ -178,37 +201,46 @@ class PageHistory {
 		$arbitrary = $this->diffButtons( $rev, $firstInList, $counter );
 		$link = $this->revLink( $rev );
 		
-		$user = $this->mSkin->userLink( $rev->getUser(), $rev->getUserText() )
-				. $this->mSkin->userToolLinks( $rev->getUser(), $rev->getUserText() );
-		
 		$s .= "($curlink) ($lastlink) $arbitrary";
 		
 		if( $wgUser->isAllowed( 'deleterevision' ) ) {
 			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 			if( $firstInList ) {
-				// We don't currently handle well changing the top revision's settings
-				$del = wfMsgHtml( 'rev-delundel' );
+			// We don't currently handle well changing the top revision's settings
+				$del = $this->message['rev-delundel'];
+			} else if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
+			// If revision was hidden from sysops
+				$del = $this->message['rev-delundel'];	
 			} else {
 				$del = $this->mSkin->makeKnownLinkObj( $revdel,
-					wfMsg( 'rev-delundel' ),
+					$this->message['rev-delundel'],
 					'target=' . urlencode( $this->mTitle->getPrefixedDbkey() ) .
 					'&oldid=' . urlencode( $rev->getId() ) );
+				// Bolden oversighted content
+				if( $rev->isDeleted( Revision::DELETED_RESTRICTED ) )
+					$del = "<strong>$del</strong>";
 			}
-			$s .= "(<small>$del</small>) ";
+			$s .= " <tt>(<small>$del</small>)</tt> ";
 		}
 		
-		$s .= " $link <span class='history-user'>$user</span>";
-
+		$s .= " $link";
+		$s .= $this->mSkin->revUserTools( $rev, true);
+		
 		if( $row->rev_minor_edit ) {
 			$s .= ' ' . wfElement( 'span', array( 'class' => 'minor' ), wfMsg( 'minoreditletter') );
 		}
 
-		$s .= $this->mSkin->revComment( $rev );
+		$s .= $this->mSkin->revComment( $rev, false, true );
+		
 		if ($notificationtimestamp && ($row->rev_timestamp >= $notificationtimestamp)) {
 			$s .= ' <span class="updatedmarker">' .  wfMsgHtml( 'updatedmarker' ) . '</span>';
 		}
+		#add blurb about text having been deleted
 		if( $row->rev_deleted & Revision::DELETED_TEXT ) {
-			$s .= ' ' . wfMsgHtml( 'deletedrev' );
+			$s .= ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
+		}
+		if( $wgUser->isAllowed( 'rollback' ) && $latest ) {
+			$s .= ' '.$this->mSkin->generateRollback( $rev );
 		}
 		$s .= "</li>\n";
 
@@ -233,7 +265,7 @@ class PageHistory {
 
 	/** @todo document */
 	function curLink( $rev, $latest ) {
-		$cur = wfMsgExt( 'cur', array( 'escape') );
+		$cur = $this->message['cur'];
 		if( $latest || !$rev->userCan( Revision::DELETED_TEXT ) ) {
 			return $cur;
 		} else {
@@ -246,7 +278,7 @@ class PageHistory {
 
 	/** @todo document */
 	function lastLink( $rev, $next, $counter ) {
-		$last = wfMsgExt( 'last', array( 'escape' ) );
+		$last = $this->message['last'];
 		if ( is_null( $next ) ) {
 			# Probably no next row
 			return $last;
@@ -318,7 +350,7 @@ class PageHistory {
 	function getLatestId() {
 		if( is_null( $this->mLatestId ) ) {
 			$id = $this->mTitle->getArticleID();
-			$db =& wfGetDB(DB_SLAVE);
+			$db = wfGetDB(DB_SLAVE);
 			$this->mLatestId = $db->selectField( 'page',
 				"page_latest",
 				array( 'page_id' => $id ),
@@ -335,7 +367,7 @@ class PageHistory {
 	function fetchRevisions($limit, $offset, $direction) {
 		$fname = 'PageHistory::fetchRevisions';
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		if ($direction == PageHistory::DIR_PREV)
 			list($dirs, $oper) = array("ASC", ">=");
@@ -377,7 +409,7 @@ class PageHistory {
 		if ($wgUser->isAnon() || !$wgShowUpdatedMarker)
 			return $this->mNotificationTimestamp = false;
 
-		$dbr =& wfGetDB(DB_SLAVE);
+		$dbr = wfGetDB(DB_SLAVE);
 
 		$this->mNotificationTimestamp = $dbr->selectField(
 			'watchlist',

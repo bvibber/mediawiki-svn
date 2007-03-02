@@ -22,7 +22,6 @@
  * @author <brion@pobox.com>
  * @author <mail@tgries.de>
  *
- * @package MediaWiki
  */
 
 /**
@@ -38,8 +37,8 @@ class MailAddress {
 	 * @param mixed $address String with an email address, or a User object
 	 * @param string $name Human-readable name if a string address is given
 	 */
-	function MailAddress( $address, $name=null ) {
-		if( is_object( $address ) && is_a( $address, 'User' ) ) {
+	function __construct( $address, $name=null ) {
+		if( is_object( $address ) && $address instanceof User ) {
 			$this->address = $address->getEmail();
 			$this->name = $address->getName();
 		} else {
@@ -78,9 +77,9 @@ class MailAddress {
  * @param $from MailAddress: sender's email
  * @param $subject String: email's subject.
  * @param $body String: email's text.
- * @param $replyto String: optional reply-to email (default: false).
+ * @param $replyto String: optional reply-to email (default: null).
  */
-function userMailer( $to, $from, $subject, $body, $replyto=false ) {
+function userMailer( $to, $from, $subject, $body, $replyto=null ) {
 	global $wgUser, $wgSMTP, $wgOutputEncoding, $wgErrorString;
 
 	if (is_array( $wgSMTP )) {
@@ -92,7 +91,7 @@ function userMailer( $to, $from, $subject, $body, $replyto=false ) {
 		$headers['From'] = $from->toString();
 		$headers['To'] = $to->toString();
 		if ( $replyto ) {
-			$headers['Reply-To'] = $replyto;
+			$headers['Reply-To'] = $replyto->toString();
 		}
 		$headers['Subject'] = wfQuotedPrintable( $subject );
 		$headers['Date'] = date( 'r' );
@@ -141,7 +140,7 @@ function userMailer( $to, $from, $subject, $body, $replyto=false ) {
 			"X-Mailer: MediaWiki mailer$endl".
 			'From: ' . $from->toString();
 		if ($replyto) {
-			$headers .= "{$endl}Reply-To: $replyto";
+			$headers .= "{$endl}Reply-To: " . $replyto->toString();
 		}
 
 		$dest = $to->toString();
@@ -189,7 +188,6 @@ function mailErrorHandler( $code, $string ) {
  *
  * Visit the documentation pages under http://meta.wikipedia.com/Enotif
  *
- * @package MediaWiki
  *
  */
 class EmailNotification {
@@ -247,8 +245,7 @@ class EmailNotification {
 				$userCondition = false;
 			}
 			if( $userCondition ) {
-				$dbr =& wfGetDB( DB_MASTER );
-				extract( $dbr->tableNames( 'watchlist' ) );
+				$dbr = wfGetDB( DB_MASTER );
 
 				$res = $dbr->select( 'watchlist', array( 'wl_user' ),
 					array(
@@ -295,7 +292,7 @@ class EmailNotification {
 		if ( $wgShowUpdatedMarker || $wgEnotifWatchlist ) {
 			# mark the changed watch-listed page with a timestamp, so that the page is
 			# listed with an "updated since your last visit" icon in the watch list, ...
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$success = $dbw->update( 'watchlist',
 				array( /* SET */
 					'wl_notificationtimestamp' => $dbw->timestamp($timestamp)
@@ -371,7 +368,7 @@ class EmailNotification {
 			}
 		} else {
 			$from    = $adminAddress;
-			$replyto = $wgNoReplyAddress;
+			$replyto = new MailAddress( $wgNoReplyAddress );
 		}
 
 		if( $wgUser->isIP( $name ) ) {

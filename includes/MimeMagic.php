@@ -1,7 +1,6 @@
 <?php
 /** Module defining helper functions for detecting and dealing with mime types.
  *
- * @package MediaWiki
  */
 
  /** Defines a set of well known mime types
@@ -75,7 +74,6 @@ if ($wgLoadFileinfoExtension) {
 *
 * Instances of this class are stateles, there only needs to be one global instance
 * of MimeMagic. Please use MimeMagic::singleton() to get that instance.
-* @package MediaWiki
 */
 class MimeMagic {
 
@@ -105,7 +103,7 @@ class MimeMagic {
 	*
 	* This constructor parses the mime.types and mime.info files and build internal mappings.
 	*/
-	function MimeMagic() {
+	function __construct() {
 		/*
 		*   --- load mime.types ---
 		*/
@@ -149,7 +147,7 @@ class MimeMagic {
 
 			if (empty($ext)) continue;
 
-			if (@$this->mMimeToExt[$mime]) $this->mMimeToExt[$mime] .= ' '.$ext;
+			if ( !empty($this->mMimeToExt[$mime])) $this->mMimeToExt[$mime] .= ' '.$ext;
 			else $this->mMimeToExt[$mime]= $ext;
 
 			$extensions= explode(' ',$ext);
@@ -158,7 +156,7 @@ class MimeMagic {
 				$e= trim($e);
 				if (empty($e)) continue;
 
-				if (@$this->mExtToMime[$e]) $this->mExtToMime[$e] .= ' '.$mime;
+				if ( !empty($this->mExtToMime[$e])) $this->mExtToMime[$e] .= ' '.$mime;
 				else $this->mExtToMime[$e]= $mime;
 			}
 		}
@@ -403,8 +401,6 @@ class MimeMagic {
 					elseif ($tag==="svg") $mime= "image/svg";
 					elseif (strpos($doctype,"-//W3C//DTD XHTML")===0) $mime= "text/html";
 					elseif ($tag==="html") $mime= "text/html";
-
-					$test_more= false;
 				}
 			}
 
@@ -426,7 +422,9 @@ class MimeMagic {
 					$match= array();
 					$prog= "";
 
-					if (preg_match('%/?([^\s]+/)(w+)%sim',$head,$match)) $script= $match[2];
+					if (preg_match('%/?([^\s]+/)(w+)%sim',$head,$match)) {
+						$script= $match[2]; // FIXME: $script variable not used; should this be "$prog = $match[2];" instead?
+					}
 
 					$mime= "application/x-$prog";
 				}

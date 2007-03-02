@@ -19,8 +19,7 @@
 
 /**
  * Run text & title search and display the output
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -44,8 +43,7 @@ function wfSpecialSearch( $par = '' ) {
 
 /**
  * @todo document
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class SpecialSearch {
 
@@ -70,19 +68,17 @@ class SpecialSearch {
 	}
 
 	/**
-	 * If an exact title match can be found, jump straight ahead to
+	 * If an exact title match can be found, jump straight ahead to it.
 	 * @param string $term
 	 * @public
 	 */
 	function goResult( $term ) {
 		global $wgOut;
 		global $wgGoToEdit;
-		global $wgContLang;
 
 		$this->setupPage( $term );
 
 		# Try to go to page as entered.
-		#
 		$t = Title::newFromText( $term );
 
 		# If the string cannot be used to create a title
@@ -99,17 +95,13 @@ class SpecialSearch {
 
 		# No match, generate an edit URL
 		$t = Title::newFromText( $term );
-		if( is_null( $t ) ) {
-			$editurl = ''; # hrm...
-		} else {
+		if( ! is_null( $t ) ) {
 			wfRunHooks( 'SpecialSearchNogomatch', array( &$t ) );
 			# If the feature is enabled, go straight to the edit page
 			if ( $wgGoToEdit ) {
 				$wgOut->redirect( $t->getFullURL( 'action=edit' ) );
 				return;
-			} else {
-				$editurl = $t->escapeLocalURL( 'action=edit' );
-			}
+			} 
 		}
 		$wgOut->addWikiText( wfMsg( 'noexactmatch', wfEscapeWikiText( $term ) ) );
 
@@ -126,8 +118,7 @@ class SpecialSearch {
 
 		$this->setupPage( $term );
 
-		global $wgUser, $wgOut;
-		$sk = $wgUser->getSkin();
+		global $wgOut;
 		$wgOut->addWikiText( wfMsg( 'searchresulttext' ) );
 
 		#if ( !$this->parseQuery() ) {
@@ -168,12 +159,14 @@ class SpecialSearch {
 
 		$num = ( $titleMatches ? $titleMatches->numRows() : 0 )
 			+ ( $textMatches ? $textMatches->numRows() : 0);
-		if ( $num >= $this->limit ) {
-			$top = wfShowingResults( $this->offset, $this->limit );
-		} else {
-			$top = wfShowingResultsNum( $this->offset, $this->limit, $num );
+		if ( $num > 0 ) {
+			if ( $num >= $this->limit ) {
+				$top = wfShowingResults( $this->offset, $this->limit );
+			} else {
+				$top = wfShowingResultsNum( $this->offset, $this->limit, $num );
+			}
+			$wgOut->addHTML( "<p>{$top}</p>\n" );
 		}
-		$wgOut->addHTML( "<p>{$top}</p>\n" );
 
 		if( $num || $this->offset ) {
 			$prevnext = wfViewPrevNext( $this->offset, $this->limit,
@@ -321,12 +314,10 @@ class SpecialSearch {
 			wfProfileOut( $fname );
 			return "<!-- Broken link in search result -->\n";
 		}
-		$sk =& $wgUser->getSkin();
+		$sk = $wgUser->getSkin();
 
-		$contextlines = $wgUser->getOption( 'contextlines' );
-		if ( '' == $contextlines ) { $contextlines = 5; }
-		$contextchars = $wgUser->getOption( 'contextchars' );
-		if ( '' == $contextchars ) { $contextchars = 50; }
+		$contextlines = $wgUser->getOption( 'contextlines',  5 );
+		$contextchars = $wgUser->getOption( 'contextchars', 50 );
 
 		$link = $sk->makeKnownLinkObj( $t );
 		$revision = Revision::newFromTitle( $t );
@@ -348,6 +339,7 @@ class SpecialSearch {
 				break;
 			}
 			++$lineno;
+			$m = array();
 			if ( ! preg_match( $pat1, $line, $m ) ) {
 				continue;
 			}

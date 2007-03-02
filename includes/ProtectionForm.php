@@ -18,25 +18,38 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 class ProtectionForm {
 	var $mRestrictions = array();
 	var $mReason = '';
+	var $mCascade = false;
+	var $mExpiry = null;
 
-	function ProtectionForm( &$article ) {
+	function __construct( &$article ) {
 		global $wgRequest, $wgUser;
 		global $wgRestrictionTypes, $wgRestrictionLevels;
 		$this->mArticle =& $article;
 		$this->mTitle =& $article->mTitle;
 
 		if( $this->mTitle ) {
+			$this->mTitle->loadRestrictions();
+
 			foreach( $wgRestrictionTypes as $action ) {
 				// Fixme: this form currently requires individual selections,
 				// but the db allows multiples separated by commas.
 				$this->mRestrictions[$action] = implode( '', $this->mTitle->getRestrictions( $action ) );
+			}
+
+			$this->mCascade = $this->mTitle->areRestrictionsCascading();
+
+			if ( $this->mTitle->mRestrictionsExpiry == 'infinity' ) {
+				$this->mExpiry = 'infinite';
+			} else if ( strlen($this->mTitle->mRestrictionsExpiry) == 0 ) {
+				$this->mExpiry = '';
+			} else {
+				$this->mExpiry = wfTimestamp( TS_RFC2822, $this->mTitle->mRestrictionsExpiry );
 			}
 		}
 
@@ -48,6 +61,9 @@ class ProtectionForm {
 
 		if( $wgRequest->wasPosted() ) {
 			$this->mReason = $wgRequest->getText( 'mwProtect-reason' );
+			$this->mCascade = $wgRequest->getBool( 'mwProtect-cascade' );
+			$this->mExpiry = $wgRequest->getText( 'mwProtect-expiry' );
+
 			foreach( $wgRestrictionTypes as $action ) {
 				$val = $wgRequest->getVal( "mwProtect-level-$action" );
 				if( isset( $val ) && in_array( $val, $wgRestrictionLevels ) ) {
@@ -56,8 +72,20 @@ class ProtectionForm {
 			}
 		}
 	}
+	
+	function execute() {
+		global $wgRequest;
+		if( $wgRequest->wasPosted() ) {
+			if( $this->save() ) {
+				global $wgOut;
+				$wgOut->redirect( $this->mTitle->getFullUrl() );
+			}
+		} else {
+			$this->show();
+		}
+	}
 
-	function show() {
+	function show( $err = null ) {
 		global $wgOut;
 
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
@@ -69,9 +97,23 @@ class ProtectionForm {
 			return;
 		}
 
-		if( $this->save() ) {
-			$wgOut->redirect( $this->mTitle->getFullUrl() );
-			return;
+		$cascadeSources = $this->mTitle->getCascadeProtectionSources();
+
+		if ( "" != $err ) {
+			$wgOut->setSubtitle( wfMsgHtml( 'formerror' ) );
+			$wgOut->addHTML( "<p class='error'>{$err}</p>\n" );
+		}
+
+		if ( $cascadeSources && count($cascadeSources) > 0 ) {
+			$titles = '';
+
+			foreach ( $cascadeSources as $title ) {
+				$titles .= '* [[:' . $title->getPrefixedText() . "]]\n";
+			}
+
+			$notice = wfMsg( 'protect-cascadeon' ) . "\r\n$titles";
+
+			$wgOut->addWikiText( $notice );
 		}
 
 		$wgOut->setPageTitle( wfMsg( 'confirmprotect' ) );
@@ -88,20 +130,43 @@ class ProtectionForm {
 
 	function save() {
 		global $wgRequest, $wgUser, $wgOut;
-		if( !$wgRequest->wasPosted() ) {
-			return false;
-		}
-
+		
 		if( $this->disabled ) {
+			$this->show();
 			return false;
 		}
 
 		$token = $wgRequest->getVal( 'wpEditToken' );
 		if( !$wgUser->matchEditToken( $token ) ) {
-			throw new FatalError( wfMsg( 'sessionfailure' ) );
+			$this->show( wfMsg( 'sessionfailure' ) );
+			return false;
 		}
 
-		$ok = $this->mArticle->updateRestrictions( $this->mRestrictions, $this->mReason );
+		if ( strlen( $this->mExpiry ) == 0 ) {
+			$this->mExpiry = 'infinite';
+		}
+
+		if ( $this->mExpiry == 'infinite' || $this->mExpiry == 'indefinite' ) {
+			$expiry = Block::infinity();
+		} else {
+			# Convert GNU-style date, on error returns -1 for PHP <5.1 and false for PHP >=5.1
+			$expiry = strtotime( $this->mExpiry );
+
+			if ( $expiry < 0 || $expiry === false ) {
+				$this->show( wfMsg( 'protect_expiry_invalid' ) );
+				return false;
+			}
+
+			$expiry = wfTimestamp( TS_MW, $expiry );
+
+			if ( $expiry < wfTimestampNow() ) {
+				$this->show( wfMsg( 'protect_expiry_old' ) );
+				return false;
+			}
+
+		}
+
+		$ok = $this->mArticle->updateRestrictions( $this->mRestrictions, $this->mReason, $this->mCascade, $expiry );
 		if( !$ok ) {
 			throw new FatalError( "Unknown error at restriction save time." );
 		}
@@ -148,13 +213,25 @@ class ProtectionForm {
 		$out .= "</tbody>\n";
 		$out .= "</table>\n";
 
+		$out .= "<table>\n";
+		$out .= "<tbody>\n";
+
+		global $wgEnableCascadingProtection;
+
+		if ($wgEnableCascadingProtection)
+			$out .= $this->buildCascadeInput();
+
+		$out .= $this->buildExpiryInput();
+
 		if( !$this->disabled ) {
-			$out .= "<table>\n";
-			$out .= "<tbody>\n";
 			$out .= "<tr><td>" . $this->buildReasonInput() . "</td></tr>\n";
 			$out .= "<tr><td></td><td>" . $this->buildSubmit() . "</td></tr>\n";
-			$out .= "</tbody>\n";
-			$out .= "</table>\n";
+		}
+
+		$out .= "</tbody>\n";
+		$out .= "</table>\n";
+
+		if ( !$this->disabled ) {
 			$out .= "</form>\n";
 			$out .= $this->buildCleanupScript();
 		}
@@ -202,7 +279,34 @@ class ProtectionForm {
 			wfElement( 'input', array(
 				'size' => 60,
 				'name' => $id,
-				'id' => $id ) );
+				'id' => $id,
+				'value' => $this->mReason ) );
+	}
+
+	function buildCascadeInput() {
+		$id = 'mwProtect-cascade';
+		$ci = "<tr>" . wfCheckLabel( wfMsg( 'protect-cascade' ), $id, $id, $this->mCascade, $this->disabledAttrib) . "</tr>";
+
+		return $ci;
+	}
+
+	function buildExpiryInput() {
+		$id = 'mwProtect-expiry';
+
+		$ci = "<tr> <td align=\"right\">";
+		$ci .= wfElement( 'label', array (
+				'id' => "$id-label",
+				'for' => $id ),
+				wfMsg( 'protectexpiry' ) );
+		$ci .= "</td> <td align=\"left\">";
+		$ci .= wfElement( 'input', array(
+				'size' => 60,
+				'name' => $id,
+				'id' => $id,
+				'value' => $this->mExpiry ) + $this->disabledAttrib );
+		$ci .= "</td></tr>";
+
+		return $ci;
 	}
 
 	function buildSubmit() {
@@ -238,6 +342,5 @@ class ProtectionForm {
 		$logViewer->showList( $out );
 	}
 }
-
 
 ?>

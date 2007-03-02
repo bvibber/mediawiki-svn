@@ -1,7 +1,6 @@
 <?php
 /**
  * Deal with importing all those nasssty globals and things
- * @package MediaWiki
  */
 
 # Copyright (C) 2003 Brion Vibber <brion@pobox.com>
@@ -32,7 +31,6 @@
  * you want to pass arbitrary data to some function in place of the web
  * input.
  *
- * @package MediaWiki
  */
 
 /**
@@ -44,7 +42,7 @@ if ( !function_exists( '__autoload' ) ) {
 }
 
 class WebRequest {
-	function WebRequest() {
+	function __construct() {
 		$this->checkMagicQuotes();
 		global $wgUsePathInfo;
 		if ( $wgUsePathInfo ) {
@@ -303,10 +301,15 @@ class WebRequest {
 	 * Returns true if there is a session cookie set.
 	 * This does not necessarily mean that the user is logged in!
 	 *
+	 * If you want to check for an open session, use session_id()
+	 * instead; that will also tell you if the session was opened
+	 * during the current request (in which case the cookie will
+	 * be sent back to the client at the end of the script run).
+	 *
 	 * @return bool
 	 */
 	function checkSessionCookie() {
-		return isset( $_COOKIE[ini_get('session.name')] );
+		return isset( $_COOKIE[session_name()] );
 	}
 
 	/**
@@ -314,7 +317,20 @@ class WebRequest {
 	 * @return string
 	 */
 	function getRequestURL() {
-		$base = $_SERVER['REQUEST_URI'];
+		if( isset( $_SERVER['REQUEST_URI'] ) ) {
+			$base = $_SERVER['REQUEST_URI'];
+		} elseif( isset( $_SERVER['SCRIPT_NAME'] ) ) {
+			// Probably IIS; doesn't set REQUEST_URI
+			$base = $_SERVER['SCRIPT_NAME'];
+			if( isset( $_SERVER['QUERY_STRING'] ) && $_SERVER['QUERY_STRING'] != '' ) {
+				$base .= '?' . $_SERVER['QUERY_STRING'];
+			}
+		} else {
+			// This shouldn't happen!
+			throw new MWException( "Web server doesn't provide either " .
+				"REQUEST_URI or SCRIPT_NAME. Report details of your " .
+				"web server configuration to http://bugzilla.wikimedia.org/" );
+		}
 		if( $base{0} == '/' ) {
 			return $base;
 		} else {
@@ -470,7 +486,6 @@ class WebRequest {
 /**
  * WebRequest clone which takes values from a provided array.
  *
- * @package MediaWiki
  */
 class FauxRequest extends WebRequest {
 	var $data = null;
