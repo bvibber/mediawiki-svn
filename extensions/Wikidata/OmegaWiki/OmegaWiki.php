@@ -2,7 +2,7 @@
 
 require_once('Wikidata.php');
 require_once('Transaction.php');
-require_once('Expression.php');
+require_once('WikiDataAPI.php');
 require_once('forms.php');
 require_once('Attribute.php');
 require_once('type.php');

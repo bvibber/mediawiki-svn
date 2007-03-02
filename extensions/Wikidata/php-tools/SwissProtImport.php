@@ -2,7 +2,7 @@
 
 require_once('XMLImport.php');
 //require_once('ProgressBar.php');
-//require_once('..\OmegaWiki\Expression.php');
+//require_once('..\OmegaWiki\WikiDataAPI.php');
 
 /*
  * Import Swiss-Prot from the XML file. Be sure to have started a transaction first!

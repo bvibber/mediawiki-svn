@@ -4,7 +4,7 @@ require_once("Wikidata.php");
 require_once("Transaction.php");
 require_once("RecordSet.php");
 require_once("Editor.php");
-require_once("Expression.php");
+require_once("WikiDataAPI.php");
 require_once("OmegaWikiAttributes.php");
 require_once("OmegaWikiRecordSets.php");
 require_once("OmegaWikiEditors.php");

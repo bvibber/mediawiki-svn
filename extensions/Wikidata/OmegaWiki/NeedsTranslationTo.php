@@ -6,7 +6,7 @@ require_once("Transaction.php");
 require_once("OmegaWikiAttributes.php");
 require_once("RecordSet.php");
 require_once("Editor.php");
-require_once("Expression.php");
+require_once("WikiDataAPI.php");
 
 class NeedsTranslationTo extends DefaultWikidataApplication {
 	public function view() {

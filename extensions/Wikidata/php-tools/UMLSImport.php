@@ -1,7 +1,7 @@
 <?php
 define('MEDIAWIKI', true );
 require_once("../../../LocalSettings.php");
-require_once("../OmegaWiki/Expression.php");
+require_once("../OmegaWiki/WikiDataAPI.php");
 
 require_once("ProgressBar.php");
 require_once("Setup.php");
