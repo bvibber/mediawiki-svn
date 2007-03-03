@@ -74,6 +74,18 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Aucune contribution sur ce wiki.',
 ),
 
+'hsb' => array(
+'countedits'=> 'Ličak přinoškow',
+'countedits-warning'=> '\'\'\'Kedźbu\'\'\': Njeposudź knihu wobalki dla, njeposudź wužiwarja ličby jeho přinoškow dla!',
+'countedits-username'=> 'Wužiwarske mjeno:',
+'countedits-ok'=> 'OK',#identical but defined
+'countedits-nosuchuser'=> 'Wužiwar z mjenom $1 njeeksistuje.',
+'countedits-resultheader'=> 'Wuslědki za wužiwarja $1',
+'countedits-resulttext'=> '$1 je $2 wobdźěłanjow sčinił.',
+'countedits-mostactive'=> 'Najaktiwniši přinošowarjo',
+'countedits-nocontribs'=> 'Njejsu žane změny w tutym wikiju.',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'countedits' => 'Jumlah suntingan',

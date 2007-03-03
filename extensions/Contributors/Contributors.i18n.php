@@ -65,6 +65,19 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'L’article $1 n’existe pas.',
 ),
 
+'hsb' => array(
+'contributors'=> 'Přinošowarjo',
+'contributors-toolbox'=> 'Hłowni přinošowarjo',
+'contributors-legend'=> 'Pokazaj hłownych přinošowarjow strony',
+'contributors-target'=> 'Titl:',
+'contributors-submit'=> 'Pokazać',
+'contributors-subtitle'=> 'Hłowni přinošowarjo strony $1',
+'contributors-others-long'=> 'Je hišće druhich $1 přinošowarjow k tutej stronje.',
+'contributors-others'=> 'a $1 {{PLURAL:$1|druhi|druhej|druzy|druhich}}',
+'contributors-badtitle'=> 'Njepłaćiwy titl.',
+'contributors-nosuchpage'=> 'Strona $1 njeeksistuje.',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'contributors' => 'Kontributor utama',
