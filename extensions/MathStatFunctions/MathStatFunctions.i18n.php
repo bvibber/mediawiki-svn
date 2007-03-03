@@ -42,7 +42,7 @@ $wgMathStatFunctionsMessages['sr-el'] = array(
         'msfunc_inf' => "Rezultat je beskonačan" ,
         'msfunc_div_zero' => "Deljivo sa nulom",
 );
-$wgMathStatFunctionsMagic['sr'] = $wgMathStatFunctionsMagic['sr-ec'];
+$wgMathStatFunctionsMessages['sr'] = $wgMathStatFunctionsMessages['sr-ec'];
 $wgMathStatFunctionsMagic['en'] = array(
         'const'         => array( 0, 'const' ),
         'median'        => array( 0, 'median' ),
