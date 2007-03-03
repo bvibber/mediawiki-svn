@@ -2437,7 +2437,7 @@ class Article {
 			$cdel = "(<small>$cdel</small>)";
 		}
 
-		$userlinks = $sk->revUserTools( $revision );
+		$userlinks = $sk->revUserTools( $revision, true );
 
 		$r = "\n\t\t\t\t<div id=\"mw-revision-info\">" . "<tt>$cdel</tt>" . wfMsg( 'revision-info', $td, $userlinks ) . "</div>\n" .
 		     "\n\t\t\t\t<div id=\"mw-revision-nav\">" . wfMsg( 'revision-nav', $prevdiff, $prevlink, $lnk, $curdiff, $nextlink, $nextdiff ) . "</div>\n\t\t\t";
