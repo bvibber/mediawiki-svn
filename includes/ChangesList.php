@@ -232,22 +232,29 @@ class ChangesList {
 		}
 	}
 
-	/** insert a formatted comment */
-	function insertComment(&$s, &$rc) {
+	/** insert a formatted action */
+	function insertAction(&$s, &$rc) {
 		# Add comment
-		if( $rc->mAttribs['rc_type'] != RC_MOVE && $rc->mAttribs['rc_type'] != RC_MOVE_OVER_REDIRECT ) {
+		if( $rc->mAttribs['rc_type'] == RC_LOG ) {
 			// log action
-			if ( $this->isDeleted($rc,Revision::DELETED_NAME) ) {
+			if ( $this->isDeleted($rc,LogViewer::DELETED_ACTION) ) {
 				$s .= ' <span class="history-deleted">' . wfMsgHtml('rev-deleted-event') . '</span>';
 			} else {
 				$s .= $this->skin->commentBlock( $rc->mAttribs['rc_actiontext'], $rc->getTitle() );
 			}
+		}
+	}
+
+	/** insert a formatted comment */
+	function insertComment(&$s, &$rc) {
+		# Add comment
+		if( $rc->mAttribs['rc_type'] != RC_MOVE && $rc->mAttribs['rc_type'] != RC_MOVE_OVER_REDIRECT ) {
 			// log comment
 			if ( $this->isDeleted($rc,Revision::DELETED_COMMENT) ) {
 				$s .= ' <span class="history-deleted">' . wfMsgHtml('rev-deleted-comment') . '</span>';
 			} else {
 				$s .= $this->skin->commentBlock( $rc->mAttribs['rc_comment'], $rc->getTitle() );
-			 }
+			}
 		}
 	}
 
@@ -322,6 +329,7 @@ class OldChangesList extends ChangesList {
 		}
 
 		$this->insertUserRelatedLinks($s,$rc);
+		$this->insertAction($s, $rc);
 		$this->insertComment($s, $rc);
 		
 		# Mark revision as deleted
@@ -376,7 +384,7 @@ class EnhancedChangesList extends ChangesList {
 			$rc->unpatrolled = false;
 		}
 
-		$showrev=true; $showhist=true;
+		$showrev=true;
 		# Make article link
 		if( $rc_type == RC_MOVE || $rc_type == RC_MOVE_OVER_REDIRECT ) {
 			$msg = ( $rc_type == RC_MOVE ) ? "1movedto2" : "1movedto2_redir";
@@ -484,12 +492,18 @@ class EnhancedChangesList extends ChangesList {
 
 		# Collate list of users
 		$isnew = false;
+		$namehidden = true;
 		$unpatrolled = false;
 		$userlinks = array();
 		foreach( $block as $rcObj ) {
 			$oldid = $rcObj->mAttribs['rc_last_oldid'];
 			if( $rcObj->mAttribs['rc_new'] ) {
 				$isnew = true;
+			}
+			// if all log actions to this page were hidden, then don't
+			// give the name of the affected page for this block
+			if( !($rcObj->mAttribs['rc_deleted'] & LogViewer::DELETED_ACTION) ) {
+				$namehidden = false;
 			}
 			$u = $rcObj->userlink;
 			if( !isset( $userlinks[$u] ) ) {
@@ -533,7 +547,10 @@ class EnhancedChangesList extends ChangesList {
 		$r .= ' '.$block[0]->timestamp.'&nbsp;&nbsp;</td><td>';
 
 		# Article link
-		$r .= $this->maybeWatchedLink( $block[0]->link, $block[0]->watched );
+		if ( $namehidden )
+			$r .= ' <span class="history-deleted">' . wfMsgHtml('rev-deleted-event') . '</span>';
+		else
+			$r .= $this->maybeWatchedLink( $block[0]->link, $block[0]->watched );
 		$r .= $wgContLang->getDirMark();
 
 		$curIdEq = 'curid=' . $block[0]->mAttribs['rc_cur_id'];
@@ -566,11 +583,11 @@ class EnhancedChangesList extends ChangesList {
 			} else {
 				$r .= '; ' . $chardiff . ' ';
 			}
-			
 
 			# History
 			$r .= $this->skin->makeKnownLinkObj( $block[0]->getTitle(),
 				$this->message['history'], $curIdEq.'&action=history' );
+
 			$r .= ')';
 		}
 
@@ -631,17 +648,10 @@ class EnhancedChangesList extends ChangesList {
 			$r .= $rcObj->userlink;
 			$r .= $rcObj->usertalklink;
 			// log action
-			if ( $this->isDeleted($rcObj,Revision::DELETED_NAME) ) {
-				$r .= ' <span class="history-deleted">' . wfMsgHtml('rev-deleted-event') . '</span>';
-			} else {
-				$r .= $this->skin->commentBlock( $rc_actiontext, $rcObj->getTitle() );
-			}
+			parent::insertAction($r, $rcObj);
 			// log comment
-			if ( $this->isDeleted($rcObj,Revision::DELETED_COMMENT) ) {
-				$r .= ' <span class="history-deleted">' . wfMsgHtml('rev-deleted-comment') . '</span>';
-			} else {
-				$r .= $this->skin->commentBlock( $rc_comment, $rcObj->getTitle() );
-			}
+			parent::insertComment($r, $rcObj);
+
 			$r .= "</td></tr>\n";
 		}
 		$r .= "</table></div>\n";
@@ -778,7 +788,7 @@ class EnhancedChangesList extends ChangesList {
 			  $r .= $this->skin->commentBlock( $rc_actiontext, $rcObj->getTitle() );
 			} 
 			// log comment
-			if ( $this->isDeleted($rcObj,Revision::DELETED_NAME) ) {
+			if ( $this->isDeleted($rcObj,LogViewer::DELETED_ACTION) ) {
 			   $r .= ' <span class="history-deleted">' . wfMsg('rev-deleted-event') . '</span>';
 			} else {
 			  $r .= $this->skin->commentBlock( $rc_comment, $rcObj->getTitle() );

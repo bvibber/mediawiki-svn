@@ -905,7 +905,7 @@ class UndeleteForm {
 				$rd='';
 				if( $wgUser->isAllowed( 'deleterevision' ) ) {
 					$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
-					if( !$this->userCan( $row, Revision::DELETED_RESTRICTED ) ) {
+					if( !$this->userCan( $row, Image::DELETED_RESTRICTED ) ) {
 					// If revision was hidden from sysops
 						$del = wfMsgHtml( 'rev-delundel' );			
 					} else {
@@ -914,7 +914,7 @@ class UndeleteForm {
 							'target=' . urlencode( $this->mTarget ) .
 							'&fileid=' . urlencode( $row->fa_id ) );
 						// Bolden oversighted content
-						if( $this->isDeleted( $row, Revision::DELETED_RESTRICTED ) )
+						if( $this->isDeleted( $row, Image::DELETED_RESTRICTED ) )
 							$del = "<strong>$del</strong>";
 					}
 				$rd = "<tt>(<small>$del</small>)</tt>";
@@ -989,11 +989,11 @@ class UndeleteForm {
 	 * @return string
 	 */
 	function getFileUser( $row ) {	
-		if ( !$this->userCan($row, Revision::DELETED_USER) ) {
+		if ( !$this->userCan($row, Image::DELETED_USER) ) {
 			return '<span class="history-deleted">' . wfMsgHtml( 'rev-deleted-user' ) . '</span>';
 		} else {
 			$link = $this->sk->userLink( $row->fa_user, $row->fa_user_text ) . $this->sk->userToolLinks( $row->fa_user, $row->fa_user_text );
-			if ( $this->isDeleted($row, Revision::DELETED_USER) )
+			if ( $this->isDeleted($row, Image::DELETED_USER) )
 				$link = '<span class="history-deleted">' . $link . '</span>';
 			return $link;
 		}
@@ -1019,11 +1019,11 @@ class UndeleteForm {
 	 * @return string
 	 */
 	function getFileComment( $row ) {
-		if ( !$this->userCan($row, Revision::DELETED_COMMENT) ) {
+		if ( !$this->userCan($row, Image::DELETED_COMMENT) ) {
 			return '<span class="history-deleted"><span class="comment">' . wfMsgHtml( 'rev-deleted-comment' ) . '</span></span>';
 		} else {
 			$link = $this->sk->commentBlock( $row->fa_description );
-			if ( $this->isDeleted($row, Revision::DELETED_COMMENT) )
+			if ( $this->isDeleted($row, Image::DELETED_COMMENT) )
 				$link = '<span class="history-deleted">' . $link . '</span>';
 			return $link;
 		}
@@ -1062,7 +1062,7 @@ class UndeleteForm {
 			return $wgUser->isAllowed( $permission );
 		} else if( isset($row->fa_deleted) && ($row->fa_deleted & $field) == $field ) {
 		// files
-			$permission = ( $row->fa_deleted & Revision::DELETED_RESTRICTED ) == Revision::DELETED_RESTRICTED
+			$permission = ( $row->fa_deleted & Image::DELETED_RESTRICTED ) == Image::DELETED_RESTRICTED
 				? 'hiderevision'
 				: 'deleterevision';
 			wfDebug( "Checking for $permission due to $field match on $row->fa_deleted\n" );

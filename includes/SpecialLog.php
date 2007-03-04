@@ -259,6 +259,11 @@ class LogReader {
  * @addtogroup SpecialPage
  */
 class LogViewer {
+	const DELETED_ACTION = 1;
+	const DELETED_COMMENT = 2;
+	const DELETED_USER = 4;
+    const DELETED_RESTRICTED = 8;
+    
 	/**
 	 * @var LogReader $reader
 	 */
@@ -409,8 +414,8 @@ class LogViewer {
 	 * default is deleted if not specified for security
 	 * @return Title
 	 */
-	function logActionText( $log_type, $log_action, $title, $skin, $paramArray, $log_deleted = Revision::DELETED_NAME ) {
-		if( $log_deleted & Revision::DELETED_NAME ) {
+	function logActionText( $log_type, $log_action, $title, $skin, $paramArray, $log_deleted = LogViewer::DELETED_ACTION ) {
+		if( $log_deleted & LogViewer::DELETED_ACTION ) {
 			return '<span class="history-deleted">' . wfMsgHtml('rev-deleted-event') . '</span>';
 		} else {
 		  	$action = LogPage::actionText( $log_type, $log_action, $title, $this->skin, $paramArray, true, true );

@@ -854,9 +854,9 @@ class Linker {
 	 * @return string HTML
 	 */
 	function logUserLink( $event, $isPublic = false ) {
-		if( LogViewer::isDeleted( $event, Revision::DELETED_USER ) && $isPublic ) {
+		if( LogViewer::isDeleted( $event, LogViewer::DELETED_USER ) && $isPublic ) {
 			$link = wfMsgHtml( 'rev-deleted-user' );
-		} else if( LogViewer::userCan( $event, Revision::DELETED_USER ) ) {
+		} else if( LogViewer::userCan( $event, LogViewer::DELETED_USER ) ) {
 			if ( isset($event->user_name) ) {
 				$link = $this->userLink( $event->log_user, $event->user_name );
 			} else {
@@ -866,7 +866,7 @@ class Linker {
 		} else {
 			$link = wfMsgHtml( 'rev-deleted-user' );
 		}
-		if( LogViewer::isDeleted( $event, Revision::DELETED_USER ) ) {
+		if( LogViewer::isDeleted( $event, LogViewer::DELETED_USER ) ) {
 			return '<span class="history-deleted">' . $link . '</span>';
 		}
 		return $link;
@@ -920,9 +920,9 @@ class Linker {
 	 * @return string HTML
 	 */
 	function logUserTools( $event, $isPublic = false ) {
-		if( LogViewer::isDeleted( $event, Revision::DELETED_USER ) && $isPublic ) {
+		if( LogViewer::isDeleted( $event, LogViewer::DELETED_USER ) && $isPublic ) {
 			$link = wfMsgHtml( 'rev-deleted-user' );
-		} else if( LogViewer::userCan( $event, Revision::DELETED_USER ) ) {
+		} else if( LogViewer::userCan( $event, LogViewer::DELETED_USER ) ) {
 			if ( isset($event->user_name) ) {
 				$link = $this->userLink( $event->log_user, $event->user_name ) . 
 				' ' . $this->userToolLinks( $event->log_user, $event->user_name );
@@ -934,7 +934,7 @@ class Linker {
 		} else {
 			$link = wfMsgHtml( 'rev-deleted-user' );
 		}
-		if( LogViewer::isDeleted( $event, Revision::DELETED_USER ) ) {
+		if( LogViewer::isDeleted( $event, LogViewer::DELETED_USER ) ) {
 			return '<span class="history-deleted">' . $link . '</span>';
 		}
 		return $link;
@@ -1108,14 +1108,14 @@ class Linker {
 	 * @return string HTML
 	 */
 	function logComment( $event, $isPublic = false ) {
-		if( LogViewer::isDeleted( $event, Revision::DELETED_COMMENT ) && $isPublic ) {
+		if( LogViewer::isDeleted( $event, LogViewer::DELETED_COMMENT ) && $isPublic ) {
 			$block = ' ' . wfMsgHtml( 'rev-deleted-comment' );
-		} else if( LogViewer::userCan( $event, Revision::DELETED_COMMENT ) ) {
+		} else if( LogViewer::userCan( $event, LogViewer::DELETED_COMMENT ) ) {
 			$block = $this->commentBlock( LogViewer::getRawComment( $event ) );
 		} else {
 			$block = ' ' . wfMsgHtml( 'rev-deleted-comment' );
 		}
-		if( LogViewer::isDeleted( $event, Revision::DELETED_COMMENT ) ) {
+		if( LogViewer::isDeleted( $event, LogViewer::DELETED_COMMENT ) ) {
 			return "<span class=\"history-deleted\">$block</span>";
 		}
 		return $block;

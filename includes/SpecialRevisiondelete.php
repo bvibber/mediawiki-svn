@@ -63,7 +63,7 @@ class RevisionDeleteForm {
 		   $hide_text_name = array( 'revdelete-hide-image', 'wpHideImage', Image::DELETED_FILE );
 		   $this->deletetype='file';
 		} else if ( $logid ) {
-		   $hide_text_name = array( 'revdelete-hide-name', 'wpHideName', Revision::DELETED_NAME );
+		   $hide_text_name = array( 'revdelete-hide-name', 'wpHideName', LogViewer::DELETED_ACTION );
 		   $this->deletetype='log';
 		} else {
 		   $hide_text_name = array( 'revdelete-hide-text', 'wpHideText', Revision::DELETED_TEXT );
@@ -83,12 +83,12 @@ class RevisionDeleteForm {
 	 * @param $nbitfield, new bitfiled
 	 */	
 	function setBitfield( $bitfield, $nbitfield ) {
-		if ( $nbitfield & Image::DELETED_FILE) $bitfield |= Image::DELETED_FILE;
 		if ( $nbitfield & Revision::DELETED_TEXT) $bitfield |= Revision::DELETED_TEXT;
+		if ( $nbitfield & LogViewer::DELETED_ACTION) $bitfield |= LogViewer::DELETED_ACTION;
+		if ( $nbitfield & Image::DELETED_FILE) $bitfield |= Image::DELETED_FILE;
 		if ( $nbitfield & Revision::DELETED_COMMENT) $bitfield |= Revision::DELETED_COMMENT;
 		if ( $nbitfield & Revision::DELETED_USER) $bitfield |= Revision::DELETED_USER;
 		if ( $nbitfield & Revision::DELETED_RESTRICTED) $bitfield |= Revision::DELETED_RESTRICTED;
-		if ( $nbitfield & Revision::DELETED_NAME) $bitfield |= Revision::DELETED_NAME;
 		return $bitfield;
 	}
 	
@@ -400,11 +400,11 @@ class RevisionDeleteForm {
 		$date = $wgContLang->timeanddate( $event->log_timestamp );
 		$paramArray = LogPage::extractParams( $event->log_params );
 
-		if ( !LogViewer::userCan($event,Revision::DELETED_NAME) ) {
+		if ( !LogViewer::userCan($event,LogViewer::DELETED_ACTION) ) {
 			$action = '<span class="history-deleted">' . wfMsgHtml('rev-deleted-event') . '</span>';	
 		} else {	
 			$action = LogPage::actionText( $event->log_type, $event->log_action, $this->page, $this->skin, $paramArray, true, true );
-			if( $event->log_deleted & Revision::DELETED_NAME )
+			if( $event->log_deleted & LogViewer::DELETED_ACTION )
 				$action = '<span class="history-deleted">' . $action . '</span>';
 		}
 		return

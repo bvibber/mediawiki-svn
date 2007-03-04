@@ -11,7 +11,6 @@ class Revision {
 	const DELETED_COMMENT = 2;
 	const DELETED_USER = 4;
     const DELETED_RESTRICTED = 8;
-    const DELETED_NAME = 16;
 	
 	/**
 	 * Load a page revision from a given revision ID number.

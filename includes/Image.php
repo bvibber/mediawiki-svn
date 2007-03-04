@@ -25,7 +25,10 @@ define( 'MW_IMAGE_VERSION', 1 );
 class Image
 {
 	const DELETED_FILE = 1;
-
+	const DELETED_COMMENT = 2;
+	const DELETED_USER = 4;
+    const DELETED_RESTRICTED = 8;
+    
 	/**#@+
 	 * @private
 	 */
@@ -2038,9 +2041,9 @@ class Image
 		$bitfield = 0;
 		if ( $suppress ) {
 			$bitfield |= self::DELETED_FILE;
-			$bitfield |= Revision::DELETED_COMMENT;
-			$bitfield |= Revision::DELETED_USER;
-			$bitfield |= Revision::DELETED_RESTRICTED;
+			$bitfield |= self::DELETED_COMMENT;
+			$bitfield |= self::DELETED_USER;
+			$bitfield |= self::DELETED_RESTRICTED;
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
