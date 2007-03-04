@@ -698,5 +698,9 @@ class LogViewer {
 	}
 }
 
+/**
+ * Aliases for backwards compatibility with 1.6
+ */
+define( 'MW_REV_DELETED_ACTION', LogViewer::DELETED_ACTION );
 
 ?>

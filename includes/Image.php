@@ -2517,4 +2517,9 @@ class ThumbnailImage {
 
 }
 
+/**
+ * Aliases for backwards compatibility with 1.6
+ */
+define( 'MW_REV_DELETED_IMAGE', Image::DELETED_FILE );
+
 ?>
