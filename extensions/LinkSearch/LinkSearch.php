@@ -7,6 +7,11 @@
  */
 
 $wgExtensionFunctions[] = 'wfLinkSearchSetup';
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Linksearch',
+	'author' => 'Brion Vibber',
+	'description' => 'Search for Weblinks',
+);
 
 # Internationalisation file
 require_once( 'LinkSearch.i18n.php' );
@@ -21,23 +26,24 @@ function wfLinkSearchSetup() {
 	$GLOBALS['wgSpecialPages']['Linksearch'] = array( /*class*/ 'SpecialPage', 
 		/*name*/ 'Linksearch', /* permission */'', /*listed*/ true, 
 		/*function*/ false, /*file*/ false );
-	
+
 	class LinkSearchPage extends QueryPage {
-		function __construct( $query ) {
+		function __construct( $query , $ns ) {
 			$this->mQuery = $query;
+			$this->mNs = $ns;
 		}
-		
+
 		function getName() {
 			return 'Linksearch';
 		}
-		
+
 		/**
 		 * Disable RSS/Atom feeds
 		 */
 		function isSyndicated() {
 			return false;
 		}
-		
+
 		/**
 		 * Return an appropriately formatted LIKE query
 		 * @fixme Fix up LinkFilter to work with non-http links as well
@@ -48,19 +54,19 @@ function wfLinkSearchSetup() {
 			}
 			return LinkFilter::makeLike( $query );
 		}
-		
+
 		function linkParameters() {
 			return array( 'target' => $this->mQuery );
 		}
-		
+
 		function getSQL() {
 			$dbr = wfGetDB( DB_SLAVE );
-			
 			$page = $dbr->tableName( 'page' );
 			$externallinks = $dbr->tableName( 'externallinks' );
-			
 			$encSearch = $dbr->addQuotes( self::mungeQuery( $this->mQuery ) );
-			
+			$encSQL = '';
+
+			if ( isset ($this->mNs) ) $encSQL = 'AND page_namespace=' . $this->mNs;
 			return
 				"SELECT
 					page_namespace AS namespace,
@@ -72,19 +78,19 @@ function wfLinkSearchSetup() {
 					$externallinks FORCE INDEX (el_index)
 				WHERE
 					page_id=el_from
-					AND el_index LIKE $encSearch";
+					AND el_index LIKE $encSearch
+					$encSQL";
 		}
-		
+
 		function formatResult( $skin, $result ) {
 			$title = Title::makeTitle( $result->namespace, $result->title );
 			$url = $result->url;
-			
 			$pageLink = $skin->makeKnownLinkObj( $title );
 			$urlLink = $skin->makeExternalLink( $url, $url );
-			
+
 			return wfMsgHtml( 'linksearch-line', $urlLink, $pageLink );
 		}
-		
+
 		/**
 		 * Override to check query validity.
 		 */
@@ -99,7 +105,7 @@ function wfLinkSearchSetup() {
 				parent::doQuery( $offset, $limit );
 			}
 		}
-		
+
 		/**
 		 * Override to squash the ORDER BY.
 		 * We do a truncated index search, so the optimizer won't trust
@@ -111,25 +117,36 @@ function wfLinkSearchSetup() {
 		}
 	
 	}
-	
+
 	function wfSpecialLinksearch( $par=null ) {
 		list( $limit, $offset ) = wfCheckLimits();
+		global $wgOut, $wgRequest;
 		$target = $GLOBALS['wgRequest']->getVal( 'target', $par );
-		
 		$self = Title::makeTitle( NS_SPECIAL, 'Linksearch' );
-		
-		global $wgOut;
+
 		$wgOut->addWikiText( wfMsg( 'linksearch-text' ) );
-		$wgOut->addHtml(
-			wfOpenElement( 'form',
-				array( 'method' => 'get', 'action' => $GLOBALS['wgScript'] ) ) .
-			wfHidden( 'title', $self->getPrefixedDbKey() ) .
-			wfInput( 'target', 50, $target ) .
-			wfSubmitButton( wfMsg( 'search' ) ) .
-			wfCloseElement( 'form' ) );
+		$patternbox = "<input type='text' size='50' name='target' id='pattern' value=\"" . htmlspecialchars ( $target ) . '" />';
+		$submitbutton = '<input type="submit" value="' . wfMsgHtml( 'linksearch-ok' ) . '" />';
+		$namespaceselect = HTMLnamespaceselector($namespace, '');
+
+		$out = "<div class='namespaceoptions'><form method='get' action='{$wgScript}'>";
+		$out .= '<input type="hidden" name="title" value="'.$self->getPrefixedDbKey().'" />';
+		$out .= "<table id='nsselect' class='linksearch'>
+			<tr>
+				<td align='right'>" . wfMsgHtml('linksearch-pat') . "</td>
+				<td align='left'><label for='nsfrom'>$patternbox</label></td>
+			</tr>
+			<tr>
+				<td align='right'><label for='namespace'>" . wfMsgHtml('linksearch-ns') . "</label></td>
+				<td align='left'>$namespaceselect $submitbutton</td>
+			</tr>
+			</table>";
+		$out .= '</form></div>';
+		$wgOut->addHtml($out);
+		$namespace = $wgRequest->getIntorNull( 'namespace' );
 
 		if( $target != '' ) {
-			$searcher = new LinkSearchPage( $target );
+			$searcher = new LinkSearchPage( $target, $namespace );
 			$searcher->doQuery( $offset, $limit );
 		}
 	}
