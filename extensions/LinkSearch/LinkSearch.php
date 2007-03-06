@@ -56,7 +56,7 @@ function wfLinkSearchSetup() {
 		}
 
 		function linkParameters() {
-			return array( 'target' => $this->mQuery );
+			return array( 'target' => $this->mQuery, 'namespace' => $this->mNs );
 		}
 
 		function getSQL() {
@@ -115,35 +115,26 @@ function wfLinkSearchSetup() {
 		function getOrder() {
 			return '';
 		}
-	
 	}
 
-	function wfSpecialLinksearch( $par=null ) {
+	function wfSpecialLinksearch( $par=null, $ns=null ) {
 		list( $limit, $offset ) = wfCheckLimits();
 		global $wgOut, $wgRequest;
 		$target = $GLOBALS['wgRequest']->getVal( 'target', $par );
+		$namespace = $GLOBALS['wgRequest']->getIntorNull( 'namespace', $ns );
 		$self = Title::makeTitle( NS_SPECIAL, 'Linksearch' );
 
 		$wgOut->addWikiText( wfMsg( 'linksearch-text' ) );
-		$patternbox = "<input type='text' size='50' name='target' id='pattern' value=\"" . htmlspecialchars ( $target ) . '" />';
-		$submitbutton = '<input type="submit" value="' . wfMsgHtml( 'linksearch-ok' ) . '" />';
-		$namespaceselect = HTMLnamespaceselector($namespace, '');
-
-		$out = "<div class='namespaceoptions'><form method='get' action='{$wgScript}'>";
-		$out .= '<input type="hidden" name="title" value="'.$self->getPrefixedDbKey().'" />';
-		$out .= "<table id='nsselect' class='linksearch'>
-			<tr>
-				<td align='right'>" . wfMsgHtml('linksearch-pat') . "</td>
-				<td align='left'><label for='nsfrom'>$patternbox</label></td>
-			</tr>
-			<tr>
-				<td align='right'><label for='namespace'>" . wfMsgHtml('linksearch-ns') . "</label></td>
-				<td align='left'>$namespaceselect $submitbutton</td>
-			</tr>
-			</table>";
-		$out .= '</form></div>';
-		$wgOut->addHtml($out);
-		$namespace = $wgRequest->getIntorNull( 'namespace' );
+		$wgOut->addHtml(
+			wfOpenElement( 'form',
+				array( 'method' => 'get', 'action' => $GLOBALS['wgScript'] ) ) .
+			wfHidden( 'title', $self->getPrefixedDbKey() ) .
+			'<p>' . wfMsgExt( 'linksearch-pat', array( 'parseinline' ) ) . ' ' . 
+			wfInput( 'target', 50, $target ) . "</p>\n" .
+			'<p>' . wfMsgExt( 'linksearch-ns', array( 'parseinline') ) . 
+			XML::namespaceSelector( $namespace, '' ) .
+			wfSubmitButton( wfMsg( 'linksearch-ok' ) ) . "</p>\n" .
+			wfCloseElement( 'form' ) );
 
 		if( $target != '' ) {
 			$searcher = new LinkSearchPage( $target, $namespace );
