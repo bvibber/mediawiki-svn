@@ -332,7 +332,93 @@ function efMakeBotMessages() {
 'makebot-revoked' => '[[{{ns:user}}:$1|$1]] n\' a pus d\' livea d\' robot.',
 ),
 
+/* Chinese (China) (下一次登录) */
+'zh-cn' => array(
+'makebot' => '授予或中止机器人身份',
+'makebot-header' => "'''本地行政员可以使用此页授予或中止另一个帐号的[[Help:机器人|机器人身份]]。'''<br />机器人状态会导致该用户的编辑不被显示在[[Special:Recentchanges|最近更改]]和其他类似列表中，因此用于标识进行自动编辑的用户，但需要依据相应的可行方针。",
+'makebot-username' => '用户名：',
+'makebot-search' => '搜索',
+'makebot-isbot' => '[[User:$1|$1]]拥有机器人身份。',
+'makebot-notbot' => '[[User:$1|$1]]没有机器人身份。',
+'makebot-privileged' => '[[User:$1|$1]]是[[Special:Listadmins|管理员]]，不能接受机器人身份。',
+'makebot-change' => '改变身份：',
+'makebot-grant' => '授予',
+'makebot-revoke' => '中止',
+'makebot-comment' => '备注：',
+'makebot-granted' => '[[User:$1|$1]]拥有了机器人身份。',
+'makebot-revoked' => '[[User:$1|$1]]已不再拥有机器人身份。',
+'makebot-logpage' => '机器人状态日志',
+'makebot-logpagetext' => '这是用户[[Help:机器人|机器人]]更改的日志。',
+'makebot-logentrygrant' => '授予[[$1]]机器人身份',
+'makebot-logentryrevoke' => ' 中止[[$1]]的机器人身份',
+),
+
+/* Chinese (Hong Kong) (KilluaZaoldyeck, Shinjiman) */
+'zh-hk' => array(
+'makebot' => '授予或終止機械人身份',
+'makebot-header' => "'''所屬行政員允許使用此頁面授予或終止另一個帳號的[[Help:機械人|機械人身份]]。'''<br />機械人身份的帳號所進行的修改將不被顯示在[[Special:Recentchanges|最近更改]]和其他類關列表中，因此，此身份用於標記自動編輯的帳號。此項的相關操作必須符合現行方針。",
+'makebot-username' => '用戶名：',
+'makebot-search' => '搜索',
+'makebot-isbot' => '[[User:$1|$1]]擁有機械人身份。',
+'makebot-notbot' => '[[User:$1|$1]]沒有機械人身份。',
+'makebot-privileged' => '[[User:$1|$1]]是[[Special:Listadmins|管理員]]，不能使用機械人身份。',
+'makebot-change' => '改變身份：',
+'makebot-grant' => '授予',
+'makebot-revoke' => '終止',
+'makebot-comment' => '備註：',
+'makebot-granted' => '[[User:$1|$1]]擁有機械人身份。',
+'makebot-revoked' => '[[User:$1|$1]]失去機械人身份。',
+'makebot-logpage' => '機械人身份記錄',
+'makebot-logpagetext' => '這是用戶[[Help:機械人|機械人]]更改的記錄。',
+'makebot-logentrygrant' => '授予[[$1]]機械人身份',
+'makebot-logentryrevoke' => ' 終止[[$1]]機械人身份',
+),
+
+/* Chinese (Taiwan) (KilluaZaoldyeck, Shinjiman) */
+'zh-tw' => array(
+'makebot' => '授予或終止機器人身分',
+'makebot-header' => "'''所屬行政員允許使用此頁面授予或終止另一個帳號的[[Help:機器人|機器人身分]]。'''<br />機器人身分的帳號所進行的修改將不被顯示在[[Special:Recentchanges|最近更改]]和其他類關列表中，因此，此身分用於標記自動編輯的帳號。此項的相關操作必須符合現行方針。",
+'makebot-username' => '帳號名稱：',
+'makebot-search' => '搜索',
+'makebot-isbot' => '[[User:$1|$1]]擁有機器人身分。',
+'makebot-notbot' => '[[User:$1|$1]]沒有機器人身分。',
+'makebot-privileged' => '[[User:$1|$1]]是[[Special:Listadmins|管理員]]，不能使用機器人身分。',
+'makebot-change' => '改變身分：',
+'makebot-grant' => '授予',
+'makebot-revoke' => '終止',
+'makebot-comment' => '備註：',
+'makebot-granted' => '[[User:$1|$1]]擁有機器人身分。',
+'makebot-revoked' => '[[User:$1|$1]]失去機器人身分。',
+'makebot-logpage' => '機器人身分記錄',
+'makebot-logpagetext' => '這是用戶[[Help:機器人|機器人]]更改的記錄。',
+'makebot-logentrygrant' => '授予[[$1]]機器人身分',
+'makebot-logentryrevoke' => ' 終止[[$1]]機器人身分',
+),
+
+/* Cantonese (Hillgentleman, Shinjiman) */
+'zh-yue' => array(
+'makebot' => '畀或收番機械人身份',
+'makebot-header' => "'''本地事務員可以用哩頁畀或收番另一用户嘅 [[Help:機械人|機械人身份]]。'''<br />機械人可以喺[[Special:Recentchanges|最近更改]]之類嘅表道匿埋。機械人身份可用來嘜住啲自動化嘅編者。記住要參攷相關嘅政策。",
+'makebot-username' => '用户名：',
+'makebot-search' => '去',
+'makebot-isbot' => '[[User:$1|$1]] 係隻機械人。',
+'makebot-notbot' => '[[User:$1|$1]]唔係一隻機械人。',
+'makebot-privileged' => '[[User:$1|$1]] 係 [[Special:Listadmins|管理員]]，唔准扮機械人。',
+'makebot-change' => '改身份：',
+'makebot-grant' => '畀',
+'makebot-revoke' => '收番',
+'makebot-comment' => '評論：',
+'makebot-granted' => '[[User:$1|$1]] 而家係隻機械人。',
+'makebot-revoked' => '[[User:$1|$1]] 而家唔一係隻機械人。',
+'makebot-logpage' => '機械人身份記錄',
+'makebot-logpagetext' => '哩頁紀錄各用户啲 [[Help:機械人|機械人]]身份記錄。',
+'makebot-logentrygrant' => '畀咗[[$1]]嘅機械人身份',
+'makebot-logentryrevoke' => ' 收番[[$1]]嘅機械人身份',
+),
+
 	);
+	/* Chinese (Singapore), inherited from Chinese (China) */
+	$messages['zh-sg'] = $messages['zh-cn'];
 	return $messages;
 }
 ?>
