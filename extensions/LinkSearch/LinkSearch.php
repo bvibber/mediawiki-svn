@@ -124,17 +124,19 @@ function wfLinkSearchSetup() {
 		$namespace = $GLOBALS['wgRequest']->getIntorNull( 'namespace', $ns );
 		$self = Title::makeTitle( NS_SPECIAL, 'Linksearch' );
 
+
 		$wgOut->addWikiText( wfMsg( 'linksearch-text' ) );
 		$wgOut->addHtml(
-			wfOpenElement( 'form',
-				array( 'method' => 'get', 'action' => $GLOBALS['wgScript'] ) ) .
-			wfHidden( 'title', $self->getPrefixedDbKey() ) .
-			'<p>' . wfMsgExt( 'linksearch-pat', array( 'parseinline' ) ) . ' ' . 
-			wfInput( 'target', 50, $target ) . "</p>\n" .
-			'<p>' . wfMsgExt( 'linksearch-ns', array( 'parseinline') ) . 
+			Xml::openElement( 'form', array( 'method' => 'get', 'action' => $GLOBALS['wgScript'] ) ) .
+			Xml::hidden( 'title', $self->getPrefixedDbKey() ) .
+			'<fieldset>' .
+			Xml::element( 'legend', array(), wfMsg( 'linksearch' ) ) .
+			Xml::inputLabel( wfMsg( 'linksearch-pat' ), 'target', 'target', 50 , $target ) . '<br />' .
+			Xml::label( wfMsg( 'linksearch-ns' ), 'namespace' ) .
 			XML::namespaceSelector( $namespace, '' ) .
-			wfSubmitButton( wfMsg( 'linksearch-ok' ) ) . "</p>\n" .
-			wfCloseElement( 'form' ) );
+			Xml::submitButton( wfMsg( 'linksearch-ok' ) ) .
+			'</fieldset>' .
+			Xml::closeElement( 'form' ) );
 
 		if( $target != '' ) {
 			$searcher = new LinkSearchPage( $target, $namespace );
