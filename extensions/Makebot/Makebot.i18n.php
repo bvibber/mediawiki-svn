@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * Internationalisation file for the MakeBot extension
