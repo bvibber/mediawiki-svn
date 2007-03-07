@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * Internationalisation file for ImageMap extension
@@ -58,6 +58,7 @@ function efImageMapMessages() {
 'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
+
 /* Hebrew (Rotem Liss) */
 'he' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: יש לציין תמונה בשורה הראשונה',
@@ -108,6 +109,74 @@ function efImageMapMessages() {
 'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 #Since, as far I know, the alignment indicator are kept in English in the
 #  image inclusion syntax, I kept in English here too.
+),
+
+/* Kazakh default (AlefZet) */
+'kk' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: бірінші жолда суретті көрсету қажет',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: сурет жарамсыз немесе жоқ',
+'imagemap_no_link'              => '&lt;imagemap&gt;: $1 жол аяғында жарамды сілтеме табылмады',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: $1 жол аяғындағы сілтемеде жарамсыз атау',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: $1 жолдағы кескін үшін координаттар жетіксіз',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: $1 жолдағы кескін жарамсыз, әрбір жол мынаның біреуінен басталу қажет: ',
+
+'imagemap_no_areas'             => '&lt;imagemap&gt;: ең кемінде бір аумақ маманданымы берілу қажет',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 жолында жарамсыз координата, сан болуы қажет',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: жарамсыз сипаттама маманданымы, мынаның біреуі болуы қажет: $1',
+'imagemap_description'          => 'Бұл сурет туралы',
+# Note to translators: keep the same order
+'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
+),
+
+/* Kazakh Cyrillic (AlefZet) */
+'kk-kz' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: бірінші жолда суретті көрсету қажет',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: сурет жарамсыз немесе жоқ',
+'imagemap_no_link'              => '&lt;imagemap&gt;: $1 жол аяғында жарамды сілтеме табылмады',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: $1 жол аяғындағы сілтемеде жарамсыз атау',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: $1 жолдағы кескін үшін координаттар жетіксіз',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: $1 жолдағы кескін жарамсыз, әрбір жол мынаның біреуінен басталу қажет: ',
+
+'imagemap_no_areas'             => '&lt;imagemap&gt;: ең кемінде бір аумақ маманданымы берілу қажет',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 жолында жарамсыз координата, сан болуы қажет',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: жарамсыз сипаттама маманданымы, мынаның біреуі болуы қажет: $1',
+'imagemap_description'          => 'Бұл сурет туралы',
+# Note to translators: keep the same order
+'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
+),
+
+/* Kazakh Latin (AlefZet) */
+'kk-tr' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: birinşi jolda swretti körsetw qajet',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: swret jaramsız nemese joq',
+'imagemap_no_link'              => '&lt;imagemap&gt;: $1 jol ayağında jaramdı silteme tabılmadı',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: $1 jol ayağındağı siltemede jaramsız ataw',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: $1 joldağı keskin üşin koordïnattar jetiksiz',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: $1 joldağı keskin jaramsız, ärbir jol mınanıñ birewinen bastalw qajet: ',
+
+'imagemap_no_areas'             => '&lt;imagemap&gt;: eñ keminde bir awmaq mamandanımı berilw qajet',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 jolında jaramsız koordïnata, san bolwı qajet',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: jaramsız sïpattama mamandanımı, mınanıñ birewi bolwı qajet: $1',
+'imagemap_description'          => 'Bul swret twralı',
+# Note to translators: keep the same order
+'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
+),
+
+/* Kazakh Arabic (AlefZet) */
+'kk-cn' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: بٴىرٴىنشٴى جولدا سۋرەتتٴى كٴورسەتۋ قاجەت',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: سۋرەت جارامسىز نەمەسە جوق',
+'imagemap_no_link'              => '&lt;imagemap&gt;: $1 جول اياعىندا جارامدى سٴىلتەمە تابىلمادى',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: $1 جول اياعىنداعى سٴىلتەمەدە جارامسىز اتاۋ',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: $1 جولداعى كەسكٴىن ٴۇشٴىن كوورديناتتار جەتٴىكسٴىز',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: $1 جولداعى كەسكٴىن جارامسىز, ٴاربٴىر جول مىنانىڭ بٴىرەۋٴىنەن باستالۋ قاجەت: ',
+
+'imagemap_no_areas'             => '&lt;imagemap&gt;: ەڭ كەمٴىندە بٴىر اۋماق ماماندانىمى بەرٴىلۋ قاجەت',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 جولىندا جارامسىز كوورديناتا, سان بولۋى قاجەت',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: جارامسىز سيپاتتاما ماماندانىمى, مىنانىڭ بٴىرەۋٴى بولۋى قاجەت: $1',
+'imagemap_description'          => 'بۇل سۋرەت تۋرالى',
+# Note to translators: keep the same order
+'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 /* nld / Dutch (Siebrand Mazeland) */

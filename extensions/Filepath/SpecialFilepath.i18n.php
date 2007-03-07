@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Internationalisation file for Filepath extension.
  *
@@ -53,17 +53,17 @@ $wgFilepathMessages['ja'] = array(
 	'filepath_submit' => 'パスを取得',
 );
 $wgFilepathMessages['kk-kz'] = array(
-	'filepath'        => 'Файл орналасуын табу ',
+	'filepath'        => 'Файл орналасуы ',
 	'filepath_page'   => 'Файл аты:',
 	'filepath_submit' => 'Орналасуын табу ',
 );
 $wgFilepathMessages['kk-tr'] = array(
-	'filepath'        => 'Faýl ornalaswın tabw ',
+	'filepath'        => 'Faýl ornalaswı ',
 	'filepath_page'   => 'Faýl atı:',
 	'filepath_submit' => 'Ornalaswın tabw ',
 );
 $wgFilepathMessages['kk-cn'] = array(
-	'filepath'        => 'فايل ورنالاسۋىن تابۋ ',
+	'filepath'        => 'فايل ورنالاسۋى ',
 	'filepath_page'   => 'فايل اتى:',
 	'filepath_submit' => 'ورنالاسۋىن تابۋ ',
 );

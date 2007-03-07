@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * Internationalisation file for the MakeBot extension
@@ -143,6 +143,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'ביטל את הרשאת הבוט למשתמש [[$1]]',
 ),
 
+/* Indonesian (Ivan Lanin) */
+'id' => array(
+'makebot' => 'Pemberian atau penarikan status bot',
+'makebot-header' => "'''Birokrat lokal dapat menggunakan halaman ini untuk memberikan atau menarik [[Help:Bot|status bot]] untuk akun pengguna lain.'''<br />Status bot akan menyembunyikan suntingan pengguna dari [[Special:Recentchanges|perubahan terbaru]] dan daftar serupa lainnya, dan berguna untuk menandai pengguna yang melakukan penyuntingan otomatis. Hal ini harus dilakukan sesuai dengan kebijakan yang telah digariskan.",
+'makebot-username' => 'Nama pengguna:',
+'makebot-search' => 'Cari',
+'makebot-isbot' => '[[User:$1|$1]] mempunyai status bot.',
+'makebot-notbot' => '[[User:$1|$1]] tak mempunyai status bot.',
+'makebot-privileged' => '[[User:$1|$1]] mempunyai [[Special:Listadmins|berstatus pengurus atau birokrat]], karenanya tak bisa mendapat status bot.',
+'makebot-change' => 'Ganti status:',
+'makebot-grant' => 'Berikan',
+'makebot-revoke' => 'Tarik',
+'makebot-comment' => 'Komentar:',
+'makebot-granted' => '[[User:$1|$1]] sekarang mempunyai status bot.',
+'makebot-revoked' => '[[User:$1|$1]] sekarang tidak lagi mempunyai status bot.',
+'makebot-logpage' => 'Log perubahan status bot',
+'makebot-logpagetext' => 'Di bawah adalah log perubahan status [[Help:Bot|bot]] pengguna.',
+'makebot-logentrygrant' => 'memberikan status bot untuk [[$1]]',
+'makebot-logentryrevoke' => 'menarik status bot dari [[$1]]',
+),
+
 /* Italian (BrokenArrow) */
 'it' => array(
 'makebot' => 'Assegna o revoca lo status di bot',
@@ -162,6 +183,90 @@ function efMakeBotMessages() {
 'makebot-logpagetext' => 'Qui di seguito viene riportata la lista dei cambiamenti di status dei [[{{ns:help}}:bot]].',
 'makebot-logentrygrant' => 'ha concesso lo status di bot a [[$1]]',
 'makebot-logentryrevoke' => 'ha revocato lo status di bot a [[$1]]',
+),
+
+/* Kazakh default (kk:User:AlefZet) */
+'kk' => array(
+'makebot' => 'Бот күйін беру не қайтару',
+'makebot-header' => "'''Бұл бетті орнындағы төрешілер басқа катысушы тіркелгісіне [[{{ns:help}}:Боттар|бот күйін]] беру не қайтару үшін қолданады.'''<br />Берілген бот күйі қатысушының өңдеулерін [[{{ns:special}}:Recentchanges|жуықтағы өзгерістер]] сияқты тізімдерден жасырады, және де өздік түрде өңдеу жасайтын қатысушыларды белгілеуге қолайлы. Осы әрекет іске асатын саясаты бойынша жасалуы қажет.",
+'makebot-username' => 'Қатысушы аты:',
+'makebot-search' => 'Өту',
+'makebot-isbot' => '[[{{ns:user}}:$1|$1]] дегенде бот күйі бар.',
+'makebot-notbot' => '[[{{ns:user}}:$1|$1]] дегенде бот күйі жоқ.',
+'makebot-privileged' => '[[{{ns:user}}:$1|$1]] дегенде [[{{ns:special}}:Listadmins|әкімші немесе төреші құқықтары]] бар, сондықтан бот күйі берілмейді.',
+'makebot-change' => 'Күйін өзгерту:',
+'makebot-grant' => 'Беру',
+'makebot-revoke' => 'Қайта шақыру',
+'makebot-comment' => 'Мәндемесі:',
+'makebot-granted' => '[[{{ns:user}}:$1|$1]] дегенде енді бот күйі бар.',
+'makebot-revoked' => '[[{{ns:user}}:$1|$1]] дегенде енді бот күйі жоқ.',
+'makebot-logpage' => 'Бот күй журналы',
+'makebot-logpagetext' => 'Бұл қатысушы [[{{ns:help}}:Боттар|бот]] күйін өзгерту журналы.',
+'makebot-logentrygrant' => '[[$1]] дегенге бот күйі берілді',
+'makebot-logentryrevoke' => '[[$1]] дегеннен бот күйі аластатылды',
+),
+
+/* Kazakh Cyrillic (kk:User:AlefZet) */
+'kk-kz' => array(
+'makebot' => 'Бот күйін беру не қайтару',
+'makebot-header' => "'''Бұл бетті орнындағы төрешілер басқа катысушы тіркелгісіне [[{{ns:help}}:Боттар|бот күйін]] беру не қайтару үшін қолданады.'''<br />Берілген бот күйі қатысушының өңдеулерін [[{{ns:special}}:Recentchanges|жуықтағы өзгерістер]] сияқты тізімдерден жасырады, және де өздік түрде өңдеу жасайтын қатысушыларды белгілеуге қолайлы. Осы әрекет іске асатын саясаты бойынша жасалуы қажет.",
+'makebot-username' => 'Қатысушы аты:',
+'makebot-search' => 'Өту',
+'makebot-isbot' => '[[{{ns:user}}:$1|$1]] дегенде бот күйі бар.',
+'makebot-notbot' => '[[{{ns:user}}:$1|$1]] дегенде бот күйі жоқ.',
+'makebot-privileged' => '[[{{ns:user}}:$1|$1]] дегенде [[{{ns:special}}:Listadmins|әкімші немесе төреші құқықтары]] бар, сондықтан бот күйі берілмейді.',
+'makebot-change' => 'Күйін өзгерту:',
+'makebot-grant' => 'Беру',
+'makebot-revoke' => 'Қайта шақыру',
+'makebot-comment' => 'Мәндемесі:',
+'makebot-granted' => '[[{{ns:user}}:$1|$1]] дегенде енді бот күйі бар.',
+'makebot-revoked' => '[[{{ns:user}}:$1|$1]] дегенде енді бот күйі жоқ.',
+'makebot-logpage' => 'Бот күй журналы',
+'makebot-logpagetext' => 'Бұл қатысушы [[{{ns:help}}:Боттар|бот]] күйін өзгерту журналы.',
+'makebot-logentrygrant' => '[[$1]] дегенге бот күйі берілді',
+'makebot-logentryrevoke' => '[[$1]] дегеннен бот күйі аластатылды',
+),
+
+/* Kazakh Latin (kk:User:AlefZet) */
+'kk-tr' => array(
+'makebot' => 'Bot küýin berw ne qaýtarw',
+'makebot-header' => "'''Bul betti ornındağı töreşiler basqa katıswşı tirkelgisine [[{{ns:help}}:Bottar|bot küýin]] berw ne qaýtarw üşin qoldanadı.'''<br />Berilgen bot küýi qatıswşınıñ öñdewlerin [[{{ns:special}}:Recentchanges|jwıqtağı özgerister]] sïyaqtı tizimderden jasıradı, jäne de özdik türde öñdew jasaýtın qatıswşılardı belgilewge qolaýlı. Osı äreket iske asatın sayasatı boýınşa jasalwı qajet.",
+'makebot-username' => 'Qatıswşı atı:',
+'makebot-search' => 'Ötw',
+'makebot-isbot' => '[[{{ns:user}}:$1|$1]] degende bot küýi bar.',
+'makebot-notbot' => '[[{{ns:user}}:$1|$1]] degende bot küýi joq.',
+'makebot-privileged' => '[[{{ns:user}}:$1|$1]] degende [[{{ns:special}}:Listadmins|äkimşi nemese töreşi quqıqtarı]] bar, sondıqtan bot küýi berilmeýdi.',
+'makebot-change' => 'Küýin özgertw:',
+'makebot-grant' => 'Berw',
+'makebot-revoke' => 'Qaýta şaqırw',
+'makebot-comment' => 'Mändemesi:',
+'makebot-granted' => '[[{{ns:user}}:$1|$1]] degende endi bot küýi bar.',
+'makebot-revoked' => '[[{{ns:user}}:$1|$1]] degende endi bot küýi joq.',
+'makebot-logpage' => 'Bot küý jwrnalı',
+'makebot-logpagetext' => 'Bul qatıswşı [[{{ns:help}}:Bottar|bot]] küýin özgertw jwrnalı.',
+'makebot-logentrygrant' => '[[$1]] degenge bot küýi berildi',
+'makebot-logentryrevoke' => '[[$1]] degennen bot küýi alastatıldı',
+),
+
+/* Kazakh Arabic (kk:User:AlefZet) */
+'kk-cn' => array(
+'makebot' => 'بوت كٴۇيٴىن بەرۋ نە قايتارۋ',
+'makebot-header' => "'''بۇل بەتتٴى ورنىنداعى تٴورەشٴىلەر باسقا كاتىسۋشى تٴىركەلگٴىسٴىنە [[{{ns:help}}:بوتتار|بوت كٴۇيٴىن]] بەرۋ نە قايتارۋ ٴۇشٴىن قولدانادى.'''<br />بەرٴىلگەن بوت كٴۇيٴى قاتىسۋشىنىڭ ٴوڭدەۋلەرٴىن [[{{ns:special}}:Recentchanges|جۋىقتاعى ٴوزگەرٴىستەر]] سيياقتى تٴىزٴىمدەردەن جاسىرادى, جٴانە دە ٴوزدٴىك تٴۇردە ٴوڭدەۋ جاسايتىن قاتىسۋشىلاردى بەلگٴىلەۋگە قولايلى. وسى ٴارەكەت ٴىسكە اساتىن ساياساتى بويىنشا جاسالۋى قاجەت.",
+'makebot-username' => 'قاتىسۋشى اتى:',
+'makebot-search' => 'ٴوتۋ',
+'makebot-isbot' => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كٴۇيٴى بار.',
+'makebot-notbot' => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كٴۇيٴى جوق.',
+'makebot-privileged' => '[[{{ns:user}}:$1|$1]] دەگەندە [[{{ns:special}}:Listadmins|ٴاكٴىمشٴى نەمەسە تٴورەشٴى قۇقىقتارى]] بار, سوندىقتان بوت كٴۇيٴى بەرٴىلمەيدٴى.',
+'makebot-change' => 'كٴۇيٴىن ٴوزگەرتۋ:',
+'makebot-grant' => 'بەرۋ',
+'makebot-revoke' => 'قايتا شاقىرۋ',
+'makebot-comment' => 'مٴاندەمەسٴى:',
+'makebot-granted' => '[[{{ns:user}}:$1|$1]] دەگەندە ەندٴى بوت كٴۇيٴى بار.',
+'makebot-revoked' => '[[{{ns:user}}:$1|$1]] دەگەندە ەندٴى بوت كٴۇيٴى جوق.',
+'makebot-logpage' => 'بوت كٴۇي جۋرنالى',
+'makebot-logpagetext' => 'بۇل قاتىسۋشى [[{{ns:help}}:بوتتار|بوت]] كٴۇيٴىن ٴوزگەرتۋ جۋرنالى.',
+'makebot-logentrygrant' => '[[$1]] دەگەنگە بوت كٴۇيٴى بەرٴىلدٴى',
+'makebot-logentryrevoke' => '[[$1]] دەگەننەن بوت كٴۇيٴى الاستاتىلدى',
 ),
 
 /* nld . Dutch (Siebrand Mazeland) */
@@ -204,27 +309,6 @@ function efMakeBotMessages() {
 'makebot-logpagetext' => 'Este é um registo de alterações quanto ao\' estatuto de [[Help:Bot|bot]].',
 'makebot-logentrygrant' => 'concedido estatuto de bot para [[$1]]',
 'makebot-logentryrevoke' => 'removido estatuto de bot para [[$1]]',
-),
-
-/* Indonesian (Ivan Lanin) */
-'id' => array(
-'makebot' => 'Pemberian atau penarikan status bot',
-'makebot-header' => "'''Birokrat lokal dapat menggunakan halaman ini untuk memberikan atau menarik [[Help:Bot|status bot]] untuk akun pengguna lain.'''<br />Status bot akan menyembunyikan suntingan pengguna dari [[Special:Recentchanges|perubahan terbaru]] dan daftar serupa lainnya, dan berguna untuk menandai pengguna yang melakukan penyuntingan otomatis. Hal ini harus dilakukan sesuai dengan kebijakan yang telah digariskan.",
-'makebot-username' => 'Nama pengguna:',
-'makebot-search' => 'Cari',
-'makebot-isbot' => '[[User:$1|$1]] mempunyai status bot.',
-'makebot-notbot' => '[[User:$1|$1]] tak mempunyai status bot.',
-'makebot-privileged' => '[[User:$1|$1]] mempunyai [[Special:Listadmins|berstatus pengurus atau birokrat]], karenanya tak bisa mendapat status bot.',
-'makebot-change' => 'Ganti status:',
-'makebot-grant' => 'Berikan',
-'makebot-revoke' => 'Tarik',
-'makebot-comment' => 'Komentar:',
-'makebot-granted' => '[[User:$1|$1]] sekarang mempunyai status bot.',
-'makebot-revoked' => '[[User:$1|$1]] sekarang tidak lagi mempunyai status bot.',
-'makebot-logpage' => 'Log perubahan status bot',
-'makebot-logpagetext' => 'Di bawah adalah log perubahan status [[Help:Bot|bot]] pengguna.',
-'makebot-logentrygrant' => 'memberikan status bot untuk [[$1]]',
-'makebot-logentryrevoke' => 'menarik status bot dari [[$1]]',
 ),
 
 /* Slovak (helix84) */

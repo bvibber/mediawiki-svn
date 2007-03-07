@@ -23,6 +23,16 @@ $wgLanguageManagerMessages['he'] = array(
 $wgLanguageManagerMessages['id'] = array(
 	'langman_title' => 'Pengelola bahasa',
 );
+$wgLanguageManagerMessages['kk-kz'] = array(
+	'langman_title' => 'Тілдерді меңгеру',
+);
+$wgLanguageManagerMessages['kk-tr'] = array(
+	'langman_title' => 'Tilderdi meñgerw',
+);
+$wgLanguageManagerMessages['kk-cn'] = array(
+	'langman_title' => 'تٴىلدەردٴى مەڭگەرۋ',
+);
+$wgLanguageManagerMessages['kk'] = $wgLanguageManagerMessages['kk-kz']; 
 $wgLanguageManagerMessages['nl'] = array(
 	'langman_title' => 'Taalmanager',
 );

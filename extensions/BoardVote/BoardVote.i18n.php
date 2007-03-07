@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Internationalisation file for BoardVote extension.
  *
@@ -413,20 +413,22 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
 	'grouppage-boardvote'     => '{{ns:project}}:Commissario elettorale',
 );
 $wgBoardVoteMessages['kk-kz'] = array(
-	'boardvote'               => "Wikimedia Жебеушілер Кеңесінің сайлауы ",
+	'boardvote'               => "Wikimedia қорының Уәкілдер еңесінің сайлауы ",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Дауыс беру]]
 * [[{{ns:Special}}:Boardvote/list|Күн бойынша дауыс беру тізімі]]
 * [[{{ns:Special}}:Boardvote/dump|Мұқамдалған сайлау жазбаларының арқауы]]",
+
 	'boardvote_intro_change'  => "<p>Даусыңызды әуелде беріпсіз.
   Дегенмен, төмендегі үлгітті пайдаланып даусыңызды өзгертей аласыз.
   Сіз таңдаған әрбір ұсынылған тұлғалар қасына белгі қойңыз.</p>",
+
 	'boardvote_entered'       => "Рахмет, дауысыңыз жазылыпп алынды.
 
 Егер дітте болсаңыз, келесі егжей-тегжейлерін жазуыңызға болады. Дауыс беруіңіздің жазбасы:
 
 <pre>$1</pre>
 
-Бұл Сайлау Әкімшілігінің жариялы електронды кілтімен мұқамдалған:
+Бұл Сайлау Әкімшілерінің жариялы електронды кілтімен мұқамдалған:
 
 <pre>$2</pre>
 
@@ -435,8 +437,8 @@ $wgBoardVoteMessages['kk-kz'] = array(
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|Кері қайту]]",
-	'boardvote_notloggedin'   => "Осы жобаға кірмепсіз. Дауыс беру үшін $2 кезіне дейін ең кемінде $2 үлес берген тіркелгініз болу қажет, және де бірінші түзетуіңіз $3 кезіне дейін болу қажет.",
-	'boardvote_notqualified'  => "Осы сайлауда дауыс беруге жуытылмайсыз. Сізге $2 кезіне дейін ең кемінде $3 түзету істеу қажет; сіз $1 істепсіз. Тағы да, осы уикиде бірінші түзетуіңіз $4 кезінде істеліпті; бұл $5 кезіне дейін болу қажет.",
+	'boardvote_notloggedin'   => "Осы жобаға кірмепсіз. Дауыс беру үшін $2 кезіне дейін ең кемінде $1 үлес берген тіркелгініз болу қажет, және де бірінші түзетуіңіз $3 кезіне дейін болу қажет.",
+	'boardvote_notqualified'  => "Осы сайлауда дауыс беруге жуытылмайсыз. $2 кезіне дейін $3 түзетіңіз болу қажет; сізде тек $1 болыпты. Тағы да, бірінші түзетуіңіз $4 кезінде осы уикиде істеліпті; бұл $5 кезіне дейін болу қажет.",
 	'boardvote_novotes'       => "Ешкім дауысын берген жоқ.",
 	'boardvote_time'          => "Уақыт",
 	'boardvote_user'          => "Қатысушы",
@@ -458,20 +460,22 @@ $wgBoardVoteMessages['kk-kz'] = array(
 	'grouppage-boardvote'     => '{{ns:project}}:Кеңес сайлау әкімшілері',
 );
 $wgBoardVoteMessages['kk-tr'] = array(
-	'boardvote'               => "Wikimedia Jebewşiler Keñesiniñ saýlawı ",
+	'boardvote'               => "Wikimedia qorınıñ Wäkilder eñesiniñ saýlawı ",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Dawıs berw]]
 * [[{{ns:Special}}:Boardvote/list|Kün boýınşa dawıs berw tizimi]]
 * [[{{ns:Special}}:Boardvote/dump|Muqamdalğan saýlaw jazbalarınıñ arqawı]]",
+
 	'boardvote_intro_change'  => "<p>Dawsıñızdı äwelde beripsiz.
   Degenmen, tömendegi ülgitti paýdalanıp dawsıñızdı özgerteý alasız.
   Siz tañdağan ärbir usınılğan tulğalar qasına belgi qoýñız.</p>",
+
 	'boardvote_entered'       => "Raxmet, dawısıñız jazılıpp alındı.
 
 Eger ditte bolsañız, kelesi egjeý-tegjeýlerin jazwıñızğa boladı. Dawıs berwiñizdiñ jazbası:
 
 <pre>$1</pre>
 
-Bul Saýlaw Äkimşiliginiñ jarïyalı elektrondı kiltimen muqamdalğan:
+Bul Saýlaw Äkimşileriniñ jarïyalı elektrondı kiltimen muqamdalğan:
 
 <pre>$2</pre>
 
@@ -480,8 +484,8 @@ Nätïjeli muqamdalğan nusqası keleside körsetiledi. Bul [[{{ns:special}}:Boa
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|Keri qaýtw]]",
-	'boardvote_notloggedin'   => "Osı jobağa kirmepsiz. Dawıs berw üşin $2 kezine deýin eñ keminde $2 üles bergen tirkelginiz bolw qajet, jäne de birinşi tüzetwiñiz $3 kezine deýin bolw qajet.",
-	'boardvote_notqualified'  => "Osı saýlawda dawıs berwge jwıtılmaýsız. Sizge $2 kezine deýin eñ keminde $3 tüzetw istew qajet; siz $1 istepsiz. Tağı da, osı wïkïde birinşi tüzetwiñiz $4 kezinde istelipti; bul $5 kezine deýin bolw qajet.",
+	'boardvote_notloggedin'   => "Osı jobağa kirmepsiz. Dawıs berw üşin $2 kezine deýin eñ keminde $1 üles bergen tirkelginiz bolw qajet, jäne de birinşi tüzetwiñiz $3 kezine deýin bolw qajet.",
+	'boardvote_notqualified'  => "Osı saýlawda dawıs berwge jwıtılmaýsız. $2 kezine deýin $3 tüzetiñiz bolw qajet; sizde tek $1 bolıptı. Tağı da, birinşi tüzetwiñiz $4 kezinde osı wïkïde istelipti; bul $5 kezine deýin bolw qajet.",
 	'boardvote_novotes'       => "Eşkim dawısın bergen joq.",
 	'boardvote_time'          => "Waqıt",
 	'boardvote_user'          => "Qatıswşı",
@@ -503,20 +507,22 @@ Muqamdalğan derekter üşin $1.</p>",
 	'grouppage-boardvote'     => '{{ns:project}}:Keñes saýlaw äkimşileri',
 );
 $wgBoardVoteMessages['kk-cn'] = array(
-	'boardvote'               => "Wikimedia جەبەۋشٴىلەر كەڭەسٴىنٴىڭ سايلاۋى ",
+	'boardvote'               => "Wikimedia قورىنىڭ ۋٴاكٴىلدەر ەڭەسٴىنٴىڭ سايلاۋى ",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|داۋىس بەرۋ]]
 * [[{{ns:Special}}:Boardvote/list|كٴۇن بويىنشا داۋىس بەرۋ تٴىزٴىمٴى]]
 * [[{{ns:Special}}:Boardvote/dump|مۇقامدالعان سايلاۋ جازبالارىنىڭ ارقاۋى]]",
+
 	'boardvote_intro_change'  => "<p>داۋسىڭىزدى ٴاۋەلدە بەرٴىپسٴىز.
   دەگەنمەن, تٴومەندەگٴى ٴۇلگٴىتتٴى پايدالانىپ داۋسىڭىزدى ٴوزگەرتەي الاسىز.
   سٴىز تاڭداعان ٴاربٴىر ۇسىنىلعان تۇلعالار قاسىنا بەلگٴى قويڭىز.</p>",
+
 	'boardvote_entered'       => "راحمەت, داۋىسىڭىز جازىلىپپ الىندى.
 
 ەگەر دٴىتتە بولساڭىز, كەلەسٴى ەگجەي-تەگجەيلەرٴىن جازۋىڭىزعا بولادى. داۋىس بەرۋٴىڭٴىزدٴىڭ جازباسى:
 
 <pre>$1</pre>
 
-بۇل سايلاۋ ٴاكٴىمشٴىلٴىگٴىنٴىڭ جارييالى ەلەكتروندى كٴىلتٴىمەن مۇقامدالعان:
+بۇل سايلاۋ ٴاكٴىمشٴىلەرٴىنٴىڭ جارييالى ەلەكتروندى كٴىلتٴىمەن مۇقامدالعان:
 
 <pre>$2</pre>
 
@@ -525,8 +531,8 @@ $wgBoardVoteMessages['kk-cn'] = array(
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|كەرٴى قايتۋ]]",
-	'boardvote_notloggedin'   => "وسى جوباعا كٴىرمەپسٴىز. داۋىس بەرۋ ٴۇشٴىن $2 كەزٴىنە دەيٴىن ەڭ كەمٴىندە $2 ٴۇلەس بەرگەن تٴىركەلگٴىنٴىز بولۋ قاجەت, جٴانە دە بٴىرٴىنشٴى تٴۇزەتۋٴىڭٴىز $3 كەزٴىنە دەيٴىن بولۋ قاجەت.",
-	'boardvote_notqualified'  => "وسى سايلاۋدا داۋىس بەرۋگە جۋىتىلمايسىز. سٴىزگە $2 كەزٴىنە دەيٴىن ەڭ كەمٴىندە $3 تٴۇزەتۋ ٴىستەۋ قاجەت; سٴىز $1 ٴىستەپسٴىز. تاعى دا, وسى ۋيكيدە بٴىرٴىنشٴى تٴۇزەتۋٴىڭٴىز $4 كەزٴىندە ٴىستەلٴىپتٴى; بۇل $5 كەزٴىنە دەيٴىن بولۋ قاجەت.",
+	'boardvote_notloggedin'   => "وسى جوباعا كٴىرمەپسٴىز. داۋىس بەرۋ ٴۇشٴىن $2 كەزٴىنە دەيٴىن ەڭ كەمٴىندە $1 ٴۇلەس بەرگەن تٴىركەلگٴىنٴىز بولۋ قاجەت, جٴانە دە بٴىرٴىنشٴى تٴۇزەتۋٴىڭٴىز $3 كەزٴىنە دەيٴىن بولۋ قاجەت.",
+	'boardvote_notqualified'  => "وسى سايلاۋدا داۋىس بەرۋگە جۋىتىلمايسىز. $2 كەزٴىنە دەيٴىن $3 تٴۇزەتٴىڭٴىز بولۋ قاجەت; سٴىزدە تەك $1 بولىپتى. تاعى دا, بٴىرٴىنشٴى تٴۇزەتۋٴىڭٴىز $4 كەزٴىندە وسى ۋيكيدە ٴىستەلٴىپتٴى; بۇل $5 كەزٴىنە دەيٴىن بولۋ قاجەت.",
 	'boardvote_novotes'       => "ەشكٴىم داۋىسىن بەرگەن جوق.",
 	'boardvote_time'          => "ۋاقىت",
 	'boardvote_user'          => "قاتىسۋشى",

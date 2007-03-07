@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Internationalisation file for DismissableSiteNotice extension.
  *
@@ -40,13 +40,28 @@ $wgDismissableSiteNoticeMessages['id'] = array(
 	'sitenotice_close' => 'tutup',
 );
 
+$wgDismissableSiteNoticeMessages['ja'] = array(
+	'sitenotice_close' => '非表示',
+);
+
+$wgDismissableSiteNoticeMessages['kk-kz'] = array(
+	'sitenotice_close' => 'тасалау',
+);
+
+$wgDismissableSiteNoticeMessages['kk-tr'] = array(
+	'sitenotice_close' => 'tasalaw',
+);
+
+$wgDismissableSiteNoticeMessages['kk-cn'] = array(
+	'sitenotice_close' => 'تاسالاۋ',
+);
+
+$wgDismissableSiteNoticeMessages['kk']= $wgDismissableSiteNoticeMessages['kk-kz'];
+
 $wgDismissableSiteNoticeMessages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',
 );
 
-$wgDismissableSiteNoticeMessages['ja'] = array(
-	'sitenotice_close' => '非表示',
-);
 $wgDismissableSiteNoticeMessages['nl'] = array(
 	'sitenotice_close' => 'sluiten',
 );
@@ -55,10 +70,11 @@ $wgDismissableSiteNoticeMessages['pt'] = array(
 	'sitenotice_close' => 'ignorar',
 );
 
+$wgDismissableSiteNoticeMessages['pt-br'] = $wgDismissableSiteNoticeMessages['pt'];
+
 $wgDismissableSiteNoticeMessages['sk'] = array(
 	'sitenotice_close' => 'nezobrazovať',
 );
-$wgDismissableSiteNoticeMessages['pt-br'] = $wgDismissableSiteNoticeMessages['pt'];
 $wgDismissableSiteNoticeMessages['zh-cn'] = array(
 	'sitenotice_close' => '关闭',
 );
