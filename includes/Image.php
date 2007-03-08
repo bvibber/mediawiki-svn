@@ -393,7 +393,7 @@ class Image
 					$row = ($p->parse($xmlString));				
 					$row = $row[0]['children'][0]['children'][0]['attrs']; 
 				}			
-				if ( $row ) {					
+				if ( $row['NAME'] ) {					
 					//create the local file directory ($this->mSavedFile)
 					UploadForm::saveUploadedFile( $row['NAME'],
 		                             $row['NAME']
