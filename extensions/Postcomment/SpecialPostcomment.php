@@ -20,7 +20,7 @@ require_once("SpecialPage.php");
 
 $wgExtensionFunctions[] = 'wfPostComment';
 
-$wgExtensionCredits['parserhook'][] = array(
+$wgExtensionCredits['other'][] = array(
     'name' => 'PostComment',
     'author' => 'Travis Derouin',
     'description' => 'Allows users to post comments directly to discussion pages.',
