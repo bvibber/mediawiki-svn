@@ -137,7 +137,7 @@ function wfSpecialPostcomment( $par )
 	
 	//echo "$dateStr<br/>";
 	
-	$formattedComment = "<!-- start entry --->
+	$formattedComment = "
 	<div id=\"discussion_entry\"><table width=\"100%\">
 	   <tr><td width=\"50%\" valign=\"top\" class=\"discussion_entry_user\">
 	[[User:$user|$real_name]] said:
@@ -147,7 +147,6 @@ function wfSpecialPostcomment( $par )
 	$comment</td></tr>
 	<tr><td colspan=\"2\" class=\"discussion_entry_date\" padding=5>[[User_talk:$user#post|" . wfMsg('postcomment_replyto', $real_name) . "]]</td></tr>
 	</table></div>
-	<!-- end entry -->
 	
 	";
 	//echo "$formattedComment";
