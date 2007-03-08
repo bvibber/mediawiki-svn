@@ -33,6 +33,8 @@ class Image
 		$title,         # Title object for this image (constructor)
 		$fileExists,    # does the image file exist on disk? (loadFromXxx)
 		$fromSharedDirectory, # load this image from $wgSharedUploadDirectory (loadFromXxx)
+		$fromInstantCommons, # load this image from the InstantCommons repository
+		$description, 	#added in for instantCommons 
 		$historyLine,	# Number of line to return by nextHistoryLine() (constructor)
 		$historyRes,	# result of the query for the image's history (nextHistoryLine)
 		$width,         # \
@@ -213,6 +215,7 @@ class Image
 				'imagePath'  => $this->imagePath,
 				'fileExists' => $this->fileExists,
 				'fromShared' => $this->fromSharedDirectory,
+				'fromInstantCommons' => $this->fromInstantCommons,
 				'width'      => $this->width,
 				'height'     => $this->height,
 				'bits'       => $this->bits,
@@ -247,13 +250,14 @@ class Image
 			# In case we're on a wgCapitalLinks=false wiki, we
 			# capitalize the first letter of the filename before
 			# looking it up in the shared repository.
-			$sharedImage = Image::newFromName( $wgContLang->ucfirst($this->name) );
+			$sharedImage = Image::newFromName( $wgContLang->ucfirst($this->name) );			
 			$this->fileExists = $sharedImage && file_exists( $sharedImage->getFullPath(true) );
 			if ( $this->fileExists ) {
 				$this->name = $sharedImage->name;
 				$this->imagePath = $this->getFullPath(true);
 				$this->fromSharedDirectory = true;
 			}
+			
 		}
 
 
@@ -322,8 +326,8 @@ class Image
 	/**
 	 * Load image metadata from the DB
 	 */
-	function loadFromDB() {
-		global $wgUseSharedUploads, $wgSharedUploadDBname, $wgSharedUploadDBprefix, $wgContLang;
+	function loadFromDB($src="") {
+		global $wgUseSharedUploads, $wgSharedUploadDBname, $wgSharedUploadDBprefix, $wgContLang, $wgUseInstantCommons, $wgInstantCommonsServerPath, $wgUploadDirectory;
 		wfProfileIn( __METHOD__ );
 
 		$dbr = wfGetDB( DB_SLAVE );
@@ -331,7 +335,7 @@ class Image
 
 		$row = $dbr->selectRow( 'image',
 			array( 'img_size', 'img_width', 'img_height', 'img_bits',
-			       'img_media_type', 'img_major_mime', 'img_minor_mime', 'img_metadata' ),
+			       'img_media_type', 'img_major_mime', 'img_minor_mime', 'img_metadata','img_description' ),
 			array( 'img_name' => $this->name ), __METHOD__ );
 		if ( $row ) {
 			$this->fromSharedDirectory = false;
@@ -339,10 +343,12 @@ class Image
 			$this->loadFromRow( $row );
 			$this->imagePath = $this->getFullPath();
 			// Check for rows from a previous schema, quietly upgrade them
-			if ( is_null($this->type) ) {
+			// IC: When an image is uploaded in the background, it's height/width/size would have been set to 0
+			//	   so force a reload from file
+			if ( is_null($this->type) || !($this->width && $this->height && $this->size)) {
 				$this->upgradeRow();
 			}
-		} elseif ( $wgUseSharedUploads && $wgSharedUploadDBname ) {
+		} elseif ( ($wgUseSharedUploads && $wgSharedUploadDBname)) {
 			# In case we're on a wgCapitalLinks=false wiki, we
 			# capitalize the first letter of the filename before
 			# looking it up in the shared repository.
@@ -352,7 +358,7 @@ class Image
 			$row = $dbc->selectRow( "`$wgSharedUploadDBname`.{$wgSharedUploadDBprefix}image",
 				array(
 					'img_size', 'img_width', 'img_height', 'img_bits',
-					'img_media_type', 'img_major_mime', 'img_minor_mime', 'img_metadata' ),
+					'img_media_type', 'img_major_mime', 'img_minor_mime', 'img_metadata', 'img_description' ),
 				array( 'img_name' => $name ), __METHOD__ );
 			if ( $row ) {
 				$this->fromSharedDirectory = true;
@@ -366,7 +372,86 @@ class Image
 					$this->upgradeRow();
 				}
 			}
-		}
+		} elseif ( $wgUseInstantCommons && $wgInstantCommonsServerPath ){
+			//NB: We enter into this loop even when we're uploading to the wiki.
+			//so skip if it's an upload				
+			if($src!="upload") { 
+				//Download the file from the InstantCommonsServer in the background, else show 
+				//"downloading this image" or other status message.
+				//store it in the image database and return an Image object It should
+				//return an object identical to a database row as above
+				
+				$rname=tempnam(wfTempDir(),'icresponse.xml');
+				$url = $wgInstantCommonsServerPath.'/api.php?action=instantcommons&format=xml&media='.$this->name;
+				$fp = fopen($rname, "w");				
+				$xmlString = $this-> my_file_get_contents($url, $fp);
+				
+				$p =& new ApiInstantCommons('instantcommons', 'maint');
+				fclose($fp);
+												
+				if(trim($xmlString)!=""){								
+					$row = ($p->parse($xmlString));				
+					$row = $row[0]['children'][0]['children'][0]['attrs']; 
+				}			
+				if ( $row ) {					
+					//create the local file directory ($this->mSavedFile)
+					UploadForm::saveUploadedFile( $row['NAME'],
+		                             $row['NAME']
+		                              ); //this hack just creates the path locally
+		            //now download the file to the final location
+		            //TODO: This has to be done in the background! Otherwise the page
+		            //hangs until the download is complete
+		            
+		            //As a workaround, check the size of the file returned. If greater than
+		            //2.5kb (typical thumbnail size on my test wiki), show "Download in progress" 
+		            //image instead until the download is complete
+		             $icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
+		            $fp = fopen("{$this->mSavedFile}", "w");
+		            if($row['SIZE'] > 3000) {wfDebug(join($row, ' | '));
+		            	$this-> my_file_get_contents($icFileUrl, $this->mSavedFile, TRUE);
+		            }else {
+			            /* 
+			            $icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
+			            $icFp = fopen("{$this->mSavedFile}", "w");
+			            my_file_get_contents($icFileUrl, $icFp);	
+			            fclose($icFp);*/
+			                       
+						$ch = curl_init($wgInstantCommonsServerPath.$row['URL']);
+						//$fp = fopen("{$this->mSavedFile}", "w");				
+						curl_setopt($ch, CURLOPT_FILE, $fp);
+						curl_setopt($ch, CURLOPT_HEADER, 0);				
+						curl_exec($ch);
+						curl_close($ch);						
+		            }                             
+					
+					//set further properties
+					$this->fromInstantCommons = true; //TODO:THIS IS NOT STORED. For future use only!
+					$this->fileExists = true;
+					$this->imagePath = $this->getFullPath(false, true);
+					$this->width = $row['WIDTH'];
+					$this->height = $row['HEIGHT'];
+					$this->metadata = stripslashes($row['METADATA']);
+					$this->bits = $row['BITS'];
+					$this->type = $row['TYPE'];
+					$this->mime = $row['MIME'];
+					$this->size = $row['SIZE'];
+					$this->dataLoaded = $row['DATALOADED'];
+					$this->attr = $row['ATTR'];
+					$this->historyLine = $row['HISTORYLINE'];
+					$this->historyRes = $row['HISTORYRES'];
+					/**
+					 * Update the upload log and create the description page
+					 * if it's a new file.
+					 */
+					$success = $this->recordUpload('Downloaded with InstantCommons!', $row['DESCRIPTION']);	
+					if ( $success ) {					
+						wfRunHooks( 'UploadComplete', array( &$this ) );
+					}					                                			
+					
+				}
+				}
+			}
+		
 
 		if ( !$row ) {
 			$this->size = 0;
@@ -384,7 +469,23 @@ class Image
 		$this->dataLoaded = true;
 		wfProfileOut( __METHOD__ );
 	}
-
+function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://groups-beta.google.com/group/comp.lang.php/browse_thread/thread/8efbbaced3c45e3c/d63c7891cf8e380b?lnk=raot
+					if(!$bg){
+					   $ch = curl_init();
+					   curl_setopt ($ch, CURLOPT_URL, $url);
+				   	   curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+					   curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+					   curl_setopt ($ch, CURLOPT_TIMEOUT, $timeout);
+					   $file_contents = curl_exec($ch);
+					   curl_close($ch);
+					} else {//call curl in the background to download the file
+					$cmd = 'curl '.escapeshellcmd($url).' -o '.$fp.'&';
+					wfDebug('Curl download initiated='.$cmd );
+						pclose(popen($cmd, 'r'));
+						$file_contents = 1;
+					}
+				   return $file_contents;				
+				}
 	/*
 	 * Load image metadata from a DB result row
 	 */
@@ -394,6 +495,7 @@ class Image
 		$this->height = $row->img_height;
 		$this->bits = $row->img_bits;
 		$this->type = $row->img_media_type;
+		$this->description = $row->img_description;
 
 		$major= $row->img_major_mime;
 		$minor= $row->img_minor_mime;
@@ -413,13 +515,13 @@ class Image
 	/**
 	 * Load image metadata from cache or DB, unless already loaded
 	 */
-	function load() {
-		global $wgSharedUploadDBname, $wgUseSharedUploads;
-		if ( !$this->dataLoaded ) {
+	function load($src="") {
+		global $wgSharedUploadDBname, $wgUseSharedUploads, $wgUseInstantCommons;
+		if ( !$this->dataLoaded ) { 
 			if ( !$this->loadFromCache() ) {
-				$this->loadFromDB();
+				$this->loadFromDB($src);
 				if ( !$wgSharedUploadDBname && $wgUseSharedUploads ) {
-					$this->loadFromFile();
+					$this->loadFromFile(); 
 				} elseif ( $this->fileExists || !$wgUseSharedUploads ) {
 					// We can do negative caching for local images, because the cache
 					// will be purged on upload. But we can't do it when shared images
@@ -461,7 +563,8 @@ class Image
 		wfDebug(__METHOD__.': upgrading '.$this->name." to 1.5 schema\n");
 
 		$dbw->update( 'image',
-			array(
+			array(//IC: include image size
+				'img_size' => $this->size,
 				'img_width' => $this->width,
 				'img_height' => $this->height,
 				'img_bits' => $this->bits,
@@ -516,7 +619,7 @@ class Image
 		if ( !$this->url ) {
 			$this->load();
 			if($this->fileExists) {
-				$this->url = Image::imageUrl( $this->name, $this->fromSharedDirectory );
+				$this->url = Image::imageUrl( $this->name, $this->fromSharedDirectory, $this->fromInstantCommons );
 			} else {
 				$this->url = '';
 			}
@@ -771,16 +874,20 @@ class Image
 	 * @public
 	 * @static
 	 */
-	function imageUrl( $name, $fromSharedDirectory = false ) {
-		global $wgUploadPath,$wgUploadBaseUrl,$wgSharedUploadPath;
-		if($fromSharedDirectory) {
+	function imageUrl( $name, $fromSharedDirectory = false, $fromInstantCommons = false ) {
+		global $wgUploadPath,$wgUploadBaseUrl,$wgSharedUploadPath, $wgInstantCommonsServerPath;
+		if($fromInstantCommons) { //check if this is set first before checking shared directory
+			$base = '';
+			$path = $wgInstantCommonsServerPath;
+		}
+		else if($fromSharedDirectory) {
 			$base = '';
 			$path = $wgSharedUploadPath;
 		} else {
 			$base = $wgUploadBaseUrl;
 			$path = $wgUploadPath;
 		}
-		$url = "{$base}{$path}" .  wfGetHashPath($name, $fromSharedDirectory) . "{$name}";
+		$url = "{$base}{$path}" .  wfGetHashPath($name, $fromSharedDirectory, $fromInstantCommons) . "{$name}";
 		return wfUrlencode( $url );
 	}
 
@@ -789,8 +896,8 @@ class Image
 	 * @return boolean Whether image file exist on disk.
 	 * @public
 	 */
-	function exists() {
-		$this->load();
+	function exists($src="") { 
+		$this->load($src);
 		return $this->fileExists;
 	}
 
@@ -799,7 +906,7 @@ class Image
 	 * @private
 	 */
 	function thumbUrl( $width, $subdir='thumb') {
-		global $wgUploadPath, $wgUploadBaseUrl, $wgSharedUploadPath;
+		global $wgUploadPath, $wgUploadBaseUrl, $wgSharedUploadPath, $wgInstantCommonsServerPath;
 		global $wgSharedThumbnailScriptPath, $wgThumbnailScriptPath;
 
 		// Generate thumb.php URL if possible
@@ -831,7 +938,7 @@ class Image
 			}
 			if ( Image::isHashed( $this->fromSharedDirectory ) ) {
 				$url = "{$base}{$path}/{$subdir}" .
-				wfGetHashPath($this->name, $this->fromSharedDirectory)
+				wfGetHashPath($this->name, $this->fromSharedDirectory, $this->fromInstantCommons)
 				. $this->name.'/'.$name;
 				$url = wfUrlencode( $url );
 			} else {
@@ -1508,19 +1615,27 @@ class Image
 	*   options in DefaultSettings.php) instead of a local one.
 	*
 	*/
-	function getFullPath( $fromSharedRepository = false ) {
-		global $wgUploadDirectory, $wgSharedUploadDirectory;
-
-		$dir      = $fromSharedRepository ? $wgSharedUploadDirectory :
-		                                    $wgUploadDirectory;
+	function getFullPath( $fromSharedRepository = false, $fromInstantCommons = false ) {
+		global $wgUploadDirectory, $wgSharedUploadDirectory, $wgInstantCommonsServerPath;
+		//use local repository paths only if InstantCommons path is not available
+		$dir      = $fromInstantCommons ? $wgInstantCommonsServerPath : ($fromSharedRepository ? $wgSharedUploadDirectory :
+		                                    $wgUploadDirectory);
 
 		// $wgSharedUploadDirectory may be false, if thumb.php is used
 		if ( $dir ) {
-			$fullpath = $dir . wfGetHashPath($this->name, $fromSharedRepository) . $this->name;
+			if($fromInstantCommons)
+			{//TODO: Not the best thing to do here as it adds another 10k to
+			//the default mediawiki install. Maybe point it to the default logo?
+				$fullpath = 'downloading.png';
+			}
+			else
+			{
+				$fullpath = $dir . wfGetHashPath($this->name, $fromSharedRepository, $fromInstantCommons) . $this->name;
+			}
 		} else {
 			$fullpath = false;
 		}
-
+		
 		return $fullpath;
 	}
 
