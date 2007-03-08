@@ -21,7 +21,7 @@ function wfImageDir( $fname ) {
 }
 
 /**
- * Returns the image directory of an image's thubnail
+ * Returns the image directory of an image's thumbnail
  * The result is an absolute path.
  *
  * This function is called from thumb.php before Setup.php is included
@@ -78,14 +78,9 @@ function wfImageArchiveDir( $fname , $subdir='archive', $shared=false ) {
  * @param $dbkey The filesystem / database name of the file
  * @param $fromSharedDirectory Use the shared file repository? It may
  *   use different hash settings from the local one.
- * TODO:@param $fromInstantCommons Use the InstantCommons repository? - this is calculated by the IC Api
  */
-function wfGetHashPath ( $dbkey, $fromSharedDirectory = false, $fromInstantCommons = false ) {
-	if($fromInstantCommons)
-	{//we will display a local image that indicates that this file is being downloaded
-		return;
-	}
-	elseif( Image::isHashed( $fromSharedDirectory ) ) {
+function wfGetHashPath ( $dbkey, $fromSharedDirectory = false ) {
+	if( Image::isHashed( $fromSharedDirectory ) ) {
 		$hash = md5($dbkey);
 		return '/' . $hash{0} . '/' . substr( $hash, 0, 2 ) . '/';
 	} else {
@@ -131,6 +126,7 @@ function wfScaleSVGUnit( $length ) {
 		''   => 1.0, // "User units" pixels by default
 		'%'  => 2.0, // Fake it!
 		);
+	$matches = array();
 	if( preg_match( '/^(\d+(?:\.\d+)?)(em|ex|px|pt|pc|cm|mm|in|%|)$/', $length, $matches ) ) {
 		$length = floatval( $matches[1] );
 		$unit = $matches[2];
@@ -161,6 +157,7 @@ function wfGetSVGsize( $filename ) {
 	fclose( $f );
 
 	// Uber-crappy hack! Run through a real XML parser.
+	$matches = array();
 	if( !preg_match( '/<svg\s*([^>]*)\s*>/s', $chunk, $matches ) ) {
 		return false;
 	}
@@ -211,6 +208,7 @@ function wfIsBadImage( $name, $contextTitle = false ) {
 			}
 
 			# Find all links
+			$m = array();
 			if ( !preg_match_all( '/\[\[:?(.*?)\]\]/', $line, $m ) ) {
 				continue;
 			}

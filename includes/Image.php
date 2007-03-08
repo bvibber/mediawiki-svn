@@ -1,6 +1,5 @@
 <?php
 /**
- * @package MediaWiki
  */
 
 /**
@@ -22,7 +21,6 @@ define( 'MW_IMAGE_VERSION', 1 );
  *
  * Provides methods to retrieve paths (physical, logical, URL),
  * to generate thumbnails or for uploading.
- * @package MediaWiki
  */
 class Image
 {
@@ -35,8 +33,6 @@ class Image
 		$title,         # Title object for this image (constructor)
 		$fileExists,    # does the image file exist on disk? (loadFromXxx)
 		$fromSharedDirectory, # load this image from $wgSharedUploadDirectory (loadFromXxx)
-		$fromInstantCommons, # load this image from the InstantCommons repository
-		$description, 	#added in for instantCommons 
 		$historyLine,	# Number of line to return by nextHistoryLine() (constructor)
 		$historyRes,	# result of the query for the image's history (nextHistoryLine)
 		$width,         # \
@@ -60,7 +56,7 @@ class Image
 	 * @param string $name name of the image, used to create a title object using Title::makeTitleSafe
 	 * @public
 	 */
-	function newFromName( $name ) {
+	public static function newFromName( $name ) {
 		$title = Title::makeTitleSafe( NS_IMAGE, $name );
 		if ( is_object( $title ) ) {
 			return new Image( $title );
@@ -94,7 +90,7 @@ class Image
 		$this->dataLoaded = false;
 	}
 
-	
+
 	/**
 	 * Normalize a file extension to the common form, and ensure it's clean.
 	 * Extensions with non-alphanumeric characters will be discarded.
@@ -117,7 +113,7 @@ class Image
 			return '';
 		}
 	}
-	
+
 	/**
 	 * Get the memcached keys
 	 * Returns an array, first element is the local cache key, second is the shared cache key, if there is one
@@ -217,7 +213,6 @@ class Image
 				'imagePath'  => $this->imagePath,
 				'fileExists' => $this->fileExists,
 				'fromShared' => $this->fromSharedDirectory,
-				'fromInstantCommons' => $this->fromInstantCommons,
 				'width'      => $this->width,
 				'height'     => $this->height,
 				'bits'       => $this->bits,
@@ -238,7 +233,7 @@ class Image
 	 * Load metadata from the file itself
 	 */
 	function loadFromFile() {
-		global $wgUseSharedUploads, $wgSharedUploadDirectory, $wgContLang, $wgShowEXIF;
+		global $wgUseSharedUploads, $wgSharedUploadDirectory, $wgContLang;
 		wfProfileIn( __METHOD__ );
 		$this->imagePath = $this->getFullPath();
 		$this->fileExists = file_exists( $this->imagePath );
@@ -252,14 +247,13 @@ class Image
 			# In case we're on a wgCapitalLinks=false wiki, we
 			# capitalize the first letter of the filename before
 			# looking it up in the shared repository.
-			$sharedImage = Image::newFromName( $wgContLang->ucfirst($this->name) );			
+			$sharedImage = Image::newFromName( $wgContLang->ucfirst($this->name) );
 			$this->fileExists = $sharedImage && file_exists( $sharedImage->getFullPath(true) );
 			if ( $this->fileExists ) {
 				$this->name = $sharedImage->name;
 				$this->imagePath = $this->getFullPath(true);
 				$this->fromSharedDirectory = true;
 			}
-			
 		}
 
 
@@ -328,16 +322,16 @@ class Image
 	/**
 	 * Load image metadata from the DB
 	 */
-	function loadFromDB($src="") {
-		global $wgUseSharedUploads, $wgSharedUploadDBname, $wgSharedUploadDBprefix, $wgContLang, $wgUseInstantCommons, $wgInstantCommonsServerPath, $wgUploadDirectory;
+	function loadFromDB() {
+		global $wgUseSharedUploads, $wgSharedUploadDBname, $wgSharedUploadDBprefix, $wgContLang;
 		wfProfileIn( __METHOD__ );
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$this->checkDBSchema($dbr);
 
 		$row = $dbr->selectRow( 'image',
 			array( 'img_size', 'img_width', 'img_height', 'img_bits',
-			       'img_media_type', 'img_major_mime', 'img_minor_mime', 'img_metadata','img_description' ),
+			       'img_media_type', 'img_major_mime', 'img_minor_mime', 'img_metadata' ),
 			array( 'img_name' => $this->name ), __METHOD__ );
 		if ( $row ) {
 			$this->fromSharedDirectory = false;
@@ -345,22 +339,20 @@ class Image
 			$this->loadFromRow( $row );
 			$this->imagePath = $this->getFullPath();
 			// Check for rows from a previous schema, quietly upgrade them
-			// IC: When an image is uploaded in the background, it's height/width/size would have been set to 0
-			//	   so force a reload from file
-			if ( is_null($this->type) || !($this->width && $this->height && $this->size)) {
+			if ( is_null($this->type) ) {
 				$this->upgradeRow();
 			}
-		} elseif ( ($wgUseSharedUploads && $wgSharedUploadDBname)) {
+		} elseif ( $wgUseSharedUploads && $wgSharedUploadDBname ) {
 			# In case we're on a wgCapitalLinks=false wiki, we
 			# capitalize the first letter of the filename before
 			# looking it up in the shared repository.
 			$name = $wgContLang->ucfirst($this->name);
-			$dbc =& wfGetDB( DB_SLAVE, 'commons' );
+			$dbc = Image::getCommonsDB();
 
 			$row = $dbc->selectRow( "`$wgSharedUploadDBname`.{$wgSharedUploadDBprefix}image",
 				array(
 					'img_size', 'img_width', 'img_height', 'img_bits',
-					'img_media_type', 'img_major_mime', 'img_minor_mime', 'img_metadata', 'img_description' ),
+					'img_media_type', 'img_major_mime', 'img_minor_mime', 'img_metadata' ),
 				array( 'img_name' => $name ), __METHOD__ );
 			if ( $row ) {
 				$this->fromSharedDirectory = true;
@@ -374,88 +366,7 @@ class Image
 					$this->upgradeRow();
 				}
 			}
-		} elseif ( $wgUseInstantCommons && $wgInstantCommonsServerPath ){
-			//NB: We enter into this loop even when we're uploading to the wiki.
-			//so skip if it's an upload				
-			if($src!="upload") { 
-				//Download the file from the InstantCommonsServer in the background, else show 
-				//"downloading this image" or other status message.
-				//store it in the image database and return an Image object It should
-				//return an object identical to a database row as above
-				
-				
-				$url = $wgInstantCommonsServerPath.'/api.php?action=instantcommons&format=xml&media='.$this->name;
-				$fp = fopen("icresponse.xml", "w");				
-				$xmlString = $this-> my_file_get_contents($url, $fp);
-				
-				$p =& new ApiInstantCommons('instantcommons', 'maint');
-				fclose($fp);
-								
-			//	$xmlString = file_get_contents('icresponse.xml');
-					
-				if(trim($xmlString)!=""){								
-					$row = ($p->parse($xmlString));				
-					$row = $row[0]['children'][0]['children'][0]['attrs']; 
-				}			
-				if ( $row ) {					
-					//create the local file directory ($this->mSavedFile)
-					UploadForm::saveUploadedFile( $row['NAME'],
-		                             $row['NAME']
-		                              ); //this hack just creates the path locally
-		            //now download the file to the final location
-		            //TODO: This has to be done in the background! Otherwise the page
-		            //hangs until the download is complete
-		            
-		            //As a workaround, check the size of the file returned. If greater than
-		            //2.5kb (typical thumbnail size on my test wiki), show "Download in progress" 
-		            //image instead until the download is complete
-		             $icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
-		            $fp = fopen("{$this->mSavedFile}", "w");
-		            if($row['SIZE'] > 3000) {wfDebug(join($row, ' | '));
-		            	$this-> my_file_get_contents($icFileUrl, $this->mSavedFile, TRUE);
-		            }else {
-			            /* 
-			            $icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
-			            $icFp = fopen("{$this->mSavedFile}", "w");
-			            my_file_get_contents($icFileUrl, $icFp);	
-			            fclose($icFp);*/
-			                       
-						$ch = curl_init($wgInstantCommonsServerPath.$row['URL']);
-						//$fp = fopen("{$this->mSavedFile}", "w");				
-						curl_setopt($ch, CURLOPT_FILE, $fp);
-						curl_setopt($ch, CURLOPT_HEADER, 0);				
-						curl_exec($ch);
-						curl_close($ch);						
-		            }                             
-					
-					//set further properties
-					$this->fromInstantCommons = true; //TODO:THIS IS NOT STORED. For future use only!
-					$this->fileExists = true;
-					$this->imagePath = $this->getFullPath(false, true);
-					$this->width = $row['WIDTH'];
-					$this->height = $row['HEIGHT'];
-					$this->metadata = stripslashes($row['METADATA']);
-					$this->bits = $row['BITS'];
-					$this->type = $row['TYPE'];
-					$this->mime = $row['MIME'];
-					$this->size = $row['SIZE'];
-					$this->dataLoaded = $row['DATALOADED'];
-					$this->attr = $row['ATTR'];
-					$this->historyLine = $row['HISTORYLINE'];
-					$this->historyRes = $row['HISTORYRES'];
-					/**
-					 * Update the upload log and create the description page
-					 * if it's a new file.
-					 */
-					$success = $this->recordUpload('Downloaded with InstantCommons!', $row['DESCRIPTION']);	
-					if ( $success ) {					
-						wfRunHooks( 'UploadComplete', array( &$this ) );
-					}					                                			
-					
-				}
-				}
-			}
-		
+		}
 
 		if ( !$row ) {
 			$this->size = 0;
@@ -473,23 +384,7 @@ class Image
 		$this->dataLoaded = true;
 		wfProfileOut( __METHOD__ );
 	}
-function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://groups-beta.google.com/group/comp.lang.php/browse_thread/thread/8efbbaced3c45e3c/d63c7891cf8e380b?lnk=raot
-					if(!$bg){
-					   $ch = curl_init();
-					   curl_setopt ($ch, CURLOPT_URL, $url);
-				   	   curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-					   curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-					   curl_setopt ($ch, CURLOPT_TIMEOUT, $timeout);
-					   $file_contents = curl_exec($ch);
-					   curl_close($ch);
-					} else {//call curl in the background to download the file
-					$cmd = 'curl '.escapeshellcmd($url).' -o '.$fp.'&';
-					wfDebug('Curl download initiated='.$cmd );
-						pclose(popen($cmd, 'r'));
-						$file_contents = 1;
-					}
-				   return $file_contents;				
-				}
+
 	/*
 	 * Load image metadata from a DB result row
 	 */
@@ -499,7 +394,6 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		$this->height = $row->img_height;
 		$this->bits = $row->img_bits;
 		$this->type = $row->img_media_type;
-		$this->description = $row->img_description;
 
 		$major= $row->img_major_mime;
 		$minor= $row->img_minor_mime;
@@ -519,13 +413,13 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	/**
 	 * Load image metadata from cache or DB, unless already loaded
 	 */
-	function load($src="") {
-		global $wgSharedUploadDBname, $wgUseSharedUploads, $wgUseInstantCommons;
-		if ( !$this->dataLoaded ) { 
+	function load() {
+		global $wgSharedUploadDBname, $wgUseSharedUploads;
+		if ( !$this->dataLoaded ) {
 			if ( !$this->loadFromCache() ) {
-				$this->loadFromDB($src);
+				$this->loadFromDB();
 				if ( !$wgSharedUploadDBname && $wgUseSharedUploads ) {
-					$this->loadFromFile(); 
+					$this->loadFromFile();
 				} elseif ( $this->fileExists || !$wgUseSharedUploads ) {
 					// We can do negative caching for local images, because the cache
 					// will be purged on upload. But we can't do it when shared images
@@ -555,10 +449,9 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 
 			// Write to the other DB using selectDB, not database selectors
 			// This avoids breaking replication in MySQL
-			$dbw =& wfGetDB( DB_MASTER, 'commons' );
-			$dbw->selectDB( $wgSharedUploadDBname );
+			$dbw = Image::getCommonsDB();
 		} else {
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 		}
 
 		$this->checkDBSchema($dbw);
@@ -568,8 +461,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		wfDebug(__METHOD__.': upgrading '.$this->name." to 1.5 schema\n");
 
 		$dbw->update( 'image',
-			array(//IC: include image size
-				'img_size' => $this->size,
+			array(
 				'img_width' => $this->width,
 				'img_height' => $this->height,
 				'img_bits' => $this->bits,
@@ -584,7 +476,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		}
 		wfProfileOut( __METHOD__ );
 	}
-	
+
 	/**
 	 * Split an internet media type into its two components; if not
 	 * a two-part name, set the minor type to 'unknown'.
@@ -624,7 +516,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		if ( !$this->url ) {
 			$this->load();
 			if($this->fileExists) {
-				$this->url = Image::imageUrl( $this->name, $this->fromSharedDirectory, $this->fromInstantCommons );
+				$this->url = Image::imageUrl( $this->name, $this->fromSharedDirectory );
 			} else {
 				$this->url = '';
 			}
@@ -879,20 +771,16 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	 * @public
 	 * @static
 	 */
-	function imageUrl( $name, $fromSharedDirectory = false, $fromInstantCommons = false ) {
-		global $wgUploadPath,$wgUploadBaseUrl,$wgSharedUploadPath, $wgInstantCommonsServerPath;
-		if($fromInstantCommons) { //check if this is set first before checking shared directory
-			$base = '';
-			$path = $wgInstantCommonsServerPath;
-		}
-		else if($fromSharedDirectory) {
+	function imageUrl( $name, $fromSharedDirectory = false ) {
+		global $wgUploadPath,$wgUploadBaseUrl,$wgSharedUploadPath;
+		if($fromSharedDirectory) {
 			$base = '';
 			$path = $wgSharedUploadPath;
 		} else {
 			$base = $wgUploadBaseUrl;
 			$path = $wgUploadPath;
 		}
-		$url = "{$base}{$path}" .  wfGetHashPath($name, $fromSharedDirectory, $fromInstantCommons) . "{$name}";
+		$url = "{$base}{$path}" .  wfGetHashPath($name, $fromSharedDirectory) . "{$name}";
 		return wfUrlencode( $url );
 	}
 
@@ -901,8 +789,8 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	 * @return boolean Whether image file exist on disk.
 	 * @public
 	 */
-	function exists($src="") { 
-		$this->load($src);
+	function exists() {
+		$this->load();
 		return $this->fileExists;
 	}
 
@@ -911,7 +799,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	 * @private
 	 */
 	function thumbUrl( $width, $subdir='thumb') {
-		global $wgUploadPath, $wgUploadBaseUrl, $wgSharedUploadPath, $wgInstantCommonsServerPath;
+		global $wgUploadPath, $wgUploadBaseUrl, $wgSharedUploadPath;
 		global $wgSharedThumbnailScriptPath, $wgThumbnailScriptPath;
 
 		// Generate thumb.php URL if possible
@@ -943,7 +831,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 			}
 			if ( Image::isHashed( $this->fromSharedDirectory ) ) {
 				$url = "{$base}{$path}/{$subdir}" .
-				wfGetHashPath($this->name, $this->fromSharedDirectory, $this->fromInstantCommons)
+				wfGetHashPath($this->name, $this->fromSharedDirectory)
 				. $this->name.'/'.$name;
 				$url = wfUrlencode( $url );
 			} else {
@@ -1034,7 +922,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 					if ( !$this->mustRender() && $width == $this->width && $height == $this->height ) {
 						$url = $this->getURL();
 					} else {
-						list( $isScriptUrl, $url ) = $this->thumbUrl( $width );
+						list( /* $isScriptUrl */, $url ) = $this->thumbUrl( $width );
 					}
 					$thumb = new ThumbnailImage( $url, $width, $height );
 				} else {
@@ -1075,7 +963,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	 */
 	function validateThumbParams( &$width, &$height ) {
 		global $wgSVGMaxSize, $wgMaxImageArea;
-		
+
 		$this->load();
 
 		if ( ! $this->exists() )
@@ -1083,9 +971,9 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 			# If there is no image, there will be no thumbnail
 			return false;
 		}
-		
+
 		$width = intval( $width );
-		
+
 		# Sanity check $width
 		if( $width <= 0 || $this->width <= 0) {
 			# BZZZT
@@ -1114,7 +1002,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		$height = round( $this->height * $width / $this->width );
 		return true;
 	}
-	
+
 	/**
 	 * Create a thumbnail of the image having the specified width.
 	 * The thumbnail will not be created if the width is larger than the
@@ -1146,7 +1034,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 			wfProfileOut( __METHOD__ );
 			return $thumb;
 		}
-		
+
 		list( $isScriptUrl, $url ) = $this->thumbUrl( $width );
 		if ( $isScriptUrl && $useScript ) {
 			// Use thumb.php to render the image
@@ -1185,7 +1073,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 				@unlink( $thumbDir );
 			}
 			wfMkdirParents( $thumbDir );
-			
+
 			$oldThumbPath = wfDeprecatedThumbDir( $thumbName, 'thumb', $this->fromSharedDirectory ).
 				'/'.$thumbName;
 			$done = false;
@@ -1259,7 +1147,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		$err = false;
 		$cmd = "";
 		$retval = 0;
-		
+
 		if( $this->mime === "image/svg" ) {
 			#Right now we have only SVG
 
@@ -1296,7 +1184,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 
 			} elseif ( $wgUseImageMagick ) {
 				# use ImageMagick
-			
+
 				if ( $this->mime == 'image/jpeg' ) {
 					$quality = "-quality 80"; // 80%
 				} elseif ( $this->mime == 'image/png' ) {
@@ -1307,11 +1195,11 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 
 				# Specify white background color, will be used for transparent images
 				# in Internet Explorer/Windows instead of default black.
-	
+
 				# Note, we specify "-size {$width}" and NOT "-size {$width}x{$height}".
 				# It seems that ImageMagick has a bug wherein it produces thumbnails of
 				# the wrong size in the second case.
-				
+
 				$cmd  =  wfEscapeShellArg($wgImageMagickConvertCommand) .
 					" {$quality} -background white -size {$width} ".
 					wfEscapeShellArg($this->imagePath) .
@@ -1344,7 +1232,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 				#
 				# First find out what kind of file this is, and select the correct
 				# input routine for this.
-	
+
 				$typemap = array(
 					'image/gif'          => array( 'imagecreatefromgif',  'palette',   'imagegif'  ),
 					'image/jpeg'         => array( 'imagecreatefromjpeg', 'truecolor', array( &$this, 'imageJpegWrapper' ) ),
@@ -1428,16 +1316,17 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 			$files = array();
 			$dir = wfImageThumbDir( $this->name, $shared );
 
-			// This generates an error on failure, hence the @
-			$handle = @opendir( $dir );
+			if ( is_dir( $dir ) ) {
+				$handle = opendir( $dir );
 
-			if ( $handle ) {
-				while ( false !== ( $file = readdir($handle) ) ) {
-					if ( $file{0} != '.' ) {
-						$files[] = $file;
+				if ( $handle ) {
+					while ( false !== ( $file = readdir($handle) ) ) {
+						if ( $file{0} != '.' ) {
+							$files[] = $file;
+						}
 					}
+					closedir( $handle );
 				}
-				closedir( $handle );
 			}
 		} else {
 			$files = array();
@@ -1469,8 +1358,9 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		$dir = wfImageThumbDir( $this->name, $shared );
 		$urls = array();
 		foreach ( $files as $file ) {
+			$m = array();
 			if ( preg_match( '/^(\d+)px/', $file, $m ) ) {
-				list( $isScriptUrl, $url ) = $this->thumbUrl( $m[1] );
+				list( /* $isScriptUrl */, $url ) = $this->thumbUrl( $m[1] );
 				$urls[] = $url;
 				@unlink( "$dir/$file" );
 			}
@@ -1478,14 +1368,14 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 
 		// Purge the squid
 		if ( $wgUseSquid ) {
-			$urls[] = $this->getViewURL();
+			$urls[] = $this->getURL();
 			foreach ( $archiveFiles as $file ) {
 				$urls[] = wfImageArchiveUrl( $file );
 			}
 			wfPurgeSquidServers( $urls );
 		}
 	}
-	
+
 	/**
 	 * Purge the image description page, but don't go after
 	 * pages using the image. Use when modifying file history
@@ -1496,7 +1386,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		$page->invalidateCache();
 		$page->purgeSquid();
 	}
-	
+
 	/**
 	 * Purge metadata and all affected pages when the image is created,
 	 * deleted, or majorly updated. A set of additional URLs may be
@@ -1507,7 +1397,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		// Delete thumbnails and refresh image metadata cache
 		$this->purgeCache();
 		$this->purgeDescription();
-		
+
 		// Purge cache of all pages using this image
 		$update = new HTMLCacheUpdate( $this->getTitle(), 'imagelinks' );
 		$update->doUpdate();
@@ -1553,7 +1443,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	 * @public
 	 */
 	function nextHistoryLine() {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$this->checkDBSchema($dbr);
 
@@ -1571,7 +1461,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 				array( 'img_name' => $this->title->getDBkey() ),
 				__METHOD__
 			);
-			if ( 0 == wfNumRows( $this->historyRes ) ) {
+			if ( 0 == $dbr->numRows( $this->historyRes ) ) {
 				return FALSE;
 			}
 		} else if ( $this->historyLine == 1 ) {
@@ -1618,27 +1508,19 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	*   options in DefaultSettings.php) instead of a local one.
 	*
 	*/
-	function getFullPath( $fromSharedRepository = false, $fromInstantCommons = false ) {
-		global $wgUploadDirectory, $wgSharedUploadDirectory, $wgInstantCommonsServerPath;
-		//use local repository paths only if InstantCommons path is not available
-		$dir      = $fromInstantCommons ? $wgInstantCommonsServerPath : ($fromSharedRepository ? $wgSharedUploadDirectory :
-		                                    $wgUploadDirectory);
+	function getFullPath( $fromSharedRepository = false ) {
+		global $wgUploadDirectory, $wgSharedUploadDirectory;
+
+		$dir      = $fromSharedRepository ? $wgSharedUploadDirectory :
+		                                    $wgUploadDirectory;
 
 		// $wgSharedUploadDirectory may be false, if thumb.php is used
 		if ( $dir ) {
-			if($fromInstantCommons)
-			{//TODO: Not the best thing to do here as it adds another 10k to
-			//the default mediawiki install. Maybe point it to the default logo?
-				$fullpath = 'downloading.png';
-			}
-			else
-			{
-				$fullpath = $dir . wfGetHashPath($this->name, $fromSharedRepository, $fromInstantCommons) . $this->name;
-			}
+			$fullpath = $dir . wfGetHashPath($this->name, $fromSharedRepository) . $this->name;
 		} else {
 			$fullpath = false;
 		}
-		
+
 		return $fullpath;
 	}
 
@@ -1657,7 +1539,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	function recordUpload( $oldver, $desc, $license = '', $copyStatus = '', $source = '', $watch = false ) {
 		global $wgUser, $wgUseCopyrightUpload;
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		$this->checkDBSchema($dbw);
 
@@ -1813,13 +1695,13 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		wfProfileIn( __METHOD__ );
 
 		if ( $options ) {
-			$db =& wfGetDB( DB_MASTER );
+			$db = wfGetDB( DB_MASTER );
 		} else {
-			$db =& wfGetDB( DB_SLAVE );
+			$db = wfGetDB( DB_SLAVE );
 		}
 		$linkCache =& LinkCache::singleton();
 
-		extract( $db->tableNames( 'page', 'imagelinks' ) );
+		list( $page, $imagelinks ) = $db->tableNamesN( 'page', 'imagelinks' );
 		$encName = $db->addQuotes( $this->name );
 		$sql = "SELECT page_namespace,page_title,page_id FROM $page,$imagelinks WHERE page_id=il_from AND il_to=$encName $options";
 		$res = $db->query( $sql, __METHOD__ );
@@ -1837,7 +1719,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		wfProfileOut( __METHOD__ );
 		return $retVal;
 	}
-	
+
 	/**
 	 * Retrive Exif data from the file and prune unrecognized tags
 	 * and/or tags with invalid contents
@@ -1847,7 +1729,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	 */
 	private function retrieveExifData( $filename ) {
 		global $wgShowEXIF;
-		
+
 		/*
 		if ( $this->getMimeType() !== "image/jpeg" )
 			return array();
@@ -1857,7 +1739,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 			$exif = new Exif( $filename );
 			return $exif->getFilteredData();
 		}
-		
+
 		return array();
 	}
 
@@ -1897,7 +1779,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		}
 
 		# Update EXIF data in database
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		$this->checkDBSchema($dbw);
 
@@ -1917,7 +1799,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	function isLocal() {
 		return !$this->fromSharedDirectory;
 	}
-	
+
 	/**
 	 * Was this image ever deleted from the wiki?
 	 *
@@ -1927,7 +1809,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		$title = Title::makeTitle( NS_IMAGE, $this->name );
 		return ( $title->isDeleted() > 0 );
 	}
-	
+
 	/**
 	 * Delete all versions of the image.
 	 *
@@ -1942,34 +1824,34 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	function delete( $reason ) {
 		$transaction = new FSTransaction();
 		$urlArr = array( $this->getURL() );
-		
+
 		if( !FileStore::lock() ) {
 			wfDebug( __METHOD__.": failed to acquire file store lock, aborting\n" );
 			return false;
 		}
-		
+
 		try {
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->begin();
-			
+
 			// Delete old versions
 			$result = $dbw->select( 'oldimage',
 				array( 'oi_archive_name' ),
 				array( 'oi_name' => $this->name ) );
-			
+
 			while( $row = $dbw->fetchObject( $result ) ) {
 				$oldName = $row->oi_archive_name;
-				
+
 				$transaction->add( $this->prepareDeleteOld( $oldName, $reason ) );
-				
+
 				// We'll need to purge this URL from caches...
 				$urlArr[] = wfImageArchiveUrl( $oldName );
 			}
 			$dbw->freeResult( $result );
-			
+
 			// And the current version...
 			$transaction->add( $this->prepareDeleteCurrent( $reason ) );
-			
+
 			$dbw->immediateCommit();
 		} catch( MWException $e ) {
 			wfDebug( __METHOD__.": db error, rolling back file transactions\n" );
@@ -1977,22 +1859,22 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 			FileStore::unlock();
 			throw $e;
 		}
-		
+
 		wfDebug( __METHOD__.": deleted db items, applying file transactions\n" );
 		$transaction->commit();
 		FileStore::unlock();
 
-		
+
 		// Update site_stats
 		$site_stats = $dbw->tableName( 'site_stats' );
 		$dbw->query( "UPDATE $site_stats SET ss_images=ss_images-1", __METHOD__ );
-		
+
 		$this->purgeEverything( $urlArr );
-		
+
 		return true;
 	}
-	
-	
+
+
 	/**
 	 * Delete an old version of the image.
 	 *
@@ -2008,12 +1890,12 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	function deleteOld( $archiveName, $reason ) {
 		$transaction = new FSTransaction();
 		$urlArr = array();
-		
+
 		if( !FileStore::lock() ) {
 			wfDebug( __METHOD__.": failed to acquire file store lock, aborting\n" );
 			return false;
 		}
-		
+
 		$transaction = new FSTransaction();
 		try {
 			$dbw = wfGetDB( DB_MASTER );
@@ -2026,11 +1908,11 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 			FileStore::unlock();
 			throw $e;
 		}
-		
+
 		wfDebug( __METHOD__.": deleted db items, applying file transaction\n" );
 		$transaction->commit();
 		FileStore::unlock();
-		
+
 		$this->purgeDescription();
 
 		// Squid purging
@@ -2043,7 +1925,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Delete the current version of a file.
 	 * May throw a database error.
@@ -2117,12 +1999,12 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	 */
 	private function prepareDeleteVersion( $path, $reason, $table, $fieldMap, $where, $fname ) {
 		global $wgUser, $wgSaveDeletedFiles;
-		
+
 		// Dupe the file into the file store
 		if( file_exists( $path ) ) {
 			if( $wgSaveDeletedFiles ) {
 				$group = 'deleted';
-				
+
 				$store = FileStore::get( $group );
 				$key = FileStore::calculateKey( $path, $this->extension );
 				$transaction = $store->insert( $key, $path,
@@ -2138,24 +2020,24 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 			$key = null;
 			$transaction = new FSTransaction(); // empty
 		}
-		
+
 		if( $transaction === false ) {
 			// Fail to restore?
 			wfDebug( __METHOD__.": import to file store failed, aborting\n" );
 			throw new MWException( "Could not archive and delete file $path" );
 			return false;
 		}
-		
+
 		$dbw = wfGetDB( DB_MASTER );
 		$storageMap = array(
 			'fa_storage_group' => $dbw->addQuotes( $group ),
 			'fa_storage_key'   => $dbw->addQuotes( $key ),
-			
+
 			'fa_deleted_user'      => $dbw->addQuotes( $wgUser->getId() ),
 			'fa_deleted_timestamp' => $dbw->timestamp(),
 			'fa_deleted_reason'    => $dbw->addQuotes( $reason ) );
 		$allFields = array_merge( $storageMap, $fieldMap );
-		
+
 		try {
 			if( $wgSaveDeletedFiles ) {
 				$dbw->insertSelect( 'filearchive', $table, $allFields, $where, $fname );
@@ -2168,10 +2050,10 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 			$transaction->rollback();
 			throw $e;
 		}
-		
+
 		return $transaction;
 	}
-	
+
 	/**
 	 * Restore all or specified deleted revisions to the given file.
 	 * Permissions and logging are left to the caller.
@@ -2188,31 +2070,31 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 			wfDebug( __METHOD__." could not acquire filestore lock\n" );
 			return false;
 		}
-		
+
 		$transaction = new FSTransaction();
 		try {
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->begin();
-			
+
 			// Re-confirm whether this image presently exists;
 			// if no we'll need to create an image record for the
 			// first item we restore.
 			$exists = $dbw->selectField( 'image', '1',
 				array( 'img_name' => $this->name ),
 				__METHOD__ );
-			
+
 			// Fetch all or selected archived revisions for the file,
 			// sorted from the most recent to the oldest.
 			$conditions = array( 'fa_name' => $this->name );
 			if( $versions ) {
 				$conditions['fa_id'] = $versions;
 			}
-			
+
 			$result = $dbw->select( 'filearchive', '*',
 				$conditions,
 				__METHOD__,
 				array( 'ORDER BY' => 'fa_timestamp DESC' ) );
-			
+
 			if( $dbw->numRows( $result ) < count( $versions ) ) {
 				// There's some kind of conflict or confusion;
 				// we can't restore everything we were asked to.
@@ -2229,7 +2111,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 				FileStore::unlock();
 				return true;
 			}
-			
+
 			$revisions = 0;
 			while( $row = $dbw->fetchObject( $result ) ) {
 				$revisions++;
@@ -2238,20 +2120,20 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 					wfDebug( __METHOD__.": skipping row with no file.\n" );
 					continue;
 				}
-				
+
 				if( $revisions == 1 && !$exists ) {
 					$destDir = wfImageDir( $row->fa_name );
 					if ( !is_dir( $destDir ) ) {
 						wfMkdirParents( $destDir );
 					}
 					$destPath = $destDir . DIRECTORY_SEPARATOR . $row->fa_name;
-					
+
 					// We may have to fill in data if this was originally
 					// an archived file revision.
 					if( is_null( $row->fa_metadata ) ) {
 						$tempFile = $store->filePath( $row->fa_storage_key );
 						$metadata = serialize( $this->retrieveExifData( $tempFile ) );
-						
+
 						$magic = MimeMagic::singleton();
 						$mime = $magic->guessMimeType( $tempFile, true );
 						$media_type = $magic->getMediaType( $tempFile, $mime );
@@ -2262,7 +2144,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 						$minor_mime = $row->fa_minor_mime;
 						$media_type = $row->fa_media_type;
 					}
-					
+
 					$table = 'image';
 					$fields = array(
 						'img_name'        => $row->fa_name,
@@ -2293,7 +2175,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 						wfMkdirParents( $destDir );
 					}
 					$destPath = $destDir . DIRECTORY_SEPARATOR . $archiveName;
-					
+
 					$table = 'oldimage';
 					$fields = array(
 						'oi_name'         => $row->fa_name,
@@ -2307,13 +2189,13 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 						'oi_user_text'    => $row->fa_user_text,
 						'oi_timestamp'    => $row->fa_timestamp );
 				}
-				
+
 				$dbw->insert( $table, $fields, __METHOD__ );
 				/// @fixme this delete is not totally safe, potentially
 				$dbw->delete( 'filearchive',
 					array( 'fa_id' => $row->fa_id ),
 					__METHOD__ );
-				
+
 				// Check if any other stored revisions use this file;
 				// if so, we shouldn't remove the file from the deletion
 				// archives so they will still work.
@@ -2329,36 +2211,36 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 				} else {
 					$flags = 0;
 				}
-				
+
 				$transaction->add( $store->export( $row->fa_storage_key,
 					$destPath, $flags ) );
 			}
-			
+
 			$dbw->immediateCommit();
 		} catch( MWException $e ) {
 			wfDebug( __METHOD__." caught error, aborting\n" );
 			$transaction->rollback();
 			throw $e;
 		}
-		
+
 		$transaction->commit();
 		FileStore::unlock();
-		
+
 		if( $revisions > 0 ) {
 			if( !$exists ) {
 				wfDebug( __METHOD__." restored $revisions items, creating a new current\n" );
-				
+
 				// Update site_stats
 				$site_stats = $dbw->tableName( 'site_stats' );
 				$dbw->query( "UPDATE $site_stats SET ss_images=ss_images+1", __METHOD__ );
-				
+
 				$this->purgeEverything();
 			} else {
 				wfDebug( __METHOD__." restored $revisions as archived versions\n" );
 				$this->purgeDescription();
 			}
 		}
-		
+
 		return $revisions;
 	}
 
@@ -2369,31 +2251,40 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 	 * @param $page Integer: page number, starting with 1
 	 */
 	function selectPage( $page ) {
-		wfDebug( __METHOD__." selecting page $page \n" );
-		$this->page = $page;
-		if ( ! $this->dataLoaded ) {
-			$this->load();
+		if( $this->initializeMultiPageXML() ) {
+			wfDebug( __METHOD__." selecting page $page \n" );
+			$this->page = $page;
+			$o = $this->multiPageXML->BODY[0]->OBJECT[$page-1];
+			$this->height = intval( $o['height'] );
+			$this->width = intval( $o['width'] );
+		} else {
+			wfDebug( __METHOD__." selectPage($page) for bogus multipage xml on '$this->name'\n" );
+			return;
 		}
-		if ( ! isset( $this->multiPageXML ) ) {
-			$this->initializeMultiPageXML();
-		}
-		$o = $this->multiPageXML->BODY[0]->OBJECT[$page-1];
-		$this->height = intval( $o['height'] );
-		$this->width = intval( $o['width'] );
 	}
 
+	/**
+	 * Lazy-initialize multipage XML metadata for DjVu files.
+	 * @return bool true if $this->multiPageXML is set up and ready;
+	 *              false if corrupt or otherwise failing
+	 */
 	function initializeMultiPageXML() {
+		$this->load();
+		if ( isset( $this->multiPageXML ) ) {
+			return true;
+		}
+
 		#
-		# Check for files uploaded prior to DJVU support activation
-		# They have a '0' in their metadata field.
+		# Check for files uploaded prior to DJVU support activation,
+		# or damaged.
 		#
-		if ( $this->metadata == '0' ) {
+		if( empty( $this->metadata ) || $this->metadata == serialize( array() ) ) {
 			$deja = new DjVuImage( $this->imagePath );
 			$this->metadata = $deja->retrieveMetaData();
 			$this->purgeMetadataCache();
 
 			# Update metadata in the database
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$dbw->update( 'image',
 				array( 'img_metadata' => $this->metadata ),
 				array( 'img_name' => $this->name ),
@@ -2401,8 +2292,14 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 			);
 		}
 		wfSuppressWarnings();
-		$this->multiPageXML = new SimpleXMLElement( $this->metadata );
+		try {
+			$this->multiPageXML = new SimpleXMLElement( $this->metadata );
+		} catch( Exception $e ) {
+			wfDebug( "Bogus multipage XML metadata on '$this->name'\n" );
+			$this->multiPageXML = null;
+		}
 		wfRestoreWarnings();
+		return isset( $this->multiPageXML );
 	}
 
 	/**
@@ -2423,17 +2320,30 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		if ( ! $this->isMultipage() ) {
 			return null;
 		}
-		if ( ! isset( $this->multiPageXML ) ) {
-			$this->initializeMultiPageXML();
+		if( $this->initializeMultiPageXML() ) {
+			return count( $this->multiPageXML->xpath( '//OBJECT' ) );
+		} else {
+			wfDebug( "Requested pageCount() for bogus multi-page metadata for '$this->name'\n" );
+			return null;
 		}
-		return count( $this->multiPageXML->xpath( '//OBJECT' ) );
 	}
-	
+
+	static function getCommonsDB() {
+		static $dbc;
+		global $wgLoadBalancer, $wgSharedUploadDBname;
+		if ( !isset( $dbc ) ) {
+			$i = $wgLoadBalancer->getGroupIndex( 'commons' );
+			$dbinfo = $wgLoadBalancer->mServers[$i];
+			$dbc = new Database( $dbinfo['host'], $dbinfo['user'], 
+				$dbinfo['password'], $wgSharedUploadDBname );
+		}
+		return $dbc;
+	}
+
 } //class
 
 /**
  * Wrapper class for thumbnail images
- * @package MediaWiki
  */
 class ThumbnailImage {
 	/**
