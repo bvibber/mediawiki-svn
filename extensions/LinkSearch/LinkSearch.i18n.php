@@ -137,18 +137,27 @@ $wgLinkSearchMessages['sv'] = array(
 );
 $wgLinkSearchMessages['zh-cn'] = array(
 	'linksearch'       => '搜索网页链接',
+	'linksearch-pat'   => '搜索形态:',
+	'linksearch-ns'    => '名字空间:',
+	'linksearch-ok'    => '搜索',
 	'linksearch-text'  => '可能使用了类似"*.wikipedia.org"的通配符。',
 	'linksearch-line'  => '$1 链自 $2',
 	'linksearch-error' => '通配符仅可在主机名称的开头使用。',
 );
 $wgLinkSearchMessages['zh-tw'] = array(
 	'linksearch'       => '搜尋網頁連結',
+	'linksearch-pat'   => '搜尋形態:',
+	'linksearch-ns'    => '名字空間:',
+	'linksearch-ok'    => '搜尋',
 	'linksearch-text'  => '可能使用了類似"*.wikipedia.org"的萬用字元。',
 	'linksearch-line'  => '$1 連自 $2',
 	'linksearch-error' => '萬用字元僅可在主機名稱的開頭使用。',
 );
 $wgLinkSearchMessages['zh-yue'] = array(
-	'linksearch'       => '搜尋網頁連結',
+	'linksearch'       => '搵網頁連結',
+	'linksearch-pat'   => '搵陣形:',
+	'linksearch-ns'    => '空間名:',
+	'linksearch-ok'    => '搵',
 	'linksearch-text'  => '可能用咗類似"*.wikipedia.org"嘅萬用字元。',
 	'linksearch-line'  => '$1 連自 $2',
 	'linksearch-error' => '萬用字元只可以響主機名嘅開頭度用。',
