@@ -813,8 +813,10 @@ CREATE TABLE /*$wgDBprefix*/recentchanges (
   rc_logid int(10) unsigned NOT NULL default '0',
   -- Store log type info here, or null
   rc_log_type varchar(255) binary NULL default NULL,
-  -- The action text of logs
-  rc_actiontext varchar(255) binary NULL default NULL,
+  -- Store log action or null
+  rc_log_action varchar(255) binary NULL default NULL,
+  -- Log params
+  rc_params blob NOT NULL default '',
 
   PRIMARY KEY rc_id (rc_id),
   INDEX rc_timestamp (rc_timestamp),
