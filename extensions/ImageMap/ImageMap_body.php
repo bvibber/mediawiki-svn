@@ -140,6 +140,7 @@ class ImageMap {
 					}
 					break;
 				case 'poly':
+					$coords = array();
 					$coord = strtok( " \t" );
 					while ( $coord !== false ) {
 						$coords[] = $coord;
