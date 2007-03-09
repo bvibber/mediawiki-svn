@@ -76,9 +76,8 @@ function wfPostcommentForm() {
     if ($wgTitle->getNamespace() == NS_USER_TALK)
         $msg = wfMsg('postcomment_leavemessagefor',$wgTitle->getText());
    echo "<br/><br/><table> 
-        <FORM name=\"commentForm\" method=\"POST\" action=\"{$pc->getFullURL()}\" \">
-        <input name=target type=hidden value=\"" . htmlspecialchars($wgTitle->getPrefixedDBkey()) . "\">
-        <input name=section_id type=hidden value=-1>
+        <FORM name=\"commentForm\" method=\"POST\" action=\"{$pc->getFullURL()}\">
+        <input name=\"target\" type=\"hidden\" value=\"" . htmlspecialchars($wgTitle->getPrefixedDBkey()) . "\"/>
         <tr><td colspan=\"2\" valign=\"top\">
         <a name=\"post\"></a>
         <b>$msg:</b><br/><br/></td></tr>
@@ -112,7 +111,7 @@ function wfSpecialPostcomment( $par )
 	//echo "title: " . $wgRequest->getVal("title") . "<BR>";
 	//echo "comment: " . $wgRequest->getVal("comment_text") . "<BR>";
 	//echo "new_topic id " . $wgRequest->getVal("new_topic") . "<BR>";	
-	
+
 	$t = Title::newFromDBKey($wgRequest->getVal("target"));
 	$update = true;
 	
