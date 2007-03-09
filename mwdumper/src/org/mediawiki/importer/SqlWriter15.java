@@ -33,12 +33,12 @@ public class SqlWriter15 extends SqlWriter {
 	private Page currentPage;
 	private Revision lastRevision;
 	
-	public SqlWriter15(SqlStream output) {
-		super(output);
+	public SqlWriter15(SqlWriter.Traits tr, SqlStream output) {
+		super(tr, output);
 	}
 	
-	public SqlWriter15(SqlStream output, String prefix) {
-		super(output, prefix);
+	public SqlWriter15(SqlWriter.Traits tr, SqlStream output, String prefix) {
+		super(tr, output, prefix);
 	}
 	
 	public void writeEndWiki() throws IOException {
@@ -60,7 +60,7 @@ public class SqlWriter15 extends SqlWriter {
 	}
 	
 	public void writeRevision(Revision revision) throws IOException {
-		bufferInsertRow("text", new Object[][] {
+		bufferInsertRow(traits.getTextTable(), new Object[][] {
 				{"old_id", new Integer(revision.Id)},
 				{"old_text", revision.Text},
 				{"old_flags", "utf-8"}});
@@ -110,8 +110,8 @@ public class SqlWriter15 extends SqlWriter {
 				{"page_counter", ZERO},
 				{"page_is_redirect", revision.isRedirect() ? ONE : ZERO},
 				{"page_is_new", ZERO},
-				{"page_random", RANDOM},
-				{"page_touched", TOUCHED},
+				{"page_random", traits.getRandom()},
+				{"page_touched", traits.getCurrentTime()},
 				{"page_latest", new Integer(revision.Id)},
 				{"page_len", new Integer(lengthUtf8(revision.Text))}});
 		checkpoint();

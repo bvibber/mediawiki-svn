@@ -36,25 +36,88 @@ import java.util.TimeZone;
 
 
 public abstract class SqlWriter implements DumpWriter {
+	public static abstract class Traits {
+		public abstract SqlLiteral getCurrentTime();
+		public abstract SqlLiteral getRandom();
+		public abstract String getTextTable();
+		public abstract boolean supportsMultiRowInsert();
+		public abstract MessageFormat getTimestampFormatter();
+		public String getWikiPrologue() {
+			return "";
+		}
+		public String getWikiEpilogue() {
+			return "";
+		}
+	}
+
+	public static class MySQLTraits extends Traits {
+		// UTC_TIMESTAMP() is new in MySQL 4.1 or 5.0, so using this
+		// godawful hack found in documentation comments:
+		public SqlLiteral getCurrentTime() {
+			return new SqlLiteral("DATE_ADD('1970-01-01', INTERVAL UNIX_TIMESTAMP() SECOND)+0");
+		}
+		public SqlLiteral getRandom() {
+			return new SqlLiteral("RAND()");	
+		}
+		public boolean supportsMultiRowInsert() {
+			return true;
+		}
+		public String getTextTable() {
+			return "text";
+		}
+		private static final MessageFormat timestampFormatter = new MessageFormat(
+				"{0,number,0000}{1,number,00}{2,number,00}{3,number,00}{4,number,00}{5,number,00}");
+		public MessageFormat getTimestampFormatter() {
+			return timestampFormatter;
+		}
+	}
+
+	public static class PostgresTraits extends Traits {
+		public SqlLiteral getCurrentTime() {
+			return new SqlLiteral("current_timestamp AT TIME ZONE 'UTC'");
+		}
+		public SqlLiteral getRandom() {
+			return new SqlLiteral("RANDOM()");
+		}
+		public boolean supportsMultiRowInsert() {
+			return false;
+		}
+		public String getTextTable() {
+			return "pagecontent";
+		}
+		private static final MessageFormat timestampFormatter = new MessageFormat(
+				"{0,number,0000}-{1,number,00}-{2,number,00} {3,number,00}:{4,number,00}:{5,number,00}");
+		public MessageFormat getTimestampFormatter() {
+			return timestampFormatter;
+		}
+		public String getWikiPrologue() {
+			return
+"ALTER TABLE revision DISABLE TRIGGER ALL;" +
+"ALTER TABLE page DISABLE TRIGGER ALL;";
+		}
+		public String getWikiEpilogue() {
+			return
+"ALTER TABLE revision ENABLE TRIGGER ALL;" +
+"ALTER TABLE page ENABLE TRIGGER ALL;";
+		}
+	}
+
 	private SqlStream stream;
 	private String tablePrefix = "";
 	
 	protected static final Integer ONE = new Integer(1);
 	protected static final Integer ZERO = new Integer(0);
+	protected Traits traits;
 	
-	// UTC_TIMESTAMP() is new in MySQL 4.1 or 5.0, so using this
-	// godawful hack found in documentation comments:
-	protected static final SqlLiteral TOUCHED = new SqlLiteral(
-		"DATE_ADD('1970-01-01', INTERVAL UNIX_TIMESTAMP() SECOND)+0");
-	protected static final SqlLiteral RANDOM = new SqlLiteral("RAND()");	
-	
-	public SqlWriter(SqlStream output) {
+	public SqlWriter(Traits tr, SqlStream output) {
 		stream = output;
+		traits = tr;
 	}
 	
-	public SqlWriter(SqlStream output, String prefix) {
+	public SqlWriter(Traits tr, SqlStream output, String prefix) {
 		stream = output;
 		tablePrefix = prefix;
+		traits = tr;
 	}
 	
 	public void close() throws IOException {
@@ -64,10 +127,12 @@ public abstract class SqlWriter implements DumpWriter {
 	public void writeStartWiki() throws IOException {
 		stream.writeComment("-- MediaWiki XML dump converted to SQL by mwdumper");
 		stream.writeStatement("BEGIN");
+		stream.writeStatement(traits.getWikiPrologue());
 	}
 	
 	public void writeEndWiki() throws IOException {
 		flushInsertBuffers();
+		stream.writeStatement(traits.getWikiEpilogue());
 		stream.writeStatement("COMMIT");
 		stream.writeComment("-- DONE");
 	}
@@ -105,7 +170,7 @@ public abstract class SqlWriter implements DumpWriter {
 	protected void bufferInsertRow(String table, Object[][] row) throws IOException {
 		StringBuffer sql = (StringBuffer)insertBuffers.get(table);
 		if (sql != null) {
-			if (sql.length() < blockSize) {
+			if (traits.supportsMultiRowInsert() && (sql.length() < blockSize)) {
 				sql.append(',');
 				appendInsertValues(sql, row);
 				return;
@@ -252,11 +317,8 @@ public abstract class SqlWriter implements DumpWriter {
 		return title.replace(' ', '_');
 	}
 	
-	private static final MessageFormat timestampFormatter = new MessageFormat(
-			"{0,number,0000}{1,number,00}{2,number,00}{3,number,00}{4,number,00}{5,number,00}");
-	
-	protected static String timestampFormat(Calendar time) {
-		return timestampFormatter.format(new Object[] {
+	protected String timestampFormat(Calendar time) {
+		return traits.getTimestampFormatter().format(new Object[] {
 				new Integer(time.get(Calendar.YEAR)),
 				new Integer(time.get(Calendar.MONTH) + 1),
 				new Integer(time.get(Calendar.DAY_OF_MONTH)),
@@ -265,8 +327,8 @@ public abstract class SqlWriter implements DumpWriter {
 				new Integer(time.get(Calendar.SECOND))});
 	}
 	
-	protected static String inverseTimestamp(Calendar time) {
-		return timestampFormatter.format(new Object[] {
+	protected String inverseTimestamp(Calendar time) {
+		return traits.getTimestampFormatter().format(new Object[] {
 				new Integer(9999 - time.get(Calendar.YEAR)),
 				new Integer(99 - time.get(Calendar.MONTH) - 1),
 				new Integer(99 - time.get(Calendar.DAY_OF_MONTH)),

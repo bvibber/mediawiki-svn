@@ -32,12 +32,12 @@ public class SqlWriter14 extends SqlWriter {
 	private Page currentPage;
 	private Revision lastRevision;
 	
-	public SqlWriter14(SqlStream output) {
-		super(output);
+	public SqlWriter14(SqlWriter.Traits tr, SqlStream output) {
+		super(tr, output);
 	}
 	
-	public SqlWriter14(SqlStream output, String prefix) {
-		super(output, prefix);
+	public SqlWriter14(SqlWriter.Traits tr, SqlStream output, String prefix) {
+		super(tr, output, prefix);
 	}
 	
 	public void writeStartPage(Page page) {
@@ -87,8 +87,8 @@ public class SqlWriter14 extends SqlWriter {
 				{"cur_counter", ZERO},
 				{"cur_is_redirect", revision.isRedirect() ? ONE : ZERO},
 				{"cur_minor_edit", revision.Minor ? ONE : ZERO},
-				{"cur_random", RANDOM},
-				{"cur_touched", TOUCHED},
+				{"cur_random", traits.getRandom()},
+				{"cur_touched", traits.getCurrentTime()},
 				{"inverse_timestamp", inverseTimestamp(revision.Timestamp)}});
 		checkpoint();
 	}

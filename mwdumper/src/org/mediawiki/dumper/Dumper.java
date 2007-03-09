@@ -229,14 +229,24 @@ class Dumper {
 			return new XmlDumpWriter(output.getFileStream());
 		else if (format.equals("sphinx"))
 			return new SphinxWriter(output.getFileStream());
-		else if (format.equals("sql")) {
+		else if (format.equals("mysql") || format.equals("pgsql") || format.equals("sql")) {
 			SqlStream sqlStream = output.getSqlStream();
+			SqlWriter ret;
+
+			SqlWriter.Traits tr;
+			if (format.equals("pgsql"))
+				tr = new SqlWriter.PostgresTraits();
+			else
+				tr = new SqlWriter.MySQLTraits();
+
 			if (param.equals("1.4"))
-				return new SqlWriter14(sqlStream);
+				ret = new SqlWriter14(tr, sqlStream);
 			else if (param.equals("1.5"))
-				return new SqlWriter15(sqlStream);
+				ret = new SqlWriter15(tr, sqlStream);
 			else
 				throw new IllegalArgumentException("SQL version not known: " + param);
+
+			return ret;
 		} else
 			throw new IllegalArgumentException("Output format not known: " + format);
 	}

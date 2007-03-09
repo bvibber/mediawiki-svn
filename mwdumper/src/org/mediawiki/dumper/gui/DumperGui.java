@@ -11,6 +11,7 @@ import java.sql.Statement;
 import org.mediawiki.dumper.Tools;
 import org.mediawiki.importer.DumpWriter;
 import org.mediawiki.importer.SqlServerStream;
+import org.mediawiki.importer.SqlWriter;
 import org.mediawiki.importer.SqlWriter14;
 import org.mediawiki.importer.SqlWriter15;
 import org.mediawiki.importer.XmlDumpReader;
@@ -179,10 +180,11 @@ public class DumperGui {
 	
 	DumpWriter openWriter() {
 		SqlServerStream sqlStream = new SqlServerStream(conn);
+		/* XXX should have mysql/postgres selection */
 		if (schema.equals("1.4"))
-			return new SqlWriter14(sqlStream, prefix);
+			return new SqlWriter14(new SqlWriter.MySQLTraits(), sqlStream, prefix);
 		else
-			return new SqlWriter15(sqlStream, prefix);
+			return new SqlWriter15(new SqlWriter.MySQLTraits(), sqlStream, prefix);
 	}
 	
 	void abort() {
