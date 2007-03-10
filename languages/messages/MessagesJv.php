@@ -1,8 +1,7 @@
 <?php
 /** Javanese (Basa Jawa)
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  *
  * @author Niklas Laxström
  *
@@ -11,9 +10,6 @@
  */
 $fallback = 'id';
 
-$quickbarSettings = array(
-	'Ora ana', 'Tetep sisih kiwa', 'Tetep sisih tengen', 'Ngambang sisih kiwa'
-);
 $namespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Astamiwa',
@@ -42,4 +38,13 @@ $namespaceAliases = array(
 	'Pitulung_Dhiskusi' => NS_HELP_TALK,
 	'Kategori_Dhiskusi' => NS_CATEGORY_TALK,
 );
+
+$messages = array(
+# Preferences page
+'qbsettings-none'	=> 'Ora ana',
+'qbsettings-fixedleft'	=> 'Tetep sisih kiwa',
+'qbsettings-fixedright'	=> 'Tetep sisih tengen',
+'qbsettings-floatingleft'	=> 'Ngambang sisih kiwa',
+);
+
 ?>

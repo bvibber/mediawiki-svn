@@ -633,6 +633,7 @@ parent class in order maintain consistency across languages.
 'deletethispage' => 'Delete this page',
 'undelete_short' => 'Undelete {{PLURAL:$1|one edit|$1 edits}}',
 'protect' => 'Protect',
+'protect_change' => 'change protection',
 'protectthispage' => 'Protect this page',
 'unprotect' => 'unprotect',
 'unprotectthispage' => 'Unprotect this page',
@@ -1088,7 +1089,19 @@ As an administrator on this site you can view it;
 there may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].
 </div>',
 'rev-delundel' => 'show/hide',
+'historysize' => '($1 bytes)',
+'historyempty' => '(empty)',
 
+'history-feed-title' => 'Revision history',
+'history-feed-description'	=> 'Revision history for this page on the wiki',
+'history-feed-item-nocomment' => '$1 at $2', # user at time
+'history-feed-empty' => 'The requested page doesn\'t exist.
+It may have been deleted from the wiki, or renamed.
+Try [[Special:Search|searching on the wiki]] for relevant new pages.',
+
+# Revision deletion
+#
+'revisiondelete' => 'Delete/undelete revisions',
 'revdelete-nooldid-title' => 'No target revision',
 'revdelete-nooldid-text' => 'You have not specified target revision or revisions
 to perform this function on.',
@@ -1308,6 +1321,11 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'rc_categories_any'	=> 'Any',
 'rc-change-size' => '$1',
 
+# Recentchangeslinked
+'recentchangeslinked'           => 'Related changes',
+'recentchangeslinked-noresult'  => 'No changes on linked pages during the given period.',
+'recentchangeslinked-summary'   => "This special page lists the last changes on pages who are linked. Pages on your watchlist are '''bold'''.",
+
 # Upload
 #
 'upload'		=> 'Upload file',
@@ -1341,7 +1359,10 @@ To include the image in a page, use a link in the form
 'minlength'		=> 'File names must be at least three letters.',
 'illegalfilename'	=> 'The filename "$1" contains characters that are not allowed in page titles. Please rename the file and try uploading it again.',
 'badfilename'	=> 'File name has been changed to "$1".',
-'badfiletype'	=> "\".$1\" is not a recommended image file format.",
+'filetype-badmime'            => 'Files of the MIME type "$1" are not allowed to be uploaded.',
+'filetype-badtype'            => "'''\".$1\"''' is an unwanted file type
+: List of allowed file types: $2",
+'filetype-missing'            => 'The file has no extension (like ".jpg").',
 'large-file' => 'It is recommended that files are no larger than $1; this file is $2.',
 'largefileserver' => 'This file is bigger than the server is configured to allow.',
 'emptyfile'		=> 'The file you uploaded seems to be empty. This might be due to a typo in the file name. Please check whether you really want to upload this file.',
@@ -1454,21 +1475,18 @@ this old version, (rev) = revert to this old version.
 'statistics'	=> 'Statistics',
 'sitestats'		=> '{{SITENAME}} statistics',
 'userstats'		=> 'User statistics',
-'sitestatstext' => "There {{PLURAL:$1|is '''1''' page|are '''$1''' total pages}} in the database.
+'sitestats-text' => "There {{PLURAL:$1|is '''1''' page|are '''$1''' total pages}} in the database.
 This includes \"talk\" pages, pages about {{SITENAME}}, minimal \"stub\"
 pages, redirects, and others that probably don't qualify as content pages.
 Excluding those, there {{PLURAL:$2|is '''1''' page that is a|are '''$2''' pages that are}} probably legitimate
 content {{PLURAL:$2|page|pages}}. 
 
-'''$8''' {{PLURAL:$8|file|files}} have been uploaded.
+'''$5''' {{PLURAL:$5|file|files}} have been uploaded.
 
-There have been a total of '''$3''' {{PLURAL:$3|page view|page views}}, and '''$4''' {{PLURAL:$4|page edit|page edits}}
-since {{SITENAME}} was setup.
-That comes to '''$5''' average edits per page, and '''$6''' views per edit.
-
-The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''.",
-'userstatstext' => "There {{PLURAL:$1|is '''1''' registered user|are '''$1''' registered users}}, of which
-'''$2''' (or '''$4%''') {{PLURAL:$2|has|have}} $5 rights.",
+There have been a total '''$3''' {{PLURAL:$3|page edit|page edits}} since {{SITENAME}} was setup. That comes to '''$4''' average edits per page.",
+'sitestats-views' => "There have been a total of '''$1''' {{PLURAL:$1|page view|page views}} and '''$2''' views per edit.",
+'sitestats-jobs' => "The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$1'''.",
+'userstats-text' => "There {{PLURAL:$1|is '''1''' registered user|are '''$1''' registered users}}, of which '''$2''' (or '''$3%''') {{PLURAL:$2|has|have}} $4 rights.",
 'statistics-mostpopular' => 'Most viewed pages',
 'statistics-footer' => '',
 
@@ -1546,7 +1564,6 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 'specialpages-summary'	=> '',
 'spheading'		=> 'Special pages for all users',
 'restrictedpheading'	=> 'Restricted special pages',
-'recentchangeslinked' => 'Related changes',
 'rclsub'		=> "(to pages linked from \"$1\")",
 'newpages'		=> 'New pages',
 'newpages-summary'	=> '',
@@ -1808,7 +1825,6 @@ can be restored. The archive may be periodically cleaned out.',
 click '''''Restore'''''. To perform a selective restoration, check the boxes corresponding to the
 revisions to be restored, and click '''''Restore'''''. Clicking '''''Reset''''' will clear the
 comment field and all checkboxes.",
-'undeletearticle' => 'Restore deleted page',
 'undeleterevisions' => "$1 {{PLURAL:$1|revision|revisions}} archived",
 'undeletehistory' => 'If you restore the page, all revisions will be restored to the history.
 If a new page with the same name has been created since the deletion, the restored
@@ -1853,14 +1869,17 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'ucnote'        => "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
 'uclinks'       => "View the last $1 changes; view the last $2 days.",
 'uctop'         => ' (top)' ,
-'newbies'       => 'newbies',
 
-'sp-contributions-newest' => 'Newest',
-'sp-contributions-oldest' => 'Oldest',
-'sp-contributions-newer'  => 'Newer $1',
-'sp-contributions-older'  => 'Older $1',
-'sp-contributions-newbies-sub' => 'For newbies',
+'sp-contributions-newest'      => 'Newest',
+'sp-contributions-oldest'      => 'Oldest',
+'sp-contributions-newer'       => 'Newer $1',
+'sp-contributions-older'       => 'Older $1',
+'sp-contributions-newbies'     => 'Show contributions of new accounts only',
+'sp-contributions-newbies-sub' => 'For new accounts',
 'sp-contributions-blocklog'    => 'Block log',
+'sp-contributions-search'      => 'Search for contributions',
+'sp-contributions-username'    => 'IP Address or username:',
+'sp-contributions-submit'      => 'Search',
 
 'sp-newimages-showfrom' => 'Show new images starting from $1',
 
@@ -2049,7 +2068,7 @@ In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{Media
 'exportnohistory' => "----
 '''Note:''' Exporting the full history of pages through this form has been disabled due to performance reasons.",
 'export-submit' => 'Export',
-'export-addcattext' => 'Add pages from category: ',
+'export-addcattext' => 'Add pages from category:',
 'export-addcat' => 'Add',
 
 # Namespace 8 related
@@ -2303,11 +2322,12 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'imagemaxsize'          => 'Limit images on image description pages to:',
 'thumbsize'             => 'Thumbnail size:',
 'widthheight'		=> '$1×$2',
-'file-info'             => 'File size: $1, MIME type: $2',
+'file-info'             => '(file size: $1, MIME type: $2)',
 'file-info-size'        => '($1 × $2 pixel, file size: $3, MIME type: $4)',
 'file-nohires'          => '<small>No higher resolution available.</small>',
+'file-svg'              => '<small>This is a lossless scalable vector image. Base size: $1 × $2 pixels.</small>',
 'show-big-image'        => 'Image in higher resolution',
-'show-big-image-thumb'  => '<small>Size of this preview: $1 × $2 pixel</small>',
+'show-big-image-thumb'  => '<small>Size of this preview: $1 × $2 pixels</small>',
 
 'newimages' => 'Gallery of new files',
 'newimages-summary' => '',

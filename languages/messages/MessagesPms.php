@@ -2,8 +2,7 @@
 /** Piedmontese (Piemontèis)
   * Users are bilingual in Piedmontese and Italian, using Italian as template.
   *
-  * @package MediaWiki
-  * @subpackage Language
+  * @addtogroup Language
   *
   * @bug 5362
   *
@@ -494,7 +493,7 @@ Che as controla për piasì l\'adrëssa (URL) che a l\'ha dovrà për rivé a st
 'loadhist'              => 'I soma antramentr che i carioma la stòria dë sta pàgina-sì',
 'currentrev'            => 'Versione dël dì d\'ancheuj',
 'revisionasof'          => 'Revision $1',
-'old-revision-navigation' => 'Revision al $1; $5<br />($6) $3 | $2 | $4 ($7)',
+'revision-info' => 'Revision al $1; $2',
 'previousrevision'      => '←Version pì veja',
 'nextrevision'          => 'Revision pì neuve→',
 'currentrevisionlink'   => 'vardé la version corenta',
@@ -904,10 +903,10 @@ L\'adrëssa eletrònica che a l\'ha specificà ant ij sò "gust" a sarà butà c
 'watchnologintext'      => 'A l\'ha da manca prima ëd tut dë [[Special:Userlogin|rintré ant ël sistema]]
 për podej modifiché soa lista dla ròba dë tnì sot euj.',
 'addedwatch'            => 'Sòn a l\'é stait giontà a le pàgine che it ten-e sot euj',
-'addedwatchtext'        => ' La pàgina  "$1" a l\'é staita giontà a tua <a href="{{localurle:Special:Watchlist}}">lista dla ròba da tnì sot euj</a>.
-Le modìfiche che a-i vniran ant costa pàgina-sì e ant soa pàgina ëd discussion a saran listà ambelessì, e la pàgina a së s-ciairerà ën <b>grassèt</b> ant la pàgina ëd j\'<a href="{{localurle:Special:Recentchanges}}">ùltime modìfiche</a> përchè che a resta belfé a ten-la d\'euj.</p>
+'addedwatchtext'        => ' La pàgina  "$1" a l\'é staita giontà a tua [[Special:Watchlist|lista dla ròba da tnì sot euj]].
+Le modìfiche che a-i vniran ant costa pàgina-sì e ant soa pàgina ëd discussion a saran listà ambelessì, e la pàgina a së s-ciairerà ën <b>grassèt</b> ant la pàgina ëd j\'[[Special:Recentchanges|ùltime modìfiche]] përchè che a resta belfé a ten-la d\'euj.
 
-<p>Se a vorèissa mai gavé st\'articol-sì da \'nt la lista dij \'\'Sot Euj\'\', che a sgnaca " Chita da tnì sot euj " ant sla bara dij menù.',
+Se a vorèissa mai gavé st\'articol-sì da \'nt la lista dij \'\'Sot Euj\'\', che a sgnaca " Chita da tnì sot euj " ant sla bara dij menù.',
 'removedwatch'          => 'Gavà via da \'nt la lista dla ròba da tnì sot euj',
 'removedwatchtext'      => 'La pàgina  "$1" a l\'è staita gavà via da soa lista dla ròba da tnì sot euj.',
 'watch'                 => 'ten sot euj',
@@ -994,7 +993,7 @@ Ij temp a son conforma a l\'ora dël server (UTC).
 'rollbacklink'          => 'ripristiné j\'archivi',
 'rollbackfailed'        => 'A l\'é pa podusse ripristiné',
 'cantrollback'          => 'As peul pa tornesse a na version pì veja: l\'ùltima modìfica a l\'ha fala l\'ùnich utent che a l\'abia travajà a cost artìcol-sì.',
-'alreadyrolled'         => 'As peulo pa anulé j\'Ultime modìfiche ëd [[$1]]
+'alreadyrolled'         => 'As peulo pa anulé j\'Ultime modìfiche ëd [[:$1]]
 faite da [[User:$2|$2]] ([[User talk:$2|Talk]]); Cheidun d\'àutr a l\'ha già modificà ò pura anulà le modìfiche a sta pàgina-sì.
 
 L\'ùltima modìfica a l\'é staita faita da [[User:$3|$3]] ([[User talk:$3|Talk]]).',
@@ -1136,24 +1135,9 @@ Për piasì, che an conferma che sòn a l\'é da bon lòn che chiel (chila) a ve
 'lockdbsuccesstext'     => 'La base dat ëd {{SITENAME}} a l\'è staita blocà.
 <br />Che as visa mach dë gavé ël blocagi pen-a che a l\'ha finì soa manutension.',
 'unlockdbsuccesstext'   => ' La base dat ëd {{SITENAME}} a l\'è staita dësblocà.',
-'makesysoptitle'        => 'Deje a n\'utent la qualìfica da aministrator',
-'makesysoptext'         => 'Sta domanda-sì a la dòvro ij mangiapapé për deje a n\'utent normal la qualìfica da aministrator. 
-Che a scriva lë stranòm dl\'utent che a veul fé aministrator e peuj che a sgnaca ël boton për deje la qualìfica.',
-'makesysopname'         => 'Stranòm:',
-'makesysopsubmit'       => 'Daje a st\'utent-sì la qualìfica da aministrator',
-'makesysopok'           => '<b>L\'utent "$1" adess a l\'é n\'aministrator</b>',
-'makesysopfail'         => '<b>L\'utent "$1" as peul pa felo aminìstrator. (Fuss-lo pa mai che a l\'avèissa butà un nòm nen giust?)</b>',
-'setbureaucratflag'     => 'Deje a st-utent-sì la qualìfica ëd Mangiapapé',
 'rightslog'             => 'Drit dj\'utent',
 'rightslogtext'         => 'Sòn a l\'é na lista dij cambiament aj drit dj\'utent.',
 'rightslogentry'        => 'a l\'ha tramudà $1 da \'nt la partìa $2 a la partìa $3',
-'rights'                => 'Drit:',
-'set_user_rights'       => 'Deje sò drit a j\'utent',
-'user_rights_set'       => '<b>Ij drit dl\'utent për "$1" a son stait modificà</b>',
-'set_rights_fail'       => '<b>As peul pa buteje sò drit a "$1". (Ha-lo pa mai scrivù mal lë stranòm?)</b>',
-'makesysop'             => 'Deje a n\'utent la qualìfica da aministrator',
-'already_sysop'         => 'St\'Utent-sì a l\'é già n\'aministrator (administrator)',
-'already_bureaucrat'    => 'St\'Utent-sì a l\'é già un Mangiapapé (bureaucrat)',
 'rightsnone'            => '(gnun)',
 'movepage'              => 'Tramudé na pàgina',
 'movepagetext'          => 'Con ël mòdulo ëd domanda ambelessì sota a peul cangeje nòm a na pàgina, tramudand-je dapress ëdcò tuta soa cronologìa anvers al nòm neuv.
@@ -1262,15 +1246,15 @@ Tute le amportassion antra wiki diferente a resto marcà ant ël [[Special:Log/i
 'accesskey-diff'        => 'v',
 'accesskey-compareselectedversions'=> 'v',
 'accesskey-watch'       => 'w',
-'tooltip-search'        => 'Sërca an {{SITENAME}} [alt-f]',
-'tooltip-minoredit'     => 'Marca sossì coma modìfica cita [alt-i]',
-'tooltip-save'          => 'Salva le modìfiche [alt-s]',
-'tooltip-preview'       => 'Preuva dle modìfiche (mej sempe fela, prima che fé che salvé!) [alt-p]',
-'tooltip-diff'          => 'Fame vëdde che modìfiche che i l\'hai faje al test. [alt-v]',
-'tooltip-compareselectedversions'=> 'Fame ël paragon dle diferense antra le version selessionà. [alt-v]',
-'tooltip-watch'         => 'Gionta sta pàgina-sì a la lista dle ròbe che im ten-o sot euj [alt-w]',
-'Common.css'            => '/** Ël còdes CSS che as buta ambelessì a resta dovrà ant tute le "facie" */',
-'Monobook.css'          => '/* cangé st\'archivi-sì për modifiché la formatassion dël sit antregh */',
+'tooltip-search'        => 'Sërca an {{SITENAME}}',
+'tooltip-minoredit'     => 'Marca sossì coma modìfica cita',
+'tooltip-save'          => 'Salva le modìfiche',
+'tooltip-preview'       => 'Preuva dle modìfiche (mej sempe fela, prima che fé che salvé!)',
+'tooltip-diff'          => 'Fame vëdde che modìfiche che i l\'hai faje al test.',
+'tooltip-compareselectedversions'=> 'Fame ël paragon dle diferense antra le version selessionà.',
+'tooltip-watch'         => 'Gionta sta pàgina-sì a la lista dle ròbe che im ten-o sot euj',
+'common.css'            => '/** Ël còdes CSS che as buta ambelessì a resta dovrà ant tute le "facie" */',
+'monobook.css'          => '/* cangé st\'archivi-sì për modifiché la formatassion dël sit antregh */',
 'nodublincore'          => 'Ij metadat dla sòrt \'\'\'Dublin Core RDF\'\'\' a son disabilità ansima a sta màchina-sì.',
 'nocreativecommons'     => 'Ij metadat dla sòrt \'\'\'Creative Commons RDF\'\'\' a son disabilità ansima a sta màchina-sì.',
 'notacceptable'         => 'Ël server dla wiki a-i la fa pa a provëdde dij dat ant na forma che sò programa local a peula lese.',
@@ -1312,56 +1296,104 @@ Tute le amportassion antra wiki diferente a resto marcà ant ël [[Special:Log/i
 'rcpatroldisabledtext'  => 'La possibilità ëd verifichè j\'ùltime modìfiche a l\'é disabilità.',
 'markedaspatrollederror'=> 'As peul pa marchè verificà',
 'markedaspatrollederrortext'=> 'A venta che a specìfica che version che a veul marchè verificà.',
-'Monobook.js'           => '/* tooltips and access keys */
- var ta = new Object();
- ta[\'pt-userpage\'] = new Array(\'.\',\'Mia pàgina Utent.\');
- ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Pàgina Utent për l\'IP dont a scriv coma anònim.\');
- ta[\'pt-mytalk\'] = new Array(\'n\',\'Mia pàgina ëd discussion e ciaciarade.\');
- ta[\'pt-anontalk\'] = new Array(\'n\',\'Pàgina ëd ciaciarade për l\'IP dont chiel a scriv coma anònim.\');
- ta[\'pt-preferences\'] = new Array(\'\',\'Coma che i veuj mia wikipedia.\');
- ta[\'pt-watchlist\'] = new Array(\'l\',\'Lista dle pàgine che chiel as ten sot euj.\');
- ta[\'pt-mycontris\'] = new Array(\'y\',\'Sòn i l\'hai falo mi! \');
- ta[\'pt-login\'] = new Array(\'o\',\'Un a l\'é nen obligà a rintré ant al sistema, ma se a lo fa a l\'é mej.\');
- ta[\'pt-anonlogin\'] = new Array(\'o\',\'Un a l\'é nen obligà a rintré ant al sistema, ma se a lo fa a l\'é mej.\');
- ta[\'pt-logout\'] = new Array(\'o\',\'Seurte da \'nt ël sistema.\');
- ta[\'ca-talk\'] = new Array(\'t\',\'Discussion ansima a sta pàgina ëd contnù.\');
- ta[\'ca-edit\'] = new Array(\'e\',\'Modifiché sta pàgina-sì. Për piasì, che as fasa na preuva anans che salvé .\');
- ta[\'ca-addsection\'] = new Array(\'+\',\'Gionteje un coment a sta discussion-sì.\');
- ta[\'ca-viewsource\'] = new Array(\'e\',\'Sta pàgina-sì a l\'é proteta, ma as peul ës-ciairene la sorgiss.\');
- ta[\'ca-history\'] = new Array(\'h\',\'Veje version dla pàgina.\');
- ta[\'ca-protect\'] = new Array(\'=\',\'Për protege sta pàgina-sì.\');
- ta[\'ca-delete\'] = new Array(\'d\',\'Scancelé sta pàgina-sì\');
- ta[\'ca-undelete\'] = new Array(\'d\',\'Pijé andré le modìfiche faite a sta pàgina-sì, anans che a fussa scancelà.\');
- ta[\'ca-move\'] = new Array(\'m\',\'Tramudé sta pàgina, visadì cangeje tìtol.\');
- ta[\'ca-watch\'] = new Array(\'w\',\'Gionté sta pàgina-sì a la lista dle ròbe che as ten-o sot euj.\');
- ta[\'ca-unwatch\'] = new Array(\'w\',\'Gavé via sta pàgina da \'nt la lista dle ròbe che as ten sot euj.\');
- ta[\'search\'] = new Array(\'f\',\'Sërché \'d ròba për la wiki.\');
- ta[\'p-logo\'] = new Array(\'\',\'Pàgina prinsipal.\');
- ta[\'n-mainpage\'] = new Array(\'z\',\'Visité la pàgina prinsipal.\');
- ta[\'n-portal\'] = new Array(\'\',\'Rësguard al proget, lòn che a peul fé, andoa trové còsa.\');
- ta[\'n-currentevents\'] = new Array(\'\',\'Informassion ansima a lòn che a-i riva.\');
- ta[\'n-recentchanges\'] = new Array(\'r\',\'Lista dj\'ùltime modìfiche ant la wiki.\');
- ta[\'n-randompage\'] = new Array(\'x\',\'Carié na pàgina basta che a sia.\');
- ta[\'n-help\'] = new Array(\'\',\'Ël pòst për capì.\');
- ta[\'n-sitesupport\'] = new Array(\'\',\'Dene na man.\');
- ta[\'t-whatlinkshere\'] = new Array(\'j\',\'Lista ëd tute le pàgine dla wiki che a men-o ambelessì.\');
- ta[\'t-recentchangeslinked\'] = new Array(\'k\',\'Ùltime modìfiche dle pàgine andoa as peul andesse da costa.\');
- ta[\'feed-rss\'] = new Array(\'\',\'RSS feed për sta pàgina-sì.\');
- ta[\'feed-atom\'] = new Array(\'\',\'Atom feed për sta pàgina-sì.\');
- ta[\'t-contributions\'] = new Array(\'\',\'Vardé la lista dle contribussion dë st\'Utent-sì.\');
- ta[\'t-emailuser\'] = new Array(\'\',\'Mandeje un messagi ëd pòsta a st\'Utent-sì\');
- ta[\'t-upload\'] = new Array(\'u\',\'Carié archivi ëd figure ò son.\');
- ta[\'t-specialpages\'] = new Array(\'q\',\'Lista ëd tute le pàgine speciaj.\');
- ta[\'ca-nstab-main\'] = new Array(\'c\',\'Vardé la pàgina ëd contnù.\');
- ta[\'ca-nstab-user\'] = new Array(\'c\',\'Vardé la pàgina Utent.\');
- ta[\'ca-nstab-media\'] = new Array(\'c\',\'Vardé la pàgina dl\'archivi.\');
- ta[\'ca-nstab-special\'] = new Array(\'\',\'Costa a l\'é na pàgina special, as peul pa modifichesse.\');
- ta[\'ca-nstab-project\'] = new Array(\'a\',\'Vardé la pàgina proteta.\');
- ta[\'ca-nstab-image\'] = new Array(\'c\',\'Vardé la pàgina dl\'archivi.\');
- ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Vardé ël messagi ëd sistema.\');
- ta[\'ca-nstab-template\'] = new Array(\'c\',\'Vardé lë stamp.\');
- ta[\'ca-nstab-help\'] = new Array(\'c\',\'Vardé la pàgina d\'agiut.\');
- ta[\'ca-nstab-category\'] = new Array(\'c\',\'Vardé la pàgina dla categorìa.\');',
+'monobook.js' => '/* Deprecated; use [[MediaWiki:common.js]] */',
+ 
+'accesskey-pt-userpage' => '.',
+'tooltip-pt-userpage' => 'Mia pàgina Utent.',
+'accesskey-pt-anonuserpage' => '.',
+'tooltip-pt-anonuserpage' => 'Pàgina Utent për l',
+'accesskey-pt-mytalk' => 'n',
+'tooltip-pt-mytalk' => 'Mia pàgina ëd discussion e ciaciarade.',
+'accesskey-pt-anontalk' => 'n',
+'tooltip-pt-anontalk' => 'Pàgina ëd ciaciarade për l',
+'accesskey-pt-preferences' => '',
+'tooltip-pt-preferences' => 'Coma che i veuj mia wikipedia.',
+'accesskey-pt-watchlist' => 'l',
+'tooltip-pt-watchlist' => 'Lista dle pàgine che chiel as ten sot euj.',
+'accesskey-pt-mycontris' => 'y',
+'tooltip-pt-mycontris' => 'Sòn i l',
+'accesskey-pt-login' => 'o',
+'tooltip-pt-login' => 'Un a l\'é nen obligà a rintré ant al sistema, ma se a lo fa a l',
+'accesskey-pt-anonlogin' => 'o',
+'tooltip-pt-anonlogin' => 'Un a l\'é nen obligà a rintré ant al sistema, ma se a lo fa a l',
+'accesskey-pt-logout' => '',
+'tooltip-pt-logout' => 'Seurte da ',
+'accesskey-ca-talk' => 't',
+'tooltip-ca-talk' => 'Discussion ansima a sta pàgina ëd contnù.',
+'accesskey-ca-edit' => 'e',
+'tooltip-ca-edit' => 'Modifiché sta pàgina-sì. Për piasì, che as fasa na preuva anans che salvé .',
+'accesskey-ca-addsection' => '+',
+'tooltip-ca-addsection' => 'Gionteje un coment a sta discussion-sì.',
+'accesskey-ca-viewsource' => 'e',
+'tooltip-ca-viewsource' => 'Sta pàgina-sì a l',
+'accesskey-ca-history' => 'h',
+'tooltip-ca-history' => 'Veje version dla pàgina.',
+'accesskey-ca-protect' => '=',
+'tooltip-ca-protect' => 'Për protege sta pàgina-sì.',
+'accesskey-ca-delete' => 'd',
+'tooltip-ca-delete' => 'Scancelé sta pàgina-sì',
+'accesskey-ca-undelete' => 'd',
+'tooltip-ca-undelete' => 'Pijé andré le modìfiche faite a sta pàgina-sì, anans che a fussa scancelà.',
+'accesskey-ca-move' => 'm',
+'tooltip-ca-move' => 'Tramudé sta pàgina, visadì cangeje tìtol.',
+'accesskey-ca-watch' => 'w',
+'tooltip-ca-watch' => 'Gionté sta pàgina-sì a la lista dle ròbe che as ten-o sot euj.',
+'accesskey-ca-unwatch' => 'w',
+'tooltip-ca-unwatch' => 'Gavé via sta pàgina da ',
+'accesskey-search' => 'f',
+'tooltip-search' => 'Sërché ',
+'accesskey-p-logo' => '',
+'tooltip-p-logo' => 'Pàgina prinsipal.',
+'accesskey-n-mainpage' => 'z',
+'tooltip-n-mainpage' => 'Visité la pàgina prinsipal.',
+'accesskey-n-portal' => '',
+'tooltip-n-portal' => 'Rësguard al proget, lòn che a peul fé, andoa trové còsa.',
+'accesskey-n-currentevents' => '',
+'tooltip-n-currentevents' => 'Informassion ansima a lòn che a-i riva.',
+'accesskey-n-recentchanges' => 'r',
+'tooltip-n-recentchanges' => 'Lista dj',
+'accesskey-n-randompage' => 'x',
+'tooltip-n-randompage' => 'Carié na pàgina basta che a sia.',
+'accesskey-n-help' => '',
+'tooltip-n-help' => 'Ël pòst për capì.',
+'accesskey-n-sitesupport' => '',
+'tooltip-n-sitesupport' => 'Dene na man.',
+'accesskey-t-whatlinkshere' => 'j',
+'tooltip-t-whatlinkshere' => 'Lista ëd tute le pàgine dla wiki che a men-o ambelessì.',
+'accesskey-t-recentchangeslinked' => 'k',
+'tooltip-t-recentchangeslinked' => 'Ùltime modìfiche dle pàgine andoa as peul andesse da costa.',
+'accesskey-feed-rss' => '',
+'tooltip-feed-rss' => 'RSS feed për sta pàgina-sì.',
+'accesskey-feed-atom' => '',
+'tooltip-feed-atom' => 'Atom feed për sta pàgina-sì.',
+'accesskey-t-contributions' => '',
+'tooltip-t-contributions' => 'Vardé la lista dle contribussion dë st',
+'accesskey-t-emailuser' => '',
+'tooltip-t-emailuser' => 'Mandeje un messagi ëd pòsta a st',
+'accesskey-t-upload' => 'u',
+'tooltip-t-upload' => 'Carié archivi ëd figure ò son.',
+'accesskey-t-specialpages' => 'q',
+'tooltip-t-specialpages' => 'Lista ëd tute le pàgine speciaj.',
+'accesskey-ca-nstab-main' => 'c',
+'tooltip-ca-nstab-main' => 'Vardé la pàgina ëd contnù.',
+'accesskey-ca-nstab-user' => 'c',
+'tooltip-ca-nstab-user' => 'Vardé la pàgina Utent.',
+'accesskey-ca-nstab-media' => 'c',
+'tooltip-ca-nstab-media' => 'Vardé la pàgina dl',
+'accesskey-ca-nstab-special' => '',
+'tooltip-ca-nstab-special' => 'Costa a l',
+'accesskey-ca-nstab-project' => 'a',
+'tooltip-ca-nstab-project' => 'Vardé la pàgina proteta.',
+'accesskey-ca-nstab-image' => 'c',
+'tooltip-ca-nstab-image' => 'Vardé la pàgina dl',
+'accesskey-ca-nstab-mediawiki' => 'c',
+'tooltip-ca-nstab-mediawiki' => 'Vardé ël messagi ëd sistema.',
+'accesskey-ca-nstab-template' => 'c',
+'tooltip-ca-nstab-template' => 'Vardé lë stamp.',
+'accesskey-ca-nstab-help' => 'c',
+'tooltip-ca-nstab-help' => 'Vardé la pàgina d',
+'accesskey-ca-nstab-category' => 'c',
+'tooltip-ca-nstab-category' => 'Vardé la pàgina dla categorìa.',
 'deletedrevision'       => 'Veja version scancelà $1.',
 'previousdiff'          => '← Diferensa prima',
 'nextdiff'              => 'Diferensa che a-i ven →',
@@ -1688,7 +1720,6 @@ Për piasì, che an conferma che da bon a veul torna creélo.',
 $1',
 'confirm_purge_button'  => 'Va bin',
 'youhavenewmessagesmulti'=> 'A l\'ha dij neuv messagi an $1',
-'newtalkseperator'      => ',_',
 'searchcontaining'      => 'Sërca le vos che a l\'han andrinta \'\'$1\'\'.',
 'searchnamed'           => 'Sërca le vos che a l\'han për tìtol \'\'$1\'\'.',
 'articletitles'         => 'Artìcoj che as anandio për \'\'$1\'\'',

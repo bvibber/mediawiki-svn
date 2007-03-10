@@ -1,13 +1,8 @@
 <?php
 /** Persian (فارسی)
   *
-  * @package MediaWiki
-  * @subpackage Language
+  * @addtogroup Language
   */
-$quickbarSettings = array(
-	'نباشد', 'ثابت چپ', 'ثابت راست', 'شناور چپ'
-);
-
 $skinNames = array(
 	'standard' => 'استاندارد',
 	'nostalgia' => 'نوستالژی',
@@ -406,7 +401,7 @@ cookieها را از کار انداخته‌اید. لطفاً cookieها را 
 اگر می‌خواهید متن را در یک پرونده‌ی متنی ببرید و بچسبانید و برای آینده ذخیره‌اش کنید.</strong>",
 'protectedpagewarning' => "<strong>هشدار: این صفحه قفل شده است تا فقط کاربران با امتیاز اپراتور سیستم بتوانند ویرایشش کنند.
 مطمئن شوید که از
-[[{{ns:project}}:توصیه‌های صفحات محافظت‌شده|توصیه‌های صفحات محافظت‌شده]] پیروی می‌کنید.<strong>",
+[[{{ns:project}}:توصیه‌های صفحات محافظت‌شده|توصیه‌های صفحات محافظت‌شده]] پیروی می‌کنید.</strong>",
 
 # History pages
 #
@@ -475,6 +470,10 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9",
 'prefsnologintext'	=> "برای تنظیم ترجیحات کاربر باید [[ویژه:Userlogin|به سیستم وارد شوید]].",
 'prefsreset'	=> "ترجیحات از حافظه میزان شد.",
 'qbsettings'	=> "تنظیمات نوار سریع",
+'qbsettings-none'	=> 'نباشد',
+'qbsettings-fixedleft'	=> 'ثابت چپ',
+'qbsettings-fixedright'	=> 'ثابت راست',
+'qbsettings-floatingleft'	=> 'شناور چپ',
 'changepassword' => "تغییر کلمه‌ی عبور",
 'skin'			=> "پوسته",
 'math'			=> "نمایش ریاضیات",
@@ -710,14 +709,6 @@ They should link to the appropriate topic instead.<br />A page is treated as dis
 'watchnologin'		=> "به سیستم وارد نشده‌اید",
 'watchnologintext'	=> "برای تغییر فهرست تعقیباتتان باید [[ویژه:Userlogin|به سیستم وارد شوید]].",
 'addedwatch'		=> "به فهرست تعقیبات اضافه شود",
-'addedwatchtext'	=> "صفحه‌ی «$1» به <a href=\"" .
-  "{{localurle:ویژه:Watchlist}}\">فهرست تعقیبات</a> شما اضافه شد.
-تغییرات این صفحه و صفحه‌ی بحث متناظرش در آینده در اینجا فهرست خواهد شد. به‌علاوه، این صفحه، برای واضحتر دیده شدن در
-<a href=\"" .
-  "{{localurle:ویژه:Recentchanges}}\">فهرست تغییرات اخیر</a> to
-به شکل<b>سیاه</b> خواهد آمد.</p>
-
-<p>اگر بعداً می‌خواستید این صفحه از فهرست تعقیباتتان برداشته شود، روی «تعقیب متوقف شود» در نوار حاشیه کلیک کنید.",
 'removedwatch'		=> "از فهرست تعقیبات برداشته شد",
 'removedwatchtext' 	=> "صفحه‌ی «$1» از فهرست تعقیبات شما برداشته شد",
 'watchthispage'		=> "تعقیب این صفحه",
@@ -765,7 +756,7 @@ $3...
 'deletecomment'	=> "دلیل حذف",
 'imagereverted' => "برگرداندن به نسخه‌ی قدیمی‌تر با موفقیت انجام شد.",
 'cantrollback'	=> "نمی‌توان ویرایش را برگرداند؛ آخرین مشارکت‌کننده تنها مؤلف این مقاله است.",
-'alreadyrolled'	=> "Cannot rollback last edit of [[$1]]
+'alreadyrolled'	=> "Cannot rollback last edit of [[:$1]]
 by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled back the article already.
 
 آخرین ویرایش توسط [[کاربر:$3|$3]] ([[بحث کاربر:$3|بحث]]).",

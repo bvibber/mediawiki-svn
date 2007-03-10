@@ -1,7 +1,6 @@
 <?php
 /** Brazilian Portugese (Portuguêsi do Brasil)
-  * @package MediaWiki
-  * @subpackage Language
+  * @addtogroup Language
   */
 #
 # This translation was made by Yves Marques Junqueira
@@ -605,13 +604,12 @@ O endereço de e-mail que você disponibilizou em suas preferências aparecerá 
 "watchnologin"  => "Não está autenticado",
 "watchnologintext"  => "Você deve estar [[Special:Userlogin|autenticado]]
 para modificar a lista de artigos do seu interesse.",
-/*"addedwatch"    => "Adicionados �  lista",*/
-"addedwatchtext" => "A página \"$1\" foi adicionada à <a href=\"{{localurle:Special:Watchlist}}\">lista de artigos do seu interesse</a>.
+"addedwatchtext" => "A página \"$1\" foi adicionada à [[Special:Watchlist|lista de artigos do seu interesse]].
 Modificações futuras neste artigo e páginas de discussão associadas serão listadas aqui,
-e a página aparecerá <b>em negrito</b> na <a href=\"{{localurle:Special:Recentchanges}}\">lista de mudanças recentes</a> para que
-possa achá-la com maior facilidade.</p>
+e a página aparecerá <b>em negrito</b> na [[Special:Recentchanges|lista de mudanças recentes]] para que
+possa achá-la com maior facilidade.
 
-<p>Se você quiser remover futuramente o artigo da sua lista de artigos vigiados, clique em  \"Desinteressar-se\" na barra lateral.",
+Se você quiser remover futuramente o artigo da sua lista de artigos vigiados, clique em  \"Desinteressar-se\" na barra lateral.",
 "removedwatch"  => "Removida da lista de monitoramento",
 "removedwatchtext" => "A página \"$1\" não é mais de seu interesse e portanto foi removida de sua lista de monitoramento.",
 "watchthispage" => "Interessar-se por esta página",
@@ -662,7 +660,7 @@ Todos os horários mostrados estão no horário do servidor (UTC).
 "rollbacklink"  => "voltar",
 "rollbackfailed" => "Rollback falhou",
 "cantrollback"  => "Não foi possível reverter a edição; o último contribuidor é o único autor deste artigo.",
-"alreadyrolled" => "Não foi possível reverter as edições de  [[$1]]
+"alreadyrolled" => "Não foi possível reverter as edições de  [[:$1]]
 por [[User:$2|$2]] ([[User talk:$2|discussão]]); alguém o editou ou já o reverteu.
 
 A última edição foi de  [[User:$3|$3]] ([[User talk:$3|Conversar com ele]]).",

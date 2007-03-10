@@ -1,13 +1,8 @@
 <?php
 /** Limburgian (Limburgs)
   *
-  * @package MediaWiki
-  * @subpackage Language
+  * @addtogroup Language
  */
-
-$quickbarSettings = array(
-	'Oetgesjakeld', 'Links vas', 'Rechts vas', 'Links zwevend'
-);
 
 $skinNames = array(
 	'standard' => 'Standaard',
@@ -19,21 +14,26 @@ $namespaceNames = array(
 	NS_MEDIA          => 'Media',
 	NS_SPECIAL        => 'Speciaal',
 	NS_MAIN           => '',
-	NS_TALK           => 'Euverlik',
+	NS_TALK           => 'Euverlèk',
 	NS_USER           => 'Gebroeker',
-	NS_USER_TALK      => 'Euverlik_gebroeker',
+	NS_USER_TALK      => 'Euverlèk_gebroeker',
 	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK   => 'Euverlik_$1',
+	NS_PROJECT_TALK   => 'Euverlèk_$1',
 	NS_IMAGE          => 'Aafbeilding',
-	NS_IMAGE_TALK     => 'Euverlik_afbeelding',
+	NS_IMAGE_TALK     => 'Euverlèk_afbeelding',
 	NS_MEDIAWIKI      => 'MediaWiki',
-	NS_MEDIAWIKI_TALK => 'Euverlik_MediaWiki',
+	NS_MEDIAWIKI_TALK => 'Euverlèk_MediaWiki',
 	NS_TEMPLATE       => 'Sjabloon',
-	NS_TEMPLATE_TALK  => 'Euverlik_sjabloon',
+	NS_TEMPLATE_TALK  => 'Euverlèk_sjabloon',
 	NS_HELP           => 'Help',
-	NS_HELP_TALK      => 'Euverlik_help',
-	NS_CATEGORY       => 'Kategorie',
-	NS_CATEGORY_TALK  => 'Euverlik_kategorie'
+	NS_HELP_TALK      => 'Euverlèk_help',
+	NS_CATEGORY       => 'Categorie',
+	NS_CATEGORY_TALK  => 'Euverlèk_categorie'
+);
+
+$namespaceAliases = array(
+	'Kategorie'          => NS_CATEGORY,
+	'Euverlèk_kategorie' => NS_CATEGORY_TALK,
 );
 
 $dateFormats = array(	
@@ -133,7 +133,7 @@ $messages = array(
 'moredotdotdot'         => 'Miè...',
 'mypage'                => 'Mien gebroekerspazjena',
 'mytalk'                => 'Mien euverlikpazjena',
-'anontalk'              => 'Euverlik veur dit IP adres',
+'anontalk'              => 'Euverlèk veur dit IP adres',
 'navigation'            => 'Navegatie',
 'currentevents'         => 'In \'t nuujs',
 'currentevents-url'     => 'In \'t nuujs',
@@ -163,7 +163,7 @@ $messages = array(
 'specialpage'           => 'Speciaal Pazjena',
 'personaltools'         => 'Persoenlike hulpmiddele',
 'articlepage'           => 'Artikel',
-'talk'                  => 'Euverlik',
+'talk'                  => 'Euverlèk',
 'toolbox'               => 'Gereidsjapskis',
 'userpage'              => 'gebroekerspazjena',
 'imagepage'             => 'Besjrievingspazjena',
@@ -402,6 +402,11 @@ $2 Toen redirects   Zeuk: $3 $9',
 'prefsnologintext'      => 'De mos zien [[Special:Userlogin|aangemèld]] om veurkäöre te kinne insjtèlle.',
 'prefsreset'            => 'Sjtandaardveurkäöre hersjtèld.',
 'qbsettings'            => 'Menubalkinsjtèllinge',
+'qbsettings-none'	=> 'Oetgesjakeld',
+'qbsettings-fixedleft'	=> 'Links vas',
+'qbsettings-fixedright'	=> 'Rechts vas',
+'qbsettings-floatingleft'	=> 'Links zwevend',
+'qbsettings-floatingright'	=> 'Rechts zwevend',
 'changepassword'        => 'Wachwaord verangere',
 'skin'                  => '{{SITENAME}}-uterlik',
 'math'                  => 'Mattemetik rendere',
@@ -671,12 +676,12 @@ Commentaar en wiejer assistentie:
 'rollback'              => 'Wijzigingen ongedaan maken',
 'rollbacklink'          => 'Trukdrieje',
 'cantrollback'          => 'Trökdrejje van verangeringe neet meugelik: Dit artikel haet mer einen auteur.',
-'alreadyrolled'         => '\'t Is neet meugelik óm de lèste verangering van [[$1]]
+'alreadyrolled'         => '\'t Is neet meugelik óm de lèste verangering van [[:$1]]
 door [[User:$2|$2]] ([[User talk:$2|euverlik]]) óngedaon te make. Emes angers haet de pazjena al hersjtèld of haet \'n anger bewèrking gedaon. 
 
 De lèste bewèrking is gedaon door [[User:$3|$3]] ([[User talk:$3|euverlik]]).',
 'editcomment'           => '\'t Bewirkingscommentair waor: "<i>$1</i>".',
-'revertpage'            => 'Wieziginge door [[Special:Contributions/$2|$2]] ([[User_talk:$2|Euverlik]]) trukgedriejd tot de lètste versie door [[User:$1|$1]]',
+'revertpage'            => 'Wieziginge door [[Special:Contributions/$2|$2]] ([[User_talk:$2|Euverlèk]]) trukgedriejd tot de lètste versie door [[User:$1|$1]]',
 'protectlogpage'        => 'Logbook besjermde pazjena\'s',
 'protectedarticle'      => '$1 besjermd',
 'unprotectedarticle'    => 'besjerming van $1 opgeheve',
@@ -796,13 +801,13 @@ De doeltitel "[[$1]]" besjteit al. Wils te dit artikel wisse óm ruumde te make 
 'thumbnail-more'        => 'Vergroete',
 'missingimage'          => '<b>Plaetsje neet besjikbaar</b><br /><i>$1</i>',
 'filemissing'           => 'Besjtand ontbrik',
-'tooltip-search'        => 'Doerzeuk dizze wiki [alt-f]',
-'tooltip-minoredit'     => 'Markeer dit as \'n kleine verangering [alt-i]',
-'tooltip-save'          => 'Bewaar dien verangeringe [alt-s]',
-'tooltip-preview'       => 'Bekiek dien verangeringe veurdets te ze definitief opsjleis! [alt-p]',
-'tooltip-diff'          => 'Bekiek dien verangeringe in de teks. [alt-v]',
-'tooltip-compareselectedversions'=> 'Bekiek de versjille tusje de twie geselectierde versies van dees pazjena. [alt-v]',
-'tooltip-watch'         => 'Voog dees pazjena toe aan dien volglies [alt-w]',
+'tooltip-search'        => 'Doerzeuk dizze wiki',
+'tooltip-minoredit'     => 'Markeer dit as \'n kleine verangering',
+'tooltip-save'          => 'Bewaar dien verangeringe',
+'tooltip-preview'       => 'Bekiek dien verangeringe veurdets te ze definitief opsjleis!',
+'tooltip-diff'          => 'Bekiek dien verangeringe in de teks.',
+'tooltip-compareselectedversions'=> 'Bekiek de versjille tusje de twie geselectierde versies van dees pazjena.',
+'tooltip-watch'         => 'Voog dees pazjena toe aan dien volglies',
 'anonymous'             => 'Anoniem(e) gebroeker(s) van {{SITENAME}}',
 'siteuser'              => '{{SITENAME}} gebroeker $1',
 'lastmodifiedatby'        => 'Dees pazjena is \'t litst verangert op $2, $1 doer $3.',
@@ -817,59 +822,108 @@ De doeltitel "[[$1]]" besjteit al. Wils te dit artikel wisse óm ruumde te make 
 'mw_math_source'        => 'Laot de TeX code sjtaon (vuur tèksbrowsers)',
 'mw_math_modern'        => 'Aangeroaje vuur nuui browsers',
 'mw_math_mathml'        => 'MathML woe meugelik (experimenteil)',
-'Monobook.js'           => '/* tooltips en access keys, pas op mit \'t \'-teike */
- var ta = new Object();
- ta[\'pt-userpage\'] = new Array(\'.\',\'Mien gebroekerspazjena\');
- ta[\'pt-anonuserpage\'] = new Array(\'.\',\'De gebroekerspazjena veur dit IP adres\');
- ta[\'pt-mytalk\'] = new Array(\'n\',\'Mien euverlikpazjena\');
- ta[\'pt-anontalk\'] = new Array(\'n\',\'Euverlik euver verangeringe doer dit IP addres\');
- ta[\'pt-preferences\'] = new Array(\'\',\'Mien veurkäöre\');
- ta[\'pt-watchlist\'] = new Array(\'l\',\'De liest van gevolgde pazjenas.\');
- ta[\'pt-mycontris\'] = new Array(\'y\',\'Liest van mien biedraag\');
- ta[\'pt-login\'] = new Array(\'o\',\'De weurs aangemodigd om in te logge, meh t is neet verplich.\');
- ta[\'pt-anonlogin\'] = new Array(\'o\',\'De weurs aangemodigd om in te logge, meh t is neet verplich.\');
- ta[\'pt-logout\'] = new Array(\'o\',\'Aafmèlde\');
- ta[\'ca-talk\'] = new Array(\'t\',\'Euverlik euver dit artikel\');
- ta[\'ca-edit\'] = new Array(\'e\',\'De kins dees pazjena verangere.\');
- ta[\'ca-addsection\'] = new Array(\'+\',\'Opmèrking toevoge aan dees discussie.\');
- ta[\'ca-viewsource\'] = new Array(\'e\',\'Dees pazjena is besjermd. De kins häör brontèks bekieke.\');
- ta[\'ca-history\'] = new Array(\'h\',\'Auw versies van dees pazjena.\');
- ta[\'ca-protect\'] = new Array(\'=\',\'Besjerm dees pazjena\');
- ta[\'ca-delete\'] = new Array(\'\',\'Verwieder dees pazjena\');
- ta[\'ca-undelete\'] = new Array(\'\',\'Hersjtèl de verangeringe van dees pazjena van veurdat ze gewist woerd\');
- ta[\'ca-move\'] = new Array(\'m\',\'Verplaats dees pazjena\');
- ta[\'ca-nomove\'] = new Array(\'\',\'De höbs gein permissie veur \'t verplaatse van dees pazjena\');
- ta[\'ca-watch\'] = new Array(\'w\',\'Dees pazjena toeveuge aan volgliest\');
- ta[\'ca-unwatch\'] = new Array(\'w\',\'Dees pazjena van volgliest aafhaole\');
- ta[\'search\'] = new Array(\'f\',\'Doerzeuk dizze wiki\');
- ta[\'p-logo\'] = new Array(\'\',\'Huidpazjena\');
- ta[\'n-mainpage\'] = new Array(\'z\',\'Bezeuk de huidpazjena\');
- ta[\'n-portal\'] = new Array(\'\',\'Euver t projèk, was e kins doon, woe se dinger kins vinge\');
- ta[\'n-currentevents\'] = new Array(\'\',\'Achtergrondinfo van t nuuis\');
- ta[\'n-recentchanges\'] = new Array(\'r\',\'De lies van recènte verangeringe in de wiki.\');
- ta[\'n-randompage\'] = new Array(\'x\',\'Laadt n willekäörige pazjena\');
- ta[\'n-help\'] = new Array(\'\',\'De plek om informatie euver dit projèk te vinge.\');
- ta[\'n-sitesupport\'] = new Array(\'\',\'Sjteun os\');
- ta[\'t-whatlinkshere\'] = new Array(\'j\',\'Liest van alle wiki pazjenas die hieheen linke\');
- ta[\'t-recentchangeslinked\'] = new Array(\'k\',\'Recènte verangeringe in pazjenas woeheen gelinkt weurd\');
- ta[\'feed-rss\'] = new Array(\'\',\'RSS feed veur dees pazjena\');
- ta[\'feed-atom\'] = new Array(\'\',\'Atom feed veur dees pazjena\');
- ta[\'t-contributions\'] = new Array(\'\',\'Bekiek de liest van contributies van dizze gebroeker\');
- ta[\'t-emailuser\'] = new Array(\'\',\'Sjtuur inne mail noa dizze gebroeker\');
- ta[\'t-upload\'] = new Array(\'u\',\'Upload plaetsjes of media besjtande\');
- ta[\'t-specialpages\'] = new Array(\'q\',\'Liest van alle speciale pazjenas\');
+'monobook.js' => '/* Deprecated; use [[MediaWiki:common.js]] */',
+ 
+'accesskey-pt-userpage' => '.',
+'tooltip-pt-userpage' => 'Mien gebroekerspazjena',
+'accesskey-pt-anonuserpage' => '.',
+'tooltip-pt-anonuserpage' => 'De gebroekerspazjena veur dit IP adres',
+'accesskey-pt-mytalk' => 'n',
+'tooltip-pt-mytalk' => 'Mien euverlikpazjena',
+'accesskey-pt-anontalk' => 'n',
+'tooltip-pt-anontalk' => 'Euverlèk euver verangeringe doer dit IP addres',
+'accesskey-pt-preferences' => '',
+'tooltip-pt-preferences' => 'Mien veurkäöre',
+'accesskey-pt-watchlist' => 'l',
+'tooltip-pt-watchlist' => 'De liest van gevolgde pazjenas.',
+'accesskey-pt-mycontris' => 'y',
+'tooltip-pt-mycontris' => 'Liest van mien biedraag',
+'accesskey-pt-login' => 'o',
+'tooltip-pt-login' => 'De weurs aangemodigd om in te logge, meh t is neet verplich.',
+'accesskey-pt-anonlogin' => 'o',
+'tooltip-pt-anonlogin' => 'De weurs aangemodigd om in te logge, meh t is neet verplich.',
+'accesskey-pt-logout' => '',
+'tooltip-pt-logout' => 'Aafmèlde',
+'accesskey-ca-talk' => 't',
+'tooltip-ca-talk' => 'Euverlèk euver dit artikel',
+'accesskey-ca-edit' => 'e',
+'tooltip-ca-edit' => 'De kins dees pazjena verangere.',
+'accesskey-ca-addsection' => '+',
+'tooltip-ca-addsection' => 'Opmèrking toevoge aan dees discussie.',
+'accesskey-ca-viewsource' => 'e',
+'tooltip-ca-viewsource' => 'Dees pazjena is besjermd. De kins häör brontèks bekieke.',
+'accesskey-ca-history' => 'h',
+'tooltip-ca-history' => 'Auw versies van dees pazjena.',
+'accesskey-ca-protect' => '=',
+'tooltip-ca-protect' => 'Besjerm dees pazjena',
+'accesskey-ca-delete' => '',
+'tooltip-ca-delete' => 'Verwieder dees pazjena',
+'accesskey-ca-undelete' => '',
+'tooltip-ca-undelete' => 'Hersjtèl de verangeringe van dees pazjena van veurdat ze gewist woerd',
+'accesskey-ca-move' => 'm',
+'tooltip-ca-move' => 'Verplaats dees pazjena',
+'accesskey-ca-nomove' => '',
+'tooltip-ca-nomove' => 'De höbs gein permissie veur ',
+'accesskey-ca-watch' => 'w',
+'tooltip-ca-watch' => 'Dees pazjena toeveuge aan volgliest',
+'accesskey-ca-unwatch' => 'w',
+'tooltip-ca-unwatch' => 'Dees pazjena van volgliest aafhaole',
+'accesskey-search' => 'f',
+'tooltip-search' => 'Doerzeuk dizze wiki',
+'accesskey-p-logo' => '',
+'tooltip-p-logo' => 'Huidpazjena',
+'accesskey-n-mainpage' => 'z',
+'tooltip-n-mainpage' => 'Bezeuk de huidpazjena',
+'accesskey-n-portal' => '',
+'tooltip-n-portal' => 'Euver t projèk, was e kins doon, woe se dinger kins vinge',
+'accesskey-n-currentevents' => '',
+'tooltip-n-currentevents' => 'Achtergrondinfo van t nuuis',
+'accesskey-n-recentchanges' => 'r',
+'tooltip-n-recentchanges' => 'De lies van recènte verangeringe in de wiki.',
+'accesskey-n-randompage' => 'x',
+'tooltip-n-randompage' => 'Laadt n willekäörige pazjena',
+'accesskey-n-help' => '',
+'tooltip-n-help' => 'De plek om informatie euver dit projèk te vinge.',
+'accesskey-n-sitesupport' => '',
+'tooltip-n-sitesupport' => 'Sjteun os',
+'accesskey-t-whatlinkshere' => 'j',
+'tooltip-t-whatlinkshere' => 'Liest van alle wiki pazjenas die hieheen linke',
+'accesskey-t-recentchangeslinked' => 'k',
+'tooltip-t-recentchangeslinked' => 'Recènte verangeringe in pazjenas woeheen gelinkt weurd',
+'accesskey-feed-rss' => '',
+'tooltip-feed-rss' => 'RSS feed veur dees pazjena',
+'accesskey-feed-atom' => '',
+'tooltip-feed-atom' => 'Atom feed veur dees pazjena',
+'accesskey-t-contributions' => '',
+'tooltip-t-contributions' => 'Bekiek de liest van contributies van dizze gebroeker',
+'accesskey-t-emailuser' => '',
+'tooltip-t-emailuser' => 'Sjtuur inne mail noa dizze gebroeker',
+'accesskey-t-upload' => 'u',
+'tooltip-t-upload' => 'Upload plaetsjes of media besjtande',
+'accesskey-t-specialpages' => 'q',
+'tooltip-t-specialpages' => 'Liest van alle speciale pazjenas',
 
 /* tot hie is \'t ok */
- ta[\'ca-nstab-main\'] = new Array(\'c\',\'Bekiek de pazjena\');
- ta[\'ca-nstab-user\'] = new Array(\'c\',\'Bekiek de gebroekerspazjena\');
- ta[\'ca-nstab-media\'] = new Array(\'c\',\'Bekiek de mediapazjena\');
- ta[\'ca-nstab-special\'] = new Array(\'\',\'Dit is n speciaal pazjena, de kins dees pazjena neet zelf editte.\');
- ta[\'ca-nstab-project\'] = new Array(\'a\',\'Bekiek de projèkpazjena\');
- ta[\'ca-nstab-image\'] = new Array(\'c\',\'Bekiek de plaetsjespazjena\');
- ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Bekiek t systeimberich\');
- ta[\'ca-nstab-template\'] = new Array(\'c\',\'Bekiek t sjabloon\');
- ta[\'ca-nstab-help\'] = new Array(\'c\',\'Bekiek de helppazjena\');
- ta[\'ca-nstab-category\'] = new Array(\'c\',\'Bekiek de kattegoriepazjena\');',
+'accesskey-ca-nstab-main' => 'c',
+'tooltip-ca-nstab-main' => 'Bekiek de pazjena',
+'accesskey-ca-nstab-user' => 'c',
+'tooltip-ca-nstab-user' => 'Bekiek de gebroekerspazjena',
+'accesskey-ca-nstab-media' => 'c',
+'tooltip-ca-nstab-media' => 'Bekiek de mediapazjena',
+'accesskey-ca-nstab-special' => '',
+'tooltip-ca-nstab-special' => 'Dit is n speciaal pazjena, de kins dees pazjena neet zelf editte.',
+'accesskey-ca-nstab-project' => 'a',
+'tooltip-ca-nstab-project' => 'Bekiek de projèkpazjena',
+'accesskey-ca-nstab-image' => 'c',
+'tooltip-ca-nstab-image' => 'Bekiek de plaetsjespazjena',
+'accesskey-ca-nstab-mediawiki' => 'c',
+'tooltip-ca-nstab-mediawiki' => 'Bekiek t systeimberich',
+'accesskey-ca-nstab-template' => 'c',
+'tooltip-ca-nstab-template' => 'Bekiek t sjabloon',
+'accesskey-ca-nstab-help' => 'c',
+'tooltip-ca-nstab-help' => 'Bekiek de helppazjena',
+'accesskey-ca-nstab-category' => 'c',
+'tooltip-ca-nstab-category' => 'Bekiek de kattegoriepazjena',
 'deletedrevision'       => 'Aw versie $1 gewis.',
 'previousdiff'          => '← Gank nao de vurrige diff',
 'nextdiff'              => 'Gank nao de volgende diff →',

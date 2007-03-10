@@ -1,7 +1,6 @@
 <?php
 /**
-  * @package MediaWiki
-  * @subpackage Language
+  * @addtogroup Language
   */
 
 $namespaceNames = array(
@@ -14,10 +13,6 @@ $namespaceNames = array(
 	NS_PROJECT_TALK    => '$1_discussioni',
 	NS_IMAGE           => 'Immàgini',
 	NS_IMAGE_TALK      => 'Immàgini_contièndha'
-);
-
-$quickbarSettings = array(
-	"Nessuno", "Fisso a sinistra", "Fisso a destra", "Fluttuante a sinistra"
 );
 
 $dateFormats = array(
@@ -317,6 +312,11 @@ $2 Elenca i redirects &nbsp; cerca per $3 $9",
 per poter personalizzare le tue preferenze.",
 "prefsreset"	=> "Le tue Preferenze sono state ripescate dalla memoria di sistema del potente server di {{SITENAME}}.",
 "qbsettings"	=> "Settaggio della barra menu",
+'qbsettings-none'	=> 'Nessuno',
+'qbsettings-fixedleft'	=> 'Fisso a sinistra',
+'qbsettings-fixedright'	=> 'Fisso a destra',
+'qbsettings-floatingleft'	=> 'Fluttuante a sinistra',
+'qbsettings-floatingright'	=> 'Fluttuante a destra',
 "changepassword" => "Cambia password",
 "skin"			=> "Aspetto",
 "saveprefs"		=> "Salva preferenze",
@@ -504,12 +504,10 @@ oppure ha scelto di non ricevere  posta elettronica dagli altri Utenti.",
 "watchnologintext"	=> "Devi prima fare il [[Special:Userlogin|login]]
 per modificare la tua lista di osservati speciali.",
 "addedwatch"	=> "Aggiunto agli Osservati Speciali",
-"addedwatchtext" => " La pagina  \"$1\" è stata aggiunta alla tua <a href=\"" .
-  "{{localurle:Special:Watchlist}}\"> lista di osservati speciali </a>.
-Le future modifiche a questa pagina ed alla relativa pagina di discussione saranno elencate qui, e la pagina apparirà in <b>grassetto</b> nella pagina delle <a href=\"" .
-  "{{localurle:Special:Recentchanges}}\">modifiche recenti</a> per essere più facile da tener d'occhio.</p>
+"addedwatchtext" => " La pagina  \"$1\" è stata aggiunta alla tua [[Special:Watchlist|lista di osservati speciali]].
+Le future modifiche a questa pagina ed alla relativa pagina di discussione saranno elencate qui, e la pagina apparirà in <b>grassetto</b> nella pagina delle [[Special:Recentchanges|modifiche recenti]] per essere più facile da tener d'occhio.
 
-<p>Se in seguito vorrai togliere questo articolo dalla tua lista di osservati speciali, clicca \" Smetti di seguire \" nella barra dei menu.",
+Se in seguito vorrai togliere questo articolo dalla tua lista di osservati speciali, clicca \" Smetti di seguire \" nella barra dei menu.",
 "removedwatch"	=> "Rimosso dalla lista degli Osservati Speciali",
 "removedwatchtext" => "La pagina  \"$1\" è stata rimossa dalla lista degli Osservati Speciali.",
 "watchthispage"	=> "Segui questo articolo",

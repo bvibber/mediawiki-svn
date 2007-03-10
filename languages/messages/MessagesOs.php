@@ -1,14 +1,9 @@
 <?php
 /** Ossetic (Иронау)
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  */
 $fallback = 'ru';
-
-$quickbarSettings = array(
-	'Ма равдис', 'Галиуырдыгæй', 'Рахизырдыгæй', 'Рахизырдыгæй ленккæнгæ'
-);
 
 $skinNames = array(
 	'standard' => 'Стандартон',
@@ -149,6 +144,10 @@ $messages = array(
 'prevn' => "$1 фæстæмæ",
 'printableversion' => "Мыхурмæ верси",
 'qbfind' => "Агур",
+'qbsettings-none'	=> 'Ма равдис',
+'qbsettings-fixedleft'	=> 'Галиуырдыгæй',
+'qbsettings-fixedright'	=> 'Рахизырдыгæй',
+'qbsettings-floatingleft'	=> 'Рахизырдыгæй ленккæнгæ',
 'qbspecialpages' => "Сæрмагонд фæрстæ",
 'randompage' => "Æнæбары æвзæрст фарс",
 'rclinks' => "Фæстаг $1 ивддзинæдтæ (афæстаг $2 боны дæргъы чи ’рцыдысты) равдис;

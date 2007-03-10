@@ -1,8 +1,7 @@
 <?php
 /** Slovenian (Slovenščina)
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  *
  */
 
@@ -16,11 +15,6 @@
 #         1.00.31 romanm        2003-11-11 |    merged incorrectly broken lines
 #         1.00.32 romanm        2003-11-19 |    merged incorrectly broken lines
 #         1.00.40 romanm        2003-11-21 |    fixed Google search
-
-
-$quickbarSettings = array(
-	'Brez', 'Levo nepomično', 'Desno nepomično', 'Levo leteče'
-);
 
 $namespaceNames = array(
 	NS_MEDIA          => 'Media',
@@ -579,6 +573,11 @@ $2 Seznam se preusmerja   Iskanje za $3 $9',
 'prefsnologintext'      => 'Za spreminjanje uporabniških nastavitev se [[Special:Userlogin|prijavite]].',
 'prefsreset'            => 'Nastavitve so ponastavljene.',
 'qbsettings'            => 'Nastavitve hitre vrstice',
+'qbsettings-none'	=> 'Brez',
+'qbsettings-fixedleft'	=> 'Levo nepomično',
+'qbsettings-fixedright'	=> 'Desno nepomično',
+'qbsettings-floatingleft'	=> 'Levo leteče',
+'qbsettings-floatingright'	=> 'Desno leteče',
 'changepassword'        => 'Zamenjava gesla',
 'skin'                  => 'Koža',
 'math'                  => 'Prikaz matematičnega besedila',
@@ -952,7 +951,7 @@ Za zapise nedavnih brisanj glej $2.',
 'rollbacklink'          => 'vrni',
 'rollbackfailed'        => 'Vrnitev ni uspela.',
 'cantrollback'          => 'Urejanja ne morem vrniti; zadnji urejevalec je hkrati edini.',
-'alreadyrolled'         => 'Ne morem vrniti zadnje spremembe [[$1]]
+'alreadyrolled'         => 'Ne morem vrniti zadnje spremembe [[:$1]]
 od uporabnika [[Uporabnik:$2|$2]] ([[Pogovor z uporabnikom:$2|Pogovor]]); nekdo drug je že spremenil ali vrnil članek.
 
 Zadnja sprememba od uporabnika [[Uporabnik:$3|$3]] ([[Pogovor z uporabnikom:$3|Pogovor]]).',
@@ -1085,24 +1084,9 @@ Ne pozabite blokiranemu uporabniku na njegovi [[User talk:$1|pogovorni strani]] 
 'lockdbsuccesstext'     => 'Podatkovna baza {{GRAMMAR:rodilnik|{{SITENAME}}}} je bila zaklenjena.
 <br />Ne pozabite odkleniti, ko boste končali z vzdrževanjem.',
 'unlockdbsuccesstext'   => 'Zbirka podatkov {{GRAMMAR:rodilnik|{{SITENAME}}}} je spet odklenjena.',
-'makesysoptitle'        => 'Povišaj uporabnika v administratorja',
-'makesysoptext'         => 'Obrazec uporabljajo birokrati za povišanje navadnih uporabnikov v administratorje.
-Da izbranega uporabnika povišate, vpišite njegovo ime v okence in pritisnite gumb.',
-'makesysopname'         => 'Ime uporabnika:',
-'makesysopsubmit'       => 'Povišanje uporabnika v administratorja',
-'makesysopok'           => '<b>Uporabnik »$1« je odslej administrator</b>',
-'makesysopfail'         => '<b>Uporabnika »$1« ni mogoče povišati v administratorja. (Ste uporabniško ime pravilno vnesli?)</b>',
-'setbureaucratflag'     => 'Nastavi za birokrata',
 'rightslog'             => 'Dnevnik_uporabniških_pravic',
 'rightslogtext'         => 'Prikazan je dnevnik sprememb uporabniških pravic.',
 'rightslogentry'        => '- sprememba pravic uporabnika $1 iz $2 v $3',
-'rights'                => 'Pravice:',
-'set_user_rights'       => 'Uredi uporabnikove pravice',
-'user_rights_set'       => '<strong>Pravice uporabnika »$1« so osvežene</strong>',
-'set_rights_fail'       => '<strong>Pravic uporabnika »$1« ni mogoče spremeniti. Ste ime pravilno vnesli?</strong>',
-'makesysop'             => 'Povišanje uporabnikov v administratorje',
-'already_sysop'         => 'Uporabnik je že administrator!',
-'already_bureaucrat'    => 'Uporabnik je že birokrat!',
 'rightsnone'            => '(nobeno)',
 'movepage'              => 'Prestavitev strani',
 'movepagetext'          => 'Z naslednjim obrazcem lahko stran preimenujete in hkrati prestavite tudi vso njeno zgodovino. Dosedanja stran se bo spremenila v preusmeritev na prihodnje mesto. 
@@ -1180,13 +1164,13 @@ Prestavitev strani je lahko za priljubljeno stran velika in nepričakovana sprem
 'importnosources'       => 'Na tem wikiju je ta možnost onemogočena.',
 'importnofile'          => 'Uvožena ni bila nobena datoteka.',
 'importuploaderror'     => 'Uvoz datoteke ni uspel; morda velikost datoteke presega največjo dovoljeno velikost uvoza.',
-'tooltip-search'        => 'Preiščite {{GRAMMAR:tožilnik|{{SITENAME}}}} [alt-f]',
-'tooltip-minoredit'     => 'Označite kot manjše urejanje [alt-i]',
-'tooltip-save'          => 'Shranite vnesene spremembe (ste si jih predogledali?) [alt-s]',
-'tooltip-preview'       => 'Pred shranjevanjem si, prosimo, predoglejte stran! [alt-p]',
-'tooltip-diff'          => 'Preglejte spremembe, ki ste jih vnesli. [alt-v]',
-'tooltip-compareselectedversions'=> 'Preglejte razlike med izbranima redakcijama. [alt-v]',
-'tooltip-watch'         => 'Dodajte stran na svoj spisek nadzorov. [alt-w]',
+'tooltip-search'        => 'Preiščite {{GRAMMAR:tožilnik|{{SITENAME}}}}',
+'tooltip-minoredit'     => 'Označite kot manjše urejanje',
+'tooltip-save'          => 'Shranite vnesene spremembe (ste si jih predogledali?)',
+'tooltip-preview'       => 'Pred shranjevanjem si, prosimo, predoglejte stran!',
+'tooltip-diff'          => 'Preglejte spremembe, ki ste jih vnesli.',
+'tooltip-compareselectedversions'=> 'Preglejte razlike med izbranima redakcijama.',
+'tooltip-watch'         => 'Dodajte stran na svoj spisek nadzorov.',
 'nodublincore'          => 'Metapodatki Dublin Core RDF so na tem strežniku onemogočeni.',
 'nocreativecommons'     => 'Metapodatki Creative Commons RDF so za ta strežnik onemogočeni.',
 'notacceptable'         => 'V obliki, ki jo lahko bere vaš odjemalec, wikistrežnik podatkov ne more ponuditi.',
@@ -1232,66 +1216,124 @@ Da boste stran lahko shranili, boste morali odstraniti vse na črni listi navede
 'rcpatroldisabledtext'  => 'Spremljanje zadnjih sprememb je začasno onemogočeno.',
 'markedaspatrollederror'=> 'Ni mogoče označiti kot pregledano',
 'markedaspatrollederrortext'=> 'Določite redakcijo, ki jo želite označiti kot pregledano.',
-'Monobook.js'           => '/* plavajoča polja in bližnjične tipke */
- var ta = new Object();
- ta[\'pt-userpage\'] = new Array(\'.\',\'Vaša uporabniška stran\');
- ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Uporabniška stran IP-naslova, ki ga uporabljate\');
- ta[\'pt-mytalk\'] = new Array(\'n\',\'Vaša pogovorna stran\');
- ta[\'pt-anontalk\'] = new Array(\'n\',\'Pogovor o urejanjih s tega IP-naslova\');
- ta[\'pt-preferences\'] = new Array(\'\',\'Vaše nastavitve\');
- ta[\'pt-watchlist\'] = new Array(\'l\',\'Seznam strani, katerih spremembe spremljate\');
- ta[\'pt-mycontris\'] = new Array(\'y\',\'Seznam vaših prispevkov\');
- ta[\'pt-login\'] = new Array(\'o\',\'Prijava ni obvezna, vendar je zaželena\');
- ta[\'pt-anonlogin\'] = new Array(\'o\',\'Prijava ni obvezna, vendar je zaželena\');
- ta[\'pt-logout\'] = new Array(\'o\',\'Odjavite se\');
- ta[\'ca-talk\'] = new Array(\'t\',\'Pogovor o strani\');
- ta[\'ca-edit\'] = new Array(\'e\',\'Stran lahko uredite. Preden jo shranite, uporabite gumb za predogled.\');
- ta[\'ca-addsection\'] = new Array(\'+\',\'Začnite novo razpravo\');
- ta[\'ca-viewsource\'] = new Array(\'e\',\'Stran je zaščitena, ogledate si lahko njeno izvorno kodo\');
- ta[\'ca-history\'] = new Array(\'h\',\'Prejšnje redakcije strani\');
- ta[\'ca-protect\'] = new Array(\'=\',\'Zaščitite stran\');
- ta[\'ca-unprotect\'] = new Array(\'=\',\'Odstranite zaščito strani\');
- ta[\'ca-delete\'] = new Array(\'d\',\'Brišite stran\');
- ta[\'ca-undelete\'] = new Array(\'d\',\'Obnovite pred izbrisom napravljena urejanja strani.\');
- ta[\'ca-move\'] = new Array(\'m\',\'Preimenujte stran\');
- ta[\'ca-nomove\'] = new Array(\'\',\'Za prestavljanje nimate dovoljenja\');
- ta[\'ca-watch\'] = new Array(\'w\',\'Dodajte stran na seznam nadzorov\');
- ta[\'ca-unwatch\'] = new Array(\'w\',\'Odstranite stran s seznama nadzorov\');
- ta[\'search\'] = new Array(\'f\',\'Preiščite wiki\');
- ta[\'p-logo\'] = new Array(\'\',\'Glavna stran\');
- ta[\'n-mainpage\'] = new Array(\'z\',\'Obiščite Glavno stran\');
- ta[\'n-Dobrodošli\'] = new Array (\'\',\'Dobrodošli v {{GRAMMAR:dajalnik|{{SITENAME}}}} - osnovni napotki za delo\');
- ta[\'n-Stik-z-nami\'] = new Array (\'\',\'Kako navezati stik s sodelavci projekta\');
- ta[\'n-portal\'] = new Array(\'\',\'O projektu, kaj lahko storite, kje lahko kaj najdete\');
- ta[\'n-Izbrani-članki\'] = new Array(\'\',\'Izbrani članki - najboljše v {{GRAMMAR:dajalnik|{{SITENAME}}}}\');
- ta[\'n-Izbrane-osebe\'] = new Array(\'\',\'Izbrane osebe - najboljše biografije\');
- ta[\'n-Pod-lipo\'] = new Array(\'\',\'Osrednja pogovorna stran {{GRAMMAR:rodilnik|{{SITENAME}}}}\');
- ta[\'n-currentevents\'] = new Array(\'\',\'Spoznajte ozadje trenutnih dogodkov\');
- ta[\'n-recentchanges\'] = new Array(\'r\',\'Seznam zadnjih sprememb {{GRAMMAR:rodilnik|{{SITENAME}}}}\');
- ta[\'n-randompage\'] = new Array(\'x\',\'Naložite naključno stran\');
- ta[\'n-help\'] = new Array(\'\',\'Kraj za pomoč\');
- ta[\'n-sitesupport\'] = new Array(\'\',\'Podprite nas\');
- ta[\'t-whatlinkshere\'] = new Array(\'j\',\'Seznam vseh s trenutno povezanih strani\');
- ta[\'t-recentchangeslinked\'] = new Array(\'k\',\'Zadnje spremembe na s trenutno povezanih straneh\');
- ta[\'feed-rss\'] = new Array(\'\',\'RSS-dovod strani\');
- ta[\'feed-atom\'] = new Array(\'\',\'Atom-dovod strani\');
- ta[\'t-contributions\'] = new Array(\'\',\'Preglejte seznam uporabnikovih prispevkov\');
- ta[\'t-emailuser\'] = new Array(\'\',\'Pošljite uporabniku e-pismo\');
- ta[\'t-upload\'] = new Array(\'u\',\'Naložite slike ali predstavnostne datoteke\');
- ta[\'t-specialpages\'] = new Array(\'q\',\'Preglejte seznam vseh posebnih strani\');
- ta[\'t-print\'] = new Array(\'\',\'Natisljiva različica strani\');
- ta[\'t-permalink\'] = new Array(\'\',\'Trajna povezava na dano redakcijo strani\');
- ta[\'t-cite\'] = new Array(\'\',\'Navede bibliografske podatke za prikazani članek\');
- ta[\'ca-nstab-main\'] = new Array(\'c\',\'Prikaže članek\');
- ta[\'ca-nstab-user\'] = new Array(\'c\',\'Prikaže uporabniško stran\');
- ta[\'ca-nstab-media\'] = new Array(\'c\',\'Prikaže stran s predstavnostno vsebino\');
- ta[\'ca-nstab-special\'] = new Array(\'\',\'Te posebne strani ne morete urejati\');
- ta[\'ca-nstab-project\'] = new Array(\'a\',\'Prikaže stran projekta\');
- ta[\'ca-nstab-image\'] = new Array(\'c\',\'Prikaže stran s sliko ali drugo datoteko\');
- ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Prikaže sistemsko sporočilo\');
- ta[\'ca-nstab-template\'] = new Array(\'c\',\'Prikaže stran predloge\');
- ta[\'ca-nstab-help\'] = new Array(\'c\',\'Prikaže stran s pomočjo\');
- ta[\'ca-nstab-category\'] = new Array(\'c\',\'Prikaže stran kategorije\');',
+'monobook.js' => '/* Deprecated; use [[MediaWiki:common.js]] */',
+ 
+'accesskey-pt-userpage' => '.',
+'tooltip-pt-userpage' => 'Vaša uporabniška stran',
+'accesskey-pt-anonuserpage' => '.',
+'tooltip-pt-anonuserpage' => 'Uporabniška stran IP-naslova, ki ga uporabljate',
+'accesskey-pt-mytalk' => 'n',
+'tooltip-pt-mytalk' => 'Vaša pogovorna stran',
+'accesskey-pt-anontalk' => 'n',
+'tooltip-pt-anontalk' => 'Pogovor o urejanjih s tega IP-naslova',
+'accesskey-pt-preferences' => '',
+'tooltip-pt-preferences' => 'Vaše nastavitve',
+'accesskey-pt-watchlist' => 'l',
+'tooltip-pt-watchlist' => 'Seznam strani, katerih spremembe spremljate',
+'accesskey-pt-mycontris' => 'y',
+'tooltip-pt-mycontris' => 'Seznam vaših prispevkov',
+'accesskey-pt-login' => 'o',
+'tooltip-pt-login' => 'Prijava ni obvezna, vendar je zaželena',
+'accesskey-pt-anonlogin' => 'o',
+'tooltip-pt-anonlogin' => 'Prijava ni obvezna, vendar je zaželena',
+'accesskey-pt-logout' => '',
+'tooltip-pt-logout' => 'Odjavite se',
+'accesskey-ca-talk' => 't',
+'tooltip-ca-talk' => 'Pogovor o strani',
+'accesskey-ca-edit' => 'e',
+'tooltip-ca-edit' => 'Stran lahko uredite. Preden jo shranite, uporabite gumb za predogled.',
+'accesskey-ca-addsection' => '+',
+'tooltip-ca-addsection' => 'Začnite novo razpravo',
+'accesskey-ca-viewsource' => 'e',
+'tooltip-ca-viewsource' => 'Stran je zaščitena, ogledate si lahko njeno izvorno kodo',
+'accesskey-ca-history' => 'h',
+'tooltip-ca-history' => 'Prejšnje redakcije strani',
+'accesskey-ca-protect' => '=',
+'tooltip-ca-protect' => 'Zaščitite stran',
+'accesskey-ca-unprotect' => '=',
+'tooltip-ca-unprotect' => 'Odstranite zaščito strani',
+'accesskey-ca-delete' => 'd',
+'tooltip-ca-delete' => 'Brišite stran',
+'accesskey-ca-undelete' => 'd',
+'tooltip-ca-undelete' => 'Obnovite pred izbrisom napravljena urejanja strani.',
+'accesskey-ca-move' => 'm',
+'tooltip-ca-move' => 'Preimenujte stran',
+'accesskey-ca-nomove' => '',
+'tooltip-ca-nomove' => 'Za prestavljanje nimate dovoljenja',
+'accesskey-ca-watch' => 'w',
+'tooltip-ca-watch' => 'Dodajte stran na seznam nadzorov',
+'accesskey-ca-unwatch' => 'w',
+'tooltip-ca-unwatch' => 'Odstranite stran s seznama nadzorov',
+'accesskey-search' => 'f',
+'tooltip-search' => 'Preiščite wiki',
+'accesskey-p-logo' => '',
+'tooltip-p-logo' => 'Glavna stran',
+'accesskey-n-mainpage' => 'z',
+'tooltip-n-mainpage' => 'Obiščite Glavno stran',
+'accesskey-n-Dobrodošli' => '',
+'tooltip-n-Dobrodošli' => 'Dobrodošli v {{GRAMMAR:dajalnik|{{SITENAME}}}} - osnovni napotki za delo',
+'accesskey-n-Stik-z-nami' => '',
+'tooltip-n-Stik-z-nami' => 'Kako navezati stik s sodelavci projekta',
+'accesskey-n-portal' => '',
+'tooltip-n-portal' => 'O projektu, kaj lahko storite, kje lahko kaj najdete',
+'accesskey-n-Izbrani-članki' => '',
+'tooltip-n-Izbrani-članki' => 'Izbrani članki - najboljše v {{GRAMMAR:dajalnik|{{SITENAME}}}}',
+'accesskey-n-Izbrane-osebe' => '',
+'tooltip-n-Izbrane-osebe' => 'Izbrane osebe - najboljše biografije',
+'accesskey-n-Pod-lipo' => '',
+'tooltip-n-Pod-lipo' => 'Osrednja pogovorna stran {{GRAMMAR:rodilnik|{{SITENAME}}}}',
+'accesskey-n-currentevents' => '',
+'tooltip-n-currentevents' => 'Spoznajte ozadje trenutnih dogodkov',
+'accesskey-n-recentchanges' => 'r',
+'tooltip-n-recentchanges' => 'Seznam zadnjih sprememb {{GRAMMAR:rodilnik|{{SITENAME}}}}',
+'accesskey-n-randompage' => 'x',
+'tooltip-n-randompage' => 'Naložite naključno stran',
+'accesskey-n-help' => '',
+'tooltip-n-help' => 'Kraj za pomoč',
+'accesskey-n-sitesupport' => '',
+'tooltip-n-sitesupport' => 'Podprite nas',
+'accesskey-t-whatlinkshere' => 'j',
+'tooltip-t-whatlinkshere' => 'Seznam vseh s trenutno povezanih strani',
+'accesskey-t-recentchangeslinked' => 'k',
+'tooltip-t-recentchangeslinked' => 'Zadnje spremembe na s trenutno povezanih straneh',
+'accesskey-feed-rss' => '',
+'tooltip-feed-rss' => 'RSS-dovod strani',
+'accesskey-feed-atom' => '',
+'tooltip-feed-atom' => 'Atom-dovod strani',
+'accesskey-t-contributions' => '',
+'tooltip-t-contributions' => 'Preglejte seznam uporabnikovih prispevkov',
+'accesskey-t-emailuser' => '',
+'tooltip-t-emailuser' => 'Pošljite uporabniku e-pismo',
+'accesskey-t-upload' => 'u',
+'tooltip-t-upload' => 'Naložite slike ali predstavnostne datoteke',
+'accesskey-t-specialpages' => 'q',
+'tooltip-t-specialpages' => 'Preglejte seznam vseh posebnih strani',
+'accesskey-t-print' => '',
+'tooltip-t-print' => 'Natisljiva različica strani',
+'accesskey-t-permalink' => '',
+'tooltip-t-permalink' => 'Trajna povezava na dano redakcijo strani',
+'accesskey-t-cite' => '',
+'tooltip-t-cite' => 'Navede bibliografske podatke za prikazani članek',
+'accesskey-ca-nstab-main' => 'c',
+'tooltip-ca-nstab-main' => 'Prikaže članek',
+'accesskey-ca-nstab-user' => 'c',
+'tooltip-ca-nstab-user' => 'Prikaže uporabniško stran',
+'accesskey-ca-nstab-media' => 'c',
+'tooltip-ca-nstab-media' => 'Prikaže stran s predstavnostno vsebino',
+'accesskey-ca-nstab-special' => '',
+'tooltip-ca-nstab-special' => 'Te posebne strani ne morete urejati',
+'accesskey-ca-nstab-project' => 'a',
+'tooltip-ca-nstab-project' => 'Prikaže stran projekta',
+'accesskey-ca-nstab-image' => 'c',
+'tooltip-ca-nstab-image' => 'Prikaže stran s sliko ali drugo datoteko',
+'accesskey-ca-nstab-mediawiki' => 'c',
+'tooltip-ca-nstab-mediawiki' => 'Prikaže sistemsko sporočilo',
+'accesskey-ca-nstab-template' => 'c',
+'tooltip-ca-nstab-template' => 'Prikaže stran predloge',
+'accesskey-ca-nstab-help' => 'c',
+'tooltip-ca-nstab-help' => 'Prikaže stran s pomočjo',
+'accesskey-ca-nstab-category' => 'c',
+'tooltip-ca-nstab-category' => 'Prikaže stran kategorije',
 'deletedrevision'       => 'Prejšnja redakcija $1 je izbrisana.',
 'previousdiff'          => '← Pojdi na prejšnje urejanje',
 'nextdiff'              => 'Novejše urejanje →',
@@ -1570,7 +1612,7 @@ $1
 :\'\'$2\'\' 
 Prosimo, potrdite, da jo resnično želite znova ustvariti.',
 'recreate'              => 'Ponovno ustvari',
-'tooltip-recreate'      => '<noinclude>Ta stran je namenoma (skoraj) prazna.</noinclude>',
+'tooltip-recreate'      => 'Ta stran je namenoma (skoraj) prazna.',
 'unit-pixel'            => ' točk',
 'redirectingto'         => 'Preusmerjam na »[[$1]]« ...',
 'confirm_purge'         => 'Osvežim predpomnjenje strani? 

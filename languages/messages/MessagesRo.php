@@ -1,13 +1,8 @@
 <?php
 /** Romanian (Română)
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  */
-$quickbarSettings = array(
-	'Fără', 'Fixă, în stânga', 'Fixă, în dreapta', 'Liberă'
-);
-
 $skinNames = array(
 	'standard' => 'Normală',
 	'nostalgia' => 'Nostalgie'
@@ -29,7 +24,6 @@ $magicWords = array(
 	'currentmonthnamegen'    => array( 1,    'CURRENTMONTHNAMEGEN', '{{NUMELUNACURENTAGEN}}'   ),
 	'subst'                  => array( 0,    'SUBST:'                                          ),
 	'msgnw'                  => array( 0,    'MSGNW:', 'MSJNOU:'                               ),
-	'end'                    => array( 0,    '__END__', '__FINAL__'                            ),
 	'img_thumbnail'          => array( 1,    'thumbnail', 'thumb'                              ),
 	'img_right'              => array( 1,    'right'                                           ),
 	'img_left'               => array( 1,    'left'                                            ),
@@ -488,8 +482,7 @@ ceea ce înseamnă mai mult decât maximum de $2 kilobytes. Salvarea nu este pos
 'loadhist'              => 'Încarc istoria versiunilor',
 'currentrev'            => 'Versiunea curentă',
 'revisionasof'          => 'Versiunea de la data $1',
-'old-revision-navigation'=> 'Revizia pentru $1; $5<br />
-($6) $3 | $2 | $4 ($7)',
+'revision-info'         => 'Revizia pentru $1; $2',
 'previousrevision'      => '←Versiunea anterioară',
 'nextrevision'          => 'Versiunea următoare →',
 'currentrevisionlink'   => 'afişează versiunea curentă',
@@ -570,6 +563,10 @@ Căutări după $3 $9',
 'prefsnologintext'      => 'Trebuie să fii [[Special:Userlogin|autentificat]] pentru a-ţi putea salva preferinţele.',
 'prefsreset'            => 'Preferinţele au fost resetate.',
 'qbsettings'            => 'Setări pentru bara rapidă',
+'qbsettings-none'	=> 'Fără',
+'qbsettings-fixedleft'	=> 'Fixă, în stânga',
+'qbsettings-fixedright'	=> 'Fixă, în dreapta',
+'qbsettings-floatingleft'	=> 'Liberă',
 'changepassword'        => 'Schimbă parola',
 'skin'                  => 'Aspect',
 'math'                  => 'Aspect formule',
@@ -947,7 +944,7 @@ Asistenţă şi suport:
 'rollbacklink'          => 'revenire',
 'rollbackfailed'        => 'Revenirea nu s-a putut face',
 'cantrollback'          => 'Nu se poate reveni; ultimul contribuitor este autorul acestui articol.',
-'alreadyrolled'         => 'Nu se poate reveni peste ultima modificare a articolului [[$1]]
+'alreadyrolled'         => 'Nu se poate reveni peste ultima modificare a articolului [[:$1]]
 făcută de către [[User:$2|$2]] ([[User talk:$2|discuţie]]); altcineva a modificat articolul sau a revenit deja.
 
 Ultima editare a fost făcută de către [[User:$3|$3]] ([[User talk:$3|discuţie]]).',
@@ -1084,24 +1081,9 @@ baza de date atunci când vei încheia operaţiunile de întreţinere.',
 'lockdbsuccesstext'     => 'Baza de date {{SITENAME}} a fost blocată la scriere.<br />
 Nu uita să o deblochezi după ce termini operaţiunile administrative pentru care ai blocat-o.',
 'unlockdbsuccesstext'   => 'Baza de date a fost deblocată.',
-'makesysoptitle'        => 'Fă dintr-un utilizator un administrator',
-'makesysoptext'         => 'Acest formular este utilizat de birocraţi pentru a transforma utilizatori de rând în administratori. 
-Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din utilizator un administrator',
-'makesysopname'         => 'Numele utilizatorului:',
-'makesysopsubmit'       => 'Fă din acest utilizator un administrator',
-'makesysopok'           => '<b>Utilizatorul "$1" este acum administrator</b>',
-'makesysopfail'         => '<b>Utilizatorul "$1" nu a putut deveni administrator. (Ai introdus numele corect?)</b>',
-'setbureaucratflag'     => 'Acordă şi drepturi de birocrat',
 'rightslog'             => 'Raportul drepturilor de utilizator',
 'rightslogtext'         => 'Acesta este un raport al modificărilor drepturilor utilizatorilor.',
 'rightslogentry'        => 'a schimbat pentru $1 apartenenţa la un grup de la $2 la $3',
-'rights'                => 'Drepturi:',
-'set_user_rights'       => 'Acordă drepturi de utilizator',
-'user_rights_set'       => '<b>Drepturi de utilizator pentru "$1" actualizate</b>',
-'set_rights_fail'       => '<b>Nu au putut fi acordate drepturi de utilizator lui "$1". (Ai introdus numele corect?)</b>',
-'makesysop'             => 'Fă dintr-un utilizator un administrator',
-'already_sysop'         => 'Acest utilizator este deja administrator.',
-'already_bureaucrat'    => 'Acest utilizator este deja birocrat.',
 'rightsnone'            => '(niciunul)',
 'movepage'              => 'Mută pagina',
 'movepagetext'          => 'Puteţi folosi formularul de mai jos pentru a redenumi
@@ -1208,15 +1190,15 @@ Articolul de destinaţie "[[$1]]" există deja. Doriţi să îl ştergeţi pentr
 'accesskey-diff'        => 'v',
 'accesskey-compareselectedversions'=> 'o',
 'accesskey-watch'       => 'w',
-'tooltip-search'        => 'Căutare în {{SITENAME}} [alt-f]',
-'tooltip-minoredit'     => 'Marcaţi această modificare ca fiind minoră [alt-i]',
-'tooltip-save'          => 'Salvează modificările tale [alt-s]',
-'tooltip-preview'       => 'Previzualizarea modificărilor tale, foloseşte-o te rog înainte de a salva! [alt-p]',
-'tooltip-diff'          => 'Arată ce modificări ai făcut textului. [alt-v]',
-'tooltip-compareselectedversions'=> 'Vezi diferenţele între cele două versiuni selectate de pe această pagină. [alt-v]',
-'tooltip-watch'         => 'Adaugă această pagină la lista mea de pagini urmărite [alt-w]',
-'Common.css'            => '/** CSS plasate aici vor fi aplicate tuturor apariţiilor */',
-'Monobook.css'          => '/* modificaţi acest fişier pentru a adapta înfăţişarea monobook-ului pentru tot situl*/',
+'tooltip-search'        => 'Căutare în {{SITENAME}}',
+'tooltip-minoredit'     => 'Marcaţi această modificare ca fiind minoră',
+'tooltip-save'          => 'Salvează modificările tale',
+'tooltip-preview'       => 'Previzualizarea modificărilor tale, foloseşte-o te rog înainte de a salva!',
+'tooltip-diff'          => 'Arată ce modificări ai făcut textului.',
+'tooltip-compareselectedversions'=> 'Vezi diferenţele între cele două versiuni selectate de pe această pagină.',
+'tooltip-watch'         => 'Adaugă această pagină la lista mea de pagini urmărite',
+'common.css'            => '/** CSS plasate aici vor fi aplicate tuturor apariţiilor */',
+'monobook.css'          => '/* modificaţi acest fişier pentru a adapta înfăţişarea monobook-ului pentru tot situl*/',
 'nodublincore'          => 'Metadatele Dublin Core RDF sunt dezactivate pentru acest server.',
 'nocreativecommons'     => 'Metadatele Creative Commons RDF dezactivate pentru acest server.',
 'notacceptable'         => 'Serverul wiki nu poate oferi date într-un format pe care clientul tău să-l poată citi.',
@@ -1258,56 +1240,107 @@ Articolul de destinaţie "[[$1]]" există deja. Doriţi să îl ştergeţi pentr
 'rcpatroldisabledtext'  => 'Patrularea modificărilor recente este în prezent dezactivată.',
 'markedaspatrollederror'=> 'Nu se poate marca ca patrulat',
 'markedaspatrollederrortext'=> 'Trebuie să specificaţi o revizie care să fie marcată ca patrulată.',
-'Monobook.js'           => '/* tooltips and access keys */
-var ta = new Object();
-ta[\'history-prevlink\'] = new Array(\'-\',\'Previous\');
-ta[\'history-nextlink\'] = new Array(\'+\',\'Next\');
-ta[\'pt-userpage\'] = new Array(\'.\',\'Pagina mea de utilizator\');
-ta[\'pt-anonuserpage\'] = new Array(\'.\',\'Pagina de utilizator pentru adresa IP curentă\');
-ta[\'pt-mytalk\'] = new Array(\'n\',\'Pagina mea de discuţii\');
-ta[\'pt-anontalk\'] = new Array(\'n\',\'Discuţii despre editări pentru adresa IP curentă\');
-ta[\'pt-preferences\'] = new Array(\'\',\'Preferinţele mele\');
-ta[\'pt-watchlist\'] = new Array(\'l\',\'Lista paginilor pe care le monitorizez.\');
-ta[\'pt-mycontris\'] = new Array(\'y\',\'Listă de contribuţii\');
-ta[\'pt-login\'] = new Array(\'o\',\'Eşti încurajat să te autentifici, deşi acest lucru nu este obligatoriu.\');
-ta[\'pt-anonlogin\'] = new Array(\'o\',\'Eşti încurajat să te autentifici, deşi acest lucru nu este obligatoriu.\');
-ta[\'pt-logout\'] = new Array(\'o\',\'Închide sesiunea\');
-ta[\'ca-talk\'] = new Array(\'t\',\'Discuţie despre articol\');
-ta[\'ca-edit\'] = new Array(\'e\',\'Poţi edita această pagină. Te rugăm să previzualizezi conţinutul înainte de salvare.\');
-ta[\'ca-addsection\'] = new Array(\'+\',\'Adaugă un comentariu acestei discuţii.\');
-ta[\'ca-viewsource\'] = new Array(\'e\',\'Aceasta pagina este protejată. Poţi sa vezi doar codul sursă.\');
-ta[\'ca-history\'] = new Array(\'h\',\'Versiuni vechi ale acestui document.\');
-ta[\'ca-protect\'] = new Array(\'=\',\'Protejează acest document.\');
-ta[\'ca-delete\'] = new Array(\'d\',\'Şterge acest document.\');
-ta[\'ca-undelete\'] = new Array(\'d\',\'Restaureaza editările făcute acestui document, înainte să fi fost şters.\');
-ta[\'ca-move\'] = new Array(\'m\',\'Mută acest document.\');
-ta[\'ca-nomove\'] = new Array(\'\',\'Nu aveţi permisiunea să mutaţi acest document.\');
-ta[\'ca-watch\'] = new Array(\'w\',\'Adaugă acest document în lista ta de monitorizare.\');
-ta[\'ca-unwatch\'] = new Array(\'w\',\'Şterge acest document din lista ta de monitorizare.\');
-ta[\'search\'] = new Array(\'f\',\'Caută în acest wiki\');
-ta[\'p-logo\'] = new Array(\'\',\'Pagina principală\');
-ta[\'n-mainpage\'] = new Array(\'z\',\'Vizitează pagina principală\');
-ta[\'n-portal\'] = new Array(\'\',\'Despre proiect, ce poţi face tu, unde găseşti soluţii.\');
-ta[\'n-currentevents\'] = new Array(\'\',\'Găseşte informaţii despre evenimente curente\');
-ta[\'n-recentchanges\'] = new Array(\'r\',\'Lista ultimelor schimbări realizate în acest wiki.\');
-ta[\'n-randompage\'] = new Array(\'x\',\'Mergi spre o pagină aleatoare\');
-ta[\'n-help\'] = new Array(\'\',\'Locul în care găseşti ajutor.\');
-ta[\'n-sitesupport\'] = new Array(\'\',\'Sprijină-ne\');
-ta[\'t-whatlinkshere\'] = new Array(\'j\',\'Lista tuturor paginilor wiki care conduc spre această pagină\');
-ta[\'t-recentchangeslinked\'] = new Array(\'k\',\'Schimbări recente în legătură cu această pagină\');
-ta[\'feed-rss\'] = new Array(\'\',\'Alimentează fluxul RSS pentru această pagină\'); ta[\'feed-atom\'] = new Array(\'\',\'Alimentează fluxul Atom pentru această pagină\'); ta[\'t-contributions\'] = new Array(\'\',\'Vezi lista de contribuţii ale acestui utilizator\');
-ta[\'t-emailuser\'] = new Array(\'\',\'Trimite un e-mail acestui utilizator\');
-ta[\'t-upload\'] = new Array(\'u\',\'Trimite imagini sau fişiere media\');
-ta[\'t-specialpages\'] = new Array(\'q\',\'Lista tuturor paginilor speciale\');
-ta[\'ca-nstab-main\'] = new Array(\'c\',\'Vezi articolul\');
-ta[\'ca-nstab-user\'] = new Array(\'c\',\'Vezi pagina de utilizator\');
-ta[\'ca-nstab-media\'] = new Array(\'c\',\'Vezi pagina media\');
-ta[\'ca-nstab-special\'] = new Array(\'\',\'Aceasta este o pagină specială, (nu) poţi edita pagina în sine.\');
-ta[\'ca-nstab-project\'] = new Array(\'a\',\'Vezi pagina proiectului\');
-ta[\'ca-nstab-image\'] = new Array(\'c\',\'Vezi pagina imaginii\');
-ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'Vezi mesajul de sistem\'); ta[\'ca-nstab-template\'] = new Array(\'c\',\'Vezi formatul\');
-ta[\'ca-nstab-help\'] = new Array(\'c\',\'Vezi pagina de ajutor\');
-ta[\'ca-nstab-category\'] = new Array(\'c\',\'Vezi categoria\');',
+'monobook.js' => '/* Deprecated; use [[MediaWiki:common.js]] */',
+
+'accesskey-history-prevlink' => '-',
+'tooltip-history-prevlink' => 'Previous',
+'accesskey-history-nextlink' => '+',
+'tooltip-history-nextlink' => 'Next',
+'accesskey-pt-userpage' => '.',
+'tooltip-pt-userpage' => 'Pagina mea de utilizator',
+'accesskey-pt-anonuserpage' => '.',
+'tooltip-pt-anonuserpage' => 'Pagina de utilizator pentru adresa IP curentă',
+'accesskey-pt-mytalk' => 'n',
+'tooltip-pt-mytalk' => 'Pagina mea de discuţii',
+'accesskey-pt-anontalk' => 'n',
+'tooltip-pt-anontalk' => 'Discuţii despre editări pentru adresa IP curentă',
+'accesskey-pt-preferences' => '',
+'tooltip-pt-preferences' => 'Preferinţele mele',
+'accesskey-pt-watchlist' => 'l',
+'tooltip-pt-watchlist' => 'Lista paginilor pe care le monitorizez.',
+'accesskey-pt-mycontris' => 'y',
+'tooltip-pt-mycontris' => 'Listă de contribuţii',
+'accesskey-pt-login' => 'o',
+'tooltip-pt-login' => 'Eşti încurajat să te autentifici, deşi acest lucru nu este obligatoriu.',
+'accesskey-pt-anonlogin' => 'o',
+'tooltip-pt-anonlogin' => 'Eşti încurajat să te autentifici, deşi acest lucru nu este obligatoriu.',
+'accesskey-pt-logout' => '',
+'tooltip-pt-logout' => 'Închide sesiunea',
+'accesskey-ca-talk' => 't',
+'tooltip-ca-talk' => 'Discuţie despre articol',
+'accesskey-ca-edit' => 'e',
+'tooltip-ca-edit' => 'Poţi edita această pagină. Te rugăm să previzualizezi conţinutul înainte de salvare.',
+'accesskey-ca-addsection' => '+',
+'tooltip-ca-addsection' => 'Adaugă un comentariu acestei discuţii.',
+'accesskey-ca-viewsource' => 'e',
+'tooltip-ca-viewsource' => 'Aceasta pagina este protejată. Poţi sa vezi doar codul sursă.',
+'accesskey-ca-history' => 'h',
+'tooltip-ca-history' => 'Versiuni vechi ale acestui document.',
+'accesskey-ca-protect' => '=',
+'tooltip-ca-protect' => 'Protejează acest document.',
+'accesskey-ca-delete' => 'd',
+'tooltip-ca-delete' => 'Şterge acest document.',
+'accesskey-ca-undelete' => 'd',
+'tooltip-ca-undelete' => 'Restaureaza editările făcute acestui document, înainte să fi fost şters.',
+'accesskey-ca-move' => 'm',
+'tooltip-ca-move' => 'Mută acest document.',
+'accesskey-ca-nomove' => '',
+'tooltip-ca-nomove' => 'Nu aveţi permisiunea să mutaţi acest document.',
+'accesskey-ca-watch' => 'w',
+'tooltip-ca-watch' => 'Adaugă acest document în lista ta de monitorizare.',
+'accesskey-ca-unwatch' => 'w',
+'tooltip-ca-unwatch' => 'Şterge acest document din lista ta de monitorizare.',
+'accesskey-search' => 'f',
+'tooltip-search' => 'Caută în acest wiki',
+'accesskey-p-logo' => '',
+'tooltip-p-logo' => 'Pagina principală',
+'accesskey-n-mainpage' => 'z',
+'tooltip-n-mainpage' => 'Vizitează pagina principală',
+'accesskey-n-portal' => '',
+'tooltip-n-portal' => 'Despre proiect, ce poţi face tu, unde găseşti soluţii.',
+'accesskey-n-currentevents' => '',
+'tooltip-n-currentevents' => 'Găseşte informaţii despre evenimente curente',
+'accesskey-n-recentchanges' => 'r',
+'tooltip-n-recentchanges' => 'Lista ultimelor schimbări realizate în acest wiki.',
+'accesskey-n-randompage' => 'x',
+'tooltip-n-randompage' => 'Mergi spre o pagină aleatoare',
+'accesskey-n-help' => '',
+'tooltip-n-help' => 'Locul în care găseşti ajutor.',
+'accesskey-n-sitesupport' => '',
+'tooltip-n-sitesupport' => 'Sprijină-ne',
+'accesskey-t-whatlinkshere' => 'j',
+'tooltip-t-whatlinkshere' => 'Lista tuturor paginilor wiki care conduc spre această pagină',
+'accesskey-t-recentchangeslinked' => 'k',
+'tooltip-t-recentchangeslinked' => 'Schimbări recente în legătură cu această pagină',
+'accesskey-feed-rss' => '',
+'tooltip-feed-rss' => 'Alimentează fluxul RSS pentru această pagină',
+'tooltip-feed-atom' => 'Alimentează fluxul Atom pentru această pagină',
+'tooltip-t-contributions' => 'Vezi lista de contribuţii ale acestui utilizator',
+'accesskey-t-emailuser' => '',
+'tooltip-t-emailuser' => 'Trimite un e-mail acestui utilizator',
+'accesskey-t-upload' => 'u',
+'tooltip-t-upload' => 'Trimite imagini sau fişiere media',
+'accesskey-t-specialpages' => 'q',
+'tooltip-t-specialpages' => 'Lista tuturor paginilor speciale',
+'accesskey-ca-nstab-main' => 'c',
+'tooltip-ca-nstab-main' => 'Vezi articolul',
+'accesskey-ca-nstab-user' => 'c',
+'tooltip-ca-nstab-user' => 'Vezi pagina de utilizator',
+'accesskey-ca-nstab-media' => 'c',
+'tooltip-ca-nstab-media' => 'Vezi pagina media',
+'accesskey-ca-nstab-special' => '',
+'tooltip-ca-nstab-special' => 'Aceasta este o pagină specială, (nu) poţi edita pagina în sine.',
+'accesskey-ca-nstab-project' => 'a',
+'tooltip-ca-nstab-project' => 'Vezi pagina proiectului',
+'accesskey-ca-nstab-image' => 'c',
+'tooltip-ca-nstab-image' => 'Vezi pagina imaginii',
+'accesskey-ca-nstab-mediawiki' => 'c',
+'tooltip-ca-nstab-mediawiki' => 'Vezi mesajul de sistem',
+'tooltip-ca-nstab-template' => 'Vezi formatul',
+'accesskey-ca-nstab-help' => 'c',
+'tooltip-ca-nstab-help' => 'Vezi pagina de ajutor',
+'accesskey-ca-nstab-category' => 'c',
+'tooltip-ca-nstab-category' => 'Vezi categoria',
 'deletedrevision'       => 'A fost ştearsă vechea revizie $1.',
 'previousdiff'          => '← Diferenţa anterioară',
 'nextdiff'              => 'Diferenţa următoare →',
@@ -1616,7 +1649,6 @@ Vă rugăm să confirmaţi faptul că într-adevăr doriţi să recreaţi acest 
 'confirm_purge'         => 'Doriţi să reîncărcaţi pagina? $1',
 'confirm_purge_button'  => 'Da',
 'youhavenewmessagesmulti'=> 'Aveţi mesaje noi la $1',
-'newtalkseperator'      => ',_',
 'searchcontaining'      => 'Caută articolele care conţin \'\'$1\'\'.',
 'searchnamed'           => 'Caută articole cu numele \'\'$1\'\'.',
 'articletitles'         => 'Articole începând cu \'\'$1\'\'',

@@ -1,16 +1,11 @@
 <?php
 /** Malay (Bahasa Melayu)
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  */
 
 # This localisation is based on a file kindly donated by the folks at MIMOS
 # http://www.asiaosc.org/enwiki/page/Knowledgebase_Home.html
-
-$quickbarSettings = array(
-	'Tiada', 'Tetap sebelah kiri', 'Tetap sebelah kanan', 'Berubah-ubah sebelah kiri'
-);
 
 $namespaceNames = array(
 	NS_MEDIA          => 'Media',
@@ -289,7 +284,7 @@ $messages = array(
 'acct_creation_throttle_hit' => "Maaf, anda telah membuka akaun $1. Oleh sebab itu, anda tidak dibenarkan membuka akaun lagi.", #"Sorry, you have already created $1 accounts. You can\'t make any more.",
 'emailauthenticated'    => "Alamat emel anda telah disahkan pada $1.", #"Your email address was authenticated on $1.",
 'emailnotauthenticated' => "Alamat emel anda masih belum disahkan. Oleh sebab itu, emel untuk ciri-ciri berikut tidak akan dikirimkan:", #"Your email address is not yet authenticated. No email will be sent for any of the following features.",
-'noemailprefs'          => "<strong>Tiada alamat emel ditetapkan</strong. Oleh sebab itu, anda tidak boleh menggunakan ciri-ciri yang berikut:", #"<strong>No email address has been specified</strong>, the following features will not work.",
+'noemailprefs'          => "<strong>Tiada alamat emel ditetapkan</strong>. Oleh sebab itu, anda tidak boleh menggunakan ciri-ciri yang berikut:", #"<strong>No email address has been specified</strong>, the following features will not work.",
 'emailconfirmlink'      => "Sahkan alamat emel anda.", #"Confirm your e-mail address.",
 'invalidemailaddress'   => "Format alamat emel tidak sah. Sila masukkan semula ataupun kosongkan sahaja medan tersebut.", #"The email address cannot be accepted as it appears to have an invalid format. Please enter a well-formatted address or empty that field.",
 
@@ -399,6 +394,11 @@ $messages = array(
 "prefsnologintext"      => "Anda mesti [[{{ns:special}}:Userlogin|log masuk]] untuk menetapkan butir-butir kecenderungan anda dalam [[{{ns:special}}:Preferences|Tatarajah]].",
 "prefsreset"          => "Tatarajah anda telah dikembalikan dari storan", #"Preferences have been reset from storage.",
 "qbsettings"          => "Konfigurasi palang pantas", #"Quickbar settings",
+'qbsettings-none'	=> 'Tiada',
+'qbsettings-fixedleft'	=> 'Tetap sebelah kiri',
+'qbsettings-fixedright'	=> 'Tetap sebelah kanan',
+'qbsettings-floatingleft'	=> 'Berubah-ubah sebelah kiri',
+'qbsettings-floatingright'	=> 'Berubah-ubah sebelah kanan',
 "changepassword"        => "Tukar kata laluan", #"Change password",
 "skin"                        => "Kulit", #"Skin",
 "math"                        => "Matematik",
@@ -664,7 +664,7 @@ $messages = array(
 "rollbacklink"                  => "Kembalikan ke asal",
 "rollbackfailed"          => "Pengembalian ke asal tergagal.",
 "cantrollback"                  => "Tidak dapat mengembalikan suntingan terakhir; penyumbang akhir adalah pengarang tunggal untuk rencana ini.", #"Cannot revert edit; last contributor is only author of this article.",
-"alreadyrolled"                 => "Tidak dapat mengembalikan suntingan terakhir dari [[$1]] oleh [[Pengguna:$2|$2]] ([[Perbualan Pengguna:$2|Perbualan]]); terdapat pengguna yang telah berbuat demikian ataupun telah menyuntingnya. Suntingan terakhir telah dibuat oleh [[Pengguna:$3|$3]] ([[Perbualan Pengguna:$3|Perbualan]]).", #"Cannot rollback last edit of [[$1]] by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled back the article already. Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]).",
+"alreadyrolled"                 => "Tidak dapat mengembalikan suntingan terakhir dari [[$1]] oleh [[Pengguna:$2|$2]] ([[Perbualan Pengguna:$2|Perbualan]]); terdapat pengguna yang telah berbuat demikian ataupun telah menyuntingnya. Suntingan terakhir telah dibuat oleh [[Pengguna:$3|$3]] ([[Perbualan Pengguna:$3|Perbualan]]).", #"Cannot rollback last edit of [[:$1]] by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled back the article already. Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]).",
 #   only shown if there is an edit comment
 "editcomment"             => "Komen penyuntingan: \"<i>$1</i>\".", #"The edit comment was: \"<i>$1</i>\".",
 "revertpage"            => "Suntingan $1 dikembalikan ke versi terakhir oleh $1",
