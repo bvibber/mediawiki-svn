@@ -317,6 +317,7 @@ class EditPage {
 			wfProfileOut( $fname );
 			return;
 		}
+
 		if ( !$wgUser->isAllowed('edit') ) {
 			if ( $wgUser->isAnon() ) {
 				wfDebug( "$fname: user must log in\n" );

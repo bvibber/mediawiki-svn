@@ -357,13 +357,34 @@ class User {
 	 * @return bool
 	 */
 	static function isIP( $name ) {
-		return preg_match('/^\d{1,3}\.\d{1,3}\.\d{1,3}\.(?:xxx|\d{1,3})$/',$name);
+		return preg_match('/^\d{1,3}\.\d{1,3}\.\d{1,3}\.(?:xxx|\d{1,3})$/',$name) || User::isIPv6($name);
 		/*return preg_match("/^
 			(?:[01]?\d{1,2}|2(:?[0-4]\d|5[0-5]))\.
 			(?:[01]?\d{1,2}|2(:?[0-4]\d|5[0-5]))\.
 			(?:[01]?\d{1,2}|2(:?[0-4]\d|5[0-5]))\.
 			(?:[01]?\d{1,2}|2(:?[0-4]\d|5[0-5]))
 		$/x", $name);*/
+	}
+
+	/**
+	 * Check if $name is an IPv6 IP.
+	 */
+	static function isIPv6($name) {
+		/* 
+		 * if it has any non-valid characters, it can't be a valid IPv6  
+		 * address.
+		 */
+		if (preg_match("/[^:a-fA-F0-9]/", $name))
+			return false;
+
+		$parts = explode(":", $name);
+		if (count($parts) < 3)
+			return false;
+		foreach ($parts as $part) {
+			if (!preg_match("/^[0-9a-fA-F]{0,4}$/", $part))
+				return false;
+		}
+		return true;
 	}
 
 	/**
@@ -464,7 +485,11 @@ class User {
 	 */
 	static function isValidPassword( $password ) {
 		global $wgMinimalPasswordLength;
-		return strlen( $password ) >= $wgMinimalPasswordLength;
+
+		$result = null;
+		if( !wfRunHooks( 'isValidPassword', array( $password, &$result ) ) ) return $result;
+		if ($result === false) return false; 
+		return (strlen( $password ) >= $wgMinimalPasswordLength);
 	}
 
 	/**
@@ -940,6 +965,16 @@ class User {
 	}
 
 	/**
+	 * Is this user subject to rate limiting?
+	 *
+	 * @return bool
+	 */
+	public function isPingLimitable() {
+		global $wgRateLimitsExcludedGroups;
+		return array_intersect($this->getEffectiveGroups(), $wgRateLimitsExcludedGroups) != array();
+	}
+
+	/**
 	 * Primitive rate limits: enforce maximum actions per time period
 	 * to put a brake on flooding.
 	 *
@@ -950,24 +985,22 @@ class User {
 	 * @public
 	 */
 	function pingLimiter( $action='edit' ) {
-	
+
 		# Call the 'PingLimiter' hook
 		$result = false;
 		if( !wfRunHooks( 'PingLimiter', array( &$this, $action, $result ) ) ) {
 			return $result;
 		}
-		
+
 		global $wgRateLimits, $wgRateLimitsExcludedGroups;
 		if( !isset( $wgRateLimits[$action] ) ) {
 			return false;
 		}
-		
+
 		# Some groups shouldn't trigger the ping limiter, ever
-		foreach( $this->getGroups() as $group ) {
-			if( array_search( $group, $wgRateLimitsExcludedGroups ) !== false )
-				return false;
-		}
-		
+		if( !$this->isPingLimitable() )
+			return false;
+
 		global $wgMemc, $wgRateLimitLog;
 		wfProfileIn( __METHOD__ );
 
@@ -1361,11 +1394,23 @@ class User {
 					$wgMinimalPasswordLength ) );
 			}
 		}
-		
+
 		if( !$wgAuth->setPassword( $this, $str ) ) {
 			throw new PasswordError( wfMsg( 'externaldberror' ) );
 		}
 		
+		$this->setInternalPassword( $str );
+
+		return true;
+	}
+
+	/**
+	 * Set the password and reset the random token no matter
+	 * what.
+	 *
+	 * @param string $str
+	 */
+	function setInternalPassword( $str ) {
 		$this->load();
 		$this->setToken();
 		
@@ -1377,10 +1422,7 @@ class User {
 		}
 		$this->mNewpassword = '';
 		$this->mNewpassTime = null;
-		
-		return true;
 	}
-
 	/**
 	 * Set the random token (used for persistent authentication)
 	 * Called from loadDefaults() among other places.

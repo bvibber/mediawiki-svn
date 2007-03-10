@@ -70,7 +70,7 @@ class ContribsFinder {
 
 		if ( $this->username == 'newbies' ) {
 			$max = $this->dbr->selectField( 'user', 'max(user_id)', false, 'make_sql' );
-			$condition = '>' . (int)($max - $max / 100);
+			$condition = 'rev_user >' . (int)($max - $max / 100);
 		} else if ( preg_match("/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/(24|16)/", $this->username) ) {
 			$abcd = explode( ".", $this->username );
 			if( substr( $this->username, -2 ) == 24 ) $ipmask = $abcd[0] . '.' . $abcd[1] . '.' . $abcd[2] . '.%';
@@ -163,9 +163,8 @@ class ContribsFinder {
 		$use_index = $this->dbr->useIndexClause( $index );
 		$sql = 'SELECT ' .
 			'page_namespace,page_title,page_is_new,page_latest,'.
-			'rev_id,rev_page,rev_text_id,rev_timestamp,rev_comment,rev_minor_edit,rev_user,rev_user_text,'.
-			'rev_deleted ' .
-			"FROM $page,$revision $use_index " .
+			join(',', Revision::selectFields()).
+			" FROM $page,$revision $use_index " .
 			"WHERE page_id=rev_page AND $userCond $nscond $offsetQuery " .
 		 	'ORDER BY rev_timestamp DESC';
 		$sql = $this->dbr->limitResult( $sql, $this->limit, 0 );
@@ -198,14 +197,19 @@ function wfSpecialContributions( $par = null ) {
 	global $wgUser, $wgOut, $wgLang, $wgRequest;
 
 	$target = isset( $par ) ? $par : $wgRequest->getVal( 'target' );
+	$radiobox = $wgRequest->getVal( 'newbie' );
+
+	// check for radiobox 
+	if ( $radiobox == 'contribs-newbie' ) $target = 'newbies';
+
 	if ( !strlen( $target ) ) {
-		$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
+		$wgOut->addHTML( contributionsForm( '' ) );
 		return;
 	}
 
 	$nt = Title::newFromURL( $target );
 	if ( !$nt ) {
-		$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
+		$wgOut->addHTML( contributionsForm( '' ) );
 		return;
 	}
 
@@ -223,13 +227,14 @@ function wfSpecialContributions( $par = null ) {
         || (!$dbr->realTimestamps()
             && !preg_match( '/^[0-9]+$/', $options['offset'] )
            )
-       )
+       ) {
        $options['offset'] = '';
+	}
 
 	$title = SpecialPage::getTitleFor( 'Contributions' );
 	$options['target'] = $target;
 
-	$nt =& Title::makeTitle( NS_USER, $nt->getDBkey() );
+	$nt = Title::makeTitle( NS_USER, $nt->getDBkey() );
 	$finder = new ContribsFinder( ( $target == 'newbies' ) ? 'newbies' : $nt->getText() );
 	$finder->setLimit( $options['limit'] );
 	$finder->setOffset( $options['offset'] );
@@ -267,8 +272,8 @@ function wfSpecialContributions( $par = null ) {
 
 	if ( $target == 'newbies' ) {
 		$wgOut->setSubtitle( wfMsgHtml( 'sp-contributions-newbies-sub') );
-	} else if (  preg_match( "/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/(24|16)/", $target )  ) {
-		$wgOut->setSubtitle( wfMsgHtml( 'contribsub', $target ) );
+	} else if ( preg_match( "/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/(24|16)/", $target ) ) {	 
+	    $wgOut->setSubtitle( wfMsgHtml( 'contribsub', $target ) ); 	 
 	} else {
 		$wgOut->setSubtitle( wfMsgHtml( 'contribsub', contributionsSub( $nt ) ) );
 	}
@@ -375,27 +380,31 @@ function contributionsSub( $nt ) {
  * @param $options Array: the options to be included.
  */
 function contributionsForm( $options ) {
-	global $wgScript, $wgTitle;
+	global $wgScript, $wgTitle, $wgRequest;
 
 	$options['title'] = $wgTitle->getPrefixedText();
+	if (!isset($options['target']))
+		$options['target'] = '';
+	if (!isset($options['namespace']))
+		$options['namespace'] = 0;
 
-	$f = "<form method='get' action=\"$wgScript\">\n";
+	$f = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
+
 	foreach ( $options as $name => $value ) {
 		if( $name === 'namespace') continue;
-		$f .= "\t" . wfElement( 'input', array(
-			'name' => $name,
-			'type' => 'hidden',
-			'value' => $value ) ) . "\n";
+		$f .= "\t" . Xml::hidden( $name, $value ) . "\n";
 	}
 
-	$f .= '<p>' . wfMsgHtml( 'namespace' ) . ' ' .
-	HTMLnamespaceselector( $options['namespace'], '' ) .
-	wfElement( 'input', array(
-			'type' => 'submit',
-			'value' => wfMsg( 'allpagessubmit' ) )
-	) .
-	"</p></form>\n";
-
+	$f .= '<fieldset>' .
+		Xml::element( 'legend', array(), wfMsg( 'sp-contributions-search' ) ) .
+		Xml::radioLabel( wfMsgExt( 'sp-contributions-newbies', array( 'parseinline' ) ), 'newbie' , 'contribs-newbie' , 'contribs-newbie', 'contribs-newbie' ) . '<br />' .
+		Xml::radioLabel( wfMsgExt( 'sp-contributions-username', array( 'parseinline' ) ), 'newbie' , 'contribs-all', 'contribs-all', 'contribs-all' ) . ' ' .
+		Xml::input( 'target', 20, $options['target']) . ' '.
+		Xml::label( wfMsg( 'namespace' ), 'namespace' ) .
+		Xml::namespaceSelector( $options['namespace'], '' ) .
+		Xml::submitButton( wfMsg( 'sp-contributions-submit' ) ) .
+		'</fieldset>' .
+		Xml::closeElement( 'form' );
 	return $f;
 }
 

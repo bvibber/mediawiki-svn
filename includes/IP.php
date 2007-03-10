@@ -23,6 +23,166 @@ define( 'RE_IPV6_V4_PREFIX', '0*' . RE_IPV6_GAP . '(?:ffff:)?' );
 class IP {
 
 	/**
+	 * Given an IP address in dotted-quad notation, returns an IPv6 octed.
+	 * See http://www.answers.com/topic/ipv4-compatible-address
+	 * IPs with the first 92 bits as zeros are reserved from IPv6
+	 * @param $ip quad-dotted IP address.
+	 */
+	function IPv4toIPv6( $ip ) {
+		if ( !$ip ) return null;
+		// Convert only if needed
+		if ( strpos($ip,':') !==false ) return $ip;
+		$ip_int = IP::toUnsigned( $ip );
+		return IP::toOctet( $ip_int );
+	}
+
+	/**
+	 * Given an IPv6 address in octet notation, returns an unsigned integer.
+	 * @param $ip octet ipv6 IP address.
+	 */
+	function toUnsigned6( $ip )
+   	{
+    	$ip = IP::expandIPv6( $ip );
+
+       	$ip = explode(':', $ip);
+       	$r_ip = '';
+       	foreach ($ip as $v) {
+			$r_ip .= str_pad(base_convert($v, 16, 2), 16, 0, STR_PAD_LEFT);
+        }
+        $r_ip = IP::base_convert($r_ip, 2, 10);
+       	return $r_ip;
+	}
+	
+	/**
+	 * Given an IPv6 address in octet notation, returns the expanded octed.
+	 * @param $ip octet ipv6 IP address.
+	 */	
+	function expandIPv6( $ip ) {
+   		// Expand zero abbreviations
+		if (substr_count($ip, '::')) {
+    		$ip = str_replace('::', str_repeat(':0000', 8 - substr_count($ip, ':')) . ':', $ip);
+    	}
+    	return "$ip";
+	}
+	
+	/**
+	 * Given an unsigned integer, returns an IPv6 address in dotted-quad notation
+	 * Comes from ProxyTools.php
+	 * @param $ip integer ipv6 IP address.
+	 */
+	function toOctet( $ip_int ) {
+		$ip_int = strval( $ip_int );
+   		// Convert integer to binary
+   		$ip = str_pad(IP::base_convert($ip_int, 10, 2), 128, 0, STR_PAD_LEFT);
+   		// Seperate into 8 octets
+   		$ip_oct = base_convert( substr( $ip, 0, 16 ), 2, 16 );
+   		for ($n=1; $n < 8; $n++) {
+   			// Convert to hex, and add ":" marks
+   			$ip_oct .= ':' . base_convert( substr($ip, 16*$n, 16), 2, 16 );
+   		}
+       	return $ip_oct;
+	}
+
+	/**
+	 * Convert a network specification in CIDR notation to an integer network and a number of bits
+	 */
+	public static function parseCIDR6( $range ) {
+		$parts = explode( '/', $range, 2 );
+		if ( count( $parts ) != 2 ) {
+			return array( false, false );
+		}
+		$network = IP::toUnsigned6( $parts[0] );
+		if ( $network !== false && is_numeric( $parts[1] ) && $parts[1] >= 0 && $parts[1] <= 128 ) {
+			$bits = $parts[1];
+			if ( $bits == 0 ) {
+				$network = 0;
+			} else {
+			# Truncate the last (128-$bits) bits, turn them into zeros
+			# Native 32 bit functions WONT work here!!!
+				$network = IP::base_convert( $network, 10, 2 );
+				$network = str_pad( substr( $network, 0, (128 - $bits) ), 128, 0, STR_PAD_RIGHT );
+				$network = IP::base_convert( $network, 2, 10 );
+			}
+		} else {
+			$network = false;
+			$bits = false;
+		}
+		
+		return array( $network, $bits );
+	}
+	
+	/**
+	 * Given a string range in a number of formats, return the start and end of 
+	 * the range in hexadecimal.
+	 *
+	 * Formats are:
+	 *     2001:0db8:85a3::7344/96/70          CIDR
+	 *     2001:0db8:85a3::7344/96/70 - 2001:0db8:85a3::7344/96/70   Explicit range
+	 *     2001:0db8:85a3::7344/96/70             Single IP
+	 */
+	public static function parseRange6( $range ) {
+		if ( strpos( $range, '/' ) !== false ) {
+			# CIDR
+			list( $network, $bits ) = IP::parseCIDR6( $range );
+			if ( $network === false ) {
+				$start = $end = false;
+			} else {
+				$start = sprintf( '%08X', $network );
+				$end = sprintf( '%08X', $network + pow( 2, (128 - $bits) ) - 1 );
+			}
+		} elseif ( strpos( $range, '-' ) !== false ) {
+			# Explicit range
+			list( $start, $end ) = array_map( 'trim', explode( '-', $range, 2 ) );
+			if ( $start > $end ) {
+				$start = $end = false;
+			} else {
+				$start = IP::toHex6( $start );
+				$end = IP::toHex6( $end );
+			}
+		} else {
+			# Single IP
+			$start = $end = IP::toHex6( $range );
+		}
+		if ( $start === false || $end === false ) {
+			return array( false, false );
+		} else {				
+			return array( $start, $end );
+		}
+    }
+	
+	/**
+	 * Covert a number from a base to another
+	 * This is more expensive but handles very large numbers
+	 */
+	function base_convert($numstring, $frombase, $tobase) {
+		$chars = "0123456789abcdefghijklmnopqrstuvwxyz";
+   		$tostring = substr($chars, 0, $tobase);
+
+   		$length = strlen($numstring);
+   		$result = '';
+   		for ($i = 0; $i < $length; $i++) {
+   		    $number[$i] = strpos($chars, $numstring{$i});
+   		}
+   		do {
+   		    $divide = 0;
+   		    $newlen = 0;
+   		    for ($i = 0; $i < $length; $i++) {
+        		   $divide = $divide * $frombase + $number[$i];
+         		  if ($divide >= $tobase) {
+         		      $number[$newlen++] = (int)($divide / $tobase);
+        		       $divide = $divide % $tobase;
+       		    } elseif ($newlen > 0) {
+               $number[$newlen++] = 0;
+        		   }
+      		 }
+      		 $length = $newlen;
+      		 $result = $tostring{$divide} . $result;
+  		 }
+  		 while ($newlen != 0);
+  		 return strval($result);
+	}
+	
+	/**
 	 * Validate an IP address.
 	 * @return boolean True if it is valid.
 	 */
@@ -104,6 +264,15 @@ class IP {
 	 */
 	public static function toHex( $ip ) {
 		$n = self::toUnsigned( $ip );
+		if ( $n !== false ) {
+			$n = sprintf( '%08X', $n );
+		}
+		return $n;
+	}
+	
+	// For IPv6
+	public static function toHex6( $ip ) {
+		$n = self::toUnsigned6( $ip );
 		if ( $n !== false ) {
 			$n = sprintf( '%08X', $n );
 		}

@@ -28,7 +28,8 @@
  *	rc_deleted		partial deletion
  *	rc_logid		the log_id value for this log entry (or zero)
  *  rc_log_type		the log type (or null)
- *	rc_actiontext	the log action text (or null)
+ *	rc_log_action	the log action (or null)
+ *  rc_params		log params
  *
  * mExtra:
  * 	prefixedDBkey   prefixed db key, used by external app via msg queue
@@ -270,7 +271,8 @@ class RecentChange
 			'rc_deleted'	=> 0,
 			'rc_logid'		=> 0,
 			'rc_log_type'	=> null,
-			'rc_actiontext'	=> ''
+			'rc_log_action'	=> '',
+			'rc_params'		=> ''
 		);
 
 		$rc->mExtra =  array(
@@ -328,8 +330,9 @@ class RecentChange
 			'rc_new_len'	    => $size,
 			'rc_deleted'		=> 0,
 			'rc_logid'			=> 0,
-			'rc_log_type'	=> null,
-			'rc_actiontext'	=> ''
+			'rc_log_type'		=> null,
+			'rc_log_action'		=> '',
+			'rc_params'			=> ''
 		);
 
 		$rc->mExtra =  array(
@@ -377,7 +380,8 @@ class RecentChange
 			'rc_deleted'	=> 0,
 			'rc_logid'		=> 0, # notifyMove not used anymore
 			'rc_log_type'	=> null,
-			'rc_actiontext'	=> ''
+			'rc_log_action'	=> '',
+			'rc_params'		=> ''
 		);
 
 		$rc->mExtra = array(
@@ -429,7 +433,8 @@ class RecentChange
 			'rc_deleted'	=> 0,
 			'rc_logid'		=> $newId,
 			'rc_log_type'	=> $type,
-			'rc_actiontext'	=> $actionText
+			'rc_log_action'	=> $action,
+			'rc_params'		=> $params
 		);
 		$rc->mExtra =  array(
 			'prefixedDBkey'	=> $title->getPrefixedDBkey(),
@@ -479,7 +484,8 @@ class RecentChange
 			'rc_deleted'  => $row->rc_deleted,
 			'rc_logid'	=> $row->rc_logid,
 			'rc_log_type'	=> $row->rc_log_type,
-			'rc_actiontext'	=> $row->rc_actiontext
+			'rc_log_action'	=> $row->rc_log_action,
+			'rc_params'	=> $row->rc_params
 		);
 
 		$this->mExtra = array();

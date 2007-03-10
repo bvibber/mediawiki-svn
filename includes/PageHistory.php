@@ -191,7 +191,7 @@ class PageHistory {
 	 * @return string HTML output for the row
 	 */
 	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false, $firstInList = false ) {
-		global $wgUser;
+		global $wgUser, $wgLang;
 		$rev = new Revision( $row );
 		$rev->setTitle( $this->mTitle );
 
@@ -230,7 +230,21 @@ class PageHistory {
 			$s .= ' ' . wfElement( 'span', array( 'class' => 'minor' ), wfMsg( 'minoreditletter') );
 		}
 
-		$s .= $this->mSkin->revComment( $rev, false, true );
+		if (!is_null($size = $rev->getSize())) {
+			if ($size == 0)
+				$stxt = wfMsgHtml('historyempty');
+			else
+				$stxt = wfMsgHtml('historysize', $wgLang->formatNum( $size ) );
+			$s .= " <span class=\"history-size\">$stxt</span>";
+		}
+
+		#getComment is safe, but this is better formatted
+		if( $rev->isDeleted( Revision::DELETED_COMMENT ) ) {
+			$s .= " <span class=\"history-deleted\"><span class=\"comment\">" .
+			wfMsgHtml( 'rev-deleted-comment' ) . "</span></span>";
+		} else {
+			$s .= $this->mSkin->revComment( $rev );
+		}
 		
 		if ($notificationtimestamp && ($row->rev_timestamp >= $notificationtimestamp)) {
 			$s .= ' <span class="updatedmarker">' .  wfMsgHtml( 'updatedmarker' ) . '</span>';
@@ -383,8 +397,7 @@ class PageHistory {
 
 		$res = $dbr->select(
 			'revision',
-			array('rev_id', 'rev_page', 'rev_text_id', 'rev_user', 'rev_comment', 'rev_user_text',
-				'rev_timestamp', 'rev_minor_edit', 'rev_deleted'),
+			Revision::selectFields(),
 			array_merge(array("rev_page=$page_id"), $offsets),
 			$fname,
 			array('ORDER BY' => "rev_timestamp $dirs",
@@ -526,8 +539,7 @@ class PageHistoryPager extends ReverseChronologicalPager {
 	function getQueryInfo() {
 		return array(
 			'tables' => 'revision',
-			'fields' => array('rev_id', 'rev_page', 'rev_text_id', 'rev_user', 'rev_comment', 'rev_user_text',
-				'rev_timestamp', 'rev_minor_edit', 'rev_deleted'),
+			'fields' => Revision::selectFields(),
 			'conds' => array('rev_page' => $this->mPageHistory->mTitle->getArticleID() ),
 			'options' => array( 'USE INDEX' => 'page_timestamp' )
 		);

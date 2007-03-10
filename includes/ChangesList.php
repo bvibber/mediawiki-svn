@@ -240,7 +240,7 @@ class ChangesList {
 			if ( $this->isDeleted($rc,LogViewer::DELETED_ACTION) ) {
 				$s .= ' <span class="history-deleted">' . wfMsgHtml('rev-deleted-event') . '</span>';
 			} else {
-				$s .= $this->skin->commentBlock( $rc->mAttribs['rc_actiontext'], $rc->getTitle() );
+				$s .= ' ' . LogPage::actionText( $rc->mAttribs['rc_log_type'], $rc->mAttribs['rc_log_action'], $rc->getTitle(), $this->skin, LogPage::extractParams($rc->mAttribs['rc_params']), true, true );
 			}
 		}
 	}
@@ -785,7 +785,7 @@ class EnhancedChangesList extends ChangesList {
 			if ( $this->isDeleted($rcObj,Revision::DELETED_COMMENT) ) {
 			   $r .= ' <span class="history-deleted">' . wfMsgHtml('rev-deleted-comment') . '</span>';
 			} else {
-			  $r .= $this->skin->commentBlock( $rc_actiontext, $rcObj->getTitle() );
+				$r .= ' ' . LogPage::actionText( $rc_log_type, $rc_log_action, $rcObj->getTitle(), $this->skin, LogPage::extractParams($rc_params), true, true );
 			} 
 			// log comment
 			if ( $this->isDeleted($rcObj,LogViewer::DELETED_ACTION) ) {

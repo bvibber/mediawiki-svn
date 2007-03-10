@@ -351,7 +351,7 @@ class Image
 			# capitalize the first letter of the filename before
 			# looking it up in the shared repository.
 			$name = $wgContLang->ucfirst($this->name);
-			$dbc = wfGetDB( DB_SLAVE, 'commons' );
+			$dbc = Image::getCommonsDB();
 
 			$row = $dbc->selectRow( "`$wgSharedUploadDBname`.{$wgSharedUploadDBprefix}image",
 				array(
@@ -453,8 +453,7 @@ class Image
 
 			// Write to the other DB using selectDB, not database selectors
 			// This avoids breaking replication in MySQL
-			$dbw = wfGetDB( DB_MASTER, 'commons' );
-			$dbw->selectDB( $wgSharedUploadDBname );
+			$dbw = Image::getCommonsDB();
 		} else {
 			$dbw = wfGetDB( DB_MASTER );
 		}
@@ -2353,6 +2352,18 @@ class Image
 			wfDebug( "Requested pageCount() for bogus multi-page metadata for '$this->name'\n" );
 			return null;
 		}
+	}
+
+	static function getCommonsDB() {
+		static $dbc;
+		global $wgLoadBalancer, $wgSharedUploadDBname;
+		if ( !isset( $dbc ) ) {
+			$i = $wgLoadBalancer->getGroupIndex( 'commons' );
+			$dbinfo = $wgLoadBalancer->mServers[$i];
+			$dbc = new Database( $dbinfo['host'], $dbinfo['user'], 
+				$dbinfo['password'], $wgSharedUploadDBname );
+		}
+		return $dbc;
 	}
 
 } //class

@@ -937,6 +937,10 @@ class DatabasePostgres extends Database {
 		return array( $startOpts, $useIndex, $tailOpts );
 	}
 
+	public function setTimeout( $timeout ) {
+		/// @fixme no-op
+	}
+
 	function ping() {
 		wfDebug( "Function ping() not written for DatabasePostgres.php yet");
 		return true;

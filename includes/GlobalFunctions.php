@@ -61,6 +61,30 @@ if ( !function_exists( 'mb_substr' ) ) {
 	}
 }
 
+if ( !function_exists( 'mb_strlen' ) ) {
+	/**
+	 * Fallback implementation of mb_strlen, hardcoded to UTF-8.
+	 * @param string $str
+	 * @param string $enc optional encoding; ignored
+	 * @return int
+	 */
+	function new_mb_strlen( $str, $enc="" ) {
+		$counts = count_chars( $str );
+		$total = 0;
+
+		// Count ASCII bytes
+		for( $i = 0; $i < 0x80; $i++ ) {
+			$total += $counts[$i];
+		}
+
+		// Count multibyte sequence heads
+		for( $i = 0xc0; $i < 0xff; $i++ ) {
+			$total += $counts[$i];
+		}
+		return $total;
+	}
+}
+
 if ( !function_exists( 'array_diff_key' ) ) {
 	/**
 	 * Exists in PHP 5.1.0+
@@ -172,7 +196,7 @@ function wfDebug( $text, $logonly = false ) {
 		# Strip unprintables; they can switch terminal modes when binary data
 		# gets dumped, which is pretty annoying.
 		$text = preg_replace( '![\x00-\x08\x0b\x0c\x0e-\x1f]!', ' ', $text );
-		@error_log( $text, 3, $wgDebugLogFile );
+		wfErrorLog( $text, $wgDebugLogFile );
 	}
 }
 
@@ -191,7 +215,7 @@ function wfDebugLog( $logGroup, $text, $public = true ) {
 	if( isset( $wgDebugLogGroups[$logGroup] ) ) {
 		$time = wfTimestamp( TS_DB );
 		$wiki = wfWikiID();
-		@error_log( "$time $wiki: $text", 3, $wgDebugLogGroups[$logGroup] );
+		wfErrorLog( "$time $wiki: $text", $wgDebugLogGroups[$logGroup] );
 	} else if ( $public === true ) {
 		wfDebug( $text, true );
 	}
@@ -202,12 +226,25 @@ function wfDebugLog( $logGroup, $text, $public = true ) {
  * @param $text String: database error message.
  */
 function wfLogDBError( $text ) {
-	global $wgDBerrorLog;
+	global $wgDBerrorLog, $wgDBname;
 	if ( $wgDBerrorLog ) {
 		$host = trim(`hostname`);
-		$text = date('D M j G:i:s T Y') . "\t$host\t".$text;
-		error_log( $text, 3, $wgDBerrorLog );
+		$text = date('D M j G:i:s T Y') . "\t$host\t$wgDBname\t$text";
+		wfErrorLog( $text, $wgDBerrorLog );
 	}
+}
+
+/**
+ * Log to a file without getting "file size exceeded" signals
+ */
+function wfErrorLog( $text, $file ) {
+	wfSuppressWarnings();
+	$exists = file_exists( $file );
+	$size = filesize( $file );
+	if ( !$exists || ( $size !== false && $size + strlen( $text ) < 0x7fffffff ) ) {
+		error_log( $text, 3, $file );
+	}
+	wfRestoreWarnings();
 }
 
 /**
@@ -236,7 +273,7 @@ function wfLogProfilingData() {
 		  gmdate( 'YmdHis' ), $elapsed,
 		  urldecode( $wgRequest->getRequestURL() . $forward ) );
 		if ( '' != $wgDebugLogFile && ( $wgRequest->getVal('action') != 'raw' || $wgDebugRawPage ) ) {
-			error_log( $log . $prof, 3, $wgDebugLogFile );
+			wfErrorLog( $log . $prof, $wgDebugLogFile );
 		}
 	}
 }
