@@ -54,3 +54,11 @@ Depends: httpd, ${shlibs:Depends}, debconf | debconf-2.0
 Description: Squid cache manager CGI program
  This CGI program can be used to query and administrate a `squid' proxy
  cache through your web browser.
+
+Package: squid-frontend
+Architecture: any
+Section: web
+Priority: optional
+Depends: squid
+Description: Second squid instance for CARP load balancing.
+

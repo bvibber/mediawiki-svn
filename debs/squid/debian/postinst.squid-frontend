@@ -1,0 +1,10 @@
+#! /bin/sh
+
+update-rc.d squid-frontend defaults 30 >/dev/null
+if [ -f /etc/squid/frontend.conf ]
+then
+	invoke-rc.d squid-frontend restart
+else
+	exit 0
+fi
+

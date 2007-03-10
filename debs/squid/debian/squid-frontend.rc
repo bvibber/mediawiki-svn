@@ -1,0 +1,128 @@
+#! /bin/sh
+#
+# squid		Startup script for the SQUID HTTP proxy-cache.
+#
+# Version:	@(#)squid.rc  2.20  01-Oct-2001  miquels@cistron.nl
+#
+
+NAME=squid-frontend
+DAEMON=/usr/sbin/squid-frontend
+LIB=/usr/lib/squid
+PIDFILE=/var/run/$NAME.pid
+SQUID_ARGS="-D -sYC -f /etc/squid/frontend.conf"
+
+[ ! -f /etc/default/squid-frontend ] || . /etc/default/squid-frontend
+
+. /lib/lsb/init-functions
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+[ -x $DAEMON ] || exit 0
+
+
+#
+#	Try to increase the # of filedescriptors we can open.
+#
+maxfds () {
+	[ -n "$SQUID_MAXFD" ] || return
+	[ -f /proc/sys/fs/file-max ] || return 0
+	[ $SQUID_MAXFD -le 65536 ] || SQUID_MAXFD=65536
+	global_file_max=`cat /proc/sys/fs/file-max`
+	minimal_file_max=$(($SQUID_MAXFD + 4096))
+	if [ "$global_file_max" -lt $minimal_file_max ]
+	then
+		echo $minimal_file_max > /proc/sys/fs/file-max
+	fi
+	ulimit -n $SQUID_MAXFD
+}
+
+start () {
+	if [ "$CHUID" = "" ]; then
+		CHUID=root
+	fi
+
+	maxfds
+	umask 027
+	ulimit -c unlimited	# Do create core files, so we can fix bugs
+	cd /var/spool/$NAME
+	start-stop-daemon --quiet --start \
+		--pidfile $PIDFILE \
+		--chuid $CHUID \
+		--exec $DAEMON -- $SQUID_ARGS < /dev/null
+	return $?
+}
+
+stop () {
+	PID=`cat $PIDFILE 2>/dev/null`
+	start-stop-daemon --stop --quiet --pidfile $PIDFILE --name $NAME
+	#
+	#	Now we have to wait until squid has _really_ stopped.
+	#
+	sleep 2
+	if test -n "$PID" && kill -0 $PID 2>/dev/null
+	then
+		log_action_begin_msg " Waiting"
+		cnt=0
+		while kill -0 $PID 2>/dev/null
+		do
+			cnt=`expr $cnt + 1`
+			if [ $cnt -gt 24 ]
+			then
+				log_action_end_msg 1
+				return 1
+			fi
+			sleep 5
+			log_action_cont_msg ""
+		done
+		log_action_end_msg 0
+		return 0
+	else
+		return 0
+	fi
+}
+
+case "$1" in
+    start)
+	log_daemon_msg "Starting Squid HTTP proxy" "$NAME"
+	if start ; then
+		log_end_msg $?
+	else
+		log_end_msg $?
+	fi
+	;;
+    stop)
+	log_daemon_msg "Stopping Squid HTTP proxy" "$NAME"
+	if stop ; then
+		log_end_msg $?
+	else
+		log_end_msg $?
+	fi
+	;;
+    reload|force-reload)
+	log_action_msg "Reloading Squid configuration files"
+	start-stop-daemon --stop --signal 1 \
+		--pidfile $PIDFILE --quiet --exec $DAEMON
+	log_action_end_msg 0
+	;;
+    restart)
+	log_daemon_msg "Restarting Squid HTTP proxy" "$NAME"
+	RESTART=yes
+	stop
+	if start ; then
+		log_end_msg $?
+	else
+		log_end_msg $?
+	fi
+	;;
+    clean)
+	echo "/etc/init.d/$NAME clean is not supported for the CARP instance"
+	exit 3
+	;;
+    *)
+	echo "Usage: /etc/init.d/$NAME {start|stop|reload|force-reload|restart}"
+	exit 3
+	;;
+esac
+
+exit 0
+

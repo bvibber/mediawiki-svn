@@ -221,6 +221,25 @@ binary-indep:	build
 	dpkg --build $(tmp) ..
 	rm -f debian/substvars
 	rm -rf $(tmp)
+	#
+	#       Build squid-frontend package
+	#
+	$(INSTALL_DIR) $(tmp)/DEBIAN
+	$(INSTALL_DIR) $(tmp)/etc/init.d
+	$(INSTALL_DIR) $(tmp)/usr/sbin
+	$(INSTALL_DIR) $(tmp)/var/spool
+	install -m 750 -o proxy -g proxy -d $(tmp)/var/spool/squid-frontend
+	$(INSTALL_DIR) $(tmp)/var/log
+	install -m 750 -o proxy -g proxy -d $(tmp)/var/log/squid-frontend
+	dh_link -p squid-frontend -P $(tmp)
+	$(INSTALL_SCRIPT) debian/squid-frontend.rc $(tmp)/etc/init.d/squid-frontend
+	$(INSTALL_SCRIPT) debian/postinst.squid-frontend $(tmp)/DEBIAN/postinst
+	$(INSTALL_SCRIPT) debian/postrm.squid-frontend $(tmp)/DEBIAN/postrm
+	dpkg-gencontrol -isp -psquid-frontend
+	dpkg --build $(tmp) ..
+	rm -f debian/substvars
+	rm -rf $(tmp)
+
 
 # Make a binary package (.deb file)
 binary-arch:	build checkroot
