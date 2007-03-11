@@ -92,6 +92,20 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'Artikel $1 tidak ditemukan.',
 ),
 
+/* Italian (BrokenArrow) */
+'it' => array(
+'contributors' => 'Autori',
+'contributors-toolbox' => 'Autori principali',
+'contributors-legend' => 'Elenca gli autori principali di una pagina',
+'contributors-target' => 'Titolo:',
+'contributors-submit' => 'Mostra',
+'contributors-subtitle' => 'Autori principali di $1',
+'contributors-others-long' => 'La pagina è stata modificata anche da altri $1 autori.',
+'contributors-others' => 'e $1 altri',
+'contributors-badtitle' => 'Titolo non corretto.',
+'contributors-nosuchpage' => 'La pagina $1 non esiste.',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'contributors' => 'Contribuanten',

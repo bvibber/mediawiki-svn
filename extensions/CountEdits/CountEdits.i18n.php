@@ -99,6 +99,19 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Belum ada kontribusi untuk wiki ini.',
 ),
 
+/* Italian (BrokenArrow) */
+'it' => array(
+'countedits' => 'Conteggio delle modifiche',
+'countedits-warning' => "'''Attenzione:''' Un libro non si giudica dalla copertina. Un utente non si giudica dal numero delle modifiche.",
+'countedits-username' => 'Nome utente:',
+'countedits-ok' => 'OK',
+'countedits-nosuchuser' => '$1 non corrisponde a un nome utente valido.',
+'countedits-resultheader' => 'Risultati per l\'utente $1',
+'countedits-resulttext' => '$1 ha effettuato $2 modifiche',
+'countedits-mostactive' => 'Autori con il maggior numero di contributi',
+'countedits-nocontribs' => 'Il sito non ha subito alcuna modifica.',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'countedits' => 'Bewerkingen tellen',

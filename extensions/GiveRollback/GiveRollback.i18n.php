@@ -100,6 +100,28 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 'giverollback-logentrygrant' => 'memberikan hak pengembalian ke untuk [[$1]]',
 'giverollback-logentryrevoke' => 'menarik hak pengembalian ke untuk [[$1]]',
 ),
+	
+/* Italian (BrokenArrow) */
+'it' => array(
+'giverollback' => 'Assegna o revoca il diritto di rollback',
+'giverollback-header' => "'''Questa pagina consente ai burocrati di assegnare o revocare il diritto di [[{{ns:Help}}:Rollback|rollback]] a un'altra utenza.'''<br /> Questa funzione consente di annullare i vandalismi in modo rapido anche a chi non è amministratore. Tale operazione dev'essere effettuata in conformità con le policy del sito.",
+'giverollback-username' => 'Nome utente:',
+'giverollback-search' => 'Vai',
+'giverollback-hasrb' => 'L\'utente [[{{ns:user}}:$1|$1]] ha il diritto di rollback.',
+'giverollback-norb' => 'L\'utente [[{{ns:user}}:$1|$1]] non ha il diritto di rollback.',
+'giverollback-toonew' => '[[{{ns:user}}:$1|$1]] è un nuovo utente e non può ricevere il diritto di rollback.',
+'giverollback-sysop' => '[[User:$1|$1]] è un amministratore e possiede già il diritto di rollback.',
+'giverollback-change' => 'Modifica lo status:',
+'giverollback-grant' => 'Concedi',
+'giverollback-revoke' => 'Revoca',
+'giverollback-comment' => 'Commento:',
+'giverollback-granted' => 'L\'utente [[{{ns:user}}:$1|$1]] ha ora il diritto di rollback.',
+'giverollback-revoked' => 'L\'utente [[{{ns:user}}:$1|$1]] non ha più il diritto di rollback.',
+'giverollback-logpage' => 'Registro dei diritti di rollback',
+'giverollback-logpagetext' => 'Qui di seguito viene riportata la lista delle modifiche al diritto di [[{{ns:Help}}:Rollback|rollback]] per gli utenti non amministratori.',
+'giverollback-logentrygrant' => 'ha concesso il diritto di rollback a [[$1]]',
+'giverollback-logentryrevoke' => 'ha revocato il diritto di rollback a [[$1]]',
+),
 
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(

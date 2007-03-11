@@ -98,6 +98,21 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Penyedia data: $1',
 ),
 
+/* Italian (BrokenArrow) */
+'it' => array(
+'bookinfo-header' => 'Informazioni sui libri',
+'bookinfo-result-title' => 'Titolo:',
+'bookinfo-result-author' => 'Autore:',
+'bookinfo-result-publisher' => 'Editore:',
+'bookinfo-result-year' => 'Anno:',
+'bookinfo-error-invalidisbn' => 'Codice ISBN errato.',
+'bookinfo-error-nosuchitem' => 'Elemento inesistente o non trovato.',
+'bookinfo-error-nodriver' => 'Impossibile inizializzare un driver corretto per le Informazioni sui libri.',
+'bookinfo-error-noresponse' => 'Mancata risposta o risposta assente.',
+'bookinfo-purchase' => 'Acquista il libro presso: $1',
+'bookinfo-provider' => 'Dati estratti da: $1',
+),
+
 /* nld / Dutch (Dirk Beetstra) */
 'nl' => array(
 'bookinfo-header' => 'Boekinformatie',

@@ -196,6 +196,35 @@ indépendantes de l’historique complet. Il sert par exemple à séparer un art
 'duplicator-toomanyrevisions' => '[[$1]] memiliki terlalu banyak ($2) revisi dan tidak dapat disalin. Limit saat ini adalah $3.',
 ),
 
+/* Italian (BrokenArrow) */
+'it' => array(
+'duplicator' => 'Duplica una pagina',
+'duplicator-toolbox' => 'Duplica questa pagina',
+'duplicator-header' => "Questa pagina speciale consente la duplicazione completa di una pagina,
+dando origine a due copie distinte della relativa cronologia. Tale operazione può essere
+utile per scindere due pagine (''forking''), ecc.",
+
+'duplicator-options' => 'Opzioni',
+'duplicator-source' => 'Pagina di partenza:',
+'duplicator-dest' => 'Pagina di arrivo:',
+'duplicator-dotalk' => 'Duplica anche la pagina di discussione, se esiste',
+'duplicator-submit' => 'Duplica',
+
+'duplicator-summary' => 'Pagina copiata da [[$1]]',
+
+'duplicator-success' => "<big>La pagina '''[[$1]] è stata copiata in [[$2]].'''</big>",
+'duplicator-success-revisions' => '$1 {{PLURAL:$1|revisione copiata|revisioni copiate}}.',
+'duplicator-success-talkcopied' => 'Anche la pagina di discussione è stata copiata.',
+'duplicator-success-talknotcopied' => 'Impossibile copiare la pagina di discussione.',
+'duplicator-failed' => 'Impossibile duplicare la pagina. Errore sconosciuto.',
+
+'duplicator-source-invalid' => 'Indicare un titolo di partenza valido.',
+'duplicator-source-notexist' => 'La pagina [[$1]] non esiste. Indicare il titolo di una pagina esistente.',
+'duplicator-dest-invalid' => 'Indicare un titolo di arrivo valido.',
+'duplicator-dest-exists' => 'La pagina [[$1]] esiste già. Indicare un titolo di arrivo non ancora esistente.',
+'duplicator-toomanyrevisions' => 'Impossibile copiare [[$1]]. La pagina ha troppe revisioni ($2). Il limite attuale è $3.',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'duplicator' => 'Kopieer een pagina',

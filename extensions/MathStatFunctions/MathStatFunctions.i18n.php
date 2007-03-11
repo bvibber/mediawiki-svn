@@ -22,6 +22,11 @@ $wgMathStatFunctionsMessages['id'] = array(
         'msfunc_inf' => "Nilai hasil tak hingga" ,
         'msfunc_div_zero' => "Pembagian dengan nol",
 );
+$wgMathStatFunctionsMessages['it'] = array(
+        'msfunc_nan' => "Il risultato non è un numero" ,
+        'msfunc_inf' => "Il risultato è infinito" ,
+        'msfunc_div_zero' => "Divisione per zero",
+);
 $wgMathStatFunctionsMessages['ja'] = array(
         'msfunc_nan' => "返り値が数値ではありませんResulting value is not a number" ,
         'msfunc_inf' => "返り値が無限大です" ,

@@ -40,6 +40,10 @@ $wgDismissableSiteNoticeMessages['id'] = array(
 	'sitenotice_close' => 'tutup',
 );
 
+$wgDismissableSiteNoticeMessages['it'] = array(
+	'sitenotice_close' => 'nascondi',
+);
+
 $wgDismissableSiteNoticeMessages['ja'] = array(
 	'sitenotice_close' => '非表示',
 );

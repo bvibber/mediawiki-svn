@@ -30,6 +30,13 @@ function efSyntaxHighlightMessages() {
 'syntaxhighlight-err-loading' => '(kesalahan pemuatan daftar bahasa yang didukung)',
 ),
 
+/* Italian (BrokenArrow) */
+'it' => array(
+'syntaxhighlight-specify' => 'È necessario specificare un linguaggio in questo modo:',
+'syntaxhighlight-supported' => 'Linguaggi di cui è possibile evidenziare la sintassi in colore:',
+'syntaxhighlight-err-loading' => '(errore nel caricamento dell\'elenco dei linguaggi supportati)',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'syntaxhighlight-specify' => 'Geef een taal op zoals:',

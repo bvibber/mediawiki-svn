@@ -25,6 +25,9 @@ $wgMiniDonationMessages['he'] = array(
 $wgMiniDonationMessages['id'] = array(
 	'donationform-submit' => 'Donasi melalui PayPal',
 );
+$wgMiniDonationMessages['it'] = array(
+	'donationform-submit' => 'Donazione mediante PayPal',
+);
 $wgMiniDonationMessages['kk-kz'] = array(
 	'donationform-submit' => 'Жәрдемді PayPal жүйесімен жіберу',
 );

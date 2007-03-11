@@ -54,6 +54,9 @@ $wgLinkSearchMessages['id'] = array(
 );
 $wgLinkSearchMessages['it'] = array(
 	'linksearch'       => 'Ricerca collegamenti esterni',
+	'linksearch-pat'   => 'Criterio di ricerca:',
+	'linksearch-ns'    => 'Namespace:',
+	'linksearch-ok'    => 'Ricerca',
 	'linksearch-text'  => 'È possibile fare uso di metacaratteri, ad es. "*.example.org".',
 	'linksearch-line'  => '$1 presente nella pagina $2',
 	'linksearch-error' => 'I metacaratteri possono essere usati solo all\'inizio del nome dell\'host.',
