@@ -66,6 +66,7 @@ import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.zip.GZIPOutputStream;
+import java.lang.ClassNotFoundException;
 
 import java.text.ParseException;
 
@@ -209,6 +210,8 @@ class Dumper {
 			return new OutputWrapper(Tools.createBZip2File(param));
 		else if (dest.equals("mysql"))
 			return connectMySql(param);
+		else if (dest.equals("postgresql"))
+			return connectPostgres(param);
 		else
 			throw new IllegalArgumentException("Destination sink not implemented: " + dest);
 	}
@@ -224,6 +227,16 @@ class Dumper {
 		}
 	}
 	
+	private static OutputWrapper connectPostgres(String param) throws IOException {
+		try {
+			Class.forName("org.postgresql.Driver").newInstance();
+			Connection conn = DriverManager.getConnection("jdbc:postgresql:" + param);
+			return new OutputWrapper(conn);
+		} catch (Exception e) {
+			throw new IOException(e.toString());
+		}
+	}
+
 	static DumpWriter openOutputSink(OutputWrapper output, String format, String param) throws IOException {
 		if (format.equals("xml"))
 			return new XmlDumpWriter(output.getFileStream());

@@ -43,10 +43,10 @@ public abstract class SqlWriter implements DumpWriter {
 		public abstract boolean supportsMultiRowInsert();
 		public abstract MessageFormat getTimestampFormatter();
 		public String getWikiPrologue() {
-			return "";
+			return null;
 		}
 		public String getWikiEpilogue() {
-			return "";
+			return null;
 		}
 	}
 
@@ -127,12 +127,18 @@ public abstract class SqlWriter implements DumpWriter {
 	public void writeStartWiki() throws IOException {
 		stream.writeComment("-- MediaWiki XML dump converted to SQL by mwdumper");
 		stream.writeStatement("BEGIN");
-		stream.writeStatement(traits.getWikiPrologue());
+
+		String prologue = traits.getWikiPrologue();
+		if (prologue != null)
+			stream.writeStatement(prologue);
 	}
 	
 	public void writeEndWiki() throws IOException {
 		flushInsertBuffers();
-		stream.writeStatement(traits.getWikiEpilogue());
+
+		String epilogue = traits.getWikiEpilogue();
+		if (epilogue != null)
+			stream.writeStatement(epilogue);
 		stream.writeStatement("COMMIT");
 		stream.writeComment("-- DONE");
 	}
