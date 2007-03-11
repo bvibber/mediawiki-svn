@@ -228,6 +228,7 @@ binary-indep:	build
 	$(INSTALL_DIR) $(tmp)/etc/init.d
 	$(INSTALL_DIR) $(tmp)/usr/sbin
 	$(INSTALL_DIR) $(tmp)/var/spool
+	$(INSTALL_DIR) $(tmp)/etc/default
 	install -m 750 -o proxy -g proxy -d $(tmp)/var/spool/squid-frontend
 	$(INSTALL_DIR) $(tmp)/var/log
 	install -m 750 -o proxy -g proxy -d $(tmp)/var/log/squid-frontend
@@ -235,6 +236,7 @@ binary-indep:	build
 	$(INSTALL_SCRIPT) debian/squid-frontend.rc $(tmp)/etc/init.d/squid-frontend
 	$(INSTALL_SCRIPT) debian/postinst.squid-frontend $(tmp)/DEBIAN/postinst
 	$(INSTALL_SCRIPT) debian/postrm.squid-frontend $(tmp)/DEBIAN/postrm
+	$(INSTALL_FILE) debian/default.squid-frontend $(tmp)/etc/default/squid-frontend
 	dpkg-gencontrol -isp -psquid-frontend
 	dpkg --build $(tmp) ..
 	rm -f debian/substvars
