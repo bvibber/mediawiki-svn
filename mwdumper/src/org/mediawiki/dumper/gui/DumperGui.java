@@ -25,6 +25,11 @@ public class DumperGui {
 	public boolean connected = false;
 	public boolean schemaReady = false;
 	
+	public static final int
+		  DBTYPE_MYSQL = 0
+		, DBTYPE_PGSQL = 1
+	;
+
 	// other goodies
 	String host = "localhost";
 	String port = "3306";
@@ -37,15 +42,50 @@ public class DumperGui {
 	
 	XmlDumpReader reader;
 	Connection conn;
-	
-	void connect(String host, String port, String username, String password) {
+	private int dbtype;
+
+	String driverForDatabase(int dbtype) {
+		switch (dbtype) {
+		case DBTYPE_MYSQL:
+			return "com.mysql.jdbc.Driver";
+		case DBTYPE_PGSQL:
+			return "org.postgresql.Driver";
+		default:
+			return null;
+		}
+	}
+
+	String urlForDatabase(int dbtype, String host, String port, String username, String password) {
+		switch (dbtype) {
+		case DBTYPE_MYSQL:
+			return
+				"jdbc:mysql://" + host +
+				":" + port +
+				"/" + // dbname +
+				"?user=" + username + 
+				"&password=" + password +
+				"&useUnicode=true" +
+				"&characterEncoding=UTF-8" +
+				"&jdbcCompliantTruncation=false";
+		case DBTYPE_PGSQL:
+			return "jdbc:postgresql://" + host +
+				":" + port +
+				"/" +
+				"?user=" + username +
+				"&password=" + password;
+		default:
+			return null;
+		}
+	}
+
+	void connect(int dbtype, String host, String port, String username, String password) {
 		assert !connected;
 		assert conn == null;
 		assert !running;
 		assert !schemaReady;
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName(driverForDatabase(dbtype)).newInstance();
 		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();
 		} catch (InstantiationException ex) {
@@ -56,18 +96,11 @@ public class DumperGui {
 		gui.setDatabaseStatus("Connecting...");
 		try {
 			// fixme is there escaping? is this a url? fucking java bullshit
-			String url = 
-					"jdbc:mysql://" + host +
-					":" + port +
-					"/" + // dbname +
-					"?user=" + username + 
-					"&password=" + password +
-					"&useUnicode=true" +
-					"&characterEncoding=UTF-8" +
-					"&jdbcCompliantTruncation=false";
+			String url = urlForDatabase(dbtype, host, port, username, password);
 			System.err.println("Connecting to " + url);
 			conn = DriverManager.getConnection(url);
 			connected = true;
+			this.dbtype = dbtype;
 			gui.setDatabaseStatus("Connected.");
 			gui.showFields();
 			checkSchema();
@@ -148,7 +181,7 @@ public class DumperGui {
 			return new String[] {
 				prefix + "page",
 				prefix + "revision",
-				prefix + "text"};
+				prefix + (this.dbtype == DBTYPE_MYSQL ? "text" : "pagecontent")};
 	}
 
 	void startImport(String inputFile) throws IOException, SQLException {
@@ -183,13 +216,24 @@ public class DumperGui {
 		}.start();
 	}
 	
+	private SqlWriter.Traits getTraits() {
+		switch (dbtype) {
+		case DBTYPE_MYSQL:
+			return new SqlWriter.MySQLTraits();
+		case DBTYPE_PGSQL:
+			return new SqlWriter.PostgresTraits();
+		default:
+			return null;
+		}
+	}
+
 	DumpWriter openWriter() {
 		SqlServerStream sqlStream = new SqlServerStream(conn);
 		/* XXX should have mysql/postgres selection */
 		if (schema.equals("1.4"))
-			return new SqlWriter14(new SqlWriter.MySQLTraits(), sqlStream, prefix);
+			return new SqlWriter14(getTraits(), sqlStream, prefix);
 		else
-			return new SqlWriter15(new SqlWriter.MySQLTraits(), sqlStream, prefix);
+			return new SqlWriter15(getTraits(), sqlStream, prefix);
 	}
 	
 	void abort() {

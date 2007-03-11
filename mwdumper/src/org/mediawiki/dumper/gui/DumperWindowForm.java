@@ -39,6 +39,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
         passwordText = new javax.swing.JPasswordField();
         connectButton = new javax.swing.JButton();
         dbStatusLabel = new javax.swing.JLabel();
+        dbTypeButton = new javax.swing.JComboBox();
         schemaPanel = new javax.swing.JPanel();
         schemaLabel = new javax.swing.JLabel();
         schema14Radio = new javax.swing.JRadioButton();
@@ -72,7 +73,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
             filePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(filePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(fileText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                .add(fileText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(browseButton)
                 .addContainerGap())
@@ -111,6 +112,14 @@ public class DumperWindowForm extends javax.swing.JFrame {
 
         dbStatusLabel.setText("Not connected.");
 
+        dbTypeButton.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MySQL", "PostgreSQL" }));
+        dbTypeButton.setToolTipText("Type of database to connect to");
+        dbTypeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dbTypeButtonActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout databasePanelLayout = new org.jdesktop.layout.GroupLayout(databasePanel);
         databasePanel.setLayout(databasePanelLayout);
         databasePanelLayout.setHorizontalGroup(
@@ -118,44 +127,55 @@ public class DumperWindowForm extends javax.swing.JFrame {
             .add(databasePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(dbStatusLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                    .add(dbStatusLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                    .add(databasePanelLayout.createSequentialGroup()
+                        .add(72, 72, 72)
+                        .add(connectButton)
+                        .add(51, 51, 51))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, databasePanelLayout.createSequentialGroup()
+                        .add(passwordLabel)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(passwordText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
                     .add(databasePanelLayout.createSequentialGroup()
                         .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(serverLabel)
-                            .add(portLabel)
-                            .add(passwordLabel)
-                            .add(userLabel))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(passwordText)
-                            .add(userText)
-                            .add(portText)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, serverText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                            .add(connectButton))))
+                            .add(userLabel)
+                            .add(portLabel))
+                        .add(44, 44, 44)
+                        .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(userText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .add(portText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))
+                    .add(databasePanelLayout.createSequentialGroup()
+                        .add(serverLabel)
+                        .add(34, 34, 34)
+                        .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(dbTypeButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(serverText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         databasePanelLayout.setVerticalGroup(
             databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(databasePanelLayout.createSequentialGroup()
-                .addContainerGap()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, databasePanelLayout.createSequentialGroup()
                 .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(serverLabel)
                     .add(serverText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(portLabel)
-                    .add(portText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(dbTypeButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(portText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(portLabel))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(userText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(userLabel))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(passwordLabel)
-                    .add(passwordText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(databasePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(databasePanelLayout.createSequentialGroup()
+                        .add(passwordText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(connectButton))
+                    .add(passwordLabel))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(connectButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 17, Short.MAX_VALUE)
                 .add(dbStatusLabel)
                 .addContainerGap())
         );
@@ -205,17 +225,17 @@ public class DumperWindowForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(schemaPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(schemaPanelLayout.createSequentialGroup()
-                        .add(schemaStatusLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                        .add(schemaStatusLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                         .addContainerGap())
                     .add(schemaPanelLayout.createSequentialGroup()
                         .add(schema15Radio)
-                        .addContainerGap(105, Short.MAX_VALUE))
+                        .addContainerGap(115, Short.MAX_VALUE))
                     .add(schemaPanelLayout.createSequentialGroup()
                         .add(schema14Radio)
-                        .addContainerGap(178, Short.MAX_VALUE))
+                        .addContainerGap(187, Short.MAX_VALUE))
                     .add(schemaPanelLayout.createSequentialGroup()
                         .add(schemaLabel)
-                        .addContainerGap(131, Short.MAX_VALUE))
+                        .addContainerGap(132, Short.MAX_VALUE))
                     .add(schemaPanelLayout.createSequentialGroup()
                         .add(schemaPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(prefixLabel)
@@ -229,7 +249,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
         schemaPanelLayout.setVerticalGroup(
             schemaPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(schemaPanelLayout.createSequentialGroup()
-                .add(26, 26, 26)
+                .add(59, 59, 59)
                 .add(schemaLabel)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(schema14Radio)
@@ -264,7 +284,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
             .add(progressPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(progressLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 383, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 140, Short.MAX_VALUE)
                 .add(startButton)
                 .addContainerGap())
         );
@@ -275,7 +295,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
                 .add(progressPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(progressLabel)
                     .add(startButton))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         fileMenu.setText("File");
@@ -303,7 +323,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
                     .add(org.jdesktop.layout.GroupLayout.LEADING, filePanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                         .add(databasePanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 111, Short.MAX_VALUE)
                         .add(schemaPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -315,13 +335,17 @@ public class DumperWindowForm extends javax.swing.JFrame {
                 .add(22, 22, 22)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(schemaPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(databasePanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(databasePanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
                 .add(6, 6, 6)
                 .add(progressPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void dbTypeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbTypeButtonActionPerformed
+                onDbTypeButtonActionPerformed(evt);
+    }//GEN-LAST:event_dbTypeButtonActionPerformed
 
 	private void schema15RadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schema15RadioActionPerformed
 		onSchema15RadioActionPerformed(evt); // i hate you, netbeans gui editor
@@ -367,6 +391,7 @@ public class DumperWindowForm extends javax.swing.JFrame {
     protected javax.swing.JButton connectButton;
     protected javax.swing.JPanel databasePanel;
     protected javax.swing.JLabel dbStatusLabel;
+    protected javax.swing.JComboBox dbTypeButton;
     protected javax.swing.JLabel dbnameLabel;
     protected javax.swing.JTextField dbnameText;
     protected javax.swing.JMenu fileMenu;
@@ -422,5 +447,13 @@ public class DumperWindowForm extends javax.swing.JFrame {
 	protected void onSchema15RadioActionPerformed(java.awt.event.ActionEvent evt) {
 // TODO add your handling code here:
 	}
+
+    public javax.swing.JButton getBrowseButton() {
+        return browseButton;
+    }
+        
+        protected void onDbTypeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+            
+        }
 
 }

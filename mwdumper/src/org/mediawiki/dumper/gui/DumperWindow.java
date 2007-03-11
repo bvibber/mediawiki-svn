@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.swing.JFileChooser;
+import javax.swing.JComboBox;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -26,6 +27,7 @@ import org.mediawiki.importer.DumpWriter;
  */
 public class DumperWindow extends DumperWindowForm {
 	protected DumperGui backend;
+	private int dbtype = DumperGui.DBTYPE_MYSQL;
 	
 	/** Creates a new instance of DumperWindow */
 	public DumperWindow(DumperGui aBackend) {
@@ -88,7 +90,8 @@ public class DumperWindow extends DumperWindowForm {
 				userLabel,
 				userText,
 				passwordLabel,
-				passwordText},
+				passwordText,
+				dbTypeButton},
 			!backend.running && !backend.connected);
 		connectButton.setEnabled(!backend.running);
 		connectButton.setText(backend.connected ? "Disconnect" : "Connect");
@@ -154,12 +157,23 @@ public class DumperWindow extends DumperWindowForm {
 		if (backend.connected)
 			backend.disconnect();
 		else
-			backend.connect(serverText.getText(),
+			backend.connect(dbtype, serverText.getText(),
 				portText.getText(),
 				userText.getText(),
 				passwordText.getText());
 	}
 	
+	protected void onDbTypeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		String dbt = (String)((JComboBox)evt.getSource()).getSelectedItem();
+		if (dbt.equals("MySQL")) {
+			portText.setText("3306");
+			dbtype = DumperGui.DBTYPE_MYSQL;
+		} else if (dbt.equals("PostgreSQL")) {
+			portText.setText("5432");
+			dbtype = DumperGui.DBTYPE_PGSQL;
+		}
+	}
+
 	protected void onStartButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		if (backend.running) {
 			backend.abort();
