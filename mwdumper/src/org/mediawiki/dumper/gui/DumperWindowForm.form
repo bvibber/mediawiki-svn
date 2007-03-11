@@ -104,17 +104,21 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="fileText">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="(no dump file selected)"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="browseButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Browse..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="browseButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="fileText">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="(no dump file selected)"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fileTextFocusGained"/>
           </Events>
         </Component>
       </SubComponents>

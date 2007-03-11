@@ -26,8 +26,8 @@ public class DumperWindowForm extends javax.swing.JFrame {
     private void initComponents() {
         schemaRadios = new javax.swing.ButtonGroup();
         filePanel = new javax.swing.JPanel();
-        fileText = new javax.swing.JTextField();
         browseButton = new javax.swing.JButton();
+        fileText = new javax.swing.JTextField();
         databasePanel = new javax.swing.JPanel();
         serverLabel = new javax.swing.JLabel();
         serverText = new javax.swing.JTextField();
@@ -58,12 +58,18 @@ public class DumperWindowForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MediaWiki data dump importer");
-        fileText.setText("(no dump file selected)");
-
         browseButton.setText("Browse...");
         browseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 browseButtonActionPerformed(evt);
+            }
+        });
+
+        fileText.setText("(no dump file selected)");
+        fileText.setRequestFocusEnabled(false);
+        fileText.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fileTextFocusGained(evt);
             }
         });
 
@@ -342,6 +348,10 @@ public class DumperWindowForm extends javax.swing.JFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fileTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fileTextFocusGained
+        fileText.selectAll();
+    }//GEN-LAST:event_fileTextFocusGained
 
     private void dbTypeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbTypeButtonActionPerformed
                 onDbTypeButtonActionPerformed(evt);
