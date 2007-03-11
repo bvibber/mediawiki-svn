@@ -2,6 +2,7 @@ package org.mediawiki.dumper.gui;
 
 import java.sql.SQLException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -71,6 +72,10 @@ public class DumperGui {
 			gui.showFields();
 			checkSchema();
 		} catch (SQLException ex) {
+			JOptionPane.showMessageDialog(gui,
+				"Failed to connect to database: " + ex.getMessage(),
+				"Database Connection Error",
+				JOptionPane.ERROR_MESSAGE);
 			gui.setDatabaseStatus("Failed to connect.");
 			ex.printStackTrace();
 		}
