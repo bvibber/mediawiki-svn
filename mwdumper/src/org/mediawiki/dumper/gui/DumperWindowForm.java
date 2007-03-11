@@ -66,7 +66,6 @@ public class DumperWindowForm extends javax.swing.JFrame {
         });
 
         fileText.setText("(no dump file selected)");
-        fileText.setRequestFocusEnabled(false);
         fileText.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fileTextFocusGained(evt);
