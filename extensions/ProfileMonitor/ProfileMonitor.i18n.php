@@ -24,6 +24,20 @@ function efProfileMonitorMessages() {
 'profiling-no-data' => 'No matching data found.',
 ),
 	
+/* Italian (BrokenArrow) */
+'it' => array(
+'profiling' => 'Dati di profiling',
+'profiling-process' => 'Stringa processo:',
+'profiling-wildcard' => 'Usa metacaratteri',
+'profiling-ok' => 'OK',
+'profiling-data' => 'Dati di profiling per `$1`',
+'profiling-data-process' => 'Processo',
+'profiling-data-count' => 'Conteggio',
+'profiling-data-time' => 'Tempo totale',
+'profiling-data-average' => 'Tempo medio',
+'profiling-no-data' => 'Nessun dato corrispondente.',
+),
+	
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'profiling' => 'Profilinggegevens',

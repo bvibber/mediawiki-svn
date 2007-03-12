@@ -37,6 +37,12 @@ list of blacklisted usernames]]. Please choose another name.',
 daftar hitam nama pengguna]]. Harap pilih nama lain.',
 ),
 
+/* Italian (BrokenArrow) */
+'it' => array(
+'blacklistedusername' => 'Nome utente non consentito',
+'blacklistedusernametext' => 'Il nome utente scelto è inserito nella [[MediaWiki:Usernameblacklist|lista dei nomi non consentiti]]. Si prega di scegliere un altro nome.',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'blacklistedusername' => 'Gebruikersnaam op zwarte lijst',

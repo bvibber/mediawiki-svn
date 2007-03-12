@@ -72,7 +72,7 @@ function efPatrollerMessages() {
 'patrol-resume' => 'Haz click aquí para continuar.',
 ),
 
-/* French (BrokenArrow) */
+/* French */
 'fr' => array(
 'patrol' => 'Vérification des modifications',
 'patrol-endorse' => 'Accepter',

@@ -48,7 +48,7 @@ database administrator if you make a mistake.",
 'oversight-difference' => '(Difference from previous remaining revision)',
 'oversight-prev' => 'Last previous revision',
 'oversight-hidden' => 'Hidden revision',
-'oversight-header' => 'Below is a list of revisions permanantly hidden from public view.
+'oversight-header' => 'Below is a list of revisions permanently hidden from public view.
 Releasing this information can result in permanent loss of Oversight privileges.',
 ),
 
@@ -135,6 +135,52 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 'oversight-prev' => 'Dernière révision précédente',
 'oversight-hidden' => 'Révision cachée',
 'oversight-header' => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d\'Oversight.',
+),
+
+/* Italian (BrokenArrow) */
+'it' => array(
+'hiderevision' => 'Oscuramento permanente di una revisione',
+// Empty form
+'hiderevision-prompt' => 'Numero della revisione da oscurare:',
+'hiderevision-continue' => 'Continua',
+// Confirmation form
+'hiderevision-text' =>
+"Questa funzione deve essere usata '''unicamente''' nei seguenti casi:
+* Dati personali non appropriati
+*: ''indirizzi postali, numeri di telefono, codici fiscali, ecc.''
+
+'''Qualunque abuso del sistema comporterà la rimozione dei relativi privilegi.'''
+
+Gli elementi oscurati sono invisibili per chiunque sul sito, ma 
+esiste un registro delle revisioni oscurate e la possibilità di
+un ripristino manuale da parte di un amministratore del database
+in caso di errori.",
+'hiderevision-reason' => 'Motivo (per il registro riservato):',
+'hiderevision-submit' => 'Oscura i dati in modo permanente',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => 'Oscura revisione',
+// Status & errors on action
+'hiderevision-norevisions' => 'Non è stata indicata alcuna revisione da oscurare.',
+'hiderevision-noreason' => 'È necessario indicare il motivo dell\'oscuramento.',
+'hiderevision-status' => 'Revisione $1: $2',
+'hiderevision-success' => 'Archiviazione e oscuramento completati.',
+'hiderevision-error-missing' => 'Non presente nel database.',
+'hiderevision-error-current' => 'Impossibile oscurare l\'ultima modifica di una pagina. Annullare la modifica prima di procedere all\'oscuramento.',
+'hiderevision-error-delete' => 'Impossibile archiviare; c\'erano delle cancellazioni precedenti?',
+'hiderevision-archive-status' => 'Revisione oscurata di $1: $2',
+'oversight-nodiff' => 'Impossibile mostrare le modifiche in quanto non sono presenti revisioni precedenti della pagina. Possibili cause:	
+*La pagina è stata cancellata
+*Questa revisione oscurata era la prima per la pagina',
+// Logging
+'oversight-log-hiderev' => 'ha oscurato una modifica di $1',
+// Oversight review page
+'oversight' => 'Oversight',
+'oversight-view' => 'dettagli',
+'oversight-difference' => '(Differenza rispetto alla versione precedente rimasta)',
+'oversight-prev' => 'Ultima revisione precedente',
+'oversight-hidden' => 'Revisione oscurata',
+'oversight-header' => 'Qui di seguito viene presentata una lista delle revisioni oscurate in modo permanente ai visitatori del sito.
+La divulgazione di tali informazioni può dar luogo alla rimozione permanente dei diritti di oversight.',
 ),
 
 /* Kazakh default (AlefZet) */

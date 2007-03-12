@@ -28,6 +28,12 @@ function efUserImagesMessages() {
 'userimages-noname' => 'Nama pengguna tidak sah atau tidak diberikan.',
 'userimages-noimages' => '$1 tidak pernah memuatkan berkas.',
 ),
+/* Italian */
+'it' => array(
+'userimages-caption' => 'Immagini caricate dall\'utente $1',
+'userimages-noname' => 'Nome utente errato o mancante.',
+'userimages-noimages' => 'L\'utente $1 non ha caricato immagini.',
+),
 /* nld / Dutch */
 'nl' => array(
 'userimages-caption' => 'Afbeeldingen toegevoegd door $1',

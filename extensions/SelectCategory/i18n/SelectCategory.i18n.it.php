@@ -7,8 +7,8 @@
 # @copyright © 2006 by Leon Weber & Manuel Schneider
 # @licence GNU General Public Licence 2.0 or later
 
-# translation done by Marius Engler <marius.engler@coop.ch>
+# translation done by Marius Engler <marius.engler@coop.ch>, updated by BrokenArrow
 
 $messages['selectcategory-title']       = 'Selezionare le categorie';
-$messages['selectcategory-subtitle']    = 'Shift-mouse per selezionare le entrate attigue multiple, Ctrl-mouse per selezionare le entrate non-attigue.';
+$messages['selectcategory-subtitle']    = 'Fare clic con il mouse tenendo premuto MAIUSC per selezionare più voci adiacenti o CTRL per selezionare più voci non adiacenti.';
 ?>
