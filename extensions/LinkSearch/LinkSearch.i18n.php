@@ -37,6 +37,15 @@ $wgLinkSearchMessages['fi'] = array(
 	'linksearch-line'  => '$1 on linkitetty sivulta $2',
 	'linksearch-error' => 'Jokerimerkkiä voi käyttää ainoastaan osoitteen alussa.',
 );
+$wgLinkSearchMessages['fr'] = array(
+	'linksearch'	   => 'Rechercher des liens internet',
+	'linksearch-pat'   => 'Champs recherchés :',
+	'linksearch-ns'    => 'Espace de nom :',
+	'linksearch-ok'    => 'Chercher',
+	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères « jokers » peuvent être utilisés, par exemple "*.wikipedia.org".',
+	'linksearch-line'  => '$1 avec un lien à partir de $2',
+	'linksearch-error' => 'Les caractères « jokers » ne peuvent être utilisés qu’au début du nom de domaine.'
+);
 $wgLinkSearchMessages['he'] = array(
 	'linksearch'       => 'חיפוש קישורים חיצוניים',
 	'linksearch-pat'   => 'קישור לחיפוש:',
@@ -101,12 +110,6 @@ $wgLinkSearchMessages['pt'] = array(
 // Brazillian portuguese inherits portuguese.
 $wgLinkSearchMessages['pt-br'] = $wgLinkSearchMessages['pt'];
 
-$wgLinkSearchMessages['fr'] = array(
-	'linksearch'	   => 'Rechercher des liens internet',
-	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères « jokers » peuvent être utilisés, par exemple "*.wikipedia.org".',
-	'linksearch-line'  => '$1 avec un lien à partir de $2',
-	'linksearch-error' => 'Les caractères « jokers » ne peuvent être utilisés qu’au début du nom de domaine.'
-);
 $wgLinkSearchMessages['ru'] = array(
 	'linksearch'       => 'Поиск внешних ссылок',
 	'linksearch-text'  => 'Можно использовать подстановочные символы, например: «*.wikipedia.org».',
