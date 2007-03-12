@@ -8,6 +8,30 @@
 
 namespace db {
 
+struct result;
+struct result_row;
+
+struct resultset_iterator {
+	result_row &operator *(void);
+	result_row *operator ->(void);
+
+	resultset_iterator &operator++(void);
+	resultset_iterator operator++(int);
+
+	bool operator== (resultset_iterator const &);
+	bool operator!= (resultset_iterator const &);
+
+	resultset_iterator();
+	resultset_iterator(result *);
+	resultset_iterator(resultset_iterator const &other);
+
+private:
+	result *er;
+	bool isend;
+	boost::shared_ptr<result_row> row;
+	void fetch(void);
+};
+
 struct error : std::exception {
 	std::string err;
 	error(std::string const &err) : err(err) {}
@@ -20,16 +44,28 @@ struct result_row : boost::noncopyable {
 	virtual std::string string_value(int col) = 0;
 };
 
-struct execution_result : boost::noncopyable {
-	virtual ~execution_result();
+struct result : boost::noncopyable {
+	typedef resultset_iterator iterator;
+	typedef resultset_iterator const_iterator;
 
-	virtual bool has_data(void) = 0;
+	virtual void bind(std::string const &, std::string const &) = 0;
+	virtual void execute() = 0;
+
+	iterator begin();
+	iterator end();
+
+	virtual ~result();
+
+	virtual bool empty(void) = 0;
 	virtual int affected_rows(void) = 0;
 	virtual int num_fields(void) = 0;
 	virtual std::string field_name(int col) = 0;
 
+protected:
+	friend class resultset_iterator;
 	virtual result_row *next_row(void) = 0;
 };
+typedef boost::shared_ptr<result> resultptr;
 
 struct column {
 	std::string name;
@@ -53,7 +89,7 @@ struct connection {
 
 	virtual ~connection();
 
-	virtual execution_result *execute_sql(std::string const &) = 0;
+	virtual resultptr execute_sql(std::string const &) = 0;
 	virtual std::vector<table> describe_tables(std::string const & = "") = 0;
 	virtual table describe_table(std::string const &, std::string const &) = 0;
 

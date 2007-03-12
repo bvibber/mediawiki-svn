@@ -7,6 +7,16 @@
 
 #include "ora.h"
 
+namespace {
+
+bool
+ora_success(int e)
+{
+	return e == OCI_SUCCESS || e == OCI_SUCCESS_WITH_INFO;
+}
+
+}
+
 namespace oracle {
 
 connection::connection(std::string const &desc)
@@ -43,127 +53,204 @@ connection::~connection()
 void
 connection::open(void)
 {
-	if (!db.connect(sid, user, password))
-		throw db::error(db.error());
+	if (!ora_success(OCIEnvCreate(&env, OCI_DEFAULT,
+						NULL, NULL, NULL, NULL, 0, NULL)))
+		throw db::error(error());
+	
+	if (!ora_success(OCIHandleAlloc(env, (void **)&err, OCI_HTYPE_ERROR, 0, NULL)))
+		throw db::error(error());
+
+	if (!ora_success(OCILogon(env, err, &svc,
+					(text *)user.c_str(), user.size(),
+					(text *)password.c_str(), password.size(),
+					(text *)sid.c_str(), sid.size())))
+		throw db::error(error());
 }
 
 void
 connection::close(void)
 {
-	db.disconnect();
+	OCILogoff(svc, err);
+	svc = NULL;
+	OCIHandleFree(err, OCI_HTYPE_ERROR);
+	err = NULL;
+	OCIHandleFree(env, OCI_HTYPE_ENV);
+	env = NULL;
 }
 
 std::string
 connection::error(void)
 {
-	return err;
+	if (last_error == OCI_SUCCESS || last_error == OCI_SUCCESS_WITH_INFO)
+		return "no error";
+
+	char buf[1024];
+	sb4 errno;
+	OCIErrorGet(err, 1, NULL, &errno, (text *)buf, sizeof(buf), OCI_HTYPE_ERROR);
+	std::string ret = buf;
+	ret.resize(ret.size() - 1);	
+	return ret;
 }
 
-execution_result *
+db::resultptr
 connection::execute_sql(std::string const &sql)
 {
-	ORAPP::Query *q = db.query(sql.c_str());
-	if (!q->execute()) {
-		throw db::error(db.error());
-	}
-
-	return new execution_result(db, q);
+	db::resultptr r = prepare_sql(sql);
+	r->execute();
+	return r;
 }
 
-execution_result::execution_result(ORAPP::Connection &conn, ORAPP::Query *q)
-	: conn(conn)
-	, q(q)
-	, row(0)
+db::resultptr
+connection::prepare_sql(std::string const &sql)
 {
-	ORAPP::Row *r;
-	while (r = q->fetch()) {
-		orarow nr;
-		for (int i = 0; i < r->width(); ++i) {
-			if (rows.empty())
-				names.push_back(r->name(i));
-			nr.content.push_back((std::string) (*r)[i]);
-		}
+	return db::resultptr(new result(this, sql));
+}
 
-		rows.push_back(nr);
+result::result(connection *conn, std::string const &q)
+	: stmt(0)
+	, conn(conn)
+{
+	if (!ora_success(OCIHandleAlloc(conn->env, (void **)&stmt, OCI_HTYPE_STMT, 0, NULL)))
+		throw db::error(conn->error());
+
+	if (!ora_success(OCIStmtPrepare(stmt, conn->err, (text *)q.c_str(), q.size(), OCI_NTV_SYNTAX, OCI_DEFAULT)))
+		throw db::error(conn->error());
+
+	ub4 sz;
+
+	sz = sizeof(type);
+	if (!ora_success(OCIAttrGet(stmt, OCI_HTYPE_STMT, &type, &sz, OCI_ATTR_STMT_TYPE, conn->err)))
+		throw db::error(conn->error());
+}
+
+void
+result::execute(void)
+{
+	conn->last_error = OCIStmtExecute(conn->svc, stmt, conn->err,
+				(type == OCI_STMT_SELECT) ? 0 : 1,
+				0, NULL, NULL, OCI_COMMIT_ON_SUCCESS);
+	if (!ora_success(conn->last_error))
+		throw db::error(conn->error());
+
+	if (type != OCI_STMT_SELECT)
+		return;
+
+	ub4 sz;
+
+	sz = sizeof(ncols);
+	if (!ora_success(OCIAttrGet(stmt, OCI_HTYPE_STMT, &ncols, &sz, OCI_ATTR_PARAM_COUNT, conn->err)))
+		throw db::error(conn->error());
+
+	OCIParam *p;
+	fields.resize(ncols);
+	for (int i = 0; i < ncols; ++i) {
+		if (!ora_success(OCIParamGet(stmt, OCI_HTYPE_STMT, conn->err, (void **)&p, i + 1)))
+			throw db::error(conn->error());
+
+		char *colname;
+		unsigned namelen;
+		if (!ora_success(OCIAttrGet(p, OCI_DTYPE_PARAM, &colname, &namelen, OCI_ATTR_NAME, conn->err)))
+			throw db::error(conn->error());
+
+		fields[i].name = colname;
+
+		ub2 width;
+		if (!ora_success(OCIAttrGet(p, OCI_DTYPE_PARAM, &width, 0, OCI_ATTR_DATA_SIZE, conn->err)))
+			throw db::error(conn->error());
+
+		fields[i].width = width;
+
+		fields[i].data.resize(width);
+		ub2 rcode, len;
+		if (!ora_success(OCIDefineByPos(stmt, &fields[i].define, conn->err, i + 1, &fields[i].data[0], width,
+				SQLT_STR, &fields[i].isnull, &len, &rcode, OCI_DEFAULT)))
+			throw db::error(conn->error());
 	}
 }
 
-execution_result::~execution_result()
+void
+result::bind(std::string const &key, std::string const &value)
+{
+	OCIBind *bind;
+	if (!ora_success(OCIBindByName(stmt, &bind, conn->err,
+				(text *)key.c_str(), -1, (void *)value.c_str(), value.size() + 1, SQLT_STR,
+				NULL, NULL, NULL, 0, NULL, OCI_DEFAULT)))
+		throw db::error(conn->error());
+}
+
+result::~result()
 {
 }
 
 bool
-execution_result::has_data(void)
+result::empty(void)
 {
-	return !rows.empty();
+	return type != OCI_STMT_SELECT;
 }
 
 int
-execution_result::num_fields(void)
+result::num_fields(void)
 {
-	return names.size();
+	return fields.size();
 }
 
 int
-execution_result::affected_rows(void)
+result::affected_rows(void) 
 {
 	return 0; /* XXX */
 }
 
 result_row *
-execution_result::next_row(void)
+result::next_row(void)
 {
-	if (row == rows.size())
+	conn->last_error = OCIStmtFetch(stmt, conn->err, 1, OCI_FETCH_NEXT, OCI_DEFAULT);
+	if (conn->last_error == OCI_NO_DATA)
 		return NULL;
+	if (!ora_success(conn->last_error))
+		throw db::error(conn->error());
 
-	result_row *ret = new result_row(this, row);
-	++row;
-	return ret;
+	return new result_row(this);
 }
 
-result_row::result_row(execution_result *er, int row)
-	: row(row)
-	, er(er)
+result_row::result_row(result *er)
+	: er(er)
 {
 }
 
 std::string
-result_row::string_value(int col)
+result_row::string_value(int col) 
 {
-	return er->rows[row].content[col];
+	return std::string(&er->fields[col].data[0]);
 
 }
 
 std::string
-execution_result::field_name(int col)
+result::field_name(int col)
 {
-	return names[col];
+	return fields[col].name;
 }
 
 std::vector<db::table>
 connection::describe_tables(std::string const &schema)
 {
-	ORAPP::Query *q;
+	std::string n = boost::algorithm::to_upper_copy(schema);
 
+	db::resultptr r;
 	if (schema.empty())
-		q = db.query("SELECT owner, table_name FROM all_tables");
+		r = prepare_sql("SELECT owner, table_name FROM all_tables");
 	else {
-		q = db.query("SELECT owner, table_name FROM all_tables WHERE owner = :towner");
-		std::string n = boost::algorithm::to_upper_copy(schema);
-		q->bind(":towner", n.c_str());
+		r = prepare_sql("SELECT owner, table_name FROM all_tables WHERE owner = :towner");
+		r->bind(":towner", n);
 	}
+	r->execute();
 
 	std::vector<std::pair<std::string, std::string> > names;
 
-	if (!q->execute()) {
-		throw db::error(db.error());
-	}
-
-	ORAPP::Row *r;
 	std::vector<db::table> ret;
-	while (r = q->fetch()) {
+	result::iterator it = r->begin(), end = r->end();
+	for (; it != end; ++it) {
 		names.push_back(std::pair<std::string, std::string>(
-			(std::string) (*r)[0], (std::string) (*r)[1]));
+			it->string_value(0), it->string_value(1)));
 	}
 
 	for (int i = 0; i < names.size(); ++i) {
@@ -180,28 +267,25 @@ connection::describe_table(std::string const &schema, std::string const &name)
 	ret.name = name;
 	ret.schema = schema;
 
-	ORAPP::Query *q = db.query(
+	db::resultptr r = prepare_sql(
 		"SELECT column_name, data_type, nullable FROM all_tab_columns WHERE owner = :tabowner AND table_name = :name");
 	std::string n = boost::algorithm::to_upper_copy(name);
 	std::string o = boost::algorithm::to_upper_copy(schema);
 
-	q->bind(":name", n.c_str());
-	q->bind(":tabowner", o.c_str());
+	r->bind(":name", n);
+	r->bind(":tabowner", o);
+	r->execute();
 
-	if (!q->execute()) {
-		throw db::error(db.error());
-	}
-
-	ORAPP::Row *r;
-	while (r = q->fetch()) {
+	result::iterator it = r->begin(), end = r->end();
+	for (; it != end; ++it) {
 		db::column c;
-		c.name = (std::string) (*r)[0];
-		c.type = (std::string) (*r)[1];
-		c.nullable = ((char) (*r)[2]) == 'Y';
+		c.name = it->string_value(0);
+		c.type = it->string_value(1);
+		c.nullable = it->string_value(2) == "Y";
 		ret.columns.push_back(c);
 	}
 
 	return ret;
 }
 
-} // namespace pgsql
+} // namespace oracle

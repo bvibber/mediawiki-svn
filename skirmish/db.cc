@@ -1,5 +1,8 @@
 #include <string>
+#include <map>
 #include <boost/format.hpp>
+#include <boost/function.hpp>
+#include <boost/assign/list_of.hpp>
 
 #include "db.h"
 
@@ -25,6 +28,15 @@ connection::~connection()
 {
 }
 
+namespace {
+template<typename T>
+connectionptr
+construct(std::string const &desc)
+{
+	return connectionptr(new T(desc));
+}
+}
+
 connectionptr
 connection::create(std::string const &desc)
 {
@@ -35,30 +47,102 @@ connection::create(std::string const &desc)
 		throw db::error("invalid scheme in description");
 
 	type = desc.substr(0, i);
-#ifdef SKIRMISH_MYSQL
-	if (type == "mysql")
-		return connectionptr(new mysql::connection(desc));
-	else
-#endif
-#ifdef SKIRMISH_POSTGRES
-	if (type == "postgres")
-		return connectionptr(new postgres::connection(desc));
-	else
-#endif
-#ifdef SKIRMISH_ORACLE
-	if (type == "oracle")
-		return connectionptr(new oracle::connection(desc));
-	else
-#endif
+
+	typedef std::map<std::string, boost::function<connectionptr (std::string const &)> > schemelist_t;
+
+	static schemelist_t schemes = boost::assign::map_list_of
+			("mysql",	construct<mysql::connection>)
+			("postgres",	construct<postgres::connection>)
+			("oracle",	construct<oracle::connection>)
+		;
+
+	schemelist_t::iterator it = schemes.find(type);
+	if (it == schemes.end())
 		throw db::error(str(boost::format("unknown scheme \"%s\" in description") % desc));
+	return it->second(desc);
 }
 
-execution_result::~execution_result()
+result::~result()
 {
 }
 
 result_row::~result_row()
 {
+}
+
+resultset_iterator::resultset_iterator()
+	: isend(true)
+{
+}
+
+resultset_iterator::resultset_iterator(result *er)
+	: er(er)
+	, isend(false)
+{
+	fetch();
+}
+
+void
+resultset_iterator::fetch(void)
+{
+	row.reset(er->next_row());
+	if (!row)
+		isend = true;
+}
+
+resultset_iterator &
+resultset_iterator::operator++(void)
+{
+	if (isend)
+		throw db::error("resultset_iterator incremented past end");
+	fetch();
+	return *this;
+}
+
+resultset_iterator
+resultset_iterator::operator++(int)
+{
+	resultset_iterator n(*this);
+	return ++n;
+}
+
+resultset_iterator::resultset_iterator(resultset_iterator const &other)
+	: er(other.er)
+	, isend(other.isend)
+	, row(other.row)
+{
+}
+
+bool
+resultset_iterator::operator==(resultset_iterator const &other)
+{
+	if (isend && other.isend)
+		return true;
+	return false;
+}
+
+bool
+resultset_iterator::operator!=(resultset_iterator const &other)
+{
+	return !(*this == other);
+}
+
+result_row *
+resultset_iterator::operator->(void)
+{
+	return row.get();
+}
+
+resultset_iterator
+result::begin(void)
+{
+	return resultset_iterator(this);
+}
+
+resultset_iterator
+result::end(void)
+{
+	return resultset_iterator();
 }
 
 } // namespace db

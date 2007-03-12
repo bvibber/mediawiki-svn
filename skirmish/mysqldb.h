@@ -10,22 +10,25 @@
 
 namespace mysql {
 
-struct execution_result;
+struct result;
 
 struct result_row : db::result_row {
-	result_row(execution_result *er, MYSQL_ROW row);
+	result_row(result *er, MYSQL_ROW row);
 	
 	std::string string_value(int col);
 
 	MYSQL_ROW row;
-	execution_result *er;
+	result *er;
 };
 
-struct execution_result : db::execution_result {
-	execution_result(MYSQL *);
-	~execution_result();
+struct result : db::result {
+	result(MYSQL *, std::string const &sql);
+	~result();
 
-	bool has_data(void);
+	void bind(std::string const &, std::string const &);
+	void execute();
+
+	bool empty(void);
 	int num_fields(void);
 	int affected_rows(void);
 	std::string field_name(int col);
@@ -35,6 +38,7 @@ struct execution_result : db::execution_result {
 	MYSQL *conn;
 	MYSQL_RES *res;
 	std::vector<std::string> names;
+	std::string sql;
 };
 
 struct connection : db::connection {
@@ -46,7 +50,8 @@ struct connection : db::connection {
 
 	std::string error(void);
 
-	execution_result *execute_sql(std::string const &);
+	db::resultptr execute_sql(std::string const &);
+	db::resultptr prepare_sql(std::string const &);
 	std::vector<db::table> describe_tables(std::string const &);
 	db::table describe_table(std::string const &, std::string const &);
 

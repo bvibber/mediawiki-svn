@@ -10,33 +10,40 @@
 
 namespace postgres {
 
-struct execution_result;
+struct result;
 
 struct result_row : db::result_row {
-	result_row(execution_result *er, PGresult *, int);
+	result_row(result *er, PGresult *, int);
 	
 	std::string string_value(int col);
 
+private:
 	int row;
 	PGresult *res;
-	execution_result *er;
+	result *er;
 };
 
-struct execution_result : db::execution_result {
-	execution_result(PGconn*, PGresult *);
-	~execution_result();
+struct result : db::result {
+	result(PGconn*, std::string const &);
+	~result();
 
-	bool has_data(void);
+	void bind(std::string const &, std::string const &);
+	void execute(void);
+
+	bool empty(void);
 	int num_fields(void);
 	int affected_rows(void);
 	std::string field_name(int col);
 
+protected:
 	result_row *next_row(void);
 
+private:
 	PGconn *conn;
 	PGresult *res;
 	std::vector<std::string> names;
 	int row;
+	std::string sql;
 };
 
 struct connection : db::connection {
@@ -48,7 +55,9 @@ struct connection : db::connection {
 
 	std::string error(void);
 
-	execution_result *execute_sql(std::string const &);
+	db::resultptr execute_sql(std::string const &);
+	db::resultptr prepare_sql(std::string const &);
+
 	std::vector<db::table> describe_tables(std::string const &);
 	db::table describe_table(std::string const &, std::string const &);
 

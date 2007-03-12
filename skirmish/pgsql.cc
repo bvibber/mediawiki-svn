@@ -82,62 +82,81 @@ connection::error(void)
 	return err;
 }
 
-execution_result *
+db::resultptr
 connection::execute_sql(std::string const &sql)
 {
 	assert(conn);
+	db::resultptr r = prepare_sql(sql);
+	r->execute();
+	return r;
+}
+
+db::resultptr
+connection::prepare_sql(std::string const &sql)
+{
+	return db::resultptr(new result(conn, sql));
+}
+
+result::result(PGconn *c, std::string const &sql)
+	: conn(c)
+	, row(0)
+	, sql(sql)
+{
+}
+
+void
+result::execute(void)
+{
 	PGresult *res;
 	if ((res = PQexec(conn, sql.c_str())) == NULL)
 		throw db::error(PQerrorMessage(conn));
 
 	switch (PQresultStatus(res)) {
 		case PGRES_COMMAND_OK:
+			return;
 		case PGRES_TUPLES_OK:
-			return new execution_result(conn, res);
+			break;
 		default:
 			throw db::error(PQresultErrorMessage(res));
 	}
-}
-
-execution_result::execution_result(PGconn *c, PGresult *res)
-	: conn(c)
-	, res(res)
-	, row(0)
-{
-	if (PQresultStatus(res) == PGRES_COMMAND_OK)
-		return;
 
 	int nfields = PQnfields(res);
 	for (int i = 0; i < nfields; ++i)
 		names.push_back(PQfname(res, i));
 }
 
-execution_result::~execution_result()
+void
+result::bind(std::string const &, std::string const &)
+{
+	throw db::error("bound variables not supported for PostgreSQL");
+}
+
+result::~result()
 {
 	if (res)
 		PQclear(res);
 }
 
 bool
-execution_result::has_data(void)
+result::empty(void) 
 {
-	return PQresultStatus(res) != PGRES_COMMAND_OK;
+	return PQresultStatus(res) != PGRES_TUPLES_OK;
 }
 
 int
-execution_result::num_fields(void)
+result::num_fields(void)
 {
 	return PQnfields(res);
 }
 
 int
-execution_result::affected_rows(void)
+result::affected_rows(void)
 {
 	return boost::lexical_cast<int>(PQcmdTuples(res));
 }
 
 result_row *
-execution_result::next_row(void)
+result::next_row(void)
 {
 	if (row == PQntuples(res))
 		return NULL;
@@ -145,7 +164,7 @@ execution_result::next_row(void)
 	return new result_row(this, res, row++);
 }
 
-result_row::result_row(execution_result *er, PGresult *res, int row)
+result_row::result_row(result *er, PGresult *res, int row)
 	: row(row)
 	, res(res)
 	, er(er)
@@ -162,7 +181,7 @@ result_row::string_value(int col)
 }
 
 std::string
-execution_result::field_name(int col)
+result::field_name(int col)
 {
 	return names[col];
 }

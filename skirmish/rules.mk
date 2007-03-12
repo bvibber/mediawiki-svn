@@ -1,5 +1,3 @@
-include config.mk
-
 ifeq ($(BUILD_MYSQL),YES)
 INCLUDES	+= $(shell mysql_config --include)
 LIBS		+= $(shell mysql_config --libs)
@@ -8,8 +6,8 @@ DB_SRCS		+= mysql.cc
 endif
 
 ifeq ($(BUILD_ORACLE),YES)
-INCLUDES	+= -I$(ORACLE_HOME)/rdbms/public -Iorapp
-LIBS		+= -L$(ORACLE_HOME)/lib -lclntsh -Lorapp -lorapp
+INCLUDES	+= -I$(ORACLE_HOME)/rdbms/public
+LIBS		+= -L$(ORACLE_HOME)/lib -lclntsh 
 SUBDIRS		+= orapp
 CPPFLAGS	+= -DSKIRMISH_ORACLE
 DB_SRCS		+= ora.cc

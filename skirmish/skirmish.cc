@@ -99,7 +99,7 @@ main(int argc, char *argv[])
 
 		conn = conns[cnr]->conn;
 
-		db::execution_result *res;
+		db::resultptr res;
 		int nrows = 0;
 
 		if (input[input.size() - 1] == ';')
@@ -108,11 +108,11 @@ main(int argc, char *argv[])
 		try {
 			res = conn->execute_sql(input);
 		} catch (db::error &e) {
-			std::cerr << boost::format("Error: %s\n") % e.what();
+			std::cerr << boost::format("[%s]\n") % e.what();
 			continue;
 		}
 
-		if (res->has_data()) {
+		if (!res->empty()) {
 			db::result_row *r;
 			int ncols = res->num_fields();
 			std::vector<int> sizes(ncols);
@@ -123,14 +123,14 @@ main(int argc, char *argv[])
 				names.push_back(res->field_name(i));
 			data.push_back(names);
 
-			while (r = res->next_row()) {
+			db::result::iterator it, end;
+			for (it = res->begin(), end = res->end(); it != end; ++it) {
 				std::vector<std::string> thisrow;
 				for (int i = 0; i < ncols; ++i) {
-					std::string v = r->string_value(i);
+					std::string v = it->string_value(i);
 					thisrow.push_back(v);
 				}
 				data.push_back(thisrow);
-				delete r;
 				++nrows;
 			}
 
@@ -164,7 +164,6 @@ main(int argc, char *argv[])
 
 		if (nrows)
 			std::cout << boost::format("\nOK (%d rows).\n") % nrows;
-		delete res;
 	}
 } 
 
@@ -183,7 +182,7 @@ handle_internal(std::string const &s)
 
 	std::map<std::string, boost::function<void (std::string const &)> >::iterator it;
 	if ((it = commands.find(command)) == commands.end()) {
-		std::cerr << boost::format("Error: unknown command \"%s\"\n") % command;
+		std::cerr << boost::format("[unknown command \"%s\"]\n") % command;
 		return;
 	}
 
@@ -207,12 +206,12 @@ switch_connection(std::string const &arg)
 	try {
 		to = boost::lexical_cast<int>(arg);
 	} catch (boost::bad_lexical_cast &) {
-		std::cerr << boost::format("Error: invalid connection number \"%s\".\n") % arg;
+		std::cerr << boost::format("[invalid connection number \"%s\"]\n") % arg;
 		return;
 	}
 
 	if (to > conns.size() - 1 || to < 0 || !conns[to]) {
-		std::cerr << boost::format("Error: no connection %d\n") % to;
+		std::cerr << boost::format("[no connection %d]\n") % to;
 		return;
 	}
 
@@ -229,17 +228,17 @@ close_connection(std::string const &arg)
 		try {
 			to = boost::lexical_cast<int>(arg);
 		} catch (boost::bad_lexical_cast &) {
-			std::cerr << boost::format("Error: invalid connection number \"%s\".\n") % arg;
+			std::cerr << boost::format("[invalid connection number \"%s\"]\n") % arg;
 			return;
 		}
 
 		if (to > conns.size() - 1 || to < 0 || !conns[to]) {
-			std::cerr << boost::format("Error: no connection %d\n") % to;
+			std::cerr << boost::format("[no connection %d]\n") % to;
 			return;
 		}
 	} else {
 		if (cnr == -1) {
-			std::cout << "Error: no connection.\n";
+			std::cout << "[no connection to close]\n";
 			return;
 		}
 		to = cnr;
@@ -279,7 +278,7 @@ list_tables(std::string const &arg)
 	try {
 		tables = conns[cnr]->conn->describe_tables(arg);
 	} catch (db::error const &e) {
-		std::cout << boost::format("[error: %s]\n") % e.what();
+		std::cout << boost::format("[%s]\n") % e.what();
 		return;
 	}
 	
@@ -325,7 +324,7 @@ describe_table(std::string const &arg)
 
 		t = conns[cnr]->conn->describe_table(schema, table);
 	} catch (db::error const &e) {
-		std::cout << boost::format("[error: %s]\n") % e.what();
+		std::cout << boost::format("[%s]\n") % e.what();
 		return;
 	}
 

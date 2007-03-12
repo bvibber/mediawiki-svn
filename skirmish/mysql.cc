@@ -76,21 +76,33 @@ connection::error(void)
 	return err;
 }
 
-execution_result *
+db::resultptr
 connection::execute_sql(std::string const &sql)
 {
-	assert(conn);
+	db::resultptr r = prepare_sql(sql);
+	r->execute();
+	return r;
+}
+
+db::resultptr
+connection::prepare_sql(std::string const &sql)
+{
+	return db::resultptr(new result(conn, sql));
+}
+
+void
+result::bind(std::string const &, std::string const &)
+{
+	throw db::error("prepared statements not supported for MySQL");
+}
+
+void
+result::execute(void)
+{
 	if (mysql_real_query(conn, sql.data(), sql.size()) != 0)
 		throw db::error(mysql_error(conn));
 
-	return new execution_result(conn);
-}
-
-execution_result::execution_result(MYSQL *c)
-	: conn(c)
-	, res(0)
-{
-	if (!mysql_field_count(c))
+	if (!mysql_field_count(conn))
 		return;
 
 	if ((res = mysql_use_result(conn)) == NULL)
@@ -102,32 +114,39 @@ execution_result::execution_result(MYSQL *c)
 	}
 }
 
-execution_result::~execution_result()
+result::result(MYSQL *c, std::string const &sql)
+	: conn(c)
+	, res(0)
+	, sql(sql)
+{
+}
+
+result::~result()
 {
 	if (res)
 		mysql_free_result(res);
 }
 
 bool
-execution_result::has_data(void)
+result::empty(void)
+{
+	return mysql_field_count(conn) == 0;
+}
+
+int
+result::num_fields(void)
 {
 	return mysql_field_count(conn);
 }
 
 int
-execution_result::num_fields(void)
-{
-	return mysql_field_count(conn);
-}
-
-int
-execution_result::affected_rows(void)
+result::affected_rows(void)
 {
 	return mysql_affected_rows(conn);
 }
 
 result_row *
-execution_result::next_row(void)
+result::next_row(void)
 {
 	MYSQL_ROW r;
 
@@ -137,14 +156,14 @@ execution_result::next_row(void)
 	return new result_row(this, r);
 }
 
-result_row::result_row(execution_result *er, MYSQL_ROW row)
+result_row::result_row(result *er, MYSQL_ROW row)
 	: row(row)
 	, er(er)
 {
 }
 
 std::string
-result_row::string_value(int col)
+result_row::string_value(int col) 
 {
 	if (row[col])
 		return row[col];
@@ -153,7 +172,7 @@ result_row::string_value(int col)
 }
 
 std::string
-execution_result::field_name(int col)
+result::field_name(int col)
 {
 	return names[col];
 }
