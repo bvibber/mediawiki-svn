@@ -167,4 +167,85 @@ execution_result::field_name(int col)
 	return names[col];
 }
 
+std::vector<db::table>
+connection::describe_tables(std::string const &schema)
+{
+	PGresult *r;
+	if (schema.empty()) {
+		std::string query = "select nspname, relname from pg_namespace, pg_class where relnamespace = pg_namespace.oid and relkind='r'";
+		r = PQexec(conn, query.c_str());
+	} else {
+		std::string query = 
+			"select nspname, relname from pg_namespace, pg_class where relnamespace = pg_namespace.oid and relkind='r' "
+			"and nspname=$1";
+		r = PQprepare(conn, "", query.c_str(), 1, NULL);
+		if (PQresultStatus(r) != PGRES_COMMAND_OK)
+			throw db::error(PQerrorMessage(conn));
+
+		char const *params[] = {
+			schema.c_str()
+		};
+		r = PQexecPrepared(conn, "", 1, params, NULL, NULL, 0);
+	}
+
+	if (PQresultStatus(r) != PGRES_TUPLES_OK)
+		throw db::error(PQerrorMessage(conn));
+
+	int nrows = PQntuples(r);
+
+	std::vector<std::pair<std::string, std::string> > names;
+	for (int i = 0; i < nrows; ++i) {
+		names.push_back(std::pair<std::string, std::string>(
+			PQgetvalue(r, i, 0), PQgetvalue(r, i, 1)));
+	}
+	PQclear(r);
+
+	std::vector<db::table> res;
+	for (int i = 0; i < names.size(); ++i) {
+		res.push_back(describe_table(names[i].first, names[i].second));
+	}
+
+	return res;
+}
+
+db::table
+connection::describe_table(std::string const &schema, std::string const &table)
+{
+	db::table t;
+	t.schema = schema;
+	t.name = table;
+
+	std::string query =
+		"select attname, typname, attnotnull from pg_namespace, pg_class, pg_attribute, pg_type "
+		"where pg_class.relnamespace=pg_namespace.oid and pg_attribute.attrelid=pg_class.oid and pg_type.oid=atttypid "
+		"and nspname=$1 and relname=$2 and attnum > 0";
+	char const *params[] = {
+		schema.c_str(),
+		table.c_str()
+	};
+
+	int lengths[2] = {};
+	PGresult *r = PQprepare(conn, "", query.c_str(), 2, NULL);
+	if (PQresultStatus(r) != PGRES_COMMAND_OK)
+		throw db::error(PQerrorMessage(conn));
+
+	r = PQexecPrepared(conn, "", 2, params, lengths, NULL, 0);
+	if (PQresultStatus(r) != PGRES_TUPLES_OK)
+		throw db::error(PQerrorMessage(conn));
+
+	int nrows = PQntuples(r);
+	for (int i = 0; i < nrows; ++i) {
+		db::column c;
+		c.name = PQgetvalue(r, i, 0);
+		c.type = PQgetvalue(r, i, 1);
+		c.nullable = !strcmp(PQgetvalue(r, i, 2), "f");
+		t.columns.push_back(c);
+	}
+	PQclear(r);
+
+	if (t.columns.empty())
+		throw db::error("table does not exist");
+	return t;
+}
+
 } // namespace pgsql

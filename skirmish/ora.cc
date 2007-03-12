@@ -1,6 +1,7 @@
 #include <iostream>
 #include <boost/lexical_cast.hpp>
 #include <boost/format.hpp>
+#include <boost/algorithm/string/case_conv.hpp>
 #include <unistd.h>
 #include <oci.h>
 
@@ -78,9 +79,8 @@ execution_result::execution_result(ORAPP::Connection &conn, ORAPP::Query *q)
 	while (r = q->fetch()) {
 		orarow nr;
 		for (int i = 0; i < r->width(); ++i) {
-			if (names.empty()) {
+			if (rows.empty())
 				names.push_back(r->name(i));
-			}
 			nr.content.push_back((std::string) (*r)[i]);
 		}
 
@@ -138,6 +138,70 @@ std::string
 execution_result::field_name(int col)
 {
 	return names[col];
+}
+
+std::vector<db::table>
+connection::describe_tables(std::string const &schema)
+{
+	ORAPP::Query *q;
+
+	if (schema.empty())
+		q = db.query("SELECT owner, table_name FROM all_tables");
+	else {
+		q = db.query("SELECT owner, table_name FROM all_tables WHERE owner = :towner");
+		std::string n = boost::algorithm::to_upper_copy(schema);
+		q->bind(":towner", n.c_str());
+	}
+
+	std::vector<std::pair<std::string, std::string> > names;
+
+	if (!q->execute()) {
+		throw db::error(db.error());
+	}
+
+	ORAPP::Row *r;
+	std::vector<db::table> ret;
+	while (r = q->fetch()) {
+		names.push_back(std::pair<std::string, std::string>(
+			(std::string) (*r)[0], (std::string) (*r)[1]));
+	}
+
+	for (int i = 0; i < names.size(); ++i) {
+		ret.push_back(describe_table(names[i].first, names[i].second));
+	}
+
+	return ret;
+}
+
+db::table
+connection::describe_table(std::string const &schema, std::string const &name)
+{
+	db::table ret;
+	ret.name = name;
+	ret.schema = schema;
+
+	ORAPP::Query *q = db.query(
+		"SELECT column_name, data_type, nullable FROM all_tab_columns WHERE owner = :tabowner AND table_name = :name");
+	std::string n = boost::algorithm::to_upper_copy(name);
+	std::string o = boost::algorithm::to_upper_copy(schema);
+
+	q->bind(":name", n.c_str());
+	q->bind(":tabowner", o.c_str());
+
+	if (!q->execute()) {
+		throw db::error(db.error());
+	}
+
+	ORAPP::Row *r;
+	while (r = q->fetch()) {
+		db::column c;
+		c.name = (std::string) (*r)[0];
+		c.type = (std::string) (*r)[1];
+		c.nullable = ((char) (*r)[2]) == 'Y';
+		ret.columns.push_back(c);
+	}
+
+	return ret;
 }
 
 } // namespace pgsql

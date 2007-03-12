@@ -1,3 +1,4 @@
+#include <boost/format.hpp>
 #include <mysql.h>
 
 #include "mysqldb.h"
@@ -156,5 +157,68 @@ execution_result::field_name(int col)
 {
 	return names[col];
 }
+
+std::vector<db::table>
+connection::describe_tables(std::string const &schema)
+{
+	std::string query = "SHOW TABLES";
+	if (!schema.empty())
+		query += str(boost::format(" FROM `%s`") % schema);
+
+	if (mysql_real_query(conn, query.c_str(), query.size()) != 0)
+		throw db::error(mysql_error(conn));
+
+	MYSQL_RES *res;
+	if ((res = mysql_use_result(conn)) == NULL)
+		throw db::error(mysql_error(conn));
+
+	std::vector<std::string> names;
+
+	std::vector<db::table> ret;
+	MYSQL_ROW r;
+	while (r = mysql_fetch_row(res)) {
+		names.push_back(r[0]);
+	}
+	mysql_free_result(res);
+
+	for (int i = 0; i < names.size(); ++i) {
+		ret.push_back(describe_table(schema, names[i]));
+	}
+
+	return ret;
+}
+
+db::table
+connection::describe_table(std::string const &schema, std::string const &table)
+{
+	std::string query;
+	if (schema.empty())
+		query = str(boost::format("DESCRIBE `%s`") % table);
+	else
+		query = str(boost::format("DESCRIBE `%s`.`%s`") % schema % table);
+
+	if (mysql_real_query(conn, query.c_str(), query.size()) != 0)
+		throw db::error(mysql_error(conn));
+
+	MYSQL_RES *res;
+	if ((res = mysql_use_result(conn)) == NULL)
+		throw db::error(mysql_error(conn));
+
+	db::table ret;
+	ret.name = table;
+
+	MYSQL_ROW r;
+	while (r = mysql_fetch_row(res)) {
+		db::column c;
+		c.name = r[0];
+		c.type = r[1];
+		c.nullable = !strcmp(r[2], "YES");
+		ret.columns.push_back(c);
+	}
+
+	mysql_free_result(res);
+	return ret;
+}
+
 
 } // namespace mysql

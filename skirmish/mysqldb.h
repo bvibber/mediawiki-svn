@@ -47,6 +47,8 @@ struct connection : db::connection {
 	std::string error(void);
 
 	execution_result *execute_sql(std::string const &);
+	std::vector<db::table> describe_tables(std::string const &);
+	db::table describe_table(std::string const &, std::string const &);
 
 private:
 	MYSQL *conn;

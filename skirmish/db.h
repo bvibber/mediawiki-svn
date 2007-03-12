@@ -31,6 +31,18 @@ struct execution_result : boost::noncopyable {
 	virtual result_row *next_row(void) = 0;
 };
 
+struct column {
+	std::string name;
+	std::string type;
+	bool nullable;
+};
+
+struct table {
+	std::string schema;
+	std::string name;
+	std::vector<column> columns;
+};
+
 struct connection {
 	static boost::shared_ptr<connection> create(std::string const &);
 
@@ -42,6 +54,8 @@ struct connection {
 	virtual ~connection();
 
 	virtual execution_result *execute_sql(std::string const &) = 0;
+	virtual std::vector<table> describe_tables(std::string const & = "") = 0;
+	virtual table describe_table(std::string const &, std::string const &) = 0;
 
 protected:
 	connection();

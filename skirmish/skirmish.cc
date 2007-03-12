@@ -10,12 +10,18 @@
 #include "db.h"
 
 static db::connectionptr open_connection(std::string const &);
+static void show_connection();
+static void handle_internal(std::string const &);
+
 static void add_connection(std::string const &);
 static void list_connections(std::string const &);
 static void switch_connection(std::string const &);
 static void close_connection(std::string const &);
-static void show_connection();
-static void handle_internal(std::string const &);
+static void list_tables(std::string const &);
+static void describe_table(std::string const &);
+
+typedef std::vector<std::vector<std::string> > tabulated_t;
+static void show_tabulated(tabulated_t const &);
 
 struct conndesc {
 	db::connectionptr conn;
@@ -31,6 +37,8 @@ std::map<std::string, boost::function<void (std::string const &)> >
 		("\\ls",	list_connections)
 		("\\sw",	switch_connection)
 		("\\close",	close_connection)
+		("\\lt",	list_tables)
+		("\\dt",	describe_table)
 	;
 
 static db::connectionptr
@@ -256,4 +264,121 @@ show_connection(void)
 	}
 
 	std::cout << boost::format("[connected to %s]\n") % conns[cnr]->desc;
+}
+
+static void
+list_tables(std::string const &arg)
+{
+	if (cnr == -1) {
+		std::cout << "[not connected]\n";
+		return;
+	}
+
+	std::vector<db::table> tables;
+
+	try {
+		tables = conns[cnr]->conn->describe_tables(arg);
+	} catch (db::error const &e) {
+		std::cout << boost::format("[error: %s]\n") % e.what();
+		return;
+	}
+	
+	tabulated_t data;
+	std::vector<std::string> header = boost::assign::list_of
+		("Schema")
+		("Name")
+	;
+	data.push_back(header);
+
+	for (int i = 0; i < tables.size(); ++i) {
+		std::vector<std::string> row;
+		row.push_back(tables[i].schema);
+		row.push_back(tables[i].name);
+		data.push_back(row);
+	}
+	show_tabulated(data);
+}
+
+static void
+describe_table(std::string const &arg)
+{
+	if (cnr == -1) {
+		std::cout << "[not connected]\n";
+		return;
+	}
+
+	if (arg.empty()) {
+		std::cout << "[no table given]\n";
+		return;
+	}
+
+	db::table t;
+	try {
+		std::string schema, table;
+		std::string::size_type i;
+
+		if ((i = arg.find('.')) != std::string::npos) {
+			schema = arg.substr(0, i);
+			table = arg.substr(i + 1);
+		} else
+			table = arg;
+
+		t = conns[cnr]->conn->describe_table(schema, table);
+	} catch (db::error const &e) {
+		std::cout << boost::format("[error: %s]\n") % e.what();
+		return;
+	}
+
+	tabulated_t result;
+	std::vector<std::string> header = boost::assign::list_of
+		("Name")
+		("Type")
+		("Null?")
+	;
+	result.push_back(header);
+
+	for (int i = 0; i < t.columns.size(); ++i) {
+		std::vector<std::string> row;
+		row.push_back(t.columns[i].name);
+		row.push_back(t.columns[i].type);
+		row.push_back(t.columns[i].nullable ? "Y" : "N");
+		result.push_back(row);
+	}
+	show_tabulated(result);
+}
+
+static void
+show_tabulated(tabulated_t const &data)
+{
+	std::vector<int> sizes;
+
+	for (int row = 0; row < data.size(); ++row) {
+		for (int col = 0; col < data[row].size(); ++col) {
+			if (col >= sizes.size())
+				sizes.resize(col + 1);
+			if (sizes[col] < data[row][col].size())
+				sizes[col] = data[row][col].size();
+		}
+	}
+
+	int ncols = sizes.size();
+	for (int row = 0; row < data.size(); ++row) {
+		for (int col = 0; col < ncols; ++col) {
+			std::cout << ' ' << std::setw(sizes[col]) << std::left << data[row][col];
+			if (col != (sizes.size() - 1))
+				std::cout << " |";
+		}
+		std::cout << '\n';
+
+		if (row == 0) {
+			for (int col = 0; col < ncols; ++col) {
+				std::cout << std::string(sizes[col] + 2, '-');
+				if (col == ncols-1)
+					std::cout << '-';
+				else
+					std::cout << '+';
+			}
+			std::cout << '\n';
+		}
+	}
 }
