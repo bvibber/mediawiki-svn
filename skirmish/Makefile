@@ -9,8 +9,7 @@ SRCS =			\
 
 OBJS =	$(SRCS:.cc=.o)
 
-all:
-	$(MAKE) skirmish
+all: skirmish
 
 skirmish: $(OBJS)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) -o $@ $(LIBS)

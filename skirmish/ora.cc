@@ -152,7 +152,7 @@ result::execute(void)
 		if (!ora_success(OCIAttrGet(p, OCI_DTYPE_PARAM, &colname, &namelen, OCI_ATTR_NAME, conn->err)))
 			throw db::error(conn->error());
 
-		fields[i].name = colname;
+		fields[i].name.assign(colname, colname + namelen);
 
 		ub2 width;
 		if (!ora_success(OCIAttrGet(p, OCI_DTYPE_PARAM, &width, 0, OCI_ATTR_DATA_SIZE, conn->err)))
@@ -160,9 +160,9 @@ result::execute(void)
 
 		fields[i].width = width;
 
-		fields[i].data.resize(width);
+		fields[i].data.resize(width + 1);
 		ub2 rcode, len;
-		if (!ora_success(OCIDefineByPos(stmt, &fields[i].define, conn->err, i + 1, &fields[i].data[0], width,
+		if (!ora_success(OCIDefineByPos(stmt, &fields[i].define, conn->err, i + 1, &fields[i].data[0], width + 1,
 				SQLT_STR, &fields[i].isnull, &len, &rcode, OCI_DEFAULT)))
 			throw db::error(conn->error());
 	}
@@ -180,6 +180,7 @@ result::bind(std::string const &key, std::string const &value)
 
 result::~result()
 {
+	OCIHandleFree(stmt, OCI_HTYPE_STMT);
 }
 
 bool
