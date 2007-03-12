@@ -2,9 +2,18 @@
 #include <boost/format.hpp>
 
 #include "db.h"
-#include "mysqldb.h"
-#include "pgsql.h"
-#include "ora.h"
+
+#ifdef SKIRMISH_MYSQL
+# include "mysqldb.h"
+#endif
+
+#ifdef SKIRMISH_POSTGRES
+# include "pgsql.h"
+#endif
+
+#ifdef SKIRMISH_ORACLE
+# include "ora.h"
+#endif
 
 namespace db {
 
@@ -26,13 +35,21 @@ connection::create(std::string const &desc)
 		throw db::error("invalid scheme in description");
 
 	type = desc.substr(0, i);
+#ifdef SKIRMISH_MYSQL
 	if (type == "mysql")
 		return connectionptr(new mysql::connection(desc));
-	else if (type == "postgres")
+	else
+#endif
+#ifdef SKIRMISH_POSTGRES
+	if (type == "postgres")
 		return connectionptr(new postgres::connection(desc));
-	else if (type == "oracle")
+	else
+#endif
+#ifdef SKIRMISH_ORACLE
+	if (type == "oracle")
 		return connectionptr(new oracle::connection(desc));
 	else
+#endif
 		throw db::error(str(boost::format("unknown scheme \"%s\" in description") % desc));
 }
 

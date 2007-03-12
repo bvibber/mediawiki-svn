@@ -1,22 +1,28 @@
-CXX		= icpc
-CXXFLAGS	= -g3 -w2 -wd383,304,981,444
-CPPFLAGS	=
-LIBS		= -lreadline -lcurses
+include config.mk
 
-MYSQL_INCLUDES	= $(shell mysql_config --include)
-MYSQL_LIBS	= $(shell mysql_config --libs)
+ifeq ($(BUILD_MYSQL),YES)
+INCLUDES	+= $(shell mysql_config --include)
+LIBS		+= $(shell mysql_config --libs)
+CPPFLAGS	+= -DSKIRMISH_MYSQL
+DB_SRCS		+= mysql.cc
+endif
 
-PG_INCLUDES	=
-PG_LIBS		= -lpq
+ifeq ($(BUILD_ORACLE),YES)
+INCLUDES	+= -I$(ORACLE_HOME)/rdbms/public -Iorapp
+LIBS		+= -L$(ORACLE_HOME)/lib -lclntsh -Lorapp -lorapp
+SUBDIRS		+= orapp
+CPPFLAGS	+= -DSKIRMISH_ORACLE
+DB_SRCS		+= ora.cc
+endif
 
-ORA_INCLUDES	= -I$(ORACLE_HOME)/rdbms/public
-ORA_LIBS	= -L$(ORACLE_HOME)/lib -lclntsh -Lorapp -lorapp
-
-INCLUDES	= $(MYSQL_INCLUDES) $(PG_INCLUDES) $(ORA_INCLUDES) -Iorapp
-LIBS		+= $(MYSQL_LIBS) $(PG_LIBS) $(ORA_LIBS)
+ifeq ($(BUILD_PG),YES)
+INCLUDES	+= $(PG_INCLUDES)
+LIBS		+= $(PG_LIBS) -lpq
+CPPFLAGS	+= -DSKIRMISH_POSTGRES
+DB_SRCS		+= pgsql.cc
+endif
 
 .cc.o:
 	$(CXX) $(CPPFLAGS) $(INCLUDES) $(CXXFLAGS) -c $<
 
-.SUFFIXES: .cc .o
-
+.SUFFIXES: .cc .ow

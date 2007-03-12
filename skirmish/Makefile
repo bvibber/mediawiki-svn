@@ -1,27 +1,32 @@
+include rules.mk
+
 SRCS =			\
 	linereader.cc	\
 	skirmish.cc	\
 	db.cc		\
-	mysql.cc	\
-	pgsql.cc	\
-	ora.cc		\
+	$(DB_SRCS)
 
 OBJS =	$(SRCS:.cc=.o)
 
 all:
-	$(MAKE) -C orapp all
-	$(MAKE) all
+	for d in $(SUBDIRS); do		\
+		$(MAKE) -I.. -C $$d all	;\
+	done
+	$(MAKE) skirmish
 
 skirmish: $(OBJS)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) -o $@ $(LIBS)
 
 clean:
-	$(MAKE) -C orapp clean
+	for d in $(SUBDIRS); do			\
+		$(MAKE) -I.. -C $$d clean	;\
+	done
 	rm -f $(OBJS) skirmish
-distclean: clean
-	$(MAKE) -C orapp distclean
 
-include rules.mk
+distclean: clean
+	for d in $(SUBDIRS); do			\
+		$(MAKE) -I.. -C $$d distclean	;\
+	done
 
 linereader.o: linereader.cc linereader.h
 skirmish.o: skirmish.cc linereader.h db.h

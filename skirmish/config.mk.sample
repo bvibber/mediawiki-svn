@@ -1,0 +1,22 @@
+# C++ compiler
+CXX		= icpc
+CXXFLAGS	= -g3 -w2 -wd383,304,981,444
+CPPFLAGS	=
+# Maybe -lncurses
+LIBS		= -lreadline -lcurses
+
+# Build MySQL client (mysql_config must be in path)
+BUILD_MYSQL	= YES
+# BUILD_MYSQL	= NO
+
+# Build PostgreSQL client
+BUILD_PG	= YES
+# BUILD_PG	= NO
+
+# Might need -I / -L on some platforms
+PG_INCLUDES	=
+PG_LIBS		=
+
+# Build Oracle client ($ORACLE_HOME must be set)
+BUILD_ORACLE	= YES
+# BUILD_ORACLE	= NO
