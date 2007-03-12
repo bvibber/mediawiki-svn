@@ -241,7 +241,8 @@ class HideRevisionForm {
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select(
 			array( 'page', 'revision' ),
-			'*, 0 AS rc_id, 1 AS rc_patrolled, 0 AS counter, 0 AS rc_old_len, 0 AS rc_new_len',
+			'*, 0 AS rc_id, 1 AS rc_patrolled, 0 AS counter, 0 AS rc_old_len, 0 AS rc_new_len, 
+			NULL AS rc_log_action, 0 AS rc_deleted, 0 AS rc_logid, NULL AS rc_log_type, "" AS rc_params',
 			array(
 				'rev_id' => $this->mRevisions,
 				'rev_page=page_id',
@@ -294,6 +295,11 @@ class HideRevisionForm {
 				'0 AS page_is_new',
 				'0 AS rc_old_len',
 				'0 AS rc_new_len',
+				'0 AS rc_deleted',
+				'0 AS rc_logid',
+				'NULL AS rc_log_type',
+				'NULL AS rc_log_action',
+				'"" AS rc_params'
 			),
 			array(
 				'ar_namespace' => $this->mTarget->getNamespace(),
@@ -527,6 +533,8 @@ function sosGetRevisions( $db, $condition ) {
 			'hidden_rev_id as rev_id',
 			'hidden_text_id as rev_text_id',
 			
+			'0 as rev_len',
+			
 			'hidden_by_user',
 			'hidden_on_timestamp',
 			'hidden_reason',
@@ -537,7 +545,13 @@ function sosGetRevisions( $db, $condition ) {
 			'0 as rc_id',
 			'1 as rc_patrolled',
 			'0 as rc_old_len',
-			'0 as rc_new_len' ),
+			'0 as rc_new_len',
+			'0 as rc_params',
+			
+			'NULL AS rc_log_action',
+			'0 AS rc_deleted',
+			'0 AS rc_logid',
+			'NULL AS rc_log_type' ),
 		array_merge(
 			$condition,
 			array( 'hidden_by_user=user_id' ) ),
