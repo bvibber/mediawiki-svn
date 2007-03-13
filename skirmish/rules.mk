@@ -34,6 +34,13 @@ LIBS		+= -L$(MAXDB_ROOT)/programs/lib -lSQLDBC
 DB_SRCS		+= maxdb.cc
 endif
 
+ifeq ($(BUILD_SQLITE),YES)
+INCLUDES	+= $(SQLITE_INCLUDES)
+CPPFLAGS	+= -DSKIRMISH_SQLITE
+LIBS		+= -lsqlite3
+DB_SRCS		+= sqlite.cc
+endif
+
 .cc.o:
 	$(CXX) $(CPPFLAGS) $(INCLUDES) $(CXXFLAGS) -c $<
 

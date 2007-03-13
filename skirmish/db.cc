@@ -26,6 +26,10 @@
 # include "maxdb.h"
 #endif
 
+#ifdef SKIRMISH_SQLITE
+# include "sqlite.h"
+#endif
+
 namespace db {
 
 connection::connection()
@@ -74,6 +78,9 @@ connection::create(std::string const &desc)
 #ifdef SKIRMISH_MAXDB
 			("maxdb",	construct<maxdb::connection>)
 			("sapdb",	construct<maxdb::connection>)
+#endif
+#ifdef SKIRMISH_SQLITE
+			("sqlite",	construct<sqlite::connection>)
 #endif
 		;
 
