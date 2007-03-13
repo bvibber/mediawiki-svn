@@ -1,7 +1,7 @@
 USERNAME BLACKLIST EXTENSION
 
 	Version 1.6
-	© 2006 Rob Church
+	© 2006-2007 Rob Church
 
 This is free software licensed under the GNU General Public License. Please
 see http://www.gnu.org/copyleft/gpl.html for further details, including the
@@ -58,8 +58,9 @@ list item. For example:
 The example above would prevent creation of the user account "Foo", and any
 account where the username contains "Bar" or "bar".
 
-You can comment out lines with #; this is useful for adding explanation as to
-what a complicated regular expression will block, or for providing reasons.
+Lines without the list token (*) will be ignored when constructing the
+regular expression, which allows for adding comments or other explanations
+to the message page.
 
 == 5. Customising Warning Messages ==
 
@@ -111,6 +112,9 @@ example above), but I'll provide a couple of useful links:
 	
 1.6
 	Support multiple language translations
+	
+1.7
+	Ignore all non-list lines when constructing the regular expression
 	
 == 8. Thanks... ==
 

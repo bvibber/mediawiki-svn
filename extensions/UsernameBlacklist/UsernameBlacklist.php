@@ -5,7 +5,7 @@
  *
  * @author Rob Church <robchur@gmail.com>
  * @addtogroup Extensions
- * @copyright © 2006 Rob Church
+ * @copyright © 2006-2007 Rob Church
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0
  */
 
@@ -86,12 +86,13 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 		
 		/**
-		 * Is the supplied text a comment?
-		 * @param $text Text to check
+		 * Is the supplied text an appropriate fragment to include?
+		 *
+		 * @param string $text Text to validate
 		 * @return bool
 		 */
-		function isComment( $text ) {
-			return substr( $this->transform( $text ), 0, 1 ) == '#';
+		function isUsable( $text ) {
+			return substr( $text, 0, 1 ) == '*';
 		}
 		
 		/**
@@ -122,8 +123,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 			if( $blacklist != '&lt;usernameblacklist&gt;' ) {
 				$lines = explode( "\n", $blacklist );
 				foreach( $lines as $line ) {
-					$line = rtrim( $line );
-					if( !empty( $line ) && !$this->isComment( $line ) )
+					$line = trim( $line );
+					if( $this->isUsable( $line ) )
 						$groups[] = $this->transform( $line );
 				}
 				return count( $groups ) ? '/(' . implode( '|', $groups ) . ')/u' : false;
