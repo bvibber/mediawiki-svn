@@ -20,3 +20,7 @@ PG_LIBS		=
 # Build Oracle client ($ORACLE_HOME must be set)
 BUILD_ORACLE	= YES
 # BUILD_ORACLE	= NO
+
+# Build ODBC client (currently requires unixODBC)
+BUILD_ODBC	= YES
+# BUILD_ODBC	= NO

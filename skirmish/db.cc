@@ -18,6 +18,10 @@
 # include "ora.h"
 #endif
 
+#ifdef SKIRMISH_ODBC
+# include "odbc.h"
+#endif
+
 namespace db {
 
 connection::connection()
@@ -51,9 +55,18 @@ connection::create(std::string const &desc)
 	typedef std::map<std::string, boost::function<connectionptr (std::string const &)> > schemelist_t;
 
 	static schemelist_t schemes = boost::assign::map_list_of
+#ifdef SKIRMISH_MYSQL
 			("mysql",	construct<mysql::connection>)
+#endif
+#ifdef SKIRMISH_POSTGRES
 			("postgres",	construct<postgres::connection>)
+#endif
+#ifdef SKIRMISH_ORACLE
 			("oracle",	construct<oracle::connection>)
+#endif
+#ifdef SKIRMISH_ODBC
+			("odbc",	construct<odbc::connection>)
+#endif
 		;
 
 	schemelist_t::iterator it = schemes.find(type);

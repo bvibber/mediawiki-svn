@@ -85,8 +85,6 @@ struct connection {
 	virtual void open(void) = 0;
 	virtual void close(void) = 0;
 
-	virtual std::string error(void) = 0;
-
 	virtual ~connection();
 
 	virtual resultptr execute_sql(std::string const &) = 0;

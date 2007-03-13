@@ -20,6 +20,13 @@ CPPFLAGS	+= -DSKIRMISH_POSTGRES
 DB_SRCS		+= pgsql.cc
 endif
 
+ifeq ($(BUILD_ODBC),YES)
+INCLUDES	+=
+CPPFLAGS	+= $(shell odbc_config --cflags) -DSKIRMISH_ODBC
+LIBS		+= $(shell odbc_config --libs)
+DB_SRCS		+= odbc.cc
+endif
+
 .cc.o:
 	$(CXX) $(CPPFLAGS) $(INCLUDES) $(CXXFLAGS) -c $<
 
