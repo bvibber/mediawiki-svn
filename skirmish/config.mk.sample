@@ -24,3 +24,9 @@ BUILD_ORACLE	= YES
 # Build ODBC client (currently requires unixODBC)
 BUILD_ODBC	= YES
 # BUILD_ODBC	= NO
+
+# Build MaxDB (requires MaxDB SDK)
+BUILD_MAXDB	= YES
+# BUILD_MAXDB	= NO
+
+MAXDB_ROOT	= /opt/sdb

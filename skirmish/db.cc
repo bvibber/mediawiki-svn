@@ -22,6 +22,10 @@
 # include "odbc.h"
 #endif
 
+#ifdef SKIRMISH_MAXDB
+# include "maxdb.h"
+#endif
+
 namespace db {
 
 connection::connection()
@@ -66,6 +70,10 @@ connection::create(std::string const &desc)
 #endif
 #ifdef SKIRMISH_ODBC
 			("odbc",	construct<odbc::connection>)
+#endif
+#ifdef SKIRMISH_MAXDB
+			("maxdb",	construct<maxdb::connection>)
+			("sapdb",	construct<maxdb::connection>)
 #endif
 		;
 

@@ -27,6 +27,13 @@ LIBS		+= $(shell odbc_config --libs)
 DB_SRCS		+= odbc.cc
 endif
 
+ifeq ($(BUILD_MAXDB),YES)
+INCLUDES	+= -I$(MAXDB_ROOT)/programs/sdk/sqldbc/incl
+CPPFLAGS	+= -DSKIRMISH_MAXDB
+LIBS		+= -L$(MAXDB_ROOT)/programs/lib -lSQLDBC
+DB_SRCS		+= maxdb.cc
+endif
+
 .cc.o:
 	$(CXX) $(CPPFLAGS) $(INCLUDES) $(CXXFLAGS) -c $<
 
