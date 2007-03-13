@@ -44,6 +44,41 @@ function efSyntaxHighlightMessages() {
 'syntaxhighlight-err-loading' => '(fout bij het laden van de lijst met ondersteunde talen)',
 ),
 
+/* Chinese (China) (Shinjiman) */
+'zh-cn' => array(
+'syntaxhighlight-specify' => '您需要指定一种语言，像这样:',
+'syntaxhighlight-supported' => '语法高亮所支持的语言:',
+'syntaxhighlight-err-loading' => '(支持语言列表载入错误)',
+),
+
+/* Chinese (Hong Kong) (Shinjiman) */
+'zh-hk' => array(
+'syntaxhighlight-specify' => '您需要指定一種語言，像這樣:',
+'syntaxhighlight-supported' => '語法醒目標示所支援的語言:',
+'syntaxhighlight-err-loading' => '(支援語言清單載入錯誤)',
+),
+
+/* Chinese (Singapore) (Shinjiman) */
+'zh-sg' => array(
+'syntaxhighlight-specify' => '您需要指定一种语言，像这样:',
+'syntaxhighlight-supported' => '语法高亮所支持的语言:',
+'syntaxhighlight-err-loading' => '(支持语言列表载入错误)',
+),
+
+/* Chinese (Taiwan) (Shinjiman) */
+'zh-tw' => array(
+'syntaxhighlight-specify' => '您需要指定一種語言，像這樣:',
+'syntaxhighlight-supported' => '語法醒目標示所支援的語言:',
+'syntaxhighlight-err-loading' => '(支援語言清單載入錯誤)',
+),
+
+/* Cantonese (Shinjiman) */
+'zh-yue' => array(
+'syntaxhighlight-specify' => '你需要指定一種語言，好似咁:',
+'syntaxhighlight-supported' => '語法醒目標示所支援嘅語言:',
+'syntaxhighlight-err-loading' => '(支援語言清單載入錯誤)',
+),
+
 	);
 }
 

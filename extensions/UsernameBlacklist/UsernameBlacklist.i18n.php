@@ -50,7 +50,31 @@ daftar hitam nama pengguna]]. Harap pilih nama lain.',
 zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 ),
 
+/* Chinese (China) (Shinjiman) */
+'zh-cn' => array(
+'blacklistedusername' => '列入黑名单的用户名',
+'blacklistedusernametext' => '您所选择的用户名是与[[MediaWiki:Usernameblacklist|用户名黑名单列表]]匹配。请选择另一个名称。',
+),
+
+/* Chinese (Taiwan) (Shinjiman) */
+'zh-tw' => array(
+'blacklistedusername' => '列入黑名單的用戶名',
+'blacklistedusernametext' => '您所選擇的用戶名是與[[MediaWiki:Usernameblacklist|用戶名黑名單列表]]符合。請選擇另一個名稱。',
+),
+
+/* Cantonese (Shinjiman) */
+'zh-yue' => array(
+'blacklistedusername' => '列入黑名單嘅用戶名',
+'blacklistedusernametext' => '你所揀嘅用戶名係同[[MediaWiki:Usernameblacklist|用戶名黑名單一覽]]符合。請揀過另一個名喇。',
+),
+
 	);
+
+	/* Chinese (Hong Kong), inherited from Chinese (Taiwan) */
+	$messages['zh-hk'] = $messages['zh-tw'];
+	/* Chinese (Singapore), inherited from Chinese (China) */
+	$messages['zh-sg'] = $messages['zh-cn'];
+
 	return $single ? $messages['en'] : $messages;
 }
 
