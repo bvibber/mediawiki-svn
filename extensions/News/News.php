@@ -22,7 +22,6 @@ $wgExtensionCredits['other'][] = array(
 	'description' => 'shows recent changes on a wiki page',
 );
 
-$wgPortletDirectory = NULL;
 $wgExtensionFunctions[] = "wfNewsExtension";
 
 $wgAutoloadClasses['NewsRenderer'] = dirname( __FILE__ ) . '/NewsRenderer.php';
