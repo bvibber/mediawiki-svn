@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="libs/postgresql-8.2-504.jdbc3.jar"/>
 	<classpathentry kind="lib" path="libs/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="libs/xml-apis.jar"/>
+	<classpathentry kind="lib" path="libs/swing-layout-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
