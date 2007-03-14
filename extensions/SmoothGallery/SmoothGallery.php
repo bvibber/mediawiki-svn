@@ -34,6 +34,8 @@ $wgExtensionFunctions[] = "wfSetupSpecialSmoothGallery";
 
 $wgHooks['BeforePageDisplay'][] = 'addSmoothGalleryJavascriptAndCSS';
 
+$wgSmoothGalleryExtensionPath = $wgScriptPath . '/extensions/SmoothGallery'; //sane default
+
 function wfSmoothGallery() {
         global $wgParser;
 
@@ -206,7 +208,7 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
         }
 
         //Open the outer div of the gallery
-        $output = '<div id="' . $name . '" class="myGallery" style="width: ' . $width . ';height: ' . $height . '">';
+        $output = '<div id="' . $name . '" class="myGallery" style="width: ' . $width . ';height: ' . $height . '; display:none;">';
 
         //Expand templates in the input
         $input = $parser->replaceVariables( $input );
@@ -218,6 +220,8 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
         //Initialize a string for images we can't find, so that we
         //can report them later
         $missing_img = "";
+
+        $plain_gallery = new ImageGallery();
 
         foreach ( $img_arr as $img ) {
                 //Get the image object from the database
@@ -288,6 +292,8 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
                 }
 
                 $output .= '</div>';
+
+                $plain_gallery->add( $img_obj ); //TODO: use text
         }
 
         //Make sure we have something to output
@@ -311,10 +317,22 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
         //Close the outer div of the gallery
         $output .= '</div>';
 
+        //Wrapper div for plain old gallery, to be shown per default, if JS is off.
+        $output .= '<div id="' . $name . '-plain">';
+
+        $output .= $plain_gallery->toHTML();
+
+        //Close the wrappe div for the plain old gallery
+        $output .= '</div>';
+
         //Output the javascript needed for the gallery with any
         //options the user requested
         $output .= '<script type="text/javascript">';
-        $output .= 'function startGallery() {';
+
+        $output .= 'document.getElementById("' . $name . '-plain").style.display = "none";'; //hide plain gallery
+        $output .= 'document.getElementById("' . $name . '").style.display = "block";'; //show smooth gallery
+
+        $output .= 'function startGallery_' . $name . '() {';
         $output .= "var myGallery = new gallery($('" . $name . "'), {";
 
         //A boolean to tell whether or not we need a comma before
@@ -356,7 +374,7 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
 
         $output .= '});';
         $output .= '}';
-        $output .= 'window.onDomReady(startGallery);';
+        $output .= 'addOnloadHook(startGallery_' . $name . ');';
         $output .= '</script>';
 
         //Finished, let's send it out
