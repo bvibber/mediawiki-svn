@@ -92,7 +92,6 @@ result::result(connection *conn, std::string const &q)
 	, conn(conn)
 	, sql(q)
 {
-std::cout << "q = ["<<q<<"]\n";
 	if ((stmt = conn->conn->createPreparedStatement()) == NULL)
 		throw db::error(conn->error(conn->conn->error()));
 	if (stmt->prepare(q.c_str(), q.size(), SQLDBC_StringEncodingUTF8) != SQLDBC_OK)
@@ -109,13 +108,11 @@ std::cout << "q = ["<<q<<"]\n";
 			throw db::error("could not retrieve parameter length");
 #endif
 		std::vector<char> paramname(namelen + 1);
-std::cout << "namelen = " << namelen << '\n';
 		if (pmd->getParameterName(i, &paramname[0], SQLDBC_StringEncodingUTF8, paramname.size() + 1, &namelen) != SQLDBC_OK)
 			throw db::error("could not retrieve parameter name");
 		param p;
 		p.name.assign(&paramname[0], &paramname[0] + namelen);
 		p.pos = i;
-std::cout << "i = " << i << " nparams = " << nparams << " name = [" << p.name << "] len = " << namelen << "\n";
 		params.push_back(p);
 	}
 }

@@ -164,7 +164,6 @@ connection::describe_tables(std::string const &schema)
 	std::vector<db::table> ret;
 	result::iterator it = r->begin(), end = r->end();
 	for (; it != end; ++it) {
-std::cout << "got row\n";
 		names.push_back(it->string_value(0));
 	}
 

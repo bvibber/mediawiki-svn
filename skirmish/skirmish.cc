@@ -18,10 +18,13 @@ static void list_connections(std::string const &);
 static void switch_connection(std::string const &);
 static void close_connection(std::string const &);
 static void list_tables(std::string const &);
+static void c_prompt(std::string const &);
 static void describe_table(std::string const &);
 
 typedef std::vector<std::vector<std::string> > tabulated_t;
 static void show_tabulated(tabulated_t const &);
+
+static std::string prompt = "skirmish [$(cnr)]>";
 
 struct conndesc {
 	db::connectionptr conn;
@@ -39,6 +42,8 @@ std::map<std::string, boost::function<void (std::string const &)> >
 		("\\close",	close_connection)
 		("\\lt",	list_tables)
 		("\\dt",	describe_table)
+		("\\pr",	c_prompt)
+		("\\prompt",	c_prompt)
 	;
 
 static db::connectionptr
@@ -74,12 +79,16 @@ main(int argc, char *argv[])
 		add_connection(argv[a]);
 
 	db::connectionptr conn;
-	std::string input, prompt;
+	std::string input;
 	for (;;) {
-		if (cnr == -1)
-			prompt = "skirmish (none)>";
-		else
-			prompt = str(boost::format("skirmish [%d]>") % cnr);
+		std::string cnrs;
+		if (cnr == -1) {
+			rl.set_prompt_variable("desc", "not connected");
+			rl.set_prompt_variable("cnr", "none");
+		} else {
+			rl.set_prompt_variable("cnr", boost::lexical_cast<std::string>(cnr));
+			rl.set_prompt_variable("desc", conns[cnr]->desc);
+		}
 
 		if (!rl.readline(input, prompt))
 			break;
@@ -380,4 +389,13 @@ show_tabulated(tabulated_t const &data)
 			std::cout << '\n';
 		}
 	}
+}
+
+static void
+c_prompt(std::string const &arg)
+{
+	if (arg.empty())
+		std::cout << prompt << '\n';
+	else
+		prompt = arg;
 }
