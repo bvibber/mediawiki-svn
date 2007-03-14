@@ -67,29 +67,35 @@ function getSuggestions() {
 			$rowText = 'language_name';
 			break;
 		case 'defined-meaning':
-			$sql = "SELECT syntrans.defined_meaning_id AS defined_meaning_id, expression.spelling AS spelling, expression.language_id AS language_id ".
-					"FROM uw_expression_ns expression, uw_syntrans syntrans ".
-	            	"WHERE expression.expression_id=syntrans.expression_id AND syntrans.identical_meaning=1 " .
-	            	" AND " . getLatestTransactionRestriction('syntrans').
-	            	" AND " . getLatestTransactionRestriction('expression');
+			$sql = 
+				"SELECT uw_syntrans.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS spelling, uw_expression_ns.language_id AS language_id ".
+				" FROM uw_expression_ns, uw_syntrans ".
+	            " WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id " .
+	            " AND uw_syntrans.identical_meaning=1 " .
+	            " AND " . getLatestTransactionRestriction('uw_syntrans').
+	            " AND " . getLatestTransactionRestriction('uw_expression_ns');
 	        break;
 	    case 'class-attributes-level':
 	    	$sql = getSQLForCollectionOfType('LEVL');
 	    	break;
 	    case 'collection':
-	    	$sql = "SELECT collection_id, spelling ".
-	    			"FROM uw_expression_ns expression, uw_collection_ns collection, uw_syntrans syntrans ".
-	    			"WHERE expression.expression_id=syntrans.expression_id AND syntrans.defined_meaning_id=collection.collection_mid ".
-	    			"AND syntrans.identical_meaning=1" .
-	    			" AND " . getLatestTransactionRestriction('syntrans') .
-	    			" AND " . getLatestTransactionRestriction('expression') .
-	    			" AND " . getLatestTransactionRestriction('collection');
+	    	$sql = 
+				"SELECT collection_id, spelling ".
+	    		" FROM uw_expression_ns, uw_collection_ns, uw_syntrans " .
+	    		" WHERE uw_expression_ns.expression_id=syntrans.expression_id" .
+	    		" AND uw_syntrans.defined_meaning_id=uw_collection_ns.collection_mid " .
+	    		" AND uw_syntrans.identical_meaning=1" .
+	    		" AND " . getLatestTransactionRestriction('uw_syntrans') .
+	    		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
+	    		" AND " . getLatestTransactionRestriction('uw_collection_ns');
 	    	break;
 	    case 'transaction':
-	    	$sql = "SELECT transaction_id, user_id, user_ip, " .
-	    			" CONCAT(SUBSTRING(timestamp, 1, 4), '-', SUBSTRING(timestamp, 5, 2), '-', SUBSTRING(timestamp, 7, 2), ' '," .
-	    			" SUBSTRING(timestamp, 9, 2), ':', SUBSTRING(timestamp, 11, 2), ':', SUBSTRING(timestamp, 13, 2)) AS time, comment" .
-	    			" FROM transactions WHERE 1";
+	    	$sql = 
+				"SELECT transaction_id, user_id, user_ip, " .
+	    		" CONCAT(SUBSTRING(timestamp, 1, 4), '-', SUBSTRING(timestamp, 5, 2), '-', SUBSTRING(timestamp, 7, 2), ' '," .
+	    		" SUBSTRING(timestamp, 9, 2), ':', SUBSTRING(timestamp, 11, 2), ':', SUBSTRING(timestamp, 13, 2)) AS time, comment" .
+	    		" FROM transactions WHERE 1";
+	    		
 	    	$rowText = "CONCAT(SUBSTRING(timestamp, 1, 4), '-', SUBSTRING(timestamp, 5, 2), '-', SUBSTRING(timestamp, 7, 2), ' '," .
 	    			" SUBSTRING(timestamp, 9, 2), ':', SUBSTRING(timestamp, 11, 2), ':', SUBSTRING(timestamp, 13, 2))";
 	    	break;
@@ -158,36 +164,51 @@ function getSuggestions() {
 }
 
 function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType) {
-	global $wgDefaultClassMids;
+	global 
+		$wgDefaultClassMids;
 
-	$dbr = & wfGetDB(DB_SLAVE);
-	$sql = 'SELECT attribute_mid,spelling' .
-		' FROM uw_class_attributes' .
-		' JOIN bootstrapped_defined_meanings ON bootstrapped_defined_meanings.defined_meaning_id = uw_class_attributes.level_mid' .
-		' JOIN uw_syntrans ON uw_syntrans.defined_meaning_id = uw_class_attributes.attribute_mid' .
-		' JOIN uw_expression_ns ON uw_expression_ns.expression_id = uw_syntrans.expression_id' .
-		' JOIN uw_class_membership ON uw_class_membership.class_mid = uw_class_attributes.class_mid' .
-		' WHERE bootstrapped_defined_meanings.name LIKE ' . $dbr->addQuotes($attributesLevel) .
+	if (count($wgDefaultClassMids) > 0)
+		$defaultClassRestriction = " OR uw_class_attributes.class_mid IN (" . join($wgDefaultClassMids, ", ") . ")";
+	else
+		$defaultClassRestriction = "";
+
+	$dbr =& wfGetDB(DB_SLAVE);
+	$sql = 
+		'SELECT attribute_mid, spelling' .
+		' FROM bootstrapped_defined_meanings, uw_class_attributes, uw_syntrans, uw_expression_ns' .
+		' WHERE bootstrapped_defined_meanings.name = ' . $dbr->addQuotes($attributesLevel) .
+		' AND bootstrapped_defined_meanings.defined_meaning_id = uw_class_attributes.level_mid' .
+		' AND uw_class_attributes.attribute_type = ' . $dbr->addQuotes($attributesType) .
+		' AND uw_syntrans.defined_meaning_id = uw_class_attributes.attribute_mid' .
+		' AND uw_expression_ns.expression_id = uw_syntrans.expression_id' .
 		' AND ' . getLatestTransactionRestriction('uw_class_attributes') .
-		' AND uw_class_attributes.attribute_type LIKE ' . $dbr->addQuotes($attributesType) .
-		' AND ((uw_class_membership.class_member_mid = ' . $objectId .
-		' AND ' . getLatestTransactionRestriction('uw_class_membership') . ')';
-	foreach ($wgDefaultClassMids as $mid)
-		$sql .= ' OR uw_class_attributes.class_mid = ' . $mid;
-	$sql .= ')';
+		' AND ' . getLatestTransactionRestriction('uw_expression_ns') .
+		' AND ' . getLatestTransactionRestriction('uw_syntrans') .
+		' AND (uw_class_attributes.class_mid IN (' .
+				' SELECT class_mid ' .
+				' FROM   uw_class_membership' .
+				' WHERE  uw_class_membership.class_member_mid = ' . $objectId .
+				' AND ' . getLatestTransactionRestriction('uw_class_membership') .
+				' )'.
+				$defaultClassRestriction .
+		')';
+
 	return $sql;
 }
 
 function getSQLForCollectionOfType($collectionType) {
-	return "SELECT member_mid, spelling, collection_mid " .
-            "FROM uw_collection_contents, uw_collection_ns, uw_syntrans syntrans, uw_expression_ns expression " .
-            "WHERE uw_collection_contents.collection_id=uw_collection_ns.collection_id and uw_collection_ns.collection_type='$collectionType' " .
-            
-            "AND syntrans.defined_meaning_id=uw_collection_contents.member_mid " .
-            "AND expression.expression_id=syntrans.expression_id AND syntrans.identical_meaning=1 ".
-            "AND " . getLatestTransactionRestriction('syntrans') .
-            "AND " . getLatestTransactionRestriction('expression') .
-            "AND " . getLatestTransactionRestriction('uw_collection_contents');
+	return 
+		"SELECT member_mid, spelling, collection_mid " .
+        " FROM uw_collection_contents, uw_collection_ns, uw_syntrans, uw_expression_ns " .
+        " WHERE uw_collection_contents.collection_id=uw_collection_ns.collection_id " .
+        " AND uw_collection_ns.collection_type='$collectionType' " .
+        " AND uw_syntrans.defined_meaning_id=uw_collection_contents.member_mid " .
+        " AND uw_expression_ns.expression_id=uw_syntrans.expression_id " .
+        " AND uw_syntrans.identical_meaning=1 " .
+        " AND " . getLatestTransactionRestriction('uw_syntrans') .
+        " AND " . getLatestTransactionRestriction('uw_expression_ns') .
+        " AND " . getLatestTransactionRestriction('uw_collection_ns') .
+        " AND " . getLatestTransactionRestriction('uw_collection_contents');
 }
 
 function getRelationTypeAsRecordSet($queryResult) {
