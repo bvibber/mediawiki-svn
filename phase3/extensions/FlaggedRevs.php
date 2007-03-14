@@ -70,6 +70,35 @@ class FlaggedRevs {
         return $flags;
     }
 
+    function getLatestRev($dimension,$page_id, $before_rev_id=Null) {
+        #XXX dirty, dirty, dirty
+        if ($before_rev_id)
+            $where_rev = "and $fr_id < $before_rev_id ";
+        $sql = "select 
+                    flaggedrevs.*
+                from 
+                    flaggedrevs,
+                    revision
+                where 
+                    rev_id = flaggedrevs.fr_rev_id and 
+                    rev_page=$page_id and 
+                    fr_dimension='$dimension' and 
+                    fr_flag > 0
+                    $where_rev 
+                order by 
+                    fr_rev_id desc,
+                    fr_id desc 
+                limit 
+                    1";
+        $db =& wfGetDB(DB_SLAVE);
+        $result = $db->query($sql);
+        if ($db->numRows($result)) {
+            $row = $db->fetchObject($result);
+            return array($row->fr_rev_id,$row->fr_flag);
+        }
+        return Null;
+    }
+
     function addFlaggs(&$out) {
         global $wgArticle;
         if ($out->isArticle())
@@ -87,17 +116,27 @@ class FlaggedRevs {
         if ($revid) 
             $flags = $this->getFlagsForRevision($revid);
         $flaghtml = '';
+        list($latestrev, $latestflag) = $this->getLatestRev('quality',$wgArticle->getId());
+        if ($revid) {
+            if ($latestrev == $revid)
+                $flaghtml = 'This is the most recent version for dimension quality';
+            else 
+                $flaghtml = "Revision $latestrev would be the most recent version for dimension quality";
+            $flaghtml.="<br>\n";
+        }
+
+        $listhtml = ''; 
         if (sizeof($flags)) { 
             foreach ($this->dimensions as $dimension=>$content) {
                 $value = $content['flags'][$flags[$dimension]];
-                $flaghtml.="<li>$dimension: $value</li>\n";    
+                $listhtml.="<li>$dimension: $value</li>\n";    
             }
         } else {
-            $flaghtml.='<li>No Flags yet</li>';    
+            $listhtml.='<li>No Flags yet</li>';    
         }
         #print_r($wgArticle);
-        $out->mBodytext="<p>Flags for revision $revid:<ul>$flaghtml</ul></p>".$out->mBodytext;
-        #$out->addHTML("<p><blink>$text</blink></p>");
+        $flaghtml .= "<p>Flags for revision $revid:<ul>$listhtml</ul></p>".$out->mBodytext;
+        $out->mBodytext= $flaghtml;       #$out->addHTML("<p><blink>$text</blink></p>");
         
     }
 
