@@ -6,7 +6,7 @@
 #include <boost/function.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include "linereader.h"
+#include "terminal.h"
 #include "db.h"
 
 static db::connectionptr open_connection(std::string const &);
@@ -71,10 +71,11 @@ add_connection(std::string const &where)
 	show_connection();
 }
 
+terminal term;
+
 int
 main(int argc, char *argv[])
 {
-	linereader rl;
 	for (int a = 1; argv[a]; ++a)
 		add_connection(argv[a]);
 
@@ -83,14 +84,14 @@ main(int argc, char *argv[])
 	for (;;) {
 		std::string cnrs;
 		if (cnr == -1) {
-			rl.set_prompt_variable("desc", "not connected");
-			rl.set_prompt_variable("cnr", "none");
+			term.set_prompt_variable("desc", "not connected");
+			term.set_prompt_variable("cnr", "none");
 		} else {
-			rl.set_prompt_variable("cnr", boost::lexical_cast<std::string>(cnr));
-			rl.set_prompt_variable("desc", conns[cnr]->desc);
+			term.set_prompt_variable("cnr", boost::lexical_cast<std::string>(cnr));
+			term.set_prompt_variable("desc", conns[cnr]->desc);
 		}
 
-		if (!rl.readline(input, prompt))
+		if (!term.readline(input, prompt))
 			break;
 
 		if (input.empty())
@@ -151,28 +152,33 @@ main(int argc, char *argv[])
 			}
 
 			for (int row = 0; row < data.size(); ++row) {
+				std::stringstream output;
+
 				for (int col = 0; col < ncols; ++col) {
-					std::cout << ' ' << std::setw(sizes[col]) << std::left << data[row][col];
+					output << ' ' << std::setw(sizes[col]) << std::left << data[row][col];
 					if (col != (res->num_fields() - 1))
-						std::cout << " |";
+						output << " |";
 				}
-				std::cout << '\n';
+				term.putline(output.str());
+
+				output.clear();
+				output.str("");
 
 				if (row == 0) {
 					for (int col = 0; col < ncols; ++col) {
-						std::cout << std::string(sizes[col] + 2, '-');
+						output << std::string(sizes[col] + 2, '-');
 						if (col == ncols-1)
-							std::cout << '-';
+							output << '-';
 						else
-							std::cout << '+';
+							output << '+';
 					}
-					std::cout << '\n';
+					term.putline(output.str());
 				}
 			}
 		}
 
 		if (nrows)
-			std::cout << boost::format("\nOK (%d rows).\n") % nrows;
+			term.putline(str(boost::format("\nOK (%d rows).\n") % nrows));
 	}
 } 
 
@@ -371,22 +377,27 @@ show_tabulated(tabulated_t const &data)
 
 	int ncols = sizes.size();
 	for (int row = 0; row < data.size(); ++row) {
+		std::ostringstream output;
+
 		for (int col = 0; col < ncols; ++col) {
-			std::cout << ' ' << std::setw(sizes[col]) << std::left << data[row][col];
+			output << ' ' << std::setw(sizes[col]) << std::left << data[row][col];
 			if (col != (sizes.size() - 1))
-				std::cout << " |";
+				output << " |";
 		}
-		std::cout << '\n';
+		term.putline(output.str());
 
 		if (row == 0) {
+			output.str("");
+			output.clear();
+
 			for (int col = 0; col < ncols; ++col) {
-				std::cout << std::string(sizes[col] + 2, '-');
+				output << std::string(sizes[col] + 2, '-');
 				if (col == ncols-1)
-					std::cout << '-';
+					output << '-';
 				else
-					std::cout << '+';
+					output << '+';
 			}
-			std::cout << '\n';
+			term.putline(output.str());
 		}
 	}
 }

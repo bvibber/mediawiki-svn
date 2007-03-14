@@ -2,7 +2,7 @@ include config.mk
 include rules.mk
 
 SRCS =			\
-	linereader.cc	\
+	terminal.cc	\
 	skirmish.cc	\
 	db.cc		\
 	$(DB_SRCS)
