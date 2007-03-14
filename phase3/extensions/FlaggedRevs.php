@@ -11,7 +11,7 @@ CREATE TABLE `flaggedrevs` (
   `fr_id` int(10) NOT NULL auto_increment,
   `fr_rev_id` int(10) NOT NULL,
   `fr_dimension` varchar(255) NOT NULL,
-  `fr_tag` int(2) NOT NULL,
+  `fr_flag` int(2) NOT NULL,
   `fr_user` int(5) NOT NULL,
   `fr_timestamp` char(14) NOT NULL,
   `fr_comment` varchar(255) default NULL,
