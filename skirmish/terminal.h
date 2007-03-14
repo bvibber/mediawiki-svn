@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 
+#include <termio.h>
+
 struct terminal {
 	terminal();
 	~terminal();
@@ -11,6 +13,8 @@ struct terminal {
 	bool readline(std::string &, std::string const &);
 	void set_prompt_variable(std::string const &var, std::string const &value);
 	void putline(std::string const &line);
+	void reset_pager(void);
+	bool rawread(char &c);
 
 private:
 	std::string form_prompt(std::string const &);
@@ -19,6 +23,7 @@ private:
 	std::map<std::string, std::string> promptvars;
 	int rows, cols;
 	int rows_output;
+	struct termios norm, raw;
 };
 
 #endif

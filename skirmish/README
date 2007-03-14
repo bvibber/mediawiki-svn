@@ -1,0 +1,17 @@
+                             Skirmish
+                             ========
+
+Skirmish is a command-line SQL client with support for several DBMSs:
+
+	* MySQL
+	* PostgreSQL
+	* Oracle
+	* MaxDB
+	* SQLite
+	* Any other ODBC-compliant database
+
+The client connects to the database and executes SQL command in a similar
+manner to the database's native client.  Multiple connections can be opened
+and used from within a single client instance.
+
+For more information, see the manual page skirmish(1).

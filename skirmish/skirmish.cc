@@ -12,6 +12,7 @@
 static db::connectionptr open_connection(std::string const &);
 static void show_connection();
 static void handle_internal(std::string const &);
+static bool read_input_line(std::string &, std::string const &);
 
 static void add_connection(std::string const &);
 static void list_connections(std::string const &);
@@ -82,6 +83,7 @@ main(int argc, char *argv[])
 	db::connectionptr conn;
 	std::string input;
 	for (;;) {
+		term.reset_pager();
 		std::string cnrs;
 		if (cnr == -1) {
 			term.set_prompt_variable("desc", "not connected");
@@ -91,7 +93,7 @@ main(int argc, char *argv[])
 			term.set_prompt_variable("desc", conns[cnr]->desc);
 		}
 
-		if (!term.readline(input, prompt))
+		if (!read_input_line(input, prompt))
 			break;
 
 		if (input.empty())
@@ -152,7 +154,7 @@ main(int argc, char *argv[])
 			}
 
 			for (int row = 0; row < data.size(); ++row) {
-				std::stringstream output;
+				std::ostringstream output;
 
 				for (int col = 0; col < ncols; ++col) {
 					output << ' ' << std::setw(sizes[col]) << std::left << data[row][col];
@@ -178,7 +180,7 @@ main(int argc, char *argv[])
 		}
 
 		if (nrows)
-			term.putline(str(boost::format("\nOK (%d rows).\n") % nrows));
+			term.putline(str(boost::format("\nOK (%d rows).") % nrows));
 	}
 } 
 
@@ -409,4 +411,42 @@ c_prompt(std::string const &arg)
 		std::cout << prompt << '\n';
 	else
 		prompt = arg;
+}
+
+static bool
+read_input_line(std::string &input, std::string const &prompt)
+{
+	std::string ti, rp = prompt;
+	bool instr = false;
+
+	input = "";
+	for (;;) {
+		if (!term.readline(ti, rp))
+			return false;
+
+		if (!ti.empty() && input.empty() && ti[0] == '\\') {
+			input = ti;
+			return true;
+		}
+
+		for (int i = 0; i < ti.size(); ++i) {
+			switch (ti[i]) {
+			case '\'':
+				instr = !instr;
+				break;
+			default:
+				;
+			}
+		}
+
+		if (!instr && ti[ti.size() - 1] == ';') {
+			ti.resize(ti.size() - 1);
+			input += ti;
+			return true;
+		}
+
+		input += ti + '\n';
+		rp = "... ";
+	}
+	return true;
 }

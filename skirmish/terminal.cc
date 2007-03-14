@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 
 #include <cstdlib>
 #include <iostream>
+#include <sstream>
 
 #include <sys/types.h>
 #include <sys/ioctl.h>
@@ -13,11 +15,19 @@
 
 terminal::terminal(void)
 	: rows_output(0)
+	, rows(0)
+	, cols(0)
 {
-	struct winsize wz;
-	ioctl(0, TIOCGWINSZ, &wz);
-	rows = wz.ws_row;
-	cols = wz.ws_col;
+	if (isatty(STDOUT_FILENO)) {
+		struct winsize wz;
+		ioctl(STDOUT_FILENO, TIOCGWINSZ, &wz);
+		rows = wz.ws_row;
+		cols = wz.ws_col;
+	}
+
+	tcgetattr(0, &norm);
+	std::memcpy(&raw, &norm, sizeof(norm));
+	cfmakeraw(&raw);
 }
 
 terminal::~terminal(void)
@@ -88,12 +98,15 @@ terminal::putline(std::string const &line)
 		return;
 	}
 
-	std::string rest = line;
-	while (rest.size() > cols) {
-		really_put_line(rest.substr(0, cols));
-		rest = rest.substr(cols);
+	std::istringstream strm(line);
+	std::string rest;
+	while (std::getline(strm, rest)) {
+		while (rest.size() > cols) {
+			really_put_line(rest.substr(0, cols));
+			rest = rest.substr(cols);
+		}
+		really_put_line(rest);
 	}
-	really_put_line(rest);
 }
 
 void
@@ -101,10 +114,39 @@ terminal::really_put_line(std::string const &line)
 {
 	if (rows - 1 == rows_output) {
 		rows_output = 0;
-		std::cout << "-- More --";
-		std::string dummy;
-		std::getline(std::cin, dummy);
+		std::cout << "-- More --" << std::flush;
+		char c;
+		if (!rawread(c))
+			return;
+		switch (c) {
+		case ' ':
+			rows_output = 0;
+			break;
+		default:
+		case '\n':
+			rows_output = rows - 2;
+			break;
+		}
+		std::cout << '\r';
 	}
 	std::cout << line << '\n';
 	++rows_output;
+}
+
+void
+terminal::reset_pager(void)
+{
+	rows_output = 0;
+}
+
+bool
+terminal::rawread(char &c)
+{
+	tcsetattr(0, TCSANOW, &raw);
+	if (read(0, &c, 1) < 1) {
+		tcsetattr(0, TCSANOW, &norm);
+		return false;
+	}
+	tcsetattr(0, TCSANOW, &norm);
+	return true;
 }
