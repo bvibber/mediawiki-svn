@@ -34,7 +34,9 @@ $wgExtensionFunctions[] = "wfSetupSpecialSmoothGallery";
 
 $wgHooks['BeforePageDisplay'][] = 'addSmoothGalleryJavascriptAndCSS';
 
-$wgSmoothGalleryExtensionPath = $wgScriptPath . '/extensions/SmoothGallery'; //sane default
+//sane defaults. always initialize to avoid register_globals vulnerabilities
+$wgSmoothGalleryDelimiter = "\n";
+$wgSmoothGalleryExtensionPath = $wgScriptPath . '/extensions/SmoothGallery'; 
 
 function wfSmoothGallery() {
         global $wgParser;
@@ -109,6 +111,32 @@ class SmoothGallery {
 
                 $wgOut->addHTML( renderSmoothGallery( $this->mInput, $this->mOptionArray, $local_parser ) );
         }
+}
+
+function smoothGalleryImagesByCat( $title ) {
+	global $wgContLang;
+
+	$name = $title->getDBKey();
+
+	$dbr = wfGetDB( DB_SLAVE );
+
+	list( $page, $categorylinks ) = $dbr->tableNamesN( 'page', 'categorylinks' );
+	$sql = "SELECT page_namespace, page_title FROM $page " .
+		"JOIN $categorylinks ON cl_from = page_id " .
+		"WHERE cl_to = " . $dbr->addQuotes( $name ) . " " .
+		"AND page_namespace = " . NS_IMAGE . " " .
+		"ORDER BY cl_sortkey";
+
+	$images = array();
+	$res = $dbr->query( $sql, 'smoothGalleryImagesByCat' );
+	while ( $row = $dbr->fetchObject( $res ) ) {
+		$img = Title::makeTitle( $row->page_namespace, $row->page_title );
+
+		$images[] = $img;
+	}
+	$dbr->freeResult($res);
+
+	return $images;
 }
 
 /**
@@ -217,25 +245,47 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
         $img_arr = explode( $wgSmoothGalleryDelimiter, $input );
         $img_count = count( $img_arr );
 
-        //Initialize a string for images we can't find, so that we
-        //can report them later
-        $missing_img = "";
-
-        $plain_gallery = new ImageGallery();
-
+        $title_arr = array();
         foreach ( $img_arr as $img ) {
-                //Get the image object from the database
-                #$img_obj = Image::newFromName( $wgContLang->ucfirst($img) );
 		$title = Title::newFromText( $img, NS_IMAGE );
 
 		if ( is_null($title) ) {
 			continue;
 		}
 
+		$ns = $title->getNamespace();
+		
+		if ( $ns == NS_IMAGE ) $title_arr[] = $title;
+		else if ( $ns == NS_CATEGORY ) {
+			//list images in category
+			$cat_images = smoothGalleryImagesByCat( $title );
+			if ( $cat_images ) {
+				$title_arr = array_merge( $title_arr, $cat_images );
+			}
+		}
+        }
+
+        //Initialize a string for images we can't find, so that we
+        //can report them later
+        $missing_img = "";
+
+        $plain_gallery = new ImageGallery();
+
+        foreach ( $title_arr as $title ) {
+		$img = $title->getText();
+
+                //Get the image object from the database
+                #$img_obj = Image::newFromName( $wgContLang->ucfirst($img) );
 		$img_obj = new Image( $title );
 
                 //Image wasn't found. No point in going any further.
                 if ( is_null($img_obj) ) {
+                        continue;
+                }
+
+                //check media type. Only images are supported
+		$mtype = $img_obj->getMediaType();
+                if ( $mtype != MEDIATYPE_DRAWING && $mtype != MEDIATYPE_BITMAP ) {
                         continue;
                 }
 
@@ -271,7 +321,7 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
                         //add this to the list of missing objects and not output
                         //any html
                         $img_count = $img_count - 1;
-                        $missing_img .= " " . $img;
+                        $missing_img .= " " . htmlspecialchars($img);
 
                         continue;
                 }
