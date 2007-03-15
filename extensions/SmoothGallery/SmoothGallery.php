@@ -54,11 +54,11 @@ function wfSetupSpecialSmoothGallery() {
         $wgMessageCache->addMessage('smoothgallery', 'Special:SmoothGallery');
 }
 
-function wfSpecialSmoothGallery() {
+function wfSpecialSmoothGallery( $par ) {
         global $wgRequest;
 
         $gallery = new SmoothGallery( $wgRequest );
-        $gallery->execute();
+        $gallery->execute( $par );
 }
 
 class SmoothGallery {
@@ -68,23 +68,25 @@ class SmoothGallery {
         var $mOptionArray, $mInput;
 
         function SmoothGallery( &$request ) {
-                global $wgSmoothGalleryDelimiter;
+                global $wgImageLimits, $wgUser;
 
-                //This is a dirty, dirty hack that should be replaced. It works, and
-                //it is safe, but there *MUST* be a better way to do this...
-                if ( !isset($wgSmoothGalleryDelimiter) ) {
-                        $wgSmoothGalleryDelimiter = "\n";
+                $wopt = $wgUser->getOption( 'imagesize' );
+
+                if( !isset( $wgImageLimits[$wopt] ) ) {
+                        $wopt = User::getDefaultOption( $sizeDefault );
                 }
-                $this->mInput = $request->getVal( 'input' );
-                $this->mInput = str_replace( array( ":::" ), array( "$wgSmoothGalleryDelimiter" ), $this->mInput );
 
-                $this->mOptionArray['height'] = $request->getVal( 'height' );
-                $this->mOptionArray['width'] = $request->getVal( 'width' );
-                $this->mOptionArray['showcarousel'] = $request->getVal( 'showcarousel' );
+                list($width, $height) = $wgImageLimits[$wopt];
+
+                $this->mInput = $request->getVal( 'input' );
+
+                $this->mOptionArray['height'] = $request->getVal( 'height', $height );
+                $this->mOptionArray['width'] = $request->getVal( 'width', $width );
+                $this->mOptionArray['showcarousel'] = $request->getVal( 'showcarousel', '1' );
                 $this->mOptionArray['timed'] = $request->getVal( 'timed' );
                 $this->mOptionArray['delay'] = $request->getVal( 'delay' );
-                $this->mOptionArray['showarrows'] = $request->getVal( 'showarrows' );
-                $this->mOptionArray['showinfopane'] = $request->getVal( 'showinfopane' );
+                $this->mOptionArray['showarrows'] = $request->getVal( 'showarrows', '1' );
+                $this->mOptionArray['showinfopane'] = $request->getVal( 'showinfopane', '1' );
 
                 //The extension expects true/false and not 1/0
                 $boollist = array("showcarousel", "timed", "delay", "showarrows", "showinfopane");
@@ -97,19 +99,17 @@ class SmoothGallery {
                 }
         }
 
-        function execute() {
+        function execute( $par ) {
+                global $wgSmoothGalleryDelimiter;
                 global $wgOut;
                 global $wgTitle;
                 global $wgParser;
 
-                //We need a parser to pass to the render function, this
-                //seems kinda dirty, but it works on MediaWiki 1.6-1.9...
-                $local_parser = clone $wgParser;
-                $local_parser->mOptions = new ParserOptions();
-                $local_parser->Title( $wgTitle );
-                $local_parser->clearState();
+                if (!$this->mInput) $this->mInput = $par;
 
-                $wgOut->addHTML( renderSmoothGallery( $this->mInput, $this->mOptionArray, $local_parser ) );
+                $this->mInput = str_replace( array('|', ':::'), $wgSmoothGalleryDelimiter, $this->mInput );
+
+                $wgOut->addHTML( renderSmoothGallery( $this->mInput, $this->mOptionArray, $wgParser ) );
         }
 }
 
@@ -143,12 +143,10 @@ function smoothGalleryImagesByCat( $title ) {
  * @todo Internationalize
  */
 function renderSmoothGallery( $input, $argv, &$parser ) {
-        global $wgContLang;
+        global $wgContLang, $wgUser, $wgTitle;
         global $wgSmoothGalleryDelimiter;
 
-        if ( !isset($wgSmoothGalleryDelimiter) ) {
-                $wgSmoothGalleryDelimiter = "\n";
-        }
+        $skin = $wgUser->getSkin();
 
         //Sanity check
         if ( $input == "" ) {
@@ -224,7 +222,7 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
 
                 //This is a dirty, dirty hack that should be replaced. It works, and
                 //it is safe, but there *MUST* be a better way to do this...
-                $input = str_replace( array( "$wgSmoothGalleryDelimiter" ), array( ":::"), $input );
+                $input = str_replace( $wgSmoothGalleryDelimiter, '|', $input );
 
                 //Get a local link from the special page
                 $sp = Title::newFromText( "Special:SmoothGallery" );
@@ -238,8 +236,16 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
         //Open the outer div of the gallery
         $output = '<div id="' . $name . '" class="myGallery" style="width: ' . $width . ';height: ' . $height . '; display:none;">';
 
+        //We need a parser to pass to the render function, this
+        //seems kinda dirty, but it works on MediaWiki 1.6-1.9...
+        $local_parser = clone $parser;
+        $local_parser_options = new ParserOptions();
+        $local_parser->mOptions = $local_parser_options;
+        $local_parser->Title( $wgTitle );
+        $local_parser->mArgStack = array();
+
         //Expand templates in the input
-        $input = $parser->replaceVariables( $input );
+        $local_parser->replaceVariables( $input );
 
         //The image array is a delimited list of images (strings)
         $img_arr = explode( $wgSmoothGalleryDelimiter, $input );
@@ -272,14 +278,21 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
         $plain_gallery = new ImageGallery();
 
         foreach ( $title_arr as $title ) {
-		$img = $title->getText();
-
                 //Get the image object from the database
-                #$img_obj = Image::newFromName( $wgContLang->ucfirst($img) );
-		$img_obj = new Image( $title );
+                $img_obj = new Image( $title );
 
                 //Image wasn't found. No point in going any further.
                 if ( is_null($img_obj) ) {
+                        continue;
+                }
+
+                if ( !$img_obj->exists() ) {
+                        //The user asked for an image that doesn't exist, let's
+                        //add this to the list of missing objects and not output
+                        //any html
+                        $img_count = $img_count - 1;
+                        $missing_img .= " " . htmlspecialchars( $img_obj->getName() );
+
                         continue;
                 }
 
@@ -303,35 +316,41 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
                 if ( $carousel ) {
                         //We are going to show a carousel to the user; we need
                         //to make icon thumbnails
-                        $icon_thumb = $img_obj->createThumb( "100" );
-                        if ( $icon_thumb == "" ) {
+                        //$thumb_obj = $img_obj->getThumbnail( 120, 120 ); //would be nice to reuse images already loaded...
+                        $thumb_obj = $img_obj->getThumbnail( 100, 75 );
+                        if ( $thumb_obj ) {
+                                $icon_thumb = $thumb_obj->getUrl();
+                        }
+                        else {
                                 //The thumbnail we requested was larger than the image;
                                 //we need to just provide the image
                                 $icon_thumb = $img_obj->getUrl();
                         }
                 }
 
-                //Load the image page from the database with the provided title from
-                //the image object
-                $db = wfGetDB( DB_SLAVE );
-                $img_rev = Revision::loadFromTitle( $db, $title );
+                $fulldesc = '';
 
-                if ( $img_rev == null ) {
-                        //The user asked for an image that doesn't exist, let's
-                        //add this to the list of missing objects and not output
-                        //any html
-                        $img_count = $img_count - 1;
-                        $missing_img .= " " . htmlspecialchars($img);
+                if ( $showinfopane ) {
+                        //Load the image page from the database with the provided title from
+                        //the image object
+                        $db = wfGetDB( DB_SLAVE );
+                        $img_rev = Revision::loadFromTitle( $db, $title );
 
-                        continue;
+                        //Get the text from the image page's description
+                        $fulldesc = $img_rev->getText();
+
+                        if ( $local_parser ) { //convert wikitext to HTML
+                            $pout = $local_parser->parse( $fulldesc, $title, $local_parser_options, true );
+                            $fulldesc =  strip_tags( $pout->getText() );
+                        }
+                        else { //fall back to HTML-escaping
+                            $fulldesc = htmlspecialchars( $fulldesc ); 
+                        }
                 }
-
-                //Get the text from the image page's description
-                $fulldesc = $img_rev->getText();
 
                 //Add the html for the image
                 $output .= '<div class="imageElement">';
-                $output .= '<h3>' . $img_obj->getName() . '</h3>';
+                $output .= '<h3>' . $skin->makeKnownLinkObj($img_obj->getTitle(), $img_obj->getName()) . '</h3>';
                 $output .= '<p>' . $fulldesc . '</p>';
                 $output .=  '<a href="' . $title->getFullURL() . '" title="open image" class="open"></a>';
                 $output .=  '<a href="' . $img_obj->getViewURL() . '" title="open image" class="open"></a>';
@@ -385,41 +404,24 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
         $output .= 'function startGallery_' . $name . '() {';
         $output .= "var myGallery = new gallery($('" . $name . "'), {";
 
-        //A boolean to tell whether or not we need a comma before
-        //the next element of the list
-        $previousoption = false;
+        $output .= 'thumbWidth: 100, thumbHeight: 75'; //would be nice if we could change this to 120x120 to re-use thumbnails...
 
         //Add user provided options
         if ( $timed ) {
                 $output .= 'timed: true,';
                 $output .= 'delay: ' . $delay;
-                $previousoption = true;
         }
 
         if ( !$carousel ) {
-                if ( $previousoption ) {
-                        $output .= ',showCarousel: false';
-                } else {
-                        $output .= 'showCarousel: false';
-                }
-                $previousoption = true;
+                $output .= ', showCarousel: false';
         }
 
         if ( !$showarrows ) {
-                if ( $previousoption ) {
-                        $output .= ',showArrows: false';
-                } else {
-                        $output .= 'showArrows: false';
-                }
-                $previousoption = true;
+                $output .= ', showArrows: false';
         }
 
         if ( !$showinfopane ) {
-                if ( $previousoption ) {
-                        $output .= ',showInfopane: false';
-                } else {
-                        $output .= 'showInfopane: false';
-                }
+               $output .= ', showInfopane: false';
         }
 
         $output .= '});';
@@ -445,6 +447,8 @@ function addSmoothGalleryJavascriptAndCSS( &$m_pageObj ) {
         //be using addLink for the CSS...)
         $m_pageObj->addScript( '<script src="' . $extensionpath . '/scripts/jd.gallery.js" type="text/javascript"></script>' );
         $m_pageObj->addScript( '<link rel="stylesheet" href="' . $extensionpath . '/css/jd.gallery.css" type="text/css" media="screen" charset="utf-8" />' );
+
+        $m_pageObj->addScript( '<style type="text/css">.jdGallery .slideInfoZone { overflow:auto ! important; }</style>' );
 
         return true;
 }
