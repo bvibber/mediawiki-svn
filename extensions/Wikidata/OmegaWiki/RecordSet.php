@@ -167,4 +167,25 @@ function getRecordKeyName($record, $key) {
 	return implode("-", $ids);
 }
 
+function splitRecordSet($recordSet, $groupAttribute) {
+	$result = array();
+	$structure = $recordSet->getStructure();
+	$key = $recordSet->getKey();
+	
+	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
+		$record = $recordSet->getRecord($i);
+		$groupAttributeValue = $record->getAttributeValue($groupAttribute);
+		$groupRecordSet = $result[$groupAttributeValue];
+		
+		if ($groupRecordSet == null) {
+			$groupRecordSet = new ArrayRecordSet($structure, $key);
+			$result[$groupAttributeValue] = $groupRecordSet;
+		}
+		
+		$groupRecordSet->add($record);
+	}
+	
+	return $result; 
+}
+
 ?>

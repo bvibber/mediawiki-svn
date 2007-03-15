@@ -1,10 +1,6 @@
 <?php
 
-function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeMapping, $table, $restrictions, $orderBy = array(), $count = -1, $offset = 0) {
-	$dbr =& wfGetDB(DB_SLAVE);
-	
-	$selectFields = array_keys($fieldAttributeMapping);
-	$attributes = array_values($fieldAttributeMapping);
+function getTransactedSQL($transactionInformation, $selectFields, $table, $restrictions, $orderBy = array(), $count = -1, $offset = 0) {
 	$tableNames = array($table->name);
 
 	if ($table->isVersioned) {
@@ -13,12 +9,9 @@ function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeM
 		$orderBy = array_merge($orderBy, $transactionInformation->versioningOrderBy());
 		$groupBy = $transactionInformation->versioningGroupBy($table);
 		$selectFields = array_merge($selectFields, $transactionInformation->versioningFields($table->name));
-		$allAttributes = array_merge($attributes, $transactionInformation->versioningAttributes());
 	}
-	else {
-		$allAttributes = $attributes;
+	else 
 		$groupBy = array();
-	}
 	
 	$query = "SELECT ". implode(", ", $selectFields) . 
 			" FROM ". implode(", ", $tableNames);
@@ -34,7 +27,22 @@ function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeM
 		
 	if ($count != -1) 
 		$query .= " LIMIT " . $offset . ", " . $count;
+		
+	return $query;
+}
+
+function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeMapping, $table, $restrictions, $orderBy = array(), $count = -1, $offset = 0) {
+	$dbr =& wfGetDB(DB_SLAVE);
 	
+	$selectFields = array_keys($fieldAttributeMapping);
+	$attributes = array_values($fieldAttributeMapping);
+
+	if ($table->isVersioned) 
+		$allAttributes = array_merge($attributes, $transactionInformation->versioningAttributes());
+	else 
+		$allAttributes = $attributes;
+	
+	$query = getTransactedSQL($transactionInformation, $selectFields, $table, $restrictions, $orderBy, $count, $offset);
 	$queryResult = $dbr->query($query);
 	
 	$structure = new Structure($allAttributes);
