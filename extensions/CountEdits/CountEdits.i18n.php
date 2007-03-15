@@ -23,6 +23,18 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'There have been no contributions to this wiki.',
 ),
 
+'br' => array(
+'countedits' => 'Degasadennoù ar gont',
+'countedits-warning' => '\'\'\'Diwallit :\'\'\' Ne varner ket ul levr diouzh ar golo anezhañ. Arabat barnañ un implijer diouzh an niver a zegasadennoù graet gantañ.',
+'countedits-username' => 'Anv implijer :',
+'countedits-ok' => 'Mat eo',
+'countedits-nosuchuser' => 'N\'eus implijer ebet anvet $1.',
+'countedits-resultheader' => 'Disoc\'hoù evit $1',
+'countedits-resulttext' => '$2 degasadenn zo bet graet gant $1',
+'countedits-mostactive' => 'Implijerien oberiantañ',
+'countedits-nocontribs' => 'Degasadenn ebet evit ar wiki-mañ.',
+),
+
 'ca' => array(
 'countedits'=> 'Nombre d\'edicions',
 'countedits-warning'=> '\'\'\'Avís:\'\'\' No jutgeu un llibre per la seua coberta, ni tampoc a un col·laborador pel seu nombre d\'edicions.',

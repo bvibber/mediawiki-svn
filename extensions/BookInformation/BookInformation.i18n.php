@@ -25,6 +25,20 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Data provider: $1',
 ),
 
+'br' => array(
+'bookinfo-header' => 'Titouroù war al levr',
+'bookinfo-result-title' => 'Titl :',
+'bookinfo-result-author' => 'Aozer :',
+'bookinfo-result-publisher' => 'Embanner :',
+'bookinfo-result-year' => 'Bloaz :',
+'bookinfo-error-invalidisbn' => 'ISBN lakaet direzh.',
+'bookinfo-error-nosuchitem' => 'Ar pezh zo bet goulennet n\'eus ket anezhañ pe n\'eo ket bet kavet.',
+'bookinfo-error-nodriver' => 'N\'hall ket deraouiñ ur sturier titouriñ a-feson war al levrioù.',
+'bookinfo-error-noresponse' => 'Respont ebet pe amzer glask re hir.',
+'bookinfo-purchase' => 'Prenañ al levr-mañ adal $1',
+'bookinfo-provider' => 'Pourvezer roadennoù : $1',
+),
+
 'ca' => array(
 'bookinfo-header'=> 'Informació del llibre',
 'bookinfo-result-title'=> 'Títol:',

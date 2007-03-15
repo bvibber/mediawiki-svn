@@ -8,6 +8,11 @@ $wgAjaxShowEditorsMessages['en'] = array(
 	'ajax-se-pending' => 'pending refresh ... (click this box or start editing)',
 	'ajax-se-idling' => '($1s ago)',
 );
+$wgAjaxShowEditorsMessages['br'] = array(
+	'ajax-se-title' => 'Oc\'h adaozañ :',
+	'ajax-se-pending' => 'trevell war ar stern ... (klikit war ar voest-mañ pe krogit da zegas kemmoù)',
+	'ajax-se-idling' => '($1 zo)',
+);
 $wgAjaxShowEditorsMessages['de'] = array(
 	'ajax-se-title'   => 'Wird zur Zeit bearbeitet von:',
 	'ajax-se-pending' => 'bevorstehende Aktualisierungen… (klicke auf diesen Kasten oder beginne mit der Bearbeitung)',
@@ -16,7 +21,7 @@ $wgAjaxShowEditorsMessages['de'] = array(
 $wgAjaxShowEditorsMessages['fi'] = array(
 	'ajax-se-title'   => 'Samanaikaiset muokkaajat:',
 	'ajax-se-pending' => 'odotetaan päivitystä… (napsauta tästä tai aloita muokkaaminen)',
-	'ajax-se-idling'  => '($1 s sitten)',
+	'ajax-se-idling'  => '($1 s sitten)',
 );
 $wgAjaxShowEditorsMessages['fr'] = array(
 	'ajax-se-title' => 'En train d’être modifié par :',

@@ -34,6 +34,27 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'removed [[$1]] from the bad image list',
 ),
 
+'br' => array(
+'badimages' => 'Roll ar skeudennoù fall',
+'badimages-add-btn' => 'Ouzhpennañ',
+'badimages-added' => 'Ouzhpennet eo bet $1 d\'ar roll.',
+'badimages-count' => '\'\'\'$1\'\'\' skeudenn zo war roll ar skeudennoù fall.',
+'badimages-name' => 'Anv :',
+'badimages-not-added' => 'N\'eus ket bet gallet ouzhpennañ ar skeudenn.',
+'badimages-not-removed' => 'N\'eus ket bet gallet tennañ ar skeudenn.',
+'badimages-reason' => 'Abeg :',
+'badimages-remove' => '(tennañ)',
+'badimages-remove-btn' => 'Tennañ',
+'badimages-remove-confirm' => 'Kadarnait mar plij e fell deoc\'h tennañ $1 a-ziwar ar roll :',
+'badimages-removed' => 'Tennet eo bet $1 a-ziwar ar roll.',
+'badimages-subheading' => 'Elfennoù red',
+'badimages-unprivileged' => '(ho statud ne aotre ket ac\'hanoc\'h da zegas kemmoù er roll)',
+'badimages-log-name' => 'Roll ar skeudennoù fall',
+'badimages-log-header' => 'Setu roll ar c\'hemmoù bet degaset d\'ar [[Help:Bad image list|roll skeudennoù fall]].',
+'badimages-log-add' => 'ouzhpennet eo bet [[$1]] d\'ar roll skeudennoù fall',
+'badimages-log-remove' => 'tennet eo bet [[$1]] a-ziwar ar roll skeudennoù fall',
+),
+
 /* German (Raymond) */
 'de' => array(
 'badimages' => 'Liste unerwünschter Bilder',

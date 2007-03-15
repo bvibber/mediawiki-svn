@@ -24,6 +24,19 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'The article $1 doesn\'t exist.',
 ),
 
+'br' => array(
+'contributors' => 'Aozerien',
+'contributors-toolbox' => 'Aozerien bennañ',
+'contributors-legend' => 'Roll an aozerien bennañ evit ur pennad',
+'contributors-target' => 'Titl :',
+'contributors-submit' => 'Diskouez',
+'contributors-subtitle' => 'Aozerien bennañ evit $1',
+'contributors-others-long' => '$ aozer all o deus kemeret perzh e savidigezh ar bajenn-mañ.',
+'contributors-others' => 'ha $1 all',
+'contributors-badtitle' => 'Titl fall.',
+'contributors-nosuchpage' => 'N\'eus ket eus ar pennad $',
+),
+
 'ca' => array(
 'contributors'=> 'Contribuïdors',
 'contributors-toolbox'=> 'Principals contribuïdors',
