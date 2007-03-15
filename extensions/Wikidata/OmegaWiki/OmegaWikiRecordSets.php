@@ -641,28 +641,6 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, $filterLanguageId,
 	return $recordSet;
 }
 
-function getObjectAttributeTextValues($objectIds, $filterLanguageId, $queryTransactionInformation) {
-//	global
-//		$textAttributeValuesTable;
-//	
-//	$sql = getTransactedSQL(
-//		$queryTransactionInformation,
-//		array("object_id", "value_id", "attribute_mid", "text"),
-//		$textAttributeValuesTable,
-//		array("object_id IN (" . implode(", ", $objectIds) . ")")
-//	);
-//	
-//	$dbr =& wfGetDB(DB_SLAVE);
-//	$queryResult = $dbr->query($sql);
-//	$result = array();
-//	
-//	while ($row = $dbr->fetchObject($queryResult)) {
-//		
-//	}
-//	
-//	return $result;
-}
-
 function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filterLanguageId, $queryTransactionInformation) {
 	global
 		$objectAttributesAttribute, 
