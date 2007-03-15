@@ -43,6 +43,11 @@ $wgAjaxShowEditorsMessages['nl'] = array(
 	'ajax-se-pending' => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',
 	'ajax-se-idling' => '($1s geleden)',
 );
+$wgAjaxShowEditorsMessages['oc'] = array(
+	'ajax-se-title' => 'A èsser modificat per :',
+	'ajax-se-pending' => 'refrescament en cors ... (clicatz sus aqueste messatge o modificatz la pagina)',
+	'ajax-se-idling' => '(i a $1 s)',
+);
 $wgAjaxShowEditorsMessages['zh-cn'] = array(
 	'ajax-se-title' => '当前编辑中:',
 	'ajax-se-pending' => '正在正在刷新 ... (单击这个框或开始编辑)',

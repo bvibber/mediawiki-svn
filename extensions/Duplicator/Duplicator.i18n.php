@@ -253,6 +253,28 @@ kopiën ontstaan met een volledige geschiedenis. DIt is handig voor forks, enzov
 'duplicator-toomanyrevisions' => '[[$1]] heeft te veel versies ($2) en kan niet gekopieerd worden. De huidige limiet is $3.',
 ),
 
+'oc' => array(
+'duplicator' => 'Duplicar un article',
+'duplicator-toolbox' => 'Duplicar aqueste article',
+'duplicator-header' => 'Aquesta pagina permet la duplicacion complèta d’un article, en creant doas versions independentas de l’istoric complet. Servís per exemple a separar un article en dos.',
+'duplicator-options' => 'Opcions',
+'duplicator-source' => 'Font:',
+'duplicator-dest' => 'Destinacion:',
+'duplicator-dotalk' => 'Duplicar la pagina de discussion (se existís)',
+'duplicator-submit' => 'Duplicar',
+'duplicator-summary' => 'Copiat dempuèi [[$1]]',
+'duplicator-success' => '<big>\'\'\'[[$1]] es estat copiat vèrs [[$2]].\'\'\'</big>',
+'duplicator-success-revisions' => '$1 {{PLURAL:$1|revision es estada copiada|revisions son estadas copiadas}}.',
+'duplicator-success-talkcopied' => 'La pagina de discussion es estada copiada tanben.',
+'duplicator-success-talknotcopied' => 'La pagina de discussion es pas pogut èsser copiada.',
+'duplicator-failed' => 'La pagina es pas pogut èsser duplicada. Una error desconeguda s’es producha.',
+'duplicator-source-invalid' => 'Donatz un nom valid per l’article.',
+'duplicator-source-notexist' => '[[$1]] existís pas. Donatz lo nom d’un article existent.',
+'duplicator-dest-invalid' => 'Donatz un nom valid per la destinacion.',
+'duplicator-dest-exists' => '[[$1]] existís ja. Donatz lo nom d’un article qu’existís pas encara.',
+'duplicator-toomanyrevisions' => '[[$1]] a tròp ($2) de revisions e pòt pas èsser copiat. La limita actuala es de $3.',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'duplicator' => 'Duplikácia článku',

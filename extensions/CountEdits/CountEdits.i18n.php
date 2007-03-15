@@ -137,6 +137,18 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Er zijn geen bewerkingen op deze wiki.',
 ),
 
+'oc' => array(
+'countedits' => 'Comptaire d’edicions',
+'countedits-warning' => '\'\'\'Avertiment\'\'\' : jutjetz pas un libre per sa cobertura. Jutjetz pas tanpauc un utilizaire en foncion del nombre de sas contribucions.',
+'countedits-username' => 'Nom d\'utilizaire:',
+'countedits-ok' => 'D\'acòrdi',
+'countedits-nosuchuser' => 'I a pas d\'utilizaire amb lo nom $1.',
+'countedits-resultheader' => 'Resultats per $1',
+'countedits-resulttext' => '$1 a fach $2 modificacions',
+'countedits-mostactive' => 'Contributors mai actius',
+'countedits-nocontribs' => 'Cap de contribucion sus aqueste wiki.',
+),
+
 /* Portuguese (Lugusto) */
 'pt' => array(
 'countedits' => 'Contador de edições',

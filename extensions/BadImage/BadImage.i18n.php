@@ -209,6 +209,27 @@ function efBadImageMessages() {
 'badimages-log-remove' => '[[$1]] is verwijderd uit de verwijderlijst afbeeldingen',
 ),
 
+'oc' => array(
+'badimages' => 'Lista dels imatges indesirables',
+'badimages-add-btn' => 'Ajustar',
+'badimages-added' => '$1 es estat ajustat a la lista.',
+'badimages-count' => 'I a \'\'\'$1\'\'\' imatges dins la lista dels imatges indesirables.',
+'badimages-name' => 'Nom:',
+'badimages-not-added' => 'L’imatge es pas pogut estat ajustat.',
+'badimages-not-removed' => 'L’imatge es pas pogut èsser levat.',
+'badimages-reason' => 'Motiu:',
+'badimages-remove' => '(levar)',
+'badimages-remove-btn' => 'Levar',
+'badimages-remove-confirm' => 'Confirmatz que volètz levar $1 de la lista :',
+'badimages-removed' => '$1 es estat levat de la lista.',
+'badimages-subheading' => 'Lista actuala',
+'badimages-unprivileged' => '(Avètz pas la permission de modificar la lista)',
+'badimages-log-name' => 'Lista dels imatges indesirables',
+'badimages-log-header' => 'Istoric de las modificacions de la [[Ajuda:Lista dels imatges indesirables|lista dels imatges indesirables]].',
+'badimages-log-add' => 'a ajustat [[$1]] a la lista dels imatges indesirables',
+'badimages-log-remove' => 'a levat [[$1]] de la lista dels imatges indesirables',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'badimages' => 'Zoznam zlých obrázkov',

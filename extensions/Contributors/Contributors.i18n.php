@@ -133,6 +133,19 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'De pagina $1 bestaat niet.',
 ),
 
+'oc' => array(
+
+'contributors-toolbox' => 'Contributors principals',
+'contributors-legend' => 'Listar los contributors principals de l’article',
+'contributors-target' => 'Títol:',
+'contributors-submit' => 'Mostrar',
+'contributors-subtitle' => 'Contributors principals de $1',
+'contributors-others-long' => 'I a $1 autres contributors per aquesta pagina.',
+'contributors-others' => 'e $1 autres',
+'contributors-badtitle' => 'Títol incorrècte.',
+'contributors-nosuchpage' => 'L’article $1 existís pas.',
+),
+
 /* Portuguese (Lugusto) */
 'pt' => array(
 'contributors' => 'Contribuidores',

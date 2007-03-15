@@ -73,6 +73,11 @@ $wgCrossNamespaceLinksMessages['nl'] = array(
 	'crossnamespacelinks'     => 'Pagina\'s met verwijzingen naar andere naamruimten',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|verwijzing|verwijzingen}} naar $3'
 );
+$wgCrossNamespaceLinksMessages['oc'] = array(
+	'crossnamespacelinks'         => 'Paginas contenent de ligams vèrs un autre espaci de nom',
+	'crossnamespacelinks-summary' => 'Aquesta pagina fornís una lista de las paginas de l’espaci de nom principal qu\'an un ligam vèrs un autre espaci de nom (exceptat pels espacis de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), çò qu’es recomandat.',
+	'crossnamespacelinkstext'     => '$1 : possedís $2 {{PLURAL:$2|ligam|ligams}} vèrs l’espaci « $3 »',
+);
 $wgCrossNamespaceLinksMessages['pl'] = array(
 	'crossnamespacelinks'     => 'Linki między przestrzeniami nazw',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|linki}} do $3'

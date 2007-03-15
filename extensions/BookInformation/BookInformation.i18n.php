@@ -141,6 +141,20 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Gegevens geleverd door: $1',
 ),
 
+'oc' => array(
+'bookinfo-header' => 'Informacions suls obratges',
+'bookinfo-result-title' => 'Títol:',
+'bookinfo-result-author' => 'Autor:',
+'bookinfo-result-publisher' => 'Editor:',
+'bookinfo-result-year' => 'Annada:',
+'bookinfo-error-invalidisbn' => 'ISBN invalid.',
+'bookinfo-error-nosuchitem' => 'Aqueste element existís pas o es pas pogut èsser trobat.',
+'bookinfo-error-nodriver' => 'Impossible d’inicializar un motor d’informacion suls obratges.',
+'bookinfo-error-noresponse' => 'Cap de responsa o depassament de la sosta.',
+'bookinfo-purchase' => 'Comprar aquest libre sus $1',
+'bookinfo-provider' => 'Fornidor de donadas : $1',
+),
+
 	);
 	return $messages;
 }
