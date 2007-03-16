@@ -46,13 +46,25 @@ function wfLinkSearchSetup() {
 
 		/**
 		 * Return an appropriately formatted LIKE query
-		 * @fixme Fix up LinkFilter to work with non-http links as well
 		 */
 		static function mungeQuery( $query ) {
+			$prot = 'http'; // use http as standard
 			if( substr( $query, 0, 7 ) == 'http://' ) {
 				$query = substr( $query, 7 );
+			} elseif( substr( $query, 0, 8 ) == 'https://' ) {
+				$query = substr( $query, 8 );
+				$prot = 'https';
+			} elseif( substr( $query, 0, 6 ) == 'ftp://' ) {
+				$query = substr( $query, 6 );
+				$prot = 'ftp';
+			} elseif( substr( $query, 0, 6 ) == 'irc://' ) {
+				$query = substr( $query, 6 );
+				$prot = 'irc';
+			} elseif( substr( $query, 0, 7 ) == 'news://' ) {
+				$query = substr( $query, 7 );
+				$prot = 'news';
 			}
-			return LinkFilter::makeLike( $query );
+			return LinkFilter::makeLike( $query , $prot );
 		}
 
 		function linkParameters() {

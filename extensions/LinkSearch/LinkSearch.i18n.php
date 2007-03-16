@@ -12,7 +12,9 @@ $wgLinkSearchMessages['en'] = array(
 	'linksearch-pat'   => 'Search pattern:',
 	'linksearch-ns'    => 'Namespace:',
 	'linksearch-ok'    => 'Search',
-	'linksearch-text'  => 'Wildcards such as "*.wikipedia.org" may be used.',
+	'linksearch-text'  => 'Wildcards such as " *.wikipedia.org " may be used.
+
+The default protocol is http. Other possible protocols: https, ftp, irc, news.',
 	'linksearch-line'  => '$1 linked from $2',
 	'linksearch-error' => 'Wildcards may appear only at the start of the hostname.',
 );
@@ -27,7 +29,9 @@ $wgLinkSearchMessages['de'] = array(
 	'linksearch-pat'   => 'Suchmuster:',
 	'linksearch-ns'    => 'Namensraum:',
 	'linksearch-ok'    => 'Suche',
-	'linksearch-text'  => 'Diese Spezialseite ermöglicht die Suche nach Seiten, in denen bestimmte Weblinks enthalten sind. Dabei können Wildcards wie beispielsweise <tt>*.example.com</tt> benutzt werden. ',
+	'linksearch-text'  => 'Diese Spezialseite ermöglicht die Suche nach Seiten, in denen bestimmte Weblinks enthalten sind. Dabei können Wildcards wie beispielsweise <tt>*.example.com</tt> benutzt werden. 
+
+	Standardmäßig wird nur nach http:// gesucht. Weitere unterstützte Protokolle: https, ftp, irc und news.',
 	'linksearch-line'  => '$1 ist verlinkt von $2',
 	'linksearch-error' => 'Wildcards können nur am Anfang der URL verwendet werden.',
 );
