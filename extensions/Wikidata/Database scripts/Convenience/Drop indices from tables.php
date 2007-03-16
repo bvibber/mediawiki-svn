@@ -14,7 +14,6 @@ global
 
 $beginTime = time();
 $wgCommandLineMode = true;
-$timestamp = wfTimestampNow();
 
 for ($i = 1; $i < $argc; $i++) {
 	$tableName = $argv[$i];
