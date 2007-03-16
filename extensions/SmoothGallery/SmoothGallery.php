@@ -404,25 +404,48 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
         $output .= 'function startGallery_' . $name . '() {';
         $output .= "var myGallery = new gallery($('" . $name . "'), {";
 
-        $output .= 'thumbWidth: 100, thumbHeight: 75'; //would be nice if we could change this to 120x120 to re-use thumbnails...
+	//A boolean to tell whether or not we need a comma before
+	//the next element of the list
+	$previousoption = false;
 
         //Add user provided options
         if ( $timed ) {
                 $output .= 'timed: true,';
                 $output .= 'delay: ' . $delay;
+		$previousoption = true;
         }
 
         if ( !$carousel ) {
-                $output .= ', showCarousel: false';
+		if ( $previousoption ) {
+                	$output .= ', showCarousel: false';
+		} else {
+			$output .= 'showCarousel: false';
+		}
+		$previousoption = true;
         }
 
         if ( !$showarrows ) {
-                $output .= ', showArrows: false';
+		if ( $previousoption ) {
+	                $output .= ', showArrows: false';
+		} else {
+	                $output .= 'showArrows: false';
+		}
+		$previousoption = true;
         }
 
         if ( !$showinfopane ) {
-               $output .= ', showInfopane: false';
+		if ( $previousoption ) {
+			$output .= ', showInfopane: false';
+		} else {
+			$output .= 'showInfopane: false';
+		}
         }
+
+	if ( $previousoption ) {
+	        $output .= ', thumbWidth: 100, thumbHeight: 75'; //would be nice if we could change this to 120x120 to re-use thumbnails...
+	} else {
+		$output .= 'thumbWidth: 100, thumbHeight: 75';
+	}
 
         $output .= '});';
         $output .= '}';
