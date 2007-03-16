@@ -67,13 +67,14 @@ class EditPage {
 	/**
 	 * Fetch initial editing page content.
 	 */
-	private function getContent() {
+	private function getContent( $def_text = '' ) {
 		global $wgOut, $wgRequest, $wgParser;
 
 		# Get variables from query string :P
 		$section = $wgRequest->getVal( 'section' );
 		$preload = $wgRequest->getVal( 'preload' );
-		$undo = $wgRequest->getVal( 'undo' );
+		$undoafter = $wgRequest->getVal( 'undoafter' );
+		$undoto = $wgRequest->getVal( 'undoto' );
 
 		wfProfileIn( __METHOD__ );
 
@@ -98,44 +99,51 @@ class EditPage {
 
 			$text = $this->mArticle->getContent();
 
-			if ( $undo > 0 ) {
+			if ( $undoafter > 0 && $undoto > $undoafter ) {
 				#Undoing a specific edit overrides section editing; section-editing
 				# doesn't work with undoing.
-				$undorev = Revision::newFromId($undo);
+				$undorev = Revision::newFromId($undoto);
+				$oldrev = Revision::newFromId($undoafter);
 
 				#Sanity check, make sure it's the right page.
 				# Otherwise, $text will be left as-is.
-				if (!is_null($undorev) && $undorev->getPage() == $this->mArticle->getID()) {
-					$oldrev = $undorev->getPrevious();
+				if ( !is_null($undorev) && !is_null($oldrev) && $undorev->getPage()==$oldrev->getPage() && $undorev->getPage()==$this->mArticle->getID() ) {
 					$undorev_text = $undorev->getText();
-					$oldrev_text = $oldrev->getText();
-					$currev_text = $text;
+                    $oldrev_text = $oldrev->getText();
+                    $currev_text = $text;
 
 					#No use doing a merge if it's just a straight revert.
-					if ($currev_text != $undorev_text) {
+					if ( $currev_text != $undorev_text ) {
 						$result = wfMerge($undorev_text, $oldrev_text, $currev_text, $text);
 					} else {
 						$text = $oldrev_text;
 						$result = true;
 					}
-
-					if( $result ) {
-						# Inform the user of our success and set an automatic edit summary
-						$this->editFormPageTop .= $wgOut->parse( wfMsgNoTrans( 'undo-success' ) );
-						$this->summary = wfMsgForContent( 'undo-summary', $undo, $undorev->getUserText() );
-						$this->formtype = 'diff';
-					} else {
-						# Warn the user that something went wrong
-						$this->editFormPageTop .= $wgOut->parse( wfMsgNoTrans( 'undo-failure' ) );
-					}
-
+				} else {
+					// Failed basic sanity checks.
+					// Older revisions may have been removed since the link
+					// was created, or we may simply have got bogus input.
+					$result = false;
 				}
-			}
-			else if( $section != '' ) {
+
+				if( $result ) {
+					# Inform the user of our success and set an automatic edit summary
+					$this->editFormPageTop .= $wgOut->parse( wfMsgNoTrans( 'undo-success' ) );
+					$firstrev = $oldrev->getNext();
+					# If we just undid one rev, use an autosummary
+					if ( $firstrev->mId == $undoto ) {
+							$this->summary = wfMsgForContent('undo-summary', $undoto, $undorev->getUserText());
+					}
+					$this->formtype = 'diff';
+				} else {
+					# Warn the user that something went wrong
+					$this->editFormPageTop .= $wgOut->parse( wfMsgNoTrans( 'undo-failure' ) );
+				}
+			} else if( $section != '' ) {
 				if( $section == 'new' ) {
 					$text = $this->getPreloadedText( $preload );
 				} else {
-					$text = $wgParser->getSection( $text, $section );
+					$text = $wgParser->getSection( $text, $section, $def_text );
 				}
 			}
 		}
@@ -317,7 +325,6 @@ class EditPage {
 			wfProfileOut( $fname );
 			return;
 		}
-
 		if ( !$wgUser->isAllowed('edit') ) {
 			if ( $wgUser->isAnon() ) {
 				wfDebug( "$fname: user must log in\n" );
@@ -423,7 +430,12 @@ class EditPage {
 		# First time through: get contents, set time for conflict
 		# checking, etc.
 		if ( 'initial' == $this->formtype || $this->firsttime ) {
-			$this->initialiseForm();
+			if ($this->initialiseForm() === false) {
+				$this->noSuchSectionPage();
+				wfProfileOut( "$fname-business-end" );
+				wfProfileOut( $fname );
+				return;
+			}
 			if( !$this->mTitle->getArticleId() ) 
 				wfRunHooks( 'EditFormPreloadText', array( &$this->textbox1, &$this->mTitle ) );
 		}
@@ -725,6 +737,8 @@ class EditPage {
 		$this->mArticle->clear(); # Force reload of dates, etc.
 		$this->mArticle->forUpdate( true ); # Lock the article
 
+		wfDebug("timestamp: {$this->mArticle->getTimestamp()}, edittime: {$this->edittime}\n");
+
 		if( $this->mArticle->getTimestamp() != $this->edittime ) {
 			$this->isConflict = true;
 			if( $this->section == 'new' ) {
@@ -862,10 +876,13 @@ class EditPage {
 	function initialiseForm() {
 		$this->edittime = $this->mArticle->getTimestamp();
 		$this->summary = '';
-		$this->textbox1 = $this->getContent();
+		$this->textbox1 = $this->getContent(false);
+		if ($this->textbox1 === false) return false;
+		
 		if ( !$this->mArticle->exists() && $this->mArticle->mTitle->getNamespace() == NS_MEDIAWIKI )
 			$this->textbox1 = wfMsgWeirdKey( $this->mArticle->mTitle->getText() );
 		wfProxyCheck();
+		return true;
 	}
 
 	/**
@@ -976,7 +993,7 @@ class EditPage {
 					$notice = '';
 			} else {
 				# It's either cascading protection or regular protection; work out which
-				$cascadeSources = $this->mTitle->getCascadeProtectionSources();
+				list($cascadeSources, $restrictions) = $this->mTitle->getCascadeProtectionSources();
 				if( $cascadeSources && count( $cascadeSources ) > 0 ) {
 					# Cascading protection; explain, and list the titles responsible
 					$notice = wfMsg( 'cascadeprotectedwarning' ) . "\n";
@@ -1458,6 +1475,21 @@ END
 		$wgOut->setArticleRelated( false );
 
 		$wgOut->addWikiText( wfMsg( 'confirmedittext' ) );
+		$wgOut->returnToMain( false );
+	}
+
+	/**
+	 * Creates a basic error page which informs the user that
+	 * they have attempted to edit a nonexistant section.
+	 */
+	function noSuchSectionPage() {
+		global $wgOut;
+
+		$wgOut->setPageTitle( wfMsg( 'nosuchsectiontitle' ) );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		$wgOut->setArticleRelated( false );
+
+		$wgOut->addWikiText( wfMsg( 'nosuchsectiontext', $this->section ) );
 		$wgOut->returnToMain( false );
 	}
 

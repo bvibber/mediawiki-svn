@@ -99,7 +99,7 @@ class PageArchive {
 	function listRevisions() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'archive',
-			array( 'ar_minor_edit', 'ar_timestamp', 'ar_user', 'ar_user_text', 'ar_comment', 'ar_rev_id', 'ar_deleted' ),
+			array( 'ar_minor_edit', 'ar_timestamp', 'ar_user', 'ar_user_text', 'ar_comment', 'ar_rev_id', 'ar_deleted', 'ar_len' ),
 			array( 'ar_namespace' => $this->title->getNamespace(),
 			       'ar_title' => $this->title->getDBkey() ),
 			'PageArchive::listRevisions',
@@ -183,7 +183,8 @@ class PageArchive {
 				'ar_minor_edit',
 				'ar_flags',
 				'ar_text_id',
-				'ar_deleted' ),
+				'ar_deleted',
+				'ar_len' ),
 			array( 'ar_namespace' => $this->title->getNamespace(),
 			       'ar_title' => $this->title->getDbkey(),
 			       $this->getRevisionConds( $dbr->timestamp($timestamp), $id ) ),
@@ -201,7 +202,8 @@ class PageArchive {
 				'timestamp'  => $row->ar_timestamp,
 				'minor_edit' => $row->ar_minor_edit,
 				'text_id'    => $row->ar_text_id,
-				'deleted'	 => $row->ar_deleted ) );
+				'deleted'    => $row->ar_deleted,
+				'len'        => $row->ar_len) );
 		} else {
 			return null;
 		}
@@ -392,7 +394,8 @@ class PageArchive {
 				'ar_minor_edit',
 				'ar_flags',
 				'ar_text_id',
-				'ar_deleted' ),
+				'ar_deleted',
+				'ar_len' ),
 			/* WHERE */ array(
 				'ar_namespace' => $this->title->getNamespace(),
 				'ar_title'     => $this->title->getDBkey(),
@@ -447,7 +450,8 @@ class PageArchive {
 				'timestamp'  => $row->ar_timestamp,
 				'minor_edit' => $row->ar_minor_edit,
 				'text_id'    => $row->ar_text_id,
-				'deleted' 	 => ($Unsuppress) ? 0 : $row->ar_deleted
+				'deleted' 	 => ($Unsuppress) ? 0 : $row->ar_deleted,
+				'len'        => $row->ar_len
 				) );
 			$revision->insertOn( $dbw );
 			$restored++;
@@ -484,6 +488,7 @@ class PageArchive {
 
 		return $restored;
 	}
+
 }
 
 /**
@@ -570,7 +575,7 @@ class UndeleteForm {
 			return $this->showRevision( $this->mTimestamp );
 		}
 		if( $this->mFile !== null ) {
-			$file = new FSarchivedFile( $this->mTargetObj, '', $this->mFile );
+			$file = new ArchivedFile( $this->mTargetObj, '', $this->mFile );
 			// Check if user is allowed to see this file
 			if ( !$file->userCan( Image::DELETED_FILE ) ) {
 				$wgOut->permissionRequired( 'hiderevision' ); 
@@ -840,6 +845,13 @@ class UndeleteForm {
 					$pageLink = $wgLang->timeanddate( $ts, true );
 				}
 				$userLink = $this->getUser( $row );
+				$stxt = '';
+				if (!is_null($size = $row->ar_len)) {
+					if ($size == 0)
+					$stxt = wfMsgHtml('historyempty');
+					else
+					$stxt = wfMsgHtml('historysize', $wgLang->formatNum( $size ) );
+				}
 				$comment = $this->getComment( $row );
 				$rd='';
 				if( $wgUser->isAllowed( 'deleterevision' ) ) {
@@ -864,7 +876,7 @@ class UndeleteForm {
 					$dflag = ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
 				
 				// Do we still need checkboxes?
-				$wgOut->addHTML( "<li>$checkBox $rd $pageLink . . $userLink $comment$dflag</li>\n" );
+				$wgOut->addHTML( "<li>$checkBox $rd $pageLink . . $userLink $stxt $comment$dflag</li>\n" );
 			}
 			$revisions->free();
 			$wgOut->addHTML("</ul>");

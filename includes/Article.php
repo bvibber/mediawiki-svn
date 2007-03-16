@@ -366,7 +366,6 @@ class Article {
 			}
 			$revision = Revision::newFromId( $this->mLatest );
 			if( is_null( $revision ) ) {
-				$data = $this->pageDataFromTitle( $dbr, $this->mTitle );
 				wfDebug( __METHOD__." failed to retrieve current page, rev_id {$data->page_latest}\n" );
 				return false;
 			}
@@ -1653,7 +1652,7 @@ class Article {
 	 * @return bool true on success
 	 */
 	function updateRestrictions( $limit = array(), $reason = '', $cascade = 0, $expiry = null ) {
-		global $wgUser, $wgRestrictionTypes, $wgContLang;
+		global $wgUser, $wgRestrictionTypes, $wgContLang, $wgGroupPermissions;
 
 		$id = $this->mTitle->getArticleID();
 		if( !$wgUser->isAllowed( 'protect' ) || wfReadOnly() || $id == 0 ) {
@@ -1704,10 +1703,15 @@ class Article {
 					$comment .= " [$updated]";
 				if ( $expiry_description && $protect )
 					$comment .= "$expiry_description";
-				# FIXME: This can act funky with a deleted rev on top
+
 				$nullRevision = Revision::newNullRevision( $dbw, $id, $comment, true );
 				$nullRevId = $nullRevision->insertOn( $dbw );
 
+				foreach( $limit as $action => $restrictions ) {
+					# Check if the group level required to edit also can protect pages
+					# Otherwise, people who cannot normally protect can "protect" pages via transclusion
+					$cascade = ( $cascade && isset($wgGroupPermissions[$restrictions]['protect']) && $wgGroupPermissions[$restrictions]['protect'] );	
+				}
 				# Update restrictions table
 				foreach( $limit as $action => $restrictions ) {
 					if ($restrictions != '' ) {
@@ -1997,6 +2001,23 @@ class Article {
 </form>\n" );
 
 		$wgOut->returnToMain( false );
+
+		$this->showLogExtract( $wgOut );
+	}
+
+
+	/**
+	 * Fetch deletion log
+	 */
+	function showLogExtract( &$out ) {
+		# Show relevant lines from the deletion log:
+		$out->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'delete' ) ) . "</h2>\n" );
+		$logViewer = new LogViewer(
+			new LogReader(
+				new FauxRequest(
+					array( 'page' => $this->mTitle->getPrefixedText(),
+					       'type' => 'delete' ) ) ) );
+		$logViewer->showList( $out );
 	}
 
 

@@ -199,7 +199,7 @@ class RevisionDeleteForm {
 		$bitfields = 0;
 		$wgOut->addHtml( "<ul>" );
 			foreach( $this->files as $fileid ) {
-				$file = new FSarchivedFile( $this->page, $fileid );
+				$file = new ArchivedFile( $this->page, $fileid );
 				if( !isset( $file->mId ) ) {
 					$wgOut->showErrorPage( 'revdelete-nooldid-title', 'revdelete-nooldid-text' );
 					return;
@@ -274,7 +274,7 @@ class RevisionDeleteForm {
 				$wgOut->showErrorPage( 'revdelete-nooldid-title', 'revdelete-nooldid-text' );
 				return;
 			} else if( !$log->userCan($event, Revision::DELETED_RESTRICTED) ) {
-			// If a event is hidden from sysops
+			// If an event is hidden from sysops
 				if ( $action != 'submit') {
 					$wgOut->permissionRequired( 'hiderevision' ); return;
 				}
@@ -544,7 +544,7 @@ class RevisionDeleter {
 			if ( $count > 0 ) {
 			   $title = Title::newFromId( $pageid );
 			   $this->updatePage( $title );
-			   $this->updateLog( $title, $count, $bitfield, $comment, false, $title, 'old', $pages_revIds[$pageid] );
+			   $this->updateLog( $title, $count, $bitfield, $comment, $title, 'old', $pages_revIds[$pageid] );
 			}
 		}
 		// Where all revs allowed to be set?
@@ -587,7 +587,7 @@ class RevisionDeleter {
 		
 		// Log if something was changed
 		if ( $count > 0 ) {
-			$this->updateLog( $title, $count, $bitfield, $comment, false, $title, 'ar', $Id_set );
+			$this->updateLog( $title, $count, $bitfield, $comment, $title, 'ar', $Id_set );
 		}
 		// Where all revs allowed to be set?
 		if ( !$UserAllowedAll ) {
@@ -610,7 +610,7 @@ class RevisionDeleter {
 		$count = 0; $Id_set = array();
 		// To work!
 		foreach( $items as $fileid ) {
-			$file = new FSarchivedFile( $title, $fileid );
+			$file = new ArchivedFile( $title, $fileid );
 			if( !isset( $file ) ) {
 				return false;
 			} else if( !$file->userCan(Revision::DELETED_RESTRICTED) ) {
@@ -627,7 +627,7 @@ class RevisionDeleter {
 		
 		// Log if something was changed
 		if ( $count > 0 ) {
-			$this->updateLog( $title, $count, $bitfield, $comment, false, $title, 'file', $Id_set );
+			$this->updateLog( $title, $count, $bitfield, $comment, $title, 'file', $Id_set );
 		}
 		// Where all revs allowed to be set?
 		if ( !$UserAllowedAll ) {
@@ -677,7 +677,7 @@ class RevisionDeleter {
 			//Don't log or touch if nothing changed
 			if ( $count > 0 ) {
 			   $target = SpecialPage::getTitleFor( 'Log', $logtype );
-			   $this->updateLog( $target, $count, $bitfield, $comment, true, $title, 'log', $logs_Ids[$logtype] );
+			   $this->updateLog( $target, $count, $bitfield, $comment, $title, 'log', $logs_Ids[$logtype] );
 			}
 		}
 		// Where all revs allowed to be set?
@@ -779,20 +779,24 @@ class RevisionDeleter {
 	 * @param int $bitfield the new rev_deleted value
 	 * @param string $comment
 	 */
-	function updateLog( $title, $count, $bitfield, $comment, $islog = false, $target, $prefix, $items = array() ) {
+	function updateLog( $title, $count, $bitfield, $comment, $target, $prefix, $items = array() ) {
 		// Put things hidden from sysops in the oversight log
 		$logtype = ( $bitfield & Revision::DELETED_RESTRICTED ) ? 'oversight' : 'delete';
 		// Add params for effected page and ids
 		$params = array( $target->getPrefixedText(), $prefix, implode( ',', $items) );
 		$log = new LogPage( $logtype );	
-		if ( $islog ) {
+		if ( $prefix=='log' ) {
     		$reason = wfMsgExt('logdelete-logaction', array('parsemag'), $count, $bitfield, $target->getPrefixedText() );
 			if ($comment) $reason .= ": $comment";
 			$log->addEntry( 'event', $title, $reason, $params );
-		} else {
+		} else if ( $prefix=='old' ) {
     		$reason = wfMsgExt('revdelete-logaction', array('parsemag'), $count, $bitfield );
 			if ($comment) $reason .= ": $comment";
 			$log->addEntry( 'revision', $title, $reason, $params );
+		} else if ( $prefix=='file' ) {
+    		$reason = wfMsgExt('revdelete-logaction', array('parsemag'), $count, $bitfield );
+			if ($comment) $reason .= ": $comment";
+			$log->addEntry( 'file', $title, $reason, $params );
 		}
 	}
 }

@@ -348,7 +348,6 @@ class SpecialPage
 				}
 			}
 		}
-		
 		return $pages;
 	}
 

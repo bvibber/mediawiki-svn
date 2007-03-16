@@ -61,8 +61,11 @@ class DatabasePostgres extends Database {
 			throw new DBConnectionError( $this, "Postgres functions missing, have you compiled PHP with the --with-pgsql option?\n (Note: if you recently installed PHP, you may need to restart your webserver and database)\n" );
 		}
 
-
 		global $wgDBport;
+
+		if (!strlen($user)) { ## e.g. the class is being loaded
+			return;
+		}
 
 		$this->close();
 		$this->mServer = $server;
@@ -79,9 +82,6 @@ class DatabasePostgres extends Database {
 			$hstring .= "port=$port ";
 		}
 
-		if (!strlen($user)) { ## e.g. the class is being loaded
-			return;
-		}
 
 		error_reporting( E_ALL );
 		@$this->mConn = pg_connect("$hstring dbname=$dbName user=$user password=$password");
@@ -230,7 +230,8 @@ class DatabasePostgres extends Database {
 
 				$wgDBsuperuser = '';
 				return true; ## Reconnect as regular user
-			}
+
+			} ## end superuser
 
 		if (!defined('POSTGRES_SEARCHPATH')) {
 
@@ -788,7 +789,7 @@ class DatabasePostgres extends Database {
 		return $type;
 	}
 
-	function begin( $fname = 'DatabasePostgrs::begin' ) {
+	function begin( $fname = 'DatabasePostgres::begin' ) {
 		$this->query( 'BEGIN', $fname );
 		$this->mTrxLevel = 1;
 	}
@@ -906,7 +907,7 @@ class DatabasePostgres extends Database {
 	 * @return array
 	 */
 	function makeSelectOptions( $options ) {
-		$tailOpts = '';
+		$preLimitTail = $postLimitTail = '';
 		$startOpts = '';
 
 		$noKeyOptions = array();
@@ -916,16 +917,17 @@ class DatabasePostgres extends Database {
 			}
 		}
 
-		if ( isset( $options['GROUP BY'] ) ) $tailOpts .= " GROUP BY {$options['GROUP BY']}";
-		if ( isset( $options['ORDER BY'] ) ) $tailOpts .= " ORDER BY {$options['ORDER BY']}";
+		if ( isset( $options['GROUP BY'] ) ) $preLimitTail .= " GROUP BY {$options['GROUP BY']}";
+		if ( isset( $options['ORDER BY'] ) ) $preLimitTail .= " ORDER BY {$options['ORDER BY']}";
 		
-		if (isset($options['LIMIT'])) {
-			$tailOpts .= $this->limitResult('', $options['LIMIT'],
-				isset($options['OFFSET']) ? $options['OFFSET'] : false);
-		}
+		//if (isset($options['LIMIT'])) {
+		//	$tailOpts .= $this->limitResult('', $options['LIMIT'],
+		//		isset($options['OFFSET']) ? $options['OFFSET'] 
+		//		: false);
+		//}
 
-		if ( isset( $noKeyOptions['FOR UPDATE'] ) ) $tailOpts .= ' FOR UPDATE';
-		if ( isset( $noKeyOptions['LOCK IN SHARE MODE'] ) ) $tailOpts .= ' LOCK IN SHARE MODE';
+		if ( isset( $noKeyOptions['FOR UPDATE'] ) ) $postLimitTail .= ' FOR UPDATE';
+		if ( isset( $noKeyOptions['LOCK IN SHARE MODE'] ) ) $postLimitTail .= ' LOCK IN SHARE MODE';
 		if ( isset( $noKeyOptions['DISTINCT'] ) && isset( $noKeyOptions['DISTINCTROW'] ) ) $startOpts .= 'DISTINCT';
 
 		if ( isset( $options['USE INDEX'] ) && ! is_array( $options['USE INDEX'] ) ) {
@@ -934,7 +936,7 @@ class DatabasePostgres extends Database {
 			$useIndex = '';
 		}
 		
-		return array( $startOpts, $useIndex, $tailOpts );
+		return array( $startOpts, $useIndex, $preLimitTail, $postLimitTail );
 	}
 
 	public function setTimeout( $timeout ) {

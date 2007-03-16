@@ -2003,7 +2003,7 @@ class Image
 	 *
 	 * @return FSTransaction
 	 */
-	private function prepareDeleteVersion( $path, $reason, $table, $fieldMap, $where, $suppress, $fname ) {
+	private function prepareDeleteVersion( $path, $reason, $table, $fieldMap, $where, $suppress=false, $fname ) {
 		global $wgUser, $wgSaveDeletedFiles;
 
 		// Dupe the file into the file store
@@ -2368,7 +2368,7 @@ class Image
 
 } //class
 
-class FSarchivedFile
+class ArchivedFile
 {
 	/**
 	 * Returns a file object from the filearchive table
@@ -2381,7 +2381,7 @@ class FSarchivedFile
 	 * @param $key, optional storage key
 	 * @return ResultWrapper
 	 */
-	function FSarchivedFile( $title, $id=0, $key='' ) {
+	function ArchivedFile( $title, $id=0, $key='' ) {
 		if( !is_object( $title ) ) {
 			throw new MWException( 'Image constructor given bogus title.' );
 		}
@@ -2531,6 +2531,9 @@ class ThumbnailImage {
 /**
  * Aliases for backwards compatibility with 1.6
  */
-define( 'MW_REV_DELETED_IMAGE', Image::DELETED_FILE );
+define( 'MW_IMG_DELETED_FILE', Image::DELETED_FILE );
+define( 'MW_IMG_DELETED_COMMENT', Image::DELETED_COMMENT );
+define( 'MW_IMG_DELETED_USER', Image::DELETED_USER );
+define( 'MW_IMG_DELETED_RESTRICTED', Image::DELETED_RESTRICTED );
 
 ?>

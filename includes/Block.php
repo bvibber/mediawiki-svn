@@ -26,6 +26,8 @@ class Block
 		$timestamp = '' , $auto = 0, $expiry = '', $anonOnly = 0, $createAccount = 0, $enableAutoblock = 0, $hideName = 0 )
 	{
 		$this->mId = 0;
+		# Expand valid IPv6 addresses
+		$address = IP::sanitizeIP( $address );
 		$this->mAddress = $address;
 		$this->mUser = $user;
 		$this->mBy = $by;
@@ -175,7 +177,8 @@ class Block
 	/**
 	 * Fill in member variables from a result wrapper
 	 */
-	function loadFromResult( ResultWrapper $res, $killExpired = true ) {
+	function loadFromResult( ResultWrapper $res, $killExpired = true ) 
+	{
 		$ret = false;
 		if ( 0 != $res->numRows() ) {
 			# Get first block
@@ -210,7 +213,7 @@ class Block
 	 * Search the database for any range blocks matching the given address, and
 	 * load the row if one is found.
 	 */
-	function loadRange( $address, $killExpired = true )
+	function loadRange( $address, $killExpired = true, $user = 0 )
 	{
 		$iaddr = IP::toHex( $address );
 		if ( $iaddr === false ) {
@@ -229,6 +232,10 @@ class Block
 			"ipb_range_start <= '$iaddr'",
 			"ipb_range_end >= '$iaddr'"
 		);
+		
+		if ( $user ) {
+			$conds['ipb_anon_only'] = 0;
+		}
 
 		$res = $db->resultObject( $db->select( 'ipblocks', '*', $conds, __METHOD__, $options ) );
 		$success = $this->loadFromResult( $res, $killExpired );
@@ -631,15 +638,40 @@ class Block
 		global $wgAutoblockExpiry;
 		return wfTimestamp( TS_MW, wfTimestamp( TS_UNIX, $timestamp ) + $wgAutoblockExpiry );
 	}
-
-	static function normaliseRange( $range )
-	{
+	
+	/** 
+	 * Gets rid of uneeded numbers in quad-dotted IP strings
+	 * For example, 127.111.113.151/24 -> 127.111.113.0/24
+	 */
+	static function normaliseRange( $range ) {
+		// Use IPv6 functions if needed
+		if ( IP::isIPv6($range) ) return self::normaliseRange6( $range );
 		$parts = explode( '/', $range );
 		if ( count( $parts ) == 2 ) {
 			$shift = 32 - $parts[1];
 			$ipint = IP::toUnsigned( $parts[0] );
 			$ipint = $ipint >> $shift << $shift;
 			$newip = long2ip( $ipint );
+			$range = "$newip/{$parts[1]}";
+		}
+		return $range;
+	}
+	
+	// For IPv6
+	static function normaliseRange6( $range ) {
+		$parts = explode( '/', $range );
+		if ( count( $parts ) == 2 ) {
+			$bits = $parts[1];
+			$ipint = IP::toUnsigned6( $parts[0] );
+			# Native 32 bit functions WONT work here!!!
+			# Convert to a padded binary number
+			$network = wfBaseConvert( $ipint, 10, 2, 128 );
+			# Truncate the last (128-$bits) bits and replace them with zeros
+			$network = str_pad( substr( $network, 0, $bits ), 128, 0, STR_PAD_RIGHT );
+			# Convert back to an integer
+			$network = wfBaseConvert( $network, 2, 10 );
+			# Reform octet address
+			$newip = IP::toOctet( $network );
 			$range = "$newip/{$parts[1]}";
 		}
 		return $range;

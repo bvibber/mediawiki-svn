@@ -80,17 +80,17 @@ function wfSpecialNewimages( $par, $specialPage ) {
 			$m = $dbr->strencode( strtolower( $nt->getDBkey() ) );
 			$m = str_replace( '%', "\\%", $m );
 			$m = str_replace( '_', "\\_", $m );
-			$where[] = "LCASE(img_name) LIKE '%{$m}%'";
+			$where[] = "LOWER(img_name) LIKE '%{$m}%'";
 			$searchpar = '&wpIlMatch=' . urlencode( $wpIlMatch );
 		}
 	}
 
 	$invertSort = false;
 	if( $until = $wgRequest->getVal( 'until' ) ) {
-		$where[] = 'img_timestamp < ' . $dbr->timestamp( $until );
+		$where[] = "img_timestamp < '" . $dbr->timestamp( $until ) . "'";
 	}
 	if( $from = $wgRequest->getVal( 'from' ) ) {
-		$where[] = 'img_timestamp >= ' . $dbr->timestamp( $from );
+		$where[] = "img_timestamp >= '" . $dbr->timestamp( $from ) . "'";
 		$invertSort = true;
 	}
 	$sql='SELECT img_size, img_name, img_user, img_user_text,'.

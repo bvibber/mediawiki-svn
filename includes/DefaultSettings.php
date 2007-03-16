@@ -1006,11 +1006,14 @@ $wgGroupPermissions['sysop']['ipblock-exempt']	= true;
 // Permission to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
 
-// Experimental permissions, not ready for production use
-//$wgGroupPermissions['sysop']['deleterevision'] = true;
-//$wgGroupPermissions['bureaucrat']['hiderevision'] = true;
-//$wgGroupPermissions['bureaucrat']['oversight'] = true;
+// Experimental permissions to enable revisiondelete:
 
+//$wgGroupPermissions['sysop']['deleterevision'] = true;
+//$wgGroupPermissions['sysop']['hideuser'] = true;
+// To see hidden revs
+//$wgGroupPermissions['bureaucrat']['hiderevision'] = true;
+// For private log access
+//$wgGroupPermissions['bureaucrat']['oversight'] = true;
 // Also, we may want titles to be effectively hidden
 //$wgGroupPermissions['sysop']['browsearchive'] = false;
 //$wgGroupPermissions['bureaucrat']['browsearchive'] = true;
@@ -1123,7 +1126,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '60';
+$wgStyleVersion = '61';
 
 
 # Server-side caching:
@@ -1688,7 +1691,7 @@ $wgRawHtml = false;
 $wgUseTidy = false;
 $wgAlwaysUseTidy = false;
 $wgTidyBin = 'tidy';
-$wgTidyConf = $IP.'/extensions/tidy/tidy.conf';
+$wgTidyConf = $IP.'/includes/tidy.conf';
 $wgTidyOpts = '';
 $wgTidyInternal = function_exists( 'tidy_load_config' );
 
@@ -2103,6 +2106,7 @@ $wgLogActions = array(
 	'import/upload'     => 'import-logentry-upload',
 	'import/interwiki'  => 'import-logentry-interwiki',
 	'oversight/revision' => 'revdelete-logentry',
+	'oversight/file' => 'revdelete-logentry',
 	'oversight/event'   => 'logdelete-logentry',
 	'oversight/delete'  => 'deletedarticle',
 	'oversight/block'	=> 'blocklogentry',

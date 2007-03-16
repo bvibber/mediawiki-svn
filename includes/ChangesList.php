@@ -1,6 +1,5 @@
 <?php
 /**
- * @package MediaWiki
  * Contain class to show various lists of change:
  * - what's link here
  * - related changes
@@ -9,7 +8,6 @@
 
 /**
  * @todo document
- * @package MediaWiki
  */
 class RCCacheEntry extends RecentChange
 {
@@ -34,7 +32,7 @@ class ChangesList {
 	#
 
 	/** @todo document */
-	function ChangesList( &$skin ) {
+	function __construct( &$skin ) {
 		$this->skin =& $skin;
 		$this->preCacheMessages();
 	}
@@ -47,7 +45,7 @@ class ChangesList {
 	 * @return ChangesList derivative
 	 */
 	public static function newFromUser( &$user ) {
-		$sk =& $user->getSkin();
+		$sk = $user->getSkin();
 		$list = NULL;
 		if( wfRunHooks( 'FetchChangesList', array( &$user, &$sk, &$list ) ) ) {
 			return $user->getOption( 'usenewrc' ) ? new EnhancedChangesList( $sk ) : new OldChangesList( $sk );
@@ -266,6 +264,23 @@ class ChangesList {
 		global $wgUseRCPatrol, $wgUser;
 		return( $wgUseRCPatrol && $wgUser->isAllowed( 'patrol' ) );
 	}
+
+	/**
+	 * Returns the string which indicates the number of watching users
+	 */
+	function numberofWatchingusers( $count ) {
+		global $wgLang;
+		static $cache = array();
+		if ( $count > 0 ) {
+			if ( !isset( $cache[$count] ) ) {
+				$cache[$count] = wfMsgExt('number_of_watching_users_RCview',
+					array('parsemag', 'escape'), $wgLang->formatNum($count));
+			}
+			return $cache[$count];
+		} else {
+			return '';
+		}
+	}
 }
 
 
@@ -283,6 +298,7 @@ class OldChangesList extends ChangesList {
 		wfProfileIn( $fname );
 
 		# Extract DB fields into local scope
+		// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 		extract( $rc->mAttribs );
 
 		# Should patrol-related stuff be shown?
@@ -333,7 +349,7 @@ class OldChangesList extends ChangesList {
 		$this->insertComment($s, $rc);
 		
 		# Mark revision as deleted
-		if ( $this->isDeleted($rc,Revision::DELETED_TEXT) )
+		if ( !$rc_log_type && $this->isDeleted($rc,Revision::DELETED_TEXT) )
 		   $s .= ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
 		if($rc->numberofWatchingusers > 0) {
 			$s .= ' ' . wfMsg('number_of_watching_users_RCview',  $wgContLang->formatNum($rc->numberofWatchingusers));
@@ -363,6 +379,7 @@ class EnhancedChangesList extends ChangesList {
 		$rc = RCCacheEntry::newFromParent( $baseRC );
 
 		# Extract fields from DB into the function scope (rc_xxxx variables)
+		// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 		extract( $rc->mAttribs );
 		$curIdEq = 'curid=' . $rc_cur_id;
 
@@ -585,24 +602,21 @@ class EnhancedChangesList extends ChangesList {
 			}
 
 			# History
-			$r .= $this->skin->makeKnownLinkObj( $block[0]->getTitle(),
-				$this->message['history'], $curIdEq.'&action=history' );
+			$r .= $this->skin->makeKnownLinkObj( $block[0]->getTitle(), $this->message['history'], $curIdEq.'&action=history' );
 
 			$r .= ')';
 		}
 
 		$r .= $users;
-
-		if($block[0]->numberofWatchingusers > 0) {
-			global $wgContLang;
-			$r .= wfMsg('number_of_watching_users_RCview',  $wgContLang->formatNum($block[0]->numberofWatchingusers));
-		}
+		$r .=$this->numberofWatchingusers($block[0]->numberofWatchingusers);
+		
 		$r .= "</td></tr></table>\n";
 
 		# Sub-entries
 		$r .= '<div id="'.$rci.'" style="display:none; font-size:95%;"><table cellpadding="0" cellspacing="0">';
 		foreach( $block as $rcObj ) {
 			# Get rc_xxxx variables
+			// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 			extract( $rcObj->mAttribs );
 
 			#$r .= '<tr><td valign="top">'.$this->spacerArrow();
@@ -651,6 +665,9 @@ class EnhancedChangesList extends ChangesList {
 			parent::insertAction($r, $rcObj);
 			// log comment
 			parent::insertComment($r, $rcObj);
+			# Mark revision as deleted
+			if ( !$rc_log_type && $this->isDeleted($rcObj,Revision::DELETED_TEXT) )
+				$s .= ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
 
 			$r .= "</td></tr>\n";
 		}
@@ -737,6 +754,7 @@ class EnhancedChangesList extends ChangesList {
 		global $wgContLang, $wgRCShowChangedSize;
 
 		# Get rc_xxxx variables
+		// FIXME: Would be good to replace this extract() call with something that explicitly initializes local variables.
 		extract( $rcObj->mAttribs );
 		$curIdEq = 'curid='.$rc_cur_id;
 
@@ -782,22 +800,20 @@ class EnhancedChangesList extends ChangesList {
 		# Comment
 		if( $rc_type != RC_MOVE && $rc_type != RC_MOVE_OVER_REDIRECT ) {
 			// log action
-			if ( $this->isDeleted($rcObj,Revision::DELETED_COMMENT) ) {
-			   $r .= ' <span class="history-deleted">' . wfMsgHtml('rev-deleted-comment') . '</span>';
+			if ( $this->isDeleted($rcObj,LogViewer::DELETED_ACTION) ) {
+			   $r .= ' <span class="history-deleted">' . wfMsgHtml('rev-deleted-event') . '</span>';
 			} else {
 				$r .= ' ' . LogPage::actionText( $rc_log_type, $rc_log_action, $rcObj->getTitle(), $this->skin, LogPage::extractParams($rc_params), true, true );
 			} 
 			// log comment
-			if ( $this->isDeleted($rcObj,LogViewer::DELETED_ACTION) ) {
-			   $r .= ' <span class="history-deleted">' . wfMsg('rev-deleted-event') . '</span>';
+			if ( $this->isDeleted($rcObj,LogViewer::DELETED_COMMENT) ) {
+			   $r .= ' <span class="history-deleted">' . wfMsg('rev-deleted-comment') . '</span>';
 			} else {
 			  $r .= $this->skin->commentBlock( $rc_comment, $rcObj->getTitle() );
 			}
 		}
 
-		if( $rcObj->numberofWatchingusers > 0 ) {
-			$r .= wfMsg('number_of_watching_users_RCview', $wgContLang->formatNum($rcObj->numberofWatchingusers));
-		}
+		$r .= $this->numberofWatchingusers($rcObj->numberofWatchingusers);
 
 		$r .= "</td></tr></table>\n";
 		return $r;

@@ -39,8 +39,12 @@ class UsersPager extends AlphabeticPager {
 	function __construct($group=null) {
 		global $wgRequest;
 		$this->requestedGroup = $group != "" ? $group : $wgRequest->getVal( 'group' );
-		$this->requestedUser = $wgRequest->getText( 'username', $this->mOffset );
-		
+		$un = $wgRequest->getText( 'username' );
+		$this->requestedUser = '';
+		if ( $un != '' ) {
+			$username = Title::makeTitleSafe( NS_USER, $un );
+			$this->requestedUser = $username->getText();
+		}
 		parent::__construct();
 	}
 
@@ -59,9 +63,9 @@ class UsersPager extends AlphabeticPager {
 		if ($this->requestedUser != "") {
 			$conds[] = 'user_name >= ' . wfGetDB()->addQuotes( $this->requestedUser );
 		}
-		
+
 		list ($user,$user_groups,$ipblocks) = wfGetDB()->tableNamesN('user','user_groups','ipblocks');
-		
+
 		return array(
 			'tables' => " $user LEFT JOIN $user_groups ON user_id=ug_user LEFT JOIN $ipblocks ON user_id=ipb_user AND ipb_auto=0 ",
 			'fields' => array('user_name',
@@ -73,7 +77,7 @@ class UsersPager extends AlphabeticPager {
 		);	
 		
 	}
-	
+
 	function formatRow($row) {
 		$userPage = Title::makeTitle(NS_USER, $row->user_name);
 		$name = $this->getSkin()->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) );
@@ -90,7 +94,7 @@ class UsersPager extends AlphabeticPager {
 		} elseif ($row->numgroups == 1 ) { // MAX hack inside query :)
 			$groups[$row->singlegroup] = User::getGroupMember( $row->singlegroup );
 		}
-		
+
 		if ( count($groups) > 0 ) {
 			foreach( $groups as $group => $desc ) {
 				$list[] = User::makeGroupLinkHTML( $group, $desc);
@@ -99,18 +103,19 @@ class UsersPager extends AlphabeticPager {
 		} else {
 			$groups ='';
 		}
+		//$ulink = $skin->userLink( $result->user, $result->user_text ) . ' ' . $skin->userToolLinks( $result->user, $result->user_text );
 		return '<li>' . wfSpecialList ($name, $groups) .'</li>';
 	}
-	
+
 	function getBody() {
 		if (!$this->mQueryDone) {
 			$this->doQuery();
 		}
 		$batch = new LinkBatch;
 		$db = $this->mDb;
-	
+
 		$this->mResult->rewind();
-		
+
 		while ( $row = $this->mResult->fetchObject() ) {
 			$batch->addObj( Title::makeTitleSafe( NS_USER, $row->user_name ) );
 		}
@@ -118,41 +123,44 @@ class UsersPager extends AlphabeticPager {
 		$this->mResult->rewind();
 		return parent::getBody();
 	}
-	
+
 	function getPageHeader( ) {
+		global $wgRequest;
 		$self = $this->getTitle();
 
 		# Form tag
-		$out = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
-		
+		$out  = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $self->getLocalUrl() ) ) .
+			'<fieldset>' .
+			Xml::element( 'legend', array(), wfMsg( 'listusers' ) );
+
+		# Username field
+		$out .= Xml::label( wfMsg( 'listusersfrom' ), 'offset' ) . ' ' .
+			Xml::input( 'username', 20, $this->requestedUser ) . ' ';
+
+		if( $this->mLimit )
+			$out .= Xml::hidden( 'limit', $this->mLimit );
+
 		# Group drop-down list
-		$out .= wfElement( 'label', array( 'for' => 'group' ), wfMsg( 'group' ) ) . ' ';
-		$out .= wfOpenElement( 'select', array( 'name' => 'group', 'id' => 'group' ) );
-		$out .= wfElement( 'option', array( 'value' => '' ), wfMsg( 'group-all' ) ); # Item for "all groups"
+		$out .= Xml::label( wfMsg( 'group' ), 'group' ) . ' ' .
+			Xml::openElement('select',  array( 'name' => 'group', 'id' => 'group' ) ) .
+			Xml::option( wfMsg( 'group-all' ), '' );  # Item for "all groups"
+
 		$groups = User::getAllGroups();
 		foreach( $groups as $group ) {
 			$attribs = array( 'value' => $group );
-			if( $group == $this->requestedGroup )
-				$attribs['selected'] = 'selected';
-			$out .= wfElement( 'option', $attribs, User::getGroupName( $group ) );
+			$attribs['selected'] = ( $group == $this->requestedGroup ) ? 'selected' : '';
+			$out .= Xml::option( User::getGroupName( $group ), $attribs['value'], $attribs['selected'] );
 		}
-		$out .= wfCloseElement( 'select' ) . ' ';;# . wfElement( 'br' );
-
-		# Username field
-		$out .= wfElement( 'label', array( 'for' => 'offset' ), wfMsg( 'listusersfrom' ) ) . ' ';
-		$out .= wfElement( 'input', array( 'type' => 'text', 'id' => 'username', 'name' => 'username',
-							'value' => $this->requestedUser ) ) . ' ';
-
-		if( $this->mLimit )
-			$out .= wfElement( 'input', array( 'type' => 'hidden', 'name' => 'limit', 'value' => $this->mLimit ) );
+		$out .= Xml::closeElement( 'select' ) . ' ';
 
 		# Submit button and form bottom
-		$out .= wfElement( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'allpagessubmit' ) ) );
-		$out .= wfCloseElement( 'form' );
+		$out .= Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
+			'</fieldset>' .
+			Xml::closeElement( 'form' );
 
 		return $out;
 	}
-	
+
 	/**
 	 * Preserve group and username offset parameters when paging
 	 * @return array

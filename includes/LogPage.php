@@ -191,7 +191,7 @@ class LogPage {
 					}
 					if ( $forRC ) {
 						$params[1] = $wgLang->translateBlockExpiry( $params[1], true );
-						$params[2] = self::formatBlockFlags( $params[2] );
+						$params[2] = isset( $params[2] ) ? str_replace( ",", ", ", self::formatBlockFlags( $params[2] ) ) : '';
 					}
 					$rv = wfMsgReal( $wgLogActions[$key], $params, true, !$skin );
 				}

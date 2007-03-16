@@ -60,7 +60,7 @@ class IPBlockForm {
 		$this->BlockCreateAccount = $wgRequest->getBool( 'wpCreateAccount', $byDefault );
 		$this->BlockEnableAutoblock = $wgRequest->getBool( 'wpEnableAutoblock', $byDefault );
 		# Re-check user's rights to hide names, very serious, defaults to 0
-		$this->BlockHideName = $wgRequest->getBool( 'wpHideName', 0 ) && $wgUser->isAllowed( 'deleterevision' );
+		$this->BlockHideName = $wgRequest->getBool( 'wpHideName', 0 ) && $wgUser->isAllowed( 'hideuser' );
 	}
 
 	function showForm( $err ) {
@@ -115,7 +115,7 @@ class IPBlockForm {
 		<tr>
 			<td align=\"right\">{$mIpaddress}:</td>
 			<td align=\"left\">
-				" . Xml::input( 'wpBlockAddress', 40, $this->BlockAddress,
+				" . Xml::input( 'wpBlockAddress', 45, $this->BlockAddress,
 					array(
 						'tabindex' => '1',
 						'id' => 'mw-bi-target',
@@ -139,14 +139,14 @@ class IPBlockForm {
 		<tr id='wpBlockOther'>
 			<td align=\"right\">{$mIpbother}:</td>
 			<td align=\"left\">
-				" . Xml::input( 'wpBlockOther', 40, $this->BlockOther,
+				" . Xml::input( 'wpBlockOther', 45, $this->BlockOther,
 					array( 'tabindex' => '3', 'id' => 'mw-bi-other' ) ) . "
 			</td>
 		</tr>
 		<tr>
 			<td align=\"right\">{$mIpbreason}:</td>
 			<td align=\"left\">
-				" . Xml::input( 'wpBlockReason', 40, $this->BlockReason,
+				" . Xml::input( 'wpBlockReason', 45, $this->BlockReason,
 					array( 'tabindex' => '3', 'id' => 'mw-bi-reason' ) ) . "
 			</td>
 		</tr>
@@ -176,7 +176,7 @@ class IPBlockForm {
 		</tr>
 		");
 		// Allow some users to hide name from block log, blocklist and listusers
-		if ( $wgUser->isAllowed( 'deleterevision' ) ) {
+		if ( $wgUser->isAllowed( 'hideuser' ) ) {
 			$wgOut->addHTML("
 			<tr>
 			<td>&nbsp;</td>
@@ -209,6 +209,8 @@ class IPBlockForm {
 			$this->showLogFragment( $wgOut, $user->getUserPage() );
 		} elseif( preg_match( '/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/', $this->BlockAddress ) ) {
 			$this->showLogFragment( $wgOut, Title::makeTitle( NS_USER, $this->BlockAddress ) );
+		} elseif( preg_match( '/^\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}/', $this->BlockAddress ) ) {
+			$this->showLogFragment( $wgOut, Title::makeTitle( NS_USER, $this->BlockAddress ) );
 		}
 	}
 
@@ -216,19 +218,37 @@ class IPBlockForm {
 		global $wgOut, $wgUser, $wgSysopUserBans, $wgSysopRangeBans;
 
 		$userId = 0;
-		$this->BlockAddress = trim( $this->BlockAddress );
-		$rxIP = '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}';
-
+		# Expand valid IPv6 addresses, usernames are left as is
+		$this->BlockAddress = IP::sanitizeIP( $this->BlockAddress );
+		# isIPv4() and IPv6() are used for final validation
+		$rxIP4 = '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}';
+		$rxIP6 = '\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}';
+		$rxIP = "($rxIP4|$rxIP6)";
+		
 		# Check for invalid specifications
-		if ( ! preg_match( "/^$rxIP$/", $this->BlockAddress ) ) {
+		if ( !preg_match( "/^$rxIP$/", $this->BlockAddress ) ) {
 			$matches = array();
-		  	if ( preg_match( "/^($rxIP)\\/(\\d{1,2})$/", $this->BlockAddress, $matches ) ) {
+		  	if ( preg_match( "/^($rxIP4)\\/(\\d{1,2})$/", $this->BlockAddress, $matches ) ) {
+		  		# IPv4
 				if ( $wgSysopRangeBans ) {
-					if ( $matches[2] > 31 || $matches[2] < 16 ) {
+					if ( !IP::isIPv4( $this->BlockAddress ) || $matches[2] > 31 || $matches[2] < 16 ) {
 						$this->showForm( wfMsg( 'ip_range_invalid' ) );
 						return;
 					}
 					$this->BlockAddress = Block::normaliseRange( $this->BlockAddress );
+				} else {
+					# Range block illegal
+					$this->showForm( wfMsg( 'range_block_disabled' ) );
+					return;
+				}
+			} else if ( preg_match( "/^($rxIP6)\\/(\\d{1,3})$/", $this->BlockAddress, $matches ) ) {
+		  		# IPv6
+				if ( $wgSysopRangeBans ) {
+					if ( !IP::isIPv6( $this->BlockAddress ) || $matches[2] > 127 || $matches[2] < 64 ) {
+						$this->showForm( wfMsg( 'ip_range_invalid' ) );
+						return;
+					}
+					$this->BlockAddress = Block::normaliseRange6( $this->BlockAddress );
 				} else {
 					# Range block illegal
 					$this->showForm( wfMsg( 'range_block_disabled' ) );

@@ -582,19 +582,17 @@ CONTROL;
 			$newLink = $this->mNewPage->escapeLocalUrl();
 			$this->mPagetitle = htmlspecialchars( wfMsg( 'currentrev' ) );
 			$newEdit = $this->mNewPage->escapeLocalUrl( 'action=edit' );
-			$newUndo = $this->mNewPage->escapeLocalUrl( 'action=edit&undo=' . $this->mNewid );
+
 			$this->mNewtitle = "<a href='$newLink'>{$this->mPagetitle}</a> ($timestamp)"
-				. " (<a href='$newEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)"
-				. " (<a href='$newUndo'>" . htmlspecialchars( wfMsg( 'editundo' ) ) . "</a>)";
+				. " (<a href='$newEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)";
+
 		} else {
 			$newLink = $this->mNewPage->escapeLocalUrl( 'oldid=' . $this->mNewid );
 			$newEdit = $this->mNewPage->escapeLocalUrl( 'action=edit&oldid=' . $this->mNewid );
-			$newUndo = $this->mNewPage->escapeLocalUrl( 'action=edit&undo=' . $this->mNewid );
 			$this->mPagetitle = htmlspecialchars( wfMsg( 'revisionasof', $timestamp ) );
 
 			$this->mNewtitle = "<a href='$newLink'>{$this->mPagetitle}</a>"
-				. " (<a href='$newEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)"
-				. " (<a href='$newUndo'>" . htmlspecialchars( wfMsg( 'editundo' ) ) . "</a>)";
+				. " (<a href='$newEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)";
 		}
 		if ( !$this->mNewRev->userCan(Revision::DELETED_TEXT) ) {
 		  	$this->mNewtitle = "<span class='history-deleted'>{$this->mPagetitle}</span>";
@@ -628,12 +626,17 @@ CONTROL;
 			$t = $wgLang->timeanddate( $this->mOldRev->getTimestamp(), true );
 			$oldLink = $this->mOldPage->escapeLocalUrl( 'oldid=' . $this->mOldid );
 			$oldEdit = $this->mOldPage->escapeLocalUrl( 'action=edit&oldid=' . $this->mOldid );
-			$this->mOldPageTitle = htmlspecialchars( wfMsg( 'revisionasof', $t ) );
-			$this->mOldtitle = "<a href='$oldLink'>" . htmlspecialchars( wfMsg( 'revisionasof', $t ) )
-				. "</a> (<a href='$oldEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)";
+			$this->mOldPagetitle = htmlspecialchars( wfMsg( 'revisionasof', $t ) );
+			
+			$this->mOldtitle = "<a href='$oldLink'>{$this->mOldPagetitle}</a>"
+				. "(<a href='$oldEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)";
+			// Now that we considered old rev, we can make undo link (bug 8133, multi-edit undo)
+			$newUndo = $this->mNewPage->escapeLocalUrl( 'action=edit&undoafter=' . $this->mOldid . '&undoto=' . $this->mNewid);
+			if ( $this->mNewRev->userCan(Revision::DELETED_TEXT) )
+				$this->mNewtitle .= " (<a href='$newUndo'>" . htmlspecialchars( wfMsg( 'editundo' ) ) . "</a>)";
 			
 			if ( !$this->mOldRev->userCan(Revision::DELETED_TEXT) ) {
-		  		$this->mOldtitle = "<span class='history-deleted'>{$this->mOldPageTitle}</span>";
+		  		$this->mOldtitle = "<span class='history-deleted'>{$this->mOldPagetitle}</span>";
 			} else if ( $this->mOldRev->isDeleted(Revision::DELETED_TEXT) ) {
 		  		$this->mOldtitle = '<span class="history-deleted">'.$this->mOldtitle.'</span>';
 			}

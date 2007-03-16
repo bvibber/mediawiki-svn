@@ -41,7 +41,7 @@ function wfSpecialLog( $par = '' ) {
  */
 class LogReader {
 	var $db, $joinClauses, $whereClauses;
-	var $type = '', $user = '', $title = null;
+	var $type = '', $user = '', $title = null, $pattern = false;
 
 	/**
 	 * @param WebRequest $request For internal use use a FauxRequest object to pass arbitrary parameters.
@@ -66,7 +66,7 @@ class LogReader {
 
 		$this->limitType( $request->getVal( 'type' ) );
 		$this->limitUser( $request->getText( 'user' ) );
-		$this->limitTitle( $request->getText( 'page' ) );
+		$this->limitTitle( $request->getText( 'page' ) , $request->getBool( 'pattern' ) );
 		$this->limitTime( $request->getVal( 'from' ), '>=' );
 		$this->limitTime( $request->getVal( 'until' ), '<=' );
 
@@ -170,15 +170,21 @@ class LogReader {
 	 * @param string $page Title name as text
 	 * @private
 	 */
-	function limitTitle( $page ) {
+	function limitTitle( $page , $pattern ) {
 		$title = Title::newFromURL( $page, false );
 		if( empty( $page ) || is_null( $title )  ) {
 			return false;
 		}
 		$this->title =& $title;
-		$safetitle = $this->db->strencode( $title->getDBkey() );
+		$this->pattern = $pattern;
 		$ns = $title->getNamespace();
-		$this->whereClauses[] = "log_namespace=$ns AND log_title='$safetitle'";
+		if ( $pattern ) {
+			$safetitle = $this->db->escapeLike( $title->getDBkey() ); // use escapeLike to avoid expensive search patterns like 't%st%'
+			$this->whereClauses[] = "log_namespace=$ns AND log_title LIKE '$safetitle%'";
+		} else {
+			$safetitle = $this->db->strencode( $title->getDBkey() );
+			$this->whereClauses[] = "log_namespace=$ns AND log_title = '$safetitle'";
+		}
 	}
 
 	/**
@@ -243,6 +249,13 @@ class LogReader {
 	}
 
 	/**
+	 * @return boolean The checkbox, if titles should be searched by a pattern too
+	 */
+	function queryPattern() {
+		return $this->pattern;
+	}
+
+	/**
 	 * @return string The text of the title that this LogReader has been limited to.
 	 */
 	function queryTitle() {
@@ -287,7 +300,7 @@ class LogViewer {
 	function preCacheMessages() {
 		// Precache various messages
 		if( !isset( $this->message ) ) {
-			foreach( explode(' ', 'viewpagelogs revhistory rev-delundel' ) as $msg ) {
+			foreach( explode(' ', 'viewpagelogs revhistory imghistory rev-delundel' ) as $msg ) {
 				$this->message[$msg] = wfMsgExt( $msg, array( 'escape') );
 			}
 		}
@@ -301,9 +314,13 @@ class LogViewer {
 		$this->showHeader( $wgOut );
 		$this->showOptions( $wgOut );
 		$result = $this->getLogRows();
-		$this->showPrevNext( $wgOut );
-		$this->doShowList( $wgOut, $result );
-		$this->showPrevNext( $wgOut );
+		if ( $this->numResults > 0 ) {
+			$this->showPrevNext( $wgOut );
+			$this->doShowList( $wgOut, $result );
+			$this->showPrevNext( $wgOut );
+		} else {
+			$this->showError( $wgOut );
+		}
 	}
 	
 	/**
@@ -464,23 +481,27 @@ class LogViewer {
 	 * @param OutputPage $out where to send output
 	 */
 	function showList( &$out ) {
-		$this->doShowList( $out, $this->getLogRows() );
+		if ( $this->numResults > 0 ) {
+			$this->doShowList( $out, $this->getLogRows() );
+		} else {
+			$this->showError( $out );
+		}
 	}
 
 	function doShowList( &$out, $result ) {
 		// Rewind result pointer and go through it again, making the HTML
-		if ($this->numResults > 0) {
-			$html = "\n<ul>\n";
-			$result->seek( 0 );
-			while( $s = $result->fetchObject() ) {
-				$html .= $this->logLine( $s );
-			}
-			$html .= "\n</ul>\n";
-			$out->addHTML( $html );
-		} else {
-			$out->addWikiText( wfMsg( 'logempty' ) );
+		$html = "\n<ul>\n";
+		$result->seek( 0 );
+		while( $s = $result->fetchObject() ) {
+			$html .= $this->logLine( $s );
 		}
+		$html .= "\n</ul>\n";
+		$out->addHTML( $html );
 		$result->free();
+	}
+
+	function showError( &$out ) {
+		$out->addWikiText( wfMsg( 'logempty' ) );
 	}
 
 	/**
@@ -509,51 +530,26 @@ class LogViewer {
 		$comment = $this->skin->logComment( $s, true );
 
 		$paramArray = LogPage::extractParams( $s->log_params );
-		$revert = ''; $rdel = '';
-		// show revertmove link
-		if ( $s->log_type == 'move' && isset( $paramArray[0] ) ) {
-			$destTitle = Title::newFromText( $paramArray[0] );
-			if ( $destTitle ) {
-				$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Movepage' ),
-					wfMsg( 'revertmove' ),
-					'wpOldTitle=' . urlencode( $destTitle->getPrefixedDBkey() ) .
-					'&wpNewTitle=' . urlencode( $title->getPrefixedDBkey() ) .
-					'&wpReason=' . urlencode( wfMsgForContent( 'revertmove' ) ) .
-					'&wpMovetalk=0' ) . ')';
-			}
-		// show undelete link
-		} elseif ( $s->log_action == 'delete' && $wgUser->isAllowed( 'delete' ) ) {
-			$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Undelete' ),
-				wfMsg( 'undeletebtn' ) ,
-				'target='. urlencode( $title->getPrefixedDBkey() ) ) . ')';
+		$revert = ''; $del = '';
 		
-		// show unblock link
-		} elseif ( $s->log_action == 'block' && $wgUser->isAllowed( 'block' ) ) {
-			$revert = '(' .  $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Ipblocklist' ),
-				wfMsg( 'unblocklink' ),
-				'action=unblock&ip=' . urlencode( $s->log_title ) ) . ')';
-		// show change protection link
-		} elseif ( $s->log_action == 'protect' && $wgUser->isAllowed( 'protect' ) ) {
-			$revert = '(' .  $skin->makeKnownLink( $title->getPrefixedDBkey() ,
-				wfMsg( 'protect_change' ),
-				'action=unprotect' ) . ')';
+		// Some user can hide log items and have review links
+		if( $wgUser->isAllowed( 'deleterevision' ) ) {
+			$del = $this->showhideLinks( $s, $title );
 		}
+		
+		// Show restore/unprotect/unblock
+		$revert = $this->showReviewLinks( $s, $title, $paramArray );
+		
 		// Event description
 		$action = $this->logActionText( $s->log_type, $s->log_action, $title, $this->skin, $paramArray, $s->log_deleted );
 		
-		# Some user can hide log items
-		$del=''; $reviewlink = '';
-		if( $wgUser->isAllowed( 'deleterevision' ) ) {
-			$del = $this->showhideLinks( $s, $title );
-			$reviewlink = $this->showReviewLinks( $s, $title, $paramArray );
-		}
-		
-		$out = "<li><tt>$del</tt> $time $userLink $action $comment $revert$reviewlink</li>\n";
+		$out = "<li><tt>$del</tt> $time $userLink $action $comment <small>$revert</small></li>\n";
 		return $out;
 	}
 
 	/**
 	 * @param $s, row object
+	 * @param $s, title object
 	 * @private
 	 */
 	function showhideLinks( $s, $title ) {
@@ -577,24 +573,56 @@ class LogViewer {
 
 	/**
 	 * @param $s, row object
+	 * @param $title, title object
+	 * @param $s, param array
 	 * @private
 	 */
 	function showReviewLinks( $s, $title, $paramArray ) {
+		global $wgUser;
+		
 		$reviewlink='';
-		$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
+		// Show revertmove link
+		if ( $s->log_type == 'move' && isset( $paramArray[0] ) ) {
+			$destTitle = Title::newFromText( $paramArray[0] );
+			if ( $destTitle ) {
+				$reviewlink = $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Movepage' ),
+					wfMsg( 'revertmove' ),
+					'wpOldTitle=' . urlencode( $destTitle->getPrefixedDBkey() ) .
+					'&wpNewTitle=' . urlencode( $title->getPrefixedDBkey() ) .
+					'&wpReason=' . urlencode( wfMsgForContent( 'revertmove' ) ) .
+					'&wpMovetalk=0' );
+			}
+		// show undelete link
+		} else if ( $s->log_action == 'delete' && $wgUser->isAllowed( 'delete' ) ) {
+			$reviewlink = $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Undelete' ),
+				wfMsg( 'undeletebtn' ) ,
+				'target='. urlencode( $title->getPrefixedDBkey() ) );
+		// show unblock link
+		} elseif ( $s->log_action == 'block' && $wgUser->isAllowed( 'block' ) ) {
+			$reviewlink = $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Ipblocklist' ),
+				wfMsg( 'unblocklink' ),
+				'action=unblock&ip=' . urlencode( $s->log_title ) );
+		// show change protection link
+		} elseif ( $s->log_action == 'protect' && $wgUser->isAllowed( 'protect' ) ) {
+			$reviewlink = $this->skin->makeKnownLink( $title->getPrefixedDBkey() ,
+				wfMsg( 'protect_change' ),
+				'action=unprotect' );
+		}
 		// If an edit was hidden from a page give a review link to the history
-		if ( isset($paramArray[2]) ) {
+		if ( $wgUser->isAllowed( 'deleterevision' ) && isset($paramArray[2]) ) {
+			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 			if ( $s->log_action == 'revision' ) {
-				$reviewlink = '<small>&nbsp;&nbsp;&nbsp;(' .
-				$this->skin->makeKnownLinkObj( $title, $this->message['revhistory'],
+				$reviewlink = $this->skin->makeKnownLinkObj( $title, $this->message['revhistory'],
 				wfArrayToCGI( array('action' => 'history' ) ) ) . ':';
+			} else if ( $s->log_action == 'file' ) {
+			// Currently, only deleted file versions can be hidden
+				$undelete = SpecialPage::getTitleFor( 'Undelete' );
+				$reviewlink = $this->skin->makeKnownLinkObj( $undelete, $this->message['imghistory'],
+				wfArrayToCGI( array('target' => $title->getPrefixedText() ) ) ) . ':';
 			} else if ( $s->log_action == 'event' && isset($paramArray[0]) ) {
 			// If this event was to a log, give a review link to logs for that page only
-				$reviewlink = '<small>&nbsp;&nbsp;&nbsp;(' .
-				$this->skin->makeKnownLinkObj( $title, $this->message['viewpagelogs'],
+				$reviewlink = $this->skin->makeKnownLinkObj( $title, $this->message['viewpagelogs'],
 				wfArrayToCGI( array('page' => $paramArray[0] ) ) ) . ':';
-			} else {
-				return $reviewlink;
 			}
 			// Link to each hidden object ID
 			$IdType = $paramArray[1].'id';
@@ -603,8 +631,8 @@ class LogViewer {
 				$reviewlink .= ' '.$this->skin->makeKnownLinkObj( $revdel, "#$id",
 				wfArrayToCGI( array('target' => $paramArray[0], $IdType => $id ) ) );
 			}
-			$reviewlink .= ')</small>';
 		}
+		$reviewlink = ( $reviewlink=='' ) ? "" : "&nbsp;&nbsp;&nbsp;($reviewlink) ";
 		return $reviewlink;
 	}
 
@@ -630,12 +658,15 @@ class LogViewer {
 		$title = SpecialPage::getTitleFor( 'Log' );
 		$special = htmlspecialchars( $title->getPrefixedDBkey() );
 		$out->addHTML( "<form action=\"$action\" method=\"get\">\n" .
+			'<fieldset>' .
+			Xml::element( 'legend', array(), wfMsg( 'log' ) ) .
 			Xml::hidden( 'title', $special ) . "\n" .
 			$this->getTypeMenu() . "\n" .
 			$this->getUserInput() . "\n" .
 			$this->getTitleInput() . "\n" .
+			$this->getTitlePattern() . "\n" .
 			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
-			"</form>" );
+			"</fieldset></form>" );
 	}
 
 	/**
@@ -695,6 +726,15 @@ class LogViewer {
 	}
 
 	/**
+	 * @return boolean Checkbox
+	 * @private
+	 */
+	function getTitlePattern() {
+		$pattern = $this->reader->queryPattern();
+		return Xml::checkLabel( wfMsg( 'title-pattern' ), 'pattern', 'pattern', $pattern );
+	}
+
+	/**
 	 * @param OutputPage &$out where to send output
 	 * @private
 	 */
@@ -704,6 +744,7 @@ class LogViewer {
 		$pieces[] = 'type=' . urlencode( $this->reader->queryType() );
 		$pieces[] = 'user=' . urlencode( $this->reader->queryUser() );
 		$pieces[] = 'page=' . urlencode( $this->reader->queryTitle() );
+		$pieces[] = 'pattern=' . urlencode( $this->reader->queryPattern() );
 		$bits = implode( '&', $pieces );
 		list( $limit, $offset ) = $wgRequest->getLimitOffset();
 
@@ -720,6 +761,9 @@ class LogViewer {
 /**
  * Aliases for backwards compatibility with 1.6
  */
-define( 'MW_REV_DELETED_ACTION', LogViewer::DELETED_ACTION );
+define( 'MW_LOG_DELETED_ACTION', LogViewer::DELETED_ACTION );
+define( 'MW_LOG_DELETED_USER', LogViewer::DELETED_USER );
+define( 'MW_LOG_DELETED_COMMENT', LogViewer::DELETED_COMMENT );
+define( 'MW_LOG_DELETED_RESTRICTED', LogViewer::DELETED_RESTRICTED );
 
 ?>
