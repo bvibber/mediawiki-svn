@@ -88,6 +88,11 @@ $wgCrossNamespaceLinksMessages['pt'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|linca|lincam}} para $3'
 );
 $wgCrossNamespaceLinksMessages['pt-br'] = $wgCrossNamespaceLinksMessages['pt'];
+$wgCrossNamespaceLinksMessages['ro'] = array(
+	'crossnamespacelinks'         => 'Legături între spaţii de nume',
+	'crossnamespacelinks-summary' => 'Această pagină pune la dispoziţie o listă a paginilor din spaţiul de nume principal care se leagă cu pagini din alt spaţiu de nume (excepţie pentru spaţiile de nume {{ns:special}}, {{ns:talk}}, {{ns:project}} şi {{ns:template}}).',
+	'crossnamespacelinkstext'     => '$1: $2 se leagă la $3',
+);
 $wgCrossNamespaceLinksMessages['sk'] = array(
 	'crossnamespacelinks'     => 'Odkazy medzi mennými priestormi',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazov}} na $3'

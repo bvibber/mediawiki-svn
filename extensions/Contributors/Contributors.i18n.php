@@ -160,6 +160,19 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'O artigo $1 não existe.',
 ),
 
+'ro' => array(
+'contributors' => 'Contribuitori',
+'contributors-toolbox' => 'Contribuitori principali',
+'contributors-legend' => 'Afişează contribuitorii principali la un articol',
+'contributors-target' => 'Titlu:',
+'contributors-submit' => 'Arată',
+'contributors-subtitle' => 'Contribuitori principali la $1',
+'contributors-others-long' => 'Mai sunt $1 alţi contribuitori la această pagină.',
+'contributors-others' => 'şi alţii $1',
+'contributors-badtitle' => 'Titlu nevalid.',
+'contributors-nosuchpage' => 'Articolul $1 nu există.',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'contributors' => 'Prispievatelia',
