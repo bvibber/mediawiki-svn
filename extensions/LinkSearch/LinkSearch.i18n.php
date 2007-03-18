@@ -55,7 +55,12 @@ $wgLinkSearchMessages['he'] = array(
 	'linksearch-pat'   => 'קישור לחיפוש:',
 	'linksearch-ns'    => 'מרחב שם:',
 	'linksearch-ok'    => 'חיפוש',
-	'linksearch-text'  => 'ניתן להשתמש בתווים כללים, לדוגמה "‎*.wikipedia.org".',
+	'linksearch-text'  => 'Wildcards such as " *.wikipedia.org " may be used.
+
+The default protocol is http. Other possible protocols: https, ftp, irc, news.',
+	'linksearch-text'  => 'ניתן להשתמש בתווים כללים, לדוגמה "‎*.wikipedia.org".
+
+פרוטוקול ברירת המחדל הוא HTTP. פרוטוקולים אפשריים אחרים: HTTPS,‏ FTP,‏ IRC,‏ NEWS.',
 	'linksearch-line'  => '$1 מקושר מהדף $2',
 	'linksearch-error' => 'תווים כלליים יכולים להופיע רק בתחילת שם השרת.',
 );
