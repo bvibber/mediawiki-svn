@@ -28,9 +28,10 @@ function wfLinkSearchSetup() {
 		/*function*/ false, /*file*/ false );
 
 	class LinkSearchPage extends QueryPage {
-		function __construct( $query , $ns ) {
+		function __construct( $query , $ns , $prot ) {
 			$this->mQuery = $query;
 			$this->mNs = $ns;
+			$this->mProt = $prot;
 		}
 
 		function getName() {
@@ -47,37 +48,20 @@ function wfLinkSearchSetup() {
 		/**
 		 * Return an appropriately formatted LIKE query
 		 */
-		static function mungeQuery( $query ) {
-			$prot = 'http'; // use http as standard
-			if( substr( $query, 0, 7 ) == 'http://' ) {
-				$query = substr( $query, 7 );
-			} elseif( substr( $query, 0, 8 ) == 'https://' ) {
-				$query = substr( $query, 8 );
-				$prot = 'https';
-			} elseif( substr( $query, 0, 6 ) == 'ftp://' ) {
-				$query = substr( $query, 6 );
-				$prot = 'ftp';
-			} elseif( substr( $query, 0, 6 ) == 'irc://' ) {
-				$query = substr( $query, 6 );
-				$prot = 'irc';
-			} elseif( substr( $query, 0, 7 ) == 'news://' ) {
-				$query = substr( $query, 7 );
-				$prot = 'news';
-			}
+		static function mungeQuery( $query , $prot ) {
 			return LinkFilter::makeLike( $query , $prot );
 		}
 
 		function linkParameters() {
-			return array( 'target' => $this->mQuery, 'namespace' => $this->mNs );
+			return array( 'target' => $this->mQuery, 'namespace' => $this->mNs , 'protocol' => $this->mProt );
 		}
 
 		function getSQL() {
 			$dbr = wfGetDB( DB_SLAVE );
 			$page = $dbr->tableName( 'page' );
 			$externallinks = $dbr->tableName( 'externallinks' );
-			$encSearch = $dbr->addQuotes( self::mungeQuery( $this->mQuery ) );
+			$encSearch = $dbr->addQuotes( self::mungeQuery( $this->mQuery,  $this->mProt ) );
 			$encSQL = '';
-
 			if ( isset ($this->mNs) ) $encSQL = 'AND page_namespace=' . $this->mNs;
 			return
 				"SELECT
@@ -108,7 +92,7 @@ function wfLinkSearchSetup() {
 		 */
 		function doQuery( $offset, $limit ) {
 			global $wgOut;
-			$this->mMungedQuery = LinkSearchPage::mungeQuery( $this->mQuery );
+			$this->mMungedQuery = LinkSearchPage::mungeQuery( $this->mQuery, $this->mProt );
 			if( $this->mMungedQuery === false ) {
 				$wgOut->addWikiText( wfMsg( 'linksearch-error' ) );
 			} else {
@@ -131,27 +115,36 @@ function wfLinkSearchSetup() {
 
 	function wfSpecialLinksearch( $par=null, $ns=null ) {
 		list( $limit, $offset ) = wfCheckLimits();
-		global $wgOut, $wgRequest;
+		global $wgOut, $wgRequest, $wgUrlProtocols;
 		$target = $GLOBALS['wgRequest']->getVal( 'target', $par );
 		$namespace = $GLOBALS['wgRequest']->getIntorNull( 'namespace', $ns );
+		$protocol = $GLOBALS['wgRequest']->getVal( 'protocol', $prot );
 		$self = Title::makeTitle( NS_SPECIAL, 'Linksearch' );
 
-
-		$wgOut->addWikiText( wfMsg( 'linksearch-text' ) );
-		$wgOut->addHtml(
-			Xml::openElement( 'form', array( 'method' => 'get', 'action' => $GLOBALS['wgScript'] ) ) .
+		$wgOut->addWikiText( wfMsg( 'linksearch-text', '<nowiki>' . implode( ', ',  $wgUrlProtocols) . '</nowiki>' ) );
+		$s =	Xml::openElement( 'form', array( 'method' => 'get', 'action' => $GLOBALS['wgScript'] ) ) .
 			Xml::hidden( 'title', $self->getPrefixedDbKey() ) .
 			'<fieldset>' .
 			Xml::element( 'legend', array(), wfMsg( 'linksearch' ) ) .
-			Xml::inputLabel( wfMsg( 'linksearch-pat' ), 'target', 'target', 50 , $target ) . '<br />' .
+			Xml::label( wfMsg( 'linksearch-pat' ), 'target' ) . ' ' .
+			"<select id='protocol' name='protocol' class='protocolselector'>";
+		foreach( $wgUrlProtocols as $prot ) {
+			if ( $prot == $protocol ) {
+				$s .= Xml::option( $prot, $prot, true );
+			} else {
+				$s .= Xml::option( $prot, $prot );
+			}
+		}
+		$s .=	Xml::input( 'target', 50 , $target ) . '<br />' .
 			Xml::label( wfMsg( 'linksearch-ns' ), 'namespace' ) .
 			XML::namespaceSelector( $namespace, '' ) .
 			Xml::submitButton( wfMsg( 'linksearch-ok' ) ) .
 			'</fieldset>' .
-			Xml::closeElement( 'form' ) );
+			Xml::closeElement( 'form' );
+		$wgOut->addHtml( $s );
 
 		if( $target != '' ) {
-			$searcher = new LinkSearchPage( $target, $namespace );
+			$searcher = new LinkSearchPage( $target, $namespace, $protocol );
 			$searcher->doQuery( $offset, $limit );
 		}
 	}
