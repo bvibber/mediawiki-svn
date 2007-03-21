@@ -2,17 +2,15 @@
 /**
  * Internationalisation file for LinkSearch extension.
  *
- * @addtogroup Extensions
+ * @package MediaWiki
+ * @subpackage Extensions
 */
 
 $wgLinkSearchMessages = array();
 
 $wgLinkSearchMessages['en'] = array(
 	'linksearch'       => 'Search web links',
-	'linksearch-pat'   => 'Search pattern:',
-	'linksearch-ns'    => 'Namespace:',
-	'linksearch-ok'    => 'Search',
-	'linksearch-text'  => 'Wildcards such as " *.wikipedia.org " may be used.',
+	'linksearch-text'  => 'Wildcards such as "*.wikipedia.org" may be used.',
 	'linksearch-line'  => '$1 linked from $2',
 	'linksearch-error' => 'Wildcards may appear only at the start of the hostname.',
 );
@@ -24,10 +22,8 @@ $wgLinkSearchMessages['cs'] = array(
 );
 $wgLinkSearchMessages['de'] = array(
 	'linksearch'       => 'Weblink-Suche',
-	'linksearch-pat'   => 'Suchmuster:',
-	'linksearch-ns'    => 'Namensraum:',
-	'linksearch-ok'    => 'Suche',
-	'linksearch-text'  => 'Diese Spezialseite ermöglicht die Suche nach Seiten, in denen bestimmte Weblinks enthalten sind. Dabei können Wildcards wie beispielsweise <tt>*.example.com</tt> benutzt werden.',	'linksearch-line'  => '$1 ist verlinkt von $2',
+	'linksearch-text'  => 'Diese Spezialseite ermöglicht die Suche nach Seiten, in denen bestimmte Weblinks enthalten sind. Dabei können Wildcards wie beispielsweise <tt>*.example.com</tt> benutzt werden. ',
+	'linksearch-line'  => '$1 ist verlinkt von $2',
 	'linksearch-error' => 'Wildcards können nur am Anfang der URL verwendet werden.',
 );
 $wgLinkSearchMessages['fi'] = array(
@@ -36,21 +32,9 @@ $wgLinkSearchMessages['fi'] = array(
 	'linksearch-line'  => '$1 on linkitetty sivulta $2',
 	'linksearch-error' => 'Jokerimerkkiä voi käyttää ainoastaan osoitteen alussa.',
 );
-$wgLinkSearchMessages['fr'] = array(
-	'linksearch'	   => 'Rechercher des liens internet',
-	'linksearch-pat'   => 'Champs recherchés :',
-	'linksearch-ns'    => 'Espace de nom :',
-	'linksearch-ok'    => 'Chercher',
-	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères « jokers » peuvent être utilisés, par exemple "*.wikipedia.org".',
-	'linksearch-line'  => '$1 avec un lien à partir de $2',
-	'linksearch-error' => 'Les caractères « jokers » ne peuvent être utilisés qu’au début du nom de domaine.'
-);
 $wgLinkSearchMessages['he'] = array(
 	'linksearch'       => 'חיפוש קישורים חיצוניים',
-	'linksearch-pat'   => 'קישור לחיפוש:',
-	'linksearch-ns'    => 'מרחב שם:',
-	'linksearch-ok'    => 'חיפוש',
-	'linksearch-text'  => 'ניתן להשתמש בתווים כללים, לדוגמה "‎*.wikipedia.org"',
+	'linksearch-text'  => 'ניתן להשתמש בתווים כללים, לדוגמה "‎*.wikipedia.org".',
 	'linksearch-line'  => '$1 מקושר מהדף $2',
 	'linksearch-error' => 'תווים כלליים יכולים להופיע רק בתחילת שם השרת.',
 );
@@ -62,9 +46,6 @@ $wgLinkSearchMessages['id'] = array(
 );
 $wgLinkSearchMessages['it'] = array(
 	'linksearch'       => 'Ricerca collegamenti esterni',
-	'linksearch-pat'   => 'Criterio di ricerca:',
-	'linksearch-ns'    => 'Namespace:',
-	'linksearch-ok'    => 'Ricerca',
 	'linksearch-text'  => 'È possibile fare uso di metacaratteri, ad es. "*.example.org".',
 	'linksearch-line'  => '$1 presente nella pagina $2',
 	'linksearch-error' => 'I metacaratteri possono essere usati solo all\'inizio del nome dell\'host.',
@@ -109,6 +90,12 @@ $wgLinkSearchMessages['pt'] = array(
 // Brazillian portuguese inherits portuguese.
 $wgLinkSearchMessages['pt-br'] = $wgLinkSearchMessages['pt'];
 
+$wgLinkSearchMessages['fr'] = array(
+	'linksearch'	   => 'Rechercher des liens internet',
+	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères « jokers » peuvent être utilisés, par exemple "*.wikipedia.org".',
+	'linksearch-line'  => '$1 avec un lien à partir de $2',
+	'linksearch-error' => 'Les caractères « jokers » ne peuvent être utilisés qu’au début du nom de domaine.'
+);
 $wgLinkSearchMessages['ru'] = array(
 	'linksearch'       => 'Поиск внешних ссылок',
 	'linksearch-text'  => 'Можно использовать подстановочные символы, например: «*.wikipedia.org».',
@@ -121,48 +108,26 @@ $wgLinkSearchMessages['sk'] = array(
 	'linksearch-line'  => 'Na $1 odkazuje $2',
 	'linksearch-error' => 'Zástupné znaky je možné použiť iba na začiatku názvu domény.',
 );
-$wgLinkSearchMessages['sr-ec'] = array(
+$wgLinkSearchMessages['sr'] = array(
 	'linksearch'	   => 'Претрага интернет веза',
 	'linksearch-text'  => 'Џокери као што су "*.wikipedia.org" могу да се користе.',
 	'linksearch-line'  => '$1 повезана са $2',
 	'linksearch-error' => 'Џокери могу да се појављују само на почетку домена.'
 );
-$wgLinkSearchMessages['sr-el'] = array(
-	'linksearch'	   => 'Pretraga internet veza',
-	'linksearch-text'  => 'Džokeri kao što su "*.wikipedia.org" mogu da se koriste.',
-	'linksearch-line'  => '$1 povezana sa $2',
-	'linksearch-error' => 'Džokeri mogu da se pojavljuju samo na početku domena.'
-);
-$wgLinkSearchMessages['sr'] = $wgLinkSearchMessages['sr-ec'];
-$wgLinkSearchMessages['sv'] = array(
-	'linksearch'       => 'Webblänksökning',
-	'linksearch-text'  => 'Jokertecken kan användas i början av den sökta adressen, exempelvis "*.wikipedia.org".',
-	'linksearch-line'  => '$1 länkas från $2',
-	'linksearch-error' => 'Jokertecken kan bara användas i början av adressen.',
-);
 $wgLinkSearchMessages['zh-cn'] = array(
 	'linksearch'       => '搜索网页链接',
-	'linksearch-pat'   => '搜索形态:',
-	'linksearch-ns'    => '名字空间:',
-	'linksearch-ok'    => '搜索',
 	'linksearch-text'  => '可能使用了类似"*.wikipedia.org"的通配符。',
 	'linksearch-line'  => '$1 链自 $2',
 	'linksearch-error' => '通配符仅可在主机名称的开头使用。',
 );
 $wgLinkSearchMessages['zh-tw'] = array(
 	'linksearch'       => '搜尋網頁連結',
-	'linksearch-pat'   => '搜尋形態:',
-	'linksearch-ns'    => '名字空間:',
-	'linksearch-ok'    => '搜尋',
 	'linksearch-text'  => '可能使用了類似"*.wikipedia.org"的萬用字元。',
 	'linksearch-line'  => '$1 連自 $2',
 	'linksearch-error' => '萬用字元僅可在主機名稱的開頭使用。',
 );
 $wgLinkSearchMessages['zh-yue'] = array(
-	'linksearch'       => '搵網頁連結',
-	'linksearch-pat'   => '搵陣形:',
-	'linksearch-ns'    => '空間名:',
-	'linksearch-ok'    => '搵',
+	'linksearch'       => '搜尋網頁連結',
 	'linksearch-text'  => '可能用咗類似"*.wikipedia.org"嘅萬用字元。',
 	'linksearch-line'  => '$1 連自 $2',
 	'linksearch-error' => '萬用字元只可以響主機名嘅開頭度用。',

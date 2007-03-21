@@ -7,11 +7,6 @@
  */
 
 $wgExtensionFunctions[] = 'wfLinkSearchSetup';
-$wgExtensionCredits['specialpage'][] = array(
-	'name' => 'Linksearch',
-	'author' => 'Brion Vibber',
-	'description' => 'Search for Weblinks',
-);
 
 # Internationalisation file
 require_once( 'LinkSearch.i18n.php' );
@@ -26,43 +21,46 @@ function wfLinkSearchSetup() {
 	$GLOBALS['wgSpecialPages']['Linksearch'] = array( /*class*/ 'SpecialPage', 
 		/*name*/ 'Linksearch', /* permission */'', /*listed*/ true, 
 		/*function*/ false, /*file*/ false );
-
+	
 	class LinkSearchPage extends QueryPage {
-		function __construct( $query , $ns , $prot ) {
+		function __construct( $query ) {
 			$this->mQuery = $query;
-			$this->mNs = $ns;
-			$this->mProt = $prot;
 		}
-
+		
 		function getName() {
 			return 'Linksearch';
 		}
-
+		
 		/**
 		 * Disable RSS/Atom feeds
 		 */
 		function isSyndicated() {
 			return false;
 		}
-
+		
 		/**
 		 * Return an appropriately formatted LIKE query
+		 * @fixme Fix up LinkFilter to work with non-http links as well
 		 */
-		static function mungeQuery( $query , $prot ) {
-			return LinkFilter::makeLike( $query , $prot );
+		static function mungeQuery( $query ) {
+			if( substr( $query, 0, 7 ) == 'http://' ) {
+				$query = substr( $query, 7 );
+			}
+			return LinkFilter::makeLike( $query );
 		}
-
+		
 		function linkParameters() {
-			return array( 'target' => $this->mQuery, 'namespace' => $this->mNs , 'protocol' => $this->mProt );
+			return array( 'target' => $this->mQuery );
 		}
-
+		
 		function getSQL() {
 			$dbr = wfGetDB( DB_SLAVE );
+			
 			$page = $dbr->tableName( 'page' );
 			$externallinks = $dbr->tableName( 'externallinks' );
-			$encSearch = $dbr->addQuotes( self::mungeQuery( $this->mQuery,  $this->mProt ) );
-			$encSQL = '';
-			if ( isset ($this->mNs) ) $encSQL = 'AND page_namespace=' . $this->mNs;
+			
+			$encSearch = $dbr->addQuotes( self::mungeQuery( $this->mQuery ) );
+			
 			return
 				"SELECT
 					page_namespace AS namespace,
@@ -74,25 +72,25 @@ function wfLinkSearchSetup() {
 					$externallinks FORCE INDEX (el_index)
 				WHERE
 					page_id=el_from
-					AND el_index LIKE $encSearch
-					$encSQL";
+					AND el_index LIKE $encSearch";
 		}
-
+		
 		function formatResult( $skin, $result ) {
 			$title = Title::makeTitle( $result->namespace, $result->title );
 			$url = $result->url;
+			
 			$pageLink = $skin->makeKnownLinkObj( $title );
 			$urlLink = $skin->makeExternalLink( $url, $url );
-
+			
 			return wfMsgHtml( 'linksearch-line', $urlLink, $pageLink );
 		}
-
+		
 		/**
 		 * Override to check query validity.
 		 */
 		function doQuery( $offset, $limit ) {
 			global $wgOut;
-			$this->mMungedQuery = LinkSearchPage::mungeQuery( $this->mQuery, $this->mProt );
+			$this->mMungedQuery = LinkSearchPage::mungeQuery( $this->mQuery );
 			if( $this->mMungedQuery === false ) {
 				$wgOut->addWikiText( wfMsg( 'linksearch-error' ) );
 			} else {
@@ -101,7 +99,7 @@ function wfLinkSearchSetup() {
 				parent::doQuery( $offset, $limit );
 			}
 		}
-
+		
 		/**
 		 * Override to squash the ORDER BY.
 		 * We do a truncated index search, so the optimizer won't trust
@@ -111,40 +109,27 @@ function wfLinkSearchSetup() {
 		function getOrder() {
 			return '';
 		}
+	
 	}
-
-	function wfSpecialLinksearch( $par=null, $ns=null ) {
+	
+	function wfSpecialLinksearch( $par=null ) {
 		list( $limit, $offset ) = wfCheckLimits();
-		global $wgOut, $wgRequest, $wgUrlProtocols;
 		$target = $GLOBALS['wgRequest']->getVal( 'target', $par );
-		$namespace = $GLOBALS['wgRequest']->getIntorNull( 'namespace', $ns );
-		$protocol = $GLOBALS['wgRequest']->getVal( 'protocol', $prot );
+		
 		$self = Title::makeTitle( NS_SPECIAL, 'Linksearch' );
-
-		$wgOut->addWikiText( wfMsg( 'linksearch-text', '<nowiki>' . implode( ', ',  $wgUrlProtocols) . '</nowiki>' ) );
-		$s =	Xml::openElement( 'form', array( 'method' => 'get', 'action' => $GLOBALS['wgScript'] ) ) .
-			Xml::hidden( 'title', $self->getPrefixedDbKey() ) .
-			'<fieldset>' .
-			Xml::element( 'legend', array(), wfMsg( 'linksearch' ) ) .
-			Xml::label( wfMsg( 'linksearch-pat' ), 'target' ) . ' ' .
-			"<select id='protocol' name='protocol' class='protocolselector'>";
-		foreach( $wgUrlProtocols as $prot ) {
-			if ( $prot == $protocol ) {
-				$s .= Xml::option( $prot, $prot, true );
-			} else {
-				$s .= Xml::option( $prot, $prot );
-			}
-		}
-		$s .=	Xml::input( 'target', 50 , $target ) . '<br />' .
-			Xml::label( wfMsg( 'linksearch-ns' ), 'namespace' ) .
-			XML::namespaceSelector( $namespace, '' ) .
-			Xml::submitButton( wfMsg( 'linksearch-ok' ) ) .
-			'</fieldset>' .
-			Xml::closeElement( 'form' );
-		$wgOut->addHtml( $s );
+		
+		global $wgOut;
+		$wgOut->addWikiText( wfMsg( 'linksearch-text' ) );
+		$wgOut->addHtml(
+			wfOpenElement( 'form',
+				array( 'method' => 'get', 'action' => $GLOBALS['wgScript'] ) ) .
+			wfHidden( 'title', $self->getPrefixedDbKey() ) .
+			wfInput( 'target', 50, $target ) .
+			wfSubmitButton( wfMsg( 'search' ) ) .
+			wfCloseElement( 'form' ) );
 
 		if( $target != '' ) {
-			$searcher = new LinkSearchPage( $target, $namespace, $protocol );
+			$searcher = new LinkSearchPage( $target );
 			$searcher->doQuery( $offset, $limit );
 		}
 	}
