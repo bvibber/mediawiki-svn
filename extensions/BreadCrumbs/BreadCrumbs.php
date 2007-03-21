@@ -33,8 +33,13 @@ $wgExtensionCredits['parserhook'][] = array(
 function fnBreadCrumbs() {
   global $wgHooks;
 
-  ##
+  ## Showing and updating the breadcrumbs trail
+  # Hook when viewing article header:
   $wgHooks['ArticleViewHeader'][] = 'fnBreadCrumbsShowHook';
+
+  ## Infrastructure
+  # Hook our own CSS:
+  $wgHooks['OutputPageParserOutput'][] = 'fnBreadCrumbsOutputHook';
 }
 
 function fnBreadCrumbsShowHook( &$m_pageObj ) {
@@ -46,33 +51,55 @@ function fnBreadCrumbsShowHook( &$m_pageObj ) {
   
   # deserialize data from session into array:
   $m_BreadCrumbs = array();
-  $m_BreadCrumbs = $_SESSION['BreadCrumbs'];
+  if( isset( $_SESSION['BreadCrumbs'] ) ) $m_BreadCrumbs = $_SESSION['BreadCrumbs'];
+  # cache index of last element:
+  $m_count = count( $m_BreadCrumbs ) - 1;
   
   # check for doubles:
-  if( $m_BreadCrumbs[$wgBreadCrumbsCount-1] != $wgTitle->getPrefixedText() ) {
+  if( $m_BreadCrumbs[ $m_count ] != $wgTitle->getPrefixedText() ) {
     # reduce the array set, remove older elements:
-    $m_BreadCrumbs = array_slice( $m_BreadCrumbs, -$wgBreadCrumbsCount );
+    $m_BreadCrumbs = array_slice( $m_BreadCrumbs, ( 1 - $wgBreadCrumbsCount ) );
     # add new page:
     array_push( $m_BreadCrumbs, $wgTitle->getPrefixedText() );
     # serialize data from array to session:
     $_SESSION['BreadCrumbs'] = $m_BreadCrumbs;
   }
+  # update cache:
+  $m_count = count( $m_BreadCrumbs ) - 1;
   
   # acquire a skin object:
   $m_skin =& $wgUser->getSkin();
   # build the breadcrumbs trail:
   $m_trail = '<div id="BreadCrumbsTrail">';
-  for( $i = 0; $i < $wgBreadCrumbsCount; $i++ ) {
+  for( $i = 0; $i <= $m_count; $i++ ) {
     $m_trail .= $m_skin->makeLink( $m_BreadCrumbs[$i] );
-    if( $i < $wgBreadCrumbsCount-1 ) $m_trail .= $wgBreadCrumbsDelimiter;
+    if( $i < $m_count ) $m_trail .= $wgBreadCrumbsDelimiter;
   }
   $m_trail .= '</div>';
   $wgOut->addHTML( $m_trail );
   
   # invalidate internal MediaWiki cache:
   $wgTitle->invalidateCache();
+  $wgUser->invalidateCache();
   
   # Return true to let the rest work:
+  return true;
+}
+
+## Entry point for the hook for printing the CSS:
+function fnBreadCrumbsOutputHook( &$m_pageObj, &$m_parserOutput ) {
+  global $wgScriptPath;
+
+  # Register CSS file for our select box:
+  $m_pageObj->addLink(
+    array(
+      'rel'   => 'stylesheet',
+      'type'  => 'text/css',
+      'href'  => $wgScriptPath . '/extensions/BreadCrumbs/BreadCrumbs.css'
+    )
+  );
+
+  # Be nice:
   return true;
 }
 ?>
