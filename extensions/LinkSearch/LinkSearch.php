@@ -59,7 +59,10 @@ function wfLinkSearchSetup() {
 			$page = $dbr->tableName( 'page' );
 			$externallinks = $dbr->tableName( 'externallinks' );
 			
-			$encSearch = $dbr->addQuotes( self::mungeQuery( $this->mQuery ) );
+			/* strip everything past first wildcard, so that index-based-only lookup would be done */
+			$munged = self::mungeQuery( $this->mQuery );
+			$stripped = substr($munged,0,strpos($munged,'%')+1);
+			$encSearch = $dbr->addQuotes( $stripped );
 			
 			return
 				"SELECT
