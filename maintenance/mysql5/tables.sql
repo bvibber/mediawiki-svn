@@ -282,7 +282,14 @@ CREATE TABLE /*$wgDBprefix*/revision (
   
   -- Not yet used; reserved for future changes to the deletion system.
   rev_deleted tinyint(1) unsigned NOT NULL default '0',
-  
+
+  -- Length of this revision in bytes
+  rev_len int(8) unsigned,
+
+  -- Key to revision.rev_id
+  -- This field is used to add support for a tree structure (The Adjacency List Model)
+  rev_parent_id int(8) unsigned default NULL,
+
   PRIMARY KEY rev_page_id (rev_page, rev_id),
   UNIQUE INDEX rev_id (rev_id),
   INDEX rev_timestamp (rev_timestamp),
@@ -378,7 +385,9 @@ CREATE TABLE /*$wgDBprefix*/archive (
   
   -- rev_deleted for archives
   ar_deleted tinyint(1) unsigned NOT NULL default '0',
-  
+  -- Length of this revision in bytes
+  rev_len int(8) unsigned,
+    
   KEY name_title_timestamp (ar_namespace,ar_title,ar_timestamp)
 
 ) ENGINE=InnoDB, DEFAULT CHARSET=utf8;
@@ -843,8 +852,10 @@ CREATE TABLE /*$wgDBprefix*/recentchanges (
   rc_logid int(10) unsigned NOT NULL default '0',
   -- Store log type info here, or null
   rc_log_type varchar(255) binary NULL default NULL,
-  -- The action text of logs
-  rc_actiontext varchar(255) binary NULL default NULL,
+  -- Store log action or null
+  rc_log_action varchar(255) binary NULL default NULL,
+  -- Log params
+  rc_params blob NOT NULL default '',
   
   PRIMARY KEY rc_id (rc_id),
   INDEX rc_timestamp (rc_timestamp),

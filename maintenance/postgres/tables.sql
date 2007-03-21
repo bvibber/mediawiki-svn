@@ -92,7 +92,9 @@ CREATE TABLE revision (
   rev_user_text   TEXT         NOT NULL,
   rev_timestamp   TIMESTAMPTZ  NOT NULL,
   rev_minor_edit  CHAR         NOT NULL  DEFAULT '0',
-  rev_deleted     CHAR         NOT NULL  DEFAULT '0'
+  rev_deleted     CHAR         NOT NULL  DEFAULT '0',
+  rev_len         INTEGER          NULL,
+  rev_parent_id   INTEGER          NULL
 );
 CREATE UNIQUE INDEX revision_unique ON revision (rev_page, rev_id);
 CREATE INDEX rev_text_id_idx        ON revision (rev_text_id);
@@ -119,10 +121,9 @@ CREATE TABLE page_restrictions (
   pr_user    INTEGER          NULL,
   pr_expiry  TIMESTAMPTZ      NULL
 );
-CREATE UNIQUE INDEX pr_pagetype ON page_restrictions (pr_page,pr_type);
+ALTER TABLE page_restrictions ADD CONSTRAINT page_restrictions_pk PRIMARY KEY (pr_page,pr_type);
 
-
-CREATE TABLE archive2 (
+CREATE TABLE archive (
   ar_namespace   SMALLINT     NOT NULL,
   ar_title       TEXT         NOT NULL,
   ar_text        TEXT,
@@ -134,31 +135,10 @@ CREATE TABLE archive2 (
   ar_flags       TEXT,
   ar_rev_id      INTEGER,
   ar_text_id     INTEGER,
-  ar_deleted     INTEGER
+  ar_deleted     INTEGER      NOT NULL DEFAULT '0',
+  ar_len         INTEGER          NULL
 );
-CREATE INDEX archive_name_title_timestamp ON archive2 (ar_namespace,ar_title,ar_timestamp);
-
--- This is the easiest way to work around the char(15) timestamp hack without modifying PHP code
-CREATE VIEW archive AS 
-SELECT 
-  ar_namespace, ar_title, ar_text, ar_comment, ar_user, ar_user_text, 
-  ar_minor_edit, ar_flags, ar_rev_id, ar_text_id,
-       TO_CHAR(ar_timestamp, 'YYYYMMDDHH24MISS') AS ar_timestamp
-FROM archive2;
-
-CREATE RULE archive_insert AS ON INSERT TO archive
-DO INSTEAD INSERT INTO archive2 VALUES (
-  NEW.ar_namespace, NEW.ar_title, NEW.ar_text, NEW.ar_comment, NEW.ar_user, NEW.ar_user_text, 
-  TO_TIMESTAMP(NEW.ar_timestamp, 'YYYYMMDDHH24MISS'),
-  NEW.ar_minor_edit, NEW.ar_flags, NEW.ar_rev_id, NEW.ar_text_id
-);
-
-CREATE RULE archive_delete AS ON DELETE TO archive
-DO INSTEAD DELETE FROM archive2 a2 WHERE
-  a2.ar_title = OLD.ar_title AND
-  a2.ar_namespace = OLD.ar_namespace AND
-  a2.ar_rev_id = OLD.ar_rev_id;
-
+CREATE INDEX archive_name_title_timestamp ON archive (ar_namespace,ar_title,ar_timestamp);
 
 CREATE TABLE redirect (
   rd_from       INTEGER  NOT NULL  REFERENCES page(page_id) ON DELETE CASCADE,
@@ -244,8 +224,8 @@ CREATE TABLE ipblocks (
   ipb_enable_autoblock  CHAR         NOT NULL  DEFAULT '1',
   ipb_expiry            TIMESTAMPTZ  NOT NULL,
   ipb_range_start       TEXT,
-  ipb_range_end         TEXT
-  ipb_deleted           INTEGER      NOT NULL, DEFAULT '0',
+  ipb_range_end         TEXT,
+  ipb_deleted           INTEGER      NOT NULL DEFAULT '0'
 );
 CREATE INDEX ipb_address ON ipblocks (ipb_address);
 CREATE INDEX ipb_user    ON ipblocks (ipb_user);
@@ -305,8 +285,8 @@ CREATE TABLE filearchive (
   fa_description        TEXT         NOT NULL,
   fa_user               INTEGER          NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL,
   fa_user_text          TEXT         NOT NULL,
-  fa_timestamp          TIMESTAMPTZ
-  fa_deleted            INTEGER      NOT NULL DEFAULT '0',
+  fa_timestamp          TIMESTAMPTZ,
+  fa_deleted            INTEGER      NOT NULL DEFAULT '0'
 );
 CREATE INDEX fa_name_time ON filearchive (fa_name, fa_timestamp);
 CREATE INDEX fa_dupe      ON filearchive (fa_storage_group, fa_storage_key);
@@ -339,8 +319,9 @@ CREATE TABLE recentchanges (
   rc_new_len         INTEGER,
   rc_deleted         INTEGER      NOT NULL  DEFAULT '0',
   rc_logid           INTEGER      NOT NULL  DEFAULT '0',
-  rc_log_type      TEXT,
-  rc_action          TEXT
+  rc_log_type        TEXT,
+  rc_log_action      TEXT,
+  rc_params          TEXT
 );
 CREATE INDEX rc_timestamp       ON recentchanges (rc_timestamp);
 CREATE INDEX rc_namespace_title ON recentchanges (rc_namespace, rc_title);
@@ -425,8 +406,8 @@ CREATE TABLE logging (
   log_title       TEXT         NOT NULL,
   log_comment     TEXT,
   log_params      TEXT,
-  log_deleted     INTEGER,
-  log_id          INTEGER      NOT NULL PRIMARY KEY DEFAULT nextval('log_log_id_seq'),
+  log_deleted     INTEGER      NOT NULL DEFAULT '0',
+  log_id          INTEGER      NOT NULL PRIMARY KEY DEFAULT nextval('log_log_id_seq')
 );
 CREATE INDEX logging_type_name ON logging (log_type, log_timestamp);
 CREATE INDEX logging_user_time ON logging (log_timestamp, log_user);
