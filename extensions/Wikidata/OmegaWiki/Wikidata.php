@@ -124,7 +124,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 			$title = $this->getTitle();
 
 		$wgOut->setPageTitle($title);
-
+		
 		if (count($this->availableAuthorities) > 0) {
 			$this->showCommunityContribution = isset($_GET['authority-community']);
 			$this->authoritiesToShow = array();

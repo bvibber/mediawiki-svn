@@ -4,6 +4,8 @@ require_once("Attribute.php");
 require_once("Record.php");
 require_once("RecordSet.php");
 
+define (SORT_IMAGE, ' <image src="skins/common/images/sort_none.gif"></image>');
+
 function parityClass($value) {
 	if ($value % 2 == 0)
 		return "even";
@@ -49,34 +51,54 @@ function getTableHeaderNode($structure, &$currentColumn=0) {
 	return $tableHeaderNode;
 }
 
-function addChildNodesToRows($headerNode, &$rows, $currentDepth, $columnOffset) {
+function addChildNodesToRows($headerNode, &$rows, $currentDepth, $columnOffset, $idPath, $leftmost=True) {
 	$height = $headerNode->height;
-	
 	foreach($headerNode->childNodes as $childNode) {
 		$attribute = $childNode->attribute;
+		$idPath->pushAttribute($attribute);		
 		$type = $attribute->type;
 		
-		if (!$type instanceof RecordType && !$type instanceof RecordSetType)
-			$class = ' class="'. $type .' sortable" onclick="sortTable(this, '. count($rows) .', '. ($childNode->column + $columnOffset) .')"';	
-		else		
-			$class = '';
+		if (!$type instanceof RecordType && !$type instanceof RecordSetType) {
+			$skipRows=count($rows);
+			$columnIndex=$childNode->column + $columnOffset;
+			$sort = 'sortTable(this, '. $skipRows .', '. $columnIndex.')';
+			$onclick = ' onclick= "' . $sort . '"';
+			if ($leftmost) {		# Are we the leftmost column?
+				$leftsort= EOL . 
+					'<script type="text/javascript"> toSort("' . 
+					$idPath->getId(). '-h" , ' . $skipRows . ',' . 
+					$columnIndex . '); </script>' 
+					. EOL;
+				$leftmost = False; 	# There can be only one.
+			} else {
+				$leftsort="";
+			}
 
+			$class = ' class="' . $type . ' sortable"' . $onclick;	
+			$sort_image = SORT_IMAGE;
+		} else {
+			$class = '';
+			$sort = '';
+		}
+		
 		$rowSpan = $height - $childNode->height;
-		$rows[$currentDepth] .= '<th' . $class .' colspan="'. $childNode->width . 
-									'" rowspan="'. $rowSpan . '">'. $attribute->name . '</th>';
+		$rows[$currentDepth] .= '<th id="'.$idPath->getId().'-h" '. $class .
+			' colspan="'. $childNode->width .  '" rowspan="'. $rowSpan . 
+			'">'. $attribute->name . $sort_image . $leftsort .'</th>';
 									
-		addChildNodesToRows($childNode, $rows, $currentDepth + $rowSpan, $columnOffset);
+		addChildNodesToRows($childNode, $rows, $currentDepth + $rowSpan, $columnOffset,$idPath, $leftmost);
+		$idPath->popAttribute();
 	} 
 }
 
-function getStructureAsTableHeaderRows($structure, $columnOffset) {
+function getStructureAsTableHeaderRows($structure, $columnOffset, $idPath) {
 	$rootNode = getTableHeaderNode($structure);
 	$result = array();
 	
 	for ($i = 0; $i < $rootNode->height - 1; $i++)
 		$result[$i] = "";
 		
-	addChildNodesToRows($rootNode, $result, 0, $columnOffset);
+	addChildNodesToRows($rootNode, $result, 0, $columnOffset, $idPath);
 
 	return $result;
 }

@@ -1,3 +1,5 @@
+window.onload=sortAll;
+
 function getHTTPObject() {
 	var xmlhttp;
 
@@ -633,4 +635,29 @@ function rollBackOptionChanged(rollBackSelect) {
 		versionSelector.style.display = 'block';
 	else
 		versionSelector.style.display = 'none';
+}
+
+var elementsToSort=new Array();
+	
+function sortAll() {
+	for (elementId in elementsToSort) {
+		var params=elementsToSort[elementId];
+		
+		var myElement=document.getElementById(params["elementName"]);
+		var skipRows=params["skipRows"];
+		var columnIndex=params["columnIndex"];
+		
+		sortTable(myElement, skipRows, columnIndex);
+	}
+}
+
+
+function toSort(elementName,skipRows, columnIndex) {
+	var params=new Array();
+
+	params["elementName"]=elementName;
+	params["skipRows"]=skipRows;
+	params["columnIndex"]=columnIndex;
+	
+	elementsToSort.push(params);
 }

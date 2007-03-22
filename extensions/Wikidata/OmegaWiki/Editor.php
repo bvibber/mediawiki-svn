@@ -9,13 +9,18 @@ function addCollapsablePrefixToClass($class) {
 	return "collapsable-$class";
 }
 
+
+# End of line string for readable HTML, set to "\n" for testing
+define(EOL,"\n"); # Makes human (and vim :-p) readable output (somewhat...)
+#define(EOL,""); # Output only readable by browsers
+
 class IdStack {
 	protected $keyStack;
 	protected $idStack = array();
 	protected $currentId;
 	protected $classStack = array();
 	protected $currentClass;
-
+	
 	public function __construct($prefix) {
 	 	$this->keyStack = new RecordStack();
 	 	$this->currentId = $prefix;
@@ -122,7 +127,7 @@ abstract class DefaultEditor implements Editor {
 	}
 
 	public function getExpansionPrefix($class, $elementId) {
-		return '<span id="prefix-collapsed-' . $elementId . '" class="collapse-' . $class . '">+</span><span id="prefix-expanded-' . $elementId . '" class="expand-' . $class . '">&ndash;</span>';
+		return '<span id="prefix-collapsed-' . $elementId . '" class="collapse-' . $class . '">+</span><span id="prefix-expanded-' . $elementId . '" class="expand-' . $class . '">&ndash;</span>' . EOL;
 	}
 
 	static private $staticExpansionStyles = array();
@@ -139,12 +144,12 @@ abstract class DefaultEditor implements Editor {
 	}
 
 	public static function getExpansionCss() {
-		$s = "<style type='text/css'>\n";
-		$s .= "/*/*/ /*<![CDATA[*/\n"; # <-- Hide the styles from Netscape 4 without hiding them from IE/Mac
+		$s = "<style type='text/css'>" . EOL;
+		$s .= "/*/*/ /*<![CDATA[*/". EOL; # <-- Hide the styles from Netscape 4 without hiding them from IE/Mac
 		foreach(DefaultEditor::$staticExpansionStyles as $expansionStyleName => $expansionStyleValue)
-			$s .= $expansionStyleName . " {" . $expansionStyleValue . "}\n";
-		$s .= "/*]]>*/ /* */\n";
-		$s .= "</style>\n";
+			$s .= $expansionStyleName . " {" . $expansionStyleValue . "}" . EOL;
+		$s .= "/*]]>*/ /* */".EOL;
+		$s .= "</style>".EOL;
 		return $s;
 	}
 }
@@ -410,19 +415,19 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$key = $value->getKey();
 		$rowAttributes = $this->getRowAttributesText();
 
-		foreach(getStructureAsTableHeaderRows($this->getTableStructure($this), 0) as $headerRow)
-			$result .= '<tr>' . $headerRow . '</tr>';
+		foreach(getStructureAsTableHeaderRows($this->getTableStructure($this), 0, $idPath) as $headerRow)
+			$result .= '<tr>' . $headerRow . '</tr>'.EOL;
 
 		$recordCount = $value->getRecordCount();
 
 		for($i = 0; $i < $recordCount; $i++) {
 			$record = $value->getRecord($i);
 			$idPath->pushKey(project($record, $key));
-			$result .= '<tr id="'. $idPath->getId() .'" '.  $rowAttributes . '>' . getRecordAsTableCells($idPath, $this, $record) .'</tr>';
+			$result .= '<tr id="'. $idPath->getId() .'" '.  $rowAttributes . '>' . getRecordAsTableCells($idPath, $this, $record) .'</tr>'.EOL;
 			$idPath->popKey();
 		}
 
-		$result .= '</table>';
+		$result .= '</table>' . EOL;
 
 		return $result;
 	}
@@ -440,7 +445,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		else
 			$columnOffset = 0;
 			
-		$headerRows = getStructureAsTableHeaderRows($this->getTableStructure($this), $columnOffset);
+		$headerRows = getStructureAsTableHeaderRows($this->getTableStructure($this), $columnOffset, $idPath);
 
 		if ($this->allowRemove)
 			$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="'.$wgStylePath.'/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>' . $headerRows[0];
@@ -449,7 +454,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 			$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
 
 		foreach ($headerRows as $headerRow)
-			$result .= '<tr id="'. $idPath->getId() .'" '.  $rowAttributes . '>' . $headerRow . '</tr>';
+			$result .= '<tr id="'. $idPath->getId() .'" '.  $rowAttributes . '>' . $headerRow . '</tr>' . EOL;
 
 		$recordCount = $value->getRecordCount();
 
@@ -464,7 +469,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 				if ($this->permissionController->allowRemovalOfValue($idPath, $record))
 				 	$result .= getRemoveCheckBox('remove-'. $idPath->getId());
 				 	
-				$result .= '</td>';
+				$result .= '</td>'. EOL;
 			}
 			
 			if ($this->permissionController->allowUpdateOfValue($idPath, $record))
@@ -475,15 +480,15 @@ class RecordSetTableEditor extends RecordSetEditor {
 			$idPath->popKey();
 
 			if ($this->repeatInput)
-				$result .= '<td/>';
+				$result .= '<td/>'.EOL;
 
-			$result .= '</tr>';
+			$result .= '</tr>'.EOL;
 		}
 		
 		if ($this->allowAddController->check($idPath))
 			$result .= $this->getAddRowAsHTML($idPath, $this->repeatInput, $this->allowRemove);
 
-		$result .= '</table>';
+		$result .= '</table>'.EOL;
 
 		return $result;
 	}
@@ -491,16 +496,16 @@ class RecordSetTableEditor extends RecordSetEditor {
 	public function add($idPath) {
 		if ($this->isAddField) {
 			$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
-			$headerRows = getStructureAsTableHeaderRows($this->getAddStructure(), 0);
+			$headerRows = getStructureAsTableHeaderRows($this->getAddStructure(), 0, $idPath);
 
 	//		if ($repeatInput)
 	//			$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
 
 			foreach ($headerRows as $headerRow)
-				$result .= '<tr>' . $headerRow . '</tr>';
+				$result .= '<tr>' . $headerRow . '</tr>' . EOL;
 
 			$result .= $this->getAddRowAsHTML($idPath, false, false);
-			$result .= '</table>';
+			$result .= '</table>' . EOL;
 
 			return $result;
 		}
@@ -518,16 +523,17 @@ class RecordSetTableEditor extends RecordSetEditor {
 			$rowClass = '';
 
 		$result = '<tr id="add-'. $idPath->getId() . '" class="' . $rowClass . '">';
-
+		
+		# + is add new Fo o(but grep this file for Add.png for more)
 		if ($allowRemove)
-			$result .= '<td class="add"><img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="Enter new rows to add" alt="Add"/></td>';
+			$result .= '<td class="add"><img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="Enter new rows to add" alt="Add"/></td>' . EOL;
 
 		$result .= getStructureAsAddCells($idPath, $this);
 
 		if ($repeatInput)
-			$result .= '<td class="input-rows"/>';
+			$result .= '<td class="input-rows"/>' .  EOL;
 
-		return $result . '</tr>';
+		return $result . '</tr>' . EOL;
 	}
 
 	public function getTableStructure($editor) {
@@ -777,7 +783,7 @@ class DefinedMeaningHeaderEditor extends ScalarEditor {
 		$escapedDefinition = htmlspecialchars($definition);
 
 		if ($this->truncate && strlen($definition) > $this->truncateAt)
-			$escapedDefinition = '<span title="'. $escapedDefinition .'">'. htmlspecialchars(substr($definition, 0, $this->truncateAt)) . '...</span>';
+			$escapedDefinition = '<span title="'. $escapedDefinition .'">'. htmlspecialchars(substr($definition, 0, $this->truncateAt)) . '...</span>' . EOL;
 			
 		return $definedMeaningAsLink . ": " . $escapedDefinition;			
 	}
@@ -828,7 +834,7 @@ class TextEditor extends ScalarEditor {
 		if (!$this->truncate || strlen($value) <= $this->truncateAt)
 			return $escapedValue;//$parserOutput->getText();
 		else
-			return '<span title="'. $escapedValue .'">'. htmlspecialchars(substr($value, 0, $this->truncateAt)) . '...</span>';
+			return '<span title="'. $escapedValue .'">'. htmlspecialchars(substr($value, 0, $this->truncateAt)) . '...</span>' . EOL;
 	}
 
 	public function getEditHTML($idPath, $value) {
@@ -894,7 +900,7 @@ class URLEditor extends ShortTextEditor {
 		
 		$escapedValue = htmlspecialchars($value);
 			
-		return '<a href="' . $escapedValue . '">' . $escapedValue . '</a>';
+		return '<a href="' . $escapedValue . '">' . $escapedValue . '</a>' . EOL;
 	}
 }
 
@@ -1214,19 +1220,19 @@ class RecordListEditor extends RecordEditor {
 	protected function childHeader($editor, $attribute, $class, $attributeId){
 		$expansionPrefix = $this->getExpansionPrefix($class, $attributeId);
 		$this->setExpansionByEditor($editor, $class);
-		return '<h'. $this->headerLevel .'><span id="collapse-'. $attributeId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</span></h'. $this->headerLevel .'>';
+		return '<h'. $this->headerLevel .'><span id="collapse-'. $attributeId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $expansionPrefix . '&nbsp;' . $attribute->name . '</span></h'. $this->headerLevel .'>' . EOL;
 	}
 	
 	protected function viewChild($editor, $idPath, $value, $attribute, $class, $attributeId){
-		return '<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->view($idPath, $value->getAttributeValue($attribute)) . '</div>';
+		return '<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->view($idPath, $value->getAttributeValue($attribute)) . '</div>' . EOL;
 	}
 
 	protected function editChild($editor, $idPath, $value, $attribute, $class, $attributeId) {
-		return '<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->edit($idPath, $value->getAttributeValue($attribute)) . '</div>';
+		return '<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->edit($idPath, $value->getAttributeValue($attribute)) . '</div>' . EOL;
 	}
 
 	protected function addChild($editor, $idPath, $attribute, $class, $attributeId) {
-		return '<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->add($idPath) . '</div>';
+		return '<div id="collapsable-'. $attributeId . '" class="expand-' . $class . '">' . $editor->add($idPath) . '</div>' . EOL;
 	}
 
 	public function expandEditor($editor) {
@@ -1246,7 +1252,7 @@ class RecordUnorderedListEditor extends RecordListEditor {
 	protected function wrapInList($listItems) {
 		if ($listItems != "")
 			return
-				'<ul class="collapsable-items">' . $listItems . '</ul>';
+				'<ul class="collapsable-items">' . $listItems . '</ul>' . EOL;
 		else
 			return "";
 	}
@@ -1371,12 +1377,12 @@ class PopUpEditor extends WrappingEditor {
 
 	protected function startToggleCode($attributeId) {
 		return 	
-			'<a id="popup-' . $attributeId . '-link" style="cursor: pointer; font-weight: bolder; font-size: 90%; white-space: nowrap" onclick="togglePopup(this, event);">'. $this->linkCaption .' &raquo;</a>' . 
-			'<div><div id="popup-' . $attributeId . '-toggleable" style="position: absolute; border: 1px solid #000000; display: none; background-color: white; padding: 4px;">';
+			'<a id="popup-' . $attributeId . '-link" style="cursor: pointer; font-weight: bolder; font-size: 90%; white-space: nowrap" onclick="togglePopup(this, event);">'. $this->linkCaption .' &raquo;</a>' . EOL. 
+			'<div><div id="popup-' . $attributeId . '-toggleable" style="position: absolute; border: 1px solid #000000; display: none; background-color: white; padding: 4px;">' . EOL;
 	}
 
 	protected function endToggleCode($attributeId) {
-		return '</div></div>';
+		return '</div></div>' . EOL;
 	}
 }
 
@@ -1407,7 +1413,7 @@ class RecordSetListEditor extends RecordSetEditor {
 		$recordCount = $value->getRecordCount();
 
 		if ($recordCount > 0) {
-			$result = '<ul class="collapsable-items">';
+			$result = '<ul class="collapsable-items">' . EOL;
 			$key = $value->getKey();
 			$captionAttribute = $this->captionEditor->getAttribute();
 			$valueAttribute = $this->valueEditor->getAttribute();
@@ -1468,12 +1474,12 @@ class RecordSetListEditor extends RecordSetEditor {
 	
 				$idPath->pushAttribute($captionAttribute);
 				$result .= '<li>'.
-							'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($captionClass) .'" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&nbsp;' . $this->captionEditor->edit($idPath, $record->getAttributeValue($captionAttribute)) . '</span></h' . $this->headerLevel .'>';
+							'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($captionClass) .'" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&nbsp;' . $this->captionEditor->edit($idPath, $record->getAttributeValue($captionAttribute)) . '</span></h' . $this->headerLevel .'>' . EOL;
 				$idPath->popAttribute();
 	
 				$idPath->pushAttribute($valueAttribute);
-				$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $valueClass . '">' . $this->valueEditor->edit($idPath, $record->getAttributeValue($valueAttribute)) . '</div>' .
-							'</li>';
+				$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $valueClass . '">' . $this->valueEditor->edit($idPath, $record->getAttributeValue($valueAttribute)) . '</div>' . EOL .
+							'</li>' . EOL;
 				$idPath->popAttribute();
 	
 				$idPath->popKey();
@@ -1485,18 +1491,19 @@ class RecordSetListEditor extends RecordSetEditor {
 				$class = $idPath->getClass();
 	
 				$this->setExpansion(true, $class);
-	
+				
+				# For which class is this add?
 				$result .= '<li>'.
-							'<h' . $this->headerLevel . '><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $this->getExpansionPrefix($idPath->getClass(), $idPath->getId()) . ' <img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/> ' . $this->captionEditor->add($idPath) . '</span></h' . $this->headerLevel .'>';
+							'<h' . $this->headerLevel . '><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $this->getExpansionPrefix($idPath->getClass(), $idPath->getId()) . ' <img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/>' . $this->captionEditor->add($idPath) . '</span></h' . $this->headerLevel .'>' . EOL;
 				$idPath->popAttribute();
 	
 				$idPath->pushAttribute($valueAttribute);
-				$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $class . '">' . $this->valueEditor->add($idPath) . '</div>' .
-							'</li>';
+				$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $class . '">' . $this->valueEditor->add($idPath) . '</div>' . EOL .
+							'</li>' . EOL;
 				$idPath->popAttribute();
 			}
 
-			$result .= '</ul>';
+			$result .= '</ul>' . EOL;
 
 			return $result;
 		}
@@ -1505,7 +1512,7 @@ class RecordSetListEditor extends RecordSetEditor {
 	}
 
 	public function add($idPath) {
-		$result = '<ul class="collapsable-items">';
+		$result = '<ul class="collapsable-items">' . EOL;
 		$captionAttribute = $this->captionEditor->getAttribute();
 		$valueAttribute = $this->valueEditor->getAttribute();
 
@@ -1517,15 +1524,15 @@ class RecordSetListEditor extends RecordSetEditor {
 		$this->setExpansion(true, $class);
 
 		$result .= '<li>'.
-					'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $this->getExpansionPrefix($idPath->getClass(), $idPath->getId()) . '&nbsp;' . $this->captionEditor->add($idPath) . '</span></h' . $this->headerLevel .'>';
+					'<h' . $this->headerLevel .'><span id="collapse-'. $recordId .'" class="toggle '. addCollapsablePrefixToClass($class) .'" onclick="toggle(this, event);">' . $this->getExpansionPrefix($idPath->getClass(), $idPath->getId()) . '&nbsp;' . $this->captionEditor->add($idPath) . '</span></h' . $this->headerLevel .'>' . EOL;
 		$idPath->popAttribute();
 
 		$idPath->pushAttribute($valueAttribute);
 		$result .= '<div id="collapsable-'. $recordId . '" class="expand-' . $class . '">' . $this->valueEditor->add($idPath) . '</div>' .
-					'</li>';
+					'</li>' . EOL;
 		$idPath->popAttribute();
 
-		$result .= '</ul>';
+		$result .= '</ul>' . EOL;
 
 		return $result;
 	}
@@ -1758,7 +1765,7 @@ class RollBackEditor extends ScalarEditor {
 				$result .=
 					'<div id="' . $idPath->getId() . '-version-selector" style="display: none; padding-top: 4px;">' . 
 						$this->getSuggestionsHTML($idPath, $value) . 
-					'</div>';
+					'</div>' . EOL;
 				
 			return $result;
 		}
@@ -2006,7 +2013,7 @@ class GotoSourceEditor extends Viewer {
 		
 		if ($gotoSourceTemplate != null) {	
 			$url = $gotoSourceTemplate->getURL($sourceIdentifier);
-			return '<a href="'. htmlspecialchars($url) . '">Go to source</a>';
+			return '<a href="'. htmlspecialchars($url) . '">Go to source</a>' . EOL;
 		}	
 		else
 			return "";
