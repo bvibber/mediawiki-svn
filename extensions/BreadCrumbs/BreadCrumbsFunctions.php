@@ -22,8 +22,6 @@ function fnBreadCrumbsShowHook( &$m_pageObj ) {
   
   # deserialize data from session into array:
   $m_BreadCrumbs = array();
-#var_dump($_SESSION);
-echo session_name();
   if( isset( $_SESSION['BreadCrumbs'] ) ) $m_BreadCrumbs = $_SESSION['BreadCrumbs'];
   # cache index of last element:
   $m_count = count( $m_BreadCrumbs ) - 1;
