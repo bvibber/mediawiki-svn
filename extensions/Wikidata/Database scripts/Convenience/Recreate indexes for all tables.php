@@ -2,6 +2,7 @@
 
 define('MEDIAWIKI', true );
 
+require_once("../../../../StartProfiler.php");
 require_once("../../../../LocalSettings.php");
 require_once("../../php-tools/ProgressBar.php");
 require_once("DatabaseUtilities.php");
