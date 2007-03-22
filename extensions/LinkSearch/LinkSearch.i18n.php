@@ -38,6 +38,12 @@ $wgLinkSearchMessages['he'] = array(
 	'linksearch-line'  => '$1 מקושר מהדף $2',
 	'linksearch-error' => 'תווים כלליים יכולים להופיע רק בתחילת שם השרת.',
 );
+$wgLinkSearchMessages['hu'] = array(
+	'linksearch'       => 'Keresés külső hivatkozások szerint',
+	'linksearch-text'  => 'A helyettesítő karaktereket is lehet használni, például "*.wikipedia.org".',
+	'linksearch-line'  => '$1 hivatkozva innen: $2',
+	'linksearch-error' => 'Helyettesítő karakterek csak a cím elején szerepelhetnek.',
+);
 $wgLinkSearchMessages['id'] = array(
 	'linksearch'       => 'Cari pranala luar',
 	'linksearch-text'  => 'Bentuk pencarian \'\'wildcards\'\' seperti "*.wikipedia.org" dapat digunakan.',

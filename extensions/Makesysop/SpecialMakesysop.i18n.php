@@ -347,8 +347,11 @@ $wgMakesysopMessages['hsb'] = array(
 	'already_bureaucrat'   => 'Tutón wužiwar je hižo běrokrat.',
 );
 $wgMakesysopMessages['hu'] = array(
+	'makesysopok'          => '<b>User „$1” mostantól adminisztrátor</b>',
 	'already_sysop'        => 'Ez a felhasználó már adminisztrátor.',
 	'already_bureaucrat'   => 'Ez a felhasználó már bürokrata.',
+	'group-steward'        => 'Helytartók',
+	'group-steward-member' => 'Helytartó',
 );
 $wgMakesysopMessages['id'] = array(
 	'makesysoptitle'       => 'Buat seorang pengguna menjadi pengurus',

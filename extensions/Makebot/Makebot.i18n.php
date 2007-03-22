@@ -143,6 +143,11 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'ביטל את הרשאת הבוט למשתמש [[$1]]',
 ),
 
+/* Hungarian */
+'hu' => array(
+'makebot-logpage' => 'Botstátusz-napló',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'makebot' => 'Pemberian atau penarikan status bot',

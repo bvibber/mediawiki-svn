@@ -68,6 +68,15 @@ $wgExpandTemplatesMessages['he'] = array(
 	'expand_templates_ok'              => 'פרוס תבניות',
 	'expand_templates_remove_comments' => 'הסר הערות',
 );
+$wgExpandTemplatesMessages['hu'] = array(
+	'expandtemplates'                  => 'Sablonok kibontása',
+	'expand_templates_intro'           => 'Ez a speciális lap a bevitt szövegekben megkeresi a sablonokat és rekurzívan kibontja őket.
+Kibontja az elemző függvényeket (pl. <nowiki>{{</nowiki>#if:...}}), és a változókat (pl. <nowiki>{{</nowiki>CURRENTDAY}}) is – mindent, ami a kettős kapcsos zárójelek között van.',
+	'expand_templates_title'           => 'Szöveg címe, például &#123;&#123;PAGENAME}} sablonhoz:',
+	'expand_templates_input'           => 'Vizsgálandó szöveg',
+	'expand_templates_output'          => 'Eredmény',
+	'expand_templates_remove_comments' => 'Megjegyzések eltávolítása',
+);
 $wgExpandTemplatesMessages['id'] = array(
 	'expandtemplates'                  => 'Pengembangan templat',
 	'expand_templates_intro'           => 'Halaman istimewa ini menerima teks dan mengembangkan semua templat di dalamnya secara rekursif. Halaman ini juga menerjemahkan semua fungsi parser seperti <nowiki>{{</nowiki>#if:...}}, dan variabel seperti <nowiki>{{</nowiki>CURRENTDAY}}&mdash;bahkan bisa dibilang segala sesuatu yang berada di antara dua tanda kurung. Ini dilakukan dengan memanggil tahapan parser yang sesuai dari MediaWiki.',

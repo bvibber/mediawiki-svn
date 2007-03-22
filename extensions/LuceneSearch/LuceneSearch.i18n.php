@@ -108,6 +108,23 @@ $1\n
 סביר להניח שהיא זמנית; אנא נסו שנית בעוד מספר דקות.
 באפשרותכם גם לחפש בוויקי באמצעות שירותי חיפוש חיצוניים:\n"
 );
+$wgLuceneSearchMessages['hu'] = array(
+	'searchnumber'          => "<strong>$1-$2, összesen: $3 találat</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>előző</span>",
+	'searchnext'            => "<span style='font-size: small'>következő</span> &#x00BB;",
+	'searchscore'           => "Relevancia: $1",
+	'searchsize'            => "$1KB ($2 szó)",
+	'searchdidyoumean'      => "Erre gondoltál: \"<a href=\"$1\">$2</a>\"?",
+	'searchnearmatches'     => "<b>Ezeknek a lapoknak hasonlít a címe a keresett kifejezésre:</b>",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "Keresés a névterekben:
+
+$1
+
+$3 $9",
+	'lucenefallback'        => "Hiba adódott a wiki keresés során.
+A hiba átmeneti; próbáld újra néhány másodperc múlva vagy kereshetsz a wikin egy külső keresőszolgáltatáson keresztül is:"
+);
 $wgLuceneSearchMessages['id'] = array(
 	'searchnumber'          => "<strong>Hasil pencarian $1-$2 dari $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Sebelumnya</span>",

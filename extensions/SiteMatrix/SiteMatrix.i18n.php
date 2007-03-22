@@ -25,6 +25,9 @@ $wgSiteMatrixMessages['fr'] = array(
 $wgSiteMatrixMessages['he'] = array(
 	"sitematrix" => "רשימת אתרי ויקי של ויקימדיה",
 );
+$wgSiteMatrixMessages['hu'] = array(
+	"sitematrix" => "Az összes Wikimedia wiki listája",
+);
 $wgSiteMatrixMessages['id'] = array(
 	"sitematrix" => "Daftar wiki Wikimedia",
 );

@@ -37,6 +37,11 @@ $wgFilepathMessages['he'] = array(
 	'filepath_page'   => 'הקובץ:',
 	'filepath_submit' => 'מצא את הנתיב',
 );
+$wgFilepathMessages['hu'] = array(
+	'filepath'        => 'Fájl elérés',
+	'filepath_page'   => 'Fájl:',
+	'filepath_submit' => 'Elérés',
+);
 $wgFilepathMessages['id'] = array(
 	'filepath'        => 'Lokasi berkas',
 	'filepath_page'   => 'Berkas:',

@@ -45,6 +45,12 @@ $wgNewuserlogMessages['he'] = array(
 	'newuserlog-create-entry'  => 'משתמש חדש',
 	'newuserlog-create2-entry' => 'יצר חשבון עבור $1',
 );
+$wgNewuserlogMessages['hu'] = array(
+	'newuserlogpage'           => 'Új felhasználók naplója',
+	'newuserlogpagetext'       => 'Ez a napló az újonnan beregisztrált felhasználók listája.',
+	'newuserlog-create-entry'  => 'új felhasználóként regisztrált',
+	'newuserlog-create2-entry' => 'új felhasználót hozott létre $1 néven',
+);
 $wgNewuserlogMessages['id'] = array(
 	'newuserlogpage'           => 'Log pengguna baru',
 	'newuserlogpagetext'       => 'Di bawah ini adalah log pendaftaran pengguna baru',

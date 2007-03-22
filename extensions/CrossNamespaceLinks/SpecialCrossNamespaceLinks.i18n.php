@@ -36,6 +36,10 @@ $wgCrossNamespaceLinksMessages['he'] = array(
 	'crossnamespacelinks-summary' => 'דף זה מספק רשימה של קישורים מדפים במרחב השם הראשי לדפים במרחבי שם אחרים (למעט מרחבי השם {{ns:special}}, {{ns:talk}}, {{ns:project}} ו{{ns:template}}), שאינם רצויים לשימוש.',
 	'crossnamespacelinkstext'     => '$1: {{plural:$2|קישור אחד|$2 קישורים}} למרחב $3'
 );
+$wgCrossNamespaceLinksMessages['hu'] = array(
+	'crossnamespacelinks'         => 'Névtérközi linkek',
+	'crossnamespacelinkstext'     => '$1: $2 link a $3 névtérbe.'
+);
 $wgCrossNamespaceLinksMessages['id'] = array(
 	'crossnamespacelinks'     => 'Pranala lintas ruang nama',
 	'crossnamespacelinks-summary' => 'Halaman ini memberikan daftar pranala dari suatu halaman di ruang nama utama ke halaman lain di ruang nama lain (kecuali {{ns:special}}, {{ns:talk}}, {{ns:project}} dan {{ns:template}} namespaces), yang tidak dianjurkan untuk digunakan.',
