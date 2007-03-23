@@ -1,6 +1,6 @@
 USERNAME BLACKLIST EXTENSION
 
-	Version 1.6
+	Version 1.7
 	© 2006-2007 Rob Church
 
 This is free software licensed under the GNU General Public License. Please
@@ -91,28 +91,41 @@ example above), but I'll provide a couple of useful links:
 
 == 7. Change Log ==
 
+09/01/2006
+1.0
+	Initial release
+
+08/03/2006
 1.1
 	Make extension compatible with MediaWiki 1.5.8
 	Allow commenting out lines in the blacklist with #
+
+25/04/2006
 1.2
 	Rewrite code for performance
 	Allow users with the "uboverride" permission to pass the blacklist
 	(manual account creation)
+	
+06/07/2006
 1.3
 	Support caching the blacklist in shared memory, e.g. memcached, APC etc.
-	
+
+19/06/2006	
 1.4
 	Fix fatal error due to calling an undefined function
 
+16/12/2006
 1.5
 	Don't block all usernames when the blacklist contains blank lines
 	Use Unicode-friendly regular expressions
 	Don't show errors when the blacklist contains only comments
-	(Above fixes from Brion Vibber)
+	(above fixes from Brion Vibber)
 	
+15/01/2007
 1.6
 	Support multiple language translations
-	
+
+13/03/2007
 1.7
 	Ignore all non-list lines when constructing the regular expression
 	
@@ -122,4 +135,4 @@ example above), but I'll provide a couple of useful links:
 	* To the poster on mediawiki-l who inspired it
 	* Brion, for fixing a couple of bugs
 
-	All feedback welcome via <robchur@gmail.com>.
+All feedback welcome via <robchur@gmail.com>.
