@@ -26,7 +26,7 @@ class BookInformationAmazon implements BookInformationDriver {
 				return new BookInformationResult( BookInformationResult::RESPONSE_TIMEOUT );
 			}			
 		} else {
-			return new BookInformationResult( BookInformationResult::RESPONSE_FAIL );
+			return new BookInformationResult( BookInformationResult::RESPONSE_FAILED );
 		}
 	}
 	
@@ -70,10 +70,10 @@ class BookInformationAmazon implements BookInformationDriver {
 					return new BookInformationResult( BookInformationResult::RESPONSE_NOSUCHITEM );
 				}
 			} else {
-				return new BookInformationResult( BookInformationResult::RESPONSE_FAIL );
+				return new BookInformationResult( BookInformationResult::RESPONSE_FAILED );
 			}		
 		} catch( Exception $ex ) {
-			return new BookInformationResult( BookInformationResult::RESPONSE_FAIL );
+			return new BookInformationResult( BookInformationResult::RESPONSE_FAILED );
 		}
 	}
 	
