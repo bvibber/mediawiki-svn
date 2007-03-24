@@ -155,6 +155,20 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Fornidor de donadas : $1',
 ),
 
+'sk' => array(
+'bookinfo-header' => 'Informácie o knihách',
+'bookinfo-result-title' => 'Názov:',
+'bookinfo-result-author' => 'Autor:',
+'bookinfo-result-publisher' => 'Vydavateľ:',
+'bookinfo-result-year' => 'Rok:',
+'bookinfo-error-invalidisbn' => 'Zadané neplatné ISBN.',
+'bookinfo-error-nosuchitem' => 'Položka neexistuje alebo nebola nenájdená.',
+'bookinfo-error-nodriver' => 'Nebolo možné inicializovať vhodný ovládač pre informácie o knihách.',
+'bookinfo-error-noresponse' => 'Bez odpovede alebo čas vyhradený na odpoveď vypršal.',
+'bookinfo-purchase' => 'Kúpiť túto knihu z $1',
+'bookinfo-provider' => 'Poskytovateľ údajov: $1',
+),
+
 	);
 	return $messages;
 }

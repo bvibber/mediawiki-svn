@@ -280,21 +280,17 @@ kopiën ontstaan met een volledige geschiedenis. DIt is handig voor forks, enzov
 'duplicator' => 'Duplikácia článku',
 'duplicator-toolbox' => 'Duplikovať tento článok',
 'duplicator-header' => 'Táto stránka umožňuje kompletnú duplikáciu článku, čím sa vytvorí nazávislá kópia všetkých histórií. Je to užitočné napríklad pri vetvení a pod.',
-
 'duplicator-options' => 'Možnosti',
 'duplicator-source' => 'Zdroj:',
 'duplicator-dest' => 'Cieľ:',
 'duplicator-dotalk' => 'Duplikovať aj diskusnú stránku (ak existuje)',
 'duplicator-submit' => 'Duplikovať',
-
 'duplicator-summary' => 'Skopírované z [[$1]]',
-
-'duplicator-success' => "<big>Vytvorená kópia '''[[$1]] na [[$2]].'''</big>\n\n",
+'duplicator-success' => '<big>Vytvorená kópia \'\'\'[[$1]] na [[$2]].\'\'\'</big>',
 'duplicator-success-revisions' => 'Skopírovaných $1 revízií.',
-'duplicator-success-talkcopied' => 'Diskusná stránka bola tiež skopírované.',
-'duplicator-success-talknotcopied' => 'Nebolo možné skopírovať diskusnú stránku.',
+'duplicator-success-talkcopied' => 'Diskusné stránky boli tiež skopírované.',
+'duplicator-success-talknotcopied' => 'Nebolo možné skopírovať diskusné stránky.',
 'duplicator-failed' => 'Túto stránku nebolo možné duplikovať. Vyskytla sa neznáma chyba.',
-
 'duplicator-source-invalid' => 'Poskytnite platný názov zdrojovej stránky.',
 'duplicator-source-notexist' => '[[$1]] neexistuje. Poskytnite názov zdrojovej stránky, ktorá už existuje.',
 'duplicator-dest-invalid' => 'Prosím, zadajte platný názov cieľovej stránky.',

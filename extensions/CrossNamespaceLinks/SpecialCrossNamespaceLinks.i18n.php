@@ -98,8 +98,9 @@ $wgCrossNamespaceLinksMessages['ro'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 se leagă la $3',
 );
 $wgCrossNamespaceLinksMessages['sk'] = array(
-	'crossnamespacelinks'     => 'Odkazy medzi mennými priestormi',
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazov}} na $3'
+	'crossnamespacelinks'         => 'Odkazy medzi mennými priestormi',
+	'crossnamespacelinks-summary' => 'Táto stránka poskytuje zoznam odkazov zo stránky v hlavnom mennom priestore na stránky v ostatných menných priestoroch (okrem menných priestorov {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}), ktoré neradno používať.',
+	'crossnamespacelinkstext'     => '$1: $2 odkazuje na $3',
 );
 $wgCrossNamespaceLinksMessages['sr-ec'] = array(
 	'crossnamespacelinks'         => 'Везе ка именским просторима',
