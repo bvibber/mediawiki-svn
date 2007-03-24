@@ -1,3 +1,11 @@
+squid (2.6.12-1wm2) edgy; urgency=low
+
+  * Patch COSS to not crash on xassert(t->length == MD5_DIGEST_CHARS) in
+    the COSS rebuild code, just log and ignore the object instead.
+  * Set IPC flag on UDP logging socket, so Squid doesn't close it prematurely.
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sat, 24 Mar 2007 19:59:34 +0000
+
 squid (2.6.12-1wm1) edgy; urgency=low
 
   * New upstream version

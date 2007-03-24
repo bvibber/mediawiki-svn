@@ -5,10 +5,10 @@
 ## DP: No description.
 
 @DPATCH@
-diff -urNad squid-2.6.9~/src/access_log.c squid-2.6.9/src/access_log.c
---- squid-2.6.9~/src/access_log.c	2007-02-21 14:29:45.000000000 +0000
-+++ squid-2.6.9/src/access_log.c	2007-02-21 14:30:42.000000000 +0000
-@@ -314,6 +314,8 @@
+diff -urNad squid-2.6.12~/src/access_log.c squid-2.6.12/src/access_log.c
+--- squid-2.6.12~/src/access_log.c	2007-03-24 19:57:23.000000000 +0000
++++ squid-2.6.12/src/access_log.c	2007-03-24 19:57:27.000000000 +0000
+@@ -316,6 +316,8 @@
  
      LFT_EXT_LOG,
  
@@ -17,16 +17,16 @@ diff -urNad squid-2.6.9~/src/access_log.c squid-2.6.9/src/access_log.c
      LFT_PERCENT			/* special string cases for escaped chars */
  } logformat_bcode_t;
  
-@@ -416,6 +418,8 @@
- /*{ "<sb", LFT_REPLY_SIZE_BODY }, */
- /*{ "<sB", LFT_REPLY_SIZE_BODY_NO_TE }, */
+@@ -420,6 +422,8 @@
+ 
+     {"ea", LFT_EXT_LOG},
  
 +    {"sn", LFT_SEQUENCE_NUMBER},
 +
      {"%", LFT_PERCENT},
  
      {NULL, LFT_NONE}		/* this must be last */
-@@ -430,7 +434,9 @@
+@@ -434,7 +438,9 @@
      static MemBuf mb = MemBufNULL;
      char tmp[1024];
      String sb = StringNull;
@@ -36,7 +36,7 @@ diff -urNad squid-2.6.9~/src/access_log.c squid-2.6.9/src/access_log.c
      memBufReset(&mb);
  
      lf = log->logFormat;
-@@ -656,6 +662,10 @@
+@@ -668,6 +674,10 @@
  	    quote = 1;
  	    break;
  
@@ -47,7 +47,7 @@ diff -urNad squid-2.6.9~/src/access_log.c squid-2.6.9/src/access_log.c
  	case LFT_PERCENT:
  	    out = "%";
  	    break;
-@@ -1129,7 +1139,7 @@
+@@ -1141,7 +1151,7 @@
  	    fatalf("Unknown log format %d\n", log->type);
  	    break;
  	}
@@ -56,10 +56,10 @@ diff -urNad squid-2.6.9~/src/access_log.c squid-2.6.9/src/access_log.c
  	if (!checklist)
  	    break;
      }
-diff -urNad squid-2.6.9~/src/cache_cf.c squid-2.6.9/src/cache_cf.c
---- squid-2.6.9~/src/cache_cf.c	2007-02-21 14:29:45.000000000 +0000
-+++ squid-2.6.9/src/cache_cf.c	2007-02-21 14:30:42.000000000 +0000
-@@ -2612,42 +2612,16 @@
+diff -urNad squid-2.6.12~/src/cache_cf.c squid-2.6.12/src/cache_cf.c
+--- squid-2.6.12~/src/cache_cf.c	2007-03-24 19:57:23.000000000 +0000
++++ squid-2.6.12/src/cache_cf.c	2007-03-24 19:57:27.000000000 +0000
+@@ -2611,42 +2611,16 @@
      return PEER_SIBLING;
  }
  
@@ -104,9 +104,9 @@ diff -urNad squid-2.6.9~/src/cache_cf.c squid-2.6.9/src/cache_cf.c
  	    self_destruct();
  	while (*head)
  	    head = &(*head)->next;
-diff -urNad squid-2.6.9~/src/logfile.c squid-2.6.9/src/logfile.c
---- squid-2.6.9~/src/logfile.c	2007-02-21 14:29:45.000000000 +0000
-+++ squid-2.6.9/src/logfile.c	2007-02-21 14:34:01.000000000 +0000
+diff -urNad squid-2.6.12~/src/logfile.c squid-2.6.12/src/logfile.c
+--- squid-2.6.12~/src/logfile.c	2007-03-24 19:57:23.000000000 +0000
++++ squid-2.6.12/src/logfile.c	2007-03-24 19:58:20.000000000 +0000
 @@ -35,6 +35,8 @@
  #include "squid.h"
  
@@ -192,7 +192,7 @@ diff -urNad squid-2.6.9~/src/logfile.c squid-2.6.9/src/logfile.c
  #ifdef S_ISREG
      if (stat(lf->path, &sb) == 0)
  	if (S_ISREG(sb.st_mode) == 0)
-@@ -294,11 +320,110 @@
+@@ -294,11 +320,111 @@
  logfileWriteWrapper(Logfile * lf, const void *buf, size_t len)
  {
      int s;
@@ -284,6 +284,7 @@ diff -urNad squid-2.6.9~/src/logfile.c squid-2.6.9/src/logfile.c
 +	    return FALSE;
 +	}
 +    }
++    fd_table[lf->fd].flags.ipc = 1; /* Make sure Squid doesn't close this socket on exit */
 +    if (comm_connect_addr(lf->fd, &addr)) {
 +	if (lf->flags.fatal) {
 +	    fatalf("Unable to connect to %s for UDP log: %s\n", lf->path, xstrerror());
@@ -303,9 +304,9 @@ diff -urNad squid-2.6.9~/src/logfile.c squid-2.6.9/src/logfile.c
 +}
 +
 +
-diff -urNad squid-2.6.9~/src/protos.h squid-2.6.9/src/protos.h
---- squid-2.6.9~/src/protos.h	2007-02-21 14:29:45.000000000 +0000
-+++ squid-2.6.9/src/protos.h	2007-02-21 14:30:42.000000000 +0000
+diff -urNad squid-2.6.12~/src/protos.h squid-2.6.12/src/protos.h
+--- squid-2.6.12~/src/protos.h	2007-03-24 19:57:23.000000000 +0000
++++ squid-2.6.12/src/protos.h	2007-03-24 19:57:27.000000000 +0000
 @@ -1198,6 +1198,7 @@
  void setUmask(mode_t mask);
  int xusleep(unsigned int usec);
@@ -314,10 +315,10 @@ diff -urNad squid-2.6.9~/src/protos.h squid-2.6.9/src/protos.h
  
  #if USE_HTCP
  extern void htcpInit(void);
-diff -urNad squid-2.6.9~/src/structs.h squid-2.6.9/src/structs.h
---- squid-2.6.9~/src/structs.h	2007-02-21 14:29:45.000000000 +0000
-+++ squid-2.6.9/src/structs.h	2007-02-21 14:30:42.000000000 +0000
-@@ -2445,6 +2445,8 @@
+diff -urNad squid-2.6.12~/src/structs.h squid-2.6.12/src/structs.h
+--- squid-2.6.12~/src/structs.h	2007-03-24 19:57:23.000000000 +0000
++++ squid-2.6.12/src/structs.h	2007-03-24 19:57:27.000000000 +0000
+@@ -2451,6 +2451,8 @@
      struct {
  	unsigned int fatal;
  	unsigned int syslog;
@@ -326,9 +327,9 @@ diff -urNad squid-2.6.9~/src/structs.h squid-2.6.9/src/structs.h
      } flags;
      int syslog_priority;
  };
-diff -urNad squid-2.6.9~/src/tools.c squid-2.6.9/src/tools.c
---- squid-2.6.9~/src/tools.c	2007-02-21 14:29:45.000000000 +0000
-+++ squid-2.6.9/src/tools.c	2007-02-21 14:30:42.000000000 +0000
+diff -urNad squid-2.6.12~/src/tools.c squid-2.6.12/src/tools.c
+--- squid-2.6.12~/src/tools.c	2007-03-24 19:57:23.000000000 +0000
++++ squid-2.6.12/src/tools.c	2007-03-24 19:57:27.000000000 +0000
 @@ -1346,3 +1346,43 @@
      }
  #endif

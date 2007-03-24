@@ -32,3 +32,6 @@ Wikimedia:
 wikimedia-errors	Wikimedia specific error messages
 nomanglerequestheaders	Do not alter the request headers in server-side
 			requests
+coss-rebuild-meta-key-length
+			Do not crash on assert(t->length == MD5_DIGEST_CHARS)
+			in the COSS rebuild code, just ignore the object			
