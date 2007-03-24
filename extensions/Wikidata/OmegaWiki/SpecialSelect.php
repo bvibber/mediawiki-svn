@@ -89,12 +89,12 @@ function getSelectOptions() {
 
 		$spelling_res = $dbr->query($sql);
 		$spelling_row = $dbr->fetchObject($spelling_res);
-		if ($optionString != '')
-			$optionString .= "\n";
-		$optionString .= $options_row->option_id . ';' . $spelling_row->spelling;
+		if ($optionsString != '')
+			$optionsString .= "\n";
+		$optionsString .= $options_row->option_id . ';' . $spelling_row->spelling;
 	}
 
-	return $optionString;
+	return $optionsString;
 }
 
 ?>

@@ -645,9 +645,9 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filter
 	global
 		$objectAttributesAttribute, 
 		$textAttributeObjectAttribute, $textAttributeValuesAttribute, 
-		$translatedTextAttributeIdAttribute, $translatedTextAttributeValuesAttribute,
-		$urlAttributeIdAttribute, $urlAttributeValuesAttribute,
-		$optionAttributeIdAttribute, $optionAttributeValuesAttribute;
+		$translatedTextAttributeObjectAttribute, $translatedTextAttributeValuesAttribute,
+		$urlAttributeObjectAttribute, $urlAttributeValuesAttribute,
+		$optionAttributeObjectAttribute, $optionAttributeValuesAttribute;
 		
 	$objectAttributesRecordStructure = $objectAttributesAttribute->type->getStructure();
 	$objectIds = getUniqueIdsInRecordSet($recordSet, array($objectIdAttribute));
@@ -673,7 +673,7 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filter
 		$translatedTextAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allTranslatedTextAttributeValuesRecordSet,
-				$translatedTextAttributeIdAttribute
+				$translatedTextAttributeObjectAttribute
 			);	
 			
 		$emptyTranslatedTextAttributesRecordSet = new ArrayRecordSet($allTranslatedTextAttributeValuesRecordSet->getStructure(), $allTranslatedTextAttributeValuesRecordSet->getKey());
@@ -683,7 +683,7 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filter
 		$urlAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allURLAttributeValuesRecordSet,
-				$urlAttributeIdAttribute
+				$urlAttributeObjectAttribute
 			);	
 			
 		$emptyURLAttributesRecordSet = new ArrayRecordSet($allURLAttributeValuesRecordSet->getStructure(), $allURLAttributeValuesRecordSet->getKey());
@@ -693,9 +693,10 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filter
 		$optionAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allOptionAttributeValuesRecordSet,
-				$optionAttributeIdAttribute
+				$optionAttributeObjectAttribute
 			);	
 			
+		
 		$emptyOptionAttributesRecordSet = new ArrayRecordSet($allOptionAttributeValuesRecordSet->getStructure(), $allOptionAttributeValuesRecordSet->getKey());
 		
 		for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
@@ -941,13 +942,14 @@ function getURLAttributeValuesRecordSet($objectIds, $filterLanguageId, $queryTra
 function getTranslatedTextAttributeValuesRecordSet($objectIds, $filterLanguageId, $queryTransactionInformation) {
 	global
 		$translatedTextAttributeIdAttribute, $translatedContentAttributeValuesTable, $translatedTextAttributeAttribute,
-		$objectAttributesAttribute, $translatedTextValueAttribute, $translatedTextValueIdAttribute;
+		$objectAttributesAttribute, $translatedTextAttributeObjectAttribute, $translatedTextValueAttribute, $translatedTextValueIdAttribute;
 
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
 		$translatedTextAttributeIdAttribute,
 		array(
 			'value_id' => $translatedTextAttributeIdAttribute,
+			'object_id' => $translatedTextAttributeObjectAttribute,
 			'attribute_mid' => $translatedTextAttributeAttribute,
 			'value_tcid' => $translatedTextValueIdAttribute
 		),
