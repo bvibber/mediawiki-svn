@@ -56,7 +56,7 @@ Description: Squid cache manager CGI program
  cache through your web browser.
 
 Package: squid-frontend
-Architecture: any
+Architecture: all
 Section: web
 Priority: optional
 Depends: squid

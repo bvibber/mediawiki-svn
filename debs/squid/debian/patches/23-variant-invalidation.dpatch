@@ -5,10 +5,10 @@
 ## DP: No description.
 
 @DPATCH@
-diff -urNad squid-2.6.9~/src/client_side.c squid-2.6.9/src/client_side.c
---- squid-2.6.9~/src/client_side.c	2007-01-24 01:38:16.000000000 +0000
-+++ squid-2.6.9/src/client_side.c	2007-02-21 14:40:51.000000000 +0000
-@@ -2150,6 +2150,18 @@
+diff -urNad squid-2.6.12~/src/client_side.c squid-2.6.12/src/client_side.c
+--- squid-2.6.12~/src/client_side.c	2007-03-24 13:59:38.000000000 +0000
++++ squid-2.6.12/src/client_side.c	2007-03-24 14:00:21.000000000 +0000
+@@ -2169,6 +2169,18 @@
      case VARY_CANCEL:
  	/* varyEvaluateMatch found a object loop. Process as miss */
  	debug(33, 1) ("clientProcessHit: Vary object loop!\n");
@@ -27,15 +27,7 @@ diff -urNad squid-2.6.9~/src/client_side.c squid-2.6.9/src/client_side.c
  	clientProcessMiss(http);
  	return;
      }
-@@ -3452,6 +3464,7 @@
- 	return;
-     }
-     http->entry = clientCreateStoreEntry(http, r->method, r->flags);
-+
-     if (Config.onoff.collapsed_forwarding && r->flags.cachable && !r->flags.need_validation && (r->method = METHOD_GET || r->method == METHOD_HEAD)) {
- 	http->entry->mem_obj->refresh_timestamp = squid_curtime;
- 	/* Set the vary object state */
-@@ -4958,6 +4971,8 @@
+@@ -4951,6 +4963,8 @@
  	 */
  	vary = httpMakeVaryMark(request, entry->mem_obj->reply);
  	if (vary) {
@@ -44,7 +36,7 @@ diff -urNad squid-2.6.9~/src/client_side.c squid-2.6.9/src/client_side.c
  	    return VARY_OTHER;
  	} else {
  	    /* Ouch.. we cannot handle this kind of variance */
-@@ -4975,6 +4990,13 @@
+@@ -4968,6 +4982,13 @@
  	    /* This request was merged before we knew the outcome. Don't trust the response */
  	    /* restart vary processing from the beginning */
  	    return VARY_RESTART;
@@ -58,9 +50,29 @@ diff -urNad squid-2.6.9~/src/client_side.c squid-2.6.9/src/client_side.c
  	} else {
  	    return VARY_MATCH;
  	}
-diff -urNad squid-2.6.9~/src/comm_generic.c squid-2.6.9/src/comm_generic.c
---- squid-2.6.9~/src/comm_generic.c	2006-10-31 18:25:15.000000000 +0000
-+++ squid-2.6.9/src/comm_generic.c	2007-02-21 14:40:51.000000000 +0000
+diff -urNad squid-2.6.12~/src/client_side.c.rej squid-2.6.12/src/client_side.c.rej
+--- squid-2.6.12~/src/client_side.c.rej	2007-03-24 13:59:38.000000000 +0000
++++ squid-2.6.12/src/client_side.c.rej	1970-01-01 00:00:00.000000000 +0000
+@@ -1,16 +0,0 @@
+-***************
+-*** 3483,3489 ****
+-  	return;
+-      }
+-      http->entry = clientCreateStoreEntry(http, r->method, r->flags);
+-- 
+-      if (Config.onoff.collapsed_forwarding && r->flags.cachable && !r->flags.need_validation && (r->method = METHOD_GET || r->method == METHOD_HEAD)) {
+-  	http->entry->mem_obj->refresh_timestamp = squid_curtime;
+-  	/* Set the vary object state */
+---- 3471,3476 ----
+-  	return;
+-      }
+-      http->entry = clientCreateStoreEntry(http, r->method, r->flags);
+-      if (Config.onoff.collapsed_forwarding && r->flags.cachable && !r->flags.need_validation && (r->method = METHOD_GET || r->method == METHOD_HEAD)) {
+-  	http->entry->mem_obj->refresh_timestamp = squid_curtime;
+-  	/* Set the vary object state */
+diff -urNad squid-2.6.12~/src/comm_generic.c squid-2.6.12/src/comm_generic.c
+--- squid-2.6.12~/src/comm_generic.c	2007-03-24 13:59:38.000000000 +0000
++++ squid-2.6.12/src/comm_generic.c	2007-03-24 14:00:21.000000000 +0000
 @@ -360,7 +360,7 @@
      int rc;
      double start = current_dtime;
@@ -70,10 +82,10 @@ diff -urNad squid-2.6.9~/src/comm_generic.c squid-2.6.9/src/comm_generic.c
  
      if (msec > MAX_POLL_TIME)
  	msec = MAX_POLL_TIME;
-diff -urNad squid-2.6.9~/src/enums.h squid-2.6.9/src/enums.h
---- squid-2.6.9~/src/enums.h	2007-01-21 10:26:44.000000000 +0000
-+++ squid-2.6.9/src/enums.h	2007-02-21 14:40:51.000000000 +0000
-@@ -649,6 +649,7 @@
+diff -urNad squid-2.6.12~/src/enums.h squid-2.6.12/src/enums.h
+--- squid-2.6.12~/src/enums.h	2007-03-24 13:59:38.000000000 +0000
++++ squid-2.6.12/src/enums.h	2007-03-24 14:00:21.000000000 +0000
+@@ -654,6 +654,7 @@
      STORE_META_VARY_HEADERS,	/* Stores Vary request headers */
      STORE_META_STD_LFS,		/* standard metadata in lfs format */
      STORE_META_OBJSIZE,		/* object size, if its known */
@@ -81,7 +93,7 @@ diff -urNad squid-2.6.9~/src/enums.h squid-2.6.9/src/enums.h
      STORE_META_END
  };
  
-@@ -742,7 +743,8 @@
+@@ -747,7 +748,8 @@
      VARY_MATCH,
      VARY_OTHER,
      VARY_RESTART,
@@ -91,10 +103,10 @@ diff -urNad squid-2.6.9~/src/enums.h squid-2.6.9/src/enums.h
  };
  
  /* Windows Port */
-diff -urNad squid-2.6.9~/src/http.c squid-2.6.9/src/http.c
---- squid-2.6.9~/src/http.c	2007-02-21 14:27:17.000000000 +0000
-+++ squid-2.6.9/src/http.c	2007-02-21 14:40:51.000000000 +0000
-@@ -229,7 +229,7 @@
+diff -urNad squid-2.6.12~/src/http.c squid-2.6.12/src/http.c
+--- squid-2.6.12~/src/http.c	2007-03-24 14:00:21.000000000 +0000
++++ squid-2.6.12/src/http.c	2007-03-24 14:00:21.000000000 +0000
+@@ -227,7 +227,7 @@
      const char *v;
  #if HTTP_VIOLATIONS
      const refresh_t *R = NULL;
@@ -103,10 +115,10 @@ diff -urNad squid-2.6.9~/src/http.c squid-2.6.9/src/http.c
       * and then checks if the specified flag is set. The main purpose
       * of this is to simplify the refresh pattern lookup
       */
-diff -urNad squid-2.6.9~/src/protos.h squid-2.6.9/src/protos.h
---- squid-2.6.9~/src/protos.h	2007-02-21 14:29:45.000000000 +0000
-+++ squid-2.6.9/src/protos.h	2007-02-21 14:40:51.000000000 +0000
-@@ -1415,6 +1415,6 @@
+diff -urNad squid-2.6.12~/src/protos.h squid-2.6.12/src/protos.h
+--- squid-2.6.12~/src/protos.h	2007-03-24 14:00:21.000000000 +0000
++++ squid-2.6.12/src/protos.h	2007-03-24 14:00:21.000000000 +0000
+@@ -1416,6 +1416,6 @@
  /* ETag support */
  void storeLocateVaryDone(VaryData * data);
  void storeLocateVary(StoreEntry * e, int offset, const char *vary_data, String accept_encoding, STLVCB * callback, void *cbdata);
@@ -114,9 +126,9 @@ diff -urNad squid-2.6.9~/src/protos.h squid-2.6.9/src/protos.h
 +vary_id_t storeAddVary(const char *url, const char *log_url, const method_t method, const cache_key * key, const char *etag, const char *vary, const char *vary_headers, const char *accept_encoding);
  
  #endif /* SQUID_PROTOS_H */
-diff -urNad squid-2.6.9~/src/store.c squid-2.6.9/src/store.c
---- squid-2.6.9~/src/store.c	2007-01-19 00:21:01.000000000 +0000
-+++ squid-2.6.9/src/store.c	2007-02-21 14:40:51.000000000 +0000
+diff -urNad squid-2.6.12~/src/store.c squid-2.6.12/src/store.c
+--- squid-2.6.12~/src/store.c	2007-03-24 13:59:38.000000000 +0000
++++ squid-2.6.12/src/store.c	2007-03-24 14:00:21.000000000 +0000
 @@ -87,6 +87,7 @@
  static void storeEntryDereferenced(StoreEntry *);
  static int getKeyCounter(void);
@@ -277,7 +289,7 @@ diff -urNad squid-2.6.9~/src/store.c squid-2.6.9/src/store.c
  	    stringClean(&vary);
  	}
      } else {
-@@ -1737,6 +1778,8 @@
+@@ -1740,6 +1781,8 @@
      debug(20, 1) ("MemObject->log_url: %p %s\n",
  	mem->log_url,
  	checkNullString(mem->log_url));
@@ -286,7 +298,7 @@ diff -urNad squid-2.6.9~/src/store.c squid-2.6.9/src/store.c
  }
  
  void
-@@ -2007,3 +2050,15 @@
+@@ -2010,3 +2053,15 @@
      if (e->mem_obj)
  	e->mem_obj->serverfd = -1;
  }
@@ -302,9 +314,9 @@ diff -urNad squid-2.6.9~/src/store.c squid-2.6.9/src/store.c
 +    vary_id->create_time = squid_curtime;
 +    vary_id->serial = serial++;
 +}
-diff -urNad squid-2.6.9~/src/store_client.c squid-2.6.9/src/store_client.c
---- squid-2.6.9~/src/store_client.c	2006-06-05 22:47:01.000000000 +0000
-+++ squid-2.6.9/src/store_client.c	2007-02-21 14:40:51.000000000 +0000
+diff -urNad squid-2.6.12~/src/store_client.c squid-2.6.12/src/store_client.c
+--- squid-2.6.12~/src/store_client.c	2007-03-24 13:59:38.000000000 +0000
++++ squid-2.6.12/src/store_client.c	2007-03-24 14:00:21.000000000 +0000
 @@ -446,6 +446,9 @@
  		mem->vary_headers = xstrdup(t->value);
  	    }
@@ -315,9 +327,9 @@ diff -urNad squid-2.6.9~/src/store_client.c squid-2.6.9/src/store_client.c
  	default:
  	    debug(20, 2) ("WARNING: got unused STORE_META type %d\n", t->type);
  	    break;
-diff -urNad squid-2.6.9~/src/store_swapmeta.c squid-2.6.9/src/store_swapmeta.c
---- squid-2.6.9~/src/store_swapmeta.c	2006-07-29 14:44:49.000000000 +0000
-+++ squid-2.6.9/src/store_swapmeta.c	2007-02-21 14:40:51.000000000 +0000
+diff -urNad squid-2.6.12~/src/store_swapmeta.c squid-2.6.12/src/store_swapmeta.c
+--- squid-2.6.12~/src/store_swapmeta.c	2007-03-24 13:59:38.000000000 +0000
++++ squid-2.6.12/src/store_swapmeta.c	2007-03-24 14:00:21.000000000 +0000
 @@ -86,6 +86,7 @@
      vary = e->mem_obj->vary_headers;
      if (vary)
@@ -326,10 +338,10 @@ diff -urNad squid-2.6.9~/src/store_swapmeta.c squid-2.6.9/src/store_swapmeta.c
      return TLV;
  }
  
-diff -urNad squid-2.6.9~/src/structs.h squid-2.6.9/src/structs.h
---- squid-2.6.9~/src/structs.h	2007-02-21 14:29:45.000000000 +0000
-+++ squid-2.6.9/src/structs.h	2007-02-21 14:40:51.000000000 +0000
-@@ -1681,6 +1681,11 @@
+diff -urNad squid-2.6.12~/src/structs.h squid-2.6.12/src/structs.h
+--- squid-2.6.12~/src/structs.h	2007-03-24 14:00:21.000000000 +0000
++++ squid-2.6.12/src/structs.h	2007-03-24 14:00:21.000000000 +0000
+@@ -1686,6 +1686,11 @@
      void (*Done) (RemovalPurgeWalker * walker);
  };
  
@@ -341,7 +353,7 @@ diff -urNad squid-2.6.9~/src/structs.h squid-2.6.9/src/structs.h
  /* This structure can be freed while object is purged out from memory */
  struct _MemObject {
      method_t method;
-@@ -1719,6 +1724,7 @@
+@@ -1724,6 +1729,7 @@
      const char *vary_encoding;
      StoreEntry *ims_entry;
      time_t refresh_timestamp;
@@ -349,7 +361,7 @@ diff -urNad squid-2.6.9~/src/structs.h squid-2.6.9/src/structs.h
  };
  
  struct _StoreEntry {
-@@ -1895,6 +1901,7 @@
+@@ -1901,6 +1907,7 @@
      char *vary_headers;		/* Used when varying entities are detected. Changes how the store key is calculated */
      String vary_encoding;	/* Used when varying entities are detected. Changes how the store key is calculated. */
      VaryData *vary;
@@ -357,9 +369,9 @@ diff -urNad squid-2.6.9~/src/structs.h squid-2.6.9/src/structs.h
      Array *etags;		/* possible known entity tags (Vary MISS) */
      char *etag;			/* current entity tag, cache validation */
      unsigned int done_etag:1;	/* We have done clientProcessETag on this, don't attempt it again */
-diff -urNad squid-2.6.9~/src/typedefs.h squid-2.6.9/src/typedefs.h
---- squid-2.6.9~/src/typedefs.h	2006-09-02 14:08:42.000000000 +0000
-+++ squid-2.6.9/src/typedefs.h	2007-02-21 14:40:51.000000000 +0000
+diff -urNad squid-2.6.12~/src/typedefs.h squid-2.6.12/src/typedefs.h
+--- squid-2.6.12~/src/typedefs.h	2007-03-24 13:59:38.000000000 +0000
++++ squid-2.6.12/src/typedefs.h	2007-03-24 14:00:21.000000000 +0000
 @@ -224,6 +224,7 @@
  typedef struct _RemovalPolicySettings RemovalPolicySettings;
  typedef struct _errormap errormap;

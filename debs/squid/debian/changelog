@@ -1,3 +1,12 @@
+squid (2.6.12-1wm1) edgy; urgency=low
+
+  * New upstream version
+    - COSS shutdown bug patch has been integrated upstream, dropped (#1892)
+    - Update COSS invalidation patch
+  * Make the squid-frontend subpackage architecture independent
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sat, 24 Mar 2007 14:19:07 +0000
+
 squid (2.6.9-1wm5) edgy; urgency=low
 
   * Added squid-frontend package
