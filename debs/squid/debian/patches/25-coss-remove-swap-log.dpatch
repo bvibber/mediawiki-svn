@@ -1,0 +1,26 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 25-coss-remove-swap-log.dpatch by  <mark@hawthorn.knams.wikimedia.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad squid-2.6.12~/src/fs/coss/store_dir_coss.c squid-2.6.12/src/fs/coss/store_dir_coss.c
+--- squid-2.6.12~/src/fs/coss/store_dir_coss.c	2007-03-25 14:57:23.000000000 +0000
++++ squid-2.6.12/src/fs/coss/store_dir_coss.c	2007-03-25 14:58:52.000000000 +0000
+@@ -549,6 +549,7 @@
+ static void
+ storeCossDirSwapLog(const SwapDir * sd, const StoreEntry * e, int op)
+ {
++#if 0
+     CossInfo *cs = (CossInfo *) sd->fsdata;
+     storeSwapLogData *s = memAllocate(MEM_SWAP_LOG_DATA);
+     s->op = (char) op;
+@@ -568,6 +569,7 @@
+ 	NULL,
+ 	NULL,
+ 	(FREE *) storeSwapLogDataFree);
++#endif
+ }
+ 
+ static void
