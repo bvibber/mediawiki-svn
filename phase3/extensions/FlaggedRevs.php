@@ -105,7 +105,15 @@ class FlaggedRevs {
         while ( $row = $db->fetchObject( $result ) ) {
             // Purge deleted revs from flaggedrev table
             if ( $row->rev_deleted ) {
-            	$db->delete( 'flaggedrevs', array( 'fr_rev_id' => $this->oldid ) );
+        		$cache_text = $this->expandText( $row->fr_cache );
+				$db->delete( 'flaggedrevs', array( 'fr_rev_id' => $rev->getId ) );
+				// Delete stable images if needed
+				$images = $this->findLocalImages( $cache_text );
+				$copies = $this->deleteStableImages( $images );
+				// Update stable image table
+				$this->removeStableImages( $row->rev_id, $copies );
+				// Clear cache...
+				$this->updatePage( Title::newFromID($page_id) );
             }
             $rows[] = $row;
         }
@@ -195,6 +203,8 @@ class FlaggedRevs {
 				$flaghtml .= "<td>&nbsp;<strong>" . wfMsgHtml("revreview-$quality") . "</strong>: $value&nbsp;</td>\n";    
             }
             $flaghtml .= '</tr></table>';
+            // Should use CSS?
+            $flaghtml = "<small>$flaghtml</small>";
             // Copy over the old body
             $out->mBodytext = '<div class="mw-warning plainlinks">' . $flaghtml . '</div>' . $newbodytext;
         } else {
@@ -246,7 +256,6 @@ class FlaggedRevs {
 					$flaghtml = wfMsgExt('revreview-isnewest', array('parse'));
 				else
 					$flaghtml = wfMsgExt('revreview-newest', array('parse'), $top_frev->fr_rev_id, $top_frev->fr_rev_id, $revid, $time );
-        		
             }
             // Construct some tagging
             $flaghtml .= "<table align='center' cellpadding=\'0\'><tr>";
@@ -255,6 +264,8 @@ class FlaggedRevs {
 				$flaghtml .= "<td>&nbsp;<strong>" . wfMsgHtml("revreview-$quality") . "</strong>: $value&nbsp;</td>\n";    
             }
             $flaghtml .= '</tr></table>';
+            // Should use CSS?
+            $flaghtml = "<small>$flaghtml</small>";
         	$wgOut->addHTML( '<div class="mw-warning plainlinks">' . $flaghtml . '</div><br/>' );
         }
     }

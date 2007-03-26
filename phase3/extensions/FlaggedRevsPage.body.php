@@ -226,14 +226,14 @@ class Revisionreview extends SpecialPage
 			'fr_timestamp' => $timestamp,
 			'fr_comment'=> $this->notes
 		);
-		$db->replace( 'flaggedrevs', array( 'fr_page_id', 'fr_rev_id' ), $set, __METHOD__ );
+		$db->replace( 'flaggedrevs', array( array('fr_page_id','fr_rev_id') ), $set, __METHOD__ );
 		// Update the article review log
 		$this->updateLog( $this->page, $this->dimensions, $this->comment, $this->oldid, true );
 		// Clone images to stable dir
 		$images = $this->findLocalImages( $cache_text );
 		$copies = $this->makeStableImages( $images );
 		// Update stable image table
-		$this->insertStableImages( $copies );
+		$this->insertStableImages( $rev->getId(), $copies );
 		// Clear cache...
 		$this->updatePage( $this->page );
         return true;
@@ -259,7 +259,7 @@ class Revisionreview extends SpecialPage
 		$images = $this->findLocalImages( $cache_text );
 		$copies = $this->deleteStableImages( $images );
 		// Update stable image table
-		$this->removeStableImages( $copies );
+		$this->removeStableImages( $rev->getId(), $copies );
 		// Clear cache...
 		$this->updatePage( $this->page );
         return true;
@@ -440,12 +440,9 @@ class Revisionreview extends SpecialPage
 			}
 			$imagename = $nt->getDBkey();
 			// Add image and the revision that uses it
- 			$set = array(
-				'fi_rev_id' => $revid,
-				'fr_name' => $imagename,
-			);
+ 			$set = array('fi_rev_id' => $revid, 'fi_name' => $imagename);
 			// Add entries or replace any that have the same rev_id
-			$db->replace( 'flaggedimages', array( 'fi_rev_id', 'fr_name' ), $set, __METHOD__ );	
+			$db->replace( 'flaggedimages', array( array('fi_rev_id', 'fi_name') ), $set, __METHOD__ );	
 		}
 		return true;	
     }
@@ -473,7 +470,7 @@ class Revisionreview extends SpecialPage
 			$imagename = $nt->getDBkey();
  			$where = array(
 				'fi_rev_id' => $revid,
-				'fr_name' => $imagename,
+				'fi_name' => $imagename,
 			);
 			// See how many revisions use this image total...
 			$result = $db->select( 'flaggedimages', array('fi_id'), array( 'fi_name' => $imagename ) );
