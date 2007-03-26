@@ -46,6 +46,7 @@ $wgAvailableRights[] = 'review';
 $wgGroupPermissions['reviewer']['rollback']    = true;
 $wgGroupPermissions['reviewer']['patrol']      = true;
 $wgGroupPermissions['reviewer']['review']      = true;
+
 # Add review log
 $wgLogTypes[] = 'review';
 $wgLogNames['review'] = 'review-logpage';
@@ -185,7 +186,7 @@ class FlaggedRevs {
         global $wgArticle, $wgRequest, $wgTitle, $wgOut, $action;
         // Only trigger on article view, not for protect/delete/hist
         // Talk pages cannot be validated
-        if( !$wgArticle || !$out->isArticle() || !$wgTitle->isContentPage() || $action !='view' )
+        if( !$wgArticle || !$wgTitle->isContentPage() || $action !='view' )
             return;
         // Find out revision id
         if( $wgArticle->mRevision )
@@ -247,6 +248,10 @@ class FlaggedRevs {
 				$text = $this->getFlaggedRevText( $top_frev->fr_rev_id );
        			$newbody = $wgParser->parse( $text, $wgTitle, $parse_ops );
        			$newbodytext = $newbody->getText();
+       			# goddamn hack...
+       			# Thumbnails are stored based on width, don't do any unscaled resizing
+       			# This is needed b/c MW will add height as what the current image entry has in the db
+       			$newbodytext = preg_replace( '/(<IMG[^<>]+ )height="\d+" ([^<>]+>)/i','$1$2', $newbodytext);
        			
        			# Reset image directories
        			$wgUploadPath = $uploadPath;

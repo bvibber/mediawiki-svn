@@ -365,7 +365,7 @@ class Revisionreview extends SpecialPage
     		$sharedpath = $wgSharedUploadDirectory . $hash;
     		// Try local repository
     		if( is_dir($path) ) {
-    			if( is_file("{$path}{$name}") ) {
+    			if( file_exists("{$path}{$name}") ) {
     				// Check if our stable dir exists
     				// Make it if it doesn't
     				if( !is_dir($stableDir . $hash) ) {
@@ -376,7 +376,7 @@ class Revisionreview extends SpecialPage
     			}
     		} // Try shared repository
 			else if( is_dir($sharedpath) ) {
-    			if( is_file("{$sharedpath}{$name}") ) {
+    			if( file_exists("{$sharedpath}{$name}") ) {
     				// Check if our stable dir exists
     				// Make it if it doesn't
     				if( !is_dir($stableDir . $hash) ) {
@@ -417,7 +417,7 @@ class Revisionreview extends SpecialPage
     		$path = $stableDir . $hash;
     		// Try the stable repository
     		if ( is_dir($path) ) {
-    			if ( is_file("{$path}{$name}") ) {
+    			if ( file_exists("{$path}{$name}") ) {
     				// Delete!
     				delete("{$path}{$name}");
     				$deletedimages[] = $name;
@@ -440,7 +440,7 @@ class Revisionreview extends SpecialPage
 		if ( !is_array($thumblist) ) return false;
     	foreach ( $thumblist as $name => $width ) {
     		$thumburl = "{$wgUploadDirectory}/stable/thumb" . wfGetHashPath( $name, false ) . "$name/". $width."px-".$name;
-			if ( is_file($thumburl) ) {
+			if ( file_exists($thumburl) ) {
     			unlink($thumburl);
     		}
     	}
