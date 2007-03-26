@@ -37,39 +37,45 @@ function wfNewuserlog() {
 	$wgLogActions['newusers/newusers'] = 'newuserlogentry';
 	$wgLogActions['newusers/create']   = 'newuserlog-create-entry';
 	$wgLogActions['newusers/create2']  = 'newuserlog-create2-entry';
-	
+
 	# Run this hook on new account creation
 	global $wgHooks;
 	$wgHooks['AddNewAccount'][] = 'wfNewuserlogHook';
 }
 
 function wfNewuserlogHook( $user ) {
-	global $wgUser, $wgContLang;
-	
+	global $wgUser, $wgContLang, $wgVersion;
+
 	if( is_null( $user ) ) {
 		// Compatibility with old versions which didn't pass the parameter
 		$user = $wgUser;
 	}
-	
+
 	$talk = $wgContLang->getFormattedNsText( NS_TALK );
 	$contribs = wfMsgForContent( 'contribslink' );
 	$block = wfMsgForContent( 'blocklink' );
-	
+
 	if( $user->getName() == $wgUser->getName() ) {
-		$action = 'create';
 		$message = '';
+		$action = 'create';
 	} else {
-		$action = 'create2';
-		
 		// Links not necessary for self-creations, they will appear already in
 		// recentchanges and special:log view for the creating user.
-		$message = wfMsgForContent( 'newuserlog-create-text',
-			$user->getName(), $talk, $contribs, $block );
+		// For compatability: From 1.10alpha the 'user tools' are used at special:log
+		// see bug 4756: Long usernames break block link in new user log entries
+
+		$action = 'create2';
+		if ( version_compare( $wgVersion, '1.10alpha', '>=' ) ) {
+			$message = '';
+		} else {
+			$message = wfMsgForContent( 'newuserlog-create-text',
+				$user->getName(), $talk, $contribs, $block );
+		}
 	}
-	
+
 	$log = new LogPage( 'newusers' );
 	$log->addEntry( $action, $user->getUserPage(), $message );
-	
+
 	return true;
 }
 ?>

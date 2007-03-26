@@ -13,7 +13,7 @@ $wgNewuserlogMessages['en'] = array(
 	'newuserlogentry'          => '', # For compatibility, don't translate this
 	'newuserlog-create-entry'  => 'New user',
 	'newuserlog-create2-entry' => 'created account for $1',
-	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # Don't translate this
+	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # For compatibility <= MW 1.9, don't translate this
 );
 $wgNewuserlogMessages['cs'] = array(
 	'newuserlogpage'           => 'Kniha nových uživatelů',
@@ -119,25 +119,20 @@ $wgNewuserlogMessages['sk'] = array(
 	'newuserlogpagetext'       => 'Toto je záznam naposledy vytvorených používateľských účtov',
 	'newuserlog-create-entry'  => 'Nový používateľ',
 	'newuserlog-create2-entry' => 'Bol vytvorený účet pre $1',
-	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # Don't translate this
 );
 
 $wgNewuserlogMessages['sr-ec'] = array(
 	'newuserlogpage'           => 'историја креирања корисника',
 	'newuserlogpagetext'       => 'Ово је историја скорашњих креација корисника',
-	'newuserlogentry'          => '', # For compatibility, don't translate this
 	'newuserlog-create-entry'  => 'Нови корисник',
 	'newuserlog-create2-entry' => 'направио налог за $1',
-	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # Don't translate this
 );
 
 $wgNewuserlogMessages['sr-el'] = array(
 	'newuserlogpage'           => 'istorija kreiranja korisnika',
 	'newuserlogpagetext'       => 'Ovo je istorija skorašnjih kreacija korisnika',
-	'newuserlogentry'          => '', # For compatibility, don't translate this
 	'newuserlog-create-entry'  => 'Novi korisnik',
 	'newuserlog-create2-entry' => 'napravio nalog za $1',
-	'newuserlog-create-text'   => "[[User talk:$1|$2]] | [[Special:Contributions/$1|$3]] | [[Special:Blockip/$1|$4]]", # Don't translate this
 );
 $wgNewuserlogMessages['sr'] = $wgNewuserlogMessages['sr-ec'];
 $wgNewuserlogMessages['sv'] = array(
