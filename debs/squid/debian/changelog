@@ -1,3 +1,9 @@
+squid (2.6.12-1wm4) edgy; urgency=low
+
+  * Update COSS rebuild patch to not assert on other wrong tlv lengths.
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 26 Mar 2007 08:21:39 +0000
+
 squid (2.6.12-1wm3) edgy; urgency=low
 
   * Patch COSS to not write to the swap log, as it's unneeded and has bugs.

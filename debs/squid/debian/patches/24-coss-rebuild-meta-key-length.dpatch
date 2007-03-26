@@ -6,9 +6,9 @@
 
 @DPATCH@
 diff -urNad squid-2.6.12~/src/fs/coss/store_dir_coss.c squid-2.6.12/src/fs/coss/store_dir_coss.c
---- squid-2.6.12~/src/fs/coss/store_dir_coss.c	2007-03-03 13:32:44.000000000 +0000
-+++ squid-2.6.12/src/fs/coss/store_dir_coss.c	2007-03-24 16:11:19.000000000 +0000
-@@ -1299,7 +1299,10 @@
+--- squid-2.6.12~/src/fs/coss/store_dir_coss.c	2007-03-26 08:13:10.000000000 +0000
++++ squid-2.6.12/src/fs/coss/store_dir_coss.c	2007-03-26 08:21:21.000000000 +0000
+@@ -1299,21 +1299,33 @@
  		debug(47, 3) ("Size: %" PRINTF_OFF_T " (len %d)\n", *l, t->length);
  		break;
  	    case STORE_META_KEY:
@@ -20,3 +20,29 @@ diff -urNad squid-2.6.12~/src/fs/coss/store_dir_coss.c squid-2.6.12/src/fs/coss/
  		xmemcpy(key, t->value, MD5_DIGEST_CHARS);
  		break;
  #if SIZEOF_SQUID_FILE_SZ == SIZEOF_SIZE_T
+ 	    case STORE_META_STD:
+-		assert(t->length == STORE_HDR_METASIZE);
++		if (t->length != STORE_HDR_METASIZE) {
++		    debug(47, 1) ("COSS: %s: stripe %d: offset %d has invalid STORE_META_STD length. Ignoring object.\n", stripePath(SD), cs->rebuild.curstripe, j);
++		    goto nextobject;
++		}
+ 		xmemcpy(&tmpe.timestamp, t->value, STORE_HDR_METASIZE);
+ 		break;
+ #else
+ 	    case STORE_META_STD_LFS:
+-		assert(t->length == STORE_HDR_METASIZE);
++		if (t->length != STORE_HDR_METASIZE) {
++                    debug(47, 1) ("COSS: %s: stripe %d: offset %d has invalid STORE_META_STD_LFS length. Ignoring object.\n", stripePath(SD), cs->rebuild.curstripe, j);
++		    goto nextobject;
++		}
+ 		xmemcpy(&tmpe.timestamp, t->value, STORE_HDR_METASIZE);
+ 		break;
+ 	    case STORE_META_STD:
+-		assert(t->length == STORE_HDR_METASIZE_OLD);
++		if (t->length != STORE_HDR_METASIZE_OLD) {
++                    debug(47, 1) ("COSS: %s: stripe %d: offset %d has invalid STORE_META_STD length. Ignoring object.\n", stripePath(SD), cs->rebuild.curstripe, j);
++		    goto nextobject;
++		}
+ 		{
+ 		    struct {
+ 			time_t timestamp;
