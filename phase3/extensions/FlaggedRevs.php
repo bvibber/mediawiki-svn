@@ -54,6 +54,8 @@ $wgLogActions['review/approve']  = 'review-logentrygrant';
 $wgLogActions['review/unapprove'] = 'review-logentryrevoke';
 
 class FlaggedRevs {
+	/* 50MB allows fixing those huge pages */
+	const MAX_INCLUDE_SIZE = 50000000;
 
 	function __construct() {
     	$this->dimensions = array( 'accuracy' => array( 0=>'acc-0',
@@ -69,12 +71,53 @@ class FlaggedRevs {
                                              	2=>'style-2',
 											 	3=>'style-3') );
 	}
+	
+    function pageOverride() {
+    	global $wgFlaggedRevsAnonOnly, $wgUser;
+    	return !( $wgFlaggedRevsAnonOnly && !$wgUser->isAnon() );
+    }
+	
+    function getFlaggedRevision( $rev_id ) {
+ 		$db = wfGetDB( DB_SLAVE );
+ 		// select a row, this should be unique
+		$result = $db->select( 'flaggedrevs', array('*'), array('fr_rev_id' => $rev_id) );
+		if ( $row = $db->fetchObject($result) ) {
+			return $row;
+		}
+        return NULL;
+    }
+    
+    function getFlaggedRevText( $rev_id ) {
+ 		$db = wfGetDB( DB_SLAVE );
+ 		// select a row, this should be unique
+		$result = $db->select( 'flaggedcache', array('fc_cache'), array('fc_rev_id' => $rev_id) );
+		if ( $row = $db->fetchObject($result) ) {
+			return $row->fc_cache;
+		}
+        return NULL;
+    }
+    
+	/**
+	 * @param string $text
+	 * @returns string
+	 * All included pages are expanded out to keep this text frozen
+	 */
+    function expandText( $text ) {
+    	global $wgParser, $wgTitle;
+    	// Do not treat this as paring an article on normal view
+    	// enter the title object as wgTitle
+    	$options = new ParserOptions;
+		$options->setRemoveComments( true );
+		$options->setMaxIncludeSize( self::MAX_INCLUDE_SIZE );
+		$output = $wgParser->preprocess( $text, $wgTitle, $options );
+		return $output;
+	}
 
     function getFlagsForRevision( $rev_id ) {
     	// Set default blank flags
     	$flags = array( 'accuracy' => 0, 'depth' => 0, 'style' => 0 );
 
- 		$db = wfGetDB( DB_MASTER );
+ 		$db = wfGetDB( DB_SLAVE );
  		// select a row, this should be unique
 		$result = $db->select( 'flaggedrevs', array('*'), array('fr_rev_id' => $rev_id) );
 		if ( $row = $db->fetchObject($result) ) {
@@ -83,7 +126,9 @@ class FlaggedRevs {
         return $flags;
     }
 
-    function getLatestRev( $page_id ) {   
+    function getLatestFlaggedRev( $page_id ) {   
+    	# Call getReviewedRevs(),
+    	# this will prune things out if needed
 		if ( $row = $this->getReviewedRevs($page_id) ) {
 			return $row[0];
 		}
@@ -105,17 +150,19 @@ class FlaggedRevs {
         while ( $row = $db->fetchObject( $result ) ) {
             // Purge deleted revs from flaggedrev table
             if ( $row->rev_deleted ) {
-        		$cache_text = $this->expandText( $row->fr_cache );
-				$db->delete( 'flaggedrevs', array( 'fr_rev_id' => $rev->getId ) );
+        		$cache_text = $this->expandText( $this->getFlaggedRevText( $row->fr_rev_id ) );
+				$db->delete( 'flaggedrevs', array( 'fr_rev_id' => $row->rev_id ) );
 				// Delete stable images if needed
-				$images = $this->findLocalImages( $cache_text );
+				list($images,$thumbs) = $this->findLocalImages( $cache_text );
 				$copies = $this->deleteStableImages( $images );
 				// Update stable image table
 				$this->removeStableImages( $row->rev_id, $copies );
+				$this->deleteStableThumbnails( $thumbs );
 				// Clear cache...
 				$this->updatePage( Title::newFromID($page_id) );
+            } else {
+            	$rows[] = $row;
             }
-            $rows[] = $row;
         }
         return $rows;
     }
@@ -132,11 +179,6 @@ class FlaggedRevs {
 			array('ORDER BY' => 'rev_id DESC') );
 		// Return count of revisions
         return $db->numRows($result);
-    }
-    
-    function pageOverride() {
-    	global $wgFlaggedRevsAnonOnly, $wgUser;
-    	return !( $wgFlaggedRevsAnonOnly && !$wgUser->isAnon() );
     }
 
     function setPageContent( &$out ) {
@@ -157,7 +199,7 @@ class FlaggedRevs {
 		// Set new body html text as that of now
 		$flaghtml = ''; $newbodytext = $out->mBodytext;
 		// Check the newest stable version
-		$top_frev = $this->getLatestRev( $wgArticle->getId() );
+		$top_frev = $this->getLatestFlaggedRev( $wgArticle->getId() );
 		if ( $wgRequest->getVal('diff') ) {
 		// Do not clutter up diffs any further...
 		} else if ( $top_frev ) {
@@ -176,25 +218,40 @@ class FlaggedRevs {
 					$diff = ($revid > $top_frev->fr_rev_id) ? $revid : $top_frev->fr_rev_id;
 					$flaghtml = wfMsgExt('revreview-newest', array('parse'), $top_frev->fr_rev_id, $oldid, $diff, $time );
 				}
-            } # Viewing the page normally
+            } # Viewing the page normally: override the page
 			else {
-				global $wgUser, $wgUploadDirectory;
-        		// We will be looking at the reviewed revision...
+				global $wgUser, $wgUploadDirectory, $wgUseSharedUploads, $wgUploadPath;
+        		# We will be looking at the reviewed revision...
         		$visible_id = $top_frev->fr_rev_id;
         		$revs_since = $this->getUnreviewedRevCount( $wgArticle->getId(), $visible_id );
         		$flaghtml = wfMsgExt('revreview-replaced', array('parse'), $visible_id, $wgArticle->getLatest(), $revs_since, $time );		
-				# Hack...temporarily change image dir
+				
+				# Hack...temporarily change image directories
+				# There is no nice option to set this for each parse
 				# This lets the parser know where to look...
+				$uploadPath = $wgUploadPath;
 				$uploadDir = $wgUploadDirectory;
-				$wgUploadDirectory = "{$wgUploadDirectory}/stable";
+				$useSharedUploads = $wgUseSharedUploads;
+				# Stable thumbnails need to have the right path
+				$wgUploadPath = ($wgUploadPath) ? "{$uploadPath}/stable" : false;
+				# Create <img> tags with the right url
+				$wgUploadDirectory = "{$uploadDir}/stable";
+				# Stable images are never stored at commons
+				$wgUseSharedUploads = false;
+				
 				$parse_ops = ParserOptions::newFromUser($wgUser);
 				# Don't show section-edit links
+				# They can be old and misleading
 				$parse_ops->setEditSection( false );
-				// Parse the new body, wikitext -> html
-       			$newbody = $wgParser->parse( $top_frev->fr_cache, $wgTitle, $parse_ops );
+				# Parse the new body, wikitext -> html
+				$text = $this->getFlaggedRevText( $top_frev->fr_rev_id );
+       			$newbody = $wgParser->parse( $text, $wgTitle, $parse_ops );
        			$newbodytext = $newbody->getText();
-       			// Reset image dir
+       			
+       			# Reset image directories
+       			$wgUploadPath = $uploadPath;
        			$wgUploadDirectory = $uploadDir;
+       			$wgUseSharedUploads = $useSharedUploads;
             }
             // Construct some tagging
             $flaghtml .= "<table align='center' cellspadding=\'0\'><tr>";
@@ -205,7 +262,8 @@ class FlaggedRevs {
             $flaghtml .= '</tr></table>';
             // Should use CSS?
             $flaghtml = "<small>$flaghtml</small>";
-            // Copy over the old body
+            
+            // Set the new body HTML! and place the tag on top
             $out->mBodytext = '<div class="mw-warning plainlinks">' . $flaghtml . '</div>' . $newbodytext;
         } else {
         	$flaghtml = wfMsgExt('revreview-noflagged', array('parse'));
@@ -216,7 +274,11 @@ class FlaggedRevs {
         // Show review links for the VISIBLE revision
         // We cannot review deleted revisions
         if ( is_object($wgArticle->mRevision) && $wgArticle->mRevision->mDeleted ) return;
-		$this->addQuickReview( $visible_id, false, $out );
+        // Add quick review links IF we did not override, otherwise, they might
+        // review a revision that parses out newer templates/images than what they say
+        // Note: overrides are never done when viewing with "oldid="
+        if ( $visible_id==$revid || !$this->pageOverride() )
+			$this->addQuickReview( $visible_id, false, $out );
     }
     
     function addToEditView( &$editform ) {
@@ -235,7 +297,7 @@ class FlaggedRevs {
 		// Set new body html text as that of now
 		$flaghtml = '';
 		// Check the newest stable version
-		$top_frev = $this->getLatestRev( $editform->mArticle->getId() );
+		$top_frev = $this->getLatestFlaggedRev( $editform->mArticle->getId() );
 		if ( is_object($top_frev) ) {
 			global $wgParser, $wgLang;		
 			$time = $wgLang->timeanddate( wfTimestamp(TS_MW, $top_frev->fr_timestamp), true );
@@ -253,7 +315,7 @@ class FlaggedRevs {
             } # Editing the page normally   
         	else {
 				if ( $revid==$top_frev->rev_id )
-					$flaghtml = wfMsgExt('revreview-isnewest', array('parse'));
+					$flaghtml = wfMsgExt('revreview-isnewest', array('parse'), $time);
 				else
 					$flaghtml = wfMsgExt('revreview-newest', array('parse'), $top_frev->fr_rev_id, $top_frev->fr_rev_id, $revid, $time );
             }
@@ -286,7 +348,7 @@ class FlaggedRevs {
         // If we are viewing a page normally, and it was overrode
         // change the edit tab to a "current revision" tab
         if ( !$wgRequest->getVal('oldid') ) {
-        	$top_frev = $this->getLatestRev( $wgArticle->getId() );
+        	$top_frev = $this->getLatestFlaggedRev( $wgArticle->getId() );
         	// Note that revisions may not be set to override for users
         	if ( is_object($top_frev) && $this->pageOverride() ) {
         		# Remove edit option altogether

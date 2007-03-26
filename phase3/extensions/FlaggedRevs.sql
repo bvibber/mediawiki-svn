@@ -1,4 +1,5 @@
--- (c) Joerg Baach
+-- (c) Joerg Baach, Aaron Schulz, 2007
+
 -- Table structure for table `revisiontags`
 -- This stores expanded revision wikitext caches
 -- along with rating/user/notes data
@@ -6,7 +7,6 @@ CREATE TABLE /*$wgDBprefix*/flaggedrevs (
   fr_id int(10) NOT NULL auto_increment,
   fr_page_id int(10) NOT NULL,
   fr_rev_id int(10) NOT NULL,
-  fr_cache mediumblob NOT NULL default '',
   fr_acc int(2) NOT NULL,
   fr_dep int(2) NOT NULL,
   fr_sty int(2) NOT NULL,
@@ -18,7 +18,17 @@ CREATE TABLE /*$wgDBprefix*/flaggedrevs (
   UNIQUE KEY (fr_id),
   INDEX fr_page_rev (fr_page_id,fr_rev_id),
   INDEX fr_acc_dep_sty (fr_acc,fr_dep,fr_sty)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COMMENT='Revision Tags Extension' AUTO_INCREMENT=0;
+) TYPE=InnoDB;
+
+-- This stores cached, expanded revisions text
+CREATE TABLE /*$wgDBprefix*/flaggedcache (
+  fc_id int(10) NOT NULL auto_increment,
+  fc_rev_id int(10) NOT NULL,
+  fc_cache mediumblob NOT NULL default '',
+
+  PRIMARY KEY fc_rev_id (fc_rev_id),  
+  UNIQUE KEY (fc_id)
+) TYPE=InnoDB;
 
 -- This stores image usage for the stable image directory
 -- along with rating/user/notes data

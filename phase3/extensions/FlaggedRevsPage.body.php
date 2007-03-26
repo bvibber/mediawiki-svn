@@ -8,8 +8,6 @@ require_once( "$IP/includes/SpecialLog.php" );
 
 class Revisionreview extends SpecialPage
 {
-	/* 50MB allows fixing those huge pages */
-	const MAX_INCLUDE_SIZE = 50000000;
 
     function Revisionreview() {
         SpecialPage::SpecialPage('Revisionreview', 'review');
@@ -124,7 +122,7 @@ class Revisionreview extends SpecialPage
 		}
 		$form .= '</td></tr></table></fieldset>';
 		
-		$images = $this->findLocalImages( $this->expandText( $rev->getText() ) );
+		list($images,$thumbs) = $this->findLocalImages( FlaggedRevs::expandText( $rev->getText() ) );
 		if ( $images ) {
 			$form .= wfMsg('revreview-images') . "\n";
 			$form .= "<ul>";
@@ -213,12 +211,11 @@ class Revisionreview extends SpecialPage
         $user = $wgUser->getId();
         $timestamp = wfTimestampNow();
         
-        $cache_text = $this->expandText( $rev->getText() );
+        $cache_text = FlaggedRevs::expandText( $rev->getText() );
 		// Add or update entry for this revision
  		$set = array(
  			'fr_page_id' => $rev->getPage(),
 			'fr_rev_id' => $rev->getId(),
-			'fr_cache' => $cache_text,
 			'fr_acc' => $this->dimensions['accuracy'],
 			'fr_dep' => $this->dimensions['depth'],
 			'fr_sty' => $this->dimensions['style'],
@@ -226,12 +223,17 @@ class Revisionreview extends SpecialPage
 			'fr_timestamp' => $timestamp,
 			'fr_comment'=> $this->notes
 		);
+		$set2 = array('fc_rev_id' => $rev->getId(), 'fc_cache' => $cache_text);
+		// Update flagrevisions table
 		$db->replace( 'flaggedrevs', array( array('fr_page_id','fr_rev_id') ), $set, __METHOD__ );
+		// Store/update the text
+		$db->replace( 'flaggedcache', array('fc_rev_id'), $set2, __METHOD__ );
 		// Update the article review log
 		$this->updateLog( $this->page, $this->dimensions, $this->comment, $this->oldid, true );
 		// Clone images to stable dir
-		$images = $this->findLocalImages( $cache_text );
+		list($images,$thumbs) = $this->findLocalImages( $cache_text );
 		$copies = $this->makeStableImages( $images );
+		$this->deleteStableThumbnails( $thumbs );
 		// Update stable image table
 		$this->insertStableImages( $rev->getId(), $copies );
 		// Clear cache...
@@ -250,14 +252,22 @@ class Revisionreview extends SpecialPage
         $db = wfGetDB( DB_MASTER );
         $user = $wgUser->getId();
         $timestamp = wfTimestampNow();
-
-		$cache_text = $this->expandText( $rev->getText() );
+		// get the flagged revision to access its cache text
+		$frev = FlaggedRevs::getFlaggedRevision( $rev->getId );
+		if( !$frev ) {
+		// This shouldn't happen...
+			return;
+		}
 		$db->delete( 'flaggedrevs', array( 'fr_rev_id' => $rev->getId ) );
 		// Update the article review log
 		$this->updateLog( $this->page, $this->dimensions, $this->comment, $this->oldid, false );
+		
+		$cache_text = FlaggedRevs::getFlaggedRevText( $rev->getId ) ;
 		// Delete stable images if needed
-		$images = $this->findLocalImages( $cache_text );
+		list($images,$thumbs) = $this->findLocalImages( $cache_text );
 		$copies = $this->deleteStableImages( $images );
+		// Stable versions must remake this thumbnail
+		$this->deleteStableThumbnails( $thumbs );
 		// Update stable image table
 		$this->removeStableImages( $rev->getId(), $copies );
 		// Clear cache...
@@ -274,31 +284,17 @@ class Revisionreview extends SpecialPage
 	function updatePage( $title ) {
 		$title->invalidateCache();
 	}
-  
-	/**
-	 * @param string $text
-	 * @returns string
-	 * All included pages are expanded out to keep this text frozen
-	 */
-    function expandText( $text ) {
-    	global $wgParser, $wgTitle;
-    	// Do not treat this as paring an article on normal view
-    	// enter the title object as wgTitle
-    	$options = new ParserOptions;
-		$options->setRemoveComments( true );
-		$options->setMaxIncludeSize( self::MAX_INCLUDE_SIZE );
-		$output = $wgParser->preprocess( $text, $wgTitle, $options );
-		return $output;
-	}
 
 	/**
 	* Get all local image files and generate an array of them
 	* @param string $s, wikitext
-	* $output array, string titles
-	*/	
+	* $output array, (string title array, string thumbnail array)
+	*/
     function findLocalImages( $s ) {
+    	global $wgUploadPath;
+    	
     	$fname = 'findLocalImages';
-    	$imagelist = array();
+    	$imagelist = array(); $thumblist = array();
     	
     	if ( !$s || !strval($s) ) return $imagelist;
 
@@ -313,25 +309,39 @@ class Revisionreview extends SpecialPage
 		$e1_img = "/^([:{$tc}]+)(.+)$/sD";
 		# Loop for each link
 		for ($k = 0; isset( $a[$k] ); $k++) {
-			if ( preg_match( $e1_img, $a[$k], $m ) ) { 
+			if( preg_match( $e1_img, $a[$k], $m ) ) { 
 				# page with normal text or alt of form x or ns:x
 				$nt = Title::newFromText( $m[1] );
 				$ns = $nt->getNamespace();
 				# add if this is an image
-				if ( $ns == NS_IMAGE )
+				if( $ns == NS_IMAGE ) {
 					$imagelist[] = $nt->getPrefixedText();
+				}
+				$image = $nt->getDBKey();
+				# check for data for thumbnails
+				$part = array_map( 'trim', explode( '|', $m[2]) );
+				foreach( $part as $val ) {
+					if( preg_match( '/^([0-9]+)px$/', $val, $n ) ) {
+						$width = intval( $n[1] );
+						$thumblist[$image] = $width;
+					} else if( preg_match( '/^([0-9]+)x([0-9]+)(px|)$/', $val, $n ) ) {
+						$width = intval( $n[1] );
+						$thumblist[$image] = $width;
+					}
+				}
 			}
 		}
-		return $imagelist;
+		return array( $imagelist, $thumblist );
     }
 
 	/**
 	* Showtime! Copy all used images to a stable directory
-	* Get all local image files and generate an array of them
+	* This updates (overwrites) any existing stable images
+	* Won't work for sites with unhashed dirs that have subfolders protected
 	* The future FileStore migration might effect this, not sure...
 	* @param array $imagelist, list of string names
 	* $output array, list of string names of images sucessfully cloned
-	*/	   
+	*/
     function makeStableImages( $imagelist ) {
     	global $wgUploadDirectory, $wgSharedUploadDirectory;
     	// All stable images are local, not shared
@@ -361,7 +371,6 @@ class Revisionreview extends SpecialPage
     				if( !is_dir($stableDir . $hash) ) {
     					wfMkdirParents($stableDir . $hash);
     				}
-    				// Copy over our files
     				copy("{$path}{$name}","{$stableDir}{$hash}{$name}");
     				$usedimages[] = $name;
     			}
@@ -385,9 +394,9 @@ class Revisionreview extends SpecialPage
 	* Delete an a list of stable image files
 	* @param array $imagelist, list of string names
 	* $output array, list of string names of images to be deleted
-	*/	   
+	*/
     function deleteStableImages( $imagelist ) {
-    	global $wgUploadDirectory, $wgSharedUploadDirectory;
+    	global $wgSharedUploadDirectory;
     	// All stable images are local, not shared
     	// Otherwise, we could have some nasty cross language/wiki conflicts
     	$stableDir = "$wgUploadDirectory/stable";
@@ -416,6 +425,26 @@ class Revisionreview extends SpecialPage
     		}
     	}
     	return $deletedimages;
+    }
+
+	/**
+	* Delete an a list of stable image thumbnails
+	* New thumbnails don't normally override old ones, causing outdated images
+	* This allows for tagged revisions to be re-reviewed with newer images
+	* @param array $imagelist, list of string names
+	* $output array, list of string names of images to be deleted
+	*/ 
+	function deleteStableThumbnails( $thumblist ) {
+		global $wgUploadDirectory;
+		// We need valid input
+		if ( !is_array($thumblist) ) return false;
+    	foreach ( $thumblist as $name => $width ) {
+    		$thumburl = "{$wgUploadDirectory}/stable/thumb" . wfGetHashPath( $name, false ) . "$name/". $width."px-".$name;
+			if ( is_file($thumburl) ) {
+    			unlink($thumburl);
+    		}
+    	}
+    	return true;
     }
 
 	/**
