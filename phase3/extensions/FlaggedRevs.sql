@@ -1,6 +1,8 @@
 -- (c) Joerg Baach, Aaron Schulz, 2007
 
 -- Table structure for table `revisiontags`
+-- Replace /*$wgDBprefix*/ with the proper prefix
+
 -- This stores expanded revision wikitext caches
 -- along with rating/user/notes data
 CREATE TABLE /*$wgDBprefix*/flaggedrevs (
@@ -20,18 +22,18 @@ CREATE TABLE /*$wgDBprefix*/flaggedrevs (
   INDEX fr_acc_dep_sty (fr_acc,fr_dep,fr_sty)
 ) TYPE=InnoDB;
 
--- This stores cached, expanded revisions text
-CREATE TABLE /*$wgDBprefix*/flaggedcache (
-  fc_id int(10) NOT NULL auto_increment,
-  fc_rev_id int(10) NOT NULL,
-  fc_cache mediumblob NOT NULL default '',
+-- This stores expanded (transclusions resolved) revision text
+CREATE TABLE /*$wgDBprefix*/flaggedtext (
+  ft_id int(10) NOT NULL auto_increment,
+  ft_rev_id int(10) NOT NULL,
+  ft_text mediumblob NOT NULL default '',
 
-  PRIMARY KEY fc_rev_id (fc_rev_id),  
-  UNIQUE KEY (fc_id)
+  PRIMARY KEY ft_id (ft_id),
+  UNIQUE KEY ft_rev_id (ft_rev_id)
 ) TYPE=InnoDB;
 
 -- This stores image usage for the stable image directory
--- along with rating/user/notes data
+-- Used for scripts that clear out unused images
 CREATE TABLE /*$wgDBprefix*/flaggedimages (
   fi_id int(10) NOT NULL auto_increment,
   fi_name varchar(255) NOT NULL,
@@ -40,4 +42,13 @@ CREATE TABLE /*$wgDBprefix*/flaggedimages (
   PRIMARY KEY (fi_name,fi_rev_id),
   UNIQUE KEY (fi_id),
   INDEX fi_name (fi_name)
+) TYPE=InnoDB;
+
+-- This stores cached text for page view
+CREATE TABLE /*$wgDBprefix*/flaggedcache (
+  fc_page_id int(10) NOT NULL,
+  fc_cache mediumblob NOT NULL default '',
+  fc_date char(14) NOT NULL,
+
+  PRIMARY KEY fc_page_id (fc_page_id)
 ) TYPE=InnoDB;

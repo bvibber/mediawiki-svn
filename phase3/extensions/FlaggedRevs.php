@@ -90,9 +90,9 @@ class FlaggedRevs {
     function getFlaggedRevText( $rev_id ) {
  		$db = wfGetDB( DB_SLAVE );
  		// select a row, this should be unique
-		$result = $db->select( 'flaggedcache', array('fc_cache'), array('fc_rev_id' => $rev_id) );
+		$result = $db->select( 'flaggedtext', array('ft_text'), array('ft_rev_id' => $rev_id) );
 		if( $row = $db->fetchObject($result) ) {
-			return $row->fc_cache;
+			return $row->ft_text;
 		}
         return NULL;
     }
@@ -159,7 +159,8 @@ class FlaggedRevs {
 				$this->removeStableImages( $row->rev_id, $copies );
 				$this->purgeStableThumbnails( $thumbs );
 				// Clear cache...
-				$this->updatePage( Title::newFromID($page_id) );
+				$title = newFromID($page_id);
+				$title->invalidateCache();
             } else {
             	$rows[] = $row;
             }
@@ -196,19 +197,18 @@ class FlaggedRevs {
 		# Stable images are never stored at commons
 		$wgUseSharedUploads = false;
 		
+		$options->setTidy(true);
 		# Don't show section-edit links
 		# They can be old and misleading
 		$options->setEditSection(false);
 		# Parse the new body, wikitext -> html
        	$parserOut = $wgParser->parse( $text, $title, $options, true, true, $id );
-       	if ( !$returnHTML ) 
+       	if ( !$returnHTML )
 		   return $parserOut;
 
        	$HTMLout = $parserOut->getText();
-       	# goddamn hack...
-       	# Thumbnails are stored based on width, don't do any unscaled resizing
-       	# This is needed b/c MW will add height as what the current image entry has in the db
-       	$HTMLout = preg_replace( '/(<IMG[^<>]+ )height="\d+" ([^<>]+>)/i','$1$2', $HTMLout);
+       	# hack...
+		$HTMLout = $this->proportionalImgScaling($HTMLout);
        			
        	# Reset our image directories
        	$wgUploadPath = $uploadPath;
@@ -217,6 +217,14 @@ class FlaggedRevs {
        	
        	return $HTMLout;
     }
+   
+    function proportionalImgScaling( $text ) {
+       	# goddamn hack...
+       	# Thumbnails are stored based on width, don't do any unscaled resizing
+       	# MW will add height/width based on the metadata in the db for the current image
+		$text = preg_replace( '/(<img[^<>]+ )height="\d+" ([^<>]+>)/i','$1$2', $text);
+		return $text;
+	}
 
     function setPageContent( &$out ) {
         global $wgArticle, $wgRequest, $wgTitle, $wgOut, $action;
@@ -259,11 +267,23 @@ class FlaggedRevs {
         		$visible_id = $top_frev->fr_rev_id;
         		$revs_since = $this->getUnreviewedRevCount( $wgArticle->getId(), $visible_id );
         		$flaghtml = wfMsgExt('revreview-replaced', array('parse'), $visible_id, $wgArticle->getLatest(), $revs_since, $time );		
-				
-				$text = $this->getFlaggedRevText( $visible_id );
-				# Parsing this text is kind of funky...
-				$options = ParserOptions::newFromUser($wgUser);
-       			$newbodytext = $this->parseStableText( $wgTitle, $text, $visible_id, $options );
+				$newbodytext = NULL;
+				# Try the stable cache for non-users
+				# Users have skin prefs and this caching won't work
+				if ( $wgUser->isAnon() ) {
+					$newbodytext = $this->getPageCache( $wgArticle );
+				}
+				# If no cache is available, get the text and parse it
+				if ( is_null($newbodytext) ) {
+					$text = $this->getFlaggedRevText( $visible_id );
+					# For anons, use standard prefs, for users, get theirs
+					$options = ( $wgUser->isAnon() ) ? new ParserOptions() : ParserOptions::newFromUser($wgUser);
+					# Parsing this text is kind of funky...
+       				$newbodytext = $this->parseStableText( $wgTitle, $text, $visible_id, $options );
+       				# Update the general cache for non-users
+       				if ( $wgUser->isAnon() )
+       					$this->updatePageCache( $wgArticle, $newbodytext );
+       			}
             }
             // Construct some tagging
             $flaghtml .= "<table align='center' cellspadding=\'0\'><tr>";
@@ -271,12 +291,12 @@ class FlaggedRevs {
 				$value = wfMsgHtml('revreview-' . $this->dimensions[$quality][$flags[$quality]]);
 				$flaghtml .= "<td>&nbsp;<strong>" . wfMsgHtml("revreview-$quality") . "</strong>: $value&nbsp;</td>\n";    
             }
-            $flaghtml .= '</tr></table>';
-            // Should use CSS?
-            $flaghtml = "<small>$flaghtml</small>";
+			$flaghtml .= '</tr></table>';
+			// Should use CSS?
+			$flaghtml = "<small>$flaghtml</small>";
             
-            // Set the new body HTML! and place the tag on top
-            $out->mBodytext = '<div class="mw-warning plainlinks">' . $flaghtml . '</div>' . $newbodytext;
+			// Set the new body HTML, place a tag on top
+			$out->mBodytext = '<div class="mw-warning plainlinks">' . $flaghtml . '</div>' . $newbodytext;
 			// Add any notes at the bottom
 			$this->addReviewNotes( $top_frev );
         } else {
@@ -671,10 +691,7 @@ class FlaggedRevs {
 				continue;
 			}
 			$imagename = $nt->getDBkey();
- 			$where = array(
-				'fi_rev_id' => $revid,
-				'fi_name' => $imagename,
-			);
+ 			$where = array( 'fi_rev_id' => $revid, 'fi_name' => $imagename );
 			// See how many revisions use this image total...
 			$result = $db->select( 'flaggedimages', array('fi_id'), array( 'fi_name' => $imagename ) );
 			// If only one, then delete the image
@@ -686,6 +703,43 @@ class FlaggedRevs {
 			$db->delete( 'flaggedimages', $where );
 		}
 		$this->deleteStableImages( $unusedimages );
+		return true;
+    }
+    
+    function getPageCache( $article ) {
+    	wfProfileIn( __METHOD__ );
+    	
+    	// Make sure it is valid
+    	if ( !$article || !$article->getId() ) return NULL;
+    	$db = wfGetDB( DB_SLAVE );
+    	// Replace the page cache if it is out of date
+    	$result = $db->select(
+			array('flaggedcache'),
+			array('fc_cache'),
+			array('fc_page_id' => $article->getId(), 'fc_date >= ' . $article->getTouched() ),
+			__METHOD__);
+		if ( $row = $db->fetchObject($result) ) {
+			return $row->fc_cache;
+		}
+		return NULL;		
+    }
+    
+    function updatePageCache( $article, $value=NULL ) {
+    	wfProfileIn( __METHOD__ );
+    	
+    	// Make sure it is valid
+    	if ( is_null($value) || !$article || !$article->getId() ) return false;
+    	// Add cache mark
+    	$timestamp = wfTimestampNow();
+    	$value .= "\n<!-- Saved in stable version parser cache for page id #".$article->getId()." with timestamp $timestamp -->";
+    	
+    	$dbw = wfGetDB( DB_MASTER );
+    	// Replace the page cache if it is out of date
+    	$dbw->replace('flaggedcache',
+    		array('fc_page_id'),
+			array('fc_page_id' => $article->getId(), 'fc_cache' => $value, 'fc_date' => $timestamp),
+			__METHOD__);
+		
 		return true;
     }
 }

@@ -40,7 +40,7 @@ $RevisionreviewMessages['en'] = array(
 	
 	'revreview-hist'     => '[reviewed]',
 	
-	'revreview-note'     => '[[User:$1]] made the following notes reviewing this revision:',
+	'revreview-note'     => '[[User:$1]] made the following notes [[Help:Article validation|reviewing]] this revision:',
 
 	'revreview-flag'     => 'Review this revision (#$1):',
 	'revreview-legend'   => 'Rate revision content:',

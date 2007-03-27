@@ -220,11 +220,11 @@ class Revisionreview extends SpecialPage
 			'fr_timestamp' => $timestamp,
 			'fr_comment'=> $this->notes
 		);
-		$set2 = array('fc_rev_id' => $rev->getId(), 'fc_cache' => $cache_text);
+		$set2 = array('ft_rev_id' => $rev->getId(), 'ft_text' => $cache_text);
 		// Update flagrevisions table
 		$db->replace( 'flaggedrevs', array( array('fr_page_id','fr_rev_id') ), $set, __METHOD__ );
 		// Store/update the text
-		$db->replace( 'flaggedcache', array('fc_rev_id'), $set2, __METHOD__ );
+		$db->replace( 'flaggedtext', array('ft_rev_id'), $set2, __METHOD__ );
 		// Update the article review log
 		$this->updateLog( $this->page, $this->dimensions, $this->comment, $this->oldid, true );
 		// Clone images to stable dir
@@ -234,7 +234,7 @@ class Revisionreview extends SpecialPage
 		// Update stable image table
 		FlaggedRevs::insertStableImages( $rev->getId(), $copies );
 		// Clear cache...
-		$this->updatePage( $this->page, $cache_text, $rev->getId() );
+		$this->page->invalidateCache();
         return true;
     }
 
@@ -268,33 +268,9 @@ class Revisionreview extends SpecialPage
 		// Update stable image table
 		FlaggedRevs::removeStableImages( $rev->getId(), $copies );
 		// Clear cache...
-		$this->updatePage( $this->page, NULL, $rev->getId() );
+		$this->page->invalidateCache();
         return true;
     }
-
-	/**
-	 * Touch the page's cache invalidation timestamp; this forces cached
-	 * history views to refresh, so any newly hidden or shown fields will
-	 * update properly. Try to parse and cache the page.
-	 * @param Title $title
-	 * @param string $text
-	 * @param int $id
-	 */
-	function updatePage( $title, $text=NULL, $id ) {
-		global $wgParser, $wgUser;
-
-		$title->invalidateCache();
-		if ( !is_null($text) ) {
-			# Set options
-			$options = new ParserOptions();
-			$options->setTidy(true);
-			# Parse the text and try to cache it
-       		$parserOut = FlaggedRevs::parseStableText( $title, $text, $id, $options, false );
-			$parserCache =& ParserCache::singleton();
-			$article = new Article( $title, $id );
-			$parserCache->save( $parserOut, $article, $wgUser );
-		}
-	}
 
 	/**
 	 * Record a log entry on the action
