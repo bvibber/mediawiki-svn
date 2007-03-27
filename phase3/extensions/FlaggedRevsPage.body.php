@@ -122,7 +122,7 @@ class Revisionreview extends SpecialPage
 		}
 		$form .= '</td></tr></table></fieldset>';
 		
-		list($images,$thumbs) = $this->findLocalImages( FlaggedRevs::expandText( $rev->getText() ) );
+		list($images,$thumbs) = FlaggedRevs::findLocalImages( FlaggedRevs::expandText( $rev->getText() ) );
 		if ( $images ) {
 			$form .= wfMsg('revreview-images') . "\n";
 			$form .= "<ul>";
@@ -231,11 +231,11 @@ class Revisionreview extends SpecialPage
 		// Update the article review log
 		$this->updateLog( $this->page, $this->dimensions, $this->comment, $this->oldid, true );
 		// Clone images to stable dir
-		list($images,$thumbs) = $this->findLocalImages( $cache_text );
-		$copies = $this->makeStableImages( $images );
-		$this->deleteStableThumbnails( $thumbs );
+		list($images,$thumbs) = FlaggedRevs::findLocalImages( $cache_text );
+		$copies =FlaggedRevs::makeStableImages( $images );
+		FlaggedRevs::deleteStableThumbnails( $thumbs );
 		// Update stable image table
-		$this->insertStableImages( $rev->getId(), $copies );
+		FlaggedRevs::insertStableImages( $rev->getId(), $copies );
 		// Clear cache...
 		$this->updatePage( $this->page );
         return true;
@@ -264,12 +264,12 @@ class Revisionreview extends SpecialPage
 		
 		$cache_text = FlaggedRevs::getFlaggedRevText( $rev->getId ) ;
 		// Delete stable images if needed
-		list($images,$thumbs) = $this->findLocalImages( $cache_text );
-		$copies = $this->deleteStableImages( $images );
+		list($images,$thumbs) = FlaggedRevs::findLocalImages( $cache_text );
+		$copies = FlaggedRevs::deleteStableImages( $images );
 		// Stable versions must remake this thumbnail
-		$this->deleteStableThumbnails( $thumbs );
+		FlaggedRevs::deleteStableThumbnails( $thumbs );
 		// Update stable image table
-		$this->removeStableImages( $rev->getId(), $copies );
+		FlaggedRevs::removeStableImages( $rev->getId(), $copies );
 		// Clear cache...
 		$this->updatePage( $this->page );
         return true;
@@ -284,236 +284,6 @@ class Revisionreview extends SpecialPage
 	function updatePage( $title ) {
 		$title->invalidateCache();
 	}
-
-	/**
-	* Get all local image files and generate an array of them
-	* @param string $s, wikitext
-	* $output array, (string title array, string thumbnail array)
-	*/
-    function findLocalImages( $s ) {
-    	global $wgUploadPath;
-    	
-    	$fname = 'findLocalImages';
-    	$imagelist = array(); $thumblist = array();
-    	
-    	if ( !$s || !strval($s) ) return $imagelist;
-
-		static $tc = FALSE;
-		# the % is needed to support urlencoded titles as well
-		if ( !$tc ) { $tc = Title::legalChars() . '#%'; }
-		
-		# split the entire text string on occurences of [[
-		$a = explode( '[[', $s );
-		
-		# Ignore things that start with colons, they are image links, not images
-		$e1_img = "/^([:{$tc}]+)(.+)$/sD";
-		# Loop for each link
-		for ($k = 0; isset( $a[$k] ); $k++) {
-			if( preg_match( $e1_img, $a[$k], $m ) ) { 
-				# page with normal text or alt of form x or ns:x
-				$nt = Title::newFromText( $m[1] );
-				$ns = $nt->getNamespace();
-				# add if this is an image
-				if( $ns == NS_IMAGE ) {
-					$imagelist[] = $nt->getPrefixedText();
-				}
-				$image = $nt->getDBKey();
-				# check for data for thumbnails
-				$part = array_map( 'trim', explode( '|', $m[2]) );
-				foreach( $part as $val ) {
-					if( preg_match( '/^([0-9]+)px$/', $val, $n ) ) {
-						$width = intval( $n[1] );
-						$thumblist[$image] = $width;
-					} else if( preg_match( '/^([0-9]+)x([0-9]+)(px|)$/', $val, $n ) ) {
-						$width = intval( $n[1] );
-						$thumblist[$image] = $width;
-					}
-				}
-			}
-		}
-		return array( $imagelist, $thumblist );
-    }
-
-	/**
-	* Showtime! Copy all used images to a stable directory
-	* This updates (overwrites) any existing stable images
-	* Won't work for sites with unhashed dirs that have subfolders protected
-	* The future FileStore migration might effect this, not sure...
-	* @param array $imagelist, list of string names
-	* $output array, list of string names of images sucessfully cloned
-	*/
-    function makeStableImages( $imagelist ) {
-    	global $wgUploadDirectory, $wgSharedUploadDirectory;
-    	// All stable images are local, not shared
-    	// Otherwise, we could have some nasty cross language/wiki conflicts
-    	$stableDir = "$wgUploadDirectory/stable";
-    	// Copy images to stable dir
-    	$usedimages = array();
-    	// We need valid input
-    	if ( !is_array($imagelist) ) return $usedimages;
-    	foreach ( $imagelist as $name ) {
-    		// We want a clean and consistant title entry
-			$nt = Title::newFromText( $name );
-			if ( is_null($nt) ) {
-			// If this title somehow doesn't work, ignore it
-			// this shouldn't happen...
-				continue;
-			}
-			$name = $nt->getDBkey();
-    		$hash = wfGetHashPath($name);
-    		$path = $wgUploadDirectory . $hash;
-    		$sharedpath = $wgSharedUploadDirectory . $hash;
-    		// Try local repository
-    		if( is_dir($path) ) {
-    			if( file_exists("{$path}{$name}") ) {
-    				// Check if our stable dir exists
-    				// Make it if it doesn't
-    				if( !is_dir($stableDir . $hash) ) {
-    					wfMkdirParents($stableDir . $hash);
-    				}
-    				copy("{$path}{$name}","{$stableDir}{$hash}{$name}");
-    				$usedimages[] = $name;
-    			}
-    		} // Try shared repository
-			else if( is_dir($sharedpath) ) {
-    			if( file_exists("{$sharedpath}{$name}") ) {
-    				// Check if our stable dir exists
-    				// Make it if it doesn't
-    				if( !is_dir($stableDir . $hash) ) {
-    					wfMkdirParents($stableDir . $hash);
-    				}
-    				copy("{$path}{$name}","{$stableDir}{$hash}{$name}");
-    				$usedimages[] = $name;
-    			}
-    		}
-    	}
-    	return $usedimages;
-    }
-    
-	/**
-	* Delete an a list of stable image files
-	* @param array $imagelist, list of string names
-	* $output array, list of string names of images to be deleted
-	*/
-    function deleteStableImages( $imagelist ) {
-    	global $wgSharedUploadDirectory;
-    	// All stable images are local, not shared
-    	// Otherwise, we could have some nasty cross language/wiki conflicts
-    	$stableDir = "$wgUploadDirectory/stable";
-    	// Copy images to stable dir
-    	$deletedimages = array();
-    	// We need valid input
-    	if ( !is_array($imagelist) ) return $usedimages;
-    	foreach ( $imagelist as $name ) {
-    	    // We want a clean and consistant title entry
-			$nt = Title::newFromText( $name );
-			if ( is_null($nt) ) {
-			// If this title somehow doesn't work, ignore it
-			// this shouldn't happen...
-				continue;
-			}
-			$name = $nt->getDBkey();
-    		$hash = wfGetHashPath($name);
-    		$path = $stableDir . $hash;
-    		// Try the stable repository
-    		if ( is_dir($path) ) {
-    			if ( file_exists("{$path}{$name}") ) {
-    				// Delete!
-    				delete("{$path}{$name}");
-    				$deletedimages[] = $name;
-    			}
-    		}
-    	}
-    	return $deletedimages;
-    }
-
-	/**
-	* Delete an a list of stable image thumbnails
-	* New thumbnails don't normally override old ones, causing outdated images
-	* This allows for tagged revisions to be re-reviewed with newer images
-	* @param array $imagelist, list of string names
-	* $output array, list of string names of images to be deleted
-	*/ 
-	function deleteStableThumbnails( $thumblist ) {
-		global $wgUploadDirectory;
-		// We need valid input
-		if ( !is_array($thumblist) ) return false;
-    	foreach ( $thumblist as $name => $width ) {
-    		$thumburl = "{$wgUploadDirectory}/stable/thumb" . wfGetHashPath( $name, false ) . "$name/". $width."px-".$name;
-			if ( file_exists($thumburl) ) {
-    			unlink($thumburl);
-    		}
-    	}
-    	return true;
-    }
-
-	/**
-	* Update the stable image usage table
-	* Add some images if not redundant
-	* @param array $imagelist, list of string names
-	* $output bool, on succeed
-	*/	     
-    function insertStableImages( $revid, $imagelist ) {
-		wfProfileIn( __METHOD__ );
-		
-		if ( !is_array($imagelist) ) return false;
-		
-        $db = wfGetDB( DB_MASTER );
-        foreach( $imagelist as $name ) {
-			// We want a clean and consistant title entry
-			$nt = Title::newFromText( $name );
-			if ( is_null($nt) ) {
-			// If this title somehow doesn't work, ignore it
-			// this shouldn't happen...
-				continue;
-			}
-			$imagename = $nt->getDBkey();
-			// Add image and the revision that uses it
- 			$set = array('fi_rev_id' => $revid, 'fi_name' => $imagename);
-			// Add entries or replace any that have the same rev_id
-			$db->replace( 'flaggedimages', array( array('fi_rev_id', 'fi_name') ), $set, __METHOD__ );	
-		}
-		return true;	
-    }
-    
-	/**
-	* Update the stable image usage table
-	* Clean out unused images if needed
-	* @param array $imagelist, list of string names
-	* $output bool, on succeed
-	*/	     
-    function removeStableImages( $revid, $imagelist ) {
-		wfProfileIn( __METHOD__ );
-		
-		if ( !is_array($imagelist) ) return false;
-		$unusedimages = array();
-        $db = wfGetDB( DB_MASTER );
-        foreach( $imagelist as $name ) {
-			// We want a clean and consistant title entry
-			$nt = Title::newFromText( $name );
-			if ( is_null($nt) ) {
-			// If this title somehow doesn't work, ignore it
-			// this shouldn't happen...
-				continue;
-			}
-			$imagename = $nt->getDBkey();
- 			$where = array(
-				'fi_rev_id' => $revid,
-				'fi_name' => $imagename,
-			);
-			// See how many revisions use this image total...
-			$result = $db->select( 'flaggedimages', array('fi_id'), array( 'fi_name' => $imagename ) );
-			// If only one, then delete the image
-			// Since its about to be remove from that one
-			if ( $db->numRows($result)==1 ) {
-				$unusedimages[] = $imagename;
-			}
-			// Clear out this revision's entry
-			$db->delete( 'flaggedimages', $where );
-		}
-		$this->deleteStableImages( $unusedimages );
-		return true;
-    }
 
 	/**
 	 * Record a log entry on the action
