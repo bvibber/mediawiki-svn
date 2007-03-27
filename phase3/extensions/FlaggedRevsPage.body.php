@@ -14,7 +14,12 @@ class Revisionreview extends SpecialPage
     }
 
     function execute( $par ) {
-        global $wgRequest, $wgOut;
+        global $wgRequest, $wgUser, $wgOut, $wgFlaggedRevComments;
+        
+		if( !$wgUser->isAllowed( 'review' ) ) {
+			$wgOut->permissionRequired( 'review' );
+			return;
+		}
 
 		$this->setHeaders();
 		// Our target page
@@ -24,14 +29,13 @@ class Revisionreview extends SpecialPage
 		// Log comment
 		$this->comment = $wgRequest->getText( 'wpReason' );
 		// Additional notes
-		$this->notes = $wgRequest->getIntOrNull('wpNotes');
+		$this->notes = ($wgFlaggedRevComments) ? $wgRequest->getText('wpNotes') : '';
 		// Get our accuracy/quality array
 		$this->dimensions = array();
-        $this->dimensions['accuracy'] = $wgRequest->getIntOrNull('accuracy');
+        $this->dimensions['acc']   =  $wgRequest->getIntOrNull('accuracy');
         $this->dimensions['depth'] = $wgRequest->getIntOrNull('depth');
         $this->dimensions['style'] = $wgRequest->getIntOrNull('style');
 		// Must be a valid page
-		// No non-content pages
 		$this->page = Title::newFromUrl( $this->target );
 		if( is_null($this->page) || is_null($this->oldid) || !$this->page->isContentPage() ) {
 			$wgOut->showErrorPage( $this->page, 'notargettitle', 'notargettext' );
@@ -48,7 +52,7 @@ class Revisionreview extends SpecialPage
 	 * @param webrequest $request
 	 */
 	function showRevision( $request ) {
-		global $wgOut, $wgUser, $wgTitle;
+		global $wgOut, $wgUser, $wgTitle, $wgFlaggedRevComments;
 		
 		$wgOut->addWikiText( wfMsgExt( 'revreview-selected', array('parsemag'), $this->page->getPrefixedText() ) );
 		
@@ -96,14 +100,14 @@ class Revisionreview extends SpecialPage
 		$action = $wgTitle->escapeLocalUrl( 'action=submit' );		
 		$form = "<form name='revisionreview' action='$action' method='post'>";
 		$form .= '<fieldset><legend>' . wfMsgHtml( 'revreview-legend' ) . '</legend><table><tr>';
-		$form .= '<td><strong>' . wfMsgHtml( 'revreview-accuracy' ) . '</strong></td>';
+		$form .= '<td><strong>' . wfMsgHtml( 'revreview-acc' ) . '</strong></td>';
 		$form .= '<td width=\'25\'></td><td><strong>' . wfMsgHtml( 'revreview-depth' ) . '</strong></td>';
 		$form .= '<td width=\'25\'></td><td><strong>' . wfMsgHtml( 'revreview-style' ) . '</strong></td>';
 		$form .= '</tr><tr><td>';
 		foreach( $this->accRadios as $item ) {
 			list( $message, $name, $field ) = $item;
 			$form .= "<div>" .
-				Xml::radio( 'accuracy', $field, ($field==$this->dimensions['accuracy']) ) . ' ' . wfMsgHtml($message) .
+				Xml::radio( 'accuracy', $field, ($field==$this->dimensions['acc']) ) . ' ' . wfMsgHtml($message) .
 				"</div>\n";
 		}
 		$form .= '<td width=\'25\'></td></td><td>';
@@ -133,18 +137,19 @@ class Revisionreview extends SpecialPage
 			$form .= $imglist;
 			$form .= "</ul>\n";
 		}
-		
-		$form .= "<fieldset><legend>" . wfMsgHtml( 'revreview-notes' ) . "</legend>" .
+		if ( $wgFlaggedRevComments ) {
+			$form .= "<fieldset><legend>" . wfMsgHtml( 'revreview-notes' ) . "</legend>" .
 			"<textarea tabindex='1' name='wpNotes' id='wpNotes' rows='3' cols='80' style='width:100%'></textarea>" .	
 			"</fieldset>";
+		}
 		
 		foreach( $items as $item ) {
 			$form .= '<p>' . $item . '</p>';
-		}
-		
+		}	
 		foreach( $hidden as $item ) {
 			$form .= $item;
 		}
+		
 		$form .= '</form>';
 		$wgOut->addHtml( $form );
 	}
@@ -157,33 +162,24 @@ class Revisionreview extends SpecialPage
 		global $wgContLang;
 		$date = $wgContLang->timeanddate( $rev->getTimestamp() );
 		
-		$del = '';
 		$difflink = '(' . $this->skin->makeKnownLinkObj( $this->page, wfMsgHtml('diff'), 
 		'&diff=' . $rev->getId() . '&oldid=prev' ) . ')';
 		
 		$revlink = $this->skin->makeLinkObj( $this->page, $date, 'oldid=' . $rev->getId() );
-	
-		if ( $rev->isDeleted(Revision::DELETED_TEXT) ) {
-			$revlink = '<span class="history-deleted">'.$revlink.'</span>';
-			$del = ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
-			if ( !$rev->userCan(Revision::DELETED_TEXT) ) {
-				$revlink = '<span class="history-deleted">'.$date.'</span>';
-			}
-		}
 		
 		return
-			"<li> $difflink $revlink " . $this->skin->revUserLink( $rev ) . " " . $this->skin->revComment( $rev ) . "$del</li>";
+			"<li> $difflink $revlink " . $this->skin->revUserLink( $rev ) . " " . $this->skin->revComment( $rev ) . "</li>";
 	}
 	
 	function submit( $request ) {
-		global $wgOut, $wgTitle;
+		global $wgOut;
 
 		$rev = Revision::newFromTitle( $this->page, $this->oldid );
 		// Do not mess with deleted revisions
-		if ( $rev->mDeleted ) {
+		if ( is_null($rev) || $rev->mDeleted ) {
 			$wgOut->showErrorPage( 'internalerror', 'badarticleerror' ); 
 			return;
-		}	
+		}
 		$approved = false;
 		# If all values are set to zero, this has been unnapproved
 		foreach( $this->dimensions as $quality => $value ) {
@@ -193,6 +189,8 @@ class Revisionreview extends SpecialPage
 		// Return to our page			
 		if ( $success ) {
         	$wgOut->redirect( $this->page->escapeLocalUrl() );
+		} else {
+			$wgOut->showErrorPage( 'internalerror', 'badarticleerror' ); 
 		}
 	}
 
@@ -202,7 +200,6 @@ class Revisionreview extends SpecialPage
 	 */
 	function approveRevision( $rev=NULL ) {
 		global $wgUser;
-		
 		if( is_null($rev) ) return false;
 
 		wfProfileIn( __METHOD__ );
@@ -216,7 +213,7 @@ class Revisionreview extends SpecialPage
  		$set = array(
  			'fr_page_id' => $rev->getPage(),
 			'fr_rev_id' => $rev->getId(),
-			'fr_acc' => $this->dimensions['accuracy'],
+			'fr_acc' => $this->dimensions['acc'],
 			'fr_dep' => $this->dimensions['depth'],
 			'fr_sty' => $this->dimensions['style'],
 			'fr_user' => $user,
@@ -232,12 +229,12 @@ class Revisionreview extends SpecialPage
 		$this->updateLog( $this->page, $this->dimensions, $this->comment, $this->oldid, true );
 		// Clone images to stable dir
 		list($images,$thumbs) = FlaggedRevs::findLocalImages( $cache_text );
-		$copies =FlaggedRevs::makeStableImages( $images );
-		FlaggedRevs::deleteStableThumbnails( $thumbs );
+		$copies = FlaggedRevs::makeStableImages( $images );
+		FlaggedRevs::purgeStableThumbnails( $thumbs );
 		// Update stable image table
 		FlaggedRevs::insertStableImages( $rev->getId(), $copies );
 		// Clear cache...
-		$this->updatePage( $this->page );
+		$this->updatePage( $this->page, $cache_text, $rev->getId() );
         return true;
     }
 
@@ -253,10 +250,10 @@ class Revisionreview extends SpecialPage
         $user = $wgUser->getId();
         $timestamp = wfTimestampNow();
 		// get the flagged revision to access its cache text
-		$frev = FlaggedRevs::getFlaggedRevision( $rev->getId );
+		$frev = FlaggedRevs::getFlaggedRevision( $rev->getId() );
 		if( !$frev ) {
-		// This shouldn't happen...
-			return;
+		// Quitly ignore this...
+			return true;
 		}
 		$db->delete( 'flaggedrevs', array( 'fr_rev_id' => $rev->getId ) );
 		// Update the article review log
@@ -267,22 +264,36 @@ class Revisionreview extends SpecialPage
 		list($images,$thumbs) = FlaggedRevs::findLocalImages( $cache_text );
 		$copies = FlaggedRevs::deleteStableImages( $images );
 		// Stable versions must remake this thumbnail
-		FlaggedRevs::deleteStableThumbnails( $thumbs );
+		FlaggedRevs::purgeStableThumbnails( $thumbs );
 		// Update stable image table
 		FlaggedRevs::removeStableImages( $rev->getId(), $copies );
 		// Clear cache...
-		$this->updatePage( $this->page );
+		$this->updatePage( $this->page, NULL, $rev->getId() );
         return true;
     }
 
 	/**
 	 * Touch the page's cache invalidation timestamp; this forces cached
 	 * history views to refresh, so any newly hidden or shown fields will
-	 * update properly.
+	 * update properly. Try to parse and cache the page.
 	 * @param Title $title
+	 * @param string $text
+	 * @param int $id
 	 */
-	function updatePage( $title ) {
+	function updatePage( $title, $text=NULL, $id ) {
+		global $wgParser, $wgUser;
+
 		$title->invalidateCache();
+		if ( !is_null($text) ) {
+			# Set options
+			$options = new ParserOptions();
+			$options->setTidy(true);
+			# Parse the text and try to cache it
+       		$parserOut = FlaggedRevs::parseStableText( $title, $text, $id, $options, false );
+			$parserCache =& ParserCache::singleton();
+			$article = new Article( $title, $id );
+			$parserCache->save( $parserOut, $article, $wgUser );
+		}
 	}
 
 	/**
@@ -296,19 +307,19 @@ class Revisionreview extends SpecialPage
 	function updateLog( $title, $dimensions, $comment, $oldid, $approve ) {
 		$log = new LogPage( 'review' );
 		// ID, accuracy, depth, style
-		$params = array();
-		$params[] = $oldid;
+		$ratings = array();
 		foreach( $dimensions as $quality => $level ) {
-			$params[] = $level;
+			$ratings[] = wfMsg( "revreview-$quality" ) . ": " . wfMsg("revreview-$quality-$level");
 		}
+		$rating = ($approve) ? ' [' . implode(', ',$ratings). ']' : '';
 		// Append comment with action
 		$action = wfMsgExt('review-logaction', array('parsemag'), $oldid );
-		$comment = ($comment) ? "$action: $comment" : $action; 
+		$comment = ($comment) ? "$action: $comment$rating" : "$action $rating"; 
 			
 		if ( $approve ) {
-			$log->addEntry( 'approve', $title, $comment, $params );
+			$log->addEntry( 'approve', $title, $comment );
 		} else {
-			$log->addEntry( 'unapprove', $title, $comment, $params );
+			$log->addEntry( 'unapprove', $title, $comment );
 		}
 	}
 }

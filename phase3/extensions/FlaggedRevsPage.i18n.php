@@ -21,12 +21,13 @@ $RevisionreviewMessages['en'] = array(
 	([{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=$2}} changes]) awaiting review.',
 
     'revisionreview'     => 'Review revisions',
+    
     'flaggedrevs'        => 'Flagged Revisions',
     'review-logpage'     => 'Article review log',
 	'review-logpagetext' => 'This is a log of changes to revisions\' [[Help:Article validation|approval]] status
 	for content pages.',
-	'review-logentrygrant'   => 'approved a revision of [[$1]]',
-	'review-logentryrevoke'  => 'unapproved a revision of [[$1]]',
+	'review-logentrygrant'   => 'approved [[$1]]',
+	'review-logentryrevoke'  => 'unapproved [[$1]]',
 	'review-logaction'  => 'reviewed revision $1',
 		
 	'revreview-selected' => "Selected revision of '''$1:'''",
@@ -36,14 +37,15 @@ $RevisionreviewMessages['en'] = array(
 	unreviewed content through the page history.",
 	'revreview-images'   => 'Internal images on this page will be copied to the stable image directory and stored 
 	there until no reviewed revisions use them. The following images are transcluded onto this page:',
-
-	'revreview-flag'     => 'Review this revision (#$1):',
 	
 	'revreview-hist'     => '[reviewed]',
+	
+	'revreview-note'     => '[[User:$1]] made the following notes reviewing this revision:',
 
+	'revreview-flag'     => 'Review this revision (#$1):',
 	'revreview-legend'   => 'Rate revision content:',
-	'revreview-notes'    => 'Observations or notes for this page revision:',
-	'revreview-accuracy' => 'Accuracy',
+	'revreview-notes'    => 'Observations or notes to display:',
+	'revreview-acc'      => 'Accuracy',
 	'revreview-acc-0'    => 'Unapproved',
 	'revreview-acc-1'    => 'Not vandalized',
 	'revreview-acc-2'    => 'Accurate',
