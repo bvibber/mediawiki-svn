@@ -22,7 +22,6 @@ $wgTotalViews = -1;
 $wgTotalEdits = -1;
 
 
-global $IP;
 require_once dirname(__FILE__) . '/LogPage.php';
 require_once dirname(__FILE__) . '/normal/UtfNormalUtil.php';
 require_once dirname(__FILE__) . '/XmlFunctions.php';
@@ -240,7 +239,7 @@ function wfLogDBError( $text ) {
 function wfErrorLog( $text, $file ) {
 	wfSuppressWarnings();
 	$exists = file_exists( $file );
-	$size = filesize( $file );
+	$size = $exists ? filesize( $file ) : false;
 	if ( !$exists || ( $size !== false && $size + strlen( $text ) < 0x7fffffff ) ) {
 		error_log( $text, 3, $file );
 	}
@@ -985,6 +984,26 @@ function wfArrayToCGI( $array1, $array2 = NULL )
 }
 
 /**
+ * Append a query string to an existing URL, which may or may not already
+ * have query string parameters already. If so, they will be combined.
+ *
+ * @param string $url
+ * @param string $query
+ * @return string
+ */
+function wfAppendQuery( $url, $query ) {
+	if( $query != '' ) {
+		if( false === strpos( $url, '?' ) ) {
+			$url .= '?';
+		} else {
+			$url .= '&';
+		}
+		$url .= $query;
+	}
+	return $url;
+}
+
+/**
  * This is obsolete, use SquidUpdate::purge()
  * @deprecated
  */
@@ -1318,7 +1337,7 @@ function wfArrayLookup( $a, $b ) {
  */
 function wfTimestampNow() {
 	# return NOW
-	return wfTimestamp( TS_MW, time() );
+	return wfTimestamp( TS_MW, 0 );
 }
 
 /**
@@ -1405,10 +1424,11 @@ define('TS_POSTGRES', 7);
  * @return string Time in the format specified in $outputtype
  */
 function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
+	global $wgDBtimezone;
 	$uts = 0;
 	$da = array();
 	if ($ts==0) {
-		$uts=time();
+		$uts=time() - 60*60*$wgDBtimezone;
 	} elseif (preg_match('/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)$/D',$ts,$da)) {
 		# TS_DB
 		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
@@ -1933,20 +1953,45 @@ function wfRelativePath( $path, $from ) {
  * Make a URL index, appropriate for the el_index field of externallinks.
  */
 function wfMakeUrlIndex( $url ) {
-	wfSuppressWarnings();
+	global $wgUrlProtocols; // Allow all protocols defined in DefaultSettings/LocalSettings.php
 	$bits = parse_url( $url );
+	wfSuppressWarnings();
 	wfRestoreWarnings();
-	if ( !$bits || $bits['scheme'] !== 'http' ) {
+	if ( !$bits ) {
 		return false;
 	}
+	// most of the protocols are followed by ://, but mailto: and sometimes news: not, check for it
+	$delimiter = '';
+	if ( in_array( $bits['scheme'] . '://' , $wgUrlProtocols ) ) {
+		$delimiter = '://';
+	} elseif ( in_array( $bits['scheme'] .':' , $wgUrlProtocols ) ) {
+		$delimiter = ':';
+		// parse_url detects for news: and mailto: the host part of an url as path
+		// We have to correct this wrong detection
+		if ( isset ( $bits['path'] ) ) { 
+			$bits['host'] = $bits['path'];
+			$bits['path'] = '';
+		}
+	} else {
+		return false;
+	}
+
 	// Reverse the labels in the hostname, convert to lower case
-	$reversedHost = strtolower( implode( '.', array_reverse( explode( '.', $bits['host'] ) ) ) );
+	// For emails reverse domainpart only
+	if ( $bits['scheme'] == 'mailto' ) {
+		$mailparts = explode( '@', $bits['host'] );
+		$domainpart = strtolower( implode( '.', array_reverse( explode( '.', $mailparts[1] ) ) ) );
+		$reversedHost = $domainpart . '@' . $mailparts[0];
+	} else {
+		$reversedHost = strtolower( implode( '.', array_reverse( explode( '.', $bits['host'] ) ) ) );
+	}
 	// Add an extra dot to the end
 	if ( substr( $reversedHost, -1, 1 ) !== '.' ) {
 		$reversedHost .= '.';
 	}
 	// Reconstruct the pseudo-URL
-	$index = "http://$reversedHost";
+	$prot = $bits['scheme'];
+	$index = "$prot$delimiter$reversedHost";
 	// Leave out user and password. Add the port, path, query and fragment
 	if ( isset( $bits['port'] ) )      $index .= ':' . $bits['port'];
 	if ( isset( $bits['path'] ) ) {

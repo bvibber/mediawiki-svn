@@ -9,6 +9,60 @@
  *
  */
 
+class PostgresField {
+	private $name, $tablename, $type, $nullable, $max_length;
+
+	static function fromText($db, $table, $field) {
+	global $wgDBmwschema;
+
+		$q = <<<END
+SELECT typname, attnotnull, attlen
+FROM pg_class, pg_namespace, pg_attribute, pg_type
+WHERE relnamespace=pg_namespace.oid
+AND relkind='r'
+AND attrelid=pg_class.oid
+AND atttypid=pg_type.oid
+AND nspname=%s
+AND relname=%s
+AND attname=%s;
+END;
+		$res = $db->query(sprintf($q,
+				$db->addQuotes($wgDBmwschema),
+				$db->addQuotes($table),
+				$db->addQuotes($field)));
+		$row = $db->fetchObject($res);
+		if (!$row)
+			return null;
+		$n = new PostgresField;
+		$n->type = $row->typname;
+		$n->nullable = ($row->attnotnull == 'f');
+		$n->name = $field;
+		$n->tablename = $table;
+		$n->max_length = $row->attlen;
+		return $n;
+	}
+
+	function name() {
+		return $this->name;
+	}
+
+	function tableName() {
+		return $this->tablename;
+	}
+
+	function type() {
+		return $this->type;
+	}
+
+	function nullable() {
+		return $this->nullable;
+	}
+
+	function maxLength() {
+		return $this->max_length;
+	}
+}
+
 class DatabasePostgres extends Database {
 	var $mInsertId = NULL;
 	var $mLastResult = NULL;
@@ -25,28 +79,31 @@ class DatabasePostgres extends Database {
 		}
 		$this->mOut =& $wgOut;
 		$this->mFailFunction = $failFunction;
-		$this->mCascadingDeletes = true;
-		$this->mCleanupTriggers = true;
-		$this->mStrictIPs = true;
 		$this->mFlags = $flags;
 		$this->open( $server, $user, $password, $dbName);
 
 	}
 
+	function cascadingDeletes() {
+		return true;
+	}
+	function cleanupTriggers() {
+		return true;
+	}
+	function strictIPs() {
+		return true;
+	}
 	function realTimestamps() {
 		return true;
 	}
-
 	function implicitGroupby() {
 		return false;
 	}
-
 	function searchableIPs() {
 		return true;
 	}
 
-	static function newFromParams( $server = false, $user = false, $password = false, $dbName = false,
-		$failFunction = false, $flags = 0)
+	static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0)
 	{
 		return new DatabasePostgres( $server, $user, $password, $dbName, $failFunction, $flags );
 	}
@@ -97,7 +154,7 @@ class DatabasePostgres extends Database {
 		## If this is the initial connection, setup the schema stuff and possibly create the user
 		if (defined('MEDIAWIKI_INSTALL')) {
 			global $wgDBname, $wgDBuser, $wgDBpassword, $wgDBsuperuser, $wgDBmwschema,
-				$wgDBts2schema;
+				$wgDBts2schema, $wgDBtimezone;
 
 			print "<li>Checking the version of Postgres...";
 			$version = $this->getServerVersion();
@@ -107,6 +164,20 @@ class DatabasePostgres extends Database {
 				dieout("</ul>");
 			}
 			print "version $this->numeric_version is OK.</li>\n";
+
+			print "<li>Figuring out timezone the database is using...";
+			## Figure out what the local timezone is for this database
+			$wgDBtimezone = 99;
+			if ($this->doQuery("SET datestyle TO ISO")) {
+				$res = $this->doQuery("SELECT substring(now() FROM E'-?\\\d\\\d\$')::int");
+				if ($res) {
+					$wgDBtimezone = pg_fetch_result($res,0,0);
+					print "timezone is '$wgDBtimezone'</li>\n";
+				}
+			}
+			if ($wgDBtimezone === 99) {
+				print "<b>UNKNOWN</b>. Defaulting to '0'</li>\n";
+			}
 
 			$safeuser = $this->quote_ident($wgDBuser);
 			## Are we connecting as a superuser for the first time?
@@ -659,7 +730,7 @@ class DatabasePostgres extends Database {
 		return '';
 	}
 
-	function limitResult($sql, $limit,$offset) {
+	function limitResult($sql, $limit,$offset=false) {
 		return "$sql LIMIT $limit ".(is_numeric($offset)?" OFFSET {$offset} ":"");
 	}
 
@@ -732,17 +803,20 @@ class DatabasePostgres extends Database {
 
 
 	/**
-	 * Query whether a given table exists (in the given schema, or the default mw one if not given)
+	 * Query whether a given relation exists (in the given schema, or the 
+	 * default mw one if not given)
 	 */
-	function tableExists( $table, $schema = false ) {
+	function relationExists( $table, $types, $schema = false ) {
 		global $wgDBmwschema;
+		if (!is_array($types))
+			$types = array($types);
 		if (! $schema )
 			$schema = $wgDBmwschema;
-		$etable = preg_replace("/'/", "''", $table);
-		$eschema = preg_replace("/'/", "''", $schema);
+		$etable = $this->addQuotes($table);
+		$eschema = $this->addQuotes($schema);
 		$SQL = "SELECT 1 FROM pg_catalog.pg_class c, pg_catalog.pg_namespace n "
-			. "WHERE c.relnamespace = n.oid AND c.relname = '$etable' AND n.nspname = '$eschema' "
-			. "AND c.relkind IN ('r','v')";
+			. "WHERE c.relnamespace = n.oid AND c.relname = $etable AND n.nspname = $eschema "
+			. "AND c.relkind IN ('" . implode("','", $types) . "')";
 		$res = $this->query( $SQL );
 		$count = $res ? pg_num_rows($res) : 0;
 		if ($res)
@@ -750,6 +824,45 @@ class DatabasePostgres extends Database {
 		return $count;
 	}
 
+	/*
+	 * For backward compatibility, this function checks both tables and 
+	 * views.
+	 */
+	function tableExists ($table, $schema = false) {
+		return $this->relationExists($table, array('r', 'v'), $schema);
+	}
+	
+	function sequenceExists ($sequence, $schema = false) {
+		return $this->relationExists($sequence, 'S', $schema);
+	}
+
+	function triggerExists($table, $trigger) {
+	global $wgDBmwschema;
+
+		$q = <<<END
+	SELECT 1 FROM pg_class, pg_namespace, pg_trigger
+		WHERE relnamespace=pg_namespace.oid AND relkind='r'
+		      AND tgrelid=pg_class.oid
+		      AND nspname=%s AND relname=%s AND tgname=%s
+END;
+		$res = $this->query(sprintf($q,
+				$this->addQuotes($wgDBmwschema),
+				$this->addQuotes($table),
+				$this->addQuotes($trigger)));
+		$row = $this->fetchRow($res);
+		$exists = !!$row;
+		$this->freeResult($res);
+		return $exists;
+	}
+
+	function ruleExists($table, $rule) {
+	global $wgDBmwschema;
+		$exists = $this->selectField("pg_rules", "rulename",
+				array(	"rulename" => $rule,
+					"tablename" => $table,
+					"schemaname" => $wgDBmwschema));
+		return $exists === $rule;
+	}
 
 	/**
 	 * Query whether a given schema exists. Returns the name of the owner
@@ -768,7 +881,7 @@ class DatabasePostgres extends Database {
 	/**
 	 * Query whether a given column exists in the mediawiki schema
 	 */
-	function fieldExists( $table, $field ) {
+	function fieldExists( $table, $field, $fname = 'DatabasePostgres::fieldExists' ) {
 		global $wgDBmwschema;
 		$etable = preg_replace("/'/", "''", $table);
 		$eschema = preg_replace("/'/", "''", $wgDBmwschema);
@@ -776,7 +889,7 @@ class DatabasePostgres extends Database {
 		$SQL = "SELECT 1 FROM pg_catalog.pg_class c, pg_catalog.pg_namespace n, pg_catalog.pg_attribute a "
 			. "WHERE c.relnamespace = n.oid AND c.relname = '$etable' AND n.nspname = '$eschema' "
 			. "AND a.attrelid = c.oid AND a.attname = '$ecol'";
-		$res = $this->query( $SQL );
+		$res = $this->query( $SQL, $fname );
 		$count = $res ? pg_num_rows($res) : 0;
 		if ($res)
 			$this->freeResult( $res );
@@ -784,9 +897,7 @@ class DatabasePostgres extends Database {
 	}
 
 	function fieldInfo( $table, $field ) {
-		$res = $this->query( "SELECT $field FROM $table LIMIT 1" );
-		$type = pg_field_type( $res, 0 );
-		return $type;
+		return PostgresField::fromText($this, $table, $field);
 	}
 
 	function begin( $fname = 'DatabasePostgres::begin' ) {
@@ -811,14 +922,19 @@ class DatabasePostgres extends Database {
 
 		## Make sure that we can write to the correct schema
 		## If not, Postgres will happily and silently go to the next search_path item
-		$SQL = "CREATE TABLE $wgDBmwschema.mw_test_table(a int)";
+		$ctest = "mw_test_table";
+		if ($this->tableExists($ctest, $wgDBmwschema)) {
+			$this->doQuery("DROP TABLE $wgDBmwschema.$ctest");
+		}
+		$SQL = "CREATE TABLE $wgDBmwschema.$ctest(a int)";
 		error_reporting( 0 );
 		$res = $this->doQuery($SQL);
 		error_reporting( E_ALL );
 		if (!$res) {
-			print "<b>FAILED</b>. Make sure that the user \"$wgDBuser\" can write to the schema \"wgDBmwschema\"</li>\n";
+			print "<b>FAILED</b>. Make sure that the user \"$wgDBuser\" can write to the schema \"$wgDBmwschema\"</li>\n";
 			dieout("</ul>");
 		}
+		$this->doQuery("DROP TABLE $wgDBmwschema.mw_test_table");
 
 		dbsource( "../maintenance/postgres/tables.sql", $this);
 
@@ -864,6 +980,8 @@ class DatabasePostgres extends Database {
 			$this->query("$SQL $matches[1],$matches[2])");
 		}
 		print " (table interwiki successfully populated)...\n";
+
+		$this->doQuery("COMMIT");
 	}
 
 	function encodeBlob($b) {
@@ -917,8 +1035,8 @@ class DatabasePostgres extends Database {
 			}
 		}
 
-		if ( isset( $options['GROUP BY'] ) ) $preLimitTail .= " GROUP BY {$options['GROUP BY']}";
-		if ( isset( $options['ORDER BY'] ) ) $preLimitTail .= " ORDER BY {$options['ORDER BY']}";
+		if ( isset( $options['GROUP BY'] ) ) $preLimitTail .= " GROUP BY " . $options['GROUP BY'];
+		if ( isset( $options['ORDER BY'] ) ) $preLimitTail .= " ORDER BY " . $options['ORDER BY'];
 		
 		//if (isset($options['LIMIT'])) {
 		//	$tailOpts .= $this->limitResult('', $options['LIMIT'],

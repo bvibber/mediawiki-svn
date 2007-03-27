@@ -47,7 +47,7 @@ function wfSpecialRecentchangeslinked( $par = NULL ) {
 	}
 	list( $limit, /* offset */ ) = wfCheckLimits( 100, 'rclimit' );
 
-	$dbr = wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE,'recentchangeslinked' );
 	$cutoff = $dbr->timestamp( time() - ( $days * 86400 ) );
 
 	$hideminor = ($hideminor ? 1 : 0);
@@ -71,7 +71,7 @@ function wfSpecialRecentchangeslinked( $par = NULL ) {
 
 	$GROUPBY = "
 	GROUP BY rc_cur_id,rc_namespace,rc_title,
-		rc_user,rc_comment,rc_user_text,rc_timestamp,rc_minor,
+		rc_user,rc_comment,rc_user_text,rc_timestamp,rc_minor,rc_deleted,
 		rc_new, rc_id, rc_this_oldid, rc_last_oldid, rc_bot, rc_patrolled, rc_type, rc_old_len, rc_new_len
 " . ($uid ? ",wl_user" : "") . "
 		ORDER BY rc_timestamp DESC

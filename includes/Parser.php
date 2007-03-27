@@ -1000,6 +1000,7 @@ class Parser
 		$text = Sanitizer::removeHTMLtags( $text, array( &$this, 'attributeStripCallback' ) );
 
 		$text = $this->replaceVariables( $text, $args );
+		wfRunHooks( 'InternalParseBeforeLinks', array( &$this, &$text ) );
 
 		// Tables need to come after variable replacement for things to work
 		// properly; putting them before other transformations should keep
@@ -4389,7 +4390,7 @@ class Parser
 		#  * bottom
 		#  * text-bottom
 
-		$part = explode( '|', $options);
+		$part = array_map( 'trim', explode( '|', $options) );
 
 		$mwAlign = array();
 		$alignments = array( 'left', 'right', 'center', 'none', 'baseline', 'sub', 'super', 'top', 'text-top', 'middle', 'bottom', 'text-bottom' );

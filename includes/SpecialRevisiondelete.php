@@ -42,7 +42,7 @@ function wfSpecialRevisiondelete( $par = null ) {
 
 class RevisionDeleteForm {
 	/**
-	 * @param Title $page
+	 * @param webrequest $request
 	 * @param int $oldid
 	 */
 	function __construct( $request, $oldid, $logid, $arid, $fileid ) {
@@ -60,18 +60,18 @@ class RevisionDeleteForm {
 	
 		// log events don't have text to hide, but hiding the page name is useful
 		if ( $fileid ) {
-		   $hide_text_name = array( 'revdelete-hide-image', 'wpHideImage', Image::DELETED_FILE );
+		   $hide_content_name = array( 'revdelete-hide-image', 'wpHideImage', Image::DELETED_FILE );
 		   $this->deletetype='file';
 		} else if ( $logid ) {
-		   $hide_text_name = array( 'revdelete-hide-name', 'wpHideName', LogViewer::DELETED_ACTION );
+		   $hide_content_name = array( 'revdelete-hide-name', 'wpHideName', LogViewer::DELETED_ACTION );
 		   $this->deletetype='log';
 		} else {
-		   $hide_text_name = array( 'revdelete-hide-text', 'wpHideText', Revision::DELETED_TEXT );
+		   $hide_content_name = array( 'revdelete-hide-text', 'wpHideText', Revision::DELETED_TEXT );
 		   if ( $arid ) $this->deletetype='ar';
 		   else $this->deletetype='old';
 		}
 		$this->checks = array(
-			$hide_text_name,
+			$hide_content_name,
 			array( 'revdelete-hide-comment', 'wpHideComment', Revision::DELETED_COMMENT ),
 			array( 'revdelete-hide-user', 'wpHideUser', Revision::DELETED_USER ),
 			array( 'revdelete-hide-restricted', 'wpHideRestricted', Revision::DELETED_RESTRICTED ) );
@@ -83,13 +83,7 @@ class RevisionDeleteForm {
 	 * @param $nbitfield, new bitfiled
 	 */	
 	function setBitfield( $bitfield, $nbitfield ) {
-		if ( $nbitfield & Revision::DELETED_TEXT) $bitfield |= Revision::DELETED_TEXT;
-		if ( $nbitfield & LogViewer::DELETED_ACTION) $bitfield |= LogViewer::DELETED_ACTION;
-		if ( $nbitfield & Image::DELETED_FILE) $bitfield |= Image::DELETED_FILE;
-		if ( $nbitfield & Revision::DELETED_COMMENT) $bitfield |= Revision::DELETED_COMMENT;
-		if ( $nbitfield & Revision::DELETED_USER) $bitfield |= Revision::DELETED_USER;
-		if ( $nbitfield & Revision::DELETED_RESTRICTED) $bitfield |= Revision::DELETED_RESTRICTED;
-		return $bitfield;
+		return $bitfield | $nbitfield;
 	}
 	
 	/**
@@ -100,7 +94,7 @@ class RevisionDeleteForm {
 		global $wgOut, $wgUser, $action;
 
 		$UserAllowed = true;
-		$wgOut->addWikiText( wfMsgHtml( 'revdelete-selected', $this->page->getPrefixedText() ) );
+		$wgOut->addWikiText( wfMsgExt( 'revdelete-selected', array('parsemag'), $this->page->getPrefixedText(), count($this->revisions) ) );
 		
 		$bitfields = 0;
 		$wgOut->addHtml( "<ul>" );
@@ -155,7 +149,7 @@ class RevisionDeleteForm {
 		if( $this->deletetype=='old' ) {
 			foreach( $this->revisions as $revid ) {
 				$hidden[] = wfHidden( 'oldid[]', $revid );
-			}	
+			}
 		} else if( $this->deletetype=='ar' ) {	
 			foreach( $this->archrevs as $revid ) {
 				$hidden[] = wfHidden( 'arid[]', $revid );
@@ -171,9 +165,9 @@ class RevisionDeleteForm {
 		// FIXME: all items checked for just one rev are checked, even if not set for the others
 		foreach( $this->checks as $item ) {
 			list( $message, $name, $field ) = $item;
-			$wgOut->addHtml( '<div>' .
+			$wgOut->addHtml( "<div>" .
 				wfCheckLabel( wfMsgHtml( $message), $name, $name, $bitfields & $field ) .
-				'</div>' );
+				"</div>\n" );
 		}
 		$wgOut->addHtml( '</fieldset>' );
 		foreach( $items as $item ) {
@@ -194,7 +188,7 @@ class RevisionDeleteForm {
 		global $wgOut, $wgUser, $action;
 
 		$UserAllowed = true;
-		$wgOut->addWikiText( wfMsgHtml( 'revdelete-selected', $this->page->getPrefixedText() ) );
+		$wgOut->addWikiText( wfMsgExt( 'revdelete-selected', array('parsemag'), $this->page->getPrefixedText(), count($this->files) ) );
 		
 		$bitfields = 0;
 		$wgOut->addHtml( "<ul>" );
@@ -262,7 +256,7 @@ class RevisionDeleteForm {
 		global $wgOut, $wgUser, $action;
 
 		$UserAllowed = true;
-		$wgOut->addWikiText( wfMsgHtml( 'logdelete-selected', $this->page->getPrefixedText() ) );
+		$wgOut->addWikiText( wfMsgExt( 'logdelete-selected', array('parsemag'), $this->page->getPrefixedText(), count($this->events) ) );
 		
 		$bitfields = 0;
 		$wgOut->addHtml( "<ul>" );

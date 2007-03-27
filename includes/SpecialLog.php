@@ -431,8 +431,8 @@ class LogViewer {
 	 * default is deleted if not specified for security
 	 * @return Title
 	 */
-	function logActionText( $log_type, $log_action, $title, $skin, $paramArray, $log_deleted = LogViewer::DELETED_ACTION ) {
-		if( $log_deleted & LogViewer::DELETED_ACTION ) {
+	function logActionText( $log_type, $log_action, $title, $skin, $paramArray, $log_deleted = self::DELETED_ACTION ) {
+		if( $log_deleted & self::DELETED_ACTION ) {
 			return '<span class="history-deleted">' . wfMsgHtml('rev-deleted-event') . '</span>';
 		} else {
 		  	$action = LogPage::actionText( $log_type, $log_action, $title, $this->skin, $paramArray, true, true );
@@ -481,8 +481,9 @@ class LogViewer {
 	 * @param OutputPage $out where to send output
 	 */
 	function showList( &$out ) {
+		$result = $this->getLogRows();
 		if ( $this->numResults > 0 ) {
-			$this->doShowList( $out, $this->getLogRows() );
+			$this->doShowList( $out, $result );
 		} else {
 			$this->showError( $out );
 		}
@@ -554,7 +555,7 @@ class LogViewer {
 	 */
 	function showhideLinks( $s, $title ) {
 		$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
-		if( !LogViewer::userCan( $s, Revision::DELETED_RESTRICTED ) ) {
+		if( !self::userCan( $s, Revision::DELETED_RESTRICTED ) ) {
 		// If event was hidden from sysops
 			$del = $this->message['rev-delundel'];
 		} else if( $s->log_type == 'oversight' ) {
@@ -565,7 +566,7 @@ class LogViewer {
 			$this->message['rev-delundel'],
 			'target=' . urlencode( $title->getPrefixedDbkey() ) . '&logid=' . $s->log_id );
 			// Bolden oversighted content
-			if( LogViewer::isDeleted( $s, Revision::DELETED_RESTRICTED ) )
+			if( self::isDeleted( $s, Revision::DELETED_RESTRICTED ) )
 			$del = "<strong>$del</strong>";
 		}
 		return "(<small>$del</small>)";
@@ -579,7 +580,9 @@ class LogViewer {
 	 */
 	function showReviewLinks( $s, $title, $paramArray ) {
 		global $wgUser;
-		
+		// Don't give away the page name
+		if( self::isDeleted( $s, self::DELETED_ACTION ) )
+			return '';
 		$reviewlink='';
 		// Show revertmove link
 		if ( $s->log_type == 'move' && isset( $paramArray[0] ) ) {
@@ -607,6 +610,12 @@ class LogViewer {
 			$reviewlink = $this->skin->makeKnownLink( $title->getPrefixedDBkey() ,
 				wfMsg( 'protect_change' ),
 				'action=unprotect' );
+		// show user tool links for self created users
+		} elseif ( $s->log_action == 'create2' ) {
+			$revert = $this->skin->userToolLinksRedContribs( $s->log_user, $s->log_title );
+			// do not show $comment for self created accounts. It includes wrong user tool links:
+			// 'blockip' for users w/o block allowance and broken links for very long usernames (bug 4756)
+			$comment = '';
 		}
 		// If an edit was hidden from a page give a review link to the history
 		if ( $wgUser->isAllowed( 'deleterevision' ) && isset($paramArray[2]) ) {
@@ -619,17 +628,19 @@ class LogViewer {
 				$undelete = SpecialPage::getTitleFor( 'Undelete' );
 				$reviewlink = $this->skin->makeKnownLinkObj( $undelete, $this->message['imghistory'],
 				wfArrayToCGI( array('target' => $title->getPrefixedText() ) ) ) . ':';
-			} else if ( $s->log_action == 'event' && isset($paramArray[0]) ) {
+			} else if ( $s->log_action == 'event' ) {
 			// If this event was to a log, give a review link to logs for that page only
 				$reviewlink = $this->skin->makeKnownLinkObj( $title, $this->message['viewpagelogs'],
 				wfArrayToCGI( array('page' => $paramArray[0] ) ) ) . ':';
 			}
-			// Link to each hidden object ID
-			$IdType = $paramArray[1].'id';
-			$Ids = explode( ',', $paramArray[2] );
-			foreach ( $Ids as $id ) {
-				$reviewlink .= ' '.$this->skin->makeKnownLinkObj( $revdel, "#$id",
-				wfArrayToCGI( array('target' => $paramArray[0], $IdType => $id ) ) );
+			if ( $reviewlink ) {
+				// Link to each hidden object ID
+				$IdType = $paramArray[1].'id';
+				$Ids = explode( ',', $paramArray[2] );
+				foreach ( $Ids as $id ) {
+					$reviewlink .= ' '.$this->skin->makeKnownLinkObj( $revdel, "#$id",
+					wfArrayToCGI( array('target' => $paramArray[0], $IdType => $id ) ) );
+				}
 			}
 		}
 		$reviewlink = ( $reviewlink=='' ) ? "" : "&nbsp;&nbsp;&nbsp;($reviewlink) ";
