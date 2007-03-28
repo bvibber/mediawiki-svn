@@ -449,6 +449,8 @@ function wfReviewExtensionFunction () {
 		* @return Array[] => val_revision
 		*/
 		function get_reviewed_revisions ( $title ) {
+			$fname = 'get_reviewed_revisions';
+			
 			$dbr =& wfGetDB( DB_SLAVE );
 			$res = $dbr->select(
 					/* FROM   */ 'validate',
