@@ -204,6 +204,34 @@ $wgChemFunctions_Messages['nl'] = array(
 );
 
 /**
+ *  ru
+ */
+
+$wgChemFunctions_Messages['ru'] = array(
+	'chemicalsources' => 'Источники по химии',
+	'ChemFunctions_ListPage' => 'Источники по химии',
+	'ChemFunctions_SearchExplanation' => '',
+	'ChemFunctions_DataList' => 'Ниже представлен список ссылок на сайты, которые могут содержать информацию об интересующем вас веществе.<br /><br />
+	* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Соединение $MIXCASNameFormula на сайте NIST</a><br />
+	* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS на сайте Оксфордского университета (Великобритания) (поиск отсутствует)</a><br />',
+	'ChemFunctions_CAS' => 'CAS-число',
+	'ChemFunctions_EINECS' => 'Einecs',
+	'ChemFunctions_CHEBI' => 'CHEBI',
+	'ChemFunctions_PubChem' => 'PubChem',
+	'ChemFunctions_SMILES' => 'SMILES',
+	'ChemFunctions_InChI' => 'InChI',
+	'ChemFunctions_RTECS' => 'RTECS',
+	'ChemFunctions_KEGG' => 'KEGG',
+	'ChemFunctions_ATCCode' => 'ATCCode',
+	'ChemFunctions_DrugBank' => 'DrugBank',
+	'ChemFunctions_ECNumber' => 'ECNumber',
+	'ChemFunctions_Formula' => 'Formula',
+	'ChemFunctions_Name' => 'IUPAC-название',
+
+	'ChemFunctions_ChemFormInputError' => 'Chemform: ошибка ввода!'
+);
+
+/**
  * sk
  */
 

@@ -173,6 +173,20 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'Articolul $1 nu există.',
 ),
 
+/* Russian */
+'ru' => array(
+'contributors' => 'Авторы',
+'contributors-toolbox' => 'Основные авторы',
+'contributors-legend' => 'Формирует список основных авторов статьи',
+'contributors-target' => 'Название:',
+'contributors-submit' => 'Показать',
+'contributors-subtitle' => 'Основные авторы $1',
+'contributors-others-long' => 'Кроме указанных, у данной страницы есть ещё $1 авторов.',
+'contributors-others' => 'и ещё $1 других',
+'contributors-badtitle' => 'Ошибочное название.',
+'contributors-nosuchpage' => 'Статья «$1» не существует.',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'contributors' => 'Prispievatelia',

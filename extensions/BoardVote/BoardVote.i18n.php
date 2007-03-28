@@ -763,7 +763,7 @@ $wgBoardVoteMessages['ru'] = array(
 	'boardvote_strike'        => "Зачеркнуть",
 	'boardvote_unstrike'      => "Убрать зачёркивание",
 	'boardvote_needadmin'     => "Эта операция доступна только администрации выборов.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Выборы в Совет поверенных Викимедиа</a>: Голосование открыто до 12 июля",
+	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Выборы в Совет поверенных фонда «Викимедиа»</a>: Голосование открыто до 12 июля",
 	'boardvote_notstarted'    => 'Голосование ещё не началось',
 	'boardvote_closed'        => 'Голосование окончено, см. [[m:Elections for the Board of Trustees of the Wikimedia Foundation, 2006/En|страницу результатов]].',
 	'boardvote_edits_many'    => 'много',

@@ -230,6 +230,28 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'a levat [[$1]] de la lista dels imatges indesirables',
 ),
 
+/* Russian (Alexander Sigachov) */
+'ru' => array(
+'badimages' => 'Список нежелательных изображений',
+'badimages-add-btn' => 'Добавить',
+'badimages-added' => '$1 добавлено в список.',
+'badimages-count' => "Всего в списке '''$1''' нежелательных изображений.",
+'badimages-name' => 'Имя:',
+'badimages-not-added' => 'Изображение не может быть добавлено.',
+'badimages-not-removed' => 'Изображение не может быть удалено.',
+'badimages-reason' => 'Причина:',
+'badimages-remove' => '(удалить)',
+'badimages-remove-btn' => 'Удалить',
+'badimages-remove-confirm' => 'Пожалуйта, подтвердите удаление $1 из списка:',
+'badimages-removed' => '$1 было удалено из списка.',
+'badimages-subheading' => 'Текущее содержание',
+'badimages-unprivileged' => '(у вас недостаточно прав для изменения этого списка)',
+'badimages-log-name' => 'Список нежелательных изображений',
+'badimages-log-header' => 'Это журнал изменений [[Справка:Список нежелательных изображени|списка нежелательных изображений]].',
+'badimages-log-add' => ' [[$1]] добавлено в список нежелательных изображений',
+'badimages-log-remove' => '[[$1]] удалено из списка нежелательных изображений',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'badimages' => 'Zoznam zlých obrázkov',

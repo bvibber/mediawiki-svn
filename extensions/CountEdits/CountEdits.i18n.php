@@ -162,6 +162,19 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Não possui contribuições neste wiki.',
 ),
 
+'ru' => array(
+'countedits' => 'Подсчитать правки',
+'countedits-warning' => "'''Внимание:''' не судите о книге по её обложке. Не судите об участнике по количеству его правок.",
+'countedits-username' => 'Участник:',
+'countedits-ok' => 'OK',
+'countedits-nosuchuser' => 'Не существует участника с именем $1.',
+'countedits-resultheader' => 'Данные для $1',
+'countedits-resulttext' => '$1 сделал $2 правок',
+'countedits-mostactive' => 'Наиболее активные участники',
+'countedits-nocontribs' => 'Нет правок в этой вики.',
+),
+
+
 /* Slovak (helix84) */
 'sk' => array(
 'countedits' => 'Počet príspevkov',

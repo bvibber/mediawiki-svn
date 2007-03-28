@@ -275,6 +275,33 @@ kopiën ontstaan met een volledige geschiedenis. DIt is handig voor forks, enzov
 'duplicator-toomanyrevisions' => '[[$1]] a tròp ($2) de revisions e pòt pas èsser copiat. La limita actuala es de $3.',
 ),
 
+/* Russian */
+'ru' => array(
+'duplicator' => 'Клонировать статью',
+'duplicator-toolbox' => 'Клонировать статью',
+'duplicator-header' => 'Эта страница позволяет полностью клонировать статью, создать независимую копию истории её изменений. Данная функция полезна при разделении статьи на две отдельные.',
+
+'duplicator-options' => 'Настройки',
+'duplicator-source' => 'Откуда:',
+'duplicator-dest' => 'Куда:',
+'duplicator-dotalk' => 'Клонировать страницу обсуждения (если возможно)',
+'duplicator-submit' => 'Клонировать',
+
+'duplicator-summary' => 'Копия [[$1]]',
+
+'duplicator-success' => "<big>'''[[$1]] клонирована в [[$2]].'''</big>",
+'duplicator-success-revisions' => '$1 {{PLURAL:$1|изменение было|изменения было|изменений было}} скопировано.',
+'duplicator-success-talkcopied' => 'Страница обсуждения была скопирована.',
+'duplicator-success-talknotcopied' => 'Страница обсуждения не была скопирована.',
+'duplicator-failed' => 'Страница не может быть клопирована. Неизвестная ошибка.',
+
+'duplicator-source-invalid' => 'Пожалуйста, введите корректное название статьи-источника.',
+'duplicator-source-notexist' => 'Страница «[[$1]]» не существует. Пожалуйста, введите название страницы, которая существует.',
+'duplicator-dest-invalid' => 'Пожалуйста введите корректное название страницы-назначения.',
+'duplicator-dest-exists' => 'Страница «[[$1]]» уже существует. Пожалуйста, введите название несуществующей страницы-назначения.',
+'duplicator-toomanyrevisions' => 'Страница «[[$1]]» имеет слишком много ($2) изменений. Текущим ограничением является $3.',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'duplicator' => 'Duplikácia článku',

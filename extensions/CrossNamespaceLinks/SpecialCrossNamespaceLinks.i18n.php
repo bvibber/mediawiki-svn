@@ -97,6 +97,11 @@ $wgCrossNamespaceLinksMessages['ro'] = array(
 	'crossnamespacelinks-summary' => 'Această pagină pune la dispoziţie o listă a paginilor din spaţiul de nume principal care se leagă cu pagini din alt spaţiu de nume (excepţie pentru spaţiile de nume {{ns:special}}, {{ns:talk}}, {{ns:project}} şi {{ns:template}}).',
 	'crossnamespacelinkstext'     => '$1: $2 se leagă la $3',
 );
+$wgCrossNamespaceLinksMessages['ru'] = array(
+	'crossnamespacelinks'         => 'Ссылки между пространствами имён',
+	'crossnamespacelinks-summary' => 'На этой странице приведён список ссылок со страниц в основном пространстве имён на страницы в других пространствах (за исключением пространств имён: {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}). Подобные ссылки не рекомендуется ставить.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ссылка|ссылки|ссылок}} на $3'
+);
 $wgCrossNamespaceLinksMessages['sk'] = array(
 	'crossnamespacelinks'         => 'Odkazy medzi mennými priestormi',
 	'crossnamespacelinks-summary' => 'Táto stránka poskytuje zoznam odkazov zo stránky v hlavnom mennom priestore na stránky v ostatných menných priestoroch (okrem menných priestorov {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}), ktoré neradno používať.',

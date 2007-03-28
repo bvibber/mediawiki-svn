@@ -155,6 +155,20 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Fornidor de donadas : $1',
 ),
 
+/* Russian (Alexander Sigaachov) */
+'ru' => array(
+'bookinfo-header' => 'Информация о книге',
+'bookinfo-result-title' => 'Название:',
+'bookinfo-result-author' => 'Автор:',
+'bookinfo-result-publisher' => 'Издательство:',
+'bookinfo-result-year' => 'Год:',
+'bookinfo-error-invalidisbn' => 'Ошибочная ISBN-запись.',
+'bookinfo-error-nosuchitem' => 'Данные отсутствуют или не могут быть найдены.',
+'bookinfo-error-nodriver' => 'Ошибка инициализации соответствующего драйвера информации о книгах.',
+'bookinfo-error-noresponse' => 'Нет ответа или превышение времени ожидания ответа.',
+'bookinfo-purchase' => 'Купить эту книгу на $1',
+'bookinfo-provider' => 'Поставщик информации: $1',
+),
 'sk' => array(
 'bookinfo-header' => 'Informácie o knihách',
 'bookinfo-result-title' => 'Názov:',

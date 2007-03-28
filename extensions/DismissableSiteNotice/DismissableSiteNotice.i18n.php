@@ -80,6 +80,10 @@ $wgDismissableSiteNoticeMessages['pt'] = array(
 
 $wgDismissableSiteNoticeMessages['pt-br'] = $wgDismissableSiteNoticeMessages['pt'];
 
+$wgDismissableSiteNoticeMessages['ru'] = array(
+	'sitenotice_close' => 'спрятать',
+);
+
 $wgDismissableSiteNoticeMessages['sk'] = array(
 	'sitenotice_close' => 'nezobrazovať',
 );

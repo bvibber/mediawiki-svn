@@ -75,6 +75,19 @@ Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaa
 'querysuccessful' => 'Query uitgevoerd',
 ),
 
+/* Russian (Alexander Sigachov) */
+'ru' => array(
+'asksql' => 'SQL-запрос',
+'asksqltext' => "Данную форму можно использовать для прямых запросов к базе данных.
+Используйте одинарные кавычки для обозначения символьных последоветельностей ('вот так').
+Запросы могут стать причиной значительной нагрузки на сервер, используйте данную функцию осторожно.",
+'sqlislogged' => 'Все запросы записываются в журнал.',
+'sqlquery' => 'Ввод запроса',
+'querybtn' => 'Отправить запрос',
+'selectonly' => 'Разрешены только запросы на чтение.',
+'querysuccessful' => 'Запрос выполнен',
+),
+
 /* Chinese (China) (Formulax, Shizhao) */
 'zh-cn' => array(
 'asksql' => 'SQL查询',
