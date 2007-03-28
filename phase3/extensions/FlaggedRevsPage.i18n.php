@@ -35,8 +35,8 @@ $RevisionreviewMessages['en'] = array(
 	than the top revision. The content of this approved revision will remain constant regardless of any transcluded
 	pages or internal images. Users on this wiki will still be able to access 
 	unreviewed content through the page history.",
-	'revreview-images'   => 'Internal images on this page will be copied to the stable image directory and stored 
-	there until no reviewed revisions use them. The following images are transcluded onto this page:',
+	'revreview-images'   => 'Internal images on this page will be copied to the stable image directory, updating
+	existing versions, and stored there until no reviewed revisions use them. The following images are transcluded onto this page:',
 	
 	'revreview-hist'     => '[reviewed]',
 	

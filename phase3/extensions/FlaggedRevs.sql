@@ -46,9 +46,9 @@ CREATE TABLE /*$wgDBprefix*/flaggedimages (
 
 -- This stores cached text for page view
 CREATE TABLE /*$wgDBprefix*/flaggedcache (
-  fc_page_id int(10) NOT NULL,
+  fc_key char(255) binary NOT NULL default '',
   fc_cache mediumblob NOT NULL default '',
   fc_date char(14) NOT NULL,
 
-  PRIMARY KEY fc_page_id (fc_page_id)
+  PRIMARY KEY fc_key (fc_key)
 ) TYPE=InnoDB;

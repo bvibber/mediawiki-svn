@@ -270,19 +270,16 @@ class FlaggedRevs {
 				$newbodytext = NULL;
 				# Try the stable cache for non-users
 				# Users have skin prefs and this caching won't work
-				if ( $wgUser->isAnon() ) {
-					$newbodytext = $this->getPageCache( $wgArticle );
-				}
+				$newbodytext = $this->getPageCache( $wgArticle );
 				# If no cache is available, get the text and parse it
 				if ( is_null($newbodytext) ) {
 					$text = $this->getFlaggedRevText( $visible_id );
 					# For anons, use standard prefs, for users, get theirs
-					$options = ( $wgUser->isAnon() ) ? new ParserOptions() : ParserOptions::newFromUser($wgUser);
+					$options = ParserOptions::newFromUser($wgUser);
 					# Parsing this text is kind of funky...
        				$newbodytext = $this->parseStableText( $wgTitle, $text, $visible_id, $options );
        				# Update the general cache for non-users
-       				if ( $wgUser->isAnon() )
-       					$this->updatePageCache( $wgArticle, $newbodytext );
+       				$this->updatePageCache( $wgArticle, $newbodytext );
        			}
             }
             // Construct some tagging
@@ -460,7 +457,7 @@ class FlaggedRevs {
         } else if( $ontop ) {
 			$wgOut->addHTML( $form );
 		} else {
-			$wgOut->addHTML( '<hr/>' . $form );
+			$wgOut->addHTML( $form );
 		}
     }
     
@@ -474,7 +471,7 @@ class FlaggedRevs {
     		$notes = ($breakline) ? '<hr/><br/>' : '';
     		$notes .= '<div class="mw-warning plainlinks">';
     		$notes .= wfMsgExt('revreview-note', array('parse'), User::whoIs( $row->fr_user ) );
-    		$notes .= $this->skin->formatComment( $row->fr_comment ) . "</div>";
+    		$notes .= '<i>' . $this->skin->formatComment( $row->fr_comment ) . '</i></div>';
     		$wgOut->addHTML( $notes );	
     	}
     }
@@ -707,16 +704,20 @@ class FlaggedRevs {
     }
     
     function getPageCache( $article ) {
+    	global $wgUser;
+    	
     	wfProfileIn( __METHOD__ );
     	
     	// Make sure it is valid
     	if ( !$article || !$article->getId() ) return NULL;
+    	$cachekey = ParserCache::getKey( $article, $wgUser );
+    	
     	$db = wfGetDB( DB_SLAVE );
     	// Replace the page cache if it is out of date
     	$result = $db->select(
 			array('flaggedcache'),
 			array('fc_cache'),
-			array('fc_page_id' => $article->getId(), 'fc_date >= ' . $article->getTouched() ),
+			array('fc_key' => $cachekey, 'fc_date >= ' . $article->getTouched() ),
 			__METHOD__);
 		if ( $row = $db->fetchObject($result) ) {
 			return $row->fc_cache;
@@ -725,19 +726,21 @@ class FlaggedRevs {
     }
     
     function updatePageCache( $article, $value=NULL ) {
+    	global $wgUser;
     	wfProfileIn( __METHOD__ );
     	
     	// Make sure it is valid
     	if ( is_null($value) || !$article || !$article->getId() ) return false;
+    	$cachekey = ParserCache::getKey( $article, $wgUser );
     	// Add cache mark
     	$timestamp = wfTimestampNow();
-    	$value .= "\n<!-- Saved in stable version parser cache for page id #".$article->getId()." with timestamp $timestamp -->";
+    	$value .= "\n<!-- Saved in stable version parser cache for key $cachekey with timestamp $timestamp -->";
     	
     	$dbw = wfGetDB( DB_MASTER );
     	// Replace the page cache if it is out of date
     	$dbw->replace('flaggedcache',
-    		array('fc_page_id'),
-			array('fc_page_id' => $article->getId(), 'fc_cache' => $value, 'fc_date' => $timestamp),
+    		array('fc_key'),
+			array('fc_key' => $cachekey, 'fc_cache' => $value, 'fc_date' => $timestamp),
 			__METHOD__);
 		
 		return true;
