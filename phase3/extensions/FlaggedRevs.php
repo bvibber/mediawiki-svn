@@ -573,7 +573,7 @@ class FlaggedRevs {
     				if( !is_dir($stableDir . $hash) ) {
     					wfMkdirParents($stableDir . $hash);
     				}
-    				copy("{$path}{$name}","{$stableDir}{$hash}{$name}");
+    				copy("{$sharedpath}{$name}","{$stableDir}{$hash}{$name}");
     				$usedimages[] = $name;
     			}
     		}
@@ -692,7 +692,7 @@ class FlaggedRevs {
 			// See how many revisions use this image total...
 			$result = $db->select( 'flaggedimages', array('fi_id'), array( 'fi_name' => $imagename ) );
 			// If only one, then delete the image
-			// Since its about to be remove from that one
+			// since it's about to be remove from that one
 			if( $db->numRows($result)==1 ) {
 				$unusedimages[] = $imagename;
 			}
@@ -734,7 +734,7 @@ class FlaggedRevs {
     	$cachekey = ParserCache::getKey( $article, $wgUser );
     	// Add cache mark
     	$timestamp = wfTimestampNow();
-    	$value .= "\n<!-- Saved in stable version parser cache for key $cachekey with timestamp $timestamp -->";
+    	$value .= "\n<!-- Saved in stable version parser cache with key $cachekey and timestamp $timestamp -->";
     	
     	$dbw = wfGetDB( DB_MASTER );
     	// Replace the page cache if it is out of date
