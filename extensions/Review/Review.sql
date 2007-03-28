@@ -1,5 +1,4 @@
--- This stores expanded revision wikitext caches
--- along with rating/user/notes data
+-- This stores user rating data for revisions
 CREATE TABLE /*$wgDBprefix*/validate (
   val_id int(10) NOT NULL auto_increment,
   val_user int(10) NOT NULL,
