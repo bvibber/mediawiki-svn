@@ -256,6 +256,8 @@ class Revisionreview extends SpecialPage
 			return true;
 		}
 		$db->delete( 'flaggedrevs', array( 'fr_rev_id' => $rev->getId ) );
+		// And the text...
+		$db->delete( 'flaggedtext', array( 'ft_rev_id' => $rev->getId ) );
 		// Update the article review log
 		$this->updateLog( $this->page, $this->dimensions, $this->comment, $this->oldid, false );
 		
