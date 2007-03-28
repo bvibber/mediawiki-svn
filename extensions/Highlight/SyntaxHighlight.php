@@ -82,7 +82,7 @@ function syntaxFormat( $text, &$params ) {
 	);
 	foreach( $methods as $key => $method ) {
 		if( isset( $params[$key] ) && method_exists( $geshi, $method ) ) {
-			eval( '$geshi->' . $method . '( $params[\'' . $key . '\'] );' );
+			$geshi->$method( $params[$key] );
 		}
 	}
 
