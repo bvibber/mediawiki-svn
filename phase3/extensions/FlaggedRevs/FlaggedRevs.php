@@ -178,7 +178,7 @@ class FlaggedRevs {
        return $db->numRows($result);
     }
     
-    function parseStableText( $title, $text, $id=NULL, $options, $returnHTML=true ) {
+    function parseStableText( $title, $text, $id=NULL, $options ) {
     	global $wgUser, $wgParser, $wgUploadDirectory, $wgUseSharedUploads, $wgUploadPath;
     	# hack...temporarily change image directories
 		# There is no nice option to set this for each parse.
@@ -199,8 +199,6 @@ class FlaggedRevs {
 		$options->setEditSection(false);
 		# Parse the new body, wikitext -> html
        	$parserOut = $wgParser->parse( $text, $title, $options, true, true, $id );
-       	if ( !$returnHTML )
-		   return $parserOut;
 
        	$HTMLout = $parserOut->getText();
        	# goddamn hack...

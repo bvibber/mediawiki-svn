@@ -35,12 +35,10 @@ CREATE TABLE /*$wgDBprefix*/flaggedtext (
 -- This stores image usage for the stable image directory
 -- Used for scripts that clear out unused images
 CREATE TABLE /*$wgDBprefix*/flaggedimages (
-  fi_id int(10) NOT NULL auto_increment,
   fi_name varchar(255) NOT NULL,
   fi_rev_id int(10) NOT NULL,
   
   PRIMARY KEY (fi_name,fi_rev_id),
-  UNIQUE KEY (fi_id),
   INDEX fi_name (fi_name)
 ) TYPE=InnoDB;
 
