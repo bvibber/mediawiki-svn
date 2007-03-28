@@ -39,6 +39,8 @@ function efLoadReviewMessages() {
 $wgFlaggedRevsAnonOnly = true;
 # Can users make comments that will show up below flagged revisions?
 $wgFlaggedRevComments = true;
+# How long to cache stable versions
+$wgFlaggedRevsExpire = 7 * 24 * 3600;
 
 $wgAvailableRights[] = 'review';
 # Define our reviewer class
@@ -127,11 +129,20 @@ class FlaggedRevs {
     }
 
     function getLatestFlaggedRev( $page_id ) {   
-    	# Call getReviewedRevs(),
-    	# this will prune things out if needed
-		if( $row = $this->getReviewedRevs($page_id) ) {
-			return $row[0];
-		}
+		wfProfileIn( __METHOD__ );
+		  
+        $db = wfGetDB( DB_SLAVE );
+        // Skip deleted revisions
+        $result = $db->select(
+			array('flaggedrevs', 'revision'),
+			array('*'),
+			array( 'fr_page_id' => $page_id, 'rev_id = fr_rev_id', 'rev_deleted = 0'),
+			__METHOD__ ,
+			array('ORDER BY' => 'fr_rev_id DESC') );
+		// Sorted from highest to lowest, so just take the first one if any
+        if ( $row = $db->fetchObject( $result ) ) {
+            return $row;
+        }
         return NULL;
     }
     
@@ -140,30 +151,15 @@ class FlaggedRevs {
 		  
         $db = wfGetDB( DB_SLAVE ); 
         $rows = array();
+        // Skip deleted revisions
         $result = $db->select(
 			array('flaggedrevs', 'revision'),
 			array('*'),
-			array( 'fr_page_id' => $page_id, 'rev_id = fr_rev_id' ),
+			array( 'fr_page_id' => $page_id, 'rev_id = fr_rev_id', 'rev_deleted = 0'),
 			__METHOD__ ,
 			array('ORDER BY' => 'fr_rev_id DESC') );
-		// Sorted from highest to lowest, so just take the first one if any
         while ( $row = $db->fetchObject( $result ) ) {
-            // Purge deleted revs from flaggedrev table
-            if( $row->rev_deleted ) {
-        		$cache_text = $this->getFlaggedRevText( $row->fr_rev_id );
-				$db->delete( 'flaggedrevs', array( 'fr_rev_id' => $row->rev_id ) );
-				// Delete stable images if needed
-				list($images,$thumbs) = $this->findLocalImages( $cache_text );
-				$copies = $this->deleteStableImages( $images );
-				// Update stable image table
-				$this->removeStableImages( $row->rev_id, $copies );
-				$this->purgeStableThumbnails( $thumbs );
-				// Clear cache...
-				$title = newFromID($page_id);
-				$title->invalidateCache();
-            } else {
-            	$rows[] = $row;
-            }
+            $rows[] = $row;
         }
         return $rows;
     }
@@ -209,7 +205,7 @@ class FlaggedRevs {
        	$HTMLout = $parserOut->getText();
        	# hack...
 		$HTMLout = $this->proportionalImgScaling($HTMLout);
-       			
+       	
        	# Reset our image directories
        	$wgUploadPath = $uploadPath;
        	$wgUploadDirectory = $uploadDir;
@@ -268,8 +264,7 @@ class FlaggedRevs {
         		$revs_since = $this->getUnreviewedRevCount( $wgArticle->getId(), $visible_id );
         		$flaghtml = wfMsgExt('revreview-replaced', array('parse'), $visible_id, $wgArticle->getLatest(), $revs_since, $time );		
 				$newbodytext = NULL;
-				# Try the stable cache for non-users
-				# Users have skin prefs and this caching won't work
+				# Try the stable cache
 				$newbodytext = $this->getPageCache( $wgArticle );
 				# If no cache is available, get the text and parse it
 				if ( is_null($newbodytext) ) {
@@ -626,7 +621,9 @@ class FlaggedRevs {
 	* $output array, list of string names of images to be deleted
 	*/ 
 	function purgeStableThumbnails( $thumblist ) {
-		global $wgUploadDirectory;
+		global $wgUploadDirectory, $wgUseImageResize;
+		// Are thumbs even enabled?
+		if ( !$wgUseImageResize ) return true;
 		// We need valid input
 		if( !is_array($thumblist) ) return false;
     	foreach ( $thumblist as $name => $width ) {
@@ -704,7 +701,7 @@ class FlaggedRevs {
     }
     
     function getPageCache( $article ) {
-    	global $wgUser;
+    	global $wgUser, $wgFlaggedRevsExpire;
     	
     	wfProfileIn( __METHOD__ );
     	
@@ -713,11 +710,12 @@ class FlaggedRevs {
     	$cachekey = ParserCache::getKey( $article, $wgUser );
     	
     	$db = wfGetDB( DB_SLAVE );
+    	$cutoff = $db->timestamp( time() - $wgFlaggedRevsExpire );
     	// Replace the page cache if it is out of date
     	$result = $db->select(
 			array('flaggedcache'),
 			array('fc_cache'),
-			array('fc_key' => $cachekey, 'fc_date >= ' . $article->getTouched() ),
+			array('fc_key' => $cachekey, 'fc_date >= ' . $article->getTouched(), 'fc_date >= ' . $cutoff ),
 			__METHOD__);
 		if ( $row = $db->fetchObject($result) ) {
 			return $row->fc_cache;
