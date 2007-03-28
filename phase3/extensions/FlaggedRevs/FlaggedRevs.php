@@ -61,17 +61,17 @@ class FlaggedRevs {
 
 	function __construct() {
 		$this->dimensions = array( 'acc' => array( 0=>'acc-0',
-                                          1=>'acc-1',
-                                          2=>'acc-2',
-                                          3=>'acc-3'),
+											1=>'acc-1',
+											2=>'acc-2',
+											3=>'acc-3'),
 									'depth'   => array( 0=>'depth-0',
-                                       	1=>'depth-1',
-                                        	2=>'depth-2',
-											 	3=>'depth-3'),
+											1=>'depth-1',
+											2=>'depth-2',
+											3=>'depth-3'),
 									'style'   => array( 0=>'style-0',
-                                       	1=>'style-1',
-                                        	2=>'style-2',
-											 	3=>'style-3') );
+											1=>'style-1',
+											2=>'style-2',
+											3=>'style-3') );
 	}
 	
     function pageOverride() {
@@ -604,7 +604,7 @@ class FlaggedRevs {
     		if( is_dir($path) ) {
     			if( file_exists("{$path}{$name}") ) {
     				// Delete!
-    				delete("{$path}{$name}");
+    				unlink("{$path}{$name}");
     				$deletedimages[] = $name;
     			}
     		}
@@ -674,8 +674,8 @@ class FlaggedRevs {
 		
 		if( !is_array($imagelist) ) return false;
 		$unusedimages = array();
-       $db = wfGetDB( DB_MASTER );
-       foreach( $imagelist as $name ) {
+		$db = wfGetDB( DB_MASTER );
+		foreach( $imagelist as $name ) {
 			// We want a clean and consistant title entry
 			$nt = Title::newFromText( $name );
 			if( is_null($nt) ) {
