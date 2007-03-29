@@ -42,6 +42,6 @@ DB_SRCS		+= sqlite.cc
 endif
 
 .cc.o:
-	$(CXX) $(CPPFLAGS) $(INCLUDES) $(CXXFLAGS) -c $<
+	$(CXX) $(CPPFLAGS) $(INCLUDES) $(CXXFLAGS) -c $< -o bin/$@
 
 .SUFFIXES: .cc .ow
