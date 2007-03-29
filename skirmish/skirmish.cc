@@ -1,6 +1,9 @@
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include <map>
+#include <cerrno>
+
 #include <boost/format.hpp>
 #include <boost/assign/list_of.hpp>
 #include <boost/function.hpp>
@@ -37,14 +40,16 @@ static int cnr = -1;
 
 std::map<std::string, boost::function<void (std::string const &)> >
 	commands = boost::assign::map_list_of
-		("\\open",	add_connection)
-		("\\ls",	list_connections)
-		("\\sw",	switch_connection)
-		("\\close",	close_connection)
-		("\\lt",	list_tables)
-		("\\dt",	describe_table)
-		("\\pr",	c_prompt)
-		("\\prompt",	c_prompt)
+		("open",	add_connection)
+		("ls",		list_connections)
+		("list",	list_connections)
+		("sw",		switch_connection)
+		("switch",	switch_connection)
+		("close",	close_connection)
+		("pr",		c_prompt)
+		("prompt",	c_prompt)
+		("lt",		list_tables)
+		("dt",		describe_table)
 	;
 
 static db::connectionptr
@@ -77,6 +82,23 @@ terminal term;
 int
 main(int argc, char *argv[])
 {
+	char const *home = getenv("HOME");
+	if (home) {
+		std::string rcfile = str(boost::format("%s/.skirmishrc") % home);
+		std::fstream rc(rcfile.c_str());
+		if (!rc) {
+			if (errno != ENOENT)
+				std::cerr << boost::format("%s: %s\n") % rcfile % std::strerror(errno);
+		} else {
+			std::string line;
+			while (std::getline(rc, line)) {
+				if (line.empty() || line[0] == '#')
+					continue;
+				handle_internal(line);
+			}
+		}
+	}
+
 	for (int a = 1; argv[a]; ++a)
 		add_connection(argv[a]);
 
@@ -100,7 +122,7 @@ main(int argc, char *argv[])
 			continue;
 
 		if (input[0] == '\\') {
-			handle_internal(input);
+			handle_internal(input.substr(1));
 			continue;
 		}
 

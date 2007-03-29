@@ -101,6 +101,7 @@ result::result(PGconn *c, std::string const &sql)
 	: conn(c)
 	, row(0)
 	, sql(sql)
+	, res(0)
 {
 }
 
