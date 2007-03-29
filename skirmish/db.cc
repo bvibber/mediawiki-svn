@@ -6,30 +6,6 @@
 
 #include "db.h"
 
-#ifdef SKIRMISH_MYSQL
-# include "mysqldb.h"
-#endif
-
-#ifdef SKIRMISH_POSTGRES
-# include "pgsql.h"
-#endif
-
-#ifdef SKIRMISH_ORACLE
-# include "ora.h"
-#endif
-
-#ifdef SKIRMISH_ODBC
-# include "odbc.h"
-#endif
-
-#ifdef SKIRMISH_MAXDB
-# include "maxdb.h"
-#endif
-
-#ifdef SKIRMISH_SQLITE
-# include "sqlite.h"
-#endif
-
 namespace db {
 
 connection::connection()
@@ -40,13 +16,11 @@ connection::~connection()
 {
 }
 
-namespace {
-template<typename T>
-connectionptr
-construct(std::string const &desc)
+connection::schemelist_t &
+get_schemelist()
 {
-	return connectionptr(new T(desc));
-}
+	static connection::schemelist_t list;
+	return list;
 }
 
 connectionptr
@@ -60,34 +34,16 @@ connection::create(std::string const &desc)
 
 	type = desc.substr(0, i);
 
-	typedef std::map<std::string, boost::function<connectionptr (std::string const &)> > schemelist_t;
-
-	static schemelist_t schemes = boost::assign::map_list_of
-#ifdef SKIRMISH_MYSQL
-			("mysql",	construct<mysql::connection>)
-#endif
-#ifdef SKIRMISH_POSTGRES
-			("postgres",	construct<postgres::connection>)
-#endif
-#ifdef SKIRMISH_ORACLE
-			("oracle",	construct<oracle::connection>)
-#endif
-#ifdef SKIRMISH_ODBC
-			("odbc",	construct<odbc::connection>)
-#endif
-#ifdef SKIRMISH_MAXDB
-			("maxdb",	construct<maxdb::connection>)
-			("sapdb",	construct<maxdb::connection>)
-#endif
-#ifdef SKIRMISH_SQLITE
-			("sqlite",	construct<sqlite::connection>)
-#endif
-		;
-
-	schemelist_t::iterator it = schemes.find(type);
-	if (it == schemes.end())
-		throw db::error(str(boost::format("unknown scheme \"%s\" in description") % desc));
+	schemelist_t::iterator it = get_schemelist().find(type);
+	if (it == get_schemelist().end())
+		throw db::error(str(boost::format("unknown scheme \"%s\" in description") % type));
 	return it->second(desc);
+}
+
+void
+connection::add_scheme(std::string const &name, scheme_creator_t creator)
+{
+	get_schemelist()[name] = creator;
 }
 
 result::~result()

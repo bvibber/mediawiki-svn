@@ -71,7 +71,7 @@ add_connection(std::string const &where)
 		conns.push_back(new conndesc(cd));
 		cnr = conns.size() - 1;
 	} catch (db::error &e) {
-		std::cerr << boost::format("skirmish: cannot connect to \"%s\": %s\n")
+		std::cerr << boost::format("[cannot connect to \"%s\": %s]\n")
 				% where % e.what();
 	}
 	show_connection();
@@ -289,7 +289,7 @@ close_connection(std::string const &arg)
 
 	if (to == cnr) {
 		cnr = -1;
-		std::cout << "[not connected]\n";
+		std::cout << "[not connected.  use \\open to connect]\n";
 	}
 }
 
@@ -297,7 +297,7 @@ static void
 show_connection(void)
 {
 	if (cnr == -1) {
-		std::cout << "[not connected]\n";
+		std::cout << "[not connected.  use \\open to connect]\n";
 		return;
 	}
 
@@ -308,7 +308,7 @@ static void
 list_tables(std::string const &arg)
 {
 	if (cnr == -1) {
-		std::cout << "[not connected]\n";
+		std::cout << "[not connected.  use \\open to connect]\n";
 		return;
 	}
 
@@ -341,7 +341,7 @@ static void
 describe_table(std::string const &arg)
 {
 	if (cnr == -1) {
-		std::cout << "[not connected]\n";
+		std::cout << "[not connected.  use \\open to connect]\n";
 		return;
 	}
 

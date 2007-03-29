@@ -3,8 +3,10 @@
 
 #include <string>
 #include <exception>
+#include <map>
 #include <boost/shared_ptr.hpp>
 #include <boost/noncopyable.hpp>
+#include <boost/function.hpp>
 
 namespace db {
 
@@ -80,7 +82,11 @@ struct table {
 };
 
 struct connection {
+	typedef boost::function<boost::shared_ptr<connection> (std::string const &)> scheme_creator_t;
+	typedef std::map<std::string, scheme_creator_t> schemelist_t;
+
 	static boost::shared_ptr<connection> create(std::string const &);
+	static void add_scheme(std::string const &name, scheme_creator_t);
 
 	virtual void open(void) = 0;
 	virtual void close(void) = 0;
