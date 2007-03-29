@@ -13,7 +13,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'efMinimumNameLengthSetup';
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'Minimum Username Length',
-		'author' => 'Rob Church'
+		'author' => 'Rob Church',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Minimum_Name_Length',
 	);
 
 	/**
