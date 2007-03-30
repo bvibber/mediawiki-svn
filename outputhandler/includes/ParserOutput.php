@@ -119,7 +119,7 @@ class ParserOutput
 	 * Add an extension output handler to be applied when this
 	 * output is used as page content
 	 *
-	 * @param object $handler
+	 * @param ExtensionOutputHandler $handler
 	 */
 	public function addOutputHandler( $handler ) {
 		$this->mHandlers[] = $handler;

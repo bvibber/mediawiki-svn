@@ -244,6 +244,7 @@ function __autoload($className) {
 		'Language' => 'languages/Language.php',
 		'PasswordResetForm' => 'includes/SpecialResetpass.php',
 		'PatrolLog' => 'includes/PatrolLog.php',
+		'ExtensionOutputHandler' => 'includes/ExtensionOutputHandler.php',
 
 		// API classes
 		'ApiBase' => 'includes/api/ApiBase.php',

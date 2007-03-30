@@ -4717,7 +4717,7 @@ class Parser
 	 * Add an extension output handler to be applied when the
 	 * page is viewed
 	 *
-	 * @param object $handler Output handler
+	 * @param ExtensionOutputHandler $handler
 	 */
 	public function addOutputHandler( $handler ) {
 		$this->mOutput->addOutputHandler( $handler );
