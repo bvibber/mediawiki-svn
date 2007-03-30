@@ -1,0 +1,5 @@
+Syntax:   \close <num>
+Alias:    \cl
+See also: \list
+
+Closes connetion <num>, which must be a valid database connection.

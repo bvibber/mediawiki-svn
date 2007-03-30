@@ -1,0 +1,8 @@
+Syntax: \prompt <new prompt>
+Alias:  \pr
+
+Changes the current command prompt to <new prompt>.  The following variables
+may be used in the prompt:
+
+    $(cnr)         - Connection number of current connection
+    $(desc)        - Connection description of current connection

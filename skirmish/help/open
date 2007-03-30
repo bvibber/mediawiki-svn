@@ -1,0 +1,26 @@
+Syntax:   \open <desc>
+Alias:    \o
+See also: \close
+
+Opens a connection to the database specified by <desc>.  <desc> is a connection
+specifier in the form <scheme>:<user>/<password>@<host>/<database>  (except
+Oracle and SQLite, see below).  Some or all of the parts may be optional
+depending on the connection type. 
+
+If the connection is established successfully, the current active connection
+is set to the new connection (see \switch).
+
+Supported connection schemes:
+
+	oracle
+	mysql
+	postgres
+	maxdb
+	odbc
+        sqlite
+
+Oracle: The TNS connection should be given as the host.  The database part is
+not used.
+
+SQLite: <desc> should be the path to the SQLite database.  It will be created
+if it doesn't already exist.

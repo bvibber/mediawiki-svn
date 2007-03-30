@@ -1,0 +1,5 @@
+Syntax:   \list
+Alias:    \ls
+See also: \switch
+
+Lists all open database connections.

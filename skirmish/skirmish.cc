@@ -11,6 +11,7 @@
 
 #include "terminal.h"
 #include "db.h"
+#include "help.h"
 
 static db::connectionptr open_connection(std::string const &);
 static void show_connection();
@@ -24,6 +25,7 @@ static void close_connection(std::string const &);
 static void list_tables(std::string const &);
 static void c_prompt(std::string const &);
 static void describe_table(std::string const &);
+static void show_help(std::string const &);
 
 typedef std::vector<std::vector<std::string> > tabulated_t;
 static void show_tabulated(tabulated_t const &);
@@ -41,15 +43,18 @@ static int cnr = -1;
 std::map<std::string, boost::function<void (std::string const &)> >
 	commands = boost::assign::map_list_of
 		("open",	add_connection)
+		("o",		add_connection)
 		("ls",		list_connections)
 		("list",	list_connections)
 		("sw",		switch_connection)
 		("switch",	switch_connection)
 		("close",	close_connection)
+		("cl",		close_connection)
 		("pr",		c_prompt)
 		("prompt",	c_prompt)
 		("lt",		list_tables)
 		("dt",		describe_table)
+		("help",	show_help)
 	;
 
 static db::connectionptr
@@ -471,4 +476,15 @@ read_input_line(std::string &input, std::string const &prompt)
 		rp = "... ";
 	}
 	return true;
+}
+
+static void
+show_help(std::string const &topic)
+{
+	std::string const *text = get_help(topic);
+	if (text == 0) {
+		std::cout << boost::format("[no help on \"%s\"]\n") % topic;
+		return;
+	}
+	std::cout << *text;
 }
