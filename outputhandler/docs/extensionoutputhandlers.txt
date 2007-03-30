@@ -1,6 +1,5 @@
 This document is intended as an explanation of the output handler mechanism
 for parser hook extensions.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 == Overview ==
 
