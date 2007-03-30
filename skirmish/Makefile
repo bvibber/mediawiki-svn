@@ -13,14 +13,16 @@ VPATH	= bin
 
 all: skirmish
 
-skirmish: $(OBJS)
+skirmish: $(foreach f,$(OBJS),bin/$(f))
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(foreach f,$(OBJS),bin/$(f)) -o bin/$@ $(LIBS)
 
-mkhelp: mkhelp.cc
+bin/mkhelp: mkhelp.cc
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) mkhelp.cc -o bin/mkhelp
 
-help_text.o: mkhelp
+help_text.cc: bin/mkhelp
 	@bin/mkhelp
+
+bin/help_text.o: bin/mkhelp help_text.cc
 	$(CXX) $(CPPFLAGS) $(INCLUDES) $(CXXFLAGS) -c help_text.cc -o bin/help_text.o
 
 clean:

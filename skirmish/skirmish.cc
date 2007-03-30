@@ -236,11 +236,17 @@ handle_internal(std::string const &s)
 static void
 list_connections(std::string const &)
 {
+	bool any = false;
+
 	for (int i = 0; i < conns.size(); ++i) {
 		if (!conns[i])
 			continue;
+		any = true;
 		std::cout << boost::format("%- 2d\t%s\n") % i % conns[i]->desc;
 	}
+
+	if (!any)
+		std::cout << "[no connections]\n";
 }
 
 static void
@@ -481,7 +487,31 @@ read_input_line(std::string &input, std::string const &prompt)
 static void
 show_help(std::string const &topic)
 {
-	std::string const *text = get_help(topic);
+	if (topic.empty()) {
+		int longest = 0, len = 0;
+		std::cout << "Help topics available:\n";
+
+		std::vector<std::string> topics = help::list_topics();
+
+		for (std::size_t i = 0, end = topics.size(); i < end; ++i)
+			if (topics[i].length() > longest)
+				longest = topics[i].length();
+
+		for (std::size_t i = 0, end = topics.size(); i < end; ++i) {
+			if (len + longest + 2 > term.cols()) {
+				len = 0;
+				std::cout << '\n';
+			}
+
+			len += topics[i].length();
+			std::cout << (topics[i] + std::string(longest - topics[i].length() + 2, ' '));
+		}
+
+		std::cout << '\n';
+		return;
+	}
+
+	std::string const *text = help::get(topic);
 	if (text == 0) {
 		std::cout << boost::format("[no help on \"%s\"]\n") % topic;
 		return;

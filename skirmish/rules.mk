@@ -41,7 +41,7 @@ LIBS		+= -lsqlite3
 DB_SRCS		+= sqlite.cc
 endif
 
-.cc.o:
-	$(CXX) $(CPPFLAGS) $(INCLUDES) $(CXXFLAGS) -c $< -o bin/$@
+bin/%.o: %.cc
+	$(CXX) $(CPPFLAGS) $(INCLUDES) $(CXXFLAGS) -c $< -o $@
 
 .SUFFIXES: .cc .ow

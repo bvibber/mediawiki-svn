@@ -15,14 +15,14 @@
 
 terminal::terminal(void)
 	: rows_output(0)
-	, rows(0)
-	, cols(0)
+	, _rows(0)
+	, _cols(0)
 {
 	if (isatty(STDOUT_FILENO)) {
 		struct winsize wz;
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &wz);
-		rows = wz.ws_row;
-		cols = wz.ws_col;
+		_rows = wz.ws_row;
+		_cols = wz.ws_col;
 	}
 
 	tcgetattr(0, &norm);
@@ -93,7 +93,7 @@ terminal::putline(std::string const &line)
 	/*
 	 * If we don't know the size of the terminal, just print it.
 	 */
-	if (rows == 0 || cols == 0) {
+	if (_rows == 0 || _cols == 0) {
 		std::cout << line << '\n';
 		return;
 	}
@@ -101,9 +101,9 @@ terminal::putline(std::string const &line)
 	std::istringstream strm(line);
 	std::string rest;
 	while (std::getline(strm, rest)) {
-		while (rest.size() > cols) {
-			really_put_line(rest.substr(0, cols));
-			rest = rest.substr(cols);
+		while (rest.size() > _cols) {
+			really_put_line(rest.substr(0, _cols));
+			rest = rest.substr(_cols);
 		}
 		really_put_line(rest);
 	}
@@ -112,7 +112,7 @@ terminal::putline(std::string const &line)
 void
 terminal::really_put_line(std::string const &line)
 {
-	if (rows - 1 == rows_output) {
+	if (_rows - 1 == rows_output) {
 		rows_output = 0;
 		std::cout << "-- More --" << std::flush;
 		char c;
@@ -124,7 +124,7 @@ terminal::really_put_line(std::string const &line)
 			break;
 		default:
 		case '\n':
-			rows_output = rows - 2;
+			rows_output = _rows - 2;
 			break;
 		}
 		std::cout << '\r';
@@ -149,4 +149,16 @@ terminal::rawread(char &c)
 	}
 	tcsetattr(0, TCSANOW, &norm);
 	return true;
+}
+
+int
+terminal::rows() const
+{
+	return _rows;
+}
+
+int
+terminal::cols() const
+{
+	return _cols;
 }

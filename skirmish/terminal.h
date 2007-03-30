@@ -16,12 +16,15 @@ struct terminal {
 	void reset_pager(void);
 	bool rawread(char &c);
 
+	int rows() const;
+	int cols() const;
+
 private:
 	std::string form_prompt(std::string const &);
 	void really_put_line(std::string const &line);
 
 	std::map<std::string, std::string> promptvars;
-	int rows, cols;
+	int _rows, _cols;
 	int rows_output;
 	struct termios norm, raw;
 };

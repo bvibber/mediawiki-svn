@@ -91,10 +91,14 @@ main(int argc, char **argv)
 
 	out << 
 "}\n"
+"namespace help {\n"
 "std::map<std::string, std::string> help_text = boost::assign::map_list_of\n"
 ;
 	for (std::size_t i = 0, end = helptopics.size(); i < end; ++i) {
 		out << boost::format("(\"%1%\", help_%1%)\n") % helptopics[i];
 	}
-	out << ";\n";
+	out <<
+";\n"
+"}\n"
+;
 }
