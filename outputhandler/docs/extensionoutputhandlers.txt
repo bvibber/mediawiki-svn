@@ -1,0 +1,81 @@
+This document is intended as an explanation of the output handler mechanism
+for parser hook extensions.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+== Overview ==
+
+* Rationale
+* How it works
+* Sample implementation
+
+== Rationale ==
+
+The existing parser hook mechanism allows for the creation of flexible
+extension code to inject block content into rendered pages, which can provide
+users with filtered or otherwise limited access to insert more complicated
+HTML code into pages.
+
+Parser hook output is subject to the standard parser cache, and should avoid
+interacting with transient global objects such as $wgTitle, $wgArticle and
+$wgOut. This, however, limits their ability to be used to alter the OutputPage
+object used for page rendering. In particular, parser hook extensions cannot
+add inclusions for CSS or JavaScript into the <head> portion of a page.
+
+The custom output handler mechanism was devised as a means to work around this
+problem.
+
+== How it works ==
+
+An extension wishing to alter the OutputPage object on view will define a
+customer output handler which implements the ExtensionOutputHandler interface.
+This includes an apply() method, which is passed the OutputPage to be modified.
+
+This handler is then passed to the parser using Parser::addOutputHandler(),
+which inserts it into the ParserOutput, that is, the object stored in the
+parser cache.
+
+When the ParserOutput is used to prepare a page for viewing, which happens
+regardless of whether the ParserOutput object has just been rendered, or has
+been pulled from the parser cache, the ParserOutput::applyHandlers() method
+iterates through all attached output handlers and calls the apply() method on
+each, passing the OutputPage which will eventually be rendered and sent to the
+client's browser.
+
+The apply() method of a given output handler is then free to alter the supplied
+OutputPage, for instance, attaching custom CSS or JavaScript files, or injecting
+JavaScript into the page header.
+
+== Sample implementation ==
+
+[The Aggregator extension in Subversion can be used as a reference
+when writing an extension using output handlers.]
+
+Assume that our parser hook returns content using custom CSS rules, and we
+want to attach a supplied CSS document containing these.
+
+The hook function might look something like this:
+
+	function efHookFunction( $input, $args, $parser ) {
+		// Attach our custom output handler to the parser output
+		$parser->addOutputHandler( new SampleCssHandler() );
+		// Generate our content and output as usual
+		return '<div class="stuff">[...]</div>';
+	}
+	
+We define an output handler, SampleCssHandler:
+
+	class SampleCssHandler implements ExtensionOutputHandler {
+		public function apply( $output ) {
+			// Attach an external CSS document
+			global $wgScriptPath;
+			$outputPage->addScript( Xml::element( 'link', array(
+				'rel' => 'stylesheet',
+				'type' => 'text/css',
+				'href' => "$wgScriptPath/extensions/Stuff/stuff.css" ) ) );
+		}
+	}
+	
+The hook function attaches the output handler to the parser output. When
+this is used for page rendering, our handler's apply() method will be called,
+and the stylesheet element will be added to the OutputPage, ready for inclusion
+in the header.
