@@ -44,9 +44,9 @@ class Multilang {
 	 * @return string
 	 */
 	public function outputBlock( $text, $args, &$parser ) {
-		# This is a bit of a hack; the fact that the cache hash stores
-		# the language code implies that this should be better exposed
-		$lang = $parser->getOptions()->mUser->getOption( 'language' );
+		global $wgLang;
+		# Cache is varied according to interface language...
+		$lang = $wgLang->getCode();
 		$text = $this->getText( $lang );
 		$output = $parser->parse( $text, $parser->getTitle(), $parser->getOptions(), true, false );
 		return $output->getText();
