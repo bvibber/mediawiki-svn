@@ -59,6 +59,8 @@ struct connection : db::connection {
 	std::vector<db::table> describe_tables(std::string const &);
 	db::table describe_table(std::string const &, std::string const &);
 
+	static std::string trimerror(char const *e);
+
 private:
 	PGconn *conn;
 	std::string err;
@@ -75,6 +77,15 @@ struct register_ {
 		db::connection::add_scheme("postgres", create);
 	}
 } register_;
+
+std::string
+connection::trimerror(char const *e)
+{
+	std::string s(e);
+	if (s[s.size() - 1] == '\n')
+		s.resize(s.size() - 1);
+	return s;
+}
 
 connection::connection(std::string const &desc)
 	: conn(0)
@@ -131,7 +142,7 @@ connection::open(void)
 	conn = PQconnectdb(connstr.c_str());
 	if (PQstatus(conn) == CONNECTION_OK)
 		return;
-	err = PQerrorMessage(conn);
+	err = trimerror(PQerrorMessage(conn));
 	PQfinish(conn);
 	conn = 0;
 	throw db::error(err);
@@ -176,17 +187,24 @@ result::result(PGconn *c, std::string const &sql)
 void
 result::execute(void)
 {
-	PGresult *res;
 	if ((res = PQexec(conn, sql.c_str())) == NULL)
-		throw db::error(PQerrorMessage(conn));
+		throw db::error(connection::trimerror(PQerrorMessage(conn)));
 
 	switch (PQresultStatus(res)) {
 		case PGRES_COMMAND_OK:
 			return;
 		case PGRES_TUPLES_OK:
 			break;
-		default:
-			throw db::error(PQresultErrorMessage(res));
+		default: {
+			char const * pos = PQresultErrorField(res, PG_DIAG_STATEMENT_POSITION);
+			if (pos)
+				throw db::sqlerror(
+					connection::trimerror(PQresultErrorMessage(res)),
+					sql, boost::lexical_cast<int>(pos));
+			else
+				throw db::sqlerror(
+					connection::trimerror(PQresultErrorMessage(res)));
+		 }
 	}
 
 	int nfields = PQnfields(res);

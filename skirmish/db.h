@@ -41,6 +41,18 @@ struct error : std::exception {
 	char const *what(void) const throw() { return err.c_str(); }
 };
 
+struct sqlerror : error {
+	sqlerror(std::string const &err, std::string const &query = "", int where = -1)
+		: error(err)
+		, query(query)
+		, where(where)
+	{}
+	~sqlerror() throw() {}
+
+	std::string query;
+	int where;
+};
+
 struct result_row : boost::noncopyable {
 	virtual ~result_row();
 	virtual std::string string_value(int col) = 0;

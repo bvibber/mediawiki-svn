@@ -132,7 +132,7 @@ main(int argc, char *argv[])
 		}
 
 		if (cnr == -1) {
-			std::cerr << "No connection.\n";
+			std::cerr << "[no connection]\n";
 			continue;
 		}
 
@@ -146,7 +146,14 @@ main(int argc, char *argv[])
 
 		try {
 			res = conn->execute_sql(input);
-		} catch (db::error &e) {
+		} catch (db::sqlerror const &e) {
+			std::cerr << boost::format("[%s]\n") % e.what();
+			if (e.where != -1) {
+				std::cerr << e.query << '\n';
+				std::cerr << std::string(e.where - 1, ' ') << "^\n";
+			}
+			continue;
+		} catch (db::error const &e) {
 			std::cerr << boost::format("[%s]\n") % e.what();
 			continue;
 		}
