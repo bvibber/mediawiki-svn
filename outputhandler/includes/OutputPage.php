@@ -344,6 +344,7 @@ class OutputPage {
 		$this->mLanguageLinks += $parserOutput->getLanguageLinks();
 		$this->addCategoryLinks( $parserOutput->getCategories() );
 		$this->mNewSectionLink = $parserOutput->getNewSection();
+		$parserOutput->applyHandlers( $this );
 		$this->addKeywords( $parserOutput );
 		if ( $parserOutput->getCacheTime() == -1 ) {
 			$this->enableClientCache( false );

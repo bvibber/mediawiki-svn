@@ -18,7 +18,8 @@ class ParserOutput
 		$mHTMLtitle,		# Display HTML title
 		$mSubtitle,			# Additional subtitle
 		$mNewSection,		# Show a new section link?
-		$mNoGallery;		# No gallery on category page? (__NOGALLERY__)
+		$mNoGallery,		# No gallery on category page? (__NOGALLERY__)
+		$mHandlers;			# Extension output handlers to be applied when this is used as page content
 
 	function ParserOutput( $text = '', $languageLinks = array(), $categoryLinks = array(),
 		$containsOldMagic = false, $titletext = '' )
@@ -38,6 +39,7 @@ class ParserOutput
 		$this->mSubtitle = "" ;
 		$this->mNewSection = false;
 		$this->mNoGallery = false;
+		$this->mHandlers = array();
 	}
 
 	function getText()                   { return $this->mText; }
@@ -112,6 +114,30 @@ class ParserOutput
 		       !isset( $this->mVersion ) ||
 		       version_compare( $this->mVersion, Parser::VERSION, "lt" );
 	}
+	
+	/**
+	 * Add an extension output handler to be applied when this
+	 * output is used as page content
+	 *
+	 * @param object $handler
+	 */
+	public function addOutputHandler( $handler ) {
+		$this->mHandlers[] = $handler;
+	}
+	
+	/**
+	 * Apply any attached output handlers to the supplied
+	 * OutputPage object
+	 *
+	 * @param OutputPage $output
+	 */
+	public function applyHandlers( $output ) {
+		if( is_array( $this->mHandlers ) ) {
+			foreach( $this->mHandlers as $handler )
+				$handler->apply( $output );
+		}
+	}
+
 }
 
 ?>

@@ -4712,6 +4712,16 @@ class Parser
 					: $this->mTitle->getPrefixedText();
 		}
 	}
+	
+	/**
+	 * Add an extension output handler to be applied when the
+	 * page is viewed
+	 *
+	 * @param object $handler Output handler
+	 */
+	public function addOutputHandler( $handler ) {
+		$this->mOutput->addOutputHandler( $handler );
+	}
 
 }
 
