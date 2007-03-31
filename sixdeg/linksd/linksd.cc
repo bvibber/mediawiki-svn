@@ -35,6 +35,7 @@
 #include "io.h"
 #include "client.h"
 #include "bdb_adjacency_store.h"
+#include "defs.h"
 
 struct client_handler : boost::noncopyable {
 	client_handler(pathfinder *);
@@ -156,10 +157,9 @@ main(int argc, char *argv[])
 	std::string l;
 	std::printf("retrieving links table...\n");
 
-	//pathfinder *finder = new pathfinder_mem;
 	bdb_adjacency_store aj;
 
-	aj.open("/home/river/linksd-db", bdb_adjacency_store::read_open);
+	aj.open(DB, bdb_adjacency_store::read_open);
 	if (aj.error()) {
 		std::cerr << "opening database: " << aj.strerror() << "\n";
 		return 1;

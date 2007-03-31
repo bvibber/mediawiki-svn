@@ -17,6 +17,7 @@
 #include <mysql.h>
 
 #include "linksc.h"
+#include "defs.h"
 
 void
 mysql_query_ordie(MYSQL* mysql, char const *query)

@@ -23,6 +23,7 @@
 #include <fcntl.h>
 
 #include "linksc.h"
+#include "defs.h"
 #include "encode_decode.h"
 
 int

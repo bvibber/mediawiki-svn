@@ -8,9 +8,6 @@
 
 // #pragma ident "$URL: file:///home/river/s2s/linksd/linksc.h $ %E% %U%"
 
-#define DOOR "/home/river/.linksnew.door"
-#define CACHE "/home/river/.linksnew.cache"
-
 #include <inttypes.h>
 
 #include <vector>

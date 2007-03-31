@@ -21,8 +21,7 @@
 
 #include "linksc.h"
 #include "bdb_adjacency_store.h"
-
-#define DB "/home/river/linksd-db"
+#include "defs.h"
 
 void
 mysql_query_ordie(MYSQL* mysql, char const *query)
