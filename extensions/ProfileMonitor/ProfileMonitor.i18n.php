@@ -6,10 +6,10 @@
  * @addtogroup Extensions
  * @author Rob Church <rob.church@mintrasystems.com>
  */
- 
+
 function efProfileMonitorMessages() {
 	return array(
-	
+
 /* English (Rob Church) */
 'en' => array(
 'profiling' => 'Profiling data',
@@ -23,7 +23,21 @@ function efProfileMonitorMessages() {
 'profiling-data-average' => 'Time (avg)',
 'profiling-no-data' => 'No matching data found.',
 ),
-	
+
+/* Indonesian (IvanLanin) */
+'en' => array(
+'profiling' => 'Profilisasi data',
+'profiling-process' => 'Proses data:',
+'profiling-wildcard' => 'Gunakan wildcard',
+'profiling-ok' => 'OK',
+'profiling-data' => 'Profilisasi data untuk `$1`',
+'profiling-data-process' => 'Proses',
+'profiling-data-count' => 'Jumlah',
+'profiling-data-time' => 'Waktu (seluruhnya)',
+'profiling-data-average' => 'Waktu (rata-rata)',
+'profiling-no-data' => 'Tidak ditemukan data yang cocok.',
+),
+
 /* Italian (BrokenArrow) */
 'it' => array(
 'profiling' => 'Dati di profiling',
@@ -37,7 +51,7 @@ function efProfileMonitorMessages() {
 'profiling-data-average' => 'Tempo medio',
 'profiling-no-data' => 'Nessun dato corrispondente.',
 ),
-	
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'profiling' => 'Profilinggegevens',
@@ -51,7 +65,7 @@ function efProfileMonitorMessages() {
 'profiling-data-average' => 'Tijd (gem)',
 'profiling-no-data' => 'Geen gegevens gevonden.',
 ),
-	
+
 /* Slovak (helix84) */
 'sk' => array(
 'profiling' => 'Profilovacie údaje',
