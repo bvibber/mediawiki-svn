@@ -11,6 +11,8 @@ chdir( $IP );
 require( './includes/WebStart.php' );
 
 class WebStorePublish extends WebStoreCommon {
+	const DELETE_SOURCE = 1;
+
 	function execute() {
 		global $wgRequest;
 
@@ -67,6 +69,15 @@ class WebStorePublish extends WebStoreCommon {
 		// data loss.
 		if ( !preg_match( '!^archive|[a-zA-Z0-9]/!', $dstRel ) ) {
 			$this->error( 400, 'webstore_path_invalid' );
+			return false;
+		}
+
+		// Don't move anything to a filename that ends with the reserved suffix
+		if ( substr( $dstRel, -12 ) == '.MW_WebStore' || 
+			substr( $archiveRel, -12 ) == '.MW_WebStore' ) 
+		{
+			$this->error( 400, 'webstore_path_invalid' );
+			return false;
 		}
 
 		$srcRoot = $this->getRepositoryRoot( $srcRepo );
@@ -81,8 +92,10 @@ class WebStorePublish extends WebStoreCommon {
 
 		if ( file_exists( $dstPath ) ) {
 			$error = $this->publishAndArchive( $srcPath, $dstPath, $archivePath, $deleteSource );
+		} elseif ( $deleteSource ) {
+			$error = $this->movePath( $srcPath, $dstPath );
 		} else {
-			$error = $this->movePath( $srcPath, $dstPath, $deleteSource );
+			$error = $this->copyPath( $srcPath, $dstPath );
 		}
 		if ( $error !== true ) {
 			$this->error( 500, $error );
@@ -104,52 +117,85 @@ class WebStorePublish extends WebStoreCommon {
 	 *    $dstPath -> $archivePath
 	 *    $srcPath -> $dstPath
 	 * with a reasonable chance of atomic operation under various adverse conditions.
+	 *
+	 * @return true on success, error message on failure
 	 */
-	function publishAndArchive( $srcPath, $dstPath, $archivePath, $deleteSource = true ) {
-		// Create archive directory
-		if ( !wfMkdirParents( dirname( $archivePath ) ) ) return 'webstore_archive_mkdir';
-
-		// Open archive file and lock it, fail if it exists
-		$archiveFile = @fopen( $archivePath, 'x' );
-		if ( !$archiveFile ) return 'webstore_archive_open';
-		if ( !flock( $archiveFile, LOCK_EX | LOCK_NB ) ) return 'webstore_archive_lock';
-
-		// Open old destination file, lock it
-		$dstFile = @fopen( $dstPath, 'r+' );
-		if ( !$dstFile ) return 'webstore_dest_open';
-		if ( !flock( $dstFile, LOCK_EX | LOCK_NB ) ) return 'webstore_dest_lock';
-
-		// Open source file
-		$srcFile = @fopen( $srcPath, 'r' );
-		if ( !$srcFile ) return 'webstore_src_open';
-
-		// Copy dest to archive, close the archive file
-		if ( !$this->copyFile( $dstFile, $archiveFile ) ) return 'webstore_archive_copy';
-		if ( !fclose( $archiveFile ) ) return 'webstore_archive_close';
-
-		// Truncate destination
-		if ( !ftruncate( $dstFile, 0 ) || 0 !== fseek( $dstFile, 0 ) ) {
-			return 'webstore_dest_write';
-		}
-
-		// Copy source to dest
-		if ( !$this->copyFile( $srcFile, $dstFile ) ) return 'webstore_dest_copy';
-
-		// Unlink the source, close the files
-		if ( $deleteSource ) {
-			if ( wfIsWindows() ) {
-				if ( !fclose( $srcFile ) ) return 'webstore_src_close';
-				unlink( $srcPath );
-			} else {
-				unlink( $srcPath );
-				if ( !fclose( $srcFile ) ) return 'webstore_src_close';
+	function publishAndArchive( $srcPath, $dstPath, $archivePath, $flags = 0 ) {
+		$archiveLockFile = false;
+		$dstLockFile = false;
+		$error = true;
+		do {
+			// Create archive directory
+			if ( !wfMkdirParents( dirname( $archivePath ) ) ) {
+				$error = 'webstore_archive_mkdir';
+				break;
 			}
-		} else {
-			if ( !fclose( $srcFile ) ) return 'webstore_src_close';
-		}
-		if ( !fclose( $dstFile ) ) return 'webstore_dest_close';
 
-		return true;
+			// Obtain both writer locks
+			$archiveLockPath = "$archivePath.lock.MW_WebStore";
+			$archiveLockFile = fopen( $archiveLockPath, 'w' );
+			if ( !$archiveLockFile ) {
+				$error = 'webstore_lock_open';
+				break;
+			}
+			if ( !flock( $archiveLockFile, LOCK_EX | LOCK_NB ) ) {
+				$error = 'webstore_archive_lock';
+				break;
+			}
+
+			$dstLockPath = "$dstPath.lock.MW_WebStore";
+			$dstLockFile = fopen( $dstLockPath, 'w' );
+			if ( !$dstLockFile ) {
+				$error = 'webstore_lock_open';
+				break;
+			}
+			if ( !flock( $dstLockFile, LOCK_EX | LOCK_NB ) ) {
+				$error = 'webstore_dest_lock';
+				break;
+			}
+
+			// Copy the old file to the archive. Leave a copy in place in its 
+			// current location for now so that webserving continues to work.
+			// If we had access to the real C rename() call, then we could use
+			// link() instead and avoid the copy, but the chance that PHP might 
+			// copy and delete on the subsequent rename() call, thereby overwriting 
+			// the archive, makes this a dangerous option.
+			//
+			// NO_LOCK option because we already have the lock
+			$error = $this->copyPath( $dstPath, $archivePath, self::NO_LOCK );
+			if ( $error !== true ) {
+				break;
+			}
+
+			// Move in the new file
+			if ( $flags & self::DELETE_SOURCE ) {
+				if ( $this->windows ) {
+					// PHP doesn't provide access to the MOVEFILE_REPLACE_EXISTING
+					unlink( $dstPath );
+				}
+				if ( !rename( $srcPath, $dstPath ) ) {
+					wfDebug( "$srcPath -> $dstPath\n" );
+					$error = 'webstore_rename';
+					break;
+				}
+			} else {
+				$error = $this->copyPath( $srcPath, $dstPath, self::NO_LOCK | self::OVERWRITE );
+			}
+		} while (false);
+		
+		// Close the lock files
+		$error2 = true;
+		if ( $archiveLockFile ) {
+			$error2 = $this->closeAndDelete( $archiveLockFile, $archiveLockPath );
+		}
+		if ( $dstLockFile ) {
+			$error2 = $this->closeAndDelete( $dstLockFile, $dstLockPath );
+		}
+		if ( $error === true && $error2 !== true ) {
+			$error = $error2;
+		}
+
+		return $error;
 	}
 }
 

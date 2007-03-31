@@ -5,12 +5,12 @@ $wgWebStoreSettings = array(
 	 * Set this in LocalSettings.php to an array of IP ranges allowed to access 
 	 * the store. Empty by default for maximum security.
 	 */
-	'accessRanges' => array(),
+	'accessRanges' => array( '127.0.0.1' ),
 
 	/**
 	 * Access ranges for inplace-scaler.php
 	 */
-	'scalerAccessRanges' => array(),
+	'scalerAccessRanges' => array( '127.0.0.1' ),
 
 	/**
 	 * Main public directory. If false, uses $wgUploadDirectory
@@ -36,15 +36,34 @@ $wgWebStoreSettings = array(
 	 * PHP file to display on 404 errors in 404-handler.php
 	 */
 	'fallback404' => false,
+
+	/**
+	 * Connect timeout for forwarded HTTP requests, in seconds
+	 */
+	'httpConnectTimeout' => 0.01,
+
+	/**
+	 * Overall request timeout for forwarded HTTP requests, in seconds
+	 */
+	'httpOverallTimeout' => 180,
+
+	/**
+	 * Servers that can be used for image scaling
+	 */
+	'scalerServers' => array( 'localhost' ),
 );
 
 
 $wgWebStoreAccess = array();
 
 class WebStoreCommon {
+	const NO_LOCK = 1;
+	const OVERWRITE = 2;
+	
 	static $httpErrors = array(
 		400 => 'Bad Request',
 		403 => 'Access Denied',
+		404 => 'File not found',
 		500 => 'Internal Server Error',
 	);
 
@@ -74,6 +93,7 @@ class WebStoreCommon {
 				$this->deletedDir = false;
 			}
 		}
+		$this->windows = wfIsWindows();
 		
 		self::initialiseMessages();
 	}
@@ -137,43 +157,182 @@ EOT;
 	}
 
 	/**
-	 * Move a file from one place to another. Fails if the destination file already exists.
-	 * Requires a filesystem with locking semantics to work concurrently, i.e. not NFS.
+	 * Close and delete a file, using an order of operations appropriate for the OS
 	 */
-	function movePath( $srcPath, $dstPath, $deleteSource = true ) {
-		// Create destination directory
-		if ( !wfMkdirParents( dirname( $dstPath ) ) ) return 'webstore_dest_mkdir';
+	function closeAndDelete( $file, $path ) {
+		wfDebug( "Deleting $file, $path\n" );
+		if ( $this->windows ) {
+			// Close lock file
+			if ( !fclose( $file ) ) return false;
 
-		// Open destination file, lock it
-		$dstFile = @fopen( $dstPath, 'x' );
-		if ( !$dstFile ) return 'webstore_dest_open';
-		if ( !flock( $dstFile, LOCK_EX | LOCK_NB ) ) return 'webstore_dest_lock';
-
-		// Open source file
-		$srcFile = @fopen( $srcPath, 'r' );
-		if ( !$srcFile ) return 'webstore_src_open';
-
-		// Copy source to dest
-		if ( !$this->copyFile( $srcFile, $dstFile ) ) return 'webstore_dest_copy';
-
-		// Unlink the source, close the files
-		if ( $deleteSource ) {
-			if ( wfIsWindows() ) {
-				if ( !fclose( $srcFile ) ) return 'webstore_src_close';
-				unlink( $srcPath );
-			} else {
-				unlink( $srcPath );
-				if ( !fclose( $srcFile ) ) return 'webstore_src_close';
-			}
+			// Ignore errors on unlink, it may just be a second thread reusing the file
+			unlink( $path );
 		} else {
-			if ( !fclose( $srcFile ) ) return 'webstore_src_close';
+			// Unlink first and then close, so that we don't accidentally unlink a lockfile
+			// which is locked by someone else.
+			if ( !unlink( $path ) ) return false;
+			if ( !fclose( $file ) ) return false;
 		}
-
-		if ( !fclose( $dstFile ) ) return 'webstore_dest_close';
-
 		return true;
 	}
-	
+
+	/**
+	 * Move a file from one place to another. Fails if the destination file already exists.
+	 * Requires a filesystem with locking semantics to work concurrently, i.e. not NFS. 
+	 *
+	 * $flags may be: 
+	 * 		self::NO_LOCK if you already have the destination lock. 
+	 */
+	function movePath( $srcPath, $dstPath, $flags = 0 ) {
+		$lockFile = false;
+		$error = true;
+		do {
+			// Create destination directory
+			if ( !wfMkdirParents( dirname( $dstPath ) ) ) {
+				$error = 'webstore_dest_mkdir';
+				break;
+			}
+
+			// Open lock file
+			// The MW_WebStore suffix should be protected at the middleware entry points
+			if ( !($flags & self::NO_LOCK) ) {
+				$lockFileName = "$dstPath.lock.MW_WebStore";
+				$lockFile = fopen( $lockFileName , 'w' );
+				if ( !$lockFile ) {
+					$error = 'webstore_lock_open';
+					break;
+				}
+				if ( !flock( $lockFile, LOCK_EX | LOCK_NB ) ) {
+					$error = 'webstore_dest_lock';
+					break;
+				}
+			}
+
+			// Check for destination existence
+			if ( file_exists( $dstPath ) ) {
+				$error = 'webstore_dest_exists';
+				break;
+			}
+
+			// This is the critical gap, the reason for the locking.
+
+			// Rename the file
+			if ( !rename( $srcPath, $dstPath ) ) {
+				wfDebug( "$srcPath -> $dstPath\n" );
+				$error = 'webstore_rename';
+				break;
+			}
+		} while (false);
+
+		// Close and delete the lockfile
+		$error2 = true;
+		if ( $lockFile && !($flags & self::NO_LOCK) ) {
+			if ( !$this->closeAndDelete( $lockFile, $lockFileName ) )  {
+				$error2 = 'webstore_lock_close';
+			}
+		}
+		if ( $error !== true ) {
+			return $error;
+		} else {
+			return $error2;
+		}
+	}
+
+	/*
+	 * Atomically copy a file from one place to another. Fails if the destination file 
+	 * already exists. Requires a filesystem with locking semantics to work concurrently, 
+	 * i.e. not NFS.
+	 *
+	 * $flags may be: 
+	 *      * self::NO_LOCK if you already have the destination lock (*.lock.MW_WebStore)
+	 *      * self::OVERWRITE to overwrite the destination if it exists
+	 */
+	function copyPath( $srcPath, $dstPath, $flags = 0 ) {
+		$error = true;
+		$tempFile = false;
+		$srcFile = false;
+
+		do {
+			// Create destination directory
+			if ( !wfMkdirParents( dirname( $dstPath ) ) ) {
+				$error = 'webstore_dest_mkdir';
+				break;
+			}
+
+			// Open the source file
+			$srcFile = fopen( $srcPath, 'r' );
+			if ( !$srcFile ) {
+				$error = 'webstore_src_open';
+				break;
+			}
+
+			// Copy the file to a temporary location in the same directory as the target
+			// Open the temporary file and lock it
+			$tempFileName = "$dstPath.temp.MW_WebStore";
+			$tempFile = fopen( $tempFileName, 'a+' );
+			if ( !$tempFile ) {
+				$error = 'webstore_temp_open';
+				break;
+			}
+			if ( !flock( $tempFile, LOCK_EX | LOCK_NB ) ) {
+				$error = 'webstore_temp_lock';
+				break;
+			}
+			// Truncate the file if there's anything in it (unlikely)
+			if ( ftell( $tempFile ) ) {
+				ftruncate( $tempFile, 0 );
+			}
+			// Copy the data from filehandle to filehandle
+			if ( !$this->copyFile( $srcFile, $tempFile ) ) {
+				$error = 'webstore_temp_copy';
+				break;
+			}
+
+			// On Windows, close the temporary file now so that we don't get a lock error
+			// This creates a gap where another process may overwrite the temporary file
+			if ( $this->windows ) {
+				if ( !fclose( $tempFile ) ) {
+					$error = 'webstore_temp_close';
+					break;
+				}
+				$tempFile = false;
+			}
+
+			// Atomically move the temporary file into its final destination
+			if ( $flags & self::OVERWRITE ) {
+				if ( $this->windows && file_exists( $dstPath ) ) {
+					unlink( $dstPath );
+				}
+				if ( !rename( $tempFileName, $dstPath ) ) {
+					$error = 'webstore_rename';
+				}
+			} else {
+				$error = $this->movePath( $tempFileName, $dstPath, $flags );
+			}
+			if ( $error !== true ) {
+				break;
+			}
+		} while ( false );
+
+		// Close the source file
+		$error2 = true;
+		if ( $srcFile ) {
+			if ( !fclose( $srcFile ) ) {
+				$error2 = 'webstore_src_close';
+			}
+		}
+		// Close the temporary file
+		if ( $tempFile ) {
+			if ( !fclose( $tempFile, $tempFileName ) ) {
+				$error2 = 'webstore_temp_close';
+			}
+		}
+		if ( $error === true && $error2 !== true ) {
+			$error = $error2;
+		}
+
+		return $error;
+	}
 
 	function checkAccess() {
 		foreach ( $this->accessRanges as $range ) {
@@ -215,8 +374,8 @@ EOT;
 	function cleanup( $path ) {
 		if ( file_exists( $path )  ) {
 			$lockFile = fopen( "$path.deleting", 'a+' );
-			if ( @flock( $lockFile, LOCK_EX | LOCK_NB ) ) {
-				$dir = @opendir( $path );
+			if ( flock( $lockFile, LOCK_EX | LOCK_NB ) ) {
+				$dir = opendir( $path );
 				if ( !$dir ) {
 					fclose( $lockFile );
 					return;
