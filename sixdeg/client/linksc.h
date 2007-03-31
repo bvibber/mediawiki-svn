@@ -14,6 +14,7 @@
 #include <string>
 
 typedef uint32_t page_id_t;
+typedef uint32_t text_id_t;
 
 int linksc_findpath(std::vector<std::string>& res, std::string const &from, std::string const &to, bool ignore_dates);
 

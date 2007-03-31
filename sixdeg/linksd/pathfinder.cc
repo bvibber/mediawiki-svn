@@ -84,7 +84,7 @@ bool			a, b;
  * I didn't write this function.  I don't even know if it works correctly :-).  However,
  * it seems to return the right results.  (Credit: ZorbaTHut @ EFnet #c++)
  */
-std::vector<page_id_t>
+std::vector<std::pair<page_id_t, text_id_t> >
 pathfinder_mem::solve(page_id_t src, page_id_t dst, bool ign_date) {
 	std::vector<page_id_t> back;
 	std::deque<page_id_t>	next;
@@ -109,8 +109,14 @@ pathfinder_mem::solve(page_id_t src, page_id_t dst, bool ign_date) {
 				path.push_back(lastlink);
 				lastlink = back.at(lastlink);
 			}
+
 			std::reverse(path.begin(), path.end());
-			return path;
+
+			std::vector<std::pair<page_id_t, text_id_t> > ret;
+			for (std::size_t i = 0, end = path.size(); i < end; ++i)
+				ret.push_back(std::make_pair(path[i], static_cast<text_id_t>(-1)));
+
+			return ret;
 		}
 
 		for (std::size_t i = 0; i < adjacency.at(ts).size(); i++) {
@@ -122,7 +128,7 @@ pathfinder_mem::solve(page_id_t src, page_id_t dst, bool ign_date) {
 			}
 		}
 	}
-	return std::vector<page_id_t>();
+	return std::vector<std::pair<page_id_t, text_id_t> >();
 }
 
 pathfinder::pathfinder(void)
@@ -194,7 +200,7 @@ pathfinder_bdb::filter(void)
 {
 }
 
-std::vector<page_id_t>
+std::vector<std::pair<page_id_t, text_id_t> >
 pathfinder_bdb::solve(page_id_t src, page_id_t dst, bool ign_dates)
 {
 	std::deque<page_id_t> open;
@@ -218,7 +224,17 @@ pathfinder_bdb::solve(page_id_t src, page_id_t dst, bool ign_dates)
 				}
 				std::reverse(ret.begin(), ret.end());
 				ret.push_back(*it);
-				return ret;
+
+				std::vector<std::pair<page_id_t, text_id_t> > r;
+				for (std::size_t i = 0, end = ret.size(); i < end; ++i) {
+					boost::optional<text_id_t> id = store.text_id_for_page(ret[i]);
+					if (id)
+						r.push_back(std::make_pair(ret[i], *id));
+					else
+						r.push_back(std::make_pair(ret[i], static_cast<text_id_t>(-1)));
+				}
+
+				return r;
 			}
 
 			if (parent[*it] == 0 && (!ign_dates || !cached_is_date(*it))) {
@@ -227,5 +243,5 @@ pathfinder_bdb::solve(page_id_t src, page_id_t dst, bool ign_dates)
 			}
 		}
 	}
-	return std::vector<page_id_t>();
+	return std::vector<std::pair<page_id_t, text_id_t> >();
 }

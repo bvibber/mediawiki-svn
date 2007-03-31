@@ -10,6 +10,7 @@
 #include <iostream>
 
 #include <boost/bind.hpp>
+#include <boost/format.hpp>
 
 #include <sys/types.h>
 #include <inttypes.h>
@@ -73,12 +74,11 @@ request_dispatcher::handle(client *s)
 	}
 	toid = *toid_o;
 
-	std::vector<page_id_t> links = finder->solve(fromid, toid, ign_date);
+	std::vector<std::pair<page_id_t, text_id_t> > links = finder->solve(fromid, toid, ign_date);
 	std::string path;
 
 	for (std::size_t i = 0, e = links.size(); i < e; ++i) {
-		path += *finder->name_for_id(links[i]);
-		path += '|';
+		path += str(boost::format("%s#%d|") % *finder->name_for_id(links[i].first) % links[i].second);
 	}
 	s->encoder.set_key("path", path);
 	s->encoder.send_to(s->fd);

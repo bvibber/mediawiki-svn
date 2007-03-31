@@ -81,10 +81,12 @@ main(int argc, char *argv[])
 
 	std::cout << "ok\n";
 	std::cout << "retrieving titles...\n";
-	mysql_query_ordie(&mysql, "SELECT page_title,page_id FROM page WHERE page_namespace=0");
+	mysql_query_ordie(&mysql, "SELECT page_title,page_id,page_latest FROM page WHERE page_namespace=0");
 	res = mysql_use_result(&mysql);
 	while (arow = mysql_fetch_row(res)) {
-		trans.add_title(boost::lexical_cast<page_id_t>(arow[1]), arow[0]);
+		trans.add_title(	boost::lexical_cast<page_id_t>(arow[1]), 
+					arow[0], 
+					boost::lexical_cast<text_id_t>(arow[2]));
 		if (store.error()) {
 			std::cout << boost::format("adding title: %s\n") % store.strerror();
 			return 1;

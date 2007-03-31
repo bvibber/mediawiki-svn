@@ -57,6 +57,21 @@ bdb_adjacency_store::open(std::string const &path, bdb_adjacency_store::open_mod
 		return;
 	}
 
+	last_error = db_create(&text_ids, env, 0);
+	if (last_error != 0) {
+		env->close(env, 0);
+		env = 0;
+		return;
+	}
+
+	last_error = text_ids->open(text_ids, NULL, "text_id", NULL, DB_HASH,
+	                         DB_THREAD | DB_AUTO_COMMIT | DB_CREATE, 0);
+	if (last_error != 0) {
+		env->close(env, 0);
+		env = 0;
+		return;
+	}
+
 	last_error = db_create(&titles, env, 0);
 	if (last_error != 0) {
 		env->close(env, 0);
@@ -125,7 +140,7 @@ bdb_adjacency_transaction::~bdb_adjacency_transaction(void)
 }
 
 void
-bdb_adjacency_transaction::add_title(page_id_t page, std::string const &name)
+bdb_adjacency_transaction::add_title(page_id_t page, std::string const &name, text_id_t text_id)
 {
 	std::vector<unsigned char> buf(4 + name.size());
 	buf[0] = (page & 0xFF000000) >> 24;
@@ -146,6 +161,19 @@ bdb_adjacency_transaction::add_title(page_id_t page, std::string const &name)
 	value.data = &buf[0];
 
 	store.last_error = store.titles->put(store.titles, txn, &key, &value, 0);
+	if (store.last_error != 0)
+		return;
+
+	std::vector<unsigned char> tbuf(4);
+	tbuf[0] = (text_id & 0xFF000000) >> 24;
+	tbuf[1] = (text_id & 0x00FF0000) >> 16;
+	tbuf[2] = (text_id & 0x0000FF00) >> 8;
+	tbuf[3] = (text_id & 0x000000FF);
+
+	memset(&value, 0, sizeof(value));
+	value.size = 4;
+	value.data = &tbuf[0];
+	store.last_error = store.text_ids->put(store.text_ids, txn, &key, &value, 0);
 }
 
 boost::optional<std::string>
@@ -169,6 +197,34 @@ bdb_adjacency_store::name_for_id(page_id_t page)
 		return boost::optional<std::string>();
 
 	std::string ret((char *)value.data + 4, (char *)value.data + value.size);
+	std::free(value.data);
+	return ret;
+}
+
+boost::optional<text_id_t>
+bdb_adjacency_store::text_id_for_page(page_id_t page)
+{
+	std::vector<unsigned char> buf(4);
+	buf[0] = (page & 0xFF000000) >> 24;
+	buf[1] = (page & 0x00FF0000) >> 16;
+	buf[2] = (page & 0x0000FF00) >> 8;
+	buf[3] = (page & 0x000000FF);
+
+	DBT key, value;
+	memset(&key, 0, sizeof(key));
+	memset(&value, 0, sizeof(value));
+	key.size = 4;
+	key.data = &buf[0];
+	value.flags = DB_DBT_MALLOC;
+
+	int i = text_ids->get(text_ids, 0, &key, &value, 0);
+	if (i == DB_NOTFOUND)
+		return boost::optional<text_id_t>();
+	char *p = (char *) value.data;
+	text_id_t ret =   (static_cast<unsigned char>(*(p + 0)) << 24) 
+			| (static_cast<unsigned char>(*(p + 1)) << 16) 
+			| (static_cast<unsigned char>(*(p + 2)) << 8) 
+			|  static_cast<unsigned char>(*(p + 3));
 	std::free(value.data);
 	return ret;
 }
