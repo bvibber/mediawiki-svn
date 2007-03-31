@@ -54,8 +54,8 @@ request_dispatcher::handle(client *s)
 	from = s->decoder.get_key("from");
 	to = s->decoder.get_key("to");
 
-	int fromid, toid;
-	boost::optional<int> fromid_o = finder->id_for_name(from);
+	page_id_t fromid, toid;
+	boost::optional<page_id_t> fromid_o = finder->id_for_name(from);
 	if (!fromid_o) {
 		s->encoder.set_key("error", "no_from");
 		s->encoder.send_to(s->fd);
@@ -64,7 +64,7 @@ request_dispatcher::handle(client *s)
 	}
 	fromid = *fromid_o;
 
-	boost::optional<int> toid_o = finder->id_for_name(to);
+	boost::optional<page_id_t> toid_o = finder->id_for_name(to);
 	if (!toid_o) {
 		s->encoder.set_key("error", "no_to");
 		s->encoder.send_to(s->fd);
@@ -73,10 +73,10 @@ request_dispatcher::handle(client *s)
 	}
 	toid = *toid_o;
 
-	std::vector<int> links = finder->solve(fromid, toid, ign_date);
+	std::vector<page_id_t> links = finder->solve(fromid, toid, ign_date);
 	std::string path;
 
-	for (int i = 0, e = links.size(); i < e; ++i) {
+	for (std::size_t i = 0, e = links.size(); i < e; ++i) {
 		path += *finder->name_for_id(links[i]);
 		path += '|';
 	}
