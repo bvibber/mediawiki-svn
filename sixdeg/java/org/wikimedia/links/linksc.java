@@ -115,9 +115,9 @@ public class linksc {
 
 			if ((x = reply.get("error")) != null) {
 				if (x.equals("no_to"))
-					throw new ErrorException("Source article does not exist");
-				else if (x.equals("no_from"))
 					throw new ErrorException("Target article does not exist");
+				else if (x.equals("no_from"))
+					throw new ErrorException("Source article does not exist");
 				else if (x.equals("illegal_request"))
 					throw new ErrorException("Server rejected path request");
 				else
