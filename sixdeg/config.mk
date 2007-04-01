@@ -8,6 +8,7 @@ CXX		= g++
 CXXFLAGS	= -W -Wall -Werror -g3 -O2
 CPPFLAGS	= 
 PICFLAGS	= -fPIC
+LIBS		=
 
 JAVA_HOME	= /usr/lib/j2sdk1.5-sun
 JAVAH		= $(JAVA_HOME)/bin/javah
@@ -15,3 +16,5 @@ JAVAC		= $(JAVA_HOME)/bin/javac
 
 .cc.o:
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $<
+
+-include ../local.mk

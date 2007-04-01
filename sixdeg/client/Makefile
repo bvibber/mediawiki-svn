@@ -8,7 +8,7 @@ include ../config.mk
 all: linksc
 
 linksc: linksc.o liblinksc.o linksc.h
-	$(CXX) $(CXXFLAGS) linksc.o liblinksc.o -o linksc -L../libsixdeg -lsixdeg
+	$(CXX) $(CXXFLAGS) linksc.o liblinksc.o -o linksc -L../libsixdeg -lsixdeg $(LIBS)
 linksc.o: linksc.cc linksc.h
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -I.. -I../libsixdeg -c linksc.cc 
 liblinksc.o: liblinksc.cc linksc.h

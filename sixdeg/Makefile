@@ -26,4 +26,3 @@ dist:
 	(cd .. && find linksd -name '.*') | tail +1l >../exclude
 	cd .. && tar cvfX linksd.tar exclude linksd
 	cd .. && gzip -f linksd.tar
-.KEEP_STATE:
