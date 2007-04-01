@@ -31,7 +31,7 @@ mkcache_bdb: $(MKCACHE_BDB_OBJS)
 	$(CXX) $(CPPFLAGS) $(MYSQL_CPPFLAGS) $(CXXFLAGS) -c $<
 
 clean:
-	rm -f linksd *.o mkcache core
+	rm -f linksd *.o mkcache mkcache_bdb core
 
 linksd.o: linksd.cc ../client/linksc.h pathfinder.h request_dispatcher.h \
   work_queue.h io.h client.h ../libsixdeg/encode_decode.h
