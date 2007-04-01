@@ -7,9 +7,6 @@ include ../config.mk
 
 CLASSES= \
 	org/wikimedia/links/linksc.class 			\
-	org/wikimedia/links/NoFromArticleException.class 	\
-	org/wikimedia/links/NoToArticleException.class 		\
-	org/wikimedia/links/ConnectException.class 		\
 	org/wikimedia/links/ErrorException.class		\
 	org/wikimedia/links/RequestEncoder.class		\
 	org/wikimedia/links/RequestDecoder.class		\
