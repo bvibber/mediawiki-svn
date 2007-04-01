@@ -4,11 +4,11 @@
 # $Id$
 
 CXX		= g++
-CXXFLAGS	= -g3 -O0
+CXXFLAGS	= -g3 -O2
 CPPFLAGS	= -W -Wall -D_REENTRANT -I.. -I../libsixdeg -I../client
 MYSQL_CPPFLAGS	= $(shell mysql_config --cflags)
 MYSQL_LIBS	= $(shell mysql_config --libs_r)
-BDB_LIBS	= -ldb-4.2
+BDB_LIBS	= -ldb-4.4
  
 LINKSD_SRCS	= linksd.cc pathfinder.cc request_dispatcher.cc io.cc client.cc work_queue.cc bdb_adjacency_store.cc
 LINKSD_OBJS	= $(LINKSD_SRCS:.cc=.o)

@@ -32,6 +32,52 @@ mysql_query_ordie(MYSQL* mysql, char const *query)
 		std::exit(8);
 	}
 }
+
+struct link_entry {
+	page_id_t from, to;
+};
+
+static std::vector<link_entry> pending;
+static bdb_adjacency_store store;
+
+static void flush()
+{
+	bdb_adjacency_transaction trans(store);
+	for (std::size_t i = 0, end = pending.size(); i < end; ++i) {
+		trans.add_adjacency(pending[i].from, pending[i].to);
+	}
+	trans.commit();
+
+	if (store.error()) {
+		std::cout << boost::format("adding adjacency: %s\n") % store.strerror();
+		std::exit(1);
+	}
+	pending.clear();
+}
+
+struct title_entry {
+	page_id_t page;
+	text_id_t text;
+	std::string name;
+};
+
+static std::vector<title_entry> pending_titles;
+static void flush_titles()
+{
+	bdb_adjacency_transaction trans(store);
+
+	for (std::size_t i = 0, end = pending_titles.size(); i < end; ++i) {
+		trans.add_title(pending_titles[i].page, pending_titles[i].name, pending_titles[i].text);
+	}
+
+	trans.commit();
+	if (store.error()) {
+		std::cout << boost::format("adding title: %s\n") % store.strerror();
+		std::exit(1);
+	}
+	pending_titles.clear();
+}
+
 int
 main(int argc, char *argv[])
 {
@@ -44,15 +90,12 @@ main(int argc, char *argv[])
 		return 1;
 	}
 
-	bdb_adjacency_store store;
 	store.open(DB, bdb_adjacency_store::write_open);
 
 	if (store.error()) {
 		std::cout << boost::format("opening database: %s\n") % store.strerror();
 		return 1;
 	}
-
-	bdb_adjacency_transaction trans(store);
 
 	std::cout << "retrieving links table...\n";
 	mysql_query_ordie(&mysql, "SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED");
@@ -68,32 +111,38 @@ main(int argc, char *argv[])
 	while (arow = mysql_fetch_row(res)) {
 		if ((i++ % 10000) == 0)
 			std::cout << boost::format("%d...\n") % (i - 1);
-		page_id_t from = boost::lexical_cast<page_id_t>(arow[1]);
-		page_id_t to = boost::lexical_cast<page_id_t>(arow[0]);
 
-		trans.add_adjacency(from, to);
-		if (store.error()) {
-			std::cout << boost::format("adding adjacency: %s\n") % store.strerror();
-			return 1;
-		}
+		if ((i % 500) == 0)
+			flush();
+
+		link_entry e;
+		e.from = boost::lexical_cast<page_id_t>(arow[1]);
+		e.to = boost::lexical_cast<page_id_t>(arow[0]);
+		pending.push_back(e);
 	}
+	flush();
+
 	mysql_free_result(res);
 
 	std::cout << "ok\n";
 	std::cout << "retrieving titles...\n";
 	mysql_query_ordie(&mysql, "SELECT page_title,page_id,page_latest FROM page WHERE page_namespace=0");
 	res = mysql_use_result(&mysql);
+	i = 0;
 	while (arow = mysql_fetch_row(res)) {
-		trans.add_title(	boost::lexical_cast<page_id_t>(arow[1]), 
-					arow[0], 
-					boost::lexical_cast<text_id_t>(arow[2]));
-		if (store.error()) {
-			std::cout << boost::format("adding title: %s\n") % store.strerror();
-			return 1;
-		}
+		if ((i++ % 10000) == 0)
+			std::cout << i << "...\n";
+		if ((i % 500) == 0)
+			flush_titles();
+
+		title_entry t;
+		t.page = boost::lexical_cast<page_id_t>(arow[1]);
+		t.name = arow[0];
+		t.text = boost::lexical_cast<text_id_t>(arow[2]);
+		pending_titles.push_back(t);
 	}
+	flush_titles();
 	mysql_free_result(res);
 	mysql_close(&mysql);
-	trans.commit();
 	store.close();
 }
