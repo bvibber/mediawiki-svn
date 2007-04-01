@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
  * Six degrees of Wikipedia: Database cacher.
  * This source code is released into the public domain.

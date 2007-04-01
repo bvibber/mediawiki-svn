@@ -1,10 +1,10 @@
+/* $Id$ */
 /* 
  * Six degrees of Wikipedia: Front-end client (command-line)
  *
  * Linux version: modified to use AF_LOCAL sockets.
  */
 
-#pragma ident "@(#)linksc.cc	1.3 06/09/20 00:12:50"
 
 #include <iostream>
 #include <string>
@@ -13,7 +13,7 @@
 #include "linksc.h"
 
 int
-main(int argc, char *argv[])
+main(int, char *[])
 {
 	std::string src, dst;
 	std::getline(std::cin, src);
@@ -32,7 +32,7 @@ main(int argc, char *argv[])
 		return 0;
 	}
 	std::cout << "OK\n";
-	for (int i = 0; i < result.size(); ++i)
+	for (std::size_t i = 0; i < result.size(); ++i)
 		std::cout << result[i] << '\n';
 }
 

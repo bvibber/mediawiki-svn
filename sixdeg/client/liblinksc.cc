@@ -1,14 +1,14 @@
+/* $Id$ */
 /*
  * Six degrees of Wikipedia: Client library.
  */
 
-#pragma ident "@(#)liblinksc.cc	1.3 06/09/20 00:47:26"
-
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <sys/un.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
 #include <iostream>
 #include <cstdio>
@@ -30,13 +30,15 @@ int
 linksc_findpath(std::vector<std::string>& result, std::string const &src, std::string const &dst, bool ignore_dates)
 {
 	std::vector<char> data;
-	int s, l;
-	struct sockaddr_un addr;
+	int s;
+	struct sockaddr_in addr;
 
 	std::memset(&addr, 0, sizeof(addr));
-	addr.sun_family = AF_LOCAL;
-	std::strcpy(addr.sun_path, DOOR);
-	if ((s = socket(AF_LOCAL, SOCK_STREAM, 0)) == -1) {
+	addr.sin_family = AF_UNIX;
+	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	addr.sin_port = htons(PORT);
+
+	if ((s = socket(PF_UNIX, SOCK_STREAM, 0)) == -1) {
 		perror("socket");
 		return 3;
 	}

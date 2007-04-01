@@ -1,8 +1,7 @@
+/* $Id$ */
 /*
  * Six degrees of Wikipedia: Java client.
  * This source code is released into the public domain.
- *
- * @(#)linksc.java	1.1 05/11/21 21:02:32
  */
 package org.wikimedia.links;
 

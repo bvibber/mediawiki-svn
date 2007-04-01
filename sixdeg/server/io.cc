@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
  * Six degrees of Wikipedia: Server.
  * This source code is released into the public domain.
@@ -37,7 +38,7 @@ void
 poller::do_poll(void)
 {
 	std::vector<pollfd> pfds(fds.size());
-	for (int i = 0; i < fds.size(); ++i) {
+	for (std::size_t i = 0; i < fds.size(); ++i) {
 		pfds[i].fd = fds[i].first;
 		pfds[i].events = (fds[i].second == readio ? POLLRDNORM : POLLWRNORM);
 	}
@@ -50,7 +51,7 @@ poller::do_poll(void)
 	std::vector<std::pair<int, io_type> > tmp;
 	tmp.swap(fds);
 
-	for (int i = 0; i < pfds.size(); ++i) {
+	for (std::size_t i = 0; i < pfds.size(); ++i) {
 		if (pfds[i].revents == 0) {
 			fds.push_back(tmp[i]);
 			continue;
@@ -76,7 +77,7 @@ dispatcher::append(boost::function<void (void)> f)
 void
 dispatcher::run(void)
 {
-	for (int i = 0; i < funcs.size(); ++i)
+	for (std::size_t i = 0; i < funcs.size(); ++i)
 		funcs[i]();
 	funcs.clear();
 }

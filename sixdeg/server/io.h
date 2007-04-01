@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
  * Six degrees of Wikipedia: Server.
  * This source code is released into the public domain.

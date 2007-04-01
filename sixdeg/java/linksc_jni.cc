@@ -1,10 +1,9 @@
+/* $Id$ */
 /*
  * Six degrees of Wikipedia: JNI client interface.
  * This source code is released into the public domain.
  */
 
-#pragma ident "@(#)linksc_jni.cc	1.1 05/11/21 21:00:23"
- 
 #include <string>
 #include <vector>
 
@@ -15,7 +14,7 @@
 #include "org_wikimedia_links_linksc.h"
 
 extern "C" JNIEXPORT jobjectArray JNICALL 
-Java_org_wikimedia_links_linksc_findPath (JNIEnv *env, jobject o, jstring jfrom, jstring jto, jboolean ignore_dates)
+Java_org_wikimedia_links_linksc_findPath (JNIEnv *env, jobject, jstring jfrom, jstring jto, jboolean ignore_dates)
 {
 	std::string from, to;
 	from = env->GetStringUTFChars(jfrom, 0);
@@ -33,7 +32,11 @@ Java_org_wikimedia_links_linksc_findPath (JNIEnv *env, jobject o, jstring jfrom,
 	case 1: errorstr = "Target article does not exist."; break;
 	case 3: errorstr = "Could not connect to links server."; break;
 	}
+
 	if (status < 2 || status == 3) {
+		resultarr = (jobjectArray) env->NewObjectArray(0,
+				env->FindClass("java/lang/String"), env->NewStringUTF(""));
+
 		error = env->FindClass("org/wikimedia/links/ErrorException");
 		env->ThrowNew(error, errorstr);
 		return resultarr;
@@ -42,7 +45,7 @@ Java_org_wikimedia_links_linksc_findPath (JNIEnv *env, jobject o, jstring jfrom,
 	resultarr = (jobjectArray) env->NewObjectArray(result.size(),
 			env->FindClass("java/lang/String"), env->NewStringUTF(""));
 
-	for (int i = 0; i < result.size(); ++i) {
+	for (std::size_t i = 0; i < result.size(); ++i) {
 		env->SetObjectArrayElement(resultarr, i, env->NewStringUTF(result[i].c_str()));
 	}
 	return resultarr;	

@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
  * Six degrees of Wikipedia: Server (request handler).
  * This source code is released into the public domain.
@@ -48,7 +49,7 @@ request_encoder::send_to(int s)
 	}
 	buf.insert(buf.end(), eod.begin(), eod.end());
 
-	if (write(s, &buf[0], buf.size()) < buf.size())
+	if (write(s, &buf[0], buf.size()) < (ssize_t) buf.size())
 		return false;
 	return true;
 }

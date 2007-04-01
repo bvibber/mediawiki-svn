@@ -3,9 +3,7 @@
 # Six degrees of Wikipedia: Python front-end.
 # This source code is released into the public domain.
 #
-# @(#)six_degrees	1.1 05/11/21 21:00:39
-
-
+# $Id$
 
 #import cgitb; cgitb.enable()
 

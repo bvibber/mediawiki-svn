@@ -1,9 +1,8 @@
+/* $Id$ */
 /*
  * Six degrees of Wikipedia: Database cacher.
  * This source code is released into the public domain.
  */
-
-// #pragma ident "@(#)mkcache.cc	1.1 05/11/21 21:00:29"
 
 #include <iostream>
 #include <cstdio>
@@ -79,7 +78,7 @@ static void flush_titles()
 }
 
 int
-main(int argc, char *argv[])
+main(int, char *argv[])
 {
 	MYSQL mysql;
 	mysql_init(&mysql);
@@ -108,7 +107,7 @@ main(int argc, char *argv[])
 
 	MYSQL_ROW arow;
 	int i = 0;
-	while (arow = mysql_fetch_row(res)) {
+	while ((arow = mysql_fetch_row(res)) != NULL) {
 		if ((i++ % 10000) == 0)
 			std::cout << boost::format("%d...\n") % (i - 1);
 
@@ -129,7 +128,7 @@ main(int argc, char *argv[])
 	mysql_query_ordie(&mysql, "SELECT page_title,page_id,page_latest FROM page WHERE page_namespace=0");
 	res = mysql_use_result(&mysql);
 	i = 0;
-	while (arow = mysql_fetch_row(res)) {
+	while ((arow = mysql_fetch_row(res)) != NULL) {
 		if ((i++ % 10000) == 0)
 			std::cout << i << "...\n";
 		if ((i % 500) == 0)

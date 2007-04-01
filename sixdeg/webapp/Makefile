@@ -1,7 +1,7 @@
+# $Id$
+#
 # Six degrees of Wikipedia: Makefile
 # This source code is released into the public domain.
-#
-# $URL: file:///home/river/s2s/linksd/Makefile $ %E% %U%
 
 all: sixdeg.war
 

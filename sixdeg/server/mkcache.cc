@@ -1,9 +1,8 @@
+/* $Id$ */
 /*
  * Six degrees of Wikipedia: Database cacher.
  * This source code is released into the public domain.
  */
-
-#pragma ident "@(#)mkcache.cc	1.1 05/11/21 21:00:29"
 
 #include <iostream>
 #include <cstdio>
@@ -29,7 +28,7 @@ mysql_query_ordie(MYSQL* mysql, char const *query)
 	}
 }
 int
-main(int argc, char *argv[])
+main(int, char *argv[])
 {
 	MYSQL mysql;
 	mysql_init(&mysql);
@@ -56,7 +55,7 @@ main(int argc, char *argv[])
 
 	MYSQL_ROW arow;
 	int i = 0;
-	while (arow = mysql_fetch_row(res)) {
+	while ((arow = mysql_fetch_row(res)) != NULL) {
 		if ((i++ % 10000) == 0)
 			std::printf("%d...\n", i - 1);
 		out << arow[1] << ' ' << arow[0] << '\n';
@@ -68,7 +67,7 @@ main(int argc, char *argv[])
 	std::printf("retrieving titles...\n");
 	mysql_query_ordie(&mysql, "SELECT page_title,page_id FROM page WHERE page_namespace=0");
 	res = mysql_use_result(&mysql);
-	while (arow = mysql_fetch_row(res)) {
+	while ((arow = mysql_fetch_row(res)) != NULL) {
 		out << arow[1] << ' ' << arow[0] << '\n';
 	}
 	mysql_free_result(res);

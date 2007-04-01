@@ -3,13 +3,13 @@
 #
 # $Id$
 
-CXX		= g++
-CXXFLAGS	= -g3 -O2
-CPPFLAGS	= -W -Wall -D_REENTRANT -I.. -I../libsixdeg -I../client
+include ../config.mk
 MYSQL_CPPFLAGS	= $(shell mysql_config --cflags)
 MYSQL_LIBS	= $(shell mysql_config --libs_r)
 BDB_LIBS	= -ldb-4.4
  
+CPPFLAGS	+= -D_REENTRANT -I.. -I../libsixdeg -I../client $(MYSQL_CPPFLAGS)
+
 LINKSD_SRCS	= linksd.cc pathfinder.cc request_dispatcher.cc io.cc client.cc work_queue.cc bdb_adjacency_store.cc
 LINKSD_OBJS	= $(LINKSD_SRCS:.cc=.o)
 
@@ -19,16 +19,13 @@ MKCACHE_BDB_OBJS	= $(MKCACHE_BDB_SRCS:.cc=.o)
 all: linksd mkcache mkcache_bdb
 
 linksd: $(LINKSD_OBJS) ../libsixdeg/libsixdeg.a
-	$(CXX) -g -O2 -lmysqlclient -lz $(LINKSD_OBJS) -o linksd -L../libsixdeg -lsixdeg $(BDB_LIBS)
+	$(CXX) $(CXXFLAGS) $(LINKSD_OBJS) -o linksd -L../libsixdeg -lsixdeg $(BDB_LIBS) $(MYSQL_LIBS)
 
 mkcache: mkcache.o
 	$(CXX) $(CXXFLAGS) mkcache.o -o mkcache $(MYSQL_LIBS)
 
 mkcache_bdb: $(MKCACHE_BDB_OBJS)
 	$(CXX) $(CXXFLAGS) $(MKCACHE_BDB_OBJS) -o mkcache_bdb $(BDB_LIBS) $(MYSQL_LIBS)
-
-%.o: %.cc
-	$(CXX) $(CPPFLAGS) $(MYSQL_CPPFLAGS) $(CXXFLAGS) -c $<
 
 clean:
 	rm -f linksd *.o mkcache mkcache_bdb core

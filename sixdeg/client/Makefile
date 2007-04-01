@@ -1,16 +1,18 @@
+# $Id$
+#
 # Six degrees of Wikipedia: Makefile
 # This source code is released into the public domain.
-#
-# $URL: file:///home/river/s2s/linksd/Makefile $ %E% %U%
+
+include ../config.mk
 
 all: linksc
 
 linksc: linksc.o liblinksc.o linksc.h
-	g++ -O2 linksc.o liblinksc.o -o linksc -L../libsixdeg -lsixdeg
+	$(CXX) $(CXXFLAGS) linksc.o liblinksc.o -o linksc -L../libsixdeg -lsixdeg
 linksc.o: linksc.cc linksc.h
-	g++ -I.. -I../libsixdeg  -O2 -c linksc.cc 
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -I.. -I../libsixdeg -c linksc.cc 
 liblinksc.o: liblinksc.cc linksc.h
-	g++ -I.. -I../libsixdeg -fPIC -O2 -g -Ilibsixdeg -c liblinksc.cc
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(PICFLAGS) -I.. -I../libsixdeg -c liblinksc.cc
 
 clean:
 	rm -f linksc *.so *.o core

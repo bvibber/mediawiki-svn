@@ -1,11 +1,10 @@
+/* $Id$ */
 /*
  * Six degrees of Wikipedia: Server.
  * This source code is released into the public domain.
  *
  * Linux version, modified to use AF_UNIX socket instead of doors 2006-09-20.
  */
-
-// #pragma ident "@(#)linksd.cc	1.3 07/01/24 14:14:48"
 
 #include <iostream>
 #include <cstdio>
@@ -24,7 +23,8 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <sys/un.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
 #include <unistd.h>
 #include <fcntl.h>
@@ -58,16 +58,18 @@ client_handler::client_handler(pathfinder *f_)
 	: d(f_)
 	, f(f_)
 {
-	struct sockaddr_un addr;
+	struct sockaddr_in addr;
 
-	if ((listener = socket(AF_LOCAL, SOCK_STREAM, 0)) == -1) {
+	if ((listener = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
 		std::perror("socket");
 		std::exit(1);
 	}
-	unlink(DOOR);
+
 	std::memset(&addr, 0, sizeof(addr));
-	addr.sun_family = AF_LOCAL;
-	strncpy(addr.sun_path, DOOR, sizeof(addr.sun_path));
+	addr.sin_family = AF_UNIX;
+	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	addr.sin_port = htons(PORT);
+
 	if (bind(listener, (struct sockaddr *)&addr, sizeof(addr)) == -1) {
 		std::perror("bind");
 		std::exit(1);
@@ -131,7 +133,7 @@ void
 client_handler::accept_client(void)
 {
 	int cli;
-	struct sockaddr_un cliaddr;
+	struct sockaddr_in cliaddr;
 	socklen_t clilen;
 	clilen = sizeof(cliaddr);
 	std::memset(&cliaddr, 0, clilen);
@@ -151,7 +153,7 @@ client_handler::accept_client(void)
 }
 
 int
-main(int argc, char *argv[])
+main(int, char *[])
 {
 	std::ifstream in(CACHE);
 	std::string l;

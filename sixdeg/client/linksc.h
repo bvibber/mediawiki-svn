@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
  * Six degrees of Wikipedia: Client interface definitions.
  * This source code is released into the public domain.
@@ -5,8 +6,6 @@
 
 #ifndef LINKSC_H
 #define LINKSC_H
-
-// #pragma ident "$URL: file:///home/river/s2s/linksd/linksc.h $ %E% %U%"
 
 #include <inttypes.h>
 

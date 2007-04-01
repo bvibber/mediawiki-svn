@@ -3,9 +3,9 @@
 #
 # $Id$
 
-CXX		= g++
-CXXFLAGS	= -g -O2
-CPPFLAGS	= -W -Wall -D_REENTRANT -I.. 
+include ../config.mk
+
+CPPFLAGS	+= -D_REENTRANT -I.. 
 
 SRCS	= encode_decode.cc
 OBJS	= $(SRCS:.cc=.o)
@@ -15,9 +15,6 @@ all: libsixdeg.a
 libsixdeg.a: $(OBJS)
 	ar crv $@ $<
 	ranlib $@
-
-%.o: %.cc
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $<
 
 clean:
 	rm -f libsixdeg.a *.o
