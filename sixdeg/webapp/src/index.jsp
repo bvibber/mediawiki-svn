@@ -107,7 +107,7 @@ href="index.jsp?from=<c:out value='${fn:replace(to, " ", "_")}'/>&amp;to=<c:out 
 
 <c:forEach items="${path}" var="hop">
 	<span class="art"><a
-		href="http://en.wikipedia.org/wiki/<c:out value="${hop}"/>"
+		href="http://en.wikipedia.org/wiki/<c:out value="${hop.article}"/>"
 	><c:out value='${fn:replace(hop.article, "_", " ")}'/></a></span>
 	<br/>
 	<span class="context">
