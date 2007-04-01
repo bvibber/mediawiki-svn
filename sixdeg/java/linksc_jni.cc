@@ -27,13 +27,22 @@ Java_org_wikimedia_links_linksc_findPath (JNIEnv *env, jobject, jstring jfrom, j
 	jobjectArray resultarr;
 	int status = linksc_findpath(result, from, to, ignore_dates);
 	const char *errorstr = "An unknown error occured";
+
 	switch (status) {
-	case 0: errorstr = "Source article does not exist."; break;
-	case 1: errorstr = "Target article does not exist."; break;
-	case 3: errorstr = "Could not connect to links server."; break;
+	case LINKS_NO_FROM:
+		errorstr = "Source article does not exist.";
+
+		break;
+	case LINKS_NO_TO:
+		errorstr = "Target article does not exist."; 
+		break;
+
+	case LINKS_NO_CONNECT:
+		errorstr = "Could not connect to links server.";
+		break;
 	}
 
-	if (status < 2 || status == 3) {
+	if (status != LINKS_OKAY) {
 		resultarr = (jobjectArray) env->NewObjectArray(0,
 				env->FindClass("java/lang/String"), env->NewStringUTF(""));
 

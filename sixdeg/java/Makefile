@@ -11,6 +11,8 @@ CLASSES= \
 	org/wikimedia/links/NoToArticleException.class 		\
 	org/wikimedia/links/ConnectException.class 		\
 	org/wikimedia/links/ErrorException.class		\
+	org/wikimedia/links/RequestEncoder.class		\
+	org/wikimedia/links/RequestDecoder.class		\
 
 all: liblinksc_jni.so linksc.jar
 
@@ -25,7 +27,7 @@ liblinksc_jni.so: org/wikimedia/links/linksc.class linksc_jni.cc
 
 linksc.jar: $(CLASSES)
 	rm -f linksc.jar
-	zip -r linksc.jar $(CLASSES)
+	zip -r linksc.jar org/wikimedia/links/*.class
 
 clean:
 	rm -f org/wikimedia/links/*.class linksc_jni.so linkc.jar *.so *.o org_wikimedia_links_linksc.h linksc.jar

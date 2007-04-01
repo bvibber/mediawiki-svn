@@ -40,12 +40,12 @@ linksc_findpath(std::vector<std::string>& result, std::string const &src, std::s
 
 	if ((s = socket(PF_UNIX, SOCK_STREAM, 0)) == -1) {
 		perror("socket");
-		return 3;
+		return LINKS_NO_CONNECT;
 	}
 	if (connect(s, (struct sockaddr *)&addr, sizeof(addr)) == -1) {
 		perror("connect");
 		close(s);
-		return 3;
+		return LINKS_NO_CONNECT;
 	}
 
 	request_encoder enc;
@@ -56,7 +56,7 @@ linksc_findpath(std::vector<std::string>& result, std::string const &src, std::s
 
 	if (!enc.send_to(s)) {
 		close(s);
-		return 3;
+		return LINKS_NO_CONNECT;
 	}
 
 	request_decoder dec;
@@ -67,7 +67,7 @@ linksc_findpath(std::vector<std::string>& result, std::string const &src, std::s
 		dec.add_data(buf, n);
 		if (dec.error()) {
 			close(s);
-			return -1;
+			return LINKS_NO_CONNECT;
 		}
 
 		if (dec.finished())
@@ -78,21 +78,21 @@ linksc_findpath(std::vector<std::string>& result, std::string const &src, std::s
 		close(s);
 		std::string error = dec.get_key("error");
 		if (error == "no_from")
-			return 0;
+			return LINKS_NO_FROM;
 		if (error == "no_to")
-			return 1;
-		return 3;
+			return LINKS_NO_TO;
+		return LINKS_NO_CONNECT;
 	}
 
 	if (!dec.has_key("path")) {
 		close(s);
-		return 3;
+		return LINKS_NO_CONNECT;
 	}
 
 	boost::char_separator<char> sep("|");
 	boost::tokenizer<boost::char_separator<char> > tok(dec.get_key("path"), sep);
 	std::copy(tok.begin(), tok.end(), std::back_inserter(result));
 	close(s);
-	return 4;
+	return LINKS_OKAY;
 }
 

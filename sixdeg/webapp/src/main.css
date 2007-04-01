@@ -58,3 +58,7 @@ img {
 span.version {
 	color: #999999;
 }
+span.context {
+	color: #777777;
+	font-size: small;
+}

@@ -11,7 +11,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
-String[] path = null;
+org.wikimedia.links.linksc.PathEntry[] path = null;
 String error = null;
 String from = request.getParameter("from"), to = request.getParameter("to");
 org.wikimedia.links.linksc lc = new org.wikimedia.links.linksc();
@@ -30,9 +30,10 @@ if (request.getCharacterEncoding() == null) {
 	if (to != null) to = new String(to.getBytes("ISO-8859-1"), "UTF-8");
 }
 
+boolean ign_date = false;
 if (from != null && from.length() > 0 && to != null && to.length() > 0) {
 	String idp = request.getParameter("ign_dates");
-	boolean ign_date = idp != null && idp.equals("1");
+	ign_date = idp != null && idp.equals("1");
 	String rfrom = from.substring(0, 1).toUpperCase() + from.substring(1, from.length());
 	String rto = to.substring(0, 1).toUpperCase() + to.substring(1, to.length());
 	try {
@@ -48,6 +49,7 @@ pageContext.setAttribute("error", error);
 pageContext.setAttribute("path", path);
 pageContext.setAttribute("from", from);
 pageContext.setAttribute("to", to);
+
 if (path != null) {
 	pageContext.setAttribute("len", Integer.valueOf(path.length - 1));
 } else {
@@ -80,7 +82,11 @@ from: <input type="text" name="from" value="<c:out value="${from}"/>"/>
 to: <input type="text" name="to" value="<c:out value="${to}"/>" />
 <input type="submit" value="go" />
 <br />
-<input type="checkbox" name="ign_dates" value="1" /> ignore date and year articles
+<input type="checkbox" name="ign_dates" value="1" 
+<% if (ign_date) { %>
+checked="checked"
+<% } %>
+/> ignore date and year articles
 </center>
 </form>
 
@@ -91,12 +97,25 @@ to: <input type="text" name="to" value="<c:out value="${to}"/>" />
 href="index.jsp?from=<c:out value='${fn:replace(to, " ", "_")}'/>&amp;to=<c:out value='${fn:replace(from, " ", "_")}'/>"
 >Try in the other direction?</a></p>
 <% } %>
+
+<%--
+	Print path...
+--%>
 <% } else if (path != null) { %>
 <div class='result'>
 <div class='answer'><c:out value="${len}"/> degrees of separation</div>
+
 <c:forEach items="${path}" var="hop">
-	<span class="art"><a href="http://en.wikipedia.org/wiki/<c:out value="${hop}"/>"><c:out value='${fn:replace(hop, "_", " ")}'/></a></span><br/>
+	<span class="art"><a
+		href="http://en.wikipedia.org/wiki/<c:out value="${hop}"/>"
+	><c:out value='${fn:replace(hop.article, "_", " ")}'/></a></span>
+	<br/>
+	<span class="context">
+		<c:out value='${hop.context}' />
+	</span>
+	</br>
 </c:forEach>
+
 </div>
 <p class='return'><a href="index.jsp?from=<c:out value='${fn:replace(to, " ", "_")}'/>&amp;to=<c:out value='${fn:replace(from, " ", "_")}'/>">View the return path?</a></p>
 <% } %>
@@ -128,7 +147,7 @@ href="index.jsp?from=<c:out value='${fn:replace(to, " ", "_")}'/>&amp;to=<c:out 
 <a href="mailto:river@attenuate.org">send feedback...</a><br />
 i'm poor.  if you like <i>six degrees</i>, feel free to <a href="http://www.paypal.com/"
 >PayPal</a> some money to [<tt>river</tt> (at) <tt>attenuate</tt> (dot) <tt>org</tt>].</p>
-<span class='version'>Front-end version: $Revision$ [request encoding: <c:out value="${encoding}" />]
+<span class='version'>Front-end version: $Revision$]
 </div>
 </body>
 </html>
