@@ -78,8 +78,8 @@ main namespace using wiki links
 <form method="get" action="index.jsp" accept-charset="UTF-8">
 <center>
 <strong>find path...</strong>
-from: <input type="text" name="from" value="<c:out value="${from}"/>"/>
-to: <input type="text" name="to" value="<c:out value="${to}"/>" />
+from: <input type="text" name="from" value="<c:out value='${fn:replace(from, "_", " ")}'/>"/>
+to: <input type="text" name="to" value="<c:out value='${fn:replace(to, "_", " ")}'/>" />
 <input type="submit" value="go" />
 <br />
 <input type="checkbox" name="ign_dates" value="1" 
@@ -107,7 +107,7 @@ href="index.jsp?from=<c:out value='${fn:replace(to, " ", "_")}'/>&amp;to=<c:out 
 
 <c:forEach items="${path}" var="hop">
 	<span class="art"><a
-		href="http://en.wikipedia.org/wiki/<c:out value="${hop.article}"/>"
+		href="http://en.wikipedia.org/wiki/<c:out value="${hop.article}"/>?oldid=<c:out value="${hop.id}" />"
 	><c:out value='${fn:replace(hop.article, "_", " ")}'/></a></span>
 	<br/>
 	<span class="context">
@@ -124,15 +124,55 @@ href="index.jsp?from=<c:out value='${fn:replace(to, " ", "_")}'/>&amp;to=<c:out 
 <strong>hints:</strong>
 </div>
 <ul>
-<li><em>it says my article doesn't exist?</em> - this is usually caused by the article being created later the last database update (often several months ago).  alternatively, check your capitalisation.</li>
-<li>please <em>do</em> report any other problems with six degrees to me 
+<li><strong>it says my article doesn't exist?</strong> - this is usually caused by the article being created later the last database update (often several months ago).  alternatively, check your capitalisation.</li>
+<li>redirects ("aliases" from one name to another article) are searched as well as articles</li>
+<li>using a <strong>redirect as the target</strong> will generally produce an inferior result, because articles are not meant to link to redirects. (be careful: "United Kingdom" is not a redirect, but "United kingdom"&mdash;with a lowercase "k"&mdash;is)</li>
+<li>article names are <strong>case sensitive</strong> except for the first letter, which is always capital</li>
+<li>please <strong>do</strong> report any problems with six degrees to me 
 [<tt>river</tt> (at) <tt>attenuate</tt> (dot) <tt>org</tt>].</li>
-<li>redirects are searched as well as articles</li>
-<li>using a redirect as the target will generally produce an inferior result (be careful: "United Kingdom" is not a redirect, but "United kingdom" is)</li>
-<li>article names are case sensitive except for the first letter, which is always capital</li>
 <li>six degrees was recently <a href="http://tools.wikimedia.de/~river/pages/six-degrees-ct">mentioned</a> in the
  German computer magazine <i>c't</i>.  fame!  who'd've thought it ;-)</li>
+<li><strong>ignore date and year articles</strong>: at the moment, this only ignores articles like "March 25" and "1995".
+in the future, i might add other articles which summarise years, such as "2005 in music".</li>
 </ul>
+
+<div style="border-top: solid 1px black; margin-top: 3em">
+<p><strong>six degrees</strong> finds the shortest path from one article to another, using wiki links.
+the <em>shortest path</em> is a problem in computer science: given a list of nodes (articles) and links between them,
+find a route from one node to another such that no shorter route exists.  it's important to realise that there's no
+<em>single</em> shortest path; there may be many routes from one article to another which all traverse four articles,
+for example.  six degrees will find one such route.</p>
+
+<p>six degrees works on a copy of the English Wikipedia database, and is not updated in real time.  this means
+that if someone adds or removes a link on Wikipedia, the change will not be reflected in six degrees until the next
+database update.  for various reasons, these updates are currently very infrequent, so the path you see here
+may be several months out of date.  the links in the result will take you to the text of the article as
+six degrees saw it, not the current version.</p>
+
+<p>six degrees will try to show an excerpt of about 100 characters from the article, where the link to the next
+article occurred, so you can see the context of the link.  in some cases this may not be possible: the link
+might be part of a template, or it might be using a form of wiki markup that six degrees doesn't understand.</p>
+
+<p>six degrees takes its name from <a href="http://en.wikipedia.org/wiki/Six_degrees_of_separation">six degrees
+of separation</a>, the theory that everyone is the world is connected by no more than six degrees.  however,
+this only goes as far as the name.  paths between articles have been found which are nine, ten or more degrees.</p>
+
+<p>six degrees was written by River Tarnell, [<tt>river</tt> (at) <tt>attenuate</tt> (dot) <tt>org</tt>], and
+incorporates suggestions and bug fixes from numerous users.  please feel free to contact me if you have any
+suggestions for six degrees, or if you've found something that doesn't work right (i try to reply to all my
+mail, but i may take a long time to get back to you).</p>
+
+<p><strong>technical details</strong>: the core of six degrees is a breadth-first search implemented in 45
+lines of C++ code.  including all of the support infrastructure, six degrees is about 2,000 lines of C++
+and 500 lines of Java.  because the graph being searched is so large, the backend runs as a server process
+called <em>linksd</em>.  linksd accepts network connections from clients, calculates the path, and returns
+it.  the web-based frontend is such a client, implemented as a Java servlet.  (i'm not all that fond of the
+Java language, but for web applications, servlets are a nice environment).  linksd is multi-threaded so 
+it can make the best use of its host system, a 2-CPU Opteron system.  originally, the graph was held entirely
+in memory by linksd; however, not only did reading the graph from disk make startup very slow, it was so
+large that linksd used nearly 1.5GB of memory.  the current version stores the graph on disk, using Oracle
+Berkeley DB.</p>
+
 </div>
 </div>
 
