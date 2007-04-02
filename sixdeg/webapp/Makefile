@@ -16,6 +16,7 @@ DATA =\
 	src/path.jsp		\
 	src/input.jsp		\
 	src/error.jsp		\
+	src/index.jsp		\
 	src/main.css		\
 	src/6deg.png		\
 	src/WEB-INF/web.xml	\

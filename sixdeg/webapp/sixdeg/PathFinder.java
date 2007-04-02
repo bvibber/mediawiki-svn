@@ -10,6 +10,7 @@ public class PathFinder extends ActionSupport implements ParameterAware {
 		String url;
 		String code;
 		String database;
+		String basename;
 
 		public String getDatabase() {
 			return database;
@@ -23,10 +24,15 @@ public class PathFinder extends ActionSupport implements ParameterAware {
 			return code;
 		}
 
+		public String getBasename() {
+			return basename;
+		}
+
 		public Wiki(String db) {
 			this.database = db;
 			this.code = db.substring(0, db.length() - 6);
 			this.url = "http://" + code + ".wikipedia.org/";
+			this.basename = code + ".wikipedia.org";
 		}
 	}
 
@@ -54,7 +60,7 @@ public class PathFinder extends ActionSupport implements ParameterAware {
 	public Map<String, String> getWikimap() {
 		Map<String, String> m = new TreeMap<String, String>();
 		for (Wiki w : wikis)
-			m.put(w.getDatabase(), w.getUrl());
+			m.put(w.getDatabase(), w.getBasename());
 
 		return m;
 	}
