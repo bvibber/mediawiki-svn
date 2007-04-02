@@ -106,6 +106,7 @@ function efBookInformationMessages() {
 'bookinfo-result-publisher' => 'Penerbit:',
 'bookinfo-result-year' => 'Tahun:',
 'bookinfo-error-invalidisbn' => 'ISBN yang dimasukkan tidak sah.',
+'bookinfo-error-nosuchitem' => 'Item yang dimasukkan tidak ada atau tidak ditemukan.',
 'bookinfo-error-nodriver' => 'Tidak dapat menginisiasi Book Information Driver.',
 'bookinfo-error-noresponse' => 'Tak ada respons atau respons terlalu lama.',
 'bookinfo-purchase' => 'Beli buku ini dari $1',
