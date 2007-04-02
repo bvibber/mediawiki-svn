@@ -12,11 +12,11 @@
 # Ashar Voultoiz Tue, 09 Jan 2007 04:55:47 +0100
 #
 ./AntiSpoof/AntiSpoof_i18n.php wgAntiSpoofMessages
-./AjaxShowEditors/AjaxShowEditors.i18n.php
-./Asksql/Asksql.i18n.php
-./BadImage/BadImage.i18n.php
-./BoardVote/BoardVote.i18n.php
-./BookInformation/BookInformation.i18n.php
+./AjaxShowEditors/AjaxShowEditors.i18n.php wgAjaxShowEditorsMessages
+./Asksql/Asksql.i18n.php efAsksqlMessages
+./BadImage/BadImage.i18n.php efBadImageMessages
+./BoardVote/BoardVote.i18n.php wgBoardVoteMessages
+./BookInformation/BookInformation.i18n.php efBookInformationMessages
 #./CategoryTree/CategoryTree.i18n.ca.php messages
 #./CategoryTree/CategoryTree.i18n.cs.php messages
 #./CategoryTree/CategoryTree.i18n.da.php messages
@@ -50,35 +50,41 @@
 #./CategoryTree/CategoryTree.i18n.zh-cn.php messages
 #./CategoryTree/CategoryTree.i18n.zh.php messages
 #./CategoryTree/CategoryTree.i18n.zh-yue.php messages
-./CentralAuth/CentralAuth.i18n.php
-./CheckUser/CheckUser.i18n.php
+./CentralAuth/CentralAuth.i18n.php wgCentralAuthMessages
+./CheckUser/CheckUser.i18n.php wgCheckUserMessages
 ./Chemistry/ChemFunctions.i18n.php wgChemFunctions_Messages
 ./Cite/Cite.i18n.php wgCiteMessages
 ./Cite/SpecialCite.i18n.php wgSpecialCiteMessages
 ./ConfirmEdit/ConfirmEdit.i18n.php wgConfirmEditMessages
-./ConfirmEdit/FancyCaptcha.i18n.php
-./Contributors/Contributors.i18n.php
-./CountEdits/CountEdits.i18n.php
+./ConfirmEdit/FancyCaptcha.i18n.php efFancyCaptchaMessages
+./Contributors/Contributors.i18n.php efContributorsMessages
+./CountEdits/CountEdits.i18n.php efCountEditsMessages
 ./CrossNamespaceLinks/SpecialCrossNamespaceLinks.i18n.php
-./Desysop/SpecialDesysop.i18n.php
-./DismissableSiteNotice/DismissableSiteNotice.i18n.php
-./Duplicator/Duplicator.i18n.php
-./DynamicPageList2/DynamicPageList2.i18n.php
-./Editcount/SpecialEditcount.i18n.php
-./ExpandTemplates/ExpandTemplates.i18n.php
-./Filepath/SpecialFilepath.i18n.php
-./GiveRollback/GiveRollback.i18n.php
-./LinkSearch/LinkSearch.i18n.php
-./LuceneSearch/LuceneSearch.i18n.php
-./Makebot/Makebot.i18n.php
-./Makesysop/SpecialMakesysop.i18n.php
+./Desysop/SpecialDesysop.i18n.php wgDesysopMessages
+./DismissableSiteNotice/DismissableSiteNotice.i18n.php wgDismissableSiteNoticeMessages
+./Duplicator/Duplicator.i18n.php efDuplicatorMessages
+./DynamicPageList2/DynamicPageList2.i18n.php wgDPL2Messages
+./Editcount/SpecialEditcount.i18n.php efSpecialEditcountMessages
+./ExpandTemplates/ExpandTemplates.i18n.php wgExpandTemplatesMessages
+./Filepath/SpecialFilepath.i18n.php wgFilepathMessages
+./FlaggedRevs/FlaggedRevsPage.i18n.php RevisionreviewMessages
+./FlaggedRevs/Makevalidate.i18n.php efMakeValidateMessages
+./Highlight/SyntaxHighlight.i18n.php efSyntaxHighlightMessages
+./GiveRollback/GiveRollback.i18n.php efGiveRollbackMessages
+./ImageMap/ImageMap.i18n.php efImageMapMessages
+./LinkSearch/LinkSearch.i18n.php wgLinkSearchMessages
+./LuceneSearch/LuceneSearch.i18n.php wgLuceneSearchMessages
+./Makebot/Makebot.i18n.php efMakebotMessages
+./Makesysop/SpecialMakesysop.i18n.php wgMakesysopMessages
 ./MathStatFunctions/MathStatFunctions.i18n.php wgMathStatFunctionsMessages
 ./MiniDonation/MiniDonation.i18n.php wgMiniDonationMessages
-./NewestPages/NewestPages.i18n.php
+./MinimumNameLength/MinimumNameLength.i18n.php efMinimumNameLengthMessages
+./NewestPages/NewestPages.i18n.php efNewestPagesMessages
 ./Newuserlog/Newuserlog.i18n.php wgNewuserlogMessages
-./Oversight/HideRevision.i18n.php
-./Patroller/Patroller.i18n.php
-./ProfileMonitor/ProfileMonitor.i18n.php
+./Oversight/HideRevision.i18n.php efHideRevisionMessages
+./Patroller/Patroller.i18n.php efPatrollerMessages
+./ProfileMonitor/ProfileMonitor.i18n.php efProfileMonitorMessages
+./Quiz/Quiz.i18n.php wgQuizMessages
 ./Renameuser/SpecialRenameuser.i18n.php wgRenameuserMessages
 #./SelectCategory/i18n/SelectCategory.i18n.gsw.php
 #./SelectCategory/i18n/SelectCategory.i18n.php
@@ -88,6 +94,8 @@
 #./SelectCategory/i18n/SelectCategory.i18n.sk.php
 ./SiteMatrix/SiteMatrix.i18n.php wgSiteMatrixMessages
 ./Translate/SpecialTranslate.i18n.php wgTranslateMessages
-./UserImages/UserImages.i18n.php
-./Vote/Vote.i18n.php
+./UserImages/UserImages.i18n.php efUserImagesMessages
+./UsernameBlacklist/UsernameBlacklist.i18n.php efUsernameBlacklistMessages
+./Vote/Vote.i18n.php efVoteMessages
 ./Wikidata/SpecialLanguages.i18n.php wgLanguageManagerMessages
+./Wikidata/OmegaWiki/SpecialDatasearch.i18n.php wgDataSearchMessages

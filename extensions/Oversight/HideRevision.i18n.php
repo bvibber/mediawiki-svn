@@ -4,9 +4,9 @@
  * Internationalisation file for the Oversight extension
  */
 
-function hrHideRevisionMessages() {
+function efHideRevisionMessages() {
 	return array(
-	
+
 /* English (Brion Vibber) */
 'en' => array(
 'hiderevision' => 'Permanently hide revisions',
@@ -37,7 +37,7 @@ database administrator if you make a mistake.",
 'hiderevision-error-current' => 'Cannot delete the latest edit to a page. Revert this change first.',
 'hiderevision-error-delete' => 'Could not archive; was it previously deleted?',
 'hiderevision-archive-status' => 'Deleted revision from $1: $2',
-'oversight-nodiff' => 'Unable to track changes as there is currently no previous revision for the page. Either:	
+'oversight-nodiff' => 'Unable to track changes as there is currently no previous revision for the page. Either:
 *The page was deleted
 *This hidden revision was the first revision',
 // Logging
@@ -66,7 +66,7 @@ Releasing this information can result in permanent loss of Oversight privileges.
 
 '''Der Missbrauch dieses Systems zieht den Verlust dieser Rechte nach sich!'''
 
-Entfernte Versionen sind durch Niemanden mehr über die Website einzusehen. 
+Entfernte Versionen sind durch Niemanden mehr über die Website einzusehen.
 Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbankadministrator wiederhergestellt werden",
 'hiderevision-reason' => 'Grund (wird unsichtbar protokolliert):',
 'hiderevision-submit' => 'Entferne diese Daten dauerhaft',
@@ -151,7 +151,7 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 
 '''Qualunque abuso del sistema comporterà la rimozione dei relativi privilegi.'''
 
-Gli elementi oscurati sono invisibili per chiunque sul sito, ma 
+Gli elementi oscurati sono invisibili per chiunque sul sito, ma
 esiste un registro delle revisioni oscurate e la possibilità di
 un ripristino manuale da parte di un amministratore del database
 in caso di errori.",
@@ -168,7 +168,7 @@ in caso di errori.",
 'hiderevision-error-current' => 'Impossibile oscurare l\'ultima modifica di una pagina. Annullare la modifica prima di procedere all\'oscuramento.',
 'hiderevision-error-delete' => 'Impossibile archiviare; c\'erano delle cancellazioni precedenti?',
 'hiderevision-archive-status' => 'Revisione oscurata di $1: $2',
-'oversight-nodiff' => 'Impossibile mostrare le modifiche in quanto non sono presenti revisioni precedenti della pagina. Possibili cause:	
+'oversight-nodiff' => 'Impossibile mostrare le modifiche in quanto non sono presenti revisioni precedenti della pagina. Possibili cause:
 *La pagina è stata cancellata
 *Questa revisione oscurata era la prima per la pagina',
 // Logging
@@ -389,7 +389,7 @@ teruggeet worden door databasebeheerders als u een fout maakt.",
 'hiderevision-error-current' => 'De laatste bewerkin van een pagina kan niet verwijderd worden. Draai de bewerking eerst terug.',
 'hiderevision-error-delete' => 'Archiveren mislukt; waren de gegevens al verwijderd?',
 'hiderevision-archive-status' => 'Verwijder versie van $1: $2',
-'oversight-nodiff' => 'Niet in staat om de wijzigingen weer te geven omdat er geen eerdere versie van de pagina aanwezig is, omdat::	
+'oversight-nodiff' => 'Niet in staat om de wijzigingen weer te geven omdat er geen eerdere versie van de pagina aanwezig is, omdat::
 *De pagina was verwijderd
 *Deze verborgen versie de eerste versie was',
 // Logging
@@ -484,14 +484,14 @@ administrátorom databázy v prípade, že spravíte chybu.",
 'hiderevision-continue' => 'Настави',
 // Confirmation form
 'hiderevision-text' =>
-"Ова опција треба да се користи '''само''' у следећим случајевима: 
+"Ова опција треба да се користи '''само''' у следећим случајевима:
 
-* Неумесне личне информације 
-*: ''кућне адресе, бројеви телефона, матични бројеви и сл.'' 
+* Неумесне личне информације
+*: ''кућне адресе, бројеви телефона, матични бројеви и сл.''
 
 '''Злоупотреба овог система ће довести до губитка ових привилегија.'''
 
-Уклоњене ставке неће бити видљиве никоме преко сајта, али се брисања записују 
+Уклоњене ставке неће бити видљиве никоме преко сајта, али се брисања записују
 и администратори базе података их могу ручно вратити ако направите грешку.",
 'hiderevision-reason' => 'Разлог (биће записан приватно)::',
 'hiderevision-submit' => 'Сакриј ове податке заувек',
@@ -521,14 +521,14 @@ administrátorom databázy v prípade, že spravíte chybu.",
 'hiderevision-continue' => 'Настави',
 // Confirmation form
 'hiderevision-text' =>
-"Ова опција треба да се користи '''само''' у следећим случајевима: 
+"Ова опција треба да се користи '''само''' у следећим случајевима:
 
-* Неумесне личне информације 
-*: ''кућне адресе, бројеви телефона, матични бројеви и сл.'' 
+* Неумесне личне информације
+*: ''кућне адресе, бројеви телефона, матични бројеви и сл.''
 
 '''Злоупотреба овог система ће довести до губитка ових привилегија.'''
 
-Уклоњене ставке неће бити видљиве никоме преко сајта, али се брисања записују 
+Уклоњене ставке неће бити видљиве никоме преко сајта, али се брисања записују
 и администратори базе података их могу ручно вратити ако направите грешку.",
 'hiderevision-reason' => 'Разлог (биће записан приватно)::',
 'hiderevision-submit' => 'Сакриј ове податке заувек',
@@ -558,14 +558,14 @@ administrátorom databázy v prípade, že spravíte chybu.",
 'hiderevision-continue' => 'Nastavi',
 // Confirmation form
 'hiderevision-text' =>
-"Ova opcija treba da se koristi '''samo''' u sledećim slučajevima: 
+"Ova opcija treba da se koristi '''samo''' u sledećim slučajevima:
 
-* Neumesne lične informacije 
-*: ''kućne adrese, brojevi telefona, matični brojevi i sl.'' 
+* Neumesne lične informacije
+*: ''kućne adrese, brojevi telefona, matični brojevi i sl.''
 
 '''Zloupotreba ovog sistema će dovesti do gubitka ovih privilegija.'''
 
-Uklonjene stavke neće biti vidljive nikome preko sajta, ali se brisanja zapisuju 
+Uklonjene stavke neće biti vidljive nikome preko sajta, ali se brisanja zapisuju
 i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 'hiderevision-reason' => 'Razlog (biće zapisan privatno)::',
 'hiderevision-submit' => 'Sakrij ove podatke zauvek',

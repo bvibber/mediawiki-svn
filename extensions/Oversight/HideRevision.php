@@ -52,9 +52,9 @@ function hrSetup() {
 	$GLOBALS['wgHooks']['ArticleViewHeader'][] = 'hrArticleViewHeaderHook';
 	$GLOBALS['wgHooks']['DiffViewHeader'][] = 'hrDiffViewHeaderHook';
 	$GLOBALS['wgHooks']['UndeleteShowRevision'][] = 'hrUndeleteShowRevisionHook';
-	
+
 	require_once( dirname( __FILE__ ) . '/HideRevision.i18n.php' );
-	foreach( hrHideRevisionMessages() as $lang => $messages )
+	foreach( efHideRevisionMessages() as $lang => $messages )
 		$GLOBALS['wgMessageCache']->addMessages( $messages, $lang );
 }
 
@@ -94,7 +94,7 @@ class HideRevisionTabInstaller {
 	function __construct( $linkParam ) {
 		$this->mLinkParam = $linkParam;
 	}
-	
+
 	function insertTab( $skin, &$content_actions ) {
 		$special = Title::makeTitle( NS_SPECIAL, 'HideRevision' );
 			$content_actions['hiderevision'] = array(
@@ -147,10 +147,10 @@ function wfSpecialHideRevision( $par=null ) {
 class HideRevisionForm {
 	function __construct( $request ) {
 		global $wgUser;
-		
+
 		// For live revisions
 		$this->mRevisions = (array)$request->getIntArray( 'revision' );
-		
+
 		// For deleted/archived revisions
 		$this->mTarget = Title::newFromUrl( $request->getVal( 'target' ) );
 		$this->mTimestamps = (array)$request->getArray( 'timestamp' );
@@ -158,18 +158,18 @@ class HideRevisionForm {
 			// title and timestamps must go together
 			$this->mTimestamps = array();
 		}
-		
+
 		$this->mPopulated =
 			!empty( $this->mRevisions ) ||
 			!empty( $this->mTimestamps );
-		
+
 		$this->mReason = $request->getText( 'wpReason' );
-		
+
 		$this->mSubmitted = $request->wasPosted() &&
 			$request->getVal( 'action' ) == 'submit' &&
 			$wgUser->matchEditToken( $request->getVal( 'wpEditToken' ) );
 	}
-	
+
 	function run() {
 		if( $this->mPopulated && $this->mSubmitted ) {
 			$this->submit();
@@ -179,29 +179,29 @@ class HideRevisionForm {
 			$this->showEmpty();
 		}
 	}
-	
+
 	/**
 	 * If no revisions are specified, prompt for a revision id
 	 */
 	function showEmpty() {
 		global $wgOut, $wgUser;
 		$special = Title::makeTitle( NS_SPECIAL, 'HideRevision' );
-		
+
 		$wgOut->addHtml(
 			wfOpenElement( 'form', array(
 				'action' => $special->getLocalUrl(),
 				'method' => 'post' ) ) .
-			
+
 			// Visible fields
 			wfInputLabel( wfMsgHTML( 'hiderevision-prompt' ), 'revision[]', 'wpRevision', 10 ) .
 			"<br />" .
 			wfInputLabel( wfMsgHTML( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60 ) .
 			"<br />" .
 			wfSubmitButton( wfMsgHTML( 'hiderevision-continue' ) ) .
-			
+
 			wfCloseElement( 'form' ) );
 	}
-	
+
 	/**
 	 * Once a set of revisions have been selected,
 	 * list them and request a reason/comment for confirmation.
@@ -209,27 +209,27 @@ class HideRevisionForm {
 	function showForm() {
 		global $wgOut, $wgUser;
 		$special = Title::makeTitle( NS_SPECIAL, 'HideRevision' );
-		
+
 		$wgOut->addWikiText( wfMsg( 'hiderevision-text' ) );
 		$wgOut->addHtml(
 			$this->revisionList() .
-			
+
 			$this->archiveList() .
-			
+
 			wfOpenElement( 'form', array(
 				'action' => $special->getLocalUrl( 'action=submit' ),
 				'method' => 'post' ) ) .
-			
+
 			// Visible fields
 			"<br />" .
 			wfInputLabel( wfMsgHTML( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60, $this->mReason ) .
 			"<br />" .
 			wfSubmitButton( wfMsgHTML( 'hiderevision-submit' ) ) .
-			
+
 			// Hidden fields
 			$this->revisionFields() .
 			wfHidden( 'wpEditToken', $wgUser->editToken() ) .
-			
+
 			wfCloseElement( 'form' ) );
 	}
 
@@ -237,28 +237,28 @@ class HideRevisionForm {
 		if( !$this->mRevisions ) {
 			return '';
 		}
-		
+
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select(
 			array( 'page', 'revision' ),
-			'*, 0 AS rc_id, 1 AS rc_patrolled, 0 AS counter, 0 AS rc_old_len, 0 AS rc_new_len, 
+			'*, 0 AS rc_id, 1 AS rc_patrolled, 0 AS counter, 0 AS rc_old_len, 0 AS rc_new_len,
 			NULL AS rc_log_action, 0 AS rc_deleted, 0 AS rc_logid, NULL AS rc_log_type, "" AS rc_params',
 			array(
 				'rev_id' => $this->mRevisions,
 				'rev_page=page_id',
 			),
 			__METHOD__ );
-		
+
 		return $this->makeList( $dbr->resultObject( $result ) );
 	}
-	
+
 	function makeList( $resultSet ) {
 		global $IP, $wgUser;
 		require_once( "$IP/includes/ChangesList.php" );
 		$changes = ChangesList::newFromUser( $wgUser );
-		
+
 		$skin = $wgUser->getSkin();
-		
+
 		$out = $changes->beginRecentChangesList();
 		while( $row = $resultSet->fetchObject() ) {
 			$rc = RecentChange::newFromCurRow( $row );
@@ -266,16 +266,16 @@ class HideRevisionForm {
 			$out .= $changes->recentChangesLine( $rc );
 		}
 		$out .= $changes->endRecentChangesList();
-		
+
 		$resultSet->free();
 		return $out;
 	}
-	
+
 	function archiveList() {
 		if( !$this->mTarget || !$this->mTimestamps ) {
 			return '';
 		}
-		
+
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select(
 			array( 'archive' ),
@@ -307,10 +307,10 @@ class HideRevisionForm {
 				'ar_timestamp' => $this->mTimestamps,
 			),
 			__METHOD__ );
-		
+
 		return $this->makeList( $dbr->resultObject( $result ) );
 	}
-	
+
 	function revisionFields() {
 		$out = '';
 		foreach( $this->mRevisions as $id ) {
@@ -324,7 +324,7 @@ class HideRevisionForm {
 		}
 		return $out;
 	}
-	
+
 	/**
 	 * Handle submission of deletion form
 	 */
@@ -361,7 +361,7 @@ function hrHideRevisions( $dbw, $title, $revisions, $timestamps, $reason ) {
 		$success[] = wfMsgHTML( 'hiderevision-status', $id,
 			wfMsgHTML (hrHideRevision( $dbw, $id, $reason ) ) );
 	}
-	
+
 	// Archived revisions
 	foreach( $timestamps as $timestamp ) {
 		global $wgLang;
@@ -379,9 +379,9 @@ function hrHideRevisions( $dbw, $title, $revisions, $timestamps, $reason ) {
  */
 function hrHideRevision( $dbw, $id, $reason ) {
 	global $wgUser;
-	
+
 	$dbw->begin();
-	
+
 	$rev = Revision::newFromId( $id );
 	if( is_null( $rev ) ) {
 		$dbw->rollback();
@@ -392,19 +392,19 @@ function hrHideRevision( $dbw, $id, $reason ) {
 		return 'hiderevision-error-current';
 	}
 	$title = $rev->getTitle();
-	
+
 	// Our tasks:
 	// Copy revision to "hidden" table
 	hrInsertRevision( $dbw, $title, $rev, $reason );
-	
+
 	if( $dbw->affectedRows() != 1 ) {
 		$dbw->rollback();
 		return 'hiderevision-error-delete';
 	}
-	
+
 	// Remove from "revision"
 	$dbw->delete( 'revision', array( 'rev_id' => $id ), __FUNCTION__ );
-	
+
 	// Remove from "recentchanges"
 	// The page ID is used to get us a relatively usable index
 	$dbw->delete( 'recentchanges',
@@ -413,13 +413,13 @@ function hrHideRevision( $dbw, $id, $reason ) {
 			'rc_this_oldid' => $id
 		),
 		__FUNCTION__ );
-	
+
 	// Invalidate cache of page history
 	$title->invalidateCache();
-	
+
 	// Done with all database pieces; commit!
 	$dbw->immediateCommit();
-	
+
 	// Also purge remote proxies.
 	// Ideally this would be built into the above, but squid code is
 	// old crappy style.
@@ -429,7 +429,7 @@ function hrHideRevision( $dbw, $id, $reason ) {
 		$update = SquidUpdate::newSimplePurge( $title );
 		$update->doUpdate();
 	}
-	
+
 	return 'hiderevision-success';
 }
 
@@ -440,19 +440,19 @@ function hrHideArchivedRevision( $dbw, $title, $timestamp, $reason ) {
 		$dbw->rollback();
 		return 'hiderevision-error-missing';
 	}
-	
+
 	hrInsertRevision( $dbw, $title, $rev, $reason );
 	if( $dbw->affectedRows() != 1 ) {
 		$dbw->rollback();
 		return 'hiderevision-error-delete';
 	}
-	
+
 	$dbw->delete( 'archive', array(
 		'ar_namespace' => $title->getNamespace(),
 		'ar_title'     => $title->getDbKey(),
 		'ar_timestamp' => $timestamp ),
 		__METHOD__ );
-	
+
 	$dbw->commit();
 	return 'hiderevision-success';
 }
@@ -464,17 +464,17 @@ function hrInsertRevision( $dbw, $title, $rev, $reason ) {
 			'hidden_page'       => $rev->getPage(),
 			'hidden_namespace'  => $title->getNamespace(),
 			'hidden_title'      => $title->getDbKey(),
-			
+
 			'hidden_rev_id'     => $rev->getId(),
 			'hidden_text_id'    => $rev->getTextId(),
-			
+
 			'hidden_comment'    => $rev->getRawComment(),
 			'hidden_user'       => $rev->getRawUser(),
 			'hidden_user_text'  => $rev->getRawUserText(),
 			'hidden_timestamp'  => $dbw->timestamp( $rev->getTimestamp() ),
 			'hidden_minor_edit' => $rev->isMinor() ? 1 : 0,
 			'hidden_deleted'    => $rev->mDeleted, // FIXME: private field access
-			
+
 			'hidden_by_user'      => $wgUser->getId(),
 			'hidden_on_timestamp' => $dbw->timestamp(),
 			'hidden_reason'       => $reason,
@@ -500,11 +500,11 @@ function wfSpecialOversight( $par=null ) {
 
 function sosShowList( $from=null ) {
 	$dbr = wfGetDB( DB_SLAVE );
-	
+
 	$fromTime = $dbr->timestamp( $from );
 	$result = sosGetRevisions( $dbr,
 		array( 'hidden_on_timestamp < ' . $dbr->addQuotes( $fromTime ) ) );
-	
+
 	global $wgOut;
 	$wgOut->addWikiText( wfMsgNoTrans( 'oversight-header' ) );
 	$wgOut->addHtml( '<ul>' );
@@ -522,7 +522,7 @@ function sosGetRevisions( $db, $condition ) {
 			'hidden_page as page_id',
 			'hidden_namespace as page_namespace',
 			'hidden_title as page_title',
-			
+
 			'hidden_page as rev_page',
 			'hidden_comment as rev_comment',
 			'hidden_user as rev_user',
@@ -532,22 +532,22 @@ function sosGetRevisions( $db, $condition ) {
 			'hidden_deleted as rev_deleted',
 			'hidden_rev_id as rev_id',
 			'hidden_text_id as rev_text_id',
-			
+
 			'0 as rev_len',
-			
+
 			'hidden_by_user',
 			'hidden_on_timestamp',
 			'hidden_reason',
-			
+
 			'user_name',
-			
+
 			'0 as page_is_new',
 			'0 as rc_id',
 			'1 as rc_patrolled',
 			'0 as rc_old_len',
 			'0 as rc_new_len',
 			'0 as rc_params',
-			
+
 			'NULL AS rc_log_action',
 			'0 AS rc_deleted',
 			'0 AS rc_logid',
@@ -586,10 +586,10 @@ function sosListRow( $row ) {
 
 function sosShowRevision( $revision ) {
 	global $wgOut;
-	
+
 	$dbr = wfGetDB( DB_SLAVE );
 	$result = sosGetRevisions( $dbr, array( 'hidden_rev_id' => $revision ) );
-	
+
 	while( $row = $dbr->fetchObject( $result ) ) {
 		$info = sosListRow( $row );
 		$list = sosRevisionInfo( $row );
@@ -601,7 +601,7 @@ function sosShowRevision( $revision ) {
 			"</ul>\n" .
 			$list );
 	    if ( $text === false ) {
-		$wgOut->addWikiText(wfmsg('hiderevision-error-missing')); 
+		$wgOut->addWikiText(wfmsg('hiderevision-error-missing'));
 		} else {
 		$wgOut->addHtml(
 			"<div>" .
@@ -632,10 +632,10 @@ function sosRevisionInfo( $row ) {
 function sosShowDiff( $revision )
 {
 	global $wgOut;
-	
+
 	$dbr = wfGetDB( DB_SLAVE );
 	$result = sosGetRevisions( $dbr, array( 'hidden_rev_id' => $revision ) );
-	
+
 	while( $row = $dbr->fetchObject( $result ) ) {
 		$info = sosListRow( $row );
 		$list = sosRevisionInfo( $row );
@@ -655,7 +655,7 @@ function sosShowDiff( $revision )
 			return;
 		}
 		$ntext = strval( $rev->getText());
-		
+
 		$wgOut->addHtml(
 			"<ul>" .
 			$info .
@@ -663,16 +663,16 @@ function sosShowDiff( $revision )
 			$list .
 			"<p><strong>" .
 			wfMsgHTML('oversight-difference') .
-			"</strong>" . 
-			"</p>" . 
+			"</strong>" .
+			"</p>" .
 			"<div>" .
-			"<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>" . 
-			"<tr>" . 
-				"<td colspan='2' width='50%' align='center' class='diff-otitle'>" . wfMsgHTML('oversight-prev') . " (#$prevId)" . "</td>" . 
-				"<td colspan='2' width='50%' align='center' class='diff-ntitle'>" . wfMsgHTML('oversight-hidden') . "</td>" . 
+			"<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>" .
+			"<tr>" .
+				"<td colspan='2' width='50%' align='center' class='diff-otitle'>" . wfMsgHTML('oversight-prev') . " (#$prevId)" . "</td>" .
+				"<td colspan='2' width='50%' align='center' class='diff-ntitle'>" . wfMsgHTML('oversight-hidden') . "</td>" .
 			"</tr>" .
 			DifferenceEngine::generateDiffBody( $otext, $ntext ) .
-			"</table>" . 
+			"</table>" .
 			"</div>\n" );
 	}
 	$dbr->freeResult( $result );
