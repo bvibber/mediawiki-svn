@@ -33,10 +33,11 @@ public class linksc {
 			return text_id;
 		}
 
-		private static final String wikiproxy = "http://127.0.0.1/~daniel/WikiSense/WikiProxy.php?go=Fetch&wiki=enwiki";
+		private static final String wikiproxy = "http://127.0.0.1/~daniel/WikiSense/WikiProxy.php?go=Fetch";
 		public void setContext(PathEntry nextlink) {
 			try {
-				String urltxt = wikiproxy + "&title=" + article + "&rev=" + text_id;
+				String urltxt = wikiproxy + "&title=" + article + "&rev=" + text_id
+						+ "&wiki=" + wiki.substring(0, wiki.length() - 2);
 				URL url = new URL(urltxt);
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 				conn.setRequestProperty("User-Agent", "Six-Degrees-Of-Wikipedia; (contact: river)");
@@ -83,6 +84,7 @@ public class linksc {
 			return context;
 		}
 
+		public String wiki;
 		public String article;
 		public int text_id;
 		public String context;
@@ -137,6 +139,7 @@ public class linksc {
 				PathEntry e = new PathEntry();
 				e.article = q[0];
 				e.text_id = Integer.parseInt(q[1]);
+				e.wiki = wiki;
 				path[i] = e;
 			}
 

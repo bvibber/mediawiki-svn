@@ -40,6 +40,7 @@ main namespace using wiki links
       <strong>find path...</strong>
       <s:textfield label="from" name="from" value="%{#parameters.from}" />
       <s:textfield label="to" name="to" value="%{#parameters.to}" />
+      <s:select label="wiki" name="wiki" list="wikimap" value="%{(#parameters.wiki == null) ? 'enwiki_p' : #parameters.wiki[0]}" />
       <s:checkbox label="ignore date and year articles" name="ign_dates" />
       <s:submit value="go" />
     </s:form>
