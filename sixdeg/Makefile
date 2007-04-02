@@ -5,23 +5,18 @@
 
 include plat_frag.mk
 
-all:
-	$(MAKE) -C libsixdeg all
-	$(MAKE) -C client all
-	$(MAKE) -C java all
-	$(MAKE) -C server all
-	$(MAKE) -C webapp all
-	$(MAKE) all-real
+MAKEFLAGS = --no-print-directory
+SUBDIRS	= libsixdeg client java mkcache server webapp
+
+all clean:
+	@for dir in $(SUBDIRS); do \
+		echo "$@ ==> $$dir"; \
+		$(MAKE) -C $$dir $@ || exit 1; \
+	done
+	@$(MAKE) $@-real
 
 all-real:
-
-clean:
-	rm -f linksc.jar
-	$(MAKE) -C libsixdeg clean
-	$(MAKE) -C server clean
-	$(MAKE) -C client clean
-	$(MAKE) -C java clean
-	$(MAKE) -C webapp clean
+clean-real:
 
 dist:
 	$(MAKE) clean

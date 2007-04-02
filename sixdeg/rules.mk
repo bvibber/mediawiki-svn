@@ -10,6 +10,7 @@ LDFLAGS		= $(PLAT_LDFLAGS) $(USER_LDFLAGS) -L../libsigdeg
 LIBS		= $(PLAT_LIBS) $(USER_LIBS)
 
 .cc.o:
-	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $<
+	@echo "	(compile) $<"
+	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $<
 
 .SUFFIXES: .cc .o .java .class .jar .h 

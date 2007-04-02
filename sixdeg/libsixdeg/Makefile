@@ -5,16 +5,10 @@
 
 include ../rules.mk
 
+LIBRARY	= libsixdeg.a
 SRCS	= encode_decode.cc
 OBJS	= $(SRCS:.cc=.o)
 
-all: libsixdeg.a
-
-libsixdeg.a: $(OBJS)
-	ar crv $@ $<
-	ranlib $@
-
-clean:
-	rm -f libsixdeg.a *.o
+include ../frag/cxxlib.mk
 
 encode_decode.cc: encode_decode.h
