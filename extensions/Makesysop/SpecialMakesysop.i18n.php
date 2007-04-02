@@ -34,6 +34,15 @@ $wgMakesysopMessages['az'] = array(
 $wgMakesysopMessages['ba'] = array(
 	'makesysopname'        => 'Ҡатнашыусы исеме:',
 );
+$wgMakesysopMessages['be'] = array(
+	'makesysoptitle'       => 'Зрабіць карыстальніка сісопам',
+	'makesysopsubmit'      => 'Зрабіць карыстальніка сісопам',
+	'rights'               => 'Правы:',
+	'user_rights_set'      => '<b>Правы карыстання для "$1" абноўлены</b>',
+	'makesysop'            => 'Зрабіць карыстальніка сісопам',
+	'already_sysop'        => 'Гэты карыстальнік ужо мае статус адміністратара',
+	'already_bureaucrat'   => 'Гэты карыстальнік ужо мае статус бюракрата',
+);
 $wgMakesysopMessages['be-x-old'] = array(
 	'makesysopname'        => 'Імя ўдзельніка/ўдзельніцы:',
 	'makesysop'            => 'Зрабіць удзельніка адміністратарам',
