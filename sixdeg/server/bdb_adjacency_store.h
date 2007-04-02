@@ -30,9 +30,9 @@ struct bdb_adjacency_store {
 	int error(void) const;
 	std::string strerror(void) const;
 
-	boost::optional<std::string> name_for_id(page_id_t);
-	boost::optional<page_id_t> id_for_name(std::string const &);
-	boost::optional<text_id_t> text_id_for_page(page_id_t);
+	boost::optional<std::string> name_for_id(std::string const &wiki, page_id_t);
+	boost::optional<page_id_t> id_for_name(std::string const &wiki, std::string const &);
+	boost::optional<text_id_t> text_id_for_page(std::string const &wiki, page_id_t);
 
 private:
 	friend struct bdb_adjacency_transaction;
@@ -49,11 +49,11 @@ struct bdb_adjacency_transaction {
 	bdb_adjacency_transaction(bdb_adjacency_store &);
 	~bdb_adjacency_transaction();
 	
-	void add_adjacency(page_id_t from, page_id_t to);
-	void add_title(page_id_t page, std::string const &name, text_id_t text_id);
+	void add_adjacency(std::string const &wiki, page_id_t from, page_id_t to);
+	void add_title(std::string const &wiki, page_id_t page, std::string const &name, text_id_t text_id);
 
-	std::set<page_id_t> get_adjacencies(page_id_t);
-	void set_adjacencies(page_id_t, std::set<page_id_t> const &);
+	std::set<page_id_t> get_adjacencies(std::string const &wiki, page_id_t);
+	void set_adjacencies(std::string const &wiki, page_id_t, std::set<page_id_t> const &);
 
 	void commit(void);
 	void rollback(void);

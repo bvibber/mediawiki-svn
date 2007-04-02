@@ -3,7 +3,7 @@
 # Six degrees of Wikipedia: Makefile
 # This source code is released into the public domain.
 
-include ../config.mk
+include ../rules.mk
 
 CLASSES= \
 	org/wikimedia/links/ErrorException.class		\
@@ -22,5 +22,3 @@ linksc.jar: $(CLASSES)
 
 clean:
 	rm -f org/wikimedia/links/*.class linksc.jar
-
-.SUFFIXES: .java .class .o .so .cc .h .jar

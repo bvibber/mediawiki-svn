@@ -9,6 +9,7 @@
 #include <vector>
 #include <map>
 #include <iostream>
+#include <sstream>
 
 #include <boost/bind.hpp>
 #include <boost/format.hpp>
@@ -42,8 +43,11 @@ request_dispatcher::dispatch(client *s)
 void
 request_dispatcher::handle(client *s)
 {
-	std::string from, to;
+	std::string from, to, wiki = "enwiki_p";
 	request_encoder encoder;
+
+	if (s->decoder.has_key("wiki"))
+		wiki = s->decoder.get_key("wiki");
 
 	bool ign_date = s->decoder.has_key("ignore_dates");
 	if (!s->decoder.has_key("from") || !s->decoder.has_key("to")) {
@@ -57,7 +61,7 @@ request_dispatcher::handle(client *s)
 	to = s->decoder.get_key("to");
 
 	page_id_t fromid, toid;
-	boost::optional<page_id_t> fromid_o = finder->id_for_name(from);
+	boost::optional<page_id_t> fromid_o = finder->id_for_name(wiki, from);
 	if (!fromid_o) {
 		s->encoder.set_key("error", "no_from");
 		s->encoder.send_to(s->fd);
@@ -66,7 +70,7 @@ request_dispatcher::handle(client *s)
 	}
 	fromid = *fromid_o;
 
-	boost::optional<page_id_t> toid_o = finder->id_for_name(to);
+	boost::optional<page_id_t> toid_o = finder->id_for_name(wiki, to);
 	if (!toid_o) {
 		s->encoder.set_key("error", "no_to");
 		s->encoder.send_to(s->fd);
@@ -75,11 +79,20 @@ request_dispatcher::handle(client *s)
 	}
 	toid = *toid_o;
 
-	std::vector<std::pair<page_id_t, text_id_t> > links = finder->solve(fromid, toid, ign_date);
+	std::vector<std::pair<page_id_t, text_id_t> > links = finder->solve(wiki, fromid, toid, ign_date);
 	std::string path;
 
 	for (std::size_t i = 0, e = links.size(); i < e; ++i) {
-		path += str(boost::format("%s#%d|") % *finder->name_for_id(links[i].first) % links[i].second);
+		std::ostringstream strm;
+		boost::optional<std::string> title = finder->name_for_id(wiki, links[i].first);
+		if (!title)
+			strm << "<none>" << "#0|";
+		else {
+			int id = links[i].second;
+
+			strm << *title << '#' << id << '|';
+		}
+		path += strm.str();
 	}
 	s->encoder.set_key("path", path);
 	s->encoder.send_to(s->fd);

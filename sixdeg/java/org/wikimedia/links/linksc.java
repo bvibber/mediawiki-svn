@@ -88,7 +88,7 @@ public class linksc {
 		public String context;
 	};
 
-	public PathEntry[] findPath(String from, String to, boolean ignoreDates) throws ErrorException {
+	public PathEntry[] findPath(String wiki, String from, String to, boolean ignoreDates) throws ErrorException {
 		try {
 			Socket s;
 			s = new Socket("127.0.0.1", 6534);
@@ -99,6 +99,7 @@ public class linksc {
 			Map<String, String> args = new HashMap<String, String>();
 			args.put("from", from);
 			args.put("to", to);
+			args.put("wiki", wiki);
 			if (ignoreDates)
 				args.put("ignore_dates", "1");
 
@@ -152,7 +153,7 @@ public class linksc {
 		linksc c = new linksc();
 		PathEntry[] result = null;
 		try {
-			result = c.findPath(args[0], args[1], false);
+			result = c.findPath(args[0], args[1], args[2], false);
 		} catch (ErrorException e) {
 			System.out.printf("Error: %s\n", e.geterror());
 			return;

@@ -22,6 +22,7 @@ void *chkp(void *arg)
 		sleep(40);
 		env->txn_checkpoint(env, 0, 0, 0);
 	}
+	return 0;
 }
 
 bdb_adjacency_store::bdb_adjacency_store(void)
@@ -32,7 +33,7 @@ bdb_adjacency_store::bdb_adjacency_store(void)
 int
 extract_title(DB *, DBT const *, DBT const *pdata, DBT *skey)
 {
-	memset(skey, 0, sizeof(*skey));
+	std::memset(skey, 0, sizeof(*skey));
 	skey->data = (char *)pdata->data + 4;
 	skey->size = pdata->size - 4;
 	return 0;
@@ -48,21 +49,17 @@ bdb_adjacency_store::open(std::string const &path, bdb_adjacency_store::open_mod
 	}
 
 	env->set_errfile(env, stdout);
-	std::cout << "set cache\n";
 	last_error = env->set_cachesize(env, 0, 256 * 1024 * 1024, 1);
 	if (last_error != 0) {
 		env = 0;
 		return;
 	}
 
-	std::cout << "set flags\n";
 	//last_error = env->set_flags(env, DB_LOG_INMEMORY, 1);
 	if (last_error != 0) {
 		env = 0;
 		return;
 	}
-
-	std::cout << "open\n";
 
 	env->set_lg_bsize(env, 32 * 1024 * 1024);
 	env->set_lk_max_locks(env, 10000);
@@ -79,7 +76,6 @@ bdb_adjacency_store::open(std::string const &path, bdb_adjacency_store::open_mod
 		return;
 	}
 
-	std::cout << "flags2\n";
 	last_error = env->set_flags(env, /* DB_DIRECT_DB | DB_DIRECT_LOG |*/ DB_TXN_NOSYNC | DB_LOG_AUTOREMOVE, 1);
 	if (last_error != 0) {
 		env->close(env, 0);
@@ -184,24 +180,6 @@ bdb_adjacency_store::close(void)
 bdb_adjacency_transaction::bdb_adjacency_transaction(bdb_adjacency_store &s)
 	: store(s)
 {
-#if 0
-	DB_MUTEX_STAT *stat;
-	store.env->mutex_stat(store.env, &stat, 0);
-	std::cout << boost::format("start trans %d mutex avail, %d in use, %d total, %d max\n")
-			% stat->st_mutex_free % stat->st_mutex_inuse % stat->st_mutex_cnt % stat->st_mutex_inuse_max;
-	std::free(stat);
-
-	DB_TXN_STAT *tstat;
-	store.env->txn_stat(store.env, &tstat, 0);
-	std::cout << boost::format("%d txn active\n") % tstat->st_nactive;
-	std::free(tstat);
-
-	DB_LOCK_STAT *lstat;
-	store.env->lock_stat(store.env, &lstat, 0);
-	std::cout << boost::format("%d locks active max=%d\n") % lstat->st_nlocks % lstat->st_maxnlocks;
-	std::free(lstat);
-#endif
-
 	store.env->txn_begin(store.env, NULL, &txn, 0);
 }
 
@@ -212,22 +190,23 @@ bdb_adjacency_transaction::~bdb_adjacency_transaction(void)
 }
 
 void
-bdb_adjacency_transaction::add_title(page_id_t page, std::string const &name, text_id_t text_id)
+bdb_adjacency_transaction::add_title(std::string const &wiki, page_id_t page, std::string const &name, text_id_t text_id)
 {
-	std::vector<unsigned char> buf(4 + name.size());
+	std::vector<unsigned char> buf(4 + 1 + wiki.size() + name.size());
 	buf[0] = (page & 0xFF000000) >> 24;
 	buf[1] = (page & 0x00FF0000) >> 16;
 	buf[2] = (page & 0x0000FF00) >> 8;
 	buf[3] = (page & 0x000000FF);
+	buf[4] = (unsigned char) wiki.size();
 
-	for (std::size_t i = 0; i < name.size(); ++i)
-		buf[4 + i] = name[i];
+	std::memcpy(&buf[5], wiki.data(), wiki.size());
+	std::memcpy(&buf[5 + wiki.size()], name.data(), name.size());
 	
 	DBT key, value;
-	memset(&key, 0, sizeof(key));
-	memset(&value, 0, sizeof(value));
+	std::memset(&key, 0, sizeof(key));
+	std::memset(&value, 0, sizeof(value));
 
-	key.size = 4;
+	key.size = 5 + wiki.size();
 	key.data = &buf[0];
 	value.size = buf.size();
 	value.data = &buf[0];
@@ -236,31 +215,35 @@ bdb_adjacency_transaction::add_title(page_id_t page, std::string const &name, te
 	if (store.last_error != 0)
 		return;
 
-	std::vector<unsigned char> tbuf(4);
+	std::vector<unsigned char> tbuf(5 + wiki.size());
 	tbuf[0] = (text_id & 0xFF000000) >> 24;
 	tbuf[1] = (text_id & 0x00FF0000) >> 16;
 	tbuf[2] = (text_id & 0x0000FF00) >> 8;
 	tbuf[3] = (text_id & 0x000000FF);
+	tbuf[4] = (unsigned char) wiki.size();
+	std::memcpy(&tbuf[5], wiki.data(), wiki.size());
 
-	memset(&value, 0, sizeof(value));
-	value.size = 4;
+	std::memset(&value, 0, sizeof(value));
+	value.size = tbuf.size();
 	value.data = &tbuf[0];
 	store.last_error = store.text_ids->put(store.text_ids, txn, &key, &value, 0);
 }
 
 boost::optional<std::string>
-bdb_adjacency_store::name_for_id(page_id_t page)
+bdb_adjacency_store::name_for_id(std::string const &wiki, page_id_t page)
 {
-	std::vector<unsigned char> buf(4);
+	std::vector<unsigned char> buf(5 + wiki.size());
 	buf[0] = (page & 0xFF000000) >> 24;
 	buf[1] = (page & 0x00FF0000) >> 16;
 	buf[2] = (page & 0x0000FF00) >> 8;
 	buf[3] = (page & 0x000000FF);
+	buf[4] = (unsigned char) wiki.size();
+	std::memcpy(&buf[5], wiki.data(), wiki.size());
 
 	DBT key, value;
-	memset(&key, 0, sizeof(key));
-	memset(&value, 0, sizeof(value));
-	key.size = 4;
+	std::memset(&key, 0, sizeof(key));
+	std::memset(&value, 0, sizeof(value));
+	key.size = buf.size();
 	key.data = &buf[0];
 	value.flags = DB_DBT_MALLOC;
 
@@ -268,32 +251,37 @@ bdb_adjacency_store::name_for_id(page_id_t page)
 	if (i == DB_NOTFOUND)
 		return boost::optional<std::string>();
 
-	std::string ret((char *)value.data + 4, (char *)value.data + value.size);
+	char *d = (char *)value.data + 4;
+	int offs = (int)*d;
+	d += offs + 1;
+	std::string ret(d, value.size - (offs + 5));
 	std::free(value.data);
 	return ret;
 }
 
 boost::optional<text_id_t>
-bdb_adjacency_store::text_id_for_page(page_id_t page)
+bdb_adjacency_store::text_id_for_page(std::string const &wiki, page_id_t page)
 {
-	std::vector<unsigned char> buf(4);
+	std::vector<unsigned char> buf(5 + wiki.size());
 	buf[0] = (page & 0xFF000000) >> 24;
 	buf[1] = (page & 0x00FF0000) >> 16;
 	buf[2] = (page & 0x0000FF00) >> 8;
 	buf[3] = (page & 0x000000FF);
+	buf[4] = (unsigned char)wiki.size();
+	std::memcpy(&buf[5], wiki.data(), wiki.size());
 
 	DBT key, value;
-	memset(&key, 0, sizeof(key));
-	memset(&value, 0, sizeof(value));
-	key.size = 4;
+	std::memset(&key, 0, sizeof(key));
+	std::memset(&value, 0, sizeof(value));
+	key.size = buf.size();
 	key.data = &buf[0];
 	value.flags = DB_DBT_MALLOC;
 
 	int i = text_ids->get(text_ids, 0, &key, &value, 0);
 	if (i == DB_NOTFOUND)
-		return boost::optional<text_id_t>();
-	char *p = (char *) value.data;
-	text_id_t ret =   (static_cast<unsigned char>(*(p + 0)) << 24) 
+		return boost::optional<page_id_t>();
+	char *p = (char *)value.data;
+	page_id_t ret =   (static_cast<unsigned char>(*(p + 0)) << 24) 
 			| (static_cast<unsigned char>(*(p + 1)) << 16) 
 			| (static_cast<unsigned char>(*(p + 2)) << 8) 
 			|  static_cast<unsigned char>(*(p + 3));
@@ -302,12 +290,16 @@ bdb_adjacency_store::text_id_for_page(page_id_t page)
 }
 
 boost::optional<page_id_t>
-bdb_adjacency_store::id_for_name(std::string const &name)
+bdb_adjacency_store::id_for_name(std::string const &wiki, std::string const &name)
 {
-	std::vector<char> buf(name.begin(), name.end());
+	std::vector<char> buf(1 + wiki.size() + name.size());
+	buf[0] = wiki.size();
+	std::memcpy(&buf[1], wiki.data(), wiki.size());
+	std::memcpy(&buf[1 + wiki.size()], name.data(), name.size());
+
 	DBT key, value;
-	memset(&key, 0, sizeof(key));
-	memset(&value, 0, sizeof(value));
+	std::memset(&key, 0, sizeof(key));
+	std::memset(&value, 0, sizeof(value));
 	key.size = buf.size();
 	key.data = &buf[0];
 	value.flags = DB_DBT_MALLOC;
@@ -327,24 +319,10 @@ bdb_adjacency_store::id_for_name(std::string const &name)
 void
 bdb_adjacency_transaction::commit(void)
 {
-#if 0
-	DB_MUTEX_STAT *stat;
-	store.env->mutex_stat(store.env, &stat, 0);
-	std::cout << boost::format("commit trans %d mutex avail, %d in use, %d total, %d max\n")
-			% stat->st_mutex_free % stat->st_mutex_inuse % stat->st_mutex_cnt % stat->st_mutex_inuse_max;
-	std::free(stat);
-#endif
-
 	store.last_error = txn->commit(txn, 0);
 	txn = 0;
 	if (store.last_error != 0)
 		return;
-
-#if 0
-	store.last_error = store.env->txn_checkpoint(store.env, 0, 0, 0);
-	if (store.last_error != 0)
-		std::cout << "cannot checkpoint\n";
-#endif
 }
 
 void
@@ -356,32 +334,34 @@ bdb_adjacency_transaction::rollback(void)
 }
 
 void
-bdb_adjacency_transaction::add_adjacency(page_id_t from, page_id_t to)
-{
-	std::set<page_id_t> adj = get_adjacencies(from);
+bdb_adjacency_transaction::add_adjacency(std::string const &wiki, page_id_t from, page_id_t to)
+{ 
+	std::set<page_id_t> adj = get_adjacencies(wiki, from);
 	if (adj.find(to) != adj.end())
 		return;
 	adj.insert(to);
-	set_adjacencies(from, adj);
+	set_adjacencies(wiki, from, adj);
 }
 
 std::set<page_id_t>
-bdb_adjacency_transaction::get_adjacencies(page_id_t from)
+bdb_adjacency_transaction::get_adjacencies(std::string const &wiki, page_id_t from)
 {
 	std::set<page_id_t> ret;
-	unsigned char keyd[4];
+	std::vector<unsigned char> keyd(5 + wiki.size());
 	keyd[0] = (from & 0xFF000000) >> 24;
 	keyd[1] = (from & 0x00FF0000) >> 16;
 	keyd[2] = (from & 0x0000FF00) >> 8;
 	keyd[3] = (from & 0x000000FF);
+	keyd[4] = (unsigned char) wiki.size();
+	std::memcpy(&keyd[5], wiki.data(), wiki.size());
 
 	DBT key, value;
-	memset(&key, 0, sizeof(key));
-	memset(&value, 0, sizeof(value));
-	key.size = 4;
-	key.data = keyd;
+	std::memset(&key, 0, sizeof(key));
+	std::memset(&value, 0, sizeof(value));
+	key.size = keyd.size();
+	key.data = &keyd[0];
 
-	memset(&value, 0, sizeof(value));
+	std::memset(&value, 0, sizeof(value));
 	value.flags = DB_DBT_MALLOC;
 
 	store.last_error = store.adjacencies->get(store.adjacencies, txn, &key, &value, 0);
@@ -410,7 +390,7 @@ bdb_adjacency_transaction::get_adjacencies(page_id_t from)
 }
 
 void
-bdb_adjacency_transaction::set_adjacencies(page_id_t from, std::set<page_id_t> const &adj)
+bdb_adjacency_transaction::set_adjacencies(std::string const &wiki, page_id_t from, std::set<page_id_t> const &adj)
 {
 	std::vector<unsigned char> buf(adj.size() * sizeof(page_id_t));
 	unsigned char *pos = &buf[0];
@@ -425,16 +405,18 @@ bdb_adjacency_transaction::set_adjacencies(page_id_t from, std::set<page_id_t> c
 	DBT key;
 	DBT value;
 
-	unsigned char keyd[4];
+	std::vector<unsigned char> keyd(5 + wiki.size());
 	keyd[0] = (from & 0xFF000000) >> 24;
 	keyd[1] = (from & 0x00FF0000) >> 16;
 	keyd[2] = (from & 0x0000FF00) >> 8;
 	keyd[3] = (from & 0x000000FF);
+	keyd[4] = wiki.size();
+	std::memcpy(&keyd[5], wiki.data(), wiki.size());
 
-	memset(&key, 0, sizeof(key));
-	memset(&value, 0, sizeof(value));
-	key.size = 4;
-	key.data = keyd;
+	std::memset(&key, 0, sizeof(key));
+	std::memset(&value, 0, sizeof(value));
+	key.size = keyd.size();
+	key.data = &keyd[0];
 	value.size = buf.size();
 	value.data = &buf[0];
 

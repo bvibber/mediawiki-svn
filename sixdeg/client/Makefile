@@ -3,16 +3,20 @@
 # Six degrees of Wikipedia: Makefile
 # This source code is released into the public domain.
 
-include ../config.mk
+include ../rules.mk
+
+LDFLAGS += -L../libsixdeg
+LIBS 	+=  -lsixdeg
+
+SRCS	=	linksc.cc	\
+		liblinksc.cc	\
+
+OBJS	= 	$(SRCS:.cc=.o)
 
 all: linksc
 
 linksc: linksc.o liblinksc.o linksc.h
-	$(CXX) $(CXXFLAGS) linksc.o liblinksc.o -o linksc -L../libsixdeg -lsixdeg $(LIBS)
-linksc.o: linksc.cc linksc.h
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -I.. -I../libsixdeg -c linksc.cc 
-liblinksc.o: liblinksc.cc linksc.h
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(PICFLAGS) -I.. -I../libsixdeg -c liblinksc.cc
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) linksc.o liblinksc.o -o linksc $(LIBS)
 
 clean:
 	rm -f linksc *.so *.o core

@@ -3,9 +3,7 @@
 #
 # $Id$
 
-include ../config.mk
-
-CPPFLAGS	+= -D_REENTRANT -I.. 
+include ../rules.mk
 
 SRCS	= encode_decode.cc
 OBJS	= $(SRCS:.cc=.o)

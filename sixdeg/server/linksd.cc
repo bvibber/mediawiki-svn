@@ -59,14 +59,17 @@ client_handler::client_handler(pathfinder *f_)
 	, f(f_)
 {
 	struct sockaddr_in addr;
+	int one = 1;
 
 	if ((listener = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
 		std::perror("socket");
 		std::exit(1);
 	}
 
+	setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
+
 	std::memset(&addr, 0, sizeof(addr));
-	addr.sin_family = AF_UNIX;
+	addr.sin_family = AF_INET;
 	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	addr.sin_port = htons(PORT);
 
@@ -157,7 +160,6 @@ main(int, char *[])
 {
 	std::ifstream in(CACHE);
 	std::string l;
-	std::printf("retrieving links table...\n");
 
 	bdb_adjacency_store aj;
 
@@ -167,34 +169,7 @@ main(int, char *[])
 		return 1;
 	}
 
-	pathfinder *finder = new pathfinder_bdb(aj);
-
-#if 0
-	while (std::getline(in, l)) {
-		if (l.empty())
-			break;
-		int from, to;
-		std::istringstream str(l);
-		str >> from >> to;
-		finder->add_adjacency(from, to);
-	}
-
-	std::printf("ok\n");
-	std::printf("retrieving titles...\n");
-	while (std::getline(in, l)) {
-		int id;
-		std::string ttl;
-		std::istringstream str(l);
-		str >> id;
-		std::getline(str, ttl);
-		while (!ttl.empty() && ttl[0] == ' ')
-			ttl.erase(ttl.begin());
-		finder->add_title(ttl, id);
-	}
-	std::printf("filtering links...\n");
-	finder->filter();
-#endif
-	std::printf("ok\n");
+	pathfinder *finder = new pathfinder(aj);
 
 	client_handler ch(finder);
 	ch.run();

@@ -3,29 +3,40 @@
 #
 # $Id$
 
-include ../config.mk
-MYSQL_CPPFLAGS	= $(shell mysql_config --cflags)
-MYSQL_LIBS	= $(shell mysql_config --libs_r)
-BDB_LIBS	= -ldb-4.4
- 
-CPPFLAGS	+= -D_REENTRANT -I.. -I../libsixdeg -I../client $(MYSQL_CPPFLAGS)
+include ../rules.mk
 
-LINKSD_SRCS	= linksd.cc pathfinder.cc request_dispatcher.cc io.cc client.cc work_queue.cc bdb_adjacency_store.cc
+CPPFLAGS += -I.. -I../libsixdeg -I../client
+LDFLAGS += -L../libsigdeg
+
+MYSQL_LIBS	= -lmysqlclient_r -lz
+ 
+LINKSD_SRCS	= \
+	linksd.cc		\
+	pathfinder.cc		\
+	request_dispatcher.cc	\
+	io.cc			\
+	client.cc		\
+	work_queue.cc		\
+	bdb_adjacency_store.cc	\
+
 LINKSD_OBJS	= $(LINKSD_SRCS:.cc=.o)
 
-MKCACHE_BDB_SRCS	= mkcache_bdb.cc bdb_adjacency_store.cc
+MKCACHE_BDB_SRCS	= \
+	mkcache_bdb.cc 		\
+	bdb_adjacency_store.cc	\
+
 MKCACHE_BDB_OBJS	= $(MKCACHE_BDB_SRCS:.cc=.o)
 
 all: linksd mkcache mkcache_bdb
 
 linksd: $(LINKSD_OBJS) ../libsixdeg/libsixdeg.a
-	$(CXX) $(CXXFLAGS) $(LINKSD_OBJS) -o linksd -L../libsixdeg -lsixdeg $(BDB_LIBS) $(MYSQL_LIBS)
+	$(CXX) $(CXXFLAGS) $(LINKSD_OBJS) -o linksd -L../libsixdeg -lsixdeg $(BDBLIBS) $(MYSQL_LIBS) $(LIBS)
 
 mkcache: mkcache.o
-	$(CXX) $(CXXFLAGS) mkcache.o -o mkcache $(MYSQL_LIBS)
+	$(CXX) $(CXXFLAGS) mkcache.o -o mkcache $(MYSQL_LIBS) $(LIBS)
 
 mkcache_bdb: $(MKCACHE_BDB_OBJS)
-	$(CXX) $(CXXFLAGS) $(MKCACHE_BDB_OBJS) -o mkcache_bdb $(BDB_LIBS) $(MYSQL_LIBS)
+	$(CXX) $(CXXFLAGS) $(MKCACHE_BDB_OBJS) -o mkcache_bdb $(BDBLIBS) $(MYSQL_LIBS) $(LIBS)
 
 clean:
 	rm -f linksd *.o mkcache mkcache_bdb core

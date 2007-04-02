@@ -12,7 +12,7 @@
 
 work_queue::work_queue(int nthreads)
 {
-	std::cout << boost::format("nthreads = %d\n") % nthreads;
+	std::cout << "nthreads = " << nthreads << '\n';
 
 	pthread_mutex_init(&lock, NULL);
 	pthread_cond_init(&cond, NULL);

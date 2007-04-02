@@ -1,0 +1,15 @@
+# If your Java is elsewhere...
+#JAVA_HOME       = /usr/java
+
+# Any other includes or defines your site needs.
+#USER_CPPFLAGS	+= -I/some/path
+
+# Any other flags for the C++ compiler.
+#USER_CXXFLAGS	+= -fno-bugs
+
+# Any other linker flags / libraries
+#USER_LDFLAGS=
+#USER_LIB=
+
+# The name of your Oracle Berkeley DB library.
+BDBLIBS		= -ldb-4.5

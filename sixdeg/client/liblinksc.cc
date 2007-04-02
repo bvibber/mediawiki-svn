@@ -39,11 +39,11 @@ linksc_findpath(std::vector<std::string>& result, std::string const &src, std::s
 	addr.sin_port = htons(PORT);
 
 	if ((s = socket(PF_UNIX, SOCK_STREAM, 0)) == -1) {
-		perror("socket");
+		std::perror("socket");
 		return LINKS_NO_CONNECT;
 	}
 	if (connect(s, (struct sockaddr *)&addr, sizeof(addr)) == -1) {
-		perror("connect");
+		std::perror("connect");
 		close(s);
 		return LINKS_NO_CONNECT;
 	}

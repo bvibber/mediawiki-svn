@@ -85,7 +85,7 @@ dispatcher::run(void)
 poller::poller(void)
 {
 	int nfds = getdtablesize();
-	std::cout << boost::format("dtablesize = %d\n") % nfds;
+	std::cout << "dtablesize = " << nfds << '\n';
 	fdtable.resize(nfds);
 }
 
