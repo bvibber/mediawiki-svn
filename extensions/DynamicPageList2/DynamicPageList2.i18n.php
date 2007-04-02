@@ -49,7 +49,7 @@ $wgDPL2Messages['en'] = array(
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "ERROR: Cannot perform logical operations on the Uncategorized pages (e.g. with the 'category' parameter) because the $0 view does not exist on the database! Help: have the DB admin execute this query: <code>$1</code>.",
-	
+
 	// WARNINGS
 	/**
 	 * $0: unknown parameter given by user
@@ -133,7 +133,7 @@ $wgDPL2Messages['fr'] = array(
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "ERREUR : Ne peut pas effectuer d’opérations logiques sur les pages sans catégories (avec la paramètre 'category') car la vue $0 n’existe pas dans la base de données ! Aide : demander à un administrateur de la base de données d'effectuer : <code>$1</code>.",
-	
+
 	// WARNINGS
 	/**
 	 * $0: unknown parameter given by user
@@ -217,7 +217,7 @@ $wgDPL2Messages['he'] = array(
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "שגיאה: לא ניתן לבצע פעולות לוגיות על דפים ללא קטגוריות (למשל, עם הפרמטר 'קטגוריה') כיוון שתצוגת $0 אינה קיימת במסד הנתונים! עזרה: מנהל מסד הנתונים צריך להריץ את השאילתה: <code>$1</code>.",
-	
+
 	// WARNINGS
 	/**
 	 * $0: unknown parameter given by user
@@ -264,6 +264,27 @@ $wgDPL2Messages['he'] = array(
 	*/
 	'dpl2_articlecount' => '{{plural:$1|ישנם $1 דפים|ישנו דף אחד}} תחת כותרת זו.'
 );
+$wgDPL2Messages['id'] = array(
+	'dpl2_debug_' . DPL2_ERR_WRONGNS => "KESALAHAN: Parameter '$0' salah: '$1'! Bantuan: <code>$0= <i>string kosong</i> (Utama)$3</code>. (Ekivalen kata kunci juga diizinkan.)",
+	'dpl2_debug_' . DPL2_ERR_WRONGLINKSTO => "KESALAHAN: Parameter '$0' salah: '$1'! Bantuan:  <code>$0= <i>nama lengkap halaman</i></code>. (Kata kunci diizinkan.)",
+	'dpl2_debug_' . DPL2_ERR_TOOMANYCATS => 'KESALAHAN: Kategori terlalu banyak! Maksimum: $0. Bantuan: perbesar <code>$wgDPL2MaxCategoryCount</code> untuk memberikan lebih banyak kategori atau atur  <code>$wgDPL2AllowUnlimitedCategories=true</code> untuk menghapus batasan. (Atur variabel tersebut di <code>LocalSettings.php</code>, setelah mencantumkan <code>DynamicPageList2.php</code>.)',
+	'dpl2_debug_' . DPL2_ERR_TOOFEWCATS => 'KESALAHAN: Kategori terlalu sedikit! Minimum: $0. Bantuan: kurangi <code>$wgDPL2MinCategoryCount</code> untuk mengurangi kategori. (Atur variabel tersebut di <code>LocalSettings.php</code>, setelah mencantumkan <code>DynamicPageList2.php</code>.)',
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTNOINCLUDEDCATS => "KESALAHAN: Anda harus memberikan paling tidak satu kategori jika menggunakan 'addfirstcategorydate=true' atau 'ordermethod=categoryadd'!",
+	'dpl2_debug_' . DPL2_ERR_CATDATEBUTMORETHAN1CAT => "KESALAHAN: Jika Anda memberikan lebih dari satu kategori, Anda tidak dapat menggunakan 'addfirstcategorydate=true' atau 'ordermethod=categoryadd'!",
+	'dpl2_debug_' . DPL2_ERR_MORETHAN1TYPEOFDATE => 'KESALAHAN: Anda tidak dapat memberikan lebih dari satu jenis tanggal dalam satu waktu!',
+	'dpl2_debug_' . DPL2_ERR_WRONGORDERMETHOD => "KESALAHAN: Anda dapat menggunakan '$0' hanya dengan 'ordermethod=[...,]$1'!",
+	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "KESALAHAN: Tidak dapat melakukan operasi logika pada halaman yang tak terkategori (misalnya dengan parameter 'kategori') karena view $0 tidak ada di basis data! Bantuan: mintalah admin basis data untuk menjalankan kueri berikut: <code>$1</code>.",
+	'dpl2_debug_' . DPL2_WARN_UNKNOWNPARAM => "KESALAHAN: Paramater yang tak dikenal '$0' diabaikan. Bantuan: parameter yang tersedia: <code>$1</code>.",
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM => "KESALAHAN: Parameter '$0' salah: '$1'! Menggunakan konfigurasi baku: '$2'. Bantuan: <code>$0= $3</code>.",
+	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "KESALAHAN: Parameter '$0' salah: '$1'! Menggunakan konfigurasi baku: '$2' (tanpa limitasi). Bantuan: <code>$0= <i>string kosong</i> (tanpa limitasi) | n</code>, dengan <code>n</code> suatu bilangan positif.",
+	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'KESALAHAN: Hasil tak ditemukan!',
+	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "KESALAHAN: Menambahkan * parameter ('adduser', 'addeditdate', dll.)' dan 'includepage' tidak berpengaruh pada 'mode=category'. Hanya ruang nama/judul halaman yang dapat ditampilkan dengan mode ini.",
+	'dpl2_debug_' . DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD => "KESALAHAN: 'headingmode=$0' tidak berpengaruh dengan 'ordermethod' pada suatu komponen tunggal. Menggunakan: '$1'. Bantuan: Anda dapat menggunakan nilai not-$1 'headingmode' dengan 'ordermethod' terhadap beberapa komponen. Komponen pertama digunakan sebagai judul. Misalnya 'ordermethod=category,<i>comp</i>' (<i>comp</i> adalah komponen lain) untuk judul kategori.",
+	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "KESALAHAN: 'debug=$0' tidak pada posisi pertama pada elemen DPL. Aturan debug tidak diterapkan sebelum semua variabel sebelumnya telah diparsing dan dicek.",
+	'dpl2_debug_' . DPL2_WARN_TRANSCLUSIONLOOP => "KESALAHAN: Suatu lingkaran transklusi tak hingga ditimbulkan oleh halaman '$0'.",
+	'dpl2_debug_' . DPL2_QUERY => 'KUERI: <code>$0</code>',
+	'dpl2_articlecount' => 'Terdapat {{PLURAL:$1|artikel|artikel}} dalam judul ini.'
+);
 $wgDPL2Messages['it'] = array(
 	/*
 		Debug
@@ -301,7 +322,7 @@ $wgDPL2Messages['it'] = array(
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "ERRORE: Impossibile effettuare operazioni logiche sulle pagine prive di categoria (ad es. con il parametro 'category') in quanto il database non contiene la vista $0. Suggerimento: chiedere all'amministratore del database di eseguire la seguente query: <code>$1</code>.",
-	
+
 	// WARNINGS
 	/**
 	 * $0: unknown parameter given by user
@@ -381,7 +402,7 @@ $wgDPL2Messages['nl'] = array(
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
-	
+
 	// WARNINGS
 	/**
 	 * $0: unknown parameter given by user
@@ -460,7 +481,7 @@ $wgDPL2Messages['ru'] = array(
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
-	
+
 	// WARNINGS
 	/**
 	 * $0: unknown parameter given by user
@@ -540,7 +561,7 @@ $wgDPL2Messages['sk'] = array(
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "CHYBA: Nie je momožné vykonávať logické operácie na nekategorizovaných kategóriách (napr. s parametrom 'Kategória') lebo neexistuje na databázu pohľad $0! Pomocník: nech admin databázy vykoná tento dotaz: <code>$1</code>.",
-	
+
 	// WARNINGS
 	/**
 	 * $0: unknown parameter given by user
@@ -620,7 +641,7 @@ $wgDPL2Messages['sr-ec'] = array(
 	 * $1: SQL упит за креирање prefix_dpl_clview на бази података вашег МедијаВикија
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "ГРЕШКА: Немогуће извршити операцију на некатегоризованим страницама (нпр. са 'category' параметром) зато што $0 преглед не постоји у бази података! Помоћ: нека администратор базе изврши овај упит: <code>$1</code>.",
-	
+
 	// WARNINGS
 	/**
 	 * $0: корисник је унео непознат параметар
@@ -704,7 +725,7 @@ $wgDPL2Messages['sr-el'] = array(
 	 * $1: SQL upit za kreiranje prefix_dpl_clview na bazi podataka vašeg MedijaVikija
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => "GREŠKA: Nemoguće izvršiti operaciju na nekategorizovanim stranicama (npr. sa 'category' parametrom) zato što $0 pregled ne postoji u bazi podataka! Pomoć: neka administrator baze izvrši ovaj upit: <code>$1</code>.",
-	
+
 	// WARNINGS
 	/**
 	 * $0: korisnik je uneo nepoznat parametar
@@ -784,7 +805,7 @@ $wgDPL2Messages['zh-cn'] = array(
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
-	
+
 	// WARNINGS
 	/**
 	 * $0: unknown parameter given by user
@@ -859,7 +880,7 @@ $wgDPL2Messages['zh-tw'] = array(
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
-	
+
 	// WARNINGS
 	/**
 	 * $0: unknown parameter given by user
@@ -934,7 +955,7 @@ $wgDPL2Messages['zh-yue'] = array(
 	 * $1: SQL query to create the prefix_dpl_clview on your mediawiki DB
 	*/
 	'dpl2_debug_' . DPL2_ERR_NOCLVIEW => $wgDPL2Messages['en']['dpl2_debug_' . DPL2_ERR_NOCLVIEW],
-	
+
 	// WARNINGS
 	/**
 	 * $0: unknown parameter given by user

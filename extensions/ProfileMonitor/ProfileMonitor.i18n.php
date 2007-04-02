@@ -25,7 +25,7 @@ function efProfileMonitorMessages() {
 ),
 
 /* Indonesian (IvanLanin) */
-'en' => array(
+'id' => array(
 'profiling' => 'Profilisasi data',
 'profiling-process' => 'Proses data:',
 'profiling-wildcard' => 'Gunakan wildcard',

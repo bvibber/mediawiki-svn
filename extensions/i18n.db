@@ -59,7 +59,7 @@
 ./ConfirmEdit/FancyCaptcha.i18n.php efFancyCaptchaMessages
 ./Contributors/Contributors.i18n.php efContributorsMessages
 ./CountEdits/CountEdits.i18n.php efCountEditsMessages
-./CrossNamespaceLinks/SpecialCrossNamespaceLinks.i18n.php
+./CrossNamespaceLinks/SpecialCrossNamespaceLinks.i18n.php wgCrossNamespaceLinksMessages
 ./Desysop/SpecialDesysop.i18n.php wgDesysopMessages
 ./DismissableSiteNotice/DismissableSiteNotice.i18n.php wgDismissableSiteNoticeMessages
 ./Duplicator/Duplicator.i18n.php efDuplicatorMessages
