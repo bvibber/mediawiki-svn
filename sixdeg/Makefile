@@ -6,7 +6,7 @@
 include plat_frag.mk
 
 MAKEFLAGS = --no-print-directory
-SUBDIRS	= libsixdeg client java mkcache server webapp
+SUBDIRS	= libsixdeg client java libsdstore mkcache server webapp
 
 all clean:
 	@for dir in $(SUBDIRS); do \
