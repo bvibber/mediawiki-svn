@@ -196,6 +196,23 @@ function efImageMapMessages() {
 'imagemap_desc_types'           => 'rechtsboven, rechtsonder, linksonder, linksboven, geen',
 ),
 
+/* Slovak (helix84) */
+'sk' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: musí mať na prvom riadku uvedený obrázok',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: obrázok je neplatný alebo neexistuje',
+'imagemap_no_link'              => '&lt;imagemap&gt;: na konci riadka $1 nebol nájdený platný odkaz',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: neplatný nadpis v odkaze na riadku $1',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: nedostatok súradníc na vytvorenie tvaru na riadku $1',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: nerozpoznaný tvar na riadku $1, každý riadok musí začínať jedným z: '.
+								   'default, rect, circle alebo poly',
+'imagemap_no_areas'             => '&lt;imagemap&gt;: musí byť zadaná najmenej jedna špecifikácia oblasti',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: neplatná súradnica na riadku $1, musí to byť číslo',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: neplatný popis, musí byť jedno z nasledovných: $1',
+'imagemap_description'          => 'O tomto obrázku',
+# Note to translators: keep the same order
+'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
+),
+
 	);
 }
 

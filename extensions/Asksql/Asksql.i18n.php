@@ -88,6 +88,20 @@ Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaa
 'querysuccessful' => 'Запрос выполнен',
 ),
 
+/* Slovak (helix84) */
+'sk' => array(
+'asksql' => 'SQL požiadavka',
+'asksqltext' => "Použite tento formulár na zadanie priamej požiadavky do databázy.
+Použite jednoduché úvodzovky ('takéto') na oddelenie reťazcových literálov.
+Toto môže často znamenať závažnú dodatočnú záťaž serverov, preto prosím
+používajte túto funkciu s rozmyslom.",
+'sqlislogged' => 'Prosím majte na pamäti, že všetky požiadavky sú zaznamenávané.',
+'sqlquery' => 'Zadať požiadavku',
+'querybtn' => 'Poslať požiadavku',
+'selectonly' => 'Sú povolené požiadavky iba na čítanie.',
+'querysuccessful' => 'Požiadavka úspešne vykonaná',
+),
+
 /* Chinese (China) (Formulax, Shizhao) */
 'zh-cn' => array(
 'asksql' => 'SQL查询',
