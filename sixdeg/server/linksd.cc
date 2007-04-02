@@ -158,7 +158,6 @@ client_handler::accept_client(void)
 int
 main(int, char *[])
 {
-	std::ifstream in(CACHE);
 	std::string l;
 
 	bdb_adjacency_store aj;

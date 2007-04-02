@@ -3,11 +3,20 @@
  * Six degrees of Wikipedia: Database cacher.
  * This source code is released into the public domain.
  */
+/*
+ * Keys in the database are all strings.
+ *
+ * Adjacency key:     "enwiki_p/123456"
+ * Title key:         "enwiki_p/123456"
+ * Text id key:       "enwiki_p/123456"
+ * Title-by-name key: "enwiki_p/Main_Page"
+ */
 
 #include <iostream>
 #include <cstdio>
 
 #include <boost/format.hpp>
+#include <boost/lexical_cast.hpp>
 
 #include <pthread.h>
 
@@ -30,12 +39,24 @@ bdb_adjacency_store::bdb_adjacency_store(void)
 {
 }
 
+/*
+ * Given a wiki/page_id key for titles, create a titles_byname key, wiki/name.
+ */
 int
-extract_title(DB *, DBT const *, DBT const *pdata, DBT *skey)
+extract_title(DB *, DBT const *pkey, DBT const *pdata, DBT *skey)
 {
+	std::string okey((char *)pkey->data, pkey->size);
+	std::string::size_type i;
+	if ((i = okey.find('/')) == std::string::npos)
+		return 1;
+
+	std::string newkey = str(boost::format("%s/%s") % okey.substr(0, i) % 
+					std::string((char *)pdata->data, pdata->size));
 	std::memset(skey, 0, sizeof(*skey));
-	skey->data = (char *)pdata->data + 4;
-	skey->size = pdata->size - 4;
+	skey->data = std::malloc(newkey.size());
+	std::memcpy(skey->data, newkey.data(), newkey.size());
+	skey->size = newkey.size();
+	skey->flags = DB_DBT_APPMALLOC;
 	return 0;
 }
 
@@ -192,99 +213,68 @@ bdb_adjacency_transaction::~bdb_adjacency_transaction(void)
 void
 bdb_adjacency_transaction::add_title(std::string const &wiki, page_id_t page, std::string const &name, text_id_t text_id)
 {
-	std::vector<unsigned char> buf(4 + 1 + wiki.size() + name.size());
-	buf[0] = (page & 0xFF000000) >> 24;
-	buf[1] = (page & 0x00FF0000) >> 16;
-	buf[2] = (page & 0x0000FF00) >> 8;
-	buf[3] = (page & 0x000000FF);
-	buf[4] = (unsigned char) wiki.size();
-
-	std::memcpy(&buf[5], wiki.data(), wiki.size());
-	std::memcpy(&buf[5 + wiki.size()], name.data(), name.size());
+	std::string keys = str(boost::format("%s/%s") % wiki % page);
 	
 	DBT key, value;
 	std::memset(&key, 0, sizeof(key));
 	std::memset(&value, 0, sizeof(value));
 
-	key.size = 5 + wiki.size();
-	key.data = &buf[0];
-	value.size = buf.size();
-	value.data = &buf[0];
+	key.size = keys.size();
+	key.data = &keys[0];
+	value.size = name.size();
+	value.data = (void *)name.data();
 
 	store.last_error = store.titles->put(store.titles, txn, &key, &value, 0);
 	if (store.last_error != 0)
 		return;
 
-	std::vector<unsigned char> tbuf(5 + wiki.size());
-	tbuf[0] = (text_id & 0xFF000000) >> 24;
-	tbuf[1] = (text_id & 0x00FF0000) >> 16;
-	tbuf[2] = (text_id & 0x0000FF00) >> 8;
-	tbuf[3] = (text_id & 0x000000FF);
-	tbuf[4] = (unsigned char) wiki.size();
-	std::memcpy(&tbuf[5], wiki.data(), wiki.size());
-
+	std::string tidval = boost::lexical_cast<std::string>(text_id);
 	std::memset(&value, 0, sizeof(value));
-	value.size = tbuf.size();
-	value.data = &tbuf[0];
+	value.size = tidval.size();
+	value.data = (void *)tidval.data();
 	store.last_error = store.text_ids->put(store.text_ids, txn, &key, &value, 0);
 }
 
 boost::optional<std::string>
 bdb_adjacency_store::name_for_id(std::string const &wiki, page_id_t page)
 {
-	std::vector<unsigned char> buf(5 + wiki.size());
-	buf[0] = (page & 0xFF000000) >> 24;
-	buf[1] = (page & 0x00FF0000) >> 16;
-	buf[2] = (page & 0x0000FF00) >> 8;
-	buf[3] = (page & 0x000000FF);
-	buf[4] = (unsigned char) wiki.size();
-	std::memcpy(&buf[5], wiki.data(), wiki.size());
+	std::string keys = str(boost::format("%s/%d") % wiki % page);
 
 	DBT key, value;
 	std::memset(&key, 0, sizeof(key));
 	std::memset(&value, 0, sizeof(value));
-	key.size = buf.size();
-	key.data = &buf[0];
+	key.size = keys.size();
+	key.data = (char *)keys.data();
 	value.flags = DB_DBT_MALLOC;
 
 	int i = titles->get(titles, 0, &key, &value, 0);
 	if (i == DB_NOTFOUND)
 		return boost::optional<std::string>();
 
-	char *d = (char *)value.data + 4;
-	int offs = (int)*d;
-	d += offs + 1;
-	std::string ret(d, value.size - (offs + 5));
+	std::string name((char *)value.data, value.size);
 	std::free(value.data);
-	return ret;
+	return name;
 }
 
 boost::optional<text_id_t>
 bdb_adjacency_store::text_id_for_page(std::string const &wiki, page_id_t page)
 {
-	std::vector<unsigned char> buf(5 + wiki.size());
-	buf[0] = (page & 0xFF000000) >> 24;
-	buf[1] = (page & 0x00FF0000) >> 16;
-	buf[2] = (page & 0x0000FF00) >> 8;
-	buf[3] = (page & 0x000000FF);
-	buf[4] = (unsigned char)wiki.size();
-	std::memcpy(&buf[5], wiki.data(), wiki.size());
+	std::string keys = str(boost::format("%s/%d") % wiki % page);
 
 	DBT key, value;
 	std::memset(&key, 0, sizeof(key));
 	std::memset(&value, 0, sizeof(value));
-	key.size = buf.size();
-	key.data = &buf[0];
+	key.size = keys.size();
+	key.data = (void *)keys.data();
 	value.flags = DB_DBT_MALLOC;
 
 	int i = text_ids->get(text_ids, 0, &key, &value, 0);
 	if (i == DB_NOTFOUND)
 		return boost::optional<page_id_t>();
-	char *p = (char *)value.data;
-	page_id_t ret =   (static_cast<unsigned char>(*(p + 0)) << 24) 
-			| (static_cast<unsigned char>(*(p + 1)) << 16) 
-			| (static_cast<unsigned char>(*(p + 2)) << 8) 
-			|  static_cast<unsigned char>(*(p + 3));
+
+	text_id_t ret = boost::lexical_cast<text_id_t>(
+				std::string((char *)value.data, value.size));
+
 	std::free(value.data);
 	return ret;
 }
@@ -292,28 +282,26 @@ bdb_adjacency_store::text_id_for_page(std::string const &wiki, page_id_t page)
 boost::optional<page_id_t>
 bdb_adjacency_store::id_for_name(std::string const &wiki, std::string const &name)
 {
-	std::vector<char> buf(1 + wiki.size() + name.size());
-	buf[0] = wiki.size();
-	std::memcpy(&buf[1], wiki.data(), wiki.size());
-	std::memcpy(&buf[1 + wiki.size()], name.data(), name.size());
+	std::string keys = str(boost::format("%s/%s") % wiki % name);
 
-	DBT key, value;
+	DBT key, value, pkey;
 	std::memset(&key, 0, sizeof(key));
+	std::memset(&pkey, 0, sizeof(pkey));
 	std::memset(&value, 0, sizeof(value));
-	key.size = buf.size();
-	key.data = &buf[0];
+	key.size = keys.size();
+	key.data = (void *)keys.data();
+	pkey.flags = DB_DBT_MALLOC;
 	value.flags = DB_DBT_MALLOC;
 
-	int i = titles_byname->get(titles_byname, 0, &key, &value, 0);
+	int i = titles_byname->pget(titles_byname, 0, &key, &pkey, &value, 0);
 	if (i == DB_NOTFOUND)
 		return boost::optional<page_id_t>();
-	char *p = (char *)value.data;
-	page_id_t ret =   (static_cast<unsigned char>(*(p + 0)) << 24) 
-			| (static_cast<unsigned char>(*(p + 1)) << 16) 
-			| (static_cast<unsigned char>(*(p + 2)) << 8) 
-			|  static_cast<unsigned char>(*(p + 3));
+
+	std::string okey((char *)pkey.data, pkey.size);
+	std::string ret = okey.substr(okey.find('/') + 1);
 	std::free(value.data);
-	return ret;
+	std::free(pkey.data);
+	return boost::lexical_cast<page_id_t>(ret);
 }
 
 void
@@ -346,20 +334,14 @@ bdb_adjacency_transaction::add_adjacency(std::string const &wiki, page_id_t from
 std::set<page_id_t>
 bdb_adjacency_transaction::get_adjacencies(std::string const &wiki, page_id_t from)
 {
+	std::string keys = str(boost::format("%s/%d") % wiki % from);
 	std::set<page_id_t> ret;
-	std::vector<unsigned char> keyd(5 + wiki.size());
-	keyd[0] = (from & 0xFF000000) >> 24;
-	keyd[1] = (from & 0x00FF0000) >> 16;
-	keyd[2] = (from & 0x0000FF00) >> 8;
-	keyd[3] = (from & 0x000000FF);
-	keyd[4] = (unsigned char) wiki.size();
-	std::memcpy(&keyd[5], wiki.data(), wiki.size());
 
 	DBT key, value;
 	std::memset(&key, 0, sizeof(key));
 	std::memset(&value, 0, sizeof(value));
-	key.size = keyd.size();
-	key.data = &keyd[0];
+	key.size = keys.size();
+	key.data = (char *)keys.data();
 
 	std::memset(&value, 0, sizeof(value));
 	value.flags = DB_DBT_MALLOC;
@@ -392,6 +374,7 @@ bdb_adjacency_transaction::get_adjacencies(std::string const &wiki, page_id_t fr
 void
 bdb_adjacency_transaction::set_adjacencies(std::string const &wiki, page_id_t from, std::set<page_id_t> const &adj)
 {
+	std::string keys = str(boost::format("%s/%d") % wiki % from);
 	std::vector<unsigned char> buf(adj.size() * sizeof(page_id_t));
 	unsigned char *pos = &buf[0];
 	for (std::set<page_id_t>::iterator it = adj.begin(), end = adj.end(); it != end; ++it) {
@@ -405,18 +388,10 @@ bdb_adjacency_transaction::set_adjacencies(std::string const &wiki, page_id_t fr
 	DBT key;
 	DBT value;
 
-	std::vector<unsigned char> keyd(5 + wiki.size());
-	keyd[0] = (from & 0xFF000000) >> 24;
-	keyd[1] = (from & 0x00FF0000) >> 16;
-	keyd[2] = (from & 0x0000FF00) >> 8;
-	keyd[3] = (from & 0x000000FF);
-	keyd[4] = wiki.size();
-	std::memcpy(&keyd[5], wiki.data(), wiki.size());
-
 	std::memset(&key, 0, sizeof(key));
 	std::memset(&value, 0, sizeof(value));
-	key.size = keyd.size();
-	key.data = &keyd[0];
+	key.size = keys.size();
+	key.data = (char *)keys.data();
 	value.size = buf.size();
 	value.data = &buf[0];
 

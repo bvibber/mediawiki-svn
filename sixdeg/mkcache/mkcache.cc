@@ -34,6 +34,18 @@ mysql_query_ordie(MYSQL* mysql, char const *query)
 	}
 }
 
+bool
+do_mysql_query(MYSQL* mysql, char const *query)
+{
+	int i = mysql_query(mysql, query);
+	if (i) {
+		std::cerr << "mysql query failed: " << mysql_error(mysql) << '\n';
+		return false;
+	}
+	return true;
+}
+
+
 struct link_entry {
 	std::string wiki;
 	page_id_t from, to;
@@ -128,10 +140,14 @@ main(int, char *argv[])
 void
 build_for(MYSQL &mysql, std::string const &db)
 {
-	mysql_query_ordie(&mysql, ("USE " + db).c_str());
-	mysql_query_ordie(&mysql, 
+	if (!do_mysql_query(&mysql, ("USE " + db).c_str()))
+		return;
+
+	if (!do_mysql_query(&mysql, 
                 "SELECT page_id, pl_from FROM pagelinks,page "
-                "WHERE pl_title=page_title and pl_namespace=page_namespace and page_namespace=0");
+                "WHERE pl_title=page_title and pl_namespace=page_namespace and page_namespace=0"))
+		return;
+
 	MYSQL_RES *res = mysql_use_result(&mysql);
 
 	MYSQL_ROW arow;
@@ -154,7 +170,9 @@ build_for(MYSQL &mysql, std::string const &db)
 
 	mysql_free_result(res);
 
-	mysql_query_ordie(&mysql, "SELECT page_title,page_id,page_latest FROM page WHERE page_namespace=0");
+	if (!do_mysql_query(&mysql, "SELECT page_title,page_id,page_latest FROM page WHERE page_namespace=0"))
+		return;
+
 	res = mysql_use_result(&mysql);
 	i = 0;
 	while ((arow = mysql_fetch_row(res)) != NULL) {
