@@ -526,6 +526,10 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'already_sysop'        => 'Dä Metmaacher es ald ene Wiki Köbes.',
 	'already_bureaucrat'   => 'Dä Metmaacher es ald ene Bürrokrad.',
 );
+$wgMakesysopMessages['li'] = array(
+	'already_sysop'        => 'Deze gebroeker is al systeemwèrker',
+	'already_bureaucrat'   => 'Deze gebroeker is al amtenaer',
+);
 $wgMakesysopMessages['lt'] = array(
 	'makesysoptitle'     => 'Padaryti naudotoją administratoriumi',
 	'makesysoptext'      => 'Ši forma yra naudojama biurokratų, kad paprastus naudotojus pavestų į administratorius. Įveskite naudotojo vardą ir paspauskite mygtuką, kad padarytumėte naudotoją administratoriumi',
