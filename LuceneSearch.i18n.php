@@ -349,6 +349,15 @@ Ovo je verovatno privremeno; pokušajte ponovo nakon nekoliko momenata,
 ili pretražite viki preko nekog od spoljnih pretraživačkih servisa:\n"
 );
 $wgLuceneSearchMessages['sr'] = $wgLuceneSearchMessages['sr-ec'];
+$wgLuceneSearchMessages['ur'] = array(
+	'searchnumber'          => '<strong><font face="times new roman, urdu naskh asiatype">نـتـائـج : $3 کے $1 تـا $2 </strong></font>',
+	'searchprev'            => 'پیچھے',
+	'searchnext'            => 'آگے',
+	'searchscore'           => 'مشابہت: $1',
+	'searchsize'            => '$1کلوبائٹ ($2 الفاظ)',
+	'searchnoresults'       => 'بہ تاسف، کوئی ایسا صفحہ نہیں مـلا جو آپکی مطلوبہ تلاش کے عین مطابق ہو۔',
+	'lucenepowersearchtext' => 'تلاش کریں، فضاۓ نام : $1 میں براۓ $3 $9',
+);
 $wgLuceneSearchMessages['wa'] = array(
 	'searchnumber'          => '<strong>Rizultats: $1-$2 di $3</strong>',
 	'searchprev'            => '← <span style=\'font-size: small\'>Div.</span>',
