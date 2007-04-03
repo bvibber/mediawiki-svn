@@ -82,6 +82,12 @@ Let cURL run in the background instead of hanging the page until it's done
 TODO:
 Show downloading.png in place of the file if download is not complete. Hack the Image display functionality.
 
-
-
-
+Feedback from Erik
+The biggest bug I am seeing right now is that IC does not work in
+preview. When I preview a page with an IC image, it just puts me on
+the description page _for_ the image; I don't see an actual preview.
+Steps to reproduce:
+1) Put an image reference to an IC server in the client
+2) Hit "Preview"
+3) Expected result: Page with preview of  text & image from IC
+4) Actual result: Image description page
