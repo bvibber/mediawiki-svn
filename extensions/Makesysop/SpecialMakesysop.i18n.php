@@ -895,6 +895,15 @@ $wgMakesysopMessages['uk'] = array(
 	'group-steward'        => 'Стюарди',
 	'group-steward-member' => 'стюард',
 );
+$wgMakesysopMessages['ur'] = array(
+	'makesysoptitle'       => 'صارف کو منتظم بنائیں',
+	'makesysopname'        => 'صارف کا نام:',
+	'makesysopsubmit'      => 'صارف کو منتظم بنائیں',
+	'makesysopok'          => '<b>$1 اب منتظم ہے</b>',
+	'rights'               => 'حقوق:',
+	'makesysop'            => 'صارف کو منتظم بنائیں',
+	'already_sysop'        => 'یہ صارف پہلے ہی منتظم ہے',
+);
 $wgMakesysopMessages['vec'] = array(
 	'makesysoptitle'       => 'Rendi aministradore un utente',
 	'makesysoptext'        => 'Sto form xè usà dai burocrati par far diventare amistradori i utenti normali. Scrivi el nome de l\'utente ne la caseła e struca el botón par far diventare aministradore un utente.',

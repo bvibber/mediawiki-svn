@@ -78,6 +78,9 @@ $wgSiteMatrixMessages['sr'] = $wgSiteMatrixMessages['sr-ec'];
 $wgSiteMatrixMessages['sv'] = array(
 	"sitematrix" => "Lista över Wikimedias wikis",
 );
+$wgSiteMatrixMessages['ur'] = array(
+	"sitematrix" => 'فہرست وکی میڈیا کے دیگر وکییوں کی',
+);
 $wgSiteMatrixMessages['zh-cn'] = array(
 	"sitematrix" => "维基媒体站点列表",
 );

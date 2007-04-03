@@ -400,6 +400,11 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'uklonio status bota: [[$1]]',
 ),
 
+/* Urdu */
+'ur' => array(
+'makebot' => 'بخشیں یا منسوخ کریں درجہ خودکارصارف',
+),
+
 /* Walloon (language file) */
 'wa' => array(
 'makebot' => 'Diner ou rsaetchî l\' livea d\' robot',

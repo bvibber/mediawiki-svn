@@ -87,6 +87,9 @@ $wgDismissableSiteNoticeMessages['ru'] = array(
 $wgDismissableSiteNoticeMessages['sk'] = array(
 	'sitenotice_close' => 'nezobrazovať',
 );
+$wgDismissableSiteNoticeMessages['ur'] = array(
+	'sitenotice_close' => 'ترک',
+);
 $wgDismissableSiteNoticeMessages['zh-cn'] = array(
 	'sitenotice_close' => '关闭',
 );

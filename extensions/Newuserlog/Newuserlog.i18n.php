@@ -141,6 +141,11 @@ $wgNewuserlogMessages['sv'] = array(
 	'newuserlog-create-entry'  => 'Ny användare',
 	'newuserlog-create2-entry' => 'skapade användarkontot $1',
 );
+$wgNewuserlogMessages['ur'] = array(
+	'newuserlogpage'           => 'نوشتۂ آمد صارف',
+	'newuserlogpagetext'       => 'یہ نۓ صارفوں کی آمد کا نوشتہ ہے',
+	'newuserlog-create-entry'  => 'صارف جدید',
+);
 $wgNewuserlogMessages['wa'] = array(
 	'newuserlogpage'           => 'Djournå des noveas uzeus',
 	'newuserlogpagetext'       => 'Chal pa dzo c\' est ene djivêye des uzeus novelmint eredjîstrés.',
