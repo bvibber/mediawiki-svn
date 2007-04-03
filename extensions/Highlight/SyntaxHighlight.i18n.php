@@ -14,6 +14,7 @@ function efSyntaxHighlightMessages() {
 'syntaxhighlight-specify' => 'You need to specify a language like this:',
 'syntaxhighlight-supported' => 'Supported languages for syntax highlighting:',
 'syntaxhighlight-err-loading' => '(error loading support language list)',
+'syntaxhighlight-err-language' => 'Invalid language.',
 ),
 
 /* French */

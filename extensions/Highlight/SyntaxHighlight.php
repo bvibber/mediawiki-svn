@@ -36,16 +36,10 @@
  *
  * The extension has been tested with GeSHi 1.0.7 and MediaWiki 1.5 CVS
  * as of 2005-06-22.
- *
- * @todo Localize help text
- * @todo Handle multiple error return types
- * @todo Allow other parameters, such as line numbering
  */
 
 if( !defined( 'MEDIAWIKI' ) )
 	die();
-
-require_once( 'geshi/geshi.php' );
 
 $wgExtensionFunctions[] = 'syntaxSetup';
 $wgExtensionCredits['parserhook']['SyntaxHighlight'] = array(
@@ -53,53 +47,98 @@ $wgExtensionCredits['parserhook']['SyntaxHighlight'] = array(
 	'author'        => 'Brion Vibber',
 	'description'   => 'Provides syntax highlighting using [http://qbnz.com/highlighter/ GeSHi Higlighter]',
 );
+$wgHooks['LoadAllMessages'][] = 'syntaxLoadMessages';
 
 function syntaxSetup() {
-	global $wgParser, $wgMessageCache;
-	require_once( dirname( __FILE__ ) . '/SyntaxHighlight.i18n.php' );
-	foreach( efSyntaxHighlightMessages() as $lang => $messages )
-		$wgMessageCache->addMessages( $messages, $lang );
+	global $wgParser;
 	$wgParser->setHook( 'source', 'syntaxHook' );
 }
 
-function syntaxHook( $text, $params = array() ) {
+function syntaxLoadMessages() {
+	static $loaded = false;
+	if ( $loaded ) {
+		return;
+	}
+	global $wgMessageCache;
+	require_once( dirname( __FILE__ ) . '/SyntaxHighlight.i18n.php' );
+	foreach( efSyntaxHighlightMessages() as $lang => $messages )
+		$wgMessageCache->addMessages( $messages, $lang );
+}
+
+function syntaxHook( $text, $params = array(), $parser ) {
+	if ( !class_exists( 'GeSHi' ) ) {
+		require( 'geshi/geshi.php' );
+	}	
+	syntaxLoadMessages();
 	return isset( $params['lang'] )
-		? syntaxFormat( trim( $text ), $params )
+		? syntaxFormat( trim( $text ), $params, $parser )
 		: syntaxHelp();
 }
 
-function syntaxFormat( $text, &$params ) {
-	$geshi = new GeSHi( $text, $params['lang'] );
-	$geshi->set_encoding( 'UTF-8' );
+function syntaxFormat( $text, $params, $parser ) {
+	$lang = $params['lang'];
+	if ( !preg_match( '/^[A-Za-z_0-9-]*$/', $lang ) ) {
+		return syntaxHelp( wfMsgHtml( 'syntaxhighlight-err-language' ) );
+	}
 
-	$methods = array(
-		'line'		=> 'enable_line_numbers',
-		'start'		=> 'start_line_numbers_at',
-		'case'		=> 'set_case_keywords',
-		'tab'		=> 'set_tab_width',
-		'header'	=> 'set_header_type',
-		'strict'	=> 'enable_strict_mode',
-	);
-	foreach( $methods as $key => $method ) {
-		if( isset( $params[$key] ) && method_exists( $geshi, $method ) ) {
-			$geshi->$method( $params[$key] );
-		}
+	$geshi = new GeSHi( $text, $lang );
+	if ( $geshi->error == GESHI_ERROR_NO_SUCH_LANG ) {
+		return syntaxHelp( wfMsgHtml( 'syntaxhighlight-err-language' ) );
+	}
+
+	$geshi->set_encoding( 'UTF-8' );
+	$geshi->enable_classes();
+	$geshi->set_overall_class( "source source-$lang" );
+
+	if ( isset( $params['line'] ) ) {
+		$geshi->enable_line_numbers( GESHI_FANCY_LINE_NUMBERS );
+	}
+	if ( isset( $params['start'] ) ) {
+		$geshi->start_line_numbers_at( $params['start'] );
+	}
+	// Header type not optional because MW doesn't like <div> mode
+	// $geshi->set_header_type( GESHI_HEADER_PRE );
+
+	if ( isset( $params['strict'] ) ) {
+		$geshi->enable_strict_mode();
 	}
 
 	$out   = $geshi->parse_code();
 	$error = $geshi->error();
-	return $error
-		? syntaxHelp( $error )
-		: $out;
+
+	if ( $error ) {
+		return syntaxHelp( $error );
+	} else {
+		$geshi->set_overall_class( "source-$lang" );
+		$parser->mOutput->addHeadItem( 
+			"<style><!--\n" .		
+			$geshi->get_stylesheet( false ) .
+			"--></style>\n",
+			"source-$lang" );
+		return $out;
+	}
 }
 
-function syntaxHelp() {
-	return '<div style="border:solid red 1px; padding:.5em;">' .
+/**
+ * Return a syntax help message
+ * @param string $error HTML error message
+ */
+function syntaxHelp( $error = false ) {
+	return syntaxError( 
+		( $error ? "<p>$error</p>" : '' ) . 
 		'<p>' . wfMsg( 'syntaxhighlight-specify' ) . ' ' .
 		'<samp>&lt;source lang=&quot;html&quot;&gt;...&lt;/source&gt;</samp></p>' .
 		'<p>' . wfMsg( 'syntaxhighlight-supported' ) . '</p>' .
-		syntaxFormatList( syntaxLanguageList() ) .
-		'</div>';
+		syntaxFormatList( syntaxLanguageList() ) );
+}
+
+/**
+ * Put a red-bordered div around an HTML message
+ * @param string $contents HTML error message
+ * @return HTML
+ */
+function syntaxError( $contents ) {
+	return "<div style=\"border:solid red 1px; padding:.5em;\">$contents</div>";
 }
 
 function syntaxFormatList( $list ) {
