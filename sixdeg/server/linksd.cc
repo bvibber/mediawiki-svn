@@ -43,6 +43,8 @@
 #include "bdb_adjacency_store.h"
 #include "defs.h"
 #include "log.h"
+#include "radix.h"
+#include "access.h"
 
 /*
  * Client handler registers listeners and hands new client connections to the 
@@ -51,6 +53,7 @@
 struct client_handler : boost::noncopyable {
 	client_handler(pathfinder *);
 	
+	void allow(std::string const &addr);
 	void listen(std::string const &addr, std::string const &port);
 	void run(void);
 
@@ -62,6 +65,7 @@ private:
 	poller p;
 	request_dispatcher d;
 	pathfinder *f;
+	access_list acc;
 
 	std::vector<int> listeners;
 };
@@ -70,6 +74,12 @@ client_handler::client_handler(pathfinder *f_)
 	: d(f_)
 	, f(f_)
 {
+}
+
+void
+client_handler::allow(std::string const &addr)
+{
+	acc.allow(addr);
 }
 
 void
@@ -173,6 +183,7 @@ client_handler::accept_client(int s)
 	int		 cli;
 	sockaddr_storage cliaddr;
 	socklen_t	 clilen;
+	char		 name[NI_MAXHOST];
 
 	clilen = sizeof(cliaddr);
 	std::memset(&cliaddr, 0, clilen);
@@ -182,6 +193,17 @@ client_handler::accept_client(int s)
 		start_accept(s);
 		return;
 	}
+
+	getnameinfo((sockaddr *) &cliaddr, clilen, name, sizeof name, 0, 0, NI_NUMERICHOST);
+
+	if (!acc.allowed((sockaddr *) &cliaddr).first) {
+		logger::info(str(boost::format("client %s is disallowed") % name));
+		close(cli);
+		start_accept(s);
+		return;
+	}
+
+	logger::info(str(boost::format("accept client from %s") % name));
 
 	int val;
         val = fcntl(cli, F_GETFL, 0);
@@ -197,9 +219,10 @@ int
 main(int argc, char *argv[])
 {
 	std::vector<std::pair<std::string, std::string> > listeners;
+	std::vector<std::string> sources;
 	int c;
 
-	while ((c = getopt(argc, argv, "l:")) != -1) {
+	while ((c = getopt(argc, argv, "l:s:")) != -1) {
 		std::string host, port;
 		std::string::size_type i;
 
@@ -212,6 +235,10 @@ main(int argc, char *argv[])
 			}
 
 			listeners.push_back(std::make_pair(host, port));
+			break;
+
+		case 's':
+			sources.push_back(optarg);
 			break;
 
 		default:
@@ -235,6 +262,13 @@ main(int argc, char *argv[])
 	client_handler ch(finder);
 	for (std::size_t i = 0, end = listeners.size(); i < end; ++i)
 		ch.listen(listeners[i].first, listeners[i].second);
+	for (std::size_t i = 0, end = sources.size(); i < end; ++i)
+		try {
+			ch.allow(sources[i]);
+		} catch (invalid_prefix &p) {
+			logger::error(str(boost::format("%s: %s") % sources[i] % p.what()));
+			return 1;
+		}
 
 	ch.run();
 }

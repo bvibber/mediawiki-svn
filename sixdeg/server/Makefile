@@ -17,6 +17,8 @@ SRCS	= \
 	io.cc			\
 	client.cc		\
 	work_queue.cc		\
+	radix.cc		\
+	access.cc		\
 
 OBJS	= $(SRCS:.cc=.o)
 
